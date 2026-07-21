@@ -36,7 +36,7 @@
 | sw-bpm | 🟦 开发中 | CONFIRMED | 58 个 Java 文件 — BPMN 转换/待办/审批/Flowable 集成（含 api/engine/process 子模块） |
 | sw-basic-notify | ✅ 基础完成 | CONFIRMED | Facade + Controller + Mapper + 测试 + Flyway 建表 |
 | sw-basic-storage | 🟦 模块拆分完成 | CONFIRMED | B1 验收通过：-api/-biz 拆分，sw_storage_file 表，多提供商配置绑定，V16 Flyway 就绪 |
-| sw-basic-job | ⬜ 骨架 | CONFIRMED | AutoConfiguration 占位，Quartz 架构已预留集群升级接缝 |
+| sw-basic-job | 🟦 开发中 | CONFIRMED | B1-B4 全部完成：模块拆分/API-BIZ/Quartz 集成/Controller+Facade/测试 37 用例 |
 | sw-basic-iot | ⬜ 骨架 | CONFIRMED | AutoConfiguration 占位 |
 | sw-basic-knowledge | ⬜ 骨架 | CONFIRMED | AutoConfiguration 占位 |
 | sw-basic-agent | ⬜ 骨架 | CONFIRMED | AutoConfiguration 占位 |
@@ -102,7 +102,7 @@
 
 | 功能编号 | 功能名称 | 当前状态 | 当前 Step | 说明 |
 |----------|----------|:--------:|:---------:|------|
-| job-scheduler | 定时任务调度模块 | **IN_PROGRESS** | B3 READY | Step B1 ✅ B2 ✅（14/14 验收通过）。Step B3 方案已生成，等待执行。 |
+| job-scheduler | 定时任务调度模块 | **IN_PROGRESS** | F1 READY | Step B1 ✅ B2 ✅ B3 ✅ B4 ✅后端全部完成（37 测试用例 + 全量 406 回归通过）。F1 方案已生成，待执行。 |
 
 ---
 
@@ -165,7 +165,7 @@ Walking Skeleton 已完整打通。系统管理 CRUD 已完整闭环。BPM 待�
 
 | 项目 | 校验命令 | 当前状态 |
 |------|----------|----------|
-| 后端 | `mvn -q compile && mvn -q test` | CONFIRMED：2026-07-17 B3 验收 — 全量 308 tests 通过，BUILD SUCCESS |
+| 后端 | `mvn -q compile && mvn -q test` | CONFIRMED：2026-07-21 B4 验收 — 全量 406 tests 通过，BUILD SUCCESS |
 | 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | CONFIRMED：2026-07-20 storage F3 验收 — 50 files / 438 tests 全通过（F2 基线一致，零退化），lint 零告警，typecheck+build 全绿 |
 
 ### 前端测试覆盖详情（CONFIRMED，2026-07-15）
