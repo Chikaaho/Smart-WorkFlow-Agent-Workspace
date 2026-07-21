@@ -19,6 +19,8 @@
 | I6 | — | 间接依赖存在已知安全漏洞 | 低 | 已评估 |
 | I7 | 2026-07-15 | 通知模块前端占位 | 中 | ✅ 已修复（通知列表页 + 标记已读交互已实现） |
 | I8 | — | 定时任务集群升级路径预留但未实现 | 低 | 设计预留 |
+| I22 | 2026-07-21 | @vueuse/core INVALID_ANNOTATION 警告（Rolldown v8 兼容性） | 极低 | 第三方依赖 |
+| I23 | 2026-07-21 | 前端 CLAUDE.md §8 禁止 element-plus 显式 import，但实际代码中有 ElMessage/ElMessageBox import | 低 | 文档与代码不一致 |
 | I9 | 2026-07-15 | Element Plus API 调用组件 CSS 自动导入不完整 | 低 | ✅ 已绕过（全量 CSS 导入） |
 | I10 | 2026-06-30 | 动态宽表裸 SQL 隔离/软删手写易漏 | 高 | 已固化为红线，须测试兜底 |
 | I11 | 2026-06-30 | 发布冻结不可逆 — 字段定义错误成本高 | 中 | 需在设计器层强校验 |
@@ -116,9 +118,30 @@
 - **发现日期**：定时任务模块设计阶段
 - **严重程度**：低
 - **可信度**：CONFIRMED
-- **描述**：当前定时任务使用 Quartz RAMJobStore（单节点），集群升级路径（JDBC JobStore）已设计预留但未实现。代码中已避免硬编码 RAMJobStore。
-- **影响**：当前仅支持单节点部署的定时任务
+- **描述**：job-scheduler 模块已于 2026-07-21 完成前后端闭环（7 Steps B1-F3 全部通过）。当前使用 Quartz RAMJobStore（单节点），集群升级路径（JDBC JobStore）已设计预留但未实现。`QuartzSchedulerService` 中调度逻辑已通过抽象隔离，切换 JDBC JobStore 时业务代码零改动。
+- **影响**：当前仅支持单节点部署的定时任务；集群部署时需先切换到 JDBC JobStore 并验证 FLOW 任务幂等
+- **临时方案**：单节点 RAMJobStore 满足当前阶段需求
 - **建议**：在需要集群部署前实现 JDBC JobStore 切换
+
+### I22：@vueuse/core INVALID_ANNOTATION 警告（Rolldown v8 兼容性）
+
+- **发现日期**：2026-07-21（F2/F3 验收时多次出现）
+- **严重程度**：极低
+- **可信度**：CONFIRMED
+- **描述**：`pnpm build` 时 @vueuse/core 产生 `INVALID_ANNOTATION` 警告，原因是 `/* #__PURE__ */` 注释与 Rolldown v8 的 tree-shake 注解解析存在兼容性问题
+- **影响**：不影响构建产物功能和大小；警告来自第三方依赖，前端代码无法修复
+- **临时方案**：接受为已知构建噪音，不阻塞 CI
+- **建议**：监控 @vueuse/core 和 Rolldown 的后续版本更新
+
+### I23：前端 CLAUDE.md §8 禁止 element-plus 显式 import，但实际代码中有 ElMessage/ElMessageBox import
+
+- **发现日期**：2026-07-21（F2 验收时发现）
+- **严重程度**：低
+- **可信度**：CONFIRMED
+- **描述**：`Smart-WorkFlow-Web/.claude/CLAUDE.md` §8 规定「Element Plus 经按需自动导入…modules/* 里不出现 element-plus 的显式 import 语句」。但实际代码中 StorageList.vue（L14）、NotifyHome.vue（L9）、JobList.vue 均有 `import { ElMessage, ElMessageBox } from 'element-plus'`。这是必要的 API 级 import（ElMessage/ElMessageBox 需要通过 import 获取函数引用），非组件 import。
+- **影响**：CLAUDE.md 规范与既有实践不一致，新开发者可能困惑
+- **临时方案**：已在 F2 验收时确认为既有模式，不阻塞功能
+- **建议**：澄清 CLAUDE.md §8 的语言——区分「组件 import」（已由 unplugin-vue-components 自动处理，禁止手动 import）和「API 函数 import」（ElMessage/ElMessageBox/ElNotification 需显式 import，允许）
 
 ### I9：Element Plus API 调用组件 CSS 自动导入不完整
 

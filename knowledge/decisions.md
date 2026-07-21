@@ -33,6 +33,10 @@
 | D19 | 2026-07-19 | 存储模块策略模式 + -api/-biz 拆分 | CONFIRMED |
 | D20 | 2026-07-19 | YAML 配置 v1 + 动态配置延后 | CONFIRMED |
 | D21 | 2026-07-20 | Mock 模式不处理文件下载 | CONFIRMED |
+| D22 | 2026-07-20 | Job Entity 放 -biz 模块（非 -api） | CONFIRMED |
+| D23 | 2026-07-20 | Quartz 版本由 Spring Boot BOM 管理 | CONFIRMED |
+| D24 | 2026-07-20 | Flyway V17 先建两张表（job_info + job_log） | CONFIRMED |
+| D25 | 2026-07-21 | JobFacade 返回 DTO（非 Entity）以遵守模块边界 | CONFIRMED |
 
 ---
 
@@ -252,3 +256,40 @@
 - **替代方案**：改造 mock 系统拦截 fetch() — 超出当前功能范围
 - **影响**：`pnpm dev:mock` 模式下点击下载 → `ElMessage.error('下载失败')`（预期行为）。真实下载需在 `pnpm dev`（直连后端）模式下验证
 - **相关文件**：`Smart-WorkFlow-Web/src/modules/storage/api/index.ts`（downloadFile 实现）、`Smart-WorkFlow-Web/src/foundation/mock/handlers.ts`（无 download handler）
+
+### D22：Job Entity 放 -biz 模块（非 -api）
+
+- **日期**：2026-07-20
+- **决策**：`JobInfo` 和 `JobLog` Entity 放在 `sw-basic-job-biz` 模块，不在 `-api` 模块
+- **原因**：-api 模块不依赖 MyBatis-Plus，Entity 需继承 `BaseEntity`（来自 MyBatis-Plus）。与 storage、notify 模块模式一致
+- **替代方案**：Entity 放 -api — 拒绝，会让 -api 依赖 MyBatis-Plus，破坏模块边界
+- **影响**：JobFacade 不能直接返回 Entity，需用 JobInfoDTO（见 D25）
+- **相关文件**：`knowledge/features/job-scheduler.md`
+
+### D23：Quartz 版本由 Spring Boot BOM 管理
+
+- **日期**：2026-07-20
+- **决策**：不在 `sw-dependencies/pom.xml` 中显式声明 Quartz 版本，由 `spring-boot-starter-quartz` 的 BOM 管理
+- **原因**：避免版本冲突；Spring Boot 官方测试保证 Quartz 与 Spring 框架的兼容性
+- **替代方案**：显式版本管理 — 拒绝，可能引入与 Spring 版本不兼容的 Quartz
+- **影响**：升级 Spring Boot 版本时 Quartz 自动跟随升级
+- **相关文件**：`knowledge/features/job-scheduler.md`
+
+### D24：Flyway V17 先建两张表（job_info + job_log）
+
+- **日期**：2026-07-20
+- **决策**：V17 迁移脚本同时创建 `sw_job_info` 和 `sw_job_log` 两张表，不拆分版本
+- **原因**：宽度优先策略；两张表是定时任务模块的最小核心表集合，一版建完减少 Flyway 版本数
+- **替代方案**：分两版迁移 — 拒绝，增加不必要的版本管理复杂度
+- **影响**：后续可能需要新增 `sw_job_config` 等配置表（新 Flyway 版本）
+- **相关文件**：`knowledge/features/job-scheduler.md`
+
+### D25：JobFacade 返回 DTO（非 Entity）
+
+- **日期**：2026-07-21
+- **决策**：`JobFacade` 接口返回 `JobInfoDTO` 而非 `JobInfo` Entity
+- **原因**：-api 模块不可依赖 -biz 模块的 Entity（含 MyBatis-Plus 注解）。方案 B3 原设计返回 Entity，执行代理发现模块边界违规后新增 DTO 做契约隔离
+- **替代方案**：在 -api 中定义 Entity — 拒绝（需 MyBatis-Plus 依赖）；放宽模块依赖规则 — 拒绝（破坏四层架构）
+- **影响**：Controller 层需做 Entity ↔ DTO 转换；新增 `JobInfoDTO` 文件（17 字段）
+- **关键教训**：方案设计时必须考虑 -api/-biz 模块边界约束
+- **相关文件**：`Smart-WorkFlow/sw-basic-job/sw-basic-job-api/src/main/java/cn/reasonix/sw/basic/job/api/dto/JobInfoDTO.java`

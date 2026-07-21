@@ -15,11 +15,11 @@
 |------|------|
 | 后端框架 | Spring Boot 3.4.4 + Java 21，模块化单体，四层架构就位 |
 | 前端框架 | Vue 3.5 + TypeScript 6.0 + Vite 8，严格分层 SPA，自有架构（不继承 vben） |
-| 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，V1–V15（已确认：V12、V14 不存在，最新为 V13 → V15 跳号） |
+| 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，V1–V17（已确认：V16=storage，V17=job-scheduler；V12、V14 不存在） |
 | 核心路径 | Walking Skeleton：登录 → 表单 → 审批 → 通知 ✅ 四环全部闭合 |
 | 功能清单 | 10 模块，54 功能，88 明细（`Smart-WorkFlow/功能清单.md` 为权威清单，但状态标记与实际脱节 — 已知问题 I1） |
-| 测试基线 | 后端：136 tests / 7 modules ✅（CONFIRMED 2026-07-16）；前端：46 spec files / 392 tests ✅（F1+F2+F3 新增 20 files / 40 tests，CONFIRMED 2026-07-16），四连校验门可用 |
-| 前次验证 | 2026-07-15 独立验证：后端 BUILD SUCCESS · 前端四连全绿 |
+| 测试基线 | 后端：406 tests / 26 files ✅（CONFIRMED 2026-07-21 B4 验收）；前端：54 spec files / 471 tests ✅（CONFIRMED 2026-07-21 F3 验收），四连校验门可用 |
+| 前次验证 | 2026-07-21 独立验证：后端 BUILD SUCCESS · 前端四连全绿 |
 
 ---
 
@@ -35,8 +35,8 @@
 | sw-biz-form | ✅ 已封版 | CONFIRMED | 40 个 Java 文件 + 6 个测试类 — 动态宽表引擎，8 字段类型 + TABLE/REFERENCE 两档关系 |
 | sw-bpm | 🟦 开发中 | CONFIRMED | 58 个 Java 文件 — BPMN 转换/待办/审批/Flowable 集成（含 api/engine/process 子模块） |
 | sw-basic-notify | ✅ 基础完成 | CONFIRMED | Facade + Controller + Mapper + 测试 + Flyway 建表 |
-| sw-basic-storage | 🟦 模块拆分完成 | CONFIRMED | B1 验收通过：-api/-biz 拆分，sw_storage_file 表，多提供商配置绑定，V16 Flyway 就绪 |
-| sw-basic-job | 🟦 开发中 | CONFIRMED | B1-B4 全部完成：模块拆分/API-BIZ/Quartz 集成/Controller+Facade/测试 37 用例 |
+| sw-basic-storage | ✅ 完整 | CONFIRMED | B1–B4 + F1–F3 全部通过：-api/-biz 拆分 + 4 存储提供商 + Service/Controller/测试 + 前端闭环（50 files/438 tests） |
+| sw-basic-job | ✅ 完整 | CONFIRMED | B1–B4 + F1–F3 全部通过：模块拆分/Quartz 集成/Controller+Facade/测试 406 tests + 前端 Types/API/视图/Mock/路由闭环（54 files/471 tests） |
 | sw-basic-iot | ⬜ 骨架 | CONFIRMED | AutoConfiguration 占位 |
 | sw-basic-knowledge | ⬜ 骨架 | CONFIRMED | AutoConfiguration 占位 |
 | sw-basic-agent | ⬜ 骨架 | CONFIRMED | AutoConfiguration 占位 |
@@ -57,6 +57,7 @@
 | 系统管理 | ✅ 完整 CRUD | CONFIRMED | 字典类型/数据管理+用户/角色/部门/岗位 CRUD 全部完成；Types/API/Vue 视图/Mock 共 22 文件，F1+F2+F3 全部通过验收 |
 | 通知 | ✅ 已落地 | CONFIRMED | NotifyHome 通知列表 + 标记已读交互，StandardListTemplate 页型 B 实例；Walking Skeleton 最终环闭合 |
 | 工作流 | ✅ 已联通 | CONFIRMED | TodoList 待办列表 + ProcessDefList 流程定义列表，mock 验收通过，后端 REST 端点直连 |
+| 定时任务 | ✅ 完整 | CONFIRMED | JobList + JobLog 视图、合约、API、Mock、路由全部闭环；F1+F2+F3 全部通过验收 |
 | IoT | 🔲 占位 | CONFIRMED | 路由/菜单已注册，无业务页面 |
 | Agent | 🔲 占位 | CONFIRMED | 路由/菜单已注册，无业务页面 |
 | OpenAPI | 🔲 占位 | CONFIRMED | 路由/菜单已注册，无业务页面 |
@@ -78,6 +79,8 @@
 - 多数据源支持（dynamic-datasource，扩展库只读 SELECT-only）
 - Flowable BPMN 工作流引擎集成
 - Spring 事件跨模块通信（`@Async` + `@TransactionalEventListener(AFTER_COMMIT)`，经 `DomainEventPublisher`）
+- Quartz 定时任务调度（BEAN + FLOW 双类型、Cron 动态管理、RAMJobStore 单节点、执行日志追踪）
+- 多向文件存储（本地/MinIO/COS/Qiniu 四提供商、策略模式、统一上传/下载/删除 API）
 
 ### 3.2 前端
 
@@ -93,6 +96,8 @@
 - 通知列表页（NotifyHome，标记已读交互，页型 B 实例）
 - 配置接缝层（`modules/form/utils/` 下的可替换纯函数：deriveColumns / deriveFilterFields / deriveReferenceColumns / deriveDisplayField / deriveSearchFields / resolveReferenceDisplay）
 - 安全不变量常驻回归测试（sanitize 滤脚本、safeEval 隔离、token 不进 storage、redirect 同源、菜单单源、导入边界）
+- 定时任务管理前端（JobList CRUD + 暂停/恢复/触发 + JobLog 只读日志 + 详情弹窗，StandardListTemplate 页型 B）
+- 文件管理前端（StorageList 上传/列表/下载/删除，StandardListTemplate 页型 B，formatFileSize 工具函数）
 
 ---
 
@@ -100,18 +105,17 @@
 
 > 最后更新：2026-07-21
 
-| 功能编号 | 功能名称 | 当前状态 | 当前 Step | 说明 |
-|----------|----------|:--------:|:---------:|------|
-| job-scheduler | 定时任务调度模块 | **IN_PROGRESS** | F1 READY | Step B1 ✅ B2 ✅ B3 ✅ B4 ✅后端全部完成（37 测试用例 + 全量 406 回归通过）。F1 方案已生成，待执行。 |
+暂无进行中的功能。
 
 ---
 
 ## 5. 已完成的功能
 
-> 最后更新：2026-07-20
+> 最后更新：2026-07-21
 
 | 功能编号 | 功能名称 | 最终状态 | 完成日期 | 说明 |
 |----------|----------|:--------:|:--------:|------|
+| job-scheduler | 定时任务调度模块 | **COMPLETED** ✅ | 2026-07-21 | 7 Steps（B1~F3）全部通过：后端模块拆分+Quartz 集成+Controller+Facade+测试（406 tests）+ 前端 Types/API/Vue 视图/Mock/路由闭环（54 files/471 tests） |
 | storage-multi-provider | 多向可配置文件存储 | **COMPLETED** ✅ | 2026-07-20 | 7 Steps（B1~F3）全部通过：后端模块拆分 + 4 存储提供商实现 + Service/Controller/测试 + 前端 Types/API/视图/Mock/路由闭环 |
 | bpm-task-center | BPM 待办中心增强 | **COMPLETED** ✅ | 2026-07-19 | 6 Steps（B1~F3）全部通过：后端 15 文件 + 前端 9 文件，后端 308 tests / 前端 48 files / 417 tests |
 | M04-F01-01 | BPM 单节点审批前后端联通 | **COMPLETED** ✅ | 2026-07-15 | Walking Skeleton 第三环：待办列表 + 审批通过 + 流程定义列表全部实现并通过验收 |
@@ -149,15 +153,20 @@
 
 ## 8. 下一优先事项
 
-Walking Skeleton 已完整打通。系统管理 CRUD 已完整闭环。BPM 待办中心增强已全部完成。**storage-multi-provider（多向可配置文件存储）已于 2026-07-20 闭环**。
+全部 6 个功能已完成闭环：
 
-当前进行中：**job-scheduler（定时任务调度模块）** — Step B1 方案已生成。
+1. ✅ Walking Skeleton（登录→表单→审批→通知）
+2. ✅ sys-mgmt-crud（系统管理核心 CRUD）
+3. ✅ bpm-task-center（BPM 待办中心增强）
+4. ✅ storage-multi-provider（多向可配置文件存储）
+5. ✅ job-scheduler（定时任务调度模块）← 最新完成
 
 后续候选：
 
 1. **I1 功能清单同步** — 更新 `功能清单.md` 与实际代码进度一致
 2. **BPMN adapter 实现** — 流程设计器可视化集成
 3. **后端 seam 点亮** — `getInfo`/菜单接口/权限装配/`/auth/refresh`/`/auth/logout`
+4. **IoT / Agent / OpenAPI 模块落地** — 从占位推进到实际业务
 
 ---
 
@@ -166,9 +175,11 @@ Walking Skeleton 已完整打通。系统管理 CRUD 已完整闭环。BPM 待�
 | 项目 | 校验命令 | 当前状态 |
 |------|----------|----------|
 | 后端 | `mvn -q compile && mvn -q test` | CONFIRMED：2026-07-21 B4 验收 — 全量 406 tests 通过，BUILD SUCCESS |
-| 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | CONFIRMED：2026-07-20 storage F3 验收 — 50 files / 438 tests 全通过（F2 基线一致，零退化），lint 零告警，typecheck+build 全绿 |
+| 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | CONFIRMED：2026-07-21 F3 验收 — 54 files / 471 tests 全部通过（typecheck + lint 零告警，独立执行确认） |
 
-### 前端测试覆盖详情（CONFIRMED，2026-07-15）
+### 前端测试覆盖详情（参考快照，2026-07-15 基线 ~350 tests）
+
+> 以下为 Walking Skeleton 闭环时的详细覆盖分布。当前最新基线为 54 files / 471 tests（2026-07-21 F3 验收确认），新增覆盖包括 storage（8 测试）、job（34 测试）等模块的 API/视图测试。
 
 | 测试文件 | 用例数 | 测试内容 |
 |----------|:-----:|----------|
