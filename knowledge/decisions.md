@@ -37,6 +37,14 @@
 | D23 | 2026-07-20 | Quartz 版本由 Spring Boot BOM 管理 | CONFIRMED |
 | D24 | 2026-07-20 | Flyway V17 先建两张表（job_info + job_log） | CONFIRMED |
 | D25 | 2026-07-21 | JobFacade 返回 DTO（非 Entity）以遵守模块边界 | CONFIRMED |
+| D26 | 2026-07-21 | 双 token 认证：access 内存 + refresh httpOnly cookie（D6 部分 SUPERSEDED） | CONFIRMED（规划） |
+| D27 | 2026-07-21 | refresh token 服务端存储 + 轮换 + 撤销 | CONFIRMED（规划） |
+| D28 | 2026-07-22 | 新增 `todo/` 暂不修复清单目录（与 `product/` 平级） | CONFIRMED |
+| D29 | 2026-07-22 | 固化执行代理三方角色边界：规划层只读写方案，两执行层严禁跨项目执行 | CONFIRMED |
+| D30 | 2026-07-22 | 记忆模型分层：`product/passed` 为原始记忆，`knowledge/` 为压缩记忆，按 project memory 方式持续维护 | CONFIRMED |
+| D31 | 2026-07-22 | 规划层内部分工：探索模型 vs 规划模型，按模型族（Anthropic/DeepSeek）区分能否兼任 | CONFIRMED |
+| D32 | 2026-07-22 | 前端 beforeHandler 单飞刷新 + 依赖反转规避 router↔auth↔request 循环依赖 | CONFIRMED |
+| D33 | 2026-07-22 | F1 logout() try...catch...finally — 方案内部矛盾裁决，对齐测试期望 | CONFIRMED |
 
 ---
 
@@ -87,10 +95,12 @@
 ### D6：Token 仅内存 · superAdmin=boolean
 
 - **日期**：安全设计阶段
-- **决策**：Token 仅存内存（不落 localStorage/sessionStorage）；超管判断用 `userId==1` 布尔值而非通配权限串
+- **决策**：Token 仅存内存（不落 localStorage/sessionStorage）；超管判断用布尔值而非通配权限串（判定依据原设计为 `userId==1`，后端实现已改为角色 code 含 `superadmin`，见下方状态更新）
 - **原因**：减少 XSS 泄露面；与后端授权模型对齐
 - **影响**：刷新需重登录（refresh seam 未实现）；前端 `v-perm` 在权限空集时放行（暗态 gating）
 - **相关文件**：`knowledge/shared-constraints.md` §1.1, §1.2
+- **状态更新（2026-07-21）**：**部分 SUPERSEDED by [[D26]]** — accessToken 仍严格仅内存（本决策对 access 的不变量不变）；新增的 refreshToken 存 httpOnly cookie（JS 读不到，非 localStorage/sessionStorage）。"刷新=重登录" 被 refresh 静默续期取代。
+- **口径更正（CONFIRMED 2026-07-22，代码直读）**：超管判定的**实现**为 `UserDetailsProviderImpl` 用 `roleCodes.contains("superadmin")`（角色 code），**非** `userId==1`（代码注释明写"替换旧有 userId==1 硬编"）。seed 绑定 admin(id=1)→角色 code=`superadmin`，故对外行为不变，但判定依据已从 userId 迁移到角色 code。CLAUDE.md §11.7、shared-constraints §1.2 已同步更正。
 
 ### D7：form-create 防腐层（adapters/）
 
@@ -127,7 +137,7 @@
   - 通过 Step 方案 + 回执 + 验收的闭环机制确保执行质量
   - 通过知识库实时更新和跨会话交接机制确保长期项目记忆不丢失
 - **替代方案**：通用代理（规划+执行合一）— 拒绝，因为缺乏权限边界和质量闭环
-- **影响**：根目录代理写入权限仅限于 `CLAUDE.md` 和 `knowledge/`；所有业务代码修改必须通过下级执行代理完成并提交回执
+- **影响**：根目录代理写入权限仅限于 `CLAUDE.md`、`knowledge/`、`product/`、`todo/`（后两者为 2026-07-22 D28/D29 补充明确，此前口径仅写 `CLAUDE.md`/`knowledge/` 与 §11.2 实际流转规则不一致，已更正）；所有业务代码修改必须通过下级执行代理完成并提交回执
 - **相关文件**：`CLAUDE.md`、`knowledge/current-status.md`、`knowledge/session-handoff.md`
 
 ### D11：Element Plus 全量 CSS 导入
@@ -293,3 +303,76 @@
 - **影响**：Controller 层需做 Entity ↔ DTO 转换；新增 `JobInfoDTO` 文件（17 字段）
 - **关键教训**：方案设计时必须考虑 -api/-biz 模块边界约束
 - **相关文件**：`Smart-WorkFlow/sw-basic-job/sw-basic-job-api/src/main/java/cn/reasonix/sw/basic/job/api/dto/JobInfoDTO.java`
+
+### D26：双 token 认证 — access 内存 + refresh httpOnly cookie
+
+- **日期**：2026-07-21
+- **决策**：认证改为双 token。**accessToken**：短期 JWT，前端仅内存存储（保留 [[D6]] 对 access 的不变量）。**refreshToken**：长期不透明随机串，存 httpOnly + Secure + SameSite cookie，JS 不可读。登录响应形状 `R<String>`（裸 token）改为 `R<{accessToken, expiresIn}>`，refreshToken 经 Set-Cookie 下发不进 body。前端在请求前置钩子（beforeHandler）按内存中 access 到期戳判断，过期则单飞调 `/auth/refresh`（cookie 自动携带）换新 access 后重放原请求。
+- **原因**：用户要求实现 refresh/logout 且期望 F5/冷启动静默续登。httpOnly cookie 存 refresh 使 JS 读不到，XSS 暴露面小于 localStorage，同时让前端现有冷启动 refresh() seam 真正生效；access 保持内存不落存储，安全基线不弱化。
+- **替代方案**：两 token 都存 JS 可读 cookie — 拒绝（XSS 暴露面≈localStorage，反转 D6/D17 安全基线）；滑动续期无 refresh token — 拒绝（F5/冷启动仍需重登，且现有前端不会主动调用）；两 token 都 httpOnly — 拒绝（beforeHandler 无法读 access 判过期）
+- **影响**：D6 部分 SUPERSEDED；login 响应为跨前后端协议变更（前端 login/token 管理必须同步改，契约先行缓解）；D17 常驻回归测试「token 不进 storage」需等价强度改写为「access 不进任何 JS 可读存储 + refresh 仅 httpOnly」；引入 cookie 带来 CSRF 面，靠 SameSite 缓解
+- **相关文件**：`knowledge/features/auth-seam-completion.md`；后端 `sw-security` JwtProvider/Properties、`sw-biz-system-biz` AuthController；前端 `foundation/auth`、`foundation/request`
+
+### D27：refresh token 服务端存储 + 轮换 + 撤销
+
+- **日期**：2026-07-21
+- **决策**：refreshToken 服务端存储于 `sys_refresh_token` 表（存 token 的 SHA-256 摘要 hash、user_id、expires_at、revoked、审计、tenant_id），不入 Redis。有效判定 = 行存在 && revoked=0 && 未过期。`/auth/refresh` 校验通过后**轮换**（签发新 refresh、旧的立即置 revoked，检测重放）。`/auth/logout` 读 refresh cookie → 置 revoked + 过期 cookie，实现真正服务端作废。
+- **原因**：用户选「服务端存储 + 黑名单可撤销」以获得真正的登出作废能力。DB 表存储避免引入 Redis 新基础设施，Flyway 双方言（PG+H2）与既有模式一致、可移植。存 hash 而非明文防库泄露即冒用。轮换防 refresh 重放。
+- **替代方案**：无状态 refresh JWT — 拒绝（无法真正撤销，logout 只能清本地）；Redis 存储 — 拒绝（引入新基础设施，当前应用未接 Redis）
+- **影响**：新增 `sys_refresh_token` 表（Flyway V18 双方言，`sys_` 前缀合规）+ Entity/Mapper + RefreshTokenService；access 短期 JWT 在其过期窗口内 logout 后仍技术有效（可接受为 v1，靠短过期缩小窗口）
+- **相关文件**：`knowledge/features/auth-seam-completion.md`；`sw-bootstrap` Flyway；`sw-biz-system-biz`
+
+### D28：新增 `todo/` 暂不修复清单目录（与 `product/` 平级）
+
+- **日期**：2026-07-22
+- **决策**：新建工作区根目录下的 `todo/README.md`，专门索引已决策"当前不投入资源修复"的问题，与 `knowledge/known-issues.md`（记录全部已知问题）区分：后者是权威详情源，前者只是"暂不修复"子集的决策速查索引（不重复问题描述）
+- **原因**：`known-issues.md` 里"待修复""待设计""暂不修复"三类问题混在一起，每次判断"这个到底要不要现在管"都要重新读完整篇描述评估；独立的速查索引让"已拍板不管"的项一眼可辨，避免重复评估
+- **替代方案**：在 `known-issues.md` 增加"状态"列筛选 — 拒绝，用户明确要求独立目录；把暂不修复项挪出 known-issues.md 单独成文 — 拒绝，会丢失问题的完整背景（发现日期/影响/临时方案），改为速查索引反向链接更合理
+- **影响**：`CLAUDE.md` §1.3 写入范围新增 `todo/`；§11.2 新增 `todo/` 目录规则；§13 索引新增该文件；初始已收录 T1~T9（对应 known-issues I2/I6/I8/I12/I17/I19/I20/I21/I22/I23）
+- **相关文件**：`todo/README.md`、`CLAUDE.md` §1.3/§11.2、`knowledge/known-issues.md`
+
+### D29：固化执行代理三方角色边界（规划层只读写方案，执行层严禁跨项目执行）
+
+- **日期**：2026-07-22
+- **决策**：三个启动目录对应三种严格角色：规划层（`/data/reasonix/files`）只能读两个代码项目、只能写 `CLAUDE.md`/`knowledge/`/`product/`/`todo/`，永不执行状态变更命令；后端执行代理（`Smart-WorkFlow/`）只能读写自己项目、只能跑 `mvn` 系命令；前端执行代理（`Smart-WorkFlow-Web/`）只能读写自己项目、只能跑 `pnpm` 系命令。**严禁后端执行代理运行前端命令或读写前端文件，严禁前端执行代理运行后端命令或读写后端文件**
+- **原因**：用户明确要求补硬约束，防止执行代理为了"顺手验证联动效果"越界读写对方项目或误跑对方的构建/测试命令，污染对方项目状态或产生非授权的状态变更
+- **替代方案**：允许执行代理为验证联动只读不写对方项目 — 拒绝，"只读"边界在实践中容易滑向"顺手改一下"，不如从根上禁止 cd 进入对方目录；由规划层充当"联动验证"角色代跑两侧命令 — 拒绝，直接违反规划层"永不执行状态变更命令"的既有硬约束（§1.2）
+- **影响**：`CLAUDE.md` §0.3 新增两条硬约束；`knowledge/shared-constraints.md` 新增 §9 完整角色边界表；涉及前后端联动的验证需求今后必须拆成两个独立 Step 分别下发，不能指望单个执行代理跨项目验证
+- **相关文件**：`CLAUDE.md` §0.3、`knowledge/shared-constraints.md` §9
+
+### D30：记忆模型分层——`product/passed` 为原始记忆，`knowledge/` 为压缩记忆
+
+- **日期**：2026-07-22
+- **决策**：将工作区知识明确分两层维护：`product/<feature>/passed/`（已归档 Step 方案）+ `receipts/`（回执）是**原始记忆**（只追加、不改写，一旦归档即定稿存档）；`knowledge/*.md` 是**压缩记忆**（持续提炼、去重、跨功能复用的结论），规划层对 `knowledge/` 的维护方式类比 web 端的 project memory 系统——按语义分类而非时间流水、可信度标记贯穿全程、冲突时标 SUPERSEDED 不静默覆盖、压缩记忆需能独立恢复上下文（无需回读全部原始记忆）
+- **原因**：用户明确指出应把两类文件的角色关系讲清楚，避免规划层把"压缩总结"和"原始存档"混为一谈——此前确实出现过例如 kb-verification 复验时需要回读 receipts/ 原始回执才能核实 knowledge/ 里数字的情况，说明两层关系是真实存在、值得显式建模的
+- **替代方案**：只维护 knowledge/，不保留 product/passed 完整方案 — 拒绝，会丢失可回溯的原始证据链，未来复验/审计无据可查；只维护 product/，不做 knowledge/ 压缩 — 拒绝，新会话必须逐功能回读全部原始方案才能恢复上下文，恢复成本过高
+- **影响**：`CLAUDE.md` §8 新增 §8.1 记忆模型子节，原 §8.1~§8.4 依次后移为 §8.2~§8.5；`knowledge/architecture.md` 新增说明"本文件不重复记录工作区元架构"，避免与 CLAUDE.md 重复维护同一套概念
+- **相关文件**：`CLAUDE.md` §8.1、`knowledge/architecture.md`
+
+### D31：规划层内部分工——探索模型与规划模型，按模型族区分能否兼任
+
+- **日期**：2026-07-22
+- **决策**：规划层内部按任务性质拆出两个子角色：**探索模型**（承接新需求分析/查 bug 等探索类任务，可直接读完整代码和完整 `product/`/`done/`/`todo/` 原始记忆，产出结构化探索摘要）与**规划模型**（只读探索摘要 + `knowledge/` 压缩记忆生成 Step 方案，不直接读完整代码和完整 `product/`/`done/`/`todo/`）。按当前会话模型族区分：**Anthropic 系**（Claude）只能承担规划模型角色，探索工作必须委派子代理完成后读摘要；**DeepSeek 系**可承担任一角色，但同一次任务中绝对不能同时兼任探索和规划两者
+- **原因**：用户明确要求把"探索"和"规划"两个认知负荷不同的动作分离——探索需要宽范围读取原始材料，规划需要收敛为方案决策，混在一起容易让探索阶段的发散思路直接污染方案质量，也难以复核"方案是基于哪些证据得出的"。按模型族区分是因为不同模型在长上下文宽范围读取与严格约束执行方面能力特征不同，需要不同的角色分配策略
+- **替代方案**：不区分角色，规划层统一直接读全部原始材料出方案 — 拒绝，用户明确要求分离；两角色都可自由决定顺序（不限制"是否同一次调用"）— 拒绝，用户明确强调"绝对不可以探索的同时做规划"，必须是先后独立的动作
+- **影响**：`CLAUDE.md` 新增 §0.4；§3.1 阶段一步骤 2（阅读需求相关代码）标注委派规则；探索摘要通过 Agent 工具子代理产出，不改变现有 `product/`/`knowledge/` 文件结构
+- **补充（2026-07-22）**：用户提供当前可用模型清单，§0.4 补充"模型族对照表"：Anthropic 系（`claude-opus-4.8`/`claude-sonnet-5`）仅规划模型；DeepSeek 系（`deepseek-v4-flash`/`deepseek-v4-pro`）探索/规划角色均可但不可同一次任务兼任。并明确此表与 §2 下级执行代理模型路由推荐是两个独立维度，不可混用
+- **相关文件**：`CLAUDE.md` §0.4、§3.1
+
+### D32：前端 beforeHandler 单飞刷新 + 依赖反转规避 router ↔ auth ↔ request 循环依赖
+
+- **日期**：2026-07-22
+- **决策**：前端请求拦截器（beforeHandler）中的 refresh 逻辑采用两个关键模式：(1) **单飞（single-flight）**：模块级 `refreshPromise: Promise<void> | null` 锁，并发请求同时触发到期刷新时共享同一个 `/auth/refresh` HTTP 调用（验证：3 并发 → 1 次 HTTP，F1 index.spec.ts 已证实）；(2) **依赖反转**：`request/index.ts` 暴露 `setRefreshHandler(refresh)` 注入接口，`router/index.ts` 在路由初始化时将 `auth/index.ts` 的 `refresh()` 注入给 request 层——打破 `router → auth → request → auth` 的循环依赖链（三者均可独立测试，auth/index.spec.ts 和 guard.spec.ts mock request 而非 import 真实 auth）
+- **原因**：beforeHandler 需要调用 refresh，而 refresh 又调用 request，形成 `request → auth → request` 循环。直接 import 会导致模块初始化时 request 尚未就绪（TDZ）或循环依赖。单飞锁是并发安全必备——AccessToken 15min 过期、缓冲窗口 60s，多个 API 调用在缓冲期内同时触发会导致多次 refresh（重放检测会拒绝第一个之后的请求，引起不必要错误）
+- **替代方案**：将 refresh 逻辑直接写在 request 拦截器中 — 拒绝（循环依赖：request import auth token → auth import request）；将 refresh 移到独立模块 — 可行但增加模块数，依赖反转更轻量；不做单飞 — 拒绝（并发错误可观测）
+- **影响**：`router/index.ts` 在 `setUnauthorizedHandler` 后追加 `setRefreshHandler(refresh)`；`request/index.ts` 新增 `setRefreshHandler` 函数 + `AUTH_ENDPOINTS` 追加 `/auth/logout`；`auth/index.ts` 新增模块级 `refreshPromise` 锁；测试可独立 mock `request()` 验证 refresh 行为
+- **相关文件**：`Smart-WorkFlow-Web/src/foundation/auth/index.ts`、`src/foundation/request/index.ts`、`src/router/index.ts`、`src/foundation/auth/index.spec.ts`
+
+### D33：F1 logout() try...catch...finally — 方案内部矛盾裁决
+
+- **日期**：2026-07-22
+- **决策**：F1 方案的伪代码使用 `try...finally`（无 catch），但方案的测试期望声明 `await logout() // 不应抛异常`（要求 logout 始终成功返回）。执行代理发现矛盾后选择对齐测试期望（用户行为正确性优先），在 `logout()` 中新增 `catch` 块静默吞下 API 失败，确保 `finally` 中的 `clearToken()` 始终执行且调用方（`AppTopbar.onLogout()`）的后续路由跳转不被异常短路。规划层独立复核确认此裁决合理。
+- **原因**：F1 方案内部矛盾（伪代码写 `try...finally`，测试期望写"不应抛异常"）。网络断开时 `request` 抛异常，无 catch 会传播到 `AppTopbar.onLogout()` → `clearDynamicRoutes(router)` 和 `router.push('/login')` 被跳过 → 用户卡在页面而非到达登录页。"退出应始终清除本地态并跳转登录页"是 UX 硬约束，应优先于"通知后端作废 token"这一 best-effort 操作
+- **替代方案**：严格按方案伪代码（无 catch）— 拒绝（与方案自己的测试期望矛盾）；在调用方 AppTopbar 做防御 — 不合理（所有 logout 调用方都需要防御，不如在源头保证）
+- **影响**：`logout()` 签名不变（`Promise<void>`），行为变更为 always-resolve；用户退出体验保证（始终清除本地态 + 跳转）；后端 logout 端点调用变为 best-effort（失败不影响前端状态）
+- **相关文件**：`Smart-WorkFlow-Web/src/foundation/auth/index.ts`

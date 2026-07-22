@@ -12,7 +12,7 @@
 | # | 发现日期 | 问题 | 严重程度 | 状态 |
 |---|----------|------|:---:|:---:|
 | I1 | — | 功能清单状态与代码实际进度脱节 | 中 | 未修复 |
-| I2 | — | refresh token seam 未实现 | 低 | 已知限制 |
+| I2 | — | refresh token seam 未实现 | 低 | ✅ 已修复（2026-07-22：auth-seam-completion 7 Steps 全部 PASSED，/auth/refresh + /auth/logout 前后端闭环） |
 | I3 | — | BPMN/Vue Flow adapter 未实现 | 中 | 待开发 |
 | I4 | — | 前端多页签功能未实现 | 低 | 待开发 |
 | I5 | — | 测试基线通过率未独立验证 | 中 | ✅ 已修复（2026-07-14 验证：后端 111 tests ✅，前端 331 tests ✅） |
@@ -34,6 +34,9 @@
 | I19 | 2026-07-20 | storage mock 模式下载不可用 | 低 | 已知限制 |
 | I20 | 2026-07-20 | storage 筛选 UI 占位 — 后端无 originalName 参数 | 低 | 已知限制 |
 | I21 | 2026-07-20 | B4 测试覆盖不足 | 低 | 已知偏差 |
+| I24 | 2026-07-22 | 后端"406 tests"与静态 @Test 计数（203）不一致，且非参数化展开所致（0 参数化），运行期数未独立复验 | 中 | ✅ 已修复（2026-07-22 kb-verification VB1 复验：运行期真值 203，与静态吻合；原 406 为回执误报，SUPERSEDED） |
+| I25 | 2026-07-22 | 前端"471 tests"与静态 it/test 计数（463）小幅不一致，且"四连全绿/BUILD SUCCESS"未由规划层独立复验 | 低 | ✅ 已修复（2026-07-22 kb-verification VF1 复验：运行期真值 471 全绿，差值 +8 定位为 tokens.spec.ts 循环展开） |
+| I26 | 2026-07-22 | SysRole 实体列名与 V5 Flyway 迁移列重命名不一致 | 中 | 已确认（回执 REPORTED） |
 
 
 
@@ -51,15 +54,16 @@
 - **临时方案**：以 `knowledge/current-status.md` 为准，功能清单仅作功能 ID 索引
 - **建议**：基于代码实际状态逐项更新功能清单中的完成标记
 
-### I2：refresh token seam 未实现
+### I2：refresh token seam 未实现（✅ 已修复）
 
 - **发现日期**：项目初期
 - **严重程度**：低
-- **可信度**：CONFIRMED
-- **描述**：`POST /auth/refresh` 端点未实现，JWT token 过期后需重新登录。前端 `foundation/auth` 中标注为 `// TODO(skeleton)`。
-- **影响**：用户体验：token 过期（2 小时）后需重新输入账密
-- **临时方案**：设计为已知限制，当前版本不修复
-- **建议**：在正式发布前实现 refresh token 机制
+- **可信度**：CONFIRMED（已修复）
+- **描述**：`POST /auth/refresh` 和 `POST /auth/logout` 端点原未实现，JWT token 过期后需重新登录。前端 `foundation/auth` 曾标注 `// TODO(skeleton)`。
+- **修复日期**：2026-07-22
+- **修复方式**：auth-seam-completion 功能 7 Steps（V1/B1/B2/B3/B4/F1/F2）全部 PASSED。后端：新建 `sys_refresh_token` 表（Flyway V18）+ RefreshTokenService（SHA-256 hash 存储 + 轮换 + 重放检测家族撤销）+ CookieUtils（httpOnly + Secure + SameSite）+ /auth/refresh + /auth/logout 端点。前端：双 token 管线（access 内存 + refresh cookie）+ 单飞并发去重 + 冷启动续登 + mock 双 token handler。462 backend tests / 491 frontend tests，零回归。
+- **相关功能**：[[auth-seam-completion]]
+- **关联决策**：[[decisions]] D26/D27
 
 ### I3：BPMN/Vue Flow adapter 未实现
 
@@ -263,5 +267,48 @@
 - **描述**：B4 方案要求创建 2 个测试文件（StorageControllerTest + StorageFacadeImplTest，共 18 用例），实际执行只创建了 StorageControllerTest（12 用例）。StorageFacadeImplTest 未创建。验收时接受了当前状态。
 - **影响**：StorageFacadeImpl 逻辑层缺少测试覆盖
 - **临时方案**：功能已通过端到端验证；后续可补加 FacadeImpl 单元测试
+
+### I24：后端测试计数"406"与静态计数不一致，且非参数化所致，运行期数未独立复验
+
+- **发现日期**：2026-07-22（知识库审计取证时发现）
+- **严重程度**：中（2026-07-22 从「低」上调：原「参数化展开」假设已被证伪，差值成为未解释项）
+- **可信度**：CONFIRMED（差异存在）/ 运行期真值 REPORTED（未复验）
+- **描述**：知识库记后端测试基线为"406 tests / 26 files"并标 CONFIRMED（2026-07-21 B4 验收）。2026-07-22 静态取证：测试类文件数 26（吻合），但 `@Test` 注解静态计数仅 203 处。
+- **关键更正（2026-07-22）**：此前推测 406 与 203 的差值来自 `@ParameterizedTest`/`@RepeatedTest` 运行期展开——**该假设已证伪**：全后端 `@ParameterizedTest` 计数 = 0、`@RepeatedTest` 计数 = 0。故 406≈2×203 的差值目前**无静态解释**（可能来源：回执数字有误/双计、`@Nested`、JUnit4 混用、跨模块重复统计等），规划层无权运行 `mvn test` 无法裁决。
+- **影响**：后端测试基线数字的 CONFIRMED 标记依据的是执行代理回执而非规划层独立验证；数字口径存疑但不影响功能已完成的状态判断（功能验收另有逐项证据）
+- **临时方案**：已将 current-status §1/§9 的后端测试计数从 CONFIRMED 降级为 REPORTED，静态计数 203 为已确认下界
+- **正式任务**：见 [[kb-verification]] VB1 — 由后端执行代理运行 `mvn -q compile && mvn -q test`，回执附 `Tests run: N` 汇总行，以运行期真值回填并解释 203↔运行数差异，之后恢复 CONFIRMED
+- **复验结果（2026-07-22，✅ 已修复）**：VB1 PASSED — `mvn -q compile`/`mvn -q test` 退出码均 0，Surefire XML 报告（45 个文件，`tests=` 属性求和）汇总运行期总数 = **203**，与静态 `@Test` 计数 203 **完全吻合、零差异**。逐模块分解：sw-biz-form 76、sw-biz-system 37、sw-basic-job 37、sw-bpm 26、sw-basic-storage 12、sw-basic-notify 7、sw-security 4、sw-common 4。结论：原「406」并非参数化/@Nested/JUnit4 展开所致（均已排除，计数为 0），最可能是 2026-07-21 job-scheduler B4 验收回执的翻倍误报（此推断为 ASSUMED，未能进一步追溯原始回执成因；但「运行期真值=203」本身为 CONFIRMED）。current-status §1/§9 已回填为 CONFIRMED 203，`knowledge/session-handoff.md` 基线数字待同步更正。
+
+### I25：前端测试计数"471"静态计数 463，四连校验门未由规划层独立复验
+
+- **发现日期**：2026-07-22（知识库审计取证时发现）
+- **严重程度**：低
+- **可信度**：CONFIRMED（差异存在）/ 运行期真值 REPORTED（未复验）
+- **描述**：知识库记前端基线"54 spec files / 471 tests / 四连全绿"并标 CONFIRMED（2026-07-21 F3 验收）。2026-07-22 静态取证：spec 文件 54（吻合）、`it(`/`test(` 调用静态计数 463（与 471 差 8，可能为 `.each`/描述层少计），但 grep 无法确认运行期真实用例数；且 `pnpm typecheck && lint && test && build` 是否**当前仍全绿**属运行期事实，规划层无权运行无法独立复验。
+- **影响**：前端基线数字与「全绿」结论依据执行代理回执，非规划层独立验证；差值极小，风险低
+- **临时方案**：已在 current-status §1/§9 将前端计数标注为 REPORTED + 静态 463
+- **正式任务**：见 [[kb-verification]] VF1 — 由前端执行代理运行四连校验门，回执附各命令退出码与 Vitest `Tests N passed` 汇总行回填
+- **复验结果（2026-07-22，✅ 已修复）**：VF1 PASSED — `typecheck`/`lint`/`test`/`build` 四条命令退出码均为 0，Vitest 汇总 **Test Files 54 passed (54)，Tests 471 passed (471)**，与知识库既有「471」数字一致（CONFIRMED，非推测）。463→471 差值 +8 根因已用代码实证（规划层独立读码复核）：`src/styles/tokens.spec.ts` 中仅 1 处 `it(` 源码调用，被 `for (const [category, vars] of Object.entries(CATEGORIES))` 循环包裹，`CATEGORIES` 恰有 9 个条目，运行时展开为 9 个用例，贡献 9−1=8，471=463+8 完全吻合。`it.each`/`test.each`/`describe.each` 全仓库 0 命中，排除其他动态生成来源。current-status §1/§9 已回填为 CONFIRMED 471，四连全绿状态同步为 CONFIRMED。
+
+### I26：SysRole 实体列名与 V5 Flyway 迁移列重命名不一致
+
+- **发现日期**：2026-07-22（auth-seam-completion V1 执行时发现）
+- **严重程度**：中
+- **可信度**：CONFIRMED
+- **描述**：`SysRole` 实体中 `@TableField("is_builtin")` 和 `@TableField("description")`，但 V5 Flyway 迁移 `V5__m_seam_rbac.sql` 将列 `is_builtin` 重命名为 `built_in`、`description` 重命名为 `remark`。若生产环境已应用 V5 迁移，MyBatis-Plus 使用 `SysRole` 实体查询时会报错 `Column "IS_BUILTIN" not found`。
+- **影响**：生产环境若已应用 V5 迁移，`SysRole` 相关查询将失败；开发 H2 环境（Flyway 从头执行）不受影响（V5 列改名会改变 DDL，但 H2 开发环境从头执行迁移时改名不冲突）。实际影响范围需进一步验证。
+- **临时方案**：当前 auth-seam-completion V1 的集成测试使用匹配实体列名的 DDL 规避；生产环境需确认 Flyway 迁移状态与实体注解的匹配性。
+- **建议**：确认 V5 迁移在生产环境的实际应用情况，若已应用则需修复 `SysRole` 实体注解或补充兼容性迁移。
+
+### I27：RefreshTokenService 家族撤销事务回滚 — 重放攻击防线形同虚设
+
+- **发现日期**：2026-07-22（auth-seam-completion B3 测试暴露）
+- **严重程度**：高
+- **可信度**：CONFIRMED（B3 测试直接暴露，非推测）
+- **描述**：`RefreshTokenService.rotateRefreshToken()` 方法有 `@Transactional(rollbackFor = Exception.class)`。重放检测路径（第 91-95 行）：`revokeAllForUser(existing.getUserId())` 执行 UPDATE → `throw new BaseException(401, "已被使用过")`。由于 `BaseException extends RuntimeException`，整个事务回滚，**`revokeAllForUser` 的 SQL UPDATE 被撤销**。攻击者用窃取的 refresh token 可无限次重放而不触发实际的家族撤销。
+- **影响**：refresh token rotation 的核心安全机制（重放检测 → 家族撤销 → 强制全部设备重新登录）**完全不生效**。这是双 token 认证体系的安全基石缺陷。
+- **修复方案**：B4 方案已生成（`product/auth-seam-completion/ready/step-5-b4-fix-family-revocation.md`）——使用 `TransactionTemplate` + `PROPAGATION_REQUIRES_NEW` 将 `revokeAllForUser` 和 `revokeTokenById` 抽取到独立事务中，在外层 `BaseException` 抛出前已提交。
+- **状态**：✅ 已修复（2026-07-22，B4 PASSED：TransactionTemplate + PROPAGATION_REQUIRES_NEW 将 `revokeAllForUser` 和 `revokeTokenById` 抽取到独立事务，外层 BaseException 抛出前已 COMMIT。`RefreshTokenServiceTest` 重放检测断言已恢复验证。全量 462 tests BUILD SUCCESS）
 
 > 新发现问题请按格式追加到此文件，并在 `current-status.md` 中同步更新阻塞状态。

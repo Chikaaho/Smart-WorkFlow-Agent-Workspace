@@ -19,7 +19,9 @@
 
 ### 1.2 超管判定
 
-- **`superAdmin` = `boolean`**（后端 `userId == 1`）
+- **`superAdmin` = `boolean`**（后端判定：角色 code 集合包含 `superadmin`）
+  - CONFIRMED 2026-07-22：`UserDetailsProviderImpl` 用 `roleCodes.contains("superadmin")` 判定，`SystemAutoConfiguration` 注释明写"替换旧有 userId==1 硬编"。此前文档记载的 `userId == 1` 已 SUPERSEDED
+  - seed 绑定 admin(id=1) → 角色 code=`superadmin`，故行为与旧口径一致，但判定依据是角色 code 而非 userId
 - ❌ 不使用 `*:*:*` 通配符字符串模式
 - 前端 `permissions`/`roles` 为空集 + `superAdmin=true` 时，`v-perm` 放行展示（暗态 gating）
 - 暗态 gating 非安全漏洞，后端权限装配上线后自然切回真实拦截
@@ -302,3 +304,26 @@ product/<feature-name>/receipts/
 `deriveSearchFields` / `resolveReferenceDisplay`（id→显示名，v1 当场单查、取不到回退 refId）。
 
 **约定**：新增「设计时可自定义」类需求，先抽这层纯函数留接缝，不在组件里写死。
+
+---
+
+## 9. 执行代理角色边界（硬约束 🔒）
+
+工作区三层角色、三个启动目录，边界不可越：
+
+| 启动目录 | 角色 | 允许操作 | 禁止操作 |
+|---|---|---|---|
+| `/data/reasonix/files`（规划层） | 根目录规划代理 | 读 `Smart-WorkFlow/` 和 `Smart-WorkFlow-Web/`；拆解 Step；生成/验收方案；维护 `knowledge/` `product/` `todo/` `CLAUDE.md` | 修改两个代码项目内任何业务文件；执行 `mvn`/`pnpm`/`java`/`node` 等状态变更命令 |
+| `Smart-WorkFlow/`（后端执行层） | 后端执行代理 | 读写 `Smart-WorkFlow/` 内文件；执行 `mvn` 系命令；写回执到 `product/<feature>/receipts/` | 读写 `Smart-WorkFlow-Web/` 任何文件；执行 `pnpm`/`npm`/`vite`/`vitest` 等前端命令；拆解 Step 或修改方案 |
+| `Smart-WorkFlow-Web/`（前端执行层） | 前端执行代理 | 读写 `Smart-WorkFlow-Web/` 内文件；执行 `pnpm` 系命令；写回执到 `product/<feature>/receipts/` | 读写 `Smart-WorkFlow/` 任何文件；执行 `mvn`/`java` 等后端命令；拆解 Step 或修改方案 |
+
+**硬性红线：**
+
+- ❌ **禁止后端执行代理运行前端命令或读写前端文件**——即使目的是"验证前后端联动是否正常"，也不允许 cd 进入 `Smart-WorkFlow-Web/` 或执行任何 `pnpm`/`npm` 命令
+- ❌ **禁止前端执行代理运行后端命令或读写后端文件**——同理不允许 cd 进入 `Smart-WorkFlow/` 或执行任何 `mvn`/`java` 命令
+- ❌ **禁止规划层代理执行任何状态变更命令**（编译/测试/构建/安装/迁移/部署），只读两个代码项目
+- 涉及前后端联动的验证需求，必须拆成两个独立 Step（各自的执行方案 + 回执），分别下发给对应的执行代理，不得指望单个执行代理跨项目"顺手"验证
+- 执行代理若发现任务需要跨越自己的项目边界才能完成，应在回执中如实报告"超出职责域，需拆分为对方项目的 Step"，而不是自行越界执行
+- 违反本原则视为越权执行：回执一律视为不合格，方案验收自动判定为不通过，需规划层重新拆分方案后再下发
+- ❌ **禁止执行层代理诱导用户进行规划（硬约束 🔒）**：执行层代理的对话中不得出现规划性质的建议或设计方案邀请。包括但不限于：「让我来设计」「我建议这样实现」「要不要我帮你规划」「我先分析需求」「我来拆解 Step」「这个方案我重新设计一下」「我觉得应该加一个 Step」「这个需求我应该这样做」「要不要我帮你改一下方案」——这些都是**规划层**的职责。执行层的**唯一正确响应**：严格按 Step 方案执行 → 遇到问题在回执中如实报告 → 等待规划层修正方案。用户若确实需要重新规划，必须回到规划层（`/data/reasonix/files`）进行。执行层诱导规划的回执视为不合格，Step 自动 FAILED
+- ❌ **禁止预告或征询下一个 Step（硬约束 🔒）**：判定不依赖是否出现"建议/设计/规划"等敏感词。执行层代理在当前 Step 完成、回执写入后，若主动总结/预告**尚未下发**的下一个 Step 范围内容，或以问句征询"要不要我生成/起草下一个 Step 方案"（例如「B3 是……Step，要生成 B3 执行方案吗？」），本质仍是抢先替规划层做了方案起草判断，同样视为诱导规划。**唯一正确做法**：写完当前 Step 回执即停止，不对下一个 Step 的编号、范围、是否需要方案做任何评论或提议——下一个 Step 由规划层判断并主动下发。违反同样视为回执不合格，Step 自动 FAILED

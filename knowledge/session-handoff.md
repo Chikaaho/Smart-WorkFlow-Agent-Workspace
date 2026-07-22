@@ -9,103 +9,118 @@
 
 ## 1. 功能名称
 
-**job-scheduler — 定时任务调度模块（已完成 ✅）**
+**auth-seam-completion — 后端 seam 收尾（双 token 认证前后端闭环，已完成 ✅）**
 
 ---
 
 ## 2. 功能目标
 
-构建基于 Quartz 的定时任务调度模块，提供任务 CRUD、Cron 调度管理、执行记录追踪能力，前后端闭环。支持 BEAN（Spring Bean 处理器）和 FLOW（定时发起流程）两种任务类型。
+收尾认证相关的后端 seam：(1) 验证并纠正知识库对 me/menus/权限三个 seam 的过期记载；(2) 实现真正缺失的 `/auth/refresh` 与 `/auth/logout`，采用双 token（access 内存 + refresh httpOnly cookie，服务端可撤销）方案，前端在请求前置钩子中静默续期。
 
 ---
 
 ## 3. 最终状态
 
-**COMPLETED** ✅ — B1~B4 + F1~F3 全部 7 步通过验收。功能可交付使用。
+**COMPLETED** ✅ — V1 + B1~B4 + F1~F2 全部 7 Steps 通过验收。双 token 认证体系前后端闭环，mock 模式全链路可用。
 
 ---
 
 ## 4. 本轮做了什么
 
-### Step B1 — 后端模块拆分 + Flyway + Entity + Mapper + 配置（PASSED ✅）
-- `sw-basic-job` 拆分为 `-api` / `-biz` 两模块（参照 storage/notify 模式）
-- Flyway V17 建表 `sw_job_info` + `sw_job_log`（H2 + PG 双方言）
-- `JobInfo` / `JobLog` Entity + Mapper
-- 新建/修改：13 新建 + 5 修改 + 2 删除，约 +350 行
-- 验收：17/17 通过
+### Step V1 — login/me/menus 集成测试，端到端取证（PASSED ✅）
+- 新建 `AuthControllerTest`（3 用例）+ `AuthFlowIntegrationTest`（4 用例），走真实 JWT 过滤器链
+- 全量回归 210 tests BUILD SUCCESS，`src/main` 零改动
+- 验证 me/menus/权限三个 seam 真实就位（纠正知识库过期记载）
+- 发现 I26：SysRole 列名与 V5 Flyway 不一致
+- 验收：7/7 通过
 
-### Step B2 — JobHandler + Service + Quartz 调度（PASSED ✅）
-- `JobHandler` SPI 接口 + `ScheduledFlowTriggerEvent` 领域事件
-- `JobInfoService` / `JobLogService` 接口+实现
-- `QuartzSchedulerService`（动态 CRON 调度：添加/更新/暂停/恢复/删除/立即触发）
-- `SwJobBean`（Quartz Job 桥接）
-- 新建/修改：12 新建 + 1 修改
-- 验收：14/14 通过
+### Step B1 — sys_refresh_token 表 + Entity/Mapper + JWT 双档过期配置（PASSED ✅）
+- Flyway V18 H2/PG 双方言 DDL（`sys_refresh_token` 表：7 列 + BaseEntity 审计列）
+- `SysRefreshToken` Entity（`@TableField` 显式对齐） + `SysRefreshTokenMapper`（`extends BaseMapperX`）
+- `JwtProperties` 新增 `accessExpireSeconds=900` + `refreshExpireSeconds=604800`（保留旧 `expireSeconds` 回退）
+- `application.yml` 新增配置键
+- 验收：10/10 通过
 
-### Step B3 — Controller + Facade（PASSED ✅）
-- `JobInfoDTO`（-api 契约，17 字段）
-- `JobFacade` 接口 + `JobFacadeImpl` 实现
-- `JobInfoController`（8 端点）+ `JobLogController`（2 端点）
-- `JobStartupRunner`（启动时自动加载已有任务到 Quartz）
-- 新建/修改：6 新建 + 4 修改
-- 验收：12/12 通过（2 处方案偏差：DTO 替 Entity、遗漏 page 方法签名）
+### Step B2 — RefreshTokenService + login 改造 + /auth/refresh + /auth/logout + cookie 工具（PASSED ✅）
+- 新建 `TokenResponse` DTO（`accessToken: String, expiresIn: int`）
+- 新建 `CookieUtils`（httpOnly + Secure + SameSite cookie，Path=/api/auth/）
+- 新建 `RefreshTokenService`（SecureRandom 32B→hex 64→SHA-256 hash 存储，重放检测家族撤销，事务轮换）
+- `AuthController.login` 返回 `R<TokenResponse>` + 新增 `POST /auth/refresh` + `POST /auth/logout`
+- `LoginUserCacheService` TTL 回退逻辑 + `application.yml` permit-urls 更新
+- 验收：13/13 通过
 
-### Step B4 — Controller 测试 + 全量回归（PASSED ✅）
-- `JobInfoControllerTest`（~27 用例）+ `JobLogControllerTest`（~5 用例）+ `JobFacadeImplTest`（~5 用例）
-- 全量回归：406 tests / 26 文件
-- 新建/修改：3 新建测试文件，0 修改源码
-- 验收：14/14 通过
+### Step B3 — 后端测试（轮换/撤销/过期/SameSite）+ 全量回归（PASSED ✅）
+- 修复 V1 测试：`AuthControllerTest`（4→7 参数）+ `AuthFlowIntegrationTest`（TestConfig 7 参数 + DDL + login 辅助方法适配 `data.accessToken`）
+- 新建 `RefreshTokenServiceTest`（12 用例）+ `CookieUtilsTest`（8 用例）
+- 全量 462 tests BUILD SUCCESS，零回归
+- **暴露 B2 代码缺陷**：家族撤销事务回滚（→ B4 修复）
+- 验收：13/13 通过
 
-### F1 — 前端 Types + API + Specs（PASSED ✅）
-- `contracts/job.ts`（JobInfo 19 字段 + JobLog 13 字段 + 4 字符串字面量联合类型）
-- `modules/job/api/index.ts`（10 个 API 函数 + adaptPage 适配）
-- `index.spec.ts`（13 个 Vitest 用例）
-- 新建/修改：3 新建，0 修改
-- 验收：14/14 通过，51 files / 451 tests
+### Step B4 — 修复 refresh token 家族撤销事务回滚（PASSED ✅）
+- `RefreshTokenService.rotateRefreshToken()` 使用 `TransactionTemplate` + `Propagation.REQUIRES_NEW` 在独立事务中执行撤销
+- 恢复 `RefreshTokenServiceTest` 中被移除的家族撤销断言（验证重放后同用户其他 token 也被撤销）
+- 3 文件修改（RefreshTokenService + 2 测试文件 TestConfig Bean 签名同步）
+- 全量 462 tests BUILD SUCCESS
+- 验收：10/10 通过
 
-### F2 — 前端 Vue 视图（PASSED ✅）
-- `JobList.vue`（~527 行：StandardListTemplate 页型 B，CRUD + 暂停/恢复/触发 + JobType 条件渲染）
-- `JobList.spec.ts`（15 用例）
-- `JobLog.vue`（~255 行：只读视图，route.query.jobId 获取参数，缺参 info alert，详情 el-descriptions）
-- `JobLog.spec.ts`（5 用例）+ `JobLog.no-id.spec.ts`（1 用例）
-- 新建/修改：5 新建，0 修改
-- 验收：14/14 通过，54 files / 471 tests
-- 偏差：ElMessage/ElMessageBox import from 'element-plus'（与 StorageList/NotifyHome 一致）
+### Step F1 — 前端 login 契约 + token 到期戳 + beforeHandler 单飞刷新 + refresh/logout 接真端点 + guard 冷启动续登（PASSED ✅）
+- `token.ts`：新增 `expiresAt`/`EXPIRY_BUFFER_MS` + 4 导出（`getTokenExpiresAt`/`isTokenNearExpiry`/`setTokenResponse`/`clearToken`），4 旧导出签名不变
+- `auth/index.ts`：login 契约 `R<string>`→`R<TokenResponseDTO>`，refresh 单飞实现（3 并发→1 HTTP），logout `try...catch...finally`
+- `request/index.ts`：async 请求拦截器到期刷新 + `setRefreshHandler` 依赖注入 + `AUTH_ENDPOINTS` 追加 `/auth/logout`
+- `router/index.ts`：注入 `setRefreshHandler(refresh)`
+- `guard.ts`：冷启动注释更新
+- 新建 `token.spec.ts`（12 用例）+ `index.spec.ts`（7 用例），扩增 `guard.spec.ts`（+1 冷启动成功路径）
+- 四连全绿：56 files / 491 tests（基线 471 + 20）
+- 1 个偏差：`logout()` 新增 catch 块（方案 try...finally 与测试期望矛盾，对齐测试期望）
+- 验收：12/12 通过
 
-### F3 — 前端 Mock + Handlers + 路由（PASSED ✅）
-- `seeds.ts`（+312 行：MOCK_JOB_INFOS 5 条 + MOCK_JOB_LOGS 8 条 + 菜单节点 + 权限）
-- `handlers.ts`（+231 行：10 个 mock handler，8 JobInfo + 2 JobLog）
-- 新建/修改：2 手动修改 + 2 auto format + 1 auto type decl
-- 验收：14/14 通过，54 files / 471 tests（无回归）
+### Step F2 — 前端 mock（双 token + refresh + logout）+ 回归测试调整 + 四连（PASSED ✅）
+- `handlers.ts`：login handler 从 `R<string>` → `R<{accessToken, expiresIn: 900}>`；新增 refresh handler；新增 logout handler（`data: null`）
+- `index.spec.ts`：login 断言 `typeof string` → `toMatchObject`；新增 refresh/logout 注册验证
+- 2 文件改动（43 insertions / 5 deletions），零偏差
+- 四连全绿：56 files / 491 tests（F1 基线 491，零退化）
+- 构建产物 tree-shake 确认：dist 中 dispatchMock/mock token 字符串零命中
+- 验收：12/12 通过
 
 ---
 
 ## 5. 各 Step 完成情况
 
-| Step | 内容 | 状态 | 关键证据 |
-|:----:|------|:----:|----------|
-| B1 | 后端 — 模块拆分 + Flyway + Entity + Mapper + 配置 | **PASSED** ✅ | 17/17 验收 |
-| B2 | 后端 — JobHandler + Service + Quartz 调度 | **PASSED** ✅ | 14/14 验收 |
-| B3 | 后端 — Controller + Facade | **PASSED** ✅ | 12/12 验收 |
-| B4 | 后端 — Controller 测试 + 全量回归 | **PASSED** ✅ | 14/14 验收，406 tests |
-| F1 | 前端 — Types + API + Specs | **PASSED** ✅ | 14/14 验收，51 files / 451 tests |
-| F2 | 前端 — Vue 视图（JobList + JobLog） | **PASSED** ✅ | 14/14 验收，54 files / 471 tests |
-| F3 | 前端 — Mock + Handlers + 路由 | **PASSED** ✅ | 14/14 验收，54 files / 471 tests |
+| Step | 内容 | 域 | 模型 | 状态 | 关键证据 |
+|:----:|------|:--:|:----:|:----:|----------|
+| V1 | login/me/menus 集成测试 | 后端 | flash | **PASSED** ✅ | 7/7 AC，210 tests，src/main 零改动 |
+| B1 | sys_refresh_token 表 + Entity/Mapper + JWT 双档过期 | 后端 | pro | **PASSED** ✅ | 10/10 AC |
+| B2 | RefreshTokenService + /auth/refresh + /auth/logout + cookie | 后端 | pro | **PASSED** ✅ | 13/13 AC |
+| B3 | 后端测试（轮换/撤销/过期/SameSite）+ 全量回归 | 后端 | flash | **PASSED** ✅ | 13/13 AC，462 tests |
+| B4 | 修复家族撤销事务回滚（TransactionTemplate + REQUIRES_NEW） | 后端 | flash | **PASSED** ✅ | 10/10 AC，462 tests |
+| F1 | login 契约 + token 到期戳 + beforeHandler 单飞 + guard 冷启动 | 前端 | pro | **PASSED** ✅ | 12/12 AC，56 files/491 tests |
+| F2 | mock（双 token+refresh+logout）+ 回归 | 前端 | flash | **PASSED** ✅ | 12/12 AC，491 tests |
+| **合计** | **7 Steps，77/77 验收标准全部通过** | | | | |
 
 ---
 
 ## 6. 实际修改范围
 
-### 后端（Smart-WorkFlow/）：B1–B4
-- **新建 34 文件**：Entity×2, Mapper×2, Flyway×2, POM×3, package-info×2, Properties×1, AutoConfiguration×1, 枚举×4, SPI×1, 事件×1, Service×4, QuartzSchedulerService×1, SwJobBean×1, JobInfoDTO×1, Facade×2, Controller×2, JobStartupRunner×1
-- **修改 10 文件**：POM×4, application.yml×2, AutoConfiguration×1, Service 接口×2, Service 实现×2
-- **删除 2 文件**：旧 AutoConfiguration、旧 package-info
-- **测试 3 文件**：JobInfoControllerTest (~27), JobLogControllerTest (~5), JobFacadeImplTest (~5)
-- **数据库表 2 张**：`sw_job_info` + `sw_job_log`（Flyway V17）
+### 后端（Smart-WorkFlow/）：V1 + B1~B4
 
-### 前端（Smart-WorkFlow-Web/）：F1–F3
-- **新建 8 文件**：contracts/job.ts, api/index.ts, api/index.spec.ts, views/JobList.vue, views/JobList.spec.ts, views/JobLog.vue, views/JobLog.spec.ts, views/JobLog.no-id.spec.ts
-- **修改 2 文件**：seeds.ts (+312), handlers.ts (+231)
+| Step | 新建文件 | 修改文件 | 关键产出 |
+|:----:|----------|----------|----------|
+| V1 | AuthControllerTest, AuthFlowIntegrationTest | 0 | 7 集成测试用例（src/main 零改动） |
+| B1 | V18 H2+PG Flyway, SysRefreshToken, SysRefreshTokenMapper | JwtProperties, application.yml | 新表 `sys_refresh_token` |
+| B2 | TokenResponse, CookieUtils, RefreshTokenService | AuthController, LoginUserCacheService, application.yml | 双 token 核心逻辑 |
+| B3 | RefreshTokenServiceTest, CookieUtilsTest | AuthControllerTest, AuthFlowIntegrationTest | 20 新测试 + V1 测试修复 |
+| B4 | — | RefreshTokenService, RefreshTokenServiceTest, AuthFlowIntegrationTest | TransactionTemplate 独立事务 |
+
+- **新建类**：TokenResponse, CookieUtils, RefreshTokenService, SysRefreshToken Entity, SysRefreshTokenMapper
+- **新表**：`sys_refresh_token`（Flyway V18，PG + H2 双方言）
+- **新增测试**：~47 用例（V1:7 + B3:20 + B4:0）
+
+### 前端（Smart-WorkFlow-Web/）：F1 + F2
+
+| Step | 新建文件 | 修改文件 | 关键产出 |
+|:----:|----------|----------|----------|
+| F1 | token.spec.ts, index.spec.ts | token.ts, auth/index.ts, request/index.ts, router/index.ts, guard.ts, guard.spec.ts | 双 token 管线（+135/-19 行） |
+| F2 | — | handlers.ts, index.spec.ts | mock handler 对齐（+43/-5 行） |
 
 ---
 
@@ -114,64 +129,66 @@
 | 项目 | 结果 |
 |------|:----:|
 | `mvn -q compile`（后端） | ✅ 退出码 0 |
-| `mvn -q test`（后端全量） | ✅ 406 tests / 26 文件 BUILD SUCCESS |
+| `mvn -q test`（后端全量） | ✅ **REPORTED 462 tests / 0 failures**（B4 回执；sw-biz-system-biz: 65 tests） |
 | `pnpm typecheck`（前端） | ✅ 退出码 0 |
 | `pnpm lint`（前端） | ✅ 0 errors, 0 warnings |
-| `pnpm test`（前端全量） | ✅ 54 files / 471 tests |
-| `pnpm build`（前端） | ✅ 退出码 0 |
-| B1 验收 | ✅ 17/17 通过 |
-| B2 验收 | ✅ 14/14 通过 |
-| B3 验收 | ✅ 12/12 通过 |
-| B4 验收 | ✅ 14/14 通过 |
-| F1 验收 | ✅ 14/14 通过 |
-| F2 验收 | ✅ 14/14 通过 |
-| F3 验收 | ✅ 14/14 通过 |
-| **总计** | **✅ 99 项验收标准，全部通过** |
+| `pnpm test`（前端全量） | ✅ **56 files / 491 tests** / 0 失败（CONFIRMED，规划层独立复核） |
+| `pnpm build`（前端） | ✅ BUILD SUCCESS，tree-shake 确认 mock 代码不进 dist |
+| V1 验收 | ✅ 7/7 通过 |
+| B1 验收 | ✅ 10/10 通过 |
+| B2 验收 | ✅ 13/13 通过 |
+| B3 验收 | ✅ 13/13 通过 |
+| B4 验收 | ✅ 10/10 通过 |
+| F1 验收 | ✅ 12/12 通过 |
+| F2 验收 | ✅ 12/12 通过 |
+| **总计** | **✅ 77 项验收标准，全部通过** |
 
 ---
 
 ## 8. 关键设计决策
 
-| 决策 | 内容 | 原因 |
-|------|------|------|
-| D22 | Entity 放 -biz 模块（非 -api） | 与 storage 模式一致；-api 不依赖 MyBatis-Plus |
-| D23 | Quartz 版本由 Spring Boot BOM 管理 | 避免版本冲突 |
-| D24 | Flyway V17 先建两张表 | 宽度优先；后续可能新增配置表 |
-| D25 | JobFacade 返回 JobInfoDTO（非 Entity） | -api 不可依赖 -biz 的 Entity |
-| D26 | JobLog 测试拆分为 2 文件 | 避免 vi.mock hoisting 冲突 |
-| D27 | 前端 ElMessage/ElMessageBox import | 与 StorageList/NotifyHome 既有模式一致 |
+| 决策 | 内容 | 知识库 |
+|------|------|--------|
+| D26 | 双 token：access 内存 + refresh httpOnly cookie | [[decisions]] D26 |
+| D27 | refresh 服务端存储（SHA-256 hash）+ 轮换 + 撤销 | [[decisions]] D27 |
+| D32 | 前端 beforeHandler 单飞刷新 + 依赖反转规避循环依赖 | [[decisions]] D32 |
+| D33 | F1 logout() try...catch...finally — 方案内部矛盾裁决 | [[decisions]] D33 |
+| B4 修复 | TransactionTemplate + REQUIRES_NEW 独立事务修复家族撤销回滚 | [[known-issues]] I27 |
 
 ---
 
 ## 9. 当前系统状态
 
-全部 6 个功能已完成闭环：
+全部 7 个功能已完成闭环：
 
 1. ✅ Walking Skeleton（登录→表单→BPM 审批→通知）
 2. ✅ sys-mgmt-crud（系统管理核心 CRUD）
 3. ✅ bpm-task-center（BPM 待办中心增强）
 4. ✅ storage-multi-provider（多向可配置文件存储）
-5. ✅ job-scheduler（定时任务调度模块）← **最新完成**
+5. ✅ job-scheduler（定时任务调度模块）
+6. ✅ kb-verification（知识库运行期验证）
+7. ✅ auth-seam-completion（后端 seam 收尾 — 双 token 认证）← **最新完成**
 
-- 后端：406 tests / 26 测试文件，BUILD SUCCESS
-- 前端：54 spec files / 471 tests，四连校验门全绿（typecheck + lint + test + build）
-- 无进行中的功能
+- 后端：**REPORTED 462 tests**（B4 回执，下次运行期可复验确认模块分布）
+- 前端：56 spec files / 491 tests，四连校验门全绿（CONFIRMED 2026-07-22）
+- 全部已知 Seam（me/menus/权限/refresh/logout）已就位
+- 无进行中的产品功能
 
 ---
 
 ## 10. 还有什么没做
 
-### job-scheduler 范围内的明确延后
-- Quartz 集群化（JDBC JobStore）— 当前仅单节点 RAMJobStore
-- FLOW 任务与 BPM/Form 的端到端集成验证（仅发领域事件）
-- 任务日志的自动清理/归档（配置项预留，逻辑延后）
-- 前端可视化 Cron 编辑器（文本输入）
-- 任务的导入导出
+### auth-seam-completion 范围内的明确延后
+- access 短过期窗口内 logout 后 access 仍技术有效（可接受为 v1，靠短过期 900s 缩小窗口）
+- 多设备会话管理界面（本期明确排除）
+- refresh token 使用次数审计日志（当前仅记录 revoked 状态）
+- refresh token 从 DB 迁移至 Redis（若后续引入 Redis 可考虑）
 
 ### 功能范围外的延后（全系统）
 - I1 功能清单同步
 - BPMN adapter 实现
-- 后端 seam 点亮（getInfo/菜单/权限/refresh/logout）
+- Vue Flow adapter 实现
+- 多页签功能
 - IoT / Agent / OpenAPI 模块落地
 - 完整列表见 `knowledge/current-status.md` §8
 
@@ -181,21 +198,23 @@
 
 | # | 问题 | 严重程度 | 说明 |
 |---|------|:--------:|------|
-| I2 | refresh token seam 未实现 | 低 | token 过期（2h）需重新登录 |
+| I2 | refresh token seam 未实现 | — | ✅ **已修复（2026-07-22）** |
+| I26 | SysRole 实体列名与 V5 Flyway 不一致 | 中 | V1 执行时发现，非本功能引入 |
+| I27 | RefreshTokenService 家族撤销事务回滚 | — | ✅ **已修复（2026-07-22，B4）** |
+| I22 | @vueuse/core Rolldown 警告 | 极低 | 第三方兼容性问题 |
+| I23 | 前端 CLAUDE.md §8 element-plus import 规范与实际不一致 | 低 | 文档-代码漂移 |
 | I21 | StorageFacadeImplTest 未创建 | 低 | 逻辑层缺测试覆盖 |
-| I22 | @vueuse/core Rolldown 警告 | 极低 | 第三方兼容性问题，不影响功能 |
-| I23 | CLAUDE.md §8 element-plus import 规范与实际不一致 | 低 | StorageList/NotifyHome/JobList 均有 ElMessage/ElMessageBox API import |
 
 ---
 
 ## 12. 下一轮要做什么
 
-job-scheduler 已全部完成。当前无进行中的功能。推荐候选：
+当前无进行中的功能。推荐候选（详见 `knowledge/current-status.md` §8）：
 
 1. **I1 功能清单同步** — 更新 `Smart-WorkFlow/功能清单.md` 与实际代码进度一致
 2. **BPMN adapter 实现** — 流程设计器可视化集成
-3. **后端 seam 点亮** — `getInfo`/菜单接口/权限装配/`/auth/refresh`/`/auth/logout`
-4. **IoT / Agent / OpenAPI 模块落地** — 从占位推进到实际业务
+3. **IoT / Agent / OpenAPI 模块落地** — 从占位推进到实际业务
+4. **Vue Flow adapter 实现** — 表单设计器可视化集成（当前接口壳）
 
 ---
 
@@ -219,7 +238,7 @@ job-scheduler 已全部完成。当前无进行中的功能。推荐候选：
 6. knowledge/development-workflow.md
 7. knowledge/decisions.md
 8. knowledge/known-issues.md
-9. knowledge/features/job-scheduler.md   ← 已完成功能参考
+9. knowledge/features/auth-seam-completion.md   ← 刚完成的功能参考
 ```
 
 ---
@@ -231,18 +250,23 @@ job-scheduler 已全部完成。当前无进行中的功能。推荐候选：
 
 你是根目录规划代理。请先按 CLAUDE.md §10 执行新会话恢复流程。
 
-### 已完成功能（共 6 个）
+### 已完成功能（共 7 个）
 
 1. ✅ Walking Skeleton（登录→表单→BPM 审批→通知）— 四环闭合
 2. ✅ sys-mgmt-crud（系统管理核心 CRUD）— 后端 16 文件 + 前端 22 文件
 3. ✅ bpm-task-center（BPM 待办中心增强）— 后端 15 文件 + 前端 9 文件
 4. ✅ storage-multi-provider（多向可配置文件存储）— 7 Steps B1-F3 全部通过
 5. ✅ job-scheduler（定时任务调度模块）— 7 Steps B1-F3 全部通过，99 验收标准
+6. ✅ kb-verification（知识库运行期验证）— VB1+VF1 PASSED，后端 203/前端 471 CONFIRMED
+7. ✅ auth-seam-completion（后端 seam 收尾 — 双 token 认证）— 7 Steps V1-B4+F1-F2 全部通过，77 验收标准
 
 ### 当前基线
-- 后端：406 tests / 26 文件，BUILD SUCCESS
-- 前端：54 spec files / 471 tests，四连校验门全绿
-- 无进行中的功能
+- 后端：REPORTED 462 tests / 0 failures（B4 回执；kb-verification 基线 203 + auth-seam-completion V1(+7) + B3(+20) + 未知多模块聚合差异；下次可复验确认精确模块分布）
+- 前端：56 spec files / 491 tests，四连校验门全绿（CONFIRMED 2026-07-22）
+- 双 token 认证体系前后端闭环：access 内存 JWT (900s) + refresh httpOnly cookie (7d)
+- mock 模式（dev:mock）全链路可用：登录/刷新/退出均走双 token handler
+- 全部已知 Seam（me/menus/权限/refresh/logout）已就位
+- 无进行中的产品功能
 
 ### 下一轮
 当前没有进行中的功能。请读取 knowledge/current-status.md §8 了解候选功能，
@@ -251,7 +275,7 @@ job-scheduler 已全部完成。当前无进行中的功能。推荐候选：
 
 ---
 
-> 最后更新：2026-07-21
-> 当前功能：**job-scheduler** — 定时任务调度模块（**COMPLETED** ✅，7/7 PASSED）
-> 当前 Step：全部完成 — 无进行中的功能
-> 测试基线：后端 406 tests · 前端 54 files / 471 tests
+> 最后更新：2026-07-22
+> 当前功能：**auth-seam-completion** — 后端 seam 收尾（双 token 认证前后端闭环，**COMPLETED** ✅，7/7 PASSED）
+> 当前 Step：全部完成 — 无进行中的产品功能
+> 测试基线：后端 REPORTED 462 tests · 前端 CONFIRMED 56 files / 491 tests（四连全绿）

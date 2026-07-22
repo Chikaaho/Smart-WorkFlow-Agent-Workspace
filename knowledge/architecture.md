@@ -144,19 +144,20 @@ sw-dependencies (BOM 版本管理)
 - **框架：Vue 3 + TypeScript(strict)**。低代码 OA 工作流场景下，Vue 在三块"硬骨头设计器"里占两块：表单设计器（form-create/VForm 系，OA 实战多）、BPMN（bpmn-js 框架无关 + Vue 封装多）；唯一偏 React 的是 AI 调度图（React Flow），用 Vue Flow 兜。
 - **不继承 vben 等框架做基座**。继承大框架本身就是"改小需求像挖地基"的风险源。改为**精简、自有、可完全掌控**的 Vite 单应用。
 - **不上 monorepo**。前端无后端那种微服务抽取诉求；模块隔离用目录结构 + ESLint 导入边界实现。
-- **核心库**：Vite / Vue Router 4 / Pinia / Element Plus（按需自动导入）/ vue-i18n / axios（封装）/ openapi-typescript（从后端 Swagger 生成类型）/ dompurify / expr-eval-fork（受限求值）/ ESLint flat + Prettier / Vitest。
+- **核心库**：Vite / Vue Router 5 / Pinia / Element Plus（按需自动导入）/ vue-i18n / axios（封装）/ openapi-typescript（从后端 Swagger 生成类型）/ dompurify / expr-eval-fork（受限求值）/ ESLint flat + Prettier / Vitest。
 
 ### 4.2 分层结构
 
 ```
 contracts/       — 稳定类型契约（FormSchema、common、api-types）
-foundation/      — 运行时横切基础设施
+foundation/      — 运行时横切基础设施（均为目录）
   ├─ request/    — 唯一 axios client（token 注入/错误归一/取消）
-  ├─ auth/       — token 管理、login/refresh/logout、useAuth
+  ├─ auth/       — token 管理（token.ts 内存态）、login/refresh/logout、useAuth
   ├─ permission/ — v-perm 指令、hasPerm/hasRole
   ├─ dict/       — useDict、DictTag、code→value adapter
-  ├─ session.ts  — loadSession() seam
-  └─ menu.ts     — loadMenu() seam + buildRoutesFromMenu()
+  ├─ session/    — loadSession() seam
+  ├─ menu/       — loadMenu() seam + buildRoutesFromMenu()
+  └─ mock/       — MSW handlers/seeds（dev:mock 模式，生产 tree-shake 移除）
 security/        — 安全层（sanitize/SafeHtml、safe-eval、csp）
 adapters/        — 易变第三方库防腐层（form-designer/bpmn/flow-graph）
 modules/         — 业务模块（form/system/workflow/notify/agent/iot/openapi）
@@ -209,8 +210,11 @@ locales/         — 国际化（zh-CN）
 | AI Agent | ⬜ 骨架 | 🔲 占位 | AutoConfiguration 占位；路由/菜单已注册 |
 | IoT | ⬜ 骨架 | 🔲 占位 | AutoConfiguration 占位；路由/菜单已注册 |
 | 知识库 | ⬜ 骨架 | N/A | AutoConfiguration 占位 |
-| OpenAPI | ⬜ 骨架 | 🔲 占位 | 仅 package-info；路由/菜单已注册 |
-| 存储/定时任务 | ⬜ 骨架 | N/A | AutoConfiguration 占位 |
+| OpenAPI | ⬜ 骨架 | 🔲 占位 | 仅 package-info（api/biz 各 1）；路由/菜单已注册 |
+| 存储 (Storage) | ✅ 完整 | N/A | CONFIRMED 2026-07-22：-api/-biz 拆分 + 4 提供商 + Service/Controller/测试，storage-multi-provider 已 COMPLETED |
+| 定时任务 (Job) | ✅ 完整 | N/A | CONFIRMED 2026-07-22：-api/-biz 拆分 + Quartz 集成 + Controller/Facade/测试 + Flyway V17，job-scheduler 已 COMPLETED |
+
+> 注：本表为粗粒度总览。**逐模块权威完成度与文件数以 [[current-status]] §2 为准**（本表曾误将 storage/job 记为骨架，2026-07-22 对账更正）。
 
 ---
 
@@ -250,7 +254,10 @@ locales/         — 国际化（zh-CN）
 
 ### 7.3 当前焦点
 
-Walking Skeleton 四环已全部闭合 ✅。当前聚焦：系统管理核心 CRUD 做宽闭环 + BPM 审批增强。
+Walking Skeleton 四环已全部闭合 ✅。已完成 7 个功能（Walking Skeleton、sys-mgmt-crud、bpm-task-center、storage-multi-provider、job-scheduler、kb-verification 等，见 [[current-status]] §5）。
+当前无进行中的编码功能：auth-seam-completion 已 ⏸ PAUSED；kb-verification（知识库运行期验证）已 COMPLETED。（更新 2026-07-22）
+
+工作区自身的元架构（规划层/执行层三方角色边界、规划层内部探索模型/规划模型分工、`product/`+`todo/`+`knowledge/` 的原始记忆/压缩记忆分层）已固化为 `CLAUDE.md` §0.3/§0.4/§1.3/§8.1/§11.2 与 `shared-constraints.md` §9 的硬约束，本文件只覆盖 Smart-WorkFlow **产品系统**架构，不重复记录工作区元架构。
 
 ---
 
