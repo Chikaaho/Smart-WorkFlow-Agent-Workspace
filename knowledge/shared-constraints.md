@@ -200,7 +200,9 @@ product/<feature-name>/receipts/
 | M07 | AI 智能助手 | 4 | 14 | `sw-basic-agent` + `sw-basic-knowledge` | `modules/agent` |
 | M08 | IoT | 5 | 13 | `sw-basic-iot` | `modules/iot` |
 | M09 | 开放接口 | 7 | 8 | `sw-biz-openapi` | `modules/openapi` |
-| M10 | 系统运维 | 8 | 8 | `sw-biz-system` + `sw-basic` | — |
+| M10 | 系统运维 | 8 | 9 | `sw-biz-system` + `sw-basic` | — |
+
+> 合计：54 功能 / **89** 明细（CONFIRMED 2026-07-23，两次独立委派探索交叉核对 `Smart-WorkFlow/功能清单.md` 原文，且与文件自身「模块总览」合计行一致）。此前 M10 记为 8 明细、全表合计记为 88，均为**SUPERSEDED**——差值定位在 M10（实际 9 条）。
 
 完整功能 ID 与明细清单见 `Smart-WorkFlow/功能清单.md`。
 

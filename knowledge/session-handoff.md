@@ -9,78 +9,42 @@
 
 ## 1. 功能名称
 
-**auth-seam-completion — 后端 seam 收尾（双 token 认证前后端闭环，已完成 ✅）**
+**vue-flow-adapter — Vue Flow adapter 实现（M07 AI 调度图可视化防腐层）**
 
 ---
 
 ## 2. 功能目标
 
-收尾认证相关的后端 seam：(1) 验证并纠正知识库对 me/menus/权限三个 seam 的过期记载；(2) 实现真正缺失的 `/auth/refresh` 与 `/auth/logout`，采用双 token（access 内存 + refresh httpOnly cookie，服务端可撤销）方案，前端在请求前置钩子中静默续期。
+将前端 `adapters/flow-graph/index.ts` 从接口壳（`throw new Error('not implemented')`）实现为可用的 Vue Flow 防腐层：挂载画布、导出当前图数据、销毁实例、转发基础交互事件（节点点击/连线创建/图变化）。配套单元测试 6 场景。
 
 ---
 
 ## 3. 最终状态
 
-**COMPLETED** ✅ — V1 + B1~B4 + F1~F2 全部 7 Steps 通过验收。双 token 认证体系前后端闭环，mock 模式全链路可用。
+**COMPLETED** ✅ — Step 0 探索 + Step 1 实现均通过验收。Vue Flow adapter 防腐层已就绪，前端新基线 57 files / 497 tests，四连全绿。
 
 ---
 
 ## 4. 本轮做了什么
 
-### Step V1 — login/me/menus 集成测试，端到端取证（PASSED ✅）
-- 新建 `AuthControllerTest`（3 用例）+ `AuthFlowIntegrationTest`（4 用例），走真实 JWT 过滤器链
-- 全量回归 210 tests BUILD SUCCESS，`src/main` 零改动
-- 验证 me/menus/权限三个 seam 真实就位（纠正知识库过期记载）
-- 发现 I26：SysRole 列名与 V5 Flyway 不一致
-- 验收：7/7 通过
+### Step 0 — Vue Flow 场景探索（PASSED ✅）
+- 规划层 formalize 为 Step 0（按 CLAUDE.md §0.4.1），用户手动切 DeepSeek 系模型在同一会话执行探索任务（任务由文件下发至 `product/vue-flow-adapter/step-0-exploration-task.md`，摘要存档至 `step-0-exploration-summary.md`）
+- 关键结论：Vue Flow 场景裁决为 **M07 AI 调度图**（非表单设计器），归档为 [[decisions]] D39
+- 更正知识库漂移：`current-status.md`/`known-issues.md`/`vue-flow-adapter.md` 中「表单设计器可视化集成」标签
 
-### Step B1 — sys_refresh_token 表 + Entity/Mapper + JWT 双档过期配置（PASSED ✅）
-- Flyway V18 H2/PG 双方言 DDL（`sys_refresh_token` 表：7 列 + BaseEntity 审计列）
-- `SysRefreshToken` Entity（`@TableField` 显式对齐） + `SysRefreshTokenMapper`（`extends BaseMapperX`）
-- `JwtProperties` 新增 `accessExpireSeconds=900` + `refreshExpireSeconds=604800`（保留旧 `expireSeconds` 回退）
-- `application.yml` 新增配置键
-- 验收：10/10 通过
+### Step 1 — 实现 flow-graph adapter（PASSED ✅）
+- 执行代理：`deepseek-v4-flash`，前端 `Smart-WorkFlow-Web/` 目录
+- 重写 `adapters/flow-graph/index.ts`（8 行 → 147 行）：6 导出符号（`FlowGraphNode`/`FlowGraphEdge`/`FlowGraphData`/`FlowGraphEvents`/`FlowGraphInstance`/`mountFlowGraph`）+ 2 内部转换函数 + `createApp`/`defineComponent`/`h()` 渲染函数挂载 `<VueFlow>`
+- 新建 `adapters/flow-graph/index.spec.ts`（96 行）：6 测试场景（含 ResizeObserver jsdom mock）
+- 四连全绿：57 files / 497 tests（+1 file / +6 tests vs 基线 491），零回归
+- 规划层独立复核：8/8 验收标准全部满足
 
-### Step B2 — RefreshTokenService + login 改造 + /auth/refresh + /auth/logout + cookie 工具（PASSED ✅）
-- 新建 `TokenResponse` DTO（`accessToken: String, expiresIn: int`）
-- 新建 `CookieUtils`（httpOnly + Secure + SameSite cookie，Path=/api/auth/）
-- 新建 `RefreshTokenService`（SecureRandom 32B→hex 64→SHA-256 hash 存储，重放检测家族撤销，事务轮换）
-- `AuthController.login` 返回 `R<TokenResponse>` + 新增 `POST /auth/refresh` + `POST /auth/logout`
-- `LoginUserCacheService` TTL 回退逻辑 + `application.yml` permit-urls 更新
-- 验收：13/13 通过
-
-### Step B3 — 后端测试（轮换/撤销/过期/SameSite）+ 全量回归（PASSED ✅）
-- 修复 V1 测试：`AuthControllerTest`（4→7 参数）+ `AuthFlowIntegrationTest`（TestConfig 7 参数 + DDL + login 辅助方法适配 `data.accessToken`）
-- 新建 `RefreshTokenServiceTest`（12 用例）+ `CookieUtilsTest`（8 用例）
-- 全量 462 tests BUILD SUCCESS，零回归
-- **暴露 B2 代码缺陷**：家族撤销事务回滚（→ B4 修复）
-- 验收：13/13 通过
-
-### Step B4 — 修复 refresh token 家族撤销事务回滚（PASSED ✅）
-- `RefreshTokenService.rotateRefreshToken()` 使用 `TransactionTemplate` + `Propagation.REQUIRES_NEW` 在独立事务中执行撤销
-- 恢复 `RefreshTokenServiceTest` 中被移除的家族撤销断言（验证重放后同用户其他 token 也被撤销）
-- 3 文件修改（RefreshTokenService + 2 测试文件 TestConfig Bean 签名同步）
-- 全量 462 tests BUILD SUCCESS
-- 验收：10/10 通过
-
-### Step F1 — 前端 login 契约 + token 到期戳 + beforeHandler 单飞刷新 + refresh/logout 接真端点 + guard 冷启动续登（PASSED ✅）
-- `token.ts`：新增 `expiresAt`/`EXPIRY_BUFFER_MS` + 4 导出（`getTokenExpiresAt`/`isTokenNearExpiry`/`setTokenResponse`/`clearToken`），4 旧导出签名不变
-- `auth/index.ts`：login 契约 `R<string>`→`R<TokenResponseDTO>`，refresh 单飞实现（3 并发→1 HTTP），logout `try...catch...finally`
-- `request/index.ts`：async 请求拦截器到期刷新 + `setRefreshHandler` 依赖注入 + `AUTH_ENDPOINTS` 追加 `/auth/logout`
-- `router/index.ts`：注入 `setRefreshHandler(refresh)`
-- `guard.ts`：冷启动注释更新
-- 新建 `token.spec.ts`（12 用例）+ `index.spec.ts`（7 用例），扩增 `guard.spec.ts`（+1 冷启动成功路径）
-- 四连全绿：56 files / 491 tests（基线 471 + 20）
-- 1 个偏差：`logout()` 新增 catch 块（方案 try...finally 与测试期望矛盾，对齐测试期望）
-- 验收：12/12 通过
-
-### Step F2 — 前端 mock（双 token + refresh + logout）+ 回归测试调整 + 四连（PASSED ✅）
-- `handlers.ts`：login handler 从 `R<string>` → `R<{accessToken, expiresIn: 900}>`；新增 refresh handler；新增 logout handler（`data: null`）
-- `index.spec.ts`：login 断言 `typeof string` → `toMatchObject`；新增 refresh/logout 注册验证
-- 2 文件改动（43 insertions / 5 deletions），零偏差
-- 四连全绿：56 files / 491 tests（F1 基线 491，零退化）
-- 构建产物 tree-shake 确认：dist 中 dispatchMock/mock token 字符串零命中
-- 验收：12/12 通过
+### 阶段三收尾
+- 更新 `knowledge/features/vue-flow-adapter.md`（功能状态 COMPLETED，Step 1 验收摘要，修改范围，遗留问题）
+- 更新 `knowledge/current-status.md`（§1 测试基线 57/497、§2.2 Vue Flow adapter 就绪、§4 进行中清空、§5 新增已完成功能条目、§7 seam 更新、§8 候选列表更新、§9 测试基线、§10 延后项）
+- 更新 `knowledge/known-issues.md`（I3 Vue Flow 部分标记已修复）
+- 更新 `knowledge/session-handoff.md`（本文件）
+- Step 1 方案从 `product/vue-flow-adapter/ready/` 归档至 `passed/`
 
 ---
 
@@ -88,39 +52,31 @@
 
 | Step | 内容 | 域 | 模型 | 状态 | 关键证据 |
 |:----:|------|:--:|:----:|:----:|----------|
-| V1 | login/me/menus 集成测试 | 后端 | flash | **PASSED** ✅ | 7/7 AC，210 tests，src/main 零改动 |
-| B1 | sys_refresh_token 表 + Entity/Mapper + JWT 双档过期 | 后端 | pro | **PASSED** ✅ | 10/10 AC |
-| B2 | RefreshTokenService + /auth/refresh + /auth/logout + cookie | 后端 | pro | **PASSED** ✅ | 13/13 AC |
-| B3 | 后端测试（轮换/撤销/过期/SameSite）+ 全量回归 | 后端 | flash | **PASSED** ✅ | 13/13 AC，462 tests |
-| B4 | 修复家族撤销事务回滚（TransactionTemplate + REQUIRES_NEW） | 后端 | flash | **PASSED** ✅ | 10/10 AC，462 tests |
-| F1 | login 契约 + token 到期戳 + beforeHandler 单飞 + guard 冷启动 | 前端 | pro | **PASSED** ✅ | 12/12 AC，56 files/491 tests |
-| F2 | mock（双 token+refresh+logout）+ 回归 | 前端 | flash | **PASSED** ✅ | 12/12 AC，491 tests |
-| **合计** | **7 Steps，77/77 验收标准全部通过** | | | | |
+| Step 0 | Vue Flow 场景探索（规划层只读） | 规划层 | DeepSeek 系（用户手动切换） | **PASSED** ✅ | 探索摘要已产出并消费，场景裁决 [[decisions]] D39 |
+| Step 1 | 实现 flow-graph adapter（mount/export/destroy + 事件回调） | 前端 | deepseek-v4-flash | **PASSED** ✅ | 仅 2 文件：`index.ts`（147 行）+ `index.spec.ts`（96 行）；8/8 验收标准全部满足；57 files / 497 tests 四连全绿 |
+| **合计** | **1 个正式 Step + 1 个探索 Step 全部 PASSED** | | | | |
 
 ---
 
 ## 6. 实际修改范围
 
-### 后端（Smart-WorkFlow/）：V1 + B1~B4
+| 文件 | 操作 | 说明 |
+|------|------|------|
+| `Smart-WorkFlow-Web/src/adapters/flow-graph/index.ts` | 重写（147 行） | 6 导出符号 + `createApp`/`defineComponent`/`h()` 渲染 `<VueFlow>` + 4 事件转发通道 + 幂等 `destroy()` |
+| `Smart-WorkFlow-Web/src/adapters/flow-graph/index.spec.ts` | 新建（96 行） | 6 测试场景：挂载/初始数据/空数据/destroy 清空 DOM/destroy 幂等/events 回调 |
 
-| Step | 新建文件 | 修改文件 | 关键产出 |
-|:----:|----------|----------|----------|
-| V1 | AuthControllerTest, AuthFlowIntegrationTest | 0 | 7 集成测试用例（src/main 零改动） |
-| B1 | V18 H2+PG Flyway, SysRefreshToken, SysRefreshTokenMapper | JwtProperties, application.yml | 新表 `sys_refresh_token` |
-| B2 | TokenResponse, CookieUtils, RefreshTokenService | AuthController, LoginUserCacheService, application.yml | 双 token 核心逻辑 |
-| B3 | RefreshTokenServiceTest, CookieUtilsTest | AuthControllerTest, AuthFlowIntegrationTest | 20 新测试 + V1 测试修复 |
-| B4 | — | RefreshTokenService, RefreshTokenServiceTest, AuthFlowIntegrationTest | TransactionTemplate 独立事务 |
+无其他文件被修改。`package.json`/`pnpm-lock.yaml` 零改动。
 
-- **新建类**：TokenResponse, CookieUtils, RefreshTokenService, SysRefreshToken Entity, SysRefreshTokenMapper
-- **新表**：`sys_refresh_token`（Flyway V18，PG + H2 双方言）
-- **新增测试**：~47 用例（V1:7 + B3:20 + B4:0）
+### 规划层（/data/reasonix/files）
 
-### 前端（Smart-WorkFlow-Web/）：F1 + F2
-
-| Step | 新建文件 | 修改文件 | 关键产出 |
-|:----:|----------|----------|----------|
-| F1 | token.spec.ts, index.spec.ts | token.ts, auth/index.ts, request/index.ts, router/index.ts, guard.ts, guard.spec.ts | 双 token 管线（+135/-19 行） |
-| F2 | — | handlers.ts, index.spec.ts | mock handler 对齐（+43/-5 行） |
+| 文件 | 操作 |
+|------|------|
+| `knowledge/features/vue-flow-adapter.md` | 新建并维护，完整生命周期追踪 |
+| `knowledge/decisions.md` | 新增 D37/D38/D39（Step 0 机制 + 下发载体 + 场景裁决） |
+| `knowledge/known-issues.md` | I3 Vue Flow 部分标记已修复；场景更正 |
+| `knowledge/current-status.md` | §1-§10 多处同步更新 |
+| `knowledge/session-handoff.md` | 本文件，覆盖更新 |
+| `product/vue-flow-adapter/` | Step 0 探索任务/摘要 + Step 1 方案（passed/）+ 回执（receipts/） |
 
 ---
 
@@ -128,20 +84,11 @@
 
 | 项目 | 结果 |
 |------|:----:|
-| `mvn -q compile`（后端） | ✅ 退出码 0 |
-| `mvn -q test`（后端全量） | ✅ **REPORTED 462 tests / 0 failures**（B4 回执；sw-biz-system-biz: 65 tests） |
-| `pnpm typecheck`（前端） | ✅ 退出码 0 |
-| `pnpm lint`（前端） | ✅ 0 errors, 0 warnings |
-| `pnpm test`（前端全量） | ✅ **56 files / 491 tests** / 0 失败（CONFIRMED，规划层独立复核） |
-| `pnpm build`（前端） | ✅ BUILD SUCCESS，tree-shake 确认 mock 代码不进 dist |
-| V1 验收 | ✅ 7/7 通过 |
-| B1 验收 | ✅ 10/10 通过 |
-| B2 验收 | ✅ 13/13 通过 |
-| B3 验收 | ✅ 13/13 通过 |
-| B4 验收 | ✅ 10/10 通过 |
-| F1 验收 | ✅ 12/12 通过 |
-| F2 验收 | ✅ 12/12 通过 |
-| **总计** | **✅ 77 项验收标准，全部通过** |
+| Step 0 探索 | ✅ 探索摘要完整（6 个输出项），规划层成功消费生成 Step 1 方案 |
+| Step 1 执行回执 | ✅ §7.1 全部 13 项 + §15 额外要求，偏差如实记录 |
+| Step 1 验收标准 1-8 | ✅ **8/8 全部满足**（2026-07-25 规划层独立复核） |
+| 前端全量测试 | ✅ 57 files / 497 tests，四连全绿，零回归 |
+| **总计** | **Step 0 + Step 1 全部 PASSED** |
 
 ---
 
@@ -149,17 +96,17 @@
 
 | 决策 | 内容 | 知识库 |
 |------|------|--------|
-| D26 | 双 token：access 内存 + refresh httpOnly cookie | [[decisions]] D26 |
-| D27 | refresh 服务端存储（SHA-256 hash）+ 轮换 + 撤销 | [[decisions]] D27 |
-| D32 | 前端 beforeHandler 单飞刷新 + 依赖反转规避循环依赖 | [[decisions]] D32 |
-| D33 | F1 logout() try...catch...finally — 方案内部矛盾裁决 | [[decisions]] D33 |
-| B4 修复 | TransactionTemplate + REQUIRES_NEW 独立事务修复家族撤销回滚 | [[known-issues]] I27 |
+| D37 | 探索任务 formalize 为「Step 0」— 规划层唯一允许自行执行（只读）的特殊 Step | [[decisions]] D37 |
+| D38 | Step 0 任务/摘要下发载体升级为强制写文件，禁止仅在对话中输出要求手动复制粘贴 | [[decisions]] D38 |
+| D39 | Vue Flow 场景归属裁定为 M07 AI 调度图，更正知识库中"表单设计器可视化集成"的错误标签 | [[decisions]] D39 |
+
+无新增 Step 1 级决策——`onUpdate:nodes`/`onUpdate:edges` 替代 `@nodes-change`/`@edges-change` 为合理实现选择（功能等价，以全量数组直接同步 ref），已记录于执行回执 §8，不构成独立 D40。
 
 ---
 
 ## 9. 当前系统状态
 
-全部 7 个功能已完成闭环：
+全部 **9** 个功能已完成闭环：
 
 1. ✅ Walking Skeleton（登录→表单→BPM 审批→通知）
 2. ✅ sys-mgmt-crud（系统管理核心 CRUD）
@@ -167,27 +114,28 @@
 4. ✅ storage-multi-provider（多向可配置文件存储）
 5. ✅ job-scheduler（定时任务调度模块）
 6. ✅ kb-verification（知识库运行期验证）
-7. ✅ auth-seam-completion（后端 seam 收尾 — 双 token 认证）← **最新完成**
+7. ✅ auth-seam-completion（后端 seam 收尾 — 双 token 认证）
+8. ✅ feature-checklist-sync（功能清单状态同步，I1）
+9. ✅ vue-flow-adapter（Vue Flow adapter 实现，I3 部分）← **最新完成**
 
-- 后端：**REPORTED 462 tests**（B4 回执，下次运行期可复验确认模块分布）
-- 前端：56 spec files / 491 tests，四连校验门全绿（CONFIRMED 2026-07-22）
-- 全部已知 Seam（me/menus/权限/refresh/logout）已就位
+- 后端：REPORTED 462 tests / 0 failures（未变，本功能纯前端）
+- 前端：**CONFIRMED 57 files / 497 tests**（四连全绿，+1 file / +6 tests vs 原基线 491）
+- `Smart-WorkFlow/功能清单.md` 状态：✅17 / 🟦12 / ⬜60（未变，本功能仅实现 adapter 防腐层，不涉及业务模块功能）
 - 无进行中的产品功能
 
 ---
 
 ## 10. 还有什么没做
 
-### auth-seam-completion 范围内的明确延后
-- access 短过期窗口内 logout 后 access 仍技术有效（可接受为 v1，靠短过期 900s 缩小窗口）
-- 多设备会话管理界面（本期明确排除）
-- refresh token 使用次数审计日志（当前仅记录 revoked 状态）
-- refresh token 从 DB 迁移至 Redis（若后续引入 Redis 可考虑）
+### vue-flow-adapter 范围内的明确非目标（未做，非遗留）
+- 未安装 `@vue-flow/background`/`@vue-flow/controls`/`@vue-flow/minimap` 等视觉插件子包（M07 消费方落地时评估是否需要）
+- 未在业务模块（`modules/*`）中新增对 `adapters/flow-graph/` 的引用或演示用法（零消费方）
+- 未新增路由、菜单项或 UI 入口
+- 未修改 BPMN adapter（I3 的另一半，独立功能）
 
 ### 功能范围外的延后（全系统）
-- I1 功能清单同步
-- BPMN adapter 实现
-- Vue Flow adapter 实现
+- BPMN adapter 实现 — [[known-issues]] I3 剩余 BPMN 部分
+- M07 AI 调度图业务模块落地（adapter 防腐层已就绪，等待后端引擎/产品设计）
 - 多页签功能
 - IoT / Agent / OpenAPI 模块落地
 - 完整列表见 `knowledge/current-status.md` §8
@@ -198,12 +146,11 @@
 
 | # | 问题 | 严重程度 | 说明 |
 |---|------|:--------:|------|
-| I2 | refresh token seam 未实现 | — | ✅ **已修复（2026-07-22）** |
-| I26 | SysRole 实体列名与 V5 Flyway 不一致 | 中 | V1 执行时发现，非本功能引入 |
-| I27 | RefreshTokenService 家族撤销事务回滚 | — | ✅ **已修复（2026-07-22，B4）** |
-| I22 | @vueuse/core Rolldown 警告 | 极低 | 第三方兼容性问题 |
-| I23 | 前端 CLAUDE.md §8 element-plus import 规范与实际不一致 | 低 | 文档-代码漂移 |
-| I21 | StorageFacadeImplTest 未创建 | 低 | 逻辑层缺测试覆盖 |
+| I3 | BPMN adapter 未实现 | 中 | Vue Flow 部分 ✅ 已修复（2026-07-25）；BPMN 部分仍待开发 |
+| I26 | SysRole 实体列名与 V5 Flyway 不一致 | 中 | 未变，非本功能引入 |
+| I13 | M07 AI 调度图后端未定 | 中 | Adapter 防腐层已就绪，但后端引擎/工具沙箱/RAG 选型均未定，短期无消费方 |
+| I22 | @vueuse/core Rolldown 警告 | 极低 | 第三方兼容性问题，未变 |
+| I23 | 前端 CLAUDE.md §8 element-plus import 规范与实际不一致 | 低 | 文档-代码漂移，未变 |
 
 ---
 
@@ -211,10 +158,9 @@
 
 当前无进行中的功能。推荐候选（详见 `knowledge/current-status.md` §8）：
 
-1. **I1 功能清单同步** — 更新 `Smart-WorkFlow/功能清单.md` 与实际代码进度一致
-2. **BPMN adapter 实现** — 流程设计器可视化集成
-3. **IoT / Agent / OpenAPI 模块落地** — 从占位推进到实际业务
-4. **Vue Flow adapter 实现** — 表单设计器可视化集成（当前接口壳）
+1. **BPMN adapter 实现** — 流程设计器可视化集成（对应 [[known-issues]] I3 剩余 BPMN 部分）
+2. **IoT / Agent / OpenAPI 模块落地** — 从占位推进到实际业务
+3. **M07 AI 调度图业务模块** — `sw-basic-agent` 后端骨架落地 + 前端消费 `adapters/flow-graph/`
 
 ---
 
@@ -238,7 +184,7 @@
 6. knowledge/development-workflow.md
 7. knowledge/decisions.md
 8. knowledge/known-issues.md
-9. knowledge/features/auth-seam-completion.md   ← 刚完成的功能参考
+9. knowledge/features/vue-flow-adapter.md   ← 刚完成的功能参考
 ```
 
 ---
@@ -250,22 +196,24 @@
 
 你是根目录规划代理。请先按 CLAUDE.md §10 执行新会话恢复流程。
 
-### 已完成功能（共 7 个）
+### 已完成功能（共 9 个）
 
 1. ✅ Walking Skeleton（登录→表单→BPM 审批→通知）— 四环闭合
 2. ✅ sys-mgmt-crud（系统管理核心 CRUD）— 后端 16 文件 + 前端 22 文件
 3. ✅ bpm-task-center（BPM 待办中心增强）— 后端 15 文件 + 前端 9 文件
 4. ✅ storage-multi-provider（多向可配置文件存储）— 7 Steps B1-F3 全部通过
-5. ✅ job-scheduler（定时任务调度模块）— 7 Steps B1-F3 全部通过，99 验收标准
+5. ✅ job-scheduler（定时任务调度模块）— 7 Steps B1-F3 全部通过
 6. ✅ kb-verification（知识库运行期验证）— VB1+VF1 PASSED，后端 203/前端 471 CONFIRMED
-7. ✅ auth-seam-completion（后端 seam 收尾 — 双 token 认证）— 7 Steps V1-B4+F1-F2 全部通过，77 验收标准
+7. ✅ auth-seam-completion（后端 seam 收尾 — 双 token 认证）— 7 Steps V1-B4+F1-F2 全部通过
+8. ✅ feature-checklist-sync（功能清单状态同步，I1）— 4 Steps 全部通过，`功能清单.md` 89 条明细状态对齐为 ✅17/🟦12/⬜60
+9. ✅ vue-flow-adapter（Vue Flow adapter 实现，M07 AI 调度图防腐层）— Step 0 探索 + Step 1 实现，前端 57 files / 497 tests 四连全绿 ← 最新完成
 
 ### 当前基线
-- 后端：REPORTED 462 tests / 0 failures（B4 回执；kb-verification 基线 203 + auth-seam-completion V1(+7) + B3(+20) + 未知多模块聚合差异；下次可复验确认精确模块分布）
-- 前端：56 spec files / 491 tests，四连校验门全绿（CONFIRMED 2026-07-22）
-- 双 token 认证体系前后端闭环：access 内存 JWT (900s) + refresh httpOnly cookie (7d)
-- mock 模式（dev:mock）全链路可用：登录/刷新/退出均走双 token handler
-- 全部已知 Seam（me/menus/权限/refresh/logout）已就位
+- 后端：REPORTED 462 tests / 0 failures（未变）
+- 前端：57 spec files / 497 tests，四连校验门全绿（CONFIRMED 2026-07-25 vue-flow-adapter Step 1 回执 + 规划层独立复核）
+- `Smart-WorkFlow/功能清单.md` 状态标记已与代码实际进度对齐（✅17/🟦12/⬜60）
+- `adapters/flow-graph/` 防腐层已就绪（M07 AI 调度图），零消费方（预期状态）
+- 已知问题 I3 Vue Flow 部分已修复，BPMN 部分仍待开发
 - 无进行中的产品功能
 
 ### 下一轮
@@ -275,7 +223,7 @@
 
 ---
 
-> 最后更新：2026-07-22
-> 当前功能：**auth-seam-completion** — 后端 seam 收尾（双 token 认证前后端闭环，**COMPLETED** ✅，7/7 PASSED）
+> 最后更新：2026-07-25
+> 当前功能：**vue-flow-adapter** — Vue Flow adapter 实现（**COMPLETED** ✅，Step 0 + Step 1 全部 PASSED）
 > 当前 Step：全部完成 — 无进行中的产品功能
-> 测试基线：后端 REPORTED 462 tests · 前端 CONFIRMED 56 files / 491 tests（四连全绿）
+> 测试基线：后端 REPORTED 462 tests · 前端 CONFIRMED 57 files / 497 tests（四连全绿）

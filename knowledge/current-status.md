@@ -17,8 +17,8 @@
 | 前端框架 | Vue 3.5 + TypeScript 6.0 + Vite 8，严格分层 SPA，自有架构（不继承 vben） |
 | 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，V1–V17 连续无缺号（CONFIRMED 2026-07-22 代码直读：V12=form 升级、V14=bpm process 均存在；V16=storage、V17=job-scheduler；无 V18/无 auth 脚本。脚本分散各模块 `db/migration/{module}/{postgresql,h2}`，双方言齐全） |
 | 核心路径 | Walking Skeleton：登录 → 表单 → 审批 → 通知 ✅ 四环全部闭合 |
-| 功能清单 | 10 模块，54 功能，88 明细（`Smart-WorkFlow/功能清单.md` 为权威清单，但状态标记与实际脱节 — 已知问题 I1） |
-| 测试基线 | 后端：26 test files / **203 tests**（CONFIRMED 2026-07-22 运行期复验，见 kb-verification VB1：`mvn -q test` BUILD SUCCESS，Surefire 汇总 203，与静态 `@Test` 计数零差异；原「406」已确认为 2026-07-21 B4 回执误报，SUPERSEDED）；前端：54 spec files / **471 tests**（CONFIRMED 2026-07-22 运行期复验，见 kb-verification VF1：四连全绿，Vitest 汇总 471；静态 grep 463 与运行期差值 +8 已定位为 `tokens.spec.ts` 的 for 循环展开）。四连校验门 CONFIRMED 全绿 |
+| 功能清单 | 10 模块，54 功能，**89** 明细（CONFIRMED 2026-07-23，此前记为 88，M10 差 1 条已更正——见 [[shared-constraints]] §5）；`Smart-WorkFlow/功能清单.md` 为权威清单，状态标记已与代码实际进度对齐（✅17/🟦12/⬜60，2026-07-24 [[feature-checklist-sync]] 完成，已知问题 I1 已修复） |
+| 测试基线 | 后端：26 test files / **203 tests**（CONFIRMED 2026-07-22 运行期复验，见 kb-verification VB1：`mvn -q test` BUILD SUCCESS，Surefire 汇总 203，与静态 `@Test` 计数零差异；原「406」已确认为 2026-07-21 B4 回执误报，SUPERSEDED）；前端：57 spec files / **497 tests**（CONFIRMED 2026-07-25 规划层独立复核，vue-flow-adapter Step 1 通过后四连全绿；原 54 spec / 471 tests → +1 file / +6 tests；静态 grep 463 与运行期差值 +8 已定位为 `tokens.spec.ts` 的 for 循环展开）。四连校验门 CONFIRMED 全绿 |
 | 前次验证 | 2026-07-22 独立复验（kb-verification VB1/VF1）：后端 BUILD SUCCESS · 前端四连全绿，均由执行代理运行、规划层核对证据 |
 
 ---
@@ -62,7 +62,7 @@
 | Agent | 🔲 占位 | CONFIRMED | 路由/菜单已注册，无业务页面 |
 | OpenAPI | 🔲 占位 | CONFIRMED | 路由/菜单已注册，无业务页面 |
 | BPMN 集成 | 📦 依赖就绪 | CONFIRMED | bpmn-js 18 已安装，adapter 未实现（接口壳，`throw new Error('not implemented')`） |
-| Vue Flow | 📦 依赖就绪 | CONFIRMED | @vue-flow/core 1.48 已安装，adapter 未实现（接口壳） |
+| Vue Flow | ✅ adapter 就绪 | CONFIRMED | @vue-flow/core 1.48 已安装，`adapters/flow-graph/` 防腐层已实现（mount/export/destroy + 事件回调），零消费方（预期状态——M07 AI 调度图业务模块未就位，adapter 可独立先行）。场景为 AI 调度图（M07），非表单设计器（SUPERSEDED：此前「表单设计器可视化集成」标签为知识库漂移，2026-07-25 [[vue-flow-adapter]] 完成更正） |
 
 ---
 
@@ -103,28 +103,20 @@
 
 ## 4. 进行中的功能
 
-> 最后更新：2026-07-22
+> 最后更新：2026-07-25
 
-**auth-seam-completion（后端 seam 收尾）** — ▶ **ACTIVE**（2026-07-22）
-
-- 目标：验证并纠正 me/menus/权限 三个已实现 seam 的文档记载 + 实现 `/auth/refresh`、`/auth/logout`（双 token：access 内存 + refresh httpOnly cookie，服务端可撤销）
-- Step：V1(验证)→B1→B2→B3→B4(后端)→F1→F2(前端)，共 7 步
-- 当前 Step：V1 ✅ **PASSED**（2026-07-22 执行+验收通过：新增 AuthControllerTest 3 用例 + AuthFlowIntegrationTest 4 用例，全量回归 210 tests BUILD SUCCESS，`src/main` 零改动。7 条验收标准全部满足，规划层独立复核确认）
-- B1 ✅ **PASSED**（2026-07-22 执行+验收通过：V18 H2/PG 双方言 + SysRefreshToken Entity/Mapper + JWT 双档过期配置。`mvn -q compile` + `mvn -q test` 全量 BUILD SUCCESS，10 条验收标准全部满足）
-- B2 ✅ **PASSED**（2026-07-22 执行+验收通过：TokenResponse/CookieUtils/RefreshTokenService 新建 + AuthController login 返回 `R<TokenResponse>` + /auth/refresh + /auth/logout + LoginUserCacheService TTL 回退 + permit-urls 更新。`mvn -q compile` BUILD SUCCESS，`mvn -q test` 101 非 V1 测试全通过，4 预期 V1 错误。13 条验收标准全部满足）
-- B3 ✅ **PASSED**（2026-07-22 执行+验收通过：4 测试文件 27 用例全部通过，全量 462 tests BUILD SUCCESS，零回归。13 条验收标准全部满足。暴露 B2 生产代码缺陷：家族撤销事务回滚 → B4 修复）
-- B4 ✅ **PASSED**（2026-07-22 执行+验收通过：TransactionTemplate + REQUIRES_NEW 修复家族撤销事务回滚，重放检测断言已恢复。462 tests BUILD SUCCESS，10 条验收标准全部满足）
-- 下一 Step：**全部 7 Steps PASSED ✅** — auth-seam-completion 功能完成，已于 2026-07-22 完成阶段三收尾
-- 详见 [[auth-seam-completion]]
+（当前无进行中的功能）
 
 ---
 
 ## 5. 已完成的功能
 
-> 最后更新：2026-07-22
+> 最后更新：2026-07-24
 
 | 功能编号 | 功能名称 | 最终状态 | 完成日期 | 说明 |
 |----------|----------|:--------:|:--------:|------|
+| vue-flow-adapter | Vue Flow adapter 实现（M07 AI 调度图防腐层） | **COMPLETED** ✅ | 2026-07-25 | Step 0 探索 + Step 1 纯前端实现：`adapters/flow-graph/index.ts`（147 行，6 导出符号）+ `index.spec.ts`（96 行，6 测试），四连全绿，前端新基线 57 files / 497 tests。零消费方（预期状态，M07 业务模块未就位） |
+| feature-checklist-sync | 功能清单状态同步（I1） | **COMPLETED** ✅ | 2026-07-24 | 4 Steps 全部 PASSED：Step1/2 后端+前端逐条核实 54 条明细，Step3 规划层按 MIN 规则（[[decisions]] D35）综合裁决，Step4 机械应用到 `功能清单.md`。全表 89 条明细最终状态 ✅17/🟦12/⬜60，独立子代理核查确认与目标完全吻合 |
 | kb-verification | 知识库对账运行期验证 | **COMPLETED** ✅ | 2026-07-22 | VB1(后端)+VF1(前端) 均 PASSED：后端运行期真值 203 tests（原「406」为回执误报，SUPERSEDED）；前端运行期真值 471 tests（与静态 463 差值 +8 定位为 tokens.spec.ts 循环展开），四连全绿 |
 | auth-seam-completion | 后端 seam 收尾（双 token 认证） | **COMPLETED** ✅ | 2026-07-22 | 7 Steps（V1/B1/B2/B3/B4/F1/F2）全部 PASSED：新建 `sys_refresh_token` 表 + RefreshTokenService + /auth/refresh + /auth/logout（后端 462 tests）+ 前端双 token 管线（56 files / 491 tests），mock 模式全链路可用 |
 | job-scheduler | 定时任务调度模块 | **COMPLETED** ✅ | 2026-07-21 | 7 Steps（B1~F3）全部通过：后端模块拆分+Quartz 集成+Controller+Facade+测试（全量后端 203 tests，CONFIRMED 2026-07-22 复验）+ 前端 Types/API/Vue 视图/Mock/路由闭环（54 files/471 tests） |
@@ -165,7 +157,7 @@
 | `POST /auth/refresh` | foundation/auth | ✅ **已实现（2026-07-22）** — 后端 B2 + 前端 F1 双 token 单飞刷新管线，测试覆盖：轮换/撤销/过期/SameSite |
 | `POST /auth/logout` | foundation/auth | ✅ **已实现（2026-07-22）** — 后端 B2 撤销 refresh + 清 cookie + 前端 F1 try/catch/finally 清除本地态 |
 | BPMN adapter | adapters/bpmn | 接口壳，未实现 |
-| Vue Flow adapter | adapters/flow-graph | 接口壳，未实现 |
+| Vue Flow adapter | adapters/flow-graph | ✅ **已实现（2026-07-25）** — [[vue-flow-adapter]]，mount/export/destroy + 事件回调防腐层，57 files/497 tests 四连全绿 |
 | 多页签 | layouts/BasicLayout | 占位，未实现 |
 
 > 口径偏差（✅ 已纠正 2026-07-22）：后端 superAdmin 判定实为 `UserDetailsProviderImpl.roleCodes.contains("superadmin")`（角色 code），非 `userId==1`（代码注释明写已替换旧硬编）。CLAUDE.md §11.7、shared-constraints §1.2、decisions D6 均已同步更正为角色 code 口径。
@@ -174,7 +166,7 @@
 
 ## 8. 下一优先事项
 
-全部 7 个功能已完成闭环：
+全部 8 个功能已完成闭环：
 
 1. ✅ Walking Skeleton（登录→表单→审批→通知）
 2. ✅ sys-mgmt-crud（系统管理核心 CRUD）
@@ -182,14 +174,14 @@
 4. ✅ storage-multi-provider（多向可配置文件存储）
 5. ✅ job-scheduler（定时任务调度模块）
 6. ✅ kb-verification（知识库运行期验证）
-7. ✅ auth-seam-completion（后端 seam 收尾 — 双 token 认证）← **最新完成**
+7. ✅ auth-seam-completion（后端 seam 收尾 — 双 token 认证）
+8. ✅ feature-checklist-sync（功能清单状态同步，I1）← **最新完成**
 
 后续候选：
 
-1. **I1 功能清单同步** — 更新 `功能清单.md` 与实际代码进度一致
-2. **BPMN adapter 实现** — 流程设计器可视化集成
-3. **IoT / Agent / OpenAPI 模块落地** — 从占位推进到实际业务
-4. **Vue Flow adapter 实现** — 表单设计器可视化集成（当前接口壳）
+1. **BPMN adapter 实现** — 流程设计器可视化集成（对应 [[known-issues]] I3 剩余 BPMN 部分）
+2. **IoT / Agent / OpenAPI 模块落地** — 从占位推进到实际业务
+3. **M07 AI 调度图业务模块** — `sw-basic-agent` 后端骨架落地 + 前端消费 `adapters/flow-graph/`（adapter 防腐层已就绪，等待后端引擎/工具沙箱/RAG 产品设计明确）
 
 ---
 
@@ -198,7 +190,7 @@
 | 项目 | 校验命令 | 当前状态 |
 |------|----------|----------|
 | 后端 | `mvn -q compile && mvn -q test` | **REPORTED**（2026-07-22 auth-seam-completion B4 回执）：`mvn -q test` BUILD SUCCESS，**462 tests / 0 failures** / 0 errors（sw-biz-system-biz: 65 tests）。kb-verification 基线 203 tests（CONFIRMED）+ V1 +7 tests（210 reported）+ B3 +20 新测试 + 修复 V1 测试 → 预期 ~230。回执报告 462 的来源需下次运行期复验确认（可能包含多模块聚合计数差异）。非阻塞——各 Step 验收标准均独立逐项通过 |
-| 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | **CONFIRMED**（2026-07-22 auth-seam-completion F2 回执 + 规划层独立复核）：四连全绿，Vitest 汇总 **56 files / 491 tests** 全部通过。原 471 基线（kb-verification CONFIRMED）+ F1(+20) + F2(+0) → 491，计数一致，零退化 |
+| 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | **CONFIRMED**（2026-07-25 vue-flow-adapter Step 1 回执 + 规划层独立复核）：四连全绿，Vitest 汇总 **57 files / 497 tests** 全部通过。原 56 files / 491 tests（2026-07-22 auth-seam-completion F2）+ vue-flow-adapter Step 1（+1 file / +6 tests）→ 497，计数一致，零退化 |
 
 ### 前端测试覆盖详情（参考快照，2026-07-15 基线 ~350 tests）
 
@@ -225,7 +217,7 @@
 - 真实 logo 资源（当前为 `<AppLogo>` 占位，品牌色方块 mark + "Smart-WorkFlow"）
 - `/auth/refresh`/`/auth/logout` 的真实实现（待后端；me/菜单/权限装配已实现，不在延后项）
 - 骨架模块（IoT / Agent / OpenAPI / knowledge）的真实业务内容与接口（system/form/bpm/notify/storage/job 已真接）
-- BPMN 流程设计器可视化、Vue Flow 流程图可视化
+- BPMN 流程设计器可视化（Vue Flow AI 调度图 adapter 防腐层已于 2026-07-25 实现，M07 业务模块延后）
 - RICH_TEXT 富文本编辑器集成
 - 集群部署（定时任务暂为单节点 RAMJobStore）
 - 表单/应用/流程的跨环境导入导出
@@ -238,7 +230,7 @@
 |------|------|------|
 | 后端工程宪法 | `Smart-WorkFlow/.claude/CLAUDE.md` | `SmartWorkFlow_files.zip` → `CLAUDE-java.md` |
 | 前端工作宪法 | `Smart-WorkFlow-Web/.claude/CLAUDE.md` | `SmartWorkFlow_files.zip` → `CLAUDE-vue.md` |
-| 功能清单（54 功能/88 明细） | `Smart-WorkFlow/功能清单.md` | `SmartWorkFlow_files.zip` → `功能清单.md` |
+| 功能清单（54 功能/89 明细） | `Smart-WorkFlow/功能清单.md` | `SmartWorkFlow_files.zip` → `功能清单.md` |
 | 产品需求文档（PRD） | `SmartWorkFlow_files.zip` → `Smart-WorkFlow-PRD.md` | 需求基线 |
 | 前端架构与现状知识库 | `SmartWorkFlow_files.zip` → `Smart-WorkFlow-前端架构与现状-知识库.md` | 前端单一现状源 |
 | 页型规范（设计系统可视化） | `SmartWorkFlow_files.zip` → `Smart-WorkFlow 页型规范.html` | 两页型像素级原型 |

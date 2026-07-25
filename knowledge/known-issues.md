@@ -11,9 +11,9 @@
 
 | # | 发现日期 | 问题 | 严重程度 | 状态 |
 |---|----------|------|:---:|:---:|
-| I1 | — | 功能清单状态与代码实际进度脱节 | 中 | 未修复 |
+| I1 | — | 功能清单状态与代码实际进度脱节 | 中 | ✅ 已修复（2026-07-24：feature-checklist-sync 4 Steps 全部 PASSED） |
 | I2 | — | refresh token seam 未实现 | 低 | ✅ 已修复（2026-07-22：auth-seam-completion 7 Steps 全部 PASSED，/auth/refresh + /auth/logout 前后端闭环） |
-| I3 | — | BPMN/Vue Flow adapter 未实现 | 中 | 待开发 |
+| I3 | — | BPMN/Vue Flow adapter 未实现 | 中 | 部分修复（Vue Flow ✅ 2026-07-25 [[vue-flow-adapter]] COMPLETED；BPMN 部分仍待开发） |
 | I4 | — | 前端多页签功能未实现 | 低 | 待开发 |
 | I5 | — | 测试基线通过率未独立验证 | 中 | ✅ 已修复（2026-07-14 验证：后端 111 tests ✅，前端 331 tests ✅） |
 | I6 | — | 间接依赖存在已知安全漏洞 | 低 | 已评估 |
@@ -37,6 +37,7 @@
 | I24 | 2026-07-22 | 后端"406 tests"与静态 @Test 计数（203）不一致，且非参数化展开所致（0 参数化），运行期数未独立复验 | 中 | ✅ 已修复（2026-07-22 kb-verification VB1 复验：运行期真值 203，与静态吻合；原 406 为回执误报，SUPERSEDED） |
 | I25 | 2026-07-22 | 前端"471 tests"与静态 it/test 计数（463）小幅不一致，且"四连全绿/BUILD SUCCESS"未由规划层独立复验 | 低 | ✅ 已修复（2026-07-22 kb-verification VF1 复验：运行期真值 471 全绿，差值 +8 定位为 tokens.spec.ts 循环展开） |
 | I26 | 2026-07-22 | SysRole 实体列名与 V5 Flyway 迁移列重命名不一致 | 中 | 已确认（回执 REPORTED） |
+| I28 | 2026-07-23 | 后端工程宪法缺少「仓库范围硬约束」章节，前后端不对称 | 高 | ✅ 已修复（2026-07-23，用户授权规划层一次性越权补齐 §0.1，见 D34） |
 
 
 
@@ -44,15 +45,16 @@
 
 ## 问题详情
 
-### I1：功能清单状态与代码实际进度脱节
+### I1：功能清单状态与代码实际进度脱节（✅ 已修复）
 
 - **发现日期**：2026-07-13（工作区审计时发现）
 - **严重程度**：中
-- **可信度**：CONFIRMED
-- **描述**：`Smart-WorkFlow/功能清单.md` 中 54 个功能、88 个明细全部标记为 `⬜ 待开发`，但代码实际已完成：登录认证、RBAC 管理、表单设计器+渲染器、字典管理、通知后端等。功能清单与实际进度严重不一致。
-- **影响**：新会话恢复时可能误判项目进度；功能规划时可能重复规划已完成的功能
-- **临时方案**：以 `knowledge/current-status.md` 为准，功能清单仅作功能 ID 索引
-- **建议**：基于代码实际状态逐项更新功能清单中的完成标记
+- **可信度**：CONFIRMED（已修复）
+- **描述**：`Smart-WorkFlow/功能清单.md` 中 54 个功能、89 个明细（原记为 88，已更正）全部标记为 `⬜ 待开发`，但代码实际已完成：登录认证、RBAC 管理、表单设计器+渲染器、字典管理、通知后端等。功能清单与实际进度严重不一致。
+- **修复日期**：2026-07-24
+- **修复方式**：feature-checklist-sync 功能 4 Steps（Step1 后端核实/Step2 前端核实/Step3 规划层综合裁决/Step4 机械应用）全部 PASSED。范围裁定：M07/M08/M09（合计35条）后端骨架+前端占位，规划层直判保留 `⬜`；余下 M01/M02/M03/M04/M05/M06/M10（合计54条）逐条委派后端/前端核实，按 [[decisions]] D35 MIN 规则（`merged=min(后端,前端)`）合并裁决。最终 `功能清单.md` 89 条明细状态更新为 **✅17 / 🟦12 / ⬜60**，独立子代理核查确认：改动仅限状态列、终态计数吻合、10 条抽查一致、全表无重复无缺失。执行回执 §5 摘要表存在 1 处计数笔误（报 28 行变更，实际 29 行），已定位为回执内部汇总算错，不影响文件实际内容，详见 [[feature-checklist-sync]] §4.3。
+- **相关功能**：[[feature-checklist-sync]]
+- **关联决策**：[[decisions]] D35
 
 ### I2：refresh token seam 未实现（✅ 已修复）
 
@@ -65,15 +67,16 @@
 - **相关功能**：[[auth-seam-completion]]
 - **关联决策**：[[decisions]] D26/D27
 
-### I3：BPMN/Vue Flow adapter 未实现
+### I3：BPMN/Vue Flow adapter 未实现（Vue Flow 部分 ✅ 已修复）
 
 - **发现日期**：前端项目初始化阶段
 - **严重程度**：中
-- **可信度**：CONFIRMED
-- **描述**：前端 `adapters/bpmn/` 和 `adapters/flow-graph/` 仅有接口壳（`throw new Error('not implemented')`），BPMN 流程设计器和流程图可视化尚未集成。
-- **影响**：阻塞工作流可视化设计器（待办列表和流程定义列表页已实现，不受此限）
-- **临时方案**：依赖已安装（bpmn-js 18、@vue-flow/core 1.48），待开发
-- **建议**：在 BPM 前后端联通任务中一并实现
+- **可信度**：CONFIRMED（BPMN 部分仍待开发）/ CONFIRMED（Vue Flow 部分已修复）
+- **描述**：前端 `adapters/bpmn/` 和 `adapters/flow-graph/` 原仅有接口壳（`throw new Error('not implemented')`），BPMN 流程设计器和流程图可视化尚未集成。
+- **修复（Vue Flow 部分，2026-07-25）**：[[vue-flow-adapter]] 功能 COMPLETED——`adapters/flow-graph/index.ts` 已重写为完整防腐层（mount/export/destroy + 事件回调），6 测试 / 497 tests 四连全绿。M07 AI 调度图业务模块仍未就位（预期状态，adapter 可独立先行）。
+- **影响**：BPMN 部分仍阻塞工作流可视化设计器（待办列表和流程定义列表页已实现，不受此限）；Vue Flow 部分 M07 AI 调度图可视化 adapter 防腐层已就绪，等待后端引擎/产品设计明确后消费
+- **临时方案**：BPMN 依赖已安装（bpmn-js 18），待开发
+- **建议**：BPMN adapter 在 BPM 前后端联通任务中实现；Vue Flow adapter ✅ 已独立完成
 
 ### I4：前端多页签功能未实现
 
@@ -310,5 +313,22 @@
 - **影响**：refresh token rotation 的核心安全机制（重放检测 → 家族撤销 → 强制全部设备重新登录）**完全不生效**。这是双 token 认证体系的安全基石缺陷。
 - **修复方案**：B4 方案已生成（`product/auth-seam-completion/ready/step-5-b4-fix-family-revocation.md`）——使用 `TransactionTemplate` + `PROPAGATION_REQUIRES_NEW` 将 `revokeAllForUser` 和 `revokeTokenById` 抽取到独立事务中，在外层 `BaseException` 抛出前已提交。
 - **状态**：✅ 已修复（2026-07-22，B4 PASSED：TransactionTemplate + PROPAGATION_REQUIRES_NEW 将 `revokeAllForUser` 和 `revokeTokenById` 抽取到独立事务，外层 BaseException 抛出前已 COMMIT。`RefreshTokenServiceTest` 重放检测断言已恢复验证。全量 462 tests BUILD SUCCESS）
+
+### I28：后端工程宪法缺少「仓库范围硬约束」章节，前后端不对称
+
+- **发现日期**：2026-07-23（用户反馈"后端执行时经常越界"，规划层直读两份子项目 CLAUDE.md 对比确认）
+- **严重程度**：高
+- **可信度**：CONFIRMED（直接对比两份文件原文得出，非推测）
+- **描述**：直读对比 `Smart-WorkFlow-Web/.claude/CLAUDE.md` 与 `Smart-WorkFlow/.claude/CLAUDE.md` 发现结构性不对称：
+  - 前端宪法 §0.0 之后有独立的 **§0.1「本仓库范围（硬约束）」**，明确写了 4 条：❌ 禁止读取/修改/构建/运行/分析后端代码、❌ 禁止执行后端命令（`mvn`/`gradle` 等）、❌ 禁止向后端仓库提交或推送、✅ 只在前端目录执行 `pnpm` 系命令。
+  - 后端宪法 §0.0 没有对应章节，唯一相关的一句是「❌ 禁止修改前端代码（`Smart-WorkFlow-Web/`）」——**只锁了"改代码"，没有锁"读文件"和"跑命令"**，缺少"禁止读取/构建/运行前端代码""禁止执行 pnpm/npm/vite/vitest""只在后端目录执行 mvn 系命令"等显式条款。
+  - 两份文件在「禁止诱导用户规划」「禁止预告下一 Step」两条硬约束上是**完全对称、都很完善**的，唯独"仓库范围边界"这一层后端缺项。
+  - 根目录 `knowledge/shared-constraints.md` §9（[[decisions]] D29，2026-07-22）已经写了对应的硬约束（"禁止后端执行代理运行前端命令或读写前端文件"），但**该约束只回填进了根目录知识库，未回填进 `Smart-WorkFlow/.claude/CLAUDE.md` 自身**；后端执行代理实际工作时读的是自己项目内的宪法文件，不会主动去读根目录 `shared-constraints.md`。
+- **影响**：后端执行代理在无显式禁令的情况下，可能读取前端文件或执行 `pnpm`/`npm` 命令（例如"顺手验证前后端联动"），这正是用户反馈的"新会话会一起执行前后端任务"越界现象的最直接可归因原因。
+- **关联问题**：与 [[known-issues]] I18（子项目 CLAUDE.md 可能与 zip 版本不同步）同源——都是子项目 `.claude/CLAUDE.md` 未与最新硬约束同步。
+- **修复日期**：2026-07-23
+- **修复方式**：用户明确授权规划层本次一次性越权（该文件不在 `CLAUDE.md` §1.3 常规写入范围内），已在 `Smart-WorkFlow/.claude/CLAUDE.md` §0.0 之后补齐 §0.1「本仓库范围（硬约束）」，内容镜像前端 §0.1 结构：禁止读取/修改/构建/运行/分析前端代码、禁止执行 `pnpm`/`npm`/`vite`/`vitest`、禁止向前端仓库提交推送、只在后端目录执行 `mvn` 系命令。此授权为一次性例外，不代表 §1.3 写入范围常态化扩大
+- **口径澄清（同次核实）**：用户反馈中"把自己当作执行层"经确认实指"后端会话误把自己当作规划层"。核对后端/前端两份宪法在「禁止诱导用户规划」「禁止预告下一 Step」两条上写得完全对称、内容详尽，未发现文本缺口——这类越权若仍发生属执行层未遵守既有条款的实践问题，非宪法文本问题，不通过编辑文本解决
+- **关联决策**：[[decisions]] D34
 
 > 新发现问题请按格式追加到此文件，并在 `current-status.md` 中同步更新阻塞状态。

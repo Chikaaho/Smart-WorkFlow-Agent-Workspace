@@ -231,10 +231,10 @@ locales/         — 国际化（zh-CN）
 | 07 | AI 智能助手 | 4 / 14 | `sw-basic-agent + sw-basic-knowledge` | ⚠ 需求级，待细化 |
 | 08 | IoT | 5 / 13 | `sw-basic-iot` | ⚠ 腾讯接入路径待补全 |
 | 09 | 开放接口 | 7 / 8 | `sw-biz-openapi` | ⚠ 需求级，排在最后 |
-| 10 | 系统运维 | 8 / 8 | `sw-biz-system + sw-basic(storage/job)` | 需求明确 |
-| — | **合计** | **54 / 88** | — | — |
+| 10 | 系统运维 | 8 / 9 | `sw-biz-system + sw-basic(storage/job)` | 需求明确 |
+| — | **合计** | **54 / 89** | — | — |
 
-完整功能明细见 `Smart-WorkFlow/功能清单.md`（54 功能，88 明细，含 Mxx-Fyy-zz ID 体系）。
+完整功能明细见 `Smart-WorkFlow/功能清单.md`（54 功能，**89** 明细，含 Mxx-Fyy-zz ID 体系）。此前记为 88（M10 记为 8），CONFIRMED 2026-07-23 两次独立探索交叉核对原文，差值定位在 M10（实际 9 条），见 [[shared-constraints]] §5、[[known-issues]] I1。
 
 ---
 
