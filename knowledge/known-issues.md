@@ -13,7 +13,7 @@
 |---|----------|------|:---:|:---:|
 | I1 | — | 功能清单状态与代码实际进度脱节 | 中 | ✅ 已修复（2026-07-24：feature-checklist-sync 4 Steps 全部 PASSED） |
 | I2 | — | refresh token seam 未实现 | 低 | ✅ 已修复（2026-07-22：auth-seam-completion 7 Steps 全部 PASSED，/auth/refresh + /auth/logout 前后端闭环） |
-| I3 | — | BPMN/Vue Flow adapter 未实现 | 中 | 部分修复（Vue Flow ✅ 2026-07-25 [[vue-flow-adapter]] COMPLETED；BPMN 部分仍待开发） |
+| I3 | — | BPMN/Vue Flow adapter 未实现 | 中 | 部分修复（Vue Flow ✅ 2026-07-25 [[vue-flow-adapter]] COMPLETED；BPMN 查看器 ✅ 2026-07-25 [[bpmn-adapter]] Step 0/1/2 PASSED——前端查看器防腐层 + 后端 BPMN XML 端点均已实现；设计器/Modeler 能力明确不在范围内；UI 查看入口（Step 3）、M04-F06 流程监控（Step 4）仍待后续） |
 | I4 | — | 前端多页签功能未实现 | 低 | 待开发 |
 | I5 | — | 测试基线通过率未独立验证 | 中 | ✅ 已修复（2026-07-14 验证：后端 111 tests ✅，前端 331 tests ✅） |
 | I6 | — | 间接依赖存在已知安全漏洞 | 低 | 已评估 |
@@ -38,6 +38,7 @@
 | I25 | 2026-07-22 | 前端"471 tests"与静态 it/test 计数（463）小幅不一致，且"四连全绿/BUILD SUCCESS"未由规划层独立复验 | 低 | ✅ 已修复（2026-07-22 kb-verification VF1 复验：运行期真值 471 全绿，差值 +8 定位为 tokens.spec.ts 循环展开） |
 | I26 | 2026-07-22 | SysRole 实体列名与 V5 Flyway 迁移列重命名不一致 | 中 | 已确认（回执 REPORTED） |
 | I28 | 2026-07-23 | 后端工程宪法缺少「仓库范围硬约束」章节，前后端不对称 | 高 | ✅ 已修复（2026-07-23，用户授权规划层一次性越权补齐 §0.1，见 D34） |
+| I29 | 2026-07-25 | bpmn-adapter Step 2 执行/测试回执自报测试计数与独立核实结果不符（三处矛盾），自报 PASSED 未予采信 | 中 | ✅ 已修复（2026-07-25：修正补充回执已收到并独立复核通过——基线 19→26 更正为 26→36，净增 +7→+10，项目级 231→241，Git 删行澄清为零删除。Step 2 最终 PASSED） |
 
 
 
@@ -74,7 +75,8 @@
 - **可信度**：CONFIRMED（BPMN 部分仍待开发）/ CONFIRMED（Vue Flow 部分已修复）
 - **描述**：前端 `adapters/bpmn/` 和 `adapters/flow-graph/` 原仅有接口壳（`throw new Error('not implemented')`），BPMN 流程设计器和流程图可视化尚未集成。
 - **修复（Vue Flow 部分，2026-07-25）**：[[vue-flow-adapter]] 功能 COMPLETED——`adapters/flow-graph/index.ts` 已重写为完整防腐层（mount/export/destroy + 事件回调），6 测试 / 497 tests 四连全绿。M07 AI 调度图业务模块仍未就位（预期状态，adapter 可独立先行）。
-- **影响**：BPMN 部分仍阻塞工作流可视化设计器（待办列表和流程定义列表页已实现，不受此限）；Vue Flow 部分 M07 AI 调度图可视化 adapter 防腐层已就绪，等待后端引擎/产品设计明确后消费
+- **修复（BPMN 部分，2026-07-25）**：[[bpmn-adapter]] Step 0/1/2 均已 PASSED——前端 `adapters/bpmn/` 查看器防腐层（mountBpmnViewer/highlight/fitViewport/destroy + 事件回调）+ 后端 `GET /workflow/defs/{id}/bpmn-xml` 只读端点（`R<String>`，项目级 241 tests BUILD SUCCESS）。UI 查看入口（Step 3）和 M04-F06 流程监控页面（Step 4）仍待后续。
+- **影响**：BPMN 查看器防腐层已就绪、XML 数据源端点已就绪；UI 入口和流程监控页面仍待 Step 3/4；设计器（Modeler）能力明确不在范围内
 - **临时方案**：BPMN 依赖已安装（bpmn-js 18），待开发
 - **建议**：BPMN adapter 在 BPM 前后端联通任务中实现；Vue Flow adapter ✅ 已独立完成
 

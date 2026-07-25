@@ -18,7 +18,7 @@
 | 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，V1–V17 连续无缺号（CONFIRMED 2026-07-22 代码直读：V12=form 升级、V14=bpm process 均存在；V16=storage、V17=job-scheduler；无 V18/无 auth 脚本。脚本分散各模块 `db/migration/{module}/{postgresql,h2}`，双方言齐全） |
 | 核心路径 | Walking Skeleton：登录 → 表单 → 审批 → 通知 ✅ 四环全部闭合 |
 | 功能清单 | 10 模块，54 功能，**89** 明细（CONFIRMED 2026-07-23，此前记为 88，M10 差 1 条已更正——见 [[shared-constraints]] §5）；`Smart-WorkFlow/功能清单.md` 为权威清单，状态标记已与代码实际进度对齐（✅17/🟦12/⬜60，2026-07-24 [[feature-checklist-sync]] 完成，已知问题 I1 已修复） |
-| 测试基线 | 后端：26 test files / **203 tests**（CONFIRMED 2026-07-22 运行期复验，见 kb-verification VB1：`mvn -q test` BUILD SUCCESS，Surefire 汇总 203，与静态 `@Test` 计数零差异；原「406」已确认为 2026-07-21 B4 回执误报，SUPERSEDED）；前端：57 spec files / **497 tests**（CONFIRMED 2026-07-25 规划层独立复核，vue-flow-adapter Step 1 通过后四连全绿；原 54 spec / 471 tests → +1 file / +6 tests；静态 grep 463 与运行期差值 +8 已定位为 `tokens.spec.ts` 的 for 循环展开）。四连校验门 CONFIRMED 全绿 |
+| 测试基线 | 后端：26 test files / **203 tests**（CONFIRMED 2026-07-22 运行期复验，见 kb-verification VB1：`mvn -q test` BUILD SUCCESS，Surefire 汇总 203，与静态 `@Test` 计数零差异；原「406」已确认为 2026-07-21 B4 回执误报，SUPERSEDED）；前端：58 spec files / **507 tests**（CONFIRMED 2026-07-25 规划层独立复核，bpmn-adapter Step 1 通过后四连全绿；原 57 spec / 497 tests → +1 file / +10 tests，对应新建 `adapters/bpmn/index.spec.ts`）。四连校验门 CONFIRMED 全绿 |
 | 前次验证 | 2026-07-22 独立复验（kb-verification VB1/VF1）：后端 BUILD SUCCESS · 前端四连全绿，均由执行代理运行、规划层核对证据 |
 
 ---
@@ -61,7 +61,7 @@
 | IoT | 🔲 占位 | CONFIRMED | 路由/菜单已注册，无业务页面 |
 | Agent | 🔲 占位 | CONFIRMED | 路由/菜单已注册，无业务页面 |
 | OpenAPI | 🔲 占位 | CONFIRMED | 路由/菜单已注册，无业务页面 |
-| BPMN 集成 | 📦 依赖就绪 | CONFIRMED | bpmn-js 18 已安装，adapter 未实现（接口壳，`throw new Error('not implemented')`） |
+| BPMN 集成 | 🟦 查看器已实现 | CONFIRMED | `adapters/bpmn/` 查看器（Viewer）防腐层已完成（[[bpmn-adapter]] Step 1，2026-07-25）：`mountBpmnViewer`/`highlight`/`fitViewport`/`destroy` + 事件回调，58 files/507 tests 四连全绿。零消费方（预期状态，M04-F06 流程监控业务模块待 Step 3/4）；设计器（Modeler）能力明确不在范围内 |
 | Vue Flow | ✅ adapter 就绪 | CONFIRMED | @vue-flow/core 1.48 已安装，`adapters/flow-graph/` 防腐层已实现（mount/export/destroy + 事件回调），零消费方（预期状态——M07 AI 调度图业务模块未就位，adapter 可独立先行）。场景为 AI 调度图（M07），非表单设计器（SUPERSEDED：此前「表单设计器可视化集成」标签为知识库漂移，2026-07-25 [[vue-flow-adapter]] 完成更正） |
 
 ---
@@ -105,7 +105,9 @@
 
 > 最后更新：2026-07-25
 
-（当前无进行中的功能）
+| 功能 | 状态 | 当前 Step | 说明 |
+|------|:---:|:---:|------|
+| [[bpmn-adapter]] | IN_PROGRESS | Step 0/1/2 均已 **PASSED**，Step 3 PENDING | BPMN adapter 查看器实现（对应 [[known-issues]] I3 剩余 BPMN 部分）。Step 0（探索）/Step 1（前端查看器防腐层）/Step 2（后端 BPMN XML 只读端点）均已 PASSED 并归档至 `product/bpmn-adapter/passed/`。Step 2 回执经一次打回修正（[[known-issues]] I29 已修复），修正后 10 项验收标准逐条复核全部满足。后端新基线：项目级 241 tests（+10，BUILD SUCCESS）。Step 3（前端查看入口）/Step 4（M04-F06 流程监控）仍为路线图占位，尚未正式规划 |
 
 ---
 
@@ -156,7 +158,7 @@
 |------|------|------|
 | `POST /auth/refresh` | foundation/auth | ✅ **已实现（2026-07-22）** — 后端 B2 + 前端 F1 双 token 单飞刷新管线，测试覆盖：轮换/撤销/过期/SameSite |
 | `POST /auth/logout` | foundation/auth | ✅ **已实现（2026-07-22）** — 后端 B2 撤销 refresh + 清 cookie + 前端 F1 try/catch/finally 清除本地态 |
-| BPMN adapter | adapters/bpmn | 接口壳，未实现 |
+| BPMN adapter | adapters/bpmn | ✅ **查看器已实现（2026-07-25）** — [[bpmn-adapter]] Step 1，mount/highlight/fitViewport/destroy + 事件回调防腐层，58 files/507 tests 四连全绿；设计器（Modeler）能力不在范围 |
 | Vue Flow adapter | adapters/flow-graph | ✅ **已实现（2026-07-25）** — [[vue-flow-adapter]]，mount/export/destroy + 事件回调防腐层，57 files/497 tests 四连全绿 |
 | 多页签 | layouts/BasicLayout | 占位，未实现 |
 
@@ -189,7 +191,7 @@
 
 | 项目 | 校验命令 | 当前状态 |
 |------|----------|----------|
-| 后端 | `mvn -q compile && mvn -q test` | **REPORTED**（2026-07-22 auth-seam-completion B4 回执）：`mvn -q test` BUILD SUCCESS，**462 tests / 0 failures** / 0 errors（sw-biz-system-biz: 65 tests）。kb-verification 基线 203 tests（CONFIRMED）+ V1 +7 tests（210 reported）+ B3 +20 新测试 + 修复 V1 测试 → 预期 ~230。回执报告 462 的来源需下次运行期复验确认（可能包含多模块聚合计数差异）。非阻塞——各 Step 验收标准均独立逐项通过 |
+| 后端 | `mvn -q compile && mvn -q test` | **REPORTED**（2026-07-25 bpmn-adapter Step 2 修正补充回执）：`mvn test` BUILD SUCCESS，项目级 **241 tests / 0 failures** / 0 errors（sw-common 4 + sw-security 4 + sw-basic-storage 12 + sw-basic-notify 7 + sw-basic-job 37 + sw-biz-system 65 + sw-biz-form 76 + sw-bpm-engine 10 + sw-bpm-process 26 = 241）。较 kb-verification 基线 203 净增 +38（含 auth-seam-completion、job-scheduler 等已闭合功能的新增测试）。原「462」为 2026-07-22 回执误报（SUPERSEDED） |
 | 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | **CONFIRMED**（2026-07-25 vue-flow-adapter Step 1 回执 + 规划层独立复核）：四连全绿，Vitest 汇总 **57 files / 497 tests** 全部通过。原 56 files / 491 tests（2026-07-22 auth-seam-completion F2）+ vue-flow-adapter Step 1（+1 file / +6 tests）→ 497，计数一致，零退化 |
 
 ### 前端测试覆盖详情（参考快照，2026-07-15 基线 ~350 tests）
@@ -217,7 +219,7 @@
 - 真实 logo 资源（当前为 `<AppLogo>` 占位，品牌色方块 mark + "Smart-WorkFlow"）
 - `/auth/refresh`/`/auth/logout` 的真实实现（待后端；me/菜单/权限装配已实现，不在延后项）
 - 骨架模块（IoT / Agent / OpenAPI / knowledge）的真实业务内容与接口（system/form/bpm/notify/storage/job 已真接）
-- BPMN 流程设计器可视化（Vue Flow AI 调度图 adapter 防腐层已于 2026-07-25 实现，M07 业务模块延后）
+- BPMN 流程设计器（Modeler，拖拽编辑能力）——按 [[decisions]] D40 明确排除在 bpmn-adapter 范围外，后端设计格式为 `ProcessGraph` JSON 而非 BPMN XML；BPMN 查看器（Viewer）已于 2026-07-25 实现（[[bpmn-adapter]] Step 1）。Vue Flow adapter 防腐层已于 2026-07-25 实现（[[vue-flow-adapter]]），服务于 M07 AI 调度图，业务模块本身延后
 - RICH_TEXT 富文本编辑器集成
 - 集群部署（定时任务暂为单节点 RAMJobStore）
 - 表单/应用/流程的跨环境导入导出
