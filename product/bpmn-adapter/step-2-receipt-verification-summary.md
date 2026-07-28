@@ -1,7 +1,7 @@
 # Step 2 回执核实 — 探索摘要
 
 > 探索日期：2026-07-25
-> 当前模型：`deepseek-v4-pro`，可承担角色：探索模型（按 CLAUDE.md §0.4 模型族对照表）
+> 当前模型：`deepseek-v4-pro`，可承担角色：探索模型（按 system.md §0.4 模型族对照表）
 > 依据：`product/bpmn-adapter/step-2-receipt-verification-task.md`
 
 ---
@@ -55,7 +55,7 @@ On branch main
 Your branch is up to date with 'origin/main'.
 
 Changes not staged for commit:
-  modified:   CLAUDE.md
+  modified:   system.md
   modified:   knowledge/current-status.md
   modified:   knowledge/decisions.md
   modified:   knowledge/known-issues.md
@@ -70,7 +70,7 @@ no changes added to commit
 ### 2.2 `git diff --stat`（完整输出）
 
 ```
- CLAUDE.md                   |  1 +
+ system.md                   |  1 +
  knowledge/current-status.md | 12 +++++++-----
  knowledge/decisions.md      | 20 ++++++++++++++++++++
  knowledge/known-issues.md   |  2 +-

@@ -96,11 +96,11 @@
 
 ## 15. 执行回执格式
 
-按 `knowledge/shared-constraints.md` §2.4 + 根 `CLAUDE.md` §7.1 的 13 项，写入 `product/kb-verification/receipts/step-VB1-backend-test-baseline-verify-execution.md`。
+按 `knowledge/shared-constraints.md` §2.4 + 根 `system.md` §7.1 的 13 项，写入 `product/kb-verification/receipts/step-VB1-backend-test-baseline-verify-execution.md`。
 
 ## 16. 测试回执格式
 
-按根 `CLAUDE.md` §7.2 的 12 项，写入 `product/kb-verification/receipts/step-VB1-backend-test-baseline-verify-test.md`；§5 各测试项须给出运行期真实计数。
+按根 `system.md` §7.2 的 12 项，写入 `product/kb-verification/receipts/step-VB1-backend-test-baseline-verify-test.md`；§5 各测试项须给出运行期真实计数。
 
 ## 17. 明确禁止事项
 

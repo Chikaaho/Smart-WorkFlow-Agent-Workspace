@@ -32,7 +32,8 @@
 | T5 | storage 筛选 UI 占位，后端无 originalName 搜索参数 | 低优先级，UI 已渲染仅未联通，待后端 Search 端点排期时一并补 | I20 |
 | T6 | B4 遗漏 StorageFacadeImplTest，逻辑层缺单测覆盖 | 功能已通过端到端验证，覆盖率非阻塞项 | I21 |
 | T7 | @vueuse/core 在 Rolldown 下产生 INVALID_ANNOTATION 构建警告 | 第三方依赖兼容性问题，前端代码无法修复，不影响构建产物 | I22 |
-| T8 | 前端 CLAUDE.md §8 与实际 ElMessage/ElMessageBox 显式 import 存在措辞不一致 | 已确认为既有正常模式（API 函数 import 非组件 import），只是文档措辞需澄清，非代码缺陷 | I23 |
+| T8 | 前端 system.md §8 与实际 ElMessage/ElMessageBox 显式 import 存在措辞不一致 | 已确认为既有正常模式（API 函数 import 非组件 import），只是文档措辞需澄清，非代码缺陷 | I23 |
 | T9 | 间接依赖存在已知安全漏洞（wangeditor/ini/js-yaml） | 均不进入生产构建产物，实际风险低，已评估 | I6 |
+| T10 | mock BPMN XML 过于简化——所有流程仅 StartEvent→EndEvent | 用户已确认当前满足验收，后续按 `processKey` 分发不同 XML | I30 |
 
 > 新增/移除条目时，同步检查 `knowledge/known-issues.md` 对应编号的状态描述是否需要更新。

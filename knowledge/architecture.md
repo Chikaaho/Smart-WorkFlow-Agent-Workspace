@@ -1,7 +1,7 @@
 # Smart-WorkFlow 系统架构
 
 > 工作区统一知识库 — 架构分册。描述 Smart-WorkFlow 平台的整体架构设计与项目间关系。
-> 项目内部实现细节见各项目 `.claude/CLAUDE.md`。
+> 项目内部实现细节见各项目 `.claude/system.md`。
 >
 > 信息来源：`CLAUDE-java.md` · `CLAUDE-vue.md` · `Smart-WorkFlow-PRD.md` · `Smart-WorkFlow-前端架构与现状-知识库.md`（均来自 `SmartWorkFlow_files.zip`，2026-07-16）。
 
@@ -257,7 +257,7 @@ locales/         — 国际化（zh-CN）
 Walking Skeleton 四环已全部闭合 ✅。已完成 7 个功能（Walking Skeleton、sys-mgmt-crud、bpm-task-center、storage-multi-provider、job-scheduler、kb-verification 等，见 [[current-status]] §5）。
 当前无进行中的编码功能：auth-seam-completion 已 ⏸ PAUSED；kb-verification（知识库运行期验证）已 COMPLETED。（更新 2026-07-22）
 
-工作区自身的元架构（规划层/执行层三方角色边界、规划层内部探索模型/规划模型分工、`product/`+`todo/`+`knowledge/` 的原始记忆/压缩记忆分层）已固化为 `CLAUDE.md` §0.3/§0.4/§1.3/§8.1/§11.2 与 `shared-constraints.md` §9 的硬约束，本文件只覆盖 Smart-WorkFlow **产品系统**架构，不重复记录工作区元架构。
+工作区自身的元架构（规划层/执行层三方角色边界、规划层内部探索模型/规划模型分工、`product/`+`todo/`+`knowledge/` 的原始记忆/压缩记忆分层）已固化为 `system.md` §0.3/§0.4/§1.3/§8.1/§11.2 与 `shared-constraints.md` §9 的硬约束，本文件只覆盖 Smart-WorkFlow **产品系统**架构，不重复记录工作区元架构。
 
 ---
 

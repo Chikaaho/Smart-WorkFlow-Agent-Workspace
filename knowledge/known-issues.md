@@ -20,7 +20,7 @@
 | I7 | 2026-07-15 | 通知模块前端占位 | 中 | ✅ 已修复（通知列表页 + 标记已读交互已实现） |
 | I8 | — | 定时任务集群升级路径预留但未实现 | 低 | 设计预留 |
 | I22 | 2026-07-21 | @vueuse/core INVALID_ANNOTATION 警告（Rolldown v8 兼容性） | 极低 | 第三方依赖 |
-| I23 | 2026-07-21 | 前端 CLAUDE.md §8 禁止 element-plus 显式 import，但实际代码中有 ElMessage/ElMessageBox import | 低 | 文档与代码不一致 |
+| I23 | 2026-07-21 | 前端 system.md §8 禁止 element-plus 显式 import，但实际代码中有 ElMessage/ElMessageBox import | 低 | 文档与代码不一致 |
 | I9 | 2026-07-15 | Element Plus API 调用组件 CSS 自动导入不完整 | 低 | ✅ 已绕过（全量 CSS 导入） |
 | I10 | 2026-06-30 | 动态宽表裸 SQL 隔离/软删手写易漏 | 高 | 已固化为红线，须测试兜底 |
 | I11 | 2026-06-30 | 发布冻结不可逆 — 字段定义错误成本高 | 中 | 需在设计器层强校验 |
@@ -30,7 +30,7 @@
 | I15 | 2026-06-30 | M09 开放接口授权粒度/配额计费口径待定 | 低 | ⚠ 排在最后，待前序模块稳定 |
 | I16 | 2026-06-30 | 跨环境迁移（表单/应用/流程导入导出）未设计 | 中 | ⚠ 后续设计 |
 | I17 | 2026-06-30 | RICH_TEXT 富文本编辑器未集成 | 低 | 当前降级为 textarea |
-| I18 | 2026-07-16 | 子项目 CLAUDE.md 可能与 zip 最新版本不同步 | 中 | zip 中 CLAUDE-java.md / CLAUDE-vue.md 为最新工程宪法 |
+| I18 | 2026-07-16 | 子项目 system.md 可能与 zip 最新版本不同步 | 中 | zip 中 CLAUDE-java.md / CLAUDE-vue.md 为最新工程宪法 |
 | I19 | 2026-07-20 | storage mock 模式下载不可用 | 低 | 已知限制 |
 | I20 | 2026-07-20 | storage 筛选 UI 占位 — 后端无 originalName 参数 | 低 | 已知限制 |
 | I21 | 2026-07-20 | B4 测试覆盖不足 | 低 | 已知偏差 |
@@ -142,15 +142,15 @@
 - **临时方案**：接受为已知构建噪音，不阻塞 CI
 - **建议**：监控 @vueuse/core 和 Rolldown 的后续版本更新
 
-### I23：前端 CLAUDE.md §8 禁止 element-plus 显式 import，但实际代码中有 ElMessage/ElMessageBox import
+### I23：前端 system.md §8 禁止 element-plus 显式 import，但实际代码中有 ElMessage/ElMessageBox import
 
 - **发现日期**：2026-07-21（F2 验收时发现）
 - **严重程度**：低
 - **可信度**：CONFIRMED
-- **描述**：`Smart-WorkFlow-Web/.claude/CLAUDE.md` §8 规定「Element Plus 经按需自动导入…modules/* 里不出现 element-plus 的显式 import 语句」。但实际代码中 StorageList.vue（L14）、NotifyHome.vue（L9）、JobList.vue 均有 `import { ElMessage, ElMessageBox } from 'element-plus'`。这是必要的 API 级 import（ElMessage/ElMessageBox 需要通过 import 获取函数引用），非组件 import。
-- **影响**：CLAUDE.md 规范与既有实践不一致，新开发者可能困惑
+- **描述**：`Smart-WorkFlow-Web/.claude/system.md` §8 规定「Element Plus 经按需自动导入…modules/* 里不出现 element-plus 的显式 import 语句」。但实际代码中 StorageList.vue（L14）、NotifyHome.vue（L9）、JobList.vue 均有 `import { ElMessage, ElMessageBox } from 'element-plus'`。这是必要的 API 级 import（ElMessage/ElMessageBox 需要通过 import 获取函数引用），非组件 import。
+- **影响**：system.md 规范与既有实践不一致，新开发者可能困惑
 - **临时方案**：已在 F2 验收时确认为既有模式，不阻塞功能
-- **建议**：澄清 CLAUDE.md §8 的语言——区分「组件 import」（已由 unplugin-vue-components 自动处理，禁止手动 import）和「API 函数 import」（ElMessage/ElMessageBox/ElNotification 需显式 import，允许）
+- **建议**：澄清 system.md §8 的语言——区分「组件 import」（已由 unplugin-vue-components 自动处理，禁止手动 import）和「API 函数 import」（ElMessage/ElMessageBox/ElNotification 需显式 import，允许）
 
 ### I9：Element Plus API 调用组件 CSS 自动导入不完整
 
@@ -237,14 +237,14 @@
 - **影响**：RICH_TEXT 字段无法提供富文本编辑体验
 - **建议**：在业务需要富文本（如通知模板、流程附件说明）时集成
 
-### I18：子项目 CLAUDE.md 可能与 zip 最新版本不同步
+### I18：子项目 system.md 可能与 zip 最新版本不同步
 
 - **发现日期**：2026-07-16
 - **严重程度**：中
 - **可信度**：CONFIRMED
-- **描述**：`SmartWorkFlow_files.zip` 中的 `CLAUDE-java.md`（20,278 字节）和 `CLAUDE-vue.md`（14,560 字节）是最新版本的工程宪法。子项目中的 `Smart-WorkFlow/.claude/CLAUDE.md`（22,440 字节）和 `Smart-WorkFlow-Web/.claude/CLAUDE.md`（17,323 字节）可能与 zip 版本存在差异。
+- **描述**：`SmartWorkFlow_files.zip` 中的 `CLAUDE-java.md`（20,278 字节）和 `CLAUDE-vue.md`（14,560 字节）是最新版本的工程宪法。子项目中的 `Smart-WorkFlow/.claude/system.md`（22,440 字节）和 `Smart-WorkFlow-Web/.claude/system.md`（17,323 字节）可能与 zip 版本存在差异。
 - **影响**：执行代理可能依据过时的工程宪法进行开发
-- **建议**：对比 zip 版本与子项目版本，将差异同步到子项目 `.claude/CLAUDE.md`
+- **建议**：对比 zip 版本与子项目版本，将差异同步到子项目 `.claude/system.md`
 
 ### I19：storage mock 模式下载不可用
 
@@ -318,19 +318,29 @@
 
 ### I28：后端工程宪法缺少「仓库范围硬约束」章节，前后端不对称
 
-- **发现日期**：2026-07-23（用户反馈"后端执行时经常越界"，规划层直读两份子项目 CLAUDE.md 对比确认）
+- **发现日期**：2026-07-23（用户反馈"后端执行时经常越界"，规划层直读两份子项目 system.md 对比确认）
 - **严重程度**：高
 - **可信度**：CONFIRMED（直接对比两份文件原文得出，非推测）
-- **描述**：直读对比 `Smart-WorkFlow-Web/.claude/CLAUDE.md` 与 `Smart-WorkFlow/.claude/CLAUDE.md` 发现结构性不对称：
+- **描述**：直读对比 `Smart-WorkFlow-Web/.claude/system.md` 与 `Smart-WorkFlow/.claude/system.md` 发现结构性不对称：
   - 前端宪法 §0.0 之后有独立的 **§0.1「本仓库范围（硬约束）」**，明确写了 4 条：❌ 禁止读取/修改/构建/运行/分析后端代码、❌ 禁止执行后端命令（`mvn`/`gradle` 等）、❌ 禁止向后端仓库提交或推送、✅ 只在前端目录执行 `pnpm` 系命令。
   - 后端宪法 §0.0 没有对应章节，唯一相关的一句是「❌ 禁止修改前端代码（`Smart-WorkFlow-Web/`）」——**只锁了"改代码"，没有锁"读文件"和"跑命令"**，缺少"禁止读取/构建/运行前端代码""禁止执行 pnpm/npm/vite/vitest""只在后端目录执行 mvn 系命令"等显式条款。
   - 两份文件在「禁止诱导用户规划」「禁止预告下一 Step」两条硬约束上是**完全对称、都很完善**的，唯独"仓库范围边界"这一层后端缺项。
-  - 根目录 `knowledge/shared-constraints.md` §9（[[decisions]] D29，2026-07-22）已经写了对应的硬约束（"禁止后端执行代理运行前端命令或读写前端文件"），但**该约束只回填进了根目录知识库，未回填进 `Smart-WorkFlow/.claude/CLAUDE.md` 自身**；后端执行代理实际工作时读的是自己项目内的宪法文件，不会主动去读根目录 `shared-constraints.md`。
+  - 根目录 `knowledge/shared-constraints.md` §9（[[decisions]] D29，2026-07-22）已经写了对应的硬约束（"禁止后端执行代理运行前端命令或读写前端文件"），但**该约束只回填进了根目录知识库，未回填进 `Smart-WorkFlow/.claude/system.md` 自身**；后端执行代理实际工作时读的是自己项目内的宪法文件，不会主动去读根目录 `shared-constraints.md`。
 - **影响**：后端执行代理在无显式禁令的情况下，可能读取前端文件或执行 `pnpm`/`npm` 命令（例如"顺手验证前后端联动"），这正是用户反馈的"新会话会一起执行前后端任务"越界现象的最直接可归因原因。
-- **关联问题**：与 [[known-issues]] I18（子项目 CLAUDE.md 可能与 zip 版本不同步）同源——都是子项目 `.claude/CLAUDE.md` 未与最新硬约束同步。
+- **关联问题**：与 [[known-issues]] I18（子项目 system.md 可能与 zip 版本不同步）同源——都是子项目 `.claude/system.md` 未与最新硬约束同步。
 - **修复日期**：2026-07-23
-- **修复方式**：用户明确授权规划层本次一次性越权（该文件不在 `CLAUDE.md` §1.3 常规写入范围内），已在 `Smart-WorkFlow/.claude/CLAUDE.md` §0.0 之后补齐 §0.1「本仓库范围（硬约束）」，内容镜像前端 §0.1 结构：禁止读取/修改/构建/运行/分析前端代码、禁止执行 `pnpm`/`npm`/`vite`/`vitest`、禁止向前端仓库提交推送、只在后端目录执行 `mvn` 系命令。此授权为一次性例外，不代表 §1.3 写入范围常态化扩大
+- **修复方式**：用户明确授权规划层本次一次性越权（该文件不在 `system.md` §1.3 常规写入范围内），已在 `Smart-WorkFlow/.claude/system.md` §0.0 之后补齐 §0.1「本仓库范围（硬约束）」，内容镜像前端 §0.1 结构：禁止读取/修改/构建/运行/分析前端代码、禁止执行 `pnpm`/`npm`/`vite`/`vitest`、禁止向前端仓库提交推送、只在后端目录执行 `mvn` 系命令。此授权为一次性例外，不代表 §1.3 写入范围常态化扩大
 - **口径澄清（同次核实）**：用户反馈中"把自己当作执行层"经确认实指"后端会话误把自己当作规划层"。核对后端/前端两份宪法在「禁止诱导用户规划」「禁止预告下一 Step」两条上写得完全对称、内容详尽，未发现文本缺口——这类越权若仍发生属执行层未遵守既有条款的实践问题，非宪法文本问题，不通过编辑文本解决
 - **关联决策**：[[decisions]] D34
+
+### I30：mock BPMN XML 过于简化——所有已发布流程返回同一份 StartEvent→EndEvent 最简模板
+
+- **发现日期**：2026-07-26（Step 3 手工验收时确认）
+- **严重程度**：低
+- **可信度**：CONFIRMED
+- **描述**：`handlers.ts` 中 `GET /api/workflow/defs/:id/bpmn-xml` 的 mock handler 始终返回一份固定最简 XML，只含 StartEvent + sequenceFlow + EndEvent，无论点击哪个流程定义（请假/报销/采购审批）都看到完全相同的图。不影响查看器功能验收，但不符合业务预期。
+- **影响**：`dev:mock` 模式下查看流程图体验重复，无法区分不同流程的拓扑
+- **临时方案**：用户已确认暂不处理，当前 mock 满足功能验收需要
+- **建议**：后续为每个 mock 流程定义配不同的 BPMN XML（含 UserTask、Gateway 等），按 `def.processKey` 分发
 
 > 新发现问题请按格式追加到此文件，并在 `current-status.md` 中同步更新阻塞状态。

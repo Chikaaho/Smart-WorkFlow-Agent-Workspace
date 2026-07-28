@@ -33,7 +33,7 @@
 
 旁证：Flyway `V5__m_seam_rbac.sql` / `V6__m_seam_menu_seed.sql`（脚本名直译「seam RBAC / seam 菜单种子」）证明此前已做过一次 seam 点亮，但从未记入知识库——与 I1（功能清单脱节）同源的文档-代码漂移。
 
-**口径偏差（✅ 已于 2026-07-22 知识库审计中纠正）**：后端 superAdmin 判定实为 `roles.contains("superadmin")`（角色 code），此前 CLAUDE.md §11.7 / shared-constraints §1.2 / decisions D6 均误写 `userId==1`。运行无碍（前端只认后端返回 boolean），已同步更正三处文档口径。
+**口径偏差（✅ 已于 2026-07-22 知识库审计中纠正）**：后端 superAdmin 判定实为 `roles.contains("superadmin")`（角色 code），此前 system.md §11.7 / shared-constraints §1.2 / decisions D6 均误写 `userId==1`。运行无碍（前端只认后端返回 boolean），已同步更正三处文档口径。
 
 ## 4. 锁定设计（用户决策）
 

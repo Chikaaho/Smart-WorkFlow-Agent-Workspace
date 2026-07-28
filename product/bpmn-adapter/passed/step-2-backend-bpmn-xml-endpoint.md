@@ -13,7 +13,7 @@
 ```text
 推荐模型：deepseek-v4-pro
 选择理由：本 Step 定义了一个新的前后端接口契约（Step 3 前端将消费此端点），且新增能力跨越 sw-bpm-api / sw-bpm-engine / sw-bpm-process 三个子模块的 Facade 边界，需要正确处理 open-core 模块依赖方向（sw-bpm-process 不能直接依赖 Flowable 类型）
-是否触发升级条件：是 — 触发 CLAUDE.md §2.3「涉及跨项目联动（前后端协议变更、接口契约修改）」
+是否触发升级条件：是 — 触发 system.md §2.3「涉及跨项目联动（前后端协议变更、接口契约修改）」
 ```
 
 ## 4. 模型选择理由
@@ -201,11 +201,11 @@
 
 ## 15. 执行回执格式
 
-按 `CLAUDE.md` §7.1 标准 13 项格式，写入 `product/bpmn-adapter/receipts/step-2-execution.md`。
+按 `system.md` §7.1 标准 13 项格式，写入 `product/bpmn-adapter/receipts/step-2-execution.md`。
 
 ## 16. 测试回执格式
 
-按 `CLAUDE.md` §7.2 标准 12 项格式，写入 `product/bpmn-adapter/receipts/step-2-test.md`。
+按 `system.md` §7.2 标准 12 项格式，写入 `product/bpmn-adapter/receipts/step-2-test.md`。
 
 ## 17. 明确禁止事项
 
@@ -215,4 +215,4 @@
 - 不要新建 DTO/VO 包装类包裹 XML 字符串（直接用 `R<String>`）。
 - 不要修改 `sw_bpm_process_def` 表结构或新增 Flyway 迁移脚本（本 Step 零 DB 变更）。
 - 不要触碰 `Smart-WorkFlow-Web/` 任何文件（本 Step 为纯后端 Step，前端消费是 Step 3 的范围）。
-- 不要在回执中预告、评论或征询 Step 3 的范围与内容（按 CLAUDE.md §0.3 硬约束，完成本 Step 并写完回执后必须停止）。
+- 不要在回执中预告、评论或征询 Step 3 的范围与内容（按 system.md §0.3 硬约束，完成本 Step 并写完回执后必须停止）。

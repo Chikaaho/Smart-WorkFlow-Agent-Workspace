@@ -26,7 +26,7 @@
 
 ## 5. 已知上下文
 
-### 5.1 架构规范（来自后端 CLAUDE.md §10）
+### 5.1 架构规范（来自后端 system.md §10）
 
 - **BEAN 类型**：`bean_name` + `params`，走 `JobHandler` SPI 入口
 - **FLOW 类型**：`flow_def_key` + `form_data`(JSON)，到点发领域事件 `ScheduledFlowTriggerEvent`
@@ -72,7 +72,7 @@
 7. `Smart-WorkFlow/sw-framework/sw-common/src/main/java/com/sw/ck/common/service/BaseServiceImpl.java` — Service 实现基类
 8. `Smart-WorkFlow/sw-framework/sw-common/src/main/java/com/sw/ck/common/event/DomainEventPublisher.java` — 事件发布器
 9. `Smart-WorkFlow/sw-basic/sw-basic-notify/sw-basic-notify-biz/src/main/java/com/sw/ck/notify/service/impl/NotifyMessageServiceImpl.java` — ServiceImpl 实现参照
-10. `Smart-WorkFlow/.claude/CLAUDE.md` — 后端工程宪法 §10（定时任务规范）
+10. `Smart-WorkFlow/.claude/system.md` — 后端工程宪法 §10（定时任务规范）
 
 ## 7. 允许修改的文件范围
 

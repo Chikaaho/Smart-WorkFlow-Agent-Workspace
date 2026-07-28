@@ -92,7 +92,7 @@ slots: alert / default（FormSection > FormGrid）/ actions（取消/保存按�
 | 12 | `Smart-WorkFlow-Web/src/modules/system/types/post.ts` | Post 类型 |
 | 13 | `Smart-WorkFlow-Web/src/contracts/common.ts` | PageQuery / PageResult 类型 |
 | 14 | `Smart-WorkFlow-Web/src/foundation/request/index.ts` | ApiError 类 |
-| 15 | `Smart-WorkFlow-Web/.claude/CLAUDE.md` | 前端工程宪法（§4 REFERENCE 红线、§5 设计系统、§6 页型规范） |
+| 15 | `Smart-WorkFlow-Web/.claude/system.md` | 前端工程宪法（§4 REFERENCE 红线、§5 设计系统、§6 页型规范） |
 
 ## 7. 允许修改的文件范围
 

@@ -2,7 +2,7 @@
 
 > 所属功能：auth-seam-completion（后端 seam 收尾 → 前端 seam 点亮）
 > 域：**纯前端**（只改 `Smart-WorkFlow-Web/`，禁止触碰后端）
-> 本方案按根目录 CLAUDE.md §6 的 17 项结构生成。
+> 本方案按根目录 system.md §6 的 17 项结构生成。
 > **前置**：F1 ✅ PASSED — `foundation/auth` 已使用新契约 `R<TokenResponseDTO>`，login/refresh/logout 均接真实端点。
 
 ---
@@ -49,7 +49,7 @@ F2 是纯数据适配——修改已有 handler 的返回值形状、按已有�
 - **可变数据原则**：种子数据在 `seeds.ts` 中声明，handler 原地 mutate。F2 的 auth handler 不需要可变数据（全部纯函数返回）
 - **Element Plus 自动导入**：无需 import。`ElMessage` 等 API 自动可用
 - **ESLint 架构边界**：`foundation/mock/` 在 `foundation/` 下，无特殊限制。handler 不 import `modules/*` 即可
-- **前端 CLAUDE.md §2.1 四连**：`pnpm typecheck && pnpm lint && pnpm test && pnpm build` 是唯一有效完成判定
+- **前端 system.md §2.1 四连**：`pnpm typecheck && pnpm lint && pnpm test && pnpm build` 是唯一有效完成判定
 
 ## 6. 执行前必须读取的文件
 
@@ -317,7 +317,7 @@ pnpm dev:mock
 
 ## 15. 执行回执格式
 
-按根目录 CLAUDE.md §7.1 格式，写入 `product/auth-seam-completion/receipts/step-7-f2-execution.md`。
+按根目录 system.md §7.1 格式，写入 `product/auth-seam-completion/receipts/step-7-f2-execution.md`。
 
 额外要求：
 - **§5 修改摘要中必须列出**：login handler 的旧返回值（string）与新返回值（object）对比
@@ -325,7 +325,7 @@ pnpm dev:mock
 
 ## 16. 测试回执格式
 
-按根目录 CLAUDE.md §7.2 格式，写入 `product/auth-seam-completion/receipts/step-7-f2-test.md`。最终结论只能是 PASSED / FAILED / BLOCKED 之一。
+按根目录 system.md §7.2 格式，写入 `product/auth-seam-completion/receipts/step-7-f2-test.md`。最终结论只能是 PASSED / FAILED / BLOCKED 之一。
 
 额外要求：
 - **§11 回归风险中必须报告**：构建产物 tree-shake 结果（`grep "dispatchMock\|mock-access-token\|mock-refreshed-token" dist/assets/*.js` 零命中）

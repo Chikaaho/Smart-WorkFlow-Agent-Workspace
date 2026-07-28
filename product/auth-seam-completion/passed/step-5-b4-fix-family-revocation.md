@@ -2,7 +2,7 @@
 
 > 所属功能：auth-seam-completion（后端 seam 收尾）
 > 域：**纯后端**（只改 `Smart-WorkFlow/`，禁止触碰前端）
-> 本方案按根目录 CLAUDE.md §6 的 17 项结构生成。
+> 本方案按根目录 system.md §6 的 17 项结构生成。
 > **紧急修复**：B3 测试暴露的 B2 生产代码安全缺陷。
 
 ---
@@ -42,7 +42,7 @@ B4 是本功能的紧急修复 Step，完成后进入前端 F1+F2。
 - **RefreshTokenService 当前代码**（200 行，位于 `sw-biz-system-biz`）：4 个公开方法 + 2 个内部方法（`revokeTokenById`、`revokeAllForUser`）+ 1 个 record
 - **RefreshTokenServiceTest 当前代码**（291 行，B3 新增）：12 用例，其中 `rotateRefreshToken_replayAttack_shouldRevokeAllForUser` 因事务回滚问题仅验证了异常抛出，未验证家族撤销效果（第 142-148 行有注释说明）
 - **项目已有 `spring-tx` 依赖**（Spring Boot 自动配置包含 `PlatformTransactionManager`）
-- **后端 CLAUDE.md §0.0 执行层角色约束**：执行代理严格执行方案，发现问题记录回执，不得越权规划
+- **后端 system.md §0.0 执行层角色约束**：执行代理严格执行方案，发现问题记录回执，不得越权规划
 
 ## 6. 执行前必须读取的文件
 
@@ -432,11 +432,11 @@ mvn -q test                      # 全量测试
 
 ## 15. 执行回执格式
 
-按根目录 CLAUDE.md §7.1 格式，写入 `product/auth-seam-completion/receipts/step-5-b4-execution.md`。
+按根目录 system.md §7.1 格式，写入 `product/auth-seam-completion/receipts/step-5-b4-execution.md`。
 
 ## 16. 测试回执格式
 
-按根目录 CLAUDE.md §7.2 格式，写入 `product/auth-seam-completion/receipts/step-5-b4-test.md`。最终结论只能是 PASSED / FAILED / BLOCKED 之一。
+按根目录 system.md §7.2 格式，写入 `product/auth-seam-completion/receipts/step-5-b4-test.md`。最终结论只能是 PASSED / FAILED / BLOCKED 之一。
 
 ## 17. 明确禁止事项
 

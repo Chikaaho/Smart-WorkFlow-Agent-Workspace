@@ -198,14 +198,14 @@
 
 ## 15. 执行回执格式
 
-严格按 CLAUDE.md §7.1 的 13 项结构书写，写入 `product/feature-checklist-sync/receipts/step-4-apply-checklist-execution.md`。额外要求：
+严格按 system.md §7.1 的 13 项结构书写，写入 `product/feature-checklist-sync/receipts/step-4-apply-checklist-execution.md`。额外要求：
 
 - 第 12 项「Git diff 摘要」必须包含实际 `git diff Smart-WorkFlow/功能清单.md` 的改动行数统计（新增行数应等于删除行数，均等于实际发生变化的状态值数量，因为是逐字符替换）
 - 附录：一份「实际改动清单」，逐条列出 ID + 修改前状态 → 修改后状态（若修改前后一致，标注"无需改动，已核对"）
 
 ## 16. 测试回执格式
 
-按 CLAUDE.md §7.2 的 12 项结构书写，写入 `product/feature-checklist-sync/receipts/step-4-apply-checklist-test.md`，重点覆盖 §13.1 静态检查（89 条逐条 grep 结果）和 §13.5 回归检查（git diff 范围确认）。最终结论只能是 PASSED / FAILED / BLOCKED。
+按 system.md §7.2 的 12 项结构书写，写入 `product/feature-checklist-sync/receipts/step-4-apply-checklist-test.md`，重点覆盖 §13.1 静态检查（89 条逐条 grep 结果）和 §13.5 回归检查（git diff 范围确认）。最终结论只能是 PASSED / FAILED / BLOCKED。
 
 ## 17. 明确禁止事项
 

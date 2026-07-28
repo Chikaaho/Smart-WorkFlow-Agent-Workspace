@@ -603,7 +603,7 @@ cd Smart-WorkFlow && mvn -q test 2>&1 | grep "Tests run:"
 
 ## 15. 执行回执格式
 
-按 CLAUDE.md §7.1 标准 13 项结构输出执行回执，写入以下路径：
+按 system.md §7.1 标准 13 项结构输出执行回执，写入以下路径：
 
 ```
 product/bpm-task-center/receipts/step-b1-后端待办分页+任务详情-execution.md

@@ -1205,7 +1205,7 @@ cd Smart-WorkFlow && mvn -q test
 
 ## 15. 执行回执格式
 
-按 CLAUDE.md §7.1 格式返回。特别注意附上以下关键证据：
+按 system.md §7.1 格式返回。特别注意附上以下关键证据：
 
 - `mvn -q compile` 完整输出（退出码）
 - `mvn -q test` 全量测试计数和 BUILD 结果
@@ -1215,7 +1215,7 @@ cd Smart-WorkFlow && mvn -q test
 
 ## 16. 测试回执格式
 
-按 CLAUDE.md §7.2 格式返回。本 Step 的测试回执必须逐条对照 §14 的 14 项验收标准，每项标注 PASS/FAIL + 证据。
+按 system.md §7.2 格式返回。本 Step 的测试回执必须逐条对照 §14 的 14 项验收标准，每项标注 PASS/FAIL + 证据。
 
 ## 17. 明确禁止事项
 

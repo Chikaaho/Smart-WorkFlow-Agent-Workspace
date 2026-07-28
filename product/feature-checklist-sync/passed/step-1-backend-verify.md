@@ -124,13 +124,13 @@ M07（AI）/M08（IoT）/M09（OpenAPI）共 35 条明细已由规划层依据�
 
 1. 回执中包含一份完整的核实表，覆盖全部 54 条明细（M01:13 + M02:7 + M03:8 + M04:9 + M05:4 + M06:4 + M10:9），逐行填写 ID / 功能 / 功能详情摘要 / 判定状态（⬜/🟦/✅）/ 证据（文件路径+方法名或"未找到"说明）
 2. 核实表中不存在空白证据栏或"参考已有代码"/"应该已实现"等模糊表述
-3. 执行回执严格遵循 CLAUDE.md §7.1 的 13 项结构
+3. 执行回执严格遵循 system.md §7.1 的 13 项结构
 4. 回执明确声明未读取 `Smart-WorkFlow-Web/` 任何文件、未执行任何 `mvn compile`/`mvn test`/文件修改命令
 5. 若发现某条明细无法定位到具体模块或描述过于宏观，回执中单独列出并说明理由（而非静默跳过）
 
 ## 15. 执行回执格式
 
-严格按 CLAUDE.md §7.1 的 13 项结构书写，写入 `product/feature-checklist-sync/receipts/step-1-backend-verify-execution.md`。在标准 13 项之外，额外要求：
+严格按 system.md §7.1 的 13 项结构书写，写入 `product/feature-checklist-sync/receipts/step-1-backend-verify-execution.md`。在标准 13 项之外，额外要求：
 
 - 第 4 项「实际修改的文件」填「无——本 Step 为纯核实任务」
 - 第 12 项「Git diff 摘要」填「无改动」

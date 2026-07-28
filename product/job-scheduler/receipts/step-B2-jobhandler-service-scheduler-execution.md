@@ -18,7 +18,7 @@ deepseek-v4-flash（high thinking）
 | 6 | `Smart-WorkFlow/sw-framework/sw-common/src/main/java/com/sw/ck/common/service/BaseService.java` | ✅ 读取 — Service 基类接口 |
 | 7 | `Smart-WorkFlow/sw-framework/sw-common/src/main/java/com/sw/ck/common/service/BaseServiceImpl.java` | ✅ 读取 — Service 实现基类 |
 | 8 | `Smart-WorkFlow/sw-framework/sw-common/src/main/java/com/sw/ck/common/event/DomainEventPublisher.java` | ✅ 读取 — 事件发布器 |
-| 9 | `Smart-WorkFlow/.claude/CLAUDE.md` | ✅ 读取 — §10 定时任务规范 |
+| 9 | `Smart-WorkFlow/.claude/system.md` | ✅ 读取 — §10 定时任务规范 |
 
 ## 4. 实际修改的文件
 

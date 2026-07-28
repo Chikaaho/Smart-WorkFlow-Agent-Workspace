@@ -2,7 +2,7 @@
 
 > 所属功能：auth-seam-completion（后端 seam 收尾 → 前端 seam 点亮）
 > 域：**纯前端**（只改 `Smart-WorkFlow-Web/`，禁止触碰后端）
-> 本方案按根目录 CLAUDE.md §6 的 17 项结构生成。
+> 本方案按根目录 system.md §6 的 17 项结构生成。
 > **前置**：后端 B1-B4 全部 PASSED ✅，`/auth/login` 返回 `R<{accessToken, expiresIn}>` + Set-Cookie rt，`/auth/refresh` + `/auth/logout` 端点已就位。
 
 ---
@@ -62,8 +62,8 @@ F1 不是简单 CRUD 页面，而是修改整个应用的认证基础设施层�
 - **Element Plus 自动导入**：`ElMessage` 等 API 自动引入，`modules/*` 不出现 `element-plus` import
 - **TypeScript strict**（`erasableSyntaxOnly: true`）：禁用 `enum`/`namespace`/构造器参数属性
 - **CSP**：`script-src 'self'`（禁 inline/eval），`connect-src 'self'`（fetch 仅同源）
-- **前端 CLAUDE.md §2.1 四连校验门**：`pnpm typecheck && pnpm lint && pnpm test && pnpm build` 是唯一有效完成判定
-- **前端 CLAUDE.md §0.0 执行层角色约束**：执行代理严格执行方案，发现问题记录回执，不得越权规划
+- **前端 system.md §2.1 四连校验门**：`pnpm typecheck && pnpm lint && pnpm test && pnpm build` 是唯一有效完成判定
+- **前端 system.md §0.0 执行层角色约束**：执行代理严格执行方案，发现问题记录回执，不得越权规划
 
 ## 6. 执行前必须读取的文件
 
@@ -775,7 +775,7 @@ cd Smart-WorkFlow-Web && pnpm dev
 
 ## 15. 执行回执格式
 
-按根目录 CLAUDE.md §7.1 格式，写入 `product/auth-seam-completion/receipts/step-6-f1-execution.md`。
+按根目录 system.md §7.1 格式，写入 `product/auth-seam-completion/receipts/step-6-f1-execution.md`。
 
 额外要求：
 - **§8 偏差说明中必须报告**：cookie 在 dev 模式下是否正常发送和接收（手动验证或代码分析）
@@ -783,7 +783,7 @@ cd Smart-WorkFlow-Web && pnpm dev
 
 ## 16. 测试回执格式
 
-按根目录 CLAUDE.md §7.2 格式，写入 `product/auth-seam-completion/receipts/step-6-f1-test.md`。最终结论只能是 PASSED / FAILED / BLOCKED 之一。
+按根目录 system.md §7.2 格式，写入 `product/auth-seam-completion/receipts/step-6-f1-test.md`。最终结论只能是 PASSED / FAILED / BLOCKED 之一。
 
 额外要求：
 - **§5 测试结果中必须包含**：`index.spec.ts` 单飞去重测试的详细结果（并发 3 次 refresh 仅 1 次 HTTP 调用）

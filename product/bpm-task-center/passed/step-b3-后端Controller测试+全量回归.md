@@ -588,7 +588,7 @@ mvn -q test 2>&1 | grep -E "Tests run:|BUILD|FAIL"
 
 ## 15. 执行回执格式
 
-按 CLAUDE.md §7.1 标准 13 项结构输出执行回执，写入：
+按 system.md §7.1 标准 13 项结构输出执行回执，写入：
 
 ```
 product/bpm-task-center/receipts/step-b3-后端Controller测试+全量回归-execution.md

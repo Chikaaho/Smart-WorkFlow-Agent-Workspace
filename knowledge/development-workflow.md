@@ -2,7 +2,7 @@
 
 > 工作区统一知识库 — 开发流程分册。
 > **面向对象**：下级执行代理（在 `Smart-WorkFlow/` 或 `Smart-WorkFlow-Web/` 中执行具体编码和测试的 AI 代理）。
-> **根目录规划代理**：本文件是参考文档。规划代理自身的工作流、权限边界和模型路由规则见根目录 `CLAUDE.md`。
+> **根目录规划代理**：本文件是参考文档。规划代理自身的工作流、权限边界和模型路由规则见根目录 `system.md`。
 >
 > 描述前后端日常开发流程、校验门、代码规范。
 
@@ -17,7 +17,7 @@
 ### 1.1 沟通优先原则（执行代理用）
 
 > 注意：这是**执行代理**在子项目中工作时的沟通规则。
-> 根目录规划代理对需求的规划流程见根目录 `CLAUDE.md` §3.1（阶段一：需求分析与功能规划）。
+> 根目录规划代理对需求的规划流程见根目录 `system.md` §3.1（阶段一：需求分析与功能规划）。
 
 - 默认所有用户输入为**需求沟通**，除非包含明确的执行指令
 - 执行触发词：`执行` / `实现` / `开始写` / `落地` / `出代码` / `按这个方案做`
@@ -64,11 +64,11 @@ pnpm typecheck && pnpm lint && pnpm test && pnpm build
 ## 3. AI 协作模型选择（执行代理用）
 
 > 注意：本节约定的模型选择规则是**执行代理**在子项目内编码时的规则。
-> 根目录规划代理为下级代理推荐模型时，遵循根目录 `CLAUDE.md` §2 的模型路由规则。
+> 根目录规划代理为下级代理推荐模型时，遵循根目录 `system.md` §2 的模型路由规则。
 >
 > 各子项目的权威模型选择规则见：
-> - 后端：`Smart-WorkFlow/.claude/CLAUDE.md` §11.2
-> - 前端：`Smart-WorkFlow-Web/.claude/CLAUDE.md` §1.1 和 §8.2
+> - 后端：`Smart-WorkFlow/.claude/system.md` §11.2
+> - 前端：`Smart-WorkFlow-Web/.claude/system.md` §1.1 和 §8.2
 >
 > 以下为通用摘要，如有冲突以子项目文件为准。
 
@@ -134,20 +134,20 @@ pnpm typecheck && pnpm lint && pnpm test && pnpm build
 
 | 层级 | 文件 | 内容 |
 |------|------|------|
-| 工作区（本仓库） | `CLAUDE.md` | 统一入口 + 工作原则 |
+| 工作区（本仓库） | `system.md` | 统一入口 + 工作原则 |
 | 工作区 | `knowledge/*.md` | 跨项目架构/约束/术语/流程 |
-| 后端项目 | `.claude/CLAUDE.md` | 后端工程宪法（规范+硬约束） |
+| 后端项目 | `.claude/system.md` | 后端工程宪法（规范+硬约束） |
 | 后端项目 | `README.md` | 后端项目概览 |
 | 后端项目 | `功能清单.md` | 功能编号与进度 |
-| 前端项目 | `.claude/CLAUDE.md` | 前端工程宪法（协作+设计+规范） |
+| 前端项目 | `.claude/system.md` | 前端工程宪法（协作+设计+规范） |
 | 前端项目 | `README.md` | 前端项目概览 |
 
 ### 6.2 维护原则
 
-- **知识优先沉淀到工作区知识库**，项目特有细节留在项目 `.claude/CLAUDE.md`
+- **知识优先沉淀到工作区知识库**，项目特有细节留在项目 `.claude/system.md`
 - 避免多处维护相同内容
 - 文档整篇替换，不做 diff
-- **进度跟踪**：项目整体进度和功能状态见 `knowledge/current-status.md`（唯一可信来源）和 `knowledge/session-handoff.md`（最新交接状态）；子项目 CLAUDE.md **不记进度**
+- **进度跟踪**：项目整体进度和功能状态见 `knowledge/current-status.md`（唯一可信来源）和 `knowledge/session-handoff.md`（最新交接状态）；子项目 system.md **不记进度**
 
 ---
 
@@ -178,7 +178,7 @@ product/<feature-name>/receipts/step-N-<step-name>-test.md
 
 ### 8.2 回执格式
 
-**执行回执**必须包含（参照根目录 `CLAUDE.md` §7.1）：
+**执行回执**必须包含（参照根目录 `system.md` §7.1）：
 
 ```markdown
 # 执行回执
@@ -222,7 +222,7 @@ product/<feature-name>/receipts/step-N-<step-name>-test.md
 （需要重点验证的测试场景）
 ```
 
-**测试回执**必须包含（参照根目录 `CLAUDE.md` §7.2）：
+**测试回执**必须包含（参照根目录 `system.md` §7.2）：
 
 ```markdown
 # 测试回执

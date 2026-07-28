@@ -1,6 +1,6 @@
 # Step 0 探索摘要 — Vue Flow adapter
 
-当前模型：**deepseek-v4-pro**，可承担角色：探索模型（DeepSeek 系，按 CLAUDE.md §0.4 模型族对照表判定）。
+当前模型：**deepseek-v4-pro**，可承担角色：探索模型（DeepSeek 系，按 system.md §0.4 模型族对照表判定）。
 
 ---
 

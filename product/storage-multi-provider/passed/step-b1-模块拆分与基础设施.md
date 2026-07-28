@@ -60,7 +60,7 @@
 
 按优先级排序：
 
-1. **`Smart-WorkFlow/.claude/CLAUDE.md`** — 后端工程宪法，特别是 §1（模块层次）、§3（表命名）、§6（Flyway）和 §5（BaseEntity 约束）
+1. **`Smart-WorkFlow/.claude/system.md`** — 后端工程宪法，特别是 §1（模块层次）、§3（表命名）、§6（Flyway）和 §5（BaseEntity 约束）
 2. **`Smart-WorkFlow/sw-basic/sw-basic-notify/pom.xml`** — 参照 -api/-biz 拆分时 pom 配置
 3. **`Smart-WorkFlow/sw-basic/sw-basic-notify/sw-basic-notify-api/pom.xml`** — 参照 -api 模块 pom
 4. **`Smart-WorkFlow/sw-basic/sw-basic-notify/sw-basic-notify-biz/pom.xml`** — 参照 -biz 模块 pom
@@ -790,7 +790,7 @@ cd Smart-WorkFlow && mvn -q test
 
 ## 15. 执行回执格式
 
-按 CLAUDE.md §7.1 格式返回。特别注意附上以下关键证据：
+按 system.md §7.1 格式返回。特别注意附上以下关键证据：
 
 - `mvn -q compile` 完整输出（退出码 + 最后 20 行）
 - `mvn -q test` 全量测试计数和 BUILD 结果
@@ -800,7 +800,7 @@ cd Smart-WorkFlow && mvn -q test
 
 ## 16. 测试回执格式
 
-按 CLAUDE.md §7.2 格式返回。本 Step 的测试回执可以与执行回执合并（基础设施 Step 无独立测试文件），但验收标准中 B1-17 和 B1-18 必须在回执中有命令输出证据。
+按 system.md §7.2 格式返回。本 Step 的测试回执可以与执行回执合并（基础设施 Step 无独立测试文件），但验收标准中 B1-17 和 B1-18 必须在回执中有命令输出证据。
 
 ## 17. 明确禁止事项
 

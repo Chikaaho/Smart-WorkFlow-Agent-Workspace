@@ -4,7 +4,7 @@
 
 - `product/feature-checklist-sync/passed/step-1-backend-verify.md` 的执行回执（后端 54 条核实表）
 - `product/feature-checklist-sync/passed/step-2-frontend-verify.md` 的执行回执（前端 54 条核实表）
-- 两份回执均已通过规划层独立审查：格式满足 CLAUDE.md §7.1 全部 13 项、核实表覆盖全部 54 条、无空白/模糊证据；并各抽取 5 条判定委派子代理独立复核，**10/10 CONFIRMED**（证据与判定结论一致），详见 §2
+- 两份回执均已通过规划层独立审查：格式满足 system.md §7.1 全部 13 项、核实表覆盖全部 54 条、无空白/模糊证据；并各抽取 5 条判定委派子代理独立复核，**10/10 CONFIRMED**（证据与判定结论一致），详见 §2
 
 ## 2. 独立复核抽查记录（每份回执各抽 5 条）
 

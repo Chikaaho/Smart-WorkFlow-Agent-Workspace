@@ -76,7 +76,7 @@
 | 4 | `Smart-WorkFlow-Web/src/contracts/common.ts` | PageQuery / PageResult 类型定义 |
 | 5 | `Smart-WorkFlow-Web/src/foundation/request/index.ts` | request() 函数签名和 ApiError 类 |
 | 6 | `Smart-WorkFlow-Web/src/modules/form/api/form-def.ts` | 另一份 adaptPage 实例参考 |
-| 7 | `Smart-WorkFlow-Web/.claude/CLAUDE.md` | 前端工程宪法（§4 REFERENCE 红线、§7 编码规范） |
+| 7 | `Smart-WorkFlow-Web/.claude/system.md` | 前端工程宪法（§4 REFERENCE 红线、§7 编码规范） |
 
 ## 7. 允许修改的文件范围
 

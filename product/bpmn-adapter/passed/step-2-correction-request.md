@@ -2,7 +2,7 @@
 
 > Step 2（后端新增 BPMN XML 只读端点）当前状态：**VERIFYING（不予 PASSED，需补充/修正回执）**
 > 判定依据：`product/bpmn-adapter/step-2-receipt-verification-summary.md`（探索模型 `deepseek-v4-pro` 独立核实，规划层已消费）
-> 原始回执：`product/bpmn-adapter/receipts/step-2-execution.md`、`product/bpmn-adapter/receipts/step-2-test.md`（均自报 PASSED，规划层独立核实后不予采信，按 CLAUDE.md §7.3 打回）
+> 原始回执：`product/bpmn-adapter/receipts/step-2-execution.md`、`product/bpmn-adapter/receipts/step-2-test.md`（均自报 PASSED，规划层独立核实后不予采信，按 system.md §7.3 打回）
 
 ## 核实发现的问题
 
@@ -39,4 +39,4 @@
 
 在原 `receipts/step-2-execution.md`、`receipts/step-2-test.md` 基础上补充说明即可（可追加"补充说明"章节，或整体重写以保持一致性），**不需要**重新执行方案 §9 的实现步骤——生产代码本身的正确性尚未被质疑，本次打回仅针对回执的数字证据链。
 
-**明确禁止**：不要在补充回执中评论、预告或征询 Step 3 的范围与内容（按 CLAUDE.md §0.3 硬约束）。
+**明确禁止**：不要在补充回执中评论、预告或征询 Step 3 的范围与内容（按 system.md §0.3 硬约束）。

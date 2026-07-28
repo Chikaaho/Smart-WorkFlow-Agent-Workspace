@@ -55,7 +55,7 @@ mvn test 2>&1 | grep -E "Tests run: .*, Failures: 0, Errors: 0, Skipped: 0$"
 | 项目级当前 | 未报告 | **241** | 非 BPM 205 + BPM 36 = 241 |
 | 项目级净增 | 未报告 | **+10** | 241 − 231 = 10 |
 
-**原回执 §12 的「~29 删除行来自非本项目改动」同样错误——该描述的前提是 `git diff --stat` 包含了 `.claude/CLAUDE.md` 和 `功能清单.md` 两个无关文件的改动。Step 2 实际改动只涉及 `sw-biz/` 下的 7 个文件，**全部为新增行（+121），零删除行**。详见 §3。**
+**原回执 §12 的「~29 删除行来自非本项目改动」同样错误——该描述的前提是 `git diff --stat` 包含了 `.claude/system.md` 和 `功能清单.md` 两个无关文件的改动。Step 2 实际改动只涉及 `sw-biz/` 下的 7 个文件，**全部为新增行（+121），零删除行**。详见 §3。**
 
 ---
 
@@ -88,7 +88,7 @@ mvn test 2>&1 | grep -E "Tests run: .*, Failures: 0, Errors: 0, Skipped: 0$"
 
 ### 3.1 当前状态
 
-Step 2 改动**尚未提交**（所有文件处于 working tree 中）。原因是执行会话在完成回执写入后即停止（按 CLAUDE.md §0.3 硬约束），未进行 Git 提交。
+Step 2 改动**尚未提交**（所有文件处于 working tree 中）。原因是执行会话在完成回执写入后即停止（按 system.md §0.3 硬约束），未进行 Git 提交。
 
 ### 3.2 `git diff --stat`（限 `sw-biz/` 范围）
 
@@ -106,7 +106,7 @@ Step 2 改动**尚未提交**（所有文件处于 working tree 中）。原因�
 - **全部 7 个文件**均属于方案 §7「允许修改的文件范围」（sw-bpm-api、sw-bpm-engine、sw-bpm-process）
 - **零删除行**（121 行纯新增）
 - **零文件超出范围**：无 sw-biz-system、sw-biz-form、sw-bootstrap 或其他无关模块的改动
-- sw-biz 范围外已排除：`.claude/CLAUDE.md`（16 行新增）和 `功能清单.md`（35 删 29 增）是**执行会话启动前已存在的未提交改动**（见初始 `git status`），与 Step 2 执行无关。原回执 §12 将两者计入是混淆了工作树全貌与 Step 2 改动范围
+- sw-biz 范围外已排除：`.claude/system.md`（16 行新增）和 `功能清单.md`（35 删 29 增）是**执行会话启动前已存在的未提交改动**（见初始 `git status`），与 Step 2 执行无关。原回执 §12 将两者计入是混淆了工作树全貌与 Step 2 改动范围
 
 ### 3.3 新建文件（`git ls-files --others`）
 

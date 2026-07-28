@@ -44,8 +44,8 @@
 | # | 文件 | 原因 |
 |---|------|------|
 | 1 | `knowledge/current-status.md` | 确认当前记录的测试基线 |
-| 2 | `Smart-WorkFlow/.claude/CLAUDE.md` | 查看后端构建命令细节 |
-| 3 | `Smart-WorkFlow-Web/.claude/CLAUDE.md` | 查看前端构建命令细节 |
+| 2 | `Smart-WorkFlow/.claude/system.md` | 查看后端构建命令细节 |
+| 3 | `Smart-WorkFlow-Web/.claude/system.md` | 查看前端构建命令细节 |
 
 ## 7. 允许修改的文件范围
 

@@ -1024,7 +1024,7 @@ pnpm test src/modules/workflow/views/ProcessedList.spec.ts
 
 ## 15. 执行回执格式
 
-按 CLAUDE.md §7.1 返回，至少包含：
+按 system.md §7.1 返回，至少包含：
 
 ```markdown
 # 执行回执 — Step F2 前端 Vue 视图
@@ -1046,7 +1046,7 @@ pnpm test src/modules/workflow/views/ProcessedList.spec.ts
 
 ## 16. 测试回执格式
 
-按 CLAUDE.md §7.2 返回，至少包含：
+按 system.md §7.2 返回，至少包含：
 
 ```markdown
 # 测试回执 — Step F2 前端 Vue 视图

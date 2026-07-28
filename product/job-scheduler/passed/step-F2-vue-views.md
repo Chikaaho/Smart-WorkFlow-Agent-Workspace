@@ -145,7 +145,7 @@ src/modules/job/
 5. `src/modules/storage/views/StorageList.spec.ts` — 列表页测试参照（mock 模式、桩组件、数据工厂）
 6. `src/modules/notify/views/NotifyHome.vue` — 简单列表页参照（无弹窗、无复杂操作）
 7. `src/foundation/request/index.ts` — ApiError 类（用于 catch 类型判断）
-8. `.claude/CLAUDE.md` — 前端工作宪法（四连校验门、设计系统、编码规范）
+8. `.claude/system.md` — 前端工作宪法（四连校验门、设计系统、编码规范）
 
 ## 7. 允许修改的文件范围
 

@@ -18,7 +18,7 @@
 | 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，V1–V17 连续无缺号（CONFIRMED 2026-07-22 代码直读：V12=form 升级、V14=bpm process 均存在；V16=storage、V17=job-scheduler；无 V18/无 auth 脚本。脚本分散各模块 `db/migration/{module}/{postgresql,h2}`，双方言齐全） |
 | 核心路径 | Walking Skeleton：登录 → 表单 → 审批 → 通知 ✅ 四环全部闭合 |
 | 功能清单 | 10 模块，54 功能，**89** 明细（CONFIRMED 2026-07-23，此前记为 88，M10 差 1 条已更正——见 [[shared-constraints]] §5）；`Smart-WorkFlow/功能清单.md` 为权威清单，状态标记已与代码实际进度对齐（✅17/🟦12/⬜60，2026-07-24 [[feature-checklist-sync]] 完成，已知问题 I1 已修复） |
-| 测试基线 | 后端：26 test files / **203 tests**（CONFIRMED 2026-07-22 运行期复验，见 kb-verification VB1：`mvn -q test` BUILD SUCCESS，Surefire 汇总 203，与静态 `@Test` 计数零差异；原「406」已确认为 2026-07-21 B4 回执误报，SUPERSEDED）；前端：58 spec files / **507 tests**（CONFIRMED 2026-07-25 规划层独立复核，bpmn-adapter Step 1 通过后四连全绿；原 57 spec / 497 tests → +1 file / +10 tests，对应新建 `adapters/bpmn/index.spec.ts`）。四连校验门 CONFIRMED 全绿 |
+| 测试基线 | 后端：项目级 **256 tests**（REPORTED 2026-07-28 process-monitoring Step 1 执行回执：sw-bpm-engine +8 + sw-bpm-process +7 = +15，241→256）；前端：59 spec files / **517 tests**（CONFIRMED 2026-07-26 规划层独立复核，bpmn-adapter Step 1 + Step 3 全部 PASSED；原 57 spec / 497 tests → Step 1 +1 file / +10 tests → Step 3 +1 file / +10 tests，对应新建 `adapters/bpmn/index.spec.ts` + `modules/workflow/views/__tests__/ProcessDefList.spec.ts`）。四连校验门 CONFIRMED 全绿 |
 | 前次验证 | 2026-07-22 独立复验（kb-verification VB1/VF1）：后端 BUILD SUCCESS · 前端四连全绿，均由执行代理运行、规划层核对证据 |
 
 ---
@@ -107,7 +107,9 @@
 
 | 功能 | 状态 | 当前 Step | 说明 |
 |------|:---:|:---:|------|
-| [[bpmn-adapter]] | IN_PROGRESS | Step 0/1/2 均已 **PASSED**，Step 3 PENDING | BPMN adapter 查看器实现（对应 [[known-issues]] I3 剩余 BPMN 部分）。Step 0（探索）/Step 1（前端查看器防腐层）/Step 2（后端 BPMN XML 只读端点）均已 PASSED 并归档至 `product/bpmn-adapter/passed/`。Step 2 回执经一次打回修正（[[known-issues]] I29 已修复），修正后 10 项验收标准逐条复核全部满足。后端新基线：项目级 241 tests（+10，BUILD SUCCESS）。Step 3（前端查看入口）/Step 4（M04-F06 流程监控）仍为路线图占位，尚未正式规划 |
+| [[bpmn-adapter]] | **COMPLETED** ✅ | Steps 0-3 PASSED，Step 4 SUPERSEDED | BPMN adapter 查看器实现（对应 [[known-issues]] I3 剩余 BPMN 部分）。Step 0（探索）/Step 1（前端查看器防腐层）/Step 2（后端 BPMN XML 只读端点）/Step 3（前端 ProcessDefList「查看流程图」入口）全部 PASSED 并归档。Step 4（M04-F06 流程监控）由新功能 [[process-monitoring]] 独立承接 |
+
+| [[process-monitoring]] | IN_PROGRESS | Step 1 PASSED，Step 2 方案 READY | M04-F06-01 流程监控首批能力（流程图高亮 + 流转记录）。Step 1 后端 Facade + Service 层 PASSED（2026-07-28 执行回执审查通过，15 @Test，项目级 241→256 tests）。Step 2 方案已生成（`product/process-monitoring/ready/step-2-backend-controller.md`）。耗时分析 + 流程干预延后至后续批次 |
 
 ---
 
@@ -118,6 +120,8 @@
 | 功能编号 | 功能名称 | 最终状态 | 完成日期 | 说明 |
 |----------|----------|:--------:|:--------:|------|
 | vue-flow-adapter | Vue Flow adapter 实现（M07 AI 调度图防腐层） | **COMPLETED** ✅ | 2026-07-25 | Step 0 探索 + Step 1 纯前端实现：`adapters/flow-graph/index.ts`（147 行，6 导出符号）+ `index.spec.ts`（96 行，6 测试），四连全绿，前端新基线 57 files / 497 tests。零消费方（预期状态，M07 业务模块未就位） |
+| bpmn-adapter | BPMN adapter 查看器实现（I3 BPMN 部分） | **COMPLETED** ✅ | 2026-07-26 | Steps 0-3 全部 PASSED：Step 0 探索 + Step 1 前端查看器防腐层 + Step 2 后端 BPMN XML 端点 + Step 3 ProcessDefList「查看流程图」入口。59 files/517 tests 四连全绿。Step 4（M04-F06）SUPERSEDED 由 [[process-monitoring]] 承接 |
+| process-monitoring | M04-F06-01 流程监控（首批：流程图高亮 + 流转记录） | **PLANNING** | — | 2026-07-26 启动规划，探索已完成，Step 1 方案生成中。耗时分析 + 流程干预延后至后续批次 |
 | feature-checklist-sync | 功能清单状态同步（I1） | **COMPLETED** ✅ | 2026-07-24 | 4 Steps 全部 PASSED：Step1/2 后端+前端逐条核实 54 条明细，Step3 规划层按 MIN 规则（[[decisions]] D35）综合裁决，Step4 机械应用到 `功能清单.md`。全表 89 条明细最终状态 ✅17/🟦12/⬜60，独立子代理核查确认与目标完全吻合 |
 | kb-verification | 知识库对账运行期验证 | **COMPLETED** ✅ | 2026-07-22 | VB1(后端)+VF1(前端) 均 PASSED：后端运行期真值 203 tests（原「406」为回执误报，SUPERSEDED）；前端运行期真值 471 tests（与静态 463 差值 +8 定位为 tokens.spec.ts 循环展开），四连全绿 |
 | auth-seam-completion | 后端 seam 收尾（双 token 认证） | **COMPLETED** ✅ | 2026-07-22 | 7 Steps（V1/B1/B2/B3/B4/F1/F2）全部 PASSED：新建 `sys_refresh_token` 表 + RefreshTokenService + /auth/refresh + /auth/logout（后端 462 tests）+ 前端双 token 管线（56 files / 491 tests），mock 模式全链路可用 |
@@ -158,11 +162,11 @@
 |------|------|------|
 | `POST /auth/refresh` | foundation/auth | ✅ **已实现（2026-07-22）** — 后端 B2 + 前端 F1 双 token 单飞刷新管线，测试覆盖：轮换/撤销/过期/SameSite |
 | `POST /auth/logout` | foundation/auth | ✅ **已实现（2026-07-22）** — 后端 B2 撤销 refresh + 清 cookie + 前端 F1 try/catch/finally 清除本地态 |
-| BPMN adapter | adapters/bpmn | ✅ **查看器已实现（2026-07-25）** — [[bpmn-adapter]] Step 1，mount/highlight/fitViewport/destroy + 事件回调防腐层，58 files/507 tests 四连全绿；设计器（Modeler）能力不在范围 |
+| BPMN adapter | adapters/bpmn | ✅ **查看器已实现（2026-07-25）+ 前端消费入口已就绪（2026-07-26）** — [[bpmn-adapter]] Step 1（mount/highlight/fitViewport/destroy + 事件回调防腐层）+ Step 2（后端 BPMN XML 只读端点）+ Step 3（ProcessDefList「查看流程图」入口，59 files/517 tests 四连全绿）；设计器（Modeler）能力不在范围 |
 | Vue Flow adapter | adapters/flow-graph | ✅ **已实现（2026-07-25）** — [[vue-flow-adapter]]，mount/export/destroy + 事件回调防腐层，57 files/497 tests 四连全绿 |
 | 多页签 | layouts/BasicLayout | 占位，未实现 |
 
-> 口径偏差（✅ 已纠正 2026-07-22）：后端 superAdmin 判定实为 `UserDetailsProviderImpl.roleCodes.contains("superadmin")`（角色 code），非 `userId==1`（代码注释明写已替换旧硬编）。CLAUDE.md §11.7、shared-constraints §1.2、decisions D6 均已同步更正为角色 code 口径。
+> 口径偏差（✅ 已纠正 2026-07-22）：后端 superAdmin 判定实为 `UserDetailsProviderImpl.roleCodes.contains("superadmin")`（角色 code），非 `userId==1`（代码注释明写已替换旧硬编）。system.md §11.7、shared-constraints §1.2、decisions D6 均已同步更正为角色 code 口径。
 
 ---
 
@@ -191,8 +195,8 @@
 
 | 项目 | 校验命令 | 当前状态 |
 |------|----------|----------|
-| 后端 | `mvn -q compile && mvn -q test` | **REPORTED**（2026-07-25 bpmn-adapter Step 2 修正补充回执）：`mvn test` BUILD SUCCESS，项目级 **241 tests / 0 failures** / 0 errors（sw-common 4 + sw-security 4 + sw-basic-storage 12 + sw-basic-notify 7 + sw-basic-job 37 + sw-biz-system 65 + sw-biz-form 76 + sw-bpm-engine 10 + sw-bpm-process 26 = 241）。较 kb-verification 基线 203 净增 +38（含 auth-seam-completion、job-scheduler 等已闭合功能的新增测试）。原「462」为 2026-07-22 回执误报（SUPERSEDED） |
-| 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | **CONFIRMED**（2026-07-25 vue-flow-adapter Step 1 回执 + 规划层独立复核）：四连全绿，Vitest 汇总 **57 files / 497 tests** 全部通过。原 56 files / 491 tests（2026-07-22 auth-seam-completion F2）+ vue-flow-adapter Step 1（+1 file / +6 tests）→ 497，计数一致，零退化 |
+| 后端 | `mvn -q compile && mvn -q test` | **REPORTED**（2026-07-28 process-monitoring Step 1 执行回执）：`mvn test` BUILD SUCCESS，项目级 **256 tests / 0 failures** / 0 errors（sw-bpm-engine +8 Facade 测试、sw-bpm-process +7 Service 测试 = 241 + 15）。较 kb-verification 基线 203 净增 +53（含 auth-seam-completion、job-scheduler、bpmn-adapter、process-monitoring 等已闭合功能的新增测试）。原「462」「241」均为历史基线（SUPERSEDED） |
+| 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | **CONFIRMED**（2026-07-26 bpmn-adapter Step 3 测试回执 + 修复验证回执 + 规划层独立复核）：四连全绿，Vitest 汇总 **59 files / 517 tests** 全部通过。57 files / 497 tests（2026-07-25 vue-flow-adapter Step 1）→ bpmn-adapter Step 1（+1 file / +10 tests）→ 58 files / 507 tests → bpmn-adapter Step 3（+1 file / +10 tests）→ 59 files / 517 tests，计数一致，零退化 |
 
 ### 前端测试覆盖详情（参考快照，2026-07-15 基线 ~350 tests）
 
@@ -230,11 +234,11 @@
 
 | 文档 | 位置 | 来源 |
 |------|------|------|
-| 后端工程宪法 | `Smart-WorkFlow/.claude/CLAUDE.md` | `SmartWorkFlow_files.zip` → `CLAUDE-java.md` |
-| 前端工作宪法 | `Smart-WorkFlow-Web/.claude/CLAUDE.md` | `SmartWorkFlow_files.zip` → `CLAUDE-vue.md` |
+| 后端工程宪法 | `Smart-WorkFlow/.claude/system.md` | `SmartWorkFlow_files.zip` → `CLAUDE-java.md` |
+| 前端工作宪法 | `Smart-WorkFlow-Web/.claude/system.md` | `SmartWorkFlow_files.zip` → `CLAUDE-vue.md` |
 | 功能清单（54 功能/89 明细） | `Smart-WorkFlow/功能清单.md` | `SmartWorkFlow_files.zip` → `功能清单.md` |
 | 产品需求文档（PRD） | `SmartWorkFlow_files.zip` → `Smart-WorkFlow-PRD.md` | 需求基线 |
 | 前端架构与现状知识库 | `SmartWorkFlow_files.zip` → `Smart-WorkFlow-前端架构与现状-知识库.md` | 前端单一现状源 |
 | 页型规范（设计系统可视化） | `SmartWorkFlow_files.zip` → `Smart-WorkFlow 页型规范.html` | 两页型像素级原型 |
 
-> 以上文件均来自 2026-07-16 的 `SmartWorkFlow_files.zip`。zip 中 `CLAUDE-java.md` / `CLAUDE-vue.md` 为最新版本工程宪法，如与子项目 `.claude/CLAUDE.md` 存在差异，以 zip 版本为准并应同步更新子项目文件。
+> 以上文件均来自 2026-07-16 的 `SmartWorkFlow_files.zip`。zip 中 `CLAUDE-java.md` / `CLAUDE-vue.md` 为最新版本工程宪法，如与子项目 `.claude/system.md` 存在差异，以 zip 版本为准并应同步更新子项目文件。

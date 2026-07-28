@@ -59,7 +59,7 @@
 
 | Step | 名称 | 域 | 状态 | 推荐模型 | 执行回执 | 测试回执 | 验收结论 |
 |------|------|:--:|:---:|:---:|:---:|:---:|:---:|
-| 0 | Vue Flow adapter 现状与目标场景探索 | 规划层（自身会话，只读） | **PASSED** | DeepSeek 系（用户手动切换） | N/A（Step 0 不产出回执，见 CLAUDE.md §0.4.1） | N/A | ✅ 探索摘要已产出（2026-07-25），见 `product/vue-flow-adapter/step-0-exploration-summary.md` |
+| 0 | Vue Flow adapter 现状与目标场景探索 | 规划层（自身会话，只读） | **PASSED** | DeepSeek 系（用户手动切换） | N/A（Step 0 不产出回执，见 system.md §0.4.1） | N/A | ✅ 探索摘要已产出（2026-07-25），见 `product/vue-flow-adapter/step-0-exploration-summary.md` |
 | 1 | 实现 flow-graph adapter（mount/export/destroy + 事件回调） | 前端 | **PASSED** ✅ | deepseek-v4-flash | ✅ [执行回执](product/vue-flow-adapter/receipts/step-1-execution.md)（2026-07-25，测试一并完成） | N/A（含于执行回执，已独立验证） | ✅ 8/8 验收标准全部满足（2026-07-25 规划层复核） |
 
 ---
@@ -71,7 +71,7 @@
 - **状态**：**PASSED**
 - **目标**：厘清 Vue Flow adapter 当前实现现状、消费场景归属（M07 AI 调度图 vs 表单设计器可视化）、与 BPMN adapter 的结构对比，为后续 Step 1 正式方案提供依据
 - **执行位置**：规划层自身会话（`/data/reasonix/files`），不下发到 `Smart-WorkFlow-Web/`
-- **结构**：按 CLAUDE.md §0.4.1 精简 5 项清单（非 §6 完整 17 项结构）
+- **结构**：按 system.md §0.4.1 精简 5 项清单（非 §6 完整 17 项结构）
 - **任务原文**：已下发并存档至 `product/vue-flow-adapter/step-0-exploration-task.md`（不进入 §11.2 `ready/`→`passed/` 流转，为 Step 0 专用存档位置）
 - **探索摘要**：✅ 已产出并存档至 `product/vue-flow-adapter/step-0-exploration-summary.md`（2026-07-25）。关键结论：
   - 场景裁决：Vue Flow 的设计意图是 **M07 AI 调度图**（AI agent 任务编排可视化），非表单设计器（后者由 form-create 完整覆盖）。`current-status.md`/`session-handoff.md` 中「表单设计器可视化集成」的表述为知识库漂移，应更正。
@@ -85,12 +85,12 @@
 - **域**：纯前端
 - **目标**：将 `adapters/flow-graph/index.ts` 从接口壳实现为可用的 Vue Flow 防腐层，配套单元测试
 - **推荐模型**：`deepseek-v4-flash`（接口契约已在方案中完全钉死，无跨项目联动/无数据库/无鉴权/无复杂并发，属"已有模式下的功能补充"）
-- **方案文件**：`product/vue-flow-adapter/passed/step-1-implement-flow-graph-adapter.md`（按 CLAUDE.md §6 17 项结构，已归档）
+- **方案文件**：`product/vue-flow-adapter/passed/step-1-implement-flow-graph-adapter.md`（按 system.md §6 17 项结构，已归档）
 - **执行回执**：`product/vue-flow-adapter/receipts/step-1-execution.md`（2026-07-25，含测试结果，REPORTED 并 CONFIRMED 独立验证）
 - **验收摘要**（2026-07-25 规划层独立复核）：
   - **8/8 验收标准全部满足**：① grep `not implemented` 零命中 ✅；② 6 符号签名与 §9.1 一致 ✅；③ 实例含 `exportGraph()` + `destroy()` ✅；④ 6 测试场景全部实现 ✅；⑤ 四连退出码 0 ✅；⑥ 测试 57 files / 497 tests ≥ 491+6 ✅；⑦ `package.json`/lock 零改动 ✅；⑧ 仅 2 文件修改 ✅
   - **偏差复核**：`onUpdate:nodes`/`onUpdate:edges` 替代 `@nodes-change`/`@edges-change`（功能等价，以全量数组直接同步 ref，已如实记录，接受）；测试场景 6 弱化断言（方案 §9.4 已明确允许，接受）
-  - **改动范围**：仅 `src/adapters/flow-graph/index.ts`（147 行重写）+ `index.spec.ts`（96 行新建，6 测试），与 `.claude/CLAUDE.md` 预变更无关
+  - **改动范围**：仅 `src/adapters/flow-graph/index.ts`（147 行重写）+ `index.spec.ts`（96 行新建，6 测试），与 `.claude/system.md` 预变更无关
 
 ---
 
@@ -141,4 +141,4 @@
 - [[current-status]] §2.2、§4、§8
 - [[architecture]] §4.1（Vue Flow 场景定位，Step 0 已据此裁决为 M07 AI 调度图，见 [[decisions]] D39）
 - [[decisions]] D37/D38（Step 0 机制）、D39（场景裁决）
-- `CLAUDE.md` §0.4.1（Step 0 机制定义）、§6（Step 1 方案 17 项结构）
+- `system.md` §0.4.1（Step 0 机制定义）、§6（Step 1 方案 17 项结构）

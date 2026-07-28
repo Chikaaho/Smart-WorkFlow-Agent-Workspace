@@ -513,7 +513,7 @@ it('queryProcessedTasks sends GET /workflow/tasks/processed with pagination', as
 
 ## 15. 执行回执格式
 
-按 CLAUDE.md §7.1 返回，至少包含：
+按 system.md §7.1 返回，至少包含：
 
 ```markdown
 # 执行回执 — Step F1 前端 Types + API + Specs
@@ -535,7 +535,7 @@ it('queryProcessedTasks sends GET /workflow/tasks/processed with pagination', as
 
 ## 16. 测试回执格式
 
-按 CLAUDE.md §7.2 返回，至少包含：
+按 system.md §7.2 返回，至少包含：
 
 ```markdown
 # 测试回执 — Step F1 前端 Types + API + Specs

@@ -15,7 +15,7 @@
 | 功能名称 | BPMN adapter 查看器实现（流程图渲染防腐层） |
 | 功能目标 | 将前端 `adapters/bpmn/index.ts` 从接口壳实现为只读查看器（Viewer）防腐层，服务于未来 M04-F06-01 流程监控的流程图渲染/高亮需求 |
 | 创建日期 | 2026-07-25 |
-| 当前状态 | IN_PROGRESS（Step 0/1/2 均已 PASSED，Step 3/4 仍为 PENDING 路线图占位） |
+| 当前状态 | **COMPLETED** ✅（Steps 0-3 全部 PASSED，Step 4 SUPERSEDED 由 [[process-monitoring]] 承接） |
 | 涉及模块 | 前端 `Smart-WorkFlow-Web/src/adapters/bpmn/`（Step 1 范围）；后端 `sw-bpm` 新增 BPMN XML 端点（Step 2，未来） |
 
 ---
@@ -30,7 +30,7 @@
 
 - 不实现可编辑设计器（Modeler）能力——不支持拖拽新增/删除节点、连线编辑、属性面板
 - 不实现 `exportXml()`（导出能力）——查看器场景无导出需求，旧接口壳中该方法直接移除
-- 不新增后端 API 端点（`GET /workflow/defs/{id}/bpmn-xml` 留给独立的 Step 2，前后端协议变更需单独 Step，按 CLAUDE.md §6.18）
+- 不新增后端 API 端点（`GET /workflow/defs/{id}/bpmn-xml` 留给独立的 Step 2，前后端协议变更需单独 Step，按 system.md §6.18）
 - 不修改 `modules/workflow/ProcessDefList.vue` 或新增"查看流程图"UI 入口（留给 Step 3）
 - 不实现 M04-F06 的完整流程监控页面/流转记录展示（留给 Step 4）
 - 不安装 `bpmn-js-properties-panel`/`camunda-bpmn-moddle` 等设计器专用扩展包（Viewer 场景不需要）
@@ -63,10 +63,10 @@
 | 0 | BPMN adapter 现状与目标场景探索 | **PASSED** | DeepSeek 系（deepseek-v4-pro，用户手动切换） | 不适用（探索类） | 不适用 | 探索摘要已产出并被规划层消费，范围裁定为 [[decisions]] D40 |
 | 1 | 实现 bpmn adapter 查看器（Viewer）— mount/destroy/highlight + 事件回调 | **PASSED** | deepseek-v4-flash | `receipts/step-1-execution.md` | `receipts/step-1-test.md` | 10 项验收标准逐条复核全部满足，方案归档至 `passed/` |
 | 2 | 后端新增 BPMN XML 只读端点 | **PASSED** | deepseek-v4-pro（推荐）/ deepseek-v4-flash（实际） | `receipts/step-2-execution.md` + `step-2-correction-supplement.md` | `receipts/step-2-test.md` + `step-2-correction-supplement.md` | 修正回执后 10 项验收标准逐条复核全部满足，项目级 231→241（+10），方案归档至 `passed/` |
-| 3 | 前端 ProcessDefList 新增"查看流程图"入口（未来） | PENDING | 待定 | — | — | — |
-| 4 | M04-F06 流程监控页面（未来） | PENDING | 待定 | — | — | — |
+| 3 | 前端 ProcessDefList 新增"查看流程图"入口 | **PASSED** | deepseek-v4-flash | `receipts/step-3-execution.md` + `step-3-fix-verification.md` | `receipts/step-3-test.md` + `step-3-fix-verification.md` | 13 项验收标准逐条满足，3 轮手工验收问题修复后四连全绿 |
+| 4 | M04-F06 流程监控页面（未来） | **SUPERSEDED** | — | — | — | — | M04-F06 由新功能 [[process-monitoring]] 独立承接，bpmn-adapter 防腐层目标已达成 |
 
-> Step 2 已按 §6 17 项结构生成正式方案，存档于 `product/bpmn-adapter/ready/step-2-backend-bpmn-xml-endpoint.md`，等待下发给后端执行代理。Step 3-4 仍为探索摘要 §7.1 建议的方向性路线图占位，尚未生成正式方案，待 Step 2 验收通过后视需要下发。
+> Step 0/1/2/3 均已 PASSED 并归档至 `passed/`。Step 4（M04-F06 流程监控页面）仍为 PENDING，尚未生成正式方案。
 
 ---
 
@@ -79,7 +79,7 @@
 - **实际模型**：deepseek-v4-pro（DeepSeek 系，探索模型角色）
 - **方案位置**：`product/bpmn-adapter/step-0-exploration-task.md`
 - **产出**：`product/bpmn-adapter/step-0-exploration-summary.md`（7 节结构化摘要）
-- **验收结论**：PASSED — 摘要已产出且已被规划层消费用于生成 Step 1 方案（判据按 CLAUDE.md §0.4.1 第 4 条，不套用 §5.3 执行类判据）
+- **验收结论**：PASSED — 摘要已产出且已被规划层消费用于生成 Step 1 方案（判据按 system.md §0.4.1 第 4 条，不套用 §5.3 执行类判据）
 - **关键结论**：范围裁定为查看器（Viewer），归档为 [[decisions]] D40
 
 ### Step 1：实现 bpmn adapter 查看器（Viewer）— mount/destroy/highlight + 事件回调
@@ -106,6 +106,19 @@
 - **验收结论**：**PASSED** — 修正后 10 项验收标准（§14.1-10）逐条独立复核全部满足，2026-07-25 判定通过
 - **关键设计**：复用 `repositoryService.getResourceAsStream(deploymentId, resourceName)`（项目内零先例，取原始部署 XML 字节，非 `BpmnXMLConverter` 重新序列化）；Facade 桥接跨越 sw-bpm-process 不依赖 sw-bpm-engine 的模块边界；新端点作为 BpmProcessDefController 同级方法，不新建 Controller；不新增 @PreAuthorize（与 getDef/listDefs 权限暴露水平一致）
 
+### Step 3：前端 ProcessDefList 新增"查看流程图"入口
+
+- **状态**：**PASSED**
+- **目标**：在 `ProcessDefList.vue` 新增操作列"查看流程图"按钮，点击后弹窗内调用 `GET /workflow/defs/{id}/bpmn-xml` 获取 BPMN XML，使用 `mountBpmnViewer` 渲染只读流程图
+- **实际模型**：deepseek-v4-flash（与推荐一致）
+- **方案位置**：`product/bpmn-adapter/passed/step-3-frontend-view-button.md`（已归档）
+- **执行回执摘要**：4 文件修改（api/index.ts +12、ProcessDefList.vue +106/-2、handlers.ts +42、新建 spec.ts ~270 行/10 it()）。四连全绿：typecheck ✅ lint ✅ test ✅（59 文件/517 测试，+1/+10）build ✅。2 处合理偏差（mock 语法适配项目 `MockRegistration` 模式、未引入 `ElMessage` 因实际未使用）、5 个技术问题全部已解决。adapters/bpmn/、package.json、后端均零改动
+- **手工验收修复（3 轮）**：
+  - ① `c5d9e15` — SVGMatrix scale non-finite：移除 `v-show`、`fitViewport` try-catch、`@opened` 重试
+  - ② `c300311` — mock XML 补充 `<sequenceFlow>` + DRAFT 按钮禁用态 CSS 增强
+  - ③ `5ef2eee` — 隐藏 `.bjs-powered-by` Logo + 容器 `height:500px` 显式高度
+- **验收结论**：**PASSED** — 13 项验收标准逐条满足，3 轮修复后四连全绿（typecheck ✅ lint ✅ 517 tests ✅ build ✅）。已知限制：mock BPMN XML 仅最简模板（I30/T10），已由用户确认
+
 ---
 
 ## 5. 测试和验收汇总
@@ -114,34 +127,45 @@
 |------|:---:|:---:|:---:|:---:|:---:|
 | 1 | 10（新增，前端） | 10 | 0 | 0 | **PASSED** |
 | 2 | 10（新增，后端：9 单元 + 1 集成） | 10 | 0 | 0 | **PASSED** |
+| 3 | 10（新增，前端）+ 3 轮手工验收修复验证 | 10 | 0 | 0 | **PASSED** |
 
 ---
 
 ## 6. 功能完成检查清单
 
-- [ ] 所有 Step 均已 PASSED
-- [ ] 已更新 `knowledge/current-status.md`
-- [ ] 已更新 `knowledge/decisions.md`（如有新决策）
-- [ ] 已更新 `knowledge/known-issues.md`（I3 剩余部分修复）
-- [ ] 已生成交接摘要 → `knowledge/session-handoff.md`
-- [ ] 已标注功能清单中对应项状态（如有对应明细项）
+- [x] 所有 Step 均已 PASSED（Steps 0-3 完成闭环，Step 4 由 [[process-monitoring]] 独立功能承接）
+- [x] 已更新 `knowledge/current-status.md`（2026-07-26 阶段三收尾）
+- [x] 已更新 `knowledge/decisions.md`（D40 裁决 BPMN adapter 为只读查看器，2026-07-25）
+- [x] 已更新 `knowledge/known-issues.md`（I3 BPMN 部分标记"查看器已实现"，2026-07-26）
+- [x] 已生成交接摘要 → `knowledge/session-handoff.md`（2026-07-26）
+- [x] 已标注功能清单中对应项状态（M04-F06-01 仍 ⬜，由 [[process-monitoring]] 独立功能推进）
 
 ---
 
 ## 7. 实际修改范围
 
-（功能完成后填写）
-
 | 文件路径 | 修改类型 | 摘要 |
 |----------|:---:|------|
-| | | |
-
----
+| `Smart-WorkFlow-Web/src/adapters/bpmn/index.ts` | 重写（Step 1） | 12→73 行，新导出 `mountBpmnViewer`/`BpmnViewerEvents`/`BpmnViewerInstance`，移除旧 `mountBpmn`/`exportXml` |
+| `Smart-WorkFlow-Web/src/adapters/bpmn/index.spec.ts` | 新建（Step 1） | 227 行/10 测试，SVG API polyfill（jsdom），覆盖率 mount/destroy/highlight/fitViewport/click 事件 |
+| `Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/facade/BpmDeployFacade.java` | 修改（Step 2） | +12 行 — 新增 `getBpmnXml(Long defId): String` 方法签名 |
+| `Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/facade/BpmDeployFacadeImpl.java` | 修改（Step 2） | +22 行 — 实现 `getBpmnXml`（`repositoryService.getResourceAsStream` → `new String(bytes, UTF-8)`） |
+| `Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/BpmProcessDefService.java` | 修改（Step 2） | +12 行 — 新增 `getBpmnXml(Long id): String` |
+| `Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/BpmProcessDefServiceImpl.java` | 修改（Step 2） | +9 行 — 校验 PUBLISHED + 调用 Facade |
+| `Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmProcessDefController.java` | 修改（Step 2） | +15 行 — 新增 `GET /{id}/bpmn-xml` |
+| `Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/exception/BpmErrorCode.java` | 修改（Step 2） | +1 — 新增 `PROCESS_NOT_PUBLISHED(2104)` |
+| `Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-engine/src/test/.../BpmDeployFacadeImplTest.java` | 新建（Step 2） | 2 @Test |
+| `Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-process/src/test/.../BpmProcessDefControllerTest.java` | 新建（Step 2） | 3 @Test |
+| `Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-process/src/test/.../BpmProcessDefServiceImplTest.java` | 新建（Step 2） | 4 @Test |
+| `Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-engine/src/test/.../ApprovalProcessIntegrationTest.java` | 修改（Step 2） | +1 @Test（1→2） |
+| `Smart-WorkFlow-Web/src/modules/workflow/api/index.ts` | 修改（Step 3） | +12 行 — 新增 `getProcessDefGraph(id): Promise<string>` |
+| `Smart-WorkFlow-Web/src/modules/workflow/views/ProcessDefList.vue` | 修改（Step 3） | +106/-2 + 修复（约 +23/-6）— 操作列 + el-dialog 查看器 + 3 轮手工验收修复 |
+| `Smart-WorkFlow-Web/src/foundation/mock/handlers.ts` | 修改（Step 3） | +43 行 — `GET /api/workflow/defs/:id/bpmn-xml` mock（含 sequenceFlow + BPMNEdge） |
+| `Smart-WorkFlow-Web/src/modules/workflow/views/__tests__/ProcessDefList.spec.ts` | 新建（Step 3） | ~270 行/10 it() 测试 |
 
 ## 8. 遗留问题
 
-（功能完成后填写）
-
 | 问题 | 严重程度 | 计划处理 |
 |------|:---:|------|
-| | | |
+| I30/T10: Mock BPMN XML 仅含 StartEvent→EndEvent 最简模板，所有流程显示相同图 | 低 | 已由用户确认当前可接受；真实 BPMN XML 数据源需等流程设计器（M04-F01）就绪后自然解决 |
+| I31: M04-F06-01 流程监控的完整四能力（流程图实时高亮 + 流转记录 + 耗时分析 + 流程干预）未实现 | 中 | 由新功能 [[process-monitoring]] 承接推进，bpmn-adapter 的 Step 4 占位标记为 SUPERSEDED |

@@ -1,6 +1,6 @@
 # Step 0 探索摘要 — BPMN adapter
 
-当前模型：**deepseek-v4-pro（DeepSeek 系）**，可承担角色：探索模型（按 CLAUDE.md §0.4 模型族对照表判定）。
+当前模型：**deepseek-v4-pro（DeepSeek 系）**，可承担角色：探索模型（按 system.md §0.4 模型族对照表判定）。
 
 ---
 
@@ -203,7 +203,7 @@ sw_bpm_process_def.graph_json
 
 方案 A 是主力场景（查看已发布流程的流程图）。方案 B 可在后续 Step 按需添加（设计器预览）。
 
-**注意**：新增后端端点意味着 Step 1 如果选择纯前端实现（adapter 本身 + mock XML），Step 2 还需要后端 Step 来添加该端点。按 CLAUDE.md §6.18 前后端分离约束，这必须拆成两个独立 Step（前端 Step 实现 adapter 防腐层 + 后端 Step 添加 BPMN XML 端点）。
+**注意**：新增后端端点意味着 Step 1 如果选择纯前端实现（adapter 本身 + mock XML），Step 2 还需要后端 Step 来添加该端点。按 system.md §6.18 前后端分离约束，这必须拆成两个独立 Step（前端 Step 实现 adapter 防腐层 + 后端 Step 添加 BPMN XML 端点）。
 
 ---
 
@@ -247,7 +247,7 @@ interface BpmnViewerInstance {
 
 Step 1（纯前端，单文件实现 + 测试，无复杂架构决策）→ `deepseek-v4-flash` 可胜任（对照 flow-graph Step 1 也是 flash）。
 
-Step 2（后端新增端点的接口契约设计 + Flyway 双写）→ `deepseek-v4-pro`（涉及前后端协议 + 数据查询路径选择，触发 CLAUDE.md §2.3 升级条件"涉及前后端协议设计"）。
+Step 2（后端新增端点的接口契约设计 + Flyway 双写）→ `deepseek-v4-pro`（涉及前后端协议 + 数据查询路径选择，触发 system.md §2.3 升级条件"涉及前后端协议设计"）。
 
 ### 7.4 对知识库更新的建议
 

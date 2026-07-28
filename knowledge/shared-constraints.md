@@ -1,7 +1,7 @@
 # 跨项目共享工程约束
 
 > 工作区统一知识库 — 约束分册。记录前后端共同遵守的工程约束与设计原则。
-> 项目特有约束见各项目 `.claude/CLAUDE.md`。
+> 项目特有约束见各项目 `.claude/system.md`。
 >
 > 信息来源：`CLAUDE-java.md` · `CLAUDE-vue.md` · `Smart-WorkFlow-PRD.md`（均来自 `SmartWorkFlow_files.zip`，2026-07-16）。
 
@@ -87,8 +87,8 @@ product/<feature-name>/receipts/
 
 #### 2.4.2 回执内容
 
-- **执行回执**：必须包含 `CLAUDE.md` §7.1 要求的 13 项内容（Step 编号/名称、使用模型、读取文件、修改文件及摘要、执行命令及输出、偏差说明、问题记录、未完成内容、风险、Git diff 摘要、建议测试）
-- **测试回执**：必须包含 `CLAUDE.md` §7.2 要求的 12 项内容（Step 编号/名称、测试环境、前置条件、执行命令、各测试项结果、通过/失败/跳过项、日志、验收标准对照、回归风险、最终结论）
+- **执行回执**：必须包含 `system.md` §7.1 要求的 13 项内容（Step 编号/名称、使用模型、读取文件、修改文件及摘要、执行命令及输出、偏差说明、问题记录、未完成内容、风险、Git diff 摘要、建议测试）
+- **测试回执**：必须包含 `system.md` §7.2 要求的 12 项内容（Step 编号/名称、测试环境、前置条件、执行命令、各测试项结果、通过/失败/跳过项、日志、验收标准对照、回归风险、最终结论）
 
 #### 2.4.3 约束细则
 
@@ -315,7 +315,7 @@ product/<feature-name>/receipts/
 
 | 启动目录 | 角色 | 允许操作 | 禁止操作 |
 |---|---|---|---|
-| `/data/reasonix/files`（规划层） | 根目录规划代理 | 读 `Smart-WorkFlow/` 和 `Smart-WorkFlow-Web/`；拆解 Step；生成/验收方案；维护 `knowledge/` `product/` `todo/` `CLAUDE.md` | 修改两个代码项目内任何业务文件；执行 `mvn`/`pnpm`/`java`/`node` 等状态变更命令 |
+| `/data/reasonix/files`（规划层） | 根目录规划代理 | 读 `Smart-WorkFlow/` 和 `Smart-WorkFlow-Web/`；拆解 Step；生成/验收方案；维护 `knowledge/` `product/` `todo/` `system.md` | 修改两个代码项目内任何业务文件；执行 `mvn`/`pnpm`/`java`/`node` 等状态变更命令 |
 | `Smart-WorkFlow/`（后端执行层） | 后端执行代理 | 读写 `Smart-WorkFlow/` 内文件；执行 `mvn` 系命令；写回执到 `product/<feature>/receipts/` | 读写 `Smart-WorkFlow-Web/` 任何文件；执行 `pnpm`/`npm`/`vite`/`vitest` 等前端命令；拆解 Step 或修改方案 |
 | `Smart-WorkFlow-Web/`（前端执行层） | 前端执行代理 | 读写 `Smart-WorkFlow-Web/` 内文件；执行 `pnpm` 系命令；写回执到 `product/<feature>/receipts/` | 读写 `Smart-WorkFlow/` 任何文件；执行 `mvn`/`java` 等后端命令；拆解 Step 或修改方案 |
 

@@ -2,7 +2,7 @@
 
 > 所属功能：auth-seam-completion（后端 seam 收尾）
 > 域：**纯后端**（只改 `Smart-WorkFlow/`，禁止触碰前端）
-> 本方案按根目录 CLAUDE.md §6 的 17 项结构生成。
+> 本方案按根目录 system.md §6 的 17 项结构生成。
 
 ---
 
@@ -140,11 +140,11 @@
 
 ## 15. 执行回执格式
 
-按根目录 CLAUDE.md §7.1 的 13 项，写入 `product/auth-seam-completion/receipts/step-1-verify-existing-seams-execution.md`。
+按根目录 system.md §7.1 的 13 项，写入 `product/auth-seam-completion/receipts/step-1-verify-existing-seams-execution.md`。
 
 ## 16. 测试回执格式
 
-按根目录 CLAUDE.md §7.2 的 12 项，写入 `product/auth-seam-completion/receipts/step-1-verify-existing-seams-test.md`。最终结论只能是 PASSED / FAILED / BLOCKED 之一。
+按根目录 system.md §7.2 的 12 项，写入 `product/auth-seam-completion/receipts/step-1-verify-existing-seams-test.md`。最终结论只能是 PASSED / FAILED / BLOCKED 之一。
 
 ## 17. 明确禁止事项
 

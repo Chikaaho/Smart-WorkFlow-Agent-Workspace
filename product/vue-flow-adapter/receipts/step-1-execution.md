@@ -37,7 +37,7 @@ Step 1：实现 flow-graph adapter（mount/export/destroy + 事件回调）
 | `src/adapters/flow-graph/index.ts` | 重写 | 从 8 行接口壳重写为 147 行完整实现 |
 | `src/adapters/flow-graph/index.spec.ts` | 新建 | 创建 6 个测试场景，符合 §9.4 |
 
-**无其他文件被修改**（已验证：git status 只显示上述 2 个文件 + 会话启动前已存在的 `.claude/CLAUDE.md` 变更）。
+**无其他文件被修改**（已验证：git status 只显示上述 2 个文件 + 会话启动前已存在的 `.claude/system.md` 变更）。
 
 ## 5. 每个文件的修改摘要
 
@@ -178,7 +178,7 @@ vite v8.1.0 building client environment for production...
 | `index.ts` 新增行 | 147 |
 | `index.ts` 删除行 | 2（原桩代码） |
 | `index.spec.ts` 新增 | 96 行 |
-| 其他文件变更 | 无（`.claude/CLAUDE.md` 为会话启动前已有的预变更） |
+| 其他文件变更 | 无（`.claude/system.md` 为会话启动前已有的预变更） |
 | `package.json`/`pnpm-lock.yaml` 变更 | 无 |
 
 关键变更点：
