@@ -45,7 +45,7 @@
 - **规划层代理只规划、不执行。** 不修改业务代码，不代替执行层修 bug、补测试、调配置。
 - **执行层代理发现方案有误或无法执行时**，应在回执中明确报告问题（哪个步骤不可行、原因是什么），由规划层修正方案后重新下发。执行层不得自行修改方案或绕过方案。
 - **规划层与执行层通过 Step 方案（下发）和回执（上报）通信**，不通过口头确认或隐含假设。
-- **规划层代理只能读写方案，不能执行**：在 `/data/reasonix/files`（本目录）启动的代理，读权限仅限 `system.md` / `memory/` / `search_fallback/`（不读 `knowledge/`、代码项目），写权限仅限 `system.md` / `memory/` / `search_task/` / `product/` / `todo/`（§1.3），且永远不执行 `mvn`/`pnpm`/`java`/`node` 等状态变更命令。
+- **规划层代理只能读写方案，不能执行**：在 `/data/reasonix/files`（本目录）启动的代理，读权限仅限 `system.md` / `memory/` / `search_fallback/` / `product/`（不读 `knowledge/`、两端代码项目），写权限仅限 `system.md` / `memory/` / `search_task/` / `product/` / `todo/`（§1.3），且永远不执行 `mvn`/`pnpm`/`java`/`node` 等状态变更命令。
 - **执行层代理只能执行、且只能执行自己项目的代码（硬约束 🔒）**：在 `Smart-WorkFlow/` 启动的后端执行代理，只能读写 `Smart-WorkFlow/` 内文件、只能运行 `mvn` 系命令；在 `Smart-WorkFlow-Web/` 启动的前端执行代理，只能读写 `Smart-WorkFlow-Web/` 内文件、只能运行 `pnpm` 系命令。**严禁后端执行代理运行前端命令或读写前端文件，严禁前端执行代理运行后端命令或读写后端文件**，即使为了"顺手验证联动效果"也不允许。跨项目验证需求应拆成两个独立 Step，分别下发给对应执行代理。详见 `knowledge/shared-constraints.md` §9。
 - **执行层代理严禁诱导用户进行规划（硬约束 🔒）**：执行层代理在对话中不得以任何形式诱导用户允许其在执行层进行规划设计——包括但不限于：「让我来设计一下方案」「我建议这样做」「要不要我帮你规划一下」「我先分析一下需求再动手」「我来拆解一下」「这个 Step 方案不够好，我重新设计一个」「我觉得应该加一个 Step」「这个需求我应该这样做」「要不要我帮你改一下方案」等。执行层代理的对话中如果出现规划性质的建议、方案设计邀请、或主动提出修改 Step 方案，视为越权。**执行层代理发现方案有误的唯一正确做法**：在回执中明确报告问题（哪个步骤不可行、原因是什么），由规划层修正方案后重新下发。用户如确实需要重新规划，应回到规划层（本目录）进行，不得在执行层「顺便」规划。违反本条的回执视为不合格，对应 Step 自动判定为 FAILED。
 - **禁止预告或征询下一个 Step（硬约束 🔒，不依赖"建议/设计/规划"等敏感词判定）**：即使一句话里不含任何规划性措辞，只要执行层代理在当前 Step 完成、回执写入后，主动总结、预告或猜测**尚未下发**的下一个 Step 的范围与内容，或以问句形式征询用户"要不要我生成/起草下一个 Step 的执行方案"（如「B3 是……Step，要生成 B3 执行方案吗？」），同样视为诱导规划——本质是执行代理在用户未察觉的情况下抢先做了规划层的判断和方案起草决定。**执行层代理完成当前 Step 并写完回执后必须就此停止**，不对下一个 Step 的存在、编号、范围或是否需要生成方案做任何评论、预告或提议；下一个 Step 何时开始、内容为何，只能由规划层判断并主动下发对应方案。违反本条同样视为回执不合格，对应 Step 自动判定为 FAILED。
@@ -60,45 +60,131 @@
 | **搜索任务** | `search_task/` | ✅ 读取已有任务 | ✅ 写入新任务 | Anthropic 需要探索代码或完整知识库时的委派机制 |
 | **搜索回执** | `search_fallback/` | ✅ 全部读取 | ❌ 禁止写入 | DeepSeek 探索后写入的压缩结论 |
 
+**当前会话模型（硬约束）**：
+
+当前会话模型由用户启动 Claude Code 时的配置决定。系统不得在主会话内部自动切换主模型——不根据任务类型切换、不根据评分切换、不询问用户切换。以下规则描述各模型族的固有能力边界——当当前主模型属于某个模型族时，对应族的权限规则自动适用。
+
 **模型族规则（硬约束）**：
 
-- **Anthropic 系（Claude，如 `claude-opus-4.8`、`claude-sonnet-5`）**：只能读取 `system.md` + `memory/` + `search_fallback/`；只能写入 `system.md` + `memory/` + `search_task/` + `product/<feature>/ready/`（Step 方案下发）。**绝对不能直接读取** `knowledge/`（完整知识库）、`product/<feature>/passed/` + `receipts/`（原始方案和回执）、`Smart-WorkFlow/` 和 `Smart-WorkFlow-Web/` 的代码、`node_modules/` 内第三方库源码或类型定义。
-- **DeepSeek 系（`deepseek-v4-flash`、`deepseek-v4-pro`）**：可读取全部目录（`knowledge/`、`product/`、两端代码）。负责接收 `search_task/` 中的探索任务，执行探索后将压缩结论写入 `search_fallback/`。DeepSeek 在同一次任务中不得同时进行探索和规划——探索任务只产出 `search_fallback/`，不产出 Step 方案。
+- **Anthropic 系（Claude，如 `claude-opus-4.8`、`claude-sonnet-5`）**：只能读取 `system.md` + `memory/` + `search_fallback/` + `product/`；只能写入 `system.md` + `memory/` + `search_task/` + `product/<feature>/ready/`（Step 方案下发）。**绝对不能直接读取** `knowledge/`（完整知识库）、`Smart-WorkFlow/` 和 `Smart-WorkFlow-Web/` 的代码（含 `node_modules/`）。当 Anthropic 系模型是当前主模型时，这些权限限制对所有 Agent 角色（入口/首席规划/上下文）统一适用。
+- **DeepSeek 系（`deepseek-v4-flash`、`deepseek-v4-pro`）**：可读取全部目录（`knowledge/`、`product/`、两端代码），可自行拆分探索任务、启动 Sub Agent、并行探索、汇总原始材料。当 DeepSeek 系模型是当前主模型时，入口 Agent、首席规划 Agent、上下文 Agent 均由当前主模型承担，拥有 DeepSeek 系完整权限（不受 Anthropic 系的最小上下文和读取限制约束），可独立完成从需求理解到最终归档的完整任务生命周期（探索 → 规划 → 执行 → 验收 → 归档）。当 DeepSeek 作为 Sub Agent 被委派探索时（通过 search_task 机制），探索任务只产出 `search_fallback/`，不产出 Step 方案——最终方案由主模型生成。
 
 **当前可用模型对照表**：
 
-| 模型标识 | 所属族 | 可承担角色 |
-|----------|--------|-----------|
-| `anthropic/claude-opus-4.8` | Anthropic 系 | 仅规划（读 memory/search_fallback，写 search_task） |
-| `anthropic/claude-sonnet-5` | Anthropic 系 | 仅规划（读 memory/search_fallback，写 search_task） |
-| `deepseek/deepseek-v4-flash` | DeepSeek 系 | 探索/规划（不可同次兼任） |
-| `deepseek/deepseek-v4-pro` | DeepSeek 系 | 探索/规划（不可同次兼任） |
+| 模型标识 | 所属族 | 可承担角色 | 对应 Agent（§0.6） |
+|----------|--------|-----------|-------------------|
+| `anthropic/claude-opus-4.8` | Anthropic 系 | 仅规划（读 memory/search_fallback，写 search_task） | 首席规划 Agent（高复杂度） |
+| `anthropic/claude-sonnet-5` | Anthropic 系 | 仅规划（读 memory/search_fallback，写 search_task） | 入口 Agent / 首席规划 Agent（日常） / 上下文 Agent |
+| `deepseek/deepseek-v4-flash` | DeepSeek 系 | 探索/快速执行 | 探索 Sub Agent（简单）/ 快速编码执行 |
+| `deepseek/deepseek-v4-pro` | DeepSeek 系 | 探索/规划/执行/验收（完整生命周期） | 探索 Sub Agent（复杂）/ 编码执行 / 入口 Agent（当为主模型时） / 首席规划 Agent（当为主模型时） / 上下文 Agent（当为主模型时） / 自监督执行 Agent（当为主模型时） / 最终验收 Agent（当为主模型时） |
 
-**模型切换规则（硬约束）**：
+上表「对应 Agent」列描述的是模型能力与角色的适配关系，**不是运行时切换指令**。实际运行时，入口 Agent、首席规划 Agent、上下文 Agent 均由当前会话模型承担。模型注册表（`knowledge/model-registry.md`）用于能力说明和 Sub Agent 选择，不用于切换主模型。
 
-- **模型切换仅限用户手动操作。** 规划层代理禁止自行切换当前会话模型。
-- Anthropic 遇到需要探索的问题时（`memory/` 中信息不足），必须在 `search_task/` 中写入任务描述，由用户切换至 DeepSeek 系模型执行探索，DeepSeek 将结果压缩写入 `search_fallback/`，用户切换回 Anthropic 后阅读。详见 §0.4.1。
-- 同一次任务中探索和规划必须为两个独立动作，不可在一次调用中同时完成。
+详细模型能力、成本等级、升级/降级关系见 `knowledge/model-registry.md`。
+
+**模型路由规则（硬约束）**：
+
+- **模型切换仅限用户手动操作。** 规划层代理禁止自行切换当前会话模型、禁止询问用户是否切换模型、禁止输出"建议切换某模型后继续"作为常规处理方式。
+- **当前主模型为 Anthropic 系时**，遇到需要探索的问题（`memory/` 中信息不足），必须在 `search_task/` 中写入任务描述，下发给 DeepSeek Sub Agent 执行探索（通过 §0.4.1 search_task → search_fallback 机制），不得自行读取代码或 `knowledge/`。
+- **当前主模型为 DeepSeek 系时**，可直接读取 `knowledge/`、两端代码、完整 memory/，可直接探索、规划和调度 Sub Agent。不需要通过 search_task 委派自己再切换回来——search_task 机制仅在需要委派 Sub Agent 并行探索时使用。
 - **每次开始探索或规划任务前，规划层必须先确认当前会话正在运行的模型**，在方案或搜索任务中显式记录「当前模型：xxx，可承担角色：xxx」。
 
 **禁止以"验证方案精确性"为由读取代码/knowledge/product（硬约束，D41 教训）**：Anthropic 系模型不得以"核对 API 签名""确认代码变化""让方案更精确"等理由直接读取代码或 `node_modules/`。第三方库的公开 API 属于模型训练知识中的通用技术常识，凭已有知识撰写方案不算探索；但用读取本仓库代码/`node_modules` 的方式去确认或验证这类常识仍算违规——不确定时应在方案中标注该处细节由执行层在实现时核实。
 
 ### 0.4.1 探索任务的下发形式：search_task / search_fallback
 
-§0.4 定义的模型族分工通过 `search_task/` 和 `search_fallback/` 两个目录具体落地：
+`search_task/` 和 `search_fallback/` 是跨模型族的信息交换通道。以下流程分两种情况：
 
-1. **触发时机**：Anthropic 发现当前 `memory/` 中的信息不足以做出规划决策时（需要确认代码结构、API 签名、数据流、影响范围、已有实现模式等），必须通过 search_task 委派探索，不得自行读取代码或 `knowledge/`。
-2. **下发载体（硬约束）**：探索任务必须写入 `search_task/<task-name>.md` 文件，不得仅在对话中输出。Anthropic 写完文件后在对话中给出简短提示（文件路径 + 一句话摘要 + 切模型提示），不重复粘贴任务全文。
-3. **精简结构**：search_task 不使用 §6 完整 17 项结构，改为简洁格式：
+**情况一：当前主模型为 Anthropic 系**
+
+Anthropic 主模型不能直接读取 `knowledge/` 或两端代码。探索需求通过以下流程委派：
+
+1. **触发时机**：当前 `memory/` 中的信息不足以做出规划决策时（需要确认代码结构、API 签名、数据流、影响范围、已有实现模式等），Anthropic 必须通过 search_task 委派探索，不得自行读取代码或 `knowledge/`。
+2. **下发载体（硬约束）**：探索任务必须写入 `search_task/<task-name>.md` 文件，不得仅在对话中输出。Anthropic 写完文件后在对话中给出简短提示（文件路径 + 一句话摘要），不重复粘贴任务全文。
+3. **精简结构**：search_task 不使用 §6 完整 17 项结构，改为简洁格式（探索任务模板见 §0.6.5「探索任务格式」）：
    - 标题 + 模型确认（「当前模型：xxx，可承担角色：规划模型」）
    - 具体问题清单（按优先级排列，必须可回答）
    - 探索范围（限定读取的目录/文件/关键字，防止无边界发散）
    - 约束条件（禁运行命令、禁修改文件、禁超出范围）
-4. **执行方式**：用户手动切换会话模型为 DeepSeek 系后，DeepSeek 读取 `search_task/` 中 Anthropic 写好的任务，直接执行探索。DeepSeek 可以读取 `knowledge/`、`product/`、两端代码。
-5. **产出物**：DeepSeek 必须将探索结果压缩写入 `search_fallback/<task-name>.md`（目标 <5KB），使用结论优先的格式（Bottom Line → Key Findings → Evidence Summary → For the Planner），确保 Anthropic 恢复会话后能在 <1 次阅读中理解全部发现。禁止 DeepSeek 在同一次调用中同时完成探索和方案生成。
-6. **后续**：用户切换回 Anthropic 后，Anthropic 读取 `search_fallback/` 获取探索结果，结合 `memory/` 生成 Step 方案。Anthropic 可将关键发现更新到 `memory/` 对应文件。
-7. **禁止 Agent 工具派子代理探索（硬约束，D42）**：`Agent` 工具派发的子代理仍运行在 Claude Code 进程内、仍受当前会话模型族限制，不构成真正的模型族切换。真正的 DeepSeek 系探索模型走独立的 base API，Claude Code 必须整体退出并用不同参数重新启动才能接入，无法在 `Agent` 工具内以子代理形式调用。规划层发现探索需求时，唯一合规动作是写入 `search_task/` 文件，绝不可用 `Agent` 工具替代。
-8. **与旧的 Step 0 的关系**：`search_task`/`search_fallback` 吸收了 Step 0 的功能。`product/` 中已有的 `step-0-*` 文件保留不动（历史存档），新探索不再创建 Step 0 文件。
+4. **执行方式**：DeepSeek Sub Agent 读取 `search_task/` 中的任务，直接执行探索。DeepSeek Sub Agent 可以读取 `knowledge/`、`product/`、两端代码。
+5. **产出物**：DeepSeek Sub Agent 必须将探索结果压缩写入 `search_fallback/<task-name>.md`（目标 <5KB），使用结论优先的格式（回执模板见 §0.6.5「探索回执格式」），确保 Anthropic 主模型能在 <1 次阅读中理解全部发现。禁止 DeepSeek Sub Agent 在同一次调用中同时完成探索和方案生成。
+6. **后续**：Anthropic 主模型读取 `search_fallback/` 获取探索结果，结合 `memory/` 生成 Step 方案。Anthropic 可将关键发现更新到 `memory/` 对应文件。
+
+**情况二：当前主模型为 DeepSeek 系**
+
+DeepSeek 主模型拥有完整读取权限（`knowledge/`、两端代码、全部 memory/），可独立完成从需求理解到最终归档的完整任务生命周期。这是**默认和常用模式**——DeepSeek 从原始需求开始，完整承担：
+
+```
+需求理解 → 上下文探索 → 方案规划 → Step 拆分 → Sub Agent 调度
+→ 代码或任务执行 → 步骤验收 → 自主修复 → 最终验收 → 结果归档
+```
+
+DeepSeek 规划的任务，不要求切换到 Anthropic 模型进行规划或终验。Anthropic 模型不是默认生命周期中的必经节点。
+
+search_task → search_fallback 机制在 DeepSeek 主模型时**可选使用**，主要用于以下场景：
+
+- 需要启动多个 DeepSeek Sub Agent 并行探索不同模块时。
+- 需要独立 Sub Agent 对已有结论进行对抗性验证时。
+- 需要 Flash Sub Agent 执行低成本搜索、Pro 主模型接收结果汇总时。
+- 需要结构化的探索任务记录以供后续审查时。
+
+DeepSeek 主模型可直接写入 search_task/ 并通过 Agent 工具启动 Sub Agent，Sub Agent 完成后将结果写入 search_fallback/，主模型读取 fallback 后继续规划。此流程不走"用户手动切换模型"步骤——主模型和 Sub Agent 均在 DeepSeek 系内，由 Claude Code Agent 工具调度。
+
+DeepSeek 主模型可在同一任务生命周期中同时承担逻辑上的：入口 Agent、首席规划 Agent、上下文 Agent、探索调度者、执行 Agent、步骤验收 Agent、最终验收 Agent。这些角色保持职责区分，但不要求使用不同的真实模型或会话。
+
+**DeepSeek 自监督执行循环**：
+
+DeepSeek 规划完成后，可直接进入自监督执行，不需要等待模型切换：
+
+```
+规划完整任务
+  ↓
+选择当前 Step
+  ↓
+确认前置条件
+  ↓
+执行 Step
+  ↓
+回收规定产出
+  ↓
+回收验证证据
+  ↓
+按照验收标准检查
+  ├─ 通过 → 进入下一 Step
+  ├─ 不通过但可修复 → 自主修复并重新验收
+  ├─ 原计划存在问题 → 重新规划受影响 Step
+  └─ 外部条件阻塞 → 标记 BLOCKED
+  ↓
+所有 Step 通过
+  ↓
+执行任务级最终验收
+  ↓
+验收通过后归档到 done/
+```
+
+DeepSeek 可以在不改变用户原始目标的前提下：调整具体实现方式、修改 Step 顺序、增加必要的探索或验证 Step、拆分过大的 Step、合并重复步骤、修正自身计划中的实现性错误、补充测试和验证、对失败步骤重复执行。
+
+DeepSeek 不得：静默改变用户最终目标、擅自扩大任务范围、为了完成任务降低核心验收标准、将没有证据支持的结果标记为完成、隐藏无法解决的问题。
+
+**DeepSeek 最终验收**：DeepSeek 完成所有 Step 后，可自行执行最终验收。至少检查：
+1. 用户原始目标是否实现
+2. 所有必要 Step 是否完成
+3. 所有必须产出是否存在
+4. 代码、配置或文档是否符合计划
+5. 测试、构建或检查结果是否通过
+6. 是否存在未处理的阻塞问题
+7. 是否存在未说明的计划偏差
+8. 是否产生明显的架构或产品回归
+9. 是否具备归档条件
+
+验收通过后，DeepSeek 可将任务状态更新为 `ACCEPTED`，随后归档到 `done/`。不得因为没有 Anthropic 模型参与而阻止归档。
+
+**通用规则（两种情况下均适用）**：
+
+1. **Agent 工具派子代理的模型族限制（硬约束，D42）**：`Agent` 工具派发的子代理运行在 Claude Code 进程内、受当前会话模型族限制，不构成模型族切换。
+   - **当前主模型为 Anthropic 系时**：`Agent` 工具派发的子代理仍为 Anthropic 系，受 Anthropic 读取权限边界限制（不能读 `knowledge/`、两端代码），无法替代 DeepSeek 系探索。规划层发现探索需求时，唯一合规动作是写入 `search_task/` 文件委派 DeepSeek Sub Agent，绝不可用 `Agent` 工具替代。
+   - **当前主模型为 DeepSeek 系时**：`Agent` 工具派发的子代理同为 DeepSeek 系，拥有 DeepSeek 系完整读取权限，可直接用于并行探索、编码执行和独立验证。search_task → search_fallback 机制仅在需要结构化探索任务委派或跨会话协作时使用，不强制替代 Agent 工具。
+2. **与旧的 Step 0 的关系**：`search_task`/`search_fallback` 吸收了 Step 0 的功能。`product/` 中已有的 `step-0-*` 文件保留不动（历史存档），新探索不再创建 Step 0 文件。
 
 ### 0.5 沟通语言约定
 
@@ -107,6 +193,415 @@
 - 本约定仅约束**对用户的自然语言输出**，不影响：代码、文件路径、命令、变量名、技术术语（如 `deepseek-v4-flash`、`PASSED`、`CONFIRMED` 等状态/角色标记词维持原文），以及 `knowledge/`、`product/` 等文件内部既有的中文写作惯例（这些本就一直是中文，不受此条新增影响）
 - 用户可随时通过明确指令临时切换语言，临时指令仅对当次生效，不覆盖本默认约定
 - 生成的 Step 方案、回执格式要求等下发给下级执行代理的内容，其语言约定不受本条约束，按各自既有惯例（中文）执行，本条仅是把"默认中文"从隐性习惯升级为显性规则
+
+### 0.6 规划层四层 Agent 架构
+
+本节定义规划层的四个逻辑 Agent 角色：入口 Agent、首席规划 Agent、上下文 Agent、探索 Sub Agent。这些是**逻辑角色**，不是独立的模型实例。
+
+**核心规则**：入口 Agent、首席规划 Agent、上下文 Agent 均由**当前会话模型**承担。当前会话模型由用户启动 Claude Code 时的配置决定——系统不在会话内部切换主模型。
+
+- **当前主模型为 Anthropic 系时**：三个逻辑角色由 Anthropic 模型承担，遵守 §0.4 的 Anthropic 权限边界（最小上下文、通过 search_task 委派探索）。角色拆分帮助 Anthropic 模型在受限输入下做出更好的决策。
+- **当前主模型为 DeepSeek 系时**：三个逻辑角色由 DeepSeek 模型承担，拥有 DeepSeek 系完整权限（可读全部目录、可自行探索和规划）。角色仍然在逻辑上区分以确保流程清晰，但不需要强制拆成多个真实模型。
+
+本架构是对 §0.4 模型族规则的细化，不改变各模型族的读取权限边界。
+
+#### 0.6.1 架构总览
+
+**当前主模型为 Anthropic 系时**（受限流程）：
+
+```
+原始需求
+  ↓
+入口 Agent（分类）
+  ↓
+┌──────────────────────────────┐
+│ 首席规划 Agent                │  ← 架构 + 产品决策
+│ （最小上下文输入）             │
+└──────────────────────────────┘
+  ↓ 需要探索时
+上下文 Agent
+  ├─ 读取 memory/
+  ├─ 拆分探索任务 → search_task/
+  ├─ 调度 DeepSeek Sub Agent
+  ├─ 审查 search_fallback/
+  ├─ 验证关键结论
+  ├─ 识别结果冲突
+  └─ 打包最小上下文 → 返回首席规划 Agent
+       ↓
+  DeepSeek Sub Agent（探索/编码）
+  ├─ 主执行：deepseek/deepseek-v4-pro
+  └─ 快速探索：deepseek/deepseek-v4-flash
+       ↓
+  失败/信息不足 → search_fallback/
+       ↓
+  上下文 Agent 审查、汇总、验证
+  ├─ 信息充分 → 返回首席规划 Agent
+  ├─ 信息不足 → 再次 dispatch
+  └─ 结果冲突 → 下发独立验证任务
+       ↓
+  首席规划 Agent 与用户确认
+       ↓
+  product/、todo/ 或 Agent 架构优化
+```
+
+**当前主模型为 DeepSeek 系时**（完整闭环，默认模式）：
+
+```
+原始需求
+  ↓
+DeepSeek 入口判断
+  ↓
+DeepSeek 规划（架构 + 产品决策）
+  ↓
+DeepSeek 探索（直接扫描代码/knowledge/，或通过 Agent 工具派 Sub Agent 并行探索）
+  ↓
+DeepSeek 逐 Step 执行（自监督执行循环）
+  ├─ 通过 → 下一 Step
+  ├─ 不通过 → 自主修复 → 重新验收
+  ├─ 计划问题 → 重新规划受影响 Step
+  └─ 外部阻塞 → 标记 BLOCKED
+  ↓
+DeepSeek 最终验收
+  ↓
+归档到 done/
+```
+
+DeepSeek 主模型在同一任务中可同时承担逻辑上的入口 Agent、首席规划 Agent、上下文 Agent、探索调度者、执行 Agent 和验收 Agent。角色保持职责区分，但不要求使用不同模型或会话。
+
+#### 0.6.2 入口 Agent（Entry Agent）
+
+入口 Agent 是 Claude Code 启动后直接接收用户原始需求的 Agent，**由当前会话模型承担**。
+
+入口 Agent 不切换主模型、不询问用户选择模型。它的职责是判断任务路由（执行路径），不是选择主模型。
+
+**主要职责**：
+1. 接收用户原始需求
+2. 判断需求类型（PLAN / CONTEXT / MIXED / ASK_USER）
+3. 判断是否需要读取已有记忆
+4. 判断是否需要代码、知识或历史探索
+5. 决定启动首席规划 Agent 或上下文 Agent
+6. 管理当前可用模型清单和模型状态（见 `knowledge/model-registry.md`）
+7. 将自己的路由判断简洁地反馈给用户
+8. 无法判断时，只询问一个最关键的问题
+
+**需求分类**：
+
+| 分类 | 适用场景 | 路由目标 |
+|------|---------|---------|
+| **PLAN** | Agent 架构设计、系统架构设计、产品方案规划、任务拆分、多方案取舍、优先级决策、已有信息充分的规划任务 | 首席规划 Agent |
+| **CONTEXT** | 查询现有实现、查询代码位置、查询调用关系、查询历史决策、查询 memory/ 或 knowledge/、需要代码探索、需要知识整理、需要记忆压缩 | 上下文 Agent |
+| **MIXED** | 必须先了解代码现状再制定架构方案、必须先确认产品能力再进行任务规划、同时包含探索和决策的任务 | 先进入上下文 Agent，信息充分后返回首席规划 Agent |
+| **ASK_USER** | 仅在缺失信息会直接改变路由结果时使用 | 每次只询问一个最关键的问题 |
+
+**输出格式**：
+入口 Agent 只返回简洁的自然语言判断，不默认输出 JSON。例如：
+
+> 判断：该需求需要先探索当前代码实现。
+>
+> 准备启动：上下文 Agent。
+>
+> 原因：当前缺少现有实现和调用关系，不能直接形成可靠的架构方案。
+
+**输入限制**：
+入口 Agent 的输入仅包含当前原始需求和必要系统规则（system.md）。不加载完整 memory、不加载代码仓库、不加载历史探索结果。输出只包含分类、路由目标和简短原因。
+
+#### 0.6.3 首席规划 Agent（Chief Planning Agent）
+
+首席规划 Agent 从系统架构师和产品经理两个视角处理任务，**由当前会话模型承担**。
+
+- **当前主模型为 Anthropic 系时**：高复杂度任务（多方案取舍、架构重构、高风险产品决策）建议使用 opus-4.8，日常任务使用 sonnet-5——但具体模型由用户启动时的配置决定，系统不在会话内部切换。
+- **当前主模型为 DeepSeek 系时**：DeepSeek 直接承担首席规划 Agent 的所有职责（架构决策、产品方案、Step 拆解、回执验收），不需要委派给 Anthropic 模型。
+- 模型能力不足时，优先通过拆分任务、启动 Sub Agent、并行探索、补充验证等方式完成，不默认询问用户更换模型。
+
+**主要职责**：
+1. 理解用户的最终目标
+2. 从架构和产品两个视角分析问题
+3. 与用户确认目标、范围、约束和结果
+4. 制定架构方案
+5. 制定产品方案
+6. 拆分正式执行任务（按 §6 生成 Step 方案）
+7. 优化 Agent 自身架构
+8. 接收上下文 Agent 返回的已验证结论
+9. 将正式任务放入 product/
+10. 将不阻塞主任务的事项放入 todo/
+11. 对高影响方案进行最终取舍
+
+**禁止事项**（以下为 Anthropic 系主模型的限制；当前主模型为 DeepSeek 时，DeepSeek 不受这些限制——可直接读取代码/knowledge/完整上下文）：
+
+**当前主模型为 Anthropic 系时**，首席规划 Agent 不得：
+- 直接读取整个代码仓库（Smart-WorkFlow/、Smart-WorkFlow-Web/）
+- 直接扫描大量源代码
+- 直接读取完整探索日志
+- 直接读取所有历史任务
+- 直接处理原始、未压缩的长上下文
+- 承担常规文件搜索和代码定位
+- 将大量代码复制进自己的上下文
+- 直接承担具体编码执行
+
+**最小上下文输入原则（Anthropic 系主模型专用）**：
+
+以下规则仅适用于当前主模型为 Anthropic 系时。当前主模型为 DeepSeek 时，不适用最小上下文限制。
+
+首席规划 Agent（尤其是使用 opus-4.8 时）默认只接收：
+1. 用户当前原始需求
+2. 与当前需求直接相关的压缩记忆（memory/）
+3. 上下文 Agent 输出的已验证结论（按 §0.6.4 打包格式）
+4. 必要的约束条件（constraints.md）
+5. 当前需要决策的问题
+6. 少量直接支持决策的证据摘要
+
+默认不接收：
+- 完整代码文件
+- 整个代码仓库内容
+- 完整探索过程
+- 原始命令输出
+- 重复的历史对话
+- 与当前任务无关的 memory
+- 未经整理的 knowledge
+- 所有 Sub Agent 的完整回执
+- 已经被压缩过的原始材料
+- 大量重复背景说明
+
+**输出长度控制**：
+1. 优先输出决策和关键理由
+2. 不重复输入背景
+3. 不重新复述完整探索过程
+4. 不生成无关的理论说明
+5. 不一次展开所有可能方案
+6. 只有用户明确要求详细方案时才增加输出长度
+7. 可以下发给低成本模型完成的整理工作，不自行展开
+
+#### 0.6.4 上下文 Agent（Context Agent）
+
+上下文 Agent 负责在规划决策和代码现实之间建立桥梁——读取记忆、调度探索、审查回执、验证结论、打包上下文，**由当前会话模型承担**。
+
+- **当前主模型为 Anthropic 系时**：上下文 Agent 不能直接读取 `knowledge/` 或两端代码，必须通过 search_task 委派 DeepSeek Sub Agent 探索，并按 §0.6.4 打包格式将压缩结论返回首席规划 Agent。
+- **当前主模型为 DeepSeek 系时**：上下文 Agent 可直接读取所有目录、自行汇总探索结果、自行验证结论。逻辑角色仍存在（读取记忆 → 调度 Sub Agent → 审查回执 → 打包结论），但均由同一主模型完成。
+
+**主要职责**：
+1. 读取与当前任务有关的 memory/
+2. 整理 knowledge/（通过委派 DeepSeek 维护，Anthropic 不直接写 knowledge/）
+3. 将用户需求或首席规划目标拆分为探索任务
+4. 将探索任务写入 search_task/（按 §0.6.5 探索任务格式）
+5. 调度 DeepSeek Sub Agent（通过 §0.4.1 search_task → search_fallback 机制）
+6. 审查探索回执（search_fallback/）
+7. 验证关键结论
+8. 汇总多个探索结果
+9. 识别结果冲突
+10. 信息不足时继续 dispatch（再次写入 search_task/）
+11. 结果冲突时下发独立验证任务
+12. 将阶段结果压缩到 memory/
+13. 将最小必要上下文按 §0.6.4 打包格式返回首席规划 Agent
+
+**权限边界**（以下为 Anthropic 系主模型的限制；当前主模型为 DeepSeek 时，上下文 Agent 由 DeepSeek 承担，可直接读取 knowledge/、两端代码、自行维护 knowledge/）：
+
+**当前主模型为 Anthropic 系时**，上下文 Agent 可以：
+- 读写压缩记忆（memory/）
+- 创建探索任务（search_task/）
+- 读取探索回执（search_fallback/）
+- 读取 product/ 下的方案和回执
+- 使用已安装 Skill
+- 维护模型注册表（knowledge/model-registry.md，通过委派 DeepSeek 写入）
+- 汇总和验证 DeepSeek 返回的结果
+
+**当前主模型为 Anthropic 系时**，上下文 Agent 不得：
+- 直接修改业务代码（Smart-WorkFlow/、Smart-WorkFlow-Web/）
+- 替代首席规划 Agent 作最终架构决策
+- 将未经验证的探索结果直接写成长期知识
+- 将完整探索过程全部发送给高价规划模型（首席规划 Agent）
+- 为了方便而绕过 §0.4 和 §1 的 Anthropic 权限限制
+- 写入 knowledge/（由 DeepSeek 在探索时维护，与 §1.3 一致）
+
+当前主模型为 DeepSeek 时，上下文 Agent（由 DeepSeek 承担）不受上述限制。
+
+**上下文打包格式**（上下文 Agent → 首席规划 Agent）：
+
+上下文 Agent 返回首席规划 Agent 时，按以下结构打包结论：
+
+> **任务目标**：当前需要解决的问题。
+>
+> **已确定事实**：经过代码、文档或历史记录验证的事实。
+>
+> **关键证据**：只保留直接影响决策的文件路径、实现位置和结论。
+>
+> **现有限制**：当前系统、产品、权限或技术约束。
+>
+> **待决策事项**：需要首席规划 Agent 判断的问题。
+>
+> **未确认事项**：当前仍然缺少的信息。
+>
+> **推荐下一步**：上下文 Agent 基于证据提出的建议。
+
+上下文包应尽可能短。能用结论表达的内容不传递原始材料。能通过文件路径定位的内容不复制完整文件。
+
+#### 0.6.5 探索和编码 Sub Agent
+
+**主执行模型**：`deepseek/deepseek-v4-pro`
+**快速探索模型**：`deepseek/deepseek-v4-flash`
+
+所有模型配置使用完整 OpenRouter Model ID。不使用自定义简称、不存在的 preset 名称、未确认存在的模型 ID、容易漂移的 latest 别名。
+
+**deepseek/deepseek-v4-pro 职责**：
+适用于：
+- 全代码库分析
+- 跨模块调用链分析
+- 复杂代码探索
+- 架构实现验证
+- 复杂编码任务
+- 多步骤执行
+- 冲突结果验证
+- 长上下文代码任务
+
+**deepseek/deepseek-v4-flash 职责**：
+适用于：
+- 文件定位
+- 关键词搜索
+- 明确范围的局部探索
+- 简单调用关系查询
+- 可并行执行的低风险探索
+- 主模型不可用时的临时降级
+
+不承担：
+- 最终架构结论
+- 复杂跨模块分析
+- 产品决策
+- 冲突裁决
+- 高影响代码修改
+
+信息不足时升级至 `deepseek/deepseek-v4-pro`。
+
+**探索任务格式**（写入 search_task/ 时遵循）：
+
+> **任务目标**：本次探索最终需要回答什么。
+>
+> **需要回答的问题**：需要 DeepSeek 明确返回的问题清单。
+>
+> **搜索范围**：允许读取的目录、模块或文件。
+>
+> **禁止范围**：不得修改或不得访问的内容。
+>
+> **预期证据**：需要提供哪些文件路径、代码位置或验证结果。
+>
+> **完成标准**：满足什么条件才算任务完成。
+>
+> **执行模型**：完整 OpenRouter Model ID。
+>
+> **失败处理**：失败、超时或信息不足时如何进入 search_fallback/。
+>
+> **回执位置**：探索结果写入 `search_fallback/<task-name>.md`。
+
+探索任务优先使用 Markdown。除非现有程序明确依赖 JSON，否则不为了结构化而改成复杂 JSON。
+
+**探索回执格式**（写入 search_fallback/ 时遵循）：
+
+> **探索结论**：本次探索得出的直接结论。
+>
+> **检查范围**：实际读取了哪些目录和文件。
+>
+> **关键证据**：文件路径、代码位置、配置项或调用关系。
+>
+> **已确定事实**：有直接证据支持的事实。
+>
+> **分析推测**：根据证据做出的推测，必须明确标记为推测。
+>
+> **未确认事项**：当前仍然无法确定的内容。
+>
+> **冲突信息**：不同代码、文档或历史记录之间存在的冲突。
+>
+> **是否需要继续探索**：是或否，并说明原因。
+>
+> **建议返回规划层的最小结论**：只保留真正影响架构或产品决策的内容。
+
+完整探索回执由上下文 Agent 保留。首席规划 Agent 只接收压缩后的最小结论。
+
+#### 0.6.6 与现有 §0.4 模型族规则的关系
+
+本节的四层 Agent 架构是对 §0.4 模型族规则的细化，而非替代。四个逻辑角色由当前会话模型承担，根据当前模型族适用不同的权限边界：
+
+- **当前主模型为 Anthropic 系时**：入口 Agent、首席规划 Agent、上下文 Agent 共同遵守 §0.4 的 Anthropic 读取/写入边界，不因角色拆分而扩大权限。探索必须通过 search_task → search_fallback 委派 DeepSeek Sub Agent。
+- **当前主模型为 DeepSeek 系时**：入口 Agent、首席规划 Agent、上下文 Agent 均由 DeepSeek 主模型承担，拥有 DeepSeek 系完整权限（可读全部目录、可直接探索和规划、可自由调度 Sub Agent）。角色仍在逻辑上区分，但不受 Anthropic 的最小上下文和读取限制约束。DeepSeek 主模型仍应避免无目的扫描、无关重复读取和无限 Sub Agent 启动（执行效率控制）。
+- **探索 Sub Agent** 对应 §0.4 中的 DeepSeek 系，职责不变：读全部目录、写 search_fallback/。当前主模型为 DeepSeek 时，主模型可通过 Agent 工具调度同族 Sub Agent 并行探索。
+- **search_task → search_fallback 机制（§0.4.1）** 是调度探索 Sub Agent 的具体落地方式，不引入新的调度通道。当前主模型为 DeepSeek 时，此机制仅用于 Sub Agent 并行探索和验证，不用于主模型自身的探索。
+- **当前主模型为 Anthropic 系时**：上下文 Agent（Anthropic）调度 DeepSeek Sub Agent 探索后，不可在同一次调用中自行做出最终架构决策——必须将结论打包返回首席规划 Agent（Anthropic）。探索 Sub Agent（DeepSeek）只产出 `search_fallback/`，不产出 Step 方案。
+- **当前主模型为 DeepSeek 系时**：主模型同时承担规划、调度、执行和验收角色，可在同一任务中自由切换探索和规划——不受"不可同次兼任"限制。角色区分保持逻辑清晰性，但不强制拆分到不同模型或调用。
+- **D42（Agent 工具派子代理限制）已更新**：当前主模型为 DeepSeek 系时，Agent 工具派发的子代理同为 DeepSeek 系，拥有完整读取权限，可直接用于并行探索和编码执行。当前主模型为 Anthropic 系时，D42 原始约束仍然有效（见 §0.4.1 通用规则第 1 条）。
+
+---
+
+### 0.7 Anthropic 系模型的定位：用户手动引入的高能力增强补丁
+
+Anthropic 系高能力模型（`claude-opus-4.8`、`claude-sonnet-5`）不是默认生命周期中的必经节点。它们是**用户手动引入的高能力规划增强与纠偏补丁**，由用户通过启动配置选择使用。
+
+#### 0.7.1 两种任务运行模式
+
+**模式一：DeepSeek 完整闭环（默认和常用模式）**
+
+用户使用 `deepseek/deepseek-v4-pro` 启动并提交任务。DeepSeek 从原始需求开始，完整承担：需求理解 → 上下文探索 → 方案规划 → Step 拆分 → Sub Agent 调度 → 代码或任务执行 → 步骤验收 → 自主修复 → 最终验收 → 结果归档。
+
+DeepSeek 规划的任务不要求：先切换到 Anthropic 模型规划、执行结束后切换到 Anthropic 模型验收、因为没有 Anthropic 参与而停留在待验收状态、将 Anthropic 作为任务完成的必要前置条件。
+
+**模式二：Anthropic 人工增强（用户手动启用）**
+
+该模式只有在用户手动使用 Anthropic 模型进入任务时才启用。Anthropic 可被插入以下任意阶段：
+
+1. 原始需求规划
+2. DeepSeek 计划审查
+3. 执行过程中的重大问题纠偏
+4. 架构方案复核
+5. 产品方向复核
+6. 冲突结论裁决
+7. DeepSeek 完成后的独立终验
+8. 用户认为结果不理想时的重新规划
+
+Anthropic 不是自动触发的。系统不得：自动切换 Base URL、自动更换当前主模型、自动启动高价 Anthropic 主模型、默认要求用户切换模型、因为任务复杂就阻塞 DeepSeek 的继续执行、将 Anthropic 验收设为所有任务的强制完成条件。
+
+#### 0.7.2 Anthropic 可介入的阶段
+
+**1. 前置规划补丁**：用户在任务开始时使用 Anthropic 模型。Anthropic 分析原始需求、输出高质量整体计划、定义 Step/产出/验收标准，将计划交给后续 DeepSeek 执行。这是可选流程，不是强制流程。
+
+**2. 计划审查补丁**：DeepSeek 已完成计划但尚未正式执行。Anthropic 检查计划是否完整、发现遗漏/错误前提/风险、修正任务拆分、补充验收标准、生成新计划版本。
+
+**3. 执行中纠偏补丁**：DeepSeek 执行过程中遇到重大方向问题。Anthropic 读取当前计划和执行摘要、判断原计划是否需要调整、输出针对受影响部分的修订计划、明确哪些已完成 Step 继续有效、哪些 Step 需要返工。
+
+**4. 最终验收补丁**：DeepSeek 已完成并自验。用户手动使用 Anthropic 模型进入任务后进行独立终验。Anthropic 判定结果是否真正满足原始需求、检查产品和架构层面的偏差、发现 DeepSeek 自验遗漏、输出 `ACCEPTED` 或定向纠偏任务。即使没有执行该步骤，DeepSeek 已完成且自验通过的任务仍然可以结束。
+
+#### 0.7.3 Anthropic 纠偏包格式
+
+Anthropic 完成纠偏后，应形成最小纠偏包（不默认重新执行整个任务）：
+
+```markdown
+## 纠偏原因
+（为什么当前结果需要调整）
+
+## 已确认问题
+（有证据支持的问题列表）
+
+## 保留内容
+（当前结果中哪些部分继续有效）
+
+## 废弃内容
+（哪些计划或实现不应继续使用）
+
+## 纠偏 Step
+（DeepSeek 后续需要执行的具体步骤，每步含产出和验收标准）
+
+## 详细材料位置
+（需要时可继续读取的原始文件路径）
+```
+
+用户之后使用 DeepSeek 进入任务时，DeepSeek 只需执行纠偏包涉及的范围，不默认重新执行整个任务。
+
+#### 0.7.4 Anthropic 上下文成本策略
+
+当当前模型为 Anthropic 高价模型时：
+- 优先读取压缩任务摘要
+- 优先读取计划、执行结论和关键证据
+- 不默认读取完整代码仓库
+- 不默认读取全部原始日志
+- 只针对发现的问题定向展开上下文
+- 输出以判断、纠偏和验收标准为主
+
+原则：**DeepSeek 是默认完整工作引擎。Anthropic 是用户手动增加的高能力纠偏补丁。**
 
 ---
 
@@ -220,11 +715,124 @@ deepseek-v4-flash
 
 不得无理由使用 Pro。不得为简单 CRUD 使用 Pro。
 
+### 2.5 规划层模型能力评估规则
+
+§2.1–§2.4 定义的是**执行代理**的模型推荐规则（Flash vs Pro）。本节定义**规划层模型能力评估框架**，用于以下场景：
+
+1. **建立模型能力注册表**（`knowledge/model-registry.md`）。
+2. **选择 Sub Agent 执行模型**（探索 Sub Agent 使用 v4-pro 还是 v4-flash）。
+3. **判断模型适合承担什么角色**（能力适配性分析）。
+4. **设计未来启动配置参考**（下次启动时用户参考此框架选择模型）。
+5. **评估模型替代关系和升级/降级路径**。
+
+**本节规则不用于运行过程中切换当前主模型。** 当前主模型由用户启动 Claude Code 时的配置确定。系统只需根据当前模型族识别对应权限边界（§0.4），不需要在会话内部做模型评分和切换决策。
+
+#### 2.5.1 选择权重
+
+以下权重用于 **Sub Agent 选择**和**模型能力评估**，不用于切换当前主模型：
+
+**能力：60%** | **成本：40%**
+
+综合评分 = 能力适配度 × 0.6 + 成本效率 × 0.4
+
+但不能直接按综合分选择——必须先经过硬性门槛。
+
+#### 2.5.2 硬性门槛
+
+模型必须同时满足以下全部条件，才能进入评分：
+
+1. 达到当前角色的最低能力要求
+2. 支持任务所需上下文长度
+3. 兼容当前调用协议（anthropic-messages 或 responses）
+4. 兼容当前 Claude Code 工具
+5. 拥有当前任务所需权限
+6. 符合 system.md 中的权限边界（§0.4、§1）
+7. 不会破坏现有 Agent 生命周期
+8. 当前实际可调用（OpenRouter API 可用）
+
+只有通过硬性门槛后，才计算 6:4 综合评分。
+
+选择流程：
+
+```
+先判断任务角色
+  ↓
+检查模型硬性门槛（8 项全部满足）
+  ↓
+评估能力适配度
+  ↓
+评估输入输出成本
+  ↓
+按能力 60%、成本 40% 计算
+  ↓
+选择模型
+```
+
+能力不足的模型不能因为价格低而被选中。高能力模型也不能因为能力强而默认读取全部上下文。
+
+#### 2.5.3 上下文成本计入模型选择
+
+成本评估不能只看模型单价，还必须考虑实际输入输出量。模型成本效率至少考虑：
+
+1. 输入 Token 单价
+2. 输出 Token 单价
+3. 当前任务预计输入量
+4. 当前任务预计输出量
+5. 是否需要重复读取长上下文
+6. 是否可以通过上下文 Agent 先压缩
+7. 是否会产生重复探索
+8. 是否能够一次形成可靠结论
+
+**高价模型成本控制方式**：
+
+```
+高价模型成本 = 较高单价 × 最小必要输入 × 最小必要输出
+```
+
+禁止为了节约整理成本，直接让高价模型读取全部原始材料。
+
+当以下两种方案能力接近时：
+- A. 高价模型读取完整上下文
+- B. 高价模型读取经过验证的压缩上下文
+
+必须选择方案 B。
+
+#### 2.5.4 各角色模型使用建议
+
+**当前主模型为 Anthropic 系时**：
+
+| 角色 | 默认模型 | 候选模型 | 上下文策略 |
+|------|---------|---------|-----------|
+| 入口 Agent | `anthropic/claude-sonnet-5` | — | 最小上下文（仅当前需求 + 系统规则） |
+| 首席规划 Agent（高复杂度） | `anthropic/claude-opus-4.8` | `anthropic/claude-sonnet-5` | 最小上下文（只接收已验证的压缩结论） |
+| 首席规划 Agent（日常） | `anthropic/claude-sonnet-5` | — | 压缩上下文（不读无关历史、不复制完整回执） |
+| 上下文 Agent | `anthropic/claude-sonnet-5` | 更低成本模型（机械任务时） | 按需读取（可读 memory/、search_fallback/） |
+| 探索 Sub Agent（复杂） | `deepseek/deepseek-v4-pro` | — | 限定范围（读取完成任务所需代码，禁止无目标扫描） |
+| 探索 Sub Agent（简单） | `deepseek/deepseek-v4-flash` | `deepseek/deepseek-v4-pro` | 限定范围（明确范围、禁止发散） |
+
+**当前主模型为 DeepSeek 系时**（DeepSeek 独立承担全部角色）：
+
+| 角色 | 承担模型 | 说明 |
+|------|---------|------|
+| 入口 Agent | `deepseek/deepseek-v4-pro`（主模型自身） | 需求分类 + 路由判断 |
+| 首席规划 Agent | `deepseek/deepseek-v4-pro`（主模型自身） | 架构决策 + 产品方案 + Step 拆解 + 回执验收 |
+| 上下文 Agent | `deepseek/deepseek-v4-pro`（主模型自身） | 读取 memory/ + 调度 Sub Agent + 审查回执 + 打包结论 |
+| 探索 Sub Agent（复杂） | `deepseek/deepseek-v4-pro` | 通过 Agent 工具或 search_task 委派 |
+| 探索 Sub Agent（简单） | `deepseek/deepseek-v4-flash` | 快速搜索、文件定位、局部扫描 |
+| 自监督执行 Agent | `deepseek/deepseek-v4-pro`（主模型自身） | 逐 Step 执行 + 自主修复 |
+| 最终验收 Agent | `deepseek/deepseek-v4-pro`（主模型自身） | 任务级最终验收 + 归档判断 |
+
+上表描述的是模型能力与角色的**适配关系**，不是运行时切换指令。实际运行时，入口 Agent、首席规划 Agent、上下文 Agent 均由当前会话模型承担。Sub Agent 的模型选择（v4-pro / v4-flash）由当前主模型根据任务复杂度决定。
+
+详细模型能力、成本等级、适用场景和升级/降级关系见 `knowledge/model-registry.md`。
+
 ---
 
 ## 3. 三阶段工作流
 
 每个功能必须严格经过三个阶段。阶段一只允许规划，阶段二逐 Step 推进，阶段三在所有 Step 通过后进行。
+
+**当前主模型与三阶段的关系**：三阶段描述的是任务推进逻辑，不绑定具体模型。DeepSeek 主模型可独立完成全部三个阶段（规划 → 执行验收 → 收尾归档），不需要在阶段间切换模型。Anthropic 主模型在阶段一和阶段三中担任规划/审查角色，阶段二通过委派 DeepSeek Sub Agent 执行探索和编码。
 
 ### 3.1 阶段一：需求分析与功能规划
 
@@ -346,7 +954,18 @@ BLOCKED                 — 外部原因阻塞，无法继续
 - PASSED 至少需要：修改文件证据 + 执行命令证据 + 测试命令证据 + 测试结果证据 + 与验收标准逐项对照结果
 - 每次状态变化必须在知识库中留下记录
 
-### 5.4 功能执行阶段划分（product 生命周期）
+### 5.4 状态与模型的解耦
+
+任务状态表达的是**任务推进阶段**，不绑定具体模型。DeepSeek 可处理从 `PLANNING` 到 `COMPLETED` 的完整状态生命周期。Anthropic 模型可由用户手动引入任何需要规划、审查或纠偏的阶段。
+
+状态本身不得强制要求使用某个模型。如果历史任务中存在模型绑定状态（如 `READY_FOR_DEEPSEEK`、`READY_FOR_OPENROUTER`），仅作兼容保留，新任务不使用此类状态。兼容映射：
+
+```
+READY_FOR_DEEPSEEK    → READY（或 EXECUTING）
+READY_FOR_OPENROUTER  → READY（或 VERIFYING）
+```
+
+### 5.5 功能执行阶段划分（product 生命周期）
 
 功能在执行过程中按以下阶段划分追踪：
 
@@ -583,7 +1202,7 @@ done（已完成）
 | 层 | 目录 | 维护者 | 读取者 | 维护方式 |
 |---|------|--------|--------|----------|
 | **压缩记忆** | `memory/` | Anthropic | Anthropic（直接读取） | 每次会话关键节点更新 |
-| **原始记忆** | `knowledge/` + `product/` | DeepSeek（探索时） | DeepSeek 专用 | DeepSeek 维护，Anthropic 不读 |
+| **原始记忆** | `knowledge/` + `product/` | Anthropic（product/）+ DeepSeek（knowledge/） | 分层读取 | Anthropic 读 product/，DeepSeek 维护 knowledge/ |
 | **搜索回执** | `search_fallback/` | DeepSeek（探索后） | Anthropic（直接读取） | 每次探索后写入压缩结论 |
 
 ### 8.2 memory/ 文件结构
@@ -708,7 +1327,7 @@ Anthropic 在以下节点更新 `memory/`：
 
 如果当前存在进行中的功能，还应读取 `memory/features.md`（已在第 5 步覆盖）。
 
-如果 `memory/` 中现有信息不足以支撑规划决策，Anthropic 应创建 `search_task/` 委派 DeepSeek 探索，而非自行读取 `knowledge/` 或代码。`knowledge/`、`product/`、`Smart-WorkFlow/`、`Smart-WorkFlow-Web/` 中的代码和原始方案由 DeepSeek 在探索时读取，Anthropic 永远不直接读。
+如果 `memory/` 中现有信息不足以支撑规划决策，Anthropic 应创建 `search_task/` 委派 DeepSeek 探索，而非自行读取 `knowledge/` 或两端代码。`knowledge/`、`Smart-WorkFlow/`、`Smart-WorkFlow-Web/` 中的代码和原始知识由 DeepSeek 在探索时读取，Anthropic 永远不直接读。`product/` 下的回执和方案文件 Anthropic 可直接读取（用于验收对照和进度追踪）。
 
 如果某个 memory/ 文件不存在，读取现有文件后判断是否需要创建，并在恢复报告中标注缺失文件。
 
@@ -955,14 +1574,19 @@ pnpm typecheck && pnpm lint && pnpm test && pnpm build  # 全量校验门
 | `memory/issues.md` | 未关闭问题 | 参考 |
 | `memory/constraints.md` | 规划关键硬约束 | 参考 |
 | `memory/architecture.md` | 系统架构高层视图 | 参考 |
+| `knowledge/model-registry.md` | 模型注册表（能力/成本/适用场景） | **参考** |
 | `search_fallback/*.md` | DeepSeek 探索后的压缩结论 | **探索** |
+| `product/*/receipts/*.md` | 执行回执与测试回执（验收依据） | **验收** |
+| `product/*/ready/*.md` | 待执行的 Step 方案 | **追踪** |
+| `product/*/passed/*.md` | 已通过验收的 Step 方案（归档） | **参考** |
 
-### DeepSeek 可读范围（Anthropic 不可读）
+### DeepSeek 可读范围（product/ Anthropic 也可读，其余 Anthropic 不可读）
 
 | 文件 | 内容 |
 |------|------|
-| `knowledge/*.md` | 完整知识库（7 根文件 + 13 功能追踪文件，302KB） |
-| `product/<name>/*.md` | 原始执行方案与回执（130 文件，2.4MB） |
+| `knowledge/*.md` | 完整知识库（7 根文件 + 13 功能追踪文件 + 模型注册表，~310KB） |
+| `knowledge/model-registry.md` | 模型注册表（能力/成本/适用场景/升级降级关系） |
+| `product/<name>/*.md` | 原始执行方案与回执（Anthropic 也可读） |
 | `Smart-WorkFlow/` 代码 | 后端 Java 代码 |
 | `Smart-WorkFlow-Web/` 代码 | 前端 Vue/TS 代码 |
 | `search_task/*.md` | 探索任务（由 Anthropic 写入） |

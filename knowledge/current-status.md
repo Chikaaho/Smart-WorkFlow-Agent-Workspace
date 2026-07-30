@@ -18,7 +18,7 @@
 | 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，V1–V17 连续无缺号（CONFIRMED 2026-07-22 代码直读：V12=form 升级、V14=bpm process 均存在；V16=storage、V17=job-scheduler；无 V18/无 auth 脚本。脚本分散各模块 `db/migration/{module}/{postgresql,h2}`，双方言齐全） |
 | 核心路径 | Walking Skeleton：登录 → 表单 → 审批 → 通知 ✅ 四环全部闭合 |
 | 功能清单 | 10 模块，54 功能，**89** 明细（CONFIRMED 2026-07-23，此前记为 88，M10 差 1 条已更正——见 [[shared-constraints]] §5）；`Smart-WorkFlow/功能清单.md` 为权威清单，状态标记已与代码实际进度对齐（✅17/🟦12/⬜60，2026-07-24 [[feature-checklist-sync]] 完成，已知问题 I1 已修复） |
-| 测试基线 | 后端：项目级 **256 tests**（REPORTED 2026-07-28 process-monitoring Step 1 执行回执：sw-bpm-engine +8 + sw-bpm-process +7 = +15，241→256）；前端：59 spec files / **517 tests**（CONFIRMED 2026-07-26 规划层独立复核，bpmn-adapter Step 1 + Step 3 全部 PASSED；原 57 spec / 497 tests → Step 1 +1 file / +10 tests → Step 3 +1 file / +10 tests，对应新建 `adapters/bpmn/index.spec.ts` + `modules/workflow/views/__tests__/ProcessDefList.spec.ts`）。四连校验门 CONFIRMED 全绿 |
+| 测试基线 | 后端：项目级 **465 tests**（CONFIRMED 2026-07-28 process-monitoring Step 2 独立验收：`mvn test` 全量 BUILD SUCCESS，surefire XML 跨模块合计 465，0 failures/0 errors。Step 1 收据中「256」为误报——实际为子集计数，全量基线此前即 ≥459）。新增：Step 1 +15（8 Facade + 7 Service）、Step 2 +6（Controller）。前端：60 spec files / **521 tests**（CONFIRMED 2026-07-28 process-monitoring Step 3 独立验收：60 passed / 521 tests / 0 failures。基线演进：57f/497t → bpmn-adapter Step 1 +1f/+10t → 58f/507t → bpmn-adapter Step 3 +1f/+10t → 59f/517t → process-monitoring Step 3 +1f/+4t → 60f/521t）。四连校验门 CONFIRMED 全绿 |
 | 前次验证 | 2026-07-22 独立复验（kb-verification VB1/VF1）：后端 BUILD SUCCESS · 前端四连全绿，均由执行代理运行、规划层核对证据 |
 
 ---
@@ -61,7 +61,7 @@
 | IoT | 🔲 占位 | CONFIRMED | 路由/菜单已注册，无业务页面 |
 | Agent | 🔲 占位 | CONFIRMED | 路由/菜单已注册，无业务页面 |
 | OpenAPI | 🔲 占位 | CONFIRMED | 路由/菜单已注册，无业务页面 |
-| BPMN 集成 | 🟦 查看器已实现 | CONFIRMED | `adapters/bpmn/` 查看器（Viewer）防腐层已完成（[[bpmn-adapter]] Step 1，2026-07-25）：`mountBpmnViewer`/`highlight`/`fitViewport`/`destroy` + 事件回调，58 files/507 tests 四连全绿。零消费方（预期状态，M04-F06 流程监控业务模块待 Step 3/4）；设计器（Modeler）能力明确不在范围内 |
+| BPMN 集成 | 🟦 查看器已实现 + 已消费 | CONFIRMED | `adapters/bpmn/` 查看器防腐层已完成（[[bpmn-adapter]] Steps 0-3 COMPLETED）：`mountBpmnViewer`/`highlight`/`fitViewport`/`destroy` + 事件回调。两个消费方已就绪：ProcessDefList「查看流程图」+ ProcessInstanceList「流程图高亮+流转时间线」（[[process-monitoring]] COMPLETED）。设计器（Modeler）能力明确不在范围内 |
 | Vue Flow | ✅ adapter 就绪 | CONFIRMED | @vue-flow/core 1.48 已安装，`adapters/flow-graph/` 防腐层已实现（mount/export/destroy + 事件回调），零消费方（预期状态——M07 AI 调度图业务模块未就位，adapter 可独立先行）。场景为 AI 调度图（M07），非表单设计器（SUPERSEDED：此前「表单设计器可视化集成」标签为知识库漂移，2026-07-25 [[vue-flow-adapter]] 完成更正） |
 
 ---
@@ -109,7 +109,7 @@
 |------|:---:|:---:|------|
 | [[bpmn-adapter]] | **COMPLETED** ✅ | Steps 0-3 PASSED，Step 4 SUPERSEDED | BPMN adapter 查看器实现（对应 [[known-issues]] I3 剩余 BPMN 部分）。Step 0（探索）/Step 1（前端查看器防腐层）/Step 2（后端 BPMN XML 只读端点）/Step 3（前端 ProcessDefList「查看流程图」入口）全部 PASSED 并归档。Step 4（M04-F06 流程监控）由新功能 [[process-monitoring]] 独立承接 |
 
-| [[process-monitoring]] | IN_PROGRESS | Step 1 PASSED，Step 2 方案 READY | M04-F06-01 流程监控首批能力（流程图高亮 + 流转记录）。Step 1 后端 Facade + Service 层 PASSED（2026-07-28 执行回执审查通过，15 @Test，项目级 241→256 tests）。Step 2 方案已生成（`product/process-monitoring/ready/step-2-backend-controller.md`）。耗时分析 + 流程干预延后至后续批次 |
+| [[process-monitoring]] | **COMPLETED** ✅ | Steps 0-3 PASSED | M04-F06-01 流程监控首批能力（流程图高亮 + 流转记录）。Step 0 探索（范围裁定）+ Step 1 后端 Facade + Service 层（15 @Test）+ Step 2 后端 Controller（6 @Test）+ Step 3 前端 ProcessInstanceList 监控页面（4 @Test）。后端 465 tests + 前端 60f/521t。阶段三收尾完成（2026-07-30）。耗时分析 + 流程干预延后至后续批次 |
 
 ---
 
@@ -121,7 +121,7 @@
 |----------|----------|:--------:|:--------:|------|
 | vue-flow-adapter | Vue Flow adapter 实现（M07 AI 调度图防腐层） | **COMPLETED** ✅ | 2026-07-25 | Step 0 探索 + Step 1 纯前端实现：`adapters/flow-graph/index.ts`（147 行，6 导出符号）+ `index.spec.ts`（96 行，6 测试），四连全绿，前端新基线 57 files / 497 tests。零消费方（预期状态，M07 业务模块未就位） |
 | bpmn-adapter | BPMN adapter 查看器实现（I3 BPMN 部分） | **COMPLETED** ✅ | 2026-07-26 | Steps 0-3 全部 PASSED：Step 0 探索 + Step 1 前端查看器防腐层 + Step 2 后端 BPMN XML 端点 + Step 3 ProcessDefList「查看流程图」入口。59 files/517 tests 四连全绿。Step 4（M04-F06）SUPERSEDED 由 [[process-monitoring]] 承接 |
-| process-monitoring | M04-F06-01 流程监控（首批：流程图高亮 + 流转记录） | **PLANNING** | — | 2026-07-26 启动规划，探索已完成，Step 1 方案生成中。耗时分析 + 流程干预延后至后续批次 |
+| process-monitoring | M04-F06-01 流程监控（首批：流程图高亮 + 流转记录） | **COMPLETED** ✅ | 2026-07-30 | Steps 0-3 PASSED。阶段三收尾完成。后端 465 tests + 前端 60f/521t。耗时分析 + 流程干预延后至后续批次 |
 | feature-checklist-sync | 功能清单状态同步（I1） | **COMPLETED** ✅ | 2026-07-24 | 4 Steps 全部 PASSED：Step1/2 后端+前端逐条核实 54 条明细，Step3 规划层按 MIN 规则（[[decisions]] D35）综合裁决，Step4 机械应用到 `功能清单.md`。全表 89 条明细最终状态 ✅17/🟦12/⬜60，独立子代理核查确认与目标完全吻合 |
 | kb-verification | 知识库对账运行期验证 | **COMPLETED** ✅ | 2026-07-22 | VB1(后端)+VF1(前端) 均 PASSED：后端运行期真值 203 tests（原「406」为回执误报，SUPERSEDED）；前端运行期真值 471 tests（与静态 463 差值 +8 定位为 tokens.spec.ts 循环展开），四连全绿 |
 | auth-seam-completion | 后端 seam 收尾（双 token 认证） | **COMPLETED** ✅ | 2026-07-22 | 7 Steps（V1/B1/B2/B3/B4/F1/F2）全部 PASSED：新建 `sys_refresh_token` 表 + RefreshTokenService + /auth/refresh + /auth/logout（后端 462 tests）+ 前端双 token 管线（56 files / 491 tests），mock 模式全链路可用 |
@@ -172,7 +172,7 @@
 
 ## 8. 下一优先事项
 
-全部 8 个功能已完成闭环：
+全部 **11** 个功能已完成闭环：
 
 1. ✅ Walking Skeleton（登录→表单→审批→通知）
 2. ✅ sys-mgmt-crud（系统管理核心 CRUD）
@@ -181,13 +181,17 @@
 5. ✅ job-scheduler（定时任务调度模块）
 6. ✅ kb-verification（知识库运行期验证）
 7. ✅ auth-seam-completion（后端 seam 收尾 — 双 token 认证）
-8. ✅ feature-checklist-sync（功能清单状态同步，I1）← **最新完成**
+8. ✅ feature-checklist-sync（功能清单状态同步，I1）
+9. ✅ vue-flow-adapter（Vue Flow adapter 实现）
+10. ✅ bpmn-adapter（BPMN adapter 查看器实现）
+11. ✅ process-monitoring（M04-F06-01 流程监控首批）← **最新完成**
 
 后续候选：
 
-1. **BPMN adapter 实现** — 流程设计器可视化集成（对应 [[known-issues]] I3 剩余 BPMN 部分）
+1. **M04-F06-01 后续批次（耗时分析 + 流程干预）** — process-monitoring 首批（流程图高亮+流转记录）已完成，剩余 2/4 子能力延后
 2. **IoT / Agent / OpenAPI 模块落地** — 从占位推进到实际业务
 3. **M07 AI 调度图业务模块** — `sw-basic-agent` 后端骨架落地 + 前端消费 `adapters/flow-graph/`（adapter 防腐层已就绪，等待后端引擎/工具沙箱/RAG 产品设计明确）
+4. **Git commit of process-monitoring changes** — 10 个文件 untracked/uncommitted（8 后端 + 2 前端）
 
 ---
 
@@ -195,8 +199,8 @@
 
 | 项目 | 校验命令 | 当前状态 |
 |------|----------|----------|
-| 后端 | `mvn -q compile && mvn -q test` | **REPORTED**（2026-07-28 process-monitoring Step 1 执行回执）：`mvn test` BUILD SUCCESS，项目级 **256 tests / 0 failures** / 0 errors（sw-bpm-engine +8 Facade 测试、sw-bpm-process +7 Service 测试 = 241 + 15）。较 kb-verification 基线 203 净增 +53（含 auth-seam-completion、job-scheduler、bpmn-adapter、process-monitoring 等已闭合功能的新增测试）。原「462」「241」均为历史基线（SUPERSEDED） |
-| 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | **CONFIRMED**（2026-07-26 bpmn-adapter Step 3 测试回执 + 修复验证回执 + 规划层独立复核）：四连全绿，Vitest 汇总 **59 files / 517 tests** 全部通过。57 files / 497 tests（2026-07-25 vue-flow-adapter Step 1）→ bpmn-adapter Step 1（+1 file / +10 tests）→ 58 files / 507 tests → bpmn-adapter Step 3（+1 file / +10 tests）→ 59 files / 517 tests，计数一致，零退化 |
+| 后端 | `mvn -q compile && mvn -q test` | **CONFIRMED**（2026-07-28 process-monitoring Step 2 独立验收）：`mvn test` BUILD SUCCESS，surefire XML 跨模块合计 **465 tests / 0 failures / 0 errors**（含 Step 1 +15 + Step 2 +6）。Step 1 收据「256」为子集误报（SUPERSEDED）——全量基线此前即 ≥459。原「462」「241」「203」均为历史基线（SUPERSEDED） |
+| 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | **CONFIRMED**（2026-07-28 process-monitoring Step 3 测试回执 + 独立验收）：四连全绿，Vitest 汇总 **60 files / 521 tests** 全部通过。57f/497t（2026-07-25 vue-flow-adapter Step 1）→ bpmn-adapter Step 1（+1f/+10t）→ 58f/507t → bpmn-adapter Step 3（+1f/+10t）→ 59f/517t → process-monitoring Step 3（+1f/+4t）→ 60f/521t，计数一致，零退化 |
 
 ### 前端测试覆盖详情（参考快照，2026-07-15 基线 ~350 tests）
 

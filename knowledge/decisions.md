@@ -54,6 +54,10 @@
 | D40 | 2026-07-25 | BPMN adapter 范围裁定为查看器（Viewer），非设计器（Modeler） | CONFIRMED |
 | D41 | 2026-07-25 | 堵住 §0.4"为方案验证细节"越权借口——Anthropic 系模型直读代码/node_modules 违规事件 | CONFIRMED |
 | D42 | 2026-07-25 | 禁止用 Agent 工具派子代理替代 Step 0 探索——子代理未真正切换模型族，且 DeepSeek 探索走独立 base API 需整体退出 CC | CONFIRMED |
+| D43 | 2026-07-26 | process-monitoring 首批范围裁定：仅流程图高亮 + 流转记录（M04-F06-01 完整范围含 4 项子能力，耗时分析 + 流程干预延后至后续批次） | CONFIRMED |
+| D44 | 2026-07-28 | process-monitoring 详情面板选型：el-drawer（size=900px, destroy-on-close），非 el-dialog。原因：流程图横向空间需求大，侧边抽屉比居中弹窗更适合宽图展示 | CONFIRMED |
+| D45 | 2026-07-28 | process-monitoring defKey→defId 映射策略：组件 Mount 时调用 pageProcessDefs(pageNum=1, pageSize=100) 全量加载流程定义，构建 Record<string, number> 映射表，避免新增后端专用端点 | CONFIRMED |
+| D46 | 2026-07-28 | process-monitoring completedNodeIds 推导策略：从 flowTrace 中筛选 endTime != null 的节点推导，不要求后端单独返回 completedNodeIds 字段 | CONFIRMED |
 
 ---
 
@@ -467,3 +471,39 @@
 - **替代方案**：允许 Agent 工具子代理做"轻量/局部"探索、只禁止"大范围"探索 — 拒绝，用户明确否定了"委派子代理"这一形式本身，不是范围大小问题；仅口头记录不改 system.md — 拒绝，同 [[D37]]/[[D38]]/[[D41]] 的一致做法，口头提醒不能跨会话生效
 - **影响**：`system.md` §0.4.1 第 2 条新增"禁止 Agent 工具派子代理探索（硬约束，原因说明）"子条款；`product/bpmn-adapter/step-2-receipt-verification-task.md` 作为本次修订后按新规则重新生成的探索任务实例
 - **相关文件**：`system.md` §0.4.1、`product/bpmn-adapter/step-2-receipt-verification-task.md`、[[bpmn-adapter]]
+
+### D43：process-monitoring 首批范围裁定 — 仅流程图高亮 + 流转记录
+
+- **日期**：2026-07-26
+- **决策**：M04-F06-01（流程监控）完整范围含 4 项子能力：流程图实时高亮、流转记录、耗时分析、流程干预。本批次（首批）仅实现前两项——流程图实时高亮（活跃节点绿色、已完成节点灰色）和流转记录（审批时间线）。耗时分析和流程干预（终止/挂起/激活运行中实例）延后至后续批次
+- **原因**：宽度优先策略——先让流程监控页面的核心可视化能力（列表+流程图+时间线）落地，形成可验收的端到端闭环。耗时分析需要额外的统计查询逻辑，流程干预涉及状态变更和权限控制，两者都需要独立的设计和测试投入，不宜在首批中扩大范围
+- **替代方案**：一次性实现全部 4 项子能力 — 拒绝（单 Step 范围过大，违反系统 §4 单功能会话与范围蔓延约束）；先做流程干预再做可视化 — 拒绝（可视化是用户感知最强的入口能力，先做可视化可以尽早验收交互流程）
+- **影响**：`功能清单.md` M04-F06-01 仍标记为 🟦（部分完成，首批 2/4 能力已交付）；后续批次需新建立功能或在此功能下追加 Steps；`knowledge/features/process-monitoring.md` §2.2 明确列出非目标
+- **相关文件**：[[process-monitoring]]、`product/bpmn-adapter/step-4-exploration-summary.md`
+
+### D44：process-monitoring 详情面板选型 — el-drawer
+
+- **日期**：2026-07-28
+- **决策**：ProcessInstanceList.vue 的实例详情面板使用 `el-drawer`（size="900px", destroy-on-close），而非 `el-dialog`。原因是流程图（BPMN diagram）横向空间需求大，侧边抽屉从右侧滑出、宽度 900px 更适合宽图展示；`destroy-on-close` 确保每次关闭抽屉时销毁 bpmn viewer 实例（`viewerInstance.destroy()`），避免内存泄漏
+- **原因**：Step 0 探索时已对比两种方案——el-dialog（居中弹窗）受限于对话框最大宽度，BPMN 流程图在弹窗中会被压缩；el-drawer（侧边抽屉）占据右侧 900px 空间，流程图可充分利用横向空间，且抽屉内的三段式布局（基本信息卡片 + 流程图卡片 + 流转记录表格）视觉层次更清晰
+- **替代方案**：el-dialog — 拒绝（流程图横向空间受限，居中弹窗不适合宽图）
+- **影响**：模板使用 `<el-drawer v-model:visible="drawerVisible" size="900px" destroy-on-close>`；`closeDrawer()` 中执行 `viewerInstance?.destroy()` + `viewerInstance = null`
+- **相关文件**：[[process-monitoring]]、`product/bpmn-adapter/step-4-exploration-summary.md` §3.4
+
+### D45：process-monitoring defKey→defId 映射策略
+
+- **日期**：2026-07-28
+- **决策**：ProcessInstanceList.vue 在 Mount 时通过已有 API `pageProcessDefs({pageNum:1, pageSize:100})` 全量加载流程定义列表，在前端构建 `Record<string, number>`（processDefKey → defId）映射表，供打开详情抽屉时获取 BPMN XML 使用。不新增后端专用端点（如 `GET /workflow/defs/by-key/{processDefKey}`）
+- **原因**：实例列表返回的是 `processDefKey`（如 `leave_approval`），但获取 BPMN XML 需要 `defId`（数字 ID）。全量加载流程定义（当前规模 <100 条）并在前端做映射是最小成本的方案，避免了为这一单一映射需求新增后端端点，也避免了在抽屉打开时串行调用两个后端接口（先查 defId 再查 XML）
+- **替代方案**：后端新增 `GET /workflow/defs/by-key/{processDefKey}` 端点 — 拒绝（过度设计，为单一前端映射需求新增端点不值得）；在 `InstanceDetailDTO` 中附带 defId — 拒绝（改动后端 DTO 和 Facade 实现，扩大了 Step 3 纯前端方案的范围）
+- **影响**：`loadProcessDefMap()` 在 `onMounted` 中调用（与 `loadList()` 并行）；映射表存储在 `defKeyToIdMap: Ref<Record<string, number>>` 中；若流程定义超过 100 条需调整 pageSize
+- **相关文件**：[[process-monitoring]]、`Smart-WorkFlow-Web/src/modules/workflow/views/ProcessInstanceList.vue`
+
+### D46：process-monitoring completedNodeIds 推导策略
+
+- **日期**：2026-07-28
+- **决策**：流程图高亮所需的"已完成节点 ID 列表"不在后端 API 中作为独立字段返回，而是从前端从 `InstanceDetailDTO.flowTrace` 中筛选 `endTime != null` 的节点自行推导得出。活跃节点（`activeNodeIds`）由后端直接返回（来自 Flowable `getActiveActivityIds()`）
+- **原因**：后端 `InstanceDetailDTO` 已包含完整 `flowTrace`（`List<ActivityNodeDTO>`，每个节点含 startTime/endTime），`endTime != null` 即是"已完成"的语义等价表达。新增独立 `completedNodeIds` 字段会导致 DTO 冗余（flowTrace 已包含相同信息），且后端逻辑仅是前端的 `.filter()` 等价操作，无增量业务价值
+- **替代方案**：后端 DTO 新增 `completedNodeIds: List<String>` 字段 — 拒绝（DTO 冗余，后端逻辑与前端的 `.filter()` 重复）
+- **影响**：前端 `applyHighlights()` 中 `completedNodeIds` 推导逻辑：`detail.flowTrace.filter(node => node.endTime != null).map(node => node.activityId)`；若未来后端语义变化（如某些节点 endTime 非 null 但不代表"已完成"），需同步更新此推导逻辑
+- **相关文件**：[[process-monitoring]]、`Smart-WorkFlow-Web/src/modules/workflow/views/ProcessInstanceList.vue`

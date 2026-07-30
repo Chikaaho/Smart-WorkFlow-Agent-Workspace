@@ -1,11 +1,11 @@
 # 功能索引
 
-> 最后更新：2026-07-28
+> 最后更新：2026-07-30
 
 | 功能 | 模块 | 状态 | 当前 Step | 备注 |
 |------|------|:---:|------|------|
-| process-monitoring | M04-F06-01 | IN_PROGRESS | S1 PASSED, S2 READY, S3 PENDING | 流程图高亮+流转记录（首批） |
-| bpmn-adapter | M04 | COMPLETED | S0-3 PASSED, S4 SUPERSEDED | BPMN 查看器防腐层+XML 端点+前端入口 |
+| process-monitoring | M04-F06-01 | **COMPLETED** | S0-3 PASSED | 流程图高亮+流转记录（首批），阶段三收尾完成 |
+| bpmn-adapter | M04 | COMPLETED | S0-3 PASSED, S4 SUPERSEDED | BPMN 查看器防腐层+XML 端点+两个前端消费方 |
 | vue-flow-adapter | M07 | COMPLETED | S0-1 PASSED | Flow-graph 防腐层，零消费方 |
 | auth-seam-completion | Auth | COMPLETED | 7 steps PASSED | 双 token 认证（access 内存+refresh cookie） |
 | job-scheduler | M10 | COMPLETED | 7 steps PASSED | Quartz BEAN+FLOW 双类型 |
@@ -18,5 +18,5 @@
 | notify-frontend | M05 | COMPLETED | 3 steps PASSED | 通知列表+标记已读 |
 
 ---
-> 本文件不包含：各功能的具体 Step 拆分和执行证据链、完成日期、关联的设计决策和已知问题交叉引用
-> 需要时：创建 search_task，范围 `knowledge/features/<feature-name>.md`（13 个功能追踪文件）
+> 本文件为压缩索引。各功能完整 Step 列表、证据链、测试统计在 `knowledge/features/<name>.md`（13 个功能追踪文件）。
+> 需要时：创建 search_task，范围 `knowledge/features/<feature-name>.md`

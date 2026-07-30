@@ -2,7 +2,7 @@
 
 > **Anthropic 只能读此目录、system.md、search_fallback/。**
 > DeepSeek 读 knowledge/（完整原材料）并在探索后写入压缩结论到 search_fallback/。
-> 最后更新：2026-07-28
+> 最后更新：2026-07-30
 
 ## 文件索引
 

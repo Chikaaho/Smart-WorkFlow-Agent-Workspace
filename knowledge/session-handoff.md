@@ -9,33 +9,29 @@
 
 ## 1. 最新完成功能
 
-**bpmn-adapter — BPMN adapter 查看器实现（Steps 0-3 COMPLETED ✅）**
+**process-monitoring — M04-F06-01 流程监控首批（Steps 0-3 COMPLETED ✅）**
 
-Steps 0-3 全部 PASSED：
-- Step 0：探索（范围裁定为只读查看器，[[decisions]] D40）
-- Step 1：前端 bpmn viewer 防腐层（`adapters/bpmn/index.ts` 重写，58f/507t）
-- Step 2：后端 `GET /workflow/defs/{id}/bpmn-xml` 端点（项目级 231→241 tests）
-- Step 3：前端 ProcessDefList「查看流程图」入口（59f/517t，3 轮手工验收修复）
+Steps 0-3 全部 PASSED，阶段三收尾完成（2026-07-30）：
+- Step 0：探索（范围裁定为首批 2/4 能力：流程图高亮 + 流转记录，[[decisions]] D43）
+- Step 1：后端 Facade + Service 层（15 @Test，8 Facade + 7 Service）
+- Step 2：后端 BpmInstanceController REST 端点（6 @Test，14/14 验收通过）
+- Step 3：前端 ProcessInstanceList.vue 监控页面（4 @Test，16/16 验收通过，60f/521t）
+- 阶段三收尾：知识库同步完成（[[decisions]] D43-D46，features/process-monitoring.md §§5-7 填写）
 
 ---
 
 ## 2. 进行中功能
 
-**process-monitoring — M04-F06-01 流程监控（首批：流程图高亮 + 流转记录）**
+**无。** 所有已启动功能均已完成闭环。
 
-| Step | 名称 | 状态 | 方案位置 |
-|:---:|------|:---:|------|
-| 0 | 探索 | PASSED ✅ | `product/bpmn-adapter/step-4-exploration-summary.md` |
-| 1 | 后端 Facade + Service 层 | **PASSED** ✅ | `product/process-monitoring/passed/step-1-backend-facade-service.md` |
-| 2 | 后端 BpmInstanceController | **READY** | `product/process-monitoring/ready/step-2-backend-controller.md` |
-| 3 | 前端 ProcessInstanceList 监控页面 | **PENDING** | — |
+上一功能 process-monitoring 已于 2026-07-30 完成阶段三收尾，标记 COMPLETED ✅。下一步待用户指定新功能或启动后续批次（process-monitoring 耗时分析 + 流程干预）。
 
 ---
 
 ## 3. 最终状态
 
 **bpmn-adapter**：**COMPLETED** ✅ — Steps 0-3 PASSED，Step 4 SUPERSEDED（由 process-monitoring 承接）
-**process-monitoring**：**IN_PROGRESS** — Step 1 PASSED（2026-07-28 执行回执审查通过），Step 2 方案已生成
+**process-monitoring**：**COMPLETED** ✅ — Steps 0-3 PASSED + 阶段三收尾完成（2026-07-30）。M04-F06-01 首批 2/4 能力（流程图高亮 + 流转记录）已交付
 
 ---
 
@@ -52,7 +48,15 @@ Steps 0-3 全部 PASSED：
 - Step 0 探索完成（探索摘要 → `product/bpmn-adapter/step-4-exploration-summary.md`）
 - 范围裁定：首批仅做「流程图高亮 + 流转记录」，耗时分析 + 流程干预延后
 - 新建 `knowledge/features/process-monitoring.md`
-- 生成 Backend Step 1 方案 + 已下发执行 + **回执审查通过**（2026-07-28）
+- Backend Step 1（Facade + Service）方案生成 + 下发执行 + **回执审查通过**（2026-07-28）
+- Backend Step 2（Controller）方案生成 + 下发执行 + **独立验收审查通过**（2026-07-28）
+- Frontend Step 3（监控页面）方案生成 + 下发执行 + **独立验收审查通过**（2026-07-28），16/16 验收标准全部满足，pnpm lint 零错、test 60f/521t 全绿、build 成功
+
+### process-monitoring 阶段三收尾（2026-07-30）
+- 更新 `knowledge/features/process-monitoring.md`：§1 状态→COMPLETED、§5 检查清单全部勾选、§6 实际修改范围填写（11 后端文件 + 7 前端文件）、§7 遗留问题记录（4 项）
+- 更新 `knowledge/current-status.md`：测试基线同步（60f/521t）、process-monitoring→COMPLETED、已完成功能 10→11、BPMN 集成行更新（已消费）、后续候选列表更新
+- 更新 `knowledge/decisions.md`：新增 D43（首批范围裁定）、D44（el-drawer 选型）、D45（defKey→defId 映射策略）、D46（completedNodeIds 推导策略）
+- 更新 `knowledge/session-handoff.md`：所有 §§1-15 重写为 COMPLETED 状态
 
 ---
 
@@ -73,7 +77,9 @@ Steps 0-3 全部 PASSED：
 | Step | 内容 | 域 | 模型 | 状态 | 关键证据 |
 |:----:|------|:--:|:----:|:----:|----------|
 | 0 | 探索 | 规划层 | deepseek-v4-pro | **PASSED** ✅ | 探索摘要 |
-| 1 | 后端 Facade + Service 层 | 后端 | deepseek-v4-flash | **PASSED** ✅ | 执行回执审查通过，15 @Test，241→256 tests |
+| 1 | 后端 Facade + Service 层 | 后端 | deepseek-v4-flash | **PASSED** ✅ | 15 @Test，全量 465 tests |
+| 2 | 后端 Controller REST 端点 | 后端 | deepseek-v4-flash | **PASSED** ✅ | 6 @Test，14/14 验收通过 |
+| 3 | 前端 ProcessInstanceList 监控页面 | 前端 | deepseek-v4-flash | **PASSED** ✅ | 4 @Test，60f/521t |
 
 ---
 
@@ -111,7 +117,9 @@ Steps 0-3 全部 PASSED：
 | Step | 新增测试 | 全量基线 | 验收结论 |
 |:---:|:---:|:---:|:---:|
 | 0 | 不适用（探索） | — | **PASSED** |
-| 1 | 15（8 Facade + 7 Service） | 项目级 256 tests | **PASSED**（2026-07-28 执行回执审查通过） |
+| 1 | 15（8 Facade + 7 Service） | 项目级 465 tests | **PASSED**（2026-07-28 执行回执审查通过） |
+| 2 | 6（Controller） | 项目级 465 tests | **PASSED**（2026-07-28 独立验收审查通过） |
+| 3 | 4（前端） | 前端 60f/521t | **PASSED**（2026-07-28 独立验收审查通过） |
 
 ---
 
@@ -127,15 +135,16 @@ Steps 0-3 全部 PASSED：
 
 ## 9. 当前系统状态
 
-全部 **10** 个功能已完成闭环：
+全部 **11** 个功能已完成闭环：
 
 1-8. 同前（Walking Skeleton → feature-checklist-sync）
 9. ✅ vue-flow-adapter
-10. ✅ bpmn-adapter ← **新完成**
+10. ✅ bpmn-adapter
+11. ✅ process-monitoring ← **新完成**
 
-- 后端：项目级 **256 tests**（REPORTED 2026-07-28，process-monitoring Step 1 执行回执，241→256）
-- 前端：59 spec files / 517 tests，四连全绿（CONFIRMED 2026-07-26）
-- 进行中：process-monitoring Step 1 PASSED，Step 2 方案待生成
+- 后端：项目级 **465 tests**（CONFIRMED 2026-07-28，surefire XML 跨模块合计，0 failures/0 errors）
+- 前端：60 spec files / 521 tests，四连全绿（CONFIRMED 2026-07-28，Step 3 验收）
+- 无进行中功能
 
 ---
 
@@ -146,10 +155,10 @@ Steps 0-3 全部 PASSED：
 - 查看器仅支持最简 mock BPMN XML（I30/T10，用户确认可接受）
 
 ### process-monitoring 范围内
-- Backend Step 1（Facade + Service）PASSED ✅ — 执行回执已审查通过
-- Backend Step 2（Controller）方案待生成
-- Frontend Step 3（监控页面）方案待生成
-- 耗时分析 + 流程干预延后至后续批次
+- ✅ Steps 0-3 PASSED + 阶段三收尾完成
+- 耗时分析 + 流程干预延后至后续批次（M04-F06-01 完整范围含 4 项子能力，首批仅交付前 2 项）
+- Steps 1-3 更改均未 commit（10 个文件 untracked：8 后端 + 2 前端 ProcessInstanceList.vue + spec）
+- ActivityNode.activityName 接口类型 `string` vs 实际可能为 null（低优先级，运行时无影响）
 
 ---
 
@@ -157,25 +166,33 @@ Steps 0-3 全部 PASSED：
 
 | # | 问题 | 严重程度 | 说明 |
 |---|------|:--------:|------|
-| I3 (BPMN) | BPMN adapter 已实现 ✅ | — | bpmn-adapter Steps 0-3 完成，I3 BPMN 部分可标记已修复 |
+| I3 (BPMN) | BPMN adapter 已实现 ✅ | — | bpmn-adapter Steps 0-3 完成 + process-monitoring Steps 0-3 完成，I3 BPMN 部分已修复 |
 | I30/T10 | Mock BPMN XML 仅最简模板 | 低 | 用户已确认可接受 |
-| 新 | process-monitoring Backend Step 2 方案待生成 | — | Step 1 PASSED，下一步生成 BpmInstanceController 方案 |
+| 新 | ActivityNode.activityName 类型不精确 | 低 | TypeScript 接口为 `string`，但后端 sequenceFlow 节点返回 null。模板使用 `?? '-'` 兜底，运行时无影响 |
+| 新 | process-monitoring Steps 1-3 未 commit | 中 | 10 个文件 untracked/uncommitted（8 后端 + 2 前端） |
 
 ---
 
 ## 12. 下一轮要做什么
 
-**生成 process-monitoring Backend Step 2 方案**：BpmInstanceController REST 端点（分页列表 + 实例详情含活跃节点 + 流转记录）。Step 1 的 Facade + Service 层已就绪，Step 2 直接注入使用。推荐模型：**deepseek-v4-flash**（单模块 Controller 开发，无跨模块接口设计）。
+**待用户指定。** 所有已启动功能均已完成闭环（11/11 COMPLETED）。
+
+候选方向：
+1. **Git commit process-monitoring 变更** — 10 个文件 untracked/uncommitted（8 后端 + 2 前端）
+2. **process-monitoring 后续批次** — 耗时分析 + 流程干预（M04-F06-01 剩余 2/4 子能力）
+3. **IoT / Agent / OpenAPI 模块落地** — 从占位推进到实际业务
+4. **M07 AI 调度图业务模块** — `sw-basic-agent` 后端骨架 + 前端消费 `adapters/flow-graph/`
 
 ---
 
 ## 13. 下一轮要达到什么结果
 
-- `BpmInstanceController` 新建（`@RestController`，`GET /workflow/instances` + `GET /workflow/instances/{processInstanceId}`）
-- 注入 `BpmRuntimeFacade` + `BpmInstanceService`，调用 Step 1 已实现的方法
-- Controller 层单元测试（≥2 @Test）
-- `mvn -q test` BUILD SUCCESS，已有测试不退化
-- 执行回执写入 `product/process-monitoring/receipts/step-2-execution.md`
+取决于用户指定的下一功能。若选择 process-monitoring 后续批次：
+- 耗时分析功能：节点耗时统计 + 整体耗时展示
+- 流程干预功能：终止/挂起/激活运行中实例（含权限控制）
+
+若选择新模块落地：
+- 按 system.md §3 三阶段流程推进：探索 → Step 拆解 → 执行验收 → 收尾归档
 
 ---
 
@@ -185,11 +202,10 @@ Steps 0-3 全部 PASSED：
 1. system.md
 2. knowledge/current-status.md
 3. knowledge/session-handoff.md                     ← 本文件
-4. knowledge/features/process-monitoring.md        ← 进行中功能
-5. knowledge/features/bpmn-adapter.md               ← 前置依赖功能（已完成）
+4. knowledge/features/process-monitoring.md        ← 最新完成功能
+5. knowledge/features/bpmn-adapter.md               ← 前置依赖（查看器防腐层 API）
 6. knowledge/shared-constraints.md
-7. knowledge/decisions.md
-8. product/process-monitoring/passed/step-1-backend-facade-service.md  ← Step 1 方案（已归档，Step 2 需了解 Facade/Service 接口签名）
+7. knowledge/decisions.md                           ← 含最新 D43-D46
 ```
 
 ---
@@ -197,30 +213,31 @@ Steps 0-3 全部 PASSED：
 ## 15. 新会话启动提示词
 
 ```
-你现在位于 Smart-WorkFlow 工作区根目录。
+你现在位于工作区根目录。
 
 你是根目录规划代理。请先按 system.md §10 执行新会话恢复流程。
 
 ### 最新状态
 
-bpmn-adapter（Steps 0-3）已 COMPLETED ✅ — BPMN 查看器防腐层 + 后端 XML 端点 + 前端查看入口全部交付，59f/517t 四连全绿。
-
-process-monitoring（M04-F06-01 首批）已进入 IN_PROGRESS — Step 0 探索 PASSED，Step 1 后端 Facade + Service PASSED（执行回执审查通过）。
+全部 11 个功能已完成闭环。最新完成：
+- bpmn-adapter（Steps 0-3）COMPLETED ✅ — BPMN 查看器防腐层 + 后端 XML 端点 + 前端查看入口
+- process-monitoring（Steps 0-3）COMPLETED ✅ — M04-F06-01 流程监控首批（流程图高亮 + 流转记录）
 
 ### 当前基线
-- 后端：项目级 256 tests（241 + 15 来自 Step 1）
-- 前端：59 spec files / 517 tests，四连校验门全绿
-- 已完成功能：10 个
-- 已知问题 I3（BPMN 部分）可标记已修复
+- 后端：项目级 465 tests（CONFIRMED 2026-07-28，0 failures/0 errors）
+- 前端：60 spec files / 521 tests（CONFIRMED 2026-07-28，四连校验门全绿）
+- 已完成功能：11 个
+- process-monitoring Steps 1-3 均未 commit（10 个文件 untracked/uncommitted）
+- 无进行中功能
 
-### 下一动作
-Backend Step 2（BpmInstanceController）方案待生成。Step 1 的 Facade + Service 已就绪可直接注入。
-需要你指令我生成 Step 2 方案或等待下发 Step 1 测试。
+### 待用户指定下一任务
+候选方向：Git commit / process-monitoring 后续批次（耗时分析+流程干预）/ IoT-Agent-OpenAPI 模块落地 / M07 AI 调度图。
 ```
 
 ---
 
-> 最后更新：2026-07-28
-> 当前功能：**process-monitoring** — M04-F06-01 流程监控首批（IN_PROGRESS，Step 1 PASSED，Step 2 PENDING）
+> 最后更新：2026-07-30
+> 最新完成功能：**process-monitoring** — M04-F06-01 流程监控首批（**COMPLETED** ✅，Steps 0-3 PASSED + 阶段三收尾）
 > 上一功能：**bpmn-adapter** — BPMN adapter 查看器实现（**COMPLETED** ✅）
-> 测试基线：后端项目级 256 tests · 前端 CONFIRMED 59 files / 517 tests（四连全绿）
+> 测试基线：后端 CONFIRMED 465 tests · 前端 CONFIRMED 60 files / 521 tests（四连全绿）
+> 无进行中功能
