@@ -19,7 +19,9 @@
 - **2026-08-09：Step 3 执行方案已起草**，写入 `product/agent-model-orchestration/passed/step-3-toolsandbox.md`（已移 passed/）。核心架构决策：①图拓扑不变（仍单节点，agentic loop 在 ChatModel 内），②两类工具统一用 FunctionToolCallback + lambda，③内部工具安全边界靠 DB 白名单（beanName/methodName 来自 DB，不接受 LLM 侧传入），④外部工具 RestClient + 超时从 DB 读，⑤新增 14 生产文件 + 2 改造 + 3 测试文件（执行层如实补足 DTO×2+Query×2）
 - **2026-08-09：Step 3 执行+回执核验，PASSED**——`product/agent-model-orchestration/receipts/step-3-execution.md`（step-3-test.md 缺失，测试证据内嵌于 execution 回执 §8/§8.1），方案 §12 全部 14 项验收标准满足，16 个新增单测（Factory 5+ServiceImpl 7+Controller 4）全绿，全量 307 tests（72 报告）0 failures。判定见 D59（三项可接受偏差记录：AutoConfiguredToolCallingManager 不存在 / call("{}") 行为 / test 回执分文件格式）
 - **2026-08-09：M07-F04 前置调研任务单已起草**（`search_task/m07-f04-conversation-precedent.md`）——6 问：①Spring AI 1.0.4 ChatMemory/Advisor/ChatClient 全貌（jar 是否存在 + 是否支持运行时动态 ChatModel 绑定）；②LangGraph4j invoke() 历史消息注入机制（AgentState messages 初始化语义）；③BPM/notify 多记录持久化先例（CREATE TABLE 完整内容）；④Flyway V21/V22/V23 槽位确认；⑤V20 JSON 大字段类型（H2=CLOB/PG=TEXT 先例）；⑥AgentOrchestrationServiceImpl + AgentGraphFactory 完整代码（改造基线）
-- **下一步**：执行 M07-F04 前置调研（`deepseek/deepseek-v4-pro`），产出 `search_fallback/m07-f04-conversation-precedent.md`
+- **2026-08-09：M07-F04 前置调研回执完成**（`search_fallback/m07-f04-conversation-precedent.md`，6 问全部 jar 级/行号级证据）——关键发现：①Advisor 对裸 chatModel.call() 不生效→不用 ChatClient/Advisor；②当前图无 messages 通道，callModel 用 new Prompt(input) 非消息列表→需改造；③V21/V22/V23 全局空闲；④H2=CLOB/PG=TEXT 双重先例确认；⑤agent 模块 create_by=VARCHAR(64) 偏离 8 基列确认
+- **2026-08-09：Step 4 执行方案已起草**（`product/agent-model-orchestration/ready/step-4-f04-conversation.md`）——采用 ThreadLocal messages 注入架构（不走 ChatClient/Advisor）；V21（sw_agent_session）+V22（sw_agent_message）+V23（sw_agent_tool_call_log）三表；callModel 节点从 HISTORY_MESSAGES_BINDING ThreadLocal 读历史消息构造 Prompt；ServiceImpl 新增 session 创建/加载 + 消息持久化 + 工具调用日志；新增查询端点 2 个；~18 新增单测；验收标准 14 项
+- **下一步**：执行 Step 4（`deepseek/deepseek-v4-pro`），产出 `product/agent-model-orchestration/receipts/step-4-{execution,test}.md`
 
 最新完成：**process-monitoring (M04-F06-01)：COMPLETED ✅**
 - Step 0 探索：PASSED（范围裁定：首批仅流程图高亮 + 流转记录）

@@ -4,7 +4,7 @@
 
 | 功能 | 模块 | 状态 | 当前 Step | 备注 |
 |------|------|:---:|------|------|
-| agent-model-orchestration | M07-F01/F02 | **规划中** | Step3 PASSED | Step1（CRUD+加密+连通性测试）PASSED；Step2（最小编排引擎+动态ChatModel+动态装载）PASSED；Step3（工具沙箱：内部白名单方法调用+外部白名单HTTP，FunctionToolCallback+lambda，DB驱动）PASSED（307 tests），方案在 passed/step-3-toolsandbox.md；下一步 M07-F02 图设计器/M07-F04 会话-消息持久化/多Key轮询 |
+| agent-model-orchestration | M07-F01/F02/F04 | **规划中** | Step4 方案就绪 | Step1（CRUD+加密+连通性测试）PASSED；Step2（最小编排引擎+动态ChatModel+动态装载）PASSED；Step3（工具沙箱：内部白名单+外部HTTP，FunctionToolCallback+lambda，DB驱动）PASSED（307 tests）；Step4（F04 对话交互）方案已起草（passed/ 待执行）：V21/V22/V23+ThreadLocal messages 注入+消息持久化+2 查询端点，目标 ≥325 tests；方案在 ready/step-4-f04-conversation.md |
 | process-monitoring | M04-F06-01 | **COMPLETED** | S0-3 PASSED | 流程图高亮+流转记录（首批），阶段三收尾完成 |
 | bpmn-adapter | M04 | COMPLETED | S0-3 PASSED, S4 SUPERSEDED | BPMN 查看器防腐层+XML 端点+两个前端消费方 |
 | vue-flow-adapter | M07 | COMPLETED | S0-1 PASSED | Flow-graph 防腐层，零消费方 |
