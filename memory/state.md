@@ -21,7 +21,8 @@
 - **2026-08-09：M07-F04 前置调研任务单已起草**（`search_task/m07-f04-conversation-precedent.md`）——6 问：①Spring AI 1.0.4 ChatMemory/Advisor/ChatClient 全貌（jar 是否存在 + 是否支持运行时动态 ChatModel 绑定）；②LangGraph4j invoke() 历史消息注入机制（AgentState messages 初始化语义）；③BPM/notify 多记录持久化先例（CREATE TABLE 完整内容）；④Flyway V21/V22/V23 槽位确认；⑤V20 JSON 大字段类型（H2=CLOB/PG=TEXT 先例）；⑥AgentOrchestrationServiceImpl + AgentGraphFactory 完整代码（改造基线）
 - **2026-08-09：M07-F04 前置调研回执完成**（`search_fallback/m07-f04-conversation-precedent.md`，6 问全部 jar 级/行号级证据）——关键发现：①Advisor 对裸 chatModel.call() 不生效→不用 ChatClient/Advisor；②当前图无 messages 通道，callModel 用 new Prompt(input) 非消息列表→需改造；③V21/V22/V23 全局空闲；④H2=CLOB/PG=TEXT 双重先例确认；⑤agent 模块 create_by=VARCHAR(64) 偏离 8 基列确认
 - **2026-08-09：Step 4 执行方案已起草**（`product/agent-model-orchestration/ready/step-4-f04-conversation.md`）——采用 ThreadLocal messages 注入架构（不走 ChatClient/Advisor）；V21（sw_agent_session）+V22（sw_agent_message）+V23（sw_agent_tool_call_log）三表；callModel 节点从 HISTORY_MESSAGES_BINDING ThreadLocal 读历史消息构造 Prompt；ServiceImpl 新增 session 创建/加载 + 消息持久化 + 工具调用日志；新增查询端点 2 个；~18 新增单测；验收标准 14 项
-- **下一步**：执行 Step 4（`deepseek/deepseek-v4-pro`），产出 `product/agent-model-orchestration/receipts/step-4-{execution,test}.md`
+- **2026-08-09：Step 4 执行+核验，PASSED**——`product/agent-model-orchestration/receipts/step-4-{execution,test}.md`，方案 §13 全部 14 项验收标准满足；21 个新增单测（sw-basic-agent 45→66）全绿；全量 **328 tests 0/0/0**（76 报告）；附加修复 Step3 既有 SMALLINT/BOOLEAN 比较缺陷（6 处 enabled 查询条件改为数字字面量）；方案文件已移至 `passed/step-4-f04-conversation.md`。判定见 D61（三项可接受偏差：文件数漏计 / MP Wrappers / @Autowired）
+- **下一步**：多Key轮询/额度限流（M07-F01 tail，key 失效时按优先级切换），或 M07-F02 图设计器（CRUD/发布/版本/调试运行，需自建 DSL 无 LangGraph4j JSON 反序列化支持）——待用户指示优先级
 
 最新完成：**process-monitoring (M04-F06-01)：COMPLETED ✅**
 - Step 0 探索：PASSED（范围裁定：首批仅流程图高亮 + 流转记录）
@@ -33,7 +34,7 @@
 
 ## 测试基线
 
-- 后端：项目级 **307 tests**（CONFIRMED 2026-08-09 Step3 全量，0 failures/0 errors，72 报告；原声称 465 含 `.claude/worktrees/` 203 陈旧报告，D57；pre-Step1=262，after-Step1=277，after-Step2=291，after-Step3=307 当前值）
+- 后端：项目级 **328 tests**（CONFIRMED 2026-08-09 Step4 全量，0 failures/0 errors，76 报告；pre-Step1=262，after-Step1=277，after-Step2=291，after-Step3=307，after-Step4=328 当前值；口径：主树新鲜报告，排除 `.claude/worktrees/` 陈旧报告，D57）
 - 前端：60 spec files / **521 tests**，四连校验门全绿（CONFIRMED 2026-07-28）
 - 已完成功能：11 个
 
