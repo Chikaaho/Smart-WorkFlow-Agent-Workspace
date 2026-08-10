@@ -1,10 +1,10 @@
 # 当前状态
 
-> 最后更新：2026-08-09
+> 最后更新：2026-08-10
 
 ## 进行中功能
 
-**agent-model-orchestration (M07-F01/F02/F04)：Step1-4 全部 PASSED**
+**agent-model-orchestration (M07-F01/F02/F04)：Step1-5 全部 PASSED，F01 PRD 明细全部完结**
 
 已完成 Step 汇总（方案均在 `product/agent-model-orchestration/passed/`）：
 
@@ -14,8 +14,9 @@
 | Step2 | 最小 LangGraph4j 编排引擎 + 动态 ChatModel + 动态装载 | AgentGraphFactory/ChatModelFactory/ServiceImpl；14 新测（277→291） | PASSED（D55/D56/D57） |
 | Step3 | 工具沙箱（内部方法 + 外部 HTTP，FunctionToolCallback+lambda，DB 白名单） | V20 sw_agent_tool_internal/external；16 新测（291→307） | PASSED（D59） |
 | Step4 | F04 多轮会话持久化（ThreadLocal messages 注入 + 消息持久化 + 工具日志 + 2 查询端点） | V21-V23 三表；21 新测（307→328）；AgentConversationController | PASSED（D61） |
+| Step5 | 多Key轮询/额度限流（group_key 分组 + sort 优先级 + 429 识别切换 + locked_until 冷却） | V24 追加 4 列；13 新测（328→341）；ChatModelFactory 零改动 | PASSED（D62） |
 
-测试基线轨迹：pre-Step1=262 → Step1=277 → Step2=291 → Step3=307 → **Step4=328**（主树口径，排除 `.claude/worktrees/` 陈旧报告，D57）
+测试基线轨迹：pre-Step1=262 → Step1=277 → Step2=291 → Step3=307 → Step4=328 → **Step5=341**（主树口径，排除 `.claude/worktrees/` 陈旧报告，D57）
 
 **当前架构要点**（派生自代码，此处仅记关键约定）：
 - 图拓扑：START→callModel→END 单节点；agentic loop 在 ChatModel.call() 内建（internalCall 递归），不外显
@@ -23,9 +24,7 @@
 - Flyway：agent 路径 V19-V23 已占；V24+ 空闲；全库 V1-V23 精确 2 次（h2+pg）
 - 大字段：H2=CLOB / PG=TEXT；agent 模块 create_by=VARCHAR(64)（偏离 bigint 惯例）；status=VARCHAR(20)；create_time=TIMESTAMP 无默认值（MetaObjectHandler 填充）
 
-**下一步（已确认）：M07-F01 多Key轮询/额度限流**
-- 范围：`sw_agent_model_config` 扩展优先级字段 + 轮询状态；`ChatModelFactory` 改造；key 达到配额时按优先级切换
-- 理由：范围小、运营价值直接；F02 图设计器复杂度高（需自建 DSL，LangGraph4j 无 JSON 反序列化支持），留后续
+**Step5 收尾（2026-08-10，D62）**：执行+测试回执核验 PASSED。V1 实测推翻方案假设——429 到达 ServiceImpl 时异常链实为 `NonTransientAiException`（消息含"429"），不含 `RestClientResponseException`，`isQuotaExceededException` 已按实测调整（主判据 NonTransientAiException+消息含429，`RestClientResponseException` 状态码判断为兜底）；V2 实测确认 429 会被裸 RetryTemplate 重试，评估后维持"不改 ChatModelFactory"决策（无用户可见延迟放大）。方案已移至 `passed/step-5-multikey-quota.md`；测试基线 328→341。**M07-F01「大模型管理」PRD 明细全部完结**。
 
 **M07-F02 图设计器（待后续批次）**：CRUD/发布/版本/调试运行，需自建 DSL，无库支持
 
@@ -41,7 +40,7 @@
 
 ## 测试基线
 
-- 后端：项目级 **328 tests**（CONFIRMED 2026-08-09 Step4 全量，0 failures/0 errors，76 报告）
+- 后端：项目级 **341 tests**（CONFIRMED 2026-08-10 Step5 全量，0 failures/0 errors，sw-basic-agent 79）
 - 前端：60 spec files / **521 tests**，四连校验门全绿（CONFIRMED 2026-07-28）
 - 已完成功能：11 个
 
