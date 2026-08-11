@@ -18,8 +18,10 @@
 | Step7 | F02 图定义 CRUD + 版本 + 发布骨架（纯存储，零执行语义） | V25 sw_agent_graph_def + ProcessGraph/GraphElement + 6 端点；21 新测（341→362） | PASSED（D63） |
 | Step8 | F02 图解释执行引擎第一版（LLM/工具/条件分支节点解释执行 + 执行前校验 + 步数上限） | AgentGraphInterpreter + 执行 Service/端点；23 新测（362→385） | PASSED（D64） |
 | Step9 | F02 前端图设计器对接（列表 + 画布 + graphAdapter 转换层 + V26 菜单迁移） | 前端 3 spec 18 新测（60f/521t→63f/539t）；后端 385 持平 | PASSED（D65） |
+| Step10 | F02 多变量执行上下文后端地基（执行上下文单一文本→命名变量表：config.inputVar/outputVar 契约键 + 默认变量 input 零迁移锚点 + CONDITION/END 经 inputVar 指定匹配/输出变量 + 未定义变量运行时错误；DTO 仅注释同步零契约变更） | AgentGraphInterpreter 变量表改造 + 2 DTO 注释；7 新测（385→392）；无 Flyway | PASSED（D66） |
+| Step10-前端 | F02 多变量执行上下文前端（图设计器属性面板 LLM/TOOL 节点新增输入变量名/输出变量名输入项） | graphAdapter 键常量 + GraphDesigner 输入项 + 2 spec；7 新测（63f/539t→63f/546t） | PASSED（D67） |
 
-测试基线轨迹：后端 pre-Step1=262 → Step1=277 → Step2=291 → Step3=307 → Step4=328 → Step5=341 → **Step7=362 → Step8=385 → Step9=385（持平）**；前端 60f/521t → **63f/539t**（主树口径，排除 `.claude/worktrees/` 陈旧报告，D57）
+测试基线轨迹：后端 pre-Step1=262 → Step1=277 → Step2=291 → Step3=307 → Step4=328 → Step5=341 → **Step7=362 → Step8=385 → Step9=385（持平）→ Step10=392**；前端 60f/521t → **63f/539t → 63f/546t**（主树口径，排除 `.claude/worktrees/` 陈旧报告，D57）
 
 **当前架构要点**（派生自代码，此处仅记关键约定）：
 - 图拓扑：START→callModel→END 单节点；agentic loop 在 ChatModel.call() 内建（internalCall 递归），不外显
@@ -43,8 +45,8 @@
 
 ## 测试基线
 
-- 后端：项目级 **385 tests**（CONFIRMED 2026-08-11 Step9 全量，0 failures/0 errors，sw-basic-agent 123）
-- 前端：**63 spec files / 539 tests**，测试/typecheck/lint 全绿（CONFIRMED 2026-08-11 Step9 全量，60f/521t + 3 spec 18 tests）
+- 后端：项目级 **392 tests**（CONFIRMED 2026-08-11 Step10 全量，0 failures/0 errors，sw-basic-agent 130）
+- 前端：**63 spec files / 546 tests**，测试/typecheck/lint/build 全绿（CONFIRMED 2026-08-11 Step10 全量，63f/539t + 7 tests）
 - 已完成功能：11 个
 
 ## 模块完成度（简表）
