@@ -29,19 +29,11 @@
 - Flyway：agent 路径 V19-V25 已占（V25=图定义表）；root 路径 V26 已占（Step9 菜单迁移）；V27+ 空闲
 - 大字段：H2=CLOB / PG=TEXT；agent 模块 create_by=VARCHAR(64)（偏离 bigint 惯例）；status=VARCHAR(20)；create_time=TIMESTAMP 无默认值（MetaObjectHandler 填充）
 
-**M07-F01「大模型管理」PRD 明细全部完结**（Step5 收尾 D62，详情见 `passed/step-5-multikey-quota.md`）。
-
-**M07-F02 图设计器全部完结**（详情见 `passed/step-6-f02-design-clarification.md` + `passed/step-7-graph-def-crud-publish.md` + `passed/step-8-graph-interpreter-engine.md` + `passed/step-9-graph-designer-frontend.md`）：Step6 三项决策——①工具节点=独立图节点②MVP节点=LLM+工具+条件分支（并行/循环todo）③执行引擎=图定义驱动解释执行。**Step7 PASSED**（D63，2026-08-11）：`sw_agent_graph_def`（V25）+ 图模型 + 6端点CRUD/发布，纯存储零执行语义，362 tests。**Step8 PASSED**（D64，2026-08-11）：图解释执行引擎第一版——`AgentGraphInterpreter`（纯 Java 解释器，LLM 单跳/工具按名定位/条件分支路由 + maxSteps 步数上限）+ `AgentGraphExecutionServiceImpl`（§2-D 五项执行前校验 + 运行时 success=false）+ `POST /agent/graph-defs/{id}/execute`（权限沿用 manage）；385 tests。**Step9 PASSED**（D65，2026-08-11）：前端图设计器对接——V26 菜单迁移（root 路径，现场核验修正方案 §2 结论：`V6__m_seam_menu_seed.sql` 早已 seed「智能体」id=7 叶子菜单，按方案 §3.1"复用既有层级"分支仿 V11 先例矫正为目录 + 挂二级「图定义管理」component='agent/views/GraphDefList'，权限沿用 agent:model:view/manage 零新增，不 seed sys_role_menu 沿用超管旁路）；`contracts/agent.ts` + `modules/agent/api/index.ts`（7 端点 + 2 只读下拉辅助，DTO 现场核对）；`graphAdapter.ts`（elements↔FlowGraphData 双向转换，坐标存 style.x/y 前端裁定非后端契约，条件边关键词 edge.label 承载，未知节点类型透传不崩溃）；`GraphDefList.vue`（分页/新建/发布/删除/编辑）；`GraphDesigner.vue`（参数化静态路由 agent/graph-designer/:id，加载/节点色板/属性面板按类型切换/保存草稿/发布不锁编辑/执行测试不落库）；`router/index.ts` 追加 1 条静态路由。关键架构结论（Step8 补记）：①`AgentGraphFactory`/LangGraph4j 保留服务 F01，与 F02 自建解释器两条执行路径并存互不干扰；②条件分支求值拍板为关键词子串匹配（`String.contains`，边 config.keyword 按 elements 顺序取第一个命中，未命中走唯一默认边，无默认边运行时报错，**不支持正则**、无新依赖）；③execution context 极简为单一 `currentText`（LLM/工具输出整体覆盖，END 时即最终 output）；④执行历史不落库。前端测试基线 60f/521t → **63f/539t**，后端 385 持平。**下一步（方案 §9 + todo 池，无新 Step 规划）**：并行/循环节点、多变量执行上下文、单步调试、执行历史持久化、图节点级多Key轮询；若需扩展 `flow-graph` adapter 契约（如节点自定义渲染/边点击事件）须回规划层单独评估。
+**M07-F01「大模型管理」+ F02「图设计器」全部完结**，详情均在对应 `passed/step-N-*.md`，不在此重复摘录——关键架构结论：①F01（LangGraph4j）与 F02（自建 `AgentGraphInterpreter`）两条执行路径并存互不干扰；②条件分支=关键词子串匹配（不支持正则）；③execution context 自 Step10 起为命名变量表（`config.inputVar`/`outputVar`，默认变量 `input` 零迁移）；④执行历史不落库。**下一步（todo 池）**：并行/循环节点、单步调试、执行历史持久化、图节点级多Key轮询；扩展 `flow-graph` adapter 契约需回规划层评估。
 
 ---
 
-最新完成：**process-monitoring (M04-F06-01)：COMPLETED ✅**
-- Step 0 探索：PASSED（范围裁定：首批仅流程图高亮 + 流转记录）
-- Step 1 后端 Facade + Service：PASSED（15 @Test）
-- Step 2 后端 BpmInstanceController：PASSED（6 @Test，14/14 验收）
-- Step 3 前端 ProcessInstanceList：PASSED（4 @Test，16/16 验收）
-- 阶段三收尾完成（2026-07-30）
-- 耗时分析 + 流程干预延后至后续批次
+process-monitoring (M04-F06-01)：COMPLETED（详情见 `knowledge/`，2026-07-30 收尾）。
 
 ## 测试基线
 
