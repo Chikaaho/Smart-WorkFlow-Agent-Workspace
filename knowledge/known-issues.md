@@ -25,7 +25,7 @@
 | I10 | 2026-06-30 | 动态宽表裸 SQL 隔离/软删手写易漏 | 高 | 已固化为红线，须测试兜底 |
 | I11 | 2026-06-30 | 发布冻结不可逆 — 字段定义错误成本高 | 中 | 需在设计器层强校验 |
 | I12 | 2026-06-30 | 定时任务单节点 — 集群化前 FLOW 幂等是关键防线 | 中 | 已预留升级接缝 |
-| I13 | 2026-06-30 | M07 AI 调度图执行引擎/工具沙箱/RAG 选型未定 | 中 | ◐ 部分收敛（2026-08-11 Step8 落地：执行引擎架构已裁定并实现、条件分支求值已拍板；RAG/联动点仍未决，见下文） |
+| I13 | 2026-06-30 | M07 AI 调度图执行引擎/工具沙箱/RAG 选型未定 | 中 | ◐ 部分收敛（2026-08-11 Step9 落地：执行引擎/图定义/前端设计器全链已落地；RAG/联动点仍未决，见下文） |
 | I14 | 2026-06-30 | M08 IoT 腾讯接入路径待补全 | 中 | ⚠ 待专项产品设计 |
 | I15 | 2026-06-30 | M09 开放接口授权粒度/配额计费口径待定 | 低 | ⚠ 排在最后，待前序模块稳定 |
 | I16 | 2026-06-30 | 跨环境迁移（表单/应用/流程导入导出）未设计 | 中 | ⚠ 后续设计 |
@@ -200,7 +200,7 @@
 - **描述**：AI 智能助手模块（M07）的调度图执行引擎落地形态、工具沙箱边界、RAG 向量库选型、与流程/表单的联动点均待专项产品设计
 - **影响**：M07 模块无法进入实质性开发
 - **建议**：在 M07 专项产品设计完成前，不在此模块投入编码资源
-- **状态更新（2026-08-11）**：「执行引擎落地形态」经产品设计澄清（`product/agent-model-orchestration/passed/step-6-f02-design-clarification.md`）已部分收敛——MVP 节点类型（LLM/工具/条件分支）已定，工具节点改为独立图节点。**Step7（2026-08-11）已落地**：图定义 CRUD+版本+发布骨架（`sw_agent_graph_def` 表 V25 + ProcessGraph/GraphElement 图模型 + DRAFT/PUBLISHED + def_version 递增 + graph_key 冻结），`graph_json` 节点 config/style 不透明透传。**Step8（2026-08-11）已落地**：执行引擎架构**已裁定并落地**——放弃 LangGraph4j `StateGraph`（无 JSON 反序列化能力），自建纯 Java `AgentGraphInterpreter`（`passed/step-8-graph-interpreter-engine.md`），`AgentGraphFactory`/LangGraph4j 保留服务 F01，两条执行路径并存互不干扰；条件分支求值**已拍板**为关键词子串匹配（边 `config.keyword`，`String.contains` 按 elements 顺序取第一个命中，未命中走唯一默认边，无默认边运行时报错，不支持正则、无新依赖）；execution context 极简为单一 currentText；执行历史不落库。「不在此模块投入编码资源」的限制对 F02 图定义 CRUD（Step7）与执行引擎骨架（Step8）已解除。**仍未收敛**：并行/循环节点语义（推入 todo）、RAG 向量库选型、流程表单联动点——三项继续适用该限制。
+- **状态更新（2026-08-11）**：「执行引擎落地形态」经产品设计澄清（`product/agent-model-orchestration/passed/step-6-f02-design-clarification.md`）已部分收敛——MVP 节点类型（LLM/工具/条件分支）已定，工具节点改为独立图节点。**Step7（2026-08-11）已落地**：图定义 CRUD+版本+发布骨架（`sw_agent_graph_def` 表 V25 + ProcessGraph/GraphElement 图模型 + DRAFT/PUBLISHED + def_version 递增 + graph_key 冻结），`graph_json` 节点 config/style 不透明透传。**Step8（2026-08-11）已落地**：执行引擎架构**已裁定并落地**——放弃 LangGraph4j `StateGraph`（无 JSON 反序列化能力），自建纯 Java `AgentGraphInterpreter`（`passed/step-8-graph-interpreter-engine.md`），`AgentGraphFactory`/LangGraph4j 保留服务 F01，两条执行路径并存互不干扰；条件分支求值**已拍板**为关键词子串匹配（边 `config.keyword`，`String.contains` 按 elements 顺序取第一个命中，未命中走唯一默认边，无默认边运行时报错，不支持正则、无新依赖）；execution context 极简为单一 currentText；执行历史不落库。**Step9（2026-08-11）已落地**：前端图设计器全链（`passed/step-9-graph-designer-frontend.md`）——V26 菜单迁移（root 路径；现场核验修正了"真实 sys_menu 无 agent 行"的调研结论——V6 早已 seed「智能体」id=7，按方案 §3.1 既有层级复用分支仿 V11 先例矫正为目录 + 挂「图定义管理」二级菜单）+ `graphAdapter.ts` 转换层（elements↔FlowGraphData，坐标存 style.x/y 为前端裁定非后端契约）+ GraphDefList/GraphDesigner 两页面 + 参数化静态路由；前端 63f/539t。「不在此模块投入编码资源」的限制对 F02 图定义/执行/前端设计器（Step7-9）已解除。**仍未收敛**：并行/循环节点语义（推入 todo）、RAG 向量库选型、流程表单联动点——三项继续适用该限制。
 
 ### I14：M08 IoT 腾讯接入路径待补全
 
