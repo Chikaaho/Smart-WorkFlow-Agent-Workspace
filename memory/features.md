@@ -4,7 +4,7 @@
 
 | 功能 | 模块 | 状态 | 当前 Step | 备注 |
 |------|------|:---:|------|------|
-| agent-model-orchestration | M07-F01/F02/F04 | **COMPLETED** | Step1-9 + Step10（多变量执行上下文）全部 PASSED | F01（模型管理/编排/工具沙箱/会话/多Key轮询）+ F02（图设计器：定义CRUD/发布/解释执行/前端对接 + 多变量执行上下文前后端）全部完结，后端392/前端63f546t；todo 池：并行/循环节点、单步调试、执行历史持久化、F03知识库RAG |
+| agent-model-orchestration | M07-F01/F02/F04 | **COMPLETED** | Step1-12 全部 PASSED（D53-D71） | 后端405→426（+21）/前端63f552t不变（本轮未做前端）；Step12=执行历史持久化：V27/V28双表+解释器轨迹采集(branchId/nodeSeq)+错误分类8类+查询端点；todo 池剩余：单步调试、图节点级多Key轮询、F03知识库RAG |
 | process-monitoring | M04-F06-01 | **COMPLETED** | S0-3 PASSED | 流程图高亮+流转记录（首批），阶段三收尾完成 |
 | bpmn-adapter | M04 | COMPLETED | S0-3 PASSED, S4 SUPERSEDED | BPMN 查看器防腐层+XML 端点+两个前端消费方 |
 | vue-flow-adapter | M07 | COMPLETED | S0-1 PASSED | Flow-graph 防腐层，零消费方 |

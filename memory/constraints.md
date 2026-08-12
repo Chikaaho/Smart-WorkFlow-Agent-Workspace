@@ -1,6 +1,6 @@
 # 硬约束（规划关键）
 
-> 最后更新：2026-07-30
+> 最后更新：2026-08-12
 > 仅保留 Anthropic 规划时必须遵守的红线。完整约束在 `knowledge/shared-constraints.md`。
 
 ## 安全红线
@@ -31,3 +31,4 @@
 - 所有探索：search_task → 模型切换 → search_fallback → 切回
 - 前后端 Step 严格分离（一个 Step 不跨前后端）
 - 禁执行代理诱导规划、预告下一 Step
+- 编译命令限内存：mvn/pnpm/npm 等每种编译工具上限 1G（`MAVEN_OPTS="-Xmx1g"` / `NODE_OPTIONS="--max-old-space-size=1024"`）

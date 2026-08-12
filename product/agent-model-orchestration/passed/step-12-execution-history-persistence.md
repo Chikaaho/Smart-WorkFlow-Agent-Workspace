@@ -1,6 +1,8 @@
 # M07-F02 Step12 需求方向：图执行历史持久化
 
 > 规划层产出，仅含目标/非目标/影响范围/风险方向/待确认问题。**不设计表结构、不指定执行点标识方案、不拆解具体 Step、不设计执行/测试方案**——由执行层自主拆分与实现，完成后提交功能级完成回执供最终验收。
+>
+> **状态：PASSED（D71，2026-08-12）**——见 §8 执行层落地摘要。
 
 ## 1. 背景
 
@@ -52,3 +54,26 @@ M07-F02 图解释执行引擎（Step8-11）自设计之初即有意"不落库"�
 ## 7. 前置调研引用
 
 `search_fallback/m07-step12-execution-history-precedent.md`（探索时间 2026-08-12，已确认现有执行调用链/DTO 结构/F04 持久化先例/Flyway 版本占用/失败异常结构，供执行层实现时参考现场证据，非强制遵循的实现方案）。
+
+---
+
+## 8. 执行层落地摘要（功能级完成回执要点，供最终验收）
+
+**执行层自主设计决策**（详见 `receipts/step-12-execution.md` §8）：
+
+| 决策点 | 落地 |
+|---|---|
+| 分支标识 | `branchId` 分支路径字符串（FORK 按出边出现顺序追加下标，如 "0"→"0-0"/"0-1"），LOOP 迭代靠 `nodeSeq` 区分同 branchId 多条记录 |
+| 轨迹采集 | 解释器新增 `NodeExecutionTrace`（纯 Java 静态内部类）：nodeSeq/branchId/nodeId/nodeType/nodeLatencyMs/变量快照；经 `getTraces()` 返回值携带给 Service，不持有 Mapper 依赖 |
+| 落库时机 | Service 包夹：执行前建 RUNNING 记录 → 解释器运行 → 终态回写（SUCCESS/FAILED）→ 节点明细批量落库；失败路径与成功路径统一包夹，一致性有测试保证 |
+| 错误分类 | `GraphExecutionException` 新增 `category` 字段（8 类：STEP_LIMIT/LOOP_LIMIT/UNDEFINED_VARIABLE/CONDITION_NO_MATCH/TOPOLOGY_INVALID/MODEL_CALL_FAILED/TOOL_CALL_FAILED/UNKNOWN），18 个既有抛出点 + 第三方异常包装点全部显式携带 |
+| 迁移 | V27 `sw_agent_graph_execution`（执行记录）+ V28 `sw_agent_graph_execution_node`（节点明细），h2/postgresql 双份同步；踩坑：`output` 列名是 SQL 保留字（租户拦截器 JSqlParser 解析失败），最终列名改为 `result_text`，对外 DTO 字段仍为 `output` |
+| 查询端点 | `AgentGraphExecutionController`：列表（分页+可选 graphDefId 过滤）/ 详情 / 节点明细，权限复用 `agent:model:view`，仅租户级隔离（非用户级） |
+| 落库边界 | 执行前校验失败（PARAM_ERROR/NOT_FOUND/未发布）不产生执行记录，对齐 F04"配置非法不落脏数据"先例 |
+| 前端 | 本轮未做（方向文档 §4 不强制），后端查询端点+三层测试已证明可查询性 |
+
+**测试结果**：定向 71/71（Interpreter 24 + Service 30 + Controller 17）；全量两次 `mvn test` 均 BUILD SUCCESS，**405→426（+21，全部本轮新增：Interpreter+5/Service+11/Controller+5），0 failures/0 errors**，无既有用例回归。
+
+**风险对照（需求 §5）**：①并行/循环执行点标识 → branchId 路径字符串方案解决，测试用例 21（FORK→JOIN，7 条轨迹含 JOIN 挂起到达）显式验证；②失败/成功落库一致性 → Service 包夹统一处理，测试用例 21/22-26 显式断言；③错误分类粒度 → 8 类分类贯穿 18 个抛出点+第三方包装，超预期完成；④纯 Java 采集约束 → `getTraces()` 返回值传递，解释器零 Mapper 依赖，满足；⑤执行频率未知 → 未发现与探索结论冲突，人工低频场景下写入开销可接受。
+
+**硬约束核对**：F01 路径零触碰；DTO 对外行为不变（仅追加 executionId）；不做数据量控制/单步调试/多Key轮询/429行为改变；不扩展 flow-graph adapter/contracts；提交无 Co-Authored-By 尾注。全部满足，详见执行回执 §9。
