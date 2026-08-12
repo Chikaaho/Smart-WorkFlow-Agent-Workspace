@@ -1,10 +1,12 @@
 # 活跃设计决策
 
-> 最后更新：2026-08-12
+> 最后更新：2026-08-13
 > 仅保留最近 10 条活跃决策。D1-D55 为早期/已归档决策，完整内容在 `knowledge/decisions.md`（D56-D62 待下次归档迁移，暂保留于此作为过渡）。
 
 | # | 日期 | 决策 | 状态 |
 |---|------|------|------|
+| D75 | 2026-08-13 | 新功能 checklist-gap-hardening 第一批需求方向下发（用户授权"规划层推荐即定"）：范围=①I33 停用用户仍可登录（登录+refresh 双入口服务端拦截）②I43/I44 M10 job/storage 生产菜单 Flyway seed（h2/pg 双份，仿 V26 先例）。**数据权限（M02-F04-01 DataScope.ALL 硬编码）明确排除**——横切大功能留后续轮单独规划。方向文档：`product/checklist-gap-hardening/ready/direction-batch1-security-reachability.md`，待执行层自主闭环后规划层验收 | Active |
+| D74 | 2026-08-13 | 流程固化（用户决策）：system.md §3.3 新增强制第10项——每轮需求收尾必须由执行层做知识库全量同步（功能清单.md 状态列 + current-status/features/known-issues + 回执报告清单变更明细与触碰文件清单，规划层验收逐项核对）。依据：I1 清单脱节 2026-08-12 二次复发（间隔约3周/34条漂移），外部触发式核对不可持续 | Active |
 | D73 | 2026-08-12 | feature-checklist-sync Step5（清单二次同步）最终验收判定：**PASSED**。34/34 状态映射落地（A类13条✅→🟦、B类1条🟦→⬜、C类3条→✅、D类17条⬜→🟦），终态 ✅7/🟦40/⬜42 规划层独立复算自洽（前基线 ✅17/🟦12/⬜60）；known-issues.md I1 补记复发（首轮2026-07-24/第二轮2026-08-12）+ I31-I44 虚高14条逐条 + I45 虚低15条汇总（17−2条I3已覆盖）；todo/README.md 未动（差异均非"已拍板暂不修复"）。记载误差（非偏离）：方向文档C类标头误记 M04-F03-01 初始为⬜实际🟦，目标值✅落地正确。遗留观察：knowledge/current-status.md 清单计数（✅17/🟦12/⬜60）待下次执行层触碰时同步为 7/40/42；I27/I30 历史缺索引行未擅动。归档：`passed/step-5-recheck-sync.md`、`receipts/step-5-recheck-sync-execution.md` | Active |
 | D72 | 2026-08-12 | feature-checklist-sync Step5 需求方向确认（清单审计触发）：用户指令"探索现状对照PRD更新todo"→ 全量审计 `search_fallback/feature-checklist-full-audit.md`（89/89核对）发现34条不一致，I1复发（距首轮同步仅约3周）。方向裁定：①M10菜单可达性口径——功能代码完整但生产菜单树未seed仅mock可达=未完全交付，状态🟦非✅（M10-F03-01/F06-01）；②known-issues记录粒度——虚高14条（曾误判已完成，风险高）逐条立编号，虚低17条（本就标未完成仅低估）合并一条汇总，避免一次审计暴涨32个编号；③I1不新开编号原编号下补记复发，保留问题历史连续性；④M02-F04-01数据权限实为硬编码DataScope.ALL降⬜。待决遗留：清单维护机制是否固化进§3.3收尾流程（防第三次复发）；D类缺口（M07单步调试/Prompt配置/F01前端管理页等）是否排期。方向文档：`passed/step-5-recheck-sync.md` | Active |
 | D71 | 2026-08-12 | M07 Step12（执行历史持久化）最终验收判定：**PASSED**。后端405→426（+21用例，全量两次BUILD SUCCESS/426/426，定向71/71）。核验：①新增 V27 `sw_agent_graph_execution`（执行记录，含状态机RUNNING/SUCCESS/FAILED）+ V28 `sw_agent_graph_execution_node`（节点明细）双表，h2/postgresql双份同步；②解释器新增 `NodeExecutionTrace` 纯Java采集（nodeSeq/branchId/nodeType/耗时/变量快照），经 getTraces() 返回值传递，零 Mapper 依赖，符合纯Java约束；③分支标识=branchId 路径字符串（FORK按出边顺序追加下标"0-0"/"0-1"），LOOP迭代靠nodeSeq区分，JOIN挂起到达也留痕；④失败/成功路径统一由 Service 包夹落库（区别于F04只写成功分支）；⑤错误分类=GraphExecutionException.category 8类，18个抛出点+第三方异常包装点全部显式携带；⑥查询端点（列表分页/详情/节点明细）复用 agent:model:view 权限，仅租户级隔离；⑦零触碰F01路径，DTO仅追加executionId不破坏既有语义，未扩展flow-graph adapter/contracts，本轮未做前端（方向文档§4允许）；⑧数据量控制/单步调试/多Key轮询/429行为改变均未做，符合非目标。**实现细节澄清（非偏离）**：`output` 列名为SQL保留字导致租户拦截器JSqlParser解析失败，执行层自行改列名为 `result_text`，对外DTO字段仍为output，未变更方向文档。方向文档+回执归档：`passed/step-12-execution-history-persistence.md`、`receipts/step-12-*.md` | Active |

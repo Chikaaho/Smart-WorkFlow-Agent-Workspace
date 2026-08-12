@@ -1,6 +1,6 @@
 # 会话交接
 
-> 最后更新：2026-08-12
+> 最后更新：2026-08-13
 
 ## 最新完成
 
@@ -23,7 +23,10 @@
 
 ## 进行中
 
-**无。** feature-checklist-sync Step5 已验收 PASSED（D73）；M07-F01/F02（Step1-12）已完结。
+**checklist-gap-hardening 第一批（安全+可达性，D74/D75，2026-08-13 下发）**：
+- 方向文档 `product/checklist-gap-hardening/ready/direction-batch1-security-reachability.md` 已下发执行层，范围：①I33 停用用户仍可登录（登录+refresh 双入口服务端拦截 `SysUser.status`）②I43/I44 M10 job/storage 生产菜单 Flyway seed（h2/pg 双份，仿既有菜单先例）。数据权限（DataScope.ALL 硬编码）明确排除留后续轮。
+- **流程变更（D74）**：system.md §3.3 新增强制第10项——每轮需求收尾必须由执行层做知识库全量同步（功能清单.md+current-status+features+known-issues，回执报告清单变更明细），本轮起生效。
+- 待执行层自主闭环（拆Step/执行/测试/自验）后提交完成回执，规划层按方向文档验收标准（4项）最终验收。
 
 ## 当前基线
 
@@ -33,12 +36,14 @@
 
 ## 下一动作
 
-待用户指定。候选方向（2026-08-12 审计后更新，按审计暴露的风险/缺口排序参考）：
-1. **虚高缺口修复**（审计新发现，I31-I44）：M02-F04-01 数据权限硬编码 `DataScope.ALL`（I 高风险：停用用户仍可登录 I33）、M10 job/storage 生产菜单 seed、M01/M02 关联/筛选要素补齐
-2. **M07 补全**：F01 前端管理页（全5条仅后端）、F02-02 节点 Prompt 配置、F02-04 运行日志页+单步调试、F04-02 Token 统计
-3. **M07-F03/F04 新功能**：助手配置/知识库RAG（选型未定）/对话窗口SSE（均零代码）
-4. IoT / OpenAPI 模块落地（当前仅骨架）
-5. **清单维护机制**：是否把"清单状态同步"固化进 §3.3 收尾流程强制项（I1 已复发两轮，待用户决策）
+等待执行层提交 checklist-gap-hardening 第一批完成回执 → 规划层最终验收。
+
+后续候选（本批之后，按风险/价值排序参考）：
+1. M02-F04-01 数据权限完整落地（DataScope 五档，横切大功能，已从本批明确排除）
+2. M01/M02 其余虚高要素补齐（关联/筛选/启停，I31-I44 余项）
+3. M07 补全：F01 前端管理页、F02-02 Prompt 配置、F02-04 运行日志页+单步调试、F04-02 Token 统计
+4. M07-F03/F04 新功能：助手配置/知识库RAG（选型未定）/对话窗口SSE（均零代码）
+5. IoT / OpenAPI 模块落地（仅骨架）
 
 ## 新会话启动提示词
 
@@ -46,11 +51,11 @@
 你是 Smart-WorkFlow 根目录规划代理。请按 system.md §10 执行新会话恢复。
 
 最新状态：
-- feature-checklist-sync Step5 清单二次同步 PASSED（D72/D73，2026-08-12）：89条全量审计修正34处，known-issues +I31-I45，清单终态 ✅7/🟦40/⬜42
+- 进行中：checklist-gap-hardening 第一批（D74/D75，2026-08-13）——I33 停用用户登录拦截 + I43/I44 M10 生产菜单 seed，方向文档已下发执行层，等完成回执验收
+- 流程变更：system.md §3.3 第10项（每轮收尾知识库全量同步）已固化生效（D74）
+- feature-checklist-sync Step5 清单二次同步 PASSED（D72/D73）：89条审计修正34处，known-issues +I31-I45，清单终态 ✅7/🟦40/⬜42
 - M07-F01+F02 全部完结（Step1-12，D53-D71）
-- 无进行中功能，待用户指定下一任务
 - 基线：后端 426 tests / 前端 63f/552t，typecheck/lint/build 全绿
 
-候选方向：虚高缺口修复（数据权限DataScope.ALL硬编码/生产菜单seed）/ M07补全（前端管理页/Prompt配置/运行日志页/单步调试）/ F03知识库RAG / IoT/OpenAPI / 清单维护机制固化。
-审计详情：search_fallback/feature-checklist-full-audit.md
+审计详情：search_fallback/feature-checklist-full-audit.md；方向文档：product/checklist-gap-hardening/ready/direction-batch1-security-reachability.md
 ```
