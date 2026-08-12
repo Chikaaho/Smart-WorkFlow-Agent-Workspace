@@ -1,8 +1,16 @@
 # 会话交接
 
-> 最后更新：2026-08-11
+> 最后更新：2026-08-12
 
 ## 最新完成
+
+**feature-checklist-sync Step5「清单二次核实与同步」：PASSED（D72/D73，2026-08-12）✅**
+- 触发：用户指令"探索现状，对照 PRD 和需求文档，更新 todo"。全量审计 `search_fallback/feature-checklist-full-audit.md`（89/89 条核对，4 subagent 并行+汇总层复核）发现 **34 条清单标记与代码不一致**，known-issues **I1 复发**（距 2026-07-24 首轮同步仅约3周）。
+- 落地：`Smart-WorkFlow/功能清单.md` 34 处状态列同步（13条✅→🟦 / 1条🟦→⬜ / 3条→✅ / 17条⬜→🟦），终态 **✅7/🟦40/⬜42**（前基线 ✅17/🟦12/⬜60，规划层独立复算自洽）；`knowledge/known-issues.md` +168行（I1复发补记 + I31-I44虚高14条逐条 + I45虚低15条汇总）；todo/README.md 未动。
+- 关键裁定（D72）：M10菜单可达性口径（代码完整但生产菜单未seed=🟦非✅）；known-issues粒度（虚高逐条/虚低汇总）；I1原编号补记复发。
+- **审计暴露的重要事实**（后续规划参考）：①M02-F04-01数据权限实为硬编码`DataScope.ALL`完全未生效（I 记录中标高风险：I33 停用用户仍可登录）；②M10定时任务/文件存储生产菜单树未seed（V6/V10/V15/V26无job/storage行），仅mock可达；③M07仅缺前端管理页（F01全5条）/Prompt配置字段（F02-02）/运行日志页+单步调试（F02-04）/Token统计（F04-02）；④M07-F03-01助手配置、F03-03知识库RAG、F04-01对话窗口（SSE）零代码。
+- 遗留观察：`knowledge/current-status.md` 清单计数待下次执行层触碰时同步为 7/40/42；清单维护机制是否固化进 §3.3 收尾流程（防 I1 第三次复发）待用户决策。
+- 归档：`product/feature-checklist-sync/passed/step-5-recheck-sync.md` + `receipts/step-5-recheck-sync-execution.md`
 
 **agent-model-orchestration (M07-F01/F02/F04)：F01 + F02 全部完结（含 Step11 并行/循环节点）✅**
 - F01「大模型管理」（Step1-5）：模型 CRUD+AES 加密、LangGraph4j 编排引擎、工具沙箱、多轮会话持久化(F04)、多Key轮询/限流。PASSED（D53/D55/D57/D59/D61/D62）
@@ -15,7 +23,7 @@
 
 ## 进行中
 
-**无。** M07-F01/F02（Step1-12）已完结；process-monitoring 等此前功能均已完成。
+**无。** feature-checklist-sync Step5 已验收 PASSED（D73）；M07-F01/F02（Step1-12）已完结。
 
 ## 当前基线
 
@@ -25,10 +33,12 @@
 
 ## 下一动作
 
-待用户指定。候选方向：
-1. M07 todo 池剩余：单步调试、图节点级多Key轮询
-2. M07-F03（知识库/RAG，I13 部分遗留，选型仍未定）
-3. IoT / OpenAPI 模块落地（当前仅骨架）
+待用户指定。候选方向（2026-08-12 审计后更新，按审计暴露的风险/缺口排序参考）：
+1. **虚高缺口修复**（审计新发现，I31-I44）：M02-F04-01 数据权限硬编码 `DataScope.ALL`（I 高风险：停用用户仍可登录 I33）、M10 job/storage 生产菜单 seed、M01/M02 关联/筛选要素补齐
+2. **M07 补全**：F01 前端管理页（全5条仅后端）、F02-02 节点 Prompt 配置、F02-04 运行日志页+单步调试、F04-02 Token 统计
+3. **M07-F03/F04 新功能**：助手配置/知识库RAG（选型未定）/对话窗口SSE（均零代码）
+4. IoT / OpenAPI 模块落地（当前仅骨架）
+5. **清单维护机制**：是否把"清单状态同步"固化进 §3.3 收尾流程强制项（I1 已复发两轮，待用户决策）
 
 ## 新会话启动提示词
 
@@ -36,9 +46,11 @@
 你是 Smart-WorkFlow 根目录规划代理。请按 system.md §10 执行新会话恢复。
 
 最新状态：
-- M07-F01「大模型管理」+ F02「图设计器」全部完结（Step1-12，D53-D71），闭环打通，含多变量执行上下文+并行/循环节点+执行历史持久化
+- feature-checklist-sync Step5 清单二次同步 PASSED（D72/D73，2026-08-12）：89条全量审计修正34处，known-issues +I31-I45，清单终态 ✅7/🟦40/⬜42
+- M07-F01+F02 全部完结（Step1-12，D53-D71）
 - 无进行中功能，待用户指定下一任务
 - 基线：后端 426 tests / 前端 63f/552t，typecheck/lint/build 全绿
 
-候选方向：M07 todo 池剩余（单步调试/多Key节点级轮询）/ F03 知识库RAG / IoT/OpenAPI 模块。
+候选方向：虚高缺口修复（数据权限DataScope.ALL硬编码/生产菜单seed）/ M07补全（前端管理页/Prompt配置/运行日志页/单步调试）/ F03知识库RAG / IoT/OpenAPI / 清单维护机制固化。
+审计详情：search_fallback/feature-checklist-full-audit.md
 ```
