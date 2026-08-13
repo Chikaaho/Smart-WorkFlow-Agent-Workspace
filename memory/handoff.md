@@ -30,9 +30,10 @@
 
 ## 进行中
 
-**M02-F04-01 数据权限（DataScope）完整落地——前置探索阶段（2026-08-13，规划层推荐经用户认可）**：
-- 探索任务已下发 `search_task/datascope-implementation-survey.md`（11 问：DataScope 枚举/角色表字段/拦截器基建/纳管范围盘点/清单口径/若依先例倾向），等执行层回执 `search_fallback/datascope-implementation-survey.md` 后写需求方向文档。
-- 选定理由：审计遗留的最后一个安全类缺口（角色数据范围配置完全不生效），横切面随新查询增长越晚越贵；第一批排除仅为不混轮。
+**data-scope-enforcement（M02-F04-01 数据权限完整落地，D77，2026-08-13 下发）**：
+- 前置探索完成（`search_fallback/datascope-implementation-survey.md`）：基建极高完成度（五档枚举/字段/拦截器/Handler 全就位），缺口 4 处（装配硬编码 ALL / 零 @DataScope 标注 / sys_role_dept 缺表 / 前端零 UI）。
+- 方向文档 `product/data-scope-enforcement/ready/direction-datascope-full-implementation.md` 已下发执行层。范围：装配去硬编码（多角色取最宽）+五档全生效（DeptScopeProvider+sys_role_dept 建表+CUSTOM 装配）+最小强制集纳管（sys_user/bpm_instance/agent_execution/job/storage/model_config）+前端角色页五档下拉+部门树。**手写 SQL 通道（动态宽表/外部数据源）不纳管**（绕过拦截器链，记限制）；实时生效不做。
+- 待执行层自主闭环后提交完成回执，规划层按 5 项验收标准最终验收。
 
 **流程基线（D74，已生效并首跑验证）**：system.md §3.3 第10项——每轮需求收尾必须由执行层做知识库全量同步（功能清单.md+current-status+features+known-issues，回执报告清单变更明细+触碰文件清单），规划层验收逐项核对。
 
@@ -45,15 +46,14 @@
 
 ## 下一动作
 
-等执行层完成 `search_task/datascope-implementation-survey.md` 探索并写回执 → 规划层据实写 DataScope 需求方向文档 → 下发执行层自主闭环。
+等待执行层提交 data-scope-enforcement 完成回执 → 规划层最终验收（方向文档 5 项验收标准）。
 
-后续候选（DataScope 之后，按风险/价值排序参考）：
-1. M02-F04-01 数据权限完整落地（DataScope 五档，横切大功能，已从第一批明确排除）
-2. M01/M02 其余虚高要素补齐（关联/筛选，I31-I44 余项；I33/I43/I44 已修复）
-3. M07 补全：F01 前端管理页、F02-02 Prompt 配置、F02-04 运行日志页+单步调试、F04-02 Token 统计
-4. M07-F03/F04 新功能：助手配置/知识库RAG（选型未定）/对话窗口SSE（均零代码）
-5. IoT / OpenAPI 模块落地（仅骨架）
-6. 小项池：I47 修复（bpm/h2 V8 partial index→真全链迁移测试）、停用即时生效（JWT 过滤器层 status 校验）、sw-bootstrap 测试基建决策、I26 SysRole 列名不一致
+后续候选（本轮之后，按风险/价值排序参考）：
+1. M01/M02 其余虚高要素补齐（关联/筛选，I31-I44 余项；I33/I43/I44 已修复）
+2. M07 补全：F01 前端管理页、F02-02 Prompt 配置、F02-04 运行日志页+单步调试、F04-02 Token 统计
+3. M07-F03/F04 新功能：助手配置/知识库RAG（选型未定）/对话窗口SSE（均零代码）
+4. IoT / OpenAPI 模块落地（仅骨架）
+5. 小项池：I47 修复（bpm/h2 V8 partial index→真全链迁移测试）、停用即时生效（JWT 过滤器层 status 校验）、sw-bootstrap 测试基建决策、I26 SysRole 列名不一致
 
 ## 新会话启动提示词
 
@@ -61,7 +61,7 @@
 你是 Smart-WorkFlow 根目录规划代理。请按 system.md §10 执行新会话恢复。
 
 最新状态：
-- 进行中：M02-F04-01 数据权限（DataScope）完整落地——前置探索阶段，探索任务 search_task/datascope-implementation-survey.md 已下发，等回执后写方向文档
+- 进行中：data-scope-enforcement（M02-F04-01 数据权限完整落地，D77）——方向文档 product/data-scope-enforcement/ready/direction-datascope-full-implementation.md 已下发执行层，等完成回执验收（探索回执：search_fallback/datascope-implementation-survey.md）
 - checklist-gap-hardening 第一批 PASSED（D74-D76，2026-08-13）：I33 停用登录/refresh 拦截 + I43/I44 V29 生产菜单 seed + §3.3 第10项知识库同步首跑合格；遗留4项见 D76
 - 流程基线：system.md §3.3 第10项（每轮收尾知识库全量同步）已固化并首跑验证（D74）
 - feature-checklist-sync Step5 PASSED（D72/D73）；M07-F01+F02 全部完结（Step1-12，D53-D71）
