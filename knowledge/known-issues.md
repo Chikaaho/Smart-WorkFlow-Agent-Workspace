@@ -41,7 +41,7 @@
 | I29 | 2026-07-25 | bpmn-adapter Step 2 执行/测试回执自报测试计数与独立核实结果不符（三处矛盾），自报 PASSED 未予采信 | 中 | ✅ 已修复（2026-07-25：修正补充回执已收到并独立复核通过——基线 19→26 更正为 26→36，净增 +7→+10，项目级 231→241，Git 删行澄清为零删除。Step 2 最终 PASSED） |
 | I31 | 2026-08-12 | M01-F01-04 部门查询虚高：清单标 ✅，实际仅全量树查询、无条件筛选 | 低 | 待修复 |
 | I32 | 2026-08-12 | M01-F02-01 人员新增虚高：清单标 ✅，实际岗位/角色关联未实现 | 低 | 待修复 |
-| I33 | 2026-08-12 | M01-F02-02 人员修改虚高：清单标 ✅，实际账号启用/停用不生效，停用用户仍可登录 | 高 | 待修复 |
+| I33 | 2026-08-12 | M01-F02-02 人员修改虚高：清单标 ✅，实际账号启用/停用不生效，停用用户仍可登录 | 高 | ✅ 已修复（2026-08-13 checklist-gap-hardening 第一批：AuthController 登录/刷新双入口 status 校验，停用/锁定账号拒绝登录与 token 续期） |
 | I34 | 2026-08-12 | M01-F02-04 人员查询虚高：清单标 ✅，实际条件查询未实现、仅分页 | 低 | 待修复 |
 | I35 | 2026-08-12 | M01-F03-01 岗位管理虚高：清单标 ✅，实际人员与岗位关联未实现 | 低 | 待修复 |
 | I36 | 2026-08-12 | M02-F01-01 角色管理虚高：清单标 ✅，实际角色与人员/用户组绑定未实现 | 低 | 待修复 |
@@ -51,8 +51,8 @@
 | I40 | 2026-08-12 | M03-F04-01 数据管理虚高：清单标 ✅，实际列表/查询条件配置仅自动派生 | 低 | 待修复 |
 | I41 | 2026-08-12 | M05-F01-02 消息接收虚高：清单标 ✅，实际缺删除 | 中 | 待修复 |
 | I42 | 2026-08-12 | M05-F01-03 消息查询虚高：清单标 ✅，实际无状态/关键字过滤 | 中 | 待修复 |
-| I43 | 2026-08-12 | M10-F03-01 定时任务虚高：清单标 ✅，实际功能完整但生产菜单不可达 | 中 | 待修复（补菜单 seed 或接受 mock-only） |
-| I44 | 2026-08-12 | M10-F06-01 文件存储虚高：清单标 ✅，实际功能完整但生产菜单不可达 | 中 | 待修复（补菜单 seed 或接受 mock-only） |
+| I43 | 2026-08-12 | M10-F03-01 定时任务虚高：清单标 ✅，实际功能完整但生产菜单不可达 | 中 | ✅ 已修复（2026-08-13 checklist-gap-hardening 第一批：Flyway V29 菜单 seed，任务管理/执行日志生产菜单可达） |
+| I44 | 2026-08-12 | M10-F06-01 文件存储虚高：清单标 ✅，实际功能完整但生产菜单不可达 | 中 | ✅ 已修复（2026-08-13 checklist-gap-hardening 第一批：Flyway V29 菜单 seed，文件管理生产菜单可达） |
 | I45 | 2026-08-12 | M07/M04/M05/M06/M09/M10 功能清单"虚低"15 条汇总（部分后端骨架未达清单完整度） | 低 | 待修复 |
 
 
@@ -389,6 +389,7 @@
 - **现状证据**：`AuthController.login()` → `UserDetailsProviderImpl.loadByUsername/toLoginUser()`（L55-123）不校验 `SysUser.status`（审计汇总层已现场复核，见审计回执问题 1 差异表 M01-F02-02）。
 - **影响**：此前会让后续会话误判"已完成"，风险高；停用账号无法阻止登录，属安全相关缺口。
 - **建议**：状态列已按审计回执同步降级为 🟦；缺口修复方向详见审计回执，规划方向由规划层定。
+- **修复记录（2026-08-13，checklist-gap-hardening 第一批）**：✅ 已修复。改动文件：`sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/controller/AuthController.java`（登录 + 刷新双入口 status 校验：status=1 停用 / 2 锁定 / null 与未知值一律拒绝，登录不签发 access/refresh token，刷新拒绝续期，401 返回语义区分"账号已停用/账号已锁定"）+ 两个 auth 测试文件（`AuthControllerTest.java`、`AuthFlowIntegrationTest.java`）。新增测试 10 个，后端全量 **435 tests / 0 failures** 全绿。功能清单 M01-F02-02 已回升 ✅。遗留说明：停用前已签发且未过期的 access token 至自然过期仍可用，属方向文档范围外（后续批次可评估）。
 
 ### I34：M01-F02-04 人员查询（清单标 ✅，实际条件查询未实现、仅分页）
 
@@ -489,6 +490,7 @@
 - **现状证据**：后端 `JobInfoController`（/job/info page/get/post/put/delete/pause/resume/trigger）+ `JobLogController` + `QuartzSchedulerService` + 测试 + V17 建表；前端 `JobList.vue`/`JobLog.vue`+spec；菜单仅 seeds.ts mock 注册，后端菜单 SQL（V6/V10/V15/V26）无 job 菜单行（审计汇总层已现场复核，见审计回执问题 1 差异表 M10-F03-01）。
 - **影响**：此前会让后续会话误判"已完成"，风险高；生产环境用户无法从菜单进入定时任务功能。
 - **建议**：状态列已按审计回执同步降级为 🟦；缺口性质为"补菜单 seed 或接受 mock-only"，规划方向由规划层定（见审计回执"判定口径说明"）。
+- **修复记录（2026-08-13，checklist-gap-hardening 第一批）**：✅ 已修复。Flyway **V29 菜单 seed**，h2/postgresql 双份迁移文件：`sw-bootstrap/src/main/resources/db/migration/h2/V29__job_storage_menu_seed.sql`、`sw-bootstrap/src/main/resources/db/migration/postgresql/V29__job_storage_menu_seed.sql`。4 行菜单：id17 定时任务（顶级目录 menu_type=0、component=NULL，仿 V6「低代码」目录先例）→ id18 任务管理（job/list，component=job/views/JobList，permission=job:list）、id19 执行日志（job/log，component=job/views/JobLog，permission=job:log）二级菜单（仿 V10/V15/V26 子菜单先例）；id16 文件管理见 I44。冒烟测试验证 27 个迁移按序应用无 validate 失败 + 4 行菜单逐列断言通过；前端零改动。功能清单 M10-F03-01 已回升 ✅。
 
 ### I44：M10-F06-01 文件存储（清单标 ✅，实际功能完整但生产菜单不可达）
 
@@ -499,6 +501,7 @@
 - **现状证据**：后端 `StorageController`（/storage/files 上传/下载/列表/删除）+ MinIO/Local/COS/七牛 4 个真实 provider + 测试 + V16 建表；前端 `StorageList.vue`+spec；后端菜单 SQL 无 storage 菜单行（审计汇总层已现场复核，见审计回执问题 1 差异表 M10-F06-01）。
 - **影响**：此前会让后续会话误判"已完成"，风险高；生产环境用户无法从菜单进入文件存储功能。
 - **建议**：状态列已按审计回执同步降级为 🟦；缺口性质为"补菜单 seed 或接受 mock-only"，规划方向由规划层定（见审计回执"判定口径说明"）。
+- **修复记录（2026-08-13，checklist-gap-hardening 第一批）**：✅ 已修复。同 I43：Flyway **V29 菜单 seed**（h2/postgresql 双份，文件同上），id16 文件管理（顶级叶子菜单 menu_type=1、parent_id=0，path=storage，component=storage/views/StorageList，permission=storage:view，仿 V6 顶级叶子菜单先例）。冒烟测试逐列断言通过；前端零改动。功能清单 M10-F06-01 已回升 ✅。
 
 ### I45：M07/M04/M05/M06/M09/M10 功能清单"虚低"15 条汇总（部分后端骨架未达清单完整度）
 

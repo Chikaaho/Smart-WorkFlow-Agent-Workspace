@@ -17,9 +17,9 @@
 | 前端框架 | Vue 3.5 + TypeScript 6.0 + Vite 8，严格分层 SPA，自有架构（不继承 vben） |
 | 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，V1–V17 连续无缺号（CONFIRMED 2026-07-22 代码直读：V12=form 升级、V14=bpm process 均存在；V16=storage、V17=job-scheduler；无 V18/无 auth 脚本。脚本分散各模块 `db/migration/{module}/{postgresql,h2}`，双方言齐全） |
 | 核心路径 | Walking Skeleton：登录 → 表单 → 审批 → 通知 ✅ 四环全部闭合 |
-| 功能清单 | 10 模块，54 功能，**89** 明细（CONFIRMED 2026-07-23，此前记为 88，M10 差 1 条已更正——见 [[shared-constraints]] §5）；`Smart-WorkFlow/功能清单.md` 为权威清单，状态标记已与代码实际进度对齐（✅17/🟦12/⬜60，2026-07-24 [[feature-checklist-sync]] 完成，已知问题 I1 已修复） |
-| 测试基线 | 后端：项目级 **465 tests**（CONFIRMED 2026-07-28 process-monitoring Step 2 独立验收：`mvn test` 全量 BUILD SUCCESS，surefire XML 跨模块合计 465，0 failures/0 errors。Step 1 收据中「256」为误报——实际为子集计数，全量基线此前即 ≥459）。新增：Step 1 +15（8 Facade + 7 Service）、Step 2 +6（Controller）。前端：60 spec files / **521 tests**（CONFIRMED 2026-07-28 process-monitoring Step 3 独立验收：60 passed / 521 tests / 0 failures。基线演进：57f/497t → bpmn-adapter Step 1 +1f/+10t → 58f/507t → bpmn-adapter Step 3 +1f/+10t → 59f/517t → process-monitoring Step 3 +1f/+4t → 60f/521t）。四连校验门 CONFIRMED 全绿 |
-| 前次验证 | 2026-07-22 独立复验（kb-verification VB1/VF1）：后端 BUILD SUCCESS · 前端四连全绿，均由执行代理运行、规划层核对证据 |
+| 功能清单 | 10 模块，54 功能，**89** 明细（CONFIRMED 2026-07-23，此前记为 88，M10 差 1 条已更正——见 [[shared-constraints]] §5）；`Smart-WorkFlow/功能清单.md` 为权威清单，状态标记已与代码实际进度对齐：✅17/🟦12/⬜60（2026-07-24 [[feature-checklist-sync]]，I1 修复）→ ✅7/🟦40/⬜42（2026-08-12 Step5 二次核实与同步）→ **✅10/🟦37/⬜42**（2026-08-13 checklist-gap-hardening 第一批：I33/I43/I44 修复后回升 3 行） |
+| 测试基线 | 后端：项目级 **435 tests / 0 failures / 0 errors**（CONFIRMED 2026-08-13 checklist-gap-hardening 第一批验证：426 基线 + I33 新增 10 = 436 运行口径，其中 1 个 V26 临时冒烟测试不在源码 → 435 源码口径）。演进：465（2026-07-28 process-monitoring Step 2 独立验收，surefire XML 跨模块合计，0 failures/0 errors；Step 1 收据「256」为误报——实际为子集计数，全量基线此前即 ≥459；新增 Step 1 +15 + Step 2 +6）→ 426（M07 阶段）→ 435（2026-08-13）。前端：**63 spec files / 552 tests**（CONFIRMED 2026-08-13 checklist-gap-hardening 验证：四连 typecheck/lint/test/build 全绿，含 2 个高负载超时 flaky 重跑通过，零失败）。演进：60f/521t（2026-07-28 process-monitoring Step 3 独立验收：60 passed / 521 tests / 0 failures；57f/497t → bpmn-adapter Step 1 +1f/+10t → 58f/507t → bpmn-adapter Step 3 +1f/+10t → 59f/517t → process-monitoring Step 3 +1f/+4t → 60f/521t）→ 63f/552t（2026-08-13）。四连校验门 CONFIRMED 全绿 |
+| 前次验证 | 2026-08-13 checklist-gap-hardening 第一批验收：后端 435 tests / 0 failures（mvn test BUILD SUCCESS）+ 前端 63 files / 552 tests 四连全绿（含 2 个高负载超时 flaky 重跑通过）+ V29 冒烟测试（27 迁移按序应用无 validate 失败、4 行菜单逐列断言通过），均由执行代理运行、规划层核对证据。此前：2026-07-22 kb-verification VB1/VF1 后端 BUILD SUCCESS · 前端四连全绿 |
 
 ---
 
@@ -131,6 +131,7 @@
 | M04-F01-01 | BPM 单节点审批前后端联通 | **COMPLETED** ✅ | 2026-07-15 | Walking Skeleton 第三环：待办列表 + 审批通过 + 流程定义列表全部实现并通过验收 |
 | M02-F01-01 | 通知模块前端落地 | **COMPLETED** ✅ | 2026-07-15 | Walking Skeleton 最终环：通知列表页 + 标记已读交互，前端 352 tests ✅ |
 | sys-mgmt-crud | 系统管理核心 CRUD 做宽闭环 | **COMPLETED** ✅ | 2026-07-16 | 6 Steps 全部通过：后端 16 文件 + 前端 22 文件，46 spec files / 392 tests 全绿 |
+| checklist-gap-hardening | 清单缺口加固第一批（I33 登录停用校验 + I43/I44 生产菜单 seed） | **COMPLETED** ✅ | 2026-08-13 | 两项交付并测试通过：AuthController 登录/刷新双入口 status 校验（停用/锁定拒绝登录与 token 续期，10 个新测试）+ Flyway V29 菜单 seed（h2/postgresql 双份，4 行菜单：id16 文件管理/17 定时任务目录/18 任务管理/19 执行日志）。后端 435 tests/0 failures + 前端 63f/552t 四连全绿（2 个高负载超时 flaky 重跑通过）；V29 冒烟测试验证 27 迁移按序应用无 validate 失败 + 4 行菜单逐列断言通过（bpm 目录受既有 known-issues I47 阻断，非本批引入）。清单 M01-F02-02/M10-F03-01/M10-F06-01 回升 ✅，全表 ✅10/🟦37/⬜42 |
 
 ---
 
@@ -172,7 +173,7 @@
 
 ## 8. 下一优先事项
 
-全部 **11** 个功能已完成闭环：
+全部 **12** 个功能已完成闭环：
 
 1. ✅ Walking Skeleton（登录→表单→审批→通知）
 2. ✅ sys-mgmt-crud（系统管理核心 CRUD）
@@ -184,7 +185,8 @@
 8. ✅ feature-checklist-sync（功能清单状态同步，I1）
 9. ✅ vue-flow-adapter（Vue Flow adapter 实现）
 10. ✅ bpmn-adapter（BPMN adapter 查看器实现）
-11. ✅ process-monitoring（M04-F06-01 流程监控首批）← **最新完成**
+11. ✅ process-monitoring（M04-F06-01 流程监控首批）
+12. ✅ checklist-gap-hardening（清单缺口加固第一批：I33 登录停用校验 + I43/I44 菜单 seed）← **最新完成**（2026-08-13）
 
 后续候选：
 
@@ -199,8 +201,8 @@
 
 | 项目 | 校验命令 | 当前状态 |
 |------|----------|----------|
-| 后端 | `mvn -q compile && mvn -q test` | **CONFIRMED**（2026-07-28 process-monitoring Step 2 独立验收）：`mvn test` BUILD SUCCESS，surefire XML 跨模块合计 **465 tests / 0 failures / 0 errors**（含 Step 1 +15 + Step 2 +6）。Step 1 收据「256」为子集误报（SUPERSEDED）——全量基线此前即 ≥459。原「462」「241」「203」均为历史基线（SUPERSEDED） |
-| 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | **CONFIRMED**（2026-07-28 process-monitoring Step 3 测试回执 + 独立验收）：四连全绿，Vitest 汇总 **60 files / 521 tests** 全部通过。57f/497t（2026-07-25 vue-flow-adapter Step 1）→ bpmn-adapter Step 1（+1f/+10t）→ 58f/507t → bpmn-adapter Step 3（+1f/+10t）→ 59f/517t → process-monitoring Step 3（+1f/+4t）→ 60f/521t，计数一致，零退化 |
+| 后端 | `mvn -q compile && mvn -q test` | **CONFIRMED**（2026-08-13 checklist-gap-hardening 第一批验证）：`mvn test` BUILD SUCCESS，**435 tests / 0 failures / 0 errors**（426 基线 + I33 新增 10 = 436 运行口径，−1 个 V26 临时冒烟测试不在源码 = 435 源码口径）。演进：465（2026-07-28 process-monitoring Step 2 独立验收，surefire XML 跨模块合计，含 Step 1 +15 + Step 2 +6；Step 1 收据「256」为子集误报 SUPERSEDED，全量基线此前即 ≥459）→ 426（M07 阶段）→ 435（2026-08-13）。原「462」「241」「203」均为更早历史基线（SUPERSEDED） |
+| 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | **CONFIRMED**（2026-08-13 checklist-gap-hardening 第一批验证）：四连全绿，Vitest 汇总 **63 files / 552 tests** 全部通过（含 2 个高负载超时 flaky 重跑通过，零失败）。演进：60f/521t（2026-07-28 process-monitoring Step 3 测试回执 + 独立验收：57f/497t（2026-07-25 vue-flow-adapter Step 1）→ bpmn-adapter Step 1（+1f/+10t）→ 58f/507t → bpmn-adapter Step 3（+1f/+10t）→ 59f/517t → process-monitoring Step 3（+1f/+4t）→ 60f/521t，计数一致，零退化）→ 63f/552t（2026-08-13） |
 
 ### 前端测试覆盖详情（参考快照，2026-07-15 基线 ~350 tests）
 

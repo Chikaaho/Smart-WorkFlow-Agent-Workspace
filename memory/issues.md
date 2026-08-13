@@ -1,8 +1,8 @@
 # 未关闭问题
 
-> 最后更新：2026-08-12
+> 最后更新：2026-08-13
 > 仅列出未关闭问题。已修复问题在 `knowledge/known-issues.md`。
-> **编号说明（2026-08-12）**：knowledge/known-issues.md 已由 Step5 清单审计新增占用 I31-I45；本文件此前临时占用的 I31/I32（Step9 现场发现，从未落 knowledge/）已改号 **I46/I47** 消除同号冲突——下次执行层触碰 known-issues.md 时应以 I46/I47 编号正式登记这两条。
+> **编号说明（2026-08-12）**：knowledge/known-issues.md 已由 Step5 清单审计新增占用 I31-I45；本文件此前临时占用的 I31/I32（Step9 现场发现，从未落 knowledge/）已改号 **I46/I47** 消除同号冲突——下次执行层触碰 known-issues.md 时应以 I46/I47 编号正式登记这两条（2026-08-13 第一批同步仅改了 I33/I43/I44 条目，I46/I47 登记仍未完成）。
 
 | # | 问题 | 严重程度 | 状态 |
 |---|------|:---:|------|
@@ -19,7 +19,7 @@
 | I18 | 子项目 system.md 可能与 zip 不同步 | 中 | 定期检查 |
 | I26 | SysRole 列名与 V5 Flyway 列重命名不一致 | 中 | 待修复 |
 | I30/T10 | Mock BPMN XML 已增强（含 3 个 userTask 节点），可满足当前测试需求 | 低 | 可关闭 |
-| I31-I44 | **Step5 清单审计虚高缺口 14 条**（详情在 knowledge/known-issues.md，2026-08-12 新增）：M01/M02 关联/筛选/启停要素缺失（含 **I33 停用用户仍可登录**——`UserDetailsProviderImpl` 不校验 status，高）、M02-F04-01 数据权限硬编码 `DataScope.ALL` 未生效、M03 控件库8/16/表单无删除/列表配置未持久化、M05 缺删除/过滤、**I43/I44 M10 job/storage 生产菜单树未 seed**（仅 mock 可达，中） | 高/中 | 待排期（候选下一方向） |
+| I31-I44 | **Step5 清单审计虚高缺口**（详情在 knowledge/known-issues.md）：**I33/I43/I44 已修复**（2026-08-13 checklist-gap-hardening 第一批，D76——停用登录/refresh 拦截 + V29 生产菜单 seed）。余项待排期：M01/M02 关联/筛选要素缺失、M02-F04-01 数据权限硬编码 `DataScope.ALL` 未生效（候选下一方向）、M03 控件库8/16/表单无删除/列表配置未持久化、M05 缺删除/过滤 | 中 | 余项待排期 |
 | I45 | Step5 清单审计虚低汇总 15 条：清单已标⬜/🟦但代码有部分实现未达描述完整度（M07 前端管理页/Prompt配置/运行日志页/Token统计、M04节点配置1/7、M05发送仅单用户等），细节见审计回执 `search_fallback/feature-checklist-full-audit.md` | 低 | 记录性，按需排期 |
 | I46 | （原临时编号 I31）`flow-graph` adapter 契约无边点击事件、无命令式数据更新通道（Step9 现场发现，D65 偏差2/3）：M07 图设计器绕行方案可用但受限——若未来节点自定义渲染/直接点边编辑需求增多，需回规划层评估扩展 adapter 导出面 | 低 | 绕行方案已生效，扩展待评估 |
 | I47 | （原临时编号 I32）bpm/h2 迁移链 V8 含 PG 独有 partial index 语法（`WHERE active=true`），H2 不支持——全链 H2 Flyway 迁移从未可跑，模块测试均绕过 Flyway 直建 DDL（Step9 冒烟测试现场发现，非本轮引入） | 中 | 未修复，待排期 |
