@@ -30,7 +30,9 @@
 
 ## 进行中
 
-无进行中功能。checklist-gap-hardening 第一批已 PASSED 收尾（D76），下一方向待用户选定。
+**M02-F04-01 数据权限（DataScope）完整落地——前置探索阶段（2026-08-13，规划层推荐经用户认可）**：
+- 探索任务已下发 `search_task/datascope-implementation-survey.md`（11 问：DataScope 枚举/角色表字段/拦截器基建/纳管范围盘点/清单口径/若依先例倾向），等执行层回执 `search_fallback/datascope-implementation-survey.md` 后写需求方向文档。
+- 选定理由：审计遗留的最后一个安全类缺口（角色数据范围配置完全不生效），横切面随新查询增长越晚越贵；第一批排除仅为不混轮。
 
 **流程基线（D74，已生效并首跑验证）**：system.md §3.3 第10项——每轮需求收尾必须由执行层做知识库全量同步（功能清单.md+current-status+features+known-issues，回执报告清单变更明细+触碰文件清单），规划层验收逐项核对。
 
@@ -43,7 +45,9 @@
 
 ## 下一动作
 
-无强制动作，下一方向待用户选定。候选（按风险/价值排序参考）：
+等执行层完成 `search_task/datascope-implementation-survey.md` 探索并写回执 → 规划层据实写 DataScope 需求方向文档 → 下发执行层自主闭环。
+
+后续候选（DataScope 之后，按风险/价值排序参考）：
 1. M02-F04-01 数据权限完整落地（DataScope 五档，横切大功能，已从第一批明确排除）
 2. M01/M02 其余虚高要素补齐（关联/筛选，I31-I44 余项；I33/I43/I44 已修复）
 3. M07 补全：F01 前端管理页、F02-02 Prompt 配置、F02-04 运行日志页+单步调试、F04-02 Token 统计
@@ -57,7 +61,7 @@
 你是 Smart-WorkFlow 根目录规划代理。请按 system.md §10 执行新会话恢复。
 
 最新状态：
-- 无进行中功能，下一方向待用户选定（候选清单见 memory/handoff.md 下一动作）
+- 进行中：M02-F04-01 数据权限（DataScope）完整落地——前置探索阶段，探索任务 search_task/datascope-implementation-survey.md 已下发，等回执后写方向文档
 - checklist-gap-hardening 第一批 PASSED（D74-D76，2026-08-13）：I33 停用登录/refresh 拦截 + I43/I44 V29 生产菜单 seed + §3.3 第10项知识库同步首跑合格；遗留4项见 D76
 - 流程基线：system.md §3.3 第10项（每轮收尾知识库全量同步）已固化并首跑验证（D74）
 - feature-checklist-sync Step5 PASSED（D72/D73）；M07-F01+F02 全部完结（Step1-12，D53-D71）
