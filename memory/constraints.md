@@ -1,7 +1,7 @@
 # 硬约束（规划关键）
 
-> 最后更新：2026-08-12
-> 仅保留 Anthropic 规划时必须遵守的红线。完整约束在 `knowledge/shared-constraints.md`。
+> 最后更新：2026-08-14
+> 仅保留规划角色必须遵守的红线。完整约束在 `knowledge/shared-constraints.md`。
 
 ## 安全红线
 
@@ -25,10 +25,11 @@
 
 ## 工作流红线
 
-- 规划层只规划，执行层只执行——不可混淆
-- Anthropic 只读 memory/ + search_fallback/，不读 knowledge/code
-- DeepSeek 探索或规划，但不可同次兼任
-- 所有探索：search_task → 模型切换 → search_fallback → 切回
+- 会话开始必须声明角色（规划/执行/管理员）；**未声明 → 拒绝执行任何任务**
+- 规划角色只规划，执行角色只执行，管理员只维护架构与宪法——不可混淆
+- 规划角色只读 memory/ + search_fallback/，不读 knowledge/code
+- 执行角色探索或执行，但不可同次兼任规划（不制定需求方向、不诱导规划）
+- 所有探索：规划角色写 search_task → 执行角色探索 → 写 search_fallback → 规划角色读取
 - 前后端 Step 严格分离（一个 Step 不跨前后端）
 - 禁执行代理诱导规划、预告下一 Step
-- 编译命令限内存：mvn/pnpm/npm 等每种编译工具上限 1G（`MAVEN_OPTS="-Xmx1g"` / `NODE_OPTIONS="--max-old-space-size=1024"`）
+- 编译命令限内存：mvn/pnpm/npm 等每种编译工具上限 512M（`MAVEN_OPTS="-Xmx512m"` / `NODE_OPTIONS="--max-old-space-size=512"`）

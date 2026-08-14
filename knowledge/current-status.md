@@ -17,7 +17,7 @@
 | 前端框架 | Vue 3.5 + TypeScript 6.0 + Vite 8，严格分层 SPA，自有架构（不继承 vben） |
 | 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，V1–V17 连续无缺号（CONFIRMED 2026-07-22 代码直读：V12=form 升级、V14=bpm process 均存在；V16=storage、V17=job-scheduler；无 V18/无 auth 脚本。脚本分散各模块 `db/migration/{module}/{postgresql,h2}`，双方言齐全） |
 | 核心路径 | Walking Skeleton：登录 → 表单 → 审批 → 通知 ✅ 四环全部闭合 |
-| 功能清单 | 10 模块，54 功能，**89** 明细（CONFIRMED 2026-07-23，此前记为 88，M10 差 1 条已更正——见 [[shared-constraints]] §5）；`Smart-WorkFlow/功能清单.md` 为权威清单，状态标记已与代码实际进度对齐：✅17/🟦12/⬜60（2026-07-24 [[feature-checklist-sync]]，I1 修复）→ ✅7/🟦40/⬜42（2026-08-12 Step5 二次核实与同步）→ **✅10/🟦37/⬜42**（2026-08-13 checklist-gap-hardening 第一批：I33/I43/I44 修复后回升 3 行） |
+| 功能清单 | 10 模块，55 功能，**90** 明细（CONFIRMED 2026-07-23，此前记为 88，M10 差 1 条已更正——见 [[shared-constraints]] §5）；`Smart-WorkFlow/功能清单.md` 为权威清单，状态标记已与代码实际进度对齐：✅17/🟦12/⬜60（2026-07-24 [[feature-checklist-sync]]，I1 修复）→ ✅7/🟦40/⬜42（2026-08-12 Step5 二次核实与同步）→ **✅10/🟦37/⬜42**（2026-08-13 checklist-gap-hardening 第一批：I33/I43/I44 修复后回升 3 行） |
 | 测试基线 | 后端：项目级 **435 tests / 0 failures / 0 errors**（CONFIRMED 2026-08-13 checklist-gap-hardening 第一批验证：426 基线 + I33 新增 10 = 436 运行口径，其中 1 个 V26 临时冒烟测试不在源码 → 435 源码口径）。演进：465（2026-07-28 process-monitoring Step 2 独立验收，surefire XML 跨模块合计，0 failures/0 errors；Step 1 收据「256」为误报——实际为子集计数，全量基线此前即 ≥459；新增 Step 1 +15 + Step 2 +6）→ 426（M07 阶段）→ 435（2026-08-13）。前端：**63 spec files / 552 tests**（CONFIRMED 2026-08-13 checklist-gap-hardening 验证：四连 typecheck/lint/test/build 全绿，含 2 个高负载超时 flaky 重跑通过，零失败）。演进：60f/521t（2026-07-28 process-monitoring Step 3 独立验收：60 passed / 521 tests / 0 failures；57f/497t → bpmn-adapter Step 1 +1f/+10t → 58f/507t → bpmn-adapter Step 3 +1f/+10t → 59f/517t → process-monitoring Step 3 +1f/+4t → 60f/521t）→ 63f/552t（2026-08-13）。四连校验门 CONFIRMED 全绿 |
 | 前次验证 | 2026-08-13 checklist-gap-hardening 第一批验收：后端 435 tests / 0 failures（mvn test BUILD SUCCESS）+ 前端 63 files / 552 tests 四连全绿（含 2 个高负载超时 flaky 重跑通过）+ V29 冒烟测试（27 迁移按序应用无 validate 失败、4 行菜单逐列断言通过），均由执行代理运行、规划层核对证据。此前：2026-07-22 kb-verification VB1/VF1 后端 BUILD SUCCESS · 前端四连全绿 |
 
@@ -107,6 +107,7 @@
 
 | 功能 | 状态 | 当前 Step | 说明 |
 |------|:---:|:---:|------|
+| [[bpm-plugin-architecture]] | **PLANNING** | 方向已登记（2026-08-14） | M04-F08-01 BPM 节点/表单组件与后端 adapter 可插拔机制。方向裁定（2026-08-14 规划角色）：①前端建"节点类型→属性面板组件"注册表（仿 `FIELD_TYPE_REGISTRY`），替换设计器 v-if 硬编码；②`DynamicField.vue` 8 类控件渲染链 registry 化；③后端 `GraphToBpmnTranslator` switch 改为按类型注册的翻译器（仿 `NodeApproverResolver` Map 分发）；④`NodeTypeRegistry` 扩充为完整注册骨架；⑤后端 BPM adapter 抽象为可插拔 SPI。非目标：不做设计器本体、不新增具体节点/控件、不做运行时热插拔。方向文档待下发 `product/bpm-plugin-architecture/ready/` |
 | [[bpmn-adapter]] | **COMPLETED** ✅ | Steps 0-3 PASSED，Step 4 SUPERSEDED | BPMN adapter 查看器实现（对应 [[known-issues]] I3 剩余 BPMN 部分）。Step 0（探索）/Step 1（前端查看器防腐层）/Step 2（后端 BPMN XML 只读端点）/Step 3（前端 ProcessDefList「查看流程图」入口）全部 PASSED 并归档。Step 4（M04-F06 流程监控）由新功能 [[process-monitoring]] 独立承接 |
 
 | [[process-monitoring]] | **COMPLETED** ✅ | Steps 0-3 PASSED | M04-F06-01 流程监控首批能力（流程图高亮 + 流转记录）。Step 0 探索（范围裁定）+ Step 1 后端 Facade + Service 层（15 @Test）+ Step 2 后端 Controller（6 @Test）+ Step 3 前端 ProcessInstanceList 监控页面（4 @Test）。后端 465 tests + 前端 60f/521t。阶段三收尾完成（2026-07-30）。耗时分析 + 流程干预延后至后续批次 |
@@ -194,6 +195,7 @@
 2. **IoT / Agent / OpenAPI 模块落地** — 从占位推进到实际业务
 3. **M07 AI 调度图业务模块** — `sw-basic-agent` 后端骨架落地 + 前端消费 `adapters/flow-graph/`（adapter 防腐层已就绪，等待后端引擎/工具沙箱/RAG 产品设计明确）
 4. **Git commit of process-monitoring changes** — 10 个文件 untracked/uncommitted（8 后端 + 2 前端）
+5. **M04-F08-01 BPM 节点/表单组件与后端 adapter 可插拔** — 新功能（2026-08-14 登记）：建议在 M04-F01 流程设计器开发前落地，避免设计器写死 v-if 后返工
 
 ---
 

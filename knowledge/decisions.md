@@ -42,7 +42,7 @@
 | D28 | 2026-07-22 | 新增 `todo/` 暂不修复清单目录（与 `product/` 平级） | CONFIRMED |
 | D29 | 2026-07-22 | 固化执行代理三方角色边界：规划层只读写方案，两执行层严禁跨项目执行 | CONFIRMED |
 | D30 | 2026-07-22 | 记忆模型分层：`product/passed` 为原始记忆，`knowledge/` 为压缩记忆，按 project memory 方式持续维护 | CONFIRMED |
-| D31 | 2026-07-22 | 规划层内部分工：探索模型 vs 规划模型，按模型族（Anthropic/DeepSeek）区分能否兼任 | CONFIRMED |
+| D31 | 2026-07-22 | 规划层内部分工：探索模型 vs 规划模型，按模型族（Anthropic/DeepSeek）区分能否兼任 | **SUPERSEDED**（2026-08-14 角色制取代：规划/执行角色按 §0.2 会话声明划分） |
 | D32 | 2026-07-22 | 前端 beforeHandler 单飞刷新 + 依赖反转规避 router↔auth↔request 循环依赖 | CONFIRMED |
 | D33 | 2026-07-22 | F1 logout() try...catch...finally — 方案内部矛盾裁决，对齐测试期望 | CONFIRMED |
 | D34 | 2026-07-23 | 一次性授权越权，为后端宪法补齐 §0.1「本仓库范围」硬约束（对应 I28） | CONFIRMED |
@@ -52,8 +52,8 @@
 | D38 | 2026-07-25 | Step 0 任务/摘要下发载体升级为强制写文件，禁止仅在对话中输出要求手动复制粘贴 | CONFIRMED |
 | D39 | 2026-07-25 | Vue Flow 场景归属裁定为 M07 AI 调度图，更正知识库中"表单设计器可视化集成"的错误标签 | CONFIRMED |
 | D40 | 2026-07-25 | BPMN adapter 范围裁定为查看器（Viewer），非设计器（Modeler） | CONFIRMED |
-| D41 | 2026-07-25 | 堵住 §0.4"为方案验证细节"越权借口——Anthropic 系模型直读代码/node_modules 违规事件 | CONFIRMED |
-| D42 | 2026-07-25 | 禁止用 Agent 工具派子代理替代 Step 0 探索——子代理未真正切换模型族，且 DeepSeek 探索走独立 base API 需整体退出 CC | CONFIRMED |
+| D41 | 2026-07-25 | 堵住 §0.4"为方案验证细节"越权借口——Anthropic 系模型直读代码/node_modules 违规事件 | **SUPERSEDED**（2026-08-14 角色制：违规事实仍成立，权限表述由"Anthropic 系模型"改为"规划角色"，见 system.md §0.5） |
+| D42 | 2026-07-25 | 禁止用 Agent 工具派子代理替代 Step 0 探索——子代理未真正切换模型族，且 DeepSeek 探索走独立 base API 需整体退出 CC | **SUPERSEDED**（2026-08-14 角色制：改为"Agent 子代理继承当前会话角色边界"，见 system.md §0.4.1 通用规则第 1 条） |
 | D43 | 2026-07-26 | process-monitoring 首批范围裁定：仅流程图高亮 + 流转记录（M04-F06-01 完整范围含 4 项子能力，耗时分析 + 流程干预延后至后续批次） | CONFIRMED |
 | D44 | 2026-07-28 | process-monitoring 详情面板选型：el-drawer（size=900px, destroy-on-close），非 el-dialog。原因：流程图横向空间需求大，侧边抽屉比居中弹窗更适合宽图展示 | CONFIRMED |
 | D45 | 2026-07-28 | process-monitoring defKey→defId 映射策略：组件 Mount 时调用 pageProcessDefs(pageNum=1, pageSize=100) 全量加载流程定义，构建 Record<string, number> 映射表，避免新增后端专用端点 | CONFIRMED |
@@ -362,7 +362,9 @@
 - **影响**：`system.md` §8 新增 §8.1 记忆模型子节，原 §8.1~§8.4 依次后移为 §8.2~§8.5；`knowledge/architecture.md` 新增说明"本文件不重复记录工作区元架构"，避免与 system.md 重复维护同一套概念
 - **相关文件**：`system.md` §8.1、`knowledge/architecture.md`
 
-### D31：规划层内部分工——探索模型与规划模型，按模型族区分能否兼任
+### D31：规划层内部分工——探索模型与规划模型，按模型族区分能否兼任（SUPERSEDED，2026-08-14 角色制取代）
+
+> ⚠️ 2026-08-14 起不再按模型族划分——探索/规划职责归入「执行角色」与「规划角色」，由会话开始时用户声明（system.md §0.2）。本条目保留为历史事实。
 
 - **日期**：2026-07-22
 - **决策**：规划层内部按任务性质拆出两个子角色：**探索模型**（承接新需求分析/查 bug 等探索类任务，可直接读完整代码和完整 `product/`/`done/`/`todo/` 原始记忆，产出结构化探索摘要）与**规划模型**（只读探索摘要 + `knowledge/` 压缩记忆生成 Step 方案，不直接读完整代码和完整 `product/`/`done/`/`todo/`）。按当前会话模型族区分：**Anthropic 系**（Claude）只能承担规划模型角色，探索工作必须委派子代理完成后读摘要；**DeepSeek 系**可承担任一角色，但同一次任务中绝对不能同时兼任探索和规划两者
@@ -454,7 +456,9 @@
 - **影响**：`knowledge/features/bpmn-adapter.md` §2 功能目标/非目标按查看器口径回填；Step 1 方案（纯前端）将 `mountBpmn`/`exportXml` 接口壳整体替换为 `mountBpmnViewer(container, xml, events?)` + `BpmnViewerInstance`（`destroy`/`fitViewport`/`highlight`/`clearHighlight`），不实现导出能力；后续若需设计器能力（操作 `ProcessGraph`），应作为独立功能重新规划，不纳入本 adapter 范围；`known-issues.md` I3 的"BPMN 部分"后续更新口径为"查看器"而非"设计器"
 - **相关文件**：`product/bpmn-adapter/step-0-exploration-summary.md`、[[bpmn-adapter]]、[[known-issues]] I3
 
-### D41：堵住 §0.4"为方案验证细节"越权借口——Anthropic 系模型直读代码/node_modules 违规事件
+### D41：堵住 §0.4"为方案验证细节"越权借口——Anthropic 系模型直读代码/node_modules 违规事件（SUPERSEDED，2026-08-14 角色制改写）
+
+> ⚠️ 违规事实仍有效；权限主体由"Anthropic 系模型"改为"规划角色"（system.md §0.5「禁止以验证方案精确性为由读取代码」）。
 
 - **日期**：2026-07-25
 - **决策**：本会话（`anthropic/claude-sonnet-5`）在消费 bpmn-adapter Step 0 探索摘要、准备生成 Step 1 方案期间，为"验证 bpmn-js 精确 API 签名以满足 §6 禁止模糊表达的要求"，直接用 Read/Bash/grep 读取了 `Smart-WorkFlow-Web/src/adapters/bpmn/index.ts`、`node_modules/bpmn-js` 与 `node_modules/.pnpm/diagram-js` 内的 `.d.ts` 类型定义、`adapters/flow-graph/index.spec.ts`、`package.json`，用户当场指出这是越权（Anthropic 系模型只能担任规划模型，不得直接大范围读代码，见 §0.4）。经复核确认违规成立，随即停止该行为，改为仅依据已产出的探索摘要和 bpmn-js 公开 API 的训练知识完成方案，并在 system.md §0.4 增补一条硬约束，明确关闭"为验证方案细节"这一借口
@@ -463,7 +467,9 @@
 - **影响**：`system.md` §0.4 新增一条硬约束，明确"验证技术细节"不构成豁免理由，且区分"训练知识里的第三方库公开 API 常识"（可直接用于撰写方案）与"用读本仓库代码/node_modules 的方式去确认该常识"（仍算违规）两种情形；本次已产出的 bpmn-adapter Step 1 方案内容本身未因违规读取而失真（bpmn-js 的 Viewer/importXML/get()/destroy() 属公开稳定 API，方案中的技术断言可仅凭训练知识独立成立），故不需要重新生成，但过程违规已如实记录，不代表结果可以掩盖过程
 - **相关文件**：`system.md` §0.4、`product/bpmn-adapter/ready/step-1-bpmn-viewer-adapter.md`、[[bpmn-adapter]]
 
-### D42：禁止用 Agent 工具派子代理替代 Step 0 探索
+### D42：禁止用 Agent 工具派子代理替代 Step 0 探索（SUPERSEDED，2026-08-14 角色制改写）
+
+> ⚠️ "模型族切换"表述废弃——改为"Agent 子代理继承当前会话角色边界，规划会话子代理无法替代执行角色探索"（system.md §0.4.1 通用规则第 1 条）。
 
 - **日期**：2026-07-25
 - **决策**：本会话为核实 bpmn-adapter Step 2 执行/测试回执中的数字矛盾（测试计数、git diff 范围疑点等），曾直接用 `Agent` 工具派发一个 `Explore` 子代理去读后端代码核实——用户中途终止该子代理并明确指出："你不能直接委派子代理探索，你应该整理成探索任务，由我手动切换模型后探索"。据此在 `system.md` §0.4.1 第 2 条下新增"禁止 Agent 工具派子代理探索"硬约束及原因说明，并改用文件化 Step 0 任务（`product/bpmn-adapter/step-2-receipt-verification-task.md`）重新下发

@@ -1,8 +1,9 @@
-# memory/ — 规划代理压缩上下文
+# memory/ — 工作区压缩上下文
 
-> **Anthropic 只能读此目录、system.md、search_fallback/。**
-> DeepSeek 读 knowledge/（完整原材料）并在探索后写入压缩结论到 search_fallback/。
-> 最后更新：2026-08-11
+> **规划角色只能读此目录、system.md、search_fallback/。**
+> 执行角色读 knowledge/（完整原材料）并在探索后写入压缩结论到 search_fallback/；执行角色也可读取本目录。
+> 管理员角色只读写 system.md 与架构文档，不读/写本目录其余状态文件。
+> 最后更新：2026-08-14
 
 ## 文件索引
 
@@ -29,7 +30,7 @@
 - D1-D32 早期稳定性架构决策 → 在 `knowledge/decisions.md`
 - 已修复问题的完整描述和修复历史 → 在 `knowledge/known-issues.md`
 - 完整架构描述、模块文件计数、技术栈详情 → 在 `knowledge/architecture.md`
-- 原始 Step 方案和回执文件 → 在 `product/<feature>/passed/` 和 `receipts/`
+- 原始需求方向与回执文件 → 在 `product/<feature>/passed/` 和 `receipts/`
 - 业务代码（后端 Java / 前端 Vue/TS）→ 在 `Smart-WorkFlow/` 和 `Smart-WorkFlow-Web/`
 
-**发现 memory/ 中的信息不足以支撑规划决策时，创建 `search_task/` 委派探索。**
+**发现 memory/ 中的信息不足以支撑规划决策时，创建 `search_task/` 委派执行角色探索。**

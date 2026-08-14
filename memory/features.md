@@ -1,9 +1,10 @@
 # 功能索引
 
-> 最后更新：2026-08-13
+> 最后更新：2026-08-14
 
 | 功能 | 模块 | 状态 | 当前 Step | 备注 |
 |------|------|:---:|------|------|
+| bpm-plugin-architecture | M04-F08-01 | **PLANNING** | 方向已登记（D78，2026-08-14） | BPM 前端节点/表单组件与后端 adapter 可插拔：注册表驱动（仿 FIELD_TYPE_REGISTRY + NodeApproverResolver Map 分发）；非目标=设计器本体/新节点控件/热插拔；等方向文档下发执行层 |
 | data-scope-enforcement | M02-F04-01 | **IN PROGRESS** | 方向文档已下发（D77，2026-08-13） | 数据权限五档完整落地：装配去硬编码+DeptScopeProvider+sys_role_dept+最小强制集纳管+前端角色页 UI；手写 SQL 通道不纳管（记限制）；等执行层完成回执 |
 | checklist-gap-hardening | M01/M10 | **COMPLETED** | 第一批 PASSED（D74-D76，2026-08-13） | I33 停用登录/refresh 双入口拦截 + I43/I44 V29 job/storage 生产菜单 seed；后端426→435（源码口径+10新测）/前端零改动；§3.3第10项知识库同步首跑；后续批次（DataScope 等）另行规划 |
 | agent-model-orchestration | M07-F01/F02/F04 | **COMPLETED** | Step1-12 全部 PASSED（D53-D71） | 后端405→426（+21）/前端63f552t不变（本轮未做前端）；Step12=执行历史持久化：V27/V28双表+解释器轨迹采集(branchId/nodeSeq)+错误分类8类+查询端点；todo 池剩余：单步调试、图节点级多Key轮询、F03知识库RAG |
@@ -21,5 +22,5 @@
 | notify-frontend | M05 | COMPLETED | 3 steps PASSED | 通知列表+标记已读 |
 
 ---
-> 本文件为压缩索引。各功能完整 Step 列表、证据链、测试统计在 `knowledge/features/<name>.md`（13 个功能追踪文件）。
+> 本文件为压缩索引。各功能完整 Step 列表、证据链、测试统计在 `knowledge/features/<name>.md`（14 个功能追踪文件）。
 > 需要时：创建 search_task，范围 `knowledge/features/<feature-name>.md`

@@ -1,10 +1,11 @@
 # 活跃设计决策
 
-> 最后更新：2026-08-13
+> 最后更新：2026-08-14
 > 仅保留最近 10 条活跃决策。D1-D55 为早期/已归档决策，完整内容在 `knowledge/decisions.md`（D56-D62 待下次归档迁移，暂保留于此作为过渡）。
 
 | # | 日期 | 决策 | 状态 |
 |---|------|------|------|
+| D78 | 2026-08-14 | 新功能 bpm-plugin-architecture（M04-F08-01）需求方向登记。**BPM 前端节点组件与表单控件组件、后端对应 adapter/节点处理逻辑全部改为注册表驱动的可插拔形式**——新增节点类型或表单控件时零改消费方代码。现状基线（探索直读）：后端 `NodeTypeRegistry` 仅 START/END/APPROVAL 三类 + `GraphToBpmnTranslator` switch 硬编码（无节点处理器 SPI）；前端 `DynamicField.vue` 8 类控件 v-if 链、M07 `GraphDesigner.vue` 属性面板 v-if 硬编码（无节点组件注册表）。方向裁定：①前端节点组件注册表（仿 `modules/form/designer/field-types.ts` 的 `FIELD_TYPE_REGISTRY` + `<component :is>` 动态挂载）；②`DynamicField.vue` 渲染链 registry 化；③后端 translator switch→按类型注册翻译器（仿 `NodeApproverResolver` Spring `Map<String,Resolver>` 分发）；④`NodeTypeRegistry` 扩充完整注册骨架（含 CONDITION/并行网关预留）；⑤后端 BPM adapter 抽象为可插拔 SPI。**非目标**：不做 M04-F01 设计器本体、不新增具体节点/控件、不做运行时热插拔（OSGi/热部署）。功能清单 M04 7→8 功能/9→10 明细，总表 55/90；`knowledge/features/bpm-plugin-architecture.md` 已建。方向文档待下发 `product/bpm-plugin-architecture/ready/` | Active |
 | D77 | 2026-08-13 | 新功能 data-scope-enforcement（M02-F04-01 数据权限完整落地）需求方向下发。前置探索（`search_fallback/datascope-implementation-survey.md`）确认基建完成度极高（五档枚举/SysRole.dataScope 列/拦截器链租户→数据权限/DataScopeHandler 四档拼接均就位），缺口收敛 4 处：装配硬编码 ALL、零 @DataScope 标注、sys_role_dept 缺表、前端零 UI。方向裁定：①拦截器全局式（项目已选 RuoYi-Vue-Plus 路线，零 @Aspect 先例）；②多角色取最宽档（权限并集语义）；③最小强制集=sys_user/bpm_instance/agent_execution/job/storage/model_config 列表查询，其余执行层裁定回执列明；④**手写 SQL 通道（动态宽表/外部数据源）不纳管**——绕过拦截器链（Q7），记 known-issues 限制；⑤实时生效不做（登录快照，改角色下次登录生效）；⑥DEPT_AND_CHILD 递归 vs ancestors 加列执行层定。方向文档：`product/data-scope-enforcement/ready/direction-datascope-full-implementation.md`，待执行层自主闭环后验收（5 项验收标准） | Active |
 | D76 | 2026-08-13 | checklist-gap-hardening 第一批最终验收判定：**PASSED**。4项验收标准全满足：①I33 停用/锁定账号登录+refresh 双入口拦截（AuthController +44行，refresh 停用则撤销新token+清cookie+401；10新测含DB撤销断言与启用回归）；②V29 job/storage 菜单 seed h2/pg 双份逐字一致（4行：id16文件管理/id17定时任务目录/id18任务管理/id19执行日志），冒烟27迁移+逐列断言通过；③后端435/0（426基线口径含1个已删源V26临时冒烟，静态计数逐模块自洽）+前端63f/552t四连全绿；④§3.3第10项知识库全量同步**首跑合格**——清单3行🟦→✅（M01-F02-02/M10-F03-01/M10-F06-01，终态✅10/🟦37/⬜42复算自洽）+I33/I43/I44修复记录+current-status计数同步+features追踪文件新建+回执含清单变更明细与触碰文件清单。设计决策（提示语义区分停用/锁定、控制器层落点、status=null按停用、seed写法从DB先例）均在方向文档授权内，无偏离。**遗留4项登记**：I47修复后补真全链迁移测试、停用前access token 900s窗口（如需即时生效单独排期）、sw-bootstrap无测试基建（永久迁移测试需先决策加依赖）、435源码/436运行双口径。归档：`passed/direction-batch1-security-reachability.md`、`receipts/checklist-gap-hardening-batch1-completion.md` | Active |
 | D75 | 2026-08-13 | 新功能 checklist-gap-hardening 第一批需求方向下发（用户授权"规划层推荐即定"）：范围=①I33 停用用户仍可登录（登录+refresh 双入口服务端拦截）②I43/I44 M10 job/storage 生产菜单 Flyway seed（h2/pg 双份，仿 V26 先例）。**数据权限（M02-F04-01 DataScope.ALL 硬编码）明确排除**——横切大功能留后续轮单独规划。方向文档：`product/checklist-gap-hardening/ready/direction-batch1-security-reachability.md`，待执行层自主闭环后规划层验收 | Active |
@@ -26,7 +27,7 @@
 | D57 | 2026-08-09 | M07 基线复核：全仓库主树（排除 `.claude/worktrees/` 陈旧报告）真实测试总数=291（10 模块，69 报告），历史声称 465/480/494 均因误含陈旧 worktree 报告偏高，已闭合校准。真实层次：pre-Step1=262→Step1=277→Step2=291 | Active |
 | D53 | 2026-08-05 | M07 Step1 验收裁定先例：方案"禁止新增依赖"条款仅约束业务功能性依赖，不约束达成验收标准所需的测试脚手架/安全框架依赖（+sw-security/+h2 等，已披露）。Step1 PASSED | Active |
 | D47/D48 | 2026-08-04 | M07 架构裁定：Step1 先落地后端编排链路（模型管理+LangGraph4j），前端图设计器留后续 Step；工具沙箱=内部白名单方法+外部白名单 HTTP（用户配数据不配代码，禁 RCE） | Active |
-| D42 | 2026-07-25 | 禁止 Agent 子代理替代探索——须用 search_task + 模型切换 | Active |
+| D42 | 2026-07-25 | 禁止 Agent 子代理替代探索——须用 search_task 委派执行角色（2026-08-14 角色制更新，原"模型切换"表述废弃） | Active |
 
 ---
-> D36-D55（含 D43-D46 process-monitoring、D49-D52 M07 早期选型、D54/D55/D56/D58/D60 M07 Step1-2 前置调研+校验）已从活跃列表压缩移出，完整内容保留在本次压缩前的 git 历史 / `product/*/passed/` 与 `receipts/` 归档中，未物理写入 `knowledge/decisions.md`（该目录非本层写入范围）——若需追溯，创建 `search_task` 委派 DeepSeek 读取归档补全。
+> D36-D55（含 D43-D46 process-monitoring、D49-D52 M07 早期选型、D54/D55/D56/D58/D60 M07 Step1-2 前置调研+校验）已从活跃列表压缩移出，完整内容保留在本次压缩前的 git 历史 / `product/*/passed/` 与 `receipts/` 归档中，未物理写入 `knowledge/decisions.md`（该目录非本层写入范围）——若需追溯，创建 `search_task` 委派执行角色读取归档补全。

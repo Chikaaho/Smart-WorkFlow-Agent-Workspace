@@ -1,6 +1,7 @@
 # checklist-gap-hardening — 清单缺口加固第一批（I33 登录停用校验 + I43/I44 生产菜单 seed）
 
 > 单功能追踪文件。压缩记忆，方向文档见 `product/checklist-gap-hardening/ready/direction-batch1-security-reachability.md`（目标 3 为本知识库全量同步，system.md §3.3 第10项）。
+> ⚠️ **2026-08-14 角色制上线**：本文件中的"推荐模型/实际模型"字段为当时执行事实，仅作历史存档；当前权限按会话角色（规划/执行/管理员）划分，与模型无关（见根目录 `system.md` §0.2）。
 
 ---
 

@@ -42,7 +42,7 @@ Smart-WorkFlow-Knowledge/   ← 你在这里（规划层：方案/回执/知识�
 ```
 Smart-WorkFlow-Knowledge/
 ├── system.md                  — 规划代理宪法（角色/权限/工作流）
-├── memory/                    — 压缩记忆（Anthropic 可读，每次会话关键节点更新）
+├── memory/                    — 压缩记忆（规划角色读/写，每次会话关键节点更新）
 │   ├── README.md              — 索引 + 阅读顺序
 │   ├── state.md               — 当前状态（功能/Step/测试基线）
 │   ├── handoff.md             — 最新会话交接
@@ -51,14 +51,14 @@ Smart-WorkFlow-Knowledge/
 │   ├── issues.md              — 未关闭问题
 │   ├── constraints.md         — 硬约束速查
 │   └── architecture.md        — 架构高层视图
-├── knowledge/                 — 完整知识库（DeepSeek 探索用）
+├── knowledge/                 — 完整知识库（执行角色探索用）
 │   ├── current-status.md      — 项目整体状态（唯一可信来源）
 │   ├── decisions.md           — 全部设计决策（D1-D46）
 │   ├── architecture.md        — 完整架构描述
 │   ├── shared-constraints.md  — 跨项目共享约束
 │   ├── known-issues.md        — 已知问题完整记录
 │   ├── session-handoff.md     — 跨会话交接详情
-│   ├── model-registry.md      — 模型注册表
+│   ├── model-registry.md      — 角色注册表
 │   └── features/              — 功能追踪文件（每功能一个）
 ├── product/                   — 执行方案仓库（原始记忆）
 │   └── <feature-name>/
