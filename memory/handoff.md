@@ -1,8 +1,16 @@
 # 会话交接
 
-> 最后更新：2026-08-13
+> 最后更新：2026-08-15
 
 ## 最新完成
+
+**data-scope-enforcement（M02-F04-01 数据权限完整落地）：PASSED（D77/D79，2026-08-15）✅**
+- 范围（D77）：五档数据权限端到端落地——①装配去硬编码（`UserDetailsProviderImpl` 读 SysRole.dataScope，多角色取最宽 ALL>DEPT_AND_CHILD>CUSTOM>DEPT>SELF，CUSTOM 取关联部门并集，无角色兜底 ALL 沿历史行为）；②`DeptScopeProviderImpl` Java 递归实现（不加 ancestors 列；@Lazy 破生产级拦截器依赖环）；③Flyway **V30** `sys_role_dept` h2/pg 双份+角色 CRUD 读写关联；④7 表纳管（sys_user 唯一可 @DataScope 直标——Handler 实测仅支持 dept_id/create_by 硬编码列；余 6 表自定义 Mapper 等效条件+`DataScopeFilter.resolve` 传参；不纳 6 表各有理由）；⑤前端 RoleList.vue 五档下拉+CUSTOM 部门树多选+回填。
+- 测试门：后端 **521/0/0**（435+86，逐模块加总自洽）；前端四连全绿 63f/552t 持平（typecheck/build 一次性 1024M 内存例外已披露，512M 硬约束不变）；V30 冒烟 **28 迁移**（口径修正：历史"27"漏计 form V12）；前后端枚举 ordinal 0-4 对账一致。
+- 知识库同步合格：清单 M02-F04-01 ⬜→✅（终态 **✅11/🟦37/⬜42 共90行**）、I37 修复记录、**I46 新登记**（手写SQL通道限制，与 I10 同源）、current-status/features 更新。
+- **编号冲突裁定（D79）**：执行层 I46 与 memory 预留 I46 撞号——注册表为权威，memory 侧 flow-graph adapter 条目改号 **I48**；I47 正式登记仍悬空。
+- **遗留 8 项（回执§8）要点**：job/storage 纳管仅 Mockito 传参测试、等效条件 SQL 对 PG 生产库最终验证依赖联调；部门档子查询未过滤 deleted（沿 RuoYi 系行为）；job 非分页入口（listEnabled 等）未纳管；前端 dev mock 未改（联调后自然消失）；sw-bootstrap 测试基建待决策。
+- 归档：`product/data-scope-enforcement/passed/direction-datascope-full-implementation.md` + `receipts/data-scope-enforcement-completion.md`
 
 **checklist-gap-hardening 第一批「安全+可达性」：PASSED（D74-D76，2026-08-13）✅**
 - 范围（D75）：①I33 停用用户仍可登录——`AuthController` 登录+refresh 双入口拦截 `SysUser.status`（停用/锁定区分提示，refresh 停用则撤销新 token+清 cookie+401，轮换/重放与双 token 架构未动）；②I43/I44 M10 生产菜单——Flyway **V29** h2/pg 双份 4 行（id16 文件管理、id17 定时任务目录、id18 任务管理、id19 执行日志），与 seeds.ts/V26 先例对齐。前端零改动。
@@ -30,30 +38,30 @@
 
 ## 进行中
 
-**data-scope-enforcement（M02-F04-01 数据权限完整落地，D77，2026-08-13 下发）**：
-- 前置探索完成（`search_fallback/datascope-implementation-survey.md`）：基建极高完成度（五档枚举/字段/拦截器/Handler 全就位），缺口 4 处（装配硬编码 ALL / 零 @DataScope 标注 / sys_role_dept 缺表 / 前端零 UI）。
-- 方向文档 `product/data-scope-enforcement/ready/direction-datascope-full-implementation.md` 已下发执行层。范围：装配去硬编码（多角色取最宽）+五档全生效（DeptScopeProvider+sys_role_dept 建表+CUSTOM 装配）+最小强制集纳管（sys_user/bpm_instance/agent_execution/job/storage/model_config）+前端角色页五档下拉+部门树。**手写 SQL 通道（动态宽表/外部数据源）不纳管**（绕过拦截器链，记限制）；实时生效不做。
-- 待执行层自主闭环后提交完成回执，规划层按 5 项验收标准最终验收。
+**bpm-plugin-architecture（M04-F08-01 BPM 可插拔机制，D78，2026-08-14 方向登记）**：
+- 方向已定（D78）：前端节点组件注册表（仿 FIELD_TYPE_REGISTRY + `<component :is>`）、DynamicField.vue 渲染链 registry 化、后端 translator switch→按类型注册翻译器（仿 NodeApproverResolver Map 分发）、NodeTypeRegistry 扩充、BPM adapter 抽象 SPI。非目标：设计器本体/新节点控件/热插拔。
+- `knowledge/features/bpm-plugin-architecture.md` 已建；**方向文档待写入 `product/bpm-plugin-architecture/ready/` 下发执行层**。
 
 **流程基线（D74，已生效并首跑验证）**：system.md §3.3 第10项——每轮需求收尾必须由执行层做知识库全量同步（功能清单.md+current-status+features+known-issues，回执报告清单变更明细+触碰文件清单），规划层验收逐项核对。
 
 ## 当前基线
 
-- 后端：项目级 **435 tests**（源码口径，CONFIRMED 2026-08-13 全量 exit 0 / 0 failures；运行口径 436 含 1 个 V26 临时冒烟已删源）
-- 前端：**63 spec files / 552 tests**，typecheck/lint/build 全绿（CONFIRMED 2026-08-13 四连）
-- 功能清单：**✅10 / 🟦37 / ⬜42**（2026-08-13 同步）
-- 已完成功能：14 个（features.md 口径，含 checklist-gap-hardening）
+- 后端：项目级 **521 tests**（源码口径，CONFIRMED 2026-08-15 全量 exit 0 / 0 failures，逐模块加总自洽）
+- 前端：**63 spec files / 552 tests**，typecheck/lint/build 全绿（CONFIRMED 2026-08-14 四连；typecheck/build 一次性 1024M 例外，512M 硬约束不变）
+- 功能清单：**✅11 / 🟦37 / ⬜42，共 90 行**（2026-08-15 同步）
+- Flyway：root 路径 V30 已占用；迁移链冒烟口径 **28**（含 form V12）
+- 已完成功能：15 个（features.md 口径，含 data-scope-enforcement）
 
 ## 下一动作
 
-等待执行层提交 data-scope-enforcement 完成回执 → 规划层最终验收（方向文档 5 项验收标准）。
+写 bpm-plugin-architecture（M04-F08-01，D78）方向文档至 `product/bpm-plugin-architecture/ready/` 下发执行层（方向裁定已在 D78 登记）。
 
-后续候选（本轮之后，按风险/价值排序参考）：
-1. M01/M02 其余虚高要素补齐（关联/筛选，I31-I44 余项；I33/I43/I44 已修复）
+后续候选（按风险/价值排序参考）：
+1. M01/M02 其余虚高要素补齐（关联/筛选，I31-I44 余项；I33/I43/I44/I37 已修复）
 2. M07 补全：F01 前端管理页、F02-02 Prompt 配置、F02-04 运行日志页+单步调试、F04-02 Token 统计
 3. M07-F03/F04 新功能：助手配置/知识库RAG（选型未定）/对话窗口SSE（均零代码）
 4. IoT / OpenAPI 模块落地（仅骨架）
-5. 小项池：I47 修复（bpm/h2 V8 partial index→真全链迁移测试）、停用即时生效（JWT 过滤器层 status 校验）、sw-bootstrap 测试基建决策、I26 SysRole 列名不一致
+5. 小项池：I47/I48 正式登记+I47 修复（bpm/h2 V8 partial index→真全链迁移测试）、停用即时生效（JWT 过滤器层）、sw-bootstrap 测试基建决策、I26 SysRole 列名不一致、数据权限遗留（部门档子查询 deleted 过滤、job 非分页入口纳管、PG 联调验证）
 
 ## 新会话启动提示词
 
@@ -61,11 +69,11 @@
 你是 Smart-WorkFlow 根目录规划代理。请按 system.md §10 执行新会话恢复。
 
 最新状态：
-- 进行中：data-scope-enforcement（M02-F04-01 数据权限完整落地，D77）——方向文档 product/data-scope-enforcement/ready/direction-datascope-full-implementation.md 已下发执行层，等完成回执验收（探索回执：search_fallback/datascope-implementation-survey.md）
-- checklist-gap-hardening 第一批 PASSED（D74-D76，2026-08-13）：I33 停用登录/refresh 拦截 + I43/I44 V29 生产菜单 seed + §3.3 第10项知识库同步首跑合格；遗留4项见 D76
-- 流程基线：system.md §3.3 第10项（每轮收尾知识库全量同步）已固化并首跑验证（D74）
-- feature-checklist-sync Step5 PASSED（D72/D73）；M07-F01+F02 全部完结（Step1-12，D53-D71）
-- 基线：后端 435 tests（源码口径）/ 前端 63f/552t 四连全绿；清单 ✅10/🟦37/⬜42
+- 进行中：bpm-plugin-architecture（M04-F08-01，D78 方向已登记）——方向文档待写入 product/bpm-plugin-architecture/ready/ 下发执行层
+- data-scope-enforcement PASSED（D77/D79，2026-08-15）：五档数据权限端到端落地（装配去硬编码/DeptScopeProvider递归/V30 sys_role_dept/7表纳管/前端角色页UI），后端435→521；I37 修复、I46 新登记（手写SQL通道限制）；编号裁定：memory 侧 flow-graph adapter 改号 I48，I47 登记仍悬空；遗留8项见回执§8
+- checklist-gap-hardening 第一批 PASSED（D74-D76，2026-08-13）：I33/I43/I44
+- 流程基线：system.md §3.3 第10项知识库全量同步（D74）+ 三角色制宪法（D78）
+- 基线：后端 521 tests / 前端 63f/552t 四连全绿；清单 ✅11/🟦37/⬜42 共90行；Flyway V30 已占用、迁移冒烟口径28
 
-审计详情：search_fallback/feature-checklist-full-audit.md；最新归档：product/checklist-gap-hardening/passed/ + receipts/
+最新归档：product/data-scope-enforcement/passed/ + receipts/
 ```
