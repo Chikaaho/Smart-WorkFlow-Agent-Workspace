@@ -1,6 +1,7 @@
 # 暂不修复清单（Won't-Fix Registry）
 
-> 与 `product/`、`knowledge/` 平级的工作区目录。
+> 与 `product/`、`knowledge/` 平级的工作区目录。本目录另含 **[需求池 requirement-pool.md](requirement-pool.md)**（已开发未满足+候选，2026-08-16 新建）——本文件只收录"暂不修复"子集，两者互补。
+>
 > 记录**已有明确决策"当前不投入资源修复"**的已知问题，供未来会话快速判断"这是不是已经决定不管了"——避免重复评估同一个已拍板的问题。
 >
 > 区别于 `knowledge/known-issues.md`：后者记录**全部**已知问题（待修复 / 待设计 / 暂不修复三类都在），是问题的权威详情来源；本文件只是其中"暂不修复"子集的**决策速查索引**，不重复问题描述。
@@ -25,7 +26,6 @@
 
 | 编号 | 一句话问题 | 决策依据 | known-issues 编号 |
 |------|-----------|----------|:---:|
-| T1 | refresh token seam 未实现，token 过期需重登录 | 严重程度低，已知限制，非正式发布前不阻塞（后续 auth-seam-completion 功能中处理，非"永久不修"） | I2 |
 | T2 | 定时任务集群化（JDBC JobStore）未实现，仅单节点 RAMJobStore | 当前阶段无集群部署需求，升级接缝已预留，抽象已隔离，业务代码零改动即可切换 | I8 / I12 |
 | T3 | RICH_TEXT 字段降级为 textarea，未集成真富文本编辑器 | 当前无业务场景强需求富文本；集成成本 vs 收益暂不匹配 | I17 |
 | T4 | storage mock 模式下载不可用 | 二进制响应与 mock 拦截层不兼容，真后端模式下功能正常，非阻塞性缺陷 | I19 |
@@ -34,6 +34,7 @@
 | T7 | @vueuse/core 在 Rolldown 下产生 INVALID_ANNOTATION 构建警告 | 第三方依赖兼容性问题，前端代码无法修复，不影响构建产物 | I22 |
 | T8 | 前端 system.md §8 与实际 ElMessage/ElMessageBox 显式 import 存在措辞不一致 | 已确认为既有正常模式（API 函数 import 非组件 import），只是文档措辞需澄清，非代码缺陷 | I23 |
 | T9 | 间接依赖存在已知安全漏洞（wangeditor/ini/js-yaml） | 均不进入生产构建产物，实际风险低，已评估 | I6 |
-| T10 | mock BPMN XML 过于简化——所有流程仅 StartEvent→EndEvent | 用户已确认当前满足验收，后续按 `processKey` 分发不同 XML | I30 |
 
 > 新增/移除条目时，同步检查 `knowledge/known-issues.md` 对应编号的状态描述是否需要更新。
+>
+> （2026-08-16 D83 清理：T1 因 I2 已修复关闭删行；T10 因 I30 已满足可关闭删行——均按收录规则第 3 条执行）

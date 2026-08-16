@@ -1,6 +1,6 @@
 # 当前状态
 
-> 最后更新：2026-08-11
+> 最后更新：2026-08-16（基线随 D82 同步；探索回执待执行层取走 3 个 search_task 后返回）
 
 ## 进行中功能
 
@@ -39,9 +39,12 @@ process-monitoring (M04-F06-01)：COMPLETED（详情见 `knowledge/`，2026-07-3
 
 ## 测试基线
 
-- 后端：项目级 **426 tests**（CONFIRMED 2026-08-12 Step12 全量两次 BUILD SUCCESS，0 failures/0 errors）
-- 前端：**63 spec files / 552 tests**，测试/typecheck/lint/build 全绿（CONFIRMED 2026-08-12 Step11 全量，Step12 未做前端持平）
-- 已完成功能：11 个
+- 后端：项目级 **527 tests**（源码口径，CONFIRMED 2026-08-16 D82 mvn 全量 BUILD SUCCESS 0 failures，521+6）
+- 前端：**66 spec files / 569 tests（运行口径；静态 561，+8 系 tokens.spec.ts 循环展开，D83 定）**，四连全绿（CONFIRMED 2026-08-16 D82；typecheck/build 1024M 例外环境性，512M 硬约束不变）
+- 功能清单：**✅12/🟦37/⬜41 共 90 行**（2026-08-16 D82 同步）
+- Flyway：root 路径 V30 已占；迁移链冒烟口径 28（含 form V12）
+- 已完成功能：16 个
+- 需求池：`todo/requirement-pool.md`（2026-08-16 新建，已开发未满足+候选，规划层维护）
 
 ## 模块完成度（简表）
 

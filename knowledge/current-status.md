@@ -15,10 +15,10 @@
 |------|------|
 | 后端框架 | Spring Boot 3.4.4 + Java 21，模块化单体，四层架构就位 |
 | 前端框架 | Vue 3.5 + TypeScript 6.0 + Vite 8，严格分层 SPA，自有架构（不继承 vben） |
-| 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，V1–V17 连续无缺号（CONFIRMED 2026-07-22 代码直读：V12=form 升级、V14=bpm process 均存在；V16=storage、V17=job-scheduler；无 V18/无 auth 脚本。脚本分散各模块 `db/migration/{module}/{postgresql,h2}`，双方言齐全） |
+| 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，**V1–V30 连续无缺号**（CONFIRMED 2026-08-16 D83 静态复核：60 个 V 文件 h2/pg 双份，distinct V 号 1-30；V12=form 升级、V14=bpm process、V16=storage、V17=job-scheduler、V18=refresh_token、V26=agent 图菜单、V29=job/storage 菜单、V30=sys_role_dept。脚本分散各模块 `db/migration/{module}/{postgresql,h2}`，双方言齐全） |
 | 核心路径 | Walking Skeleton：登录 → 表单 → 审批 → 通知 ✅ 四环全部闭合 |
 | 功能清单 | 10 模块，55 功能，**90** 明细（CONFIRMED 2026-07-23，此前记为 88，M10 差 1 条已更正——见 [[shared-constraints]] §5；2026-08-14 新增 M04-F08-01 登记，总表 55 功能/90 明细）；`Smart-WorkFlow/功能清单.md` 为权威清单，状态标记已与代码实际进度对齐：✅17/🟦12/⬜60（2026-07-24 [[feature-checklist-sync]]，I1 修复）→ ✅7/🟦40/⬜42（2026-08-12 Step5 二次核实与同步）→ ✅10/🟦37/⬜42（2026-08-13 checklist-gap-hardening 第一批：I33/I43/I44 修复后回升 3 行）→ ✅10/🟦37/⬜43（M04-F08-01 新增 ⬜ 登记后，90 行口径）→ **✅11/🟦37/⬜42**（2026-08-15 data-scope-enforcement：M02-F04-01 ⬜→✅。注：batch1 回执"总 89/⬜42"为 89 行口径，全表现 90 行）→ **✅12/🟦37/⬜41**（2026-08-16 bpm-plugin-architecture：M04-F08-01 ⬜→✅，90 行口径） |
-| 测试基线 | 后端：项目级 **521 tests / 0 failures / 0 errors**（CONFIRMED 2026-08-15 data-scope-enforcement 验证：435 基线 + 新增 86 = 521，mvn test BUILD SUCCESS）。演进：465（2026-07-28 process-monitoring Step 2 独立验收，surefire XML 跨模块合计，0 failures/0 errors；Step 1 收据「256」为误报——实际为子集计数，全量基线此前即 ≥459；新增 Step 1 +15 + Step 2 +6）→ 426（M07 阶段）→ 435（2026-08-13 checklist-gap-hardening 第一批：426 基线 + I33 新增 10 = 436 运行口径，其中 1 个 V26 临时冒烟测试不在源码 → 435 源码口径）→ **521（2026-08-15 data-scope-enforcement，+86）** → **527（2026-08-16 bpm-plugin-architecture，+6：B1 +3 / B2 +1 / B3 +2，mvn test BUILD SUCCESS 12:07min，CONFIRMED）**。前端：**63 spec files / 552 tests**（CONFIRMED 2026-08-15 data-scope-enforcement 验证：四连 typecheck/lint/test/build 全绿，数值与 2026-08-13 基线持平；本次 typecheck/build 为一次性 1024M 内存例外，详见回执披露）→ **66 spec files / 569 tests**（2026-08-16 bpm-plugin-architecture：+3 spec / +17 tests，四连全绿；typecheck/build 为一次性 1024M 内存例外——512M 下基线 HEAD 同样 OOM，属本机 1.6G 物理内存环境问题，非代码回归，详见回执披露）。演进：60f/521t（2026-07-28 process-monitoring Step 3 独立验收：60 passed / 521 tests / 0 failures；57f/497t → bpmn-adapter Step 1 +1f/+10t → 58f/507t → bpmn-adapter Step 3 +1f/+10t → 59f/517t → process-monitoring Step 3 +1f/+4t → 60f/521t）→ 63f/552t（2026-08-13，2026-08-15 持平）。四连校验门 CONFIRMED 全绿 |
+| 测试基线 | 后端：项目级 **521 tests / 0 failures / 0 errors**（CONFIRMED 2026-08-15 data-scope-enforcement 验证：435 基线 + 新增 86 = 521，mvn test BUILD SUCCESS）。演进：465（2026-07-28 process-monitoring Step 2 独立验收，surefire XML 跨模块合计，0 failures/0 errors；Step 1 收据「256」为误报——实际为子集计数，全量基线此前即 ≥459；新增 Step 1 +15 + Step 2 +6）→ 426（M07 阶段）→ 435（2026-08-13 checklist-gap-hardening 第一批：426 基线 + I33 新增 10 = 436 运行口径，其中 1 个 V26 临时冒烟测试不在源码 → 435 源码口径）→ **521（2026-08-15 data-scope-enforcement，+86）** → **527（2026-08-16 bpm-plugin-architecture，+6：B1 +3 / B2 +1 / B3 +2，mvn test BUILD SUCCESS 12:07min，CONFIRMED）**。前端：**63 spec files / 552 tests**（CONFIRMED 2026-08-15 data-scope-enforcement 验证：四连 typecheck/lint/test/build 全绿，数值与 2026-08-13 基线持平；本次 typecheck/build 为一次性 1024M 内存例外，详见回执披露）→ **66 spec files / 569 tests**（2026-08-16 bpm-plugin-architecture：+3 spec / +17 tests，四连全绿；typecheck/build 为一次性 1024M 内存例外——512M 下基线 HEAD 同样 OOM，属本机 1.6G 物理内存环境问题，非代码回归，详见回执披露。**注：569 为运行口径，静态 `it(`/`test(` 计数 561（+8 系 tokens.spec.ts CATEGORIES 循环展开），2026-08-16 D83 复核确认**）。演进：60f/521t（2026-07-28 process-monitoring Step 3 独立验收：60 passed / 521 tests / 0 failures；57f/497t → bpmn-adapter Step 1 +1f/+10t → 58f/507t → bpmn-adapter Step 3 +1f/+10t → 59f/517t → process-monitoring Step 3 +1f/+4t → 60f/521t）→ 63f/552t（2026-08-13，2026-08-15 持平）。四连校验门 CONFIRMED 全绿 |
 | 前次验证 | 2026-08-16 bpm-plugin-architecture（M04-F08-01）闭环（执行层自验，待规划层最终验收）：后端全量 **527 tests / 0 failures / 0 errors**（mvn test BUILD SUCCESS 12:07min；sw-bpm-engine 21、sw-bpm-process 50 等全模块 SUCCESS）+ 前端 **66 files / 569 tests** 四连全绿（typecheck/lint/test/build；typecheck/build 为一次性 1024M 内存例外，512M 下基线同样 OOM 属环境问题）+ Flyway 零迁移（纯重构轮，方向文档预期）+ 功能清单 M04-F08-01 ⬜→✅（终态 ✅12/🟦37/⬜41 共 90 行）+ I47/I48 正式登记（悬空引用清理）。此前：2026-08-15 data-scope-enforcement 验收：后端 **521 tests / 0 failures / 0 errors**（mvn test BUILD SUCCESS；逐模块：sw-common 16、sw-security 4、sw-basic-agent 178、sw-basic-job-biz 48、sw-basic-notify-biz 7、sw-basic-storage-biz 16、sw-biz-form-biz 76、sw-biz-system-biz 111、sw-bpm-engine 18、sw-bpm-process 47）+ 前端 63 files / 552 tests 四连全绿（typecheck/build 一次性 1024M 内存例外）+ Flyway V30 冒烟（h2/pg 双份逐字一致；6 目录链排除 bpm，28 迁移按序应用 + validate 通过；迁移数口径修正 27→28：form/h2 `V12__upgrade_form_config_to_per_table.sql` 此前漏计）。再此前：2026-08-13 checklist-gap-hardening 第一批验收：后端 435/0 + 前端 63f/552t 四连全绿（含 2 个高负载超时 flaky 重跑通过）+ V29 冒烟；2026-07-22 kb-verification VB1/VF1 后端 BUILD SUCCESS · 前端四连全绿 |
 
 ---
@@ -39,7 +39,7 @@
 | sw-basic-job | ✅ 完整 | CONFIRMED | B1–B4 + F1–F3 全部通过：模块拆分/Quartz 集成/Controller+Facade/测试（全量后端 203 tests，CONFIRMED 2026-07-22 复验，原「406」SUPERSEDED）+ 前端 Types/API/视图/Mock/路由闭环（54 files/471 tests） |
 | sw-basic-iot | ⬜ 骨架 | CONFIRMED | AutoConfiguration 占位 |
 | sw-basic-knowledge | ⬜ 骨架 | CONFIRMED | AutoConfiguration 占位 |
-| sw-basic-agent | ⬜ 骨架 | CONFIRMED | AutoConfiguration 占位 |
+| sw-basic-agent | ✅ 完整 | CONFIRMED | 模型管理/编排/工具沙箱/会话/图定义/图执行全链（178 @Test，2026-08-16 D83 静态复核）；前端 GraphDefList + GraphDesigner 已消费 Vue Flow adapter |
 | sw-biz-openapi | ⬜ 骨架 | CONFIRMED | 仅 package-info |
 
 ### 2.2 前端
@@ -62,7 +62,7 @@
 | Agent | 🔲 占位 | CONFIRMED | 路由/菜单已注册，无业务页面 |
 | OpenAPI | 🔲 占位 | CONFIRMED | 路由/菜单已注册，无业务页面 |
 | BPMN 集成 | 🟦 查看器已实现 + 已消费 | CONFIRMED | `adapters/bpmn/` 查看器防腐层已完成（[[bpmn-adapter]] Steps 0-3 COMPLETED）：`mountBpmnViewer`/`highlight`/`fitViewport`/`destroy` + 事件回调。两个消费方已就绪：ProcessDefList「查看流程图」+ ProcessInstanceList「流程图高亮+流转时间线」（[[process-monitoring]] COMPLETED）。设计器（Modeler）能力明确不在范围内 |
-| Vue Flow | ✅ adapter 就绪 | CONFIRMED | @vue-flow/core 1.48 已安装，`adapters/flow-graph/` 防腐层已实现（mount/export/destroy + 事件回调），零消费方（预期状态——M07 AI 调度图业务模块未就位，adapter 可独立先行）。场景为 AI 调度图（M07），非表单设计器（SUPERSEDED：此前「表单设计器可视化集成」标签为知识库漂移，2026-07-25 [[vue-flow-adapter]] 完成更正） |
+| Vue Flow | ✅ adapter 就绪 + 已消费 | CONFIRMED | @vue-flow/core 1.48 已安装，`adapters/flow-graph/` 防腐层已实现（mount/export/destroy + 事件回调），**首个消费方已就位：M07 GraphDesigner.vue 经 graphAdapter.ts 转换层调用 mountFlowGraph**（2026-08-16 D83 复核，非零消费方）。场景为 AI 调度图（M07），非表单设计器（SUPERSEDED：此前「表单设计器可视化集成」标签为知识库漂移，2026-07-25 [[vue-flow-adapter]] 完成更正） |
 
 ---
 
@@ -103,20 +103,21 @@
 
 ## 4. 进行中的功能
 
-> 最后更新：2026-07-25
+> 最后更新：2026-08-16
 
-| 功能 | 状态 | 当前 Step | 说明 |
-|------|:---:|:---:|------|
-| [[bpm-plugin-architecture]] | **PLANNING** | 方向已登记（2026-08-14） | M04-F08-01 BPM 节点/表单组件与后端 adapter 可插拔机制。方向裁定（2026-08-14 规划角色）：①前端建"节点类型→属性面板组件"注册表（仿 `FIELD_TYPE_REGISTRY`），替换设计器 v-if 硬编码；②`DynamicField.vue` 8 类控件渲染链 registry 化；③后端 `GraphToBpmnTranslator` switch 改为按类型注册的翻译器（仿 `NodeApproverResolver` Map 分发）；④`NodeTypeRegistry` 扩充为完整注册骨架；⑤后端 BPM adapter 抽象为可插拔 SPI。非目标：不做设计器本体、不新增具体节点/控件、不做运行时热插拔。方向文档待下发 `product/bpm-plugin-architecture/ready/` |
-| [[bpmn-adapter]] | **COMPLETED** ✅ | Steps 0-3 PASSED，Step 4 SUPERSEDED | BPMN adapter 查看器实现（对应 [[known-issues]] I3 剩余 BPMN 部分）。Step 0（探索）/Step 1（前端查看器防腐层）/Step 2（后端 BPMN XML 只读端点）/Step 3（前端 ProcessDefList「查看流程图」入口）全部 PASSED 并归档。Step 4（M04-F06 流程监控）由新功能 [[process-monitoring]] 独立承接 |
+**无进行中功能**（bpm-plugin-architecture 已于 D82 最终验收 PASSED 归档，2026-08-16）。历史条目：
 
-| [[process-monitoring]] | **COMPLETED** ✅ | Steps 0-3 PASSED | M04-F06-01 流程监控首批能力（流程图高亮 + 流转记录）。Step 0 探索（范围裁定）+ Step 1 后端 Facade + Service 层（15 @Test）+ Step 2 后端 Controller（6 @Test）+ Step 3 前端 ProcessInstanceList 监控页面（4 @Test）。后端 465 tests + 前端 60f/521t。阶段三收尾完成（2026-07-30）。耗时分析 + 流程干预延后至后续批次 |
+| 功能 | 状态 | 说明 |
+|------|:---:|------|
+| [[bpm-plugin-architecture]] | **COMPLETED** ✅ | M04-F08-01 BPM 可插拔机制（D81/D82 PASSED，2026-08-16）：前端节点面板/表单控件 registry 化 + 后端 NodeTypeTranslator SPI 注册表翻译 + 可插拔性证明（TEST_NODE/EMAIL/PROBE 零改消费方） |
+| [[bpmn-adapter]] | **COMPLETED** ✅ | Steps 0-3 PASSED，Step 4 SUPERSEDED（由 [[process-monitoring]] 承接） |
+| [[process-monitoring]] | **COMPLETED** ✅ | M04-F06-01 流程监控首批（流程图高亮 + 流转记录），耗时分析 + 流程干预延后至后续批次 |
 
 ---
 
 ## 5. 已完成的功能
 
-> 最后更新：2026-07-24
+> 最后更新：2026-08-16（16 个功能）
 
 | 功能编号 | 功能名称 | 最终状态 | 完成日期 | 说明 |
 |----------|----------|:--------:|:--------:|------|
@@ -134,6 +135,8 @@
 | sys-mgmt-crud | 系统管理核心 CRUD 做宽闭环 | **COMPLETED** ✅ | 2026-07-16 | 6 Steps 全部通过：后端 16 文件 + 前端 22 文件，46 spec files / 392 tests 全绿 |
 | checklist-gap-hardening | 清单缺口加固第一批（I33 登录停用校验 + I43/I44 生产菜单 seed） | **COMPLETED** ✅ | 2026-08-13 | 两项交付并测试通过：AuthController 登录/刷新双入口 status 校验（停用/锁定拒绝登录与 token 续期，10 个新测试）+ Flyway V29 菜单 seed（h2/postgresql 双份，4 行菜单：id16 文件管理/17 定时任务目录/18 任务管理/19 执行日志）。后端 435 tests/0 failures + 前端 63f/552t 四连全绿（2 个高负载超时 flaky 重跑通过）；V29 冒烟测试验证 27 迁移按序应用无 validate 失败 + 4 行菜单逐列断言通过（bpm 目录受既有 known-issues I47 阻断，非本批引入；注：迁移数口径后经 data-scope-enforcement 验证门修正为 28，见下条）。清单 M01-F02-02/M10-F03-01/M10-F06-01 回升 ✅，全表 ✅10/🟦37/⬜42 |
 | data-scope-enforcement | M02-F04-01 数据权限完整落地（装配去硬编码 + 五档生效 + 7 表查询纳管 + 前端角色页五档配置） | **COMPLETED** ✅ | 2026-08-15 | 交付并测试通过：登录装配多角色取最宽档（并集语义 ALL>DEPT_AND_CHILD>CUSTOM>DEPT>SELF，CUSTOM 部门并集）+ `DeptScopeProviderImpl`（递归 + @Lazy 破环）+ Role CRUD dataScope/deptIds + `sys_role_dept` 表（Flyway V30 h2/pg 双份逐字一致）+ 7 表查询纳管（sys_user 五档 @DataScope 直标；6 表等效条件：bpm_instance/agent_graph_execution/agent_model_config/job_info/job_log/storage_file）+ 前端 RoleList 五档下拉 + 部门树。后端 **521 tests/0 failures/0 errors**（435 基线 +86）+ 前端 63f/552t 四连全绿（typecheck/build 为一次性 1024M 内存例外）；V30 冒烟 6 目录链 28 迁移按序应用 + validate 通过（迁移数口径 27→28 修正：form/h2 V12 此前漏计）。非目标：手写 SQL 通道不纳管（known-issues I46，与 I10 同源）；dataScope 登录时快照、非实时生效。清单 M02-F04-01 ⬜→✅，全表 ✅11/🟦37/⬜42（90 行明细） |
+| agent-model-orchestration | M07-F01/F02/F04 大模型管理 + 图设计器 + 多轮会话（F01 Steps 1-5 + F02 Steps 6-12 + F04 会话持久化） | **COMPLETED** ✅ | 2026-08-12 | Steps 1-12 全部 PASSED（D53-D71）：模型管理/AES 加密/连通性测试 → LangGraph4j 编排引擎 → 工具沙箱 → 多轮会话（V21-V23）→ 多Key轮询/额度限流 → 图定义 CRUD+发布骨架 → AgentGraphInterpreter 解释执行 → 前端图设计器（V26 菜单）→ 多变量执行上下文 → 并行/循环节点（LOOP/FORK/JOIN）→ 执行历史持久化（V27/V28）。后端 262→426 tests；前端 60f/521t→63f/552t。详情 `product/agent-model-orchestration/passed/` |
+| bpm-plugin-architecture | M04-F08-01 BPM 可插拔机制（节点/控件/翻译器注册表化） | **COMPLETED** ✅ | 2026-08-16 | 6 Step 闭环（D81 执行层闭环 + D82 规划层验收 PASSED）：后端 NodeTypeRegistry +4 预留位 + GraphToBpmnTranslator switch→NodeTypeTranslator SPI 注册表翻译 + TEST_NODE 可插拔性证明；前端 DynamicField 9 控件 + 8 节点面板双注册表 + EMAIL/PROBE 证明。后端 521→527、前端 63f/552t→66f/569t；Flyway 零迁移。详情 `product/bpm-plugin-architecture/passed/` |
 
 ---
 
@@ -175,7 +178,7 @@
 
 ## 8. 下一优先事项
 
-全部 **13** 个功能已完成闭环：
+全部 **16** 个功能已完成闭环：
 
 1. ✅ Walking Skeleton（登录→表单→审批→通知）
 2. ✅ sys-mgmt-crud（系统管理核心 CRUD）
@@ -189,15 +192,19 @@
 10. ✅ bpmn-adapter（BPMN adapter 查看器实现）
 11. ✅ process-monitoring（M04-F06-01 流程监控首批）
 12. ✅ checklist-gap-hardening（清单缺口加固第一批：I33 登录停用校验 + I43/I44 菜单 seed）（2026-08-13）
-13. ✅ data-scope-enforcement（M02-F04-01 数据权限完整落地）← **最新完成**（2026-08-15）
+13. ✅ data-scope-enforcement（M02-F04-01 数据权限完整落地）（2026-08-15）
+14. ✅ notify-frontend（通知模块前端落地）（2026-07-15，Walking Skeleton 最终环）
+15. ✅ agent-model-orchestration（M07-F01/F02/F04：模型管理/编排引擎/工具沙箱/会话/图设计器/并行循环/执行历史）（2026-08-12，D53-D71）
+16. ✅ bpm-plugin-architecture（M04-F08-01 BPM 可插拔机制）← **最新完成**（2026-08-16，D82 PASSED）
 
-后续候选：
+后续候选（2026-08-16 D83 更新，按风险/价值排序参考）：
 
-1. **M04-F06-01 后续批次（耗时分析 + 流程干预）** — process-monitoring 首批（流程图高亮+流转记录）已完成，剩余 2/4 子能力延后
-2. **IoT / Agent / OpenAPI 模块落地** — 从占位推进到实际业务
-3. **M07 AI 调度图业务模块** — `sw-basic-agent` 后端骨架落地 + 前端消费 `adapters/flow-graph/`（adapter 防腐层已就绪，等待后端引擎/工具沙箱/RAG 产品设计明确）
-4. **Git commit of process-monitoring changes** — 10 个文件 untracked/uncommitted（8 后端 + 2 前端）
-5. **M04-F08-01 BPM 节点/表单组件与后端 adapter 可插拔** — 新功能（2026-08-14 登记）：建议在 M04-F01 流程设计器开发前落地，避免设计器写死 v-if 后返工
+1. **M01/M02 其余虚高要素补齐（关联/筛选）** — I31-I36/I40 待修复项（部门条件筛选/人员岗位角色关联/角色绑定写入入口/按钮权限配置入口）
+2. **M07 补全** — F01 前端管理页、F02-02 Prompt 配置、F02-04 运行日志页+单步调试、F04-02 Token 统计（缺口逐一已由 D83 回执确认）
+3. **M07-F03/F04 新功能** — 助手配置/知识库 RAG/对话窗口 SSE（均零代码）
+4. **IoT / OpenAPI 模块落地** — 仅骨架（D83 复核确认 M08/M09 全 ⬜ 无虚低）
+5. **M04-F06-01 后续批次（耗时分析 + 流程干预）** — process-monitoring 首批已完成，剩余 2/4 子能力延后
+6. **小项池** — I47 修复（bpm V8 partial index→真全链迁移测试）、**I51 前端 status 映射反转（高）**、I26 SysRole 列名（影响面已上调至高）、I49 菜单授权、数据权限遗留（部门档 deleted 过滤/job 非分页入口/PG 联调）
 
 ---
 
@@ -205,12 +212,12 @@
 
 | 项目 | 校验命令 | 当前状态 |
 |------|----------|----------|
-| 后端 | `mvn -q compile && mvn -q test` | **CONFIRMED**（2026-08-15 data-scope-enforcement 验证）：`mvn test` BUILD SUCCESS，**521 tests / 0 failures / 0 errors**（435 基线 + data-scope-enforcement 新增 86 = 521）。演进：465（2026-07-28 process-monitoring Step 2 独立验收，surefire XML 跨模块合计，含 Step 1 +15 + Step 2 +6；Step 1 收据「256」为子集误报 SUPERSEDED，全量基线此前即 ≥459）→ 426（M07 阶段）→ 435（2026-08-13，426 基线 + I33 新增 10 = 436 运行口径，−1 个 V26 临时冒烟测试不在源码 = 435 源码口径）→ **521（2026-08-15 data-scope-enforcement）**。原「462」「241」「203」均为更早历史基线（SUPERSEDED） |
-| 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | **CONFIRMED**（2026-08-15 data-scope-enforcement 验证）：四连全绿，Vitest 汇总 **63 files / 552 tests** 全部通过（数值与 2026-08-13 持平；本次 typecheck/build 为一次性 1024M 内存例外，详见回执披露）。演进：60f/521t（2026-07-28 process-monitoring Step 3 测试回执 + 独立验收：57f/497t（2026-07-25 vue-flow-adapter Step 1）→ bpmn-adapter Step 1（+1f/+10t）→ 58f/507t → bpmn-adapter Step 3（+1f/+10t）→ 59f/517t → process-monitoring Step 3（+1f/+4t）→ 60f/521t，计数一致，零退化）→ 63f/552t（2026-08-13，2026-08-15 持平） |
+| 后端 | `mvn -q compile && mvn -q test` | **CONFIRMED**（2026-08-15 data-scope-enforcement 验证）：`mvn test` BUILD SUCCESS，**521 tests / 0 failures / 0 errors**（435 基线 + data-scope-enforcement 新增 86 = 521）。演进：465（2026-07-28 process-monitoring Step 2 独立验收，surefire XML 跨模块合计，含 Step 1 +15 + Step 2 +6；Step 1 收据「256」为子集误报 SUPERSEDED，全量基线此前即 ≥459）→ 426（M07 阶段）→ 435（2026-08-13，426 基线 + I33 新增 10 = 436 运行口径，−1 个 V26 临时冒烟测试不在源码 = 435 源码口径）→ **521（2026-08-15 data-scope-enforcement）→ 527（2026-08-16 bpm-plugin-architecture，+6：B1 +3/B2 +1/B3 +2，CONFIRMED；2026-08-16 D83 静态逐模块复核：sw-basic 249（agent 178/job 48/notify 7/storage 16）+ sw-biz 258（system 111/form 76/bpm 71）+ sw-framework 20）**。原「462」「241」「203」均为更早历史基线（SUPERSEDED） |
+| 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | **CONFIRMED**（2026-08-16 bpm-plugin-architecture 验证）：四连全绿，Vitest 汇总 **66 files / 569 tests** 全部通过（63f/552t +3f/+17t；typecheck/build 为一次性 1024M 内存例外，详见回执披露。**注：569 为运行口径，静态 `it(`/`test(` 计数 561（+8 系 tokens.spec.ts CATEGORIES 循环展开），2026-08-16 D83 复核确认**）。演进：60f/521t（2026-07-28 process-monitoring Step 3 测试回执 + 独立验收：57f/497t（2026-07-25 vue-flow-adapter Step 1）→ bpmn-adapter Step 1（+1f/+10t）→ 58f/507t → bpmn-adapter Step 3（+1f/+10t）→ 59f/517t → process-monitoring Step 3（+1f/+4t）→ 60f/521t，计数一致，零退化）→ 63f/552t（2026-08-13，2026-08-15 持平） |
 
 ### 前端测试覆盖详情（参考快照，2026-07-15 基线 ~350 tests）
 
-> 以下为 Walking Skeleton 闭环时的详细覆盖分布。当前最新基线为 54 files / 471 tests（2026-07-21 F3 验收确认），新增覆盖包括 storage（8 测试）、job（34 测试）等模块的 API/视图测试。
+> 以下为 Walking Skeleton 闭环时的详细覆盖分布。当前最新基线为 **66 files / 569 tests**（2026-08-16 四连全绿，运行口径；静态 `it(`/`test(` 计数 561，差 +8 系 tokens.spec.ts CATEGORIES 循环展开——D83 复核确认）。
 
 | 测试文件 | 用例数 | 测试内容 |
 |----------|:-----:|----------|
@@ -246,7 +253,7 @@
 |------|------|------|
 | 后端工程宪法 | `Smart-WorkFlow/.claude/system.md` | `SmartWorkFlow_files.zip` → `CLAUDE-java.md` |
 | 前端工作宪法 | `Smart-WorkFlow-Web/.claude/system.md` | `SmartWorkFlow_files.zip` → `CLAUDE-vue.md` |
-| 功能清单（54 功能/89 明细） | `Smart-WorkFlow/功能清单.md` | `SmartWorkFlow_files.zip` → `功能清单.md` |
+| 功能清单（55 功能/90 明细） | `Smart-WorkFlow/功能清单.md` | `SmartWorkFlow_files.zip` → `功能清单.md` |
 | 产品需求文档（PRD） | `SmartWorkFlow_files.zip` → `Smart-WorkFlow-PRD.md` | 需求基线 |
 | 前端架构与现状知识库 | `SmartWorkFlow_files.zip` → `Smart-WorkFlow-前端架构与现状-知识库.md` | 前端单一现状源 |
 | 页型规范（设计系统可视化） | `SmartWorkFlow_files.zip` → `Smart-WorkFlow 页型规范.html` | 两页型像素级原型 |

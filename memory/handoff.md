@@ -65,6 +65,16 @@
 
 **选定下一需求方向并下发**：bpm-plugin-architecture 已 PASSED 归档（D82，2026-08-16）。规划会话按 system.md §10 恢复后，从候选池选定方向、写方向文档至 `product/<feature>/ready/` 下发执行层。
 
+**探索回执已回收并核销（2026-08-16，D83 裁定 + D84 落库核销）**：
+- 清单 90/90 零不一致（I1 无第三次复发）；基线全部核实（527/66f569t——**569 为运行口径，静态 561**/V30+28/16 功能）；memory 自洽。
+- **knowledge/ 落库已完成（D84 核销 7/7）**：I49/I50/I51 正式登记、I26 上调/I30 已满足/I3/I18/I38 失准修正、current-status 18 处、session-handoff 全量重写、todo T1/T10 清理、前端口径注记。回执 `search_fallback/knowledge-sync-apply.md`。
+- **D84 裁定**：decisions 注册表归属——memory/decisions.md=活跃决策摘要（D85 口径），knowledge/decisions.md=D1-D46 历史档案（顶部注记+README 同步待执行层顺手补）；不补录 D47-D82；I18/I30 正式关闭。
+- **D85 铁律（2026-08-16 用户定）**：knowledge=唯一完整权威信息源；memory=最少信息摘要（冲突以 knowledge 为准）；执行角色触碰状态文件必须同步 knowledge 全量（§3.3 第10项强化）；清单 🟦/⬜ 缺口同步进需求池 P 编号（防"清单独有"）。已落：system.md §0.4 铁律块 + §3.3 第10项、memory/README.md、memory/decisions.md 顶部、requirement-pool 维护规则 4。
+- 需求池：`todo/requirement-pool.md`（A 高紧迫 P23/P13/P10 + B 清单 🟦 缺口 P1-P9/P14/P24/P25 + C 待决策 + **D 清单独有 ⬜ 18 条 P26-P43 + E 清单独有 🟦 7 条 P44-P50**——D/E 组=仅功能清单存在他处零提及，2026-08-16 排查）。
+- **探索任务核销（2026-08-16 晚，3/3 完成）**：decisions-registry-note ✅（knowledge/decisions.md 顶部注记+根 README 索引同步）、checklist-pool-sync ✅（清单 25 行描述列末尾追加「缺口已登记 P26-P50」25/25、状态列 0 漂移——裁定维持描述列形态不加列）、rule-sync-d85 ✅（shared-constraints §10 / development-workflow §6.3 / 后端宪法 §13 / 前端宪法 §15 四处落地，knowledge/README 不存在按说明处理）。**D85 铁律三仓库宪法级完成**。
+- **探索任务核销（2026-08-16 晚，4/4 全闭环）**：i18-close-sync ✅（I18 注册表已同步「✅ 已关闭（D84）」仿 I33/I37 先例，memory 侧核对一致）。**本轮全部委派任务已闭环，无进行中探索**。
+- **本轮用户指示**：2026-08-16「本轮不做新需求，仅做梳理」——下一方向仍待选（候选见「后续候选」），不主动启动新功能轮。
+
 后续候选（按风险/价值排序参考）：
 1. M01/M02 其余虚高要素补齐（关联/筛选，I31-I44 余项；I33/I43/I44/I37 已修复）
 2. M07 补全：F01 前端管理页、F02-02 Prompt 配置、F02-04 运行日志页+单步调试、F04-02 Token 统计

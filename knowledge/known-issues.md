@@ -13,7 +13,7 @@
 |---|----------|------|:---:|:---:|
 | I1 | — | 功能清单状态与代码实际进度脱节 | 中 | ✅ 已修复（首轮 2026-07-24：feature-checklist-sync 4 Steps 全部 PASSED；第二轮 2026-08-12：Step5 二次核实与同步，34 行状态列已同步；详见 I31-I45） |
 | I2 | — | refresh token seam 未实现 | 低 | ✅ 已修复（2026-07-22：auth-seam-completion 7 Steps 全部 PASSED，/auth/refresh + /auth/logout 前后端闭环） |
-| I3 | — | BPMN/Vue Flow adapter 未实现 | 中 | 部分修复（Vue Flow ✅ 2026-07-25 [[vue-flow-adapter]] COMPLETED；BPMN 查看器 ✅ 2026-07-25 [[bpmn-adapter]] Step 0/1/2 PASSED——前端查看器防腐层 + 后端 BPMN XML 端点均已实现；设计器/Modeler 能力明确不在范围内；UI 查看入口（Step 3）、M04-F06 流程监控（Step 4）仍待后续） |
+| I3 | — | BPMN/Vue Flow adapter 未实现 | 中 | 部分修复（Vue Flow ✅ 2026-07-25 [[vue-flow-adapter]] COMPLETED；BPMN 查看器 ✅ 2026-07-25 [[bpmn-adapter]] Step 0/1/2/3 PASSED——前端查看器防腐层 + 后端 BPMN XML 端点 + ProcessDefList「查看流程图」入口均已实现；设计器/Modeler 能力明确不在范围内；仅 M04-F06 流程监控（Step 4）未做，由 [[process-monitoring]] 承接，2026-08-16 D83 复核确认） |
 | I4 | — | 前端多页签功能未实现 | 低 | 待开发 |
 | I5 | — | 测试基线通过率未独立验证 | 中 | ✅ 已修复（2026-07-14 验证：后端 111 tests ✅，前端 331 tests ✅） |
 | I6 | — | 间接依赖存在已知安全漏洞 | 低 | 已评估 |
@@ -30,15 +30,16 @@
 | I15 | 2026-06-30 | M09 开放接口授权粒度/配额计费口径待定 | 低 | ⚠ 排在最后，待前序模块稳定 |
 | I16 | 2026-06-30 | 跨环境迁移（表单/应用/流程导入导出）未设计 | 中 | ⚠ 后续设计 |
 | I17 | 2026-06-30 | RICH_TEXT 富文本编辑器未集成 | 低 | 当前降级为 textarea |
-| I18 | 2026-07-16 | 子项目 system.md 可能与 zip 最新版本不同步 | 中 | zip 中 CLAUDE-java.md / CLAUDE-vue.md 为最新工程宪法 |
+| I18 | 2026-07-16 | 子项目 system.md 可能与 zip 最新版本不同步 | 中 | ✅ 已关闭（2026-08-16 D84 裁定：工作区已无 zip（find *.zip=0）；子项目 system.md 已更新至 27,071/27,861 字节与根 system.md 同步，无同步对象） |
 | I19 | 2026-07-20 | storage mock 模式下载不可用 | 低 | 已知限制 |
 | I20 | 2026-07-20 | storage 筛选 UI 占位 — 后端无 originalName 参数 | 低 | 已知限制 |
 | I21 | 2026-07-20 | B4 测试覆盖不足 | 低 | 已知偏差 |
 | I24 | 2026-07-22 | 后端"406 tests"与静态 @Test 计数（203）不一致，且非参数化展开所致（0 参数化），运行期数未独立复验 | 中 | ✅ 已修复（2026-07-22 kb-verification VB1 复验：运行期真值 203，与静态吻合；原 406 为回执误报，SUPERSEDED） |
 | I25 | 2026-07-22 | 前端"471 tests"与静态 it/test 计数（463）小幅不一致，且"四连全绿/BUILD SUCCESS"未由规划层独立复验 | 低 | ✅ 已修复（2026-07-22 kb-verification VF1 复验：运行期真值 471 全绿，差值 +8 定位为 tokens.spec.ts 循环展开） |
-| I26 | 2026-07-22 | SysRole 实体列名与 V5 Flyway 迁移列重命名不一致 | 中 | 已确认（回执 REPORTED） |
+| I26 | 2026-07-22 | SysRole 实体列名与 V5 Flyway 迁移列重命名不一致 | 高 | 待修复（2026-08-16 D83 影响面上调：H2 全链 V5 同样改名，任何全链 Flyway 环境下 SysRole MP 查询必崩，测试 DDL 绕过 Flyway 掩盖） |
 | I28 | 2026-07-23 | 后端工程宪法缺少「仓库范围硬约束」章节，前后端不对称 | 高 | ✅ 已修复（2026-07-23，用户授权规划层一次性越权补齐 §0.1，见 D34） |
 | I29 | 2026-07-25 | bpmn-adapter Step 2 执行/测试回执自报测试计数与独立核实结果不符（三处矛盾），自报 PASSED 未予采信 | 中 | ✅ 已修复（2026-07-25：修正补充回执已收到并独立复核通过——基线 19→26 更正为 26→36，净增 +7→+10，项目级 231→241，Git 删行澄清为零删除。Step 2 最终 PASSED） |
+| I30 | 2026-07-26 | mock BPMN XML 过于简化——所有流程返回同一份 StartEvent→EndEvent 最简模板 | 低 | ✅ 已满足（2026-08-16 D83 复核：handlers.ts L738-769 已按 def.processKey 参数化 + 3 个 userTask + activityId 对齐实例，可关闭） |
 | I31 | 2026-08-12 | M01-F01-04 部门查询虚高：清单标 ✅，实际仅全量树查询、无条件筛选 | 低 | 待修复 |
 | I32 | 2026-08-12 | M01-F02-01 人员新增虚高：清单标 ✅，实际岗位/角色关联未实现 | 低 | 待修复 |
 | I33 | 2026-08-12 | M01-F02-02 人员修改虚高：清单标 ✅，实际账号启用/停用不生效，停用用户仍可登录 | 高 | ✅ 已修复（2026-08-13 checklist-gap-hardening 第一批：AuthController 登录/刷新双入口 status 校验，停用/锁定账号拒绝登录与 token 续期） |
@@ -46,7 +47,7 @@
 | I35 | 2026-08-12 | M01-F03-01 岗位管理虚高：清单标 ✅，实际人员与岗位关联未实现 | 低 | 待修复 |
 | I36 | 2026-08-12 | M02-F01-01 角色管理虚高：清单标 ✅，实际角色与人员/用户组绑定未实现 | 低 | 待修复 |
 | I37 | 2026-08-12 | M02-F04-01 数据权限虚高：清单标 🟦，实际仅枚举/字段占位、全无过滤逻辑 | 中 | ✅ 已修复（2026-08-15 data-scope-enforcement 完整落地，见修复记录） |
-| I38 | 2026-08-12 | M03-F01-02 控件库虚高：清单标 ✅，实际仅 8/16 类可用 | 中 | 待修复 |
+| I38 | 2026-08-12 | M03-F01-02 控件库虚高：清单标 ✅，实际仅 8/17 类可用（enum 17 成员，9 disabled 占位） | 中 | 待修复 |
 | I39 | 2026-08-12 | M03-F02-01 表单管理虚高：清单标 ✅，实际删除未实现、版本仅存快照 | 中 | 待修复 |
 | I40 | 2026-08-12 | M03-F04-01 数据管理虚高：清单标 ✅，实际列表/查询条件配置仅自动派生 | 低 | 待修复 |
 | I41 | 2026-08-12 | M05-F01-02 消息接收虚高：清单标 ✅，实际缺删除 | 中 | 待修复 |
@@ -57,6 +58,9 @@
 | I46 | 2026-08-15 | 手写 SQL 通道无数据权限：动态宽表 JdbcTemplate 裸 SQL 与 bpm 外部数据源 SqlExecutor 绕过数据权限拦截器链，本轮明确不纳管（与 I10 同源） | 高 | 已知限制（明确不纳管，沿用 I10 红线：代码审查 + 测试兜底） |
 | I47 | 2026-08-16 | bpm/h2 迁移链 V8 含 PG 独有 partial index 语法（`WHERE active=true`），H2 不支持——全链 H2 Flyway 迁移从未可跑，模块测试均绕过 Flyway 直建 DDL（V30 冒烟 6 目录链仍排除 bpm） | 中 | 未修复，待排期 |
 | I48 | 2026-08-16 | `flow-graph` adapter 契约无边点击事件、无命令式数据更新通道：M07 图设计器绕行方案可用但受限（若未来节点自定义渲染/直接点边编辑需求增多，需回规划层评估扩展 adapter 导出面） | 低 | 绕行方案已生效，扩展待评估 |
+| I49 | 2026-08-16 | V29 菜单 seed 未 seed sys_role_menu（超管旁路）：正式环境 job/storage 菜单仅超管可达，I43/I44「生产菜单可达」口径仅对超管成立 | 中 | 待修复（D83 登记） |
+| I50 | 2026-08-16 | AuthController.login 状态校验位于密码匹配之后（L88→L92）：停用账号仍消耗一次 BCrypt+用户查询，时序/资源问题，无安全漏洞 | 低 | 待修复（D83 登记） |
+| I51 | 2026-08-16 | 前端 status 语义与后端相反（UserList/DeptList 正常=1/停用=0 vs 后端 0=正常 1=停用 2=锁定）：UI 新建用户无法登录、UI 停用不阻断登录，I33 修复在 UI 路径被抵消 | 高 | 待修复（D83 登记，属前端值映射错误） |
 
 
 
@@ -94,8 +98,9 @@
 - **可信度**：CONFIRMED（BPMN 部分仍待开发）/ CONFIRMED（Vue Flow 部分已修复）
 - **描述**：前端 `adapters/bpmn/` 和 `adapters/flow-graph/` 原仅有接口壳（`throw new Error('not implemented')`），BPMN 流程设计器和流程图可视化尚未集成。
 - **修复（Vue Flow 部分，2026-07-25）**：[[vue-flow-adapter]] 功能 COMPLETED——`adapters/flow-graph/index.ts` 已重写为完整防腐层（mount/export/destroy + 事件回调），6 测试 / 497 tests 四连全绿。M07 AI 调度图业务模块仍未就位（预期状态，adapter 可独立先行）。
-- **修复（BPMN 部分，2026-07-25）**：[[bpmn-adapter]] Step 0/1/2 均已 PASSED——前端 `adapters/bpmn/` 查看器防腐层（mountBpmnViewer/highlight/fitViewport/destroy + 事件回调）+ 后端 `GET /workflow/defs/{id}/bpmn-xml` 只读端点（`R<String>`，项目级 241 tests BUILD SUCCESS）。UI 查看入口（Step 3）和 M04-F06 流程监控页面（Step 4）仍待后续。
-- **影响**：BPMN 查看器防腐层已就绪、XML 数据源端点已就绪；UI 入口和流程监控页面仍待 Step 3/4；设计器（Modeler）能力明确不在范围内
+- **修复（BPMN 部分，2026-07-25）**：[[bpmn-adapter]] Step 0/1/2 均已 PASSED——前端 `adapters/bpmn/` 查看器防腐层（mountBpmnViewer/highlight/fitViewport/destroy + 事件回调）+ 后端 `GET /workflow/defs/{id}/bpmn-xml` 只读端点（`R<String>`，项目级 241 tests BUILD SUCCESS）。
+- **状态更新（2026-08-16，D83 复核）**：Step 3（UI 查看入口）已于 2026-07-26 完成——ProcessDefList「查看流程图」入口（`ProcessDefList.vue:15/93` mountBpmnViewer/openViewer），I3 的 BPMN 部分已全部修复；仅 M04-F06 流程监控页面（Step 4）未做，由 [[process-monitoring]] 承接（首批已 COMPLETED：流程图高亮+流转记录；耗时分析+流程干预延后）
+- **影响**：BPMN 查看器防腐层 + XML 数据源端点 + 前端查看入口均已就绪；流程监控页首批已交付；设计器（Modeler）能力明确不在范围内
 - **临时方案**：BPMN 依赖已安装（bpmn-js 18），待开发
 - **建议**：BPMN adapter 在 BPM 前后端联通任务中实现；Vue Flow adapter ✅ 已独立完成
 
@@ -264,7 +269,9 @@
 - **严重程度**：中
 - **可信度**：CONFIRMED
 - **描述**：`SmartWorkFlow_files.zip` 中的 `CLAUDE-java.md`（20,278 字节）和 `CLAUDE-vue.md`（14,560 字节）是最新版本的工程宪法。子项目中的 `Smart-WorkFlow/.claude/system.md`（22,440 字节）和 `Smart-WorkFlow-Web/.claude/system.md`（17,323 字节）可能与 zip 版本存在差异。
-- **影响**：执行代理可能依据过时的工程宪法进行开发
+- **状态更新（2026-08-16，D83 复核）**：前提已过时——工作区已无 zip 文件（全仓 `find *.zip` = 0）；子项目 `Smart-WorkFlow/.claude/system.md` 已更新至 **27,071 字节**、`Smart-WorkFlow-Web/.claude/system.md` 已更新至 **27,861 字节**（均大于原记录值），该条已无同步对象
+- **关闭记录（2026-08-16，D84 裁定）**：✅ **已关闭**——前提消失（工作区已无 zip，`find *.zip`=0；子项目 system.md 已更新至 27,071/27,861 字节，与根 system.md 同步，无同步对象）。若未来重新引入 zip 分发或出现新的宪法版本差异源，可重新登记
+- **影响**：执行代理可能依据过时的工程宪法进行开发（已随子项目 system.md 持续维护而缓解）
 - **建议**：对比 zip 版本与子项目版本，将差异同步到子项目 `.claude/system.md`
 
 ### I19：storage mock 模式下载不可用
@@ -320,12 +327,12 @@
 ### I26：SysRole 实体列名与 V5 Flyway 迁移列重命名不一致
 
 - **发现日期**：2026-07-22（auth-seam-completion V1 执行时发现）
-- **严重程度**：中
+- **严重程度**：高（2026-08-16 D83 影响面上调）
 - **可信度**：CONFIRMED
 - **描述**：`SysRole` 实体中 `@TableField("is_builtin")` 和 `@TableField("description")`，但 V5 Flyway 迁移 `V5__m_seam_rbac.sql` 将列 `is_builtin` 重命名为 `built_in`、`description` 重命名为 `remark`。若生产环境已应用 V5 迁移，MyBatis-Plus 使用 `SysRole` 实体查询时会报错 `Column "IS_BUILTIN" not found`。
-- **影响**：生产环境若已应用 V5 迁移，`SysRole` 相关查询将失败；开发 H2 环境（Flyway 从头执行）不受影响（V5 列改名会改变 DDL，但 H2 开发环境从头执行迁移时改名不冲突）。实际影响范围需进一步验证。
+- **影响**：**任何全链 Flyway 环境（含开发 H2）V5 均执行列改名，`SysRole` 的 MP 查询（`IS_BUILTIN` 列不存在）都会失败**——测试全绿只因测试 DDL（`schema-h2.sql` L43-44）绕过 Flyway 匹配实体（2026-08-16 D83 复核：原「开发 H2 环境不受影响」描述错误）；D79 之后 Role CRUD 读写 dataScope 同样命中该失配列，实际影响面≥原描述。
 - **临时方案**：当前 auth-seam-completion V1 的集成测试使用匹配实体列名的 DDL 规避；生产环境需确认 Flyway 迁移状态与实体注解的匹配性。
-- **建议**：确认 V5 迁移在生产环境的实际应用情况，若已应用则需修复 `SysRole` 实体注解或补充兼容性迁移。
+- **建议**：修复 `SysRole` 实体注解（`is_builtin`→`built_in`、`description`→`remark`）或补充兼容性迁移对齐 V5；修复后补全链迁移测试（可与 I47 修复轮合并排期）。
 
 ### I27：RefreshTokenService 家族撤销事务回滚 — 重放攻击防线形同虚设
 
@@ -361,8 +368,9 @@
 - **可信度**：CONFIRMED
 - **描述**：`handlers.ts` 中 `GET /api/workflow/defs/:id/bpmn-xml` 的 mock handler 始终返回一份固定最简 XML，只含 StartEvent + sequenceFlow + EndEvent，无论点击哪个流程定义（请假/报销/采购审批）都看到完全相同的图。不影响查看器功能验收，但不符合业务预期。
 - **影响**：`dev:mock` 模式下查看流程图体验重复，无法区分不同流程的拓扑
+- **状态更新（2026-08-16，D83 复核）**：✅ **已满足，可关闭**——`handlers.ts` L738-769 的 mock bpmn-xml 已按 `def.processKey` 参数化分发，含 3 个 userTask 节点，activityId 对齐实例，原「所有流程同一份最简模板」问题不再成立
 - **临时方案**：用户已确认暂不处理，当前 mock 满足功能验收需要
-- **建议**：后续为每个 mock 流程定义配不同的 BPMN XML（含 UserTask、Gateway 等），按 `def.processKey` 分发
+- **建议**：后续为每个 mock 流程定义配不同的 BPMN XML（含 UserTask、Gateway 等），按 `def.processKey` 分发（2026-08-16 复核已实现）
 
 ### I31：M01-F01-04 部门查询（清单标 ✅，实际仅全量树查询、无条件筛选）
 
@@ -442,13 +450,13 @@
   - **验证**：后端全量 **521 tests / 0 failures / 0 errors**（基线 435 → +86）；前端 63f/552t 四连全绿（typecheck/build 为一次性 1024M 内存例外，详见回执披露）；Flyway 冒烟 6 目录链（I47 排除 bpm）28 迁移按序应用 + validate 通过（迁移数口径 27→28 修正：form/h2 `V12__upgrade_form_config_to_per_table.sql` 此前漏计）
   - **遗留**：手写 SQL 通道不纳管（见 I46，与 I10 同源）；dataScope 登录时快照、非实时生效
 
-### I38：M03-F01-02 控件库（清单标 ✅，实际仅 8/16 类可用）
+### I38：M03-F01-02 控件库（清单标 ✅，实际仅 8/17 类可用）
 
 - **发现日期**：2026-08-12
 - **严重程度**：中（半数控件未实现）
 - **可信度**：CONFIRMED（2026-08-12 审计现场核实）
-- **描述**：`功能清单.md` 原标 ✅ 已完成，实际控件库仅 8/16 类可用，多选/附件/图片/说明文字等未实现。
-- **现状证据**：`FieldType.java` 仅 TEXT/RICH_TEXT/NUMBER/DATE/BOOL/DICT/REFERENCE/TABLE enabled=true，其余 8 类 enabled=false；前端 palette `field-types.ts` 仅 8 项（审计回执问题 1 差异表 M03-F01-02）。
+- **描述**：`功能清单.md` 原标 ✅ 已完成，实际控件库仅 8/17 类可用（enum 现 17 成员），多选/附件/图片/说明文字等未实现。
+- **现状证据**：`FieldType.java` 仅 TEXT/RICH_TEXT/NUMBER/DATE/BOOL/DICT/REFERENCE/TABLE enabled=true，其余 **9** 类 enabled=false；前端 palette `field-types.ts` 仅 8 项（审计回执问题 1 差异表 M03-F01-02；2026-08-16 D83 复核：数字 8/16→8/17，enum 17 成员 9 disabled）。
 - **影响**：此前会让后续会话误判"已完成"，风险高；表单可选用控件仅半数。
 - **建议**：状态列已按审计回执同步降级为 🟦；缺口修复方向详见审计回执，规划方向由规划层定。
 
@@ -551,5 +559,32 @@
 - **描述**：`flow-graph` adapter 契约无边点击事件、无命令式数据更新通道。M07 图设计器绕行方案（GraphDesigner.vue 经 graphAdapter.ts 对接）可用但受限——若未来节点自定义渲染/直接点边编辑需求增多，需回规划层评估扩展 adapter 导出面。
 - **影响**：bpm-plugin-architecture 轮明确不扩展 flow-graph adapter（D80 非目标，I48 绕行方案维持现状）；GraphDesigner 属性面板注册表化（Step2）已在不触碰 adapter 契约的前提下完成
 - **临时方案**：绕行方案已生效，扩展待评估
+
+### I49：V29 菜单 seed 未 seed sys_role_menu（job/storage 菜单仅超管可达）
+
+- **发现日期**：2026-08-16（D83 known-issues 复核登记）
+- **严重程度**：中
+- **可信度**：CONFIRMED（D83 复核现场核实）
+- **描述**：`V29__job_storage_menu_seed.sql:20`（h2/pg 双份）注释明言「不 seed sys_role_menu（超管旁路，V6 决策沿用）」——正式环境 job/storage 菜单仅超管（superadmin 角色旁路）可达，普通角色即使有 `job:list`/`storage:view` 等 permission 也无菜单授权入口。
+- **影响**：I43/I44 修复记录「生产菜单可达」口径仅对超管成立；普通角色在正式环境无法从菜单进入定时任务/文件存储功能。
+- **建议**：如需普通角色可达，需为 job/storage 菜单补 sys_role_menu 授权 seed 或提供角色菜单绑定入口（后者同时服务 M02-F02-01 角色菜单配置）。
+
+### I50：AuthController.login 状态校验位于密码匹配之后（时序/资源问题）
+
+- **发现日期**：2026-08-16（D83 known-issues 复核登记）
+- **严重程度**：低
+- **可信度**：CONFIRMED（D83 复核现场核实）
+- **描述**：`AuthController.login` 状态校验（L92-97 statusDenyMessage）位于密码匹配（L88 BCrypt）之后——停用/锁定账号仍消耗一次 BCrypt 校验与一次用户查询后才被拒绝。
+- **影响**：仅时序/资源问题，无安全漏洞（最终仍拒绝签发 token，与 I33 修复不冲突）。
+- **建议**：低优先级，可随 I51 修复轮顺带调整校验顺序（先状态后密码）。
+
+### I51：前端 status 语义与后端相反（UI 新建用户无法登录、停用不阻断登录）
+
+- **发现日期**：2026-08-16（D83 checklist 复核发现，high 价值）
+- **严重程度**：高
+- **可信度**：CONFIRMED（D83 复核现场核实）
+- **描述**：前端 `UserList.vue:337-341`/`DeptList.vue:314-317` 映射「正常=1/停用=0」（默认值 L104/L72=1），而后端 `SysUser.java:41` 为「0=正常 1=停用 2=锁定」、`AuthController.java:189-194` 仅 status=0 放行、`SysDept.java:33` 为「0=正常 1=停用」。后果：①UI 新建用户默认 status=1 → 后端判为停用，**UI 创建用户无法登录**；②UI 选「停用」(0) → 后端视为正常，**停用不阻断登录**——I33 的后端修复（D76 已 PASSED）在 UI 路径被反转抵消；③部门新建默认 1 亦被后端视为停用。
+- **对照**：SysRole/SysPost 后端注释恰为「1=启用 0=停用」，前端映射与角色/岗位一致、与用户/部门相反——**属前端值映射错误而非注释漂移**。
+- **建议**：按后端口径（0=正常 1=停用 2=锁定）修正 UserList/DeptList 的 status 映射与默认值（含 spec 断言同步）。
 
 > 新发现问题请按格式追加到此文件，并在 `current-status.md` 中同步更新阻塞状态。

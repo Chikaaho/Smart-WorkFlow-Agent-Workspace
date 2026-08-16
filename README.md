@@ -53,7 +53,7 @@ Smart-WorkFlow-Knowledge/
 │   └── architecture.md        — 架构高层视图
 ├── knowledge/                 — 完整知识库（执行角色探索用）
 │   ├── current-status.md      — 项目整体状态（唯一可信来源）
-│   ├── decisions.md           — 全部设计决策（D1-D46）
+│   ├── decisions.md           — 决策档案（D1-D46 历史详情；D47+ 活跃决策见 memory/decisions.md）
 │   ├── architecture.md        — 完整架构描述
 │   ├── shared-constraints.md  — 跨项目共享约束
 │   ├── known-issues.md        — 已知问题完整记录

@@ -149,6 +149,13 @@ pnpm typecheck && pnpm lint && pnpm test && pnpm build
 - 文档整篇替换，不做 diff
 - **进度跟踪**：项目整体进度和功能状态见 `knowledge/current-status.md`（唯一可信来源）和 `knowledge/session-handoff.md`（最新交接状态）；子项目 system.md **不记进度**
 
+### 6.3 信息分层铁律（D85，2026-08-16 用户定 · 与根 system.md §0.4 一致）
+
+- **`knowledge/` = 唯一完整权威信息源**：已知问题、功能追踪、完整状态、架构、决策全部以 knowledge 为准，任何状态变更必须首先落 knowledge
+- **`memory/` = 最少信息摘要**：只作规划角色的快速入口，不承载 knowledge 中没有的完整信息；**memory 与 knowledge 冲突时以 knowledge 为准，并立即修正 memory（摘要口径），不允许反向**
+- **触碰状态文件必须同步 knowledge 全量文件**：执行角色触碰任何状态文件（如 `Smart-WorkFlow/功能清单.md`、`knowledge/current-status.md`、`knowledge/features/<name>.md`、`knowledge/known-issues.md`）时，必须同步更新对应 knowledge 文件**全量（全节/全文）**——禁止"只更新文件首部/只更新 memory"造成 knowledge 中下部残留（D83 曾发现 current-status/session-handoff 顶部新、中下部旧的 17 处欠账）
+- **清单 🟦/⬜ 缺口同步进 `todo/requirement-pool.md`**：功能清单状态列与本轮交付对齐时，🟦/⬜ 行的缺口同时登记 `todo/requirement-pool.md`（P 编号登记，防"清单独有"）
+
 ---
 
 ## 7. 提交规范
