@@ -1,10 +1,10 @@
 # 功能索引
 
-> 最后更新：2026-08-14
+> 最后更新：2026-08-16
 
 | 功能 | 模块 | 状态 | 当前 Step | 备注 |
 |------|------|:---:|------|------|
-| bpm-plugin-architecture | M04-F08-01 | **PLANNING** | 方向已登记（D78，2026-08-14） | BPM 前端节点/表单组件与后端 adapter 可插拔：注册表驱动（仿 FIELD_TYPE_REGISTRY + NodeApproverResolver Map 分发）；非目标=设计器本体/新节点控件/热插拔；等方向文档下发执行层 |
+| bpm-plugin-architecture | M04-F08-01 | **COMPLETED** | 执行层闭环（D81，2026-08-16），待规划层最终验收 | BPM 可插拔机制纯重构轮：后端 B1-B3（NodeTypeRegistry 4 预留位扩充/GraphToBpmnTranslator switch→NodeTypeTranslator SPI 注册表翻译/可插拔性证明 TEST_NODE）+前端 F1-F3（DynamicField 8 控件 registry 化/GraphDesigner 属性面板注册表/EMAIL+PROBE 测试证明）；后端521→527/前端63f552t→66f569t；Flyway 零迁移；I47/I48 正式登记（悬空引用清理）。回执 `product/bpm-plugin-architecture/receipts/` |
 | data-scope-enforcement | M02-F04-01 | **COMPLETED** | 功能级 PASSED（D77/D79，2026-08-15） | 数据权限五档端到端落地：装配去硬编码（多角色最宽+CUSTOM并集）+DeptScopeProviderImpl 递归（@Lazy破环）+V30 sys_role_dept+7表纳管（仅sys_user可@DataScope直标，余6表自定义Mapper等效条件+DataScopeFilter传参）+前端角色页五档+部门树；后端435→521（+86）/前端63f/552t持平；手写SQL通道不纳管已记 I46 |
 | checklist-gap-hardening | M01/M10 | **COMPLETED** | 第一批 PASSED（D74-D76，2026-08-13） | I33 停用登录/refresh 双入口拦截 + I43/I44 V29 job/storage 生产菜单 seed；后端426→435（源码口径+10新测）/前端零改动；§3.3第10项知识库同步首跑；后续批次（DataScope 等）另行规划 |
 | agent-model-orchestration | M07-F01/F02/F04 | **COMPLETED** | Step1-12 全部 PASSED（D53-D71） | 后端405→426（+21）/前端63f552t不变（本轮未做前端）；Step12=执行历史持久化：V27/V28双表+解释器轨迹采集(branchId/nodeSeq)+错误分类8类+查询端点；todo 池剩余：单步调试、图节点级多Key轮询、F03知识库RAG |

@@ -11,27 +11,28 @@
 
 ## 1. 最新完成功能
 
-**process-monitoring — M04-F06-01 流程监控首批（Steps 0-3 COMPLETED ✅）**
+**bpm-plugin-architecture — M04-F08-01 BPM 可插拔机制（纯重构轮，D81 闭环 ✅）**
 
-Steps 0-3 全部 PASSED，阶段三收尾完成（2026-07-30）：
-- Step 0：探索（范围裁定为首批 2/4 能力：流程图高亮 + 流转记录，[[decisions]] D43）
-- Step 1：后端 Facade + Service 层（15 @Test，8 Facade + 7 Service）
-- Step 2：后端 BpmInstanceController REST 端点（6 @Test，14/14 验收通过）
-- Step 3：前端 ProcessInstanceList.vue 监控页面（4 @Test，16/16 验收通过，60f/521t）
-- 阶段三收尾：知识库同步完成（[[decisions]] D43-D46，features/process-monitoring.md §§5-7 填写）
+方向 D80（2026-08-15）下发，执行层自主拆 6 Step 闭环（2026-08-16）：
+- 后端 3 Step：B1 NodeTypeRegistry 扩充完整注册骨架（CONDITION/EXCLUSIVE_GATEWAY/PARALLEL_GATEWAY/JOIN_GATEWAY 预留位）；B2 GraphToBpmnTranslator switch→注册表翻译（NodeTypeTranslator SPI + Map 分发，落点裁定 engine 内部不污染 -api）；B3 可插拔性证明（TEST_NODE→ServiceTask 零改动即翻译）+ adapter 审视结论（外部数据源/通知子系统不注册表化，避免过度抽象）
+- 前端 3 Step：F1 DynamicField 8 类控件渲染链 registry 化（9 控件组件 + dynamic-field-registry.ts，主链/子表共用）；F2 GraphDesigner 属性面板注册表化（8 面板组件 + node-panel-registry.ts）；F3 可插拔性证明（EMAIL 控件/PROBE 面板测试注册零改动即渲染）
+- 测试门：后端 **527 tests** 全绿（mvn BUILD SUCCESS，521+6）；前端 **66f/569t** 四连全绿（63f/552t +3f/+17t；typecheck/build 一次性 1024M 内存例外——512M 下基线同样 OOM 属环境问题）
+- Flyway 零迁移；知识库全量同步完成（清单 M04-F08-01 ⬜→✅ 终态 ✅12/🟦37/⬜41、I47/I48 正式登记清悬空引用）
+- 归档：`product/bpm-plugin-architecture/passed/` + `receipts/bpm-plugin-architecture-completion.md`
 
 ---
 
 ## 2. 进行中功能
 
-**无。** 所有已启动功能均已完成闭环。
+**无（bpm-plugin-architecture 已闭环，待规划层最终验收）。**
 
-上一功能 process-monitoring 已于 2026-07-30 完成阶段三收尾，标记 COMPLETED ✅。下一步待用户指定新功能或启动后续批次（process-monitoring 耗时分析 + 流程干预）。
+上一功能 bpm-plugin-architecture 已于 2026-08-16 执行层闭环，回执待规划层最终验收。下一候选按 [[handoff]] 候选池：M01/M02 虚高补齐、M07 补全（前端管理页/Prompt 配置/运行日志/Token 统计）、M07-F03/F04 新功能、IoT/OpenAPI、小项池（I47 修复等）。
 
 ---
 
 ## 3. 最终状态
 
+**bpm-plugin-architecture**：**COMPLETED** ✅ — 6 Step 闭环（2026-08-16，后端 527 / 前端 66f/569t），待规划层最终验收
 **bpmn-adapter**：**COMPLETED** ✅ — Steps 0-3 PASSED，Step 4 SUPERSEDED（由 process-monitoring 承接）
 **process-monitoring**：**COMPLETED** ✅ — Steps 0-3 PASSED + 阶段三收尾完成（2026-07-30）。M04-F06-01 首批 2/4 能力（流程图高亮 + 流转记录）已交付
 
