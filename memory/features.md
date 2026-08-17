@@ -4,6 +4,7 @@
 
 | 功能 | 模块 | 状态 | 当前 Step | 备注 |
 |------|------|:---:|------|------|
+| bpm-h2-v8-compat | P10 / I47 / BPM | **COMPLETED** | 功能级 PASSED（D87/D88，2026-08-17） | H2 V8 生成列 `active_key` + 唯一索引等价实现 active 条件唯一；PG V8 零改动；永久 H2 全链 30/30 migrate+validate；后端 543/0/0。归档 `product/bpm-h2-v8-compat/passed/` |
 | sysrole-v5-column-alignment | P13 / I26 / System | **COMPLETED** | 功能级 PASSED（2026-08-17） | 以 V5 链尾 `built_in`/`remark` 为权威契约：SysRole.java 两处 @TableField 修正（字段名/JSON 键不变）+ schema-datascope-h2.sql/AuthFlowIntegrationTest 建表索引 INSERT 注释全对齐链尾；sw-biz-system 111/0/0 + 项目级 527/0/0 全绿；Flyway 零迁移、前端零改动、P10/P12 零触碰。已归档 `product/sysrole-v5-column-alignment/passed/` |
 | status-semantics-alignment | I51 / System | **COMPLETED** | 功能级 PASSED（2026-08-17） | 用户/部门前端 status 契约纠正并集中常量：用户 0/1/2=正常/停用/锁定，部门 0/1=正常/停用；角色/岗位核对正确且零改动；前端 66f/569t→66f/576t 四连全绿；后端零修改。回执 `product/status-semantics-alignment/receipts/` |
 | bpm-plugin-architecture | M04-F08-01 | **COMPLETED** | 功能级 PASSED（D81/D82，2026-08-16） | BPM 可插拔机制纯重构轮：后端 B1-B3（NodeTypeRegistry 4 预留位扩充/GraphToBpmnTranslator switch→NodeTypeTranslator SPI 注册表翻译/可插拔性证明 TEST_NODE）+前端 F1-F3（DynamicField 8 控件 registry 化/GraphDesigner 属性面板/EMAIL+PROBE 测试）；后端521→527/前端63f552t→66f569t；Flyway 零迁移；I47/I48 已登记。adapter SPI 偏差经 D82 裁定；历史前端内存例外已于 2026-08-17 在正式 2G 上限下四连补验关闭。回执 `product/bpm-plugin-architecture/receipts/` |

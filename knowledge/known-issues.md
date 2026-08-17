@@ -56,7 +56,7 @@
 | I44 | 2026-08-12 | M10-F06-01 文件存储虚高：清单标 ✅，实际功能完整但生产菜单不可达 | 中 | ✅ 已修复（2026-08-13 checklist-gap-hardening 第一批：Flyway V29 菜单 seed，文件管理生产菜单可达） |
 | I45 | 2026-08-12 | M07/M04/M05/M06/M09/M10 功能清单"虚低"15 条汇总（部分后端骨架未达清单完整度） | 低 | 待修复 |
 | I46 | 2026-08-15 | 手写 SQL 通道无数据权限：动态宽表 JdbcTemplate 裸 SQL 与 bpm 外部数据源 SqlExecutor 绕过数据权限拦截器链，本轮明确不纳管（与 I10 同源） | 高 | 已知限制（明确不纳管，沿用 I10 红线：代码审查 + 测试兜底） |
-| I47 | 2026-08-16 | bpm/h2 迁移链 V8 含 PG 独有 partial index 语法（`WHERE active=true`），H2 不支持——全链 H2 Flyway 迁移从未可跑，模块测试均绕过 Flyway 直建 DDL（V30 冒烟 6 目录链仍排除 bpm） | 中 | 未修复，待排期 |
+| I47 | 2026-08-16 | bpm/h2 迁移链 V8 含 PG 独有 partial index 语法（`WHERE active=true`），H2 不支持——全链 H2 Flyway 迁移从未可跑，模块测试均绕过 Flyway 直建 DDL（V30 冒烟 6 目录链仍排除 bpm） | 中 | ✅ 已修复（2026-08-17 bpm-h2-v8-compat：h2/V8 partial index → 生成列 active_key + 唯一索引等价实现，仅 h2/V8 改动；永久真全链测试 30 条迁移通过；项目级 543/0/0） |
 | I48 | 2026-08-16 | `flow-graph` adapter 契约无边点击事件、无命令式数据更新通道：M07 图设计器绕行方案可用但受限（若未来节点自定义渲染/直接点边编辑需求增多，需回规划层评估扩展 adapter 导出面） | 低 | 绕行方案已生效，扩展待评估 |
 | I49 | 2026-08-16 | V29 菜单 seed 未 seed sys_role_menu（超管旁路）：正式环境 job/storage 菜单仅超管可达，I43/I44「生产菜单可达」口径仅对超管成立 | 中 | 待修复（D83 登记） |
 | I50 | 2026-08-16 | AuthController.login 状态校验位于密码匹配之后（L88→L92）：停用账号仍消耗一次 BCrypt+用户查询，时序/资源问题，无安全漏洞 | 低 | 待修复（D83 登记） |
@@ -551,6 +551,7 @@
 - **描述**：bpm 模块 H2 迁移链 V8 含 PG 独有 partial index 语法（`WHERE active=true`），H2 不支持——bpm 全链 H2 Flyway 迁移从未可跑，模块测试均绕过 Flyway 直建 DDL（V30 冒烟 6 目录链仍排除 bpm）。
 - **影响**：bpm 表结构与索引的真实迁移链无法在 H2 冒烟验证，schema 变更回归风险靠模块测试直建 DDL 兜底（不完整）
 - **修复建议**：将 V8 中 partial index 拆为 H2/PG 双方言兼容写法（或 h2 目录用等价普通索引），修复后补真全链迁移测试（已排入候选池；本登记仅为清理 knowledge 注册表悬空引用，非本轮修复）
+- **状态更新（2026-08-17，P10 修复轮，✅ 已修复）**：规划层裁定以「PG 保留 partial index 语义 + H2 等价可执行约束」为目标（方向 `product/bpm-h2-v8-compat/ready/`）。执行层裁定并落地：H2 2.3.232 不支持 partial index 任何模式，采用**生成列等价实现**——`sw_bpm_form_binding` 新增生成列 `active_key varchar(265) generated always as (case when active then (cast(tenant_id as varchar(64)) || ':' || form_key) end)`（active=true→非空唯一、active=false→NULL 可共存），唯一索引改建于 `active_key`（索引名 `uk_sw_bpm_binding_active` 不变）；仅修改 h2/V8 一个生产迁移文件（该文件从未在任何 H2 库执行成功，无校验和/升级路径风险），pg/V8、V13、V14 零改动。验证：永久真全链测试 `FlywayFullChainH2Test`（sw-bootstrap，junit-jupiter test 依赖）7 目录 **30 条迁移** migrate + validate 通过（28→30，BPM V8/V14 纳入，不再有排除口径）；绑定语义正反例双证（sw-bpm-process `BpmFormBindingServiceImplTest` 8 用例 + 全链 JDBC 断言，唯一冲突 SQLState=23505，含非 active 共存/启停切换/租户隔离）；项目级全量 **543 tests / 0 failures / 0 errors**（527 +16：bpm 71→79 +8、bootstrap 0→8 +8，MAVEN_OPTS=-Xmx2g BUILD SUCCESS 31/31）。遗留：PG 侧 partial index 运行期语义验证依赖 PG 本地库（规划层授权后可补）。回执：`product/bpm-h2-v8-compat/receipts/`。
 
 ### I48：flow-graph adapter 契约限制（无边点击事件/无命令式数据更新通道）
 

@@ -4,6 +4,13 @@
 
 ## 最新完成
 
+**bpm-h2-v8-compat（P10 / I47 BPM H2 V8 迁移链兼容）：PASSED（D87/D88，2026-08-17）✅**
+- H2 V8 将不受支持的 partial unique index 替换为生成列 `active_key` + 唯一索引；active=true 时按 tenant/form 唯一，active=false 时 NULL 可多条共存。PostgreSQL V8 零改动，业务语义保持一致。
+- 永久 `FlywayFullChainH2Test` 覆盖 7 个目录，BPM V8→V14 连续执行，**30/30 migrate + validate**；旧 28 条排除 BPM 口径失效。
+- 测试门（`MAVEN_OPTS="-Xmx2g"`，严格串行）：BPM process 58/0/0、bootstrap 8/0/0、项目级 **543/0/0**（527+16）。
+- 知识库同步合格：I47/P10 核销，current-status/features/session-handoff、需求池及迁移/测试基线已同步；功能清单状态列无变化。
+- 规划层最终验收：**PASSED**。六项验收方向全部满足；PG 运行期联调为零改动侧的低风险遗留，不阻塞本轮。归档 `product/bpm-h2-v8-compat/passed/`，回执保留于 `receipts/`。
+
 **sysrole-v5-column-alignment（P13 / I26 SysRole 与 V5 列契约对齐）：PASSED（2026-08-17）✅**
 - 范围：后端单功能。`SysRole.java:47,51` @TableField 改 `built_in`/`remark`（字段名/JSON 键不变）；`schema-datascope-h2.sql` 与 `AuthFlowIntegrationTest.java` 建表/索引/INSERT/注释全对齐 V5 链尾（含 V13 deleted 索引形态）；全仓 grep `is_builtin` 主代码/测试零残留（仅历史迁移脚本 V1/V2/V5）。
 - 测试门（MAVEN_OPTS="-Xmx2g"）：sw-biz-system-biz 模块 **111/0/0**（RoleDataScopeTest 7、RoleControllerTest 6、UserDetailsProviderDataScopeTest 12、AuthFlowIntegrationTest 8、AuthMeControllerTest 5 全 PASSED）→ 项目级全量 **527 tests / 0 failures / 0 errors 与基线持平**（BUILD SUCCESS 31/31 模块）；MP 生成 SQL 原文 `built_in, remark AS description` 与测试 DDL 双向闭合。
@@ -62,22 +69,22 @@
 
 ## 进行中
 
-**（无进行中功能）**：sysrole-v5-column-alignment 已 PASSED 并归档。
+**（无进行中功能）**：bpm-h2-v8-compat 已 PASSED 并归档。
 
 **流程基线（D74，已生效并首跑验证）**：system.md §3.3 第10项——每轮需求收尾必须由执行层做知识库全量同步（功能清单.md+current-status+features+known-issues，回执报告清单变更明细+触碰文件清单），规划层验收逐项核对。
 
 ## 当前基线
 
-- 后端：项目级 **527 tests**（源码口径，CONFIRMED 2026-08-16 mvn 全量 BUILD SUCCESS / 0 failures，521+6：B1 +3/B2 +1/B3 +2 自洽，12:07min）
+- 后端：项目级 **543 tests**（运行口径，CONFIRMED 2026-08-17，mvn 全量 BUILD SUCCESS / 0 failures）
 - 前端：**66 spec files / 576 tests**，四连全绿（CONFIRMED 2026-08-17；正式 2G 上限下 typecheck/lint/test/build 全部退出 0）
 - 功能清单：**✅12 / 🟦37 / ⬜41，共 90 行**（2026-08-16 同步）
-- Flyway：root 路径 V30 已占用；迁移链冒烟口径 **28**（含 form V12）
-- 已完成功能：18 个（features.md 口径，sysrole-v5-column-alignment 已经规划层最终验收）
+- Flyway：root 路径 V30 已占用；H2 真实全链口径 **30**（7 目录，含 BPM V8/V14）
+- 已完成功能：19 个（features.md 口径，bpm-h2-v8-compat 已最终验收）
 - 执行约束：**本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行**（先后端后前端），禁并行编译
 
 ## 下一动作
 
-**选定下一需求方向**：当前无进行中功能。P13 已从需求池核销；后续从剩余风险/价值候选中单选一轮功能。
+**待选下一需求方向**：当前无进行中功能。P10/P13 已从需求池核销；后续从剩余风险/价值候选中单选一轮功能。
 
 **探索回执已回收并核销（2026-08-16，D83 裁定 + D84 落库核销）**：
 - 清单 90/90 零不一致（I1 无第三次复发）；基线全部核实（527/66f569t——**569 为运行口径，静态 561**/V30+28/16 功能）；memory 自洽。

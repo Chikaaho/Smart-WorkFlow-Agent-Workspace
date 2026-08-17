@@ -4,7 +4,14 @@
 
 ## 进行中功能
 
-**（无进行中功能）**：sysrole-v5-column-alignment（P13 / I26）已于 2026-08-17 最终验收 `PASSED` 并归档。
+**（无进行中功能）**：bpm-h2-v8-compat（P10 / I47）已于 2026-08-17 最终验收 `PASSED` 并归档。
+
+- H2 V8 partial index 改为生成列 `active_key` + 唯一索引，PostgreSQL V8 零改动，双方言保持 active 条件唯一语义一致。
+- 永久 `FlywayFullChainH2Test` 将 BPM V8/V14 纳入 7 目录真实全链，迁移口径 28→30，migrate + validate 全绿。
+- 测试门（2G、串行）：BPM process 58/0/0、bootstrap 8/0/0、项目级 **543/0/0**。
+- 归档：`product/bpm-h2-v8-compat/passed/direction-bpm-h2-v8-compat.md`。
+
+最新已完成：sysrole-v5-column-alignment（P13 / I26）已于 2026-08-17 最终验收 `PASSED` 并归档。
 
 - 已闭环：SysRole.java:47,51 @TableField → `built_in`/`remark`（字段名/JSON 键不变）；schema-datascope-h2.sql 与 AuthFlowIntegrationTest.java 建表/索引/INSERT/注释全对齐 V5 链尾；grep `is_builtin` 主代码/测试零残留。
 - 测试门（MAVEN_OPTS=-Xmx2g）：sw-biz-system-biz 模块 **111/0/0**（5 关键类全 PASSED）→ 项目级全量 **527/0/0 与基线持平**；MP 生成 SQL 原文 `built_in`/`remark AS description` 闭合。
@@ -51,11 +58,11 @@ process-monitoring (M04-F06-01)：COMPLETED（详情见 `knowledge/`，2026-07-3
 
 最新完成：**sysrole-v5-column-alignment（P13 / I26）PASSED（2026-08-17）**——SysRole 与 V5 链尾 `built_in`/`remark` 契约对齐；模块 111/0/0、项目级 527/0/0；I26 已核销，功能清单状态列无变化。回执：`product/sysrole-v5-column-alignment/receipts/`。
 
-- 后端：项目级 **527 tests**（源码口径，CONFIRMED 2026-08-16 D82 mvn 全量 BUILD SUCCESS 0 failures，521+6）
+- 后端：项目级 **543 tests**（运行口径，CONFIRMED 2026-08-17，BUILD SUCCESS 0 failures；527+16）
 - 前端：**66 spec files / 576 tests（运行口径；569→576，I51 新增 7 测试）**，四连全绿（CONFIRMED 2026-08-17；2G 上限下 typecheck/lint/test/build 全部退出 0）
 - 功能清单：**✅12/🟦37/⬜41 共 90 行**（2026-08-16 D82 同步）
-- Flyway：root 路径 V30 已占；迁移链冒烟口径 28（含 form V12）
-- 已完成功能：17 个
+- Flyway：root 路径 V30 已占；H2 真实全链口径 **30**（7 目录，含 BPM V8/V14）
+- 已完成功能：19 个
 - 需求池：`todo/requirement-pool.md`（2026-08-16 新建，已开发未满足+候选，规划层维护）
 
 ## 模块完成度（简表）
