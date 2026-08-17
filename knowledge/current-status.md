@@ -18,8 +18,8 @@
 | 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，**V1–V30 连续无缺号**（CONFIRMED 2026-08-16 D83 静态复核：60 个 V 文件 h2/pg 双份，distinct V 号 1-30；V12=form 升级、V14=bpm process、V16=storage、V17=job-scheduler、V18=refresh_token、V26=agent 图菜单、V29=job/storage 菜单、V30=sys_role_dept。脚本分散各模块 `db/migration/{module}/{postgresql,h2}`，双方言齐全） |
 | 核心路径 | Walking Skeleton：登录 → 表单 → 审批 → 通知 ✅ 四环全部闭合 |
 | 功能清单 | 10 模块，55 功能，**90** 明细（CONFIRMED 2026-07-23，此前记为 88，M10 差 1 条已更正——见 [[shared-constraints]] §5；2026-08-14 新增 M04-F08-01 登记，总表 55 功能/90 明细）；`Smart-WorkFlow/功能清单.md` 为权威清单，状态标记已与代码实际进度对齐：✅17/🟦12/⬜60（2026-07-24 [[feature-checklist-sync]]，I1 修复）→ ✅7/🟦40/⬜42（2026-08-12 Step5 二次核实与同步）→ ✅10/🟦37/⬜42（2026-08-13 checklist-gap-hardening 第一批：I33/I43/I44 修复后回升 3 行）→ ✅10/🟦37/⬜43（M04-F08-01 新增 ⬜ 登记后，90 行口径）→ **✅11/🟦37/⬜42**（2026-08-15 data-scope-enforcement：M02-F04-01 ⬜→✅。注：batch1 回执"总 89/⬜42"为 89 行口径，全表现 90 行）→ **✅12/🟦37/⬜41**（2026-08-16 bpm-plugin-architecture：M04-F08-01 ⬜→✅，90 行口径） |
-| 测试基线 | 后端：项目级 **527 tests / 0 failures / 0 errors**（CONFIRMED 2026-08-16 bpm-plugin-architecture，521 + 6）。前端：**66 spec files / 569 tests / 0 failures**（CONFIRMED 2026-08-17）：提交 `9c26c8d` 将前端 Node 内存硬上限正式调整为 2G 后，以 `NODE_OPTIONS="--max-old-space-size=2048"` 完整执行 typecheck / lint / test / build，四连退出码均为 0；测试数与 2026-08-16 基线持平。历史 512M OOM 与一次性 1024M 例外已由 2G 正式约束取代，不再是当前欠账。**注：569 为运行口径，静态计数 561（+8 为 tokens.spec.ts 循环展开）**。 |
-| 前次验证 | 2026-08-17 前端四连补验：提交 `9c26c8d` 后，在 2G 正式内存上限下 typecheck ✅、lint ✅、test **66 files / 569 tests** ✅、build ✅；全部退出码 0。构建仅出现已登记的 `@vueuse/core INVALID_ANNOTATION` 第三方警告，不影响退出码或产物。后端本轮未读取、未构建、未测试。此前 2026-08-16 bpm-plugin-architecture 闭环：后端 527/0/0、前端 66f/569t、Flyway 零迁移、清单 ✅12/🟦37/⬜41。 |
+| 测试基线 | 后端：项目级 **527 tests / 0 failures / 0 errors**（CONFIRMED 2026-08-16 bpm-plugin-architecture，521 + 6）。前端：**66 spec files / 576 tests / 0 failures**（CONFIRMED 2026-08-17 status-semantics-alignment，569 + 7：UserList.spec +5 / DeptList.spec +2，均为 status 提交与回填语义用例）。以 `NODE_OPTIONS="--max-old-space-size=2048"` 完整执行 typecheck / lint / test / build，四连退出码均为 0。历史 512M OOM 与一次性 1024M 例外已由 2G 正式约束取代，不再是当前欠账。**注：576 为运行口径，静态计数 568（+8 为 tokens.spec.ts 循环展开）**。 |
+| 前次验证 | 2026-08-17 status-semantics-alignment 闭环：I51 前端 status 语义对齐修复轮，前端四连全绿——typecheck ✅、lint ✅、test **66 files / 576 tests** ✅（569 → +7）、build ✅；全部退出码 0。构建仅出现已登记的 `@vueuse/core INVALID_ANNOTATION` 第三方警告，不影响退出码或产物。后端零修改、未构建、未测试。此前 2026-08-16 bpm-plugin-architecture 闭环：后端 527/0/0、前端 66f/569t、Flyway 零迁移、清单 ✅12/🟦37/⬜41。 |
 
 ---
 
@@ -137,6 +137,7 @@
 | data-scope-enforcement | M02-F04-01 数据权限完整落地（装配去硬编码 + 五档生效 + 7 表查询纳管 + 前端角色页五档配置） | **COMPLETED** ✅ | 2026-08-15 | 交付并测试通过：登录装配多角色取最宽档（并集语义 ALL>DEPT_AND_CHILD>CUSTOM>DEPT>SELF，CUSTOM 部门并集）+ `DeptScopeProviderImpl`（递归 + @Lazy 破环）+ Role CRUD dataScope/deptIds + `sys_role_dept` 表（Flyway V30 h2/pg 双份逐字一致）+ 7 表查询纳管（sys_user 五档 @DataScope 直标；6 表等效条件：bpm_instance/agent_graph_execution/agent_model_config/job_info/job_log/storage_file）+ 前端 RoleList 五档下拉 + 部门树。后端 **521 tests/0 failures/0 errors**（435 基线 +86）+ 前端 63f/552t 四连全绿（typecheck/build 为一次性 1024M 内存例外）；V30 冒烟 6 目录链 28 迁移按序应用 + validate 通过（迁移数口径 27→28 修正：form/h2 V12 此前漏计）。非目标：手写 SQL 通道不纳管（known-issues I46，与 I10 同源）；dataScope 登录时快照、非实时生效。清单 M02-F04-01 ⬜→✅，全表 ✅11/🟦37/⬜42（90 行明细） |
 | agent-model-orchestration | M07-F01/F02/F04 大模型管理 + 图设计器 + 多轮会话（F01 Steps 1-5 + F02 Steps 6-12 + F04 会话持久化） | **COMPLETED** ✅ | 2026-08-12 | Steps 1-12 全部 PASSED（D53-D71）：模型管理/AES 加密/连通性测试 → LangGraph4j 编排引擎 → 工具沙箱 → 多轮会话（V21-V23）→ 多Key轮询/额度限流 → 图定义 CRUD+发布骨架 → AgentGraphInterpreter 解释执行 → 前端图设计器（V26 菜单）→ 多变量执行上下文 → 并行/循环节点（LOOP/FORK/JOIN）→ 执行历史持久化（V27/V28）。后端 262→426 tests；前端 60f/521t→63f/552t。详情 `product/agent-model-orchestration/passed/` |
 | bpm-plugin-architecture | M04-F08-01 BPM 可插拔机制（节点/控件/翻译器注册表化） | **COMPLETED** ✅ | 2026-08-16 | 6 Step 闭环（D81 执行层闭环 + D82 规划层验收 PASSED）：后端 NodeTypeRegistry +4 预留位 + GraphToBpmnTranslator switch→NodeTypeTranslator SPI 注册表翻译 + TEST_NODE 可插拔性证明；前端 DynamicField 9 控件 + 8 节点面板双注册表 + EMAIL/PROBE 证明。后端 521→527、前端 63f/552t→66f/569t；Flyway 零迁移。详情 `product/bpm-plugin-architecture/passed/` |
+| status-semantics-alignment | I51 前端 status 语义对齐（用户/部门页与后端契约一致） | **COMPLETED** ✅ | 2026-08-17 | 修复轮闭环（方向 `product/status-semantics-alignment/ready/`）：前端单项目。后端契约核实（用户 0=正常/1=停用/2=锁定、部门 0=正常/1=停用；角色/岗位 1=启用/0=停用 与前端现状一致故未动）。UserList/DeptList 默认值/选择项/筛选/展示按后端契约修正（新建默认 0=正常），新增集中常量 `modules/system/constants.ts`（仅服务用户/部门页），mock 种子与 create 默认值、user/dept API spec 夹具同步，新增 7 测试（提交/回填语义）。前端 66f/569t→**66f/576t** 四连全绿；后端零修改；清单状态列无变化。详情 `product/status-semantics-alignment/` |
 
 ---
 
@@ -195,7 +196,8 @@
 13. ✅ data-scope-enforcement（M02-F04-01 数据权限完整落地）（2026-08-15）
 14. ✅ notify-frontend（通知模块前端落地）（2026-07-15，Walking Skeleton 最终环）
 15. ✅ agent-model-orchestration（M07-F01/F02/F04：模型管理/编排引擎/工具沙箱/会话/图设计器/并行循环/执行历史）（2026-08-12，D53-D71）
-16. ✅ bpm-plugin-architecture（M04-F08-01 BPM 可插拔机制）← **最新完成**（2026-08-16，D82 PASSED）
+16. ✅ bpm-plugin-architecture（M04-F08-01 BPM 可插拔机制）（2026-08-16，D82 PASSED）
+17. ✅ status-semantics-alignment（I51 前端 status 语义对齐：用户/部门页与后端契约一致，含 7 新测试）← **最新完成**（2026-08-17）
 
 后续候选（2026-08-16 D83 更新，按风险/价值排序参考）：
 
@@ -204,7 +206,7 @@
 3. **M07-F03/F04 新功能** — 助手配置/知识库 RAG/对话窗口 SSE（均零代码）
 4. **IoT / OpenAPI 模块落地** — 仅骨架（D83 复核确认 M08/M09 全 ⬜ 无虚低）
 5. **M04-F06-01 后续批次（耗时分析 + 流程干预）** — process-monitoring 首批已完成，剩余 2/4 子能力延后
-6. **小项池** — I47 修复（bpm V8 partial index→真全链迁移测试）、**I51 前端 status 映射反转（高）**、I26 SysRole 列名（影响面已上调至高）、I49 菜单授权、数据权限遗留（部门档 deleted 过滤/job 非分页入口/PG 联调）
+6. **小项池** — I47 修复（bpm V8 partial index→真全链迁移测试）、I26 SysRole 列名（影响面已上调至高）、I49 菜单授权、数据权限遗留（部门档 deleted 过滤/job 非分页入口/PG 联调）（I51 已于 2026-08-17 status-semantics-alignment 修复关闭）
 
 ---
 

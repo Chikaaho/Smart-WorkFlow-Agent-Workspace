@@ -60,7 +60,7 @@
 | I48 | 2026-08-16 | `flow-graph` adapter 契约无边点击事件、无命令式数据更新通道：M07 图设计器绕行方案可用但受限（若未来节点自定义渲染/直接点边编辑需求增多，需回规划层评估扩展 adapter 导出面） | 低 | 绕行方案已生效，扩展待评估 |
 | I49 | 2026-08-16 | V29 菜单 seed 未 seed sys_role_menu（超管旁路）：正式环境 job/storage 菜单仅超管可达，I43/I44「生产菜单可达」口径仅对超管成立 | 中 | 待修复（D83 登记） |
 | I50 | 2026-08-16 | AuthController.login 状态校验位于密码匹配之后（L88→L92）：停用账号仍消耗一次 BCrypt+用户查询，时序/资源问题，无安全漏洞 | 低 | 待修复（D83 登记） |
-| I51 | 2026-08-16 | 前端 status 语义与后端相反（UserList/DeptList 正常=1/停用=0 vs 后端 0=正常 1=停用 2=锁定）：UI 新建用户无法登录、UI 停用不阻断登录，I33 修复在 UI 路径被抵消 | 高 | 待修复（D83 登记，属前端值映射错误） |
+| I51 | 2026-08-16 | 前端 status 语义与后端相反（UserList/DeptList 正常=1/停用=0 vs 后端 0=正常 1=停用 2=锁定）：UI 新建用户无法登录、UI 停用不阻断登录，I33 修复在 UI 路径被抵消 | 高 | ✅ 已修复（2026-08-17 status-semantics-alignment：UserList/DeptList 按后端口径修正默认值/选择项/筛选/展示，新增 7 测试，前端 66f/576t 四连全绿，后端零修改） |
 
 
 
@@ -586,5 +586,6 @@
 - **描述**：前端 `UserList.vue:337-341`/`DeptList.vue:314-317` 映射「正常=1/停用=0」（默认值 L104/L72=1），而后端 `SysUser.java:41` 为「0=正常 1=停用 2=锁定」、`AuthController.java:189-194` 仅 status=0 放行、`SysDept.java:33` 为「0=正常 1=停用」。后果：①UI 新建用户默认 status=1 → 后端判为停用，**UI 创建用户无法登录**；②UI 选「停用」(0) → 后端视为正常，**停用不阻断登录**——I33 的后端修复（D76 已 PASSED）在 UI 路径被反转抵消；③部门新建默认 1 亦被后端视为停用。
 - **对照**：SysRole/SysPost 后端注释恰为「1=启用 0=停用」，前端映射与角色/岗位一致、与用户/部门相反——**属前端值映射错误而非注释漂移**。
 - **建议**：按后端口径（0=正常 1=停用 2=锁定）修正 UserList/DeptList 的 status 映射与默认值（含 spec 断言同步）。
+- **✅ 修复记录（2026-08-17 status-semantics-alignment）**：前端单项目修复轮（方向 `product/status-semantics-alignment/ready/`）。①后端契约核实（只读）：SysUser=0/1/2（实体注释 + AuthController 登录/refresh 校验 + AuthFlowIntegrationTest + sys_user_status 字典四重证据）、SysDept=0/1（实体注释 + sys_common_status 字典）、SysRole/SysPost=1=启用/0=停用（前端现状与其一致，方向 §4 指示未修改）；②前端修正：UserList/DeptList 新建默认与 resetForm 改 `status=0`（正常）、选择项/筛选/展示按契约（用户三态含锁定=2，tag 三分支 success/info/warning；部门两态）、新增 `src/modules/system/constants.ts` 集中常量（SYS_USER_STATUS/SYS_DEPT_STATUS + 选项与 tag 纯函数，仅服务用户/部门页，未扩散为全局字典重构）；③Mock 与测试同步：seeds.ts 用户/部门种子、handlers.ts create 默认 `?? 1→?? 0`（role/post 部分未动）、user/dept API spec 夹具按新语义、UserList.spec +5 / DeptList.spec +2 覆盖正常/停用（含锁定）提交与回填；④验证：前端四连全绿 **66f/576t**（569+7），typecheck/lint/build 退出码 0；后端零修改。⑤角色/岗位/字典页未触碰（字典页不在方向 §4 范围，回执报告）。
 
 > 新发现问题请按格式追加到此文件，并在 `current-status.md` 中同步更新阻塞状态。

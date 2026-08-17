@@ -1,8 +1,15 @@
 # 会话交接
 
-> 最后更新：2026-08-16
+> 最后更新：2026-08-17
 
 ## 最新完成
+
+**status-semantics-alignment（I51 系统管理状态语义对齐）：PASSED（2026-08-17）✅**
+- 用户/部门前端 status 语义已按后端契约纠正并收敛至模块内常量：用户 0=正常/1=停用/2=锁定，部门 0=正常/1=停用；新建默认值、提交、回填、筛选、展示与 Mock/夹具同步。
+- 角色/岗位契约核对为 1=启用/0=停用，与前端现状一致，零改动；后端业务代码、迁移与契约零修改。
+- 前端新增 7 测试，基线 **66f/569t→66f/576t**；2G 上限下 typecheck/lint/test/build 四连退出码 0。
+- I51 已在完整知识库关闭，功能追踪与交接同步完成；功能清单无对应独立明细行，状态列不变。
+- 规划层最终验收：**PASSED**。归档：`product/status-semantics-alignment/passed/direction-status-semantics-alignment.md`；回执：`receipts/status-semantics-alignment-completion.md`。
 
 **bpm-plugin-architecture（M04-F08-01 BPM 可插拔机制）：PASSED（D81/D82，2026-08-16）✅**
 - 方向 D80（2026-08-15）下发，执行层自主拆 6 Step（前后端双会话，一个 Step 不跨前后端）：
@@ -48,22 +55,22 @@
 
 ## 进行中
 
-**（无进行中功能）**：bpm-plugin-architecture 已 PASSED 归档（D81/D82，2026-08-16）。待规划层选定下一需求方向并下发（候选见「下一动作」）。
+**（无进行中功能）**：status-semantics-alignment 已 PASSED 归档（2026-08-17）。待规划层选定下一需求方向并下发。
 
 **流程基线（D74，已生效并首跑验证）**：system.md §3.3 第10项——每轮需求收尾必须由执行层做知识库全量同步（功能清单.md+current-status+features+known-issues，回执报告清单变更明细+触碰文件清单），规划层验收逐项核对。
 
 ## 当前基线
 
 - 后端：项目级 **527 tests**（源码口径，CONFIRMED 2026-08-16 mvn 全量 BUILD SUCCESS / 0 failures，521+6：B1 +3/B2 +1/B3 +2 自洽，12:07min）
-- 前端：**66 spec files / 569 tests**，四连全绿（CONFIRMED 2026-08-17；正式 2G 上限下 typecheck/lint/test/build 全部退出 0，历史内存例外关闭）
+- 前端：**66 spec files / 576 tests**，四连全绿（CONFIRMED 2026-08-17；正式 2G 上限下 typecheck/lint/test/build 全部退出 0）
 - 功能清单：**✅12 / 🟦37 / ⬜41，共 90 行**（2026-08-16 同步）
 - Flyway：root 路径 V30 已占用；迁移链冒烟口径 **28**（含 form V12）
-- 已完成功能：16 个（features.md 口径，含 bpm-plugin-architecture）
+- 已完成功能：17 个（features.md 口径，含 status-semantics-alignment）
 - 执行约束：**本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行**（先后端后前端），禁并行编译
 
 ## 下一动作
 
-**选定下一需求方向并下发**：bpm-plugin-architecture 已 PASSED 归档（D82，2026-08-16）。规划会话按 system.md §10 恢复后，从候选池选定方向、写方向文档至 `product/<feature>/ready/` 下发执行层。
+**选定下一需求方向并下发**：status-semantics-alignment 已 PASSED 归档（2026-08-17）。规划会话按 system.md §10 恢复后，从候选池选定方向、写方向文档至 `product/<feature>/ready/` 下发执行层。
 
 **探索回执已回收并核销（2026-08-16，D83 裁定 + D84 落库核销）**：
 - 清单 90/90 零不一致（I1 无第三次复发）；基线全部核实（527/66f569t——**569 为运行口径，静态 561**/V30+28/16 功能）；memory 自洽。

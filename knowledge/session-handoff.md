@@ -11,6 +11,16 @@
 
 ## 1. 最新完成功能
 
+**status-semantics-alignment — I51 前端状态语义对齐（前端单项目修复轮，2026-08-17 ✅）**
+
+方向 `product/status-semantics-alignment/ready/`（2026-08-17）下发，执行层自主拆 3 段闭环：并行探索（2 Sub Agent）→ 实现（1 Sub Agent）→ 四连质量门：
+- 契约核实（后端只读，零修改）：用户 sys_user=0 正常/1 停用/2 锁定（四重证据）；部门 sys_dept=0 正常/1 停用；角色/岗位=1 启用/0 停用（与前端现状一致，方向 §4 指示未动）
+- 前端修正：UserList/DeptList 新建默认与 resetForm `status 1→0`、选择项/筛选/展示按契约（用户三态含锁定，tag 三分支 success/info/warning；部门两态）；新建 `modules/system/constants.ts` 集中常量收敛散落数字；seeds/handlers 的 user/dept 部分同步（role/post 未动）；user/dept API spec 夹具按新语义
+- 新增测试：UserList.spec +5、DeptList.spec +2（提交/回填语义覆盖正常/停用/锁定）
+- 测试门：前端四连全绿 **66f/576t**（569+7，NODE_OPTIONS=2048 全部退出 0）；后端零修改
+- 知识库全量同步：known-issues I51 关闭（✅ 已修复 + 修复记录）、current-status（§1 基线 576/§2 前次验证/§4 功能追踪行/§6 已完成清单 17 条/§8 小项池移除）、features/status-semantics-alignment.md 新建、本文件更新
+- 回执：`product/status-semantics-alignment/receipts/`（待规划层最终验收）
+
 **bpm-plugin-architecture — M04-F08-01 BPM 可插拔机制（纯重构轮，D81/D82 PASSED ✅）**
 
 方向 D80（2026-08-15）下发，执行层自主拆 6 Step 闭环（2026-08-16）：
@@ -34,7 +44,7 @@
 
 **无（bpm-plugin-architecture 已 D82 最终验收 PASSED，待规划层选定下一需求方向）。**
 
-下一候选按 [[handoff]] 候选池（2026-08-16 D83 更新）：M01/M02 其余虚高补齐（I31-I36/I40）、M07 补全（F01 前端管理页/F02-02 Prompt 配置/F02-04 运行日志页+单步调试/F04-02 Token 统计）、M07-F03/F04 新功能（助手配置/知识库 RAG/对话窗口 SSE，均零代码）、IoT/OpenAPI 模块落地、小项池（I47 bpm V8 partial index / I51 前端 status 反转 / I26 SysRole 列名 / I49 菜单授权）。
+下一候选按 [[handoff]] 候选池（2026-08-16 D83 更新，2026-08-17 I51 修复后更新）：M01/M02 其余虚高补齐（I31-I36/I40）、M07 补全（F01 前端管理页/F02-02 Prompt 配置/F02-04 运行日志页+单步调试/F04-02 Token 统计）、M07-F03/F04 新功能（助手配置/知识库 RAG/对话窗口 SSE，均零代码）、IoT/OpenAPI 模块落地、小项池（I47 bpm V8 partial index / I26 SysRole 列名 / I49 菜单授权——I51 已修复关闭）。
 
 ---
 
@@ -144,7 +154,7 @@
 3. **M07-F03/F04 新功能** — 助手配置/F03-03 知识库 RAG/F04-01 对话窗口 SSE（均零代码）
 4. **IoT / OpenAPI 模块落地** — 仅骨架（M08 13 行 + M09 8 行全 ⬜ 无虚低，D83 复核确认）
 5. **M04-F06-01 后续批次** — 耗时分析 + 流程干预（剩余 2/4 子能力）
-6. **小项池** — I47 修复（bpm V8 partial index→真全链迁移测试）、I51 前端 status 反转（高）、I26 SysRole 列名（高）、I49 菜单授权（中）、数据权限遗留（部门档 deleted 过滤/job 非分页入口/PG 联调验证）
+6. **小项池** — I47 修复（bpm V8 partial index→真全链迁移测试）、I26 SysRole 列名（高）、I49 菜单授权（中）、数据权限遗留（部门档 deleted 过滤/job 非分页入口/PG 联调验证）（I51 已于 2026-08-17 status-semantics-alignment 修复关闭）
 
 ### 已知未做事项
 - 表单删除（M03-F02-01，I39）、消息删除（M05-F01-02，I41）等 I31-I45 待修复项逐条见 [[known-issues]]
@@ -157,7 +167,7 @@
 
 | # | 问题 | 严重程度 | 说明 |
 |---|------|:--------:|------|
-| I51 | 前端 status 语义与后端相反（UI 新建用户无法登录/停用不阻断登录） | 高 | D83 新登记；I33 修复在 UI 路径被抵消；按后端口径修正前端映射 |
+| I51 | 前端 status 语义与后端相反（UI 新建用户无法登录/停用不阻断登录） | 高 | ✅ **已修复**（2026-08-17 status-semantics-alignment：用户/部门页按后端契约修正，66f/576t 四连全绿；角色/岗位未动） |
 | I26 | SysRole 列名与 V5 迁移不一致（全链 Flyway 环境必崩，测试 DDL 掩盖） | 高 | D83 影响面上调 |
 | I49 | V29 菜单未 seed sys_role_menu（job/storage 仅超管可达） | 中 | D83 新登记 |
 | I47 | bpm/h2 V8 partial index 不兼容 H2（全链迁移从未可跑） | 中 | 已正式登记，待排期 |
@@ -186,8 +196,8 @@
 1. system.md
 2. knowledge/current-status.md
 3. knowledge/session-handoff.md                     ← 本文件
-4. knowledge/known-issues.md                        ← I1-I51（D83 已更新）
-5. knowledge/features/bpm-plugin-architecture.md    ← 最新完成功能
+4. knowledge/known-issues.md                        ← I1-I51（I51 已于 2026-08-17 status-semantics-alignment 修复关闭）
+5. knowledge/features/status-semantics-alignment.md  ← 最新完成功能（I51 修复轮）
 6. knowledge/features/agent-model-orchestration.md  ← M07 全链（详情在 product/agent-model-orchestration/passed/）
 7. memory/handoff.md                                ← 基线/候选池/启动提示词（memory 为最新权威）
 8. knowledge/shared-constraints.md
@@ -203,9 +213,9 @@
 最新状态：
 - bpm-plugin-architecture（M04-F08-01）**PASSED（D81/D82，2026-08-16）**——纯重构轮闭环已验收归档 passed/+receipts/；批准披露偏差 2 项；I47/I48 已正式登记；**待规划层选下一方向**
 - D83 探索三回执已回收（2026-08-16）：清单 90/90 零不一致（I1 无第三次复发）、基线全数静态核实（527/66f569t 运行口径/V30+28/16 功能）、known-issues 失准 7 处修正、**新登记 I49/I50/I51**（I51 前端 status 反转 高——UI 新建用户无法登录/停用不阻断登录）、knowledge 欠账 17 处已由执行层补同步完毕
-- 基线：后端 527 tests / 前端 66f/569t 四连全绿（569=运行口径，静态 561）；清单 ✅12/🟦37/⬜41 共90行；Flyway V1-V30、迁移冒烟口径 28
+- 基线：后端 527 tests / 前端 66f/576t 四连全绿（576=运行口径，静态 568；2026-08-17 status-semantics-alignment +7）；清单 ✅12/🟦37/⬜41 共90行；Flyway V1-V30、迁移冒烟口径 28
 - 执行约束：本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行，禁并行编译（已入宪法）
-- 候选池：M01/M02 虚高补齐、M07 补全（前端管理页等）、M07-F03/F04 新功能、IoT/OpenAPI、小项池（I47/I51/I26/I49）
+- 候选池：M01/M02 虚高补齐、M07 补全（前端管理页等）、M07-F03/F04 新功能、IoT/OpenAPI、小项池（I47/I26/I49——I51 已修复关闭）
 
 最新归档：product/bpm-plugin-architecture/passed/ + receipts/（D82 验收裁定见 memory/decisions.md）；最新下发：无（待选下一方向）
 ```

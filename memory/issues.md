@@ -1,6 +1,6 @@
 # 未关闭问题
 
-> 最后更新：2026-08-16（D83 探索回执回收后）
+> 最后更新：2026-08-17（I51 已关闭）
 > 仅列出未关闭问题。已修复问题在 `knowledge/known-issues.md`。
 > **编号说明（2026-08-16 更新，D81）**：I46 已在 knowledge/known-issues.md 正式登记为「手写 SQL 通道无数据权限」（注册表为权威）——本文件原预留 I46 的 flow-graph adapter 条目**改号 I48**。**I47（bpm/h2 V8 partial index）与 I48（flow-graph adapter 限制）已于 2026-08-16（D81 bpm-plugin-architecture 知识库同步）正式登记入 knowledge/known-issues.md——悬空引用清理完毕**，本文件条目与注册表编号一致。
 > **D83 探索回执回收（2026-08-16）**：I49/I50/I51 为新候选编号（两轮探索各自建议 I49，统一顺延）；**D84 核销：已由执行层正式登记入 knowledge/known-issues.md**；I26 影响面上调（H2 全链 V5 改名，严重程度 中→高，与 I47 合并排期建议）；I30 已关闭；memory I46 严重程度统一为注册表口径=高。
@@ -28,7 +28,6 @@
 | I48 | （原临时编号 I31→I46，2026-08-15 因 I46 被占再改号；已正式登记——D81，2026-08-16，悬空引用清理完毕）`flow-graph` adapter 契约无边点击事件、无命令式数据更新通道（Step9 现场发现，D65 偏差2/3）：M07 图设计器绕行方案可用但受限——若未来节点自定义渲染/直接点边编辑需求增多，需回规划层评估扩展 adapter 导出面 | 低 | 绕行方案已生效，扩展待评估 |
 | I49 | （D83 发现，D84 已登记 knowledge 注册表）V29 菜单 seed 未 seed sys_role_menu（`V29__job_storage_menu_seed.sql:20` 注释「超管旁路」）——正式环境 job/storage 菜单仅超管可达，普通角色有 permission 也无菜单授权，I43/I44「生产菜单可达」口径仅对超管成立 | 中 | 待排期 |
 | I50 | （D83 发现，D84 已登记 knowledge 注册表）`AuthController.login` 状态校验位于密码匹配之后（L88→L92）——停用账号仍消耗一次 BCrypt+用户查询，仅时序/资源问题无安全漏洞 | 低 | 待排期 |
-| I51 | （D83 发现，D84 已登记 knowledge 注册表，**高价值**）前端 status 语义与后端相反（`UserList.vue:337-341`/`DeptList.vue:314-317` 正常=1/停用=0 vs `SysUser.java:41` 0=正常 1=停用 2=锁定）——UI 新建用户默认 status=1 后端判停用**无法登录**；UI 选停用(0) 后端视为正常**不阻断登录**；I33 后端修复在 UI 路径被反转抵消；SysRole/SysPost 前端映射与后端一致，属前端值映射错误非注释漂移 | 高 | 待排期（建议优先） |
 
 ---
 > 本文件为压缩索引。已修复问题的完整描述在 `knowledge/known-issues.md`。
