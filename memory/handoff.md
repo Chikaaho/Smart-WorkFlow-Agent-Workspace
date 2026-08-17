@@ -101,7 +101,7 @@
 2. M07 补全：F01 前端管理页、F02-02 Prompt 配置、F02-04 运行日志页+单步调试、F04-02 Token 统计
 3. M07-F03/F04 新功能：助手配置/知识库RAG（选型未定）/对话窗口SSE（均零代码）
 4. IoT / OpenAPI 模块落地（仅骨架）
-5. 小项池：I47 修复（bpm/h2 V8 partial index→真全链迁移测试）、停用即时生效（JWT 过滤器层）、sw-bootstrap 测试基建决策、数据权限遗留（部门档子查询 deleted 过滤、job 非分页入口纳管、PG 联调验证）
+5. 小项池：停用即时生效（JWT 过滤器层）、数据权限遗留（部门档子查询 deleted 过滤、job 非分页入口纳管、PG 联调验证）、I49 菜单授权（job/storage 仅超管可达）（I51/I26/I47 已分别修复关闭；sw-bootstrap 测试基建已由 bpm-h2-v8-compat 落实）
 
 ## 新会话启动提示词
 
@@ -109,12 +109,10 @@
 你是 Smart-WorkFlow 根目录规划代理。请按 system.md §10 执行新会话恢复。
 
 最新状态：
-- bpm-plugin-architecture（M04-F08-01）**PASSED（D81/D82，2026-08-16）**——纯重构轮闭环已验收归档 passed/+receipts/；adapter SPI 偏差已裁定，历史内存例外已于 2026-08-17 补验关闭；I47/I48 已正式登记；**待规划层选下一方向**
-- data-scope-enforcement PASSED（D77/D79，2026-08-15）：五档数据权限端到端落地，后端435→521；I46 登记；编号裁定 flow-graph adapter 改号 I48
-- checklist-gap-hardening 第一批 PASSED（D74-D76，2026-08-13）：I33/I43/I44
-- 流程基线：system.md §3.3 第10项知识库全量同步（D74）+ 三角色制宪法（D78）
-- 基线：后端 527 tests / 前端 66f/569t 四连全绿；清单 ✅12/🟦37/⬜41 共90行；Flyway V30 已占用、迁移冒烟口径28；I47/I48 已正式登记（悬空引用清理完成）
+- bpm-h2-v8-compat（P10/I47）**PASSED（D87/D88，2026-08-17）**——BPM H2 V8 partial index 以生成列 active_key + 唯一索引等价实现，PG V8 零改动；永久 FlywayFullChainH2Test 7 目录 30 条迁移（口径 28→30）；后端 543/0/0（527+16）；I47/P10 已核销，P12 已核销（sw-bootstrap 测试基建落地）
+- 阶段三知识同步收尾修正（D89，2026-08-18）：一致性审计（search_fallback/p10-post-sync-consistency-audit.md）发现 knowledge/需求池/回执/memory 中下部残留；执行层修正 9 文件后提交 receipts/post-sync-correction.md，规划层复验
+- 基线：后端 543 tests / 前端 66f/576t 四连全绿（576=运行口径，静态 568）；清单 ✅12/🟦37/⬜41 共90行；Flyway V1-V30、H2 真实全链口径 30
 - 执行约束：本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行，禁并行编译
 
-最新归档：product/bpm-plugin-architecture/passed/ + receipts/（D82 验收裁定见 memory/decisions.md）；最新下发：无（待选下一方向）
+最新归档：product/bpm-h2-v8-compat/passed/ + receipts/（D88 验收裁定见 memory/decisions.md）；最新下发：direction-post-sync-correction.md（2026-08-18，阶段三知识同步收尾修正）
 ```

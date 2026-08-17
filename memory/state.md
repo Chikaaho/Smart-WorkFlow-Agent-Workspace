@@ -1,17 +1,22 @@
 # 当前状态
 
-> 最后更新：2026-08-17（sysrole-v5-column-alignment 最终验收 PASSED）
+> 最后更新：2026-08-18（bpm-h2-v8-compat 最终验收 PASSED（D87/D88）+ 阶段三知识同步收尾修正 D89）
 
 ## 进行中功能
 
-**（无进行中功能）**：bpm-h2-v8-compat（P10 / I47）已于 2026-08-17 最终验收 `PASSED` 并归档。
+**（无进行中业务功能）**：bpm-h2-v8-compat（P10 / I47）已 PASSED 并归档；阶段三知识同步收尾修正进行中（D89）。
 
+**阶段三收尾修正 READY（2026-08-18，D89）**：一致性审计（`search_fallback/p10-post-sync-consistency-audit.md`）发现 knowledge、需求池、完成回执和 memory 中下部仍有旧状态残留；已下发 `product/bpm-h2-v8-compat/ready/direction-post-sync-correction.md`。该修正不重新打开业务实现，不改变 D88 `PASSED` 判定。
+
+## 最新已完成
+
+**bpm-h2-v8-compat（P10 / I47）PASSED（D87/D88，2026-08-17）✅**
 - H2 V8 partial index 改为生成列 `active_key` + 唯一索引，PostgreSQL V8 零改动，双方言保持 active 条件唯一语义一致。
 - 永久 `FlywayFullChainH2Test` 将 BPM V8/V14 纳入 7 目录真实全链，迁移口径 28→30，migrate + validate 全绿。
 - 测试门（2G、串行）：BPM process 58/0/0、bootstrap 8/0/0、项目级 **543/0/0**。
 - 归档：`product/bpm-h2-v8-compat/passed/direction-bpm-h2-v8-compat.md`。
 
-最新已完成：sysrole-v5-column-alignment（P13 / I26）已于 2026-08-17 最终验收 `PASSED` 并归档。
+上一完成：sysrole-v5-column-alignment（P13 / I26）已于 2026-08-17 最终验收 `PASSED` 并归档。
 
 - 已闭环：SysRole.java:47,51 @TableField → `built_in`/`remark`（字段名/JSON 键不变）；schema-datascope-h2.sql 与 AuthFlowIntegrationTest.java 建表/索引/INSERT/注释全对齐 V5 链尾；grep `is_builtin` 主代码/测试零残留。
 - 测试门（MAVEN_OPTS=-Xmx2g）：sw-biz-system-biz 模块 **111/0/0**（5 关键类全 PASSED）→ 项目级全量 **527/0/0 与基线持平**；MP 生成 SQL 原文 `built_in`/`remark AS description` 闭合。
@@ -45,7 +50,7 @@
 **当前架构要点**（派生自代码，此处仅记关键约定）：
 - 图拓扑：START→callModel→END 单节点；agentic loop 在 ChatModel.call() 内建（internalCall 递归），不外显
 - ThreadLocal 注入四件套：chatModel / tools / historyMessages / toolCallRecords（bind-finally-clear 对称，ServiceImpl finally 保证全清）
-- Flyway：agent 路径 V19-V25 已占（V25=图定义表）；root 路径 V26 已占（Step9 菜单迁移）；V27+ 空闲
+- Flyway：agent 路径 V19-V25 已占（V25=图定义表）+ **V27/V28 已占**（Step12 执行历史双表）；root 路径 V26（Step9 菜单迁移）、**V29（job/storage 菜单 seed）、V30（sys_role_dept）已占**；当前最高 V30，无空闲 V 号
 - 大字段：H2=CLOB / PG=TEXT；agent 模块 create_by=VARCHAR(64)（偏离 bigint 惯例）；status=VARCHAR(20)；create_time=TIMESTAMP 无默认值（MetaObjectHandler 填充）
 
 **M07-F01「大模型管理」+ F02「图设计器」（含 Step11 并行/循环节点 + Step12 执行历史持久化）全部完结**，详情均在对应 `passed/step-N-*.md`，不在此重复摘录——关键架构结论：①F01（LangGraph4j）与 F02（自建 `AgentGraphInterpreter`）两条执行路径并存互不干扰；②条件分支=关键词子串匹配（不支持正则）；③execution context 自 Step10 起为命名变量表（`config.inputVar`/`outputVar`，默认变量 `input` 零迁移）；④Step11 起支持 LOOP（回边+迭代计数）/FORK/JOIN（多活跃执行点逻辑并发，非线程级），变量冲突=最后写入覆盖（D68）；⑤**Step12 起执行历史落库**：V27 `sw_agent_graph_execution`（执行记录）+ V28 `sw_agent_graph_execution_node`（节点明细）双表，分支标识=branchId 路径字符串（FORK按出边顺序追加下标），错误分类=`GraphExecutionException.category` 8类，成功/失败路径统一由 Service 包夹落库（D70/D71）；查询端点复用 `agent:model:view` 权限，本轮未做前端展示。**下一步（todo 池）**：单步调试、图节点级多Key轮询、F03知识库RAG；扩展 `flow-graph` adapter 契约需回规划层评估。
@@ -56,7 +61,7 @@ process-monitoring (M04-F06-01)：COMPLETED（详情见 `knowledge/`，2026-07-3
 
 ## 测试基线
 
-最新完成：**sysrole-v5-column-alignment（P13 / I26）PASSED（2026-08-17）**——SysRole 与 V5 链尾 `built_in`/`remark` 契约对齐；模块 111/0/0、项目级 527/0/0；I26 已核销，功能清单状态列无变化。回执：`product/sysrole-v5-column-alignment/receipts/`。
+最新完成：**bpm-h2-v8-compat（P10 / I47）PASSED（D87/D88，2026-08-17）**——H2 V8 partial index → 生成列 `active_key` + 唯一索引等价实现；永久全链测试 7 目录 30 条迁移（口径 28→30）；BPM process 58/0/0、bootstrap 8/0/0、项目级 543/0/0；I47/P10 已核销，功能清单状态列无变化。回执：`product/bpm-h2-v8-compat/receipts/`。上一完成：sysrole-v5-column-alignment（P13 / I26）——模块 111/0/0、项目级 527/0/0，I26 已核销。
 
 - 后端：项目级 **543 tests**（运行口径，CONFIRMED 2026-08-17，BUILD SUCCESS 0 failures；527+16）
 - 前端：**66 spec files / 576 tests（运行口径；569→576，I51 新增 7 测试）**，四连全绿（CONFIRMED 2026-08-17；2G 上限下 typecheck/lint/test/build 全部退出 0）
