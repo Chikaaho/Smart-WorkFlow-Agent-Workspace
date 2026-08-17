@@ -25,5 +25,5 @@
 | notify-frontend | M05 | COMPLETED | 3 steps PASSED | 通知列表+标记已读 |
 
 ---
-> 本文件为压缩索引。各功能完整 Step 列表、证据链、测试统计在 `knowledge/features/<name>.md`（14 个功能追踪文件）。
+> 本文件为压缩索引。各功能完整 Step 列表、证据链、测试统计在 `knowledge/features/<name>.md`（18 个功能追踪文件，不含 `_template.md` 模板；agent-model-orchestration 无独立追踪文件，详情在 `product/agent-model-orchestration/passed/`）。
 > 需要时：创建 search_task，范围 `knowledge/features/<feature-name>.md`

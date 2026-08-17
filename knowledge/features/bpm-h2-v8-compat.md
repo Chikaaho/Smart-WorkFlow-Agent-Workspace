@@ -15,7 +15,7 @@
 | 功能名称 | BPM H2 V8 迁移链兼容性修复 |
 | 功能目标 | 消除 BPM H2 迁移链 V8 唯一约束处的方言不兼容（PG partial unique index 语法 H2 不支持），使 BPM 迁移纳入真实 H2 全链 Flyway 验证，同时保持 PostgreSQL 与 H2 的 active 唯一性业务语义一致 |
 | 创建日期 | 2026-08-17 |
-| 当前状态 | 执行层自验收完成（543/0/0 全绿），**待规划层最终验收**（验收前不得标 PASSED/归档） |
+| 当前状态 | **PASSED 并已归档**（D87 下发 / D88 规划层最终验收 PASSED，2026-08-17；543/0/0 全绿，30 条全链验证；归档 `product/bpm-h2-v8-compat/passed/`） |
 | 涉及模块 | 后端 `Smart-WorkFlow`：sw-bpm-process（迁移 h2/V8 + 测试）+ sw-bootstrap（永久全链测试基建） |
 
 ---
@@ -74,7 +74,7 @@
 
 ---
 
-## 4. 关键设计决策（D 编号待规划层验收后注记）
+## 4. 关键设计决策（D87/D88 已注记）
 
 1. **H2 等价约束 = 生成列 + 唯一索引**（非 ANSI 复合唯一 (tenant_id, form_key, active)——后者只允许一条 inactive，破坏「非 active 历史共存」；H2 官方无 partial index 能力，生成列是社区标准 workaround）。`active_key` 语义：active=true → `'tenant_id:form_key'`（非空→唯一）；active=false → NULL（H2 唯一索引允许多个 NULL）。`active_key` 长度 265 = 64+1+200 恰好覆盖无截断；映射单射（首个 `:` 前为纯数字租户，解析无歧义）。
 2. **仅改 h2/V8、不动 pg/V8**：h2/V8 从未在任何 H2 库执行成功（全链死在 V8），修改无校验和/升级路径风险；PG V8 已发布，validate-on-migrate 下不可动。
@@ -83,7 +83,7 @@
 
 ---
 
-## 5. 验收方向对照（执行层自验收，待规划层最终验收）
+## 5. 验收方向对照（D87/D88 规划层最终验收 PASSED）
 
 | # | 验收条件 | 结论 |
 |---|----------|:---:|
@@ -108,7 +108,7 @@
 - `known-issues.md`：I47 表条目 + 详细条目 ✅ 已修复（含实现/验证摘要）。
 - `current-status.md`：§1 测试基线 + 前次验证、§4 进行中、§5 已完成 18→19（sysrole 更新为 PASSED 归档 + bpm-h2-v8-compat 新增）、§9 543 演进 + 冒烟口径 28→30。
 - `session-handoff.md`：§1 新条目。
-- `todo/requirement-pool.md`：P10 待排期 → ✅ 已修复（待规划层验收）。
+- `todo/requirement-pool.md`：P10 待排期 → ✅ 已核销（D88 最终验收 PASSED）。
 - `功能清单.md`：状态列无变化（I47 非清单明细行）。
 - memory 压缩索引：由规划层最终验收时落盘。
 - 回执：`product/bpm-h2-v8-compat/receipts/bpm-h2-v8-compat-{completion,test}.md`。

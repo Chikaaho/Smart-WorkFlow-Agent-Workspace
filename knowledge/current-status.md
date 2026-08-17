@@ -103,9 +103,13 @@
 
 ## 4. 进行中的功能
 
-> 最后更新：2026-08-17
+> 最后更新：2026-08-18
 
-**bpm-h2-v8-compat（P10 / I47）：执行层自验收完成（2026-08-17），待规划层最终验收**——h2/V8 partial index → 生成列 `active_key` + 唯一索引等价实现（仅 h2/V8 一个生产迁移文件改动，pg/V8 零改动）；永久真全链测试 `FlywayFullChainH2Test`（sw-bootstrap）30 条迁移 migrate + validate 通过（28→30）；绑定语义正反例 8 用例；项目级全量 543/0/0；方向文档 `product/bpm-h2-v8-compat/ready/`，完成回执 `product/bpm-h2-v8-compat/receipts/`。历史条目：
+**（无进行中业务功能）**：bpm-h2-v8-compat（P10 / I47）已于 2026-08-17 规划层最终验收 **PASSED**（D87/D88）并归档至 `product/bpm-h2-v8-compat/passed/`。
+
+**阶段三知识同步收尾修正 READY（2026-08-18）**：一致性审计（`search_fallback/p10-post-sync-consistency-audit.md`）发现 knowledge/需求池/回执/memory 中下部存在旧状态残留；已下发 `product/bpm-h2-v8-compat/ready/direction-post-sync-correction.md`，由执行层完成纯文档同步修正。该修正不重新打开业务实现，不改变 D88 `PASSED` 判定。
+
+历史条目：
 
 | 功能 | 状态 | 说明 |
 |------|:---:|------|
@@ -139,7 +143,7 @@
 | bpm-plugin-architecture | M04-F08-01 BPM 可插拔机制（节点/控件/翻译器注册表化） | **COMPLETED** ✅ | 2026-08-16 | 6 Step 闭环（D81 执行层闭环 + D82 规划层验收 PASSED）：后端 NodeTypeRegistry +4 预留位 + GraphToBpmnTranslator switch→NodeTypeTranslator SPI 注册表翻译 + TEST_NODE 可插拔性证明；前端 DynamicField 9 控件 + 8 节点面板双注册表 + EMAIL/PROBE 证明。后端 521→527、前端 63f/552t→66f/569t；Flyway 零迁移。详情 `product/bpm-plugin-architecture/passed/` |
 | status-semantics-alignment | I51 前端 status 语义对齐（用户/部门页与后端契约一致） | **COMPLETED** ✅ | 2026-08-17 | 修复轮闭环（方向 `product/status-semantics-alignment/ready/`）：前端单项目。后端契约核实（用户 0=正常/1=停用/2=锁定、部门 0=正常/1=停用；角色/岗位 1=启用/0=停用 与前端现状一致故未动）。UserList/DeptList 默认值/选择项/筛选/展示按后端契约修正（新建默认 0=正常），新增集中常量 `modules/system/constants.ts`（仅服务用户/部门页），mock 种子与 create 默认值、user/dept API spec 夹具同步，新增 7 测试（提交/回填语义）。前端 66f/569t→**66f/576t** 四连全绿；后端零修改；清单状态列无变化。详情 `product/status-semantics-alignment/` |
 | sysrole-v5-column-alignment | P13/I26 SysRole 与 V5 列契约对齐（实体/测试 DDL → `built_in`/`remark`） | **COMPLETED** ✅ | 2026-08-17 | 修复轮闭环（方向 `product/sysrole-v5-column-alignment/passed/`，2026-08-17 规划层最终验收 **PASSED** 并归档）：后端单功能。`SysRole.java:47,51` 两处 `@TableField` 改 `built_in`/`remark`（字段名/JSON 键不变）→ 测试契约对齐 V5 链尾：`schema-datascope-h2.sql`（列名/类型/唯一索引含 V13 deleted 形态、头注释失真口径修正）、`AuthFlowIntegrationTest.java`（内建表/索引/INSERT/注释）。全仓 grep `is_builtin` 主代码/测试零残留。验证：sw-biz-system-biz 模块 111/0/0 + 项目级全量 **527/0/0**（MAVEN_OPTS=-Xmx2g，BUILD SUCCESS 31/31 模块，与基线持平）；MP 生成 SQL 原文含 `built_in`/`remark AS description` 双向闭合。Flyway 零迁移；前端零改动；P10/P12 未触碰（H2 真全链验证当时仍受 I47 阻断，如实分离；已于 bpm-h2-v8-compat 轮闭环）。清单状态列无变化（M02-F01-01 缺口=绑定写入等，非本轮范围）。详情 `product/sysrole-v5-column-alignment/` |
-| bpm-h2-v8-compat | P10/I47 BPM H2 V8 迁移链兼容性修复（h2/V8 partial index → 生成列等价实现 + 永久真全链验证） | **COMPLETED** ✅ | 2026-08-17 | 修复轮闭环（方向 `product/bpm-h2-v8-compat/ready/`，执行层自验收完成，**待规划层最终验收**）：后端单功能。h2/V8 L34 partial unique index（`WHERE active=true`，H2 2.3.232 不支持任何模式）→ `sw_bpm_form_binding` 新增生成列 `active_key varchar(265) generated always as (case when active then (cast(tenant_id as varchar(64)) || ':' || form_key) end)` + 唯一索引改建于 `active_key`（索引名 `uk_sw_bpm_binding_active` 不变；active=true→非空唯一、active=false→NULL 可共存=非 active 历史共存），文件头错误断言同步修正；**仅 h2/V8 一个生产迁移文件改动**（从未在任何 H2 库执行成功，无校验和/升级路径风险），pg/V8、V13、V14 零改动。测试基建最小补充：sw-bootstrap pom +junit-jupiter(test) + 永久 `FlywayFullChainH2Test`（7 目录 30 条迁移 migrate+validate，**冒烟口径 28→30**，BPM V8/V14 纳入）；`BpmFormBindingServiceImplTest` 绑定语义正反例 8 用例（唯一冲突 SQLState=23505、非 active 共存、启停切换、租户隔离）；测试 schema-h2.sql 追加与修复后 V8 逐字一致的绑定表。验证：sw-bpm-process 58/0/0、sw-bootstrap 8/0/0、项目级 **543/0/0**（527+16，BUILD SUCCESS 31/31，MAVEN_OPTS=-Xmx2g）。前端零改动；清单状态列无变化（I47 为迁移链缺陷非清单明细行）。遗留：PG 侧 partial index 运行期语义验证依赖 PG 本地库（规划层授权后可补）。回执 `product/bpm-h2-v8-compat/receipts/` |
+| bpm-h2-v8-compat | P10/I47 BPM H2 V8 迁移链兼容性修复（h2/V8 partial index → 生成列等价实现 + 永久真全链验证） | **COMPLETED** ✅ | 2026-08-17 | 修复轮闭环（方向 `product/bpm-h2-v8-compat/passed/`，2026-08-17 规划层最终验收 **PASSED** D87/D88 并归档）：后端单功能。h2/V8 L34 partial unique index（`WHERE active=true`，H2 2.3.232 不支持任何模式）→ `sw_bpm_form_binding` 新增生成列 `active_key varchar(265) generated always as (case when active then (cast(tenant_id as varchar(64)) || ':' || form_key) end)` + 唯一索引改建于 `active_key`（索引名 `uk_sw_bpm_binding_active` 不变；active=true→非空唯一、active=false→NULL 可共存=非 active 历史共存），文件头错误断言同步修正；**仅 h2/V8 一个生产迁移文件改动**（从未在任何 H2 库执行成功，无校验和/升级路径风险），pg/V8、V13、V14 零改动。测试基建最小补充：sw-bootstrap pom +junit-jupiter(test) + 永久 `FlywayFullChainH2Test`（7 目录 30 条迁移 migrate+validate，**冒烟口径 28→30**，BPM V8/V14 纳入）；`BpmFormBindingServiceImplTest` 绑定语义正反例 8 用例（唯一冲突 SQLState=23505、非 active 共存、启停切换、租户隔离）；测试 schema-h2.sql 追加与修复后 V8 逐字一致的绑定表。验证：sw-bpm-process 58/0/0、sw-bootstrap 8/0/0、项目级 **543/0/0**（527+16，BUILD SUCCESS 31/31，MAVEN_OPTS=-Xmx2g）。前端零改动；清单状态列无变化（I47 为迁移链缺陷非清单明细行）。遗留：PG 侧 partial index 运行期语义验证依赖 PG 本地库（规划层授权后可补）。回执 `product/bpm-h2-v8-compat/receipts/` |
 
 ---
 
@@ -181,7 +185,7 @@
 
 ## 8. 下一优先事项
 
-全部 **16** 个功能已完成闭环：
+全部 **19** 个功能已完成闭环：
 
 1. ✅ Walking Skeleton（登录→表单→审批→通知）
 2. ✅ sys-mgmt-crud（系统管理核心 CRUD）
@@ -199,7 +203,9 @@
 14. ✅ notify-frontend（通知模块前端落地）（2026-07-15，Walking Skeleton 最终环）
 15. ✅ agent-model-orchestration（M07-F01/F02/F04：模型管理/编排引擎/工具沙箱/会话/图设计器/并行循环/执行历史）（2026-08-12，D53-D71）
 16. ✅ bpm-plugin-architecture（M04-F08-01 BPM 可插拔机制）（2026-08-16，D82 PASSED）
-17. ✅ status-semantics-alignment（I51 前端 status 语义对齐：用户/部门页与后端契约一致，含 7 新测试）← **最新完成**（2026-08-17）
+17. ✅ status-semantics-alignment（I51 前端 status 语义对齐：用户/部门页与后端契约一致，含 7 新测试）（2026-08-17）
+18. ✅ sysrole-v5-column-alignment（P13/I26 SysRole 与 V5 列契约对齐）（2026-08-17，PASSED 归档）
+19. ✅ bpm-h2-v8-compat（P10/I47 BPM H2 V8 迁移链兼容修复：生成列等价实现 + 永久全链测试 30 条）（2026-08-17，D87/D88 PASSED）← **最新完成**
 
 后续候选（2026-08-16 D83 更新，按风险/价值排序参考）：
 
@@ -208,7 +214,7 @@
 3. **M07-F03/F04 新功能** — 助手配置/知识库 RAG/对话窗口 SSE（均零代码）
 4. **IoT / OpenAPI 模块落地** — 仅骨架（D83 复核确认 M08/M09 全 ⬜ 无虚低）
 5. **M04-F06-01 后续批次（耗时分析 + 流程干预）** — process-monitoring 首批已完成，剩余 2/4 子能力延后
-6. **小项池** — I47 修复（bpm V8 partial index→真全链迁移测试）、I26 SysRole 列名（影响面已上调至高）、I49 菜单授权、数据权限遗留（部门档 deleted 过滤/job 非分页入口/PG 联调）（I51 已于 2026-08-17 status-semantics-alignment 修复关闭）
+6. **小项池** — I49 菜单授权（job/storage 仅超管可达）、数据权限遗留（部门档 deleted 过滤/job 非分页入口/PG 联调）、停用即时生效（JWT 过滤器层）（I51 已于 2026-08-17 status-semantics-alignment 修复关闭；I26/I47 已于 2026-08-17 分别由 sysrole-v5-column-alignment 与 bpm-h2-v8-compat 修复核销）
 
 ---
 
@@ -217,11 +223,11 @@
 | 项目 | 校验命令 | 当前状态 |
 |------|----------|----------|
 | 后端 | `mvn -q compile && mvn -q test` | **CONFIRMED**（2026-08-17 bpm-h2-v8-compat 验证）：`mvn test` BUILD SUCCESS 31/31，**543 tests / 0 failures / 0 errors**（527 基线 +16：bpm 71→79 +8、sw-bootstrap 0→8 +8；surefire 时间窗 97 个 XML 聚合，无 flaky）。演进：465（2026-07-28 process-monitoring Step 2 独立验收，surefire XML 跨模块合计，含 Step 1 +15 + Step 2 +6；Step 1 收据「256」为子集误报 SUPERSEDED，全量基线此前即 ≥459）→ 426（M07 阶段）→ 435（2026-08-13，426 基线 + I33 新增 10 = 436 运行口径，−1 个 V26 临时冒烟测试不在源码 = 435 源码口径）→ **521（2026-08-15 data-scope-enforcement）→ 527（2026-08-16 bpm-plugin-architecture，+6：B1 +3/B2 +1/B3 +2，CONFIRMED；2026-08-16 D83 静态逐模块复核：sw-basic 249（agent 178/job 48/notify 7/storage 16）+ sw-biz 258（system 111/form 76/bpm 71）+ sw-framework 20）**。2026-08-17 sysrole-v5-column-alignment 复验 527/0/0 持平 → **543（2026-08-17 bpm-h2-v8-compat，CONFIRMED）**。原「462」「241」「203」均为更早历史基线（SUPERSEDED）。**Flyway 冒烟口径**：28（6 目录链排除 bpm，I47）→ **30（2026-08-17 起 7 目录全链，永久测试 `FlywayFullChainH2Test` 取代已删除的临时冒烟）** |
-| 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | **CONFIRMED**（2026-08-17，`NODE_OPTIONS="--max-old-space-size=2048"`）：四连退出码全 0，Vitest **66 files / 569 tests** 全通过，build 成功；与 2026-08-16 基线持平。 |
+| 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | **CONFIRMED**（2026-08-17 status-semantics-alignment，`NODE_OPTIONS="--max-old-space-size=2048"`）：四连退出码全 0，Vitest **66 files / 576 tests** 全通过（569→576，I51 新增 7 测试），build 成功。 |
 
 ### 前端测试覆盖详情（参考快照，2026-07-15 基线 ~350 tests）
 
-> 以下为 Walking Skeleton 闭环时的详细覆盖分布。当前最新基线为 **66 files / 569 tests**（2026-08-16 四连全绿，运行口径；静态 `it(`/`test(` 计数 561，差 +8 系 tokens.spec.ts CATEGORIES 循环展开——D83 复核确认）。
+> 以下为 Walking Skeleton 闭环时的详细覆盖分布。当前最新基线为 **66 files / 576 tests**（2026-08-17 status-semantics-alignment 四连全绿，运行口径；静态 `it(`/`test(` 计数 568，差 +8 系 tokens.spec.ts CATEGORIES 循环展开——D83 复核确认；576=569+7 I51 新增）。
 
 | 测试文件 | 用例数 | 测试内容 |
 |----------|:-----:|----------|

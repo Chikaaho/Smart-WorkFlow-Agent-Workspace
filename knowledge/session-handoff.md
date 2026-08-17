@@ -11,16 +11,17 @@
 
 ## 1. 最新完成功能
 
-**bpm-h2-v8-compat — P10/I47 BPM H2 V8 迁移链兼容性修复（后端修复轮，2026-08-17，执行层自验收完成，待规划层最终验收）**
+**bpm-h2-v8-compat — P10/I47 BPM H2 V8 迁移链兼容性修复（后端修复轮，2026-08-17，规划层最终验收 PASSED（D87/D88）并归档 `passed/`）**
 
-方向 `product/bpm-h2-v8-compat/ready/`（2026-08-17）下发，执行层自主闭环：探索（1 Explore Sub Agent，8 问全答）→ 代码修复 + 测试基建 + 模块级自测（1 Sub Agent）→ 项目级全量回归（主会话）→ 知识库全量同步 + 回执：
+方向 `product/bpm-h2-v8-compat/passed/`（2026-08-17 下发，归档）执行，执行层自主闭环：探索（1 Explore Sub Agent，8 问全答）→ 代码修复 + 测试基建 + 模块级自测（1 Sub Agent）→ 项目级全量回归（主会话）→ 知识库全量同步 + 回执：
 - 根因：bpm/h2 V8 L34 与 pg/V8 L39 逐字相同的 PG 独有 partial unique index（`WHERE active=true`）——H2 2.3.232 不支持任何模式；全链 H2 Flyway 从未可跑（死 V8），28 条冒烟口径排除 bpm 两条，绑定语义零测试覆盖
 - 修复（仅 h2/V8 一个生产迁移文件，pg/V8/V13/V14 零改动）：生成列等价实现——`active_key varchar(265) generated always as (case when active then (cast(tenant_id as varchar(64)) || ':' || form_key) end)`（active=true→非空唯一、false→NULL 共存）+ 唯一索引改建 active_key（索引名 `uk_sw_bpm_binding_active` 不变）+ 文件头错误断言修正；h2/V8 从未在任何 H2 库执行成功，无校验和/升级路径风险
 - 测试基建最小补充：sw-bootstrap pom +junit-jupiter(test) + 永久 `FlywayFullChainH2Test`（7 目录 30 条迁移 migrate+validate，**冒烟口径 28→30**，BPM V8/V14 纳入；关键发现：flyway-core 不解析 `{vendor}`，由 Spring Boot LocationResolver 替换，测试显式替换复刻）；`BpmFormBindingServiceImplTest` 绑定语义正反例 8 用例（SQLState 23505/非 active 共存/启停切换/租户隔离）；测试 schema-h2.sql 追加与修复后 V8 逐字一致的绑定表
 - 测试门（`MAVEN_OPTS="-Xmx2g"` 串行）：sw-bpm-process **58/0/0**（50→+8）→ sw-bootstrap **8/0/0**（0→8）→ 项目级全量 **543/0/0**（527+16：bpm 71→79 +8、bootstrap 0→8 +8，BUILD SUCCESS 31/31）
 - 边界：PG 侧运行期语义验证依赖 PG 本地库（遗留，规划层授权后可补）；前端零改动；清单状态列无变化（I47 非清单明细行）
-- 知识库全量同步（§3.3 第10项）：I47 ✅ 已修复（表条目+详细条目）、current-status（§1/§4/§5 18→19/§9 543+口径 28→30）、features/bpm-h2-v8-compat.md 新建、session-handoff 更新、requirement-pool P10 待排期→已修复（待验收）
-- 回执：`product/bpm-h2-v8-compat/receipts/bpm-h2-v8-compat-{completion,test}.md`（待规划层最终验收）
+- 知识库全量同步（§3.3 第10项）：I47 ✅ 已修复（表条目+详细条目）、current-status（§1/§4/§5 18→19/§9 543+口径 28→30）、features/bpm-h2-v8-compat.md 新建、session-handoff 更新、requirement-pool P10 核销
+- 规划层最终验收（D88，2026-08-17）：**PASSED**——六项验收方向全部满足；PG 侧运行期联调为零改动侧低风险遗留，不阻塞。归档 `product/bpm-h2-v8-compat/passed/`
+- 回执：`product/bpm-h2-v8-compat/receipts/bpm-h2-v8-compat-{completion,test}.md`；阶段三同步收尾回执 `receipts/post-sync-correction.md`（2026-08-18，知识同步修正轮）
 
 **sysrole-v5-column-alignment — P13/I26 SysRole 与 V5 列契约对齐（后端修复轮，2026-08-17，规划层最终验收 PASSED 并归档 `passed/`）**
 
@@ -29,8 +30,8 @@
 - 代码修复：`SysRole.java:47,51` 两处 `@TableField` 改 `built_in`/`remark`（字段名/JSON 键不变）→ `schema-datascope-h2.sql` 列名/类型/唯一索引（含 V13 deleted 形态）对齐链尾 + 头注释失真口径修正 → `AuthFlowIntegrationTest.java` 内建表/索引/INSERT（is_builtin 1→built_in true）/注释对齐 → 全仓 grep `is_builtin` 主代码/测试零残留
 - 测试门（`MAVEN_OPTS="-Xmx2g"`）：sw-biz-system-biz 模块 **111/0/0**（5 个关键测试类全 PASSED，含登录装配路径）→ 项目级全量 **527/0/0 与基线持平**（BUILD SUCCESS 31/31 模块）；MP 实际生成 SQL 原文 `built_in, remark AS description` 双向闭合 V5 链尾
 - Flyway 零迁移、前端零改动、P10/P12 零触碰；H2 真全链验证仍受 I47 阻断（如实分离，非本轮证据缺失）
-- 知识库全量同步（§3.3 第10项）：I26 ✅ 已修复、current-status（§1/§4/§5/§9 + 计数修正 16→18）、features/sysrole-v5-column-alignment.md 新建、session-handoff 更新、requirement-pool P13 READY→已修复（待验收）
-- 回执：`product/sysrole-v5-column-alignment/receipts/`（待规划层最终验收）
+- 知识库全量同步（§3.3 第10项）：I26 ✅ 已修复、current-status（§1/§4/§5/§9 + 计数修正 16→18）、features/sysrole-v5-column-alignment.md 新建、session-handoff 更新、requirement-pool P13 核销
+- 规划层最终验收（D86，2026-08-17）：**PASSED** 并归档 `passed/`；回执：`product/sysrole-v5-column-alignment/receipts/`
 
 **status-semantics-alignment — I51 前端状态语义对齐（前端单项目修复轮，2026-08-17 ✅）**
 
@@ -40,7 +41,7 @@
 - 新增测试：UserList.spec +5、DeptList.spec +2（提交/回填语义覆盖正常/停用/锁定）
 - 测试门：前端四连全绿 **66f/576t**（569+7，NODE_OPTIONS=2048 全部退出 0）；后端零修改
 - 知识库全量同步：known-issues I51 关闭（✅ 已修复 + 修复记录）、current-status（§1 基线 576/§2 前次验证/§4 功能追踪行/§6 已完成清单 17 条/§8 小项池移除）、features/status-semantics-alignment.md 新建、本文件更新
-- 回执：`product/status-semantics-alignment/receipts/`（待规划层最终验收）
+- 规划层最终验收（2026-08-17）：**PASSED** 并归档 `passed/`（无独立 D 编号，验收裁定见 memory/decisions.md D85 前后轮次）；回执：`product/status-semantics-alignment/receipts/`
 
 **bpm-plugin-architecture — M04-F08-01 BPM 可插拔机制（纯重构轮，D81/D82 PASSED ✅）**
 
@@ -63,14 +64,17 @@
 
 ## 2. 进行中功能
 
-**无（bpm-plugin-architecture 已 D82 最终验收 PASSED，待规划层选定下一需求方向）。**
+**无（bpm-h2-v8-compat 已 D88 最终验收 PASSED 归档，待规划层选定下一需求方向）。** 阶段三知识同步收尾修正 READY（2026-08-18，D89 判定知识沉淀需补充同步，已下发 `product/bpm-h2-v8-compat/ready/direction-post-sync-correction.md`，执行层完成 9 文件修正并提交 `receipts/post-sync-correction.md` 后由规划层复验）。
 
-下一候选按 [[handoff]] 候选池（2026-08-16 D83 更新，2026-08-17 I51 修复后更新）：M01/M02 其余虚高补齐（I31-I36/I40）、M07 补全（F01 前端管理页/F02-02 Prompt 配置/F02-04 运行日志页+单步调试/F04-02 Token 统计）、M07-F03/F04 新功能（助手配置/知识库 RAG/对话窗口 SSE，均零代码）、IoT/OpenAPI 模块落地、小项池（I47 bpm V8 partial index / I26 SysRole 列名 / I49 菜单授权——I51 已修复关闭）。
+下一候选按 [[handoff]] 候选池（2026-08-16 D83 更新，2026-08-17 I51/I26/I47 修复后更新）：M01/M02 其余虚高补齐（I31-I36/I40）、M07 补全（F01 前端管理页/F02-02 Prompt 配置/F02-04 运行日志页+单步调试/F04-02 Token 统计）、M07-F03/F04 新功能（助手配置/知识库 RAG/对话窗口 SSE，均零代码）、IoT/OpenAPI 模块落地、小项池（I49 菜单授权 / 数据权限遗留 / 停用即时生效——I51、I26、I47 已分别修复关闭）。
 
 ---
 
 ## 3. 最终状态
 
+**bpm-h2-v8-compat**：**COMPLETED** ✅ — 后端修复轮 + D87/D88 规划层最终验收 PASSED（2026-08-17，后端 543 / H2 全链 30，I47/P10 核销）
+**sysrole-v5-column-alignment**：**COMPLETED** ✅ — 后端修复轮 + D86 规划层最终验收 PASSED（2026-08-17，后端 527，I26 核销）
+**status-semantics-alignment**：**COMPLETED** ✅ — 前端修复轮 PASSED（2026-08-17，前端 66f/576t，I51 核销）
 **bpm-plugin-architecture**：**COMPLETED** ✅ — 6 Step 闭环 + D82 规划层最终验收 PASSED（2026-08-16，后端 527 / 前端 66f/569t）
 **data-scope-enforcement**：**COMPLETED** ✅ — 五档数据权限端到端落地（D79 PASSED，2026-08-15，后端 521）
 **checklist-gap-hardening**：**COMPLETED** ✅ — 第一批安全+可达性（D76 PASSED，2026-08-13，I33/I43/I44 修复）
@@ -146,7 +150,7 @@
 
 ## 9. 当前系统状态
 
-全部 **16** 个功能已完成闭环：
+全部 **19** 个功能已完成闭环：
 
 1-8. Walking Skeleton → sys-mgmt-crud → bpm-task-center → storage-multi-provider → job-scheduler → kb-verification → auth-seam-completion → feature-checklist-sync
 9. ✅ vue-flow-adapter（2026-07-25）
@@ -156,14 +160,17 @@
 13. ✅ data-scope-enforcement（2026-08-15）
 14. ✅ notify-frontend（2026-07-15）
 15. ✅ agent-model-orchestration（2026-08-12）
-16. ✅ bpm-plugin-architecture ← **最新完成**（2026-08-16，D82 PASSED）
+16. ✅ bpm-plugin-architecture（2026-08-16，D82 PASSED）
+17. ✅ status-semantics-alignment（2026-08-17，I51）
+18. ✅ sysrole-v5-column-alignment（2026-08-17，D86 PASSED，I26）
+19. ✅ bpm-h2-v8-compat ← **最新完成**（2026-08-17，D87/D88 PASSED，I47/P10）
 
-- 后端：项目级 **527 tests**（CONFIRMED 2026-08-16 D82 + D83 静态逐模块复核，0 failures/0 errors）
-- 前端：**66 spec files / 569 tests** 四连全绿（CONFIRMED 2026-08-16；**569=运行口径，静态 561（+8 系 tokens.spec.ts CATEGORIES 循环展开）**）
+- 后端：项目级 **543 tests**（CONFIRMED 2026-08-17 bpm-h2-v8-compat 验证：527+16，BUILD SUCCESS 31/31，0 failures/0 errors）
+- 前端：**66 spec files / 576 tests** 四连全绿（CONFIRMED 2026-08-17 status-semantics-alignment；**576=运行口径，静态 568（+8 系 tokens.spec.ts CATEGORIES 循环展开）**）
 - 功能清单：**✅12 / 🟦37 / ⬜41 共 90 行**（2026-08-16 D82 同步，D83 复核零漂移）
-- Flyway：V1-V30 连续（V30 已占）；迁移链冒烟口径 **28**（含 form V12；bpm V8/V14 受 I47 排除）
-- 已完成功能：16 个
-- 无进行中功能
+- Flyway：V1-V30 连续（V30 已占）；**H2 真实全链口径 30**（7 目录含 bpm V8/V14，永久测试 `FlywayFullChainH2Test`；旧 28 条排除 BPM 口径已失效）
+- 已完成功能：19 个
+- 无进行中业务功能
 
 ---
 
@@ -175,12 +182,11 @@
 3. **M07-F03/F04 新功能** — 助手配置/F03-03 知识库 RAG/F04-01 对话窗口 SSE（均零代码）
 4. **IoT / OpenAPI 模块落地** — 仅骨架（M08 13 行 + M09 8 行全 ⬜ 无虚低，D83 复核确认）
 5. **M04-F06-01 后续批次** — 耗时分析 + 流程干预（剩余 2/4 子能力）
-6. **小项池** — I47 修复（bpm V8 partial index→真全链迁移测试）、I26 SysRole 列名（高）、I49 菜单授权（中）、数据权限遗留（部门档 deleted 过滤/job 非分页入口/PG 联调验证）（I51 已于 2026-08-17 status-semantics-alignment 修复关闭）
+6. **小项池** — I49 菜单授权（中）、数据权限遗留（部门档 deleted 过滤/job 非分页入口/PG 联调验证）、停用即时生效（JWT 过滤器层）（I51 已于 2026-08-17 status-semantics-alignment 修复关闭；I26/I47 已于 2026-08-17 分别由 sysrole-v5-column-alignment 与 bpm-h2-v8-compat 修复核销）
 
 ### 已知未做事项
 - 表单删除（M03-F02-01，I39）、消息删除（M05-F01-02，I41）等 I31-I45 待修复项逐条见 [[known-issues]]
 - 停用前已签发 access token 900s 窗口内仍有效（如需即时生效需在 JWT 过滤器层单独排期）
-- sw-bootstrap 无测试基建，永久迁移测试需先决策加依赖
 
 ---
 
@@ -189,9 +195,9 @@
 | # | 问题 | 严重程度 | 说明 |
 |---|------|:--------:|------|
 | I51 | 前端 status 语义与后端相反（UI 新建用户无法登录/停用不阻断登录） | 高 | ✅ **已修复**（2026-08-17 status-semantics-alignment：用户/部门页按后端契约修正，66f/576t 四连全绿；角色/岗位未动） |
-| I26 | SysRole 列名与 V5 迁移不一致（全链 Flyway 环境必崩，测试 DDL 掩盖） | 高 | D83 影响面上调 |
-| I49 | V29 菜单未 seed sys_role_menu（job/storage 仅超管可达） | 中 | D83 新登记 |
-| I47 | bpm/h2 V8 partial index 不兼容 H2（全链迁移从未可跑） | 中 | 已正式登记，待排期 |
+| I26 | SysRole 列名与 V5 迁移不一致（全链 Flyway 环境必崩，测试 DDL 掩盖） | 高 | ✅ **已修复**（2026-08-17 sysrole-v5-column-alignment，D86 PASSED：实体/测试 DDL 对齐 V5 链尾 `built_in`/`remark`） |
+| I49 | V29 菜单未 seed sys_role_menu（job/storage 仅超管可达） | 中 | D83 新登记，待排期 |
+| I47 | bpm/h2 V8 partial index 不兼容 H2（全链迁移从未可跑） | 中 | ✅ **已修复**（2026-08-17 bpm-h2-v8-compat，D88 PASSED：生成列等价实现 + 永久全链测试 30 条） |
 | I50 | 登录状态校验在密码匹配之后（时序/资源） | 低 | D83 新登记 |
 | I48 | flow-graph adapter 契约限制（无边点击/无命令式通道） | 低 | 绕行生效，扩展待评估 |
 | I30 | ~~mock BPMN XML 最简模板~~ | — | ✅ 已满足可关闭（D83 复核），todo T10 已删 |
@@ -201,7 +207,7 @@
 
 ## 12. 下一轮要做什么
 
-**待规划层选定下一需求方向并下发**（bpm-plugin-architecture 已 D82 PASSED 归档）。候选池见 §10 与 [[handoff]]；按 system.md §10 恢复后从候选池选定方向、写方向文档至 `product/<feature>/ready/` 下发执行层。
+**待规划层选定下一需求方向并下发**（bpm-h2-v8-compat 已 D88 PASSED 归档；当前轮为阶段三知识同步收尾修正，`receipts/post-sync-correction.md` 提交后由规划层复验）。候选池见 §10 与 [[handoff]]；按 system.md §10 恢复后从候选池选定方向、写方向文档至 `product/<feature>/ready/` 下发执行层。
 
 ---
 
@@ -217,8 +223,8 @@
 1. system.md
 2. knowledge/current-status.md
 3. knowledge/session-handoff.md                     ← 本文件
-4. knowledge/known-issues.md                        ← I1-I51（I51 已于 2026-08-17 status-semantics-alignment 修复关闭）
-5. knowledge/features/status-semantics-alignment.md  ← 最新完成功能（I51 修复轮）
+4. knowledge/known-issues.md                        ← I1-I51（I51/I26/I47 已分别修复关闭）
+5. knowledge/features/bpm-h2-v8-compat.md           ← 最新完成功能（P10/I47 修复轮，D87/D88）
 6. knowledge/features/agent-model-orchestration.md  ← M07 全链（详情在 product/agent-model-orchestration/passed/）
 7. memory/handoff.md                                ← 基线/候选池/启动提示词（memory 为最新权威）
 8. knowledge/shared-constraints.md
@@ -232,19 +238,19 @@
 你是 Smart-WorkFlow 根目录规划代理。请按 system.md §10 执行新会话恢复。
 
 最新状态：
-- bpm-plugin-architecture（M04-F08-01）**PASSED（D81/D82，2026-08-16）**——纯重构轮闭环已验收归档 passed/+receipts/；批准披露偏差 2 项；I47/I48 已正式登记；**待规划层选下一方向**
-- D83 探索三回执已回收（2026-08-16）：清单 90/90 零不一致（I1 无第三次复发）、基线全数静态核实（527/66f569t 运行口径/V30+28/16 功能）、known-issues 失准 7 处修正、**新登记 I49/I50/I51**（I51 前端 status 反转 高——UI 新建用户无法登录/停用不阻断登录）、knowledge 欠账 17 处已由执行层补同步完毕
-- 基线：后端 527 tests / 前端 66f/576t 四连全绿（576=运行口径，静态 568；2026-08-17 status-semantics-alignment +7）；清单 ✅12/🟦37/⬜41 共90行；Flyway V1-V30、迁移冒烟口径 28
+- bpm-h2-v8-compat（P10/I47）**PASSED（D87/D88，2026-08-17）**——BPM H2 V8 partial index 以生成列 active_key + 唯一索引等价实现，PG V8 零改动；永久 FlywayFullChainH2Test 7 目录 30 条迁移（口径 28→30）；后端 543/0/0（527+16）；I47/P10 已核销；归档 product/bpm-h2-v8-compat/passed/ + receipts/
+- 阶段三知识同步收尾修正（D89，2026-08-18）：一致性审计发现 knowledge/需求池/回执/memory 中下部残留，已下发 direction-post-sync-correction.md，执行层修正 9 文件后提交 receipts/post-sync-correction.md 由规划层复验
+- 基线：后端 543 tests / 前端 66f/576t 四连全绿（576=运行口径，静态 568）；清单 ✅12/🟦37/⬜41 共90行；Flyway V1-V30、H2 真实全链口径 30
 - 执行约束：本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行，禁并行编译（已入宪法）
-- 候选池：M01/M02 虚高补齐、M07 补全（前端管理页等）、M07-F03/F04 新功能、IoT/OpenAPI、小项池（I47/I26/I49——I51 已修复关闭）
+- 候选池：M01/M02 虚高补齐、M07 补全（前端管理页等）、M07-F03/F04 新功能、IoT/OpenAPI、小项池（I49 菜单授权/数据权限遗留/停用即时生效——I51、I26、I47 已修复关闭）
 
-最新归档：product/bpm-plugin-architecture/passed/ + receipts/（D82 验收裁定见 memory/decisions.md）；最新下发：无（待选下一方向）
+最新归档：product/bpm-h2-v8-compat/passed/ + receipts/（D88 验收裁定见 memory/decisions.md）；最新下发：direction-post-sync-correction.md（2026-08-18，阶段三知识同步收尾修正）
 ```
 
 ---
 
-> 最后更新：2026-08-16
-> 最新完成功能：**bpm-plugin-architecture** — M04-F08-01 BPM 可插拔机制（**COMPLETED** ✅，D81/D82 PASSED）+ **D83 探索三回执落库**（known-issues/current-status/todo 同步完成）
-> 上一功能：**data-scope-enforcement** — 五档数据权限（**COMPLETED** ✅，D79 PASSED）
-> 测试基线：后端 CONFIRMED 527 tests · 前端 CONFIRMED 66 files / 569 tests（运行口径，静态 561；四连全绿）
-> 无进行中功能
+> 最后更新：2026-08-18
+> 最新完成功能：**bpm-h2-v8-compat** — P10/I47 BPM H2 V8 迁移链兼容修复（**COMPLETED** ✅，D87/D88 PASSED）+ 阶段三知识同步收尾修正（D89）
+> 上一功能：**sysrole-v5-column-alignment** — P13/I26 SysRole 与 V5 列契约对齐（**COMPLETED** ✅，D86 PASSED）
+> 测试基线：后端 CONFIRMED 543 tests · 前端 CONFIRMED 66 files / 576 tests（运行口径，静态 568；四连全绿）
+> 无进行中业务功能

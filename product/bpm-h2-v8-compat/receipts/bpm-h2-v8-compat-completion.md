@@ -1,6 +1,6 @@
 # 功能级完成回执：P10 / I47 BPM H2 V8 迁移链兼容性修复（bpm-h2-v8-compat）
 
-- **方向文档**：`product/bpm-h2-v8-compat/ready/direction-bpm-h2-v8-compat.md`
+- **方向文档**：`product/bpm-h2-v8-compat/passed/direction-bpm-h2-v8-compat.md`（2026-08-17 规划层最终验收 PASSED 后由 `ready/` 归档，D87/D88）
 - **探索依据**：`search_fallback/known-issues-verification.md`、`search_fallback/baseline-static-recount.md`、`memory/issues.md`、`memory/state.md`（方向文档 §探索依据）；执行层自主探索（1 Explore subagent，8 问全答）
 - **执行日期**：2026-08-17
 - **执行方式**：执行层自主闭环——①探索（1 Sub Agent，I47 全事实确认）→ ②代码修复 + 测试基建 + 模块级自测（1 Sub Agent，`MAVEN_OPTS="-Xmx2g"`）→ ③项目级全量回归（主会话，测试回执见同目录 `bpm-h2-v8-compat-test.md`）→ ④知识库全量同步 + 本回执
@@ -68,10 +68,10 @@ Git diff 摘要：3 文件修改 **+39/−5** + 2 新文件（214 行 + 227 行�
 **触碰文件清单**：
 - 代码/测试（后端工作区）：`db/migration/bpm/h2/V8__init_bpm_metadata.sql`（改）、`schema-h2.sql`（改）、`sw-bootstrap/pom.xml`（改）、`BpmFormBindingServiceImplTest.java`（新）、`FlywayFullChainH2Test.java`（新）——共 5 文件
 - knowledge：`known-issues.md`（I47 ✅ 已修复）、`current-status.md`（§1 整体概览/§4 进行中/§5 已完成 18→19/§9 测试基线 527→543 + Flyway 口径 28→30）、`features/bpm-h2-v8-compat.md`（新建）、`session-handoff.md`（§1 新条目）
-- todo：`requirement-pool.md`（P10 待排期 → ✅ 已修复，待规划层验收；I47 同步核销）
+- todo：`requirement-pool.md`（P10 待排期 → ✅ 已核销，D88 最终验收 PASSED；I47 同步关闭）
 - memory（压缩索引）：由规划层在最终验收时按 §7.3 落盘（features/state/handoff/issues）
 
-**结论**：P10/I47 修复闭环完成，验收方向 6 条全部满足（逐条对照见下）。功能状态**保持未 PASSED**，等待规划层最终验收；验收通过前不归档至 `passed/`。
+**结论**：P10/I47 修复闭环完成，验收方向 6 条全部满足（逐条对照见下）。规划层最终验收（D88，2026-08-17）：**PASSED**，六项验收方向全部满足；PG 侧运行期联调为零改动侧低风险遗留，不阻塞。方向文档已归档至 `product/bpm-h2-v8-compat/passed/`。后续阶段三知识同步收尾修正（D89，2026-08-18）：见 `receipts/post-sync-correction.md`。
 
 ## 6. 验收方向逐项对照
 
