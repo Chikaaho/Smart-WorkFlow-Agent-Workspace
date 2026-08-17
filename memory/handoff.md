@@ -69,7 +69,9 @@
 
 ## 进行中
 
-**（无进行中功能）**：bpm-h2-v8-compat 已 PASSED 并归档。
+**（无进行中功能）**：bpm-h2-v8-compat 及其阶段三知识同步收尾修正均已 PASSED 并归档（D88/D90）。
+
+**历史功能追踪终态清理 PASSED（D91/D92，2026-08-18）**：`knowledge/features/` 18 个非模板文件全量核对，修正 sysrole/status-semantics/bpm-plugin/data-scope 四个旧终态，旧状态词零残留；功能清单与代码零改动。
 
 **流程基线（D74，已生效并首跑验证）**：system.md §3.3 第10项——每轮需求收尾必须由执行层做知识库全量同步（功能清单.md+current-status+features+known-issues，回执报告清单变更明细+触碰文件清单），规划层验收逐项核对。
 
@@ -110,9 +112,9 @@
 
 最新状态：
 - bpm-h2-v8-compat（P10/I47）**PASSED（D87/D88，2026-08-17）**——BPM H2 V8 partial index 以生成列 active_key + 唯一索引等价实现，PG V8 零改动；永久 FlywayFullChainH2Test 7 目录 30 条迁移（口径 28→30）；后端 543/0/0（527+16）；I47/P10 已核销，P12 已核销（sw-bootstrap 测试基建落地）
-- 阶段三知识同步收尾修正（D89，2026-08-18）：一致性审计（search_fallback/p10-post-sync-consistency-audit.md）发现 knowledge/需求池/回执/memory 中下部残留；执行层修正 9 文件后提交 receipts/post-sync-correction.md，规划层复验
+- 阶段三知识同步收尾修正（D89/D90，2026-08-18）**PASSED**：执行层修正 9 个指定文件并完成全文复核，规划层六项验收通过；另有 3 个独立历史功能追踪文件状态欠账待单独清理
 - 基线：后端 543 tests / 前端 66f/576t 四连全绿（576=运行口径，静态 568）；清单 ✅12/🟦37/⬜41 共90行；Flyway V1-V30、H2 真实全链口径 30
 - 执行约束：本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行，禁并行编译
 
-最新归档：product/bpm-h2-v8-compat/passed/ + receipts/（D88 验收裁定见 memory/decisions.md）；最新下发：direction-post-sync-correction.md（2026-08-18，阶段三知识同步收尾修正）
+最新归档：product/bpm-h2-v8-compat/passed/ + receipts/（业务验收 D88、知识同步复验 D90，见 memory/decisions.md）
 ```
