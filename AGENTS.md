@@ -80,3 +80,12 @@ Claude's `.claude/settings*.json` permission modes apply only to Claude.  They
 do not override Codex's own approval, sandbox, safety, or user-authority
 requirements.  All substantive behavior rules in the canonical documents do
 apply to Codex.
+
+## Git commit language
+
+Codex must write Git commit subjects and bodies in Chinese by default.  Keep
+necessary technical identifiers such as module names, class names, commands,
+issue IDs, and conventional prefixes (`feat:`, `fix:`, `docs:`) unchanged when
+useful, but the descriptive commit message itself must not be purely English.
+Do not rewrite published history solely to enforce this rule unless the user
+explicitly authorizes the history rewrite and required force-push.
