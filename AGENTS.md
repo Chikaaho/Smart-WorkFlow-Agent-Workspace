@@ -1,6 +1,9 @@
 # Smart-WorkFlow workspace · Codex instructions
 
-This is the Codex entry point for the planning-layer workspace.  It is not a
+This is the Codex entry point for the workspace.  The entire workspace is the
+**planning layer**: `knowledge/`, `memory/`, `product/`, `search_task/`,
+`search_fallback/`, and `todo/` are all planning-layer resources.  The backend
+and frontend repositories are its two executor sublayers.  This file is not a
 second constitution: the referenced source documents remain authoritative and
 must not be copied or silently weakened here.
 
@@ -23,11 +26,11 @@ The workspace constitution defines `规划` (Planner), `执行` (Executor), and
 by that constitution when it has not already been declared.  A role remains in
 force for the task/session until the user changes it.
 
-- This repository is the planning, knowledge, and governance layer.  Its
-  `system.md` controls permitted reads, writes, and workflow.
-- `../Smart-WorkFlow/` is backend-executor scope only; use its local
+- This repository is the workspace's planning layer.  Its `system.md`
+  controls permitted reads, writes, and workflow for all planning resources.
+- `../Smart-WorkFlow/` is the backend executor sublayer; use its local
   `AGENTS.md` and engineering constitution for backend execution.
-- `../Smart-WorkFlow-Web/` is frontend-executor scope only; use its local
+- `../Smart-WorkFlow-Web/` is the frontend executor sublayer; use its local
   `AGENTS.md` and engineering constitution for frontend execution.
 
 Never read, edit, build, or test the other code project from an executor task.
