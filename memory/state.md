@@ -4,9 +4,11 @@
 
 ## 进行中功能
 
-**（无进行中业务功能）**：bpm-h2-v8-compat（P10 / I47）已 PASSED 并归档；阶段三知识同步收尾修正进行中（D89）。
+**（无进行中业务功能）**：bpm-h2-v8-compat（P10 / I47）及其阶段三知识同步收尾修正均已 `PASSED` 并归档。
 
-**阶段三收尾修正 READY（2026-08-18，D89）**：一致性审计（`search_fallback/p10-post-sync-consistency-audit.md`）发现 knowledge、需求池、完成回执和 memory 中下部仍有旧状态残留；已下发 `product/bpm-h2-v8-compat/ready/direction-post-sync-correction.md`。该修正不重新打开业务实现，不改变 D88 `PASSED` 判定。
+**知识清理任务 PASSED（2026-08-18，D91/D92）**：执行层完成 `knowledge/features/` 18 个非模板文件 100% 扫描，修正 sysrole、status-semantics、bpm-plugin 三个已知欠账，并额外发现和修正 data-scope-enforcement；旧终态词全文零残留。功能清单、代码、测试、迁移零改动，未建立 P/I 编号。归档：`product/feature-tracking-terminal-state-cleanup/passed/`。
+
+**阶段三收尾修正 PASSED（2026-08-18，D89/D90）**：执行层已按一致性审计修正 9 个指定文件并完成全文复核；规划层六项验收通过。同步回执：`product/bpm-h2-v8-compat/receipts/post-sync-correction.md`。另披露 3 个独立历史欠账（sysrole/status-semantics/bpm-plugin 功能追踪文件仍有待验收旧状态），不属于 P10/D89 范围，待单独清理。
 
 ## 最新已完成
 
