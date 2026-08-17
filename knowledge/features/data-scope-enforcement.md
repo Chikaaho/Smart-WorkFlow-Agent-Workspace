@@ -13,7 +13,7 @@
 | 功能名称 | 数据权限（数据范围控制：本人/本部门/本部门及下级/自定义部门/全部） |
 | 功能目标 | 五档数据范围端到端生效：登录装配去硬编码（多角色取最宽）+ 7 表查询纳管 + 前端角色页五档配置 |
 | 创建日期 | 2026-08-13（探索）/ 2026-08-14（方向下发 D77） |
-| 当前状态 | COMPLETED ✅（执行层自验，提请规划层最终验收） |
+| 当前状态 | **COMPLETED ✅（D79 规划层最终验收 PASSED，2026-08-15；归档 `product/data-scope-enforcement/passed/`）** |
 | 涉及模块 | 后端 `sw-security`（登录装配）、`sw-common` datascope 包（DeptScopeProviderImpl）、`sw-biz-system`（Role CRUD + sys_role_dept）、`sw-bootstrap`（Flyway V30）、各纳管模块 Mapper（sw-bpm / sw-basic-agent / sw-basic-job / sw-basic-storage）；前端 `modules/system`（RoleList） |
 
 ---
