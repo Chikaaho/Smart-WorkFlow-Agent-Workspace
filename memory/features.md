@@ -4,7 +4,7 @@
 
 | 功能 | 模块 | 状态 | 当前 Step | 备注 |
 |------|------|:---:|------|------|
-| bpm-plugin-architecture | M04-F08-01 | **COMPLETED** | 功能级 PASSED（D81/D82，2026-08-16） | BPM 可插拔机制纯重构轮：后端 B1-B3（NodeTypeRegistry 4 预留位扩充/GraphToBpmnTranslator switch→NodeTypeTranslator SPI 注册表翻译/可插拔性证明 TEST_NODE）+前端 F1-F3（DynamicField 8 控件 registry 化/GraphDesigner 属性面板注册表/EMAIL+PROBE 测试证明）；后端521→527/前端63f552t→66f569t；Flyway 零迁移；I47/I48 正式登记（悬空引用清理）。D82 验收批准披露偏差 2 项（⑤adapter SPI 按现状裁定：外部数据源/通知子系统不注册表化；typecheck/build 1024M 例外基线反证环境性）。回执 `product/bpm-plugin-architecture/receipts/` |
+| bpm-plugin-architecture | M04-F08-01 | **COMPLETED** | 功能级 PASSED（D81/D82，2026-08-16） | BPM 可插拔机制纯重构轮：后端 B1-B3（NodeTypeRegistry 4 预留位扩充/GraphToBpmnTranslator switch→NodeTypeTranslator SPI 注册表翻译/可插拔性证明 TEST_NODE）+前端 F1-F3（DynamicField 8 控件 registry 化/GraphDesigner 属性面板/EMAIL+PROBE 测试）；后端521→527/前端63f552t→66f569t；Flyway 零迁移；I47/I48 已登记。adapter SPI 偏差经 D82 裁定；历史前端内存例外已于 2026-08-17 在正式 2G 上限下四连补验关闭。回执 `product/bpm-plugin-architecture/receipts/` |
 | data-scope-enforcement | M02-F04-01 | **COMPLETED** | 功能级 PASSED（D77/D79，2026-08-15） | 数据权限五档端到端落地：装配去硬编码（多角色最宽+CUSTOM并集）+DeptScopeProviderImpl 递归（@Lazy破环）+V30 sys_role_dept+7表纳管（仅sys_user可@DataScope直标，余6表自定义Mapper等效条件+DataScopeFilter传参）+前端角色页五档+部门树；后端435→521（+86）/前端63f/552t持平；手写SQL通道不纳管已记 I46 |
 | checklist-gap-hardening | M01/M10 | **COMPLETED** | 第一批 PASSED（D74-D76，2026-08-13） | I33 停用登录/refresh 双入口拦截 + I43/I44 V29 job/storage 生产菜单 seed；后端426→435（源码口径+10新测）/前端零改动；§3.3第10项知识库同步首跑；后续批次（DataScope 等）另行规划 |
 | agent-model-orchestration | M07-F01/F02/F04 | **COMPLETED** | Step1-12 全部 PASSED（D53-D71） | 后端405→426（+21）/前端63f552t不变（本轮未做前端）；Step12=执行历史持久化：V27/V28双表+解释器轨迹采集(branchId/nodeSeq)+错误分类8类+查询端点；todo 池剩余：单步调试、图节点级多Key轮询、F03知识库RAG |

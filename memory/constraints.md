@@ -32,4 +32,4 @@
 - 所有探索：规划角色写 search_task → 执行角色探索 → 写 search_fallback → 规划角色读取
 - 前后端 Step 严格分离（一个 Step 不跨前后端）
 - 禁执行代理诱导规划、预告下一 Step
-- 编译命令限内存：mvn/pnpm/npm 等每种编译工具上限 512M（`MAVEN_OPTS="-Xmx512m"` / `NODE_OPTIONS="--max-old-space-size=512"`）
+- 编译命令限内存：mvn/pnpm/npm 等每种编译工具上限 2G（`MAVEN_OPTS="-Xmx2g"` / `NODE_OPTIONS="--max-old-space-size=2048"`）

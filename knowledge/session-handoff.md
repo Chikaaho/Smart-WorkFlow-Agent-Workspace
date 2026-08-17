@@ -16,9 +16,9 @@
 方向 D80（2026-08-15）下发，执行层自主拆 6 Step 闭环（2026-08-16）：
 - 后端 3 Step：B1 NodeTypeRegistry 扩充完整注册骨架（CONDITION/EXCLUSIVE_GATEWAY/PARALLEL_GATEWAY/JOIN_GATEWAY 预留位）；B2 GraphToBpmnTranslator switch→注册表翻译（NodeTypeTranslator SPI + Map 分发，落点裁定 engine 内部不污染 -api）；B3 可插拔性证明（TEST_NODE→ServiceTask 零改动即翻译）+ adapter 审视结论（外部数据源/通知子系统不注册表化，避免过度抽象）
 - 前端 3 Step：F1 DynamicField 8 类控件渲染链 registry 化（9 控件组件 + dynamic-field-registry.ts，主链/子表共用）；F2 GraphDesigner 属性面板注册表化（8 面板组件 + node-panel-registry.ts）；F3 可插拔性证明（EMAIL 控件/PROBE 面板测试注册零改动即渲染）
-- 测试门：后端 **527 tests** 全绿（mvn BUILD SUCCESS，521+6）；前端 **66f/569t** 四连全绿（63f/552t +3f/+17t；typecheck/build 一次性 1024M 内存例外——512M 下基线同样 OOM 属环境问题）
+- 测试门：后端 **527 tests** 全绿（mvn BUILD SUCCESS，521+6）；前端 **66f/569t** 四连全绿。2026-08-17 已在正式 2G 上限下补跑 typecheck/lint/test/build，全部退出 0，测试计数持平；历史 512M OOM/1024M 临时例外已被新约束取代。
 - Flyway 零迁移；知识库全量同步完成（清单 M04-F08-01 ⬜→✅ 终态 ✅12/🟦37/⬜41、I47/I48 正式登记清悬空引用）
-- 规划层最终验收 **D82 PASSED**（2026-08-16）：5 项验收标准全满足；批准披露偏差 2 项（adapter SPI 按现状裁定/1024M 例外环境性）
+- 规划层最终验收 **D82 PASSED**（2026-08-16）：5 项验收标准全满足；其中历史内存例外已于 2026-08-17 通过 2G 正式上限四连补验关闭。
 - 归档：`product/bpm-plugin-architecture/passed/` + `receipts/bpm-plugin-architecture-completion.md`
 
 **D83 探索三回执 + knowledge 欠账补齐（2026-08-16）**

@@ -59,7 +59,7 @@
 | **本质** | 探索与落地——只执行不规划 |
 | **允许读取** | 全部目录：`knowledge/`、`product/`、`memory/`、`search_task/`、`search_fallback/`、`system.md`、`todo/`、两端代码 |
 | **允许写入** | `knowledge/`（完整知识库）、`search_fallback/`（探索回执）、`product/`（receipts/ 回执）、自己项目的代码（后端 `Smart-WorkFlow/` 或前端 `Smart-WorkFlow-Web/`） |
-| **允许执行** | 自己项目的编译/测试命令：后端 `mvn` 系（`MAVEN_OPTS="-Xmx512m"`）、前端 `pnpm`/`npm` 系（`NODE_OPTIONS="--max-old-space-size=512"`） |
+| **允许执行** | 自己项目的编译/测试命令：后端 `mvn` 系（`MAVEN_OPTS="-Xmx2g"`）、前端 `pnpm`/`npm` 系（`NODE_OPTIONS="--max-old-space-size=2048"`） |
 | **核心职责** | 探索代码、执行任务、根据需求方向自循环迭代验收（自行拆 Step、自主执行/修复/验收）、更新知识库（knowledge/）、压缩记忆（search_fallback/）、写执行回执和测试回执 |
 | **禁止事项** | 制定/修改需求方向（目标/非目标/范围层面）；诱导用户规划、预告或征询下一个 Step；跨项目读写（后端会话碰前端、前端会话碰后端）；静默改变用户目标、擅自扩大范围、降低验收标准；无证据标记完成 |
 | **上下文策略** | **限定范围**（读取完成任务所需代码，禁止无目标扫描所有目录） |

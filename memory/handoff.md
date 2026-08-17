@@ -8,11 +8,11 @@
 - 方向 D80（2026-08-15）下发，执行层自主拆 6 Step（前后端双会话，一个 Step 不跨前后端）：
   - 后端 B1-B3（提交 `7dacc3f`/`dd59896`/`b9adaba`）：NodeTypeRegistry 扩充完整注册骨架（CONDITION/EXCLUSIVE_GATEWAY/PARALLEL_GATEWAY/JOIN_GATEWAY 预留位，START/END/APPROVAL 不动）→ GraphToBpmnTranslator switch→注册表翻译（`NodeTypeTranslator` SPI + `Map<String,NodeTypeTranslator>` 分发，落点裁定：签名引 Flowable 故置 engine 内部不污染 sw-bpm-api）+ 可插拔性证明（TEST_NODE→ServiceTask 测试注册零改动即翻译）；B3 adapter 审视结论：外部数据源执行/通知子系统属独立子系统/事件总线模式，注册表化属过度抽象不纳入
   - 前端 F1-F3（提交 `a56c5eb`/`ba144ce`/`3d6fa51`）：DynamicField 8 类控件渲染链 registry 化（9 控件组件 + `dynamic-field-registry.ts`，主链/子表共用注册表）→ GraphDesigner 属性面板注册表化（8 面板组件 + `node-panel-registry.ts` `<component :is>` 动态挂载）→ 可插拔性证明（EMAIL 控件/PROBE 面板测试注册零改动即渲染）
-- 测试门：后端 **527/0/0**（521+6，mvn BUILD SUCCESS 12:07min）；前端 **66f/569t** 四连全绿（63f/552t +3f/+17t；typecheck/build 一次性 1024M 例外——512M 下基线 HEAD 同样 OOM 属本机 1.6G 内存环境问题，非代码回归）；**Flyway 零迁移**（符合方向预期）。
+- 测试门：后端 **527/0/0**（521+6，mvn BUILD SUCCESS 12:07min）；前端 **66f/569t** 四连全绿（63f/552t +3f/+17t）。历史执行时使用 1024M 临时例外；2026-08-17 已由正式 2G 上限四连补验关闭。**Flyway 零迁移**（符合方向预期）。
 - 知识库同步合格（§3.3 第10项）：清单 M04-F08-01 ⬜→✅（终态 **✅12/🟦37/⬜41 共90行**）、features 更新、**I47/I48 正式登记**（悬空引用清理：I47=bpm/h2 V8 partial index 中·待排期；I48=flow-graph adapter 限制 低·绕行生效）、current-status/session-handoff 同步。
 - 执行约束（本轮新增，后续沿用）：本机物理内存 1.6G——**mvn 与 pnpm/npm 编译严格串行**，禁并行编译。
 - 归档：`product/bpm-plugin-architecture/passed/direction-bpm-plugin-architecture.md` + `receipts/bpm-plugin-architecture-completion.md`（含 5 项验收标准逐项对照）
-- **规划层最终验收（D82）：PASSED**——5 项标准全满足；批准披露偏差 2 项：⑤adapter SPI 按现状裁定（外部数据源执行/通知子系统不注册表化=过度抽象，节点处理 adapter=翻译器注册表已落，方向精神达成）+typecheck/build 1024M 例外环境性（stash 基线 HEAD 512M 同 OOM 反证非回归）；新宪法条款「前后端编译互斥」已入库；I47/I48 登记确认（悬空引用清理完毕）。
+- **规划层最终验收（D82）：PASSED**——5 项标准全满足；adapter SPI 按现状裁定（外部数据源执行/通知子系统不注册表化=过度抽象，节点处理 adapter=翻译器注册表已落，方向精神达成）；历史 typecheck/build 内存例外已于 2026-08-17 由正式 2G 上限四连补验关闭；前后端编译互斥已入库；I47/I48 登记确认。
 
 **data-scope-enforcement（M02-F04-01 数据权限完整落地）：PASSED（D77/D79，2026-08-15）✅**
 - 范围（D77）：五档数据权限端到端落地——①装配去硬编码（`UserDetailsProviderImpl` 读 SysRole.dataScope，多角色取最宽 ALL>DEPT_AND_CHILD>CUSTOM>DEPT>SELF，CUSTOM 取关联部门并集，无角色兜底 ALL 沿历史行为）；②`DeptScopeProviderImpl` Java 递归实现（不加 ancestors 列；@Lazy 破生产级拦截器依赖环）；③Flyway **V30** `sys_role_dept` h2/pg 双份+角色 CRUD 读写关联；④7 表纳管（sys_user 唯一可 @DataScope 直标——Handler 实测仅支持 dept_id/create_by 硬编码列；余 6 表自定义 Mapper 等效条件+`DataScopeFilter.resolve` 传参；不纳 6 表各有理由）；⑤前端 RoleList.vue 五档下拉+CUSTOM 部门树多选+回填。
@@ -55,7 +55,7 @@
 ## 当前基线
 
 - 后端：项目级 **527 tests**（源码口径，CONFIRMED 2026-08-16 mvn 全量 BUILD SUCCESS / 0 failures，521+6：B1 +3/B2 +1/B3 +2 自洽，12:07min）
-- 前端：**66 spec files / 569 tests**，四连全绿（CONFIRMED 2026-08-16；typecheck/build 一次性 1024M 例外——512M 下基线同样 OOM 属本机 1.6G 内存环境问题；512M 硬约束不变）
+- 前端：**66 spec files / 569 tests**，四连全绿（CONFIRMED 2026-08-17；正式 2G 上限下 typecheck/lint/test/build 全部退出 0，历史内存例外关闭）
 - 功能清单：**✅12 / 🟦37 / ⬜41，共 90 行**（2026-08-16 同步）
 - Flyway：root 路径 V30 已占用；迁移链冒烟口径 **28**（含 form V12）
 - 已完成功能：16 个（features.md 口径，含 bpm-plugin-architecture）
@@ -88,7 +88,7 @@
 你是 Smart-WorkFlow 根目录规划代理。请按 system.md §10 执行新会话恢复。
 
 最新状态：
-- bpm-plugin-architecture（M04-F08-01）**PASSED（D81/D82，2026-08-16）**——纯重构轮闭环已验收归档 passed/+receipts/；批准披露偏差 2 项（adapter SPI 按现状裁定/1024M 例外环境性）；I47/I48 已正式登记（悬空引用清理完毕）；**待规划层选下一方向**
+- bpm-plugin-architecture（M04-F08-01）**PASSED（D81/D82，2026-08-16）**——纯重构轮闭环已验收归档 passed/+receipts/；adapter SPI 偏差已裁定，历史内存例外已于 2026-08-17 补验关闭；I47/I48 已正式登记；**待规划层选下一方向**
 - data-scope-enforcement PASSED（D77/D79，2026-08-15）：五档数据权限端到端落地，后端435→521；I46 登记；编号裁定 flow-graph adapter 改号 I48
 - checklist-gap-hardening 第一批 PASSED（D74-D76，2026-08-13）：I33/I43/I44
 - 流程基线：system.md §3.3 第10项知识库全量同步（D74）+ 三角色制宪法（D78）
