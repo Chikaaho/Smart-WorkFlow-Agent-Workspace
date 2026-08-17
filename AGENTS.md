@@ -20,6 +20,22 @@ its role-specific scope, handoff, receipt, and permission rules.  A role is
 valid only for the current task/session and must not be carried into a new
 session.
 
+## Workspace root and executor-scope clarification
+
+This file is located at the workspace root, `/usr/local/projects/Smart-WorkFlow`.
+The workspace root is not itself the backend executor sublayer, even though its
+name matches the nested backend repository.  The two executor sublayers are:
+
+- Backend: `/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow`
+- Frontend: `/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Web`
+
+Declaring the `执行` (Executor) role grants the constitution's execution
+capabilities, including implementation, compilation, testing, receipts,
+knowledge updates, and memory compression.  It does not by itself select the
+backend sublayer.  Determine the scope from the issued task or direction
+document first, then enter and obey the matching sublayer constitution.  Do not
+infer backend scope merely from the workspace root path or its directory name.
+
 This is the Codex entry point for the workspace.  The entire workspace is the
 **planning layer**: `knowledge/`, `memory/`, `product/`, `search_task/`,
 `search_fallback/`, and `todo/` are all planning-layer resources.  The backend
@@ -31,8 +47,8 @@ must not be copied or silently weakened here.
 
 - Workspace constitution: `system.md`.
 - Claude memory: `.claude/memory/`.
-- Backend engineering constitution: `../Smart-WorkFlow/.claude/system.md`.
-- Frontend engineering constitution: `../Smart-WorkFlow-Web/.claude/system.md`.
+- Backend engineering constitution: `Smart-WorkFlow/.claude/system.md`.
+- Frontend engineering constitution: `Smart-WorkFlow-Web/.claude/system.md`.
 
 Before doing work, identify the task scope and read the matching canonical
 document.  If the task spans multiple scopes, do not treat that as permission
@@ -48,9 +64,9 @@ force for the task/session until the user changes it.
 
 - This repository is the workspace's planning layer.  Its `system.md`
   controls permitted reads, writes, and workflow for all planning resources.
-- `../Smart-WorkFlow/` is the backend executor sublayer; use its local
+- `Smart-WorkFlow/` is the backend executor sublayer; use its local
   `AGENTS.md` and engineering constitution for backend execution.
-- `../Smart-WorkFlow-Web/` is the frontend executor sublayer; use its local
+- `Smart-WorkFlow-Web/` is the frontend executor sublayer; use its local
   `AGENTS.md` and engineering constitution for frontend execution.
 
 Never read, edit, build, or test the other code project from an executor task.
