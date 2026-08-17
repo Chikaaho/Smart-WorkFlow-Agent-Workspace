@@ -19,7 +19,7 @@
 | 核心路径 | Walking Skeleton：登录 → 表单 → 审批 → 通知 ✅ 四环全部闭合 |
 | 功能清单 | 10 模块，55 功能，**90** 明细（CONFIRMED 2026-07-23，此前记为 88，M10 差 1 条已更正——见 [[shared-constraints]] §5；2026-08-14 新增 M04-F08-01 登记，总表 55 功能/90 明细）；`Smart-WorkFlow/功能清单.md` 为权威清单，状态标记已与代码实际进度对齐：✅17/🟦12/⬜60（2026-07-24 [[feature-checklist-sync]]，I1 修复）→ ✅7/🟦40/⬜42（2026-08-12 Step5 二次核实与同步）→ ✅10/🟦37/⬜42（2026-08-13 checklist-gap-hardening 第一批：I33/I43/I44 修复后回升 3 行）→ ✅10/🟦37/⬜43（M04-F08-01 新增 ⬜ 登记后，90 行口径）→ **✅11/🟦37/⬜42**（2026-08-15 data-scope-enforcement：M02-F04-01 ⬜→✅。注：batch1 回执"总 89/⬜42"为 89 行口径，全表现 90 行）→ **✅12/🟦37/⬜41**（2026-08-16 bpm-plugin-architecture：M04-F08-01 ⬜→✅，90 行口径） |
 | 测试基线 | 后端：项目级 **527 tests / 0 failures / 0 errors**（CONFIRMED 2026-08-16 bpm-plugin-architecture，521 + 6）。前端：**66 spec files / 576 tests / 0 failures**（CONFIRMED 2026-08-17 status-semantics-alignment，569 + 7：UserList.spec +5 / DeptList.spec +2，均为 status 提交与回填语义用例）。以 `NODE_OPTIONS="--max-old-space-size=2048"` 完整执行 typecheck / lint / test / build，四连退出码均为 0。历史 512M OOM 与一次性 1024M 例外已由 2G 正式约束取代，不再是当前欠账。**注：576 为运行口径，静态计数 568（+8 为 tokens.spec.ts 循环展开）**。 |
-| 前次验证 | 2026-08-17 status-semantics-alignment 闭环：I51 前端 status 语义对齐修复轮，前端四连全绿——typecheck ✅、lint ✅、test **66 files / 576 tests** ✅（569 → +7）、build ✅；全部退出码 0。构建仅出现已登记的 `@vueuse/core INVALID_ANNOTATION` 第三方警告，不影响退出码或产物。后端零修改、未构建、未测试。此前 2026-08-16 bpm-plugin-architecture 闭环：后端 527/0/0、前端 66f/569t、Flyway 零迁移、清单 ✅12/🟦37/⬜41。 |
+| 前次验证 | 2026-08-17 sysrole-v5-column-alignment 闭环（P13/I26 后端修复轮）：后端 `MAVEN_OPTS="-Xmx2g" mvn test` BUILD SUCCESS 31/31 模块，**527 tests / 0 failures / 0 errors** 与基线持平（sw-biz-system-biz 模块 111/0/0，RoleDataScopeTest/UserDetailsProviderDataScopeTest/AuthFlowIntegrationTest 等 5 个关键测试类全 PASSED）；SysRole 实体与全部触达 `sys_role` 的测试 DDL 已对齐 V5 链尾 `built_in`/`remark`，MP 生成 SQL 原文证据闭合。此前 2026-08-17 status-semantics-alignment 闭环：前端四连全绿 typecheck ✅、lint ✅、test **66 files / 576 tests** ✅（569 → +7）、build ✅；全部退出码 0。构建仅出现已登记的 `@vueuse/core INVALID_ANNOTATION` 第三方警告，不影响退出码或产物。后端零修改、未构建、未测试。此前 2026-08-16 bpm-plugin-architecture 闭环：后端 527/0/0、前端 66f/569t、Flyway 零迁移、清单 ✅12/🟦37/⬜41。 |
 
 ---
 
@@ -103,9 +103,9 @@
 
 ## 4. 进行中的功能
 
-> 最后更新：2026-08-16
+> 最后更新：2026-08-17
 
-**无进行中功能**（bpm-plugin-architecture 已于 D82 最终验收 PASSED 归档，2026-08-16）。历史条目：
+**sysrole-v5-column-alignment（P13 / I26）：执行层自验收完成（2026-08-17），待规划层最终验收**——SysRole 实体与测试 DDL 已对齐 V5 链尾 `built_in`/`remark`，后端全量 527/0/0 全绿；方向文档 `product/sysrole-v5-column-alignment/ready/`，完成回执 `product/sysrole-v5-column-alignment/receipts/`。历史条目：
 
 | 功能 | 状态 | 说明 |
 |------|:---:|------|
@@ -117,7 +117,7 @@
 
 ## 5. 已完成的功能
 
-> 最后更新：2026-08-16（16 个功能）
+> 最后更新：2026-08-17（18 个功能；此前 status-semantics-alignment 轮未更新标题计数，D85 全量同步一并修正 16→17→18）
 
 | 功能编号 | 功能名称 | 最终状态 | 完成日期 | 说明 |
 |----------|----------|:--------:|:--------:|------|
@@ -138,6 +138,7 @@
 | agent-model-orchestration | M07-F01/F02/F04 大模型管理 + 图设计器 + 多轮会话（F01 Steps 1-5 + F02 Steps 6-12 + F04 会话持久化） | **COMPLETED** ✅ | 2026-08-12 | Steps 1-12 全部 PASSED（D53-D71）：模型管理/AES 加密/连通性测试 → LangGraph4j 编排引擎 → 工具沙箱 → 多轮会话（V21-V23）→ 多Key轮询/额度限流 → 图定义 CRUD+发布骨架 → AgentGraphInterpreter 解释执行 → 前端图设计器（V26 菜单）→ 多变量执行上下文 → 并行/循环节点（LOOP/FORK/JOIN）→ 执行历史持久化（V27/V28）。后端 262→426 tests；前端 60f/521t→63f/552t。详情 `product/agent-model-orchestration/passed/` |
 | bpm-plugin-architecture | M04-F08-01 BPM 可插拔机制（节点/控件/翻译器注册表化） | **COMPLETED** ✅ | 2026-08-16 | 6 Step 闭环（D81 执行层闭环 + D82 规划层验收 PASSED）：后端 NodeTypeRegistry +4 预留位 + GraphToBpmnTranslator switch→NodeTypeTranslator SPI 注册表翻译 + TEST_NODE 可插拔性证明；前端 DynamicField 9 控件 + 8 节点面板双注册表 + EMAIL/PROBE 证明。后端 521→527、前端 63f/552t→66f/569t；Flyway 零迁移。详情 `product/bpm-plugin-architecture/passed/` |
 | status-semantics-alignment | I51 前端 status 语义对齐（用户/部门页与后端契约一致） | **COMPLETED** ✅ | 2026-08-17 | 修复轮闭环（方向 `product/status-semantics-alignment/ready/`）：前端单项目。后端契约核实（用户 0=正常/1=停用/2=锁定、部门 0=正常/1=停用；角色/岗位 1=启用/0=停用 与前端现状一致故未动）。UserList/DeptList 默认值/选择项/筛选/展示按后端契约修正（新建默认 0=正常），新增集中常量 `modules/system/constants.ts`（仅服务用户/部门页），mock 种子与 create 默认值、user/dept API spec 夹具同步，新增 7 测试（提交/回填语义）。前端 66f/569t→**66f/576t** 四连全绿；后端零修改；清单状态列无变化。详情 `product/status-semantics-alignment/` |
+| sysrole-v5-column-alignment | P13/I26 SysRole 与 V5 列契约对齐（实体/测试 DDL → `built_in`/`remark`） | **COMPLETED** ✅ | 2026-08-17 | 修复轮闭环（方向 `product/sysrole-v5-column-alignment/ready/`，待规划层最终验收）：后端单功能。`SysRole.java:47,51` 两处 `@TableField` 改 `built_in`/`remark`（字段名/JSON 键不变）→ 测试契约对齐 V5 链尾：`schema-datascope-h2.sql`（列名/类型/唯一索引含 V13 deleted 形态、头注释失真口径修正）、`AuthFlowIntegrationTest.java`（内建表/索引/INSERT/注释）。全仓 grep `is_builtin` 主代码/测试零残留。验证：sw-biz-system-biz 模块 111/0/0 + 项目级全量 **527/0/0**（MAVEN_OPTS=-Xmx2g，BUILD SUCCESS 31/31 模块，与基线持平）；MP 生成 SQL 原文含 `built_in`/`remark AS description` 双向闭合。Flyway 零迁移；前端零改动；P10/P12 未触碰（H2 真全链验证仍受 I47 阻断，如实分离）。清单状态列无变化（M02-F01-01 缺口=绑定写入等，非本轮范围）。详情 `product/sysrole-v5-column-alignment/` |
 
 ---
 
@@ -214,7 +215,7 @@
 
 | 项目 | 校验命令 | 当前状态 |
 |------|----------|----------|
-| 后端 | `mvn -q compile && mvn -q test` | **CONFIRMED**（2026-08-15 data-scope-enforcement 验证）：`mvn test` BUILD SUCCESS，**521 tests / 0 failures / 0 errors**（435 基线 + data-scope-enforcement 新增 86 = 521）。演进：465（2026-07-28 process-monitoring Step 2 独立验收，surefire XML 跨模块合计，含 Step 1 +15 + Step 2 +6；Step 1 收据「256」为子集误报 SUPERSEDED，全量基线此前即 ≥459）→ 426（M07 阶段）→ 435（2026-08-13，426 基线 + I33 新增 10 = 436 运行口径，−1 个 V26 临时冒烟测试不在源码 = 435 源码口径）→ **521（2026-08-15 data-scope-enforcement）→ 527（2026-08-16 bpm-plugin-architecture，+6：B1 +3/B2 +1/B3 +2，CONFIRMED；2026-08-16 D83 静态逐模块复核：sw-basic 249（agent 178/job 48/notify 7/storage 16）+ sw-biz 258（system 111/form 76/bpm 71）+ sw-framework 20）**。原「462」「241」「203」均为更早历史基线（SUPERSEDED） |
+| 后端 | `mvn -q compile && mvn -q test` | **CONFIRMED**（2026-08-15 data-scope-enforcement 验证）：`mvn test` BUILD SUCCESS，**521 tests / 0 failures / 0 errors**（435 基线 + data-scope-enforcement 新增 86 = 521）。演进：465（2026-07-28 process-monitoring Step 2 独立验收，surefire XML 跨模块合计，含 Step 1 +15 + Step 2 +6；Step 1 收据「256」为子集误报 SUPERSEDED，全量基线此前即 ≥459）→ 426（M07 阶段）→ 435（2026-08-13，426 基线 + I33 新增 10 = 436 运行口径，−1 个 V26 临时冒烟测试不在源码 = 435 源码口径）→ **521（2026-08-15 data-scope-enforcement）→ 527（2026-08-16 bpm-plugin-architecture，+6：B1 +3/B2 +1/B3 +2，CONFIRMED；2026-08-16 D83 静态逐模块复核：sw-basic 249（agent 178/job 48/notify 7/storage 16）+ sw-biz 258（system 111/form 76/bpm 71）+ sw-framework 20）**。**2026-08-17 sysrole-v5-column-alignment 复验：527/0/0 持平**（surefire 时间窗过滤 95 个 XML 聚合，P13 修复零新增/零失败）。原「462」「241」「203」均为更早历史基线（SUPERSEDED） |
 | 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | **CONFIRMED**（2026-08-17，`NODE_OPTIONS="--max-old-space-size=2048"`）：四连退出码全 0，Vitest **66 files / 569 tests** 全通过，build 成功；与 2026-08-16 基线持平。 |
 
 ### 前端测试覆盖详情（参考快照，2026-07-15 基线 ~350 tests）

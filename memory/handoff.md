@@ -4,6 +4,13 @@
 
 ## 最新完成
 
+**sysrole-v5-column-alignment（P13 / I26 SysRole 与 V5 列契约对齐）：PASSED（2026-08-17）✅**
+- 范围：后端单功能。`SysRole.java:47,51` @TableField 改 `built_in`/`remark`（字段名/JSON 键不变）；`schema-datascope-h2.sql` 与 `AuthFlowIntegrationTest.java` 建表/索引/INSERT/注释全对齐 V5 链尾（含 V13 deleted 索引形态）；全仓 grep `is_builtin` 主代码/测试零残留（仅历史迁移脚本 V1/V2/V5）。
+- 测试门（MAVEN_OPTS="-Xmx2g"）：sw-biz-system-biz 模块 **111/0/0**（RoleDataScopeTest 7、RoleControllerTest 6、UserDetailsProviderDataScopeTest 12、AuthFlowIntegrationTest 8、AuthMeControllerTest 5 全 PASSED）→ 项目级全量 **527 tests / 0 failures / 0 errors 与基线持平**（BUILD SUCCESS 31/31 模块）；MP 生成 SQL 原文 `built_in, remark AS description` 与测试 DDL 双向闭合。
+- 边界：Flyway 零迁移、前端零改动、P10/P12 零触碰；H2 真全链验证仍受 I47 阻断（如实分离）；探索回执更正 I26 测试 DDL 位置（schema-datascope-h2.sql L42-43）。
+- 知识库同步（§3.3 第10项）：I26 ✅、current-status（§1/§4/§5/§9，计数修正 16→18）、features/sysrole-v5-column-alignment.md 新建、requirement-pool P13 已在最终验收后核销、session-handoff 同步。清单状态列无变化（M02-F01-01 缺口=绑定写入等非本轮范围）。
+- 规划层最终验收：**PASSED**。六项验收标准全部满足；H2 真全链受 I47 阻断为已隔离非目标，不影响本轮结论。归档 `product/sysrole-v5-column-alignment/passed/`，回执 `receipts/`。
+
 **status-semantics-alignment（I51 系统管理状态语义对齐）：PASSED（2026-08-17）✅**
 - 用户/部门前端 status 语义已按后端契约纠正并收敛至模块内常量：用户 0=正常/1=停用/2=锁定，部门 0=正常/1=停用；新建默认值、提交、回填、筛选、展示与 Mock/夹具同步。
 - 角色/岗位契约核对为 1=启用/0=停用，与前端现状一致，零改动；后端业务代码、迁移与契约零修改。
@@ -55,7 +62,7 @@
 
 ## 进行中
 
-**（无进行中功能）**：status-semantics-alignment 已 PASSED 归档（2026-08-17）。待规划层选定下一需求方向并下发。
+**（无进行中功能）**：sysrole-v5-column-alignment 已 PASSED 并归档。
 
 **流程基线（D74，已生效并首跑验证）**：system.md §3.3 第10项——每轮需求收尾必须由执行层做知识库全量同步（功能清单.md+current-status+features+known-issues，回执报告清单变更明细+触碰文件清单），规划层验收逐项核对。
 
@@ -65,19 +72,19 @@
 - 前端：**66 spec files / 576 tests**，四连全绿（CONFIRMED 2026-08-17；正式 2G 上限下 typecheck/lint/test/build 全部退出 0）
 - 功能清单：**✅12 / 🟦37 / ⬜41，共 90 行**（2026-08-16 同步）
 - Flyway：root 路径 V30 已占用；迁移链冒烟口径 **28**（含 form V12）
-- 已完成功能：17 个（features.md 口径，含 status-semantics-alignment）
+- 已完成功能：18 个（features.md 口径，sysrole-v5-column-alignment 已经规划层最终验收）
 - 执行约束：**本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行**（先后端后前端），禁并行编译
 
 ## 下一动作
 
-**选定下一需求方向并下发**：status-semantics-alignment 已 PASSED 归档（2026-08-17）。规划会话按 system.md §10 恢复后，从候选池选定方向、写方向文档至 `product/<feature>/ready/` 下发执行层。
+**选定下一需求方向**：当前无进行中功能。P13 已从需求池核销；后续从剩余风险/价值候选中单选一轮功能。
 
 **探索回执已回收并核销（2026-08-16，D83 裁定 + D84 落库核销）**：
 - 清单 90/90 零不一致（I1 无第三次复发）；基线全部核实（527/66f569t——**569 为运行口径，静态 561**/V30+28/16 功能）；memory 自洽。
 - **knowledge/ 落库已完成（D84 核销 7/7）**：I49/I50/I51 正式登记、I26 上调/I30 已满足/I3/I18/I38 失准修正、current-status 18 处、session-handoff 全量重写、todo T1/T10 清理、前端口径注记。回执 `search_fallback/knowledge-sync-apply.md`。
 - **D84 裁定**：decisions 注册表归属——memory/decisions.md=活跃决策摘要（D85 口径），knowledge/decisions.md=D1-D46 历史档案（顶部注记+README 同步待执行层顺手补）；不补录 D47-D82；I18/I30 正式关闭。
 - **D85 铁律（2026-08-16 用户定）**：knowledge=唯一完整权威信息源；memory=最少信息摘要（冲突以 knowledge 为准）；执行角色触碰状态文件必须同步 knowledge 全量（§3.3 第10项强化）；清单 🟦/⬜ 缺口同步进需求池 P 编号（防"清单独有"）。已落：system.md §0.4 铁律块 + §3.3 第10项、memory/README.md、memory/decisions.md 顶部、requirement-pool 维护规则 4。
-- 需求池：`todo/requirement-pool.md`（A 高紧迫 P23/P13/P10 + B 清单 🟦 缺口 P1-P9/P14/P24/P25 + C 待决策 + **D 清单独有 ⬜ 18 条 P26-P43 + E 清单独有 🟦 7 条 P44-P50**——D/E 组=仅功能清单存在他处零提及，2026-08-16 排查）。
+- 需求池：`todo/requirement-pool.md`（P23/P13 已核销；A 组余 P10，B 组为 P1-P9/P14/P24/P25，C 组待决策，D/E 组为清单独有缺口）。
 - **探索任务核销（2026-08-16 晚，3/3 完成）**：decisions-registry-note ✅（knowledge/decisions.md 顶部注记+根 README 索引同步）、checklist-pool-sync ✅（清单 25 行描述列末尾追加「缺口已登记 P26-P50」25/25、状态列 0 漂移——裁定维持描述列形态不加列）、rule-sync-d85 ✅（shared-constraints §10 / development-workflow §6.3 / 后端宪法 §13 / 前端宪法 §15 四处落地，knowledge/README 不存在按说明处理）。**D85 铁律三仓库宪法级完成**。
 - **探索任务核销（2026-08-16 晚，4/4 全闭环）**：i18-close-sync ✅（I18 注册表已同步「✅ 已关闭（D84）」仿 I33/I37 先例，memory 侧核对一致）。**本轮全部委派任务已闭环，无进行中探索**。
 - **本轮用户指示**：2026-08-16「本轮不做新需求，仅做梳理」——下一方向仍待选（候选见「后续候选」），不主动启动新功能轮。
@@ -87,7 +94,7 @@
 2. M07 补全：F01 前端管理页、F02-02 Prompt 配置、F02-04 运行日志页+单步调试、F04-02 Token 统计
 3. M07-F03/F04 新功能：助手配置/知识库RAG（选型未定）/对话窗口SSE（均零代码）
 4. IoT / OpenAPI 模块落地（仅骨架）
-5. 小项池：I47 修复（bpm/h2 V8 partial index→真全链迁移测试，现已正式登记）、停用即时生效（JWT 过滤器层）、sw-bootstrap 测试基建决策、I26 SysRole 列名不一致、数据权限遗留（部门档子查询 deleted 过滤、job 非分页入口纳管、PG 联调验证）
+5. 小项池：I47 修复（bpm/h2 V8 partial index→真全链迁移测试）、停用即时生效（JWT 过滤器层）、sw-bootstrap 测试基建决策、数据权限遗留（部门档子查询 deleted 过滤、job 非分页入口纳管、PG 联调验证）
 
 ## 新会话启动提示词
 

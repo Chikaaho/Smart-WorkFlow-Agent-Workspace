@@ -1,8 +1,18 @@
 # 当前状态
 
-> 最后更新：2026-08-17（status-semantics-alignment 最终验收 PASSED）
+> 最后更新：2026-08-17（sysrole-v5-column-alignment 最终验收 PASSED）
 
 ## 进行中功能
+
+**（无进行中功能）**：sysrole-v5-column-alignment（P13 / I26）已于 2026-08-17 最终验收 `PASSED` 并归档。
+
+- 已闭环：SysRole.java:47,51 @TableField → `built_in`/`remark`（字段名/JSON 键不变）；schema-datascope-h2.sql 与 AuthFlowIntegrationTest.java 建表/索引/INSERT/注释全对齐 V5 链尾；grep `is_builtin` 主代码/测试零残留。
+- 测试门（MAVEN_OPTS=-Xmx2g）：sw-biz-system-biz 模块 **111/0/0**（5 关键类全 PASSED）→ 项目级全量 **527/0/0 与基线持平**；MP 生成 SQL 原文 `built_in`/`remark AS description` 闭合。
+- 边界：Flyway 零迁移、前端零改动、P10/P12 零触碰；H2 真全链验证仍受 I47（P10）阻断（如实分离）。
+- 验收：六项验收方向全部满足；模块 111/0/0，项目级 527/0/0，无 Flyway/前端/P10/P12 越界。
+- 归档：`product/sysrole-v5-column-alignment/passed/direction-sysrole-v5-column-alignment.md`。
+
+---
 
 **agent-model-orchestration (M07-F01/F02/F04)：F01 全部完结（Step1-5），F02 全部完结（Step6-9）**
 
@@ -39,7 +49,7 @@ process-monitoring (M04-F06-01)：COMPLETED（详情见 `knowledge/`，2026-07-3
 
 ## 测试基线
 
-最新完成：**status-semantics-alignment（I51）PASSED（2026-08-17）**——用户/部门前端状态语义按后端契约对齐（用户 0=正常/1=停用/2=锁定；部门 0=正常/1=停用），角色/岗位零改动；前端新增 7 测试，四连全绿；后端零修改。回执：`product/status-semantics-alignment/receipts/status-semantics-alignment-completion.md`。
+最新完成：**sysrole-v5-column-alignment（P13 / I26）PASSED（2026-08-17）**——SysRole 与 V5 链尾 `built_in`/`remark` 契约对齐；模块 111/0/0、项目级 527/0/0；I26 已核销，功能清单状态列无变化。回执：`product/sysrole-v5-column-alignment/receipts/`。
 
 - 后端：项目级 **527 tests**（源码口径，CONFIRMED 2026-08-16 D82 mvn 全量 BUILD SUCCESS 0 failures，521+6）
 - 前端：**66 spec files / 576 tests（运行口径；569→576，I51 新增 7 测试）**，四连全绿（CONFIRMED 2026-08-17；2G 上限下 typecheck/lint/test/build 全部退出 0）

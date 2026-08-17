@@ -36,7 +36,7 @@
 | I21 | 2026-07-20 | B4 测试覆盖不足 | 低 | 已知偏差 |
 | I24 | 2026-07-22 | 后端"406 tests"与静态 @Test 计数（203）不一致，且非参数化展开所致（0 参数化），运行期数未独立复验 | 中 | ✅ 已修复（2026-07-22 kb-verification VB1 复验：运行期真值 203，与静态吻合；原 406 为回执误报，SUPERSEDED） |
 | I25 | 2026-07-22 | 前端"471 tests"与静态 it/test 计数（463）小幅不一致，且"四连全绿/BUILD SUCCESS"未由规划层独立复验 | 低 | ✅ 已修复（2026-07-22 kb-verification VF1 复验：运行期真值 471 全绿，差值 +8 定位为 tokens.spec.ts 循环展开） |
-| I26 | 2026-07-22 | SysRole 实体列名与 V5 Flyway 迁移列重命名不一致 | 高 | 待修复（2026-08-16 D83 影响面上调：H2 全链 V5 同样改名，任何全链 Flyway 环境下 SysRole MP 查询必崩，测试 DDL 绕过 Flyway 掩盖） |
+| I26 | 2026-07-22 | SysRole 实体列名与 V5 Flyway 迁移列重命名不一致 | 高 | ✅ 已修复（2026-08-17，P13 修复轮：实体/测试 DDL 全部对齐 V5 链尾 `built_in`/`remark`，后端全量 527 tests 全绿） |
 | I28 | 2026-07-23 | 后端工程宪法缺少「仓库范围硬约束」章节，前后端不对称 | 高 | ✅ 已修复（2026-07-23，用户授权规划层一次性越权补齐 §0.1，见 D34） |
 | I29 | 2026-07-25 | bpmn-adapter Step 2 执行/测试回执自报测试计数与独立核实结果不符（三处矛盾），自报 PASSED 未予采信 | 中 | ✅ 已修复（2026-07-25：修正补充回执已收到并独立复核通过——基线 19→26 更正为 26→36，净增 +7→+10，项目级 231→241，Git 删行澄清为零删除。Step 2 最终 PASSED） |
 | I30 | 2026-07-26 | mock BPMN XML 过于简化——所有流程返回同一份 StartEvent→EndEvent 最简模板 | 低 | ✅ 已满足（2026-08-16 D83 复核：handlers.ts L738-769 已按 def.processKey 参数化 + 3 个 userTask + activityId 对齐实例，可关闭） |
@@ -330,9 +330,10 @@
 - **严重程度**：高（2026-08-16 D83 影响面上调）
 - **可信度**：CONFIRMED
 - **描述**：`SysRole` 实体中 `@TableField("is_builtin")` 和 `@TableField("description")`，但 V5 Flyway 迁移 `V5__m_seam_rbac.sql` 将列 `is_builtin` 重命名为 `built_in`、`description` 重命名为 `remark`。若生产环境已应用 V5 迁移，MyBatis-Plus 使用 `SysRole` 实体查询时会报错 `Column "IS_BUILTIN" not found`。
-- **影响**：**任何全链 Flyway 环境（含开发 H2）V5 均执行列改名，`SysRole` 的 MP 查询（`IS_BUILTIN` 列不存在）都会失败**——测试全绿只因测试 DDL（`schema-h2.sql` L43-44）绕过 Flyway 匹配实体（2026-08-16 D83 复核：原「开发 H2 环境不受影响」描述错误）；D79 之后 Role CRUD 读写 dataScope 同样命中该失配列，实际影响面≥原描述。
+- **影响**：**任何全链 Flyway 环境（含开发 H2）V5 均执行列改名，`SysRole` 的 MP 查询（`IS_BUILTIN` 列不存在）都会失败**——测试全绿只因测试 DDL（`schema-datascope-h2.sql` L42-43，2026-08-17 P13 探索回执更正：原「`schema-h2.sql` L43-44」位置有误，该文件仅 dict 两表）绕过 Flyway 匹配实体（2026-08-16 D83 复核：原「开发 H2 环境不受影响」描述错误）；D79 之后 Role CRUD 读写 dataScope 同样命中该失配列，实际影响面≥原描述。
 - **临时方案**：当前 auth-seam-completion V1 的集成测试使用匹配实体列名的 DDL 规避；生产环境需确认 Flyway 迁移状态与实体注解的匹配性。
 - **建议**：修复 `SysRole` 实体注解（`is_builtin`→`built_in`、`description`→`remark`）或补充兼容性迁移对齐 V5；修复后补全链迁移测试（可与 I47 修复轮合并排期）。
+- **状态更新（2026-08-17，P13 修复轮，✅ 已修复）**：规划层裁定以 V5 链尾契约为权威（不恢复旧列、不追加兼容迁移）；执行层完成——`SysRole.java:47,51` 两处 `@TableField` 改为 `built_in`/`remark`（字段名/JSON 键不变）；测试契约同步对齐 V5 链尾（`schema-datascope-h2.sql` 列名/类型/唯一索引含 V13 deleted 形态 + 头注释失真口径修正；`AuthFlowIntegrationTest.java` 内建表/索引/INSERT/注释对齐）；全仓 grep `is_builtin` 主代码/测试零残留（仅历史迁移脚本 V1/V2/V5 允许存在）。验证：sw-biz-system-biz 模块 111/0/0（RoleDataScopeTest 7、RoleControllerTest 6、UserDetailsProviderDataScopeTest 12、AuthFlowIntegrationTest 8、AuthMeControllerTest 5 全 PASSED），项目级全量 **527 tests / 0 failures / 0 errors** 与基线持平（MAVEN_OPTS=-Xmx2g 下 mvn test BUILD SUCCESS 31/31 模块）；MP 实际生成 SQL 原文已含 `built_in`/`remark AS description`，与测试 DDL 双向闭合于 V5 链尾。规划层最终验收后归档。遗留：H2 真全链验证仍受 P10（I47）阻断，与本次修复无涉；P12（sw-bootstrap 迁移测试基建）仍待决策。
 
 ### I27：RefreshTokenService 家族撤销事务回滚 — 重放攻击防线形同虚设
 
