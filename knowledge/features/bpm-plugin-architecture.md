@@ -17,7 +17,7 @@
 | 功能名称 | BPM 节点/表单组件与后端 adapter 可插拔机制 |
 | 功能目标 | 将 BPM 流程设计器中的前端节点组件、前端表单控件组件、以及后端对应的 adapter/节点处理逻辑全部改造成**注册表驱动的可插拔形式**——新增节点类型或表单控件时零改消费方代码 |
 | 创建日期 | 2026-08-14 |
-| 当前状态 | COMPLETED（D81，2026-08-16 执行层闭环，待规划层最终验收） |
+| 当前状态 | **COMPLETED ✅（D82 规划层最终验收 PASSED，2026-08-16；归档 `product/bpm-plugin-architecture/passed/`）** |
 | 涉及模块 | 后端 `sw-bpm`（-api/-engine/-process）+ 前端 `modules/workflow` + `src/adapters/`（如新增） |
 
 ---

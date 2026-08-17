@@ -15,7 +15,7 @@
 | 功能名称 | 系统管理状态语义对齐 |
 | 功能目标 | 统一系统管理前端与后端的状态值语义：用户/部门页面提交、回填、筛选及展示的「正常/停用」含义与后端契约一致 |
 | 创建日期 | 2026-08-17 |
-| 当前状态 | COMPLETED（执行层自验收完成，待规划层最终验收） |
+| 当前状态 | **PASSED 并已归档**（2026-08-17 规划层最终验收 PASSED，无独立 D 编号；前端 66f/576t 四连全绿；归档 `product/status-semantics-alignment/passed/`） |
 | 涉及模块 | 前端 `Smart-WorkFlow-Web`：src/modules/system（用户页/部门页）、src/foundation/mock（seeds/handlers）、测试 |
 
 ---
@@ -99,5 +99,5 @@
 ## 5. 状态
 
 - 执行层自验收：**PASSED**（2026-08-17，全部 7 项验收标准对照通过）
-- 规划层最终验收：**待验收**（完成回执 `product/status-semantics-alignment/receipts/` 待规划层对照）
-- 归档：验收通过后方向文档由规划层从 `ready/` 移至 `passed/`
+- 规划层最终验收：**PASSED**（2026-08-17；无独立 D 编号，如实记录不虚构——验收裁定见 `memory/decisions.md` D85 前后轮次与 `session-handoff.md` §1）
+- 归档：`product/status-semantics-alignment/passed/direction-status-semantics-alignment.md`（已归档）+ `receipts/status-semantics-alignment-completion.md`

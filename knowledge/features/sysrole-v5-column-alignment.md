@@ -15,7 +15,7 @@
 | 功能名称 | SysRole 列名与 V5 Flyway 列重命名对齐 |
 | 功能目标 | 以 V5 迁移完成后的 `sys_role` 表结构（`built_in`/`remark`）为唯一数据库契约，消除 SysRole 持久化映射与测试数据库口径的旧列残留，使完整迁移环境中的角色读取及登录角色装配不再因列不存在而失败 |
 | 创建日期 | 2026-08-17 |
-| 当前状态 | 执行层自验收完成（527/0/0 全绿），**待规划层最终验收**（验收前不得标 PASSED/归档） |
+| 当前状态 | **PASSED 并已归档**（D86 规划层最终验收 PASSED，2026-08-17；527/0/0 全绿；归档 `product/sysrole-v5-column-alignment/passed/`） |
 | 涉及模块 | 后端 `Smart-WorkFlow`：sw-biz-system-biz（实体/测试 DDL/集成测试） |
 
 ---
@@ -88,6 +88,6 @@
 - `knowledge/known-issues.md`：I26 ✅ 已修复（表格行 + 详情块状态更新 + DDL 位置更正）。
 - `knowledge/current-status.md`：§1 前次验证、§4 进行中、§5 已完成清单（计数修正 16→18，含 status-semantics 漏改项）、§9 后端基线复验。
 - `knowledge/session-handoff.md`：§1 最新完成功能新增条目。
-- `todo/requirement-pool.md`：P13 状态 READY → 已修复（待规划层验收）；I26 同步已修复。
+- `todo/requirement-pool.md`：P13 状态 READY → 已核销（D86 最终验收 PASSED）；I26 同步已修复。
 - `Smart-WorkFlow/功能清单.md`：状态列无变化（M02-F01-01 仍 🟦，其缺口为角色-人员绑定写入等，非本轮范围）。
 - `memory/`：features.md / state.md / handoff.md 同步（压缩索引）。
