@@ -40,10 +40,15 @@
 
 | 角色 | 工作目录 | 角色 | 职责 |
 |------|----------|------|------|
-| **规划** | `/data/reasonix/files`（本目录） | 规划代理 | 需求分析、方向制定、探索派发、回执验收、记忆维护 |
+| **规划** | `/usr/local/projects/Smart-WorkFlow`（本目录） | 规划代理 | 需求分析、方向制定、探索派发、回执验收、记忆维护 |
 | **执行（后端）** | `Smart-WorkFlow/` | 后端执行代理 | 按需求方向探索并编写后端代码、运行测试、产出执行回执和测试回执 |
 | **执行（前端）** | `Smart-WorkFlow-Web/` | 前端执行代理 | 按需求方向探索并编写前端代码、运行测试、产出执行回执和测试回执 |
 | **管理员** | 全工作区 | 管理员代理 | 更新宪法、架构文档及两端仓库工程配置 |
+
+工作区根目录 `/usr/local/projects/Smart-WorkFlow` 是 **planning layer**，不是后端仓库。
+`Smart-WorkFlow/` 与 `Smart-WorkFlow-Web/` 分别是后端、前端 **executor sublayer**。
+“禁止跨前后端操作”只约束各自的执行子层：后端执行会话不得操作前端，前端执行会话不得操作后端；
+管理员按授权可跨三层维护宪法、架构文档与工程治理配置，但不得借此实施业务变更。
 
 **关键规则：**
 
@@ -51,7 +56,7 @@
 - **规划代理只规划、不执行。** 不修改业务代码，不代替执行代理修 bug、补测试、调配置。
 - **执行代理发现方向有误或无法执行时**，应在回执中明确报告问题（哪个方向/环节不可行、原因是什么），由规划代理修正方向后重新下发。执行代理不得自行修改需求方向或绕过方向。
 - **规划与执行通过需求方向文档（下发）和完成回执（上报）通信**，不通过口头确认或隐含假设。
-- **规划代理只能读写方案，不能执行**：在 `/data/reasonix/files`（本目录）启动的规划会话，读权限仅限 `system.md` / `memory/` / `search_fallback/` / `product/`（不读 `knowledge/`、两端代码项目），写权限仅限 `system.md` / `memory/` / `search_task/` / `product/` / `todo/`（§1.3），且永远不执行 `mvn`/`pnpm`/`java`/`node` 等状态变更命令。
+- **规划代理只能读写方案，不能执行**：在 `/usr/local/projects/Smart-WorkFlow`（本目录）启动的规划会话，读权限仅限 `system.md` / `memory/` / `search_fallback/` / `product/`（不读 `knowledge/`、两端代码项目），写权限仅限 `system.md` / `memory/` / `search_task/` / `product/` / `todo/`（§1.3），且永远不执行 `mvn`/`pnpm`/`java`/`node` 等状态变更命令。
 - **执行代理只能执行、且只能执行自己项目的代码（硬约束 🔒）**：在 `Smart-WorkFlow/` 启动的后端执行会话，只能读写 `Smart-WorkFlow/` 内文件、只能运行 `mvn` 系命令；在 `Smart-WorkFlow-Web/` 启动的前端执行会话，只能读写 `Smart-WorkFlow-Web/` 内文件、只能运行 `pnpm` 系命令。**严禁后端执行会话运行前端命令或读写前端文件，严禁前端执行会话运行后端命令或读写后端文件**，即使为了"顺手验证联动效果"也不允许。跨项目验证需求应拆成两个独立 Step，分别下发给对应执行会话。详见 `knowledge/shared-constraints.md` §9。
 - **执行编译命令必须限制最大内存（硬约束 🔒）**：执行 `mvn`/`pnpm`/`npm` 等编译命令必须限制最大内存，**每种编译工具上限 2G**——`mvn` 系命令一律带 `MAVEN_OPTS="-Xmx2g"`；`pnpm`/`npm` 系命令一律带 `NODE_OPTIONS="--max-old-space-size=2048"`。禁止无限制内存直接编译/构建。详见 `knowledge/shared-constraints.md` §9。
 - **前后端编译互斥（硬约束 🔒）**：**前端与后端的编译/测试/构建类操作不得同时进行**。执行 `mvn` 系（后端）或 `pnpm` 系（前端）编译/测试/构建命令前，必须先检测对方项目是否正在编译/测试中（如通过 `ps` 检查对方编译进程，检测命令见 `knowledge/shared-constraints.md` §9）；若检测到对方正在编译/测试，必须等待对方完成后自己再开始，严禁与对方同时执行编译类操作。典型场景：前后端两个执行代理并行完成需求后各自自测，一方检测到另一方在测试中时，必须等待其测试完再开始本方编译测试。等待期间可继续完成不依赖编译结果的编码工作（如写代码、补测试用例）。
@@ -335,7 +340,7 @@ todo/
 **允许**：
 - 读写 `system.md`（更新系统宪法）
 - 读写架构文档：`memory/architecture.md`、`knowledge/architecture.md`
-- 读写两端仓库的宪法和工程配置，包括 `AGENTS.md`、`.claude/system.md`、构建、工具链、CI 与运行时配置文件
+- 读写两端仓库的宪法和工程配置，包括 `AGENTS.md`、`docs/governance/engineering-constitution.md`、构建、工具链、CI 与运行时配置文件
 - 与上述变更配套的知识索引/目录注释同步
 
 **禁止**：
@@ -1181,8 +1186,8 @@ pnpm typecheck && pnpm lint && pnpm test && pnpm build  # 全量校验门
 | `Smart-WorkFlow/` 代码 | 后端 Java 代码 |
 | `Smart-WorkFlow-Web/` 代码 | 前端 Vue/TS 代码 |
 | `search_task/*.md` | 探索任务（由规划角色写入） |
-| `Smart-WorkFlow/.claude/system.md` | 后端工程宪法（执行角色探索时参考） |
-| `Smart-WorkFlow-Web/.claude/system.md` | 前端工程宪法（执行角色探索时参考） |
+| `Smart-WorkFlow/docs/governance/engineering-constitution.md` | 后端工程宪法（后端执行角色参考） |
+| `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` | 前端工程宪法（前端执行角色参考） |
 | `Smart-WorkFlow/功能清单.md` | 全平台功能清单（M01-M10，54 功能，89 明细） |
 | `todo/README.md` | 暂不修复问题索引 |
 

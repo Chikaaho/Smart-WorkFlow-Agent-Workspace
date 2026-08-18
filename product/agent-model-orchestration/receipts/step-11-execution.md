@@ -26,7 +26,7 @@
 | `sw-basic-agent/.../orchestration/AgentGraphInterpreter.java` | 改造对象（单路径顺序执行 + 变量表 + 出边唯一约束现状） |
 | `sw-basic-agent/.../service/impl/AgentGraphExecutionServiceImpl.java` | 调用点（maxSteps 注入 + validateForExecution） |
 | `sw-basic-agent/src/test/.../AgentGraphInterpreterTest.java` / `AgentGraphExecutionServiceImplTest.java` | 既有单测/集成测试（12+14 用例基线，扩展模式） |
-| `Smart-WorkFlow/.claude/system.md` | 后端工程宪法（执行层边界/硬约束） |
+| `Smart-WorkFlow/docs/governance/engineering-constitution.md` | 后端工程宪法（执行层边界/硬约束） |
 | `receipts/step-10-execution.md` / `step-10-test.md` | 回执格式参照（同功能族先例） |
 
 ## 4. 实际修改的文件

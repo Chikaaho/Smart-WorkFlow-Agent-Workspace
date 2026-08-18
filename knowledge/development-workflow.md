@@ -69,8 +69,8 @@ pnpm typecheck && pnpm lint && pnpm test && pnpm build
 > 执行代理在自主闭环中按任务复杂度自行决定处理强度（根目录 `system.md` §2），不涉及任何具体模型。
 >
 > 各子项目的权威约束见：
-> - 后端：`Smart-WorkFlow/.claude/system.md` §11.2
-> - 前端：`Smart-WorkFlow-Web/.claude/system.md` §1.1 和 §8.2
+> - 后端：`Smart-WorkFlow/docs/governance/engineering-constitution.md` §11.2
+> - 前端：`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` §1.1 和 §8.2
 >
 > 以下为通用摘要，如有冲突以子项目文件为准。
 
@@ -136,15 +136,15 @@ pnpm typecheck && pnpm lint && pnpm test && pnpm build
 |------|------|------|
 | 工作区（本仓库） | `system.md` | 统一入口 + 工作原则 |
 | 工作区 | `knowledge/*.md` | 跨项目架构/约束/术语/流程 |
-| 后端项目 | `.claude/system.md` | 后端工程宪法（规范+硬约束） |
+| 后端项目 | `docs/governance/engineering-constitution.md` | 后端工程宪法（规范+硬约束） |
 | 后端项目 | `README.md` | 后端项目概览 |
 | 后端项目 | `功能清单.md` | 功能编号与进度 |
-| 前端项目 | `.claude/system.md` | 前端工程宪法（协作+设计+规范） |
+| 前端项目 | `docs/governance/engineering-constitution.md` | 前端工程宪法（协作+设计+规范） |
 | 前端项目 | `README.md` | 前端项目概览 |
 
 ### 6.2 维护原则
 
-- **知识优先沉淀到工作区知识库**，项目特有细节留在项目 `.claude/system.md`
+- **知识优先沉淀到工作区知识库**，项目特有细节留在项目 `docs/governance/engineering-constitution.md`
 - 避免多处维护相同内容
 - 文档整篇替换，不做 diff
 - **进度跟踪**：项目整体进度和功能状态见 `knowledge/current-status.md`（唯一可信来源）和 `knowledge/session-handoff.md`（最新交接状态）；子项目 system.md **不记进度**

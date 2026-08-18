@@ -25,7 +25,7 @@
 | `src/modules/agent/views/GraphDesigner.vue` | 改造对象（NODE_TYPES 色板、属性面板模板分支链、updateNodeData/handleVarNameChange 模式） |
 | `src/modules/agent/utils/graphAdapter.spec.ts` / `views/GraphDesigner.spec.ts` | 既有 spec（未知类型透传用例、CONDITION 面板用例，扩展模式） |
 | `src/contracts/agent.ts` | 确认开放类型无需改动（`type?: string` 天然容纳新类型） |
-| `Smart-WorkFlow-Web/.claude/system.md` | 前端工程宪法（执行层边界/四连校验门） |
+| `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` | 前端工程宪法（执行层边界/四连校验门） |
 
 ## 4. 实际修改的文件
 

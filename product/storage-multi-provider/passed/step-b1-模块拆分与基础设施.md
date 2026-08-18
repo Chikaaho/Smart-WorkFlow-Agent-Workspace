@@ -60,7 +60,7 @@
 
 按优先级排序：
 
-1. **`Smart-WorkFlow/.claude/system.md`** — 后端工程宪法，特别是 §1（模块层次）、§3（表命名）、§6（Flyway）和 §5（BaseEntity 约束）
+1. **`Smart-WorkFlow/docs/governance/engineering-constitution.md`** — 后端工程宪法，特别是 §1（模块层次）、§3（表命名）、§6（Flyway）和 §5（BaseEntity 约束）
 2. **`Smart-WorkFlow/sw-basic/sw-basic-notify/pom.xml`** — 参照 -api/-biz 拆分时 pom 配置
 3. **`Smart-WorkFlow/sw-basic/sw-basic-notify/sw-basic-notify-api/pom.xml`** — 参照 -api 模块 pom
 4. **`Smart-WorkFlow/sw-basic/sw-basic-notify/sw-basic-notify-biz/pom.xml`** — 参照 -biz 模块 pom

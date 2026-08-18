@@ -72,7 +72,7 @@
 - **原因**：当前阶段不需要微服务的运维复杂性，但通过接口分离为未来微服务抽取预留最小重构路径
 - **替代方案**：纯单体（不拆 -api/-biz）— 拒绝，因为未来抽取成本高
 - **影响**：依赖方向严格自上而下；业务模块间禁止依赖 `-biz`
-- **相关文件**：`Smart-WorkFlow/.claude/system.md` §1
+- **相关文件**：`Smart-WorkFlow/docs/governance/engineering-constitution.md` §1
 
 ### D2：动态宽表：一表单一物理表
 
@@ -81,7 +81,7 @@
 - **原因**：支持原生 SQL 查询/报表/导出/索引/流程取值，能力上限最高；不用 JSON 列或 EAV
 - **替代方案**：JSONB 单列 — 拒绝，查询/索引能力受限；EAV — 拒绝，性能和维护性差
 - **影响**：裸 SQL 必须手写 `deleted` + `tenant_id`；动态宽表不归 Flyway 管
-- **相关文件**：`Smart-WorkFlow/.claude/system.md` §4
+- **相关文件**：`Smart-WorkFlow/docs/governance/engineering-constitution.md` §4
 
 ### D3：TABLE / REFERENCE 两档关系原语
 
@@ -97,7 +97,7 @@
 - **决策**：所有 Flyway 迁移脚本同时维护 PostgreSQL 和 H2 两个版本
 - **原因**：开发期用 H2 作为 SQL 正确性代理，生产用 PostgreSQL；避免"开发能跑、生产炸"的问题
 - **影响**：每条迁移必须写两份；动态宽表是唯一例外（运行时 DDL）
-- **相关文件**：`Smart-WorkFlow/.claude/system.md` §6
+- **相关文件**：`Smart-WorkFlow/docs/governance/engineering-constitution.md` §6
 
 ### D5：前端契约先行 + Mock 并行
 
@@ -105,7 +105,7 @@
 - **决策**：前端不等后端就绪，拿契约和 mock 把页面/交互全推起来，后端 seam 点亮后零改动接真数据
 - **原因**：前后端并行开发，最大化开发效率
 - **影响**：需要维护 MSW mock 数据；seam 标注 `// TODO(skeleton)`
-- **相关文件**：`Smart-WorkFlow-Web/.claude/system.md` §3
+- **相关文件**：`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` §3
 
 ### D6：Token 仅内存 · superAdmin=boolean
 
@@ -123,7 +123,7 @@
 - **决策**：form-create 原生 schema 不泄漏到 `modules/`，通过 `adapters/form-designer/` 隔离
 - **原因**：第三方库 API 不稳定，隔离后升级/替换成本低
 - **影响**：ESLint 强制模块边界；增加一层薄接口转换
-- **相关文件**：`Smart-WorkFlow-Web/.claude/system.md` §4.1
+- **相关文件**：`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` §4.1
 
 ### D8：lowcode → form 重命名
 
@@ -133,7 +133,7 @@
 - **替代方案**：保留 lowcode — 拒绝
 - **影响**：全局搜索 `lowcode` 应零命中；新建文件不得复活 lowcode 命名
 - **状态**：CONFIRMED（已完成）
-- **相关文件**：`Smart-WorkFlow/.claude/system.md` 附录 A；`Smart-WorkFlow-Web/.claude/system.md` §7.2
+- **相关文件**：`Smart-WorkFlow/docs/governance/engineering-constitution.md` 附录 A；`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` §7.2
 
 ### D9：Open-core BPM（engine 闭源）
 
@@ -201,7 +201,7 @@
   - 与后端"未 fork RuoYi、自建 sw-* 深思熟虑分层"同源
 - **替代方案**：继承 vben — 拒绝（长期维护风险高）；monorepo — 拒绝（过度设计）
 - **影响**：vben、yudao-ui-admin-vue3 仅作参考实现读/借，不进依赖
-- **相关文件**：`Smart-WorkFlow-Web/.claude/system.md` §0；`Smart-WorkFlow-前端架构与现状-知识库.md` §1
+- **相关文件**：`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` §0；`Smart-WorkFlow-前端架构与现状-知识库.md` §1
 
 ### D14：设计系统单源 + 全局 token + 两页型模板
 
@@ -214,7 +214,7 @@
 - **原因**：确保视觉一致性，改一处全局跟随；减少重复代码
 - **替代方案**：各页自行设计 — 拒绝（不一致、维护成本高）
 - **影响**：所有模块页必须引用全局 token；新建页面优先匹配页型 A/B
-- **相关文件**：`Smart-WorkFlow-Web/.claude/system.md` §5-6；`knowledge/shared-constraints.md` §6-7
+- **相关文件**：`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` §5-6；`knowledge/shared-constraints.md` §6-7
 
 ### D15：配置接缝层（form/utils 纯函数预留）
 
@@ -222,7 +222,7 @@
 - **决策**：凡「将来设计时可自定义」的取值逻辑（列表展示字段/可搜字段/字段排序/列宽/引用选择器展示列/引用显示字段…）一律收进 `modules/form/utils/` 下的可替换纯函数，带显式 TODO 接缝注释
 - **原因**：设计器未就绪时用 definition 推导规则；将来设计器产出配置元数据时只换这层函数数据源，消费方零改
 - **影响**：现有接缝函数：`deriveColumns` / `deriveFilterFields` / `deriveReferenceColumns` / `deriveDisplayField` / `deriveSearchFields` / `resolveReferenceDisplay`
-- **相关文件**：`Smart-WorkFlow-Web/.claude/system.md` §4.1
+- **相关文件**：`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` §4.1
 
 ### D16：产品原则优先级排序
 
@@ -238,7 +238,7 @@
 - **决策**：凡是「单一数据源」「导入边界」「接缝不串」这类不变量，都要有常驻回归测试钉死
 - **原因**：防止后续改动悄悄破坏安全基线；已有的不变量（菜单单源、导入边界、token 不落 storage、redirect 同源、mock 不污染 modules）不允许在没有等价替代时删除
 - **影响**：重构改名时同步改测试断言只换名、不弱化断言强度
-- **相关文件**：`Smart-WorkFlow-Web/.claude/system.md` §2.2；`Smart-WorkFlow-前端架构与现状-知识库.md` §4
+- **相关文件**：`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` §2.2；`Smart-WorkFlow-前端架构与现状-知识库.md` §4
 
 ### D18：Walking Skeleton 端到端薄切片策略
 
@@ -247,7 +247,7 @@
 - **原因**：快速验证全链路技术可行性和架构决策；避免在单模块过度投入后发现集成问题
 - **影响**：实施路线严格按串行关键路径排列；横切基础设施（多租户/BaseEntity/数据权限/Security/字典）必须先于业务代码就位
 - **状态**：Walking Skeleton 四环已于 2026-07-15 全部闭合 ✅
-- **相关文件**：`Smart-WorkFlow/.claude/system.md` §12；`Smart-WorkFlow-PRD.md` §3.3、§7
+- **相关文件**：`Smart-WorkFlow/docs/governance/engineering-constitution.md` §12；`Smart-WorkFlow-PRD.md` §3.3、§7
 
 ### D19：存储模块策略模式 + -api/-biz 拆分
 
@@ -397,12 +397,12 @@
 ### D34：一次性授权越权，为后端宪法补齐 §0.1「本仓库范围」硬约束（对应 I28）
 
 - **日期**：2026-07-23
-- **决策**：用户反馈"后端执行时经常越界，新会话会一起执行前后端任务"，规划层直读对比两份子项目宪法确认：`Smart-WorkFlow-Web/.claude/system.md` 有独立的 §0.1「本仓库范围（硬约束）」（禁止读取/构建/运行/分析后端代码、禁止执行 mvn/gradle、禁止跨仓库提交），但 `Smart-WorkFlow/.claude/system.md` 缺少对应章节——原 §0.0 只有"❌ 禁止修改前端代码"一句，只锁"改代码"未锁"读文件/跑命令"。用户明确授权规划层**本次一次性越权**直接编辑 `Smart-WorkFlow/.claude/system.md`（该文件不在 `system.md` §1.3 写入范围内），已补齐镜像前端结构的 §0.1 章节
+- **决策**：用户反馈"后端执行时经常越界，新会话会一起执行前后端任务"，规划层直读对比两份子项目宪法确认：`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` 有独立的 §0.1「本仓库范围（硬约束）」（禁止读取/构建/运行/分析后端代码、禁止执行 mvn/gradle、禁止跨仓库提交），但 `Smart-WorkFlow/docs/governance/engineering-constitution.md` 缺少对应章节——原 §0.0 只有"❌ 禁止修改前端代码"一句，只锁"改代码"未锁"读文件/跑命令"。用户明确授权规划层**本次一次性越权**直接编辑 `Smart-WorkFlow/docs/governance/engineering-constitution.md`（该文件不在 `system.md` §1.3 写入范围内），已补齐镜像前端结构的 §0.1 章节
 - **原因**：修复点必须落在后端自己的宪法文件里才有效——执行代理平时读的是自己项目内的文件，不会主动去读根目录 `knowledge/shared-constraints.md` §9（该约束 D29 时已写入根知识库，但从未回填到后端宪法本身，二者不同步）。若不越权直接改，只能等用户或后端会话自行搬运文本，存在被遗漏的风险
 - **口径澄清**：用户同时确认"或者把自己当作执行层"一句指的是"**后端会话误把自己当作规划层**"（角色混淆），而非宪法缺内容。核对后端/前端两份宪法在「禁止诱导用户规划」「禁止预告下一 Step」两条硬约束上写得完全对称、内容详尽，**未发现文本缺口**。这类越权若仍在发生，属于执行层未遵守既有条款的**实践/落实问题**，不是宪法文本问题——不通过再次编辑文本解决，需在下次观察到具体违例时记录实例作证据
 - **替代方案**：只在根目录 `shared-constraints.md` 强化措辞、不碰后端宪法 — 拒绝，后端执行代理不会主动读根目录知识库，无法从源头生效；等下次功能交接时才处理 — 拒绝，属于持续存在的越权风险，用户已明确要求当次处理并授权例外
-- **影响**：`Smart-WorkFlow/.claude/system.md` §0.0 之后新增 §0.1（内容见 [[known-issues]] I28）；本次为**用户明确授权的一次性例外**，不代表 `system.md` §1.3 写入范围常态化扩大到子项目文件——今后类似修复仍需逐次征得用户授权
-- **相关文件**：`Smart-WorkFlow/.claude/system.md` §0.1、`knowledge/known-issues.md` I28、`knowledge/shared-constraints.md` §9（D29）
+- **影响**：`Smart-WorkFlow/docs/governance/engineering-constitution.md` §0.0 之后新增 §0.1（内容见 [[known-issues]] I28）；本次为**用户明确授权的一次性例外**，不代表 `system.md` §1.3 写入范围常态化扩大到子项目文件——今后类似修复仍需逐次征得用户授权
+- **相关文件**：`Smart-WorkFlow/docs/governance/engineering-constitution.md` §0.1、`knowledge/known-issues.md` I28、`knowledge/shared-constraints.md` §9（D29）
 
 ### D35：功能清单前后端核实结论合并采用 MIN 规则（保守取低档）
 
