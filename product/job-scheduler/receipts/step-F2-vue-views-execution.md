@@ -14,7 +14,7 @@ deepseek-v4-flash
 5. `src/modules/storage/views/StorageList.spec.ts` — 列表页测试参照（mock 模式、桩组件、数据工厂）
 6. `src/modules/notify/views/NotifyHome.vue` — 简单列表页参照
 7. `src/foundation/request/index.ts` — ApiError 类、request() 签名
-8. `.claude/system.md` — 前端工作宪法（四连校验门、设计系统、编码规范）
+8. `docs/governance/engineering-constitution.md` — 前端工作宪法（四连校验门、设计系统、编码规范）
 
 ## 4. 实际修改的文件
 | 文件 | 操作 | 说明 |

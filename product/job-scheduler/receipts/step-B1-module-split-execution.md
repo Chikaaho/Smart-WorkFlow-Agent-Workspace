@@ -17,7 +17,7 @@ deepseek-v4-flash（high thinking）
 | 5 | `Smart-WorkFlow/sw-bootstrap/src/main/resources/application-dev.yml` | ✅ 读取 — +sw.job.enabled true |
 | 6 | `Smart-WorkFlow/sw-basic/sw-basic-job/src/main/java/com/sw/ck/job/config/JobAutoConfiguration.java` | ✅ 读取 — 旧文件，已移动到 `-biz` 并增强后删除 |
 | 7 | `Smart-WorkFlow/sw-basic/sw-basic-job/src/main/java/com/sw/ck/job/package-info.java` | ✅ 读取 — 旧文件，已拆分到 `-api` 和 `-biz` 后删除 |
-| 8 | `Smart-WorkFlow/.claude/system.md` | ✅ 读取 — 后端工程宪法（表前缀、模块拆分模式） |
+| 8 | `Smart-WorkFlow/docs/governance/engineering-constitution.md` | ✅ 读取 — 后端工程宪法（表前缀、模块拆分模式） |
 | 9 | `/data/reasonix/files/product/job-scheduler/ready/step-B1-module-split.md` | ✅ 读取 — 执行方案（17 项结构） |
 
 ## 4. 实际修改的文件

@@ -32,7 +32,7 @@
 | `dto/AgentConversationDTO.java` / `AgentGraphExecute{Req,Resp}DTO.java` / `PageParam.java` / `PageResult.java` | DTO/分页惯例 |
 | `sw-bootstrap/db/migration/agent/{h2,postgresql}/V21-V23.sql` | F04 迁移先例（CLOB↔TEXT、审计列族、索引、COMMENT） |
 | `service/impl/AgentOrchestrationServiceImpl.java` | persistToolCallLogs 批量落库模式（F04） |
-| `Smart-WorkFlow/.claude/system.md` | 后端工程宪法（执行层边界/硬约束） |
+| `Smart-WorkFlow/docs/governance/engineering-constitution.md` | 后端工程宪法（执行层边界/硬约束） |
 | 测试：`AgentGraphInterpreterTest` / `AgentGraphExecutionServiceImplTest` / `AgentGraphDefControllerTest` | 既有测试风格与组合装配（TestConfig/H2 DDL） |
 
 ## 4. 实际修改的文件

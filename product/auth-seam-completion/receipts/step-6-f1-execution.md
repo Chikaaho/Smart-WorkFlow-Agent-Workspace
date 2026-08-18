@@ -215,7 +215,7 @@ router/index → auth/index → request/index → auth/token
 ## 12. Git diff 摘要
 
 ```
- .claude/system.md               |   2 +            (pre-existing change)
+ docs/governance/engineering-constitution.md               |   2 +            (pre-existing change)
  src/foundation/auth/index.ts    |  54 +++++++---   (login/refresh/logout 重写)
  src/foundation/auth/token.ts    |  35 +++++++      (到期戳 + 4 新函数)
  src/foundation/request/index.ts |  34 +++++--      (refreshHandler + async 拦截器)

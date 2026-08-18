@@ -92,7 +92,7 @@
 - **验收摘要**（2026-07-25 规划层独立复核）：
   - **8/8 验收标准全部满足**：① grep `not implemented` 零命中 ✅；② 6 符号签名与 §9.1 一致 ✅；③ 实例含 `exportGraph()` + `destroy()` ✅；④ 6 测试场景全部实现 ✅；⑤ 四连退出码 0 ✅；⑥ 测试 57 files / 497 tests ≥ 491+6 ✅；⑦ `package.json`/lock 零改动 ✅；⑧ 仅 2 文件修改 ✅
   - **偏差复核**：`onUpdate:nodes`/`onUpdate:edges` 替代 `@nodes-change`/`@edges-change`（功能等价，以全量数组直接同步 ref，已如实记录，接受）；测试场景 6 弱化断言（方案 §9.4 已明确允许，接受）
-  - **改动范围**：仅 `src/adapters/flow-graph/index.ts`（147 行重写）+ `index.spec.ts`（96 行新建，6 测试），与 `.claude/system.md` 预变更无关
+  - **改动范围**：仅 `src/adapters/flow-graph/index.ts`（147 行重写）+ `index.spec.ts`（96 行新建，6 测试），与 `docs/governance/engineering-constitution.md` 预变更无关
 
 ---
 

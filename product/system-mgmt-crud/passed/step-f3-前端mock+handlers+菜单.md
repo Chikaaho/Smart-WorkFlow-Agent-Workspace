@@ -155,7 +155,7 @@ system:post:list
 | 10 | `Smart-WorkFlow-Web/src/modules/system/api/role.ts` | Role API 端点路径 |
 | 11 | `Smart-WorkFlow-Web/src/modules/system/api/dept.ts` | Dept API 端点路径 |
 | 12 | `Smart-WorkFlow-Web/src/modules/system/api/post.ts` | Post API 端点路径 |
-| 13 | `Smart-WorkFlow-Web/.claude/system.md` | 前端工程宪法 |
+| 13 | `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` | 前端工程宪法 |
 | 14 | `product/system-mgmt-crud/ready/step-f3-前端mock+handlers+菜单.md` | 本执行方案 |
 
 ## 7. 允许修改的文件范围

@@ -1,7 +1,7 @@
 # Smart-WorkFlow 系统架构
 
 > 工作区统一知识库 — 架构分册。描述 Smart-WorkFlow 平台的整体架构设计与项目间关系。
-> 项目内部实现细节见各项目 `.claude/system.md`。
+> 项目内部实现细节见各项目 `docs/governance/engineering-constitution.md`。
 >
 > 信息来源：`CLAUDE-java.md` · `CLAUDE-vue.md` · `Smart-WorkFlow-PRD.md` · `Smart-WorkFlow-前端架构与现状-知识库.md`（均来自 `SmartWorkFlow_files.zip`，2026-07-16）。
 

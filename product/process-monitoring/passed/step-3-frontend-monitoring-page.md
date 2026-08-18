@@ -1432,7 +1432,7 @@ pnpm run build         # 生产构建（确认无编译/类型错误）
 
 ## 15. 执行回执格式
 
-按 `Smart-WorkFlow-Web/.claude/system.md` 或上级规划代理指定的格式产出执行回执，写入 `Smart-WorkFlow-Web/product/process-monitoring/receipts/step-3-execution.md`。
+按 `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` 或上级规划代理指定的格式产出执行回执，写入 `Smart-WorkFlow-Web/product/process-monitoring/receipts/step-3-execution.md`。
 
 特别注意回执中需包含：
 - 新建文件清单（ProcessInstanceList.vue + ProcessInstanceList.spec.ts）+ 修改文件清单（contracts/bpm.ts + api/index.ts + seeds.ts + handlers.ts + router/index.ts）
@@ -1445,7 +1445,7 @@ pnpm run build         # 生产构建（确认无编译/类型错误）
 
 ## 16. 测试回执格式
 
-按 `Smart-WorkFlow-Web/.claude/system.md` 或上级规划代理指定的格式产出测试回执，写入 `Smart-WorkFlow-Web/product/process-monitoring/receipts/step-3-test.md`。
+按 `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` 或上级规划代理指定的格式产出测试回执，写入 `Smart-WorkFlow-Web/product/process-monitoring/receipts/step-3-test.md`。
 
 特别注意回执中需包含：
 - 逐条对照 §14 验收标准（16 条）

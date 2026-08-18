@@ -133,7 +133,7 @@ git status                        # 文件清单确认
 
 ## 12. Git diff 摘要
 
-- 改动文件数：9（6 生产代码 + 3 新增测试文件 + 1 集成测试，不含 .claude/system.md 和 功能清单.md 的已有改动）
+- 改动文件数：9（6 生产代码 + 3 新增测试文件 + 1 集成测试，不含 docs/governance/engineering-constitution.md 和 功能清单.md 的已有改动）
 - 新增行数：~166
 - 删除行数：~29（来自非本项目改动）
 - 关键变更点：见 §4-5

@@ -72,7 +72,7 @@
 7. `Smart-WorkFlow/sw-framework/sw-common/src/main/java/com/sw/ck/common/service/BaseServiceImpl.java` — Service 实现基类
 8. `Smart-WorkFlow/sw-framework/sw-common/src/main/java/com/sw/ck/common/event/DomainEventPublisher.java` — 事件发布器
 9. `Smart-WorkFlow/sw-basic/sw-basic-notify/sw-basic-notify-biz/src/main/java/com/sw/ck/notify/service/impl/NotifyMessageServiceImpl.java` — ServiceImpl 实现参照
-10. `Smart-WorkFlow/.claude/system.md` — 后端工程宪法 §10（定时任务规范）
+10. `Smart-WorkFlow/docs/governance/engineering-constitution.md` — 后端工程宪法 §10（定时任务规范）
 
 ## 7. 允许修改的文件范围
 

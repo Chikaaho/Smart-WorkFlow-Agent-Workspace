@@ -23,7 +23,7 @@
 | `product/agent-model-orchestration/ready/step-10-multivar-context-backend.md` | 需求方向文档（目标/非目标/影响范围/待确认问题结论） |
 | `search_fallback/m07-multivar-context-precedent.md` | 前置调研（磁盘现状全量源码 + Q7 sw-bpm 流程变量先例） |
 | `/data/reasonix/files/system.md`（§6/§7） | 17 项结构自查参考 + 回执格式（§7.1/§7.2） |
-| `Smart-WorkFlow/.claude/system.md` | 后端工程宪法（执行层身份边界、编码规范） |
+| `Smart-WorkFlow/docs/governance/engineering-constitution.md` | 后端工程宪法（执行层身份边界、编码规范） |
 | `sw-basic-agent/.../orchestration/AgentGraphInterpreter.java` | 改造对象（磁盘现状与调研回执逐字节一致，已核实） |
 | `sw-basic-agent/.../service/impl/AgentGraphExecutionServiceImpl.java` | 调用点现状（与调研回执一致，确认无需改执行代码） |
 | `sw-basic-agent/.../dto/AgentGraphExecuteReqDTO.java` / `AgentGraphExecuteRespDTO.java` | DTO 契约（确认对外契约零改动，仅注释同步） |

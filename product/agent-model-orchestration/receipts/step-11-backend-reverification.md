@@ -10,7 +10,7 @@ M07-F02 Step11 并行/循环节点（后端执行层复核）
 
 - `system.md`
 - `Smart-WorkFlow/AGENTS.md`
-- `Smart-WorkFlow/.claude/system.md`
+- `Smart-WorkFlow/docs/governance/engineering-constitution.md`
 - `product/agent-model-orchestration/ready/step-11-parallel-loop-nodes.md`
 - `product/agent-model-orchestration/receipts/step-11-execution.md`
 - `Smart-WorkFlow/sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/orchestration/AgentGraphInterpreter.java`

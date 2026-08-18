@@ -1,7 +1,7 @@
 # 跨项目共享工程约束
 
 > 工作区统一知识库 — 约束分册。记录前后端共同遵守的工程约束与设计原则。
-> 项目特有约束见各项目 `.claude/system.md`。
+> 项目特有约束见各项目 `docs/governance/engineering-constitution.md`。
 >
 > 信息来源：`CLAUDE-java.md` · `CLAUDE-vue.md` · `Smart-WorkFlow-PRD.md`（均来自 `SmartWorkFlow_files.zip`，2026-07-16）。
 
@@ -315,10 +315,10 @@ product/<feature-name>/receipts/
 
 | 启动目录 | 会话角色 | 允许操作 | 禁止操作 |
 |---|---|---|---|
-| `/data/reasonix/files`（规划层） | 规划代理 | 读 `memory/` `search_fallback/` `product/` `todo/` `system.md`；写 `memory/` `search_task/` `product/` `todo/` `system.md`；制定需求方向（目标/非目标/影响范围/风险）；验收回执 | **不读** `Smart-WorkFlow/`、`Smart-WorkFlow-Web/` 代码与 `knowledge/`；修改两个代码项目内任何业务文件；执行 `mvn`/`pnpm`/`java`/`node` 等状态变更命令 |
+| `/usr/local/projects/Smart-WorkFlow`（planning layer） | 规划代理 | 读 `memory/` `search_fallback/` `product/` `todo/` `system.md`；写 `memory/` `search_task/` `product/` `todo/` `system.md`；制定需求方向（目标/非目标/影响范围/风险）；验收回执 | **不读** `Smart-WorkFlow/`、`Smart-WorkFlow-Web/` 代码与 `knowledge/`；修改两个代码项目内任何业务文件；执行 `mvn`/`pnpm`/`java`/`node` 等状态变更命令 |
 | `Smart-WorkFlow/`（后端执行层） | 执行代理（后端） | 读写 `Smart-WorkFlow/` 内文件；执行 `mvn` 系命令；写回执到 `product/<feature>/receipts/`；更新 `knowledge/`；写 `search_fallback/` | 读写 `Smart-WorkFlow-Web/` 任何文件；执行 `pnpm`/`npm`/`vite`/`vitest` 等前端命令；制定/修改需求方向 |
 | `Smart-WorkFlow-Web/`（前端执行层） | 执行代理（前端） | 读写 `Smart-WorkFlow-Web/` 内文件；执行 `pnpm` 系命令；写回执到 `product/<feature>/receipts/`；更新 `knowledge/`；写 `search_fallback/` | 读写 `Smart-WorkFlow/` 任何文件；执行 `mvn`/`java` 等后端命令；制定/修改需求方向 |
-| `/data/reasonix/files`（管理员会话） | 管理员代理 | 读写 `system.md`、`memory/architecture.md`、`knowledge/architecture.md`（架构/宪法类文件） | 制定需求方向、验收回执、更新 memory/ 状态文件、读写业务代码、执行任何状态变更命令 |
+| `/usr/local/projects/Smart-WorkFlow`（管理员会话） | 管理员代理 | 读写 `system.md`、正式治理文档、`memory/architecture.md`、`knowledge/architecture.md`（架构/宪法类文件） | 制定需求方向、验收回执、更新 memory/ 状态文件、读写业务代码、执行任何状态变更命令 |
 
 **硬性红线：**
 
@@ -338,7 +338,7 @@ product/<feature-name>/receipts/
 - 涉及前后端联动的验证需求，必须拆成两个独立 Step（各自的执行方案 + 回执），分别下发给对应的执行代理，不得指望单个执行代理跨项目"顺手"验证
 - 执行代理若发现任务需要跨越自己的项目边界才能完成，应在回执中如实报告"超出职责域，需拆分为对方项目的 Step"，而不是自行越界执行
 - 违反本原则视为越权执行：回执一律视为不合格，方案验收自动判定为不通过，需规划层重新下发方向后再执行
-- ❌ **禁止执行层代理诱导用户进行规划（硬约束 🔒）**：执行层代理的对话中不得出现规划性质的建议或设计方案邀请。包括但不限于：「让我来设计」「我建议这样实现」「要不要我帮你规划」「我先分析需求」「我来拆解 Step」「这个方案我重新设计一下」「我觉得应该加一个 Step」「这个需求我应该这样做」「要不要我帮你改一下方案」——这些都是**规划层**的职责。执行层的**唯一正确响应**：严格按需求方向执行 → 遇到问题在回执中如实报告 → 等待规划层修正方向。用户若确实需要重新规划，必须回到规划层（`/data/reasonix/files`）进行。执行层诱导规划的回执视为不合格，功能自动 FAILED
+- ❌ **禁止执行层代理诱导用户进行规划（硬约束 🔒）**：执行层代理的对话中不得出现规划性质的建议或设计方案邀请。包括但不限于：「让我来设计」「我建议这样实现」「要不要我帮你规划」「我先分析需求」「我来拆解 Step」「这个方案我重新设计一下」「我觉得应该加一个 Step」「这个需求我应该这样做」「要不要我帮你改一下方案」——这些都是**规划层**的职责。执行层的**唯一正确响应**：严格按需求方向执行 → 遇到问题在回执中如实报告 → 等待规划层修正方向。用户若确实需要重新规划，必须回到 planning layer（`/usr/local/projects/Smart-WorkFlow`）进行。执行层诱导规划的回执视为不合格，功能自动 FAILED
 - ❌ **禁止预告或征询下一个 Step（硬约束 🔒）**：判定不依赖是否出现"建议/设计/规划"等敏感词。执行层代理在当前 Step 完成、回执写入后，若主动总结/预告**尚未下发**的下一个 Step 范围内容，或以问句征询"要不要我生成/起草下一个 Step 方案"（例如「B3 是……Step，要生成 B3 执行方案吗？」），本质仍是抢先替规划层做了方案起草判断，同样视为诱导规划。**唯一正确做法**：写完当前 Step 回执即停止，不对下一个 Step 的编号、范围、是否需要方案做任何评论或提议——下一个 Step 由规划层判断并主动下发。违反同样视为回执不合格，功能自动 FAILED
 
 ---

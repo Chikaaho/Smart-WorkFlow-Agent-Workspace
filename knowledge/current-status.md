@@ -263,11 +263,11 @@
 
 | 文档 | 位置 | 来源 |
 |------|------|------|
-| 后端工程宪法 | `Smart-WorkFlow/.claude/system.md` | `SmartWorkFlow_files.zip` → `CLAUDE-java.md` |
-| 前端工作宪法 | `Smart-WorkFlow-Web/.claude/system.md` | `SmartWorkFlow_files.zip` → `CLAUDE-vue.md` |
+| 后端工程宪法 | `Smart-WorkFlow/docs/governance/engineering-constitution.md` | 后端项目正式治理文档 |
+| 前端工作宪法 | `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` | 前端项目正式治理文档 |
 | 功能清单（55 功能/90 明细） | `Smart-WorkFlow/功能清单.md` | `SmartWorkFlow_files.zip` → `功能清单.md` |
 | 产品需求文档（PRD） | `SmartWorkFlow_files.zip` → `Smart-WorkFlow-PRD.md` | 需求基线 |
 | 前端架构与现状知识库 | `SmartWorkFlow_files.zip` → `Smart-WorkFlow-前端架构与现状-知识库.md` | 前端单一现状源 |
 | 页型规范（设计系统可视化） | `SmartWorkFlow_files.zip` → `Smart-WorkFlow 页型规范.html` | 两页型像素级原型 |
 
-> 以上文件均来自 2026-07-16 的 `SmartWorkFlow_files.zip`。zip 中 `CLAUDE-java.md` / `CLAUDE-vue.md` 为最新版本工程宪法，如与子项目 `.claude/system.md` 存在差异，以 zip 版本为准并应同步更新子项目文件。
+> 2026-07-16 的 `SmartWorkFlow_files.zip` 仅是部分文档的历史来源，不再构成工程宪法权威。当前工程宪法唯一权威为上表两个项目正式路径。

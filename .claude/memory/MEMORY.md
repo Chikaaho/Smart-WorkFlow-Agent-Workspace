@@ -1,2 +1,0 @@
-- [Backend only repo](backend-only-repo.md) — 本仓库只处理后端变更和测试，禁止前端操作
-- [No Claude commits](no-claude-commits.md) — 此仓库提交信息中不得包含 Claude 署名

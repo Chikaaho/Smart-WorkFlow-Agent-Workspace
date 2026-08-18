@@ -139,7 +139,7 @@ deepseek-v4-flash
 ## 12. Git diff 摘要
 
 ```
- M .claude/system.md
+ M docs/governance/engineering-constitution.md
 ?? sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/controller/AuthControllerTest.java
 ?? sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/controller/AuthFlowIntegrationTest.java
 ?? sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/service/RefreshTokenServiceTest.java

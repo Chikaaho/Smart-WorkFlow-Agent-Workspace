@@ -25,7 +25,7 @@
 | `product/agent-model-orchestration/receipts/step-10-execution.md` | 后端执行回执（§5 契约键/§9 设计决策/§11 风险——前端 UI 语义依据） |
 | `search_fallback/m07-multivar-context-precedent.md` | 前置调研（Q5/Q6 前端磁盘现状全量源码，改动面直接依据） |
 | `/data/reasonix/files/system.md`（§6/§7） | 17 项结构自查参考 + 回执格式（§7.1/§7.2） |
-| `Smart-WorkFlow-Web/.claude/system.md` | 前端工程宪法（执行层身份边界、四连校验门） |
+| `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` | 前端工程宪法（执行层身份边界、四连校验门） |
 | `Smart-WorkFlow-Web/src/modules/agent/utils/graphAdapter.ts`（磁盘现状，与调研一致） | 改造对象（常量 + 顶部映射约定） |
 | `Smart-WorkFlow-Web/src/modules/agent/views/GraphDesigner.vue`（磁盘现状，与调研一致） | 改造对象（属性面板 template + 写回函数） |
 | `Smart-WorkFlow-Web/src/contracts/agent.ts` | 契约类型（config 为不透明 Record，零类型改动，仅注释同步） |

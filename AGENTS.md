@@ -46,9 +46,8 @@ must not be copied or silently weakened here.
 ## Canonical governance
 
 - Workspace constitution: `system.md`.
-- Claude memory: `.claude/memory/`.
-- Backend engineering constitution: `Smart-WorkFlow/.claude/system.md`.
-- Frontend engineering constitution: `Smart-WorkFlow-Web/.claude/system.md`.
+- Backend engineering constitution: `Smart-WorkFlow/docs/governance/engineering-constitution.md`.
+- Frontend engineering constitution: `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md`.
 
 Before doing work, identify the task scope and read the matching canonical
 document.  If the task spans multiple scopes, do not treat that as permission
@@ -87,5 +86,8 @@ Codex must write Git commit subjects and bodies in Chinese by default.  Keep
 necessary technical identifiers such as module names, class names, commands,
 issue IDs, and conventional prefixes (`feat:`, `fix:`, `docs:`) unchanged when
 useful, but the descriptive commit message itself must not be purely English.
+Commit messages must not contain Claude attribution, including
+`Co-Authored-By: Claude <noreply@anthropic.com>` or any other Claude signature
+line; use only the identity configured by the repository owner.
 Do not rewrite published history solely to enforce this rule unless the user
 explicitly authorizes the history rewrite and required force-push.

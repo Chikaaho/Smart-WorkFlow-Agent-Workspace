@@ -8,14 +8,14 @@ D85 信息分层铁律已按任务书 5 项全部处理完毕（4 项落地 + 1 
 
 1. `knowledge/shared-constraints.md` — 新增 §10「信息分层铁律（D85）」5 条（①knowledge=唯一完整权威信息源 ②memory=最少信息摘要 ③冲突以 knowledge 为准并立即修正 memory ④触碰状态文件必须同步 knowledge 全量文件——禁止"顶部新、中下部残留" ⑤清单 🟦/⬜ 缺口同步进 `todo/requirement-pool.md` P 编号登记）
 2. `knowledge/development-workflow.md` — §6.2 之后新增 §6.3「信息分层铁律（D85）」4 条（含文件全量同步强化与 P 编号登记；该文件无 §3.3 结构，与"第 10 项知识库全量同步"最接近的 §6.2 维护原则紧随其后引用）
-3. `Smart-WorkFlow/.claude/system.md`（后端工程宪法）— 末尾追加 §13「信息分层铁律（与根 system.md §0.4 一致）」4 条 + 注记
-4. `Smart-WorkFlow-Web/.claude/system.md`（前端工程宪法）— 末尾追加 §15「信息分层铁律（与根 system.md §0.4 一致）」4 条 + 注记
+3. `Smart-WorkFlow/docs/governance/engineering-constitution.md`（后端工程宪法）— 末尾追加 §13「信息分层铁律（与根 system.md §0.4 一致）」4 条 + 注记
+4. `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md`（前端工程宪法）— 末尾追加 §15「信息分层铁律（与根 system.md §0.4 一致）」4 条 + 注记
 5. `knowledge/README.md` — **不存在**；knowledge/ 内无目录说明区（各文件头部仅为"工作区统一知识库 — XX分册"单文件定位，非目录索引）→ 按任务书"说明即可"处理；"knowledge=完整权威、memory=摘要"表述已由上述新增 D85 条款原样承载
 
 ## 检查范围
 
-- 读取：根 `system.md`（§0.4 铁律块 + §3.3 第10项）、`knowledge/shared-constraints.md`、`knowledge/development-workflow.md`、`knowledge/` 全部文件头部（README 存在性检查）、`Smart-WorkFlow/.claude/system.md`、`Smart-WorkFlow-Web/.claude/system.md`、根 `README.md`、任务书 `search_task/rule-sync-d85.md`
-- 修改：`knowledge/shared-constraints.md`、`knowledge/development-workflow.md`、`Smart-WorkFlow/.claude/system.md`、`Smart-WorkFlow-Web/.claude/system.md`（四处均仅追加，未动既有内容）
+- 读取：根 `system.md`（§0.4 铁律块 + §3.3 第10项）、`knowledge/shared-constraints.md`、`knowledge/development-workflow.md`、`knowledge/` 全部文件头部（README 存在性检查）、`Smart-WorkFlow/docs/governance/engineering-constitution.md`、`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md`、根 `README.md`、任务书 `search_task/rule-sync-d85.md`
+- 修改：`knowledge/shared-constraints.md`、`knowledge/development-workflow.md`、`Smart-WorkFlow/docs/governance/engineering-constitution.md`、`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md`（四处均仅追加，未动既有内容）
 
 ## 关键证据
 
