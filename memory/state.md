@@ -1,16 +1,27 @@
 # 当前状态
 
-> 最后更新：2026-08-18（bpm-h2-v8-compat 最终验收 PASSED（D87/D88）+ 阶段三知识同步收尾修正 D89）
+> 最后更新：2026-08-18（admin-role-governance 阶段三完成，D97）
 
 ## 进行中功能
 
-**（无进行中业务功能）**：bpm-h2-v8-compat（P10 / I47）及其阶段三知识同步收尾修正均已 `PASSED` 并归档。
+**（无进行中业务功能）**：admin-role-governance（P24 / I49）已于 D97 完成阶段三并标记 `COMPLETED`；P24 已核销，I49 已关闭。
+
+## 最新已完成
+
+**admin-role-governance（P24 / I49）COMPLETED（D93-D97，2026-08-18）✅**
+- 双角色基线：不可变内置 `superadmin` + seed 可配置普通 `admin`；不新增默认用户、不迁移既有绑定。
+- 普通角色菜单/按钮权限与最小用户角色绑定闭环；job/storage 请求级授权200、撤权403、未认证401。
+- V31 H2/PG 双份，冲突显式失败；H2全链31，后端551/0/0/0，前端66f/576t四连全绿。
+- 功能清单零变化（✅12/🟦37/⬜41共90）；I36仅关闭本轮子集，P1其余缺口开放。
+- 归档：`product/admin-role-governance/passed/`；最终收尾 `receipts/planning-stage3-review-d97.md`。
+
+上一业务功能 bpm-h2-v8-compat（P10 / I47）及其阶段三知识同步收尾修正均已 `PASSED` 并归档。
 
 **知识清理任务 PASSED（2026-08-18，D91/D92）**：执行层完成 `knowledge/features/` 18 个非模板文件 100% 扫描，修正 sysrole、status-semantics、bpm-plugin 三个已知欠账，并额外发现和修正 data-scope-enforcement；旧终态词全文零残留。功能清单、代码、测试、迁移零改动，未建立 P/I 编号。归档：`product/feature-tracking-terminal-state-cleanup/passed/`。
 
 **阶段三收尾修正 PASSED（2026-08-18，D89/D90）**：执行层已按一致性审计修正 9 个指定文件并完成全文复核；规划层六项验收通过。同步回执：`product/bpm-h2-v8-compat/receipts/post-sync-correction.md`。另披露 3 个独立历史欠账（sysrole/status-semantics/bpm-plugin 功能追踪文件仍有待验收旧状态），不属于 P10/D89 范围，待单独清理。
 
-## 最新已完成
+## 既有完成记录
 
 **bpm-h2-v8-compat（P10 / I47）PASSED（D87/D88，2026-08-17）✅**
 - H2 V8 partial index 改为生成列 `active_key` + 唯一索引，PostgreSQL V8 零改动，双方言保持 active 条件唯一语义一致。
@@ -52,7 +63,7 @@
 **当前架构要点**（派生自代码，此处仅记关键约定）：
 - 图拓扑：START→callModel→END 单节点；agentic loop 在 ChatModel.call() 内建（internalCall 递归），不外显
 - ThreadLocal 注入四件套：chatModel / tools / historyMessages / toolCallRecords（bind-finally-clear 对称，ServiceImpl finally 保证全清）
-- Flyway：agent 路径 V19-V25 已占（V25=图定义表）+ **V27/V28 已占**（Step12 执行历史双表）；root 路径 V26（Step9 菜单迁移）、**V29（job/storage 菜单 seed）、V30（sys_role_dept）已占**；当前最高 V30，无空闲 V 号
+- Flyway：agent 路径 V19-V25 已占（V25=图定义表）+ **V27/V28 已占**（Step12 执行历史双表）；root 路径 V26（Step9 菜单迁移）、V29（job/storage 菜单 seed）、V30（sys_role_dept）、**V31（admin role governance）已占**；当前最高 V31，无空闲 V 号
 - 大字段：H2=CLOB / PG=TEXT；agent 模块 create_by=VARCHAR(64)（偏离 bigint 惯例）；status=VARCHAR(20)；create_time=TIMESTAMP 无默认值（MetaObjectHandler 填充）
 
 **M07-F01「大模型管理」+ F02「图设计器」（含 Step11 并行/循环节点 + Step12 执行历史持久化）全部完结**，详情均在对应 `passed/step-N-*.md`，不在此重复摘录——关键架构结论：①F01（LangGraph4j）与 F02（自建 `AgentGraphInterpreter`）两条执行路径并存互不干扰；②条件分支=关键词子串匹配（不支持正则）；③execution context 自 Step10 起为命名变量表（`config.inputVar`/`outputVar`，默认变量 `input` 零迁移）；④Step11 起支持 LOOP（回边+迭代计数）/FORK/JOIN（多活跃执行点逻辑并发，非线程级），变量冲突=最后写入覆盖（D68）；⑤**Step12 起执行历史落库**：V27 `sw_agent_graph_execution`（执行记录）+ V28 `sw_agent_graph_execution_node`（节点明细）双表，分支标识=branchId 路径字符串（FORK按出边顺序追加下标），错误分类=`GraphExecutionException.category` 8类，成功/失败路径统一由 Service 包夹落库（D70/D71）；查询端点复用 `agent:model:view` 权限，本轮未做前端展示。**下一步（todo 池）**：单步调试、图节点级多Key轮询、F03知识库RAG；扩展 `flow-graph` adapter 契约需回规划层评估。
@@ -63,13 +74,13 @@ process-monitoring (M04-F06-01)：COMPLETED（详情见 `knowledge/`，2026-07-3
 
 ## 测试基线
 
-最新完成：**bpm-h2-v8-compat（P10 / I47）PASSED（D87/D88，2026-08-17）**——H2 V8 partial index → 生成列 `active_key` + 唯一索引等价实现；永久全链测试 7 目录 30 条迁移（口径 28→30）；BPM process 58/0/0、bootstrap 8/0/0、项目级 543/0/0；I47/P10 已核销，功能清单状态列无变化。回执：`product/bpm-h2-v8-compat/receipts/`。上一完成：sysrole-v5-column-alignment（P13 / I26）——模块 111/0/0、项目级 527/0/0，I26 已核销。
+上一完成：**bpm-h2-v8-compat（P10 / I47）PASSED（D87/D88，2026-08-17）**——H2 V8 partial index → 生成列 `active_key` + 唯一索引等价实现；永久全链测试 7 目录 30 条迁移（口径 28→30）；BPM process 58/0/0、bootstrap 8/0/0、项目级 543/0/0；I47/P10 已核销，功能清单状态列无变化。回执：`product/bpm-h2-v8-compat/receipts/`。再上一完成：sysrole-v5-column-alignment（P13 / I26）——模块 111/0/0、项目级 527/0/0，I26 已核销。
 
-- 后端：项目级 **543 tests**（运行口径，CONFIRMED 2026-08-17，BUILD SUCCESS 0 failures；527+16）
+- 后端：项目级 **551 tests**（运行口径，CONFIRMED 2026-08-18，0 failures / 0 errors / 0 skipped）
 - 前端：**66 spec files / 576 tests（运行口径；569→576，I51 新增 7 测试）**，四连全绿（CONFIRMED 2026-08-17；2G 上限下 typecheck/lint/test/build 全部退出 0）
 - 功能清单：**✅12/🟦37/⬜41 共 90 行**（2026-08-16 D82 同步）
-- Flyway：root 路径 V30 已占；H2 真实全链口径 **30**（7 目录，含 BPM V8/V14）
-- 已完成功能：19 个
+- Flyway：root 路径 V31 已占；H2 真实全链口径 **31**（7 目录，含 BPM V8/V14）
+- 已完成功能：20 个
 - 需求池：`todo/requirement-pool.md`（2026-08-16 新建，已开发未满足+候选，规划层维护）
 
 ## 模块完成度（简表）
