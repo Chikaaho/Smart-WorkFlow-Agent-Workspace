@@ -1,6 +1,6 @@
 # 会话交接
 
-> 最后更新：2026-08-18（user-org-association-query 阶段三同步 COMPLETED，D101）
+> 最后更新：2026-08-18（department-query-filtering D104 COMPLETED）
 
 ## 最新完成
 
@@ -69,9 +69,9 @@
 
 ## 进行中
 
-**user-org-association-query（I32/I34/I35/I36 剩余子集）COMPLETED（D101，2026-08-18）**。人员关联、组合查询、双租户/数据权限、故障回滚、超管保护、H2新库与V31→V32、后端全量563/0/0/0、前端66f/577t四连均通过。I32/I34/I35关闭，I36仅关闭普通角色绑定子集；PG运行期和进程快照为非阻塞环境待办。主方向及阶段三同步均已归档。
+无进行中业务功能。
 
-上一完成：admin-role-governance（P24 / I49）`COMPLETED`（D97，2026-08-18）✅。P24核销、I49关闭、I36仅关闭本轮子集；主方向与同步方向均归档 `product/admin-role-governance/passed/`。基线：后端551/0/0/0、前端66f/576t、V31/H2全链31、清单✅12/🟦37/⬜41共90。
+已完成（最近）：department-query-filtering（I31 / M01-F01-04）`COMPLETED`（D104，2026-08-18）✅——业务与测试九项全部通过，D103终态同步缺口已修正，I31关闭、清单M01-F01-04为✅，归档 `product/department-query-filtering/passed/`。user-org-association-query（D101）与 admin-role-governance（D97）均保持 COMPLETED。
 
 **历史功能追踪终态清理 PASSED（D91/D92，2026-08-18）**：`knowledge/features/` 18 个非模板文件全量核对，修正 sysrole/status-semantics/bpm-plugin/data-scope 四个旧终态，旧状态词零残留；功能清单与代码零改动。
 
@@ -79,16 +79,16 @@
 
 ## 当前基线
 
-- 后端：项目级 **563 tests**（运行口径，CONFIRMED 2026-08-18，0 failures / 0 errors / 0 skipped）
-- 前端：**66 spec files / 577 tests**，四连全绿（CONFIRMED 2026-08-18；正式 2G 上限下 typecheck/lint/test/build 全部退出 0）
-- 功能清单：**✅12 / 🟦37 / ⬜41，共 90 行**（2026-08-16 同步）
-- Flyway：root 路径 V32 已占用；H2 新库 V1→V32 与 V31→V32 migrate + validate，专项 10 tests
-- 已完成功能：20 个（features.md 口径，admin-role-governance 已完成阶段三）
+- 后端：项目级 **582 tests**（运行口径，CONFIRMED 2026-08-18 D102，0 failures / 0 errors / 0 skipped；563 D101 → +19）
+- 前端：**66 spec files / 602 tests**，四连全绿（CONFIRMED 2026-08-18 D102；正式 2G 上限下 typecheck/lint/test/build 全部退出 0；577 D101 → +25）
+- 功能清单：**✅16 / 🟦33 / ⬜41，共 90 行**（2026-08-18 D102：M01-F01-04 🟦→✅，I31 关闭，无关行零漂移）
+- Flyway：root 路径 V32 已占用；H2 新库 V1→V32 与 V31→V32 migrate + validate，专项 10 tests；本轮零迁移
+- 已完成功能：22 个（features.md 口径，department-query-filtering 执行层闭环完成）
 - 执行约束：**本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行**（先后端后前端），禁并行编译
 
 ## 下一动作
 
-**执行阶段三终态同步**：读取 `product/user-org-association-query/ready/direction-post-acceptance-knowledge-sync.md`，仅同步 D101 PASSED、关闭 I32/I34/I35 与 I36 本轮子集、更新清单/基线并登记 PG 运行期和进程快照两项非阻塞环境待办；禁止修改业务代码或重跑测试。完成后提交 `receipts/post-acceptance-knowledge-sync.md`，由规划层确认 COMPLETED。
+**无进行中功能**：department-query-filtering 已于 D104 完成最终复验并归档。下一需求由规划层另行选择；本交接不预设执行任务。
 
 **探索回执已回收并核销（2026-08-16，D83 裁定 + D84 落库核销）**：
 - 清单 90/90 零不一致（I1 无第三次复发）；基线全部核实（527/66f569t——**569 为运行口径，静态 561**/V30+28/16 功能）；memory 自洽。
@@ -100,8 +100,8 @@
 - **探索任务核销（2026-08-16 晚，4/4 全闭环）**：i18-close-sync ✅（I18 注册表已同步「✅ 已关闭（D84）」仿 I33/I37 先例，memory 侧核对一致）。**本轮全部委派任务已闭环，无进行中探索**。
 - **当前规划裁定**（2026-08-18）：user-org-association-query D101 PASSED，阶段三同步 COMPLETED；D93-D97 双角色治理作为前置基线保持有效。
 
-后续候选（按风险/价值排序参考）：
-1. 当前功能完成后继续评估 M01/M02 剩余虚高要素（I31 部门筛选等；I33/I37/I43/I44 已修复，I32/I34/I35/I36 当前处理中）
+后续候选（按风险/价值排序参考，2026-08-18 D103 更新）：
+1. M01/M02 其余虚高要素补齐：I36 用户组绑定、M02-F02/F03 权限配置入口（I31 部门筛选已由 department-query-filtering 关闭；I32/I34/I35 已由 D101 关闭；I33/I37/I43/I44 已修复）
 2. M07 补全：F01 前端管理页、F02-02 Prompt 配置、F02-04 运行日志页+单步调试、F04-02 Token 统计
 3. M07-F03/F04 新功能：助手配置/知识库RAG（选型未定）/对话窗口SSE（均零代码）
 4. IoT / OpenAPI 模块落地（仅骨架）
@@ -113,12 +113,11 @@
 你是 Smart-WorkFlow 根目录规划代理。请按 system.md §10 执行新会话恢复。
 
 最新状态：
-- user-org-association-query（I32/I34/I35/I36 剩余子集）**COMPLETED（D101，2026-08-18）**——后端563/0/0/0、前端66f/577t、H2新库/升级链、双租户/回滚均闭合；PG运行期与进程快照按用户裁定转非阻塞待办。验收与同步回执位于 `product/user-org-association-query/receipts/`。
+- department-query-filtering（M01-F01-04/I31 部门条件查询闭环）**COMPLETED（D104，2026-08-18）**——后端 GET /system/dept/tree name/status 条件 + 祖先补全树形结果，前端 DeptList 筛选/重置/双空态 + Mock 对齐；后端 582/0/0（563+19）、前端 66f/602t（577+25）四连全绿，Flyway 零迁移；清单 M01-F01-04 🟦→✅（✅16/🟦33/⬜41），I31 关闭。D103 终态同步缺口已修正，方向归档 `product/department-query-filtering/passed/`，最终复验 `receipts/planning-final-review-d104.md`
+- user-org-association-query（I32/I34/I35/I36 剩余子集）**COMPLETED（D101，2026-08-18）**——人员关联、组合查询、双租户/回滚、超管保护均闭合，阶段三同步完成；PG运行期与进程快照为非阻塞环境待办。验收与同步回执位于 `product/user-org-association-query/receipts/`。
 - admin-role-governance（P24/I49）**COMPLETED（D97，2026-08-18）**——功能级与阶段三均完成，P24/I49 已核销关闭。
-- bpm-h2-v8-compat（P10/I47）**PASSED（D87/D88，2026-08-17）**——BPM H2 V8 partial index 以生成列 active_key + 唯一索引等价实现，PG V8 零改动；永久 FlywayFullChainH2Test 7 目录 30 条迁移（口径 28→30）；后端 543/0/0（527+16）；I47/P10 已核销，P12 已核销（sw-bootstrap 测试基建落地）
-- 阶段三知识同步收尾修正（D89/D90，2026-08-18）**PASSED**：执行层修正 9 个指定文件并完成全文复核，规划层六项验收通过；另有 3 个独立历史功能追踪文件状态欠账待单独清理
-- 基线：后端 563 tests / 前端 66f/577t 四连全绿；清单终态待阶段三回执确认；Flyway 最高 V32，H2 新库/升级链 10 tests；已完成功能数待阶段三后更新
+- 基线：后端 582 tests / 前端 66f/602t 四连全绿；清单 ✅16/🟦33/⬜41 共 90 行；Flyway 最高 V32，H2 新库/升级链 10 tests；已完成功能 22 个
 - 执行约束：本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行，禁并行编译
 
-最新功能归档：product/user-org-association-query/passed/；阶段三同步回执：`product/user-org-association-query/receipts/post-acceptance-knowledge-sync.md`。
+最新功能归档：product/department-query-filtering/passed/；最终复验：product/department-query-filtering/receipts/planning-final-review-d104.md。
 ```

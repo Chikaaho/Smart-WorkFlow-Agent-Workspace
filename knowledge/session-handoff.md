@@ -69,14 +69,15 @@
 
 ## 2. 进行中功能
 
-**无（admin-role-governance 已 D96 最终验收 PASSED，P24/I49 关闭条件满足；bpm-h2-v8-compat 已 D88 最终验收 PASSED 归档，待规划层选定下一需求方向）。** admin-role-governance 阶段三知识同步正在提交最终收尾回执 `product/admin-role-governance/receipts/post-acceptance-knowledge-sync.md`；本轮仅同步知识，不重新打开业务实现。
+**无进行中业务功能。** department-query-filtering 已于 D103 复验 / D104 最终验收 **COMPLETED**（2026-08-18），方向归档 `product/department-query-filtering/passed/`，最终复验 `receipts/planning-final-review-d104.md`；D103 仅终态同步 FAILED 已由 `receipts/post-d103-sync-correction.md` 全文修正复验通过。下一需求由规划层从候选池另行选定。
 
-下一候选按 [[handoff]] 候选池（2026-08-18 更新）：M01/M02 其余虚高补齐（I31-I36/I40）、M07 补全（F01 前端管理页/F02-02 Prompt 配置/F04-02 Token 统计）、M07-F03/F04 新功能、IoT/OpenAPI 模块落地、数据权限遗留与停用即时生效；I49 已由 admin-role-governance D96 关闭。
+下一候选按 [[handoff]] 候选池（2026-08-18 D102 更新）：M01/M02 其余虚高补齐（I36 用户组绑定/I40）、M07 补全（F01 前端管理页/F02-02 Prompt 配置/F04-02 Token 统计）、M07-F03/F04 新功能、IoT/OpenAPI 模块落地、数据权限遗留与停用即时生效；I49 已由 admin-role-governance D96 关闭，I31 已由 department-query-filtering 关闭。
 
 ---
 
 ## 3. 最终状态
 
+**department-query-filtering**：**COMPLETED** ✅ — M01-F01-04/I31 部门名称/状态条件查询（2026-08-18，D103 复验 + D104 最终验收 PASSED；后端 582 / 前端 66f/602t / Flyway 零迁移；清单 M01-F01-04 🟦→✅，I31 关闭；方向归档 `product/department-query-filtering/passed/`）
 **admin-role-governance**：**PASSED** ✅ — P24/I49 不可变超管与普通管理员治理（D96，2026-08-18，后端 551 / 前端 66f/576t / H2 全链 31；阶段三知识同步后由规划层完成最终状态收尾）
 **bpm-h2-v8-compat**：**COMPLETED** ✅ — 后端修复轮 + D87/D88 规划层最终验收 PASSED（2026-08-17，后端 543 / H2 全链 30，I47/P10 核销）
 **sysrole-v5-column-alignment**：**COMPLETED** ✅ — 后端修复轮 + D86 规划层最终验收 PASSED（2026-08-17，后端 527，I26 核销）
@@ -156,7 +157,7 @@
 
 ## 9. 当前系统状态
 
-全部 **19** 个功能已完成闭环：
+全部 **22** 个功能已完成闭环：
 
 1-8. Walking Skeleton → sys-mgmt-crud → bpm-task-center → storage-multi-provider → job-scheduler → kb-verification → auth-seam-completion → feature-checklist-sync
 9. ✅ vue-flow-adapter（2026-07-25）
@@ -169,21 +170,24 @@
 16. ✅ bpm-plugin-architecture（2026-08-16，D82 PASSED）
 17. ✅ status-semantics-alignment（2026-08-17，I51）
 18. ✅ sysrole-v5-column-alignment（2026-08-17，D86 PASSED，I26）
-19. ✅ bpm-h2-v8-compat ← **最新完成**（2026-08-17，D87/D88 PASSED，I47/P10）
+19. ✅ bpm-h2-v8-compat（2026-08-17，D87/D88 PASSED，I47/P10）
+20. ✅ admin-role-governance（2026-08-18，D96 PASSED，P24/I49）
+21. ✅ user-org-association-query（2026-08-18，D101 PASSED，阶段三同步 COMPLETED）
+22. ✅ department-query-filtering ← **最新完成**（2026-08-18，D103 复验 + D104 最终验收 PASSED；I31 关闭，清单 M01-F01-04 🟦→✅）
 
-- 后端：项目级 **543 tests**（CONFIRMED 2026-08-17 bpm-h2-v8-compat 验证：527+16，BUILD SUCCESS 31/31，0 failures/0 errors）
-- 前端：**66 spec files / 576 tests** 四连全绿（CONFIRMED 2026-08-17 status-semantics-alignment；**576=运行口径，静态 568（+8 系 tokens.spec.ts CATEGORIES 循环展开）**）
-- 功能清单：**✅12 / 🟦37 / ⬜41 共 90 行**（2026-08-16 D82 同步，D83 复核零漂移）
-- Flyway：V1-V30 连续（V30 已占）；**H2 真实全链口径 30**（7 目录含 bpm V8/V14，永久测试 `FlywayFullChainH2Test`；旧 28 条排除 BPM 口径已失效）
-- 已完成功能：19 个
-- 无进行中业务功能
+- 后端：项目级 **582 tests**（CONFIRMED 2026-08-18 department-query-filtering 验证：563+19，BUILD SUCCESS 31/31，0 failures/0 errors/0 skipped）
+- 前端：**66 spec files / 602 tests** 四连全绿（CONFIRMED 2026-08-18 department-query-filtering；577 D101 → +25，运行口径）
+- 功能清单：**✅16 / 🟦33 / ⬜41 共 90 行**（2026-08-18 D102 同步：M01-F01-04 🟦→✅，无关行零漂移）
+- Flyway：V1-V32 连续（V32 已占）；**H2 真实全链口径 30**（7 目录含 bpm V8/V14，永久测试 `FlywayFullChainH2Test`；旧 28 条排除 BPM 口径已失效）；本轮零迁移
+- 已完成功能：22 个
+- 进行中业务功能：无（department-query-filtering 已 D104 COMPLETED，方向归档 `product/department-query-filtering/passed/`）
 
 ---
 
 ## 10. 还有什么没做
 
-### 候选需求池（2026-08-16 D83 更新，规划层选方向用）
-1. **M01/M02 其余虚高要素补齐** — I31-I36/I40 待修复（部门条件筛选/人员岗位角色关联/角色绑定/按钮权限配置入口）
+### 候选需求池（2026-08-18 D102 更新，规划层选方向用）
+1. **M01/M02 其余虚高要素补齐** — I36 用户组绑定/I40 待修复（按钮权限配置入口等；I31 部门条件筛选已由 department-query-filtering 关闭）
 2. **M07 补全** — F01 前端管理页（5 条全缺）、F02-02 Prompt 配置字段、F02-04 运行日志页+单步调试、F04-02 Token 统计（缺口均由 D83 回执确认，前端管理页为最大缺口）
 3. **M07-F03/F04 新功能** — 助手配置/F03-03 知识库 RAG/F04-01 对话窗口 SSE（均零代码）
 4. **IoT / OpenAPI 模块落地** — 仅骨架（M08 13 行 + M09 8 行全 ⬜ 无虚低，D83 复核确认）
@@ -191,7 +195,7 @@
 6. **小项池** — 数据权限遗留（部门档 deleted 过滤/job 非分页入口/PG 联调验证）、停用即时生效（JWT 过滤器层）（I51 已于 2026-08-17 status-semantics-alignment 修复关闭；I26/I47 已于 2026-08-17 分别由 sysrole-v5-column-alignment 与 bpm-h2-v8-compat 修复核销；I49 已由 admin-role-governance D96 关闭）
 
 ### 已知未做事项
-- 表单删除（M03-F02-01，I39）、消息删除（M05-F01-02，I41）等 I31-I45 待修复项逐条见 [[known-issues]]
+- 表单删除（M03-F02-01，I39）、消息删除（M05-F01-02，I41）等 I31-I45 待修复项逐条见 [[known-issues]]（I31 已由 department-query-filtering 关闭）
 - 停用前已签发 access token 900s 窗口内仍有效（如需即时生效需在 JWT 过滤器层单独排期）
 
 ---
@@ -203,6 +207,7 @@
 | I51 | 前端 status 语义与后端相反（UI 新建用户无法登录/停用不阻断登录） | 高 | ✅ **已修复**（2026-08-17 status-semantics-alignment：用户/部门页按后端契约修正，66f/576t 四连全绿；角色/岗位未动） |
 | I26 | SysRole 列名与 V5 迁移不一致（全链 Flyway 环境必崩，测试 DDL 掩盖） | 高 | ✅ **已修复**（2026-08-17 sysrole-v5-column-alignment，D86 PASSED：实体/测试 DDL 对齐 V5 链尾 `built_in`/`remark`） |
 | I49 | V29 菜单未 seed sys_role_menu（job/storage 仅超管可达） | 中 | ✅ 已关闭（admin-role-governance，D96 PASSED，方向已归档） |
+| I31 | M01-F01-04 部门查询虚高（仅全量树查询、无条件筛选） | 低 | ✅ **已关闭**（2026-08-18 department-query-filtering：name/status 条件 + 祖先补全树形结果，582/0/0 + 66f/602t，清单 M01-F01-04 🟦→✅） |
 | I47 | bpm/h2 V8 partial index 不兼容 H2（全链迁移从未可跑） | 中 | ✅ **已修复**（2026-08-17 bpm-h2-v8-compat，D88 PASSED：生成列等价实现 + 永久全链测试 30 条） |
 | I50 | 登录状态校验在密码匹配之后（时序/资源） | 低 | D83 新登记 |
 | I48 | flow-graph adapter 契约限制（无边点击/无命令式通道） | 低 | 绕行生效，扩展待评估 |
@@ -256,7 +261,7 @@
 ---
 
 > 最后更新：2026-08-18
-> 最新完成功能：**bpm-h2-v8-compat** — P10/I47 BPM H2 V8 迁移链兼容修复（**COMPLETED** ✅，D87/D88 PASSED）+ 阶段三知识同步收尾修正（D89）
-> 上一功能：**sysrole-v5-column-alignment** — P13/I26 SysRole 与 V5 列契约对齐（**COMPLETED** ✅，D86 PASSED）
-> 测试基线：后端 CONFIRMED 543 tests · 前端 CONFIRMED 66 files / 576 tests（运行口径，静态 568；四连全绿）
-> 无进行中业务功能
+> 最新完成功能：**department-query-filtering** — M01-F01-04/I31 部门名称/状态条件查询闭环（**COMPLETED** ✅，D103 复验 + D104 最终验收 PASSED；后端 582 / 前端 66f/602t / Flyway 零迁移；方向归档 `product/department-query-filtering/passed/`）
+> 上一功能：**user-org-association-query** — I32/I34/I35/I36 普通角色子集（**COMPLETED** ✅，D101 PASSED）
+> 测试基线：后端 CONFIRMED 582 tests · 前端 CONFIRMED 66 files / 602 tests（运行口径；四连全绿）
+> 进行中：无进行中业务功能（下一需求由规划层从候选池选定）
