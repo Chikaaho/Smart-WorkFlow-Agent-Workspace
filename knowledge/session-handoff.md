@@ -11,6 +11,11 @@
 
 ## 1. 最新完成功能
 
+**当前执行候选：user-org-association-query（D98，2026-08-18）**
+- 后端用户部门/岗位/普通角色关联保存、替换、清空、回填与统一事务已实现；组合筛选、双租户/数据权限/逻辑删除/停用关系结果集、superadmin 保护均由 H2 集成测试覆盖。
+- 后端项目级 Maven 全量在 2G、授权网络/本地 socket 环境下 BUILD SUCCESS 31/31；前端 66 files / 577 tests，typecheck/lint/test/build 全绿；Flyway H2 全新库及 V31→V32 升级链 10 tests 全绿。
+- 仍待规划层复验：PostgreSQL 运行期证据受本机无 PG 客户端/服务且 Docker daemon 不可用；普通沙箱下 Agent HTTP 测试受 Socket Operation not permitted，但授权运行已通过。执行/测试回执已覆盖更新。
+
 **bpm-h2-v8-compat — P10/I47 BPM H2 V8 迁移链兼容性修复（后端修复轮，2026-08-17，规划层最终验收 PASSED（D87/D88）并归档 `passed/`）**
 
 方向 `product/bpm-h2-v8-compat/passed/`（2026-08-17 下发，归档）执行，执行层自主闭环：探索（1 Explore Sub Agent，8 问全答）→ 代码修复 + 测试基建 + 模块级自测（1 Sub Agent）→ 项目级全量回归（主会话）→ 知识库全量同步 + 回执：
