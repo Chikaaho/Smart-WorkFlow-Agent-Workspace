@@ -1,6 +1,6 @@
 # 会话交接
 
-> 最后更新：2026-08-17
+> 最后更新：2026-08-18
 
 ## 最新完成
 
@@ -69,7 +69,7 @@
 
 ## 进行中
 
-**（无进行中功能）**：bpm-h2-v8-compat 及其阶段三知识同步收尾修正均已 PASSED 并归档（D88/D90）。
+**（无进行中业务功能）**。最新完成：admin-role-governance（P24 / I49）`COMPLETED`（D97，2026-08-18）✅。P24核销、I49关闭、I36仅关闭本轮子集；主方向与同步方向均归档 `product/admin-role-governance/passed/`。最终基线：后端551/0/0/0、前端66f/576t、V31/H2全链31、清单✅12/🟦37/⬜41共90。
 
 **历史功能追踪终态清理 PASSED（D91/D92，2026-08-18）**：`knowledge/features/` 18 个非模板文件全量核对，修正 sysrole/status-semantics/bpm-plugin/data-scope 四个旧终态，旧状态词零残留；功能清单与代码零改动。
 
@@ -77,33 +77,33 @@
 
 ## 当前基线
 
-- 后端：项目级 **543 tests**（运行口径，CONFIRMED 2026-08-17，mvn 全量 BUILD SUCCESS / 0 failures）
+- 后端：项目级 **551 tests**（运行口径，CONFIRMED 2026-08-18，0 failures / 0 errors / 0 skipped）
 - 前端：**66 spec files / 576 tests**，四连全绿（CONFIRMED 2026-08-17；正式 2G 上限下 typecheck/lint/test/build 全部退出 0）
 - 功能清单：**✅12 / 🟦37 / ⬜41，共 90 行**（2026-08-16 同步）
-- Flyway：root 路径 V30 已占用；H2 真实全链口径 **30**（7 目录，含 BPM V8/V14）
-- 已完成功能：19 个（features.md 口径，bpm-h2-v8-compat 已最终验收）
+- Flyway：root 路径 V31 已占用；H2 真实全链口径 **31**（7 目录，含 BPM V8/V14）
+- 已完成功能：20 个（features.md 口径，admin-role-governance 已完成阶段三）
 - 执行约束：**本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行**（先后端后前端），禁并行编译
 
 ## 下一动作
 
-**待选下一需求方向**：当前无进行中功能。P10/P13 已从需求池核销；后续从剩余风险/价值候选中单选一轮功能。
+**待选下一需求方向**：当前无进行中业务功能。admin-role-governance 已 COMPLETED；下一轮从剩余需求池单选一个功能，未经用户指示不自动启动。
 
 **探索回执已回收并核销（2026-08-16，D83 裁定 + D84 落库核销）**：
 - 清单 90/90 零不一致（I1 无第三次复发）；基线全部核实（527/66f569t——**569 为运行口径，静态 561**/V30+28/16 功能）；memory 自洽。
 - **knowledge/ 落库已完成（D84 核销 7/7）**：I49/I50/I51 正式登记、I26 上调/I30 已满足/I3/I18/I38 失准修正、current-status 18 处、session-handoff 全量重写、todo T1/T10 清理、前端口径注记。回执 `search_fallback/knowledge-sync-apply.md`。
 - **D84 裁定**：decisions 注册表归属——memory/decisions.md=活跃决策摘要（D85 口径），knowledge/decisions.md=D1-D46 历史档案（顶部注记+README 同步待执行层顺手补）；不补录 D47-D82；I18/I30 正式关闭。
 - **D85 铁律（2026-08-16 用户定）**：knowledge=唯一完整权威信息源；memory=最少信息摘要（冲突以 knowledge 为准）；执行角色触碰状态文件必须同步 knowledge 全量（§3.3 第10项强化）；清单 🟦/⬜ 缺口同步进需求池 P 编号（防"清单独有"）。已落：system.md §0.4 铁律块 + §3.3 第10项、memory/README.md、memory/decisions.md 顶部、requirement-pool 维护规则 4。
-- 需求池：`todo/requirement-pool.md`（P23/P13 已核销；A 组余 P10，B 组为 P1-P9/P14/P24/P25，C 组待决策，D/E 组为清单独有缺口）。
+- 需求池：`todo/requirement-pool.md`（P10/P12/P13/P24 已核销；其余候选仍按池内状态维护）。
 - **探索任务核销（2026-08-16 晚，3/3 完成）**：decisions-registry-note ✅（knowledge/decisions.md 顶部注记+根 README 索引同步）、checklist-pool-sync ✅（清单 25 行描述列末尾追加「缺口已登记 P26-P50」25/25、状态列 0 漂移——裁定维持描述列形态不加列）、rule-sync-d85 ✅（shared-constraints §10 / development-workflow §6.3 / 后端宪法 §13 / 前端宪法 §15 四处落地，knowledge/README 不存在按说明处理）。**D85 铁律三仓库宪法级完成**。
 - **探索任务核销（2026-08-16 晚，4/4 全闭环）**：i18-close-sync ✅（I18 注册表已同步「✅ 已关闭（D84）」仿 I33/I37 先例，memory 侧核对一致）。**本轮全部委派任务已闭环，无进行中探索**。
-- **本轮用户指示**：2026-08-16「本轮不做新需求，仅做梳理」——下一方向仍待选（候选见「后续候选」），不主动启动新功能轮。
+- **当前用户裁定**（2026-08-18）：启动 P24 双角色治理功能；不可变 `superadmin` + seed 可配置普通 `admin`，方向 D93 已下发。
 
 后续候选（按风险/价值排序参考）：
 1. M01/M02 其余虚高要素补齐（关联/筛选，I31-I44 余项；I33/I43/I44/I37 已修复）
 2. M07 补全：F01 前端管理页、F02-02 Prompt 配置、F02-04 运行日志页+单步调试、F04-02 Token 统计
 3. M07-F03/F04 新功能：助手配置/知识库RAG（选型未定）/对话窗口SSE（均零代码）
 4. IoT / OpenAPI 模块落地（仅骨架）
-5. 小项池：停用即时生效（JWT 过滤器层）、数据权限遗留（部门档子查询 deleted 过滤、job 非分页入口纳管、PG 联调验证）、I49 菜单授权（job/storage 仅超管可达）（I51/I26/I47 已分别修复关闭；sw-bootstrap 测试基建已由 bpm-h2-v8-compat 落实）
+5. 小项池：停用即时生效（JWT 过滤器层）、数据权限遗留（部门档子查询 deleted 过滤、job 非分页入口纳管、PG 联调验证）（I49/I51/I26/I47 已分别修复关闭）
 
 ## 新会话启动提示词
 
@@ -111,10 +111,11 @@
 你是 Smart-WorkFlow 根目录规划代理。请按 system.md §10 执行新会话恢复。
 
 最新状态：
+- admin-role-governance（P24/I49）**COMPLETED（D97，2026-08-18）**——功能级与阶段三均完成，P24/I49 已核销关闭。
 - bpm-h2-v8-compat（P10/I47）**PASSED（D87/D88，2026-08-17）**——BPM H2 V8 partial index 以生成列 active_key + 唯一索引等价实现，PG V8 零改动；永久 FlywayFullChainH2Test 7 目录 30 条迁移（口径 28→30）；后端 543/0/0（527+16）；I47/P10 已核销，P12 已核销（sw-bootstrap 测试基建落地）
 - 阶段三知识同步收尾修正（D89/D90，2026-08-18）**PASSED**：执行层修正 9 个指定文件并完成全文复核，规划层六项验收通过；另有 3 个独立历史功能追踪文件状态欠账待单独清理
-- 基线：后端 543 tests / 前端 66f/576t 四连全绿（576=运行口径，静态 568）；清单 ✅12/🟦37/⬜41 共90行；Flyway V1-V30、H2 真实全链口径 30
+- 基线：后端 551 tests / 前端 66f/576t 四连全绿；清单 ✅12/🟦37/⬜41 共90行；Flyway V1-V31、H2 真实全链口径 31；已完成功能20个
 - 执行约束：本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行，禁并行编译
 
-最新归档：product/bpm-h2-v8-compat/passed/ + receipts/（业务验收 D88、知识同步复验 D90，见 memory/decisions.md）
+最新归档：product/admin-role-governance/passed/；当前无执行入口，下一需求方向待选。
 ```

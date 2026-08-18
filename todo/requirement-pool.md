@@ -29,7 +29,7 @@
 | P8 | M07-F04-02 Token 统计（无 token 字段）+ 前端会话页（查询端点零消费） | I45 | 低 | 待排期 |
 | P9 | M07 图节点级多Key轮询 | state.md todo 池 | 低 | 待排期 |
 | P14 | 数据权限遗留：部门档子查询未过滤 deleted；job 非分页入口未纳管；等效条件 SQL 对 PG 最终验证依赖联调 | D79 遗留§8 | 低 | 待排期 |
-| P24 | **V29 菜单 seed 未 seed sys_role_menu**——正式环境 job/storage 菜单仅超管可达 | I49（D84 已登记） | 中 | 待排期 |
+| P24 | **V29 菜单 seed 未 seed sys_role_menu**——正式环境 job/storage 菜单仅超管可达 | I49（D84 已登记） | 中 | ✅ **已核销**（D97；admin-role-governance COMPLETED，I49已关闭） |
 | P25 | 登录状态校验在密码匹配之后（停用账号仍消耗 BCrypt，时序问题） | I50（D84 已登记） | 低 | 待排期 |
 
 ### C. 待决策/待设计

@@ -64,14 +64,15 @@
 
 ## 2. 进行中功能
 
-**无（bpm-h2-v8-compat 已 D88 最终验收 PASSED 归档，待规划层选定下一需求方向）。** 阶段三知识同步收尾修正 READY（2026-08-18，D89 判定知识沉淀需补充同步，已下发 `product/bpm-h2-v8-compat/ready/direction-post-sync-correction.md`，执行层完成 9 文件修正并提交 `receipts/post-sync-correction.md` 后由规划层复验）。
+**无（admin-role-governance 已 D96 最终验收 PASSED，P24/I49 关闭条件满足；bpm-h2-v8-compat 已 D88 最终验收 PASSED 归档，待规划层选定下一需求方向）。** admin-role-governance 阶段三知识同步正在提交最终收尾回执 `product/admin-role-governance/receipts/post-acceptance-knowledge-sync.md`；本轮仅同步知识，不重新打开业务实现。
 
-下一候选按 [[handoff]] 候选池（2026-08-16 D83 更新，2026-08-17 I51/I26/I47 修复后更新）：M01/M02 其余虚高补齐（I31-I36/I40）、M07 补全（F01 前端管理页/F02-02 Prompt 配置/F02-04 运行日志页+单步调试/F04-02 Token 统计）、M07-F03/F04 新功能（助手配置/知识库 RAG/对话窗口 SSE，均零代码）、IoT/OpenAPI 模块落地、小项池（I49 菜单授权 / 数据权限遗留 / 停用即时生效——I51、I26、I47 已分别修复关闭）。
+下一候选按 [[handoff]] 候选池（2026-08-18 更新）：M01/M02 其余虚高补齐（I31-I36/I40）、M07 补全（F01 前端管理页/F02-02 Prompt 配置/F04-02 Token 统计）、M07-F03/F04 新功能、IoT/OpenAPI 模块落地、数据权限遗留与停用即时生效；I49 已由 admin-role-governance D96 关闭。
 
 ---
 
 ## 3. 最终状态
 
+**admin-role-governance**：**PASSED** ✅ — P24/I49 不可变超管与普通管理员治理（D96，2026-08-18，后端 551 / 前端 66f/576t / H2 全链 31；阶段三知识同步后由规划层完成最终状态收尾）
 **bpm-h2-v8-compat**：**COMPLETED** ✅ — 后端修复轮 + D87/D88 规划层最终验收 PASSED（2026-08-17，后端 543 / H2 全链 30，I47/P10 核销）
 **sysrole-v5-column-alignment**：**COMPLETED** ✅ — 后端修复轮 + D86 规划层最终验收 PASSED（2026-08-17，后端 527，I26 核销）
 **status-semantics-alignment**：**COMPLETED** ✅ — 前端修复轮 PASSED（2026-08-17，前端 66f/576t，I51 核销）
@@ -182,7 +183,7 @@
 3. **M07-F03/F04 新功能** — 助手配置/F03-03 知识库 RAG/F04-01 对话窗口 SSE（均零代码）
 4. **IoT / OpenAPI 模块落地** — 仅骨架（M08 13 行 + M09 8 行全 ⬜ 无虚低，D83 复核确认）
 5. **M04-F06-01 后续批次** — 耗时分析 + 流程干预（剩余 2/4 子能力）
-6. **小项池** — I49 菜单授权（中）、数据权限遗留（部门档 deleted 过滤/job 非分页入口/PG 联调验证）、停用即时生效（JWT 过滤器层）（I51 已于 2026-08-17 status-semantics-alignment 修复关闭；I26/I47 已于 2026-08-17 分别由 sysrole-v5-column-alignment 与 bpm-h2-v8-compat 修复核销）
+6. **小项池** — 数据权限遗留（部门档 deleted 过滤/job 非分页入口/PG 联调验证）、停用即时生效（JWT 过滤器层）（I51 已于 2026-08-17 status-semantics-alignment 修复关闭；I26/I47 已于 2026-08-17 分别由 sysrole-v5-column-alignment 与 bpm-h2-v8-compat 修复核销；I49 已由 admin-role-governance D96 关闭）
 
 ### 已知未做事项
 - 表单删除（M03-F02-01，I39）、消息删除（M05-F01-02，I41）等 I31-I45 待修复项逐条见 [[known-issues]]
@@ -196,7 +197,7 @@
 |---|------|:--------:|------|
 | I51 | 前端 status 语义与后端相反（UI 新建用户无法登录/停用不阻断登录） | 高 | ✅ **已修复**（2026-08-17 status-semantics-alignment：用户/部门页按后端契约修正，66f/576t 四连全绿；角色/岗位未动） |
 | I26 | SysRole 列名与 V5 迁移不一致（全链 Flyway 环境必崩，测试 DDL 掩盖） | 高 | ✅ **已修复**（2026-08-17 sysrole-v5-column-alignment，D86 PASSED：实体/测试 DDL 对齐 V5 链尾 `built_in`/`remark`） |
-| I49 | V29 菜单未 seed sys_role_menu（job/storage 仅超管可达） | 中 | D83 新登记，待排期 |
+| I49 | V29 菜单未 seed sys_role_menu（job/storage 仅超管可达） | 中 | ✅ 已关闭（admin-role-governance，D96 PASSED，方向已归档） |
 | I47 | bpm/h2 V8 partial index 不兼容 H2（全链迁移从未可跑） | 中 | ✅ **已修复**（2026-08-17 bpm-h2-v8-compat，D88 PASSED：生成列等价实现 + 永久全链测试 30 条） |
 | I50 | 登录状态校验在密码匹配之后（时序/资源） | 低 | D83 新登记 |
 | I48 | flow-graph adapter 契约限制（无边点击/无命令式通道） | 低 | 绕行生效，扩展待评估 |
@@ -242,7 +243,7 @@
 - 阶段三知识同步收尾修正（D89，2026-08-18）：一致性审计发现 knowledge/需求池/回执/memory 中下部残留，已下发 direction-post-sync-correction.md，执行层修正 9 文件后提交 receipts/post-sync-correction.md 由规划层复验
 - 基线：后端 543 tests / 前端 66f/576t 四连全绿（576=运行口径，静态 568）；清单 ✅12/🟦37/⬜41 共90行；Flyway V1-V30、H2 真实全链口径 30
 - 执行约束：本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行，禁并行编译（已入宪法）
-- 候选池：M01/M02 虚高补齐、M07 补全（前端管理页等）、M07-F03/F04 新功能、IoT/OpenAPI、小项池（I49 菜单授权/数据权限遗留/停用即时生效——I51、I26、I47 已修复关闭）
+- 候选池：M01/M02 虚高补齐、M07 补全（前端管理页等）、M07-F03/F04 新功能、IoT/OpenAPI、数据权限遗留/停用即时生效；I49 已由 admin-role-governance D96 关闭，I51/I26/I47 已分别修复关闭
 
 最新归档：product/bpm-h2-v8-compat/passed/ + receipts/（D88 验收裁定见 memory/decisions.md）；最新下发：direction-post-sync-correction.md（2026-08-18，阶段三知识同步收尾修正）
 ```
