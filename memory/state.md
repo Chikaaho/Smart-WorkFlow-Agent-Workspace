@@ -1,14 +1,14 @@
 # 当前状态
 
-> 最后更新：2026-08-18（user-org-association-query 阶段三同步 COMPLETED，D101）
+> 最后更新：2026-08-18（department-query-filtering D104 COMPLETED）
 
 ## 进行中功能
 
 无进行中业务功能。
 
-**user-org-association-query（I32 / I34 / I35 / I36 剩余子集）COMPLETED（D101，2026-08-18）**：人员关联、组合查询、双租户/数据权限、故障回滚、超管保护、H2 新库与 V31→V32、后端全量 563/0/0/0、前端 66f/577t 四连均通过。I32/I34/I35 已关闭，I36 仅关闭普通角色绑定子集；PG 运行期与进程快照为非阻塞环境待办。方向及阶段三同步均已归档。
-
 ## 最新已完成
+
+**department-query-filtering（I31 / M01-F01-04）COMPLETED（D104，2026-08-18）✅**：部门名称/状态组合筛选、命中节点+必要祖先、非法状态400、租户/逻辑删除边界、前端筛选与Mock均闭合；后端582/0/0/0、前端66f/602t四连，零Flyway。D103终态同步缺口已全文修正，I31关闭、M01-F01-04确认为✅，方向归档 `product/department-query-filtering/passed/`。
 
 **admin-role-governance（P24 / I49）COMPLETED（D93-D97，2026-08-18）✅**
 - 双角色基线：不可变内置 `superadmin` + seed 可配置普通 `admin`；不新增默认用户、不迁移既有绑定。
@@ -78,12 +78,12 @@ process-monitoring (M04-F06-01)：COMPLETED（详情见 `knowledge/`，2026-07-3
 
 上一完成：**bpm-h2-v8-compat（P10 / I47）PASSED（D87/D88，2026-08-17）**——H2 V8 partial index → 生成列 `active_key` + 唯一索引等价实现；永久全链测试 7 目录 30 条迁移（口径 28→30）；BPM process 58/0/0、bootstrap 8/0/0、项目级 543/0/0；I47/P10 已核销，功能清单状态列无变化。回执：`product/bpm-h2-v8-compat/receipts/`。再上一完成：sysrole-v5-column-alignment（P13 / I26）——模块 111/0/0、项目级 527/0/0，I26 已核销。
 
-- 后端：项目级 **563 tests**（运行口径，CONFIRMED 2026-08-18，0 failures / 0 errors / 0 skipped）
-- 前端：**66 spec files / 577 tests**，四连全绿（CONFIRMED 2026-08-18；2G 上限下 typecheck/lint/test/build 全部退出 0）
-- 功能清单：**✅12/🟦37/⬜41 共 90 行**（2026-08-16 D82 同步）
-- Flyway：root 路径 V32 已占；H2 新库 V1→V32 与 V31→V32 migrate + validate，专项 **10 tests**
-- 已完成功能：20 个
-- 需求池：`todo/requirement-pool.md`（2026-08-16 新建，已开发未满足+候选，规划层维护）
+- 后端：项目级 **582 tests**（运行口径，CONFIRMED 2026-08-18 D102，0 failures / 0 errors / 0 skipped；563 D101 → +19）
+- 前端：**66 spec files / 602 tests**，四连全绿（CONFIRMED 2026-08-18 D102；2G 上限下 typecheck/lint/test/build 全部退出 0；577 D101 → +25）
+- 功能清单：**✅16/🟦33/⬜41 共 90 行**（2026-08-18 D102：M01-F01-04 🟦→✅，I31 关闭，零漂移）
+- Flyway：root 路径 V32 已占；H2 新库 V1→V32 与 V31→V32 migrate + validate，专项 **10 tests**；本轮零迁移
+- 已完成功能：22 个
+- 需求池：`todo/requirement-pool.md`（2026-08-16 新建，已开发未满足+候选，规划层维护；P1 中 I31 已关闭）
 
 ## 模块完成度（简表）
 
