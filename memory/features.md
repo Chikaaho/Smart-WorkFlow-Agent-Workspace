@@ -4,6 +4,7 @@
 
 | 功能 | 模块 | 状态 | 当前 Step | 备注 |
 |------|------|:---:|------|------|
+| user-org-association-query | I32 / I34 / I35 / I36（剩余子集）/ M01 + M02 | **COMPLETED** | 功能级最终验收 D101 + 阶段三同步（2026-08-18） | 后端563/0/0/0、前端66f/577t四连、H2新库/升级链10 tests；I32/I34/I35关闭，I36仅关闭普通角色绑定子集；PG运行期与进程快照为非阻塞环境待办。方向及同步回执已归档。 |
 | admin-role-governance | P24 / I49 / System + Job + Storage | **COMPLETED** | 阶段三最终收尾通过（D97，2026-08-18） | D93十一项+D96功能终审+阶段三知识同步全部闭合；P24核销、I49关闭、I36仅关闭本轮子集。归档 `product/admin-role-governance/passed/` |
 | bpm-h2-v8-compat | P10 / I47 / BPM | **COMPLETED** | 功能级 PASSED（D87/D88，2026-08-17） | H2 V8 生成列 `active_key` + 唯一索引等价实现 active 条件唯一；PG V8 零改动；永久 H2 全链 30/30 migrate+validate；后端 543/0/0。归档 `product/bpm-h2-v8-compat/passed/` |
 | sysrole-v5-column-alignment | P13 / I26 / System | **COMPLETED** | 功能级 PASSED（2026-08-17） | 以 V5 链尾 `built_in`/`remark` 为权威契约：SysRole.java 两处 @TableField 修正（字段名/JSON 键不变）+ schema-datascope-h2.sql/AuthFlowIntegrationTest 建表索引 INSERT 注释全对齐链尾；sw-biz-system 111/0/0 + 项目级 527/0/0 全绿；Flyway 零迁移、前端零改动、P10/P12 零触碰。已归档 `product/sysrole-v5-column-alignment/passed/` |

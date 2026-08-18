@@ -15,10 +15,14 @@
 |------|------|
 | 后端框架 | Spring Boot 3.4.4 + Java 21，模块化单体，四层架构就位 |
 | 前端框架 | Vue 3.5 + TypeScript 6.0 + Vite 8，严格分层 SPA，自有架构（不继承 vben） |
-| 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，**V1–V31 连续无缺号**（CONFIRMED 2026-08-18 P24：V31 seed 普通 `admin` 与 job/storage 按钮权限；H2/PG 双份逐字一致，31 条全链 migrate + validate 通过） |
+| 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，V1–V32；H2 全新库与 V31→V32 升级链 migrate+validate 已通过，PostgreSQL 运行期验证受当前环境无 PG/Docker 阻塞（2026-08-18） |
 | 核心路径 | Walking Skeleton：登录 → 表单 → 审批 → 通知 ✅ 四环全部闭合 |
-| 功能清单 | 10 模块，55 功能，**90** 明细（CONFIRMED 2026-07-23，此前记为 88，M10 差 1 条已更正——见 [[shared-constraints]] §5；2026-08-14 新增 M04-F08-01 登记，总表 55 功能/90 明细）；`Smart-WorkFlow/功能清单.md` 为权威清单，状态标记已与代码实际进度对齐：✅17/🟦12/⬜60（2026-07-24 [[feature-checklist-sync]]，I1 修复）→ ✅7/🟦40/⬜42（2026-08-12 Step5 二次核实与同步）→ ✅10/🟦37/⬜42（2026-08-13 checklist-gap-hardening 第一批：I33/I43/I44 修复后回升 3 行）→ ✅10/🟦37/⬜43（M04-F08-01 新增 ⬜ 登记后，90 行口径）→ **✅11/🟦37/⬜42**（2026-08-15 data-scope-enforcement：M02-F04-01 ⬜→✅。注：batch1 回执"总 89/⬜42"为 89 行口径，全表现 90 行）→ **✅12/🟦37/⬜41**（2026-08-16 bpm-plugin-architecture：M04-F08-01 ⬜→✅，90 行口径） |
-| 测试基线 | 当前后端项目级 **551 tests / 0 failures / 0 errors / 0 skipped**（CONFIRMED 2026-08-18 admin-role-governance D96；含 543 基线及本轮修正测试）。前端：**66 spec files / 576 tests / 0 failures**（CONFIRMED 2026-08-17 status-semantics-alignment，569 + 7：UserList.spec +5 / DeptList.spec +2，均为 status 提交与回填语义用例）。以 `NODE_OPTIONS="--max-old-space-size=2048"` 完整执行 typecheck / lint / test / build，四连退出码均为 0。历史 512M OOM 与一次性 1024M 例外已由 2G 正式约束取代，不再是当前欠账。**注：576 为运行口径，静态计数 568（+8 为 tokens.spec.ts 循环展开）**。 |
+| 功能清单 | 10 模块，55 功能，90 明细；D101 终态按实际代码闭环为 **✅15/🟦34/⬜41**（`Smart-WorkFlow/功能清单.md` 权威清单；I32/I34/I35 对应三行由 🟦→✅，I36 用户普通角色子集不扩大整行）。 |
+| 测试基线 | user-org-association-query 当前后端全量 **通过（BUILD SUCCESS，31/31 模块；本轮新增关联集成/契约测试 6 项，完整执行含 Flyway 10 项）**；前端 **66 spec files / 577 tests / 0 failures**，typecheck/lint/test/build 四连退出码均为 0，均按 2G 约束串行执行。 |
+
+### 最近完成（D101，2026-08-18）
+
+`user-org-association-query` 已由 D101 规划层验收 **PASSED**，阶段三同步完成并标记 `COMPLETED`。环境待办保留：PostgreSQL 运行期 migrate+validate、系统恢复后互斥快照。
 | 前次验证 | 2026-08-17 bpm-h2-v8-compat 闭环（P10/I47 后端修复轮）：后端 `MAVEN_OPTS="-Xmx2g" mvn test` BUILD SUCCESS 31/31 模块，**543 tests / 0 failures / 0 errors**（527 基线 +16；surefire 时间窗 97 个 XML 聚合，无 flaky）；**Flyway 全链 H2 冒烟口径 28 → 30**——永久真全链测试 `FlywayFullChainH2Test`（sw-bootstrap）7 目录（root/bpm/notify/form/storage/job/agent）migrate + validate 通过，bpm V8/V14 纳入，不再有排除口径；h2/V8 partial index → 生成列 `active_key` + 唯一索引等价实现（pg/V8、V13、V14 零改动）。此前 2026-08-17 sysrole-v5-column-alignment 闭环（P13/I26，已 PASSED 归档）：后端 527/0/0 持平，SysRole 实体与全部触达 `sys_role` 的测试 DDL 已对齐 V5 链尾 `built_in`/`remark`，MP 生成 SQL 原文证据闭合。此前 2026-08-17 status-semantics-alignment 闭环：前端四连全绿 typecheck ✅、lint ✅、test **66 files / 576 tests** ✅（569 → +7）、build ✅；全部退出码 0。构建仅出现已登记的 `@vueuse/core INVALID_ANNOTATION` 第三方警告，不影响退出码或产物。后端零修改、未构建、未测试。此前 2026-08-16 bpm-plugin-architecture 闭环：后端 527/0/0、前端 66f/569t、Flyway 零迁移、清单 ✅12/🟦37/⬜41。 |
 
 ---
@@ -107,9 +111,9 @@
 
 > 最后更新：2026-08-18
 
-**（无进行中业务功能）**：bpm-h2-v8-compat（P10 / I47）已于 2026-08-17 规划层最终验收 **PASSED**（D87/D88）并归档至 `product/bpm-h2-v8-compat/passed/`。
+**（无进行中业务功能）**：user-org-association-query 已于 2026-08-18 规划层最终验收 **PASSED**（D101）并完成阶段三同步；主方向归档至 `product/user-org-association-query/passed/`。
 
-**阶段三知识同步收尾修正 READY（2026-08-18）**：一致性审计（`search_fallback/p10-post-sync-consistency-audit.md`）发现 knowledge/需求池/回执/memory 中下部存在旧状态残留；已下发 `product/bpm-h2-v8-compat/ready/direction-post-sync-correction.md`，由执行层完成纯文档同步修正。该修正不重新打开业务实现，不改变 D88 `PASSED` 判定。
+**阶段三同步**：D101 终态知识同步已完成，回执见 `product/user-org-association-query/receipts/post-acceptance-knowledge-sync.md`。
 
 历史条目：
 
@@ -187,7 +191,7 @@
 
 ## 8. 下一优先事项
 
-全部 **19** 个功能已完成闭环：
+全部 **20** 个功能已完成闭环：
 
 1. ✅ Walking Skeleton（登录→表单→审批→通知）
 2. ✅ sys-mgmt-crud（系统管理核心 CRUD）
@@ -207,7 +211,8 @@
 16. ✅ bpm-plugin-architecture（M04-F08-01 BPM 可插拔机制）（2026-08-16，D82 PASSED）
 17. ✅ status-semantics-alignment（I51 前端 status 语义对齐：用户/部门页与后端契约一致，含 7 新测试）（2026-08-17）
 18. ✅ sysrole-v5-column-alignment（P13/I26 SysRole 与 V5 列契约对齐）（2026-08-17，PASSED 归档）
-19. ✅ bpm-h2-v8-compat（P10/I47 BPM H2 V8 迁移链兼容修复：生成列等价实现 + 永久全链测试 30 条）（2026-08-17，D87/D88 PASSED）← **最新完成**
+19. ✅ bpm-h2-v8-compat（P10/I47 BPM H2 V8 迁移链兼容修复：生成列等价实现 + 永久全链测试 30 条）（2026-08-17，D87/D88 PASSED）
+20. ✅ user-org-association-query（I32/I34/I35/I36 普通角色子集：人员组织关联与组合查询）（2026-08-18，D101 PASSED，阶段三同步 COMPLETED）← **最新完成**
 
 后续候选（2026-08-16 D83 更新，按风险/价值排序参考）：
 

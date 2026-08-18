@@ -1,10 +1,12 @@
 # 当前状态
 
-> 最后更新：2026-08-18（admin-role-governance 阶段三完成，D97）
+> 最后更新：2026-08-18（user-org-association-query 阶段三同步 COMPLETED，D101）
 
 ## 进行中功能
 
-**（无进行中业务功能）**：admin-role-governance（P24 / I49）已于 D97 完成阶段三并标记 `COMPLETED`；P24 已核销，I49 已关闭。
+无进行中业务功能。
+
+**user-org-association-query（I32 / I34 / I35 / I36 剩余子集）COMPLETED（D101，2026-08-18）**：人员关联、组合查询、双租户/数据权限、故障回滚、超管保护、H2 新库与 V31→V32、后端全量 563/0/0/0、前端 66f/577t 四连均通过。I32/I34/I35 已关闭，I36 仅关闭普通角色绑定子集；PG 运行期与进程快照为非阻塞环境待办。方向及阶段三同步均已归档。
 
 ## 最新已完成
 
@@ -12,7 +14,7 @@
 - 双角色基线：不可变内置 `superadmin` + seed 可配置普通 `admin`；不新增默认用户、不迁移既有绑定。
 - 普通角色菜单/按钮权限与最小用户角色绑定闭环；job/storage 请求级授权200、撤权403、未认证401。
 - V31 H2/PG 双份，冲突显式失败；H2全链31，后端551/0/0/0，前端66f/576t四连全绿。
-- 功能清单零变化（✅12/🟦37/⬜41共90）；I36仅关闭本轮子集，P1其余缺口开放。
+- 功能清单终态 ✅15/🟦34/⬜41 共90；I32/I34/I35 三行由 🟦→✅，I36 仍🟦且仅关闭本轮子集，P1其余缺口开放。
 - 归档：`product/admin-role-governance/passed/`；最终收尾 `receipts/planning-stage3-review-d97.md`。
 
 上一业务功能 bpm-h2-v8-compat（P10 / I47）及其阶段三知识同步收尾修正均已 `PASSED` 并归档。
@@ -76,10 +78,10 @@ process-monitoring (M04-F06-01)：COMPLETED（详情见 `knowledge/`，2026-07-3
 
 上一完成：**bpm-h2-v8-compat（P10 / I47）PASSED（D87/D88，2026-08-17）**——H2 V8 partial index → 生成列 `active_key` + 唯一索引等价实现；永久全链测试 7 目录 30 条迁移（口径 28→30）；BPM process 58/0/0、bootstrap 8/0/0、项目级 543/0/0；I47/P10 已核销，功能清单状态列无变化。回执：`product/bpm-h2-v8-compat/receipts/`。再上一完成：sysrole-v5-column-alignment（P13 / I26）——模块 111/0/0、项目级 527/0/0，I26 已核销。
 
-- 后端：项目级 **551 tests**（运行口径，CONFIRMED 2026-08-18，0 failures / 0 errors / 0 skipped）
-- 前端：**66 spec files / 576 tests（运行口径；569→576，I51 新增 7 测试）**，四连全绿（CONFIRMED 2026-08-17；2G 上限下 typecheck/lint/test/build 全部退出 0）
+- 后端：项目级 **563 tests**（运行口径，CONFIRMED 2026-08-18，0 failures / 0 errors / 0 skipped）
+- 前端：**66 spec files / 577 tests**，四连全绿（CONFIRMED 2026-08-18；2G 上限下 typecheck/lint/test/build 全部退出 0）
 - 功能清单：**✅12/🟦37/⬜41 共 90 行**（2026-08-16 D82 同步）
-- Flyway：root 路径 V31 已占；H2 真实全链口径 **31**（7 目录，含 BPM V8/V14）
+- Flyway：root 路径 V32 已占；H2 新库 V1→V32 与 V31→V32 migrate + validate，专项 **10 tests**
 - 已完成功能：20 个
 - 需求池：`todo/requirement-pool.md`（2026-08-16 新建，已开发未满足+候选，规划层维护）
 
