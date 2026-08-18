@@ -5,15 +5,27 @@
 This gate takes precedence over every other instruction in this file.  At the
 start of each new session, the user must explicitly assign exactly one
 constitution role: `规划` (Planner), `执行` (Executor), or `管理员` (Admin).
-Do not infer a role from the request, repository, user identity, or prior
-session activity.  Any other role name is invalid.
+Recognize the role by semantic normalization, not by exact string matching.
+An explicit assignment may wrap one canonical role concept in natural language
+such as “层”, “权限”, “身份”, “模式”, “角色”, “代理”, or equivalent wording.
+For example, “你在执行层处理”, “授予你执行权限”, and “以执行身份工作” all
+normalize to `执行`. Apply the same rule to `规划` and `管理员`.
+
+Fuzzy matching may extend a canonical role concept, but it must not invent a
+mapping for a different title. Terms such as `超管`, `主任`, `负责人`,
+`开发者`, or any other non-canonical title are invalid unless the user also
+explicitly identifies one canonical role. Do not infer a role from the task,
+repository, user identity, job title, or prior session activity. If the
+assignment resolves to zero or more than one canonical role, ask the user to
+clarify instead of guessing.
 
 Until a valid role is explicitly assigned, refuse the request without taking
 any workspace action.  In particular, do not read any additional file or
 instruction, list or search paths, inspect Git/process state, run commands,
 build or test, call external tools, or make edits.  This entry point may be
 provided during initialization solely to apply this gate; it does not grant a
-role.  The same refusal rule applies when the user supplies an unknown role.
+role. The same refusal rule applies when the user's wording cannot be
+semantically normalized to exactly one canonical role.
 
 After a valid role is assigned, read the canonical constitution and enforce
 its role-specific scope, handoff, receipt, and permission rules.  A role is
@@ -23,18 +35,22 @@ session.
 ## Workspace root and executor-scope clarification
 
 This file is located at the workspace root, `/usr/local/projects/Smart-WorkFlow`.
-The workspace root is not itself the backend executor sublayer, even though its
-name matches the nested backend repository.  The two executor sublayers are:
+The workspace root is the control and execution entry point for the entire
+workspace.  It is not itself the backend repository, even though its name
+matches the nested backend repository.  The two code repositories are:
 
 - Backend: `/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow`
 - Frontend: `/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Web`
 
-Declaring the `执行` (Executor) role grants the constitution's execution
-capabilities, including implementation, compilation, testing, receipts,
-knowledge updates, and memory compression.  It does not by itself select the
-backend sublayer.  Determine the scope from the issued task or direction
-document first, then enter and obey the matching sublayer constitution.  Do not
-infer backend scope merely from the workspace root path or its directory name.
+Declaring the `执行` (Executor) role at this workspace root grants execution
+capabilities across the complete workspace: planning-layer execution artifacts,
+the backend repository, and the frontend repository, including implementation,
+compilation, testing, receipts, knowledge updates, and memory compression.
+The role is not implicitly narrowed to the backend merely because the root and
+backend directories share the `Smart-WorkFlow` name.  When a task is explicitly
+entered from a child repository, that child repository's local constitution
+adds its repository-specific rules; this does not change the meaning of an
+`执行` role declared at the workspace root.
 
 This is the Codex entry point for the workspace.  The entire workspace is the
 **planning layer**: `knowledge/`, `memory/`, `product/`, `search_task/`,
@@ -63,15 +79,20 @@ force for the task/session until the user changes it.
 
 - This repository is the workspace's planning layer.  Its `system.md`
   controls permitted reads, writes, and workflow for all planning resources.
-- `Smart-WorkFlow/` is the backend executor sublayer; use its local
-  `AGENTS.md` and engineering constitution for backend execution.
-- `Smart-WorkFlow-Web/` is the frontend executor sublayer; use its local
-  `AGENTS.md` and engineering constitution for frontend execution.
+- `Smart-WorkFlow/` is the backend repository; use its local `AGENTS.md` and
+  engineering constitution for backend-specific rules.
+- `Smart-WorkFlow-Web/` is the frontend repository; use its local `AGENTS.md`
+  and engineering constitution for frontend-specific rules.
 
-Never read, edit, build, or test the other code project from an executor task.
-Split cross-project work into the constitution's separate handoffs/receipts.
-Respect the information hierarchy: `knowledge/` is the full authority and
-`memory/` is only its summary.
+An executor task authorized from this workspace root may read, edit, build, and
+test either code project, and may handle cross-project work when the task scope
+requires it.  Apply each repository's local engineering constitution to the
+files and commands in that repository, and preserve the shared constraints
+(including frontend/backend build mutual exclusion and memory limits).
+The child-repository prohibition on crossing into the other project applies
+only when the session is entered from that child repository, not when execution
+is authorized at this workspace root.  Respect the information hierarchy:
+`knowledge/` is the full authority and `memory/` is only its summary.
 
 ## Tooling compatibility
 
