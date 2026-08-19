@@ -11,6 +11,19 @@
 
 ## 1. 最新完成功能
 
+**pg-v13-migration-chain-repair — I52 PostgreSQL V13 迁移链 2BP01 修复（2026-08-19，D110 规划层最终验收 PASSED + 阶段三终态同步，功能 COMPLETED，I52 正式关闭）**
+
+方向 `product/pg-v13-migration-chain-repair/ready/direction-pg-v13-migration-chain-repair.md`（D108）执行，执行层自主闭环：现场勘察（主会话直读迁移链）→ 修复实施（1 Sub Agent）→ 项目级回归（主会话）→ 知识库全量同步 + 回执：
+- **根因**：form/V7 `sw_form_def.form_key ... UNIQUE`（inline UNIQUE）在 PG 创建**约束背书隐式索引** `sw_form_def_form_key_key`；root/V13:58 `DROP INDEX IF EXISTS sw_form_def_form_key_key;` 触发 **2BP01**（`cannot drop index ... because constraint ... requires it`）。H2 允许直接 DROP INDEX，故 H2 全链 33 条一直通过、缺陷仅 PG 暴露；V13 其余 8 项均安全（独立索引/约束正确写法）。
+- **策略裁定（执行层）**：**修改 PG 侧 V13 第 7 项**（`DROP INDEX` → `ALTER TABLE sw_form_def DROP CONSTRAINT IF EXISTS sw_form_def_form_key_key;`，随后 `CREATE UNIQUE INDEX uk_sw_form_def_form_key (form_key, deleted)` 不变），**不新增 V34**——①PG 无已成功应用 V13 的既有库（V13 必失败）→ 修改无既有校验和/升级路径风险；②V14-V33 零引用该索引 → 无下游断裂；③新库场景 V34 永远不可达（V13 执行时即失败）。**H2 侧 V13 零改动**（双方言各按自身能力实现同一复合唯一语义）。
+- **测试基建**：sw-bootstrap pom +2 test 依赖（`io.zonky.test:embedded-postgres:2.1.0` + `embedded-postgres-binaries-darwin-arm64v8:17.5.0`，exclusions 排除默认 4 平台 binaries）+ 永久 `FlywayFullChainPostgresTest`（8 用例，与 `FlywayFullChainH2Test` 对称）。
+- **验证（真实 PG 17.5）**：修复前先红复现 2BP01 原文（V13:58）→ 修复后新库全链 **33 条** migrate+validate 通过 → **既有库升级夹具**（独立库 target(32) 32 条 → 全量只执行 V33 共 33）migrate+validate 通过 → 逻辑删除唯一性语义正反例（sys_user/sys_tenant 软删重建共存正例 + 23505 反例 + 重复软删 23505 边界）。
+- **语义事实修正（真实 PG 引擎证伪）**：复合唯一 `(key, deleted)` 下**每业务键最多一条 deleted=1 历史**——「两条 deleted=1 共存」在 H2/PG 均不可满足（23505），正例2 调整为 sys_tenant 软删重建 + 新增重复软删边界用例固化守卫；若未来需多条软删历史共存（ruo yi 系诉求）需 partial 索引设计，属 V13 设计方案层面，超出本轮授权。
+- **D109 补证（2026-08-19）**：①既有库校验和安全——git 审计链（V13 引入时 V7 inline UNIQUE 已存在，原 V13 自创建起 PG 必失败；失败迁移不落 checksum；无 tag/release/CI 发布通道）证明「登记原 V13 checksum 的环境」不存在，且新增永久守卫用例 `legacyOriginalV13Checksum_shouldFailValidateNotSilentlyPass` 证明若存在会显式 checksum mismatch 失败而非静默破坏；②跨平台可移植性——pom 改 `embedded-postgres-binaries-bom:17.5.0` 统一全平台二进制版本（dependency:tree 证明 5 平台产物均 17.5.0），移除平台 exclusions。补证后 PG 全链测试 **9** 用例、项目级 **600/0/0/0**（599+1）。
+- **测试门（`MAVEN_OPTS="-Xmx2g"` 串行，互斥检测通过）**：sw-bootstrap `FlywayFullChainPostgresTest` 9/0/0、`FlywayFullChainH2Test` 11/0/0 回归零退化；项目级全量 **600/0/0/0**（105 surefire XML；591→599→600，sw-bootstrap 12→21）。
+- **边界**：前端零改动；清单状态列零变化（✅21/🟦28/⬜41，I52 非清单明细行）；无业务 Java 代码改动。
+- **回执**：`product/pg-v13-migration-chain-repair/receipts/`（completion + planning-review-d109 + post-d109-supplement + planning-final-review-d110 + post-d110-terminal-sync）。方向归档 `product/pg-v13-migration-chain-repair/passed/`；本同步方向验收通过后同步归档。
+
 **agent-model-management-frontend — P5 / M07-F01-01～05 大模型管理前端闭环（执行层闭环，2026-08-19；D106 规划层验收 FAILED，主体保留，补证复验中）**
 
 方向 `product/agent-model-management-frontend/ready/direction-agent-model-management-frontend.md`（D105，11 项验收标准）执行，执行层从工作区根以执行角色自主拆分闭环（后端 Step → 前端 Step，严格串行、2G 上限、互斥证据齐全）：
@@ -75,7 +88,7 @@
 
 **无进行中业务功能。** agent-model-management-frontend（P5 / M07-F01-01～05）已由执行层完成前后端闭环（2026-08-19），完成回执与测试回执提交至 `product/agent-model-management-frontend/receipts/`，**D106 规划层最终验收 FAILED（2026-08-19，审查 `receipts/planning-review-d106.md`）——主体与测试门保留，缺 `other` 协议与远端 4xx 可达、未认证 401、Mock 连通性语义与真实后端一致性证据；执行层补证中（后端 +7 用例 591/0/0 已跑通，前端 Mock 语义修正进行中），待补证后规划层复验**（复验通过后 P5 核销终态；P5 需求池当前状态为 FAILED/未核销）。下一需求由规划层复验后从候选池另行选定。
 
-下一候选按 [[handoff]] 候选池（2026-08-19 D105 轮后更新）：M01/M02 其余虚高补齐（I36 用户组绑定/I40）、M07 补全（F02-02 Prompt 配置/F02-04 运行日志+单步调试/F04-02 Token 统计；F01 前端管理页已闭环）、M07-F03/F04 新功能、IoT/OpenAPI 模块落地、数据权限遗留与停用即时生效、PG 侧全链直跑（I52 建议 V34 修复迁移）；I49 已由 admin-role-governance D96 关闭，I31 已由 department-query-filtering 关闭。
+下一候选按 [[handoff]] 候选池（2026-08-19 更新）：M01/M02 其余虚高补齐（I36 用户组绑定/I40）、M07 补全（F02-02 Prompt 配置/F02-04 运行日志+单步调试/F04-02 Token 统计；F01 前端管理页已闭环）、M07-F03/F04 新功能、IoT/OpenAPI 模块落地、数据权限遗留与停用即时生效——**PG 侧全链直跑已由 pg-v13-migration-chain-repair 修复关闭（I52，2026-08-19，D110 PASSED + COMPLETED）**；I49 已由 admin-role-governance D96 关闭，I31 已由 department-query-filtering 关闭。
 
 ---
 
@@ -184,9 +197,9 @@
 - 后端：项目级 **584 tests**（CONFIRMED 2026-08-19 agent-model-management-frontend 验证：582+2，BUILD SUCCESS，0 failures/0 errors/0 skipped）
 - 前端：**69 spec files / 628 tests** 四连全绿（CONFIRMED 2026-08-19 agent-model-management-frontend；66f/602t → +3f/+26t，运行口径）
 - 功能清单：**✅21 / 🟦28 / ⬜41 共 90 行**（2026-08-19 同步：M07-F01-01～05 五行 🟦→✅，无关行零漂移）
-- Flyway：V1-V33 连续（V33 已占）；**H2 真实全链口径 33 迁移**（7 目录含 bpm V8/V14，永久测试 `FlywayFullChainH2Test`）+ V32→V33 升级链；PG 侧全链直跑受既有 V13:58 2BP01 缺陷阻断（I52，建议 V34 修复迁移）
-- 已完成功能：23 个
-- 进行中业务功能：无（agent-model-management-frontend 执行层闭环、**D106 FAILED 补证复验中**，主体与测试门保留，待规划层复验）
+- Flyway：V1-V33 连续（V33 已占）；**双方言真实全链口径 33 迁移**——H2（7 目录，永久测试 `FlywayFullChainH2Test` 11 用例）+ V32→V33 升级链；**PG 侧全链直跑已修复（I52 关闭，D110 COMPLETED）**——`FlywayFullChainPostgresTest`（zonky embedded-postgres PG 17.5，9 用例）新库全链 33 条 migrate+validate + 既有库升级夹具 + 原 V13 checksum 守卫 + 语义正反例；平台二进制 `embedded-postgres-binaries-bom:17.5.0` 统一
+- 已完成功能：24 个
+- 进行中业务功能：无（pg-v13-migration-chain-repair 已 COMPLETED，D110 终态同步完成）
 
 ---
 
@@ -198,7 +211,7 @@
 3. **M07-F03/F04 新功能** — 助手配置/F03-03 知识库 RAG/F04-01 对话窗口 SSE（均零代码）
 4. **IoT / OpenAPI 模块落地** — 仅骨架（M08 13 行 + M09 8 行全 ⬜ 无虚低，D83 复核确认）
 5. **M04-F06-01 后续批次** — 耗时分析 + 流程干预（剩余 2/4 子能力）
-6. **小项池** — 数据权限遗留（部门档 deleted 过滤/job 非分页入口/PG 联调验证）、停用即时生效（JWT 过滤器层）、**PG 侧全链直跑（V13:58 2BP01，I52 已登记，建议 V34 修复迁移，待规划层决策）**（I51 已于 2026-08-17 status-semantics-alignment 修复关闭；I26/I47 已于 2026-08-17 分别由 sysrole-v5-column-alignment 与 bpm-h2-v8-compat 修复核销；I49 已由 admin-role-governance D96 关闭）
+6. **小项池** — 数据权限遗留（部门档 deleted 过滤/job 非分页入口/PG 联调验证）、停用即时生效（JWT 过滤器层）——**PG 侧全链直跑已由 pg-v13-migration-chain-repair 修复关闭（I52，2026-08-19，执行层闭环待规划层验收）**（I51 已于 2026-08-17 status-semantics-alignment 修复关闭；I26/I47 已于 2026-08-17 分别由 sysrole-v5-column-alignment 与 bpm-h2-v8-compat 修复核销；I49 已由 admin-role-governance D96 关闭）
 
 ### 已知未做事项
 - 表单删除（M03-F02-01，I39）、消息删除（M05-F01-02，I41）等 I31-I45 待修复项逐条见 [[known-issues]]（I31 已由 department-query-filtering 关闭；M07-F01-01～05 已由 agent-model-management-frontend 执行层候选关闭，D106 复验通过前不算规划层确认）
@@ -210,7 +223,7 @@
 
 | # | 问题 | 严重程度 | 说明 |
 |---|------|:--------:|------|
-| I52 | PG V13:58 DROP INDEX 报 2BP01——PG 侧全链 V1→V33 无法在真实库直跑（H2 全链不受影响） | 中 | D83 后新登记（2026-08-19，M07-F01 PG 验证时发现，非本轮引入）；建议 V34 修复迁移，待规划层决策 |
+| I52 | PG V13:58 DROP INDEX 报 2BP01——PG 侧全链 V1→V33 无法在真实库直跑（H2 全链不受影响） | 中 | ✅ **已关闭**（2026-08-19 pg-v13-migration-chain-repair：PG 侧 V13 第 7 项 DROP INDEX→DROP CONSTRAINT，H2 零改动；PG 新库全链 33 条 migrate+validate + 既有库升级夹具 + 原 V13 checksum 守卫 + 语义正反例；D110 PASSED + 阶段三同步 COMPLETED，项目级 600/0/0） |
 | I45 | M07/M04/M05/M06/M09/M10 虚低 15 条汇总 | 低 | ◐ 部分关闭（2026-08-19：M07-F01-01～05 前端缺口已闭环；其余 10 条待排期） |
 | I51 | 前端 status 语义与后端相反（UI 新建用户无法登录/停用不阻断登录） | 高 | ✅ **已修复**（2026-08-17 status-semantics-alignment：用户/部门页按后端契约修正，66f/576t 四连全绿；角色/岗位未动） |
 | I26 | SysRole 列名与 V5 迁移不一致（全链 Flyway 环境必崩，测试 DDL 掩盖） | 高 | ✅ **已修复**（2026-08-17 sysrole-v5-column-alignment，D86 PASSED：实体/测试 DDL 对齐 V5 链尾 `built_in`/`remark`） |
@@ -226,7 +239,7 @@
 
 ## 12. 下一轮要做什么
 
-**agent-model-management-frontend：D106 补证 → 规划层复验**（执行层正按 `receipts/planning-review-d106.md` §3 补齐 `other`/远端 4xx 可达、未认证 401、Mock 连通性语义与真实后端一致性证据——后端 +7 用例 591/0/0 已跑通，前端 Mock 语义修正进行中；补充完成/测试回执归档后，规划层对验收标准 5/6/7 复验，通过后 P5 终态核销并裁定最终状态）。随后按 system.md §10 从候选池（§10 与 [[handoff]]）选定下一需求方向、写方向文档至 `product/<feature>/ready/` 下发执行层。I52（PG V13:58 2BP01）需规划层决策是否排期 V34 修复迁移。
+**pg-v13-migration-chain-repair：D110 规划层最终验收 PASSED（2026-08-19）**，阶段三终态同步回执 `product/pg-v13-migration-chain-repair/receipts/post-d110-terminal-sync.md` 待规划层复验；复验通过后功能标记 **COMPLETED**（D110 已裁定 PASSED，终态同步为阶段三最后一步）。I52 正式关闭，后端基线 **600/0/0/0**，已完成功能 23→24。**agent-model-management-frontend：D107 已复验 COMPLETED**（P5 终态核销）。随后按 system.md §10 从候选池（§10 与 [[handoff]]）选定下一需求方向、写方向文档至 `product/<feature>/ready/` 下发执行层。
 
 ---
 
@@ -242,7 +255,7 @@
 1. system.md
 2. knowledge/current-status.md
 3. knowledge/session-handoff.md                     ← 本文件
-4. knowledge/known-issues.md                        ← I1-I52（I45 部分关闭；I52=PG V13:58 2BP01 新登记；I51/I26/I47 已分别修复关闭）
+4. knowledge/known-issues.md                        ← I1-I52（I45 部分关闭；I52=PG V13:58 2BP01 已修复关闭；I51/I26/I47 已分别修复关闭）
 5. knowledge/features/agent-model-management-frontend.md ← 最新完成功能（P5/M07-F01-01～05，V33）
 6. knowledge/features/agent-model-orchestration.md  ← M07 全链（详情在 product/agent-model-orchestration/passed/）
 7. memory/handoff.md                                ← 基线/候选池/启动提示词（memory 为最新权威）
@@ -260,9 +273,9 @@
 - agent-model-management-frontend（P5 / M07-F01-01～05 大模型管理前端闭环）**执行层闭环（2026-08-19），D106 规划层验收 FAILED（复验中，候选终态）**——后端零 Java 业务改动 + V33 菜单/按钮权限 seed（菜单 id=209 `agent:model:view`、按钮 id=210 `agent:model:manage`、id=211 `agent:model:test`，不 seed sys_role_menu），提交 `d4d7dc3`；前端契约/API/Mock/菜单/页面全闭环，提交 `e26e5f0`；后端 584/0/0（582+2）、前端 69f/628t（66f/602t +3f/+26t）四连全绿、H2 全链 33 迁移 + V32→V33 升级链、PG 真实库临时 schema V33 幂等通过——主体与测试门保留，不要求重做；清单 M07-F01-01～05 🟦→✅（✅21/🟦28/⬜41）、P5 核销、I45 的 M07-F01 缺口关闭均为执行层候选终态（D106 复验通过前不构成规划层确认）；审查 `product/agent-model-management-frontend/receipts/planning-review-d106.md`，执行层补证中（后端 +7 用例 591/0/0 已跑通，前端 Mock 语义修正进行中）
 - 新登记 I52（非本轮引入）：PG `postgresql/V13__logical_delete_unique_constraints.sql:58` DROP INDEX 报 2BP01，PG 侧全链 V1→V33 无法在真实库直跑（H2 不受影响）；建议 V34 修复迁移，待规划层决策
 - department-query-filtering（M01-F01-04/I31）**COMPLETED（D104，2026-08-18）**——后端 582/0/0、前端 66f/602t、Flyway 零迁移；归档 `product/department-query-filtering/passed/`
-- 基线：后端 584 tests / 前端 69f/628t 四连全绿；清单 ✅21/🟦28/⬜41 共 90 行；Flyway 最高 V33，H2 全链 33 迁移；已完成功能 23 个
+- 基线：后端 600 tests / 前端 69f/628t 四连全绿；清单 ✅21/🟦28/⬜41 共 90 行；Flyway 最高 V33，PG/H2 全链各 33 条 migrate+validate；已完成功能 24 个
 - 执行约束：本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行，禁并行编译（已入宪法）
-- 候选池：M01/M02 虚高补齐（I36/I40）、M07 补全（F02-02/F02-04/F04-02）、M07-F03/F04 新功能、IoT/OpenAPI、数据权限遗留/停用即时生效/PG 侧全链直跑（I52）；I49 已由 admin-role-governance D96 关闭，I51/I26/I47 已分别修复关闭
+- 候选池：M01/M02 虚高补齐（I36/I40）、M07 补全（F02-02/F02-04/F04-02）、M07-F03/F04 新功能、IoT/OpenAPI、数据权限遗留/停用即时生效——PG 侧全链直跑已由 pg-v13-migration-chain-repair 修复关闭（I52，D110 COMPLETED）；I49 已由 admin-role-governance D96 关闭，I51/I26/I47 已分别修复关闭
 
 最新完成：product/agent-model-management-frontend/（回执 receipts/，**D106 FAILED 执行层补证中，待规划层复验**）；最新归档：product/department-query-filtering/passed/
 ```

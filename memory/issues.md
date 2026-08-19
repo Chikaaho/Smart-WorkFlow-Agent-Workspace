@@ -1,6 +1,6 @@
 # 未关闭问题
 
-> 最后更新：2026-08-18（I49 已关闭，D97）
+> 最后更新：2026-08-19（I52 D110功能验收 + D111阶段三复验，正式关闭）
 > 仅列出未关闭问题。已修复问题在 `knowledge/known-issues.md`。
 > **编号说明（2026-08-16 更新，D81）**：I46 已在 knowledge/known-issues.md 正式登记为「手写 SQL 通道无数据权限」（注册表为权威）——本文件原预留 I46 的 flow-graph adapter 条目**改号 I48**。**I47（bpm/h2 V8 partial index）与 I48（flow-graph adapter 限制）已于 2026-08-16（D81 bpm-plugin-architecture 知识库同步）正式登记入 knowledge/known-issues.md——悬空引用清理完毕**，本文件条目与注册表编号一致。
 > **D83 探索回执回收（2026-08-16）**：I49/I50/I51 为新候选编号（两轮探索各自建议 I49，统一顺延）；**D84 核销：已由执行层正式登记入 knowledge/known-issues.md**；I26 影响面上调（H2 全链 V5 改名，严重程度 中→高，与 I47 合并排期建议）；I30 已关闭；memory I46 严重程度统一为注册表口径=高。
@@ -28,6 +28,7 @@
 | I48 | （原临时编号 I31→I46，2026-08-15 因 I46 被占再改号；已正式登记——D81，2026-08-16，悬空引用清理完毕）`flow-graph` adapter 契约无边点击事件、无命令式数据更新通道（Step9 现场发现，D65 偏差2/3）：M07 图设计器绕行方案可用但受限——若未来节点自定义渲染/直接点边编辑需求增多，需回规划层评估扩展 adapter 导出面 | 低 | 绕行方案已生效，扩展待评估 |
 | I49 | V29 未 seed 普通角色菜单授权，job/storage 曾仅超管可达 | 中 | **已关闭**（D97；admin-role-governance COMPLETED） |
 | I50 | （D83 发现，D84 已登记 knowledge 注册表）`AuthController.login` 状态校验位于密码匹配之后（L88→L92）——停用账号仍消耗一次 BCrypt+用户查询，仅时序/资源问题无安全漏洞 | 低 | 待排期 |
+| I52 | PostgreSQL `V13__logical_delete_unique_constraints.sql` 的索引处理触发 `2BP01`，阻断真实 PG 新库 V1→当前链尾 | 高 | **已关闭**（2026-08-19，D110功能级PASSED + D111阶段三复验PASSED；PG侧V13第7项DROP INDEX→DROP CONSTRAINT，H2零改动；项目级600/0/0） |
 
 ---
 > 本文件为压缩索引。已修复问题的完整描述在 `knowledge/known-issues.md`。
