@@ -1,14 +1,14 @@
 # 当前状态
 
-> 最后更新：2026-08-19（agent-model-management-frontend D106 最终验收 FAILED）
+> 最后更新：2026-08-19（agent-model-management-frontend D107 PASSED / COMPLETED）
 
 ## 进行中功能
 
-**agent-model-management-frontend（P5 / M07-F01）FAILED（D106，2026-08-19，补证复验中）**：主体实现、V33、后端584/0/0和前端69f/628t四连证据保留；验收标准5/6/7未闭合——缺 `other` 与远端4xx可达自动化证据、缺未认证模型接口401证据，Mock禁用/锁定连通性语义未证明与真实后端一致。方向继续保留 `ready/`；执行层补证中（后端 +7 用例 591/0/0 已跑通，前端 Mock 语义修正进行中，补充回执未归档）；P5与五条清单上调尚未获规划层最终确认。
+无。
 
 ## 最新状态与最近完成
 
-**agent-model-management-frontend（P5 / M07-F01-01～05）执行层闭环、规划层 D106 FAILED（2026-08-19，补证复验中）**：后端零 Java 业务改动 + V33 菜单/按钮权限 seed，前端契约/API/Mock/菜单/页面已完成；后端 **584/0/0**、H2 33 条+V32→V33、前端 **69f/628t** 四连证据有效。规划复验发现验收标准5/6/7证据缺口，故清单五行上调、P5核销与I45子集关闭暂视为执行层候选终态。审查：`product/agent-model-management-frontend/receipts/planning-review-d106.md`。执行层补证中：后端 +7 用例 591/0/0 已跑通（other/远端4xx/未认证401/禁用锁定连通性），前端 Mock 语义修正进行中；补充回执归档后规划层复验。I52 为独立既有缺陷，不阻塞本轮补证。
+**agent-model-management-frontend（P5 / M07-F01-01～05）COMPLETED（D107，2026-08-19）✅**：D106 已通过的主体实现、V33、H2 33 条与 V32→V33、前端 69f/628t 四连证据保留；补证新增 7 个后端用例，闭合 `other`、远端4xx可达、未认证401及禁用/锁定与Mock真实语义，后端项目级 **591/0/0**。P5核销、I45中M07-F01子集关闭、五条清单✅获规划确认；方向归档 `product/agent-model-management-frontend/passed/`。I52 继续作为独立既有缺陷。
 
 **department-query-filtering（I31 / M01-F01-04）COMPLETED（D104，2026-08-18）✅**：部门名称/状态组合筛选、命中节点+必要祖先、非法状态400、租户/逻辑删除边界、前端筛选与Mock均闭合；后端582/0/0/0、前端66f/602t四连，零Flyway。D103终态同步缺口已全文修正，I31关闭、M01-F01-04确认为✅，方向归档 `product/department-query-filtering/passed/`。
 
@@ -78,14 +78,14 @@ process-monitoring (M04-F06-01)：COMPLETED（详情见 `knowledge/`，2026-07-3
 
 ## 测试基线
 
-当前待复验：**agent-model-management-frontend（P5 / M07-F01-01～05）D106 FAILED（补证复验中）**——执行层已完成 V33 与前端主体，后端584/0/0、前端69f/628t、H2 33条证据保留；补证进展：后端 +7 用例 591/0/0 已跑通、前端 Mock 语义修正进行中（补充回执未归档）；补证完成并经规划层复验通过前不计入已完成功能。上一完成：department-query-filtering（I31 / M01-F01-04，D104 COMPLETED）——582/0/0、66f/602t、清单 M01-F01-04 🟦→✅（✅16/🟦33/⬜41）、I31 关闭。此前：**bpm-h2-v8-compat（P10 / I47）PASSED（D87/D88，2026-08-17）**——H2 V8 partial index → 生成列 `active_key` + 唯一索引等价实现；永久全链测试 7 目录 30 条迁移（口径 28→30）；BPM process 58/0/0、bootstrap 8/0/0、项目级 543/0/0；I47/P10 已核销，功能清单状态列无变化。回执：`product/bpm-h2-v8-compat/receipts/`。再上一完成：sysrole-v5-column-alignment（P13 / I26）——模块 111/0/0、项目级 527/0/0，I26 已核销。
+最新完成：**agent-model-management-frontend（P5 / M07-F01-01～05）D107 COMPLETED**——后端591/0/0、前端69f/628t四连、H2 33条；P5核销，五条清单确认为✅。上一完成：department-query-filtering（I31 / M01-F01-04，D104 COMPLETED）——582/0/0、66f/602t四连、I31关闭。
 
-- 后端：项目级 **584 tests**（运行口径，CONFIRMED 2026-08-19 agent-model-management-frontend，0 failures / 0 errors / 0 skipped；582 → +2）
+- 后端：项目级 **591 tests**（运行口径，CONFIRMED 2026-08-19 agent-model-management-frontend D107，0 failures / 0 errors / 0 skipped；584 → +7 补证）
 - 前端：**69 spec files / 628 tests**，四连全绿（CONFIRMED 2026-08-19 agent-model-management-frontend；2G 上限下 typecheck/lint/test/build 全部退出 0；66f/602t → +3f/+26t）
-- 功能清单文件当前为 **✅21/🟦28/⬜41 共 90 行**（执行层已上调 M07-F01-01～05；D106 FAILED 后五行上调与P5核销仅为候选终态，待补证复验确认）
+- 功能清单文件当前为 **✅21/🟦28/⬜41 共 90 行**（M07-F01-01～05 五行上调已由 D107 最终确认）
 - Flyway：root 路径 V33 已占；H2 新库全链 **33 迁移** + V32→V33 升级链 migrate+validate（V33=菜单/按钮权限 seed）；PG 侧全链直跑受既有 V13:58 2BP01 缺陷阻断（I52，建议 V34 修复迁移）
-- 已完成功能：22 个（agent-model-management-frontend 待 D106 复验通过后计入）
-- 需求池：`todo/requirement-pool.md`（2026-08-16 新建，已开发未满足+候选，规划层维护；P1 中 I31 已关闭，P5 因 D106 FAILED 保持开放）
+- 已完成功能：23 个
+- 需求池：`todo/requirement-pool.md`（2026-08-16 新建，已开发未满足+候选，规划层维护；P1 中 I31 已关闭，P5 已由 D107 核销）
 
 ## 模块完成度（简表）
 
