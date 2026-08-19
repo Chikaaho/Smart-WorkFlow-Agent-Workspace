@@ -1,8 +1,10 @@
 # 当前状态
 
-> 最后更新：2026-08-19（user-group-membership D117 PASSED + 阶段三同步 COMPLETED）
+> 最后更新：2026-08-20（role-menu-permission-parity COMPLETED，第 26 个已完成功能）
 
-## 进行中功能
+## 最近完成功能
+
+**role-menu-permission-parity（P1 / M02-F02-01 / M02-F03-01）COMPLETED（D123 规划层最终验收 PASSED + 阶段三终态同步，2026-08-20）✅**：D122 四类偏差全部闭合（真实生产 403 契约 / 停用角色有效撤权 / Mock 双角色身份 / I53+I54 权威登记）；后端 **674/0/0/0**、前端 **73f/681t** 四连全绿，零 Flyway。M02-F02-01/F03-01 ✅、P1 正式核销、功能数 26；主方向已归档 `product/role-menu-permission-parity/passed/`。规划复验：`product/role-menu-permission-parity/receipts/planning-final-review-d123.md`；终态同步回执：`receipts/post-d123-terminal-sync.md`。
 
 **user-group-membership（P28 / I36 / M01-F04-01 基础子集）COMPLETED（D120最终确认，2026-08-19）✅**：业务十一项验收全部通过；后端 **647/0/0/0**、前端 **71f/646t**、V34 双方言 34 条全链确认。**I36 关闭、P28 核销、M01-F04-01 🟦 终态（✅21/🟦29/⬜40）、功能数 25**；三份方向均归档 `product/user-group-membership/passed/`，ready/ 已清空。最终验收：`product/user-group-membership/receipts/planning-stage3-review-d120.md`。
 
@@ -80,14 +82,14 @@ process-monitoring (M04-F06-01)：COMPLETED（详情见 `knowledge/`，2026-07-3
 
 ## 测试基线
 
-当前结果：**user-group-membership（P28 / I36）COMPLETED（D117 PASSED + 阶段三同步，2026-08-19）**——前端71f/646t、V34与后端 **647/0/0/0** 已确认；I36关闭、P28核销、M01-F04-01🟦、功能数25及双方向归档均已落盘。
+当前结果：**role-menu-permission-parity（P1 / M02-F02/F03）COMPLETED（D123 规划层最终验收 PASSED + 阶段三终态同步，2026-08-20）**——后端 **674/0/0/0**（112 报告文件）、前端 **73f/681t** 四连全绿；清单 **✅23/🟦27/⬜40**、P1 正式核销、功能数 26（第 26 个已完成功能）。
 
-- 后端：**647 tests**（surefire XML 聚合口径，109 文件，0/0/0）；1292 为类级+模块级重复累计已弃用；日志类级行求和 646 与 XML 647 一致（差 1 为嵌套类合并计法）。
-- 前端：规划层确认本轮 **71 spec files / 646 tests**，新增18与API10+页面8自洽，四门退出0。
-- 功能清单：M01-F04-01 ⬜→🟦 **终态确认**（**✅21/🟦29/⬜40**，D117 阶段三）；无关行零漂移。
-- Flyway：root 路径 **V34 已占**（sys_user_group/sys_user_group_member，H2/PG 双份）；**PG 17.5 与 H2 新库全链均为 34 条 migrate+validate**，H2/PG V32/V33→V34 升级链通过；PG 永久测试 9 用例 + BOM 统一全平台；**I52 已关闭（D110 COMPLETED）**
-- 已完成功能：25 个（user-group-membership 为第 25 个，COMPLETED）
-- 需求池：P28 已核销、I36 已关闭（2026-08-19，D117 PASSED + 阶段三 COMPLETED）。
+- 后端：**674 tests**（surefire XML 聚合口径，112 文件，0/0/0；670 基线 +4：GlobalExceptionHandlerTest 2 + AuthMenus A4 撤权 2）；1292 为类级+模块级重复累计已弃用。
+- 前端：本轮 **73 spec files / 681 tests**（D121 73f/678t → +3：auth-session.spec 双角色身份 3 用例），四门退出 0。
+- 功能清单：M02-F02-01/F03-01 🟦→✅ **终态**（**✅23/🟦27/⬜40** 共 90 行）；无关行零漂移（M02-F01-01/M01-F04-01 保持 🟦、M02-F04-01 保持 ✅）。
+- Flyway：root 路径 **V34 已占**（sys_user_group/sys_user_group_member，H2/PG 双份）；**PG 17.5 与 H2 新库全链均为 34 条 migrate+validate**，H2/PG V32/V33→V34 升级链通过；PG 永久测试 9 用例 + BOM 统一全平台；**I52 已关闭（D110 COMPLETED）**；本轮零 Flyway。
+- 已完成功能：**26 个**（role-menu-permission-parity 为第 26 个，D123 COMPLETED）。
+- 需求池：**P1 正式核销**（D123 规划层最终验收 PASSED + 终态同步）；I31/I36/F02/F03 全部子项闭合；I53/I54 已登记并修复；P28 已核销。
 
 ## 模块完成度（简表）
 
