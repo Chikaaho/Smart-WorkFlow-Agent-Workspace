@@ -1,10 +1,10 @@
 # 当前状态
 
-> 最后更新：2026-08-19（pg-v13-migration-chain-repair D111 PASSED / COMPLETED）
+> 最后更新：2026-08-19（user-group-membership D117 PASSED + 阶段三同步 COMPLETED）
 
 ## 进行中功能
 
-**（无进行中业务功能）**：pg-v13-migration-chain-repair（I52）已 **COMPLETED（D110功能验收 + D111阶段三复验，2026-08-19）**，I52 正式关闭；主方向与同步方向归档 `product/pg-v13-migration-chain-repair/passed/`。
+**user-group-membership（P28 / I36 / M01-F04-01 基础子集）COMPLETED（D120最终确认，2026-08-19）✅**：业务十一项验收全部通过；后端 **647/0/0/0**、前端 **71f/646t**、V34 双方言 34 条全链确认。**I36 关闭、P28 核销、M01-F04-01 🟦 终态（✅21/🟦29/⬜40）、功能数 25**；三份方向均归档 `product/user-group-membership/passed/`，ready/ 已清空。最终验收：`product/user-group-membership/receipts/planning-stage3-review-d120.md`。
 
 ## 最新状态与最近完成
 
@@ -80,14 +80,14 @@ process-monitoring (M04-F06-01)：COMPLETED（详情见 `knowledge/`，2026-07-3
 
 ## 测试基线
 
-最新完成：**pg-v13-migration-chain-repair（I52）D110 COMPLETED**——后端600/0/0/0、PG新库全链33条migrate+validate、H2 11项零退化、I52正式关闭；上一 COMPLETED 功能为 agent-model-management-frontend（D107）。
+当前结果：**user-group-membership（P28 / I36）COMPLETED（D117 PASSED + 阶段三同步，2026-08-19）**——前端71f/646t、V34与后端 **647/0/0/0** 已确认；I36关闭、P28核销、M01-F04-01🟦、功能数25及双方向归档均已落盘。
 
-- 后端：项目级 **600 tests**（运行口径，CONFIRMED 2026-08-19 pg-v13-migration-chain-repair D110，0 failures / 0 errors / 0 skipped；599 → +1 checksum守卫）
-- 前端：**69 spec files / 628 tests**，四连全绿（CONFIRMED 2026-08-19 agent-model-management-frontend；2G 上限下 typecheck/lint/test/build 全部退出 0；66f/602t → +3f/+26t）
-- 功能清单文件当前为 **✅21/🟦28/⬜41 共 90 行**（M07-F01-01～05 五行上调已由 D107 最终确认）
-- Flyway：root 路径 V33 已占；**PG 17.5 与 H2 新库全链均为 33 条 migrate+validate**，H2 V32→V33 通过；PG 永久测试 9 用例 + BOM 统一全平台；**I52 已关闭（D110 COMPLETED）**
-- 已完成功能：24 个
-- 需求池：`todo/requirement-pool.md`（2026-08-16 新建，已开发未满足+候选，规划层维护；P1 中 I31 已关闭，P5 已由 D107 核销）
+- 后端：**647 tests**（surefire XML 聚合口径，109 文件，0/0/0）；1292 为类级+模块级重复累计已弃用；日志类级行求和 646 与 XML 647 一致（差 1 为嵌套类合并计法）。
+- 前端：规划层确认本轮 **71 spec files / 646 tests**，新增18与API10+页面8自洽，四门退出0。
+- 功能清单：M01-F04-01 ⬜→🟦 **终态确认**（**✅21/🟦29/⬜40**，D117 阶段三）；无关行零漂移。
+- Flyway：root 路径 **V34 已占**（sys_user_group/sys_user_group_member，H2/PG 双份）；**PG 17.5 与 H2 新库全链均为 34 条 migrate+validate**，H2/PG V32/V33→V34 升级链通过；PG 永久测试 9 用例 + BOM 统一全平台；**I52 已关闭（D110 COMPLETED）**
+- 已完成功能：25 个（user-group-membership 为第 25 个，COMPLETED）
+- 需求池：P28 已核销、I36 已关闭（2026-08-19，D117 PASSED + 阶段三 COMPLETED）。
 
 ## 模块完成度（简表）
 

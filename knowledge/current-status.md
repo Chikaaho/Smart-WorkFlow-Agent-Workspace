@@ -15,12 +15,16 @@
 |------|------|
 | 后端框架 | Spring Boot 3.4.4 + Java 21，模块化单体，四层架构就位 |
 | 前端框架 | Vue 3.5 + TypeScript 6.0 + Vite 8，严格分层 SPA，自有架构（不继承 vben） |
-| 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，V1–V33；**双方言新库全链均可直跑**——H2 新库全链 33 迁移与 V32→V33 升级链 migrate+validate 已通过；**PG 侧全链直跑已修复（2026-08-19 pg-v13-migration-chain-repair，I52 关闭）**：PG 17.5 真实二进制（zonky embedded-postgres）新库全链 33 条 migrate+validate 通过 + 既有库升级夹具通过，永久测试 `FlywayFullChainPostgresTest`；PG 真实库（127.0.0.1）临时 schema 验证 V33 幂等执行通过（2026-08-19） |
+| 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，V1–V34；**双方言新库全链均可直跑**——H2 新库全链 34 迁移与 V32/V33→V34 升级链 migrate+validate 已通过；**PG 侧全链直跑已修复（2026-08-19 pg-v13-migration-chain-repair，I52 关闭）**：PG 17.5 真实二进制（zonky embedded-postgres）新库全链 34 条 migrate+validate 通过 + 既有库升级夹具通过，永久测试 `FlywayFullChainPostgresTest`；PG 真实库（127.0.0.1）临时 schema 验证 V33 幂等执行通过（2026-08-19）。V34（2026-08-19 user-group-membership）新增 sys_user_group / sys_user_group_member（H2/PG 双份逐字一致）。 |
 | 核心路径 | Walking Skeleton：登录 → 表单 → 审批 → 通知 ✅ 四环全部闭合 |
-| 功能清单 | 10 模块，55 功能，90 明细；2026-08-19 终态按实际代码闭环为 **✅21/🟦28/⬜41**（`Smart-WorkFlow/功能清单.md` 权威清单；M07-F01-01～05 五行 🟦→✅，P5 核销、I45 的 M07-F01 前端缺口关闭）。 |
-| 测试基线 | pg-v13-migration-chain-repair 当前后端全量 **600 tests / 0 failures / 0 errors / 0 skipped（BUILD SUCCESS，105 surefire XML 聚合）**；前端 **69 spec files / 628 tests / 0 failures**（agent-model-management-frontend 四连，零改动），均按 2G 约束串行执行、每次执行前保留互斥检查证据。 |
+| 功能清单 | 10 模块，55 功能，90 明细；2026-08-19 终态按实际代码闭环为 **✅21/🟦29/⬜40**（`Smart-WorkFlow/功能清单.md` 权威清单；user-group-membership 将 M01-F04-01 ⬜→🟦，消费端未接不升 ✅）。 |
+| 测试基线 | user-group-membership 当前后端全量 **647 tests / 0 failures / 0 errors / 0 skipped**（surefire XML 聚合 109 文件；1292 系类级+模块级重复累计已弃用）；前端 **71 spec files / 646 tests / 0 failures** 四连全绿（typecheck/lint/test/build），均按 2G 约束串行执行。 |
 
-### 最近完成（2026-08-19，pg-v13-migration-chain-repair 功能级 PASSED + 阶段三终态同步 COMPLETED）
+### 最近完成（2026-08-19，user-group-membership 功能级 PASSED（D117）+ 阶段三终态同步 COMPLETED）
+
+`user-group-membership`（P28 / I36 用户组绑定）：**D117 功能级最终验收 PASSED，阶段三同步完成，功能 COMPLETED**。方向 `product/user-group-membership/passed/direction-user-group-membership.md`（已归档）。实现：V34 双端迁移 `sys_user_group`/`sys_user_group_member`（业务标识租户内唯一 + 逻辑删除唯一语义）；后端 SysUserGroup/Service/Controller（组 CRUD/启停/逻辑删除、成员保存/替换/清空/移除/回填、数据范围=组内成员部门 EXISTS、成员绑定校验=候选可见性同源、非 superadmin 零隐式授权）；前端 UserGroupList 页面/API/类型/Mock/菜单/权限（`system:userGroup:list`/`manage`）。测试：后端 45 专项（Controller 12 + Service 15 + 集成 12 + 授权 6）+ Flyway H2/PG 全链（34 迁移、V33→34 升级链、逻辑删除唯一语义 23505）+ 项目级 **647/0/0/0**；前端 **71 files / 646 tests / 0 failures** 四连全绿。清单 M01-F04-01 ⬜→🟦（✅21/🟦29/⬜40）；**I36 关闭（用户组绑定语义，不扩大为流程/权限消费端）**；**P28 核销**；M01-F04-01 消费端未接不得升 ✅；已完成功能 24→25。回执：`product/user-group-membership/receipts/`（D113-D117 审查链 + stage3-closeout）。
+
+### 此前最近完成（2026-08-19，pg-v13-migration-chain-repair 功能级 PASSED + 阶段三终态同步 COMPLETED）
 
 `pg-v13-migration-chain-repair`（I52）：**D110 规划层最终验收 PASSED，阶段三终态同步完成，功能 COMPLETED，I52 正式关闭**。方向 D108（`product/pg-v13-migration-chain-repair/passed/`，已归档）。根因：form/V7 inline UNIQUE 在 PG 创建约束背书隐式索引 `sw_form_def_form_key_key`，root/V13:58 `DROP INDEX` 触发 2BP01（H2 行为不同故 H2 全链不受影响）。策略裁定：**修改 PG 侧 V13 第 7 项**（`ALTER TABLE sw_form_def DROP CONSTRAINT IF EXISTS sw_form_def_form_key_key;`）而非新增 V34——PG 无已应用 V13 的既有库故无校验和风险、V14-V33 零下游引用、新库场景 V34 不可达；**H2 侧 V13 零改动**（双方言各按自身能力实现同一语义）。验证：永久 `FlywayFullChainPostgresTest`（zonky embedded-postgres PG 17.5 真实二进制，先红复现 2BP01 → 后绿 33 条 migrate+validate + 既有库升级夹具 target32→V33 + 语义正反例 23505 + 原 V13 checksum 显式失败守卫）；H2 `FlywayFullChainH2Test` 11 用例回归零退化；项目级全量 **600/0/0/0**（591→599→600）。**D109 补证**：既有库校验和安全（git 审计链 + 守卫用例）与跨平台可移植性（BOM 统一 17.5.0 全平台）两项闭合。**语义事实修正**：复合唯一 `(key, deleted)` 下每业务键最多一条 deleted=1 历史（真实 PG 证伪「两条 deleted=1 共存」，已固化为回归守卫）。前端零改动；清单状态列零变化（✅21/🟦28/⬜41）。回执：`product/pg-v13-migration-chain-repair/receipts/`（completion + planning-review-d109 + post-d109-supplement + planning-final-review-d110 + post-d110-terminal-sync）。
 
@@ -138,7 +142,7 @@
 
 ## 5. 已完成的功能
 
-> 最后更新：2026-08-19（24 个功能；本轮新增 pg-v13-migration-chain-repair 行，D110 PASSED + 阶段三同步 COMPLETED；agent-model-management-frontend 已由 D107 复验确认）
+> 最后更新：2026-08-19（25 个功能；本轮新增 pg-v13-migration-chain-repair 与 user-group-membership 行，D110/D117 PASSED + 阶段三同步 COMPLETED；agent-model-management-frontend 已由 D107 复验确认）
 
 | 功能编号 | 功能名称 | 最终状态 | 完成日期 | 说明 |
 |----------|----------|:--------:|:--------:|------|

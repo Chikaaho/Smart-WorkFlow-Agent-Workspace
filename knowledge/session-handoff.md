@@ -88,7 +88,7 @@
 
 **无进行中业务功能。** agent-model-management-frontend（P5 / M07-F01-01～05）已由执行层完成前后端闭环（2026-08-19），完成回执与测试回执提交至 `product/agent-model-management-frontend/receipts/`，**D106 规划层最终验收 FAILED（2026-08-19，审查 `receipts/planning-review-d106.md`）——主体与测试门保留，缺 `other` 协议与远端 4xx 可达、未认证 401、Mock 连通性语义与真实后端一致性证据；执行层补证中（后端 +7 用例 591/0/0 已跑通，前端 Mock 语义修正进行中），待补证后规划层复验**（复验通过后 P5 核销终态；P5 需求池当前状态为 FAILED/未核销）。下一需求由规划层复验后从候选池另行选定。
 
-下一候选按 [[handoff]] 候选池（2026-08-19 更新）：M01/M02 其余虚高补齐（I36 用户组绑定/I40）、M07 补全（F02-02 Prompt 配置/F02-04 运行日志+单步调试/F04-02 Token 统计；F01 前端管理页已闭环）、M07-F03/F04 新功能、IoT/OpenAPI 模块落地、数据权限遗留与停用即时生效——**PG 侧全链直跑已由 pg-v13-migration-chain-repair 修复关闭（I52，2026-08-19，D110 PASSED + COMPLETED）**；I49 已由 admin-role-governance D96 关闭，I31 已由 department-query-filtering 关闭。
+下一候选按 [[handoff]] 候选池（2026-08-19 更新）：M01/M02 其余虚高补齐（**I36 用户组绑定已由 user-group-membership 关闭（D117 PASSED + 阶段三 COMPLETED，2026-08-19），P28 已核销**；M02-F02/F03 权限配置入口仍为并列候选）、M07 补全（F02-02 Prompt 配置/F02-04 运行日志+单步调试/F04-02 Token 统计；F01 前端管理页已闭环）、M07-F03/F04 新功能、IoT/OpenAPI 模块落地、数据权限遗留与停用即时生效——**PG 侧全链直跑已由 pg-v13-migration-chain-repair 修复关闭（I52，2026-08-19，D110 PASSED + COMPLETED）**；I49 已由 admin-role-governance D96 关闭，I31 已由 department-query-filtering 关闭。
 
 ---
 
@@ -206,7 +206,7 @@
 ## 10. 还有什么没做
 
 ### 候选需求池（2026-08-19 D105 轮后更新，规划层选方向用）
-1. **M01/M02 其余虚高要素补齐** — I36 用户组绑定/I40 待修复（按钮权限配置入口等；I31 部门条件筛选已由 department-query-filtering 关闭）
+1. **M01/M02 其余虚高要素补齐** — **I36 用户组绑定已由 user-group-membership 关闭（D117 PASSED + 阶段三 COMPLETED，2026-08-19），P28 已核销**；M02-F02/F03 权限配置入口仍为并列候选（I31/I32/I34/I35 已关闭，I40 归 M03）
 2. **M07 补全** — F02-02 Prompt 配置字段、F02-04 运行日志页+单步调试、F04-02 Token 统计（缺口均由 D83 回执确认；F01 前端管理页已由 agent-model-management-frontend 闭环）
 3. **M07-F03/F04 新功能** — 助手配置/F03-03 知识库 RAG/F04-01 对话窗口 SSE（均零代码）
 4. **IoT / OpenAPI 模块落地** — 仅骨架（M08 13 行 + M09 8 行全 ⬜ 无虚低，D83 复核确认）
