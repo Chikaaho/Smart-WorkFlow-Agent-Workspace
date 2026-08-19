@@ -1,8 +1,15 @@
 # 会话交接
 
-> 最后更新：2026-08-18（department-query-filtering D104 COMPLETED）
+> 最后更新：2026-08-19（agent-model-management-frontend 执行层闭环）
 
 ## 最新完成
+
+**agent-model-management-frontend（P5 / M07-F01-01～05 大模型管理前端闭环）：执行层闭环 ✅（2026-08-19）**
+- 后端零 Java 业务改动 + **V33 菜单/按钮权限 seed**（H2+PG 双方言逐字节一致：菜单 id=209「大模型管理」`agent:model:view`、按钮 id=210 `agent:model:manage`、id=211 `agent:model:test`，仿 V31 按钮先例 + WHERE NOT EXISTS 幂等；不 seed sys_role_menu 沿用 V6/V26 超管旁路；提交 `d4d7dc3`）。
+- 验证：后端 **584/0/0**（582+2）、H2 新库全链 **33 迁移** + V32→V33 升级链（永久测试 `upgradeChain_V32_to_V33_shouldPass`，209/210/211 产物 + sys_role_menu 零关联断言）、PG 真实库（127.0.0.1）临时 schema V33 幂等执行通过（public 零改动）。
+- 前端（提交 `e26e5f0`）：契约/API/Mock/菜单/路由/页面全闭环（ModelList 分页+名称查询+多 Key 状态、编辑表单、API Key 脱敏+空值保留旧密钥、启停、连通性测试含消息/耗时、`lockedUntil` 只读、GraphDesigner 模型下拉兼容回归）；**69f/628t**（66f/602t → +3f/+26t）2G 上限四连全绿。
+- 清单 M07-F01-01～05 五行 🟦→✅（**✅21/🟦28/⬜41**），P5 核销，I45 的 M07-F01 前端缺口关闭；**新登记 I52**（PG V13:58 DROP INDEX 报 2BP01，PG 侧全链无法直跑，非本轮引入，建议 V34 修复迁移，待规划层决策）。
+- 回执：`product/agent-model-management-frontend/receipts/`，**待规划层按 D105 11 项验收标准最终验收**。
 
 **bpm-h2-v8-compat（P10 / I47 BPM H2 V8 迁移链兼容）：PASSED（D87/D88，2026-08-17）✅**
 - H2 V8 将不受支持的 partial unique index 替换为生成列 `active_key` + 唯一索引；active=true 时按 tenant/form 唯一，active=false 时 NULL 可多条共存。PostgreSQL V8 零改动，业务语义保持一致。
@@ -69,7 +76,7 @@
 
 ## 进行中
 
-无进行中业务功能。
+**无进行中业务功能。** agent-model-management-frontend（P5 / M07-F01）已由执行层完成前后端闭环（2026-08-19），完成/测试回执提交至 `product/agent-model-management-frontend/receipts/`，**待规划层按 D105 11 项验收标准最终验收**（P5 需求池已核销）。
 
 已完成（最近）：department-query-filtering（I31 / M01-F01-04）`COMPLETED`（D104，2026-08-18）✅——业务与测试九项全部通过，D103终态同步缺口已修正，I31关闭、清单M01-F01-04为✅，归档 `product/department-query-filtering/passed/`。user-org-association-query（D101）与 admin-role-governance（D97）均保持 COMPLETED。
 
@@ -79,45 +86,47 @@
 
 ## 当前基线
 
-- 后端：项目级 **582 tests**（运行口径，CONFIRMED 2026-08-18 D102，0 failures / 0 errors / 0 skipped；563 D101 → +19）
-- 前端：**66 spec files / 602 tests**，四连全绿（CONFIRMED 2026-08-18 D102；正式 2G 上限下 typecheck/lint/test/build 全部退出 0；577 D101 → +25）
-- 功能清单：**✅16 / 🟦33 / ⬜41，共 90 行**（2026-08-18 D102：M01-F01-04 🟦→✅，I31 关闭，无关行零漂移）
-- Flyway：root 路径 V32 已占用；H2 新库 V1→V32 与 V31→V32 migrate + validate，专项 10 tests；本轮零迁移
-- 已完成功能：22 个（features.md 口径，department-query-filtering 执行层闭环完成）
+- 后端：项目级 **584 tests**（运行口径，CONFIRMED 2026-08-19 agent-model-management-frontend，0 failures / 0 errors / 0 skipped；582 → +2）
+- 前端：**69 spec files / 628 tests**，四连全绿（CONFIRMED 2026-08-19 agent-model-management-frontend；正式 2G 上限下 typecheck/lint/test/build 全部退出 0；66f/602t → +3f/+26t）
+- 功能清单：**✅21 / 🟦28 / ⬜41，共 90 行**（2026-08-19：M07-F01-01～05 五行 🟦→✅，P5 核销，无关行零漂移）
+- Flyway：root 路径 V33 已占用；H2 新库全链 33 迁移 + V32→V33 升级链 migrate+validate；PG 侧全链直跑受既有 V13:58 2BP01 缺陷阻断（I52，建议 V34 修复迁移）
+- 已完成功能：23 个（features.md 口径，agent-model-management-frontend 执行层闭环完成）
 - 执行约束：**本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行**（先后端后前端），禁并行编译
 
 ## 下一动作
 
-**无进行中功能**：department-query-filtering 已于 D104 完成最终复验并归档。下一需求由规划层另行选择；本交接不预设执行任务。
+**下一动作**：规划层对 agent-model-management-frontend 执行层闭环按 D105 11 项验收标准最终验收（回执 `product/agent-model-management-frontend/receipts/`；P5 需求池已核销，I52 需规划层决策是否排期 V34 修复迁移）；验收通过后从候选池选定下一需求方向下发。
 
 **探索回执已回收并核销（2026-08-16，D83 裁定 + D84 落库核销）**：
 - 清单 90/90 零不一致（I1 无第三次复发）；基线全部核实（527/66f569t——**569 为运行口径，静态 561**/V30+28/16 功能）；memory 自洽。
 - **knowledge/ 落库已完成（D84 核销 7/7）**：I49/I50/I51 正式登记、I26 上调/I30 已满足/I3/I18/I38 失准修正、current-status 18 处、session-handoff 全量重写、todo T1/T10 清理、前端口径注记。回执 `search_fallback/knowledge-sync-apply.md`。
 - **D84 裁定**：decisions 注册表归属——memory/decisions.md=活跃决策摘要（D85 口径），knowledge/decisions.md=D1-D46 历史档案（顶部注记+README 同步待执行层顺手补）；不补录 D47-D82；I18/I30 正式关闭。
 - **D85 铁律（2026-08-16 用户定）**：knowledge=唯一完整权威信息源；memory=最少信息摘要（冲突以 knowledge 为准）；执行角色触碰状态文件必须同步 knowledge 全量（§3.3 第10项强化）；清单 🟦/⬜ 缺口同步进需求池 P 编号（防"清单独有"）。已落：system.md §0.4 铁律块 + §3.3 第10项、memory/README.md、memory/decisions.md 顶部、requirement-pool 维护规则 4。
-- 需求池：`todo/requirement-pool.md`（P10/P12/P13/P24 已核销；其余候选仍按池内状态维护）。
+- 需求池：`todo/requirement-pool.md`（P5 已于 2026-08-19 核销；P10/P12/P13/P24 已核销；其余候选仍按池内状态维护）。
 - **探索任务核销（2026-08-16 晚，3/3 完成）**：decisions-registry-note ✅（knowledge/decisions.md 顶部注记+根 README 索引同步）、checklist-pool-sync ✅（清单 25 行描述列末尾追加「缺口已登记 P26-P50」25/25、状态列 0 漂移——裁定维持描述列形态不加列）、rule-sync-d85 ✅（shared-constraints §10 / development-workflow §6.3 / 后端宪法 §13 / 前端宪法 §15 四处落地，knowledge/README 不存在按说明处理）。**D85 铁律三仓库宪法级完成**。
 - **探索任务核销（2026-08-16 晚，4/4 全闭环）**：i18-close-sync ✅（I18 注册表已同步「✅ 已关闭（D84）」仿 I33/I37 先例，memory 侧核对一致）。**本轮全部委派任务已闭环，无进行中探索**。
 - **当前规划裁定**（2026-08-18）：user-org-association-query D101 PASSED，阶段三同步 COMPLETED；D93-D97 双角色治理作为前置基线保持有效。
 
-后续候选（按风险/价值排序参考，2026-08-18 D103 更新）：
+后续候选（按风险/价值排序参考，2026-08-19 D105 轮后更新）：
 1. M01/M02 其余虚高要素补齐：I36 用户组绑定、M02-F02/F03 权限配置入口（I31 部门筛选已由 department-query-filtering 关闭；I32/I34/I35 已由 D101 关闭；I33/I37/I43/I44 已修复）
-2. M07 补全：F01 前端管理页、F02-02 Prompt 配置、F02-04 运行日志页+单步调试、F04-02 Token 统计
+2. M07 后续补全（P5 之外）：F02-02 Prompt 配置、F02-04 运行日志页+单步调试、F04-02 Token 统计（F01 前端管理页已由 agent-model-management-frontend 闭环）
 3. M07-F03/F04 新功能：助手配置/知识库RAG（选型未定）/对话窗口SSE（均零代码）
 4. IoT / OpenAPI 模块落地（仅骨架）
-5. 小项池：停用即时生效（JWT 过滤器层）、数据权限遗留（部门档子查询 deleted 过滤、job 非分页入口纳管、PG 联调验证）（I49/I51/I26/I47 已分别修复关闭）
+5. 小项池：停用即时生效（JWT 过滤器层）、数据权限遗留（部门档子查询 deleted 过滤、job 非分页入口纳管、PG 联调验证）、**PG 侧全链直跑（V13:58 2BP01，I52，建议 V34 修复迁移）**（I49/I51/I26/I47 已分别修复关闭）
 
 ## 新会话启动提示词
 
 ```
-你是 Smart-WorkFlow 根目录规划代理。请按 system.md §10 执行新会话恢复。
+你是 Smart-WorkFlow 根目录代理。请先显式声明本会话角色；若为执行角色，从工作区根目录读取已下发方向并自主闭环。
 
 最新状态：
-- department-query-filtering（M01-F01-04/I31 部门条件查询闭环）**COMPLETED（D104，2026-08-18）**——后端 GET /system/dept/tree name/status 条件 + 祖先补全树形结果，前端 DeptList 筛选/重置/双空态 + Mock 对齐；后端 582/0/0（563+19）、前端 66f/602t（577+25）四连全绿，Flyway 零迁移；清单 M01-F01-04 🟦→✅（✅16/🟦33/⬜41），I31 关闭。D103 终态同步缺口已修正，方向归档 `product/department-query-filtering/passed/`，最终复验 `receipts/planning-final-review-d104.md`
+- agent-model-management-frontend（P5 / M07-F01-01～05 大模型管理前端闭环）**执行层闭环（2026-08-19）**——后端零 Java 业务改动 + V33 菜单/按钮权限 seed（菜单 id=209 `agent:model:view`、按钮 id=210 `agent:model:manage`、id=211 `agent:model:test`，不 seed sys_role_menu），提交 `d4d7dc3`；前端契约/API/Mock/菜单/页面全闭环，提交 `e26e5f0`；后端 584/0/0（582+2）、前端 69f/628t（66f/602t +3f/+26t）四连全绿、H2 全链 33 迁移 + V32→V33 升级链、PG 真实库临时 schema V33 幂等通过；清单 M07-F01-01～05 🟦→✅（✅21/🟦28/⬜41）、P5 核销、I45 的 M07-F01 缺口关闭；**待规划层按 D105 11 项验收标准最终验收**，回执 `product/agent-model-management-frontend/receipts/`
+- 新登记 I52（非本轮引入）：PG `postgresql/V13__logical_delete_unique_constraints.sql:58` DROP INDEX 报 2BP01，PG 侧全链 V1→V33 无法在真实库直跑（H2 不受影响）；建议 V34 修复迁移，待规划层决策
+- department-query-filtering（M01-F01-04/I31 部门条件查询闭环）**COMPLETED（D104，2026-08-18）**——后端 582/0/0（563+19）、前端 66f/602t（577+25）四连全绿，Flyway 零迁移；清单 M01-F01-04 🟦→✅，I31 关闭；方向归档 `product/department-query-filtering/passed/`
 - user-org-association-query（I32/I34/I35/I36 剩余子集）**COMPLETED（D101，2026-08-18）**——人员关联、组合查询、双租户/回滚、超管保护均闭合，阶段三同步完成；PG运行期与进程快照为非阻塞环境待办。验收与同步回执位于 `product/user-org-association-query/receipts/`。
 - admin-role-governance（P24/I49）**COMPLETED（D97，2026-08-18）**——功能级与阶段三均完成，P24/I49 已核销关闭。
-- 基线：后端 582 tests / 前端 66f/602t 四连全绿；清单 ✅16/🟦33/⬜41 共 90 行；Flyway 最高 V32，H2 新库/升级链 10 tests；已完成功能 22 个
+- 基线：后端 584 tests / 前端 69f/628t 四连全绿；清单 ✅21/🟦28/⬜41 共 90 行；Flyway 最高 V33，H2 全链 33 迁移；已完成功能 23 个
 - 执行约束：本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行，禁并行编译
 
-最新功能归档：product/department-query-filtering/passed/；最终复验：product/department-query-filtering/receipts/planning-final-review-d104.md。
+当前待办：规划层对 agent-model-management-frontend 执行层闭环按 11 项验收标准最终验收（回执 `product/agent-model-management-frontend/receipts/`）；最新功能归档：product/department-query-filtering/passed/。
 ```

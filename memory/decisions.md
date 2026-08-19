@@ -1,10 +1,11 @@
 # 活跃设计决策
 
-> 最后更新：2026-08-18
+> 最后更新：2026-08-19
 > **本文件=活跃决策摘要（D85 铁律下为 memory 摘要口径）**：决策完整权威链=knowledge/decisions.md（D1-D46 详情）→ 本文件（D42-D83 活跃）→ git 历史 / `product/*/passed/` / `receipts/` 归档（D47-D82 完整内容，D84 裁定不物理补录；knowledge/decisions.md 顶部注记指向链已委派执行层）。仅保留最近 10 条活跃决策；D49-D52/D54/D55/D56/D58/D60 已压缩移出（footer 说明）。
 
 | # | 日期 | 决策 | 状态 |
 |---|------|------|------|
+| D105 | 2026-08-19 | 下一功能选择 **agent-model-management-frontend（P5 / M07-F01-01～05）** 并下发。候选池虽将 M01/M02 剩余关联与权限入口列在首位，但该项仍包含用户组绑定及多类权限配置入口，边界与关系模型需要进一步收敛；P5 已有完整后端 CRUD、参数动态生效、AES-GCM 密钥、多 Key 轮询和连通性测试，只缺前端管理闭环，能以较小契约风险把五项已有能力一次转化为用户可操作价值。方向裁定：补列表/表单/删除启停/脱敏密钥/多 Key 状态/连通性/权限与生产可达性；不造加载卸载 API，不纳 Prompt、日志、调试、RAG/对话；后端业务预期零改动，仅必要时允许最小菜单权限 seed。方向：`product/agent-model-management-frontend/ready/direction-agent-model-management-frontend.md` | Active |
 | D104 | 2026-08-18 | department-query-filtering D103 补充同步最终复验：**PASSED / COMPLETED**。D103 唯一失败项已闭合：`memory/handoff.md` 后续候选、新会话提示、当前基线和下一动作完成全文修正；I31/I32/I34/I35 的旧当前口径及“待阶段三确认/待更新”占位零命中，563/577、551/576 等仅保留为明确历史。沿用 D103 已通过的业务与测试 8项：后端582/0/0/0、前端66f/602t四连、零Flyway、2G串行。I31正式关闭，M01-F01-04确认为✅，清单✅16/🟦33/⬜41，已完成功能22；方向归档 `product/department-query-filtering/passed/`。复验：`receipts/planning-final-review-d104.md` | Active |
 | D103 | 2026-08-18 | department-query-filtering 首轮最终验收：**FAILED（仅阶段三终态同步）**。业务与测试 8/9 项通过：名称/状态组合筛选、命中+必要祖先、非法状态400、双租户/逻辑删除/受限通道、前端交互与Mock、零Flyway、后端582/0/0/0、前端66f/602t四连、2G串行证据均合格。验收标准9失败：`memory/handoff.md` 顶部已更新D102/582/602/I31关闭，但后续候选仍写I31待评估及I32/I34/I35/I36处理中，新会话提示仍保留D101、563/577、清单与完成功能数待确认，构成D85禁止的顶部新中下部旧。业务代码和测试无需重做；仅退回执行层全文修正终态同步并提交补充回执。审查：`product/department-query-filtering/receipts/planning-review-d103.md` | Active |
 | D102 | 2026-08-18 | 下一功能选择 **department-query-filtering（I31 / M01-F01-04）** 并下发。优先于 M03/M05 单点删除过滤、M07 补全和全新 IoT/OpenAPI 骨架，原因：D101 已完成用户组织关联与组合查询，部门管理仍只能加载全量树，I31 是当前风险/价值排序中尚未关闭的首项；它直接补齐同一组织管理主链，能复用既有部门树、状态契约与隔离基线，同时预期零迁移、边界小、回归风险可控。方向裁定：名称+状态可组合筛选；结果为直接命中节点+必要祖先；空结果不回退全量；保持租户、逻辑删除、可见范围及 D101 零回归。方向：`product/department-query-filtering/ready/direction-department-query-filtering.md` | Active |

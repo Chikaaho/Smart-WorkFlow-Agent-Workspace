@@ -15,15 +15,15 @@
 |------|------|
 | 后端框架 | Spring Boot 3.4.4 + Java 21，模块化单体，四层架构就位 |
 | 前端框架 | Vue 3.5 + TypeScript 6.0 + Vite 8，严格分层 SPA，自有架构（不继承 vben） |
-| 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，V1–V32；H2 全新库与 V31→V32 升级链 migrate+validate 已通过，PostgreSQL 运行期验证受当前环境无 PG/Docker 阻塞（2026-08-18） |
+| 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，V1–V33；H2 新库全链 33 迁移与 V32→V33 升级链 migrate+validate 已通过，PG 真实库（127.0.0.1）临时 schema 验证 V33 幂等执行通过（2026-08-19）；PG 侧全链直跑仍受既有 V13 方言缺陷阻断（I52，非本轮引入） |
 | 核心路径 | Walking Skeleton：登录 → 表单 → 审批 → 通知 ✅ 四环全部闭合 |
-| 功能清单 | 10 模块，55 功能，90 明细；D102 终态按实际代码闭环为 **✅16/🟦33/⬜41**（`Smart-WorkFlow/功能清单.md` 权威清单；M01-F01-04 由 🟦→✅，I31 关闭；I36 用户普通角色子集不扩大整行）。 |
-| 测试基线 | department-query-filtering 当前后端全量 **582 tests / 0 failures / 0 errors / 0 skipped（BUILD SUCCESS，31/31 模块）**；前端 **66 spec files / 602 tests / 0 failures**，typecheck/lint/test/build 四连退出码均为 0，均按 2G 约束串行执行、每次执行前保留互斥检查证据。 |
+| 功能清单 | 10 模块，55 功能，90 明细；2026-08-19 终态按实际代码闭环为 **✅21/🟦28/⬜41**（`Smart-WorkFlow/功能清单.md` 权威清单；M07-F01-01～05 五行 🟦→✅，P5 核销、I45 的 M07-F01 前端缺口关闭）。 |
+| 测试基线 | agent-model-management-frontend 当前后端全量 **584 tests / 0 failures / 0 errors / 0 skipped（BUILD SUCCESS）**；前端 **69 spec files / 628 tests / 0 failures**，typecheck/lint/test/build 四连退出码均为 0，均按 2G 约束串行执行、每次执行前保留互斥检查证据。 |
 
-### 最近完成（D104，2026-08-18）
+### 最近完成（2026-08-19，agent-model-management-frontend 执行层闭环）
 
-`department-query-filtering`（M01-F01-04 / I31）已由 D103 复验通过、D104 规划层最终验收 **COMPLETED**：后端 582/0/0、前端 66f/602t、Flyway 零迁移；D103 仅终态同步 FAILED 已由执行层全文修正并复验通过。方向归档 `product/department-query-filtering/passed/`，最终复验 `receipts/planning-final-review-d104.md`。前次：`user-org-association-query` 已由 D101 规划层验收 **PASSED**，阶段三同步完成并标记 `COMPLETED`。环境待办保留：PostgreSQL 运行期 migrate+validate、系统恢复后互斥快照。
-| 前次验证 | 2026-08-17 bpm-h2-v8-compat 闭环（P10/I47 后端修复轮）：后端 `MAVEN_OPTS="-Xmx2g" mvn test` BUILD SUCCESS 31/31 模块，**543 tests / 0 failures / 0 errors**（527 基线 +16；surefire 时间窗 97 个 XML 聚合，无 flaky）；**Flyway 全链 H2 冒烟口径 28 → 30**——永久真全链测试 `FlywayFullChainH2Test`（sw-bootstrap）7 目录（root/bpm/notify/form/storage/job/agent）migrate + validate 通过，bpm V8/V14 纳入，不再有排除口径；h2/V8 partial index → 生成列 `active_key` + 唯一索引等价实现（pg/V8、V13、V14 零改动）。此前 2026-08-17 sysrole-v5-column-alignment 闭环（P13/I26，已 PASSED 归档）：后端 527/0/0 持平，SysRole 实体与全部触达 `sys_role` 的测试 DDL 已对齐 V5 链尾 `built_in`/`remark`，MP 生成 SQL 原文证据闭合。此前 2026-08-17 status-semantics-alignment 闭环：前端四连全绿 typecheck ✅、lint ✅、test **66 files / 576 tests** ✅（569 → +7）、build ✅；全部退出码 0。构建仅出现已登记的 `@vueuse/core INVALID_ANNOTATION` 第三方警告，不影响退出码或产物。后端零修改、未构建、未测试。此前 2026-08-16 bpm-plugin-architecture 闭环：后端 527/0/0、前端 66f/569t、Flyway 零迁移、清单 ✅12/🟦37/⬜41。 |
+`agent-model-management-frontend`（P5 / M07-F01-01～05）已由执行层完成闭环，回执提交至 `product/agent-model-management-frontend/receipts/`，待规划层最终验收：后端零 Java 业务改动，新增 V33 菜单/按钮权限 seed（H2+PG 双方言：菜单 id=209「大模型管理」permission=`agent:model:view`、按钮 id=210=`agent:model:manage`、id=211=`agent:model:test`，不 seed sys_role_menu 沿用 V6/V26 超管旁路决策；提交 `d4d7dc3`）；前端契约/API/Mock/菜单/页面全闭环（提交 `e26e5f0`）。后端 **584/0/0**（基线 582）、H2 全链 33 迁移 + V32→V33 升级链通过、PG 真实库临时 schema V33 幂等执行通过；前端 **69 files / 628 tests / 0 failures** 四连全绿。清单 M07-F01-01～05 五行 🟦→✅（✅21/🟦28/⬜41），P5 核销，I45 的 M07-F01 前端缺口关闭。遗留（非本轮引入）：既有 PG V13:58 2BP01 缺陷导致 PG 侧全链 V1→V33 无法在真实库直跑（H2 全链不受影响），已登记 I52，建议后续 V34 修复迁移。前次：`department-query-filtering` 已由 D103 复验通过、D104 规划层最终验收 **COMPLETED**：后端 582/0/0、前端 66f/602t、Flyway 零迁移；D103 仅终态同步 FAILED 已由执行层全文修正并复验通过。方向归档 `product/department-query-filtering/passed/`，最终复验 `receipts/planning-final-review-d104.md`。前次：`user-org-association-query` 已由 D101 规划层验收 **PASSED**，阶段三同步完成并标记 `COMPLETED`。环境待办保留：PG 侧全链直跑（受 I52 阻断，待规划层决策）、系统恢复后互斥快照。
+| 前次验证 | 2026-08-18 department-query-filtering 闭环（D102/D103/D104，已 PASSED 归档）：后端 **582 tests / 0 failures / 0 errors**（563 基线 +19）、前端 66f/602t 四连全绿、Flyway 零迁移、清单 M01-F01-04 🟦→✅（✅16/🟦33/⬜41）。此前 2026-08-18 admin-role-governance 闭环（P24/I49，D96 PASSED）：V31 H2/PG 双份、后端 551/0/0、前端 66f/576t、H2 全链 31 条 migrate+validate。此前 2026-08-17 bpm-h2-v8-compat 闭环（P10/I47 后端修复轮）：后端 `MAVEN_OPTS="-Xmx2g" mvn test` BUILD SUCCESS 31/31 模块，**543 tests / 0 failures / 0 errors**（527 基线 +16；surefire 时间窗 97 个 XML 聚合，无 flaky）；**Flyway 全链 H2 冒烟口径 28 → 30**——永久真全链测试 `FlywayFullChainH2Test`（sw-bootstrap）7 目录（root/bpm/notify/form/storage/job/agent）migrate + validate 通过，bpm V8/V14 纳入，不再有排除口径；h2/V8 partial index → 生成列 `active_key` + 唯一索引等价实现（pg/V8、V13、V14 零改动）。此前 2026-08-17 sysrole-v5-column-alignment 闭环（P13/I26，已 PASSED 归档）：后端 527/0/0 持平，SysRole 实体与全部触达 `sys_role` 的测试 DDL 已对齐 V5 链尾 `built_in`/`remark`，MP 生成 SQL 原文证据闭合。此前 2026-08-17 status-semantics-alignment 闭环：前端四连全绿 typecheck ✅、lint ✅、test **66 files / 576 tests** ✅（569 → +7）、build ✅；全部退出码 0。构建仅出现已登记的 `@vueuse/core INVALID_ANNOTATION` 第三方警告，不影响退出码或产物。后端零修改、未构建、未测试。此前 2026-08-16 bpm-plugin-architecture 闭环：后端 527/0/0、前端 66f/569t、Flyway 零迁移、清单 ✅12/🟦37/⬜41。 |
 
 ---
 
@@ -43,7 +43,7 @@
 | sw-basic-job | ✅ 完整 | CONFIRMED | B1–B4 + F1–F3 全部通过：模块拆分/Quartz 集成/Controller+Facade/测试（全量后端 203 tests，CONFIRMED 2026-07-22 复验，原「406」SUPERSEDED）+ 前端 Types/API/视图/Mock/路由闭环（54 files/471 tests） |
 | sw-basic-iot | ⬜ 骨架 | CONFIRMED | AutoConfiguration 占位 |
 | sw-basic-knowledge | ⬜ 骨架 | CONFIRMED | AutoConfiguration 占位 |
-| sw-basic-agent | ✅ 完整 | CONFIRMED | 模型管理/编排/工具沙箱/会话/图定义/图执行全链（178 @Test，2026-08-16 D83 静态复核）；前端 GraphDefList + GraphDesigner 已消费 Vue Flow adapter |
+| sw-basic-agent | ✅ 完整 | CONFIRMED | 模型管理/编排/工具沙箱/会话/图定义/图执行全链（178 @Test，2026-08-16 D83 静态复核）；前端 GraphDefList + GraphDesigner 已消费 Vue Flow adapter；ModelList 大模型管理页 2026-08-19 闭环（V33 菜单 seed 生产可达） |
 | sw-biz-openapi | ⬜ 骨架 | CONFIRMED | 仅 package-info |
 
 ### 2.2 前端
@@ -63,7 +63,7 @@
 | 工作流 | ✅ 已联通 | CONFIRMED | TodoList 待办列表 + ProcessDefList 流程定义列表，mock 验收通过，后端 REST 端点直连 |
 | 定时任务 | ✅ 完整 | CONFIRMED | JobList + JobLog 视图、合约、API、Mock、路由全部闭环；F1+F2+F3 全部通过验收 |
 | IoT | 🔲 占位 | CONFIRMED | 路由/菜单已注册，无业务页面 |
-| Agent | 🔲 占位 | CONFIRMED | 路由/菜单已注册，无业务页面 |
+| Agent | ✅ 业务就位 | CONFIRMED | 模型管理页（ModelList，2026-08-19 闭环 + V33 菜单 seed 生产可达）+ 图定义列表/图设计器（GraphDefList/GraphDesigner，已消费 Vue Flow adapter）；OpenAPI 等仍占位 |
 | OpenAPI | 🔲 占位 | CONFIRMED | 路由/菜单已注册，无业务页面 |
 | BPMN 集成 | 🟦 查看器已实现 + 已消费 | CONFIRMED | `adapters/bpmn/` 查看器防腐层已完成（[[bpmn-adapter]] Steps 0-3 COMPLETED）：`mountBpmnViewer`/`highlight`/`fitViewport`/`destroy` + 事件回调。两个消费方已就绪：ProcessDefList「查看流程图」+ ProcessInstanceList「流程图高亮+流转时间线」（[[process-monitoring]] COMPLETED）。设计器（Modeler）能力明确不在范围内 |
 | Vue Flow | ✅ adapter 就绪 + 已消费 | CONFIRMED | @vue-flow/core 1.48 已安装，`adapters/flow-graph/` 防腐层已实现（mount/export/destroy + 事件回调），**首个消费方已就位：M07 GraphDesigner.vue 经 graphAdapter.ts 转换层调用 mountFlowGraph**（2026-08-16 D83 复核，非零消费方）。场景为 AI 调度图（M07），非表单设计器（SUPERSEDED：此前「表单设计器可视化集成」标签为知识库漂移，2026-07-25 [[vue-flow-adapter]] 完成更正） |
@@ -102,16 +102,19 @@
 - 安全不变量常驻回归测试（sanitize 滤脚本、safeEval 隔离、token 不进 storage、redirect 同源、菜单单源、导入边界）
 - 定时任务管理前端（JobList CRUD + 暂停/恢复/触发 + JobLog 只读日志 + 详情弹窗，StandardListTemplate 页型 B）
 - 文件管理前端（StorageList 上传/列表/下载/删除，StandardListTemplate 页型 B，formatFileSize 工具函数）
+- 大模型管理前端（ModelList 分页/名称查询/多 Key 状态 + 编辑表单基础参数与多 Key 配置 + API Key 脱敏/空值保留旧密钥 + 启停 + 连通性测试，V33 菜单生产可达；提交 `e26e5f0`，2026-08-19）
 
 ---
 
 ## 4. 进行中的功能
 
+**（无进行中业务功能）**：agent-model-management-frontend（P5 / M07-F01）已由执行层完成前后端闭环（2026-08-19），完成回执与测试回执已提交至 `product/agent-model-management-frontend/receipts/`，待规划层按方向 11 项验收标准最终验收（验收通过后核销 P5 终态）。
+
 **department-query-filtering（M01-F01-04 / I31）已于 2026-08-18 完成前后端闭环并经 D103 复验 / D104 最终验收 COMPLETED**：后端 `GET /system/dept/tree` 扩展 name/status 可选条件 + 祖先补全树形结果（非法状态显式 400 不退化全量，无条件调用零变化）；前端 DeptList 名称/状态筛选、查询/重置、筛选空态，Mock 与真实接口语义对齐。后端 **582/0/0**（563+19）、前端 **66f/602t**（577+25）四连全绿，Flyway 零迁移。D103 仅终态同步缺口（memory/handoff.md 中下部旧口径）已全文修正复验通过。方向归档：`product/department-query-filtering/passed/`；最终复验：`receipts/planning-final-review-d104.md`。
 
 **admin-role-governance（P24/I49）已于 D96 规划层最终验收 PASSED（2026-08-18）**：D94/D95 修正闭合 V31 冲突显式失败、角色/菜单/绑定行为、普通 admin 允许/撤权拒绝与 superadmin 旁路、job/storage 请求级 200/403/401、前后端编译互斥及清单零变化核对。后端全量 551/0/0，前端 66 spec/576 tests 四连全绿，Flyway V31/H2 全链 31 条 migrate+validate 通过；主方向已归档至 `product/admin-role-governance/passed/`，P24/I49 关闭条件满足。最终证据见 `product/admin-role-governance/receipts/planning-final-review-d96.md` 与阶段三回执。
 
-> 最后更新：2026-08-18
+> 最后更新：2026-08-19
 
 **（无进行中业务功能）**：user-org-association-query 已于 2026-08-18 规划层最终验收 **PASSED**（D101）并完成阶段三同步；主方向归档至 `product/user-org-association-query/passed/`。
 
@@ -129,7 +132,7 @@
 
 ## 5. 已完成的功能
 
-> 最后更新：2026-08-18（22 个功能；本轮补录 D96/D101 两行历史欠账并新增 D102 行，D85 全量同步口径延续）
+> 最后更新：2026-08-19（23 个功能；本轮新增 agent-model-management-frontend 行，D85 全量同步口径延续）
 
 | 功能编号 | 功能名称 | 最终状态 | 完成日期 | 说明 |
 |----------|----------|:--------:|:--------:|------|
@@ -155,6 +158,7 @@
 | admin-role-governance | P24/I49 双角色治理（不可变内置 superadmin + 可配置普通 admin + 菜单/按钮权限与最小绑定闭环） | **COMPLETED** ✅ | 2026-08-18 | 方向 `product/admin-role-governance/passed/`（D93-D97 规划层最终验收 **PASSED** D96）：V31 h2/pg 双份迁移（冲突显式失败）+ 普通角色菜单/按钮权限 + 最小用户角色绑定读写/清空回填 + job/storage 请求级 200/403/401 + 登录/refresh 拦截；后端 551/0/0、前端 66f/576t 四连全绿、H2 全链 31 条 migrate+validate；清单无整行变更（I36 仅关闭普通角色绑定子集，I49 关闭）。 |
 | user-org-association-query | I32/I34/I35/I36 普通角色子集：人员组织关联与组合查询闭环（V32 + 统一事务 + 双租户/回滚/超管保护） | **COMPLETED** ✅ | 2026-08-18 | 方向 `product/user-org-association-query/passed/`（D101 规划层最终验收 **PASSED**，阶段三同步 COMPLETED）：`sys_user_post` V32 H2/PG 双份 + `createWithAssociations`/`updateWithAssociations` 统一事务（故障注入证明整体回滚）+ 关键字/状态/部门含下级/岗位/角色组合查询（EXISTS/DISTINCT）+ 普通入口禁绑 superadmin + 前端部门选择/岗位/角色多选/清空回填/Mock；后端 **563/0/0/0**、前端 66f/577t 四连全绿、H2 新库 V1→V32 与 V31→V32 migrate+validate 10 tests。PG 运行期与互斥快照为非阻塞环境待办。清单 I32/I34/I35 三行 🟦→✅，终态 ✅15/🟦34/⬜41。 |
 | department-query-filtering | M01-F01-04 / I31 部门名称/状态条件查询闭环（树形祖先补全 + 前端筛选） | **COMPLETED** ✅ | 2026-08-18 | 执行层闭环 + D103 复验 + D104 最终验收 **PASSED**（方向 `product/department-query-filtering/passed/`，最终复验 `receipts/planning-final-review-d104.md`）：`GET /system/dept/tree` 扩展 name/status 可选条件（非法状态显式 400 不退化全量；无参零变化）+ 命中集合与授权范围祖先补全（同一查询通道，租户/逻辑删除/可见范围不越界）+ 去重 sort+id 稳定排序；前端 DeptList 名称/状态下拉/查询/重置/Enter/筛选空态，Mock 与真实接口语义对齐（含同 sort 按 id 升序）。后端 **582/0/0**（563+19：Controller +2、集成 +17，含两租户/已删除/受限范围隔离边界专项）、前端 **66f/602t**（577+25）四连全绿；Flyway 零迁移。清单 M01-F01-04 🟦→✅，终态 ✅16/🟦33/⬜41，I31 关闭。D103 仅终态同步 FAILED 已由 `receipts/post-d103-sync-correction.md` 全文修正复验通过。 |
+| agent-model-management-frontend | P5 / M07-F01-01～05 大模型管理前端闭环（模型接入/参数配置/密钥管理/连通性测试 + 生产可达性） | **COMPLETED** ✅ | 2026-08-19 | 执行层闭环（回执 `product/agent-model-management-frontend/receipts/`，待规划层最终验收）：**后端零 Java 业务改动**，新增 V33 菜单/按钮权限 seed（H2+PG 双方言逐字节一致：菜单 id=209「大模型管理」permission=`agent:model:view`、按钮 id=210=`agent:model:manage`、id=211=`agent:model:test`，仿 V31 按钮行先例 + INSERT SELECT WHERE NOT EXISTS 幂等；**不 seed sys_role_menu** 沿用 V6/V26 超管旁路决策；提交 `d4d7dc3`）。后端 **584/0/0**（582+2：FlywayFullChainH2Test 11→12）、H2 新库全链 33 迁移 + V32→V33 升级链通过、PG 真实库（127.0.0.1）临时 schema V33 幂等执行通过（public 零改动）。前端（提交 `e26e5f0`）：契约/API/Mock/菜单/路由/页面全闭环——ModelList 分页+名称查询+协议/模型/启停/多 Key 状态展示、编辑表单（基础参数+多 Key 分组/排序/额度冷却）、API Key 脱敏与空值保留旧密钥、启停、连通性测试（结果含成功/失败/消息/耗时）、`lockedUntil` 只读、GraphDesigner 模型下拉兼容回归；**69 files / 628 tests / 0 failures**（66f/602t → +3f/+26t）2G 上限四连全绿。清单 M07-F01-01～05 五行 🟦→✅，终态 ✅21/🟦28/⬜41，P5 核销、I45 的 M07-F01 前端缺口关闭。遗留（非本轮引入）：既有 PG V13:58 2BP01 缺陷阻断 PG 侧全链 V1→V33 直跑，已登记 I52，建议后续 V34 修复迁移。 |
 
 ---
 
@@ -196,7 +200,7 @@
 
 ## 8. 下一优先事项
 
-全部 **22** 个功能已完成闭环：
+全部 **23** 个功能已完成闭环：
 
 1. ✅ Walking Skeleton（登录→表单→审批→通知）
 2. ✅ sys-mgmt-crud（系统管理核心 CRUD）
@@ -219,16 +223,17 @@
 19. ✅ bpm-h2-v8-compat（P10/I47 BPM H2 V8 迁移链兼容修复：生成列等价实现 + 永久全链测试 30 条）（2026-08-17，D87/D88 PASSED）
 20. ✅ admin-role-governance（P24/I49 双角色治理：superadmin 不可变 + 普通 admin + 菜单/按钮权限与最小绑定）（2026-08-18，D96 PASSED）
 21. ✅ user-org-association-query（I32/I34/I35/I36 普通角色子集：人员组织关联与组合查询）（2026-08-18，D101 PASSED，阶段三同步 COMPLETED）
-22. ✅ department-query-filtering（M01-F01-04/I31 部门名称/状态条件查询闭环：树形祖先补全 + 前端筛选）（2026-08-18，D103 复验 + D104 最终验收 PASSED）← **最新完成**
+22. ✅ department-query-filtering（M01-F01-04/I31 部门名称/状态条件查询闭环：树形祖先补全 + 前端筛选）（2026-08-18，D103 复验 + D104 最终验收 PASSED）
+23. ✅ agent-model-management-frontend（P5/M07-F01-01～05 大模型管理前端闭环：模型接入/参数配置/密钥管理/多 Key/连通性测试 + V33 生产可达性 seed）（2026-08-19，执行层闭环，待规划层最终验收）← **最新完成**
 
-后续候选（2026-08-18 D102 更新，按风险/价值排序参考）：
+后续候选（2026-08-19 D105 轮后更新，按风险/价值排序参考）：
 
 1. **M01/M02 其余虚高要素补齐（关联/筛选）** — I36 用户组绑定/I40 待修复项（按钮权限配置入口等；部门条件筛选 I31 已由 department-query-filtering 关闭）
-2. **M07 补全** — F01 前端管理页、F02-02 Prompt 配置、F02-04 运行日志页+单步调试、F04-02 Token 统计（缺口逐一已由 D83 回执确认）
+2. **M07 补全** — F02-02 Prompt 配置、F02-04 运行日志页+单步调试、F04-02 Token 统计（缺口逐一已由 D83 回执确认；F01 前端管理页已由 agent-model-management-frontend 闭环）
 3. **M07-F03/F04 新功能** — 助手配置/知识库 RAG/对话窗口 SSE（均零代码）
 4. **IoT / OpenAPI 模块落地** — 仅骨架（D83 复核确认 M08/M09 全 ⬜ 无虚低）
 5. **M04-F06-01 后续批次（耗时分析 + 流程干预）** — process-monitoring 首批已完成，剩余 2/4 子能力延后
-6. **小项池** — 数据权限遗留（部门档 deleted 过滤/job 非分页入口/PG 联调）、停用即时生效（JWT 过滤器层）（I51 已于 2026-08-17 status-semantics-alignment 修复关闭；I26/I47 已于 2026-08-17 分别由 sysrole-v5-column-alignment 与 bpm-h2-v8-compat 修复核销；I49 已由 admin-role-governance D96 关闭）
+6. **小项池** — 数据权限遗留（部门档 deleted 过滤/job 非分页入口/PG 联调）、停用即时生效（JWT 过滤器层）、**PG 侧全链直跑（V13:58 2BP01 缺陷，I52 已登记，建议 V34 修复迁移）**（I51 已于 2026-08-17 status-semantics-alignment 修复关闭；I26/I47 已于 2026-08-17 分别由 sysrole-v5-column-alignment 与 bpm-h2-v8-compat 修复核销；I49 已由 admin-role-governance D96 关闭）
 
 ---
 
@@ -236,12 +241,12 @@
 
 | 项目 | 校验命令 | 当前状态 |
 |------|----------|----------|
-| 后端 | `mvn -q compile && mvn -q test` | **CONFIRMED**（2026-08-18 department-query-filtering D102）：`MAVEN_OPTS="-Xmx2g" mvn test` 全量 BUILD SUCCESS 31/31、**582 tests / 0 failures / 0 errors / 0 skipped**（563 基线 +19：DeptControllerTest +2、SysDeptQueryIntegrationTest +17）。演进：465（2026-07-28 process-monitoring Step 2 独立验收，surefire XML 跨模块合计）→ 426（M07 阶段）→ 435（2026-08-13）→ 521（2026-08-15）→ 527（2026-08-16）→ 543（2026-08-17）→ 551（2026-08-18 admin-role-governance D96）→ **563（2026-08-18 user-org-association-query D101）→ 582（2026-08-18 department-query-filtering D102）**。**Flyway 冒烟口径**：28（历史 6 目录链）→ **30（2026-08-17 起 7 目录全链）**；admin-role-governance root H2 全链为 **31 条迁移**；本功能零迁移。 |
-| 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | **CONFIRMED**（2026-08-18 department-query-filtering D102，`NODE_OPTIONS="--max-old-space-size=2048"`）：四连退出码全 0，Vitest **66 files / 602 tests** 全通过（576→577 D101→**602**：D102 新增 25 测试——api/dept +6、DeptList +10、mock index +9），build 成功。 |
+| 后端 | `mvn -q compile && mvn -q test` | **CONFIRMED**（2026-08-19 agent-model-management-frontend）：`MAVEN_OPTS="-Xmx2g" mvn test` 全量 BUILD SUCCESS、**584 tests / 0 failures / 0 errors / 0 skipped**（582 基线 +2：FlywayFullChainH2Test 11→12，含 V32→V33 升级链与 209/210/211 产物断言；PG 侧真实验证走一次性临时 JUnit `PgV33VerificationTest`，验证后已删除）。演进：465（2026-07-28 process-monitoring Step 2 独立验收，surefire XML 跨模块合计）→ 426（M07 阶段）→ 435（2026-08-13）→ 521（2026-08-15）→ 527（2026-08-16）→ 543（2026-08-17）→ 551（2026-08-18 admin-role-governance D96）→ **563（2026-08-18 user-org-association-query D101）→ 582（2026-08-18 department-query-filtering D102）→ 584（2026-08-19 agent-model-management-frontend）**。**Flyway 冒烟口径**：28（历史 6 目录链）→ **30（2026-08-17 起 7 目录全链）**；admin-role-governance root H2 全链为 **31 条迁移**；H2 全链现为 **33 条迁移**（agent-model-management-frontend V33）；PG 侧全链直跑受既有 V13:58 2BP01 缺陷阻断（I52）。 |
+| 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | **CONFIRMED**（2026-08-19 agent-model-management-frontend，`NODE_OPTIONS="--max-old-space-size=2048"`）：四连退出码全 0，Vitest **69 files / 628 tests** 全通过（66f/602t → **+3 files / +26 tests**：模型管理列表/表单/密钥/权限/连通性/Mock 专项），build 成功。 |
 
 ### 前端测试覆盖详情（参考快照，2026-07-15 基线 ~350 tests）
 
-> 以下为 Walking Skeleton 闭环时的详细覆盖分布。当前最新基线为 **66 files / 602 tests**（2026-08-18 department-query-filtering 四连全绿，运行口径；577 D101 → 602 = +25：api/dept +6、DeptList +10、mock index +9）。
+> 以下为 Walking Skeleton 闭环时的详细覆盖分布。当前最新基线为 **69 files / 628 tests**（2026-08-19 agent-model-management-frontend 四连全绿，运行口径；66f/602t → +3f/+26t：模型管理列表/表单/密钥/权限/连通性/Mock 专项）。
 
 | 测试文件 | 用例数 | 测试内容 |
 |----------|:-----:|----------|
