@@ -1,8 +1,13 @@
 # 会话交接
 
-> 最后更新：2026-08-19（pg-v13-migration-chain-repair D111 PASSED / COMPLETED）
+> 最后更新：2026-08-19（user-group-membership D117 PASSED + 阶段三同步 COMPLETED）
 
 ## 最新状态与最近完成
+
+**user-group-membership（P28 / I36 / M01-F04-01 基础子集）：COMPLETED（D117 PASSED + 阶段三同步，2026-08-19）✅**
+- 业务十一项验收全部通过；后端 **647/0/0/0**、前端 **71f/646t**、V34 双方言 34 条全链确认。
+- **I36 关闭、P28 核销、M01-F04-01 🟦 终态（✅21/🟦29/⬜40）、功能数 25**；主方向与阶段三方向均归档 `product/user-group-membership/passed/`，ready/ 已清空。
+- 审查链：`receipts/planning-final-review-d117.md` + `planning-stage3-review-d118.md` + `post-d118-closeout-fix.md` + `planning-stage3-review-d119.md` + `post-d119-current-state-fix.md`。
 
 **pg-v13-migration-chain-repair（I52）：COMPLETED（D110功能验收 + D111阶段三复验，2026-08-19）✅**
 - 修复 PG 侧 V13 第 7 项 2BP01：`DROP INDEX IF EXISTS sw_form_def_form_key_key;` → `ALTER TABLE sw_form_def DROP CONSTRAINT IF EXISTS sw_form_def_form_key_key;`（H2 侧 V13 零改动、不新增 V34）；根因=form/V7 inline UNIQUE 在 PG 创建约束背书隐式索引。
@@ -80,11 +85,7 @@
 - 全流程闭环：浏览器创建图→拖拽编辑节点/边（含循环回边/并行扇出汇合）→保存草稿→发布→输入文本执行测试→执行历史可查询（列表/详情/节点轨迹）
 - 详情见 `product/agent-model-orchestration/passed/step-{1..12}-*.md`（Step6 起）
 
-## 进行中
-
-**pg-v13-migration-chain-repair（I52）COMPLETED（D110 PASSED + 阶段三终态同步完成，2026-08-19）**：D109两项补证通过；PG新库33条、原V13 checksum审计与显式失败守卫、多平台17.5.0依赖解析、H2 11项、项目级600/0/0/0证据闭合；I52正式关闭。主方向与同步方向归档 `product/pg-v13-migration-chain-repair/passed/`。验收：`receipts/planning-final-review-d110.md`。
-
-最近完成：pg-v13-migration-chain-repair（D110）、agent-model-management-frontend（D107）与 department-query-filtering（D104）均为 `COMPLETED`。
+最近完成：user-group-membership（D117 + 阶段三同步）、pg-v13-migration-chain-repair（D110）、agent-model-management-frontend（D107）与 department-query-filtering（D104）均为 `COMPLETED`。
 
 已完成（最近）：department-query-filtering（I31 / M01-F01-04）`COMPLETED`（D104，2026-08-18）✅——业务与测试九项全部通过，D103终态同步缺口已修正，I31关闭、清单M01-F01-04为✅，归档 `product/department-query-filtering/passed/`。user-org-association-query（D101）与 admin-role-governance（D97）均保持 COMPLETED。
 
@@ -94,16 +95,16 @@
 
 ## 当前基线
 
-- 后端：项目级 **600 tests**（运行口径，CONFIRMED 2026-08-19 pg-v13-migration-chain-repair D110，0 failures / 0 errors / 0 skipped；599 → +1 checksum守卫）
-- 前端：**69 spec files / 628 tests**，四连全绿（CONFIRMED 2026-08-19 agent-model-management-frontend；正式 2G 上限下 typecheck/lint/test/build 全部退出 0；66f/602t → +3f/+26t）
-- 功能清单文件当前为 **✅21 / 🟦28 / ⬜41，共 90 行**（M07-F01-01～05 五行上调已由 D107 确认；无关行零漂移）
-- Flyway：root 路径 V33 已占用；**PG 17.5 与 H2 新库全链均为 33 条 migrate+validate**，H2 V32→V33 通过；PG 侧修复（V13 第 7 项 DROP CONSTRAINT）+ 永久 PG 测试 9 用例 + BOM 统一全平台；**I52 已关闭（D110 COMPLETED）**
-- 已完成功能：24 个
+- 后端：项目级 **647 tests**（D115确认，Surefire报告聚合与模块小计双口径，0 failures / 0 errors / 0 skipped；1292重复累计已弃用）
+- 前端：**71 spec files / 646 tests**（D114/D115确认；正式2G上限下typecheck/lint/test/build全部退出0）
+- 功能清单终态 **✅21 / 🟦29 / ⬜40，共90行**（M01-F04-01 🟦 终态确认，D117/D118）
+- Flyway：root路径 **V34已占用**；PG 17.5与H2新库全链均为**34条**migrate+validate，升级链通过。
+- 已完成功能：**25 个**（user-group-membership 为第 25 个，D117 PASSED + 阶段三同步 COMPLETED）
 - 执行约束：**本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行**（先后端后前端），禁并行编译
 
 ## 下一动作
 
-**下一动作**：pg-v13-migration-chain-repair 已由D111确认 `COMPLETED`，当前无进行中业务功能；由规划层另行从候选池选择下一需求方向。
+**下一动作**：无进行中方向；user-group-membership 已由 D120 最终确认 COMPLETED。后续由规划层从候选池选定下一需求并另行下发方向。
 
 **探索回执已回收并核销（2026-08-16，D83 裁定 + D84 落库核销）**：
 - 清单 90/90 零不一致（I1 无第三次复发）；基线全部核实（527/66f569t——**569 为运行口径，静态 561**/V30+28/16 功能）；memory 自洽。
@@ -116,7 +117,7 @@
 - **当前规划裁定**（2026-08-18）：user-org-association-query D101 PASSED，阶段三同步 COMPLETED；D93-D97 双角色治理作为前置基线保持有效。
 
 后续候选（按风险/价值排序参考，2026-08-19 D105 轮后更新）：
-1. M01/M02 其余虚高要素补齐：I36 用户组绑定、M02-F02/F03 权限配置入口（I31 部门筛选已由 department-query-filtering 关闭；I32/I34/I35 已由 D101 关闭；I33/I37/I43/I44 已修复）
+1. M01/M02其余虚高要素补齐：user-group-membership 已 COMPLETED（D117 PASSED + 阶段三同步，第 25 个功能）；M02-F02/F03继续作为后续并列候选
 2. M07 后续补全（P5 之外）：F02-02 Prompt 配置、F02-04 运行日志页+单步调试、F04-02 Token 统计（F01 前端管理页已由 agent-model-management-frontend 闭环）
 3. M07-F03/F04 新功能：助手配置/知识库RAG（选型未定）/对话窗口SSE（均零代码）
 4. IoT / OpenAPI 模块落地（仅骨架）
@@ -133,8 +134,8 @@
 - department-query-filtering（M01-F01-04/I31 部门条件查询闭环）**COMPLETED（D104，2026-08-18）**——后端 582/0/0（563+19）、前端 66f/602t（577+25）四连全绿，Flyway 零迁移；清单 M01-F01-04 🟦→✅，I31 关闭；方向归档 `product/department-query-filtering/passed/`
 - user-org-association-query（I32/I34/I35/I36 剩余子集）**COMPLETED（D101，2026-08-18）**——人员关联、组合查询、双租户/回滚、超管保护均闭合，阶段三同步完成；PG运行期与进程快照为非阻塞环境待办。验收与同步回执位于 `product/user-org-association-query/receipts/`。
 - admin-role-governance（P24/I49）**COMPLETED（D97，2026-08-18）**——功能级与阶段三均完成，P24/I49 已核销关闭。
-- 基线：后端 600 tests / 前端 69f/628t 四连全绿；清单文件 ✅21/🟦28/⬜41 共 90 行；Flyway 最高 V33，PG/H2 全链各 33 条 migrate+validate；已完成功能 24 个
+- 基线：规划层确认后端 **647/0/0/0**、前端 **71f/646t**、Flyway **V34/双方言34条全链**；清单 **✅21/🟦29/⬜40**（M01-F04-01 🟦 终态确认）；已完成功能 **25 个**（user-group-membership 为第 25 个，COMPLETED）
 - 执行约束：本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行，禁并行编译
 
-当前待办：pg-v13-migration-chain-repair 已由D111确认闭环；当前无进行中业务功能，下一需求由规划层另行从候选池选择。
+当前待办：无（user-group-membership 已由 D120 最终确认 COMPLETED；下一需求尚未选定）。
 ```
