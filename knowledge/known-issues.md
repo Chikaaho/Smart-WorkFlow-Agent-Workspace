@@ -54,13 +54,14 @@
 | I42 | 2026-08-12 | M05-F01-03 消息查询虚高：清单标 ✅，实际无状态/关键字过滤 | 中 | 待修复 |
 | I43 | 2026-08-12 | M10-F03-01 定时任务虚高：清单标 ✅，实际功能完整但生产菜单不可达 | 中 | ✅ 已修复（2026-08-13 checklist-gap-hardening 第一批：Flyway V29 菜单 seed，任务管理/执行日志生产菜单可达） |
 | I44 | 2026-08-12 | M10-F06-01 文件存储虚高：清单标 ✅，实际功能完整但生产菜单不可达 | 中 | ✅ 已修复（2026-08-13 checklist-gap-hardening 第一批：Flyway V29 菜单 seed，文件管理生产菜单可达） |
-| I45 | 2026-08-12 | M07/M04/M05/M06/M09/M10 功能清单"虚低"15 条汇总（部分后端骨架未达清单完整度） | 低 | 待修复 |
+| I45 | 2026-08-12 | M07/M04/M05/M06/M09/M10 功能清单"虚低"15 条汇总（部分后端骨架未达清单完整度） | 低 | ◐ 部分关闭（2026-08-19 agent-model-management-frontend：M07-F01-01～05 前端缺口已闭环，五行 🟦→✅；其余 10 条缺口仍待排期） |
 | I46 | 2026-08-15 | 手写 SQL 通道无数据权限：动态宽表 JdbcTemplate 裸 SQL 与 bpm 外部数据源 SqlExecutor 绕过数据权限拦截器链，本轮明确不纳管（与 I10 同源） | 高 | 已知限制（明确不纳管，沿用 I10 红线：代码审查 + 测试兜底） |
 | I47 | 2026-08-16 | bpm/h2 迁移链 V8 含 PG 独有 partial index 语法（`WHERE active=true`），H2 不支持——全链 H2 Flyway 迁移从未可跑，模块测试均绕过 Flyway 直建 DDL（V30 冒烟 6 目录链仍排除 bpm） | 中 | ✅ 已修复（2026-08-17 bpm-h2-v8-compat：h2/V8 partial index → 生成列 active_key + 唯一索引等价实现，仅 h2/V8 改动；永久真全链测试 30 条迁移通过；项目级 543/0/0） |
 | I48 | 2026-08-16 | `flow-graph` adapter 契约无边点击事件、无命令式数据更新通道：M07 图设计器绕行方案可用但受限（若未来节点自定义渲染/直接点边编辑需求增多，需回规划层评估扩展 adapter 导出面） | 低 | 绕行方案已生效，扩展待评估 |
 | I49 | 2026-08-16 | V29 菜单 seed 未 seed sys_role_menu（超管旁路）：正式环境 job/storage 菜单仅超管可达，I43/I44「生产菜单可达」口径仅对超管成立 | 中 | ✅ 已关闭（P24/admin-role-governance，D96 PASSED；方向归档 `product/admin-role-governance/passed/`） |
 | I50 | 2026-08-16 | AuthController.login 状态校验位于密码匹配之后（L88→L92）：停用账号仍消耗一次 BCrypt+用户查询，时序/资源问题，无安全漏洞 | 低 | 待修复（D83 登记） |
 | I51 | 2026-08-16 | 前端 status 语义与后端相反（UserList/DeptList 正常=1/停用=0 vs 后端 0=正常 1=停用 2=锁定）：UI 新建用户无法登录、UI 停用不阻断登录，I33 修复在 UI 路径被抵消 | 高 | ✅ 已修复（2026-08-17 status-semantics-alignment：UserList/DeptList 按后端口径修正默认值/选择项/筛选/展示，新增 7 测试，前端 66f/576t 四连全绿，后端零修改） |
+| I52 | 2026-08-19 | PG 侧全链迁移无法直跑：`postgresql/V13__logical_delete_unique_constraints.sql:58` 对 inline UNIQUE 隐式索引 `sw_form_def_form_key_key` 执行 `DROP INDEX`，PG 报 2BP01（约束创建的索引须 DROP CONSTRAINT）——M07-F01 前端闭环 PG 验证时发现，非本轮引入 | 中 | 待规划层决策（建议后续 V34 修复迁移：`sw_form_def` 的 UNIQUE 约束改建于显式索引） |
 
 
 
@@ -542,6 +543,17 @@
 - **现状证据**：逐条差异与证据见审计回执 `search_fallback/feature-checklist-full-audit.md` 问题 1 差异表（M04/M05/M06/M07/M09/M10 各模块）。
 - **影响**：清单完成度被低估，可能低估已有后端资产；不改变"待开发"方向判断，风险低。
 - **建议**：不逐条展开；已知明确的缺口要素（如 M07-F02-04 单步调试未做、M07-F02-02 无 Prompt 配置字段、M07-F01 系列前端管理页缺失）是否投入修复，待规划层方向确认（见 Step5 方案「待确认问题」）。
+- **部分关闭记录（2026-08-19，agent-model-management-frontend）**：✅ **M07-F01-01～05 前端缺口已闭环**（P5 / D105 方向）——后端 V33 菜单/按钮权限 seed（菜单 id=209 `agent:model:view`、按钮 id=210 `agent:model:manage`、id=211 `agent:model:test`，不 seed sys_role_menu）+ 前端契约/API/Mock/菜单/页面全闭环（ModelList 分页/名称查询/多 Key 状态/脱敏密钥/编辑空 Key 保留/启停/连通性测试）；后端 584/0/0（582+2）、前端 69f/628t（66f/602t +3f/+26t）四连全绿；清单 M07-F01-01～05 五行 🟦→✅（终态 ✅21/🟦28/⬜41）；P5 核销。**其余 10 条缺口（M04-F01-02、M05-F01-01、M06-F04-01、M07-F02-02、M07-F02-04、M07-F03-02、M07-F04-02、M09-F06-01、M10-F01-01、M10-F08-01）仍待排期**，I45 汇总条目维持开放。
+
+### I52：PG 侧全链迁移无法直跑（V13:58 DROP INDEX 报 2BP01）
+
+- **发现日期**：2026-08-19（agent-model-management-frontend PG 真实库验证时发现）
+- **严重程度**：中
+- **可信度**：CONFIRMED（真实 PG 库执行现场核实）
+- **描述**：`db/migration/postgresql/V13__logical_delete_unique_constraints.sql:58` 对 inline UNIQUE 约束的隐式索引 `sw_form_def_form_key_key` 执行 `DROP INDEX`，PG 报 **2BP01**（`cannot drop index ... because constraint ... requires it`——约束创建的索引须 `DROP CONSTRAINT` 而非 DROP INDEX）。导致 **PG 侧全链 V1→V33 无法在真实库直跑**；**H2 全链不受影响**（测试全绿，FlywayFullChainH2Test 33 条通过）。
+- **与本次改动的关系**：非本轮引入（V13 为既有迁移，按硬约束未改 V19-V32 任何脚本）；M07-F01 前端闭环在 PG 真实库（127.0.0.1）验证 V33 时触发，已改走目标验证法（独立临时 schema + baseline=32 + target=33）完成 V33 幂等验证。
+- **影响**：PG 生产库无法一次性从零跑通 Flyway 全链；共享库（127.0.0.1）`flyway_schema_history` 不存在，若后续在该库启用正式 Flyway 需先解决此项。
+- **建议**：规划层决策是否另立修复迁移（如 **V34** 将 `sw_form_def` 的 UNIQUE 约束改建于显式索引，再以 DROP INDEX 或等效方式清理，H2/PG 双方言对齐），修复后补 PG 侧全链直跑验证。
 
 ### I46：手写 SQL 通道无数据权限（动态宽表/外部数据源 SqlExecutor 绕拦截器链）
 
