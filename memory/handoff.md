@@ -1,8 +1,15 @@
 # 会话交接
 
-> 最后更新：2026-08-19（user-group-membership D117 PASSED + 阶段三同步 COMPLETED）
+> 最后更新：2026-08-20（role-menu-permission-parity COMPLETED，第 26 个已完成功能）
 
 ## 最新状态与最近完成
+
+**role-menu-permission-parity（P1 / M02-F02-01 / M02-F03-01）：COMPLETED（D123 规划层最终验收 PASSED + 阶段三终态同步，2026-08-20）✅**
+- D122 四类偏差已全部闭合：真实生产 403、停用角色有效撤权、Mock `superadmin`/普通 `admin` 双角色语义、I53/I54 权威登记与修复均有证据。
+- 验证：后端 **674/0/0/0**、前端 **73 spec / 681 tests / 0 failures** 四连全绿，零 Flyway。
+- 终态：M02-F02-01/F03-01 ✅（✅23/🟦27/⬜40）、**P1 正式核销**、功能数 26；D121 主方向已归档 `passed/`。
+- 规划复验：`product/role-menu-permission-parity/receipts/planning-final-review-d123.md`；终态同步回执：`receipts/post-d123-terminal-sync.md`。
+- 下一动作：本功能已完成，不再要求 D122 修正或规划终验；下一需求尚未选定。
 
 **user-group-membership（P28 / I36 / M01-F04-01 基础子集）：COMPLETED（D117 PASSED + 阶段三同步，2026-08-19）✅**
 - 业务十一项验收全部通过；后端 **647/0/0/0**、前端 **71f/646t**、V34 双方言 34 条全链确认。
@@ -95,16 +102,16 @@
 
 ## 当前基线
 
-- 后端：项目级 **647 tests**（D115确认，Surefire报告聚合与模块小计双口径，0 failures / 0 errors / 0 skipped；1292重复累计已弃用）
-- 前端：**71 spec files / 646 tests**（D114/D115确认；正式2G上限下typecheck/lint/test/build全部退出0）
-- 功能清单终态 **✅21 / 🟦29 / ⬜40，共90行**（M01-F04-01 🟦 终态确认，D117/D118）
-- Flyway：root路径 **V34已占用**；PG 17.5与H2新库全链均为**34条**migrate+validate，升级链通过。
-- 已完成功能：**25 个**（user-group-membership 为第 25 个，D117 PASSED + 阶段三同步 COMPLETED）
+- 后端：项目级 **674 tests**（2026-08-20 D122 修正后实测，112 surefire 报告文件，0 failures / 0 errors / 0 skipped；1292重复累计已弃用）
+- 前端：**73 spec files / 681 tests**（2026-08-20 D122 修正后实测；正式2G上限下typecheck/lint/test/build全部退出0）
+- 功能清单终态 **✅23 / 🟦27 / ⬜40，共90行**（M02-F02-01/F03-01 🟦→✅，D123 规划层最终验收 PASSED + 终态同步确认）
+- Flyway：root路径 **V34已占用**；PG 17.5与H2新库全链均为**34条**migrate+validate，升级链通过；本轮零 Flyway。
+- 已完成功能：**26 个**（role-menu-permission-parity 为第 26 个，D123 COMPLETED）
 - 执行约束：**本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行**（先后端后前端），禁并行编译
 
 ## 下一动作
 
-**下一动作**：无进行中方向；user-group-membership 已由 D120 最终确认 COMPLETED。后续由规划层从候选池选定下一需求并另行下发方向。
+**下一动作**：role-menu-permission-parity 已 COMPLETED（D123 PASSED + 终态同步）；下一需求方向由规划层从候选池选定后下发，执行层暂不推进新任务。
 
 **探索回执已回收并核销（2026-08-16，D83 裁定 + D84 落库核销）**：
 - 清单 90/90 零不一致（I1 无第三次复发）；基线全部核实（527/66f569t——**569 为运行口径，静态 561**/V30+28/16 功能）；memory 自洽。
@@ -116,12 +123,11 @@
 - **探索任务核销（2026-08-16 晚，4/4 全闭环）**：i18-close-sync ✅（I18 注册表已同步「✅ 已关闭（D84）」仿 I33/I37 先例，memory 侧核对一致）。**本轮全部委派任务已闭环，无进行中探索**。
 - **当前规划裁定**（2026-08-18）：user-org-association-query D101 PASSED，阶段三同步 COMPLETED；D93-D97 双角色治理作为前置基线保持有效。
 
-后续候选（按风险/价值排序参考，2026-08-19 D105 轮后更新）：
-1. M01/M02其余虚高要素补齐：user-group-membership 已 COMPLETED（D117 PASSED + 阶段三同步，第 25 个功能）；M02-F02/F03继续作为后续并列候选
-2. M07 后续补全（P5 之外）：F02-02 Prompt 配置、F02-04 运行日志页+单步调试、F04-02 Token 统计（F01 前端管理页已由 agent-model-management-frontend 闭环）
-3. M07-F03/F04 新功能：助手配置/知识库RAG（选型未定）/对话窗口SSE（均零代码）
-4. IoT / OpenAPI 模块落地（仅骨架）
-5. 小项池：停用即时生效（JWT 过滤器层）、数据权限遗留（部门档子查询 deleted 过滤、job 非分页入口纳管、PG 联调验证）（I49/I51/I26/I47 已分别修复关闭；**I52 已关闭，D110 COMPLETED**）
+后续候选（按风险/价值排序参考，2026-08-20 D123 轮后更新；**P1 已核销退出候选——I31/I36/F02/F03 全部闭合**）：
+1. M07 后续补全（P5 之外）：F02-02 Prompt 配置、F02-04 运行日志页+单步调试、F04-02 Token 统计（F01 前端管理页已由 agent-model-management-frontend 闭环）
+2. M07-F03/F04 新功能：助手配置/知识库RAG（选型未定）/对话窗口SSE（均零代码）
+3. IoT / OpenAPI 模块落地（仅骨架）
+4. 小项池：停用即时生效（JWT 过滤器层）、数据权限遗留（部门档子查询 deleted 过滤、job 非分页入口纳管、PG 联调验证）（I49/I51/I26/I47 已分别修复关闭；**I52 已关闭，D110 COMPLETED**）
 
 ## 新会话启动提示词
 
@@ -129,13 +135,11 @@
 你是 Smart-WorkFlow 根目录代理。请先显式声明本会话角色；若为执行角色，从工作区根目录读取已下发方向并自主闭环。
 
 最新状态：
-- pg-v13-migration-chain-repair（I52 / PostgreSQL V13 迁移链修复）**COMPLETED（D110 PASSED + 阶段三终态同步，2026-08-19）**——PG 侧 V13 第 7 项 DROP INDEX→DROP CONSTRAINT（H2 零改动）；PG 新库全链 33 条 migrate+validate + 既有库升级夹具 + 原 V13 checksum 守卫 + 语义正反例，永久 PG 测试 9 项；后端 600/0/0/0；I52 正式关闭；方向归档 `product/pg-v13-migration-chain-repair/passed/`
-- agent-model-management-frontend（P5 / M07-F01-01～05）**COMPLETED（D107，2026-08-19）**——补证闭合 `other`、远端4xx可达、未认证401及Mock/真实连通性语义；后端591/0/0、前端69f/628t四连；P5核销、五条清单✅确认，方向归档 `product/agent-model-management-frontend/passed/`
-- department-query-filtering（M01-F01-04/I31 部门条件查询闭环）**COMPLETED（D104，2026-08-18）**——后端 582/0/0（563+19）、前端 66f/602t（577+25）四连全绿，Flyway 零迁移；清单 M01-F01-04 🟦→✅，I31 关闭；方向归档 `product/department-query-filtering/passed/`
-- user-org-association-query（I32/I34/I35/I36 剩余子集）**COMPLETED（D101，2026-08-18）**——人员关联、组合查询、双租户/回滚、超管保护均闭合，阶段三同步完成；PG运行期与进程快照为非阻塞环境待办。验收与同步回执位于 `product/user-org-association-query/receipts/`。
-- admin-role-governance（P24/I49）**COMPLETED（D97，2026-08-18）**——功能级与阶段三均完成，P24/I49 已核销关闭。
-- 基线：规划层确认后端 **647/0/0/0**、前端 **71f/646t**、Flyway **V34/双方言34条全链**；清单 **✅21/🟦29/⬜40**（M01-F04-01 🟦 终态确认）；已完成功能 **25 个**（user-group-membership 为第 25 个，COMPLETED）
+- role-menu-permission-parity（P1 / M02-F02-01 / M02-F03-01）**COMPLETED（D123 规划层最终验收 PASSED + 阶段三终态同步，2026-08-20）✅**——D122 四类偏差全部闭合（真实生产 403 契约 / 停用角色有效撤权 / Mock 双角色身份 / I53+I54 注册）；后端 674/0/0/0、前端 73f/681t、零 Flyway；M02-F02-01/F03-01 ✅、P1 核销、功能数 26；主方向归档 `product/role-menu-permission-parity/passed/`；规划复验 `receipts/planning-final-review-d123.md`
+- user-group-membership（P28/I36）**COMPLETED（D117 PASSED + 阶段三 COMPLETED，2026-08-19）**——V34 双端迁移 + 组/成员 CRUD 全链，功能数 25
+- pg-v13-migration-chain-repair（I52）**COMPLETED（D110 PASSED + 阶段三 COMPLETED，2026-08-19）**——PG 侧 V13 DROP INDEX→DROP CONSTRAINT，PG/H2 全链各 34 条
+- 基线：后端 **674/0/0/0**、前端 **73f/681t** 四连全绿、Flyway **V34/双方言34条全链**；清单 **✅23/🟦27/⬜40** 共 90 行（D123 规划层最终确认）；已完成功能 **26 个**
 - 执行约束：本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行，禁并行编译
 
-当前待办：无（user-group-membership 已由 D120 最终确认 COMPLETED；下一需求尚未选定）。
+当前待办：无进行中业务功能（role-menu-permission-parity 已 COMPLETED，P1 已核销）。下一需求方向由规划层从候选池（见上）选定后下发；执行层暂不推进新任务。
 ```

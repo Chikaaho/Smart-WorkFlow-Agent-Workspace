@@ -62,6 +62,8 @@
 | I50 | 2026-08-16 | AuthController.login 状态校验位于密码匹配之后（L88→L92）：停用账号仍消耗一次 BCrypt+用户查询，时序/资源问题，无安全漏洞 | 低 | 待修复（D83 登记） |
 | I51 | 2026-08-16 | 前端 status 语义与后端相反（UserList/DeptList 正常=1/停用=0 vs 后端 0=正常 1=停用 2=锁定）：UI 新建用户无法登录、UI 停用不阻断登录，I33 修复在 UI 路径被抵消 | 高 | ✅ 已修复（2026-08-17 status-semantics-alignment：UserList/DeptList 按后端口径修正默认值/选择项/筛选/展示，新增 7 测试，前端 66f/576t 四连全绿，后端零修改） |
 | I52 | 2026-08-19 | PG 侧全链迁移无法直跑：`postgresql/V13__logical_delete_unique_constraints.sql:58` 对 inline UNIQUE 隐式索引 `sw_form_def_form_key_key` 执行 `DROP INDEX`，PG 报 2BP01（约束创建的索引须 DROP CONSTRAINT）——M07-F01 前端闭环 PG 验证时发现，非本轮引入 | 中 | ✅ **已关闭（2026-08-19，D110 功能级最终验收 PASSED + 阶段三终态同步）**：PG 侧 V13 第 7 项改 `ALTER TABLE sw_form_def DROP CONSTRAINT`（H2 侧零改动、不新增 V34）；PG 新库全链 33 条 migrate+validate + 既有库升级夹具 + 原 V13 checksum 显式失败守卫 + 语义正反例，项目级 600/0/0；功能 COMPLETED，方向归档 `product/pg-v13-migration-chain-repair/passed/` |
+| I53 | 2026-08-19 | 方法级鉴权拒绝被 GlobalExceptionHandler 兜底为 HTTP 500（403 契约失真） | 中 | ✅ 已修复（2026-08-20 role-menu-permission-parity D122 退回修正：新增 AuthorizationDeniedException 分支返回 403，移除测试专用处理器覆盖，sw-common 单测 2 用例，项目级 674/0/0/0） |
+| I54 | 2026-08-19 | 角色停用（status=0）后菜单/按钮权限仍按绑定装配（停用不能有效撤权） | 高 | ✅ 已修复（2026-08-20 role-menu-permission-parity D122 退回修正：菜单树与权限装配对称按 status=1 过滤，AuthMenus A4/A9 用例改为撤权生效断言，项目级 674/0/0/0） |
 
 
 
@@ -595,6 +597,8 @@
 - **影响**：I43/I44 修复记录「生产菜单可达」口径仅对超管成立；普通角色在正式环境无法从菜单进入定时任务/文件存储功能。
 - **建议**：如需普通角色可达，需为 job/storage 菜单补 sys_role_menu 授权 seed 或提供角色菜单绑定入口（后者同时服务 M02-F02-01 角色菜单配置）。
 - **✅ 修复记录（2026-08-18，admin-role-governance，D96 PASSED）**：V31 为普通 `admin` seed 现有菜单及 200–208 job/storage 按钮权限；角色菜单读写入口、job/storage 方法级鉴权及 MockMvc 请求级 200/403/401 证据闭合。方向已归档至 `product/admin-role-governance/passed/`，I49 关闭。
+- **后续证据（2026-08-19，role-menu-permission-parity D121 功能级 PASSED，补充不重写）**：在 I49 修复基础上完成角色菜单/按钮权限契约一致性收口——真实 API（`GET/PUT /system/role/{id}/menus`）—Mock（handler 真实状态更新 + superadmin 400）—页面（RoleList 权限树加载/保存/清空/回填/半选）—安全回归（superadmin 双层保护、非超管授权链：已授权菜单可见正面/撤权不可达/按钮显隐/接口允许拒绝/未认证 401）—租户隔离逐项一致；后端 670/0/0/0、前端 73f/678t、生产代码与 Flyway 零修改；清单 M02-F02-01/F03-01 🟦→✅（✅23/🟦27/⬜40）、P1 核销。回执：`product/role-menu-permission-parity/receipts/`。
+- **修正注记（2026-08-20，role-menu-permission-parity D122 退回修正，补充不重写）**：D122 规划终验发现四项偏差（生产 403 契约 / 停用角色授权 / Mock 双角色身份 / 阶段三问题登记），2026-08-20 执行层全部修正——`GlobalExceptionHandler` 新增 `AuthorizationDeniedException` 分支（HTTP 403 + body 403）、菜单/权限装配对称按 `sys_role.status=1` 过滤（停用角色有效撤权）、Mock 超管/普通 admin 双角色身份分离（见 I53/I54）；后端 **674/0/0/0**、前端 **73f/681t**，零 Flyway。修正回执：`product/role-menu-permission-parity/receipts/d122-fix-receipt.md`。
 
 ### I50：AuthController.login 状态校验位于密码匹配之后（时序/资源问题）
 
@@ -616,3 +620,21 @@
 - **✅ 修复记录（2026-08-17 status-semantics-alignment）**：前端单项目修复轮（方向 `product/status-semantics-alignment/ready/`）。①后端契约核实（只读）：SysUser=0/1/2（实体注释 + AuthController 登录/refresh 校验 + AuthFlowIntegrationTest + sys_user_status 字典四重证据）、SysDept=0/1（实体注释 + sys_common_status 字典）、SysRole/SysPost=1=启用/0=停用（前端现状与其一致，方向 §4 指示未修改）；②前端修正：UserList/DeptList 新建默认与 resetForm 改 `status=0`（正常）、选择项/筛选/展示按契约（用户三态含锁定=2，tag 三分支 success/info/warning；部门两态）、新增 `src/modules/system/constants.ts` 集中常量（SYS_USER_STATUS/SYS_DEPT_STATUS + 选项与 tag 纯函数，仅服务用户/部门页，未扩散为全局字典重构）；③Mock 与测试同步：seeds.ts 用户/部门种子、handlers.ts create 默认 `?? 1→?? 0`（role/post 部分未动）、user/dept API spec 夹具按新语义、UserList.spec +5 / DeptList.spec +2 覆盖正常/停用（含锁定）提交与回填；④验证：前端四连全绿 **66f/576t**（569+7），typecheck/lint/build 退出码 0；后端零修改。⑤角色/岗位/字典页未触碰（字典页不在方向 §4 范围，回执报告）。
 
 > 新发现问题请按格式追加到此文件，并在 `current-status.md` 中同步更新阻塞状态。
+
+### I53：方法级鉴权拒绝被 GlobalExceptionHandler 兜底为 HTTP 500（403 契约失真）
+
+- **发现日期**：2026-08-19（role-menu-permission-parity D121 step1 现场发现并披露）
+- **严重程度**：中
+- **可信度**：CONFIRMED（请求级实证：`@PreAuthorize("@ss.hasPermi(...)")` 拒绝时实际返回 HTTP 500 + body code=500）
+- **描述**：Spring Security 6 方法安全抛出的 `AuthorizationDeniedException` 是运行时异常，穿透 `ExceptionHandlerInterceptor` 直达 `DispatcherServlet`，被 `GlobalExceptionHandler.handleException` 通用兜底捕获 → HTTP 500 + body code=500。拒绝语义虽成立（数据未修改），但「已认证无权限 → 403」的契约失真，前端与 Mock 的 403 语义无法在生产链路获得真实证据。
+- **影响**：已认证无权限请求返回 500 而非 403；D121 验收 1/5/7 的请求级 403 证据只能通过测试专用处理器改写链路获得，非生产链路。
+- **✅ 修复记录（2026-08-20，role-menu-permission-parity D122 退回修正）**：`GlobalExceptionHandler` 新增 `AuthorizationDeniedException` 专用分支（`@ResponseStatus(HttpStatus.FORBIDDEN)` + body code=403，与 `RestAccessDeniedHandler` 语义一致）；sw-common 补 `spring-security-core` 编译期依赖（版本由 spring-boot-dependencies BOM 管理）；移除测试类中改写链路的专用 `GlobalExceptionHandler` 覆盖（`RoleMenusContractAndSecurityTest` 恢复真实生产链路）。新增 `GlobalExceptionHandlerTest`（sw-common 2 用例：403 分支 + 500 兜底不变）。验证：sw-biz-system-biz 13/13 全过、项目级全量 **674/0/0/0**、生产响应链路 `access denied → HTTP 403 + body 403` 实证（日志 `access denied: Access Denied`）。
+
+### I54：角色停用（status=0）后菜单/按钮权限仍按绑定装配（停用不能有效撤权）
+
+- **发现日期**：2026-08-19（role-menu-permission-parity D121 step3b 请求级实证，D122 退回要求纳入权威问题注册）
+- **严重程度**：高
+- **可信度**：CONFIRMED（请求级 + Service 级 + 真实装配三路径实证）
+- **描述**：`SysMenuServiceImpl.loadMenuIdsByUserId`（菜单树）与 `UserDetailsProviderImpl.loadPermissions`（按钮 permission）直接经 `sys_user_role → sys_role_menu` 装配全部绑定角色，不按 `sys_role.status` 过滤；而 `toLoginUser` 的 roles 装配按 `status=1` 过滤——两处不对称。后果：角色停用后该角色绑定的菜单仍可见、按钮 permission 仍装配，用户仍可通过相应 permission 调用接口，**停用不能作为有效撤权手段**。
+- **影响**：停用角色仍持续授予菜单与按钮权限，直接影响普通角色授权边界（D121 验收 4/5）。
+- **✅ 修复记录（2026-08-20，role-menu-permission-parity D122 退回修正）**：①`SysMenuServiceImpl.loadMenuIdsByUserId` 装配链插入启用角色过滤（`sys_role.status=1`，与权限装配对称）；②`UserDetailsProviderImpl.loadPermissions` 同步按启用角色过滤（roles/菜单/权限三侧统一）。测试更新：`AuthMenusContractAndSecurityTest` A4 用例由「如实记录旧行为」改为「撤权生效」断言（请求级空树 + service 级空树），A9 真实装配用例改为「停用角色 permissions 不再装配」；测试类 12/12 全过。项目级全量 **674/0/0/0**。

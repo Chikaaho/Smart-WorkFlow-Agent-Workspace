@@ -1,9 +1,10 @@
 # 功能索引
 
-> 最后更新：2026-08-19
+> 最后更新：2026-08-20（role-menu-permission-parity COMPLETED，第 26 个已完成功能）
 
 | 功能 | 模块 | 状态 | 当前 Step | 备注 |
 |------|------|:---:|------|------|
+| role-menu-permission-parity | P1 / M02-F02-01 / M02-F03-01 | **COMPLETED** | D123 规划层最终验收 PASSED + 阶段三终态同步（2026-08-20） | D122 四类偏差已闭合（生产 403 契约 / 停用角色有效撤权 / Mock 双角色身份 / I53+I54 注册）；后端 674/0/0/0、前端 73f/681t、零 Flyway；M02-F02-01/F03-01 ✅、P1 核销、第 26 个已完成功能。 |
 | user-group-membership | P28 / I36 / M01-F04-01 基础子集 | **COMPLETED** | D120最终确认（2026-08-19） | 功能十一项全部通过；后端 **647/0/0/0**、前端 **71f/646t**、V34双方言34条全链确认。**I36关闭、P28核销、M01-F04-01🟦终态（✅21/🟦29/⬜40）、功能数25**；D118/D119 当前态残留已修正，三份方向归档 `passed/`，ready/ 已清空。最终验收 `product/user-group-membership/receipts/planning-stage3-review-d120.md` |
 | pg-v13-migration-chain-repair | I52 / PostgreSQL Flyway | **COMPLETED** | D110功能验收 + D111阶段三复验（2026-08-19） | PG新库33条、checksum守卫、多平台17.5.0、H2 11项、项目级600/0/0/0全绿；I52 正式关闭；主方向与同步方向已归档 `product/pg-v13-migration-chain-repair/passed/` |
 | agent-model-management-frontend | P5 / M07-F01-01～05 | **COMPLETED** | 补证最终复验 D107（2026-08-19） | D106 的标准5/6/7缺口已闭合：`other`、远端4xx可达、未认证401及Mock/真实连通性语义均有自动化证据；后端591/0/0、前端69f/628t四连全绿。P5核销，I45中M07-F01子集关闭，五行✅获规划确认。归档 `product/agent-model-management-frontend/passed/` |
@@ -31,5 +32,5 @@
 | notify-frontend | M05 | COMPLETED | 3 steps PASSED | 通知列表+标记已读 |
 
 ---
-> 本文件为压缩索引。各功能完整 Step 列表、证据链、测试统计在 `knowledge/features/<name>.md`（20 个功能追踪文件，不含 `_template.md` 模板；agent-model-orchestration 无独立追踪文件，详情在 `product/agent-model-orchestration/passed/`）。规划层确认已完成功能 **25 个**（user-group-membership 为第 25 个，D117 PASSED + 阶段三同步 COMPLETED）。
+> 本文件为压缩索引。各功能完整 Step 列表、证据链、测试统计在 `knowledge/features/<name>.md`（22 个功能追踪文件，不含 `_template.md` 模板；agent-model-orchestration 无独立追踪文件，详情在 `product/agent-model-orchestration/passed/`）。已完成功能 **26 个**（role-menu-permission-parity 为第 26 个，D123 规划层最终验收 PASSED + 阶段三终态同步 COMPLETED）。
 > 需要时：创建 search_task，范围 `knowledge/features/<feature-name>.md`
