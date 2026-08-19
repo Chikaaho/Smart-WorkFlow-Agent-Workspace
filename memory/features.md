@@ -4,6 +4,7 @@
 
 | 功能 | 模块 | 状态 | 当前 Step | 备注 |
 |------|------|:---:|------|------|
+| pg-v13-migration-chain-repair | I52 / PostgreSQL Flyway | **COMPLETED** | D110功能验收 + D111阶段三复验（2026-08-19） | PG新库33条、checksum守卫、多平台17.5.0、H2 11项、项目级600/0/0/0全绿；I52 正式关闭；主方向与同步方向已归档 `product/pg-v13-migration-chain-repair/passed/` |
 | agent-model-management-frontend | P5 / M07-F01-01～05 | **COMPLETED** | 补证最终复验 D107（2026-08-19） | D106 的标准5/6/7缺口已闭合：`other`、远端4xx可达、未认证401及Mock/真实连通性语义均有自动化证据；后端591/0/0、前端69f/628t四连全绿。P5核销，I45中M07-F01子集关闭，五行✅获规划确认。归档 `product/agent-model-management-frontend/passed/` |
 | department-query-filtering | I31 / M01-F01-04 | **COMPLETED** | 最终复验通过（D104，2026-08-18） | 业务与测试九项全部通过；后端582/0/0/0、前端66f/602t四连、零Flyway；D103终态同步缺口已修正，I31关闭、M01-F01-04为✅。归档 `product/department-query-filtering/passed/` |
 | user-org-association-query | I32 / I34 / I35 / I36（剩余子集）/ M01 + M02 | **COMPLETED** | 功能级最终验收 D101 + 阶段三同步（2026-08-18） | 后端563/0/0/0、前端66f/577t四连、H2新库/升级链10 tests；I32/I34/I35关闭，I36仅关闭普通角色绑定子集；PG运行期与进程快照为非阻塞环境待办。方向及同步回执已归档。 |
@@ -29,5 +30,5 @@
 | notify-frontend | M05 | COMPLETED | 3 steps PASSED | 通知列表+标记已读 |
 
 ---
-> 本文件为压缩索引。各功能完整 Step 列表、证据链、测试统计在 `knowledge/features/<name>.md`（19 个功能追踪文件，不含 `_template.md` 模板；agent-model-orchestration 无独立追踪文件，详情在 `product/agent-model-orchestration/passed/`）。规划层确认已完成功能 23 个。
+> 本文件为压缩索引。各功能完整 Step 列表、证据链、测试统计在 `knowledge/features/<name>.md`（20 个功能追踪文件，不含 `_template.md` 模板；agent-model-orchestration 无独立追踪文件，详情在 `product/agent-model-orchestration/passed/`）。规划层确认已完成功能 24 个。
 > 需要时：创建 search_task，范围 `knowledge/features/<feature-name>.md`

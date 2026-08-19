@@ -1,14 +1,16 @@
 # 当前状态
 
-> 最后更新：2026-08-19（agent-model-management-frontend D107 PASSED / COMPLETED）
+> 最后更新：2026-08-19（pg-v13-migration-chain-repair D111 PASSED / COMPLETED）
 
 ## 进行中功能
 
-无。
+**（无进行中业务功能）**：pg-v13-migration-chain-repair（I52）已 **COMPLETED（D110功能验收 + D111阶段三复验，2026-08-19）**，I52 正式关闭；主方向与同步方向归档 `product/pg-v13-migration-chain-repair/passed/`。
 
 ## 最新状态与最近完成
 
-**agent-model-management-frontend（P5 / M07-F01-01～05）COMPLETED（D107，2026-08-19）✅**：D106 已通过的主体实现、V33、H2 33 条与 V32→V33、前端 69f/628t 四连证据保留；补证新增 7 个后端用例，闭合 `other`、远端4xx可达、未认证401及禁用/锁定与Mock真实语义，后端项目级 **591/0/0**。P5核销、I45中M07-F01子集关闭、五条清单✅获规划确认；方向归档 `product/agent-model-management-frontend/passed/`。I52 继续作为独立既有缺陷。
+**pg-v13-migration-chain-repair（I52）COMPLETED（D110，2026-08-19）✅**：修复 PG 侧 V13 第 7 项 2BP01（`DROP INDEX`→`ALTER TABLE sw_form_def DROP CONSTRAINT`，H2 侧 V13 零改动、不新增 V34）；永久 `FlywayFullChainPostgresTest`（zonky embedded-postgres PG 17.5）先红后绿——新库全链 33 条 migrate+validate、既有库升级夹具（target32→V33）、原 V13 checksum 显式失败守卫、逻辑删除唯一性语义正反例（23505/软删重建共存/重复软删边界）；pom 改 `embedded-postgres-binaries-bom:17.5.0` 统一全平台；H2 全链 11 用例零退化；项目级 **600/0/0/0**（591→599→600）。I52 正式关闭；方向归档 `product/pg-v13-migration-chain-repair/passed/`。
+
+**agent-model-management-frontend（P5 / M07-F01-01～05）COMPLETED（D107，2026-08-19）✅**：D106 已通过的主体实现、V33、H2 33 条与 V32→V33、前端 69f/628t 四连证据保留；补证新增 7 个后端用例，闭合 `other`、远端4xx可达、未认证401及禁用/锁定与Mock真实语义，后端项目级 **591/0/0**。P5核销、I45中M07-F01子集关闭、五条清单✅获规划确认；方向归档 `product/agent-model-management-frontend/passed/`。
 
 **department-query-filtering（I31 / M01-F01-04）COMPLETED（D104，2026-08-18）✅**：部门名称/状态组合筛选、命中节点+必要祖先、非法状态400、租户/逻辑删除边界、前端筛选与Mock均闭合；后端582/0/0/0、前端66f/602t四连，零Flyway。D103终态同步缺口已全文修正，I31关闭、M01-F01-04确认为✅，方向归档 `product/department-query-filtering/passed/`。
 
@@ -78,13 +80,13 @@ process-monitoring (M04-F06-01)：COMPLETED（详情见 `knowledge/`，2026-07-3
 
 ## 测试基线
 
-最新完成：**agent-model-management-frontend（P5 / M07-F01-01～05）D107 COMPLETED**——后端591/0/0、前端69f/628t四连、H2 33条；P5核销，五条清单确认为✅。上一完成：department-query-filtering（I31 / M01-F01-04，D104 COMPLETED）——582/0/0、66f/602t四连、I31关闭。
+最新完成：**pg-v13-migration-chain-repair（I52）D110 COMPLETED**——后端600/0/0/0、PG新库全链33条migrate+validate、H2 11项零退化、I52正式关闭；上一 COMPLETED 功能为 agent-model-management-frontend（D107）。
 
-- 后端：项目级 **591 tests**（运行口径，CONFIRMED 2026-08-19 agent-model-management-frontend D107，0 failures / 0 errors / 0 skipped；584 → +7 补证）
+- 后端：项目级 **600 tests**（运行口径，CONFIRMED 2026-08-19 pg-v13-migration-chain-repair D110，0 failures / 0 errors / 0 skipped；599 → +1 checksum守卫）
 - 前端：**69 spec files / 628 tests**，四连全绿（CONFIRMED 2026-08-19 agent-model-management-frontend；2G 上限下 typecheck/lint/test/build 全部退出 0；66f/602t → +3f/+26t）
 - 功能清单文件当前为 **✅21/🟦28/⬜41 共 90 行**（M07-F01-01～05 五行上调已由 D107 最终确认）
-- Flyway：root 路径 V33 已占；H2 新库全链 **33 迁移** + V32→V33 升级链 migrate+validate（V33=菜单/按钮权限 seed）；PG 侧全链直跑受既有 V13:58 2BP01 缺陷阻断（I52，建议 V34 修复迁移）
-- 已完成功能：23 个
+- Flyway：root 路径 V33 已占；**PG 17.5 与 H2 新库全链均为 33 条 migrate+validate**，H2 V32→V33 通过；PG 永久测试 9 用例 + BOM 统一全平台；**I52 已关闭（D110 COMPLETED）**
+- 已完成功能：24 个
 - 需求池：`todo/requirement-pool.md`（2026-08-16 新建，已开发未满足+候选，规划层维护；P1 中 I31 已关闭，P5 已由 D107 核销）
 
 ## 模块完成度（简表）
