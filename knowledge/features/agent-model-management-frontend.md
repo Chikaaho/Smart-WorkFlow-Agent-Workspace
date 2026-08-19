@@ -2,7 +2,7 @@
 
 ## 当前状态
 
-**COMPLETED ✅（2026-08-19）**：D105 方向（`product/agent-model-management-frontend/ready/direction-agent-model-management-frontend.md`，11 项验收标准）下发后，执行层从工作区根以执行角色自主拆分闭环：后端菜单可达性审计 + V33 最小权限 seed + 全量验证（提交 `d4d7dc3`）→ 前端契约/API/Mock/菜单/页面 + 专项测试（提交 `e26e5f0`）→ 知识库全量同步 + 回执。完成回执与测试回执已提交至 `product/agent-model-management-frontend/receipts/`，**待规划层最终验收**（验收通过后核销 P5 终态；清单五行 🟦→✅ 已按方向 §4「只有五项页面闭环全部满足才可提升」达标后先行同步）。
+**🔄 D106 FAILED（复验中，候选终态；2026-08-19）**：D105 方向（`product/agent-model-management-frontend/ready/direction-agent-model-management-frontend.md`，11 项验收标准）下发后，执行层从工作区根以执行角色自主拆分闭环：后端菜单可达性审计 + V33 最小权限 seed + 全量验证（提交 `d4d7dc3`）→ 前端契约/API/Mock/菜单/页面 + 专项测试（提交 `e26e5f0`）→ 知识库全量同步 + 回执。完成回执与测试回执已提交至 `product/agent-model-management-frontend/receipts/`；**规划层 D106 最终验收 FAILED**（审查 `receipts/planning-review-d106.md`，§5 状态裁定）——**主体实现、V33、后端 584/0/0 与前端 69f/628t 四连证据全部保留，不要求重做**；未通过的是证据闭环：①连通性测试缺可核验的 `other` 协议与远端 4xx 仍判可达语义（当前 Mock 的锁定 429/不存在 404 不是远端服务可达语义）；②真实请求链缺未认证 `/agent/models` 401 证据；③Mock 对禁用/锁定模型的连通性行为与真实后端契约未双向核对（仅声明一致）。**补证进展（执行层进行中，补充回执未归档）**：后端连通性/权限专项 +7 用例（other 协议探测、远端 4xx→success=true、未认证 401、enabled/lockedUntil 不读取）已跑通（项目级 584+7=591/0/0 预计）；前端 Mock 语义修正进行中；复验通过前，P5 核销与清单五行上调仅为执行层候选终态，不构成规划层最终确认。
 
 ## 范围（方向 §1-§3）
 
@@ -47,7 +47,7 @@
 | 问题 | 严重程度 | 计划处理 |
 |------|:---:|------|
 | 既有 PG `postgresql/V13__logical_delete_unique_constraints.sql:58` 对 inline UNIQUE 隐式索引 `sw_form_def_form_key_key` 执行 `DROP INDEX`，PG 报 2BP01（约束创建的索引须 DROP CONSTRAINT）——**PG 侧全链 V1→V33 无法在真实库直跑**（H2 全链不受影响，测试全绿） | 中 | 已登记 I52，建议规划层决策另立修复迁移（如 V34 将 `sw_form_def` 的 UNIQUE 约束改建于显式索引）；PG 共享库 `flyway_schema_history` 不存在，若后续启用正式 Flyway 需先解决此项 |
-| 规划层最终验收尚未完成（回执已提交，待 D 编号裁定） | — | 规划层验收后核销 P5 终态 |
+| 规划层 D106 最终验收 **FAILED**（证据缺口：`other`/远端 4xx 可达、未认证 401、Mock 连通性语义与真实后端一致性；主体与测试门保留） | — | 执行层补证中（后端 +7 用例已跑通、前端 Mock 语义修正进行中）；补证完成后规划层复验，复验通过后核销 P5 终态 |
 
 ## 相关链接
 
