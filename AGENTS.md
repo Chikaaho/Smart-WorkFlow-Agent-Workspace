@@ -94,6 +94,14 @@ only when the session is entered from that child repository, not when execution
 is authorized at this workspace root.  Respect the information hierarchy:
 `knowledge/` is the full authority and `memory/` is only its summary.
 
+An administrator task may maintain constitutions, architecture documents, and
+engineering configuration across the workspace, and may perform Git operations
+related to that administrator task.  This does not authorize business planning,
+business implementation, builds, tests, migrations, or deployments.  Remote
+publication, published-history rewrites, force-pushes, and other destructive or
+high-risk Git operations still require explicit user authorization after the
+remote, branch, scope, and risk are stated.
+
 ## Tooling compatibility
 
 Claude's `.claude/settings*.json` permission modes apply only to Claude.  They

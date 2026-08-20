@@ -318,14 +318,14 @@ product/<feature-name>/receipts/
 | `/usr/local/projects/Smart-WorkFlow`（planning layer） | 规划代理 | 读 `memory/` `search_fallback/` `product/` `todo/` `system.md`；写 `memory/` `search_task/` `product/` `todo/` `system.md`；制定需求方向（目标/非目标/影响范围/风险）；验收回执 | **不读** `Smart-WorkFlow/`、`Smart-WorkFlow-Web/` 代码与 `knowledge/`；修改两个代码项目内任何业务文件；执行 `mvn`/`pnpm`/`java`/`node` 等状态变更命令 |
 | `Smart-WorkFlow/`（后端执行层） | 执行代理（后端） | 读写 `Smart-WorkFlow/` 内文件；执行 `mvn` 系命令；写回执到 `product/<feature>/receipts/`；更新 `knowledge/`；写 `search_fallback/` | 读写 `Smart-WorkFlow-Web/` 任何文件；执行 `pnpm`/`npm`/`vite`/`vitest` 等前端命令；制定/修改需求方向 |
 | `Smart-WorkFlow-Web/`（前端执行层） | 执行代理（前端） | 读写 `Smart-WorkFlow-Web/` 内文件；执行 `pnpm` 系命令；写回执到 `product/<feature>/receipts/`；更新 `knowledge/`；写 `search_fallback/` | 读写 `Smart-WorkFlow/` 任何文件；执行 `mvn`/`java` 等后端命令；制定/修改需求方向 |
-| `/usr/local/projects/Smart-WorkFlow`（管理员会话） | 管理员代理 | 读写 `system.md`、正式治理文档、`memory/architecture.md`、`knowledge/architecture.md`（架构/宪法类文件） | 制定需求方向、验收回执、更新 memory/ 状态文件、读写业务代码、执行任何状态变更命令 |
+| `/usr/local/projects/Smart-WorkFlow`（管理员会话） | 管理员代理 | 读写 `system.md`、正式治理文档、`memory/architecture.md`、`knowledge/architecture.md`（架构/宪法类文件）；执行与管理员任务相关的 Git 操作 | 制定需求方向、验收回执、更新 memory/ 状态文件、读写业务代码、执行编译/测试/构建/迁移/部署等业务状态变更命令 |
 
 **硬性红线：**
 
 - ❌ **禁止后端执行代理运行前端命令或读写前端文件**——即使目的是"验证前后端联动是否正常"，也不允许 cd 进入 `Smart-WorkFlow-Web/` 或执行任何 `pnpm`/`npm` 命令
 - ❌ **禁止前端执行代理运行后端命令或读写后端文件**——同理不允许 cd 进入 `Smart-WorkFlow/` 或执行任何 `mvn`/`java` 命令
 - ❌ **禁止规划代理读取代码或执行任何状态变更命令**（编译/测试/构建/安装/迁移/部署）；代码探索需求通过 `search_task/` 委派执行代理完成
-- ❌ **禁止管理员代理做规划或执行的业务操作**——管理员只更新架构或系统宪法
+- ❌ **禁止管理员代理做规划或执行的业务操作**——管理员只维护架构、宪法、工程配置及相关 Git 仓库治理；远程发布、已发布历史改写、强制推送或其他高风险/破坏性 Git 操作仍须事前说明范围与风险并取得用户明确授权
 - ❌ **新会话未声明角色（规划/执行/管理员）→ 拒绝执行任何任务**（`system.md` §0.2）
 - **执行层编译命令必须限制最大内存（硬约束 🔒）**：`mvn` 系命令一律带 `MAVEN_OPTS="-Xmx2g"`；`pnpm`/`npm`/`node` 系命令（含 `vite`/`vitest`）一律带 `NODE_OPTIONS="--max-old-space-size=2048"`——**每种编译工具最大内存上限 2G**，禁止无限制内存直接编译/构建
 - **前后端编译互斥（硬约束 🔒）**：**前端与后端的编译/测试/构建类操作不得同时进行**（覆盖 `mvn` 系 compile/test/package/install 与 `pnpm` 系 typecheck/lint/test/build 等重型命令）。典型场景：前后端两个执行代理并行完成各自需求后自测，若一方检测到对方正在编译/测试，必须等待对方完成后自己再开始，严禁双方同时编译

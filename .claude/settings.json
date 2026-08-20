@@ -1,5 +1,18 @@
 {
   "permissions": {
     "defaultMode": "bypassPermissions"
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh ./.claude/hooks/stop-execution-completeness.sh"
+          }
+        ]
+      }
+    ]
   }
 }
