@@ -1,8 +1,14 @@
 # 当前状态
 
-> 最后更新：2026-08-20（role-menu-permission-parity COMPLETED，第 26 个已完成功能）
+> 最后更新：2026-08-21（agent-graph-execution-observability D148 功能级 PASSED + D149 阶段三复验 PASSED / COMPLETED；已完成功能 27 个）
+
+## 当前进行功能
+
+当前无进行中功能（agent-graph-execution-observability 已于 2026-08-21 COMPLETED，见最近完成）。
 
 ## 最近完成功能
+
+**agent-graph-execution-observability（P7第一子集/M07-F02-04）COMPLETED（D148 功能级 PASSED + D149 阶段三复验 PASSED，2026-08-21）✅**：标准1-11全过+§3.3同步；真实router/authGuard行为测试、后端685/0/0/0（agent 197）、前端78f/760t、V34零迁移；P7运行日志子集核销，单步调试保留；M07-F02-04保持🟦，功能数27。最终审查：`product/agent-graph-execution-observability/receipts/planning-stage3-review-d149.md`。
 
 **role-menu-permission-parity（P1 / M02-F02-01 / M02-F03-01）COMPLETED（D123 规划层最终验收 PASSED + 阶段三终态同步，2026-08-20）✅**：D122 四类偏差全部闭合（真实生产 403 契约 / 停用角色有效撤权 / Mock 双角色身份 / I53+I54 权威登记）；后端 **674/0/0/0**、前端 **73f/681t** 四连全绿，零 Flyway。M02-F02-01/F03-01 ✅、P1 正式核销、功能数 26；主方向已归档 `product/role-menu-permission-parity/passed/`。规划复验：`product/role-menu-permission-parity/receipts/planning-final-review-d123.md`；终态同步回执：`receipts/post-d123-terminal-sync.md`。
 
@@ -82,14 +88,14 @@ process-monitoring (M04-F06-01)：COMPLETED（详情见 `knowledge/`，2026-07-3
 
 ## 测试基线
 
-当前结果：**role-menu-permission-parity（P1 / M02-F02/F03）COMPLETED（D123 规划层最终验收 PASSED + 阶段三终态同步，2026-08-20）**——后端 **674/0/0/0**（112 报告文件）、前端 **73f/681t** 四连全绿；清单 **✅23/🟦27/⬜40**、P1 正式核销、功能数 26（第 26 个已完成功能）。
+当前结果：**agent-graph-execution-observability（P7第一子集/M07-F02-04）COMPLETED（D148 功能级 PASSED + D149 阶段三复验 PASSED，2026-08-21）**——后端 **685/0/0/0**（sw-basic-agent 197）、前端 **78f/760t** 四门全绿；清单 **✅23/🟦27/⬜40**、P7运行日志子集核销（单步调试保留）、功能数 27（第 27 个已完成功能）。
 
-- 后端：**674 tests**（surefire XML 聚合口径，112 文件，0/0/0；670 基线 +4：GlobalExceptionHandlerTest 2 + AuthMenus A4 撤权 2）；1292 为类级+模块级重复累计已弃用。
-- 前端：本轮 **73 spec files / 681 tests**（D121 73f/678t → +3：auth-session.spec 双角色身份 3 用例），四门退出 0。
-- 功能清单：M02-F02-01/F03-01 🟦→✅ **终态**（**✅23/🟦27/⬜40** 共 90 行）；无关行零漂移（M02-F01-01/M01-F04-01 保持 🟦、M02-F04-01 保持 ✅）。
-- Flyway：root 路径 **V34 已占**（sys_user_group/sys_user_group_member，H2/PG 双份）；**PG 17.5 与 H2 新库全链均为 34 条 migrate+validate**，H2/PG V32/V33→V34 升级链通过；PG 永久测试 9 用例 + BOM 统一全平台；**I52 已关闭（D110 COMPLETED）**；本轮零 Flyway。
-- 已完成功能：**26 个**（role-menu-permission-parity 为第 26 个，D123 COMPLETED）。
-- 需求池：**P1 正式核销**（D123 规划层最终验收 PASSED + 终态同步）；I31/I36/F02/F03 全部子项闭合；I53/I54 已登记并修复；P28 已核销。
+- 后端：**685 tests**（surefire XML 聚合口径，0/0/0；sw-basic-agent 模块 197）；D147 补证闭合真实 router/authGuard 行为测试。
+- 前端：本轮 **78 spec files / 760 tests**（role-menu-permission-parity D123 基线 73f/681t → +5f/+79t），四门退出 0；标准11 实际运行带时间戳进程互斥快照（23:21-23:25）。
+- 功能清单：**✅23/🟦27/⬜40** 共 90 行；M07-F02-04 保持 🟦（部分完成：运行日志子集核销，单步调试保留）。
+- Flyway：root 路径 **V34 已占**；**V34 零业务迁移**（H2/PG 双方言 34 条 migrate+validate 维持）。
+- 已完成功能：**27 个**（agent-graph-execution-observability 为第 27 个，D148 功能级 PASSED + D149 阶段三复验 PASSED / COMPLETED）。
+- 需求池：P7 运行日志子集核销（单步调试保留）；其余 P/I 编号维持既有状态。
 
 ## 模块完成度（简表）
 
