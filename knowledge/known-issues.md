@@ -54,7 +54,7 @@
 | I42 | 2026-08-12 | M05-F01-03 消息查询虚高：清单标 ✅，实际无状态/关键字过滤 | 中 | 待修复 |
 | I43 | 2026-08-12 | M10-F03-01 定时任务虚高：清单标 ✅，实际功能完整但生产菜单不可达 | 中 | ✅ 已修复（2026-08-13 checklist-gap-hardening 第一批：Flyway V29 菜单 seed，任务管理/执行日志生产菜单可达） |
 | I44 | 2026-08-12 | M10-F06-01 文件存储虚高：清单标 ✅，实际功能完整但生产菜单不可达 | 中 | ✅ 已修复（2026-08-13 checklist-gap-hardening 第一批：Flyway V29 菜单 seed，文件管理生产菜单可达） |
-| I45 | 2026-08-12 | M07/M04/M05/M06/M09/M10 功能清单"虚低"15 条汇总（部分后端骨架未达清单完整度） | 低 | ◐ 部分关闭（2026-08-19 agent-model-management-frontend：M07-F01-01～05 前端缺口已闭环，五行 🟦→✅——**执行层候选（D106 复验通过前不算规划层确认）**；其余 10 条缺口仍待排期） |
+| I45 | 2026-08-12 | M07/M04/M05/M06/M09/M10 功能清单"虚低"15 条汇总（部分后端骨架未达清单完整度） | 低 | ◐ 部分关闭（2026-08-20：M07-F01-01～05 前端缺口已闭环（D107）；M07-F02-04 运行日志子集已闭环（D137/D138），剩余 F02-02/F03-02/F04-02 等 9 条待排期） |
 | I46 | 2026-08-15 | 手写 SQL 通道无数据权限：动态宽表 JdbcTemplate 裸 SQL 与 bpm 外部数据源 SqlExecutor 绕过数据权限拦截器链，本轮明确不纳管（与 I10 同源） | 高 | 已知限制（明确不纳管，沿用 I10 红线：代码审查 + 测试兜底） |
 | I47 | 2026-08-16 | bpm/h2 迁移链 V8 含 PG 独有 partial index 语法（`WHERE active=true`），H2 不支持——全链 H2 Flyway 迁移从未可跑，模块测试均绕过 Flyway 直建 DDL（V30 冒烟 6 目录链仍排除 bpm） | 中 | ✅ 已修复（2026-08-17 bpm-h2-v8-compat：h2/V8 partial index → 生成列 active_key + 唯一索引等价实现，仅 h2/V8 改动；永久真全链测试 30 条迁移通过；项目级 543/0/0） |
 | I48 | 2026-08-16 | `flow-graph` adapter 契约无边点击事件、无命令式数据更新通道：M07 图设计器绕行方案可用但受限（若未来节点自定义渲染/直接点边编辑需求增多，需回规划层评估扩展 adapter 导出面） | 低 | 绕行方案已生效，扩展待评估 |
@@ -64,6 +64,7 @@
 | I52 | 2026-08-19 | PG 侧全链迁移无法直跑：`postgresql/V13__logical_delete_unique_constraints.sql:58` 对 inline UNIQUE 隐式索引 `sw_form_def_form_key_key` 执行 `DROP INDEX`，PG 报 2BP01（约束创建的索引须 DROP CONSTRAINT）——M07-F01 前端闭环 PG 验证时发现，非本轮引入 | 中 | ✅ **已关闭（2026-08-19，D110 功能级最终验收 PASSED + 阶段三终态同步）**：PG 侧 V13 第 7 项改 `ALTER TABLE sw_form_def DROP CONSTRAINT`（H2 侧零改动、不新增 V34）；PG 新库全链 33 条 migrate+validate + 既有库升级夹具 + 原 V13 checksum 显式失败守卫 + 语义正反例，项目级 600/0/0；功能 COMPLETED，方向归档 `product/pg-v13-migration-chain-repair/passed/` |
 | I53 | 2026-08-19 | 方法级鉴权拒绝被 GlobalExceptionHandler 兜底为 HTTP 500（403 契约失真） | 中 | ✅ 已修复（2026-08-20 role-menu-permission-parity D122 退回修正：新增 AuthorizationDeniedException 分支返回 403，移除测试专用处理器覆盖，sw-common 单测 2 用例，项目级 674/0/0/0） |
 | I54 | 2026-08-19 | 角色停用（status=0）后菜单/按钮权限仍按绑定装配（停用不能有效撤权） | 高 | ✅ 已修复（2026-08-20 role-menu-permission-parity D122 退回修正：菜单树与权限装配对称按 status=1 过滤，AuthMenus A4/A9 用例改为撤权生效断言，项目级 674/0/0/0） |
+| I55 | 2026-08-20 | M07-F02-04 运行日志前端缺口（列表页/详情页/节点轨迹子视图） | 中 | ✅ **已关闭（2026-08-20 agent-graph-execution-observability D148 功能级 PASSED）**：ExecutionList.vue（分页列表、graphDefId 过滤）、ExecutionDetail.vue（详情展示、安全渲染）、NodeTrajectory.vue（节点轨迹、branchId 由后端真实返回）全链闭环；后端零改动复用 Step12(D70-D71) 三类端点；清单 M07-F02-04 保持 🟦（运行日志查看 ✅ + 单步调试🟦，单步调试继续待排期）。后端 685/0/0/0、前端 78f/760t、Flyway V34。方向归档 `product/agent-graph-execution-observability/passed/`。 |
 
 
 

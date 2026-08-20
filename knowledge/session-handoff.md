@@ -11,6 +11,18 @@
 
 ## 1. 最新完成功能
 
+**agent-graph-execution-observability — P7 / M07-F02-04 图执行历史与运行日志前端可观测闭环（COMPLETED，D148 功能级验收 PASSED，2026-08-20，第 27 个已完成功能）**
+
+方向 `product/agent-graph-execution-observability/passed/direction-agent-graph-execution-observability.md`（D126）执行，执行层自主拆 Step 闭环：
+- **后端验证**：零改动，复用 Step12(D70-D71) 已实现的三类只读端点 (`GET /agent/graph-executions`, `/{id}`, `/{id}/nodes`)；数据库表 V27/V28 Flyway(H2/PG 双份) 已落地。
+- **前端实现**：ExecutionList.vue(分页列表、graphDefId 过滤)、ExecutionDetail.vue(详情展示、安全渲染)、NodeTrajectory.vue(节点轨迹、branchId 由后端真实返回)、路由注册（`:executionId` 参数名）、API 补充(`pageGraphExecutionsWithVersion`, `getExecutionDetail`, `listExecutionNodes`)。
+- **测试门**：后端 **685/0/0/0**（sw-basic-agent 197）、前端 **78 spec files / 760 tests / 0 failures** 四连全绿、Flyway V34 零业务迁移。
+- **清单更新**：M07-F02-04 保持 🟦（"运行日志查看 ✅ + 单步调试🟦"，部分完成不自动升✅）。
+- **问题关闭**：I55 已关闭（M07-F02-04 运行日志前端缺口本轮闭环）。P7 运行日志子集✅已核销，单步调试继续待排期，P7 整体不核销。
+- **终态**：方向归档 `product/agent-graph-execution-observability/passed/`；回执目录 `product/agent-graph-execution-observability/receipts/`（d148-functional-verification.md, d146-supplement-summary.md 等）。
+
+---
+
 **role-menu-permission-parity — P1 / M02-F02-01 / M02-F03-01 角色菜单/按钮权限契约一致性收口（COMPLETED，D123 规划层最终验收 PASSED + 阶段三终态同步，2026-08-20，第 26 个已完成功能）**
 
 方向 `product/role-menu-permission-parity/ready/direction-role-menu-permission-parity.md`（D121，保持 READY——归档动作由规划层验收后执行），执行层自主拆 Step 闭环：
@@ -187,7 +199,7 @@
 
 ## 9. 当前系统状态
 
-全部 **26** 个功能已完成闭环（第 26 个 role-menu-permission-parity，D123 规划层最终验收 PASSED + 阶段三终态同步 COMPLETED）：
+全部 **27** 个功能已完成闭环（第 27 个 agent-graph-execution-observability，D148 功能级 PASSED）：
 
 1-8. Walking Skeleton → sys-mgmt-crud → bpm-task-center → storage-multi-provider → job-scheduler → kb-verification → auth-seam-completion → feature-checklist-sync
 9. ✅ vue-flow-adapter（2026-07-25）
@@ -207,13 +219,14 @@
 23. ✅ agent-model-management-frontend（2026-08-19，D107 复验 COMPLETED；P5/M07-F01-01～05，后端 591、前端 69f/628t、V33）
 24. ✅ pg-v13-migration-chain-repair（2026-08-19，D110 PASSED + 阶段三 COMPLETED；I52 关闭）
 25. ✅ user-group-membership（2026-08-19，D117 PASSED + 阶段三 COMPLETED；P28/I36，功能数 25）
-26. ✅ role-menu-permission-parity ← **最新完成（COMPLETED，D123 规划层最终验收 PASSED + 终态同步，2026-08-20）**（D121 执行层 PASSED → D122 规划终验 FAILED → 退回修正完成；P1/M02-F02-01/F03-01，后端 **674**、前端 **73f/681t**、零 Flyway；四类偏差：生产 403 契约 / 停用角色有效撤权 / Mock 双角色身份 / I53+I54 注册；清单 M02-F02-01/F03-01 🟦→✅、**P1 正式核销**、功能数 26；方向归档 `passed/`）
+26. ✅ role-menu-permission-parity（COMPLETED，D123 规划层最终验收 PASSED + 终态同步，2026-08-20）（D121 执行层 PASSED → D122 规划终验 FAILED → 退回修正完成；P1/M02-F02-01/F03-01，后端 674、前端 73f/681t、零 Flyway；四类偏差：生产 403 契约 / 停用角色有效撤权 / Mock 双角色身份 / I53+I54 注册；清单 M02-F02-01/F03-01 🟦→✅、**P1 正式核销**、功能数 26；方向归档 `passed/`）
+27. ✅ agent-graph-execution-observability ← **最新完成（COMPLETED，D148 功能级 PASSED，2026-08-20，第 27 个）**（P7/M07-F02-04 图执行历史与运行日志前端可观测闭环，后端零改动复用 Step12 三类端点，前端 ExecutionList/Detail/NodeTrajectory 全链闭环；后端 **685/0/0/0**（sw-basic-agent 197）、前端 **78f/760t** 四门全绿、Flyway V34 零业务迁移；清单 M07-F02-04 保持 🟦（运行日志查看✅ + 单步调试🟦）；P7 运行日志子集✅已核销，单步调试继续待排期，P7 整体不核销；方向归档 `passed/`）
 
-- 后端：项目级 **674 tests**（CONFIRMED 2026-08-20 role-menu-permission-parity 全量实测：670 +4（GlobalExceptionHandlerTest 2 + AuthMenus A4 撤权 2），112 报告文件，BUILD SUCCESS，0 failures/0 errors/0 skipped）
-- 前端：**73 spec files / 681 tests** 四连全绿（CONFIRMED 2026-08-20 role-menu-permission-parity；73f/678t → +3，运行口径）
-- 功能清单：**✅23 / 🟦27 / ⬜40 共 90 行**（2026-08-20 D123 终态同步确认：M02-F02-01/F03-01 两行 🟦→✅，无关行零漂移——M02-F01-01 保持 🟦、M02-F04-01 保持 ✅、M01-F04-01 保持 🟦）
+- 后端：项目级 **685 tests**（CONFIRMED 2026-08-20 agent-graph-execution-observability D148 功能级 PASSED：sw-basic-agent 197，含 D146 新增 Security 集成测试 +12，BUILD SUCCESS，0 failures/0 errors/0 skipped）
+- 前端：**78 spec files / 760 tests** 四连全绿（CONFIRMED 2026-08-20 agent-graph-execution-observability D148；演进 73f/681t → 78f/760t）
+- 功能清单：**✅23 / 🟦27 / ⬜40 共 90 行**（M07-F02-04 保持 🟦，无关行零漂移）
 - Flyway：V1-V34 连续（V34 已占）；**双方言真实全链口径 34 迁移**——H2（7 目录，永久测试 `FlywayFullChainH2Test` 9 用例）+ V32→V34 升级链；**PG 侧全链直跑已修复（I52 关闭，D110 COMPLETED）**——`FlywayFullChainPostgresTest`（zonky embedded-postgres PG 17.5，9 用例）新库全链 34 条 migrate+validate + 既有库升级夹具 + 原 V13 checksum 守卫 + 语义正反例；平台二进制 `embedded-postgres-binaries-bom:17.5.0` 统一
-- 已完成功能：26 个（role-menu-permission-parity 为第 26 个，COMPLETED）
+- 已完成功能：27 个（agent-graph-execution-observability 为第 27 个，D148 功能级 PASSED）
 - 进行中业务功能：无（下一需求方向由规划层从候选池选定下发）
 
 ---
@@ -254,7 +267,7 @@
 
 ## 12. 下一轮要做什么
 
-**role-menu-permission-parity：COMPLETED（D123 规划层最终验收 PASSED + 阶段三终态同步，2026-08-20）**——清单 M02-F02-01/F03-01 ✅（终态 ✅23/🟦27/⬜40）、**P1 正式核销**、功能数 25→26；方向归档 `product/role-menu-permission-parity/passed/`。后端基线 **674/0/0/0**。**下一动作**：按 system.md §10 从候选池（§10 与 [[handoff]]）选定下一需求方向、写方向文档至 `product/<feature>/ready/` 下发执行层（尚未选定）。
+**agent-graph-execution-observability：COMPLETED（D148 功能级 PASSED，2026-08-20，第 27 个）**——清单 M07-F02-04 保持 🟦（运行日志查看✅ + 单步调试🟦）、P7 运行日志子集✅已核销、单步调试继续待排期、P7 整体不核销；方向归档 `product/agent-graph-execution-observability/passed/`。后端基线 **685/0/0/0**、前端基线 **78f/760t**。**下一动作**：按 system.md §10 从候选池（§10 与 [[handoff]]）选定下一需求方向、写方向文档至 `product/<feature>/ready/` 下发执行层（尚未选定）。
 
 ---
 
@@ -286,21 +299,22 @@
 你是 Smart-WorkFlow 根目录规划代理。请按 system.md §10 执行新会话恢复。
 
 最新状态：
-- role-menu-permission-parity（P1 / M02-F02-01 / M02-F03-01 角色菜单/按钮权限契约一致性收口）**COMPLETED（D123 规划层最终验收 PASSED + 阶段三终态同步，2026-08-20，第 26 个已完成功能）**——真实 API（`GET/PUT /system/role/{id}/menus`）—Mock（handler 真实状态更新 + superadmin 400）—页面（RoleList 权限树加载/保存/清空/回填/半选）—安全回归（superadmin 双层保护、非超管授权链：已授权菜单可见正面/撤权不可达/按钮显隐/接口允许拒绝/未认证 401）—租户隔离逐项一致；D122 四类偏差全部修正（生产 403 契约 / 停用角色有效撤权 / Mock 双角色身份 / I53+I54 注册）；后端 **674/0/0/0**（112 报告文件）、前端 **73f/681t** 四连全绿、零 Flyway；清单 M02-F02-01/F03-01 🟦→✅（**✅23/🟦27/⬜40**）、**P1 正式核销**（全部子项 I31/I36/F02/F03 已闭合）；方向归档 `product/role-menu-permission-parity/passed/`；规划复验 `receipts/planning-final-review-d123.md`、终态同步回执 `receipts/post-d123-terminal-sync.md`、历史回执 `product/role-menu-permission-parity/receipts/`（含 stage3-knowledge-sync）
+- agent-graph-execution-observability（P7 / M07-F02-04 图执行历史与运行日志前端可观测闭环）**COMPLETED（D148 功能级 PASSED，2026-08-20，第 27 个已完成功能）**——后端零改动复用 Step12(D70-D71) 三类只读端点；前端 ExecutionList/Detail/NodeTrajectory 全链闭环（`:executionId` 参数名）；D146/D146b 补证修复标准 1/7/8/11/12：后端 Security 集成测试 +12（197/0/0）、Mock handler 直测 +11 + 路由访问控制 +3；后端 **685/0/0/0**（sw-basic-agent 197）、前端 **78f/760t** 四门全绿、Flyway V34 零业务迁移；清单 M07-F02-04 保持 🟦（运行日志查看✅ + 单步调试🟦，部分完成不自动升✅）；P7 运行日志子集✅已核销，单步调试继续待排期，P7 整体不核销；方向归档 `product/agent-graph-execution-observability/passed/`；回执 `receipts/d148-functional-verification.md` 等
+- role-menu-permission-parity（P1 / M02-F02-01 / M02-F03-01 角色菜单/按钮权限契约一致性收口）**COMPLETED（D123 规划层最终验收 PASSED + 阶段三终态同步，2026-08-20，第 26 个已完成功能）**——D122 四类偏差全部修正；后端 **674/0/0/0**、前端 **73f/681t** 四连全绿、零 Flyway；清单 M02-F02-01/F03-01 🟦→✅（**✅23/🟦27/⬜40**）、**P1 正式核销**；方向归档 `product/role-menu-permission-parity/passed/`
 - I53（403→500 契约失真）、I54（停用角色仍装配权限）已修复并登记 knowledge/known-issues.md + memory/issues.md（2026-08-20）
 - user-group-membership（P28/I36）**COMPLETED（D117 PASSED + 阶段三 COMPLETED，2026-08-19）**——V34 双端迁移 + 组/成员 CRUD 全链，功能数 25
 - pg-v13-migration-chain-repair（I52）**COMPLETED（D110 PASSED + 阶段三 COMPLETED，2026-08-19）**——PG 侧 V13 DROP INDEX→DROP CONSTRAINT，PG/H2 全链各 34 条
-- 基线：后端 **674 tests** / 前端 **73f/681t** 四连全绿；清单 **✅23/🟦27/⬜40** 共 90 行；Flyway 最高 V34，PG/H2 全链各 34 条 migrate+validate；已完成功能 **26 个**（role-menu-permission-parity 为第 26 个，COMPLETED）
+- 基线：后端 **685 tests** / 前端 **78f/760t** 四连全绿；清单 **✅23/🟦27/⬜40** 共 90 行；Flyway 最高 V34，PG/H2 全链各 34 条 migrate+validate；已完成功能 **27 个**（agent-graph-execution-observability 为第 27 个，D148 功能级 PASSED）
 - 执行约束：本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行，禁并行编译（已入宪法）
-- 候选池：**P1 已核销（M01/M02 虚高补齐不再作为候选）**、M07 补全（F02-02/F02-04/F04-02）、M07-F03/F04 新功能、IoT/OpenAPI、数据权限遗留/停用即时生效——PG 侧全链直跑已由 pg-v13-migration-chain-repair 修复关闭（I52，D110 COMPLETED）；I49 已由 admin-role-governance D96 关闭，I31/I36 已分别由 department-query-filtering/user-group-membership 关闭，I51/I26/I47 已分别修复关闭
+- 候选池：**P1 已核销（M01/M02 虚高补齐不再作为候选）**、M07 补全（F02-02/F02-04 单步调试/F04-02）、M07-F03/F04 新功能、IoT/OpenAPI、数据权限遗留/停用即时生效——PG 侧全链直跑已由 pg-v13-migration-chain-repair 修复关闭（I52，D110 COMPLETED）；I49 已由 admin-role-governance D96 关闭，I31/I36 已分别由 department-query-filtering/user-group-membership 关闭，I51/I26/I47 已分别修复关闭
 
-最新完成：product/role-menu-permission-parity/（回执 receipts/，**D123 规划层最终验收 PASSED + 终态同步 COMPLETED，第 26 个**）；最新归档：product/role-menu-permission-parity/passed/
+最新完成：product/agent-graph-execution-observability/（回执 receipts/，**D148 功能级 PASSED，第 27 个**）；最新归档：product/agent-graph-execution-observability/passed/
 ```
 
 ---
 
 > 最后更新：2026-08-20
-> 最新完成功能：**role-menu-permission-parity** — P1/M02-F02-01/F03-01 角色菜单/按钮权限契约一致性收口（**COMPLETED**，D123 规划层最终验收 PASSED + 阶段三终态同步：生产 403 契约 / 停用角色有效撤权 / Mock 双角色身份 / I53+I54 注册；后端 **674** / 前端 **73f/681t** / 零 Flyway；清单 M02-F02-01/F03-01 🟦→✅、**P1 正式核销**、功能数 26；规划复验 `planning-final-review-d123.md`、终态同步回执 `post-d123-terminal-sync.md`）
-> 上一功能：**user-group-membership** — P28/I36 用户组维护与成员绑定闭环（**COMPLETED** ✅，D117 PASSED + 阶段三 COMPLETED，功能数 25）
-> 测试基线：后端 CONFIRMED 674 tests · 前端 CONFIRMED 73 files / 681 tests（运行口径；四连全绿）
-> 进行中：无（role-menu-permission-parity 已 COMPLETED；下一需求由规划层从候选池选定下发）
+> 最新完成功能：**agent-graph-execution-observability** — P7/M07-F02-04 图执行历史与运行日志前端可观测闭环（**COMPLETED**，D148 功能级 PASSED：后端零改动复用 Step12 三类端点，前端 ExecutionList/Detail/NodeTrajectory 全链闭环；后端 **685** / 前端 **78f/760t** / Flyway V34 零业务迁移；清单 M07-F02-04 保持 🟦、P7 运行日志子集✅已核销、单步调试继续待排期、P7 整体不核销、功能数 27）
+> 上一功能：**role-menu-permission-parity** — P1/M02-F02-01/F03-01 角色菜单/按钮权限契约一致性收口（**COMPLETED** ✅，D123 规划层最终验收 PASSED + 阶段三终态同步，功能数 26）
+> 测试基线：后端 CONFIRMED 685 tests · 前端 CONFIRMED 78 files / 760 tests（运行口径；四连全绿）
+> 进行中：无（agent-graph-execution-observability 已 COMPLETED；下一需求由规划层从候选池选定下发）

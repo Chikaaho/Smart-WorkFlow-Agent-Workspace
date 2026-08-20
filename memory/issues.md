@@ -22,7 +22,7 @@
 | I26 | SysRole 列名与 V5 Flyway 列重命名不一致 | 中 | **已关闭**（2026-08-17，D86；P13 已 PASSED） |
 | I30/T10 | Mock BPMN XML 已增强（含 3 个 userTask 节点），可满足当前测试需求 | 低 | **已关闭**（D83/D84：代码已增强 processKey 参数化+3 userTask+activityId 对齐；known-issues 标已满足，todo T10 已删行） |
 | I31-I44 | **Step5 清单审计虚高缺口**（详情在 knowledge/known-issues.md）：I33/I43/I44、I37、I31已修复。**I36 用户组功能已关闭（2026-08-19，user-group-membership D117 PASSED + 阶段三 COMPLETED），P28 已核销**；**M02-F02/F03 已闭合（2026-08-20，role-menu-permission-parity D123 规划层最终验收 PASSED + 终态同步，P1 正式核销）**；M03/M05 其他缺口仍待排期。 | 中 | I36已关闭、F02/F03已闭合（P1 核销），M03/M05 其余待排期 |
-| I45 | Step5 清单审计虚低汇总 15 条：清单已标⬜/🟦但代码有部分实现未达描述完整度（M07 前端管理页/Prompt配置/运行日志页/Token统计、M04节点配置1/7、M05发送仅单用户等），细节见审计回执 `search_fallback/feature-checklist-full-audit.md` | 低 | 记录性，按需排期 |
+| I45 | Step5 清单审计虚低汇总 15 条：清单已标⬜/🟦但代码有部分实现未达描述完整度。M07 前端管理页已由 D107 闭合；运行日志页/执行历史前端消费已由 D148 功能级 PASSED、D149 阶段三复验闭合；当前仍保留 Prompt 配置、单步调试、Token 统计，以及 M04 节点配置、M05 单用户发送等缺口。细节见审计回执 `search_fallback/feature-checklist-full-audit.md` | 低 | 部分子集已关闭；剩余项按需排期 |
 | I46 | 手写 SQL 通道无数据权限（已在 knowledge/known-issues.md 正式登记，2026-08-15）：动态宽表 JdbcTemplate 与 bpm 外部数据源 SqlExecutor 绕过 MP 拦截器链，数据权限/租户均不覆盖（与 I10 同源）——D77 方向明确不纳管，未来纳管需 SQL 构建层统一注入 | 中 | 已知限制，按设计 |
 | I47 | BPM/H2 V8 partial index 方言不兼容，曾阻断真实 H2 全链迁移 | 中 | **已关闭**（2026-08-17，D88；P10 已 PASSED，30 条全链验证） |
 | I48 | （原临时编号 I31→I46，2026-08-15 因 I46 被占再改号；已正式登记——D81，2026-08-16，悬空引用清理完毕）`flow-graph` adapter 契约无边点击事件、无命令式数据更新通道（Step9 现场发现，D65 偏差2/3）：M07 图设计器绕行方案可用但受限——若未来节点自定义渲染/直接点边编辑需求增多，需回规划层评估扩展 adapter 导出面 | 低 | 绕行方案已生效，扩展待评估 |
