@@ -17,10 +17,16 @@
 | 前端框架 | Vue 3.5 + TypeScript 6.0 + Vite 8，严格分层 SPA，自有架构（不继承 vben） |
 | 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，V1–V34；**双方言新库全链均可直跑**——H2 新库全链 34 迁移与 V32/V33→V34 升级链 migrate+validate 已通过；**PG 侧全链直跑已修复（2026-08-19 pg-v13-migration-chain-repair，I52 关闭）**：PG 17.5 真实二进制（zonky embedded-postgres）新库全链 34 条 migrate+validate 通过 + 既有库升级夹具通过，永久测试 `FlywayFullChainPostgresTest`；PG 真实库（127.0.0.1）临时 schema 验证 V33 幂等执行通过（2026-08-19）。V34（2026-08-19 user-group-membership）新增 sys_user_group / sys_user_group_member（H2/PG 双份逐字一致）。 |
 | 核心路径 | Walking Skeleton：登录 → 表单 → 审批 → 通知 ✅ 四环全部闭合 |
-| 功能清单 | 10 模块，55 功能，90 明细；终态按实际代码闭环为 **✅23/🟦27/⬜40**（`Smart-WorkFlow/功能清单.md` 权威清单；role-menu-permission-parity D123 + agent-graph-execution-observability D148：M02-F02-01/F03-01 🟦→✅、M07-F02-04 "运行日志查看 ✅ + 单步调试🟦" 保持 🟦）。 |
-| 测试基线 | agent-graph-execution-observability D148 当前后端全量 **685 tests / 0 failures / 0 errors / 0 skipped**（sw-basic-agent 197）；前端 **78 spec files / 760 tests / 0 failures** 四连全绿（typecheck/lint/test/build），均按 2G 约束串行执行。 |
+| 功能清单 | 10 模块，55 功能，90 明细；规划确认终态 **✅23/🟦27/⬜40**（`Smart-WorkFlow/功能清单.md` 权威清单）。执行层拟同步 M07-F02-02 🟦→✅、功能数 27→28、终态 24/26/40，**待 D157 复验确认**（D155 阶段三 FAILED；D156 复验 FAILED（仅提交后当前态未同步）；当前态同步回执已提交）。 |
+| 测试基线 | 规划当前确认基线为 agent-graph-prompt-configuration D154 的 **后端 723 tests / 0 failures / 0 errors / 0 skipped**（sw-basic-agent 234）；**前端 79 spec files / 775 tests / 0 failures** 四连全绿。D153 互斥快照（三次前端 ps 零快照 12:09:21/12:10:03/12:10:51 + 后端门禁 12:10:51-12:11:56 严格 2G 串行）由 D154 规划层最终验收接受并晋级为规划确认基线。均按 2G 约束串行执行。 |
 
-### 最近完成（2026-08-20，agent-graph-execution-observability COMPLETED，第 27 个已完成功能）
+### 当前进行（2026-08-21，无进行中业务功能；agent-graph-prompt-configuration D155/D156 阶段三 FAILED，当前态同步回执已提交待 D157 复验；下一需求由规划层从候选池选定）
+
+### 此前最近完成（2026-08-21，agent-graph-prompt-configuration D154 功能级 PASSED，D155/D156 阶段三 FAILED，当前态同步回执已提交待 D157 复验）
+
+`agent-graph-prompt-configuration`（M07-F02-02 图节点 Prompt 配置）：**D150 执行层自验 PASSED → D151 规划层最终验收 FAILED（4 项标准 1/5/11/12 未通过）→ D151 补证 → D152 规划层第一次复验 10/12 通过 → D152 补证 → D153 规划层第二次复验 FAILED（仅余标准11/12）→ D153 补证 → D154 规划层最终验收 PASSED（功能级）→ D155 阶段三 FAILED（提前宣告规划层 COMPLETED / 提前归档阶段三方向 / handoff 全文未收敛；纠正已提交）→ D156 阶段三复验 FAILED（仅提交后当前态未同步；当前态同步回执已提交，待 D157 复验）**。D150 主体实现保留：后端 `AgentGraphInterpreter` 新增 `systemPrompt`/`userPromptTemplate` 两个 config 键，`callLlmNode` 构造 SystemMessage+UserMessage 多消息列表，`{{variableName}}` 一次性纯字符串插值，复用 `UNDEFINED_VARIABLE` 错误分类；前端 `graphAdapter.ts` 新增 2 常量、`LlmPanel.vue` 新增 2 textarea、`GraphDesigner.updateNodeData` 处理 undefined 删除键；Mock handlers 补齐图定义 CRUD+execute 端点。**D151 补证**：后端 +5 ServiceImpl 层测试（项目级 703）；**D152 补证**：标准1 新增 `AgentGraphDefSecurityIntegrationTest`（20 用例：四类权限映射 × 5 端点）→ 后端 723（sw-basic-agent 234）；**D153 补证**：互斥快照（三次前端 ps 零快照 + 后端门禁 12:10:51-12:11:56 重新验证 723/agent234 与 D152 报告一致）+ 扩展零命中关键词覆盖 10 类；**D154 规划层最终验收 PASSED（功能级，2026-08-21）**：12 项业务功能标准全部通过；后端 **723/0/0/0**、前端 **79f/775t**、Flyway V34 零本轮迁移（**测试基线规划确认有效**）。**D155 阶段三 FAILED（2026-08-21）**：提前宣告规划层 COMPLETED / 提前归档阶段三方向 / handoff 全文未收敛；纠正已提交（`receipts/post-d155-terminal-state-correction.md`）。**D156 阶段三复验 FAILED（2026-08-21）**：仅提交后当前态未同步（state/features/handoff 当时仍把纠正写成待执行/待提交）；当前态同步回执已提交（`receipts/post-d156-current-state-sync.md`），待 D157 复验。**规划确认功能数仍 27、清单仍 ✅23/🟦27/⬜40**；执行层拟同步 M07-F02-02 🟦→✅、功能数 27→28、终态 24/26/40、P6 核销，**待 D157 复验确认**。主方向归档 `product/agent-graph-prompt-configuration/passed/`；**阶段三方向保持 `ready/`**（`ready/direction-post-d154-terminal-sync.md`），**不得提前归档**；D155 纠正方向 `ready/direction-post-d155-terminal-state-correction.md`；D156 当前态同步方向 `ready/direction-post-d156-current-state-sync.md`；回执 `receipts/completion.md`（D154 版 + D155/D156 状态说明）+ `receipts/test-receipt.md`（D154 版 + D155/D156 状态说明）+ `receipts/post-d154-terminal-sync.md`（阶段三同步回执 + D155/D156 状态说明）+ `receipts/post-d155-terminal-state-correction.md`（D155 纠正回执）+ `receipts/post-d156-current-state-sync.md`（D156 当前态同步回执）。审查 `receipts/planning-review-d151.md` + `planning-rereview-d152.md` + `planning-rereview-d153.md` + `planning-final-review-d154.md` + `planning-stage3-review-d155.md` + `planning-stage3-review-d156.md`。
+
+### 此前最近完成（2026-08-20，agent-graph-execution-observability COMPLETED，第 27 个已完成功能）
 
 `agent-graph-execution-observability`（P7 / M07-F02-04 图执行历史与运行日志前端可观测闭环）：**D148 功能级验收 PASSED（D137/D138 为失效历史，D139-D147 为补证迭代）**。后端零改动，复用 Step12(D70-D71) 已实现的三类只读端点 (`GET /agent/graph-executions`, `/{id}`, `/{id}/nodes`)；前端新增 ExecutionList.vue（分页列表、graphDefId 过滤）、ExecutionDetail.vue（详情展示、安全渲染）、NodeTrajectory.vue（节点轨迹、branchId 并行分支识别）、路由注册（`:executionId` 参数名）、API 补充。**D146/D146b 执行层补证修复标准 1/7/8/11/12**：后端 Security 集成测试 +12（197/0/0）、Mock handler 直测 +11 + 路由访问控制 +3（含 :executionId 参数名修正 + meta.authority）。清单 M07-F02-04 保持 🟦（"运行日志查看 ✅ + 单步调试🟦"，部分完成不自动升✅）。方向归档 `product/agent-graph-execution-observability/passed/`；回执 `receipts/`（completion.md, test-receipt.md, d146-supplement-summary.md, d148-functional-verification.md）。I55 已关闭（M07-F02-04 运行日志前端缺口本轮闭环）。P7 运行日志子集✅已核销，单步调试继续待排期。测试基线：**后端 685/0/0/0（sw-basic-agent 197）、前端 78f/760t 四门全绿、Flyway V34 零业务迁移**。
 
@@ -124,7 +130,9 @@
 
 ## 4. 进行中的功能
 
-**（当前无进行中业务功能）**：agent-graph-execution-observability（P7 / M07-F02-04）已于 2026-08-20 **D148 功能级验收 PASSED**，功能 **COMPLETED**（第 27 个）、P7 运行日志子集✅已核销；单步调试继续待排期。D146/D146b 执行层补证修复标准 1/7/8/11/12：**后端 Security 集成测试 +12 用例（197/0/0）**、**前端 Mock handler 直测 +11 用例 + 路由访问控制 +3 用例（含 :executionId 参数修正 + meta.authority）**。测试基线：后端 685/0/0/0、前端 78f/760t 四门全绿、Flyway V34 零业务迁移。回执 `receipts/d148-functional-verification.md`。
+**（无进行中业务功能，agent-graph-prompt-configuration D154 功能级 PASSED / D155/D156 阶段三 FAILED，当前态同步回执已提交待 D157 复验）**：agent-graph-prompt-configuration（M07-F02-02）**D154 功能级 PASSED（12 项业务功能标准全部通过）/ D155 阶段三 FAILED（提前宣告规划层 COMPLETED / 提前归档阶段三方向 / handoff 全文未收敛）**——D150 主体实现保留，D151/D152/D153 补证迭代；D154 规划层最终验收 PASSED（功能级，审查 `receipts/planning-final-review-d154.md`）；**D155 阶段三 FAILED（2026-08-21）**，纠正已提交；**D156 阶段三复验 FAILED（2026-08-21）**（仅提交后当前态残留），当前态同步回执已提交，待 D157 复验。测试基线规划确认有效：后端 723/0/0/0（agent 234）、前端 79f/775t 四门全绿、Flyway V34 零本轮迁移。**规划确认清单终态 ✅23/🟦27/⬜40、功能数仍 27**；执行层拟同步 M07-F02-02 🟦→✅、终态 ✅24/🟦26/⬜40、功能数 27→28、P6 核销，**待 D157 复验确认**。主方向归档 `product/agent-graph-prompt-configuration/passed/`；**阶段三、D155 纠正、D156 当前态同步三份方向均保持 `ready/`**；回执 `receipts/post-d155-terminal-state-correction.md`（D155 纠正）+ `receipts/post-d156-current-state-sync.md`（D156 当前态同步）。
+
+**（此前无进行中业务功能）**：agent-graph-execution-observability（P7 / M07-F02-04）已于 2026-08-20 **D148 功能级验收 PASSED**，功能 **COMPLETED**（第 27 个）、P7 运行日志子集✅已核销；单步调试继续待排期。D146/D146b 执行层补证修复标准 1/7/8/11/12：**后端 Security 集成测试 +12 用例（197/0/0）**、**前端 Mock handler 直测 +11 用例 + 路由访问控制 +3 用例（含 :executionId 参数修正 + meta.authority）**。测试基线：后端 698/0/0/0、前端 79f/775t 四门全绿、Flyway V34 零业务迁移。回执 `receipts/d148-functional-verification.md`。
 
 **（此前无进行中业务功能）**：pg-v13-migration-chain-repair（I52）已于 2026-08-19 **D110 规划层最终验收 PASSED + 阶段三终态同步完成**，功能 **COMPLETED**、I52 正式关闭；方向归档 `product/pg-v13-migration-chain-repair/passed/`。
 
@@ -134,7 +142,7 @@
 
 **admin-role-governance（P24/I49）已于 D96 规划层最终验收 PASSED（2026-08-18）**：D94/D95 修正闭合 V31 冲突显式失败、角色/菜单/绑定行为、普通 admin 允许/撤权拒绝与 superadmin 旁路、job/storage 请求级 200/403/401、前后端编译互斥及清单零变化核对。后端全量 551/0/0，前端 66 spec/576 tests 四连全绿，Flyway V31/H2 全链 31 条 migrate+validate 通过；主方向已归档至 `product/admin-role-governance/passed/`，P24/I49 关闭条件满足。最终证据见 `product/admin-role-governance/receipts/planning-final-review-d96.md` 与阶段三回执。
 
-> 最后更新：2026-08-21（agent-graph-execution-observability D148 规划层 PASSED + 阶段三终态同步 COMPLETED，第 27 个已完成功能；role-menu-permission-parity D123 COMPLETED）
+> 最后更新：2026-08-21（agent-graph-prompt-configuration **D154 功能级 PASSED / D155/D156 阶段三 FAILED（当前态同步回执已提交，待 D157 复验，第 28 个候选功能）**；agent-graph-execution-observability D148/D149 COMPLETED（第 27 个）；规划确认功能数 27）
 
 **（无进行中业务功能）**：user-org-association-query 已于 2026-08-18 规划层最终验收 **PASSED**（D101）并完成阶段三同步；主方向归档至 `product/user-org-association-query/passed/`。
 
@@ -152,7 +160,7 @@
 
 ## 5. 已完成的功能
 
-> 最后更新：2026-08-21（27 个功能；agent-graph-execution-observability **COMPLETED（D148 PASSED + 阶段三终态同步，2026-08-21，第 27 个已完成功能）**；role-menu-permission-parity D123 COMPLETED（第 26 个）；user-group-membership D117 COMPLETED；pg-v13 D110 COMPLETED；agent-model-management-frontend D107 COMPLETED）
+> 最后更新：2026-08-21（**27 个已完成功能**（规划确认）；agent-graph-prompt-configuration D154 功能级 PASSED / D155/D156 阶段三 FAILED，当前态同步回执已提交待 D157 复验（第 28 个候选功能）；agent-graph-execution-observability D148/D149 COMPLETED（第 27 个）；role-menu-permission-parity D123 COMPLETED（第 26 个）；user-group-membership D117 COMPLETED；pg-v13 D110 COMPLETED）
 
 | 功能编号 | 功能名称 | 最终状态 | 完成日期 | 说明 |
 |----------|----------|:--------:|:--------:|------|
@@ -183,6 +191,7 @@
 | user-group-membership | P28 / I36 / M01-F04-01 基础子集：用户组维护与成员绑定闭环 | **COMPLETED ✅** | 2026-08-19 | 业务十一项验收全部通过（D117 功能级 PASSED + D118-D120 阶段三终审链 COMPLETED）。V34 双端迁移 `sys_user_group`/`sys_user_group_member`（业务标识租户内唯一 + 逻辑删除唯一语义）；后端 SysUserGroup/Service/Controller（组 CRUD/启停/逻辑删除、成员保存/替换/清空/移除/回填、数据范围=组内成员部门 EXISTS、成员绑定校验=候选可见性同源、非 superadmin 零隐式授权）；前端 UserGroupList 页面/API/类型/Mock/菜单/权限（`system:userGroup:list`/`manage`）。测试：后端 45 专项 + Flyway H2/PG 全链（34 迁移、V33→34 升级链、逻辑删除唯一语义 23505）+ 项目级 **647/0/0/0**；前端 **71 files / 646 tests / 0 failures** 四连全绿。清单 M01-F04-01 ⬜→🟦（终态 ✅21/🟦29/⬜40）；**I36 关闭（用户组绑定语义，不扩大为流程/权限消费端）**；**P28 核销**；M01-F04-01 消费端未接不得升 ✅；已完成功能 24→25。方向归档 `product/user-group-membership/passed/`；回执 `receipts/`（D113-D120 审查链 + stage3-closeout）。 |
 | role-menu-permission-parity | P1 / M02-F02-01 / M02-F03-01 角色菜单/按钮权限契约一致性收口 | **COMPLETED ✅** | 2026-08-20 | **D121 执行层功能级 PASSED → D122 规划终验 FAILED（四类偏差）→ 2026-08-20 退回修正完成 → D123 规划层最终验收 PASSED + 阶段三终态同步 COMPLETED**。D122 四类偏差全部修正：①生产 403 契约——GlobalExceptionHandler 新增 AuthorizationDeniedException 分支（HTTP 403 + body 403），移除测试专用处理器覆盖，请求级 403 走真实生产链路（sw-common +spring-security-core 编译期依赖，GlobalExceptionHandlerTest 2 用例）；②停用角色有效撤权——SysMenuServiceImpl.loadMenuIdsByUserId 与 UserDetailsProviderImpl.loadPermissions 对称按 sys_role.status=1 过滤（AuthMenus A4/A9 改为撤权生效断言）；③Mock 双角色身份——超管会话 username=superadmin/roles=['superadmin']，新增普通 MOCK_SESSION_DATA_ADMIN（admin 非超管、权限按绑定装配），登录三会话映射（auth-session.spec +3 用例）；④权威问题注册——I53/I54 登记 knowledge/known-issues.md + memory/issues.md。测试：后端 **674/0/0/0**（112 报告文件；670 +4）、前端 **73 spec / 681 tests / 0 failures**（+3）2G 上限四连全绿；零 Flyway。清单 M02-F02-01 / M02-F03-01 🟦→✅（终态 ✅23/🟦27/⬜40）；**P1 正式核销**；功能数 25→26。方向归档 `product/role-menu-permission-parity/passed/`；规划复验 `receipts/planning-final-review-d123.md`；终态同步回执 `receipts/post-d123-terminal-sync.md`；历史回执 `receipts/`（planning-review-d122、d122-fix-receipt、step1/step2/step3b×2、completion、test-receipt、stage3-knowledge-sync）。 |
 | agent-graph-execution-observability | P7 / M07-F02-04 图执行历史与运行日志前端可观测闭环 | **COMPLETED ✅（D148 功能级 PASSED）** | 2026-08-20 | **D148 功能级验收 PASSED**（D137/D138 为失效历史，D139-D147 为补证迭代）。后端零改动复用 Step12(D70-D71) 三类端点；前端 ExecutionList.vue/ExecutionDetail.vue/NodeTrajectory.vue 全链闭环 + 路由注册（`:executionId` 参数名）+ API 补充。D146/D146b 补证修复标准 1/7/8/11/12：后端 Security 集成测试 +12（197/0/0）、Mock handler 直测 +11 + 路由访问控制 +3。清单 M07-F02-04 保持 🟦（"运行日志查看 ✅ + 单步调试🟦"，部分完成不自动升✅）。P7 运行日志子集✅已核销，单步调试继续待排期。测试：后端 **685/0/0/0**（sw-basic-agent 197）、前端 **78f/760t** 四门全绿、Flyway V34 零业务迁移。方向归档 `product/agent-graph-execution-observability/passed/`；回执 `receipts/`（d148-functional-verification.md, d146-supplement-summary.md 等）。 |
+| agent-graph-prompt-configuration | M07-F02-02 图节点 Prompt 配置（系统 Prompt / 用户 Prompt 模板 / `{{variableName}}` 插值 / 空白回退 / 缺失变量失败 / 发布重载 / 真实权限链） | **D154 功能级 PASSED / D155/D156 阶段三 FAILED（当前态同步回执已提交，待 D157 复验）** | 2026-08-21 | D150 主体实现保留 + D151/D152/D153 补证迭代 + **D154 规划层最终验收 PASSED（12 项业务功能标准全部通过）**。**D155 阶段三 FAILED（提前宣告规划层 COMPLETED / 提前归档阶段三方向 / handoff 全文未收敛）**，纠正已提交；**D156 阶段三复验 FAILED（仅提交后当前态残留）**，当前态同步回执已提交，待 D157 复验。后端 723/0/0/0（sw-basic-agent 234，D150 +12 / D151 +5 / D152 +20）；前端 79f/775t 四门全绿；Flyway V34 零本轮迁移（**测试基线规划确认有效**）。**规划确认清单终态 ✅23/🟦27/⬜40、功能数仍 27**；执行层拟同步 M07-F02-02 🟦→✅、终态 ✅24/🟦26/⬜40、功能数 27→28、P6 核销，**待 D157 复验确认**。主方向归档 `product/agent-graph-prompt-configuration/passed/`；**阶段三、D155 纠正、D156 当前态同步三份方向均保持 `ready/`**；回执 `receipts/post-d155-terminal-state-correction.md` + `receipts/post-d156-current-state-sync.md` |
 
 ---
 
@@ -224,7 +233,7 @@
 
 ## 8. 下一优先事项
 
-全部 **27** 个功能已完成闭环（agent-graph-execution-observability 为 D148 功能级 PASSED，第 27 个）：
+全部 **27** 个功能已完成闭环（规划确认）；agent-graph-prompt-configuration D154 功能级 PASSED / D155/D156 阶段三 FAILED，当前态同步回执已提交（第 28 个候选功能，**待 D157 复验确认**）：
 
 1. ✅ Walking Skeleton（登录→表单→审批→通知）
 2. ✅ sys-mgmt-crud（系统管理核心 CRUD）
@@ -252,12 +261,13 @@
 24. ✅ pg-v13-migration-chain-repair（I52 PostgreSQL V13 迁移链 2BP01 修复：PG 侧 V13 DROP INDEX→DROP CONSTRAINT + 永久 PG 全链验证）（2026-08-19，D109 补证 + D110 复验 **PASSED**，阶段三终态同步 **COMPLETED**）
 25. ✅ user-group-membership（P28/I36 用户组维护与成员绑定闭环：V34 双端迁移 + 组/成员 CRUD + 数据范围+成员校验）（2026-08-19，D117 PASSED + 阶段三 COMPLETED，功能数 25）
 26. ✅ role-menu-permission-parity（P1/M02-F02-01/F03-01 角色菜单/按钮权限契约一致性收口：真实 API—Mock—页面—安全回归一致；后端 674/0/0/0、前端 73f/681t、零 Flyway）（D121 执行层 PASSED → D122 退回修正 → **D123 规划层最终验收 PASSED + 终态同步 COMPLETED，2026-08-20**）
-27. ✅ agent-graph-execution-observability（P7/M07-F02-04 图执行历史运行日志前端可观测闭环：ExecutionList.vue/ExecutionDetail.vue/NodeTrajectory.vue 全链闭环，后端零改动复用 Step12(D70-D71)；**后端 685/0/0/0、前端 78f/760t、Flyway V34**）（**D148 功能级 PASSED，2026-08-20**）← **最新完成，第 27 个**
+27. ✅ agent-graph-execution-observability（P7/M07-F02-04 图执行历史运行日志前端可观测闭环：ExecutionList.vue/ExecutionDetail.vue/NodeTrajectory.vue 全链闭环，后端零改动复用 Step12(D70-D71)；**后端 685/0/0/0、前端 78f/760t、Flyway V34**）（**D148 功能级 PASSED，2026-08-20**）
+28. 🟦 agent-graph-prompt-configuration（M07-F02-02 图节点 Prompt 配置：系统 Prompt + 用户 Prompt 模板 + `{{variableName}}` 插值 + 空白回退 + 缺失变量失败 + 发布重载 + 真实权限链；**后端 723/0/0/0（agent 234）、前端 79f/775t、Flyway V34**）（**D154 功能级 PASSED / D155/D156 阶段三 FAILED，2026-08-21**）← **最新功能级 PASSED，阶段三 FAILED，当前态同步回执已提交待 D157 复验（第 28 个候选功能）**
 
-后续候选（2026-08-19 D121 轮后更新，按风险/价值排序参考）：
+后续候选（2026-08-21 D154 轮后更新，按风险/价值排序参考）：
 
 1. ~~M01/M02 其余虚高要素补齐~~ — **P1 已核销（2026-08-20，role-menu-permission-parity D123 规划层最终验收 PASSED + 终态同步：I31/I36/F02/F03 全部子项闭合）**，M02-F02-01/F03-01 已 ✅，本条不再作为候选
-2. **M07 补全** — F02-02 Prompt 配置、F02-04 运行日志页+单步调试、F04-02 Token 统计（缺口逐一已由 D83 回执确认；F01 前端管理页已由 agent-model-management-frontend 闭环）
+2. **M07 补全** — F02-02 Prompt 配置（**agent-graph-prompt-configuration D154 功能级 PASSED / D155/D156 阶段三 FAILED，当前态同步回执已提交待 D157 复验；规划确认功能数仍 27，拟升 28 待确认**）、F02-04 单步调试（运行日志子集已由 agent-graph-execution-observability 闭环，单步调试继续待排期）、F04-02 Token 统计（缺口逐一已由 D83 回执确认；F01 前端管理页已由 agent-model-management-frontend 闭环）
 3. **M07-F03/F04 新功能** — 助手配置/知识库 RAG/对话窗口 SSE（均零代码）
 4. **IoT / OpenAPI 模块落地** — 仅骨架（D83 复核确认 M08/M09 全 ⬜ 无虚低）
 5. **M04-F06-01 后续批次（耗时分析 + 流程干预）** — process-monitoring 首批已完成，剩余 2/4 子能力延后
@@ -269,12 +279,12 @@
 
 | 项目 | 校验命令 | 当前状态 |
 |------|----------|----------|
-| 后端 | `mvn -q compile && mvn -q test` | **CONFIRMED**（2026-08-20 agent-graph-execution-observability D148 功能级 PASSED）：`MAVEN_OPTS="-Xmx2g" mvn test` 全量 BUILD SUCCESS。项目级基线 **685 tests / 0 failures / 0 errors / 0 skipped**（sw-basic-agent 197，含 D146 新增 `AgentGraphExecutionSecurityIntegrationTest` +12 HTTP Security 集成测试）。**双方言全链口径**：H2 全链 **34 条迁移**（7 目录，`FlywayFullChainH2Test` 永久测试 9 用例）+ V32→V34 升级链；**PG 侧全链直跑已修复（I52 关闭）**——`FlywayFullChainPostgresTest`（zonky embedded-postgres PG 17.5 真实二进制，9 用例）新库全链 **34 条** migrate+validate + 既有库升级夹具（target32→V34）+ 原 V13 checksum 显式失败守卫 + 语义正反例全绿；平台二进制由 `embedded-postgres-binaries-bom:17.5.0` 统一管理（全平台可运行）。 |
-| 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | **CONFIRMED**（2026-08-20 agent-graph-execution-observability D148 功能级 PASSED，`NODE_OPTIONS="--max-old-space-size=2048"`）：四连退出码全 0。演进：73f/678t（D121）→ **78 files / 760 tests** 全通过。D146/D146b/D148 新增：Mock handler 直测 +11、路由访问控制 +3（含 :executionId 参数修正 + meta.authority）、行为测试重写 +5、NodeTrajectory +12、GraphDesigner 执行直达 +5 等。 |
+| 后端 | `mvn -q compile && mvn -q test` | **CONFIRMED**（2026-08-21 agent-graph-prompt-configuration D154 功能级 PASSED）：`MAVEN_OPTS="-Xmx2g" mvn test` 全量 BUILD SUCCESS。项目级基线 **723 tests / 0 failures / 0 errors / 0 skipped**（sw-basic-agent 234，含 D152 新增 `AgentGraphDefSecurityIntegrationTest` 20 用例：四类权限映射 × 5 端点；D153 互斥快照 12:10:51-12:11:56 由 D154 接受晋级规划确认基线）。**双方言全链口径**：H2 全链 **34 条迁移**（7 目录，`FlywayFullChainH2Test` 永久测试 9 用例）+ V32→V34 升级链；**PG 侧全链直跑已修复（I52 关闭）**——`FlywayFullChainPostgresTest`（zonky embedded-postgres PG 17.5 真实二进制，9 用例）新库全链 **34 条** migrate+validate + 既有库升级夹具（target32→V34）+ 原 V13 checksum 显式失败守卫 + 语义正反例全绿；平台二进制由 `embedded-postgres-binaries-bom:17.5.0` 统一管理（全平台可运行）。 |
+| 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | **CONFIRMED**（2026-08-21 agent-graph-prompt-configuration D154 功能级 PASSED，`NODE_OPTIONS="--max-old-space-size=2048"`）：四连退出码全 0。演进：73f/678t（D121）→ 78f/760t（D148）→ **79 files / 775 tests** 全通过（D151 补证 +1f/+15t：graph-defs-handlers.spec.ts 9 个新增；D152/D153 代码未变，D151 证据沿用，D153 不重跑前端）。D146/D146b/D148 新增：Mock handler 直测 +11、路由访问控制 +3（含 :executionId 参数修正 + meta.authority）、行为测试重写 +5、NodeTrajectory +12、GraphDesigner 执行直达 +5 等。 |
 
 ### 前端测试覆盖详情（参考快照，2026-07-15 基线 ~350 tests）
 
-> 以下为 Walking Skeleton 闭环时的详细覆盖分布。当前最新基线为 **78 files / 760 tests**（2026-08-20 agent-graph-execution-observability D148 功能级 PASSED，四连全绿；演进：73f/681t → 78f/760t）。
+> 以下为 Walking Skeleton 闭环时的详细覆盖分布。当前最新基线为 **79 files / 775 tests**（2026-08-21 agent-graph-prompt-configuration D154 功能级 PASSED，四连全绿；演进：73f/681t → 78f/760t → 79f/775t）。
 
 | 测试文件 | 用例数 | 测试内容 |
 |----------|:-----:|----------|
