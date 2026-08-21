@@ -1,12 +1,14 @@
 # 当前状态
 
-> 最后更新：2026-08-21（agent-graph-execution-observability D148 功能级 PASSED + D149 阶段三复验 PASSED / COMPLETED；已完成功能 27 个）
+> 最后更新：2026-08-21（D157阶段三最终复验PASSED；agent-graph-prompt-configuration COMPLETED；规划确认已完成功能28个）
 
 ## 当前进行功能
 
-当前无进行中功能（agent-graph-execution-observability 已于 2026-08-21 COMPLETED，见最近完成）。
+**无进行中业务功能。**
 
 ## 最近完成功能
+
+**agent-graph-prompt-configuration（M07-F02-02）COMPLETED（D154功能级PASSED + D157阶段三最终复验PASSED，2026-08-21）✅**：系统Prompt与`{{variableName}}`用户模板一次性插值、空白回退、未定义变量调用前失败、发布/重载、权限与Mock语义12项全部闭合；后端723/0/0/0（agent234）、前端79f/775t、V34零迁移。M07-F02-02升✅、P6核销，清单✅24/🟦26/⬜40，规划确认功能数28；四份方向均归档`passed/`。最终审查：`product/agent-graph-prompt-configuration/receipts/planning-stage3-review-d157.md`。
 
 **agent-graph-execution-observability（P7第一子集/M07-F02-04）COMPLETED（D148 功能级 PASSED + D149 阶段三复验 PASSED，2026-08-21）✅**：标准1-11全过+§3.3同步；真实router/authGuard行为测试、后端685/0/0/0（agent 197）、前端78f/760t、V34零迁移；P7运行日志子集核销，单步调试保留；M07-F02-04保持🟦，功能数27。最终审查：`product/agent-graph-execution-observability/receipts/planning-stage3-review-d149.md`。
 
@@ -88,14 +90,14 @@ process-monitoring (M04-F06-01)：COMPLETED（详情见 `knowledge/`，2026-07-3
 
 ## 测试基线
 
-当前结果：**agent-graph-execution-observability（P7第一子集/M07-F02-04）COMPLETED（D148 功能级 PASSED + D149 阶段三复验 PASSED，2026-08-21）**——后端 **685/0/0/0**（sw-basic-agent 197）、前端 **78f/760t** 四门全绿；清单 **✅23/🟦27/⬜40**、P7运行日志子集核销（单步调试保留）、功能数 27（第 27 个已完成功能）。
+当前结果：agent-graph-prompt-configuration经D157阶段三最终复验`COMPLETED`；规划确认基线为后端 **723/0/0/0**（agent234）、前端 **79f/775t**。
 
-- 后端：**685 tests**（surefire XML 聚合口径，0/0/0；sw-basic-agent 模块 197）；D147 补证闭合真实 router/authGuard 行为测试。
-- 前端：本轮 **78 spec files / 760 tests**（role-menu-permission-parity D123 基线 73f/681t → +5f/+79t），四门退出 0；标准11 实际运行带时间戳进程互斥快照（23:21-23:25）。
-- 功能清单：**✅23/🟦27/⬜40** 共 90 行；M07-F02-04 保持 🟦（部分完成：运行日志子集核销，单步调试保留）。
+- 后端：规划确认合规基线 **723 tests**（agent234）；D153补证轮12:10:51—12:11:56，2G与前端进程零快照证据通过D154复验。
+- 前端：**79 spec files / 775 tests**，四门退出0；D151 的 11:25:18—11:26:01 与后端11:24:03—11:24:44零重叠证据保留（D152 前端代码未变）。
+- 功能清单：规划确认 **✅24/🟦26/⬜40** 共90行；M07-F02-02已由🟦升✅。
 - Flyway：root 路径 **V34 已占**；**V34 零业务迁移**（H2/PG 双方言 34 条 migrate+validate 维持）。
-- 已完成功能：**27 个**（agent-graph-execution-observability 为第 27 个，D148 功能级 PASSED + D149 阶段三复验 PASSED / COMPLETED）。
-- 需求池：P7 运行日志子集核销（单步调试保留）；其余 P/I 编号维持既有状态。
+- 已完成功能：规划确认 **28 个**。
+- 需求池：P6已核销；P7运行日志子集核销（单步调试保留）；其余P/I编号维持既有状态。
 
 ## 模块完成度（简表）
 
