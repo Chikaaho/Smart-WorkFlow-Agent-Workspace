@@ -1,14 +1,16 @@
 # 当前状态
 
-> 最后更新：2026-08-21（D157阶段三最终复验PASSED；agent-graph-prompt-configuration COMPLETED；规划确认已完成功能28个）
+> 最后更新：2026-08-22（agent-token-usage-observability D174最终验收COMPLETED；13/13；已完成功能29）
 
 ## 当前进行功能
 
-**无进行中业务功能。**
+无。
 
 ## 最近完成功能
 
-**agent-graph-prompt-configuration（M07-F02-02）COMPLETED（D154功能级PASSED + D157阶段三最终复验PASSED，2026-08-21）✅**：系统Prompt与`{{variableName}}`用户模板一次性插值、空白回退、未定义变量调用前失败、发布/重载、权限与Mock语义12项全部闭合；后端723/0/0/0（agent234）、前端79f/775t、V34零迁移。M07-F02-02升✅、P6核销，清单✅24/🟦26/⬜40，规划确认功能数28；四份方向均归档`passed/`。最终审查：`product/agent-graph-prompt-configuration/receipts/planning-stage3-review-d157.md`。
+**agent-token-usage-observability（P8 / M07-F04-02 Token统计子集）COMPLETED（D170功能级 + D172阶段三 + D174最终验收，2026-08-22）✅**：13/13；P8核销、M07-F04-02✅、清单25/25/40、功能数29；基线755/Agent267、82f/815t、V35。最终审查：`product/agent-token-usage-observability/receipts/planning-final-review-d174.md`。
+
+**agent-graph-prompt-configuration（M07-F02-02）COMPLETED（D154功能级PASSED + D157阶段三最终复验PASSED，2026-08-21）✅**：系统Prompt与`{{variableName}}`用户模板一次性插值、空白回退、未定义变量调用前失败、发布/重载、权限与Mock语义12项全部闭合；后端723/0/0/0（agent234）、前端79f/775t、V34零迁移。M07-F02-02升✅、P6核销，清单⬜24/🟦26/⬜40，规划确认功能数28；四份方向均归档`passed/`。最终审查：`product/agent-graph-prompt-configuration/receipts/planning-stage3-review-d157.md`。
 
 **agent-graph-execution-observability（P7第一子集/M07-F02-04）COMPLETED（D148 功能级 PASSED + D149 阶段三复验 PASSED，2026-08-21）✅**：标准1-11全过+§3.3同步；真实router/authGuard行为测试、后端685/0/0/0（agent 197）、前端78f/760t、V34零迁移；P7运行日志子集核销，单步调试保留；M07-F02-04保持🟦，功能数27。最终审查：`product/agent-graph-execution-observability/receipts/planning-stage3-review-d149.md`。
 
@@ -90,14 +92,14 @@ process-monitoring (M04-F06-01)：COMPLETED（详情见 `knowledge/`，2026-07-3
 
 ## 测试基线
 
-当前结果：agent-graph-prompt-configuration经D157阶段三最终复验`COMPLETED`；规划确认基线为后端 **723/0/0/0**（agent234）、前端 **79f/775t**。
+当前结果：agent-token-usage-observability经D174最终验收`COMPLETED`（13/13）；确认基线为后端 **755/0/0/0**（agent267）、前端 **82f/815t**。
 
-- 后端：规划确认合规基线 **723 tests**（agent234）；D153补证轮12:10:51—12:11:56，2G与前端进程零快照证据通过D154复验。
-- 前端：**79 spec files / 775 tests**，四门退出0；D151 的 11:25:18—11:26:01 与后端11:24:03—11:24:44零重叠证据保留（D152 前端代码未变）。
-- 功能清单：规划确认 **✅24/🟦26/⬜40** 共90行；M07-F02-02已由🟦升✅。
-- Flyway：root 路径 **V34 已占**；**V34 零业务迁移**（H2/PG 双方言 34 条 migrate+validate 维持）。
-- 已完成功能：规划确认 **28 个**。
-- 需求池：P6已核销；P7运行日志子集核销（单步调试保留）；其余P/I编号维持既有状态。
+- 后端：D170功能级确认 **755/0/0/0**（agent267，D169新鲜门禁08:57:33—08:58:18与08:58:31—08:59:52两轮2G串行，pgrep不自匹配零快照）。
+- 前端：D170功能级确认 **82 spec files / 815 tests** 四门全绿（D169新鲜门禁）。
+- 功能清单：阶段三已同步 **✅25/🟦25/⬜40** 共90行；M07-F04-02已升✅（P8已核销）。
+- Flyway：D170功能级确认 **V35** 双方言35条全链；终态状态同步待标准13规划最终复验。
+- 已完成功能：规划确认 **29**。
+- 需求池：P8已核销；P6已核销；P7运行日志子集核销（单步调试保留）。
 
 ## 模块完成度（简表）
 

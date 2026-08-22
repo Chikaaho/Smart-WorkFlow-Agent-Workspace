@@ -1,8 +1,14 @@
 # 会话交接
 
-> 最后更新：2026-08-21（agent-graph-prompt-configuration D157 COMPLETED；功能数28）
+> 最后更新：2026-08-22（agent-token-usage-observability D174最终验收COMPLETED；13/13；已完成功能29）
 
 ## 最新状态与最近完成
+
+**agent-token-usage-observability（P8 / M07-F04-02 Token统计子集）COMPLETED（D170功能级 + D172阶段三 + D174最终验收，2026-08-22）✅**
+- 标准1—12全部通过；D169闭合真实导航到页、723历史幽灵计数溯源和可复现互斥零快照。
+- 功能级基线：后端755/Agent267、前端82f/815t四门、Flyway V35双方言35条全链。
+- 标准13经D172规划验收PASSED；清单25/25/40、P8核销、M07-F04-02✅、功能数29获规划确认。
+- D173终态文字零残留复验通过，13/13整体COMPLETED。最终审查：`product/agent-token-usage-observability/receipts/planning-final-review-d174.md`。
 
 **agent-graph-prompt-configuration（M07-F02-02）：COMPLETED（D154功能级PASSED + D157阶段三最终复验PASSED，2026-08-21）✅**
 - 方向12项功能标准与后端723/agent234、前端79f/775t、V34零迁移基线保持通过。
@@ -117,16 +123,16 @@
 
 ## 当前基线
 
-- 后端：规划确认合规基线 **723 tests**（agent234）；D153补证轮12:10:51—12:11:56的2G与互斥证据已通过D154复验
-- 前端：已确认 **79 spec files / 775 tests**，四门退出0；与后端门禁零重叠（D153 不重跑前端，D151 四门证据保留）
-- 功能清单规划确认 **✅24 / 🟦26 / ⬜40，共90行**
-- Flyway：root路径 **V34已占用**；PG 17.5与H2新库全链均为**34条**migrate+validate，升级链通过；V34 零业务迁移。
-- 已完成功能：规划确认 **28 个**
+- 后端：D170功能级确认 **755 tests**（agent267）
+- 前端：D170功能级确认 **82 spec files / 815 tests**
+- 功能清单阶段三已同步 **✅25 / 🟦25 / ⬜40，共90行**（M07-F04-02 已升✅，P8已核销）
+- Flyway：D170功能级确认 **V35** 双方言35条全链
+- 已完成功能：规划确认 **29**
 - 执行约束：**本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行**（先后端后前端），禁并行编译
 
 ## 下一动作
 
-**下一动作**：本功能已COMPLETED；规划层从候选池比较并选定下一唯一功能后下发新方向。
+**下一动作**：当前功能已COMPLETED。下一规划会话读取memory当前状态，比较候选并选择唯一需求；本会话不自动启动新功能。
 
 **探索回执已回收并核销（2026-08-16，D83 裁定 + D84 落库核销）**：
 - 清单 90/90 零不一致（I1 无第三次复发）；基线全部核实（527/66f569t——**569 为运行口径，静态 561**/V30+28/16 功能）；memory 自洽。
@@ -138,24 +144,24 @@
 - **探索任务核销（2026-08-16 晚，4/4 全闭环）**：i18-close-sync ✅（I18 注册表已同步「✅ 已关闭（D84）」仿 I33/I37 先例，memory 侧核对一致）。**本轮全部委派任务已闭环，无进行中探索**。
 - **当前规划裁定**（2026-08-18）：user-org-association-query D101 PASSED，阶段三同步 COMPLETED；D93-D97 双角色治理作为前置基线保持有效。
 
-后续候选（本功能已COMPLETED；以下均不并行推进）：
-1. M07-F04-02 Token 统计
-2. M07-F03/F04 新功能：助手配置/知识库RAG（选型未定）/对话窗口SSE（均零代码）
-3. P7 单步调试（运行日志子集已核销，单步调试保留为后续项）
-4. IoT / OpenAPI 模块落地（仅骨架）
-5. 小项池：停用即时生效（JWT 过滤器层）、数据权限遗留（部门档子查询 deleted 过滤、job 非分页入口纳管、PG 联调验证）（I49/I51/I26/I47 已分别修复关闭；**I52 已关闭，D110 COMPLETED**）
+本轮已选定 P8 / M07-F04-02 Token统计子集，以下候选均不并行推进：
+1. P7 单步调试（需断点/控制状态机，保留后续）
+2. M07-F03/F04 助手配置、知识库RAG、SSE对话窗口（选型或地基未定）
+3. IoT / OpenAPI 模块落地（仅骨架）
+4. 小项池：停用即时生效（JWT过滤器层）、数据权限遗留（部门档子查询deleted过滤、job非分页入口纳管、PG联调验证）
 
 ## 新会话启动提示词
 
 ```
-你是 Smart-WorkFlow 根目录代理。请先显式声明本会话角色。agent-graph-prompt-configuration已于D157完成；若为规划角色，整理候选、选定下一唯一功能并说明原因；若为执行角色，等待规划层下发新方向。
+你是 Smart-WorkFlow 根目录代理。请先显式声明本会话角色。agent-token-usage-observability已于D174最终验收COMPLETED（13/13，第29个已完成功能）。若为规划角色，读取memory当前状态并比较候选、选择下一唯一需求；不得自动并行启动多个功能。
 
 最新状态：
-- agent-graph-prompt-configuration（M07-F02-02）**COMPLETED（D154功能级PASSED + D157阶段三最终复验PASSED）✅**——功能12项与723/agent234/79f775t保持通过；M07-F02-02升✅、P6核销、清单24/26/40、规划确认功能数28。审查：`product/agent-graph-prompt-configuration/receipts/planning-stage3-review-d157.md`
-- agent-graph-execution-observability（P7第一子集/M07-F02-04）**COMPLETED（D148 功能级 PASSED + D149 阶段三复验 PASSED，2026-08-21）✅**——标准1-11全过+§3.3同步；后端685/0/0/0（agent 197）、前端78f/760t四门全绿；V34零迁移；P7运行日志子集核销，单步调试保留；M07-F02-04保持🟦
-- role-menu-permission-parity（P1 / M02-F02-01 / M02-F03-01）**COMPLETED（D123 规划层最终验收 PASSED + 阶段三终态同步，2026-08-20）✅**——后端 674/0/0/0、前端 73f/681t、零 Flyway；M02-F02-01/F03-01 ✅、P1 核销、功能数 26
-- 规划确认基线：后端 **723/0/0/0**（sw-basic-agent 234）、前端 **79f/775t**、Flyway **V34/双方言34条全链**；清单 **✅24/🟦26/⬜40** 共90行；已完成功能 **28 个**
+- agent-token-usage-observability（P8 / M07-F04-02 Token统计子集）**COMPLETED（D170+D172+D174，13/13，第29个）**——基线755/Agent267、82f/815t、V35；清单25/25/40、P8核销、M07-F04-02✅。最终审查：`product/agent-token-usage-observability/receipts/planning-final-review-d174.md`
+- agent-graph-prompt-configuration（M07-F02-02）**COMPLETED（D154+D157，2026-08-21，第28个）**——主方向及三份阶段三/纠正方向均归档`passed/`；后端723/agent234、前端79f/775t、V34；清单✅24/🟦26/⬜40、功能数28、P6核销
+- agent-graph-execution-observability（P7第一子集/M07-F02-04）**COMPLETED（D148+D149，2026-08-21，第27个）**——后端685/0/0/0（agent197）、前端78f/760t、V34；P7运行日志子集核销，单步调试保留；M07-F02-04保持🟦
+- role-menu-permission-parity（P1 / M02-F02-01 / M02-F03-01）**COMPLETED（D123，2026-08-20，第26个）**——后端674/0/0/0、前端73f/681t、零Flyway；P1核销
+- 规划确认基线：后端 **755/0/0/0**（sw-basic-agent 267）、前端 **82f/815t**、Flyway **V35**；清单 **✅25/🟦25/⬜40** 共90行、功能数 **29**
 - 执行约束：本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行，禁并行编译
 
-下一动作：规划层比较候选并选定下一唯一功能；执行层等待新方向。
+下一动作：下一规划会话读取memory当前状态，比较候选并选择唯一需求；本会话不自动启动新功能。
 ```
