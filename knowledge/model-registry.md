@@ -43,12 +43,12 @@
 |------|-----|
 | **角色名** | 规划（Planner） |
 | **本质** | 制定方向与验收——只规划不执行 |
-| **允许读取** | `system.md`、`memory/`（压缩记忆）、`search_fallback/`（探索结果）、`product/`（需求方向与回执）、`todo/` |
+| **允许读取** | `system.md`、`roles/planner.md`、`memory/`（压缩记忆）、`search_fallback/`（探索结果）、`product/`（需求方向与回执）、`todo/` |
 | **允许写入** | `system.md`、`memory/`、`search_task/`、`product/`（ready/→passed/ 流转）、`todo/` |
 | **允许执行** | 不执行 `mvn`/`pnpm`/`java`/`node` 等状态变更命令 |
 | **核心职责** | 阅读记忆、派发探索（search_task）、制定需求方向（目标/非目标/影响范围/风险）、验收需求（对照回执判定 PASSED/FAILED/BLOCKED）、更新记忆（memory/） |
 | **禁止事项** | 直接读取 `knowledge/` 与两端代码；修改业务代码；代执行角色拆 Step 或写执行/测试细节；执行状态变更命令；以"验证方案精确性"为由读取代码（D41） |
-| **上下文策略** | **最小上下文**（只接收 §0.5 限定的 6 类输入；探索结论经 search_fallback 压缩后进入） |
+| **上下文策略** | **最小上下文**（只接收 roles/planner.md §5 限定的 6 类输入；探索结论经 search_fallback 压缩后进入） |
 | **对应旧体系** | 原 Anthropic 系（Claude Code 规划层） |
 
 ### 2.2 执行（Executor）
@@ -57,7 +57,7 @@
 |------|-----|
 | **角色名** | 执行（Executor） |
 | **本质** | 探索与落地——只执行不规划 |
-| **允许读取** | 全部目录：`knowledge/`、`product/`、`memory/`、`search_task/`、`search_fallback/`、`system.md`、`todo/`、两端代码 |
+| **允许读取** | 全部目录：`knowledge/`、`product/`、`memory/`、`search_task/`、`search_fallback/`、`system.md`、`roles/executor.md`、`todo/`、两端代码 |
 | **允许写入** | `knowledge/`（完整知识库）、`search_fallback/`（探索回执）、`product/`（receipts/ 回执）、自己项目的代码（后端 `Smart-WorkFlow/` 或前端 `Smart-WorkFlow-Web/`） |
 | **允许执行** | 自己项目的编译/测试命令：后端 `mvn` 系（`MAVEN_OPTS="-Xmx2g"`）、前端 `pnpm`/`npm` 系（`NODE_OPTIONS="--max-old-space-size=2048"`） |
 | **核心职责** | 探索代码、执行任务、根据需求方向自循环迭代验收（自行拆 Step、自主执行/修复/验收）、更新知识库（knowledge/）、压缩记忆（search_fallback/）、写执行回执和测试回执 |
@@ -71,8 +71,8 @@
 |------|-----|
 | **角色名** | 管理员（Admin） |
 | **本质** | 维护架构与宪法——不规划不执行 |
-| **允许读取** | `system.md`、`memory/architecture.md`、`knowledge/architecture.md` 等架构/宪法类文件（仅作变更对照） |
-| **允许写入** | `system.md`（系统宪法）、`memory/architecture.md`、`knowledge/architecture.md`（架构文档） |
+| **允许读取** | `system.md`、`roles/`（全部角色定义文件）、`memory/architecture.md`、`knowledge/architecture.md` 等架构/宪法类文件（仅作变更对照） |
+| **允许写入** | `system.md`（系统宪法）、`roles/`（角色定义文件）、`memory/architecture.md`、`knowledge/architecture.md`（架构文档） |
 | **允许执行** | 不执行 `mvn`/`pnpm`/`java`/`node` 等状态变更命令 |
 | **核心职责** | 仅更新架构或更新系统宪法；与变更配套的知识索引/目录注释同步 |
 | **禁止事项** | 规划角色的任何业务操作（制定需求方向、派发探索、验收回执、更新 memory/ 状态文件）；执行角色的任何业务操作（读写业务代码、运行编译测试、更新 knowledge/ 非架构文件、写回执）；修改两端代码 |
@@ -97,12 +97,12 @@
 
 ## 4. 维护规则
 
-1. **角色变更**：如需调整某角色的权限边界，先修改 `system.md`（宪法），再同步本注册表；本注册表不得脱离 `system.md` 独立定义角色。
-2. **一致性**：本注册表是 `system.md` §0 的速查镜像，冲突时以 `system.md` 为准。
-3. **会话角色声明**：每个新会话开始时，用户必须声明角色（`system.md` §0.2）；未声明 → 拒绝执行任何任务。
+1. **角色变更**：如需调整某角色的权限边界，先修改 `roles/` 对应角色定义文件（或 `system.md` 公共协议），再同步本注册表；本注册表不得脱离 `roles/` 独立定义角色。
+2. **一致性**：本注册表是 `system.md` §0 与 `roles/` 的速查镜像，冲突时以 `system.md` 与 `roles/` 为准。
+3. **会话角色声明**：每个新会话开始时，用户必须声明角色（`system.md` §0.2）；未声明 → 拒绝执行任何任务。声明后模型自行读取对应角色定义文件（`system.md` §0.9「认领后必读」硬约束）。
 
 ---
 
-> 最后更新：2026-08-14
+> 最后更新：2026-08-22
 > 维护者：管理员角色
-> 关联规则：system.md §0（角色定位）、§1（权限边界）、§10.1（角色声明前置）
+> 关联规则：system.md §0（角色定位与入口）、§0.9（角色定义文件）、roles/planner.md、roles/executor.md、roles/admin.md（角色完整定义，2026-08-22 自 system.md 拆分，见 system.md §16 迁移映射表）

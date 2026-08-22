@@ -353,7 +353,7 @@
 ## 15. 新会话启动提示词
 
 ```
-你是 Smart-WorkFlow 根目录规划代理。请按 system.md §10 执行新会话恢复。
+你是 Smart-WorkFlow 根目录规划代理。请按 system.md §0.2 声明角色并读取 `roles/planner.md`，再按该文件 §10 执行新会话恢复。
 
 最新状态：
 - agent-token-usage-observability（P8 / M07-F04-02 Token统计子集）**D170+D172 PASSED，13/13；D173终态文字已同步，等待规划层零残留确认（第29个已完成功能）**——13/13全部PASSED；功能级基线后端755/0/0/0（agent267）、前端82f/815t、V35；清单✅25/🟦25/⬜40、P8已核销、M07-F04-02✅。审查`product/agent-token-usage-observability/receipts/planning-stage3-review-d172.md`；终态入口`ready/executor-terminal-sync-prompt-d173.md`（当前唯一入口，D171已归档至`passed/`）
