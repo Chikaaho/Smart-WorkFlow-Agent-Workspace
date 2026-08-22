@@ -1,9 +1,10 @@
 # 功能索引
 
-> 最后更新：2026-08-22（agent-token-usage-observability D174最终验收COMPLETED；13/13；功能数29）
+> 最后更新：2026-08-23（D183终态复验PASSED；已完成功能30）
 
 | 功能 | 模块 | 状态 | 当前 Step | 备注 |
 |------|------|:---:|------|------|
+| agent-graph-step-debugging | P7 第二子集 / M07-F02-04 | **COMPLETED** | D180功能15/15 + D183终态8/8（2026-08-23） | P7已核销、M07-F02-04✅、清单✅26/🟦24/⬜40、功能数30（第30个）；正式基线827/agent338、86f/850t、V36。主方向与终态同步方向均归档`passed/`；最终审查`product/agent-graph-step-debugging/receipts/planning-terminal-final-review-d183.md`。 |
 | agent-token-usage-observability | P8 / M07-F04-02 Token统计子集 | **COMPLETED** | D170功能级 + D172阶段三 + D174最终验收（2026-08-22） | 13/13；基线755/Agent267、82f/815t、V35；清单25/25/40、P8核销、M07-F04-02✅、第29个已完成功能。审查`product/agent-token-usage-observability/receipts/planning-final-review-d174.md`。 |
 | agent-graph-prompt-configuration | M07-F02-02 | **COMPLETED** | D154功能级PASSED + D157阶段三最终复验PASSED（2026-08-21） | 12项功能标准全部通过；后端723/agent234、前端79f/775t、V34零迁移。M07-F02-02升✅、P6核销、清单24/26/40、第28个已完成功能；四份方向归档`passed/`。最终审查`receipts/planning-stage3-review-d157.md`。 |
 | agent-graph-execution-observability | P7 第一子集 / M07-F02-04 | **COMPLETED** | D148 功能级 PASSED + D149 阶段三复验 PASSED（2026-08-21） | 标准1-11全过+§3.3同步；真实router/authGuard行为测试；后端685/0/0/0、agent模块197、前端78f/760t；V34零迁移；P7运行日志子集核销，单步调试保留；M07-F02-04保持🟦；第27个已完成功能。最终审查：`product/agent-graph-execution-observability/receipts/planning-stage3-review-d149.md` |
@@ -35,5 +36,5 @@
 | notify-frontend | M05 | COMPLETED | 3 steps PASSED | 通知列表+标记已读 |
 
 ---
-> 本文件为压缩索引。各功能完整 Step 列表、证据链、测试统计在 `knowledge/features/<name>.md`。已完成功能 **29 个**；agent-token-usage-observability为第29个（D174最终验收COMPLETED）。
+> 本文件为压缩索引。各功能完整 Step 列表、证据链、测试统计在 `knowledge/features/<name>.md`。已完成功能 **30 个**；agent-graph-step-debugging为第30个（D180功能15/15 + D183终态8/8 COMPLETED），agent-token-usage-observability为第29个。
 > 需要时：创建 search_task，范围 `knowledge/features/<feature-name>.md`

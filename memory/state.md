@@ -1,12 +1,14 @@
 # 当前状态
 
-> 最后更新：2026-08-22（agent-token-usage-observability D174最终验收COMPLETED；13/13；已完成功能29）
+> 最后更新：2026-08-23（D183终态复验PASSED；agent-graph-step-debugging COMPLETED，第30个）
 
 ## 当前进行功能
 
 无。
 
 ## 最近完成功能
+
+**agent-graph-step-debugging（P7 第二子集 / M07-F02-04 单步调试）COMPLETED（D180功能15/15 + D183终态同步8/8，2026-08-23，第30个）✅**：P7已核销、M07-F02-04升✅、清单✅26/🟦24/⬜40、功能数30；正式基线后端 **827/0/0/0（agent338）**、前端 **86f/850t**、Flyway **V36**。主方向与终态同步方向均归档`passed/`；最终审查：`product/agent-graph-step-debugging/receipts/planning-terminal-final-review-d183.md`。
 
 **agent-token-usage-observability（P8 / M07-F04-02 Token统计子集）COMPLETED（D170功能级 + D172阶段三 + D174最终验收，2026-08-22）✅**：13/13；P8核销、M07-F04-02✅、清单25/25/40、功能数29；基线755/Agent267、82f/815t、V35。最终审查：`product/agent-token-usage-observability/receipts/planning-final-review-d174.md`。
 
@@ -92,14 +94,14 @@ process-monitoring (M04-F06-01)：COMPLETED（详情见 `knowledge/`，2026-07-3
 
 ## 测试基线
 
-当前结果：agent-token-usage-observability经D174最终验收`COMPLETED`（13/13）；确认基线为后端 **755/0/0/0**（agent267）、前端 **82f/815t**。
+当前结果：agent-graph-step-debugging经D180最终验收`PASSED`（15/15）+ 纯终态同步完成；正式基线为后端 **827/0/0/0**（agent338）、前端 **86f/850t**、Flyway **V36**。
 
-- 后端：D170功能级确认 **755/0/0/0**（agent267，D169新鲜门禁08:57:33—08:58:18与08:58:31—08:59:52两轮2G串行，pgrep不自匹配零快照）。
-- 前端：D170功能级确认 **82 spec files / 815 tests** 四门全绿（D169新鲜门禁）。
-- 功能清单：阶段三已同步 **✅25/🟦25/⬜40** 共90行；M07-F04-02已升✅（P8已核销）。
-- Flyway：D170功能级确认 **V35** 双方言35条全链；终态状态同步待标准13规划最终复验。
-- 已完成功能：规划确认 **29**。
-- 需求池：P8已核销；P6已核销；P7运行日志子集核销（单步调试保留）。
+- 后端：D180最终验收确认 **827/0/0/0**（agent338，Surefire XML 119 叶文件，`755+72=827` 勾稽：71 调试测试 + 1 V36 PG，2G 串行门禁完整工具族实际互斥零快照）。
+- 前端：D180最终验收确认 **86 spec files / 850 tests** 四门全绿（2G 串行）。
+- 功能清单：阶段三已同步 **✅26/🟦24/⬜40** 共90行；M07-F02-04已升✅（P7已核销）、M07-F04-02已升✅（P8已核销）。
+- Flyway：D180最终确认 **V36** 双方言36条全链（H2 13 / PG 10 用例）。
+- 已完成功能：规划确认 **30**（agent-graph-step-debugging 为第30个，D180 15/15 PASSED + 终态同步完成）。
+- 需求池：P8已核销；P6已核销；**P7已正式核销**（D180 15/15 PASSED）。
 
 ## 模块完成度（简表）
 
