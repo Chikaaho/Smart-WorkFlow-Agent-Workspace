@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# Normalize cwd before anything else: tool calls may drift the shell into a
+# subrepo, where a relative ./.claude/hooks/ lookup would fail. The script sits
+# at <root>/.claude/hooks/, so two levels up is the workspace root.
+cd "$(dirname "$0")/../.."
+
 # Only inspect the point where Claude is about to hand control back. This hook
 # does not run on ordinary tool calls and does not change bypassPermissions.
 input=$(cat)
@@ -19,11 +24,11 @@ if [ -z "$active_role" ] && [ -r "$transcript_path" ]; then
           [ .[] | select(.type == "text") | .text ] | join(" ")
         else ""
         end;
-      select(.type == "user") | .message.content | message_text
+      select(type == "object" and .type == "user") | .message.content | message_text
     ' "$transcript_path" 2>/dev/null |
       awk '
-        /你是执行层|你是执行角色|本会话角色[：: ]*执行|授予你执行权限|以执行身份|以执行角色/ { role="executor"; next }
-        /你是规划层|你是规划角色|本会话角色[：: ]*规划|授予你规划权限|以规划身份|以规划角色/ { role="planner"; next }
+        /你是执行|你是执行层|你是执行角色|本会话角色[：: ]*执行|授予你执行权限|以执行身份|以执行角色/ { role="executor"; next }
+        /你是规划|你是规划层|你是规划角色|本会话角色[：: ]*规划|授予你规划权限|以规划身份|以规划角色/ { role="planner"; next }
         /你是管理员|本会话角色[：: ]*管理员|授予你管理员权限|以管理员身份|以管理员角色/ { role="admin"; next }
         END { print role }
       '
@@ -35,6 +40,19 @@ if [ "$active_role" != "executor" ]; then
 fi
 
 message=$(printf '%s' "$input" | /usr/bin/jq -r '.last_assistant_message // ""')
+if [ -z "$message" ] && [ -r "$transcript_path" ]; then
+  message=$(
+    /usr/bin/jq -r '
+      def message_text:
+        if type == "string" then .
+        elif type == "array" then
+          [ .[] | select(.type == "text") | .text ] | join(" ")
+        else ""
+        end;
+      select(type == "object" and .type == "assistant") | .message.content | message_text
+    ' "$transcript_path" 2>/dev/null | tail -1
+  )
+fi
 background_count=$(printf '%s' "$input" | /usr/bin/jq '[.background_tasks[]? | select(.status == "running" or .status == "pending" or .status == "in_progress")] | length')
 
 if [ "$background_count" -gt 0 ]; then
