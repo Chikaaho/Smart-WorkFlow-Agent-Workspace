@@ -2,9 +2,10 @@
 
 > **规划角色只能读此目录、system.md、search_fallback/。**
 > 执行角色读 knowledge/（完整原材料）并在探索后写入压缩结论到 search_fallback/；执行角色也可读取本目录。
-> 管理员角色只读写 system.md 与架构文档，不读/写本目录其余状态文件。
+> 管理员角色只读写 system.md、`roles/` 角色定义文件与架构文档，不读/写本目录其余状态文件。
+> 角色声明后须先读取对应角色定义文件：规划 → `roles/planner.md`、执行 → `roles/executor.md`、管理员 → `roles/admin.md`（system.md §0.9「认领后必读」）。
 > **信息分层铁律（D85，2026-08-16 用户定）**：`knowledge/`=唯一完整权威信息源；本目录=最少信息摘要（能通过最少信息知晓全局状态）。不一致以 knowledge 为准，立即修正本目录为摘要口径；执行角色触碰状态文件必须同步 knowledge 全量（§3.3 第10项），禁止只更新首部/memory 造成 knowledge 残留。
-> 最后更新：2026-08-16
+> 最后更新：2026-08-22
 
 ## 文件索引
 
@@ -18,9 +19,11 @@
 | [constraints.md](constraints.md) | 规划关键硬约束（安全+架构+工作流） | ~2K | 按需 |
 | [architecture.md](architecture.md) | 系统架构高层视图 | ~2K | 按需 |
 
+> 角色定义文件位于本目录之外：`roles/planner.md`、`roles/executor.md`、`roles/admin.md`（管理员维护，声明角色后必读，见 system.md §0.9）。
+
 ## 阅读建议
 
-1. **启动时**：system.md → memory/README.md → state.md → handoff.md
+1. **启动时**：system.md → roles/planner.md（本会话角色定义）→ memory/README.md → state.md → handoff.md
 2. **有进行中功能**：加读 features.md
 3. **生成方案前**：加读 constraints.md（回顾红线）
 4. **涉及特定模块**：加读 architecture.md + decisions.md

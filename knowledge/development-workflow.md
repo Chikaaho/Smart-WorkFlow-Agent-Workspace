@@ -2,7 +2,7 @@
 
 > 工作区统一知识库 — 开发流程分册。
 > **面向对象**：下级执行代理（在 `Smart-WorkFlow/` 或 `Smart-WorkFlow-Web/` 中执行具体编码和测试的 AI 代理）。
-> **根目录规划代理**：本文件是参考文档。规划代理自身的工作流、权限边界和模型路由规则见根目录 `system.md`。
+> **根目录规划代理**：本文件是参考文档。规划代理自身的工作流、权限边界见根目录 `system.md`（公共协议）与 `roles/planner.md`（角色定义）。
 >
 > 描述前后端日常开发流程、校验门、代码规范。
 
@@ -66,7 +66,7 @@ pnpm typecheck && pnpm lint && pnpm test && pnpm build
 ## 3. 执行角色任务分级（执行代理用）
 
 > 注意：本节约定的任务分级规则是**执行代理**在子项目内编码时的规则。
-> 执行代理在自主闭环中按任务复杂度自行决定处理强度（根目录 `system.md` §2），不涉及任何具体模型。
+> 执行代理在自主闭环中按任务复杂度自行决定处理强度（根目录 `roles/executor.md` §5），不涉及任何具体模型。
 >
 > 各子项目的权威约束见：
 > - 后端：`Smart-WorkFlow/docs/governance/engineering-constitution.md` §11.2
@@ -134,7 +134,8 @@ pnpm typecheck && pnpm lint && pnpm test && pnpm build
 
 | 层级 | 文件 | 内容 |
 |------|------|------|
-| 工作区（本仓库） | `system.md` | 统一入口 + 工作原则 |
+| 工作区（本仓库） | `system.md` | 统一入口 + 公共协议 |
+| 工作区 | `roles/*.md` | 三角色定义（planner/executor/admin） |
 | 工作区 | `knowledge/*.md` | 跨项目架构/约束/术语/流程 |
 | 后端项目 | `docs/governance/engineering-constitution.md` | 后端工程宪法（规范+硬约束） |
 | 后端项目 | `README.md` | 后端项目概览 |
@@ -185,7 +186,7 @@ product/<feature-name>/receipts/step-N-<step-name>-test.md
 
 ### 8.2 回执格式
 
-**执行回执**必须包含（参照根目录 `system.md` §7.1）：
+**执行回执**必须包含（参照根目录 `roles/executor.md` §8.1）：
 
 ```markdown
 # 执行回执
@@ -226,7 +227,7 @@ product/<feature-name>/receipts/step-N-<step-name>-test.md
 （需要重点验证的测试场景）
 ```
 
-**测试回执**必须包含（参照根目录 `system.md` §7.2）：
+**测试回执**必须包含（参照根目录 `roles/executor.md` §8.2）：
 
 ```markdown
 # 测试回执
