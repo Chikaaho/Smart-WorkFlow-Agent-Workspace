@@ -1,9 +1,10 @@
 # 功能索引
 
-> 最后更新：2026-08-21（agent-graph-prompt-configuration D157阶段三最终复验PASSED / COMPLETED；功能数28）
+> 最后更新：2026-08-22（agent-token-usage-observability D174最终验收COMPLETED；13/13；功能数29）
 
 | 功能 | 模块 | 状态 | 当前 Step | 备注 |
 |------|------|:---:|------|------|
+| agent-token-usage-observability | P8 / M07-F04-02 Token统计子集 | **COMPLETED** | D170功能级 + D172阶段三 + D174最终验收（2026-08-22） | 13/13；基线755/Agent267、82f/815t、V35；清单25/25/40、P8核销、M07-F04-02✅、第29个已完成功能。审查`product/agent-token-usage-observability/receipts/planning-final-review-d174.md`。 |
 | agent-graph-prompt-configuration | M07-F02-02 | **COMPLETED** | D154功能级PASSED + D157阶段三最终复验PASSED（2026-08-21） | 12项功能标准全部通过；后端723/agent234、前端79f/775t、V34零迁移。M07-F02-02升✅、P6核销、清单24/26/40、第28个已完成功能；四份方向归档`passed/`。最终审查`receipts/planning-stage3-review-d157.md`。 |
 | agent-graph-execution-observability | P7 第一子集 / M07-F02-04 | **COMPLETED** | D148 功能级 PASSED + D149 阶段三复验 PASSED（2026-08-21） | 标准1-11全过+§3.3同步；真实router/authGuard行为测试；后端685/0/0/0、agent模块197、前端78f/760t；V34零迁移；P7运行日志子集核销，单步调试保留；M07-F02-04保持🟦；第27个已完成功能。最终审查：`product/agent-graph-execution-observability/receipts/planning-stage3-review-d149.md` |
 | role-menu-permission-parity | P1 / M02-F02-01 / M02-F03-01 | **COMPLETED** | D123 规划层最终验收 PASSED + 阶段三终态同步（2026-08-20） | D122 四类偏差已闭合（生产 403 契约 / 停用角色有效撤权 / Mock 双角色身份 / I53+I54 注册）；后端 674/0/0/0、前端 73f/681t、零 Flyway；M02-F02-01/F03-01 ✅、P1 核销、第 26 个已完成功能。 |
@@ -34,5 +35,5 @@
 | notify-frontend | M05 | COMPLETED | 3 steps PASSED | 通知列表+标记已读 |
 
 ---
-> 本文件为压缩索引。各功能完整 Step 列表、证据链、测试统计在 `knowledge/features/<name>.md`（执行层报告现有23个功能追踪文件，不含 `_template.md` 模板；agent-model-orchestration 无独立追踪文件）。规划确认已完成功能 **28 个**；agent-graph-prompt-configuration为第28个。
+> 本文件为压缩索引。各功能完整 Step 列表、证据链、测试统计在 `knowledge/features/<name>.md`。已完成功能 **29 个**；agent-token-usage-observability为第29个（D174最终验收COMPLETED）。
 > 需要时：创建 search_task，范围 `knowledge/features/<feature-name>.md`
