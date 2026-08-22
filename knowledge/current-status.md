@@ -15,12 +15,18 @@
 |------|------|
 | 后端框架 | Spring Boot 3.4.4 + Java 21，模块化单体，四层架构就位 |
 | 前端框架 | Vue 3.5 + TypeScript 6.0 + Vite 8，严格分层 SPA，自有架构（不继承 vben） |
-| 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，V1–V35；**双方言新库全链均可直跑**——H2 新库全链 35 迁移与 V33→V35 / V34→V35 升级链 migrate+validate 已通过；**PG 侧全链直跑已修复（2026-08-19 pg-v13-migration-chain-repair，I52 关闭）**：PG 17.5 真实二进制（zonky embedded-postgres）新库全链 35 条 migrate+validate 通过 + 既有库升级夹具通过，永久测试 `FlywayFullChainPostgresTest`；PG 真实库（127.0.0.1）临时 schema 验证 V33 幂等执行通过（2026-08-19）。V35（2026-08-22 agent-token-usage-observability）新增 sw_agent_message / sw_agent_graph_execution / sw_agent_graph_execution_node 的 input_tokens/output_tokens（H2/PG 双份可为空）。 |
+| 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，V1–V36；**双方言新库全链均可直跑**——H2 新库全链 36 迁移与升级链 migrate+validate 已通过；**PG 侧全链直跑已修复（2026-08-19 pg-v13-migration-chain-repair，I52 关闭）**：PG 17.5 真实二进制（zonky embedded-postgres）新库全链 36 条 migrate+validate 通过 + 既有库升级夹具通过，永久测试 `FlywayFullChainPostgresTest`；PG 真实库（127.0.0.1）临时 schema 验证 V33 幂等执行通过（2026-08-19）。V35（2026-08-22 agent-token-usage-observability）新增 sw_agent_message / sw_agent_graph_execution / sw_agent_graph_execution_node 的 input_tokens/output_tokens（H2/PG 双份可为空）；V36（2026-08-22 agent-graph-step-debugging）新增调试会话表（H2/PG 双份）。 |
 | 核心路径 | Walking Skeleton：登录 → 表单 → 审批 → 通知 ✅ 四环全部闭合 |
-| 功能清单 | 10 模块，55 功能，90 明细；规划确认终态 **✅25/🟦25/⬜40**（`Smart-WorkFlow/功能清单.md` 权威清单，M07-F02-02 ✅（D157）、M07-F04-02 ✅（D170功能级PASSED + D172阶段三PASSED，13/13；D173终态文字已同步，等待规划层零残留确认））。 |
-| 测试基线 | 规划当前确认基线为 agent-token-usage-observability D170 的 **后端 755 tests / 0 failures / 0 errors / 0 skipped**（sw-basic-agent 267，D169新鲜门禁 08:57:33—08:59:52 2G串行验证，pgrep不自匹配零快照）；**前端 82 spec files / 815 tests / 0 failures** 四连全绿（D169新鲜门禁）。标准10 V35 双方言 35 条全链（H2/PG 新库+升级链）已由 D160—D163 确认通过，均按 2G 约束串行执行。历史 D154 基线（723/234/79f775t/V34）已由 D170 晋级取代。 |
+| 功能清单 | 10 模块，55 功能，90 明细；规划确认终态 **✅26/🟦24/⬜40**（`Smart-WorkFlow/功能清单.md` 权威清单，M07-F02-02 ✅（D157）、M07-F04-02 ✅（D170功能级PASSED + D172阶段三PASSED，13/13；D173终态文字已同步，等待规划层零残留确认）、**M07-F02-04 单步调试 ✅（D180 规划层最终验收 15/15 PASSED + 终态同步，2026-08-23）**）。 |
+| 测试基线 | 规划当前确认正式基线为 agent-graph-step-debugging D180 的 **后端 827 tests / 0 failures / 0 errors / 0 skipped**（sw-basic-agent 338，Surefire XML 119 叶文件，净增 72 = 71 调试测试 + 1 V36 PG，2G 串行门禁实际互斥零快照）；**前端 86 spec files / 850 tests / 0 failures** 四连全绿；Flyway **V36** 双方言 36 条全链（H2/PG 新库+升级链）。历史基线 755/Agent267、82f/815t、V35（D170，agent-token-usage-observability）与更早 723/234/79f775t/V34（D154）已被 D180 晋级取代。 |
 
-### 当前进行（2026-08-22，agent-token-usage-observability D170功能级PASSED + D172阶段三PASSED；13/13，D173终态文字已同步，等待规划层零残留确认；已完成功能29）
+### 当前进行（2026-08-23，无进行中业务功能；已完成功能 30）
+
+### 此前最近完成（2026-08-23，agent-graph-step-debugging COMPLETED（D180 规划层最终验收 15/15 PASSED + 终态同步，第30个已完成功能））
+
+`agent-graph-step-debugging`（P7 第二子集 / M07-F02-04 图单步调试）：**D175 方向下发 → D176—D180 迭代，D180 规划层最终验收 15/15 PASSED（2026-08-23，锁定）+ 终态同步完成（第30个）**。功能级与阶段三验收均通过：G14 唯一计数（当前 Surefire XML 逐文件核对 **827/0/0/0（119 叶文件）**，真实基线重建 4 个新 Debug 测试类基线 0，净增 72 = 71 调试测试 + 1 V36 PG，`755+72=827` 严格勾稽）、完整工具族实际 `pgrep` 零快照 + 2G 串行门禁（后端 827/0/0/0 / 前端 86f/850t / V36 36 条）。终态同步完成：P7 已核销、M07-F02-04 升 ✅、清单 **✅26/🟦24/⬜40**、已完成功能数 **30**、正式基线 **827/Agent338、86f/850t、V36**，knowledge/memory 全文一致。主方向已归档 `passed/direction-agent-graph-step-debugging.md`；终态同步方向 `ready/direction-post-d180-terminal-sync.md`（终态同步回执已提交，待规划层最终复验与归档）。审查：`product/agent-graph-step-debugging/receipts/planning-final-review-d180.md`。
+
+### 此前最近完成（2026-08-22，agent-token-usage-observability COMPLETED（D170功能级PASSED + D172阶段三PASSED + D174最终验收，13/13，第29个已完成功能））
 
 ### 此前最近完成（2026-08-21，agent-graph-prompt-configuration COMPLETED（D154功能级PASSED + D157阶段三最终复验PASSED，第28个已完成功能））
 
@@ -266,11 +272,12 @@
 27. ✅ agent-graph-execution-observability（P7/M07-F02-04 图执行历史运行日志前端可观测闭环：ExecutionList.vue/ExecutionDetail.vue/NodeTrajectory.vue 全链闭环，后端零改动复用 Step12(D70-D71)；**后端 685/0/0/0、前端 78f/760t、Flyway V34**）（**D148 功能级 PASSED，2026-08-20**）
 28. ✅ agent-graph-prompt-configuration（M07-F02-02 图节点 Prompt 配置：系统 Prompt + 用户 Prompt 模板 + `{{variableName}}` 插值 + 空白回退 + 缺失变量失败 + 发布重载 + 真实权限链；**后端 723/0/0/0（agent 234）、前端 79f/775t、Flyway V34**）（**D154功能级PASSED + D157阶段三最终复验PASSED，2026-08-21，第28个已完成功能**）
 29. ✅ agent-token-usage-observability（P8 / M07-F04-02 Token 统计与会话查看；**后端 755/0/0/0（agent 267）、前端 82f/815t、Flyway V35**）（**D170功能级PASSED + D172阶段三PASSED，13/13；D173终态文字已同步，第29个已完成功能**）
+30. ✅ agent-graph-step-debugging（P7 / M07-F02-04 图单步调试：调试会话/断点/步进/引擎/安全/既有入口闭环；**后端 827/0/0/0（agent 338）、前端 86f/850t、Flyway V36**）（**D180 规划层最终验收 15/15 PASSED + 终态同步，P7 已核销、M07-F02-04 升 ✅、清单 ✅26/🟦24/⬜40、功能数 30，第 30 个已完成功能，2026-08-23**）
 
 后续候选（2026-08-21 D154 轮后更新，按风险/价值排序参考）：
 
 1. ~~M01/M02 其余虚高要素补齐~~ — **P1 已核销（2026-08-20，role-menu-permission-parity D123 规划层最终验收 PASSED + 终态同步：I31/I36/F02/F03 全部子项闭合）**，M02-F02-01/F03-01 已 ✅，本条不再作为候选
-2. **M07 补全** — F02-02 Prompt 配置（**COMPLETED，D154+D157，第28个**）、F02-04 单步调试（运行日志子集已由 agent-graph-execution-observability 闭环，单步调试继续待排期）、**F04-02 Token 统计（agent-token-usage-observability D170+D172 PASSED，13/13，D173终态文字已同步，第29个已完成功能）**：V35双方言迁移链与F01/F02 usage提取/聚合/持久化/查询/前端展示/历史兼容/权限/Mock已闭合；功能级基线755/267、82f/815t、V35；P8已核销、M07-F04-02✅（清单25/25/40）
+2. **M07 补全** — F02-02 Prompt 配置（**COMPLETED，D154+D157，第28个**）、**F02-04 单步调试（COMPLETED，D180 15/15 PASSED + 终态同步，P7 已核销、M07-F02-04 升✅、第30个，2026-08-23）**、**F04-02 Token 统计（agent-token-usage-observability D170+D172 PASSED，13/13，D173终态文字已同步，第29个已完成功能）**：V35双方言迁移链与F01/F02 usage提取/聚合/持久化/查询/前端展示/历史兼容/权限/Mock已闭合；功能级基线755/267、82f/815t、V35；P8已核销、M07-F04-02✅（清单25/25/40）。**M07 F01—F04 全部明细已闭环**（F03 助手配置/知识库/对话窗口仍为待开发新功能）
 3. **M07-F03/F04 新功能** — 助手配置/知识库 RAG/对话窗口 SSE（均零代码）
 4. **IoT / OpenAPI 模块落地** — 仅骨架（D83 复核确认 M08/M09 全 ⬜ 无虚低）
 5. **M04-F06-01 后续批次（耗时分析 + 流程干预）** — process-monitoring 首批已完成，剩余 2/4 子能力延后
@@ -282,8 +289,8 @@
 
 | 项目 | 校验命令 | 当前状态 |
 |------|----------|----------|
-| 后端 | `mvn -q compile && mvn -q test` | **CONFIRMED**（2026-08-22 agent-token-usage-observability D170功能级PASSED）：`MAVEN_OPTS="-Xmx2g" mvn test` 全量 BUILD SUCCESS。功能级基线 **755 tests / 0 failures / 0 errors / 0 skipped**（sw-basic-agent 267，D169新鲜门禁 08:57:33—08:58:18 与 08:58:31—08:59:52 两轮2G串行，pgrep不自匹配零快照）。**双方言全链口径**：H2 全链 **35 条迁移**（7 目录）+ V33→V35 / V34→V35 升级链；**PG 侧 35 条全链直跑已修复（I52 关闭）**。历史基线723/234（D154）已由D170晋级取代。 |
-| 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | **CONFIRMED**（2026-08-22 agent-token-usage-observability D170功能级PASSED，`NODE_OPTIONS="--max-old-space-size=2048"`）：功能级基线 **82 files / 815 tests** 四连退出码全 0（D169新鲜门禁 08:58:31—08:59:52，2G）。**历史基线79f/775t（D154）已由D170晋级取代**。 |
+| 后端 | `mvn -q compile && mvn -q test` | **CONFIRMED**（2026-08-23 agent-graph-step-debugging D180 最终验收 PASSED）：`MAVEN_OPTS="-Xmx2g" mvn test` 全量 BUILD SUCCESS。正式基线 **827 tests / 0 failures / 0 errors / 0 skipped**（sw-basic-agent 338，Surefire XML 119 叶文件，净增 72 = 71 调试测试 + 1 V36 PG，`755+72=827` 勾稽；2G 串行门禁 16:29:39—16:30:36，完整工具族 `pgrep` 实际零快照）。**双方言全链口径**：H2 全链 **36 条迁移**（7 目录）+ V33→V36 升级链；**PG 侧 36 条全链直跑已修复（I52 关闭）**。历史基线 723/234（D154）、755/267（D170）已由 D180 晋级取代。 |
+| 前端 | `pnpm typecheck && pnpm lint && pnpm test && pnpm build` | **CONFIRMED**（2026-08-23 agent-graph-step-debugging D180 最终验收 PASSED，`NODE_OPTIONS="--max-old-space-size=2048"`）：正式基线 **86 files / 850 tests / 0 failures** 四连退出码全 0（16:30:53—16:31:56，2G 串行，完整工具族互斥零快照）。**历史基线 82f/815t（D170）、79f/775t（D154）已由 D180 晋级取代**。 |
 
 ### 前端测试覆盖详情（参考快照，2026-07-15 基线 ~350 tests）
 
