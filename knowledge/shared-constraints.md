@@ -95,7 +95,7 @@ product/<feature-name>/receipts/
 - **写回执是 Step 执行的最后一步**，执行代理完成代码修改和测试后，必须将回执写入文件再结束会话
 - **禁止仅口头汇报**：执行代理不得仅以对话形式报告结果而不写回执文件
 - **禁止省略项**：回执中每项都必须填写，无内容填「无」而非整项删除
-- **文件覆盖**：同一 Step 重新执行时覆盖之前的回执文件（保留最新记录即可）
+- **回执追加**：初次回执使用稳定文件名；复验、修正或补证必须新建带轮次/决策号的追加回执，禁止覆盖历史回执。最新回执须引用其修正的前一份回执和审查缺口编号
 - **根目录代理只在文件就位后验收**：根目录规划代理以回执文件为验收依据，不依赖对话摘要
 - ❌ 违反此规范的执行回执视为不合格，退回重写
 
@@ -315,7 +315,8 @@ product/<feature-name>/receipts/
 
 | 启动目录 | 会话角色 | 允许操作 | 禁止操作 |
 |---|---|---|---|
-| `/usr/local/projects/Smart-WorkFlow`（planning layer） | 规划代理 | 读 `memory/` `search_fallback/` `product/` `todo/` `system.md`；写 `memory/` `search_task/` `product/` `todo/` `system.md`；制定需求方向（目标/非目标/影响范围/风险）；验收回执 | **不读** `Smart-WorkFlow/`、`Smart-WorkFlow-Web/` 代码与 `knowledge/`；修改两个代码项目内任何业务文件；执行 `mvn`/`pnpm`/`java`/`node` 等状态变更命令 |
+| `/usr/local/projects/Smart-WorkFlow`（planning layer） | 规划代理 | 读 `system.md` `roles/planner.md` `memory/` `search_fallback/` `product/` `todo/`；写 `memory/` `search_task/` `product/` `todo/`；制定需求方向；验收回执 | 写 `system.md`/`roles/`；读两端代码与 `knowledge/`；修改业务文件；执行编译/测试等状态变更命令 |
+| `/usr/local/projects/Smart-WorkFlow`（统一执行入口） | 执行代理（跨层） | 按指定方向跨根目录、后端和前端执行；自行拆 Step；串行运行两端校验门；更新 knowledge/memory/回执；按规划终态值清单执行阶段三同步 | 制定/修改需求方向；自行作规划 PASSED/FAILED 裁决；功能验收前写 COMPLETED；并行运行前后端重型命令 |
 | `Smart-WorkFlow/`（后端执行层） | 执行代理（后端） | 读写 `Smart-WorkFlow/` 内文件；执行 `mvn` 系命令；写回执到 `product/<feature>/receipts/`；更新 `knowledge/`；写 `search_fallback/` | 读写 `Smart-WorkFlow-Web/` 任何文件；执行 `pnpm`/`npm`/`vite`/`vitest` 等前端命令；制定/修改需求方向 |
 | `Smart-WorkFlow-Web/`（前端执行层） | 执行代理（前端） | 读写 `Smart-WorkFlow-Web/` 内文件；执行 `pnpm` 系命令；写回执到 `product/<feature>/receipts/`；更新 `knowledge/`；写 `search_fallback/` | 读写 `Smart-WorkFlow/` 任何文件；执行 `mvn`/`java` 等后端命令；制定/修改需求方向 |
 | `/usr/local/projects/Smart-WorkFlow`（管理员会话） | 管理员代理 | 读取三仓全部非代码内容；读写 `system.md`、正式治理文档、`memory/architecture.md`、`knowledge/architecture.md` 及两端工程配置；执行与管理员任务相关的 Git 操作 | 读取或修改业务/测试/迁移/脚本等实现代码；制定需求方向、验收回执、更新功能状态文件；执行编译/测试/构建/迁移/部署等业务状态变更命令 |
@@ -339,7 +340,13 @@ product/<feature-name>/receipts/
 - 执行代理若发现任务需要跨越自己的项目边界才能完成，应在回执中如实报告"超出职责域，需拆分为对方项目的 Step"，而不是自行越界执行
 - 违反本原则视为越权执行：回执一律视为不合格，方案验收自动判定为不通过，需规划层重新下发方向后再执行
 - ❌ **禁止执行层代理诱导用户进行规划（硬约束 🔒）**：执行层代理的对话中不得出现规划性质的建议或设计方案邀请。包括但不限于：「让我来设计」「我建议这样实现」「要不要我帮你规划」「我先分析需求」「我来拆解 Step」「这个方案我重新设计一下」「我觉得应该加一个 Step」「这个需求我应该这样做」「要不要我帮你改一下方案」——这些都是**规划层**的职责。执行层的**唯一正确响应**：严格按需求方向执行 → 遇到问题在回执中如实报告 → 等待规划层修正方向。用户若确实需要重新规划，必须回到 planning layer（`/usr/local/projects/Smart-WorkFlow`）进行。执行层诱导规划的回执视为不合格，功能自动 FAILED
-- ❌ **禁止预告或征询下一个 Step（硬约束 🔒）**：判定不依赖是否出现"建议/设计/规划"等敏感词。执行层代理在当前 Step 完成、回执写入后，若主动总结/预告**尚未下发**的下一个 Step 范围内容，或以问句征询"要不要我生成/起草下一个 Step 方案"（例如「B3 是……Step，要生成 B3 执行方案吗？」），本质仍是抢先替规划层做了方案起草判断，同样视为诱导规划。**唯一正确做法**：写完当前 Step 回执即停止，不对下一个 Step 的编号、范围、是否需要方案做任何评论或提议——下一个 Step 由规划层判断并主动下发。违反同样视为回执不合格，功能自动 FAILED
+- ❌ **禁止预告或征询未授权的新任务（硬约束 🔒）**：不得讨论需求方向之外的下一功能；方向内自拆 Step、审查修复、终态同步和回执均属当前任务，执行层必须连续闭环。执行任务终态与功能状态分开命名，具体以 `roles/executor.md` §4/§4.2 和 `system.md` §3.4 为准
+
+### 9.1 阶段三终态同步边界（速查）
+
+- 功能验收前：执行层只能提交 `EXECUTION_SUBMITTED`，功能状态为「自验通过·待规划验收」，不得写 `PASSED/COMPLETED` 或核销 P 编号。
+- 规划判定 `PASSED` 后：规划层下发唯一终态值清单；执行层可机械写入清单授权的 `COMPLETED`、功能数、清单/P/里程碑状态和正式基线，并以 `TERMINAL_SYNC_SUBMITTED` 提交复核。
+- 执行层不得推算缺失值、改变清单或归档规划审查文件；同步回执采用目标值/实际值矩阵，修正回执只追加不覆盖。
 
 ---
 
