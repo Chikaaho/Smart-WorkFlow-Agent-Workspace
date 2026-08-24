@@ -1,6 +1,12 @@
 # 会话交接
 
-> 最后更新：2026-08-23（D183终态复验PASSED；agent-graph-step-debugging COMPLETED，第30个）
+> 最后更新：2026-08-25（D207阶段三终态复核PASSED，功能COMPLETED确认）
+
+## 当前功能与唯一下一动作
+
+**agent-tool-configuration-frontend（P48 / M07-F03-02）：COMPLETED（D203功能级12/12 PASSED + D207阶段三终态8/8 PASSED，第31个）**。P48已核销、M07-F03-02升✅、清单✅27/🟦23/⬜40、功能数31；正式基线后端827/Agent338、前端100 spec files/981 tests（0 failed、0 skipped）、Flyway V37。主方向与终态同步方向均已归档`passed/`。
+
+**唯一下一动作**：规划层比较并选择下一唯一功能。
 
 ## 最新状态与最近完成
 
@@ -129,16 +135,17 @@
 
 ## 当前基线
 
-- 后端：D180 正式基线确认 **827 tests**（sw-basic-agent 338，Surefire XML 119 叶文件，755+72 勾稽）
-- 前端：D180 正式基线确认 **86 spec files / 850 tests**
-- 功能清单：M07-F02-04 升✅、P7 已核销，终态统计 **✅26 / 🟦24 / ⬜40 共90行**（D183已确认）
-- Flyway：D180 正式基线确认 **V36** 双方言36条全链
-- 已完成功能：规划确认 **30**（agent-graph-step-debugging 为第30个，D180 15/15 PASSED + 终态同步完成）
+- 后端：正式基线 **827 tests**（sw-basic-agent 338）
+- 前端：正式基线 **100 spec files / 981 tests（0 failed、0 skipped）**
+- 功能清单：终态统计 **✅27 / 🟦23 / ⬜40 共90行**（D203 P48/M07-F03-02 已升✅）
+- Flyway：正式基线 **V37（H2/PostgreSQL）**
+- 已完成功能：规划确认 **31**（agent-tool-configuration-frontend 为第31个，D203 12/12 PASSED + 终态同步）
 - 执行约束：**本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行**（先后端后前端），禁并行编译
+- 活动功能：无
 
 ## 下一动作
 
-**下一动作**：当前无进行中功能。规划层重新比较候选并选择下一项唯一功能；不自动启动执行。
+**下一动作**：规划层比较候选并选择下一唯一功能；本功能不再重验。
 
 **探索回执已回收并核销（2026-08-16，D83 裁定 + D84 落库核销）**：
 - 清单 90/90 零不一致（I1 无第三次复发）；基线全部核实（527/66f569t——**569 为运行口径，静态 561**/V30+28/16 功能）；memory 自洽。
@@ -150,24 +157,22 @@
 - **探索任务核销（2026-08-16 晚，4/4 全闭环）**：i18-close-sync ✅（I18 注册表已同步「✅ 已关闭（D84）」仿 I33/I37 先例，memory 侧核对一致）。**本轮全部委派任务已闭环，无进行中探索**。
 - **当前规划裁定**（2026-08-18）：user-org-association-query D101 PASSED，阶段三同步 COMPLETED；D93-D97 双角色治理作为前置基线保持有效。
 
-当前无已选定功能；后续候选由规划层重新比较，本轮不并行推进：
-1. M07-F03/F04 助手配置、知识库RAG、SSE对话窗口（选型或地基未定）
-2. IoT / OpenAPI 模块落地（仅骨架）
-3. 小项池：停用即时生效（JWT过滤器层）、数据权限遗留（部门档子查询deleted过滤、job非分页入口纳管、PG联调验证）
+当前活动功能：**无**（agent-tool-configuration-frontend（P48 / M07-F03-02）已由D207确认COMPLETED第31个，仅保留在最近完成区；主方向与终态同步方向均在`passed/`）。
 
 ## 新会话启动提示词
 
 ```
-你是 Smart-WorkFlow 根目录代理。请先显式声明本会话角色。agent-graph-step-debugging已于D180功能验收15/15、D183终态复验8/8，整体COMPLETED（第30个）。当前无进行中功能。
+你是 Smart-WorkFlow 根目录代理。请先显式声明本会话角色。agent-tool-configuration-frontend（P48 / M07-F03-02）已由D203功能级验收PASSED（12/12），并由D207阶段三终态复核PASSED（8/8）确认COMPLETED；当前活动功能无，由规划层比较并选择下一唯一功能。
 
 最新状态：
+- agent-tool-configuration-frontend **COMPLETED（D203 12/12 PASSED + D207阶段三8/8 PASSED，2026-08-25，第31个）**——正式测试基线后端827/Agent338、前端100f/981t、Flyway V37；P48已核销、M07-F03-02✅、清单✅27/🟦23/⬜40、功能数31；主方向与终态同步方向均在passed
 - agent-graph-step-debugging **COMPLETED（D180 15/15 PASSED + 终态同步，2026-08-23，第30个）**——正式测试基线827/Agent338、86f/850t、V36；P7已核销、M07-F02-04✅、清单✅26/🟦24/⬜40、功能数30
 - agent-token-usage-observability（P8 / M07-F04-02 Token统计子集）**COMPLETED（D170+D172+D174，13/13，第29个）**——基线755/Agent267、82f/815t、V35；清单25/25/40、P8核销、M07-F04-02✅。最终审查：`product/agent-token-usage-observability/receipts/planning-final-review-d174.md`
 - agent-graph-prompt-configuration（M07-F02-02）**COMPLETED（D154+D157，2026-08-21，第28个）**——主方向及三份阶段三/纠正方向均归档`passed/`；后端723/agent234、前端79f/775t、V34；清单✅24/🟦26/⬜40、功能数28、P6核销
 - agent-graph-execution-observability（P7第一子集/M07-F02-04）**COMPLETED（D148+D149，2026-08-21，第27个）**——后端685/0/0/0（agent197）、前端78f/760t、V34；P7运行日志子集核销
 - role-menu-permission-parity（P1 / M02-F02-01 / M02-F03-01）**COMPLETED（D123，2026-08-20，第26个）**——后端674/0/0/0、前端73f/681t、零Flyway；P1核销
-- 规划确认测试基线：后端 **827/0/0/0**（sw-basic-agent 338）、前端 **86f/850t**、Flyway **V36**；清单 **✅26/🟦24/⬜40**；已完成功能 **30**（agent-graph-step-debugging 为第30个）
+- 规划确认测试基线：后端 **827/0/0/0**（sw-basic-agent 338）、前端 **100f/981t**、Flyway **V37**；清单 **✅27/🟦23/⬜40**；已完成功能 **31**（agent-tool-configuration-frontend 为第31个）
 - 执行约束：本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行，禁并行编译
 
-下一动作：规划层重新比较候选并选择下一项唯一功能；未经新方向下发不启动执行。
+下一动作：规划层比较并选择下一唯一功能。
 ```

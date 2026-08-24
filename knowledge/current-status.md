@@ -15,12 +15,16 @@
 |------|------|
 | 后端框架 | Spring Boot 3.4.4 + Java 21，模块化单体，四层架构就位 |
 | 前端框架 | Vue 3.5 + TypeScript 6.0 + Vite 8，严格分层 SPA，自有架构（不继承 vben） |
-| 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，V1–V36；**双方言新库全链均可直跑**——H2 新库全链 36 迁移与升级链 migrate+validate 已通过；**PG 侧全链直跑已修复（2026-08-19 pg-v13-migration-chain-repair，I52 关闭）**：PG 17.5 真实二进制（zonky embedded-postgres）新库全链 36 条 migrate+validate 通过 + 既有库升级夹具通过，永久测试 `FlywayFullChainPostgresTest`；PG 真实库（127.0.0.1）临时 schema 验证 V33 幂等执行通过（2026-08-19）。V35（2026-08-22 agent-token-usage-observability）新增 sw_agent_message / sw_agent_graph_execution / sw_agent_graph_execution_node 的 input_tokens/output_tokens（H2/PG 双份可为空）；V36（2026-08-22 agent-graph-step-debugging）新增调试会话表（H2/PG 双份）。 |
+| 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，V1–V37；**双方言新库全链均可直跑**——H2 新库全链 37 迁移与升级链 migrate+validate 已通过；**PG 侧全链直跑已修复（2026-08-19 pg-v13-migration-chain-repair，I52 关闭）**：PG 17.5 真实二进制（zonky embedded-postgres）新库全链 37 条 migrate+validate 通过 + 既有库升级夹具通过，永久测试 `FlywayFullChainPostgresTest`；PG 真实库（127.0.0.1）临时 schema 验证 V33 幂等执行通过（2026-08-19）。V35（2026-08-22 agent-token-usage-observability）新增 input_tokens/output_tokens（H2/PG 双份）；V36（2026-08-22 agent-graph-step-debugging）新增调试会话表（H2/PG 双份）；V37（2026-08-24 agent-tool-configuration-frontend）新增智能体工具管理菜单 seed（H2/PG 双份，独立 V36→V37 升级验证通过）。 |
 | 核心路径 | Walking Skeleton：登录 → 表单 → 审批 → 通知 ✅ 四环全部闭合 |
-| 功能清单 | 10 模块，55 功能，90 明细；规划确认终态 **✅26/🟦24/⬜40**（`Smart-WorkFlow/功能清单.md` 权威清单，M07-F02-02 ✅（D157）、M07-F04-02 ✅（D170功能级PASSED + D172阶段三PASSED，13/13；D173终态文字已同步，等待规划层零残留确认）、**M07-F02-04 单步调试 ✅（D180 规划层最终验收 15/15 PASSED + 终态同步，2026-08-23）**）。 |
-| 测试基线 | 规划当前确认正式基线为 agent-graph-step-debugging D180 的 **后端 827 tests / 0 failures / 0 errors / 0 skipped**（sw-basic-agent 338，Surefire XML 119 叶文件，净增 72 = 71 调试测试 + 1 V36 PG，2G 串行门禁实际互斥零快照）；**前端 86 spec files / 850 tests / 0 failures** 四连全绿；Flyway **V36** 双方言 36 条全链（H2/PG 新库+升级链）。历史基线 755/Agent267、82f/815t、V35（D170，agent-token-usage-observability）与更早 723/234/79f775t/V34（D154）已被 D180 晋级取代。 |
+| 功能清单 | 10 模块，55 功能，90 明细；规划确认终态 **✅27/🟦23/⬜40**（`Smart-WorkFlow/功能清单.md` 权威清单，M07-F02-02 ✅（D157）、M07-F04-02 ✅（D170功能级PASSED + D172阶段三PASSED，13/13；D173终态文字已同步）、**M07-F02-04 单步调试 ✅（D180 规划层最终验收 15/15 PASSED + 终态同步，2026-08-23）**、**M07-F03-02 工具配置前端闭环 ✅（D203 功能级 12/12 PASSED + 阶段三终态同步，2026-08-25）**）。 |
+| 测试基线 | 规划当前确认正式基线为 agent-tool-configuration-frontend D203 的 **后端 827 tests / 0 failures / 0 errors / 0 skipped**（sw-basic-agent 338）；**前端 100 spec files / 981 tests / 0 failures / 0 skipped**（typecheck/lint/test/build 严格顺序串行退出码全 0）；Flyway **V37** 双方言 37 条全链（H2/PG 新库+升级链，独立 V36→V37 单迁移验证）。历史基线 86f/850t/V36（D180，agent-graph-step-debugging）已被 D203 晋级取代。 |
 
-### 当前进行（2026-08-23，无进行中业务功能；已完成功能 30）
+### 当前进行（2026-08-25，无进行中业务功能；已完成功能 31）
+
+### 此前最近完成（2026-08-25，agent-tool-configuration-frontend COMPLETED（D203 功能级 12/12 PASSED + 阶段三终态同步，第31个已完成功能））
+
+`agent-tool-configuration-frontend`（P48 / M07-F03-02 工具与函数调用前端配置闭环）：**D184 方向下发 → D185—D203 多轮复验，D203（2026-08-25）功能级最终验收 12/12 PASSED + 阶段三终态同步（第31个）**。12 项标准全部锁定：真实后端生产菜单→router/authGuard→ToolList→真实请求链（标准1）、双工具 CRUD/启停/删除真实 API 闭环（标准2—4）、真实后端 timeout 0 归一化 1/1 原样+持久化+回读（标准5）、启停删除反馈（标准6）、图设计器 TOOL 节点消费既有数据源（标准7）、四拒绝 401/403+数据前后值（标准8）、敏感路径零 diff（标准9）、独立 V36→V37+同会话查询（标准10）、严格顺序串行四门 100f/981t 零失败零跳过（标准11）、当前入口唯一口径（标准12）。终态同步完成：P48 已核销、M07-F03-02 升 ✅、清单 **✅27/🟦23/⬜40**、已完成功能数 **31**、正式基线 **827/Agent338、100f/981t、V37**，knowledge/memory 全文一致。主方向已归档 `passed/direction-agent-tool-configuration-frontend.md`；终态同步方向 `ready/direction-agent-tool-configuration-frontend-terminal-sync.md`（待规划层终态复核与归档）。审查：`product/agent-tool-configuration-frontend/receipts/planning-final-review-d203.md`。
 
 ### 此前最近完成（2026-08-23，agent-graph-step-debugging COMPLETED（D180 规划层最终验收 15/15 PASSED + 终态同步，第30个已完成功能））
 

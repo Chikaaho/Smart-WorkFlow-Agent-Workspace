@@ -1,14 +1,22 @@
 # 当前状态
 
-> 最后更新：2026-08-23（D183终态复验PASSED；agent-graph-step-debugging COMPLETED，第30个）
-
-## 当前进行功能
-
-无。
+> 最后更新：2026-08-25（D207阶段三终态复核PASSED，功能COMPLETED确认）
 
 ## 最近完成功能
 
+**agent-tool-configuration-frontend（P48 / M07-F03-02 工具与函数调用前端配置闭环）COMPLETED（D203功能级12/12 PASSED + D207阶段三终态8/8 PASSED，2026-08-25，第31个）✅**：P48已核销、M07-F03-02升✅、清单✅27/🟦23/⬜40、功能数31；正式基线后端 **827/0/0/0（agent338）**、前端 **100 spec files / 981 tests（0 failed、0 skipped）**、Flyway **V37（H2/PostgreSQL）**。主方向与终态同步方向均已归档`passed/`。功能审查：`product/agent-tool-configuration-frontend/receipts/planning-final-review-d203.md`；终态审查：`product/agent-tool-configuration-frontend/receipts/planning-terminal-final-review-d207.md`。
+
 **agent-graph-step-debugging（P7 第二子集 / M07-F02-04 单步调试）COMPLETED（D180功能15/15 + D183终态同步8/8，2026-08-23，第30个）✅**：P7已核销、M07-F02-04升✅、清单✅26/🟦24/⬜40、功能数30；正式基线后端 **827/0/0/0（agent338）**、前端 **86f/850t**、Flyway **V36**。主方向与终态同步方向均归档`passed/`；最终审查：`product/agent-graph-step-debugging/receipts/planning-terminal-final-review-d183.md`。
+
+## 正式基线
+
+- 后端：827 tests（Agent 338）
+- 前端：100 spec files / 981 tests（0 failed、0 skipped）
+- Flyway：V37 双方言（H2/PostgreSQL）
+- 功能清单：✅27 / 🟦23 / ⬜40
+- 已完成功能：31
+- 活动功能：无
+- 当前唯一下一动作：规划层比较并选择下一唯一功能
 
 **agent-token-usage-observability（P8 / M07-F04-02 Token统计子集）COMPLETED（D170功能级 + D172阶段三 + D174最终验收，2026-08-22）✅**：13/13；P8核销、M07-F04-02✅、清单25/25/40、功能数29；基线755/Agent267、82f/815t、V35。最终审查：`product/agent-token-usage-observability/receipts/planning-final-review-d174.md`。
 
@@ -94,14 +102,14 @@ process-monitoring (M04-F06-01)：COMPLETED（详情见 `knowledge/`，2026-07-3
 
 ## 测试基线
 
-当前结果：agent-graph-step-debugging经D180最终验收`PASSED`（15/15）+ 纯终态同步完成；正式基线为后端 **827/0/0/0**（agent338）、前端 **86f/850t**、Flyway **V36**。
+当前结果：正式基线为 agent-tool-configuration-frontend D203 的 **后端 827/0/0/0**（agent338）、**前端 100 spec files / 981 tests（0 failed、0 skipped）**、**Flyway V37**（H2/PostgreSQL）。前端四门 typecheck/lint/test/build 严格顺序串行（同一毫秒时钟）退出码全 0；后端 AgentToolConfigSecurityIntegrationTest 8 用例（标准5/8）、FlywayFullChainH2Test 14 用例（含标准10 独立 V36→V37）。
 
-- 后端：D180最终验收确认 **827/0/0/0**（agent338，Surefire XML 119 叶文件，`755+72=827` 勾稽：71 调试测试 + 1 V36 PG，2G 串行门禁完整工具族实际互斥零快照）。
-- 前端：D180最终验收确认 **86 spec files / 850 tests** 四门全绿（2G 串行）。
-- 功能清单：阶段三已同步 **✅26/🟦24/⬜40** 共90行；M07-F02-04已升✅（P7已核销）、M07-F04-02已升✅（P8已核销）。
-- Flyway：D180最终确认 **V36** 双方言36条全链（H2 13 / PG 10 用例）。
-- 已完成功能：规划确认 **30**（agent-graph-step-debugging 为第30个，D180 15/15 PASSED + 终态同步完成）。
-- 需求池：P8已核销；P6已核销；**P7已正式核销**（D180 15/15 PASSED）。
+- 后端：正式基线 **827/0/0/0**（agent338），D194 保持锁定。
+- 前端：正式基线 **100f/981t（0 failed、0 skipped）**，D203 严格顺序串行四门。
+- 功能清单：终态 **✅27/🟦23/⬜40** 共90行；M07-F03-02已升✅（P48已核销）、M07-F02-04已升✅（P7已核销）、M07-F04-02已升✅（P8已核销）。
+- Flyway：正式基线 **V37**（H2/PostgreSQL），独立 V36→V37 单迁移验证。
+- 已完成功能：规划确认 **31**（agent-tool-configuration-frontend 为第31个，D203 12/12 PASSED + 终态同步完成）。
+- 需求池：P48已核销；P8已核销；P6已核销；**P7已正式核销**（D180 15/15 PASSED）。
 
 ## 模块完成度（简表）
 
