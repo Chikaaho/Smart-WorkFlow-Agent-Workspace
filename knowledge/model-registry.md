@@ -46,7 +46,7 @@
 | **允许读取** | `system.md`、`roles/planner.md`、`memory/`（压缩记忆）、`search_fallback/`（探索结果）、`product/`（需求方向与回执）、`todo/` |
 | **允许写入** | `memory/`、`search_task/`、`product/`（ready/→passed/ 流转）、`todo/`；`system.md`/`roles/` 只读，治理问题转管理员 |
 | **允许执行** | 不执行 `mvn`/`pnpm`/`java`/`node` 等状态变更命令 |
-| **核心职责** | 阅读记忆、派发探索（search_task）、制定需求方向（目标/非目标/影响范围/风险）、验收需求（对照回执判定 PASSED/FAILED/BLOCKED）、下发唯一终态值清单并复核阶段三同步、更新记忆（memory/） |
+| **核心职责** | 阅读记忆、派发探索（search_task）、制定需求方向（目标/非目标/影响范围/风险）、验收需求（对照回执判定 PASSED/FAILED/BLOCKED）、对重复失败按一级→二级→三级零裁量逐步收敛补充提示、下发唯一终态值清单并复核阶段三同步、更新记忆（memory/） |
 | **禁止事项** | 直接读取 `knowledge/` 与两端代码；修改业务代码；代执行角色拆 Step 或写执行/测试细节；执行状态变更命令；以"验证方案精确性"为由读取代码（D41） |
 | **上下文策略** | **最小上下文**（只接收 roles/planner.md §5 限定的 6 类输入；探索结论经 search_fallback 压缩后进入） |
 | **对应旧体系** | 原 Anthropic 系（Claude Code 规划层） |
@@ -60,9 +60,9 @@
 | **允许读取** | 全部目录：`knowledge/`、`product/`、`memory/`、`search_task/`、`search_fallback/`、`system.md`、`roles/executor.md`、`todo/`、两端代码 |
 | **允许写入** | `knowledge/`、`memory/`（按同步规则）、`search_fallback/`、`product/receipts/`、入口授权范围内的两端代码；阶段三只按规划终态值清单写状态 |
 | **允许执行** | 自己项目的编译/测试命令：后端 `mvn` 系（`MAVEN_OPTS="-Xmx2g"`）、前端 `pnpm`/`npm` 系（`NODE_OPTIONS="--max-old-space-size=2048"`） |
-| **核心职责** | 探索代码、按需求方向自主拆 Step 并闭环实现/验证、提交 `EXECUTION_SUBMITTED`；规划 PASSED 后按唯一终态值清单同步知识与状态并提交 `TERMINAL_SYNC_SUBMITTED` |
+| **核心职责** | 探索代码、按需求方向自主拆 Step 并闭环实现/验证、提交 `EXECUTION_SUBMITTED`；收到逐级补充提示时只按最新提示和审查记录建立承接矩阵/独立证据包；规划 PASSED 后按唯一终态值清单同步知识与状态并提交 `TERMINAL_SYNC_SUBMITTED` |
 | **禁止事项** | 制定/修改需求方向；诱导用户规划或预告方向外新任务；自行作规划验收裁决；功能验收前写 COMPLETED；推算/修改终态值清单；局部入口跨项目读写；无证据标记完成 |
-| **上下文策略** | **限定范围**（读取完成任务所需代码，禁止无目标扫描所有目录） |
+| **上下文策略** | **限定范围 + 失败收敛**（正常任务读取完成所需代码；重复失败后随最新提示缩小到剩余缺口，禁止无目标扫描、重验锁定项或复用已判无效证据） |
 | **对应旧体系** | 原 DeepSeek 系执行层 |
 
 ### 2.3 管理员（Admin）
@@ -104,6 +104,6 @@
 
 ---
 
-> 最后更新：2026-08-22
+> 最后更新：2026-08-25
 > 维护者：管理员角色
 > 关联规则：system.md §0（角色定位与入口）、§0.9（角色定义文件）、roles/planner.md、roles/executor.md、roles/admin.md（角色完整定义，2026-08-22 自 system.md 拆分，见 system.md §16 迁移映射表）
