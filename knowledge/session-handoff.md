@@ -5,13 +5,13 @@
 >
 > 新会话启动时，优先读取本文件以恢复上下文。
 >
-> **最新状态（2026-08-23）**：agent-graph-step-debugging（P7 / M07-F02-04 图单步调试）**D180 规划层最终验收 15/15 PASSED + 终态同步，COMPLETED（第 30 个已完成功能）**——正式基线后端 **827/0/0/0**（agent 338，Surefire XML 119 文件）、前端 **86f/850t** 四门全绿、Flyway **V36** 双方言36条全链；清单 **✅26/🟦24/⬜40**、已完成功能 **30**、**P7 已核销**、M07-F02-04 已升✅。终态同步回执已提交，待规划层最终复验与归档（终态同步方向 `ready/direction-post-d180-terminal-sync.md`）。审查：`product/agent-graph-step-debugging/receipts/planning-final-review-d180.md`。
+> **最新状态（2026-08-25）**：agent-tool-configuration-frontend（P48 / M07-F03-02 工具与函数调用前端配置闭环）**D203 功能级 12/12 PASSED + 阶段三终态同步，COMPLETED（第 31 个已完成功能）**——正式基线后端 **827/0/0/0**（agent 338）、前端 **100 spec files / 981 tests（0 failed、0 skipped）** 四门严格顺序串行全绿、Flyway **V37** 双方言；清单 **✅27/🟦23/⬜40**、已完成功能 **31**、**P48 已核销**、M07-F03-02 已升✅。主方向已归档 `passed/`；终态同步方向留 `ready/direction-agent-tool-configuration-frontend-terminal-sync.md` 待规划层终态复核与归档。审查：`product/agent-tool-configuration-frontend/receipts/planning-final-review-d203.md`。
 >
 > ⚠️ **2026-08-14 角色制上线**：本文件历史记录中的"使用模型"字段（如 deepseek-v4-pro/flash）为**当时执行事实**，仅作历史存档。当前权限按会话角色（规划/执行/管理员）划分，与模型无关（见根目录 `system.md` §0.2）。新记录不再填写模型字段。
 
 ---
 
-## 0. 当前进行中功能（无进行中业务功能；已完成功能 30）
+## 0. 当前进行中功能（无进行中业务功能；已完成功能 31）
 
 **agent-graph-step-debugging — P7 / M07-F02-04 图单步调试（D175下发；D180 规划层最终验收 15/15 PASSED + 终态同步，COMPLETED，第30个，2026-08-23）**
 
@@ -270,8 +270,8 @@
 - 前端：**86 spec files / 850 tests** 四连全绿（CONFIRMED 2026-08-23 agent-graph-step-debugging D180；演进 82f/815t → 86f/850t；**正式基线**）
 - 功能清单（规划确认+阶段三已同步）：**✅26 / 🟦24 / ⬜40 共 90 行**（M07-F02-02 ✅（D157）、M07-F04-02 ✅（D170+D172）、M07-F02-04 ✅（D180））
 - Flyway：V1-V36 连续（V36 已占）；**双方言真实全链口径 36 迁移**——H2（7 目录，永久测试 `FlywayFullChainH2Test`）+ V33→V36 / V34→V36 升级链；**PG 侧全链 36 条直跑已修复（I52 关闭，D110 COMPLETED）**——`FlywayFullChainPostgresTest`（zonky embedded-postgres PG 17.5）新库全链 36 条 migrate+validate + 既有库升级夹具 + 原 V13 checksum 守卫 + 语义正反例；平台二进制 `embedded-postgres-binaries-bom:17.5.0` 统一
-- 已完成功能：**30 个规划确认**（agent-graph-step-debugging D180 COMPLETED 为第30个；agent-token-usage-observability D174 为第29个）
-- 进行中业务功能：无（agent-graph-step-debugging D180 15/15 PASSED + 终态同步完成，终态同步回执已提交，待规划层最终复验与归档）
+- 已完成功能：**30 个规划确认**（agent-graph-step-debugging D180 COMPLETED 为第30个；agent-token-usage-observability D174 为第29个）【历史记录：D180 时期基线，2026-08-23；当前已完成功能 31，见文件顶部最新状态】
+- 进行中业务功能：无（agent-graph-step-debugging D180 15/15 PASSED + 终态同步完成，终态同步回执已提交，待规划层最终复验与归档）【历史记录：D180 时期，2026-08-23】
 
 ---
 
@@ -364,13 +364,13 @@
 - 执行约束：本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行，禁并行编译（已入宪法）
 - 候选池：**P1/P5/P6/P7/P8 已核销**、M07 补全已闭环（F02-02/F02-04/F04-02）、M07-F03/F04新功能、IoT/OpenAPI、数据权限遗留/停用即时生效——PG侧全链直跑已由pg-v13修复关闭（I52）
 
-当前功能：agent-graph-step-debugging D180 15/15 PASSED + 终态同步完成（第30个）；最新归档：product/agent-graph-step-debugging/passed/（主方向 D175）；终态同步回执已提交，待规划层最终复验与归档：ready/direction-post-d180-terminal-sync.md
+当前功能：无（agent-tool-configuration-frontend（P48 / M07-F03-02）D203 功能级 12/12 PASSED + 阶段三终态同步完成，第31个，待规划终态复核与归档）；最新归档：agent-tool-configuration-frontend D203
 ```
 
 ---
 
-> 最后更新：2026-08-23
-> 最新功能：**agent-graph-step-debugging** — P7 / M07-F02-04 图单步调试（**D180 规划层最终验收 15/15 PASSED + 终态同步，COMPLETED，第30个已完成功能**；后端827/agent338 / 前端86f/850t / Flyway V36双方言36条全链；清单✅26/🟦24/⬜40、P7已核销、M07-F02-04✅、功能数30；方向`passed/`；终态同步回执已提交，待规划层最终复验与归档（终态同步方向`ready/direction-post-d180-terminal-sync.md`）；审查`receipts/planning-final-review-d180.md`）
-> 上一功能：**agent-token-usage-observability** — P8 / M07-F04-02 Token统计子集（**COMPLETED，D170+D172+D174，第29个**）
-> 测试基线：后端 CONFIRMED 827 tests（agent 338）· 前端 CONFIRMED 86 files / 850 tests（**D180 正式基线**）
-> 进行中：无（agent-graph-step-debugging D180 15/15 PASSED + 终态同步完成，待规划层最终复验与归档）
+> 最后更新：2026-08-25
+> 最新功能：**agent-tool-configuration-frontend** — P48 / M07-F03-02 工具与函数调用前端配置闭环（**COMPLETED，D203 功能级 12/12 PASSED + 阶段三终态同步，2026-08-25，第31个**；正式基线后端827/agent338 / 前端100f/981t / Flyway V37；P48已核销、M07-F03-02✅、清单✅27/🟦23/⬜40、功能数31；主方向`passed/direction-agent-tool-configuration-frontend.md`；终态同步方向`ready/direction-agent-tool-configuration-frontend-terminal-sync.md`待规划终态复核；审查`receipts/planning-final-review-d203.md`）
+> 上一功能：**agent-graph-step-debugging** — P7 / M07-F02-04 图单步调试（**COMPLETED，D180 15/15 PASSED + 终态同步，第30个**）
+> 测试基线：后端 CONFIRMED 827 tests（agent 338）· 前端 CONFIRMED 100 files / 981 tests（**D203 正式基线**）
+> 进行中：无（agent-tool-configuration-frontend 终态同步完成，待规划终态复核）
