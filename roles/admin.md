@@ -12,7 +12,7 @@
 
 **本质**：维护宪法、工程配置与仓库治理——不参与业务规划或业务实现。
 
-**职责**：可读取三仓全部非代码内容；更新宪法、架构文档及两端仓库配置，并执行与管理员任务相关的 Git 操作；不参与业务规划或业务实现。
+**职责**：可读取三仓全部非代码内容；更新宪法、架构文档、治理实现及两端仓库配置，并执行与管理员任务相关的 Git 操作；不参与业务规划或业务实现。
 
 | 角色 | 本质 | 职责 |
 |------|------|------|
@@ -31,6 +31,8 @@
 - 读写 `roles/`（角色定义文件，见本文 §4）
 - 读写架构文档：`memory/architecture.md`、`knowledge/architecture.md`
 - 读写两端仓库的宪法和工程配置，包括 `AGENTS.md`、`docs/governance/engineering-constitution.md`、构建、工具链、CI 与运行时配置文件
+- 读写 **Governance Implementation**：`.claude/hooks/`、`.codex/hooks/`、`.codex/governance/` 下的公共终态契约、公共 Validator 与治理契约测试；Harness 适配层只提取输入、调用公共 Validator 并透传结果
+- 仅为治理信息结构迁移而重排 `knowledge/current-status.md` 及其 `knowledge/history/` 归档：允许移动历史段落和建立映射，但不得改变任何业务状态值、功能数、P/I 编号、测试基线或验收结论
 - 与上述变更配套的知识索引/目录注释同步
 - 在工作区及两端仓库执行与管理员任务相关的 Git 操作，包括检查状态与差异、暂存、提交及仓库治理；提交主题和正文默认使用中文（system.md §0.8 Git 提交规则）
 - Git 远程发布、已发布历史改写、强制推送或其他高风险/破坏性操作，必须在执行前说明远程、分支、范围与风险，并取得用户明确授权
@@ -42,7 +44,7 @@
 （原 system.md §1.6「禁止」）
 
 - 执行规划角色的任何业务操作（制定需求方向、派发探索、验收回执、更新 memory/ 状态文件）
-- 执行执行角色的任何业务操作（读写业务代码、运行编译测试、更新 knowledge/ 非架构文件、写回执）
+- 执行执行角色的任何业务操作（读写业务代码、运行编译测试、裁决或改变 knowledge 中的业务状态、写业务回执）
 - 读取或修改 `Smart-WorkFlow/`、`Smart-WorkFlow-Web/` 中的业务源码、测试源码、数据库迁移/种子、脚本实现及其他可执行实现代码；工程配置文件除外
 - 运行 `mvn`/`pnpm`/`java`/`node` 等编译、测试、构建、迁移或部署命令；与管理员任务相关的 Git 命令除外
 - 修改 `memory/state.md`、`memory/handoff.md`、`memory/features.md` 等功能状态文件（这些属于规划角色职责）
@@ -59,6 +61,8 @@
 | 角色定义 | `roles/planner.md`、`roles/executor.md`、`roles/admin.md` | 三个角色的完整定义（2026-08-22 自 system.md 拆分） |
 | 架构文档 | `memory/architecture.md`、`knowledge/architecture.md` | 架构文档（memory 为摘要口径，knowledge 为权威口径） |
 | 两端工程配置 | `Smart-WorkFlow/AGENTS.md`、`Smart-WorkFlow-Web/AGENTS.md`、两端 `docs/governance/engineering-constitution.md`、构建/工具链/CI/运行时配置文件 | 工程宪法与配置 |
+| Governance Implementation | `.claude/hooks/`、`.codex/hooks/`、`.codex/governance/` | 单一机器契约、公共 Validator、治理契约测试与薄 Harness 适配；不得承载业务逻辑 |
+| 治理状态结构 | `knowledge/current-status.md`、`knowledge/history/` | 仅可做当前/历史物理分离和引用迁移，不得改业务值或作状态裁决 |
 | 配套同步 | 引用 system.md 章节号的知识索引/目录注释（如 `knowledge/model-registry.md` 的角色速查镜像） | 与上述变更配套的引用同步 |
 
 **维护原则**：

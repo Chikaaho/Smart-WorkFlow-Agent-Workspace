@@ -1,11 +1,23 @@
 {
-  "schema": "smart-workflow.executor-terminal.v1",
+  "contract": "smart-workflow.executor-terminal.v2",
   "marker": "SWF_TERMINAL",
-  "role": "executor",
-  "states": {
-    "EXECUTION_SUBMITTED": { "required": ["receipt", "evidence", "feature_status"] },
-    "TERMINAL_SYNC_SUBMITTED": { "required": ["receipt", "evidence", "feature_status", "memory_compression"] },
-    "BLOCKED": { "required": ["receipt", "evidence", "block_type", "attempted", "release_condition"] }
+  "additionalProperties": false,
+  "required": ["schema", "role", "state", "receipt", "evidence"],
+  "properties": {
+    "schema": {"type": "string", "const": "smart-workflow.executor-terminal.v2"},
+    "role": {"type": "string", "const": "executor"},
+    "state": {"type": "string", "enum": ["EXECUTION_SUBMITTED", "TERMINAL_SYNC_SUBMITTED", "BLOCKED"]},
+    "receipt": {"type": "string", "minLength": 1, "pattern": "^product/[^/]+/receipts/[^/]+\\.md$"},
+    "evidence": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "feature_status": {"type": "string", "enum": ["READY", "IN_PROGRESS", "VERIFYING", "PASSED", "COMPLETED"]},
+    "memory_compression": {"type": "object", "additionalProperties": false, "required": ["before_bytes", "after_bytes"], "properties": {"before_bytes": {"type": "integer", "minimum": 0}, "after_bytes": {"type": "integer", "minimum": 0}}},
+    "block_type": {"type": "string", "enum": ["EXTERNAL", "DIRECTION_CONFLICT", "ENVIRONMENT", "EVIDENCE_GAP"]},
+    "attempted": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "release_condition": {"type": "string", "minLength": 1}
   },
-  "forbidden_states": ["COMPLETED", "PASSED", "PENDING", "IN_PROGRESS"]
+  "states": {
+    "EXECUTION_SUBMITTED": {"required": ["feature_status"], "allowedFeatureStatus": ["IN_PROGRESS", "VERIFYING"]},
+    "TERMINAL_SYNC_SUBMITTED": {"required": ["feature_status", "memory_compression"], "allowedFeatureStatus": ["COMPLETED"]},
+    "BLOCKED": {"required": ["block_type", "attempted", "release_condition"], "allowedFeatureStatus": []}
+  }
 }

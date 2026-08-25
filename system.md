@@ -90,7 +90,7 @@
 **角色规则（硬约束）**：
 
 - **规划角色**：只能读取 `system.md` + `roles/planner.md` + `memory/` + `search_fallback/` + `product/`；只能写入 `memory/` + `search_task/` + `product/` + `todo/`。`system.md` 与 `roles/` 只允许管理员角色维护；规划角色发现治理问题时只能向用户报告并转管理员任务。规划角色**绝对不能直接读取** `knowledge/`（完整知识库）、`Smart-WorkFlow/` 和 `Smart-WorkFlow-Web/` 的代码（含 `node_modules/`）。
-- **执行角色**：可读取全部目录（`knowledge/`、`product/`、两端代码），可自行拆分探索任务、启动 Sub Agent、并行探索、汇总原始材料；实现任务自主闭环到 `EXECUTION_SUBMITTED`，规划 `PASSED` 后的阶段三同步任务自主闭环到 `TERMINAL_SYNC_SUBMITTED`，方向归档与最终确认仍由规划角色完成。当执行角色被规划角色委派探索时（通过 search_task 机制），探索任务只产出 `search_fallback/`，不产出需求方向——最终方向由规划角色生成。
+- **执行角色**：可读取全部目录（`knowledge/`、`product/`、两端代码），可自行拆分探索任务、启动 Sub Agent、并行探索、汇总原始材料；实现任务和规划 `PASSED` 后的阶段三同步任务分别闭环到机器契约允许的对应终态，方向归档与最终确认仍由规划角色完成。当执行角色被规划角色委派探索时（通过 search_task 机制），探索任务只产出 `search_fallback/`，不产出需求方向——最终方向由规划角色生成。
 - **管理员角色**：可读取工作区知识仓、后端仓和前端仓的全部非代码内容，包括 `memory/`、`knowledge/`、`product/`、`search_task/`、`search_fallback/`、`todo/`、文档和工程配置；可写 `system.md`、架构文档及两端仓库的宪法和工程配置；可执行与管理员任务相关的 Git 操作；不得读取业务源码、测试源码或其他实现代码，不做规划/执行的任何业务操作。
 
 **信息分层铁律（D85，2026-08-16 用户定）**：
@@ -141,7 +141,9 @@
 
 `README.md`、`knowledge/development-workflow.md`、`knowledge/model-registry.md`、`knowledge/features/` 及 `product/` 中的内容均不是角色、授权、执行终态或当前状态的规范入口。它们与本文件、`roles/` 或工程宪法冲突时，以当前规范入口为准；不得从旧文档推导二次确认、模型角色、旧 Step 协议或旧终态。
 
-**当前状态唯一来源与终态机器契约（硬约束 🔒）**：`knowledge/current-status.md` 是当前功能状态、计数、活动功能和唯一下一动作的唯一权威来源；`memory/state.md`、`memory/handoff.md`、`memory/features.md`、`product/*/ready/`、`product/*/passed/` 与 receipts 只允许保存摘要、交接、方向或证据指针，不得复制另一份当前状态。执行终态的唯一机器契约是 `.codex/governance/terminal-contract.json`；角色文档、回执模板和 Hook 只能引用该契约，不得各自扩展合法终态。执行回执结束时必须追加结构化行 `SWF_TERMINAL {JSON}`，Hook 只验证该行与契约字段，不从自然语言推断角色、终态或未完成项。
+**当前状态唯一来源与终态机器契约（硬约束 🔒）**：`knowledge/current-status.md` 是当前功能状态、计数、活动功能和唯一下一动作的唯一权威来源，并且只保存一份最新快照；旧快照与过程历史追加归档到 `knowledge/history/`。`memory/` 保存 Planner 可直接决策的最小摘要（含权威路径和同步点），不是第二份权威状态；冲突时由有权限角色按 `knowledge/current-status.md` 修正摘要。执行终态的唯一机器契约是 `.codex/governance/terminal-contract.json`；唯一公共 Validator 是 `.codex/governance/validate-terminal.sh`。角色文档、回执模板和 Hook 只能引用该契约与 Validator，不得各自扩展合法终态、字段 schema 或校验分支。执行回执结束时必须追加结构化行 `SWF_TERMINAL {JSON}`，Hook 只提取该行、调用公共 Validator 并透传统一诊断，不从自然语言推断角色、终态或未完成项。
+
+**Governance Implementation（硬约束 🔒）**：`.claude/hooks/`、`.codex/hooks/`、公共 Validator、终态契约及治理契约测试统一属于 Governance Implementation，由管理员维护。该权限只覆盖治理门禁实现及其静态/契约验证，不授予管理员读取或修改业务源码、业务测试、迁移、业务实现或裁决业务状态的权限；Hook 不得承载业务逻辑。定义与允许/禁止清单唯一见 `roles/admin.md` §2—§4。
 
 Claude 的 `.claude/settings*.json`、Codex 的权限配置及其他 Harness 工具设置只控制工具运行方式，不改变本文件规定的角色、授权、职责和停止条件。
 
