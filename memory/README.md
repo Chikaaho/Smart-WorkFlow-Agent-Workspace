@@ -1,9 +1,8 @@
 # memory 使用说明
 
-`memory/` 仅保存最小入口指针，不承载完整状态、历史探索、候选列表或测试基线。
+`memory/` 保存 Planner 可直接恢复和决策的最小摘要；不承载完整历史、原始证据或完整决策正文。
 
-- 当前状态：`knowledge/current-status.md`
+- 当前摘要：`state.md`、`handoff.md`（截至 2026-08-25 / D210；权威为 `knowledge/current-status.md`）
 - 未关闭问题：`knowledge/known-issues.md`
 - 完整功能清单：`Smart-WorkFlow/功能清单.md`
 - 历史证据：`product/*/receipts/`
-

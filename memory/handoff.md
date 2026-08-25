@@ -1,5 +1,5 @@
-# 会话交接指针
+# 会话交接摘要
 
-当前状态、活动功能、唯一下一动作：仅见 `knowledge/current-status.md`。
-本文件不保存旧任务、历史基线或候选列表。历史证据仅通过 `product/*/receipts/` 按需查阅。
+> 截至/同步点：2026-08-25 / D210；权威来源：`knowledge/current-status.md`。
 
+当前无进行中业务功能。`governance-contract-consolidation` 已完成并通过规划核对，方向已归档至 `product/governance-contract-consolidation/passed/`。业务终态保持 32 个已完成功能、清单 ✅29/🟦21/⬜40、基线 827 / 100f-988t / V37；下一动作是规划比较候选并选择下一唯一业务功能。

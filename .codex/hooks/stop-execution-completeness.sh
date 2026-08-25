@@ -23,18 +23,10 @@ if [ "$background_count" -gt 0 ]; then
   exit 0
 fi
 
-contract=/usr/local/projects/Smart-WorkFlow/.codex/governance/terminal-contract.json
 terminal_json=$(printf '%s' "$message" | awk -v marker='SWF_TERMINAL ' 'index($0, marker) { sub("^.*" marker, ""); print; exit }')
-terminal_state=$(printf '%s' "$terminal_json" | /usr/bin/jq -r '.state // ""' 2>/dev/null)
-valid=$(printf '%s' "$terminal_json" | /usr/bin/jq --slurpfile c "$contract" --arg state "$terminal_state" '
-  . as $obj |
-  ($c[0].states[$state].required // []) as $required |
-  ($c[0].forbidden_states | index($state)) as $forbidden |
-  ($obj.schema == $c[0].schema and $obj.role == $c[0].role and
-   (($required | map(. as $field | select(($obj | has($field)) | not)) | length) == 0) and $forbidden == null)
-' 2>/dev/null)
-if [ "$valid" = "true" ]; then
+diagnostic=$(printf '%s' "$terminal_json" | sh /usr/local/projects/Smart-WorkFlow/.codex/governance/validate-terminal.sh 2>&1)
+if [ "$?" -eq 0 ]; then
   exit 0
 fi
-printf '%s\n' '{"decision":"block","reason":"执行会话缺少合法的结构化终态。请按 .codex/governance/terminal-contract.json 追加一行 SWF_TERMINAL JSON 标记；Hook 不解析自然语言终态或未完成提示。"}'
+/usr/bin/jq -cn --arg reason "执行会话缺少合法结构化终态：$diagnostic" '{decision:"block",reason:$reason}'
 exit 0
