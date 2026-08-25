@@ -17,10 +17,14 @@
 | 前端框架 | Vue 3.5 + TypeScript 6.0 + Vite 8，严格分层 SPA，自有架构（不继承 vben） |
 | 数据库 | PostgreSQL（生产）/ H2（开发），Flyway 管理 schema，V1–V37；**双方言新库全链均可直跑**——H2 新库全链 37 迁移与升级链 migrate+validate 已通过；**PG 侧全链直跑已修复（2026-08-19 pg-v13-migration-chain-repair，I52 关闭）**：PG 17.5 真实二进制（zonky embedded-postgres）新库全链 37 条 migrate+validate 通过 + 既有库升级夹具通过，永久测试 `FlywayFullChainPostgresTest`；PG 真实库（127.0.0.1）临时 schema 验证 V33 幂等执行通过（2026-08-19）。V35（2026-08-22 agent-token-usage-observability）新增 input_tokens/output_tokens（H2/PG 双份）；V36（2026-08-22 agent-graph-step-debugging）新增调试会话表（H2/PG 双份）；V37（2026-08-24 agent-tool-configuration-frontend）新增智能体工具管理菜单 seed（H2/PG 双份，独立 V36→V37 升级验证通过）。 |
 | 核心路径 | Walking Skeleton：登录 → 表单 → 审批 → 通知 ✅ 四环全部闭合 |
-| 功能清单 | 10 模块，55 功能，90 明细；规划确认终态 **✅27/🟦23/⬜40**（`Smart-WorkFlow/功能清单.md` 权威清单，M07-F02-02 ✅（D157）、M07-F04-02 ✅（D170功能级PASSED + D172阶段三PASSED，13/13；D173终态文字已同步）、**M07-F02-04 单步调试 ✅（D180 规划层最终验收 15/15 PASSED + 终态同步，2026-08-23）**、**M07-F03-02 工具配置前端闭环 ✅（D203 功能级 12/12 PASSED + 阶段三终态同步，2026-08-25）**）。 |
-| 测试基线 | 规划当前确认正式基线为 agent-tool-configuration-frontend D203 的 **后端 827 tests / 0 failures / 0 errors / 0 skipped**（sw-basic-agent 338）；**前端 100 spec files / 981 tests / 0 failures / 0 skipped**（typecheck/lint/test/build 严格顺序串行退出码全 0）；Flyway **V37** 双方言 37 条全链（H2/PG 新库+升级链，独立 V36→V37 单迁移验证）。历史基线 86f/850t/V36（D180，agent-graph-step-debugging）已被 D203 晋级取代。 |
+| 功能清单 | 10 模块，55 功能，90 明细；规划确认终态 **✅29/🟦21/⬜40**（`Smart-WorkFlow/功能清单.md` 权威清单，M07-F02-02 ✅（D157）、M07-F04-02 ✅（D174）、**M07-F02-04 单步调试 ✅（D180）**、**M07-F03-02 工具配置前端闭环 ✅（D203）**、**M05-F01-02 消息接收 ✅（D210）**、**M05-F01-03 消息查询 ✅（D210）**）。 |
+| 测试基线 | 规划当前确认正式基线为 notify-management-closure D210 的 **后端 827 tests / 0 failures / 0 errors / 0 skipped**（sw-basic-agent 338）；**前端 100 spec files / 988 tests / 0 failures / 0 skipped**（typecheck/lint/test/build 严格顺序串行退出码全 0）；Flyway **V37** 双方言 37 条全链（H2/PG 新库+升级链，独立 V36→V37 单迁移验证）。 |
 
-### 当前进行（2026-08-25，无进行中业务功能；已完成功能 31）
+### 当前进行（2026-08-25，无进行中业务功能；已完成功能 32）
+
+### 此前最近完成（2026-08-25，notify-management-closure COMPLETED（D210 功能级 PASSED + 阶段三终态同步，第32个已完成功能））
+
+`notify-management-closure`（P3 / I41 / I42 / M05 通知管理缺口闭环）：**D210 功能级最终验收 PASSED + 阶段三终态同步（第32个）**。两项标准全部通过：①删除能力——DELETE /notify/messages/{id} 端点（recipient 归属校验 + 逻辑删除）+ 前端删除按钮（确认对话框 + loading 态）+ 10 个集成测试（删除端到端、越权删除、跨租户删除、已读状态过滤、关键词过滤、组合过滤）；②查询过滤——GET /notify/messages 支持 ?read=true/false 和 ?keyword= 查询参数 + 前端过滤栏（状态下拉 + 关键词搜索）+ Mock handlers 支持新端点和过滤参数。终态同步完成：M05-F01-02 升 ✅、M05-F01-03 升 ✅、M05-F01-01 保持 🟦（批量发送仍待排期）、I41/I42 关闭、清单 **✅29/🟦21/⬜40**、已完成功能数 **32**、正式基线 **827/Agent338、100f/988t、V37**。主方向与终态同步方向均归档 `passed/`。审查：`product/notify-management-closure/receipts/planning-final-review.md`。
 
 ### 此前最近完成（2026-08-25，agent-tool-configuration-frontend COMPLETED（D203 功能级 12/12 PASSED + 阶段三终态同步，第31个已完成功能））
 

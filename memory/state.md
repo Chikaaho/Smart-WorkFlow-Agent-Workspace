@@ -1,8 +1,10 @@
 # 当前状态
 
-> 最后更新：2026-08-25（D207阶段三终态复核PASSED，功能COMPLETED确认）
+> 最后更新：2026-08-25（D210功能级PASSED + 阶段三终态同步，第32个已完成功能）
 
 ## 最近完成功能
+
+**notify-management-closure（P3 / I41 / I42 / M05 通知管理缺口闭环）COMPLETED（D210功能级PASSED + 阶段三终态同步，2026-08-25，第32个）✅**：M05-F01-02升✅、M05-F01-03升✅、M05-F01-01保持🟦（批量发送仍待排期）、I41/I42关闭、清单✅29/🟦21/⬜40、功能数32；正式基线后端 **827/0/0/0（agent338）**、前端 **100 spec files / 988 tests（0 failed、0 skipped）**、Flyway **V37（H2/PostgreSQL）**。主方向与终态同步方向均已归档`passed/`。功能审查：`product/notify-management-closure/receipts/planning-final-review.md`。
 
 **agent-tool-configuration-frontend（P48 / M07-F03-02 工具与函数调用前端配置闭环）COMPLETED（D203功能级12/12 PASSED + D207阶段三终态8/8 PASSED，2026-08-25，第31个）✅**：P48已核销、M07-F03-02升✅、清单✅27/🟦23/⬜40、功能数31；正式基线后端 **827/0/0/0（agent338）**、前端 **100 spec files / 981 tests（0 failed、0 skipped）**、Flyway **V37（H2/PostgreSQL）**。主方向与终态同步方向均已归档`passed/`。功能审查：`product/agent-tool-configuration-frontend/receipts/planning-final-review-d203.md`；终态审查：`product/agent-tool-configuration-frontend/receipts/planning-terminal-final-review-d207.md`。
 
@@ -11,10 +13,10 @@
 ## 正式基线
 
 - 后端：827 tests（Agent 338）
-- 前端：100 spec files / 981 tests（0 failed、0 skipped）
+- 前端：100 spec files / 988 tests（0 failed、0 skipped）
 - Flyway：V37 双方言（H2/PostgreSQL）
-- 功能清单：✅27 / 🟦23 / ⬜40
-- 已完成功能：31
+- 功能清单：✅29 / 🟦21 / ⬜40
+- 已完成功能：32
 - 活动功能：无
 - 当前唯一下一动作：规划层比较并选择下一唯一功能
 
@@ -102,14 +104,14 @@ process-monitoring (M04-F06-01)：COMPLETED（详情见 `knowledge/`，2026-07-3
 
 ## 测试基线
 
-当前结果：正式基线为 agent-tool-configuration-frontend D203 的 **后端 827/0/0/0**（agent338）、**前端 100 spec files / 981 tests（0 failed、0 skipped）**、**Flyway V37**（H2/PostgreSQL）。前端四门 typecheck/lint/test/build 严格顺序串行（同一毫秒时钟）退出码全 0；后端 AgentToolConfigSecurityIntegrationTest 8 用例（标准5/8）、FlywayFullChainH2Test 14 用例（含标准10 独立 V36→V37）。
+当前结果：正式基线为 notify-management-closure D210 的 **后端 827/0/0/0**（agent338）、**前端 100 spec files / 988 tests（0 failed、0 skipped）**、**Flyway V37**（H2/PostgreSQL）。前端四门 typecheck/lint/test/build 严格顺序串行（同一毫秒时钟）退出码全 0。
 
-- 后端：正式基线 **827/0/0/0**（agent338），D194 保持锁定。
-- 前端：正式基线 **100f/981t（0 failed、0 skipped）**，D203 严格顺序串行四门。
-- 功能清单：终态 **✅27/🟦23/⬜40** 共90行；M07-F03-02已升✅（P48已核销）、M07-F02-04已升✅（P7已核销）、M07-F04-02已升✅（P8已核销）。
+- 后端：正式基线 **827/0/0/0**（agent338），D210 保持锁定。
+- 前端：正式基线 **100f/988t（0 failed、0 skipped）**，D210 严格顺序串行四门。
+- 功能清单：终态 **✅29/🟦21/⬜40** 共90行；M05-F01-02已升✅（D210）、M05-F01-03已升✅（D210）、M07-F03-02已升✅（P48已核销）、M07-F02-04已升✅（P7已核销）、M07-F04-02已升✅（P8已核销）。
 - Flyway：正式基线 **V37**（H2/PostgreSQL），独立 V36→V37 单迁移验证。
-- 已完成功能：规划确认 **31**（agent-tool-configuration-frontend 为第31个，D203 12/12 PASSED + 终态同步完成）。
-- 需求池：P48已核销；P8已核销；P6已核销；**P7已正式核销**（D180 15/15 PASSED）。
+- 已完成功能：规划确认 **32**（notify-management-closure 为第32个，D210 功能级PASSED + 阶段三终态同步完成）。
+- 需求池：P48已核销；P8已核销；P6已核销；P7已正式核销（D180 15/15 PASSED）；I41/I42已关闭（D210）。
 
 ## 模块完成度（简表）
 

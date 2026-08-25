@@ -21,7 +21,7 @@
 | I18 | 子项目 system.md 可能与 zip 不同步 | 中 | **已关闭**（D84 裁定：前提消失——工作区已无 zip，子项目 system.md 已同步 27,071/27,861 字节；未来如需重新登记） |
 | I26 | SysRole 列名与 V5 Flyway 列重命名不一致 | 中 | **已关闭**（2026-08-17，D86；P13 已 PASSED） |
 | I30/T10 | Mock BPMN XML 已增强（含 3 个 userTask 节点），可满足当前测试需求 | 低 | **已关闭**（D83/D84：代码已增强 processKey 参数化+3 userTask+activityId 对齐；known-issues 标已满足，todo T10 已删行） |
-| I31-I44 | **Step5 清单审计虚高缺口**（详情在 knowledge/known-issues.md）：I33/I43/I44、I37、I31已修复。**I36 用户组功能已关闭（2026-08-19，user-group-membership D117 PASSED + 阶段三 COMPLETED），P28 已核销**；**M02-F02/F03 已闭合（2026-08-20，role-menu-permission-parity D123 规划层最终验收 PASSED + 终态同步，P1 正式核销）**；M03/M05 其他缺口仍待排期。 | 中 | I36已关闭、F02/F03已闭合（P1 核销），M03/M05 其余待排期 |
+| I31-I44 | **Step5 清单审计虚高缺口**（详情在 knowledge/known-issues.md）：I33/I43/I44、I37、I31已修复。**I36 用户组功能已关闭（2026-08-19，user-group-membership D117 PASSED + 阶段三 COMPLETED），P28 已核销**；**M02-F02/F03 已闭合（2026-08-20，role-menu-permission-parity D123 规划层最终验收 PASSED + 终态同步，P1 正式核销）**；**I41/I42 已关闭（2026-08-25，M05 通知管理缺口闭环 D210 PASSED）**；M03 其他缺口仍待排期。 | 中 | I36/I41/I42已关闭、F02/F03已闭合（P1 核销），M03 其余待排期 |
 | I45 | Step5清单审计虚低汇总15条。M07前端管理页、运行日志子集、Prompt配置（D157 COMPLETED）与Token统计（D174 COMPLETED，M07-F04-02✅、P8核销）已闭合；其余缺口维持。 | 低 | Token统计子项已完成；其余按需排期 |
 | I46 | 手写 SQL 通道无数据权限（已在 knowledge/known-issues.md 正式登记，2026-08-15）：动态宽表 JdbcTemplate 与 bpm 外部数据源 SqlExecutor 绕过 MP 拦截器链，数据权限/租户均不覆盖（与 I10 同源）——D77 方向明确不纳管，未来纳管需 SQL 构建层统一注入 | 中 | 已知限制，按设计 |
 | I47 | BPM/H2 V8 partial index 方言不兼容，曾阻断真实 H2 全链迁移 | 中 | **已关闭**（2026-08-17，D88；P10 已 PASSED，30 条全链验证） |
