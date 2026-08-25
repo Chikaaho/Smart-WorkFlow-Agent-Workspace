@@ -1,10 +1,10 @@
 # 会话交接
 
-> 最后更新：2026-08-25（D207阶段三终态复核PASSED，功能COMPLETED确认）
+> 最后更新：2026-08-25（D210功能级PASSED + 阶段三终态同步，第32个已完成功能）
 
 ## 当前功能与唯一下一动作
 
-**agent-tool-configuration-frontend（P48 / M07-F03-02）：COMPLETED（D203功能级12/12 PASSED + D207阶段三终态8/8 PASSED，第31个）**。P48已核销、M07-F03-02升✅、清单✅27/🟦23/⬜40、功能数31；正式基线后端827/Agent338、前端100 spec files/981 tests（0 failed、0 skipped）、Flyway V37。主方向与终态同步方向均已归档`passed/`。
+**notify-management-closure（P3 / I41 / I42 / M05 通知管理缺口闭环）：COMPLETED（D210功能级PASSED + 阶段三终态同步，第32个）**。M05-F01-02升✅、M05-F01-03升✅、M05-F01-01保持🟦（批量发送仍待排期）、I41/I42关闭、清单✅29/🟦21/⬜40、功能数32；正式基线后端827/Agent338、前端100 spec files/988 tests（0 failed、0 skipped）、Flyway V37。主方向与终态同步方向均已归档`passed/`。
 
 **唯一下一动作**：规划层比较并选择下一唯一功能。
 
@@ -136,16 +136,16 @@
 ## 当前基线
 
 - 后端：正式基线 **827 tests**（sw-basic-agent 338）
-- 前端：正式基线 **100 spec files / 981 tests（0 failed、0 skipped）**
-- 功能清单：终态统计 **✅27 / 🟦23 / ⬜40 共90行**（D203 P48/M07-F03-02 已升✅）
+- 前端：正式基线 **100 spec files / 988 tests（0 failed、0 skipped）**
+- 功能清单：终态统计 **✅29 / 🟦21 / ⬜40 共90行**（D210 M05-F01-02/F01-03 已升✅）
 - Flyway：正式基线 **V37（H2/PostgreSQL）**
-- 已完成功能：规划确认 **31**（agent-tool-configuration-frontend 为第31个，D203 12/12 PASSED + 终态同步）
+- 已完成功能：规划确认 **32**（notify-management-closure 为第32个，D210 功能级PASSED + 阶段三终态同步）
 - 执行约束：**本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行**（先后端后前端），禁并行编译
 - 活动功能：无
 
 ## 下一动作
 
-**下一动作**：规划层比较候选并选择下一唯一功能；本功能不再重验。
+**下一动作**：规划层比较候选并选择下一唯一功能。
 
 **探索回执已回收并核销（2026-08-16，D83 裁定 + D84 落库核销）**：
 - 清单 90/90 零不一致（I1 无第三次复发）；基线全部核实（527/66f569t——**569 为运行口径，静态 561**/V30+28/16 功能）；memory 自洽。
@@ -155,23 +155,21 @@
 - 需求池：`todo/requirement-pool.md`（P5/P10/P12/P13/P24 已核销；其余候选仍按池内状态维护）。
 - **探索任务核销（2026-08-16 晚，3/3 完成）**：decisions-registry-note ✅（knowledge/decisions.md 顶部注记+根 README 索引同步）、checklist-pool-sync ✅（清单 25 行描述列末尾追加「缺口已登记 P26-P50」25/25、状态列 0 漂移——裁定维持描述列形态不加列）、rule-sync-d85 ✅（shared-constraints §10 / development-workflow §6.3 / 后端宪法 §13 / 前端宪法 §15 四处落地，knowledge/README 不存在按说明处理）。**D85 铁律三仓库宪法级完成**。
 - **探索任务核销（2026-08-16 晚，4/4 全闭环）**：i18-close-sync ✅（I18 注册表已同步「✅ 已关闭（D84）」仿 I33/I37 先例，memory 侧核对一致）。**本轮全部委派任务已闭环，无进行中探索**。
-- **当前规划裁定**（2026-08-18）：user-org-association-query D101 PASSED，阶段三同步 COMPLETED；D93-D97 双角色治理作为前置基线保持有效。
+- **当前规划裁定**（2026-08-25）：notify-management-closure D210 PASSED，阶段三同步 COMPLETED；M05-F01-02/F01-03 已升✅、I41/I42 已关闭。
 
-当前活动功能：**无**（agent-tool-configuration-frontend（P48 / M07-F03-02）已由D207确认COMPLETED第31个，仅保留在最近完成区；主方向与终态同步方向均在`passed/`）。
+当前活动功能：**无**（notify-management-closure（P3/I41/I42/M05）已由D210确认COMPLETED第32个；主方向与终态同步方向均在`passed/`）。
 
 ## 新会话启动提示词
 
 ```
-你是 Smart-WorkFlow 根目录代理。请先显式声明本会话角色。agent-tool-configuration-frontend（P48 / M07-F03-02）已由D203功能级验收PASSED（12/12），并由D207阶段三终态复核PASSED（8/8）确认COMPLETED；当前活动功能无，由规划层比较并选择下一唯一功能。
+你是 Smart-WorkFlow 根目录代理。请先显式声明本会话角色。notify-management-closure（P3/I41/I42/M05 通知管理缺口闭环）已由D210功能级验收PASSED并完成阶段三终态同步，确认COMPLETED（第32个）；当前活动功能无，由规划层比较并选择下一唯一功能。
 
 最新状态：
-- agent-tool-configuration-frontend **COMPLETED（D203 12/12 PASSED + D207阶段三8/8 PASSED，2026-08-25，第31个）**——正式测试基线后端827/Agent338、前端100f/981t、Flyway V37；P48已核销、M07-F03-02✅、清单✅27/🟦23/⬜40、功能数31；主方向与终态同步方向均在passed
-- agent-graph-step-debugging **COMPLETED（D180 15/15 PASSED + 终态同步，2026-08-23，第30个）**——正式测试基线827/Agent338、86f/850t、V36；P7已核销、M07-F02-04✅、清单✅26/🟦24/⬜40、功能数30
-- agent-token-usage-observability（P8 / M07-F04-02 Token统计子集）**COMPLETED（D170+D172+D174，13/13，第29个）**——基线755/Agent267、82f/815t、V35；清单25/25/40、P8核销、M07-F04-02✅。最终审查：`product/agent-token-usage-observability/receipts/planning-final-review-d174.md`
-- agent-graph-prompt-configuration（M07-F02-02）**COMPLETED（D154+D157，2026-08-21，第28个）**——主方向及三份阶段三/纠正方向均归档`passed/`；后端723/agent234、前端79f/775t、V34；清单✅24/🟦26/⬜40、功能数28、P6核销
-- agent-graph-execution-observability（P7第一子集/M07-F02-04）**COMPLETED（D148+D149，2026-08-21，第27个）**——后端685/0/0/0（agent197）、前端78f/760t、V34；P7运行日志子集核销
-- role-menu-permission-parity（P1 / M02-F02-01 / M02-F03-01）**COMPLETED（D123，2026-08-20，第26个）**——后端674/0/0/0、前端73f/681t、零Flyway；P1核销
-- 规划确认测试基线：后端 **827/0/0/0**（sw-basic-agent 338）、前端 **100f/981t**、Flyway **V37**；清单 **✅27/🟦23/⬜40**；已完成功能 **31**（agent-tool-configuration-frontend 为第31个）
+- notify-management-closure **COMPLETED（D210功能级PASSED + 阶段三终态同步，2026-08-25，第32个）**——M05-F01-02/F01-03升✅、I41/I42关闭、清单✅29/🟦21/⬜40、功能数32；正式测试基线后端827/Agent338、前端100f/988t、Flyway V37；主方向与终态同步方向均在passed
+- agent-tool-configuration-frontend **COMPLETED（D203 12/12 PASSED + D207阶段三8/8 PASSED，2026-08-25，第31个）**——P48已核销、M07-F03-02✅、清单✅27/🟦23/⬜40、功能数31
+- agent-graph-step-debugging **COMPLETED（D180 15/15 PASSED + 终态同步，2026-08-23，第30个）**——P7已核销、M07-F02-04✅、清单✅26/🟦24/⬜40、功能数30
+- agent-token-usage-observability **COMPLETED（D170+D172+D174，13/13，第29个）**——P8已核销、M07-F04-02✅、清单25/25/40、功能数29
+- 规划确认测试基线：后端 **827/0/0/0**（sw-basic-agent 338）、前端 **100f/988t**、Flyway **V37**；清单 **✅29/🟦21/⬜40**；已完成功能 **32**
 - 执行约束：本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行，禁并行编译
 
 下一动作：规划层比较并选择下一唯一功能。
