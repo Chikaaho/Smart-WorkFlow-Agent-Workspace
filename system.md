@@ -139,6 +139,8 @@
 
 从工作区根入口执行跨层任务时，先适用本文件，再按实际触碰范围加载对应工程宪法。从后端或前端子仓入口启动时，仍先适用本文件的角色与入口边界，再加载本仓工程宪法；不得通过 Harness 入口文件扩权或削弱规则。
 
+`README.md`、`knowledge/development-workflow.md`、`knowledge/model-registry.md`、`knowledge/features/` 及 `product/` 中的内容均不是角色、授权、执行终态或当前状态的规范入口。它们与本文件、`roles/` 或工程宪法冲突时，以当前规范入口为准；不得从旧文档推导二次确认、模型角色、旧 Step 协议或旧终态。
+
 Claude 的 `.claude/settings*.json`、Codex 的权限配置及其他 Harness 工具设置只控制工具运行方式，不改变本文件规定的角色、授权、职责和停止条件。
 
 **Git 提交规则（硬约束 🔒）**：获授权执行 Git 提交的角色，提交主题和正文默认使用中文，可保留模块名、类名、命令、Issue ID 与 Conventional Commits 前缀等必要技术标识。提交信息不得包含 Claude 或其他 Harness 的自动署名、`Co-Authored-By` 签名或模型归属声明，只使用仓库所有者配置的 Git 身份。远程发布、已发布历史改写、强制推送或其他高风险操作仍按管理员/执行授权边界，在操作前说明远程、分支、范围和风险并取得用户明确授权。

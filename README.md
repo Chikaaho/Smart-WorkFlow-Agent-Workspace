@@ -1,7 +1,7 @@
 # Smart-WorkFlow Knowledge Base
 
 > Smart-WorkFlow 低代码 OA + AI Agent 平台的**规划与知识管理中心**。
-> 本仓库是项目的大脑——需求分析、Step 拆解、方案生成、回执验收、知识沉淀均在此进行。
+> 本仓库负责宪法、角色入口、需求方向、回执归档与跨项目知识管理；业务实现位于两个 executor sublayer。
 
 ---
 
@@ -41,7 +41,8 @@ Smart-WorkFlow-Knowledge/   ← 你在这里（规划层：方案/回执/知识�
 
 ```
 Smart-WorkFlow-Knowledge/
-├── system.md                  — 规划代理宪法（角色/权限/工作流）
+├── system.md                  — 工作区唯一行为宪法（角色/权限/工作流入口）
+├── roles/                     — 规划 / 执行 / 管理员角色定义
 ├── memory/                    — 压缩记忆（规划角色读/写，每次会话关键节点更新）
 │   ├── README.md              — 索引 + 阅读顺序
 │   ├── state.md               — 当前状态（功能/Step/测试基线）
@@ -96,21 +97,23 @@ PostgreSQL (生产) / H2 (开发)
 
 | 维度 | 状态 |
 |------|------|
-| 已完成功能 | **11/11** COMPLETED ✅ |
-| 后端测试 | 465 tests（0 failures） |
-| 前端测试 | 60 spec files / 521 tests（四连全绿） |
+| 已完成功能 | **32** COMPLETED ✅ |
+| 后端测试 | 827 tests（0 failures） |
+| 前端测试 | 100 spec files / 988 tests（0 failures、0 skipped） |
 | Walking Skeleton | 登录→表单→审批→通知 四环闭合 ✅ |
 
 ---
 
 ## 工作流
 
-本仓库采用 **规划层 + 执行层** 两层架构：
+本工作区采用 **规划 / 执行 / 管理员** 三角色治理：
 
-1. **规划层**（本仓库）：需求分析 → Step 拆解 → 生成 17 项方案 → 下发给执行代理
-2. **执行层**（代码仓库）：按方案实现 → 运行测试 → 产出回执 → 交回规划层验收
-3. **验收**：规划层独立对照验收标准逐条复核 → PASSED/FAILED
-4. **收尾**：全部 Step PASSED 后进入阶段三 → 知识库同步 → 标记 COMPLETED
+1. **规划角色**：读取压缩记忆、委派探索、制定需求方向、验收回执。
+2. **执行角色**：按需求方向自主拆分 Step、实现、验证并提交 `EXECUTION_SUBMITTED`；规划通过后执行授权的终态同步。
+3. **管理员角色**：维护宪法、角色定义、架构文档和工程治理配置，不参与业务规划或实现。
+4. **阶段三**：规划角色裁决 `PASSED`，执行角色按唯一终态值清单落值，规划角色全文复核后确认 `COMPLETED`。
+
+本 README 只作项目说明；角色、授权、当前状态和执行终态以 `system.md`、`roles/`、知识库当前状态和对应工程宪法为准。
 
 详见 [`system.md`](system.md)。
 
@@ -122,12 +125,12 @@ PostgreSQL (生产) / H2 (开发)
 
 ```bash
 cd Smart-WorkFlow
-mvn -q compile && mvn -q test     # 校验门
+MAVEN_OPTS="-Xmx2g" mvn -q compile && MAVEN_OPTS="-Xmx2g" mvn -q test     # 校验门
 ```
 
 ### 前端
 
 ```bash
 cd Smart-WorkFlow-Web
-pnpm typecheck && pnpm lint && pnpm test && pnpm build   # 四连校验门
+NODE_OPTIONS="--max-old-space-size=2048" pnpm typecheck && NODE_OPTIONS="--max-old-space-size=2048" pnpm lint && NODE_OPTIONS="--max-old-space-size=2048" pnpm test && NODE_OPTIONS="--max-old-space-size=2048" pnpm build   # 四连校验门
 ```
