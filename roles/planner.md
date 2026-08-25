@@ -281,7 +281,7 @@ memory/
 - **只更新不重写**：每次更新附加日期标记，关键数字和历史状态可追溯
 - **同步 awareness**：`knowledge/` 和 `memory/` 可能不同步（memory 是 approximate cache），不一致时以 `search_fallback/` 或新探索为准
 - **不记录**：密钥、Token、密码、大段代码复制、完整命令日志
-- 目标总大小 <20KB，如超出需压缩或移出不再需要的信息
+- 每个短记忆文件目标 <5KB，`memory/` 总量目标 <20KB；只保留支撑下一次规划所需的最小摘要和权威路径。`search_fallback/` 每份目标 <5KB，超出时先压缩再供规划读取。
 
 ---
 
@@ -393,9 +393,9 @@ memory/
 | `system.md` | 工作区宪法（角色入口与公共协议） | **实时** |
 | `roles/planner.md` | 本角色定义 | **实时** |
 | `memory/README.md` | memory 索引 + 阅读建议 | 参考 |
-| `memory/state.md` | 当前项目状态 | **实时** |
-| `memory/handoff.md` | 最新会话交接 | **实时** |
-| `memory/features.md` | 功能进度索引 | **实时** |
+| `memory/state.md` | 当前状态摘要/指针；权威值见 `knowledge/current-status.md` | **摘要** |
+| `memory/handoff.md` | 最新会话交接摘要；不得复制完整状态 | **摘要** |
+| `memory/features.md` | 功能索引摘要；不得另立状态 | **摘要** |
 | `memory/decisions.md` | 最近 10 条活跃决策 | 参考 |
 | `memory/issues.md` | 未关闭问题 | 参考 |
 | `memory/constraints.md` | 规划关键硬约束 | 参考 |
