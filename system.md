@@ -141,6 +141,8 @@
 
 `README.md`、`knowledge/development-workflow.md`、`knowledge/model-registry.md`、`knowledge/features/` 及 `product/` 中的内容均不是角色、授权、执行终态或当前状态的规范入口。它们与本文件、`roles/` 或工程宪法冲突时，以当前规范入口为准；不得从旧文档推导二次确认、模型角色、旧 Step 协议或旧终态。
 
+**当前状态唯一来源与终态机器契约（硬约束 🔒）**：`knowledge/current-status.md` 是当前功能状态、计数、活动功能和唯一下一动作的唯一权威来源；`memory/state.md`、`memory/handoff.md`、`memory/features.md`、`product/*/ready/`、`product/*/passed/` 与 receipts 只允许保存摘要、交接、方向或证据指针，不得复制另一份当前状态。执行终态的唯一机器契约是 `.codex/governance/terminal-contract.json`；角色文档、回执模板和 Hook 只能引用该契约，不得各自扩展合法终态。执行回执结束时必须追加结构化行 `SWF_TERMINAL {JSON}`，Hook 只验证该行与契约字段，不从自然语言推断角色、终态或未完成项。
+
 Claude 的 `.claude/settings*.json`、Codex 的权限配置及其他 Harness 工具设置只控制工具运行方式，不改变本文件规定的角色、授权、职责和停止条件。
 
 **Git 提交规则（硬约束 🔒）**：获授权执行 Git 提交的角色，提交主题和正文默认使用中文，可保留模块名、类名、命令、Issue ID 与 Conventional Commits 前缀等必要技术标识。提交信息不得包含 Claude 或其他 Harness 的自动署名、`Co-Authored-By` 签名或模型归属声明，只使用仓库所有者配置的 Git 身份。远程发布、已发布历史改写、强制推送或其他高风险操作仍按管理员/执行授权边界，在操作前说明远程、分支、范围和风险并取得用户明确授权。

@@ -1,0 +1,11 @@
+{
+  "schema": "smart-workflow.executor-terminal.v1",
+  "marker": "SWF_TERMINAL",
+  "role": "executor",
+  "states": {
+    "EXECUTION_SUBMITTED": { "required": ["receipt", "evidence", "feature_status"] },
+    "TERMINAL_SYNC_SUBMITTED": { "required": ["receipt", "evidence", "feature_status"] },
+    "BLOCKED": { "required": ["receipt", "evidence", "block_type", "attempted", "release_condition"] }
+  },
+  "forbidden_states": ["COMPLETED", "PASSED", "PENDING", "IN_PROGRESS"]
+}
