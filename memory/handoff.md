@@ -1,5 +1,5 @@
 # 会话交接摘要
 
-> 截至/同步点：2026-08-25 / D210；权威来源：`knowledge/current-status.md`。
+> 截至/同步点：2026-08-26 / P36 终态规划复核通过；权威来源：`knowledge/current-status.md`。
 
-当前无进行中业务功能。`governance-contract-consolidation` 已完成并通过规划核对，方向已归档至 `product/governance-contract-consolidation/passed/`。业务终态保持 32 个已完成功能、清单 ✅29/🟦21/⬜40、基线 827 / 100f-988t / V37；下一动作是规划比较候选并选择下一唯一业务功能。
+`notify-template-management`（P36 / M05-F02-01）已完成 11/11 功能验收和阶段三终态复核，COMPLETED（已确认）。终态为 33、✅30/🟦21/⬜39、870/agent346、104f/1025t、V38；P36 已核销，P3 保持未核销。当前无活动业务/治理功能；下一动作是规划选择下一唯一业务功能。

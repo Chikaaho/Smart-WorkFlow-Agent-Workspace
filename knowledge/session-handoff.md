@@ -5,24 +5,34 @@
 >
 > 新会话启动时，优先读取本文件以恢复上下文。
 >
-> **最新状态（2026-08-25）**：notify-management-closure（P3 / I41 / I42 / M05 通知管理缺口闭环）**D210 功能级 PASSED + 阶段三终态同步，COMPLETED（第 32 个已完成功能）**——正式基线后端 **827/0/0/0**（agent 338）、前端 **100 spec files / 988 tests（0 failed、0 skipped）** 四门严格顺序串行全绿、Flyway **V37** 双方言；清单 **✅29/🟦21/⬜40**、已完成功能 **32**、M05-F01-02/F01-03 已升✅、I41/I42 已关闭。主方向与终态同步方向均已归档 `passed/`。审查：`product/notify-management-closure/receipts/planning-final-review.md`。
+> **最新状态（2026-08-26）**：notify-template-management（P36 / M05-F02-01 消息模板管理）**功能级 PASSED（11/11，2026-08-26）+ 阶段三终态同步已落盘，COMPLETED（待规划终态复核，第 33 个已完成功能）**——正式基线后端 **870 / Failures 0 / Errors 0 / Skipped 0（agent 346）**、前端 **104 files / 1025 tests** 四门严格顺序串行全绿、Flyway **V38**（H2/PostgreSQL 均 38 migrations）；清单 **✅30/🟦21/⬜39**、已完成功能 **33**、M05-F02-01 升✅、P36 已核销、P3 保持部分关闭/未核销。主方向已归档 `passed/`；阶段三方向在 `ready/` 待规划终态复核。审查：`product/notify-template-management/receipts/planning-final-review-20260826.md`。
+>
+> 前一功能（历史语境）：notify-management-closure（P3 / I41 / I42 / M05 通知管理缺口闭环）D210 COMPLETED（第 32 个），基线 827/agent338、100f/988t、V37 已被本轮取代。
 >
 > ⚠️ **2026-08-14 角色制上线**：本文件历史记录中的"使用模型"字段（如 deepseek-v4-pro/flash）为**当时执行事实**，仅作历史存档。当前权限按会话角色（规划/执行/管理员）划分，与模型无关（见根目录 `system.md` §0.2）。新记录不再填写模型字段。
 
 ---
 
-## 0. 当前进行中功能（无进行中业务功能；已完成功能 32）
+## 0. 当前进行中功能（无进行中业务功能；已完成功能 33）
 
-**agent-graph-step-debugging — P7 / M07-F02-04 图单步调试（D175下发；D180 规划层最终验收 15/15 PASSED + 终态同步，COMPLETED，第30个，2026-08-23）**
+**notify-template-management — P36 / M05-F02-01 消息模板管理（功能级 PASSED 11/11 + 阶段三终态同步已落盘，COMPLETED 待规划终态复核，第33个，2026-08-26）**
 
-方向 `product/agent-graph-step-debugging/passed/direction-agent-graph-step-debugging.md`（D175，**已归档passed/**）执行：
-- **D176—D179 迭代**：标准1—13锁定PASSED（禁止重验）；G14 计数重建真实基线（4 个新 Debug 测试类基线 0），当前 Surefire XML 逐文件核对 **827/0/0/0（119 叶文件）**，净增 72 = 71 调试测试 + 1 V36 PG，`755+72=827` 严格勾稽；完整工具族实际 `pgrep` 零快照 + 2G 串行门禁全绿（后端 16:29:39—16:30:36 / 前端 16:30:53—16:31:56，86f/850t）；G15 阶段三实际落盘。
-- **D180 最终验收 PASSED（2026-08-23，15/15，锁定）+ 终态同步完成**：正式基线晋级 **827/0/0/0（agent 338）、前端 86f/850t、Flyway V36 36 条**；P7 已核销、M07-F02-04 升 ✅、清单 **✅26/🟦24/⬜40**、已完成功能 **30**。
-- **归档/回执**：主方向 `passed/`；终态同步回执已提交，待规划层最终复验与归档（终态同步方向 `ready/direction-post-d180-terminal-sync.md`）；审查 `receipts/planning-final-review-d180.md`。
+方向 `product/notify-template-management/passed/direction-notify-template-management.md`（**已归档passed/**）执行：
+- **执行迭代**：完成回执 → G1—G4 补证（预览拒绝/三身份真实链/Mock 等价/迁移+互斥原始证据，更正 9/9 口径为 11 项）→ R1 前端路由权限收敛（`hasRouteAccess` + 菜单可达性回退，真实导航证据 3/3 + 真实后端 tooluser live 链交叉验证）→ R2 当前最终树四连门禁。
+- **终态同步落盘（2026-08-26）**：正式基线 **870 / Failures 0 / Errors 0 / Skipped 0（agent 346）**、前端 **104 files / 1025 tests**、Flyway **V38**（H2/PostgreSQL 均 38 migrations）；P36 已核销、M05-F02-01 升 ✅、清单 **✅30/🟦21/⬜39**、已完成功能 **33**；P3 保持部分关闭/未核销。
+- **归档/回执**：主方向 `passed/`；阶段三方向 `ready/direction-notify-template-management-stage3.md` 待规划终态复核与归档；审查 `receipts/planning-final-review-20260826.md`。
 
 ---
 
 ## 1. 最新完成功能
+
+**notify-template-management — P36 / M05-F02-01 消息模板管理（功能级 PASSED 11/11 + 阶段三终态同步已落盘，COMPLETED 待规划终态复核，第33个，2026-08-26）**
+
+方向 `product/notify-template-management/passed/direction-notify-template-management.md` 执行，执行层自主闭环（完成回执 → G1—G4 补证 → R1/R2 一级提示收敛 → 终态同步落盘）：
+- **功能范围**：后端模板域（实体/Mapper/渲染服务/Service/Controller/DTO + SYSTEM 枚举）+ V38 双方言迁移（sw_notify_template 表 + 通知菜单目录化 + 收件箱/消息模板二级菜单）+ 发送集成原子性 + 前端管理页/弹窗/契约/API/Mock + R1 路由权限守卫。
+- **正式基线（终态同步登记值）**：后端 **870 / Failures 0 / Errors 0 / Skipped 0（agent 346）**、前端 **104 files / 1025 tests** 四门全绿、Flyway **V38** 双方言 38 migrations 全链。
+- **终态**：P36 已核销（仅代表消息模板完成）、M05-F02-01 升 ✅、清单 **✅30/🟦21/⬜39**、已完成功能 **33**；P3 保持部分关闭/未核销。
+- **审查**：`product/notify-template-management/receipts/planning-final-review-20260826.md`；阶段三方向 `ready/direction-notify-template-management-stage3.md` 待规划终态复核与归档。
 
 **agent-graph-step-debugging — P7 / M07-F02-04 图单步调试（D180 规划层最终验收 15/15 PASSED + 终态同步，COMPLETED，第30个，2026-08-23）**
 
@@ -149,12 +159,13 @@
 
 **role-menu-permission-parity（P1 / M02-F02-01 / M02-F03-01）：COMPLETED（D123 规划层最终验收 PASSED + 阶段三终态同步，2026-08-20，第 26 个已完成功能）。** 主方向已归档 `product/role-menu-permission-parity/passed/`。D122 四类偏差全部修正（生产 403 契约 / 停用角色有效撤权 / Mock 双角色身份 / I53+I54 注册），后端 **674/0/0/0**、前端 **73f/681t** 四连全绿、零 Flyway；清单 M02-F02-01/F03-01 🟦→✅（✅23/🟦27/⬜40）、**P1 正式核销**。规划复验 `receipts/planning-final-review-d123.md`；终态同步回执 `receipts/post-d123-terminal-sync.md`；历史回执 `product/role-menu-permission-parity/receipts/`（planning-review-d122、d122-fix-receipt、step1/step2/step3b×2、completion、test-receipt、stage3-knowledge-sync）。
 
-下一候选按 [[handoff]] 候选池（2026-08-19 D121 轮后更新）：M01/M02 虚高补齐已随 P1 核销退出候选（I31/I36/F02/F03 全部闭合）、M07 补全（F02-02 Prompt 配置/F02-04 运行日志+单步调试/F04-02 Token 统计；F01 前端管理页已闭环）、M07-F03/F04 新功能、IoT/OpenAPI 模块落地、数据权限遗留与停用即时生效——**PG 侧全链直跑已由 pg-v13-migration-chain-repair 修复关闭（I52，2026-08-19，D110 PASSED + COMPLETED）**；I49 已由 admin-role-governance D96 关闭，I31 已由 department-query-filtering 关闭，I36 已由 user-group-membership 关闭（D117 PASSED + 阶段三 COMPLETED，2026-08-19），P28 已核销。
+下一候选按 [[handoff]] 候选池与 `todo/requirement-pool.md`（2026-08-26 P36 终态同步后更新）：M07 补全（F03-01 助手配置/F03-03 知识库 RAG/F04-01 对话窗口 SSE——F01/F02/F04-02/F03-02 已闭环）、IoT/OpenAPI 模块落地、M04-F06-01 后续批次（耗时分析+流程干预）、P3 剩余缺口（批量发送 M05-F01-01 🟦、发送记录 M06-F04-01 🟦）、数据权限遗留与停用即时生效——PG 侧全链直跑已由 pg-v13-migration-chain-repair 修复关闭（I52，D110 PASSED + COMPLETED）；P1/P5/P6/P7/P8/P24/P28/P48/P36 已核销。
 
 ---
 
 ## 3. 最终状态
 
+**notify-template-management**：**COMPLETED（待规划终态复核）✅（功能级 PASSED 11/11 + 阶段三终态同步已落盘，2026-08-26，第33个已完成功能）** — P36/M05-F02-01 消息模板管理；完成回执 → G1—G4 补证（更正 9/9 口径为 11 项）→ R1 前端路由权限收敛（`hasRouteAccess` 菜单可达性回退 + 三身份真实导航证据 + 真实后端 tooluser live 链交叉验证）→ R2 当前最终树四连门禁 → 终态同步落盘。正式基线后端 **870 / Failures 0 / Errors 0 / Skipped 0（agent 346）**、前端 **104 files / 1025 tests**、Flyway **V38** 双方言38 migrations；P36 已核销、M05-F02-01 升✅、清单 **✅30/🟦21/⬜39**、功能数 **33**；P3 保持部分关闭/未核销；主方向归档`passed/`；阶段三方向`ready/direction-notify-template-management-stage3.md`待规划终态复核与归档；审查`receipts/planning-final-review-20260826.md`
 **agent-graph-step-debugging**：**COMPLETED ✅（D180 规划层最终验收 15/15 PASSED + 终态同步，2026-08-23，第30个已完成功能）** — P7/M07-F02-04 图单步调试；D175方向 → D176—D179补证迭代（标准1—13锁定 + G14 唯一计数 `755+72=827` 严格勾稽、完整工具族实际互斥 + 2G 串行门禁 + G15 阶段三实际落盘）→ D180 15/15 最终验收。正式基线后端 **827/0/0/0（agent 338，Surefire XML 119 文件）**、前端 **86f/850t**、Flyway **V36** 双方言36条；P7 已核销、M07-F02-04 升✅、清单 **✅26/🟦24/⬜40**、功能数 **30**；主方向归档`passed/`；终态同步回执已提交，待规划层最终复验与归档（终态同步方向`ready/direction-post-d180-terminal-sync.md`）；审查`receipts/planning-final-review-d180.md`
 **agent-token-usage-observability**：**COMPLETED ✅（D170功能级 + D172阶段三 + D174最终验收，13/13，2026-08-22，第29个已完成功能）** — P8/M07-F04-02 Token 统计与会话查看；功能级基线后端755/0/0/0（agent267）、前端82f/815t四门全绿、Flyway V35双方言35条全链；清单25/25/40、P8已核销、M07-F04-02✅；方向`passed/`；审查`receipts/planning-final-review-d174.md`
 **agent-graph-prompt-configuration**：**COMPLETED ✅（D154功能级PASSED + D157阶段三最终复验PASSED，2026-08-21，第28个已完成功能）** — M07-F02-02 图节点 Prompt 配置；D150主体保留 + D151/D152/D153补证迭代 + D154 12项业务标准全部通过；D155/D156阶段三问题（提前宣告COMPLETED/提前归档/全文未收敛、提交后当前态残留）已由 D157 纠正闭合。后端723（agent234）/ 前端79f/775t / Flyway V34；清单✅24/🟦26/⬜40、功能数28、P6核销；主方向及三份阶段三/纠正方向均归档`passed/`；审查`receipts/planning-stage3-review-d157.md`）
@@ -240,7 +251,7 @@
 
 ## 9. 当前系统状态
 
-全部 **29** 个已完成功能（规划确认，含 agent-token-usage-observability D170+D172 PASSED 13/13）：
+全部 **33** 个已完成功能（规划确认，含 notify-template-management 功能级 PASSED 11/11 + 阶段三终态同步已落盘，待规划终态复核）：
 
 1-8. Walking Skeleton → sys-mgmt-crud → bpm-task-center → storage-multi-provider → job-scheduler → kb-verification → auth-seam-completion → feature-checklist-sync
 9. ✅ vue-flow-adapter（2026-07-25）
@@ -265,25 +276,29 @@
 28. ✅ agent-graph-prompt-configuration（COMPLETED，D154功能级PASSED + D157阶段三最终复验PASSED，2026-08-21，第28个已完成功能）（M07-F02-02 图节点 Prompt 配置；后端723/0/0/0（agent234）、前端79f/775t四门全绿、Flyway V34零本轮迁移；清单✅24/🟦26/⬜40、功能数28、P6核销；主方向及三份阶段三/纠正方向均归档`passed/`；审查`receipts/planning-stage3-review-d157.md`）
 29. ✅ agent-token-usage-observability（P8 / M07-F04-02 Token 统计与会话查看；**后端 755/0/0/0（agent 267）、前端 82f/815t、Flyway V35**）（**D170+D172+D174 PASSED，13/13，第29个已完成功能**）
 30. ✅ agent-graph-step-debugging（P7 / M07-F02-04 图单步调试：调试会话/断点/步进/引擎/安全/既有入口闭环；**后端 827/0/0/0（agent 338）、前端 86f/850t、Flyway V36**）（**D180 规划层最终验收 15/15 PASSED + 终态同步，P7 已核销、M07-F02-04 升 ✅、清单 ✅26/🟦24/⬜40、功能数 30，第 30 个已完成功能，2026-08-23**）
+31. ✅ agent-tool-configuration-frontend（P48 / M07-F03-02 工具与函数调用前端配置闭环；**后端 827/Agent338、前端 100f/981t、Flyway V37**）（**D203 功能级 12/12 PASSED + D207 阶段三终态 8/8 PASSED，P48 已核销、M07-F03-02 升 ✅、清单 ✅27/🟦23/⬜40、功能数 31，第 31 个已完成功能，2026-08-25**）
+32. ✅ notify-management-closure（P3 / I41 / I42 / M05 通知管理缺口闭环：DELETE 端点+删除按钮、GET ?read/keyword 过滤；**后端 827/0/0/0（agent 338）、前端 100f/988t、Flyway V37**）（**D210 功能级 PASSED + 阶段三终态同步 COMPLETED，I41/I42 关闭、M05-F01-02/F01-03 升✅、清单 ✅29/🟦21/⬜40、功能数 32，第 32 个已完成功能，2026-08-25**）
+33. ✅ notify-template-management（P36 / M05-F02-01 消息模板管理：模板 CRUD/启停/预览/发送、`${var}` 渲染、V38 双方言迁移、R1 路由权限守卫；**后端 870 / Failures 0 / Errors 0 / Skipped 0（agent 346）、前端 104f/1025t、Flyway V38 = 38 migrations**）（**功能级 PASSED 11/11 + 阶段三终态同步落盘，COMPLETED 待规划终态复核，P36 已核销、M05-F02-01 升 ✅、清单 ✅30/🟦21/⬜39、功能数 33，第 33 个已完成功能，2026-08-26**）
 
-- 后端：项目级 **827 tests**（CONFIRMED 2026-08-23 agent-graph-step-debugging D180 最终验收 PASSED：sw-basic-agent 338，Surefire XML 119 叶文件，`755+72=827` 勾稽（71 调试测试 + 1 V36 PG），2G 串行门禁 16:29:39—16:30:36 完整工具族实际互斥零快照；**正式基线**）
-- 前端：**86 spec files / 850 tests** 四连全绿（CONFIRMED 2026-08-23 agent-graph-step-debugging D180；演进 82f/815t → 86f/850t；**正式基线**）
-- 功能清单（规划确认+阶段三已同步）：**✅26 / 🟦24 / ⬜40 共 90 行**（M07-F02-02 ✅（D157）、M07-F04-02 ✅（D170+D172）、M07-F02-04 ✅（D180））
-- Flyway：V1-V36 连续（V36 已占）；**双方言真实全链口径 36 迁移**——H2（7 目录，永久测试 `FlywayFullChainH2Test`）+ V33→V36 / V34→V36 升级链；**PG 侧全链 36 条直跑已修复（I52 关闭，D110 COMPLETED）**——`FlywayFullChainPostgresTest`（zonky embedded-postgres PG 17.5）新库全链 36 条 migrate+validate + 既有库升级夹具 + 原 V13 checksum 守卫 + 语义正反例；平台二进制 `embedded-postgres-binaries-bom:17.5.0` 统一
-- 已完成功能：**32 个规划确认**（notify-management-closure D210 COMPLETED 为第32个；agent-tool-configuration-frontend D203 为第31个；agent-graph-step-debugging D180 为第30个）
-- 进行中业务功能：无（agent-graph-step-debugging D180 15/15 PASSED + 终态同步完成，终态同步回执已提交，待规划层最终复验与归档）【历史记录：D180 时期，2026-08-23】
+- 后端：项目级 **870 tests / Failures 0 / Errors 0 / Skipped 0（sw-basic-agent 346）**——notify-template-management 功能级 PASSED 后由阶段三终态同步登记的**正式基线**（855 实测 + G1 +3 与权限链 +12 勾稽）
+- 前端：**104 spec files / 1025 tests** typecheck/lint/test/build 全绿（严格顺序串行，NODE_OPTIONS=2048；notify-template-management R2 最终树四连门禁，**正式基线**）
+- 功能清单（规划确认+阶段三已同步）：**✅30 / 🟦21 / ⬜39 共 90 行**（M05-F02-01 消息模板 ✅（P36）；历史：M05-F01-02/F01-03 ✅（D210）、M07-F02-02 ✅（D157）、M07-F04-02 ✅（D174）、M07-F02-04 ✅（D180）、M07-F03-02 ✅（D203））
+- Flyway：V1-V38 连续（V38 已占）；**双方言全链口径 38 migrations**——H2（永久测试 `FlywayFullChainH2Test` 14 用例）与 PostgreSQL（`FlywayFullChainPostgresTest` 10 用例，zonky embedded-postgres PG 17.5）均成功应用 38 条 migrate+validate
+- 已完成功能：**33 个规划确认**（notify-template-management 终态同步落盘为第33个，待规划终态复核；notify-management-closure D210 第32个；agent-tool-configuration-frontend D203 第31个；agent-graph-step-debugging D180 第30个）
+- 进行中业务功能：无；进行中治理任务：无（当前唯一下一动作见 `knowledge/current-status.md`）
 
 ---
 
 ## 10. 还有什么没做
 
-### 候选需求池（2026-08-21 D156 复验后更新，规划层选方向用）
+### 候选需求池（2026-08-26 P36 终态同步后更新，规划层选方向用）
 1. ~~M01/M02 其余虚高要素补齐~~ — **P1 已核销（2026-08-20，role-menu-permission-parity D123 规划层最终验收 PASSED + 终态同步：I31/I36/F02/F03 全部子项闭合），M02-F02-01/F03-01 已 ✅，本条不再作为候选**（I31/I32/I34/I35 已关闭，I36 已由 user-group-membership 关闭，I40 归 M03）
-2. **M07 补全** — F02-02 Prompt 配置（**COMPLETED，D154+D157，第28个**）、**F02-04 单步调试（COMPLETED，D180 15/15 PASSED + 终态同步，P7 已核销、M07-F02-04 升✅、第30个，2026-08-23）**、F04-02 Token 统计（**COMPLETED，D170+D172+D174，13/13，第29个**；F01 前端管理页已由 agent-model-management-frontend 闭环）。**M07 F01—F04 全部明细已闭环**（F03 助手配置/知识库/对话窗口仍为待开发新功能）
+2. ~~M07 补全~~ — F02-02 Prompt 配置（COMPLETED，D154+D157，第28个）、F02-04 单步调试（COMPLETED，D180，P7 已核销、第30个）、F04-02 Token 统计（COMPLETED，D170+D172+D174，第29个）、F03-02 工具配置前端（COMPLETED，D203，P48 已核销、第31个）。**M07 F01—F04 已闭环明细全部完成**
 3. **M07-F03/F04 新功能** — 助手配置/F03-03 知识库 RAG/F04-01 对话窗口 SSE（均零代码）
 4. **IoT / OpenAPI 模块落地** — 仅骨架（M08 13 行 + M09 8 行全 ⬜ 无虚低，D83 复核确认）
 5. **M04-F06-01 后续批次** — 耗时分析 + 流程干预（剩余 2/4 子能力）
-6. **小项池** — 数据权限遗留（部门档 deleted 过滤/job 非分页入口/PG 联调验证）、停用即时生效（JWT 过滤器层）——**PG 侧全链直跑已由 pg-v13-migration-chain-repair 修复关闭（I52，2026-08-19，执行层闭环待规划层验收）**（I51 已于 2026-08-17 status-semantics-alignment 修复关闭；I26/I47 已于 2026-08-17 分别由 sysrole-v5-column-alignment 与 bpm-h2-v8-compat 修复核销；I49 已由 admin-role-governance D96 关闭）
+6. **P3 剩余缺口** — 批量发送（M05-F01-01 🟦）、发送记录缺口（M06-F04-01 🟦）——P36 仅核销消息模板（M05-F02-01），P3 保持部分关闭/未核销
+7. **小项池** — 数据权限遗留（部门档 deleted 过滤/job 非分页入口/PG 联调验证）、停用即时生效（JWT 过滤器层）（I51 已于 2026-08-17 status-semantics-alignment 修复关闭；I26/I47 已于 2026-08-17 分别核销；I49 已由 admin-role-governance D96 关闭；PG 侧全链直跑已由 pg-v13-migration-chain-repair 修复关闭 I52）
 
 ### 已知未做事项
 - 表单删除（M03-F02-01，I39）等 I31-I45 待修复项逐条见 [[known-issues]]（I31 已由 department-query-filtering 关闭；M07-F01-01～05 已由 agent-model-management-frontend 闭环（D107 COMPLETED）；M02-F02/F03 已由 role-menu-permission-parity 闭合（D123 COMPLETED）；I36 已由 user-group-membership 关闭；I41/I42 已由 notify-management-closure 闭环（D210 COMPLETED））
@@ -311,7 +326,11 @@
 
 ## 12. 下一轮要做什么
 
-**notify-management-closure：D210 功能级 PASSED + 阶段三终态同步，COMPLETED（2026-08-25，第32个已完成功能）**——M05-F01-02升✅、M05-F01-03升✅、M05-F01-01保持🟦（批量发送仍待排期）、I41/I42关闭；正式基线后端827/0/0/0（agent338）、前端100f/988t、V37；清单✅29/🟦21/⬜40、功能数32。主方向与终态同步方向均归档`passed/`。
+**当前唯一下一动作：规划层基于更新后的候选池选择下一唯一业务功能；需要现场信息时先下发 search_task。**
+
+**notify-template-management：功能级 PASSED（11/11）+ 阶段三终态同步已落盘，COMPLETED 待规划终态复核（2026-08-26，第33个已完成功能）**——M05-F02-01升✅、P36已核销（仅代表消息模板完成）、P3保持部分关闭/未核销（批量发送 M05-F01-01 🟦、发送记录缺口仍在）；正式基线后端870/0/0/0（agent346）、前端104f/1025t、V38（H2/PG 均 38 migrations）；清单✅30/🟦21/⬜39、功能数33。主方向归档`passed/`；阶段三方向`ready/direction-notify-template-management-stage3.md`待规划终态复核与归档。
+
+**notify-management-closure：D210 功能级 PASSED + 阶段三终态同步，COMPLETED（2026-08-25，第32个已完成功能）**——M05-F01-02升✅、M05-F01-03升✅、M05-F01-01保持🟦（批量发送仍待排期）、I41/I42关闭；正式基线后端827/0/0/0（agent338）、前端100f/988t、V37【基线已被 P36 终态取代】；清单✅29/🟦21/⬜40、功能数32。主方向与终态同步方向均归档`passed/`。
 
 **agent-tool-configuration-frontend：COMPLETED（D203功能级12/12 PASSED + D207阶段三终态8/8 PASSED，2026-08-25，第31个）**——P48已核销、M07-F03-02升✅、清单✅27/🟦23/⬜40、功能数31；正式基线后端827/Agent338、前端100f/981t（D203锁定）、V37。
 
@@ -337,9 +356,9 @@
 1. system.md
 2. knowledge/current-status.md
 3. knowledge/session-handoff.md                     ← 本文件
-4. knowledge/known-issues.md                        ← I1-I55（I41/I42已由notify-management-closure闭环（D210）；I45：M07-F01已闭环、M07-F02-02已COMPLETED（D157）、M07-F02-04已COMPLETED（D180）、M07-F04-02已COMPLETED（D174）、M05-F01-02/F01-03已COMPLETED（D210）；I52 PG V13 2BP01已修复关闭；I55 M07-F02-04运行日志已关闭）
-5. knowledge/features/notify-management-closure.md    ← 最近完成功能（P3/I41/I42/M05，D210 PASSED，第32个已完成功能）
-6. knowledge/features/agent-graph-prompt-configuration.md ← 上一功能（M07-F02-02，D154+D157 COMPLETED，第28个）
+4. knowledge/known-issues.md                        ← I1-I55（I41/I42已由notify-management-closure闭环（D210）；I45：M07-F01已闭环、M07-F02-02已COMPLETED（D157）、M07-F02-04已COMPLETED（D180）、M07-F04-02已COMPLETED（D174）、M05-F01-02/F01-03已COMPLETED（D210）；I52 PG V13 2BP01已修复关闭；I55 M07-F02-04运行日志已关闭。P36/M05-F02-01 未登记为 I 编号，其核销记录在 todo/requirement-pool.md P36）
+5. knowledge/features/notify-template-management.md   ← 最近完成功能（P36/M05-F02-01 消息模板管理，功能级 PASSED 11/11 + 阶段三终态同步落盘，第33个已完成功能，待规划终态复核）
+6. knowledge/features/notify-management-closure.md    ← 上一功能（P3/I41/I42/M05，D210 PASSED，第32个）
 7. knowledge/features/role-menu-permission-parity.md ← 第 26 个完成功能（P1/M02-F02-01/F03-01，D123 COMPLETED）
 8. knowledge/features/agent-model-orchestration.md  ← M07 全链（详情在 product/agent-model-orchestration/passed/）
 9. memory/handoff.md                                ← 基线/候选池/启动提示词（memory 为最新权威）
@@ -354,21 +373,22 @@
 你是 Smart-WorkFlow 根目录规划代理。请按 system.md §0.2 声明角色并读取 `roles/planner.md`，再按该文件 §10 执行新会话恢复。
 
 最新状态：
-- notify-management-closure（P3 / I41 / I42 / M05 通知管理缺口闭环）**COMPLETED（D210 功能级 PASSED + 阶段三终态同步，2026-08-25，第32个）**——M05-F01-02/F01-03升✅、I41/I42关闭、清单✅29/🟦21/⬜40、功能数32；正式基线后端827/0/0/0（agent338）、前端100f/988t、V37。审查`product/notify-management-closure/receipts/planning-final-review.md`
-- agent-tool-configuration-frontend（P48 / M07-F03-02）**COMPLETED（D203 12/12 PASSED + D207 终态8/8 PASSED，2026-08-25，第31个）**——P48已核销、M07-F03-02✅、清单✅27/🟦23/⬜40、功能数31
-- agent-graph-step-debugging（P7 / M07-F02-04）**COMPLETED（D180 15/15 + D183 终态8/8，2026-08-23，第30个）**——P7已核销、M07-F02-04✅、清单✅26/🟦24/⬜40、功能数30
-- agent-token-usage-observability（P8 / M07-F04-02）**COMPLETED（D170+D172+D174，13/13，2026-08-22，第29个）**——P8已核销、M07-F04-02✅、清单✅25/🟦25/⬜40、功能数29
-- 基线：后端 **827 tests**（agent338）/ 前端 **100f/988t** 四门全绿；清单 **✅29/🟦21/⬜40** 共90行；Flyway **V37**；已完成功能 **32**
+- notify-template-management（P36 / M05-F02-01 消息模板管理）**功能级 PASSED（11/11）+ 阶段三终态同步已落盘，COMPLETED（待规划终态复核，2026-08-26，第33个）**——P36已核销、M05-F02-01✅、清单✅30/🟦21/⬜39、功能数33；正式基线后端870/0/0/0（agent346）、前端104f/1025t四门全绿、Flyway V38（H2/PG 均 38 migrations）。审查`product/notify-template-management/receipts/planning-final-review-20260826.md`
+- notify-management-closure（P3 / I41 / I42 / M05 通知管理缺口闭环）**COMPLETED（D210 功能级 PASSED + 阶段三终态同步，2026-08-25，第32个）**——M05-F01-02/F01-03升✅、I41/I42关闭
+- agent-tool-configuration-frontend（P48 / M07-F03-02）**COMPLETED（D203 12/12 PASSED + D207 终态8/8 PASSED，2026-08-25，第31个）**——P48已核销、M07-F03-02✅
+- agent-graph-step-debugging（P7 / M07-F02-04）**COMPLETED（D180 15/15 + D183 终态8/8，2026-08-23，第30个）**——P7已核销、M07-F02-04✅
+- 基线：后端 **870 tests**（Failures 0 / Errors 0 / Skipped 0；agent346）/ 前端 **104 files / 1025 tests** 四门全绿；清单 **✅30/🟦21/⬜39** 共90行；Flyway **V38**（38 migrations）；已完成功能 **33**
+- P36 边界：仅代表 M05-F02-01 消息模板完成；P3 保持部分关闭/未核销（批量发送、发送记录等剩余缺口继续存在）
 - 执行约束：本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行，禁并行编译（已入宪法）
-- 候选池：**P1/P5/P6/P7/P8 已核销**、M07 补全已闭环（F02-02/F02-04/F04-02）、M05-F01-02/F01-03已闭环（D210）、M07-F03/F04新功能、IoT/OpenAPI、数据权限遗留/停用即时生效——PG侧全链直跑已由pg-v13修复关闭（I52）
+- 候选池：**P1/P5/P6/P7/P8/P36/P48 已核销**、M07 补全已闭环（F01/F02-02/F02-04/F03-02/F04-02）、M05-F01-02/F01-03/M05-F02-01已闭环、M07-F03/F04新功能、IoT/OpenAPI、数据权限遗留/停用即时生效——PG侧全链直跑已由pg-v13修复关闭（I52）
 
-当前功能：无（notify-management-closure 已完成第32个，规划层比较并选择下一唯一功能）
+当前功能：无（当前唯一下一动作：规划层基于更新后的候选池选择下一唯一业务功能；需要现场信息时先下发 search_task）
 ```
 
 ---
 
-> 最后更新：2026-08-25
-> 最新功能：**notify-management-closure** — P3 / I41 / I42 / M05 通知管理缺口闭环（**COMPLETED，D210 功能级 PASSED + 阶段三终态同步，2026-08-25，第32个**；正式基线后端827/agent338 / 前端100f/988t / Flyway V37；M05-F01-02/F01-03✅、I41/I42关闭、清单✅29/🟦21/⬜40、功能数32；主方向与终态同步方向均归档`passed/`；审查`receipts/planning-final-review.md`）
-> 上一功能：**agent-tool-configuration-frontend** — P48 / M07-F03-02 工具与函数调用前端配置闭环（**COMPLETED，D203 12/12 PASSED + D207 终态8/8 PASSED，第31个**）
-> 测试基线：后端 CONFIRMED 827 tests（agent 338）· 前端 CONFIRMED 100 files / 988 tests（**D210 正式基线**）
-> 进行中：无（规划层比较并选择下一唯一功能）
+> 最后更新：2026-08-26
+> 最新功能：**notify-template-management** — P36 / M05-F02-01 消息模板管理（**功能级 PASSED 11/11 + 阶段三终态同步已落盘，COMPLETED 待规划终态复核，2026-08-26，第33个**；正式基线后端870/agent346 / 前端104f/1025t / Flyway V38 = 38 migrations；P36已核销、M05-F02-01✅、清单✅30/🟦21/⬜39、功能数33；主方向归档`passed/`、阶段三方向在`ready/`待规划终态复核；审查`receipts/planning-final-review-20260826.md`）
+> 上一功能：**notify-management-closure** — P3 / I41 / I42 / M05 通知管理缺口闭环（**COMPLETED，D210 功能级 PASSED + 阶段三终态同步，第32个**）
+> 测试基线：后端 CONFIRMED 870 tests / Failures 0 / Errors 0 / Skipped 0（agent 346）· 前端 CONFIRMED 104 files / 1025 tests（**P36 阶段三终态同步登记基线**）
+> 进行中：无（当前唯一下一动作：规划层基于更新后的候选池选择下一唯一业务功能；需要现场信息时先下发 search_task）
