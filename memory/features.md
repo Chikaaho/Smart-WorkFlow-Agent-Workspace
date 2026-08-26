@@ -1,5 +1,5 @@
 # 功能摘要
 
-> 截至/同步点：2026-08-25 / D210；权威来源：`knowledge/current-status.md`。
+> 截至/同步点：2026-08-26 / P36 终态规划复核通过；权威来源：`knowledge/current-status.md`。
 
-已完成功能 32；当前无进行中业务功能。最近完成 `notify-management-closure`。清单摘要为 ✅29/🟦21/⬜40；完整明细见 `Smart-WorkFlow/功能清单.md`，历史验收证据见 `product/*/receipts/`。
+已完成功能 33；`notify-template-management`（P36 / M05-F02-01 消息模板）COMPLETED（已确认）。清单 ✅30 / 🟦21 / ⬜39。功能追踪：`knowledge/features/notify-template-management.md`；完整回执链：`product/notify-template-management/receipts/`。
