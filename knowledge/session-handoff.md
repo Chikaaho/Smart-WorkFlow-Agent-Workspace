@@ -5,7 +5,7 @@
 >
 > 新会话启动时，优先读取本文件以恢复上下文。
 >
-> **最新状态（2026-08-26）**：notify-template-management（P36 / M05-F02-01 消息模板管理）**功能级 PASSED（11/11，2026-08-26）+ 阶段三终态同步已落盘，COMPLETED（待规划终态复核，第 33 个已完成功能）**——正式基线后端 **870 / Failures 0 / Errors 0 / Skipped 0（agent 346）**、前端 **104 files / 1025 tests** 四门严格顺序串行全绿、Flyway **V38**（H2/PostgreSQL 均 38 migrations）；清单 **✅30/🟦21/⬜39**、已完成功能 **33**、M05-F02-01 升✅、P36 已核销、P3 保持部分关闭/未核销。主方向已归档 `passed/`；阶段三方向在 `ready/` 待规划终态复核。审查：`product/notify-template-management/receipts/planning-final-review-20260826.md`。
+> **最新状态（2026-08-27）**：notify-batch-send（M05 / M05-F01-01 通知批量发送）**COMPLETED（已确认，2026-08-27，第 34 个已完成功能）**——正式基线后端 **915 / Failures 0 / Errors 0 / Skipped 0（agent 346）**、前端 **108 files / 1039 tests** 四门严格顺序串行全绿、Flyway **V39**（H2/PostgreSQL 均 39 migrations）；清单 **✅31/🟦20/⬜39**、已完成功能 **34**、M05-F01-01 升✅、P3 部分关闭/未核销。主方向与阶段三方向均已归档 `passed/`。审查：`product/notify-batch-send/receipts/planning-final-review-20260827.md`。
 >
 > 前一功能（历史语境）：notify-management-closure（P3 / I41 / I42 / M05 通知管理缺口闭环）D210 COMPLETED（第 32 个），基线 827/agent338、100f/988t、V37 已被本轮取代。
 >
