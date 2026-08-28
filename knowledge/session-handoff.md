@@ -5,28 +5,39 @@
 >
 > 新会话启动时，优先读取本文件以恢复上下文。
 >
-> **最新状态（2026-08-27）**：notify-batch-send（M05 / M05-F01-01 通知批量发送）**COMPLETED（已确认，2026-08-27，第 34 个已完成功能）**——正式基线后端 **915 / Failures 0 / Errors 0 / Skipped 0（agent 346）**、前端 **108 files / 1039 tests** 四门严格顺序串行全绿、Flyway **V39**（H2/PostgreSQL 均 39 migrations）；清单 **✅31/🟦20/⬜39**、已完成功能 **34**、M05-F01-01 升✅、P3 部分关闭/未核销。主方向与阶段三方向均已归档 `passed/`。审查：`product/notify-batch-send/receipts/planning-final-review-20260827.md`。
+> **最新状态（2026-08-28）**：minimal-business-closure（Owner 最小业务闭环：流程主链 + 腾讯 IoT Demo 对接）**功能级 PASSED（2026-08-28 规划最终验收）→ 阶段三终态已落盘，COMPLETED 待规划终态复核（第 35 个已完成功能，按独立正式功能登记）**——正式基线后端 **915 / Failures 0 / Errors 0 / Skipped 0（agent 346，不变）**、前端 **109 files / 1050 tests**、Flyway **H2 链 V41 / PostgreSQL 链 V40**（V41 仅 H2 专用，分别记录）；清单 **✅31/🟦25/⬜34**（M08-F01-02/F02-01/F02-02/F04-01/F04-04 升🟦部分完成，无 M08 项升✅）；P21 部分关闭/未核销、I14 部分关闭。**真实腾讯账号与物理设备现场联调、原生 MQTT、完整设备管理尚未完成**，为现场验证边界。流程与 IoT 子方向均已归档 `product/minimal-business-closure/passed/`；终态同步方向 `ready/direction-minimal-business-closure-stage3.md` 待规划终态复核后归档。审查：`product/minimal-business-closure/receipts/planning-final-review-minimal-business-closure-20260828.md`。
 >
-> 前一功能（历史语境）：notify-management-closure（P3 / I41 / I42 / M05 通知管理缺口闭环）D210 COMPLETED（第 32 个），基线 827/agent338、100f/988t、V37 已被本轮取代。
+> 前一功能（历史语境）：notify-batch-send（M05-F01-01 通知批量发送）COMPLETED（2026-08-27，第 34 个），基线 915/agent346、108f/1039t、V39 已被本轮取代。
 >
 > ⚠️ **2026-08-14 角色制上线**：本文件历史记录中的"使用模型"字段（如 deepseek-v4-pro/flash）为**当时执行事实**，仅作历史存档。当前权限按会话角色（规划/执行/管理员）划分，与模型无关（见根目录 `system.md` §0.2）。新记录不再填写模型字段。
 
 ---
 
-## 0. 当前进行中功能（无进行中业务功能；已完成功能 33）
+## 0. 当前进行中功能（无进行中业务功能；已完成功能 35）
 
-**notify-template-management — P36 / M05-F02-01 消息模板管理（功能级 PASSED 11/11 + 阶段三终态同步已落盘，COMPLETED 待规划终态复核，第33个，2026-08-26）**
+**minimal-business-closure — Owner 最小业务闭环（功能级 PASSED 2026-08-28 + 阶段三终态同步已落盘，COMPLETED 待规划终态复核，第35个）**
 
-方向 `product/notify-template-management/passed/direction-notify-template-management.md`（**已归档passed/**）执行：
-- **执行迭代**：完成回执 → G1—G4 补证（预览拒绝/三身份真实链/Mock 等价/迁移+互斥原始证据，更正 9/9 口径为 11 项）→ R1 前端路由权限收敛（`hasRouteAccess` + 菜单可达性回退，真实导航证据 3/3 + 真实后端 tooluser live 链交叉验证）→ R2 当前最终树四连门禁。
-- **终态同步落盘（2026-08-26）**：正式基线 **870 / Failures 0 / Errors 0 / Skipped 0（agent 346）**、前端 **104 files / 1025 tests**、Flyway **V38**（H2/PostgreSQL 均 38 migrations）；P36 已核销、M05-F02-01 升 ✅、清单 **✅30/🟦21/⬜39**、已完成功能 **33**；P3 保持部分关闭/未核销。
-- **归档/回执**：主方向 `passed/`；阶段三方向 `ready/direction-notify-template-management-stage3.md` 待规划终态复核与归档；审查 `receipts/planning-final-review-20260826.md`。
+- **终态同步落盘（2026-08-28）**：功能按独立正式功能登记、已完成功能数 **35**；清单 **✅31/🟦25/⬜34**（M08-F01-02/F02-01/F02-02/F04-01/F04-04 升🟦部分完成）；基线后端 **915/0/0/0（agent 346）**、前端 **109f/1050t**、Flyway **H2 V41 / PG V40**；P21 部分关闭/未核销、I14 部分关闭。
+- **未完成边界**：真实腾讯账号与物理设备现场联调、原生 MQTT、完整设备管理——不得写为已完成。
+- **归档/回执**：流程与 IoT 子方向均 `product/minimal-business-closure/passed/`；终态同步方向 `ready/direction-minimal-business-closure-stage3.md` 待规划终态复核与归档。
+- **唯一下一动作**：规划终态复核；通过后规划比较并选择下一唯一正式功能。
 
 ---
 
 ## 1. 最新完成功能
 
-**notify-template-management — P36 / M05-F02-01 消息模板管理（功能级 PASSED 11/11 + 阶段三终态同步已落盘，COMPLETED 待规划终态复核，第33个，2026-08-26）**
+**minimal-business-closure — Owner 最小业务闭环（功能级 PASSED 2026-08-28 + 阶段三终态同步已落盘，COMPLETED 待规划终态复核，第35个）**
+
+- **功能范围**：流程主链（用户/登录/改密/角色部门分配、表单 CRUD+发布、流程定义 CRUD+发布+表单绑定、发起、审批流转、结果回查）+ 设备控制（IotDeviceFacade、审批 AFTER_COMMIT 驱动命令、失败不倒退审批）+ 腾讯 IoT Demo 对接（Provider/身份/队列补发/回调/Echostr/Fastjson2/无 Mock 回退）。
+- **验收**：`receipts/planning-final-review-minimal-business-closure-20260828.md`（PASSED）；行为证据 `behavior-evidence-20260828.md`（37 步真实链）；最终原子断言 `tencent-iot-r1r2r3-focused-evidence-20260828.md`。
+- **终态值**：功能数 35、清单 ✅31/🟦25/⬜34、基线 915/0/0/0（agent 346）、109f/1050t、H2 V41/PG V40；P21 部分关闭未核销、I14 部分关闭。
+- **边界**：真实腾讯账号/物理设备现场联调、原生 MQTT、完整设备管理未完成。
+
+**notify-batch-send — M05-F01-01 通知批量发送（COMPLETED 已确认，2026-08-27，第34个）**
+
+- 基线 915/0/0/0（agent 346）、108f/1039t、Flyway V39 双方言 39 条；清单 ✅31/🟦20/⬜39；P3 部分关闭/未核销。主方向与阶段三方向均已归档 `product/notify-batch-send/passed/`。审查 `receipts/planning-final-review-20260827.md`。
+
+**notify-template-management — P36 / M05-F02-01 消息模板管理（COMPLETED，第33个，2026-08-26）**
 
 方向 `product/notify-template-management/passed/direction-notify-template-management.md` 执行，执行层自主闭环（完成回执 → G1—G4 补证 → R1/R2 一级提示收敛 → 终态同步落盘）：
 - **功能范围**：后端模板域（实体/Mapper/渲染服务/Service/Controller/DTO + SYSTEM 枚举）+ V38 双方言迁移（sw_notify_template 表 + 通知菜单目录化 + 收件箱/消息模板二级菜单）+ 发送集成原子性 + 前端管理页/弹窗/契约/API/Mock + R1 路由权限守卫。
