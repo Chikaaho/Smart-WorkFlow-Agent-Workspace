@@ -30,6 +30,7 @@
 - 后端：947 tests / Failures 0 / Errors 0 / Skipped 0（agent 346）
 - 前端：110 spec files / 1057 tests / 3 skipped；typecheck、lint、test、build 全绿
 - Flyway：H2 全链 43 migrations、PG 全链 42 migrations
+- **后续基线演进（2026-08-29，minimal-closure-first-acceptance 验收审计锁定，当前正式口径）**：后端 **955/0/0/0**（agent 346）、前端 **110 files / 1060 tests / 0 skipped**、Flyway **H2 V44（44）/ PG V44（43）**——本功能实现时的 947/1057/V43 为历史终态值，当前正式基线见 `knowledge/current-status.md`。
 
 ## 已知限制
 

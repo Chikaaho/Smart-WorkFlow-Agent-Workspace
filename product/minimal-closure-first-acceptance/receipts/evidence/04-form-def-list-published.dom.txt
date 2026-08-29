@@ -1,0 +1,66 @@
+URL: http://localhost:5173/form/form-def-list
+时间: 2026-08-29T02:24:34.763Z
+会话: admin
+----DOM----
+- complementary:
+  - generic: SW
+  - generic: Smart-WorkFlow
+  - menubar:
+    - menuitem "系统管理":
+      - generic: 系统管理
+    - menuitem "低代码":
+      - generic: 低代码
+    - menuitem "流程引擎":
+      - text: 流程引擎
+    - menuitem "通知":
+      - generic: 通知
+    - menuitem "智能体":
+      - generic: 智能体
+    - menuitem "物联网":
+      - text: 物联网
+    - menuitem "开放接口":
+      - text: 开放接口
+    - menuitem "文件管理"
+    - menuitem "定时任务":
+      - generic: 定时任务
+- button "toggle sidebar":
+- navigation "Breadcrumb"
+- button "系统管理员":
+  - generic: 系统管理员
+- main:
+  - heading "表单管理" [level=2]
+  - generic: 共 1 条记录
+  - button "新建表单":
+    - generic: 新建表单
+  - textbox "表单名称 / 标识"
+  - button "查询":
+    - generic: 查询
+  - button "重置":
+    - generic: 重置
+  - table:
+    - rowgroup:
+      - row "表单名称 业务标识 状态 更新时间 操作":
+        - columnheader "表单名称":
+          - generic: 表单名称
+        - columnheader "业务标识":
+          - generic: 业务标识
+        - columnheader "状态":
+          - generic: 状态
+        - columnheader "更新时间":
+          - generic: 更新时间
+        - columnheader "操作":
+          - generic: 操作
+  - table:
+    - rowgroup:
+      - row "验收申请表 验收申请表 已发布 2026-08-29T10:09:01.661893 编辑":
+        - cell "验收申请表":
+          - generic: 验收申请表
+        - cell "验收申请表":
+          - generic: 验收申请表
+        - cell "已发布":
+          - generic: 已发布
+        - cell "2026-08-29T10:09:01.661893":
+          - generic: 2026-08-29T10:09:01.661893
+        - cell "编辑":
+          - button "编辑":
+            - generic: 编辑

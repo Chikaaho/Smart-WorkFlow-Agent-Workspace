@@ -1,0 +1,47 @@
+# HTTP 行为证据原始输出（采集时间 2026-08-29T02:26:24Z，环境：本机 8080 后端/H2 dev，5173 真实模式前端）
+
+## 1. 表单提交后流程状态（admin 与 accuser01 双账号）
+\$ GET /api/workflow/instances (admin):
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"10"}}
+\$ GET /api/workflow/instances (accuser01):
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"10"}}
+\$ GET /api/workflow/tasks/todo (admin):
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"10"}}
+\$ GET /api/workflow/tasks/todo (accuser01):
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"10"}}
+\$ GET /api/workflow/defs (admin):
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"10"}}
+
+## 2. 表单定义持久化
+\$ GET /api/form/def/page (admin):
+{"code":0,"msg":"success","data":{"records":[{"id":"64ac4e26-0a3a-46ab-ba0c-1d37de68ea69","formKey":"验收申请表","name":"验收申请表","logicalTableName":null,"status":"PUBLISHED","physicalTableName":"sw_form_rn5c1y28g8","formVersion":2,"description":null,"createTime":"2026-08-29T10:08:24.49494","updateTime":"2026-08-29T10:09:01.661893"}],"total":"1","pageNum":"1","pageSize":"10"}}
+
+## 3. 越权对照（角色管理后端拒绝）
+\$ POST /api/system/user/page (accuser01):
+{"code":403,"msg":"无权限","data":null}
+HTTP:403
+\$ POST /api/system/user/page (admin 对照):
+HTTP:200
+
+## 4. A-01：accuser01 真实菜单树（角色已授权低代码全子树）
+\$ GET /api/system/auth/menus (accuser01):
+{
+    "code": 0,
+    "msg": "success",
+    "data": [
+        {
+            "id": "5",
+            "parentId": null,
+            "name": "Workflow",
+            "title": "\u6d41\u7a0b\u5f15\u64ce",
+            "path": "workflow",
+            "component": "workflow/views/WorkflowHome",
+            "icon": "Share",
+            "sort": 30,
+            "menuType": 1,
+            "permission": "workflow:view",
+            "hidden": false,
+            "children": []
+        }
+    ]
+}

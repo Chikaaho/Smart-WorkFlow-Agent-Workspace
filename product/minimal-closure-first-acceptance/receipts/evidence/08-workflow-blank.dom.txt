@@ -1,0 +1,32 @@
+URL: http://localhost:5173/workflow
+时间: 2026-08-29T02:25:47.511Z
+会话: admin
+说明: 流程引擎菜单落地页 main 区空白（WorkflowHome 空占位）
+----DOM----
+- complementary:
+  - generic: SW
+  - generic: Smart-WorkFlow
+  - menubar:
+    - menuitem "系统管理":
+      - generic: 系统管理
+    - menuitem "低代码":
+      - generic: 低代码
+    - menuitem "流程引擎":
+      - text: 流程引擎
+    - menuitem "通知":
+      - generic: 通知
+    - menuitem "智能体":
+      - generic: 智能体
+    - menuitem "物联网":
+      - text: 物联网
+    - menuitem "开放接口":
+      - text: 开放接口
+    - menuitem "文件管理"
+    - menuitem "定时任务":
+      - generic: 定时任务
+- button "toggle sidebar":
+- navigation "Breadcrumb":
+  - link "流程引擎"
+- button "系统管理员":
+  - generic: 系统管理员
+- main
