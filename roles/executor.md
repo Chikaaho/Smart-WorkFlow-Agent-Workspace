@@ -30,8 +30,9 @@
 - 自行拆分 Step、设计每个 Step 的执行/测试方案（基于需求方向文档）
 - 自主执行、自主修复、自验收（本文 §4）
 - 更新 `knowledge/`（完整知识库、功能追踪文件、功能清单.md 同步）
-- 压缩记忆：将探索/执行结论压缩写入 `search_fallback/` 或 `memory/`
-- 写执行回执和测试回执到 `product/<feature>/receipts/`
+- 探索结论压缩写入 `search_fallback/`；仅在阶段三唯一终态值清单或执行方向明确授权时压缩 `memory/`
+- 仅在阶段三唯一终态值清单或执行方向明确授权时机械写入 `todo/requirement-pool.md`
+- 写功能级 completion receipt、追加补证/修正回执和终态同步回执到 `product/<feature>/receipts/`
 
 ---
 
@@ -255,9 +256,8 @@
 ### 11.4 手工验证
 ### 11.5 回归检查
 ## 12. 验收标准
-## 13. 执行回执格式
-## 14. 测试回执格式
-## 15. 明确禁止事项
+## 13. 纳入功能级 completion receipt 的证据
+## 14. 明确禁止事项
 ```
 
 **禁止使用的模糊表达**：
@@ -289,16 +289,16 @@
 
 （原 system.md §7.1-§7.2；审查侧规则见 roles/planner.md §7）
 
-本格式是执行角色内部自查、以及向规划角色提交**功能级完成回执**时应达到的证据粒度——规划角色不逐 Step 收取和审查回执，只在执行角色完成全部自拆 Step 后，读取汇总性的完成回执（可沿用下列 §8.1/§8.2 结构，把"Step 编号和名称"替换为"功能名称 + 各自拆 Step 概要"）做最终验收。
+执行角色完成全部内部 Step 后，只提交一份**功能级 completion receipt**；后续补证或修正以新文件追加。Planner 不逐 Step 收取回执，`receipts/` 历史永不移入 `passed/`。
 
-### 8.1 执行回执格式
+### 8.1 功能级 completion receipt 格式
 
 要求下级执行代理至少返回：
 
 ```markdown
 # 执行回执
 
-## 1. Step 编号和名称
+## 1. 功能名称与内部 Step 概要
 ## 2. 实际读取的文件
 ## 3. 实际修改的文件
 ## 4. 每个文件的修改摘要
@@ -309,43 +309,15 @@
 ## 9. 未完成内容
 ## 10. 风险和注意事项
 ## 11. Git diff 摘要
-## 12. 建议执行的测试
+## 12. 与方向验收标准逐项对照
+## 13. 最终自验结论与合法 Executor terminal
 ```
 
-如果执行代理未提供必要证据（如无 Git diff、无命令输出），规划角色应要求补充回执，不得直接进入测试验收。
+如果缺少必要证据（如无 Git diff、无命令原始输出），Planner 以新补证回执要求追加，不覆盖 completion receipt。
 
-### 8.2 测试回执格式
+### 8.2 追加补证与修正
 
-要求测试代理至少返回：
-
-```markdown
-# 测试回执
-
-## 1. Step 编号和名称
-## 2. 测试环境
-## 3. 测试前置条件
-## 4. 实际执行的测试命令
-## 5. 各测试项结果
-## 6. 通过项
-## 7. 失败项
-## 8. 跳过项及原因
-## 9. 关键日志或错误信息
-## 10. 是否满足验收标准
-## 11. 回归风险
-## 12. 最终结论
-（只能是 PASSED / FAILED / BLOCKED 三者之一）
-## 13. 记忆更新草稿（仅供规划角色核对后落盘，不构成最终判定）
-```
-
-**记忆更新草稿的约束**（仅当测试代理认为本 Step 可能判定为 PASSED 时填写；判定为 FAILED/BLOCKED 时写"不适用"）：
-
-- 按 `memory/state.md` 现有表格列格式给出本 Step 的一行：Step | 内容 | 关键产物 | 判定占位"PASSED（待编号）"；并给出测试基线：前置数→当前数（state.md 追加行）
-- 若本 Step 产生了新的架构/设计决策，给出决策正文草稿，编号留空写"D_TBD"；若无新决策，明确写"无新增"（decisions.md 新增条目）
-- 若发现新的未关闭已知问题，给出问题描述草稿；若无，明确写"无新增"（issues.md 新增条目）
-- 若功能整体状态发生变化如全部 Step 完结，给出变更后的状态行；若无变化，写"无变化"（features.md 状态变更）
-- 每个子项 ≤300 字符，超出视为回执不合格，要求精简重提
-- 草稿必须是**事实陈述**（做了什么、测试计数变化、涉及文件路径），不得包含方案建议、范围判断、"建议下一步做 X"等规划性表达——出现规划性表达视为诱导规划，对应 Step 自动 `FAILED`（判定口径与本文 §3 一致）
-- 无内容时必须显式写"无新增"/"无变化"/"不适用"，不得省略字段
+补证文件只包含最新未通过项：缺口编号、唯一行为证据、原始输出、正向断言、反向零残留断言和实际修改文件。已锁定通过项不重验；修正使用新文件，禁止覆盖历史回执。
 
 ---
 
@@ -357,27 +329,27 @@
 
 ```bash
 cd Smart-WorkFlow
-mvn clean install -DskipTests     # 构建全部模块（跳过测试）
-mvn -q compile                    # 增量编译验证
-mvn -q test                       # 全量测试
-mvn -q compile && mvn -q test     # 校验门
+MAVEN_OPTS="-Xmx2g" mvn clean install -DskipTests     # 构建全部模块（跳过测试）
+MAVEN_OPTS="-Xmx2g" mvn -q compile                    # 增量编译验证
+MAVEN_OPTS="-Xmx2g" mvn -q test                       # 全量测试
+MAVEN_OPTS="-Xmx2g" mvn -q compile && MAVEN_OPTS="-Xmx2g" mvn -q test     # 校验门
 
 # 启动开发服务器 (H2 内存数据库)
-cd sw-bootstrap && mvn spring-boot:run -Dspring-boot.run.profiles=dev
+cd sw-bootstrap && MAVEN_OPTS="-Xmx2g" mvn spring-boot:run -Dspring-boot.run.profiles=dev
 ```
 
 ### 前端 (Smart-WorkFlow-Web/)
 
 ```bash
 cd Smart-WorkFlow-Web
-pnpm install                      # 安装依赖
-pnpm dev                          # 开发服务器（直连后端）
-pnpm dev:mock                     # 开发服务器（Mock 模式）
-pnpm typecheck                    # TypeScript 类型检查
-pnpm lint                         # ESLint（含架构边界规则）
-pnpm test                         # Vitest 单元测试
-pnpm build                        # 生产构建（含类型检查）
-pnpm typecheck && pnpm lint && pnpm test && pnpm build  # 全量校验门
+NODE_OPTIONS="--max-old-space-size=2048" pnpm install                      # 安装依赖
+NODE_OPTIONS="--max-old-space-size=2048" pnpm dev                          # 开发服务器（直连后端）
+NODE_OPTIONS="--max-old-space-size=2048" pnpm dev:mock                     # 开发服务器（Mock 模式）
+NODE_OPTIONS="--max-old-space-size=2048" pnpm typecheck                    # TypeScript 类型检查
+NODE_OPTIONS="--max-old-space-size=2048" pnpm lint                         # ESLint（含架构边界规则）
+NODE_OPTIONS="--max-old-space-size=2048" pnpm test                         # Vitest 单元测试
+NODE_OPTIONS="--max-old-space-size=2048" pnpm build                        # 生产构建（含类型检查）
+NODE_OPTIONS="--max-old-space-size=2048" pnpm typecheck && NODE_OPTIONS="--max-old-space-size=2048" pnpm lint && NODE_OPTIONS="--max-old-space-size=2048" pnpm test && NODE_OPTIONS="--max-old-space-size=2048" pnpm build  # 全量校验门
 ```
 
 > ⚠️ 所有 `mvn` 命令带 `MAVEN_OPTS="-Xmx2g"`；所有 `pnpm`/`npm`/`node` 命令带 `NODE_OPTIONS="--max-old-space-size=2048"`（硬约束 🔒，上限 2G，禁止无限制内存直接编译/构建）。
@@ -391,15 +363,15 @@ pnpm typecheck && pnpm lint && pnpm test && pnpm build  # 全量校验门
 
 | 文件 | 内容 |
 |------|------|
-| `knowledge/*.md` | 完整知识库（7 根文件 + 13 功能追踪文件，~310KB） |
-| `product/<name>/*.md` | 需求方向与回执（规划角色也可读） |
+| `knowledge/` | 完整知识库；当前规模与状态以其索引和 `current-status.md` 为准 |
+| `product/<name>/ready/`、`receipts/`、`passed/` | 方向、历史回执与已归档方向（规划角色也可读） |
 | `Smart-WorkFlow/` 代码 | 后端 Java 代码 |
 | `Smart-WorkFlow-Web/` 代码 | 前端 Vue/TS 代码 |
 | `search_task/*.md` | 探索任务（由规划角色写入） |
 | `Smart-WorkFlow/docs/governance/engineering-constitution.md` | 后端工程宪法（后端执行角色参考） |
 | `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` | 前端工程宪法（前端执行角色参考） |
-| `Smart-WorkFlow/功能清单.md` | 全平台功能清单（M01-M10，54 功能，89 明细） |
-| `todo/README.md` | 暂不修复问题索引 |
+| `Smart-WorkFlow/功能清单.md` | 全平台正式功能及明细清单（不在角色文件固化数量） |
+| `todo/README.md`、`todo/requirement-pool.md` | 暂不修复索引与需求缺口池；写入须有方向/终态清单授权 |
 
 ---
 
@@ -415,7 +387,7 @@ pnpm typecheck && pnpm lint && pnpm test && pnpm build  # 全量校验门
 - **§3 三阶段工作流** — 阶段二自主执行（§3.2）、阶段三知识沉淀与交接（§3.3）
 - **§4 单功能会话机制** — 每轮一个主功能、缺陷处理规则
 - **§5 状态机** — Step 状态机（§5.2）、Step 状态定义供执行角色自主闭环参考
-- **§11 工作区概览** — 目录结构、系统关系、模块完成度、关键工程约束速查
+- **§11 工作区概览** — 目录结构、系统关系、当前状态导航、关键工程约束速查
 
 ---
 
@@ -433,7 +405,7 @@ pnpm typecheck && pnpm lint && pnpm test && pnpm build  # 全量校验门
 | §1.5 | 禁止执行的操作 | §3 |
 | §2 | 执行任务分级 | §5 |
 | §6 | Step 方案标准结构 | §7 |
-| §7.1-§7.2 | 执行回执、测试回执格式 | §8 |
+| §7.1-§7.2 | 功能级 completion receipt 与追加补证 | §8 |
 | §12 | 常用命令 | §9 |
 | §13（执行列） | 知识索引 | §10 |
 

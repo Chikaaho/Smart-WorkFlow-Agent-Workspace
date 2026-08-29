@@ -16,8 +16,23 @@
     "release_condition": {"type": "string", "minLength": 1}
   },
   "states": {
-    "EXECUTION_SUBMITTED": {"required": ["feature_status"], "allowedFeatureStatus": ["IN_PROGRESS", "VERIFYING"]},
-    "TERMINAL_SYNC_SUBMITTED": {"required": ["feature_status", "memory_compression"], "allowedFeatureStatus": ["COMPLETED"]},
-    "BLOCKED": {"required": ["block_type", "attempted", "release_condition"], "allowedFeatureStatus": []}
+    "EXECUTION_SUBMITTED": {
+      "required": ["feature_status"],
+      "allowed": ["schema", "role", "state", "receipt", "evidence", "feature_status"],
+      "forbidden": ["memory_compression", "block_type", "attempted", "release_condition"],
+      "allowedFeatureStatus": ["IN_PROGRESS", "VERIFYING"]
+    },
+    "TERMINAL_SYNC_SUBMITTED": {
+      "required": ["feature_status", "memory_compression"],
+      "allowed": ["schema", "role", "state", "receipt", "evidence", "feature_status", "memory_compression"],
+      "forbidden": ["block_type", "attempted", "release_condition"],
+      "allowedFeatureStatus": ["COMPLETED"]
+    },
+    "BLOCKED": {
+      "required": ["block_type", "attempted", "release_condition"],
+      "allowed": ["schema", "role", "state", "receipt", "evidence", "block_type", "attempted", "release_condition"],
+      "forbidden": ["feature_status", "memory_compression"],
+      "allowedFeatureStatus": []
+    }
   }
 }

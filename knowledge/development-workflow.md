@@ -1,275 +1,66 @@
-# 开发工作流与协作规范
+# 开发工作流参考
 
-> 工作区统一知识库 — 开发流程分册。
-> **面向对象**：下级执行代理（在 `Smart-WorkFlow/` 或 `Smart-WorkFlow-Web/` 中执行具体编码和测试的 AI 代理）。
-> **根目录规划代理**：本文件是参考文档。规划代理自身的工作流、权限边界见根目录 `system.md`（公共协议）与 `roles/planner.md`（角色定义）。
->
-> 描述前后端日常开发流程、校验门、代码规范。
+> 本文件只记录跨项目的日常工程流程。角色、授权、任务终态、回执生命周期和停止条件不在此定义：分别以 `system.md`、`roles/` 与 `.codex/governance/terminal-contract.json` 为准。
 
----
+## 1. 工程流程
 
-## 1. 开发流程总览
-
-```
-需求沟通 → 架构设计 → 契约定义 → 前后端并行开发 → 联调验证 → 交付验收
+```text
+方向与契约明确 → 实现 → 增量验证 → 全量校验 → 行为验收 → 证据归档
 ```
 
-### 1.1 执行入口（执行代理用）
+- 目标、非目标和范围来自已授权方向；本参考文档不建立二次授权门。
+- 后端专属实现规则见 `Smart-WorkFlow/docs/governance/engineering-constitution.md`。
+- 前端专属实现规则见 `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md`。
+- 跨端安全、接缝、资源互斥与设计系统见 `knowledge/shared-constraints.md`。
 
-> 本节只保留当前执行入口。角色、授权、职责和停止条件以根目录
-> `system.md` 与 `roles/executor.md` 为准；本参考文档不得建立第二套确认流程。
+## 2. 校验门
 
-- 用户已声明执行角色，并提供需求方向、审查记录或明确任务路径时，即构成该任务的一次性授权。
-- 执行代理直接读取指定入口，自行拆分 Step、执行、修复、验证并提交合法执行终态。
-- 内部 Step、修复、验证、回执和已授权的终态同步不得再次请求确认。
-- 方向缺失、内部冲突或必须扩大目标/范围时，提交 `BLOCKED`，不得自行形成新方向。
+执行重型命令前先按 `knowledge/shared-constraints.md` §9 检查另一端编译/测试进程；前后端不得并行运行重型命令。
 
-### 1.2 决策先于实现
-
-- 需求目标、非目标和范围由规划角色在需求方向中一次性裁定并下发。
-- 执行角色只在既定方向内自主决定 Step 顺序、实现方式和验证方式，不把内部实现决策转化为二次确认。
-- 只有方向缺失、方向冲突或必须扩大授权范围时，执行角色才提交 `BLOCKED`，由规划角色处理。
-
----
-
-## 2. 校验门（唯一合法的「完成」判据）
-
-> ⚠️ **前后端编译互斥（硬约束 🔒）**：执行本方校验门前，先检测对方项目是否正在编译/测试中（`ps` 检测对方编译进程，检测命令与等待规则见 `knowledge/shared-constraints.md` §9）；对方在编译/测试中则必须等待其完成后再执行本方校验门，**前后端不得同时执行编译/测试/构建类操作**。
-
-### 2.1 后端校验
+### 2.1 后端
 
 ```bash
-mvn -q compile && mvn -q test
+MAVEN_OPTS="-Xmx2g" mvn -q compile
+MAVEN_OPTS="-Xmx2g" mvn -q test
 ```
 
-- **全工程计数**，非模块 scoped
-- 确认基线无漂移
-- ❌ **禁止**用 `spring-boot:run` 做阻塞式启动校验
+- 使用全工程计数，非模块 scoped。
+- `spring-boot:run` 不作为阻塞式完成判据。
 
-### 2.2 前端校验
+### 2.2 前端
 
 ```bash
-pnpm typecheck && pnpm lint && pnpm test && pnpm build
+NODE_OPTIONS="--max-old-space-size=2048" pnpm typecheck
+NODE_OPTIONS="--max-old-space-size=2048" pnpm lint
+NODE_OPTIONS="--max-old-space-size=2048" pnpm test
+NODE_OPTIONS="--max-old-space-size=2048" pnpm build
 ```
 
-- 四连必须全绿
-- 测试计数账：基线不漂移，增减能精确对应到具体改动
-- ❌ **禁止** `pnpm dev` 当阻塞式校验（无确定退出码）
+- 四项必须全绿；测试计数增减须能对应实际变更。
+- `pnpm dev` / `pnpm dev:mock` 只用于人工验收，不作为阻塞式校验门。
 
-### 2.3 肉眼验收
+## 3. 通用编码原则
 
-- `pnpm dev:mock` 仅当该刀产出可见 UI 且需肉眼验时才起（新页面、弹层、运行时字符串解析）
-- 纯逻辑/纯函数/工具刀不要求 `dev:mock`
+- 优先成熟开源库，避免维护自造基础轮子。
+- 重构采用 move-not-copy，旧入口应有零残留证据。
+- 横切基础设施先于依赖它的业务实现。
+- 配置和密钥不提交仓库；示例使用占位值。
 
----
+## 4. 后端要点
 
-## 3. 执行角色任务分级（执行代理用）
+- 日常编码使用 import + 短类名；同名冲突时才使用 FQCN。
+- 同一序列化场景不混用 JSON 库。
+- 动态宽表 SQL 必须同时满足租户、逻辑删除、列名白名单和参数化绑定约束。
 
-> 注意：本节约定的任务分级规则是**执行代理**在子项目内编码时的规则。
-> 执行代理在自主闭环中按任务复杂度自行决定处理强度（根目录 `roles/executor.md` §5），不涉及任何具体模型。
->
-> 各子项目的权威约束见：
-> - 后端：`Smart-WorkFlow/docs/governance/engineering-constitution.md` §11.2
-> - 前端：`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` §1.1 和 §8.2
->
-> 以下为通用摘要，如有冲突以子项目文件为准。
+## 5. 前端要点
 
-| 阶段 | 处理方式 | 说明 |
-|------|------|------|
-| 需求沟通/架构分析 | 先探索、汇总证据再动手 | 分析、方案设计、约束识别 |
-| 代码生成（默认） | 单会话内直接完成 | 日常编码、CRUD、测试用例 |
-| 升级处理强度 | 仅在常规处理失败 ≥2 次，或面临多约束收敛/安全边界/复杂矩阵逻辑时 | **必须向用户说明原因** |
+- 依赖方向、接缝层、设计 token 与安全出口以本仓工程宪法为准。
+- 业务模块不得直接绕过 adapters/foundation 访问第三方实现。
+- 可见 UI 在自动化校验后按需进行人工验收。
 
-### 升级处理条件（满足任一即可）
+## 6. 文档与提交
 
-- 常规处理已失败 ≥ 2 次（编译不过/装配失败/测试红灯）
-- 多约束同时收敛（裸 SQL 绕拦截器 + 租户 + 逻辑删除 + 白名单四件套）
-- 安全边界敏感（SQL 注入红线、DDL 拼接、权限过滤链）
-- 复杂矩阵式逻辑（op × type 组合爆炸、状态机多分支）
-
-## 4. 编码规范
-
-### 4.1 通用原则
-
-- **优先成熟开源库**，不自造轮子、不引冷门库
-- **move-not-copy**：重构是移动不是并存两套，改完 `grep` 旧名零命中为硬证
-- **不挖地基**：做完美不应付，小的未来变更不该需要重构地基
-- **横切基础设施先于业务代码就位**
-
-### 4.2 后端（Java）
-
-- 禁止用 FQCN 字符串选择实现（破坏 `@Transactional`/AOP）
-- 日常编码用 `import` + 短类名，同名冲突时才用 FQCN
-- JSON：Spring MVC 出入参延续 Jackson；业务内部手动操作按需选 fastjson2
-- **同一序列化场景内不混用**两个 JSON 库
-- HTTP（业务侧）：用 hutool `HttpRequest`
-- 动态宽表裸 SQL：**每一条都必须手写 `deleted` + `tenant_id` 两个条件**
-- 列名一律过 `ColumnValidation` 白名单单出口
-- 所有值一律 `PreparedStatement ?` 参数化绑定
-
-### 4.3 前端（TypeScript/Vue）
-
-- HTTP 一律走 `foundation/request`（单一 axios 实例），业务层禁直引
-- 危险第三方库（form-create、bpmn-js、vue-flow、dompurify）一律套防腐层
-- 表达式求值仅走 `security/safe-eval`
-- `v-html` 仅通过 `security/SafeHtml.vue`
-- 菜单单一数据源：同一份 `loadMenu()` 同时喂 router 与侧边栏
-- 组件解析走 `import.meta.glob` 白名单，禁止字符串拼路径
-- Element Plus 经按需自动导入，业务模块不显式 import
-
----
-
-## 5. 配置与密钥管理
-
-- 所有敏感信息（密码、Token、API Key）使用环境变量注入，**不在仓库中硬编码**
-- 后端配置文件：`application.yml`（主）+ `application-dev.yml`（H2）+ `application-local.yml`（PG）
-- 前端环境变量：`.env` / `.env.mock`
-- 生产构建中 mock 代码经 tree-shake 自动移除
-
----
-
-## 6. 文档维护约定
-
-### 6.1 文档体系
-
-| 层级 | 文件 | 内容 |
-|------|------|------|
-| 工作区（本仓库） | `system.md` | 统一入口 + 公共协议 |
-| 工作区 | `roles/*.md` | 三角色定义（planner/executor/admin） |
-| 工作区 | `knowledge/*.md` | 跨项目架构/约束/术语/流程 |
-| 后端项目 | `docs/governance/engineering-constitution.md` | 后端工程宪法（规范+硬约束） |
-| 后端项目 | `README.md` | 后端项目概览 |
-| 后端项目 | `功能清单.md` | 功能编号与进度 |
-| 前端项目 | `docs/governance/engineering-constitution.md` | 前端工程宪法（协作+设计+规范） |
-| 前端项目 | `README.md` | 前端项目概览 |
-
-### 6.2 维护原则
-
-- **知识优先沉淀到工作区知识库**，项目特有细节留在项目 `docs/governance/engineering-constitution.md`
-- 避免多处维护相同内容
-- 文档整篇替换，不做 diff
-- **进度跟踪**：项目整体进度和功能状态见 `knowledge/current-status.md`（唯一可信来源）和 `knowledge/session-handoff.md`（最新交接状态）；子项目 system.md **不记进度**
-
-### 6.3 信息分层铁律（D85，2026-08-16 用户定 · 与根 system.md §0.4 一致）
-
-- **`knowledge/` = 唯一完整权威信息源**：已知问题、功能追踪、完整状态、架构、决策全部以 knowledge 为准，任何状态变更必须首先落 knowledge
-- **`memory/` = 最少信息摘要**：只作规划角色的快速入口，不承载 knowledge 中没有的完整信息；**memory 与 knowledge 冲突时以 knowledge 为准，并立即修正 memory（摘要口径），不允许反向**
-- **触碰状态文件必须同步 knowledge 全量文件**：执行角色触碰任何状态文件（如 `Smart-WorkFlow/功能清单.md`、`knowledge/current-status.md`、`knowledge/features/<name>.md`、`knowledge/known-issues.md`）时，必须同步更新对应 knowledge 文件**全量（全节/全文）**——禁止"只更新文件首部/只更新 memory"造成 knowledge 中下部残留（D83 曾发现 current-status/session-handoff 顶部新、中下部旧的 17 处欠账）
-- **清单 🟦/⬜ 缺口同步进 `todo/requirement-pool.md`**：功能清单状态列与本轮交付对齐时，🟦/⬜ 行的缺口同时登记 `todo/requirement-pool.md`（P 编号登记，防"清单独有"）
-
----
-
-## 7. 提交规范
-
-- 前端使用 commitlint（`@commitlint/config-conventional`）
-- pre-commit 钩子：`lint-staged`（ESLint + Prettier）
-- 后端无强制 hook，全量 `mvn -q compile` 作为增量验证
-
----
-
-## 8. 执行回执输出规范（硬约束）
-
-> 执行代理完成代码修改和测试后，**必须**将执行回执和测试回执写入工作区统一目录，而非仅留在对话中。
-> 详见 `knowledge/shared-constraints.md` §2.4（跨项目共享约束）。
-
-### 8.1 回执路径
-
-```bash
-# 在工作区根目录（与 product/ 平级）执行写入
-product/<feature-name>/receipts/step-N-<step-name>-execution.md
-product/<feature-name>/receipts/step-N-<step-name>-test.md
-```
-
-- `<feature-name>` 与功能名一致（如 `bpm-single-node-approval`）
-- `<step-name>` 用 kebab-case（如 `backend-query-endpoint`）
-- 前后端共用 `receipts/` 目录
-
-### 8.2 回执格式
-
-**执行回执**必须包含（参照根目录 `roles/executor.md` §8.1）：
-
-```markdown
-# 执行回执
-
-## 1. Step 编号和名称
-
-## 2. 实际读取的文件
-（逐文件列出，未读取的标注原因）
-
-## 3. 实际修改的文件
-（新建/修改区分标注）
-
-## 4. 每个文件的修改摘要
-（改动点、改动行数、原因）
-
-## 5. 实际执行的命令
-（逐条列出命令及参数）
-
-## 6. 命令输出摘要
-（编译结果、测试结果、退出码等）
-
-## 7. 与原方案的偏差
-（哪里和方案不同，为什么）
-
-## 8. 遇到的问题
-（技术/环境/理解偏差等，如何解决）
-
-## 9. 未完成内容
-（方案要求但未完成的内容及原因）
-
-## 10. 风险和注意事项
-（执行中发现的潜在问题）
-
-## 11. Git diff 摘要
-（改动文件数、新增/删除行数、关键变更点）
-
-## 12. 建议执行的测试
-（需要重点验证的测试场景）
-```
-
-**测试回执**必须包含（参照根目录 `roles/executor.md` §8.2）：
-
-```markdown
-# 测试回执
-
-## 1. Step 编号和名称
-
-## 2. 测试环境
-（数据库类型、Java/Node 版本、操作系统、服务状态）
-
-## 3. 测试前置条件
-（数据准备、配置修改、依赖服务启动状态）
-
-## 4. 实际执行的测试命令
-（逐条列出，含完整参数）
-
-## 5. 各测试项结果
-（逐条列出预期结果、实际结果、是否通过）
-
-## 6. 通过项
-（列出所有通过的测试项及关键输出摘要）
-
-## 7. 失败项
-（列出所有失败的测试项，含完整错误堆栈）
-
-## 8. 跳过项及原因
-
-## 9. 关键日志或错误信息
-（粘贴相关日志片段，不要截断）
-
-## 10. 是否满足验收标准
-（逐条对照回答是否满足）
-
-## 11. 回归风险
-（评估对其它功能的潜在影响）
-
-## 12. 最终结论
-（PASSED / FAILED / BLOCKED）
-```
-
-### 8.3 约束细则
-
-- **写回执是 Step 执行的最后一步**，完成后才能结束会话
-- **禁止仅口头汇报**，回执文件是验收的唯一依据
-- 同一 Step 重新执行时，新建补充或修正回执；不得覆盖既有回执，历史证据保持可追溯。
-- ❌ 违反此规范的执行回执视为不合格，退回重写
+- 当前状态、计数、基线和唯一下一动作只维护在 `knowledge/current-status.md`；历史进入 `knowledge/history/`。
+- 工程专属细节只维护在对应工程宪法，不在本文件复制。
+- 前端使用 commitlint 与 lint-staged；提交遵循 Conventional Commits。
+- 功能级 completion receipt 与追加补证格式只见 `roles/executor.md` §8；`receipts/` 历史追加保留，只有方向文档进入 `passed/`。
