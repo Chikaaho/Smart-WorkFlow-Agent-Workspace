@@ -12,10 +12,8 @@ Smart-WorkFlow 是一个**低代码 OA + AI Agent 平台**：
 
 - **低代码表单引擎**：表单设计器拖拽建模，提交数据落动态宽表（每表单一张物理表），支持引用与子表关系。
 - **流程自动化（BPM）**：BPMN 流程定义、表单绑定、发起/待办/审批/实例监控，端到端审批流转。
-- **AI Agent 与 IoT**：Agent 图编排、模型与工具管理已立项；IoT 已交付最小腾讯云接入（详见后端 README 的模块边界）。
+- **AI Agent 与 IoT**：提供智能编排与设备接入能力；当前交付范围以状态权威文件和正式功能清单为准。
 - **统一治理**：三仓以工作区根为唯一宪法入口，规划/执行/管理员三角色分权协作。
-
-当前已通过 **第一轮最小闭环验收审计**：能在真实页面上完成用户与组织配置、角色授权、表单及流程管理、表单提交、流程实例创建、待办审批和结果回看（详见下方「当前状态快照」）。
 
 ---
 
@@ -114,32 +112,15 @@ PostgreSQL（生产 / local）/ H2（开发内存）
 
 ---
 
-## 会话角色导航
+## 治理与状态入口
 
-本工作区采用 **规划 / 执行 / 管理员** 三角色治理（完整规则见 [`system.md`](system.md) 与 `roles/`，此处仅导航，不复制条款）：
-
-- **规划（Planner）**：读 `memory/` + `search_fallback/` + `product/`；写 `memory/`、`search_task/`、`product/`、`todo/`；不读代码与 `knowledge/`，不做实现。
-- **执行（Executor）**：读全部目录 + 两端代码；写 `knowledge/`、`search_fallback/`、`product/` 回执、两端代码；编译/测试命令须带 2G 内存上限且前后端互斥。
-- **管理员（Admin）**：维护 `system.md`、`roles/`、架构文档与工程配置；执行管理员相关 Git 操作；不参与业务规划/实现。
-
-会话开始必须先由用户声明角色；未声明角色不执行任何任务。当前角色由每次会话开始时声明，会话内不自动变更。
-
----
-
-## 当前状态快照
-
-> 权威细节以 [`knowledge/current-status.md`](knowledge/current-status.md) 为准，本快照只作入口导航，不复制完整清单。
-
-- **已完成正式功能**：36
-- **功能清单**：✅32 / 🟦25 / ⬜33（10 模块、55 功能、90 明细）
-- **第一轮最小闭环验收审计**：`COMPLETED（已确认）`（现有能力验收审计，不新增正式功能）
-- **后端测试基线**：955 / Failures 0 / Errors 0 / Skipped 0（agent 346）
-- **前端测试基线**：110 spec files / 1060 tests / 0 skipped（typecheck / lint / test / build 全绿）
-- **迁移基线**：Flyway H2 V44（44 migrations）/ PostgreSQL V44（43 migrations）
+本 README 不定义角色权限、停止门禁或当前状态。会话治理从 [`system.md`](system.md) 进入，角色分册位于 [`roles/`](roles/planner.md)；当前功能状态、计数、基线和唯一下一动作只读取 [`knowledge/current-status.md`](knowledge/current-status.md)。
 
 ---
 
 ## 通用校验命令
+
+执行任何编译、测试或构建命令前，先按 [`knowledge/shared-constraints.md`](knowledge/shared-constraints.md) §9 检查另一端是否正在运行重型命令；前后端必须互斥。
 
 ### 后端
 
