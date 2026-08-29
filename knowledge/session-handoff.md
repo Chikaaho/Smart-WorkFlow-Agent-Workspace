@@ -5,7 +5,7 @@
 >
 > 新会话启动时，优先读取本文件以恢复上下文。
 >
-> **最新状态（2026-08-29）**：minimal-closure-first-acceptance（第一轮最小闭环验收审计）**功能级 PASSED（2026-08-29 规划最终验收）→ 阶段三终态同步落值，COMPLETED（待规划终态复核）**——正式基线后端 **955 / Failures 0 / Errors 0 / Skipped 0（agent 346）**、前端 **110 files / 1060 tests / 0 skipped**（typecheck/lint/test/build 全绿）、Flyway **H2 链 V44（全链 44）/ PostgreSQL 链 V44（全链 43，V41 为 H2 专用，分别记录）**；清单 **✅32/🟦25/⬜33**、已完成功能 **36**（不新增）；P 编号不新增/不核销/不改变。主验收方向与修复方向已归档 `product/minimal-closure-first-acceptance/passed/`。审查：`product/minimal-closure-first-acceptance/receipts/planning-final-acceptance-minimal-closure-first-acceptance-20260829.md`（PASSED）。
+> **最新状态（2026-08-29）**：minimal-closure-first-acceptance（第一轮最小闭环验收审计）**COMPLETED（已确认）**——正式基线后端 **955 / Failures 0 / Errors 0 / Skipped 0（agent 346）**、前端 **110 files / 1060 tests / 0 skipped**（typecheck/lint/test/build 全绿）、Flyway **H2 链 V44（全链 44）/ PostgreSQL 链 V44（全链 43，V41 为 H2 专用，分别记录）**；清单 **✅32/🟦25/⬜33**、已完成功能 **36**（不新增）；P 编号不新增/不核销/不改变。三份方向均归档 `product/minimal-closure-first-acceptance/passed/`。**GOV-AUDIT-13 已完成**：README 同步任务、Admin 治理一致性审计、Admin 治理修复均 COMPLETED（已确认）；业务状态、目录和摘要已一致。
 >
 > 前一功能（历史语境）：form-data-import-export（P32 / M03-F04-02 表单数据导入导出）COMPLETED 已确认（2026-08-29，第 36 个），基线 947/agent346、110f/1057t/3skipped、Flyway H2 V43/PG V43，已被本轮验收审计基线取代。
 >
@@ -15,21 +15,22 @@
 
 ## 0. 当前进行中功能（无进行中业务功能；已完成功能 36）
 
-**minimal-closure-first-acceptance — 第一轮最小闭环验收审计（现有能力验收审计，不新增正式功能；功能级 PASSED 2026-08-29 规划最终验收 → 阶段三终态同步落值，COMPLETED 待规划终态复核）**
+**minimal-closure-first-acceptance — 第一轮最小闭环验收审计（现有能力验收审计，不新增正式功能）COMPLETED（已确认，2026-08-29）**
 
 - **终态落盘（2026-08-29）**：已完成功能数 **36**（不新增）；清单 **✅32/🟦25/⬜33**；基线后端 **955/0/0/0（agent 346）**、前端 **110f/1060t/0skipped**、Flyway **H2 V44（全链 44）/ PG V44（全链 43）**；P 编号不新增/不核销/不改变。
-- **归档/回执**：主验收方向与修复方向均 `product/minimal-closure-first-acceptance/passed/`；终态同步方向 `ready/direction-minimal-closure-first-acceptance-terminal-sync.md` 待规划终态复核后归档。
-- **唯一下一动作**：规划复核终态同步回执；通过后规划比较并选择下一唯一正式功能。
+- **归档/回执**：三份方向均归档 `product/minimal-closure-first-acceptance/passed/`（含终态同步方向）。
+- **补充任务与治理闭环**：三仓 README 同步、Admin 治理审计、Admin 治理修复、GOV-AUDIT-13 均 COMPLETED（已确认）；无活动业务功能、无活动治理/管理员任务。
+- **唯一下一动作**：规划比较并选择下一唯一正式功能。
 
 ---
 
 ## 1. 最新完成功能
 
-**minimal-closure-first-acceptance — 第一轮最小闭环验收审计（现有能力验收审计，不新增正式功能，功能级 PASSED 2026-08-29 规划最终验收 → 阶段三终态同步落值，COMPLETED 待规划终态复核）**
+**minimal-closure-first-acceptance — 第一轮最小闭环验收审计（现有能力验收审计，不新增正式功能；COMPLETED 已确认，2026-08-29）**
 
 - **审计范围（全会话层锁定通过）**：用户管理、组织管理、角色管理、表单管理、流程管理、简单流程流转、数据展示与页面质量；页面不存在阻断闭环问题，成功/失败反馈与真实后端状态一致。
 - **验收**：`receipts/planning-final-acceptance-minimal-closure-first-acceptance-20260829.md`（PASSED）；证据链 R-01～R-04、R-05a/R-05b 及历史补证均归档 `product/minimal-closure-first-acceptance/receipts/`。
-- **终态值**：功能数 36（不新增）、清单 ✅32/🟦25/⬜33、基线后端 955/0/0/0（agent 346）、前端 110f/1060t/0skipped、H2 V44（全链 44）/PG V44（全链 43）；P 编号不新增/不核销/不改变。
+- **终态值**：功能数 36（不新增）、清单 ✅32/🟦25/⬜33、基线后端 955/0/0/0（agent 346）、前端 110f/1060t/0skipped、H2 V44（全链 44）/PG V44（全链 43）；P 编号不新增/不核销/不改变。三份方向均归档 `passed/`。
 
 **form-data-import-export — P32 / M03-F04-02 表单数据导入导出（功能级 PASSED 2026-08-29 + 阶段三终态复核 PASSED，COMPLETED 已确认，第36个）**
 
@@ -37,7 +38,7 @@
 - **验收**：`receipts/planning-final-review-form-data-import-export-20260829.md`（PASSED）+ `receipts/planning-terminal-final-review-20260829.md`（终态复核 PASSED）。
 - **终态值**：功能数 36、清单 ✅32/🟦25/⬜33、基线 947/0/0/0（agent 346）、110f/1057t/3skipped、H2 V43（全链 43）/PG V43（全链 42）；P32 已核销/完成。**（历史语境：已由本轮验收审计基线段 955/1060/V44 取代当前口径）**
 
-**minimal-business-closure — Owner 最小业务闭环（功能级 PASSED 2026-08-28 + 阶段三终态同步已落盘，COMPLETED 待规划终态复核，第35个）**
+**minimal-business-closure — Owner 最小业务闭环（历史记录，功能级 PASSED 2026-08-28 + 阶段三终态同步已落盘，COMPLETED 已确认，第35个）**
 
 - **功能范围**：流程主链（用户/登录/改密/角色部门分配、表单 CRUD+发布、流程定义 CRUD+发布+表单绑定、发起、审批流转、结果回查）+ 设备控制（IotDeviceFacade、审批 AFTER_COMMIT 驱动命令、失败不倒退审批）+ 腾讯 IoT Demo 对接（Provider/身份/队列补发/回调/Echostr/Fastjson2/无 Mock 回退）。
 - **验收**：`receipts/planning-final-review-minimal-business-closure-20260828.md`（PASSED）；行为证据 `behavior-evidence-20260828.md`（37 步真实链）；最终原子断言 `tencent-iot-r1r2r3-focused-evidence-20260828.md`。
@@ -54,7 +55,7 @@
 - **功能范围**：后端模板域（实体/Mapper/渲染服务/Service/Controller/DTO + SYSTEM 枚举）+ V38 双方言迁移（sw_notify_template 表 + 通知菜单目录化 + 收件箱/消息模板二级菜单）+ 发送集成原子性 + 前端管理页/弹窗/契约/API/Mock + R1 路由权限守卫。
 - **正式基线（终态同步登记值）**：后端 **870 / Failures 0 / Errors 0 / Skipped 0（agent 346）**、前端 **104 files / 1025 tests** 四门全绿、Flyway **V38** 双方言 38 migrations 全链。
 - **终态**：P36 已核销（仅代表消息模板完成）、M05-F02-01 升 ✅、清单 **✅30/🟦21/⬜39**、已完成功能 **33**；P3 保持部分关闭/未核销。
-- **审查**：`product/notify-template-management/receipts/planning-final-review-20260826.md`；阶段三方向 `ready/direction-notify-template-management-stage3.md` 待规划终态复核与归档。
+- **审查**：`product/notify-template-management/receipts/planning-final-review-20260826.md`；阶段三方向已归档 `product/notify-template-management/passed/`。
 
 **agent-graph-step-debugging — P7 / M07-F02-04 图单步调试（D180 规划层最终验收 15/15 PASSED + 终态同步，COMPLETED，第30个，2026-08-23）**
 
@@ -187,7 +188,7 @@
 
 ## 3. 最终状态
 
-**notify-template-management**：**COMPLETED（待规划终态复核）✅（功能级 PASSED 11/11 + 阶段三终态同步已落盘，2026-08-26，第33个已完成功能）** — P36/M05-F02-01 消息模板管理；完成回执 → G1—G4 补证（更正 9/9 口径为 11 项）→ R1 前端路由权限收敛（`hasRouteAccess` 菜单可达性回退 + 三身份真实导航证据 + 真实后端 tooluser live 链交叉验证）→ R2 当前最终树四连门禁 → 终态同步落盘。正式基线后端 **870 / Failures 0 / Errors 0 / Skipped 0（agent 346）**、前端 **104 files / 1025 tests**、Flyway **V38** 双方言38 migrations；P36 已核销、M05-F02-01 升✅、清单 **✅30/🟦21/⬜39**、功能数 **33**；P3 保持部分关闭/未核销；主方向归档`passed/`；阶段三方向`ready/direction-notify-template-management-stage3.md`待规划终态复核与归档；审查`receipts/planning-final-review-20260826.md`
+**notify-template-management**：**COMPLETED ✅（历史记录，功能级 PASSED 11/11 + 阶段三终态同步落盘，2026-08-26，第33个已完成功能）** — P36/M05-F02-01 消息模板管理；完成回执 → G1—G4 补证（更正 9/9 口径为 11 项）→ R1 前端路由权限收敛（`hasRouteAccess` 菜单可达性回退 + 三身份真实导航证据 + 真实后端 tooluser live 链交叉验证）→ R2 当前最终树四连门禁 → 终态同步落盘。正式基线后端 **870 / Failures 0 / Errors 0 / Skipped 0（agent 346）**、前端 **104 files / 1025 tests**、Flyway **V38** 双方言38 migrations；P36 已核销、M05-F02-01 升✅、清单 **✅30/🟦21/⬜39**、功能数 **33**；P3 保持部分关闭/未核销；主方向归档`passed/`；阶段三方向归档`passed/`；审查`receipts/planning-final-review-20260826.md`
 **agent-graph-step-debugging**：**COMPLETED ✅（D180 规划层最终验收 15/15 PASSED + 终态同步，2026-08-23，第30个已完成功能）** — P7/M07-F02-04 图单步调试；D175方向 → D176—D179补证迭代（标准1—13锁定 + G14 唯一计数 `755+72=827` 严格勾稽、完整工具族实际互斥 + 2G 串行门禁 + G15 阶段三实际落盘）→ D180 15/15 最终验收。正式基线后端 **827/0/0/0（agent 338，Surefire XML 119 文件）**、前端 **86f/850t**、Flyway **V36** 双方言36条；P7 已核销、M07-F02-04 升✅、清单 **✅26/🟦24/⬜40**、功能数 **30**；主方向归档`passed/`；终态同步回执已提交，待规划层最终复验与归档（终态同步方向`ready/direction-post-d180-terminal-sync.md`）；审查`receipts/planning-final-review-d180.md`
 **agent-token-usage-observability**：**COMPLETED ✅（D170功能级 + D172阶段三 + D174最终验收，13/13，2026-08-22，第29个已完成功能）** — P8/M07-F04-02 Token 统计与会话查看；功能级基线后端755/0/0/0（agent267）、前端82f/815t四门全绿、Flyway V35双方言35条全链；清单25/25/40、P8已核销、M07-F04-02✅；方向`passed/`；审查`receipts/planning-final-review-d174.md`
 **agent-graph-prompt-configuration**：**COMPLETED ✅（D154功能级PASSED + D157阶段三最终复验PASSED，2026-08-21，第28个已完成功能）** — M07-F02-02 图节点 Prompt 配置；D150主体保留 + D151/D152/D153补证迭代 + D154 12项业务标准全部通过；D155/D156阶段三问题（提前宣告COMPLETED/提前归档/全文未收敛、提交后当前态残留）已由 D157 纠正闭合。后端723（agent234）/ 前端79f/775t / Flyway V34；清单✅24/🟦26/⬜40、功能数28、P6核销；主方向及三份阶段三/纠正方向均归档`passed/`；审查`receipts/planning-stage3-review-d157.md`）
@@ -300,9 +301,9 @@
 30. ✅ agent-graph-step-debugging（P7 / M07-F02-04 图单步调试：调试会话/断点/步进/引擎/安全/既有入口闭环；**后端 827/0/0/0（agent 338）、前端 86f/850t、Flyway V36**）（**D180 规划层最终验收 15/15 PASSED + 终态同步，P7 已核销、M07-F02-04 升 ✅、清单 ✅26/🟦24/⬜40、功能数 30，第 30 个已完成功能，2026-08-23**）
 31. ✅ agent-tool-configuration-frontend（P48 / M07-F03-02 工具与函数调用前端配置闭环；**后端 827/Agent338、前端 100f/981t、Flyway V37**）（**D203 功能级 12/12 PASSED + D207 阶段三终态 8/8 PASSED，P48 已核销、M07-F03-02 升 ✅、清单 ✅27/🟦23/⬜40、功能数 31，第 31 个已完成功能，2026-08-25**）
 32. ✅ notify-management-closure（P3 / I41 / I42 / M05 通知管理缺口闭环：DELETE 端点+删除按钮、GET ?read/keyword 过滤；**后端 827/0/0/0（agent 338）、前端 100f/988t、Flyway V37**）（**D210 功能级 PASSED + 阶段三终态同步 COMPLETED，I41/I42 关闭、M05-F01-02/F01-03 升✅、清单 ✅29/🟦21/⬜40、功能数 32，第 32 个已完成功能，2026-08-25**）
-33. ✅ notify-template-management（P36 / M05-F02-01 消息模板管理：模板 CRUD/启停/预览/发送、`${var}` 渲染、V38 双方言迁移、R1 路由权限守卫；**后端 870 / Failures 0 / Errors 0 / Skipped 0（agent 346）、前端 104f/1025t、Flyway V38 = 38 migrations**）（**功能级 PASSED 11/11 + 阶段三终态同步落盘，COMPLETED 待规划终态复核，P36 已核销、M05-F02-01 升 ✅、清单 ✅30/🟦21/⬜39、功能数 33，第 33 个已完成功能，2026-08-26**）
+33. ✅ notify-template-management（P36 / M05-F02-01 消息模板管理：模板 CRUD/启停/预览/发送、`${var}` 渲染、V38 双方言迁移、R1 路由权限守卫；**后端 870 / Failures 0 / Errors 0 / Skipped 0（agent 346）、前端 104f/1025t、Flyway V38 = 38 migrations**）（**功能级 PASSED 11/11 + 阶段三终态同步落盘，COMPLETED 已确认（历史记录），P36 已核销、M05-F02-01 升 ✅、清单 ✅30/🟦21/⬜39、功能数 33，第 33 个已完成功能，2026-08-26**）
 34. ✅ notify-batch-send（M05-F01-01 通知批量发送；**后端 915/0/0/0（agent 346）、前端 109f/1050t、Flyway V39/V40/V41**）（**COMPLETED 已确认，2026-08-27，第34个**）
-35. ✅ minimal-business-closure（Owner 最小业务闭环：流程主链 + 腾讯 IoT Demo 对接；**后端 915/0/0/0（agent 346）、前端 109f/1050t、Flyway H2 V41/PG V40**）（**功能级 PASSED 2026-08-28 + 阶段三终态同步已落盘，COMPLETED 待规划终态复核，第35个**）
+35. ✅ minimal-business-closure（Owner 最小业务闭环：流程主链 + 腾讯 IoT Demo 对接；**后端 915/0/0/0（agent 346）、前端 109f/1050t、Flyway H2 V41/PG V40**）（**功能级 PASSED 2026-08-28 + 阶段三终态同步已落盘，COMPLETED 已确认（历史记录），第35个**）
 36. ✅ form-data-import-export（P32 / M03-F04-02 表单数据导入导出；**后端 947/0/0/0（agent 346）、前端 110f/1057t/3skipped、Flyway H2 V43/PG V43**）（**功能级 PASSED 2026-08-29 + 阶段三终态复核 PASSED，COMPLETED 已确认，第36个**；当前正式基线已由 minimal-closure-first-acceptance 验收审计更新为 955/1060/V44）
 
 - 后端：项目级 **955 tests / Failures 0 / Errors 0 / Skipped 0（sw-basic-agent 346）**——minimal-closure-first-acceptance 验收审计 R-05a 后端根全量门（12 模块 `18+6+19+85+51+23+346+210+81+27+62+27=955`）经规划最终验收锁定的**正式基线**
@@ -310,7 +311,7 @@
 - 功能清单（规划确认+阶段三已同步）：**✅32 / 🟦25 / ⬜33 共 90 行**（M03-F04-02 ✅（P32）；历史：M05-F02-01 ✅（P36）、M05-F01-02/F01-03 ✅（D210）、M07-F02-02 ✅（D157）、M07-F04-02 ✅（D174）、M07-F02-04 ✅（D180）、M07-F03-02 ✅（D203））
 - Flyway：H2 **V44**（全链 44 migrations）/ PostgreSQL **V44**（全链 43 migrations，V41 为 H2 专用，链数不同属预期）
 - 已完成功能：**36 个规划确认**（验收审计不新增正式功能；第 36 个为 form-data-import-export，COMPLETED 已确认）
-- 进行中业务功能：无；进行中治理任务：无（当前唯一下一动作：规划复核 minimal-closure-first-acceptance 终态同步回执，通过后选择下一唯一正式功能）
+- 进行中业务功能：无；进行中治理任务：无（当前唯一下一动作：规划比较并选择下一唯一正式功能；GOV-AUDIT-13 已完成）
 
 ---
 
@@ -351,9 +352,11 @@
 
 ## 12. 下一轮要做什么
 
-**当前唯一下一动作：规划复核 minimal-closure-first-acceptance 终态同步回执；通过后规划比较并选择下一唯一正式功能。**
+**当前唯一下一动作：规划比较并选择下一唯一正式功能。**
 
-**minimal-closure-first-acceptance：第一轮最小闭环验收审计，功能级 PASSED，阶段三终态同步落值 COMPLETED（待规划终态复核，2026-08-29）**——验收审计不新增正式功能；清单✅32/🟦25/⬜33、功能数36（不变）；正式基线后端955/0/0/0（agent346）、前端110f/1060t/0skipped、Flyway H2 V44/PG V44。
+**minimal-closure-first-acceptance：第一轮最小闭环验收审计，COMPLETED（已确认，2026-08-29）**——验收审计不新增正式功能；清单✅32/🟦25/⬜33、功能数36（不变）；正式基线后端955/0/0/0（agent346）、前端110f/1060t/0skipped、Flyway H2 V44/PG V44。
+
+**补充任务与治理闭环（全部 COMPLETED（已确认，2026-08-29））**：三仓 README 同步、Admin 治理一致性审计（历史发现 16 项）、Admin 治理修复（可修项全部关闭）、GOV-AUDIT-13 机械同步。当前无活动业务功能、无活动治理/管理员任务。
 
 ---
 
@@ -370,7 +373,7 @@
 2. knowledge/current-status.md
 3. knowledge/session-handoff.md                     ← 本文件
 4. knowledge/known-issues.md                        ← I1-I55（I41/I42已由notify-management-closure闭环（D210）；I45：M07-F01已闭环、M07-F02-02已COMPLETED（D157）、M07-F02-04已COMPLETED（D180）、M07-F04-02已COMPLETED（D174）、M05-F01-02/F01-03已COMPLETED（D210）；I52 PG V13 2BP01已修复关闭；I55 M07-F02-04运行日志已关闭。P36/M05-F02-01 未登记为 I 编号，其核销记录在 todo/requirement-pool.md P36）
-5. knowledge/features/notify-template-management.md   ← 最近完成功能（P36/M05-F02-01 消息模板管理，功能级 PASSED 11/11 + 阶段三终态同步落盘，第33个已完成功能，待规划终态复核）
+5. knowledge/features/notify-template-management.md   ← 已完成功能（P36/M05-F02-01 消息模板管理，功能级 PASSED 11/11 + 阶段三终态同步落盘，第33个已完成功能，历史记录）
 6. knowledge/features/notify-management-closure.md    ← 上一功能（P3/I41/I42/M05，D210 PASSED，第32个）
 7. knowledge/features/role-menu-permission-parity.md ← 第 26 个完成功能（P1/M02-F02-01/F03-01，D123 COMPLETED）
 8. knowledge/features/agent-model-orchestration.md  ← M07 全链（详情在 product/agent-model-orchestration/passed/）
@@ -386,21 +389,21 @@
 你是 Smart-WorkFlow 根目录规划代理。请按 system.md §0.2 声明角色并读取 `roles/planner.md`，再按该文件 §10 执行新会话恢复。
 
 最新状态：
-- minimal-closure-first-acceptance（第一轮最小闭环验收审计）**功能级 PASSED + 阶段三终态同步落值，COMPLETED 待规划终态复核（2026-08-29）**——验收审计不新增正式功能，清单✅32/🟦25/⬜33、功能数36；正式基线后端955/0/0/0（agent346）、前端110f/1060t/0skipped四门全绿、Flyway H2 V44（44）/PG V44（43）。审查`receipts/planning-final-acceptance-minimal-closure-first-acceptance-20260829.md`
+- GOV-AUDIT-13 已完成：minimal-closure-first-acceptance（第一轮最小闭环验收审计，不新增正式功能）**COMPLETED 已确认（2026-08-29）**；三仓 README 同步、Admin 治理审计/修复均 COMPLETED（已确认）；业务状态、目录和摘要已一致。清单✅32/🟦25/⬜33、功能数36；正式基线后端955/0/0/0（agent346）、前端110f/1060t/0skipped四门全绿、Flyway H2 V44（44）/PG V44（43）。审查`receipts/planning-final-acceptance-minimal-closure-first-acceptance-20260829.md`
 - form-data-import-export（P32 / M03-F04-02 表单数据导入导出）**COMPLETED 已确认（2026-08-29，第36个）**——P32已核销、M03-F04-02✅、清单✅32/🟦25/⬜33、功能数36
-- minimal-business-closure（Owner 最小业务闭环）**COMPLETED（待规划终态复核，2026-08-28，第35个）**——流程主链+腾讯IoT Demo对接
+- minimal-business-closure（Owner 最小业务闭环）**COMPLETED 已确认（2026-08-28，第35个，历史记录）**——流程主链+腾讯IoT Demo对接
 - 基线：后端 **955 tests**（Failures 0 / Errors 0 / Skipped 0；agent346）/ 前端 **110 files / 1060 tests / 0 skipped** 四门全绿；清单 **✅32/🟦25/⬜33** 共90行；Flyway **H2 V44（全链 44）/ PG V44（全链 43）**；已完成功能 **36**
 - P32 边界：P32 仅核销 M03-F04-02 表单数据导入导出完成；P21 部分关闭未核销（真实腾讯账号/物理设备现场联调/原生MQTT/完整设备管理）
 - 执行约束：本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行，禁并行编译（已入宪法）
 - 候选池：**P1/P5/P6/P7/P8/P24/P28/P36/P48/P32 已核销**、M07 补全已闭环（F01/F02-02/F02-04/F03-02/F04-02）、M05-F01-02/F01-03/M05-F02-01已闭环、M07-F03/F04新功能、IoT/OpenAPI、数据权限遗留/停用即时生效——PG侧全链直跑已由pg-v13修复关闭（I52）
 
-当前功能：无（当前唯一下一动作：规划复核 minimal-closure-first-acceptance 终态同步回执；通过后比较并选择下一唯一正式功能）
+当前功能：无（当前唯一下一动作：规划比较并选择下一唯一正式功能）
 ```
 
 ---
 
 > 最后更新：2026-08-29
-> 最新功能：**minimal-closure-first-acceptance** — 第一轮最小闭环验收审计（**功能级 PASSED，阶段三终态同步落值 COMPLETED 待规划终态复核，2026-08-29**；验收审计不新增正式功能，清单✅32/🟦25/⬜33、功能数36；正式基线后端955/agent346 / 前端110f/1060t/0skipped / Flyway H2 V44（44）/PG V44（43）；主验收方向与修复方向均已归档`passed/`；审查`receipts/planning-final-acceptance-minimal-closure-first-acceptance-20260829.md`）
+> 最新状态：**GOV-AUDIT-13 完成** — minimal-closure-first-acceptance（第一轮最小闭环验收审计，验收审计不新增正式功能）**COMPLETED 已确认（2026-08-29）**；三仓 README 同步、Admin 治理审计/修复、GOV-AUDIT-13 均 COMPLETED（已确认）。清单✅32/🟦25/⬜33、功能数36；正式基线后端955/agent346 / 前端110f/1060t/0skipped / Flyway H2 V44（44）/PG V44（43）；三份方向归档`passed/`；审查`receipts/planning-final-acceptance-minimal-closure-first-acceptance-20260829.md`、`product/workspace-governance-consistency-audit/receipts/planning-review-admin-workspace-governance-remediation-20260829.md`
 > 上一功能：**form-data-import-export** — P32 / M03-F04-02 表单数据导入导出（**COMPLETED 已确认，2026-08-29，第36个**）
 > 测试基线：后端 CONFIRMED 955 tests / Failures 0 / Errors 0 / Skipped 0（agent 346）· 前端 CONFIRMED 110 files / 1060 tests / 0 skipped（**minimal-closure-first-acceptance 验收审计登记基线**）
-> 进行中：无（当前唯一下一动作：规划复核 minimal-closure-first-acceptance 终态同步回执；通过后比较并选择下一唯一正式功能）
+> 进行中：无（当前唯一下一动作：规划比较并选择下一唯一正式功能）

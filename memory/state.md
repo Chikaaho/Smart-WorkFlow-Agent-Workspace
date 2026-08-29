@@ -1,10 +1,10 @@
 # 当前状态摘要
 
-> 规划侧最新同步点：2026-08-29（minimal-closure-first-acceptance 审计阶段三终态复核通过）；正式计数与基线权威为 `knowledge/current-status.md`。
+> 规划侧最新同步点：2026-08-29（GOV-AUDIT-13 规划终态复核通过）；正式计数与基线权威为 `knowledge/current-status.md`。
 
-- 验收审计 `minimal-closure-first-acceptance`：`COMPLETED`（已确认，2026-08-29，不新增正式功能）。用户/组织/角色/表单/流程管理、简单流转、数据展示与页面质量锁定通过；正式基线后端 955/0/0/0 agent346、前端 110f/1060t/0skipped、Flyway H2 V44（44）/PG V44（43）。
-- 正式功能 `form-data-import-export`：`COMPLETED`（已确认，2026-08-29，第 36 个）。P32 / M03-F04-02 表单数据导入导出，已全部锁定（历史基线 947/1057/V43，已被审计基线取代）。
-- 终态值：清单 ✅32/🟦25/⬜33；功能数 36；P 编号不新增/不核销/不改变。
-- 补充同步任务：三仓 README 重构与现状同步 `COMPLETED（已确认，2026-08-29）`；三份 README 均成为项目入口，18/18 相对链接可达，旧当前口径零残留；未提交或推送。
-- 当前唯一活动正式功能：无；当前活动补充任务：无。
+- 验收审计 `minimal-closure-first-acceptance`：`COMPLETED`（已确认，2026-08-29，不新增正式功能）。正式基线后端 955/0/0/0 agent346、前端 110f/1060t/0skipped、Flyway H2 V44（44）/PG V44（43）；三份方向归档 `product/minimal-closure-first-acceptance/passed/`。
+- 正式功能 `form-data-import-export`：`COMPLETED`（已确认，2026-08-29，第 36 个）。P32 / M03-F04-02 表单数据导入导出，已全部锁定。
+- 终态值：清单 ✅32/🟦25/⬜33；功能数 36；P/I 编号不新增/不核销/不改变。
+- 补充任务与治理闭环（均已 COMPLETED 已确认，2026-08-29）：三仓 README 重构与现状同步（未提交/未推送）；Admin 治理一致性审计（历史发现 16 项）；Admin 治理修复（可修项全部关闭）；GOV-AUDIT-13（业务状态、目录和摘要已一致，方向已归档 `passed/`）。
+- 当前唯一活动正式功能：无；当前活动治理/管理员任务：无。
 - 当前唯一下一动作：规划比较并选择下一唯一正式功能。
