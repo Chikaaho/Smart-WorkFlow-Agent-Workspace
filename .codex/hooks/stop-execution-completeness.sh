@@ -1,10 +1,7 @@
 #!/bin/sh
-
-# Only inspect the point where Claude is about to hand control back. This hook
-# does not run on ordinary tool calls and does not change bypassPermissions.
+set -u
+root_dir=$(CDPATH= cd -- "$(dirname "$0")/../.." && pwd)
 input=$(cat)
-
-transcript_path=$(printf '%s' "$input" | /usr/bin/jq -r '.transcript_path // ""')
 
 # The caller must provide the canonical role as structured hook input. A
 # transcript is not a role-control channel: do not infer permissions from
@@ -15,7 +12,7 @@ if [ "$active_role" != "executor" ]; then
   exit 0
 fi
 
-message=$(printf '%s' "$input" | /usr/bin/jq -r '.last_assistant_message // ""')
+stop_hook_active=$(printf '%s' "$input" | /usr/bin/jq -r 'if .stop_hook_active == true then "true" else "false" end')
 background_count=$(printf '%s' "$input" | /usr/bin/jq '[.background_tasks[]? | select(.status == "running" or .status == "pending" or .status == "in_progress")] | length')
 
 if [ "$background_count" -gt 0 ]; then
@@ -23,9 +20,31 @@ if [ "$background_count" -gt 0 ]; then
   exit 0
 fi
 
-terminal_json=$(printf '%s' "$message" | awk -v marker='SWF_TERMINAL ' 'index($0, marker) { sub("^.*" marker, ""); print; exit }')
-diagnostic=$(printf '%s' "$terminal_json" | sh /usr/local/projects/Smart-WorkFlow/.codex/governance/validate-terminal.sh 2>&1)
-if [ "$?" -eq 0 ]; then
+set +e
+terminal_json=$(printf '%s' "$input" | /usr/bin/jq -j '.last_assistant_message // ""' | awk '
+  BEGIN { marker = "SWF_TERMINAL "; count = 0; marker_line = 0 }
+  index($0, marker) == 1 { count++; marker_line = NR; payload = substr($0, length(marker) + 1) }
+  { last_line = NR }
+  END {
+    if (count == 0) { print "terminal-message: marker: missing" > "/dev/stderr"; exit 1 }
+    if (count != 1) { print "terminal-message: marker: expected exactly one" > "/dev/stderr"; exit 1 }
+    if (marker_line != last_line) { print "terminal-message: marker: must be the physical last line" > "/dev/stderr"; exit 1 }
+    print payload
+  }' 2>&1)
+extract_status=$?
+if [ "$extract_status" -eq 0 ]; then
+  diagnostic=$(printf '%s' "$terminal_json" | sh "$root_dir/.codex/governance/validate-terminal.sh" 2>&1)
+  validate_status=$?
+else
+  diagnostic=$terminal_json
+  validate_status=$extract_status
+fi
+set -e
+if [ "$validate_status" -eq 0 ]; then
+  exit 0
+fi
+if [ "$stop_hook_active" = "true" ]; then
+  /usr/bin/jq -cn --arg reason "Stop hook 已重试一次，终态仍不合法；已停止自动续跑。$diagnostic" '{continue:false,stopReason:$reason}'
   exit 0
 fi
 /usr/bin/jq -cn --arg reason "执行会话缺少合法结构化终态：$diagnostic" '{decision:"block",reason:$reason}'

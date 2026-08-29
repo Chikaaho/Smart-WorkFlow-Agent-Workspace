@@ -1,6 +1,6 @@
 # 核心治理规则权威归属矩阵
 
-> 截至/同步点：2026-08-25，governance-contract-consolidation。
+> 截至/同步点：2026-08-29，workspace-governance-consistency-remediation。
 
 | 核心规则 | 唯一权威文件/章节 | 引用方（仅短引用） |
 |---|---|---|
@@ -14,5 +14,11 @@
 | 执行终态校验行为 | `.codex/governance/validate-terminal.sh` | `.claude/hooks/stop-execution-completeness.sh`、`.codex/hooks/stop-execution-completeness.sh` |
 | 后端工程专属约束 | `Smart-WorkFlow/docs/governance/engineering-constitution.md` | 后端 `AGENTS.md` |
 | 前端工程专属约束 | `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` | 前端 `AGENTS.md` |
+| 工程流程参考 | `knowledge/development-workflow.md`（仅工程步骤与命令导航） | 不得定义角色、授权、terminal 或回执生命周期 |
+| 角色路径索引 | `knowledge/model-registry.md`（仅权威路径） | 不得镜像角色权限表 |
+| 跨端工程约束 | `knowledge/shared-constraints.md`（安全、接缝、资源互斥） | 不得定义角色、terminal 或 product 流程 |
+| 项目介绍与快速开始 | `README.md` | 不得保存当前状态数字、完整角色规则或停止门禁 |
 
 历史原因、事故复盘与 superseded 规则只能进入 `knowledge/decisions.md`、`knowledge/history/` 或带日期/决策号的历史回执，不得作为当前规范正文。
+
+参考文档只能说明自身主题并链接上表权威，不得复制规范正文；发现冲突时先修正参考文档，不得以其扩权或覆盖权威。

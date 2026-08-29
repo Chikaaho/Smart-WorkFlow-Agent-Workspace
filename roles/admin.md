@@ -63,7 +63,7 @@
 | 两端工程配置 | `Smart-WorkFlow/AGENTS.md`、`Smart-WorkFlow-Web/AGENTS.md`、两端 `docs/governance/engineering-constitution.md`、构建/工具链/CI/运行时配置文件 | 工程宪法与配置 |
 | Governance Implementation | `.claude/hooks/`、`.codex/hooks/`、`.codex/governance/` | 单一机器契约、公共 Validator、治理契约测试与薄 Harness 适配；不得承载业务逻辑 |
 | 治理状态结构 | `knowledge/current-status.md`、`knowledge/history/` | 仅可做当前/历史物理分离和引用迁移，不得改业务值或作状态裁决 |
-| 配套同步 | 引用 system.md 章节号的知识索引/目录注释（如 `knowledge/model-registry.md` 的角色速查镜像） | 与上述变更配套的引用同步 |
+| 配套同步 | 引用 system.md 章节号的知识索引/目录注释（如 `knowledge/model-registry.md` 的权威路径索引） | 只同步路径与职责，不复制治理正文 |
 
 **维护原则**：
 
