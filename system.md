@@ -49,8 +49,8 @@ Owner 的自由裁量权仅属于用户本人，不自动转授给任何模型�
 
 **角色速查**：
 
-- **规划**：只读 `system.md` / `roles/planner.md` / `memory/` / `search_fallback/` / `product/`；只写 `memory/` / `search_task/` / `product/` / `todo/`；**不写** `system.md` 与 `roles/`，**不读** `knowledge/` 与两端代码；**不执行** `mvn`/`pnpm`/`java`/`node` 等状态变更命令。完整定义见 `roles/planner.md`。
-- **执行**：可读全部目录（含 `knowledge/`、两端代码）；可写 `knowledge/`、`search_fallback/`、`product/`（回执）、两端代码；可执行编译/测试命令（限内存，见 §0.3）。完整定义见 `roles/executor.md`。
+- **规划**：只读 `system.md` / `roles/planner.md` / `memory/` / `search_fallback/` / `product/` / `todo/`；只写 `memory/` / `search_task/` / `product/` / `todo/`；**不写** `system.md` 与 `roles/`，**不读** `knowledge/` 与两端代码；**不执行** `mvn`/`pnpm`/`java`/`node` 等状态变更命令。完整定义见 `roles/planner.md`。
+- **执行**：可读全部目录（含 `knowledge/`、`memory/`、`todo/` 与两端代码）；可写 `knowledge/`、`search_fallback/`、`product/receipts/`、两端代码；仅在阶段三唯一终态值清单或执行方向明确授权时写 `memory/` 与 `todo/requirement-pool.md`；可执行编译/测试命令（限内存，见 §0.3）。完整定义见 `roles/executor.md`。
 - **管理员**：可读取工作区知识仓、后端仓和前端仓的全部非代码内容；可写 `system.md`、架构文档及两端仓库的宪法与工程配置文件；可在三仓执行与管理员任务相关的 Git 操作；不读写业务源码、测试源码或其他实现代码，不写功能状态文件，不执行编译、测试或部署等业务状态变更命令。完整定义见 `roles/admin.md`。
 
 ### 0.3 三角色工作机制
@@ -81,13 +81,15 @@ Owner 的自由裁量权仅属于用户本人，不自动转授给任何模型�
 
 工作区信息按**会话角色**分层：
 
-| 层 | 对应目录 | 规划角色 | 执行角色 | 说明 |
-|----|----------|:---:|:---:|------|
-| **压缩记忆** | `memory/` | ✅ 全部读取 | ✅ 读取 | ✅ 按规则更新 | 从 `knowledge/` 压缩而来的摘要，是规划角色的主要信息来源；执行角色在探索后压缩更新 |
-| **搜索任务** | `search_task/` | ✅ 读取已有任务 | ✅ 写入新任务 | 规划角色需要探索代码或完整知识库时的委派机制 |
-| **搜索回执** | `search_fallback/` | ✅ 全部读取 | ✅ 写入 | ❌ 禁止规划角色写入 | 执行角色探索后写入的压缩结论 |
-| **原始知识** | `knowledge/` | ❌ 不可读 | ✅ 读取/维护 | 完整知识库，执行角色维护 |
-| **代码项目** | `Smart-WorkFlow/`、`Smart-WorkFlow-Web/` | ❌ 不可读 | ✅ 读取/修改 | 两端代码，执行角色读写 |
+| 层 | 对应目录 | Planner 读 | Planner 写 | Executor 读 | Executor 写 | 说明 |
+|----|----------|:---:|:---:|:---:|:---:|------|
+| **压缩记忆** | `memory/` | ✅ | ✅ | ✅ | 条件允许 | Executor 仅按阶段三清单或执行方向授权压缩；不是第二状态源 |
+| **搜索任务** | `search_task/` | ✅ | ✅ | ✅ | ❌ | Planner 下发，Executor 读取 |
+| **搜索回执** | `search_fallback/` | ✅ | ❌ | ✅ | ✅ | Executor 探索后写入压缩结论 |
+| **原始知识** | `knowledge/` | ❌ | ❌ | ✅ | ✅ | 完整知识库，由 Executor 维护 |
+| **产品文档** | `product/` | ✅ | 方向/审查 | ✅ | 仅 `receipts/` | 方向只由 Planner 流转；回执历史追加保留 |
+| **待办清单** | `todo/` | ✅ | ✅ | ✅ | 条件允许 | Executor 仅按清单或方向授权写 `requirement-pool.md` |
+| **代码项目** | `Smart-WorkFlow/`、`Smart-WorkFlow-Web/` | ❌ | ❌ | ✅ | ✅ | 两端业务实现仅由 Executor 读写 |
 
 **当前会话角色（硬约束）**：
 
@@ -95,16 +97,16 @@ Owner 的自由裁量权仅属于用户本人，不自动转授给任何模型�
 
 **角色规则（硬约束）**：
 
-- **规划角色**：只能读取 `system.md` + `roles/planner.md` + `memory/` + `search_fallback/` + `product/`；只能写入 `memory/` + `search_task/` + `product/` + `todo/`。`system.md` 与 `roles/` 只允许管理员角色维护；规划角色发现治理问题时只能向用户报告并转管理员任务。规划角色**绝对不能直接读取** `knowledge/`（完整知识库）、`Smart-WorkFlow/` 和 `Smart-WorkFlow-Web/` 的代码（含 `node_modules/`）。
-- **执行角色**：可读取全部目录（`knowledge/`、`product/`、两端代码），可自行拆分探索任务、启动 Sub Agent、并行探索、汇总原始材料；实现任务和规划 `PASSED` 后的阶段三同步任务分别闭环到机器契约允许的对应终态，方向归档与最终确认仍由规划角色完成。当执行角色被规划角色委派探索时（通过 search_task 机制），探索任务只产出 `search_fallback/`，不产出需求方向——最终方向由规划角色生成。
+- **规划角色**：只能读取 `system.md` + `roles/planner.md` + `memory/` + `search_fallback/` + `product/` + `todo/`；只能写入 `memory/` + `search_task/` + `product/` + `todo/`。`system.md` 与 `roles/` 只允许管理员角色维护；规划角色发现治理问题时只能向用户报告并转管理员任务。规划角色**绝对不能直接读取** `knowledge/`（完整知识库）、`Smart-WorkFlow/` 和 `Smart-WorkFlow-Web/` 的代码（含 `node_modules/`）。
+- **执行角色**：可读取全部目录（`knowledge/`、`memory/`、`product/`、`todo/`、两端代码），可自行拆分探索任务、启动 Sub Agent、并行探索、汇总原始材料；常规写入限 `knowledge/`、`search_fallback/`、`product/*/receipts/` 与授权的两端实现，只有阶段三唯一终态值清单或执行方向明确列出时才可写 `memory/` 与 `todo/requirement-pool.md`。实现任务和规划 `PASSED` 后的阶段三同步任务分别闭环到机器契约允许的对应终态，方向归档与最终确认仍由规划角色完成。当执行角色被规划角色委派探索时，探索任务只产出 `search_fallback/`，不产出需求方向。
 - **管理员角色**：可读取工作区知识仓、后端仓和前端仓的全部非代码内容，包括 `memory/`、`knowledge/`、`product/`、`search_task/`、`search_fallback/`、`todo/`、文档和工程配置；可写 `system.md`、架构文档及两端仓库的宪法和工程配置；可执行与管理员任务相关的 Git 操作；不得读取业务源码、测试源码或其他实现代码，不做规划/执行的任何业务操作。
 
 **信息分层铁律（D85，2026-08-16 用户定）**：
 
-1. **`knowledge/` = 唯一完整权威信息源**：已知问题（known-issues 注册表 I 编号）、功能追踪（features/）、完整状态（current-status/session-handoff）、架构、决策（D1-D46 详情 + D47+ 经 D84 注记可追溯）全部以 knowledge 为准。任何状态变更必须首先落 knowledge。
+1. **`knowledge/` = 唯一完整持久状态源**：已知问题、功能追踪、完整状态、架构与决策均以 knowledge 为准。`knowledge-first` 只约束 Executor 在一次持久状态同步任务内部的写入顺序，不授予 Planner 读写 knowledge。Planner 的功能级 `PASSED` 裁决先写入 `product/*/receipts/` 的规划审查记录，并可同步 `memory/` 最小摘要；随后由已获授权的 Executor 按阶段三唯一终态值清单一次性把 knowledge 落为指定值。
 2. **`memory/` = 最少信息摘要**：能通过最少信息知晓全局状态（进度锚点/活跃决策/未关闭问题/硬约束/交接指针），只作规划角色的快速入口，**不承载 knowledge 中没有的完整信息**。
 3. **不一致时以 knowledge 为准**，发现 memory 与 knowledge 冲突立即修正 memory（摘要口径），不允许反向。
-4. **执行角色触碰任何状态文件时必须同步更新 knowledge 全量对应文件**（§3.3 第10项），禁止"只更新文件首部/只更新 memory"造成 knowledge 中下部残留（D83 曾发现 current-status/session-handoff 顶部新、中下部旧的 17 处欠账）。
+4. **执行角色触碰任何状态文件时必须先同步 knowledge 全量对应文件**（§3.3 第10项），再压缩 memory；禁止只更新文件首部或只更新 memory。
 
 ### 0.4.1 探索任务通道（search_task / search_fallback）
 
@@ -147,7 +149,7 @@ Owner 的自由裁量权仅属于用户本人，不自动转授给任何模型�
 
 `README.md`、`knowledge/development-workflow.md`、`knowledge/model-registry.md`、`knowledge/features/` 及 `product/` 中的内容均不是角色、授权、执行终态或当前状态的规范入口。它们与本文件、`roles/` 或工程宪法冲突时，以当前规范入口为准；不得从旧文档推导二次确认、模型角色、旧 Step 协议或旧终态。
 
-**当前状态唯一来源与终态机器契约（硬约束 🔒）**：`knowledge/current-status.md` 是当前功能状态、计数、活动功能和唯一下一动作的唯一权威来源，并且只保存一份最新快照；旧快照与过程历史追加归档到 `knowledge/history/`。`memory/` 保存 Planner 可直接决策的最小摘要（含权威路径和同步点），不是第二份权威状态；冲突时由有权限角色按 `knowledge/current-status.md` 修正摘要。执行终态的唯一机器契约是 `.codex/governance/terminal-contract.json`；唯一公共 Validator 是 `.codex/governance/validate-terminal.sh`。角色文档、回执模板和 Hook 只能引用该契约与 Validator，不得各自扩展合法终态、字段 schema 或校验分支。执行回执结束时必须追加结构化行 `SWF_TERMINAL {JSON}`，Hook 只提取该行、调用公共 Validator 并透传统一诊断，不从自然语言推断角色、终态或未完成项。
+**当前状态唯一来源与终态机器契约（硬约束 🔒）**：`knowledge/current-status.md` 是当前功能状态、计数、活动功能和唯一下一动作的唯一持久权威来源，并且只保存一份最新快照；旧快照与过程历史追加归档到 `knowledge/history/`。`memory/` 保存 Planner 可直接决策的最小摘要（含权威路径和同步点），不是第二份权威状态；发现冲突时 Planner 必须通过执行层核对 `knowledge/current-status.md`，再按权威结果修正摘要。执行终态的唯一机器契约是 `.codex/governance/terminal-contract.json`；唯一公共 Validator 是 `.codex/governance/validate-terminal.sh`。角色文档、回执模板和 Hook 只能引用该契约与 Validator，不得各自扩展合法终态、字段 schema 或校验分支。Executor 最后回复必须有且只有一条严格以 `SWF_TERMINAL ` 开头的物理末行；Hook 只校验 marker 数量/位置、提取 JSON、调用公共 Validator，并对首次非法终态阻断一次、重试仍非法时停止自动续跑。Claude/Codex 仅可做 Harness 输出字段映射，不得改变该语义。
 
 **Governance Implementation（硬约束 🔒）**：`.claude/hooks/`、`.codex/hooks/`、公共 Validator、终态契约及治理契约测试统一属于 Governance Implementation，由管理员维护。该权限只覆盖治理门禁实现及其静态/契约验证，不授予管理员读取或修改业务源码、业务测试、迁移、业务实现或裁决业务状态的权限；Hook 不得承载业务逻辑。定义与允许/禁止清单唯一见 `roles/admin.md` §2—§4。
 
@@ -192,7 +194,7 @@ Claude 的 `.claude/settings*.json`、Codex 的权限配置及其他 Harness 工
 
 1. 阅读当前压缩记忆（优先读取 `memory/state.md` 和 `memory/handoff.md`；如信息不足，创建 `search_task/` 委派探索）
 2. 阅读与需求相关的代码和配置（通过 `search_task/` 委派执行角色探索，按 §0.4.1 执行；规划角色不得自行读取代码或 `knowledge/`）
-3. 确认当前项目状态（从知识库和代码双重验证）
+3. 确认当前项目状态（以 `memory/` 摘要决策；摘要不足或冲突时下发 `search_task/`，由执行层核对 knowledge/代码后回传）
 4. 明确本轮唯一功能（如果是多个需求，拆分队列，本轮只取一个）
 5. 明确功能目标（一句话描述）
 6. 明确非目标（明确排除什么，防止范围蔓延）
@@ -227,7 +229,7 @@ Claude 的 `.claude/settings*.json`、Codex 的权限配置及其他 Harness 工
 
 ### 3.3 阶段三：功能收尾、知识沉淀和交接
 
-**所有 Step 均 PASSED 后才能进入此阶段**。
+**规划角色完成方向级功能验收并裁决 `PASSED` 后才能进入此阶段**。Executor 内部 Step 只属于其自主闭环，不由 Planner 逐项裁决。
 
 必须完成：
 
@@ -297,28 +299,24 @@ PASSED      — 所有 Step 均已通过
 COMPLETED   — 阶段三已完成，知识库和交接已更新
 ```
 
-### 5.2 Step 状态
+### 5.2 Executor 内部 Step 状态
 
-**本轮调整说明**：Step 拆分和 Step 状态机由**执行角色**在自主闭环中管理（`roles/executor.md` §4），规划角色不逐 Step 审查、不维护此状态机。以下状态定义保留供执行角色参考使用：
+Step 拆分和状态机只由**执行角色**在自主闭环中管理（`roles/executor.md` §4），不进入 Planner 审查、product 方向流转或功能状态裁决：
 
 ```
-PENDING                 — 尚未开始
-READY                   — 方案已生成，可交付执行
-EXECUTING               — 方案已交给下级代理
-WAITING_EXECUTION_RECEIPT — 等待用户贴回执行回执
-REVIEWING_EXECUTION     — 根代理正在审查执行回执
-WAITING_TEST_RECEIPT    — 等待用户贴回测试回执
-VERIFYING               — 根代理正在验收测试回执
-PASSED                  — 通过验收
-FAILED                  — 测试未通过，需修正
-BLOCKED                 — 外部原因阻塞，无法继续
+PENDING     — 尚未开始
+IN_PROGRESS — 正在实现、修复或验证
+VERIFYING   — Executor 正在自验
+PASSED      — Executor 自验通过；不等于功能级 PASSED
+FAILED      — 自验未通过，继续在授权范围内修复
+BLOCKED     — 真实外部阻塞，无法继续
 ```
 
 ### 5.3 状态变化必须有依据
 
 - 不得仅凭执行代理声称"已完成"就标记 PASSED
 - PASSED 至少需要：修改文件证据 + 执行命令证据 + 测试命令证据 + 测试结果证据 + 与验收标准逐项对照结果
-- 每次状态变化必须在知识库中留下记录
+- Planner 的功能级 `PASSED` 裁决记录在 product 规划审查回执；Executor 的持久状态同步按 §0.4 信息分层铁律先写 knowledge，再压缩 memory
 
 ### 5.4 状态与角色的解耦
 
@@ -349,7 +347,7 @@ product/<feature>/
 
 ## 7. 回执规范 → 已迁移
 
-- 执行回执、测试回执格式（§7.1-§7.2）→ `roles/executor.md` §8
+- 功能级 completion receipt 与追加补证（§7.1-§7.2）→ `roles/executor.md` §8
 - 回执审查规则（§7.3）→ `roles/planner.md` §7
 
 ## 8. 记忆管理 → 已迁移 `roles/planner.md` §8
@@ -404,10 +402,11 @@ knowledge/                 — 完整知识库（执行角色专用，规划角�
 product/                   — 需求方向与回执仓库（按功能组织）
   └── <feature-name>/
       ├── ready/           — 待执行的需求方向文档
-      ├── receipts/        — 执行回执和测试回执（执行角色写入）
+      ├── receipts/        — completion/补证/审查/终态同步回执（历史追加保留）
       └── passed/          — 已通过验收的需求方向文档（归档）
 todo/                      — 暂不修复清单
-  └── README.md
+  ├── README.md
+  └── requirement-pool.md  — 需求缺口池；Executor 仅按终态清单/方向授权机械同步
 Smart-WorkFlow/            — 后端代码（规划角色不读，执行角色可读）
 Smart-WorkFlow-Web/        — 前端代码（规划角色不读，执行角色可读）
 ```
@@ -415,7 +414,7 @@ Smart-WorkFlow-Web/        — 前端代码（规划角色不读，执行角色�
 **product/ 规则**：
 
 - `ready/` 中存放需求方向文档（目标/非目标/影响范围/风险/待确认问题），交付执行角色后由执行角色自行拆分 Step、设计执行/测试方案并自主完成
-- `receipts/` 中的回执由执行角色在完成整个功能（或其自行拆分的阶段性节点）后写入（硬约束，见 `knowledge/shared-constraints.md` §2.4），前后端共用同一目录。规划角色以回执文件为最终验收依据
+- `receipts/` 中由执行角色写功能级 completion receipt；补证、修正与终态同步使用新文件追加，历史回执永远保留在 `receipts/`，不得移动到 `passed/`
 - `passed/` 中的需求方向文档为已通过最终验收的归档文档，不可重复下发
 - 需求方向确认通过最终验收后，将对应文档从 `ready/` 移至 `passed/`
 - 已有的历史 `step-N-*.md` 文件（历史遗留，含完整结构）保留不动作为存档，不代表新功能仍需此形式产出；新功能一律先产出需求方向文档
@@ -425,7 +424,8 @@ Smart-WorkFlow-Web/        — 前端代码（规划角色不读，执行角色�
 
 ```
 todo/
-└── README.md      — 暂不修复问题索引（决策依据 + 对应 knowledge/known-issues.md 编号）
+├── README.md             — 暂不修复问题索引（决策依据 + 对应 knowledge/known-issues.md 编号）
+└── requirement-pool.md   — 功能缺口需求池（Planner 维护；Executor 仅按授权清单同步）
 ```
 
 - 收录**已有明确"当前不投入资源修复"决策**的问题
@@ -471,20 +471,9 @@ contracts/ → foundation/ → security/ → adapters/ → modules/
 - 防腐层隔离：form-create / bpmn-js / vue-flow 原生 API 不泄漏到业务层
 - 安全单出口：单一 axios 实例、v-html 仅 SafeHtml、表达式求值仅 safe-eval
 
-### 11.6 模块完成度
+### 11.6 当前状态导航
 
-| 模块 | 后端 | 前端 |
-|--------|---------|----------|
-| Auth/Security | ✅ Complete | ✅ Connected |
-| System (RBAC/Dict) | ✅ Core | ✅ CRUD + DictSelect/DictTag |
-| Form Engine | ✅ Done | ✅ Designer + Renderer |
-| BPM/Workflow | 🟦 In dev | 🔲 Placeholder |
-| Notifications | ✅ Basic | 🔲 Placeholder |
-| AI Agent | ⬜ Skeleton | 🔲 Placeholder |
-| IoT | ⬜ Skeleton | 🔲 Placeholder |
-| Knowledge | ⬜ Skeleton | N/A |
-| OpenAPI | ⬜ Skeleton | 🔲 Placeholder |
-| Storage/Job | ⬜ Skeleton | N/A |
+本宪法不固化模块完成度、功能数或测试基线。当前能力与唯一下一动作只读取 `knowledge/current-status.md`；正式功能及明细范围读取 `Smart-WorkFlow/功能清单.md`。
 
 ### 11.7 关键工程约束（速查）
 
@@ -550,7 +539,7 @@ contracts/ → foundation/ → security/ → adapters/ → modules/
 | §4 | 单功能会话机制 | 本文件 §4（未迁移） |
 | §5 | 状态机 | 本文件 §5（未迁移） |
 | §6 | Step 方案标准结构 | `roles/executor.md` §7 |
-| §7.1-§7.2 | 执行/测试回执格式 | `roles/executor.md` §8 |
+| §7.1-§7.2 | 功能级 completion receipt 与追加补证 | `roles/executor.md` §8 |
 | §7.3 | 回执审查规则 | `roles/planner.md` §7 |
 | §8 | 记忆管理 | `roles/planner.md` §8 |
 | §9 | 功能交接机制 | `roles/planner.md` §9 |

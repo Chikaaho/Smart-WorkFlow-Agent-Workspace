@@ -4,14 +4,17 @@ root_dir=$(CDPATH= cd -- "$(dirname "$0")/../.." && pwd)
 contract="$root_dir/.codex/governance/terminal-contract.json"
 payload=$(cat)
 
-if ! printf '%s' "$payload" | /usr/bin/jq -e . >/dev/null 2>&1; then
+if ! payload_type=$(printf '%s' "$payload" | /usr/bin/jq -r 'type' 2>/dev/null); then
   printf '%s\n' 'terminal: payload: invalid JSON' >&2; exit 2
+fi
+
+if [ "$payload_type" != "object" ]; then
+  printf '%s\n' 'terminal: payload: expected object' >&2; exit 1
 fi
 
 diagnostics=$(printf '%s' "$payload" | /usr/bin/jq -r --slurpfile c "$contract" '
   def nonblank: type == "string" and test("\\S");
   . as $o | $c[0] as $s | [
-    (if type != "object" or type == "array" then "payload: expected object" else empty end),
     ($s.required[] as $k | if ($o|has($k)|not) then "\($k): missing required field" else empty end),
     (($o|keys_unsorted[]) as $k | if ($s.properties|has($k)|not) then "\($k): unknown field" else empty end),
     (if ($o|has("schema")) and ($o.schema|type) != "string" then "schema: expected string" elif ($o|has("schema")) and $o.schema != $s.properties.schema.const then "schema: unsupported value" else empty end),
@@ -30,6 +33,10 @@ diagnostics=$(printf '%s' "$payload" | /usr/bin/jq -r --slurpfile c "$contract" 
      else empty end),
     (if ($o.state? | type) == "string" and ($s.states|has($o.state)) then
        ($s.states[$o.state].required[] as $k | if ($o|has($k)|not) then "\($k): required for state \($o.state)" else empty end),
+       (($o|keys_unsorted[]) as $k |
+         if ($s.states[$o.state].forbidden|index($k)) != null then "\($k): forbidden for state \($o.state)"
+         elif ($s.states[$o.state].allowed|index($k)) == null then "\($k): not allowed for state \($o.state)"
+         else empty end),
        (if ($s.states[$o.state].allowedFeatureStatus|length) > 0 and (($s.states[$o.state].allowedFeatureStatus|index($o.feature_status)) == null) then "feature_status: incompatible with state \($o.state)" else empty end)
      else empty end)
   ] | unique | .[]')

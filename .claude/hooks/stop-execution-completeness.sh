@@ -1,6 +1,6 @@
 #!/bin/sh
-
-cd "$(dirname "$0")/../.."
+set -u
+root_dir=$(CDPATH= cd -- "$(dirname "$0")/../.." && pwd)
 input=$(cat)
 active_role=$(printf '%s' "$input" | /usr/bin/jq -r '.active_role // ""')
 [ "$active_role" = "executor" ] || exit 0
@@ -12,10 +12,27 @@ if [ "$background_count" -gt 0 ]; then
   exit 0
 fi
 
-message=$(printf '%s' "$input" | /usr/bin/jq -r '.last_assistant_message // ""')
-terminal_json=$(printf '%s' "$message" | awk -v marker='SWF_TERMINAL ' 'index($0, marker) { sub("^.*" marker, ""); print; exit }')
-diagnostic=$(printf '%s' "$terminal_json" | sh .codex/governance/validate-terminal.sh 2>&1)
-if [ "$?" -eq 0 ]; then
+set +e
+terminal_json=$(printf '%s' "$input" | /usr/bin/jq -j '.last_assistant_message // ""' | awk '
+  BEGIN { marker = "SWF_TERMINAL "; count = 0; marker_line = 0 }
+  index($0, marker) == 1 { count++; marker_line = NR; payload = substr($0, length(marker) + 1) }
+  { last_line = NR }
+  END {
+    if (count == 0) { print "terminal-message: marker: missing" > "/dev/stderr"; exit 1 }
+    if (count != 1) { print "terminal-message: marker: expected exactly one" > "/dev/stderr"; exit 1 }
+    if (marker_line != last_line) { print "terminal-message: marker: must be the physical last line" > "/dev/stderr"; exit 1 }
+    print payload
+  }' 2>&1)
+extract_status=$?
+if [ "$extract_status" -eq 0 ]; then
+  diagnostic=$(printf '%s' "$terminal_json" | sh "$root_dir/.codex/governance/validate-terminal.sh" 2>&1)
+  validate_status=$?
+else
+  diagnostic=$terminal_json
+  validate_status=$extract_status
+fi
+set -e
+if [ "$validate_status" -eq 0 ]; then
   exit 0
 fi
 
