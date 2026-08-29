@@ -1,152 +1,175 @@
-# Smart-WorkFlow Knowledge Base
+# Smart-WorkFlow · 工作区根
 
 > Smart-WorkFlow 低代码 OA + AI Agent 平台的**规划与知识管理中心**。
-> 本仓库负责宪法、角色入口、需求方向、回执归档与跨项目知识管理；业务实现位于两个 executor sublayer。
-> 项目用户是 **Owner**，对项目目标、优先级、范围、治理规则、角色授权、验收与发布拥有最终自由裁量权；规范定义见 `system.md` §0.0。
+> 本仓库承载三类会话角色（规划 / 执行 / 管理员）的统一入口、需求方向与回执归档、压缩记忆与完整知识库；业务实现位于两个 executor sublayer。
+> 项目用户是 **Owner**，对项目目标、优先级、范围、治理规则、角色授权、验收与发布拥有最终自由裁量权；规范定义见 [`system.md`](system.md) §0.0。
 
 ---
 
-## 工作区演变轨迹
+## 项目定位
 
-1. **Web 规划 + 双仓执行**：最初使用 Claude Web 负责方案，后端与前端两个代码仓库分别使用 Claude Code 执行。
-2. **引入 `knowledge/`**：Claude 账号被封后，在两个代码仓库的同级新建知识工作区，用 `knowledge/` 持续维护跨仓文档。
-3. **引入 `product/`**：为解决方案和执行结果在会话间反复复制粘贴的问题，增加 `product/` 承接需求方向、执行回执与验收归档。
-4. **上提统一执行根目录**：为避免在三个 Claude Code 会话间来回切换，将执行入口上提一层，使根工作区可统一协调知识层、后端与前端。
-5. **区分 `planning` / `execute`**：上下文快速膨胀后，将需求方向与实现执行分离，形成一个规划角色和一个执行角色。
-6. **压缩规划上下文**：规划需要高级模型，但直接读取代码和完整 `knowledge/` 的输入仍过大，因此新增 `memory/`、`search_task/` + `search_fallback/` 与 `todo/`，用压缩记忆、委派探索和待办索引缩小规划可读范围。
-7. **新增 `admin`**：增加仅负责宪法、架构文档、工程配置与仓库治理的管理员角色，防止规划和执行角色越权。
-8. **解耦 Harness**：将唯一行为宪法从 `CLAUDE.md` 迁移为 `system.md`，Claude Code、Codex 及其他 Harness 的入口文件只负责指向 `system.md`。
-9. **固化每轮收尾**：优化规划步骤，要求每轮任务收尾时同步完整 `knowledge/` 并压缩 `memory/`，使权威信息与下轮最小上下文保持一致。
-10. **拆分角色规范**：随着 `system.md` 日渐膨胀，新增 `roles/`；`system.md` 收缩为公共规范门禁和角色规范索引，各角色认领后再读取对应定义。
+Smart-WorkFlow 是一个**低代码 OA + AI Agent 平台**：
+
+- **低代码表单引擎**：表单设计器拖拽建模，提交数据落动态宽表（每表单一张物理表），支持引用与子表关系。
+- **流程自动化（BPM）**：BPMN 流程定义、表单绑定、发起/待办/审批/实例监控，端到端审批流转。
+- **AI Agent 与 IoT**：Agent 图编排、模型与工具管理已立项；IoT 已交付最小腾讯云接入（详见后端 README 的模块边界）。
+- **统一治理**：三仓以工作区根为唯一宪法入口，规划/执行/管理员三角色分权协作。
+
+当前已通过 **第一轮最小闭环验收审计**：能在真实页面上完成用户与组织配置、角色授权、表单及流程管理、表单提交、流程实例创建、待办审批和结果回看（详见下方「当前状态快照」）。
 
 ---
 
-## 快速开始（换机即用）
+## 三仓关系
+
+| 仓库 | 定位 | Git URL |
+|------|------|---------|
+| **Smart-WorkFlow-Knowledge**（本仓） | 规划与知识管理：宪法、角色、需求方向、回执、压缩记忆、完整知识库 | `git@github.com:Chikaaho/Smart-WorkFlow-Knowledge.git` |
+| **Smart-WorkFlow** | 后端 API 服务（Java 21 模块化单体），见其 [`README`](Smart-WorkFlow/README.md) | `git@github.com:Chikaaho/Smart-WorkFlow.git` |
+| **Smart-WorkFlow-Web** | 前端 SPA（Vue 3 + TypeScript），见其 [`README`](Smart-WorkFlow-Web/README.md) | `git@github.com:Chikaaho/Smart-WorkFlow-Web.git` |
+
+```
+Smart-WorkFlow-Knowledge/   ← 规划层（宪法 / 方向 / 回执 / 知识库 / 记忆）
+├── Smart-WorkFlow/         ← 后端代码（Java 21 + Spring Boot 3.4，:8080/api）
+└── Smart-WorkFlow-Web/     ← 前端代码（Vue 3 + TS + Vite，:5173）
+```
+
+- 从工作区根目录可跨三层执行；进入子仓则受该仓边界约束（见 `system.md` §0.3）。
+- 本仓内嵌的 `Smart-WorkFlow/`、`Smart-WorkFlow-Web/` 是各自独立的 Git 仓库（各自有 `.git`），按需单独克隆或复用本地路径。
+
+---
+
+## 快速开始
 
 ```bash
-# 1. 克隆知识库
+# 1. 克隆知识仓
 git clone git@github.com:Chikaaho/Smart-WorkFlow-Knowledge.git
 cd Smart-WorkFlow-Knowledge
 
-# 2. 按需拉取代码仓库
+# 2. 按需克隆代码仓（通常放置于本仓同级的 Smart-WorkFlow/ 与 Smart-WorkFlow-Web/ 目录）
 git clone git@github.com:Chikaaho/Smart-WorkFlow.git
 git clone git@github.com:Chikaaho/Smart-WorkFlow-Web.git
 ```
 
-三个仓库的关系：
+新参与者的**推荐入口顺序**：
 
-```
-Smart-WorkFlow-Knowledge/   ← 你在这里（规划层：方案/回执/知识库）
-├── Smart-WorkFlow/         ← 后端代码（Java 21 + Spring Boot 3.4）
-└── Smart-WorkFlow-Web/     ← 前端代码（Vue 3 + TypeScript + Vite）
-```
-
----
-
-## 仓库链接
-
-| 仓库 | 用途 | Git URL |
-|------|------|---------|
-| **Smart-WorkFlow-Knowledge** | 规划与知识管理（本仓库） | `git@github.com:Chikaaho/Smart-WorkFlow-Knowledge.git` |
-| **Smart-WorkFlow** | 后端 API 服务 | `git@github.com:Chikaaho/Smart-WorkFlow.git` |
-| **Smart-WorkFlow-Web** | 前端 SPA | `git@github.com:Chikaaho/Smart-WorkFlow-Web.git` |
+1. 读本仓 [`system.md`](system.md) 了解三种会话角色与治理入口（只读导航，规则正文在 `system.md` 与 `roles/`）。
+2. 读 [`memory/`](memory/README.md) 了解当前状态摘要，[`knowledge/current-status.md`](knowledge/current-status.md) 为当前状态唯一权威。
+3. 读后端 [`Smart-WorkFlow/README.md`](Smart-WorkFlow/README.md) 或前端 [`Smart-WorkFlow-Web/README.md`](Smart-WorkFlow-Web/README.md) 进入对应开发仓。
 
 ---
 
 ## 目录结构
 
 ```
-Smart-WorkFlow-Knowledge/
-├── system.md                  — 工作区唯一行为宪法（角色/权限/工作流入口）
-├── roles/                     — 规划 / 执行 / 管理员角色定义
-├── memory/                    — 压缩记忆（规划角色读/写，每次会话关键节点更新）
-│   ├── README.md              — 索引 + 阅读顺序
-│   ├── state.md               — 当前状态（功能/Step/测试基线）
-│   ├── handoff.md             — 最新会话交接
-│   ├── features.md            — 功能索引表
-│   ├── decisions.md           — 最近 10 条活跃设计决策
-│   ├── issues.md              — 未关闭问题
-│   ├── constraints.md         — 硬约束速查
-│   └── architecture.md        — 架构高层视图
-├── knowledge/                 — 完整知识库（执行角色探索用）
-│   ├── current-status.md      — 项目整体状态（唯一可信来源）
-│   ├── decisions.md           — 决策档案（D1-D46 历史详情；D47+ 活跃决策见 memory/decisions.md）
-│   ├── architecture.md        — 完整架构描述
-│   ├── shared-constraints.md  — 跨项目共享约束
-│   ├── known-issues.md        — 已知问题完整记录
-│   ├── session-handoff.md     — 跨会话交接详情
-│   ├── model-registry.md      — 角色注册表
-│   └── features/              — 功能追踪文件（每功能一个）
-├── product/                   — 执行方案仓库（原始记忆）
+knowledge-root/
+├── system.md               — 工作区唯一行为宪法（角色 / 权限 / 工作流 / Git 治理入口）
+├── roles/                  — 规划 / 执行 / 管理员角色定义（管理员角色维护，其他角色只读）
+├── memory/                 — 压缩记忆（规划角色读/写，从 knowledge 压缩而来）
+│   ├── README.md           — 索引 + 阅读顺序
+│   ├── state.md            — 当前状态摘要
+│   ├── handoff.md          — 会话交接摘要
+│   ├── features.md         — 功能摘要
+│   ├── decisions.md        — 近期有效决策摘要
+│   ├── issues.md           — 未关闭项摘要
+│   ├── constraints.md      — 必要硬约束摘要
+│   └── architecture.md     — 架构摘要
+├── knowledge/              — 完整知识库（执行角色读写；规划角色只读摘要层）
+│   ├── current-status.md   — 项目当前状态（唯一权威，最新快照）
+│   ├── session-handoff.md  — 跨会话交接详情
+│   ├── known-issues.md     — 已知问题注册表（I 编号）
+│   ├── decisions.md        — 决策档案（D 编号）
+│   ├── architecture.md     — 完整架构描述
+│   ├── shared-constraints.md — 跨项目共享约束
+│   ├── features/           — 功能追踪文件（每功能一个）
+│   └── history/            — 历史快照归档（只追加，不回写为当前入口）
+├── product/                — 需求方向与回执仓库（按功能组织）
 │   └── <feature-name>/
-│       ├── ready/             — 待执行方案
-│       ├── passed/            — 已通过归档
-│       └── receipts/          — 执行/测试回执
-├── search_task/               — 探索任务委派
-├── search_fallback/           — 探索结果回传
-├── todo/                      — 暂不修复清单
-├── Smart-WorkFlow/            — 后端代码（git submodule 或独立 clone）
-└── Smart-WorkFlow-Web/        — 前端代码（git submodule 或独立 clone）
+│       ├── ready/          — 待执行或待复核的方向文档
+│       ├── receipts/       — 执行 / 测试 / 审查 / 终态同步回执（追加保留）
+│       └── passed/         — 已由规划角色确认通过并归档的方向文档
+├── search_task/            — 探索任务委派（规划 → 执行）
+├── search_fallback/        — 探索结果回传（执行 → 规划）
+├── todo/                   — 暂不修复清单（决策依据 + 问题编号索引）
+├── Smart-WorkFlow/         — 后端代码（独立 Git 仓库）
+└── Smart-WorkFlow-Web/     — 前端代码（独立 Git 仓库）
 ```
 
 ---
 
-## 架构总览
+## 核心架构
 
 ```
 Smart-WorkFlow-Web (Vue 3 + TS, :5173)
-       │ HTTP /api
+       │ HTTP /api（Vite 代理 → :8080）
        ▼
-Smart-WorkFlow (Java 21 + Spring Boot, :8080)
+Smart-WorkFlow (Java 21 + Spring Boot 3.4, :8080, context /api)
        │
        ▼
-PostgreSQL (生产) / H2 (开发)
+PostgreSQL（生产 / local）/ H2（开发内存）
 ```
 
-**后端**：4 层模块化单体 — `sw-framework` → `sw-basic` → `sw-biz` → `sw-bootstrap`，依赖自上而下不可反向。
-
-**前端**：严格分层 SPA — `contracts/` → `foundation/` → `security/` → `adapters/` → `modules/`，ESLint 强制架构边界。
-
----
-
-## 项目状态
-
-| 维度 | 状态 |
-|------|------|
-| 已完成功能 | **32** COMPLETED ✅ |
-| 后端测试 | 827 tests（0 failures） |
-| 前端测试 | 100 spec files / 988 tests（0 failures、0 skipped） |
-| Walking Skeleton | 登录→表单→审批→通知 四环闭合 ✅ |
+- **后端**：四层模块化单体——`sw-framework`（common/security）→ `sw-basic`（storage/notify/job/iot/knowledge/agent）→ `sw-biz`（system/form/bpm/openapi）→ `sw-bootstrap`（唯一启动入口），依赖自上而下不可反向。
+- **前端**：严格分层 SPA——`contracts/` → `foundation/` → `security/` → `adapters/` → `modules/`（含 `components/`/`layouts/` → `router/` → `stores/`），ESLint 强制架构边界。
+- 详细架构：后端见 `Smart-WorkFlow/docs/governance/engineering-constitution.md` 与 [`knowledge/architecture.md`](knowledge/architecture.md)；前端见 `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md`。
 
 ---
 
-## 工作流
+## 会话角色导航
 
-本工作区采用 **规划 / 执行 / 管理员** 三角色治理：
+本工作区采用 **规划 / 执行 / 管理员** 三角色治理（完整规则见 [`system.md`](system.md) 与 `roles/`，此处仅导航，不复制条款）：
 
-1. **规划角色**：读取压缩记忆、委派探索、制定需求方向、验收回执。
-2. **执行角色**：按需求方向自主拆分 Step、实现、验证并提交 `EXECUTION_SUBMITTED`；规划通过后执行授权的终态同步。
-3. **管理员角色**：维护宪法、角色定义、架构文档和工程治理配置，不参与业务规划或实现。
-4. **阶段三**：规划角色裁决 `PASSED`，执行角色按唯一终态值清单落值，规划角色全文复核后确认 `COMPLETED`。
+- **规划（Planner）**：读 `memory/` + `search_fallback/` + `product/`；写 `memory/`、`search_task/`、`product/`、`todo/`；不读代码与 `knowledge/`，不做实现。
+- **执行（Executor）**：读全部目录 + 两端代码；写 `knowledge/`、`search_fallback/`、`product/` 回执、两端代码；编译/测试命令须带 2G 内存上限且前后端互斥。
+- **管理员（Admin）**：维护 `system.md`、`roles/`、架构文档与工程配置；执行管理员相关 Git 操作；不参与业务规划/实现。
 
-本 README 只作项目说明；角色、授权、当前状态和执行终态以 `system.md`、`roles/`、知识库当前状态和对应工程宪法为准。
-
-详见 [`system.md`](system.md)。
+会话开始必须先由用户声明角色；未声明角色不执行任何任务。当前角色由每次会话开始时声明，会话内不自动变更。
 
 ---
 
-## 校验命令
+## 当前状态快照
+
+> 权威细节以 [`knowledge/current-status.md`](knowledge/current-status.md) 为准，本快照只作入口导航，不复制完整清单。
+
+- **已完成正式功能**：36
+- **功能清单**：✅32 / 🟦25 / ⬜33（10 模块、55 功能、90 明细）
+- **第一轮最小闭环验收审计**：`COMPLETED（已确认）`（现有能力验收审计，不新增正式功能）
+- **后端测试基线**：955 / Failures 0 / Errors 0 / Skipped 0（agent 346）
+- **前端测试基线**：110 spec files / 1060 tests / 0 skipped（typecheck / lint / test / build 全绿）
+- **迁移基线**：Flyway H2 V44（44 migrations）/ PostgreSQL V44（43 migrations）
+
+---
+
+## 通用校验命令
 
 ### 后端
 
 ```bash
 cd Smart-WorkFlow
-MAVEN_OPTS="-Xmx2g" mvn -q compile && MAVEN_OPTS="-Xmx2g" mvn -q test     # 校验门
+MAVEN_OPTS="-Xmx2g" mvn -q compile && MAVEN_OPTS="-Xmx2g" mvn -q test   # 校验门
 ```
 
 ### 前端
 
 ```bash
 cd Smart-WorkFlow-Web
-NODE_OPTIONS="--max-old-space-size=2048" pnpm typecheck && NODE_OPTIONS="--max-old-space-size=2048" pnpm lint && NODE_OPTIONS="--max-old-space-size=2048" pnpm test && NODE_OPTIONS="--max-old-space-size=2048" pnpm build   # 四连校验门
+NODE_OPTIONS="--max-old-space-size=2048" pnpm typecheck && \
+NODE_OPTIONS="--max-old-space-size=2048" pnpm lint && \
+NODE_OPTIONS="--max-old-space-size=2048" pnpm test && \
+NODE_OPTIONS="--max-old-space-size=2048" pnpm build                     # 四连校验门
 ```
+
+> ⚠️ 后端 `mvn` 一律带 `MAVEN_OPTS="-Xmx2g"`，前端 `pnpm`/`npm` 一律带 `NODE_OPTIONS="--max-old-space-size=2048"`；**前后端编译互斥**（编译前需检测对方是否在编译，见 `knowledge/shared-constraints.md` §9）。
+
+---
+
+## 权威文档导航
+
+| 需求 | 入口 |
+|------|------|
+| 角色 / 授权 / 工作流 / Git 治理 | [`system.md`](system.md) |
+| 规划 / 执行 / 管理员角色定义 | [`roles/`](roles/planner.md)（planner / executor / admin） |
+| 当前功能状态（唯一权威） | [`knowledge/current-status.md`](knowledge/current-status.md) |
+| 完整知识库与历史 | [`knowledge/`](knowledge/architecture.md) |
+| 需求方向与回执 | [`product/`](product/) |
+| 后端工程宪法 / 前端工程宪法 | `Smart-WorkFlow/docs/governance/engineering-constitution.md` / `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` |
+| 跨项目共享约束 | [`knowledge/shared-constraints.md`](knowledge/shared-constraints.md) |
