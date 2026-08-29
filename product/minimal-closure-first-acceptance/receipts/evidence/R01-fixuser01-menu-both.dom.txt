@@ -1,0 +1,69 @@
+URL: http://localhost:5173/lowcode/overview
+时间: 2026-08-29T04:59:19.958Z
+会话: fixuser01
+说明: A-01 修复后页面保存的角色授权在登录后真实生效
+----DOM----
+- complementary:
+  - generic: SW
+  - generic: Smart-WorkFlow
+  - menubar:
+    - menuitem "低代码" [expanded]:
+      - generic: 低代码
+      - menu:
+        - menuitem "低代码概览":
+          - text: 低代码概览
+        - menuitem "表单设计":
+          - text: 表单设计
+    - menuitem "流程引擎" [expanded]:
+      - generic: 流程引擎
+      - menu:
+        - menuitem "待办任务":
+          - text: 待办任务
+        - menuitem "已办任务"
+        - menuitem "流程监控"
+        - menuitem "流程定义":
+          - text: 流程定义
+- button "toggle sidebar":
+- navigation "Breadcrumb":
+  - link "低代码"
+  - text: /
+  - link "低代码概览"
+- button "修复用户一":
+  - generic: 修复用户一
+- main:
+  - heading "表单管理" [level=2]
+  - generic: 共 1 条记录
+  - button "新建表单":
+    - generic: 新建表单
+  - textbox "表单名称 / 标识"
+  - button "查询":
+    - generic: 查询
+  - button "重置":
+    - generic: 重置
+  - table:
+    - rowgroup:
+      - row "表单名称 业务标识 状态 更新时间 操作":
+        - columnheader "表单名称":
+          - generic: 表单名称
+        - columnheader "业务标识":
+          - generic: 业务标识
+        - columnheader "状态":
+          - generic: 状态
+        - columnheader "更新时间":
+          - generic: 更新时间
+        - columnheader "操作":
+          - generic: 操作
+  - table:
+    - rowgroup:
+      - row "修复验收申请表 修复验收申请表 已发布 2026-08-29T12:56:55.960147 编辑":
+        - cell "修复验收申请表":
+          - generic: 修复验收申请表
+        - cell "修复验收申请表":
+          - generic: 修复验收申请表
+        - cell "已发布":
+          - generic: 已发布
+        - cell "2026-08-29T12:56:55.960147":
+          - generic: 2026-08-29T12:56:55.960147
+        - cell "编辑":
+          - button "编辑":
+            - generic: 编辑

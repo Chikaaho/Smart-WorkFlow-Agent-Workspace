@@ -5,9 +5,9 @@
 >
 > 新会话启动时，优先读取本文件以恢复上下文。
 >
-> **最新状态（2026-08-29）**：form-data-import-export（P32 / M03-F04-02 表单数据导入导出）**功能级 PASSED（2026-08-29 规划最终验收）→ 阶段三终态复核 PASSED，COMPLETED 已确认（第 36 个已完成功能）**——正式基线后端 **947 / Failures 0 / Errors 0 / Skipped 0（agent 346）**、前端 **110 files / 1057 tests / 3 skipped**、Flyway **H2 链 V43（全链 43）/ PostgreSQL 链 V43（全链 42，V41 为 H2 专用，分别记录）**；清单 **✅32/🟦25/⬜33**（M03-F04-02 升✅）；P32 已核销/完成。主方向与终态同步方向均已归档 `product/form-data-import-export/passed/`。审查：`product/form-data-import-export/receipts/planning-final-review-form-data-import-export-20260829.md`（功能级）+ `receipts/planning-terminal-final-review-20260829.md`（终态复核）。
+> **最新状态（2026-08-29）**：minimal-closure-first-acceptance（第一轮最小闭环验收审计）**功能级 PASSED（2026-08-29 规划最终验收）→ 阶段三终态同步落值，COMPLETED（待规划终态复核）**——正式基线后端 **955 / Failures 0 / Errors 0 / Skipped 0（agent 346）**、前端 **110 files / 1060 tests / 0 skipped**（typecheck/lint/test/build 全绿）、Flyway **H2 链 V44（全链 44）/ PostgreSQL 链 V44（全链 43，V41 为 H2 专用，分别记录）**；清单 **✅32/🟦25/⬜33**、已完成功能 **36**（不新增）；P 编号不新增/不核销/不改变。主验收方向与修复方向已归档 `product/minimal-closure-first-acceptance/passed/`。审查：`product/minimal-closure-first-acceptance/receipts/planning-final-acceptance-minimal-closure-first-acceptance-20260829.md`（PASSED）。
 >
-> 前一功能（历史语境）：notify-batch-send（M05-F01-01 通知批量发送）COMPLETED（2026-08-27，第 34 个），基线 915/agent346、108f/1039t、V39 已被本轮取代。
+> 前一功能（历史语境）：form-data-import-export（P32 / M03-F04-02 表单数据导入导出）COMPLETED 已确认（2026-08-29，第 36 个），基线 947/agent346、110f/1057t/3skipped、Flyway H2 V43/PG V43，已被本轮验收审计基线取代。
 >
 > ⚠️ **2026-08-14 角色制上线**：本文件历史记录中的"使用模型"字段（如 deepseek-v4-pro/flash）为**当时执行事实**，仅作历史存档。当前权限按会话角色（规划/执行/管理员）划分，与模型无关（见根目录 `system.md` §0.2）。新记录不再填写模型字段。
 
@@ -15,21 +15,27 @@
 
 ## 0. 当前进行中功能（无进行中业务功能；已完成功能 36）
 
-**form-data-import-export — P32 / M03-F04-02 表单数据导入导出（功能级 PASSED 2026-08-29 + 阶段三终态复核 PASSED，COMPLETED 已确认，第36个）**
+**minimal-closure-first-acceptance — 第一轮最小闭环验收审计（现有能力验收审计，不新增正式功能；功能级 PASSED 2026-08-29 规划最终验收 → 阶段三终态同步落值，COMPLETED 待规划终态复核）**
 
-- **终态落盘（2026-08-29）**：已完成功能数 **36**；清单 **✅32/🟦25/⬜33**（M03-F04-02 升✅）；基线后端 **947/0/0/0（agent 346）**、前端 **110f/1057t/3skipped**、Flyway **H2 V43（全链 43）/ PG V43（全链 42）**；P32 已核销/完成。
-- **归档/回执**：主方向与终态同步方向均 `product/form-data-import-export/passed/`。
-- **唯一下一动作**：规划比较并选择下一唯一正式功能。
+- **终态落盘（2026-08-29）**：已完成功能数 **36**（不新增）；清单 **✅32/🟦25/⬜33**；基线后端 **955/0/0/0（agent 346）**、前端 **110f/1060t/0skipped**、Flyway **H2 V44（全链 44）/ PG V44（全链 43）**；P 编号不新增/不核销/不改变。
+- **归档/回执**：主验收方向与修复方向均 `product/minimal-closure-first-acceptance/passed/`；终态同步方向 `ready/direction-minimal-closure-first-acceptance-terminal-sync.md` 待规划终态复核后归档。
+- **唯一下一动作**：规划复核终态同步回执；通过后规划比较并选择下一唯一正式功能。
 
 ---
 
 ## 1. 最新完成功能
 
+**minimal-closure-first-acceptance — 第一轮最小闭环验收审计（现有能力验收审计，不新增正式功能，功能级 PASSED 2026-08-29 规划最终验收 → 阶段三终态同步落值，COMPLETED 待规划终态复核）**
+
+- **审计范围（全会话层锁定通过）**：用户管理、组织管理、角色管理、表单管理、流程管理、简单流程流转、数据展示与页面质量；页面不存在阻断闭环问题，成功/失败反馈与真实后端状态一致。
+- **验收**：`receipts/planning-final-acceptance-minimal-closure-first-acceptance-20260829.md`（PASSED）；证据链 R-01～R-04、R-05a/R-05b 及历史补证均归档 `product/minimal-closure-first-acceptance/receipts/`。
+- **终态值**：功能数 36（不新增）、清单 ✅32/🟦25/⬜33、基线后端 955/0/0/0（agent 346）、前端 110f/1060t/0skipped、H2 V44（全链 44）/PG V44（全链 43）；P 编号不新增/不核销/不改变。
+
 **form-data-import-export — P32 / M03-F04-02 表单数据导入导出（功能级 PASSED 2026-08-29 + 阶段三终态复核 PASSED，COMPLETED 已确认，第36个）**
 
 - **功能范围**：表单数据 Excel 导入与导出——后端动态宽表数据导出/导入端点、导入校验、错误行标记；前端导入导出按钮、文件选择上传、结果展示；Flyway V42/V43 双方言迁移。
 - **验收**：`receipts/planning-final-review-form-data-import-export-20260829.md`（PASSED）+ `receipts/planning-terminal-final-review-20260829.md`（终态复核 PASSED）。
-- **终态值**：功能数 36、清单 ✅32/🟦25/⬜33、基线 947/0/0/0（agent 346）、110f/1057t/3skipped、H2 V43（全链 43）/PG V43（全链 42）；P32 已核销/完成。
+- **终态值**：功能数 36、清单 ✅32/🟦25/⬜33、基线 947/0/0/0（agent 346）、110f/1057t/3skipped、H2 V43（全链 43）/PG V43（全链 42）；P32 已核销/完成。**（历史语境：已由本轮验收审计基线段 955/1060/V44 取代当前口径）**
 
 **minimal-business-closure — Owner 最小业务闭环（功能级 PASSED 2026-08-28 + 阶段三终态同步已落盘，COMPLETED 待规划终态复核，第35个）**
 
@@ -297,14 +303,14 @@
 33. ✅ notify-template-management（P36 / M05-F02-01 消息模板管理：模板 CRUD/启停/预览/发送、`${var}` 渲染、V38 双方言迁移、R1 路由权限守卫；**后端 870 / Failures 0 / Errors 0 / Skipped 0（agent 346）、前端 104f/1025t、Flyway V38 = 38 migrations**）（**功能级 PASSED 11/11 + 阶段三终态同步落盘，COMPLETED 待规划终态复核，P36 已核销、M05-F02-01 升 ✅、清单 ✅30/🟦21/⬜39、功能数 33，第 33 个已完成功能，2026-08-26**）
 34. ✅ notify-batch-send（M05-F01-01 通知批量发送；**后端 915/0/0/0（agent 346）、前端 109f/1050t、Flyway V39/V40/V41**）（**COMPLETED 已确认，2026-08-27，第34个**）
 35. ✅ minimal-business-closure（Owner 最小业务闭环：流程主链 + 腾讯 IoT Demo 对接；**后端 915/0/0/0（agent 346）、前端 109f/1050t、Flyway H2 V41/PG V40**）（**功能级 PASSED 2026-08-28 + 阶段三终态同步已落盘，COMPLETED 待规划终态复核，第35个**）
-36. ✅ form-data-import-export（P32 / M03-F04-02 表单数据导入导出；**后端 947/0/0/0（agent 346）、前端 110f/1057t/3skipped、Flyway H2 V43/PG V43**）（**功能级 PASSED 2026-08-29 + 阶段三终态复核 PASSED，COMPLETED 已确认，第36个**）
+36. ✅ form-data-import-export（P32 / M03-F04-02 表单数据导入导出；**后端 947/0/0/0（agent 346）、前端 110f/1057t/3skipped、Flyway H2 V43/PG V43**）（**功能级 PASSED 2026-08-29 + 阶段三终态复核 PASSED，COMPLETED 已确认，第36个**；当前正式基线已由 minimal-closure-first-acceptance 验收审计更新为 955/1060/V44）
 
-- 后端：项目级 **947 tests / Failures 0 / Errors 0 / Skipped 0（sw-basic-agent 346）**——form-data-import-export 功能级 PASSED 后由阶段三终态同步登记的**正式基线**
-- 前端：**110 spec files / 1057 tests / 3 skipped** typecheck/lint/test/build 全绿（严格顺序串行，NODE_OPTIONS=2048；**正式基线**）
+- 后端：项目级 **955 tests / Failures 0 / Errors 0 / Skipped 0（sw-basic-agent 346）**——minimal-closure-first-acceptance 验收审计 R-05a 后端根全量门（12 模块 `18+6+19+85+51+23+346+210+81+27+62+27=955`）经规划最终验收锁定的**正式基线**
+- 前端：**110 spec files / 1060 tests / 0 skipped** typecheck/lint/test/build 全绿（严格顺序串行，NODE_OPTIONS=2048；**正式基线**）
 - 功能清单（规划确认+阶段三已同步）：**✅32 / 🟦25 / ⬜33 共 90 行**（M03-F04-02 ✅（P32）；历史：M05-F02-01 ✅（P36）、M05-F01-02/F01-03 ✅（D210）、M07-F02-02 ✅（D157）、M07-F04-02 ✅（D174）、M07-F02-04 ✅（D180）、M07-F03-02 ✅（D203））
-- Flyway：H2 **V43**（全链 43 migrations）/ PostgreSQL **V43**（全链 42 migrations，V41 为 H2 专用，链数不同属预期）
-- 已完成功能：**36 个规划确认**（form-data-import-export 终态复核 PASSED 为第36个，COMPLETED 已确认）
-- 进行中业务功能：无；进行中治理任务：无（当前唯一下一动作见 `knowledge/current-status.md`）
+- Flyway：H2 **V44**（全链 44 migrations）/ PostgreSQL **V44**（全链 43 migrations，V41 为 H2 专用，链数不同属预期）
+- 已完成功能：**36 个规划确认**（验收审计不新增正式功能；第 36 个为 form-data-import-export，COMPLETED 已确认）
+- 进行中业务功能：无；进行中治理任务：无（当前唯一下一动作：规划复核 minimal-closure-first-acceptance 终态同步回执，通过后选择下一唯一正式功能）
 
 ---
 
@@ -345,9 +351,9 @@
 
 ## 12. 下一轮要做什么
 
-**当前唯一下一动作：规划终态复核；复核通过后规划比较并选择下一唯一正式功能。**
+**当前唯一下一动作：规划复核 minimal-closure-first-acceptance 终态同步回执；通过后规划比较并选择下一唯一正式功能。**
 
-**form-data-import-export：阶段三终态复核 PASSED，COMPLETED 已确认（2026-08-29，第36个已完成功能）**——P32已核销、M03-F04-02升✅、清单✅32/🟦25/⬜33、功能数36；正式基线后端947/0/0/0（agent346）、前端110f/1057t/3skipped、Flyway H2 V43/PG V43；主方向与终态同步方向均归档`passed/`。
+**minimal-closure-first-acceptance：第一轮最小闭环验收审计，功能级 PASSED，阶段三终态同步落值 COMPLETED（待规划终态复核，2026-08-29）**——验收审计不新增正式功能；清单✅32/🟦25/⬜33、功能数36（不变）；正式基线后端955/0/0/0（agent346）、前端110f/1060t/0skipped、Flyway H2 V44/PG V44。
 
 ---
 
@@ -380,20 +386,21 @@
 你是 Smart-WorkFlow 根目录规划代理。请按 system.md §0.2 声明角色并读取 `roles/planner.md`，再按该文件 §10 执行新会话恢复。
 
 最新状态：
-- form-data-import-export（P32 / M03-F04-02 表单数据导入导出）**功能级 PASSED + 阶段三终态复核 PASSED，COMPLETED 已确认（2026-08-29，第36个）**——P32已核销、M03-F04-02✅、清单✅32/🟦25/⬜33、功能数36；正式基线后端947/0/0/0（agent346）、前端110f/1057t/3skipped四门全绿、Flyway H2 V43/PG V43。审查`receipts/planning-final-review-form-data-import-export-20260829.md` + `receipts/planning-terminal-final-review-20260829.md`
+- minimal-closure-first-acceptance（第一轮最小闭环验收审计）**功能级 PASSED + 阶段三终态同步落值，COMPLETED 待规划终态复核（2026-08-29）**——验收审计不新增正式功能，清单✅32/🟦25/⬜33、功能数36；正式基线后端955/0/0/0（agent346）、前端110f/1060t/0skipped四门全绿、Flyway H2 V44（44）/PG V44（43）。审查`receipts/planning-final-acceptance-minimal-closure-first-acceptance-20260829.md`
+- form-data-import-export（P32 / M03-F04-02 表单数据导入导出）**COMPLETED 已确认（2026-08-29，第36个）**——P32已核销、M03-F04-02✅、清单✅32/🟦25/⬜33、功能数36
 - minimal-business-closure（Owner 最小业务闭环）**COMPLETED（待规划终态复核，2026-08-28，第35个）**——流程主链+腾讯IoT Demo对接
-- 基线：后端 **947 tests**（Failures 0 / Errors 0 / Skipped 0；agent346）/ 前端 **110 files / 1057 tests / 3 skipped** 四门全绿；清单 **✅32/🟦25/⬜33** 共90行；Flyway **H2 V43（全链 43）/ PG V43（全链 42）**；已完成功能 **36**
+- 基线：后端 **955 tests**（Failures 0 / Errors 0 / Skipped 0；agent346）/ 前端 **110 files / 1060 tests / 0 skipped** 四门全绿；清单 **✅32/🟦25/⬜33** 共90行；Flyway **H2 V44（全链 44）/ PG V44（全链 43）**；已完成功能 **36**
 - P32 边界：P32 仅核销 M03-F04-02 表单数据导入导出完成；P21 部分关闭未核销（真实腾讯账号/物理设备现场联调/原生MQTT/完整设备管理）
 - 执行约束：本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行，禁并行编译（已入宪法）
 - 候选池：**P1/P5/P6/P7/P8/P24/P28/P36/P48/P32 已核销**、M07 补全已闭环（F01/F02-02/F02-04/F03-02/F04-02）、M05-F01-02/F01-03/M05-F02-01已闭环、M07-F03/F04新功能、IoT/OpenAPI、数据权限遗留/停用即时生效——PG侧全链直跑已由pg-v13修复关闭（I52）
 
-当前功能：无（当前唯一下一动作：规划比较并选择下一唯一正式功能）
+当前功能：无（当前唯一下一动作：规划复核 minimal-closure-first-acceptance 终态同步回执；通过后比较并选择下一唯一正式功能）
 ```
 
 ---
 
 > 最后更新：2026-08-29
-> 最新功能：**form-data-import-export** — P32 / M03-F04-02 表单数据导入导出（**功能级 PASSED + 阶段三终态复核 PASSED，COMPLETED 已确认，2026-08-29，第36个**；正式基线后端947/agent346 / 前端110f/1057t/3skipped / Flyway H2 V43/PG V43；P32已核销、M03-F04-02✅、清单✅32/🟦25/⬜33、功能数36；主方向与终态同步方向均归档`passed/`；审查`receipts/planning-final-review-form-data-import-export-20260829.md` + `receipts/planning-terminal-final-review-20260829.md`）
-> 上一功能：**minimal-business-closure** — Owner 最小业务闭环（**COMPLETED 待规划终态复核，2026-08-28，第35个**）
-> 测试基线：后端 CONFIRMED 947 tests / Failures 0 / Errors 0 / Skipped 0（agent 346）· 前端 CONFIRMED 110 files / 1057 tests / 3 skipped（**P32 阶段三终态登记基线**）
-> 进行中：无（当前唯一下一动作：规划比较并选择下一唯一正式功能）
+> 最新功能：**minimal-closure-first-acceptance** — 第一轮最小闭环验收审计（**功能级 PASSED，阶段三终态同步落值 COMPLETED 待规划终态复核，2026-08-29**；验收审计不新增正式功能，清单✅32/🟦25/⬜33、功能数36；正式基线后端955/agent346 / 前端110f/1060t/0skipped / Flyway H2 V44（44）/PG V44（43）；主验收方向与修复方向均已归档`passed/`；审查`receipts/planning-final-acceptance-minimal-closure-first-acceptance-20260829.md`）
+> 上一功能：**form-data-import-export** — P32 / M03-F04-02 表单数据导入导出（**COMPLETED 已确认，2026-08-29，第36个**）
+> 测试基线：后端 CONFIRMED 955 tests / Failures 0 / Errors 0 / Skipped 0（agent 346）· 前端 CONFIRMED 110 files / 1060 tests / 0 skipped（**minimal-closure-first-acceptance 验收审计登记基线**）
+> 进行中：无（当前唯一下一动作：规划复核 minimal-closure-first-acceptance 终态同步回执；通过后比较并选择下一唯一正式功能）

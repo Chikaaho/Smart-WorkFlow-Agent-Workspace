@@ -1,0 +1,66 @@
+URL: http://localhost:5173/form/form-data/%E9%AA%8C%E6%94%B6%E7%94%B3%E8%AF%B7%E8%A1%A8
+时间: 2026-08-29T02:24:51.772Z
+会话: admin
+----DOM----
+- complementary:
+  - generic: SW
+  - generic: Smart-WorkFlow
+  - menubar:
+    - menuitem "系统管理":
+      - generic: 系统管理
+    - menuitem "低代码":
+      - generic: 低代码
+    - menuitem "流程引擎":
+      - text: 流程引擎
+    - menuitem "通知":
+      - generic: 通知
+    - menuitem "智能体":
+      - generic: 智能体
+    - menuitem "物联网":
+      - text: 物联网
+    - menuitem "开放接口":
+      - text: 开放接口
+    - menuitem "文件管理"
+    - menuitem "定时任务":
+      - generic: 定时任务
+- button "toggle sidebar":
+- navigation "Breadcrumb"
+- button "系统管理员":
+  - generic: 系统管理员
+- main:
+  - heading "验收申请表" [level=2]
+  - generic: 共 1 条记录
+  - button "下载模板":
+    - generic: 下载模板
+  - button "导入":
+    - generic: 导入
+  - button "导出":
+    - generic: 导出
+  - textbox "申请事由"
+  - button "查询":
+    - generic: 查询
+  - button "重置":
+    - generic: 重置
+  - table:
+    - rowgroup:
+      - row "申请事由 创建时间 操作":
+        - columnheader "申请事由":
+          - generic: 申请事由
+        - columnheader "创建时间":
+          - generic: 创建时间
+        - columnheader "操作":
+          - generic: 操作
+  - table:
+    - rowgroup:
+      - row "验收流转测试数据-20260829-01 2026-08-29T02:14:18.448+00:00 查看 编辑 删除":
+        - cell "验收流转测试数据-20260829-01":
+          - generic: 验收流转测试数据-20260829-01
+        - cell "2026-08-29T02:14:18.448+00:00":
+          - generic: 2026-08-29T02:14:18.448+00:00
+        - cell "查看 编辑 删除":
+          - button "查看":
+            - generic: 查看
+          - button "编辑":
+            - generic: 编辑
+          - button "删除":
+            - generic: 删除
