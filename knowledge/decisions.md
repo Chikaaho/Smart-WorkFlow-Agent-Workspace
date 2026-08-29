@@ -515,3 +515,19 @@
 - **替代方案**：后端 DTO 新增 `completedNodeIds: List<String>` 字段 — 拒绝（DTO 冗余，后端逻辑与前端的 `.filter()` 重复）
 - **影响**：前端 `applyHighlights()` 中 `completedNodeIds` 推导逻辑：`detail.flowTrace.filter(node => node.endTime != null).map(node => node.activityId)`；若未来后端语义变化（如某些节点 endTime 非 null 但不代表"已完成"），需同步更新此推导逻辑
 - **相关文件**：[[process-monitoring]]、`Smart-WorkFlow-Web/src/modules/workflow/views/ProcessInstanceList.vue`
+
+### D47：DESIGNATED 审批人翻译为 BPMN 原生 assignee
+
+- **日期**：2026-08-29
+- **决策**：`ApprovalUserTaskTranslator` 对 DESIGNATED 静态指定审批人直接写 UserTask 原生 `flowable:assignee`（取 value 首个用户 ID）；不再完全依赖 create 监听器内 `delegateTask.setAssignee()`。动态审批人类型（角色等）仍由监听器运行期解析
+- **原因**：集成探针证实本引擎版本在 create 监听器内 setAssignee 不落 HI_ACTINST/HI_TASKINST assignee 列，导致监控流转记录/任务详情审批人显示「-」；原生属性由引擎在任务插入时持久化，运行表与历史表均可查。历史变量 `approver` 兜底不可靠（ProcessStartService 的废弃 FixedApproverResolver 写入的是发起人）
+- **影响**：`GraphToBpmnTranslatorTest` 断言更新（DESIGNATED → assignee=user1）；新增 `ApprovalUserTaskDesignatedAssigneeTest` 4 例；`BpmRuntimeFacadeImpl`/`BpmTaskFacadeImpl` 的 approver 历史变量兜底保留但仅覆盖动态类型缺口
+- **相关文件**：`sw-bpm-engine/.../translator/ApprovalUserTaskTranslator.java`、`receipt-minimal-closure-remediation-a01-a04-20260829-2.md`
+
+### D48：已办任务列表读取结束实例数据回落历史层
+
+- **日期**：2026-08-29
+- **决策**：`BpmTaskFacadeImpl.getVariable/getBusinessKey` 在运行时实例不存在（流程已结束，`FlowableObjectNotFoundException`）时回落 `HistoryService`（历史变量 / 历史实例 businessKey）；`BpmTodoController.toProcessedTaskDTO` 补齐 businessKey 字段
+- **原因**：已办任务列表需展示已结束实例的 formKey 与业务单号，运行时 API 对结束实例直接抛异常导致整页 500
+- **影响**：已办任务页恢复正常；无新增端点
+- **相关文件**：`sw-bpm-engine/.../facade/BpmTaskFacadeImpl.java`、`sw-bpm-process/.../controller/BpmTodoController.java`
