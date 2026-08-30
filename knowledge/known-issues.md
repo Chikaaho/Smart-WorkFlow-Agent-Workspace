@@ -77,7 +77,7 @@
 - **发现日期**：2026-07-13（工作区审计时发现）
 - **严重程度**：中
 - **可信度**：CONFIRMED（已修复）
-- **描述**：`Smart-WorkFlow/功能清单.md` 中 54 个功能、89 个明细（原记为 88，已更正）全部标记为 `⬜ 待开发`，但代码实际已完成：登录认证、RBAC 管理、表单设计器+渲染器、字典管理、通知后端等。功能清单与实际进度严重不一致。
+- **描述**：`Smart-WorkFlow-Server/功能清单.md` 中 54 个功能、89 个明细（原记为 88，已更正）全部标记为 `⬜ 待开发`，但代码实际已完成：登录认证、RBAC 管理、表单设计器+渲染器、字典管理、通知后端等。功能清单与实际进度严重不一致。
 - **修复日期**：2026-07-24
 - **修复方式**：feature-checklist-sync 功能 4 Steps（Step1 后端核实/Step2 前端核实/Step3 规划层综合裁决/Step4 机械应用）全部 PASSED。范围裁定：M07/M08/M09（合计35条）后端骨架+前端占位，规划层直判保留 `⬜`；余下 M01/M02/M03/M04/M05/M06/M10（合计54条）逐条委派后端/前端核实，按 [[decisions]] D35 MIN 规则（`merged=min(后端,前端)`）合并裁决。最终 `功能清单.md` 89 条明细状态更新为 **✅17 / 🟦12 / ⬜60**，独立子代理核查确认：改动仅限状态列、终态计数吻合、10 条抽查一致、全表无重复无缺失。执行回执 §5 摘要表存在 1 处计数笔误（报 28 行变更，实际 29 行），已定位为回执内部汇总算错，不影响文件实际内容，详见 [[feature-checklist-sync]] §4.3。
 - **复发与第二轮修复（2026-08-12）**：距首轮同步约 3 周（2026-07-24 → 2026-08-12），全量审计（`search_fallback/feature-checklist-full-audit.md`，89/89 条逐条核实）发现清单再次过期：89 条中 34 条状态标记与代码不符，M07 全部 14 条仍标 ⬜（其中 M07-F02-01 图设计器、M07-F02-03 图管理已前后端全链完成）。第二轮修复方式（feature-checklist-sync Step5，2026-08-12）：`功能清单.md` 状态列同步 34 行（✅→🟦 13 条、🟦→⬜ 1 条、⬜→✅ 3 条、⬜→🟦 15 条，含 I3 已覆盖仅同步状态列的 M04-F01-01/M04-F06-01）；清单虚高 14 条（标 ✅/🟦 但未达标）逐条记录为 I31-I44，虚低 15 条（标 ⬜ 但已有部分后端骨架）合并汇总记录为 I45。复发说明：清单在功能持续交付中会快速漂移，"功能完结后手动同步"这一模式本身不可持续；维护机制问题（是否把清单状态同步固化为每个功能收尾的强制检查项）待规划层决策，见 Step5 方案「待确认问题」。
@@ -272,8 +272,8 @@
 - **发现日期**：2026-07-16
 - **严重程度**：中
 - **可信度**：CONFIRMED
-- **描述**：`SmartWorkFlow_files.zip` 中的 `CLAUDE-java.md`（20,278 字节）和 `CLAUDE-vue.md`（14,560 字节）是最新版本的工程宪法。子项目中的 `Smart-WorkFlow/docs/governance/engineering-constitution.md`（22,440 字节）和 `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md`（17,323 字节）可能与 zip 版本存在差异。
-- **状态更新（2026-08-16，D83 复核）**：前提已过时——工作区已无 zip 文件（全仓 `find *.zip` = 0）；子项目 `Smart-WorkFlow/docs/governance/engineering-constitution.md` 已更新至 **27,071 字节**、`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` 已更新至 **27,861 字节**（均大于原记录值），该条已无同步对象
+- **描述**：`SmartWorkFlow_files.zip` 中的 `CLAUDE-java.md`（20,278 字节）和 `CLAUDE-vue.md`（14,560 字节）是最新版本的工程宪法。子项目中的 `Smart-WorkFlow-Server/docs/governance/engineering-constitution.md`（22,440 字节）和 `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md`（17,323 字节）可能与 zip 版本存在差异。
+- **状态更新（2026-08-16，D83 复核）**：前提已过时——工作区已无 zip 文件（全仓 `find *.zip` = 0）；子项目 `Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` 已更新至 **27,071 字节**、`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` 已更新至 **27,861 字节**（均大于原记录值），该条已无同步对象
 - **关闭记录（2026-08-16，D84 裁定）**：✅ **已关闭**——前提消失（工作区已无 zip，`find *.zip`=0；子项目 system.md 已更新至 27,071/27,861 字节，与根 system.md 同步，无同步对象）。若未来重新引入 zip 分发或出现新的宪法版本差异源，可重新登记
 - **影响**：执行代理可能依据过时的工程宪法进行开发（已随子项目 system.md 持续维护而缓解）
 - **后续处理**：不适用；该问题已关闭，当前只维护两个子项目正式治理路径中的工程宪法
@@ -354,15 +354,15 @@
 - **发现日期**：2026-07-23（用户反馈"后端执行时经常越界"，规划层直读两份子项目 system.md 对比确认）
 - **严重程度**：高
 - **可信度**：CONFIRMED（直接对比两份文件原文得出，非推测）
-- **描述**：直读对比 `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` 与 `Smart-WorkFlow/docs/governance/engineering-constitution.md` 发现结构性不对称：
+- **描述**：直读对比 `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` 与 `Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` 发现结构性不对称：
   - 前端宪法 §0.0 之后有独立的 **§0.1「本仓库范围（硬约束）」**，明确写了 4 条：❌ 禁止读取/修改/构建/运行/分析后端代码、❌ 禁止执行后端命令（`mvn`/`gradle` 等）、❌ 禁止向后端仓库提交或推送、✅ 只在前端目录执行 `pnpm` 系命令。
   - 后端宪法 §0.0 没有对应章节，唯一相关的一句是「❌ 禁止修改前端代码（`Smart-WorkFlow-Web/`）」——**只锁了"改代码"，没有锁"读文件"和"跑命令"**，缺少"禁止读取/构建/运行前端代码""禁止执行 pnpm/npm/vite/vitest""只在后端目录执行 mvn 系命令"等显式条款。
   - 两份文件在「禁止诱导用户规划」「禁止预告下一 Step」两条硬约束上是**完全对称、都很完善**的，唯独"仓库范围边界"这一层后端缺项。
-  - 根目录 `knowledge/shared-constraints.md` §9（[[decisions]] D29，2026-07-22）已经写了对应的硬约束（"禁止后端执行代理运行前端命令或读写前端文件"），但**该约束只回填进了根目录知识库，未回填进 `Smart-WorkFlow/docs/governance/engineering-constitution.md` 自身**；后端执行代理实际工作时读的是自己项目内的宪法文件，不会主动去读根目录 `shared-constraints.md`。
+  - 根目录 `knowledge/shared-constraints.md` §9（[[decisions]] D29，2026-07-22）已经写了对应的硬约束（"禁止后端执行代理运行前端命令或读写前端文件"），但**该约束只回填进了根目录知识库，未回填进 `Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` 自身**；后端执行代理实际工作时读的是自己项目内的宪法文件，不会主动去读根目录 `shared-constraints.md`。
 - **影响**：后端执行代理在无显式禁令的情况下，可能读取前端文件或执行 `pnpm`/`npm` 命令（例如"顺手验证前后端联动"），这正是用户反馈的"新会话会一起执行前后端任务"越界现象的最直接可归因原因。
 - **关联问题**：与 [[known-issues]] I18（子项目 system.md 可能与 zip 版本不同步）同源——都是子项目 `docs/governance/engineering-constitution.md` 未与最新硬约束同步。
 - **修复日期**：2026-07-23
-- **修复方式**：用户明确授权规划层本次一次性越权（该文件不在 `system.md` §1.3 常规写入范围内），已在 `Smart-WorkFlow/docs/governance/engineering-constitution.md` §0.0 之后补齐 §0.1「本仓库范围（硬约束）」，内容镜像前端 §0.1 结构：禁止读取/修改/构建/运行/分析前端代码、禁止执行 `pnpm`/`npm`/`vite`/`vitest`、禁止向前端仓库提交推送、只在后端目录执行 `mvn` 系命令。此授权为一次性例外，不代表 §1.3 写入范围常态化扩大
+- **修复方式**：用户明确授权规划层本次一次性越权（该文件不在 `system.md` §1.3 常规写入范围内），已在 `Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` §0.0 之后补齐 §0.1「本仓库范围（硬约束）」，内容镜像前端 §0.1 结构：禁止读取/修改/构建/运行/分析前端代码、禁止执行 `pnpm`/`npm`/`vite`/`vitest`、禁止向前端仓库提交推送、只在后端目录执行 `mvn` 系命令。此授权为一次性例外，不代表 §1.3 写入范围常态化扩大
 - **口径澄清（同次核实）**：用户反馈中"把自己当作执行层"经确认实指"后端会话误把自己当作规划层"。核对后端/前端两份宪法在「禁止诱导用户规划」「禁止预告下一 Step」两条上写得完全对称、内容详尽，未发现文本缺口——这类越权若仍发生属执行层未遵守既有条款的实践问题，非宪法文本问题，不通过编辑文本解决
 - **关联决策**：[[decisions]] D34
 

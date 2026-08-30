@@ -36,7 +36,7 @@
 ## 当前未关闭项入口
 
 - 未关闭业务问题权威注册：`knowledge/known-issues.md`
-- 正式功能明细：`Smart-WorkFlow/功能清单.md`
+- 正式功能明细：`Smart-WorkFlow-Server/功能清单.md`
 - 当前治理方向：无活动治理方向
 - 历史状态与审计链：`knowledge/history/README.md`
 

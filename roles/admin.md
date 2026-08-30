@@ -45,7 +45,7 @@
 
 - 执行规划角色的任何业务操作（制定需求方向、派发探索、验收回执、更新 memory/ 状态文件）
 - 执行执行角色的任何业务操作（读写业务代码、运行编译测试、裁决或改变 knowledge 中的业务状态、写业务回执）
-- 读取或修改 `Smart-WorkFlow/`、`Smart-WorkFlow-Web/` 中的业务源码、测试源码、数据库迁移/种子、脚本实现及其他可执行实现代码；工程配置文件除外
+- 读取或修改 `Smart-WorkFlow-Server/`、`Smart-WorkFlow-Web/` 中的业务源码、测试源码、数据库迁移/种子、脚本实现及其他可执行实现代码；工程配置文件除外
 - 运行 `mvn`/`pnpm`/`java`/`node` 等编译、测试、构建、迁移或部署命令；与管理员任务相关的 Git 命令除外
 - 修改 `memory/state.md`、`memory/handoff.md`、`memory/features.md` 等功能状态文件（这些属于规划角色职责）
 
@@ -60,7 +60,7 @@
 | 系统宪法 | `system.md` | 角色入口 + 公共协议（唯一行为宪法入口） |
 | 角色定义 | `roles/planner.md`、`roles/executor.md`、`roles/admin.md` | 三个角色的完整定义（2026-08-22 自 system.md 拆分） |
 | 架构文档 | `memory/architecture.md`、`knowledge/architecture.md` | 架构文档（memory 为摘要口径，knowledge 为权威口径） |
-| 两端工程配置 | `Smart-WorkFlow/AGENTS.md`、`Smart-WorkFlow-Web/AGENTS.md`、两端 `docs/governance/engineering-constitution.md`、构建/工具链/CI/运行时配置文件 | 工程宪法与配置 |
+| 两端工程配置 | `Smart-WorkFlow-Server/AGENTS.md`、`Smart-WorkFlow-Web/AGENTS.md`、两端 `docs/governance/engineering-constitution.md`、构建/工具链/CI/运行时配置文件 | 工程宪法与配置 |
 | Governance Implementation | `.claude/hooks/`、`.codex/hooks/`、`.codex/governance/` | 单一机器契约、公共 Validator、治理契约测试与薄 Harness 适配；不得承载业务逻辑 |
 | 治理状态结构 | `knowledge/current-status.md`、`knowledge/history/` | 仅可做当前/历史物理分离和引用迁移，不得改业务值或作状态裁决 |
 | 配套同步 | 引用 system.md 章节号的知识索引/目录注释（如 `knowledge/model-registry.md` 的权威路径索引） | 只同步路径与职责，不复制治理正文 |
@@ -89,7 +89,7 @@
 | 范围 | 内容 |
 |------|------|
 | 全部非代码内容 | 工作区知识仓、后端仓和前端仓的治理文档、架构文档、知识与记忆（`memory/`、`knowledge/` 全量）、需求方向、审查记录、回执（`product/`）、任务清单（`search_task/`、`search_fallback/`、`todo/`）、工程配置、项目说明和 Git 元数据 |
-| 不可读 | `Smart-WorkFlow/`、`Smart-WorkFlow-Web/` 中的业务源码、测试源码、数据库迁移/种子、脚本实现及其他可执行实现代码（工程配置文件除外） |
+| 不可读 | `Smart-WorkFlow-Server/`、`Smart-WorkFlow-Web/` 中的业务源码、测试源码、数据库迁移/种子、脚本实现及其他可执行实现代码（工程配置文件除外） |
 
 ---
 
