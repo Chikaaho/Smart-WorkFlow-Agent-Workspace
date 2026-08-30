@@ -49,4 +49,3 @@
 ## 回执位置
 
 将压缩核验结果写入 `search_fallback/verify-three-repository-readme-refresh.md`，目标小于 5KB。
-
