@@ -150,16 +150,16 @@
 |----------|:---:|------|
 | `Smart-WorkFlow-Web/src/adapters/bpmn/index.ts` | 重写（Step 1） | 12→73 行，新导出 `mountBpmnViewer`/`BpmnViewerEvents`/`BpmnViewerInstance`，移除旧 `mountBpmn`/`exportXml` |
 | `Smart-WorkFlow-Web/src/adapters/bpmn/index.spec.ts` | 新建（Step 1） | 227 行/10 测试，SVG API polyfill（jsdom），覆盖率 mount/destroy/highlight/fitViewport/click 事件 |
-| `Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/facade/BpmDeployFacade.java` | 修改（Step 2） | +12 行 — 新增 `getBpmnXml(Long defId): String` 方法签名 |
-| `Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/facade/BpmDeployFacadeImpl.java` | 修改（Step 2） | +22 行 — 实现 `getBpmnXml`（`repositoryService.getResourceAsStream` → `new String(bytes, UTF-8)`） |
-| `Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/BpmProcessDefService.java` | 修改（Step 2） | +12 行 — 新增 `getBpmnXml(Long id): String` |
-| `Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/BpmProcessDefServiceImpl.java` | 修改（Step 2） | +9 行 — 校验 PUBLISHED + 调用 Facade |
-| `Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmProcessDefController.java` | 修改（Step 2） | +15 行 — 新增 `GET /{id}/bpmn-xml` |
-| `Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/exception/BpmErrorCode.java` | 修改（Step 2） | +1 — 新增 `PROCESS_NOT_PUBLISHED(2104)` |
-| `Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-engine/src/test/.../BpmDeployFacadeImplTest.java` | 新建（Step 2） | 2 @Test |
-| `Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-process/src/test/.../BpmProcessDefControllerTest.java` | 新建（Step 2） | 3 @Test |
-| `Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-process/src/test/.../BpmProcessDefServiceImplTest.java` | 新建（Step 2） | 4 @Test |
-| `Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-engine/src/test/.../ApprovalProcessIntegrationTest.java` | 修改（Step 2） | +1 @Test（1→2） |
+| `Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/facade/BpmDeployFacade.java` | 修改（Step 2） | +12 行 — 新增 `getBpmnXml(Long defId): String` 方法签名 |
+| `Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/facade/BpmDeployFacadeImpl.java` | 修改（Step 2） | +22 行 — 实现 `getBpmnXml`（`repositoryService.getResourceAsStream` → `new String(bytes, UTF-8)`） |
+| `Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/BpmProcessDefService.java` | 修改（Step 2） | +12 行 — 新增 `getBpmnXml(Long id): String` |
+| `Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/BpmProcessDefServiceImpl.java` | 修改（Step 2） | +9 行 — 校验 PUBLISHED + 调用 Facade |
+| `Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmProcessDefController.java` | 修改（Step 2） | +15 行 — 新增 `GET /{id}/bpmn-xml` |
+| `Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/exception/BpmErrorCode.java` | 修改（Step 2） | +1 — 新增 `PROCESS_NOT_PUBLISHED(2104)` |
+| `Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-engine/src/test/.../BpmDeployFacadeImplTest.java` | 新建（Step 2） | 2 @Test |
+| `Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/test/.../BpmProcessDefControllerTest.java` | 新建（Step 2） | 3 @Test |
+| `Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/test/.../BpmProcessDefServiceImplTest.java` | 新建（Step 2） | 4 @Test |
+| `Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-engine/src/test/.../ApprovalProcessIntegrationTest.java` | 修改（Step 2） | +1 @Test（1→2） |
 | `Smart-WorkFlow-Web/src/modules/workflow/api/index.ts` | 修改（Step 3） | +12 行 — 新增 `getProcessDefGraph(id): Promise<string>` |
 | `Smart-WorkFlow-Web/src/modules/workflow/views/ProcessDefList.vue` | 修改（Step 3） | +106/-2 + 修复（约 +23/-6）— 操作列 + el-dialog 查看器 + 3 轮手工验收修复 |
 | `Smart-WorkFlow-Web/src/foundation/mock/handlers.ts` | 修改（Step 3） | +43 行 — `GET /api/workflow/defs/:id/bpmn-xml` mock（含 sequenceFlow + BPMNEdge） |

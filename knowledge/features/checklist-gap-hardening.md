@@ -82,7 +82,7 @@
 | `sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/controller/AuthFlowIntegrationTest.java` | 修改 | 新增刷新拦截集成用例（合计新增 10 个测试） |
 | `sw-bootstrap/src/main/resources/db/migration/h2/V29__job_storage_menu_seed.sql` | 新增 | 菜单 seed（H2 方言） |
 | `sw-bootstrap/src/main/resources/db/migration/postgresql/V29__job_storage_menu_seed.sql` | 新增 | 菜单 seed（PostgreSQL 方言） |
-| `Smart-WorkFlow/功能清单.md` | 修改 | 3 行状态列 🟦→✅（M01-F02-02 / M10-F03-01 / M10-F06-01） |
+| `Smart-WorkFlow-Server/功能清单.md` | 修改 | 3 行状态列 🟦→✅（M01-F02-02 / M10-F03-01 / M10-F06-01） |
 | `knowledge/known-issues.md` | 修改 | I33/I43/I44 修复记录 |
 | `knowledge/current-status.md` | 修改 | 计数/基线/前次验证/已完成列表同步 |
 

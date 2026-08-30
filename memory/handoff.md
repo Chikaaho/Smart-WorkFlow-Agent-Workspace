@@ -1,17 +1,17 @@
 # 会话交接摘要
 
-> 同步点：2026-08-29；权威：`knowledge/current-status.md`。
+> 同步点：2026-08-30；权威：`knowledge/current-status.md`。
 
-**最新**：GOV-AUDIT-13 已通过规划终态复核并归档 `passed/`，工作区治理一致性审计整体 COMPLETED 已确认（2026-08-29）。`minimal-closure-first-acceptance`（第一轮最小闭环验收审计，不新增正式功能）COMPLETED 已确认：36、✅32/🟦25/⬜33、955/0/0/0 agent346、110f/1060t/0sk、H2 V44/PG V44；三份方向归档 `product/minimal-closure-first-acceptance/passed/`。
+**项目状态**：当前无活动正式功能。`minimal-closure-first-acceptance` 已 `COMPLETED（已确认）`；正式功能数 36，清单 ✅32/🟦25/⬜33，正式基线为后端 955/0/0/0（agent346）、前端 110f/1060t/0sk、Flyway H2 V44/PG V44。
 
-**补充任务（历史记录，已确认）**：三仓 README 同步、Admin 治理一致性审计（历史发现 16 项）、Admin 治理修复（可修项全部关闭）均 COMPLETED 已确认（2026-08-29）；README 三仓方向与 Admin 两方向均已归档 `passed/`，未提交/未推送。
+**发布版本**：B1～B3 修复已通过规划验收。已发布代码为后端 `ba59539`（develop）与前端 `f3a8988`（develop）；根 knowledge 仓 `a86cbbd`（main）是审计快照。
 
-**新增需求**：P21 已按 Owner 2026-08-29 指令扩展为完整 IoT 设备管理与流程联动：通用物模型/行为、流程选择设备和功能、自定义 Adapter；详见 `todo/requirement-pool.md`。当前仅登记需求，未设为活动正式功能。
+**最终裁决**：`v0.0.1-beta` 已 `RELEASED` 并通过规划验收。F1～F8 全部通过：前端四门 110f/1060t/0sk；后端隔离构建、H2 V44、Redis 503/200/401；`ApprovalProcessIntegrationTest` 定向 3 连过，后端固定提交全量 2 次均为 955/0/0/0；最小业务链与 tag 追溯成立。
 
-**上一**：`form-data-import-export`（P32/M03-F04-02）COMPLETED 已确认（2026-08-29，第 36 个）：36、✅32/🟦25/⬜33、947/0/0/0 agent346、110f/1057t/3sk、H2 V43/PG V43；P32 已核销。
+**发布映射**：后端远端 `v0.0.1-beta` peeled=`ba5953977ef8b8684e0d551216283727b7540ad4`；前端远端同名 tag peeled=`f3a89888e022d8b1c9de658e5a6cb5f97a8a9a2b`。根 knowledge 仓保存审计与追溯记录。
 
-**当前发布核验**：执行探索已完成并通过规划审查，但 `v0.0.1-beta` 裁决为 `NOT_READY`。真实页面核心业务闭环、后端 955/0/0/0、H2/PG 迁移链、前端 typecheck/lint/build 和权限拒绝已通过；阻断为 B1 前端测试 1059/1060、B2 README 缺 `SW_CIPHER_KEY` 启动前置、B3 Redis 可选口径与真实运行不一致。回执见 `product/v0.0.1-beta-release-readiness/receipts/planning-review-v0.0.1-beta-release-readiness-20260830.md`。
+**后续候选**：P51 Agent Coding Engine 解耦、P45 RSA/验证码登录安全、P52 表单设计器顶部工作台、P53 UI 与组件布局优化均已登记在 `todo/requirement-pool.md`，不进入本次发布终验。设备管理不作为本 beta 最小功能要求。
 
-**当前修复结果**：B1～B3 已通过规划验收并归档 `product/v0.0.1-beta-release-readiness/passed/direction-v0.0.1-beta-release-blockers.md`。最终证据为前端 110f/1060t/0sk、`SW_CIPHER_KEY` 干净启动成功、Redis 停机 503/恢复后受保护请求 200/无 token 401；审查见 `receipts/planning-review-v0.0.1-beta-release-blockers-20260830.md`。
+**当前补充任务**：三仓 README 按项目入口文档定位修订；移除个人机器资源条件与动态验收看板式内容，方向位于 `product/readme-project-entry-correction/ready/`。不改变正式功能和发布状态。
 
-**下一动作**：Owner 对三仓精确提交范围作 Git 授权，形成干净候选 commit 后执行最终发布就绪复核。当前修复均未提交，未冻结候选前不得创建 tag；当前无活动正式功能。
+**下一动作**：管理员执行 README 修订方向并返回回执；不重复功能、质量门或 Git 发布动作。

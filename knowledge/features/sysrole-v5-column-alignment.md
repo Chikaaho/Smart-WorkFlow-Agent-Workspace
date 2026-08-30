@@ -89,5 +89,5 @@
 - `knowledge/current-status.md`：§1 前次验证、§4 进行中、§5 已完成清单（计数修正 16→18，含 status-semantics 漏改项）、§9 后端基线复验。
 - `knowledge/session-handoff.md`：§1 最新完成功能新增条目。
 - `todo/requirement-pool.md`：P13 状态 READY → 已核销（D86 最终验收 PASSED）；I26 同步已修复。
-- `Smart-WorkFlow/功能清单.md`：状态列无变化（M02-F01-01 仍 🟦，其缺口为角色-人员绑定写入等，非本轮范围）。
+- `Smart-WorkFlow-Server/功能清单.md`：状态列无变化（M02-F01-01 仍 🟦，其缺口为角色-人员绑定写入等，非本轮范围）。
 - `memory/`：features.md / state.md / handoff.md 同步（压缩索引）。

@@ -72,7 +72,7 @@
 - **原因**：当前阶段不需要微服务的运维复杂性，但通过接口分离为未来微服务抽取预留最小重构路径
 - **替代方案**：纯单体（不拆 -api/-biz）— 拒绝，因为未来抽取成本高
 - **影响**：依赖方向严格自上而下；业务模块间禁止依赖 `-biz`
-- **相关文件**：`Smart-WorkFlow/docs/governance/engineering-constitution.md` §1
+- **相关文件**：`Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` §1
 
 ### D2：动态宽表：一表单一物理表
 
@@ -81,7 +81,7 @@
 - **原因**：支持原生 SQL 查询/报表/导出/索引/流程取值，能力上限最高；不用 JSON 列或 EAV
 - **替代方案**：JSONB 单列 — 拒绝，查询/索引能力受限；EAV — 拒绝，性能和维护性差
 - **影响**：裸 SQL 必须手写 `deleted` + `tenant_id`；动态宽表不归 Flyway 管
-- **相关文件**：`Smart-WorkFlow/docs/governance/engineering-constitution.md` §4
+- **相关文件**：`Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` §4
 
 ### D3：TABLE / REFERENCE 两档关系原语
 
@@ -97,7 +97,7 @@
 - **决策**：所有 Flyway 迁移脚本同时维护 PostgreSQL 和 H2 两个版本
 - **原因**：开发期用 H2 作为 SQL 正确性代理，生产用 PostgreSQL；避免"开发能跑、生产炸"的问题
 - **影响**：每条迁移必须写两份；动态宽表是唯一例外（运行时 DDL）
-- **相关文件**：`Smart-WorkFlow/docs/governance/engineering-constitution.md` §6
+- **相关文件**：`Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` §6
 
 ### D5：前端契约先行 + Mock 并行
 
@@ -133,7 +133,7 @@
 - **替代方案**：保留 lowcode — 拒绝
 - **影响**：全局搜索 `lowcode` 应零命中；新建文件不得复活 lowcode 命名
 - **状态**：CONFIRMED（已完成）
-- **相关文件**：`Smart-WorkFlow/docs/governance/engineering-constitution.md` 附录 A；`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` §7.2
+- **相关文件**：`Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` 附录 A；`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` §7.2
 
 ### D9：Open-core BPM（engine 闭源）
 
@@ -141,7 +141,7 @@
 - **决策**：`sw-bpm-engine` 为闭源防腐层，承载引擎运行期与外部数据源执行；`sw-bpm-api` 和 `sw-bpm-process` 开源
 - **原因**：核心引擎逻辑需商业保护；契约和流程业务可开源促进生态
 - **影响**：engine 模块不在公开仓库
-- **相关文件**：`Smart-WorkFlow/README.md`
+- **相关文件**：`Smart-WorkFlow-Server/README.md`
 
 ### D10：根目录规划代理机制
 
@@ -247,7 +247,7 @@
 - **原因**：快速验证全链路技术可行性和架构决策；避免在单模块过度投入后发现集成问题
 - **影响**：实施路线严格按串行关键路径排列；横切基础设施（多租户/BaseEntity/数据权限/Security/字典）必须先于业务代码就位
 - **状态**：Walking Skeleton 四环已于 2026-07-15 全部闭合 ✅
-- **相关文件**：`Smart-WorkFlow/docs/governance/engineering-constitution.md` §12；`Smart-WorkFlow-PRD.md` §3.3、§7
+- **相关文件**：`Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` §12；`Smart-WorkFlow-PRD.md` §3.3、§7
 
 ### D19：存储模块策略模式 + -api/-biz 拆分
 
@@ -317,7 +317,7 @@
 - **替代方案**：在 -api 中定义 Entity — 拒绝（需 MyBatis-Plus 依赖）；放宽模块依赖规则 — 拒绝（破坏四层架构）
 - **影响**：Controller 层需做 Entity ↔ DTO 转换；新增 `JobInfoDTO` 文件（17 字段）
 - **关键教训**：方案设计时必须考虑 -api/-biz 模块边界约束
-- **相关文件**：`Smart-WorkFlow/sw-basic-job/sw-basic-job-api/src/main/java/cn/reasonix/sw/basic/job/api/dto/JobInfoDTO.java`
+- **相关文件**：`Smart-WorkFlow-Server/sw-basic-job/sw-basic-job-api/src/main/java/cn/reasonix/sw/basic/job/api/dto/JobInfoDTO.java`
 
 ### D26：双 token 认证 — access 内存 + refresh httpOnly cookie
 
@@ -349,7 +349,7 @@
 ### D29：固化执行代理三方角色边界（规划层只读写方案，执行层严禁跨项目执行）
 
 - **日期**：2026-07-22
-- **决策**：三个启动目录对应三种严格角色：规划层（`/data/reasonix/files`）只能读两个代码项目、只能写 `system.md`/`knowledge/`/`product/`/`todo/`，永不执行状态变更命令；后端执行代理（`Smart-WorkFlow/`）只能读写自己项目、只能跑 `mvn` 系命令；前端执行代理（`Smart-WorkFlow-Web/`）只能读写自己项目、只能跑 `pnpm` 系命令。**严禁后端执行代理运行前端命令或读写前端文件，严禁前端执行代理运行后端命令或读写后端文件**
+- **决策**：三个启动目录对应三种严格角色：规划层（`/data/reasonix/files`）只能读两个代码项目、只能写 `system.md`/`knowledge/`/`product/`/`todo/`，永不执行状态变更命令；后端执行代理（`Smart-WorkFlow-Server/`）只能读写自己项目、只能跑 `mvn` 系命令；前端执行代理（`Smart-WorkFlow-Web/`）只能读写自己项目、只能跑 `pnpm` 系命令。**严禁后端执行代理运行前端命令或读写前端文件，严禁前端执行代理运行后端命令或读写后端文件**
 - **原因**：用户明确要求补硬约束，防止执行代理为了"顺手验证联动效果"越界读写对方项目或误跑对方的构建/测试命令，污染对方项目状态或产生非授权的状态变更
 - **替代方案**：允许执行代理为验证联动只读不写对方项目 — 拒绝，"只读"边界在实践中容易滑向"顺手改一下"，不如从根上禁止 cd 进入对方目录；由规划层充当"联动验证"角色代跑两侧命令 — 拒绝，直接违反规划层"永不执行状态变更命令"的既有硬约束（§1.2）
 - **影响**：`system.md` §0.3 新增两条硬约束；`knowledge/shared-constraints.md` 新增 §9 完整角色边界表；涉及前后端联动的验证需求今后必须拆成两个独立 Step 分别下发，不能指望单个执行代理跨项目验证
@@ -397,12 +397,12 @@
 ### D34：一次性授权越权，为后端宪法补齐 §0.1「本仓库范围」硬约束（对应 I28）
 
 - **日期**：2026-07-23
-- **决策**：用户反馈"后端执行时经常越界，新会话会一起执行前后端任务"，规划层直读对比两份子项目宪法确认：`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` 有独立的 §0.1「本仓库范围（硬约束）」（禁止读取/构建/运行/分析后端代码、禁止执行 mvn/gradle、禁止跨仓库提交），但 `Smart-WorkFlow/docs/governance/engineering-constitution.md` 缺少对应章节——原 §0.0 只有"❌ 禁止修改前端代码"一句，只锁"改代码"未锁"读文件/跑命令"。用户明确授权规划层**本次一次性越权**直接编辑 `Smart-WorkFlow/docs/governance/engineering-constitution.md`（该文件不在 `system.md` §1.3 写入范围内），已补齐镜像前端结构的 §0.1 章节
+- **决策**：用户反馈"后端执行时经常越界，新会话会一起执行前后端任务"，规划层直读对比两份子项目宪法确认：`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` 有独立的 §0.1「本仓库范围（硬约束）」（禁止读取/构建/运行/分析后端代码、禁止执行 mvn/gradle、禁止跨仓库提交），但 `Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` 缺少对应章节——原 §0.0 只有"❌ 禁止修改前端代码"一句，只锁"改代码"未锁"读文件/跑命令"。用户明确授权规划层**本次一次性越权**直接编辑 `Smart-WorkFlow-Server/docs/governance/engineering-constitution.md`（该文件不在 `system.md` §1.3 写入范围内），已补齐镜像前端结构的 §0.1 章节
 - **原因**：修复点必须落在后端自己的宪法文件里才有效——执行代理平时读的是自己项目内的文件，不会主动去读根目录 `knowledge/shared-constraints.md` §9（该约束 D29 时已写入根知识库，但从未回填到后端宪法本身，二者不同步）。若不越权直接改，只能等用户或后端会话自行搬运文本，存在被遗漏的风险
 - **口径澄清**：用户同时确认"或者把自己当作执行层"一句指的是"**后端会话误把自己当作规划层**"（角色混淆），而非宪法缺内容。核对后端/前端两份宪法在「禁止诱导用户规划」「禁止预告下一 Step」两条硬约束上写得完全对称、内容详尽，**未发现文本缺口**。这类越权若仍在发生，属于执行层未遵守既有条款的**实践/落实问题**，不是宪法文本问题——不通过再次编辑文本解决，需在下次观察到具体违例时记录实例作证据
 - **替代方案**：只在根目录 `shared-constraints.md` 强化措辞、不碰后端宪法 — 拒绝，后端执行代理不会主动读根目录知识库，无法从源头生效；等下次功能交接时才处理 — 拒绝，属于持续存在的越权风险，用户已明确要求当次处理并授权例外
-- **影响**：`Smart-WorkFlow/docs/governance/engineering-constitution.md` §0.0 之后新增 §0.1（内容见 [[known-issues]] I28）；本次为**用户明确授权的一次性例外**，不代表 `system.md` §1.3 写入范围常态化扩大到子项目文件——今后类似修复仍需逐次征得用户授权
-- **相关文件**：`Smart-WorkFlow/docs/governance/engineering-constitution.md` §0.1、`knowledge/known-issues.md` I28、`knowledge/shared-constraints.md` §9（D29）
+- **影响**：`Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` §0.0 之后新增 §0.1（内容见 [[known-issues]] I28）；本次为**用户明确授权的一次性例外**，不代表 `system.md` §1.3 写入范围常态化扩大到子项目文件——今后类似修复仍需逐次征得用户授权
+- **相关文件**：`Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` §0.1、`knowledge/known-issues.md` I28、`knowledge/shared-constraints.md` §9（D29）
 
 ### D35：功能清单前后端核实结论合并采用 MIN 规则（保守取低档）
 
@@ -425,9 +425,9 @@
 ### D37：探索任务 formalize 为「Step 0」——规划层唯一允许自行执行（只读）的特殊 Step
 
 - **日期**：2026-07-25
-- **决策**：用户对 §0.4 探索/规划模型分工提出澄清："探索任务其实也算是执行任务，但可以在规划层执行，这是唯一允许在规划层做的执行动作"。据此在 `system.md` §0.4 之后新增 §0.4.1，把探索任务 formalize 为功能 Step 序列中位于 Step 1 之前的「Step 0」：Step 0 在规划层自身会话内完成（不下发到 `Smart-WorkFlow/`/`Smart-WorkFlow-Web/`），若当前会话是 Anthropic 系模型则需用户手动切换为 DeepSeek 系模型后在同一会话内执行；Step 0 不套用 §6 完整 17 项结构，改用精简 5 项清单（探索目标/探索范围/当前模型确认/输出要求/分工提醒）；Step 0 严禁跑 `mvn`/`pnpm`/`npm`/`node` 等命令、严禁修改两个子项目内任何文件，探索完成后必须切回规划模型再出方案，不可同一次调用兼任
+- **决策**：用户对 §0.4 探索/规划模型分工提出澄清："探索任务其实也算是执行任务，但可以在规划层执行，这是唯一允许在规划层做的执行动作"。据此在 `system.md` §0.4 之后新增 §0.4.1，把探索任务 formalize 为功能 Step 序列中位于 Step 1 之前的「Step 0」：Step 0 在规划层自身会话内完成（不下发到 `Smart-WorkFlow-Server/`/`Smart-WorkFlow-Web/`），若当前会话是 Anthropic 系模型则需用户手动切换为 DeepSeek 系模型后在同一会话内执行；Step 0 不套用 §6 完整 17 项结构，改用精简 5 项清单（探索目标/探索范围/当前模型确认/输出要求/分工提醒）；Step 0 严禁跑 `mvn`/`pnpm`/`npm`/`node` 等命令、严禁修改两个子项目内任何文件，探索完成后必须切回规划模型再出方案，不可同一次调用兼任
 - **原因**：厘清一个此前未明确的边界——探索任务（读文件、grep、梳理调用关系）本质是只读操作，属于 §1.1 允许规划层执行的范畴，不落入 §0.3 定义的"执行层"（执行层的本质是写业务代码 + 跑状态变更命令）；但探索任务确实需要一个正式的下发形式（而非含糊地"顺手查一下"），因为 Anthropic 系模型不能自行探索、需要用户手动切模型才能落地，这个交接动作和探索范围都需要有据可查
-- **替代方案**：把探索任务当作真正的执行层任务下发给 `Smart-WorkFlow/`/`Smart-WorkFlow-Web/` 执行代理 — 拒绝，探索任务通常需要横跨两个子项目一起看（如对比 BPMN adapter 和 Vue Flow adapter 的结构），拆给某一侧执行代理会破坏"执行层只能读写自己项目"的硬约束（§0.3）；继续套用 Agent 工具派子代理做探索 — 拒绝，用户明确要求"你下任务，我切换并执行"，即同一规划层会话切模型后自行探索，而非派生独立子代理；探索任务复用 §6 完整 17 项结构 — 拒绝，该结构含"允许修改的文件范围"等写操作字段，与探索的只读性质不符，直接套用会产生大量空字段
+- **替代方案**：把探索任务当作真正的执行层任务下发给 `Smart-WorkFlow-Server/`/`Smart-WorkFlow-Web/` 执行代理 — 拒绝，探索任务通常需要横跨两个子项目一起看（如对比 BPMN adapter 和 Vue Flow adapter 的结构），拆给某一侧执行代理会破坏"执行层只能读写自己项目"的硬约束（§0.3）；继续套用 Agent 工具派子代理做探索 — 拒绝，用户明确要求"你下任务，我切换并执行"，即同一规划层会话切模型后自行探索，而非派生独立子代理；探索任务复用 §6 完整 17 项结构 — 拒绝，该结构含"允许修改的文件范围"等写操作字段，与探索的只读性质不符，直接套用会产生大量空字段
 - **影响**：`system.md` 新增 §0.4.1；探索任务今后统一记为「Step 0」，记入 `knowledge/features/<name>.md` 的 Step 列表，状态机复用 §5.2，但 PASSED 判据不套用 §5.3 的"修改文件证据"；~~探索摘要可选择性存档为 `product/<feature>/step-0-exploration-summary.md`~~ → SUPERSEDED by D38（升级为强制存档，非可选）
 - **相关文件**：`system.md` §0.4.1
 
