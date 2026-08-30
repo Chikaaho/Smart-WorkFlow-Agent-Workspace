@@ -12,7 +12,7 @@
 | 历史状态 | `knowledge/history/` | 当前状态仅链接索引，不复制历史正文 |
 | 执行终态 schema 与合法状态 | `.codex/governance/terminal-contract.json` | `roles/executor.md`、Hook、回执模板 |
 | 执行终态校验行为 | `.codex/governance/validate-terminal.sh` | `.claude/hooks/stop-execution-completeness.sh`、`.codex/hooks/stop-execution-completeness.sh` |
-| 后端工程专属约束 | `Smart-WorkFlow/docs/governance/engineering-constitution.md` | 后端 `AGENTS.md` |
+| 后端工程专属约束 | `Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` | 后端 `AGENTS.md` |
 | 前端工程专属约束 | `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` | 前端 `AGENTS.md` |
 | 工程流程参考 | `knowledge/development-workflow.md`（仅工程步骤与命令导航） | 不得定义角色、授权、terminal 或回执生命周期 |
 | 角色路径索引 | `knowledge/model-registry.md`（仅权威路径） | 不得镜像角色权限表 |

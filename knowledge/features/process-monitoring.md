@@ -96,7 +96,7 @@
 
 ## 6. 实际修改范围
 
-### 后端（Smart-WorkFlow/）— Steps 1-2
+### 后端（Smart-WorkFlow-Server/）— Steps 1-2
 
 | 文件 | Step | 操作 | 摘要 |
 |------|:---:|:---:|------|

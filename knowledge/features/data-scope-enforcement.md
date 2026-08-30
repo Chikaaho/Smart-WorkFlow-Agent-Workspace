@@ -102,7 +102,7 @@
 | `sw-bootstrap/src/main/resources/db/migration/{h2,postgresql}/V30__sys_role_dept.sql` | 新增 | sys_role_dept 建表（双份逐字一致） |
 | 后端 7 个纳管模块 Mapper | 修改 | sys_user `@DataScope` 直标 + 6 表等效条件纳管 |
 | 前端 `RoleList.vue` / `api/role.ts` | 修改 | 五档下拉 + 部门树多选 + 回填 |
-| `Smart-WorkFlow/功能清单.md` | 修改 | M02-F04-01 状态列 ⬜→✅ |
+| `Smart-WorkFlow-Server/功能清单.md` | 修改 | M02-F04-01 状态列 ⬜→✅ |
 | `knowledge/known-issues.md` | 修改 | I37 修复记录 + I46 登记 + I10 关联标注 |
 | `knowledge/current-status.md` | 修改 | 计数/基线/前次验证/已完成列表/迁移口径同步 |
 

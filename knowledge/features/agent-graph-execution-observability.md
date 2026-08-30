@@ -163,7 +163,7 @@ export function listExecutionNodes(executionId: number) { ... }
 | `knowledge/session-handoff.md` | 更新 §1/§2/§3/§9/§15 | D148 PASSED 为最新完成功能，基线更新 |
 | `memory/state.md` | 更新 | 标记 DONE，同步测试计数 685/78f/760t |
 | `memory/handoff.md` | 更新 | D148 PASSED，基线更新，功能数 27 |
-| `Smart-WorkFlow/功能清单.md` | 确认无变化 | M07-F02-04 保持 🟦（运行日志查看✅ + 单步调试🟦） |
+| `Smart-WorkFlow-Server/功能清单.md` | 确认无变化 | M07-F02-04 保持 🟦（运行日志查看✅ + 单步调试🟦） |
 | `todo/requirement-pool.md` | P7 条目更新 | 运行日志子集✅已核销（D148 PASSED）；单步调试继续待排期，P7 整体不核销 |
 | `product/agent-graph-execution-observability/passed/` | 归档确认 | D126 方向文档已归档 |
 | `product/agent-graph-execution-observability/receipts/` | 追加 D146-D148 回执 | 补证回执与终态同步回执 |

@@ -61,11 +61,11 @@ Owner 的自由裁量权仅属于用户本人，不自动转授给任何模型�
 |------|----------|------|------|
 | **规划** | `/usr/local/projects/Smart-WorkFlow`（本目录） | 规划代理 | 需求分析、方向制定、探索派发、回执验收、记忆维护 |
 | **执行（工作区根目录）** | `/usr/local/projects/Smart-WorkFlow` | 工作区执行代理 | 可跨规划层、后端仓库和前端仓库执行任务；按各仓库规范编写代码、运行测试并产出回执 |
-| **执行（子仓库入口）** | `Smart-WorkFlow/` 或 `Smart-WorkFlow-Web/` | 局部执行代理 | 仅在对应子仓库内执行，并遵守该子仓库的局部边界 |
+| **执行（子仓库入口）** | `Smart-WorkFlow-Server/` 或 `Smart-WorkFlow-Web/` | 局部执行代理 | 仅在对应子仓库内执行，并遵守该子仓库的局部边界 |
 | **管理员** | 全工作区 | 管理员代理 | 读取三仓全部非代码内容；更新宪法、架构文档及两端仓库工程配置；执行与管理员任务相关的 Git 操作 |
 
 工作区根目录 `/usr/local/projects/Smart-WorkFlow` 同时是规划层和统一执行入口，不是后端仓库。
-`Smart-WorkFlow/` 与 `Smart-WorkFlow-Web/` 分别是后端、前端 **executor sublayer**。
+`Smart-WorkFlow-Server/` 与 `Smart-WorkFlow-Web/` 分别是后端、前端 **executor sublayer**。
 “禁止跨前后端操作”只约束从单个子仓库入口启动的局部执行会话：后端子仓库会话不得操作前端，前端子仓库会话不得操作后端；
 从工作区根目录授权的执行会话可以按任务需要跨规划层、后端和前端执行，包括业务代码变更，但仍须遵守各仓库工程宪法、共享约束和回执要求。管理员按授权可跨三层读取全部非代码内容，维护宪法、架构文档与工程治理配置，并执行与这些管理员任务相关的 Git 操作，但不得读取实现代码或借此参与业务规划、验收和实现。
 
@@ -89,7 +89,7 @@ Owner 的自由裁量权仅属于用户本人，不自动转授给任何模型�
 | **原始知识** | `knowledge/` | ❌ | ❌ | ✅ | ✅ | 完整知识库，由 Executor 维护 |
 | **产品文档** | `product/` | ✅ | 方向/审查 | ✅ | 仅 `receipts/` | 方向只由 Planner 流转；回执历史追加保留 |
 | **待办清单** | `todo/` | ✅ | ✅ | ✅ | 条件允许 | Executor 仅按清单或方向授权写 `requirement-pool.md` |
-| **代码项目** | `Smart-WorkFlow/`、`Smart-WorkFlow-Web/` | ❌ | ❌ | ✅ | ✅ | 两端业务实现仅由 Executor 读写 |
+| **代码项目** | `Smart-WorkFlow-Server/`、`Smart-WorkFlow-Web/` | ❌ | ❌ | ✅ | ✅ | 两端业务实现仅由 Executor 读写 |
 
 **当前会话角色（硬约束）**：
 
@@ -97,7 +97,7 @@ Owner 的自由裁量权仅属于用户本人，不自动转授给任何模型�
 
 **角色规则（硬约束）**：
 
-- **规划角色**：只能读取 `system.md` + `roles/planner.md` + `memory/` + `search_fallback/` + `product/` + `todo/`；只能写入 `memory/` + `search_task/` + `product/` + `todo/`。`system.md` 与 `roles/` 只允许管理员角色维护；规划角色发现治理问题时只能向用户报告并转管理员任务。规划角色**绝对不能直接读取** `knowledge/`（完整知识库）、`Smart-WorkFlow/` 和 `Smart-WorkFlow-Web/` 的代码（含 `node_modules/`）。
+- **规划角色**：只能读取 `system.md` + `roles/planner.md` + `memory/` + `search_fallback/` + `product/` + `todo/`；只能写入 `memory/` + `search_task/` + `product/` + `todo/`。`system.md` 与 `roles/` 只允许管理员角色维护；规划角色发现治理问题时只能向用户报告并转管理员任务。规划角色**绝对不能直接读取** `knowledge/`（完整知识库）、`Smart-WorkFlow-Server/` 和 `Smart-WorkFlow-Web/` 的代码（含 `node_modules/`）。
 - **执行角色**：可读取全部目录（`knowledge/`、`memory/`、`product/`、`todo/`、两端代码），可自行拆分探索任务、启动 Sub Agent、并行探索、汇总原始材料；常规写入限 `knowledge/`、`search_fallback/`、`product/*/receipts/` 与授权的两端实现，只有阶段三唯一终态值清单或执行方向明确列出时才可写 `memory/` 与 `todo/requirement-pool.md`。实现任务和规划 `PASSED` 后的阶段三同步任务分别闭环到机器契约允许的对应终态，方向归档与最终确认仍由规划角色完成。当执行角色被规划角色委派探索时，探索任务只产出 `search_fallback/`，不产出需求方向。
 - **管理员角色**：可读取工作区知识仓、后端仓和前端仓的全部非代码内容，包括 `memory/`、`knowledge/`、`product/`、`search_task/`、`search_fallback/`、`todo/`、文档和工程配置；可写 `system.md`、架构文档及两端仓库的宪法和工程配置；可执行与管理员任务相关的 Git 操作；不得读取业务源码、测试源码或其他实现代码，不做规划/执行的任何业务操作。
 
@@ -142,7 +142,7 @@ Owner 的自由裁量权仅属于用户本人，不自动转授给任何模型�
 
 工程专属规则分别以以下文件为唯一权威：
 
-- 后端：`Smart-WorkFlow/docs/governance/engineering-constitution.md`
+- 后端：`Smart-WorkFlow-Server/docs/governance/engineering-constitution.md`
 - 前端：`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md`
 
 从工作区根入口执行跨层任务时，先适用本文件，再按实际触碰范围加载对应工程宪法。从后端或前端子仓入口启动时，仍先适用本文件的角色与入口边界，再加载本仓工程宪法；不得通过 Harness 入口文件扩权或削弱规则。
@@ -242,7 +242,7 @@ Claude 的 `.claude/settings*.json`、Codex 的权限配置及其他 Harness 工
 7. 记录潜在风险
 8. 记录后续建议
 9. 更新知识库（`current-status.md`、功能追踪文件等）
-10. **知识库全量同步与 memory 压缩（强制项，2026-08-13 新增，D74；2026-08-16 强化，D85 铁律）**：每轮需求（功能）收尾时，规划角色必须向执行角色下发一次知识库全量更新任务，由执行角色完成：①`Smart-WorkFlow/功能清单.md` 状态列与本轮交付实际对齐（含本轮触碰的全部明细 ID），**🟦/⬜ 行的缺口同时同步进 `todo/requirement-pool.md`（P 编号登记，防"清单独有"）**；②`knowledge/current-status.md`、`knowledge/features/<name>.md`、`knowledge/known-issues.md` 与本轮结果同步（含清单计数）——**同步范围必须覆盖文件全量（全节/全文），禁止"顶部更新、中下部残留"（D83 曾发现 17 处欠账）**；③按 §3.4 唯一状态源收缩 `memory/`：每个短记忆文件 <5KB、总量 <20KB，只保留当前决策摘要与权威路径，详情改为 knowledge/receipt 指针；④执行角色在回执中报告"清单变更明细 + 知识库触碰文件清单 + memory 压缩前后字节数与保留/移除摘要"，规划角色验收时逐项核对。**依据（D74）**：known-issues I1（清单与代码脱节）在 2026-07-24 首轮修复后于 2026-08-12 复发（间隔仅约3周，89 条中 34 条漂移），证明"外部触发式一次性核对"不可持续，必须固化为每轮收尾的强制流程项。**依据（D85）**：信息分层铁律——knowledge=完整权威、memory=最少信息摘要，执行角色触碰状态文件即同步 knowledge 全量。
+10. **知识库全量同步与 memory 压缩（强制项，2026-08-13 新增，D74；2026-08-16 强化，D85 铁律）**：每轮需求（功能）收尾时，规划角色必须向执行角色下发一次知识库全量更新任务，由执行角色完成：①`Smart-WorkFlow-Server/功能清单.md` 状态列与本轮交付实际对齐（含本轮触碰的全部明细 ID），**🟦/⬜ 行的缺口同时同步进 `todo/requirement-pool.md`（P 编号登记，防"清单独有"）**；②`knowledge/current-status.md`、`knowledge/features/<name>.md`、`knowledge/known-issues.md` 与本轮结果同步（含清单计数）——**同步范围必须覆盖文件全量（全节/全文），禁止"顶部更新、中下部残留"（D83 曾发现 17 处欠账）**；③按 §3.4 唯一状态源收缩 `memory/`：每个短记忆文件 <5KB、总量 <20KB，只保留当前决策摘要与权威路径，详情改为 knowledge/receipt 指针；④执行角色在回执中报告"清单变更明细 + 知识库触碰文件清单 + memory 压缩前后字节数与保留/移除摘要"，规划角色验收时逐项核对。**依据（D74）**：known-issues I1（清单与代码脱节）在 2026-07-24 首轮修复后于 2026-08-12 复发（间隔仅约3周，89 条中 34 条漂移），证明"外部触发式一次性核对"不可持续，必须固化为每轮收尾的强制流程项。**依据（D85）**：信息分层铁律——knowledge=完整权威、memory=最少信息摘要，执行角色触碰状态文件即同步 knowledge 全量。
 11. 生成跨会话交接摘要 → 更新 `memory/handoff.md`
 12. 生成下一轮会话启动提示词
 
@@ -366,7 +366,7 @@ product/<feature>/
 
 | 项目 | 定位 | 技术主体 |
 |------|------|----------|
-| `Smart-WorkFlow/` | 后端 API 服务 | Java 21 + Spring Boot 3.4 模块化单体 |
+| `Smart-WorkFlow-Server/` | 后端 API 服务 | Java 21 + Spring Boot 3.4 模块化单体 |
 | `Smart-WorkFlow-Web/` | 前端 SPA | Vue 3 + TypeScript + Vite |
 | `product/` | 需求方向与回执仓库（原始记忆） | 按功能组织的需求方向文档与回执归档（roles/planner.md §8） |
 | `todo/` | 暂不修复清单 | 记录已决策暂不修复的已知问题索引，见 §11.2 |
@@ -407,7 +407,7 @@ product/                   — 需求方向与回执仓库（按功能组织）
 todo/                      — 暂不修复清单
   ├── README.md
   └── requirement-pool.md  — 需求缺口池；Executor 仅按终态清单/方向授权机械同步
-Smart-WorkFlow/            — 后端代码（规划角色不读，执行角色可读）
+Smart-WorkFlow-Server/            — 后端代码（规划角色不读，执行角色可读）
 Smart-WorkFlow-Web/        — 前端代码（规划角色不读，执行角色可读）
 ```
 
@@ -473,7 +473,7 @@ contracts/ → foundation/ → security/ → adapters/ → modules/
 
 ### 11.6 当前状态导航
 
-本宪法不固化模块完成度、功能数或测试基线。当前能力与唯一下一动作只读取 `knowledge/current-status.md`；正式功能及明细范围读取 `Smart-WorkFlow/功能清单.md`。
+本宪法不固化模块完成度、功能数或测试基线。当前能力与唯一下一动作只读取 `knowledge/current-status.md`；正式功能及明细范围读取 `Smart-WorkFlow-Server/功能清单.md`。
 
 ### 11.7 关键工程约束（速查）
 

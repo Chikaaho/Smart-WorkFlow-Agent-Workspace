@@ -38,7 +38,7 @@
 
 ## 4. 功能 ID
 
-- 正式功能与明细 ID 的结构、状态和当前数量只以 `Smart-WorkFlow/功能清单.md` 为准。
+- 正式功能与明细 ID 的结构、状态和当前数量只以 `Smart-WorkFlow-Server/功能清单.md` 为准。
 - 需求池只以 `todo/requirement-pool.md` 为准；本文件不复制 P/I 数量或状态。
 
 ## 5. 前端设计与边界
@@ -76,5 +76,5 @@ ps -ef | grep -E '[m]vn|[j]ava'
 | completion receipt 与补证格式 | `roles/executor.md` §8 |
 | product 生命周期 | `system.md` §5.5 |
 | 当前状态 | `knowledge/current-status.md` |
-| 后端工程专属规则 | `Smart-WorkFlow/docs/governance/engineering-constitution.md` |
+| 后端工程专属规则 | `Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` |
 | 前端工程专属规则 | `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` |

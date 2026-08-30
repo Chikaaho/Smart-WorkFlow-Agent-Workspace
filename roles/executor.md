@@ -25,7 +25,7 @@
 （原 system.md §1.4）
 
 - 读取全部目录：`knowledge/`、`product/`、`memory/`、`search_task/`、`search_fallback/`、`system.md`、`todo/`、两端代码
-- 在 `Smart-WorkFlow/`（后端会话）或 `Smart-WorkFlow-Web/`（前端会话）内编写业务代码
+- 在 `Smart-WorkFlow-Server/`（后端会话）或 `Smart-WorkFlow-Web/`（前端会话）内编写业务代码
 - 运行自己项目的编译/测试命令（限内存，见本文 §9）
 - 自行拆分 Step、设计每个 Step 的执行/测试方案（基于需求方向文档）
 - 自主执行、自主修复、自验收（本文 §4）
@@ -325,7 +325,7 @@
 
 （原 system.md §12；执行角色使用，规划角色不直接执行）
 
-### 后端 (Smart-WorkFlow/)
+### 后端 (Smart-WorkFlow-Server/)
 
 ```bash
 cd Smart-WorkFlow
@@ -365,12 +365,12 @@ NODE_OPTIONS="--max-old-space-size=2048" pnpm typecheck && NODE_OPTIONS="--max-o
 |------|------|
 | `knowledge/` | 完整知识库；当前规模与状态以其索引和 `current-status.md` 为准 |
 | `product/<name>/ready/`、`receipts/`、`passed/` | 方向、历史回执与已归档方向（规划角色也可读） |
-| `Smart-WorkFlow/` 代码 | 后端 Java 代码 |
+| `Smart-WorkFlow-Server/` 代码 | 后端 Java 代码 |
 | `Smart-WorkFlow-Web/` 代码 | 前端 Vue/TS 代码 |
 | `search_task/*.md` | 探索任务（由规划角色写入） |
-| `Smart-WorkFlow/docs/governance/engineering-constitution.md` | 后端工程宪法（后端执行角色参考） |
+| `Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` | 后端工程宪法（后端执行角色参考） |
 | `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` | 前端工程宪法（前端执行角色参考） |
-| `Smart-WorkFlow/功能清单.md` | 全平台正式功能及明细清单（不在角色文件固化数量） |
+| `Smart-WorkFlow-Server/功能清单.md` | 全平台正式功能及明细清单（不在角色文件固化数量） |
 | `todo/README.md`、`todo/requirement-pool.md` | 暂不修复索引与需求缺口池；写入须有方向/终态清单授权 |
 
 ---
