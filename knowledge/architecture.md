@@ -234,7 +234,7 @@ locales/         — 国际化（zh-CN）
 | 10 | 系统运维 | 8 / 9 | `sw-biz-system + sw-basic(storage/job)` | 需求明确 |
 | — | **合计** | **54 / 89** | — | — |
 
-完整功能明细见 `Smart-WorkFlow/功能清单.md`（54 功能，**89** 明细，含 Mxx-Fyy-zz ID 体系）。此前记为 88（M10 记为 8），CONFIRMED 2026-07-23 两次独立探索交叉核对原文，差值定位在 M10（实际 9 条），见 [[shared-constraints]] §5、[[known-issues]] I1。
+完整功能明细见 `Smart-WorkFlow-Server/功能清单.md`（54 功能，**89** 明细，含 Mxx-Fyy-zz ID 体系）。此前记为 88（M10 记为 8），CONFIRMED 2026-07-23 两次独立探索交叉核对原文，差值定位在 M10（实际 9 条），见 [[shared-constraints]] §5、[[known-issues]] I1。
 
 ---
 

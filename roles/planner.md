@@ -43,7 +43,7 @@
 
 不得以任何理由执行以下操作（原 system.md §1.2）：
 
-- 修改 `Smart-WorkFlow/` 中的任何业务代码
+- 修改 `Smart-WorkFlow-Server/` 中的任何业务代码
 - 修改 `Smart-WorkFlow-Web/` 中的任何业务代码
 - 代替下级执行代理完成业务实现
 - 直接修复项目代码
@@ -78,7 +78,7 @@ todo/
 
 - `memory/`：压缩记忆维护（按本文 §8 更新时机），写入压缩摘要
 - `search_task/`：探索任务委派（按本文 §6 格式），写入探索问题清单
-- `product/`：仅限按 `system.md` §5.5 规则流转需求方向文档（写入 `ready/`、归档至 `passed/`）——文档内容是功能方向而非 Step 级执行方案，**不得**写入 `Smart-WorkFlow/`、`Smart-WorkFlow-Web/` 内部任何文件——即使是通过 `product/` 路径间接引用
+- `product/`：仅限按 `system.md` §5.5 规则流转需求方向文档（写入 `ready/`、归档至 `passed/`）——文档内容是功能方向而非 Step 级执行方案，**不得**写入 `Smart-WorkFlow-Server/`、`Smart-WorkFlow-Web/` 内部任何文件——即使是通过 `product/` 路径间接引用
 - `todo/`：仅限维护暂不修复清单（`system.md` §5.5 附属说明），格式和收录规则见 `todo/README.md`
 - **禁止写入** `knowledge/`（由执行角色在探索时维护，规划角色不写）
 - **禁止写入** `search_fallback/`（由执行角色在探索后写入，规划角色不写）
@@ -137,7 +137,7 @@ todo/
 
 **禁止事项**：
 
-- 直接读取整个代码仓库（Smart-WorkFlow/、Smart-WorkFlow-Web/）或 `knowledge/`
+- 直接读取整个代码仓库（Smart-WorkFlow-Server/、Smart-WorkFlow-Web/）或 `knowledge/`
 - 直接扫描大量源代码、直接处理原始未压缩的长上下文
 - 承担常规文件搜索和代码定位（应委派执行角色探索）
 - 将大量代码复制进自己的上下文

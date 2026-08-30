@@ -59,7 +59,7 @@
 1. `mvn -q compile` 退出码 0 ✅
 2. `mvn -q test` 退出码 0 + Surefire XML 汇总运行期 `Tests run` 总数 203，逐模块分解齐全（sw-biz-form 76 / sw-biz-system 37 / sw-basic-job 37 / sw-bpm 26 / sw-basic-storage 12 / sw-basic-notify 7 / sw-security 4 / sw-common 4）✅
 3. 运行期总数 203，与静态 `@Test` 计数 203 完全吻合、零差异；原「406」判定为回执误报（ASSUMED，未能溯源具体成因） ✅
-4. `git status` 确认 `Smart-WorkFlow/` 无源码 diff（规划层独立复核：`git status --short` 无输出） ✅
+4. `git status` 确认 `Smart-WorkFlow-Server/` 无源码 diff（规划层独立复核：`git status --short` 无输出） ✅
 5. 结论 PASSED ✅
 
 **规划层独立复核**：git status 干净性已由根代理自行执行 `git status --short` 验证（非仅采信回执），证据一致。

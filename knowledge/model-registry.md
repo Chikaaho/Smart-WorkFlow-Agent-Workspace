@@ -13,7 +13,7 @@
 | Admin 完整定义 | `roles/admin.md` |
 | Executor terminal schema 与合法 state | `.codex/governance/terminal-contract.json` |
 | terminal JSON 语义校验 | `.codex/governance/validate-terminal.sh` |
-| 后端工程专属规则 | `Smart-WorkFlow/docs/governance/engineering-constitution.md` |
+| 后端工程专属规则 | `Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` |
 | 前端工程专属规则 | `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` |
 
 ## 使用规则
