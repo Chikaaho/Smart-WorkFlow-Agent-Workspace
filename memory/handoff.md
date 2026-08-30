@@ -10,4 +10,8 @@
 
 **上一**：`form-data-import-export`（P32/M03-F04-02）COMPLETED 已确认（2026-08-29，第 36 个）：36、✅32/🟦25/⬜33、947/0/0/0 agent346、110f/1057t/3sk、H2 V43/PG V43；P32 已核销。
 
-**下一动作**：规划比较并选择下一唯一正式功能。无活动功能、无活动治理/管理员任务。
+**当前发布核验**：执行探索已完成并通过规划审查，但 `v0.0.1-beta` 裁决为 `NOT_READY`。真实页面核心业务闭环、后端 955/0/0/0、H2/PG 迁移链、前端 typecheck/lint/build 和权限拒绝已通过；阻断为 B1 前端测试 1059/1060、B2 README 缺 `SW_CIPHER_KEY` 启动前置、B3 Redis 可选口径与真实运行不一致。回执见 `product/v0.0.1-beta-release-readiness/receipts/planning-review-v0.0.1-beta-release-readiness-20260830.md`。
+
+**当前修复结果**：B1～B3 已通过规划验收并归档 `product/v0.0.1-beta-release-readiness/passed/direction-v0.0.1-beta-release-blockers.md`。最终证据为前端 110f/1060t/0sk、`SW_CIPHER_KEY` 干净启动成功、Redis 停机 503/恢复后受保护请求 200/无 token 401；审查见 `receipts/planning-review-v0.0.1-beta-release-blockers-20260830.md`。
+
+**下一动作**：Owner 对三仓精确提交范围作 Git 授权，形成干净候选 commit 后执行最终发布就绪复核。当前修复均未提交，未冻结候选前不得创建 tag；当前无活动正式功能。
