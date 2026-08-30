@@ -46,6 +46,10 @@ cd Smart-WorkFlow-Knowledge
 # 2. 按需克隆代码仓（通常放置于本仓同级的 Smart-WorkFlow/ 与 Smart-WorkFlow-Web/ 目录）
 git clone git@github.com:Chikaaho/Smart-WorkFlow.git
 git clone git@github.com:Chikaaho/Smart-WorkFlow-Web.git
+
+# 3. 启动后端前必须准备：SW_CIPHER_KEY 环境变量与 Redis（均为必需，步骤见后端 README「本地启动」）
+export SW_CIPHER_KEY=$(openssl rand -base64 32)
+redis-cli ping   # 就绪检查必须输出 PONG；未启动先执行 redis-server --daemonize yes
 ```
 
 新参与者的**推荐入口顺序**：

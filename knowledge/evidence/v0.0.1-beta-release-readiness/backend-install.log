@@ -1,0 +1,908 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Smart-WorkFlow                                                     [pom]
+[INFO] Smart-WorkFlow :: Dependencies                                     [pom]
+[INFO] Smart-WorkFlow :: Common                                           [jar]
+[INFO] Smart-WorkFlow :: Security                                         [jar]
+[INFO] Smart-WorkFlow :: Framework                                        [pom]
+[INFO] Smart-WorkFlow :: Basic :: Storage :: API                          [jar]
+[INFO] Smart-WorkFlow :: Basic :: Storage :: Biz                          [jar]
+[INFO] Smart-WorkFlow :: Basic :: Notify :: API                           [jar]
+[INFO] Smart-WorkFlow :: Basic :: Notify :: Biz                           [jar]
+[INFO] Smart-WorkFlow :: Basic :: Notify                                  [pom]
+[INFO] Smart-WorkFlow :: Basic :: Job :: API                              [jar]
+[INFO] Smart-WorkFlow :: Basic :: Job :: Biz                              [jar]
+[INFO] Smart-WorkFlow :: Basic :: IoT                                     [jar]
+[INFO] Smart-WorkFlow :: Basic :: Knowledge                               [jar]
+[INFO] Smart-WorkFlow :: Basic :: Agent                                   [jar]
+[INFO] Smart-WorkFlow :: Basic                                            [pom]
+[INFO] Smart-WorkFlow :: Biz :: System :: API                             [jar]
+[INFO] Smart-WorkFlow :: Biz :: System :: Biz                             [jar]
+[INFO] Smart-WorkFlow :: Biz :: System                                    [pom]
+[INFO] Smart-WorkFlow :: Biz :: Form :: API                               [jar]
+[INFO] Smart-WorkFlow :: Biz :: Form :: Biz                               [jar]
+[INFO] Smart-WorkFlow :: Biz :: Form                                      [pom]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: API                                [jar]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: Engine                             [jar]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: Process                            [jar]
+[INFO] Smart-WorkFlow :: Biz :: BPM                                       [pom]
+[INFO] Smart-WorkFlow :: Biz :: OpenAPI :: API                            [jar]
+[INFO] Smart-WorkFlow :: Biz :: OpenAPI :: Biz                            [jar]
+[INFO] Smart-WorkFlow :: Biz :: OpenAPI                                   [pom]
+[INFO] Smart-WorkFlow :: Biz                                              [pom]
+[INFO] Smart-WorkFlow :: Bootstrap                                        [jar]
+[INFO] 
+[INFO] ----------------------< com.sw.ck:smart-workflow >----------------------
+[INFO] Building Smart-WorkFlow 1.0.0-SNAPSHOT                            [1/31]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ smart-workflow ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/smart-workflow/1.0.0-SNAPSHOT/smart-workflow-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-dependencies >----------------------
+[INFO] Building Smart-WorkFlow :: Dependencies 1.0.0-SNAPSHOT            [2/31]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-dependencies ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-dependencies/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-dependencies/1.0.0-SNAPSHOT/sw-dependencies-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] ------------------------< com.sw.ck:sw-common >-------------------------
+[INFO] Building Smart-WorkFlow :: Common 1.0.0-SNAPSHOT                  [3/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-common ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-common ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-common ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-common ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-common ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ sw-common ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-common ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-framework/sw-common/target/sw-common-1.0.0-SNAPSHOT.jar to /Users/chikan/.m2/repository/com/sw/ck/sw-common/1.0.0-SNAPSHOT/sw-common-1.0.0-SNAPSHOT.jar
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-framework/sw-common/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-common/1.0.0-SNAPSHOT/sw-common-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] -----------------------< com.sw.ck:sw-security >------------------------
+[INFO] Building Smart-WorkFlow :: Security 1.0.0-SNAPSHOT                [4/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-security ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-security ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-security ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-security ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-security ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ sw-security ---
+[INFO] Building jar: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-framework/sw-security/target/sw-security-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-security ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-framework/sw-security/target/sw-security-1.0.0-SNAPSHOT.jar to /Users/chikan/.m2/repository/com/sw/ck/sw-security/1.0.0-SNAPSHOT/sw-security-1.0.0-SNAPSHOT.jar
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-framework/sw-security/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-security/1.0.0-SNAPSHOT/sw-security-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] -----------------------< com.sw.ck:sw-framework >-----------------------
+[INFO] Building Smart-WorkFlow :: Framework 1.0.0-SNAPSHOT               [5/31]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-framework ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-framework/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-framework/1.0.0-SNAPSHOT/sw-framework-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] -------------------< com.sw.ck:sw-basic-storage-api >-------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Storage :: API 1.0.0-SNAPSHOT [6/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-storage-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-storage/sw-basic-storage-api/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-storage-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-storage-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-storage/sw-basic-storage-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-storage-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-storage-api ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ sw-basic-storage-api ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-basic-storage-api ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-storage/sw-basic-storage-api/target/sw-basic-storage-api-1.0.0-SNAPSHOT.jar to /Users/chikan/.m2/repository/com/sw/ck/sw-basic-storage-api/1.0.0-SNAPSHOT/sw-basic-storage-api-1.0.0-SNAPSHOT.jar
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-storage/sw-basic-storage-api/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-basic-storage-api/1.0.0-SNAPSHOT/sw-basic-storage-api-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] -------------------< com.sw.ck:sw-basic-storage-biz >-------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Storage :: Biz 1.0.0-SNAPSHOT [7/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-storage-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-storage-biz ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 15 source files with javac [debug parameters target 21] to target/classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-storage-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-storage-biz ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 3 source files with javac [debug parameters target 21] to target/test-classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-storage/sw-basic-storage-biz/src/test/java/com/sw/ck/storage/controller/StorageControllerTest.java: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-storage/sw-basic-storage-biz/src/test/java/com/sw/ck/storage/controller/StorageControllerTest.java使用或覆盖了已过时的 API。
+[INFO] /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-storage/sw-basic-storage-biz/src/test/java/com/sw/ck/storage/controller/StorageControllerTest.java: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+[INFO] /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-storage/sw-basic-storage-biz/src/test/java/com/sw/ck/storage/service/StorageFileServiceImplDataScopeTest.java: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-storage/sw-basic-storage-biz/src/test/java/com/sw/ck/storage/service/StorageFileServiceImplDataScopeTest.java使用了未经检查或不安全的操作。
+[INFO] /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-storage/sw-basic-storage-biz/src/test/java/com/sw/ck/storage/service/StorageFileServiceImplDataScopeTest.java: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-storage-biz ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ sw-basic-storage-biz ---
+[INFO] Building jar: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-storage/sw-basic-storage-biz/target/sw-basic-storage-biz-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-basic-storage-biz ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-storage/sw-basic-storage-biz/target/sw-basic-storage-biz-1.0.0-SNAPSHOT.jar to /Users/chikan/.m2/repository/com/sw/ck/sw-basic-storage-biz/1.0.0-SNAPSHOT/sw-basic-storage-biz-1.0.0-SNAPSHOT.jar
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-storage/sw-basic-storage-biz/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-basic-storage-biz/1.0.0-SNAPSHOT/sw-basic-storage-biz-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] -------------------< com.sw.ck:sw-basic-notify-api >--------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Notify :: API 1.0.0-SNAPSHOT  [8/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-notify-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-notify/sw-basic-notify-api/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-notify-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-notify-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-notify/sw-basic-notify-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-notify-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-notify-api ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ sw-basic-notify-api ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-basic-notify-api ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-notify/sw-basic-notify-api/target/sw-basic-notify-api-1.0.0-SNAPSHOT.jar to /Users/chikan/.m2/repository/com/sw/ck/sw-basic-notify-api/1.0.0-SNAPSHOT/sw-basic-notify-api-1.0.0-SNAPSHOT.jar
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-notify/sw-basic-notify-api/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-basic-notify-api/1.0.0-SNAPSHOT/sw-basic-notify-api-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] -------------------< com.sw.ck:sw-basic-notify-biz >--------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Notify :: Biz 1.0.0-SNAPSHOT  [9/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-notify-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-notify-biz ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 22 source files with javac [debug parameters target 21] to target/classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-notify-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-notify-biz ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 6 source files with javac [debug parameters target 21] to target/test-classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-notify-biz ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ sw-basic-notify-biz ---
+[INFO] Building jar: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-notify/sw-basic-notify-biz/target/sw-basic-notify-biz-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-basic-notify-biz ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-notify/sw-basic-notify-biz/target/sw-basic-notify-biz-1.0.0-SNAPSHOT.jar to /Users/chikan/.m2/repository/com/sw/ck/sw-basic-notify-biz/1.0.0-SNAPSHOT/sw-basic-notify-biz-1.0.0-SNAPSHOT.jar
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-notify/sw-basic-notify-biz/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-basic-notify-biz/1.0.0-SNAPSHOT/sw-basic-notify-biz-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-basic-notify >----------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Notify 1.0.0-SNAPSHOT        [10/31]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-basic-notify ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-notify/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-basic-notify/1.0.0-SNAPSHOT/sw-basic-notify-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-basic-job-api >---------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Job :: API 1.0.0-SNAPSHOT    [11/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-job-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-job/sw-basic-job-api/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-job-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-job-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-job/sw-basic-job-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-job-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-job-api ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ sw-basic-job-api ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-basic-job-api ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-job/sw-basic-job-api/target/sw-basic-job-api-1.0.0-SNAPSHOT.jar to /Users/chikan/.m2/repository/com/sw/ck/sw-basic-job-api/1.0.0-SNAPSHOT/sw-basic-job-api-1.0.0-SNAPSHOT.jar
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-job/sw-basic-job-api/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-basic-job-api/1.0.0-SNAPSHOT/sw-basic-job-api-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-basic-job-biz >---------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Job :: Biz 1.0.0-SNAPSHOT    [12/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-job-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-job-biz ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 19 source files with javac [debug parameters target 21] to target/classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-job-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-job-biz ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 6 source files with javac [debug parameters target 21] to target/test-classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-job/sw-basic-job-biz/src/test/java/com/sw/ck/job/impl/JobInfoServiceImplDataScopeTest.java: 某些输入文件使用了未经检查或不安全的操作。
+[INFO] /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-job/sw-basic-job-biz/src/test/java/com/sw/ck/job/impl/JobInfoServiceImplDataScopeTest.java: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-job-biz ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ sw-basic-job-biz ---
+[INFO] Building jar: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-job/sw-basic-job-biz/target/sw-basic-job-biz-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-basic-job-biz ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-job/sw-basic-job-biz/target/sw-basic-job-biz-1.0.0-SNAPSHOT.jar to /Users/chikan/.m2/repository/com/sw/ck/sw-basic-job-biz/1.0.0-SNAPSHOT/sw-basic-job-biz-1.0.0-SNAPSHOT.jar
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-job/sw-basic-job-biz/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-basic-job-biz/1.0.0-SNAPSHOT/sw-basic-job-biz-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] -----------------------< com.sw.ck:sw-basic-iot >-----------------------
+[INFO] Building Smart-WorkFlow :: Basic :: IoT 1.0.0-SNAPSHOT           [13/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-iot ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-iot ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 22 source files with javac [debug parameters target 21] to target/classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-iot ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-iot/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-iot ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 5 source files with javac [debug parameters target 21] to target/test-classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-iot ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ sw-basic-iot ---
+[INFO] Building jar: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-iot/target/sw-basic-iot-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-basic-iot ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-iot/target/sw-basic-iot-1.0.0-SNAPSHOT.jar to /Users/chikan/.m2/repository/com/sw/ck/sw-basic-iot/1.0.0-SNAPSHOT/sw-basic-iot-1.0.0-SNAPSHOT.jar
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-iot/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-basic-iot/1.0.0-SNAPSHOT/sw-basic-iot-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-basic-knowledge >--------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Knowledge 1.0.0-SNAPSHOT     [14/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-knowledge ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-knowledge ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-knowledge ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-knowledge/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-knowledge ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-knowledge ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ sw-basic-knowledge ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-basic-knowledge ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-knowledge/target/sw-basic-knowledge-1.0.0-SNAPSHOT.jar to /Users/chikan/.m2/repository/com/sw/ck/sw-basic-knowledge/1.0.0-SNAPSHOT/sw-basic-knowledge-1.0.0-SNAPSHOT.jar
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-knowledge/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-basic-knowledge/1.0.0-SNAPSHOT/sw-basic-knowledge-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] ----------------------< com.sw.ck:sw-basic-agent >----------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Agent 1.0.0-SNAPSHOT         [15/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-agent ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-agent ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 76 source files with javac [debug parameters target 21] to target/classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-agent ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-agent ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 29 source files with javac [debug parameters target 21] to target/test-classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-agent ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ sw-basic-agent ---
+[INFO] Building jar: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-agent/target/sw-basic-agent-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-basic-agent ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-agent/target/sw-basic-agent-1.0.0-SNAPSHOT.jar to /Users/chikan/.m2/repository/com/sw/ck/sw-basic-agent/1.0.0-SNAPSHOT/sw-basic-agent-1.0.0-SNAPSHOT.jar
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/sw-basic-agent/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-basic-agent/1.0.0-SNAPSHOT/sw-basic-agent-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] -------------------------< com.sw.ck:sw-basic >-------------------------
+[INFO] Building Smart-WorkFlow :: Basic 1.0.0-SNAPSHOT                  [16/31]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-basic ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-basic/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-basic/1.0.0-SNAPSHOT/sw-basic-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-biz-system-api >---------------------
+[INFO] Building Smart-WorkFlow :: Biz :: System :: API 1.0.0-SNAPSHOT   [17/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-biz-system-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-system/sw-biz-system-api/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-biz-system-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-biz-system-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-system/sw-biz-system-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-biz-system-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-biz-system-api ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ sw-biz-system-api ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-biz-system-api ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-system/sw-biz-system-api/target/sw-biz-system-api-1.0.0-SNAPSHOT.jar to /Users/chikan/.m2/repository/com/sw/ck/sw-biz-system-api/1.0.0-SNAPSHOT/sw-biz-system-api-1.0.0-SNAPSHOT.jar
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-system/sw-biz-system-api/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-biz-system-api/1.0.0-SNAPSHOT/sw-biz-system-api-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-biz-system-biz >---------------------
+[INFO] Building Smart-WorkFlow :: Biz :: System :: Biz 1.0.0-SNAPSHOT   [18/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-biz-system-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-biz-system-biz ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 66 source files with javac [debug parameters target 21] to target/classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-biz-system-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-biz-system-biz ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 25 source files with javac [debug parameters target 21] to target/test-classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/usergroup/SysUserGroupServiceTest.java: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/usergroup/SysUserGroupServiceTest.java使用了未经检查或不安全的操作。
+[INFO] /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/usergroup/SysUserGroupServiceTest.java: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-biz-system-biz ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ sw-biz-system-biz ---
+[INFO] Building jar: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-system/sw-biz-system-biz/target/sw-biz-system-biz-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-biz-system-biz ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-system/sw-biz-system-biz/target/sw-biz-system-biz-1.0.0-SNAPSHOT.jar to /Users/chikan/.m2/repository/com/sw/ck/sw-biz-system-biz/1.0.0-SNAPSHOT/sw-biz-system-biz-1.0.0-SNAPSHOT.jar
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-system/sw-biz-system-biz/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-biz-system-biz/1.0.0-SNAPSHOT/sw-biz-system-biz-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] ----------------------< com.sw.ck:sw-biz-system >-----------------------
+[INFO] Building Smart-WorkFlow :: Biz :: System 1.0.0-SNAPSHOT          [19/31]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-biz-system ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-system/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-biz-system/1.0.0-SNAPSHOT/sw-biz-system-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-biz-form-api >----------------------
+[INFO] Building Smart-WorkFlow :: Biz :: Form :: API 1.0.0-SNAPSHOT     [20/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-biz-form-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-form/sw-biz-form-api/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-biz-form-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-biz-form-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-form/sw-biz-form-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-biz-form-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-biz-form-api ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ sw-biz-form-api ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-biz-form-api ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-form/sw-biz-form-api/target/sw-biz-form-api-1.0.0-SNAPSHOT.jar to /Users/chikan/.m2/repository/com/sw/ck/sw-biz-form-api/1.0.0-SNAPSHOT/sw-biz-form-api-1.0.0-SNAPSHOT.jar
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-form/sw-biz-form-api/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-biz-form-api/1.0.0-SNAPSHOT/sw-biz-form-api-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-biz-form-biz >----------------------
+[INFO] Building Smart-WorkFlow :: Biz :: Form :: Biz 1.0.0-SNAPSHOT     [21/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-biz-form-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 7 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-biz-form-biz ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 35 source files with javac [debug parameters target 21] to target/classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-biz-form-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-biz-form-biz ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 9 source files with javac [debug parameters target 21] to target/test-classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-biz-form-biz ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ sw-biz-form-biz ---
+[INFO] Building jar: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-form/sw-biz-form-biz/target/sw-biz-form-biz-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-biz-form-biz ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-form/sw-biz-form-biz/target/sw-biz-form-biz-1.0.0-SNAPSHOT.jar to /Users/chikan/.m2/repository/com/sw/ck/sw-biz-form-biz/1.0.0-SNAPSHOT/sw-biz-form-biz-1.0.0-SNAPSHOT.jar
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-form/sw-biz-form-biz/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-biz-form-biz/1.0.0-SNAPSHOT/sw-biz-form-biz-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] -----------------------< com.sw.ck:sw-biz-form >------------------------
+[INFO] Building Smart-WorkFlow :: Biz :: Form 1.0.0-SNAPSHOT            [22/31]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-biz-form ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-form/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-biz-form/1.0.0-SNAPSHOT/sw-biz-form-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] ------------------------< com.sw.ck:sw-bpm-api >------------------------
+[INFO] Building Smart-WorkFlow :: Biz :: BPM :: API 1.0.0-SNAPSHOT      [23/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-bpm-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-api/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-bpm-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-bpm-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-bpm-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-bpm-api ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ sw-bpm-api ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-bpm-api ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-api/target/sw-bpm-api-1.0.0-SNAPSHOT.jar to /Users/chikan/.m2/repository/com/sw/ck/sw-bpm-api/1.0.0-SNAPSHOT/sw-bpm-api-1.0.0-SNAPSHOT.jar
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-api/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-bpm-api/1.0.0-SNAPSHOT/sw-bpm-api-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] ----------------------< com.sw.ck:sw-bpm-engine >-----------------------
+[INFO] Building Smart-WorkFlow :: Biz :: BPM :: Engine 1.0.0-SNAPSHOT   [24/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-bpm-engine ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-bpm-engine ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 26 source files with javac [debug parameters target 21] to target/classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/config/BpmEngineAutoConfiguration.java: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/config/BpmEngineAutoConfiguration.java使用或覆盖了已过时的 API。
+[INFO] /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/config/BpmEngineAutoConfiguration.java: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-bpm-engine ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-bpm-engine ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 7 source files with javac [debug parameters target 21] to target/test-classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-bpm-engine ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ sw-bpm-engine ---
+[INFO] Building jar: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-engine/target/sw-bpm-engine-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-bpm-engine ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-engine/target/sw-bpm-engine-1.0.0-SNAPSHOT.jar to /Users/chikan/.m2/repository/com/sw/ck/sw-bpm-engine/1.0.0-SNAPSHOT/sw-bpm-engine-1.0.0-SNAPSHOT.jar
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-engine/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-bpm-engine/1.0.0-SNAPSHOT/sw-bpm-engine-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] ----------------------< com.sw.ck:sw-bpm-process >----------------------
+[INFO] Building Smart-WorkFlow :: Biz :: BPM :: Process 1.0.0-SNAPSHOT  [25/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-bpm-process ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-bpm-process ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 35 source files with javac [debug parameters target 21] to target/classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/ProcessStartService.java: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/ProcessStartService.java使用或覆盖了已过时的 API。
+[INFO] /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/ProcessStartService.java: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-bpm-process ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-bpm-process ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 9 source files with javac [debug parameters target 21] to target/test-classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-bpm-process ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ sw-bpm-process ---
+[INFO] Building jar: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-process/target/sw-bpm-process-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-bpm-process ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-process/target/sw-bpm-process-1.0.0-SNAPSHOT.jar to /Users/chikan/.m2/repository/com/sw/ck/sw-bpm-process/1.0.0-SNAPSHOT/sw-bpm-process-1.0.0-SNAPSHOT.jar
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-bpm/sw-bpm-process/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-bpm-process/1.0.0-SNAPSHOT/sw-bpm-process-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] --------------------------< com.sw.ck:sw-bpm >--------------------------
+[INFO] Building Smart-WorkFlow :: Biz :: BPM 1.0.0-SNAPSHOT             [26/31]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-bpm ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-bpm/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-bpm/1.0.0-SNAPSHOT/sw-bpm-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-biz-openapi-api >--------------------
+[INFO] Building Smart-WorkFlow :: Biz :: OpenAPI :: API 1.0.0-SNAPSHOT  [27/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-biz-openapi-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-openapi/sw-biz-openapi-api/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-biz-openapi-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-biz-openapi-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-openapi/sw-biz-openapi-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-biz-openapi-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-biz-openapi-api ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ sw-biz-openapi-api ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-biz-openapi-api ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-openapi/sw-biz-openapi-api/target/sw-biz-openapi-api-1.0.0-SNAPSHOT.jar to /Users/chikan/.m2/repository/com/sw/ck/sw-biz-openapi-api/1.0.0-SNAPSHOT/sw-biz-openapi-api-1.0.0-SNAPSHOT.jar
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-openapi/sw-biz-openapi-api/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-biz-openapi-api/1.0.0-SNAPSHOT/sw-biz-openapi-api-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-biz-openapi-biz >--------------------
+[INFO] Building Smart-WorkFlow :: Biz :: OpenAPI :: Biz 1.0.0-SNAPSHOT  [28/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-biz-openapi-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-biz-openapi-biz ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug parameters target 21] to target/classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-biz-openapi-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-openapi/sw-biz-openapi-biz/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-biz-openapi-biz ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-biz-openapi-biz ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ sw-biz-openapi-biz ---
+[INFO] Building jar: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-openapi/sw-biz-openapi-biz/target/sw-biz-openapi-biz-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-biz-openapi-biz ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-openapi/sw-biz-openapi-biz/target/sw-biz-openapi-biz-1.0.0-SNAPSHOT.jar to /Users/chikan/.m2/repository/com/sw/ck/sw-biz-openapi-biz/1.0.0-SNAPSHOT/sw-biz-openapi-biz-1.0.0-SNAPSHOT.jar
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-openapi/sw-biz-openapi-biz/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-biz-openapi-biz/1.0.0-SNAPSHOT/sw-biz-openapi-biz-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] ----------------------< com.sw.ck:sw-biz-openapi >----------------------
+[INFO] Building Smart-WorkFlow :: Biz :: OpenAPI 1.0.0-SNAPSHOT         [29/31]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-biz-openapi ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/sw-biz-openapi/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-biz-openapi/1.0.0-SNAPSHOT/sw-biz-openapi-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] --------------------------< com.sw.ck:sw-biz >--------------------------
+[INFO] Building Smart-WorkFlow :: Biz 1.0.0-SNAPSHOT                    [30/31]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-biz ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-biz/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-biz/1.0.0-SNAPSHOT/sw-biz-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] -----------------------< com.sw.ck:sw-bootstrap >-----------------------
+[INFO] Building Smart-WorkFlow :: Bootstrap 1.0.0-SNAPSHOT              [31/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-bootstrap ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 89 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-bootstrap ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 5 source files with javac [debug parameters target 21] to target/classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-bootstrap ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-bootstrap/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-bootstrap ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug parameters target 21] to target/test-classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-bootstrap ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ sw-bootstrap ---
+[INFO] Building jar: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:3.4.4:repackage (default) @ sw-bootstrap ---
+[INFO] Replacing main artifact /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar.original
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sw-bootstrap ---
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar to /Users/chikan/.m2/repository/com/sw/ck/sw-bootstrap/1.0.0-SNAPSHOT/sw-bootstrap-1.0.0-SNAPSHOT.jar
+[INFO] Installing /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow/sw-bootstrap/pom.xml to /Users/chikan/.m2/repository/com/sw/ck/sw-bootstrap/1.0.0-SNAPSHOT/sw-bootstrap-1.0.0-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Smart-WorkFlow 1.0.0-SNAPSHOT:
+[INFO] 
+[INFO] Smart-WorkFlow ..................................... SUCCESS [  0.077 s]
+[INFO] Smart-WorkFlow :: Dependencies ..................... SUCCESS [  0.004 s]
+[INFO] Smart-WorkFlow :: Common ........................... SUCCESS [  0.604 s]
+[INFO] Smart-WorkFlow :: Security ......................... SUCCESS [  0.073 s]
+[INFO] Smart-WorkFlow :: Framework ........................ SUCCESS [  0.002 s]
+[INFO] Smart-WorkFlow :: Basic :: Storage :: API .......... SUCCESS [  0.019 s]
+[INFO] Smart-WorkFlow :: Basic :: Storage :: Biz .......... SUCCESS [  1.651 s]
+[INFO] Smart-WorkFlow :: Basic :: Notify :: API ........... SUCCESS [  0.018 s]
+[INFO] Smart-WorkFlow :: Basic :: Notify :: Biz ........... SUCCESS [  1.276 s]
+[INFO] Smart-WorkFlow :: Basic :: Notify .................. SUCCESS [  0.002 s]
+[INFO] Smart-WorkFlow :: Basic :: Job :: API .............. SUCCESS [  0.019 s]
+[INFO] Smart-WorkFlow :: Basic :: Job :: Biz .............. SUCCESS [  0.766 s]
+[INFO] Smart-WorkFlow :: Basic :: IoT ..................... SUCCESS [  0.711 s]
+[INFO] Smart-WorkFlow :: Basic :: Knowledge ............... SUCCESS [  0.137 s]
+[INFO] Smart-WorkFlow :: Basic :: Agent ................... SUCCESS [  3.005 s]
+[INFO] Smart-WorkFlow :: Basic ............................ SUCCESS [  0.002 s]
+[INFO] Smart-WorkFlow :: Biz :: System :: API ............. SUCCESS [  0.019 s]
+[INFO] Smart-WorkFlow :: Biz :: System :: Biz ............. SUCCESS [  1.469 s]
+[INFO] Smart-WorkFlow :: Biz :: System .................... SUCCESS [  0.002 s]
+[INFO] Smart-WorkFlow :: Biz :: Form :: API ............... SUCCESS [  0.018 s]
+[INFO] Smart-WorkFlow :: Biz :: Form :: Biz ............... SUCCESS [  1.072 s]
+[INFO] Smart-WorkFlow :: Biz :: Form ...................... SUCCESS [  0.002 s]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: API ................ SUCCESS [  0.021 s]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: Engine ............. SUCCESS [  0.801 s]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: Process ............ SUCCESS [  0.828 s]
+[INFO] Smart-WorkFlow :: Biz :: BPM ....................... SUCCESS [  0.002 s]
+[INFO] Smart-WorkFlow :: Biz :: OpenAPI :: API ............ SUCCESS [  0.015 s]
+[INFO] Smart-WorkFlow :: Biz :: OpenAPI :: Biz ............ SUCCESS [  0.139 s]
+[INFO] Smart-WorkFlow :: Biz :: OpenAPI ................... SUCCESS [  0.002 s]
+[INFO] Smart-WorkFlow :: Biz .............................. SUCCESS [  0.001 s]
+[INFO] Smart-WorkFlow :: Bootstrap ........................ SUCCESS [  1.765 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  14.703 s
+[INFO] Finished at: 2026-08-30T15:49:38+08:00
+[INFO] ------------------------------------------------------------------------
