@@ -76,7 +76,7 @@
 
 **任务队列续跑（硬约束 🔒）**：每完成或失败一个内部 Step，父执行代理都必须重新对照用户指定的需求方向、审查结论和当前剩余清单，选择下一项继续处理。单项 `Done` 只关闭该项，不能关闭父任务。审查记录中列明的全部缺口必须逐项修复并补证；不得只修第一个缺口便生成总结。
 
-**执行任务终态输出协议（硬约束 🔒）**：执行角色准备结束时，最后回复必须追加契约定义的 marker 与 JSON，并通过 `.codex/governance/validate-terminal.sh`；marker、合法状态、字段 schema 和组合约束只读取 `.codex/governance/terminal-contract.json`，本文不另列清单或默认值。
+**执行任务终态输出协议（硬约束 🔒）**：执行角色准备结束时，最后回复必须追加契约定义的 marker 与 JSON，并通过当前平台的公共 Validator：POSIX 使用 `.codex/governance/validate-terminal.sh`，Windows PowerShell 使用 `.codex/governance/validate-terminal.ps1`；marker、合法状态、字段 schema 和组合约束只读取 `.codex/governance/terminal-contract.json`，本文不另列清单或默认值。
 
 **Stop hook 格式纠正协议（硬约束 🔒）**：若 Stop hook 明确指出当前回复只是缺少规范终态行，而实现、验证和回执均已完成，执行角色不得重新读取需求/回执、搜索目录、调用工具、重复测试或重写同一总结；必须保留既有结果并立即仅补上 hook 指定的规范终态行。该纠正只修复输出格式，不重开已闭环工作，也不得借此把未完成任务伪装为合法终态。
 
