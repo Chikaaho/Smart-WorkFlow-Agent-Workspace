@@ -1,6 +1,23 @@
 # Agent Coding Engine
 
-> 一个与具体业务、编程语言和工具链解耦的半自动 Agent Coding Engine。`main` 是通用 Engine，根目录就是可运行工作区；项目只需在 `project.md` 声明身份、代码仓库目录和工程规则，Agent 即可沿既有治理协议接手任务。
+> 本页默认对象是 `main` 分支的通用 Agent Coding Engine：所有相对路径和当前状态表述均属于 `main`。只有明确标注 `develop-sw` 的章节与链接描述 Smart-WorkFlow/OA 示例实例。
+
+一个与具体业务、编程语言和工具链解耦的半自动 Agent Coding Engine。`main` 根目录就是可运行工作区；项目只需在 `project.md` 声明身份、代码仓库目录和工程规则，Agent 即可沿既有治理协议接手任务。
+
+## 分支身份
+
+| 分支 | 唯一定位 | 状态文件含义 |
+| --- | --- | --- |
+| `main` | 通用 Agent Coding Engine 与新项目起点 | `knowledge/`、`memory/` 的初始值描述尚未接入项目的 Engine 工作区；功能数 `0` 是该初始实例状态 |
+| [`develop-sw`](https://github.com/Chikaaho/Smart-WorkFlow-Knowledge/tree/develop-sw) | Smart-WorkFlow/OA 完整示例实例 | 该分支的 `knowledge/`、`memory/`、`product/` 和 `todo/` 承载 OA 项目的架构、产品进度与历史 |
+
+判断项目状态前必须先确认当前分支：
+
+```bash
+git branch --show-current
+```
+
+Smart-WorkFlow/OA 的产品状态入口是 [`develop-sw/knowledge/current-status.md`](https://github.com/Chikaaho/Smart-WorkFlow-Knowledge/blob/develop-sw/knowledge/current-status.md)；`main/knowledge/current-status.md` 只负责通用 Engine 当前实例的状态。
 
 ## 它解决什么问题
 
@@ -78,8 +95,8 @@ Owner 已使用 ZCode 提供的体验套餐验证过一种最轻量的接入方�
 | `project.md` | 当前项目的唯一说明入口：身份、仓库目录、工程规则、启动与验证方式 | 项目接入时配置 |
 | `system.md` | 工作区唯一行为宪法：角色入口、协作协议、状态与安全边界 | Admin |
 | `roles/` | Planner、Executor、Admin 的完整角色定义 | Admin |
-| `knowledge/` | 项目的完整持久知识、当前状态、架构、决策、问题与历史 | Executor |
-| `memory/` | 供 Planner 快速恢复上下文的最小摘要 | Planner；终态时按授权同步 |
+| `knowledge/` | 当前 Engine 项目实例的完整持久知识；`main` 保持新项目初始状态 | Executor |
+| `memory/` | 当前 Engine 项目实例供 Planner 快速恢复上下文的最小摘要；`main` 保持初始摘要 | Planner；终态时按授权同步 |
 | `product/` | 按功能保存需求方向、执行回执、验收记录和归档结果 | Planner / Executor 分区协作 |
 | `todo/` | 暂不处理事项与需求缺口池 | Planner；按授权同步 |
 | `search_task/` | Planner 下发的代码与现状探索任务 | Planner |
@@ -87,7 +104,7 @@ Owner 已使用 ZCode 提供的体验套餐验证过一种最轻量的接入方�
 | `.codex/`、`.claude/` | Harness 配置、Hook、终态机器契约与公共校验器 | Admin |
 | `AGENTS.md`、`CLAUDE.md` | 不同 Agent Harness 的工作区入口，统一路由到 `system.md` | Admin |
 
-`knowledge/` 保存完整事实，`memory/` 只保留规划所需摘要；`product/` 保留从方向、执行证据到最终验收的完整追溯。Agent 因此可以跨会话恢复，而不依赖聊天窗口中的临时上下文。
+项目接入后，`knowledge/` 保存该项目的完整事实，`memory/` 只保留规划所需摘要；`product/` 保留从方向、执行证据到最终验收的完整追溯。`main` 当前保留通用初始值，新项目从这里建立自己的状态；Agent 因此可以跨会话恢复，而不依赖聊天窗口中的临时上下文。
 
 ## 通用边界
 
@@ -99,15 +116,19 @@ Engine 不预设项目一定包含后端、前端、数据库或编译步骤，�
 - 终态基线只包含当前项目实际声明并执行的验证项；
 - 仓库替换或技术栈变化不会改变角色协议、知识结构和验收流程。
 
-## 完整示例
+## Smart-WorkFlow 示例（仅 `develop-sw`）
 
-`develop-sw` 分支是 Smart-WorkFlow/OA 的完整实例，保留该项目的业务知识、记忆、需求方向、回执、待办及历史追溯，可用于理解一个长期、多仓项目如何落地本 Engine。
+[`develop-sw` 分支](https://github.com/Chikaaho/Smart-WorkFlow-Knowledge/tree/develop-sw) 是 Smart-WorkFlow/OA 的完整实例，保留该项目的业务知识、记忆、需求方向、回执、待办及历史追溯，可用于理解一个长期、多仓项目如何落地本 Engine。
+
+- [示例项目说明](https://github.com/Chikaaho/Smart-WorkFlow-Knowledge/blob/develop-sw/README.md)
+- [示例系统架构](https://github.com/Chikaaho/Smart-WorkFlow-Knowledge/blob/develop-sw/knowledge/architecture.md)
+- [示例当前产品状态](https://github.com/Chikaaho/Smart-WorkFlow-Knowledge/blob/develop-sw/knowledge/current-status.md)
 
 ```bash
 git switch develop-sw
 ```
 
-`main` 保持通用起点；示例实例的业务事实不会进入新项目的初始状态。
+切换到 `develop-sw` 后，仓库内相对链接才指向 OA 示例资料。`main` 始终作为通用 Engine 与新项目起点。
 
 ## 演进历史
 
@@ -125,7 +146,9 @@ git switch develop-sw
 
 详细方向、回执和验证证据保存在 [`product/p51-agent-coding-engine-decoupling/`](product/p51-agent-coding-engine-decoupling/)。历史用于解释设计来源；当前接入与运行仍以本 README、`project.md`、`system.md` 和 `roles/` 为准。
 
-## 入口导航
+## `main` 通用 Engine 导航
+
+以下入口全部属于当前 `main` 分支，不表示 Smart-WorkFlow/OA 的产品进度：
 
 - [项目接入模板](project.example.md)
 - [唯一行为宪法](system.md)
