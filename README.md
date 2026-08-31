@@ -167,19 +167,20 @@ git switch develop-sw
 
 ## 演进历史
 
-这套结构由一个真实 OA 项目的长期 Agent 协作实践逐步抽取而来。关键提交保留了从实例到通用 Engine 的演进过程：
+Agent Coding Engine 不是从抽象框架设计开始的，而是在一个真实项目的长期 Agent 协作中逐步长出来的：
 
-| 提交 | 演进结果 |
-| --- | --- |
-| `2b2ca2d` | 将默认分支整理为通用 Agent Coding Engine，并把 OA 实例保留到示例分支 |
-| `2bd193e` | 确立根目录即运行工作区，以及 `project.md` 唯一项目说明入口 |
-| `d3e85af` | 让 Harness Hook 可从工作区内不同目录稳定定位 Engine 根目录 |
-| `7cf6361` | 统一管理员治理，建立通用初始知识库和项目声明制资源约束 |
-| `45f2c98` | 完成语言无关、工具链无关的运行时契约与项目声明制收口 |
-| `7d59297`、`f80b02c` | 完成方向归档、终态同步和可复核证据收口 |
-| `a609783`、`f738cef` | 完成 Owner 确认、远端发布与规划最终确认记录 |
+1. **Web 规划 + 双仓执行**：最初使用 Claude Web 负责方案，后端与前端两个代码仓库分别使用 Claude Code 执行。
+2. **引入 `knowledge/`**：Claude 账号被封后，在两个代码仓库的同级新建知识工作区，用 `knowledge/` 持续维护跨仓文档。
+3. **引入 `product/`**：为解决方案和执行结果在会话间反复复制粘贴的问题，增加 `product/` 承接需求方向、执行回执与验收归档。
+4. **上提统一执行根目录**：为避免在三个 Claude Code 会话间来回切换，将执行入口上提一层，使根工作区可统一协调知识层、后端与前端。
+5. **区分 `planning` / `execute`**：上下文快速膨胀后，将需求方向与实现执行分离，形成一个规划角色和一个执行角色。
+6. **压缩规划上下文**：规划需要高级模型，但直接读取代码和完整 `knowledge/` 的输入仍过大，因此新增 `memory/`、`search_task/` + `search_fallback/` 与 `todo/`，用压缩记忆、委派探索和待办索引缩小规划可读范围。
+7. **新增 `admin`**：增加仅负责宪法、架构文档、工程配置与仓库治理的管理员角色，防止规划和执行角色越权。
+8. **解耦 Harness**：将唯一行为宪法从 `CLAUDE.md` 迁移为 `system.md`，Claude Code、Codex 及其他 Harness 的入口文件只负责指向 `system.md`。
+9. **固化每轮收尾**：优化规划步骤，要求每轮任务收尾时同步完整 `knowledge/` 并压缩 `memory/`，使权威信息与下轮最小上下文保持一致。
+10. **拆分角色规范**：随着 `system.md` 日渐膨胀，新增 `roles/`；`system.md` 收缩为公共规范门禁和角色规范索引，各角色认领后再读取对应定义。
 
-详细方向、回执和验证证据保存在 [`product/p51-agent-coding-engine-decoupling/`](product/p51-agent-coding-engine-decoupling/)。历史用于解释设计来源；当前接入与运行仍以本 README、`project.md`、`system.md` 和 `roles/` 为准。
+这些演变来自实际协作中的上下文、切换成本和角色边界问题。当前接入与运行仍以本 README、`project.md`、`system.md` 和 `roles/` 为准。
 
 ## `main` 通用 Engine 导航
 
