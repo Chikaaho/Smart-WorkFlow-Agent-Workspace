@@ -1,5 +1,7 @@
 # Agent Coding Engine
 
+**简体中文** | [English](README.en.md)
+
 > 本页默认对象是 `main` 分支的通用 Agent Coding Engine：所有相对路径和当前状态表述均属于 `main`。只有明确标注 `develop-sw` 的章节与链接描述 Smart-WorkFlow/OA 示例实例。
 
 一个与具体业务、编程语言和工具链解耦的半自动 Agent Coding Engine。`main` 根目录就是可运行工作区；项目只需在 `project.md` 声明身份、代码仓库目录和工程规则，Agent 即可沿既有治理协议接手任务。
