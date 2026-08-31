@@ -2,9 +2,12 @@
 
 > 下发角色：规划（Planner）
 > 指定角色：执行（Executor）
-> 方向状态：READY
+> 文档状态：历史副本（P51 已由 main 正式终态覆盖，不再执行）
 > 日期：2026-08-31
+> Owner 接受：2026-08-31
 > 性质：工作区架构与仓库组织解耦，不新增 OA 业务功能
+
+> 终态对账：P51 已在 `main` 完成规划功能级 `PASSED`、阶段三 `COMPLETED（已确认，2026-08-31）` 与 Owner 授权发布；权威裁决见 `../receipts/planning-final-reconciliation-p51-main-terminal-authority-03.md`。本文件仅保留分支历史，不再作为执行入口。
 
 ## 一、目标
 

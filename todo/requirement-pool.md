@@ -9,7 +9,7 @@
 
 Owner 已将“最小业务闭环”定义为已完成的基础能力。用户、权限、表单、流程、审批与腾讯云 IoT Explorer 最小接入均已锁定通过；设备在既有腾讯路径中以 `productId + deviceName` 唯一定位。
 
-`minimal-closure-first-acceptance`（第一轮最小闭环验收审计）及 GOV-AUDIT-13 状态同步均已 `COMPLETED（已确认，2026-08-29）`：验收审计不新增正式功能，已完成功能数保持 36、清单 ✅32/🟦25/⬜33、P 编号不新增/不核销/不改变；基线 955/0/0/0（agent 346）、110f/1060t/0skipped、Flyway H2 V44/PG V44。当前无活动功能，唯一下一动作是规划比较并选择下一唯一正式功能。
+`minimal-closure-first-acceptance`（第一轮最小闭环验收审计）及 GOV-AUDIT-13 状态同步均已 `COMPLETED（已确认，2026-08-29）`：验收审计不新增正式功能，已完成功能数保持 36、清单 ✅32/🟦25/⬜33、P 编号不新增/不核销/不改变；基线 955/0/0/0（agent 346）、110f/1060t/0skipped、Flyway H2 V44/PG V44。`v0.0.1` 正式版已发布（Owner 2026-08-31 确认）。P51 已完成 main/develop-sw 解耦、功能级验收、阶段三确认与 Owner 授权发布；当前无活动正式功能，唯一下一动作是规划选择下一功能。
 
 ---
 
@@ -58,7 +58,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 | P20 | M07-F04-01 对话窗口（SSE） | handoff 候选3 | 零代码 |
 | P21 | M08 IoT 设备管理与流程联动（内置 Provider + 自定义 Adapter） | I14 + Owner 2026-08-29 补充需求 | ◐ **部分关闭、未核销**：腾讯最小接入、命令队列、状态回调及审批驱动设备已交付；剩余标准设备管理、通用物模型与行为管理、流程可选设备/功能、自定义 Adapter、原生 MQTT 及真实设备现场联调。详细需求见下方“P21 Owner 补充需求定义” |
 | P22 | M09 OpenAPI 模块（授权粒度/配额） | I15 | 仅骨架，最后优先级 |
-| P51 | 将工作区根知识/治理仓抽取为通用 Agent Coding Engine | Owner 2026-08-30 补充需求 | **方向 READY，待执行**；`main` 解耦为通用 Engine，`develop-sw` 保留 Smart-WorkFlow/OA 示例 |
+| P51 | 将工作区根知识/治理仓抽取为通用 Agent Coding Engine | Owner 2026-08-30 补充需求 | ✅ **已完成**（2026-08-31）：功能级 PASSED、阶段三 COMPLETED、Owner 已授权并发布 main/develop-sw；不新增 OA 功能计数 |
 | P52 | 表单设计器顶部工作台与关联流程管理 | Owner 2026-08-30 补充需求 | 待设计 |
 | P53 | 全局 UI 与组件布局优化 | Owner 2026-08-30 补充需求 | 待 Owner 确认视觉方向与范围 |
 
@@ -109,7 +109,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 
 #### 6. 当前状态
 
-已形成正式需求方向 `product/p51-agent-coding-engine-decoupling/ready/direction-p51-agent-coding-engine-decoupling.md`，待执行角色按方向开展仓库分支解耦；不新增 OA 业务功能，远端发布仍需 Owner 单独授权。
+P51 已 `COMPLETED（已确认，2026-08-31）`：main 正式历史已完成规划功能级 `PASSED`、阶段三确认与 Owner 授权发布；当前远端 `main=e0711fb`、`develop-sw=a2b8342`。终态历史对账已纠正 develop-sw 摘要，P51 不再进入排期；不新增 OA 业务功能计数。
 
 ### P52 Owner 补充需求定义（2026-08-30）
 

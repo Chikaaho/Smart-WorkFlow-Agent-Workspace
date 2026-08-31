@@ -1,0 +1,16 @@
+===== 05 governance selfcheck on isolated main =====
+--- contract selfcheck ---
+terminal-governance cases=43 passed=43 failed=0
+EXIT=0
+--- validator legal ---
+EXIT=0
+--- validator illegal (TERMINAL_SYNC_SUBMITTED+IN_PROGRESS) ---
+terminal: feature_status: incompatible with state TERMINAL_SYNC_SUBMITTED
+EXIT=1
+--- validator old SWF marker ---
+terminal: terminal: not allowed for state TASK_COMPLETED
+terminal: terminal: unknown field
+EXIT=1
+--- contract id + marker ---
+  "contract": "agent-coding-engine.executor-terminal.v2",
+  "marker": "ENGINE_TERMINAL",
