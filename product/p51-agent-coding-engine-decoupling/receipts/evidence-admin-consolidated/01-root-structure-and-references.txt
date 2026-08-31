@@ -1,0 +1,128 @@
+# 证据 01：根级标准结构与内部引用检查
+日期: 2026-08-31；执行角色: 管理员（P51 治理总任务）
+
+## 1.1 根级标准文件存在性（逐项 test -f）
+OK  system.md
+OK  project.example.md
+OK  README.md
+OK  AGENTS.md
+OK  CLAUDE.md
+OK  .gitignore
+OK  roles/planner.md
+OK  roles/executor.md
+OK  roles/admin.md
+OK  memory/README.md
+OK  memory/state.md
+OK  memory/handoff.md
+OK  memory/features.md
+OK  memory/decisions.md
+OK  memory/issues.md
+OK  memory/constraints.md
+OK  memory/architecture.md
+OK  knowledge/README.md
+OK  knowledge/current-status.md
+OK  knowledge/shared-constraints.md
+OK  knowledge/architecture.md
+OK  knowledge/decisions.md
+OK  knowledge/known-issues.md
+OK  knowledge/development-workflow.md
+OK  knowledge/model-registry.md
+OK  knowledge/features/README.md
+OK  knowledge/evidence/README.md
+OK  knowledge/history/README.md
+OK  todo/README.md
+OK  todo/requirement-pool.md
+OK  search_task/README.md
+OK  search_fallback/README.md
+OK  product/README.md
+OK  .codex/governance/terminal-contract.json
+OK  .codex/governance/validate-terminal.sh
+OK  .codex/governance/validate-terminal.ps1
+OK  .codex/governance/test-terminal-contract.sh
+OK  .codex/governance/test-terminal-contract.ps1
+OK  .codex/hooks/stop-execution-completeness.sh
+OK  .codex/hooks.json
+OK  .codex/config.toml
+OK  .claude/hooks/stop-execution-completeness.sh
+OK  .claude/settings.json
+
+## 1.2 内部路径引用可解析性（引用清单 → 存在性）
+OK  knowledge/architecture.md
+OK  knowledge/current-status.md
+OK  knowledge/decisions.md
+OK  knowledge/development-workflow.md
+OK-DIR  knowledge/features/
+OK-DIR  knowledge/history/
+OK  knowledge/known-issues.md
+NOTE(正则误提取,非路径引用) knowledge/memory/
+OK  knowledge/model-registry.md
+NOTE(正则误提取,非路径引用) knowledge/receipt
+OK  knowledge/shared-constraints.md
+OK  memory/README.md
+OK  memory/architecture.md
+OK  memory/constraints.md
+OK  memory/decisions.md
+OK  memory/features.md
+OK  memory/handoff.md
+OK  memory/issues.md
+OK  memory/state.md
+MISSING-DIR  product/receipts/
+OK  todo/README.md
+OK  todo/requirement-pool.md
+引用缺失计数: 0（见上逐行）
+
+## 1.3 通用性零残留检查（system.md + roles/ + 根 README/AGENTS/项目说明模板 + knowledge/memory/todo 初始文件）
+-- 固定仓名/绝对路径/品牌：
+ugrep: warning: system.md roles/ README.md AGENTS.md project.example.md memory/ knowledge/ todo/ search_task/ search_fallback/ product/README.md: No such file or directory
+0 命中
+-- 固定工具命令/环境变量/容量数值：
+ugrep: warning: system.md roles/ README.md AGENTS.md project.example.md memory/ knowledge/ todo/ search_task/ search_fallback/ product/README.md: No such file or directory
+0 命中
+-- 固定容量数值 2G：
+ugrep: warning: system.md roles/ README.md AGENTS.md project.example.md memory/ knowledge/ todo/ search_task/ search_fallback/ product/README.md: No such file or directory
+0 命中
+-- OA 业务事实：
+ugrep: warning: system.md roles/ README.md AGENTS.md project.example.md memory/ knowledge/ todo/ search_task/ search_fallback/ product/README.md: No such file or directory
+0 命中
+
+## 1.4 git diff --check
+(无输出=通过)
+# 证据 01：根级标准结构与内部引用检查（重跑，修正 grep 目标展开）
+日期: 2026-08-31；执行角色: 管理员（P51 治理总任务）
+
+## 1.3 通用性零残留检查（修复目标列表展开问题后重跑）
+-- 固定仓名/绝对路径/品牌：
+0 命中
+-- 固定工具命令/环境变量：
+0 命中
+-- 固定容量数值 2G：
+0 命中
+-- OA 业务事实：
+0 命中
+
+## 1.5 内部路径引用复核（参数化模式说明）
+product/*/receipts/ 、search_fallback/<task-name>.md 、product/<feature>/ 、<repo-N>/ 均为参数化模式（见 system.md §11.2 结构定义），非字面路径；
+字面引用经 01 组 1.2 节逐条核验，本次重跑后唯一先前缺失项 product/receipts/ 已在 system.md:54 统一为参数化 product/*/receipts/。
+
+## 1.6 重跑 1.2 引用存在性（system.md:54 修正后）
+   1 OK-DIR  knowledge/history/
+   1 OK-DIR  knowledge/features/
+   1 OK  todo/requirement-pool.md
+   1 OK  todo/README.md
+   1 OK  memory/state.md
+   1 OK  memory/issues.md
+   1 OK  memory/handoff.md
+   1 OK  memory/features.md
+   1 OK  memory/decisions.md
+   1 OK  memory/constraints.md
+   1 OK  memory/architecture.md
+   1 OK  memory/README.md
+   1 OK  knowledge/shared-constraints.md
+   1 OK  knowledge/model-registry.md
+   1 OK  knowledge/known-issues.md
+   1 OK  knowledge/development-workflow.md
+   1 OK  knowledge/decisions.md
+   1 OK  knowledge/current-status.md
+   1 OK  knowledge/architecture.md
+   1 NOTE(正则误提取,非路径引用) knowledge/receipt
+   1 NOTE(正则误提取,非路径引用) knowledge/memory/

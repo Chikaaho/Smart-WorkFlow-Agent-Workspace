@@ -1,0 +1,13 @@
+# 证据 07：终态契约与 Validator 回归自测（原始工作区与夹具各跑一次）
+
+## 7.1 原始工作区 .codex/governance/test-terminal-contract.sh
+terminal-governance cases=35 passed=35 failed=0
+exit=0
+
+## 7.2 夹具 engine-a（独立工作区副本）
+terminal-governance cases=35 passed=35 failed=0
+exit=0
+
+## 7.3 夹具 engine-b
+terminal-governance cases=35 passed=35 failed=0
+exit=0

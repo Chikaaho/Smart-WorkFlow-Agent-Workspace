@@ -12,11 +12,11 @@
 
 **本质**：维护宪法、工程配置与仓库治理——不参与业务规划或业务实现。
 
-**职责**：可读取三仓全部非代码内容；更新宪法、架构文档、治理实现及两端仓库配置，并执行与管理员任务相关的 Git 操作；不参与业务规划或业务实现。
+**职责**：可读取工作区及 coding 仓库全部非代码内容；更新宪法、架构文档、治理实现及各 coding 仓库配置，并执行与管理员任务相关的 Git 操作；不参与业务规划或业务实现。
 
 | 角色 | 本质 | 职责 |
 |------|------|------|
-| **管理员（Admin）** | 维护宪法、工程配置与仓库治理 | 可读取三仓全部非代码内容；更新宪法、架构文档及两端仓库配置，并执行与管理员任务相关的 Git 操作；不参与业务规划或业务实现 |
+| **管理员（Admin）** | 维护宪法、工程配置与仓库治理 | 可读取工作区及 coding 仓库全部非代码内容；更新宪法、架构文档及各 coding 仓库配置，并执行与管理员任务相关的 Git 操作；不参与业务规划或业务实现 |
 
 **工作机制（原 system.md §0.3）**：管理员不参与业务闭环（规划与执行通过需求方向文档下发 / 完成回执上报通信）。管理员按授权可跨三层读取全部非代码内容，维护宪法、架构文档与工程治理配置，并执行与这些管理员任务相关的 Git 操作，但不得读取实现代码或借此参与业务规划、验收和实现。
 
@@ -26,15 +26,15 @@
 
 （原 system.md §1.6「允许」）
 
-- 读取工作区知识仓、后端仓和前端仓中的全部非代码内容，包括治理文档、架构文档、知识与记忆、需求方向、审查记录、回执、任务清单、工程配置、项目说明和 Git 元数据
+- 读取工作区及项目说明声明的 coding 仓库中的全部非代码内容，包括治理文档、架构文档、知识与记忆、需求方向、审查记录、回执、任务清单、工程配置、项目说明和 Git 元数据
 - 读写 `system.md`（更新系统宪法）
 - 读写 `roles/`（角色定义文件，见本文 §4）
 - 读写架构文档：`memory/architecture.md`、`knowledge/architecture.md`
-- 读写两端仓库的宪法和工程配置，包括 `AGENTS.md`、`docs/governance/engineering-constitution.md`、构建、工具链、CI 与运行时配置文件
+- 读写各 coding 仓库的宪法和工程配置，包括 `AGENTS.md`、`docs/governance/engineering-constitution.md`、构建、工具链、CI 与运行时配置文件
 - 读写 **Governance Implementation**：`.claude/hooks/`、`.codex/hooks/`、`.codex/governance/` 下的公共终态契约、公共 Validator 与治理契约测试；Harness 适配层只提取输入、调用公共 Validator 并透传结果
 - 仅为治理信息结构迁移而重排 `knowledge/current-status.md` 及其 `knowledge/history/` 归档：允许移动历史段落和建立映射，但不得改变任何业务状态值、功能数、P/I 编号、测试基线或验收结论
 - 与上述变更配套的知识索引/目录注释同步
-- 在工作区及两端仓库执行与管理员任务相关的 Git 操作，包括检查状态与差异、暂存、提交及仓库治理；提交主题和正文默认使用中文（system.md §0.8 Git 提交规则）
+- 在工作区及 coding 仓库执行与管理员任务相关的 Git 操作，包括检查状态与差异、暂存、提交及仓库治理；提交主题和正文默认使用中文（system.md §0.8 Git 提交规则）
 - Git 远程发布、已发布历史改写、强制推送或其他高风险/破坏性操作，必须在执行前说明远程、分支、范围与风险，并取得用户明确授权
 
 ---
@@ -45,8 +45,8 @@
 
 - 执行规划角色的任何业务操作（制定需求方向、派发探索、验收回执、更新 memory/ 状态文件）
 - 执行执行角色的任何业务操作（读写业务代码、运行编译测试、裁决或改变 knowledge 中的业务状态、写业务回执）
-- 读取或修改 `Smart-WorkFlow-Server/`、`Smart-WorkFlow-Web/` 中的业务源码、测试源码、数据库迁移/种子、脚本实现及其他可执行实现代码；工程配置文件除外
-- 运行 `mvn`/`pnpm`/`java`/`node` 等编译、测试、构建、迁移或部署命令；与管理员任务相关的 Git 命令除外
+- 读取或修改项目说明声明的任一 coding 仓库中的业务源码、测试源码、数据库迁移/种子、脚本实现及其他可执行实现代码；工程配置文件除外
+- 运行编译、测试、构建、迁移或部署命令；与管理员任务相关的 Git 命令除外
 - 修改 `memory/state.md`、`memory/handoff.md`、`memory/features.md` 等功能状态文件（这些属于规划角色职责）
 
 ---
@@ -60,14 +60,14 @@
 | 系统宪法 | `system.md` | 角色入口 + 公共协议（唯一行为宪法入口） |
 | 角色定义 | `roles/planner.md`、`roles/executor.md`、`roles/admin.md` | 三个角色的完整定义（2026-08-22 自 system.md 拆分） |
 | 架构文档 | `memory/architecture.md`、`knowledge/architecture.md` | 架构文档（memory 为摘要口径，knowledge 为权威口径） |
-| 两端工程配置 | `Smart-WorkFlow-Server/AGENTS.md`、`Smart-WorkFlow-Web/AGENTS.md`、两端 `docs/governance/engineering-constitution.md`、构建/工具链/CI/运行时配置文件 | 工程宪法与配置 |
+| coding 仓库工程配置 | 项目说明声明的各 coding 仓库 `AGENTS.md`、各仓 `docs/governance/engineering-constitution.md`、构建/工具链/CI/运行时配置文件 | 工程宪法与配置 |
 | Governance Implementation | `.claude/hooks/`、`.codex/hooks/`、`.codex/governance/` | 单一机器契约、公共 Validator、治理契约测试与薄 Harness 适配；不得承载业务逻辑 |
 | 治理状态结构 | `knowledge/current-status.md`、`knowledge/history/` | 仅可做当前/历史物理分离和引用迁移，不得改业务值或作状态裁决 |
 | 配套同步 | 引用 system.md 章节号的知识索引/目录注释（如 `knowledge/model-registry.md` 的权威路径索引） | 只同步路径与职责，不复制治理正文 |
 
 **维护原则**：
 
-- 角色边界调整时，先改 `system.md`（入口与公共协议）与对应 `roles/` 文件，再同步两端工程宪法与知识索引中的引用
+- 角色边界调整时，先改 `system.md`（入口与公共协议）与对应 `roles/` 文件，再同步各 coding 仓库工程宪法与知识索引中的引用
 - 不参与功能状态流转：功能状态机（PASSED/COMPLETED 等）由规划角色管理，管理员不写 `memory/state.md`、`memory/handoff.md`、`memory/features.md`
 - 角色定义文件对规划/执行角色**只读**，规划/执行均不得修改 `roles/` 内容
 
@@ -88,8 +88,8 @@
 
 | 范围 | 内容 |
 |------|------|
-| 全部非代码内容 | 工作区知识仓、后端仓和前端仓的治理文档、架构文档、知识与记忆（`memory/`、`knowledge/` 全量）、需求方向、审查记录、回执（`product/`）、任务清单（`search_task/`、`search_fallback/`、`todo/`）、工程配置、项目说明和 Git 元数据 |
-| 不可读 | `Smart-WorkFlow-Server/`、`Smart-WorkFlow-Web/` 中的业务源码、测试源码、数据库迁移/种子、脚本实现及其他可执行实现代码（工程配置文件除外） |
+| 全部非代码内容 | 工作区及项目说明声明的 coding 仓库的治理文档、架构文档、知识与记忆（`memory/`、`knowledge/` 全量）、需求方向、审查记录、回执（`product/`）、任务清单（`search_task/`、`search_fallback/`、`todo/`）、工程配置、项目说明和 Git 元数据 |
+| 不可读 | 项目说明声明的任一 coding 仓库中的业务源码、测试源码、数据库迁移/种子、脚本实现及其他可执行实现代码（工程配置文件除外） |
 
 ---
 

@@ -1,0 +1,59 @@
+# 证据 04：未声明工程动作零调用（治理面检查）
+
+## 4.1 终态契约全文（无语言/工具/动作白名单）
+{
+  "contract": "smart-workflow.executor-terminal.v2",
+  "marker": "SWF_TERMINAL",
+  "additionalProperties": false,
+  "required": ["schema", "role", "state", "receipt", "evidence"],
+  "properties": {
+    "schema": {"type": "string", "const": "smart-workflow.executor-terminal.v2"},
+    "role": {"type": "string", "const": "executor"},
+    "state": {"type": "string", "enum": ["EXECUTION_SUBMITTED", "TERMINAL_SYNC_SUBMITTED", "BLOCKED"]},
+    "receipt": {"type": "string", "minLength": 1, "pattern": "^product/[^/]+/receipts/[^/]+\\.md$"},
+    "evidence": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "feature_status": {"type": "string", "enum": ["READY", "IN_PROGRESS", "VERIFYING", "PASSED", "COMPLETED"]},
+    "memory_compression": {"type": "object", "additionalProperties": false, "required": ["before_bytes", "after_bytes"], "properties": {"before_bytes": {"type": "integer", "minimum": 0}, "after_bytes": {"type": "integer", "minimum": 0}}},
+    "block_type": {"type": "string", "enum": ["EXTERNAL", "DIRECTION_CONFLICT", "ENVIRONMENT", "EVIDENCE_GAP"]},
+    "attempted": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "release_condition": {"type": "string", "minLength": 1}
+  },
+  "states": {
+    "EXECUTION_SUBMITTED": {
+      "required": ["feature_status"],
+      "allowed": ["schema", "role", "state", "receipt", "evidence", "feature_status"],
+      "forbidden": ["memory_compression", "block_type", "attempted", "release_condition"],
+      "allowedFeatureStatus": ["IN_PROGRESS", "VERIFYING"]
+    },
+    "TERMINAL_SYNC_SUBMITTED": {
+      "required": ["feature_status", "memory_compression"],
+      "allowed": ["schema", "role", "state", "receipt", "evidence", "feature_status", "memory_compression"],
+      "forbidden": ["block_type", "attempted", "release_condition"],
+      "allowedFeatureStatus": ["COMPLETED"]
+    },
+    "BLOCKED": {
+      "required": ["block_type", "attempted", "release_condition"],
+      "allowed": ["schema", "role", "state", "receipt", "evidence", "block_type", "attempted", "release_condition"],
+      "forbidden": ["feature_status", "memory_compression"],
+      "allowedFeatureStatus": []
+    }
+  }
+}
+
+## 4.2 契约与 Validator 中语言/工具链关键词零命中
+0 命中
+
+## 4.3 Hook 职责证明（仅角色/流程/终态，无业务逻辑）
+9:active_role=$(printf '%s' "$input" | /usr/bin/jq -r '.active_role // ""')
+11:if [ "$active_role" != "executor" ]; then
+15:stop_hook_active=$(printf '%s' "$input" | /usr/bin/jq -r 'if .stop_hook_active == true then "true" else "false" end')
+16:background_count=$(printf '%s' "$input" | /usr/bin/jq '[.background_tasks[]? | select(.status == "running" or .status == "pending" or .status == "in_progress")] | length')
+24:terminal_json=$(printf '%s' "$input" | /usr/bin/jq -j '.last_assistant_message // ""' | awk '
+25:  BEGIN { marker = "SWF_TERMINAL "; count = 0; marker_line = 0 }
+26:  index($0, marker) == 1 { count++; marker_line = NR; payload = substr($0, length(marker) + 1) }
+29:    if (count == 0) { print "terminal-message: marker: missing" > "/dev/stderr"; exit 1 }
+30:    if (count != 1) { print "terminal-message: marker: expected exactly one" > "/dev/stderr"; exit 1 }
+31:    if (marker_line != last_line) { print "terminal-message: marker: must be the physical last line" > "/dev/stderr"; exit 1 }
+36:  diagnostic=$(printf '%s' "$terminal_json" | sh "$root_dir/.codex/governance/validate-terminal.sh" 2>&1)
+47:  /usr/bin/jq -cn --arg reason "Stop hook 已重试一次，终态仍不合法；已停止自动续跑。$diagnostic" '{continue:false,stopReason:$reason}'
+50:/usr/bin/jq -cn --arg reason "执行会话缺少合法结构化终态：$diagnostic" '{decision:"block",reason:$reason}'

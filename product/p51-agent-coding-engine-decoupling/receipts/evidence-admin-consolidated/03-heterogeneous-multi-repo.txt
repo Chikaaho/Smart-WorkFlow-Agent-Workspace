@@ -1,0 +1,62 @@
+# 证据 03：异构多仓项目互不串用（夹具 Beta，engine-b）
+
+## 3.1 两仓均具独立 .git
+alpha-lib -> /private/tmp/p51-fixtures/engine-b/alpha-lib
+beta-tool -> /private/tmp/p51-fixtures/engine-b/beta-tool
+
+## 3.2 项目说明逐仓声明（cat 原文）
+# 项目说明（治理夹具：Beta）
+
+## 1. 项目身份
+- 名称：治理夹具 Beta（无业务语义）
+- 目标：验证异构多仓项目的仓库动作、资源约束和验证基线互不串用
+- 非目标：不含任何业务实现
+
+## 2. 仓储关系
+- 结构：多仓（异构）
+- coding 仓库：
+  - `alpha-lib/` — 文档库；唯一动作「文档验证」，资源上限 256M，基线 ALPHA_BASELINE=doc-1
+  - `beta-tool/` — 静态检查仓；唯一动作「静态检查」，资源上限 128M，基线 BETA_BASELINE=static-1
+
+## 3. 工程动作与验证入口
+- alpha-lib 验证入口：`cat alpha-lib/VERIFY.md`
+- beta-tool 验证入口：`grep -q BETA_STATIC_CHECK_MARKER_OK beta-tool/STATIC_CHECK.txt`
+- 未声明动作：编译、数据库迁移、服务启动、制品构建、部署 —— 两仓均不存在
+
+## 4. 资源与并发
+- 各仓动作的资源上限以各仓工程宪法为准（alpha 256M / beta 128M，互不串用）
+- 跨仓并发：两仓动作可独立执行，互不依赖
+
+## 3.3 两仓验证入口分别真实执行
+ALPHA_VERIFY_MARKER_OK
+exit=0
+BETA_CHECK_OK
+exit=0
+
+## 3.4 互不串用断言（正反向）
+4:- 资源限制：静态检查动作内存上限 128M（与 alpha-lib 的 256M 有意不同）。
+FAIL: alpha 资源串到 beta
+PASS: alpha 宪法无 beta 的 128M
+PASS: alpha 无 BETA_BASELINE
+PASS: beta 无 ALPHA_BASELINE
+# 证据 03（重跑）：异构多仓项目互不串用断言（修正夹具文本自回显后）
+
+## 3.4-R1 互不串用断言（正反向，重跑）
+PASS: beta 宪法无 alpha 的 256M
+PASS: alpha 宪法无 beta 的 128M
+PASS: alpha 无 BETA_BASELINE
+PASS: beta 无 ALPHA_BASELINE
+
+## 3.4-R2 两仓宪法声明对照（cat 原文）
+--- alpha-lib:
+# alpha-lib 工程宪法（夹具）
+
+- 本仓无编译、测试、迁移、部署动作。
+- 唯一验证入口：`cat VERIFY.md` 输出 ALPHA_VERIFY_MARKER_OK。
+- 资源限制：验证动作内存上限 256M（夹具声明，仅示例本项目实际约束）。
+--- beta-tool:
+# beta-tool 工程宪法（夹具）
+
+- 本仓唯一动作：静态检查 `grep -q BETA_STATIC_CHECK_MARKER_OK STATIC_CHECK.txt`。
+- 资源限制：静态检查动作内存上限 128M。
+- 验证基线字段：BETA_BASELINE=static-1（独立于其他仓库）。
