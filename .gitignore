@@ -1,10 +1,18 @@
-# 排除两个业务代码项目（由 Smart-WorkFlow-Server / Smart-WorkFlow-Web 各自独立管理）
-Smart-WorkFlow-Server/
-Smart-WorkFlow-Web/
-
 # 系统文件
 .DS_Store
 Thumbs.db
 *.swp
 *.swo
 *~
+
+# 通用工程产物（供各 coding 项目复用；具体代码仓路径与忽略策略由项目说明入口声明）
+node_modules/
+dist/
+target/
+*.log
+.idea/
+.vscode/
+
+# 示例实例的代码仓（由 develop-sw 示例分支的项目说明声明；Engine 默认分支不跟踪）
+Smart-WorkFlow-Server/
+Smart-WorkFlow-Web/

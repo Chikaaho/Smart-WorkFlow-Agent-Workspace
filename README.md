@@ -1,73 +1,64 @@
-# Smart-WorkFlow
+# Agent Coding Engine
 
-Smart-WorkFlow 是面向企业协作场景的低代码 OA 与 AI Agent 平台。项目以表单和流程为业务主线，将组织权限、通知、任务、文件、设备与智能编排能力组合在同一套工作流中。
+> 通用治理与知识仓库骨架。本分支（`main`）是 Agent Coding Engine 的通用默认分支，
+> 不携带任何具体 coding 项目的业务状态、记忆或方向；具体项目通过 **项目说明入口**
+> 接入标准工作区结构后使用本 Engine 的治理协议。
 
-本仓库是项目的规划与知识中心；后端服务和前端应用分别位于独立仓库。项目使用者可从这里了解整体能力，开发者可沿仓库导航进入对应工程。
+## 定位
 
-## 项目能力
+Agent Coding Engine 提供一套**与具体业务解耦的工作区治理协议**，供 coding 项目复用：
 
-- 低代码表单：设计、发布、填写和查询业务表单，支持子表与表单引用。
-- 流程自动化：定义 BPMN 流程，发起申请，处理待办并查看流程实例。
-- 组织与权限：管理用户、部门、角色、菜单、字典和数据访问范围。
-- 通用业务服务：提供通知、文件存储和定时任务等平台能力。
-- AI Agent 与知识能力：支持会话、工具调用、图编排、Prompt 配置和知识库扩展。
-- IoT 接入：连接设备能力与审批流程，承载业务驱动的设备控制场景。
+- **角色与工作流协议**：规划 / 执行 / 管理员三角色的会话门禁、权限边界与三阶段工作流（`system.md`、`roles/`）
+- **终态机器契约**：执行行为验证与终态判定（`.codex/governance/`）
+- **通用 Harness 入口**：Claude / Codex 的入口、Hook 与模板
+- **标准工作区目录骨架**：`memory/`、`knowledge/`、`product/`、`todo/`、`search_task/`、`search_fallback/` 的用途、初始化与项目接入说明
 
-## 三个仓库
+本分支默认内容**不预置**任何具体项目的业务事实：
 
-| 仓库 | 职责 | 开发入口 |
-| --- | --- | --- |
-| Smart-WorkFlow-Knowledge（本仓库） | 项目规划、需求方向、回执、架构知识与工作区治理 | [`system.md`](system.md)、[`knowledge/`](knowledge/architecture.md) |
-| Smart-WorkFlow-Server | Java 后端、数据库、认证授权、业务服务与 API | [`Smart-WorkFlow-Server/README.md`](Smart-WorkFlow-Server/README.md) |
-| Smart-WorkFlow-Web | Vue 前端、页面交互、前端架构与 API/Mock 开发模式 | [`Smart-WorkFlow-Web/README.md`](Smart-WorkFlow-Web/README.md) |
+- 不包含具体产品名称、业务模块、P/I 编号或功能状态
+- 不硬编码后端 / 前端仓库名、端口、迁移版本、测试计数、构建基线或本机资源条件
+- 不携带只对某个实例成立的知识、记忆、方向、回执、问题和待办
 
-典型运行关系如下：
+## 接入一个新的 coding 项目
 
-```text
-Smart-WorkFlow-Web (:5173)
-        |
-        | HTTP /api
-        v
-Smart-WorkFlow-Server (:8080/api)
-        |
-        +-- PostgreSQL 或 H2
-        +-- Redis
-```
+1. 复制本仓库骨架（`main` 分支作为模板基线，或从 `develop-sw` 示例分支观察完整用法）。
+2. 填写**项目说明入口**（约定文件 `project.md`）：声明 coding 项目身份、目标与非目标；单仓或多仓关系、代码仓路径及仓库职责；必要工程规则、启动方式和验证入口；实例数据初始化位置及实例生命周期边界。
+3. 依据 `system.md` 与 `roles/` 进入会话角色门禁，按三阶段工作流推进需求。
 
-## 快速开始
+> 项目接入后，标准 `knowledge/`、`memory/`、`product/`、`todo/`、`search_task/`、`search_fallback/` 由 Engine 统一管理；
+> 其中产生的状态、历史、回执和待办必须属于当前项目实例，不同项目不得交叉读取或复用。
 
-先克隆知识仓库：
+## 示例分支
+
+`develop-sw` 是 **Smart-WorkFlow / OA 示例分支**，展示一个完整实例如何使用本 Engine 的治理协议：
+
+- 它是 Smart-WorkFlow / OA 项目的完整实例，保留实例知识、记忆、方向、回执、待办及历史追溯关系。
+- 它反向说明示例实例如何接入 Engine，且不反向改变 `main` 的通用定位。
 
 ```bash
-git clone git@github.com:Chikaaho/Smart-WorkFlow-Knowledge.git
+# 查看 OA 示例完整用法
+git checkout develop-sw
 ```
 
-```bash
-cd Smart-WorkFlow-Knowledge
+## Harness 入口
+
+- 根入口：`AGENTS.md`（Codex）、`CLAUDE.md`（Claude），均路由到唯一行为宪法 `system.md`
+- 终态契约与公共 Validator：`.codex/governance/`
+- 本 Engine 的所有路径解析均采用相对定位，不依赖特定本机绝对路径
+
+## 目录骨架
+
+```
+system.md            工作区宪法入口（角色入口 + 公共协作协议；管理员维护）
+roles/               角色定义文件（planner / executor / admin；管理员维护，其他角色只读）
+memory/              压缩记忆（规划角色快读入口，实例接入后由 Engine 统一管理）
+knowledge/           完整知识库（执行角色维护）
+product/             需求方向与回执仓库（按功能组织）
+todo/                暂不修复清单 + 需求缺口池
+search_task/         探索任务（规划角色下发）
+search_fallback/     探索结果（执行角色写入）
+.codex/ .claude/     通用 Harness 入口、配置与 Hook
+project.md           项目说明入口（由项目实例填写）
 ```
 
-再将后端与前端仓库放入工作区根目录：
-
-```bash
-git clone git@github.com:Chikaaho/Smart-WorkFlow-Server.git
-```
-
-```bash
-git clone git@github.com:Chikaaho/Smart-WorkFlow-Web.git
-```
-
-进入对应工程后，按后端或前端 README 准备环境并启动服务：
-
-- [后端环境与启动](Smart-WorkFlow-Server/README.md#快速开始)
-- [前端环境与启动](Smart-WorkFlow-Web/README.md#快速开始)
-
-## 文档导航
-
-| 主题 | 文档 |
-| --- | --- |
-| 工作区治理入口 | [`system.md`](system.md) |
-| 整体架构 | [`knowledge/architecture.md`](knowledge/architecture.md) |
-| 当前项目状态 | [`knowledge/current-status.md`](knowledge/current-status.md) |
-| 需求方向与交付回执 | [`product/`](product/) |
-| 后端工程规范 | [`Smart-WorkFlow-Server/docs/governance/engineering-constitution.md`](Smart-WorkFlow-Server/docs/governance/engineering-constitution.md) |
-| 前端工程规范 | [`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md`](Smart-WorkFlow-Web/docs/governance/engineering-constitution.md) |
+> 具体目录用途、初始化与项目接入说明见 `system.md`。
