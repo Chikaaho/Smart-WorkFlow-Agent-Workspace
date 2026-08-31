@@ -1,0 +1,24 @@
+===== 01 refs and branches =====
+  backup-main-20260831      a8b1292 docs(readme): 统一三仓项目入口说明
+* develop-sw                a2b8342 feat(governance): 在 develop-sw 启用分级执行流程
+  main                      e0711fb [origin/main] docs(readme): 补充项目演进轨迹
+  remotes/origin/HEAD       -> origin/main
+  remotes/origin/develop-sw a2b8342 feat(governance): 在 develop-sw 启用分级执行流程
+  remotes/origin/main       e0711fb docs(readme): 补充项目演进轨迹
+--- rev-parse ---
+a2b83421e85b306130cb59870570940a771395df
+e0711fbb7b3a345f3136910af9e71c31ee022ad3
+e0711fbb7b3a345f3136910af9e71c31ee022ad3
+a2b83421e85b306130cb59870570940a771395df
+a8b1292283bc2626280fee1c243cbc6a591a8363
+--- merge-base main develop-sw ---
+93ce28cfe474f4b925c9984f40ace4e88a371734
+--- rev-list left-right main...develop-sw ---
+16	4
+--- ls-remote origin ---
+e0711fbb7b3a345f3136910af9e71c31ee022ad3	HEAD
+a2b83421e85b306130cb59870570940a771395df	refs/heads/develop-sw
+e0711fbb7b3a345f3136910af9e71c31ee022ad3	refs/heads/main
+--- remote -v ---
+origin	git@github.com:Chikaaho/Smart-WorkFlow-Knowledge.git (fetch)
+origin	git@github.com:Chikaaho/Smart-WorkFlow-Knowledge.git (push)
