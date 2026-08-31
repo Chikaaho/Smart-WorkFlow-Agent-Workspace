@@ -34,6 +34,19 @@ It is designed as a **semi-automated system**. Agents read context, explore, pla
 
 Normal operation does not require a human to decompose every step or supervise continuously. Once the goal and project rules are declared, Agents proceed within their role boundaries until the result is ready for acceptance. A human can issue a new decision whenever the direction needs to change.
 
+### Cost Economics: Expensive Models Decide, Fast Models Deliver
+
+Planner input is compressed through `memory/` and `search_fallback/`, while its output is concentrated on requirement direction, risk judgment, and acceptance decisions. Planner does not repeatedly ingest the complete coding repositories or participate in high-frequency implementation loops. Its calls are therefore fewer and its input/output boundaries are explicit, making it economical to reserve extremely capable—and expensive—models for high-leverage decisions that prevent an entire round of rework.
+
+Executor handles the high-volume work of reading code, implementing, testing, and fixing. Candidate execution models use the combined capability and off-peak price of `deepseek-v4-flash` (DS-Flash) as the reference baseline. A model enters the candidate pool when either condition holds:
+
+- it is more capable than DS-Flash while its total cost for comparable tasks is roughly equal to DS-Flash off-peak pricing; or
+- it costs less than DS-Flash off-peak pricing while delivering roughly equivalent capability.
+
+Candidate models must still pass project-defined execution benchmarks, including task success, test results, evidence compliance, terminal-contract compliance, and rework rate. Once those thresholds are met, higher-throughput Flash-class models can scale execution volume, while the S/M fast paths further reduce unnecessary planning calls and documentation overhead.
+
+> Use the strongest models to reduce decision errors in planning; once execution clears the benchmark, let Flash-class throughput run the GPUs hot. Spend where judgment matters and scale where volume matters.
+
 ## How Work Is Routed
 
 | Level | Typical Task | Workflow |
