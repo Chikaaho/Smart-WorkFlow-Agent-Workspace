@@ -1,0 +1,61 @@
+# 证据 06（重跑）：Hook 定位与正反行为（修复输入 JSON 构造后）
+
+## hook=stop-execution-completeness.sh cwd=engine-a
+-- 该 cwd 下 git rev-parse --show-toplevel（嵌套仓应显示仓自身而非 Engine 根）：
+(非 git 目录，Engine 自身区域)
+-- VALID → exit=0
+-- INVALID → {"decision":"block","reason":"执行会话缺少合法结构化终态：terminal: state: unknown terminal state"}
+exit=0
+-- NOMARKER → {"decision":"block","reason":"执行会话缺少合法结构化终态：terminal-message: marker: missing"}
+exit=0
+
+## hook=stop-execution-completeness.sh cwd=engine-a/knowledge
+-- 该 cwd 下 git rev-parse --show-toplevel（嵌套仓应显示仓自身而非 Engine 根）：
+(非 git 目录，Engine 自身区域)
+-- VALID → exit=0
+-- INVALID → {"decision":"block","reason":"执行会话缺少合法结构化终态：terminal: state: unknown terminal state"}
+exit=0
+-- NOMARKER → {"decision":"block","reason":"执行会话缺少合法结构化终态：terminal-message: marker: missing"}
+exit=0
+
+## hook=stop-execution-completeness.sh cwd=engine-a/alpha-lib
+-- 该 cwd 下 git rev-parse --show-toplevel（嵌套仓应显示仓自身而非 Engine 根）：
+/private/tmp/p51-fixtures/engine-a/alpha-lib
+-- VALID → exit=0
+-- INVALID → {"decision":"block","reason":"执行会话缺少合法结构化终态：terminal: state: unknown terminal state"}
+exit=0
+-- NOMARKER → {"decision":"block","reason":"执行会话缺少合法结构化终态：terminal-message: marker: missing"}
+exit=0
+
+## hook=stop-execution-completeness.sh cwd=engine-a
+-- 该 cwd 下 git rev-parse --show-toplevel（嵌套仓应显示仓自身而非 Engine 根）：
+(非 git 目录，Engine 自身区域)
+-- VALID → exit=0
+-- INVALID → {"decision":"block","reason":"执行会话缺少合法结构化终态：terminal: state: unknown terminal state"}
+exit=0
+-- NOMARKER → {"decision":"block","reason":"执行会话缺少合法结构化终态：terminal-message: marker: missing"}
+exit=0
+
+## hook=stop-execution-completeness.sh cwd=engine-a/knowledge
+-- 该 cwd 下 git rev-parse --show-toplevel（嵌套仓应显示仓自身而非 Engine 根）：
+(非 git 目录，Engine 自身区域)
+-- VALID → exit=0
+-- INVALID → {"decision":"block","reason":"执行会话缺少合法结构化终态：terminal: state: unknown terminal state"}
+exit=0
+-- NOMARKER → {"decision":"block","reason":"执行会话缺少合法结构化终态：terminal-message: marker: missing"}
+exit=0
+
+## hook=stop-execution-completeness.sh cwd=engine-a/alpha-lib
+-- 该 cwd 下 git rev-parse --show-toplevel（嵌套仓应显示仓自身而非 Engine 根）：
+/private/tmp/p51-fixtures/engine-a/alpha-lib
+-- VALID → exit=0
+-- INVALID → {"decision":"block","reason":"执行会话缺少合法结构化终态：terminal: state: unknown terminal state"}
+exit=0
+-- NOMARKER → {"decision":"block","reason":"执行会话缺少合法结构化终态：terminal-message: marker: missing"}
+exit=0
+
+## 判定口径
+- VALID → exit=0 且无 block 输出（放行合法终态）
+- INVALID / NOMARKER → exit=0 且输出 {"decision":"block",...}（首次非法阻断一次）
+- 三种 cwd（Engine 根 / 普通子目录 / 嵌套独立 .git coding 仓）行为一致；
+  嵌套仓中 git 根解析为 alpha-lib 自身，而 Hook 的 root_dir 取脚本自身位置（dirname $0/../..），仍定位 Engine 根并调用其公共 Validator。

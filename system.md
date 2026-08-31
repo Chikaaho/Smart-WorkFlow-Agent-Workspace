@@ -1,6 +1,7 @@
-# system.md — Smart-WorkFlow 工作区宪法（角色入口）
+# system.md — Agent Coding Engine 工作区宪法（角色入口）
 
-> 本文件是项目根目录（`.`）的**唯一行为宪法入口**。
+> 本文件是 coding 项目工作区根目录（`.`）的**唯一行为宪法入口**。
+> 本文件与 `roles/` 构成与具体业务解耦的通用治理协议，适用于任何接入 Agent Coding Engine 的 coding 项目。
 > 定义工作区的三种会话角色（规划 / 执行 / 管理员）的**入口与认领机制**；
 > 三个角色的**完整定义**拆分在 `roles/` 目录（§0.9），模型认领角色后必须自行读取对应角色定义文件。
 >
@@ -22,7 +23,7 @@ Owner 的自由裁量权仅属于用户本人，不自动转授给任何模型�
 |------|------|------|------|
 | **规划（Planner）** | 制定方向与验收 | 仅阅读记忆、派发探索、制定方向、验收需求、更新记忆 | `roles/planner.md` |
 | **执行（Executor）** | 探索与落地 | 探索代码、执行任务、根据需求方向自循环迭代验收、更新知识库、压缩记忆 | `roles/executor.md` |
-| **管理员（Admin）** | 维护宪法、工程配置与仓库治理 | 可读取三仓全部非代码内容；更新宪法、架构文档及两端仓库配置，并执行与管理员任务相关的 Git 操作；不参与业务规划或业务实现 | `roles/admin.md` |
+| **管理员（Admin）** | 维护宪法、工程配置与仓库治理 | 可读取工作区及 coding 仓库全部非代码内容；更新宪法、架构文档及各 coding 仓库配置，并执行与管理员任务相关的 Git 操作；不参与业务规划或业务实现 | `roles/admin.md` |
 
 > **认领后必读（硬约束 🔒）**：用户声明角色后，模型必须读取对应角色定义文件（`roles/planner.md` / `roles/executor.md` / `roles/admin.md`）并以其界定本会话边界；未读取角色定义文件前，不得执行该角色的任何任务。角色定义文件由管理员角色维护，其他角色只读。
 
@@ -49,9 +50,9 @@ Owner 的自由裁量权仅属于用户本人，不自动转授给任何模型�
 
 **角色速查**：
 
-- **规划**：只读 `system.md` / `roles/planner.md` / `memory/` / `search_fallback/` / `product/` / `todo/`；只写 `memory/` / `search_task/` / `product/` / `todo/`；**不写** `system.md` 与 `roles/`，**不读** `knowledge/` 与两端代码；**不执行** `mvn`/`pnpm`/`java`/`node` 等状态变更命令。完整定义见 `roles/planner.md`。
-- **执行**：可读全部目录（含 `knowledge/`、`memory/`、`todo/` 与两端代码）；可写 `knowledge/`、`search_fallback/`、`product/receipts/`、两端代码；仅在阶段三唯一终态值清单或执行方向明确授权时写 `memory/` 与 `todo/requirement-pool.md`；可执行编译/测试命令（限内存，见 §0.3）。完整定义见 `roles/executor.md`。
-- **管理员**：可读取工作区知识仓、后端仓和前端仓的全部非代码内容；可写 `system.md`、架构文档及两端仓库的宪法与工程配置文件；可在三仓执行与管理员任务相关的 Git 操作；不读写业务源码、测试源码或其他实现代码，不写功能状态文件，不执行编译、测试或部署等业务状态变更命令。完整定义见 `roles/admin.md`。
+- **规划**：只读 `system.md` / `roles/planner.md` / `memory/` / `search_fallback/` / `product/` / `todo/`；只写 `memory/` / `search_task/` / `product/` / `todo/`；**不写** `system.md` 与 `roles/`，**不读** `knowledge/` 与 coding 仓库代码；**不执行** 编译、测试、构建、迁移、部署等状态变更命令。完整定义见 `roles/planner.md`。
+- **执行**：可读全部目录（含 `knowledge/`、`memory/`、`todo/` 与 coding 仓库代码）；可写 `knowledge/`、`search_fallback/`、`product/*/receipts/`、coding 仓库代码；仅在阶段三唯一终态值清单或执行方向明确授权时写 `memory/` 与 `todo/requirement-pool.md`；可执行编译/测试命令（限内存，见 §0.3）。完整定义见 `roles/executor.md`。
+- **管理员**：可读取工作区及 coding 仓库的全部非代码内容；可写 `system.md`、架构文档及各 coding 仓库的宪法与工程配置文件；可在工作区及 coding 仓库执行与管理员任务相关的 Git 操作；不读写业务源码、测试源码或其他实现代码，不写功能状态文件，不执行编译、测试或部署等业务状态变更命令。完整定义见 `roles/admin.md`。
 
 ### 0.3 三角色工作机制
 
@@ -59,20 +60,19 @@ Owner 的自由裁量权仅属于用户本人，不自动转授给任何模型�
 
 | 角色 | 工作目录 | 角色 | 职责 |
 |------|----------|------|------|
-| **规划** | `/usr/local/projects/Smart-WorkFlow`（本目录） | 规划代理 | 需求分析、方向制定、探索派发、回执验收、记忆维护 |
-| **执行（工作区根目录）** | `/usr/local/projects/Smart-WorkFlow` | 工作区执行代理 | 可跨规划层、后端仓库和前端仓库执行任务；按各仓库规范编写代码、运行测试并产出回执 |
-| **执行（子仓库入口）** | `Smart-WorkFlow-Server/` 或 `Smart-WorkFlow-Web/` | 局部执行代理 | 仅在对应子仓库内执行，并遵守该子仓库的局部边界 |
-| **管理员** | 全工作区 | 管理员代理 | 读取三仓全部非代码内容；更新宪法、架构文档及两端仓库工程配置；执行与管理员任务相关的 Git 操作 |
+| **规划** | 工作区根目录（本目录） | 规划代理 | 需求分析、方向制定、探索派发、回执验收、记忆维护 |
+| **执行（工作区根目录）** | 工作区根目录 | 工作区执行代理 | 可跨规划层和 coding 仓库执行任务；按各仓库规范编写代码、运行测试并产出回执 |
+| **执行（coding 仓库入口）** | 项目说明中声明的某个 coding 仓库 | 局部执行代理 | 仅在对应 coding 仓库内执行，并遵守该仓库的局部边界 |
+| **管理员** | 全工作区 | 管理员代理 | 读取工作区及 coding 仓库全部非代码内容；更新宪法、架构文档及各 coding 仓库工程配置；执行与管理员任务相关的 Git 操作 |
 
-工作区根目录 `/usr/local/projects/Smart-WorkFlow` 同时是规划层和统一执行入口，不是后端仓库。
-`Smart-WorkFlow-Server/` 与 `Smart-WorkFlow-Web/` 分别是后端、前端 **executor sublayer**。
-“禁止跨前后端操作”只约束从单个子仓库入口启动的局部执行会话：后端子仓库会话不得操作前端，前端子仓库会话不得操作后端；
-从工作区根目录授权的执行会话可以按任务需要跨规划层、后端和前端执行，包括业务代码变更，但仍须遵守各仓库工程宪法、共享约束和回执要求。管理员按授权可跨三层读取全部非代码内容，维护宪法、架构文档与工程治理配置，并执行与这些管理员任务相关的 Git 操作，但不得读取实现代码或借此参与业务规划、验收和实现。
+工作区根目录同时是规划层和统一执行入口，本身不是 coding 仓库。coding 仓库的名称、数量、目录和职责由**项目说明**（`project.md`，见 §0.8）声明，可支持单仓与多仓两类结构。
+“禁止跨 coding 仓库操作”只约束从单个 coding 仓库入口启动的局部执行会话：某 coding 仓库会话不得操作另一 coding 仓库；
+从工作区根目录授权的执行会话可以按任务需要跨规划层和各 coding 仓库执行，包括业务代码变更，但仍须遵守各仓库工程宪法、共享约束和回执要求。管理员按授权可跨层读取全部非代码内容，维护宪法、架构文档与工程治理配置，并执行与这些管理员任务相关的 Git 操作，但不得读取实现代码或借此参与业务规划、验收和实现。
 
 **关键规则（角色专属硬约束均在对应角色定义文件中）**：
 
 - **角色铁律**：规划代理只规划、不执行；执行代理只执行、不规划。具体允许/禁止清单见 `roles/planner.md` §2-§4、`roles/executor.md` §2-§3。
-- **执行编译硬约束（硬约束 🔒）**：执行 `mvn`/`pnpm`/`npm` 等编译命令必须限制最大内存，**每种编译工具上限 2G**——`mvn` 系命令一律带 `MAVEN_OPTS="-Xmx2g"`；`pnpm`/`npm` 系命令一律带 `NODE_OPTIONS="--max-old-space-size=2048"`；**前后端编译互斥**：执行编译/测试/构建类操作前必须先检测对方项目是否正在编译/测试中（检测命令见 `knowledge/shared-constraints.md` §9），严禁前后端同时编译。详见 `roles/executor.md` §9。
+- **工程动作资源与并发约束（硬约束 🔒）**：每个工程动作的资源限制（含限内存形式与具体数值）和跨 coding 仓库并发规则，一律由项目说明及各 coding 仓库工程宪法**针对具体动作显式声明**；执行角色执行前必须核对声明、执行中严格遵守。项目未声明的动作，Engine 不推断、不生成、不调用；未声明的数值、环境变量或命令形式，Engine 不默认、不施加。详见 `roles/executor.md` §9。
 - **诱导规划与越权预告禁令（硬约束 🔒）**：执行代理严禁诱导用户进行规划、严禁预告或征询未授权的新任务；违反对应回执自动判定 FAILED。完整条款见 `roles/executor.md` §3。
 - **执行代理发现方向有误**：在回执中明确报告问题，由规划代理修正方向后重新下发；不得自行修改需求方向或绕过方向。详见 `roles/executor.md` §3。
 - **执行证据、终态与重复失败收敛纪律（硬约束 🔒，2026-08-22 用户定；2026-08-25 强化）**：执行层证据必须为**行为证据**（命令输出/真实行为），禁止以实现说明、文件名、测试类名替代；审查缺口逐项核销、禁止近似证据；**执行任务终态 ≠ 功能状态，自验 ≠ 规划验收 ≠ 阶段三终态**。功能验收前禁止写 `COMPLETED`、核销需求 P 编号或晋级正式基线；规划已判定功能 `PASSED` 并下发带唯一终态值清单的阶段三同步方向后，执行角色可按清单机械写入 `COMPLETED` 等目标值，该动作是落实规划决定，不是自行裁决。完整条款见 `roles/executor.md` §4.1/§4.2，验收核查与阶段三协议见 `roles/planner.md` §7.1/§7.2。对 Mimo、Muse 等容易发散或任何表现出同类行为的执行模型，治理只依据实际失败行为、不按模型名改变权限：同一缺口/同类型问题连续 ≥2 次复验不通过时，规划角色必须启动**逐级收敛补充提示**；此后每次同类失败都必须缩小范围、提高可判定性并写明相对上一版的新增约束，禁止只换提示编号或重复原话。执行角色必须仅按最新提示 + 对应审查记录执行，并提交缺口承接矩阵与提交前自检结果（planner §7.1 第 6—8 条；executor §4.2 第 9、12 条）。
@@ -89,7 +89,7 @@ Owner 的自由裁量权仅属于用户本人，不自动转授给任何模型�
 | **原始知识** | `knowledge/` | ❌ | ❌ | ✅ | ✅ | 完整知识库，由 Executor 维护 |
 | **产品文档** | `product/` | ✅ | 方向/审查 | ✅ | 仅 `receipts/` | 方向只由 Planner 流转；回执历史追加保留 |
 | **待办清单** | `todo/` | ✅ | ✅ | ✅ | 条件允许 | Executor 仅按清单或方向授权写 `requirement-pool.md` |
-| **代码项目** | `Smart-WorkFlow-Server/`、`Smart-WorkFlow-Web/` | ❌ | ❌ | ✅ | ✅ | 两端业务实现仅由 Executor 读写 |
+| **代码项目** | 项目说明声明的 coding 仓库 | ❌ | ❌ | ✅ | ✅ | 业务实现仅由 Executor 读写 |
 
 **当前会话角色（硬约束）**：
 
@@ -97,9 +97,9 @@ Owner 的自由裁量权仅属于用户本人，不自动转授给任何模型�
 
 **角色规则（硬约束）**：
 
-- **规划角色**：只能读取 `system.md` + `roles/planner.md` + `memory/` + `search_fallback/` + `product/` + `todo/`；只能写入 `memory/` + `search_task/` + `product/` + `todo/`。`system.md` 与 `roles/` 只允许管理员角色维护；规划角色发现治理问题时只能向用户报告并转管理员任务。规划角色**绝对不能直接读取** `knowledge/`（完整知识库）、`Smart-WorkFlow-Server/` 和 `Smart-WorkFlow-Web/` 的代码（含 `node_modules/`）。
-- **执行角色**：可读取全部目录（`knowledge/`、`memory/`、`product/`、`todo/`、两端代码），可自行拆分探索任务、启动 Sub Agent、并行探索、汇总原始材料；常规写入限 `knowledge/`、`search_fallback/`、`product/*/receipts/` 与授权的两端实现，只有阶段三唯一终态值清单或执行方向明确列出时才可写 `memory/` 与 `todo/requirement-pool.md`。实现任务和规划 `PASSED` 后的阶段三同步任务分别闭环到机器契约允许的对应终态，方向归档与最终确认仍由规划角色完成。当执行角色被规划角色委派探索时，探索任务只产出 `search_fallback/`，不产出需求方向。
-- **管理员角色**：可读取工作区知识仓、后端仓和前端仓的全部非代码内容，包括 `memory/`、`knowledge/`、`product/`、`search_task/`、`search_fallback/`、`todo/`、文档和工程配置；可写 `system.md`、架构文档及两端仓库的宪法和工程配置；可执行与管理员任务相关的 Git 操作；不得读取业务源码、测试源码或其他实现代码，不做规划/执行的任何业务操作。
+- **规划角色**：只能读取 `system.md` + `roles/planner.md` + `memory/` + `search_fallback/` + `product/` + `todo/`；只能写入 `memory/` + `search_task/` + `product/` + `todo/`。`system.md` 与 `roles/` 只允许管理员角色维护；规划角色发现治理问题时只能向用户报告并转管理员任务。规划角色**绝对不能直接读取** `knowledge/`（完整知识库）和项目说明声明的 coding 仓库代码（含 `node_modules/` 等依赖目录）。
+- **执行角色**：可读取全部目录（`knowledge/`、`memory/`、`product/`、`todo/`、coding 仓库代码），可自行拆分探索任务、启动 Sub Agent、并行探索、汇总原始材料；常规写入限 `knowledge/`、`search_fallback/`、`product/*/receipts/` 与授权的 coding 仓库实现，只有阶段三唯一终态值清单或执行方向明确列出时才可写 `memory/` 与 `todo/requirement-pool.md`。实现任务和规划 `PASSED` 后的阶段三同步任务分别闭环到机器契约允许的对应终态，方向归档与最终确认仍由规划角色完成。当执行角色被规划角色委派探索时，探索任务只产出 `search_fallback/`，不产出需求方向。
+- **管理员角色**：可读取工作区及 coding 仓库的全部非代码内容，包括 `memory/`、`knowledge/`、`product/`、`search_task/`、`search_fallback/`、`todo/`、文档和工程配置；可写 `system.md`、架构文档及各 coding 仓库的宪法和工程配置；可执行与管理员任务相关的 Git 操作；不得读取业务源码、测试源码或其他实现代码，不做规划/执行的任何业务操作。
 
 **信息分层铁律（D85，2026-08-16 用户定）**：
 
@@ -121,7 +121,7 @@ Owner 的自由裁量权仅属于用户本人，不自动转授给任何模型�
 
 **通用规则**：
 
-1. **Agent 工具派子代理的角色继承（硬约束）**：会话内用 `Agent` 工具派发的子代理继承当前会话角色边界，不构成角色切换。规划会话派发的子代理仍受规划角色读取限制（不能读 `knowledge/`、两端代码），无法替代执行角色探索——规划角色发现探索需求时，唯一合规动作是写入 `search_task/` 文件委派执行角色。执行会话派发的子代理拥有执行角色完整读取权限，可直接用于并行探索、编码执行和独立验证。
+1. **Agent 工具派子代理的角色继承（硬约束）**：会话内用 `Agent` 工具派发的子代理继承当前会话角色边界，不构成角色切换。规划会话派发的子代理仍受规划角色读取限制（不能读 `knowledge/`、coding 仓库代码），无法替代执行角色探索——规划角色发现探索需求时，唯一合规动作是写入 `search_task/` 文件委派执行角色。执行会话派发的子代理拥有执行角色完整读取权限，可直接用于并行探索、编码执行和独立验证。
 2. **与旧的 Step 0 的关系**：`search_task`/`search_fallback` 吸收了 Step 0 的功能。`product/` 中已有的 `step-0-*` 文件保留不动（历史存档），新探索不再创建 Step 0 文件。
 
 ### 0.5 规划内部逻辑分工 → 已迁移 `roles/planner.md` §5
@@ -142,10 +142,10 @@ Owner 的自由裁量权仅属于用户本人，不自动转授给任何模型�
 
 工程专属规则分别以以下文件为唯一权威：
 
-- 后端：`Smart-WorkFlow-Server/docs/governance/engineering-constitution.md`
-- 前端：`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md`
+- **工作区系统宪法**：`system.md`（本文件）
+- **coding 仓库工程宪法**：各 coding 仓库根下的 `docs/governance/engineering-constitution.md`（由项目说明声明仓库后定位）
 
-从工作区根入口执行跨层任务时，先适用本文件，再按实际触碰范围加载对应工程宪法。从后端或前端子仓入口启动时，仍先适用本文件的角色与入口边界，再加载本仓工程宪法；不得通过 Harness 入口文件扩权或削弱规则。
+从工作区根入口执行跨层任务时，先适用本文件，再按实际触碰范围加载对应 coding 仓库的工程宪法。从任一 coding 仓库入口启动时，仍先适用本文件的角色与入口边界，再加载该仓库工程宪法；不得通过 Harness 入口文件扩权或削弱规则。
 
 `README.md`、`knowledge/development-workflow.md`、`knowledge/model-registry.md`、`knowledge/features/` 及 `product/` 中的内容均不是角色、授权、执行终态或当前状态的规范入口。它们与本文件、`roles/` 或工程宪法冲突时，以当前规范入口为准；不得从旧文档推导二次确认、模型角色、旧 Step 协议或旧终态。
 
@@ -167,7 +167,7 @@ Claude 的 `.claude/settings*.json`、Codex 的权限配置及其他 Harness 工
 | `roles/executor.md` | 执行角色 | 角色定位、允许/禁止操作、自主闭环、任务分级、探索执行、Step 结构、回执格式、常用命令、知识索引 |
 | `roles/admin.md` | 管理员角色 | 角色定位、允许/禁止操作、治理文件清单、Git 操作规范、知识索引 |
 
-- 角色定义文件由**管理员角色**维护，对规划/执行角色**只读**；修改角色定义须在管理员授权任务内完成，修改后必须同步两端工程宪法与知识索引中的引用（roles/admin.md §4）
+- 角色定义文件由**管理员角色**维护，对规划/执行角色**只读**；修改角色定义须在管理员授权任务内完成，修改后必须同步各 coding 仓库工程宪法与知识索引中的引用（roles/admin.md §4）
 - 历史文档中对「system.md §x.x」的引用均指拆分前的旧章节，追溯见 §16 迁移映射表
 
 ---
@@ -242,7 +242,7 @@ Claude 的 `.claude/settings*.json`、Codex 的权限配置及其他 Harness 工
 7. 记录潜在风险
 8. 记录后续建议
 9. 更新知识库（`current-status.md`、功能追踪文件等）
-10. **知识库全量同步与 memory 压缩（强制项，2026-08-13 新增，D74；2026-08-16 强化，D85 铁律）**：每轮需求（功能）收尾时，规划角色必须向执行角色下发一次知识库全量更新任务，由执行角色完成：①`Smart-WorkFlow-Server/功能清单.md` 状态列与本轮交付实际对齐（含本轮触碰的全部明细 ID），**🟦/⬜ 行的缺口同时同步进 `todo/requirement-pool.md`（P 编号登记，防"清单独有"）**；②`knowledge/current-status.md`、`knowledge/features/<name>.md`、`knowledge/known-issues.md` 与本轮结果同步（含清单计数）——**同步范围必须覆盖文件全量（全节/全文），禁止"顶部更新、中下部残留"（D83 曾发现 17 处欠账）**；③按 §3.4 唯一状态源收缩 `memory/`：每个短记忆文件 <5KB、总量 <20KB，只保留当前决策摘要与权威路径，详情改为 knowledge/receipt 指针；④执行角色在回执中报告"清单变更明细 + 知识库触碰文件清单 + memory 压缩前后字节数与保留/移除摘要"，规划角色验收时逐项核对。**依据（D74）**：known-issues I1（清单与代码脱节）在 2026-07-24 首轮修复后于 2026-08-12 复发（间隔仅约3周，89 条中 34 条漂移），证明"外部触发式一次性核对"不可持续，必须固化为每轮收尾的强制流程项。**依据（D85）**：信息分层铁律——knowledge=完整权威、memory=最少信息摘要，执行角色触碰状态文件即同步 knowledge 全量。
+10. **知识库全量同步与 memory 压缩（强制项，2026-08-13 新增，D74；2026-08-16 强化，D85 铁律）**：每轮需求（功能）收尾时，规划角色必须向执行角色下发一次知识库全量更新任务，由执行角色完成：①功能清单（项目说明或 knowledge 索引声明的功能清单文件）状态列与本轮交付实际对齐（含本轮触碰的全部明细 ID），**清单中标为未完成/缺口的行同步进 `todo/requirement-pool.md`（P 编号登记，防"清单独有"）**；②`knowledge/current-status.md`、`knowledge/features/<name>.md`、`knowledge/known-issues.md` 与本轮结果同步（含清单计数）——**同步范围必须覆盖文件全量（全节/全文），禁止"顶部更新、中下部残留"**；③按 §3.4 唯一状态源收缩 `memory/`：每个短记忆文件 <5KB、总量 <20KB，只保留当前决策摘要与权威路径，详情改为 knowledge/receipt 指针；④执行角色在回执中报告"清单变更明细 + 知识库触碰文件清单 + memory 压缩前后字节数与保留/移除摘要"，规划角色验收时逐项核对。**依据（D74）**：known-issues I1（清单与代码脱节）的历史教训证明"外部触发式一次性核对"不可持续，必须固化为每轮收尾的强制流程项。**依据（D85）**：信息分层铁律——knowledge=完整权威、memory=最少信息摘要，执行角色触碰状态文件即同步 knowledge 全量。
 11. 生成跨会话交接摘要 → 更新 `memory/handoff.md`
 12. 生成下一轮会话启动提示词
 
@@ -254,7 +254,7 @@ Claude 的 `.claude/settings*.json`、Codex 的权限配置及其他 Harness 工
 2. **执行落值**：规划角色另行下发阶段三终态同步方向，内含唯一终态值清单。执行角色只能逐字落实该清单、同步 knowledge/memory/清单/交接，并在同一任务内完成 memory 压缩及字节数复核后提交同步回执；允许写入清单明确授权的 `COMPLETED`、新功能数、P 编号核销、明细状态和正式基线。该写入属于落实既有规划裁决，不构成执行层自行验收。
 3. **规划复核**：规划角色对同步结果做全文终态审查；通过后确认 `COMPLETED` 并归档终态同步方向，未通过则只列精确差异，不撤销已经锁定的功能验收标准。
 
-**唯一终态值清单必须至少包含**：功能状态、已完成功能数、清单计数、需求池 P 编号状态、里程碑/明细 ID 状态、后端与前端测试基线、迁移基线、活动功能、当前唯一下一动作、主方向与终态同步方向的目标目录、`memory/` 各文件目标字节数与总量上限、压缩前后字节数、保留摘要与移除范围。未列出的值不得由执行角色推断；发现清单内部冲突时应 `BLOCKED` 并报告冲突，不得自行选择一个口径。
+**唯一终态值清单必须至少包含**：功能状态、已完成功能数、清单计数、需求池 P 编号状态、里程碑/明细 ID 状态、各 coding 仓库测试基线、迁移基线、活动功能、当前唯一下一动作、主方向与终态同步方向的目标目录、`memory/` 各文件目标字节数与总量上限、压缩前后字节数、保留摘要与移除范围。未列出的值不得由执行角色推断；发现清单内部冲突时应 `BLOCKED` 并报告冲突，不得自行选择一个口径。
 
 **状态表（不得自创过渡口径）**：
 
@@ -362,18 +362,9 @@ product/<feature>/
 
 ### 11.1 工作区定位
 
-当前目录是 **Smart-WorkFlow** 低代码 OA + AI Agent 平台的工程根目录，包含以下工作区元素：
+当前目录是接入 **Agent Coding Engine** 的 coding 项目工作区根目录。coding 仓库（单仓或多仓）由**项目说明**（`project.md`）声明，本工作区本身**不负责具体业务实现**，职责为：
 
-| 项目 | 定位 | 技术主体 |
-|------|------|----------|
-| `Smart-WorkFlow-Server/` | 后端 API 服务 | Java 21 + Spring Boot 3.4 模块化单体 |
-| `Smart-WorkFlow-Web/` | 前端 SPA | Vue 3 + TypeScript + Vite |
-| `product/` | 需求方向与回执仓库（原始记忆） | 按功能组织的需求方向文档与回执归档（roles/planner.md §8） |
-| `todo/` | 暂不修复清单 | 记录已决策暂不修复的已知问题索引，见 §11.2 |
-
-工作区本身**不负责具体业务实现**，职责为：
-
-- 统一知识管理 — 跨项目架构、约束、术语、流程
+- 统一知识管理 — 跨 coding 仓库架构、约束、术语、流程
 - 规范统一 — 开发流程、编码规范、校验门
 - 文档维护 — 知识库沉淀与一致性
 - 跨项目分析 — 接口对齐、依赖关系、冲突发现
@@ -407,8 +398,9 @@ product/                   — 需求方向与回执仓库（按功能组织）
 todo/                      — 暂不修复清单
   ├── README.md
   └── requirement-pool.md  — 需求缺口池；Executor 仅按终态清单/方向授权机械同步
-Smart-WorkFlow-Server/            — 后端代码（规划角色不读，执行角色可读）
-Smart-WorkFlow-Web/        — 前端代码（规划角色不读，执行角色可读）
+project.md                 — 项目说明入口（声明 coding 仓库数量、目录、职责与工程规则）
+<repo-1>/                  — coding 仓库（如后端/前端/其他，多仓时逐个列出；规划角色不读，执行角色可读）
+<repo-2>/                  — coding 仓库
 ```
 
 **product/ 规则**：
@@ -432,63 +424,31 @@ todo/
 - 每条须能追溯到 `known-issues.md` 中的问题编号，不重复问题描述，只记决策依据和链接
 - 若后续决定要修复：从 `todo/README.md` 移除该条，并在 `known-issues.md` 同步更新该问题状态
 
-### 11.3 系统关系
+### 11.3 coding 仓库关系
+
+coding 仓库之间的调用关系（如 HTTP、事件、共享依赖等）由**项目说明**声明，本文件不固化具体架构、端口或技术栈。示例性的典型关系：
 
 ```
-Smart-WorkFlow-Web (前端 SPA)  ──HTTP──▶  Smart-WorkFlow (后端 API)
-  Vue 3 / TS / Vite                          Java 21 / Spring Boot 3.4
-  Port: 5173 (dev)                           Port: 8080, Context: /api
+<repo-A> (如前端 SPA)  ──HTTP──▶  <repo-B> (如后端 API)
 ```
 
-- 开发模式下 Vite 代理 `/api` → `http://localhost:8080`
-- Mock 模式（`pnpm dev:mock`）下前端零后端依赖，全 MSW 拦截
-- 生产构建后前端静态资源独立部署
+- 具体协议、端口、代理与 Mock 模式见项目说明及各 coding 仓库工程宪法。
 
-### 11.4 后端架构（四层模块化单体）
+### 11.4 coding 仓库架构
 
-```
-sw-dependencies (BOM)
-  └─ sw-framework  — sw-common, sw-security
-       └─ sw-basic — storage, notify, job, iot, knowledge, agent
-            └─ sw-biz — system, form, bpm (api/engine/process), openapi
-                 └─ sw-bootstrap (启动 + Flyway)
-```
+各 coding 仓库的模块化架构、依赖方向、技术栈与该项目的工程约束由**各 coding 仓库工程宪法**和**项目说明**声明，本工作区宪法不固化特定项目的架构依赖图、技术品牌或端口。
 
-- 依赖方向自上而下，**不可反向**
-- 业务模块拆 `-api`（契约/DTO/SPI）+ `-biz`（实现），支持未来微服务抽取
-- 跨模块通信：无返回值 → Spring 事件；有返回值 → Facade 接口
-- 核心引擎：MyBatis-Plus ORM · Flowable BPMN · 动态宽表表单 · JWT 鉴权
+### 11.5 当前状态导航
 
-### 11.5 前端架构（严格分层 SPA）
+本宪法不固化模块完成度、功能数或测试基线。当前能力与唯一下一动作只读取 `knowledge/current-status.md`；正式功能及明细范围读取项目说明或 knowledge 索引声明的功能清单文件。
 
-```
-contracts/ → foundation/ → security/ → adapters/ → modules/
-                                                    components/
-                                                    layouts/ → router/ → stores/
-```
+### 11.6 关键工程约束（速查）
 
-- ESLint 强制架构边界：业务模块禁直引第三方库、模块间禁止横向 import
-- 防腐层隔离：form-create / bpmn-js / vue-flow 原生 API 不泄漏到业务层
-- 安全单出口：单一 axios 实例、v-html 仅 SafeHtml、表达式求值仅 safe-eval
+以下为跨 coding 仓库共享的**最高优先级约束**，详细内容见 `knowledge/shared-constraints.md`：
 
-### 11.6 当前状态导航
-
-本宪法不固化模块完成度、功能数或测试基线。当前能力与唯一下一动作只读取 `knowledge/current-status.md`；正式功能及明细范围读取 `Smart-WorkFlow-Server/功能清单.md`。
-
-### 11.7 关键工程约束（速查）
-
-以下为跨项目共享的**最高优先级约束**，详细内容见 `knowledge/shared-constraints.md`：
-
-- **Token 仅内存存储** — 全仓库无 localStorage/sessionStorage 写入 token。刷新 = 重登录
-- **superAdmin = boolean** — 后端按角色 code 含 `superadmin` 判定（非 `userId == 1`，后者已 SUPERSEDED），不用 `*:*:*` 通配串
-- **前端不发租户头** — 租户 ID 由后端从 JWT 解码注入
-- **菜单单一数据源** — `loadMenu()` 同时喂 router 和侧边栏
-- **动态宽表** — 每个表单一张物理表（`sw_form_{nanoId}`），不用 JSON 列
-- **TABLE（CASCADE）vs REFERENCE（RESTRICT）** — 两档关系原语
-- **REFERENCE 存 id 显示 value** — 提交存 id，UI 显示 display 名，二者不可混淆
-- **Flyway 双方言** — 迁移脚本同时维护 PostgreSQL + H2
+- **资源限制与并发规则声明制** — 每个工程动作的资源限制与跨 coding 仓库并发规则由项目说明和各 coding 仓库工程宪法针对具体动作声明，执行时严格遵守；Engine 不固化数值或命令形式（见 §0.3 与 roles/executor.md §9）
 - **Walking Skeleton** — 先打通端到端薄切片，再横向扩展
-- **动态宽表裸 SQL 红线** — 每条裸 SQL 必须手写 `deleted` + `tenant_id`，列名过白名单，值用参数化绑定
+- **工程专属约束** — 各 coding 仓库的安全、数据、架构级硬约束由各仓库工程宪法与项目说明声明，不在此固化
 
 ## 12. 常用命令 → 已迁移 `roles/executor.md` §9
 
@@ -500,21 +460,15 @@ contracts/ → foundation/ → security/ → adapters/ → modules/
 
 ## 14. 配置速查
 
-| 环境 | 后端配置 | 数据库 | 说明 |
-|------|----------|--------|------|
-| dev | `application-dev.yml` | H2 内存 | 开发期 SQL 正确性代理 |
-| local | `application-local.yml` | PostgreSQL | 本地 PostgreSQL 开发 |
-| 生产 | `application.yml` + 环境变量 | PostgreSQL | 敏感值全部环境变量注入 |
-
-前端配置：`vite.config.ts`（构建/代理/CSP）、`.env` / `.env.mock`（API 模式切换）、`eslint.config.js`（代码规范 + 架构边界规则）。
+各 coding 仓库的环境配置（开发/测试/生产）、数据库、启动方式与敏感值注入策略由**项目说明**和各 coding 仓库工程宪法声明，本文件不固化具体技术栈与配置文件清单。
 
 ## 15. 开发哲学
 
-**Walking Skeleton**：优先打通一条端到端的薄切片（`登录 → 简单表单 → 单节点审批 → 通知`），之后才横向扩展任一模块。横切基础设施（多租户、BaseEntity、数据权限、Security）必须先于业务代码就位。
+**Walking Skeleton**：优先打通一条端到端的薄切片，之后才横向扩展任一模块。横切基础设施（安全、数据权限、鉴权等）必须先于业务代码就位。
 
-**契约先行 + 前后端并行**：前端不等后端就绪，拿契约和 mock 推页面；后端 seam 点亮后零改动接真数据。
+**契约先行 + 跨仓并行**：上游仓库不等下游就绪，拿契约和 mock 推实现；下游 seam 点亮后零改动接真实数据。
 
-**Open-core BPM**：`sw-bpm-engine` 为闭源防腐层；`sw-bpm-api` 和 `sw-bpm-process` 开源。
+**具体工程哲学**：各 coding 仓库的架构模式与开发哲学由各仓库工程宪法声明，本文件只保留跨项目共通的通用原则。
 
 ## 16. 章节迁移映射表（角色定义拆分，2026-08-22）
 
@@ -545,7 +499,7 @@ contracts/ → foundation/ → security/ → adapters/ → modules/
 | §9 | 功能交接机制 | `roles/planner.md` §9 |
 | §10.1 | 角色声明前置 | 本文件 §0.2 |
 | §10.2-§10.4 | 新会话恢复（规划侧） | `roles/planner.md` §10 |
-| §11 | 工作区概览 | 本文件 §11（未迁移，目录结构补充 roles/） |
+| §11 | 工作区概览 | 本文件 §11（未迁移，目录结构补充 roles/ 与 project.md） |
 | §12 | 常用命令 | `roles/executor.md` §9 |
 | §13 | 知识索引 | `roles/planner.md` §11、`roles/executor.md` §10、`roles/admin.md` §6 |
 | §14 | 配置速查 | 本文件 §14（未迁移） |

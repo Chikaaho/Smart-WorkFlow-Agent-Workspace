@@ -1,0 +1,66 @@
+# 证据 06：Hook 从 Engine 根 / 普通子目录 / 嵌套独立 .git coding 仓定位与正反行为
+
+## hook=stop-execution-completeness.sh cwd=engine-a
+-- 嵌套仓 git 根（应显示 alpha-lib 自身，而非 Engine 根）：
+(非 git 目录)
+jq: parse error: Invalid numeric literal at line 1, column 101
+-- VALID: exit=0
+jq: parse error: Invalid numeric literal at line 1, column 101
+-- INVALID: exit=0
+jq: parse error: Invalid numeric literal at line 1, column 101
+-- NOMARKER: exit=0
+
+## hook=stop-execution-completeness.sh cwd=engine-a/knowledge
+-- 嵌套仓 git 根（应显示 alpha-lib 自身，而非 Engine 根）：
+(非 git 目录)
+jq: parse error: Invalid numeric literal at line 1, column 101
+-- VALID: exit=0
+jq: parse error: Invalid numeric literal at line 1, column 101
+-- INVALID: exit=0
+jq: parse error: Invalid numeric literal at line 1, column 101
+-- NOMARKER: exit=0
+
+## hook=stop-execution-completeness.sh cwd=engine-a/alpha-lib
+-- 嵌套仓 git 根（应显示 alpha-lib 自身，而非 Engine 根）：
+/private/tmp/p51-fixtures/engine-a/alpha-lib
+jq: parse error: Invalid numeric literal at line 1, column 101
+-- VALID: exit=0
+jq: parse error: Invalid numeric literal at line 1, column 101
+-- INVALID: exit=0
+jq: parse error: Invalid numeric literal at line 1, column 101
+-- NOMARKER: exit=0
+
+## hook=stop-execution-completeness.sh cwd=engine-a
+-- 嵌套仓 git 根（应显示 alpha-lib 自身，而非 Engine 根）：
+(非 git 目录)
+jq: parse error: Invalid numeric literal at line 1, column 101
+-- VALID: exit=0
+jq: parse error: Invalid numeric literal at line 1, column 101
+-- INVALID: exit=0
+jq: parse error: Invalid numeric literal at line 1, column 101
+-- NOMARKER: exit=0
+
+## hook=stop-execution-completeness.sh cwd=engine-a/knowledge
+-- 嵌套仓 git 根（应显示 alpha-lib 自身，而非 Engine 根）：
+(非 git 目录)
+jq: parse error: Invalid numeric literal at line 1, column 101
+-- VALID: exit=0
+jq: parse error: Invalid numeric literal at line 1, column 101
+-- INVALID: exit=0
+jq: parse error: Invalid numeric literal at line 1, column 101
+-- NOMARKER: exit=0
+
+## hook=stop-execution-completeness.sh cwd=engine-a/alpha-lib
+-- 嵌套仓 git 根（应显示 alpha-lib 自身，而非 Engine 根）：
+/private/tmp/p51-fixtures/engine-a/alpha-lib
+jq: parse error: Invalid numeric literal at line 1, column 101
+-- VALID: exit=0
+jq: parse error: Invalid numeric literal at line 1, column 101
+-- INVALID: exit=0
+jq: parse error: Invalid numeric literal at line 1, column 101
+-- NOMARKER: exit=0
+
+## 判定口径
+- VALID → exit=0 且无 block 输出（放行合法终态）
+- INVALID/NOMARKER → exit=0 且输出 {"decision":"block",...}（按机器契约阻断非法/缺失终态）
+- 三种 cwd 行为一致；嵌套仓 git 根为 alpha-lib 自身而 Hook 仍定位 Engine 根（root_dir 取脚本自身位置）

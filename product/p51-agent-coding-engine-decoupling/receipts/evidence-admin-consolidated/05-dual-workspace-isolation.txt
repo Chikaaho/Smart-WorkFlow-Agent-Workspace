@@ -1,0 +1,59 @@
+# 证据 05：两个独立 Engine 工作区零交叉（engine-a vs engine-b）
+
+engine-a = /tmp/p51-fixtures/engine-a
+engine-b = /tmp/p51-fixtures/engine-b
+
+## 5.1 各自身份正向归属
+/tmp/p51-fixtures/engine-a/project.md:1
+/tmp/p51-fixtures/engine-a/product/fixture-alpha/receipts/r.md:1
+/tmp/p51-fixtures/engine-b/project.md:1
+/tmp/p51-fixtures/engine-b/product/fixture-beta/receipts/r.md:1
+
+## 5.2 反向零交叉断言
+-- A 的身份/路径/状态标记在 B 中命中数（预期 0）：
+       0
+-- B 的身份/路径/状态标记在 A 中命中数（预期 0）：
+       0
+
+## 5.3 记忆/方向/回执/待办目录独立列举
+/tmp/p51-fixtures/engine-a/memory:
+README.md
+architecture.md
+constraints.md
+decisions.md
+features.md
+handoff.md
+issues.md
+state.md
+
+/tmp/p51-fixtures/engine-a/product:
+README.md
+fixture-alpha
+
+/tmp/p51-fixtures/engine-a/todo:
+README.md
+requirement-pool.md
+---
+/tmp/p51-fixtures/engine-b/memory:
+README.md
+architecture.md
+constraints.md
+decisions.md
+features.md
+handoff.md
+issues.md
+state.md
+
+/tmp/p51-fixtures/engine-b/product:
+README.md
+fixture-beta
+
+/tmp/p51-fixtures/engine-b/todo:
+README.md
+requirement-pool.md
+
+## 5.4 各自项目说明身份首行
+# 项目说明（治理夹具：Alpha）
+
+# 项目说明（治理夹具：Beta）
+
