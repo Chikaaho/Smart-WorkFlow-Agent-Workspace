@@ -1,12 +1,13 @@
 {
-  "contract": "smart-workflow.executor-terminal.v2",
-  "marker": "SWF_TERMINAL",
+  "contract": "agent-coding-engine.executor-terminal.v2",
+  "marker": "ENGINE_TERMINAL",
   "additionalProperties": false,
-  "required": ["schema", "role", "state", "receipt", "evidence"],
+  "required": ["schema", "role", "state", "task_level", "evidence"],
   "properties": {
-    "schema": {"type": "string", "const": "smart-workflow.executor-terminal.v2"},
+    "schema": {"type": "string", "const": "agent-coding-engine.executor-terminal.v2"},
     "role": {"type": "string", "const": "executor"},
-    "state": {"type": "string", "enum": ["EXECUTION_SUBMITTED", "TERMINAL_SYNC_SUBMITTED", "BLOCKED"]},
+    "state": {"type": "string", "enum": ["TASK_COMPLETED", "EXECUTION_SUBMITTED", "TERMINAL_SYNC_SUBMITTED", "BLOCKED"]},
+    "task_level": {"type": "string", "enum": ["S", "M", "L", "XL"]},
     "receipt": {"type": "string", "minLength": 1, "pattern": "^product/[^/]+/receipts/[^/]+\\.md$"},
     "evidence": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
     "feature_status": {"type": "string", "enum": ["READY", "IN_PROGRESS", "VERIFYING", "PASSED", "COMPLETED"]},
@@ -16,23 +17,37 @@
     "release_condition": {"type": "string", "minLength": 1}
   },
   "states": {
+    "TASK_COMPLETED": {
+      "required": [],
+      "allowed": ["schema", "role", "state", "task_level", "evidence"],
+      "forbidden": ["receipt", "feature_status", "memory_compression", "block_type", "attempted", "release_condition"],
+      "allowedTaskLevels": ["S", "M"],
+      "allowedFeatureStatus": [],
+      "receiptRequiredTaskLevels": []
+    },
     "EXECUTION_SUBMITTED": {
-      "required": ["feature_status"],
-      "allowed": ["schema", "role", "state", "receipt", "evidence", "feature_status"],
+      "required": ["receipt", "feature_status"],
+      "allowed": ["schema", "role", "state", "task_level", "receipt", "evidence", "feature_status"],
       "forbidden": ["memory_compression", "block_type", "attempted", "release_condition"],
-      "allowedFeatureStatus": ["IN_PROGRESS", "VERIFYING"]
+      "allowedTaskLevels": ["L", "XL"],
+      "allowedFeatureStatus": ["IN_PROGRESS", "VERIFYING"],
+      "receiptRequiredTaskLevels": ["L", "XL"]
     },
     "TERMINAL_SYNC_SUBMITTED": {
-      "required": ["feature_status", "memory_compression"],
-      "allowed": ["schema", "role", "state", "receipt", "evidence", "feature_status", "memory_compression"],
+      "required": ["receipt", "feature_status", "memory_compression"],
+      "allowed": ["schema", "role", "state", "task_level", "receipt", "evidence", "feature_status", "memory_compression"],
       "forbidden": ["block_type", "attempted", "release_condition"],
-      "allowedFeatureStatus": ["COMPLETED"]
+      "allowedTaskLevels": ["L", "XL"],
+      "allowedFeatureStatus": ["COMPLETED"],
+      "receiptRequiredTaskLevels": ["L", "XL"]
     },
     "BLOCKED": {
       "required": ["block_type", "attempted", "release_condition"],
-      "allowed": ["schema", "role", "state", "receipt", "evidence", "block_type", "attempted", "release_condition"],
+      "allowed": ["schema", "role", "state", "task_level", "receipt", "evidence", "block_type", "attempted", "release_condition"],
       "forbidden": ["feature_status", "memory_compression"],
-      "allowedFeatureStatus": []
+      "allowedTaskLevels": ["S", "M", "L", "XL"],
+      "allowedFeatureStatus": [],
+      "receiptRequiredTaskLevels": ["L", "XL"]
     }
   }
 }

@@ -112,6 +112,14 @@ if (Test-Property $payload 'state') {
     }
 }
 
+if (Test-Property $payload 'task_level') {
+    if ($payload.task_level -isnot [string]) {
+        Add-Diagnostic $diagnostics 'task_level: expected string'
+    } elseif ($payload.task_level -notin @($contract.properties.task_level.enum)) {
+        Add-Diagnostic $diagnostics 'task_level: unknown value'
+    }
+}
+
 if (Test-Property $payload 'receipt') {
     if ($payload.receipt -isnot [string]) {
         Add-Diagnostic $diagnostics 'receipt: expected string'
@@ -207,6 +215,13 @@ if ((Test-Property $payload 'state') -and $payload.state -is [string] -and (Test
         } elseif ($name -notin @($stateContract.allowed)) {
             Add-Diagnostic $diagnostics "$name`: not allowed for state $($payload.state)"
         }
+    }
+    $taskLevelValue = if (Test-Property $payload 'task_level') { $payload.task_level } else { $null }
+    if ($taskLevelValue -notin @($stateContract.allowedTaskLevels)) {
+        Add-Diagnostic $diagnostics "task_level: incompatible with state $($payload.state)"
+    }
+    if ($taskLevelValue -in @($stateContract.receiptRequiredTaskLevels) -and -not (Test-Property $payload 'receipt')) {
+        Add-Diagnostic $diagnostics "receipt: required for task_level $taskLevelValue in state $($payload.state)"
     }
     $featureStatusValue = if (Test-Property $payload 'feature_status') { $payload.feature_status } else { $null }
     if (@($stateContract.allowedFeatureStatus).Count -gt 0 -and $featureStatusValue -notin @($stateContract.allowedFeatureStatus)) {

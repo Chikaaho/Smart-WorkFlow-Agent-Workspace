@@ -22,7 +22,7 @@ fi
 
 set +e
 terminal_json=$(printf '%s' "$input" | /usr/bin/jq -j '.last_assistant_message // ""' | awk '
-  BEGIN { marker = "SWF_TERMINAL "; count = 0; marker_line = 0 }
+  BEGIN { marker = "ENGINE_TERMINAL "; count = 0; marker_line = 0 }
   index($0, marker) == 1 { count++; marker_line = NR; payload = substr($0, length(marker) + 1) }
   { last_line = NR }
   END {
