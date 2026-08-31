@@ -1,17 +1,15 @@
 # 会话交接摘要
 
-> 同步点：2026-08-30；权威：`knowledge/current-status.md`。
+> 同步点：2026-09-01；权威：`knowledge/current-status.md`。
 
-**项目状态**：当前无活动正式功能。`minimal-closure-first-acceptance` 已 `COMPLETED（已确认）`；正式功能数 36，清单 ✅32/🟦25/⬜33，正式基线为后端 955/0/0/0（agent346）、前端 110f/1060t/0sk、Flyway H2 V44/PG V44。
+**项目状态**：当前无活动正式功能。P51 Agent Coding Engine 解耦已 `COMPLETED（已确认，2026-08-31）`；它不新增 OA 正式业务功能。OA 正式功能数 36，清单 ✅32/🟦25/⬜33，正式基线为后端 955/0/0/0（agent346）、前端 110f/1060t/0sk、Flyway H2 V44/PG V44。
 
-**发布版本**：B1～B3 修复已通过规划验收。已发布代码为后端 `ba59539`（develop）与前端 `f3a8988`（develop）；根 knowledge 仓 `a86cbbd`（main）是审计快照。
+**发布状态**：`v0.0.1` 正式版已发布（Owner 2026-08-31 确认）。本摘要未登记本次正式版的远端 tag、提交映射与发布回执，后续需要精确追溯时由执行角色补充行为证据。
 
-**最终裁决**：`v0.0.1-beta` 已 `RELEASED` 并通过规划验收。F1～F8 全部通过：前端四门 110f/1060t/0sk；后端隔离构建、H2 V44、Redis 503/200/401；`ApprovalProcessIntegrationTest` 定向 3 连过，后端固定提交全量 2 次均为 955/0/0/0；最小业务链与 tag 追溯成立。
+**最近锁定质量基线**：前端 110f/1060t/0sk；后端 955/0/0/0（agent346）；Flyway H2 V44/PG V44。该基线来自最近已通过的规划验收，不替代 `v0.0.1` 正式版发布映射回执。
 
-**发布映射**：后端远端 `v0.0.1-beta` peeled=`ba5953977ef8b8684e0d551216283727b7540ad4`；前端远端同名 tag peeled=`f3a89888e022d8b1c9de658e5a6cb5f97a8a9a2b`。根 knowledge 仓保存审计与追溯记录。
+**后续候选**：P45 RSA/验证码登录安全、P52 表单设计器顶部工作台、P53 UI 与组件布局优化均已登记在 `todo/requirement-pool.md`；P51 已完成并退出候选池。
 
-**后续候选**：P51 Agent Coding Engine 解耦、P45 RSA/验证码登录安全、P52 表单设计器顶部工作台、P53 UI 与组件布局优化均已登记在 `todo/requirement-pool.md`，不进入本次发布终验。设备管理不作为本 beta 最小功能要求。
+**P51 终态**：main 正式历史已完成规划功能级 `PASSED`、阶段三 `COMPLETED（已确认）` 与 Owner 授权发布；当前远端 `main=e0711fb`、`develop-sw=a2b8342`。终态权威与分支摘要差异已由 `product/p51-agent-coding-engine-decoupling/receipts/planning-final-reconciliation-p51-main-terminal-authority-03.md` 完成对账。
 
-**当前活动方向**：P51 Agent Coding Engine 解耦；方向位于 `product/p51-agent-coding-engine-decoupling/ready/direction-p51-agent-coding-engine-decoupling.md`。目标是 `main` 成为通用 Engine，`develop-sw` 保留当前 Smart-WorkFlow/OA 成果示例，README 提供互相指向，实例状态与 Engine 隔离。探索回执位于 `search_fallback/p51-branch-decoupling-exploration.md`。
-
-**下一动作**：执行角色读取 P51 方向并自行拆分 Step、实现和验证；规划角色等待功能级完成回执后验收。远端分支发布需 Owner 另行明确授权。
+**下一动作**：规划角色从 `todo/requirement-pool.md` 选择下一个唯一正式功能。P51 无后续实现、补证或同步任务。
