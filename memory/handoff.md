@@ -12,6 +12,6 @@
 
 **后续候选**：P51 Agent Coding Engine 解耦、P45 RSA/验证码登录安全、P52 表单设计器顶部工作台、P53 UI 与组件布局优化均已登记在 `todo/requirement-pool.md`，不进入本次发布终验。设备管理不作为本 beta 最小功能要求。
 
-**当前补充任务**：三仓 README 按项目入口文档定位修订；移除个人机器资源条件与动态验收看板式内容，方向位于 `product/readme-project-entry-correction/ready/`。不改变正式功能和发布状态。
+**当前活动方向**：P51 Agent Coding Engine 解耦；方向位于 `product/p51-agent-coding-engine-decoupling/ready/direction-p51-agent-coding-engine-decoupling.md`。目标是 `main` 成为通用 Engine，`develop-sw` 保留当前 Smart-WorkFlow/OA 成果示例，README 提供互相指向，实例状态与 Engine 隔离。探索回执位于 `search_fallback/p51-branch-decoupling-exploration.md`。
 
-**下一动作**：管理员执行 README 修订方向并返回回执；不重复功能、质量门或 Git 发布动作。
+**下一动作**：执行角色读取 P51 方向并自行拆分 Step、实现和验证；规划角色等待功能级完成回执后验收。远端分支发布需 Owner 另行明确授权。
