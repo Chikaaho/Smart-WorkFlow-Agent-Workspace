@@ -194,3 +194,7 @@ All entries below belong to the current `main` branch and do not represent Smart
 - [Exploration task guide](search_task/README.md)
 - [Exploration result guide](search_fallback/README.md)
 - [Backlog and requirement pool guide](todo/README.md)
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).

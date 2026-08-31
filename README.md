@@ -194,3 +194,7 @@ git switch develop-sw
 - [探索任务说明](search_task/README.md)
 - [探索回执说明](search_fallback/README.md)
 - [待办与需求池说明](todo/README.md)
+
+## 许可证
+
+本项目采用 [MIT License](LICENSE) 开源。
