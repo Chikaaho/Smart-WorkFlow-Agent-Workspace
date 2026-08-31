@@ -1,0 +1,31 @@
+# 证据 03：C3 终态标识迁移（通用标识，无兼容别名）
+
+## 3.1 新标识
+- schema: agent-coding-engine.executor-terminal.v1
+- marker: ENGINE_TERMINAL
+
+## 3.2 迁移 diff（契约 + Hook + system.md，逐字节仅标识变化）
+-  BEGIN { marker = "SWF_TERMINAL "; count = 0; marker_line = 0 }
++  BEGIN { marker = "ENGINE_TERMINAL "; count = 0; marker_line = 0 }
+-  "contract": "smart-workflow.executor-terminal.v2",
+-  "marker": "SWF_TERMINAL",
++  "contract": "agent-coding-engine.executor-terminal.v1",
++  "marker": "ENGINE_TERMINAL",
+-    "schema": {"type": "string", "const": "smart-workflow.executor-terminal.v2"},
++    "schema": {"type": "string", "const": "agent-coding-engine.executor-terminal.v1"},
+-  BEGIN { marker = "SWF_TERMINAL "; count = 0; marker_line = 0 }
++  BEGIN { marker = "ENGINE_TERMINAL "; count = 0; marker_line = 0 }
+-**当前状态唯一来源与终态机器契约（硬约束 🔒）**：`knowledge/current-status.md` 是当前功能状态、计数、活动功能和唯一下一动作的唯一持久权威来源，并且只保存一份最新快照；旧快照与过程历史追加归档到 `knowledge/history/`。`memory/` 保存 Planner 可直接决策的最小摘要（含权威路径和同步点），不是第二份权威状态；发现冲突时 Planner 必须通过执行层核对 `knowledge/current-status.md`，再按权威结果修正摘要。执行终态的唯一机器契约是 `.codex/governance/terminal-contract.json`；公共 Validator 按平台提供 `.codex/governance/validate-terminal.sh`（POSIX）与 `.codex/governance/validate-terminal.ps1`（Windows PowerShell），两者必须只读取同一机器契约并保持相同判定语义。角色文档、回执模板和 Hook 只能引用该契约与公共 Validator，不得各自扩展合法终态、字段 schema 或校验分支。Executor 最后回复必须有且只有一条严格以 `SWF_TERMINAL ` 开头的物理末行；Hook 只校验 marker 数量/位置、提取 JSON、调用当前平台的公共 Validator，并对首次非法终态阻断一次、重试仍非法时停止自动续跑。Claude/Codex 仅可做 Harness 输出字段映射，不得改变该语义。
++**当前状态唯一来源与终态机器契约（硬约束 🔒）**：`knowledge/current-status.md` 是当前功能状态、计数、活动功能和唯一下一动作的唯一持久权威来源，并且只保存一份最新快照；旧快照与过程历史追加归档到 `knowledge/history/`。`memory/` 保存 Planner 可直接决策的最小摘要（含权威路径和同步点），不是第二份权威状态；发现冲突时 Planner 必须通过执行层核对 `knowledge/current-status.md`，再按权威结果修正摘要。执行终态的唯一机器契约是 `.codex/governance/terminal-contract.json`；公共 Validator 按平台提供 `.codex/governance/validate-terminal.sh`（POSIX）与 `.codex/governance/validate-terminal.ps1`（Windows PowerShell），两者必须只读取同一机器契约并保持相同判定语义。角色文档、回执模板和 Hook 只能引用该契约与公共 Validator，不得各自扩展合法终态、字段 schema 或校验分支。Executor 最后回复必须有且只有一条严格以 `ENGINE_TERMINAL ` 开头的物理末行；Hook 只校验 marker 数量/位置、提取 JSON、调用当前平台的公共 Validator，并对首次非法终态阻断一次、重试仍非法时停止自动续跑。Claude/Codex 仅可做 Harness 输出字段映射，不得改变该语义。
+-**唯一终态值清单必须至少包含**：功能状态、已完成功能数、清单计数、需求池 P 编号状态、里程碑/明细 ID 状态、各 coding 仓库测试基线、迁移基线、活动功能、当前唯一下一动作、主方向与终态同步方向的目标目录、`memory/` 各文件目标字节数与总量上限、压缩前后字节数、保留摘要与移除范围。未列出的值不得由执行角色推断；发现清单内部冲突时应 `BLOCKED` 并报告冲突，不得自行选择一个口径。
++**唯一终态值清单必须至少包含**：功能状态、已完成功能数、清单计数、需求池 P 编号状态、里程碑/明细 ID 状态、**项目声明且本功能实际涉及的验证基线集合（未涉及时为空集合；Engine 不固定任何技术类别，不要求后端、前端、测试、迁移等任一类目必填）**、活动功能、当前唯一下一动作、主方向与终态同步方向的目标目录、`memory/` 各文件目标字节数与总量上限、压缩前后字节数、保留摘要与移除范围。未列出的值不得由执行角色推断；发现清单内部冲突时应 `BLOCKED` 并报告冲突，不得自行选择一个口径。
+
+## 3.3 字段与状态结构差异为零（HEAD 版 vs 新版契约的状态/字段骨架对比）
+IDENTICAL(标识归一后): required
+IDENTICAL(标识归一后): properties
+IDENTICAL(标识归一后): states
+IDENTICAL(标识归一后): marker
+IDENTICAL(标识归一后): additionalProperties
+
+## 3.4 运行时旧标识零残留（含 Validator/测试/双 Hook）
+0 命中（.codex/governance 全目录、双 Hook、system、roles 均扫描）

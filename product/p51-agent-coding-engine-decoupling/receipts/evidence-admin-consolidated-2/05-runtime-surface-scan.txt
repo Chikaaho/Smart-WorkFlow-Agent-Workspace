@@ -1,0 +1,40 @@
+# 证据 05：C4 运行时治理表面全量扫描
+
+## 5.1 扫描目标逐项存在性（先验证存在，再扫描）
+OK  /usr/local/projects/Smart-WorkFlow/system.md
+OK  /usr/local/projects/Smart-WorkFlow/roles/planner.md
+OK  /usr/local/projects/Smart-WorkFlow/roles/executor.md
+OK  /usr/local/projects/Smart-WorkFlow/roles/admin.md
+OK  /usr/local/projects/Smart-WorkFlow/.codex/governance/terminal-contract.json
+OK  /usr/local/projects/Smart-WorkFlow/.codex/governance/validate-terminal.sh
+OK  /usr/local/projects/Smart-WorkFlow/.codex/governance/validate-terminal.ps1
+OK  /usr/local/projects/Smart-WorkFlow/.codex/governance/test-terminal-contract.sh
+OK  /usr/local/projects/Smart-WorkFlow/.codex/governance/test-terminal-contract.ps1
+OK  /usr/local/projects/Smart-WorkFlow/.codex/hooks/stop-execution-completeness.sh
+OK  /usr/local/projects/Smart-WorkFlow/.codex/hooks.json
+OK  /usr/local/projects/Smart-WorkFlow/.codex/config.toml
+OK  /usr/local/projects/Smart-WorkFlow/.claude/hooks/stop-execution-completeness.sh
+OK  /usr/local/projects/Smart-WorkFlow/.claude/settings.json
+OK  /usr/local/projects/Smart-WorkFlow/README.md
+OK  /usr/local/projects/Smart-WorkFlow/AGENTS.md
+OK  /usr/local/projects/Smart-WorkFlow/CLAUDE.md
+OK  /usr/local/projects/Smart-WorkFlow/project.example.md
+OK  /usr/local/projects/Smart-WorkFlow/memory
+OK  /usr/local/projects/Smart-WorkFlow/knowledge
+OK  /usr/local/projects/Smart-WorkFlow/todo
+OK  /usr/local/projects/Smart-WorkFlow/search_task
+OK  /usr/local/projects/Smart-WorkFlow/search_fallback
+OK  /usr/local/projects/Smart-WorkFlow/product/README.md
+目标存在性: 全部通过
+
+## 5.2 品牌/旧标识零残留（含 -r 目录递归与逐文件，全部显式路径）
+grep 聚合退出码: 1（无匹配=通过）实际见上; 校验: 上述输出不含命中行
+-- 命中行计数（预期 0）:
+       0
+
+## 5.3 固定工具命令/资源值零残留（同范围）
+       0
+（预期 0；知识索引中 GOFLAGS/MAVEN_OPTS/NODE_OPTIONS 示例已于上一轮移除）
+
+## 5.4 grep 实现与 warning/error 检查
+grep (BSD grep, GNU compatible) 2.6.0-FreeBSD

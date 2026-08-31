@@ -1,0 +1,44 @@
+# 证据 07：修改范围、Git 状态与未远端发布
+
+## 7.1 本轮修改文件（git status）
+ M .claude/hooks/stop-execution-completeness.sh
+ M .codex/governance/terminal-contract.json
+ M .codex/governance/test-terminal-contract.ps1
+ M .codex/governance/test-terminal-contract.sh
+ M .codex/hooks/stop-execution-completeness.sh
+ M product/p51-agent-coding-engine-decoupling/README.md
+ M roles/executor.md
+ M roles/planner.md
+ M system.md
+?? product/p51-agent-coding-engine-decoupling/receipts/evidence-admin-consolidated-2/
+?? product/p51-agent-coding-engine-decoupling/receipts/planning-admin-prompt-p51-consolidated-2.md
+?? product/p51-agent-coding-engine-decoupling/receipts/planning-rereview-admin-p51-consolidated-20260831-01.md
+
+## 7.2 git diff --check
+(无输出=通过)
+
+## 7.3 改动统计
+ .claude/hooks/stop-execution-completeness.sh       |  2 +-
+ .codex/governance/terminal-contract.json           |  6 +--
+ .codex/governance/test-terminal-contract.ps1       | 32 ++++++-------
+ .codex/governance/test-terminal-contract.sh        | 52 +++++++++++-----------
+ .codex/hooks/stop-execution-completeness.sh        |  2 +-
+ .../p51-agent-coding-engine-decoupling/README.md   |  9 ++--
+ roles/executor.md                                  |  8 ++--
+ roles/planner.md                                   |  8 ++--
+ system.md                                          |  6 +--
+ 9 files changed, 63 insertions(+), 62 deletions(-)
+
+## 7.4 提交记录（本地，中文 Conventional Commit，无署名）
+7cf6361 docs(engine): P51 单管理员治理收口——资源约束声明制与通用初始知识库
+d3e85af fix(engine): Harness Hook 从任意根内 cwd 可定位工作区根
+2bd193e feat(engine): main 根级标准工作区与唯一项目说明入口
+
+## 7.5 未远端发布证明
+origin	git@github.com:Chikaaho/Smart-WorkFlow-Knowledge.git (fetch)
+origin	git@github.com:Chikaaho/Smart-WorkFlow-Knowledge.git (push)
+branch.*.remote 配置: origin
+7cf6361 docs(engine): P51 单管理员治理收口——资源约束声明制与通用初始知识库
+d3e85af fix(engine): Harness Hook 从任意根内 cwd 可定位工作区根
+2bd193e feat(engine): main 根级标准工作区与唯一项目说明入口
+2b2ca2d refactor(engine): main 通用化为 Agent Coding Engine 默认分支

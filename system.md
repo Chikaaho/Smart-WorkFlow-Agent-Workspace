@@ -51,7 +51,7 @@ Owner 的自由裁量权仅属于用户本人，不自动转授给任何模型�
 **角色速查**：
 
 - **规划**：只读 `system.md` / `roles/planner.md` / `memory/` / `search_fallback/` / `product/` / `todo/`；只写 `memory/` / `search_task/` / `product/` / `todo/`；**不写** `system.md` 与 `roles/`，**不读** `knowledge/` 与 coding 仓库代码；**不执行** 编译、测试、构建、迁移、部署等状态变更命令。完整定义见 `roles/planner.md`。
-- **执行**：可读全部目录（含 `knowledge/`、`memory/`、`todo/` 与 coding 仓库代码）；可写 `knowledge/`、`search_fallback/`、`product/*/receipts/`、coding 仓库代码；仅在阶段三唯一终态值清单或执行方向明确授权时写 `memory/` 与 `todo/requirement-pool.md`；可执行编译/测试命令（限内存，见 §0.3）。完整定义见 `roles/executor.md`。
+- **执行**：可读全部目录（含 `knowledge/`、`memory/`、`todo/` 与 coding 仓库代码）；可写 `knowledge/`、`search_fallback/`、`product/*/receipts/`、coding 仓库代码；仅在阶段三唯一终态值清单或执行方向明确授权时写 `memory/` 与 `todo/requirement-pool.md`；可执行项目已声明的工程动作（遵守其声明的资源与并发约束，见 §0.3）。完整定义见 `roles/executor.md`。
 - **管理员**：可读取工作区及 coding 仓库的全部非代码内容；可写 `system.md`、架构文档及各 coding 仓库的宪法与工程配置文件；可在工作区及 coding 仓库执行与管理员任务相关的 Git 操作；不读写业务源码、测试源码或其他实现代码，不写功能状态文件，不执行编译、测试或部署等业务状态变更命令。完整定义见 `roles/admin.md`。
 
 ### 0.3 三角色工作机制
@@ -149,7 +149,7 @@ Owner 的自由裁量权仅属于用户本人，不自动转授给任何模型�
 
 `README.md`、`knowledge/development-workflow.md`、`knowledge/model-registry.md`、`knowledge/features/` 及 `product/` 中的内容均不是角色、授权、执行终态或当前状态的规范入口。它们与本文件、`roles/` 或工程宪法冲突时，以当前规范入口为准；不得从旧文档推导二次确认、模型角色、旧 Step 协议或旧终态。
 
-**当前状态唯一来源与终态机器契约（硬约束 🔒）**：`knowledge/current-status.md` 是当前功能状态、计数、活动功能和唯一下一动作的唯一持久权威来源，并且只保存一份最新快照；旧快照与过程历史追加归档到 `knowledge/history/`。`memory/` 保存 Planner 可直接决策的最小摘要（含权威路径和同步点），不是第二份权威状态；发现冲突时 Planner 必须通过执行层核对 `knowledge/current-status.md`，再按权威结果修正摘要。执行终态的唯一机器契约是 `.codex/governance/terminal-contract.json`；公共 Validator 按平台提供 `.codex/governance/validate-terminal.sh`（POSIX）与 `.codex/governance/validate-terminal.ps1`（Windows PowerShell），两者必须只读取同一机器契约并保持相同判定语义。角色文档、回执模板和 Hook 只能引用该契约与公共 Validator，不得各自扩展合法终态、字段 schema 或校验分支。Executor 最后回复必须有且只有一条严格以 `SWF_TERMINAL ` 开头的物理末行；Hook 只校验 marker 数量/位置、提取 JSON、调用当前平台的公共 Validator，并对首次非法终态阻断一次、重试仍非法时停止自动续跑。Claude/Codex 仅可做 Harness 输出字段映射，不得改变该语义。
+**当前状态唯一来源与终态机器契约（硬约束 🔒）**：`knowledge/current-status.md` 是当前功能状态、计数、活动功能和唯一下一动作的唯一持久权威来源，并且只保存一份最新快照；旧快照与过程历史追加归档到 `knowledge/history/`。`memory/` 保存 Planner 可直接决策的最小摘要（含权威路径和同步点），不是第二份权威状态；发现冲突时 Planner 必须通过执行层核对 `knowledge/current-status.md`，再按权威结果修正摘要。执行终态的唯一机器契约是 `.codex/governance/terminal-contract.json`；公共 Validator 按平台提供 `.codex/governance/validate-terminal.sh`（POSIX）与 `.codex/governance/validate-terminal.ps1`（Windows PowerShell），两者必须只读取同一机器契约并保持相同判定语义。角色文档、回执模板和 Hook 只能引用该契约与公共 Validator，不得各自扩展合法终态、字段 schema 或校验分支。Executor 最后回复必须有且只有一条严格以 `ENGINE_TERMINAL ` 开头的物理末行；Hook 只校验 marker 数量/位置、提取 JSON、调用当前平台的公共 Validator，并对首次非法终态阻断一次、重试仍非法时停止自动续跑。Claude/Codex 仅可做 Harness 输出字段映射，不得改变该语义。
 
 **Governance Implementation（硬约束 🔒）**：`.claude/hooks/`、`.codex/hooks/`、公共 Validator、终态契约及治理契约测试统一属于 Governance Implementation，由管理员维护。该权限只覆盖治理门禁实现及其静态/契约验证，不授予管理员读取或修改业务源码、业务测试、迁移、业务实现或裁决业务状态的权限；Hook 不得承载业务逻辑。定义与允许/禁止清单唯一见 `roles/admin.md` §2—§4。
 
@@ -254,7 +254,7 @@ Claude 的 `.claude/settings*.json`、Codex 的权限配置及其他 Harness 工
 2. **执行落值**：规划角色另行下发阶段三终态同步方向，内含唯一终态值清单。执行角色只能逐字落实该清单、同步 knowledge/memory/清单/交接，并在同一任务内完成 memory 压缩及字节数复核后提交同步回执；允许写入清单明确授权的 `COMPLETED`、新功能数、P 编号核销、明细状态和正式基线。该写入属于落实既有规划裁决，不构成执行层自行验收。
 3. **规划复核**：规划角色对同步结果做全文终态审查；通过后确认 `COMPLETED` 并归档终态同步方向，未通过则只列精确差异，不撤销已经锁定的功能验收标准。
 
-**唯一终态值清单必须至少包含**：功能状态、已完成功能数、清单计数、需求池 P 编号状态、里程碑/明细 ID 状态、各 coding 仓库测试基线、迁移基线、活动功能、当前唯一下一动作、主方向与终态同步方向的目标目录、`memory/` 各文件目标字节数与总量上限、压缩前后字节数、保留摘要与移除范围。未列出的值不得由执行角色推断；发现清单内部冲突时应 `BLOCKED` 并报告冲突，不得自行选择一个口径。
+**唯一终态值清单必须至少包含**：功能状态、已完成功能数、清单计数、需求池 P 编号状态、里程碑/明细 ID 状态、**项目声明且本功能实际涉及的验证基线集合（未涉及时为空集合；Engine 不固定任何技术类别，不要求后端、前端、测试、迁移等任一类目必填）**、活动功能、当前唯一下一动作、主方向与终态同步方向的目标目录、`memory/` 各文件目标字节数与总量上限、压缩前后字节数、保留摘要与移除范围。未列出的值不得由执行角色推断；发现清单内部冲突时应 `BLOCKED` 并报告冲突，不得自行选择一个口径。
 
 **状态表（不得自创过渡口径）**：
 

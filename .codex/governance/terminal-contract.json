@@ -1,10 +1,10 @@
 {
-  "contract": "smart-workflow.executor-terminal.v2",
-  "marker": "SWF_TERMINAL",
+  "contract": "agent-coding-engine.executor-terminal.v1",
+  "marker": "ENGINE_TERMINAL",
   "additionalProperties": false,
   "required": ["schema", "role", "state", "receipt", "evidence"],
   "properties": {
-    "schema": {"type": "string", "const": "smart-workflow.executor-terminal.v2"},
+    "schema": {"type": "string", "const": "agent-coding-engine.executor-terminal.v1"},
     "role": {"type": "string", "const": "executor"},
     "state": {"type": "string", "enum": ["EXECUTION_SUBMITTED", "TERMINAL_SYNC_SUBMITTED", "BLOCKED"]},
     "receipt": {"type": "string", "minLength": 1, "pattern": "^product/[^/]+/receipts/[^/]+\\.md$"},
