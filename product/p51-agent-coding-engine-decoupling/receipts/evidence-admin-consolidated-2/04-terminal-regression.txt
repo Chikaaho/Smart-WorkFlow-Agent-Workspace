@@ -1,0 +1,30 @@
+# 证据 04：标识迁移后契约等价回归
+
+## 4.1 POSIX 契约测试（原 35 用例）
+terminal-governance cases=35 passed=35 failed=0
+exit=0
+
+## 4.2 PowerShell 契约测试可用性
+本机无 pwsh（环境受限项，如实记录）：.ps1 与 .sh 为同一 35 用例集的等价实现，迁移 diff 仅标识字符串替换；
+非标识行变化数（预期 0）:
+0
+
+## 4.3 Hook 三类输入（合法/非法/旧标识/缺 marker；cwd=Engine 普通子目录与嵌套独立 git 仓）
+## cwd=engine/knowledge；git 根: （非 git 目录，Engine 自身区域）
+-- VALID → exit=0
+-- INVALID → {"decision":"block","reason":"执行会话缺少合法结构化终态：terminal: state: unknown terminal state"}
+exit=0
+-- OLDMARKER → {"decision":"block","reason":"执行会话缺少合法结构化终态：terminal-message: marker: missing"}
+exit=0
+-- NOMARKER → {"decision":"block","reason":"执行会话缺少合法结构化终态：terminal-message: marker: missing"}
+exit=0
+## cwd=engine/alpha-lib；git 根: /private/tmp/p51-fixtures2/engine/alpha-lib
+-- VALID → exit=0
+-- INVALID → {"decision":"block","reason":"执行会话缺少合法结构化终态：terminal: state: unknown terminal state"}
+exit=0
+-- OLDMARKER → {"decision":"block","reason":"执行会话缺少合法结构化终态：terminal-message: marker: missing"}
+exit=0
+-- NOMARKER → {"decision":"block","reason":"执行会话缺少合法结构化终态：terminal-message: marker: missing"}
+exit=0
+
+判定口径：VALID 放行（exit=0 无输出）；INVALID/OLDMARKER/NOMARKER 阻断（block JSON）；旧标识不兼容（无兼容别名）。

@@ -1,0 +1,30 @@
+# 证据 06：C5 夹具工程动作调用账本
+
+## 6.1 项目声明动作（project.md）
+# 项目说明（治理夹具）
+- 结构：多仓
+- alpha-lib：唯一动作「文档验证」，验证入口 `cat alpha-lib/VERIFY.md`，内存上限 256M
+- beta-tool：唯一动作「静态检查」，验证入口 `grep -q BETA_STATIC_CHECK_MARKER_OK beta-tool/STATIC_CHECK.txt`，内存上限 128M
+- 未声明动作：编译、测试执行、数据库迁移、服务启动、制品构建、部署 —— Engine 不推断、不生成、不调用
+- 本功能实际涉及的验证基线集合：ALPHA_BASELINE=doc-1（仅 alpha-lib 文档验证）
+
+## 6.2 实际调用账本（sh -x 全量 trace，仅运行已声明验证入口）
+已声明动作执行 exit=0
++ set -x
++ cd /tmp/p51-fixtures2/engine
++ cat alpha-lib/VERIFY.md
++ grep -q BETA_STATIC_CHECK_MARKER_OK beta-tool/STATIC_CHECK.txt
+
+## 6.3 声明↔实际一一对应
+声明 1: alpha-lib 文档验证 `cat alpha-lib/VERIFY.md` → 账本行: cat alpha-lib/VERIFY.md → 输出:  ALPHA_VERIFY_MARKER_OK
+声明 2: beta-tool 静态检查 `grep -q ...` → 账本行: grep -q BETA_STATIC_CHECK_MARKER_OK beta-tool/STATIC_CHECK.txt → exit=0
+账本动作命令计数（+ 开头 trace 行中的非内置命令）: 2 = 声明动作数 2
+
+## 6.4 未声明动作零调用断言（账本全量 grep）
+-- 未声明动作关键词（compile/build/test-execution/migrate/deploy/install/serve 及工具名）命中数:
+命中: 0
+0 命中（逐行输出为空）
+
+## 6.5 引擎行为面零生成证明
+夹具运行全程未出现内存上限、互斥检测或并发等待行为（账本中无 ulimit/nice/检测类命令）；
+Engine 规则面（证据 02 §2.3）无默认约束可生成。声明动作与实际调用一一对应，未声明动作调用计数 = 0。
