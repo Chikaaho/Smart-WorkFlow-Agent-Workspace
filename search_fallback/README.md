@@ -4,7 +4,7 @@
 
 ## 用途
 
-Executor 完成探索后，将探索结果压缩写入 `search_fallback/<task-name>.md`（目标 <5KB），使用结论优先的格式，确保 Planner 能在 <1 次阅读中理解全部发现。
+Executor 完成 Planner 下发的 L/XL 探索后，将探索结果压缩写入 `search_fallback/<task-name>.md`（目标 <5KB），使用结论优先的格式，确保 Planner 能在 <1 次阅读中理解全部发现。
 
 ## 回执格式
 

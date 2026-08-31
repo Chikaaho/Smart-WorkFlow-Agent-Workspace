@@ -4,7 +4,7 @@
 
 ## 用途
 
-当 `memory/` 中的信息不足以做出规划决策时（需确认代码结构、API 签名、数据流、影响范围等），Planner 创建 `<task-name>.md` 探索任务下发；Executor 读取后执行探索，并将结果压缩写入 `search_fallback/<task-name>.md`。
+当 `memory/` 中的信息不足以做出 L/XL 规划决策时（需确认代码结构、API 签名、数据流、影响范围等），Planner 创建 `<task-name>.md` 探索任务下发；Executor 读取后执行探索，并将结果压缩写入 `search_fallback/<task-name>.md`。S/M 由 Executor 在直接执行范围内自行读取必要事实，不经过本通道。
 
 ## 规则
 

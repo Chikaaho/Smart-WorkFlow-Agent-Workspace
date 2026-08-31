@@ -33,32 +33,40 @@ validator_case() {
   record "$ok" "validator/$name" "expected=$expected exit=$actual output=$output"
 }
 
-execution='{"schema":"agent-coding-engine.executor-terminal.v1","role":"executor","state":"EXECUTION_SUBMITTED","receipt":"product/demo/receipts/completion.md","evidence":["gate:0"],"feature_status":"VERIFYING"}'
-sync='{"schema":"agent-coding-engine.executor-terminal.v1","role":"executor","state":"TERMINAL_SYNC_SUBMITTED","receipt":"product/demo/receipts/sync.md","evidence":["audit:0"],"feature_status":"COMPLETED","memory_compression":{"before_bytes":10,"after_bytes":8}}'
-blocked='{"schema":"agent-coding-engine.executor-terminal.v1","role":"executor","state":"BLOCKED","receipt":"product/demo/receipts/blocked.md","evidence":["error"],"block_type":"EXTERNAL","attempted":["retry"],"release_condition":"service restored"}'
+direct_s='{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"TASK_COMPLETED","task_level":"S","evidence":["focused-check:0"]}'
+direct_m='{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"TASK_COMPLETED","task_level":"M","evidence":["targeted-test:0"]}'
+execution='{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"EXECUTION_SUBMITTED","task_level":"L","receipt":"product/demo/receipts/completion.md","evidence":["gate:0"],"feature_status":"VERIFYING"}'
+sync='{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"TERMINAL_SYNC_SUBMITTED","task_level":"XL","receipt":"product/demo/receipts/sync.md","evidence":["audit:0"],"feature_status":"COMPLETED","memory_compression":{"before_bytes":10,"after_bytes":8}}'
+blocked='{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"BLOCKED","task_level":"L","receipt":"product/demo/receipts/blocked.md","evidence":["error"],"block_type":"EXTERNAL","attempted":["retry"],"release_condition":"service restored"}'
 
+validator_case direct_s pass "$direct_s"
+validator_case direct_m pass "$direct_m"
 validator_case execution pass "$execution"
 validator_case sync pass "$sync"
 validator_case blocked pass "$blocked"
-validator_case unknown_state fail '{"schema":"agent-coding-engine.executor-terminal.v1","role":"executor","state":"completed","receipt":"product/demo/receipts/x.md","evidence":["x"]}' 'state: unknown terminal state'
-validator_case missing fail '{"schema":"agent-coding-engine.executor-terminal.v1","role":"executor","state":"EXECUTION_SUBMITTED"}' 'receipt: missing required field'
+validator_case unknown_state fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"completed","task_level":"S","evidence":["x"]}' 'state: unknown terminal state'
+validator_case missing fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"EXECUTION_SUBMITTED","task_level":"L","evidence":["x"],"feature_status":"VERIFYING"}' 'receipt: required for state EXECUTION_SUBMITTED'
 validator_case null_payload fail 'null' 'terminal: payload: expected object'
 validator_case array_payload fail '[]' 'terminal: payload: expected object'
 validator_case string_payload fail '"text"' 'terminal: payload: expected object'
 validator_case number_payload fail '7' 'terminal: payload: expected object'
 validator_case boolean_payload fail 'false' 'terminal: payload: expected object'
 validator_case invalid_json parse '{' 'terminal: payload: invalid JSON'
-validator_case blank_null fail '{"schema":"agent-coding-engine.executor-terminal.v1","role":"executor","state":"EXECUTION_SUBMITTED","receipt":"   ","evidence":null,"feature_status":"VERIFYING"}' 'evidence: expected array'
-validator_case wrong_type fail '{"schema":"agent-coding-engine.executor-terminal.v1","role":"executor","state":"EXECUTION_SUBMITTED","receipt":3,"evidence":"x","feature_status":"VERIFYING"}' 'receipt: expected string'
-validator_case out_of_range fail '{"schema":"agent-coding-engine.executor-terminal.v1","role":"executor","state":"TERMINAL_SYNC_SUBMITTED","receipt":"product/demo/receipts/x.md","evidence":["x"],"feature_status":"COMPLETED","memory_compression":{"before_bytes":-1,"after_bytes":0}}' 'memory_compression.before_bytes: expected non-negative integer'
-validator_case extra fail '{"schema":"agent-coding-engine.executor-terminal.v1","role":"executor","state":"EXECUTION_SUBMITTED","receipt":"product/demo/receipts/x.md","evidence":["x"],"feature_status":"VERIFYING","surprise":true}' 'surprise: unknown field'
-validator_case mismatch fail '{"schema":"agent-coding-engine.executor-terminal.v1","role":"executor","state":"TERMINAL_SYNC_SUBMITTED","receipt":"product/demo/receipts/x.md","evidence":["x"],"feature_status":"VERIFYING","memory_compression":{"before_bytes":1,"after_bytes":1}}' 'feature_status: incompatible with state TERMINAL_SYNC_SUBMITTED'
-validator_case wrong_role fail '{"schema":"agent-coding-engine.executor-terminal.v1","role":"planner","state":"EXECUTION_SUBMITTED","receipt":"product/demo/receipts/x.md","evidence":["x"],"feature_status":"VERIFYING"}' 'role: must be executor'
-validator_case blocked_completed fail '{"schema":"agent-coding-engine.executor-terminal.v1","role":"executor","state":"BLOCKED","receipt":"product/demo/receipts/x.md","evidence":["x"],"feature_status":"COMPLETED","block_type":"EXTERNAL","attempted":["retry"],"release_condition":"restored"}' 'feature_status: forbidden for state BLOCKED'
-validator_case blocked_memory fail '{"schema":"agent-coding-engine.executor-terminal.v1","role":"executor","state":"BLOCKED","receipt":"product/demo/receipts/x.md","evidence":["x"],"block_type":"EXTERNAL","attempted":["retry"],"release_condition":"restored","memory_compression":{"before_bytes":1,"after_bytes":1}}' 'memory_compression: forbidden for state BLOCKED'
-validator_case execution_block_fields fail '{"schema":"agent-coding-engine.executor-terminal.v1","role":"executor","state":"EXECUTION_SUBMITTED","receipt":"product/demo/receipts/x.md","evidence":["x"],"feature_status":"VERIFYING","block_type":"EXTERNAL","attempted":["retry"],"release_condition":"restored"}' 'block_type: forbidden for state EXECUTION_SUBMITTED'
-validator_case execution_memory fail '{"schema":"agent-coding-engine.executor-terminal.v1","role":"executor","state":"EXECUTION_SUBMITTED","receipt":"product/demo/receipts/x.md","evidence":["x"],"feature_status":"VERIFYING","memory_compression":{"before_bytes":1,"after_bytes":1}}' 'memory_compression: forbidden for state EXECUTION_SUBMITTED'
-validator_case sync_block_fields fail '{"schema":"agent-coding-engine.executor-terminal.v1","role":"executor","state":"TERMINAL_SYNC_SUBMITTED","receipt":"product/demo/receipts/x.md","evidence":["x"],"feature_status":"COMPLETED","memory_compression":{"before_bytes":1,"after_bytes":1},"release_condition":"restored"}' 'release_condition: forbidden for state TERMINAL_SYNC_SUBMITTED'
+validator_case missing_level fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"TASK_COMPLETED","evidence":["x"]}' 'task_level: missing required field'
+validator_case wrong_level fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"TASK_COMPLETED","task_level":"L","evidence":["x"]}' 'task_level: incompatible with state TASK_COMPLETED'
+validator_case light_receipt fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"TASK_COMPLETED","task_level":"S","receipt":"product/demo/receipts/x.md","evidence":["x"]}' 'receipt: forbidden for state TASK_COMPLETED'
+validator_case blocked_l_receipt fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"BLOCKED","task_level":"L","evidence":["x"],"block_type":"EXTERNAL","attempted":["retry"],"release_condition":"restored"}' 'receipt: required for task_level L in state BLOCKED'
+validator_case blank_null fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"EXECUTION_SUBMITTED","task_level":"L","receipt":"   ","evidence":null,"feature_status":"VERIFYING"}' 'evidence: expected array'
+validator_case wrong_type fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"EXECUTION_SUBMITTED","task_level":"L","receipt":3,"evidence":"x","feature_status":"VERIFYING"}' 'receipt: expected string'
+validator_case out_of_range fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"TERMINAL_SYNC_SUBMITTED","task_level":"L","receipt":"product/demo/receipts/x.md","evidence":["x"],"feature_status":"COMPLETED","memory_compression":{"before_bytes":-1,"after_bytes":0}}' 'memory_compression.before_bytes: expected non-negative integer'
+validator_case extra fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"EXECUTION_SUBMITTED","task_level":"L","receipt":"product/demo/receipts/x.md","evidence":["x"],"feature_status":"VERIFYING","surprise":true}' 'surprise: unknown field'
+validator_case mismatch fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"TERMINAL_SYNC_SUBMITTED","task_level":"L","receipt":"product/demo/receipts/x.md","evidence":["x"],"feature_status":"VERIFYING","memory_compression":{"before_bytes":1,"after_bytes":1}}' 'feature_status: incompatible with state TERMINAL_SYNC_SUBMITTED'
+validator_case wrong_role fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"planner","state":"EXECUTION_SUBMITTED","task_level":"L","receipt":"product/demo/receipts/x.md","evidence":["x"],"feature_status":"VERIFYING"}' 'role: must be executor'
+validator_case blocked_completed fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"BLOCKED","task_level":"L","receipt":"product/demo/receipts/x.md","evidence":["x"],"feature_status":"COMPLETED","block_type":"EXTERNAL","attempted":["retry"],"release_condition":"restored"}' 'feature_status: forbidden for state BLOCKED'
+validator_case blocked_memory fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"BLOCKED","task_level":"L","receipt":"product/demo/receipts/x.md","evidence":["x"],"block_type":"EXTERNAL","attempted":["retry"],"release_condition":"restored","memory_compression":{"before_bytes":1,"after_bytes":1}}' 'memory_compression: forbidden for state BLOCKED'
+validator_case execution_block_fields fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"EXECUTION_SUBMITTED","task_level":"L","receipt":"product/demo/receipts/x.md","evidence":["x"],"feature_status":"VERIFYING","block_type":"EXTERNAL","attempted":["retry"],"release_condition":"restored"}' 'block_type: forbidden for state EXECUTION_SUBMITTED'
+validator_case execution_memory fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"EXECUTION_SUBMITTED","task_level":"L","receipt":"product/demo/receipts/x.md","evidence":["x"],"feature_status":"VERIFYING","memory_compression":{"before_bytes":1,"after_bytes":1}}' 'memory_compression: forbidden for state EXECUTION_SUBMITTED'
+validator_case sync_block_fields fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"TERMINAL_SYNC_SUBMITTED","task_level":"XL","receipt":"product/demo/receipts/x.md","evidence":["x"],"feature_status":"COMPLETED","memory_compression":{"before_bytes":1,"after_bytes":1},"release_condition":"restored"}' 'release_condition: forbidden for state TERMINAL_SYNC_SUBMITTED'
 
 set +e
 contract_output=$(/usr/bin/jq -r '. as $root | ($root.properties | keys) as $properties | $root.states | to_entries[] | select(((.value.allowed + .value.forbidden) | unique | sort) != ($properties | sort)) | .key' "$contract" 2>&1)
@@ -88,6 +96,10 @@ hook_case() {
   record "$ok" "hooks/$name" "expected=$expected claude=$claude_output codex=$codex_output"
 }
 
+hook_case direct_s allow executor "summary
+ENGINE_TERMINAL $direct_s" false
+hook_case direct_m allow executor "summary
+ENGINE_TERMINAL $direct_m" false
 hook_case execution allow executor "summary
 ENGINE_TERMINAL $execution" false
 hook_case sync allow executor "ENGINE_TERMINAL $sync" false
