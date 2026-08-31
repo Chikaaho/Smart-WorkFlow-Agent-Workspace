@@ -5,7 +5,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh .codex/hooks/stop-execution-completeness.sh"
+            "command": "sh \"$(git rev-parse --show-toplevel)/.codex/hooks/stop-execution-completeness.sh\""
           }
         ]
       }

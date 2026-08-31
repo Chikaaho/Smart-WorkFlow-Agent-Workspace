@@ -9,7 +9,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh .claude/hooks/stop-execution-completeness.sh"
+            "command": "sh \"$(git rev-parse --show-toplevel)/.claude/hooks/stop-execution-completeness.sh\""
           }
         ]
       }
