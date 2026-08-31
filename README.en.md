@@ -167,19 +167,20 @@ Relative repository links point to the OA example material only after switching 
 
 ## Evolution History
 
-This structure was gradually extracted from long-running Agent collaboration on a real OA project. Key commits preserve the evolution from a project instance to a generic Engine:
+Agent Coding Engine did not begin as an abstract framework. It grew step by step through long-running Agent collaboration on a real project:
 
-| Commit | Result |
-| --- | --- |
-| `2b2ca2d` | Reorganized the default branch as a generic Agent Coding Engine and retained the OA instance on the example branch |
-| `2bd193e` | Established the repository root as the runnable workspace and `project.md` as the single project-description entry point |
-| `d3e85af` | Made Harness Hooks locate the Engine root reliably from different directories within the workspace |
-| `7cf6361` | Unified Admin governance and introduced generic initial knowledge plus project-declared resource constraints |
-| `45f2c98` | Completed the language-independent, toolchain-independent runtime contract and project-declaration model |
-| `7d59297`, `f80b02c` | Completed direction archival, terminal synchronization, and reviewable evidence closure |
-| `a609783`, `f738cef` | Completed Owner confirmation, remote publication, and final Planner confirmation records |
+1. **Web planning + two-repository execution**: Claude Web initially handled solution planning, while separate Claude Code sessions executed work in the backend and frontend repositories.
+2. **Introducing `knowledge/`**: After the Claude account was suspended, a knowledge workspace was created alongside the two code repositories, with `knowledge/` maintaining cross-repository documentation over time.
+3. **Introducing `product/`**: To stop repeatedly copying plans and execution results between sessions, `product/` was added for requirement directions, execution receipts, and acceptance archives.
+4. **Moving execution to a shared root**: To avoid switching among three Claude Code sessions, the execution entry point moved up one level so the root workspace could coordinate the knowledge layer, backend, and frontend together.
+5. **Separating `planning` and `execute`**: As context grew rapidly, product direction and implementation execution were separated into a Planner role and an Executor role.
+6. **Compressing planning context**: Planning needed a powerful model, but reading source code and the complete `knowledge/` tree still made input too large. `memory/`, `search_task/` + `search_fallback/`, and `todo/` were added to reduce Planner input through compressed memory, delegated exploration, and backlog indexing.
+7. **Adding `admin`**: An Admin role was introduced solely for the constitution, architecture documents, engineering configuration, and repository governance, preventing Planner and Executor from crossing their authority boundaries.
+8. **Decoupling the Harness**: The single behavioral constitution moved from `CLAUDE.md` to `system.md`; entry files for Claude Code, Codex, and other Harnesses now only route to `system.md`.
+9. **Making end-of-cycle synchronization explicit**: The planning workflow was refined so every cycle closes by synchronizing complete `knowledge/` and compressing `memory/`, keeping the authoritative facts aligned with the minimum context for the next cycle.
+10. **Splitting role specifications**: As `system.md` grew heavier, `roles/` was introduced. `system.md` became the compact public gate and role index, while each role reads its own definition after claiming the session.
 
-Detailed directions, receipts, and verification evidence are stored under [`product/p51-agent-coding-engine-decoupling/`](product/p51-agent-coding-engine-decoupling/). History explains the design’s origin; current onboarding and operation remain governed by this README, `project.md`, `system.md`, and `roles/`.
+These stages came directly from real context, switching-cost, and role-boundary problems encountered during collaboration. Current onboarding and operation remain governed by this README, `project.md`, `system.md`, and `roles/`.
 
 ## Generic Engine Navigation on `main`
 
