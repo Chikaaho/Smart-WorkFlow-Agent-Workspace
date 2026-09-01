@@ -1,0 +1,38 @@
+workingDir=/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server
+command=MAVEN_OPTS="-Xmx2g -Djava.awt.headless=true" mvn test -pl sw-biz/sw-biz-system/sw-biz-system-biz '-Dtest=P45IsolationEvidenceFixture#k2Rotation_shouldKeepOldChallengeDuringOverlapAndRejectAfterRetirement' -Dp45.evidence.dir=/tmp/p45ev/n2-out -Dp45.h2.path=/tmp/p45ev/n2-h2/db -Dp45.redis.port=6381
+testClass=com.sw.ck.system.controller.P45IsolationEvidenceFixture
+testMethod=k2Rotation_shouldKeepOldChallengeDuringOverlapAndRejectAfterRetirement
+envInputs=P45_USER_A_PASSWORD,P45_USER_B_PASSWORD,P45_V1_PRIVATE_KEY,P45_V2_PRIVATE_KEY,P45_DIGEST_SECRET（仅环境注入，不打印）
+--- raw tail ---
+     /               |         
+                        3.5.9 
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/chikan/.m2/repository/net/bytebuddy/byte-buddy-agent/1.15.11/byte-buddy-agent-1.15.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-09-01T18:07:27.804+08:00  INFO 83045 --- [           main] c.s.c.s.security.RsaLoginKeyManager      : 登录 RSA 密钥装载完成: activeVersion=v2, versions=[v1, v2]
+2026-09-01T18:07:27.983+08:00  INFO 83045 --- [           main] c.s.c.s.c.P45IsolationEvidenceFixture    : Started P45IsolationEvidenceFixture in 1.595 seconds (process running for 1.978)
+2026-09-01T18:07:27.989+08:00  INFO 83045 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-01T18:07:28.092+08:00  INFO 83045 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:/tmp/p45ev/n2-h2/db user=SA
+2026-09-01T18:07:28.093+08:00  INFO 83045 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-01T18:07:28.365+08:00  INFO 83045 --- [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-09-01T18:07:28.366+08:00  INFO 83045 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-01T18:07:28.367+08:00  INFO 83045 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-09-01T18:07:28.368+08:00  INFO 83045 --- [           main] c.s.c.s.security.RsaLoginKeyManager      : 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+2026-09-01T18:07:28.369+08:00  INFO 83045 --- [           main] c.s.c.s.security.RsaLoginKeyManager      : 登录 RSA 密钥装载完成: activeVersion=v2, versions=[v1, v2]
+2026-09-01T18:07:28.369+08:00  INFO 83045 --- [           main] c.s.c.s.security.RsaLoginKeyManager      : 登录 RSA 密钥装载完成: activeVersion=v2, versions=[v2]
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.620 s -- in com.sw.ck.system.controller.P45IsolationEvidenceFixture
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.365 s
+[INFO] Finished at: 2026-09-01T18:07:29+08:00
+[INFO] ------------------------------------------------------------------------
+--- exit ---
+N2_EXIT=0

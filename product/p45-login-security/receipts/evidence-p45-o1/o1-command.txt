@@ -1,0 +1,23 @@
+workingDir=/usr/local/projects/Smart-WorkFlow/product/p45-login-security/receipts
+
+# 1) 语法检查
+$ node --check evidence-p45-o1/o1-security-scan.mjs
+（无输出；exit=0）
+
+# 2) 规则正向检出回归（受限临时夹具 10 类，验证后已销毁，不入回执树）
+$ node evidence-p45-o1/o1-security-scan.mjs <receipts> /tmp/o1/regression.json --positive-regression /tmp/o1/fixture
+原始摘要：{"regression":[10 项逐类命中],"allDetected":true}
+exit=0
+
+# 3) 清理后全树枚举 + 确定性两遍扫描（全部附件与本回执定稿后执行）
+$ node evidence-p45-o1/o1-security-scan.mjs . evidence-p45-o1/o1-security-scan.json
+第一遍：exit=0；第二遍：exit=0（同输入覆盖）
+两遍结果字节一致（SHA-256 相同，确定性核验通过）；结果文件 o1-security-scan.json 显式 verdict=PASS、findingCount=0、unionCheck=true、duplicatePathCount=0、uninspectedPaths=[]
+
+# 4) 文件总数复核
+$ find . -type f | wc -l
+复核值 = o1-security-scan.json.enumeratedTotal（该数字由最终扫描结果读回，两者一致）
+
+# 备注
+- 像素级遮挡命令：javac Redact.java && java Redact <n3 截图> <同路径> 620 440 160 58（JDK ImageIO，不可逆随机噪点填充）
+- 夹具目录 /tmp/o1/fixture 与回归输出属会话临时材料，已在核验后删除

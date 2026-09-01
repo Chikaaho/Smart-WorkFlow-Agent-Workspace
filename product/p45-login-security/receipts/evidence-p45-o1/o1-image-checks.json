@@ -1,0 +1,71 @@
+{
+  "images": [
+    {
+      "path": "evidence-p45-l1-l5/l3-after-f5.png",
+      "sha256": "9e80035cdae5fdf9bd95a1deb99032b1039e7cd82cba8785a8ae41648ba45af6",
+      "actualEncoding": "jpeg",
+      "encodingMatchesDeclaration": false,
+      "dimensions": "1280x736",
+      "checkMethod": "visual-read + magic-byte verification",
+      "captchaReadable": false,
+      "sensitiveFindings": 0,
+      "note": "登录后字典管理页（L3-P 已锁定）；页面无验证码区域"
+    },
+    {
+      "path": "evidence-p45-l1-l5/l3-after-logout.png",
+      "sha256": "8e57a6932495f0c008424cee07d4e1a1f95ea34bb9ed1390240f1fc0bf026060",
+      "actualEncoding": "jpeg",
+      "encodingMatchesDeclaration": false,
+      "dimensions": "1280x736",
+      "checkMethod": "visual-read + magic-byte verification",
+      "captchaReadable": false,
+      "sensitiveFindings": 0,
+      "note": "退出后登录页；验证码图像区域过小且扭曲，视觉不可辨识"
+    },
+    {
+      "path": "evidence-p45-l1-l5/l3-deeplink.png",
+      "sha256": "08454f4be9ae54b6e96231690cb5fc2d84aa5d17cf1a95d035ecfcc5e0216fd0",
+      "actualEncoding": "jpeg",
+      "encodingMatchesDeclaration": false,
+      "dimensions": "1280x736",
+      "checkMethod": "visual-read + magic-byte verification",
+      "captchaReadable": false,
+      "sensitiveFindings": 0,
+      "note": "受保护深链页面（L3-P 已锁定）；无验证码区域"
+    },
+    {
+      "path": "evidence-p45-l1-l5/l3-before.png",
+      "sha256": "554dedf3f6c6b1a8453515336d6cb846f78ef439157e09edfb3b60b72ce8f7e5",
+      "actualEncoding": "jpeg",
+      "encodingMatchesDeclaration": false,
+      "dimensions": "1280x736",
+      "checkMethod": "visual-read + magic-byte verification",
+      "captchaReadable": false,
+      "sensitiveFindings": 0,
+      "note": "实为登录后页面（审查 06 已指出，语义由 n3 附件承接）；无验证码区域"
+    },
+    {
+      "path": "evidence-p45-n1-n5/n1-low-permission.png",
+      "sha256": "e06284cae23f5b9c8e9170bac97dfa4349951a7b6aa226d7935624980d7b2161",
+      "actualEncoding": "png",
+      "encodingMatchesDeclaration": true,
+      "dimensions": "1280x720",
+      "checkMethod": "visual-read + magic-byte verification",
+      "captchaReadable": false,
+      "sensitiveFindings": 0,
+      "note": "低权限 403 拒绝页；无验证码区域"
+    },
+    {
+      "path": "evidence-p45-n1-n5/n3-before-wrong-path.png",
+      "sha256": "b399b6bac3c0768eec2931b1d091368961092ad8f3f489afa8cf5c7d9b9d82cd",
+      "actualEncoding": "png",
+      "encodingMatchesDeclaration": true,
+      "dimensions": "1280x720",
+      "checkMethod": "visual-read + magic-byte verification",
+      "captchaReadable": false,
+      "sensitiveFindings": 0,
+      "note": "错误 Path F5 第一失败点；验证码区域已像素级噪点覆盖（O1 清理项）"
+    }
+  ],
+  "note": "OCR/视觉方法=执行角色逐张读图核验；captchaReadable=false 表示验证码区域不可恢复、不可辨识；附件不转录任何识别字符"
+}
