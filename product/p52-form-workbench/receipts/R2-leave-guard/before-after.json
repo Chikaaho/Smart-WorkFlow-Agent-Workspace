@@ -1,0 +1,20 @@
+{
+  "_note": "操作前后页面关键值与持久化关键值对照（curl GET /api/form/def/{C2}/definition 与 GET /api/form/def/{C1}/definition，admin token）",
+  "C1_publishEntry": {
+    "before": { "definitionTitle": "R2草稿…（C1 初值）", "status": "DRAFT" },
+    "afterDiscardBranch": { "definitionTitle": "R2草稿…（C1 初值，无 R2-C1-edit-discard 残留）", "status": "DRAFT" },
+    "afterSavefailBranch": { "definitionTitle": "R2草稿…（无 R2-C1-edit-savefail 持久化）", "status": "DRAFT", "note": "发布确认框从未出现" }
+  },
+  "C2_tabSwitchEntry": {
+    "beforeSave": "title=R2草稿…",
+    "afterSaveContinue": { "definitionTitle": "R2-C2-tab-save", "note": "保存并继续 → 持久化成功" },
+    "afterDiscardBranch": { "definitionTitle": "R2-C2-tab-save（无 tab-discard 残留）" },
+    "afterSavefailBranch": { "definitionTitle": "R2-C2-tab-save（无 tab-savefail 残留）" }
+  },
+  "C2_routeLeaveEntry": {
+    "beforeSave": "title=R2-C2-tab-save",
+    "afterSaveContinue": { "definitionTitle": "R2-C2-leave-save", "note": "路由离开前保存成功并持久化" },
+    "afterDiscardBranch": { "definitionTitle": "R2-C2-leave-save（无 leave-discard 残留）", "pageTitleRevertedTo": "R2-C2-tab-savefail（当前基线）" },
+    "afterSavefailBranch": { "definitionTitle": "R2-C2-leave-save（无 leave-savefail 残留）" }
+  }
+}
