@@ -1,0 +1,72 @@
+{
+  "_note": "各分支 DOM/组件状态读取值（真实浏览器 evaluate 原始输出）；url 尾 8 位：C1=…530b40749, C2=…c1e6e6e0c25, B=…47871c839e 前后文见 timeline.md",
+
+  "entry1_publish_on_C1": {
+    "discard_branch": {
+      "guardShown": ["未保存的修改"],
+      "afterDiscard_publishConfirmShown": ["发布确认"],
+      "titleRevertedTo": "R2草稿",
+      "dirtyAfter": "false",
+      "statusAfter": "DRAFT",
+      "note": "目标动作（发布流程）继续走到发布确认框；随后取消发布确认"
+    },
+    "savefail_branch": {
+      "guardShown": ["未保存的修改"],
+      "whileBackendPaused": { "save": "保存中", "publishConfirmShown": false, "titleRetained": "R2-C1-edit-savefail" },
+      "afterResume": { "save": "保存失败", "publishConfirm": [], "dirty": "true", "titleRetained": "R2-C1-edit-savefail" },
+      "note": "保存失败 → 发布确认框未出现（目标动作被阻止）；失败期间内容与未保存标记保留"
+    },
+    "locked_from_round1": "取消与保存并继续分支已锁定（planning-rereview §3.3）"
+  },
+
+  "entry2_tabSwitch_on_C2": {
+    "cancel": {
+      "guardShown": true,
+      "after": { "tab": "design", "title": "R2-C2-tab-cancel", "dirty": "true", "urlTabParam": "" },
+      "note": "取消 → 留在设计页、编辑保留、URL 未写 tab 参数"
+    },
+    "discard": {
+      "guardShown": true,
+      "afterSwitch": { "tab": "processes", "title": "R2草稿", "dirty": "false", "urlTabParam": "tab=processes" },
+      "backToDesign": { "tab": "design", "title": "R2草稿", "dirty": "false" },
+      "note": "放弃 → 切换成功且编辑内容还原"
+    },
+    "saveContinue": {
+      "guardShown": true,
+      "after": { "tab": "processes", "title": "R2-C2-tab-save", "dirty": "false", "save": "保存成功" },
+      "persistence": "curl GET /form/def/{C2}/definition → title=R2-C2-tab-save（已持久化）"
+    },
+    "savefail": {
+      "guardShown": true,
+      "whileBackendPaused": { "tab": "design", "title": "R2-C2-tab-savefail", "dirty": "true", "save": "保存中" },
+      "afterResume": { "tab": "design", "title": "R2-C2-tab-savefail", "dirty": "true", "save": "保存失败" },
+      "note": "保存失败 → 未切换工作区（停留 design），失败与编辑保留"
+    }
+  },
+
+  "entry3_routeLeave_on_C2": {
+    "cancel": {
+      "guardShown": { "boxes": 1, "url": "…6e6e0c25" },
+      "afterX": { "url": "…6e6e0c25", "title": "R2-C2-leave-cancel", "dirty": "true", "boxes": 0 },
+      "note": "取消 → 留在 C2、编辑保留"
+    },
+    "discard": {
+      "guardShown": { "boxes": 1, "url": "…6e6e0c25" },
+      "afterDiscard": { "url": "…c530e5f(=B)", "title": "R系列对照表单B", "boxes": 0 },
+      "backToC2": { "url": "…6e6e0c25", "title": "R2-C2-tab-savefail", "dirty": "false" },
+      "persistence": "curl GET /form/def/{C2}/definition → title=R2-C2-tab-savefail（无 leave-discard 残留）"
+    },
+    "saveContinue": {
+      "guardShown": { "boxes": 1, "url": "…6e6e0c25" },
+      "afterSave": { "url": "…c530e5f(=B)", "title": "R系列对照表单B", "save": "未修改", "dirty": "false" },
+      "persistence": "curl GET /form/def/{C2}/definition → title=R2-C2-leave-save（已持久化）"
+    },
+    "savefail": {
+      "guardShown": { "boxes": 1, "url": "…6e6e0c25" },
+      "whileBackendPaused": { "url": "…6e6e0c25", "title": "R2-C2-leave-savefail", "dirty": "true" },
+      "afterResume": { "url": "…6e6e0c25", "title": "R2-C2-leave-savefail", "dirty": "true" },
+      "persistence": "curl GET /form/def/{C2}/definition → title=R2-C2-leave-save（无 leave-savefail 残留，零持久化）",
+      "note": "保存失败 → 导航被阻止（URL 始终为 C2），编辑与未保存标记保留"
+    }
+  }
+}

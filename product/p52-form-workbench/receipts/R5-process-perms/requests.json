@@ -1,0 +1,92 @@
+{
+  "defId": "2094824141723742209",
+  "limited": {
+    "saveGraph": {
+      "status": 403,
+      "body": {
+        "code": 403,
+        "msg": "无权限",
+        "data": null
+      }
+    },
+    "publish": {
+      "status": 403,
+      "body": {
+        "code": 403,
+        "msg": "无权限",
+        "data": null
+      }
+    },
+    "delete": {
+      "status": 403,
+      "body": {
+        "code": 403,
+        "msg": "无权限",
+        "data": null
+      }
+    }
+  },
+  "admin": {
+    "saveGraph": {
+      "status": 200,
+      "body": {
+        "code": 0,
+        "msg": "success",
+        "data": null
+      }
+    },
+    "publish": {
+      "status": 200,
+      "body": {
+        "code": 2000,
+        "msg": "图缺少开始节点",
+        "data": null
+      }
+    }
+  },
+  "before": {
+    "version": 1,
+    "graph": {
+      "processKey": "bpm_5474609da11c4125",
+      "name": "R系列审批流程P",
+      "formKey": "p52_r_form_a_1788279969533",
+      "version": 1,
+      "elements": [
+        {
+          "id": "node_start",
+          "kind": "node",
+          "type": "START",
+          "source": null,
+          "target": null,
+          "config": {},
+          "style": {
+            "x": 100,
+            "y": 300
+          }
+        },
+        {
+          "id": "node_end",
+          "kind": "node",
+          "type": "END",
+          "source": null,
+          "target": null,
+          "config": {},
+          "style": {
+            "x": 700,
+            "y": 300
+          }
+        },
+        {
+          "id": "edge_1",
+          "kind": "edge",
+          "type": null,
+          "source": "node_start",
+          "target": "node_end",
+          "config": {},
+          "style": {}
+        }
+      ],
+      "canvas": {}
+    }
+  }
+}
