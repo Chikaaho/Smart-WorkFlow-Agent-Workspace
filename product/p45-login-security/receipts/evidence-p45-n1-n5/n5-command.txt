@@ -1,0 +1,7 @@
+workingDir=/usr/local/projects/Smart-WorkFlow/product/p45-login-security/receipts
+enumerate=find $(pwd) -type f | sort  （全树文件枚举，含 .log/截图/扫描器自身/新回执）
+scan=node evidence-p45-n1-n5/n5-security-scan.mjs . evidence-p45-n1-n5/n5-security-scan.json；exit=0
+rescan-exit=0
+syntax=node --check evidence-p45-n1-n5/n5-security-scan.mjs；exit=0
+imageVisualCheck=执行角色逐张读图核验（L3-P 4 张 + N1/N3 2 张），结果登记于 n5-security-scan.json
+enumeratedTotal=83（全树 83 个文件 = 文本 66 + 脚本 11 + 截图 6；并集相等 unionCheck=true；最终稳定态复扫一致，findings=0）

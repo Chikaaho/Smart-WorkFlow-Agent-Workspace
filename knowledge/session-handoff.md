@@ -5,7 +5,7 @@
 >
 > 新会话启动时，优先读取本文件以恢复上下文。
 >
-> **最新状态（2026-08-29）**：minimal-closure-first-acceptance（第一轮最小闭环验收审计）**COMPLETED（已确认）**——正式基线后端 **955 / Failures 0 / Errors 0 / Skipped 0（agent 346）**、前端 **110 files / 1060 tests / 0 skipped**（typecheck/lint/test/build 全绿）、Flyway **H2 链 V44（全链 44）/ PostgreSQL 链 V44（全链 43，V41 为 H2 专用，分别记录）**；清单 **✅32/🟦25/⬜33**、已完成功能 **36**（不新增）；P 编号不新增/不核销/不改变。三份方向均归档 `product/minimal-closure-first-acceptance/passed/`。**GOV-AUDIT-13 已完成**：README 同步任务、Admin 治理一致性审计、Admin 治理修复均 COMPLETED（已确认）；业务状态、目录和摘要已一致。
+> **最新状态（2026-09-01）**：p45-login-security（P45 / M02-F06-01 登录安全与登录态恢复）功能级 **PASSED**（2026-09-01，规划最终验收 `planning-review-p45-implementation-08.md`）+ 阶段三终态最终复核 **COMPLETED（已确认）**（`planning-terminal-final-review-p45-20260901.md`），**第 37 个正式功能**——正式基线后端 **979 / Failures 0 / Errors 0 / Skipped 0（agent 346）**、前端 **110 files / 1062 tests / 0 skipped**（typecheck/lint/test/build 全绿）、Flyway **H2 链 V44（全链 44）/ PostgreSQL 链 V44（全链 43，V41 为 H2 专用，分别记录）**（V45/V46 为分支既有事实，不晋级 P45 正式基线）；清单 **✅33/🟦24/⬜33**、已完成功能 **37**；P45 已核销/完成、M02-F06-01 明细升 ✅。P45 四份方向全部归档 `passed/`。当前唯一下一动作：**规划比较并选择下一唯一正式功能**。
 >
 > 前一功能（历史语境）：form-data-import-export（P32 / M03-F04-02 表单数据导入导出）COMPLETED 已确认（2026-08-29，第 36 个），基线 947/agent346、110f/1057t/3skipped、Flyway H2 V43/PG V43，已被本轮验收审计基线取代。
 >
@@ -13,18 +13,24 @@
 
 ---
 
-## 0. 当前进行中功能（无进行中业务功能；已完成功能 36）
+## 0. 当前进行中功能（无进行中业务功能；已完成功能 37）
 
-**minimal-closure-first-acceptance — 第一轮最小闭环验收审计（现有能力验收审计，不新增正式功能）COMPLETED（已确认，2026-08-29）**
+**p45-login-security — P45 / M02-F06-01 登录安全与登录态恢复（功能级 PASSED 2026-09-01 + 阶段三终态最终复核 COMPLETED（已确认），第37个）**
 
-- **终态落盘（2026-08-29）**：已完成功能数 **36**（不新增）；清单 **✅32/🟦25/⬜33**；基线后端 **955/0/0/0（agent 346）**、前端 **110f/1060t/0skipped**、Flyway **H2 V44（全链 44）/ PG V44（全链 43）**；P 编号不新增/不核销/不改变。
-- **归档/回执**：三份方向均归档 `product/minimal-closure-first-acceptance/passed/`（含终态同步方向）。
-- **补充任务与治理闭环**：三仓 README 同步、Admin 治理审计、Admin 治理修复、GOV-AUDIT-13 均 COMPLETED（已确认）；无活动业务功能、无活动治理/管理员任务。
+- **终态落盘（2026-09-01，唯一口径见 `product/p45-login-security/passed/direction-p45-login-security-stage3.md`）**：已完成功能数 **36→37**；清单 **✅33/🟦24/⬜33**（全 90 行，M02-F06-01 🟦→✅）；P45 **已核销/完成**；正式基线后端 **979/0/0/0（agent 346）**、前端 **110f/1062t/0skipped**、Flyway **H2 V44（全链 44）/ PG V44（全链 43）**；V45/V46 披露但不晋级 P45 正式基线。
+- **归档/回执**：四份方向（主方向 + 两份补充方向 + 阶段三终态同步方向）全部归档 `product/p45-login-security/passed/`；规划终态复核 `planning-terminal-final-review-p45-20260901.md` PASSED。
+- **功能级 PASSED**：`product/p45-login-security/receipts/planning-review-p45-implementation-08.md`（10 项验收边界全部通过）。
 - **唯一下一动作**：规划比较并选择下一唯一正式功能。
 
 ---
 
 ## 1. 最新完成功能
+
+**p45-login-security — P45 / M02-F06-01 登录安全与登录态恢复（功能级 PASSED 2026-09-01 + 阶段三终态最终复核 COMPLETED（已确认），第37个）**
+
+- **功能范围**：RSA-OAEP 密码加密（私钥不出前端/响应/普通日志）、验证码+有效期+客户端机器时间固定校验顺序（2101-2104）、Redis 一次性挑战与并发防重放、RSA 密钥版本轮换、默认租户 `tenant=0` 身份/权限隔离、Cookie Path 修正（生产 `/sw-server/api/auth/`）+ F5/深链/退出登录态恢复；access 仅内存 + refresh HttpOnly Cookie 双 Token 职责不退化。
+- **验收**：`product/p45-login-security/receipts/planning-review-p45-implementation-08.md`（功能级 PASSED，10/10）+ `product/p45-login-security/receipts/planning-terminal-final-review-p45-20260901.md`（阶段三终态最终复核 PASSED）。
+- **终态值**：功能数 **37**、清单 **✅33/🟦24/⬜33**、P45 已核销、M02-F06-01 明细 🟦→✅；正式基线后端 **979/0/0/0（agent 346）**、前端 **110f/1062t/0skipped**、Flyway H2 V44（全链 44）/PG V44（全链 43）；V45/V46 为分支既有事实，不晋级 P45 正式基线。四份方向全部归档 `passed/`。
 
 **minimal-closure-first-acceptance — 第一轮最小闭环验收审计（现有能力验收审计，不新增正式功能；COMPLETED 已确认，2026-08-29）**
 
@@ -274,7 +280,7 @@
 
 ## 9. 当前系统状态
 
-全部 **36** 个已完成功能（规划确认，含 form-data-import-export 阶段三终态复核 PASSED，COMPLETED 已确认）：
+全部 **37** 个已完成功能（规划确认，含 p45-login-security 功能级 PASSED 2026-09-01 + 阶段三终态最终复核 COMPLETED（已确认））：
 
 1-8. Walking Skeleton → sys-mgmt-crud → bpm-task-center → storage-multi-provider → job-scheduler → kb-verification → auth-seam-completion → feature-checklist-sync
 9. ✅ vue-flow-adapter（2026-07-25）
@@ -305,13 +311,14 @@
 34. ✅ notify-batch-send（M05-F01-01 通知批量发送；**后端 915/0/0/0（agent 346）、前端 109f/1050t、Flyway V39/V40/V41**）（**COMPLETED 已确认，2026-08-27，第34个**）
 35. ✅ minimal-business-closure（Owner 最小业务闭环：流程主链 + 腾讯 IoT Demo 对接；**后端 915/0/0/0（agent 346）、前端 109f/1050t、Flyway H2 V41/PG V40**）（**功能级 PASSED 2026-08-28 + 阶段三终态同步已落盘，COMPLETED 已确认（历史记录），第35个**）
 36. ✅ form-data-import-export（P32 / M03-F04-02 表单数据导入导出；**后端 947/0/0/0（agent 346）、前端 110f/1057t/3skipped、Flyway H2 V43/PG V43**）（**功能级 PASSED 2026-08-29 + 阶段三终态复核 PASSED，COMPLETED 已确认，第36个**；当前正式基线已由 minimal-closure-first-acceptance 验收审计更新为 955/1060/V44）
+37. ✅ p45-login-security（P45 / M02-F06-01 登录安全与登录态恢复；RSA-OAEP 密码加密、验证码+有效期+机器时间固定校验顺序 2101-2104、Redis 一次性挑战与并发防重放、RSA 密钥版本轮换、默认租户 `tenant=0` 隔离、Cookie Path 修正 + F5/深链/退出恢复，access 内存 + refresh HttpOnly Cookie；**后端 979/0/0/0（agent 346）、前端 110f/1062t/0skipped、Flyway H2 V44/PG V44（V45/V46 披露不晋级）**）（**功能级 PASSED 2026-09-01 + 阶段三终态最终复核 COMPLETED（已确认），第37个**；P45 已核销、M02-F06-01 明细 🟦→✅、清单 ✅33/🟦24/⬜33、功能数 37）
 
-- 后端：项目级 **955 tests / Failures 0 / Errors 0 / Skipped 0（sw-basic-agent 346）**——minimal-closure-first-acceptance 验收审计 R-05a 后端根全量门（12 模块 `18+6+19+85+51+23+346+210+81+27+62+27=955`）经规划最终验收锁定的**正式基线**
-- 前端：**110 spec files / 1060 tests / 0 skipped** typecheck/lint/test/build 全绿（严格顺序串行，NODE_OPTIONS=2048；**正式基线**）
-- 功能清单（规划确认+阶段三已同步）：**✅32 / 🟦25 / ⬜33 共 90 行**（M03-F04-02 ✅（P32）；历史：M05-F02-01 ✅（P36）、M05-F01-02/F01-03 ✅（D210）、M07-F02-02 ✅（D157）、M07-F04-02 ✅（D174）、M07-F02-04 ✅（D180）、M07-F03-02 ✅（D203））
-- Flyway：H2 **V44**（全链 44 migrations）/ PostgreSQL **V44**（全链 43 migrations，V41 为 H2 专用，链数不同属预期）
-- 已完成功能：**36 个规划确认**（验收审计不新增正式功能；第 36 个为 form-data-import-export，COMPLETED 已确认）
-- 进行中业务功能：无；进行中治理任务：无（当前唯一下一动作：规划比较并选择下一唯一正式功能；GOV-AUDIT-13 已完成）
+- 后端：项目级 **979 tests / Failures 0 / Errors 0 / Skipped 0（agent 346）**——P45 功能候选基线（N4 clean 全量，137 surefire XML 机械聚合）经规划最终验收锁定的**正式候选基线**（相较前值 955 的增长源于分支历史新增模块/用例与 P45 自身用例，非推算）
+- 前端：**110 spec files / 1062 tests / 0 skipped** typecheck/lint/test/build 全绿（严格顺序串行，NODE_OPTIONS=2048；P45 候选**正式基线**）
+- 功能清单（规划确认+阶段三已同步）：**✅33 / 🟦24 / ⬜33 共 90 行**（M02-F06-01 ✅（P45）；历史：M03-F04-02 ✅（P32）、M05-F02-01 ✅（P36）、M05-F01-02/F01-03 ✅（D210）、M07-F02-02 ✅（D157）、M07-F04-02 ✅（D174）、M07-F02-04 ✅（D180）、M07-F03-02 ✅（D203））
+- Flyway：H2 **V44**（全链 44 migrations）/ PostgreSQL **V44**（全链 43 migrations，V41 为 H2 专用，链数不同属预期）；V45/V46 为当前分支既有事实（255a9ce/dcb90ca，2026-08-31），披露但不晋级为 P45 正式基线
+- 已完成功能：**37 个规划确认**（第 37 个为 p45-login-security，功能级 PASSED 2026-09-01 + 阶段三终态最终复核 COMPLETED（已确认））
+- 进行中业务功能：无；进行中治理任务：无（当前唯一下一动作（同步期间）：规划终态复核；复核通过后规划比较并选择下一唯一正式功能）
 
 ---
 
@@ -354,9 +361,9 @@
 
 **当前唯一下一动作：规划比较并选择下一唯一正式功能。**
 
-**minimal-closure-first-acceptance：第一轮最小闭环验收审计，COMPLETED（已确认，2026-08-29）**——验收审计不新增正式功能；清单✅32/🟦25/⬜33、功能数36（不变）；正式基线后端955/0/0/0（agent346）、前端110f/1060t/0skipped、Flyway H2 V44/PG V44。
+**p45-login-security：P45 / M02-F06-01 登录安全与登录态恢复，功能级 PASSED 2026-09-01 + 阶段三终态最终复核 COMPLETED（已确认，第37个）**——功能数 **36→37**、清单 **✅33/🟦24/⬜33**（M02-F06-01 🟦→✅）、P45 **已核销/完成**；正式基线后端 **979/0/0/0（agent346）**、前端 **110f/1062t/0skipped**、Flyway **H2 V44（44）/PG V44（43）**（V45/V46 披露但不晋级 P45 正式基线）。四份方向全部归档 `passed/`。
 
-**补充任务与治理闭环（全部 COMPLETED（已确认，2026-08-29））**：三仓 README 同步、Admin 治理一致性审计（历史发现 16 项）、Admin 治理修复（可修项全部关闭）、GOV-AUDIT-13 机械同步。当前无活动业务功能、无活动治理/管理员任务。
+**minimal-closure-first-acceptance：第一轮最小闭环验收审计，COMPLETED（已确认，2026-08-29，历史记录）**——验收审计不新增正式功能；清单✅32/🟦25/⬜33、功能数36；正式基线后端955/0/0/0（agent346）、前端110f/1060t/0skipped、Flyway H2 V44/PG V44（历史基线，已被 P45 正式基线取代当前口径）。
 
 ---
 
@@ -389,21 +396,18 @@
 你是 Smart-WorkFlow 根目录规划代理。请按 system.md §0.2 声明角色并读取 `roles/planner.md`，再按该文件 §10 执行新会话恢复。
 
 最新状态：
-- GOV-AUDIT-13 已完成：minimal-closure-first-acceptance（第一轮最小闭环验收审计，不新增正式功能）**COMPLETED 已确认（2026-08-29）**；三仓 README 同步、Admin 治理审计/修复均 COMPLETED（已确认）；业务状态、目录和摘要已一致。清单✅32/🟦25/⬜33、功能数36；正式基线后端955/0/0/0（agent346）、前端110f/1060t/0skipped四门全绿、Flyway H2 V44（44）/PG V44（43）。审查`receipts/planning-final-acceptance-minimal-closure-first-acceptance-20260829.md`
-- form-data-import-export（P32 / M03-F04-02 表单数据导入导出）**COMPLETED 已确认（2026-08-29，第36个）**——P32已核销、M03-F04-02✅、清单✅32/🟦25/⬜33、功能数36
-- minimal-business-closure（Owner 最小业务闭环）**COMPLETED 已确认（2026-08-28，第35个，历史记录）**——流程主链+腾讯IoT Demo对接
-- 基线：后端 **955 tests**（Failures 0 / Errors 0 / Skipped 0；agent346）/ 前端 **110 files / 1060 tests / 0 skipped** 四门全绿；清单 **✅32/🟦25/⬜33** 共90行；Flyway **H2 V44（全链 44）/ PG V44（全链 43）**；已完成功能 **36**
-- P32 边界：P32 仅核销 M03-F04-02 表单数据导入导出完成；P21 部分关闭未核销（真实腾讯账号/物理设备现场联调/原生MQTT/完整设备管理）
+- p45-login-security（P45 / M02-F06-01 登录安全与登录态恢复）功能级 **PASSED（2026-09-01）** + 阶段三终态最终复核 **COMPLETED（已确认，第37个）**——P45已核销、M02-F06-01明细🟦→✅、清单✅33/🟦24/⬜33、功能数37；正式基线后端979/0/0/0（agent346）、前端110f/1062t/0skipped四门全绿、Flyway H2 V44（44）/PG V44（43）（V45/V46披露不晋级）。四份方向归档`passed/`；审查`product/p45-login-security/receipts/planning-terminal-final-review-p45-20260901.md`；下一动作：规划比较并选择下一唯一正式功能
+- GOV-AUDIT-13 已完成（历史记录）：minimal-closure-first-acceptance（验收审计，不新增正式功能）**COMPLETED 已确认（2026-08-29）**——清单✅32/🟦25/⬜33、功能数36、基线后端955/agent346、前端110f/1060t/0skipped、Flyway H2 V44/PG V44（历史基线）
 - 执行约束：本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行，禁并行编译（已入宪法）
-- 候选池：**P1/P5/P6/P7/P8/P24/P28/P36/P48/P32 已核销**、M07 补全已闭环（F01/F02-02/F02-04/F03-02/F04-02）、M05-F01-02/F01-03/M05-F02-01已闭环、M07-F03/F04新功能、IoT/OpenAPI、数据权限遗留/停用即时生效——PG侧全链直跑已由pg-v13修复关闭（I52）
+- 候选池：**P1/P5/P6/P7/P8/P24/P28/P36/P48/P32/P45 已核销**、M07 补全已闭环、M05 通知批次已闭环、M07-F03/F04新功能、IoT/OpenAPI、数据权限遗留/停用即时生效——PG侧全链直跑已由pg-v13修复关闭（I52）；P21 部分关闭未核销
 
 当前功能：无（当前唯一下一动作：规划比较并选择下一唯一正式功能）
 ```
 
 ---
 
-> 最后更新：2026-08-29
-> 最新状态：**GOV-AUDIT-13 完成** — minimal-closure-first-acceptance（第一轮最小闭环验收审计，验收审计不新增正式功能）**COMPLETED 已确认（2026-08-29）**；三仓 README 同步、Admin 治理审计/修复、GOV-AUDIT-13 均 COMPLETED（已确认）。清单✅32/🟦25/⬜33、功能数36；正式基线后端955/agent346 / 前端110f/1060t/0skipped / Flyway H2 V44（44）/PG V44（43）；三份方向归档`passed/`；审查`receipts/planning-final-acceptance-minimal-closure-first-acceptance-20260829.md`、`product/workspace-governance-consistency-audit/receipts/planning-review-admin-workspace-governance-remediation-20260829.md`
-> 上一功能：**form-data-import-export** — P32 / M03-F04-02 表单数据导入导出（**COMPLETED 已确认，2026-08-29，第36个**）
-> 测试基线：后端 CONFIRMED 955 tests / Failures 0 / Errors 0 / Skipped 0（agent 346）· 前端 CONFIRMED 110 files / 1060 tests / 0 skipped（**minimal-closure-first-acceptance 验收审计登记基线**）
+> 最后更新：2026-09-01
+> 最新状态：**P45 阶段三终态最终复核** — p45-login-security（P45 / M02-F06-01 登录安全与登录态恢复）功能级 **PASSED（2026-09-01）** + 阶段三终态最终复核 **COMPLETED（已确认，第37个）**；清单✅33/🟦24/⬜33、功能数37、P45已核销、M02-F06-01明细🟦→✅；正式基线后端979/agent346 / 前端110f/1062t/0skipped / Flyway H2 V44（44）/PG V44（43）（V45/V46披露不晋级）；四份方向归档`passed/`；审查`product/p45-login-security/receipts/planning-terminal-final-review-p45-20260901.md`
+> 上一功能：**p45-login-security** — P45 / M02-F06-01 登录安全与登录态恢复（功能级 **PASSED 2026-09-01** + 阶段三终态最终复核 COMPLETED（已确认），第37个）
+> 测试基线：后端 CONFIRMED 979 tests / Failures 0 / Errors 0 / Skipped 0（agent 346）· 前端 CONFIRMED 110 files / 1062 tests / 0 skipped（**P45 正式基线**）
 > 进行中：无（当前唯一下一动作：规划比较并选择下一唯一正式功能）

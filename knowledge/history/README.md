@@ -8,5 +8,6 @@
 | `knowledge/current-status.md`（2026-08-25 收敛前全文） | `knowledge/history/current-status-through-2026-08-25.md` | 2026-08-25 | 原文件完整保留，含历次功能、基线、候选与过程状态；当前值只以新的 `knowledge/current-status.md` 为准 |
 | `knowledge/current-status.md`（2026-08-29，form-data-import-export COMPLETED 已确认、后端 947/前端 1057/3sk、Flyway H2 V43/PG V43 快照） | `knowledge/history/current-status-through-2026-08-29-form-data.md` | 2026-08-29 | 原快照由 `minimal-closure-first-acceptance` 验收审计终态同步迁入历史；当前值只以新的 `knowledge/current-status.md` 为准（验收审计后基线后端 955/前端 1060/0sk、Flyway H2 V44(44)/PG V44(43)，功能数 36、清单 ✅32/🟦25/⬜33 不变） |
 | `knowledge/current-status.md`（2026-08-29，minimal-closure-first-acceptance COMPLETED（待规划终态复核）旧下一动作快照） | `knowledge/history/current-status-through-2026-08-29-gov-audit-13.md` | 2026-08-29 | 原快照由 `GOV-AUDIT-13` 当前状态单值机械同步迁入历史；当前值只以新的 `knowledge/current-status.md` 为准（minimal-closure-first-acceptance、README 同步、Admin 审计/修复、GOV-AUDIT-13 均 COMPLETED（已确认），下一动作复位为规划选择下一正式功能） |
+| `knowledge/current-status.md`（2026-08-29，P45 功能级 PASSED 后阶段三前快照） | `knowledge/history/current-status-through-2026-09-01-p45-stage3-before.md` | 2026-09-01 | 原快照由 P45 阶段三终态同步迁入历史；当前值只以新的 `knowledge/current-status.md` 为准（P45 功能数 36→37、清单 ✅33/🟦24/⬜33、基线后端 979/0/0/0（agent 346）、前端 110 files/1062 tests/0 skipped、Flyway H2 V44(44)/PG V44(43)，P45 核销、M02-F06-01 升✅） |
 
 迁移规则：历史文件只追加或新增，不回写为当前入口；引用历史事实时必须同时标注日期或决策号。
