@@ -1,0 +1,57 @@
+{
+  "environment": {
+    "publicPrefix": "/sw/ + /sw-server/api",
+    "gateway": "evidence fixture reverse proxy -> backend /api",
+    "note": "before 段采集于 http://127.0.0.1:5273（干净 Cookie 域，无历史会话残留）；after 段为已锁定 L3-P 附件，不重采"
+  },
+  "before": {
+    "stage": "before (wrong cookie path, sw.security.cookie.path 未覆盖=默认 /api/auth/)",
+    "publicPrefix": "/sw/ + /sw-server/api",
+    "cookieName": "rt",
+    "cookiePathAttribute": "/api/auth/",
+    "cookieAttributes": [
+      "HttpOnly",
+      "SameSite=Lax",
+      "Max-Age=604800"
+    ],
+    "cookieValueRecorded": false,
+    "refreshCarriesCookie": false,
+    "refreshResponseBodyCode": 401,
+    "refreshResponseBodyMsgHead": "未提供 refresh token",
+    "f5ResultRoute": "/sw/login?redirect=/dict",
+    "screenshot": "n3-before-wrong-path.png"
+  },
+  "after": {
+    "stage": "after (locked L3-P, sw.security.cookie.path=/sw-server/api/auth/)",
+    "publicPrefix": "/sw/ + /sw-server/api",
+    "cookieName": "rt",
+    "cookiePathAttribute": "/sw-server/api/auth/",
+    "cookieValueRecorded": false,
+    "refreshCarriesCookie": true,
+    "refreshResult": "200 / code=0（轮换成功）",
+    "f5ResultRoute": "/sw/dict 保持登录态",
+    "deeplinkResultRoute": "/sw/notify/template 保持登录态",
+    "logoutResultRoute": "/sw/login 且刷新不可恢复",
+    "lockedEvidenceSha256": {
+      "l3-after-f5.png": "9e80035cdae5fdf9bd95a1deb99032b1039e7cd82cba8785a8ae41648ba45af6",
+      "l3-after-logout.png": "8e57a6932495f0c008424cee07d4e1a1f95ea34bb9ed1390240f1fc0bf026060",
+      "l3-deeplink.png": "08454f4be9ae54b6e96231690cb5fc2d84aa5d17cf1a95d035ecfcc5e0216fd0",
+      "l3-network.json": "c17032018c24541d1ac612a7f1c52c8641db21e36f238d01f646b465974c7481"
+    }
+  },
+  "comparison": {
+    "samePublicPrefix": true,
+    "pathCoversPublicRefreshUrl": {
+      "before": false,
+      "after": true
+    },
+    "refreshCarriesCookie": {
+      "before": false,
+      "after": true
+    },
+    "f5KeepsSession": {
+      "before": false,
+      "after": true
+    }
+  }
+}
