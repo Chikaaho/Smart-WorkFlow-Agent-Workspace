@@ -1,0 +1,7 @@
+{
+  "_note": "持久化关键值前后对照（admin 权威读取 GET /workflow/defs/{defId}）",
+  "beforeUnauthorizedAttempts": { "name": "R系列审批流程P", "version": 1, "status": "DRAFT", "elements": 3 },
+  "afterLimited_saveGraph_publish_delete": { "name": "R系列审批流程P", "version": 1, "status": "DRAFT", "elements": 3, "_assert": "逐字段一致，零副作用" },
+  "afterAdmin_saveGraph": { "name": "R系列审批流程P", "note": "保存成功（合法对照），graph_json 更新" },
+  "recordCount": { "workflowDefs_total_for_formKeyA": 1, "_assert": "记录数不变（limited 三次 403 前后）" }
+}
