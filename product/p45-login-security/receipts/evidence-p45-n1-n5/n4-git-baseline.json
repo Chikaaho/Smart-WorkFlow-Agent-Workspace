@@ -1,0 +1,54 @@
+{
+  "backend": {
+    "branch": "develop",
+    "head": "9b1d80f92e22bdee5786ca2727b643d62d242c45",
+    "statusShort": [
+      "M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/controller/AuthController.java",
+      " M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/util/CookieUtils.java",
+      " M sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/controller/AuthControllerTest.java",
+      " M sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/controller/AuthFlowIntegrationTest.java",
+      " M sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/util/CookieUtilsTest.java",
+      " M sw-bootstrap/src/main/resources/application-prod.yml",
+      " M sw-bootstrap/src/main/resources/application.yml",
+      " M sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainH2Test.java",
+      " M sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainPostgresTest.java",
+      "?? sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/security/AuthErrorCode.java",
+      "?? sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/security/LoginChallengeService.java",
+      "?? sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/security/LoginChallengeStore.java",
+      "?? sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/security/LoginSecurityProperties.java",
+      "?? sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/security/PngCaptchaRenderer.java",
+      "?? sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/security/RedisLoginChallengeStore.java",
+      "?? sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/security/RsaLoginKeyManager.java",
+      "?? sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/controller/LoginChallengeTestSupport.java",
+      "?? sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/controller/P45IsolationEvidenceFixture.java",
+      "?? sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/security/LoginChallengeServiceTest.java",
+      "?? sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/security/RedisLoginChallengeStoreTest.java",
+      "?? sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/security/RsaLoginKeyManagerTest.java"
+    ],
+    "diffStatTail": " 9 files changed, 615 insertions(+), 258 deletions(-)"
+  },
+  "frontend": {
+    "branch": "develop",
+    "head": "103b636edd422b1784ec39f9c91470e45cb609a5",
+    "statusShort": [
+      "M src/foundation/auth/index.spec.ts",
+      " M src/foundation/auth/index.ts",
+      " M src/foundation/mock/auth-session.spec.ts",
+      " M src/foundation/mock/form-import-export-mock.spec.ts",
+      " M src/foundation/mock/handlers.ts",
+      " M src/foundation/mock/index.spec.ts",
+      " M src/foundation/request/error-code-map.ts",
+      " M src/modules/agent/views/tool-real-permission-rejection.spec.ts",
+      " M src/router/agent-execution-access.spec.ts",
+      " M src/router/guard.spec.ts",
+      " M src/router/guard.ts",
+      " M src/router/notify-batch-send-route-guard.evidence.spec.ts",
+      " M src/router/notify-template-access.evidence.spec.ts",
+      " M src/router/notify-template-route-guard.evidence.spec.ts",
+      " M src/views/LoginPage.vue",
+      "?? src/foundation/auth/rsa.spec.ts",
+      "?? src/foundation/auth/rsa.ts"
+    ],
+    "diffStatTail": " 15 files changed, 330 insertions(+), 60 deletions(-)"
+  }
+}
