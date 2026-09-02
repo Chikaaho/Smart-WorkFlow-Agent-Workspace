@@ -5,26 +5,32 @@
 >
 > 新会话启动时，优先读取本文件以恢复上下文。
 >
-> **最新状态（2026-09-02）**：p52-form-workbench（P52 表单设计器工作台与关联流程管理）功能级 **PASSED**（2026-09-02，规划功能级最终验收 `planning-final-review-p52-form-workbench-20260902.md`）+ 阶段三终态最终复核 **COMPLETED（已确认）**（`planning-terminal-final-review-p52-form-workbench-20260902.md`），**第 38 个正式功能**——正式基线后端 **1002 / Failures 0 / Errors 0 / Skipped 0**、前端 **Test Files 114 passed / 1 skipped；Tests 1092 passed / 3 skipped**（typecheck/lint/test/build 全通过）、Flyway **H2 链 V47（47）/ PostgreSQL 链 V47（46）**；清单 **✅33/🟦24/⬜33**（三类总数 90 不变，P52 不对应既有明细）、已完成功能 **38**；P52 **已核销/完成**、所有明细状态不变。P52 主方向与阶段三方向均已归档 `passed/`。当前唯一下一动作：**规划比较需求池候选并选择下一唯一正式功能**。
+> **最新状态（2026-09-02）**：p56-form-grid-layout（P56 表单设计器 24 列网格布局）功能级 **PASSED**（2026-09-02，规划功能级最终验收 `planning-review-p56-form-grid-layout-04-passed.md`）+ 阶段三终态最终复核 **COMPLETED（已确认，2026-09-02）**（`planning-final-review-p56-stage3-20260902.md`），**第 39 个正式功能**——正式基线后端 **1004 / Failures 0 / Errors 0 / Skipped 0**（全量 143 份 Surefire XML，BUILD SUCCESS）+ 最终变更后聚焦 **23/0/0/0**、前端 **Test Files 115 passed / 1 skipped；Tests 1097 passed / 3 skipped**（typecheck/lint/test/build 全通过）+ 最终变更后聚焦 **3 files / 23 tests**、Flyway **H2 链 V47（47）/ PostgreSQL 链 V47（46）**（无新增迁移）；清单 **✅34/🟦23/⬜33**（34+23+33=90，M03-F01-01 🟦→✅）、已完成功能 **39**；P56 **已核销/完成**、P46（M03-F01-01 栅格布局缺口）**由 P56 一并完成并核销**。P56 主方向与阶段三方向均已归档 `passed/`。当前唯一下一动作：**规划为 P57（BPM Engine 统一流程节点扩展能力）下发只读探索任务，核实现有节点种类、设计/运行链、硬编码入口和前后端契约**。
 >
-> 前一功能（历史语境）：p45-login-security（P45 / M02-F06-01 登录安全与登录态恢复）COMPLETED 已确认（2026-09-01，第 37 个），基线后端 979/0/0/0（agent 346）、前端 110 files/1062 tests/0 skipped、Flyway H2 V44(44)/PG V44(43)（V45/V46 披露不晋级）。
+> 前一功能（历史语境）：p52-form-workbench（P52 表单设计器工作台与关联流程管理）COMPLETED 已确认（2026-09-02，第 38 个），基线后端 1002/0/0/0、前端 114 files/1092 tests/3 skipped、Flyway H2 V47(47)/PG V47(46)；P45 登录安全 COMPLETED 已确认（2026-09-01，第 37 个），基线后端 979/0/0/0（agent 346）、前端 110 files/1062 tests/0 skipped、Flyway H2 V44(44)/PG V44(43)（V45/V46 披露不晋级）。
 >
 > ⚠️ **2026-08-14 角色制上线**：本文件历史记录中的"使用模型"字段（如 deepseek-v4-pro/flash）为**当时执行事实**，仅作历史存档。当前权限按会话角色（规划/执行/管理员）划分，与模型无关（见根目录 `system.md` §0.2）。新记录不再填写模型字段。
 
 ---
 
-## 0. 当前进行中功能（无进行中业务功能；已完成功能 38）
+## 0. 当前进行中功能（无进行中业务功能；已完成功能 39）
 
-**p52-form-workbench — P52 表单设计器工作台与关联流程管理（功能级 PASSED 2026-09-02 + 阶段三终态最终复核 COMPLETED（已确认，2026-09-02），第38个）**
+**p56-form-grid-layout — P56 表单设计器 24 列网格布局（功能级 PASSED 2026-09-02 + 阶段三终态最终复核 COMPLETED（已确认，2026-09-02），第39个）**
 
-- **终态落盘（2026-09-02，唯一口径见 `product/p52-form-workbench/passed/direction-p52-form-workbench-stage3.md`）**：已完成功能数 **37→38**；清单 **✅33/🟦24/⬜33**（三类总数 90 不变，P52 不对应既有明细，所有明细状态不变）；P52 **已核销/完成**；正式基线后端 **1002/0/0/0**、前端 **114f/1092t/3skipped**、Flyway **H2 V47（47）/ PG V47（46）**。
-- **归档/回执**：主方向与阶段三方向均已归档 `product/p52-form-workbench/passed/`；规划功能级验收 `planning-final-review-p52-form-workbench-20260902.md` PASSED；规划终态最终复核 `planning-terminal-final-review-p52-form-workbench-20260902.md` PASSED。
-- **功能级 PASSED**：12 项验收标准全部通过（工作台身份与零串位、保存五态与失败保留、三入口离开保护、发布当前已保存草稿、历史列表与只读预览、关联流程过滤、关联流程持久化与返回、刷新/深链与隔离、权限一致性、无假按钮/空白/伪关联、回归与质量门、执行边界）。
-- **唯一下一动作**：规划比较需求池候选并选择下一唯一正式功能。
+- **终态落盘（2026-09-02，唯一口径见 `product/p56-form-grid-layout/passed/direction-p56-form-grid-layout-terminal-sync.md`）**：已完成功能数 **38→39**；清单 **✅34/🟦23/⬜33**（34+23+33=90，M03-F01-01 🟦→✅）；P56 **已核销/完成**、P46（M03-F01-01 栅格布局缺口）**由 P56 一并完成并核销**；正式基线后端 **1004/0/0/0**（全量 143 份 Surefire XML、BUILD SUCCESS）+ 聚焦 **23/0/0/0**、前端 **115 files passed + 1 skipped / 1097 tests passed + 3 skipped** + 聚焦 **3 files / 23 tests**、Flyway **H2 V47（47）/ PG V47（46）**（无新增迁移）。
+- **归档/回执**：主方向与阶段三方向均已归档 `product/p56-form-grid-layout/passed/`；功能级最终验收 `planning-review-p56-form-grid-layout-04-passed.md` PASSED；规划终态最终复核 `planning-final-review-p56-stage3-20260902.md` PASSED（`COMPLETED（已确认，2026-09-02）`）。
+- **功能级 PASSED**：十项验收标准全部通过（网格与边界、合法初始状态、拖动排序、自动换行、紧凑重排、纵向自适应、持久化一致、表单隔离、既有主链回归、真实页面质量）。
+- **唯一下一动作**：规划为 P57（BPM Engine 统一流程节点扩展能力）下发只读探索任务，核实现有节点种类、设计/运行链、硬编码入口和前后端契约。
 
 ---
 
 ## 1. 最新完成功能
+
+**p56-form-grid-layout — P56 表单设计器 24 列网格布局（功能级 PASSED 2026-09-02 + 阶段三终态最终复核 COMPLETED（已确认，2026-09-02），第39个）**
+
+- **功能范围**：24 列网格布局（组件列宽 1—24 整数约束、合法初始状态、同行累计换行）；拖动排序与跨行/同行重排（占位反馈=释放落点=保存后位置）；紧凑重排（无空洞、无重叠/丢失/重复）；宽度调整即时重排与非法值拒绝；纵向自适应（内容/校验提示撑行，不遮挡截断）；全链一致（设计/保存重进/历史只读预览/发布前后预览/实际填写）；持久化一致与表单隔离（刷新不丢失、深链/多标签零串位）；既有保存五态、发布、权限与主链回归保持（G6-A 保存五态与失败零写入）。
+- **验收**：`product/p56-form-grid-layout/receipts/planning-review-p56-form-grid-layout-04-passed.md`（功能级 PASSED，10/10；含规划裁决：P56/P46 同一交付两个索引、只增一个正式功能；M03-F01-01 🟦→✅；P2 其余缺口继续开放、P57/P58 未启动）+ `product/p56-form-grid-layout/receipts/planning-final-review-p56-stage3-20260902.md`（阶段三终态最终复核 PASSED，`COMPLETED（已确认，2026-09-02）`）。
+- **终态值**：功能数 **38→39**、清单 **✅34/🟦23/⬜33**（34+23+33=90，M03-F01-01 🟦→✅）、P56 已核销/完成、P46 一并完成核销；正式基线后端 **1004/0/0/0**（全量 143 Surefire XML、BUILD SUCCESS）+ 聚焦 **23/0/0/0**、前端 **115 files passed + 1 skipped / 1097 tests passed + 3 skipped** + 聚焦 **3 files / 23 tests**、Flyway **H2 V47（47）/PG V47（46）**（无迁移）。主方向与阶段三方向均已归档 `passed/`。
 
 **p52-form-workbench — P52 表单设计器工作台与关联流程管理（功能级 PASSED 2026-09-02 + 阶段三终态最终复核 COMPLETED（已确认，2026-09-02），第38个）**
 
@@ -286,7 +292,7 @@
 
 ## 9. 当前系统状态
 
-全部 **38** 个已完成功能（规划确认，含 p52-form-workbench 功能级 PASSED 2026-09-02 + 阶段三终态最终复核 COMPLETED（已确认，2026-09-02））：
+全部 **39** 个已完成功能（规划确认，含 p56-form-grid-layout 功能级 PASSED 2026-09-02 + 阶段三终态最终复核 COMPLETED（已确认，2026-09-02））：
 
 1-8. Walking Skeleton → sys-mgmt-crud → bpm-task-center → storage-multi-provider → job-scheduler → kb-verification → auth-seam-completion → feature-checklist-sync
 9. ✅ vue-flow-adapter（2026-07-25）
@@ -319,13 +325,14 @@
 36. ✅ form-data-import-export（P32 / M03-F04-02 表单数据导入导出；**后端 947/0/0/0（agent 346）、前端 110f/1057t/3skipped、Flyway H2 V43/PG V43**）（**功能级 PASSED 2026-08-29 + 阶段三终态复核 PASSED，COMPLETED 已确认，第36个**；当前正式基线已由 minimal-closure-first-acceptance 验收审计更新为 955/1060/V44）
 37. ✅ p45-login-security（P45 / M02-F06-01 登录安全与登录态恢复；RSA-OAEP 密码加密、验证码+有效期+机器时间固定校验顺序 2101-2104、Redis 一次性挑战与并发防重放、RSA 密钥版本轮换、默认租户 `tenant=0` 隔离、Cookie Path 修正 + F5/深链/退出恢复，access 内存 + refresh HttpOnly Cookie；**后端 979/0/0/0（agent 346）、前端 110f/1062t/0skipped、Flyway H2 V44/PG V44（V45/V46 披露不晋级）**）（**功能级 PASSED 2026-09-01 + 阶段三终态最终复核 COMPLETED（已确认），第37个**；P45 已核销、M02-F06-01 明细 🟦→✅、清单 ✅33/🟦24/⬜33、功能数 37）
 38. ✅ p52-form-workbench（P52 表单设计器工作台与关联流程管理：顶部统一工作台/保存五态/发布当前草稿/历史只读预览/关联流程切换与持久化/路由深链隔离/权限一致性；**后端 1002/0/0/0、前端 114f/1092t/3skipped、Flyway H2 V47（47）/PG V47（46）**）（**功能级 PASSED 2026-09-02 + 阶段三终态最终复核 COMPLETED（已确认，2026-09-02），第38个**；P52 已核销、清单 ✅33/🟦24/⬜33 三类总数 90 不变、P52 不对应既有明细、功能数 38）
+39. ✅ p56-form-grid-layout（P56 表单设计器 24 列网格布局：24 列网格语义/拖动排序/紧凑重排/宽度调整/纵向自适应/全链一致/持久化与表单隔离/保存五态与失败零写入；**后端 1004/0/0/0（全量 143 Surefire XML，BUILD SUCCESS）+ 聚焦 23/0/0/0、前端 115 files passed + 1 skipped / 1097 tests passed + 3 skipped + 聚焦 3 files / 23 tests、Flyway H2 V47（47）/PG V47（46）无新增迁移**）（**功能级 PASSED 2026-09-02 + 阶段三终态最终复核 COMPLETED（已确认，2026-09-02），第39个**；P56 已核销、P46 一并完成核销、M03-F01-01 🟦→✅、清单 ✅34/🟦23/⬜33、功能数 39；主方向与阶段三方向均已归档 `passed/`）
 
-- 后端：项目级 **1002 tests / Failures 0 / Errors 0 / Skipped 0**——P52 正式基线（规划功能级最终验收锁定）
-- 前端：**Test Files 114 passed / 1 skipped；Tests 1092 passed / 3 skipped** typecheck/lint/test/build 全通过（严格顺序串行，NODE_OPTIONS=2048；P52 正式基线）
-- 功能清单（规划确认+阶段三已同步）：**✅33 / 🟦24 / ⬜33 共 90 行**（P52 不对应既有明细，所有明细状态不变；历史：M02-F06-01 ✅（P45）、M03-F04-02 ✅（P32）、M05-F02-01 ✅（P36）、M05-F01-02/F01-03 ✅（D210）、M07-F02-02 ✅（D157）、M07-F04-02 ✅（D174）、M07-F02-04 ✅（D180）、M07-F03-02 ✅（D203））
-- Flyway：H2 **V47**（全链 47 migrations）/ PostgreSQL **V47**（全链 46 migrations）（P52 涉及 V47，实际全链终点；历史 V44/V45/V46 为既有事实，不构成当前正式基线）
-- 已完成功能：**38 个规划确认**（第 38 个为 p52-form-workbench，功能级 PASSED 2026-09-02 + 阶段三终态最终复核 COMPLETED（已确认，2026-09-02））
-- 进行中业务功能：无；进行中治理任务：无（当前唯一下一动作：规划比较需求池候选并选择下一唯一正式功能；P52 主方向与阶段三方向均已归档 `passed/`）
+- 后端：项目级 **1004 tests / Failures 0 / Errors 0 / Skipped 0**（143 份 Surefire XML，BUILD SUCCESS）+ 最终变更后聚焦 **23/0/0/0**——P56 正式基线集合（规划功能级最终验收锁定）
+- 前端：**Test Files 115 passed / 1 skipped；Tests 1097 passed / 3 skipped** typecheck/lint/test/build 全通过（严格顺序串行，NODE_OPTIONS=2048；P56 正式基线）+ 最终变更后聚焦 **3 files / 23 tests**
+- 功能清单（规划确认+阶段三已同步）：**✅34 / 🟦23 / ⬜33 共 90 行**（M03-F01-01 表单设计器拖拽 🟦→✅，P46 已由 P56 完成；历史：M02-F06-01 ✅（P45）、M03-F04-02 ✅（P32）、M05-F02-01 ✅（P36）、M05-F01-02/F01-03 ✅（D210）、M07-F02-02 ✅（D157）、M07-F04-02 ✅（D174）、M07-F02-04 ✅（D180）、M07-F03-02 ✅（D203））
+- Flyway：H2 **V47**（全链 47 migrations）/ PostgreSQL **V47**（全链 46 migrations）（P56 无新增迁移，版本不变；历史 V44/V45/V46 为既有事实，不构成当前正式基线）
+- 已完成功能：**39 个规划确认**（第 39 个为 p56-form-grid-layout，功能级 PASSED 2026-09-02 + 阶段三终态最终复核 COMPLETED（已确认，2026-09-02））
+- 进行中业务功能：无；进行中治理任务：无（当前唯一下一动作：规划为 P57 下发只读探索任务，核实现有节点种类、设计/运行链、硬编码入口和前后端契约；P56 主方向与阶段三方向均已归档 `passed/`）
 
 ---
 
@@ -366,9 +373,9 @@
 
 ## 12. 下一轮要做什么
 
-**当前唯一下一动作：规划比较需求池候选并选择下一唯一正式功能。**
+**当前唯一下一动作：规划为 P57（BPM Engine 统一流程节点扩展能力）下发只读探索任务，核实现有节点种类、设计/运行链、硬编码入口和前后端契约。**
 
-**p52-form-workbench：P52 表单设计器工作台与关联流程管理，功能级 PASSED 2026-09-02 + 阶段三终态最终复核 COMPLETED（已确认，2026-09-02，第38个）**——功能数 **37→38**、清单 **✅33/🟦24/⬜33**（三类总数 90 不变，P52 不对应既有明细、所有明细状态不变）、P52 **已核销/完成**；正式基线后端 **1002/0/0/0**、前端 **114f/1092t/3skipped**、Flyway **H2 V47（47）/PG V47（46）**。主方向与阶段三方向均已归档 `passed/`。
+**p56-form-grid-layout：P56 表单设计器 24 列网格布局，功能级 PASSED 2026-09-02 + 阶段三终态最终复核 COMPLETED（已确认，2026-09-02，第39个）**——功能数 **38→39**、清单 **✅34/🟦23/⬜33**（M03-F01-01 🟦→✅，P46 已由 P56 完成）、P56 **已核销/完成**、P46 **一并核销**；正式基线后端 **1004/0/0/0**（全量 143 Surefire XML、BUILD SUCCESS）+ 聚焦 **23/0/0/0**、前端 **115 files passed + 1 skipped / 1097 tests passed + 3 skipped** + 聚焦 **3 files / 23 tests**、Flyway **H2 V47（47）/PG V47（46）**（无迁移）。主方向与阶段三方向均已归档 `passed/`。
 
 **p45-login-security：P45 / M02-F06-01 登录安全与登录态恢复，功能级 PASSED 2026-09-01 + 阶段三终态最终复核 COMPLETED（已确认，第37个，历史语境）**——功能数 **36→37**、清单 **✅33/🟦24/⬜33**（M02-F06-01 🟦→✅）、P45 **已核销/完成**；正式基线后端 **979/0/0/0（agent346）**、前端 **110f/1062t/0skipped**、Flyway **H2 V44（44）/PG V44（43）**（V45/V46 披露但不晋级 P45 正式基线）。四份方向全部归档 `passed/`。
 
@@ -405,18 +412,18 @@
 你是 Smart-WorkFlow 根目录规划代理。请按 system.md §0.2 声明角色并读取 `roles/planner.md`，再按该文件 §10 执行新会话恢复。
 
 最新状态：
-- p52-form-workbench（P52 表单设计器工作台与关联流程管理）功能级 **PASSED（2026-09-02）** + 阶段三终态最终复核 **COMPLETED（已确认，2026-09-02，第38个）**——P52已核销、清单✅33/🟦24/⬜33（90不变、P52不对应既有明细）、功能数38；正式基线后端1002/0/0/0、前端114f/1092t/3skipped、Flyway H2 V47（47）/PG V47（46）。主方向与阶段三方向均已归档`passed/`；审查`product/p52-form-workbench/receipts/planning-terminal-final-review-p52-form-workbench-20260902.md`；下一动作：规划比较需求池候选并选择下一唯一正式功能
-- 前一功能（历史语境）：p45-login-security（P45 / M02-F06-01 登录安全与登录态恢复）**COMPLETED 已确认（2026-09-01，第37个）**——清单✅33/🟦24/⬜33、功能数37、P45已核销、M02-F06-01明细🟦→✅；正式基线后端979/agent346、前端110f/1062t/0skipped、Flyway H2 V44（44）/PG V44（43）（V45/V46披露不晋级）
+- p56-form-grid-layout（P56 表单设计器 24 列网格布局）功能级 **PASSED（2026-09-02）** + 阶段三终态最终复核 **COMPLETED（已确认，2026-09-02，第39个）**——P56已核销、P46一并核销、M03-F01-01 🟦→✅、清单✅34/🟦23/⬜33（34+23+33=90）、功能数39；正式基线后端1004/0/0/0（全量143 Surefire XML、BUILD SUCCESS）+聚焦23/0/0/0、前端115 files passed + 1 skipped / 1097 tests passed + 3 skipped +聚焦3 files/23 tests、Flyway H2 V47（47）/PG V47（46）无新增迁移。主方向与阶段三方向均已归档`passed/`；审查`product/p56-form-grid-layout/receipts/planning-final-review-p56-stage3-20260902.md`；下一动作：规划为P57下发只读探索任务（现有节点种类、设计/运行链、硬编码入口、前后端契约）
+- 前一功能（历史语境）：p52-form-workbench（P52 表单设计器工作台与关联流程管理）**COMPLETED 已确认（2026-09-02，第38个）**——清单✅33/🟦24/⬜33、功能数38、P52已核销；正式基线后端1002/0/0/0、前端114f/1092t/3skipped、Flyway H2 V47（47）/PG V47（46）
 - 执行约束：本机物理内存 1.6G——mvn 与 pnpm/npm 编译严格串行，禁并行编译（已入宪法）
-- 候选池：**P1/P5/P6/P7/P8/P24/P28/P36/P48/P32/P45/P52 已核销**、M07 补全已闭环、M05 通知批次已闭环、M07-F03/F04新功能、IoT/OpenAPI、数据权限遗留/停用即时生效——PG侧全链直跑已由pg-v13修复关闭（I52）；P21 部分关闭未核销
+- 候选池：**P1/P5/P6/P7/P8/P24/P28/P36/P48/P32/P45/P52/P56/P46 已核销**、M07 补全已闭环、M05 通知批次已闭环、M07-F03/F04新功能、IoT/OpenAPI、数据权限遗留/停用即时生效——PG侧全链直跑已由pg-v13修复关闭（I52）；P21 部分关闭未核销；P2 其余缺口继续开放；P57/P58 未启动
 
-当前功能：无（当前唯一下一动作：规划比较需求池候选并选择下一唯一正式功能）
+当前功能：无（当前唯一下一动作：规划为P57下发只读探索任务，核实现有节点种类、设计/运行链、硬编码入口和前后端契约）
 ```
 
 ---
 
 > 最后更新：2026-09-02
-> 最新状态：**P52 阶段三终态最终复核** — p52-form-workbench（P52 表单设计器工作台与关联流程管理）功能级 **PASSED（2026-09-02）** + 阶段三终态最终复核 **COMPLETED（已确认，2026-09-02，第38个）**；清单✅33/🟦24/⬜33（90不变、P52不对应既有明细）、功能数38、P52已核销、所有明细状态不变；正式基线后端1002/0/0/0 / 前端114f/1092t/3skipped / Flyway H2 V47（47）/PG V47（46）；主方向与阶段三方向均已归档`passed/`；审查`product/p52-form-workbench/receipts/planning-terminal-final-review-p52-form-workbench-20260902.md`
-> 上一功能：**p52-form-workbench** — P52 表单设计器工作台与关联流程管理（功能级 **PASSED 2026-09-02** + 阶段三终态最终复核 COMPLETED（已确认，2026-09-02），第38个）
-> 测试基线：后端 CONFIRMED 1002 tests / Failures 0 / Errors 0 / Skipped 0 · 前端 CONFIRMED 114 files / 1092 tests / 3 skipped（**P52 正式基线**）
-> 进行中：无（当前唯一下一动作：规划比较需求池候选并选择下一唯一正式功能）
+> 最新状态：**P56 阶段三终态最终复核** — p56-form-grid-layout（P56 表单设计器 24 列网格布局）功能级 **PASSED（2026-09-02）** + 阶段三终态最终复核 **COMPLETED（已确认，2026-09-02，第39个）**；清单✅34/🟦23/⬜33（34+23+33=90，M03-F01-01 🟦→✅）、功能数39、P56已核销、P46一并核销；正式基线后端1004/0/0/0（全量143 Surefire XML、BUILD SUCCESS）+聚焦23/0/0/0 / 前端115 files passed + 1 skipped / 1097 tests passed + 3 skipped +聚焦3 files/23 tests / Flyway H2 V47（47）/PG V47（46）无新增迁移；主方向与阶段三方向均已归档`passed/`；审查`product/p56-form-grid-layout/receipts/planning-final-review-p56-stage3-20260902.md`
+> 上一功能：**p56-form-grid-layout** — P56 表单设计器 24 列网格布局（功能级 **PASSED 2026-09-02** + 阶段三终态最终复核 COMPLETED（已确认，2026-09-02），第39个）
+> 测试基线：后端 CONFIRMED 1004 tests / Failures 0 / Errors 0 / Skipped 0（全量）· 前端 CONFIRMED 115 files / 1097 tests / 3 skipped（**P56 正式基线集合**；最终变更后聚焦：后端 23/0/0/0、前端 3 files / 23 tests）
+> 进行中：无（当前唯一下一动作：规划为 P57 下发只读探索任务，核实现有节点种类、设计/运行链、硬编码入口和前后端契约）
