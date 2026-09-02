@@ -8,7 +8,7 @@
 
 **最近正式基线**：后端1002/0/0/0、前端114f/1092t/3sk、Flyway H2 V47（47）/PG V47（46）。
 
-**当前规划**：P52 主方向与阶段三方向均已归档 `product/p52-form-workbench/passed/`，正式终态已确认；当前无活动功能。
+**当前规划**：P52 已正式终态确认，当前无活动功能。Owner 2026-09-02 新增候选均已登记且尚未启动：P2 优先级 P54 千人千面工作台、P55 前后台分层；P1 优先级 P56 表单 24 列网格、P57 BPM Engine 统一节点扩展能力（XL）、P58 流程节点界面与具体能力优化（独立 XL，依赖 P57，细节待定）。
 
 **P51 终态**：main 正式历史已完成规划功能级 `PASSED`、阶段三 `COMPLETED（已确认）` 与 Owner 授权发布；当前远端 `main=e0711fb`、`develop-sw=a2b8342`。终态权威与分支摘要差异已由 `product/p51-agent-coding-engine-decoupling/receipts/planning-final-reconciliation-p51-main-terminal-authority-03.md` 完成对账。
 
