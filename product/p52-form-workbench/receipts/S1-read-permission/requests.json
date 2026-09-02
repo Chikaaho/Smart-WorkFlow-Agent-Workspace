@@ -1,0 +1,99 @@
+{
+  "limited": [
+    {
+      "path": "/form/def/b2b2cbdc-68bb-43aa-9832-06649180410c",
+      "httpStatus": 403,
+      "body": {
+        "code": 403,
+        "msg": "无权限",
+        "data": null
+      },
+      "label": "身份"
+    },
+    {
+      "path": "/form/def/b2b2cbdc-68bb-43aa-9832-06649180410c/definition",
+      "httpStatus": 403,
+      "body": {
+        "code": 403,
+        "msg": "无权限",
+        "data": null
+      },
+      "label": "definition"
+    },
+    {
+      "path": "/form/def/b2b2cbdc-68bb-43aa-9832-06649180410c/snapshots",
+      "httpStatus": 403,
+      "body": {
+        "code": 403,
+        "msg": "无权限",
+        "data": null
+      },
+      "label": "snapshots"
+    },
+    {
+      "path": "/form/def/page?pageNum=1&pageSize=20&keyword=S1%E6%9D%83%E9%99%90%E5%AF%B9%E7%85%A7%E8%A1%A8%E5%8D%95",
+      "httpStatus": 403,
+      "body": {
+        "code": 403,
+        "msg": "无权限",
+        "data": null
+      },
+      "label": "列表"
+    }
+  ],
+  "admin": [
+    {
+      "path": "/form/def/b2b2cbdc-68bb-43aa-9832-06649180410c",
+      "httpStatus": 200,
+      "body": {
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "id": "b2b2cbdc-68bb-43aa-9832-06649180410c",
+          "formKey": "p52_s1_form_1788317569554",
+          "name": "S1权限对照表单",
+          "logicalTableName": null,
+          "status": "PUBLISHED",
+          "physicalTableName": "sw_form_tpvouzq95m",
+          "formVersion": 2,
+          "description": "S1/S2 取证对象",
+          "createTime": "2026-09-02T10:52:49.63164",
+          "updateTime": "2026-09-02T10:52:49.701738"
+        }
+      },
+      "label": "身份"
+    },
+    {
+      "path": "/form/def/b2b2cbdc-68bb-43aa-9832-06649180410c/definition",
+      "httpStatus": 200,
+      "body": {
+        "length": 107
+      },
+      "label": "definition"
+    },
+    {
+      "path": "/form/def/b2b2cbdc-68bb-43aa-9832-06649180410c/snapshots",
+      "httpStatus": 200,
+      "body": {
+        "count": 1,
+        "firstVersion": 2
+      },
+      "label": "snapshots"
+    },
+    {
+      "path": "/form/def/page?pageNum=1&pageSize=20&keyword=S1%E6%9D%83%E9%99%90%E5%AF%B9%E7%85%A7%E8%A1%A8%E5%8D%95",
+      "httpStatus": 200,
+      "body": {
+        "total": "1",
+        "containsTarget": true
+      },
+      "label": "列表"
+    }
+  ],
+  "leakScan": {
+    "containsFormId": false,
+    "containsFormName": false,
+    "containsField": false,
+    "containsSnapshotVersion": false
+  }
+}
