@@ -1,0 +1,43 @@
+{
+  "process_P": {
+    "defId": "2094987379579838466",
+    "save_graph": {
+      "code": 0,
+      "elements": 3,
+      "contains_start": true
+    },
+    "validate_errors": [],
+    "publish": {
+      "http_code": 200,
+      "code": 0,
+      "status": "PUBLISHED",
+      "version": "2",
+      "processKey": "bpm_94894fd65a9c40fc",
+      "deploymentId": "74c244e4-a67c-11f1-8f65-66ff24301f3c",
+      "processDefinitionId": "bpm_94894fd65a9c40fc:1:74d1fc57-a67c-11f1-8f65-66ff24301f3c"
+    },
+    "persistence_check": {
+      "bpmn_xml_http": 200,
+      "bpmn_xml_code": 0,
+      "bpmn_xml_len": 1641,
+      "list_status": "PUBLISHED",
+      "list_version": "2"
+    }
+  },
+  "process_Q": {
+    "defId": "2094987380657774593",
+    "delete": {
+      "http_code": 200,
+      "code": 0
+    },
+    "persistence_check": {
+      "get_after_delete": {
+        "code": 2010,
+        "msg": "流程定义不存在"
+      },
+      "list_total_before": "2",
+      "list_total_after": "1"
+    }
+  },
+  "note": "原始请求/响应全量见 requests.json"
+}
