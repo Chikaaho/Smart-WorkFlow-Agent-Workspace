@@ -1,0 +1,162 @@
+{
+  "s1_limited_direct_reads": {
+    "comment": "s1limited（无 form:design）对 PUBLISHED 表单 b2b2cbdc-68bb-43aa-9832-06649180410c 的四类直接读取",
+    "identity": {
+      "httpStatus": 403,
+      "body": {
+        "code": 403,
+        "msg": "无权限",
+        "data": null
+      }
+    },
+    "definition": {
+      "httpStatus": 403,
+      "body": {
+        "code": 403,
+        "msg": "无权限",
+        "data": null
+      }
+    },
+    "snapshots": {
+      "httpStatus": 403,
+      "body": {
+        "code": 403,
+        "msg": "无权限",
+        "data": null
+      }
+    },
+    "page_list": {
+      "httpStatus": 403,
+      "body": {
+        "code": 403,
+        "msg": "无权限",
+        "data": null
+      }
+    }
+  },
+  "leak_scan_bodies_only": {
+    "containsFormId": false,
+    "containsFormName": false,
+    "containsField": false,
+    "containsSnapshotVersion": false
+  },
+  "admin_same_object_reads": {
+    "identity_status": 200,
+    "definition_length": 107,
+    "snapshots": {
+      "count": 1,
+      "firstVersion": 2
+    },
+    "page_list": {
+      "total": "1",
+      "containsTarget": true
+    }
+  },
+  "cross_tenant": {
+    "limited": [
+      {
+        "label": "身份",
+        "path": "/form/def/aaaa0000-0000-0000-0000-000000000001",
+        "httpStatus": 401,
+        "body": {
+          "code": 401,
+          "msg": "未认证",
+          "data": null
+        }
+      },
+      {
+        "label": "definition",
+        "path": "/form/def/aaaa0000-0000-0000-0000-000000000001/definition",
+        "httpStatus": 401,
+        "body": {
+          "code": 401,
+          "msg": "未认证",
+          "data": null
+        }
+      },
+      {
+        "label": "snapshots",
+        "path": "/form/def/aaaa0000-0000-0000-0000-000000000001/snapshots",
+        "httpStatus": 401,
+        "body": {
+          "code": 401,
+          "msg": "未认证",
+          "data": null
+        }
+      },
+      {
+        "label": "列表",
+        "path": "/form/def/page?pageNum=1&pageSize=50",
+        "httpStatus": 401,
+        "body": {
+          "code": 401,
+          "msg": "未认证",
+          "data": null
+        }
+      }
+    ],
+    "admin": [
+      {
+        "label": "身份",
+        "path": "/form/def/aaaa0000-0000-0000-0000-000000000001",
+        "httpStatus": 200,
+        "body": {
+          "code": 1000,
+          "msg": "表单不存在",
+          "data": null
+        }
+      },
+      {
+        "label": "definition",
+        "path": "/form/def/aaaa0000-0000-0000-0000-000000000001/definition",
+        "httpStatus": 200,
+        "body": {
+          "code": 1300,
+          "msg": "表单配置未找到",
+          "data": null
+        }
+      },
+      {
+        "label": "snapshots",
+        "path": "/form/def/aaaa0000-0000-0000-0000-000000000001/snapshots",
+        "httpStatus": 200,
+        "body": {
+          "code": 1000,
+          "msg": "表单不存在",
+          "data": null
+        }
+      },
+      {
+        "label": "列表",
+        "path": "/form/def/page?pageNum=1&pageSize=50",
+        "httpStatus": 200,
+        "body": {
+          "total": "1",
+          "containsCrossTenantClone": false,
+          "containsCloneKey": false
+        }
+      }
+    ],
+    "leakScan": {
+      "anyBodyContainsCloneId": false,
+      "anyBodyContainsCloneKey": false,
+      "anyBodyContainsCloneName": false,
+      "anyBodyContainsDefinition": false
+    }
+  },
+  "deep_link_dom": {
+    "url": "http://localhost:5173/form/designer/b2b2cbdc-68bb-43aa-9832-06649180410c",
+    "rejected_panel": {
+      "title": "无权访问该表单",
+      "reason": "无权限",
+      "buttons": [
+        "返回表单列表"
+      ]
+    },
+    "workbench_header_rendered": false,
+    "designer_body_canvas_rendered": false,
+    "processes_panel_rendered": false,
+    "screenshot": "deeplink-403-rejected-panel.png",
+    "note": "修复前（planning-rereview-03 §2 R4 引用的 rejected-panel-sample.png）：页面显示「未命名表单」空工作台且保存/发布/历史按钮可见；修复后操作区零渲染且显示 403 专属拒绝文案。"
+  }
+}
