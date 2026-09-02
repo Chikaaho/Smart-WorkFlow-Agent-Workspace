@@ -2,6 +2,7 @@
 
 > 规划侧最新同步点：2026-09-02；正式功能数与基线仍以 `knowledge/current-status.md` 为准。
 
+- `p56-form-grid-layout`：**COMPLETED（已确认，2026-09-02）**，第39个正式功能。P1优先级、L级；10项验收全过，主方向与阶段三方向均已归档`passed/`；M03-F01-01 🟦→✅、P46一并核销；正式基线后端1004/0/0/0（全量）＋聚焦23/0/0/0、前端115f+1sk/1097t+3sk＋聚焦3 files/23 tests、H2 V47（47）/PG V47（46）；清单✅34/🟦23/⬜33（90不变）。
 - `p52-form-workbench`：**COMPLETED（已确认，2026-09-02）**，第38个正式功能。12项功能标准全部通过；主方向与阶段三方向均归档`passed/`。P52已核销；正式基线1002/0/0/0、114f/1092t/3skipped、H2 V47（47）/PG V47（46）；清单✅33/🟦24/⬜33（90不变，P52不对应既有明细）。
 - `p45-login-security`：**COMPLETED（已确认，2026-09-01）**，第37个正式功能（历史语境）。正式基线后端 **979/0/0/0（agent346）**、前端 **110f/1062t/0sk**、Flyway H2/PG V44（V45/V46披露不晋级）；P45已核销、M02-F06-01为✅、清单 **✅33/🟦24/⬜33**。四份方向归档`passed/`。
 - `p51-agent-coding-engine-decoupling`：`COMPLETED（已确认，2026-08-31）`。main 为通用 Agent Coding Engine，develop-sw 为 Smart-WorkFlow/OA 示例；功能级 `PASSED`、阶段三确认和 Owner 授权发布均已在 main 正式历史闭环。P51 不新增 OA 正式业务功能计数。
