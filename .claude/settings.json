@@ -9,7 +9,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh /usr/local/projects/Smart-WorkFlow/.claude/hooks/stop-execution-completeness.sh"
+            "command": "engine_root=\"${CLAUDE_PROJECT_DIR:-${CODEX_PROJECT_DIR:-$PWD}}\"; while [ ! -f \"$engine_root/.codex/governance/stop-gate.sh\" ] && [ \"$engine_root\" != \"/\" ]; do engine_root=\"$(dirname \"$engine_root\")\"; done; [ -f \"$engine_root/.codex/governance/stop-gate.sh\" ] || exit 0; sh \"$engine_root/.claude/hooks/stop-execution-completeness.sh\""
           }
         ]
       }

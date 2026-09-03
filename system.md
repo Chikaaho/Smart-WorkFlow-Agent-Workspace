@@ -80,7 +80,9 @@ Planner 的信息不足以做出 L/XL 方向决策时，必须写入 `search_tas
 
 `system.md` 是角色、授权、分级和流程路由的唯一公共规范入口；`roles/` 保存角色细则；各 coding 仓库的 `docs/governance/engineering-constitution.md` 保存工程专属规则。`AGENTS.md`、`CLAUDE.md` 只负责路由，不得复制或另行定义治理规则。
 
-Executor 终态的唯一机器契约是 `.codex/governance/terminal-contract.json`。公共 Validator 和 Hook 只读取该契约；文档不得另建终态 schema。S/M 与 L/XL 使用契约中各自允许的终态和字段组合。
+Executor 终态的唯一机器契约是 `.codex/governance/terminal-contract.json`。公共 Validator 和 Hook 只读取该契约；文档不得另建终态 schema。S/M 与 L/XL 使用契约中各自允许的终态和字段组合。L/XL 的提交、同步和 `BLOCKED` 终态还必须携带同一份行为上下文：`work_items`、`remaining_actionable_count`、`independent_work_exhausted`、`next_action`、`next_action_type`、`progress_fingerprint`、`progress_basis`、`stop_reason`、`tool_results` 和 `browser_status`。Validator 按“已授权、依赖满足且状态为 `PENDING/IN_PROGRESS` 的 actionable 项”计算剩余动作；仍有此类动作时不得提交中间终态。`progress_basis` 必须记录文件变化、工具动作、新证据或关闭工作项中的至少一项。`BLOCKED` 必须有真实工具结果、已尝试路径、解除条件和独立工作已穷尽证据；可操作浏览器会话不能被包装成外部阻塞。
+
+Stop Hook 的唯一实现入口是 `.codex/governance/stop-gate.sh`，`.claude/` 与 `.codex/` 仅负责根定位。原生 Codex 宿主由 `.codex/hooks/codex-stop-adapter.sh` 在缺少 `active_role` 时，仅依据宿主显式提供的 `AGENT_CODING_ENGINE_ACTIVE_ROLE` 绑定会话角色，并向宿主投影其支持的 `decision`/`reason` 字段；未显式绑定角色时不启用 Executor 门禁。门禁拒绝提前停止后，必须通过 `.codex/governance/supervisor-reinject.sh` 返回精确 `next_action` 的自动回注请求；禁止把用户点击“继续”作为恢复链路。对 `BLOCKED`，Hook 还必须接收并比对同一契约声明的 Harness `execution_observations`，包括实际工具结果、浏览器状态和进展指纹；缺失或不一致均不得放行。重复进展指纹先要求原子动作，再要求切换路径，最后请求 supervisor 重规划；不得因重复失败自称 `BLOCKED` 放行。门禁判断不得按模型名称分支，只使用任务状态、授权、依赖、工具结果和进展证据。
 
 获授权执行 Git 提交的角色，提交信息遵循 Angular/Conventional Commits 格式，主题默认使用中文，不含 Harness 自动署名或模型归属。远程发布、历史改写、强制推送或破坏性操作前，必须说明远程、分支、精确范围与风险，并取得用户对该动作的明确授权。
 
@@ -175,6 +177,7 @@ XL 遵循 L 的角色与证据边界，并额外要求：
 - S：证明局部结果即可。
 - M：证明受影响路径和必要回归即可。
 - L/XL：只认可复核的行为证据；结构与自述仅作定位辅助。正式验收、重复失败收敛和终态同步细则见角色文件。
+- L/XL 终态中的 `tool_results` 必须记录实际工具、结果类型和非空详情；`PERMISSION_DENIED`、`CAPABILITY_UNAVAILABLE` 只能由对应真实工具结果触发。浏览器相关阻塞必须区分可操作会话与用户秘密、MFA 或真实人机验证等外部条件。
 - 工程宪法可以针对特定风险提高验证强度，但不得把全量校验无条件施加给所有 S/M 改动。
 
 ---
