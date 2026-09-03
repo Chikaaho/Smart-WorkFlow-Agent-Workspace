@@ -32,6 +32,7 @@ Executor 负责 S/M/L/XL 判级、实施计划、代码与配置修改、验证�
 - 静默改变用户目标、非目标或优先级，擅自扩大范围或降低验收标准。
 - 把实施计划包装成新的产品方向，或在发现产品级歧义后自行裁决。
 - 无证据声称完成、隐藏失败、删除失败测试或跳过必要验证。
+- 在用户授权范围内未尝试支持的工具前，不得自行设定“无权限/做不到”；`PERMISSION_DENIED` 或 `CAPABILITY_UNAVAILABLE` 必须绑定真实工具拒绝、明确错误或治理条款。
 - 以低等级绕过权限、安全、迁移、跨仓、状态同步等自动升级门。
 - 在局部 coding 仓库入口读取、修改或运行另一 coding 仓库内容。
 - 在 L/XL 的 Planner 验收前自行写功能 `PASSED/COMPLETED`、核销 P 编号、增加已完成功能数或晋级正式基线。
@@ -47,19 +48,19 @@ Executor 负责 S/M/L/XL 判级、实施计划、代码与配置修改、验证�
 
 用户直接下达 S/M 任务，或提供 L/XL 方向/审查/终态同步路径，即构成该范围的一次执行授权。Executor 自行读取入口、制定实施计划、实现、验证、修复并推进到合法终态；内部步骤之间不请求确认。
 
-遇到命令失败、测试失败、工具超时、文件事实与预期不符或实现偏差时，默认继续在授权范围内定位、修复和重试。只有真实外部阻塞、方向冲突、环境不可用或无法补齐的证据缺口才可 `BLOCKED`，并必须列出已尝试动作和解除条件。
+遇到命令失败、测试失败、工具超时、文件事实与预期不符或实现偏差时，默认继续在授权范围内定位、修复和重试。浏览器页面、截图、DOM、网络或受支持会话仍可操作时，先自主查看、填写可见验证码、使用授权测试身份正常登录并刷新重试；“没有 token/验证码/登录态”本身不是阻塞证据。只有缺少用户秘密、MFA、真正人机验证、外部系统不可用、方向冲突或无法补齐的证据缺口才可 `BLOCKED`，并必须列出已尝试动作、真实工具结果、唯一解除条件和独立工作已穷尽证明。
 
 阶段性进展可以简短报告，但只要当前范围仍有安全且合规的可执行项，就不得以进展汇报结束任务。Sub Agent 的完成只关闭其子任务，父 Executor 必须核对产物并继续剩余项。
 
 ### 4.2 机器终态
 
-最后回复必须有且只有一条严格以 `ENGINE_TERMINAL ` 开头的物理末行。schema、任务等级、合法状态、字段组合和证据要求只以 `.codex/governance/terminal-contract.json` 为准，并通过对应公共 Validator。
+最后回复必须有且只有一条严格以 `ENGINE_TERMINAL ` 开头的物理末行。schema、任务等级、合法状态、字段组合和证据要求只以 `.codex/governance/terminal-contract.json` 为准，并通过对应公共 Validator。L/XL 的 `EXECUTION_SUBMITTED`、`TERMINAL_SYNC_SUBMITTED` 和 `BLOCKED` 必须报告授权/依赖驱动的 `work_items`、剩余 actionable 数、独立工作穷尽、精确 `next_action`、工具结果、浏览器状态、`progress_basis` 和 `progress_fingerprint`；仍有授权且依赖满足的 `PENDING/IN_PROGRESS` 项时，Validator 必须拒绝终态。运行时提交 `BLOCKED` 时，Stop Hook 还会要求 Harness 提供同一契约定义的 `execution_observations` 并核对工具结果、浏览器状态和进展指纹。
 
 - S/M 使用轻量完成终态，不要求 `product/` 回执或功能状态。
 - L/XL 实现完成后提交正式回执，等待 Planner 验收；终态同步使用独立同步终态。
 - 任意等级真实阻塞时使用契约允许的阻塞终态；L/XL 同时保留正式阻塞回执。
 
-Stop hook 如果只指出终态行格式错误，且实现、验证与应有产物已完成，只修正终态行，不重跑任务或重写总结。
+Stop hook 如果只指出终态行格式错误，且实现、验证与应有产物已完成，只修正终态行，不重跑任务或重写总结。原生 Codex 会话由宿主显式设置 `AGENT_CODING_ENGINE_ACTIVE_ROLE=executor` 后，经 `.codex/hooks/codex-stop-adapter.sh` 接入同一门禁；适配层只向宿主输出 `decision`/`reason`，保留 Engine 的扩展回执字段在内部路径。若门禁拒绝提前结束，Hook 必须通过公共 supervisor 回注链路给出下一原子动作；重复无进展时依次要求原子动作、切换路径和 supervisor 重规划，不能停止并等待用户点击继续。
 
 ### 4.3 证据纪律
 
