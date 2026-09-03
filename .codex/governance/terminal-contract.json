@@ -12,42 +12,113 @@
     "evidence": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
     "feature_status": {"type": "string", "enum": ["READY", "IN_PROGRESS", "VERIFYING", "PASSED", "COMPLETED"]},
     "memory_compression": {"type": "object", "additionalProperties": false, "required": ["before_bytes", "after_bytes"], "properties": {"before_bytes": {"type": "integer", "minimum": 0}, "after_bytes": {"type": "integer", "minimum": 0}}},
-    "block_type": {"type": "string", "enum": ["EXTERNAL", "DIRECTION_CONFLICT", "ENVIRONMENT", "EVIDENCE_GAP"]},
+    "block_type": {"type": "string", "enum": ["EXTERNAL", "DIRECTION_CONFLICT", "ENVIRONMENT", "EVIDENCE_GAP", "PERMISSION_DENIED", "CAPABILITY_UNAVAILABLE"]},
     "attempted": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
-    "release_condition": {"type": "string", "minLength": 1}
+    "release_condition": {"type": "string", "minLength": 1},
+    "work_items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "status", "authorized", "dependency_satisfied", "actionable", "next_action"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "status": {"type": "string", "enum": ["PENDING", "IN_PROGRESS", "COMPLETED", "BLOCKED"]},
+          "authorized": {"type": "boolean"},
+          "dependency_satisfied": {"type": "boolean"},
+          "actionable": {"type": "boolean"},
+          "next_action": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "remaining_actionable_count": {"type": "integer", "minimum": 0},
+    "independent_work_exhausted": {"type": "boolean"},
+    "next_action": {"type": "string", "minLength": 1},
+    "next_action_type": {"type": "string", "enum": ["CONTINUE", "WAIT_PLANNER", "WAIT_EXTERNAL", "REPLAN"]},
+    "progress_fingerprint": {"type": "string", "minLength": 1},
+    "progress_basis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["files_changed", "tool_actions", "new_evidence", "closed_work_items"],
+      "properties": {
+        "files_changed": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "tool_actions": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "new_evidence": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "closed_work_items": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "stop_reason": {"type": "string", "enum": ["WAITING_FOR_PLANNER", "EXTERNAL_DEPENDENCY", "DIRECTION_CONFLICT", "ENVIRONMENT_UNAVAILABLE", "EVIDENCE_GAP", "PERMISSION_DENIED", "CAPABILITY_UNAVAILABLE"]},
+    "tool_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["tool", "outcome", "detail"],
+        "properties": {
+          "tool": {"type": "string", "minLength": 1},
+          "outcome": {"type": "string", "enum": ["SUCCEEDED", "FAILED", "DENIED", "UNAVAILABLE", "TIMEOUT", "REQUIRES_SECRET", "REQUIRES_MFA", "REQUIRES_HUMAN_VERIFICATION"]},
+          "detail": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "browser_status": {"type": "string", "enum": ["NOT_APPLICABLE", "OPERABLE", "UNAVAILABLE", "REQUIRES_SECRET", "REQUIRES_MFA", "REQUIRES_HUMAN_VERIFICATION"]}
   },
   "states": {
     "TASK_COMPLETED": {
       "required": [],
       "allowed": ["schema", "role", "state", "task_level", "evidence"],
-      "forbidden": ["receipt", "feature_status", "memory_compression", "block_type", "attempted", "release_condition"],
+      "forbidden": ["receipt", "feature_status", "memory_compression", "block_type", "attempted", "release_condition", "work_items", "remaining_actionable_count", "independent_work_exhausted", "next_action", "next_action_type", "progress_fingerprint", "progress_basis", "stop_reason", "tool_results", "browser_status"],
       "allowedTaskLevels": ["S", "M"],
       "allowedFeatureStatus": [],
       "receiptRequiredTaskLevels": []
     },
     "EXECUTION_SUBMITTED": {
-      "required": ["receipt", "feature_status"],
-      "allowed": ["schema", "role", "state", "task_level", "receipt", "evidence", "feature_status"],
+      "required": ["receipt", "feature_status", "work_items", "remaining_actionable_count", "independent_work_exhausted", "next_action", "next_action_type", "progress_fingerprint", "progress_basis", "stop_reason", "tool_results", "browser_status"],
+      "allowed": ["schema", "role", "state", "task_level", "receipt", "evidence", "feature_status", "work_items", "remaining_actionable_count", "independent_work_exhausted", "next_action", "next_action_type", "progress_fingerprint", "progress_basis", "stop_reason", "tool_results", "browser_status"],
       "forbidden": ["memory_compression", "block_type", "attempted", "release_condition"],
       "allowedTaskLevels": ["L", "XL"],
       "allowedFeatureStatus": ["IN_PROGRESS", "VERIFYING"],
       "receiptRequiredTaskLevels": ["L", "XL"]
     },
     "TERMINAL_SYNC_SUBMITTED": {
-      "required": ["receipt", "feature_status", "memory_compression"],
-      "allowed": ["schema", "role", "state", "task_level", "receipt", "evidence", "feature_status", "memory_compression"],
+      "required": ["receipt", "feature_status", "memory_compression", "work_items", "remaining_actionable_count", "independent_work_exhausted", "next_action", "next_action_type", "progress_fingerprint", "progress_basis", "stop_reason", "tool_results", "browser_status"],
+      "allowed": ["schema", "role", "state", "task_level", "receipt", "evidence", "feature_status", "memory_compression", "work_items", "remaining_actionable_count", "independent_work_exhausted", "next_action", "next_action_type", "progress_fingerprint", "progress_basis", "stop_reason", "tool_results", "browser_status"],
       "forbidden": ["block_type", "attempted", "release_condition"],
       "allowedTaskLevels": ["L", "XL"],
       "allowedFeatureStatus": ["COMPLETED"],
       "receiptRequiredTaskLevels": ["L", "XL"]
     },
     "BLOCKED": {
-      "required": ["block_type", "attempted", "release_condition"],
-      "allowed": ["schema", "role", "state", "task_level", "receipt", "evidence", "block_type", "attempted", "release_condition"],
+      "required": ["block_type", "attempted", "release_condition", "work_items", "remaining_actionable_count", "independent_work_exhausted", "next_action", "next_action_type", "progress_fingerprint", "progress_basis", "stop_reason", "tool_results", "browser_status"],
+      "allowed": ["schema", "role", "state", "task_level", "receipt", "evidence", "block_type", "attempted", "release_condition", "work_items", "remaining_actionable_count", "independent_work_exhausted", "next_action", "next_action_type", "progress_fingerprint", "progress_basis", "stop_reason", "tool_results", "browser_status"],
       "forbidden": ["feature_status", "memory_compression"],
       "allowedTaskLevels": ["S", "M", "L", "XL"],
       "allowedFeatureStatus": [],
       "receiptRequiredTaskLevels": ["L", "XL"]
+    }
+  },
+  "behavioralRules": {
+    "actionableItem": "status is PENDING or IN_PROGRESS, authorized is true, dependency_satisfied is true, and actionable is true",
+    "submissionStatesRequireZeroActionable": true,
+    "blockedRequiresIndependentWorkExhausted": true,
+    "blockedRequiresToolResult": true,
+    "operableBrowserCannotBeExternalBlocker": true,
+    "permissionBlockRequiresDeniedToolResult": true,
+    "capabilityBlockRequiresUnavailableToolResult": true
+  },
+  "hookInput": {
+    "execution_observations": {
+      "optional": true,
+      "properties": ["browser_status", "tool_results", "progress_fingerprint"]
+    },
+    "progress_guard": {
+      "optional": true,
+      "properties": ["previous_fingerprint", "repeat_count", "observed_progress"]
+    },
+    "supervisor": {
+      "optional": true,
+      "properties": ["attempt", "max_attempts", "last_action"]
     }
   }
 }
