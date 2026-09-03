@@ -5,7 +5,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh \"$(git rev-parse --show-toplevel)/.codex/hooks/stop-execution-completeness.sh\""
+            "command": "engine_root=\"${CODEX_PROJECT_DIR:-${CLAUDE_PROJECT_DIR:-$PWD}}\"; while [ ! -f \"$engine_root/.codex/governance/stop-gate.sh\" ] && [ \"$engine_root\" != \"/\" ]; do engine_root=\"$(dirname \"$engine_root\")\"; done; [ -f \"$engine_root/.codex/governance/stop-gate.sh\" ] || exit 0; sh \"$engine_root/.codex/hooks/codex-stop-adapter.sh\""
           }
         ]
       }
