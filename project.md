@@ -16,7 +16,7 @@
   | 仓库 | 职责 | 开发入口 |
   |------|------|----------|
   | Smart-WorkFlow-Agent-Workspace（本仓库） | 项目规划、需求方向、回执、架构知识与工作区治理 | `system.md`、`knowledge/` |
-  | Smart-WorkFlow-sPaaS-server | Java 后端、数据库、认证授权、业务服务与 API | `Smart-WorkFlow-Server/README.md` |
+  | Smart-WorkFlow-aPaaS-server | Java 后端、数据库、认证授权、业务服务与 API | `Smart-WorkFlow-Server/README.md` |
   | Smart-WorkFlow-aPaaS-Web | Vue 前端、页面交互、前端架构与 API/Mock 开发模式 | `Smart-WorkFlow-Web/README.md` |
 
 ## 3. 工程规则
