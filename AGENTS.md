@@ -1,4 +1,4 @@
-# Smart-WorkFlow · Codex 入口
+# CH-aPaaS · Codex 入口
 
 本文件仅是 Codex Harness 入口，不定义独立治理规则。
 
