@@ -1,0 +1,21 @@
+== D2b-asset v5 完整发布段验证（命名步骤抽取、失败传播）==
+== workflow 副本: /usr/local/projects/Smart-WorkFlow/product/p59-ch-apaas-project-update/receipts/evidence-04/d2b-asset-web-workflow-f9dca42.yml ==
+== 源提交=f9dca42317e33fd31254ed38d6c28f34473d40e5 源blob=70cc773852786b3efa78a0c2b7146e6ea49608a8 文件sha256=f31aa7e4f672b4a4d19af3a01567435c0d651b50907f8a2db9835e6180c0081f ==
+== 场景=rerun S1=d1ad7719a44dbe50caa7915250697ac071a8bc08 S2=f9dca42317e33fd31254ed38d6c28f34473d40e5 ==
+== 抽取段: 17 物理行 ==
+== 抽取段末行: ["dist-${GITHUB_SHA}.zip"] ==
+78514fcd54b98201750c9ec12f2873fe6ce78bbd4ea61648030b9f136cac5b52  release-step.sh
+== 远端 main HEAD=f9dca42317e33fd31254ed38d6c28f34473d40e5
+预置: tag build-d1ad7719a44dbe50caa7915250697ac071a8bc08 -> d1ad7719a44dbe50caa7915250697ac071a8bc08（同提交重跑）
+== 样本产物: dist-d1ad7719a44dbe50caa7915250697ac071a8bc08.zip（      28 字节，非空）==
+== 发布段退出码: 0 ==
+== git/gh 调用序列 ==
+GIT_LSREMOTE_CALLED origin refs/tags/build-d1ad7719a44dbe50caa7915250697ac071a8bc08
+GH_CALL view build-d1ad7719a44dbe50caa7915250697ac071a8bc08
+GH_VIEW release_exists build-d1ad7719a44dbe50caa7915250697ac071a8bc08
+GH_CALL delete build-d1ad7719a44dbe50caa7915250697ac071a8bc08 --yes
+GH_DELETE release_only build-d1ad7719a44dbe50caa7915250697ac071a8bc08 (tag 保留)
+GH_CALL create build-d1ad7719a44dbe50caa7915250697ac071a8bc08 --target d1ad7719a44dbe50caa7915250697ac071a8bc08 --title CH-aPaaS-Web 0.0.0 build d1ad7719a44dbe50caa7915250697ac071a8bc08 --notes 自动构建产物（提交 d1ad7719a44dbe50caa7915250697ac071a8bc08，分支 main） dist-d1ad7719a44dbe50caa7915250697ac071a8bc08.zip
+GH_CREATE_OK_same_tag tag=build-d1ad7719a44dbe50caa7915250697ac071a8bc08 target=d1ad7719a44dbe50caa7915250697ac071a8bc08 assets=[ dist-d1ad7719a44dbe50caa7915250697ac071a8bc08.zip]
+== 结束时远端 tags ==
+d1ad7719a44dbe50caa7915250697ac071a8bc08	refs/tags/build-d1ad7719a44dbe50caa7915250697ac071a8bc08
