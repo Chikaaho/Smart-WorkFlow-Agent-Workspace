@@ -1,0 +1,35 @@
+===== C1b-1 比较方向与命令 =====
+附件 c1-main-retained-vs-aa9da33.txt 生成命令：
+  git -C /Users/chikan/.codex/worktrees/4428/Smart-WorkFlow diff --name-status HEAD aa9da33
+  （A=HEAD=29f7033 修复后；B=aa9da33 修复前基点）
+git diff A B 语义：D=仅A存在（A 有 B 无）→ 本附件 23 D = 29f7033 保留而 aa9da33 没有的文件，即 cece784 从 develop-sw 带入、修复时确认合法的内容；不是误删。
+
+===== C1b-2 25 项保留文件逐项存在+对象身份（HEAD=29f7033 完整 SHA: 29f70338d0390810e932bdd040e82956743d343b）=====
+存在 ✓ product/governance/supplemental-execution-prompt-template.md
+存在 ✓ product/p51-agent-coding-engine-decoupling/ready/direction-p51-agent-coding-engine-decoupling.md
+存在 ✓ product/p51-agent-coding-engine-decoupling/receipts/completion-p51-agent-coding-engine-decoupling.md
+存在 ✓ product/p51-agent-coding-engine-decoupling/receipts/planning-final-reconciliation-p51-main-terminal-authority-03.md
+存在 ✓ product/p51-agent-coding-engine-decoupling/receipts/planning-rereview-p51-main-current-state-02.md
+存在 ✓ product/p51-agent-coding-engine-decoupling/receipts/planning-review-p51-agent-coding-engine-decoupling-01.md
+存在 ✓ roles/executor.md
+存在 ✓ roles/planner.md
+存在 ✓ search_fallback/p51-branch-decoupling-exploration.md
+存在 ✓ search_fallback/p51-main-current-state-revalidation-evidence/01-refs-and-branches.txt
+存在 ✓ search_fallback/p51-main-current-state-revalidation-evidence/02-tracks-main-vs-develop.txt
+存在 ✓ search_fallback/p51-main-current-state-revalidation-evidence/03-scan-smw-absport-pi-zero-hits.txt
+存在 ✓ search_fallback/p51-main-current-state-revalidation-evidence/04-system-roles-per-commit.txt
+存在 ✓ search_fallback/p51-main-current-state-revalidation-evidence/05-governance-selfcheck.txt
+存在 ✓ search_fallback/p51-main-current-state-revalidation.md
+存在 ✓ search_fallback/p51-main-terminal-history-reconciliation-evidence/01-p51-tracked-files.txt
+存在 ✓ search_fallback/p51-main-terminal-history-reconciliation-evidence/02-file-headers-and-conclusions.txt
+存在 ✓ search_fallback/p51-main-terminal-history-reconciliation-evidence/03-commit-timeline.txt
+存在 ✓ search_fallback/p51-main-terminal-history-reconciliation-evidence/04-completed-authority.txt
+存在 ✓ search_fallback/p51-main-terminal-history-reconciliation-evidence/05-g04-g06-verdicts.txt
+存在 ✓ search_fallback/p51-main-terminal-history-reconciliation-evidence/06-tracked-83-vs-70.txt
+存在 ✓ search_fallback/p51-main-terminal-history-reconciliation.md
+存在 ✓ search_task/p51-branch-decoupling-exploration.md
+存在 ✓ search_task/p51-main-current-state-revalidation.md
+存在 ✓ search_task/p51-main-terminal-history-reconciliation.md
+
+与 cece784 内容一致性（diff cece784 HEAD，应空）：
+（空=全部与 cece784 逐字节一致）

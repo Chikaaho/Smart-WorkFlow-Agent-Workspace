@@ -1,0 +1,25 @@
+===== B1b-1 工作区（workdir=/usr/local/projects/Smart-WorkFlow，时间 2026-09-04 22:20:24 +0800）=====
+$ git remote -v
+origin	git@github.com:Chikaaho/Smart-WorkFlow-Agent-Workspace.git (fetch)
+origin	git@github.com:Chikaaho/Smart-WorkFlow-Agent-Workspace.git (push)
+
+$ git branch -vv（全部分支）
+  backup-main-20260831                    a8b1292 docs(readme): 统一三仓项目入口说明
+  codex/p51-continuation-gates            505fc83 feat(governance): 闭合执行代理自动续跑门禁
+  codex/p51-continuation-gates-develop-sw 5b44220 feat(governance): 闭合执行代理自动续跑门禁
+* develop-sw                              89a1a67 [origin/develop-sw: ahead 4] docs(p59): 首轮审查补充回执与证据附件（D1 修复完成、A1/B1/C1/D2/E2 补证）
++ main                                    29f7033 (/Users/chikan/.codex/worktrees/4428/Smart-WorkFlow) [origin/main: ahead 1] fix(workspace): 移除误并入 main 的 develop-sw 实例内容，恢复 Engine 通用定位
+
+$ git rev-parse 完整分支：
+  main = 29f70338d0390810e932bdd040e82956743d343b
+  develop-sw = 89a1a677e05a419a912a0c26a2e300b539b2086f
+
+$ git ls-remote origin（逐行原始）
+cece78474c37c552677770a3a249ce1e8e682a80	HEAD
+0712bb9ed2b888252d4d8be6fe431610e269ddc0	refs/heads/develop-sw
+cece78474c37c552677770a3a249ce1e8e682a80	refs/heads/main
+
+$ git rev-parse --abbrev-ref develop-sw@{upstream} 上游名
+origin/develop-sw
+$ git rev-parse --abbrev-ref main@{upstream} 上游名
+origin/main
