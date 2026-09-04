@@ -1,0 +1,28 @@
+===== C1b2-ex 历史保存点完整对象查询 =====
+工作目录: /usr/local/projects/Smart-WorkFlow
+查询时间: 2026-09-04 22:56:32 +0800
+
+--- 对象1: p57-bpm-node-extension.md ---
+$ git rev-parse b2311d72ad1eaa2ded00e1b2ea5252976bb986af:knowledge/features/p57-bpm-node-extension.md
+474b8e00440ae5229cdcee6123a27945a636aea7
+exit=0
+
+目标 blob（src, cece784）: 474b8e00440ae5229cdcee6123a27945a636aea7
+
+$ git merge-base --is-ancestor b2311d72ad1eaa2ded00e1b2ea5252976bb986af 0712bb9ed2b888252d4d8be6fe431610e269ddc0
+exit=0（0=可达）
+
+$ git cat-file -t 474b8e00440ae5229cdcee6123a27945a636aea7
+blob
+exit=0
+
+--- 对象2: session-handoff 归档 ---
+$ git rev-parse 0712bb9ed2b888252d4d8be6fe431610e269ddc0:knowledge/history/session-handoff-before-knowledge-full-reconciliation-20260904.md
+b9783c3844fcaafef3a3f28bf7c8c32e8c217841
+exit=0
+
+目标 blob（src, cece784）: b9783c3844fcaafef3a3f28bf7c8c32e8c217841
+
+$ git cat-file -t b9783c3844fcaafef3a3f28bf7c8c32e8c217841
+blob
+exit=0
