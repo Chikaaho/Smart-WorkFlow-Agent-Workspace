@@ -206,6 +206,6 @@
 ## 6. 链接与追踪
 
 - 当前状态权威：`knowledge/current-status.md`；清单：`Smart-WorkFlow-Server/功能清单.md`；问题注册：`knowledge/known-issues.md`；需求池：`todo/requirement-pool.md`
-- 任务登记：`knowledge/features/p59-ch-apaas-project-update.md`（P59 统一交付任务，COMPLETED 规划已确认，2026-09-05）；`knowledge/features/knowledge-full-reconciliation.md`（非业务功能，COMPLETED 已确认，历史）
+- 任务登记：`knowledge/features/p59-ch-apaas-project-update.md`（P59 统一交付任务，终态待 Planner 复核）；`knowledge/features/knowledge-full-reconciliation.md`（非业务功能，COMPLETED 已确认，历史）
 - 会议交接：`knowledge/session-handoff.md`（已压缩，原 P57 时点全文见 `knowledge/history/session-handoff-before-knowledge-full-reconciliation-20260904.md`）
 - 本索引建立于审计账本 A—E（`product/knowledge-full-reconciliation/receipts/`），原件仅供追溯
