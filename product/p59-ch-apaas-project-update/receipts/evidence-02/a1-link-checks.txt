@@ -1,0 +1,25 @@
+===== A1-4 链接检查：workdir=/usr/local/projects/Smart-WorkFlow =====
+$ grep -nE "git clone|cd Smart|Smart-WorkFlow-(Agent|sPaaS|aPaaS)" README.md
+24:| Smart-WorkFlow-Agent-Workspace（本仓库） | 项目规划、需求方向、回执、架构知识与工作区治理 | [`system.md`](system.md)、[`knowledge/`](knowledge/architecture.md) |
+25:| Smart-WorkFlow-sPaaS-server | Java 后端、数据库、认证授权、业务服务与 API | [`Smart-WorkFlow-Server/README.md`](Smart-WorkFlow-Server/README.md) |
+26:| Smart-WorkFlow-aPaaS-Web | Vue 前端、页面交互、前端架构与 API/Mock 开发模式 | [`Smart-WorkFlow-Web/README.md`](Smart-WorkFlow-Web/README.md) |
+31:Smart-WorkFlow-aPaaS-Web (:5173)
+35:Smart-WorkFlow-sPaaS-server (:8080/api)
+46:git clone git@github.com:Chikaaho/Smart-WorkFlow-Agent-Workspace.git
+50:cd Smart-WorkFlow-Agent-Workspace
+56:git clone git@github.com:Chikaaho/Smart-WorkFlow-sPaaS-server.git
+60:git clone git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-Web.git
+
+$ grep -nE "Smart-WorkFlow-(Agent|sPaaS|aPaaS)" project.md
+18:  | Smart-WorkFlow-Agent-Workspace（本仓库） | 项目规划、需求方向、回执、架构知识与工作区治理 | `system.md`、`knowledge/` |
+19:  | Smart-WorkFlow-sPaaS-server | Java 后端、数据库、认证授权、业务服务与 API | `Smart-WorkFlow-Server/README.md` |
+20:  | Smart-WorkFlow-aPaaS-Web | Vue 前端、页面交互、前端架构与 API/Mock 开发模式 | `Smart-WorkFlow-Web/README.md` |
+
+$ test -f 链接目标（相对路径解析）
+存在 ✓ Smart-WorkFlow-Server/README.md
+存在 ✓ Smart-WorkFlow-Web/README.md
+存在 ✓ system.md
+存在 ✓ knowledge/architecture.md
+
+$ 旧名残留扫描（应无输出）
+exit=1

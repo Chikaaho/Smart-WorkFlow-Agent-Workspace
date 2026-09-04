@@ -1,0 +1,26 @@
+===== B1b-2 后端（workdir=/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server，时间 2026-09-04 22:20:37 +0800）=====
+$ git remote -v
+origin	git@github.com:Chikaaho/Smart-WorkFlow-sPaaS-server.git (fetch)
+origin	git@github.com:Chikaaho/Smart-WorkFlow-sPaaS-server.git (push)
+
+$ git -C Smart-WorkFlow-Server branch -vv（全部分支）
+  backup-develop-20260831 758bcad docs(readme): 重构后端项目入口
+* develop                 fca198d [origin/develop: ahead 1] docs(readme): 项目名称更新为 CH-aPaaS，仓库名同步 Smart-WorkFlow-sPaaS-server
++ main                    946c0fe (/private/tmp/p59-server-main) [origin/main: ahead 3] ci(server): 修正可执行 jar 定位以匹配 main 的 finalName=bootstrap 产物
+
+$ git rev-parse 完整分支：
+  main = 946c0fee86e8b89549709e3e0bd3291d4cf937fd
+  develop = fca198ddd1fa03978a2013b1533ea4a93d2813ff
+
+$ git ls-remote origin（逐行原始）
+e0e899d1d79a297d9d98d924d21b1ba544a787c2	HEAD
+11612df019deb15d2cd6c224c8b9cb8543c4edce	refs/heads/develop
+e0e899d1d79a297d9d98d924d21b1ba544a787c2	refs/heads/main
+80ebc777d284a8f2ab4806c2455d6aeb088dae2f	refs/tags/v0.0.1
+4b05036aae98e02a40f7d2acad44855506e44ea8	refs/tags/v0.0.1^{}
+9f0fba94b1ad47328b498a76560a1213d183261e	refs/tags/v0.0.1-beta
+d55ecc611aa20dcf3277bde99df6694aa1c01ae0	refs/tags/v0.0.1-beta^{}
+
+$ 上游名：
+origin/develop
+origin/main
