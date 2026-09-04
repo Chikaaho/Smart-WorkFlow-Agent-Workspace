@@ -1,9 +1,9 @@
 # 功能摘要
 
-> 规划侧最新同步点：2026-09-05（P59 终态修正：任务状态 COMPLETED，确认进度规划已确认）；正式功能数与基线仍以 `knowledge/current-status.md` 为准。
+> 规划侧最新同步点：2026-09-05（P59 终态修正：任务状态 COMPLETED，确认进度阶段三待复核）；正式功能数与基线仍以 `knowledge/current-status.md` 为准。
 > 2026-09-04 知识库全量整理：清单当前值为 **✅34/🟦28/⬜28**（五行 ⬜→🟦，其余 85 行不变）；功能数 41 不变；全量双向映射见 `knowledge/feature-reconciliation-index.md`。
 
-- `p59-ch-apaas-project-update`：**任务状态 COMPLETED**；**确认进度：规划已确认（2026-09-05）**；非新增业务功能（41＋0）；**P59 已核销**；功能级验收 PASSED（2026-09-04，审查07）保留为历史；最终裁决 `planning-final-review-p59-terminal-sync-02-passed.md`；说明/仓库/main 整理及真实自动发版已验收，三个示例仅记录；41 及正式业务基线不变。
+- `p59-ch-apaas-project-update`：**任务状态 COMPLETED**；**确认进度：阶段三待 Planner 复核**（不得声称已确认）；非新增业务功能（41＋0）；**P59 已核销**；功能级验收 PASSED（2026-09-04，审查07）保留为历史；终态修正回执 `terminal-sync-02.md`；说明/仓库/main 整理及真实自动发版已验收，三个示例仅记录；41 及正式业务基线不变。
 
 - `knowledge-full-reconciliation`（非业务功能任务）：**COMPLETED（已确认，2026-09-04）**，三方向归档 `passed/`（裁决 `planning-final-review-terminal-sync-02-passed.md`）。
 

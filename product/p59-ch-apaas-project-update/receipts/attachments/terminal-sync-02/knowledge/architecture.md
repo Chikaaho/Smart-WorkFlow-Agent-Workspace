@@ -256,7 +256,7 @@ locales/         — 国际化（zh-CN）
 
 Walking Skeleton 四环已全部闭合 ✅。正式业务功能已确认 **41 个**（P58 为第 41 个，2026-09-04 已确认）：早期批处理（system-mgmt-crud、bpm-task-center、storage-multi-provider、job-scheduler、kb-verification 等）直至 P52—P58 系列均已闭环；完整清单见 `knowledge/current-status.md` 与 `knowledge/feature-reconciliation-index.md`。（更新 2026-09-04 知识库全量整理同步）
 
-当前无活动业务功能；`knowledge-full-reconciliation`（知识库全量整理，非业务功能）已 **COMPLETED（已确认，2026-09-04）**；P59（ch-apaas-project-update，非新增业务功能统一交付）**COMPLETED（规划已确认，2026-09-05）**。当前状态权威见 `knowledge/current-status.md`。
+当前无活动业务功能；`knowledge-full-reconciliation`（知识库全量整理，非业务功能）已 **COMPLETED（已确认，2026-09-04）**；P59（ch-apaas-project-update，非新增业务功能统一交付）功能级 PASSED，阶段三终态待 Planner 复核。当前状态权威见 `knowledge/current-status.md`。
 
 工作区自身的元架构（规划层/执行层三方角色边界、规划层内部探索模型/规划模型分工、`product/`+`todo/`+`knowledge/` 的原始记忆/压缩记忆分层）已固化为 `system.md` §0.3/§0.4/§11.2、`roles/planner.md` §4（规划写入范围）/§8（记忆分层）与 `shared-constraints.md` §9 的硬约束，本文件只覆盖 Smart-WorkFlow **产品系统**架构，不重复记录工作区元架构。
 

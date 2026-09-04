@@ -5,11 +5,9 @@
 > 每条必须可追溯（known-issues 编号 / 清单行 / 方向文档）。通常只做索引；Owner 直接补充且尚未形成正式方向的产品边界，可在对应 P 编号下暂存可验收定义，后续选为正式功能时再收敛进方向文档。既有问题与实现现状的权威来源为 `knowledge/known-issues.md`、`Smart-WorkFlow-Server/功能清单.md`、`knowledge/current-status.md` 与 `knowledge/feature-reconciliation-index.md`（全量对账索引）；历史探索回执（如 D83 相关）仅作追溯，不再作为当前缺口明细权威。
 > 与 `todo/README.md` 的分工：README=已拍板"暂不修复"的决策速查；本文件=需要投入资源的待办候选。
 
-> 2026-09-05 选题整理：[功能与待办概览](requirements-review-20260905.md)（90 条明细模块统计、37 个开放 P 编号分组及候选比较；供讨论，尚未指定新的活动功能）。
-
 ## Owner 优先级覆盖
 
-**2026-09-05 最新完成任务**：**P59 CH-aPaaS 项目说明、仓库与 main 分支整理及自动发版**，**COMPLETED（规划已确认），已核销**。T1/T2终态差异已核销，两个方向归档passed；裁决 `product/p59-ch-apaas-project-update/receipts/planning-final-review-p59-terminal-sync-02-passed.md`。实现/发布、功能数41、90条明细及业务基线保持锁定。当前无活动业务/交付任务，下一动作：等待Owner新需求。
+**2026-09-05 Owner 当前任务**：**P59 CH-aPaaS 项目说明、仓库与 main 分支整理及自动发版**（**任务状态 COMPLETED**，已核销）。**确认进度：阶段三待 Planner 复核**（不得声称已确认）；功能级 PASSED（2026-09-04，审查07）保留为历史。首轮终态复核退回的 T1/T2 文档差异已修正，补充回执 `product/p59-ch-apaas-project-update/receipts/terminal-sync-02.md`；唯一下一动作：**Planner 复核该回执，确认 P59 终态**；实现/发布、41及业务基线保持锁定。
 
 下段知识整理为前轮同步快照，其最终 `COMPLETED（已确认）` 裁决见 `product/knowledge-full-reconciliation/receipts/planning-final-review-terminal-sync-02-passed.md`；旧复核下一动作不再适用，knowledge 入口已按裁决回填（2026-09-04）。
 
@@ -74,7 +72,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 | P56 | 表单设计器 24 列网格布局 | Owner 2026-09-02 补充需求；优先级 P1 | ✅ **已核销/完成**（2026-09-02，功能级 PASSED + 阶段三 `COMPLETED（已确认）`；M03-F01-01 升✅、P46 一并完成核销、功能数 39、清单 ✅34/🟦23/⬜33） |
 | P57 | BPM Engine 统一流程节点扩展能力 | Owner 2026-09-02 补充需求；优先级 P1；XL | ✅ **已核销/完成**（2026-09-03，功能级 PASSED + 阶段三 `COMPLETED（已确认）`；不对应既有明细、90 项明细状态零变化、功能数 40、清单 ✅34/🟦23/⬜33）；主方向与阶段三方向均已归档 `passed/` |
 | P58 | 流程节点界面与具体能力优化 | Owner 2026-09-02/03 补充需求；优先级 P1；XL | ✅ **已核销/完成**（2026-09-04，功能级 PASSED + 阶段三 `COMPLETED（已确认）`；不对应既有明细、90 项明细状态零变化、功能数 41、清单 ✅34/🟦23/⬜33、基线 1035/0/0/0（152份Surefire报告）、117f+1sk/1110t+3sk、H2 V49（49）/PG V49（48））；主方向与开发调试认证方向均已归档 `passed/` |
-| P59 | CH-aPaaS 项目说明、仓库与 main 分支整理及自动发版；三个示例仅记录 | Owner 2026-09-04；[统一需求](ch-apaas-project-update.md) | ✅ **已核销/完成**（**COMPLETED，规划已确认，2026-09-05**；功能级PASSED为2026-09-04审查07；非新增业务功能，功能数41、90明细与基线不变）；主方向及终态同步方向均归档 `passed/` |
+| P59 | CH-aPaaS 项目说明、仓库与 main 分支整理及自动发版；三个示例仅记录 | Owner 2026-09-04；[统一需求](ch-apaas-project-update.md) | ✅ **已核销/完成**（**任务状态 COMPLETED**；**确认进度：阶段三待 Planner 复核**，尚未由 Planner 终态确认；功能级 PASSED（2026-09-04，审查07）为历史；非新增业务功能，功能数 41、90 明细与基线不变）；主方向已归档 `passed/` |
 
 
 ### P51 Owner 补充需求定义（2026-08-30）
@@ -521,4 +519,4 @@ P45已完成规划功能级验收与阶段三终态复核，正式状态为 **`C
 - **P13**：池内无行（knowledge/features/sysrole-v5-column-alignment.md 确认已闭环核销，合规移除）；**P23**：全工作区零引用（备案，不重建）。
 - **D83 stub 引用**：维护规则 §5 已改为池内行级证据为准（原四份 stub 引用已失效）。
 - **T 编号**：todo/README 当前集合 T2—T9（T1/T10 已删除），§维护规则中 T1-T10 引用已更正为 T2-T9。
-- **知识整理终态**：已由 `planning-final-review-terminal-sync-02-passed.md` 裁决 **COMPLETED（已确认，2026-09-04）**。P59亦已终态确认（2026-09-05）。**当前统一下一动作**：等待Owner新需求；历史下一动作不再作为待办。
+- **知识整理终态**：已由 `planning-final-review-terminal-sync-02-passed.md` 裁决 **COMPLETED（已确认，2026-09-04）**，原复核下一动作已核销。**当前统一下一动作**：Planner 复核 `product/p59-ch-apaas-project-update/receipts/terminal-sync-02.md` 确认 P59 终态；历史下一动作不再作为待办。

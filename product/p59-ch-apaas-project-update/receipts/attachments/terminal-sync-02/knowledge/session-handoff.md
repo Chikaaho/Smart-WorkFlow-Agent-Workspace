@@ -1,6 +1,6 @@
 # 会话交接（session-handoff）— 当前压缩版
 
-> 同步点：2026-09-05，P59 阶段三终态 **COMPLETED（规划已确认）**。历史时点全文存档：`knowledge/history/session-handoff-before-knowledge-full-reconciliation-20260904.md`（哈希 770bf2c41363b33bfd09e1856234f669d11746bbaf43398d841b5ff55b1b620c，P57 时点原件）。历史 P57/P36 候选指令不保留在当前交接，仅留追溯指针。
+> 同步点：2026-09-05，P59 阶段三终态同步修正（任务状态 COMPLETED，确认进度：阶段三待 Planner 复核）。历史时点全文存档：`knowledge/history/session-handoff-before-knowledge-full-reconciliation-20260904.md`（哈希 770bf2c41363b33bfd09e1856234f669d11746bbaf43398d841b5ff55b1b620c，P57 时点原件）。历史 P57/P36 候选指令不保留在当前交接，仅留追溯指针。
 
 ## 当前唯一值（P59 终态同步方向）
 
@@ -14,9 +14,9 @@
 | 前端基线 | 117 files passed + 1 skipped / 1110 tests passed + 3 skipped；lint 47 warnings/0 errors |
 | Flyway | H2 V49（49）/ PG V49（48），全链退出 0 |
 | 验证基线变更集合 | 空集 `{}`；P59 main 构建 957 与发布运行是分支限定证据，不覆盖 develop 正式业务基线 |
-| 当前任务状态 | `p59-ch-apaas-project-update`：**任务状态 COMPLETED**；**确认进度：规划已确认（2026-09-05）**（最终裁决 `receipts/planning-final-review-p59-terminal-sync-02-passed.md`）；功能级验收 PASSED（2026-09-04，审查07）保留为历史 |
+| 当前任务状态 | `p59-ch-apaas-project-update`：**任务状态 COMPLETED**；**确认进度：阶段三待 Planner 复核**（不得声称 Planner 已确认 COMPLETED）；功能级验收 PASSED（2026-09-04，审查07）保留为历史；终态修正回执 `receipts/terminal-sync-02.md` |
 | 活动业务实现功能 | 无 |
-| 唯一下一动作 | 等待 Owner 新需求（不自动选择下一业务需求） |
+| 唯一下一动作 | Planner 复核 `product/p59-ch-apaas-project-update/receipts/terminal-sync-02.md`，确认 P59 终态 |
 
 ## P59 发布时点唯一事实（2026-09-04 已验收发布时点，不要求后续 ref 永久停在该 SHA）
 
@@ -42,7 +42,7 @@
 
 ## 任务指针
 
-- P59：主方向与终态同步方向均归档 `product/p59-ch-apaas-project-update/passed/`；任务登记 `knowledge/features/p59-ch-apaas-project-update.md`；最终裁决 `receipts/planning-final-review-p59-terminal-sync-02-passed.md`（COMPLETED 规划已确认）
+- P59：主方向已归档 `product/p59-ch-apaas-project-update/passed/`；终态同步方向 `ready/direction-p59-ch-apaas-project-update-terminal-sync.md`（Planner 复核通过后归档）；任务登记 `knowledge/features/p59-ch-apaas-project-update.md`
 - `knowledge-full-reconciliation`：**COMPLETED（已确认，2026-09-04）**（最终裁决 `receipts/planning-final-review-terminal-sync-02-passed.md`）；三方向均归档 `product/knowledge-full-reconciliation/passed/`；该任务回执与账本（terminal-sync-01、sync-b-01 及 correction 链、full-audit-01、audit-ledger-{a..e} 等）为历史追溯
 - 映射索引：`knowledge/feature-reconciliation-index.md`（主索引）+ `feature-reconciliation-issues.md`（54 I 逐项）+ `feature-reconciliation-products.md`（55 目录逐项）；90 明细/56 唯一 P/54 I/55 product 目录双向映射；41 为历史正式功能计数勿混淆
 - 必读入口：`knowledge/current-status.md`、`Smart-WorkFlow-Server/功能清单.md`、`knowledge/known-issues.md`、`todo/requirement-pool.md`、本交接
