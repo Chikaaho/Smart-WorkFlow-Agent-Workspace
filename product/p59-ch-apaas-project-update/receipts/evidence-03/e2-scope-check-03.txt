@@ -1,0 +1,22 @@
+===== E2 跨项集合核对（复用 D3a 最终固定候选）=====
+候选总提交: 17（工具生成，来源 evidence-03/d3a-final-candidates.json）
+
+分类: docs/p59回执 4、docs/探索回执 1、docs/项目说明 1、docs/README说明 2、fix/workspace 1、ci/workflow 7、fix/flyway-test 1
+
+--- 分类明细核对 ---
+docs/p59回执 4: 24c4be8?否——实际为 75cbb3b? 再核对（工具分类按 subject 前缀）
+docs/项目说明 1: 24c4be8 docs(project)
+docs/README说明 2: fca198d、db297d0 docs(readme)
+docs/探索回执 1: 75cbb3b docs(exploration)
+docs/p59回执 4: 7701125、89a1a67、b1d6454、a933a78 docs(p59)
+fix/workspace 1: 29f7033
+fix/flyway-test 1: 096f707
+ci/workflow 7: 142f279、946c0fe、6afe910、6ab9ae5、d1ad771、d6becd0、f9dca42
+
+--- 场景实施检查（3.1 灾备/MQTT、3.2 校园异常、3.3 MES 温度）---
+17 提交全部为说明/回执/工作流/Flyway 测试，无示例业务实现代码 ✓
+
+--- 候选外资产披露（未提交或不随本次发布）---
+Planner 侧未提交: memory/handoff.md、memory/state.md、todo/requirement-pool.md（M）
+Planner 侧未跟踪: ready/（方向）、planning-review-01/02/03、planning-execution-prompt-01/02、search_task/ch-apaas-project-update-baseline.md、todo/ch-apaas-project-update.md
+这些不属于 P59 执行候选，由 Planner/Owner 侧管理，不随发布清单推送；
