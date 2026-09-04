@@ -1,0 +1,548 @@
+13:51:20.220 [main] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- Detected a Darwin aarch64 system
+13:51:20.223 [main] INFO io.zonky.test.db.postgres.embedded.DefaultPostgresBinaryResolver -- Detected distribution: 'Unknown'
+13:51:20.224 [main] INFO io.zonky.test.db.postgres.embedded.DefaultPostgresBinaryResolver -- System specific postgres binaries found: 'postgres-darwin-arm_64.txz'
+13:51:20.315 [main] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- Postgres binaries at /var/folders/bj/b_8gswn94js1733mt9xtckn80000gn/T/embedded-pg/PG-5008f6c2eb051303352e7a787473c109
+13:51:20.381 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- The files belonging to this database system will be owned by user "chikan".
+13:51:20.381 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- This user must also own the server process.
+13:51:20.381 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 
+13:51:20.382 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- The database cluster will be initialized with locale "C.UTF-8".
+13:51:20.382 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- The default text search configuration will be set to "english".
+13:51:20.382 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 
+13:51:20.382 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- Data page checksums are disabled.
+13:51:20.382 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 
+13:51:20.382 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- fixing permissions on existing directory /var/folders/bj/b_8gswn94js1733mt9xtckn80000gn/T/epg8327704845135136801 ... ok
+13:51:20.383 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- creating subdirectories ... ok
+13:51:20.383 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- selecting dynamic shared memory implementation ... posix
+13:51:20.437 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- selecting default "max_connections" ... 100
+13:51:20.455 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- selecting default "shared_buffers" ... 128MB
+13:51:20.457 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- selecting default time zone ... Asia/Shanghai
+13:51:20.458 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- creating configuration files ... ok
+13:51:20.619 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- running bootstrap script ... ok
+13:51:21.035 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- performing post-bootstrap initialization ... ok
+13:51:21.061 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- syncing data to disk ... ok
+13:51:21.061 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 
+13:51:21.061 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- Success. You can now start the database server using:
+13:51:21.061 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 
+13:51:21.062 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres --     /var/folders/bj/b_8gswn94js1733mt9xtckn80000gn/T/embedded-pg/PG-5008f6c2eb051303352e7a787473c109/bin/pg_ctl -D /var/folders/bj/b_8gswn94js1733mt9xtckn80000gn/T/epg8327704845135136801 -l logfile start
+13:51:21.062 [initdb:pid(53678)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 
+13:51:21.062 [main] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 639c2ea3-15e1-45d3-80eb-97081602d1f9 initdb completed in 00:00:00.745
+13:51:21.069 [main] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 639c2ea3-15e1-45d3-80eb-97081602d1f9 postmaster started as Process[pid=53688, exitValue="not exited"] on port 53287.  Waiting up to PT10S for server startup to finish.
+13:51:21.105 [postgres:pid(53688)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- waiting for server to start....2026-09-04 13:51:21.105 CST [53690] LOG:  starting PostgreSQL 17.5 on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.6), 64-bit
+13:51:21.108 [postgres:pid(53688)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-09-04 13:51:21.108 CST [53690] LOG:  listening on IPv6 address "::1", port 53287
+13:51:21.108 [postgres:pid(53688)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-09-04 13:51:21.108 CST [53690] LOG:  listening on IPv4 address "127.0.0.1", port 53287
+13:51:21.108 [postgres:pid(53688)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-09-04 13:51:21.108 CST [53690] LOG:  listening on Unix socket "<system-temp>/.s.PGSQL.53287"
+13:51:21.111 [postgres:pid(53688)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-09-04 13:51:21.111 CST [53693] LOG:  database system was shut down at 2026-09-04 13:51:21 CST
+13:51:21.113 [postgres:pid(53688)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-09-04 13:51:21.113 CST [53690] LOG:  database system is ready to accept connections
+13:51:21.196 [postgres:pid(53688)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres --  done
+13:51:21.196 [postgres:pid(53688)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- server started
+13:51:21.343 [main] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 639c2ea3-15e1-45d3-80eb-97081602d1f9 postmaster startup finished in 00:00:00.277
+13:51:21.533 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:postgresql://localhost:53287/postgres?user=postgres (PostgreSQL 17.5)
+13:51:21.590 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Schema history table "public"."flyway_schema_history" does not exist yet
+13:51:21.593 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 48 migrations (execution time 00:00.043s)
+13:51:21.601 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Creating Schema History table "public"."flyway_schema_history" ...
+13:51:21.632 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Current version of schema "public": << Empty Schema >>
+13:51:21.647 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "1 - init schema"
+13:51:21.695 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "2 - init data"
+13:51:21.717 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "3 - external datasource"
+13:51:21.729 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "4 - seed system data"
+13:51:21.736 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "5 - m seam rbac"
+13:51:21.756 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "6 - m seam menu seed"
+13:51:21.763 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "7 - init form metadata"
+13:51:21.774 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "8 - init bpm metadata"
+13:51:21.782 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "9 - init notify message"
+13:51:21.788 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "10 - add dict menu"
+13:51:21.791 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "11 - fix system menu to directory"
+13:51:21.794 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "12 - upgrade form config to per table"
+13:51:21.800 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "13 - logical delete unique constraints"
+13:51:21.809 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "14 - add process def"
+13:51:21.816 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "15 - system mgmt menu"
+13:51:21.820 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "16 - init storage file"
+13:51:21.827 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "17 - init job tables"
+13:51:21.838 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "18 - init refresh token table"
+13:51:21.843 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "19 - init agent model config"
+13:51:21.849 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "20 - init agent tool config"
+13:51:21.856 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "21 - init agent session"
+13:51:21.861 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "22 - init agent message"
+13:51:21.867 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "23 - init agent tool call log"
+13:51:21.871 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "24 - alter agent model config multikey"
+13:51:21.875 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "25 - init agent graph def"
+13:51:21.880 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "26 - agent graph menu seed"
+13:51:21.883 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "27 - init agent graph execution"
+13:51:21.888 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "28 - init agent graph execution node"
+13:51:21.894 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "29 - job storage menu seed"
+13:51:21.897 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "30 - sys role dept"
+13:51:21.901 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "31 - admin role governance"
+13:51:21.907 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "32 - sys user post"
+13:51:21.910 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "33 - agent model menu seed"
+13:51:21.914 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "34 - sys user group"
+13:51:21.919 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "35 - agent token usage"
+13:51:21.923 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "36 - init agent graph debug session"
+13:51:21.931 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "37 - agent tool menu seed"
+13:51:21.934 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "38 - notify template and menu"
+13:51:21.939 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "39 - notify batch send permission"
+13:51:21.942 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "40 - init iot device command"
+13:51:21.948 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "42 - iot device identity upgrade"
+13:51:21.955 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "43 - form data import export permission"
+13:51:21.958 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "44 - workflow child menus"
+13:51:21.962 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "45 - system crud button perms"
+13:51:21.966 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "46 - drop lowcode naming"
+13:51:21.971 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "47 - p52 workbench operation perms"
+13:51:21.976 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "48 - p58 notify channels"
+13:51:21.982 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "49 - p58 workflow node capabilities"
+13:51:21.991 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Successfully applied 48 migrations to schema "public", now at version v49 (execution time 00:00.172s)
+13:51:22.046 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:postgresql://localhost:53287/postgres?user=postgres (PostgreSQL 17.5)
+13:51:22.068 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 48 migrations (execution time 00:00.017s)
+13:51:22.093 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:postgresql://localhost:53287/postgres?user=postgres (PostgreSQL 17.5)
+13:51:22.217 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:postgresql://localhost:53287/upgrade_chain?user=postgres (PostgreSQL 17.5)
+13:51:22.236 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Schema history table "public"."flyway_schema_history" does not exist yet
+13:51:22.237 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 48 migrations (execution time 00:00.017s)
+13:51:22.240 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Creating Schema History table "public"."flyway_schema_history" ...
+13:51:22.252 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Current version of schema "public": << Empty Schema >>
+13:51:22.257 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "1 - init schema"
+13:51:22.277 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "2 - init data"
+13:51:22.288 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "3 - external datasource"
+13:51:22.296 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "4 - seed system data"
+13:51:22.300 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "5 - m seam rbac"
+13:51:22.315 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "6 - m seam menu seed"
+13:51:22.320 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "7 - init form metadata"
+13:51:22.329 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "8 - init bpm metadata"
+13:51:22.336 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "9 - init notify message"
+13:51:22.341 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "10 - add dict menu"
+13:51:22.343 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "11 - fix system menu to directory"
+13:51:22.345 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "12 - upgrade form config to per table"
+13:51:22.349 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "13 - logical delete unique constraints"
+13:51:22.366 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "14 - add process def"
+13:51:22.371 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "15 - system mgmt menu"
+13:51:22.374 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "16 - init storage file"
+13:51:22.380 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "17 - init job tables"
+13:51:22.389 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "18 - init refresh token table"
+13:51:22.393 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "19 - init agent model config"
+13:51:22.398 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "20 - init agent tool config"
+13:51:22.404 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "21 - init agent session"
+13:51:22.409 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "22 - init agent message"
+13:51:22.413 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "23 - init agent tool call log"
+13:51:22.418 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "24 - alter agent model config multikey"
+13:51:22.421 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "25 - init agent graph def"
+13:51:22.426 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "26 - agent graph menu seed"
+13:51:22.430 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "27 - init agent graph execution"
+13:51:22.435 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "28 - init agent graph execution node"
+13:51:22.440 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "29 - job storage menu seed"
+13:51:22.443 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "30 - sys role dept"
+13:51:22.447 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "31 - admin role governance"
+13:51:22.452 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "32 - sys user post"
+13:51:22.455 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Successfully applied 32 migrations to schema "public", now at version v32 (execution time 00:00.109s)
+13:51:22.468 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:postgresql://localhost:53287/upgrade_chain?user=postgres (PostgreSQL 17.5)
+13:51:22.483 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 48 migrations (execution time 00:00.013s)
+13:51:22.489 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Current version of schema "public": 32
+13:51:22.490 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "33 - agent model menu seed"
+13:51:22.495 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "34 - sys user group"
+13:51:22.503 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "35 - agent token usage"
+13:51:22.507 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "36 - init agent graph debug session"
+13:51:22.516 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "37 - agent tool menu seed"
+13:51:22.520 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "38 - notify template and menu"
+13:51:22.525 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "39 - notify batch send permission"
+13:51:22.529 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "40 - init iot device command"
+13:51:22.535 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "42 - iot device identity upgrade"
+13:51:22.542 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "43 - form data import export permission"
+13:51:22.545 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "44 - workflow child menus"
+13:51:22.549 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "45 - system crud button perms"
+13:51:22.553 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "46 - drop lowcode naming"
+13:51:22.557 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "47 - p52 workbench operation perms"
+13:51:22.560 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "48 - p58 notify channels"
+13:51:22.566 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "49 - p58 workflow node capabilities"
+13:51:22.573 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Successfully applied 16 migrations to schema "public", now at version v49 (execution time 00:00.039s)
+13:51:22.596 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 48 migrations (execution time 00:00.015s)
+13:51:22.758 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:postgresql://localhost:53287/legacy_original_checksum?user=postgres (PostgreSQL 17.5)
+13:51:22.778 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Schema history table "public"."flyway_schema_history" does not exist yet
+13:51:22.778 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 48 migrations (execution time 00:00.017s)
+13:51:22.786 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Creating Schema History table "public"."flyway_schema_history" ...
+13:51:22.804 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Current version of schema "public": << Empty Schema >>
+13:51:22.807 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "1 - init schema"
+13:51:22.870 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "2 - init data"
+13:51:22.886 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "3 - external datasource"
+13:51:22.897 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "4 - seed system data"
+13:51:22.906 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "5 - m seam rbac"
+13:51:22.930 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "6 - m seam menu seed"
+13:51:22.935 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "7 - init form metadata"
+13:51:22.944 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "8 - init bpm metadata"
+13:51:22.951 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "9 - init notify message"
+13:51:22.955 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "10 - add dict menu"
+13:51:22.957 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "11 - fix system menu to directory"
+13:51:22.959 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "12 - upgrade form config to per table"
+13:51:22.963 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "13 - logical delete unique constraints"
+13:51:22.973 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "14 - add process def"
+13:51:22.979 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "15 - system mgmt menu"
+13:51:22.982 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "16 - init storage file"
+13:51:22.989 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "17 - init job tables"
+13:51:22.999 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "18 - init refresh token table"
+13:51:23.004 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "19 - init agent model config"
+13:51:23.010 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "20 - init agent tool config"
+13:51:23.017 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "21 - init agent session"
+13:51:23.022 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "22 - init agent message"
+13:51:23.027 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "23 - init agent tool call log"
+13:51:23.033 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "24 - alter agent model config multikey"
+13:51:23.036 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "25 - init agent graph def"
+13:51:23.041 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "26 - agent graph menu seed"
+13:51:23.044 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "27 - init agent graph execution"
+13:51:23.052 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "28 - init agent graph execution node"
+13:51:23.057 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "29 - job storage menu seed"
+13:51:23.060 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "30 - sys role dept"
+13:51:23.065 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "31 - admin role governance"
+13:51:23.072 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "32 - sys user post"
+13:51:23.076 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "33 - agent model menu seed"
+13:51:23.079 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "34 - sys user group"
+13:51:23.085 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "35 - agent token usage"
+13:51:23.088 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "36 - init agent graph debug session"
+13:51:23.096 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "37 - agent tool menu seed"
+13:51:23.099 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "38 - notify template and menu"
+13:51:23.104 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "39 - notify batch send permission"
+13:51:23.106 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "40 - init iot device command"
+13:51:23.112 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "42 - iot device identity upgrade"
+13:51:23.118 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "43 - form data import export permission"
+13:51:23.120 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "44 - workflow child menus"
+13:51:23.124 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "45 - system crud button perms"
+13:51:23.128 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "46 - drop lowcode naming"
+13:51:23.131 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "47 - p52 workbench operation perms"
+13:51:23.136 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "48 - p58 notify channels"
+13:51:23.142 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "49 - p58 workflow node capabilities"
+13:51:23.150 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Successfully applied 48 migrations to schema "public", now at version v49 (execution time 00:00.199s)
+13:51:23.168 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:postgresql://localhost:53287/legacy_original_checksum?user=postgres (PostgreSQL 17.5)
+[S3-production] PostgreSQL V39 menu=(218,batch-send,notify/views/NotifyBatchSend,notify:batch:send), button=(219,notify:batch:send), ordinaryRole=(id=2,code=admin,built_in=false) boundMenu=219, queryExit=0
+13:51:23.416 [pg_ctl:pid(53750)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- waiting for server to shut down.... done
+13:51:23.416 [pg_ctl:pid(53750)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- server stopped
+13:51:23.416 [main] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 639c2ea3-15e1-45d3-80eb-97081602d1f9 shut down postmaster in 00:00:00.215
+13:51:23.850 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:h2:mem:flyway_full_chain (H2 2.3)
+13:51:23.879 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Schema history table "PUBLIC"."flyway_schema_history" does not exist yet
+13:51:23.880 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 49 migrations (execution time 00:00.025s)
+13:51:23.883 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Creating Schema History table "PUBLIC"."flyway_schema_history" ...
+13:51:23.892 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Current version of schema "PUBLIC": << Empty Schema >>
+13:51:23.894 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "1 - init schema"
+13:51:23.914 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "2 - init data"
+13:51:23.928 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "3 - external datasource"
+13:51:23.936 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "4 - seed system data"
+13:51:23.941 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "5 - m seam rbac"
+13:51:24.048 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "6 - m seam menu seed"
+13:51:24.053 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "7 - init form metadata"
+13:51:24.067 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "8 - init bpm metadata"
+13:51:24.075 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "9 - init notify message"
+13:51:24.084 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "10 - add dict menu"
+13:51:24.087 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "11 - fix system menu to directory"
+13:51:24.089 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "12 - upgrade form config to per table"
+13:51:24.094 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "13 - logical delete unique constraints"
+13:51:24.099 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "14 - add process def"
+13:51:24.102 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "15 - system mgmt menu"
+13:51:24.104 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "16 - init storage file"
+13:51:24.107 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "17 - init job tables"
+13:51:24.110 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "18 - init refresh token table"
+13:51:24.114 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "19 - init agent model config"
+13:51:24.118 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "20 - init agent tool config"
+13:51:24.122 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "21 - init agent session"
+13:51:24.125 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "22 - init agent message"
+13:51:24.127 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "23 - init agent tool call log"
+13:51:24.130 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "24 - alter agent model config multikey"
+13:51:24.137 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "25 - init agent graph def"
+13:51:24.139 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "26 - agent graph menu seed"
+13:51:24.141 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "27 - init agent graph execution"
+13:51:24.144 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "28 - init agent graph execution node"
+13:51:24.147 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "29 - job storage menu seed"
+13:51:24.149 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "30 - sys role dept"
+13:51:24.153 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "31 - admin role governance"
+13:51:24.161 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "32 - sys user post"
+13:51:24.164 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "33 - agent model menu seed"
+13:51:24.168 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "34 - sys user group"
+13:51:24.173 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "35 - agent token usage"
+13:51:24.181 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "36 - init agent graph debug session"
+13:51:24.183 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "37 - agent tool menu seed"
+13:51:24.185 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "38 - notify template and menu"
+13:51:24.188 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "39 - notify batch send permission"
+13:51:24.191 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "40 - init iot device command"
+13:51:24.193 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "41 - form definition json to clob"
+13:51:24.198 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "42 - iot device identity upgrade"
+13:51:24.211 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "43 - form data import export permission"
+13:51:24.214 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "44 - workflow child menus"
+13:51:24.217 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "45 - system crud button perms"
+13:51:24.221 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "46 - drop lowcode naming"
+13:51:24.223 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "47 - p52 workbench operation perms"
+13:51:24.227 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "48 - p58 notify channels"
+13:51:24.232 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "49 - p58 workflow node capabilities"
+13:51:24.234 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Successfully applied 49 migrations to schema "PUBLIC", now at version v49 (execution time 00:00.201s)
+13:51:24.262 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:h2:mem:flyway_upgrade_v35 (H2 2.3)
+13:51:24.277 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Schema history table "PUBLIC"."flyway_schema_history" does not exist yet
+13:51:24.277 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 49 migrations (execution time 00:00.014s)
+13:51:24.278 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Creating Schema History table "PUBLIC"."flyway_schema_history" ...
+13:51:24.279 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Current version of schema "PUBLIC": << Empty Schema >>
+13:51:24.281 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "1 - init schema"
+13:51:24.286 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "2 - init data"
+13:51:24.290 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "3 - external datasource"
+13:51:24.293 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "4 - seed system data"
+13:51:24.295 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "5 - m seam rbac"
+13:51:24.308 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "6 - m seam menu seed"
+13:51:24.311 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "7 - init form metadata"
+13:51:24.314 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "8 - init bpm metadata"
+13:51:24.317 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "9 - init notify message"
+13:51:24.318 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "10 - add dict menu"
+13:51:24.320 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "11 - fix system menu to directory"
+13:51:24.321 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "12 - upgrade form config to per table"
+13:51:24.324 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "13 - logical delete unique constraints"
+13:51:24.326 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "14 - add process def"
+13:51:24.328 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "15 - system mgmt menu"
+13:51:24.330 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "16 - init storage file"
+13:51:24.332 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "17 - init job tables"
+13:51:24.334 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "18 - init refresh token table"
+13:51:24.335 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "19 - init agent model config"
+13:51:24.337 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "20 - init agent tool config"
+13:51:24.338 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "21 - init agent session"
+13:51:24.339 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "22 - init agent message"
+13:51:24.340 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "23 - init agent tool call log"
+13:51:24.341 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "24 - alter agent model config multikey"
+13:51:24.345 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "25 - init agent graph def"
+13:51:24.346 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "26 - agent graph menu seed"
+13:51:24.348 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "27 - init agent graph execution"
+13:51:24.349 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "28 - init agent graph execution node"
+13:51:24.351 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "29 - job storage menu seed"
+13:51:24.352 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "30 - sys role dept"
+13:51:24.353 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "31 - admin role governance"
+13:51:24.357 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "32 - sys user post"
+13:51:24.358 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "33 - agent model menu seed"
+13:51:24.359 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Successfully applied 33 migrations to schema "PUBLIC", now at version v33 (execution time 00:00.023s)
+13:51:24.368 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:h2:mem:flyway_upgrade_v35 (H2 2.3)
+13:51:24.384 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 49 migrations (execution time 00:00.015s)
+13:51:24.385 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Current version of schema "PUBLIC": 33
+13:51:24.386 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "34 - sys user group"
+13:51:24.388 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "35 - agent token usage"
+13:51:24.393 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "36 - init agent graph debug session"
+13:51:24.394 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "37 - agent tool menu seed"
+13:51:24.396 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "38 - notify template and menu"
+13:51:24.398 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "39 - notify batch send permission"
+13:51:24.400 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "40 - init iot device command"
+13:51:24.401 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "41 - form definition json to clob"
+13:51:24.403 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "42 - iot device identity upgrade"
+13:51:24.413 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "43 - form data import export permission"
+13:51:24.414 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "44 - workflow child menus"
+13:51:24.416 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "45 - system crud button perms"
+13:51:24.419 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "46 - drop lowcode naming"
+13:51:24.420 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "47 - p52 workbench operation perms"
+13:51:24.423 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "48 - p58 notify channels"
+13:51:24.427 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "49 - p58 workflow node capabilities"
+13:51:24.428 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Successfully applied 16 migrations to schema "PUBLIC", now at version v49 (execution time 00:00.015s)
+13:51:24.442 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 49 migrations (execution time 00:00.010s)
+13:51:24.453 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:h2:mem:flyway_v34_semantics (H2 2.3)
+13:51:24.463 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Schema history table "PUBLIC"."flyway_schema_history" does not exist yet
+13:51:24.464 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 49 migrations (execution time 00:00.010s)
+13:51:24.464 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Creating Schema History table "PUBLIC"."flyway_schema_history" ...
+13:51:24.465 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Current version of schema "PUBLIC": << Empty Schema >>
+13:51:24.467 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "1 - init schema"
+13:51:24.472 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "2 - init data"
+13:51:24.478 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "3 - external datasource"
+13:51:24.481 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "4 - seed system data"
+13:51:24.482 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "5 - m seam rbac"
+13:51:24.493 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "6 - m seam menu seed"
+13:51:24.495 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "7 - init form metadata"
+13:51:24.498 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "8 - init bpm metadata"
+13:51:24.500 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "9 - init notify message"
+13:51:24.501 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "10 - add dict menu"
+13:51:24.501 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "11 - fix system menu to directory"
+13:51:24.502 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "12 - upgrade form config to per table"
+13:51:24.504 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "13 - logical delete unique constraints"
+13:51:24.506 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "14 - add process def"
+13:51:24.507 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "15 - system mgmt menu"
+13:51:24.509 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "16 - init storage file"
+13:51:24.510 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "17 - init job tables"
+13:51:24.511 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "18 - init refresh token table"
+13:51:24.512 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "19 - init agent model config"
+13:51:24.514 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "20 - init agent tool config"
+13:51:24.515 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "21 - init agent session"
+13:51:24.517 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "22 - init agent message"
+13:51:24.518 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "23 - init agent tool call log"
+13:51:24.519 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "24 - alter agent model config multikey"
+13:51:24.522 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "25 - init agent graph def"
+13:51:24.523 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "26 - agent graph menu seed"
+13:51:24.525 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "27 - init agent graph execution"
+13:51:24.526 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "28 - init agent graph execution node"
+13:51:24.527 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "29 - job storage menu seed"
+13:51:24.528 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "30 - sys role dept"
+13:51:24.530 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "31 - admin role governance"
+13:51:24.533 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "32 - sys user post"
+13:51:24.534 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "33 - agent model menu seed"
+13:51:24.535 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "34 - sys user group"
+13:51:24.537 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "35 - agent token usage"
+13:51:24.540 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "36 - init agent graph debug session"
+13:51:24.542 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "37 - agent tool menu seed"
+13:51:24.543 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "38 - notify template and menu"
+13:51:24.545 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "39 - notify batch send permission"
+13:51:24.546 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "40 - init iot device command"
+13:51:24.548 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "41 - form definition json to clob"
+13:51:24.551 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "42 - iot device identity upgrade"
+13:51:24.559 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "43 - form data import export permission"
+13:51:24.560 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "44 - workflow child menus"
+13:51:24.562 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "45 - system crud button perms"
+13:51:24.565 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "46 - drop lowcode naming"
+13:51:24.566 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "47 - p52 workbench operation perms"
+13:51:24.568 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "48 - p58 notify channels"
+13:51:24.572 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "49 - p58 workflow node capabilities"
+13:51:24.573 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Successfully applied 49 migrations to schema "PUBLIC", now at version v49 (execution time 00:00.029s)
+13:51:24.593 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 49 migrations (execution time 00:00.011s)
+13:51:24.619 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:h2:mem:flyway_upgrade_v35a (H2 2.3)
+13:51:24.629 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Schema history table "PUBLIC"."flyway_schema_history" does not exist yet
+13:51:24.629 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 49 migrations (execution time 00:00.009s)
+13:51:24.629 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Creating Schema History table "PUBLIC"."flyway_schema_history" ...
+13:51:24.630 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Current version of schema "PUBLIC": << Empty Schema >>
+13:51:24.632 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "1 - init schema"
+13:51:24.636 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "2 - init data"
+13:51:24.639 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "3 - external datasource"
+13:51:24.641 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "4 - seed system data"
+13:51:24.642 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "5 - m seam rbac"
+13:51:24.650 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "6 - m seam menu seed"
+13:51:24.652 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "7 - init form metadata"
+13:51:24.654 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "8 - init bpm metadata"
+13:51:24.655 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "9 - init notify message"
+13:51:24.656 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "10 - add dict menu"
+13:51:24.656 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "11 - fix system menu to directory"
+13:51:24.657 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "12 - upgrade form config to per table"
+13:51:24.659 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "13 - logical delete unique constraints"
+13:51:24.661 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "14 - add process def"
+13:51:24.662 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "15 - system mgmt menu"
+13:51:24.662 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "16 - init storage file"
+13:51:24.664 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "17 - init job tables"
+13:51:24.665 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "18 - init refresh token table"
+13:51:24.666 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "19 - init agent model config"
+13:51:24.667 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "20 - init agent tool config"
+13:51:24.668 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "21 - init agent session"
+13:51:24.669 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "22 - init agent message"
+13:51:24.670 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "23 - init agent tool call log"
+13:51:24.670 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "24 - alter agent model config multikey"
+13:51:24.673 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "25 - init agent graph def"
+13:51:24.674 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "26 - agent graph menu seed"
+13:51:24.675 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "27 - init agent graph execution"
+13:51:24.676 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "28 - init agent graph execution node"
+13:51:24.677 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "29 - job storage menu seed"
+13:51:24.677 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "30 - sys role dept"
+13:51:24.679 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "31 - admin role governance"
+13:51:24.682 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "32 - sys user post"
+13:51:24.682 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Successfully applied 32 migrations to schema "PUBLIC", now at version v32 (execution time 00:00.011s)
+13:51:24.692 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:h2:mem:flyway_upgrade_v35a (H2 2.3)
+13:51:24.704 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 49 migrations (execution time 00:00.010s)
+13:51:24.704 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Current version of schema "PUBLIC": 32
+13:51:24.705 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "33 - agent model menu seed"
+13:51:24.706 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "34 - sys user group"
+13:51:24.707 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "35 - agent token usage"
+13:51:24.710 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "36 - init agent graph debug session"
+13:51:24.712 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "37 - agent tool menu seed"
+13:51:24.713 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "38 - notify template and menu"
+13:51:24.714 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "39 - notify batch send permission"
+13:51:24.716 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "40 - init iot device command"
+13:51:24.717 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "41 - form definition json to clob"
+13:51:24.718 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "42 - iot device identity upgrade"
+13:51:24.725 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "43 - form data import export permission"
+13:51:24.726 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "44 - workflow child menus"
+13:51:24.728 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "45 - system crud button perms"
+13:51:24.731 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "46 - drop lowcode naming"
+13:51:24.733 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "47 - p52 workbench operation perms"
+13:51:24.736 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "48 - p58 notify channels"
+13:51:24.740 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "49 - p58 workflow node capabilities"
+13:51:24.741 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Successfully applied 17 migrations to schema "PUBLIC", now at version v49 (execution time 00:00.010s)
+13:51:24.757 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 49 migrations (execution time 00:00.012s)
+13:51:24.776 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:h2:mem:flyway_l10_v36 (H2 2.3)
+13:51:24.790 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Schema history table "PUBLIC"."flyway_schema_history" does not exist yet
+13:51:24.791 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 49 migrations (execution time 00:00.013s)
+13:51:24.791 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Creating Schema History table "PUBLIC"."flyway_schema_history" ...
+13:51:24.793 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Current version of schema "PUBLIC": << Empty Schema >>
+13:51:24.795 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "1 - init schema"
+13:51:24.801 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "2 - init data"
+13:51:24.804 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "3 - external datasource"
+13:51:24.806 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "4 - seed system data"
+13:51:24.808 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "5 - m seam rbac"
+13:51:24.820 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "6 - m seam menu seed"
+13:51:24.822 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "7 - init form metadata"
+13:51:24.825 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "8 - init bpm metadata"
+13:51:24.826 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "9 - init notify message"
+13:51:24.827 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "10 - add dict menu"
+13:51:24.828 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "11 - fix system menu to directory"
+13:51:24.829 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "12 - upgrade form config to per table"
+13:51:24.831 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "13 - logical delete unique constraints"
+13:51:24.832 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "14 - add process def"
+13:51:24.834 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "15 - system mgmt menu"
+13:51:24.835 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "16 - init storage file"
+13:51:24.836 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "17 - init job tables"
+13:51:24.837 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "18 - init refresh token table"
+13:51:24.838 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "19 - init agent model config"
+13:51:24.839 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "20 - init agent tool config"
+13:51:24.840 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "21 - init agent session"
+13:51:24.841 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "22 - init agent message"
+13:51:24.842 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "23 - init agent tool call log"
+13:51:24.843 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "24 - alter agent model config multikey"
+13:51:24.846 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "25 - init agent graph def"
+13:51:24.848 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "26 - agent graph menu seed"
+13:51:24.849 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "27 - init agent graph execution"
+13:51:24.850 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "28 - init agent graph execution node"
+13:51:24.851 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "29 - job storage menu seed"
+13:51:24.852 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "30 - sys role dept"
+13:51:24.854 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "31 - admin role governance"
+13:51:24.856 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "32 - sys user post"
+13:51:24.858 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "33 - agent model menu seed"
+13:51:24.859 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "34 - sys user group"
+13:51:24.860 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "35 - agent token usage"
+13:51:24.864 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "36 - init agent graph debug session"
+13:51:24.866 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Successfully applied 36 migrations to schema "PUBLIC", now at version v36 (execution time 00:00.020s)
+13:51:24.887 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:h2:mem:flyway_l10_v36 (H2 2.3)
+13:51:24.897 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 49 migrations (execution time 00:00.010s)
+13:51:24.898 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Current version of schema "PUBLIC": 36
+13:51:24.899 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "37 - agent tool menu seed"
+13:51:24.900 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "38 - notify template and menu"
+13:51:24.901 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "39 - notify batch send permission"
+13:51:24.902 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "40 - init iot device command"
+13:51:24.904 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "41 - form definition json to clob"
+13:51:24.906 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "42 - iot device identity upgrade"
+13:51:24.913 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "43 - form data import export permission"
+13:51:24.914 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "44 - workflow child menus"
+13:51:24.920 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "45 - system crud button perms"
+13:51:24.923 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "46 - drop lowcode naming"
+13:51:24.924 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "47 - p52 workbench operation perms"
+13:51:24.926 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "48 - p58 notify channels"
+13:51:24.929 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "49 - p58 workflow node capabilities"
+13:51:24.931 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Successfully applied 13 migrations to schema "PUBLIC", now at version v49 (execution time 00:00.009s)
+[S3-production] H2 V39 menu=(218,batch-send,notify/views/NotifyBatchSend,notify:batch:send), button=(219,notify:batch:send), ordinaryRole=(id=2,code=admin,built_in=false) boundMenu=219, queryExit=0
+[L10] V36→链尾 独立升级: 起点=36, 终点=49, 执行迁移数=13, 耗时=177ms, 查询退出=0
+13:51:24.955 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:h2:mem:flyway_p24_conflict (H2 2.3)
+13:51:24.966 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Schema history table "PUBLIC"."flyway_schema_history" does not exist yet
+13:51:24.966 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 49 migrations (execution time 00:00.010s)
+13:51:24.966 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Creating Schema History table "PUBLIC"."flyway_schema_history" ...
+13:51:24.967 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Current version of schema "PUBLIC": << Empty Schema >>
+13:51:24.969 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "1 - init schema"
+13:51:24.973 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "2 - init data"
+13:51:24.977 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "3 - external datasource"
+13:51:24.978 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "4 - seed system data"
+13:51:24.981 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "5 - m seam rbac"
+13:51:24.989 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "6 - m seam menu seed"
+13:51:24.992 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "7 - init form metadata"
+13:51:24.995 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "8 - init bpm metadata"
+13:51:24.997 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "9 - init notify message"
+13:51:24.998 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "10 - add dict menu"
+13:51:24.998 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "11 - fix system menu to directory"
+13:51:24.999 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "12 - upgrade form config to per table"
+13:51:25.001 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "13 - logical delete unique constraints"
+13:51:25.003 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "14 - add process def"
+13:51:25.005 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "15 - system mgmt menu"
+13:51:25.006 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "16 - init storage file"
+13:51:25.007 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "17 - init job tables"
+13:51:25.008 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "18 - init refresh token table"
+13:51:25.009 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "19 - init agent model config"
+13:51:25.011 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "20 - init agent tool config"
+13:51:25.011 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "21 - init agent session"
+13:51:25.012 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "22 - init agent message"
+13:51:25.014 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "23 - init agent tool call log"
+13:51:25.015 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "24 - alter agent model config multikey"
+13:51:25.018 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "25 - init agent graph def"
+13:51:25.019 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "26 - agent graph menu seed"
+13:51:25.020 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "27 - init agent graph execution"
+13:51:25.021 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "28 - init agent graph execution node"
+13:51:25.022 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "29 - job storage menu seed"
+13:51:25.022 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "30 - sys role dept"
+13:51:25.023 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Successfully applied 30 migrations to schema "PUBLIC", now at version v30 (execution time 00:00.012s)
+13:51:25.030 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:h2:mem:flyway_p24_conflict (H2 2.3)
+13:51:25.041 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 49 migrations (execution time 00:00.010s)
+13:51:25.041 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Current version of schema "PUBLIC": 30
+13:51:25.042 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "31 - admin role governance"
+13:51:25.051 [main] ERROR org.flywaydb.core.internal.command.DbMigrate -- Migration of schema "PUBLIC" to version "31 - admin role governance" failed! Please restore backups and roll back database and code!
+SANITIZATION_RULE=one non-secret embedded-PostgreSQL Unix socket system-temp path is rendered as <system-temp>; all other captured stdout/stderr bytes are retained
+RAW_CAPTURE_METADATA=the following is the complete merged terminal stream of the Flyway command recorded in the F3 manifest

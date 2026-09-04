@@ -1,0 +1,107 @@
+GAP_ID=F2
+CAPTURE_DATE=2026-09-04
+ENVIRONMENT=isolated development H2 runtime; source was built after the participant snapshot cancellation fix
+FIX_UNDER_TEST=ConsensusTaskListener reads task-local participantId with process fallback and does not overwrite native multi-instance assignee; ConsensusNodeTranslator binds each child userTask assignee to ${participantId}
+
+[source snapshot]
+server_HEAD=2bffd94dd060f32fd19adee5a7c77192c84bfbfe2
+server_working_diff_fingerprint=ab9b43a7c0372f3f8a8af5aad45d64e9a80cb1c028b1dc40e29f0984d8f1b76c
+fix_file_hashes=ConsensusTaskListener.java=be5c3f13e5060cd9c4cd733795fcb82fd907ebe0fd2568a70a87a33f2ed48b7f; ConsensusNodeTranslator.java=48cf2688c1bd1c29855f19cbb52fe30056d220e5fc99f551e7be461638671019; ParticipantSnapshotRecorderImpl.java=c2f54901ee3728af698ec8869f0b2036d559ca70247f1dfa252774eb2a49cdb2
+build_command=MAVEN_OPTS='-Xmx2g' mvn -q install -DskipTests
+build_exit=0
+focused_command=MAVEN_OPTS='-Xmx2g' mvn -q -pl sw-biz/sw-bpm/sw-bpm-engine -am -Dtest=GraphToBpmnTranslatorTest,ConsensusCompletionEvaluatorTest -Dsurefire.failIfNoSpecifiedTests=false test
+focused_exit=0
+
+[ordinary candidate: current runtime]
+definition_id=2095727781886922753
+process_key=bpm_774a40be0b9b4f70
+process_name=P58 F2R 普通候选运行流程 07B
+deployment_id=7e000249-a817-11f1-97a5-66ff24301f3c
+flowable_procdef_id=bpm_774a40be0b9b4f70:1:7e099f3c-a817-11f1-97a5-66ff24301f3c
+form_key=p58_f2_runtime3
+form_table=sw_form_bp9m0eanof
+record_business_key=88f71374-58ef-4c32-80a5-76beba7a7e0a
+process_instance_id=82376a6d-a817-11f1-97a5-66ff24301f3c
+business_instance_id=2095727866490228738
+node_key=node_middle
+participant_model=one shared candidate task, not duplicated child tasks
+shared_task_id=8237918a-a817-11f1-97a5-66ff24301f3c
+candidate_operator=2095723938134462465
+candidate_viewer=2095723938126073859
+opinion_form={"formId":"F2R_OPINION","version":"1","fields":[{"key":"approvalRemark","label":"审批备注","type":"TEXTAREA","required":true}]}
+
+RAW_HTTP:
+  POST /api/form/data/p58_f2_runtime3 requestId=f2r-ordinary07b-submit-20260904-07
+  HTTP/1.1 200
+  {"code":0,"msg":"success","data":"88f71374-58ef-4c32-80a5-76beba7a7e0a"}
+  GET /api/workflow/tasks/8237918a-a817-11f1-97a5-66ff24301f3c requestId=f2r-ordinary07b-task-detail-before-20260904-07
+  HTTP/1.1 200; assignee=null; candidates=[2095723938134462465,2095723938126073859]; opinionForm=F2R_OPINION/v1/approvalRemark/required
+  POST /api/workflow/tasks/8237918a-a817-11f1-97a5-66ff24301f3c/complete requestId=f2r-ordinary07b-op-complete-20260904-07
+  HTTP/1.1 200
+  {"code":0,"msg":"success","data":null}
+  GET /api/workflow/tasks/todo?pageNum=1&pageSize=20 requestId=f2r-ordinary07b-todo-op-after-20260904-07 -> HTTP/1.1 200; total=0
+  GET /api/workflow/tasks/todo?pageNum=1&pageSize=20 requestId=f2r-ordinary07b-todo-view-after-20260904-07 -> HTTP/1.1 200; total=0
+  GET /api/workflow/instances/82376a6d-a817-11f1-97a5-66ff24301f3c requestId=f2r-ordinary07b-instance-after-20260904-07 -> HTTP/1.1 200; status=APPROVED; activeNodeIds=[]
+  POST /api/workflow/tasks/8237918a-a817-11f1-97a5-66ff24301f3c/complete requestId=f2r-ordinary07b-replay-20260904-07
+  HTTP/1.1 200
+  {"code":2305,"msg":"节点已被处理","data":null}
+
+RAW_ORDINARY_ACTION=action_id=2095727954264428546; actor=2095723938134462465; task=8237918a-a817-11f1-97a5-66ff24301f3c; action=APPROVE; formId=F2R_OPINION; version=1; opinion={"approvalRemark":"F2R ordinary 07B independent opinion"}; settlement=APPROVED
+RAW_ORDINARY_ACCESS=submit=f2r-ordinary07b-submit-20260904-07/status=200; complete=f2r-ordinary07b-op-complete-20260904-07/status=200; replay=f2r-ordinary07b-replay-20260904-07/status=200/code=2305
+RAW_ORDINARY_NEGATIVE=the viewer has no todo after operator settlement; replay creates no action; process activeNodeIds=[]
+
+[consensus ANY: current runtime with three native child tasks]
+definition_id=2095727430542659585
+process_key=bpm_d13907e8360b42bb
+process_name=P58 F2R 三人 ANY 运行流程 07B
+deployment_id=4b48eb39-a817-11f1-97a5-66ff24301f3c
+flowable_procdef_id=bpm_d13907e8360b42bb:1:4b48eb39-a817-11f1-97a5-66ff24301f3c
+form_key=p58_f2_runtime3
+record_business_key=2e7e5640-1172-4455-b4d0-dc08eed45d79
+process_instance_id=5219c2ed-a817-11f1-97a5-66ff24301f3c
+business_instance_id=2095727527967952898
+node_key=node_middle
+mode=ANY
+required_votes=1
+task_ids=operator:521a1125-a817-11f1-97a5-66ff24301f3c; viewer:521a865b-a817-11f1-97a5-66ff24301f3c; third:521aad70-a817-11f1-97a5-66ff24301f3c
+child_execution_ids=operator:5219ea0d-a817-11f1-97a5-66ff24301f3c; viewer:5219ea0e-a817-11f1-97a5-66ff24301f3c; third:5219ea0f-a817-11f1-97a5-66ff24301f3c
+participants=operator:2095723938134462465; viewer:2095723938126073859; third:2095723938126073858
+
+RAW_HTTP:
+  POST /api/form/data/p58_f2_runtime3 requestId=f2r-any07b-submit-20260904-07
+  HTTP/1.1 200
+  {"code":0,"msg":"success","data":"2e7e5640-1172-4455-b4d0-dc08eed45d79"}
+  POST /api/workflow/tasks/521a1125-a817-11f1-97a5-66ff24301f3c/complete requestId=f2r-any07b-op-complete-20260904-07
+  HTTP/1.1 200
+  {"code":0,"msg":"success","data":null}
+  GET /api/workflow/tasks/todo?pageNum=1&pageSize=20 requestId=f2r-any07b-todo-op-after-20260904-07 -> HTTP/1.1 200; total=0
+  GET /api/workflow/tasks/todo?pageNum=1&pageSize=20 requestId=f2r-any07b-todo-view-after-20260904-07 -> HTTP/1.1 200; total=0
+  GET /api/workflow/tasks/todo?pageNum=1&pageSize=20 requestId=f2r-any07b-todo-third-after-20260904-07 -> HTTP/1.1 200; total=0
+  GET /api/workflow/instances/5219c2ed-a817-11f1-97a5-66ff24301f3c requestId=f2r-any07b-instance-after-20260904-07 -> HTTP/1.1 200; status=APPROVED; activeNodeIds=[]
+  POST /api/workflow/tasks/521a1125-a817-11f1-97a5-66ff24301f3c/complete requestId=f2r-any07b-replay-20260904-07
+  HTTP/1.1 200
+  {"code":2305,"msg":"节点已被处理","data":null}
+
+RAW_ANY_ACTION=action_id=2095727595198451713; actor=2095723938134462465; task=521a1125-a817-11f1-97a5-66ff24301f3c; action=APPROVE; formId=DEFAULT_REMARK; version=1; opinion={"comment":"F2R ANY 07B operator independent opinion"}; settlement=APPROVED
+RAW_ANY_ACCESS=submit=f2r-any07b-submit-20260904-07/status=200; complete=f2r-any07b-op-complete-20260904-07/status=200; replay=f2r-any07b-replay-20260904-07/status=200/code=2305
+
+[raw candidate snapshot SQL and Flowable rows]
+SNAPSHOT_UPDATE_INVALIDATE=UPDATE sw_bpm_participant_snapshot SET participant_status = ?, invalid_reason = ? WHERE deleted = 0 AND (process_instance_id = ? AND node_key = ? AND participant_status = ? AND tenant_id = ? AND participant_id <> ?) AND tenant_id = 0
+SNAPSHOT_UPDATE_INVALIDATE_PARAMS=INVALIDATED(String), 节点已由 2095723938134462465 以 APPROVE 处理(String), 5219c2ed-a817-11f1-97a5-66ff24301f3c(String), node_middle(String), PENDING(String), 0(Long), 2095723938134462465(String)
+SNAPSHOT_UPDATE_HANDLED=UPDATE sw_bpm_participant_snapshot SET participant_status = ?, invalid_reason = ? WHERE deleted = 0 AND (process_instance_id = ? AND node_key = ? AND task_id = ? AND participant_id = ? AND participant_status = ? AND tenant_id = ?) AND tenant_id = 0
+SNAPSHOT_UPDATE_HANDLED_PARAMS=HANDLED(String), APPROVE(String), 5219c2ed-a817-11f1-97a5-66ff24301f3c(String), node_middle(String), 521a1125-a817-11f1-97a5-66ff24301f3c(String), 2095723938134462465(String), PENDING(String), 0(Long)
+SNAPSHOT_AFTER_ROWS=operator participantId=2095723938134462465 taskId=521a1125-a817-11f1-97a5-66ff24301f3c status=HANDLED cancelReason=APPROVE; viewer participantId=2095723938126073859 taskId=521a865b-a817-11f1-97a5-66ff24301f3c status=INVALIDATED cancelReason=节点已由 2095723938134462465 以 APPROVE 处理; third participantId=2095723938126073858 taskId=521aad70-a817-11f1-97a5-66ff24301f3c status=INVALIDATED cancelReason=节点已由 2095723938134462465 以 APPROVE 处理
+FLOWABLE_ACTIVE_TASKS_AFTER=0
+FLOWABLE_CHILD_TASK_ROWS=operator task=521a1125-a817-11f1-97a5-66ff24301f3c execution=5219ea0d-a817-11f1-97a5-66ff24301f3c; viewer task=521a865b-a817-11f1-97a5-66ff24301f3c execution=5219ea0e-a817-11f1-97a5-66ff24301f3c; third task=521aad70-a817-11f1-97a5-66ff24301f3c execution=5219ea0f-a817-11f1-97a5-66ff24301f3c
+FLOWABLE_TRACE_AFTER=three distinct node_middle task rows ended; instance status=APPROVED; activeNodeIds=[]
+
+[locked RATIO66 baseline, not reopened]
+CASE=RATIO66; definition_id=2095697141518917633; process_key=bpm_ea714066b49047c4; instance=78fca76a-a806-11f1-b273-66ff24301f3c; total=3; threshold=66%; required=ceil(3*66/100)=2; approvals=2; final=APPROVED; activeTasks=0; actions=2
+RATIO66_BOUNDARY=The last snapshot fix is directly exercised by the current ANY three-child runtime above; the previously accepted RATIO66 matrix remains locked and was not redundantly rerun.
+
+[assertions]
+ASSERT_ORDINARY=one shared candidate task settled once; both candidate todo queries are empty; replay code=2305; status=APPROVED; activeNodeIds=[]
+ASSERT_ANY=one approval settled process; all three native child task IDs are distinct; one HANDLED plus two INVALIDATED snapshots; all three todo queries empty; replay code=2305; status=APPROVED; activeNodeIds=[]
+ASSERT_OPINION=the settled actions contain non-empty independent opinion payloads and declared form/version
+ASSERT_NO_PENDING=no PENDING participant snapshot remains for the settled ANY node
+F2_RESULT=PASS for the post-fix runtime scope

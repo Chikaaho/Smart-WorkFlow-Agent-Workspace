@@ -1,0 +1,17 @@
+GAP_ID: R2
+INPUT_IDS_AND_PREFIX: p58_r2_main_20260903; strategy definition IDs 2095508040095354882, 2095508044843307010, 2095508046084820993, 2095508047439581186
+IDENTITIES: operator=2095490569284018177; viewer=2095490569841860610; role=2095490509456465922; adapter=P58_DEBUG
+PROFILE_SWITCH_DB: dev + debug authentication enabled; published definitions and runtime rows used PostgreSQL before final cleanup
+BROWSER_DOM_OR_SCREENSHOT: operator todo DOM showed 共 5 条记录; rows R2 strategy adapter/expression/role/fixed each had 通过 and 驳回 actions
+ACCESS_LOG_REQUEST_IDS: strategy publish/readback/runtime requests retained in prior raw strategy receipt
+HTTP_RAW:
+  all four strategy definitions validate with {"code":0,"data":[]} and publish with {"code":0,"data":{"status":"PUBLISHED"}}
+  runtime task rows exposed both candidate IDs 2095490569284018177 and 2095490569841860610 for FIXED_USER, ROLE, EXPRESSION and ADAPTER
+FLOWABLE_SQL_BEFORE_AFTER: ACT_RU_IDENTITYLINK had both candidates on each of the four active tasks; sw_bpm_participant_snapshot recorded both candidates PENDING; after cleanup both are 0
+BUSINESS_SQL_BEFORE_AFTER: invalid value cases preserved published_defs=5, deployments=15, active_bindings=2; no runtime binding was added
+POSITIVE_ASSERT: FIXED_USER, ROLE, EXPRESSION and dev-only ADAPTER all resolved to the two intended candidates and created executable tasks
+NEGATIVE_ASSERT: FIXED_USER non-positive ID, empty ROLE value, malformed EXPRESSION and missing ADAPTER id returned business code 2300/validation rejection; no definition/deployment/binding count increase
+ZERO_RESIDUE_ASSERT: invalid definitions were deleted and final P58 definition/binding/deployment counts are 0
+COMMAND_EXIT_CODES: strategy publish/readback/runtime=0; invalid publish assertions=0
+CLEANUP_RESULT: all four definitions, instances, snapshots and Flowable deployments removed in R8 transaction
+RAW_OUTPUT_PATHS: receipts/attachments/r2-participant-20260903-04.txt; /private/tmp/p58-r2-strategies.raw; /private/tmp/p58-r2-invalid-values.raw; /private/tmp/p58-r2-invalid-publish.raw

@@ -1,0 +1,21 @@
+GAP_ID=E4
+CAPTURE_DATE=2026-09-04
+IDENTITIES=operator=2095490569284018177; viewer=2095490569841860610
+DEF=processDefKey=bpm_e77b41a961314a2f; processInstanceInternalId=2095698330369220610; businessKey=d1264248-47b8-4f5f-a733-eff623569297
+INSTANCE=processInstanceId=1ce011e2-a807-11f1-aa42-66ff24301f3c; status=FAILED; active_task=1; branch_trace=0; approval_actions=0; notify_rows=0
+FLOWABLE_TASK=taskId=1ce0600f-a807-11f1-aa42-66ff24301f3c; official todo response contained the task for the failure observation
+
+[runtime condition failure]
+REQUEST_ID=e4-condition3-approve-type-error-20260904
+HTTP_STATUS=200
+RESPONSE_CODE=2311
+RESPONSE_MSG=分支条件求值失败: 表达式比较类型不匹配
+ASSERTION=合法发布后的运行期类型错误进入 FAILED；没有 DEFAULT、End、copy 或通知成功记录。
+
+[official todo and retry]
+OPERATOR_TODO=GET /api/workflow/tasks/todo?pageNum=1&pageSize=20 -> HTTP 200; total=2; includes taskId=1ce0600f-a807-11f1-aa42-66ff24301f3c and processInstanceId=1ce011e2-a807-11f1-aa42-66ff24301f3c
+VIEWER_TODO=GET /api/workflow/tasks/todo?pageNum=1&pageSize=20 -> HTTP 200; records=[]; total=0
+BROWSER_TASK_PAGE=task detail rendered failed process and approval action buttons
+BROWSER_RETRY=POST /workflow/tasks/1ce0600f-a807-11f1-aa42-66ff24301f3c/complete; requestId=web-52de05be-8c67-45c5-817e-001b01837c45; HTTP=200; response code=2313; msg=流程实例已失败，不可继续审批
+UI_ALERT=流程实例已失败，不可继续审批
+ASSERTION=Although the Flowable observation retained one historical/engine task row, the official business interface rejects further processing with 2313 and the UI states the instance is failed; no action row was inserted.

@@ -1,0 +1,20 @@
+GAP_ID: R3
+INPUT_IDS_AND_PREFIX: definition=2095509268980289538; ordinary opinion form=p58_r3_opinion_v1:v1; first task=674d33a4-a79e-11f1-b0e8-66ff24301f3c; second task=9bb1113b-a79e-11f1-b0e8-66ff24301f3c
+IDENTITIES: operator=2095490569284018177; viewer=2095490569841860610
+PROFILE_SWITCH_DB: dev + debug authentication enabled; PostgreSQL; both candidates on the same task
+BROWSER_DOM_OR_SCREENSHOT: real operator TaskDetail rendered the custom opinion controls; after approval the action controls were disabled and no contradictory failure alert remained in the fixed TaskDetail flow
+ACCESS_LOG_REQUEST_IDS: ordinary approval raw request IDs are in /private/tmp/p58-r3-ordinary.raw and /private/tmp/p58-r3-ordinary-negative.raw
+HTTP_RAW:
+  valid opinion -> {"code":0,"msg":"success"}
+  missing required opinion -> {"code":2308,"msg":"审批意见不能为空"}
+  tampered version -> {"code":2307,"msg":"审批意见不合法"}
+  undeclared field -> {"code":2307,"msg":"审批意见不合法"}
+  concurrent operator/viewer -> operator {"code":0}; viewer {"code":2305,"msg":"任务不存在、已被处理或当前用户无权处理"}
+FLOWABLE_SQL_BEFORE_AFTER: one real candidate task was settled; concurrent completion produced one action only and active task count 0
+BUSINESS_SQL_BEFORE_AFTER: initialized amountMirror=250; stored action included comment/decision/riskNote and opinion form version=1; second task ACTION_COUNT=1 and actor=2095490569284018177
+POSITIVE_ASSERT: candidate-first settlement is one-time and opinion data is linked to the declared form/version
+NEGATIVE_ASSERT: required field, version tampering, undeclared field, repeat and concurrent second settlement are rejected
+ZERO_RESIDUE_ASSERT: R3 instance/action/opinion rows removed by the exact P58 cleanup transaction
+COMMAND_EXIT_CODES: ordinary positive/negative/concurrent API assertions=0; TaskDetail focused tests 10 passed
+CLEANUP_RESULT: R3 definition, instances, actions and opinion persistence removed
+RAW_OUTPUT_PATHS: receipts/attachments/r3-approval-opinion-20260903-04.txt; /private/tmp/p58-r3-ordinary.raw; /private/tmp/p58-r3-ordinary-negative.raw

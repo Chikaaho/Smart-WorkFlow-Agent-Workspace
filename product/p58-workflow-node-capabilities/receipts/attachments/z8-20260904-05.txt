@@ -1,0 +1,12 @@
+GAP_ID=Z8
+INPUT_IDS=RETURN instance=76c06964-a7b0-11f1-972f-66ff24301f3c; tasks=76c09081-a7b0-11f1-972f-66ff24301f3c,8f788976-a7b0-11f1-972f-66ff24301f3c,aa762cab-a7b0-11f1-972f-66ff24301f3c,c9fc8c4f-a7b0-11f1-972f-66ff24301f3c; REJECT instance=f38c5967-a7b0-11f1-972f-66ff24301f3c; task=f38c8084-a7b0-11f1-972f-66ff24301f3c
+IDENTITIES=operator=2095490569284018177; viewer=2095490569841860610; return target=Z8 初审
+BROWSER_TIME_AND_DOM=RETURN: viewer selected target Z8 初审, filled Z8 浏览器退回：补充材料, confirmed RETURN; operator approved returned task; viewer approved new task; final DOM showed APPROVED. REJECT: filled Z8 浏览器驳回：资料不完整, confirmed REJECT; alert=已驳回. Exact UI timestamps and screenshot file path were not preserved
+ACCESS_LOG_REQUEST_IDS=API and scenario IDs are retained in prior raw execution notes; method/path/status/requestId association for browser UI actions=UNVERIFIED
+HTTP_RAW=RETURN browser sequence completed with final HTTP action responses successful and final status APPROVED; REJECT browser action completed with alert=已驳回 and final status REJECTED; exact browser network raw is not preserved
+PG_AND_FLOWABLE_SQL_RAW=RETURN action history: operator APPROVE, viewer RETURN opinion, operator APPROVE, viewer APPROVE; history=4 active=0. REJECT action: REJECT opinion={"comment":"Z8 浏览器驳回：资料不完整"}; status=REJECTED active=0. RETURN notification WF_RETURNED and WF_APPROVED SUCCESS; REJECT notification WF_REJECTED SUCCESS
+POSITIVE_ASSERT=real browser RETURN and REJECT flows reached their expected backend terminal outcomes; action, opinion and notification rows were observed
+NEGATIVE_ASSERT=browser access-log method/path/status/requestId correlation and screenshot attachment are missing; Z8 is not fully closed
+ZERO_RESIDUE_ASSERT=P58-scoped post-cleanup process/action/notification/Flowable counts are zero
+COMMAND_AND_EXIT=full backend exit=0; browser composite sequence completed; final port check exit=0
+CLEANUP_RESULT=RETURN/REJECT definitions, instances, tasks, actions, notifications and Flowable rows were cleaned
