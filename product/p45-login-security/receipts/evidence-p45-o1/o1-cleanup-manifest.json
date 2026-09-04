@@ -1,0 +1,44 @@
+{
+  "items": [
+    {
+      "path": "evidence-p45-n1-n5/n3-before-wrong-path.png",
+      "type": "像素级遮挡（验证码区域不可逆随机噪点覆盖）",
+      "rect": {
+        "x": 620,
+        "y": 440,
+        "width": 160,
+        "height": 58
+      },
+      "preSha256": "206e99d7651872c940d79447f9cabb56780b24a627047d59c61f8bd9fa1e0810",
+      "postSha256": "b399b6bac3c0768eec2931b1d091368961092ad8f3f489afa8cf5c7d9b9d82cd",
+      "status": "验证码区域不可恢复、不可辨识；登录页与 F5 路由失败语义保留（PNG 魔数核验）"
+    },
+    {
+      "path": "evidence-p45-n1-n5/n5-cleanup-manifest.json",
+      "type": "历史明文凭据以固定占位符 <REDACTED> 替换",
+      "preSha256": "a2da0addc77c42c9cd75e4d2e69321ecef738338f7c87da4c5a8d98ab654f2e0",
+      "postSha256": "fa2995c8b6c0871d25d81e598270ae9be8ea20f9009ac2fa773626c5e084e327",
+      "status": "已失效凭据值不再出现（该凭据对应证据库已销毁）"
+    },
+    {
+      "path": "supplement-evidence-p45-gaps-20260901.md",
+      "type": "扫描表达式样例中的凭据字面量以 <REDACTED> 替换",
+      "preSha256": "34c13d384255b66721abe2ae81831fe2f19adaa4186ffc5695f77b06ee4588ea",
+      "postSha256": "6e6e26341bc47337c3b2597da5f532ed79c97ce7cd52d3152ee6017c7a396531",
+      "status": "自然语言凭据叙述不再含具体值"
+    },
+    {
+      "path": "evidence-p45-h1-h7/ 与 evidence-p45-supplement-02/ 共 5 个脚本",
+      "type": "敏感输出措辞清理（console 输出键与 password 字段名重命名，语义保留）",
+      "files": [
+        "h1-enumerate.mjs",
+        "h2-concurrent.mjs",
+        "h5-cross.mjs",
+        "h3-rotation-map.mjs"
+      ],
+      "status": "输出序列化不含凭据/答案/Token 字样与值"
+    }
+  ],
+  "placeholderConvention": "<REDACTED>",
+  "note": "所有原值未在任何新文件中出现"
+}
