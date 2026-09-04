@@ -1,0 +1,169 @@
+GAP_ID=F1
+CAPTURE_DATE=2026-09-04
+ENVIRONMENT=isolated development H2 runtime; backend=127.0.0.1:18084; web=127.0.0.1:5173; browser=Codex in-app browser tab 7
+SCOPE=browser save/readback for ROLE, EXPRESSION, ADAPTER plus one real browser RETURN and one real browser REJECT chain
+
+[identity boundary]
+browser_debug_label=test_1
+formal_subject_user_id=1
+identity_relation=DebugAuthenticationFilter parses the positive decimal suffix of test_1 as userId=1, then loads the existing formal user and installs that subject; the access log records both values. This is a deterministic non-secret debug label, not a second operator identity.
+storage_handling=No Cookie, localStorage, sessionStorage, raw Authorization value, private key, cipher key, digest secret, or token-table value was read or persisted. The browser proof uses DOM output and server-side requestId/access-log correlation only.
+
+[browser configuration save and readback]
+configuration_draft_process_def_id=2095736841726107650
+configuration_draft_process_key=bpm_c2dfdce23fc94d6a
+configuration_draft_form_key=p58_f1_rr07x
+
+ROLE save:
+  DOM action=Edit draft; strategy label=角色; value=p58_f2r_role; click=保存并校验; DOM alert=保存成功，图校验通过
+  browser_request_id=web-e2d5716b-e498-4959-94db-da831561596a
+  note=The browser interceptor and server correlation use the same requestId.
+  server_debug_auth=debug_auth decision=ACCEPTED debugTokenId=test_1 userId=1 path=/api/workflow/defs/2095736841726107650/graph requestId=web-e2d5716b-e498-4959-94db-da831561596a remoteAddr=127.0.0.1 reason=FORMAL_IDENTITY_LOADED
+  server_access=ACCESS method=PUT path=/api/workflow/defs/2095736841726107650/graph status=200 requestId=web-e2d5716b-e498-4959-94db-da831561596a userId=1
+  server_validate=ACCESS method=POST path=/api/workflow/defs/2095736841726107650/validate status=200 requestId=web-7d0d1d4c-0595-4868-8eea-4be53e64baec userId=1
+  readback_browser=DOM strategy=角色; value=p58_f2r_role; readback_request_id=web-9aa2b8da-d8e0-48b9-ab27-def7081d4acc; readback_access=ACCESS method=GET path=/api/workflow/defs/2095736841726107650 status=200 requestId=web-9aa2b8da-d8e0-48b9-ab27-def7081d4acc userId=1
+
+EXPRESSION save:
+  DOM action=Edit draft; strategy label=流程表达式; value=form.ownerId; click=保存并校验; DOM alert=保存成功，图校验通过
+  browser_request_id=web-5a0a1944-de48-4147-bc4c-f2597d7bd74c
+  server_debug_auth=debug_auth decision=ACCEPTED debugTokenId=test_1 userId=1 path=/api/workflow/defs/2095736841726107650/graph requestId=web-5a0a1944-de48-4147-bc4c-f2597d7bd74c remoteAddr=127.0.0.1 reason=FORMAL_IDENTITY_LOADED
+  server_access=ACCESS method=PUT path=/api/workflow/defs/2095736841726107650/graph status=200 requestId=web-5a0a1944-de48-4147-bc4c-f2597d7bd74c userId=1
+  server_validate=ACCESS method=POST path=/api/workflow/defs/2095736841726107650/validate status=200 requestId=web-9855cd4a-1fd0-4f22-a00b-4e362a7e1688 userId=1
+  readback_browser=DOM strategy=流程表达式; value=form.ownerId; readback_request_id=web-0f0427e4-1fde-4312-affd-dbab1744bc81; readback_access=ACCESS method=GET path=/api/workflow/defs/2095736841726107650 status=200 requestId=web-0f0427e4-1fde-4312-affd-dbab1744bc81 userId=1
+
+ADAPTER save:
+  DOM action=Edit draft; strategy label=后端适配器; value=p58_f2r_adapter; click=保存并校验; DOM alert=保存成功，图校验通过
+  browser_request_id=web-faaebd4e-1fa7-4e30-bdd0-2222c9d8917d
+  server_debug_auth=debug_auth decision=ACCEPTED debugTokenId=test_1 userId=1 path=/api/workflow/defs/2095736841726107650/graph requestId=web-faaebd4e-1fa7-4e30-bdd0-2222c9d8917d remoteAddr=127.0.0.1 reason=FORMAL_IDENTITY_LOADED
+  server_access=ACCESS method=PUT path=/api/workflow/defs/2095736841726107650/graph status=200 requestId=web-faaebd4e-1fa7-4e30-bdd0-2222c9d8917d userId=1
+  readback_browser=DOM strategy=后端适配器; value=p58_f2r_adapter; readback_request_id=web-b65aaf78-813b-4c4f-86ca-857376da7dbb; readback_access=ACCESS method=GET path=/api/workflow/defs/2095736841726107650 status=200 requestId=web-b65aaf78-813b-4c4f-86ca-857376da7dbb userId=1
+
+[raw browser DOM and HTTP correlation: one fresh real process chain]
+form_id=d50e68d0-5e55-4275-9a27-9cbe9e793902
+form_key=p58_f1_rr07x
+physical_form_table=sw_form_g9yu1x8ufu
+process_def_id=2095734406697754626
+process_key=bpm_0ac436f123cc4374
+deployment_id=748c7020-a81b-11f1-a368-66ff24301f3c
+flowable_procdef_id=bpm_0ac436f123cc4374:1:750c0063-a81b-11f1-a368-66ff24301f3c
+record_id=c84bc2d6-98cb-4ef6-8e91-c8f8de95721b
+process_instance_id=7fd58984-a81b-11f1-a368-66ff24301f3c
+business_instance_id=2095735055816630274
+opinion_form=F1_BROWSER_OPINION v1; field=approvalRemark; required=true
+
+DOM form submission:
+  URL=/form/form-render/p58_f1_rr07x
+  field remark value=浏览器退回驳回链申请 07
+  alert=提交成功，记录 ID：c84bc2d6-98cb-4ef6-8e91-c8f8de95721b
+  alert=提交成功，流程已发起
+  request_id=web-ef5f2948-18b6-4bd5-9b31-52d38d95cbdc
+  ACCESS method=POST path=/api/form/data/p58_f1_rr07x status=200 costMs=64 requestId=web-ef5f2948-18b6-4bd5-9b31-52d38d95cbdc userId=1
+
+DOM first task:
+  task_id=7fdd51c1-a81b-11f1-a368-66ff24301f3c; task_name=首审节点; formKey=p58_f1_rr07x; businessKey=c84bc2d6-98cb-4ef6-8e91-c8f8de95721b
+  opinion_DOM=审批意见（F1_BROWSER_OPINION v1）; textarea_ID=opinion-approvalRemark; buttons=审批通过, 驳回
+  open_request_id=web-f8d4818c-646d-45da-91e8-335cca2810bf
+  ACCESS method=GET path=/api/workflow/tasks/7fdd51c1-a81b-11f1-a368-66ff24301f3c status=200 requestId=web-f8d4818c-646d-45da-91e8-335cca2810bf userId=1
+
+DOM first approval:
+  textarea=首审浏览器通过意见 07; confirmation=审批确认; confirmation_text=确认审批通过此任务？; final_button=通过; alert=审批通过
+  task_id=7fdd51c1-a81b-11f1-a368-66ff24301f3c; action_id=2095735193427550209
+  request_id=web-639cb675-6a74-48b4-850d-46ce39fda701
+  ACCESS method=POST path=/api/workflow/tasks/7fdd51c1-a81b-11f1-a368-66ff24301f3c/complete status=200 costMs=149 requestId=web-639cb675-6a74-48b4-850d-46ce39fda701 userId=1
+
+DOM RETURN:
+  task_id=936c0887-a81b-11f1-a368-66ff24301f3c; select=退回到→首审节点; textarea=复审浏览器退回意见 07; confirmation=退回确认; confirmation_text=确认将流程退回所选人工节点？; final_button=退回; alert=已退回
+  action_id=2095735337237651458; notification_type=WF_RETURNED; notification_id=not captured in browser chain
+  request_id=web-6da72cf6-782d-4399-a391-4a5676ebb99c
+  ACCESS method=POST path=/api/workflow/tasks/936c0887-a81b-11f1-a368-66ff24301f3c/return status=200 costMs=119 requestId=web-6da72cf6-782d-4399-a391-4a5676ebb99c userId=1
+  raw_action_params=2095735337237651458(Long), 7fd58984-a81b-11f1-a368-66ff24301f3c, node_second, 936c0887-a81b-11f1-a368-66ff24301f3c, 1(Long), RETURN, F1_BROWSER_OPINION, 1, {"source":"processVariables.formData","sourceFields":["remark"]}, {"approvalRemark":"复审浏览器退回意见 07"}, RETURNED
+  server_event=PROCESS_RETURNED; processInstanceId=7fd58984-a81b-11f1-a368-66ff24301f3c
+
+DOM reapproval after RETURN:
+  task_id=a7ddf35b-a81b-11f1-a368-66ff24301f3c; history=prior RETURN plus reissued 首审节点; textarea=退回后再次首审通过意见 07; alert=审批通过
+  action_id=2095735470989811713
+  request_id=web-7280964d-f1f9-4d97-ac24-b2562d058db8
+  ACCESS method=POST path=/api/workflow/tasks/a7ddf35b-a81b-11f1-a368-66ff24301f3c/complete status=200 costMs=84 requestId=web-7280964d-f1f9-4d97-ac24-b2562d058db8 userId=1
+
+DOM REJECT:
+  URL=/workflow/task/badf101f-a81b-11f1-a368-66ff24301f3c
+  task_id=badf101f-a81b-11f1-a368-66ff24301f3c; task_name=复审节点; textarea=复审浏览器驳回意见 07; confirmation=驳回确认; confirmation_text=确认驳回此任务？; final_button=驳回; alert=已驳回
+  action_id=2095736416016834561; persisted_outcome=REJECTED; notification_type=WF_REJECTED; notification_id=2095736416109109250
+  request_id=web-4f90bea7-0dea-40b1-9c58-37abbbde47b7
+  ACCESS method=POST path=/api/workflow/tasks/badf101f-a81b-11f1-a368-66ff24301f3c/reject status=200 costMs=136 requestId=web-4f90bea7-0dea-40b1-9c58-37abbbde47b7 userId=1
+  raw_action_params=2095736416016834561(Long), 7fd58984-a81b-11f1-a368-66ff24301f3c, node_second, badf101f-a81b-11f1-a368-66ff24301f3c, 1(Long), REJECT, F1_BROWSER_OPINION, 1, {"source":"processVariables.formData","sourceFields":["remark"]}, {"approvalRemark":"复审浏览器驳回意见 07"}, REJECTED
+  server_event=PROCESS_REJECTED; processInstanceId=7fd58984-a81b-11f1-a368-66ff24301f3c
+
+[final raw HTTP readback]
+GET /api/workflow/instances/7fd58984-a81b-11f1-a368-66ff24301f3c
+HTTP/1.1 200
+X-Content-Type-Options: nosniff
+Content-Type: application/json
+requestId=f1-chain-instance-final-20260904-07
+{"code":0,"msg":"success","data":{"id":"2095735055816630274","processInstanceId":"7fd58984-a81b-11f1-a368-66ff24301f3c","processDefKey":"bpm_0ac436f123cc4374","processName":"P58 F1 浏览器退回驳回运行流程 07","businessKey":"c84bc2d6-98cb-4ef6-8e91-c8f8de95721b","formKey":"p58_f1_rr07x","initiatorId":"1","status":"REJECTED","activeNodeIds":[],"flowTraceSize":10}}
+ACCESS method=GET path=/api/workflow/instances/7fd58984-a81b-11f1-a368-66ff24301f3c status=200 requestId=f1-chain-instance-final-20260904-07 userId=1
+
+GET /api/workflow/tasks/todo?pageNum=1&pageSize=20
+HTTP/1.1 200
+X-Content-Type-Options: nosniff
+Content-Type: application/json
+requestId=f1-chain-todo-final-20260904-07
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"20"}}
+ACCESS method=GET path=/api/workflow/tasks/todo status=200 requestId=f1-chain-todo-final-20260904-07 userId=1
+
+[cleanup of browser configuration draft]
+DELETE /api/workflow/defs/2095736841726107650
+HTTP/1.1 200
+{"code":0,"msg":"success","data":null}
+requestId=f1-config-draft-delete-20260904-07
+ACCESS method=DELETE path=/api/workflow/defs/2095736841726107650 status=200 requestId=f1-config-draft-delete-20260904-07 userId=1
+
+[positive assertions]
+ASSERT_BROWSER_SAVE_ACCESS=ROLE,EXPRESSION,ADAPTER each has browser requestId, matching ACCESS method/path/status/userId, and DOM/API readback; ROLE and EXPRESSION also have a matching validate request.
+ASSERT_BROWSER_CHAIN=real form submit→first approval→RETURN→reapproval→REJECT occurred in one process instance; DOM alerts are submitted above.
+ASSERT_TERMINAL=REJECTED; activeNodeIds=[]; todo total=0; return and reject actions carry independent non-empty opinions.
+ASSERT_IDENTITY=debugTokenId=test_1 and userId=1 are consistent with formal identity loading; no credential storage value was captured.
+
+[ordinary candidate post-settlement browser refresh]
+isolated_form_id=35066041-943b-4386-9891-63e5bd317877
+isolated_form_key=p58_f1_candidate07
+isolated_form_table=sw_form_mweqidsz3w
+isolated_process_def_id=2095742729564286978
+isolated_process_key=bpm_65dc03372af14bc9
+isolated_flowable_procdef_id=bpm_65dc03372af14bc9:1:ce123c25-a81f-11f1-95d2-66ff24301f3c
+isolated_record_id=840b6219-bdb2-40f0-8e80-8fe0be57bf85
+isolated_process_instance_id=f54a84a6-a81f-11f1-95d2-66ff24301f3c
+isolated_business_instance_id=2095743088223416322
+isolated_task_id=f55448b3-a81f-11f1-95d2-66ff24301f3c
+operator_formal_user_id=1
+second_candidate_formal_user_id=2095743342486319106
+second_candidate_display=P58 浏览器候选人 07C
+operator_browser_action=real browser form submit then approval; DOM=提交成功，流程已发起; task detail DOM=普通候选审批; approval DOM=审批确认/通过; final DOM alert=审批通过
+operator_action_persisted=one APPROVE action, instance APPROVED, active task count 0
+
+second_candidate_todo_refresh:
+  browser_url=/workflow/todo
+  browser_identity=debug label test_2095743342486319106; DOM user=P58 浏览器候选人 07C
+  browser_request_id=web-f9c8e4b7-93d2-4205-a3a2-20f2b1fcdb61
+  server_debug_auth=debug_auth decision=ACCEPTED debugTokenId=test_2095743342486319106 userId=2095743342486319106 path=/api/workflow/tasks/todo requestId=web-f9c8e4b7-93d2-4205-a3a2-20f2b1fcdb61 remoteAddr=127.0.0.1 reason=FORMAL_IDENTITY_LOADED
+  server_access=ACCESS method=GET path=/api/workflow/tasks/todo status=200 requestId=web-f9c8e4b7-93d2-4205-a3a2-20f2b1fcdb61 userId=2095743342486319106
+  browser_dom=我的待办; 共 0 条记录; 暂无数据
+
+second_candidate_task_detail_refresh:
+  browser_url=/workflow/task/f55448b3-a81f-11f1-95d2-66ff24301f3c
+  browser_request_id=web-9840e26f-d125-485c-938e-bc6fa94aeef8
+  server_debug_auth=debug_auth decision=ACCEPTED debugTokenId=test_2095743342486319106 userId=2095743342486319106 path=/api/workflow/tasks/f55448b3-a81f-11f1-95d2-66ff24301f3c requestId=web-9840e26f-d125-485c-938e-bc6fa94aeef8 remoteAddr=127.0.0.1 reason=FORMAL_IDENTITY_LOADED
+  server_access=ACCESS method=GET path=/api/workflow/tasks/f55448b3-a81f-11f1-95d2-66ff24301f3c status=200 requestId=web-9840e26f-d125-485c-938e-bc6fa94aeef8 userId=2095743342486319106
+  browser_dom=任务详情; 业务错误(404); no opinion textarea; no 审批通过/驳回 buttons
+
+second_candidate_replay_negative:
+  request=f1-candidate-replay-after-browser-20260904-07; attempted POST complete after browser refresh
+  response={"code":2305,"msg":"节点已被处理","data":null}
+  server_access=ACCESS method=POST path=/api/workflow/tasks/f55448b3-a81f-11f1-95d2-66ff24301f3c/complete status=200 requestId=f1-candidate-replay-after-browser-20260904-07 userId=2095743342486319106
+
+isolated_cleanup:
+  temporary_candidate_user_created_with_status=0 and ordinary_role=2; user_delete=HTTP business code 0
+  temporary_process_definition_delete=HTTP business code 0
+  published_form_delete=HTTP business code 1100 (published forms are protected); the isolated in-memory H2 was then restarted, which removed the entire temporary form/process/user/role-menu state
+
+ASSERT_ORDINARY_CANDIDATE_BROWSER=PASS; after formal user 1 settled the shared candidate task, a distinct formal candidate user refreshed both todo and detail in the real browser; correlated ACCESS 200 requests returned zero todo and business 404 detail, with no actionable DOM controls; replay returned code 2305.

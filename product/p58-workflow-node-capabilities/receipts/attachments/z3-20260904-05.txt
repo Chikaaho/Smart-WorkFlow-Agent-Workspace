@@ -1,0 +1,12 @@
+GAP_ID=Z3
+INPUT_IDS=form=3c4676b6-a7c7-41a4-9137-b7f6cdb613db; role=2095490509456465922; invalid defs=2095536818020397058,2095545045655162881,2095545045973929985,2095545046288502785
+IDENTITIES=admin=1; operator=2095490569284018177; role=2095490509456465922; designer=2095490509641015297
+BROWSER_TIME_AND_DOM=ROLE textbox label=角色编码 value=2095490509456465922; EXPRESSION placeholder=例如 form.ownerId value=form.ownerId; ADAPTER placeholder=适配器标识 value=P58_DEBUG; FIXED_USER selected tags=operator,viewer,third; save alert=保存成功，图校验通过; exact browser timestamp not preserved
+ACCESS_LOG_REQUEST_IDS=clean invalid replay IDs: z3-invalid-fixed-replay-20260904; z3-invalid-role-replay-20260904; z3-invalid-expression-replay-20260904; z3-invalid-adapter-replay-20260904; browser UI save requestId correlation=UNVERIFIED
+HTTP_RAW=FIXED_USER invalid publish: HTTP 200 {"code":2300,"msg":"FIXED_USER 只能配置正整数用户 ID","data":null}; ROLE empty: HTTP 200 {"code":2300,"msg":"ROLE 必须配置非空角色编码","data":null}; EXPRESSION empty: HTTP 200 {"code":2300,"msg":"EXPRESSION 必须配置受控表达式","data":null}; ADAPTER empty: HTTP 200 {"code":2300,"msg":"参与人适配器标识不能为空","data":null}
+PG_AND_FLOWABLE_SQL_RAW=for each invalid case before/after: sw_bpm_process_def=1/1; act_re_deployment=0/0; act_re_procdef=0/0; sw_bpm_form_binding=0/0; graph hash unchanged: FIXED_USER=966353a13af51949612a5bfff00b99f438ae6a7d3e0df32c0f2c91ab3a781ab6; ROLE=abdc65bf5e1a798ec874a952bca85b2f121dd91377d4fbb0d44c26ef1a6a7f4b; EXPRESSION=f5ac6712ed5c306578fd3e0a1025182b4081e35a4a72fe050fb7cc7db3e46cb3; ADAPTER=c6b60e1b74277b0854b540767e2dc51f42db5ea8ff144b8e018e575f9630c020
+POSITIVE_ASSERT=all four invalid strategies are rejected without deployment; browser readback retained strategy/value separation; FIXED_USER readback contains three user IDs
+NEGATIVE_ASSERT=first operator-only invalid attempt was not used as evidence; admin clean replays above are the evidence
+ZERO_RESIDUE_ASSERT=invalid publish produces zero deployment/procdef/binding delta for all four cases
+COMMAND_AND_EXIT=backend validation package: mvn -q -DskipTests package, exit=0; browser save/readback completed
+CLEANUP_RESULT=all Z3 invalid definitions and successful Z3 objects included in committed cleanup scope

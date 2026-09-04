@@ -1,0 +1,12 @@
+GAP_ID=Z6
+INPUT_IDS=form=3c4676b6-a7c7-41a4-9137-b7f6cdb613db; def=2095540963351678977; key=bpm_de484a5154cc43ae; instance=423f3fcd-a7b0-11f1-972f-66ff24301f3c; task=4248197a-a7af-11f1-972f-66ff24301f3c
+IDENTITIES=operator=2095490569284018177; condition input amount mutated to not-a-number after a valid published definition
+BROWSER_TIME_AND_DOM=backend controlled runtime failure; no browser claim
+ACCESS_LOG_REQUEST_IDS=z6-trigger-runtime-type-error-fixed-20260903-05
+HTTP_RAW=approve request HTTP 200 {"code":2311,"msg":"分支条件求值失败: 表达式比较类型不匹配","data":null}
+PG_AND_FLOWABLE_SQL_RAW=instance status=FAILED; active task=node_approval; approval action rows=0; branch trace rows=0; copy rows=0; notification success rows=0
+POSITIVE_ASSERT=published valid condition reaches controlled FAILED state on runtime type mismatch
+NEGATIVE_ASSERT=no DEFAULT branch, End, copy or notify success was created
+ZERO_RESIDUE_ASSERT=P58-scoped post-cleanup instance/action/branch/copy/Flowable counts are zero
+COMMAND_AND_EXIT=backend package exit=0; focused engine/process tests exit=0; full backend exit=0
+CLEANUP_RESULT=Z6 definition, instance, task, bytearray and form trace were cleaned

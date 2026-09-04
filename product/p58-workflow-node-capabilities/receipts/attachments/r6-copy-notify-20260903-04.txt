@@ -1,0 +1,18 @@
+GAP_ID: R6
+INPUT_IDS_AND_PREFIX: P58_R6_ADAPTER_SUCCESS / P58_R6_ADAPTER_FAILURE / P58_R6_ADAPTER_TIMEOUT / P58_R6_DEDUPE
+IDENTITIES: operator=2095490569284018177; viewer=2095490569841860610
+PROFILE_SWITCH_DB: dev + debug authentication enabled; P58DebugNotifyChannelAdapter is @Profile("dev"); PostgreSQL
+BROWSER_DOM_OR_SCREENSHOT: authenticated operator/viewer notification pages were used for recipient-isolated readback
+ACCESS_LOG_REQUEST_IDS: p58_r6_unauthorized_read_final / p58_r6_authorized_read_final
+HTTP_RAW:
+  viewer marking operator message read -> HTTP/1.1 200 with body {"code":403,"msg":"无权操作该通知","data":null}
+  operator marking own message read -> HTTP/1.1 200 with body {"code":0,"msg":"success","data":null}
+  resolve-count duplicate recipients [operator,viewer,operator] -> recipientCount=2; batch-send -> recipientCount=2
+FLOWABLE_SQL_BEFORE_AFTER: SUCCESS/FAILURE/TIMEOUT service nodes each completed with active task count 0; final P58 Flowable rows=0
+BUSINESS_SQL_BEFORE_AFTER: P58_R6_ADAPTER_SUCCESS total=2 recipients=2 keys=2; FAILURE total=2 recipients=2 keys=2; TIMEOUT total=2 recipients=2 keys=2; DEDUPE total=2 recipients=2; duplicate idempotency query=NO
+POSITIVE_ASSERT: dev adapter records SUCCESS with deterministic external IDs, FAILED/TIMEOUT with reasons, and recipient dedupe produces two rows
+NEGATIVE_ASSERT: unauthorized read returns 403; channel failures are recorded and CONTINUE policy completes the workflow; production code path has no dev adapter bean
+ZERO_RESIDUE_ASSERT: notifications, copy records and P58 process data are 0 after cleanup
+COMMAND_EXIT_CODES: notification integration test=0; authorization/dedupe SQL assertions=0
+CLEANUP_RESULT: 36 P58 notifications and 6 copy records removed in exact cleanup transaction
+RAW_OUTPUT_PATHS: receipts/attachments/r6-copy-notify-20260903-04.txt; source P58DebugNotifyChannelAdapter.java; /private/tmp/p58-r6-adapter*.raw

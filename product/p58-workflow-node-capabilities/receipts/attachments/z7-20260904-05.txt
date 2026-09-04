@@ -1,0 +1,12 @@
+GAP_ID=Z7
+INPUT_IDS=idempotency key=P58_Z7_REPLAY_20260904; notification messages for Z8 return/reject are indexed in ids-z1-z9.env
+IDENTITIES=mock adapter test double only; initiator/operator/viewer identities are in ids-z1-z9.env
+BROWSER_TIME_AND_DOM=no browser action required for adapter idempotency and production scan
+ACCESS_LOG_REQUEST_IDS=adapter unit evidence has no browser requestId; vendor delivery is not claimed
+HTTP_RAW=NotifyFacadeAdapterIdempotencyTest output: [Z7-idempotency] key=P58_Z7_REPLAY_20260904 first=SUCCESS replay=SUCCESS adapter_calls=1 persisted_messages=1
+PG_AND_FLOWABLE_SQL_RAW=Z8 RETURN notifications: operator WF_RETURNED title=您的申请已退回 SUCCESS; operator WF_APPROVED title=您的申请已通过 SUCCESS. Z8 REJECT notification: WF_REJECTED title=您的申请已驳回 SUCCESS
+POSITIVE_ASSERT=same idempotency key invokes adapter once and persists one message; RETURN/REJECT notification types and success records are present in the scenario evidence
+NEGATIVE_ASSERT=adapter failure/timeout raw scenario and production vendor send proof are not present; no vendor send is claimed
+ZERO_RESIDUE_ASSERT=notification messages for the P58 cases are zero after cleanup; production artifacts have zero debug Adapter/fixture matches
+COMMAND_AND_EXIT=NotifyFacadeAdapterIdempotencyTest plus NotifyBatchSendEvidenceTest exit=0; prod package exit=0; jar/classes/resources/dist scan returned no matches
+CLEANUP_RESULT=all P58 notification rows and debug fixture objects were removed; production profile excludes P58 debug classes

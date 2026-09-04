@@ -1,0 +1,20 @@
+GAP_ID: R4
+INPUT_IDS_AND_PREFIX: v2 definitions any2=2095510982483431425; ratio67=2095511245269159937; all2=2095511246359678978; any2_reject=2095511247299203073; ratio_impossible=2095511248133869569; return=2095517901470236674
+IDENTITIES: operator=2095490569284018177; viewer=2095490569841860610
+PROFILE_SWITCH_DB: dev + debug authentication enabled; PostgreSQL; process-level action lock enabled
+BROWSER_DOM_OR_SCREENSHOT: R4 runtime was driven through authenticated task pages; R7 attachment contains the browser-level return composite that exercises the same consensus cancellation semantics
+ACCESS_LOG_REQUEST_IDS: v2 runtime request IDs retained in /private/tmp/p58-r4-v2-runtime.raw, p58-r4-ratio67.raw, p58-r4-any-reject.raw, p58-r4-all-reject.raw and p58-r4-ratio-impossible.raw
+HTTP_RAW:
+  ANY first approval -> code=0; instance APPROVED; active_tasks=0; second parallel action is code=2305
+  RATIO 3/67: first approval -> RUNNING with consensusApprovedCount=1, consensusTotal=3; second approval -> APPROVED, active_tasks=0
+  ANY first reject -> REJECTED, active_tasks=0; ALL reject -> REJECTED, active_tasks=0; impossible 3/100 reject -> controlled REJECTED termination
+  concurrent ANY after process lock -> operator code=0; viewer code=2305; action_count=1; status=APPROVED; active_tasks=0
+  RETURN from consensus viewer -> code=0; both parallel consensus tasks canceled and one node_a task recreated; final reject -> REJECTED, active_tasks=0
+FLOWABLE_SQL_BEFORE_AFTER: v2 positive/negative/return instances reached terminal state; RETURN canceled both consensus task branches; final cleanup removed all runtime/history rows and deployments
+BUSINESS_SQL_BEFORE_AFTER: consensus action records show independent actor actions, one-time settlement, and RETURN/REJECT terminal statuses; final P58 business rows=0
+POSITIVE_ASSERT: ANY, RATIO threshold, ALL failure, reject-impossible, RETURN cancellation and process-level concurrent settlement are controlled
+NEGATIVE_ASSERT: second/repeated/concurrent action cannot double count or produce an active-task contradiction
+ZERO_RESIDUE_ASSERT: final sw_bpm_approval_action, participant, Flowable runtime/history scoped rows and P58 deployments are 0
+COMMAND_EXIT_CODES: consensus runtime matrix=0; BpmTodoControllerTest and ConsensusCompletionEvaluatorTest=0
+CLEANUP_RESULT: consensus definitions, instances, action history and Flowable deployments removed
+RAW_OUTPUT_PATHS: receipts/attachments/r4-consensus-20260903-04.txt; /private/tmp/p58-r4-v2-runtime.raw; /private/tmp/p58-r4-ratio67.raw; /private/tmp/p58-r4-any-reject.raw; /private/tmp/p58-r4-all-reject.raw; /private/tmp/p58-r4-ratio-impossible.raw

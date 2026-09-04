@@ -1,0 +1,27 @@
+GAP_ID=E2
+CAPTURE_DATE=2026-09-04
+IDENTITIES=synthetic debug identity resolves to operator=2095490569284018177; no real credential value is included
+
+[isolated frontend test raw result]
+COMMAND=pnpm exec vitest run src/foundation/auth/dev-debug.spec.ts src/foundation/request/index.spec.ts
+EXIT_CODE=0
+RAW_SUMMARY=Test Files 2 passed (2); Tests 8 passed (8)
+RAW_DIAGNOSTIC=[E2-debug-auth] init=1 switch_off=1 localStorage_setItem=0 sessionStorage_setItem=0 cookie_set=0
+ASSERTION=debug initialization and switch-off made zero persistence writes; request interceptor produced X-Request-Id values matching ^web-
+
+[focused security test raw result]
+COMMAND=mvn -q -pl sw-framework/sw-security -am -Dtest=DebugAuthenticationFilterTest,AccessLoggingFilterTest -Dsurefire.failIfNoSpecifiedTests=false test
+EXIT_CODE=0
+RAW_LINES=ACCESS method=POST path=/api/workflow/tasks/1/complete status=200; ACCESS method=GET path=/api/workflow/tasks/todo status=200; ACCESS method=GET path=/api/auth/me status=401 requestId=hdr-req-9; debug_auth REJECTED DISABLED; debug_auth ACCEPTED FORMAL_IDENTITY_LOADED; debug_auth REJECTED USER_NOT_FOUND_OR_INACTIVE; debug_auth REJECTED INVALID_FORMAT; debug_auth REJECTED NON_LOOPBACK_SOURCE; debug_auth REJECTED IDENTITY_INFRASTRUCTURE_ERROR
+
+[runtime HTTP raw result]
+REQUEST=GET /api/system/auth/me
+REQUEST_HEADERS=Authorization: Bearer <synthetic-debug-token>; X-Request-Id: e2-enabled-20260904
+HTTP_STATUS=200
+RESPONSE_ID=2095490569284018177
+RESPONSE_USERNAME=p58_operator
+ACCESS=method=GET path=/api/system/auth/me status=200 requestId=e2-enabled-20260904 userId=2095490569284018177
+NEGATIVE=debug disabled, user inactive/deleted, invalid format and non-loopback requests are rejected with 401 in focused tests; enabled runtime identity readback returned the synthetic operator without reading credential storage.
+
+[storage boundary]
+The test only spies on setItem and the cookie setter. It does not read Cookie, localStorage or sessionStorage values. No authentication secret is persisted in this attachment.

@@ -1,0 +1,20 @@
+GAP_ID: R1
+INPUT_IDS_AND_PREFIX: p58_r1_positive_final / p58_r1_nonloopback_final / p58_r1_noauth_final / p58_r1_stopped_final / p58_r1_deleted_final / p58_r1_debug_off_auth_final / p58_r1_debug_off_capabilities_final
+IDENTITIES: admin=1; stopped/deleted fixture=2095491208659525634; debug token shape is test_<userId>, token value omitted
+PROFILE_SWITCH_DB: dev + SW_DEBUG_AUTH_ENABLED=true; then dev + false; PostgreSQL 15432; stopped/deleted fixture restored status=0 deleted=0
+BROWSER_DOM_OR_SCREENSHOT: protected browser sessions were operable after in-memory debug authentication; no cookie/storage inspection performed
+ACCESS_LOG_REQUEST_IDS: p58_r1_positive_final, p58_r1_nonloopback_final, p58_r1_noauth_final, p58_r1_stopped_final, p58_r1_deleted_final, p58_r1_debug_off_auth_final, p58_r1_debug_off_capabilities_final
+HTTP_RAW:
+  loopback admin GET /api/system/auth/me -> HTTP/1.1 200; response has no Set-Cookie/Authorization header; body data.user.id=1
+  non-loopback GET http://192.168.0.102:18084/api/system/auth/me -> HTTP/1.1 401; body {"code":401,"msg":"未认证","data":null}
+  no Authorization -> HTTP/1.1 401
+  stopped user -> HTTP/1.1 401; soft-deleted user -> HTTP/1.1 401
+  debug switch off GET /api/system/auth/me -> HTTP/1.1 401; GET /api/workflow/node-capabilities -> HTTP/1.1 401
+FLOWABLE_SQL_BEFORE_AFTER: NOT_APPLICABLE; authentication requests do not mutate Flowable data
+BUSINESS_SQL_BEFORE_AFTER: sys_user fixture before stopped/deleted and after restored; final status=0, deleted=0
+POSITIVE_ASSERT: loopback + enabled + active formal user returns the formal identity
+NEGATIVE_ASSERT: non-loopback, no-auth, stopped, deleted, and debug-off requests are all 401; no persistent response credential is issued
+ZERO_RESIDUE_ASSERT: debug-off replay cannot authenticate; source scan found no production auth persistence path
+COMMAND_EXIT_CODES: debug-off HTTP assertions=0; final source scans=0
+CLEANUP_RESULT: dedicated backend/frontend/PostgreSQL test processes stopped; fixture user restored
+RAW_OUTPUT_PATHS: receipts/attachments/r1-debug-auth-20260903-04.txt; prior raw HTTP receipt attachments/g1-http-20260903-03.txt and g1-prod-negative-20260903-03.txt

@@ -1,0 +1,37 @@
+P58 G3 普通审批与低代码意见证据摘录（2026-09-03）
+
+固定字段
+GAP_ID: G3
+INPUT_IDS: processInstance=1f793b98-a77f-11f1-9a47-66ff24301f3c; ordinaryTask=1f7c9705-a77f-11f1-9a47-66ff24301f3c; formRecord=dcc7d58d-a04a-46e0-8eae-2cfb455cd6b4
+IDENTITY_AND_PERMISSIONS: operator=P58 操作者 03 完成普通审批；后续 viewer/operator 分别完成会签；均为正式普通用户。
+PROFILE_AND_SWITCH: dev debug-auth=true；operator/viewer 分离浏览器会话。
+URL_OR_COMMAND: operator 浏览器打开 /workflow/task/{ordinaryTaskId}；输入意见并选择 LOW 后点击审批通过；后端 GET /api/workflow/instances/{instanceId}、GET /api/form/data/{formKey}/{businessKey}。
+
+RAW DOM / ACTION
+任务详情渲染：
+审批意见（p58-opinion v2）
+审批意见 *  [TEXTAREA]
+风险等级 *    [SELECT]
+选择 LOW
+点击=审批通过 -> 确认对话框 -> 通过
+
+后端回读的审批历史关键字段：
+action=APPROVE
+opinionData.comment=P58 浏览器意见 03
+opinionData.riskLevel=LOW
+opinionFormId=p58-opinion
+opinionFormVersion=2
+
+HTTP/Flowable 结果：普通任务完成后生成两个 consensus userTask；instance activeNodeIds 包含两个会签任务，普通 task 不再是活动任务。
+
+IMPORTANT UI OBSERVATION
+浏览器动作后同时出现“审批通过”和“审批操作失败”提示；后端实例/历史证明动作已完成，但该 UI 矛盾未修复，因此本包不把浏览器操作标为功能级通过。
+
+DOM_ASSERT: 低代码字段真实出现在认证任务详情，必填标记与 SELECT 选项可见。
+NETWORK_ASSERT: 未形成浏览器 Network 原始事件；动作 HTTP 由后端回读和页面结果间接勾稽，不冒充 Network。
+FLOWABLE_BEFORE_AFTER: before=ordinary task 1f7c9705... active；after=ordinary complete + consensus tasks 378eb318... / 378f9d7c... active。
+BUSINESS_DB_BEFORE_AFTER: form record API 回读 id=dcc7d58d... amount=250.000000 note=P58 G7 browser positive run 03；未形成 SQL 前后计数。
+POSITIVE_ASSERT: 自定义意见表单在真实浏览器中可见、填写并进入后端审批历史。
+ZERO_RESIDUE_ASSERT: 多候选、并发、候选失效、版本历史篡改拒绝未形成独立完整证据。
+EXIT_CODE: frontend typecheck/test/build 通过；真实动作出现 UI 通用失败提示，后端业务状态已完成。
+CLEANUP_RESULT: H2 内存重启清空该批次；无逐表 SQL 附件。

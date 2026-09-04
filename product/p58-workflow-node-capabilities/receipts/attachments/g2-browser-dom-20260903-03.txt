@@ -1,0 +1,57 @@
+P58 G2 认证浏览器 DOM 与发布对象证据摘录（2026-09-03）
+证据绑定：前端 dev 端口 5174/5175/5176；正向批次 20260903-03；所有身份切换均重新注入对应 test_<userId> 内存 token。
+
+固定字段
+GAP_ID: G2
+INPUT_IDS: form=491f5481-ee72-418f-8ecc-8715f4ec21ec; def=2095453273258987522; processKey=bpm_0a1fb00cf221403c
+IDENTITY_AND_PERMISSIONS: admin 创建/发布；operator 认证后打开待办；viewer 认证后具备只读流程/待办权限。
+PROFILE_AND_SWITCH: dev；前端显式 VITE_DEBUG_AUTH_ENABLED=true；生产构建不读取该接缝。
+URL_OR_COMMAND: 浏览器 http://127.0.0.1:5174/workflow/defs；operator http://127.0.0.1:5175/workflow/todo；viewer http://127.0.0.1:5176/workflow/todo；后端 GET /api/workflow/defs/{id}、/validate、/bpmn-xml。
+
+RAW DOM SNAPSHOT（浏览器可见文本）
+admin /workflow/defs:
+流程定义
+P58 真实组合运行流程 20260903-03
+processKey=bpm_0a1fb00cf221403c
+formKey=p58_combined_runtime_20260903_03
+状态=已发布
+
+operator /workflow/todo:
+待办任务
+P58 真实组合运行流程 20260903-03
+发起人/业务单号可见；用户身份= P58 操作者 03
+
+operator /workflow/task/{ordinaryTaskId}:
+任务名称=普通审批
+审批意见（p58-opinion v2）
+审批意见 *
+风险等级 *
+选项=请选择 / LOW / HIGH
+按钮=审批通过 / 驳回
+
+viewer /workflow/task/{consensusViewerTaskId}:
+任务名称=全部会签
+当前审批人= P58 查看者 03
+流程变量=consensusTotal 2
+按钮=审批通过 / 驳回
+
+GRAPH / PUBLISH RAW RESPONSE FIELDS
+POST /api/workflow/defs/{id}/validate -> HTTP 200; body data=[]
+publish -> status=PUBLISHED; version=2; deploymentId=1440eb14-a77f-11f1-9a47-66ff24301f3c; processDefinitionId=bpm_0a1fb00cf221403c:1:14ae04c7-a77f-11f1-9a47-66ff24301f3c
+graph node types=START, APPROVAL, CONSENSUS, CONDITION, COPY, NOTIFICATION, END
+edges include CONDITION -> TRUE COPY -> TRUE NOTIFICATION -> END and CONDITION -> DEFAULT NOTIFICATION -> END
+
+BPMN READBACK CORE
+approval userTask contains participantConfig/nodeConfig and opinion form reference.
+consensus userTask contains multiInstanceLoopCharacteristics isSequential="false".
+consensus collection=${consensusParticipantResolver}.
+serviceTask contains flowable field extension name="nodeConfig".
+
+DOM_ASSERT: 认证后真实浏览器完成设计器列表、待办列表、任务详情操作入口；四类选人和全部 P58 节点的完整逐次 DOM/Network 记录未达到完整验收标准。
+NETWORK_ASSERT: 浏览器客户端没有可用 Network 事件 API；因此没有伪造 Network 附件。后端 API 回读仅作为对象勾稽。
+FLOWABLE_BEFORE_AFTER: 发布前 graph 校验 data=[]；发布后 processDefinitionId 与 BPMN 核心扩展已回读。
+BUSINESS_DB_BEFORE_AFTER: form/process definition/instance 由 API 回读；未形成直接 SQL 前后值。
+POSITIVE_ASSERT: 同一 processKey/formKey 的组合定义真实发布，页面能看到已发布定义和待办。
+ZERO_RESIDUE_ASSERT: 非法配置零写入与部署残留未完成独立原始证据。
+EXIT_CODE: 浏览器动作由 browser-client 完成；后端 validate/publish HTTP 200。
+CLEANUP_RESULT: H2 内存服务重启后对象不存在；逐表 SQL 清理未形成。

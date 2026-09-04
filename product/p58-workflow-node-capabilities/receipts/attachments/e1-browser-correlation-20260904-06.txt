@@ -1,0 +1,44 @@
+GAP_ID=E1
+CAPTURE_DATE=2026-09-04
+SOURCE=Codex in-app browser Network/DOM capture plus server ACCESS lines captured during the same debug session
+IDENTITIES=operator=2095490569284018177; viewer=2095490569841860610; third=2095491208659525634; admin=1
+
+[browser network request correlation]
+ACTION=role strategy save; METHOD=PUT; PATH=/workflow/defs/2095689551565090818/graph; HTTP=200; requestId=web-ab711f07-7221-4516-95f6-3bc0b9119fc5
+ACTION=role strategy validate; METHOD=POST; PATH=/workflow/defs/2095689551565090818/validate; HTTP=200; requestId=web-656832b8-44c2-464f-b31c-4c1f7fc07c20
+ACTION=role refresh; METHOD=GET; PATH=/workflow/defs; HTTP=200; requestId=web-2dfbe6b3-433b-4a6c-8298-8473af23cfcb
+ACTION=expression strategy save; METHOD=PUT; PATH=/workflow/defs/2095689551565090818/graph; HTTP=200; requestId=web-61b675a6-1d5c-4c53-b712-7f2fa88d5371
+ACTION=expression strategy validate; METHOD=POST; PATH=/workflow/defs/2095689551565090818/validate; HTTP=200; requestId=web-84e530bd-211e-48f4-bbc5-3d2c551712ab
+ACTION=expression refresh; METHOD=GET; PATH=/workflow/defs; HTTP=200; requestId=web-075b10dd-20b8-420e-b698-c5cb82da9216
+ACTION=adapter strategy save; METHOD=PUT; PATH=/workflow/defs/2095689551565090818/graph; HTTP=200; requestId=web-2be37180-9093-40c9-b6e5-9bf429a89c38
+ACTION=adapter strategy validate; METHOD=POST; PATH=/workflow/defs/2095689551565090818/validate; HTTP=200; requestId=web-5ac30b09-9ef8-41e1-8f59-ba7ad0b5b98f
+ACTION=adapter refresh; METHOD=GET; PATH=/workflow/defs; HTTP=200; requestId=web-b79728b1-f46d-4633-8555-79cba33ed1d1
+ACTION=fixed-user final save; METHOD=PUT; PATH=/workflow/defs/2095689551565090818/graph; HTTP=200; requestId=web-0b4d3bf7-ba3f-4e1d-b5c5-a02c7986cb18
+ACTION=fixed-user final validate; METHOD=POST; PATH=/workflow/defs/2095689551565090818/validate; HTTP=200; requestId=web-f10bb79a-d622-4a84-a7d6-c9807491201a
+ACTION=fixed-user publish; METHOD=POST; PATH=/workflow/defs/2095689551565090818/publish; HTTP=200; requestId=web-171a83cc-ceee-4fd1-a72c-3f26611e2d10
+ACTION=form submit; METHOD=POST; PATH=/form/data/p58_e1_e6_验收表单; HTTP=200; requestId=web-5eea6b5c-65f1-4431-bbf7-ba9c6e3b0352; businessKey=40eca1c1-e441-404d-95cd-788b2f35e4de
+ACTION=approval submit; METHOD=POST; PATH=/workflow/tasks/d4c4fc4a-a808-11f1-aa42-66ff24301f3c/complete; HTTP=200; requestId=web-98d40a07-009f-4dfd-bd02-47c78ce7bac7; processInstanceId=d4c28b3d-a808-11f1-aa42-66ff24301f3c
+
+[server access log lines]
+debug_auth decision=ACCEPTED debugTokenId=test_1 userId=1 path=/api/workflow/defs/2095689551565090818/graph requestId=web-0b4d3bf7-ba3f-4e1d-b5c5-a02c7986cb18 remoteAddr=127.0.0.1 reason=FORMAL_IDENTITY_LOADED
+ACCESS method=PUT path=/api/workflow/defs/2095689551565090818/graph status=200 requestId=web-0b4d3bf7-ba3f-4e1d-b5c5-a02c7986cb18 userId=1
+debug_auth decision=ACCEPTED debugTokenId=test_1 userId=1 path=/api/workflow/defs/2095689551565090818/validate requestId=web-f10bb79a-d622-4a84-a7d6-c9807491201a remoteAddr=127.0.0.1 reason=FORMAL_IDENTITY_LOADED
+ACCESS method=POST path=/api/workflow/defs/2095689551565090818/validate status=200 requestId=web-f10bb79a-d622-4a84-a7d6-c9807491201a userId=1
+debug_auth decision=ACCEPTED debugTokenId=test_1 userId=1 path=/api/workflow/defs/2095689551565090818/publish requestId=web-171a83cc-ceee-4fd1-a72c-3f26611e2d10 remoteAddr=127.0.0.1 reason=FORMAL_IDENTITY_LOADED
+ACCESS method=POST path=/api/workflow/defs/2095689551565090818/publish status=200 requestId=web-171a83cc-ceee-4fd1-a72c-3f26611e2d10 userId=1
+debug_auth decision=ACCEPTED debugTokenId=test_1 userId=2095490569284018177 path=/api/workflow/tasks/d4c4fc4a-a808-11f1-aa42-66ff24301f3c/complete requestId=web-98d40a07-009f-4dfd-bd02-47c78ce7bac7 remoteAddr=127.0.0.1 reason=FORMAL_IDENTITY_LOADED
+ACCESS method=POST path=/api/workflow/tasks/d4c4fc4a-a808-11f1-aa42-66ff24301f3c/complete status=200 requestId=web-98d40a07-009f-4dfd-bd02-47c78ce7bac7 userId=2095490569284018177
+
+[persistent DOM excerpt]
+heading=P58 E1-E6 验收表单
+fields=备注 textbox;金额 spinbutton;风险等级 textbox;submit
+form_submission_alert=提交成功，记录 ID：40eca1c1-e441-404d-95cd-788b2f35e4de
+workflow_submission_alert=提交成功，流程已发起
+task_page=任务详情; processKey=bpm_fd71de897d20460a; processInstanceId=d4c28b3d-a808-11f1-aa42-66ff24301f3c; taskId=d4c4fc4a-a808-11f1-aa42-66ff24301f3c
+task_page_opinion=DEFAULT_REMARK v1; approval_alert=审批通过
+saved_graph=processDefId=2095689551565090818; key=bpm_fd71de897d20460a; fixedUsers=[2095490569284018177,2095491208659525634,2095490569841860610]
+DOM_DEF_LIST=流程定义 row key=bpm_fd71de897d20460a; version=1; status=已发布; 更新时间=2026-09-04T10:31:05.092105
+DOM_INSTANCE_LIST=流程监控 row businessKey=40eca1c1-e441-404d-95cd-788b2f35e4de; status=已完成; 发起时间=2026-09-04T10:32:10.848132
+
+[boundary]
+Browser request IDs above are the IDs emitted by the browser request interceptor and are the same IDs matched in server ACCESS lines. Later synthetic curl IDs are intentionally not used as browser correlation. The retained DOM is textual DOM evidence; an image file was not created by the browser tool. Exact per-action wall-clock milliseconds were not retained by the browser session, so this attachment records the capture date and request ordering rather than inventing timestamps.

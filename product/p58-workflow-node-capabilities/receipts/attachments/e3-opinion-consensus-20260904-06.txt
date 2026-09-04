@@ -1,0 +1,38 @@
+GAP_ID=E3
+CAPTURE_DATE=2026-09-04
+IDENTITIES=operator=2095490569284018177; viewer=2095490569841860610; third=2095491208659525634
+
+[same opinion form v1 to v2]
+FORM_ID=28191b88-cae1-48fa-a85f-cde399ad1223
+FORM_KEY=p58_opinion_e3
+PROCESS_DEF_ID=2095693257014571010
+PROCESS_DEF_KEY=bpm_a4125661dff54f20
+PUBLISHED_VERSION_2=bpm_a4125661dff54f20:2:0a54afa9-a809-11f1-aa42-66ff24301f3c
+V1_INSTANCE=1742514a-a809-11f1-aa42-66ff24301f3c; V1_TASK=174389d7-a809-11f1-aa42-66ff24301f3c
+V2_TASK=27dbe3fd-a809-11f1-aa42-66ff24301f3c
+V1_BROWSER_DOM=审批意见（28191b88-cae1-48fa-a85f-cde399ad1223 v1）; fields=审批备注*、风险说明
+V2_BROWSER_DOM=审批意见（28191b88-cae1-48fa-a85f-cde399ad1223 v2）; fields=审批备注*、风险说明; buttons=disabled after completion
+V1_FORM_DATA=approvalRemark=E3 v1 独立意见 20260904; riskNote=E3 v1 风险说明
+V2_FORM_DATA=approvalRemark=E3 v2 独立意见 20260904; riskNote=E3 v2 风险说明
+V1_ACTION=id=2095702010585767937; actor=2095490569284018177; task=174389d7-a809-11f1-aa42-66ff24301f3c; formVersion=1; requestId=web-4cfbb01e-f2d0-4594-8f7e-f79054d912cc; HTTP=200; outcome=APPROVED
+V2_ACTION=id=2095702132774232066; actor=2095490569284018177; task=27dbe3fd-a809-11f1-aa42-66ff24301f3c; formVersion=2; requestId=web-de20a6a9-de4e-4931-b304-119bfded8255; HTTP=200; outcome=APPROVED
+V2_DOM_CREATE_TIME=2026-09-04T10:34:30.209
+V2_DOM_HISTORY_CREATE_TIME=2026-09-04T10:34:02.367; V2_DOM_HISTORY_COMPLETE_TIME=2026-09-04T10:34:30.19
+DOM_HISTORY=同一 formId 的 v1 action 与 v2 action 均出现在 v2 详情页历史；v2 页面显示 v2 标识和独立非空意见。
+
+[consensus runtime matrix]
+CASE=ANY; defId=2095696604836749314; key=bpm_de5de746b68f4012; instance=2bf962b0-a806-11f1-aa42-66ff24301f3c; total=3; approvals=1; final=APPROVED; activeTasks=0; actions=1; independentOpinion=E3 ANY operator 独立意见
+CASE=ALL; defId=2095696963206471682; key=bpm_5d6219a905804edc; instance=5f46c74a-a806-11f1-b273-66ff24301f3c; total=3; approvals=3; final=APPROVED; activeTasks=0; actions=3; opinions=operator/viewer/third each nonempty and distinct
+CASE=RATIO66; defId=2095697141518917633; key=bpm_ea714066b49047c4; instance=78fca76a-a806-11f1-b273-66ff24301f3c; total=3; threshold=66%; required=ceil(3*66/100)=2; approvals=2; final=APPROVED; activeTasks=0; actions=2
+CASE=RATIO67; defId=2095697307894374402; key=bpm_5bad6114538c4d6f; instance=905314b7-a806-11f1-aa42-66ff24301f3c; total=3; threshold=67%; required=ceil(3*67/100)=3; afterTwo=RUNNING/activeTasks=1; afterThree=APPROVED/activeTasks=0; actions=3
+ANY_REPLAY=HTTP 200 code=2305 msg=节点已被处理; requestId=e3-any-operator-replay-20260904; no extra action
+ALL_REQUESTS=e3-all-operator-20260904,e3-all-viewer-20260904,e3-all-third-20260904 all HTTP 200
+RATIO66_REQUESTS=operator and viewer requests both HTTP 200; two persisted approvals
+RATIO67_REQUESTS=operator, viewer and third requests all HTTP 200; two did not end the process, third ended it
+DOM_INSTANCE_TIMES=ANY businessKey=dd92b543-5dc0-4999-a738-d504a3001816 start=2026-09-04T10:13:08.731915; ALL businessKey=1a660346-f06a-40e4-907c-1e4ad8bdbc61 start=2026-09-04T10:14:34.736692; RATIO66 businessKey=fd12282c-c341-4672-bcb5-65428a3ec119 start=2026-09-04T10:15:17.867289; RATIO67 businessKey=e0054f10-acd0-41d3-93ab-34ffe9935418 start=2026-09-04T10:15:57.008175
+
+[regression for candidate invalidation]
+COMMAND=mvn -q -pl sw-biz/sw-bpm/sw-bpm-process -am -Dtest=ParticipantSnapshotRecorderImplTest -Dsurefire.failIfNoSpecifiedTests=false test
+EXIT_CODE=0
+ASSERTION=invalidating a settled consensus node filters processInstanceId+nodeKey+PENDING and deliberately omits taskId; handled row still filters current taskId+participantId. This covers distinct Flowable child task IDs.
+BOUNDARY=The runtime matrix above was captured before this last recorder regression; no post-fix runtime snapshot is claimed here. The post-fix unit regression and final full gates are the retained proof for the code-path correction.
