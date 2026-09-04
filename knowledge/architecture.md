@@ -205,16 +205,16 @@ locales/         — 国际化（zh-CN）
 | 认证/安全 | ✅ 完成 | ✅ 已联通 | 登录/JWT/动态路由/CSP/sanitize |
 | 系统管理 (RBAC/字典) | ✅ 核心就位 | ✅ CRUD + DictSelect/DictTag | 用户/角色/菜单/部门/字典 |
 | 表单引擎 | ✅ 已封版 | ✅ 设计器 + 渲染器 | 8 字段类型 + 动态宽表 + REFERENCE 选择器 |
-| BPM/工作流 | 🟦 开发中 | ✅ 已联通 | BPMN 转换/待办/审批；前端 TodoList + ProcessDefList |
-| 通知 | ✅ 基础完成 | ✅ 已落地 | 通知列表 + 标记已读交互，Walking Skeleton 闭合 |
-| AI Agent | ⬜ 骨架 | 🔲 占位 | AutoConfiguration 占位；路由/菜单已注册 |
-| IoT | ⬜ 骨架 | 🔲 占位 | AutoConfiguration 占位；路由/菜单已注册 |
-| 知识库 | ⬜ 骨架 | N/A | AutoConfiguration 占位 |
+| BPM/工作流 | 🟦 已交付子能力 | ✅ 已联通 | BPMN 转换/待办/审批；P57 统一节点扩展、P58 选人/会签/分支/抄送/通知已交付；转办/委托/加签/个人查询等缺口开放 |
+| 通知 | ✅ 基础完成 | ✅ 已落地 | 站内信收发/模板/批量发送（M05 全✅）；通知 SPI 与隔离 Adapter 已验收（P58），厂商渠道未接入 |
+| AI Agent | 🟦 已交付子能力 | ✅ 已联通 | M07 多轮交付：模型管理/图编排/调试/工具调用/会话管理已 COMPLETED；助手配置/对话窗口/知识库 RAG 未做 |
+| IoT | 🟦 已交付子能力 | ✅ 部分 | minimal-business-closure 已交付腾讯 IoT 最小接入（命令队列/状态回调/审批驱动）；真实账号联调/原生 MQTT/完整设备管理开放 |
+| 知识库 | ⬜ 骨架 | N/A | AutoConfiguration 占位；RAG 未立项（P19） |
 | OpenAPI | ⬜ 骨架 | 🔲 占位 | 仅 package-info（api/biz 各 1）；路由/菜单已注册 |
 | 存储 (Storage) | ✅ 完整 | N/A | CONFIRMED 2026-07-22：-api/-biz 拆分 + 4 提供商 + Service/Controller/测试，storage-multi-provider 已 COMPLETED |
 | 定时任务 (Job) | ✅ 完整 | N/A | CONFIRMED 2026-07-22：-api/-biz 拆分 + Quartz 集成 + Controller/Facade/测试 + Flyway V17，job-scheduler 已 COMPLETED |
 
-> 注：本表为粗粒度总览。**逐模块权威完成度与文件数以 [[current-status]] §2 为准**（本表曾误将 storage/job 记为骨架，2026-07-22 对账更正）。
+> 注：本表为粗粒度总览。**逐模块权威完成度与文件数以 `knowledge/current-status.md` 与 `knowledge/feature-reconciliation-index.md` 为准**（2026-09-04 知识库全量整理同步刷新；BPM/Agent/IoT 按已交付子能力描述，不将模块整体写完成）。
 
 ---
 
@@ -225,16 +225,16 @@ locales/         — 国际化（zh-CN）
 | 01 | 组织架构 | 5 / 13 | `sw-biz-system` | 需求明确 |
 | 02 | 权限控制 | 6 / 7 | `sw-biz-system + sw-security` | 需求明确（部分已建读路径） |
 | 03 | 低代码表单 | 6 / 8 | `sw-biz-form` | 规则锁定，主线开发中 |
-| 04 | 流程引擎 | 7 / 9 | `sw-bpm`（依赖 form） | 需求明确 |
+| 04 | 流程引擎 | 8 / 10 | `sw-bpm`（依赖 form） | 需求明确 |
 | 05 | 站内信 | 2 / 4 | `sw-basic-notify` | 需求明确 |
 | 06 | 系统通知 | 4 / 4 | `sw-basic-notify` | 需求明确 |
 | 07 | AI 智能助手 | 4 / 14 | `sw-basic-agent + sw-basic-knowledge` | ⚠ 需求级，待细化 |
 | 08 | IoT | 5 / 13 | `sw-basic-iot` | ⚠ 腾讯接入路径待补全 |
 | 09 | 开放接口 | 7 / 8 | `sw-biz-openapi` | ⚠ 需求级，排在最后 |
 | 10 | 系统运维 | 8 / 9 | `sw-biz-system + sw-basic(storage/job)` | 需求明确 |
-| — | **合计** | **54 / 89** | — | — |
+| — | **合计** | **55 / 90** | — | — |
 
-完整功能明细见 `Smart-WorkFlow-Server/功能清单.md`（54 功能，**89** 明细，含 Mxx-Fyy-zz ID 体系）。此前记为 88（M10 记为 8），CONFIRMED 2026-07-23 两次独立探索交叉核对原文，差值定位在 M10（实际 9 条），见 [[shared-constraints]] §5、[[known-issues]] I1。
+完整功能明细见 `Smart-WorkFlow-Server/功能清单.md`（10 模块、**55** 功能、**90** 明细，含 Mxx-Fyy-zz ID 体系；2026-09-04 知识库全量整理复核确认，M04 为 8/10）。逐项状态与映射以 `knowledge/feature-reconciliation-index.md` 为准。
 
 ---
 
@@ -254,8 +254,9 @@ locales/         — 国际化（zh-CN）
 
 ### 7.3 当前焦点
 
-Walking Skeleton 四环已全部闭合 ✅。已完成 7 个功能（Walking Skeleton、sys-mgmt-crud、bpm-task-center、storage-multi-provider、job-scheduler、kb-verification 等，见 [[current-status]] §5）。
-当前无进行中的编码功能：auth-seam-completion 已 ⏸ PAUSED；kb-verification（知识库运行期验证）已 COMPLETED。（更新 2026-07-22）
+Walking Skeleton 四环已全部闭合 ✅。正式业务功能已确认 **41 个**（P58 为第 41 个，2026-09-04 已确认）：早期批处理（system-mgmt-crud、bpm-task-center、storage-multi-provider、job-scheduler、kb-verification 等）直至 P52—P58 系列均已闭环；完整清单见 `knowledge/current-status.md` 与 `knowledge/feature-reconciliation-index.md`。（更新 2026-09-04 知识库全量整理同步）
+
+当前活动任务：`knowledge-full-reconciliation`（知识库全量整理与同步，VERIFYING），非业务功能。
 
 工作区自身的元架构（规划层/执行层三方角色边界、规划层内部探索模型/规划模型分工、`product/`+`todo/`+`knowledge/` 的原始记忆/压缩记忆分层）已固化为 `system.md` §0.3/§0.4/§11.2、`roles/planner.md` §4（规划写入范围）/§8（记忆分层）与 `shared-constraints.md` §9 的硬约束，本文件只覆盖 Smart-WorkFlow **产品系统**架构，不重复记录工作区元架构。
 
@@ -309,8 +310,8 @@ Walking Skeleton 四环已全部闭合 ✅。已完成 7 个功能（Walking Ske
 | 国际化 | Vue I18n 11 |
 | 安全过滤 | DOMPurify + expr-eval-fork |
 | 表单设计器 | @form-create/designer 3.5 |
-| 流程设计器 | bpmn-js 18（待集成） |
-| 流程图 | @vue-flow/core 1.48（待集成） |
+| 流程设计器 | bpmn-js 18（已集成：bpmn-adapter BPMN 查看器防腐层；设计器/Modeler 不在范围内） |
+| 流程图 | @vue-flow/core 1.48（已集成：vue-flow-adapter） |
 | 测试 | Vitest 4 + @vue/test-utils |
 | 代码规范 | ESLint 10 + Prettier 3 |
 | API 类型生成 | openapi-typescript 7 |

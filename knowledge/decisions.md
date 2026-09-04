@@ -6,7 +6,7 @@
 >
 > 可信度：CONFIRMED = 已落地执行 · SUPERSEDED = 已被后续决策替代
 >
-> **注记（2026-08-16 D84 裁定）**：D47+ 决策见 `memory/decisions.md`（活跃权威，D84 裁定）+ `product/*/passed/` + `receipts/` 归档；本文件为 D1-D46 历史详情档案
+> **注记（2026-08-16 D84 裁定；2026-09-04 知识库全量整理范围更正）**：D47+ 决策见 `memory/decisions.md`（活跃权威，D84 裁定）+ `product/*/passed/` + `receipts/` 归档；本文件为 D1—**D48** 历史详情档案（实含 D47/D48，2026-08-29 补录）
 
 ---
 
