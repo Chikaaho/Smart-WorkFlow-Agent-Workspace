@@ -1,0 +1,139 @@
+===== A1-1 工作区 develop-sw 24c4be8 完整 diff =====
+$ git show 24c4be8d5b7b969207980b1616202f3f7c3ed476
+commit 24c4be8d5b7b969207980b1616202f3f7c3ed476
+Author: Chikaaho <chikaho@mail.chikaho.cn>
+Date:   Fri Sep 4 21:44:17 2026 +0800
+
+    docs(project): 项目说明更新为 CH-aPaaS（PaaS），同步三仓仓库名与引用
+
+diff --git a/AGENTS.md b/AGENTS.md
+index cb5c347..b20aedb 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -1,4 +1,4 @@
+-# Smart-WorkFlow · Codex 入口
++# CH-aPaaS · Codex 入口
+ 
+ 本文件仅是 Codex Harness 入口，不定义独立治理规则。
+ 
+diff --git a/README.md b/README.md
+index b350898..b54fd59 100644
+--- a/README.md
++++ b/README.md
+@@ -1,10 +1,10 @@
+-# Smart-WorkFlow
++# CH-aPaaS
+ 
+-> **示例分支定位**：本分支（`develop-sw`）是 **Agent Coding Engine** 的 Smart-WorkFlow/OA **示例实例**。
++> **示例分支定位**：本分支（`develop-sw`）是 **Agent Coding Engine** 的 CH-aPaaS **示例实例**。
+ > 它演示一个完整 coding 项目如何使用 Engine 治理协议，并保留本项目全部历史状态、知识、记忆、方向、回执、待办及其追溯关系。
+ > Engine 通用默认分支为 `main`（不含本实例任何业务事实）；本分支不从属、不反向修改 Engine 的通用定位。
+ 
+-Smart-WorkFlow 是面向企业协作场景的低代码 OA 与 AI Agent 平台。项目以表单和流程为业务主线，将组织权限、通知、任务、文件、设备与智能编排能力组合在同一套工作流中。
++CH-aPaaS 是面向企业协作场景的低代码 PaaS 与 AI Agent 平台。项目以表单和流程为业务主线，将组织权限、通知、任务、文件、设备与智能编排能力组合在同一套工作流中。
+ 
+ 本仓库是项目的规划与知识中心；后端服务和前端应用分别位于独立仓库。项目使用者可从这里了解整体能力，开发者可沿仓库导航进入对应工程。
+ 
+@@ -21,18 +21,18 @@ Smart-WorkFlow 是面向企业协作场景的低代码 OA 与 AI Agent 平台。
+ 
+ | 仓库 | 职责 | 开发入口 |
+ | --- | --- | --- |
+-| Smart-WorkFlow-Knowledge（本仓库） | 项目规划、需求方向、回执、架构知识与工作区治理 | [`system.md`](system.md)、[`knowledge/`](knowledge/architecture.md) |
+-| Smart-WorkFlow-Server | Java 后端、数据库、认证授权、业务服务与 API | [`Smart-WorkFlow-Server/README.md`](Smart-WorkFlow-Server/README.md) |
+-| Smart-WorkFlow-Web | Vue 前端、页面交互、前端架构与 API/Mock 开发模式 | [`Smart-WorkFlow-Web/README.md`](Smart-WorkFlow-Web/README.md) |
++| Smart-WorkFlow-Agent-Workspace（本仓库） | 项目规划、需求方向、回执、架构知识与工作区治理 | [`system.md`](system.md)、[`knowledge/`](knowledge/architecture.md) |
++| Smart-WorkFlow-sPaaS-server | Java 后端、数据库、认证授权、业务服务与 API | [`Smart-WorkFlow-Server/README.md`](Smart-WorkFlow-Server/README.md) |
++| Smart-WorkFlow-aPaaS-Web | Vue 前端、页面交互、前端架构与 API/Mock 开发模式 | [`Smart-WorkFlow-Web/README.md`](Smart-WorkFlow-Web/README.md) |
+ 
+ 典型运行关系如下：
+ 
+ ```text
+-Smart-WorkFlow-Web (:5173)
++Smart-WorkFlow-aPaaS-Web (:5173)
+         |
+         | HTTP /api
+         v
+-Smart-WorkFlow-Server (:8080/api)
++Smart-WorkFlow-sPaaS-server (:8080/api)
+         |
+         +-- PostgreSQL 或 H2
+         +-- Redis
+@@ -43,21 +43,21 @@ Smart-WorkFlow-Server (:8080/api)
+ 先克隆知识仓库：
+ 
+ ```bash
+-git clone git@github.com:Chikaaho/Smart-WorkFlow-Knowledge.git
++git clone git@github.com:Chikaaho/Smart-WorkFlow-Agent-Workspace.git
+ ```
+ 
+ ```bash
+-cd Smart-WorkFlow-Knowledge
++cd Smart-WorkFlow-Agent-Workspace
+ ```
+ 
+ 再将后端与前端仓库放入工作区根目录：
+ 
+ ```bash
+-git clone git@github.com:Chikaaho/Smart-WorkFlow-Server.git
++git clone git@github.com:Chikaaho/Smart-WorkFlow-sPaaS-server.git
+ ```
+ 
+ ```bash
+-git clone git@github.com:Chikaaho/Smart-WorkFlow-Web.git
++git clone git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-Web.git
+ ```
+ 
+ 进入对应工程后，按后端或前端 README 准备环境并启动服务：
+@@ -68,7 +68,7 @@ git clone git@github.com:Chikaaho/Smart-WorkFlow-Web.git
+ ## 与 Agent Coding Engine 的关系
+ 
+ - **Engine 来源**：本实例的治理协议（`system.md`、`roles/`、`.codex/governance/`、Harness 入口）来自 Agent Coding Engine `main` 默认分支。
+-- **实例边界**：本分支的 `memory/`、`knowledge/`、`product/`、`todo/`、`search_task/`、`search_fallback/` 保存的是 **Smart-WorkFlow/OA 当前实例**的状态、历史、回执与待办，不与其他项目共享。
++- **实例边界**：本分支的 `memory/`、`knowledge/`、`product/`、`todo/`、`search_task/`、`search_fallback/` 保存的是 **CH-aPaaS 当前实例**的状态、历史、回执与待办，不与其他项目共享。
+ - **追溯**：历史回执（`product/*/receipts/`）、状态单一源（`knowledge/current-status.md`）、问题（`knowledge/known-issues.md`）与需求池（`todo/requirement-pool.md`）均在本分支完整保留，可继续追溯。
+ - **Engine 通用化**：`main` 分支为空白 Engine（不含本实例内容），可作为新项目基线；本项目不把自身状态复制回 Engine 默认内容。
+ 
+diff --git a/project.md b/project.md
+index 7818d89..a3818d7 100644
+--- a/project.md
++++ b/project.md
+@@ -1,13 +1,13 @@
+ # 项目说明（project.md）
+ 
+-> 本文件是 Smart-WorkFlow/OA 示例实例接入 Agent Coding Engine 的**项目说明入口**。
++> 本文件是 CH-aPaaS 示例实例接入 Agent Coding Engine 的**项目说明入口**。
+ > 本实例通过本文件声明身份、目标、仓储关系、工程规则与实例生命周期；治理协议以 `system.md` 与 `roles/` 为准。
+ 
+ ## 1. 项目身份
+ 
+-- **项目名称**：Smart-WorkFlow
+-- **一句话目标**：面向企业协作场景的低代码 OA 与 AI Agent 平台，以表单和流程为业务主线，组合组织权限、通知、任务、文件、设备与智能编排能力。
+-- **非目标**：不面向非企业协作场景；不引入与本平台无关的通用业务；不将当前 OA 实例的事实复制回 Engine 通用默认内容。
++- **项目名称**：CH-aPaaS
++- **一句话目标**：面向企业协作场景的低代码 PaaS 与 AI Agent 平台，以表单和流程为业务主线，组合组织权限、通知、任务、文件、设备与智能编排能力。
++- **非目标**：不面向非企业协作场景；不引入与本平台无关的通用业务；不将当前 PaaS 实例的事实复制回 Engine 通用默认内容。
+ 
+ ## 2. 仓储关系
+ 
+@@ -15,9 +15,9 @@
+ - **代码仓列表**：
+   | 仓库 | 职责 | 开发入口 |
+   |------|------|----------|
+-  | Smart-WorkFlow-Knowledge（本仓库） | 项目规划、需求方向、回执、架构知识与工作区治理 | `system.md`、`knowledge/` |
+-  | Smart-WorkFlow-Server | Java 后端、数据库、认证授权、业务服务与 API | `Smart-WorkFlow-Server/README.md` |
+-  | Smart-WorkFlow-Web | Vue 前端、页面交互、前端架构与 API/Mock 开发模式 | `Smart-WorkFlow-Web/README.md` |
++  | Smart-WorkFlow-Agent-Workspace（本仓库） | 项目规划、需求方向、回执、架构知识与工作区治理 | `system.md`、`knowledge/` |
++  | Smart-WorkFlow-sPaaS-server | Java 后端、数据库、认证授权、业务服务与 API | `Smart-WorkFlow-Server/README.md` |
++  | Smart-WorkFlow-aPaaS-Web | Vue 前端、页面交互、前端架构与 API/Mock 开发模式 | `Smart-WorkFlow-Web/README.md` |
+ 
+ ## 3. 工程规则
+ 
+@@ -28,7 +28,7 @@
+ ## 4. 实例数据与生命周期
+ 
+ - **实例数据初始化位置**：`memory/`（压缩记忆）、`knowledge/`（完整知识库，含 `current-status.md`/`features/`/`known-issues.md`/`evidence/`）、`product/`（需求方向与回执）、`todo/`（暂不修复清单 + 需求池）、`search_task/`、`search_fallback/`（探索通道）。
+-- **实例生命周期边界**：本分支为 Smart-WorkFlow/OA 示例实例，`develop-sw` 承载当前实例全部状态与历史；制定是否长期维护或作为迁移快照的决策权归 Owner。
++- **实例生命周期边界**：本分支为 CH-aPaaS 示例实例，`develop-sw` 承载当前实例全部状态与历史；制定是否长期维护或作为迁移快照的决策权归 Owner。
+ 
+ ## 5. 关联 Engine
+ 
