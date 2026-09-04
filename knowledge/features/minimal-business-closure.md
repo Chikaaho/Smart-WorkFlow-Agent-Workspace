@@ -1,7 +1,7 @@
 # minimal-business-closure（Owner 最小业务闭环）
 
 > 正式功能；Owner 最高优先级。流程主链子方向与腾讯 IoT 子方向均已归档 `product/minimal-business-closure/passed/`。
-> 状态：功能级 **PASSED**（2026-08-28，规划最终验收）→ 阶段三终态落值 **COMPLETED（待规划终态复核）**。
+> 状态：功能级 **PASSED**（2026-08-28，规划最终验收）→ 阶段三终态落值 **COMPLETED（已确认，2026-08-28）**；2026-08-29 的 minimal-closure-first-acceptance 为后续验收审计（不新增功能数），两日期不混用。
 
 ## 功能目标
 

@@ -1,0 +1,14 @@
+# diff -u product/knowledge-full-reconciliation/receipts/evidence-sync-b-correction-01/full-text/Server功能清单.md Smart-WorkFlow-Server/功能清单.md
+# exit-code=1
+
+--- product/knowledge-full-reconciliation/receipts/evidence-sync-b-correction-01/full-text/Server功能清单.md	2026-09-04 17:23:50
++++ Smart-WorkFlow-Server/功能清单.md	2026-09-04 20:46:37
+@@ -41,7 +41,7 @@
+ **并行轨道**（关键路径稳定后并行推进）：`AI智能助手(M07)` · `IoT(M08)` · `开放接口(M09)`。  
+ **横切先行**：多租户、`BaseEntity`、数据权限、Security 过滤链、字典服务须先就位。
+ 
+-> 当前焦点：无进行中业务功能（活动任务为 knowledge-full-reconciliation 知识库全量整理，VERIFYING）；上一完成功能 `p58-workflow-node-capabilities`（P58 流程节点界面与具体能力优化，功能级 PASSED 2026-09-04 + 阶段三终态最终复核 COMPLETED（已确认，2026-09-04）；不对应既有明细、当时 90 行明细状态零变化，P58 已核销）；当前终态清单 **✅34/🟦28/⬜28**（34+28+28=90，本轮五行 ⬜→🟦 为规划裁决的已交付子集登记，其余 85 行不变）；功能数 41 不变；正式基线后端 1035/0/0/0（全量）＋ 前端 117f/1110t/3skipped、Flyway H2 V49（49）/PG V49（48）。唯一下一动作：Planner 复核 knowledge-full-reconciliation B 阶段同步回执（`product/knowledge-full-reconciliation/receipts/sync-b-01.md`）；不自动启动下一编号。P47 等未经本轮对账定位的旧实现结论为历史快照待核，不宣称当前已验证；完整映射见 `knowledge/feature-reconciliation-index.md`。
++> 当前焦点：无进行中业务功能（活动任务为 knowledge-full-reconciliation 知识库全量整理，COMPLETED 待规划终态复核）；上一完成功能 `p58-workflow-node-capabilities`（P58 流程节点界面与具体能力优化，功能级 PASSED 2026-09-04 + 阶段三终态最终复核 COMPLETED（已确认，2026-09-04）；不对应既有明细、当时 90 行明细状态零变化，P58 已核销）；当前终态清单 **✅34/🟦28/⬜28**（34+28+28=90，本轮五行 ⬜→🟦 为规划裁决的已交付子集登记，其余 85 行不变）；功能数 41 不变；正式基线后端 1035/0/0/0（全量）＋ 前端 117f/1110t/3skipped、Flyway H2 V49（49）/PG V49（48）。唯一下一动作：Planner 复核 knowledge-full-reconciliation B 阶段同步回执（`product/knowledge-full-reconciliation/receipts/sync-b-01.md`）；不自动启动下一编号。P47 等未经本轮对账定位的旧实现结论为历史快照待核，不宣称当前已验证；完整映射见 `knowledge/feature-reconciliation-index.md`。
+ 
+ ---
+ 
