@@ -1,0 +1,11 @@
+命令1: git clone --branch develop-sw <镜像> Smart-WorkFlow-Agent-Workspace
+结果: 目录存在=yes 检出分支=develop-sw（非远端 HEAD main）✓
+
+命令2: git clone <sPaaS-server镜像> Smart-WorkFlow-Server（裸镜像）
+结果: 生成目录 Smart-WorkFlow-Server，默认分支 develop ✓
+命令3: git clone <aPaaS-Web镜像> Smart-WorkFlow-Web（裸镜像）
+结果: 生成目录 Smart-WorkFlow-Web，默认分支 develop ✓
+
+入口链: 三目录就位后 Smart-WorkFlow-Server/README.md、Smart-WorkFlow-Web/README.md、system.md、knowledge/architecture.md 均存在 ✓
+
+验证层级: 本地裸镜像隔离 clone（固定候选镜像），非联网真实 clone

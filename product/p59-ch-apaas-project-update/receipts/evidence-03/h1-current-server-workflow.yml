@@ -36,9 +36,19 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          TAG="build-${GITHUB_SHA::8}"
+          set -euo pipefail
+          TAG="build-${GITHUB_SHA}"
+          # 固定发布目标：tag 与本次构建提交（完整 SHA）绑定，main 后续推进不改变目标。
+          # 已有同名 tag 时核对目标提交：非构建提交则拒绝发布，绝不覆盖其他提交的发行物。
+          EXISTING_TAG_TARGET=$(git ls-remote --tags origin "refs/tags/${TAG}" | awk '{print $1}' || true)
+          if [ -n "${EXISTING_TAG_TARGET}" ] && [ "${EXISTING_TAG_TARGET}" != "${GITHUB_SHA}" ]; then
+            echo "::error::tag ${TAG} 已指向其他提交 ${EXISTING_TAG_TARGET}，拒绝覆盖其他提交的发行物"
+            exit 1
+          fi
+          # 同提交重跑：仅删除既有 Release（保留 tag），随后重建；不删除其他 tag/Release。
           gh release view "${TAG}" >/dev/null 2>&1 && gh release delete "${TAG}" --yes || true
           gh release create "${TAG}" \
-            --title "CH-aPaaS-Server ${{ steps.locate.outputs.version }} build ${GITHUB_SHA::8}" \
+            --target "${GITHUB_SHA}" \
+            --title "CH-aPaaS-Server ${{ steps.locate.outputs.version }} build ${GITHUB_SHA}" \
             --notes "自动构建产物（提交 ${GITHUB_SHA}，分支 main）" \
             "${{ steps.locate.outputs.jar }}#${{ steps.locate.outputs.jar_name }}"

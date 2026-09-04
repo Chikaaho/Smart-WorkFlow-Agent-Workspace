@@ -1,0 +1,18 @@
+== 发布段来源: /tmp/p59-server-main/.github/workflows/build-release.yml (sha256=ab46b1fe96ef2f3e19b8c9e8e72c7e51b29ad36e428611e1055d849debbfb03c) ==
+== 场景=rerun S1=096f707ded7defbbe3877f60d30412afd5bbb220 S2=6ab9ae50080b2ae884eefaa728ae021702661ece ==
+== 远端 main HEAD=6ab9ae50080b2ae884eefaa728ae021702661ece（应为 S2）==
+== S1=096f707ded7defbbe3877f60d30412afd5bbb220 S2=6ab9ae50080b2ae884eefaa728ae021702661ece ==
+预置: tag build-096f707ded7defbbe3877f60d30412afd5bbb220 -> 096f707ded7defbbe3877f60d30412afd5bbb220（同提交重跑）
+== 发布段抽取:       16 行 ==
+产物占位: sw-bootstrap/target/bootstrap.jar
+== 发布段退出码: 0 ==
+== git/gh 调用序列 ==
+GIT_LSREMOTE_CALLED origin refs/tags/build-096f707ded7defbbe3877f60d30412afd5bbb220
+GH_CALL view build-096f707ded7defbbe3877f60d30412afd5bbb220
+GH_VIEW release_exists build-096f707ded7defbbe3877f60d30412afd5bbb220
+GH_CALL delete build-096f707ded7defbbe3877f60d30412afd5bbb220 --yes
+GH_DELETE release_only build-096f707ded7defbbe3877f60d30412afd5bbb220 (tag 保留)
+GH_CALL create build-096f707ded7defbbe3877f60d30412afd5bbb220 --target 096f707ded7defbbe3877f60d30412afd5bbb220 --title CH-aPaaS-Server 1.0.0-SNAPSHOT build 096f707ded7defbbe3877f60d30412afd5bbb220 --notes 自动构建产物（提交 096f707ded7defbbe3877f60d30412afd5bbb220，分支 main）
+GH_CREATE tag=build-096f707ded7defbbe3877f60d30412afd5bbb220 target=096f707ded7defbbe3877f60d30412afd5bbb220 now=096f707ded7defbbe3877f60d30412afd5bbb220
+== 结束时远端 tags ==
+096f707ded7defbbe3877f60d30412afd5bbb220	refs/tags/build-096f707ded7defbbe3877f60d30412afd5bbb220
