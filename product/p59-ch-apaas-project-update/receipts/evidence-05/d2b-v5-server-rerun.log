@@ -1,0 +1,21 @@
+== D2b-asset v5 完整发布段验证（命名步骤抽取、失败传播）==
+== workflow 副本: /usr/local/projects/Smart-WorkFlow/product/p59-ch-apaas-project-update/receipts/evidence-04/d2b-asset-server-workflow-6ab9ae5.yml ==
+== 源提交=6ab9ae50080b2ae884eefaa728ae021702661ece 源blob=fc12080c507a78a1addfde52e896b650bc9cb8e0 文件sha256=ab46b1fe96ef2f3e19b8c9e8e72c7e51b29ad36e428611e1055d849debbfb03c ==
+== 场景=rerun S1=096f707ded7defbbe3877f60d30412afd5bbb220 S2=6ab9ae50080b2ae884eefaa728ae021702661ece ==
+== 抽取段: 17 物理行 ==
+== 抽取段末行: ["sw-bootstrap/target/bootstrap.jar#bootstrap.jar"] ==
+fe3bc3ea05416b88bc8f2c0ad9a8d441c96682dd29505cdf6b2540c40d1b126b  release-step.sh
+== 远端 main HEAD=6ab9ae50080b2ae884eefaa728ae021702661ece
+预置: tag build-096f707ded7defbbe3877f60d30412afd5bbb220 -> 096f707ded7defbbe3877f60d30412afd5bbb220（同提交重跑）
+== 样本产物: sw-bootstrap/target/bootstrap.jar（      23 字节，非空）==
+== 发布段退出码: 0 ==
+== git/gh 调用序列 ==
+GIT_LSREMOTE_CALLED origin refs/tags/build-096f707ded7defbbe3877f60d30412afd5bbb220
+GH_CALL view build-096f707ded7defbbe3877f60d30412afd5bbb220
+GH_VIEW release_exists build-096f707ded7defbbe3877f60d30412afd5bbb220
+GH_CALL delete build-096f707ded7defbbe3877f60d30412afd5bbb220 --yes
+GH_DELETE release_only build-096f707ded7defbbe3877f60d30412afd5bbb220 (tag 保留)
+GH_CALL create build-096f707ded7defbbe3877f60d30412afd5bbb220 --target 096f707ded7defbbe3877f60d30412afd5bbb220 --title CH-aPaaS-Server 1.0.0-SNAPSHOT build 096f707ded7defbbe3877f60d30412afd5bbb220 --notes 自动构建产物（提交 096f707ded7defbbe3877f60d30412afd5bbb220，分支 main） sw-bootstrap/target/bootstrap.jar#bootstrap.jar
+GH_CREATE_OK_same_tag tag=build-096f707ded7defbbe3877f60d30412afd5bbb220 target=096f707ded7defbbe3877f60d30412afd5bbb220 assets=[ sw-bootstrap/target/bootstrap.jar#bootstrap.jar]
+== 结束时远端 tags ==
+096f707ded7defbbe3877f60d30412afd5bbb220	refs/tags/build-096f707ded7defbbe3877f60d30412afd5bbb220
