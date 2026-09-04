@@ -1,0 +1,724 @@
+GAP_ID=F3
+CAPTURE_DATE=2026-09-04
+PURPOSE=persistent raw output, final quality gates, cleanup SQL/counts, production scan, and worktree manifest for execution receipt 07
+
+[final quality gate raw stdout/stderr and exit codes]
+GATE_BACKEND_FULL_COMMAND=MAVEN_OPTS='-Xmx2g' mvn -q test
+GATE_BACKEND_FULL_STDOUT=P58_GATE_RESULT name=backend_full_final exit=0 surefire_files=152; Tests run=1035, Failures=0, Errors=0, Skipped=0
+GATE_BACKEND_FULL_STDERR=empty
+GATE_BACKEND_FULL_EXIT=0
+
+GATE_FLYWAY_COMMAND=MAVEN_OPTS='-Xmx2g' mvn -q -pl sw-bootstrap -am -Dtest='FlywayFullChainH2Test,FlywayFullChainPostgresTest' -Dsurefire.failIfNoSpecifiedTests=false test
+GATE_FLYWAY_STDOUT=PostgreSQL 17.5: Successfully validated 48 migrations; Successfully applied 48 migrations to schema public, now at version v49; H2: Successfully applied 49 migrations to schema PUBLIC, now at version v49; P58_GATE_RESULT name=flyway exit=0
+GATE_FLYWAY_STDERR=empty
+GATE_FLYWAY_EXIT=0
+
+GATE_FRONTEND_COMMAND=NODE_OPTIONS='--max-old-space-size=2048' pnpm typecheck && NODE_OPTIONS='--max-old-space-size=2048' pnpm lint && NODE_OPTIONS='--max-old-space-size=2048' pnpm test && NODE_OPTIONS='--max-old-space-size=2048' pnpm build
+GATE_FRONTEND_STDOUT=typecheck exit=0; lint warnings=47 errors=0; Vitest files=117 passed, 1 skipped; tests=1110 passed, 3 skipped; Vite build=success, modules=1832; P58_GATE_RESULT name=frontend_full exit=0
+GATE_FRONTEND_STDERR=empty
+GATE_FRONTEND_EXIT=0
+
+GATE_PRODUCTION_COMMAND=MAVEN_OPTS='-Xmx2g' mvn -q -Pprod -DskipTests clean package
+GATE_PRODUCTION_STDOUT=P58_GATE_RESULT name=backend_prod exit=0
+GATE_PRODUCTION_STDERR=empty
+GATE_PRODUCTION_EXIT=0
+
+GATE_PRODUCTION_SCAN_COMMAND=find . -path '*/target/*.jar' -type f -print | sort; rg -n --hidden -g '*.jar' -g '*.class' -g '*.js' -g '*.css' 'P58_DEBUG|P58Debug|SW_DEBUG_AUTH|debug_auth|p58r_' .
+GATE_PRODUCTION_SCAN_STDOUT=NO_PRODUCTION_DEBUG_MATCHES; P58_PROD_SCAN_RESULT=0
+GATE_PRODUCTION_SCAN_STDERR=empty
+GATE_PRODUCTION_SCAN_EXIT=0
+
+[fresh PostgreSQL cleanup evidence]
+CLEANUP_COMMAND=MAVEN_OPTS='-Xmx2g' mvn -q -pl sw-bootstrap -am -Dtest=P58FinalCleanupEvidenceTest -Dsurefire.failIfNoSpecifiedTests=false test
+CLEANUP_DB=isolated embedded PostgreSQL 17.5 database; Flyway end version=v49; filter=deleted=0 and tenant_id=0 plus the exact seeded P58 object IDs from this run
+CLEANUP_STDOUT_BEGIN
+Successfully applied 48 migrations to schema public, now at version v49
+P58_CLEANUP_SQL table=sw_bpm_approval_action updates=1
+P58_CLEANUP_SQL table=sw_bpm_participant_snapshot updates=1
+P58_CLEANUP_SQL table=sw_bpm_branch_trace updates=1
+P58_CLEANUP_SQL table=sw_bpm_copy_record updates=1
+P58_CLEANUP_SQL table=sw_bpm_instance updates=1
+P58_CLEANUP_SQL table=sw_bpm_form_binding updates=1
+P58_CLEANUP_SQL table=sw_bpm_process_def updates=1
+P58_CLEANUP_SQL table=sw_notify_message updates=1
+P58_CLEANUP_SQL table=sw_form_trace updates=1
+P58_CLEANUP_SQL table=sw_form_snapshot updates=1
+P58_CLEANUP_SQL table=sw_form_config updates=1
+P58_CLEANUP_SQL table=sw_form_def updates=1
+P58_CLEANUP_COUNT table=sw_bpm_approval_action count=0
+P58_CLEANUP_COUNT table=sw_bpm_participant_snapshot count=0
+P58_CLEANUP_COUNT table=sw_bpm_branch_trace count=0
+P58_CLEANUP_COUNT table=sw_bpm_copy_record count=0
+P58_CLEANUP_COUNT table=sw_bpm_instance count=0
+P58_CLEANUP_COUNT table=sw_bpm_form_binding count=0
+P58_CLEANUP_COUNT table=sw_bpm_process_def count=0
+P58_CLEANUP_COUNT table=sw_notify_message count=0
+P58_CLEANUP_COUNT table=sw_form_trace count=0
+P58_CLEANUP_COUNT table=sw_form_snapshot count=0
+P58_CLEANUP_COUNT table=sw_form_config count=0
+P58_CLEANUP_COUNT table=sw_form_def count=0
+P58_CLEANUP_RESULT seed=12 cleanup=12 all_checked_counts=0 query_exit=0
+P58_GATE_RESULT name=pg_cleanup_evidence exit=0
+CLEANUP_STDOUT_END
+CLEANUP_STDERR=empty
+CLEANUP_EXIT=0
+FLOWABLE_BOUNDARY=The Flyway-only cleanup database has no Flowable runtime/history tables. The retained P58-scoped runtime/history baseline was independently queried in the locked cleanup evidence: act_re_procdef=0, act_re_deployment=0, act_ge_bytearray=0, act_hi_procinst=0, act_hi_taskinst=0, act_hi_actinst=0, act_hi_varinst=0, act_hi_identitylink=0, act_hi_comment=0, act_hi_attachment=0, act_ru_execution=0, act_ru_task=0, act_ru_variable=0, act_ru_identitylink=0.
+
+[worktree and manifest snapshot]
+root_HEAD=5b44220cc33ea0e61ec2dab3034eece10e43f2f9
+server_HEAD=2bffd94dd060f32fd19adee5a7c77192c84bfbfe2
+web_HEAD=802971df711397a9d7c9bc20c6c8f5ba60ec70b0
+root_tracked_diff_fingerprint=f0ec0f8ae981031e7e99cb120f6f365dd3a4cc40d320a23535cc7f1a7c4c40d2
+server_tracked_diff_fingerprint=ab9b43a7c0372f3f8a8af5aad45d64e9a80cb1c028b1dc40e29f0984d8f1b76c
+web_tracked_diff_fingerprint=218919f9943c11133fbd5e3831aa38c373e42b7463d7a706646e99f04b07f8a8
+root_preexisting_worktree=knowledge/current-status.md, memory/features.md, memory/handoff.md, memory/state.md, todo/requirement-pool.md modified; search_task/search_fallback P58 seam notes untracked; preserved without overwrite.
+root_new_receipt_files=product/p58-workflow-node-capabilities/receipts/execution-receipt-p58-f1-f3-20260904-07.md; product/p58-workflow-node-capabilities/receipts/attachments/f1-browser-correlation-20260904-07.txt; product/p58-workflow-node-capabilities/receipts/attachments/f2-runtime-snapshot-20260904-07.txt; product/p58-workflow-node-capabilities/receipts/attachments/f3-raw-output-manifest-20260904-07.txt; product/p58-workflow-node-capabilities/receipts/attachments/f3-backend-full-raw-terminal-20260904-10.txt; product/p58-workflow-node-capabilities/receipts/attachments/f3-flyway-full-raw-terminal-20260904-11.txt; product/p58-workflow-node-capabilities/receipts/attachments/f3-production-build-raw-terminal-20260904-12.txt; product/p58-workflow-node-capabilities/receipts/attachments/f3-production-scan-raw-terminal-20260904-13.txt; product/p58-workflow-node-capabilities/receipts/attachments/ids-f1-f3-20260904-07.env; product/p58-workflow-node-capabilities/receipts/attachments/checksums-f1-f3-20260904-07.txt
+hash_scope=SHA-256 checksum file covers the nine receipt/attachment/ID files above; checksum file is excluded from its own list to avoid circular hashing.
+
+SERVER_UNTRACKED_SHA256_BEGIN
+aa8da92d5ffcc6bb787babdb1a0084fcad2f6cebc4e95a8276577d52c20b4820  sw-basic/sw-basic-notify/sw-basic-notify-api/src/main/java/com/sw/ck/notify/api/NotifyChannel.java
+a4adf25b442ecc821f0abc21f089c078efb9a32794ce6795710bac14ebd99c69  sw-basic/sw-basic-notify/sw-basic-notify-api/src/main/java/com/sw/ck/notify/api/NotifyChannelAdapter.java
+59916314134a6f1adece904c9b3a190df3eeda262ded710ee28308c6fa057519  sw-basic/sw-basic-notify/sw-basic-notify-api/src/main/java/com/sw/ck/notify/api/NotifySendRequest.java
+b1e7ee91b5480b3ebb578846d114068f7ea389a6b45901f0ae81d24217915cc4  sw-basic/sw-basic-notify/sw-basic-notify-api/src/main/java/com/sw/ck/notify/api/NotifySendResult.java
+a618dcca41ed0aca0c0f6adaec067b2b342648fd40309315bb910d7d4ee8e028  sw-basic/sw-basic-notify/sw-basic-notify-biz/src/main/java/com/sw/ck/notify/controller/P58DebugNotifyController.java
+68a70fbd7e42e1e41b2e64bbf7020e48c2a6ab3f00a5f5d3e31cd05167b0d5cf  sw-basic/sw-basic-notify/sw-basic-notify-biz/src/main/java/com/sw/ck/notify/impl/P58DebugNotifyChannelAdapter.java
+6e5fb39dfdecc6ec2769f258a3daa43315240523823c523329c3c1841010049a  sw-basic/sw-basic-notify/sw-basic-notify-biz/src/main/resources/db/migration/notify/h2/V48__p58_notify_channels.sql
+4fa06e70419be250ff2f83a25a2d62186e0708f6af36ab8e95fec712da867586  sw-basic/sw-basic-notify/sw-basic-notify-biz/src/main/resources/db/migration/notify/postgresql/V48__p58_notify_channels.sql
+f7cc0a454fec299fb3d9d4b62138d0161b05bd3ae5b4c716f2ddb90090c7a100  sw-basic/sw-basic-notify/sw-basic-notify-biz/src/test/java/com/sw/ck/notify/impl/NotifyFacadeAdapterIdempotencyTest.java
+0aca321e4f095659100686ce06bd799b79632bf0470f2c52d41764b7758259a4  sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/handler/JsonStringTypeHandler.java
+7cb8c00ed02367348403c128b8f555bb1cda9e9ca38f09ee64f10823c50e8ae9  sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/expression/RestrictedExpressionEvaluator.java
+8125c36dd97a255c0122c9e4b000ae5962e139d980bc2670b7ef5f614937981d  sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/participant/NodeActionAuditPort.java
+936088a33ed98e1ab93ea7a5f73b7c8bccc9490e6d89b28a713802245c8b5d99  sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/participant/NodeParticipantAdapter.java
+732420fe8ccfa680a8a8bcecdba0cfe4a8916dc40c3e8abfd596c17e2de0138c  sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/participant/NodeParticipantContext.java
+0b16223d47a327fe0107679494b1694dc442fffe2a5c85f8cb30d6f54732a57f  sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/participant/NodeParticipantResolver.java
+996a0baffcac7e0701e5ac8452dae956d4e6b4e54c14ee7534c82c49fbd23502  sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/participant/ParticipantConfig.java
+dee5a062982fd706af7a637c6bc5026fa2d6f37a9dbc9dadf3b042a712b5b6fc  sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/participant/ParticipantSnapshotRecorder.java
+c0998d5bff4c8d95138ec2d4f4254ff1bdfdf5e252926dd843dca35f11b1ae0d  sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/participant/ParticipantStrategy.java
+54ab115814db9409cb048cd522efb6550ab6eb613a51880dc64de2b4efa43189  sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/delegate/BpmBranchConditionEvaluator.java
+e21874a9cc6fcb9533722eaf3173552c768bf6dc54c277387d6b12f4a36dd78c  sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/delegate/ConsensusCollectionResolver.java
+9c80fce79496c3ae09eb6d74374bc267fcc693f30dfaae3d9ecd45ccbcd96581  sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/delegate/ConsensusCompletionEvaluator.java
+be69262c43efb7135ede17d6dba00ab38f120066f183ea4286ab72d869ae0424  sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/delegate/CopyNodeDelegate.java
+02772957b129fa97f7a4d0fe4aa5c575c58faf9ea95df649961179405383a4cc  sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/delegate/NodeDelegateSupport.java
+59979a0aaeb2b748c815c10452b86ae17138afc996701ff1c2fcd3a793d60163  sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/delegate/NotificationNodeDelegate.java
+be5c3f13e5060cd9c4cd733795fcb82fd907ebe0fd2568a70a87a33f2ed48b7f  sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/listener/ConsensusTaskListener.java
+ede20de78cba0797303bfd7c78422e94e58a818af3896297321b44f0ea4125fe  sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/participant/AdapterParticipantResolver.java
+ce8dbe0095a0e3d49646b6dc863a1265b2ced37cc7244d692aab7dbf5be66597  sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/participant/ExpressionParticipantResolver.java
+f28fef957150b49e0269a0093f6c2fbebfa338ad0af9dfbe362ff121e37bb689  sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/participant/FixedUserParticipantResolver.java
+3c246e2eece60dff66112450d1d9c50cbb791c45b4af707ce309e6f02e8261ae  sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/participant/P58DebugParticipantAdapter.java
+ec4a84c40644ce0172c854a471e19ce8ebda17c7975e289c36beaa2114763526  sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/participant/ParticipantResolverRegistry.java
+f0fa7f28ff9ceddc6e230f9dcbdf3bebd6a1ef829c43c54744c85ed8656de3b5  sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/participant/RoleParticipantResolver.java
+dd1fc9fab1e20d7a0624195dd54593863b935b6c26b5154e596f17644893d232  sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/translator/ConditionGatewayTranslator.java
+48cf2688c1bd1c29855f19cbb52fe30056d220e5fc99f551e7be461638671019  sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/translator/ConsensusNodeTranslator.java
+4f7759a2a545c6fb47a7cef354af6a99b39c39b3cd825ca999855ab2ebe5944d  sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/translator/CopyNodeTranslator.java
+e688e4f36a55518edbb3914962b634ee58361bf7c90d82ef187e9cdd53ca9a33  sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/translator/NotificationNodeTranslator.java
+7f4be3a7681913334aea85ae14436e4fc00370d3e238cc4d4e689ebfc57b6fe4  sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/translator/ServiceTaskNodeTranslator.java
+aa776e2b864c8ccf14171226ad439ea0d956d34ebca62b5d2138d67132ecb9ce  sw-biz/sw-bpm/sw-bpm-engine/src/test/java/com/sw/ck/bpm/engine/delegate/ConsensusCompletionEvaluatorTest.java
+280cb867e52d53462348774488fdbae7d1f72c718446b22adeafa808c51a47cd  sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/dto/ApprovalAction.java
+26a7878e09d83652aef6b35abb5d845bcc0cc63f0e8a7f6562d5f448a94a006d  sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/dto/ApprovalActionRequest.java
+59104499ba09015477840c4d591b88ff664bea9c7b65cb239c9f3c23b591cebf  sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/entity/ApprovalActionRecord.java
+5c6afe7c4ca6332da3e3262ecf8b0ce9f870c4f21fb45384536840b26b036544  sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/entity/BranchTrace.java
+33767b2e99385a5c3febfe0735743b1e932eb23119c0d042960378e51fadd2da  sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/entity/CopyRecord.java
+3939da6120c0391bf7a1b27d8481f333c132e1ca7c7bc14666aefc0d93efdba7  sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/entity/ParticipantSnapshot.java
+d7c93ac45214b849231c2668a71f1e839fa95e02c60814240451292e24b88544  sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/ApprovalActionRecordMapper.java
+37ad14a7e048e171740499385d316aad13dfbd6b537ad7c49ba3ceeeedcd4a55  sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/BranchTraceMapper.java
+5871ede16f646ee0c00af10065ed2eb2e78a7464091e350c85dba9d94b1233f6  sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/CopyRecordMapper.java
+aba1665f6600e0cbdd93ebae536ea7853ea11a01d117876ec2174f5d5eb64cb7  sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/ParticipantSnapshotMapper.java
+ac0b98d49b8ac7457c42b0c4364ef926ae418af7c7e0823bc653334245a58107  sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/ApprovalActionService.java
+4afd10fb3ffb1f545aae2fa3bbb235212d9a17d425a4a5687d9dc58185ef541b  sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/ApprovalActionServiceImpl.java
+48514f78f455990b02daa67e91ffd73936ad2cbce85bc0b5021ccb2a410cb773  sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/NodeActionAuditServiceImpl.java
+c2f54901ee3728af698ec8869f0b2036d559ca70247f1dfa252774eb2a49cdb2  sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/ParticipantSnapshotRecorderImpl.java
+e9a04a82bb54ec16092fe6efe6959d07c02859c3a5a22beea385b88ee9ae806a  sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/validator/ApprovalOpinionValidator.java
+6a6984b7c4b061945aea1bcd8cb1876036bfd10f8c6771f961cc6fc2c74a1a49  sw-biz/sw-bpm/sw-bpm-process/src/main/resources/db/migration/bpm/h2/V49__p58_workflow_node_capabilities.sql
+d22bdbcd975e1bc841e1f3ba5f8ec11eeefa7e6e91ffd2be97d75bedf850b179  sw-biz/sw-bpm/sw-bpm-process/src/main/resources/db/migration/bpm/postgresql/V49__p58_workflow_node_capabilities.sql
+9105e01156e098256d0e2a9cadc22dc81efe9672d4b7262ddd76991749089254  sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/service/impl/ParticipantSnapshotRecorderImplTest.java
+392576ecbf39edf4f3e91e6abc6ac59174001adcff28498143fbb134e77c8191  sw-framework/sw-security/src/main/java/com/sw/ck/security/config/DebugAuthenticationProfile.java
+b5a52813035ae969b4a0f9f62d58747c49deb5f48cd340f1d9f7a8c32a8c3092  sw-framework/sw-security/src/main/java/com/sw/ck/security/config/DebugAuthenticationProperties.java
+4edcf3a347322c3ece06c2582414558b642ddb572823d7a5ba4b7dc8d58304f6  sw-framework/sw-security/src/main/java/com/sw/ck/security/filter/AccessLoggingFilter.java
+c42aba58b6abc157670e449d0bca274325e19af9b6f45921a05135f794f758e3  sw-framework/sw-security/src/main/java/com/sw/ck/security/filter/DebugAuthenticationFilter.java
+14be5c5ee5a0ea87d6a67f98b40c6e36bf7f69f2e4fed9fb87f4d0b5df061333  sw-framework/sw-security/src/test/java/com/sw/ck/security/filter/AccessLoggingFilterTest.java
+db890b856f0d32b052013dfa8473939c952d6aec70f63d7934e5cd4a811606f4  sw-framework/sw-security/src/test/java/com/sw/ck/security/filter/DebugAuthenticationFilterTest.java
+SERVER_UNTRACKED_SHA256_END
+WEB_UNTRACKED_SHA256_BEGIN
+3f17a10f9d8215d282c73b52c89b4e888c13c9faedb323a163da09ac17dc8949  src/foundation/auth/dev-debug.spec.ts
+fa292b9c7796b6d66cb4031d1a26b3154242725b6fe4f6706f1f218963d3ebb0  src/foundation/auth/dev-debug.ts
+WEB_UNTRACKED_SHA256_END
+
+[historical manifest correction]
+HISTORICAL_RECEIPT=execution-receipt-p58-e1-e6-20260904-06.md remains unchanged.
+HISTORICAL_E1_ACTUAL_SHA256=c0a9c5a9e9de150a4bd6065c3d7ebfc13c7b49945576908555b971fa4e075929; HISTORICAL_E1_REGISTERED_SHA256=914d9459470d1fd268401486210367091dbec2563f80f103d033bc12c7af21d3
+HISTORICAL_E3_ACTUAL_SHA256=ee68163a9bf16fe27ffd61e8cb4da655432c7a994542ecbb4e4a0cbdb30ccc; HISTORICAL_E3_REGISTERED_SHA256=c24038300a3fe3723883634312abd59436ddf18caa195f3d127883fc6e35312d
+HISTORICAL_POLICY=06 files and historical review are retained; 07 checksum manifest is authoritative only for the new F1-F3 files and does not retroactively certify old mismatched entries.
+
+[post-run cleanup boundary]
+P58_H2_RUNTIME=browser configuration draft deleted through API with HTTP 200 and requestId=f1-config-draft-delete-20260904-07; fresh browser process chain reached REJECTED with activeNodeIds=[] and todo total=0; isolated H2 runtime is stopped after evidence capture.
+P58_PORT_CLEANUP=backend 18084 and web 5173 are checked after shutdown; expected listener count=0 for both.
+P58_FORBIDDEN_PATH_SCAN=PASS for all new 07 files
+F3_RESULT=PASS for persistent attachment, manifest, gate, cleanup, and hash-scope evidence
+
+[additional persistent backend full-gate raw transcript]
+BACKEND_RAW_ATTACHMENT=product/p58-workflow-node-capabilities/receipts/attachments/f3-backend-full-raw-terminal-20260904-10.txt
+BACKEND_RAW_CAPTURE=complete merged terminal stream from a fresh MAVEN_OPTS='-Xmx2g' mvn -q test run on the same source snapshot; 12551 lines, 1549399 bytes before the single documented system-temp path redaction
+BACKEND_RAW_EXIT=0
+BACKEND_RAW_SUREFIRE_SCOPE=152 reports; cleanup-only P58FinalCleanupEvidenceTest report excluded
+
+[additional persistent raw final-gate attachments]
+FLYWAY_RAW_ATTACHMENT=product/p58-workflow-node-capabilities/receipts/attachments/f3-flyway-full-raw-terminal-20260904-11.txt
+FLYWAY_RAW_CAPTURE=complete merged terminal stream; 546 lines, 76923 bytes before the single documented system-temp path redaction
+FLYWAY_RAW_EXIT=0
+PRODUCTION_BUILD_RAW_ATTACHMENT=product/p58-workflow-node-capabilities/receipts/attachments/f3-production-build-raw-terminal-20260904-12.txt
+PRODUCTION_BUILD_RAW_CAPTURE=complete merged terminal stream; 0 lines, 0 bytes
+PRODUCTION_BUILD_RAW_EXIT=0
+PRODUCTION_SCAN_RAW_ATTACHMENT=product/p58-workflow-node-capabilities/receipts/attachments/f3-production-scan-raw-terminal-20260904-13.txt
+PRODUCTION_SCAN_RAW_CAPTURE=complete stdout; 21 jar paths, no matching debug output
+PRODUCTION_SCAN_RG_EXIT=1 (expected no matches)
+PRODUCTION_SCAN_RESULT=0
+
+[F1 ordinary candidate browser-isolation cleanup after evidence capture]
+The second-candidate browser run used a fresh in-memory H2 restart on backend port 18084.
+  user_create_final=code=0; objectId=2095743342486319106; status=0; roleId=2
+  role_menu_add_workflow_pages=code=0; role_menu_restore_attempt=code=500 because the service soft-deletes unique role-menu rows before reinsertion
+  process_definition_delete=code=0; defId=2095742729564286978
+  candidate_user_delete=code=0; userId=2095743342486319106
+  published_form_delete=code=1100 (expected protection for PUBLISHED); formId=35066041-943b-4386-9891-63e5bd317877
+  cleanup_boundary=backend shutdown discarded the isolated in-memory H2 state, including the published form, process definition, business instance, task, candidate user, and role-menu mutation
+  final_listener_check=lsof -nP -iTCP:18084 -sTCP:LISTEN; lsof -nP -iTCP:5173 -sTCP:LISTEN; output=P58_PORT_CLEANUP=PASS; exit=0
+
+[candidate browser request correlation captured before cleanup]
+  todo=web-f9c8e4b7-93d2-4205-a3a2-20f2b1fcdb61; ACCESS GET /api/workflow/tasks/todo 200 userId=2095743342486319106
+  detail=web-9840e26f-d125-485c-938e-bc6fa94aeef8; ACCESS GET /api/workflow/tasks/f55448b3-a81f-11f1-95d2-66ff24301f3c 200 userId=2095743342486319106
+  replay=f1-candidate-replay-after-browser-20260904-07; business response code=2305; ACCESS POST /api/workflow/tasks/f55448b3-a81f-11f1-95d2-66ff24301f3c/complete 200 userId=2095743342486319106
+
+[frontend gate raw transcript; ANSI control sequences removed; captured after browser evidence on the same source snapshot]
+TYPECHECK_RERUN_COMMAND=NODE_OPTIONS='--max-old-space-size=2048' pnpm typecheck
+TYPECHECK_RERUN_EXIT=0
+TYPECHECK_RERUN_STDOUT_BEGIN
+$ vue-tsc -b --noEmit
+
+TYPECHECK_RERUN_STDOUT_END
+TYPECHECK_RERUN_STDERR=not separately emitted by exec capture
+LINT_RERUN_COMMAND=NODE_OPTIONS='--max-old-space-size=2048' pnpm lint
+LINT_RERUN_EXIT=0
+LINT_RERUN_STDOUT_BEGIN
+$ eslint .
+
+/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Web/src/foundation/auth/dev-debug.spec.ts
+  51:17  warning  Replace `'[E2-debug-auth]·init=1·switch_off=1·localStorage_setItem=0·sessionStorage_setItem=0·cookie_set=0'` with `⏎······'[E2-debug-auth]·init=1·switch_off=1·localStorage_setItem=0·sessionStorage_setItem=0·cookie_set=0',⏎····`  prettier/prettier
+
+/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Web/src/foundation/mock/workflow-node-capabilities.ts
+  66:8  warning  Replace `·key:·'mode',·label:·'结算方式',·type:·'SELECT',·required:·true,·validation:·{·values:·['ALL',·'ANY',·'RATIO']·}` with `⏎········key:·'mode',⏎········label:·'结算方式',⏎········type:·'SELECT',⏎········required:·true,⏎········validation:·{·values:·['ALL',·'ANY',·'RATIO']·},⏎·····`  prettier/prettier
+  67:8  warning  Replace `·key:·'ratio',·label:·'通过比例',·type:·'NUMBER',·required:·false,·validation:·{·min:·1,·max:·100·}` with `⏎········key:·'ratio',⏎········label:·'通过比例',⏎········type:·'NUMBER',⏎········required:·false,⏎········validation:·{·min:·1,·max:·100·},⏎·····`                            prettier/prettier
+
+/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Web/src/foundation/request/index.spec.ts
+  12:17  warning  Replace `·use:·vi.fn((handler:·unknown)·=>·mockRequestInterceptor.mockImplementation(handler·as·never))` with `⏎········use:·vi.fn((handler:·unknown)·=>⏎··········mockRequestInterceptor.mockImplementation(handler·as·never),⏎········),⏎·····`  prettier/prettier
+
+/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Web/src/modules/workflow/api/index.ts
+  11:40  warning  '/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Web/src/contracts/bpm-node.ts' imported multiple times                            import/no-duplicates
+  12:44  warning  '/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Web/src/contracts/bpm-node.ts' imported multiple times                            import/no-duplicates
+  57:36  warning  Replace `taskId:·string,·data?:·Partial<ApprovalActionRequest>` with `⏎··taskId:·string,⏎··data?:·Partial<ApprovalActionRequest>,⏎`  prettier/prettier
+  66:34  warning  Replace `taskId:·string,·data?:·Partial<ApprovalActionRequest>` with `⏎··taskId:·string,⏎··data?:·Partial<ApprovalActionRequest>,⏎`  prettier/prettier
+
+/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Web/src/modules/workflow/views/EditProcessDefDialog.vue
+  168:36  warning  Replace `·config.strategy·===·'ROLE'·||·config.strategy·===·'EXPRESSION'` with `⏎··········config.strategy·===·'ROLE'·||⏎··········config.strategy·===·'EXPRESSION'·||`                                                                                                                                                                                                                                                                        prettier/prettier
+  169:11  warning  Replace `||·config.strategy·===·'ADAPTER'·?·config.strategy` with `config.strategy·===·'ADAPTER'⏎············?·config.strategy⏎···········`                                                                                                                                                                                                                                                                                                    prettier/prettier
+  172:54  warning  Replace `·?·value.map(String)·:·value·?·[String(value)]` with `⏎············?·value.map(String)⏎············:·value⏎··············?·[String(value)]⏎·············`                                                                                                                                                                                                                                                                             prettier/prettier
+  181:56  warning  Insert `⏎·······`                                                                                                                                                                                                                                                                                                                                                                                                                              prettier/prettier
+  182:58  warning  Insert `⏎·······`                                                                                                                                                                                                                                                                                                                                                                                                                              prettier/prettier
+  199:11  warning  Replace `·participantStrategy.value·===·'FIXED_USER'·?·participantIds.value` with `⏎······participantStrategy.value·===·'FIXED_USER'⏎········?·participantIds.value⏎·······`                                                                                                                                                                                                                                                                   prettier/prettier
+  200:48  warning  Replace `·?·{·adapterId:·participantValue.value.trim()·}` with `⏎······?·{·adapterId:·participantValue.value.trim()·}⏎·····`                                                                                                                                                                                                                                                                                                                   prettier/prettier
+  232:25  warning  Replace `·participant,·channel:·'IN_APP',·title:·'条件分支命中',·content:·'条件分支已命中'` with `⏎······participant,⏎······channel:·'IN_APP',⏎······title:·'条件分支命中',⏎······content:·'条件分支已命中',⏎···`                                                                                                                                                                                                                                                        prettier/prettier
+  239:10  warning  Replace `·id:·'node_middle',·kind:·'node',·type:·'CONDITION',·config:·middleConfig,·style:·{·x:·350,·y:·300·}` with `⏎··········id:·'node_middle',⏎··········kind:·'node',⏎··········type:·'CONDITION',⏎··········config:·middleConfig,⏎··········style:·{·x:·350,·y:·300·},⏎·······`                                                                                                                                                          prettier/prettier
+  240:10  warning  Replace `·id:·'node_true',·kind:·'node',·type:·'NOTIFICATION',·config:·pathConfig,·style:·{·x:·600,·y:·220·}` with `⏎··········id:·'node_true',⏎··········kind:·'node',⏎··········type:·'NOTIFICATION',⏎··········config:·pathConfig,⏎··········style:·{·x:·600,·y:·220·},⏎·······`                                                                                                                                                            prettier/prettier
+  241:10  warning  Replace `·id:·'node_default',·kind:·'node',·type:·'NOTIFICATION',·config:·pathConfig,·style:·{·x:·600,·y:·380·}` with `⏎··········id:·'node_default',⏎··········kind:·'node',⏎··········type:·'NOTIFICATION',⏎··········config:·pathConfig,⏎··········style:·{·x:·600,·y:·380·},⏎·······`                                                                                                                                                      prettier/prettier
+  243:10  warning  Replace `·id:·'edge_1',·kind:·'edge',·source:·'node_start',·target:·'node_middle',·config:·{},·style:·{}` with `⏎··········id:·'edge_1',⏎··········kind:·'edge',⏎··········source:·'node_start',⏎··········target:·'node_middle',⏎··········config:·{},⏎··········style:·{},⏎·······`                                                                                                                                                          prettier/prettier
+  244:10  warning  Replace `·id:·'edge_true',·kind:·'edge',·source:·'node_middle',·target:·'node_true',·config:·{·branchId:·'TRUE',·priority:·1,·expression:·branchExpression.value.trim()·},·style:·{}` with `⏎··········id:·'edge_true',⏎··········kind:·'edge',⏎··········source:·'node_middle',⏎··········target:·'node_true',⏎··········config:·{·branchId:·'TRUE',·priority:·1,·expression:·branchExpression.value.trim()·},⏎··········style:·{},⏎·······`  prettier/prettier
+  245:10  warning  Replace `·id:·'edge_default',·kind:·'edge',·source:·'node_middle',·target:·'node_default',·config:·{·branchId:·'DEFAULT',·default:·true·},·style:·{}` with `⏎··········id:·'edge_default',⏎··········kind:·'edge',⏎··········source:·'node_middle',⏎··········target:·'node_default',⏎··········config:·{·branchId:·'DEFAULT',·default:·true·},⏎··········style:·{},⏎·······`                                                                  prettier/prettier
+  246:10  warning  Replace `·id:·'edge_true_end',·kind:·'edge',·source:·'node_true',·target:·'node_end',·config:·{},·style:·{}` with `⏎··········id:·'edge_true_end',⏎··········kind:·'edge',⏎··········source:·'node_true',⏎··········target:·'node_end',⏎··········config:·{},⏎··········style:·{},⏎·······`                                                                                                                                                    prettier/prettier
+  247:10  warning  Replace `·id:·'edge_default_end',·kind:·'edge',·source:·'node_default',·target:·'node_end',·config:·{},·style:·{}` with `⏎··········id:·'edge_default_end',⏎··········kind:·'edge',⏎··········source:·'node_default',⏎··········target:·'node_end',⏎··········config:·{},⏎··········style:·{},⏎·······`                                                                                                                                        prettier/prettier
+  308:7   warning  Replace `participantNode.value·&&·participantStrategy.value·===·'FIXED_USER'·&&·participantIds.value.length·===·0` with `⏎····participantNode.value·&&⏎····participantStrategy.value·===·'FIXED_USER'·&&⏎····participantIds.value.length·===·0⏎··`                                                                                                                                                                                             prettier/prettier
+  312:7   warning  Replace `participantNode.value·&&·participantStrategy.value·!==·'FIXED_USER'·&&·!participantValue.value.trim()` with `⏎····participantNode.value·&&⏎····participantStrategy.value·!==·'FIXED_USER'·&&⏎····!participantValue.value.trim()⏎··`                                                                                                                                                                                                   prettier/prettier
+  316:7   warning  Replace `middleNodeType.value·===·'CONSENSUS'·&&·(consensusRatio.value·<·1·||·consensusRatio.value·>·100)` with `⏎····middleNodeType.value·===·'CONSENSUS'·&&⏎····(consensusRatio.value·<·1·||·consensusRatio.value·>·100)⏎··`                                                                                                                                                                                                                 prettier/prettier
+  320:7   warning  Replace `middleNodeType.value·===·'NOTIFICATION'·&&·(!notificationTitle.value.trim()·||·!notificationContent.value.trim())` with `⏎····middleNodeType.value·===·'NOTIFICATION'·&&⏎····(!notificationTitle.value.trim()·||·!notificationContent.value.trim())⏎··`                                                                                                                                                                               prettier/prettier
+  333:63  warning  Replace `⏎······graph,⏎······nodeCapabilities.value,` with `graph,·nodeCapabilities.value,·[`                                                                                                                                                                                                                                                                                                                                                  prettier/prettier
+  336:7   warning  Replace `['START',·middleNodeType.value,·'END']` with `'START',⏎······middleNodeType.value,⏎······'END'`                                                                                                                                                                                                                                                                                                                                       prettier/prettier
+  337:5   warning  Insert `]`                                                                                                                                                                                                                                                                                                                                                                                                                                     prettier/prettier
+  402:64  warning  Replace `(capability)·=>·!['START',·'END'].includes(capability.type)` with `⏎················(capability)·=>·!['START',·'END'].includes(capability.type),⏎··············`                                                                                                                                                                                                                                                                      prettier/prettier
+  455:29  warning  Replace `participantStrategy·===·'ROLE'·?·'角色编码'·:·participantStrategy·===·'EXPRESSION'·?·'例如·form.ownerId'·:·'适配器标识'` with `⏎················participantStrategy·===·'ROLE'⏎··················?·'角色编码'⏎··················:·participantStrategy·===·'EXPRESSION'⏎····················?·'例如·form.ownerId'⏎····················:·'适配器标识'⏎··············`                                                                                         prettier/prettier
+
+/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Web/src/modules/workflow/views/TaskDetail.vue
+  134:42  warning  Replace `·item.nodeKey.length·>·0·&&` with `⏎······item.nodeKey.length·>·0·&&⏎·····`                                                                                                                                                                                                                                                                                                                                                                               prettier/prettier
+  138:24  warning  Replace `action:·ApprovalActionRequest['action']` with `⏎··action:·ApprovalActionRequest['action'],⏎`                                                                                                                                                                                                                                                                                                                                                              prettier/prettier
+  170:28  warning  Replace `/^([\w.]+)\s*(===|==|!=|>=|<=|>|<)\s*(?:['"]([^'"]*)['"]|(-?\d+(?:\.\d+)?)|(true|false))$/` with `⏎····/^([\w.]+)\s*(===|==|!=|>=|<=|>|<)\s*(?:['"]([^'"]*)['"]|(-?\d+(?:\.\d+)?)|(true|false))$/,⏎··`                                                                                                                                                                                                                                                    prettier/prettier
+  173:25  warning  Insert `⏎···`                                                                                                                                                                                                                                                                                                                                                                                                                                                      prettier/prettier
+  177:26  warning  Replace `·?·left·>·right·:·match[2]·===·'>='` with `⏎····?·left·>·right⏎····:·match[2]·===·'>='⏎·····`                                                                                                                                                                                                                                                                                                                                                             prettier/prettier
+  178:1   warning  Replace `····:·match[2]·===·'<'·?·left·<·right` with `······:·match[2]·===·'<'⏎········?·left·<·right⏎·······`                                                                                                                                                                                                                                                                                                                                                     prettier/prettier
+  181:32  warning  Replace `field:·NonNullable<ApprovalOpinionConfig['fields']>[number]` with `⏎··field:·NonNullable<ApprovalOpinionConfig['fields']>[number],⏎`                                                                                                                                                                                                                                                                                                                      prettier/prettier
+  201:27  warning  Replace `field:·NonNullable<ApprovalOpinionConfig['fields']>[number]` with `⏎··field:·NonNullable<ApprovalOpinionConfig['fields']>[number],⏎`                                                                                                                                                                                                                                                                                                                      prettier/prettier
+  206:28  warning  Replace `field:·NonNullable<ApprovalOpinionConfig['fields']>[number]` with `⏎··field:·NonNullable<ApprovalOpinionConfig['fields']>[number],⏎`                                                                                                                                                                                                                                                                                                                      prettier/prettier
+  464:33  warning  Insert `⏎···········`                                                                                                                                                                                                                                                                                                                                                                                                                                              prettier/prettier
+  500:17  warning  Replace `·detail.opinionForm?.formId·?·`（${detail.opinionForm.formId}·v${detail.opinionForm.version}）`·:·''` with `⏎············detail.opinionForm?.formId⏎··············?·`（${detail.opinionForm.formId}·v${detail.opinionForm.version}）`⏎··············:·''⏎·········`                                                                                                                                                                                           prettier/prettier
+  508:42  warning  Insert `⏎·············`                                                                                                                                                                                                                                                                                                                                                                                                                                            prettier/prettier
+  525:91  warning  Replace `{{·option·}}` with `⏎················{{·option·}}⏎··············`                                                                                                                                                                                                                                                                                                                                                                                         prettier/prettier
+  547:23  warning  Replace `setOpinionFieldValue(field.key,·field.type·===·'NUMBER'·?·Number(($event.target·as·HTMLInputElement).value)·:·($event.target·as·HTMLInputElement).value)` with `⏎················setOpinionFieldValue(⏎··················field.key,⏎··················field.type·===·'NUMBER'⏎····················?·Number(($event.target·as·HTMLInputElement).value)⏎····················:·($event.target·as·HTMLInputElement).value,⏎················)⏎··············`  prettier/prettier
+
+✖ 47 problems (0 errors, 47 warnings)
+  0 errors and 46 warnings potentially fixable with the `--fix` option.
+
+
+LINT_RERUN_STDOUT_END
+LINT_RERUN_STDERR=not separately emitted by exec capture
+TEST_RERUN_COMMAND=NODE_OPTIONS='--max-old-space-size=2048' pnpm test
+TEST_RERUN_EXIT=0
+TEST_RERUN_STDOUT_BEGIN
+$ vitest run
+
+ RUN  v4.1.9 /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Web
+
+Not implemented: navigation to another Document
+
+ Test Files  117 passed | 1 skipped (118)
+      Tests  1110 passed | 3 skipped (1113)
+   Start at  13:38:01
+   Duration  37.32s (transform 12.64s, setup 0ms, import 85.19s, tests 26.45s, environment 118.03s)
+
+
+TEST_RERUN_STDOUT_END
+TEST_RERUN_STDERR=not separately emitted by exec capture
+BUILD_RERUN_COMMAND=NODE_OPTIONS='--max-old-space-size=2048' pnpm build
+BUILD_RERUN_EXIT=0
+BUILD_RERUN_STDOUT_BEGIN
+$ vue-tsc -b && vite build
+vite v8.1.0 building client environment for production...
+transforming...✓ 1832 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                      0.93 kB │ gzip:  0.46 kB
+dist/assets/css-x1XGuNl0.css                         0.00 kB │ gzip:  0.02 kB
+dist/assets/css-D_6SYB2i.css                         0.04 kB │ gzip:  0.06 kB
+dist/assets/css-Wv38huFO.css                         0.16 kB │ gzip:  0.13 kB
+dist/assets/LoopPanel-Bcf4sXUO.css                   0.17 kB │ gzip:  0.15 kB
+dist/assets/ToolPanel-CRClJkkS.css                   0.17 kB │ gzip:  0.15 kB
+dist/assets/ErrorPage-BXj7JNwF.css                   0.19 kB │ gzip:  0.16 kB
+dist/assets/ConversationList-B_RityWh.css            0.23 kB │ gzip:  0.16 kB
+dist/assets/DictConfig-BstVq1ik.css                  0.27 kB │ gzip:  0.17 kB
+dist/assets/TextConfig-_UVmOSb-.css                  0.27 kB │ gzip:  0.17 kB
+dist/assets/HistoryVersionsDialog-BovV-Q2c.css       0.30 kB │ gzip:  0.17 kB
+dist/assets/DictTypeList-B0DyUXon.css                0.32 kB │ gzip:  0.20 kB
+dist/assets/PostList-gB2fHq6t.css                    0.32 kB │ gzip:  0.20 kB
+dist/assets/UserList-B0FpPqdN.css                    0.32 kB │ gzip:  0.20 kB
+dist/assets/ToolList-BgPDEcyf.css                    0.37 kB │ gzip:  0.23 kB
+dist/assets/ConditionPanel-8pUnK47N.css              0.39 kB │ gzip:  0.22 kB
+dist/assets/DateConfig-Bl_RdT8D.css                  0.40 kB │ gzip:  0.20 kB
+dist/assets/LlmPanel-Blx4P2cD.css                    0.41 kB │ gzip:  0.24 kB
+dist/assets/EditProcessDefDialog-ZVSlJF31.css        0.42 kB │ gzip:  0.21 kB
+dist/assets/ExternalToolFormDialog-yXa-mr5e.css      0.42 kB │ gzip:  0.22 kB
+dist/assets/InternalToolFormDialog-BYwcf_4_.css      0.42 kB │ gzip:  0.21 kB
+dist/assets/NotifyTemplateFormDialog-YgAtc_UZ.css    0.42 kB │ gzip:  0.22 kB
+dist/assets/FormSelectDialog-DMP2iR4E.css            0.42 kB │ gzip:  0.21 kB
+dist/assets/FormSelectorDialog-BPZGIdAb.css          0.43 kB │ gzip:  0.21 kB
+dist/assets/ModelList-DpVX87G5.css                   0.44 kB │ gzip:  0.24 kB
+dist/assets/ReferenceSelector-DAj7q9rW.css           0.45 kB │ gzip:  0.21 kB
+dist/assets/NotifyHome-C1ajpNGH.css                  0.46 kB │ gzip:  0.29 kB
+dist/assets/ModelFormDialog-YBfUexLH.css             0.49 kB │ gzip:  0.23 kB
+dist/assets/CommonConfigRows-BGvg-Rgr.css            0.50 kB │ gzip:  0.23 kB
+dist/assets/SubFieldDesigner-CrxaW88x.css            0.51 kB │ gzip:  0.27 kB
+dist/assets/ConfigSeamNote-n7fCmoMv.css              0.51 kB │ gzip:  0.24 kB
+dist/assets/ExecutionList-DwwV9QZC.css               0.55 kB │ gzip:  0.30 kB
+dist/assets/RoleList-DRxoLJgi.css                    0.58 kB │ gzip:  0.28 kB
+dist/assets/DictDataList-D6_6MpMr.css                0.60 kB │ gzip:  0.26 kB
+dist/assets/UserGroupList-Da7PC1uX.css               0.60 kB │ gzip:  0.26 kB
+dist/assets/NotifyTemplateList-BosEJOoM.css          0.69 kB │ gzip:  0.26 kB
+dist/assets/CreateProcessDefDialog-1wgLrbWN.css      0.71 kB │ gzip:  0.27 kB
+dist/assets/RelatedProcessesPanel-DEhGNEMm.css       0.73 kB │ gzip:  0.28 kB
+dist/assets/ReferenceConfig-BRXQxWIv.css             0.74 kB │ gzip:  0.28 kB
+dist/assets/LoginPage-yUA2e-ge.css                   0.89 kB │ gzip:  0.36 kB
+dist/assets/css-BAyktVMS.css                         0.92 kB │ gzip:  0.32 kB
+dist/assets/NotifyBatchSend-BVxIe-qH.css             0.96 kB │ gzip:  0.41 kB
+dist/assets/css-CQ-Vz9bD.css                         1.05 kB │ gzip:  0.35 kB
+dist/assets/PreviewModal-DHJrIsY6.css                1.14 kB │ gzip:  0.43 kB
+dist/assets/css-S7fQQ3B8.css                         1.15 kB │ gzip:  0.45 kB
+dist/assets/FieldPalette-Bx5oDOCx.css                1.29 kB │ gzip:  0.42 kB
+dist/assets/css-GF-yQkxY.css                         1.32 kB │ gzip:  0.44 kB
+dist/assets/TaskDetail-BdPARgcY.css                  1.37 kB │ gzip:  0.45 kB
+dist/assets/DeptList-Cqk99HR2.css                    1.50 kB │ gzip:  0.55 kB
+dist/assets/FormDesigner-BEkxht5m.css                1.52 kB │ gzip:  0.51 kB
+dist/assets/css-B0_1wuTg.css                         1.57 kB │ gzip:  0.52 kB
+dist/assets/css-Dq8WDDkr.css                         1.59 kB │ gzip:  0.53 kB
+dist/assets/ProcessDefList-oF0NBtfw.css              1.74 kB │ gzip:  0.52 kB
+dist/assets/FieldConfigPanel-TrPqpsiK.css            2.04 kB │ gzip:  0.54 kB
+dist/assets/ConversationDetail-HnZ93nVh.css          2.26 kB │ gzip:  0.69 kB
+dist/assets/css-Wf_ds9r7.css                         2.48 kB │ gzip:  0.55 kB
+dist/assets/ExecutionDetail-D67pw_5N.css             2.66 kB │ gzip:  0.83 kB
+dist/assets/FormRender-FO-T2-js.css                  2.73 kB │ gzip:  0.73 kB
+dist/assets/DesignerCanvas-x8p926tz.css              2.76 kB │ gzip:  0.78 kB
+dist/assets/NodeTrajectory-Be9dVv4b.css              2.87 kB │ gzip:  0.89 kB
+dist/assets/css-BpDzfuC8.css                         3.41 kB │ gzip:  0.59 kB
+dist/assets/css-B6UgayC7.css                         3.47 kB │ gzip:  0.73 kB
+dist/assets/page-layout-BdVukgdM.css                 3.52 kB │ gzip:  0.84 kB
+dist/assets/css-DUbGnqO_.css                         3.54 kB │ gzip:  0.97 kB
+dist/assets/DebugSessionView-DT7enrqK.css            3.59 kB │ gzip:  0.99 kB
+dist/assets/css-4sOBTGxz.css                         3.90 kB │ gzip:  0.94 kB
+dist/assets/css-DExoAqKP.css                         4.34 kB │ gzip:  0.89 kB
+dist/assets/css-hrelhGmJ.css                         4.40 kB │ gzip:  0.95 kB
+dist/assets/ProcessInstanceList-BbSuMC6b.css         4.57 kB │ gzip:  1.16 kB
+dist/assets/css-BFXl5gsQ.css                         4.88 kB │ gzip:  1.10 kB
+dist/assets/GraphDesigner-DcIAyinP.css               4.94 kB │ gzip:  1.22 kB
+dist/assets/css-BrTRgFS7.css                         5.67 kB │ gzip:  0.96 kB
+dist/assets/css-1VV9QMa7.css                         6.02 kB │ gzip:  0.95 kB
+dist/assets/css-CzNtyWdF.css                         6.51 kB │ gzip:  1.22 kB
+dist/assets/css-B7gvwdWB.css                         6.95 kB │ gzip:  1.17 kB
+dist/assets/css-cyJZB4WD.css                         7.85 kB │ gzip:  1.96 kB
+dist/assets/css-OVWuLPuT.css                         8.10 kB │ gzip:  1.89 kB
+dist/assets/css-BvdIS3hb.css                        11.16 kB │ gzip:  1.84 kB
+dist/assets/css-Bn4f7rcU.css                        15.78 kB │ gzip:  2.33 kB
+dist/assets/css-CvO7mB41.css                        19.33 kB │ gzip:  2.89 kB
+dist/assets/css-ZSOkJyjJ.css                        19.89 kB │ gzip:  2.13 kB
+dist/assets/FormPreview-6phlPHVr.css                20.94 kB │ gzip:  3.33 kB
+dist/assets/BasicLayout-9CPgrras.css                24.95 kB │ gzip:  3.73 kB
+dist/assets/DictSelect-BNmWJdpO.css                 28.80 kB │ gzip:  4.16 kB
+dist/assets/JobList-CA2RUhht.css                    36.47 kB │ gzip:  3.48 kB
+dist/assets/index-Dh-S2ua5.css                     358.33 kB │ gzip: 48.20 kB
+dist/assets/css--AN1vx9j.js                          0.02 kB │ gzip:  0.04 kB
+dist/assets/css-BKX44gdO.js                          0.02 kB │ gzip:  0.04 kB
+dist/assets/css-C9Ywt4zO2.js                         0.02 kB │ gzip:  0.04 kB
+dist/assets/css-CTT0yRsN.js                          0.02 kB │ gzip:  0.04 kB
+dist/assets/css-Cbewd9hb.js                          0.02 kB │ gzip:  0.04 kB
+dist/assets/css-DstWwti1.js                          0.02 kB │ gzip:  0.04 kB
+dist/assets/css-s9xbYNZr.js                          0.02 kB │ gzip:  0.04 kB
+dist/assets/typescript-DOc6skV4.js                   0.02 kB │ gzip:  0.04 kB
+dist/assets/css-C-0lA7jJ2.js                         0.05 kB │ gzip:  0.05 kB
+dist/assets/css-LaS9PkxL.js                          0.05 kB │ gzip:  0.05 kB
+dist/assets/css-TDAZwelS.js                          0.05 kB │ gzip:  0.05 kB
+dist/assets/refs-Cc5FwKWV.js                         0.06 kB │ gzip:  0.07 kB
+dist/assets/form-layout-BPPexxXa.js                  0.09 kB │ gzip:  0.11 kB
+dist/assets/css-COC4Ki7w.js                          0.10 kB │ gzip:  0.07 kB
+dist/assets/WorkflowHome-BCPbBGgC.js                 0.16 kB │ gzip:  0.15 kB
+dist/assets/form-def-status-Ba0_0B7i.js              0.17 kB │ gzip:  0.15 kB
+dist/assets/IotHome-DAUueBkn.js                      0.19 kB │ gzip:  0.17 kB
+dist/assets/AgentHome-CEM3lvEa.js                    0.20 kB │ gzip:  0.17 kB
+dist/assets/SystemHome-DcM4yLz4.js                   0.20 kB │ gzip:  0.18 kB
+dist/assets/OpenapiHome-IsIN3Z2p.js                  0.20 kB │ gzip:  0.18 kB
+dist/assets/validator-DtxGGD0a.js                    0.23 kB │ gzip:  0.17 kB
+dist/assets/raf-CQwbTVPS.js                          0.23 kB │ gzip:  0.19 kB
+dist/assets/BlankPage-C8u-nptP.js                    0.30 kB │ gzip:  0.26 kB
+dist/assets/use-deprecated-CyQziH7m.js               0.35 kB │ gzip:  0.28 kB
+dist/assets/icon-BxZaHfLu.js                         0.37 kB │ gzip:  0.26 kB
+dist/assets/ErrorPage-D-87ynx5.js                    0.38 kB │ gzip:  0.30 kB
+dist/assets/EmptyPanel-BFX_HAQn.js                   0.51 kB │ gzip:  0.38 kB
+dist/assets/post-DTCeYZmn.js                         0.54 kB │ gzip:  0.26 kB
+dist/assets/dept-DEV0IUFy.js                         0.56 kB │ gzip:  0.28 kB
+dist/assets/JoinPanel-DphJ0_5f.js                    0.57 kB │ gzip:  0.45 kB
+dist/assets/use-id-BPXxapbM.js                       0.57 kB │ gzip:  0.41 kB
+dist/assets/ForkPanel-Caei-PmX.js                    0.57 kB │ gzip:  0.45 kB
+dist/assets/ConfigSeamNote-CtuGNgQO.js               0.58 kB │ gzip:  0.46 kB
+dist/assets/repeat-click-DbJlISLO.js                 0.61 kB │ gzip:  0.38 kB
+dist/assets/RichTextConfig-Be-5PNWx.js               0.65 kB │ gzip:  0.45 kB
+dist/assets/BoolConfig-CvapxsAM.js                   0.66 kB │ gzip:  0.45 kB
+dist/assets/constants-Dm_FGTOH.js                    0.66 kB │ gzip:  0.30 kB
+dist/assets/NumberConfig-BVgkJiqm.js                 0.68 kB │ gzip:  0.47 kB
+dist/assets/rolldown-runtime-QTnfLwEv.js             0.69 kB │ gzip:  0.42 kB
+dist/assets/vnode-CU3ZrYLg.js                        0.71 kB │ gzip:  0.43 kB
+dist/assets/use-form-common-props-CIb5bheL.js        0.73 kB │ gzip:  0.43 kB
+dist/assets/dict-CkRGhlg8.js                         0.76 kB │ gzip:  0.46 kB
+dist/assets/event-CNiIjicE.js                        0.77 kB │ gzip:  0.48 kB
+dist/assets/role-JDEon9Q0.js                         0.81 kB │ gzip:  0.33 kB
+dist/assets/api-BLwKPfor.js                          0.85 kB │ gzip:  0.32 kB
+dist/assets/form-def-CwkKpncd.js                     0.90 kB │ gzip:  0.37 kB
+dist/assets/click-outside-ZxgrXQJ8.js                0.94 kB │ gzip:  0.53 kB
+dist/assets/dict-DePQSa30.js                         1.01 kB │ gzip:  0.31 kB
+dist/assets/debounce-CZHFyEnV.js                     1.05 kB │ gzip:  0.56 kB
+dist/assets/DateConfig-Bfo3IFI9.js                   1.08 kB │ gzip:  0.70 kB
+dist/assets/css-CU8mPMVI.js                          1.10 kB │ gzip:  0.55 kB
+dist/assets/TextConfig-CRj1_wIe.js                   1.11 kB │ gzip:  0.69 kB
+dist/assets/LoopPanel-F3KiVzRW.js                    1.11 kB │ gzip:  0.78 kB
+dist/assets/DictTag-DGmu_NVt.js                      1.14 kB │ gzip:  0.64 kB
+dist/assets/css-D1121eVp.js                          1.22 kB │ gzip:  0.68 kB
+dist/assets/api-BJAkEMqB.js                          1.32 kB │ gzip:  0.43 kB
+dist/assets/use-draggable-CqsnrVO2.js                1.33 kB │ gzip:  0.63 kB
+dist/assets/DictSelect-ChIzxalk.js                   1.38 kB │ gzip:  0.68 kB
+dist/assets/ConditionPanel-BRiEwsFy.js               1.42 kB │ gzip:  0.89 kB
+dist/assets/field-types-CWBEVzcV.js                  1.46 kB │ gzip:  0.65 kB
+dist/assets/graphAdapter-CWp2mU0E.js                 1.50 kB │ gzip:  0.81 kB
+dist/assets/collapse-transition-Cmk7q4_o.js          1.61 kB │ gzip:  0.55 kB
+dist/assets/_baseIteratee-CdnfOb5V.js                1.72 kB │ gzip:  0.87 kB
+dist/assets/form-CxD-JOBN.js                         1.76 kB │ gzip:  0.77 kB
+dist/assets/overlay-bwKJ7yjc.js                      1.76 kB │ gzip:  0.92 kB
+dist/assets/css-BQnZ-WBw.js                          1.76 kB │ gzip:  0.92 kB
+dist/assets/ToolPanel-DtXoN3zw.js                    1.82 kB │ gzip:  0.91 kB
+dist/assets/PreviewModal-TSOT6Ull.js                 1.84 kB │ gzip:  1.04 kB
+dist/assets/DictConfig-DaVu0oCP.js                   1.86 kB │ gzip:  1.00 kB
+dist/assets/ReferenceConfig-CndNsIlp.js              1.90 kB │ gzip:  1.03 kB
+dist/assets/CommonConfigRows-DIT-BPjD.js             1.96 kB │ gzip:  1.08 kB
+dist/assets/css-C3iD7y2p.js                          2.01 kB │ gzip:  0.95 kB
+dist/assets/FieldPalette-D12a_XI7.js                 2.01 kB │ gzip:  1.13 kB
+dist/assets/css-BFpaYo6l.js                          2.02 kB │ gzip:  0.92 kB
+dist/assets/LoginPage-BDvn8H2c.js                    2.14 kB │ gzip:  1.14 kB
+dist/assets/FieldConfigPanel-BaxMftcm.js             2.15 kB │ gzip:  1.18 kB
+dist/assets/ConversationList-CSMHqDkW.js             2.23 kB │ gzip:  1.22 kB
+dist/assets/ProcessedList-CQLCnqIC.js                2.25 kB │ gzip:  1.21 kB
+dist/assets/HistoryVersionsDialog-beORssTf.js        2.66 kB │ gzip:  1.45 kB
+dist/assets/LlmPanel-BWogc8Ku.js                     2.93 kB │ gzip:  1.42 kB
+dist/assets/SubFieldDesigner-BkLOCA_D.js             2.94 kB │ gzip:  1.39 kB
+dist/assets/FormDefList-DdzWciZf.js                  3.05 kB │ gzip:  1.48 kB
+dist/assets/form-designer-C_-NGH1p.js                3.10 kB │ gzip:  1.16 kB
+dist/assets/use-aria-CecBKEeN.js                     3.20 kB │ gzip:  1.58 kB
+dist/assets/DesignerCanvas-DwwoQ-cp.js               3.40 kB │ gzip:  1.67 kB
+dist/assets/CreateProcessDefDialog-D3wNfR7H.js       3.59 kB │ gzip:  1.72 kB
+dist/assets/TodoList-EJIjlo0q.js                     3.83 kB │ gzip:  1.73 kB
+dist/assets/FormSelectDialog-Bvo6yzU4.js             4.01 kB │ gzip:  2.04 kB
+dist/assets/FormSelectorDialog-BeSFx2qf.js           4.02 kB │ gzip:  2.04 kB
+dist/assets/use-locale-8oJ0lG8p.js                   4.04 kB │ gzip:  1.75 kB
+dist/assets/RelatedProcessesPanel-D_iJsaw4.js        4.13 kB │ gzip:  2.07 kB
+dist/assets/ConversationDetail-BqRXhwvx.js           4.23 kB │ gzip:  2.09 kB
+dist/assets/css-PfzH4_uc.js                          4.35 kB │ gzip:  1.79 kB
+dist/assets/NodeTrajectory-DDuWJxs6.js               4.41 kB │ gzip:  1.90 kB
+dist/assets/css-Y4WFVvkT2.js                         4.45 kB │ gzip:  1.80 kB
+dist/assets/NotifyHome-xIUkLAh9.js                   4.46 kB │ gzip:  2.11 kB
+dist/assets/css-B-1DKEAs.js                          4.50 kB │ gzip:  1.63 kB
+dist/assets/css-BWijtKOw.js                          4.62 kB │ gzip:  1.96 kB
+dist/assets/css-De7AzZrM.js                          4.85 kB │ gzip:  2.17 kB
+dist/assets/ReferenceSelector-RVeYD7IV.js            4.87 kB │ gzip:  2.35 kB
+dist/assets/page-layout-BRtf5AXv.js                  4.93 kB │ gzip:  1.65 kB
+dist/assets/GraphDefList-Dj_hhwtW.js                 4.95 kB │ gzip:  2.16 kB
+dist/assets/api-DT5Yy9pk.js                          5.09 kB │ gzip:  1.19 kB
+dist/assets/switch-CEjSYQ5b.js                       5.12 kB │ gzip:  1.79 kB
+dist/assets/radio-CyWYftX5.js                        5.33 kB │ gzip:  2.22 kB
+dist/assets/JobLog-BRiEy4TX.js                       5.50 kB │ gzip:  2.22 kB
+dist/assets/omit-DJ9Tx-BU.js                         5.57 kB │ gzip:  2.27 kB
+dist/assets/ExecutionList-Jev3FHTc.js                5.84 kB │ gzip:  2.56 kB
+dist/assets/NotifyTemplateFormDialog-0fGGa67Z.js     5.88 kB │ gzip:  2.43 kB
+dist/assets/InternalToolFormDialog-CqqIUn-y.js       6.24 kB │ gzip:  2.50 kB
+dist/assets/ModelList-EvIGRumB.js                    6.49 kB │ gzip:  2.81 kB
+dist/assets/StorageList-BVI36pK0.js                  6.51 kB │ gzip:  2.85 kB
+dist/assets/ExecutionDetail-CipYZF27.js              6.74 kB │ gzip:  2.80 kB
+dist/assets/NotifyTemplateList-CgwIaP0H.js           7.01 kB │ gzip:  2.96 kB
+dist/assets/ExternalToolFormDialog-DSj2Qva4.js       7.11 kB │ gzip:  2.91 kB
+dist/assets/input-number-r9rv-YcO.js                 7.13 kB │ gzip:  2.91 kB
+dist/assets/scrollbar-Cj8PxwWM.js                    7.26 kB │ gzip:  2.96 kB
+dist/assets/PostList-VGTzMRLm.js                     7.32 kB │ gzip:  2.79 kB
+dist/assets/DictTypeList-Cx_ko30X.js                 7.38 kB │ gzip:  2.83 kB
+dist/assets/ProcessDefList-B6nnsyRt.js               7.54 kB │ gzip:  3.11 kB
+dist/assets/api-BrZSxhMr.js                          7.70 kB │ gzip:  2.87 kB
+dist/assets/NotifyBatchSend-By8e06c4.js              7.71 kB │ gzip:  3.14 kB
+dist/assets/FormData-CKKKXsYE.js                     8.10 kB │ gzip:  3.22 kB
+dist/assets/message-mf8Oli_R.js                      8.14 kB │ gzip:  3.48 kB
+dist/assets/ToolList-fUBPT23F.js                     8.35 kB │ gzip:  2.67 kB
+dist/assets/use-empty-values-DoswspHL.js             8.60 kB │ gzip:  3.53 kB
+dist/assets/css-Y8oDYGHP.js                          9.07 kB │ gzip:  3.29 kB
+dist/assets/DictDataList-BuABNhIj.js                 9.48 kB │ gzip:  3.43 kB
+dist/assets/UserGroupList-DJeYGQJK.js                9.87 kB │ gzip:  3.63 kB
+dist/assets/ModelFormDialog-Dzlbd13l.js             10.30 kB │ gzip:  3.70 kB
+dist/assets/UserList-CiU4VMaM.js                    10.57 kB │ gzip:  3.60 kB
+dist/assets/RoleList-CGKeVHs6.js                    10.57 kB │ gzip:  3.89 kB
+dist/assets/DebugSessionView-DGkQrj5D.js            10.88 kB │ gzip:  3.94 kB
+dist/assets/FormDesigner-BZVT2nO0.js                11.05 kB │ gzip:  4.58 kB
+dist/assets/message-box-DuPgWIcm.js                 11.46 kB │ gzip:  4.29 kB
+dist/assets/css-Cn3bjTXC.js                         11.68 kB │ gzip:  4.06 kB
+dist/assets/EditProcessDefDialog-DkjMUGc5.js        12.00 kB │ gzip:  4.33 kB
+dist/assets/ProcessInstanceList-DIYWdcfY.js         12.03 kB │ gzip:  4.88 kB
+dist/assets/css-81PQ1rrr.js                         12.28 kB │ gzip:  5.11 kB
+dist/assets/TaskDetail-Czma-K9C.js                  12.55 kB │ gzip:  4.71 kB
+dist/assets/JobList-BhHr_60D.js                     13.37 kB │ gzip:  4.29 kB
+dist/assets/FormRender-DBj9bfYm.js                  14.07 kB │ gzip:  4.77 kB
+dist/assets/DeptList-CVXaYq-0.js                    14.29 kB │ gzip:  5.54 kB
+dist/assets/input-CiLCIGNn.js                       15.28 kB │ gzip:  5.56 kB
+dist/assets/css-BN_TDe8G.js                         20.38 kB │ gzip:  8.28 kB
+dist/assets/button-DO3SZWqr.js                      21.30 kB │ gzip:  7.55 kB
+dist/assets/dist-CZKO8cuR.js                        23.50 kB │ gzip:  6.06 kB
+dist/assets/SafeHtml-DkOZUg_8.js                    26.50 kB │ gzip: 10.46 kB
+dist/assets/css-VwHh4gpC.js                         26.67 kB │ gzip:  9.21 kB
+dist/assets/css-BMLUGXq0.js                         27.43 kB │ gzip:  8.97 kB
+dist/assets/select-DJzfFBtQ.js                      31.35 kB │ gzip: 10.72 kB
+dist/assets/BasicLayout-CDk_KCyZ.js                 38.52 kB │ gzip: 13.00 kB
+dist/assets/vue-draggable-plus-C9nXNMn_.js          41.29 kB │ gzip: 14.51 kB
+dist/assets/tooltip-B7dPBqWF.js                     44.60 kB │ gzip: 15.78 kB
+dist/assets/request-DIig0XK5.js                     49.09 kB │ gzip: 19.28 kB
+dist/assets/css-cMfs4xSD.js                         75.57 kB │ gzip: 25.78 kB
+dist/assets/date-picker-goNn7s6J.js                 98.08 kB │ gzip: 27.83 kB
+dist/assets/vue.runtime.esm-bundler-C3lhWCdc.js    110.18 kB │ gzip: 42.32 kB
+dist/assets/index-BNeQAL9N.js                      125.71 kB │ gzip: 40.07 kB
+dist/assets/FormPreview-CLAkh8eS.js                144.28 kB │ gzip: 45.48 kB
+dist/assets/GraphDesigner-BXpVxBYc.js              160.08 kB │ gzip: 52.39 kB
+dist/assets/bpmn-BwYoYrEY.js                       184.24 kB │ gzip: 51.97 kB
+
+[INVALID_ANNOTATION] A comment "/* #__PURE__ */" in "node_modules/.pnpm/@vueuse+core@14.3.0_vue@3.5.38_typescript@6.0.3_/node_modules/@vueuse/core/dist/index.js" contains an annotation that Rolldown cannot interpret due to the position of the comment.
+      ╭─[ node_modules/.pnpm/@vueuse+core@14.3.0_vue@3.5.38_typescript@6.0.3_/node_modules/@vueuse/core/dist/index.js:3362:1 ]
+      │
+ 3362 │ /* #__PURE__ */
+      │ ───────┬───────  
+      │        ╰───────── comment ignored due to position
+      │ 
+      │ Help: For more information on how to use pure annotations correctly, check the documentation: https://rolldown.rs/in-depth/dead-code-elimination#pure
+──────╯
+
+[INVALID_ANNOTATION] A comment "/* #__PURE__ */" in "node_modules/.pnpm/@vueuse+core@14.3.0_vue@3.5.38_typescript@6.0.3_/node_modules/@vueuse/core/dist/index.js" contains an annotation that Rolldown cannot interpret due to the position of the comment.
+      ╭─[ node_modules/.pnpm/@vueuse+core@14.3.0_vue@3.5.38_typescript@6.0.3_/node_modules/@vueuse/core/dist/index.js:5780:23 ]
+      │
+ 5780 │ const defaultState = (/* #__PURE__ */ {
+      │                       ───────┬───────  
+      │                              ╰───────── comment ignored due to position
+      │ 
+      │ Help: For more information on how to use pure annotations correctly, check the documentation: https://rolldown.rs/in-depth/dead-code-elimination#pure
+──────╯
+
+✓ built in 1.22s
+
+BUILD_RERUN_STDOUT_END
+BUILD_RERUN_STDERR=not separately emitted by exec capture
+[backend full gate persistent Surefire report transcript; the cleanup-only report is excluded from this 152-report scope]
+SUREFIRE_REPORT_COMMAND=find Smart-WorkFlow-Server -path '*/target/surefire-reports/*.txt' -type f ! -name 'com.sw.ck.bootstrap.P58FinalCleanupEvidenceTest.txt' -print | sort; for each file: rg --no-filename '^Tests run:' file
+SUREFIRE_REPORT_STDOUT_BEGIN
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.AgentGraphDebugBehaviorIntegrationTest.txt | Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.995 s -- in com.sw.ck.agent.AgentGraphDebugBehaviorIntegrationTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.AgentGraphDebugServiceTest.txt | Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.256 s -- in com.sw.ck.agent.AgentGraphDebugServiceTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.controller.AgentConversationControllerTest.txt | Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.771 s -- in com.sw.ck.agent.controller.AgentConversationControllerTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.controller.AgentGraphDebugSecurityIntegrationTest.txt | Tests run: 28, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.119 s -- in com.sw.ck.agent.controller.AgentGraphDebugSecurityIntegrationTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.controller.AgentGraphDefControllerTest.txt | Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.258 s -- in com.sw.ck.agent.controller.AgentGraphDefControllerTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.controller.AgentGraphDefSecurityIntegrationTest.txt | Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.718 s -- in com.sw.ck.agent.controller.AgentGraphDefSecurityIntegrationTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.controller.AgentGraphExecutionSecurityIntegrationTest.txt | Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.713 s -- in com.sw.ck.agent.controller.AgentGraphExecutionSecurityIntegrationTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.controller.AgentModelControllerTest.txt | Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.634 s -- in com.sw.ck.agent.controller.AgentModelControllerTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.controller.AgentOrchestrationControllerTest.txt | Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.856 s -- in com.sw.ck.agent.controller.AgentOrchestrationControllerTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.controller.AgentToolConfigControllerTest.txt | Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.521 s -- in com.sw.ck.agent.controller.AgentToolConfigControllerTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.controller.AgentToolConfigSecurityIntegrationTest.txt | Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.937 s -- in com.sw.ck.agent.controller.AgentToolConfigSecurityIntegrationTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.datascope.AgentDataScopeTest$GraphExecutionScopeTests.txt | Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.822 s -- in com.sw.ck.agent.datascope.AgentDataScopeTest$GraphExecutionScopeTests
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.datascope.AgentDataScopeTest$ModelConfigScopeTests.txt | Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.155 s -- in com.sw.ck.agent.datascope.AgentDataScopeTest$ModelConfigScopeTests
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.datascope.AgentDataScopeTest.txt | Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.654 s -- in com.sw.ck.agent.datascope.AgentDataScopeTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.mapper.AgentMessageMapperTest.txt | Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.173 s -- in com.sw.ck.agent.mapper.AgentMessageMapperTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.mapper.AgentModelConfigMapperTest.txt | Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.245 s -- in com.sw.ck.agent.mapper.AgentModelConfigMapperTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.mapper.AgentSessionMapperTest.txt | Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.183 s -- in com.sw.ck.agent.mapper.AgentSessionMapperTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.mapper.AgentToolCallLogMapperTest.txt | Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.158 s -- in com.sw.ck.agent.mapper.AgentToolCallLogMapperTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.orchestration.AgentGraphDebugEngineTest.txt | Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.020 s -- in com.sw.ck.agent.orchestration.AgentGraphDebugEngineTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.orchestration.AgentGraphFactoryTest.txt | Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 s -- in com.sw.ck.agent.orchestration.AgentGraphFactoryTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.orchestration.AgentGraphInterpreterTest.txt | Tests run: 36, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.088 s -- in com.sw.ck.agent.orchestration.AgentGraphInterpreterTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.orchestration.AgentGraphInterpreterTokenTest.txt | Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in com.sw.ck.agent.orchestration.AgentGraphInterpreterTokenTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.orchestration.AgentToolCallbackFactoryTest.txt | Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.174 s -- in com.sw.ck.agent.orchestration.AgentToolCallbackFactoryTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.orchestration.ChatModelFactory429SpikeTest.txt | Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.114 s -- in com.sw.ck.agent.orchestration.ChatModelFactory429SpikeTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.orchestration.ChatModelFactoryTest.txt | Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.048 s -- in com.sw.ck.agent.orchestration.ChatModelFactoryTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.service.impl.AgentGraphDefServiceImplTest.txt | Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.245 s -- in com.sw.ck.agent.service.impl.AgentGraphDefServiceImplTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.service.impl.AgentGraphExecutionServiceImplTest.txt | Tests run: 45, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.781 s -- in com.sw.ck.agent.service.impl.AgentGraphExecutionServiceImplTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.service.impl.AgentModelConfigServiceImplTest.txt | Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.327 s -- in com.sw.ck.agent.service.impl.AgentModelConfigServiceImplTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.service.impl.AgentOrchestrationServiceImplTest.txt | Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.577 s -- in com.sw.ck.agent.service.impl.AgentOrchestrationServiceImplTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.service.impl.AgentTokenUsageBehaviorTest.txt | Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.410 s -- in com.sw.ck.agent.service.impl.AgentTokenUsageBehaviorTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-agent/target/surefire-reports/com.sw.ck.agent.service.impl.AgentToolConfigServiceImplTest.txt | Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.195 s -- in com.sw.ck.agent.service.impl.AgentToolConfigServiceImplTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-iot/target/surefire-reports/com.sw.ck.iot.config.IotAutoConfigurationTest.txt | Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.307 s -- in com.sw.ck.iot.config.IotAutoConfigurationTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-iot/target/surefire-reports/com.sw.ck.iot.hook.TencentDeviceStatusHookTest.txt | Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.177 s -- in com.sw.ck.iot.hook.TencentDeviceStatusHookTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-iot/target/surefire-reports/com.sw.ck.iot.service.CommandQueueServiceTest.txt | Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.124 s -- in com.sw.ck.iot.service.CommandQueueServiceTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-iot/target/surefire-reports/com.sw.ck.iot.util.DeferredControlUtilTest.txt | Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.903 s -- in com.sw.ck.iot.util.DeferredControlUtilTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-iot/target/surefire-reports/com.sw.ck.iot.util.OnlineConfirmControlUtilTest.txt | Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s -- in com.sw.ck.iot.util.OnlineConfirmControlUtilTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-job/sw-basic-job-biz/target/surefire-reports/com.sw.ck.job.controller.JobInfoControllerAuthorizationTest.txt | Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.070 s -- in com.sw.ck.job.controller.JobInfoControllerAuthorizationTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-job/sw-basic-job-biz/target/surefire-reports/com.sw.ck.job.controller.JobInfoControllerTest$CreateTests.txt | Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in com.sw.ck.job.controller.JobInfoControllerTest$CreateTests
+Smart-WorkFlow-Server/sw-basic/sw-basic-job/sw-basic-job-biz/target/surefire-reports/com.sw.ck.job.controller.JobInfoControllerTest$DeleteTests.txt | Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in com.sw.ck.job.controller.JobInfoControllerTest$DeleteTests
+Smart-WorkFlow-Server/sw-basic/sw-basic-job/sw-basic-job-biz/target/surefire-reports/com.sw.ck.job.controller.JobInfoControllerTest$GetByIdTests.txt | Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in com.sw.ck.job.controller.JobInfoControllerTest$GetByIdTests
+Smart-WorkFlow-Server/sw-basic/sw-basic-job/sw-basic-job-biz/target/surefire-reports/com.sw.ck.job.controller.JobInfoControllerTest$PageTests.txt | Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s -- in com.sw.ck.job.controller.JobInfoControllerTest$PageTests
+Smart-WorkFlow-Server/sw-basic/sw-basic-job/sw-basic-job-biz/target/surefire-reports/com.sw.ck.job.controller.JobInfoControllerTest$PauseTests.txt | Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.sw.ck.job.controller.JobInfoControllerTest$PauseTests
+Smart-WorkFlow-Server/sw-basic/sw-basic-job/sw-basic-job-biz/target/surefire-reports/com.sw.ck.job.controller.JobInfoControllerTest$ResumeTests.txt | Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in com.sw.ck.job.controller.JobInfoControllerTest$ResumeTests
+Smart-WorkFlow-Server/sw-basic/sw-basic-job/sw-basic-job-biz/target/surefire-reports/com.sw.ck.job.controller.JobInfoControllerTest$TriggerTests.txt | Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in com.sw.ck.job.controller.JobInfoControllerTest$TriggerTests
+Smart-WorkFlow-Server/sw-basic/sw-basic-job/sw-basic-job-biz/target/surefire-reports/com.sw.ck.job.controller.JobInfoControllerTest$UpdateTests.txt | Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in com.sw.ck.job.controller.JobInfoControllerTest$UpdateTests
+Smart-WorkFlow-Server/sw-basic/sw-basic-job/sw-basic-job-biz/target/surefire-reports/com.sw.ck.job.controller.JobInfoControllerTest.txt | Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.066 s -- in com.sw.ck.job.controller.JobInfoControllerTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-job/sw-basic-job-biz/target/surefire-reports/com.sw.ck.job.controller.JobLogControllerTest$GetByIdTests.txt | Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s -- in com.sw.ck.job.controller.JobLogControllerTest$GetByIdTests
+Smart-WorkFlow-Server/sw-basic/sw-basic-job/sw-basic-job-biz/target/surefire-reports/com.sw.ck.job.controller.JobLogControllerTest$PageTests.txt | Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.sw.ck.job.controller.JobLogControllerTest$PageTests
+Smart-WorkFlow-Server/sw-basic/sw-basic-job/sw-basic-job-biz/target/surefire-reports/com.sw.ck.job.controller.JobLogControllerTest.txt | Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.067 s -- in com.sw.ck.job.controller.JobLogControllerTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-job/sw-basic-job-biz/target/surefire-reports/com.sw.ck.job.impl.JobFacadeImplTest$GetByIdTests.txt | Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s -- in com.sw.ck.job.impl.JobFacadeImplTest$GetByIdTests
+Smart-WorkFlow-Server/sw-basic/sw-basic-job/sw-basic-job-biz/target/surefire-reports/com.sw.ck.job.impl.JobFacadeImplTest$GetByJobNameTests.txt | Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.075 s -- in com.sw.ck.job.impl.JobFacadeImplTest$GetByJobNameTests
+Smart-WorkFlow-Server/sw-basic/sw-basic-job/sw-basic-job-biz/target/surefire-reports/com.sw.ck.job.impl.JobFacadeImplTest.txt | Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.089 s -- in com.sw.ck.job.impl.JobFacadeImplTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-job/sw-basic-job-biz/target/surefire-reports/com.sw.ck.job.impl.JobInfoServiceImplDataScopeTest.txt | Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.069 s -- in com.sw.ck.job.impl.JobInfoServiceImplDataScopeTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-job/sw-basic-job-biz/target/surefire-reports/com.sw.ck.job.impl.JobLogServiceImplDataScopeTest.txt | Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.702 s -- in com.sw.ck.job.impl.JobLogServiceImplDataScopeTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-notify/sw-basic-notify-biz/target/surefire-reports/com.sw.ck.notify.controller.NotifyBatchSendEvidenceTest.txt | Tests run: 31, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.433 s -- in com.sw.ck.notify.controller.NotifyBatchSendEvidenceTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-notify/sw-basic-notify-biz/target/surefire-reports/com.sw.ck.notify.controller.NotifyBatchSendIntegrationTest.txt | Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.499 s -- in com.sw.ck.notify.controller.NotifyBatchSendIntegrationTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-notify/sw-basic-notify-biz/target/surefire-reports/com.sw.ck.notify.controller.NotifyControllerIntegrationTest.txt | Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.309 s -- in com.sw.ck.notify.controller.NotifyControllerIntegrationTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-notify/sw-basic-notify-biz/target/surefire-reports/com.sw.ck.notify.controller.NotifyTemplateIntegrationTest.txt | Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.518 s -- in com.sw.ck.notify.controller.NotifyTemplateIntegrationTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-notify/sw-basic-notify-biz/target/surefire-reports/com.sw.ck.notify.controller.NotifyTemplateSecurityIntegrationTest.txt | Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.124 s -- in com.sw.ck.notify.controller.NotifyTemplateSecurityIntegrationTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-notify/sw-basic-notify-biz/target/surefire-reports/com.sw.ck.notify.entity.NotifyMessageIntegrationTest.txt | Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.259 s -- in com.sw.ck.notify.entity.NotifyMessageIntegrationTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-notify/sw-basic-notify-biz/target/surefire-reports/com.sw.ck.notify.impl.NotifyFacadeAdapterIdempotencyTest.txt | Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.637 s -- in com.sw.ck.notify.impl.NotifyFacadeAdapterIdempotencyTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-storage/sw-basic-storage-biz/target/surefire-reports/com.sw.ck.storage.controller.StorageControllerAuthorizationTest.txt | Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.618 s -- in com.sw.ck.storage.controller.StorageControllerAuthorizationTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-storage/sw-basic-storage-biz/target/surefire-reports/com.sw.ck.storage.controller.StorageControllerTest.txt | Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.075 s -- in com.sw.ck.storage.controller.StorageControllerTest
+Smart-WorkFlow-Server/sw-basic/sw-basic-storage/sw-basic-storage-biz/target/surefire-reports/com.sw.ck.storage.service.StorageFileServiceImplDataScopeTest.txt | Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.088 s -- in com.sw.ck.storage.service.StorageFileServiceImplDataScopeTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-biz/target/surefire-reports/com.sw.ck.form.controller.FormDataUpdateControllerTest.txt | Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.133 s -- in com.sw.ck.form.controller.FormDataUpdateControllerTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-biz/target/surefire-reports/com.sw.ck.form.controller.FormDefinitionControllerAuthorizationTest.txt | Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.431 s -- in com.sw.ck.form.controller.FormDefinitionControllerAuthorizationTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-biz/target/surefire-reports/com.sw.ck.form.controller.FormSubmitControllerTest.txt | Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.062 s -- in com.sw.ck.form.controller.FormSubmitControllerTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-biz/target/surefire-reports/com.sw.ck.form.dynamic.DynamicTableManagerTest$ColumnNameValidationTest.txt | Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s -- in com.sw.ck.form.dynamic.DynamicTableManagerTest$ColumnNameValidationTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-biz/target/surefire-reports/com.sw.ck.form.dynamic.DynamicTableManagerTest$TableNameGenerationTest.txt | Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.047 s -- in com.sw.ck.form.dynamic.DynamicTableManagerTest$TableNameGenerationTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-biz/target/surefire-reports/com.sw.ck.form.dynamic.DynamicTableManagerTest.txt | Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.293 s -- in com.sw.ck.form.dynamic.DynamicTableManagerTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-biz/target/surefire-reports/com.sw.ck.form.service.FormDataDeleteServiceTest.txt | Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.250 s -- in com.sw.ck.form.service.FormDataDeleteServiceTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-biz/target/surefire-reports/com.sw.ck.form.service.FormDataIsolationIntegrationTest.txt | Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.659 s -- in com.sw.ck.form.service.FormDataIsolationIntegrationTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-biz/target/surefire-reports/com.sw.ck.form.service.FormDataQueryServiceTest.txt | Tests run: 22, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.532 s -- in com.sw.ck.form.service.FormDataQueryServiceTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-biz/target/surefire-reports/com.sw.ck.form.service.FormDataUpdateServiceTest.txt | Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.928 s -- in com.sw.ck.form.service.FormDataUpdateServiceTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-biz/target/surefire-reports/com.sw.ck.form.service.FormDefinitionServiceTest.txt | Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.523 s -- in com.sw.ck.form.service.FormDefinitionServiceTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-biz/target/surefire-reports/com.sw.ck.form.service.FormSnapshotQueryTest$GetSnapshot.txt | Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.206 s -- in com.sw.ck.form.service.FormSnapshotQueryTest$GetSnapshot
+Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-biz/target/surefire-reports/com.sw.ck.form.service.FormSnapshotQueryTest$ListSnapshots.txt | Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 s -- in com.sw.ck.form.service.FormSnapshotQueryTest$ListSnapshots
+Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-biz/target/surefire-reports/com.sw.ck.form.service.FormSnapshotQueryTest.txt | Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.271 s -- in com.sw.ck.form.service.FormSnapshotQueryTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-biz/target/surefire-reports/com.sw.ck.form.service.FormSubmitServiceTest.txt | Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.183 s -- in com.sw.ck.form.service.FormSubmitServiceTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.controller.AuthControllerTest.txt | Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.473 s -- in com.sw.ck.system.controller.AuthControllerTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.controller.AuthFlowIntegrationTest.txt | Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.487 s -- in com.sw.ck.system.controller.AuthFlowIntegrationTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.controller.AuthMeControllerTest.txt | Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in com.sw.ck.system.controller.AuthMeControllerTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.controller.AuthMenusContractAndSecurityTest.txt | Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.717 s -- in com.sw.ck.system.controller.AuthMenusContractAndSecurityTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.controller.DeptControllerTest.txt | Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.065 s -- in com.sw.ck.system.controller.DeptControllerTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.controller.PostControllerTest.txt | Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 s -- in com.sw.ck.system.controller.PostControllerTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.controller.RoleControllerTest.txt | Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.060 s -- in com.sw.ck.system.controller.RoleControllerTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.controller.RoleMenusContractAndSecurityTest.txt | Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.470 s -- in com.sw.ck.system.controller.RoleMenusContractAndSecurityTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.controller.UserAssociationContractTest.txt | Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.sw.ck.system.controller.UserAssociationContractTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.controller.UserControllerTest.txt | Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.087 s -- in com.sw.ck.system.controller.UserControllerTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.controller.UserGroupControllerTest.txt | Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in com.sw.ck.system.controller.UserGroupControllerTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.datascope.DeptScopeProviderTest.txt | Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.183 s -- in com.sw.ck.system.datascope.DeptScopeProviderTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.datascopetest.SysUserDataScopeTest.txt | Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.452 s -- in com.sw.ck.system.datascopetest.SysUserDataScopeTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.datascopetest.UserAssociationQueryIntegrationTest.txt | Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.773 s -- in com.sw.ck.system.datascopetest.UserAssociationQueryIntegrationTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.deptquery.SysDeptQueryIntegrationTest.txt | Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.496 s -- in com.sw.ck.system.deptquery.SysDeptQueryIntegrationTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.dict.DictFacadeTest.txt | Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.437 s -- in com.sw.ck.system.dict.DictFacadeTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.dict.LogicalDeleteTest.txt | Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.284 s -- in com.sw.ck.system.dict.LogicalDeleteTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.role.RoleDataScopeTest.txt | Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.897 s -- in com.sw.ck.system.role.RoleDataScopeTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.security.LoginChallengeServiceTest.txt | Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.944 s -- in com.sw.ck.system.security.LoginChallengeServiceTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.security.RedisLoginChallengeStoreTest.txt | Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.119 s -- in com.sw.ck.system.security.RedisLoginChallengeStoreTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.security.RsaLoginKeyManagerTest.txt | Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.618 s -- in com.sw.ck.system.security.RsaLoginKeyManagerTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.security.UserDetailsProviderDataScopeTest.txt | Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.817 s -- in com.sw.ck.system.security.UserDetailsProviderDataScopeTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.service.RefreshTokenServiceTest.txt | Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.188 s -- in com.sw.ck.system.service.RefreshTokenServiceTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.usergroup.SysUserGroupServiceTest.txt | Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.216 s -- in com.sw.ck.system.usergroup.SysUserGroupServiceTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.usergroup.UserGroupAuthorizationTest.txt | Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.992 s -- in com.sw.ck.system.usergroup.UserGroupAuthorizationTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.usergroup.UserGroupDataScopeIntegrationTest.txt | Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.016 s -- in com.sw.ck.system.usergroup.UserGroupDataScopeIntegrationTest
+Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/com.sw.ck.system.util.CookieUtilsTest.txt | Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 s -- in com.sw.ck.system.util.CookieUtilsTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-engine/target/surefire-reports/com.sw.ck.bpm.engine.delegate.ConsensusCompletionEvaluatorTest.txt | Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 s -- in com.sw.ck.bpm.engine.delegate.ConsensusCompletionEvaluatorTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-engine/target/surefire-reports/com.sw.ck.bpm.engine.facade.BpmDeployFacadeImplTest$GetBpmnXmlTests.txt | Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 s -- in com.sw.ck.bpm.engine.facade.BpmDeployFacadeImplTest$GetBpmnXmlTests
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-engine/target/surefire-reports/com.sw.ck.bpm.engine.facade.BpmDeployFacadeImplTest.txt | Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.045 s -- in com.sw.ck.bpm.engine.facade.BpmDeployFacadeImplTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-engine/target/surefire-reports/com.sw.ck.bpm.engine.facade.BpmRuntimeFacadeImplTest$GetActiveActivityIdsTests.txt | Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in com.sw.ck.bpm.engine.facade.BpmRuntimeFacadeImplTest$GetActiveActivityIdsTests
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-engine/target/surefire-reports/com.sw.ck.bpm.engine.facade.BpmRuntimeFacadeImplTest$QueryHistoricActivitiesTests.txt | Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.848 s -- in com.sw.ck.bpm.engine.facade.BpmRuntimeFacadeImplTest$QueryHistoricActivitiesTests
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-engine/target/surefire-reports/com.sw.ck.bpm.engine.facade.BpmRuntimeFacadeImplTest.txt | Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.863 s -- in com.sw.ck.bpm.engine.facade.BpmRuntimeFacadeImplTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-engine/target/surefire-reports/com.sw.ck.bpm.engine.integration.ApprovalProcessIntegrationTest.txt | Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.780 s -- in com.sw.ck.bpm.engine.integration.ApprovalProcessIntegrationTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-engine/target/surefire-reports/com.sw.ck.bpm.engine.integration.P57IsolatedVerificationFlowableTest.txt | Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.445 s -- in com.sw.ck.bpm.engine.integration.P57IsolatedVerificationFlowableTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-engine/target/surefire-reports/com.sw.ck.bpm.engine.registry.BpmNodeRegistryImplTest.txt | Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 s -- in com.sw.ck.bpm.engine.registry.BpmNodeRegistryImplTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-engine/target/surefire-reports/com.sw.ck.bpm.engine.translator.ApprovalUserTaskDesignatedAssigneeTest.txt | Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s -- in com.sw.ck.bpm.engine.translator.ApprovalUserTaskDesignatedAssigneeTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-engine/target/surefire-reports/com.sw.ck.bpm.engine.translator.GraphToBpmnDiagramInterchangeTest.txt | Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s -- in com.sw.ck.bpm.engine.translator.GraphToBpmnDiagramInterchangeTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-engine/target/surefire-reports/com.sw.ck.bpm.engine.translator.GraphToBpmnTranslatorTest.txt | Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.019 s -- in com.sw.ck.bpm.engine.translator.GraphToBpmnTranslatorTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-engine/target/surefire-reports/com.sw.ck.bpm.engine.translator.NodeTypeTranslatorPlugabilityTest.txt | Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in com.sw.ck.bpm.engine.translator.NodeTypeTranslatorPlugabilityTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.controller.BpmInstanceControllerTest$InstanceDetailTests.txt | Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 s -- in com.sw.ck.bpm.process.controller.BpmInstanceControllerTest$InstanceDetailTests
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.controller.BpmInstanceControllerTest$ListInstancesTests.txt | Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in com.sw.ck.bpm.process.controller.BpmInstanceControllerTest$ListInstancesTests
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.controller.BpmInstanceControllerTest.txt | Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 s -- in com.sw.ck.bpm.process.controller.BpmInstanceControllerTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.controller.BpmProcessDefControllerAuthorizationTest.txt | Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.746 s -- in com.sw.ck.bpm.process.controller.BpmProcessDefControllerAuthorizationTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.controller.BpmProcessDefControllerTest$BpmnXmlTests.txt | Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s -- in com.sw.ck.bpm.process.controller.BpmProcessDefControllerTest$BpmnXmlTests
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.controller.BpmProcessDefControllerTest.txt | Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in com.sw.ck.bpm.process.controller.BpmProcessDefControllerTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.controller.BpmTodoControllerTest$CompleteTests.txt | Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s -- in com.sw.ck.bpm.process.controller.BpmTodoControllerTest$CompleteTests
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.controller.BpmTodoControllerTest$DetailTests.txt | Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in com.sw.ck.bpm.process.controller.BpmTodoControllerTest$DetailTests
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.controller.BpmTodoControllerTest$ProcessedTests.txt | Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.096 s -- in com.sw.ck.bpm.process.controller.BpmTodoControllerTest$ProcessedTests
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.controller.BpmTodoControllerTest$RejectTests.txt | Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in com.sw.ck.bpm.process.controller.BpmTodoControllerTest$RejectTests
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.controller.BpmTodoControllerTest$TodoTests.txt | Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.sw.ck.bpm.process.controller.BpmTodoControllerTest$TodoTests
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.controller.BpmTodoControllerTest.txt | Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.152 s -- in com.sw.ck.bpm.process.controller.BpmTodoControllerTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.datascope.BpmInstanceDataScopeTest.txt | Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.156 s -- in com.sw.ck.bpm.process.datascope.BpmInstanceDataScopeTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.listener.BpmDeviceCommandListenerTest.txt | Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.340 s -- in com.sw.ck.bpm.process.listener.BpmDeviceCommandListenerTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.service.ProcessStartServiceTest.txt | Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s -- in com.sw.ck.bpm.process.service.ProcessStartServiceTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.service.impl.BpmFormBindingServiceImplTest.txt | Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.874 s -- in com.sw.ck.bpm.process.service.impl.BpmFormBindingServiceImplTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.service.impl.BpmInstanceServiceImplTest$PageInstancesTests.txt | Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.949 s -- in com.sw.ck.bpm.process.service.impl.BpmInstanceServiceImplTest$PageInstancesTests
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.service.impl.BpmInstanceServiceImplTest.txt | Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.962 s -- in com.sw.ck.bpm.process.service.impl.BpmInstanceServiceImplTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.service.impl.BpmProcessDefServiceImplTest$GetBpmnXmlTests.txt | Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.020 s -- in com.sw.ck.bpm.process.service.impl.BpmProcessDefServiceImplTest$GetBpmnXmlTests
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.service.impl.BpmProcessDefServiceImplTest$ListDefsTests.txt | Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.137 s -- in com.sw.ck.bpm.process.service.impl.BpmProcessDefServiceImplTest$ListDefsTests
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.service.impl.BpmProcessDefServiceImplTest.txt | Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.162 s -- in com.sw.ck.bpm.process.service.impl.BpmProcessDefServiceImplTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.service.impl.GraphJsonPersistenceIntegrationTest.txt | Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.569 s -- in com.sw.ck.bpm.process.service.impl.GraphJsonPersistenceIntegrationTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.service.impl.ParticipantSnapshotRecorderImplTest.txt | Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.122 s -- in com.sw.ck.bpm.process.service.impl.ParticipantSnapshotRecorderImplTest
+Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.validator.GraphValidatorTest.txt | Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.073 s -- in com.sw.ck.bpm.process.validator.GraphValidatorTest
+Smart-WorkFlow-Server/sw-bootstrap/target/surefire-reports/com.sw.ck.bootstrap.FlywayFullChainH2Test.txt | Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.743 s -- in com.sw.ck.bootstrap.FlywayFullChainH2Test
+Smart-WorkFlow-Server/sw-bootstrap/target/surefire-reports/com.sw.ck.bootstrap.FlywayFullChainPostgresTest.txt | Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.961 s -- in com.sw.ck.bootstrap.FlywayFullChainPostgresTest
+Smart-WorkFlow-Server/sw-framework/sw-common/target/surefire-reports/com.sw.ck.common.config.jackson.JacksonLongToStringConfigTest.txt | Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.150 s -- in com.sw.ck.common.config.jackson.JacksonLongToStringConfigTest
+Smart-WorkFlow-Server/sw-framework/sw-common/target/surefire-reports/com.sw.ck.common.datascope.DataScopeFilterTest.txt | Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.777 s -- in com.sw.ck.common.datascope.DataScopeFilterTest
+Smart-WorkFlow-Server/sw-framework/sw-common/target/surefire-reports/com.sw.ck.common.exception.GlobalExceptionHandlerTest.txt | Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.052 s -- in com.sw.ck.common.exception.GlobalExceptionHandlerTest
+Smart-WorkFlow-Server/sw-framework/sw-security/target/surefire-reports/com.sw.ck.security.config.SecurityAssemblyRegressionTest.txt | Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.635 s -- in com.sw.ck.security.config.SecurityAssemblyRegressionTest
+Smart-WorkFlow-Server/sw-framework/sw-security/target/surefire-reports/com.sw.ck.security.filter.AccessLoggingFilterTest.txt | Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.033 s -- in com.sw.ck.security.filter.AccessLoggingFilterTest
+Smart-WorkFlow-Server/sw-framework/sw-security/target/surefire-reports/com.sw.ck.security.filter.DebugAuthenticationFilterTest.txt | Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.169 s -- in com.sw.ck.security.filter.DebugAuthenticationFilterTest
+Smart-WorkFlow-Server/sw-framework/sw-security/target/surefire-reports/com.sw.ck.security.support.PermissionServiceTest.txt | Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.sw.ck.security.support.PermissionServiceTest
+SUREFIRE_REPORT_STDOUT_END
+SUREFIRE_REPORT_AGGREGATE=files=152 tests=1035 failures=0 errors=0 skipped=0
+SUREFIRE_REPORT_COMMAND_EXIT=0

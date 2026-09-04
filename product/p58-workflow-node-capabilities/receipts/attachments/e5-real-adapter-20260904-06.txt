@@ -1,0 +1,27 @@
+GAP_ID=E5
+CAPTURE_DATE=2026-09-04
+IDENTITY=operator=2095490569284018177
+ENTRY=POST /api/notify/debug/send; registered dev NotifyChannelAdapter; channel=SMS; debug-only endpoint/profile
+
+[HTTP raw result]
+REQUEST_ID=e5-final-success-20260904; HTTP=200; code=0; status=SUCCESS; externalMessageId=p58_ext_6ab83cb7
+REQUEST_ID=e5-final-success-replay-20260904; HTTP=200; code=0; status=SUCCESS; externalMessageId=p58_ext_6ab83cb7
+REQUEST_ID=e5-final-failure-20260904; HTTP=200; code=0; status=FAILED; failureReason=P58 adapter failure
+REQUEST_ID=e5-final-timeout-20260904; HTTP=200; code=0; status=TIMEOUT; failureReason=P58 adapter timeout
+
+[server raw lines]
+P58_DEBUG_ADAPTER callNo=4 channel=SMS key=P58_E5_FINAL_SUCCESS_20260904 status=SUCCESS failureReason=null
+P58_DEBUG_ADAPTER callNo=5 channel=SMS key=P58_E5_FINAL_FAILURE_20260904 status=FAILED failureReason=P58 adapter failure
+P58_DEBUG_ADAPTER callNo=6 channel=SMS key=P58_E5_FINAL_TIMEOUT_20260904 status=TIMEOUT failureReason=P58 adapter timeout
+ACCESS method=POST path=/api/notify/debug/send status=200 requestId=e5-final-success-20260904 userId=2095490569284018177
+ACCESS method=POST path=/api/notify/debug/send status=200 requestId=e5-final-success-replay-20260904 userId=2095490569284018177
+ACCESS method=POST path=/api/notify/debug/send status=200 requestId=e5-final-failure-20260904 userId=2095490569284018177
+ACCESS method=POST path=/api/notify/debug/send status=200 requestId=e5-final-timeout-20260904 userId=2095490569284018177
+ASSERTION=Replay has no adapter call between callNo=4 and callNo=5; same idempotency key returned the same external ID.
+
+[PostgreSQL readback]
+SUCCESS=recipient=2095490569284018177; title=P58 E5 FINAL SUCCESS; biz_id=P58_E5_FINAL_SUCCESS_20260904; channel=SMS; delivery_status=SUCCESS; external_message_id=p58_ext_6ab83cb7; failure_reason=null; idempotency_key=P58_E5_FINAL_SUCCESS_20260904
+FAILURE=recipient=2095490569284018177; title=P58 E5 FINAL FAILURE; biz_id=P58_E5_FINAL_FAILURE_20260904; channel=SMS; delivery_status=FAILED; external_message_id=null; failure_reason=P58 adapter failure; idempotency_key=P58_E5_FINAL_FAILURE_20260904
+TIMEOUT=recipient=2095490569284018177; title=P58 E5 FINAL TIMEOUT; biz_id=P58_E5_FINAL_TIMEOUT_20260904; channel=SMS; delivery_status=TIMEOUT; external_message_id=null; failure_reason=P58 adapter timeout; idempotency_key=P58_E5_FINAL_TIMEOUT_20260904
+POST_CLEANUP=sw_notify_message P58-scoped rows=0
+PRODUCTION_SCAN=NO_JAR_DEBUG_ADAPTER_MATCH; NO_FRONTEND_DEBUG_FIXTURE_MATCH

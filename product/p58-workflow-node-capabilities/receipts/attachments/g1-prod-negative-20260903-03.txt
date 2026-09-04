@@ -1,0 +1,27 @@
+P58 G1 fail-closed 原始证据摘录（2026-09-03）
+
+固定字段
+GAP_ID: G1
+INPUT_IDS: prompt-01 / forced-profile-negative-03
+IDENTITY_AND_PERMISSIONS: 不进入正式身份加载；强制开关仅用于验证启动门禁。
+PROFILE_AND_SWITCH: profiles=dev,prod；命令行强制 sw.security.debug-auth.enabled=true；端口=18083。
+URL_OR_COMMAND: java -jar sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar --spring.profiles.active=dev,prod --server.port=18083 --sw.security.debug-auth.enabled=true
+RAW_OUTPUT_PATH: 本附件为启动 stdout/stderr 原始关键行摘录；未保存临时日志文件。
+
+RAW OUTPUT
+java.lang.IllegalStateException: 调试认证仅允许在 dev/test profile 使用，当前 profile 不满足 fail-closed 门禁
+
+随后停止该进程并检查：18083 无监听进程。
+
+单元边界日志（同一代码路径的原始结构化日志摘录）
+debug_auth decision=REJECTED debugTokenId=test_7 userId=7 path=/system/auth/me requestId=debug-test-request remoteAddr=192.0.2.7 reason=NON_LOOPBACK_SOURCE
+debug_auth decision=REJECTED debugTokenId=test_<invalid> userId=null path=/system/auth/me requestId=debug-test-request remoteAddr=127.0.0.1 reason=INVALID_FORMAT
+
+DOM_ASSERT: 不适用；该包验证启动/过滤器边界，不启动前端。
+NETWORK_ASSERT: 未捕获非回环运行态 HTTP 请求；192.0.2.7 为过滤器测试来源，不冒充真实网络请求。
+FLOWABLE_BEFORE_AFTER: 不适用。
+BUSINESS_DB_BEFORE_AFTER: 不适用。
+POSITIVE_ASSERT: dev 正向 HTTP 见 g1-http-20260903-03.txt。
+ZERO_RESIDUE_ASSERT: 18083 启动失败后无监听；未形成生产库 SQL 零计数。
+EXIT_CODE: forced profile 启动失败；异常为预期 fail-closed 结果。
+CLEANUP_RESULT: forced-negative 进程已停止，端口复核无监听。

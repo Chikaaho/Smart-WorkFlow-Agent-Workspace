@@ -1,0 +1,12 @@
+GAP_ID=Z9
+INPUT_IDS=final code state after P58 fixes; server branch develop HEAD=451bd9a2dd979db574fbdb2923f26881ea11af8d; web branch develop HEAD=802971df711397a9d7c9bc20c6c8f5ba60ec70b0
+IDENTITIES=no runtime identity claim; final database query was P58-scoped and used non-secret connection metadata
+BROWSER_TIME_AND_DOM=not applicable; services were stopped before final cleanup/quality gates
+ACCESS_LOG_REQUEST_IDS=not applicable to static quality gates; browser correlation gaps remain in Z4/Z8
+HTTP_RAW=not applicable; no service was left running after evidence collection
+PG_AND_FLOWABLE_SQL_RAW=PostgreSQL P58-scoped final: sw_bpm_process_def=0; sw_bpm_instance=0; sw_bpm_approval_action=0; sw_bpm_participant_snapshot=0; sw_bpm_branch_trace=0; sw_bpm_copy_record=0; sw_bpm_form_binding=0; sw_form_trace=0; sw_notify_message=0; act_re_procdef=0; act_re_deployment=0; act_ge_bytearray=0; act_hi_procinst=0; act_hi_taskinst=0; act_hi_actinst=0; act_hi_varinst=0; act_hi_identitylink=0; act_hi_comment=0; act_hi_attachment=0; act_ru_execution=0; act_ru_task=0; act_ru_variable=0; act_ru_identitylink=0; dynamic=sw_form_e7d042cvnn=0,sw_form_nhwh67b5r4=0; flyway_max_version=49
+POSITIVE_ASSERT=backend full: surefire_reports=151 tests=1031 failures=0 errors=0 skipped=0; Flyway H2=15/0/0/0; Flyway PostgreSQL=12/0/0/0; web typecheck=0 lint=0 errors test=117 files passed/1 skipped,1108 passed/3 skipped build=0; root/server/web diff-check=0/0/0; prod build=0; production scans=NO_MATCH
+NEGATIVE_ASSERT=lint emitted warnings only; this is not a functional acceptance claim; P58 remains VERIFYING because Z2, Z4, Z5, Z7 and Z8 have unverified evidence fields
+ZERO_RESIDUE_ASSERT=ports 15432/18084/5174/5175/5176=CLOSED; exact P58-scoped database and Flowable counts above are all zero
+COMMAND_AND_EXIT=mvn -q test exit=0; pnpm run typecheck exit=0; pnpm run lint exit=0; pnpm run test exit=0; pnpm run build exit=0; mvn -q -Pprod -DskipTests clean package exit=0; three git diff --check exit=0; port check exit=0
+CLEANUP_RESULT=business cleanup commit=OK; Flowable cleanup commit=OK; final verification query exit=0; no commit or push performed

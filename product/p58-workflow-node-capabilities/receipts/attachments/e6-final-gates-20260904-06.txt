@@ -1,0 +1,42 @@
+GAP_ID=E6
+CAPTURE_DATE=2026-09-04
+
+[latest quality gates]
+BACKEND_COMMAND=MAVEN_OPTS="-Xmx2g" mvn -q test
+BACKEND_EXIT_CODE=0
+BACKEND_SUREFIRE_AGGREGATE=tests=1035 failures=0 errors=0 skipped=0; report_files=152
+FOCUSED_PARTICIPANT_COMMAND=mvn -q -pl sw-biz/sw-bpm/sw-bpm-process -am -Dtest=ParticipantSnapshotRecorderImplTest -Dsurefire.failIfNoSpecifiedTests=false test
+FOCUSED_PARTICIPANT_EXIT_CODE=0
+FLYWAY_COMMAND=MAVEN_OPTS="-Xmx2g" mvn -q -pl sw-bootstrap -am -Dtest='FlywayFullChainH2Test,FlywayFullChainPostgresTest' -Dsurefire.failIfNoSpecifiedTests=false test
+FLYWAY_EXIT_CODE=0
+FRONTEND_COMMAND=NODE_OPTIONS="--max-old-space-size=2048" pnpm typecheck && NODE_OPTIONS="--max-old-space-size=2048" pnpm lint && NODE_OPTIONS="--max-old-space-size=2048" pnpm test && NODE_OPTIONS="--max-old-space-size=2048" pnpm build
+FRONTEND_EXIT_CODE=0
+FRONTEND_RAW_SUMMARY=Vitest Test Files 117 passed | 1 skipped (118); Tests 1110 passed | 3 skipped (1113); lint 0 errors/47 warnings; build succeeded
+PROD_COMMAND=MAVEN_OPTS="-Xmx2g" mvn -q -Pprod -DskipTests clean package
+PROD_EXIT_CODE=0
+PROD_SCAN=NO_JAR_DEBUG_ADAPTER_MATCH; NO_FRONTEND_DEBUG_FIXTURE_MATCH
+
+[PostgreSQL isolated cleanup readback]
+PG_ENDPOINT=local-isolated-postgres; cleanup transaction committed; P58-scoped rows after cleanup:
+BUSINESS=sw_bpm_instance=0; sw_bpm_approval_action=0; sw_bpm_participant_snapshot=0; sw_bpm_copy_record=0; sw_bpm_branch_trace=0; sw_form_trace=0; sw_bpm_form_binding(P58)=0; sw_form_def=0; sw_form_config=0; sw_form_snapshot=0; sw_notify_message(P58)=0
+FLOWABLE_RUNTIME=act_ru_task=0; act_ru_execution=0; act_ru_variable=0; act_ru_identitylink=0; act_ru_actinst=0; act_ru_entitylink=0; act_ru_event_subscr=0; act_ru_job=0; act_ru_timer_job=0; act_ru_suspended_job=0; act_ru_deadletter_job=0; act_ru_external_job=0; act_ru_history_job=0
+FLOWABLE_HISTORY=act_hi_procinst=0; act_hi_taskinst=0; act_hi_varinst=0; act_hi_actinst=0; act_hi_identitylink=0; act_hi_entitylink=0; act_hi_attachment=0; act_hi_comment=0; act_hi_detail=0; act_hi_tsk_log=0; act_evt_log=0
+FLOWABLE_DEFINITION_DATA=act_ge_bytearray=0; P58 act_re_procdef=0; P58 act_re_deployment=0; act_procdef_info=0
+IDENTITY=act_id_user=0; act_id_group=0; act_id_membership=0; act_id_info=0; act_id_priv=0; act_id_priv_mapping=0; act_id_token=0; act_id_bytearray=0; sys_refresh_token=0; sys_user_group_member=0; sys_user_post=0; P58 synthetic sys_user_role=0; P58 synthetic sys_user=0
+DYNAMIC_FORM_TABLES=only base sw_form_config,sw_form_def,sw_form_snapshot,sw_form_trace remain; P58 dynamic tables absent
+BASELINE_LEFT=the isolated database's non-P58 skeleton_approval deployment/procdef, base form binding and built-in system user/role were not deleted
+
+[workspace cleanup and boundary]
+TEMP_HELPERS=exact helper files, generated key files, isolated database directory and the stopped local database process were removed; final exact-name scan found none
+PORTS=15432/18084/5173/5174/5175/5176 closed at final check
+SECRETS=none included; debug header is represented only as <synthetic-debug-token>; no Cookie/localStorage/sessionStorage value was read
+RAW_OUTPUT_BOUNDARY=high-volume Maven/Spring test logs include expected negative-test ERROR/WARN lines; exit codes and report aggregates above are the machine-read summary, while case-level raw lines are in E1-E5 attachments
+
+[attachment SHA-256]
+e1=914d9459470d1fd268401486210367091dbec2563f80f103d033bc12c7af21d3
+e2=85eee89690c52784d4377bc7a02c5b4951753093c84980c039b067a5046a2d92
+e3=c24038300a3fe3723883634312abd59436ddf18caa195f3d127883fc6e35312d
+e4=a5247e481e975b7dfa37412e1e7d3881d67c7ab2fba41800db93bf7f79a25e77
+e5=a308b031c75f8edb8fef0a84384c687923226942bd17afc4d02d492325ea3714
+e6=SELF_HASH_NOT_EMBEDDED_TO_AVOID_CIRCULAR_REFERENCE
+ids=50e6343e2aa83ea34deeb4a4ebe22e0897d5445c3e2f445cefbb7281e003ba13

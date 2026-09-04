@@ -1,0 +1,15 @@
+GAP_ID: R8
+INPUT_IDS_AND_PREFIX: form_key=p58_r2_main_20260903; form_id=1440b972-8ee0-4663-8ed5-290d95726ca3; physical_table=sw_form_e7d042cvnn
+IDENTITIES: P58 fixture users admin=1, operator=2095490569284018177, viewer=2095490569841860610, temporary=2095491208659525634
+PROFILE_SWITCH_DB: backend stopped before cleanup; PostgreSQL jdbc:postgresql://127.0.0.1:15432/smart_workflow; exact transaction scoped to the P58 form/instance/deployment IDs
+BROWSER_DOM_OR_SCREENSHOT: browser evidence completed before cleanup; no browser storage inspection
+ACCESS_LOG_REQUEST_IDS: R1/R6 request IDs are in the corresponding attachments; cleanup itself was direct PG transaction
+HTTP_RAW: all active P58 tasks were first completed through real API actions, each returned HTTP=200 and code=0; backend then stopped
+FLOWABLE_SQL_BEFORE_AFTER: before defs_live=24, instances_live=29, active runtime tasks=7; cleanup deleted bytearray=48, re_procdef=24, re_deployment=24, hi_identity=20, hi_varinst=298, hi_taskinst=41, hi_actinst=182, hi_procinst=29; after act_re_procdef.name/key p58=0, act_re_deployment.name p58=0, act_ge_bytearray.name p58=0, act_ru_task.p58=0, act_hi_procinst.p58=0
+BUSINESS_SQL_BEFORE_AFTER: before form rows=29, actions=29, participants=47, branches=6, copies=6, notifications=36; deleted form_rows=29, approval=29, participant=47, branch=6, copy=6, notify=36; final each exact P58 count=0
+POSITIVE_ASSERT: cleanup transaction committed; final live/all P58 process definitions=0, bindings=0, instances=0, form rows=0 and all checked Flowable/P58 residue counts=0
+NEGATIVE_ASSERT: final users remain active and not deleted; admin/operator/viewer/temp rows all status=0 deleted=0
+ZERO_RESIDUE_ASSERT: final PG zero-residue query returned 0 for every checked table; dedicated ports 15432/18084/5174/5175/5176 have no listener
+COMMAND_EXIT_CODES: cleanup transaction commit=0; final SQL verification=0; process/port verification=0; focused Maven tests=0
+CLEANUP_RESULT: committed exact-scope cleanup; no code reset/revert, commit or push
+RAW_OUTPUT_PATHS: receipts/attachments/r8-pg-cleanup-20260903-04.txt; prior cleanup-20260903-03.txt retained as history

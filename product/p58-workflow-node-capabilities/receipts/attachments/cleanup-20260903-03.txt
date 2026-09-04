@@ -1,0 +1,36 @@
+P58 清理与关闭后重放证据摘录（2026-09-03）
+
+固定字段
+GAP_ID: G1,G2,G3,G4,G5,G6,G7,G8
+INPUT_IDS: positive-batch-03 / debug-off-replay-03
+IDENTITY_AND_PERMISSIONS: debug-off 重放使用原 admin debug token 形状；不应再被认证。
+PROFILE_AND_SWITCH: 当前服务 dev + debug-auth=false；H2 memory 新实例。
+URL_OR_COMMAND: GET http://127.0.0.1:18082/api/actuator/health；GET http://127.0.0.1:18082/api/auth/me；GET http://127.0.0.1:18082/api/workflow/defs/node-capabilities；lsof 18082/18083/5174/5175/5176
+RAW_OUTPUT_PATH: 本附件为终态复核摘录。
+
+RAW OUTPUT
+GET /api/actuator/health
+HTTP/1.1 200
+body: {"status":"UP","components":{"db":{"status":"UP","database":"H2"},...}}
+
+GET /api/auth/me  [Bearer test_<redacted>]
+HTTP/1.1 401
+body: {"code":401,"msg":"未认证","data":null}
+
+GET /api/workflow/defs/node-capabilities  [Bearer test_<redacted>]
+HTTP/1.1 401
+body: {"code":401,"msg":"未认证","data":null}
+
+response headers: NO_SET_COOKIE_OR_AUTHORIZATION_RESPONSE_HEADER
+production build scan: pnpm build EXIT=0；rg 'dev-debug|DEBUG_AUTH|test_[0-9]' dist -> no hits；PRODUCTION_DEBUG_ENTRY=ABSENT
+
+process/port cleanup: owned backend/frontend process stopped after evidence; final lsof check on 18082/18083/5174/5175/5176 empty.
+
+DOM_ASSERT: debug-off 重放不进入受保护页面；不以登录页作为通过证据。
+NETWORK_ASSERT: 仅后端 curl HTTP；浏览器 Network 事件仍未捕获。
+FLOWABLE_BEFORE_AFTER: 正向 H2 内存批次在服务重启后不再可查询；未形成逐表 Flowable SQL 计数。
+BUSINESS_DB_BEFORE_AFTER: H2 memory reset 后正向用户/表单/流程/任务/通知对象不保留；未提供 PG 逐表 SELECT count(*) 前后原始输出。
+POSITIVE_ASSERT: 关闭 debug 后同 token 401，生产构建不含调试入口。
+ZERO_RESIDUE_ASSERT: 内存库重置证明运行态对象清空；不能替代 Planner 要求的 PG 逐表零残留查询，因此 G8 不锁定。
+EXIT_CODE: debug-off HTTP 401；production scan/build=0。
+CLEANUP_RESULT: dev-off replay completed; owned processes to be stopped before final handoff.

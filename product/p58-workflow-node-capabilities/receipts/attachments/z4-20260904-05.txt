@@ -1,0 +1,12 @@
+GAP_ID=Z4
+INPUT_IDS=Z4 v1 def=2095536150949900290; v1 instance=87d5e9fe-a7ad-11f1-9422-66ff24301f3c; v1 task=87e10d9b-a7ad-11f1-9422-66ff24301f3c; v2 def=2095537312033910786; v2 instance=c954459f-a7ad-11f1-9422-66ff24301f3c; v2 task=c954e1ec-a7ad-11f1-9422-66ff24301f3c
+IDENTITIES=operator=2095490569284018177; viewer=2095490569841860610; form=3c4676b6-a7c7-41a4-9137-b7f6cdb613db; v1=DEFAULT_REMARK; v2=P58_OPINION_V2
+BROWSER_TIME_AND_DOM=v2 operator DOM: identity=P58 操作者; task=二版意见审批; amount=250; risk=HIGH; visible fields=备注 *,金额初始化 *,高风险说明 *; hidden field=内部说明 absent; opinion=P58_OPINION_V2 v2; browser approved and alert=审批通过. Exact UI timestamp not preserved
+ACCESS_LOG_REQUEST_IDS=API readback=z4-v1-history-api-20260904-01 and z4-v2-history-api-20260904-02; browser approve requestId correlation=UNVERIFIED
+HTTP_RAW=v1 instance detail HTTP 200 code=0 status=APPROVED activeNodeIds=[] processDefKey=bpm_84c7b4def8d04588 businessKey=0d69cd69-23b7-4328-bcad-d076fcab058f; v2 instance detail HTTP 200 code=0 status=APPROVED activeNodeIds=[] processDefKey=bpm_2f1b325c31cb4454 businessKey=0f04e4d9-dee0-4517-99cb-d299570b8995; both operator action requests returned HTTP 200 code=0
+PG_AND_FLOWABLE_SQL_RAW=v1 action=APPROVE opinionForm=DEFAULT_REMARK version=1 data={"comment":""} settlement=APPROVED; v2 action=APPROVE opinionForm=P58_OPINION_V2 version=2 init={"source":"processVariables.formData","sourceFields":["amount","risk","applicantNote"]} data={"amountInit":250,"highRisk":"HIGH","comment":"Z4 v2 浏览器审批意见"} settlement=APPROVED; v2 history has operator action and active task count=0
+POSITIVE_ASSERT=default remark is persisted as comment empty string; v1 history is immutable while v2 has versioned opinion and conditional visible/hidden fields; two candidate identities observed
+NEGATIVE_ASSERT=browser-generated method/path/status/requestId access-log correlation is missing from the retained UI evidence; Z4 is not fully closed
+ZERO_RESIDUE_ASSERT=case data was removed in the final cleanup; P58-scoped post-cleanup counts are zero
+COMMAND_AND_EXIT=full backend mvn -q test exit=0; focused process/engine tests exit=0; browser action UI completed
+CLEANUP_RESULT=v1/v2 definitions, instances, actions, snapshots and form traces were included in cleanup

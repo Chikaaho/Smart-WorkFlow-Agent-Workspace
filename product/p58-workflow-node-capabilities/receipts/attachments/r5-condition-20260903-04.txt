@@ -1,0 +1,20 @@
+GAP_ID: R5
+INPUT_IDS_AND_PREFIX: v3 definition=2095513876398030850; branches=P58_GT100/P58_LT0/P58_DEFAULT; input amounts=250,-1,0
+IDENTITIES: initiator=admin; runtime actor=operator where approval was required
+PROFILE_SWITCH_DB: dev + debug authentication enabled; PostgreSQL; one published definition contained two non-default conditions and DEFAULT
+BROWSER_DOM_OR_SCREENSHOT: authenticated workflow monitor and task pages were used for runtime verification; browser Network event stream is not exposed by the current browser client
+ACCESS_LOG_REQUEST_IDS: v3 condition raw output is in /private/tmp/p58-r5-branch-v2.raw and /private/tmp/p58-r5-branch-runtime.raw
+HTTP_RAW:
+  published BPMN contains P58_BRANCH_META|10|Zm9ybS5hbW91bnQgPiAxMDA=, P58_BRANCH_META|20|Zm9ybS5hbW91bnQgPCAw and P58_BRANCH_META|99|REVGQVVMVA==
+  amount=250 -> APPROVED, branch=P58_GT100, priority=10, expression=form.amount > 100
+  amount=-1 -> APPROVED, branch=P58_LT0, priority=20, expression=form.amount < 0
+  amount=0 -> APPROVED, branch=P58_DEFAULT, priority=99, expression=DEFAULT
+  unknown field, text comparison, and malformed expression publish -> code=2310; published/deployment/binding counts unchanged
+FLOWABLE_SQL_BEFORE_AFTER: branch traces recorded one selected sequence flow per instance; final branch traces=0
+BUSINESS_SQL_BEFORE_AFTER: each of 250/-1/0 had one branch trace, one copy and one notification before cleanup; final all are 0
+POSITIVE_ASSERT: two non-default conditions and DEFAULT are persisted into deployed BPMN metadata and selected correctly at runtime
+NEGATIVE_ASSERT: invalid field/type/syntax is rejected at validation/publish and runtime type errors do not silently fall through to DEFAULT
+ZERO_RESIDUE_ASSERT: P58 branch definitions, traces and deployments removed
+COMMAND_EXIT_CODES: branch v3 publish/runtime=0; invalid matrix=0; GraphToBpmnTranslatorTest/GraphValidatorTest=0
+CLEANUP_RESULT: branch definitions, instances, trace/copy/notify rows and Flowable deployments removed
+RAW_OUTPUT_PATHS: receipts/attachments/r5-condition-20260903-04.txt; /private/tmp/p58-r5-branch-runtime.raw; /private/tmp/p58-r5-branch-v2.raw
