@@ -1,0 +1,16 @@
+===== E2 全部候选提交集合核对 =====
+候选提交总数: 工作区 4（develop-sw 24c4be8/75cbb3b/7701125/89a1a67）+ 工作区 main 1（29f7033）+ Server 4（fca198d + main 142f279/096f707/946c0fe/6afe910）+ Web 3（db297d0 + main d1ad771/d6becd0）= 12
+
+--- 变更类型归类 ---
+docs/说明: 24c4be8、fca198d、db297d0（READme/project/AGENTS CH-aPaaS+PaaS+新仓库名）
+docs/回执: 75cbb3b（探索回执）、7701125（完成回执）、89a1a67（补充回执+附件）
+fix/workspace: 29f7033（main 实例内容移除，211D+11M）
+ci/workflow: 142f279、6afe910（Server main）、d1ad771、d6becd0（Web main）—— 仅 .github/workflows/build-release.yml
+fix/flyway-test: 096f707（2 个 Flyway 测试计数）+ 946c0fe 属 workflow 修正—— 无业务代码、"'main"' 无迁移文件变更
+
+--- 场景实施检查：三个示例（3.1 灾备/MQTT、3.2 校园异常、3.3 MES 温度）在 P59 提交集合中的引用 ---
+
+--- 非 P59 业务代码变更检查 ---
+Server main 变更文件: .github/workflows/build-release.yml + FlywayFullChainH2Test/PostgresTest 2 测试 → 无业务/迁移/migration 文件变更 ✓
+Web main 变更文件: 仅 .github/workflows/build-release.yml ✓
+工作区 main: 文档/知识库/回执，无代码 ✓

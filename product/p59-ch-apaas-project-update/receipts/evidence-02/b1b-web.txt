@@ -1,0 +1,25 @@
+===== B1b-3 前端（workdir=/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Web，时间 2026-09-04 22:20:41 +0800）=====
+$ git remote -v
+origin	git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-Web.git (fetch)
+origin	git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-Web.git (push)
+
+$ git -C Smart-WorkFlow-Web branch -vv（全部分支）
+* develop db297d0 [origin/develop: ahead 1] docs(readme): 项目名称更新为 CH-aPaaS，仓库名同步 Smart-WorkFlow-aPaaS-Web
++ main    d1ad771 (/private/tmp/p59-web-main) [origin/main: ahead 1] ci(web): main 分支自动编译并生成 GitHub Release 与构建产物
+
+$ git rev-parse 完整分支：
+  main = d1ad7719a44dbe50caa7915250697ac071a8bc08
+  develop = db297d038f6b8b26caa32fa18143c95c5b784ed5
+
+$ git ls-remote origin（逐行原始）
+9a22a66b82507032f8cf04cc4ddacc4e4b1c9526	HEAD
+4b62076e55af29dd639f3ec2280de38446474ab3	refs/heads/develop
+9a22a66b82507032f8cf04cc4ddacc4e4b1c9526	refs/heads/main
+59564e0a56db32bdc7c0d4e7698039055c4b8009	refs/tags/v0.0.1
+e45dbb4452a5b8162d1d093bcad343195e5eb65a	refs/tags/v0.0.1^{}
+efcfff07acc581439e1c2f9d92c3702eb2262a38	refs/tags/v0.0.1-beta
+e45dbb4452a5b8162d1d093bcad343195e5eb65a	refs/tags/v0.0.1-beta^{}
+
+$ 上游名：
+origin/develop
+origin/main

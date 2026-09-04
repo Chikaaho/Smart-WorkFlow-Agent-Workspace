@@ -1,0 +1,132 @@
+commit 096f707ded7defbbe3877f60d30412afd5bbb220
+Author: Chikaaho <chikaho@mail.chikaho.cn>
+Date:   Fri Sep 4 22:09:18 2026 +0800
+
+    fix(flyway): main 全链测试计数与真实迁移集合对齐（H2 46/PG 45，升级链同步）
+    
+    main 已含 V45 系统 CRUD 按钮权限与 V46 lowcode 命名清理（bef8506/cd79856 引入），
+    测试断言仍停留在 V44 时代。按真实迁移集合更新：H2 44→46、PG 43→45，
+    升级链 V32→14(13)、V33→13、V36→10，终点版本 V44→V46；PG 侧维持无 V41 差异。
+
+diff --git a/sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainH2Test.java b/sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainH2Test.java
+index 88f289d..04f74a9 100644
+--- a/sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainH2Test.java
++++ b/sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainH2Test.java
+@@ -25,8 +25,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
+  * BPM 迁移链纳入真实 H2 全链 Flyway 验证的永久测试（不启动 Spring 上下文）。
+  * <p>
+  * 使用独立内存库 + 独立 Flyway 实例，8 个 locations 与 {@code application.yml}
+- * 完全一致（{vendor} 按 H2 连接解析为 h2）。全链共 35 条迁移
+- * （含 V35 Agent Token Usage）。
++ * 完全一致（{vendor} 按 H2 连接解析为 h2）。全链共 46 条迁移
++ * （含 V45 系统 CRUD 按钮权限、V46 lowcode 命名清理）。
+  * </p>
+  * <p>
+  * H2 不支持 PG 的 partial unique index，BPM V8 在 H2 侧用生成列
+@@ -76,15 +76,15 @@ class FlywayFullChainH2Test {
+                 .load();
+         MigrateResult result = flyway.migrate();
+         assertTrue(result.success, "全链迁移应成功");
+-        assertEquals(44, result.migrationsExecuted,
+-                "全链迁移计数应为 44（41 基线 + V42 IoT 设备身份升级 + V43 表单数据导入导出权限 + V44 流程引擎子菜单真实化），实际: " + result.migrationsExecuted);
++        assertEquals(46, result.migrationsExecuted,
++                "全链迁移计数应为 46（41 基线 + V42 IoT 设备身份升级 + V43 表单数据导入导出权限 + V44 流程引擎子菜单真实化 + V45 系统 CRUD 按钮权限 + V46 lowcode 命名清理），实际: " + result.migrationsExecuted);
+     }
+ 
+     @Test
+-    @DisplayName("全链迁移后：info().applied() 共 44 条，包含 BPM V8/V14/P24 V31-V39、IoT V40/V42、Form V41/V43、A-02 V44")
++    @DisplayName("全链迁移后：info().applied() 共 46 条，包含 BPM V8/V14/P24 V31-V39、IoT V40/V42、Form V41/V43、A-02 V44、V45、V46")
+     void appliedMigrationCount_shouldBe35() {
+         org.flywaydb.core.api.MigrationInfo[] applied = flyway.info().applied();
+-        assertEquals(44, applied.length, "已应用迁移数应为 44");
++        assertEquals(46, applied.length, "已应用迁移数应为 46");
+         boolean v8Seen = false;
+         boolean v14Seen = false;
+         boolean v31Seen = false;
+@@ -225,7 +225,7 @@ class FlywayFullChainH2Test {
+                 .load();
+         MigrateResult second = full.migrate();
+         assertTrue(second.success, "V32→链尾升级链应成功");
+-        assertEquals(12, second.migrationsExecuted, "升级链应只执行 V33/V34/V35/V36/V37/V38/V39/V40/V41/V42/V43/V44 十二条，实际: " + second.migrationsExecuted);
++        assertEquals(14, second.migrationsExecuted, "升级链应只执行 V33/V34/V35/V36/V37/V38/V39/V40/V41/V42/V43/V44/V45/V46 十四条，实际: " + second.migrationsExecuted);
+         full.validate();
+ 
+         try (Connection conn = DriverManager.getConnection(upgradeUrl, USER, PASSWORD);
+@@ -282,7 +282,7 @@ class FlywayFullChainH2Test {
+                 .load();
+         MigrateResult second = full.migrate();
+         assertTrue(second.success, "V33→V36 升级链应成功");
+-        assertEquals(11, second.migrationsExecuted, "升级链应只执行 V34/V35/V36/V37/V38/V39/V40/V41/V42/V43/V44 十一条，实际: " + second.migrationsExecuted);
++        assertEquals(13, second.migrationsExecuted, "升级链应只执行 V34/V35/V36/V37/V38/V39/V40/V41/V42/V43/V44/V45/V46 十三条，实际: " + second.migrationsExecuted);
+         full.validate();
+ 
+         try (Connection conn = DriverManager.getConnection(upgradeUrl, USER, PASSWORD)) {
+@@ -526,10 +526,10 @@ class FlywayFullChainH2Test {
+                 .load();
+         MigrateResult second = toV37.migrate();
+         assertTrue(second.success, "V36→链尾 应成功");
+-        assertEquals(8, second.migrationsExecuted, "V36→链尾 应只执行 V37/V38/V39/V40/V41/V42/V43/V44 八条，实际: " + second.migrationsExecuted);
++        assertEquals(10, second.migrationsExecuted, "V36→链尾 应只执行 V37/V38/V39/V40/V41/V42/V43/V44/V45/V46 十条，实际: " + second.migrationsExecuted);
+         org.flywaydb.core.api.MigrationInfoService infoAfter = toV37.info();
+         String afterVersion = infoAfter.current() == null ? "EMPTY" : infoAfter.current().getVersion().getVersion();
+-        assertEquals("44", afterVersion, "终点当前版本应为 V44，实际: " + afterVersion);
++        assertEquals("46", afterVersion, "终点当前版本应为 V46，实际: " + afterVersion);
+         long elapsedMs = (System.nanoTime() - startNanos) / 1_000_000;
+ 
+         // 4. 同一数据库会话实际查询：页面/按钮行的 id,parent_id,path,component,permission + view/manage
+diff --git a/sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainPostgresTest.java b/sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainPostgresTest.java
+index c58f8c4..f183eda 100644
+--- a/sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainPostgresTest.java
++++ b/sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainPostgresTest.java
+@@ -26,7 +26,8 @@ import static org.junit.jupiter.api.Assertions.fail;
+  * <p>
+  * 使用 zonky embedded-postgres 启动真实 PostgreSQL 17.5 二进制（macOS arm64），
+  * 独立 Flyway 实例，7 个 locations 与 {@code application.yml} 完全一致
+- * （{vendor} 按 PostgreSQL 连接解析为 postgresql）。全链共 35 条迁移。
++ * （{vendor} 按 PostgreSQL 连接解析为 postgresql）。全链共 45 条迁移
++ * （PG 侧无 V41，含 V45 系统 CRUD 按钮权限、V46 lowcode 命名清理）。
+  * </p>
+  * <p>
+  * 本测试是 H2 侧 {@link FlywayFullChainH2Test} 的 PG 镜像，并承载 V13 修复的回归守卫：
+@@ -88,8 +89,8 @@ class FlywayFullChainPostgresTest {
+                 .load()
+                 .migrate();
+         assertTrue(result.success, "全链迁移应成功");
+-        assertEquals(43, result.migrationsExecuted,
+-                "全链迁移计数应为 43（39 基线 + V40 IoT 设备/命令 + V42 IoT 设备身份升级 + V43 表单数据导入导出权限 + V44 流程引擎子菜单真实化），实际: "
++        assertEquals(45, result.migrationsExecuted,
++                "全链迁移计数应为 45（39 基线 + V40 IoT 设备/命令 + V42 IoT 设备身份升级 + V43 表单数据导入导出权限 + V44 流程引擎子菜单真实化 + V45 系统 CRUD 按钮权限 + V46 lowcode 命名清理），实际: "
+                         + result.migrationsExecuted);
+     }
+ 
+@@ -101,10 +102,10 @@ class FlywayFullChainPostgresTest {
+     }
+ 
+     @Test
+-    @DisplayName("全链迁移后：info().applied() 共 43 条，包含 BPM V8/V14/P24 V31-V39、IoT V40/V42、Form V43、A-02 V44")
++    @DisplayName("全链迁移后：info().applied() 共 45 条，包含 BPM V8/V14/P24 V31-V39、IoT V40/V42、Form V43、A-02 V44、V45、V46")
+     void appliedMigrationCount_shouldBe35() {
+         org.flywaydb.core.api.MigrationInfo[] applied = flyway().info().applied();
+-        assertEquals(43, applied.length, "已应用迁移数应为 43");
++        assertEquals(45, applied.length, "已应用迁移数应为 45");
+         boolean v8Seen = false;
+         boolean v14Seen = false;
+         boolean v31Seen = false;
+@@ -303,7 +304,7 @@ class FlywayFullChainPostgresTest {
+                 .load();
+         MigrateResult second = full.migrate();
+         assertTrue(second.success, "V32→链尾升级链应成功");
+-        assertEquals(11, second.migrationsExecuted, "升级链应只执行 V33/V34/V35/V36/V37/V38/V39/V40/V42/V43/V44 十一条，实际: " + second.migrationsExecuted);
++        assertEquals(13, second.migrationsExecuted, "升级链应只执行 V33/V34/V35/V36/V37/V38/V39/V40/V42/V43/V44/V45/V46 十三条（PG 无 V41），实际: " + second.migrationsExecuted);
+         full.validate();
+     }
+ 
+@@ -327,7 +328,7 @@ class FlywayFullChainPostgresTest {
+                 .load();
+         MigrateResult first = migrate.migrate();
+         assertTrue(first.success, "建立既有库应成功");
+-        assertEquals(43, first.migrationsExecuted, "既有库应含全部 43 条，实际: " + first.migrationsExecuted);
++        assertEquals(45, first.migrationsExecuted, "既有库应含全部 45 条，实际: " + first.migrationsExecuted);
+ 
+         // 原始 V13 的 L58 内容（修改前）：DROP INDEX IF EXISTS sw_form_def_form_key_key;
+         String originalV13Line = "DROP INDEX IF EXISTS sw_form_def_form_key_key;";
