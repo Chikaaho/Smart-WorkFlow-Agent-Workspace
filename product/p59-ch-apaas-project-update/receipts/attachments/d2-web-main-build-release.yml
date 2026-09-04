@@ -1,0 +1,49 @@
+name: Build & Release (main)
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck, lint, test and build
+        run: NODE_OPTIONS="--max-old-space-size=2048" sh -c 'pnpm typecheck && pnpm lint && pnpm test && pnpm build'
+
+      - name: Package dist artifacts
+        id: package
+        run: |
+          SHA_SHORT="${GITHUB_SHA::8}"
+          VERSION=$(node -p "require('./package.json').version")
+          zip -r "dist-${SHA_SHORT}.zip" dist
+          echo "sha_short=${SHA_SHORT}" >> "$GITHUB_OUTPUT"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="build-${GITHUB_SHA::8}"
+          gh release view "${TAG}" >/dev/null 2>&1 && gh release delete "${TAG}" --yes || true
+          gh release create "${TAG}" \
+            --title "CH-aPaaS-Web ${{ steps.package.outputs.version }} build ${GITHUB_SHA::8}" \
+            --notes "自动构建产物（提交 ${GITHUB_SHA}，分支 main）" \
+            "dist-${GITHUB_SHA::8}.zip"

@@ -1,0 +1,44 @@
+name: Build & Release (main)
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Build with Maven
+        run: MAVEN_OPTS="-Xmx2g" mvn -B -ntp install
+
+      - name: Locate executable JAR
+        id: locate
+        run: |
+          JAR=$(ls sw-bootstrap/target/*.jar | grep -v '\.original$' | head -1)
+          VERSION=$(grep -m1 -oE '<version>[^<]+</version>' pom.xml | sed 's/<[^>]*>//g')
+          echo "jar=${JAR}" >> "$GITHUB_OUTPUT"
+          echo "jar_name=$(basename "${JAR}")" >> "$GITHUB_OUTPUT"
+          echo "sha_short=${GITHUB_SHA::8}" >> "$GITHUB_OUTPUT"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="build-${GITHUB_SHA::8}"
+          gh release view "${TAG}" >/dev/null 2>&1 && gh release delete "${TAG}" --yes || true
+          gh release create "${TAG}" \
+            --title "CH-aPaaS-Server ${{ steps.locate.outputs.version }} build ${GITHUB_SHA::8}" \
+            --notes "自动构建产物（提交 ${GITHUB_SHA}，分支 main）" \
+            "${{ steps.locate.outputs.jar }}#${{ steps.locate.outputs.jar_name }}"
