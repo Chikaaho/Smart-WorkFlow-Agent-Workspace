@@ -22,7 +22,7 @@ CH-aPaaS 是面向企业协作场景的低代码 PaaS 与 AI Agent 平台。项�
 | 仓库 | 职责 | 开发入口 |
 | --- | --- | --- |
 | Smart-WorkFlow-Agent-Workspace（本仓库） | 项目规划、需求方向、回执、架构知识与工作区治理 | [`system.md`](system.md)、[`knowledge/`](knowledge/architecture.md) |
-| Smart-WorkFlow-sPaaS-server | Java 后端、数据库、认证授权、业务服务与 API | [`Smart-WorkFlow-Server/README.md`](Smart-WorkFlow-Server/README.md) |
+| Smart-WorkFlow-aPaaS-server | Java 后端、数据库、认证授权、业务服务与 API | [`Smart-WorkFlow-Server/README.md`](Smart-WorkFlow-Server/README.md) |
 | Smart-WorkFlow-aPaaS-Web | Vue 前端、页面交互、前端架构与 API/Mock 开发模式 | [`Smart-WorkFlow-Web/README.md`](Smart-WorkFlow-Web/README.md) |
 
 典型运行关系如下：
@@ -32,7 +32,7 @@ Smart-WorkFlow-aPaaS-Web (:5173)
         |
         | HTTP /api
         v
-Smart-WorkFlow-sPaaS-server (:8080/api)
+Smart-WorkFlow-aPaaS-server (:8080/api)
         |
         +-- PostgreSQL 或 H2
         +-- Redis
@@ -53,7 +53,7 @@ cd Smart-WorkFlow-Agent-Workspace
 再将后端与前端仓库克隆到工作区根目录，并指定本地目录名以便 README 配套入口可解析：
 
 ```bash
-git clone git@github.com:Chikaaho/Smart-WorkFlow-sPaaS-server.git Smart-WorkFlow-Server
+git clone git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-server.git Smart-WorkFlow-Server
 ```
 
 ```bash
