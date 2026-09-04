@@ -1,8 +1,0 @@
-workingDir=/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap
-command_before=SPRING_APPLICATION_JSON 不含 sw.security.cookie.path（默认 /api/auth/）启动后端；网关 /sw/ 静态 + /sw-server/api 反代；浏览器 http://127.0.0.1:5273/sw/login 登录后 F5
-set-cookie-attr-check=node /tmp/p45ev/login-headers.mjs（输出 /tmp/p45ev/n3-setcookie-wrongpath.json，仅含属性与 code，不含 Cookie 值）
-{"code":0,"setCookieAttrs":["rt=<REDACTED>","Max-Age=604800","Expires=Tue, 08 Sep 2026 10:02:47 GMT","Path=/api/auth/","HttpOnly","SameSite=Lax"],"cookieValueLen":64}
-
-browserSteps=登录成功 /sw/dict → F5 → /sw/login?redirect=/dict（第一失败点）→ fetch /sw-server/api/auth/refresh 返回 code=401 未提供 refresh token（证明 Cookie 零携带）
-afterSegment=引用已锁定 L3-P 附件（见 n3-cookie-path-comparison.json lockedEvidenceSha256），未重拍
-exit=0
