@@ -1,201 +1,114 @@
-# Agent Coding Engine
+# Smart-WorkFlow
 
-**简体中文** | [English](README.en.md)
+> **示例分支定位**：本分支（`develop-sw`）是 **Agent Coding Engine** 的 Smart-WorkFlow/OA **示例实例**。
+> 它演示一个完整 coding 项目如何使用 Engine 治理协议，并保留本项目全部历史状态、知识、记忆、方向、回执、待办及其追溯关系。
+> Engine 通用默认分支为 `main`（不含本实例任何业务事实）；本分支不从属、不反向修改 Engine 的通用定位。
 
-> 本页默认对象是 `main` 分支的通用 Agent Coding Engine：所有相对路径和当前状态表述均属于 `main`。只有明确标注 `develop-sw` 的章节与链接描述 Smart-WorkFlow/OA 示例实例。
+Smart-WorkFlow 是面向企业协作场景的低代码 OA 与 AI Agent 平台。项目以表单和流程为业务主线，将组织权限、通知、任务、文件、设备与智能编排能力组合在同一套工作流中。
 
-一个与具体业务、编程语言和工具链解耦的半自动 Agent Coding Engine。`main` 根目录就是可运行工作区；项目只需在 `project.md` 声明身份、代码仓库目录和工程规则，Agent 即可沿既有治理协议接手任务。
+本仓库是项目的规划与知识中心；后端服务和前端应用分别位于独立仓库。项目使用者可从这里了解整体能力，开发者可沿仓库导航进入对应工程。
 
-## 分支身份
+## 项目能力
 
-| 分支 | 唯一定位 | 状态文件含义 |
+- 低代码表单：设计、发布、填写和查询业务表单，支持子表与表单引用。
+- 流程自动化：定义 BPMN 流程，发起申请，处理待办并查看流程实例。
+- 组织与权限：管理用户、部门、角色、菜单、字典和数据访问范围。
+- 通用业务服务：提供通知、文件存储和定时任务等平台能力。
+- AI Agent 与知识能力：支持会话、工具调用、图编排、Prompt 配置和知识库扩展。
+- IoT 接入：连接设备能力与审批流程，承载业务驱动的设备控制场景。
+
+## 三个仓库
+
+| 仓库 | 职责 | 开发入口 |
 | --- | --- | --- |
-| `main` | 通用 Agent Coding Engine 与新项目起点 | `knowledge/`、`memory/` 的初始值描述尚未接入项目的 Engine 工作区；功能数 `0` 是该初始实例状态 |
-| [`develop-sw`](https://github.com/Chikaaho/Smart-WorkFlow-Knowledge/tree/develop-sw) | Smart-WorkFlow/OA 完整示例实例 | 该分支的 `knowledge/`、`memory/`、`product/` 和 `todo/` 承载 OA 项目的架构、产品进度与历史 |
+| Smart-WorkFlow-Knowledge（本仓库） | 项目规划、需求方向、回执、架构知识与工作区治理 | [`system.md`](system.md)、[`knowledge/`](knowledge/architecture.md) |
+| Smart-WorkFlow-Server | Java 后端、数据库、认证授权、业务服务与 API | [`Smart-WorkFlow-Server/README.md`](Smart-WorkFlow-Server/README.md) |
+| Smart-WorkFlow-Web | Vue 前端、页面交互、前端架构与 API/Mock 开发模式 | [`Smart-WorkFlow-Web/README.md`](Smart-WorkFlow-Web/README.md) |
 
-判断项目状态前必须先确认当前分支：
+典型运行关系如下：
 
-```bash
-git branch --show-current
+```text
+Smart-WorkFlow-Web (:5173)
+        |
+        | HTTP /api
+        v
+Smart-WorkFlow-Server (:8080/api)
+        |
+        +-- PostgreSQL 或 H2
+        +-- Redis
 ```
 
-Smart-WorkFlow/OA 的产品状态入口是 [`develop-sw/knowledge/current-status.md`](https://github.com/Chikaaho/Smart-WorkFlow-Knowledge/blob/develop-sw/knowledge/current-status.md)；`main/knowledge/current-status.md` 只负责通用 Engine 当前实例的状态。
+## 快速开始
 
-## 它解决什么问题
+先克隆知识仓库：
 
-Agent Coding Engine 把长期 coding 项目中容易散落的角色权限、任务分级、需求方向、代码探索、执行证据、项目知识和终态同步组织成一个可持续运行的工作区。流程按风险选择：局部小改直接执行，跟踪型功能进入完整闭环。
+```bash
+git clone git@github.com:Chikaaho/Smart-WorkFlow-Knowledge.git
+```
 
-它被设计为**半自动系统**：Agent 负责读取上下文、探索、规划、实现、验证、记录证据和同步状态；人工保留目标与终止权，可以在任何时候介入：
+```bash
+cd Smart-WorkFlow-Knowledge
+```
 
-- 改变需求方向、范围或优先级；
-- 暂停或终止当前任务；
-- 修改验收目标与证据口径；
-- 对功能结果、阶段终态和远程发布作最终裁决。
+再将后端与前端仓库放入工作区根目录：
 
-日常运行不要求人工逐步拆解或持续盯守。只要目标和项目规则已经声明，Agent 会在角色边界内推进到可验收结果；需要改变方向时，人工直接给出新裁决即可。
+```bash
+git clone git@github.com:Chikaaho/Smart-WorkFlow-Server.git
+```
 
-### 成本经济性：贵模型做决策，快模型跑吞吐
+```bash
+git clone git@github.com:Chikaaho/Smart-WorkFlow-Web.git
+```
 
-Planner 的输入由 `memory/` 和 `search_fallback/` 压缩，输出集中在需求方向、风险判断和验收裁决，不需要反复吞入完整代码仓或参与高频实现循环。因此 Planner 的调用次数少、输入输出边界清晰，可以把成本很高的超强模型集中用在高杠杆决策上，降低方向错误带来的整轮返工。
+进入对应工程后，按后端或前端 README 准备环境并启动服务：
 
-Executor 承担大量读码、实现、测试和修复。候选执行模型以 `deepseek-v4-flash`（简称 DS-Flash）的综合能力和非高峰价格为基准；满足以下任一条件即可进入候选池：
+- [后端环境与启动](Smart-WorkFlow-Server/README.md#快速开始)
+- [前端环境与启动](Smart-WorkFlow-Web/README.md#快速开始)
 
-- 能力强于 DS-Flash，且同口径任务的综合成本与 DS-Flash 非高峰价格大致相当；
-- 综合成本低于 DS-Flash 非高峰价格，且能力与 DS-Flash 大致相当。
+## 与 Agent Coding Engine 的关系
 
-候选模型仍需通过项目定义的执行基准，包括任务成功率、测试结果、证据合规、终态契约和返工率。达到这些门槛后，就可以用更高吞吐的 Flash 类模型扩展执行量；S/M 快路径还能进一步减少不必要的规划调用和文档开销。
+- **Engine 来源**：本实例的治理协议（`system.md`、`roles/`、`.codex/governance/`、Harness 入口）来自 Agent Coding Engine `main` 默认分支。
+- **实例边界**：本分支的 `memory/`、`knowledge/`、`product/`、`todo/`、`search_task/`、`search_fallback/` 保存的是 **Smart-WorkFlow/OA 当前实例**的状态、历史、回执与待办，不与其他项目共享。
+- **追溯**：历史回执（`product/*/receipts/`）、状态单一源（`knowledge/current-status.md`）、问题（`knowledge/known-issues.md`）与需求池（`todo/requirement-pool.md`）均在本分支完整保留，可继续追溯。
+- **Engine 通用化**：`main` 分支为空白 Engine（不含本实例内容），可作为新项目基线；本项目不把自身状态复制回 Engine 默认内容。
 
-> 规划用最强模型降低决策错误；执行用达标的 Flash 模型把吞吐拉满——该贵的地方贵，该跑量的地方就把显卡跑到冒烟。
+## 分级工作方式
 
-## 工作方式
+本实例按任务风险选择流程，不再要求所有修改进入完整功能闭环：
 
 | 等级 | 典型任务 | 工作方式 |
-|---|---|---|
+| --- | --- | --- |
 | S | 按钮、文案、局部 CSS、低风险修正 | Executor 直接修改并聚焦验证 |
 | M | 单模块小功能、局部接口或流程调整 | Executor 简版 Plan → Execute → Test |
 | L | 新模块、跨仓、重要流程、正式跟踪功能 | Planner 方向 → Executor 实现与证据 → Planner 验收与终态同步 |
 | XL | 核心架构、多版本演进、重大迁移 | L 级闭环 + Decision Records + 分阶段验收 |
 
-三类 Agent 角色各自保持清晰边界：
-
-| 角色 | 主要职责 |
-| --- | --- |
-| Planner（规划） | 处理 L/XL：派发探索、确定方向和验收目标、独立验收 |
-| Executor（执行） | 判级并执行 S/M/L/XL：实施计划、实现、验证、证据和授权内知识维护 |
-| Admin（管理员） | 维护治理协议、工程配置、仓库治理与相关 Git 操作 |
-
-唯一行为宪法是 [`system.md`](system.md)，三类角色的完整权限定义位于 [`roles/`](roles/)。人工的最新明确裁决始终拥有最高优先级。
-
 ### 推荐交互流程（可自由扩展）
 
-下面是一套适合 L/XL 任务的最小交互骨架。`create planning`、`create execute` 表示创建对应角色的会话，`change planning`、`change execute` 表示切换回已有会话；如果所用工具的名称不同，替换成对应的创建、切换操作即可。S/M 任务通常不需要走完整闭环，按上表直接执行。
+下面是 L/XL 任务的最小交互骨架。`create` 表示创建对应角色会话，`change` 表示切换到已有会话；不同工具可替换为等价操作。S/M 任务按上表直接执行，不需要套用完整流程。
 
 | 步骤 | 操作 | 用户最小输入 | Agent 自动承接 |
 | --- | --- | --- | --- |
-| 1 | `create planning` | `你是规划，我的需求是 xxx。` 或 `你是规划，从需求池里取一个最佳需求，并告诉我为什么。` | 读取项目现状与需求资料，确定方向、范围和验收目标 |
-| 2 | `create execute` | `你是执行，阅读执行任务并开始执行。` | 定位当前执行任务，完成实现、验证和回执 |
+| 1 | `create planning` | `你是规划，我的需求是 xxx。` 或 `你是规划，从需求池里取一个最佳需求，并告诉我为什么。` | 读取实例状态与需求资料，确定方向、范围和验收目标 |
+| 2 | `create execute` | `你是执行，阅读执行任务并开始执行。` | 定位当前方向，完成实现、验证和回执 |
 | 3 | `change planning` | `阅读回执验收。` | 独立审查实现与证据，给出通过或退回结论 |
-| 4.1 | `change execute` | `审核退回，读取审查记录修复。` | 读取最新审查记录，修复并更新回执；随后回到步骤 3，可多轮循环 |
-| 4.2 | `change execute` | `审核通过，阅读同步任务并开始执行。` | 读取终态同步任务，完成状态、历史和相关知识同步 |
-| 5 | `change planning` | `阅读回执验收。` | 独立审查终态同步结果，给出通过或退回结论 |
-| 6.1 | `change execute` | `审核退回，读取审查记录修复。` | 读取最新审查记录，修复同步缺口；随后回到步骤 5，可多轮循环 |
-| 6.2 | `change execute` | `审核通过，推送代码。` | 在发布前回显远程、分支、文件范围和风险，并按当前授权边界完成推送 |
+| 4.1 | `change execute` | `审核退回，读取审查记录修复。` | 修复并更新回执，随后回到步骤 3；允许多轮循环 |
+| 4.2 | `change execute` | `审核通过，阅读同步任务并开始执行。` | 读取终态同步任务，完成状态、历史和知识同步 |
+| 5 | `change planning` | `阅读回执验收。` | 独立审查终态同步结果 |
+| 6.1 | `change execute` | `审核退回，读取审查记录修复。` | 修复同步缺口，随后回到步骤 5；允许多轮循环 |
+| 6.2 | `change execute` | `审核通过，推送代码。` | 发布前回显远程、分支、范围和风险，并按授权边界推送 |
 
-```text
-create planning → create execute → change planning（实现验收）
-                                      ├─ 退回 → change execute（修复）→ 回到实现验收（循环 A）
-                                      └─ 通过 → change execute（同步）
-                                                   ↓
-                                           change planning（同步验收）
-                                                   ├─ 退回 → change execute（修复）→ 回到同步验收（循环 B）
-                                                   └─ 通过 → change execute（推送）
-```
+用户通常只需在第一步说明需求，后续使用表中的一句话即可；各角色自行读取当前有效的方向、回执、审查记录和同步任务。只有存在多个候选且无法可靠判断时，才请求必要的最小标识。
 
-用户通常只需说明第一步的需求，后续用表中的一句话即可，不必重复粘贴任务、回执或审查记录；各角色应自行定位并读取当前有效文件。存在多个候选任务或记录且无法可靠判断时，Agent 才请求必要的最小标识。
+这是一套参考骨架，用户可以自由增删阶段、增加测试或安全审查、拆分发布批次、替换角色名称并添加新循环；扩展仍需遵守任务自动升级、角色权限、破坏性操作和远程发布边界。
 
-这只是推荐骨架，不是固定编排。用户可以在此基础上自由增删阶段、增加测试或安全审查、拆分发布批次、替换角色名称，也可以为自己的项目增加新的循环；扩展时仍需遵守任务自动升级、角色权限、破坏性操作和远程发布等安全边界。
+## 文档导航
 
-## 接入一个项目
-
-`main` 根目录已经包含完整运行结构，不需要生成额外骨架。最短接入只需两步：
-
-1. 从 [`project.example.md`](project.example.md) 创建 `project.md`，填写项目名称、目标、代码仓库目录、工程规则和验证入口。
-2. 在支持仓库级 Agent 的 coding 工具中打开这个工作区，声明本次会话角色并给出任务。
-
-```bash
-cp project.example.md project.md
-```
-
-代码仓库可以位于 Engine 根目录内，也可以使用项目说明中可定位的其他目录。一个 Engine 工作区对应一个项目实例；不同项目使用独立工作区，从而隔离知识、记忆、方向、回执和待办。
-
-### ZCode 体验套餐接手示例
-
-Owner 已使用 ZCode 提供的体验套餐验证过一种最轻量的接入方式：直接在 ZCode 中打开已经配置好的 Engine 工作区，声明角色并下达现有任务，Agent 可以读取 `AGENTS.md`、`system.md`、`project.md` 以及工作区内的状态资料，随后沿既有流程继续执行。
-
-这个示例中的“0 修改接手”是指：**为了让 ZCode 接入并理解任务，不需要修改 Engine 协议、Harness 配置或业务代码，也不需要为工具另写适配层**。Agent 接手后的正常需求实现，仍会按任务本身修改获准范围内的项目文件。
-
-示例交互可以保持很短：
-
-```text
-角色：执行
-任务：读取当前活动方向和已有回执，继续完成尚未满足的验收目标。
-```
-
-这项体验验证说明，Engine 的项目上下文和任务状态保存在工作区中，而不是绑定某个特定模型套餐、语言或 IDE。不同 Agent 工具只要能够读取仓库文件并执行获准操作，就可以从同一套结构接手工作。
-
-## 结构说明
-
-| 路径 | 作用 | 主要维护者 |
-| --- | --- | --- |
-| `project.md` | 当前项目的唯一说明入口：身份、仓库目录、工程规则、启动与验证方式 | 项目接入时配置 |
-| `system.md` | 工作区唯一行为宪法：角色入口、协作协议、状态与安全边界 | Admin |
-| `roles/` | Planner、Executor、Admin 的完整角色定义 | Admin |
-| `knowledge/` | 当前 Engine 项目实例的完整持久知识；`main` 保持新项目初始状态 | Executor |
-| `memory/` | 当前 Engine 项目实例供 Planner 快速恢复上下文的最小摘要；`main` 保持初始摘要 | Planner；终态时按授权同步 |
-| `product/` | 保存 L/XL 需求方向、执行回执、验收记录和归档结果；S/M 默认不进入 | Planner / Executor 分区协作 |
-| `todo/` | 暂不处理事项与需求缺口池 | Planner；按授权同步 |
-| `search_task/` | Planner 下发的代码与现状探索任务 | Planner |
-| `search_fallback/` | Executor 返回的压缩探索结论 | Executor |
-| `.codex/`、`.claude/` | Harness 配置、Hook、终态机器契约与公共校验器 | Admin |
-| `AGENTS.md`、`CLAUDE.md` | 不同 Agent Harness 的工作区入口，统一路由到 `system.md` | Admin |
-
-项目接入后，`knowledge/` 保存该项目的完整事实，`memory/` 只保留规划所需摘要；`product/` 保留 L/XL 从方向、执行证据到最终验收的完整追溯。S/M 在对话内完成实施计划、验证和结果报告，不制造功能状态。`main` 当前保留通用初始值，新项目从这里建立自己的状态。
-
-## 通用边界
-
-Engine 不预设项目一定包含后端、前端、数据库或编译步骤，也不固化 Java、Vue 或任何特定语言与框架。
-
-- 支持单仓、多仓，以及无传统编译过程的项目；
-- 构建、测试、迁移、部署和资源限制均由 `project.md` 或项目工程规则按需声明；
-- 未声明的项目动作没有 Engine 级默认命令、默认端口或默认资源参数；
-- 终态基线只包含当前项目实际声明并执行的验证项；
-- 仓库替换或技术栈变化不会改变角色协议、知识结构和风险分级原则。
-
-## Smart-WorkFlow 示例（仅 `develop-sw`）
-
-[`develop-sw` 分支](https://github.com/Chikaaho/Smart-WorkFlow-Knowledge/tree/develop-sw) 是 Smart-WorkFlow/OA 的完整实例，保留该项目的业务知识、记忆、需求方向、回执、待办及历史追溯，可用于理解一个长期、多仓项目如何落地本 Engine。
-
-- [示例项目说明](https://github.com/Chikaaho/Smart-WorkFlow-Knowledge/blob/develop-sw/README.md)
-- [示例系统架构](https://github.com/Chikaaho/Smart-WorkFlow-Knowledge/blob/develop-sw/knowledge/architecture.md)
-- [示例当前产品状态](https://github.com/Chikaaho/Smart-WorkFlow-Knowledge/blob/develop-sw/knowledge/current-status.md)
-
-```bash
-git switch develop-sw
-```
-
-切换到 `develop-sw` 后，仓库内相对链接才指向 OA 示例资料。`main` 始终作为通用 Engine 与新项目起点。
-
-## 演进历史
-
-Agent Coding Engine 不是从抽象框架设计开始的，而是在一个真实项目的长期 Agent 协作中逐步长出来的：
-
-1. **Web 规划 + 双仓执行**：最初使用 Claude Web 负责方案，后端与前端两个代码仓库分别使用 Claude Code 执行。
-2. **引入 `knowledge/`**：Claude 账号被封后，在两个代码仓库的同级新建知识工作区，用 `knowledge/` 持续维护跨仓文档。
-3. **引入 `product/`**：为解决方案和执行结果在会话间反复复制粘贴的问题，增加 `product/` 承接需求方向、执行回执与验收归档。
-4. **上提统一执行根目录**：为避免在三个 Claude Code 会话间来回切换，将执行入口上提一层，使根工作区可统一协调知识层、后端与前端。
-5. **区分 `planning` / `execute`**：上下文快速膨胀后，将需求方向与实现执行分离，形成一个规划角色和一个执行角色。
-6. **压缩规划上下文**：规划需要高级模型，但直接读取代码和完整 `knowledge/` 的输入仍过大，因此新增 `memory/`、`search_task/` + `search_fallback/` 与 `todo/`，用压缩记忆、委派探索和待办索引缩小规划可读范围。
-7. **新增 `admin`**：增加仅负责宪法、架构文档、工程配置与仓库治理的管理员角色，防止规划和执行角色越权。
-8. **解耦 Harness**：将唯一行为宪法从 `CLAUDE.md` 迁移为 `system.md`，Claude Code、Codex 及其他 Harness 的入口文件只负责指向 `system.md`。
-9. **固化每轮收尾**：优化规划步骤，要求每轮任务收尾时同步完整 `knowledge/` 并压缩 `memory/`，使权威信息与下轮最小上下文保持一致。
-10. **拆分角色规范**：随着 `system.md` 日渐膨胀，新增 `roles/`；`system.md` 收缩为公共规范门禁和角色规范索引，各角色认领后再读取对应定义。
-
-这些演变来自实际协作中的上下文、切换成本和角色边界问题。当前接入与运行仍以本 README、`project.md`、`system.md` 和 `roles/` 为准。
-
-## `main` 通用 Engine 导航
-
-以下入口全部属于当前 `main` 分支，不表示 Smart-WorkFlow/OA 的产品进度：
-
-- [项目接入模板](project.example.md)
-- [唯一行为宪法](system.md)
-- [角色定义](roles/)
-- [知识库说明](knowledge/README.md)
-- [记忆说明](memory/README.md)
-- [需求方向与回执说明](product/README.md)
-- [探索任务说明](search_task/README.md)
-- [探索回执说明](search_fallback/README.md)
-- [待办与需求池说明](todo/README.md)
-
-## 许可证
-
-本项目采用 [MIT License](LICENSE) 开源。
+| 主题 | 文档 |
+| --- | --- |
+| 工作区治理入口 | [`system.md`](system.md) |
+| 整体架构 | [`knowledge/architecture.md`](knowledge/architecture.md) |
+| 当前项目状态 | [`knowledge/current-status.md`](knowledge/current-status.md) |
+| 需求方向与交付回执 | [`product/`](product/) |
+| 后端工程规范 | [`Smart-WorkFlow-Server/docs/governance/engineering-constitution.md`](Smart-WorkFlow-Server/docs/governance/engineering-constitution.md) |
+| 前端工程规范 | [`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md`](Smart-WorkFlow-Web/docs/governance/engineering-constitution.md) |

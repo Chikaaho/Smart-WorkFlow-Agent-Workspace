@@ -1,7 +1,12 @@
-# 功能状态摘要（初始）
+# 功能摘要
 
-> Engine 通用初始版。项目接入后由 Planner 更新功能级状态摘要。
+> 规划侧最新同步点：2026-09-03；正式功能数与基线仍以 `knowledge/current-status.md` 为准。
 
-- 当前已完成功能：无
-- 传输中的功能：无
-- 权威明细：`knowledge/features/`；各 coding 仓库的功能清单由对应仓库文档声明
+- `p57-bpm-node-extension`：**COMPLETED（已确认，2026-09-03）**，第40个正式功能。规划验收05确认十二项标准全部通过，阶段三最终复核02通过；主方向与阶段三方向均归档`passed/`。正式基线Server 1015/0/0/0（全量147份Surefire XML）＋P57聚焦21/0/0/0、Web 116f+1sk/1104t+3sk，H2/PG V47无迁移；P57已核销、不对应既有明细（90项明细状态零变化）；P58排除在外且未启动。
+- `p56-form-grid-layout`：**COMPLETED（已确认，2026-09-02）**，第39个正式功能。P1优先级、L级；10项验收全过，主方向与阶段三方向均已归档`passed/`；M03-F01-01 🟦→✅、P46一并核销；正式基线后端1004/0/0/0（全量）＋聚焦23/0/0/0、前端115f+1sk/1097t+3sk＋聚焦3 files/23 tests、H2 V47（47）/PG V47（46）；清单✅34/🟦23/⬜33（90不变）。
+- `p52-form-workbench`：**COMPLETED（已确认，2026-09-02）**，第38个正式功能。12项功能标准全部通过；主方向与阶段三方向均归档`passed/`。P52已核销；正式基线1002/0/0/0、114f/1092t/3skipped、H2 V47（47）/PG V47（46）；清单✅33/🟦24/⬜33（90不变，P52不对应既有明细）。
+- `p45-login-security`：**COMPLETED（已确认，2026-09-01）**，第37个正式功能（历史语境）。正式基线后端 **979/0/0/0（agent346）**、前端 **110f/1062t/0sk**、Flyway H2/PG V44（V45/V46披露不晋级）；P45已核销、M02-F06-01为✅、清单 **✅33/🟦24/⬜33**。四份方向归档`passed/`。
+- `p51-agent-coding-engine-decoupling`：`COMPLETED（已确认，2026-08-31）`。main 为通用 Agent Coding Engine，develop-sw 为 Smart-WorkFlow/OA 示例；功能级 `PASSED`、阶段三确认和 Owner 授权发布均已在 main 正式历史闭环。P51 不新增 OA 正式业务功能计数。
+- `minimal-closure-first-acceptance`：`COMPLETED`（已确认，2026-08-29，验收审计，非新增正式功能）。用户/组织/角色/表单/流程管理、简单流转、数据展示和页面质量全部锁定通过；三份方向均归档 `passed/`；历史基线 955/0/0/0（agent346）、前端 110f/1060t/0skipped、Flyway H2 V44（44）/PG V44（43）。
+- `form-data-import-export`：`COMPLETED`（已确认，2026-08-29，第 36 个）。P32 / M03-F04-02 表单数据导入导出；主方向和阶段三方向均归档 `passed/`；功能追踪见 `knowledge/features/form-data-import-export.md`（历史基线 947/1057/V43，已被审计基线取代）。
+- `minimal-business-closure`：`COMPLETED`（已确认，2026-08-28，第 35 个）。流程主链、腾讯 IoT 与阶段三方向均归档 `product/minimal-business-closure/passed/`；功能追踪见 `knowledge/features/minimal-business-closure.md`。M08-F01-02/F02-01/F02-02/F04-01/F04-04 为🟦部分完成；现场联调边界继续开放。

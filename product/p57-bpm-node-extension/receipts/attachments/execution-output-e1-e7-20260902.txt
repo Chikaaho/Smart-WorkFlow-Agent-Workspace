@@ -1,0 +1,153 @@
+P57 E1-E7 原始输出摘录
+生成日期：2026-09-02
+说明：以下为本轮命令/真实应用输出的逐字复制摘录；完整测试输出以同一 checkout 生成的 Surefire XML 为稳定定位。未复制 token、验证码图片和密码。
+
+[固定上下文]
+SERVER_CWD=/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server
+SERVER_CHECKOUT=04963259f589b1985495662e3f29ab00bfb92607
+WEB_CWD=/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Web
+WEB_CHECKOUT=6384f86a3f2f2410b2db7e4d24c09334f7a4505f
+
+[E1 真实隔离应用启动]
+COMMAND=SW_SECURITY_LOGIN_RSA_PRIVATE_KEY="<ephemeral>" SW_SECURITY_LOGIN_DIGEST_SECRET="p57-evidence-digest-20260902" SW_CIPHER_KEY="<ephemeral>" SW_SECURITY_COOKIE_SECURE=false SW_SECURITY_COOKIE_PATH=/api/auth/ SPRING_PROFILES_ACTIVE=dev,p57-evidence SERVER_PORT=8080 java -jar sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar
+RAW:
+2026-09-02T22:42:26.406+08:00 INFO ... The following 2 profiles are active: "dev", "p57-evidence"
+2026-09-02T22:42:35.153+08:00 DEBUG ... GraphToBpmnTranslator initialized from BpmNodeRegistry with 4 translators
+2026-09-02T22:42:29.620+08:00 INFO ... Tomcat initialized with port 8080 (http)
+
+COMMAND=/usr/bin/curl -sS -o /tmp/p57-challenge.json -w 'HTTP %{http_code}\n' http://127.0.0.1:8080/api/auth/challenge
+RAW:
+HTTP 200
+
+COMMAND=/usr/bin/curl -sS -o /tmp/p57-health.json -w 'HTTP %{http_code}\n' http://127.0.0.1:8080/api/actuator/health
+RAW:
+HTTP 200
+{"status":"UP","components":{"db":{"status":"UP","details":{"database":"H2","validationQuery":"isValid()"}},"diskSpace":{"status":"UP"},"ping":{"status":"UP"},"redis":{"status":"UP"},"ssl":{"status":"UP"}}}
+
+COMMAND=/usr/bin/curl -sS -o /tmp/p57-unauth.json -w '/api/p57-evidence/fixture/ordinary-users HTTP %{http_code}\n' http://127.0.0.1:8080/api/p57-evidence/fixture/ordinary-users
+RAW:
+/api/p57-evidence/fixture/ordinary-users HTTP 401
+{"code":401,"msg":"未认证","data":null}
+
+COMMAND=/usr/bin/curl -sS -o /tmp/p57-unauth.json -w '/api/workflow/defs/node-capabilities HTTP %{http_code}\n' http://127.0.0.1:8080/api/workflow/defs/node-capabilities
+RAW:
+/api/workflow/defs/node-capabilities HTTP 401
+{"code":401,"msg":"未认证","data":null}
+
+[E1 正式目录零污染扫描]
+COMMAND=rg --files Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/translator | sed 's#.*/##' | sort
+RAW:
+ApprovalUserTaskTranslator.java
+EndEventTranslator.java
+GraphToBpmnTranslator.java
+NodeTypeTranslator.java
+StartEventTranslator.java
+
+COMMAND=rg -l 'P57_VERIFY|P57_INVALID|P57_MISSING' Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/translator Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/main/java
+RAW:
+(no output)
+
+[E2]
+REAL_HTTP_RESULT=NOT_RUN
+REASON=双租户夹具已编译进 p57-evidence profile，但创建夹具和登录均受真实认证链验证码阻塞；未伪造普通用户 token。
+
+[E3 隔离非法扩展启动输出]
+COMMAND=SPRING_PROFILES_ACTIVE=dev,p57-invalid-illegal SERVER_PORT=8181 java -jar sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar
+RAW:
+2026-09-02T22:33:02... message: 节点注册契约非法：节点类别非法：P57_INVALID.NOT_A_CATEGORY
+ERROR ... Application run failed
+CAUSE ... IllegalStateException: 节点注册契约非法：节点类别非法：P57_INVALID.NOT_A_CATEGORY
+OBSERVED_EXIT=130（错误输出后受控中断；不是自然退出码，不能作为 E3 完成证据）
+
+COMMAND=SPRING_PROFILES_ACTIVE=dev,p57-invalid-duplicate SERVER_PORT=8181 java -jar sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar
+RAW:
+2026-09-02T22:33:32... message: 节点注册契约非法：节点类型重复：START
+ERROR ... Application run failed
+CAUSE ... IllegalStateException: 节点注册契约非法：节点类型重复：START
+OBSERVED_EXIT=130（错误输出后受控中断；不是自然退出码，不能作为 E3 完成证据）
+
+COMMAND=SPRING_PROFILES_ACTIVE=dev,p57-invalid-missing-capability SERVER_PORT=8181 java -jar sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar
+RAW:
+2026-09-02T22:34:04... message: 节点注册契约非法：节点缺少必要能力：P57_MISSING，需要 [DESIGN, TRANSLATE, RUNTIME, CONFIG_VALIDATE]
+ERROR ... Application run failed
+CAUSE ... IllegalStateException: 节点注册契约非法：节点缺少必要能力：P57_MISSING，需要 [DESIGN, TRANSLATE, RUNTIME, CONFIG_VALIDATE]
+OBSERVED_EXIT=130（错误输出后受控中断；不是自然退出码，不能作为 E3 完成证据）
+
+[E4]
+BROWSER_RAW=真实浏览器访问 http://127.0.0.1:5173/workflow/defs 后 URL 为 http://127.0.0.1:5173/login?redirect=/workflow/defs；DOM 可见用户名、密码、验证码和“登录”按钮。
+REAL_LOGIN_RESULT=NOT_RUN
+REASON=浏览器认证停在验证码输入，未绕过或代解验证码。
+
+[E5]
+REAL_PRODUCT_CHAIN_RESULT=NOT_RUN
+REASON=需要真实认证后的设计器与表单提交链；未用后台测试拼接产品链。
+
+[E6 原始 graph_json]
+SOURCE=Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/TEST-com.sw.ck.bpm.process.service.impl.GraphJsonPersistenceIntegrationTest.xml
+COMMAND=MAVEN_OPTS="-Xmx2g" mvn -pl sw-biz/sw-bpm/sw-bpm-process -am -Dtest=GraphJsonPersistenceIntegrationTest -Dsurefire.failIfNoSpecifiedTests=false test
+RAW:
+P57_GRAPH_INPUT={"processKey":"p57_graph_json","name":"P57","elements":[{"id":"s","kind":"node","type":"START","config":{"opaque":"kept"},"style":{"x":10}}]}
+P57_GRAPH_DB_RAW={"processKey":"p57_graph_json","name":"P57","elements":[{"id":"s","kind":"node","type":"START","config":{"opaque":"kept"},"style":{"x":10}}]}
+P57_GRAPH_SERVICE_RAW={"processKey":"p57_graph_json","name":"P57","elements":[{"id":"s","kind":"node","type":"START","config":{"opaque":"kept"},"style":{"x":10}}]}
+P57_GRAPH_BYTE_EQUAL=true,DB_SERVICE_BYTE_EQUAL=true
+<testsuite ... name="com.sw.ck.bpm.process.service.impl.GraphJsonPersistenceIntegrationTest" ... tests="1" errors="0" skipped="0" failures="0">
+
+[E7 后端/前端原始汇总]
+COMMAND=MAVEN_OPTS="-Xmx2g" mvn -pl sw-biz/sw-bpm/sw-bpm-engine,sw-biz/sw-bpm/sw-bpm-process -am test
+RAW:
+[INFO] Tests run: 33, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 72, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+EXIT=0
+
+COMMAND=NODE_OPTIONS="--max-old-space-size=2048" pnpm test
+RAW:
+Test Files  116 passed | 1 skipped (117)
+Tests  1103 passed | 3 skipped (1106)
+Duration  54.28s
+EXIT=0
+
+COMMAND=NODE_OPTIONS="--max-old-space-size=2048" pnpm typecheck
+RAW:
+$ vue-tsc -b --noEmit
+EXIT=0
+
+COMMAND=NODE_OPTIONS="--max-old-space-size=2048" pnpm lint
+RAW:
+$ eslint .
+LINT_EXIT=0
+
+COMMAND=NODE_OPTIONS="--max-old-space-size=2048" pnpm build
+RAW:
+✓ built in 2.19s
+1832 modules transformed
+EXIT=0
+
+COMMAND=git -C Smart-WorkFlow-Server diff --check && git -C Smart-WorkFlow-Web diff --check
+RAW:
+(no output)
+EXIT=0
+
+[认证后续真实浏览器与服务回执 2026-09-02T23:31+08:00]
+WORKDIR=/usr/local/projects/Smart-WorkFlow
+SERVER_PROFILE=dev,p57-evidence
+SERVER_HEALTH_RAW={"status":"UP","components":{"db":{"status":"UP"},"ping":{"status":"UP"},"redis":{"status":"UP"}}}
+
+BROWSER_RAW_FORM_DOM=P57 验证表单 | p57_验证表单 | 已发布 | V2 | 发布成功
+BROWSER_RAW_PROCESS_DOM=P57 能力扩展验证流程 | bpm_55cab2eeb80849dd | p57_验证表单 | 1 | 已发布 | 发布成功
+BROWSER_RAW_EDITOR_DOM=开始 → 隔离验证节点 → 结束 | message=p57-real-app-observed | 保存成功，图校验通过
+BROWSER_RAW_CAPABILITIES=entries=4 | P57_VERIFY={displayName=隔离验证节点,category=TASK,topology=1/1/1/1,configFields=[message:string,required=true,minLength=1],version=p57-evidence-v1,supports=[design=true,save=true,publish=true,run=true],systemManaged=true,deletable=false}
+BROWSER_RAW_SUBMIT=记录 ID：9b343216-2b2a-45f9-8c18-167066dea421 | 提交成功，流程已发起
+BROWSER_RAW_INSTANCE=processInstanceId=4b6de97a-a6e2-11f1-a6fe-66ff24301f3c | businessKey=9b343216-2b2a-45f9-8c18-167066dea421 | processDefKey=bpm_55cab2eeb80849dd | activeNodeIds=[] | flowTrace=node_middle/serviceTask/隔离验证节点,node_end/endEvent/End | status=RUNNING
+
+BROWSER_RAW_FIXTURE={"fixture":"p57-evidence-rbac","users":[{"userId":"57201","tenantId":"57001","username":"p57_tenant_a_user","permissions":["workflow:def:view"]},{"userId":"57202","tenantId":"57002","username":"p57_tenant_b_user","permissions":["workflow:def:view"]}],"permission":"workflow:def:view"}
+
+BROWSER_RAW_STORAGE=processDefId=2095170361199505410 | byteEqual=true | p57ProcessDefRows=1 | p57BindingRows=1 | p57FlowableDefinitionRows=1
+BROWSER_RAW_BPMN=process=bpm_55cab2eeb80849dd | serviceTask=node_middle | delegateExpression=${p57VerificationNodeDelegate} | endEvent=node_end | sequenceFlows=edge_1,edge_2
+
+E2_REAL_ORDINARY_USER_LOGINS=NOT_RUN（真实登录链含验证码；未伪造 token）
+E3_NATURAL_EXIT=NOT_CONFIRMED（错误输出后限定窗口超时；不把超时包装为自然非零退出）
+E5_APPROVAL_CHAIN=NOT_RUN
+TEMP_ACCEPTANCE_ENTRY_CLEANUP=PASS（开发验收入口已删除）
+FIXTURE_CLEANUP_RAW={"cleaned":true,"fixture":"p57-evidence-rbac"}
+WEB_POST_CLEANUP=typecheck=0,lint=0,build=0

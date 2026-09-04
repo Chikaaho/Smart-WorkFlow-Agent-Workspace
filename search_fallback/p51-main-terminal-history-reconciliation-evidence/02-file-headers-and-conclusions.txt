@@ -1,0 +1,141 @@
+===== 02-file-headers-and-conclusions.txt =====
+--- README.md ---
+# P51 Agent Coding Engine 解耦
+
+## 当前状态
+
+- 功能状态：`COMPLETED（已确认，2026-08-31）`。
+- 当前唯一下一动作：无——P51 已收口；新项目按根 `README.md` 两步接入 Engine。
+- 功能级审查：[`receipts/planning-final-review-admin-p51-consolidated-2.md`](receipts/planning-final-review-admin-p51-consolidated-2.md)（`PASSED`）
+- 阶段三收口方向：[`passed/direction-admin-p51-stage3-closeout.md`](passed/direction-admin-p51-stage3-closeout.md)
+- 阶段三管理员回执：[`receipts/completion-admin-p51-stage3-closeout.md`](receipts/completion-admin-p51-stage3-closeout.md)
+- 规划最终确认：[`receipts/planning-final-stage3-review-p51-20260831.md`](receipts/planning-final-stage3-review-p51-20260831.md)
+- 验证基线集合：`{terminal-contract-posix: cases=35 passed=35 failed=0, hook-runtime: engine-subdir+nested-git × valid+invalid+old-marker+missing-marker = 8/8 expected}`；PowerShell 契约测试因环境无 `pwsh` 未执行（如实记录，不作为基线）。
+
+
+--- passed/direction-p51-root-runtime-workspace.md ---
+# P51 Agent Coding Engine 根级运行时工作区修正方向
+
+> 下发角色：规划（Planner）
+> 指定角色：执行（Executor）
+> 方向状态：READY
+> 日期：2026-08-31
+> 前置审查：`receipts/planning-review-p51-agent-coding-engine-decoupling-20260831.md`
+
+## 一、目标
+
+使 `main` 根目录本身成为可直接运行的通用 Agent Coding Engine 工作区。用户取得 `main` 后，只需填写项目说明并配置一个或多个 coding 仓库目录，即可进入角色门禁、探索、规划、执行、回执、验收和交接流程。
+
+
+--- passed/direction-admin-p51-engine-governance-consolidated.md ---
+# P51 Agent Coding Engine 管理员治理总方向
+
+> 下发角色：规划（Planner）
+> 指定角色：管理员（Admin）
+> 方向状态：READY
+> 日期：2026-08-31
+> 任务性质：Owner 特别授权的单任务治理收口
+> 唯一入口：`product/p51-agent-coding-engine-decoupling/README.md`
+
+## 一、Owner 特别授权
+
+Owner 明确要求本轮 P51 全部交由管理员治理，不再拆分管理员与执行角色任务。本方向是本轮唯一活动任务，覆盖此前尚未核销的根级运行时、治理入口、项目配置、Harness、语言无关契约和证据收口事项。
+
+--- passed/direction-admin-engine-governance-generalization.md ---
+# Agent Coding Engine 治理入口通用化方向
+
+> 下发角色：规划（Planner）
+> 指定角色：管理员（Admin）
+> 方向状态：READY
+> 日期：2026-08-31
+> 关联功能：P51 Agent Coding Engine 解耦
+
+## 一、目标
+
+将 `main` 的工作区宪法和角色定义调整为通用 Agent Coding Engine 治理入口，使其通过唯一项目说明识别 coding 仓库和工程规则，不依赖 Smart-WorkFlow 名称、固定仓库结构或本机绝对路径。
+
+
+--- passed/direction-admin-p51-stage3-closeout.md ---
+# P51 Agent Coding Engine 阶段三管理员收口方向
+
+> 下发角色：规划（Planner）
+> 指定角色：管理员（Admin）
+> 方向状态：READY
+> 日期：2026-08-31
+> 前置裁决：`receipts/planning-final-review-admin-p51-consolidated-2.md` = `PASSED`
+> 任务性质：Owner 特别授权范围内的最终治理归档
+
+## 一、目标
+
+在不改变已通过实现和通用项目初始状态的前提下，完成 P51 方向归档、索引收口、状态一致性检查和本地提交，为规划角色最终确认 `COMPLETED` 提供唯一回执。
+
+--- receipts/planning-review-p51-agent-coding-engine-decoupling-20260831.md ---
+# P51 Agent Coding Engine 解耦规划验收记录
+
+> 审查角色：规划（Planner）
+> 日期：2026-08-31
+> 审查对象：`develop-sw` 中的功能级执行回执 `completion-p51-agent-coding-engine-decoupling.md`
+> 功能级结论：FAILED
+
+## 一、结论
+
+本轮执行已完成根仓分支分离，但 `main` 尚未形成可直接运行的通用 Agent Coding Engine 工作区，因此 P51 不通过功能级验收。
+
+Owner 已明确最终运行模型：`main` 根目录直接保留完整标准工作区结构；新实例只配置 coding 仓库目录和项目说明，即可按统一协议运行。当前 `main` 的根级标准状态、任务和回执入口不完整，不能支持该运行模型。
+
+--- receipts/planning-rereview-p51-root-runtime-20260831-01.md ---
+# P51 根级运行时与治理通用化复审记录 01
+
+> 审查角色：规划（Planner）
+> 日期：2026-08-31
+> 审查对象：管理员回执与执行补充回执
+> 功能级结论：FAILED
+
+## 一、结论
+
+P51 仍不能裁决 `PASSED`。根级标准目录已经恢复，但初始入口完整性、项目化资源约束、跨角色示例闭环和嵌套 coding 仓场景下的 Hook 定位仍未满足方向要求。
+
+## 二、本轮锁定通过项
+
+--- receipts/planning-rereview-admin-p51-consolidated-20260831-01.md ---
+# P51 管理员治理总回执规划复审 01
+
+> 审查角色：规划（Planner）
+> 日期：2026-08-31
+> 审查对象：`completion-admin-p51-engine-governance-consolidated.md` 与 `evidence-admin-consolidated/`
+> 功能级结论：FAILED
+
+## 一、结论
+
+根级 Engine 结构、项目夹具隔离、Hook 嵌套 Git 定位和本地提交已经成立，但运行时治理仍保留项目技术形态与原项目契约标识，未达到通用启动器的最终边界。
+
+## 二、锁定通过项
+
+--- receipts/planning-final-review-admin-p51-consolidated-2.md ---
+# P51 Agent Coding Engine 功能级最终审查
+
+> 审查角色：规划（Planner）
+> 日期：2026-08-31
+> 审查对象：管理员二级收敛总回执与 `evidence-admin-consolidated-2/`
+> 功能级结论：PASSED
+
+## 一、结论
+
+P51 已满足功能级方向：`main` 是根级结构完整、项目说明驱动、语言与工具链无关的 Agent Coding Engine；`develop-sw` 保留 Smart-WorkFlow/OA 示例；运行时终态协议已采用通用 Engine 标识。
+
+本裁决只表示功能级 `PASSED`，尚未完成阶段三归档、状态同步和最终确认。
+
+--- receipts/planning-final-stage3-review-p51-20260831.md ---
+# P51 Agent Coding Engine 阶段三规划最终确认
+
+> 审查角色：规划（Planner）
+> 日期：2026-08-31
+> 审查对象：`completion-admin-p51-stage3-closeout.md`
+> 最终结论：COMPLETED（已确认）
+
+## 一、终态确认
+
+P51 已完成功能级验收与阶段三治理收口。`main` 为通用 Agent Coding Engine，`develop-sw` 为 Smart-WorkFlow/OA 示例；通用项目实例保持未接入项目的初始空状态。
+
+## 二、阶段三核销
+
