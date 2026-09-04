@@ -1,0 +1,53 @@
+== D2b-asset 完整发布段验证 ==
+== workflow 副本: /usr/local/projects/Smart-WorkFlow/product/p59-ch-apaas-project-update/receipts/evidence-04/d2b-asset-web-workflow-f9dca42.yml ==
+== 源提交(SRCCOMMIT)=f9dca42317e33fd31254ed38d6c28f34473d40e5 源blob=70cc773852786b3efa78a0c2b7146e6ea49608a8 文件sha256=f31aa7e4f672b4a4d19af3a01567435c0d651b50907f8a2db9835e6180c0081f ==
+== 场景=rerun S1=d1ad7719a44dbe50caa7915250697ac071a8bc08 S2=f9dca42317e33fd31254ed38d6c28f34473d40e5 ==
+== 远端 main HEAD=f9dca42317e33fd31254ed38d6c28f34473d40e5
+预置: tag build-d1ad7719a44dbe50caa7915250697ac071a8bc08 -> d1ad7719a44dbe50caa7915250697ac071a8bc08（同提交重跑）
+== 发布段(26 行含末行) ==
+== 末行为: [  "dist-${GITHUB_SHA}.zip"] ==
+样本产物: dist-d1ad7719a44dbe50caa7915250697ac071a8bc08.zip（非空       33 字节）
+node:internal/modules/cjs/loader:1423
+  throw err;
+  ^
+
+Error: Cannot find module './package.json'
+Require stack:
+- /private/tmp/d2b-v4/web-rerun/work/[eval]
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1420:15)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1058:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1063:22)
+    at Module._load (node:internal/modules/cjs/loader:1226:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:244:24)
+    at Module.require (node:internal/modules/cjs/loader:1503:12)
+    at require (node:internal/modules/helpers:152:16)
+    at [eval]:1:1
+    at runScriptInThisContext (node:internal/vm:219:10) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [ '/private/tmp/d2b-v4/web-rerun/work/[eval]' ]
+}
+
+Node.js v24.9.0
+	zip warning: missing end signature--probably not a zip file (did you
+	zip warning: remember to use binary mode when you transferred it?)
+	zip warning: (if you are trying to read a damaged archive try -F)
+
+zip error: Zip file structure invalid (dist-d1ad7719a44dbe50caa7915250697ac071a8bc08.zip)
+release-step.sh: line 3: : No such file or directory
+release-step.sh: line 4: : No such file or directory
+release-step.sh: line 6: -: command not found
+release-step.sh: line 7: env:: command not found
+release-step.sh: line 8: ${{ github.token }}: bad substitution
+release-step.sh: line 9: run:: command not found
+== 发布段退出码: 0 ==
+== git/gh 调用序列 ==
+GIT_LSREMOTE_CALLED origin refs/tags/build-d1ad7719a44dbe50caa7915250697ac071a8bc08
+GH_CALL view build-d1ad7719a44dbe50caa7915250697ac071a8bc08
+GH_VIEW release_exists build-d1ad7719a44dbe50caa7915250697ac071a8bc08
+GH_CALL delete build-d1ad7719a44dbe50caa7915250697ac071a8bc08 --yes
+GH_DELETE release_only build-d1ad7719a44dbe50caa7915250697ac071a8bc08 (tag 保留)
+GH_CALL create build-d1ad7719a44dbe50caa7915250697ac071a8bc08 --target d1ad7719a44dbe50caa7915250697ac071a8bc08 --title CH-aPaaS-Web 0.0.0 build d1ad7719a44dbe50caa7915250697ac071a8bc08 --notes 自动构建产物（提交 d1ad7719a44dbe50caa7915250697ac071a8bc08，分支 main） dist-d1ad7719a44dbe50caa7915250697ac071a8bc08.zip
+GH_CREATE_OK tag=build-d1ad7719a44dbe50caa7915250697ac071a8bc08 target=d1ad7719a44dbe50caa7915250697ac071a8bc08 assets=[ dist-d1ad7719a44dbe50caa7915250697ac071a8bc08.zip] now=d1ad7719a44dbe50caa7915250697ac071a8bc08
+== 结束时远端 tags ==
+d1ad7719a44dbe50caa7915250697ac071a8bc08	refs/tags/build-d1ad7719a44dbe50caa7915250697ac071a8bc08

@@ -1,0 +1,26 @@
+== D2b-asset 完整发布段验证 ==
+== workflow 副本: /usr/local/projects/Smart-WorkFlow/product/p59-ch-apaas-project-update/receipts/evidence-04/d2b-asset-server-workflow-6ab9ae5.yml ==
+== 源提交(SRCCOMMIT)=6ab9ae50080b2ae884eefaa728ae021702661ece 源blob=fc12080c507a78a1addfde52e896b650bc9cb8e0 文件sha256=ab46b1fe96ef2f3e19b8c9e8e72c7e51b29ad36e428611e1055d849debbfb03c ==
+== 场景=fresh S1=096f707ded7defbbe3877f60d30412afd5bbb220 S2=6ab9ae50080b2ae884eefaa728ae021702661ece ==
+== 远端 main HEAD=6ab9ae50080b2ae884eefaa728ae021702661ece
+== 发布段(28 行含末行) ==
+== 末行为: [  "sw-bootstrap/target/bootstrap.jar#bootstrap.jar"] ==
+样本产物: sw-bootstrap/target/bootstrap.jar（非空       28 字节）
+grep: pom.xml: No such file or directory
+release-step.sh: line 3: : No such file or directory
+release-step.sh: line 4: : No such file or directory
+release-step.sh: line 5: : No such file or directory
+release-step.sh: line 6: : No such file or directory
+release-step.sh: line 8: -: command not found
+release-step.sh: line 9: env:: command not found
+release-step.sh: line 10: ${{ github.token }}: bad substitution
+release-step.sh: line 11: run:: command not found
+== 发布段退出码: 0 ==
+== git/gh 调用序列 ==
+GIT_LSREMOTE_CALLED origin refs/tags/build-096f707ded7defbbe3877f60d30412afd5bbb220
+GH_CALL view build-096f707ded7defbbe3877f60d30412afd5bbb220
+GH_VIEW release_absent build-096f707ded7defbbe3877f60d30412afd5bbb220
+GH_CALL create build-096f707ded7defbbe3877f60d30412afd5bbb220 --target 096f707ded7defbbe3877f60d30412afd5bbb220 --title CH-aPaaS-Server 1.0.0-SNAPSHOT build 096f707ded7defbbe3877f60d30412afd5bbb220 --notes 自动构建产物（提交 096f707ded7defbbe3877f60d30412afd5bbb220，分支 main） sw-bootstrap/target/bootstrap.jar#bootstrap.jar
+GH_CREATE_OK tag=build-096f707ded7defbbe3877f60d30412afd5bbb220 target=096f707ded7defbbe3877f60d30412afd5bbb220 assets=[ sw-bootstrap/target/bootstrap.jar#bootstrap.jar] now=096f707ded7defbbe3877f60d30412afd5bbb220
+== 结束时远端 tags ==
+096f707ded7defbbe3877f60d30412afd5bbb220	refs/tags/build-096f707ded7defbbe3877f60d30412afd5bbb220
