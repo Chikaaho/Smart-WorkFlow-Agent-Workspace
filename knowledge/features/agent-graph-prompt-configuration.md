@@ -1,11 +1,11 @@
 # agent-graph-prompt-configuration（M07-F02-02）
 
-> 状态：**PASSED（D154 功能级 PASSED，2026-08-21）/ 阶段三 FAILED（D155/D156；当前态同步回执已提交，待 D157 复验）** — D150 主体实现保留；D151/D152/D153 补证迭代后 12 项业务功能标准全部通过（D151 标准1/5/11/12 未通过→D152 标准1/11 闭合→D153 标准11 互斥快照 + 标准12 全文同步 + 扩展零命中→D154 规划层最终验收 PASSED（功能级））。后端 723/0/0/0（sw-basic-agent 234）、前端 79f/775t 四门全绿、Flyway V34 零本轮迁移（**测试基线规划确认有效**）；**D155 阶段三 FAILED**（提前宣告规划层 COMPLETED / 提前归档阶段三方向 / handoff 全文未收敛），纠正已提交；**D156 阶段三复验 FAILED**（仅提交后当前态残留），当前态同步回执已提交，待 D157 复验。**规划确认清单终态仍 ✅23/🟦27/⬜40、功能数仍 27**；执行层拟同步 M07-F02-02 🟦→✅、终态 ✅24/🟦26/⬜40、功能数 27→28、P6 核销，**待 D157 复验确认**。
+> 状态：**COMPLETED（已确认，2026-08-21，第 28 个正式功能；D157 阶段三最终复验 PASSED）** — D150 主体实现保留；D151/D152/D153 补证迭代后 12 项业务功能标准全部通过（D151 标准1/5/11/12 未通过→D152 标准1/11 闭合→D153 标准11 互斥快照 + 标准12 全文同步 + 扩展零命中→D154 规划层最终验收 PASSED（功能级））。后端 723/0/0/0（sw-basic-agent 234）、前端 79f/775t 四门全绿、Flyway V34 零本轮迁移（**测试基线规划确认有效**）；D155/D156 阶段三 FAILED 为合法历史（提前宣告/残留问题，纠正已提交），**D157 阶段三最终复验 PASSED（2026-08-21）确认终态**：M07-F02-02 🟦→✅、终态 ✅24/🟦26/⬜40、功能数 27→28、P6 核销（历史 FAILED 记录保留为历史，见下）。
 > 方向文档：`product/agent-graph-prompt-configuration/passed/direction-agent-graph-prompt-configuration.md`（D154 后归档）
-> 阶段三方向：`product/agent-graph-prompt-configuration/ready/direction-post-d154-terminal-sync.md`（**保持 `ready/`，不得提前归档**）
+> 阶段三方向：已归档 `passed/`（D157 复验后归档）
 > D155 纠正方向：`product/agent-graph-prompt-configuration/ready/direction-post-d155-terminal-state-correction.md`
 > D156 当前态同步方向：`product/agent-graph-prompt-configuration/ready/direction-post-d156-current-state-sync.md`
-> 审查记录：`product/agent-graph-prompt-configuration/receipts/planning-review-d151.md` + `planning-rereview-d152.md` + `planning-rereview-d153.md` + `planning-final-review-d154.md` + `planning-stage3-review-d155.md` + `planning-stage3-review-d156.md`
+> 审查记录：`product/agent-graph-prompt-configuration/receipts/planning-review-d151.md` + `planning-rereview-d152.md` + `planning-rereview-d153.md` + `planning-final-review-d154.md` + `planning-stage3-review-d155.md` + `planning-stage3-review-d156.md` + `planning-stage3-review-d157.md`（最终复验 PASSED）
 > 回执：`product/agent-graph-prompt-configuration/receipts/completion.md`（D154 版 + D155/D156 状态说明）+ `test-receipt.md`（D154 版 + D155/D156 状态说明）+ `post-d154-terminal-sync.md`（阶段三同步回执 + D155/D156 状态说明）+ `post-d155-terminal-state-correction.md`（D155 纠正回执）+ `post-d156-current-state-sync.md`（D156 当前态同步回执）
 
 ## 1. 功能目标

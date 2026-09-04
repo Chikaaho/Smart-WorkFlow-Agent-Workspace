@@ -1,0 +1,20 @@
+--- product/knowledge-full-reconciliation/receipts/evidence-sync-b-correction-05/final/current-status.md	2026-09-04 17:53:17
++++ knowledge/current-status.md	2026-09-04 18:10:14
+@@ -7,7 +7,7 @@
+ 
+ | 维度 | 当前值 |
+ |---|---|
+-| 业务功能状态 | 无活动正式业务功能；`knowledge-full-reconciliation`（知识库全量整理与同步）**当前审计/整理任务**：**VERIFYING**（A 阶段规划复验 02 通过；B 阶段复验04锁目录引用/P51/哈希8/8；补充提示03一项 B2a-r 六入口收尾待规划复核）；正式业务功能数保持 **41**（P58 为第 41 个，2026-09-04 已确认；本审计增量 0） |
++| 业务功能状态 | 无活动正式业务功能；`knowledge-full-reconciliation`（知识库全量整理与同步）**当前审计/整理任务**：**VERIFYING**（A 阶段已通过；B 阶段复核已锁定核心成果，当前进度与复核入口见本文件「当前唯一下一动作」）；正式业务功能数保持 **41**（P58 为第 41 个，2026-09-04 已确认；本审计增量 0） |
+ | 已完成功能数 | **41**（40＋P58 一项；本审计不增加业务功能） |
+ | 功能清单 | 10 模块、55 功能、90 明细；**✅34 / 🟦28 / ⬜28**（34+28+28=90）。本轮唯一状态变化：M04-F01-03、M04-F07-01、M06-F01-01、M06-F02-01、M06-F03-01 五行 ⬜→🟦（P58 或既有实现覆盖子集，整体未完成）；其余 85 行不变。历史点（2026-09-04 P58 阶段三确认时）：✅34/🟦23/⬜33 |
+ | 后端正式基线 | **1035 / Failures 0 / Errors 0 / Skipped 0**（152 份 Surefire 报告，BUILD SUCCESS，P58 验收快照） |
+@@ -22,7 +22,7 @@
+ 
+ ## 终态与方向归档事实（唯一口径）
+ 
+-- `knowledge-full-reconciliation` 活动任务 **VERIFYING**：主方向 `product/knowledge-full-reconciliation/ready/direction-knowledge-full-reconciliation.md` 与 B 阶段同步方向 `product/knowledge-full-reconciliation/ready/direction-knowledge-full-reconciliation-sync-b.md` 均继续留 `ready/`（待规划复核后按宪法另行裁决归档/通过）；A 阶段通过（规划复验 02 PASSED），B 阶段同步回执 `receipts/sync-b-01.md` 待规划复核。本任务不增加业务功能计数，不进入正式功能状态机（41 为历史正式功能计数，非 product 目录或 feature 文件数量）。
++- `knowledge-full-reconciliation` 活动任务 **VERIFYING**：主方向 `product/knowledge-full-reconciliation/ready/direction-knowledge-full-reconciliation.md` 与 B 阶段同步方向 `product/knowledge-full-reconciliation/ready/direction-knowledge-full-reconciliation-sync-b.md` 均继续留 `ready/`（待规划复核后按宪法另行裁决归档/通过）；A 阶段通过（规划复验 02 PASSED），当前进度与待复核入口见本文件「当前唯一下一动作」。本任务不增加业务功能计数，不进入正式功能状态机（41 为历史正式功能计数，非 product 目录或 feature 文件数量）。
+ - `p58-workflow-node-capabilities` 正式功能**COMPLETED（已确认，2026-09-04）**，第 41 个（规划最终复核 `planning-final-review-p58-terminal-sync-01-passed.md` **PASSED**）。P58 **已核销/完成**；P58 当时不对应既有 Mxx-Fxx 明细、90 项明细状态当时全部保持原值的裁决不改写（本轮五行为 A 阶段审计对 P34/P35/P37/P38/P39 对应部分实现子集的规划裁决落值，与 P58 当时「明细零变化」的历史裁决不冲突）；正式基线：后端 **1035/0/0/0**（全量 152 份 Surefire 报告、BUILD SUCCESS）；前端 **117 files passed + 1 skipped / 1110 tests passed + 3 skipped**（typecheck/lint/build 退出 0，lint 47 warnings / 0 errors）；Flyway **H2 V49（49）/ PG V49（48）**（全链退出 0）。
+ - P58 三份方向均已归档 `product/p58-workflow-node-capabilities/passed/`。P58 边界：第三方渠道为 SPI/隔离 Adapter 证明，非厂商账号联调；意见 JS 为受控表达式；FAILED 任务为明确失败＋禁止继续处理边界；非零租户登录无受支持入口为认证产品边界。
+ - `p57-bpm-node-extension` 正式功能**COMPLETED（已确认，2026-09-03）**，第 40 个；P57 已核销；基线后端 1015/0/0/0、前端 116 files/1104 tests/3 skipped、Flyway H2 V47/PG V47（历史点）。
