@@ -1,0 +1,76 @@
+diff --git a/knowledge/feature-reconciliation-issues.md b/knowledge/feature-reconciliation-issues.md
+new file mode 100644
+index 0000000..39a757b
+--- /dev/null
++++ b/knowledge/feature-reconciliation-issues.md
+@@ -0,0 +1,69 @@
++# I 编号完整映射子表（feature-reconciliation-issues）
++
++> 隶属：知识库全量整理（knowledge-full-reconciliation）功能映射索引的持久子表；主索引 §3 链接本表。
++> 同步点：2026-09-04；集合基准：`receipts/evidence-correction-g1-g5/raw-i-ids.txt`（54 个实际 ID）；权威状态注册：`knowledge/known-issues.md`（索引 54 行）。
++> 约定：I27 无索引行（区间 I1—I55 缺号），备案于主索引 §5，不混入在册集合；当前状态以 known-issues.md 索引行实际文字为准（本表为压缩映射，不复制完整正文）。
++
++| I | 问题摘要 | 当前状态 | 源锚点（known-issues.md） | 对应 P/明细/交付或独立范围 |
++|---|---|---|---|---|
++| I1 | 功能清单状态与代码进度脱节 | ✅ 已修复（2026-07-24 + 08-12 两轮） | 索引行 I1 | feature-checklist-sync（第 8 个）；清单全表 |
++| I2 | refresh token seam 未实现 | ✅ 已修复（2026-07-22） | 索引行 I2 | auth-seam-completion（第 7 个） |
++| I3 | BPMN/Vue Flow adapter 未实现 | ◐ 部分修复（BPMN 查看器+Vue Flow 已交付；设计器/Modeler 不在范围） | 索引行 I3 | vue-flow-adapter（第 9 个）+ bpmn-adapter（第 10 个） |
++| I4 | 前端多页签未实现 | 待开发 | 索引行 I4 | P17（待开发） |
++| I5 | 测试基线独立验证 | ✅ 已修复（2026-07-14） | 索引行 I5 | kb-verification（第 6 个） |
++| I6 | 间接依赖已知漏洞 | 已评估 | 索引行 I6 | 独立范围（依赖评估，todo README T9 类） |
++| I7 | 通知模块前端占位 | ✅ 已修复（2026-07-15） | 索引行 I7 | notify-frontend（第 14 个，服务 M05） |
++| I8 | 定时任务集群升级预留 | 设计预留 | 索引行 I8 | 独立范围（M10-F03 演进接缝） |
++| I9 | EP API CSS 自动导入不完整 | ✅ 已绕过（全量 CSS 导入） | 索引行 I9 | 独立范围（前端基建） |
++| I10 | 动态宽表裸 SQL 隔离脆弱 | 已固化为红线（不纳管，测试兜底） | 索引行 I10 | 独立限制（工程红线，M03 宽表） |
++| I11 | 发布冻结不可逆 | 需设计器层强校验 | 索引行 I11 | P16（待设计） |
++| I12 | 定时任务单节点 | 已预留升级接缝 | 索引行 I12 | 独立范围（M10-F03，P8 无编号关联） |
++| I13 | M07 引擎/沙箱/RAG 选型 | ◐ 部分收敛（执行引擎/图/设计器已落地；RAG 未决） | 索引行 I13 | P19（M07-F03-03 知识库 RAG，未开发候选） |
++| I14 | M08 腾讯接入路径 | ◐ 部分关闭（最小接入已交付；现场联调开放） | 索引行 I14 | P21（部分关闭未核销）/ minimal-business-closure（第 35 个） |
++| I15 | M09 授权粒度/配额口径 | ⚠ 排在最后 | 索引行 I15 | P22（开放接口模块，仅骨架） |
++| I16 | 跨环境迁移未设计 | ⚠ 后续设计 | 索引行 I16 | P15（待设计） |
++| I17 | RICH_TEXT 未集成 | 降级 textarea | 索引行 I17 | M03-F01-02 控件库缺口（🟦）；todo T2—T9 集合（T1/T10 已删） |
++| I18 | 子项目 system.md 与 zip 不同步 | ✅ 已关闭（D84） | 索引行 I18 | 治理任务（无 P 编号） |
++| I19 | storage mock 下载不可用 | 已知限制 | 索引行 I19 | M10-F06-01（✅ 已交付，限制独立） |
++| I20 | storage 筛选 UI 占位 | 已知限制 | 索引行 I20 | M10-F06-01（✅ 已交付，限制独立） |
++| I21 | B4 测试覆盖不足 | 已知偏差 | 索引行 I21 | 独立范围（测试覆盖） |
++| I22 | @vueuse/core 警告 | 第三方依赖 | 索引行 I22 | 独立范围（前端依赖，不排期） |
++| I23 | EP 显式 import 与宪法不一致 | 文档与代码不一致 | 索引行 I23 | 独立范围（前端规范） |
++| I24 | 后端测试计数 406 不一致 | ✅ 已修复（真值 203） | 索引行 I24 | kb-verification（第 6 个） |
++| I25 | 前端测试计数 471 不一致 | ✅ 已修复（真值 471） | 索引行 I25 | kb-verification（第 6 个） |
++| I26 | SysRole 列名与 V5 不一致 | ✅ 已修复（P13） | 索引行 I26 | sysrole-v5-column-alignment（P13，第 18 个） |
++| I28 | 后端宪法缺仓库范围章节 | ✅ 已修复（D34） | 索引行 I28 | 治理任务（无 P 编号） |
++| I29 | bpmn-adapter Step2 计数矛盾 | ✅ 已修复 | 索引行 I29 | bpmn-adapter（第 10 个） |
++| I30 | mock BPMN XML 最简模板 | ✅ 已满足（D83） | 索引行 I30 | bpmn-adapter（第 10 个） |
++| I31 | M01-F01-04 部门查询虚高 | ✅ 已修复（2026-08-18） | 索引行 I31 | department-query-filtering（第 22 个）/ M01-F01-04 ✅；P1 已核销子项 |
++| I32 | M01-F02-01 人员新增虚高 | ✅ 已修复（2026-08-18） | 索引行 I32 | user-org-association-query（第 21 个）/ M01-F02-01 ✅；P1 已核销子项 |
++| I33 | M01-F02-02 人员修改虚高 | ✅ 已修复（2026-08-13） | 索引行 I33 | checklist-gap-hardening（第 12 个）/ M01-F02-02 ✅ |
++| I34 | M01-F02-04 人员查询虚高 | ✅ 已修复（2026-08-18） | 索引行 I34 | user-org-association-query（第 21 个）/ M01-F02-04 ✅；P1 已核销子项 |
++| I35 | M01-F03-01 岗位管理虚高 | ✅ 已修复（2026-08-18） | 索引行 I35 | user-org-association-query（第 21 个）/ M01-F03-01 ✅；P1 已核销子项 |
++| I36 | M02-F01-01 角色管理虚高（用户组绑定） | ✅ 已修复（用户组绑定子集，2026-08-19） | 索引行 I36 | user-group-membership（第 25 个）/ M01-F04-01 🟦；P1 已核销子项 |
++| I37 | M02-F04-01 数据权限虚高 | ✅ 已修复（2026-08-15） | 索引行 I37 | data-scope-enforcement（第 13 个）/ M02-F04-01 ✅ |
++| I38 | M03-F01-02 控件库虚高（8/17） | 待修复 | 索引行 I38 | P2 子集 / M03-F01-02 🟦 |
++| I39 | M03-F02-01 表单管理虚高（删除/版本） | 待修复 | 索引行 I39 | P2 子集 / M03-F02-01 🟦 |
++| I40 | M03-F04-01 数据管理虚高 | 待修复 | 索引行 I40 | P2 子集 / M03-F04-01 🟦 |
++| I41 | M05-F01-02 消息接收虚高（缺删除） | ✅ 已关闭（2026-08-25） | 索引行 I41 | notify-management-closure（第 32 个）/ M05-F01-02 ✅ |
++| I42 | M05-F01-03 消息查询虚高 | ✅ 已关闭（2026-08-25） | 索引行 I42 | notify-management-closure（第 32 个）/ M05-F01-03 ✅ |
++| I43 | M10-F03-01 定时任务菜单不可达 | ✅ 已修复（V29） | 索引行 I43 | checklist-gap-hardening（第 12 个）/ M10-F03-01 ✅ |
++| I44 | M10-F06-01 文件存储菜单不可达 | ✅ 已修复（V29） | 索引行 I44 | checklist-gap-hardening（第 12 个）/ M10-F06-01 ✅ |
++| I45 | M07/M04/M05/M06/M09/M10 虚低汇总 | ◐ 部分关闭（I45 详细条目多次追加至 2026-09-04 对账轮） | 索引行 I45 + 详细条目 | 多交付：P5/P6/P7/P8/P3 等子集；M05-F01-01 已完成（08-27）；P58 覆盖映射见主索引 M06 行 |
++| I46 | 手写 SQL 通道无数据权限 | 已知限制（明确不纳管） | 索引行 I46 | 独立限制（M02-F04-01 红线边界） |
++| I47 | bpm/h2 V8 partial index | ✅ 已修复（2026-08-17） | 索引行 I47 | bpm-h2-v8-compat（P10，第 19 个） |
++| I48 | flow-graph adapter 契约限制 | 绕行方案已生效，扩展待评估 | 索引行 I48 | 独立范围（M07 图设计器） |
++| I49 | V29 菜单 seed sys_role_menu | ✅ 已关闭（P24） | 索引行 I49 | admin-role-governance（第 20 个）/ P24 已核销 |
++| I50 | 登录状态校验时序 | 待修复（D83 登记） | 索引行 I50 | P25（待排期） |
++| I51 | 前端 status 语义反转 | ✅ 已修复（2026-08-17） | 索引行 I51 | status-semantics-alignment（第 17 个） |
++| I52 | PG V13 DROP INDEX 2BP01 | ✅ 已关闭（2026-08-19） | 索引行 I52 | pg-v13-migration-chain-repair（第 24 个） |
++| I53 | 方法级鉴权 403 失真 | ✅ 已修复（2026-08-20） | 索引行 I53 | role-menu-permission-parity（第 26 个）/ P1 已核销子项 |
++| I54 | 角色停用不撤权 | ✅ 已修复（2026-08-20） | 索引行 I54 | role-menu-permission-parity（第 26 个）/ P1 已核销子项 |
++| I55 | M07-F02-04 运行日志前端缺口 | ✅ 已关闭（2026-08-20） | 索引行 I55 | agent-graph-execution-observability（第 27 个）/ P7 已核销子集 |
++
++## 集合校验（双向差集，原始输出见 evidence-sync-b-correction-02）
++
++- 期望键：`evidence-correction-g1-g5/raw-i-ids.txt`（54）。
++- 实际键：本表 54 行 + known-issues 索引 54 行，双向 diff exit=0；duplicate=0；missing=0；extra=0。
++- I27 不在在册集合（区间缺号），备案于主索引 §5 证据待定位区，不推断其状态。
++- 分类数字（如「已修复 39/待修复 15」）无可靠统一口径，本子表逐行状态以 known-issues 索引行实际文字为准，不做汇总断言。
+\ No newline at end of file

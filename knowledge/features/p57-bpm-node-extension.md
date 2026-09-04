@@ -27,4 +27,4 @@
 - P57 功能级 **PASSED（2026-09-03）**，十二项标准全部通过；阶段三方向下发后由执行机械落值并经规划最终复核 02 **PASSED**，`COMPLETED（已确认，2026-09-03）`，第 **40** 个正式功能。
 - P57 正式基线：后端 **1015/0/0/0**（全量 147 份 Surefire XML，BUILD SUCCESS）+ P57 聚焦 **21/0/0/0**；前端 **116 files passed + 1 skipped / 1104 tests passed + 3 skipped**（typecheck/lint/build 通过）；Flyway **H2 V47（47）/PG V47（46）**（无新增迁移）。
 - P57 **已核销/完成**；P57 不对应既有 Mxx-Fxx 明细，90 项明细状态零变化；清单 **✅34/🟦23/⬜33**（34+23+33=90）；功能数 **39→40**；无活动正式功能。
-- 边界（后续各轮不得改写）：生产节点能力目录只有 START/APPROVAL/END；隔离验证节点、非法 translator、证据控制器与验证 profile 仅存在于 Server 测试源集（生产 jar/class/resources 零命中）；**非零租户用户当前没有受支持登录入口是认证产品边界，不属于 P57 完成声明**，不扩写为“多租户登录已支持”；P58（会签、通知、条件分支及具体节点界面）未启动。
+- 边界（后续各轮不得改写）：生产节点能力目录只有 START/APPROVAL/END；隔离验证节点、非法 translator、证据控制器与验证 profile 仅存在于 Server 测试源集（生产 jar/class/resources 零命中）；**非零租户用户当前没有受支持登录入口是认证产品边界，不属于 P57 完成声明**，不扩写为“多租户登录已支持”。「P58（会签、通知、条件分支及具体节点界面）未启动」为 **P57 交付当时（2026-09-03）的时点事实**；P58 已于 **2026-09-04 COMPLETED（已确认，第 41 个正式功能）**，当前引用以 `knowledge/current-status.md`、`knowledge/features/p58-workflow-node-capabilities.md` 与 `knowledge/feature-reconciliation-index.md` 为准（2026-09-04 知识库全量整理对账更正）。
