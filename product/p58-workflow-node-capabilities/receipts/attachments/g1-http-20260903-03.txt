@@ -1,0 +1,54 @@
+P58 G1 原始 HTTP 证据摘录（2026-09-03）
+证据绑定：Server HEAD 451bd9a2dd979db574fbdb2923f26881ea11af8d；dev 隔离服务；请求令牌已统一脱敏。
+
+固定字段
+GAP_ID: G1
+INPUT_IDS: prompt-01 / g1-positive-batch-03
+IDENTITY_AND_PERMISSIONS: admin=1(superadmin)；viewer=2095452950180139009(role=p58_viewer_20260903_03, workflow:todo:view, workflow:def:view)；operator=2095452950675066881(role=p58_operator_20260903_03, workflow:todo:view, workflow:processed:view, workflow:instance:view, workflow:def:view, workflow:def:create/save/publish/delete, form:view/design/design:save/design:publish)
+PROFILE_AND_SWITCH: positive=dev + debug-auth=true；replay=dev + debug-auth=false；production 配置显式关闭。
+URL_OR_COMMAND: curl -i -H 'Authorization: Bearer test_<redacted>' http://127.0.0.1:18082/api/auth/me；curl -i -H 'Authorization: Bearer test_<redacted>' http://127.0.0.1:18082/api/workflow/defs/node-capabilities
+
+RAW HTTP（正向，令牌全文不落附件）
+GET /api/auth/me  [admin token]
+HTTP/1.1 200
+body fields observed: code=0; user.id=1; user.username=admin; superAdmin=true; roles=[superadmin]
+
+GET /api/auth/me  [viewer token]
+HTTP/1.1 200
+body fields observed: code=0; user.id=2095452950180139009; role=p58_viewer_20260903_03; superAdmin=false; permissions=[workflow:todo:view,workflow:def:view]
+
+GET /api/auth/me  [operator token]
+HTTP/1.1 200
+body fields observed: code=0; user.id=2095452950675066881; role=p58_operator_20260903_03; superAdmin=false; permissions include workflow:def:create,workflow:def:save,workflow:def:publish
+
+GET /api/workflow/defs/node-capabilities  [viewer token]
+HTTP/1.1 200
+body fields observed: code=0; data.types=[APPROVAL,CONDITION,CONSENSUS,COPY,END,NOTIFICATION,START]; each capability includes version/supports/config.
+
+POST /api/workflow/defs  [viewer token]
+HTTP/1.1 403
+body: {"code":403,"msg":"无权限","data":null}
+
+RAW HTTP（负向）
+GET /api/auth/me  [malformed token test_1x]
+HTTP/1.1 401
+body: {"code":401,"msg":"未认证","data":null}
+
+GET /api/auth/me  [unknown user test_999999999]
+HTTP/1.1 401
+body: {"code":401,"msg":"未认证","data":null}
+
+GET /api/auth/me  [no Authorization header]
+HTTP/1.1 401
+body: {"code":401,"msg":"未认证","data":null}
+
+响应头检查：valid auth response 未出现 Set-Cookie、Authorization；原始检查输出：NO_SET_COOKIE_OR_AUTHORIZATION_RESPONSE_HEADER
+
+DOM_ASSERT: 正向浏览器已进入 /workflow/defs、/workflow/todo、/workflow/task/{taskId}，不再停在登录页。
+NETWORK_ASSERT: 当前 browser-client API 未提供 Network 事件读取；本附件只保留后端 curl 原始 HTTP，不把 DOM/API 结果冒充浏览器 Network。
+FLOWABLE_BEFORE_AFTER: 不适用；G1 认证边界不创建 Flowable 实例。
+BUSINESS_DB_BEFORE_AFTER: 不适用；G1 认证边界不创建业务对象。
+POSITIVE_ASSERT: 两个普通用户均由正式用户/租户/角色/菜单权限链加载，viewer 可读能力但不能创建流程。
+ZERO_RESIDUE_ASSERT: 本附件仅证明响应无 Set-Cookie/Authorization；逐表零残留见 cleanup-20260903-03.txt，未形成 PG 业务库零计数。
+EXIT_CODE: curl 正向/负向命令均按 HTTP 断言完成；服务重放 401。
+CLEANUP_RESULT: 关闭 debug 后同 token 的原始重放为 HTTP 401。

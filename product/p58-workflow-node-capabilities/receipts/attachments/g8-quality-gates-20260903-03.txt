@@ -1,0 +1,35 @@
+P58 G8 最终质量门原始结果摘录（2026-09-03）
+
+固定字段
+GAP_ID: G8
+INPUT_IDS: final-source-state-03
+IDENTITY_AND_PERMISSIONS: 不适用；质量门不依赖业务身份。
+PROFILE_AND_SWITCH: 不适用；后端测试含嵌入式 H2/PG，前端为生产构建。
+URL_OR_COMMAND: server=mvn -q test；server Flyway focused；web=pnpm typecheck && pnpm lint && pnpm test && pnpm build
+RAW_OUTPUT_PATH: 本附件保留最终命令与原始退出/计数摘录；完整终端流未另存为临时文件。
+
+RAW OUTPUT
+server Flyway focused（依赖刷新后）:
+PostgreSQL 17.5: Successfully validated 48 migrations
+Successfully applied 48 migrations to schema public, now at version v49
+H2: Successfully applied 49 migrations to schema PUBLIC, now at version v49
+EXIT=0
+
+web typecheck: EXIT=0
+web lint: EXIT=0; 0 errors and 39 warnings
+web test: Test Files 117 passed | 1 skipped (118); Tests 1107 passed | 3 skipped (1110); EXIT=0
+web build: ✓ built in 5.90s; EXIT=0
+three-repository git diff --check: no output; EXIT=0
+production scan: rg 'dev-debug|DEBUG_AUTH|test_[0-9]' Smart-WorkFlow-Web/dist -> no output; PRODUCTION_DEBUG_ENTRY=ABSENT
+
+server full test:
+Surefire files=148; TESTS=1024; FAILURES=0; ERRORS=0; SKIPPED=0; EXIT=0
+
+DOM_ASSERT: 不适用。
+NETWORK_ASSERT: 不适用。
+FLOWABLE_BEFORE_AFTER: Flyway focused 使用真实 embedded PostgreSQL 17.5，迁移链从空库到 v49；不创建 P58 业务实例。
+BUSINESS_DB_BEFORE_AFTER: 迁移测试验证 schema/约束；本轮业务批次使用 H2 内存，未提供直接 PG 业务库前后计数。
+POSITIVE_ASSERT: PG/H2 Flyway focused 通过；前端四门已通过。
+ZERO_RESIDUE_ASSERT: 逐表零残留查询未完成；PG 明确业务计数未形成。
+EXIT_CODE: Flyway focused=0；web typecheck/lint/test/build=0；server full test=0。
+CLEANUP_RESULT: 见 cleanup-20260903-03.txt。

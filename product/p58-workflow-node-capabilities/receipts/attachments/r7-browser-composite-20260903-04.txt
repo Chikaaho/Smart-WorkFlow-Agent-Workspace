@@ -1,0 +1,17 @@
+GAP_ID: R7
+INPUT_IDS_AND_PREFIX: definition=2095515209863741441; RETURN business=8e034096-2465-4174-9b1e-d26a667d19cf; REJECT fixed business=22c7bcf2-6b54-4a05-a165-21594e0887b9
+IDENTITIES: operator browser port=5175; viewer browser port=5176; admin monitor port=5174; formal user IDs are operator=2095490569284018177 and viewer=2095490569841860610
+PROFILE_SWITCH_DB: dev + debug authentication enabled; three separate authenticated browser sessions; PostgreSQL
+BROWSER_DOM_OR_SCREENSHOT: operator DOM showed R7 初审 and form values, filled P58 R7 RETURN 初审通过, confirmed 审批通过; viewer DOM showed R7 复审, selected return target R7 初审, filled P58 R7 RETURN 复审退回补充材料, confirmed 已退回; returned task was approved twice through the browser; separate REJECT run showed 已驳回 with buttons disabled
+ACCESS_LOG_REQUEST_IDS: browser direct-request IDs and API/PG evidence are retained in prior G7 runtime attachment; browser Network event API is unavailable
+HTTP_RAW:
+  RETURN/REJECT browser confirmations completed through the real task action dialogs; fixed REJECT response produced business success and final instance REJECTED
+  API final instances: RETURN case APPROVED; old reject case REJECTED; fixed reject case REJECTED
+FLOWABLE_SQL_BEFORE_AFTER: RETURN case active_tasks=0 after final approval; REJECT cases active_tasks=0; grouped notice counts WF_RETURNED=1, WF_APPROVED=1 and WF_REJECTED=1 per corresponding business chain
+BUSINESS_SQL_BEFORE_AFTER: RETURN action sequence APPROVE -> RETURNED -> APPROVED -> APPROVED; REJECT action sequence REJECTED; no active task contradiction
+POSITIVE_ASSERT: authenticated browser handles final approval and RETURN chain, with visible success alerts and disabled action controls
+NEGATIVE_ASSERT: authenticated browser REJECT reaches terminal REJECTED after the terminate-process fix; no second action is accepted
+ZERO_RESIDUE_ASSERT: all R7 process/business/action/notice rows removed in R8 cleanup
+COMMAND_EXIT_CODES: browser actions completed; final PG grouped assertions=0
+CLEANUP_RESULT: R7 definitions, instances, Flowable history, actions and notices removed
+RAW_OUTPUT_PATHS: receipts/attachments/r7-browser-composite-20260903-04.txt; receipts/attachments/g2-browser-dom-20260903-03.txt; receipts/attachments/g3-browser-opinion-20260903-03.txt; prior G7 browser session output

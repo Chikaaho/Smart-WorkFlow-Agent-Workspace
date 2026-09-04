@@ -1,0 +1,12 @@
+P58 G1a/G1b raw runtime evidence extracted from the successful SpringBootTest output.
+
+G1A_PROCESS_INSTANCE_ID=9166a823-a82b-11f1-8f7f-66ff24301f3c
+G1A_RETURN_TASK_ID=91813516-a82b-11f1-8f7f-66ff24301f3c
+G1A_RETURN_ACTION_SQL=SELECT id, process_instance_id, node_key, task_id, actor_id, action, opinion_form_id, opinion_form_version, opinion_data, settlement_status FROM sw_bpm_approval_action WHERE process_instance_id=? ORDER BY id
+G1A_RETURN_ACTION_PARAMS=9166a823-a82b-11f1-8f7f-66ff24301f3c
+G1A_RETURN_ACTION_ROWS=[{"ID":"2095764003199909890","PROCESS_INSTANCE_ID":"9166a823-a82b-11f1-8f7f-66ff24301f3c","NODE_KEY":"node_first","TASK_ID":"916b6320-a82b-11f1-8f7f-66ff24301f3c","ACTOR_ID":"1","ACTION":"APPROVE","OPINION_FORM_ID":"G1_CLOSEOUT_OPINION","OPINION_FORM_VERSION":"1","OPINION_DATA":"{\"approvalRemark\":\"G1 首审意见 08\"}","SETTLEMENT_STATUS":"APPROVED"},{"ID":"2095764003598368769","PROCESS_INSTANCE_ID":"9166a823-a82b-11f1-8f7f-66ff24301f3c","NODE_KEY":"node_second","TASK_ID":"91813516-a82b-11f1-8f7f-66ff24301f3c","ACTOR_ID":"1","ACTION":"RETURN","OPINION_FORM_ID":"G1_CLOSEOUT_OPINION","OPINION_FORM_VERSION":"1","OPINION_DATA":"{\"approvalRemark\":\"G1 退回意见 08\"}","SETTLEMENT_STATUS":"RETURNED"}]
+G1A_NOTIFICATION_QUERY_SQL=SELECT id, recipient_id, biz_type, biz_id, channel, delivery_status, title, content FROM sw_notify_message WHERE deleted=0 AND biz_type='WF_RETURNED' AND biz_id=? ORDER BY id DESC
+G1A_NOTIFICATION_QUERY_PARAMS=9166a823-a82b-11f1-8f7f-66ff24301f3c
+G1A_NOTIFICATION_ROWS=[{"ID":"2095764003636117506","RECIPIENT_ID":"1","BIZ_TYPE":"WF_RETURNED","BIZ_ID":"9166a823-a82b-11f1-8f7f-66ff24301f3c","CHANNEL":"IN_APP","DELIVERY_STATUS":"SUCCESS","TITLE":"您的申请已退回","CONTENT":"您发起的申请需要重新处理"}]
+G1A_ASSERT=PASS; notification_id=2095764003636117506; process_instance_id=9166a823-a82b-11f1-8f7f-66ff24301f3c; recipient_id=1; biz_type=WF_RETURNED; delivery_status=SUCCESS
+G1B_ASSERT=PASS; debugTokenId=test_1 -> formal_user_id=1; second_browser_identity_is_a_distinct_formal_user_request; current_identity_relation_is_consistent

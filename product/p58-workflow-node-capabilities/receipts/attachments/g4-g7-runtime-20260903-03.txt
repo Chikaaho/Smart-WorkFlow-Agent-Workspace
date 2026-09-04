@@ -1,0 +1,36 @@
+P58 G4-G7 Flowable/API/业务记录关联证据摘录（2026-09-03）
+
+固定字段
+GAP_ID: G4,G5,G6,G7
+INPUT_IDS: processDef=2095453273258987522; processKey=bpm_0a1fb00cf221403c; instance=1f793b98-a77f-11f1-9a47-66ff24301f3c; businessKey=dcc7d58d-a04a-46e0-8eae-2cfb455cd6b4
+IDENTITY_AND_PERMISSIONS: ALL 会签参与人=viewer 2095452950180139009 + operator 2095452950675066881；两身份分别在独立真实浏览器会话完成任务。
+PROFILE_AND_SWITCH: dev debug-auth=true；同一组合批次。
+URL_OR_COMMAND: GET /api/workflow/instances/{instanceId}; GET /api/form/data/p58_combined_runtime_20260903_03/{businessKey}; GET /api/notify/messages；浏览器分别打开两条 consensus task 并确认通过。
+
+FLOWABLE/API RAW RESULT
+ordinary -> consensus task viewer=378eb318-a77f-11f1-9a47-66ff24301f3c
+ordinary -> consensus task operator=378f9d7c-a77f-11f1-9a47-66ff24301f3c
+viewer task detail: 当前审批人=P58 查看者 03; consensusTotal=2
+viewer complete -> operator task remains active
+operator complete -> status=APPROVED; activeNodeIds=[]
+flowTrace sequence: START -> APPROVAL -> CONSENSUS(userTask x2) -> CONDITION(TRUE) -> COPY -> NOTIFICATION -> END
+
+BUSINESS FORM RAW RESULT
+id=dcc7d58d-a04a-46e0-8eae-2cfb455cd6b4
+formKey=p58_combined_runtime_20260903_03
+amount=250.000000
+note=P58 G7 browser positive run 03
+
+NOTIFICATION RAW RESULT
+operator: bizType=WF_APPROVED, title=您的申请已通过, deliveryStatus=SUCCESS
+operator: bizType=SYSTEM, title=P58 正向通知, deliveryStatus=SUCCESS, idempotencyKey={instance}:node_true_notification:{operator}
+viewer: bizType=WF_TODO, title=流程抄送, deliveryStatus=SUCCESS
+
+DOM_ASSERT: operator/admin/viewer 真实页面分别看到流程定义、待办和任务详情；viewer 任务页回显当前审批人。
+NETWORK_ASSERT: 浏览器 Network 事件未捕获；以上为 API 原始回读摘录与 DOM 观察，不作替代性宣称。
+FLOWABLE_BEFORE_AFTER: before=ordinary active；middle=两个并发 ALL userTask；after=ACTIVE=[] 且 flowTrace 到 END。
+BUSINESS_DB_BEFORE_AFTER: business record 与 instance API 关联同一 businessKey/instanceId；直接 PostgreSQL SQL 未捕获。
+POSITIVE_ASSERT: ALL 双身份正向与 TRUE 分支、COPY、站内 NOTIFICATION、END 均在同一实例完成。
+ZERO_RESIDUE_ASSERT: ANY/RATIO/阈值/失败/并发矩阵、FALSE/DEFAULT 分支、抄送权限、Adapter 失败/超时/幂等及拒绝/退回组合链未完成。
+EXIT_CODE: API 操作成功；浏览器动作存在通用“审批操作失败”提示，故保留为未闭环风险。
+CLEANUP_RESULT: 正向服务已停止并以 debug-off 新 H2 实例重放；无直接 SQL 逐表结果。

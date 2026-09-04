@@ -1,0 +1,29 @@
+P58 G3a/G3b environment and production artifact evidence.
+
+G3A_ENVIRONMENT_ID=p58-g123-h2-20260904-08
+G3A_PROFILE=dev
+G3A_MASTER_JDBC_URL=jdbc:h2:mem:p58_g123_closeout;DB_CLOSE_DELAY=0;DB_CLOSE_ON_EXIT=TRUE
+G3A_START_SOURCE=SpringBootTest P58EvidenceApplication; server.port=18086
+G3A_FILE_PERSISTENCE=NONE; JDBC_URL_IS_MEMORY=true
+G3A_RUNTIME_USERS=1,2,3; tenant_id=0
+G3A_RUNTIME_COMMAND_ATTACHMENT=product/p58-workflow-node-capabilities/receipts/attachments/g123-runtime-command-20260904-08.txt
+G3A_RUNTIME_COMMAND_EXIT=MAVEN_EXIT=0
+G3A_PORT_18086=NO_LISTENER
+G3A_PORT_18084=NO_LISTENER
+G3A_PORT_5173=NO_LISTENER
+G3A_TEMP_TEST_SOURCE=ABSENT
+G3A_TEMP_TEST_CLASS=ABSENT
+G3A_ASSERT=PASS; dev profile used only with H2 memory URL; test process exited; no listener or temporary probe residue remains
+
+G3B_PRODUCTION_BUILD_COMMAND=mvn -q -Pprod -DskipTests clean package
+G3B_PRODUCTION_BUILD_RAW=product/p58-workflow-node-capabilities/receipts/attachments/g3-production-build-20260904-08.txt
+G3B_PRODUCTION_BUILD_EXIT=MAVEN_PROD_BUILD_EXIT=0
+G3B_SCAN_RAW=product/p58-workflow-node-capabilities/receipts/attachments/g3-production-scan-20260904-08.txt
+G3B_SCAN_SCOPE=all server target JARs including nested JAR content, plus Smart-WorkFlow-Web/dist fixed root
+G3B_SERVER_JAR_COUNT=21
+G3B_SERVER_CLASS_ENTRY_MATCHES=0
+G3B_SERVER_NESTED_CONTENT_MATCHES=0
+G3B_WEB_DIST_FILE_COUNT=248
+G3B_WEB_DIST_MATCHES=0
+G3B_FIXTURE_REGEX=P58DebugParticipantAdapter|P58DebugNotifyChannelAdapter|P58DebugNotifyController|P58_DEBUG|P58_DEBUG_ADAPTER|p58_ext_
+G3B_ASSERT=PASS; production build exit 0; production JAR hashes and Web dist file hashes are in the raw scan; no exact debug fixture match
