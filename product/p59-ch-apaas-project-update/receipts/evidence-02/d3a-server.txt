@@ -1,0 +1,17 @@
+===== D3a-3 后端：origin/develop(11612df) → fca198d；origin/main(e0e899d) → 6afe910 =====
+[develop]
+远端起点: 11612df019deb15d2cd6c224c8b9cb8543c4edce
+候选终点: fca198ddd1fa03978a2013b1533ea4a93d2813ff
+fca198ddd1fa03978a2013b1533ea4a93d2813ff docs(readme): 项目名称更新为 CH-aPaaS，仓库名同步 Smart-WorkFlow-sPaaS-server
+M	README.md
+[main]
+远端起点: e0e899d1d79a297d9d98d924d21b1ba544a787c2
+候选终点: 6afe91095e6e6a158a95894a3ed287cb4c22014d
+6afe91095e6e6a158a95894a3ed287cb4c22014d ci(server): 发布固定目标提交（--target 完整 SHA），同名 tag 冲突拒绝覆盖，重跑仅重建同提交 Release
+946c0fee86e8b89549709e3e0bd3291d4cf937fd ci(server): 修正可执行 jar 定位以匹配 main 的 finalName=bootstrap 产物
+096f707ded7defbbe3877f60d30412afd5bbb220 fix(flyway): main 全链测试计数与真实迁移集合对齐（H2 46/PG 45，升级链同步）
+142f279168a4832730518c27b038db2d52187bbb ci(server): main 分支自动编译并生成 GitHub Release 与构建产物
+--- main name-status ---
+A	.github/workflows/build-release.yml
+M	sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainH2Test.java
+M	sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainPostgresTest.java

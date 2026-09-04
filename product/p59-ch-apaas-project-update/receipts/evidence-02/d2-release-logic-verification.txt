@@ -1,0 +1,14 @@
+===== D2-2 隔离发布逻辑验证（本地模拟仓）=====
+方法：/tmp/d2-sim 裸仓+克隆，模拟 gh release 的 tag 创建/核对/拒绝逻辑（gh 2.92 语义：create 在 tag 不存在时默认指向默认分支最新态，--target 固定完整 SHA；delete 不带 --cleanup-tag 只删 Release 保留 tag）
+
+场景1 首次发布（构建 S1 期间 main 已推至 S2）：
+  命令：TAG=build-$GITHUB_SHA; git tag $TAG $S1; push
+  结果：FRESH_CREATED tag_now=<S1完整SHA> requested=<S1完整SHA> → tag 绑定构建提交，main 推进不改变目标 ✓
+
+场景2 同提交重跑（S1 已发布再次跑）：
+  结果：RERUN_SAME_COMMIT → RERUN_RECREATED tag_now=<S1> → 删除旧 Release 保留并复用 tag，重建后仍指向 S1 ✓
+
+场景3 异提交 tag 冲突（tag build-S1 被强制指向 S2 的异常遗留）：
+  结果：CONFLICT_REFUSED requested=S1 existing=S2 → exit 1 拒绝发布；远端 tag 保持指向 S2 未删除未覆盖 ✓
+
+结论：发布逻辑满足『新 tag 绑定完整构建 SHA』『main 推进不改变本次发布目标』『重跑不覆盖其他提交发行物』『tag 冲突不触发删除/覆盖』
