@@ -1,0 +1,134 @@
+diff --git a/memory/README.md b/memory/README.md
+index 5831992..47dd864 100644
+--- a/memory/README.md
++++ b/memory/README.md
+@@ -2,7 +2,8 @@
+ 
+ `memory/` 保存 Planner 可直接恢复和决策的最小摘要；不承载完整历史、原始证据或完整决策正文。
+ 
+-- 当前摘要：`state.md`、`handoff.md`（截至2026-09-04 / P58 `p58-workflow-node-capabilities` 阶段三同步完成，`COMPLETED（已确认）`，第41个正式功能；OA正式状态权威仍为`knowledge/current-status.md`）
++- 当前摘要：`state.md`、`handoff.md`（截至2026-09-04 / knowledge-full-reconciliation 知识库全量整理 B 阶段同步完成待规划复核；功能数 41、清单 ✅34/🟦28/⬜28；OA正式状态权威仍为`knowledge/current-status.md`）
++- 全量双向映射索引：`knowledge/feature-reconciliation-index.md`（90 明细/56 唯一 P/54 I/55 product 目录）
+ - 未关闭问题：`knowledge/known-issues.md`
+ - 完整功能清单：`Smart-WorkFlow-Server/功能清单.md`
+-- 历史证据：`product/*/receipts/`
++- 历史证据：`product/*/receipts/`
+\ No newline at end of file
+diff --git a/memory/architecture.md b/memory/architecture.md
+index cb712d4..f0bec49 100644
+--- a/memory/architecture.md
++++ b/memory/architecture.md
+@@ -1,5 +1,5 @@
+ # 架构摘要
+ 
+-> 截至/同步点：2026-08-30；权威来源：`knowledge/architecture.md`。
++> 截至/同步点：2026-09-04；权威来源：`knowledge/architecture.md`。
+ 
+-系统为后端 Java 21 / Spring Boot 3.4 模块化单体与前端 Vue 3 / TypeScript SPA；工作区根负责统一治理。后端子仓为 `Smart-WorkFlow-Server/`（remote `Chikaaho/Smart-WorkFlow-Server`），前端子仓为 `Smart-WorkFlow-Web/`，两者均为 executor sublayer。工程专属约束分别见两端 `docs/governance/engineering-constitution.md`。
++系统为后端 Java 21 / Spring Boot 3.4 模块化单体与前端 Vue 3 / TypeScript SPA；工作区根负责统一治理。后端子仓为 `Smart-WorkFlow-Server/`（remote `Chikaaho/Smart-WorkFlow-Server`），前端子仓为 `Smart-WorkFlow-Web/`，两者均为 executor sublayer。工程专属约束分别见两端 `docs/governance/engineering-constitution.md`。模块完成度粗粒度总览见 `knowledge/architecture.md` §5（2026-09-04 刷新：BPM/Agent/IoT 为已交付子能力描述，不将模块整体写完成）。
+\ No newline at end of file
+diff --git a/memory/constraints.md b/memory/constraints.md
+index a4dba23..e8d269c 100644
+--- a/memory/constraints.md
++++ b/memory/constraints.md
+@@ -1,7 +1,8 @@
+ # 必要硬约束摘要
+ 
+-> 截至/同步点：2026-08-25；权威来源：`system.md`、`roles/*.md`。
++> 截至/同步点：2026-09-04；权威来源：`system.md`、`roles/*.md`。
+ 
+ - 必须先由用户显式声明且只认领一个角色；角色边界贯穿会话。
+ - Planner 不读 knowledge/业务代码；Executor 不作规划裁决；Admin 不碰业务实现与业务状态裁决。
+ - 当前状态单一源为 `knowledge/current-status.md`；终态机器契约与 Validator 分别为 `.codex/governance/terminal-contract.json`、`.codex/governance/validate-terminal.sh`。
++- 知识库全量整理（knowledge-full-reconciliation）方向 §7：不实施新业务功能、不修改权限/认证/迁移、不重跑全量业务测试、不自动创建 P 编号、不提交/推送 Git。
+\ No newline at end of file
+diff --git a/memory/decisions.md b/memory/decisions.md
+index 1dafeae..0328d15 100644
+--- a/memory/decisions.md
++++ b/memory/decisions.md
+@@ -1,8 +1,9 @@
+ # 近期有效决策摘要
+ 
+-> 截至/同步点：2026-08-25；权威详情：`knowledge/decisions.md` 与对应回执。
++> 截至/同步点：2026-09-04；权威详情：`knowledge/decisions.md` 与对应回执。
+ 
+ - 当前状态与历史物理分离；当前值只见 `knowledge/current-status.md`，历史见 `knowledge/history/`。
+ - 终态机器契约单一源为 `.codex/governance/terminal-contract.json`，公共校验入口为 `.codex/governance/validate-terminal.sh`。
+ - Planner 以 `memory/` 最小摘要恢复；摘要冲突时按 knowledge 权威修正，不反向裁决。
+-- `v0.0.1-beta` 发布候选的必须业务链为用户/组织/角色配置、表单创建发布、单节点流程创建发布、真实提交发起、待办审批及结果/流转记录回看；发布前须以当前 checkout 重新核验三仓可追溯性、质量门、干净启动和真实页面行为。
++- 知识库全量整理规划裁决（B 方向 §2/§3 固定值）：功能数 41 不变；清单 ✅34/🟦28/⬜28；五行 ⬜→🟦（M04-F01-03/M04-F07-01/M06-F01-01/M06-F02-01/M06-F03-01）；P34/P35/P37/P38/P39 部分实现开放未核销、P4 开放、P3/P21 部分关闭未核销；P/I 集合不增删。
++- （历史决策）`v0.0.1-beta` 发布候选的必须业务链为用户/组织/角色配置、表单创建发布、单节点流程创建发布、真实提交发起、待办审批及结果/流转记录回看。⚠ `v0.0.1` 已于 2026-08-31 发布（Owner 确认），本条为历史决策指针，不再作为待办指令。
+\ No newline at end of file
+diff --git a/memory/features.md b/memory/features.md
+index 21adcf7..e269dd3 100644
+--- a/memory/features.md
++++ b/memory/features.md
+@@ -1,8 +1,11 @@
+ # 功能摘要
+ 
+ > 规划侧最新同步点：2026-09-04；正式功能数与基线仍以 `knowledge/current-status.md` 为准。
++> 2026-09-04 知识库全量整理：清单当前值为 **✅34/🟦28/⬜28**（五行 ⬜→🟦，其余 85 行不变）；功能数 41 不变；全量双向映射见 `knowledge/feature-reconciliation-index.md`。
+ 
+-- `p58-workflow-node-capabilities`：**COMPLETED（已确认，2026-09-04）**，第41个正式功能。规划验收08确认十六项标准全部通过，阶段三终态复核通过；主方向与开发调试认证方向归档`passed/`，阶段三方向已归档`passed/`。正式基线Server 1035/0/0/0（全量152份Surefire报告）、Web 117f+1sk/1110t+3sk（lint 47 warnings/0 errors）、H2 V49（49）/PG V49（48）全链退出0；附加回执08 G1—G3隔离运行退出0、生产排除扫描通过，临时探针不加入正式测试计数。P58已核销、不对应既有明细（90项明细状态零变化）。
++- `knowledge-full-reconciliation`（活动任务，非业务功能）：A 通过，B 同步完成待规划复核；VERIFYING。
++
++- `p58-workflow-node-capabilities`：**COMPLETED（已确认，2026-09-04）**，第41个正式功能（历史点）。规划验收08确认十六项标准全部通过，阶段三终态复核通过；主方向与开发调试认证方向归档`passed/`，阶段三方向已归档`passed/`。正式基线Server 1035/0/0/0（全量152份Surefire报告）、Web 117f+1sk/1110t+3sk（lint 47 warnings/0 errors）、H2 V49（49）/PG V49（48）全链退出0；附加回执08 G1—G3隔离运行退出0、生产排除扫描通过，临时探针不加入正式测试计数。P58已核销、当时不对应既有明细（当时90项明细状态零变化）；P58 已覆盖子集对应的五行清单项由 2026-09-04 对账登记为 🟦（P34/P35/P37/P38/P39 部分实现未核销）。
+ - `p57-bpm-node-extension`：**COMPLETED（已确认，2026-09-03）**，第40个正式功能。规划验收05确认十二项标准全部通过，阶段三最终复核02通过；主方向与阶段三方向均归档`passed/`。正式基线Server 1015/0/0/0（全量147份Surefire XML）＋P57聚焦21/0/0/0、Web 116f+1sk/1104t+3sk，H2/PG V47无迁移；P57已核销、不对应既有明细（90项明细状态零变化）；P58 不属于 P57 验收范围。
+ - `p56-form-grid-layout`：**COMPLETED（已确认，2026-09-02）**，第39个正式功能。P1优先级、L级；10项验收全过，主方向与阶段三方向均已归档`passed/`；M03-F01-01 🟦→✅、P46一并核销；正式基线后端1004/0/0/0（全量）＋聚焦23/0/0/0、前端115f+1sk/1097t+3sk＋聚焦3 files/23 tests、H2 V47（47）/PG V47（46）；清单✅34/🟦23/⬜33（90不变）。
+ - `p52-form-workbench`：**COMPLETED（已确认，2026-09-02）**，第38个正式功能。12项功能标准全部通过；主方向与阶段三方向均归档`passed/`。P52已核销；正式基线1002/0/0/0、114f/1092t/3skipped、H2 V47（47）/PG V47（46）；清单✅33/🟦24/⬜33（90不变，P52不对应既有明细）。
+diff --git a/memory/handoff.md b/memory/handoff.md
+index da2ae13..1e1003f 100644
+--- a/memory/handoff.md
++++ b/memory/handoff.md
+@@ -4,14 +4,14 @@
+ 
+ > 同步点：2026-09-04；权威：`knowledge/current-status.md`。
+ 
+-**项目状态**：P58 流程节点界面与具体能力优化（`p58-workflow-node-capabilities`）功能级 **PASSED（2026-09-04，规划验收08）**，阶段三终态同步已完成，状态为 **COMPLETED（已确认，2026-09-04）**，第41个正式功能；P58已核销、不对应既有明细（90项明细状态零变化）、清单✅34/🟦23/⬜33（90不变）。正式基线后端 **1035/0/0/0**（全量152份Surefire报告，BUILD SUCCESS）、前端 **117 files passed + 1 skipped / 1110 tests passed + 3 skipped**（typecheck/lint/build退出0，lint 47 warnings / 0 errors）、Flyway **H2 V49（49）/PG V49（48）**（全链退出0）；附加回执08 G1—G3隔离运行退出0、生产排除扫描通过，临时探针不加入正式测试计数。前一功能 `p57-bpm-node-extension` COMPLETED（已确认，2026-09-03，第40个）：1015/0/0/0（147份Surefire XML）＋聚焦21/0/0/0、116f+1sk/1104t+3sk、H2/PG V47；`p56-form-grid-layout` COMPLETED（已确认，2026-09-02，第39个）：1004/0/0/0＋聚焦23/0/0/0、115f+1sk/1097t+3sk＋聚焦3 files/23 tests；`p52-form-workbench` COMPLETED（已确认，2026-09-02，第38个）：1002/0/0/0、114f/1092t/3sk、H2/PG V47。P51 Engine解耦已确认完成，不新增OA功能。
++**项目状态（P58 历史交付快照，2026-09-04 时点值，非当前计数口径）**：P58 流程节点界面与具体能力优化（`p58-workflow-node-capabilities`）功能级 **PASSED（2026-09-04，规划验收08）**，阶段三终态同步已完成，状态为 **COMPLETED（已确认，2026-09-04）**，第41个正式功能；P58已核销、当时不对应既有明细（当时90项明细状态零变化）、当时清单✅34/🟦23/⬜33（90不变）。正式基线后端 **1035/0/0/0**（全量152份Surefire报告，BUILD SUCCESS）、前端 **117 files passed + 1 skipped / 1110 tests passed + 3 skipped**（typecheck/lint/build退出0，lint 47 warnings / 0 errors）、Flyway **H2 V49（49）/PG V49（48）**（全链退出0）；附加回执08 G1—G3隔离运行退出0、生产排除扫描通过，临时探针不加入正式测试计数。前一功能 `p57-bpm-node-extension` COMPLETED（已确认，2026-09-03，第40个）：1015/0/0/0（147份Surefire XML）＋聚焦21/0/0/0、116f+1sk/1104t+3sk、H2/PG V47；`p56-form-grid-layout` COMPLETED（已确认，2026-09-02，第39个）：1004/0/0/0＋聚焦23/0/0/0、115f+1sk/1097t+3sk＋聚焦3 files/23 tests；`p52-form-workbench` COMPLETED（已确认，2026-09-02，第38个）：1002/0/0/0、114f/1092t/3sk、H2/PG V47。P51 Engine解耦已确认完成，不新增OA功能。
+ 
+ **发布状态**：`v0.0.1` 正式版已发布（Owner 2026-08-31 确认）；本摘要未登记远端 tag、提交映射与发布回执，需精确追溯时由执行角色补充行为证据。
+ 
+ **最近正式基线**：后端1035/0/0/0（全量152份Surefire报告）＋前端117f+1sk/1110t+3sk（lint 47 warnings/0 errors）、Flyway H2 V49（49）/PG V49（48）。
+ 
+-**当前规划**：P58阶段三复核通过，COMPLETED（已确认）；三份方向均已归档passed。
++**当前规划（当前口径）**：`knowledge-full-reconciliation` 知识库全量整理活动任务，**VERIFYING**：A 通过（G1—G5 核销），B 阶段同步已提交 `receipts/sync-b-01.md`，规划首轮复核为 B1—B3 补证（`receipts/planning-review-sync-b-01.md`），执行层补齐中；尚未 PASSED/COMPLETED。当前清单 ✅34/🟦28/⬜28（五行⬜→🟦）、功能数 41 不变；当前值以 `knowledge/current-status.md` 为准，上段 P58 值为历史时点。
+ 
+-**P51 终态**：main 正式历史已完成规划功能级 `PASSED`、阶段三 `COMPLETED（已确认）` 与 Owner 授权发布；当前远端 `main=e0711fb`、`develop-sw=a2b8342`。终态权威与分支摘要差异已由 `product/p51-agent-coding-engine-decoupling/receipts/planning-final-reconciliation-p51-main-terminal-authority-03.md` 完成对账。
++**P51 终态**：main 正式历史已完成规划功能级 `PASSED`、阶段三 `COMPLETED（已确认）` 与 Owner 授权发布；P51 **COMPLETED（已确认）**，无活动 P51 任务。远端 SHA `main=e0711fb`、`develop-sw=a2b8342` 为 **2026-08-31 P51 终态时点值**（本地 develop-sw 已推进至 73f9315），非实时远端。终态权威与分支摘要差异已由 `product/p51-agent-coding-engine-decoupling/receipts/planning-final-reconciliation-p51-main-terminal-authority-03.md` 完成对账。
+ 
+-**下一动作**：等待Owner选择下一需求；P58与独立管理员任务均已验收结束，不自动启动新功能或发布。
++**下一动作（2026-09-04 规划首轮复核后 B1—B3）**：执行角色补齐 `planning-review-sync-b-01.md` 的 B1—B3（内容回传、原始复算与保全、范围口径登记），提交 `receipts/sync-b-01-correction-01.md` 供 Planner 复核；整体任务保持 VERIFYING，统计/基线不变。全量映射索引 `knowledge/feature-reconciliation-index.md`。
+diff --git a/memory/issues.md b/memory/issues.md
+index 272f037..d8fa8ad 100644
+--- a/memory/issues.md
++++ b/memory/issues.md
+@@ -4,6 +4,8 @@
+ 
+ 当前无阻塞业务执行的已登记问题。I14/P21 已部分关闭：最小腾讯接入已交付；真实腾讯账号与物理设备现场联调、原生 MQTT，以及 Owner 2026-08-29 新增的标准设备管理、通用物模型/行为、流程选设备触发功能、自定义 Adapter 继续开放。详细产品边界见 `todo/requirement-pool.md`，具体问题状态仍以权威注册表为准。
+ 
++2026-09-04 知识库全量对账轮：known-issues 无必须新增或关闭的 I 问题（集合维持 54 条，I1—I55 区间缺 I27，I27 缺行证据待定位见 `knowledge/feature-reconciliation-index.md` §5）；I45 已追加通知批量发送完成与 P58 覆盖/剩余映射记录；五行清单项 ⬜→🟦 为规划裁决的已交付子集登记，P34/P35/P37/P38/P39 部分实现未核销。
++
+ P58 阶段三同步轮无必须新增或关闭的问题（`knowledge/known-issues.md` 无变化）；P2 其余缺口按既有决定继续开放、P21 保持部分关闭未核销，不登记为本轮缺陷。
+ 
+ P52 阶段三同步轮无必须新增或关闭的问题（`knowledge/known-issues.md` 无变化）；P52 历史版本只读（无回滚/差异/删除/分支）、同租户实例级 ACL 与 `by-key` 填报端点权限归属按规划关键裁决维持既有语义，不登记为 P52 缺陷。
+diff --git a/memory/state.md b/memory/state.md
+index 5855a2c..6591b81 100644
+--- a/memory/state.md
++++ b/memory/state.md
+@@ -3,11 +3,12 @@
+ > 规划侧最新同步点：2026-09-04；正式计数与基线权威为 `knowledge/current-status.md`。
+ 
+ - 正式功能 `p58-workflow-node-capabilities`：**COMPLETED（已确认，2026-09-04）**，第41个。P58 流程节点界面与具体能力优化：通用选人/审批/会签/分支/抄送/通知 SPI/审批意见低代码扩展/开发调试认证；十六项标准全过；不对应既有明细、90项明细状态零变化。
+-- 终态值：功能数 40→**41**；清单 **✅34/🟦23/⬜33**（34+23+33=90）；P58 **已核销**。
++- 终态值：功能数 **41**（本对账增量 0）；清单 **✅34/🟦28/⬜28**（34+28+28=90；本轮五行 M04-F01-03/M04-F07-01/M06-F01-01/M06-F02-01/M06-F03-01 ⬜→🟦，其余 85 行不变）；P58 历史已核销、P34/P35/P37/P38/P39 部分实现未核销、P4 开放、P3/P21 部分关闭未核销、其余已核销项不变。
+ - 正式基线：后端 **1035/0/0/0**（全量152份Surefire报告，BUILD SUCCESS）、前端 **117f passed + 1 skipped / 1110t passed + 3 skipped**（typecheck/lint/build退出0，lint 47 warnings / 0 errors）、Flyway **H2 V49（49）/PG V49（48）**（全链退出0）；附加：回执08 G1—G3隔离运行退出0、生产排除扫描通过，临时探针不加入正式测试计数。
+ - 主方向与开发调试认证补充方向均已归档 `product/p58-workflow-node-capabilities/passed/`；阶段三方向已归档 `passed/`。
+-- 当前功能：无活动正式业务功能。P58阶段三已确认；独立管理员任务最终验收02通过，模板路由A1关闭。等待Owner选择下一需求。
++- 当前任务：无活动正式业务实现功能。`knowledge-full-reconciliation` 知识库全量整理：A 阶段通过（规划复验 02 PASSED，G1—G5 核销），B 阶段逐文件同步已按 `direction-knowledge-full-reconciliation-sync-b.md` 完成并提交 `receipts/sync-b-01.md`；整体任务 VERIFYING、待 Planner 复核，尚未 PASSED/COMPLETED。全量映射索引 `knowledge/feature-reconciliation-index.md`。
+ - 前一功能（历史语境）：`p57-bpm-node-extension` COMPLETED（已确认，2026-09-03），第40个；基线 1015/0/0/0（全量147份Surefire XML）＋聚焦21/0/0/0、116f+1sk/1104t+3sk、H2/PG V47。`p56-form-grid-layout` COMPLETED（已确认，2026-09-02），第39个；1004/0/0/0＋聚焦23/0/0/0、115f/1097t/3sk＋聚焦3 files/23 tests；`p52-form-workbench` COMPLETED（已确认，2026-09-02），第38个；1002/0/0/0、114f/1092t/3sk。
+ - 历史记录（COMPLETED 已确认，2026-08-29）：`minimal-closure-first-acceptance`（验收审计不新增正式功能，清单 32/25/33、功能数 36）；三仓 README 同步、Admin 治理审计/修复、GOV-AUDIT-13 全部闭环。
+ - P51 Agent Coding Engine 解耦：COMPLETED（已确认，2026-08-31），不新增 OA 正式业务功能。
+-- P21 保持部分关闭、未核销（真实腾讯账号与物理设备现场联调、原生 MQTT、完整设备管理），尚未选为活动正式功能；P2 其余缺口继续开放；后续业务需求未选择，不自动启动下一编号。
++- 下一动作：Planner 复核 knowledge-full-reconciliation B 阶段同步回执（`product/knowledge-full-reconciliation/receipts/sync-b-01.md`）；后续业务需求未选择，不自动启动下一编号。
++- P21 保持部分关闭、未核销（真实腾讯账号与物理设备现场联调、原生 MQTT、完整设备管理），尚未选为活动正式功能；P2 其余缺口继续开放；P4 三类个人查询开放（我发起的无专用入口、我的已办 ASSIGNEE 疑点待运行核实、抄送我的/催办缺）。
