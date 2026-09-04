@@ -1,0 +1,15 @@
+===== D2b-asset 负向断言：替身拒绝无资产/文件不存在的 create =====
+工作目录: /tmp/d2b-v4/server-fresh/work（完整 v4 替身，来源 run-release-v4.sh）
+S1=096f707ded7defbbe3877f60d30412afd5bbb220
+
+$ gh release create build-<S1> --target <S1> --title T --notes N          # 无资产参数
+exit=1  → GH_CREATE_FAIL no_assets
+
+$ gh release create build-<S1> --target <S1> --title T --notes N /tmp/.../nonexistent.jar   # 文件不存在
+exit=1  → GH_CREATE_FAIL missing_or_empty /tmp/.../nonexistent.jar
+
+$ gh release create build-<S1> --target <S1> --title T --notes N /tmp/.../real.jar          # 非空文件存在
+exit=0  → GH_CREATE_OK assets=[ /tmp/.../real.jar]
+
+结论：替身对缺失资产参数与指定文件不存在均返回失败（不会给空发布假成功）；
+非空文件存在才记录 GH_CREATE_OK。✓
