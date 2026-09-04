@@ -1,19 +1,47 @@
-# 会话交接摘要
+# 功能交接摘要
 
-> 最新交接（2026-09-04）：知识库全量整理 **COMPLETED（已确认）**，终态T1—T3已核销，8/8哈希通过，三方向已归档。最终裁决：product/knowledge-full-reconciliation/receipts/planning-final-review-terminal-sync-02-passed.md。下文该任务待复核段为此前快照，不再是当前待办；Executor仅待机械回填裁决，后续业务由Owner选择。P4三查询、通知剩余和ESLint TODO继续保留。
+## 1. 功能名称
+P59 / p59-ch-apaas-project-update（非新增业务功能统一交付任务）。
 
-**独立管理员任务**：最终验收02通过，A1已关闭。唯一补充提示模板为 `product/governance/supplemental-execution-prompt-template.md`，Planner已完整读取并校验；治理变更未提交/推送，不增加业务功能数。
+## 2. 功能目标
+CH-aPaaS项目说明、三仓改名引用、工作区main误提交整理、前后端main自动发布及三个场景原始记录。
 
-> 同步点：2026-09-04；权威：`knowledge/current-status.md`。
+## 3. 最终状态
+**COMPLETED（规划已确认，2026-09-05）**，P59已核销。主方向与终态同步方向均归档passed。
 
-**项目状态（P58 历史交付快照，2026-09-04 时点值，非当前计数口径）**：P58 流程节点界面与具体能力优化（`p58-workflow-node-capabilities`）功能级 **PASSED（2026-09-04，规划验收08）**，阶段三终态同步已完成，状态为 **COMPLETED（已确认，2026-09-04）**，第41个正式功能；P58已核销、当时不对应既有明细（当时90项明细状态零变化）、当时清单✅34/🟦23/⬜33（90不变）。正式基线后端 **1035/0/0/0**（全量152份Surefire报告，BUILD SUCCESS）、前端 **117 files passed + 1 skipped / 1110 tests passed + 3 skipped**（typecheck/lint/build退出0，lint 47 warnings / 0 errors）、Flyway **H2 V49（49）/PG V49（48）**（全链退出0）；附加回执08 G1—G3隔离运行退出0、生产排除扫描通过，临时探针不加入正式测试计数。前一功能 `p57-bpm-node-extension` COMPLETED（已确认，2026-09-03，第40个）：1015/0/0/0（147份Surefire XML）＋聚焦21/0/0/0、116f+1sk/1104t+3sk、H2/PG V47；`p56-form-grid-layout` COMPLETED（已确认，2026-09-02，第39个）：1004/0/0/0＋聚焦23/0/0/0、115f+1sk/1097t+3sk＋聚焦3 files/23 tests；`p52-form-workbench` COMPLETED（已确认，2026-09-02，第38个）：1002/0/0/0、114f/1092t/3sk、H2/PG V47。P51 Engine解耦已确认完成，不新增OA功能。
+## 4. 本轮做了什么
+复核terminal-sync-02，核销T1状态字段和T2架构名称/类型；追加裁决 `product/p59-ch-apaas-project-update/receipts/planning-final-review-p59-terminal-sync-02-passed.md`，同步规划摘要。
 
-**发布状态**：`v0.0.1` 正式版已发布（Owner 2026-08-31 确认）；本摘要未登记远端 tag、提交映射与发布回执，需精确追溯时由执行角色补充行为证据。
+## 5. Executor 内部 Step 汇总
+A说明、B仓库、C main整理、D自动发版、E场景记录均已验收；阶段三两项文档修正通过。
 
-**最近正式基线**：后端1035/0/0/0（全量152份Surefire报告）＋前端117f+1sk/1110t+3sk（lint 47 warnings/0 errors）、Flyway H2 V49（49）/PG V49（48）。
+## 6. 实际修改范围
+本轮执行侧为knowledge当前状态/交接/P59登记/架构及memory、todo投影；规划侧为product裁决/归档和memory、todo。knowledge通过product全文快照审核；其复核前确认进度可由Executor按最终裁决机械回填。
 
-**当前规划（当前口径）**：`knowledge-full-reconciliation` 知识库全量整理活动任务，**COMPLETED（待 Planner 终态复核）**：A/B 阶段全部通过（复核 07 PASSED），阶段三终态同步已落盘 `receipts/terminal-sync-01.md`；终态复核通过后确认 `COMPLETED（已确认）`。当前清单 ✅34/🟦28/⬜28（五行⬜→🟦）、功能数 41 不变；当前值以 `knowledge/current-status.md` 为准，上段 P58 值为历史时点。
+## 7. 测试和验收结果
+本轮10/10快照哈希、6份当前文件一致性通过；memory复核时16680 B、最大4686 B。实现与真实发布证据沿用审查07：六分支发布、累计26提交；Server run33889195373、Web run33889880505成功，tag目标与产物指纹已验收。原始证据见 `product/p59-ch-apaas-project-update/receipts/`。
 
-**P51 终态**：main 正式历史已完成规划功能级 `PASSED`、阶段三 `COMPLETED（已确认）` 与 Owner 授权发布；P51 **COMPLETED（已确认）**，无活动 P51 任务。远端 SHA `main=e0711fb`、`develop-sw=a2b8342` 为 **2026-08-31 P51 终态时点值**（本地 develop-sw 已推进至 73f9315），非实时远端。终态权威与分支摘要差异已由 `product/p51-agent-coding-engine-decoupling/receipts/planning-final-reconciliation-p51-main-terminal-authority-03.md` 完成对账。
+## 8. 关键设计决策
+产品CH-aPaaS/PaaS；规范远端后端Smart-WorkFlow-aPaaS-server、前端Smart-WorkFlow-aPaaS-Web、工作区Smart-WorkFlow-Agent-Workspace。三个场景仅原始记录。main构建957为分支限定证据。
 
-**下一动作（2026-09-04 阶段三终态同步）**：执行角色已按 `direction-knowledge-full-reconciliation-terminal-sync.md` 完成终态同步，提交 `receipts/terminal-sync-01.md` 供 Planner 终态复核；任务 COMPLETED（待终态复核），统计/基线不变。映射索引 `knowledge/feature-reconciliation-index.md` + issues/products 子表。
+## 9. 当前系统状态
+无活动业务/交付任务；正式功能41，清单✅34/🟦28/⬜28=90。正式基线保持P58验收快照：Server1035/0/0/0（152报告）；Web117f+1sk/1110t+3sk（lint47warnings/0errors）；H2 V49（49）/PG V49（48）。P59基线更新集合为空。
+此前P58第41个、P57第40个、P56第39个、P52第38个及知识整理均已终态确认。独立管理员任务最终验收02通过、A1已关闭；补充模板为 `product/governance/supplemental-execution-prompt-template.md`，治理变更未提交/推送。
+
+## 10. 还有什么没做
+P59三个场景未实施。P4个人查询、P3发送记录/重发/日志、P34/P35/P37/P38/P39剩余能力、P21真实设备联调/原生MQTT/完整设备管理、P2其余缺口继续保留；P54/P55待规划。
+
+## 11. 已知问题和风险
+沿用memory/issues与todo/requirement-pool既有边界；非零租户登录无受支持入口，前端ESLint模块边界TODO保留。本轮无新增业务问题。
+
+## 12. 下一轮要做什么
+等待Owner新需求。
+
+## 13. 下一轮要达到什么结果
+以Owner新指令确定范围和验收标准。
+
+## 14. 下一轮开始前必须读取的知识文件
+Planner先读system.md、roles/planner.md、memory摘要及P59最终裁决。knowledge/current-status、session-handoff、features/p59由Executor读取维护；Planner需核对时走product附件。
+
+## 15. 新会话启动提示词
+本会话角色：规划。P59已COMPLETED（2026-09-05规划确认），两个方向在passed，功能41、清单34/28/28及正式基线不变；当前无活动任务，等待Owner新需求。历史回执保留追溯。
