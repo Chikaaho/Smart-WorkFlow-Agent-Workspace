@@ -1,0 +1,12 @@
+GAP_ID=Z1
+INPUT_IDS=ids-z1-z9.env; form=3c4676b6-a7c7-41a4-9137-b7f6cdb613db; table=sw_form_nhwh67b5r4
+IDENTITIES=admin=1; operator=2095490569284018177; viewer=2095490569841860610; third=2095491208659525634; role=2095490509456465922; designer=2095490509641015297
+BROWSER_TIME_AND_DOM=browser evidence exists for Z3/Z4/Z8; exact UI timestamps and browser-generated requestId mapping were not preserved in this attachment
+ACCESS_LOG_REQUEST_IDS=known API correlation IDs are listed in Z3/Z4/Z6/Z8; browser UI action requestId correlation=UNVERIFIED
+HTTP_RAW=Z1 is the evidence index; case-level raw HTTP is persisted in z3,z4,z5,z6,z7,z8 attachments
+PG_AND_FLOWABLE_SQL_RAW=final P58-scoped query: sw_bpm_process_def=0; sw_bpm_instance=0; sw_bpm_approval_action=0; sw_bpm_participant_snapshot=0; sw_bpm_branch_trace=0; sw_bpm_copy_record=0; sw_bpm_form_binding=0; sw_form_trace=0; sw_notify_message=0; act_re_procdef=0; act_re_deployment=0; act_ge_bytearray=0; act_hi_procinst=0; act_hi_taskinst=0; act_hi_actinst=0; act_hi_varinst=0; act_hi_identitylink=0; act_hi_comment=0; act_hi_attachment=0; act_ru_execution=0; act_ru_task=0; act_ru_variable=0; act_ru_identitylink=0
+POSITIVE_ASSERT=non-secret IDs for the recorded cases are indexed in ids-z1-z9.env; all final P58-scoped cleanup counts are zero
+NEGATIVE_ASSERT=secrets are excluded; no completion or PASS claim is made by this index
+ZERO_RESIDUE_ASSERT=P58-scoped PostgreSQL and Flowable residue query returned zero for every listed object family; dynamic tables sw_form_e7d042cvnn=0 and sw_form_nhwh67b5r4=0
+COMMAND_AND_EXIT=git diff --check at root/server/web: 0/0/0; final port check: 15432/18084/5174/5175/5176=CLOSED, exit=0
+CLEANUP_RESULT=business and Flowable cleanup transactions committed; final verification completed

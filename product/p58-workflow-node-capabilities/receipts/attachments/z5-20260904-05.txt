@@ -1,0 +1,12 @@
+GAP_ID=Z5
+INPUT_IDS=RATIO instance=1468654a-a7ae-11f1-9422-66ff24301f3c; tasks=1469c4f2-a7ae-11f1-9422-66ff24301f3c,146aaf56-a7ae-11f1-9422-66ff24301f3c,146b2489-a7ae-11f1-9422-66ff24301f3c; concurrent instance=88ba1e48-a7af-11f1-8e14-66ff24301f3c
+IDENTITIES=operator=2095490569284018177; viewer=2095490569841860610; third=2095491208659525634; three independent participant snapshots recorded
+BROWSER_TIME_AND_DOM=no browser action is required for this backend matrix; exact execution timestamps were not preserved
+ACCESS_LOG_REQUEST_IDS=backend scenario requestId values were not preserved in the current retained raw attachment; UI correlation=not applicable
+HTTP_RAW=sequential RATIO: operator APPROVE HTTP 200 code=0; viewer REJECT HTTP 200 code=0; third APPROVE HTTP 200 code=0; final APPROVED active=0 history=3 actions=3; repeat operator HTTP 200 {"code":2305,"msg":"节点已被处理","data":null}; post-retry concurrent operator/viewer both HTTP 200 {"code":0,"msg":"success","data":null}, final APPROVED active=0 actions=2 terminal history=3
+PG_AND_FLOWABLE_SQL_RAW=sequential actions: operator APPROVE data={"comment":""}; viewer REJECT data={"comment":""}; third APPROVE data={"comment":""}; concurrent post-retry actions=2 and terminal history=3; all cases cleaned from P58-scoped tables
+POSITIVE_ASSERT=three real users and three independent RATIO opinions are recorded; repeat settlement is rejected; post-retry distinct concurrent tasks both settle successfully
+NEGATIVE_ASSERT=ANY and ALL raw matrix output and a retained browser-visible three-opinion artifact are not present in this attachment; Z5 is not fully closed
+ZERO_RESIDUE_ASSERT=P58-scoped post-cleanup action, participant, instance and Flowable counts are zero
+COMMAND_AND_EXIT=reactor engine focused tests exit=0; full backend mvn -q test exit=0
+CLEANUP_RESULT=RATIO and concurrent objects were removed by committed business/Flowable cleanup
