@@ -1,0 +1,6 @@
+2026-09-06T16:15:15.814+08:00  INFO 94858 --- [           main] c.s.c.b.process.queue.CommandDispatcher  : 命令调度器已启动: normalPoll=500ms, p0Poll=100ms, batch=20, p0Batch=5, maxRetries=5
+2026-09-06T16:15:16.358+08:00  WARN 94858 --- [mand-dispatcher] c.s.c.b.p.q.PersistentBpmCommandQueue    : 命令消费前安全门禁拒绝: commandId=2096512346426540034, reason=发起用户不存在、已停用或租户不匹配
+2026-09-06T16:15:16.369+08:00  WARN 94858 --- [mand-dispatcher] c.s.c.b.p.q.DraftSubmitCommandHandler    : 草稿提交终态失败: draftId=2096512346132938753, reason=发起用户不存在、已停用或租户不匹配
+2026-09-06T16:15:16.369+08:00  WARN 94858 --- [mand-dispatcher] c.s.c.b.process.queue.CommandDispatcher  : 命令消费前安全门禁拒绝: commandId=2096512346426540034, reason=发起用户不存在、已停用或租户不匹配
+2026-09-06T16:15:16.412+08:00  INFO 94858 --- [mand-dispatcher] c.s.c.b.process.queue.CommandDispatcher  : 命令开始处理: commandId=2096512346812416001, type=DRAFT_SUBMIT, channel=NORMAL, retry=0
+2026-09-06T16:15:16.460+08:00  INFO 94858 --- [mand-dispatcher] c.s.c.b.process.queue.CommandDispatcher  : 命令处理完成: commandId=2096512346812416001, 耗时 48ms

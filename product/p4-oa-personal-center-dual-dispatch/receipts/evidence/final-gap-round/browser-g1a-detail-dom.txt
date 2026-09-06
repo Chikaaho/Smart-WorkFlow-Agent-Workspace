@@ -1,0 +1,15 @@
+G1a 修复后同对象详情 DOM（2026-09-06，业务单号 ea4f7f7e-aea9-4917-845a-1c2e543c58d4）
+对象链：草稿(finalbizg 创建) → NORMAL DRAFT_SUBMIT → FLOW_START → 实例 2096510901902077954 → 任务 2e3b92f8(最终终审, admin 办理)
+入口：/workflow/my-instances → 详情
+流程详情
+流程名称	最终轮审批流	状态	已通过
+流程标识	bpm_028af8a8e15d4060	业务单号	ea4f7f7e-aea9-4917-845a-1c2e543c58d4
+表单标识	p4_oa_biz_form_final	发起时间	2026-09-06T16:08:44.959806
+当前进度
+流程已结束，无进行中的节点
+流转记录
+节点	办理人	动作	结果	意见	到达时间	办理时间
+最终终审	系统管理员	通过	通过	G1a 终审验证通过	2026-09-06T16:08:44.932	2026-09-06T16:09:11.188
+（修复前同位置节点显示"动作 -、结果 进行中"；修复后动作/结果/意见/办理时间与真实审批记录一致）
+API 读回 GET /workflow/my/instances/2096510901902077954（finalbizg）：
+{"taskName":"最终终审","assigneeName":"系统管理员","action":"APPROVE","approvalResult":"APPROVED","endTime":"2026-09-06T16:09:11.188","opinionData":{"comment":"G1a 终审验证通过"}}

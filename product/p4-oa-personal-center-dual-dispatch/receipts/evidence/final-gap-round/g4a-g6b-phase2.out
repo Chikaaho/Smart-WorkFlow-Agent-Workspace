@@ -1,0 +1,8 @@
+[B1.commandY-recovered] {"status": "COMPLETED", "result": "{\"status\":\"SUBMITTED\",\"recordId\":\"f8b69244-8bb1-40f1-86f6-66b2516a6a5d\"}", "createTime": "2026-09-06T16:14:29.45292", "finishedAt": "2026-09-06T16:15:16.458033"}
+[B2.commandX-rejected] {"note": "API 不可读（发起人已被停用且命令查询限发起人），原件=phase2 服务器日志", "evidence": "g4a-phase2-server.log:16:15:16.358 消费前安全门禁拒绝 commandId=2096512346426540034 reason=发起用户不存在、已停用或租户不匹配 + 草稿提交终态失败 draftId=2096512346132938753"}
+[B4.instance-Y] {"id": "2096512546893307906", "status": "RUNNING", "initiatorId": "2096512341871525889", "recordId": "f8b69244-8bb1-40f1-86f6-66b2516a6a5d"}
+[B5.admin-approve] {"taskId": "17fda586-a9cb-11f1-ad43-66ff24301f3c", "code": 0}
+[B6.instance-final] {"status": "APPROVED"}
+[B7.no-duplicate] {"uyProcessed": 0, "taskIds": []}
+[B8.same-lane-order] {"cmdX": "2096512346426540034", "cmdY": "2096512346812416001", "note": "phase2 日志同车道顺序:16:15:16.358 X拒绝 → 16:15:16.412 Y开始处理 → 16:15:16.460 Y完成 → 16:15:17.000 FLOW_START"}
+PHASE2_DONE

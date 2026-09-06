@@ -1,0 +1,151 @@
+{
+ "schema": "p4-p0-result-query-manifest-v1",
+ "generated_at": "2026-09-07T00:38:25+08:00",
+ "note": "提示08 P0 超时结果回查证据清单；不含本清单自身。jar>100MB 不入库，指纹+工程 target/ 实体绑定。",
+ "entries": [
+  {
+   "path": "src/CommandStatusRespDTO.java",
+   "source_path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/dto/CommandStatusRespDTO.java",
+   "source_sha256": "f76a0642e83bfd1ca8d9389475cc66403c88b9863e6b4fba21e63c504ae5699a",
+   "copy_sha256": "f76a0642e83bfd1ca8d9389475cc66403c88b9863e6b4fba21e63c504ae5699a",
+   "hash_match": true,
+   "purpose": "G5a flowStart 只读结果视图 最终实现副本",
+   "exists": true
+  },
+  {
+   "path": "src/BpmCommandController.java",
+   "source_path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmCommandController.java",
+   "source_sha256": "b29b74e80dba6ff8376b903d5c041729294ff80d28009c40dd1f482603208dd5",
+   "copy_sha256": "b29b74e80dba6ff8376b903d5c041729294ff80d28009c40dd1f482603208dd5",
+   "hash_match": true,
+   "purpose": "G5a 对外回查契约+关联解析 最终实现副本",
+   "exists": true
+  },
+  {
+   "path": "src/CommandSyncWaiter.java",
+   "source_path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/CommandSyncWaiter.java",
+   "source_sha256": "fd30fb8fce7b56ad4d71c8ffb9f024192333c9fd6c6fb2a90617fccde45c898d",
+   "copy_sha256": "fd30fb8fce7b56ad4d71c8ffb9f024192333c9fd6c6fb2a90617fccde45c898d",
+   "hash_match": true,
+   "purpose": "G5a 无实际启动结论不宣称成功 最终实现副本",
+   "exists": true
+  },
+  {
+   "path": "src/G5aSyncWaiterChainTest.java",
+   "source_path": "Smart-WorkFlow-Server/sw-bootstrap/src/test/java/com/sw/ck/bootstrap/p4overlap/G5aSyncWaiterChainTest.java",
+   "source_sha256": "c23db24b2fc964f3c9a9cddb005c5ace6f82c247dc98d2d23359b33d97a8fc4a",
+   "copy_sha256": "c23db24b2fc964f3c9a9cddb005c5ace6f82c247dc98d2d23359b33d97a8fc4a",
+   "hash_match": true,
+   "purpose": "对外回查+等待链集成测试 最终副本",
+   "exists": true
+  },
+  {
+   "path": "surefire/com.sw.ck.bootstrap.p4overlap.G5aSyncWaiterChainTest.txt",
+   "source_path": "Smart-WorkFlow-Server/sw-bootstrap/target/surefire-reports/com.sw.ck.bootstrap.p4overlap.G5aSyncWaiterChainTest.txt",
+   "source_sha256": "08523ad6a8d1cdb9852ee5daba67ea4d64b78932f62f78b12a15e211df213c2a",
+   "copy_sha256": "08523ad6a8d1cdb9852ee5daba67ea4d64b78932f62f78b12a15e211df213c2a",
+   "hash_match": true,
+   "purpose": "原始 surefire 报告本体（5/0/0/0）",
+   "exists": true
+  },
+  {
+   "path": "surefire/com.sw.ck.bpm.process.controller.BpmCommandControllerP0Test.txt",
+   "source_path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.controller.BpmCommandControllerP0Test.txt",
+   "source_sha256": "dbcd662673dd5032f35f0f94488192b74903c8e257ce82caa52dd197a0ee0cef",
+   "copy_sha256": "dbcd662673dd5032f35f0f94488192b74903c8e257ce82caa52dd197a0ee0cef",
+   "hash_match": true,
+   "purpose": "原始 surefire 报告本体（5/0/0/0）",
+   "exists": true
+  },
+  {
+   "path": "surefire/com.sw.ck.bpm.process.controller.BpmDraftControllerTest.txt",
+   "source_path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.controller.BpmDraftControllerTest.txt",
+   "source_sha256": "49096039cea320b5bbc2bda23a5265fd1831b6874c27c096664d56f66d606244",
+   "copy_sha256": "49096039cea320b5bbc2bda23a5265fd1831b6874c27c096664d56f66d606244",
+   "hash_match": true,
+   "purpose": "原始 surefire 报告本体（16/0/0/0）",
+   "exists": true
+  },
+  {
+   "path": "p4-p0result-per-report.txt",
+   "source_path": "/tmp/p4-p0result-per-report.txt",
+   "source_sha256": "3b25257879b3769925a2744e9004e447ed0756b94942307cb1835c9e421e8824",
+   "copy_sha256": "3b25257879b3769925a2744e9004e447ed0756b94942307cb1835c9e421e8824",
+   "hash_match": true,
+   "purpose": "全量逐报告计数（174/1128/0/0/0，工具扫描）",
+   "exists": true
+  },
+  {
+   "path": "p4-full-test-run7.log",
+   "source_path": "/tmp/p4-full-test-run7.log",
+   "source_sha256": "fba368c1996ae68ca0c9f48cac53dc346898cbc35b986afa9b611a1c6a922d7f",
+   "copy_sha256": "fba368c1996ae68ca0c9f48cac53dc346898cbc35b986afa9b611a1c6a922d7f",
+   "hash_match": true,
+   "purpose": "全量 mvn test 原始日志（MVN_EXIT=0）",
+   "exists": true
+  },
+  {
+   "path": "g5a-jar-fingerprint-and-package.txt",
+   "source_path": "(工具派生)",
+   "source_sha256": null,
+   "copy_sha256": "1006564144124757b4765bdfe6c239670b8774b55f629738b5db585f5bdaa928",
+   "hash_match": null,
+   "purpose": "jar 构建退出原件+指纹实测（PKG_EXIT=0, sha256=32ea3394…）",
+   "exists": true
+  },
+  {
+   "path": "g5a-result-query.out",
+   "source_path": "/tmp/p4-resultquery/g5a-result-query.out",
+   "source_sha256": "f22f1c8f04b6db84279d6fb5b1bef9466b0f9615de276045599db4edebf472a1",
+   "copy_sha256": "f22f1c8f04b6db84279d6fb5b1bef9466b0f9615de276045599db4edebf472a1",
+   "hash_match": true,
+   "purpose": "在线回查场景原始输出（完整非秘密请求/响应）",
+   "exists": true
+  },
+  {
+   "path": "g5a_result_query.py",
+   "source_path": "/tmp/p4-resultquery/g5a_result_query.py",
+   "source_sha256": "1a144b600ffd2a045751f8448cb86f3c3245b37fa74873dec0eacf7654b0c703",
+   "copy_sha256": "1a144b600ffd2a045751f8448cb86f3c3245b37fa74873dec0eacf7654b0c703",
+   "hash_match": true,
+   "purpose": "在线采集脚本原件",
+   "exists": true
+  },
+  {
+   "path": "fixtures.json",
+   "source_path": "/tmp/p4-resultquery/fixtures.json",
+   "source_sha256": "331e37550fe926f4787c30efdf6c0937e95fb8157a4fda93630015a99ffbe63a",
+   "copy_sha256": "331e37550fe926f4787c30efdf6c0937e95fb8157a4fda93630015a99ffbe63a",
+   "hash_match": true,
+   "purpose": "phase3 夹具快照",
+   "exists": true
+  },
+  {
+   "path": "g5a-phase3-server-extract.log",
+   "source_path": "(工具派生)",
+   "source_sha256": null,
+   "copy_sha256": "d1a905880cec6da5c3c7fe0984cb76b7b9325c36ad476d5776a279900dfae624",
+   "hash_match": null,
+   "purpose": "phase3 服务器原始片段（grep -n 自 server-8080.log 原件，行号为原件行号）",
+   "exists": true
+  },
+  {
+   "path": "server-8080.start",
+   "source_path": "/tmp/p4-resultquery/server-8080.start",
+   "source_sha256": "b5ce7b74a4ec10fca75606475ce94b91288cb777cbf87179c19a27e7de690f8f",
+   "copy_sha256": "b5ce7b74a4ec10fca75606475ce94b91288cb777cbf87179c19a27e7de690f8f",
+   "hash_match": true,
+   "purpose": "phase3 起始时点原件",
+   "exists": true
+  },
+  {
+   "path": "all-stopped.at",
+   "source_path": "/tmp/p4-resultquery/all-stopped.at",
+   "source_sha256": "2232085e21862277388492567d612cad9002b6549a29f7fa1e7e61ff8a2c8666",
+   "copy_sha256": "2232085e21862277388492567d612cad9002b6549a29f7fa1e7e61ff8a2c8666",
+   "hash_match": true,
+   "purpose": "停止时点原件（内存库随进程销毁）",
+   "exists": true
+  }
+ ]
+}

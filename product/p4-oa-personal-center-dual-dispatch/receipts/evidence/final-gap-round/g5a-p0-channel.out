@@ -1,0 +1,21 @@
+G5a P0 父子通道与有界返回时点关联（2026-09-06，在线 8080，jar=3ee63fa7…，bizP0=2096474378888507394 持 workflow:p0:dispatch）
+对象链：草稿 2096476051568553985（bizP0）→ 父命令 2096476051870543873（DRAFT_SUBMIT/P0）→ 子命令 2096476052197699585（FLOW_START/P0）→ 业务记录 fe458ad4-f908-4833-b19b-05637b573ba7 → 实例（businessKey=recordId，发起人=bizP0本人）
+[P1.draft-saved] {"draft": "2096476051568553985", "code": 0, "processDefKey": "bpm_028af8a8e15d4060"}
+[P2.p0-submit-bounded-return] {"code": 0, "http": 200, "commandId": "2096476051870543873", "channel": "P0", "status": "COMPLETED", "elapsedMs": 145}
+[P3.parent-command-API] GET /workflow/commands/2096476051870543873（发起人 bizP0）→
+  {"commandType":"DRAFT_SUBMIT","channel":"P0","status":"COMPLETED","result":"{\"status\":\"SUBMITTED\",\"recordId\":\"fe458ad4-f908-4833-b19b-05637b573ba7\"}","createTime":"2026-09-06T13:50:16.065029","finishedAt":"2026-09-06T13:50:16.145525"}
+[P4.child-command-API] GET /workflow/commands/2096476052197699585（发起人 bizP0）→
+  {"commandType":"FLOW_START","channel":"P0","status":"COMPLETED","result":"{\"status\":\"STARTED\"}","createTime":"2026-09-06T13:50:16.142787","finishedAt":"2026-09-06T13:50:16.372694"}
+[P4b.server-log-orig] server-8080.log:
+  13:50:16.065 命令已受理: commandId=2096476051870543873, type=DRAFT_SUBMIT, channel=P0, key=DRAFT_SUBMIT:2096476051568553985:1
+  13:50:16.128 命令开始处理: commandId=2096476051870543873 … channel=P0
+  13:50:16.143 命令已受理: commandId=2096476052197699585, type=FLOW_START, channel=P0, key=FLOW_START:fe458ad4-f908-4833-b19b-05637b573ba7
+  13:50:16.146 命令处理完成: commandId=2096476051870543873, 耗时 18ms
+  13:50:16.261 命令开始处理: commandId=2096476052197699585 … channel=P0
+  13:50:16.374 命令处理完成: commandId=2096476052197699585, 耗时 113ms
+[P5.instance] businessKey=fe458ad4…，initiatorId=2096474378888507394（=bizP0 本人）
+[P6.admin-approve] taskId=d5e8ed35-a9b6-11f1-a3f1-726b834c251e code=0（NORMAL 待办动作，真实审批核心）
+[P7.instance-final] {"status": "APPROVED", "initiatorId": "2096474378888507394"}
+[P8.parent-command-final] {"status": "COMPLETED", "result": "{\"status\":\"SUBMITTED\",\"recordId\":\"fe458ad4-f908-4833-b19b-05637b573ba7\"}"}
+断言成立：父子命令同通道 P0（channel 字段读回一致）；父完成（13:50:16.145）不冒充子启动（子有独立受理/完成时点 .143/.372）；P0 有界同步返回 145ms 内 COMPLETED（未超时、不诱导重复命令）；子不回 NORMAL 积压（channel=P0 且由 p0 车道消费）。
+边界：G5a 正向时序原件为本轮 P0 真实 REST 采集；NORMAL 积压下 P0 优先调度事实复用既有锁定项（L4/审查03），本轮不重跑。
