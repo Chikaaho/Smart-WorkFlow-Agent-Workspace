@@ -1,0 +1,7 @@
+[Q1.draft-saved] {"draft": "2096638747259473922", "code": 0}
+[Q2.submit-bounded] {"http": 200, "code": 0, "commandId": "2096638747456606210", "channel": "P0", "status": "ACCEPTED", "duplicated": false}
+[Q3.recall-immediately] {"http": 200, "parentStatus": "COMPLETED", "parentResult": "{\"status\":\"SUBMITTED\",\"recordId\":\"e54418d0-e614-4c1a-9003-fdf7c953c53d\"}", "flowStart": {"commandId": "2096638747741818881", "status": "PENDING", "result": null, "failureReason": null, "createTime": "2026-09-07T00:36:45.782569", "finishedAt": null}}
+[Q3b.recall-parent-done-child-processing] {"http": 200, "parentStatus": "COMPLETED", "flowStart": {"commandId": "2096638747741818881", "status": "COMPLETED", "result": "{\"status\":\"STARTED\"}", "failureReason": null, "createTime": "2026-09-07T00:36:45.782569", "finishedAt": "2026-09-07T00:36:45.921349"}, "businessSuccessClaimed": true}
+[Q4.recall-final] {"http": 200, "parentStatus": "COMPLETED", "flowStart": {"commandId": "2096638747741818881", "status": "COMPLETED", "result": "{\"status\":\"STARTED\"}", "failureReason": null, "createTime": "2026-09-07T00:36:45.782569", "finishedAt": "2026-09-07T00:36:45.921349"}}
+[Q5.child-direct-recall] {"http": 200, "commandId": "2096638747741818881", "status": "COMPLETED", "result": "{\"status\":\"STARTED\"}", "finishedAt": "2026-09-07T00:36:45.921349"}
+[Q6.instance] {"recordId": "e54418d0-e614-4c1a-9003-fdf7c953c53d", "count": 1, "status": "RUNNING", "initiatorId": "2096638601478049793"}

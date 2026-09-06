@@ -1,0 +1,7 @@
+# G8a 进程生命周期与收尾记录（2026-09-06）
+jar: sw-bootstrap-1.0.0-SNAPSHOT.jar sha256=3ee63fa70d38fd41b0fad3ffe460ccc3349f7dfb7bb5802e2a2203a133b391fe (mvn -q package exit 0, 2026-09-06T13:36:07)
+8080 在线服务(内存库): PID 73348(上轮旧jar,11:01起,本轮13:36停止) -> PID 88256(13:36:57起,缺SW_DEBUG_AUTH_ENABLED,弃) -> PID 88559(13:39:51起,本轮16:17:11停止;内存库随进程销毁)
+phase1(文件库,轮询暂停3600000ms): PID 94735, 起 2026-09-06T16:13:15+08:00, 停 2026-09-06T16:14:52+08:00
+phase2(同文件库,正常轮询): PID 94858, 起 2026-09-06T16:15:07+08:00, 停 2026-09-06T16:17:11+08:00
+文件库路径: /tmp/p4-final-round/g4a-db/g4a* — 清理后读回: No such file or directory (2026-09-06T16:17:11+08:00)
+admin processed 复核(uyProcessed=0 原因:uy为发起人非审批人): 见下

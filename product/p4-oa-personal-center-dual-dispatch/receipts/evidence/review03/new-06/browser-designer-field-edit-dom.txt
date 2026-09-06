@@ -1,0 +1,96 @@
+- complementary:
+  - generic: SW
+  - generic: Smart-WorkFlow
+  - menubar:
+    - menuitem "系统管理":
+      - generic: 系统管理
+    - menuitem "低代码":
+      - generic: 低代码
+    - menuitem "流程引擎":
+      - generic: 流程引擎
+    - menuitem "通知":
+      - generic: 通知
+    - menuitem "智能体":
+      - generic: 智能体
+    - menuitem "物联网":
+      - text: 物联网
+    - menuitem "开放接口":
+      - text: 开放接口
+    - menuitem "文件管理"
+    - menuitem "定时任务":
+      - generic: 定时任务
+- button "toggle sidebar":
+- navigation "Breadcrumb"
+- button "系统管理员":
+  - generic: 系统管理员
+- main:
+  - textbox "表单名称": P4补证05字段编辑表单
+  - generic: p4_oa_field_edit_20260906
+  - generic: 草稿
+  - radiogroup "radio-group":
+    - radio "表单设计" [checked]
+    - generic: 表单设计
+    - radio "关联流程"
+    - generic: 关联流程
+  - generic: 未修改
+  - button "预览":
+    - generic: 预览
+  - button "保存":
+    - generic: 保存
+  - button "发布":
+    - generic: 发布
+  - button "历史版本":
+    - generic: 历史版本
+  - complementary:
+    - heading "控件库" [level=2]
+    - button "单行文本":
+      - generic: 单行文本
+    - button "多行文本":
+      - generic: 多行文本
+    - button "数字":
+      - generic: 数字
+    - button "日期":
+      - generic: 日期
+    - button "开关":
+      - generic: 开关
+    - button "字典选择":
+      - generic: 字典选择
+    - button "引用":
+      - generic: 引用
+    - button "子表格":
+      - generic: 子表格
+  - generic "拖拽排序":
+  - generic: 单行文本
+  - generic: applicant
+  - button "删除字段":
+  - text: "*"
+  - generic: 申请人姓名
+  - textbox "* 申请人姓名"
+  - complementary:
+    - heading "字段配置" [level=2]
+    - generic: 单行文本
+    - generic: applicant
+    - generic: 列宽
+    - generic: 12 / 24 列
+    - button "decrease number":
+    - button "increase number":
+    - spinbutton: "12"
+    - paragraph: 调整后会按从左到右、从上到下自动紧凑排布。
+    - generic: 标签
+    - textbox "字段显示名" [active]: 申请人姓名
+    - generic: 列名
+    - textbox "英文列名": applicant
+    - generic: 必填
+    - switch [checked]
+    - generic: 最大长度
+    - button "decrease number":
+    - button "increase number":
+    - spinbutton: "50"
+    - paragraph: 以下配置待契约扩展后接入（本刀不自造键）
+    - list:
+      - listitem: 占位提示
+      - listitem: 默认值
+- alert:
+  - paragraph: 草稿已保存
+- alert:
+  - paragraph: 草稿已保存

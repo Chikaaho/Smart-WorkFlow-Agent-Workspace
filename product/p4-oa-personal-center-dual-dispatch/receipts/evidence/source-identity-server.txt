@@ -1,0 +1,58 @@
+d62c8436bd4a20deea13b2700ab4998ce0052934
+ M sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/entity/FormTraceEntity.java
+ M sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/service/FormSubmitService.java
+ M sw-biz/sw-biz-form/sw-biz-form-biz/src/test/java/com/sw/ck/form/service/FormDataDeleteServiceTest.java
+ M sw-biz/sw-biz-form/sw-biz-form-biz/src/test/java/com/sw/ck/form/service/FormDataQueryServiceTest.java
+ M sw-biz/sw-biz-form/sw-biz-form-biz/src/test/java/com/sw/ck/form/service/FormDataUpdateServiceTest.java
+ M sw-biz/sw-biz-form/sw-biz-form-biz/src/test/java/com/sw/ck/form/service/FormSubmitServiceTest.java
+ M sw-biz/sw-bpm/sw-bpm-process/pom.xml
+ M sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmTodoController.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/dto/ApprovalActionRequest.java
+ D sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/listener/FormSubmittedEventListener.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/ApprovalActionService.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/ApprovalActionServiceImpl.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/controller/BpmTodoControllerTest.java
+ M sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainH2Test.java
+ M sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainPostgresTest.java
+?? sw-biz/sw-biz-form/sw-biz-form-api/src/main/java/com/sw/ck/form/api/facade/
+?? sw-biz/sw-biz-form/sw-biz-form-api/src/main/java/com/sw/ck/form/api/port/
+?? sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/service/FormDataSubmitFacadeImpl.java
+?? sw-biz/sw-biz-form/sw-biz-form-biz/src/main/resources/db/migration/form/h2/V52__form_trace_idempotency_key.sql
+?? sw-biz/sw-biz-form/sw-biz-form-biz/src/main/resources/db/migration/form/postgresql/V52__form_trace_idempotency_key.sql
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmCommandController.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmDraftController.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmMyInstanceController.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmMyProcessedController.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/dto/CommandAcceptRespDTO.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/dto/CommandStatusRespDTO.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/dto/MyProcessedItemDTO.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/entity/BpmCommand.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/entity/BpmDraft.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/entity/CommandChannelEnum.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/entity/CommandStatusEnum.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/entity/CommandTypeEnum.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/entity/DraftStatusEnum.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/BpmCommandMapper.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/BpmDraftMapper.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/port/
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/queue/
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/BpmCommandService.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/BpmDraftService.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/CommandAcceptService.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/CommandSyncWaiter.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/DraftSubmitService.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/TaskActionService.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/BpmCommandServiceImpl.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/BpmDraftServiceImpl.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/resources/db/migration/bpm/h2/V50__p4_command_queue_and_draft.sql
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/resources/db/migration/bpm/h2/V51__p4_p0_dispatch_permission.sql
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/resources/db/migration/bpm/postgresql/V50__p4_command_queue_and_draft.sql
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/resources/db/migration/bpm/postgresql/V51__p4_p0_dispatch_permission.sql
+?? sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/controller/BpmCommandControllerP0Test.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/controller/BpmDraftControllerTest.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/controller/BpmMyInstanceControllerTest.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/controller/BpmMyProcessedControllerTest.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/queue/
+?? sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/service/CommandAcceptServiceTest.java
+?? sw-bootstrap/src/main/resources/db/migration/h2/V53__p4_personal_center_menus.sql
+?? sw-bootstrap/src/main/resources/db/migration/postgresql/V53__p4_personal_center_menus.sql

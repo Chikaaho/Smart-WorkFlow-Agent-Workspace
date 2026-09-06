@@ -1,0 +1,247 @@
+{
+ "schema": "p4-final-gap-round-manifest-v1",
+ "generated_at": "2026-09-06T16:22:21+0800",
+ "note": "本轮（提示05）变更源码/产物与 final-gap-round 证据归集清单；sha256 由 sha256sum 工具计算回读。jar 为 mvn -q package -DskipTests exit 0 产物（3ee63fa7…，源码→产物→在线运行绑定见 g8a-lifecycle-and-cleanup.txt）。",
+ "entries": [
+  {
+   "path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/entity/BpmCommand.java",
+   "kind": "source",
+   "sha256": "29c942cf59b7cab212bbdf033d67b5da9db108c6f48205433a7e8fa6d4906e27",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/entity/ApprovalActionRecord.java",
+   "kind": "source",
+   "sha256": "9d3baf7878c38ce76326aba1fafae1f311307c0614094055d40dbe1a25352ad4",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/queue/CommandEnvelope.java",
+   "kind": "source",
+   "sha256": "98a36d71a47088a04a51e305ad741beff54b255ce399632407e51889d8dd15c3",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/queue/BpmCommandQueue.java",
+   "kind": "source",
+   "sha256": "59fa45ebc0eba4a9b598d0774db39e733f2aa5217b9f265e8215623b26eae898",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/queue/PersistentBpmCommandQueue.java",
+   "kind": "source",
+   "sha256": "881fd574ef7a14df8d011d2a157bdbd4d29ed3bdd61545c29828d3dbbec49ca7",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/queue/CommandDispatcher.java",
+   "kind": "source",
+   "sha256": "9d9791d39af239fc35838d2ae1efdfce841010d0a596d625aae24fddffac7e4a",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/queue/TaskActionCommandHandler.java",
+   "kind": "source",
+   "sha256": "dda4dfcd251b91638812702b04492e0bc4298a530d29212ab9052e4ac3237b0e",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/TaskActionService.java",
+   "kind": "source",
+   "sha256": "09cbb19de25507ddb12fab4697ac78f886d74e4fb4220a66f4a48af09c98c68d",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmMyInstanceController.java",
+   "kind": "source",
+   "sha256": "c05d4f1d23df9e89810f0ba49cb4344186b7baecfc29e279c27c2aa28a765d5f",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/facade/BpmTaskFacadeImpl.java",
+   "kind": "source",
+   "sha256": "7520f5eba571a2bc665a5befde6435f781fe83cb02214813c863f6c587c3f954",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/main/resources/db/migration/bpm/h2/V55__p4_command_claim_token_and_action_command_linkage.sql",
+   "kind": "source",
+   "sha256": "fca37723e453acc73f03de610b7d5e54b2ebc731a7aec9d807ff6c0d04c88eb6",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/main/resources/db/migration/bpm/postgresql/V55__p4_command_claim_token_and_action_command_linkage.sql",
+   "kind": "source",
+   "sha256": "38db91a562d5e45ec6b4d9807a5a2e9b9850373fa712168443da5d1c5c4aa241",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/queue/CommandQueueTest.java",
+   "kind": "source",
+   "sha256": "7f783b33ee9f4bc0fba77b190cdc69318e0d81f555a90ce2f7dc71b19128e36d",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/queue/CommandQueueIntegrationTest.java",
+   "kind": "source",
+   "sha256": "157668862a10c38e83111f79e1239fd5dd9662295a8a09e3ebca18c791625c6d",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/queue/CommandDispatcherTest.java",
+   "kind": "source",
+   "sha256": "467a5bc8dd87f91672118723bc48ba8465f2cff28f426b5591cc155b1fa5ac4d",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/queue/CommandDispatcherP0PriorityTest.java",
+   "kind": "source",
+   "sha256": "2cda90f09ccb8dc3240a53dff3701df12f08724cbd1bd17277a146a7b9ddcc5c",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/queue/CommandLeaseHandoverOverlapTest.java",
+   "kind": "source",
+   "sha256": "dd8a6e8f8944fb5b0ba263fad2d653b34555b7524ba79445836a915560d3ab22",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/queue/BpmCommandQueueContractTest.java",
+   "kind": "source",
+   "sha256": "8141294d1c521181efc8c0e31c7d5a026fa5fce2884843b0e511cd43fbb69b93",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/queue/support/InMemoryCommandQueue.java",
+   "kind": "source",
+   "sha256": "4be9b56eea61fea86b7881344157683dbf1412381ad0fb4c4149d0b3b937c552",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/controller/BpmMyInstanceControllerTest.java",
+   "kind": "source",
+   "sha256": "741c218cfebeb8552301fcbe1a744f989f93d616b453c2449ff168074cedc259",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-bootstrap/src/test/java/com/sw/ck/bootstrap/p4overlap/CommandOverlapRealEngineTest.java",
+   "kind": "source",
+   "sha256": "03dd9ecbab2279b005e22e8567ab978be8a53491635fecb7f8758fe9ffff59d0",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-bootstrap/src/test/java/com/sw/ck/bootstrap/p4overlap/MyProcessedRealSourceTest.java",
+   "kind": "source",
+   "sha256": "da9363970bc0dde8b054c0bf7318c4ae0acf9a688637f6bc6026e7a9da13bc0f",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-bootstrap/src/test/java/com/sw/ck/bootstrap/p4overlap/CrossTenantReadIsolationTest.java",
+   "kind": "source",
+   "sha256": "5360adcc4d8fd49791a28ef12ebf4cef1bd4f337c8fa787e297b374ee77579b5",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainH2Test.java",
+   "kind": "source",
+   "sha256": "5d84346dd589c12f28aa83e82700538bf98dab430cb45ff4e342bc7624253a22",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainPostgresTest.java",
+   "kind": "source",
+   "sha256": "cf7504ca352667ca2da4fc3ea3b29ef16e059ae8ff51f5d1fcede9099b3ff0d5",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar",
+   "kind": "jar-artifact",
+   "sha256": "3ee63fa70d38fd41b0fad3ffe460ccc3349f7dfb7bb5802e2a2203a133b391fe",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Web/src/modules/workflow/views/MyInstances.vue",
+   "kind": "source",
+   "sha256": "d57c86443313bec1c2f4ff793a34d0694882df72b7ea1e46a9ec2efd96b7d0d9",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Web/src/modules/workflow/views/MyDrafts.vue",
+   "kind": "source",
+   "sha256": "c8236b869dfca6bab0dd97a4f04062227b17276282fc841e7470eb0b31c3152e",
+   "exists": true
+  },
+  {
+   "path": "Smart-WorkFlow-Web/src/modules/workflow/views/MyDrafts.spec.ts",
+   "kind": "source",
+   "sha256": "4ebbddc001933a85d96aad28d9006ea9f771cfc045dd7be57174ef67b2d31c14",
+   "exists": true
+  },
+  {
+   "path": "product/p4-oa-personal-center-dual-dispatch/receipts/evidence/final-gap-round/COLLECTION-MANIFEST-final-gap-round.json",
+   "kind": "evidence",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "exists": true
+  },
+  {
+   "path": "product/p4-oa-personal-center-dual-dispatch/receipts/evidence/final-gap-round/browser-g1a-detail-dom.txt",
+   "kind": "evidence",
+   "sha256": "33521e134f915aad86f184827c81346ed80aa4fc03d520d158254a75f2a2936b",
+   "exists": true
+  },
+  {
+   "path": "product/p4-oa-personal-center-dual-dispatch/receipts/evidence/final-gap-round/browser-g1a-detail-fixed-1680.png",
+   "kind": "evidence",
+   "sha256": "a2e9a511b470418b00b6ec7c9329072fa8a2330170e8e7077f624bcc4c7a5aa8",
+   "exists": true
+  },
+  {
+   "path": "product/p4-oa-personal-center-dual-dispatch/receipts/evidence/final-gap-round/browser-g1a-detail-fixed.png",
+   "kind": "evidence",
+   "sha256": "ee6dbb8a8e28ad94fda27b74e5c1cfe54aeaa79c59d76474c9ff064f032b24ee",
+   "exists": true
+  },
+  {
+   "path": "product/p4-oa-personal-center-dual-dispatch/receipts/evidence/final-gap-round/g4a-g6b-phase1-server.log",
+   "kind": "evidence",
+   "sha256": "c4321760cadf694aac7633067871331bddbb076d2ce41cd4e1bd98c75e7c4190",
+   "exists": true
+  },
+  {
+   "path": "product/p4-oa-personal-center-dual-dispatch/receipts/evidence/final-gap-round/g4a-g6b-phase1.out",
+   "kind": "evidence",
+   "sha256": "bb25a65e7b0bf6ff4f721c0738269fc96a52ad69a82e00460f5ac8ebc51e3c99",
+   "exists": true
+  },
+  {
+   "path": "product/p4-oa-personal-center-dual-dispatch/receipts/evidence/final-gap-round/g4a-g6b-phase2-server.log",
+   "kind": "evidence",
+   "sha256": "dc5d633f99b4438ae4d824ede25618f082f1b339c07f3e8a224e5ce5f5617d97",
+   "exists": true
+  },
+  {
+   "path": "product/p4-oa-personal-center-dual-dispatch/receipts/evidence/final-gap-round/g4a-g6b-phase2.out",
+   "kind": "evidence",
+   "sha256": "266c401c46884b4481dcda8f0c3457e3e044885b837a56c29357edec6e1cb0ef",
+   "exists": true
+  },
+  {
+   "path": "product/p4-oa-personal-center-dual-dispatch/receipts/evidence/final-gap-round/g5a-p0-channel-raw.out",
+   "kind": "evidence",
+   "sha256": "8f05764da02c023ea08e21cd95f7c7984928ce598a1e9f3de83f3906ccdb3eb4",
+   "exists": true
+  },
+  {
+   "path": "product/p4-oa-personal-center-dual-dispatch/receipts/evidence/final-gap-round/g8a-lifecycle-and-cleanup.txt",
+   "kind": "evidence",
+   "sha256": "7a2668a139e13d52ecd6464211f6abec07a9349878fec357afb4dd7f8da0a49c",
+   "exists": true
+  },
+  {
+   "path": "product/p4-oa-personal-center-dual-dispatch/receipts/evidence/final-gap-round/g8b-surefire-per-report.txt",
+   "kind": "evidence",
+   "sha256": "8ad65251b110b8fe6f6eb81c1437935dffd7c416e66b7384f853601bb55da408",
+   "exists": true
+  }
+ ]
+}

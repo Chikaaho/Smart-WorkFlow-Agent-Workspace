@@ -1,0 +1,190 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-09-05T16:22:19.541+08:00  INFO 4529 --- [           main] com.sw.ck.bootstrap.StarterApplication   : Starting StarterApplication using Java 21.0.11 with PID 4529 (/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar started by chikan in /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server)
+2026-09-05T16:22:19.542+08:00 DEBUG 4529 --- [           main] com.sw.ck.bootstrap.StarterApplication   : Running with Spring Boot v3.4.4, Spring v6.2.5
+2026-09-05T16:22:19.542+08:00  INFO 4529 --- [           main] com.sw.ck.bootstrap.StarterApplication   : The following 1 profile is active: "dev"
+2026-09-05T16:22:21.418+08:00  INFO 4529 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-09-05T16:22:21.421+08:00  INFO 4529 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-09-05T16:22:21.437+08:00  INFO 4529 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2026-09-05T16:22:21.534+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphDebugNodeMapper' and 'com.sw.ck.agent.mapper.AgentGraphDebugNodeMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:22:21.534+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphDebugSessionMapper' and 'com.sw.ck.agent.mapper.AgentGraphDebugSessionMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:22:21.534+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphDefMapper' and 'com.sw.ck.agent.mapper.AgentGraphDefMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:22:21.534+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphExecutionMapper' and 'com.sw.ck.agent.mapper.AgentGraphExecutionMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:22:21.534+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphExecutionNodeMapper' and 'com.sw.ck.agent.mapper.AgentGraphExecutionNodeMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:22:21.534+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentMessageMapper' and 'com.sw.ck.agent.mapper.AgentMessageMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:22:21.534+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentModelConfigMapper' and 'com.sw.ck.agent.mapper.AgentModelConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:22:21.534+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentSessionMapper' and 'com.sw.ck.agent.mapper.AgentSessionMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:22:21.534+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentToolCallLogMapper' and 'com.sw.ck.agent.mapper.AgentToolCallLogMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:22:21.535+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentToolExternalConfigMapper' and 'com.sw.ck.agent.mapper.tool.AgentToolExternalConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:22:21.535+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentToolInternalConfigMapper' and 'com.sw.ck.agent.mapper.tool.AgentToolInternalConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:22:21.535+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.agent.mapper]' package. Please check your configuration.
+2026-09-05T16:22:21.537+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formConfigMapper' and 'com.sw.ck.form.mapper.FormConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:22:21.537+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formDefMapper' and 'com.sw.ck.form.mapper.FormDefMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:22:21.537+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formSnapshotMapper' and 'com.sw.ck.form.mapper.FormSnapshotMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:22:21.537+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formTraceMapper' and 'com.sw.ck.form.mapper.FormTraceMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:22:21.537+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.form.mapper]' package. Please check your configuration.
+2026-09-05T16:22:21.538+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'jobInfoMapper' and 'com.sw.ck.job.mapper.JobInfoMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:22:21.538+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'jobLogMapper' and 'com.sw.ck.job.mapper.JobLogMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:22:21.538+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.job.mapper]' package. Please check your configuration.
+2026-09-05T16:22:21.540+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifyMessageMapper' and 'com.sw.ck.notify.mapper.NotifyMessageMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:22:21.540+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifyTemplateMapper' and 'com.sw.ck.notify.mapper.NotifyTemplateMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:22:21.540+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.notify.mapper]' package. Please check your configuration.
+2026-09-05T16:22:21.543+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'storageFileMapper' and 'com.sw.ck.storage.mapper.StorageFileMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:22:21.543+08:00  WARN 4529 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.storage.mapper]' package. Please check your configuration.
+2026-09-05T16:22:21.546+08:00  INFO 4529 --- [           main] faultConfiguringBeanFactoryPostProcessor : No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2026-09-05T16:22:21.553+08:00  INFO 4529 --- [           main] faultConfiguringBeanFactoryPostProcessor : No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2026-09-05T16:22:22.011+08:00  WARN 4529 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration' of type [org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-09-05T16:22:22.013+08:00  WARN 4529 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'stringOrNumberMigrationVersionConverter' of type [org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration$StringOrNumberToMigrationVersionConverter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-09-05T16:22:22.401+08:00  INFO 4529 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-09-05T16:22:22.420+08:00  INFO 4529 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-05T16:22:22.420+08:00  INFO 4529 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2026-09-05T16:22:22.455+08:00  INFO 4529 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2026-09-05T16:22:22.456+08:00  INFO 4529 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2884 ms
+2026-09-05T16:22:22.958+08:00 DEBUG 4529 --- [           main] c.s.c.s.filter.JwtAuthenticationFilter   : Filter 'jwtAuthenticationFilter' configured for use
+2026-09-05T16:22:22.960+08:00 DEBUG 4529 --- [           main] c.s.c.s.f.DebugAuthenticationFilter      : Filter 'debugAuthenticationFilter' configured for use
+2026-09-05T16:22:22.960+08:00 DEBUG 4529 --- [           main] c.s.c.s.filter.AccessLoggingFilter       : Filter 'accessLoggingFilter' configured for use
+2026-09-05T16:22:23.401+08:00 ERROR 4529 --- [           main] com.alibaba.druid.pool.DruidDataSource   : testWhileIdle is true, validationQuery not set
+2026-09-05T16:22:23.767+08:00  INFO 4529 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1,master} inited
+2026-09-05T16:22:23.768+08:00  INFO 4529 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource - add a datasource named [master] success
+2026-09-05T16:22:23.770+08:00  INFO 4529 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+Logging initialized using 'class org.apache.ibatis.logging.stdout.StdOutImpl' adapter.
+2026-09-05T16:22:23.871+08:00 DEBUG 4529 --- [           main] c.b.m.e.s.MybatisSqlSessionFactoryBean   : Registered plugin: 'MybatisPlusInterceptor{interceptors=[TenantLineInnerInterceptor(super=BaseMultiTableInnerInterceptor(super=com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor@8e73e869), tenantLineHandler=com.sw.ck.common.config.mybatis.tenant.CommonTenantLineHandler@6eb6750f), DataPermissionInterceptor(super=BaseMultiTableInnerInterceptor(super=com.baomidou.mybatisplus.extension.plugins.inner.DataPermissionInterceptor@6e738566), dataPermissionHandler=com.sw.ck.common.config.mybatis.datascope.DataScopeHandler@55b7f0d), com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor@e0faed6, PaginationInnerInterceptor(logger=org.apache.ibatis.logging.slf4j.Slf4jImpl@53ccbc15, overflow=false, maxLimit=null, dbType=null, dialect=null, optimizeJoin=true)]}'
+2026-09-05T16:22:23.872+08:00 DEBUG 4529 --- [           main] c.b.m.e.s.MybatisSqlSessionFactoryBean   : Property 'mapperLocations' was not specified.
+Get /192.168.1.105 network interface 
+Get network interface info: name:en0 (en0)
+Initialization Sequence datacenterId:13 workerId:10
+2026-09-05T16:22:23.971+08:00 DEBUG 4529 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-09-05T16:22:24.147+08:00  INFO 4529 --- [           main] c.s.c.b.config.FlywayConfiguration       : Executing primary Flyway migration (locations = db/migration/{vendor})
+2026-09-05T16:22:24.227+08:00  INFO 4529 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:smart_workflow (H2 2.3)
+2026-09-05T16:22:24.292+08:00  WARN 4529 --- [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bpmVerificationRunner' defined in URL [jar:nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/classes/!/com/sw/ck/bootstrap/verify/BpmVerificationRunner.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'externalDatasourceServiceImpl': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'externalDatasourceMapper' defined in URL [jar:nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-bpm-engine-1.0.0-SNAPSHOT.jar!/com/sw/ck/bpm/engine/mapper/ExternalDatasourceMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionTemplate': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Found more than one migration with version 8
+Offenders:
+-> /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-biz-form-biz-1.0.0-SNAPSHOT.jar!/db/migration/form/h2/V8__p4_form_visibility_scope.sql (SQL)
+-> /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-bpm-process-1.0.0-SNAPSHOT.jar!/db/migration/bpm/h2/V8__init_bpm_metadata.sql (SQL)
+2026-09-05T16:22:24.292+08:00  INFO 4529 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource start closing ....
+2026-09-05T16:22:24.295+08:00  INFO 4529 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2026-09-05T16:22:24.298+08:00  INFO 4529 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2026-09-05T16:22:24.298+08:00  INFO 4529 --- [           main] c.b.d.d.d.DefaultDataSourceDestroyer     : dynamic-datasource close the datasource named [master] success,
+2026-09-05T16:22:24.298+08:00  INFO 4529 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource all closed success,bye
+2026-09-05T16:22:24.306+08:00  INFO 4529 --- [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-09-05T16:22:24.350+08:00  INFO 4529 --- [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-09-05T16:22:24.370+08:00 ERROR 4529 --- [           main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bpmVerificationRunner' defined in URL [jar:nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/classes/!/com/sw/ck/bootstrap/verify/BpmVerificationRunner.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'externalDatasourceServiceImpl': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'externalDatasourceMapper' defined in URL [jar:nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-bpm-engine-1.0.0-SNAPSHOT.jar!/com/sw/ck/bpm/engine/mapper/ExternalDatasourceMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionTemplate': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Found more than one migration with version 8
+Offenders:
+-> /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-biz-form-biz-1.0.0-SNAPSHOT.jar!/db/migration/form/h2/V8__p4_form_visibility_scope.sql (SQL)
+-> /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-bpm-process-1.0.0-SNAPSHOT.jar!/db/migration/bpm/h2/V8__init_bpm_metadata.sql (SQL)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1381) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1218) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1155) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1121) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1056) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.5.jar!/:6.2.5]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.5.jar!/:6.2.5]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.4.jar!/:3.4.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.4.jar!/:3.4.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.4.jar!/:3.4.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.4.jar!/:3.4.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.4.jar!/:3.4.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.4.jar!/:3.4.4]
+	at com.sw.ck.bootstrap.StarterApplication.main(StarterApplication.java:19) ~[!/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:102) ~[sw-bootstrap-1.0.0-SNAPSHOT.jar:na]
+	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:64) ~[sw-bootstrap-1.0.0-SNAPSHOT.jar:na]
+	at org.springframework.boot.loader.launch.JarLauncher.main(JarLauncher.java:40) ~[sw-bootstrap-1.0.0-SNAPSHOT.jar:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'externalDatasourceServiceImpl': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'externalDatasourceMapper' defined in URL [jar:nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-bpm-engine-1.0.0-SNAPSHOT.jar!/com/sw/ck/bpm/engine/mapper/ExternalDatasourceMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionTemplate': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Found more than one migration with version 8
+Offenders:
+-> /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-biz-form-biz-1.0.0-SNAPSHOT.jar!/db/migration/form/h2/V8__p4_form_visibility_scope.sql (SQL)
+-> /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-bpm-process-1.0.0-SNAPSHOT.jar!/db/migration/bpm/h2/V8__init_bpm_metadata.sql (SQL)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:788) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1445) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1667) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1555) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	... 26 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'externalDatasourceMapper' defined in URL [jar:nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-bpm-engine-1.0.0-SNAPSHOT.jar!/com/sw/ck/bpm/engine/mapper/ExternalDatasourceMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionTemplate': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Found more than one migration with version 8
+Offenders:
+-> /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-biz-form-biz-1.0.0-SNAPSHOT.jar!/db/migration/form/h2/V8__p4_form_visibility_scope.sql (SQL)
+-> /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-bpm-process-1.0.0-SNAPSHOT.jar!/db/migration/bpm/h2/V8__init_bpm_metadata.sql (SQL)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1542) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1436) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1667) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1555) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	... 41 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Found more than one migration with version 8
+Offenders:
+-> /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-biz-form-biz-1.0.0-SNAPSHOT.jar!/db/migration/form/h2/V8__p4_form_visibility_scope.sql (SQL)
+-> /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-bpm-process-1.0.0-SNAPSHOT.jar!/db/migration/bpm/h2/V8__init_bpm_metadata.sql (SQL)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1812) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1667) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1555) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1527) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	... 52 common frames omitted
+Caused by: org.flywaydb.core.api.FlywayException: Found more than one migration with version 8
+Offenders:
+-> /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-biz-form-biz-1.0.0-SNAPSHOT.jar!/db/migration/form/h2/V8__p4_form_visibility_scope.sql (SQL)
+-> /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-bpm-process-1.0.0-SNAPSHOT.jar!/db/migration/bpm/h2/V8__init_bpm_metadata.sql (SQL)
+	at org.flywaydb.core.internal.resolver.CompositeMigrationResolver.checkForIncompatibilities(CompositeMigrationResolver.java:92) ~[flyway-core-11.3.4.jar!/:na]
+	at org.flywaydb.core.internal.resolver.CompositeMigrationResolver.doFindAvailableMigrations(CompositeMigrationResolver.java:125) ~[flyway-core-11.3.4.jar!/:na]
+	at org.flywaydb.core.internal.resolver.CompositeMigrationResolver.resolveMigrations(CompositeMigrationResolver.java:112) ~[flyway-core-11.3.4.jar!/:na]
+	at org.flywaydb.core.internal.resolver.CompositeMigrationResolver.resolveMigrations(CompositeMigrationResolver.java:118) ~[flyway-core-11.3.4.jar!/:na]
+	at org.flywaydb.core.internal.info.MigrationInfoServiceImpl.refresh(MigrationInfoServiceImpl.java:86) ~[flyway-core-11.3.4.jar!/:na]
+	at org.flywaydb.core.internal.command.DbValidate.lambda$validate$0(DbValidate.java:112) ~[flyway-core-11.3.4.jar!/:na]
+	at org.flywaydb.core.internal.jdbc.TransactionalExecutionTemplate.execute(TransactionalExecutionTemplate.java:59) ~[flyway-core-11.3.4.jar!/:na]
+	at org.flywaydb.core.internal.command.DbValidate.validate(DbValidate.java:105) ~[flyway-core-11.3.4.jar!/:na]
+	at org.flywaydb.core.Flyway.doValidate(Flyway.java:522) ~[flyway-core-11.3.4.jar!/:na]
+	at org.flywaydb.core.Flyway.lambda$migrate$1(Flyway.java:197) ~[flyway-core-11.3.4.jar!/:na]
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:210) ~[flyway-core-11.3.4.jar!/:na]
+	at org.flywaydb.core.Flyway.migrate(Flyway.java:186) ~[flyway-core-11.3.4.jar!/:na]
+	at com.sw.ck.bootstrap.config.FlywayConfiguration.lambda$flywayMigrationStrategy$0(FlywayConfiguration.java:39) ~[!/:na]
+	at org.springframework.boot.autoconfigure.flyway.FlywayMigrationInitializer.afterPropertiesSet(FlywayMigrationInitializer.java:62) ~[spring-boot-autoconfigure-3.4.4.jar!/:3.4.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1859) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1808) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	... 64 common frames omitted
+
