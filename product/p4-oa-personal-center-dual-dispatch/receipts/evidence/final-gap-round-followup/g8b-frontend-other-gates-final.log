@@ -1,0 +1,18 @@
+# 前端其余三门禁最终内容重跑（2026-09-06，提示06 G8b）
+$ pnpm eslint src/modules/workflow/views/MyDrafts.vue src/modules/workflow/views/MyInstances.vue --max-warnings=0
+ESLINT_EXIT=0
+
+$ pnpm typecheck
+$ vue-tsc -b --noEmit
+TSC_EXIT=0
+
+$ pnpm build
+ [38;5;246m5780 │[0m [38;5;249mc[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249ms[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249md[0m[38;5;249me[0m[38;5;249mf[0m[38;5;249ma[0m[38;5;249mu[0m[38;5;249ml[0m[38;5;249mt[0m[38;5;249mS[0m[38;5;249mt[0m[38;5;249ma[0m[38;5;249mt[0m[38;5;249me[0m[38;5;249m [0m[38;5;249m=[0m[38;5;249m [0m[38;5;249m([0m/* #__PURE__ */[38;5;249m [0m[38;5;249m{[0m
+ [38;5;240m     │[0m                       ───────┬───────  
+ [38;5;240m     │[0m                              ╰───────── comment ignored due to position
+ [38;5;240m     │[0m 
+ [38;5;240m     │[0m [38;5;115mHelp[0m: For more information on how to use pure annotations correctly, check the documentation: https://rolldown.rs/in-depth/dead-code-elimination#pure
+[38;5;246m──────╯[0m
+
+✓ built in 1.00s
+BUILD_EXIT=0

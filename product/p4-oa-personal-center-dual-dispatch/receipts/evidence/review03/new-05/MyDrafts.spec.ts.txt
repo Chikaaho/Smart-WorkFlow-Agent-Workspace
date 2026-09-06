@@ -1,0 +1,251 @@
+import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { mount } from '@vue/test-utils'
+import { nextTick } from 'vue'
+
+const pushSpy = vi.fn()
+vi.mock('vue-router', () => ({
+  useRouter: () => ({ push: pushSpy }),
+}))
+
+vi.mock('@/modules/workflow/api', () => ({
+  myDrafts: vi.fn(),
+  createDraft: vi.fn(),
+  updateDraft: vi.fn(),
+  deleteDraft: vi.fn(),
+  submitDraft: vi.fn(),
+  pollCommandStatus: vi.fn(),
+  publishedFormDefs: vi.fn(),
+}))
+
+vi.mock('element-plus', async (importOriginal) => {
+  const actual = await importOriginal()
+  return {
+    ...(actual as object),
+    ElMessage: {
+      success: vi.fn(),
+      error: vi.fn(),
+      warning: vi.fn(),
+    },
+    ElMessageBox: {
+      confirm: vi.fn(),
+    },
+  }
+})
+
+import {
+  myDrafts,
+  deleteDraft,
+  submitDraft,
+  pollCommandStatus,
+  publishedFormDefs,
+} from '@/modules/workflow/api'
+import { ElMessage, ElMessageBox } from 'element-plus'
+import { ApiError } from '@/foundation/request'
+import type { BpmDraft, CommandAcceptResp, WorkflowCommandStatus } from '@/contracts/bpm'
+import MyDrafts from './MyDrafts.vue'
+
+const stubs = {
+  StandardListTemplate: {
+    template:
+      '<div><slot name="filter"/><slot name="filter-actions"/><slot/><slot name="toolbar-actions"/><slot name="empty-action"/></div>',
+    props: ['title', 'total', 'pageNum', 'pageSize', 'empty'],
+  },
+  'el-dialog': {
+    template: '<div v-if="modelValue"><slot/><slot name="footer"/></div>',
+    props: ['modelValue'],
+  },
+  'el-form': { template: '<div><slot/></div>' },
+  'el-form-item': { template: '<div><slot/></div>', props: ['label'] },
+  'el-alert': { template: '<div class="el-alert">{{ title }}</div>', props: ['title', 'type'] },
+  'el-table': { template: '<div><slot/></div>', props: ['data'] },
+  'el-table-column': { template: '<div/>' },
+  'el-button': {
+    template: '<button @click="$emit(\'click\')"><slot/></button>',
+    emits: ['click'],
+    props: ['loading', 'disabled'],
+  },
+  'el-select': { template: '<div/>', props: ['modelValue'] },
+  'el-input': { template: '<div/>', props: ['modelValue'] },
+  'el-tag': { template: '<span/>', props: ['type', 'size'] },
+}
+
+const mockDraft: BpmDraft = {
+  id: 1,
+  title: '张三的请假申请',
+  formKey: 'leave-request',
+  formVersion: '3',
+  processDefKey: 'leave_approval',
+  payload: '{"applicant":"张三"}',
+  status: 'EDITING',
+  commandId: null,
+  submitSeq: 0,
+  resultRecordId: null,
+  lastError: null,
+  createTime: '2026-08-01T09:00:00',
+  updateTime: '2026-08-01T09:00:00',
+}
+
+const mockPage = { list: [mockDraft], total: 1, pageNum: 1, pageSize: 10 }
+
+const acceptResp: CommandAcceptResp = {
+  commandId: 'cmd-9',
+  commandKey: 'k9',
+  commandType: 'DRAFT_SUBMIT',
+  channel: 'ASYNC',
+  status: 'ACCEPTED',
+  duplicated: false,
+}
+
+const completedStatus: WorkflowCommandStatus = {
+  commandId: 'cmd-9',
+  commandType: 'DRAFT_SUBMIT',
+  channel: 'ASYNC',
+  status: 'COMPLETED',
+  result: { recordId: 'mock-record-1' },
+  failureReason: null,
+  retryCount: 0,
+  createTime: '2026-08-01T10:00:00',
+  finishedAt: '2026-08-01T10:00:01',
+}
+
+describe('MyDrafts.vue', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+    vi.mocked(publishedFormDefs).mockResolvedValue([
+      { formKey: 'leave-request', name: '请假申请单', formVersion: 2 },
+    ])
+  })
+
+  it('mounts and calls myDrafts with pagination', async () => {
+    vi.mocked(myDrafts).mockResolvedValueOnce(mockPage)
+    mount(MyDrafts, { global: { stubs } })
+    await nextTick()
+    expect(myDrafts).toHaveBeenCalledWith({ pageNum: 1, pageSize: 10 })
+  })
+
+  it('loads form candidates from publishedFormDefs', async () => {
+    vi.mocked(myDrafts).mockResolvedValueOnce(mockPage)
+    mount(MyDrafts, { global: { stubs } })
+    await nextTick()
+    await nextTick()
+    expect(publishedFormDefs).toHaveBeenCalled()
+  })
+
+  it('shows ApiError message when list fails', async () => {
+    vi.mocked(myDrafts).mockRejectedValueOnce(new ApiError(2001, '加载失败'))
+    const wrapper = mount(MyDrafts, { global: { stubs } })
+    await nextTick()
+    await nextTick()
+    expect(wrapper.vm).toHaveProperty('errorMsg', '加载失败')
+  })
+
+  it('发起：从已发布表单列表进入该表单真实填报页（不选择流程）', async () => {
+    vi.mocked(myDrafts).mockResolvedValueOnce(mockPage)
+    const wrapper = mount(MyDrafts, { global: { stubs } })
+    await nextTick()
+    await nextTick()
+
+    // 发起列表来自 GET /form/def/published，且不再有"新建草稿"弹窗
+    const vm = wrapper.vm as unknown as { initiateForms: { formKey: string; name: string }[] }
+    expect(vm.initiateForms).toEqual([{ formKey: 'leave-request', name: '请假申请单' }])
+
+    ;(wrapper.vm as unknown as { startFromForm: (formKey: string) => void }).startFromForm(
+      'leave-request',
+    )
+    expect(pushSpy).toHaveBeenCalledWith('/form/form-render/leave-request?mode=draft')
+  })
+
+  it('navigates to form-render with draftId on edit', async () => {
+    vi.mocked(myDrafts).mockResolvedValueOnce(mockPage)
+    const wrapper = mount(MyDrafts, { global: { stubs } })
+    await nextTick()
+    ;(wrapper.vm as unknown as { openEdit: (r: BpmDraft) => void }).openEdit(mockDraft)
+
+    expect(pushSpy).toHaveBeenCalledWith('/form/form-render/leave-request?mode=draft&draftId=1')
+  })
+
+  it('deletes a draft after confirm and reloads', async () => {
+    vi.mocked(myDrafts).mockResolvedValue(mockPage)
+    vi.mocked(deleteDraft).mockResolvedValueOnce(undefined)
+    vi.mocked(ElMessageBox.confirm).mockResolvedValueOnce('confirm' as never)
+    const wrapper = mount(MyDrafts, { global: { stubs } })
+    await nextTick()
+
+    await (wrapper.vm as unknown as { handleDelete: (r: BpmDraft) => Promise<void> }).handleDelete(
+      mockDraft,
+    )
+    await nextTick()
+
+    expect(deleteDraft).toHaveBeenCalledWith(1)
+    expect(ElMessage.success).toHaveBeenCalledWith('草稿已删除')
+  })
+
+  it('does not delete when user cancels confirm', async () => {
+    vi.mocked(myDrafts).mockResolvedValueOnce(mockPage)
+    vi.mocked(ElMessageBox.confirm).mockRejectedValueOnce(new Error('cancel'))
+    const wrapper = mount(MyDrafts, { global: { stubs } })
+    await nextTick()
+
+    await (wrapper.vm as unknown as { handleDelete: (r: BpmDraft) => Promise<void> }).handleDelete(
+      mockDraft,
+    )
+
+    expect(deleteDraft).not.toHaveBeenCalled()
+  })
+
+  it('submits draft via accept + poll to COMPLETED and reloads', async () => {
+    vi.mocked(myDrafts).mockResolvedValue(mockPage)
+    vi.mocked(submitDraft).mockResolvedValueOnce(acceptResp)
+    vi.mocked(pollCommandStatus).mockResolvedValueOnce(completedStatus)
+    vi.mocked(ElMessageBox.confirm).mockResolvedValueOnce('confirm' as never)
+    const wrapper = mount(MyDrafts, { global: { stubs } })
+    await nextTick()
+
+    await (wrapper.vm as unknown as { handleSubmit: (r: BpmDraft) => Promise<void> }).handleSubmit(
+      mockDraft,
+    )
+    await nextTick()
+
+    expect(submitDraft).toHaveBeenCalledWith(1)
+    expect(pollCommandStatus).toHaveBeenCalledWith('cmd-9')
+    expect(ElMessage.success).toHaveBeenCalledWith('提交成功')
+  })
+
+  it('shows failureReason and reloads when submit command ends FAILED', async () => {
+    vi.mocked(myDrafts).mockResolvedValue(mockPage)
+    vi.mocked(submitDraft).mockResolvedValueOnce(acceptResp)
+    vi.mocked(pollCommandStatus).mockResolvedValueOnce({
+      ...completedStatus,
+      status: 'FAILED',
+      failureReason: '流程未发布',
+    })
+    vi.mocked(ElMessageBox.confirm).mockResolvedValueOnce('confirm' as never)
+    const wrapper = mount(MyDrafts, { global: { stubs } })
+    await nextTick()
+
+    await (wrapper.vm as unknown as { handleSubmit: (r: BpmDraft) => Promise<void> }).handleSubmit(
+      mockDraft,
+    )
+    await nextTick()
+
+    expect(ElMessage.error).toHaveBeenCalledWith('流程未发布')
+    expect(ElMessage.success).not.toHaveBeenCalled()
+  })
+
+  it('warns honestly without fake success when polling times out', async () => {
+    vi.mocked(myDrafts).mockResolvedValue(mockPage)
+    vi.mocked(submitDraft).mockResolvedValueOnce(acceptResp)
+    vi.mocked(pollCommandStatus).mockResolvedValueOnce(null)
+    vi.mocked(ElMessageBox.confirm).mockResolvedValueOnce('confirm' as never)
+    const wrapper = mount(MyDrafts, { global: { stubs } })
+    await nextTick()
+
+    await (wrapper.vm as unknown as { handleSubmit: (r: BpmDraft) => Promise<void> }).handleSubmit(
+      mockDraft,
+    )
+    await nextTick()
+
+    expect(ElMessage.warning).toHaveBeenCalledWith('处理中，可稍后在结果中查看')
+    expect(ElMessage.success).not.toHaveBeenCalled()
+  })
+})

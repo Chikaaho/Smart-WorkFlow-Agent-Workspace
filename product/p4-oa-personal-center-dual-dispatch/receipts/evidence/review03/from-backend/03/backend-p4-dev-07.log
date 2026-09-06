@@ -1,0 +1,235 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-09-05T16:25:56.518+08:00  INFO 5285 --- [           main] com.sw.ck.bootstrap.StarterApplication   : Starting StarterApplication using Java 21.0.11 with PID 5285 (/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar started by chikan in /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server)
+2026-09-05T16:25:56.519+08:00 DEBUG 5285 --- [           main] com.sw.ck.bootstrap.StarterApplication   : Running with Spring Boot v3.4.4, Spring v6.2.5
+2026-09-05T16:25:56.519+08:00  INFO 5285 --- [           main] com.sw.ck.bootstrap.StarterApplication   : The following 1 profile is active: "dev"
+2026-09-05T16:25:58.325+08:00  INFO 5285 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-09-05T16:25:58.327+08:00  INFO 5285 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-09-05T16:25:58.337+08:00  INFO 5285 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 Redis repository interfaces.
+2026-09-05T16:25:58.419+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphDebugNodeMapper' and 'com.sw.ck.agent.mapper.AgentGraphDebugNodeMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:25:58.420+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphDebugSessionMapper' and 'com.sw.ck.agent.mapper.AgentGraphDebugSessionMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:25:58.420+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphDefMapper' and 'com.sw.ck.agent.mapper.AgentGraphDefMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:25:58.420+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphExecutionMapper' and 'com.sw.ck.agent.mapper.AgentGraphExecutionMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:25:58.420+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphExecutionNodeMapper' and 'com.sw.ck.agent.mapper.AgentGraphExecutionNodeMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:25:58.420+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentMessageMapper' and 'com.sw.ck.agent.mapper.AgentMessageMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:25:58.420+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentModelConfigMapper' and 'com.sw.ck.agent.mapper.AgentModelConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:25:58.420+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentSessionMapper' and 'com.sw.ck.agent.mapper.AgentSessionMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:25:58.420+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentToolCallLogMapper' and 'com.sw.ck.agent.mapper.AgentToolCallLogMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:25:58.420+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentToolExternalConfigMapper' and 'com.sw.ck.agent.mapper.tool.AgentToolExternalConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:25:58.420+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentToolInternalConfigMapper' and 'com.sw.ck.agent.mapper.tool.AgentToolInternalConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:25:58.420+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.agent.mapper]' package. Please check your configuration.
+2026-09-05T16:25:58.421+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formConfigMapper' and 'com.sw.ck.form.mapper.FormConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:25:58.421+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formDefMapper' and 'com.sw.ck.form.mapper.FormDefMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:25:58.421+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formSnapshotMapper' and 'com.sw.ck.form.mapper.FormSnapshotMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:25:58.421+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formTraceMapper' and 'com.sw.ck.form.mapper.FormTraceMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:25:58.421+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.form.mapper]' package. Please check your configuration.
+2026-09-05T16:25:58.422+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'jobInfoMapper' and 'com.sw.ck.job.mapper.JobInfoMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:25:58.423+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'jobLogMapper' and 'com.sw.ck.job.mapper.JobLogMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:25:58.423+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.job.mapper]' package. Please check your configuration.
+2026-09-05T16:25:58.424+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifyMessageMapper' and 'com.sw.ck.notify.mapper.NotifyMessageMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:25:58.424+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifyTemplateMapper' and 'com.sw.ck.notify.mapper.NotifyTemplateMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:25:58.424+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.notify.mapper]' package. Please check your configuration.
+2026-09-05T16:25:58.427+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'storageFileMapper' and 'com.sw.ck.storage.mapper.StorageFileMapper' mapperInterface. Bean already defined with the same name!
+2026-09-05T16:25:58.427+08:00  WARN 5285 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.storage.mapper]' package. Please check your configuration.
+2026-09-05T16:25:58.429+08:00  INFO 5285 --- [           main] faultConfiguringBeanFactoryPostProcessor : No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2026-09-05T16:25:58.436+08:00  INFO 5285 --- [           main] faultConfiguringBeanFactoryPostProcessor : No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2026-09-05T16:25:58.871+08:00  WARN 5285 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration' of type [org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-09-05T16:25:58.874+08:00  WARN 5285 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'stringOrNumberMigrationVersionConverter' of type [org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration$StringOrNumberToMigrationVersionConverter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-09-05T16:25:59.261+08:00  INFO 5285 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-09-05T16:25:59.281+08:00  INFO 5285 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-05T16:25:59.281+08:00  INFO 5285 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2026-09-05T16:25:59.317+08:00  INFO 5285 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2026-09-05T16:25:59.317+08:00  INFO 5285 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2770 ms
+2026-09-05T16:25:59.817+08:00 DEBUG 5285 --- [           main] c.s.c.s.filter.JwtAuthenticationFilter   : Filter 'jwtAuthenticationFilter' configured for use
+2026-09-05T16:25:59.819+08:00 DEBUG 5285 --- [           main] c.s.c.s.f.DebugAuthenticationFilter      : Filter 'debugAuthenticationFilter' configured for use
+2026-09-05T16:25:59.819+08:00 DEBUG 5285 --- [           main] c.s.c.s.filter.AccessLoggingFilter       : Filter 'accessLoggingFilter' configured for use
+2026-09-05T16:26:00.066+08:00 ERROR 5285 --- [           main] com.alibaba.druid.pool.DruidDataSource   : testWhileIdle is true, validationQuery not set
+2026-09-05T16:26:00.330+08:00  INFO 5285 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1,master} inited
+2026-09-05T16:26:00.332+08:00  INFO 5285 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource - add a datasource named [master] success
+2026-09-05T16:26:00.333+08:00  INFO 5285 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+Logging initialized using 'class org.apache.ibatis.logging.stdout.StdOutImpl' adapter.
+2026-09-05T16:26:00.416+08:00 DEBUG 5285 --- [           main] c.b.m.e.s.MybatisSqlSessionFactoryBean   : Registered plugin: 'MybatisPlusInterceptor{interceptors=[TenantLineInnerInterceptor(super=BaseMultiTableInnerInterceptor(super=com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor@545fdff4), tenantLineHandler=com.sw.ck.common.config.mybatis.tenant.CommonTenantLineHandler@6ea1fc9), DataPermissionInterceptor(super=BaseMultiTableInnerInterceptor(super=com.baomidou.mybatisplus.extension.plugins.inner.DataPermissionInterceptor@6e327915), dataPermissionHandler=com.sw.ck.common.config.mybatis.datascope.DataScopeHandler@437a4e61), com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor@268eefe7, PaginationInnerInterceptor(logger=org.apache.ibatis.logging.slf4j.Slf4jImpl@704ca8a8, overflow=false, maxLimit=null, dbType=null, dialect=null, optimizeJoin=true)]}'
+2026-09-05T16:26:00.417+08:00 DEBUG 5285 --- [           main] c.b.m.e.s.MybatisSqlSessionFactoryBean   : Property 'mapperLocations' was not specified.
+Get /192.168.1.105 network interface 
+Get network interface info: name:en0 (en0)
+Initialization Sequence datacenterId:13 workerId:28
+2026-09-05T16:26:00.489+08:00 DEBUG 5285 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-09-05T16:26:00.657+08:00  INFO 5285 --- [           main] c.s.c.b.config.FlywayConfiguration       : Executing primary Flyway migration (locations = db/migration/{vendor})
+2026-09-05T16:26:00.736+08:00  INFO 5285 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:smart_workflow (H2 2.3)
+2026-09-05T16:26:00.796+08:00  INFO 5285 --- [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "PUBLIC"."flyway_schema_history" does not exist yet
+2026-09-05T16:26:00.798+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 54 migrations (execution time 00:00.038s)
+2026-09-05T16:26:00.807+08:00  INFO 5285 --- [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "PUBLIC"."flyway_schema_history" ...
+2026-09-05T16:26:00.842+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": << Empty Schema >>
+2026-09-05T16:26:00.856+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "1 - init schema"
+2026-09-05T16:26:00.988+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2 - init data"
+2026-09-05T16:26:01.023+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "3 - external datasource"
+2026-09-05T16:26:01.029+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "4 - seed system data"
+2026-09-05T16:26:01.035+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "5 - m seam rbac"
+2026-09-05T16:26:01.080+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "6 - m seam menu seed"
+2026-09-05T16:26:01.090+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "7 - init form metadata"
+2026-09-05T16:26:01.105+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "8 - init bpm metadata"
+2026-09-05T16:26:01.112+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "9 - init notify message"
+2026-09-05T16:26:01.116+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "10 - add dict menu"
+2026-09-05T16:26:01.119+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "11 - fix system menu to directory"
+2026-09-05T16:26:01.122+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "12 - upgrade form config to per table"
+2026-09-05T16:26:01.130+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "13 - logical delete unique constraints"
+2026-09-05T16:26:01.137+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "14 - add process def"
+2026-09-05T16:26:01.140+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "15 - system mgmt menu"
+2026-09-05T16:26:01.144+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "16 - init storage file"
+2026-09-05T16:26:01.147+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "17 - init job tables"
+2026-09-05T16:26:01.152+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "18 - init refresh token table"
+2026-09-05T16:26:01.155+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "19 - init agent model config"
+2026-09-05T16:26:01.159+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "20 - init agent tool config"
+2026-09-05T16:26:01.163+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "21 - init agent session"
+2026-09-05T16:26:01.167+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "22 - init agent message"
+2026-09-05T16:26:01.170+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "23 - init agent tool call log"
+2026-09-05T16:26:01.173+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "24 - alter agent model config multikey"
+2026-09-05T16:26:01.182+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "25 - init agent graph def"
+2026-09-05T16:26:01.187+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "26 - agent graph menu seed"
+2026-09-05T16:26:01.190+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "27 - init agent graph execution"
+2026-09-05T16:26:01.194+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "28 - init agent graph execution node"
+2026-09-05T16:26:01.197+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "29 - job storage menu seed"
+2026-09-05T16:26:01.201+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "30 - sys role dept"
+2026-09-05T16:26:01.205+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "31 - admin role governance"
+2026-09-05T16:26:01.217+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "32 - sys user post"
+2026-09-05T16:26:01.221+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "33 - agent model menu seed"
+2026-09-05T16:26:01.224+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "34 - sys user group"
+2026-09-05T16:26:01.229+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "35 - agent token usage"
+2026-09-05T16:26:01.241+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "36 - init agent graph debug session"
+2026-09-05T16:26:01.245+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "37 - agent tool menu seed"
+2026-09-05T16:26:01.248+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "38 - notify template and menu"
+2026-09-05T16:26:01.253+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "39 - notify batch send permission"
+2026-09-05T16:26:01.256+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "40 - init iot device command"
+2026-09-05T16:26:01.260+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "41 - form definition json to clob"
+2026-09-05T16:26:01.267+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "42 - iot device identity upgrade"
+2026-09-05T16:26:01.286+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "43 - form data import export permission"
+2026-09-05T16:26:01.289+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "44 - workflow child menus"
+2026-09-05T16:26:01.294+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "45 - system crud button perms"
+2026-09-05T16:26:01.299+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "46 - drop lowcode naming"
+2026-09-05T16:26:01.304+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "47 - p52 workbench operation perms"
+2026-09-05T16:26:01.308+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "48 - p58 notify channels"
+2026-09-05T16:26:01.316+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "49 - p58 workflow node capabilities"
+2026-09-05T16:26:01.320+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "50 - p4 command queue and draft"
+2026-09-05T16:26:01.323+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "51 - p4 p0 dispatch permission"
+2026-09-05T16:26:01.325+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "52 - form trace idempotency key"
+2026-09-05T16:26:01.329+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "53 - p4 personal center menus"
+2026-09-05T16:26:01.332+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "54 - p4 form visibility scope"
+2026-09-05T16:26:01.337+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 54 migrations to schema "PUBLIC", now at version v54 (execution time 00:00.190s)
+2026-09-05T16:26:01.339+08:00  INFO 5285 --- [           main] c.s.c.b.config.FlywayConfiguration       : Primary Flyway migration completed
+2026-09-05T16:26:01.339+08:00  INFO 5285 --- [           main] c.s.c.b.config.FlywayConfiguration       : Detected database vendor: h2
+2026-09-05T16:26:01.339+08:00  INFO 5285 --- [           main] c.s.c.b.config.FlywayConfiguration       : Executing prod-update Flyway migration (vendor = h2, locations = db/prod-update/h2)
+2026-09-05T16:26:01.347+08:00  INFO 5285 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:smart_workflow (H2 2.3)
+2026-09-05T16:26:01.348+08:00  INFO 5285 --- [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "PUBLIC"."flyway_schema_history_prod" does not exist yet
+2026-09-05T16:26:01.348+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.000s)
+2026-09-05T16:26:01.348+08:00  WARN 5285 --- [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-09-05T16:26:01.350+08:00  INFO 5285 --- [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "PUBLIC"."flyway_schema_history_prod" with baseline ...
+2026-09-05T16:26:01.352+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbBaseline     : Successfully baselined schema with version: 1
+2026-09-05T16:26:01.353+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": 1
+2026-09-05T16:26:01.353+08:00  INFO 5285 --- [           main] o.f.core.internal.command.DbMigrate      : Schema "PUBLIC" is up to date. No migration necessary.
+2026-09-05T16:26:01.353+08:00  INFO 5285 --- [           main] c.s.c.b.config.FlywayConfiguration       : Prod-update Flyway migration completed (vendor = h2)
+2026-09-05T16:26:01.504+08:00  INFO 5285 --- [           main] c.s.c.b.e.c.BpmEngineAutoConfiguration   : BPM engine auto-configuration started (Flowable process engine)
+2026-09-05T16:26:01.627+08:00  INFO 5285 --- [           main] c.s.c.s.provider.CosStorageProvider      : COS 存储提供商初始化完成，bucket: , region: ap-guangzhou
+2026-09-05T16:26:01.628+08:00  INFO 5285 --- [           main] c.s.c.s.provider.LocalStorageProvider    : 本地存储提供商初始化完成，基路径: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/uploads
+2026-09-05T16:26:01.759+08:00  INFO 5285 --- [           main] c.s.c.s.provider.MinioStorageProvider    : MinIO 客户端已创建，endpoint: http://localhost:9000
+2026-09-05T16:26:01.828+08:00  WARN 5285 --- [           main] c.s.c.s.provider.MinioStorageProvider    : MinIO 初始化时检查 bucket 失败，将在首次上传时重试: Failed to connect to localhost/[0:0:0:0:0:0:0:1]:9000
+2026-09-05T16:26:01.833+08:00  INFO 5285 --- [           main] c.s.c.s.provider.QiniuStorageProvider    : 七牛云存储提供商初始化完成，bucket: , domain: 
+2026-09-05T16:26:01.834+08:00  INFO 5285 --- [           main] c.s.c.s.p.StorageProviderRegistry        : 存储提供商注册表初始化完成，已注册类型: [cos, local, minio, qiniu]
+2026-09-05T16:26:02.109+08:00  INFO 5285 --- [           main] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2026-09-05T16:26:02.116+08:00  INFO 5285 --- [           main] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2026-09-05T16:26:02.116+08:00  INFO 5285 --- [           main] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2026-09-05T16:26:02.117+08:00  INFO 5285 --- [           main] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2026-09-05T16:26:02.117+08:00  INFO 5285 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2026-09-05T16:26:02.117+08:00  INFO 5285 --- [           main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2026-09-05T16:26:02.117+08:00  INFO 5285 --- [           main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2026-09-05T16:26:02.117+08:00  INFO 5285 --- [           main] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@14feab02
+2026-09-05T16:26:02.271+08:00  INFO 5285 --- [           main] c.sw.ck.iot.config.IotAutoConfiguration  : 使用 Mock IoT Provider（providerMode=mock)
+2026-09-05T16:26:02.868+08:00  INFO 5285 --- [           main] c.s.c.s.security.RsaLoginKeyManager      : 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+2026-09-05T16:26:02.895+08:00  WARN 5285 --- [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authController' defined in URL [jar:nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-biz-system-biz-1.0.0-SNAPSHOT.jar!/com/sw/ck/system/controller/AuthController.class]: Unsatisfied dependency expressed through constructor parameter 7: Error creating bean with name 'loginChallengeService' defined in URL [jar:nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-biz-system-biz-1.0.0-SNAPSHOT.jar!/com/sw/ck/system/security/LoginChallengeService.class]: Failed to instantiate [com.sw.ck.system.security.LoginChallengeService]: Constructor threw exception
+2026-09-05T16:26:02.896+08:00  INFO 5285 --- [           main] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2026-09-05T16:26:02.896+08:00  INFO 5285 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2026-09-05T16:26:02.896+08:00  INFO 5285 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2026-09-05T16:26:02.896+08:00  INFO 5285 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2026-09-05T16:26:02.896+08:00  INFO 5285 --- [           main] c.s.c.b.e.d.ExternalDatasourceManager    : Shutting down all external datasource connection pools (count=0)
+2026-09-05T16:26:02.899+08:00  INFO 5285 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource start closing ....
+2026-09-05T16:26:02.902+08:00  INFO 5285 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2026-09-05T16:26:02.904+08:00  INFO 5285 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2026-09-05T16:26:02.904+08:00  INFO 5285 --- [           main] c.b.d.d.d.DefaultDataSourceDestroyer     : dynamic-datasource close the datasource named [master] success,
+2026-09-05T16:26:02.904+08:00  INFO 5285 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource all closed success,bye
+2026-09-05T16:26:02.911+08:00  INFO 5285 --- [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-09-05T16:26:02.959+08:00  INFO 5285 --- [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-09-05T16:26:02.973+08:00 ERROR 5285 --- [           main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authController' defined in URL [jar:nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-biz-system-biz-1.0.0-SNAPSHOT.jar!/com/sw/ck/system/controller/AuthController.class]: Unsatisfied dependency expressed through constructor parameter 7: Error creating bean with name 'loginChallengeService' defined in URL [jar:nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-biz-system-biz-1.0.0-SNAPSHOT.jar!/com/sw/ck/system/security/LoginChallengeService.class]: Failed to instantiate [com.sw.ck.system.security.LoginChallengeService]: Constructor threw exception
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1381) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1218) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1155) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1121) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1056) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.5.jar!/:6.2.5]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.5.jar!/:6.2.5]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.4.jar!/:3.4.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.4.jar!/:3.4.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.4.jar!/:3.4.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.4.jar!/:3.4.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.4.jar!/:3.4.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.4.jar!/:3.4.4]
+	at com.sw.ck.bootstrap.StarterApplication.main(StarterApplication.java:19) ~[!/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:102) ~[sw-bootstrap-1.0.0-SNAPSHOT.jar:na]
+	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:64) ~[sw-bootstrap-1.0.0-SNAPSHOT.jar:na]
+	at org.springframework.boot.loader.launch.JarLauncher.main(JarLauncher.java:40) ~[sw-bootstrap-1.0.0-SNAPSHOT.jar:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'loginChallengeService' defined in URL [jar:nested:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-biz-system-biz-1.0.0-SNAPSHOT.jar!/com/sw/ck/system/security/LoginChallengeService.class]: Failed to instantiate [com.sw.ck.system.security.LoginChallengeService]: Constructor threw exception
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:321) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:309) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1381) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1218) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1609) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1555) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	... 26 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.sw.ck.system.security.LoginChallengeService]: Constructor threw exception
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:222) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:145) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:318) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	... 39 common frames omitted
+Caused by: java.lang.IllegalStateException: 登录验证码摘要密钥未配置：必须经外部安全配置注入 sw.security.login.digest-secret（如环境变量 SW_LOGIN_DIGEST_SECRET），无密钥摘要不允许上线
+	at com.sw.ck.system.security.LoginChallengeService.<init>(LoginChallengeService.java:48) ~[sw-biz-system-biz-1.0.0-SNAPSHOT.jar!/:na]
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[na:na]
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:209) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	... 41 common frames omitted
+

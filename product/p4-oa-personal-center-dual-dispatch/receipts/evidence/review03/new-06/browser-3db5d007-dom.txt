@@ -1,0 +1,159 @@
+- complementary:
+  - generic: SW
+  - generic: Smart-WorkFlow
+  - menubar:
+    - menuitem "流程引擎" [expanded]:
+      - generic: 流程引擎
+      - menu:
+        - menuitem "待办任务":
+          - text: 待办任务
+        - menuitem "我发起的":
+          - text: 我发起的
+        - menuitem "我的草稿":
+          - text: 我的草稿
+        - menuitem "我的已办"
+- button "toggle sidebar":
+- navigation "Breadcrumb":
+  - link "流程引擎"
+  - text: /
+  - link "我发起的"
+- button "P4业务用户03":
+  - generic: P4业务用户03
+- main:
+  - heading "我发起的" [level=2]
+  - generic: 共 3 条记录
+  - combobox
+  - generic: 状态
+  - textbox "流程名称/业务单号"
+  - button "查询":
+    - generic: 查询
+  - button "重置":
+    - generic: 重置
+  - table:
+    - rowgroup:
+      - row "流程名称 流程标识 业务单号 表单标识 状态 发起时间 操作":
+        - columnheader "流程名称":
+          - generic: 流程名称
+        - columnheader "流程标识":
+          - generic: 流程标识
+        - columnheader "业务单号":
+          - generic: 业务单号
+        - columnheader "表单标识":
+          - generic: 表单标识
+        - columnheader "状态":
+          - generic: 状态
+        - columnheader "发起时间":
+          - generic: 发起时间
+        - columnheader "操作":
+          - generic: 操作
+  - table:
+    - rowgroup:
+      - row "- bpm_0809d9d64ff8463b 3db5d007-c585-4e72-b17c-52dece5e1509 p4_oa_biz_form_20260905b 已通过 2026-09-06T03:29:00.760159 详情":
+        - cell "-":
+          - generic: "-"
+        - cell "bpm_0809d9d64ff8463b":
+          - generic: bpm_0809d9d64ff8463b
+        - cell "3db5d007-c585-4e72-b17c-52dece5e1509":
+          - generic: 3db5d007-c585-4e72-b17c-52dece5e1509
+        - cell "p4_oa_biz_form_20260905b":
+          - generic: p4_oa_biz_form_20260905b
+        - cell "已通过":
+          - generic: 已通过
+        - cell "2026-09-06T03:29:00.760159":
+          - generic: 2026-09-06T03:29:00.760159
+        - cell "详情":
+          - button "详情":
+            - generic: 详情
+      - row "- bpm_ec6ba25597ed427e c2d3eff0-c382-4d2d-916f-dd448ebc8801 p4_oa_biz_form_20260905b 进行中 2026-09-06T03:08:55.037134 详情":
+        - cell "-":
+          - generic: "-"
+        - cell "bpm_ec6ba25597ed427e":
+          - generic: bpm_ec6ba25597ed427e
+        - cell "c2d3eff0-c382-4d2d-916f-dd448ebc8801":
+          - generic: c2d3eff0-c382-4d2d-916f-dd448ebc8801
+        - cell "p4_oa_biz_form_20260905b":
+          - generic: p4_oa_biz_form_20260905b
+        - cell "进行中":
+          - generic: 进行中
+        - cell "2026-09-06T03:08:55.037134":
+          - generic: 2026-09-06T03:08:55.037134
+        - cell "详情":
+          - button "详情":
+            - generic: 详情
+      - row "- bpm_ec6ba25597ed427e be79f113-858d-4f56-80c5-e9ab3b77ddef p4_oa_biz_form_20260905b 进行中 2026-09-06T03:08:28.547729 详情":
+        - cell "-":
+          - generic: "-"
+        - cell "bpm_ec6ba25597ed427e":
+          - generic: bpm_ec6ba25597ed427e
+        - cell "be79f113-858d-4f56-80c5-e9ab3b77ddef":
+          - generic: be79f113-858d-4f56-80c5-e9ab3b77ddef
+        - cell "p4_oa_biz_form_20260905b":
+          - generic: p4_oa_biz_form_20260905b
+        - cell "进行中":
+          - generic: 进行中
+        - cell "2026-09-06T03:08:28.547729":
+          - generic: 2026-09-06T03:08:28.547729
+        - cell "详情":
+          - button "详情":
+            - generic: 详情
+  - dialog "流程详情":
+    - heading "流程详情" [level=2]
+    - button "Close this dialog":
+    - table:
+      - rowgroup:
+        - row "流程名称 P4补证04重绑流 状态 已通过":
+          - cell "流程名称"
+          - cell "P4补证04重绑流"
+          - cell "状态"
+          - cell "已通过":
+            - generic: 已通过
+        - row "流程标识 bpm_0809d9d64ff8463b 业务单号 3db5d007-c585-4e72-b17c-52dece5e1509":
+          - cell "流程标识"
+          - cell "bpm_0809d9d64ff8463b"
+          - cell "业务单号"
+          - cell "3db5d007-c585-4e72-b17c-52dece5e1509"
+        - row "表单标识 p4_oa_biz_form_20260905b 发起时间 2026-09-06T03:29:00.760159":
+          - cell "表单标识"
+          - cell "p4_oa_biz_form_20260905b"
+          - cell "发起时间"
+          - cell "2026-09-06T03:29:00.760159"
+    - heading "当前进度" [level=4]
+    - alert:
+      - generic: 流程已结束，无进行中的节点
+    - heading "流转记录" [level=4]
+    - table:
+      - rowgroup:
+        - row "节点 办理人 动作 结果 意见 到达时间 办理时间":
+          - columnheader "节点":
+            - generic: 节点
+          - columnheader "办理人":
+            - generic: 办理人
+          - columnheader "动作":
+            - generic: 动作
+          - columnheader "结果":
+            - generic: 结果
+          - columnheader "意见":
+            - generic: 意见
+          - columnheader "到达时间":
+            - generic: 到达时间
+          - columnheader "办理时间":
+            - generic: 办理时间
+    - table:
+      - rowgroup:
+        - row "重绑04终审 系统管理员 - 进行中 - 2026-09-06T03:29:00.74 2026-09-06T03:36:07.317":
+          - cell "重绑04终审":
+            - generic: 重绑04终审
+          - cell "系统管理员":
+            - generic: 系统管理员
+          - cell "-":
+            - generic: "-"
+          - cell "进行中":
+            - generic: 进行中
+          - cell "-":
+            - generic: "-"
+          - cell "2026-09-06T03:29:00.74":
+            - generic: 2026-09-06T03:29:00.74
+          - cell "2026-09-06T03:36:07.317":
+            - generic: 2026-09-06T03:36:07.317
+    - button "关闭":
+      - generic: 关闭
