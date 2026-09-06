@@ -1,13 +1,15 @@
 # 功能摘要
 
-> 规划侧最新同步点：2026-09-05（P59 终态修正：任务状态 COMPLETED，确认进度规划已确认）；正式功能数与基线仍以 `knowledge/current-status.md` 为准。
-> 2026-09-04 知识库全量整理：清单当前值为 **✅34/🟦28/⬜28**（五行 ⬜→🟦，其余 85 行不变）；功能数 41 不变；全量双向映射见 `knowledge/feature-reconciliation-index.md`。
+> 规划侧最新同步点：2026-09-07（P4 OA 本轮子集功能状态 COMPLETED，第 42 个正式功能；终态同步待规划复核）；正式功能数与基线仍以 `knowledge/current-status.md` 为准。
+> 清单当前值 **✅34/🟦28/⬜28**（90，P4 子集零行升降级，M04-F05-01 仍🟦）；功能数 42；全量双向映射见 `knowledge/feature-reconciliation-index.md`。
 
-- `p59-ch-apaas-project-update`：**任务状态 COMPLETED**；**确认进度：规划已确认（2026-09-05）**；非新增业务功能（41＋0）；**P59 已核销**；功能级验收 PASSED（2026-09-04，审查07）保留为历史；最终裁决 `planning-final-review-p59-terminal-sync-02-passed.md`；说明/仓库/main 整理及真实自动发版已验收，三个示例仅记录；41 及正式业务基线不变。
+- `p4-oa-personal-center-dual-dispatch`：**功能状态 COMPLETED（2026-09-07）**（验收事件：功能级 PASSED，规划复验09），第 42 个正式功能（41＋子集 1）；终态同步修正待 Planner 复核。P4 总项开放、部分实现未核销（流程中心双视角/抄送查询/催办缺）。个人中心四入口=我发起的、我的草稿、我的待办、我的已办。交付与边界详见 `knowledge/features/p4-oa-personal-center-dual-dispatch.md`；主方向与能力边界归档 `product/p4-oa-personal-center-dual-dispatch/passed/`。基线：后端 174 报告/1128/0/0/0、前端 121f+1sk/1153t+3sk、H2 V55（55）/PG V55（54）。
+
+- `p59-ch-apaas-project-update`：**COMPLETED（规划已确认，2026-09-05）**，非新增业务功能；**P59 已核销**；两个方向归档 passed（历史点，其时功能数 41、基线为 P58 快照）。
 
 - `knowledge-full-reconciliation`（非业务功能任务）：**COMPLETED（已确认，2026-09-04）**，三方向归档 `passed/`（裁决 `planning-final-review-terminal-sync-02-passed.md`）。
 
-- `p58-workflow-node-capabilities`：**COMPLETED（已确认，2026-09-04）**，第41个正式功能（历史点）。规划验收08确认十六项标准全部通过，阶段三终态复核通过；主方向与开发调试认证方向归档`passed/`，阶段三方向已归档`passed/`。正式基线Server 1035/0/0/0（全量152份Surefire报告）、Web 117f+1sk/1110t+3sk（lint 47 warnings/0 errors）、H2 V49（49）/PG V49（48）全链退出0；附加回执08 G1—G3隔离运行退出0、生产排除扫描通过，临时探针不加入正式测试计数。P58已核销、当时不对应既有明细（当时90项明细状态零变化）；P58 已覆盖子集对应的五行清单项由 2026-09-04 对账登记为 🟦（P34/P35/P37/P38/P39 部分实现未核销）。
+- `p58-workflow-node-capabilities`：**COMPLETED（已确认，2026-09-04）**，第41个正式功能（历史点，其时基线 Server 1035/0/0/0、Web 117f/1110t、H2/PG V49，已被 P4 子集基线取代）。P58已核销、当时不对应既有明细（当时90项明细状态零变化）；其覆盖子集对应五行清单项由 2026-09-04 对账登记为 🟦（P34/P35/P37/P38/P39 部分实现未核销）。
 - `p57-bpm-node-extension`：**COMPLETED（已确认，2026-09-03）**，第40个正式功能。规划验收05确认十二项标准全部通过，阶段三最终复核02通过；主方向与阶段三方向均归档`passed/`。正式基线Server 1015/0/0/0（全量147份Surefire XML）＋P57聚焦21/0/0/0、Web 116f+1sk/1104t+3sk，H2/PG V47无迁移；P57已核销、不对应既有明细（90项明细状态零变化）；P58 不属于 P57 验收范围。
 - `p56-form-grid-layout`：**COMPLETED（已确认，2026-09-02）**，第39个正式功能。P1优先级、L级；10项验收全过，主方向与阶段三方向均已归档`passed/`；M03-F01-01 🟦→✅、P46一并核销；正式基线后端1004/0/0/0（全量）＋聚焦23/0/0/0、前端115f+1sk/1097t+3sk＋聚焦3 files/23 tests、H2 V47（47）/PG V47（46）；清单✅34/🟦23/⬜33（90不变）。
 - `p52-form-workbench`：**COMPLETED（已确认，2026-09-02）**，第38个正式功能。12项功能标准全部通过；主方向与阶段三方向均归档`passed/`。P52已核销；正式基线1002/0/0/0、114f/1092t/3skipped、H2 V47（47）/PG V47（46）；清单✅33/🟦24/⬜33（90不变，P52不对应既有明细）。

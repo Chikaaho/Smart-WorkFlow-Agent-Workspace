@@ -1,47 +1,46 @@
 # 功能交接摘要
 
 ## 1. 功能名称
-P59 / p59-ch-apaas-project-update（非新增业务功能统一交付任务）。
+P4 / p4-oa-personal-center-dual-dispatch（OA个人中心与流程双通道，本轮子集，第 42 个正式功能）。
 
 ## 2. 功能目标
-CH-aPaaS项目说明、三仓改名引用、工作区main误提交整理、前后端main自动发布及三个场景原始记录。
+个人中心四入口（我发起的、我的草稿、我的待办、我的已办）、普通可靠异步与 P0 单次同步双通道、已办真实历史分页、命令队列租约原子性；流程中台能力边界契约。
 
 ## 3. 最终状态
-**COMPLETED（规划已确认，2026-09-05）**，P59已核销。主方向与终态同步方向均归档passed。
+**功能状态 COMPLETED（2026-09-07）**（验收事件：功能级 PASSED，规划复验09）；终态同步修正回执 `terminal-sync-p4-02.md` 待 Planner 复核。P4 总项开放、部分实现未核销。主方向与能力边界方向归档 passed。
 
 ## 4. 本轮做了什么
-复核terminal-sync-02，核销T1状态字段和T2架构名称/类型；追加裁决 `product/p59-ch-apaas-project-update/receipts/planning-final-review-p59-terminal-sync-02-passed.md`，同步规划摘要。
+三轮补证（提示06—08）关闭 G3b/G4b/G5a 剩余原子：租约令牌全分支原子写回、同时间确定性分页、P0 等待实际启动（flowStart 超时回查语义、无启动结论不宣称成功）；规划复验09 功能级 PASSED。
 
 ## 5. Executor 内部 Step 汇总
-A说明、B仓库、C main整理、D自动发版、E场景记录均已验收；阶段三两项文档修正通过。
+六包原件归集（supplement-07）；三缺口修复与聚焦/全量验证（08）；P0 结果回查契约扩展与双层验证（09）。
 
 ## 6. 实际修改范围
-本轮执行侧为knowledge当前状态/交接/P59登记/架构及memory、todo投影；规划侧为product裁决/归档和memory、todo。knowledge通过product全文快照审核；其复核前确认进度可由Executor按最终裁决机械回填。
+队列/等待器/已办查询与合并排序/P0 提交入口及直接相关测试；knowledge/memory/todo 终态投影；未触历史证据与已核销逻辑。
 
 ## 7. 测试和验收结果
-本轮10/10快照哈希、6份当前文件一致性通过；memory复核时16680 B、最大4686 B。实现与真实发布证据沿用审查07：六分支发布、累计26提交；Server run33889195373、Web run33889880505成功，tag目标与产物指纹已验收。原始证据见 `product/p59-ch-apaas-project-update/receipts/`。
+最终基线：后端 174 份 Surefire 报告/1128/0/0/0（MVN_EXIT=0）、前端 121f+1sk/1153t+3sk（四门禁 exit 0）、Flyway H2 V55（55）/PG V55（54）。证据：`receipts/evidence/last-three-gaps/`、`evidence/p0-result-query/`。
 
 ## 8. 关键设计决策
-产品CH-aPaaS/PaaS；规范远端后端Smart-WorkFlow-aPaaS-server、前端Smart-WorkFlow-aPaaS-Web、工作区Smart-WorkFlow-Agent-Workspace。三个场景仅原始记录。main构建957为分支限定证据。
+P0 同步业务结果以实际启动为准（父完成≠业务成功，flowStart 呈现子命令处理中/成功/失败）；租约令牌为读取+写入双守卫；已办排序含唯一 taskId 次键。
 
 ## 9. 当前系统状态
-无活动业务/交付任务；正式功能41，清单✅34/🟦28/⬜28=90。正式基线保持P58验收快照：Server1035/0/0/0（152报告）；Web117f+1sk/1110t+3sk（lint47warnings/0errors）；H2 V49（49）/PG V49（48）。P59基线更新集合为空。
-此前P58第41个、P57第40个、P56第39个、P52第38个及知识整理均已终态确认。独立管理员任务最终验收02通过、A1已关闭；补充模板为 `product/governance/supplemental-execution-prompt-template.md`，治理变更未提交/推送。
+无活动业务/交付任务；正式功能 42，清单 ✅34/🟦28/⬜28=90（零行升降级，M04-F05-01 仍🟦）。基线见上；P4 总项开放未核销。
 
 ## 10. 还有什么没做
-P59三个场景未实施。P4个人查询、P3发送记录/重发/日志、P34/P35/P37/P38/P39剩余能力、P21真实设备联调/原生MQTT/完整设备管理、P2其余缺口继续保留；P54/P55待规划。
+P4 剩余：流程中心分类/双视角、抄送我的查询/催办入口（与 P55 协同）；P3 发送记录/重发/日志；P34/P35/P37/P38/P39 剩余；P21 真实设备联调/原生MQTT/完整设备管理；P2 其余缺口；P54/P55 待规划。
 
 ## 11. 已知问题和风险
-沿用memory/issues与todo/requirement-pool既有边界；非零租户登录无受支持入口，前端ESLint模块边界TODO保留。本轮无新增业务问题。
+沿用 memory/issues 与 todo/requirement-pool 既有边界；非零租户登录无受支持入口为认证产品边界。本轮无新增业务问题。
 
 ## 12. 下一轮要做什么
-等待Owner新需求。
+等待 Owner 选择下一需求。
 
 ## 13. 下一轮要达到什么结果
-以Owner新指令确定范围和验收标准。
+以 Owner 新指令确定范围和验收标准。
 
 ## 14. 下一轮开始前必须读取的知识文件
-Planner先读system.md、roles/planner.md、memory摘要及P59最终裁决。knowledge/current-status、session-handoff、features/p59由Executor读取维护；Planner需核对时走product附件。
+Planner 先读 system.md、roles/planner.md、memory 摘要；knowledge/current-status、session-handoff、features/p4 由 Executor 读取维护；核对走 product 附件。
 
 ## 15. 新会话启动提示词
-本会话角色：规划。P59已COMPLETED（2026-09-05规划确认），两个方向在passed，功能41、清单34/28/28及正式基线不变；当前无活动任务，等待Owner新需求。历史回执保留追溯。
+本会话角色：规划。P4 OA 本轮子集功能状态 COMPLETED（2026-09-07，第 42 个；验收事件功能级 PASSED），主方向已归档 passed，终态同步待复核；功能 42、清单 34/28/28、基线后端 1128/前端 1153/V55；P4 总项未整体核销；等待 Owner 新需求。
