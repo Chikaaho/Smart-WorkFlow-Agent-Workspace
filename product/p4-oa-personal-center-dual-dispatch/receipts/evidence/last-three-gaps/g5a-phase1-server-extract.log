@@ -1,0 +1,15 @@
+# phase1（正常完成场景）服务器原始片段（行号=server-8080.log 原件行号）
+450884:2026-09-06T23:56:48.326+08:00  INFO 6548 --- [nio-8080-exec-6] c.s.c.b.p.q.PersistentBpmCommandQueue    : 命令已受理: commandId=2096628692074139649, type=DRAFT_SUBMIT, channel=P0, key=DRAFT_SUBMIT:2096628691897978882:1
+450896:2026-09-06T23:56:48.327+08:00  INFO 6548 --- [nio-8080-exec-6] c.s.c.b.p.service.DraftSubmitService     : 草稿提交已受理: draftId=2096628691897978882, commandId=2096628692074139649
+451081:2026-09-06T23:56:48.347+08:00  INFO 6548 --- [mand-dispatcher] c.s.c.b.process.queue.CommandDispatcher  : 命令开始处理: commandId=2096628692074139649, type=DRAFT_SUBMIT, channel=P0, retry=0
+451203:2026-09-06T23:56:48.363+08:00  INFO 6548 --- [mand-dispatcher] c.s.c.b.p.q.PersistentBpmCommandQueue    : 命令已受理: commandId=2096628692233523202, type=FLOW_START, channel=P0, key=FLOW_START:288da53a-7302-433d-a956-3dc6b9f1f8d0
+451204:2026-09-06T23:56:48.363+08:00  INFO 6548 --- [mand-dispatcher] c.sw.ck.form.service.FormSubmitService   : Flow start accepted in-tx: formKey=p4_oa_biz_form_final, recordId=288da53a-7302-433d-a956-3dc6b9f1f8d0, commandId=2096628692233523202
+451249:2026-09-06T23:56:48.367+08:00  INFO 6548 --- [mand-dispatcher] c.s.c.b.process.queue.CommandDispatcher  : 命令处理完成: commandId=2096628692074139649, 耗时 20ms
+451460:2026-09-06T23:56:48.478+08:00  INFO 6548 --- [mand-dispatcher] c.s.c.b.process.queue.CommandDispatcher  : 命令开始处理: commandId=2096628692233523202, type=FLOW_START, channel=P0, retry=0
+451650:2026-09-06T23:56:48.612+08:00  INFO 6548 --- [mand-dispatcher] c.s.c.b.process.queue.CommandDispatcher  : 命令处理完成: commandId=2096628692233523202, 耗时 134ms
+451679:2026-09-06T23:56:48.644+08:00  INFO 6548 --- [nio-8080-exec-6] c.s.c.s.filter.AccessLoggingFilter       : ACCESS method=POST path=/api/workflow/drafts/2096628691897978882/submit status=200 costMs=331 requestId=30 userId=2096530937058201601
+451798:2026-09-06T23:56:48.656+08:00  INFO 6548 --- [nio-8080-exec-7] c.s.c.s.f.DebugAuthenticationFilter      : debug_auth decision=ACCEPTED debugTokenId=test_2096530937058201601 userId=2096530937058201601 path=/api/workflow/commands/2096628692074139649 requestId=31 remoteAddr=127.0.0.1 reason=FORMAL_IDENTITY_LOADED
+451815:2026-09-06T23:56:48.660+08:00  INFO 6548 --- [nio-8080-exec-7] c.s.c.s.filter.AccessLoggingFilter       : ACCESS method=GET path=/api/workflow/commands/2096628692074139649 status=200 costMs=3 requestId=31 userId=2096530937058201601
+462774:2026-09-06T23:57:21.476+08:00  INFO 6548 --- [io-8080-exec-10] c.s.c.s.f.DebugAuthenticationFilter      : debug_auth decision=ACCEPTED debugTokenId=test_1 userId=1 path=/api/workflow/commands/2096628692233523202 requestId=34 remoteAddr=127.0.0.1 reason=FORMAL_IDENTITY_LOADED
+462791:2026-09-06T23:57:21.479+08:00  WARN 6548 --- [io-8080-exec-10] c.s.c.b.p.c.BpmCommandController         : 命令回查越权拒绝: commandId=2096628692233523202, initiator=2096530937058201601, currentUser=1
+462793:2026-09-06T23:57:21.480+08:00  INFO 6548 --- [io-8080-exec-10] c.s.c.s.filter.AccessLoggingFilter       : ACCESS method=GET path=/api/workflow/commands/2096628692233523202 status=200 costMs=4 requestId=34 userId=1

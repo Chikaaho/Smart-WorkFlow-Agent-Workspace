@@ -1,0 +1,8 @@
+命令（工作区 /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Web 下顺序执行，NODE_OPTIONS="--max-old-space-size=2048"）：
+pnpm typecheck → 退出码 0（vue-tsc -b --noEmit 无输出）
+pnpm lint      → 退出码 0，eslint 无 problems 行（0 error / 0 warning）
+pnpm test      → vitest run：Test Files 121 passed | 1 skipped (122)；Tests 1152 passed | 3 skipped (1155)
+pnpm build     → ✓ built in 1.40s，退出码 0
+执行时间：2026-09-05（代理完成时刻，与 frontend-four-gates-02.log 为同一次连续执行输出）
+源码绑定：evidence/source-identity-web.txt + 本轮 G2a 改造后内容（改动文件清单见 supplement-02 回执）
+更正口径：上轮回执"141 warnings"为转录错误（实际 88+55=143 行内问题，分属 2 个本轮文件，已定点修复归零）；静默 lint 输出=0 problems 属正常。

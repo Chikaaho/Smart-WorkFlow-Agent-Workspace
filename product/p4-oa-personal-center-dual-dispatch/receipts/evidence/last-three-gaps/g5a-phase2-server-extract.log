@@ -1,0 +1,14 @@
+# phase2（受控超时场景，--sw.bpm.command.p0-wait-timeout-millis=250）服务器原始片段（行号=server-8080-phase2.log 原件行号）
+13148:2026-09-06T23:58:23.947+08:00  INFO 8976 --- [nio-8080-exec-2] c.s.c.b.p.q.PersistentBpmCommandQueue    : 命令已受理: commandId=2096629093141864449, type=DRAFT_SUBMIT, channel=P0, key=DRAFT_SUBMIT:2096629092625965058:1
+13160:2026-09-06T23:58:23.949+08:00  INFO 8976 --- [nio-8080-exec-2] c.s.c.b.p.service.DraftSubmitService     : 草稿提交已受理: draftId=2096629092625965058, commandId=2096629093141864449
+13345:2026-09-06T23:58:24.009+08:00  INFO 8976 --- [mand-dispatcher] c.s.c.b.process.queue.CommandDispatcher  : 命令开始处理: commandId=2096629093141864449, type=DRAFT_SUBMIT, channel=P0, retry=0
+13439:2026-09-06T23:58:24.033+08:00  INFO 8976 --- [mand-dispatcher] c.s.c.b.p.q.PersistentBpmCommandQueue    : 命令已受理: commandId=2096629093502574593, type=FLOW_START, channel=P0, key=FLOW_START:735dd2e4-2062-46d3-a78a-ca0ee7f652a9
+13440:2026-09-06T23:58:24.033+08:00  INFO 8976 --- [mand-dispatcher] c.sw.ck.form.service.FormSubmitService   : Flow start accepted in-tx: formKey=p4_oa_biz_form_final, recordId=735dd2e4-2062-46d3-a78a-ca0ee7f652a9, commandId=2096629093502574593
+13485:2026-09-06T23:58:24.039+08:00  INFO 8976 --- [mand-dispatcher] c.s.c.b.process.queue.CommandDispatcher  : 命令处理完成: commandId=2096629093141864449, 耗时 30ms
+13696:2026-09-06T23:58:24.174+08:00  INFO 8976 --- [mand-dispatcher] c.s.c.b.process.queue.CommandDispatcher  : 命令开始处理: commandId=2096629093502574593, type=FLOW_START, channel=P0, retry=0
+13795:2026-09-06T23:58:24.283+08:00  INFO 8976 --- [nio-8080-exec-2] c.s.c.b.p.service.CommandSyncWaiter      : P0 同步等待超时（不等于失败）: commandId=2096629093502574593，预算已到，按受理态返回可回查标识
+13820:2026-09-06T23:58:24.289+08:00  INFO 8976 --- [nio-8080-exec-2] c.s.c.s.filter.AccessLoggingFilter       : ACCESS method=POST path=/api/workflow/drafts/2096629092625965058/submit status=200 costMs=383 requestId=14 userId=2096629064482185217
+13934:2026-09-06T23:58:24.368+08:00  INFO 8976 --- [mand-dispatcher] c.s.c.b.process.queue.CommandDispatcher  : 命令处理完成: commandId=2096629093502574593, 耗时 194ms
+14679:2026-09-06T23:58:26.355+08:00  INFO 8976 --- [nio-8080-exec-3] c.s.c.s.f.DebugAuthenticationFilter      : debug_auth decision=ACCEPTED debugTokenId=test_2096629064482185217 userId=2096629064482185217 path=/api/workflow/commands/2096629093141864449 requestId=15 remoteAddr=127.0.0.1 reason=FORMAL_IDENTITY_LOADED
+14714:2026-09-06T23:58:26.395+08:00  INFO 8976 --- [nio-8080-exec-3] c.s.c.s.filter.AccessLoggingFilter       : ACCESS method=GET path=/api/workflow/commands/2096629093141864449 status=200 costMs=39 requestId=15 userId=2096629064482185217
+15351:2026-09-06T23:58:26.499+08:00  INFO 8976 --- [nio-8080-exec-6] c.s.c.s.filter.AccessLoggingFilter       : ACCESS method=POST path=/api/workflow/drafts/2096629092625965058/submit status=200 costMs=10 requestId=18 userId=2096629064482185217

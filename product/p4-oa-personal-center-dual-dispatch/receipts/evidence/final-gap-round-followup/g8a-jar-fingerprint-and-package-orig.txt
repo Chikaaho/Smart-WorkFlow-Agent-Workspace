@@ -1,0 +1,7 @@
+# jar 构建与指纹核验（工具实测 2026-09-06）
+$ shasum -a 256 Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar
+3ee63fa70d38fd41b0fad3ffe460ccc3349f7dfb7bb5802e2a2203a133b391fe  Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar
+-rw-r--r--@ 1 chikan  wheel  154652415 Sep  6 13:36 Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar
+
+# /tmp/p4-final-package.log 原件全文（mvn -q package -DskipTests 退出记录）
+PKG_EXIT=0

@@ -1,0 +1,282 @@
+<script setup lang="ts">
+/**
+ * MyDrafts — 我的草稿列表页（页型 B）。
+ *
+ * 发起入口（D3/P4 业务纠正）：页内展示本人可见的已发布表单列表，点"发起"进入
+ * 该表单的真实填报页；流程由服务端按绑定解析，用户不选择/填写流程标识。
+ * 列表增删 + 提交走异步命令通道：submit 受理 → 轮询命令状态。
+ * - 发起：/form/form-render/{formKey}?mode=draft（无 draftId：保存时 createDraft）
+ * - 编辑：/form/form-render/{formKey}?mode=draft&draftId={id}
+ */
+import { ref, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { ElMessage, ElMessageBox } from 'element-plus'
+import { StandardListTemplate } from '@/components/page-layout'
+import {
+  myDrafts,
+  deleteDraft,
+  submitDraft,
+  pollCommandStatus,
+  publishedFormDefs,
+} from '@/modules/workflow/api'
+import type { BpmDraft, BpmDraftStatus } from '@/contracts/bpm'
+import type { PageQuery } from '@/contracts/common'
+import { ApiError } from '@/foundation/request'
+
+const router = useRouter()
+
+// ─── 列表状态 ───
+const list = ref<BpmDraft[]>([])
+const total = ref(0)
+const pageNum = ref(1)
+const pageSize = ref(10)
+const loading = ref(false)
+const errorMsg = ref('')
+const submittingId = ref<number | null>(null) // 正在提交的草稿 ID（按钮 loading，防重复）
+
+const isEmpty = computed(() => !loading.value && !errorMsg.value && list.value.length === 0)
+
+const STATUS_TAG: Record<
+  BpmDraftStatus,
+  { label: string; type: 'info' | 'warning' | 'success' | 'danger' }
+> = {
+  EDITING: { label: '编辑中', type: 'info' },
+  SUBMITTING: { label: '提交中', type: 'warning' },
+  SUBMITTED: { label: '已提交', type: 'success' },
+  FAILED: { label: '提交失败', type: 'danger' },
+}
+
+// 可发起的已发布表单：GET /form/def/published（服务端按可见范围过滤，仅 PUBLISHED）
+interface FormOption {
+  formKey: string
+  name: string
+}
+const initiateForms = ref<FormOption[]>([])
+
+async function loadOptions(): Promise<void> {
+  try {
+    const forms = await publishedFormDefs()
+    initiateForms.value = forms.map((f) => ({ formKey: f.formKey, name: f.name }))
+  } catch {
+    // 发起列表加载失败不阻断草稿页；不提供任意流程标识输入。
+  }
+}
+
+async function loadList() {
+  loading.value = true
+  errorMsg.value = ''
+  try {
+    const pageQuery: PageQuery = { pageNum: pageNum.value, pageSize: pageSize.value }
+    const result = await myDrafts(pageQuery)
+    list.value = result.list
+    total.value = result.total
+  } catch (err) {
+    if (err instanceof ApiError) {
+      errorMsg.value = err.msg
+    } else {
+      errorMsg.value = '加载草稿列表失败'
+    }
+  } finally {
+    loading.value = false
+  }
+}
+
+function handlePageNumChange(p: number) {
+  pageNum.value = p
+  void loadList()
+}
+
+function handlePageSizeChange(s: number) {
+  pageSize.value = s
+  pageNum.value = 1
+  void loadList()
+}
+
+// ─── 发起：从已发布表单列表进入真实填报页 ───
+function fillDraftUrl(formKey: string): string {
+  return `/form/form-render/${formKey}?mode=draft`
+}
+
+/** 点击"发起"：进入该已发布表单的真实填报（无 draftId：保存时 createDraft） */
+function startFromForm(formKey: string) {
+  void router.push(fillDraftUrl(formKey))
+}
+
+/** 编辑：跳转表单填报页 draft 模式并携带 draftId（挂载后读草稿反填控件） */
+function openEdit(row: BpmDraft) {
+  const params: string[] = ['mode=draft', `draftId=${row.id}`]
+  void router.push(`/form/form-render/${row.formKey}?${params.join('&')}`)
+}
+
+// ─── 删除 ───
+async function handleDelete(row: BpmDraft) {
+  try {
+    await ElMessageBox.confirm('确认删除该草稿？删除后不可恢复。', '删除确认', {
+      confirmButtonText: '删除',
+      cancelButtonText: '取消',
+      type: 'warning',
+    })
+  } catch {
+    return
+  }
+  try {
+    await deleteDraft(row.id)
+    ElMessage.success('草稿已删除')
+    await loadList()
+  } catch (err) {
+    ElMessage.error(err instanceof ApiError ? err.msg : '删除草稿失败')
+  }
+}
+
+// ─── 提交（受理 + 轮询） ───
+async function handleSubmit(row: BpmDraft) {
+  if (submittingId.value !== null) return
+  try {
+    await ElMessageBox.confirm('确认提交该草稿进入审批流程？', '提交确认', {
+      confirmButtonText: '提交',
+      cancelButtonText: '取消',
+      type: 'info',
+    })
+  } catch {
+    return
+  }
+  submittingId.value = row.id
+  try {
+    const accept = await submitDraft(row.id)
+    const finalStatus = await pollCommandStatus(accept.commandId)
+    if (finalStatus?.status === 'COMPLETED') {
+      ElMessage.success('提交成功')
+    } else if (finalStatus?.status === 'FAILED') {
+      ElMessage.error(finalStatus.failureReason ?? '提交失败')
+    } else {
+      // 超时未终态：如实提示，不伪装成功
+      ElMessage.warning('处理中，可稍后在结果中查看')
+    }
+  } catch (err) {
+    ElMessage.error(err instanceof ApiError ? err.msg : '提交失败')
+  } finally {
+    submittingId.value = null
+    await loadList()
+  }
+}
+
+// el-table row slot 的 DefaultRow 类型不兼容，桥接函数（对齐 TodoList 写法）
+function openEditRow(r: unknown) {
+  openEdit(r as BpmDraft)
+}
+
+function deleteRow(r: unknown) {
+  void handleDelete(r as BpmDraft)
+}
+
+function submitRow(r: unknown) {
+  void handleSubmit(r as BpmDraft)
+}
+
+onMounted(() => {
+  void loadList()
+  void loadOptions()
+})
+</script>
+
+<template>
+  <StandardListTemplate
+    title="我的草稿"
+    :total="total"
+    :page-num="pageNum"
+    :page-size="pageSize"
+    :empty="isEmpty"
+    @update:page-num="handlePageNumChange"
+    @update:page-size="handlePageSizeChange"
+  >
+    <!-- 发起入口：可见的已发布表单 → 发起 → 填报（流程由服务端解析） -->
+    <el-card shadow="never" class="initiate-card" data-testid="initiate-forms">
+      <template #header>
+        <span>可发起的已发布表单</span>
+      </template>
+      <el-table :data="initiateForms" size="small" empty-text="暂无可发起的已发布表单">
+        <el-table-column prop="name" label="表单名称" min-width="160" />
+        <el-table-column prop="formKey" label="表单标识" min-width="160" />
+        <el-table-column label="操作" width="90">
+          <template #default="{ row }">
+            <el-button type="primary" size="small" @click="startFromForm(row.formKey)">
+              发起
+            </el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+      <p class="draft-flow-hint">审批流程由系统根据已发布表单的有效绑定自动解析。</p>
+    </el-card>
+
+    <!-- 空态 -->
+    <template #empty-action>
+      <span class="draft-flow-hint">可从上方"可发起的已发布表单"点击"发起"进入填报</span>
+    </template>
+
+    <!-- 错误提示 -->
+    <el-alert
+      v-if="errorMsg"
+      :title="errorMsg"
+      type="error"
+      :closable="false"
+      show-icon
+      style="margin-bottom: 12px"
+    />
+
+    <!-- 表格 -->
+    <el-table v-loading="loading" :data="list" stripe style="width: 100%">
+      <el-table-column label="标题" min-width="140">
+        <template #default="{ row }">
+          {{ row.title ?? '-' }}
+        </template>
+      </el-table-column>
+      <el-table-column prop="formKey" label="表单标识" min-width="130" />
+      <el-table-column label="流程" min-width="140">
+        <template #default="{ row }">
+          {{ row.processDefKey ?? '-' }}
+        </template>
+      </el-table-column>
+      <el-table-column label="状态" width="100">
+        <template #default="{ row }">
+          <el-tag :type="STATUS_TAG[row.status as BpmDraftStatus]?.type ?? 'info'" size="small">
+            {{ STATUS_TAG[row.status as BpmDraftStatus]?.label ?? row.status }}
+          </el-tag>
+        </template>
+      </el-table-column>
+      <el-table-column label="失败原因" min-width="160">
+        <template #default="{ row }">
+          {{ row.lastError ?? '-' }}
+        </template>
+      </el-table-column>
+      <el-table-column prop="updateTime" label="更新时间" min-width="170" />
+      <el-table-column label="操作" width="190" fixed="right">
+        <template #default="{ row }">
+          <el-button size="small" type="primary" link @click="openEditRow(row)">编辑</el-button>
+          <el-button
+            size="small"
+            type="success"
+            link
+            :loading="submittingId === row.id"
+            :disabled="submittingId !== null"
+            @click="submitRow(row)"
+          >
+            提交
+          </el-button>
+          <el-button size="small" type="danger" link @click="deleteRow(row)">删除</el-button>
+        </template>
+      </el-table-column>
+    </el-table>
+  </StandardListTemplate>
+
+</template>
+
+<style scoped>
+.initiate-card {
+  margin-bottom: 12px;
+}
+.draft-flow-hint {
+  margin: 8px 0 0;
+  color: var(--el-text-color-secondary);
+  font-size: 12px;
+}
+</style>

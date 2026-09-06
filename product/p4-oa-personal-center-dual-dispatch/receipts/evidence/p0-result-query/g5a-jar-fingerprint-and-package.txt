@@ -1,0 +1,5 @@
+# 本轮 jar 构建与指纹（工具实测 2026-09-07）
+$ MAVEN_OPTS=-Xmx2g mvn -q package -DskipTests
+PKG_EXIT=0
+$ shasum -a 256 sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar
+32ea33947a791a652d5af7466b92dc96a5ba0e6c2089d27ee8f849ca950d93fa  /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar
