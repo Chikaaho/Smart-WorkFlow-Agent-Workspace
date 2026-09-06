@@ -1,0 +1,14 @@
+[A1.submit-missing-required] {"http": 200, "code": 1401, "msg": "必填字段 'applicant' 缺失"}
+[A2.draft-after-reject] {"status": "EDITING", "commandId": null, "submitSeq": 0, "payload": "{\"applicant\":\"\",\"amount\":0,\"reason\":\"\"}"}
+[B1.submit-accepted] {"draftId": "2096296377064312833", "commandId": "2096296377294999553", "duplicated": false}
+[B2.delete-while-submitting] {"http": 200, "code": 400, "msg": "草稿提交受理中，不能删除"}
+[B3.update-while-submitting] {"http": 200, "code": 400, "msg": "草稿当前状态 SUBMITTING 不可编辑"}
+[B4.resubmit-while-submitting-duplicated] {"duplicated": true, "sameCommandId": true}
+[B5.command-final] {"status": "COMPLETED", "result": "{\"status\":\"SUBMITTED\",\"recordId\":\"55d8546e-9ef9-434b-a411-b40a7c4db398\"}"}
+[B6.draft-after-consume] {"status": "SUBMITTED", "recordId": "55d8546e-9ef9-434b-a411-b40a7c4db398"}
+[C1.admin-rebind-publish] {"http": 200, "code": 0, "newDefId": "2096296380407173122"}
+[C2.stale-command-final] {"status": "FAILED", "retryCount": 4, "failureReason": "java.lang.IllegalStateException: 表单流程绑定已变化: formKey=p4_oa_biz_form_20260905b"}
+[C3.draft-preserved] {"status": "FAILED", "lastError": "java.lang.IllegalStateException: 表单流程绑定已变化: formKey=p4_oa_bi", "payload": "{\"applicant\":\"业务用户乙\",\"amount\":200,\"reason\":\"G2a 绑定失效场景\"}"}
+[C4.resubmit-after-failure] {"http": 200, "code": 0, "newCommandId": "2096296446521987074", "msg": "success"}
+[C5.resubmit-command-final] {"status": "COMPLETED", "result": "{\"status\":\"SUBMITTED\",\"recordId\":\"2b2a614e-50eb-4992-a3e5-dd308bbf7294\"}"}
+DRAFTS={"d1": "2096296376649076738", "d2": "2096296377064312833", "d3": "2096296380096794625"}
