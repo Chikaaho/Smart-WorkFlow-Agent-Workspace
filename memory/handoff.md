@@ -1,46 +1,46 @@
 # 功能交接摘要
 
 ## 1. 功能名称
-P4 / p4-oa-personal-center-dual-dispatch（OA个人中心与流程双通道，本轮子集，第 42 个正式功能）。
+v0.0.2-oa（v0.0.2 OA 完善，第 43 个正式功能；覆盖 P54/P55＋P4/P2 子集＋P3 剩余）。
 
 ## 2. 功能目标
-个人中心四入口（我发起的、我的草稿、我的待办、我的已办）、普通可靠异步与 P0 单次同步双通道、已办真实历史分页、命令队列租约原子性；流程中台能力边界契约。
+让普通员工从工作台发起/跟踪业务、审批人处理待办与抄送、管理员在独立后台维护事项/表单/流程并追踪通知失败；以表单与流程组合平台通用能力，OA 作为已落地场景之一。
 
 ## 3. 最终状态
-**功能状态 COMPLETED（2026-09-07）**（验收事件：功能级 PASSED，规划复验09）；终态同步修正回执 `terminal-sync-p4-02.md` 待 Planner 复核。P4 总项开放、部分实现未核销。主方向与能力边界方向归档 passed。
+**COMPLETED（规划已确认，2026-09-07）**；功能级PASSED见规划验收06，阶段三最终复核见`planning-final-review-terminal-sync-v0.0.2-oa-03-passed.md`。主方向、A8方向与阶段三方向均归档passed。
 
 ## 4. 本轮做了什么
-三轮补证（提示06—08）关闭 G3b/G4b/G5a 剩余原子：租约令牌全分支原子写回、同时间确定性分页、P0 等待实际启动（flowStart 超时回查语义、无启动结论不宣称成功）；规划复验09 功能级 PASSED。
+A1 前后台分层、A2 流程中心分类/双视角、A3 抄送我的/催办、A4 个性化工作台、A5 表单四控件/默认值/显隐/草稿、A6 通知发送记录/失败重发、A7 整体闭环回归、A8 两仓 README 产品介绍收口与同源 Logo。
 
 ## 5. Executor 内部 Step 汇总
-六包原件归集（supplement-07）；三缺口修复与聚焦/全量验证（08）；P0 结果回查契约扩展与双层验证（09）。
+回执 01—04（A1—A7 实现与缺口修复）、回执 05/06（A8 README 收口与 D1—D4 修正）；规划验收 01—05、规划验收06 功能级 PASSED。
 
 ## 6. 实际修改范围
-队列/等待器/已办查询与合并排序/P0 提交入口及直接相关测试；knowledge/memory/todo 终态投影；未触历史证据与已核销逻辑。
+前后台分层与工作台/流程中心/个人办理/表单/通知实现（Server+Web）、V56—V58 迁移、两仓 README 与 docs/images 资源；knowledge/memory/todo 终态投影；未触历史证据与已核销逻辑。
 
 ## 7. 测试和验收结果
-最终基线：后端 174 份 Surefire 报告/1128/0/0/0（MVN_EXIT=0）、前端 121f+1sk/1153t+3sk（四门禁 exit 0）、Flyway H2 V55（55）/PG V55（54）。证据：`receipts/evidence/last-three-gaps/`、`evidence/p0-result-query/`。
+最终基线：后端 181 份 Surefire 报告/1156/0/0/0（`mvn -q test` exit 0）、前端 124 files passed + 1 skipped / 1168 tests passed + 3 skipped（四门禁 exit 0）、Flyway H2 V58（58）/PG V58（57）。证据：`product/v0.0.2-oa/receipts/` 与 `evidence/readme-closeout{-r2}/`。
 
 ## 8. 关键设计决策
-P0 同步业务结果以实际启动为准（父完成≠业务成功，flowStart 呈现子命令处理中/成功/失败）；租约令牌为读取+写入双守卫；已办排序含唯一 taskId 次键。
+前后台以服务端角色判定（不按用户 ID 硬编码）；抄送/催办身份与操作权分离；催办 10 分钟冷却且仅运行中实例；表单隐藏字段不进入正式载荷（服务端复算过滤）；通知失败不篡改审批状态。
 
 ## 9. 当前系统状态
-无活动业务/交付任务；正式功能 42，清单 ✅34/🟦28/⬜28=90（零行升降级，M04-F05-01 仍🟦）。基线见上；P4 总项开放未核销。
+无活动业务/交付任务；正式功能 43，清单 ✅36/🟦26/⬜28=90（M04-F05-01/M06-F04-01 升 ✅）。基线见上；P3/P54/P55 已核销，P2/P4 开放部分实现未核销。
 
 ## 10. 还有什么没做
-P4 剩余：流程中心分类/双视角、抄送我的查询/催办入口（与 P55 协同）；P3 发送记录/重发/日志；P34/P35/P37/P38/P39 剩余；P21 真实设备联调/原生MQTT/完整设备管理；P2 其余缺口；P54/P55 待规划。
+P2 其余（计算公式/外部数据源/表单删除/列表配置持久化）；P4 候选（转办/委托/加签/撤回、流程版本/挂起激活）；P21 真实设备联调/原生 MQTT/完整设备管理；P34/P35/P37/P38/P39 剩余。
 
 ## 11. 已知问题和风险
-沿用 memory/issues 与 todo/requirement-pool 既有边界；非零租户登录无受支持入口为认证产品边界。本轮无新增业务问题。
+沿用 memory/issues 与 todo/requirement-pool 既有边界；I 集合 54 条不变（I38/I39/I40/I45 开放）；非零租户登录无受支持入口为认证产品边界。本轮无新增业务问题。
 
 ## 12. 下一轮要做什么
-等待 Owner 选择下一需求。
+执行 v0.0.2 正式发布方向：只形成并发布后端、前端两个代码仓候选，各自按 `develop → main`，并在最终 `main` 上创建精确标签 `0.0.2`。工作区不执行任何 Git 发布，通用 `main` 保持干净。Owner 已授权直接执行，可使用已导入浏览器的 GitHub 登录态及 `~/ssh/ssh` 下的服务器 SSH/SCP 脚本，自动或手动发布均可。
 
 ## 13. 下一轮要达到什么结果
-以 Owner 新指令确定范围和验收标准。
+完成两个代码仓的授权发布与服务器生效核对，并提交 `product/v0.0.2-oa/receipts/release-v0.0.2-oa-01.md`：两仓 `0.0.2` 精确指向各自最终 `main`，Actions、Release、产物、完整 SHA 和服务器结果均已回读；工作区零 Git 发布动作。若同名标签冲突则保留现场并报告，不移动或覆盖。
 
 ## 14. 下一轮开始前必须读取的知识文件
-Planner 先读 system.md、roles/planner.md、memory 摘要；knowledge/current-status、session-handoff、features/p4 由 Executor 读取维护；核对走 product 附件。
+Planner 先读 system.md、roles/planner.md、memory 摘要；knowledge/current-status、session-handoff、features/v0.0.2-oa 由 Executor 读取维护；核对走 product 附件。
 
 ## 15. 新会话启动提示词
-本会话角色：规划。P4 OA 本轮子集功能状态 COMPLETED（2026-09-07，第 42 个；验收事件功能级 PASSED），主方向已归档 passed，终态同步待复核；功能 42、清单 34/28/28、基线后端 1128/前端 1153/V55；P4 总项未整体核销；等待 Owner 新需求。
+本会话角色：规划。v0.0.2-oa `COMPLETED（规划已确认，2026-09-07）`，第43个正式功能，三方向均归档passed；功能43、清单36/26/28、基线后端1156/前端1168/V58；P3/P54/P55已核销、P2/P4开放；Owner 已授权只发布后端/前端 v0.0.2，工作区保持不发布；唯一下一动作=Executor 执行 `product/v0.0.2-oa/ready/direction-v0.0.2-oa-release.md` 并提交远端及服务器回读回执。

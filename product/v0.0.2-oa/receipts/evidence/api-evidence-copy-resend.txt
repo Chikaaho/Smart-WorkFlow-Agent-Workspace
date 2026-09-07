@@ -1,0 +1,16 @@
+== E1 employee003 ==
+{"id": "2096718642178232322"}
+== E2 publish V4 ==
+{"code": 0, "msg": "success", "data": {"id": "2096718642257924098", "createTime": "2026-09-07T05:54:14.119452", "createBy": "1", "updateTime": "2026-09-07T05:54:14.119457", "updateBy": "1", "deleted": 0, "version": "2", "tenantId": "0", "processKey": "bpm_302cf97253fb4470", "name": "v0.0.2请假审批V4带抄送", "formKey": "v002_leave", "defVersion": 1, "status": "PUBLISHED", "deploymentId": "7ff3d8aa-aa3d-11f1-802b-66ff24301f3c", "processDefinitionId": "bpm_fa59561707e74dc2:1:7ffab67d-aa3d-11f1-802b-66ff24301f3c", "graphJson": "{\"processKey\":\"bpm_fa59561707e74dc2\",\"name\":\"v0.0.2请假审批V4带抄送\",\"formKey\":\"v002_leave\",\"version\":1,\"elements\":[{\"id\":\"node_start\",\"kind\":\"node\",\"type\":\"
+== E3 approve ==
+{"code": 0, "msg": "success", "data": {"commandId": "2096718659727200257", "commandKey": "TASK_APPROVE:803cc89b-aa3d-11f1-802b-66ff24301f3c:1", "commandType": "TASK_APPROVE", "channel": "NORMAL", "status": "ACCEPTED", "duplicated": true}}
+== E4 employee003 copies（应1） ==
+{"total": "1"}
+== E5 本人详情（历史变量 formData 贯通） ==
+{"keys": ["copy", "instance", "formData", "progress", "history"], "formData": {"reason": "出差申请", "tags": ["出差"], "proof": [{"storageKey": "k1", "name": "发票.pdf"}], "photo": [], "note": "x"}, "history_len": 1}
+== E6 他人查抄送403 ==
+{"code": 403, "msg": "仅接收人可查看该抄送"}
+== E7 instance statuses ==
+[{"status": "APPROVED", "bk": true}]
+== E8 urge ended（REJECTED） ==
+{"code": 0, "msg": "success", "data": {"result": "REJECTED", "detail": "实例已结束，不能催办", "recordId": "2096718676986761218"}}

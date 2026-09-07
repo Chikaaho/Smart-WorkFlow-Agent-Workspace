@@ -1,0 +1,20 @@
+== 10 create employee ==
+{"code": 500, "msg": "系统异常", "data": null}
+== 11 employee session ==
+{"code": 401, "msg": "未认证", "data": null}
+== 12 employee portal catalog（应含事项） ==
+{"code": 401, "msg": "未认证", "data": null}
+== 13 employee 访问管理分类接口（应 403） ==
+{"code": 401, "msg": "未认证", "data": null}
+== 14 employee 发送记录接口（应 403） ==
+{"code": 401, "msg": "未认证", "data": null}
+== 15 delete category with item（应拒绝） ==
+{"code": 400, "msg": "分类下仍有 1 个事项，须先解除归属再删除", "data": null}
+== 16 submit tags=年假（proof 隐藏应被过滤） ==
+{"code": 0, "msg": "success", "data": "1dac7a52-d15b-4c02-8f60-e9c2d86ddb4d"}
+== 17 read back record1（proof 应不存在、reason=年假 默认值） ==
+{"code": 0, "msg": "success", "data": {"id": "1dac7a52-d15b-4c02-8f60-e9c2d86ddb4d", "create_time": "2026-09-06T21:26:20.662+00:00", "create_by": "1", "update_time": "2026-09-06T21:26:20.662+00:00", "update_by": "1", "version": "0", "reason": "年假", "tags": "[\"年假\"]", "proof": null, "photo": "[]"}}
+== 18 submit tags=出差（proof 可见应保留） ==
+{"code": 0, "msg": "success", "data": "9a47fa4e-2494-4a0c-9241-7869b6050c5f"}
+== 19 read back record2（proof 应存在） ==
+{"code": 0, "msg": "success", "data": {"id": "9a47fa4e-2494-4a0c-9241-7869b6050c5f", "create_time": "2026-09-06T21:26:20.709+00:00", "create_by": "1", "update_time": "2026-09-06T21:26:20.709+00:00", "update_by": "1", "version": "0", "reason": "出差报销", "tags": "[\"出差\"]", "proof": null, "photo": "[]"}}

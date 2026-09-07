@@ -1,0 +1,26 @@
+== A1 employee session ==
+{"code": 401, "msg": "未认证", "data": null}
+== A1 employee portal catalog（可见事项应含 v0.0.2） ==
+{"code": 401, "msg": "未认证", "data": null}
+== A1 employee 访问管理分类（应403） ==
+{"code": 401, "msg": "未认证", "data": null}
+== A1 employee 发送记录（应403） ==
+{"code": 401, "msg": "未认证", "data": null}
+== A1 employee 查看他人草稿接口（应403/404） ==
+{"code": 401, "msg": "未认证", "data": null}
+== A2 admin catalog ==
+{"code": 0, "msg": "success", "data": {"records": [], "total": "0", "pageNum": "1", "pageSize": "5"}}
+== A5 employee submit tags=年假（隐藏proof过滤+默认值） ==
+{"code": 401, "msg": "未认证", "data": null}
+== A3 employee my-instances ==
+{"code": 401, "msg": "未认证", "data": null}
+== A4 admin save layout ==
+{"code": 0, "msg": "success", "data": null}
+== A4 admin get（custom=true） ==
+{"code": 0, "msg": "success", "data": {"custom": true, "layout": {"components": [{"key": "todo", "visible": true, "order": 1}, {"key": "myInitiated", "visible": false, "order": 2}, {"key": "cc", "visible": true, "order": 3}, {"key": "favoriteItems", "visible": true, "order": 4}], "favoriteItemKeys": []}}}
+== A4 employee get（应默认 custom=false） ==
+{"code": 401, "msg": "未认证", "data": null}
+== A4 admin reset ==
+{"code": 0, "msg": "success", "data": null}
+== A4 admin get after reset ==
+{"code": 0, "msg": "success", "data": {"custom": true, "layout": {"components": [{"key": "todo", "visible": true, "order": 1}, {"key": "myInitiated", "visible": false, "order": 2}, {"key": "cc", "visible": true, "order": 3}, {"key": "favoriteItems", "visible": true, "order": 4}], "favoriteItemKeys": []}}}
