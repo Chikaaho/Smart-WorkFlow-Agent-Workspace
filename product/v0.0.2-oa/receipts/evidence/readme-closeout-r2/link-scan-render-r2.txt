@@ -1,0 +1,124 @@
+A8 修正轮（r2，验收05 D1—D4）— 链接、扫描与工程检查原始结果
+2026-09-07；执行角色：Executor；依据：planning-review-v0.0.2-oa-05.md、更新后 ready/direction-v0.0.2-oa-readme-closeout.md
+
+## 1. 两仓最终标题清单
+
+===SERVER README===
+# Smart-WorkFlow-aPaaS-server
+## 谁可以使用、可以做什么
+## 当前可体验的 OA 闭环
+## 三个示例应用场景
+### 场景一：多部门灾备演练
+### 场景二：校园出入口流量异常
+### 场景三：MES 温度智能判断
+## 当前版本
+## 项目入口
+
+===WEB README===
+# Smart-WorkFlow-aPaaS-Web
+## 谁可以使用、可以做什么
+## 当前可体验的 OA 闭环
+## 三个示例应用场景
+### 场景一：多部门灾备演练
+### 场景二：校园出入口流量异常
+### 场景三：MES 温度智能判断
+## 当前版本
+## 项目入口
+
+结论：两仓 README 均以“项目入口”结尾，无“快速开始/环境要求/开发模式/常用命令”等工程章节。
+
+## 2. 技术操作词扫描（原始结果）
+
+模式：JDK|Maven|MAVEN|mvn|Redis|PostgreSQL|H2|SW_CIPHER_KEY|profile|pnpm|npm|node|typecheck|lint|vitest|build|8080|5173|swagger|proxy|Mock|端口|代理|快速开始|环境要求|开发模式|常用命令|启动
+
+grep -nE '<上述模式>' Smart-WorkFlow-Server/README.md Smart-WorkFlow-Web/README.md
+结果：零命中（grep exit=1）。
+说明：两仓首句身份说明各保留一次语言/框架名（Server“Java 21 / Spring Boot”、Web“Vue 3 / TypeScript”），
+符合方向 §2.5“语言或框架最多在项目身份中简短出现一次”，不展开任何运行环境、配置、命令或地址。
+
+## 3. 本地链接静态检查（相对 README 所在目录解析）
+
+===SERVER===
+https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server -> external（单独验证）
+https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web    -> external（单独验证）
+OK: ../README.md
+OK: docs/governance/engineering-constitution.md
+OK: ../Smart-WorkFlow-Web/README.md
+
+===WEB===
+https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web    -> external（单独验证）
+https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server -> external（单独验证）
+OK: ../README.md
+OK: docs/governance/engineering-constitution.md
+OK: ../Smart-WorkFlow-Server/README.md
+
+结论：全部本地相对链接目标存在，零缺失。
+
+## 4. Logo 资源与相对路径解析
+
+- 原图：/Users/chikan/Downloads/135208.PNG（444x468 PNG，Owner 提供）
+- 两仓资源：Smart-WorkFlow-Server/docs/images/ch-apaas-logo.png、Smart-WorkFlow-Web/docs/images/ch-apaas-logo.png
+- SHA-256 对照：
+  f5194ac671c42957f46797228e9ffd827f996a8c289c04f83297c9d58d48552e  /Users/chikan/Downloads/135208.PNG
+  f5194ac671c42957f46797228e9ffd827f996a8c289c04f83297c9d58d48552e  Smart-WorkFlow-Server/docs/images/ch-apaas-logo.png
+  f5194ac671c42957f46797228e9ffd827f996a8c289c04f83297c9d58d48552e  Smart-WorkFlow-Web/docs/images/ch-apaas-logo.png
+- 相对路径解析：两仓 README 首屏 <img src="docs/images/ch-apaas-logo.png">，文件均实际存在（OK）。
+- 渲染实证（headless Chrome 全页截图，脚本断言）：
+  IMAGES: [{ src: "docs/images/ch-apaas-logo.png", alt: "CH-aPaaS Logo", naturalWidth: 444,
+             naturalHeight: 468, displayed: 180 }]（两仓各一条，唯一图片）
+  444x468 原尺寸加载成功（naturalWidth 与原图一致），展示宽度 180px 等比缩放（高约 189.7px），
+  无拉伸无裁切；alt="CH-aPaaS Logo" 正确。截图文件：server-readme-render.png（1920x4990）、
+  web-readme-render.png（1920x4852）。
+
+## 5. 外部链接实际访问（2026-09-07 复查）
+
+https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server -> HTTP 200（curl -L，带 UA）
+https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web    -> HTTP 200（curl -L，带 UA）
+
+## 6. 版本与场景段落两仓逐字核对
+
+- 当前版本段落：diff 无差异（两仓逐字一致：v0.0.1 已发布、v0.0.2 即将发布、正式发布以仓库标签为准；
+  无“验收/收口”等内部过程术语）。
+- 三个示例应用场景段落：diff 无差异（两仓逐字一致，含场景状态声明）。
+
+## 7. 敏感信息扫描（原始结果）
+
+模式：password|passwd|secret|token|api[_-]?key|private|BEGIN |AKID|sk-|192.168.|10\.[0-9]+\.|
+172\.(1[6-9]|2[0-9]|3[01])\.|admin/admin|@example|root@|Bearer
+grep -nE '<上述模式>' Smart-WorkFlow-Server/README.md Smart-WorkFlow-Web/README.md
+结果：零命中（grep exit=1）。无敏感配置、连接信息、账号或调试认证材料。
+
+## 8. Markdown 基础检查
+
+- 代码围栏：两仓均 0（无围栏代码块）。
+- 表格管道一致性：两仓项目入口表格所有行 | 数量一致，无错位行。
+- 图片标签：两仓 README 各 1 个 <img>（Logo），alt 与相对路径正确。
+
+## 9. 两仓 git diff --check 原始结果
+
+Smart-WorkFlow-Server: git diff --check -> 退出码 0，无输出。
+Smart-WorkFlow-Web:    git diff --check -> 退出码 0，无输出。
+
+## 10. 本轮改动范围（diffstat，含 README 与新增 Logo 资源）
+
+Smart-WorkFlow-Server: README.md | 140 ++++++---------------（+46/-98 计量已变化，见 r2 diff）
+                       新增 docs/images/ch-apaas-logo.png（444x468，20,646 字节）
+Smart-WorkFlow-Web:    README.md | 144 ++++++++++-----（+44/-103 计量已变化，见 r2 diff）
+                       新增 docs/images/ch-apaas-logo.png（444x468，20,646 字节）
+
+本轮（r2）只修改两仓 README.md 并新增 docs/images/ 资源；两仓其余工作树未提交修改
+（Server 4 个 Java 文件＋新增测试目录/schema-copy-h2.sql/upload 目录；Web 3 个 TS/Vue 文件＋
+f-cfg/graph 杂散文件）均为 A1—A7 轮次既有内容，本轮未触碰。
+
+## 11. 身份记录（仅用于验收回执）
+
+| 仓库 | 基线提交（HEAD） | README 工作树差异身份 | Logo 资源身份 |
+|---|---|---|---|
+| Smart-WorkFlow-Server | 4cba2114b43685e902531d3fbd34ede29bb46cd7 | M README.md（diff 见 server-readme-r2.diff） | 新增 docs/images/ch-apaas-logo.png（未跟踪） |
+| Smart-WorkFlow-Web | ef1fdc71d1e6b218ca13d177218d274da3c158c0 | M README.md（diff 见 web-readme-r2.diff） | 新增 docs/images/ch-apaas-logo.png（未跟踪） |
+
+## 12. 影响说明（已知）
+
+- 根 README 中“后端/前端环境与启动”两行链接指向 `README.md#快速开始` 锚点；按方向 §2.5 删除
+  “快速开始”章节后该锚点不再存在。根 README 属工作区文档、不在 A8 授权修改范围，本轮未改动；
+  该影响如实上报，由规划/所有者决定根 README 锚点后续处理。
