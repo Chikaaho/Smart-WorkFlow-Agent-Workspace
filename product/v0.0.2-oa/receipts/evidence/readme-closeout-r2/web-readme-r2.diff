@@ -1,0 +1,178 @@
+diff --git a/README.md b/README.md
+index 28be68f..14b9819 100644
+--- a/README.md
++++ b/README.md
+@@ -1,132 +1,68 @@
+ # Smart-WorkFlow-aPaaS-Web
+ 
+-Smart-WorkFlow-aPaaS-Web 是 CH-aPaaS 的 Vue 单页应用，为低代码表单、流程审批、组织权限、通知、存储、任务、IoT 与 AI Agent 提供统一的浏览器端交互入口。
++<img src="docs/images/ch-apaas-logo.png" alt="CH-aPaaS Logo" width="180" />
+ 
+-配套入口：[Smart-WorkFlow-aPaaS-server](../Smart-WorkFlow-Server/README.md) · [项目知识中心](../README.md)
++Smart-WorkFlow-aPaaS-Web 是 **CH-aPaaS** 的前端单页应用（Vue 3 / TypeScript），面向普通员工、审批人、业务管理员与平台管理员，提供统一的工作台、业务办理与管理界面。CH-aPaaS 是用于搭建企业业务应用的平台；办公审批（OA）是当前已经落地的一类使用场景，而不是项目的全部定义。
+ 
+-## 核心能力
++## 谁可以使用、可以做什么
+ 
+-- 登录会话、动态菜单、路由与权限控制。
+-- 表单设计、表单渲染、数据填写和业务数据列表。
+-- 流程定义、待办审批与流程实例监控。
+-- 用户、角色、部门、岗位和字典管理。
+-- 通知、文件、定时任务、IoT 与 Agent 管理界面。
+-- 真实后端 API 与 Mock 两种本地开发模式。
++- **普通员工**：在工作台发起业务申请、恢复草稿、跟踪进度、处理待办并查看结果。
++- **审批人**：处理待办并填写审批意见，查看抄送我的内容，接收催办提醒。
++- **业务管理员**：进入管理后台维护事项与分类、表单、流程和通知记录，处理通知发送失败并重发。
++- **平台管理员**：管理用户、角色、菜单与权限。
+ 
+-## 技术栈
++为什么要使用它：业务事项配置为表单与流程后，使用者直接在工作台发起和办理，不需要为每个业务流程重复开发页面、权限、表单和审批链。
+ 
+-| 类别         | 技术                              |
+-| ------------ | --------------------------------- |
+-| 应用框架     | Vue 3、TypeScript、Vite           |
+-| 路由与状态   | Vue Router、Pinia                 |
+-| UI 与国际化  | Element Plus、vue-i18n            |
+-| HTTP 与 Mock | Axios、MSW                        |
+-| 表单与流程   | form-create、bpmn-js、Vue Flow    |
+-| 工程质量     | vue-tsc、ESLint、Prettier、Vitest |
++## 当前可体验的 OA 闭环
+ 
+-## 目录结构
++v0.0.2 已验收的 OA 业务闭环如下：
+ 
+-```text
+-src/
+-├── contracts/       稳定类型与 API 契约
+-├── foundation/      请求、会话、菜单、权限与 Mock 基础设施
+-├── security/        内容净化、表达式求值与安全组件
+-├── adapters/        表单设计器、BPMN 与流程图防腐层
+-├── modules/         表单、系统、流程、通知、存储、任务、Agent、IoT 等业务模块
+-├── components/      全局组件
+-├── layouts/         应用布局
+-├── router/          路由与导航守卫
+-├── stores/          Pinia 状态
+-└── views/           登录与错误页
+-```
++> 用户从工作台找到可发起事项，填写或恢复业务草稿，提交申请；审批人处理待办并填写意见；发起人随后查看状态和结果，相关人员收到抄送，管理员在后台维护事项、表单、流程和通知记录。
+ 
+-业务模块通过 `contracts`、`foundation`、`security` 和 `adapters` 使用公共能力。完整分层与导入边界见[前端工程宪法](docs/governance/engineering-constitution.md)。
++围绕这条旅程，前端提供以下使用体验：
+ 
+-## 环境要求
++- **工作台**：待办、我发起的、抄送、常用事项组件，支持显示/隐藏、排序与恢复默认；布局按用户独立保存，刷新与重新登录后恢复。
++- **流程中心**：按分类和关键词查找本人可发起的事项，选择事项即进入关联表单。
++- **表单填报**：多选、附件、图片、说明文字等控件，支持默认值、条件显示（显隐联动）；草稿可保存与恢复，提交前按规则校验。
++- **个人办理**：我发起的、我的待办、我的已办、抄送我的与催办；详情贯通表单内容、流程状态与审批意见。
++- **前后台分层**：普通业务入口与管理后台各自独立；撤权后入口回落，无权页面和操作不可达。
++- **通知管理**：查看站内通知的发送状态与失败记录，对有权限的失败通知重发。
+ 
+-- Node.js
+-- pnpm
+-- 真实 API 模式需要可访问的 Smart-WorkFlow-aPaaS-server
++## 三个示例应用场景
+ 
+-环境配置入口：
++以下三个场景展示 CH-aPaaS 如何组合表单、流程、通知、知识与设备等能力，作为平台应用愿景呈现。
+ 
+-- [`.env`](.env)：默认开发环境配置。
+-- [`.env.mock`](.env.mock)：Mock 开发模式配置。
+-- [`vite.config.ts`](vite.config.ts)：开发服务器、代理与构建配置。
++### 场景一：多部门灾备演练
+ 
+-## 开发模式
++分公司科技部负责人发起灾备演练申请。流程经过多位技术负责人审核，再由各部门分管领导并行审批，最后进入总公司科技部会签并抄送相关领导。审批通过后，系统依据表单中的预定时间进入任务队列，到时通过 MQTT 执行机房断电和火警告警等演练动作。
+ 
+-`pnpm dev` 使用真实 API，浏览器请求 `/api`，默认由 Vite 代理到 `http://localhost:8080`。可通过 `VITE_PROXY_TARGET` 指定其他后端地址。
++它展示表单、多人审批、动态并行、会签、抄送、定时任务与设备控制的组合价值。
+ 
+-`pnpm dev:mock` 启用本地 Mock，用于前端独立开发和页面交互调试。
++### 场景二：校园出入口流量异常
+ 
+-## 快速开始
++校园某个大门出现异常流量后，系统先查找近期校内活动和已有知识，再结合公开活动或特殊节日信息判断原因。符合正常特殊情况时记录日志并建立 P1 工单；找不到合理原因时建立 P0 工单，并通过告警、短信和电话提醒负责人。
+ 
+-安装依赖：
++它展示事件接入、流程与知识检索、外部信息判断、工单分级和多渠道告警的组合价值。
+ 
+-```bash
+-pnpm install
+-```
++### 场景三：MES 温度智能判断
+ 
+-启动真实 API 模式：
++厂房设备常温约为 75℃，80℃ 为告警阈值，85℃ 必须停机。人工加料可能短时超过 80℃，业务人员可配置相关知识和样本：短时异常升温触发工单与告警；缓慢升温且未达到 85℃ 时识别为可能的正常操作并记录；超过 85℃ 则进入紧急停机告警流程。
+ 
+-```bash
+-pnpm dev
+-```
++它展示实时数据、业务知识、趋势判断、分级处置和流程联动的组合价值。
+ 
+-或启动 Mock 模式：
++> 当前平台已经具备上述场景中的部分可复用基础能力（如审批流程、通知与告警、定时任务、知识检索与设备接入），三个完整端到端场景仍在持续完善中，不属于 v0.0.2 已交付范围。
+ 
+-```bash
+-pnpm dev:mock
+-```
++## 当前版本
+ 
+-开发服务器默认地址为 `http://localhost:5173`。
++上一正式发布版本为 v0.0.1（以仓库 v0.0.1 标签为准）。v0.0.2 即将发布，重点完善 OA 业务闭环：工作台、流程中心、个人办理、表单体验、前后台分层与通知闭环；正式发布以仓库标签为准。
+ 
+-## 常用开发命令
++## 项目入口
+ 
+-类型检查：
++| 入口 | 说明 |
++| --- | --- |
++| [Smart-WorkFlow-aPaaS-Web](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web) | 前端仓库（本仓库） |
++| [Smart-WorkFlow-aPaaS-server](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server) | 后端仓库 |
++| [Smart-WorkFlow-Agent-Workspace](../README.md) | 项目规划与知识中心 |
++| [前端工程文档](docs/governance/engineering-constitution.md) | 前端工程规范与验证入口等开发者资料汇总 |
+ 
+-```bash
+-pnpm typecheck
+-```
+-
+-代码检查：
+-
+-```bash
+-pnpm lint
+-```
+-
+-运行测试：
+-
+-```bash
+-pnpm test
+-```
+-
+-生产构建：
+-
+-```bash
+-pnpm build
+-```
+-
+-预览构建产物：
+-
+-```bash
+-pnpm preview
+-```
+-
+-生成后端 API 类型：
+-
+-```bash
+-pnpm gen:api-types
+-```
+-
+-## 进一步阅读
+-
+-| 主题                 | 入口                                                                                         |
+-| -------------------- | -------------------------------------------------------------------------------------------- |
+-| 前端架构与工程规范   | [`docs/governance/engineering-constitution.md`](docs/governance/engineering-constitution.md) |
+-| 平台整体架构         | [`../knowledge/architecture.md`](../knowledge/architecture.md)                               |
+-| 后端与 API 入口      | [`../Smart-WorkFlow-Server/README.md`](../Smart-WorkFlow-Server/README.md)                   |
+-| 工作区治理入口       | [`../system.md`](../system.md)                                                               |
+-| ESLint 架构边界      | [`eslint.config.js`](eslint.config.js)                                                       |
+-| Vite、代理与构建配置 | [`vite.config.ts`](vite.config.ts)                                                           |
++从平台能力与运行支撑角度了解项目，见配套后端：[Smart-WorkFlow-aPaaS-server](../Smart-WorkFlow-Server/README.md)。
+\ No newline at end of file
