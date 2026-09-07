@@ -1,0 +1,425 @@
+== G0-user-page | POST /system/user/page?pageNum=1&pageSize=50
+{"code":0,"msg":"success","data":{"records":[{"id":"1","createTime":"2026-09-07T09:39:44.565217","createBy":null,"updateTime":"2026-09-07T09:39:44.565217","updateBy":null,"deleted":0,"version":"0","tenantId":"0","username":"admin","password":"$2a$10$GQx6ILw5jsPhqHxJ6/AcmOzSM8xRVRwqChiH/B9ylh0srY0/NqXiK","realName":"系统管理员","email":null,"phone":null,"sex":0,"status":0,"deptId":"1","isAdmin":1,"avatar":null,"roleIds":null,"postIds":null}],"total":"1","pageNum":"1","pageSize":"50"}}
+HTTP_STATUS=200
+== G0-roles | GET /system/role/page?pageNum=1&pageSize=50
+{"code":500,"msg":"系统异常","data":null}
+HTTP_STATUS=500
+== G0-role-page | POST /system/role/page?pageNum=1&pageSize=50
+{"code":0,"msg":"success","data":{"records":[{"id":"1","createTime":"2026-09-07T09:39:44.544367","createBy":null,"updateTime":"2026-09-07T09:39:44.544367","updateBy":null,"deleted":0,"version":"0","tenantId":"0","name":"超级管理员","code":"superadmin","sort":0,"status":1,"dataScope":null,"deptIds":[],"builtIn":true,"description":"系统内置超级管理员角色，拥有所有权限"},{"id":"2","createTime":"2026-09-07T09:39:44.70047","createBy":null,"updateTime":"2026-09-07T09:39:44.70047","updateBy":null,"deleted":0,"version":"0","tenantId":"0","name":"管理员","code":"admin","sort":10,"status":1,"dataScope":0,"deptIds":[],"builtIn":false,"description":"系统初始化普通管理员角色"}],"total":"2","pageNum":"1","pageSize":"50"}}
+HTTP_STATUS=200
+== G1-create-mgr | POST /system/user
+{"code":0,"msg":"success","data":"2096776334337073154"}
+HTTP_STATUS=200
+== G1-create-emp | POST /system/user
+{"code":0,"msg":"success","data":"2096776334903304193"}
+HTTP_STATUS=200
+== G1-create-app | POST /system/user
+{"code":0,"msg":"success","data":"2096776335440175106"}
+HTTP_STATUS=200
+== G1-mgr-roles | PUT /system/user/2096776334337073154/roles
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== G1-mgr-info | GET /system/user/2096776334337073154/roles
+{"code":0,"msg":"success","data":["2"]}
+HTTP_STATUS=200
+== G1-mgr-me | GET /auth/me
+{"code":401,"msg":"未认证","data":null}
+HTTP_STATUS=401
+== G1-mgr-admin-catalog | GET /workflow/catalog/admin/items?pageNum=1&pageSize=20
+{"code":401,"msg":"未认证","data":null}
+HTTP_STATUS=401
+== G1-emp-admin-catalog | GET /workflow/catalog/admin/items?pageNum=1&pageSize=20
+{"code":401,"msg":"未认证","data":null}
+HTTP_STATUS=401
+== G1-mgr-detail | GET /system/user/2096776334337073154
+{"code":0,"msg":"success","data":{"id":"2096776334337073154","createTime":"2026-09-07T09:43:28.984243","createBy":"1","updateTime":"2026-09-07T09:43:28.984258","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"mgr002","password":"$2a$10$QbIEOh/u5ajY7kGk9V/J2.yVNaJN0EvXHS98RHjABglmB0akZi716","realName":"管理员乙","email":null,"phone":null,"sex":0,"status":1,"deptId":null,"isAdmin":0,"avatar":null,"roleIds":null,"postIds":null}}
+HTTP_STATUS=200
+== G1-activate-2096776334337073154 | PUT /system/user
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== G1-activate-2096776334903304193 | PUT /system/user
+{"code":500,"msg":"系统异常","data":null}
+HTTP_STATUS=500
+== G1-activate-2096776335444017510 | PUT /system/user
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== G1-fix-mgr | PUT /system/user
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== G1-fix-emp | PUT /system/user
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== G1-fix-app | PUT /system/user
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== G1-mgr-admin-catalog | GET /workflow/catalog/admin/items?pageNum=1&pageSize=20
+{"code":403,"msg":"无权限","data":null}
+HTTP_STATUS=403
+== G1-mgr-detail2 | GET /system/user/2096776334337073154
+{"code":0,"msg":"success","data":{"id":"2096776334337073154","createTime":"2026-09-07T09:43:28.984243","createBy":"1","updateTime":"2026-09-07T09:45:51.626779","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"mgr002","password":"$2a$10$QbIEOh/u5ajY7kGk9V/J2.yVNaJN0EvXHS98RHjABglmB0akZi716","realName":"管理员乙","email":null,"phone":null,"sex":0,"status":0,"deptId":null,"isAdmin":0,"avatar":null,"roleIds":null,"postIds":null}}
+HTTP_STATUS=200
+== G1-role2-menus | GET /system/role/2/menus
+{"code":0,"msg":"success","data":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","200","201","202","203","204","205","206","207","208","300","301","302","303","304","305","306","307","308","309","310","311"]}
+HTTP_STATUS=200
+== G1-role2-menus-grant | PUT /system/role/2/menus
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== G1-mgr-admin-catalog2 | GET /workflow/catalog/admin/items?pageNum=1&pageSize=20
+{"code":403,"msg":"无权限","data":null}
+HTTP_STATUS=403
+== G1-mgr-notify | GET /notify/records?pageNum=1&pageSize=10
+{"code":403,"msg":"无权限","data":null}
+HTTP_STATUS=403
+== G1-mgr-user-page | POST /system/user/page?pageNum=1&pageSize=5
+{"code":403,"msg":"无权限","data":null}
+HTTP_STATUS=403
+== G1-mgr-authme | GET /auth/me/info
+{"code":500,"msg":"系统异常","data":null}
+HTTP_STATUS=500
+== G1-mgr-authme | GET /auth/me
+{"code":0,"msg":"success","data":{"user":{"id":"2096776334337073154","username":"mgr002","displayName":"管理员乙","deptId":null,"tenantId":"0","avatar":null},"permissions":[],"roles":[],"superAdmin":false}}
+HTTP_STATUS=200
+== G1-mgr-roles2 | PUT /system/user/2096776334337073154/roles
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== G1-mgr-authme2 | GET /auth/me
+{"code":0,"msg":"success","data":{"user":{"id":"2096776334337073154","username":"mgr002","displayName":"管理员乙","deptId":null,"tenantId":"0","avatar":null},"permissions":["system:view","form:view","form:design","workflow:view","notify:view","agent:view","iot:view","openapi:view","system:dict:view","system:user:list","system:role:list","system:dept:list","system:post:list","agent:model:view","storage:view","job:view","job:list","job:log","job:create","job:update","job:delete","job:pause","job:resume","job:trigger","storage:upload","storage:delete","storage:download","system:user:create","system:user:update","system:user:delete","system:role:create","system:role:update","system:role:delete","form:design:save","form:design:publish","workflow:def:create","workflow:def:save","workflow:def:publish","workflow:def:delete","workflow:catalog:view","workflow:cc:view","workflow:urge","workflow:catalog:manage","notify:record:view","notify:record:resend"],"roles":["admin"],"superAdmin":false}}
+HTTP_STATUS=200
+== G1-mgr-admin-catalog3 | GET /workflow/catalog/admin/items?pageNum=1&pageSize=20
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"20"}}
+HTTP_STATUS=200
+== G1-mgr-category | POST /workflow/categories
+{"code":0,"msg":"success","data":{"id":"2096777914159423490","name":"行政办公","sortNo":1,"itemCount":"0"}}
+HTTP_STATUS=200
+== F-create | POST /form/def
+{"code":0,"msg":"success","data":{"id":"33b3d859-73fa-4529-a33f-5f7c5a0d887f","formKey":"v002r2_leave","name":"v0.0.2R2请假申请","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-07T09:54:55.149575","updateTime":"2026-09-07T09:54:55.14958"}}
+HTTP_STATUS=200
+== F-config | POST /form/def/33b3d859-73fa-4529-a33f-5f7c5a0d887f/config
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== F-publish | POST /form/def/33b3d859-73fa-4529-a33f-5f7c5a0d887f/publish
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== P-create | POST /workflow/defs
+{"code":0,"msg":"success","data":{"defId":"2096779212854353921","graph":{"processKey":"bpm_af2198ebc6994d41","name":"v0.0.2R2请假审批","formKey":"v002r2_leave","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}}
+HTTP_STATUS=200
+== P-graph | PUT /workflow/defs/2096779212854353921/graph
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== P-validate | POST /workflow/defs/2096779212854353921/validate
+{"code":0,"msg":"success","data":[]}
+HTTP_STATUS=200
+== P-publish | POST /workflow/defs/2096779212854353921/publish
+{"code":2103,"msg":"BPMN 部署失败","data":null}
+HTTP_STATUS=200
+== P-get | GET /workflow/defs/2096779212854353921
+{"code":0,"msg":"success","data":{"processKey":"","name":"v0.0.2R2请假审批","formKey":"v002r2_leave","version":null,"elements":[{"id":"start","kind":"node","type":"START","source":null,"target":null,"config":{"name":"开始"},"style":{}},{"id":"a1","kind":"node","type":"APPROVAL","source":null,"target":null,"config":{"name":"主管审批","participant":{"strategy":"FIXED_USER","value":["1"]}},"style":{}},{"id":"c1","kind":"node","type":"COPY","source":null,"target":null,"config":{"name":"抄送","participant":{"strategy":"FIXED_USER","value":["2096776335444017510"]},"title":"请假抄送"},"style":{}},{"id":"end","kind":"node","type":"END","source":null,"target":null,"config":{"name":"结束"},"style":{}},{"id":"e1","kind":"edge","type":null,"source":"start","target":"a1","config":{},"style":{}},{"id":"e2","kind":"edge","type":null,"source":"a1","target":"c1","config":{},"style":{}},{"id":"e3","kind":"edge","type":null,"source":"c1","target":"end","config":{},"style":{}}],"canvas":null}}
+HTTP_STATUS=200
+== P-graph2 | PUT /workflow/defs/2096779212854353921/graph
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== P-validate2 | POST /workflow/defs/2096779212854353921/validate
+{"code":0,"msg":"success","data":[]}
+HTTP_STATUS=200
+== P-publish2 | POST /workflow/defs/2096779212854353921/publish
+{"code":2103,"msg":"BPMN 部署失败","data":null}
+HTTP_STATUS=200
+== P-graph3 | PUT /workflow/defs/2096779212854353921/graph
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== P-validate3 | POST /workflow/defs/2096779212854353921/validate
+{"code":0,"msg":"success","data":[]}
+HTTP_STATUS=200
+== P-publish3 | POST /workflow/defs/2096779212854353921/publish
+{"code":0,"msg":"success","data":{"id":"2096779212854353921","createTime":"2026-09-07T09:54:55.276079","createBy":"1","updateTime":"2026-09-07T09:54:55.276086","updateBy":"1","deleted":0,"version":"4","tenantId":"0","processKey":"bpm_af2198ebc6994d41","name":"v0.0.2R2请假审批","formKey":"v002r2_leave","defVersion":1,"status":"PUBLISHED","deploymentId":"59bd7703-aa5f-11f1-ac9e-66ff24301f3c","processDefinitionId":"bpm_r2leave00000001:1:59e74626-aa5f-11f1-ac9e-66ff24301f3c","graphJson":"{\"processKey\":\"bpm_r2leave00000001\",\"name\":\"v0.0.2R2请假审批\",\"formKey\":\"v002r2_leave\",\"version\":null,\"elements\":[{\"id\":\"start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{\"name\":\"开始\"},\"style\":{}},{\"id\":\"a1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"主管审批\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[\"1\"]}},\"style\":{}},{\"id\":\"c1\",\"kind\":\"node\",\"type\":\"COPY\",\"source\":null,\"target\":null,\"config\":{\"name\":\"抄送\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[\"2096776335444017510\"]},\"title\":\"请假抄送\"},\"style\":{}},{\"id\":\"end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{\"name\":\"结束\"},\"style\":{}},{\"id\":\"e1\",\"kind\":\"edge\",\"type\":null,\"source\":\"start\",\"target\":\"a1\",\"config\":{},\"style\":{}},{\"id\":\"e2\",\"kind\":\"edge\",\"type\":null,\"source\":\"a1\",\"target\":\"c1\",\"config\":{},\"style\":{}},{\"id\":\"e3\",\"kind\":\"edge\",\"type\":null,\"source\":\"c1\",\"target\":\"end\",\"config\":{},\"style\":{}}],\"canvas\":null}","categoryId":null}}
+HTTP_STATUS=200
+== C-create3 | POST /workflow/categories
+{"code":400,"msg":"分类名称已存在: 行政办公","data":null}
+HTTP_STATUS=200
+== C-list | GET /workflow/categories
+{"code":0,"msg":"success","data":[{"id":"2096777914159423490","name":"行政办公","sortNo":1,"itemCount":"0"}]}
+HTTP_STATUS=200
+== C-assign4 | PUT /workflow/catalog/admin/items/bpm_r2leave00000001/category
+{"code":404,"msg":"事项不存在","data":null}
+HTTP_STATUS=200
+== G2a-admin-catalog | GET /workflow/catalog/admin/items?pageNum=1&pageSize=20
+{"code":0,"msg":"success","data":{"records":[{"itemKey":"bpm_af2198ebc6994d41","name":"v0.0.2R2请假审批","formKey":"v002r2_leave","categoryId":null,"status":"PUBLISHED","formPublished":true,"bindingActive":false}],"total":"1","pageNum":"1","pageSize":"20"}}
+HTTP_STATUS=200
+== P2-create | POST /workflow/defs
+{"code":0,"msg":"success","data":{"defId":"2096779906164416513","graph":{"processKey":"bpm_90cc3ad9f57a4433","name":"v0.0.2R2请假审批B","formKey":"v002r2_leave","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}}
+HTTP_STATUS=200
+== P2-graph | PUT /workflow/defs/2096779906164416513/graph
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== P2-validate | POST /workflow/defs/2096779906164416513/validate
+{"code":0,"msg":"success","data":[]}
+HTTP_STATUS=200
+== P2-publish | POST /workflow/defs/2096779906164416513/publish
+{"code":500,"msg":"系统异常","data":null}
+HTTP_STATUS=500
+== P2-get2 | GET /workflow/defs/2096779590723665921
+{"code":401,"msg":"未认证","data":null}
+HTTP_STATUS=401
+== P2-graph2 | PUT /workflow/defs/2096779906164416513/graph
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== P2-validate2 | POST /workflow/defs/2096779906164416513/validate
+{"code":0,"msg":"success","data":[]}
+HTTP_STATUS=200
+== P2-publish2 | POST /workflow/defs/2096779906164416513/publish
+{"code":0,"msg":"success","data":{"id":"2096779906164416513","createTime":"2026-09-07T09:57:40.574579","createBy":"1","updateTime":"2026-09-07T09:57:40.574589","updateBy":"1","deleted":0,"version":"3","tenantId":"0","processKey":"bpm_90cc3ad9f57a4433","name":"v0.0.2R2请假审批B","formKey":"v002r2_leave","defVersion":1,"status":"PUBLISHED","deploymentId":"086476a7-aa60-11f1-ac9e-66ff24301f3c","processDefinitionId":"bpm_90cc3ad9f57a4433:1:087147ea-aa60-11f1-ac9e-66ff24301f3c","graphJson":"{\"processKey\":\"bpm_90cc3ad9f57a4433\",\"name\":\"v0.0.2R2请假审批B\",\"formKey\":\"v002r2_leave\",\"version\":null,\"elements\":[{\"id\":\"start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{\"name\":\"开始\"},\"style\":{}},{\"id\":\"a1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"主管审批\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[\"1\"]}},\"style\":{}},{\"id\":\"c1\",\"kind\":\"node\",\"type\":\"COPY\",\"source\":null,\"target\":null,\"config\":{\"name\":\"抄送\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[\"2096776335444017510\"]},\"title\":\"请假抄送\"},\"style\":{}},{\"id\":\"end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{\"name\":\"结束\"},\"style\":{}},{\"id\":\"e1\",\"kind\":\"edge\",\"type\":null,\"source\":\"start\",\"target\":\"a1\",\"config\":{},\"style\":{}},{\"id\":\"e2\",\"kind\":\"edge\",\"type\":null,\"source\":\"a1\",\"target\":\"c1\",\"config\":{},\"style\":{}},{\"id\":\"e3\",\"kind\":\"edge\",\"type\":null,\"source\":\"c1\",\"target\":\"end\",\"config\":{},\"style\":{}}],\"canvas\":null}","categoryId":null}}
+HTTP_STATUS=200
+== C-assign6 | PUT /workflow/catalog/admin/items/bpm_90cc3ad9f57a4433/category
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== G2a-admin-catalog3 | GET /workflow/catalog/admin/items?pageNum=1&pageSize=20
+{"code":0,"msg":"success","data":{"records":[{"itemKey":"bpm_af2198ebc6994d41","name":"v0.0.2R2请假审批","formKey":"v002r2_leave","categoryId":null,"status":"PUBLISHED","formPublished":true,"bindingActive":false},{"itemKey":"bpm_90cc3ad9f57a4433","name":"v0.0.2R2请假审批B","formKey":"v002r2_leave","categoryId":"2096777914159423490","status":"PUBLISHED","formPublished":true,"bindingActive":true}],"total":"2","pageNum":"1","pageSize":"20"}}
+HTTP_STATUS=200
+== G2a-emp-counts | GET /workflow/catalog/category-counts
+{"code":401,"msg":"未认证","data":null}
+HTTP_STATUS=401
+== G2a-emp-items | GET /workflow/catalog/items?pageNum=1&pageSize=20
+{"code":401,"msg":"未认证","data":null}
+HTTP_STATUS=401
+== G2a-emp-cat | GET /workflow/catalog/items?pageNum=1&pageSize=20&categoryId=2096777914159423490
+{"code":401,"msg":"未认证","data":null}
+HTTP_STATUS=401
+== G2a-emp-uncat | GET /workflow/catalog/items?pageNum=1&pageSize=20&categoryId=0
+{"code":401,"msg":"未认证","data":null}
+HTTP_STATUS=401
+== G2a-emp-kw | GET /workflow/catalog/items?pageNum=1&pageSize=20&keyword=请假
+{"transport_error": "'ascii' codec can't encode characters in position 83-84: ordinal not in range(128)"}
+HTTP_STATUS=-1
+== G2a-emp-kw404 | GET /workflow/catalog/items?pageNum=1&pageSize=20&keyword=报销
+{"transport_error": "'ascii' codec can't encode characters in position 83-84: ordinal not in range(128)"}
+HTTP_STATUS=-1
+== G2a-emp-cats403 | GET /workflow/categories
+{"code":401,"msg":"未认证","data":null}
+HTTP_STATUS=401
+== G2b-item | GET /workflow/catalog/items/bpm_90cc3ad9f57a4433
+{"code":401,"msg":"未认证","data":null}
+HTTP_STATUS=401
+== G2a-emp-counts | GET /workflow/catalog/category-counts
+{"code":0,"msg":"success","data":{"2096777914159423490":"1"}}
+HTTP_STATUS=200
+== G2a-emp-items | GET /workflow/catalog/items?pageNum=1&pageSize=20
+{"code":0,"msg":"success","data":{"records":[{"itemKey":"bpm_90cc3ad9f57a4433","name":"v0.0.2R2请假审批B","formKey":"v002r2_leave","categoryId":"2096777914159423490","status":"PUBLISHED","formPublished":true,"bindingActive":true}],"total":"1","pageNum":"1","pageSize":"20"}}
+HTTP_STATUS=200
+== G2a-emp-cat | GET /workflow/catalog/items?pageNum=1&pageSize=20&categoryId=2096777914159423490
+{"code":0,"msg":"success","data":{"records":[{"itemKey":"bpm_90cc3ad9f57a4433","name":"v0.0.2R2请假审批B","formKey":"v002r2_leave","categoryId":"2096777914159423490","status":"PUBLISHED","formPublished":true,"bindingActive":true}],"total":"1","pageNum":"1","pageSize":"20"}}
+HTTP_STATUS=200
+== G2a-emp-uncat | GET /workflow/catalog/items?pageNum=1&pageSize=20&categoryId=0
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"20"}}
+HTTP_STATUS=200
+== G2a-emp-kw | GET /workflow/catalog/items?pageNum=1&pageSize=20&keyword=%E8%AF%B7%E5%81%87
+{"code":0,"msg":"success","data":{"records":[{"itemKey":"bpm_90cc3ad9f57a4433","name":"v0.0.2R2请假审批B","formKey":"v002r2_leave","categoryId":"2096777914159423490","status":"PUBLISHED","formPublished":true,"bindingActive":true}],"total":"1","pageNum":"1","pageSize":"20"}}
+HTTP_STATUS=200
+== G2a-emp-kw404 | GET /workflow/catalog/items?pageNum=1&pageSize=20&keyword=%E6%8A%A5%E9%94%80
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"20"}}
+HTTP_STATUS=200
+== G2a-emp-cats403 | GET /workflow/categories
+{"code":403,"msg":"无权限","data":null}
+HTTP_STATUS=403
+== G2b-item | GET /workflow/catalog/items/bpm_90cc3ad9f57a4433
+{"code":0,"msg":"success","data":{"itemKey":"bpm_90cc3ad9f57a4433","name":"v0.0.2R2请假审批B","formKey":"v002r2_leave","categoryId":"2096777914159423490","status":"PUBLISHED","formPublished":true,"bindingActive":true}}
+HTTP_STATUS=200
+== F2-create | POST /form/def
+{"code":0,"msg":"success","data":{"id":"9baf48e7-5c00-48d8-8578-b2b3b8ef5e1c","formKey":"v002r2_expense","name":"v0.0.2R2报销申请","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-07T10:02:41.517178","updateTime":"2026-09-07T10:02:41.517179"}}
+HTTP_STATUS=200
+== F2-config | POST /form/def/9baf48e7-5c00-48d8-8578-b2b3b8ef5e1c/config
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== F2-publish | POST /form/def/9baf48e7-5c00-48d8-8578-b2b3b8ef5e1c/publish
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== P3-create | POST /workflow/defs
+{"code":0,"msg":"success","data":{"defId":"2096781168696057857","graph":{"processKey":"bpm_428bff1a6a8c4e5e","name":"v0.0.2R2报销审批","formKey":"v002r2_expense","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}}
+HTTP_STATUS=200
+== P3-get | GET /workflow/defs/2096781168696057857
+{"code":0,"msg":"success","data":{"processKey":"bpm_428bff1a6a8c4e5e","name":"v0.0.2R2报销审批","formKey":"v002r2_expense","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}
+HTTP_STATUS=200
+== P3-graph | PUT /workflow/defs/2096781168696057857/graph
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== P3-validate | POST /workflow/defs/2096781168696057857/validate
+{"code":0,"msg":"success","data":[]}
+HTTP_STATUS=200
+== P3-publish | POST /workflow/defs/2096781168696057857/publish
+{"code":0,"msg":"success","data":{"id":"2096781168696057857","createTime":"2026-09-07T10:02:41.584798","createBy":"1","updateTime":"2026-09-07T10:02:41.584805","updateBy":"1","deleted":0,"version":"2","tenantId":"0","processKey":"bpm_428bff1a6a8c4e5e","name":"v0.0.2R2报销审批","formKey":"v002r2_expense","defVersion":1,"status":"PUBLISHED","deploymentId":"35824c7b-aa60-11f1-ac9e-66ff24301f3c","processDefinitionId":"bpm_428bff1a6a8c4e5e:1:358a3bbe-aa60-11f1-ac9e-66ff24301f3c","graphJson":"{\"processKey\":\"bpm_428bff1a6a8c4e5e\",\"name\":\"v0.0.2R2报销审批\",\"formKey\":\"v002r2_expense\",\"version\":null,\"elements\":[{\"id\":\"start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{\"name\":\"开始\"},\"style\":{}},{\"id\":\"a1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"主管审批\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[\"1\"]}},\"style\":{}},{\"id\":\"end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{\"name\":\"结束\"},\"style\":{}},{\"id\":\"e1\",\"kind\":\"edge\",\"type\":null,\"source\":\"start\",\"target\":\"a1\",\"config\":{},\"style\":{}},{\"id\":\"e2\",\"kind\":\"edge\",\"type\":null,\"source\":\"a1\",\"target\":\"end\",\"config\":{},\"style\":{}}],\"canvas\":null}","categoryId":null}}
+HTTP_STATUS=200
+== G2a-emp-counts2 | GET /workflow/catalog/category-counts
+{"code":0,"msg":"success","data":{"2096777914159423490":"1"}}
+HTTP_STATUS=200
+== S-mgr | POST /system/user
+{"code":0,"msg":"success","data":"2096781659341504514"}
+HTTP_STATUS=200
+== S-emp | POST /system/user
+{"code":0,"msg":"success","data":"2096781659857403906"}
+HTTP_STATUS=200
+== S-app | POST /system/user
+{"code":0,"msg":"success","data":"2096781660335554562"}
+HTTP_STATUS=200
+== S-mgr-role | PUT /system/user/2096781659341504514/roles
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== S-F1 | POST /form/def
+{"code":0,"msg":"success","data":{"id":"bc1466ed-a3c4-4f7a-b2a5-53c051f599c8","formKey":"v002r2_leave","name":"v0.0.2R2请假申请","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-07T10:04:38.870461","updateTime":"2026-09-07T10:04:38.870465"}}
+HTTP_STATUS=200
+== S-F1c | POST /form/def/bc1466ed-a3c4-4f7a-b2a5-53c051f599c8/config
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== S-F1p | POST /form/def/bc1466ed-a3c4-4f7a-b2a5-53c051f599c8/publish
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== S-F2 | POST /form/def
+{"code":0,"msg":"success","data":{"id":"2d3a492e-1e9b-4ecf-95ad-aafa9bd04272","formKey":"v002r2_expense","name":"v0.0.2R2报销申请","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-07T10:04:38.967314","updateTime":"2026-09-07T10:04:38.967316"}}
+HTTP_STATUS=200
+== S-F2c | POST /form/def/2d3a492e-1e9b-4ecf-95ad-aafa9bd04272/config
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== S-F2p | POST /form/def/2d3a492e-1e9b-4ecf-95ad-aafa9bd04272/publish
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== S-P1 | POST /workflow/defs
+{"code":0,"msg":"success","data":{"defId":"2096781661384130562","graph":{"processKey":"bpm_0b9f0acd8b3d4dbb","name":"v0.0.2R2请假审批","formKey":"v002r2_leave","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}}
+HTTP_STATUS=200
+== S-P1g | GET /workflow/defs/2096781661384130562
+{"code":0,"msg":"success","data":{"processKey":"bpm_0b9f0acd8b3d4dbb","name":"v0.0.2R2请假审批","formKey":"v002r2_leave","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}
+HTTP_STATUS=200
+== S-P1u | PUT /workflow/defs/2096781661384130562/graph
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== S-P1v | POST /workflow/defs/2096781661384130562/validate
+{"code":0,"msg":"success","data":[]}
+HTTP_STATUS=200
+== S-P1p | POST /workflow/defs/2096781661384130562/publish
+{"code":0,"msg":"success","data":{"id":"2096781661384130562","createTime":"2026-09-07T10:04:39.050213","createBy":"1","updateTime":"2026-09-07T10:04:39.050224","updateBy":"1","deleted":0,"version":"2","tenantId":"0","processKey":"bpm_0b9f0acd8b3d4dbb","name":"v0.0.2R2请假审批","formKey":"v002r2_leave","defVersion":1,"status":"PUBLISHED","deploymentId":"7b8c23fb-aa60-11f1-a772-66ff24301f3c","processDefinitionId":"bpm_0b9f0acd8b3d4dbb:1:7ba8face-aa60-11f1-a772-66ff24301f3c","graphJson":"{\"processKey\":\"bpm_0b9f0acd8b3d4dbb\",\"name\":\"v0.0.2R2请假审批\",\"formKey\":\"v002r2_leave\",\"version\":null,\"elements\":[{\"id\":\"start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{\"name\":\"开始\"},\"style\":{}},{\"id\":\"a1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"主管审批\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[\"1\"]}},\"style\":{}},{\"id\":\"c1\",\"kind\":\"node\",\"type\":\"COPY\",\"source\":null,\"target\":null,\"config\":{\"name\":\"抄送\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[\"2096781660335554562\"]},\"title\":\"请假抄送\"},\"style\":{}},{\"id\":\"end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{\"name\":\"结束\"},\"style\":{}},{\"id\":\"e1\",\"kind\":\"edge\",\"type\":null,\"source\":\"start\",\"target\":\"a1\",\"config\":{},\"style\":{}},{\"id\":\"e2\",\"kind\":\"edge\",\"type\":null,\"source\":\"a1\",\"target\":\"c1\",\"config\":{},\"style\":{}},{\"id\":\"e3\",\"kind\":\"edge\",\"type\":null,\"source\":\"c1\",\"target\":\"end\",\"config\":{},\"style\":{}}],\"canvas\":null}","categoryId":null}}
+HTTP_STATUS=200
+== S-P2 | POST /workflow/defs
+{"code":0,"msg":"success","data":{"defId":"2096781662755667969","graph":{"processKey":"bpm_b6e666db95cb4423","name":"v0.0.2R2报销审批","formKey":"v002r2_expense","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}}
+HTTP_STATUS=200
+== S-P2g | GET /workflow/defs/2096781662755667969
+{"code":0,"msg":"success","data":{"processKey":"bpm_b6e666db95cb4423","name":"v0.0.2R2报销审批","formKey":"v002r2_expense","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}
+HTTP_STATUS=200
+== S-P2u | PUT /workflow/defs/2096781662755667969/graph
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== S-P2v | POST /workflow/defs/2096781662755667969/validate
+{"code":0,"msg":"success","data":[]}
+HTTP_STATUS=200
+== S-P2p | POST /workflow/defs/2096781662755667969/publish
+{"code":0,"msg":"success","data":{"id":"2096781662755667969","createTime":"2026-09-07T10:04:39.377433","createBy":"1","updateTime":"2026-09-07T10:04:39.377438","updateBy":"1","deleted":0,"version":"2","tenantId":"0","processKey":"bpm_b6e666db95cb4423","name":"v0.0.2R2报销审批","formKey":"v002r2_expense","defVersion":1,"status":"PUBLISHED","deploymentId":"7bb8641f-aa60-11f1-a772-66ff24301f3c","processDefinitionId":"bpm_b6e666db95cb4423:1:7bbe0972-aa60-11f1-a772-66ff24301f3c","graphJson":"{\"processKey\":\"bpm_b6e666db95cb4423\",\"name\":\"v0.0.2R2报销审批\",\"formKey\":\"v002r2_expense\",\"version\":null,\"elements\":[{\"id\":\"start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{\"name\":\"开始\"},\"style\":{}},{\"id\":\"a1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"主管审批\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[\"1\"]}},\"style\":{}},{\"id\":\"end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{\"name\":\"结束\"},\"style\":{}},{\"id\":\"e1\",\"kind\":\"edge\",\"type\":null,\"source\":\"start\",\"target\":\"a1\",\"config\":{},\"style\":{}},{\"id\":\"e2\",\"kind\":\"edge\",\"type\":null,\"source\":\"a1\",\"target\":\"end\",\"config\":{},\"style\":{}}],\"canvas\":null}","categoryId":null}}
+HTTP_STATUS=200
+== S-C1 | POST /workflow/categories
+{"code":0,"msg":"success","data":{"id":"2096781663288344578","name":"行政办公","sortNo":1,"itemCount":"0"}}
+HTTP_STATUS=200
+== S-C2 | POST /workflow/categories
+{"code":0,"msg":"success","data":{"id":"2096781663351259138","name":"人事类","sortNo":2,"itemCount":"0"}}
+HTTP_STATUS=200
+== S-assign | PUT /workflow/catalog/admin/items/bpm_0b9f0acd8b3d4dbb/category
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== S-counts | GET /workflow/catalog/category-counts
+{"code":0,"msg":"success","data":{"0":"1","2096781663288344578":"1"}}
+HTTP_STATUS=200
+== G2b-emp-item | GET /workflow/catalog/items/bpm_0b9f0acd8b3d4dbb
+{"code":401,"msg":"未认证","data":null}
+HTTP_STATUS=401
+== G2b-emp-item | GET /workflow/catalog/items/bpm_0b9f0acd8b3d4dbb
+{"code":401,"msg":"未认证","data":null}
+HTTP_STATUS=401
+== G2b-draft | POST /workflow/drafts
+{"code":401,"msg":"未认证","data":null}
+HTTP_STATUS=401
+== G2b-emp-item | GET /workflow/catalog/items/bpm_0b9f0acd8b3d4dbb
+{"code":0,"msg":"success","data":{"itemKey":"bpm_0b9f0acd8b3d4dbb","name":"v0.0.2R2请假审批","formKey":"v002r2_leave","categoryId":"2096781663288344578","status":"PUBLISHED","formPublished":true,"bindingActive":true}}
+HTTP_STATUS=200
+== G2b-draft | POST /workflow/drafts
+{"code":0,"msg":"success","data":{"id":"2096782227296403457","createTime":"2026-09-07T10:06:53.974487","createBy":"2096781659857403906","updateTime":"2026-09-07T10:06:53.974493","updateBy":"2096781659857403906","deleted":0,"version":"0","tenantId":"0","title":"R2请假-出差","formKey":"v002r2_leave","formVersion":"2","processDefKey":"bpm_0b9f0acd8b3d4dbb","payload":"{\"reason\":\"客户出差\",\"tags\":[\"出差\"],\"proof\":[],\"photo\":[]}","status":"EDITING","commandId":null,"submitSeq":0,"resultRecordId":null,"lastError":null}}
+HTTP_STATUS=200
+== G2b-submit | POST /workflow/drafts/2096782227296403457/submit
+{"code":0,"msg":"success","data":{"commandId":"2096782227472564225","commandKey":"DRAFT_SUBMIT:2096782227296403457:1","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"ACCEPTED","duplicated":false}}
+HTTP_STATUS=200
+== G2b-cmd-0 | GET /workflow/commands/2096782227472564225
+{"code":0,"msg":"success","data":{"commandId":"2096782227472564225","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"SUBMITTED\",\"recordId\":\"10e37a9c-b30f-4e4c-8acd-420239f7509f\"}","failureReason":null,"retryCount":0,"createTime":"2026-09-07T10:06:54.0164","finishedAt":"2026-09-07T10:06:54.298551","flowStart":{"commandId":"2096782228634386434","status":"COMPLETED","result":"{\"status\":\"STARTED\"}","failureReason":null,"createTime":"2026-09-07T10:06:54.293238","finishedAt":"2026-09-07T10:06:54.890965"}}}
+HTTP_STATUS=200
+== G2b-cmd-1 | GET /workflow/commands/2096782227472564225
+{"code":0,"msg":"success","data":{"commandId":"2096782227472564225","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"SUBMITTED\",\"recordId\":\"10e37a9c-b30f-4e4c-8acd-420239f7509f\"}","failureReason":null,"retryCount":0,"createTime":"2026-09-07T10:06:54.0164","finishedAt":"2026-09-07T10:06:54.298551","flowStart":{"commandId":"2096782228634386434","status":"COMPLETED","result":"{\"status\":\"STARTED\"}","failureReason":null,"createTime":"2026-09-07T10:06:54.293238","finishedAt":"2026-09-07T10:06:54.890965"}}}
+HTTP_STATUS=200
+== G2b-cmd-2 | GET /workflow/commands/2096782227472564225
+{"code":0,"msg":"success","data":{"commandId":"2096782227472564225","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"SUBMITTED\",\"recordId\":\"10e37a9c-b30f-4e4c-8acd-420239f7509f\"}","failureReason":null,"retryCount":0,"createTime":"2026-09-07T10:06:54.0164","finishedAt":"2026-09-07T10:06:54.298551","flowStart":{"commandId":"2096782228634386434","status":"COMPLETED","result":"{\"status\":\"STARTED\"}","failureReason":null,"createTime":"2026-09-07T10:06:54.293238","finishedAt":"2026-09-07T10:06:54.890965"}}}
+HTTP_STATUS=200
+== G2b-cmd-3 | GET /workflow/commands/2096782227472564225
+{"code":0,"msg":"success","data":{"commandId":"2096782227472564225","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"SUBMITTED\",\"recordId\":\"10e37a9c-b30f-4e4c-8acd-420239f7509f\"}","failureReason":null,"retryCount":0,"createTime":"2026-09-07T10:06:54.0164","finishedAt":"2026-09-07T10:06:54.298551","flowStart":{"commandId":"2096782228634386434","status":"COMPLETED","result":"{\"status\":\"STARTED\"}","failureReason":null,"createTime":"2026-09-07T10:06:54.293238","finishedAt":"2026-09-07T10:06:54.890965"}}}
+HTTP_STATUS=200
+== G2b-cmd-4 | GET /workflow/commands/2096782227472564225
+{"code":0,"msg":"success","data":{"commandId":"2096782227472564225","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"SUBMITTED\",\"recordId\":\"10e37a9c-b30f-4e4c-8acd-420239f7509f\"}","failureReason":null,"retryCount":0,"createTime":"2026-09-07T10:06:54.0164","finishedAt":"2026-09-07T10:06:54.298551","flowStart":{"commandId":"2096782228634386434","status":"COMPLETED","result":"{\"status\":\"STARTED\"}","failureReason":null,"createTime":"2026-09-07T10:06:54.293238","finishedAt":"2026-09-07T10:06:54.890965"}}}
+HTTP_STATUS=200
+== G2b-cmd-5 | GET /workflow/commands/2096782227472564225
+{"code":0,"msg":"success","data":{"commandId":"2096782227472564225","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"SUBMITTED\",\"recordId\":\"10e37a9c-b30f-4e4c-8acd-420239f7509f\"}","failureReason":null,"retryCount":0,"createTime":"2026-09-07T10:06:54.0164","finishedAt":"2026-09-07T10:06:54.298551","flowStart":{"commandId":"2096782228634386434","status":"COMPLETED","result":"{\"status\":\"STARTED\"}","failureReason":null,"createTime":"2026-09-07T10:06:54.293238","finishedAt":"2026-09-07T10:06:54.890965"}}}
+HTTP_STATUS=200
+== G2b-cmd-6 | GET /workflow/commands/2096782227472564225
+{"code":0,"msg":"success","data":{"commandId":"2096782227472564225","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"SUBMITTED\",\"recordId\":\"10e37a9c-b30f-4e4c-8acd-420239f7509f\"}","failureReason":null,"retryCount":0,"createTime":"2026-09-07T10:06:54.0164","finishedAt":"2026-09-07T10:06:54.298551","flowStart":{"commandId":"2096782228634386434","status":"COMPLETED","result":"{\"status\":\"STARTED\"}","failureReason":null,"createTime":"2026-09-07T10:06:54.293238","finishedAt":"2026-09-07T10:06:54.890965"}}}
+HTTP_STATUS=200
+== G2b-cmd-7 | GET /workflow/commands/2096782227472564225
+{"code":0,"msg":"success","data":{"commandId":"2096782227472564225","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"SUBMITTED\",\"recordId\":\"10e37a9c-b30f-4e4c-8acd-420239f7509f\"}","failureReason":null,"retryCount":0,"createTime":"2026-09-07T10:06:54.0164","finishedAt":"2026-09-07T10:06:54.298551","flowStart":{"commandId":"2096782228634386434","status":"COMPLETED","result":"{\"status\":\"STARTED\"}","failureReason":null,"createTime":"2026-09-07T10:06:54.293238","finishedAt":"2026-09-07T10:06:54.890965"}}}
+HTTP_STATUS=200
+== G2b-cmd-8 | GET /workflow/commands/2096782227472564225
+{"code":0,"msg":"success","data":{"commandId":"2096782227472564225","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"SUBMITTED\",\"recordId\":\"10e37a9c-b30f-4e4c-8acd-420239f7509f\"}","failureReason":null,"retryCount":0,"createTime":"2026-09-07T10:06:54.0164","finishedAt":"2026-09-07T10:06:54.298551","flowStart":{"commandId":"2096782228634386434","status":"COMPLETED","result":"{\"status\":\"STARTED\"}","failureReason":null,"createTime":"2026-09-07T10:06:54.293238","finishedAt":"2026-09-07T10:06:54.890965"}}}
+HTTP_STATUS=200
+== G2b-cmd-9 | GET /workflow/commands/2096782227472564225
+{"code":0,"msg":"success","data":{"commandId":"2096782227472564225","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"SUBMITTED\",\"recordId\":\"10e37a9c-b30f-4e4c-8acd-420239f7509f\"}","failureReason":null,"retryCount":0,"createTime":"2026-09-07T10:06:54.0164","finishedAt":"2026-09-07T10:06:54.298551","flowStart":{"commandId":"2096782228634386434","status":"COMPLETED","result":"{\"status\":\"STARTED\"}","failureReason":null,"createTime":"2026-09-07T10:06:54.293238","finishedAt":"2026-09-07T10:06:54.890965"}}}
+HTTP_STATUS=200
+== G2b-cmd-10 | GET /workflow/commands/2096782227472564225
+{"code":0,"msg":"success","data":{"commandId":"2096782227472564225","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"SUBMITTED\",\"recordId\":\"10e37a9c-b30f-4e4c-8acd-420239f7509f\"}","failureReason":null,"retryCount":0,"createTime":"2026-09-07T10:06:54.0164","finishedAt":"2026-09-07T10:06:54.298551","flowStart":{"commandId":"2096782228634386434","status":"COMPLETED","result":"{\"status\":\"STARTED\"}","failureReason":null,"createTime":"2026-09-07T10:06:54.293238","finishedAt":"2026-09-07T10:06:54.890965"}}}
+HTTP_STATUS=200
+== G2b-cmd-11 | GET /workflow/commands/2096782227472564225
+{"code":0,"msg":"success","data":{"commandId":"2096782227472564225","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"SUBMITTED\",\"recordId\":\"10e37a9c-b30f-4e4c-8acd-420239f7509f\"}","failureReason":null,"retryCount":0,"createTime":"2026-09-07T10:06:54.0164","finishedAt":"2026-09-07T10:06:54.298551","flowStart":{"commandId":"2096782228634386434","status":"COMPLETED","result":"{\"status\":\"STARTED\"}","failureReason":null,"createTime":"2026-09-07T10:06:54.293238","finishedAt":"2026-09-07T10:06:54.890965"}}}
+HTTP_STATUS=200
+== G2b-cmd-12 | GET /workflow/commands/2096782227472564225
+{"code":0,"msg":"success","data":{"commandId":"2096782227472564225","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"SUBMITTED\",\"recordId\":\"10e37a9c-b30f-4e4c-8acd-420239f7509f\"}","failureReason":null,"retryCount":0,"createTime":"2026-09-07T10:06:54.0164","finishedAt":"2026-09-07T10:06:54.298551","flowStart":{"commandId":"2096782228634386434","status":"COMPLETED","result":"{\"status\":\"STARTED\"}","failureReason":null,"createTime":"2026-09-07T10:06:54.293238","finishedAt":"2026-09-07T10:06:54.890965"}}}
+HTTP_STATUS=200
+== G2b-cmd-13 | GET /workflow/commands/2096782227472564225
+{"code":0,"msg":"success","data":{"commandId":"2096782227472564225","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"SUBMITTED\",\"recordId\":\"10e37a9c-b30f-4e4c-8acd-420239f7509f\"}","failureReason":null,"retryCount":0,"createTime":"2026-09-07T10:06:54.0164","finishedAt":"2026-09-07T10:06:54.298551","flowStart":{"commandId":"2096782228634386434","status":"COMPLETED","result":"{\"status\":\"STARTED\"}","failureReason":null,"createTime":"2026-09-07T10:06:54.293238","finishedAt":"2026-09-07T10:06:54.890965"}}}
+HTTP_STATUS=200
+== G2b-cmd-14 | GET /workflow/commands/2096782227472564225
+{"code":0,"msg":"success","data":{"commandId":"2096782227472564225","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"SUBMITTED\",\"recordId\":\"10e37a9c-b30f-4e4c-8acd-420239f7509f\"}","failureReason":null,"retryCount":0,"createTime":"2026-09-07T10:06:54.0164","finishedAt":"2026-09-07T10:06:54.298551","flowStart":{"commandId":"2096782228634386434","status":"COMPLETED","result":"{\"status\":\"STARTED\"}","failureReason":null,"createTime":"2026-09-07T10:06:54.293238","finishedAt":"2026-09-07T10:06:54.890965"}}}
+HTTP_STATUS=200
+== G2b-cmd-15 | GET /workflow/commands/2096782227472564225
+{"code":0,"msg":"success","data":{"commandId":"2096782227472564225","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"SUBMITTED\",\"recordId\":\"10e37a9c-b30f-4e4c-8acd-420239f7509f\"}","failureReason":null,"retryCount":0,"createTime":"2026-09-07T10:06:54.0164","finishedAt":"2026-09-07T10:06:54.298551","flowStart":{"commandId":"2096782228634386434","status":"COMPLETED","result":"{\"status\":\"STARTED\"}","failureReason":null,"createTime":"2026-09-07T10:06:54.293238","finishedAt":"2026-09-07T10:06:54.890965"}}}
+HTTP_STATUS=200
+== G2b-cmd-16 | GET /workflow/commands/2096782227472564225
+{"code":0,"msg":"success","data":{"commandId":"2096782227472564225","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"SUBMITTED\",\"recordId\":\"10e37a9c-b30f-4e4c-8acd-420239f7509f\"}","failureReason":null,"retryCount":0,"createTime":"2026-09-07T10:06:54.0164","finishedAt":"2026-09-07T10:06:54.298551","flowStart":{"commandId":"2096782228634386434","status":"COMPLETED","result":"{\"status\":\"STARTED\"}","failureReason":null,"createTime":"2026-09-07T10:06:54.293238","finishedAt":"2026-09-07T10:06:54.890965"}}}
+HTTP_STATUS=200
+== G2b-cmd-17 | GET /workflow/commands/2096782227472564225
+{"code":0,"msg":"success","data":{"commandId":"2096782227472564225","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"SUBMITTED\",\"recordId\":\"10e37a9c-b30f-4e4c-8acd-420239f7509f\"}","failureReason":null,"retryCount":0,"createTime":"2026-09-07T10:06:54.0164","finishedAt":"2026-09-07T10:06:54.298551","flowStart":{"commandId":"2096782228634386434","status":"COMPLETED","result":"{\"status\":\"STARTED\"}","failureReason":null,"createTime":"2026-09-07T10:06:54.293238","finishedAt":"2026-09-07T10:06:54.890965"}}}
+HTTP_STATUS=200
+== G2b-cmd-18 | GET /workflow/commands/2096782227472564225
+{"code":0,"msg":"success","data":{"commandId":"2096782227472564225","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"SUBMITTED\",\"recordId\":\"10e37a9c-b30f-4e4c-8acd-420239f7509f\"}","failureReason":null,"retryCount":0,"createTime":"2026-09-07T10:06:54.0164","finishedAt":"2026-09-07T10:06:54.298551","flowStart":{"commandId":"2096782228634386434","status":"COMPLETED","result":"{\"status\":\"STARTED\"}","failureReason":null,"createTime":"2026-09-07T10:06:54.293238","finishedAt":"2026-09-07T10:06:54.890965"}}}
+HTTP_STATUS=200
+== G2b-cmd-19 | GET /workflow/commands/2096782227472564225
+{"code":0,"msg":"success","data":{"commandId":"2096782227472564225","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"SUBMITTED\",\"recordId\":\"10e37a9c-b30f-4e4c-8acd-420239f7509f\"}","failureReason":null,"retryCount":0,"createTime":"2026-09-07T10:06:54.0164","finishedAt":"2026-09-07T10:06:54.298551","flowStart":{"commandId":"2096782228634386434","status":"COMPLETED","result":"{\"status\":\"STARTED\"}","failureReason":null,"createTime":"2026-09-07T10:06:54.293238","finishedAt":"2026-09-07T10:06:54.890965"}}}
+HTTP_STATUS=200
+== G3b-myinst | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096782231067082753","createTime":"2026-09-07T10:06:54.873581","createBy":"2096781659857403906","updateTime":"2026-09-07T10:06:54.873589","updateBy":"2096781659857403906","deleted":0,"version":"0","tenantId":"0","processInstanceId":"cc699653-aa60-11f1-a772-66ff24301f3c","processDefKey":"bpm_0b9f0acd8b3d4dbb","businessKey":"10e37a9c-b30f-4e4c-8acd-420239f7509f","formKey":"v002r2_leave","initiatorId":"2096781659857403906","status":"RUNNING"}],"total":"1","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS=200
+== G3b-noninitiator-urge | POST /workflow/my/instances/cc699653-aa60-11f1-a772-66ff24301f3c/urge
+{"code":500,"msg":"系统异常","data":null}
+HTTP_STATUS=500
+== G3b-concurrent-urge x5 | POST /workflow/my/instances/{id}/urge
+HTTP 500 {"code": 500, "msg": "系统异常", "data": null}
+HTTP 500 {"code": 500, "msg": "系统异常", "data": null}
+HTTP 500 {"code": 500, "msg": "系统异常", "data": null}
+HTTP 500 {"code": 500, "msg": "系统异常", "data": null}
+HTTP 500 {"code": 500, "msg": "系统异常", "data": null}
+== G3b-noninitiator-urge2 | POST /workflow/my/instances/2096782231067082753/urge
+{"code":403,"msg":"仅发起人可催办该实例","data":null}
+HTTP_STATUS=200
+== G3b-concurrent-urge-x5 | POST /workflow/my/instances/2096782231067082753/urge (发起人并发)
+HTTP 200 {"code": 0, "msg": "success", "data": {"result": "ACCEPTED", "detail": "已通知待办人: [1]", "recordId": "2096782719628001281"}}
+HTTP 500 {"code": 500, "msg": "系统异常", "data": null}
+HTTP 500 {"code": 500, "msg": "系统异常", "data": null}
+HTTP 500 {"code": 500, "msg": "系统异常", "data": null}
+HTTP 500 {"code": 500, "msg": "系统异常", "data": null}
+== G3b-cooldown-single | POST urge after acceptance
+HTTP 200 {"code":0,"msg":"success","data":{"result":"COOLDOWN","detail":"冷却中，约 599 秒后可再次催办","recordId":"2096782719766413313"}}

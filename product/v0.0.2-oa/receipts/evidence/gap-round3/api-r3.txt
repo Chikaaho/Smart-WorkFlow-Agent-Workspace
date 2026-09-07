@@ -1,0 +1,225 @@
+== S0-role2-grant | PUT /system/role/2/menus
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== S0-stranger | POST /system/user
+{"code":0,"msg":"success","data":"2096813796513943553"}
+HTTP_STATUS=200
+== S0-emp-layout | PUT /system/workspace/layout
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== S0-mgr-layout | PUT /system/workspace/layout
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== R5-attach-upload | POST /workflow/attachments/upload
+{"code":0,"msg":"success","data":{"storageKey":"2026/09/07/85797e73-b706-428d-8075-9b9ac61efad8.txt","fileSize":"54","storageName":"85797e73-b706-428d-8075-9b9ac61efad8.txt"}}
+HTTP_STATUS=200
+== R5-image-upload | POST /workflow/attachments/upload
+{"code":0,"msg":"success","data":{"storageKey":"2026/09/07/aa53fe77-1102-4bdb-8daf-95fd0a8ea350.png","fileSize":"25","storageName":"aa53fe77-1102-4bdb-8daf-95fd0a8ea350.png"}}
+HTTP_STATUS=200
+== R5-draft-ch | POST /workflow/drafts
+{"code":0,"msg":"success","data":{"id":"2096813797029842945","createTime":"2026-09-07T12:12:20.785413","createBy":"2096813510827315202","updateTime":"2026-09-07T12:12:20.78542","updateBy":"2096813510827315202","deleted":0,"version":"0","tenantId":"0","title":"R3请假-出差附件","formKey":"v002r2_leave","formVersion":"2","processDefKey":"bpm_f602bf7cc15343cf","payload":"{\"reason\":\"客户出差\",\"tags\":[\"出差\"],\"proof\":[{\"storageKey\":\"2026/09/07/85797e73-b706-428d-8075-9b9ac61efad8.txt\",\"name\":\"proof-r3.txt\"}],\"photo\":[{\"storageKey\":\"2026/09/07/aa53fe77-1102-4bdb-8daf-95fd0a8ea350.png\",\"n
+HTTP_STATUS=200
+== R5-submit-ch | POST /workflow/drafts/2096813797029842945/submit
+{"code":0,"msg":"success","data":{"commandId":"2096813797180837889","commandKey":"DRAFT_SUBMIT:2096813797029842945:1","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"ACCEPTED","duplicated":false}}
+HTTP_STATUS=200
+== R5-draft-ny | POST /workflow/drafts
+{"code":0,"msg":"success","data":{"id":"2096813797252141058","createTime":"2026-09-07T12:12:20.838357","createBy":"2096813510827315202","updateTime":"2026-09-07T12:12:20.838361","updateBy":"2096813510827315202","deleted":0,"version":"0","tenantId":"0","title":"R3请假-年假图片","formKey":"v002r2_leave","formVersion":"2","processDefKey":"bpm_f602bf7cc15343cf","payload":"{\"tags\":[\"年假\"],\"proof\":[],\"photo\":[{\"storageKey\":\"2026/09/07/aa53fe77-1102-4bdb-8daf-95fd0a8ea350.png\",\"name\":\"photo-r3.png\"}]}","status":"EDITING","commandId":null,"submitSeq":0,"resultRecordId":null,"lastError":null}}
+HTTP_STATUS=200
+== R5-submit-ny | POST /workflow/drafts/2096813797252141058/submit
+{"code":0,"msg":"success","data":{"commandId":"2096813797340221441","commandKey":"DRAFT_SUBMIT:2096813797252141058:1","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"ACCEPTED","duplicated":false}}
+HTTP_STATUS=200
+== R5-myinst | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096813800225902593","createTime":"2026-09-07T12:12:21.547191","createBy":"2096813510827315202","updateTime":"2026-09-07T12:12:21.547196","updateBy":"2096813510827315202","deleted":0,"version":"0","tenantId":"0","processInstanceId":"52ae3bf5-aa72-11f1-acd8-66ff24301f3c","processDefKey":"bpm_f602bf7cc15343cf","businessKey":"e4055440-6deb-490d-83c2-f9692a57e34f","formKey":"v002r2_leave","initiatorId":"2096813510827315202","status":"RUNNING"},{"id":"2096813800070713345","createTime":"2026-09-07T12:12:21.510095","createBy":"2096813510827315202","
+HTTP_STATUS=200
+== R5-admin-todo | GET /workflow/tasks/todo?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"taskId":"52ae6312-aa72-11f1-acd8-66ff24301f3c","processInstanceId":"52ae3bf5-aa72-11f1-acd8-66ff24301f3c","processName":"v0.0.2R2请假审批","formKey":"v002r2_leave","businessKey":"e4055440-6deb-490d-83c2-f9692a57e34f","createTime":"2026-09-07T12:12:21.535"},{"taskId":"52a6c1e2-aa72-11f1-acd8-66ff24301f3c","processInstanceId":"52a3dba5-aa72-11f1-acd8-66ff24301f3c","processName":"v0.0.2R2请假审批","formKey":"v002r2_leave","businessKey":"896479cb-745b-498c-a350-755b39413f18","createTime":"2026-09-07T12:12:21.482"}],"total":"2","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS=200
+== R5-approver-view-task | GET /workflow/tasks/52ae6312-aa72-11f1-acd8-66ff24301f3c
+{"code":0,"msg":"success","data":{"taskId":"52ae6312-aa72-11f1-acd8-66ff24301f3c","taskName":"主管审批","processInstanceId":"52ae3bf5-aa72-11f1-acd8-66ff24301f3c","processDefinitionKey":"bpm_f602bf7cc15343cf","processName":"v0.0.2R2请假审批","formKey":"v002r2_leave","businessKey":"e4055440-6deb-490d-83c2-f9692a57e34f","assignee":"1","assigneeName":"系统管理员","initiatorId":"2096813510827315202","initiatorName":"员工丙","createTime":"2026-09-07T12:12:21.535","processVariables":{"recordId":"e4055440-6deb-490d-83c2-f9692a57e34f","approver":"2096813510827315202","submitter":"2096813510827315202","formKey":"v002r
+HTTP_STATUS=200
+== R5-approve | POST /workflow/commands/tasks/52ae6312-aa72-11f1-acd8-66ff24301f3c/approve
+{"code":0,"msg":"success","data":{"commandId":"2096813814775943170","commandKey":"TASK_APPROVE:52ae6312-aa72-11f1-acd8-66ff24301f3c:1","commandType":"TASK_APPROVE","channel":"NORMAL","status":"ACCEPTED","duplicated":true}}
+HTTP_STATUS=200
+== R5-initiator-download | GET /workflow/attachments/e4055440-6deb-490d-83c2-f9692a57e34f/download?storageKey=2026/09/07/85797e73-b706-428d-8075-9b9ac61efad8.txt&name=proof-r3.txt
+v0.0.2-R3 真实附件内容（发起人 EMP 上传）
+HTTP_STATUS=200
+== R5-approver-download | GET /workflow/attachments/e4055440-6deb-490d-83c2-f9692a57e34f/download?storageKey=2026/09/07/85797e73-b706-428d-8075-9b9ac61efad8.txt
+v0.0.2-R3 真实附件内容（发起人 EMP 上传）
+HTTP_STATUS=200
+== R5-recipient-download | GET /workflow/attachments/e4055440-6deb-490d-83c2-f9692a57e34f/download?storageKey=2026/09/07/85797e73-b706-428d-8075-9b9ac61efad8.txt
+v0.0.2-R3 真实附件内容（发起人 EMP 上传）
+HTTP_STATUS=200
+== R5-stranger-download | GET /workflow/attachments/e4055440-6deb-490d-83c2-f9692a57e34f/download?storageKey=2026/09/07/85797e73-b706-428d-8075-9b9ac61efad8.txt
+{"code":403,"msg":"无权访问该记录附件","data":null}
+HTTP_STATUS=200
+== R5-stranger-image | GET /workflow/attachments/e4055440-6deb-490d-83c2-f9692a57e34f/download?storageKey=2026/09/07/aa53fe77-1102-4bdb-8daf-95fd0a8ea350.png
+{"code":403,"msg":"无权访问该记录附件","data":null}
+HTTP_STATUS=200
+== R5-forge-key | GET /workflow/attachments/e4055440-6deb-490d-83c2-f9692a57e34f/download?storageKey=../etc/passwd
+{"code":404,"msg":"文件不存在: ../etc/passwd","data":null}
+HTTP_STATUS=200
+== R5-stranger-otherrecord | GET /workflow/attachments/not-my-record/download?storageKey=2026/09/07/85797e73-b706-428d-8075-9b9ac61efad8.txt
+{"code":403,"msg":"无权访问该记录附件","data":null}
+HTTP_STATUS=200
+== R3-urge-before | POST /workflow/my/instances/2096813800070713345/urge
+{"code":0,"msg":"success","data":{"result":"ACCEPTED","detail":"已通知待办人: [1]","recordId":"2096813823823056897"}}
+HTTP_STATUS=200
+== R3-def2 | POST /workflow/defs
+{"code":0,"msg":"success","data":{"defId":"2096813823881777154","graph":{"processKey":"bpm_9648053498f9497a","name":"R3双节点审批","formKey":"v002r2_expense","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}}
+HTTP_STATUS=200
+== R3-def2g | GET /workflow/defs/2096813823881777154
+{"code":0,"msg":"success","data":{"processKey":"bpm_9648053498f9497a","name":"R3双节点审批","formKey":"v002r2_expense","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}
+HTTP_STATUS=200
+== R3-def2u | PUT /workflow/defs/2096813823881777154/graph
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== R3-def2v | POST /workflow/defs/2096813823881777154/validate
+{"code":0,"msg":"success","data":[]}
+HTTP_STATUS=200
+== R3-def2p | POST /workflow/defs/2096813823881777154/publish
+{"code":0,"msg":"success","data":{"id":"2096813823881777154","createTime":"2026-09-07T12:12:27.188546","createBy":"1","updateTime":"2026-09-07T12:12:27.188552","updateBy":"1","deleted":0,"version":"2","tenantId":"0","processKey":"bpm_9648053498f9497a","name":"R3双节点审批","formKey":"v002r2_expense","defVersion":1,"status":"PUBLISHED","deploymentId":"561d722a-aa72-11f1-acd8-66ff24301f3c","processDefinitionId":"bpm_9648053498f9497a:1:56290aed-aa72-11f1-acd8-66ff24301f3c","graphJson":"{\"processKey\":\"bpm_9648053498f9497a\",\"name\":\"R3双节点审批\",\"formKey\":\"v002r2_expense\",\"version\":null,\"eleme
+HTTP_STATUS=200
+== R3-draft3 | POST /workflow/drafts
+{"code":0,"msg":"success","data":{"id":"2096813824737415170","createTime":"2026-09-07T12:12:27.392006","createBy":"2096813510827315202","updateTime":"2026-09-07T12:12:27.392011","updateBy":"2096813510827315202","deleted":0,"version":"0","tenantId":"0","title":"R3报销-双节点","formKey":"v002r2_expense","formVersion":"2","processDefKey":"bpm_9648053498f9497a","payload":"{\"title\":\"双节点报销\",\"amount\":100}","status":"EDITING","commandId":null,"submitSeq":0,"resultRecordId":null,"lastError":null}}
+HTTP_STATUS=200
+== R3-submit3 | POST /workflow/drafts/2096813824737415170/submit
+{"code":0,"msg":"success","data":{"commandId":"2096813824829689857","commandKey":"DRAFT_SUBMIT:2096813824737415170:1","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"ACCEPTED","duplicated":false}}
+HTTP_STATUS=200
+== R3-myinst2 | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096813828550037506","createTime":"2026-09-07T12:12:28.301059","createBy":"2096813510827315202","updateTime":"2026-09-07T12:12:28.301065","updateBy":"2096813510827315202","deleted":0,"version":"0","tenantId":"0","processInstanceId":"56b4d02e-aa72-11f1-acd8-66ff24301f3c","processDefKey":"bpm_9648053498f9497a","businessKey":"05d41e94-dfd6-448e-b69a-435c590aa0ae","formKey":"v002r2_expense","initiatorId":"2096813510827315202","status":"RUNNING"},{"id":"2096813800225902593","createTime":"2026-09-07T12:12:21.547191","createBy":"2096813510827315202"
+HTTP_STATUS=200
+== R3-urge-target1 | POST /workflow/my/instances/2096813828550037506/urge
+{"code":0,"msg":"success","data":{"result":"ACCEPTED","detail":"已通知待办人: [1]","recordId":"2096813837655871489"}}
+HTTP_STATUS=200
+== R3-todo-a1 | GET /workflow/tasks/todo?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"taskId":"56b51e5b-aa72-11f1-acd8-66ff24301f3c","processInstanceId":"56b4d02e-aa72-11f1-acd8-66ff24301f3c","processName":"R3双节点审批","formKey":"v002r2_expense","businessKey":"05d41e94-dfd6-448e-b69a-435c590aa0ae","createTime":"2026-09-07T12:12:28.29"},{"taskId":"52a6c1e2-aa72-11f1-acd8-66ff24301f3c","processInstanceId":"52a3dba5-aa72-11f1-acd8-66ff24301f3c","processName":"v0.0.2R2请假审批","formKey":"v002r2_leave","businessKey":"896479cb-745b-498c-a350-755b39413f18","createTime":"2026-09-07T12:12:21.482"}],"total":"2","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS=200
+== R3-approve-a1 | POST /workflow/commands/tasks/56b51e5b-aa72-11f1-acd8-66ff24301f3c/approve
+{"code":500,"msg":"系统异常","data":null}
+HTTP_STATUS=500
+== S0-role2-grant | PUT /system/role/2/menus
+{"code":500,"msg":"系统异常","data":null}
+HTTP_STATUS=500
+== S0-role2-grant | PUT /system/role/2/menus
+{"code":500,"msg":"系统异常","data":null}
+HTTP_STATUS=500
+== S0-stranger | POST /system/user
+{"code":500,"msg":"系统异常","data":null}
+HTTP_STATUS=500
+== S0-role2-grant | PUT /system/role/2/menus
+{"code":500,"msg":"系统异常","data":null}
+HTTP_STATUS=500
+== S0-stranger-lookup | GET /system/user/2096813796513943553
+{"code":0,"msg":"success","data":{"id":"2096813796513943553","createTime":"2026-09-07T12:12:20.662084","createBy":"1","updateTime":"2026-09-07T12:12:20.662091","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"stranger001","realName":"无关人","email":null,"phone":null,"sex":0,"status":0,"deptId":null,"isAdmin":0,"avatar":null,"roleIds":null,"postIds":null}}
+HTTP_STATUS=200
+== S0-emp-layout | PUT /system/workspace/layout
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== S0-mgr-layout | PUT /system/workspace/layout
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== R5-attach-upload | POST /workflow/attachments/upload
+{"code":0,"msg":"success","data":{"storageKey":"2026/09/07/6da439e0-ab06-464d-9a4c-1c13de3cb40a.txt","fileSize":"54","storageName":"6da439e0-ab06-464d-9a4c-1c13de3cb40a.txt"}}
+HTTP_STATUS=200
+== R5-image-upload | POST /workflow/attachments/upload
+{"code":0,"msg":"success","data":{"storageKey":"2026/09/07/8a4d51b0-c2cf-426a-ac9c-8bbb091ed7e8.png","fileSize":"25","storageName":"8a4d51b0-c2cf-426a-ac9c-8bbb091ed7e8.png"}}
+HTTP_STATUS=200
+== R5-draft-ch | POST /workflow/drafts
+{"code":0,"msg":"success","data":{"id":"2096814116052799490","createTime":"2026-09-07T12:13:36.846785","createBy":"2096813510827315202","updateTime":"2026-09-07T12:13:36.84679","updateBy":"2096813510827315202","deleted":0,"version":"0","tenantId":"0","title":"R3请假-出差附件","formKey":"v002r2_leave","formVersion":"2","processDefKey":"bpm_f602bf7cc15343cf","payload":"{\"reason\":\"客户出差\",\"tags\":[\"出差\"],\"proof\":[{\"storageKey\":\"2026/09/07/6da439e0-ab06-464d-9a4c-1c13de3cb40a.txt\",\"name\":\"proof-r3.txt\"}],\"photo\":[{\"storageKey\":\"2026/09/07/8a4d51b0-c2cf-426a-ac9c-8bbb091ed7e8.png\",\"n
+HTTP_STATUS=200
+== R5-submit-ch | POST /workflow/drafts/2096814116052799490/submit
+{"code":0,"msg":"success","data":{"commandId":"2096814116145074177","commandKey":"DRAFT_SUBMIT:2096814116052799490:1","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"ACCEPTED","duplicated":false}}
+HTTP_STATUS=200
+== R5-draft-ny | POST /workflow/drafts
+{"code":0,"msg":"success","data":{"id":"2096814116224765953","createTime":"2026-09-07T12:13:36.887869","createBy":"2096813510827315202","updateTime":"2026-09-07T12:13:36.887873","updateBy":"2096813510827315202","deleted":0,"version":"0","tenantId":"0","title":"R3请假-年假图片","formKey":"v002r2_leave","formVersion":"2","processDefKey":"bpm_f602bf7cc15343cf","payload":"{\"tags\":[\"年假\"],\"proof\":[],\"photo\":[{\"storageKey\":\"2026/09/07/8a4d51b0-c2cf-426a-ac9c-8bbb091ed7e8.png\",\"name\":\"photo-r3.png\"}]}","status":"EDITING","commandId":null,"submitSeq":0,"resultRecordId":null,"lastError":null}}
+HTTP_STATUS=200
+== R5-submit-ny | POST /workflow/drafts/2096814116224765953/submit
+{"code":0,"msg":"success","data":{"commandId":"2096814116321234945","commandKey":"DRAFT_SUBMIT:2096814116224765953:1","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"ACCEPTED","duplicated":false}}
+HTTP_STATUS=200
+== R5-myinst | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096814119236276225","createTime":"2026-09-07T12:13:37.606059","createBy":"2096813510827315202","updateTime":"2026-09-07T12:13:37.606064","updateBy":"2096813510827315202","deleted":0,"version":"0","tenantId":"0","processInstanceId":"8004871e-aa72-11f1-acd8-66ff24301f3c","processDefKey":"bpm_f602bf7cc15343cf","businessKey":"85641215-2713-4fe2-8a08-9a613fed86e9","formKey":"v002r2_leave","initiatorId":"2096813510827315202","status":"RUNNING"},{"id":"2096814119152390145","createTime":"2026-09-07T12:13:37.58554","createBy":"2096813510827315202","u
+HTTP_STATUS=200
+== R5-admin-todo | GET /workflow/tasks/todo?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"taskId":"8004ae3b-aa72-11f1-acd8-66ff24301f3c","processInstanceId":"8004871e-aa72-11f1-acd8-66ff24301f3c","processName":"v0.0.2R2请假审批","formKey":"v002r2_leave","businessKey":"85641215-2713-4fe2-8a08-9a613fed86e9","createTime":"2026-09-07T12:13:37.598"},{"taskId":"8000dd9b-aa72-11f1-acd8-66ff24301f3c","processInstanceId":"80008f6e-aa72-11f1-acd8-66ff24301f3c","processName":"v0.0.2R2请假审批","formKey":"v002r2_leave","businessKey":"efdfbb3d-2759-4129-adda-608d9a7f9360","createTime":"2026-09-07T12:13:37.573"},{"taskId":"56b51e5b-aa72-11f1-acd8-66ff24301f
+HTTP_STATUS=200
+== R5-approver-view-task | GET /workflow/tasks/8004ae3b-aa72-11f1-acd8-66ff24301f3c
+{"code":0,"msg":"success","data":{"taskId":"8004ae3b-aa72-11f1-acd8-66ff24301f3c","taskName":"主管审批","processInstanceId":"8004871e-aa72-11f1-acd8-66ff24301f3c","processDefinitionKey":"bpm_f602bf7cc15343cf","processName":"v0.0.2R2请假审批","formKey":"v002r2_leave","businessKey":"85641215-2713-4fe2-8a08-9a613fed86e9","assignee":"1","assigneeName":"系统管理员","initiatorId":"2096813510827315202","initiatorName":"员工丙","createTime":"2026-09-07T12:13:37.598","processVariables":{"recordId":"85641215-2713-4fe2-8a08-9a613fed86e9","approver":"2096813510827315202","submitter":"2096813510827315202","formKey":"v002r
+HTTP_STATUS=200
+== R5-approve | POST /workflow/commands/tasks/8004ae3b-aa72-11f1-acd8-66ff24301f3c/approve
+{"code":0,"msg":"success","data":{"commandId":"2096814133631127553","commandKey":"TASK_APPROVE:8004ae3b-aa72-11f1-acd8-66ff24301f3c:1","commandType":"TASK_APPROVE","channel":"NORMAL","status":"ACCEPTED","duplicated":true}}
+HTTP_STATUS=200
+== R5-initiator-download | GET /workflow/attachments/85641215-2713-4fe2-8a08-9a613fed86e9/download?storageKey=2026/09/07/6da439e0-ab06-464d-9a4c-1c13de3cb40a.txt&name=proof-r3.txt
+v0.0.2-R3 真实附件内容（发起人 EMP 上传）
+HTTP_STATUS=200
+== R5-approver-download | GET /workflow/attachments/85641215-2713-4fe2-8a08-9a613fed86e9/download?storageKey=2026/09/07/6da439e0-ab06-464d-9a4c-1c13de3cb40a.txt
+v0.0.2-R3 真实附件内容（发起人 EMP 上传）
+HTTP_STATUS=200
+== R5-recipient-download | GET /workflow/attachments/85641215-2713-4fe2-8a08-9a613fed86e9/download?storageKey=2026/09/07/6da439e0-ab06-464d-9a4c-1c13de3cb40a.txt
+v0.0.2-R3 真实附件内容（发起人 EMP 上传）
+HTTP_STATUS=200
+== R5-stranger-download | GET /workflow/attachments/85641215-2713-4fe2-8a08-9a613fed86e9/download?storageKey=2026/09/07/6da439e0-ab06-464d-9a4c-1c13de3cb40a.txt
+{"code":403,"msg":"无权访问该记录附件","data":null}
+HTTP_STATUS=200
+== R5-stranger-image | GET /workflow/attachments/85641215-2713-4fe2-8a08-9a613fed86e9/download?storageKey=2026/09/07/8a4d51b0-c2cf-426a-ac9c-8bbb091ed7e8.png
+{"code":403,"msg":"无权访问该记录附件","data":null}
+HTTP_STATUS=200
+== R5-forge-key | GET /workflow/attachments/85641215-2713-4fe2-8a08-9a613fed86e9/download?storageKey=../etc/passwd
+{"code":404,"msg":"文件不存在: ../etc/passwd","data":null}
+HTTP_STATUS=200
+== R5-stranger-otherrecord | GET /workflow/attachments/not-my-record/download?storageKey=2026/09/07/6da439e0-ab06-464d-9a4c-1c13de3cb40a.txt
+{"code":403,"msg":"无权访问该记录附件","data":null}
+HTTP_STATUS=200
+== R3-urge-before | POST /workflow/my/instances/2096814119152390145/urge
+{"code":0,"msg":"success","data":{"result":"ACCEPTED","detail":"已通知待办人: [1]","recordId":"2096814142699212801"}}
+HTTP_STATUS=200
+== R3-def2 | POST /workflow/defs
+{"code":0,"msg":"success","data":{"defId":"2096814142753738754","graph":{"processKey":"bpm_83cc504e421d4563","name":"R3双节点审批","formKey":"v002r2_expense","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}}
+HTTP_STATUS=200
+== R3-def2g | GET /workflow/defs/2096814142753738754
+{"code":0,"msg":"success","data":{"processKey":"bpm_83cc504e421d4563","name":"R3双节点审批","formKey":"v002r2_expense","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}
+HTTP_STATUS=200
+== R3-def2u | PUT /workflow/defs/2096814142753738754/graph
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== R3-def2v | POST /workflow/defs/2096814142753738754/validate
+{"code":0,"msg":"success","data":[]}
+HTTP_STATUS=200
+== R3-def2p | POST /workflow/defs/2096814142753738754/publish
+{"code":0,"msg":"success","data":{"id":"2096814142753738754","createTime":"2026-09-07T12:13:43.212879","createBy":"1","updateTime":"2026-09-07T12:13:43.212885","updateBy":"1","deleted":0,"version":"2","tenantId":"0","processKey":"bpm_83cc504e421d4563","name":"R3双节点审批","formKey":"v002r2_expense","defVersion":1,"status":"PUBLISHED","deploymentId":"83664fd3-aa72-11f1-acd8-66ff24301f3c","processDefinitionId":"bpm_83cc504e421d4563:1:836f9ea6-aa72-11f1-acd8-66ff24301f3c","graphJson":"{\"processKey\":\"bpm_83cc504e421d4563\",\"name\":\"R3双节点审批\",\"formKey\":\"v002r2_expense\",\"version\":null,\"eleme
+HTTP_STATUS=200
+== R3-draft3 | POST /workflow/drafts
+{"code":0,"msg":"success","data":{"id":"2096814143424827394","createTime":"2026-09-07T12:13:43.373154","createBy":"2096813510827315202","updateTime":"2026-09-07T12:13:43.37316","updateBy":"2096813510827315202","deleted":0,"version":"0","tenantId":"0","title":"R3报销-双节点","formKey":"v002r2_expense","formVersion":"2","processDefKey":"bpm_83cc504e421d4563","payload":"{\"title\":\"双节点报销\",\"amount\":100}","status":"EDITING","commandId":null,"submitSeq":0,"resultRecordId":null,"lastError":null}}
+HTTP_STATUS=200
+== R3-submit3 | POST /workflow/drafts/2096814143424827394/submit
+{"code":0,"msg":"success","data":{"commandId":"2096814143554850818","commandKey":"DRAFT_SUBMIT:2096814143424827394:1","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"ACCEPTED","duplicated":false}}
+HTTP_STATUS=200
+== R3-myinst2 | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096814147333918722","createTime":"2026-09-07T12:13:44.304296","createBy":"2096813510827315202","updateTime":"2026-09-07T12:13:44.304302","updateBy":"2096813510827315202","deleted":0,"version":"0","tenantId":"0","processInstanceId":"840241b7-aa72-11f1-acd8-66ff24301f3c","processDefKey":"bpm_83cc504e421d4563","businessKey":"b0563607-a853-467a-851a-b08bac55ea1d","formKey":"v002r2_expense","initiatorId":"2096813510827315202","status":"RUNNING"},{"id":"2096814119236276225","createTime":"2026-09-07T12:13:37.606059","createBy":"2096813510827315202"
+HTTP_STATUS=200
+== R3-urge-target1 | POST /workflow/my/instances/2096814147333918722/urge
+{"code":0,"msg":"success","data":{"result":"ACCEPTED","detail":"已通知待办人: [1]","recordId":"2096814156372643841"}}
+HTTP_STATUS=200
+== R3-todo-a1 | GET /workflow/tasks/todo?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"taskId":"840241c4-aa72-11f1-acd8-66ff24301f3c","processInstanceId":"840241b7-aa72-11f1-acd8-66ff24301f3c","processName":"R3双节点审批","formKey":"v002r2_expense","businessKey":"b0563607-a853-467a-851a-b08bac55ea1d","createTime":"2026-09-07T12:13:44.293"},{"taskId":"8000dd9b-aa72-11f1-acd8-66ff24301f3c","processInstanceId":"80008f6e-aa72-11f1-acd8-66ff24301f3c","processName":"v0.0.2R2请假审批","formKey":"v002r2_leave","businessKey":"efdfbb3d-2759-4129-adda-608d9a7f9360","createTime":"2026-09-07T12:13:37.573"},{"taskId":"56b51e5b-aa72-11f1-acd8-66ff24301f3c"
+HTTP_STATUS=200
+== R3-approve-a1 | POST /workflow/commands/tasks/840241c4-aa72-11f1-acd8-66ff24301f3c/approve
+{"code":0,"msg":"success","data":{"commandId":"2096814156536221698","commandKey":"TASK_APPROVE:840241c4-aa72-11f1-acd8-66ff24301f3c:1","commandType":"TASK_APPROVE","channel":"NORMAL","status":"ACCEPTED","duplicated":true}}
+HTTP_STATUS=200
+== R3-urge-cooldown | POST /workflow/my/instances/2096814147333918722/urge
+{"code":0,"msg":"success","data":{"result":"COOLDOWN","detail":"冷却中，约 597 秒后可再次催办","recordId":"2096814167248474113"}}
+HTTP_STATUS=200
+== R3-app-inbox | GET /notify/messages?pageNum=1&pageSize=20
+{"code":0,"msg":"success","data":[{"id":"2096814134268661762","createTime":"2026-09-07T12:13:41.189649","createBy":"1","updateTime":"2026-09-07T12:13:41.189654","updateBy":"1","deleted":0,"version":"0","tenantId":"0","recipientId":"2096813511309660162","title":"请假抄送","content":"您有一条流程抄送","bizType":"WF_TODO","bizId":"8004871e-aa72-11f1-acd8-66ff24301f3c","read":false,"channel":"IN_APP","deliveryStatus":"SUCCESS","externalMessageId":null,"failureReason":null,"idempotencyKey":"8004871e-aa72-11f1-acd8-66ff24301f3c:c1:2096813511309660162"},{"id":"2096813815396700162","createTime":"2026-09-07T12:12:
+HTTP_STATUS=200
+== R3-emp-todo | GET /workflow/tasks/todo?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS=200
+== R2-emp-approve-notowner | POST /workflow/commands/tasks/840241b7-aa72-11f1-acd8-66ff24301f3c/approve
+{"code":0,"msg":"success","data":{"commandId":"2096814167462383618","commandKey":"TASK_APPROVE:840241b7-aa72-11f1-acd8-66ff24301f3c:2096813510827315202","commandType":"TASK_APPROVE","channel":"NORMAL","status":"ACCEPTED","duplicated":true}}
+HTTP_STATUS=200
+== R3-todo-inst2 | GET /workflow/tasks/todo?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"taskId":"8000dd9b-aa72-11f1-acd8-66ff24301f3c","processInstanceId":"80008f6e-aa72-11f1-acd8-66ff24301f3c","processName":"v0.0.2R2请假审批","formKey":"v002r2_leave","businessKey":"efdfbb3d-2759-4129-adda-608d9a7f9360","createTime":"2026-09-07T12:13:37.573"},{"taskId":"56b51e5b-aa72-11f1-acd8-66ff24301f3c","processInstanceId":"56b4d02e-aa72-11f1-acd8-66ff24301f3c","processName":"R3双节点审批","formKey":"v002r2_expense","businessKey":"05d41e94-dfd6-448e-b69a-435c590aa0ae","createTime":"2026-09-07T12:12:28.29"},{"taskId":"52a6c1e2-aa72-11f1-acd8-66ff24301f3c",
+HTTP_STATUS=200
+== R3-approve-inst2 | POST /workflow/commands/tasks/8000dd9b-aa72-11f1-acd8-66ff24301f3c/approve
+{"code":0,"msg":"success","data":{"commandId":"2096814167663710210","commandKey":"TASK_APPROVE:8000dd9b-aa72-11f1-acd8-66ff24301f3c:1","commandType":"TASK_APPROVE","channel":"NORMAL","status":"ACCEPTED","duplicated":true}}
+HTTP_STATUS=200

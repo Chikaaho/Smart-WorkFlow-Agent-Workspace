@@ -1,0 +1,102 @@
+== S0-role2-grant | PUT /system/role/2/menus
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== S0-stranger-create | POST /system/user
+{"code":0,"msg":"success","data":"2096815759070842882"}
+HTTP_STATUS=200
+== S0-emp-layout | PUT /system/workspace/layout
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== S0-mgr-layout | PUT /system/workspace/layout
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== S0-emp-layout-read | GET /system/workspace/layout
+{"code":0,"msg":"success","data":{"layout":{"components":[{"key":"todo","visible":true,"order":1,"span":2},{"key":"myInitiated","visible":true,"order":2,"span":1},{"key":"cc","visible":false,"order":3,"span":1},{"key":"favoriteItems","visible":true,"order":4,"span":1}],"favoriteItemKeys":["bpm_b8af51f5f9a64ba4"]},"custom":true}}
+HTTP_STATUS=200
+== S0-mgr-layout-read | GET /system/workspace/layout
+{"code":0,"msg":"success","data":{"layout":{"components":[{"key":"favoriteItems","visible":true,"order":1,"span":2},{"key":"myInitiated","visible":true,"order":2,"span":1},{"key":"cc","visible":true,"order":3,"span":1},{"key":"todo","visible":true,"order":4,"span":1}],"favoriteItemKeys":["bpm_8b93f9f9c96642c9"]},"custom":true}}
+HTTP_STATUS=200
+== R3-def | POST /workflow/defs
+{"code":0,"msg":"success","data":{"defId":"2096815759507050497","graph":{"processKey":"bpm_670f6b7d8a084373","name":"R3双节点审批","formKey":"v002r2_expense","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}}
+HTTP_STATUS=200
+== R3-defg | GET /workflow/defs/2096815759507050497
+{"code":0,"msg":"success","data":{"processKey":"bpm_670f6b7d8a084373","name":"R3双节点审批","formKey":"v002r2_expense","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}
+HTTP_STATUS=200
+== R3-defu | PUT /workflow/defs/2096815759507050497/graph
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== R3-defv | POST /workflow/defs/2096815759507050497/validate
+{"code":0,"msg":"success","data":[]}
+HTTP_STATUS=200
+== R3-defp | POST /workflow/defs/2096815759507050497/publish
+{"code":0,"msg":"success","data":{"id":"2096815759507050497","createTime":"2026-09-07T12:20:08.676813","createBy":"1","updateTime":"2026-09-07T12:20:08.676819","updateBy":"1","deleted":0,"version":"2","tenantId":"0","processKey":"bpm_670f6b7d8a084373","name":"R3双节点审批","formKey":"v002r2_expense","defVersion":1,"status":"PUBLISHED","deploymentId":"692884bd-aa73-11f1-b84f-66ff24301f3c","processDefinitionId":"bpm_670f6b7d8a084373:1:692f6290-aa73-11f1-b84f-66ff24301f3c","graphJson":"{\"processKey\":\"bpm_670f6b7d8a084373\",\"name\":\"R3双节点审批\",\"formKey\":\"v002r2_expense\",\"version\":null,\"elements\":[{\"id\":\"start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"conf
+HTTP_STATUS=200
+== R3-draft | POST /workflow/drafts
+{"code":0,"msg":"success","data":{"id":"2096815760085864450","createTime":"2026-09-07T12:20:08.814521","createBy":"2096815519647387649","updateTime":"2026-09-07T12:20:08.814526","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","title":"R3报销-双节点目标变化","formKey":"v002r2_expense","formVersion":"2","processDefKey":"bpm_670f6b7d8a084373","payload":"{\"title\":\"目标变化报销\",\"amount\":88}","status":"EDITING","commandId":null,"submitSeq":0,"resultRecordId":null,"lastError":null}}
+HTTP_STATUS=200
+== R3-submit | POST /workflow/drafts/2096815760085864450/submit
+{"code":0,"msg":"success","data":{"commandId":"2096815760194916353","commandKey":"DRAFT_SUBMIT:2096815760085864450:1","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"ACCEPTED","duplicated":false}}
+HTTP_STATUS=200
+== R3-myinst | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096815763751686145","createTime":"2026-09-07T12:20:09.688428","createBy":"2096815519647387649","updateTime":"2026-09-07T12:20:09.688434","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","processInstanceId":"69ae2f81-aa73-11f1-b84f-66ff24301f3c","processDefKey":"bpm_670f6b7d8a084373","businessKey":"8efbc3bc-001b-4dd7-99f0-b99b7707bea3","formKey":"v002r2_expense","initiatorId":"2096815519647387649","status":"RUNNING"}],"total":"1","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS=200
+== R3-urge-target1 | POST /workflow/my/instances/2096815763751686145/urge
+{"code":0,"msg":"success","data":{"result":"ACCEPTED","detail":"已通知待办人: [1]","recordId":"2096815773125955585"}}
+HTTP_STATUS=200
+== R3-todo-a1 | GET /workflow/tasks/todo?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"taskId":"69b0c79e-aa73-11f1-b84f-66ff24301f3c","processInstanceId":"69ae2f81-aa73-11f1-b84f-66ff24301f3c","processName":"R3双节点审批","formKey":"v002r2_expense","businessKey":"8efbc3bc-001b-4dd7-99f0-b99b7707bea3","createTime":"2026-09-07T12:20:09.633"}],"total":"1","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS=200
+== R3-approve-a1 | POST /workflow/commands/tasks/69b0c79e-aa73-11f1-b84f-66ff24301f3c/approve
+{"code":0,"msg":"success","data":{"commandId":"2096815773314699265","commandKey":"TASK_APPROVE:69b0c79e-aa73-11f1-b84f-66ff24301f3c:1","commandType":"TASK_APPROVE","channel":"NORMAL","status":"ACCEPTED","duplicated":true}}
+HTTP_STATUS=200
+== R3-urge-target2-after-move | POST /workflow/my/instances/2096815763751686145/urge
+{"code":0,"msg":"success","data":{"result":"COOLDOWN","detail":"冷却中，约 598 秒后可再次催办","recordId":"2096815779685847041"}}
+HTTP_STATUS=200
+== R3-app-inbox-urge | GET /notify/messages?pageNum=1&pageSize=20
+{"code":0,"msg":"success","data":[]}
+HTTP_STATUS=200
+== R2-todo-cur | GET /workflow/tasks/todo?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"taskId":"6b44ae14-aa73-11f1-b84f-66ff24301f3c","processInstanceId":"69ae2f81-aa73-11f1-b84f-66ff24301f3c","processName":"R3双节点审批","formKey":"v002r2_expense","businessKey":"8efbc3bc-001b-4dd7-99f0-b99b7707bea3","createTime":"2026-09-07T12:20:12.282"}],"total":"1","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS=200
+== R2-emp-approve-others | POST /workflow/commands/tasks/6b44ae14-aa73-11f1-b84f-66ff24301f3c/approve
+{"code":0,"msg":"success","data":{"commandId":"2096815779870396417","commandKey":"TASK_APPROVE:6b44ae14-aa73-11f1-b84f-66ff24301f3c:2096815519647387649","commandType":"TASK_APPROVE","channel":"NORMAL","status":"ACCEPTED","duplicated":true}}
+HTTP_STATUS=200
+== R2-cmd-poll-0 | GET /workflow/commands/2096815779870396417
+{"code":0,"msg":"success","data":{"commandId":"2096815779870396417","commandType":"TASK_APPROVE","channel":"NORMAL","status":"PENDING","result":null,"failureReason":"无权处理该任务","retryCount":1,"createTime":"2026-09-07T12:20:13.531418","finishedAt":null,"flowStart":null}}
+HTTP_STATUS=200
+== R2-cmd-poll-1 | GET /workflow/commands/2096815779870396417
+{"code":0,"msg":"success","data":{"commandId":"2096815779870396417","commandType":"TASK_APPROVE","channel":"NORMAL","status":"PENDING","result":null,"failureReason":"无权处理该任务","retryCount":2,"createTime":"2026-09-07T12:20:13.531418","finishedAt":null,"flowStart":null}}
+HTTP_STATUS=200
+== R2-cmd-poll-2 | GET /workflow/commands/2096815779870396417
+{"code":0,"msg":"success","data":{"commandId":"2096815779870396417","commandType":"TASK_APPROVE","channel":"NORMAL","status":"PENDING","result":null,"failureReason":"无权处理该任务","retryCount":3,"createTime":"2026-09-07T12:20:13.531418","finishedAt":null,"flowStart":null}}
+HTTP_STATUS=200
+== R2-cmd-poll-3 | GET /workflow/commands/2096815779870396417
+{"code":0,"msg":"success","data":{"commandId":"2096815779870396417","commandType":"TASK_APPROVE","channel":"NORMAL","status":"PENDING","result":null,"failureReason":"无权处理该任务","retryCount":3,"createTime":"2026-09-07T12:20:13.531418","finishedAt":null,"flowStart":null}}
+HTTP_STATUS=200
+== R2-cmd-poll-4 | GET /workflow/commands/2096815779870396417
+{"code":0,"msg":"success","data":{"commandId":"2096815779870396417","commandType":"TASK_APPROVE","channel":"NORMAL","status":"PENDING","result":null,"failureReason":"无权处理该任务","retryCount":3,"createTime":"2026-09-07T12:20:13.531418","finishedAt":null,"flowStart":null}}
+HTTP_STATUS=200
+== R2-cmd-poll-5 | GET /workflow/commands/2096815779870396417
+{"code":0,"msg":"success","data":{"commandId":"2096815779870396417","commandType":"TASK_APPROVE","channel":"NORMAL","status":"PENDING","result":null,"failureReason":"无权处理该任务","retryCount":3,"createTime":"2026-09-07T12:20:13.531418","finishedAt":null,"flowStart":null}}
+HTTP_STATUS=200
+== R2-cmd-poll-6 | GET /workflow/commands/2096815779870396417
+{"code":0,"msg":"success","data":{"commandId":"2096815779870396417","commandType":"TASK_APPROVE","channel":"NORMAL","status":"PENDING","result":null,"failureReason":"无权处理该任务","retryCount":4,"createTime":"2026-09-07T12:20:13.531418","finishedAt":null,"flowStart":null}}
+HTTP_STATUS=200
+== R2-cmd-poll-7 | GET /workflow/commands/2096815779870396417
+{"code":0,"msg":"success","data":{"commandId":"2096815779870396417","commandType":"TASK_APPROVE","channel":"NORMAL","status":"PENDING","result":null,"failureReason":"无权处理该任务","retryCount":4,"createTime":"2026-09-07T12:20:13.531418","finishedAt":null,"flowStart":null}}
+HTTP_STATUS=200
+== R2-cmd-poll-8 | GET /workflow/commands/2096815779870396417
+{"code":0,"msg":"success","data":{"commandId":"2096815779870396417","commandType":"TASK_APPROVE","channel":"NORMAL","status":"PENDING","result":null,"failureReason":"无权处理该任务","retryCount":4,"createTime":"2026-09-07T12:20:13.531418","finishedAt":null,"flowStart":null}}
+HTTP_STATUS=200
+== R2-cmd-poll-9 | GET /workflow/commands/2096815779870396417
+{"code":0,"msg":"success","data":{"commandId":"2096815779870396417","commandType":"TASK_APPROVE","channel":"NORMAL","status":"PENDING","result":null,"failureReason":"无权处理该任务","retryCount":4,"createTime":"2026-09-07T12:20:13.531418","finishedAt":null,"flowStart":null}}
+HTTP_STATUS=200
+== R2-app-approve-own | POST /workflow/commands/tasks/6b44ae14-aa73-11f1-b84f-66ff24301f3c/approve
+{"code":0,"msg":"success","data":{"commandId":"2096815831309340673","commandKey":"TASK_APPROVE:6b44ae14-aa73-11f1-b84f-66ff24301f3c:2096815520112955393","commandType":"TASK_APPROVE","channel":"NORMAL","status":"ACCEPTED","duplicated":true}}
+HTTP_STATUS=200
+== R2-app-copies | GET /workflow/my/copies?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS=200
+== R2-copies-count | GET /workflow/my/copies?pageNum=1&pageSize=1
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"1"}}
+HTTP_STATUS=200
