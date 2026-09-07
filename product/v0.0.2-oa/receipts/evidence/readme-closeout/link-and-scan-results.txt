@@ -1,0 +1,71 @@
+A8 两仓 README 收口 — 链接、扫描与工程检查原始结果
+2026-09-07；执行角色：Executor；方向 ready/direction-v0.0.2-oa-readme-closeout.md
+
+## 1. 本地链接静态检查（相对 README 所在目录解析）
+
+===SERVER README===
+https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server  -> external（单独验证）
+https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web     -> external（单独验证）
+OK: ../README.md
+OK: docs/governance/engineering-constitution.md
+OK: 功能清单.md
+OK: ../knowledge/architecture.md
+OK: ../Smart-WorkFlow-Web/README.md
+
+===WEB README===
+https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web     -> external（单独验证）
+https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server  -> external（单独验证）
+OK: ../README.md
+OK: docs/governance/engineering-constitution.md
+OK: ../knowledge/architecture.md
+OK: ../Smart-WorkFlow-Server/README.md
+
+结论：两仓 README 内全部本地相对链接目标文件均存在，无缺失。
+
+## 2. 外部链接实际访问结果（2026-09-07 实测）
+
+curl -s -o /dev/null -w "%{http_code}" -L -A "Mozilla/5.0 (compatible; README-check)" \
+  https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web   -> HTTP 200 (3.318342s)
+  https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server-> HTTP 200 (1.717174s)
+
+gh api repos/Chikaaho/Smart-WorkFlow-aPaaS-Web  --jq '.full_name + " default_branch=" + .default_branch'
+  -> Chikaaho/Smart-WorkFlow-aPaaS-Web default_branch=main
+gh api repos/Chikaaho/Smart-WorkFlow-aPaaS-server --jq '.full_name + " default_branch=" + .default_branch'
+  -> Chikaaho/Smart-WorkFlow-aPaaS-server default_branch=main
+
+说明：首次 curl Web 仓库出现一次 HTTP 000（连接瞬时失败），带 UA 重试后 HTTP 200；
+最终以重试后的 200 与 gh api 双重复核为准。两个仓库 URL 均可实际访问。
+本地 remote 与 README 内地址一致：Server origin=git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-server.git、
+Web origin=git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-Web.git。
+
+## 3. 敏感信息扫描（grep 原始结果）
+
+扫描模式：password|passwd|secret|token|api[_-]?key|private|BEGIN |AKID|sk-|192.168.|10\.[0-9]+\.|
+172\.(1[6-9]|2[0-9]|3[01])\.|admin/admin|@example|root@|Bearer
+
+grep -nE '<上述模式>' Smart-WorkFlow-Server/README.md Smart-WorkFlow-Web/README.md
+结果：无任何匹配行（grep exit=1）。README 内仅出现 SW_CIPHER_KEY 环境变量名占位（openssl rand
+生成的开发密钥占位说明，不含任何真实密钥值）。无敏感配置、连接信息、账号或调试认证材料。
+
+## 4. Markdown 基础检查
+
+代码围栏：Server fenced=0、Web fenced=0（两 README 无 ``` 围栏代码块，命令使用行内代码）。
+标题结构：Server 9 个标题（#×1 + ##×6 + ###×3 含快速开始 h3）；Web 9 个标题（#×1 + ##×6 + ###×3）。
+表格管道一致性：两 README 全部表格行 | 数量一致，无管道数错位行。
+锚点兼容：两 README 均保留 "### 快速开始"（锚点 #快速开始），根 README "后端环境与启动 / 前端环境与启动" 入口链接不失效。
+
+## 5. 两仓 git diff --check 原始结果
+
+Smart-WorkFlow-Server: git diff --check -> 退出码 0，无输出（无空白错误）。
+Smart-WorkFlow-Web:    git diff --check -> 退出码 0，无输出（无空白错误）。
+
+## 6. 本轮改动范围（diffstat）
+
+Smart-WorkFlow-Server:  README.md | 144 ++++++++++++--------------------------
+                        1 file changed, 46 insertions(+), 98 deletions(-)
+Smart-WorkFlow-Web:     README.md | 147 ++++++++++++++++++-----------------------
+                        1 file changed, 44 insertions(+), 103 deletions(-)
+
+本轮 A8 只修改两仓 README.md；两仓其余工作树未提交修改（Server 4 个 Java 文件＋新增测试目录/
+schema-copy-h2.sql/upload 目录；Web 3 个 TS/Vue 文件＋f-cfg 杂散文件）均为 A1—A7 轮次既有工作树
+内容，本轮未触碰。
