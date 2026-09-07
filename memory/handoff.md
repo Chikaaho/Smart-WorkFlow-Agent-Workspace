@@ -7,7 +7,7 @@ v0.0.2-oa（v0.0.2 OA 完善，第 43 个正式功能；覆盖 P54/P55＋P4/P2 �
 让普通员工从工作台发起/跟踪业务、审批人处理待办与抄送、管理员在独立后台维护事项/表单/流程并追踪通知失败；以表单与流程组合平台通用能力，OA 作为已落地场景之一。
 
 ## 3. 最终状态
-**COMPLETED（规划已确认，2026-09-07）**；功能级PASSED见规划验收06，阶段三最终复核见`planning-final-review-terminal-sync-v0.0.2-oa-03-passed.md`。主方向、A8方向与阶段三方向均归档passed。
+**COMPLETED（规划已确认，2026-09-07）并已发布 v0.0.2**；功能级PASSED见规划验收06，阶段三最终复核见`planning-final-review-terminal-sync-v0.0.2-oa-03-passed.md`，发布裁决见`planning-review-release-v0.0.2-oa-01-passed.md`。四份方向均归档passed。
 
 ## 4. 本轮做了什么
 A1 前后台分层、A2 流程中心分类/双视角、A3 抄送我的/催办、A4 个性化工作台、A5 表单四控件/默认值/显隐/草稿、A6 通知发送记录/失败重发、A7 整体闭环回归、A8 两仓 README 产品介绍收口与同源 Logo。
@@ -34,13 +34,13 @@ P2 其余（计算公式/外部数据源/表单删除/列表配置持久化）�
 沿用 memory/issues 与 todo/requirement-pool 既有边界；I 集合 54 条不变（I38/I39/I40/I45 开放）；非零租户登录无受支持入口为认证产品边界。本轮无新增业务问题。
 
 ## 12. 下一轮要做什么
-执行 v0.0.2 正式发布方向：只形成并发布后端、前端两个代码仓候选，各自按 `develop → main`，并在最终 `main` 上创建精确标签 `0.0.2`。工作区不执行任何 Git 发布，通用 `main` 保持干净。Owner 已授权直接执行，可使用已导入浏览器的 GitHub 登录态及 `~/ssh/ssh` 下的服务器 SSH/SCP 脚本，自动或手动发布均可。
+等待 Owner 下一项需求。v0.0.2 已完成规划发布验收：Server/Web 均完成 `develop → main` 与精确标签 `0.0.2`，自动 Release 成功，服务器部署生效；工作区零 Git 发布动作。
 
 ## 13. 下一轮要达到什么结果
-完成两个代码仓的授权发布与服务器生效核对，并提交 `product/v0.0.2-oa/receipts/release-v0.0.2-oa-01.md`：两仓 `0.0.2` 精确指向各自最终 `main`，Actions、Release、产物、完整 SHA 和服务器结果均已回读；工作区零 Git 发布动作。若同名标签冲突则保留现场并报告，不移动或覆盖。
+已达到：Server `0.0.2` 指向 `20fffc1ddec13ea665fc388f4243c6e063974883`，Web `0.0.2` 指向 `0bf6e8925059e4c254328c5d1643ebd8c1a2943e`；Actions、Release、服务器结果均已回读，工作区未发布。
 
 ## 14. 下一轮开始前必须读取的知识文件
 Planner 先读 system.md、roles/planner.md、memory 摘要；knowledge/current-status、session-handoff、features/v0.0.2-oa 由 Executor 读取维护；核对走 product 附件。
 
 ## 15. 新会话启动提示词
-本会话角色：规划。v0.0.2-oa `COMPLETED（规划已确认，2026-09-07）`，第43个正式功能，三方向均归档passed；功能43、清单36/26/28、基线后端1156/前端1168/V58；P3/P54/P55已核销、P2/P4开放；Owner 已授权只发布后端/前端 v0.0.2，工作区保持不发布；唯一下一动作=Executor 执行 `product/v0.0.2-oa/ready/direction-v0.0.2-oa-release.md` 并提交远端及服务器回读回执。
+本会话角色：规划。v0.0.2-oa `COMPLETED（规划已确认，2026-09-07）并已发布 v0.0.2`，第43个正式功能，四份方向均归档passed；功能43、清单36/26/28、基线后端1156/前端1168/V58；P3/P54/P55已核销、P2/P4开放；Server/Web 标签、Release 与服务器部署已通过规划验收，工作区未发布；下一动作=等待 Owner 下一项需求。
