@@ -1,0 +1,50 @@
+== F5b category create ==
+{"code": 0, "msg": "success", "data": {"id": "2096717985484443649", "name": "行政办公", "sortNo": 1, "itemCount": "0"}}
+== F6 assign ==
+{"code": 0, "msg": "success", "data": null}
+== F6b admin catalog ==
+{"names": [["v0.0.2受限审批", "PUBLISHED", false], ["v0.0.2请假审批V2", "PUBLISHED", false]]}
+== T1 employee session ==
+{"ok": true}
+== A1-2 employee portal（无受限） ==
+{"names": ["v0.0.2请假审批V2"]}
+== A1-3 admin portal（含受限） ==
+{"names": ["v0.0.2受限审批", "v0.0.2请假审批V2"]}
+== A1-4 employee categories 403 ==
+{"code": 403, "msg": "无权限", "data": null}
+== A1-5 employee notify records 403 ==
+{"code": 403, "msg": "无权限", "data": null}
+== A5-1 hidden record ==
+{"reason": "年假", "tags": "[\"年假\"]", "proof": null, "photo": "[]"}
+== A5-2 visible record ==
+{"reason": "出差", "tags": "[\"出差\"]", "proof": "[{\"storageKey\":\"proof-key-final\",\"name\":\"发票.pdf\"}]", "photo": "[]"}
+== A3-1 running ==
+[{"id": "2096717988391096322", "status": "RUNNING"}]
+== A3-2 urge#1 ==
+{"code": 0, "msg": "success", "data": {"result": "ACCEPTED", "detail": "已通知待办人: [1]", "recordId": "2096718003947769857"}}
+== A3-3 urge#2 cooldown ==
+{"code": 0, "msg": "success", "data": {"result": "COOLDOWN", "detail": "冷却中，约 599 秒后可再次催办", "recordId": "2096718004006490113"}}
+== A3-4 非发起人403 ==
+{"code": 403, "msg": "仅发起人可催办该实例", "data": null}
+== A4-1 admin save ==
+{"code": 0, "msg": "success", "data": null}
+== A4-2 admin custom ==
+{"custom": true}
+== A4-3 employee default ==
+{"custom": false}
+== A4-4 reset ==
+{"code": 0, "msg": "success", "data": null}
+== A4-5 after reset ==
+{"custom": false}
+== A6-1 batch send ==
+{"code": 0, "msg": "success", "data": {"recipientCount": 1}}
+== A6-3 debug send SMS ==
+{"code": 0, "msg": "success", "data": {"channel": "SMS", "status": "SUCCESS", "externalMessageId": "p58_ext_33c587", "failureReason": null}}
+== A6-4 failed total ==
+{"total": "0"}
+== A3-5 approve ==
+{"code": 0, "msg": "success", "data": {"commandId": "2096718004782436354", "commandKey": "TASK_APPROVE:2300ae1d-aa3d-11f1-802b-66ff24301f3c:1", "commandType": "TASK_APPROVE", "channel": "NORMAL", "status": "ACCEPTED", "duplicated": true}}
+== A3-6 after approve ==
+[{"id": "2096717988391096322", "status": "APPROVED"}, {"id": "2096717988240101378", "status": "RUNNING"}]
+== A3-7 urge ended ==
+{"code": 0, "msg": "success", "data": {"result": "REJECTED", "detail": "实例已结束，不能催办", "recordId": "2096718021760978946"}}
