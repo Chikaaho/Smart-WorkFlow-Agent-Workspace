@@ -1,0 +1,18 @@
+== A0 会话（test_1 superadmin） ==
+{"code":0,"msg":"success","data":{"user":{"id":"1","username":"admin","displayName":"系统管理员","deptId":"1","tenantId":"0","avatar":null},"permissions":[],"roles":["superadmin"],"superAdmin":true}}
+== A1 表单草稿创建 ==
+{"code":0,"msg":"success","data":{"id":"25431cdd-3a6d-4eaa-89d5-96f0536f94fe","formKey":"v002_leave","name":"v0.0.2请假申请","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":"v0.0.2 evidence","visibilityScope":null,"createTime":"2026-09-07T05:16:50.586742","updateTime":"2026-09-07T05:16:50.586743"}}
+FID=25431cdd-3a6d-4eaa-89d5-96f0536f94fe
+== A2 保存 definition（四新控件+默认值+显隐规则） ==
+{"code":0,"msg":"success","data":null}
+== A3 发布表单 ==
+{"code":500,"msg":"系统异常","data":null}
+== A4 流程定义创建+发布 ==
+{"code":0,"msg":"success","data":{"defId":"2096709232949264385","graph":{"processKey":"bpm_2aba905b072d40ca","name":"v0.0.2请假审批","formKey":"v002_leave","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}}
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import sys,json;print(json.load(sys.stdin)['data']['id'])
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'id'
+PID=
+{"code":401,"msg":"未认证","data":null}

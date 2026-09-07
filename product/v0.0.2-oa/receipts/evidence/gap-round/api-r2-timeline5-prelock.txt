@@ -1,0 +1,175 @@
+== S-mgr | POST /system/user
+{"code":500,"msg":"系统异常","data":null}
+HTTP_STATUS=500
+== S-mgr | POST /system/user
+{"code":0,"msg":"success","data":"2096788418869280769"}
+HTTP_STATUS=200
+== S-emp | POST /system/user
+{"code":0,"msg":"success","data":"2096788419452289025"}
+HTTP_STATUS=200
+== S-app | POST /system/user
+{"code":0,"msg":"success","data":"2096788419959799810"}
+HTTP_STATUS=200
+== S-mgr-role | PUT /system/user/2096788418869280769/roles
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== S-F1 | POST /form/def
+{"code":0,"msg":"success","data":{"id":"6c9ba200-39ec-45ce-906d-409e6b57e5b4","formKey":"v002r2_leave","name":"v0.0.2R2请假申请","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-07T10:31:30.485485","updateTime":"2026-09-07T10:31:30.48549"}}
+HTTP_STATUS=200
+== S-F1c | POST /form/def/6c9ba200-39ec-45ce-906d-409e6b57e5b4/config
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== S-F1p | POST /form/def/6c9ba200-39ec-45ce-906d-409e6b57e5b4/publish
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== S-F2 | POST /form/def
+{"code":0,"msg":"success","data":{"id":"c7b7ce62-2e48-4356-b527-e96b8eda39c7","formKey":"v002r2_expense","name":"v0.0.2R2报销申请","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-07T10:31:30.583981","updateTime":"2026-09-07T10:31:30.583981"}}
+HTTP_STATUS=200
+== S-F2c | POST /form/def/c7b7ce62-2e48-4356-b527-e96b8eda39c7/config
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== S-F2p | POST /form/def/c7b7ce62-2e48-4356-b527-e96b8eda39c7/publish
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== S-P1 | POST /workflow/defs
+{"code":0,"msg":"success","data":{"defId":"2096788421100650498","graph":{"processKey":"bpm_852005cc6eb44ded","name":"v0.0.2R2请假审批","formKey":"v002r2_leave","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}}
+HTTP_STATUS=200
+== S-P1g | GET /workflow/defs/2096788421100650498
+{"code":0,"msg":"success","data":{"processKey":"bpm_852005cc6eb44ded","name":"v0.0.2R2请假审批","formKey":"v002r2_leave","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}
+HTTP_STATUS=200
+== S-P1u | PUT /workflow/defs/2096788421100650498/graph
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== S-P1v | POST /workflow/defs/2096788421100650498/validate
+{"code":0,"msg":"success","data":[]}
+HTTP_STATUS=200
+== S-P1p | POST /workflow/defs/2096788421100650498/publish
+{"code":0,"msg":"success","data":{"id":"2096788421100650498","createTime":"2026-09-07T10:31:30.693199","createBy":"1","updateTime":"2026-09-07T10:31:30.693208","updateBy":"1","deleted":0,"version":"2","tenantId":"0","processKey":"bpm_852005cc6eb44ded","name":"v0.0.2R2请假审批","formKey":"v002r2_leave","defVersion":1,"status":"PUBLISHED","deploymentId":"3c2fe813-aa64-11f1-be12-66ff24301f3c","processDefinitionId":"bpm_852005cc6eb44ded:1:3c4321f6-aa64-11f1-be12-66ff24301f3c","graphJson":"{\"processKey\":\"bpm_852005cc6eb44ded\",\"name\":\"v0.0.2R2请假审批\",\"formKey\":\"v002r2_leave\",\"version\":null,\"elements\":[{\"id\":\"start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{\"name\":\"开始\"},\"style\":{}},{\"id\":\"a1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"主管审批\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[\"1\"]}},\"style\":{}},{\"id\":\"c1\",\"kind\":\"node\",\"type\":\"COPY\",\"source\":null,\"target\":null,\"config\":{\"name\":\"抄送\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[\"2096788419959799810\"]},\"title\":\"请假抄送\"},\"style\":{}},{\"id\":\"end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{\"name\":\"结束\"},\"style\":{}},{\"id\":\"e1\",\"kind\":\"edge\",\"type\":null,\"source\":\"start\",\"target\":\"a1\",\"config\":{},\"style\":{}},{\"id\":\"e2\",\"kind\":\"edge\",\"type\":null,\"source\":\"a1\",\"target\":\"c1\",\"config\":{},\"style\":{}},{\"id\":\"e3\",\"kind\":\"edge\",\"type\":null,\"source\":\"c1\",\"target\":\"end\",\"config\":{},\"style\":{}}],\"canvas\":null}","categoryId":null}}
+HTTP_STATUS=200
+== S-P2 | POST /workflow/defs
+{"code":0,"msg":"success","data":{"defId":"2096788422354747393","graph":{"processKey":"bpm_d69c5645544543b6","name":"v0.0.2R2报销审批","formKey":"v002r2_expense","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}}
+HTTP_STATUS=200
+== S-P2g | GET /workflow/defs/2096788422354747393
+{"code":0,"msg":"success","data":{"processKey":"bpm_d69c5645544543b6","name":"v0.0.2R2报销审批","formKey":"v002r2_expense","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}
+HTTP_STATUS=200
+== S-P2u | PUT /workflow/defs/2096788422354747393/graph
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== S-P2v | POST /workflow/defs/2096788422354747393/validate
+{"code":0,"msg":"success","data":[]}
+HTTP_STATUS=200
+== S-P2p | POST /workflow/defs/2096788422354747393/publish
+{"code":0,"msg":"success","data":{"id":"2096788422354747393","createTime":"2026-09-07T10:31:30.992111","createBy":"1","updateTime":"2026-09-07T10:31:30.992117","updateBy":"1","deleted":0,"version":"2","tenantId":"0","processKey":"bpm_d69c5645544543b6","name":"v0.0.2R2报销审批","formKey":"v002r2_expense","defVersion":1,"status":"PUBLISHED","deploymentId":"3c526437-aa64-11f1-be12-66ff24301f3c","processDefinitionId":"bpm_d69c5645544543b6:1:3c58098a-aa64-11f1-be12-66ff24301f3c","graphJson":"{\"processKey\":\"bpm_d69c5645544543b6\",\"name\":\"v0.0.2R2报销审批\",\"formKey\":\"v002r2_expense\",\"version\":null,\"elements\":[{\"id\":\"start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{\"name\":\"开始\"},\"style\":{}},{\"id\":\"a1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"主管审批\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[\"1\"]}},\"style\":{}},{\"id\":\"end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{\"name\":\"结束\"},\"style\":{}},{\"id\":\"e1\",\"kind\":\"edge\",\"type\":null,\"source\":\"start\",\"target\":\"a1\",\"config\":{},\"style\":{}},{\"id\":\"e2\",\"kind\":\"edge\",\"type\":null,\"source\":\"a1\",\"target\":\"end\",\"config\":{},\"style\":{}}],\"canvas\":null}","categoryId":null}}
+HTTP_STATUS=200
+== S-C1 | POST /workflow/categories
+{"code":0,"msg":"success","data":{"id":"2096788422912589825","name":"行政办公","sortNo":1,"itemCount":"0"}}
+HTTP_STATUS=200
+== S-C2 | POST /workflow/categories
+{"code":0,"msg":"success","data":{"id":"2096788422971310082","name":"人事类","sortNo":2,"itemCount":"0"}}
+HTTP_STATUS=200
+== S-assign | PUT /workflow/catalog/admin/items/bpm_852005cc6eb44ded/category
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== S-counts | GET /workflow/catalog/category-counts
+{"code":0,"msg":"success","data":{"0":"1","2096788422912589825":"1"}}
+HTTP_STATUS=200
+== G1-emp-admin-catalog | GET /workflow/catalog/admin/items?pageNum=1&pageSize=10
+{"code":403,"msg":"无权限","data":null}
+HTTP_STATUS=403
+== G1-emp-categories | GET /workflow/categories
+{"code":403,"msg":"无权限","data":null}
+HTTP_STATUS=403
+== G1-mgr-admin-catalog | GET /workflow/catalog/admin/items?pageNum=1&pageSize=10
+{"code":403,"msg":"无权限","data":null}
+HTTP_STATUS=403
+== G1-role2-grant | PUT /system/role/2/menus
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== G1-mgr-admin-catalog-granted | GET /workflow/catalog/admin/items?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"itemKey":"bpm_d69c5645544543b6","name":"v0.0.2R2报销审批","formKey":"v002r2_expense","categoryId":null,"status":"PUBLISHED","formPublished":true,"bindingActive":true},{"itemKey":"bpm_852005cc6eb44ded","name":"v0.0.2R2请假审批","formKey":"v002r2_leave","categoryId":"2096788422912589825","status":"PUBLISHED","formPublished":true,"bindingActive":true}],"total":"2","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS=200
+== G1-mgr-user-page | POST /system/user/page?pageNum=1&pageSize=5
+{"code":0,"msg":"success","data":{"records":[{"id":"1","createTime":"2026-09-07T10:31:14.998538","createBy":null,"updateTime":"2026-09-07T10:31:14.998538","updateBy":null,"deleted":0,"version":"0","tenantId":"0","username":"admin","password":"$2a$10$GQx6ILw5jsPhqHxJ6/AcmOzSM8xRVRwqChiH/B9ylh0srY0/NqXiK","realName":"系统管理员","email":null,"phone":null,"sex":0,"status":0,"deptId":"1","isAdmin":1,"avatar":null,"roleIds":null,"postIds":null},{"id":"2096788418869280769","createTime":"2026-09-07T10:31:30.160699","createBy":"1","updateTime":"2026-09-07T10:31:30.16071","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"mgr002","password":"$2a$10$4mwA8zhwDCduM5rSbqGsveqerXcEgV2OSt7tW61YzTxwNEVZmXabW","realName":"管理员乙","email":null,"phone":null,"sex":0,"status":0,"deptId":null,"isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2096788419452289025","createTime":"2026-09-07T10:31:30.300618","createBy":"1","updateTime":"2026-09-07T10:31:30.300627","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"emp003","password":"$2a$10$MnyfAzd2.vvy4Rm5009eZuhVhwdN6V5P3IDtGynKVmb7P/8.BV.US","realName":"员工丙","email":null,"phone":null,"sex":0,"status":0,"deptId":null,"isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2096788419959799810","createTime":"2026-09-07T10:31:30.420982","createBy":"1","updateTime":"2026-09-07T10:31:30.420992","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"appr002","password":"$2a$10$/N8/GhIicmbD9tsKNUCIlODqms9HLLTim1sI1Vs.9maeFcF3kjA2G","realName":"审批人丁","email":null,"phone":null,"sex":0,"status":0,"deptId":null,"isAdmin":0,"avatar":null,"roleIds":null,"postIds":null}],"total":"4","pageNum":"1","pageSize":"5"}}
+HTTP_STATUS=200
+== G1-mgr-revoke | PUT /system/user/2096788418869280769/roles
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== G1-mgr-catalog-revoked | GET /workflow/catalog/admin/items?pageNum=1&pageSize=10
+{"code":403,"msg":"无权限","data":null}
+HTTP_STATUS=403
+== G1-mgr-restore | PUT /system/user/2096788418869280769/roles
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== G1-mgr-catalog-restored | GET /workflow/catalog/admin/items?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"itemKey":"bpm_d69c5645544543b6","name":"v0.0.2R2报销审批","formKey":"v002r2_expense","categoryId":null,"status":"PUBLISHED","formPublished":true,"bindingActive":true},{"itemKey":"bpm_852005cc6eb44ded","name":"v0.0.2R2请假审批","formKey":"v002r2_leave","categoryId":"2096788422912589825","status":"PUBLISHED","formPublished":true,"bindingActive":true}],"total":"2","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS=200
+== G2a-counts | GET /workflow/catalog/category-counts
+{"code":0,"msg":"success","data":{"0":"1","2096788422912589825":"1"}}
+HTTP_STATUS=200
+== G2a-counts-admin | GET /workflow/catalog/category-counts
+{"code":0,"msg":"success","data":{"0":"1","2096788422912589825":"1"}}
+HTTP_STATUS=200
+== G2a-emp-items | GET /workflow/catalog/items?pageNum=1&pageSize=20
+{"code":0,"msg":"success","data":{"records":[{"itemKey":"bpm_d69c5645544543b6","name":"v0.0.2R2报销审批","formKey":"v002r2_expense","categoryId":null,"status":"PUBLISHED","formPublished":true,"bindingActive":true},{"itemKey":"bpm_852005cc6eb44ded","name":"v0.0.2R2请假审批","formKey":"v002r2_leave","categoryId":"2096788422912589825","status":"PUBLISHED","formPublished":true,"bindingActive":true}],"total":"2","pageNum":"1","pageSize":"20"}}
+HTTP_STATUS=200
+== G2a-emp-cat-filter | GET /workflow/catalog/items?pageNum=1&pageSize=20&categoryId=2096788422912589825
+{"code":0,"msg":"success","data":{"records":[{"itemKey":"bpm_852005cc6eb44ded","name":"v0.0.2R2请假审批","formKey":"v002r2_leave","categoryId":"2096788422912589825","status":"PUBLISHED","formPublished":true,"bindingActive":true}],"total":"1","pageNum":"1","pageSize":"20"}}
+HTTP_STATUS=200
+== G2a-emp-uncat-filter | GET /workflow/catalog/items?pageNum=1&pageSize=20&categoryId=0
+{"code":0,"msg":"success","data":{"records":[{"itemKey":"bpm_d69c5645544543b6","name":"v0.0.2R2报销审批","formKey":"v002r2_expense","categoryId":null,"status":"PUBLISHED","formPublished":true,"bindingActive":true}],"total":"1","pageNum":"1","pageSize":"20"}}
+HTTP_STATUS=200
+== G2a-emp-kw | GET /workflow/catalog/items?pageNum=1&pageSize=20&keyword=%E8%AF%B7%E5%81%87
+{"code":0,"msg":"success","data":{"records":[{"itemKey":"bpm_852005cc6eb44ded","name":"v0.0.2R2请假审批","formKey":"v002r2_leave","categoryId":"2096788422912589825","status":"PUBLISHED","formPublished":true,"bindingActive":true}],"total":"1","pageNum":"1","pageSize":"20"}}
+HTTP_STATUS=200
+== G2a-emp-kw-miss | GET /workflow/catalog/items?pageNum=1&pageSize=20&keyword=%E6%8A%A5%E9%94%80
+{"code":0,"msg":"success","data":{"records":[{"itemKey":"bpm_d69c5645544543b6","name":"v0.0.2R2报销审批","formKey":"v002r2_expense","categoryId":null,"status":"PUBLISHED","formPublished":true,"bindingActive":true}],"total":"1","pageNum":"1","pageSize":"20"}}
+HTTP_STATUS=200
+== G2a-cat2 | POST /workflow/categories
+{"code":0,"msg":"success","data":{"id":"2096788523580080130","name":"临时分类","sortNo":99,"itemCount":"0"}}
+HTTP_STATUS=200
+== G2a-cat2-edit | PUT /workflow/categories/2096788523580080130
+{"code":0,"msg":"success","data":{"id":"2096788523580080130","name":"临时分类改","sortNo":99,"itemCount":null}}
+HTTP_STATUS=200
+== G2a-assign-tmp | PUT /workflow/catalog/admin/items/bpm_d69c5645544543b6/category
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== G2a-del-occupied | DELETE /workflow/categories/2096788523580080130
+{"code":400,"msg":"分类下仍有 1 个事项，须先解除归属再删除","data":null}
+HTTP_STATUS=200
+== G2a-unassign | PUT /workflow/catalog/admin/items/bpm_d69c5645544543b6/category
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== G2a-del-free | DELETE /workflow/categories/2096788523580080130
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== G2a-counts-after | GET /workflow/catalog/category-counts
+{"code":0,"msg":"success","data":{"0":"1","2096788422912589825":"1"}}
+HTTP_STATUS=200
+== G2b-emp-item | GET /workflow/catalog/items/bpm_852005cc6eb44ded
+{"code":0,"msg":"success","data":{"itemKey":"bpm_852005cc6eb44ded","name":"v0.0.2R2请假审批","formKey":"v002r2_leave","categoryId":"2096788422912589825","status":"PUBLISHED","formPublished":true,"bindingActive":true}}
+HTTP_STATUS=200
+== G5a-emp-upload | POST /workflow/attachments/upload
+200 {"code":0,"msg":"success","data":{"storageName":"ed88ff94-3905-4f3f-b935-81f15f2c2f90.txt","fileSize":"39","storageKey":"2026/09/07/ed88ff94-3905-4f3f-b935-81f15f2c2f90.txt"}}
+== G5a-admin-upload-403 | POST /storage/files/upload (EMP)
+403 {"code":403,"msg":"无权限","data":null}
+== G2b-draft | POST /workflow/drafts
+{"code":0,"msg":"success","data":{"id":"2096788524427329537","createTime":"2026-09-07T10:31:55.327414","createBy":"2096788419452289025","updateTime":"2026-09-07T10:31:55.327418","updateBy":"2096788419452289025","deleted":0,"version":"0","tenantId":"0","title":"R2请假-出差附件","formKey":"v002r2_leave","formVersion":"2","processDefKey":"bpm_852005cc6eb44ded","payload":"{\"reason\":\"客户出差\",\"tags\":[\"出差\"],\"proof\":[{\"storageKey\":\"2026/09/07/ed88ff94-3905-4f3f-b935-81f15f2c2f90.txt\",\"name\":\"proof-r2.txt\"}],\"photo\":[]}","status":"EDITING","commandId":null,"submitSeq":0,"resultRecordId":null,"lastError":null}}
+HTTP_STATUS=200
+== G2b-submit | POST /workflow/drafts/2096788524427329537/submit
+{"code":0,"msg":"success","data":{"commandId":"2096788524578324482","commandKey":"DRAFT_SUBMIT:2096788524427329537:1","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"ACCEPTED","duplicated":false}}
+HTTP_STATUS=200
+== G2b-cmd-0 | GET /workflow/commands/2096788524578324482
+{"code":0,"msg":"success","data":{"commandId":"2096788524578324482","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"SUBMITTED\",\"recordId\":\"6ddab947-4f13-4e1d-aafe-348f1a437cd9\"}","failureReason":null,"retryCount":0,"createTime":"2026-09-07T10:31:55.363305","finishedAt":"2026-09-07T10:31:55.864724","flowStart":{"commandId":"2096788526667087874","status":"COMPLETED","result":"{\"status\":\"STARTED\"}","failureReason":null,"createTime":"2026-09-07T10:31:55.861595","finishedAt":"2026-09-07T10:31:56.45582"}}}
+HTTP_STATUS=200
+== G2b-myinst | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096788529087201282","createTime":"2026-09-07T10:31:56.43818","createBy":"2096788419452289025","updateTime":"2026-09-07T10:31:56.438188","updateBy":"2096788419452289025","deleted":0,"version":"0","tenantId":"0","processInstanceId":"4b69758b-aa64-11f1-be12-66ff24301f3c","processDefKey":"bpm_852005cc6eb44ded","businessKey":"6ddab947-4f13-4e1d-aafe-348f1a437cd9","formKey":"v002r2_leave","initiatorId":"2096788419452289025","status":"RUNNING"}],"total":"1","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS=200
+== G3b-noninitiator | POST /workflow/my/instances/2096788529087201282/urge
+{"code":403,"msg":"仅发起人可催办该实例","data":null}
+HTTP_STATUS=200
+== G3b-concurrent-urge-x5
+HTTP 500 {"code":500,"msg":"系统异常","data":null}
+HTTP 500 {"code":500,"msg":"系统异常","data":null}
+HTTP 200 {"code":0,"msg":"success","data":{"result":"ACCEPTED","detail":"已通知待办人: [1]","recordId":"2096788707890380802"}}
+HTTP 500 {"code":500,"msg":"系统异常","data":null}
+HTTP 200 {"code":0,"msg":"success","data":{"result":"COOLDOWN","detail":"冷却中，约 599 秒后可再次催办","recordId":"2096788707940712449"}}

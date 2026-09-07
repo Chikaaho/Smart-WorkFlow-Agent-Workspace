@@ -1,0 +1,207 @@
+== P-def | POST /workflow/defs
+{"code":0,"msg":"success","data":{"defId":"2096816167419891713","graph":{"processKey":"bpm_406fbe8581cb4266","name":"R3双节点审批B","formKey":"v002r2_expense","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}}
+HTTP_STATUS=200
+== P-defg | GET /workflow/defs/2096816167419891713
+{"code":0,"msg":"success","data":{"processKey":"bpm_406fbe8581cb4266","name":"R3双节点审批B","formKey":"v002r2_expense","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}
+HTTP_STATUS=200
+== P-defu | PUT /workflow/defs/2096816167419891713/graph
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS=200
+== P-defv | POST /workflow/defs/2096816167419891713/validate
+{"code":0,"msg":"success","data":[]}
+HTTP_STATUS=200
+== P-defp | POST /workflow/defs/2096816167419891713/publish
+{"code":0,"msg":"success","data":{"id":"2096816167419891713","createTime":"2026-09-07T12:21:45.930836","createBy":"1","updateTime":"2026-09-07T12:21:45.930851","updateBy":"1","deleted":0,"version":"2","tenantId":"0","processKey":"bpm_406fbe8581cb4266","name":"R3双节点审批B","formKey":"v002r2_expense","defVersion":1,"status":"PUBLISHED","deploymentId":"a321fae9-aa73-11f1-b84f-66ff24301f3c","processDefinitionId":"bpm_406fbe8581cb4266:1:a32ea51c-aa73-11f1-b84f-66ff24301f3c","graphJson":"{\"processKey\":\"bpm_406fbe8581cb4266\",\"name\":\"R3双节点审批B\",\"formKey\":\"v002r2_expense\",\"version\":null,\"elements\":[{\"id\":\"start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"co
+HTTP_STATUS=200
+== S-draft | POST /workflow/drafts
+{"code":0,"msg":"success","data":{"id":"2096816168237780993","createTime":"2026-09-07T12:21:46.126259","createBy":"2096815519647387649","updateTime":"2026-09-07T12:21:46.126265","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","title":"R3B目标变化报销","formKey":"v002r2_expense","formVersion":"2","processDefKey":"bpm_406fbe8581cb4266","payload":"{\"title\":\"R3B目标变化报销\",\"amount\":66}","status":"EDITING","commandId":null,"submitSeq":0,"resultRecordId":null,"lastError":null}}
+HTTP_STATUS=200
+== S-submit | POST /workflow/drafts/2096816168237780993/submit
+{"code":0,"msg":"success","data":{"commandId":"2096816168338444290","commandKey":"DRAFT_SUBMIT:2096816168237780993:1","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"ACCEPTED","duplicated":false}}
+HTTP_STATUS=200
+== S-myinst | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816170758557698","createTime":"2026-09-07T12:21:46.726881","createBy":"2096815519647387649","updateTime":"2026-09-07T12:21:46.726886","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","processInstanceId":"a38e2a3d-aa73-11f1-b84f-66ff24301f3c","processDefKey":"bpm_406fbe8581cb4266","businessKey":"6bde02a7-ba37-47ff-8557-46b9d3b6c81c","formKey":"v002r2_expense","initiatorId":"2096815519647387649","status":"RUNNING"},{"id":"2096815763751686145","createTime":"2026-09-07T12:20:09.688428","createBy":"2096815519647387649","updateTime":"2026-09-07T12:20:09.688434","updateBy":"2096815519647387649","deleted":0,"version":"0
+HTTP_STATUS=200
+== P-todo-a1 | GET /workflow/tasks/todo?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"taskId":"a38e786a-aa73-11f1-b84f-66ff24301f3c","processInstanceId":"a38e2a3d-aa73-11f1-b84f-66ff24301f3c","processName":"R3双节点审批B","formKey":"v002r2_expense","businessKey":"6bde02a7-ba37-47ff-8557-46b9d3b6c81c","createTime":"2026-09-07T12:21:46.717"}],"total":"1","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS=200
+== P-approve-a1 | POST /workflow/commands/tasks/a38e786a-aa73-11f1-b84f-66ff24301f3c/approve
+{"code":0,"msg":"success","data":{"commandId":"2096816175066107905","commandKey":"TASK_APPROVE:a38e786a-aa73-11f1-b84f-66ff24301f3c:1","commandType":"TASK_APPROVE","channel":"NORMAL","status":"ACCEPTED","duplicated":true}}
+HTTP_STATUS=200
+== R3-urge-after-move | POST /workflow/my/instances/2096816170758557698/urge
+{"code":0,"msg":"success","data":{"result":"ACCEPTED","detail":"已通知待办人: [2096815520112955393]","recordId":"2096816181491781633"}}
+HTTP_STATUS=200
+== R3-app-inbox-urge | GET /notify/messages?pageNum=1&pageSize=20
+{"code":0,"msg":"success","data":[{"id":"2096816181487587330","createTime":"2026-09-07T12:21:49.284926","createBy":"2096815519647387649","updateTime":"2026-09-07T12:21:49.284933","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","recipientId":"2096815520112955393","title":"催办提醒","content":"您有待办任务被催办：实例 a38e2a3d-aa73-11f1-b84f-66ff24301f3c","bizType":"WF_TODO","bizId":"a38e2a3d-aa73-11f1-b84f-66ff24301f3c","read":false,"channel":"IN_APP","deliveryStatus":"SUCCESS","externalMessageId":null,"failureReason":null,"idempotencyKey":null}]}
+HTTP_STATUS=200
+== P-todo-cur | GET /workflow/tasks/todo?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"taskId":"a4320b70-aa73-11f1-b84f-66ff24301f3c","processInstanceId":"a38e2a3d-aa73-11f1-b84f-66ff24301f3c","processName":"R3双节点审批B","formKey":"v002r2_expense","businessKey":"6bde02a7-ba37-47ff-8557-46b9d3b6c81c","createTime":"2026-09-07T12:21:47.79"}],"total":"1","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS=200
+== R2-emp-approve-others | POST /workflow/commands/tasks/a4320b70-aa73-11f1-b84f-66ff24301f3c/approve
+{"code":0,"msg":"success","data":{"commandId":"2096816181718274050","commandKey":"TASK_APPROVE:a4320b70-aa73-11f1-b84f-66ff24301f3c:2096815519647387649","commandType":"TASK_APPROVE","channel":"NORMAL","status":"ACCEPTED","duplicated":true}}
+HTTP_STATUS=200
+== R2-cmd-poll-0 | GET /workflow/commands/2096816181718274050
+{"code":0,"msg":"success","data":{"commandId":"2096816181718274050","commandType":"TASK_APPROVE","channel":"NORMAL","status":"PENDING","result":null,"failureReason":"无权处理该任务","retryCount":1,"createTime":"2026-09-07T12:21:49.339843","finishedAt":null,"flowStart":null}}
+HTTP_STATUS=200
+== R2-cmd-poll-1 | GET /workflow/commands/2096816181718274050
+{"code":0,"msg":"success","data":{"commandId":"2096816181718274050","commandType":"TASK_APPROVE","channel":"NORMAL","status":"PENDING","result":null,"failureReason":"无权处理该任务","retryCount":2,"createTime":"2026-09-07T12:21:49.339843","finishedAt":null,"flowStart":null}}
+HTTP_STATUS=200
+== R2-cmd-poll-2 | GET /workflow/commands/2096816181718274050
+{"code":0,"msg":"success","data":{"commandId":"2096816181718274050","commandType":"TASK_APPROVE","channel":"NORMAL","status":"PENDING","result":null,"failureReason":"无权处理该任务","retryCount":3,"createTime":"2026-09-07T12:21:49.339843","finishedAt":null,"flowStart":null}}
+HTTP_STATUS=200
+== R2-cmd-poll-3 | GET /workflow/commands/2096816181718274050
+{"code":0,"msg":"success","data":{"commandId":"2096816181718274050","commandType":"TASK_APPROVE","channel":"NORMAL","status":"PENDING","result":null,"failureReason":"无权处理该任务","retryCount":3,"createTime":"2026-09-07T12:21:49.339843","finishedAt":null,"flowStart":null}}
+HTTP_STATUS=200
+== R2-cmd-poll-4 | GET /workflow/commands/2096816181718274050
+{"code":0,"msg":"success","data":{"commandId":"2096816181718274050","commandType":"TASK_APPROVE","channel":"NORMAL","status":"PENDING","result":null,"failureReason":"无权处理该任务","retryCount":3,"createTime":"2026-09-07T12:21:49.339843","finishedAt":null,"flowStart":null}}
+HTTP_STATUS=200
+== R2-cmd-poll-5 | GET /workflow/commands/2096816181718274050
+{"code":0,"msg":"success","data":{"commandId":"2096816181718274050","commandType":"TASK_APPROVE","channel":"NORMAL","status":"PENDING","result":null,"failureReason":"无权处理该任务","retryCount":4,"createTime":"2026-09-07T12:21:49.339843","finishedAt":null,"flowStart":null}}
+HTTP_STATUS=200
+== R2-cmd-poll-6 | GET /workflow/commands/2096816181718274050
+{"code":0,"msg":"success","data":{"commandId":"2096816181718274050","commandType":"TASK_APPROVE","channel":"NORMAL","status":"PENDING","result":null,"failureReason":"无权处理该任务","retryCount":4,"createTime":"2026-09-07T12:21:49.339843","finishedAt":null,"flowStart":null}}
+HTTP_STATUS=200
+== R2-cmd-poll-7 | GET /workflow/commands/2096816181718274050
+{"code":0,"msg":"success","data":{"commandId":"2096816181718274050","commandType":"TASK_APPROVE","channel":"NORMAL","status":"PENDING","result":null,"failureReason":"无权处理该任务","retryCount":4,"createTime":"2026-09-07T12:21:49.339843","finishedAt":null,"flowStart":null}}
+HTTP_STATUS=200
+== R2-cmd-poll-8 | GET /workflow/commands/2096816181718274050
+{"code":0,"msg":"success","data":{"commandId":"2096816181718274050","commandType":"TASK_APPROVE","channel":"NORMAL","status":"PENDING","result":null,"failureReason":"无权处理该任务","retryCount":4,"createTime":"2026-09-07T12:21:49.339843","finishedAt":null,"flowStart":null}}
+HTTP_STATUS=200
+== R2-cmd-poll-9 | GET /workflow/commands/2096816181718274050
+{"code":0,"msg":"success","data":{"commandId":"2096816181718274050","commandType":"TASK_APPROVE","channel":"NORMAL","status":"PENDING","result":null,"failureReason":"无权处理该任务","retryCount":4,"createTime":"2026-09-07T12:21:49.339843","finishedAt":null,"flowStart":null}}
+HTTP_STATUS=200
+== R2-cmd-poll-10 | GET /workflow/commands/2096816181718274050
+{"code":0,"msg":"success","data":{"commandId":"2096816181718274050","commandType":"TASK_APPROVE","channel":"NORMAL","status":"FAILED","result":null,"failureReason":"无权处理该任务","retryCount":4,"createTime":"2026-09-07T12:21:49.339843","finishedAt":"2026-09-07T12:22:05.216671","flowStart":null}}
+HTTP_STATUS=200
+== R2-app-approve-own | POST /workflow/commands/tasks/a4320b70-aa73-11f1-b84f-66ff24301f3c/approve
+{"code":0,"msg":"success","data":{"commandId":"2096816251800899585","commandKey":"TASK_APPROVE:a4320b70-aa73-11f1-b84f-66ff24301f3c:2096815520112955393","commandType":"TASK_APPROVE","channel":"NORMAL","status":"ACCEPTED","duplicated":true}}
+HTTP_STATUS=200
+== S-draft | POST /workflow/drafts
+{"code":0,"msg":"success","data":{"id":"2096816251880591361","createTime":"2026-09-07T12:22:06.067984","createBy":"2096815519647387649","updateTime":"2026-09-07T12:22:06.06799","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","title":"R3抄送实例1","formKey":"v002r2_expense","formVersion":"2","processDefKey":"bpm_406fbe8581cb4266","payload":"{\"title\":\"R3抄送实例1\",\"amount\":66}","status":"EDITING","commandId":null,"submitSeq":0,"resultRecordId":null,"lastError":null}}
+HTTP_STATUS=200
+== S-submit | POST /workflow/drafts/2096816251880591361/submit
+{"code":0,"msg":"success","data":{"commandId":"2096816251972866050","commandKey":"DRAFT_SUBMIT:2096816251880591361:1","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"ACCEPTED","duplicated":false}}
+HTTP_STATUS=200
+== S-myinst | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816255189897217","createTime":"2026-09-07T12:22:06.856652","createBy":"2096815519647387649","updateTime":"2026-09-07T12:22:06.856669","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","processInstanceId":"af8c89f5-aa73-11f1-b84f-66ff24301f3c","processDefKey":"bpm_406fbe8581cb4266","businessKey":"61032756-fe8c-4923-a844-6539ff1d4179","formKey":"v002r2_expense","initiatorId":"2096815519647387649","status":"RUNNING"},{"id":"2096816170758557698","createTime":"2026-09-07T12:21:46.726881","createBy":"2096815519647387649","updateTime":"2026-09-07T12:21:46.726886","updateBy":"2096815519647387649","deleted":0,"version":"0
+HTTP_STATUS=200
+== S-myinst | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816255189897217","createTime":"2026-09-07T12:22:06.856652","createBy":"2096815519647387649","updateTime":"2026-09-07T12:22:06.856669","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","processInstanceId":"af8c89f5-aa73-11f1-b84f-66ff24301f3c","processDefKey":"bpm_406fbe8581cb4266","businessKey":"61032756-fe8c-4923-a844-6539ff1d4179","formKey":"v002r2_expense","initiatorId":"2096815519647387649","status":"RUNNING"},{"id":"2096816170758557698","createTime":"2026-09-07T12:21:46.726881","createBy":"2096815519647387649","updateTime":"2026-09-07T12:21:46.726886","updateBy":"2096815519647387649","deleted":0,"version":"0
+HTTP_STATUS=200
+== S-myinst | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816255189897217","createTime":"2026-09-07T12:22:06.856652","createBy":"2096815519647387649","updateTime":"2026-09-07T12:22:06.856669","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","processInstanceId":"af8c89f5-aa73-11f1-b84f-66ff24301f3c","processDefKey":"bpm_406fbe8581cb4266","businessKey":"61032756-fe8c-4923-a844-6539ff1d4179","formKey":"v002r2_expense","initiatorId":"2096815519647387649","status":"RUNNING"},{"id":"2096816170758557698","createTime":"2026-09-07T12:21:46.726881","createBy":"2096815519647387649","updateTime":"2026-09-07T12:21:46.726886","updateBy":"2096815519647387649","deleted":0,"version":"0
+HTTP_STATUS=200
+== S-myinst | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816255189897217","createTime":"2026-09-07T12:22:06.856652","createBy":"2096815519647387649","updateTime":"2026-09-07T12:22:06.856669","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","processInstanceId":"af8c89f5-aa73-11f1-b84f-66ff24301f3c","processDefKey":"bpm_406fbe8581cb4266","businessKey":"61032756-fe8c-4923-a844-6539ff1d4179","formKey":"v002r2_expense","initiatorId":"2096815519647387649","status":"RUNNING"},{"id":"2096816170758557698","createTime":"2026-09-07T12:21:46.726881","createBy":"2096815519647387649","updateTime":"2026-09-07T12:21:46.726886","updateBy":"2096815519647387649","deleted":0,"version":"0
+HTTP_STATUS=200
+== S-myinst | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816255189897217","createTime":"2026-09-07T12:22:06.856652","createBy":"2096815519647387649","updateTime":"2026-09-07T12:22:06.856669","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","processInstanceId":"af8c89f5-aa73-11f1-b84f-66ff24301f3c","processDefKey":"bpm_406fbe8581cb4266","businessKey":"61032756-fe8c-4923-a844-6539ff1d4179","formKey":"v002r2_expense","initiatorId":"2096815519647387649","status":"RUNNING"},{"id":"2096816170758557698","createTime":"2026-09-07T12:21:46.726881","createBy":"2096815519647387649","updateTime":"2026-09-07T12:21:46.726886","updateBy":"2096815519647387649","deleted":0,"version":"0
+HTTP_STATUS=200
+== S-myinst | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816255189897217","createTime":"2026-09-07T12:22:06.856652","createBy":"2096815519647387649","updateTime":"2026-09-07T12:22:06.856669","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","processInstanceId":"af8c89f5-aa73-11f1-b84f-66ff24301f3c","processDefKey":"bpm_406fbe8581cb4266","businessKey":"61032756-fe8c-4923-a844-6539ff1d4179","formKey":"v002r2_expense","initiatorId":"2096815519647387649","status":"RUNNING"},{"id":"2096816170758557698","createTime":"2026-09-07T12:21:46.726881","createBy":"2096815519647387649","updateTime":"2026-09-07T12:21:46.726886","updateBy":"2096815519647387649","deleted":0,"version":"0
+HTTP_STATUS=200
+== S-myinst | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816255189897217","createTime":"2026-09-07T12:22:06.856652","createBy":"2096815519647387649","updateTime":"2026-09-07T12:22:06.856669","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","processInstanceId":"af8c89f5-aa73-11f1-b84f-66ff24301f3c","processDefKey":"bpm_406fbe8581cb4266","businessKey":"61032756-fe8c-4923-a844-6539ff1d4179","formKey":"v002r2_expense","initiatorId":"2096815519647387649","status":"RUNNING"},{"id":"2096816170758557698","createTime":"2026-09-07T12:21:46.726881","createBy":"2096815519647387649","updateTime":"2026-09-07T12:21:46.726886","updateBy":"2096815519647387649","deleted":0,"version":"0
+HTTP_STATUS=200
+== S-myinst | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816255189897217","createTime":"2026-09-07T12:22:06.856652","createBy":"2096815519647387649","updateTime":"2026-09-07T12:22:06.856669","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","processInstanceId":"af8c89f5-aa73-11f1-b84f-66ff24301f3c","processDefKey":"bpm_406fbe8581cb4266","businessKey":"61032756-fe8c-4923-a844-6539ff1d4179","formKey":"v002r2_expense","initiatorId":"2096815519647387649","status":"RUNNING"},{"id":"2096816170758557698","createTime":"2026-09-07T12:21:46.726881","createBy":"2096815519647387649","updateTime":"2026-09-07T12:21:46.726886","updateBy":"2096815519647387649","deleted":0,"version":"0
+HTTP_STATUS=200
+== S-myinst | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816255189897217","createTime":"2026-09-07T12:22:06.856652","createBy":"2096815519647387649","updateTime":"2026-09-07T12:22:06.856669","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","processInstanceId":"af8c89f5-aa73-11f1-b84f-66ff24301f3c","processDefKey":"bpm_406fbe8581cb4266","businessKey":"61032756-fe8c-4923-a844-6539ff1d4179","formKey":"v002r2_expense","initiatorId":"2096815519647387649","status":"RUNNING"},{"id":"2096816170758557698","createTime":"2026-09-07T12:21:46.726881","createBy":"2096815519647387649","updateTime":"2026-09-07T12:21:46.726886","updateBy":"2096815519647387649","deleted":0,"version":"0
+HTTP_STATUS=200
+== S-myinst | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816255189897217","createTime":"2026-09-07T12:22:06.856652","createBy":"2096815519647387649","updateTime":"2026-09-07T12:22:06.856669","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","processInstanceId":"af8c89f5-aa73-11f1-b84f-66ff24301f3c","processDefKey":"bpm_406fbe8581cb4266","businessKey":"61032756-fe8c-4923-a844-6539ff1d4179","formKey":"v002r2_expense","initiatorId":"2096815519647387649","status":"RUNNING"},{"id":"2096816170758557698","createTime":"2026-09-07T12:21:46.726881","createBy":"2096815519647387649","updateTime":"2026-09-07T12:21:46.726886","updateBy":"2096815519647387649","deleted":0,"version":"0
+HTTP_STATUS=200
+== S-myinst | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816255189897217","createTime":"2026-09-07T12:22:06.856652","createBy":"2096815519647387649","updateTime":"2026-09-07T12:22:06.856669","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","processInstanceId":"af8c89f5-aa73-11f1-b84f-66ff24301f3c","processDefKey":"bpm_406fbe8581cb4266","businessKey":"61032756-fe8c-4923-a844-6539ff1d4179","formKey":"v002r2_expense","initiatorId":"2096815519647387649","status":"RUNNING"},{"id":"2096816170758557698","createTime":"2026-09-07T12:21:46.726881","createBy":"2096815519647387649","updateTime":"2026-09-07T12:21:46.726886","updateBy":"2096815519647387649","deleted":0,"version":"0
+HTTP_STATUS=200
+== S-myinst | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816255189897217","createTime":"2026-09-07T12:22:06.856652","createBy":"2096815519647387649","updateTime":"2026-09-07T12:22:06.856669","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","processInstanceId":"af8c89f5-aa73-11f1-b84f-66ff24301f3c","processDefKey":"bpm_406fbe8581cb4266","businessKey":"61032756-fe8c-4923-a844-6539ff1d4179","formKey":"v002r2_expense","initiatorId":"2096815519647387649","status":"RUNNING"},{"id":"2096816170758557698","createTime":"2026-09-07T12:21:46.726881","createBy":"2096815519647387649","updateTime":"2026-09-07T12:21:46.726886","updateBy":"2096815519647387649","deleted":0,"version":"0
+HTTP_STATUS=200
+== S-myinst | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816255189897217","createTime":"2026-09-07T12:22:06.856652","createBy":"2096815519647387649","updateTime":"2026-09-07T12:22:06.856669","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","processInstanceId":"af8c89f5-aa73-11f1-b84f-66ff24301f3c","processDefKey":"bpm_406fbe8581cb4266","businessKey":"61032756-fe8c-4923-a844-6539ff1d4179","formKey":"v002r2_expense","initiatorId":"2096815519647387649","status":"RUNNING"},{"id":"2096816170758557698","createTime":"2026-09-07T12:21:46.726881","createBy":"2096815519647387649","updateTime":"2026-09-07T12:21:46.726886","updateBy":"2096815519647387649","deleted":0,"version":"0
+HTTP_STATUS=200
+== S-myinst | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816255189897217","createTime":"2026-09-07T12:22:06.856652","createBy":"2096815519647387649","updateTime":"2026-09-07T12:22:06.856669","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","processInstanceId":"af8c89f5-aa73-11f1-b84f-66ff24301f3c","processDefKey":"bpm_406fbe8581cb4266","businessKey":"61032756-fe8c-4923-a844-6539ff1d4179","formKey":"v002r2_expense","initiatorId":"2096815519647387649","status":"RUNNING"},{"id":"2096816170758557698","createTime":"2026-09-07T12:21:46.726881","createBy":"2096815519647387649","updateTime":"2026-09-07T12:21:46.726886","updateBy":"2096815519647387649","deleted":0,"version":"0
+HTTP_STATUS=200
+== S-myinst | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816255189897217","createTime":"2026-09-07T12:22:06.856652","createBy":"2096815519647387649","updateTime":"2026-09-07T12:22:06.856669","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","processInstanceId":"af8c89f5-aa73-11f1-b84f-66ff24301f3c","processDefKey":"bpm_406fbe8581cb4266","businessKey":"61032756-fe8c-4923-a844-6539ff1d4179","formKey":"v002r2_expense","initiatorId":"2096815519647387649","status":"RUNNING"},{"id":"2096816170758557698","createTime":"2026-09-07T12:21:46.726881","createBy":"2096815519647387649","updateTime":"2026-09-07T12:21:46.726886","updateBy":"2096815519647387649","deleted":0,"version":"0
+HTTP_STATUS=200
+== R2-myinst-pka | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816255189897217","createTime":"2026-09-07T12:22:06.856652","createBy":"2096815519647387649","updateTime":"2026-09-07T12:22:06.856669","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","processInstanceId":"af8c89f5-aa73-11f1-b84f-66ff24301f3c","processDefKey":"bpm_406fbe8581cb4266","businessKey":"61032756-fe8c-4923-a844-6539ff1d4179","formKey":"v002r2_expense","initiatorId":"2096815519647387649","status":"RUNNING"},{"id":"2096816170758557698","createTime":"2026-09-07T12:21:46.726881","createBy":"2096815519647387649","updateTime":"2026-09-07T12:21:46.726886","updateBy":"2096815519647387649","deleted":0,"version":"0
+HTTP_STATUS=200
+== R2-copies-all | GET /workflow/my/copies?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS=200
+== R2-filter-time | GET /workflow/my/copies?pageNum=1&pageSize=10&timeFrom=2026-09-07T00:00:00&timeTo=2026-09-07T23:59:59
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS=200
+== R2-filter-time-out | GET /workflow/my/copies?pageNum=1&pageSize=10&timeFrom=2026-09-08T00:00:00
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS=200
+== R2-page1 | GET /workflow/my/copies?pageNum=1&pageSize=1
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"1"}}
+HTTP_STATUS=200
+== R2-page2 | GET /workflow/my/copies?pageNum=2&pageSize=1
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"2","pageSize":"1"}}
+HTTP_STATUS=200
+== R2-page3 | GET /workflow/my/copies?pageNum=3&pageSize=1
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"3","pageSize":"1"}}
+HTTP_STATUS=200
+== R2-draft1 | POST /workflow/drafts
+{"code":0,"msg":"success","data":{"id":"2096816805830709249","createTime":"2026-09-07T12:24:18.139315","createBy":"2096815519647387649","updateTime":"2026-09-07T12:24:18.139324","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","title":"R3请假抄送1","formKey":"v002r2_leave","formVersion":"2","processDefKey":"bpm_b8af51f5f9a64ba4","payload":"{\"reason\":\"R3抄送\",\"tags\":[\"病假\"],\"proof\":[],\"photo\":[]}","status":"EDITING","commandId":null,"submitSeq":0,"resultRecordId":null,"lastError":null}}
+HTTP_STATUS=200
+== R2-submit1 | POST /workflow/drafts/2096816805830709249/submit
+{"code":0,"msg":"success","data":{"commandId":"2096816806199808002","commandKey":"DRAFT_SUBMIT:2096816805830709249:1","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"ACCEPTED","duplicated":false}}
+HTTP_STATUS=200
+== R2-myinst1 | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816810578661378","createTime":"2026-09-07T12:24:19.271499","createBy":"2096815519647387649","updateTime":"2026-09-07T12:24:19.271505","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","processInstanceId":"fe79ec25-aa73-11f1-b84f-66ff24301f3c","processDefKey":"bpm_b8af51f5f9a64ba4","businessKey":"9d6cdd5e-551b-4ee0-b737-f4e4f95a606f","formKey":"v002r2_leave","initiatorId":"2096815519647387649","status":"RUNNING"},{"id":"2096816255189897217","createTime":"2026-09-07T12:22:06.856652","createBy":"2096815519647387649","updateTime":"2026-09-07T12:22:06.856669","updateBy":"2096815519647387649","deleted":0,"version":"0",
+HTTP_STATUS=200
+== R2-draft2 | POST /workflow/drafts
+{"code":0,"msg":"success","data":{"id":"2096816819164401666","createTime":"2026-09-07T12:24:21.319138","createBy":"2096815519647387649","updateTime":"2026-09-07T12:24:21.319148","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","title":"R3请假抄送2","formKey":"v002r2_leave","formVersion":"2","processDefKey":"bpm_b8af51f5f9a64ba4","payload":"{\"reason\":\"R3抄送\",\"tags\":[\"病假\"],\"proof\":[],\"photo\":[]}","status":"EDITING","commandId":null,"submitSeq":0,"resultRecordId":null,"lastError":null}}
+HTTP_STATUS=200
+== R2-submit2 | POST /workflow/drafts/2096816819164401666/submit
+{"code":0,"msg":"success","data":{"commandId":"2096816819281842177","commandKey":"DRAFT_SUBMIT:2096816819164401666:1","commandType":"DRAFT_SUBMIT","channel":"NORMAL","status":"ACCEPTED","duplicated":false}}
+HTTP_STATUS=200
+== R2-myinst2 | GET /workflow/my/instances?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816823564226562","createTime":"2026-09-07T12:24:22.368058","createBy":"2096815519647387649","updateTime":"2026-09-07T12:24:22.368063","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","processInstanceId":"00522ea5-aa74-11f1-b84f-66ff24301f3c","processDefKey":"bpm_b8af51f5f9a64ba4","businessKey":"4a996ca9-9074-47a5-bd88-3acae55e903b","formKey":"v002r2_leave","initiatorId":"2096815519647387649","status":"RUNNING"},{"id":"2096816810578661378","createTime":"2026-09-07T12:24:19.271499","createBy":"2096815519647387649","updateTime":"2026-09-07T12:24:19.271505","updateBy":"2096815519647387649","deleted":0,"version":"0",
+HTTP_STATUS=200
+== R2-todo | GET /workflow/tasks/todo?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"taskId":"005255c2-aa74-11f1-b84f-66ff24301f3c","processInstanceId":"00522ea5-aa74-11f1-b84f-66ff24301f3c","processName":"v0.0.2R2请假审批","formKey":"v002r2_leave","businessKey":"4a996ca9-9074-47a5-bd88-3acae55e903b","createTime":"2026-09-07T12:24:22.352"},{"taskId":"fe7a8872-aa73-11f1-b84f-66ff24301f3c","processInstanceId":"fe79ec25-aa73-11f1-b84f-66ff24301f3c","processName":"v0.0.2R2请假审批","formKey":"v002r2_leave","businessKey":"9d6cdd5e-551b-4ee0-b737-f4e4f95a606f","createTime":"2026-09-07T12:24:19.26"},{"taskId":"af8cb112-aa73-11f1-b84f-66ff24301f3c","processInstanceId":"af8c89f5-aa73-11f1-b84f-66ff24301f3c","processName":"R3双节点审批B","formKey":"v0
+HTTP_STATUS=200
+== R2-approve | POST /workflow/commands/tasks/fe7a8872-aa73-11f1-b84f-66ff24301f3c/approve
+{"code":0,"msg":"success","data":{"commandId":"2096816832196104193","commandKey":"TASK_APPROVE:fe7a8872-aa73-11f1-b84f-66ff24301f3c:1","commandType":"TASK_APPROVE","channel":"NORMAL","status":"ACCEPTED","duplicated":true}}
+HTTP_STATUS=200
+== R2-todo | GET /workflow/tasks/todo?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"taskId":"005255c2-aa74-11f1-b84f-66ff24301f3c","processInstanceId":"00522ea5-aa74-11f1-b84f-66ff24301f3c","processName":"v0.0.2R2请假审批","formKey":"v002r2_leave","businessKey":"4a996ca9-9074-47a5-bd88-3acae55e903b","createTime":"2026-09-07T12:24:22.352"},{"taskId":"af8cb112-aa73-11f1-b84f-66ff24301f3c","processInstanceId":"af8c89f5-aa73-11f1-b84f-66ff24301f3c","processName":"R3双节点审批B","formKey":"v002r2_expense","businessKey":"61032756-fe8c-4923-a844-6539ff1d4179","createTime":"2026-09-07T12:22:06.839"}],"total":"2","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS=200
+== R2-approve | POST /workflow/commands/tasks/005255c2-aa74-11f1-b84f-66ff24301f3c/approve
+{"code":0,"msg":"success","data":{"commandId":"2096816838726635521","commandKey":"TASK_APPROVE:005255c2-aa74-11f1-b84f-66ff24301f3c:1","commandType":"TASK_APPROVE","channel":"NORMAL","status":"ACCEPTED","duplicated":true}}
+HTTP_STATUS=200
+== R2-copies-all | GET /workflow/my/copies?pageNum=1&pageSize=10
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816839192203267","processInstanceId":"00522ea5-aa74-11f1-b84f-66ff24301f3c","nodeKey":"c1","taskId":null,"recipientId":"2096815520112955393","deliveryStatus":"SUCCESS","createTime":"2026-09-07T12:24:26.093822","formKey":"v002r2_leave","processDefKey":"bpm_b8af51f5f9a64ba4","businessKey":"4a996ca9-9074-47a5-bd88-3acae55e903b","initiatorId":"2096815519647387649","instanceStatus":"APPROVED"},{"id":"2096816834767212545","processInstanceId":"fe79ec25-aa73-11f1-b84f-66ff24301f3c","nodeKey":"c1","taskId":null,"recipientId":"2096815520112955393","deliveryStatus":"SUCCESS","createTime":"2026-09-07T12:24:25.03893","formKey":"v002r2_leave","proces
+HTTP_STATUS=200
+== R2-copy-detail | GET /workflow/my/copies/2096816839192203267
+{"code":0,"msg":"success","data":{"copy":{"id":"2096816839192203267","createTime":"2026-09-07T12:24:26.093822","createBy":"1","updateTime":"2026-09-07T12:24:26.093825","updateBy":"1","deleted":0,"version":"0","tenantId":"0","processInstanceId":"00522ea5-aa74-11f1-b84f-66ff24301f3c","nodeKey":"c1","taskId":null,"recipientId":"2096815520112955393","deliveryStatus":"SUCCESS","failureReason":null},"instance":{"id":"2096816823564226562","createTime":"2026-09-07T12:24:22.368058","createBy":"2096815519647387649","updateTime":"2026-09-07T12:24:22.368063","updateBy":"2096815519647387649","deleted":0,"version":"0","tenantId":"0","processInstanceId":"00522ea5-aa74-11f1-b84f-66ff24301f3c","processDefKey
+HTTP_STATUS=200
+== R2-copy-detail-stranger | GET /workflow/my/copies/2096816839192203267
+{"code":403,"msg":"仅接收人可查看该抄送","data":null}
+HTTP_STATUS=200
+== R2-filter-pi | GET /workflow/my/copies?pageNum=1&pageSize=10&processInstanceId=00522ea5-aa74-11f1-b84f-66ff24301f3c
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816839192203267","processInstanceId":"00522ea5-aa74-11f1-b84f-66ff24301f3c","nodeKey":"c1","taskId":null,"recipientId":"2096815520112955393","deliveryStatus":"SUCCESS","createTime":"2026-09-07T12:24:26.093822","formKey":"v002r2_leave","processDefKey":"bpm_b8af51f5f9a64ba4","businessKey":"4a996ca9-9074-47a5-bd88-3acae55e903b","initiatorId":"2096815519647387649","instanceStatus":"APPROVED"},{"id":"2096816834767212545","processInstanceId":"fe79ec25-aa73-11f1-b84f-66ff24301f3c","nodeKey":"c1","taskId":null,"recipientId":"2096815520112955393","deliveryStatus":"SUCCESS","createTime":"2026-09-07T12:24:25.03893","formKey":"v002r2_leave","proces
+HTTP_STATUS=200
+== R2-filter-time | GET /workflow/my/copies?pageNum=1&pageSize=10&timeFrom=2026-09-07T00:00:00&timeTo=2026-09-07T23:59:59
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816839192203267","processInstanceId":"00522ea5-aa74-11f1-b84f-66ff24301f3c","nodeKey":"c1","taskId":null,"recipientId":"2096815520112955393","deliveryStatus":"SUCCESS","createTime":"2026-09-07T12:24:26.093822","formKey":"v002r2_leave","processDefKey":"bpm_b8af51f5f9a64ba4","businessKey":"4a996ca9-9074-47a5-bd88-3acae55e903b","initiatorId":"2096815519647387649","instanceStatus":"APPROVED"},{"id":"2096816834767212545","processInstanceId":"fe79ec25-aa73-11f1-b84f-66ff24301f3c","nodeKey":"c1","taskId":null,"recipientId":"2096815520112955393","deliveryStatus":"SUCCESS","createTime":"2026-09-07T12:24:25.03893","formKey":"v002r2_leave","proces
+HTTP_STATUS=200
+== R2-filter-time-out | GET /workflow/my/copies?pageNum=1&pageSize=10&timeFrom=2026-09-08T00:00:00
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS=200
+== R2-page1 | GET /workflow/my/copies?pageNum=1&pageSize=1
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816839192203267","processInstanceId":"00522ea5-aa74-11f1-b84f-66ff24301f3c","nodeKey":"c1","taskId":null,"recipientId":"2096815520112955393","deliveryStatus":"SUCCESS","createTime":"2026-09-07T12:24:26.093822","formKey":"v002r2_leave","processDefKey":"bpm_b8af51f5f9a64ba4","businessKey":"4a996ca9-9074-47a5-bd88-3acae55e903b","initiatorId":"2096815519647387649","instanceStatus":"APPROVED"}],"total":"2","pageNum":"1","pageSize":"1"}}
+HTTP_STATUS=200
+== R2-page2 | GET /workflow/my/copies?pageNum=2&pageSize=1
+{"code":0,"msg":"success","data":{"records":[{"id":"2096816834767212545","processInstanceId":"fe79ec25-aa73-11f1-b84f-66ff24301f3c","nodeKey":"c1","taskId":null,"recipientId":"2096815520112955393","deliveryStatus":"SUCCESS","createTime":"2026-09-07T12:24:25.03893","formKey":"v002r2_leave","processDefKey":"bpm_b8af51f5f9a64ba4","businessKey":"9d6cdd5e-551b-4ee0-b737-f4e4f95a606f","initiatorId":"2096815519647387649","instanceStatus":"APPROVED"}],"total":"2","pageNum":"2","pageSize":"1"}}
+HTTP_STATUS=200
+== R2-page3 | GET /workflow/my/copies?pageNum=3&pageSize=1
+{"code":0,"msg":"success","data":{"records":[],"total":"2","pageNum":"3","pageSize":"1"}}
+HTTP_STATUS=200

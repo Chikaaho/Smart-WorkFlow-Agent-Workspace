@@ -1,0 +1,26 @@
+== C1c set graph ==
+{"code": 0, "msg": "success", "data": null}
+== C2c publish ==
+{"code": 0, "msg": "success", "data": {"id": "2096715243026137089", "createTime": "2026-09-07T05:40:43.679899", "createBy": "1", "updateTime": "2026-09-07T05:40:43.679906", "updateBy": "1", "deleted": 0, "version": "4", "tenantId": "0", "processKey": "bpm_a37c5d7eb3294806", "name": "v0.0.2请假审批V2", "formKey": "v002_leave", "defVersion": 1, "status": "PUBLISHED", "deploymentId": "1ebcb863-aa3c-11f1-b146-66ff24301f3c", "processDefinitionId": "bpm_7a824f1957924ef5:1:1eeffd66-aa3c-11f1-b146-66ff24301f3c", "graphJson": "{\"processKey\":\"bpm_7a824f1957924ef5\",\"name\":\"v0.0.2请假审批V2\",\"formKey\":\"v002_leave\",\"version\":1,\"elements\":[{\"id\":\"node_start\",\"kind\":\"node\",\"type\":\"START\
+== C4 ==
+[{"id": "2096716160496582657", "status": "RUNNING"}]
+== C5 urge#1 ==
+{"code": 0, "msg": "success", "data": {"result": "ACCEPTED", "detail": "已通知待办人: [1]", "recordId": "2096716175587688450"}}
+== C6 urge#2 ==
+{"code": 0, "msg": "success", "data": {"result": "COOLDOWN", "detail": "冷却中，约 599 秒后可再次催办", "recordId": "2096716175646408705"}}
+== C7 非发起人 ==
+{"code": 403, "msg": "仅发起人可催办该实例", "data": null}
+== C8 copies before ==
+{"total": "0"}
+== C9 todo total ==
+{"total": "1"}
+== C10 approve ==
+{"code": 0, "msg": "success", "data": {"commandId": "2096716175923232770", "commandKey": "TASK_APPROVE:1f3ce4f4-aa3c-11f1-b146-66ff24301f3c:1", "commandType": "TASK_APPROVE", "channel": "NORMAL", "status": "ACCEPTED", "duplicated": true}}
+== C11 copies after（应1） ==
+{"total": "1"}
+== C12 本人详情 ==
+{"keys": {"code": 500, "msg": "系统异常", "data": null}}
+== C13 他人403 ==
+{"code": 403, "msg": "仅接收人可查看该抄送"}
+== C14 urge ended ==
+{"code": 0, "msg": "success", "data": {"result": "REJECTED", "detail": "实例已结束，不能催办", "recordId": "2096716192947912705"}}

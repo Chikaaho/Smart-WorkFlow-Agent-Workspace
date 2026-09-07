@@ -1,0 +1,62 @@
+# EVIDENCE R4 / R2a-R2b
+# collected: 2026-09-07 Asia/Shanghai
+# runtime: local loopback HTTP, dev profile, file H2 temporary database
+# identity: formal seeded user id=1 via explicit debug-auth test_1; tenant=0
+# fixture: copy ids 990001/990002; recipient_id=1; process ids live-pi-a/live-pi-b;
+#          both create_time=2026-09-07T15:51:00; secrets/tokens are not persisted here.
+# note: all responses below are complete response bodies for the requested endpoint.
+
+REQUEST R2a-live-exact-fixed
+GET /api/workflow/my/copies?pageNum=1&pageSize=10&processInstanceId=live-pi-a
+Authorization: Bearer test_1
+X-Request-Id: R2a-live-exact-fixed
+HTTP/1.1 200
+Content-Type: application/json
+{"code":0,"msg":"success","data":{"records":[{"id":"990001","processInstanceId":"live-pi-a","nodeKey":"live-node","taskId":"live-task-a","recipientId":"1","deliveryStatus":"DELIVERED","createTime":"2026-09-07T15:51:00","formKey":null,"processDefKey":null,"businessKey":null,"initiatorId":null,"instanceStatus":null}],"total":"1","pageNum":"1","pageSize":"10"}}
+
+REQUEST R2a-live-miss-fixed
+GET /api/workflow/my/copies?pageNum=1&pageSize=10&processInstanceId=live-pi-missing
+Authorization: Bearer test_1
+X-Request-Id: R2a-live-miss-fixed
+HTTP/1.1 200
+Content-Type: application/json
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"10"}}
+
+REQUEST R2b-live-page1
+GET /api/workflow/my/copies?pageNum=1&pageSize=1
+Authorization: Bearer test_1
+X-Request-Id: R2b-live-page1
+HTTP/1.1 200
+Content-Type: application/json
+{"code":0,"msg":"success","data":{"records":[{"id":"990002","processInstanceId":"live-pi-b","nodeKey":"live-node","taskId":"live-task-b","recipientId":"1","deliveryStatus":"DELIVERED","createTime":"2026-09-07T15:51:00","formKey":null,"processDefKey":null,"businessKey":null,"initiatorId":null,"instanceStatus":null}],"total":"2","pageNum":"1","pageSize":"1"}}
+
+REQUEST R2b-live-page2
+GET /api/workflow/my/copies?pageNum=2&pageSize=1
+Authorization: Bearer test_1
+X-Request-Id: R2b-live-page2
+HTTP/1.1 200
+Content-Type: application/json
+{"code":0,"msg":"success","data":{"records":[{"id":"990001","processInstanceId":"live-pi-a","nodeKey":"live-node","taskId":"live-task-a","recipientId":"1","deliveryStatus":"DELIVERED","createTime":"2026-09-07T15:51:00","formKey":null,"processDefKey":null,"businessKey":null,"initiatorId":null,"instanceStatus":null}],"total":"2","pageNum":"2","pageSize":"1"}}
+
+REQUEST R2b-live-page3
+GET /api/workflow/my/copies?pageNum=3&pageSize=1
+Authorization: Bearer test_1
+X-Request-Id: R2b-live-page3
+HTTP/1.1 200
+Content-Type: application/json
+{"code":0,"msg":"success","data":{"records":[],"total":"2","pageNum":"3","pageSize":"1"}}
+
+REQUEST R2b-live-page1-repeat
+GET /api/workflow/my/copies?pageNum=1&pageSize=1
+Authorization: Bearer test_1
+X-Request-Id: R2b-live-page1-repeat
+HTTP/1.1 200
+Content-Type: application/json
+{"code":0,"msg":"success","data":{"records":[{"id":"990002","processInstanceId":"live-pi-b","nodeKey":"live-node","taskId":"live-task-b","recipientId":"1","deliveryStatus":"DELIVERED","createTime":"2026-09-07T15:51:00","formKey":null,"processDefKey":null,"businessKey":null,"initiatorId":null,"instanceStatus":null}],"total":"2","pageNum":"1","pageSize":"1"}}
+
+REQUEST R2a-live-unauth-fixed
+GET /api/workflow/my/copies?pageNum=1&pageSize=10&processInstanceId=live-pi-a
+X-Request-Id: R2a-live-unauth-fixed
+HTTP/1.1 401
+Content-Type: application/json;charset=UTF-8
+{"code":401,"msg":"未认证","data":null}
