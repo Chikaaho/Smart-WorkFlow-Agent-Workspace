@@ -1,0 +1,175 @@
+diff --git a/README.md b/README.md
+index 5bbea73..86a4272 100644
+--- a/README.md
++++ b/README.md
+@@ -1,128 +1,70 @@
+ # Smart-WorkFlow-aPaaS-server
+ 
+-Smart-WorkFlow-aPaaS-server 是 CH-aPaaS 的后端 API 服务，基于 Java 21 与 Spring Boot 构建。它以模块化单体承载低代码表单、流程自动化、组织权限、通知、存储、任务、IoT、知识库和 AI Agent 等业务域。
++<img src="docs/images/ch-apaas-logo.png" alt="CH-aPaaS Logo" width="180" />
+ 
+-配套入口：[Smart-WorkFlow-aPaaS-Web](../Smart-WorkFlow-Web/README.md) · [项目知识中心](../README.md)
++Smart-WorkFlow-aPaaS-server 是 **CH-aPaaS** 的后端 API 服务（Java 21 / Spring Boot），承载组织权限、表单、流程、审批、通知以及设备与智能能力的组合基础。CH-aPaaS 是用于搭建企业业务应用的平台；办公审批（OA）是当前已经落地的一类使用场景，而不是项目的全部定义。
+ 
+-## 核心能力
++## 谁可以使用、可以做什么
+ 
+-- 身份、组织、角色、菜单、字典与数据权限。
+-- 动态表单定义、发布、数据提交、子表与引用关系。
+-- BPMN 流程定义、发起、待办、审批和实例监控。
+-- 通知、文件存储与定时任务等通用服务。
+-- AI Agent 会话、工具调用、图编排与知识能力。
+-- IoT 设备接入与业务流程联动。
+-- OpenAPI 文档、数据库迁移与多环境配置。
++- **普通员工**：从工作台找到可发起的事项，填写或恢复业务草稿，提交申请、跟踪进度、处理待办并查看结果。
++- **审批人**：处理待办并填写审批意见，接收抄送与催办提醒。
++- **业务管理员**：在管理后台维护事项与分类、表单、流程和通知记录，处理通知发送失败并重发。
++- **平台管理员**：管理用户、角色、菜单与权限边界。
+ 
+-## 技术栈
++为什么要使用它：把业务事项配置为表单与流程之后，使用者即可在统一的工作台发起和办理，不需要为每个业务流程重复开发页面、权限、表单和审批链。
+ 
+-| 类别 | 技术 |
+-| --- | --- |
+-| 语言与框架 | Java 21、Spring Boot 3.4 |
+-| 数据访问 | MyBatis-Plus、JdbcTemplate |
+-| 流程引擎 | Flowable |
+-| 数据库 | PostgreSQL、H2、Flyway |
+-| 认证与缓存 | Spring Security、JWT、Redis |
+-| API 文档 | Springdoc OpenAPI |
+-| 调度与存储 | Quartz、Local / MinIO / COS / Qiniu |
+-
+-## 模块结构
+-
+-```text
+-Smart-WorkFlow-Server/
+-├── sw-dependencies/       依赖版本管理
+-├── sw-framework/          公共基础设施与安全
+-├── sw-basic/              存储、通知、任务、IoT、知识库与 Agent
+-├── sw-biz/                系统、表单、流程与开放接口
+-└── sw-bootstrap/          应用启动、配置与数据库迁移
+-```
+-
+-模块依赖由基础层流向业务层，`sw-bootstrap` 是应用启动入口。完整边界见[后端工程宪法](docs/governance/engineering-constitution.md)。
+-
+-## 环境要求
+-
+-- JDK 21
+-- Maven 3.8 或更高版本
+-- Redis 7 或兼容版本
+-- PostgreSQL 15 或更高版本（本地 PostgreSQL 与生产环境）
+-- `SW_CIPHER_KEY`：Base64 编码的 32 字节密钥，用于加密敏感配置
+-
+-数据库模式与配置入口：
++## 当前可体验的 OA 闭环
+ 
+-- `dev`：H2 内存数据库，配置见 [`application-dev.yml`](sw-bootstrap/src/main/resources/application-dev.yml)。
+-- `local`：本地 PostgreSQL，配置见 [`application-local.yml`](sw-bootstrap/src/main/resources/application-local.yml)。
+-- 通用配置：[`application.yml`](sw-bootstrap/src/main/resources/application.yml)。
++v0.0.2 已验收的 OA 业务闭环如下：
+ 
+-Redis 承载认证登录态。对象存储服务只在选择对应存储提供方时需要准备。
++> 用户从工作台找到可发起事项，填写或恢复业务草稿，提交申请；审批人处理待办并填写意见；发起人随后查看状态和结果，相关人员收到抄送，管理员在后台维护事项、表单、流程和通知记录。
+ 
+-## 快速开始
++围绕这条旅程，后端提供以下运行支撑：
+ 
+-在仓库根目录生成并注入开发密钥：
++- **工作台与常用事项**：待办、我发起的、抄送、常用事项的个人布局持久化，支持显示/隐藏、排序与恢复默认。
++- **流程中心与分类查找**：普通用户按分类和关键词查找本人可发起的事项，选择事项即进入关联表单；管理员维护分类、表单关联与发布状态，历史实例绑定保持兼容。
++- **表单能力**：多选、附件、图片、说明文字等控件，支持默认值、条件显示（显隐联动）；草稿可保存与恢复，提交校验与服务端一致，隐藏字段不进入正式提交载荷。
++- **个人办理**：我发起的、我的待办、我的已办、抄送我的与催办；催办只针对仍在办理中的实例，重复催办受冷却控制。
++- **普通业务入口与管理后台**：前后台分层，普通用户与管理员的入口和权限各自独立；无权深链、管理接口和跨用户对象访问会被拒绝。
++- **通知闭环**：站内通知的发送状态查询、失败记录与有权限的重发；重复重发受控，通知失败不影响审批状态。
+ 
+-```bash
+-export SW_CIPHER_KEY=$(openssl rand -base64 32)
+-```
++身份、组织、角色与数据权限贯穿以上能力，附件等对象访问遵守各自权限边界。
+ 
+-确认 Redis 可用：
++## 三个示例应用场景
+ 
+-```bash
+-redis-cli ping
+-```
++以下三个场景展示 CH-aPaaS 如何组合表单、流程、通知、知识与设备等能力，作为平台应用愿景呈现。
+ 
+-进入启动模块：
++### 场景一：多部门灾备演练
+ 
+-```bash
+-cd sw-bootstrap
+-```
++分公司科技部负责人发起灾备演练申请。流程经过多位技术负责人审核，再由各部门分管领导并行审批，最后进入总公司科技部会签并抄送相关领导。审批通过后，系统依据表单中的预定时间进入任务队列，到时通过 MQTT 执行机房断电和火警告警等演练动作。
+ 
+-使用 H2 启动开发环境：
++它展示表单、多人审批、动态并行、会签、抄送、定时任务与设备控制的组合价值。
+ 
+-```bash
+-mvn spring-boot:run -Dspring-boot.run.profiles=dev
+-```
++### 场景二：校园出入口流量异常
+ 
+-使用 PostgreSQL 启动本地环境：
++校园某个大门出现异常流量后，系统先查找近期校内活动和已有知识，再结合公开活动或特殊节日信息判断原因。符合正常特殊情况时记录日志并建立 P1 工单；找不到合理原因时建立 P0 工单，并通过告警、短信和电话提醒负责人。
+ 
+-```bash
+-mvn spring-boot:run -Dspring-boot.run.profiles=local
+-```
++它展示事件接入、流程与知识检索、外部信息判断、工单分级和多渠道告警的组合价值。
+ 
+-服务默认地址为 `http://localhost:8080/api`。应用启动后可通过 `http://localhost:8080/api/swagger-ui/index.html` 浏览 API 文档，通过 `http://localhost:8080/api/v3/api-docs` 获取 OpenAPI 描述。
++### 场景三：MES 温度智能判断
+ 
+-## 常用开发命令
++厂房设备常温约为 75℃，80℃ 为告警阈值，85℃ 必须停机。人工加料可能短时超过 80℃，业务人员可配置相关知识和样本：短时异常升温触发工单与告警；缓慢升温且未达到 85℃ 时识别为可能的正常操作并记录；超过 85℃ 则进入紧急停机告警流程。
+ 
+-以下命令在后端仓库根目录执行。
++它展示实时数据、业务知识、趋势判断、分级处置和流程联动的组合价值。
+ 
+-编译全部模块：
++> 当前平台已经具备上述场景中的部分可复用基础能力（如审批流程、通知与告警、定时任务、知识检索与设备接入），三个完整端到端场景仍在持续完善中，不属于 v0.0.2 已交付范围。
+ 
+-```bash
+-mvn compile
+-```
++## 当前版本
+ 
+-运行测试：
++上一正式发布版本为 v0.0.1（以仓库 v0.0.1 标签为准）。v0.0.2 即将发布，重点完善 OA 业务闭环：工作台、流程中心、个人办理、表单体验、前后台分层与通知闭环；正式发布以仓库标签为准。
+ 
+-```bash
+-mvn test
+-```
++## 项目入口
+ 
+-构建可运行产物：
+-
+-```bash
+-mvn clean package
+-```
+-
+-跳过测试构建：
+-
+-```bash
+-mvn clean package -DskipTests
+-```
+-
+-## 进一步阅读
+-
+-| 主题 | 入口 |
++| 入口 | 说明 |
+ | --- | --- |
+-| 后端工程边界与开发规范 | [`docs/governance/engineering-constitution.md`](docs/governance/engineering-constitution.md) |
+-| 平台整体架构 | [`../knowledge/architecture.md`](../knowledge/architecture.md) |
+-| 正式功能清单 | [`功能清单.md`](功能清单.md) |
+-| 工作区治理入口 | [`../system.md`](../system.md) |
+-| 前端开发入口 | [`../Smart-WorkFlow-Web/README.md`](../Smart-WorkFlow-Web/README.md) |
++| [Smart-WorkFlow-aPaaS-server](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server) | 后端仓库（本仓库） |
++| [Smart-WorkFlow-aPaaS-Web](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web) | 前端仓库 |
++| [Smart-WorkFlow-Agent-Workspace](../README.md) | 项目规划与知识中心 |
++| [后端工程文档](docs/governance/engineering-constitution.md) | 工程规范、模块结构与验证入口等开发者资料汇总 |
++
++从使用者视角了解界面与操作体验，见配套前端：[Smart-WorkFlow-aPaaS-Web](../Smart-WorkFlow-Web/README.md)。
+\ No newline at end of file
