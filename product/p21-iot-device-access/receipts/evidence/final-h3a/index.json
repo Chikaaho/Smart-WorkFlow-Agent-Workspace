@@ -1,0 +1,22 @@
+{
+  "atom": "H3a",
+  "objectId": "p21-policy-test",
+  "environment": "BPM process listener unit behavior with the current IoT action policy implementation",
+  "sourceFingerprint": "current IotProcessTriggerListenerPolicyTest against BLOCK, CONTINUE, and MANUAL configurations",
+  "startedAt": "2026-09-08T14:41:00+08:00",
+  "finishedAt": "2026-09-08T14:41:18+08:00",
+  "commands": [
+    "MAVEN_OPTS=-Xmx2g mvn -pl sw-biz/sw-bpm/sw-bpm-process -am -Dtest=IotProcessTriggerListenerPolicyTest ... test"
+  ],
+  "rawFiles": ["raw.mvn.log"],
+  "positiveAssertions": [
+    "BLOCK callback carries the failure and no process instance",
+    "CONTINUE callback carries the process instance and no failure",
+    "MANUAL produces no result callback, leaving the trigger pending for human handling",
+    "All three assertions execute in one current test and Maven reports BUILD SUCCESS"
+  ],
+  "negativeAssertions": [
+    "A failed device lookup is not converted into a successful terminal result for BLOCK or MANUAL"
+  ],
+  "verdict": true
+}

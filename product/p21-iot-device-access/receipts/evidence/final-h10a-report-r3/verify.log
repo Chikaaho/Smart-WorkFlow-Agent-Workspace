@@ -1,0 +1,12 @@
+H10a-R mechanical report correction
+locked_log=product/p21-iot-device-access/receipts/evidence/final-h10a-r2/backend-full.log
+command=rg '^\\[INFO\\] Tests run: [0-9]+, Failures: 0, Errors: 0, Skipped: 0$' locked_log
+command=awk summary-only lines sum numeric fields
+summary_lines=12
+tests=1182
+failures=0
+errors=0
+skipped=0
+build_success=true
+assert_aggregate_is_1182_0_0_0=true
+assert_no_test_rerun=true

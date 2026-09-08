@@ -1,0 +1,9 @@
+H9b native browser evidence
+CUA URL=http://localhost:5173/iot/connections
+owner connection=2097131605679677442; POST test responseStatus=200; page state HEALTHY and SUCCESS: 连接建立成功
+bad connection=2097135932003618817; POST test responseStatus=200; page state UNHEALTHY and AUTH_FAILED: 连接失败: 无权连接
+owner credential_display=******
+bad credential_display=******
+assert_owner_success=true
+assert_bad_auth_failed=true
+assert_credentials_masked=true

@@ -1,0 +1,9 @@
+H9c native browser evidence
+CUA URL=http://localhost:5173/iot/scripts
+java script=2097131615104278529 execution=2097248351002681345 status=FAILED error=fun_invokeAction 在试运行下被禁止（副作用开关未开启） sideEffect=0
+js script=2097131612029853698 execution=2097248498575073281 status=FAILED error=JS 执行失败: fun_publish 在试运行下被禁止（副作用开关未开启） sideEffect=0
+java page snapshot shows owner-java-forward / JAVA / PUBLISHED / MANUAL and execution-record rows with controlled refusal
+js page snapshot shows owner-js-forward / JS / PUBLISHED / MANUAL and execution-record rows with controlled refusal
+assert_java_side_effect_rejected=true
+assert_js_side_effect_rejected=true
+assert_no_real_publish_or_downlink=true

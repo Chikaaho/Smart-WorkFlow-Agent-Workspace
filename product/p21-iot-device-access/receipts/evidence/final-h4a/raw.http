@@ -1,0 +1,85 @@
+CASE=valid REF=h4-ref-visible-20260908 REQUEST=POST /api/iot/rules/2097206372273348609/publish
+{"code":"h4a-valid-1788847937","name":"H4A h4a-valid-1788847937","deviceId":2097131606828916738,"ruleType":"THRESHOLD","conditionJson":"{\"propertyId\":\"temperature\",\"op\":\"GT\",\"threshold\":9999}","debounceMs":0,"cooldownMs":0,"continuousCount":1,"processEnabled":1,"processTemplateKey":"bpm_27eb397eab224743","formMappingJson":"[{\"field\":\"ref_record\",\"required\":true,\"fixed\":\"h4-ref-visible-20260908\"}]"}
+CREATE_RESPONSE_JSON
+{"code":0,"msg":"success","data":{"id":"2097206372273348609","createTime":"2026-09-08T14:12:18.017635","createBy":"1","updateTime":"2026-09-08T14:12:18.017673","updateBy":"1","deleted":0,"version":"0","tenantId":"0","code":"h4a-valid-1788847937","name":"H4A h4a-valid-1788847937","deviceId":"2097131606828916738","ruleType":"THRESHOLD","conditionJson":"{\"propertyId\":\"temperature\",\"op\":\"GT\",\"threshold\":9999}","debounceMs":"0","cooldownMs":"0","continuousCount":1,"scriptId":null,"processTemplateKey":"bpm_27eb397eab224743","formMappingJson":"[{\"field\":\"ref_record\",\"required\":true,\"fixed\":\"h4-ref-visible-20260908\"}]","processEnabled":1,"status":"DRAFT","ruleVersion":1,"lastFiredTime":null}}
+PUBLISH_RESPONSE_HTTP
+HTTP/1.1 200 
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Tue, 08 Sep 2026 06:12:18 GMT
+
+{"code":0,"msg":"success","data":{"id":"2097206372273348609","createTime":"2026-09-08T14:12:18.017635","createBy":"1","updateTime":"2026-09-08T14:12:18.331227","updateBy":"1","deleted":0,"version":"0","tenantId":"0","code":"h4a-valid-1788847937","name":"H4A h4a-valid-1788847937","deviceId":"2097131606828916738","ruleType":"THRESHOLD","conditionJson":"{\"propertyId\":\"temperature\",\"op\":\"GT\",\"threshold\":9999}","debounceMs":"0","cooldownMs":"0","continuousCount":1,"scriptId":null,"processTemplateKey":"bpm_27eb397eab224743","formMappingJson":"[{\"field\":\"ref_record\",\"required\":true,\"fixed\":\"h4-ref-visible-20260908\"}]","processEnabled":1,"status":"PUBLISHED","ruleVersion":1,"lastFiredTime":null}}
+CASE=missing REF=h4-ref-missing-20260908 REQUEST=POST /api/iot/rules/2097206373745549313/publish
+{"code":"h4a-missing-1788847937","name":"H4A h4a-missing-1788847937","deviceId":2097131606828916738,"ruleType":"THRESHOLD","conditionJson":"{\"propertyId\":\"temperature\",\"op\":\"GT\",\"threshold\":9999}","debounceMs":0,"cooldownMs":0,"continuousCount":1,"processEnabled":1,"processTemplateKey":"bpm_27eb397eab224743","formMappingJson":"[{\"field\":\"ref_record\",\"required\":true,\"fixed\":\"h4-ref-missing-20260908\"}]"}
+CREATE_RESPONSE_JSON
+{"code":0,"msg":"success","data":{"id":"2097206373745549313","createTime":"2026-09-08T14:12:18.368597","createBy":"1","updateTime":"2026-09-08T14:12:18.368602","updateBy":"1","deleted":0,"version":"0","tenantId":"0","code":"h4a-missing-1788847937","name":"H4A h4a-missing-1788847937","deviceId":"2097131606828916738","ruleType":"THRESHOLD","conditionJson":"{\"propertyId\":\"temperature\",\"op\":\"GT\",\"threshold\":9999}","debounceMs":"0","cooldownMs":"0","continuousCount":1,"scriptId":null,"processTemplateKey":"bpm_27eb397eab224743","formMappingJson":"[{\"field\":\"ref_record\",\"required\":true,\"fixed\":\"h4-ref-missing-20260908\"}]","processEnabled":1,"status":"DRAFT","ruleVersion":1,"lastFiredTime":null}}
+PUBLISH_RESPONSE_HTTP
+HTTP/1.1 200 
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Tue, 08 Sep 2026 06:12:18 GMT
+
+{"code":400,"msg":"表单契约校验失败: 字段 'ref_record' 引用对象不存在或当前用户无权访问: iot_alert_form/h4-ref-missing-20260908","data":null}
+CASE=cross REF=h4-ref-cross-20260908 REQUEST=POST /api/iot/rules/2097206374009790465/publish
+{"code":"h4a-cross-1788847937","name":"H4A h4a-cross-1788847937","deviceId":2097131606828916738,"ruleType":"THRESHOLD","conditionJson":"{\"propertyId\":\"temperature\",\"op\":\"GT\",\"threshold\":9999}","debounceMs":0,"cooldownMs":0,"continuousCount":1,"processEnabled":1,"processTemplateKey":"bpm_27eb397eab224743","formMappingJson":"[{\"field\":\"ref_record\",\"required\":true,\"fixed\":\"h4-ref-cross-20260908\"}]"}
+CREATE_RESPONSE_JSON
+{"code":0,"msg":"success","data":{"id":"2097206374009790465","createTime":"2026-09-08T14:12:18.43165","createBy":"1","updateTime":"2026-09-08T14:12:18.431655","updateBy":"1","deleted":0,"version":"0","tenantId":"0","code":"h4a-cross-1788847937","name":"H4A h4a-cross-1788847937","deviceId":"2097131606828916738","ruleType":"THRESHOLD","conditionJson":"{\"propertyId\":\"temperature\",\"op\":\"GT\",\"threshold\":9999}","debounceMs":"0","cooldownMs":"0","continuousCount":1,"scriptId":null,"processTemplateKey":"bpm_27eb397eab224743","formMappingJson":"[{\"field\":\"ref_record\",\"required\":true,\"fixed\":\"h4-ref-cross-20260908\"}]","processEnabled":1,"status":"DRAFT","ruleVersion":1,"lastFiredTime":null}}
+PUBLISH_RESPONSE_HTTP
+HTTP/1.1 200 
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Tue, 08 Sep 2026 06:12:18 GMT
+
+{"code":400,"msg":"表单契约校验失败: 字段 'ref_record' 引用对象不存在或当前用户无权访问: iot_alert_form/h4-ref-cross-20260908","data":null}
+CASE=missing PHASE=before
+DRAFT|0|0
+CASE=missing REQUEST=POST /api/iot/rules/2097206373745549313/publish
+HTTP/1.1 200 
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Tue, 08 Sep 2026 06:12:36 GMT
+
+{"code":400,"msg":"表单契约校验失败: 字段 'ref_record' 引用对象不存在或当前用户无权访问: iot_alert_form/h4-ref-missing-20260908","data":null}
+CASE=missing PHASE=after
+DRAFT|0|0
+CASE=cross PHASE=before
+DRAFT|0|0
+CASE=cross REQUEST=POST /api/iot/rules/2097206374009790465/publish
+HTTP/1.1 200 
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Tue, 08 Sep 2026 06:12:36 GMT
+
+{"code":400,"msg":"表单契约校验失败: 字段 'ref_record' 引用对象不存在或当前用户无权访问: iot_alert_form/h4-ref-cross-20260908","data":null}
+CASE=cross PHASE=after
+DRAFT|0|0

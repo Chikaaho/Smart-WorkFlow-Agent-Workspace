@@ -1,0 +1,4 @@
+H1-R2 real Owner MQTT run: PASS.
+stdout.log contains the new nonce path on the legal owner/p21/down/cmd topic and contains no ellipsis or prior-round text.
+The new script execution returned brokerAck=true for the legal publish and a real server-side refusal for owner/p21/down/evil: 主题未配置或未启用.
+The evil topic subscriber received no message. The top-level before/after scope is explicitly evil-topic: messages=0, commands=0, triggers=0 on both sides. The nested globalControlBefore/globalControlAfter values retain the complete legal-control run counters; their increase is the expected legal Topic path, not an evil-topic side effect.

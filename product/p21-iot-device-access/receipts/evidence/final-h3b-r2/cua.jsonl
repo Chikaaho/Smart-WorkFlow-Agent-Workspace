@@ -1,0 +1,5 @@
+{"step":1,"route":"/iot/flow-actions","target":"IoT 告警审批 / bpm_27eb397eab224743 / 配置","observed":"对话框显示设备来源设计时固定、目标设备 Owner温感 (dev-owner-01)、能力 h4_fixed、失败策略 BLOCK"}
+{"step":2,"action":"CUA click","target":"单选项 发起表单字段","observed":"radio checked；表单字段 textbox=deviceKey；保存后列表显示发起表单字段；alert=设备动作配置已保存；截图=form-field.png"}
+{"step":3,"action":"CUA click and fill","target":"单选项 流程变量；流程变量 textbox","value":"h3b_deviceKey_r2","observed":"radio checked；保存后 alert=设备动作配置已保存；截图=variable.png"}
+{"step":4,"action":"browser reload then CUA open","target":"IoT 告警审批 / 配置","observed":"radio 流程变量仍 checked，textbox=h3b_deviceKey_r2；截图=reload.png"}
+{"step":5,"action":"CUA click","target":"单选项 设计时固定；目标设备 combobox","observed":"下拉提示仅显示合格设备，唯一 option=Owner温感 (dev-owner-01)；保存后列表回读设计时固定 Owner温感；截图=fixed.png"}

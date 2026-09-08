@@ -1,0 +1,55 @@
+CASE=admin PHASE=before
+0
+CASE=admin REQUEST
+HTTP/1.1 200 
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Tue, 08 Sep 2026 06:31:09 GMT
+
+{"code":0,"msg":"success","data":{"code":"h6-current-20260908c","keepalive":60,"passwordMasked":"******","updateTime":"2026-09-08 14:31:09.454474","hasPassword":false,"cleanSession":1,"version":0,"enabled":1,"createBy":1,"reconnectMaxSec":60,"deleted":0,"reconnectMinSec":1,"connType":"MQTT","createTime":"2026-09-08 14:31:09.454457","port":1,"updateBy":1,"host":"127.0.0.1","name":"H6 current auth probe","tenantId":0,"id":"2097211117859889153","useTls":0,"username":"h6-user"}}CASE=admin PHASE=after
+1
+CASE=restricted REQUEST
+HTTP/1.1 403 
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Tue, 08 Sep 2026 06:31:09 GMT
+
+{"code":403,"msg":"无权限","data":null}CASE=unauthenticated REQUEST
+HTTP/1.1 401 
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Type: application/json;charset=UTF-8
+Content-Length: 42
+Date: Tue, 08 Sep 2026 06:31:09 GMT
+
+{"code":401,"msg":"未认证","data":null}CASE=malformed REQUEST
+HTTP/1.1 400 
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Tue, 08 Sep 2026 06:31:09 GMT
+Connection: close
+
+{"code":400,"msg":"请求体非法: Unexpected end-of-input within/between Object entries\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 9]","data":null}CASE=final COUNT
+h6-current-20260908c|1

@@ -1,0 +1,11 @@
+H9a browser verification
+route=/iot/devices-manage
+deviceId=2097131606828916738 deviceKey=dev-owner-01
+states=ON(checked,Value=1) -> OFF(unchecked,Value=0) -> reload OFF(unchecked,Value=0) -> ON(checked,Value=1)
+api=POST /iot/device-manage/2097131606828916738/process-access/{false,true}, both responseStatus=200; reload GET /iot/devices responseStatus=200
+final_database_process_access_enabled=1
+credentials_not_present=true
+image_sha256_on-before=6f83d8621345b831ecce36736c0bc6047af9594d2bec0a8f65b799b10d0ac559
+image_sha256_off=17095feba9fc84ecebcbcd5cc666a683bad58beb1ae47511a72e1d8b59a1c4f5
+image_sha256_off-reload=26de487a589b8c299350c9ce754db25613a43c101cecd8b779474011d09d2287
+image_sha256_on-after=2cabfaad82269e50bea769fa28018237bfa8d18ed9577aca027287216fa39e1a

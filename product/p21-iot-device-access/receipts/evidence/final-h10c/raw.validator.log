@@ -1,0 +1,5 @@
+VALIDATOR_INPUT=completion-p21-iot-05.md:last_line_without_ENGINE_TERMINAL
+VALIDATOR_COMMAND=tail -n 1 product/p21-iot-device-access/receipts/completion-p21-iot-05.md | sed 's/^ENGINE_TERMINAL //' | bash .codex/governance/validate-terminal.sh
+VALIDATOR_STDOUT_BYTES=0
+VALIDATOR_STDERR_BYTES=0
+VALIDATOR_EXIT=0

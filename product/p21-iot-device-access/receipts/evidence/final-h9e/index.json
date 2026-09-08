@@ -1,0 +1,28 @@
+{
+  "atom": "H9e",
+  "objectId": "runtime-four-tabs-20260908",
+  "environment": "Operable browser http://127.0.0.1:5173 with live backend 127.0.0.1:8080 and formal admin debug identity",
+  "sourceFingerprint": "current runtime API export plus CUA accessibility observations from all four tabs",
+  "startedAt": "2026-09-08T14:35:00+08:00",
+  "finishedAt": "2026-09-08T14:37:00+08:00",
+  "commands": [
+    "curl GET /api/iot/runtime/messages",
+    "curl GET /api/iot/runtime/commands",
+    "curl GET /api/iot/runtime/script-execs?scriptId=2097131615104278529",
+    "curl GET /api/iot/runtime/process-triggers?ruleId=2097162724693331970",
+    "CUA browser actions: select each runtime tab and click a row to open its detail dialog"
+  ],
+  "rawFiles": ["raw.api.json"],
+  "positiveAssertions": [
+    "The browser runtime page exposes 消息, 命令, 脚本执行, and 流程触发 tabs",
+    "Message detail renders current object 2097208158954577922 with ACTION_RESULT and correlationId",
+    "Command detail renders current object 2097205850715840513 with status BROKER_ACK and correlationId",
+    "Script detail renders current Java object 2097205210233036802 with SUCCESS, actionCommandId, publishCommandId, and correlationId",
+    "Trigger detail renders current object 2097205762908086274 with SUCCESS, processInstanceId, and formSnapshot",
+    "All four detail objects are present in the direct current API export"
+  ],
+  "negativeAssertions": [
+    "No tab is empty or missing its row-detail interaction"
+  ],
+  "verdict": true
+}
