@@ -1,3 +1,4 @@
+# knowledge/session-handoff.md (head 1-45)
 # 会话交接（session-handoff）— 当前压缩版
 
 > 同步点：2026-09-08，P60 `v0.3.0-oa-completion`（0.3.0 OA 全功能收口，XL，P0）方向已下发并进入执行（`product/v0.3.0-oa-completion/ready/direction-v0.3.0-oa-completion.md`）：首次功能清单同步完成——64 条 ADV 高级能力以规划项映射进正式工程功能清单（未纳入 0.3.0 验收、不计入 90 明细统计）；六阶段工程实现尚未启动。p21-iot-device-access 已由最终复核确认（`planning-final-review-terminal-sync-p21-iot-02-passed.md`，2026-09-08）。更早历史见 `knowledge/history/README.md`。
@@ -43,22 +44,3 @@
 
 | 明细/需求 | 已交付子集 | 剩余范围 |
 |---|---|---|
-| M04-F01-03/P34 | ALL/ANY/RATIO 会签结算、独立意见、取消语义 | 原明细完整规则（含一票否决）覆盖待确认，未完成整体核销 |
-| M04-F07-01/P35 | 受控条件表达式、条件分支 | 超时处理、自动审批/自动通过规则 |
-| M06-F01-01/P37 | 站内信、统一渠道 SPI 及已验收扩展接缝 | 真实厂商渠道、配置开关及账号联调 |
-| M06-F02-01/P38 | 可复用通用消息模板与变量渲染 | 按渠道配置内容与变量；沿用 P38，不新编号 |
-| M06-F03-01/P39 | 内置审批事件、通知节点触发 | 用户可配置规则、订阅设置 |
-| M04-F05-01/P4 | 四入口（我发起的/我的草稿/我的待办/我的已办）＋异步/P0 同步＋回查＋幂等＋v0.0.2-oa 流程中心双视角/抄送/催办（2026-09-07） | **明细完整描述已交付，M04-F05-01 ✅**；P4 总项仍开放未核销：转办/委托/加签/撤回、流程版本/挂起激活等候选 |
-| M06-F04-01/P3 | 投递状态持久化、幂等＋v0.0.2-oa A6 发送记录/失败重发/关联日志（2026-09-07） | **明细已交付，M06-F04-01 ✅；P3 已核销**；I45 保持开放，不因 P3 核销关闭 |
-| M08-F01-01/02/03、F02-01/02、F03-01/02、F04-03/04、F05-01/P21 | p21-iot-device-access：原生 MQTT 与腾讯 IoT 双通道、连接管理、设备维护、状态监控、Topic 订阅/发布、数据上报、消息日志、规则编排（2026-09-08） | **十项明细 ✅，P21 已核销**；F04-01 按钮发送 🟦、F04-02 定时发送 ⬜、F05-02 指令模板 ⬜；腾讯实网免验边界保留 |
-
-## 任务指针
-
-- v0.3.0-oa-completion（P60）：方向与规划定义 `product/v0.3.0-oa-completion/ready/`；首次清单同步回执 `product/v0.3.0-oa-completion/receipts/checklist-sync-v0.3.0-oa-completion-01.md`；任务登记 `knowledge/features/v0.3.0-oa-completion.md`（进行中，六阶段 I1—I6 未启动）。
-- p21-iot-device-access：主方向与阶段三方向均归档 `product/p21-iot-device-access/passed/`；最终裁决 `receipts/planning-final-review-terminal-sync-p21-iot-02-passed.md`（COMPLETED 规划已确认，2026-09-08）；任务登记 `knowledge/features/p21-iot-device-access.md`。
-- v0.0.2-oa：主方向与 A8 方向归档 `product/v0.0.2-oa/passed/`；任务登记 `knowledge/features/v0.0.2-oa.md`；COMPLETED（规划已确认，2026-09-08 复核确认）。
-- P4：主方向与能力边界方向均归档 `product/p4-oa-personal-center-dual-dispatch/passed/`；最终裁决 `receipts/planning-final-review-terminal-sync-p4-02-passed.md`（COMPLETED 规划已确认，2026-09-07）；任务登记 `knowledge/features/p4-oa-personal-center-dual-dispatch.md`。
-- P59：主方向与终态同步方向均归档 `product/p59-ch-apaas-project-update/passed/`；任务登记 `knowledge/features/p59-ch-apaas-project-update.md`；最终裁决 `receipts/planning-final-review-p59-terminal-sync-02-passed.md`（COMPLETED 规划已确认，2026-09-05）。
-- `knowledge-full-reconciliation`：**COMPLETED（已确认，2026-09-04）**（最终裁决 `receipts/planning-final-review-terminal-sync-02-passed.md`）；三方向均归档 `product/knowledge-full-reconciliation/passed/`。
-- 映射索引：`knowledge/feature-reconciliation-index.md`（主索引）+ `feature-reconciliation-issues.md`（54 I 逐项）+ `feature-reconciliation-products.md`（55 目录逐项）；90 明细/56 唯一 P/54 I/55 product 目录双向映射；ADV 高级能力规划项 64 条为独立登记（不并入审计集合）。
-- 必读入口：`knowledge/current-status.md`、`Smart-WorkFlow-Server/功能清单.md`、`knowledge/known-issues.md`、`todo/requirement-pool.md`、本交接
