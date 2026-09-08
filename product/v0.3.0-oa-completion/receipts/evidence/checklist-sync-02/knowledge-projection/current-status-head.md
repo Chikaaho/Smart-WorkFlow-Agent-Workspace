@@ -1,3 +1,4 @@
+# knowledge/current-status.md (head 1-60)
 # 当前项目状态
 
 > 唯一当前快照；截至/同步点：2026-09-08，P60 `v0.3.0-oa-completion`（0.3.0 OA 全功能收口，XL，P0）方向已下发（`product/v0.3.0-oa-completion/ready/direction-v0.3.0-oa-completion.md`），Executor 已进入执行：首次功能清单同步完成（64 条 ADV 高级能力以规划项映射进正式工程功能清单，未纳入 0.3.0 验收、不计入 90 明细统计），六阶段工程实现尚未启动。历史快照见 `knowledge/history/`。
