@@ -1,30 +1,37 @@
 # 会话交接（session-handoff）— 当前压缩版
 
-> 同步点：2026-09-07，`v0.0.2-oa`（v0.0.2 OA 完善）功能状态 **COMPLETED（待规划确认，2026-09-07）**（验收事件：功能级 PASSED，规划验收06，A1—A8 全部锁定）；阶段三终态同步回执 `terminal-sync-v0.0.2-oa-01.md` 待 Planner 复核。P4 时点全文存档：`knowledge/history/current-status-through-2026-09-07-p4-stage3-before.md`。更早历史见 `knowledge/history/README.md`。
+> 同步点：2026-09-08，`p21-iot-device-access`（P21 IoT 设备接入、受控脚本与流程联动）功能状态 **COMPLETED（待规划确认，2026-09-08）**（验收事件：功能级 PASSED，规划验收08，A1—A8 全部锁定）；阶段三终态同步回执 `terminal-sync-p21-iot-device-access-01.md` 待 Planner 复核。v0.0.2-oa 时点全文存档：`knowledge/history/current-status-through-2026-09-07-p4-stage3-before.md` 等。更早历史见 `knowledge/history/README.md`。
 
-## 当前唯一值（v0.0.2-oa 阶段三终态同步方向）
+## 当前唯一值（p21-iot-device-access 阶段三终态同步方向）
 
 | 字段 | 值 |
 |---|---|
-| 正式业务功能数 | **43**（42＋本轮 1，v0.0.2-oa 为第 43 个正式功能） |
+| 正式业务功能数 | **44**（43＋本轮 1，p21-iot-device-access 为第 44 个正式功能） |
 | 清单规模 | 10 模块、55 功能、90 明细 |
-| 清单状态计数 | **✅36 / 🟦26 / ⬜28**（M04-F05-01/M06-F04-01 两行 🟦→✅，其余 88 行零变化） |
-| P 编号 | **P3/P54/P55 已核销（2026-09-07）**；**P2/P4 开放、部分实现未核销**；P21 部分关闭未核销；P34/P35/P37/P38/P39 部分实现未核销；I 集合 54 条不增删（I38/I39/I40/I45 保持开放） |
-| 后端基线 | 181 份 Surefire 报告 / 1156 tests / 0 failures / 0 errors / 0 skipped；`mvn -q test` exit 0 |
-| 前端基线 | 124 files passed + 1 skipped / 1168 tests passed + 3 skipped；typecheck/lint/test/build exit 0 |
-| Flyway | H2 V58（58）/ PG V58（57） |
-| 当前任务状态 | `v0.0.2-oa`：**功能状态 COMPLETED（待规划确认，2026-09-07）**（验收事件：功能级 PASSED，`planning-review-v0.0.2-oa-06-passed.md`）；终态同步回执 `terminal-sync-v0.0.2-oa-01.md` 待 Planner 复核 |
+| 清单状态计数 | **✅46 / 🟦22 / ⬜22**（M08 本轮 10 行升✅：F01-01/02/03、F02-01/02、F03-01/02、F04-03/04、F05-01；其余 80 行零变化） |
+| P 编号 | **P21 已核销/完成（2026-09-08）**；**P2/P4 开放、部分实现未核销**；P34/P35/P37/P38/P39 部分实现未核销；I 集合 54 条不增删（**I14 已满足/关闭**；I38/I39/I40/I45 保持开放） |
+| Server 基线 | **12 个模块汇总，1182 tests / 0 failures / 0 errors / 0 skipped；BUILD SUCCESS** |
+| Web 基线 | 124 files passed + 1 skipped / 1168 tests passed + 3 skipped；typecheck/lint/test/build exit 0 |
+| Flyway | H2 V66（66）/ PG V66（65） |
+| 产品行为基线 | Owner Broker 真实双向 MQTT；19 个原子工作项全部 COMPLETED；最终 r3 固定输入 16/16 哈希通过；browser_status=`OPERABLE`；Validator exit=0 |
+| 当前任务状态 | `p21-iot-device-access`：**功能状态 COMPLETED（待规划确认，2026-09-08）**（验收事件：功能级 PASSED，`planning-review-p21-iot-08-passed.md`）；终态同步回执 `terminal-sync-p21-iot-device-access-01.md` 待 Planner 复核 |
 | 活动业务实现功能 | 无 |
-| 唯一下一动作 | 准备 v0.0.2 最终发布候选：修正工作区根 README 指向两仓已删除 `#快速开始` 的旧锚点，整理两仓本地候选提交并核对 develop→main 与 Release 触发条件；远程合并、推送、标签和发布须另获 Owner 明确授权 |
+| 唯一下一动作 | **等待 Owner 选择下一需求** |
 
-## P59 发布时点唯一事实（2026-09-04 已验收发布时点，不要求后续 ref 永久停在该 SHA）
+## p21-iot-device-access 关键事实
+
+- 主方向 `product/p21-iot-device-access/passed/direction-p21-iot-device-access.md` 已归档；阶段三方向 `ready/direction-p21-iot-device-access-terminal-sync.md` 待 Planner 复核后移 passed。
+- 交付范围：原生 MQTT（F01-01）、腾讯 IoT 配置（F01-02）、连接管理（F01-03）、设备维护（F02-01）、状态监控（F02-02）、Topic 订阅（F03-01）、Topic 发布配置（F03-02）、数据上报（F04-03）、消息日志（F04-04）、规则编排（F05-01）十项升✅；M08-F04-01 按钮发送保持🟦、F04-02 定时发送保持⬜、F05-02 指令模板保持⬜。
+- 腾讯实网边界：真实腾讯账号、RequestId 与物理设备按 Owner 本轮免验，不写成实网已验证；账号口令继续禁止落盘。
+- M08 模块：**部分完成**（10✅/1🟦/2⬜），不得因 P21 核销把整个 M08 写为全部完成。
+
+## v0.0.2-oa 发布时点唯一事实（2026-09-07 已确认，历史）
 
 - 规范地址：后端 `git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-server.git`、前端 `git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-Web.git`、工作区 `git@github.com:Chikaaho/Smart-WorkFlow-Agent-Workspace.git`（产品 CH-aPaaS / PaaS）。
-- 六分支发布时点 SHA：Workspace develop-sw `721f034e6f1cc1cd80993e358087201dab6626a2`、Workspace main `29f70338d0390810e932bdd040e82956743d343b`、Server develop `d62c8436bd4a20deea13b2700ab4998ce0052934`、Server main `6ab9ae50080b2ae884eefaa728ae021702661ece`、Web develop `f2647e151ab40c00efd5dbd7df753e97721bc916`、Web main `4c044c671318627599560320efd217a0a520b5aa`。
-- 累计提交 **26**（原 17＋增量 9）；Server 成功 run 33889195373、Web 成功 run 33889880505；两仓 tag 为 `build-`＋对应 main 完整 SHA；资产指纹及证据边界见审查07与 `planning-online-verification-p59-07.json`。
+- 发布终态：Server `0.0.2` → `20fffc1ddec13ea665fc388f4243c6e063974883`；Web `0.0.2` → `0bf6e8925059e4c254328c5d1643ebd8c1a2943e`。两仓 Actions/Release 成功、服务器部署生效；工作区零 Git 发布动作，通用 `main` 未变。P59 发布时点 SHA（2026-09-04）见更早历史存档。
 - 场景 3.1—3.3 仅原始记录，未实施（原文在 `todo/ch-apaas-project-update.md`，不改）。
 
-## 固定文字口径（对账轮已锁定；M04-F05-01/P4 与 M06-F04-01/P3 行已按 2026-09-07 v0.0.2-oa 交付更新，其余行仍有效）
+## 固定文字口径（对账轮已锁定；M08 行已按 2026-09-08 p21-iot-device-access 交付更新，其余行仍有效）
 
 | 明细/需求 | 已交付子集 | 剩余范围 |
 |---|---|---|
@@ -33,12 +40,14 @@
 | M06-F01-01/P37 | 站内信、统一渠道 SPI 及已验收扩展接缝 | 真实厂商渠道、配置开关及账号联调 |
 | M06-F02-01/P38 | 可复用通用消息模板与变量渲染 | 按渠道配置内容与变量；沿用 P38，不新编号 |
 | M06-F03-01/P39 | 内置审批事件、通知节点触发 | 用户可配置规则、订阅设置 |
-| M04-F05-01/P4 | P4 四入口（我发起的/我的草稿/我的待办/我的已办）＋普通异步/P0 同步＋结果回查＋幂等（2026-09-07）＋**v0.0.2-oa：流程中心分类与双视角（A2）、抄送我的查询与催办（A3）**（2026-09-07） | **明细完整描述已交付，M04-F05-01 🟦→✅**；P4 总项仍开放未核销：转办/委托/加签/撤回、流程版本/挂起激活等候选 |
-| M06-F04-01/P3 | 投递状态持久化、幂等＋**v0.0.2-oa A6：发送记录状态查询、管理入口、失败重发、单发/批量失败子记录与关联日志**（2026-09-07） | **明细完整描述已交付，M06-F04-01 🟦→✅；P3 已核销（2026-09-07）**；I45 保持开放，不因 P3 核销关闭 |
+| M04-F05-01/P4 | 四入口（我发起的/我的草稿/我的待办/我的已办）＋异步/P0 同步＋回查＋幂等＋v0.0.2-oa 流程中心双视角/抄送/催办（2026-09-07） | **明细完整描述已交付，M04-F05-01 ✅**；P4 总项仍开放未核销：转办/委托/加签/撤回、流程版本/挂起激活等候选 |
+| M06-F04-01/P3 | 投递状态持久化、幂等＋v0.0.2-oa A6 发送记录/失败重发/关联日志（2026-09-07） | **明细已交付，M06-F04-01 ✅；P3 已核销**；I45 保持开放，不因 P3 核销关闭 |
+| M08-F01-01/02/03、F02-01/02、F03-01/02、F04-03/04、F05-01/P21 | p21-iot-device-access：原生 MQTT 与腾讯 IoT 双通道、连接管理、设备维护、状态监控、Topic 订阅/发布、数据上报、消息日志、规则编排（2026-09-08） | **十项明细 ✅，P21 已核销**；F04-01 按钮发送 🟦、F04-02 定时发送 ⬜、F05-02 指令模板 ⬜；腾讯实网免验边界保留 |
 
 ## 任务指针
 
-- v0.0.2-oa：主方向与 A8 方向归档 `product/v0.0.2-oa/passed/`；阶段三方向 `ready/direction-v0.0.2-oa-terminal-sync.md`（待规划复核后移 passed）；任务登记 `knowledge/features/v0.0.2-oa.md`。
+- p21-iot-device-access：主方向归档 `product/p21-iot-device-access/passed/`；阶段三方向 `ready/direction-p21-iot-device-access-terminal-sync.md`（待规划复核后移 passed）；任务登记 `knowledge/features/p21-iot-device-access.md`。
+- v0.0.2-oa：主方向与 A8 方向归档 `product/v0.0.2-oa/passed/`；任务登记 `knowledge/features/v0.0.2-oa.md`；COMPLETED（规划已确认，2026-09-08 复核确认）。
 - P4：主方向与能力边界方向均归档 `product/p4-oa-personal-center-dual-dispatch/passed/`；最终裁决 `receipts/planning-final-review-terminal-sync-p4-02-passed.md`（COMPLETED 规划已确认，2026-09-07）；任务登记 `knowledge/features/p4-oa-personal-center-dual-dispatch.md`。
 - P59：主方向与终态同步方向均归档 `product/p59-ch-apaas-project-update/passed/`；任务登记 `knowledge/features/p59-ch-apaas-project-update.md`；最终裁决 `receipts/planning-final-review-p59-terminal-sync-02-passed.md`（COMPLETED 规划已确认，2026-09-05）。
 - `knowledge-full-reconciliation`：**COMPLETED（已确认，2026-09-04）**（最终裁决 `receipts/planning-final-review-terminal-sync-02-passed.md`）；三方向均归档 `product/knowledge-full-reconciliation/passed/`。
