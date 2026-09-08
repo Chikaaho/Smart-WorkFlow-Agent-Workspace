@@ -1,46 +1,46 @@
 # 功能交接摘要
 
 ## 1. 功能名称
-P21 IoT 设备接入、受控脚本与流程联动（`p21-iot-device-access`）。
+P60 CH-aPaaS v0.3.0 OA 全功能收口（`v0.3.0-oa-completion`）。
 
 ## 2. 功能目标
-在既有腾讯 IoT 最小能力上完成后台设备管理、自建 MQTT、通用物模型与 Topic、JavaScript/Java 受控脚本、设备事件/阈值发起流程，以及流程选择设备并执行能力的统一闭环。
+完成组织权限、低代码表单、流程管理与办理、个人工作台、四类第三方 SSO 和七类通知的完整 OA 闭环。
 
 ## 3. 最终状态
-**COMPLETED（规划已确认，2026-09-08）**。功能级PASSED继续锁定；阶段三补证 TS1/TS2 经最终规划复核02通过，主方向与阶段三方向均已归档passed。
+**IN_PROGRESS（2026-09-08）**。优先级 P0，任务等级 XL；独立任务“首次高级能力功能清单同步”已验收 **PASSED**。
 
 ## 4. 本轮做了什么
-复核 `terminal-sync-p21-iot-device-access-02.md` 与附件：15个权威副本哈希15/15通过，清单/M08/P21/I14/基线/下一动作均可复算；机器input与回执末行逐字一致，Planner重跑Validator exit=0，确认COMPLETED。
+Executor 提交首次高级能力清单同步补证回执；Planner 独立复算键、名称、优先级、状态、计数隔离、90 行零变化及证据哈希，全部通过。
 
 ## 5. Executor 内部 Step 汇总
-快照 → knowledge-first 落唯一值 → 清单/索引/todo/memory 同步 → 旧口径检索 → 勾稽 → 终态校验 → 回执。
+清单同步回执已提交；其 `work_items`、零剩余动作和等待 Planner 验收均完整覆盖本次独立同步任务。
 
 ## 6. 实际修改范围
-`knowledge/current-status.md`、`session-handoff.md`、`features/p21-iot-device-access.md`（新建）、`feature-reconciliation-index.md`、`known-issues.md`（I14）、`Smart-WorkFlow-Server/功能清单.md`、`todo/requirement-pool.md`、`memory/{state,features,handoff,README,issues}.md`。
+Planner 新增 `product/v0.3.0-oa-completion/receipts/planning-review-v0.3.0-oa-completion-01.md` 并回写 memory。
 
 ## 7. 测试和验收结果
-规划功能验收通过（规划验收08，A1—A8 功能级 PASSED）。基线：Server 12 模块汇总 **1182/0/0/0（BUILD SUCCESS）**、Web **124f+1sk/1168t+3sk**、Flyway **H2 V66（66）/PG V66（65）**、产品行为 Owner Broker 双向 MQTT/19 原子工作项 COMPLETED/r3 16/16 哈希/browser OPERABLE。
+本次清单同步 **PASSED**，G1—G4 全部核销；证据 SHA256 校验 30/30 通过，终态 Validator exit=0。
 
 ## 8. 关键设计决策
-连接配置、设备管理状态和连接状态分离；流程设备资格为"已发布＋可接入流程使用"；腾讯与自建 MQTT 共用统一上层契约；JavaScript/Java 共用受控宿主函数且隔离执行；设备事件/阈值以版本化规则映射表单并幂等发起流程；腾讯实网因无账号按 Owner 本轮免验，不冒充真实云端已验证。
+一个 XL 主功能、六阶段独立验收；P60 统筹但不替代既有 P 编号。MK 对标高级能力以 `ADV-M11`—`ADV-M18` 稳定标识登记，64 条不计入 0.3.0 完成条件；Executor 首次同步时映射进正式工程功能清单且不得未经证据标完成。节点函数不开放任意脚本，SSO/外部通知必须真实验证。
 
 ## 9. 当前系统状态
-正式功能数 **44**、清单 **✅46/🟦22/⬜22**（90，M08 十行升✅，其余 80 行零变化）；P21 已核销、I14 已满足/关闭；M08 仍部分完成（10✅/1🟦/2⬜）。
+规划侧 P60 IN_PROGRESS；首次高级能力清单同步已关闭。既有 P21 与 v0.0.2 等已确认终态保持锁定。
 
 ## 10. 还有什么没做
-P21 本轮无剩余工作项。保留边界仅为未纳入本轮的 M08-F04-01/F04-02/F05-02，以及按 Owner 免验的腾讯实网现场联调。
+本同步任务无剩余内容。
 
 ## 11. 已知问题和风险
-Owner Broker、REFERENCE、双语言、鉴权、审计、三策略、租户隔离、页面行为和工程基线均已锁定。腾讯实网免验不等于实网已验证；账号口令继续禁止落盘。M08-F04-01 按钮发送 🟦、F04-02 定时发送 ⬜、F05-02 指令模板 ⬜ 为保留边界。
+动态并行、加签、函数输出、SSO身份绑定和外部通知均涉及权限、并发或第三方真实性。缺 Provider 凭据时不得用 Mock 宣称完成。
 
 ## 12. 下一轮要做什么
-等待 Owner 选择下一需求；不得继续执行历史补证提示或重跑 P21 业务验证。
+等待 Owner 指定下一任务。
 
 ## 13. 下一轮要达到什么结果
-新需求出现后按角色门禁重新规划；P21 终态值、验收证据和归档位置保持锁定。
+I1 组织与权限底座通过行为验收，部门负责人可被流程权威解析，用户/角色/部门变更后的权限一致收敛。
 
 ## 14. 下一轮开始前必须读取的知识文件
-`knowledge/current-status.md`、`knowledge/session-handoff.md`；P21 历史证据按需读取 `product/p21-iot-device-access/receipts/planning-final-review-terminal-sync-p21-iot-02-passed.md`。
+Executor 按宪法读取 `knowledge/current-status.md`、`knowledge/session-handoff.md`、相关 feature/清单，以及本方向列明的 P52/P54/P55/P57/P58/P4/v0.0.2 归档入口。
 
 ## 15. 新会话启动提示词
-本会话角色必须先由 Owner 明确。P21 已 COMPLETED（规划已确认，2026-09-08），当前无活动正式功能；等待 Owner 选择下一需求，不自动启动历史补证或发布动作。
+本会话角色必须先由 Owner 明确。首次高级能力清单同步已经 Planner 验收通过，不重复执行；下一任务以 Owner 新指令为准。
