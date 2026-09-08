@@ -1,11 +1,11 @@
 # p21-iot-device-access — P21 IoT 设备接入、受控脚本与流程联动
 
-> 本文件为该交付的功能追踪登记；主方向已归档 `product/p21-iot-device-access/passed/direction-p21-iot-device-access.md`；阶段三终态同步方向 `product/p21-iot-device-access/ready/direction-p21-iot-device-access-terminal-sync.md`（仅 Planner 复核通过后移 passed）。历史方向与回执见 `product/p21-iot-device-access/`。
+> 本文件为该交付的功能追踪登记；主方向与阶段三终态同步方向均已归档 `product/p21-iot-device-access/passed/`。历史方向与回执见 `product/p21-iot-device-access/`。
 
 | 字段 | 值 |
 |---|---|
 | 功能标识/名称 | p21-iot-device-access / P21 IoT 设备接入、受控脚本与流程联动 |
-| 功能状态 | **COMPLETED（待规划确认，2026-09-08）**；验收事件：功能级 PASSED（2026-09-08，规划验收08 `planning-review-p21-iot-08-passed.md`，A1—A8 及 L1—L39 全部通过并锁定）；审核信息：阶段三终态同步回执 `terminal-sync-p21-iot-device-access-01.md` 待 Planner 复核确认（不影响已授权功能状态） |
+| 功能状态 | **COMPLETED（规划已确认，2026-09-08）**；验收事件：功能级 PASSED（2026-09-08，规划验收08 `planning-review-p21-iot-08-passed.md`，A1—A8 及 L1—L39 全部通过并锁定）；阶段三最终复核 **PASSED**（2026-09-08，`planning-final-review-terminal-sync-p21-iot-02-passed.md`，TS1/TS2 全部通过） |
 | 完成日期 | 2026-09-08 |
 | 计数 | 第 **44** 个正式业务功能（43＋本轮 1）；清单 **✅46 / 🟦22 / ⬜22**（90；M08 十行 🟦/⬜→✅，其余 80 行零变化） |
 | P 编号 | **P21 已核销/完成（2026-09-08）**（只核销本正式方向范围）；**I14 已满足/关闭（2026-09-08）** |
@@ -14,7 +14,7 @@
 | 迁移正式基线 | Flyway **H2 V66（66 migrations）/ PostgreSQL V66（65 migrations）** |
 | 产品行为基线 | Owner Broker 真实双向 MQTT；19 个原子工作项全部 COMPLETED；最终 r3 固定输入 16/16 哈希通过；browser_status=`OPERABLE`；Validator exit=0 |
 | 主方向归档 | `product/p21-iot-device-access/passed/direction-p21-iot-device-access.md` |
-| 关键回执/证据 | `receipts/completion-p21-iot-01..08.md`；`receipts/planning-review-p21-iot-01..07.md`、`planning-review-p21-iot-08-passed.md`；`receipts/evidence/` |
+| 关键回执/证据 | `receipts/completion-p21-iot-01..08.md`；`receipts/planning-review-p21-iot-01..07.md`、`planning-review-p21-iot-08-passed.md`；`receipts/planning-final-review-terminal-sync-p21-iot-02-passed.md`；`receipts/evidence/` |
 
 ## 交付范围（A1—A8，全部 PASSED 并锁定）
 
