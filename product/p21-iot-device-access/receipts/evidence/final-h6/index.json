@@ -1,0 +1,24 @@
+{
+  "atom": "H6",
+  "objectId": "h6-current-20260908c",
+  "environment": "Live HTTP API against PostgreSQL smart_workflow",
+  "sourceFingerprint": "same connection request body replayed with formal admin, restricted user, invalid token, and malformed JSON",
+  "startedAt": "2026-09-08T14:31:09+08:00",
+  "finishedAt": "2026-09-08T14:31:09+08:00",
+  "commands": [
+    "psql direct before/after count for the probe code",
+    "curl -i POST /api/iot/connections with four authentication/body variants"
+  ],
+  "rawFiles": ["raw.http"],
+  "positiveAssertions": [
+    "Admin receives HTTP 200 with code 0 and creates exactly one probe row",
+    "Restricted formal user receives HTTP 403 and does not add a row",
+    "Invalid bearer receives HTTP 401 and does not add a row",
+    "Malformed JSON receives controlled HTTP 400 and does not add a row",
+    "The final direct count is exactly one row created by the admin request"
+  ],
+  "negativeAssertions": [
+    "No unauthorized or malformed request mutates the connection table"
+  ],
+  "verdict": true
+}

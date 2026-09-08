@@ -1,0 +1,5 @@
+CLI version/arguments were checked with the installed HiveMQ MQTT CLI before this run; password was supplied only through a transient exported MQTT_PW environment variable.
+subscriber: /Users/chikan/.local/bin/mqtt sub -i=h1SubR2 -T -h=8.166.112.85 -p=1883 -u=ch-paas -pw:env=MQTT_PW -q=1 -t=owner/p21/down/cmd -t=owner/p21/down/evil
+publisher: /Users/chikan/.local/bin/mqtt pub -i=h1PubR2 -h=8.166.112.85 -p=1883 -u=ch-paas -pw:env=MQTT_PW -q=1 -t=owner/p21/up/raw -m='{"h1":"nonce-r2-20260908-1543"}'
+publisher_exit=0
+subscriber_exit=130 (controlled SIGINT after the new nonce was received)

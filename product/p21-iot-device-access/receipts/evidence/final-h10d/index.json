@@ -1,0 +1,26 @@
+{
+  "atom": "H10d",
+  "objectId": "temporary-dev-services-and-probes",
+  "environment": "Local loopback dev services and PostgreSQL smart_workflow",
+  "sourceFingerprint": "raw.cleanup.log is the direct post-run cleanup and process/port verification output",
+  "startedAt": "2026-09-08T14:43:00+08:00",
+  "finishedAt": "2026-09-08T14:47:00+08:00",
+  "commands": [
+    "POST /api/iot/connections/{id}/delete for the H6 probe",
+    "psql direct verification of the H6 probe deleted flag",
+    "lsof direct verification for ports 8080 and 5173",
+    "ps direct verification for the temporary backend and Vite processes",
+    "find direct verification for the temporary RSA path"
+  ],
+  "rawFiles": ["raw.cleanup.log"],
+  "positiveAssertions": [
+    "The H6 probe is logically deleted: 2097211117859889153|h6-current-20260908c|1",
+    "Ports 8080 and 5173 have zero listeners",
+    "Temporary backend and Vite process counts are zero",
+    "The temporary RSA path has no remaining files"
+  ],
+  "negativeAssertions": [
+    "No temporary dev service or temporary credential file remains active"
+  ],
+  "verdict": true
+}

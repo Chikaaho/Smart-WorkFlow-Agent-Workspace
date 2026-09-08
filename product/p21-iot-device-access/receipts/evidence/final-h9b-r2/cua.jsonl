@@ -1,0 +1,4 @@
+{"step":1,"route":"/iot/connections","target":"owner-mosquitto 行；凭证单元格","observed":"凭证显示 ******；初始 HEALTHY / CONNECT: 常驻连接已建立；截图=owner-before.png"}
+{"step":2,"action":"CUA click","target":"owner-mosquitto 行的 测试 按钮","observed":"alert=连接成功：连接建立成功；行状态 HEALTHY，结果 SUCCESS: 连接建立成功；截图=owner-after.png"}
+{"step":3,"target":"owner-bad-pw 行；凭证单元格","observed":"凭证显示 ******；初始 UNHEALTHY / AUTH_FAILED；截图=bad-before.png"}
+{"step":4,"action":"CUA click","target":"owner-bad-pw 行的 测试 按钮","observed":"alert=连接失败（AUTH_FAILED）；行状态 UNHEALTHY，结果 AUTH_FAILED: 连接失败: 无权连接；截图=bad-after.png"}

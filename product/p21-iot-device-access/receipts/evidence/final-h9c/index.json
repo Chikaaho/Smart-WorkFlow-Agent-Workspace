@@ -1,0 +1,24 @@
+{
+  "atom": "H9c",
+  "objectId": "2097131615104278529,2097131612029853698",
+  "environment": "Operable browser script page with live backend",
+  "sourceFingerprint": "current script list plus Java/JS execution API exports and current browser dry-run alerts",
+  "startedAt": "2026-09-08T14:38:00+08:00",
+  "finishedAt": "2026-09-08T14:39:00+08:00",
+  "commands": [
+    "Browser CUA: Java 试运行 and JS 试运行",
+    "curl GET /api/iot/scripts",
+    "curl GET /api/iot/runtime/script-execs for Java and JS script IDs"
+  ],
+  "rawFiles": ["raw.api.json"],
+  "positiveAssertions": [
+    "Browser Java dry-run returns the controlled side-effect guard message",
+    "Browser JS dry-run returns the controlled side-effect guard message",
+    "Current API lists owner-java-forward and owner-js-forward as PUBLISHED",
+    "Current API exports SUCCESS Java and JS executions with live output records"
+  ],
+  "negativeAssertions": [
+    "Dry-run does not publish or dispatch a side effect"
+  ],
+  "verdict": true
+}

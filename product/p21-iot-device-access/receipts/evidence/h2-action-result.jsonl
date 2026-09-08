@@ -1,0 +1,7 @@
+
+## H2 ACTION_RESULT 完整序列（jsonl）
+{"step":"before-ack","command":{"id": "2097176766916956161", "status": "BROKER_ACK", "capabilityId": "owner/p21/down/cmd", "flowInstanceId": null}}
+{"step":"ack-input-1","topic":"owner/p21/up/ack","payload":{"commandId":"2097176766916956161","status":"SUCCESS","result":{"h2":"ack-1"}}}
+{"step":"ack-input-2-duplicate","topic":"owner/p21/up/ack","payload":{"commandId":"2097176766916956161","status":"SUCCESS","result":{"h2":"ack-2-duplicate"}}}
+{"step":"after-ack","command":{"id": "2097176766916956161", "status": "SUCCESS", "resultJson": "{\"h2\":\"ack-2-duplicate\"}", "replyTime": "2026-09-08T12:15:34.094861"}}
+{"step":"others-unchanged","check":{"other_count": 37, "none_success": 0}}
