@@ -1,0 +1,11 @@
+H9e native browser evidence
+CUA URL=http://localhost:5173/iot/runtime
+state_lines=8 tabs=messages,commands,scripts,process-triggers detail_lines=4
+message=2097232717019734018 topic=owner/p21/up/ack payloadType=ACTION_RESULT parseStatus=PARSED
+command=2097231817148588033 capability=PUBLISH capabilityId=owner/p21/down/cmd status=BROKER_ACK source=SCRIPT
+scriptExec=2097235395296747521 script=2097131612029853698 version=2 status=FAILED triggerRef=dryrun sideEffect=0
+processTrigger=2097230429886734338 rule=2097230132959371265 status=SUCCESS processInstance=9965f140-ab59-11f1-984f-66ff24301f3c
+assert_eight_distinct_native_states=true
+assert_four_tabs_active=true
+assert_four_details_visible=true
+assert_locked_object_ids_match=true

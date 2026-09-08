@@ -1,0 +1,8 @@
+# h7-tenant.sql.log — 四象限 SQL 前后回读
+时间: 2026-09-08 12:36:29  测试: H7TenantIsolationIntegrationTest（真实 PG smart_workflow + TenantLineInnerInterceptor + LoginUserHolder 租户上下文）
+测试结论: 四象限全部断言通过（t0→t0 写读、t88→t88 写读、t0→t88 零读零写、t88→t0 零读零写）；本轮对象 h7-* 已清理
+
+## 清理后回读（逻辑删除 deleted=1，业务查询不再可见）
+ h7-tenant0-conn  |         0
+ h7-tenant88-conn |        88
+

@@ -1,0 +1,23 @@
+{
+  "atom": "H8",
+  "objectId": "audit-set-20260908",
+  "environment": "PostgreSQL smart_workflow via localhost; authenticated debug bearer maps to formal user admin id=1 tenant=0",
+  "sourceFingerprint": "sw_iot_audit_record rows selected directly by action_time and exact six action values",
+  "startedAt": "2026-09-08T14:09:40+08:00",
+  "finishedAt": "2026-09-08T14:12:18+08:00",
+  "commands": [
+    "psql --csv select distinct on(action) ... from sw_iot_audit_record ...",
+    "psql -At select origin/retry command rows and retry audit row"
+  ],
+  "rawFiles": ["raw.csv", "raw.retry.json"],
+  "positiveAssertions": [
+    "raw.csv contains exactly one non-header row for each of CONNECTION_TEST, SCRIPT_PUBLISH, RULE_PUBLISH, FLOW_TRIGGER, COMMAND_DISPATCH, COMMAND_RETRY",
+    "Every selected row has non-empty action, object_type, object_id, result, actor_id, system_identity, action_time, and correlation_id",
+    "COMMAND_RETRY is linked to source_ref retry:2097205763713392642 and has a distinct non-empty correlation_id",
+    "Audit actions are backed by current connection, script, rule, trigger, dispatch, and retry objects"
+  ],
+  "negativeAssertions": [
+    "No plaintext credential field is present in the captured audit columns or retry payload"
+  ],
+  "verdict": true
+}

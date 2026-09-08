@@ -1,0 +1,23 @@
+{
+  "atom": "H4b",
+  "objectId": "2097210298733289474",
+  "environment": "Live HTTP API against PostgreSQL smart_workflow; formal admin id=1 tenant=0",
+  "sourceFingerprint": "current iot_alert_form fields and the publish response for rule h4b-contract-20260908",
+  "startedAt": "2026-09-08T14:27:54+08:00",
+  "finishedAt": "2026-09-08T14:27:54+08:00",
+  "commands": [
+    "psql direct form field metadata query",
+    "HTTP create and publish with BOOL, DATE, and REFERENCE fixed values",
+    "HTTP current rule query"
+  ],
+  "rawFiles": ["raw.http"],
+  "positiveAssertions": [
+    "The current metadata identifies escalate as BOOL, occur_day as DATE, and ref_record as REFERENCE with targetFormId iot_alert_form",
+    "Publish returns body code 400 and reports all three type/reference contract violations",
+    "The created rule remains DRAFT after validation rejection"
+  ],
+  "negativeAssertions": [
+    "Invalid BOOL, DATE, and REFERENCE values do not enter PUBLISHED state"
+  ],
+  "verdict": true
+}

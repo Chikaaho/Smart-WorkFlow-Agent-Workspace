@@ -1,0 +1,24 @@
+{
+  "atom": "H5",
+  "objectId": "87a5f1f67b45115336942709d21323ad882dd3090ab76e1965f6aeaf5354190e",
+  "environment": "PostgreSQL smart_workflow; live Owner MQTT broker; Java subprocess and GraalJS engines",
+  "sourceFingerprint": "live MQTT message owner/p21/up/raw correlated by the current Java and JS execution rows",
+  "startedAt": "2026-09-08T14:08:00+08:00",
+  "finishedAt": "2026-09-08T14:08:21+08:00",
+  "commands": [
+    "mqtt pub to owner/p21/up/raw with transiently decrypted connection credential",
+    "psql direct correlation query over sw_iot_script_exec, sw_iot_event_record, and sw_iot_command",
+    "mqtt pub action ACK to owner/p21/up/ack with the observed action commandId"
+  ],
+  "rawFiles": ["raw.filtered.json", "raw.jsonl", "raw.detail.txt"],
+  "positiveAssertions": [
+    "The Java execution is SUCCESS and has a non-empty actionCommandId and publishCommandId",
+    "The action command reaches SUCCESS with result_json and reply_time",
+    "The Java execution, its action command, its publish command, and the emitted event share correlation_id 87a5f1f67b45115336942709d21323ad882dd3090ab76e1965f6aeaf5354190e",
+    "The same live message also records a successful JS execution and event association"
+  ],
+  "negativeAssertions": [
+    "No missing terminal result was observed for the verified Java action"
+  ],
+  "verdict": true
+}

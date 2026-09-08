@@ -1,0 +1,43 @@
+GET /api/iot/rules/2097230132959371265
+HTTP/1.1 200 OK
+Vary: Origin
+x-content-type-options: nosniff
+x-xss-protection: 0
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+x-frame-options: DENY
+content-type: application/json
+date: Tue, 08 Sep 2026 07:48:14 GMT
+connection: close
+Transfer-Encoding: chunked
+
+{"code":0,"msg":"success","data":{"id":"2097230132959371265","createTime":"2026-09-08T15:46:43.006995","createBy":"1","updateTime":"2026-09-08T15:47:53.80097","updateBy":"0","deleted":0,"version":"0","tenantId":"0","code":"h4b-positive-r2-20260908","name":"H4b positive typed r2","deviceId":"2097131606828916738","ruleType":"EVENT_OCCUR","conditionJson":"{\"eventId\":\"overheat\"}","debounceMs":"0","cooldownMs":"0","continuousCount":1,"scriptId":null,"processTemplateKey":"bpm_27eb397eab224743","formMappingJson":"[{\"field\":\"ref_record\",\"fixed\":\"h4-ref-visible-20260908\",\"required\":true},{\"field\":\"escalate\",\"fixed\":true,\"required\":true},{\"field\":\"occur_day\",\"fixed\":\"2026-09-08\",\"required\":true},{\"field\":\"deviceKey\",\"source\":\"DEVICE_KEY\",\"required\":true}]","processEnabled":1,"status":"PUBLISHED","ruleVersion":1,"lastFiredTime":"2026-09-08T15:47:53.799662"}}GET /api/iot/rules/2097230132959371265/triggers
+HTTP/1.1 200 OK
+Vary: Origin
+x-content-type-options: nosniff
+x-xss-protection: 0
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+x-frame-options: DENY
+content-type: application/json
+date: Tue, 08 Sep 2026 07:48:14 GMT
+connection: close
+Transfer-Encoding: chunked
+
+{"code":0,"msg":"success","data":[{"id":"2097230429886734338","createTime":"2026-09-08T15:47:53.799808","createBy":"0","updateTime":"2026-09-08T15:47:53.983749","updateBy":"0","deleted":0,"version":"0","tenantId":"0","ruleId":"2097230132959371265","scriptId":null,"deviceId":"2097131606828916738","idempotentKey":"r2097230132959371265-v1-2097131606828916738-606c92638d5b77e473ae33ff80afcda0a0a839a093c4a9384be04ec8ddbd0670","status":"SUCCESS","processInstanceId":"9965f140-ab59-11f1-984f-66ff24301f3c","formSnapshot":"{\"deviceKey\":\"dev-owner-01\",\"occur_day\":\"2026-09-08\",\"escalate\":true,\"ref_record\":\"h4-ref-visible-20260908\"}","error":null,"triggerTime":"2026-09-08T15:47:53.799662"}]}GET /api/workflow/instances/9965f140-ab59-11f1-984f-66ff24301f3c
+HTTP/1.1 200 OK
+Vary: Origin
+x-content-type-options: nosniff
+x-xss-protection: 0
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+x-frame-options: DENY
+content-type: application/json
+date: Tue, 08 Sep 2026 07:48:14 GMT
+connection: close
+Transfer-Encoding: chunked
+
+{"code":0,"msg":"success","data":{"id":"2097230430478131201","processInstanceId":"9965f140-ab59-11f1-984f-66ff24301f3c","processDefKey":"bpm_27eb397eab224743","processName":"IoT 告警审批","businessKey":"iot-2097230429886734338","formKey":"iot_alert_form","initiatorId":"0","initiatorName":null,"status":"APPROVED","createTime":"2026-09-08T15:47:53.940453","activeNodeIds":[],"flowTrace":[{"activityId":"edge_1","activityName":null,"activityType":"sequenceFlow","startTime":"2026-09-08T15:47:53.924","endTime":"2026-09-08T15:47:53.924","assignee":null,"assigneeName":null,"taskId":null},{"activityId":"node_end","activityName":"End","activityType":"endEvent","startTime":"2026-09-08T15:47:53.924","endTime":"2026-09-08T15:47:53.924","assignee":null,"assigneeName":null,"taskId":null},{"activityId":"node_start","activityName":"Start","activityType":"startEvent","startTime":"2026-09-08T15:47:53.924","endTime":"2026-09-08T15:47:53.924","assignee":null,"assigneeName":null,"taskId":null}],"formData":{"deviceKey":"dev-owner-01","occur_day":"2026-09-08","escalate":true,"ref_record":"h4-ref-visible-20260908"}}}

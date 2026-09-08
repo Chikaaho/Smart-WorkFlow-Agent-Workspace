@@ -1,0 +1,25 @@
+{
+  "atom": "H9b",
+  "objectId": "2097131605679677442,2097135932003618817",
+  "environment": "Browser-operable IoT connection page backed by live Owner MQTT broker",
+  "sourceFingerprint": "current test endpoint responses and PostgreSQL health rows for owner-mosquitto and owner-bad-pw",
+  "startedAt": "2026-09-08T14:35:24+08:00",
+  "finishedAt": "2026-09-08T14:35:24+08:00",
+  "commands": [
+    "curl -i POST /api/iot/connections/2097131605679677442/test",
+    "curl -i POST /api/iot/connections/2097135932003618817/test",
+    "psql direct connection health readback",
+    "Browser connection page test-button interaction was observed with matching success/failure alerts"
+  ],
+  "rawFiles": ["raw.http"],
+  "positiveAssertions": [
+    "Owner broker test returns HEALTHY, category SUCCESS, and success detail",
+    "Bad credential test returns UNHEALTHY, category AUTH_FAILED, and failure detail",
+    "Current database rows match both API results",
+    "The browser exposes the same test actions and corresponding alerts"
+  ],
+  "negativeAssertions": [
+    "Bad broker credentials are not reported as a successful connection"
+  ],
+  "verdict": true
+}

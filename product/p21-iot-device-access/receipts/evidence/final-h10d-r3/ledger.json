@@ -1,0 +1,159 @@
+{
+  "feature_status": "VERIFYING",
+  "browser_status": "OPERABLE",
+  "remaining_actionable_count": 0,
+  "work_items": [
+    {
+      "id": "H1-topic-reject",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "已锁定：沿用 H1 新 nonce 合法与越界 Topic 拒绝证据"
+    },
+    {
+      "id": "H2-terminal-ack-idempotency",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "已锁定：沿用首次 ACK、重复 ACK 与副作用计数证据"
+    },
+    {
+      "id": "H3a-failure-policy",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "已锁定：沿用 Owner Broker 三策略真实运行证据"
+    },
+    {
+      "id": "H3b-action-source-ui",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "已完成：H3b1 三来源刷新回读与 H3b2 合格候选集合证据"
+    },
+    {
+      "id": "H4a-reference-access",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "已锁定：沿用 H4a 合同和验收证据"
+    },
+    {
+      "id": "H4b-typed-contract",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "已锁定：沿用 BOOL、DATE、REFERENCE 正例证据"
+    },
+    {
+      "id": "H5-correlation-chain",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "已锁定：沿用 correlation 链证据"
+    },
+    {
+      "id": "H6-auth-four-state",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "已锁定：沿用四态鉴权证据"
+    },
+    {
+      "id": "H7-tenant-isolation",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "已锁定：沿用跨租户写入行数与列表隔离证据"
+    },
+    {
+      "id": "H8-audit-retry",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "已锁定：沿用审计和重试证据"
+    },
+    {
+      "id": "H9a-device-toggle",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "已锁定：沿用 CUA 开关往返与刷新回读证据"
+    },
+    {
+      "id": "H9b-connection-test",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "已完成：原生状态显示 HEALTHY/SUCCESS、UNHEALTHY/AUTH_FAILED 与掩码"
+    },
+    {
+      "id": "H9c-script-run",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "已完成：原生 Java/JS 试运行受控拒绝与 sideEffect=0"
+    },
+    {
+      "id": "H9d-rule-trigger",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "已完成：原生规则、触发列表和触发详情一致"
+    },
+    {
+      "id": "H9e-runtime-detail",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "已完成：四个运行记录标签及详情原生回读"
+    },
+    {
+      "id": "H10a-gates",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "已完成：沿用锁定全量测试并修正报告为 1182/0/0/0"
+    },
+    {
+      "id": "H10b-manifest",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "已锁定：沿用 r2 manifest 双向覆盖结果"
+    },
+    {
+      "id": "H10c-validator",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "已锁定：沿用 r2 Validator 结果；本回执冻结后仅运行本轮 H10d Validator"
+    },
+    {
+      "id": "H10d-ledger",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "已完成：冻结回执与 r3 ledger、计数及浏览器状态一致"
+    }
+  ]
+}

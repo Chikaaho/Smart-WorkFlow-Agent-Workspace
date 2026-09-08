@@ -1,0 +1,26 @@
+{
+  "atom": "H10a",
+  "objectId": "frontend-backend-current-tree",
+  "environment": "Smart-WorkFlow-Server and Smart-WorkFlow-Web local workspaces",
+  "sourceFingerprint": "raw.backend-package.log and raw.frontend-gates.log are direct outputs from the current worktree after the H2/H4a/H5/H8 and runtime-detail changes",
+  "startedAt": "2026-09-08T14:23:00+08:00",
+  "finishedAt": "2026-09-08T14:27:00+08:00",
+  "commands": [
+    "MAVEN_OPTS=-Xmx2g mvn -pl sw-bootstrap -am -DskipTests package",
+    "NODE_OPTIONS=--max-old-space-size=2048 pnpm typecheck",
+    "NODE_OPTIONS=--max-old-space-size=2048 pnpm lint",
+    "NODE_OPTIONS=--max-old-space-size=2048 pnpm test",
+    "NODE_OPTIONS=--max-old-space-size=2048 pnpm build"
+  ],
+  "rawFiles": ["raw.backend-package.log", "raw.frontend-gates.log"],
+  "positiveAssertions": [
+    "Backend reactor ends with BUILD SUCCESS",
+    "Frontend typecheck, lint, test, and build all have exit 0",
+    "Frontend test output reports 124 passed files, 1 skipped file, 1168 passed tests, and 3 skipped tests",
+    "Frontend production bundle is built successfully"
+  ],
+  "negativeAssertions": [
+    "No repository-owned lint error or build failure is present"
+  ],
+  "verdict": true
+}

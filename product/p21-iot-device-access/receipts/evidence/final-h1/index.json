@@ -1,0 +1,23 @@
+{
+  "atom": "H1",
+  "objectId": "2097205209566142465",
+  "environment": "Live Owner MQTT broker with current PostgreSQL runtime",
+  "sourceFingerprint": "current G1A execution row correlated to owner/p21/up/raw and the archived CLI broker transcript",
+  "startedAt": "2026-09-08T12:14:35+08:00",
+  "finishedAt": "2026-09-08T14:08:21+08:00",
+  "commands": [
+    "mqtt sub/pub help and controlled broker transcript",
+    "psql direct script execution query"
+  ],
+  "rawFiles": ["raw.topic.stdout.log", "raw.exec.json"],
+  "positiveAssertions": [
+    "The legal owner/p21/up/raw input reaches a SUCCESS execution and legal broker command acknowledgement",
+    "The configured owner/p21/down/cmd route receives the legal message",
+    "The unconfigured owner/p21/down/evil route is rejected and produces no accepted message",
+    "The raw transcript records message/command/trigger counters"
+  ],
+  "negativeAssertions": [
+    "No unconfigured topic is accepted by the current topic allowlist"
+  ],
+  "verdict": true
+}

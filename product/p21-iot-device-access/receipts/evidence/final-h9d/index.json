@@ -1,0 +1,24 @@
+{
+  "atom": "H9d",
+  "objectId": "2097138277827489793",
+  "environment": "Operable browser event-rule page with live backend",
+  "sourceFingerprint": "current rule and trigger API exports plus CUA rule-trigger list and detail dialog",
+  "startedAt": "2026-09-08T14:40:00+08:00",
+  "finishedAt": "2026-09-08T14:41:00+08:00",
+  "commands": [
+    "Browser CUA: open g3-ok trigger records and click a trigger row",
+    "curl GET /api/iot/rules",
+    "curl GET /api/iot/rules/2097138277827489793/triggers"
+  ],
+  "rawFiles": ["raw.api.json"],
+  "positiveAssertions": [
+    "The browser rule list shows g3-ok as PUBLISHED",
+    "The trigger list shows SUCCESS and PENDING records",
+    "The trigger detail dialog renders current trigger 2097205762853560321 with processInstanceId and formSnapshot",
+    "The current rule and trigger objects are present in the direct API export"
+  ],
+  "negativeAssertions": [
+    "The UI does not represent a trigger as successful without the corresponding process instance or form snapshot"
+  ],
+  "verdict": true
+}

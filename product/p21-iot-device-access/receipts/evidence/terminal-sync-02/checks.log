@@ -1,0 +1,71 @@
+# terminal-sync-02 checks.log（仅从副本机械提取；2026-09-08）
+
+## 1. 副本数与 manifest
+- 副本数：15
+- manifest 行数：15
+- manifest 回读退出码：0（15/15 OK）
+
+## 2. 功能数（来自 current-status 副本）
+正式业务功能数 **44**
+第 44 个
+
+## 3. 清单计数与总数（来自 server 功能清单副本，精确匹配数据行）
+- 总行数：90
+- ✅: 46  🟦: 22  ⬜: 22
+
+## 4. M08 十三行逐行状态（来自 server 功能清单副本）
+M08-F01-01 -> ✅
+M08-F01-02 -> ✅
+M08-F01-03 -> ✅
+M08-F02-01 -> ✅
+M08-F02-02 -> ✅
+M08-F03-01 -> ✅
+M08-F03-02 -> ✅
+M08-F04-01 -> 🟦
+M08-F04-02 -> ⬜
+M08-F04-03 -> ✅
+M08-F04-04 -> ✅
+M08-F05-01 -> ✅
+M08-F05-02 -> ⬜
+
+## 5. P21 / I14
+| P 编号 | **P21 已核销/完成（2026-09-08）**（只核销本正式方向范围）；**P2、P4 开放、部分实现未核销**；P34/P35/P37/P38/P39 部分实现未核销；其余已核销项不变。审计基准 P 池 57 行、唯一 56 编号（P48 总表/明细双入口同值）；I 索引 54 条、区间 I1—I55 缺 I27，本轮不增删（**I14 已满足/关闭（2026-09-08）**；I38/I39/I40/I45 保持开放） |
+- P 编号：P21 已核销（2026-09-08）；P2/P4 开放、部分实现未核销；P34/P35/P37/P38/P39 部分实现未核销
+| P 编号 | **P21 已核销/完成（2026-09-08）**；**P2/P4 开放、部分实现未核销**；P34/P35/P37/P38/P39 部分实现未核销；I 集合 54 条不增删（**I14 已满足/关闭**；I38/I39/I40/I45 保持开放） |
+| P 编号 | **P21 已核销/完成（2026-09-08）**；**P2/P4 开放、部分实现未核销**；P34/P35/P37/P38/P39 部分实现未核销；I 集合 54 条不增删（**I14 已满足/关闭**；I38/I39/I40/I45 保持开放） |
+| P 编号 | **P21 已核销/完成（2026-09-08）**（只核销本正式方向范围）；**P2、P4 开放、部分实现未核销**；P34/P35/P37/P38/P39 部分实现未核销；其余已核销项不变。审计基准 P 池 57 行、唯一 56 编号（P48 总表/明细双入口同值）；I 索引 54 条、区间 I1—I55 缺 I27，本轮不增删（**I14 已满足/关闭（2026-09-08）**；I38/I39/I40/I45 保持开放） |
+
+## 6. 四组基线（来自 current-status 副本）
+后端正式基线 | **12 个模块汇总，1182 tests / 0 failures / 0 errors / 0 skipped；BUILD SUCCESS**（来源 `product/p21-iot-device-access/receipts/completion-p21-iot-08.md` 等锁定证据）
+前端正式基线 | **Test Files 124 passed + 1 skipped；Tests 1168 passed + 3 skipped**；typecheck/lint/test/build exit 0
+迁移基线 | Flyway **H2 V66（66 migrations）/ PostgreSQL V66（65 migrations）**
+产品行为基线 | Owner Broker 真实双向 MQTT；19 个原子工作项全部 COMPLETED；最终 r3 固定输入 16/16 哈希通过；browser_status=`OPERABLE`；Validator exit=0
+
+## 7. 活动功能与唯一下一动作
+当前活动正式功能 | 无（已完成条目不同时列作活动功能）
+## 当前唯一下一动作
+- 当前唯一下一动作：**等待 Owner 选择下一需求**
+
+## 8. 阶段三方向仍在 ready（product 目录只读确认）
+- direction-p21-iot-device-access-terminal-sync.md
+
+## 9. 秘密精确扫描（副本内敏感模式扫描，零命中目标）
+- BEGIN PRIVATE KEY 命中：0
+- AKID(腾讯云密钥)形态命中：0
+- 长 base64 凭据形态(>=64字符)命中：0
+
+## 10. memory 副本体积（8 个，单文件<5KB、总<20KB）
+     690 memory__README.md
+     808 memory__architecture.md
+     713 memory__constraints.md
+    1136 memory__decisions.md
+    2835 memory__features.md
+    3743 memory__handoff.md
+    2827 memory__issues.md
+    3100 memory__state.md
+   15852 total
+
+## 11. 历史文字命中分类（非当前冲突）
+- requirement-pool P4 历史块（2026-09-07 前）标注'历史'：存在，显式历史标注
+- memory/decisions.md 09-04 对账决策含 'P3/P21 部分关闭未核销'：历史决策记录，保留
+- known-issues I14 详情保留 2026-08-28 部分关闭历史状态行：历史原文，保留

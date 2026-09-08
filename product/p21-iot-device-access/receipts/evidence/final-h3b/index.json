@@ -1,0 +1,24 @@
+{
+  "atom": "H3b",
+  "objectId": "bpm_27eb397eab224743,2097131606828916738",
+  "environment": "Operable browser flow-actions page with live backend",
+  "sourceFingerprint": "current workflow definition and eligible-device API exports plus browser CUA radio-switch observations",
+  "startedAt": "2026-09-08T14:42:00+08:00",
+  "finishedAt": "2026-09-08T14:44:00+08:00",
+  "commands": [
+    "Browser CUA: open 流程设备动作, switch FIXED -> VARIABLE -> FORM_FIELD",
+    "curl GET /api/workflow/defs?pageNum=1&pageSize=50",
+    "curl GET /api/iot/products/devices/eligible"
+  ],
+  "rawFiles": ["raw.api.json"],
+  "positiveAssertions": [
+    "The page describes all three sources: fixed design-time, initiator form field, and process variable",
+    "CUA shows each radio value changing to the selected source and exposes the corresponding input field",
+    "The eligible-device API returns the published, process-enabled Owner device",
+    "The current process definition is PUBLISHED and IoT access is enabled"
+  ],
+  "negativeAssertions": [
+    "An ineligible or unpublished device is not presented by the eligible-device API"
+  ],
+  "verdict": true
+}

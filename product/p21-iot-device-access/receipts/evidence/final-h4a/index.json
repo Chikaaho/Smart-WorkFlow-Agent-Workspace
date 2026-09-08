@@ -1,0 +1,24 @@
+{
+  "atom": "H4a",
+  "objectId": "2097206372273348609",
+  "environment": "PostgreSQL smart_workflow; formal admin id=1 tenant=0 through loopback debug auth",
+  "sourceFingerprint": "current published iot_alert_form targetFormId plus physical reference rows in sw_form_kpuz1yreun",
+  "startedAt": "2026-09-08T14:12:00+08:00",
+  "finishedAt": "2026-09-08T14:12:18+08:00",
+  "commands": [
+    "HTTP create and publish for valid, missing-reference, and cross-tenant rules",
+    "psql direct targetFormId and physical reference query",
+    "psql before/after trigger and process-instance counts"
+  ],
+  "rawFiles": ["raw.http", "raw.objects.tsv", "raw.counts", "raw.reference.sql"],
+  "positiveAssertions": [
+    "The valid fixed reference h4-ref-visible-20260908 publishes rule 2097206372273348609 with status PUBLISHED",
+    "The missing reference is rejected with HTTP body code 400 and no trigger/process growth",
+    "The tenant-88 reference is rejected for the tenant-0 admin with HTTP body code 400 and no trigger/process growth",
+    "Current form metadata contains targetFormId=iot_alert_form and the reference rows show tenant 0 versus tenant 88"
+  ],
+  "negativeAssertions": [
+    "An object that exists only in another tenant is not accepted as a valid REFERENCE"
+  ],
+  "verdict": true
+}

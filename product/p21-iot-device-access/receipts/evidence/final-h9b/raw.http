@@ -1,0 +1,27 @@
+OWNER_TEST_HTTP_POST
+HTTP/1.1 200 
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Tue, 08 Sep 2026 06:35:24 GMT
+
+{"code":0,"msg":"success","data":{"healthStatus":"HEALTHY","detail":"连接建立成功 (cost=373ms)","category":"SUCCESS"}}BAD_CREDENTIAL_TEST_HTTP_POST
+HTTP/1.1 200 
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Tue, 08 Sep 2026 06:35:24 GMT
+
+{"code":0,"msg":"success","data":{"healthStatus":"UNHEALTHY","detail":"连接失败: 无权连接 (cost=676ms)","category":"AUTH_FAILED"}}CURRENT_CONNECTION_ROWS
+2097131605679677442|owner-mosquitto|HEALTHY|SUCCESS: 连接建立成功 (cost=373ms)|1
+2097135932003618817|owner-bad-pw|UNHEALTHY|AUTH_FAILED: 连接失败: 无权连接 (cost=676ms)|1

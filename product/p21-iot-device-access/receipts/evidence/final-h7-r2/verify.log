@@ -1,0 +1,4 @@
+H7-R2 real PostgreSQL + MyBatis TenantLineInnerInterceptor run: PASS
+writes.jsonl: t0->t0 affectedRows=1; t88->t88 affectedRows=1; t0->t88 affectedRows=0; t88->t0 affectedRows=0
+lists.jsonl: tenant 0 contains only h7-tenant0-conn; tenant 88 contains only h7-tenant88-conn
+The test completed with exit=0 and cleaned both h7- prefixed rows.

@@ -1,0 +1,23 @@
+{
+  "atom": "H2",
+  "objectId": "2097205210094624770",
+  "environment": "Live Owner MQTT broker and PostgreSQL smart_workflow",
+  "sourceFingerprint": "action command correlation_id 87a5f1f67b45115336942709d21323ad882dd3090ab76e1965f6aeaf5354190e",
+  "startedAt": "2026-09-08T14:15:00+08:00",
+  "finishedAt": "2026-09-08T14:15:03+08:00",
+  "commands": [
+    "psql direct command snapshot before and after each ACK",
+    "mqtt pub SUCCESS ACK twice with the same commandId and correlationId"
+  ],
+  "rawFiles": ["raw.jsonl"],
+  "positiveAssertions": [
+    "Both broker publishes exit 0",
+    "The command remains SUCCESS after each duplicate ACK",
+    "result_json remains the first terminal result and reply_time remains unchanged",
+    "correlation_id remains unchanged across all snapshots"
+  ],
+  "negativeAssertions": [
+    "No duplicate terminal transition or result overwrite is observed"
+  ],
+  "verdict": true
+}

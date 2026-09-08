@@ -1,0 +1,21 @@
+{
+  "atom": "H10c",
+  "objectId": "completion-p21-iot-05-terminal",
+  "environment": "Local workspace terminal contract",
+  "sourceFingerprint": "raw.validator.log records direct validation of the final receipt last line",
+  "startedAt": "2026-09-08T14:48:00+08:00",
+  "finishedAt": "2026-09-08T14:48:00+08:00",
+  "commands": [
+    "tail -n 1 product/p21-iot-device-access/receipts/completion-p21-iot-05.md | sed 's/^ENGINE_TERMINAL //' | bash .codex/governance/validate-terminal.sh"
+  ],
+  "rawFiles": ["raw.validator.log"],
+  "positiveAssertions": [
+    "Validator input is the final receipt line after removing the ENGINE_TERMINAL marker",
+    "Validator stdout and stderr are empty",
+    "Validator exit code is 0"
+  ],
+  "negativeAssertions": [
+    "The final receipt line has no terminal-contract diagnostics"
+  ],
+  "verdict": true
+}

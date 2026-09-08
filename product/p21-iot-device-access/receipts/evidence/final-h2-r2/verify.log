@@ -1,0 +1,5 @@
+H2-R2 real Owner MQTT ACK sequence: PASS.
+Command 2097231816255201282 starts at BROKER_ACK with version=0 and correlationId=10d1c06dda7db07800ca4b7aaec81fef922e99ad89882701be23d1d742bf044c.
+First ACK changes it to SUCCESS and stores result {"h2":"first-r2"} with replyTime 2026-09-08T15:56:39.775308.
+Second ACK intentionally carries a different result {"h2":"duplicate-r2"}; after2 is exactly equal to after1 for status, result, replyTime, version and correlationId.
+otherCommandsDigest remains 8b07d74cef2eaa57b567bc0deaaeb916. Business side-effect counts events=15, properties=22, triggers=72, scriptExecs=45 remain unchanged across after1/after2; only the ACK message-log count increases by the second transport message.

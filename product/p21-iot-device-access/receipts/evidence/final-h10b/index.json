@@ -1,0 +1,23 @@
+{
+  "atom": "H10b",
+  "objectId": "evidence-manifest-20260908-final",
+  "environment": "Current product/p21-iot-device-access/receipts/evidence tree",
+  "sourceFingerprint": "113 current evidence files enumerated and hashed directly from the final evidence tree",
+  "startedAt": "2026-09-08T14:49:00+08:00",
+  "finishedAt": "2026-09-08T14:50:00+08:00",
+  "commands": [
+    "find evidence files and shasum -a 256",
+    "diff sorted filesystem set against sorted manifest path set"
+  ],
+  "rawFiles": ["raw.manifest.sha256", "raw.coverage.log"],
+  "positiveAssertions": [
+    "Manifest contains 113 entries",
+    "Filesystem scope contains 113 files",
+    "Bidirectional diff is empty",
+    "Manifest includes the current final evidence packages and legacy evidence payloads"
+  ],
+  "negativeAssertions": [
+    "No current evidence file is omitted from or added outside the declared manifest scope"
+  ],
+  "verdict": true
+}

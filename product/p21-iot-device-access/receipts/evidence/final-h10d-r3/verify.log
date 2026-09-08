@@ -1,0 +1,12 @@
+H10d frozen terminal and ledger verification
+input=tail -1 completion-p21-iot-07.md | sed 's/^ENGINE_TERMINAL //'
+selected_fields=feature_status,browser_status,remaining_actionable_count,work_items
+terminal_vs_ledger_selected_fields_cmp_exit=0
+work_item_count=19
+all_work_items_status=COMPLETED
+remaining_actionable_count=0
+independent_work_exhausted=true
+browser_status=OPERABLE
+validator_command=bash .codex/governance/validate-terminal.sh
+validator_exit=0
+assert_completion_frozen_before_validator=true

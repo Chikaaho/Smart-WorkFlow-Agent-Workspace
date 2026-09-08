@@ -1,0 +1,24 @@
+{
+  "atom": "H9a",
+  "objectId": "2097131606828916738",
+  "environment": "Operable browser device management page with live PostgreSQL backend",
+  "sourceFingerprint": "current device API and SQL row after browser switch sequence",
+  "startedAt": "2026-09-08T14:36:00+08:00",
+  "finishedAt": "2026-09-08T14:36:20+08:00",
+  "commands": [
+    "Browser CUA: device management -> switch OFF -> reload -> switch ON -> reload",
+    "curl GET /api/iot/devices",
+    "psql direct device status readback"
+  ],
+  "rawFiles": ["raw.api.txt"],
+  "positiveAssertions": [
+    "The browser switch changed to Value 0 and displayed 流程接入开关已更新",
+    "After reload the browser still showed Value 0",
+    "After switching on and reloading the browser showed Value 1",
+    "Current API and SQL both report processAccessEnabled=1 for dev-owner-01"
+  ],
+  "negativeAssertions": [
+    "The OFF state does not silently revert before the ON transition"
+  ],
+  "verdict": true
+}

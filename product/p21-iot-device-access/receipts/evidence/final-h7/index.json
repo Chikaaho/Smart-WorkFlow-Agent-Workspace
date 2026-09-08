@@ -1,0 +1,24 @@
+{
+  "atom": "H7",
+  "objectId": "h7-tenant0-conn,h7-tenant88-conn",
+  "environment": "Real PostgreSQL smart_workflow with TenantLineInnerInterceptor and LoginUserHolder tenant context",
+  "sourceFingerprint": "current H7TenantIsolationIntegrationTest output with four SQL quadrant rows and direct cleanup query",
+  "startedAt": "2026-09-08T14:33:00+08:00",
+  "finishedAt": "2026-09-08T14:33:08+08:00",
+  "commands": [
+    "MAVEN_OPTS=-Xmx2g mvn -pl sw-bootstrap -am -Dtest=H7TenantIsolationIntegrationTest ... test",
+    "psql direct cleanup query for the two generated connection IDs"
+  ],
+  "rawFiles": ["raw.mvn.log", "raw.cleanup.sql"],
+  "positiveAssertions": [
+    "The test has four raw SQL rows for t0->t0, t0->t88, t88->t88, and t88->t0",
+    "Same-tenant reads are 1 and cross-tenant reads are 0",
+    "All four write assertions have exit=0 and preserve the expected object name",
+    "Maven reports Tests run: 1, Failures: 0, Errors: 0 and BUILD SUCCESS",
+    "Cleanup query shows both generated rows logically deleted"
+  ],
+  "negativeAssertions": [
+    "A tenant cannot read or update the other tenant's connection"
+  ],
+  "verdict": true
+}
