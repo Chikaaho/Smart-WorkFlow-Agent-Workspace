@@ -1,0 +1,17 @@
+# h6-auth.http — 四态同 body 原始流
+时间: 2026-09-08 12:31:37  body: /tmp/h6.json (code=h6-probe-h6-1788841897, host=10.8.8.8, 口令经环境变量注入临时文件后删除)
+1) admin POST → HTTP 
+200, body: {"code":0,"msg":"success","data":{"code":"h6-probe-h6-1788841897","keepalive":60,"passwordMasked":"******","updateTime":"2026-09-08 12:31:37.153745","
+2) iotuser(test_3) POST 同 body → HTTP 
+403, body: {"code":403,"msg":"无权限","data":null}
+3) 无认证 garbage token → HTTP 
+401, body: {"code":401,"msg":"未认证","data":null}
+4) admin 畸形 JSON → HTTP 
+400, body: {"code":400,"msg":"请求体非法: Unexpected character ('b' (code 98)): was expecting double-quote to start field name
+ at [Source: REDACTED (`Stre
+
+## 前后计数（h6-counts）
+```
+h6-probe 连接（应仅 1 条来自 admin）: h6-probe-h6-1788841897
+该 nonce 连接总数: 1
+```

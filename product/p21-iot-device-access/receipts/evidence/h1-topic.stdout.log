@@ -1,0 +1,19 @@
+# h1-topic.stdout.log
+时间: 2026-09-08 12:14:35  工作目录: Smart-WorkFlow-Server  对象: owner-mosquitto/
+
+$ mqtt sub --help（-C/--count 不存在，采用后台受控订阅 + 受控终止）:
+Usage: mqtt sub [-dJlsTv] [--base64] [--help] [--[no-]cleanStart] [--[no-]reqProblemInfo] [--reqResponseInfo] [--version] [-Wr] [-ws] [-pw[=<password>]] [-pw:
+                env[=<passwordFromEnv>]] [--cafile=FILE] [--capath=DIR] [--cert=<clientCertificatePath>] [-h=<host>] [-i=<identifier>] [-ip=<identifierPrefix>]
+                [-k=<keepAlive>] [--key=<clientPrivateKeyPath>] [--keypw=<clientPrivateKeyPassword>] [--ks=<clientKeystorePath>]
+                [--kspkpw=<clientKeystorePrivateKeyPassword>] [--kspw=<clientKeystorePassword>] [--maxPacketSize=<maximumPacketSize>]
+...
+
+## H1 合法订阅 + 越界拒绝（订阅经后台受控终止方式，CLI --help 已归档）
+```
+订阅 owner/p21/down/cmd（qos1）收到:
+G1A-LEGAL
+JAVA:{"h1":"nonce-a77b3c"}
+JS:{"h1":"nonce-a77b3c"}
+消息/命令/trigger 前后计数: {"messages": 28, "latest": "owner/p21/up/raw:RECEIVED"} / commands=42 / triggers=8
+越界拒绝原文（g1a-topic-probe 执行记录）: evilRejected="主题未配置或未启用: owner/p21/down/evil"，evil 主题订阅 0 条（前轮 h1 归档 + 本轮零收到）
+```
