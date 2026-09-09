@@ -15,9 +15,9 @@
 | Web 基线 | 126 files passed + 1 skipped / 1176 tests passed + 3 skipped；typecheck/lint/test/build exit 0（I1 终态候选锁定） |
 | Flyway | H2 V66（66）/ PG V66（65） |
 | 产品行为基线 | Owner Broker 真实双向 MQTT；19 个原子工作项全部 COMPLETED；最终 r3 固定输入 16/16 哈希通过；browser_status=`OPERABLE`；Validator exit=0 |
-| 当前任务状态 | `v0.3.0-oa-completion`：**IN_PROGRESS**；I1 **COMPLETED（待规划确认，2026-09-09）**，终态同步回执 `receipts/terminal-sync-stage-i1-v0.3.0-oa-completion-01.md` 待规划复核 |
+| 当前任务状态 | `v0.3.0-oa-completion`：**IN_PROGRESS**；I1 **COMPLETED（待规划确认，2026-09-09）**；终态同步复核 02 VERIFYING（T4/T7 锁定，TS-K1/TS-G1 待核销），当前入口=一级提示 `planning-execution-prompt-v0.3.0-oa-completion-i1-terminal-sync-01.md`，下一动作=Planner 复核回执 03 |
 | 活动业务实现功能 | `v0.3.0-oa-completion`（P60） |
-| 唯一下一动作 | **Planner 终态复核 I1 同步回执并确认 I1 COMPLETED**；确认后进入 I2「低代码表单收口」 |
+| 唯一下一动作 | **Planner 终态复核 I1 同步回执 03（`receipts/terminal-sync-stage-i1-v0.3.0-oa-completion-03.md`）并确认 I1 COMPLETED**；确认后进入 I2「低代码表单收口」 |
 
 ## v0.3.0-oa-completion 关键事实
 
