@@ -1,3 +1,4 @@
+<!-- source: knowledge/current-status.md | collected: 2026-09-09 17:16:51 +0800 | sha256: eb70e986b57851003c4b62e496c8b38999aa3237928f282a0121a4ad6cae4566 -->
 # 当前项目状态
 
 > 唯一当前快照；截至/同步点：2026-09-09，P60 `v0.3.0-oa-completion`（0.3.0 OA 全功能收口，XL，P0）执行中：I1「组织与权限底座」**COMPLETED（待规划确认，2026-09-09）**——验收 04 PASSED（`planning-review-stage-i1-v0.3.0-oa-completion-04-passed.md`），终态同步方向（`direction-stage-i1-terminal-sync.md`）执行完成：knowledge/memory/product 指针同步、三个独立仓库 I1 变更提交推送并远端 SHA 回读。功能数 44、清单 ✅46/🟦22/⬜22、P 编号全部保持现状；I2 未开始。历史快照见 `knowledge/history/`。

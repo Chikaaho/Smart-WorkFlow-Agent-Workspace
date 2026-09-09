@@ -1,0 +1,5 @@
+== evidence/i1-terminal-sync-03 SHA256 manifest 校验记录 ==
+cwd: /usr/local/projects/Smart-WorkFlow/product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03
+生成命令: find . -type f ! -name 'MANIFEST-SHA256.txt' | sort | sed 's|^\./||' | while read f; do shasum -a 256 "$f"; done > MANIFEST-SHA256.txt
+回读命令: shasum -a 256 -c MANIFEST-SHA256.txt
+本文件冻结后纳入清单；覆盖预发布证据目录全部文件（post-push 本地审查附件 post-push-attestation.txt 除外，另行标注；预发布 OK 条目数=12，exit=0。
