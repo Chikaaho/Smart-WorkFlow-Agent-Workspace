@@ -1,3 +1,4 @@
+<!-- source: knowledge/session-handoff.md | collected: 2026-09-09 17:59:03 +0800 | sha256: 839a7696640798784a415705b4e85bd164b54dcb75a9ebcb04d42672e902b9fa -->
 # 会话交接（session-handoff）— 当前压缩版
 
 > 同步点：2026-09-09，P60 `v0.3.0-oa-completion`（0.3.0 OA 全功能收口，XL，P0）执行中：I1「组织与权限底座」已 **COMPLETED（待规划确认，2026-09-09）**（验收 04 PASSED），终态同步方向（`ready/direction-stage-i1-terminal-sync.md`）执行完成，三个独立仓库 I1 变更已提交推送并远端 SHA 回读。更早历史见 `knowledge/history/README.md`。
