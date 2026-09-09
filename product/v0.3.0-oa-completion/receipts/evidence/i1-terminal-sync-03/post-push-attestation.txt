@@ -1,9 +1,9 @@
-== TS-G1 post-push attestation（推送后本地规划验收附件）==
+== TS-G1 post-push attestation（推送后本地规划验收附件，不纳入仓库）==
 生成时间: 2026-09-09 +0800
-本文件为推送后生成的本地审查附件，不包含于被证明的提交（d9abf03f081e27f055a0c6632af37d77a26e8de0）内，不声称自身已推送。
-workspace 远端完整 SHA: d9abf03f081e27f055a0c6632af37d77a26e8de0
+本文件为推送后生成的本地审查附件，不以仓库内文件形式交付，不包含于被证明的提交（6eaf701ed3f2532d187dec4f7fe9f5f1acb25a2a）内，不声称自身已推送。
+workspace 远端完整 SHA: 6eaf701ed3f2532d187dec4f7fe9f5f1acb25a2a
 server 远端完整 SHA: 328ff2a926fed5b195675a1f351d9a806a40b230
---- 发布集合逐文件：远端对象(git show <远端SHA>:<path> | sha256) vs 发布集合清单（清单与 MANIFEST 均以最终提交 SHA 锚定，不列自身哈希）
+--- 发布集合逐文件：远端对象(git show <远端SHA>:<path> | sha256) vs 发布集合清单（清单/MANIFEST/本附件均不以仓库内文件列出）
 OK  [ws] product/v0.3.0-oa-completion/receipts/planning-review-terminal-sync-stage-i1-v0.3.0-oa-completion-01.md
 OK  [ws] product/v0.3.0-oa-completion/receipts/planning-review-terminal-sync-stage-i1-v0.3.0-oa-completion-02.md
 OK  [ws] product/v0.3.0-oa-completion/receipts/planning-execution-prompt-v0.3.0-oa-completion-i1-terminal-sync-01.md
@@ -21,7 +21,6 @@ OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/know
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/knowledge-readable-copies/session-handoff.md
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/knowledge-readable-copies/v0.3.0-oa-completion.md
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/manifest-verify.txt
-OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/post-push-attestation.txt
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/ts-k1-reverse-scan.txt
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/validator/terminal-exit.txt
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/validator/terminal-input.txt
@@ -29,7 +28,7 @@ OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/vali
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/validator/terminal-stderr.txt
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/validator/terminal-stdout.txt
 OK  [server] 功能清单.md
-publish-set-before.txt 远端对象 SHA: 8a77e992e6ac0d2fac27e3e9281715f6fbf43b38d0edc6d12ae858abede9e0f2（OK）  MANIFEST-SHA256.txt 远端对象 SHA: fd428e4b9aa50ca347ad27bfec5447465e82ee685e846ecac53c81a1c63161a3（OK）
+publish-set-before.txt 远端对象 SHA: 8f08d09965b36180c90b39ef20ebdea71d33396fbf99fd4eb363fa4ceb681338（OK）  MANIFEST-SHA256.txt 远端对象 SHA: 794da771bca8c912a0a94254106fea81e5bc3cd8662a483af7e6cc6591902b59（OK）
 --- 结论：发布集合逐文件远端哈希与清单一致 = 全部 OK
 --- 本地工作树残留（除本附件外仅既有无关残留/Planner 后续裁决）：
 （干净）
