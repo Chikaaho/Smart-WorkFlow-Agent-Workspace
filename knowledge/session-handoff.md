@@ -54,7 +54,7 @@
 
 ## 任务指针
 
-- v0.3.0-oa-completion（P60）：方向与规划定义 `product/v0.3.0-oa-completion/ready/`；首次清单同步回执 `product/v0.3.0-oa-completion/receipts/checklist-sync-v0.3.0-oa-completion-01.md`；任务登记 `knowledge/features/v0.3.0-oa-completion.md`（进行中，六阶段 I1—I6 未启动）。
+- v0.3.0-oa-completion（P60）：方向与规划定义 `product/v0.3.0-oa-completion/ready/`；首次清单同步回执 `product/v0.3.0-oa-completion/receipts/checklist-sync-v0.3.0-oa-completion-01.md`；任务登记 `knowledge/features/v0.3.0-oa-completion.md`（I1 业务验收 PASSED、终态待规划确认、I2—I6 未开始；最新复核=终态同步复核 03，当前唯一入口=`planning-execution-prompt-v0.3.0-oa-completion-i1-terminal-sync-02.md`，下一动作=Planner 复核回执 04）。
 - p21-iot-device-access：主方向与阶段三方向均归档 `product/p21-iot-device-access/passed/`；最终裁决 `receipts/planning-final-review-terminal-sync-p21-iot-02-passed.md`（COMPLETED 规划已确认，2026-09-08）；任务登记 `knowledge/features/p21-iot-device-access.md`。
 - v0.0.2-oa：主方向与 A8 方向归档 `product/v0.0.2-oa/passed/`；任务登记 `knowledge/features/v0.0.2-oa.md`；COMPLETED（规划已确认，2026-09-08 复核确认）。
 - P4：主方向与能力边界方向均归档 `product/p4-oa-personal-center-dual-dispatch/passed/`；最终裁决 `receipts/planning-final-review-terminal-sync-p4-02-passed.md`（COMPLETED 规划已确认，2026-09-07）；任务登记 `knowledge/features/p4-oa-personal-center-dual-dispatch.md`。
