@@ -1,23 +1,23 @@
 # 会话交接（session-handoff）— 当前压缩版
 
-> 同步点：2026-09-08，P60 `v0.3.0-oa-completion`（0.3.0 OA 全功能收口，XL，P0）方向已下发并进入执行（`product/v0.3.0-oa-completion/ready/direction-v0.3.0-oa-completion.md`）：首次功能清单同步完成——64 条 ADV 高级能力以规划项映射进正式工程功能清单（未纳入 0.3.0 验收、不计入 90 明细统计）；六阶段工程实现尚未启动。p21-iot-device-access 已由最终复核确认（`planning-final-review-terminal-sync-p21-iot-02-passed.md`，2026-09-08）。更早历史见 `knowledge/history/README.md`。
+> 同步点：2026-09-09，P60 `v0.3.0-oa-completion`（0.3.0 OA 全功能收口，XL，P0）执行中：I1「组织与权限底座」已 **COMPLETED（待规划确认，2026-09-09）**（验收 04 PASSED），终态同步方向（`ready/direction-stage-i1-terminal-sync.md`）执行完成，三个独立仓库 I1 变更已提交推送并远端 SHA 回读。更早历史见 `knowledge/history/README.md`。
 
 ## 当前唯一值（v0.3.0-oa-completion 执行入口）
 
 | 字段 | 值 |
 |---|---|
-| 当前活动正式功能 | `v0.3.0-oa-completion`（P60 0.3.0 OA 全功能收口）：**IN_PROGRESS**（2026-09-08，Executor 进入执行：首次清单同步完成，六阶段 I1—I6 实现未启动） |
+| 当前活动正式功能 | `v0.3.0-oa-completion`（P60 0.3.0 OA 全功能收口）：**IN_PROGRESS**；I1「组织与权限底座」**COMPLETED（待规划确认，2026-09-09）**，终态同步完成；I2 未开始 |
 | 正式业务功能数 | **44**（p21-iot-device-access 为第 44 个正式功能，COMPLETED（规划已确认，2026-09-08）） |
 | 清单规模 | 10 模块、55 功能、90 明细（业务）＋ **ADV 高级能力规划项 8 模块、64 条**（不计入统计） |
 | 清单状态计数 | **✅46 / 🟦22 / ⬜22**（46+22+22=90，业务明细零变化；ADV 64 条统一 ⬜ 规划登记/待现状核实） |
 | P 编号 | **P21 已核销/完成（2026-09-08）**；**P2/P4 开放、部分实现未核销**；P34/P35/P37/P38/P39 部分实现未核销；P60 版本统筹项不替代既有编号；I 集合 54 条不增删（**I14 已满足/关闭**；I38/I39/I40/I45 保持开放） |
-| Server 基线 | **12 个模块汇总，1182 tests / 0 failures / 0 errors / 0 skipped；BUILD SUCCESS** |
-| Web 基线 | 124 files passed + 1 skipped / 1168 tests passed + 3 skipped；typecheck/lint/test/build exit 0 |
+| Server 基线 | **12 个模块汇总，1223 tests / 0 failures / 0 errors / 0 skipped；BUILD SUCCESS**（I1 终态候选锁定） |
+| Web 基线 | 126 files passed + 1 skipped / 1176 tests passed + 3 skipped；typecheck/lint/test/build exit 0（I1 终态候选锁定） |
 | Flyway | H2 V66（66）/ PG V66（65） |
 | 产品行为基线 | Owner Broker 真实双向 MQTT；19 个原子工作项全部 COMPLETED；最终 r3 固定输入 16/16 哈希通过；browser_status=`OPERABLE`；Validator exit=0 |
-| 当前任务状态 | `v0.3.0-oa-completion`：**IN_PROGRESS**（首次清单同步回执 `product/v0.3.0-oa-completion/receipts/checklist-sync-v0.3.0-oa-completion-01.md`；六阶段 I1—I6 实现未启动） |
+| 当前任务状态 | `v0.3.0-oa-completion`：**IN_PROGRESS**；I1 **COMPLETED（待规划确认，2026-09-09）**，终态同步回执 `receipts/terminal-sync-stage-i1-v0.3.0-oa-completion-01.md` 待规划复核 |
 | 活动业务实现功能 | `v0.3.0-oa-completion`（P60） |
-| 唯一下一动作 | 按 P60 正式方向进入 **I1「组织与权限底座」**实施计划；六阶段自验完成后提交 completion 回执，由 Planner 独立验收 |
+| 唯一下一动作 | **Planner 终态复核 I1 同步回执并确认 I1 COMPLETED**；确认后进入 I2「低代码表单收口」 |
 
 ## v0.3.0-oa-completion 关键事实
 
