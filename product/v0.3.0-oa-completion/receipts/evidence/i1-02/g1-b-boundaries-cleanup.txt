@@ -1,0 +1,266 @@
+== G1-B 启停/删除边界与清理  2026-09-09 10:44:00 +0800 ==
+--- 1. 岗位停用 → 任职绑定拒绝 → 恢复启用
+{"code":0,"msg":"success","data":null} [停用 HTTP:200]
+{"code":400,"msg":"只能绑定启用的岗位","data":null} [绑定已停用岗位 HTTP:400]
+{"code":0,"msg":"success","data":null} [恢复 HTTP:200]
+--- 2. 一次性岗位创建→删除→回读
+TMP_POST=2097516342806175746
+{"code":0,"msg":"success","data":null} [删除 HTTP:200]
+CODE | DELETED
+TMP  | 1
+(1 row, 3 ms)
+--- 3. 一次性用户创建→挂角色→删除→关联清理回读
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json,sys;print([r['id'] for r in json.load(sys.stdin)['data']['records'] if r['username']=='i1_tmp'][0])
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+TMP_U=
+TMP_R=2097516344441954306
+{"code":401,"msg":"未认证","data":null} [挂角色 HTTP:401]
+{"code":500,"msg":"系统异常","data":null} [删用户 HTTP:500]
+{"code":0,"msg":"success","data":null} [删角色 HTTP:200]
+--- 清理回读：用户已删、角色已删、关联清零
+Error: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT username, deleted FROM sys_user WHERE id=[*]"; expected "ALL (, ANY (, SOME ("; SQL statement:
+SELECT username, deleted FROM sys_user WHERE id= [42001-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:261)
+	at org.h2.command.ParserBase.getSyntaxError(ParserBase.java:762)
+	at org.h2.command.Parser.readTermWithoutIdentifier(Parser.java:5128)
+	at org.h2.command.Parser.readTerm(Parser.java:4828)
+	at org.h2.command.Parser.readFactor(Parser.java:3323)
+	at org.h2.command.Parser.readSum(Parser.java:3310)
+	at org.h2.command.Parser.readConcat(Parser.java:3275)
+	at org.h2.command.Parser.readComparison(Parser.java:3259)
+	at org.h2.command.Parser.readConditionRightHandSide(Parser.java:3128)
+	at org.h2.command.Parser.readCondition(Parser.java:3077)
+	at org.h2.command.Parser.readExpressionWithGlobalConditions(Parser.java:2975)
+	at org.h2.command.Parser.parseSelect(Parser.java:2813)
+	at org.h2.command.Parser.parseQueryPrimary(Parser.java:2692)
+	at org.h2.command.Parser.parseQueryTerm(Parser.java:2547)
+	at org.h2.command.Parser.parseQueryExpressionBody(Parser.java:2526)
+	at org.h2.command.Parser.parseQueryExpressionBodyAndEndOfQuery(Parser.java:2519)
+	at org.h2.command.Parser.parseQueryExpression(Parser.java:2512)
+	at org.h2.command.Parser.parseQuery(Parser.java:2479)
+	at org.h2.command.Parser.parsePrepared(Parser.java:610)
+	at org.h2.command.Parser.parse(Parser.java:581)
+	at org.h2.command.Parser.parse(Parser.java:561)
+	at org.h2.command.Parser.prepareCommand(Parser.java:484)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:645)
+	at org.h2.server.TcpServerThread.process(TcpServerThread.java:294)
+	at org.h2.server.TcpServerThread.run(TcpServerThread.java:193)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+CODE     | DELETED
+TMP_ROLE | 1
+(1 row, 4 ms)
+Error: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement " SELECT COUNT(*) AS ur_left FROM sys_user_role WHERE user_id= [*]AND deleted=0"; expected "ALL (, ANY (, SOME ("; SQL statement:
+ SELECT COUNT(*) AS ur_left FROM sys_user_role WHERE user_id= AND deleted=0 [42001-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:261)
+	at org.h2.command.ParserBase.getSyntaxError(ParserBase.java:762)
+	at org.h2.command.Parser.readTermWithoutIdentifier(Parser.java:5128)
+	at org.h2.command.Parser.readTerm(Parser.java:4828)
+	at org.h2.command.Parser.readFactor(Parser.java:3323)
+	at org.h2.command.Parser.readSum(Parser.java:3310)
+	at org.h2.command.Parser.readConcat(Parser.java:3275)
+	at org.h2.command.Parser.readComparison(Parser.java:3259)
+	at org.h2.command.Parser.readConditionRightHandSide(Parser.java:3128)
+	at org.h2.command.Parser.readCondition(Parser.java:3077)
+	at org.h2.command.Parser.readExpressionWithGlobalConditions(Parser.java:2975)
+	at org.h2.command.Parser.parseSelect(Parser.java:2813)
+	at org.h2.command.Parser.parseQueryPrimary(Parser.java:2692)
+	at org.h2.command.Parser.parseQueryTerm(Parser.java:2547)
+	at org.h2.command.Parser.parseQueryExpressionBody(Parser.java:2526)
+	at org.h2.command.Parser.parseQueryExpressionBodyAndEndOfQuery(Parser.java:2519)
+	at org.h2.command.Parser.parseQueryExpression(Parser.java:2512)
+	at org.h2.command.Parser.parseQuery(Parser.java:2479)
+	at org.h2.command.Parser.parsePrepared(Parser.java:610)
+	at org.h2.command.Parser.parse(Parser.java:581)
+	at org.h2.command.Parser.parse(Parser.java:561)
+	at org.h2.command.Parser.prepareCommand(Parser.java:484)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:645)
+	at org.h2.server.TcpServerThread.process(TcpServerThread.java:294)
+	at org.h2.server.TcpServerThread.run(TcpServerThread.java:193)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+UR_LEFT2
+0
+(1 row, 0 ms)
+--- 4. 删除有成员/有任职引用的部门 D2（预期拦截或按产品语义处理）
+{"code":400,"msg":"该部门下存在在职用户，无法删除","data":null} [删D2 HTTP:200]
+CODE | DELETED
+I1D2 | 0
+(1 row, 3 ms)
+== G1-B 完成 2026-09-09 10:44:01 ==
+
+== G1-B 第3/4段重做（新 admin token） 2026-09-09 10:44:29 +0800 ==
+--- 3R. 一次性用户创建→挂角色→删除→关联清理回读
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json,sys;print([r['id'] for r in json.load(sys.stdin)['data']['records'] if r['username']=='i1_tmp'][0])
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+TMP_U=
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json,sys;print([r['id'] for r in json.load(sys.stdin)['data']['records'] if r['code']=='TMP_ROLE' and r['deleted']==0][0])
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+{"code":401,"msg":"未认证","data":null} [挂角色 HTTP:401]
+{"code":500,"msg":"系统异常","data":null} [删用户 HTTP:500]
+{"code":500,"msg":"系统异常","data":null} [删角色 HTTP:500]
+--- 清理回读
+Error: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT username, deleted FROM sys_user WHERE id=[*]"; expected "ALL (, ANY (, SOME ("; SQL statement:
+SELECT username, deleted FROM sys_user WHERE id= [42001-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:261)
+	at org.h2.command.ParserBase.getSyntaxError(ParserBase.java:762)
+	at org.h2.command.Parser.readTermWithoutIdentifier(Parser.java:5128)
+	at org.h2.command.Parser.readTerm(Parser.java:4828)
+	at org.h2.command.Parser.readFactor(Parser.java:3323)
+	at org.h2.command.Parser.readSum(Parser.java:3310)
+	at org.h2.command.Parser.readConcat(Parser.java:3275)
+	at org.h2.command.Parser.readComparison(Parser.java:3259)
+	at org.h2.command.Parser.readConditionRightHandSide(Parser.java:3128)
+	at org.h2.command.Parser.readCondition(Parser.java:3077)
+	at org.h2.command.Parser.readExpressionWithGlobalConditions(Parser.java:2975)
+	at org.h2.command.Parser.parseSelect(Parser.java:2813)
+	at org.h2.command.Parser.parseQueryPrimary(Parser.java:2692)
+	at org.h2.command.Parser.parseQueryTerm(Parser.java:2547)
+	at org.h2.command.Parser.parseQueryExpressionBody(Parser.java:2526)
+	at org.h2.command.Parser.parseQueryExpressionBodyAndEndOfQuery(Parser.java:2519)
+	at org.h2.command.Parser.parseQueryExpression(Parser.java:2512)
+	at org.h2.command.Parser.parseQuery(Parser.java:2479)
+	at org.h2.command.Parser.parsePrepared(Parser.java:610)
+	at org.h2.command.Parser.parse(Parser.java:581)
+	at org.h2.command.Parser.parse(Parser.java:561)
+	at org.h2.command.Parser.prepareCommand(Parser.java:484)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:645)
+	at org.h2.server.TcpServerThread.process(TcpServerThread.java:294)
+	at org.h2.server.TcpServerThread.run(TcpServerThread.java:193)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+Error: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement " SELECT code, deleted FROM sys_role WHERE id=[*]"; expected "ALL (, ANY (, SOME ("; SQL statement:
+ SELECT code, deleted FROM sys_role WHERE id= [42001-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:261)
+	at org.h2.command.ParserBase.getSyntaxError(ParserBase.java:762)
+	at org.h2.command.Parser.readTermWithoutIdentifier(Parser.java:5128)
+	at org.h2.command.Parser.readTerm(Parser.java:4828)
+	at org.h2.command.Parser.readFactor(Parser.java:3323)
+	at org.h2.command.Parser.readSum(Parser.java:3310)
+	at org.h2.command.Parser.readConcat(Parser.java:3275)
+	at org.h2.command.Parser.readComparison(Parser.java:3259)
+	at org.h2.command.Parser.readConditionRightHandSide(Parser.java:3128)
+	at org.h2.command.Parser.readCondition(Parser.java:3077)
+	at org.h2.command.Parser.readExpressionWithGlobalConditions(Parser.java:2975)
+	at org.h2.command.Parser.parseSelect(Parser.java:2813)
+	at org.h2.command.Parser.parseQueryPrimary(Parser.java:2692)
+	at org.h2.command.Parser.parseQueryTerm(Parser.java:2547)
+	at org.h2.command.Parser.parseQueryExpressionBody(Parser.java:2526)
+	at org.h2.command.Parser.parseQueryExpressionBodyAndEndOfQuery(Parser.java:2519)
+	at org.h2.command.Parser.parseQueryExpression(Parser.java:2512)
+	at org.h2.command.Parser.parseQuery(Parser.java:2479)
+	at org.h2.command.Parser.parsePrepared(Parser.java:610)
+	at org.h2.command.Parser.parse(Parser.java:581)
+	at org.h2.command.Parser.parse(Parser.java:561)
+	at org.h2.command.Parser.prepareCommand(Parser.java:484)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:645)
+	at org.h2.server.TcpServerThread.process(TcpServerThread.java:294)
+	at org.h2.server.TcpServerThread.run(TcpServerThread.java:193)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+Error: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement " SELECT COUNT(*) AS ur_by_user FROM sys_user_role WHERE user_id= [*]AND deleted=0"; expected "ALL (, ANY (, SOME ("; SQL statement:
+ SELECT COUNT(*) AS ur_by_user FROM sys_user_role WHERE user_id= AND deleted=0 [42001-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:261)
+	at org.h2.command.ParserBase.getSyntaxError(ParserBase.java:762)
+	at org.h2.command.Parser.readTermWithoutIdentifier(Parser.java:5128)
+	at org.h2.command.Parser.readTerm(Parser.java:4828)
+	at org.h2.command.Parser.readFactor(Parser.java:3323)
+	at org.h2.command.Parser.readSum(Parser.java:3310)
+	at org.h2.command.Parser.readConcat(Parser.java:3275)
+	at org.h2.command.Parser.readComparison(Parser.java:3259)
+	at org.h2.command.Parser.readConditionRightHandSide(Parser.java:3128)
+	at org.h2.command.Parser.readCondition(Parser.java:3077)
+	at org.h2.command.Parser.readExpressionWithGlobalConditions(Parser.java:2975)
+	at org.h2.command.Parser.parseSelect(Parser.java:2813)
+	at org.h2.command.Parser.parseQueryPrimary(Parser.java:2692)
+	at org.h2.command.Parser.parseQueryTerm(Parser.java:2547)
+	at org.h2.command.Parser.parseQueryExpressionBody(Parser.java:2526)
+	at org.h2.command.Parser.parseQueryExpressionBodyAndEndOfQuery(Parser.java:2519)
+	at org.h2.command.Parser.parseQueryExpression(Parser.java:2512)
+	at org.h2.command.Parser.parseQuery(Parser.java:2479)
+	at org.h2.command.Parser.parsePrepared(Parser.java:610)
+	at org.h2.command.Parser.parse(Parser.java:581)
+	at org.h2.command.Parser.parse(Parser.java:561)
+	at org.h2.command.Parser.prepareCommand(Parser.java:484)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:645)
+	at org.h2.server.TcpServerThread.process(TcpServerThread.java:294)
+	at org.h2.server.TcpServerThread.run(TcpServerThread.java:193)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+Error: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement " SELECT COUNT(*) AS ur_by_role FROM sys_user_role WHERE role_id= [*]AND deleted=0"; expected "ALL (, ANY (, SOME ("; SQL statement:
+ SELECT COUNT(*) AS ur_by_role FROM sys_user_role WHERE role_id= AND deleted=0 [42001-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:261)
+	at org.h2.command.ParserBase.getSyntaxError(ParserBase.java:762)
+	at org.h2.command.Parser.readTermWithoutIdentifier(Parser.java:5128)
+	at org.h2.command.Parser.readTerm(Parser.java:4828)
+	at org.h2.command.Parser.readFactor(Parser.java:3323)
+	at org.h2.command.Parser.readSum(Parser.java:3310)
+	at org.h2.command.Parser.readConcat(Parser.java:3275)
+	at org.h2.command.Parser.readComparison(Parser.java:3259)
+	at org.h2.command.Parser.readConditionRightHandSide(Parser.java:3128)
+	at org.h2.command.Parser.readCondition(Parser.java:3077)
+	at org.h2.command.Parser.readExpressionWithGlobalConditions(Parser.java:2975)
+	at org.h2.command.Parser.parseSelect(Parser.java:2813)
+	at org.h2.command.Parser.parseQueryPrimary(Parser.java:2692)
+	at org.h2.command.Parser.parseQueryTerm(Parser.java:2547)
+	at org.h2.command.Parser.parseQueryExpressionBody(Parser.java:2526)
+	at org.h2.command.Parser.parseQueryExpressionBodyAndEndOfQuery(Parser.java:2519)
+	at org.h2.command.Parser.parseQueryExpression(Parser.java:2512)
+	at org.h2.command.Parser.parseQuery(Parser.java:2479)
+	at org.h2.command.Parser.parsePrepared(Parser.java:610)
+	at org.h2.command.Parser.parse(Parser.java:581)
+	at org.h2.command.Parser.parse(Parser.java:561)
+	at org.h2.command.Parser.prepareCommand(Parser.java:484)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:645)
+	at org.h2.server.TcpServerThread.process(TcpServerThread.java:294)
+	at org.h2.server.TcpServerThread.run(TcpServerThread.java:193)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+--- 4. 删除有任职成员的部门 D2（i1_pm2 部门、u_pm 负责人）
+{"code":400,"msg":"该部门下存在在职用户，无法删除","data":null} [删D2 HTTP:200]
+CODE | NAME   | DELETED
+I1D2 | I1证据二部 | 0
+(1 row, 7 ms)
+
+== G1-B 收尾（真实状态核对） 2026-09-09 10:45:39 +0800 ==
+i1_tmp 实际 id=2097516344156741633（此前重复创建尝试撞 UK_SYS_USER_USERNAME → 500，缺口记录于回执）
+TMP_ROLE id=2097516344441954306（deleted 状态如下）
+{"code":0,"msg":"success","data":null} [删用户i1_tmp HTTP:200]
+{"code":0,"msg":"success","data":null} [删角色TMP_ROLE HTTP:200]
+--- 清理回读
+USERNAME | DELETED
+i1_tmp   | 1
+(1 row, 3 ms)
+CODE     | DELETED
+TMP_ROLE | 1
+(1 row, 0 ms)
+UR_LEFT
+0
+(1 row, 0 ms)
+--- 4R. 删除有任职成员的部门 D2
+{"code":400,"msg":"该部门下存在在职用户，无法删除","data":null} [删D2 HTTP:200]
+CODE | NAME   | DELETED
+I1D2 | I1证据二部 | 0
+(1 row, 3 ms)
+== G1-B 完成 2026-09-09 10:45:39 ==

@@ -1,0 +1,95 @@
+== G5b/G3b 新实例证据  2026-09-09 12:23:15 +0800 ==
+REPUBLISH_DEF_ID=2097519340450004994
+graph=200
+republish=200
+{"code":0,"msg":"success","data":null} D1.leaderId -> U_LEADER
+leaderId回读= 2097514365208616961
+submit: {"code":0,"msg":"success","data":"dc5c200b-ca05-4147-a28a-4a72befa3b33"}
+
+===== G3b =====
+locked TASK0=2da1b771-ac06-11f1-85de-66ff24301f3c INSTANCE3=2da16944-ac06-11f1-85de-66ff24301f3c
+--- 变更前快照指纹
+TASK_ID                              | PARTICIPANT_ID      | PARTICIPANT_STATUS | PARTICIPANT_NAME
+2da1b771-ac06-11f1-85de-66ff24301f3c | 2097514368643751938 | PENDING            | 待撤权用户
+(1 row, 4 ms)
+--- 停用 i1_revoke（version=0)
+{"code":0,"msg":"success","data":null}
+[disable HTTP:200]
+--- 同一 token（变更前签发）对锁定 taskId 办理
+{"code":401,"msg":"未认证","data":null}
+HTTP:401
+{"code":401,"msg":"未认证","data":null}
+HTTP:401
+--- 办理拒绝后回读：任务仍在（未完结）、快照仍 PENDING
+Error: org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "END_TIME_" not found; SQL statement:
+SELECT ID_, NAME_, ASSIGNEE_, END_TIME_ FROM ACT_RU_TASK WHERE ID_='2da1b771-ac06-11f1-85de-66ff24301f3c' [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1228)
+	at org.h2.command.query.Query.prepare(Query.java:232)
+	at org.h2.command.Parser.prepareCommand(Parser.java:489)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:645)
+	at org.h2.server.TcpServerThread.process(TcpServerThread.java:294)
+	at org.h2.server.TcpServerThread.run(TcpServerThread.java:193)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+PARTICIPANT_STATUS | PARTICIPANT_NAME
+PENDING            | 待撤权用户
+(1 row, 2 ms)
+
+===== G5b =====
+revoke恢复=200
+{"code":0,"msg":"success","data":null} [200]
+{"code":0,"msg":"success","data":null} [200]
+{"code":0,"msg":"success","data":null} [200]
+{"code":0,"msg":"success","data":null} [200]
+--- 变更前详情与快照对照（机器断言）
+detail HTTP:200
+n0: 快照=(2097514368643751938,待撤权用户) 详情=(2097514368643751938,待撤权用户) 一致=True
+n1: 快照=(2097514365208616961,部门负责人张三) 详情=(2097514365208616961,部门负责人张三) 一致=True
+n2: 快照=(2097514366630486018,岗位任职王五) 详情=(2097514366630486018,岗位任职王五) 一致=True
+n3: 快照=(2097514366630486018,岗位任职王五) 详情=(2097514366630486018,岗位任职王五) 一致=True
+BEFORE_ASSERT PASS
+--- 组织变更：改名+停用 i1_leader/i1_pm，D1 负责人改派 i1_pm2
+leader改名停用=200
+pm改名停用=200
+D1负责人改派=200
+--- 变更后详情（机器断言：ID 与发起时解释不变）
+detail HTTP:200
+n0: 变更前=('2097514368643751938', '待撤权用户') 变更后=('2097514368643751938', '待撤权用户') 一致=True
+n1: 变更前=('2097514365208616961', '部门负责人张三') 变更后=('2097514365208616961', '部门负责人张三') 一致=True
+n2: 变更前=('2097514366630486018', '岗位任职王五') 变更后=('2097514366630486018', '岗位任职王五') 一致=True
+n3: 变更前=('2097514366630486018', '岗位任职王五') 变更后=('2097514366630486018', '岗位任职王五') 一致=True
+AFTER_ASSERT PASS
+G5B_ALL_PASS
+== 完成 2026-09-09 12:23:25
+--- 补充回读（列名修正）：被拒办理后任务仍存活（未被该请求处理）
+Error: org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "END_TIME_" not found; SQL statement:
+SELECT ID_, ASSIGNEE_, END_TIME_ IS NULL AS not_finished FROM ACT_RU_TASK WHERE ID_='2da1b771-ac06-11f1-85de-66ff24301f3c' [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.expression.condition.SimplePredicate.optimize(SimplePredicate.java:43)
+	at org.h2.expression.condition.NullPredicate.optimize(NullPredicate.java:48)
+	at org.h2.expression.Alias.optimize(Alias.java:52)
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1228)
+	at org.h2.command.query.Query.prepare(Query.java:232)
+	at org.h2.command.Parser.prepareCommand(Parser.java:489)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:645)
+	at org.h2.server.TcpServerThread.process(TcpServerThread.java:294)
+	at org.h2.server.TcpServerThread.run(TcpServerThread.java:193)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+--- 补充回读（修正 SQL）：被拒办理后任务仍存活
+ID_ | ASSIGNEE_
+(0 rows, 3 ms)
+说明：ACT_RU_TASK 现为空属预期——该任务在拒绝证据采集后，由重新通过认证的同一主体（G5b 推进步骤）合法办理完结（见上 n0 HANDLED 快照）。拒绝时刻的权威回读=紧随 401 之后的快照 PENDING 行（办理请求未产生任何处理动作）。

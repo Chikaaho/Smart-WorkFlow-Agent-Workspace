@@ -1,9 +1,9 @@
 # 功能摘要
 
-> 规划侧最新同步点：2026-09-08（P60 已进入 IN_PROGRESS；独立任务“首次清单同步”已验收 PASSED，最近完成基线仍为 P21 第44个正式功能）。
+> 规划侧最新同步点：2026-09-09（P60 IN_PROGRESS；I1 **COMPLETED（待规划确认，2026-09-09）**，终态同步完成待规划复核；最近完成基线仍为 P21 第44个正式功能）。
 > 清单当前值 **✅46/🟦22/⬜22**（90，M08 十行 🟦/⬜→✅，其余 80 行零变化）；功能数 44；全量双向映射见 `knowledge/feature-reconciliation-index.md`。
 
-- `v0.3.0-oa-completion`（P60，优先级P0）：**IN_PROGRESS（2026-09-08）**。首次高级能力功能清单同步 **PASSED**：64 条 ADV 规划项完整登记，G1—G4 全部核销；既有 90 条业务明细、正式功能数和 0.3.0 验收计数不变。
+- `v0.3.0-oa-completion`（P60，优先级P0）：**IN_PROGRESS**。I1「组织与权限底座」**COMPLETED（待规划确认，2026-09-09）**，终态同步完成待规划复核；I2 尚未开始。
 
 - `p21-iot-device-access`：**COMPLETED（规划已确认，2026-09-08）**，第44个正式功能；P21已核销、I14关闭、M08 10✅/1🟦/2⬜。主方向与阶段三方向均归档 `passed/`；最终裁决 `planning-final-review-terminal-sync-p21-iot-02-passed.md`。
 

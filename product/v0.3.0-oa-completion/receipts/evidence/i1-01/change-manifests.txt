@@ -1,0 +1,67 @@
+=== Server repo change manifest (git status --short, excluding uploads/) ===
+ M sw-biz/sw-biz-system/sw-biz-system-api/src/main/java/com/sw/ck/system/api/user/UserQueryFacade.java
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/controller/DeptController.java
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/controller/PostController.java
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/controller/RoleController.java
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/controller/UserController.java
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/entity/SysDept.java
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/entity/SysUserPost.java
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysRoleDeptMapper.java
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysUserMapper.java
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/service/SysRoleService.java
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/service/SysUserService.java
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/service/impl/SysDeptServiceImpl.java
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/service/impl/SysPostServiceImpl.java
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/service/impl/SysRoleServiceImpl.java
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/service/impl/SysUserServiceImpl.java
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/service/impl/UserFacadeImpl.java
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/test/resources/db/schema-datascope-h2.sql
+ M sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/exception/BpmErrorCode.java
+ M sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/participant/ParticipantSnapshotRecorder.java
+ M sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/participant/ParticipantStrategy.java
+ M sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/listener/ApprovalTaskListener.java
+ M sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/listener/ConsensusTaskListener.java
+ M sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/resolver/DesignatedApproverResolver.java
+ M sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/translator/ApprovalUserTaskTranslator.java
+ M sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/translator/ConsensusNodeTranslator.java
+ M sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/translator/ServiceTaskNodeTranslator.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmInstanceController.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmMyInstanceController.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmTodoController.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/entity/ParticipantSnapshot.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/ProcessStartService.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/ParticipantSnapshotRecorderImpl.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/controller/BpmInstanceControllerTest.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/controller/BpmMyInstanceControllerTest.java
+ M sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainH2Test.java
+ M sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainPostgresTest.java
+?? sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/service/UserPostAssociation.java
+?? sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/orgfoundation/
+?? sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/participant/DeptLeaderParticipantResolver.java
+?? sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/participant/DeptPostParticipantResolver.java
+?? sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/participant/PostParticipantResolver.java
+?? sw-biz/sw-bpm/sw-bpm-engine/src/test/java/com/sw/ck/bpm/engine/participant/
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/ParticipantNameService.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/service/ParticipantNameSnapshotTest.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/service/ProcessStartInitiatorValidationTest.java
+?? sw-bootstrap/src/main/resources/db/migration/h2/V67__i1_org_permission_foundation.sql
+?? sw-bootstrap/src/main/resources/db/migration/postgresql/V67__i1_org_permission_foundation.sql
+
+=== Web repo change manifest (git status --short, excluding pre-existing f-cfg*.json/graph.json) ===
+ M src/foundation/auth/permission.spec.ts
+ M src/foundation/mock/auth-session.spec.ts
+ M src/foundation/mock/handlers.ts
+ M src/foundation/mock/notify-batch-send.evidence.spec.ts
+ M src/foundation/mock/seeds.ts
+ M src/modules/system/api/role.ts
+ M src/modules/system/api/user.spec.ts
+ M src/modules/system/api/user.ts
+ M src/modules/system/types/dept.ts
+ M src/modules/system/types/user.ts
+ M src/modules/system/views/DeptList.vue
+ M src/modules/system/views/PostList.vue
+ M src/modules/system/views/RoleList.spec.ts
+ M src/modules/system/views/RoleList.vue
+ M src/modules/system/views/UserList.vue
+?? src/foundation/mock/i1-org-handlers.spec.ts
+?? src/modules/system/api/i1-org.spec.ts

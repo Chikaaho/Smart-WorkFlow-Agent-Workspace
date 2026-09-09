@@ -1,0 +1,212 @@
+== G4/G5 流程证据链  2026-09-09 10:55:48 +0800
+登录完成: admin/init/leader/pm/pm2/revoke token 长度 146/170/170/170/170/170
+### [F1] 复用已有表单 id=09719125-3bb9-47b5-a65e-7d0ef177e07d
+FORM_ID=09719125-3bb9-47b5-a65e-7d0ef177e07d
+
+### [F2] 10:55:55 --> POST /form/def/09719125-3bb9-47b5-a65e-7d0ef177e07d/config
+REQ: {"definition": "{\"schemaVersion\": 1, \"title\": \"I1请假\", \"rules\": {}, \"fields\": [{\"name\": \"reason\", \"type\": \"TEXT\", \"label\": \"事由\", \"required\": true, \"length\": 100}, {\"name\": \"days\", \"type\": \"NUMBER\", \"label\": \"天数\", \"required\": true}]}"}
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS:200
+
+### [F3] 10:55:55 --> POST /form/def/09719125-3bb9-47b5-a65e-7d0ef177e07d/publish
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS:200
+
+### [P1] 10:55:55 --> POST /workflow/defs
+REQ: {"name":"I1选人证据流","formKey":"i1_leave"}
+{"code":0,"msg":"success","data":{"defId":"2097519340450004994","graph":{"processKey":"bpm_edc206b96d8b4683","name":"I1选人证据流","formKey":"i1_leave","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}}
+HTTP_STATUS:200
+DEF_ID=2097519340450004994
+
+### [P2] 10:55:55 --> PUT /workflow/defs/2097519340450004994/graph
+REQ: {"processKey": "i1_participant_flow", "name": "I1选人证据流", "formKey": "i1_leave", "version": 1, "elements": [{"id": "s", "kind": "node", "type": "START"}, {"id": "n0", "kind": "node", "type": "APPROVAL", "config": {"participant": {"strategy": "FIXED_USER", "value": ["2097514368643751938"]}}}, {"id": "n1", "kind": "node", "type": "APPROVAL", "config": {"participant": {"strategy": "DEPT_LEADER", "value": ["2097514363824496641"]}}}, {"id": "n2", "kind": "node", "type": "APPROVAL", "config": {"participant": {"strategy": "POST", "value": ["PM"]}}}, {"id": "n3", "kind": "node", "type": "APPROVAL", "config": {"participant": {"strategy": "DEPT_POST", "value": {"deptId": 2097514363824496641, "postCode": "PM"}}}}, {"id": "e", "kind": "node", "type": "END"}, {"id": "e0", "kind": "edge", "source": "s", "target": "n0"}, {"id": "e1", "kind": "edge", "source": "n0", "target": "n1"}, {"id": "e2", "kind": "edge", "source": "n1", "target": "n2"}, {"id": "e3", "kind": "edge", "source": "n2", "target": "n3"}, {"id": "e4", "kind": "edge", "source": "n3", "target": "e"}]}
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS:200
+
+### [P3] 10:55:55 --> POST /workflow/defs/2097519340450004994/validate
+REQ: {"processKey": "i1_participant_flow", "name": "I1选人证据流", "formKey": "i1_leave", "version": 1, "elements": [{"id": "s", "kind": "node", "type": "START"}, {"id": "n0", "kind": "node", "type": "APPROVAL", "config": {"participant": {"strategy": "FIXED_USER", "value": ["2097514368643751938"]}}}, {"id": "n1", "kind": "node", "type": "APPROVAL", "config": {"participant": {"strategy": "DEPT_LEADER", "value": ["2097514363824496641"]}}}, {"id": "n2", "kind": "node", "type": "APPROVAL", "config": {"participant": {"strategy": "POST", "value": ["PM"]}}}, {"id": "n3", "kind": "node", "type": "APPROVAL", "config": {"participant": {"strategy": "DEPT_POST", "value": {"deptId": 2097514363824496641, "postCode": "PM"}}}}, {"id": "e", "kind": "node", "type": "END"}, {"id": "e0", "kind": "edge", "source": "s", "target": "n0"}, {"id": "e1", "kind": "edge", "source": "n0", "target": "n1"}, {"id": "e2", "kind": "edge", "source": "n1", "target": "n2"}, {"id": "e3", "kind": "edge", "source": "n2", "target": "n3"}, {"id": "e4", "kind": "edge", "source": "n3", "target": "e"}]}
+{"code":0,"msg":"success","data":[]}
+HTTP_STATUS:200
+
+### [P4] 10:55:55 --> POST /workflow/defs/2097519340450004994/publish
+{"code":0,"msg":"success","data":{"id":"2097519340450004994","createTime":"2026-09-09T10:55:55.445645","createBy":"1","updateTime":"2026-09-09T10:55:55.445652","updateBy":"1","deleted":0,"version":"2","tenantId":"0","processKey":"bpm_edc206b96d8b4683","name":"I1选人证据流","formKey":"i1_leave","defVersion":1,"status":"PUBLISHED","deploymentId":"fa114c9a-abf9-11f1-bcbd-66ff24301f3c","processDefinitionId":"i1_participant_flow:1:fa35284d-abf9-11f1-bcbd-66ff24301f3c","graphJson":"{\"processKey\":\"i1_participant_flow\",\"name\":\"I1选人证据流\",\"formKey\":\"i1_leave\",\"version\":1,\"elements\":[{\"id\":\"s\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":null,\"style\":null},{\"id\":\"n0\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[\"2097514368643751938\"]}},\"style\":null},{\"id\":\"n1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"participant\":{\"strategy\":\"DEPT_LEADER\",\"value\":[\"2097514363824496641\"]}},\"style\":null},{\"id\":\"n2\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"participant\":{\"strategy\":\"POST\",\"value\":[\"PM\"]}},\"style\":null},{\"id\":\"n3\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"participant\":{\"strategy\":\"DEPT_POST\",\"value\":{\"deptId\":\"2097514363824496641\",\"postCode\":\"PM\"}}},\"style\":null},{\"id\":\"e\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":null,\"style\":null},{\"id\":\"e0\",\"kind\":\"edge\",\"type\":null,\"source\":\"s\",\"target\":\"n0\",\"config\":null,\"style\":null},{\"id\":\"e1\",\"kind\":\"edge\",\"type\":null,\"source\":\"n0\",\"target\":\"n1\",\"config\":null,\"style\":null},{\"id\":\"e2\",\"kind\":\"edge\",\"type\":null,\"source\":\"n1\",\"target\":\"n2\",\"config\":null,\"style\":null},{\"id\":\"e3\",\"kind\":\"edge\",\"type\":null,\"source\":\"n2\",\"target\":\"n3\",\"config\":null,\"style\":null},{\"id\":\"e4\",\"kind\":\"edge\",\"type\":null,\"source\":\"n3\",\"target\":\"e\",\"config\":null,\"style\":null}],\"canvas\":null}","categoryId":null,"iotAccessEnabled":false,"iotDeviceActionJson":null}}
+HTTP_STATUS:200
+
+### [S1] 10:55:55 --> POST /form/data/i1_leave
+REQ: {"reason":"G4选人证据","days":1}
+{"code":0,"msg":"success","data":"603501fd-6109-4fd6-a82a-d5fd1442ac9a"}
+HTTP_STATUS:200
+RECORD_ID=603501fd-6109-4fd6-a82a-d5fd1442ac9a
+
+### [G3T-前] 10:55:57 --> GET /workflow/tasks/todo
+{"code":0,"msg":"success","data":{"records":[{"taskId":"fa8962db-abf9-11f1-bcbd-66ff24301f3c","processInstanceId":"fa7d54de-abf9-11f1-bcbd-66ff24301f3c","processName":null,"formKey":"i1_leave","businessKey":"603501fd-6109-4fd6-a82a-d5fd1442ac9a","createTime":"2026-09-09T10:55:56.34"}],"total":"1","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS:200
+TASK0(i1_revoke 待办)=
+
+### [G3T-变更] 10:55:58 --> PUT /system/user
+REQ: {"id":2097514368643751938,"username":"i1_revoke","realName":"待撤权用户","deptId":2097514363824496641,"status":1,"version":0}
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS:200
+
+### [G3T-后-me] 10:55:59 --> GET /auth/me
+{"code":401,"msg":"未认证","data":null}
+HTTP_STATUS:401
+
+### [G3T-后-todo] 10:55:59 --> GET /workflow/tasks/todo
+{"code":401,"msg":"未认证","data":null}
+HTTP_STATUS:401
+
+### [G3T-后-办理] 10:55:59 --> POST /workflow/tasks//complete
+REQ: {}
+{"code":401,"msg":"未认证","data":null}
+HTTP_STATUS:401
+
+--- G3T 回读：待办仍绑定被停用用户（负向事实记录）
+TASK_ID                              | PARTICIPANT_ID      | PARTICIPANT_STATUS | PARTICIPANT_NAME
+fa8962db-abf9-11f1-bcbd-66ff24301f3c | 2097514368643751938 | PENDING            | 待撤权用户
+(1 row, 5 ms)
+
+### [N1-leader-todo] 10:55:59 --> GET /workflow/tasks/todo
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS:200
+
+### [N1-pm-todo-负向] 10:55:59 --> GET /workflow/tasks/todo
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS:200
+
+### [N1-详情] 10:55:59 --> GET /workflow/instances/0
+{"code":404,"msg":"流程实例不存在","data":null}
+HTTP_STATUS:200
+== G4-G5 阶段5完成 2026-09-09 10:55:59
+
+== G4 续：流程推进 2026-09-09 10:56:50 +0800  INSTANCE=fa7d54de-abf9-11f1-bcbd-66ff24301f3c ==
+--- [G3T-补] 停用主体持旧 token 对真实待办办理（应拒绝）
+### [N0-todo] i1_revoke 待办
+{"code":0,"msg":"success","data":{"records":[{"taskId":"fa8962db-abf9-11f1-bcbd-66ff24301f3c","processInstanceId":"fa7d54de-abf9-11f1-bcbd-66ff24301f3c","processName":null,"formKey":"i1_leave","businessKey":"603501fd-6109-4fd6-a82a-d5fd1442ac9a","createTime":"2026-09-09T10:55:56.34"}],"total":"1","pageNum":"1","pageSize":"10"}}
+HTTP:200
+
+### [N0-complete] i1_revoke 办结 FIXED_USER 任务 fa8962db-abf9-11f1-bcbd-66ff24301f3c
+{"code":0,"msg":"success","data":null}
+HTTP:200
+### [N1-leader-todo] i1_leader（DEPT_LEADER 解析负责人）待办
+{"code":0,"msg":"success","data":{"records":[{"taskId":"1aa34ff1-abfa-11f1-bcbd-66ff24301f3c","processInstanceId":"fa7d54de-abf9-11f1-bcbd-66ff24301f3c","processName":null,"formKey":"i1_leave","businessKey":"603501fd-6109-4fd6-a82a-d5fd1442ac9a","createTime":"2026-09-09T10:56:50.228"}],"total":"1","pageNum":"1","pageSize":"10"}}
+HTTP:200
+### [N1-pm-todo-负向] i1_pm 此时不应有待办
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"10"}}
+HTTP:200
+
+
+== G4 续2：POST / DEPT_POST 策略节点 2026-09-09 10:57:18 +0800 ==
+### [N1-complete] i1_leader 办结 DEPT_LEADER 任务 1aa34ff1-abfa-11f1-bcbd-66ff24301f3c
+{"code":0,"msg":"success","data":null}
+HTTP:200
+### [N2-pm-todo] i1_pm（POST=PM 全部门）待办
+{"code":0,"msg":"success","data":{"records":[{"taskId":"2b661574-abfa-11f1-bcbd-66ff24301f3c","processInstanceId":"fa7d54de-abf9-11f1-bcbd-66ff24301f3c","processName":null,"formKey":"i1_leave","businessKey":"603501fd-6109-4fd6-a82a-d5fd1442ac9a","createTime":"2026-09-09T10:57:18.348"}],"total":"1","pageNum":"1","pageSize":"10"}}
+HTTP:200
+
+### [N2-pm2-todo] i1_pm2（二部 PM，也应命中 POST 策略）待办
+{"code":0,"msg":"success","data":{"records":[{"taskId":"2b661574-abfa-11f1-bcbd-66ff24301f3c","processInstanceId":"fa7d54de-abf9-11f1-bcbd-66ff24301f3c","processName":null,"formKey":"i1_leave","businessKey":"603501fd-6109-4fd6-a82a-d5fd1442ac9a","createTime":"2026-09-09T10:57:18.348"}],"total":"1","pageNum":"1","pageSize":"10"}}
+HTTP:200
+
+### [N2-complete] i1_pm 办结 POST 任务 2b661574-abfa-11f1-bcbd-66ff24301f3c
+{"code":0,"msg":"success","data":null}
+HTTP:200
+### [N3-pm2-todo-负向] i1_pm2（DEPT_POST 限定一部，不应有任务）
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"10"}}
+HTTP:200
+
+### [N3-pm-todo] i1_pm（一部 PM，DEPT_POST 命中）
+{"code":0,"msg":"success","data":{"records":[{"taskId":"2cacc64d-abfa-11f1-bcbd-66ff24301f3c","processInstanceId":"fa7d54de-abf9-11f1-bcbd-66ff24301f3c","processName":null,"formKey":"i1_leave","businessKey":"603501fd-6109-4fd6-a82a-d5fd1442ac9a","createTime":"2026-09-09T10:57:20.489"}],"total":"1","pageNum":"1","pageSize":"10"}}
+HTTP:200
+### [N3-complete] i1_pm 办结 DEPT_POST 任务 2cacc64d-abfa-11f1-bcbd-66ff24301f3c
+{"code":0,"msg":"success","data":null}
+HTTP:200
+### [TRACE] 流程轨迹 GET /workflow/instances/fa7d54de-abf9-11f1-bcbd-66ff24301f3c
+{"code":401,"msg":"未认证","data":null}
+HTTP:401
+--- 快照表回读（含 participant_name 冻结）
+TASK_ID                              | NODE_KEY | PARTICIPANT_ID      | PARTICIPANT_STATUS | PARTICIPANT_NAME | INVALID_REASON
+fa8962db-abf9-11f1-bcbd-66ff24301f3c | n0       | 2097514368643751938 | HANDLED            | 待撤权用户            | APPROVE
+1aa34ff1-abfa-11f1-bcbd-66ff24301f3c | n1       | 2097514365208616961 | HANDLED            | 部门负责人张三          | APPROVE
+2b661574-abfa-11f1-bcbd-66ff24301f3c | n2       | 2097514366630486018 | HANDLED            | 岗位任职王五           | APPROVE
+2b661574-abfa-11f1-bcbd-66ff24301f3c | n2       | 2097514367301574657 | INVALIDATED        | 二部岗位赵六           | 节点已由 2097514366630486018 以 APPROVE 处理
+2cacc64d-abfa-11f1-bcbd-66ff24301f3c | n3       | 2097514366630486018 | HANDLED            | 岗位任职王五           | APPROVE
+(5 rows, 4 ms)
+
+== G5 历史身份冻结对照 2026-09-09 10:57:54 +0800  INSTANCE=fa7d54de-abf9-11f1-bcbd-66ff24301f3c ==
+--- [G5-变更前] 实例详情（人名应为组织变更前状态）
+{"code":0,"msg":"success","data":{"id":"2097519344585588737","processInstanceId":"fa7d54de-abf9-11f1-bcbd-66ff24301f3c","processDefKey":"i1_participant_flow","processName":null,"businessKey":"603501fd-6109-4fd6-a82a-d5fd1442ac9a","formKey":"i1_leave","initiatorId":"2097514365984563201","initiatorName":"流程发起人李四","status":"APPROVED","createTime":"2026-09-09T10:55:56.431972","activeNodeIds":[],"flowTrace":[{"activityId":"s","activityName":"Start","activityType":"startEvent","startTime":"2026-09-09T10:55:56.33","endTime":"2026-09-09T10:55:56.337","assignee":null,"assigneeName":null,"taskId":null},{"activityId":"e0","activityName":null,"activityType":"sequenceFlow","startTime":"2026-09-09T10:55:56.34","endTime":"2026-09-09T10:55:56.34","assignee":null,"assigneeName":null,"taskId":null},{"activityId":"n0","activityName":"审批","activityType":"userTask","startTime":"2026-09-09T10:55:56.34","endTime":"2026-09-09T10:56:50.226","assignee":"2097514368643751938","assigneeName":"待撤权用户","taskId":"fa8962db-abf9-11f1-bcbd-66ff24301f3c"},{"activityId":"e1","activityName":null,"activityType":"sequenceFlow","startTime":"2026-09-09T10:56:50.227","endTime":"2026-09-09T10:56:50.227","assignee":null,"assigneeName":null,"taskId":null},{"activityId":"n1","activityName":"审批","activityType":"userTask","startTime":"2026-09-09T10:56:50.228","endTime":"2026-09-09T10:57:18.347","assignee":"2097514365984563201","assigneeName":"流程发起人李四","taskId":"1aa34ff1-abfa-11f1
+--- 组织变更：① i1_leader 改名+停用；② i1_pm 调往二部；③ 部门 D1 负责人改派 i1_pm
+{"code":0,"msg":"success","data":null} [改名+停用leader HTTP:200]
+{"code":0,"msg":"success","data":null} [i1_pm调部 HTTP:200]
+{"code":0,"msg":"success","data":null} [D1负责人改派 HTTP:200]
+--- [G5-变更后] 实例详情（历史解释不应被改写）
+{"code":0,"msg":"success","data":{"id":"2097519344585588737","processInstanceId":"fa7d54de-abf9-11f1-bcbd-66ff24301f3c","processDefKey":"i1_participant_flow","processName":null,"businessKey":"603501fd-6109-4fd6-a82a-d5fd1442ac9a","formKey":"i1_leave","initiatorId":"2097514365984563201","initiatorName":"流程发起人李四","status":"APPROVED","createTime":"2026-09-09T10:55:56.431972","activeNodeIds":[],"flowTrace":[{"activityId":"s","activityName":"Start","activityType":"startEvent","startTime":"2026-09-09T10:55:56.33","endTime":"2026-09-09T10:55:56.337","assignee":null,"assigneeName":null,"taskId":null},{"activityId":"e0","activityName":null,"activityType":"sequenceFlow","startTime":"2026-09-09T10:55:56.34","endTime":"2026-09-09T10:55:56.34","assignee":null,"assigneeName":null,"taskId":null},{"activityId":"n0","activityName":"审批","activityType":"userTask","startTime":"2026-09-09T10:55:56.34","endTime":"2026-09-09T10:56:50.226","assignee":"2097514368643751938","assigneeName":"待撤权用户","taskId":"fa8962db-abf9-11f1-bcbd-66ff24301f3c"},{"activityId":"e1","activityName":null,"activityType":"sequenceFlow","startTime":"2026-09-09T10:56:50.227","endTime":"2026-09-09T10:56:50.227","assignee":null,"assigneeName":null,"taskId":null},{"activityId":"n1","activityName":"审批","activityType":"userTask","startTime":"2026-09-09T10:56:50.228","endTime":"2026-09-09T10:57:18.347","assignee":"2097514365984563201","assigneeName":"流程发起人李四","taskId":"1aa34ff1-abfa-11f1
+--- G5 持久化回读：快照人名应与变更前一致
+TASK_ID                              | NODE_KEY | PARTICIPANT_ID      | PARTICIPANT_NAME
+fa8962db-abf9-11f1-bcbd-66ff24301f3c | n0       | 2097514368643751938 | 待撤权用户
+1aa34ff1-abfa-11f1-bcbd-66ff24301f3c | n1       | 2097514365208616961 | 部门负责人张三
+2b661574-abfa-11f1-bcbd-66ff24301f3c | n2       | 2097514366630486018 | 岗位任职王五
+2b661574-abfa-11f1-bcbd-66ff24301f3c | n2       | 2097514367301574657 | 二部岗位赵六
+2cacc64d-abfa-11f1-bcbd-66ff24301f3c | n3       | 2097514366630486018 | 岗位任职王五
+(5 rows, 3 ms)
+
+== G5-变更后完整实例详情（全量无截断） 10:58:59 ==
+HTTP:200
+status: APPROVED
+  s | Start | assignee=None | assigneeName=None
+  e0 | None | assignee=None | assigneeName=None
+  n0 | 审批 | assignee=2097514368643751938 | assigneeName=待撤权用户
+  e1 | None | assignee=None | assigneeName=None
+  n1 | 审批 | assignee=2097514365984563201 | assigneeName=流程发起人李四
+  e2 | None | assignee=None | assigneeName=None
+  e3 | None | assignee=None | assigneeName=None
+  n2 | 审批 | assignee=2097514366630486018 | assigneeName=岗位任职王五
+  n3 | 审批 | assignee=2097514365984563201 | assigneeName=流程发起人李四
+  e4 | None | assignee=None | assigneeName=None
+  e | End | assignee=None | assigneeName=None
+Traceback (most recent call last):
+  File "<stdin>", line 7, in <module>
+AssertionError: 历史名被改写！
+--- 空快照回退边界：置空 n1 行 participant_name 后再查详情
+HTTP:200
+n1 assigneeName(快照为空→实时回退): 流程发起人李四
+--- 回退边界记录：快照名仍为 NULL（不被回写）
+NODE_KEY | PARTICIPANT_NAME
+n1       | null
+(1 row, 3 ms)
+
+== G5b FIXED_USER 改名冻结对照（新流程定义 v2） 2026-09-09 11:01:36 +0800 ==
+### [G5b-1] POST /workflow/defs
+REQ: {"name":"I1冻结证据流","formKey":"i1_leave"}
+{"code":0,"msg":"success","data":{"defId":"2097520772016291842","graph":{"processKey":"bpm_0aca205568d04bd2","name":"I1冻结证据流","formKey":"i1_leave","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300}},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300}},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{}}],"canvas":{}}}}
+HTTP_STATUS:200
+DEF2=2097520772016291842
+### [G5b-2] PUT /workflow/defs/2097520772016291842/graph
+REQ: {"processKey": "i1_freeze_flow", "name": "I1冻结证据流", "formKey": "i1_leave", "version": 1, "elements": [{"id": "s", "kind": "node", "type": "START"}, {"id": "nA", "kind": "node", "type": "APPROVAL", "config": {"participant": {"strategy": "FIXED_USER", "value": ["2097514365208616961"]}}}, {"id": "e", "kind": "node", "type": "END"}, {"id": "e0", "kind": "edge", "source": "s", "target": "nA"}, {"id": "e1", "kind": "edge", "source": "nA", "target": "e"}]}
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS:200
+### [G5b-3] POST /workflow/defs/2097520772016291842/publish
+{"code":0,"msg":"success","data":{"id":"2097520772016291842","createTime":"2026-09-09T11:01:36.758161","createBy":"1","updateTime":"2026-09-09T11:01:36.758166","updateBy":"1","deleted":0,"version":"2","tenantId":"0","processKey":"bpm_0aca205568d04bd2","name":"I1冻结证据流","formKey":"i1_leave","defVersion":1,"status":"PUBLISHED","deploymentId":"c57af820-abfa-11f1-bcbd-66ff24301f3c","processDefinitionId":"i1_freeze_flow:1:c584e333-abfa-11f1-bcbd-66ff24301f3c","graphJson":"{\"processKey\":\"i1_freeze_flow\",\"name\":\"I1冻结证据流\",\"formKey\":\"i1_leave\",\"version\":1,\"elements\":[{\"id\":\"s\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":null,\"style\":null},{\"id\":\"nA\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[\"2097514365208616961\"]}},\"style\":null},{\"id\":\"e\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":null,\"style\":null},{\"id\":\"e0\",\"kind\":\"edge\",\"type\":null,\"source\":\"s\",\"target\":\"nA\",\"config\":null,\"style\":null},{\"id\":\"e1\",\"kind\":\"edge\",\"type\":null,\"source\":\"nA\",\"target\":\"e\",\"config\":null,\"style\":null}],\"canvas\":null}","categoryId":null,"iotAccessEnabled":false,"iotDeviceActionJson":null}}
+HTTP_STATUS:200
+### [G5b-4] POST /form/data/i1_leave
+REQ: {"reason":"G5冻结证据","days":2}
+{"code":0,"msg":"success","data":"34a5561b-99f2-43eb-8c02-18c9882a753b"}
+HTTP_STATUS:200
+### [G5b-5] i1_leader 待办（改名后的新名登录仍能看到本人任务）
+{"code":0,"msg":"success","data":{"records":[{"taskId":"c58ece51-abfa-11f1-bcbd-66ff24301f3c","processInstanceId":"c58e8024-abfa-11f1-bcbd-66ff24301f3c","processName":null,"formKey":"i1_leave","businessKey":"34a5561b-99f2-43eb-8c02-18c9882a753b","createTime":"2026-09-09T11:01:36.983"}],"total":"1","pageNum":"1","pageSize":"10"}}
+TASKA=c58ece51-abfa-11f1-bcbd-66ff24301f3c INST2=c58e8024-abfa-11f1-bcbd-66ff24301f3c
+### [G5b-6] 变更后发起的实例：详情 assigneeName（快照名=任务创建时的 realName=张三已改名）
+HTTP:200
+nA assigneeName(发起时新名): 张三已改名
+### [G5b-7] 二次改名为 冻结对照张三v3
+改名v3=200
+### [G5b-8] 再次查详情：assigneeName 应保持 发起时名（张三已改名）而非 v3
+HTTP:200
+nA assigneeName(改名v3后): 张三已改名
+断言通过：历史解释未被改写
+--- G5b 快照表回读
+TASK_ID                              | PARTICIPANT_ID      | PARTICIPANT_NAME | PARTICIPANT_STATUS
+c58ece51-abfa-11f1-bcbd-66ff24301f3c | 2097514365208616961 | 张三已改名            | PENDING
+(1 row, 3 ms)
+== G5b 完成 2026-09-09 11:01:39

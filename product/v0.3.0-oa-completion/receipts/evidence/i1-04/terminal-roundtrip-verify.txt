@@ -1,0 +1,10 @@
+== G7b2 终态往返核对 ==
+cwd: /usr/local/projects/Smart-WorkFlow
+调用命令: sh .codex/governance/validate-terminal.sh < product/v0.3.0-oa-completion/receipts/evidence/i1-04/terminal-input.txt > product/v0.3.0-oa-completion/receipts/evidence/i1-04/terminal-stdout.txt 2> product/v0.3.0-oa-completion/receipts/evidence/i1-04/terminal-stderr.txt; echo $? > product/v0.3.0-oa-completion/receipts/evidence/i1-04/terminal-exit.txt
+回执末行抽取命令: python3 抽取 ENGINE_TERMINAL 行后 rstrip('\n') 写入 product/v0.3.0-oa-completion/receipts/evidence/i1-04/terminal-input.txt
+cmp 回执末行 vs terminal-input.txt 退出码: 0
+JSON 解析 terminal-input.txt 退出码: 0
+Validator 实际退出码(同一次调用): 0
+Validator stdout 字节数: 0
+Validator stderr 字节数: 0
+事实核对: 回执末行==Validator输入(cmp exit=0) 且 Validator exit=0 且 JSON 解析通过 => G7b2 闭环

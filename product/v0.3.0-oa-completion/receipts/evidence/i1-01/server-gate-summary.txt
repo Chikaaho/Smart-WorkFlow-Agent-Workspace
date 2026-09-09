@@ -1,0 +1,25 @@
+=== Server full gate (mvn clean test, MAVEN_OPTS=-Xmx2g) ===
+[INFO] BUILD SUCCESS
+EXIT=0
+
+=== per-module totals (last summary lines) ===
+[INFO] Tests run: 43, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 175, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 43, Failures: 0, Errors: 0, Skipped: 0
+
+=== aggregate ===
+modules_sum: tests=1216 failures=0 errors=0 skipped=0
+
+=== new I1 test classes (summary) ===
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.263 s -- in com.sw.ck.system.orgfoundation.DeptGovernanceIntegrationTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.268 s -- in com.sw.ck.system.orgfoundation.PermissionConvergenceTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.225 s -- in com.sw.ck.system.orgfoundation.PostGovernanceIntegrationTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.218 s -- in com.sw.ck.system.orgfoundation.OrgAuthorityFacadeIntegrationTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.sw.ck.system.orgfoundation.SystemMgmtEndpointSecurityContractTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.550 s -- in com.sw.ck.bpm.engine.participant.OrgParticipantResolverContractTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in com.sw.ck.bpm.process.service.ParticipantNameSnapshotTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in com.sw.ck.bpm.process.service.ProcessStartInitiatorValidationTest
+
+=== flyway full chain (V67) ===
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.792 s -- in com.sw.ck.bootstrap.FlywayFullChainPostgresTest
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.139 s -- in com.sw.ck.bootstrap.FlywayFullChainH2Test
