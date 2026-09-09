@@ -25,7 +25,7 @@
 
 | 仓库 | 当前分支 | 本地 HEAD（I1 提交） | 远端 SHA（回读） | push 结果 |
 |---|---|---|---|---|
-| Smart-WorkFlow-Agent-Workspace | `develop-sw` | `f0991666fd67d9f347874f5eab213720914c4f5d`（前 `7712fa5`） | `f0991666fd67d9f347874f5eab213720914c4f5d` | 7712fa5..f099166 已推送 |
+| Smart-WorkFlow-Agent-Workspace | `develop-sw` | I1 提交 `f099166…`，终态 HEAD（含本回执）`c47d804270f2c2c832c44fac065d497b1da6bbd7`（前 `7712fa5`） | `c47d804270f2c2c832c44fac065d497b1da6bbd7` | 7712fa5→f099166→c47d804 已推送 |
 | Smart-WorkFlow-aPaaS-server | `develop` | `175909037cf73a75356491568a79e094cff3a1a2`（前 `3aec762`） | `175909037cf73a75356491568a79e094cff3a1a2` | 3aec762..1759090 已推送 |
 | Smart-WorkFlow-aPaaS-Web | `develop` | `d20a19157c4315ece0fe3bb19f11d3c6b3ef487a`（前 `8d26f61`） | `d20a19157c4315ece0fe3bb19f11d3c6b3ef487a` | 8d26f61..d20a191 已推送 |
 
