@@ -1,14 +1,13 @@
 == TS-G1 post-push attestation（推送后本地规划验收附件）==
 生成时间: 2026-09-09 +0800
-本文件为推送后生成的本地审查附件，不包含于被证明的提交（921f27343841c9cd4aa51e90c9c94a2c63ce0124）内，不声称自身已推送。
-workspace 远端完整 SHA: 921f27343841c9cd4aa51e90c9c94a2c63ce0124
+本文件为推送后生成的本地审查附件，不包含于被证明的提交（500566e1f80f525489377b6d7a8039e8fa453d62）内，不声称自身已推送。
+workspace 远端完整 SHA: 500566e1f80f525489377b6d7a8039e8fa453d62
 server 远端完整 SHA: 328ff2a926fed5b195675a1f351d9a806a40b230
---- 发布集合逐文件：远端对象(git show <远端SHA>:<path> | sha256) vs 提交前哈希
+--- 发布集合逐文件：远端对象(git show <远端SHA>:<path> | sha256) vs 发布集合清单（不含清单自身；清单以最终提交 SHA 锚定）
 OK  [ws] product/v0.3.0-oa-completion/receipts/planning-review-terminal-sync-stage-i1-v0.3.0-oa-completion-01.md
 OK  [ws] product/v0.3.0-oa-completion/receipts/planning-review-terminal-sync-stage-i1-v0.3.0-oa-completion-02.md
 OK  [ws] product/v0.3.0-oa-completion/receipts/planning-execution-prompt-v0.3.0-oa-completion-i1-terminal-sync-01.md
-FAIL [ws] product/v0.3.0-oa-completion/receipts/terminal-sync-stage-i1-v0.3.0-oa-completion-03.md
-    expected=11c84ffa09a5ee6d101cd80ce803138a36ad11869caa082d33c79f77a5a8349a remote=1266d2c2b273ed882021f81e2f9024b73e88a6c6962d158d8585e768660fef0b
+OK  [ws] product/v0.3.0-oa-completion/receipts/terminal-sync-stage-i1-v0.3.0-oa-completion-03.md
 OK  [ws] knowledge/current-status.md
 OK  [ws] knowledge/session-handoff.md
 OK  [ws] knowledge/features/v0.3.0-oa-completion.md
@@ -18,24 +17,21 @@ OK  [ws] memory/handoff.md
 OK  [ws] memory/state.md
 OK  [ws] todo/requirement-pool.md
 FAIL [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/MANIFEST-SHA256.txt
-    expected=4e60639f99cc2bfa1c9b563c44c73489bf456a17b3142a0d91265410bc1fc6f5 remote=dbe1511bba14e2b72f2d11e02306ad06d9df33ffb7eb9e010f0dae8e35c8e1f1
+    expected=dbe1511bba14e2b72f2d11e02306ad06d9df33ffb7eb9e010f0dae8e35c8e1f1 remote=d5853947f6eeb0f86410b9a32b3b42cbf0e56ac524dea952de8f70ef448613e0
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/knowledge-readable-copies/current-status.md
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/knowledge-readable-copies/function-checklist-current-focus.md
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/knowledge-readable-copies/session-handoff.md
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/knowledge-readable-copies/v0.3.0-oa-completion.md
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/manifest-verify.txt
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/post-push-attestation.txt
-FAIL [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/publish-set-before.txt
-    expected=5f2f679254d564e9ddf294876467468001a7e4b0a0ece9ec33f0f99ee7c61b2b remote=08689a910e4052e41e45b576b73c1790d7a669cd895786689a92c1e269a84da4
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/ts-k1-reverse-scan.txt
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/validator/terminal-exit.txt
-FAIL [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/validator/terminal-input.txt
-    expected=fee44ca5ec3c31b106257c3aa137ea811c807dc1848ed735ccb1b563185a0671 remote=e746a914e4c67e2f1dfd7c218d1a68685f21697b827dc413981dbc83fa16c113
-FAIL [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/validator/terminal-roundtrip-verify.txt
-    expected=b1c0b232905614f86895cb4cfb5076a4315a1670e3ce237ac123ea43bffdeac9 remote=5414d62d5f4b656b8e1af9d56a6ede3e087fac97a7fa192518ddd79967a75f5b
+OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/validator/terminal-input.txt
+OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/validator/terminal-roundtrip-verify.txt
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/validator/terminal-stderr.txt
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/validator/terminal-stdout.txt
 OK  [server] 功能清单.md
---- 结论：发布集合逐文件远端哈希与提交前一致 = 存在不一致
+publish-set-before.txt 远端对象 SHA: 9cac81bbfbb283fd957ff80fc609e9de5e820621e448b3b739362aae518e14bf（存在性校验：OK）
+--- 结论：发布集合逐文件远端哈希与清单一致 = 存在 1 项不一致
 --- 本地工作树残留（除本附件外仅既有无关残留/Planner 后续裁决）：
 （干净）
