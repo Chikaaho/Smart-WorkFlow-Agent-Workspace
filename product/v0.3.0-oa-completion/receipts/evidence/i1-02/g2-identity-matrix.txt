@@ -1,0 +1,84 @@
+== G2 三类真实登录身份与负向权限矩阵  2026-09-09 10:41:27 +0800 ==
+身份A=授权管理员 admin（superadmin, tenant 0）；身份B=普通无权用户 i1_plain；身份C=被停用用户 i1_off；身份D=跨租户用户 i1_t5（tenant 5, 具 system:user:list+system:dept:list）
+
+--- A admin /auth/me（登录标识）
+{"code":0,"msg":"success","data":{"user":{"id":"1","username":"admin","displayName":"系统管理员","deptId":"1","tenantId":"0","avatar":null},"permissions":[],"roles":["superadmin"],"superAdmin":true}}
+HTTP:200
+--- A admin 管理接口正向：POST /system/dept/page
+{"code":500,"msg":"系统异常","data":null}
+HTTP:500
+
+
+--- B i1_plain /auth/me（permissions 应为空）
+{"code":0,"msg":"success","data":{"user":{"id":"2097514367976857601","username":"i1_plain","displayName":"普通无权用户","deptId":"2097514363824496641","tenantId":"0","avatar":null},"permissions":[],"roles":[],"superAdmin":false}}
+HTTP:200
+--- B 管理接口负向：POST /system/user/page
+{"code":403,"msg":"无权限","data":null}
+HTTP:403
+--- B 管理接口负向：GET /system/dept/tree
+{"code":403,"msg":"无权限","data":null}
+HTTP:403
+--- B 构造写请求负向：POST /system/dept
+{"code":403,"msg":"无权限","data":null}
+HTTP:403
+--- B 构造写请求负向：POST /system/role
+{"code":403,"msg":"无权限","data":null}
+HTTP:403
+--- B 深链负向：GET /system/user/{admin id}
+{"code":403,"msg":"无权限","data":null}
+HTTP:403
+
+--- C 停用用户登录尝试（应 401 拒签发）
+login result: LOGIN_FAIL:{'code': 401, 'msg': '账号已停用', 'data': None}
+
+--- D i1_t5 /auth/me（tenantId 应为 5）
+i1_t5_T len=54
+{"code":401,"msg":"未认证","data":null}
+HTTP:401
+--- D 正向（本租户）：POST /system/dept/page（只应见租户五数据）
+{"code":401,"msg":"未认证","data":null}
+HTTP:401
+
+--- D 跨租户读负向：GET /system/dept/2097514363824496641（租户0部门）
+{"code":401,"msg":"未认证","data":null}
+HTTP:401
+--- D 跨租户读负向：GET /system/user/2097514365208616961（租户0用户）
+{"code":401,"msg":"未认证","data":null}
+HTTP:401
+--- D 跨租户写负向：PUT /system/dept/2097514363824496641（改名攻击）
+{"code":401,"msg":"未认证","data":null}
+HTTP:401
+--- D 跨租户写负向：DELETE /system/user/2097514367976857601
+{"code":401,"msg":"未认证","data":null}
+HTTP:401
+--- 反向：admin 视角 GET /system/dept/8001（租户五部门，应不可见）
+{"code":0,"msg":"success","data":null}
+HTTP:200
+--- 反向：admin 视角 POST /system/user/page 全量（不应出现 i1_t5）
+含i1_t5: False  总数: 10
+--- 零越权写入回读（被攻击对象应原样）
+ID                  | CODE | NAME
+2097514363824496641 | I1D1 | I1证据一部
+(1 row, 6 ms)
+ID                  | USERNAME | DELETED
+2097514367976857601 | i1_plain | 0
+(1 row, 0 ms)
+== G2 完成 2026-09-09 10:41:30 ==
+
+== G2 补充：跨租户双向不可见/不可写（登录链路按产品设计仅承载租户0账号，见回执边界说明） ==
+--- admin 正向补充：GET /system/dept/tree（应仅租户0部门，无租户五）
+tree codes: ['root', 'I1D1', 'I1D2', 'I1D1']
+含T5D: False
+--- admin 跨租户写负向：PUT /system/dept/8001（租户五部门改名攻击，应无效果）
+{"code":400,"msg":"部门不存在或已删除","data":null}
+HTTP:200
+--- admin 跨租户写负向：DELETE /system/user/8005
+{"code":0,"msg":"success","data":null}
+HTTP:200
+--- 零越权写入回读：租户五对象应原样（name=租户五部门, i1_t5 deleted=0）
+ID   | CODE | NAME  | TENANT_ID
+8001 | T5D  | 租户五部门 | 5
+(1 row, 4 ms)
+ID   | USERNAME | DELETED | TENANT_ID
+8005 | i1_t5    | 0       | 5
+(1 row, 0 ms)

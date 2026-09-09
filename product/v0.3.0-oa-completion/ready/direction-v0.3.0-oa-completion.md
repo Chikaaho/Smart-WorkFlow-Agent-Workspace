@@ -142,6 +142,14 @@
 
 排期顺序默认固定。仅当不改变契约且不争用同一对象/迁移时，Executor 可在阶段内部安排并行工作；不得以并行为由跨过前置验收门或同时宣称后续阶段完成。
 
+### 4.1 逐迭代波次收口门禁
+
+六个迭代各自走完整 L/XL 阶段流程，并允许在新会话中启动：阶段方向与验收边界 → Executor 实现、自验和追加式回执 → Planner 独立验收 `PASSED` → Planner 下发该阶段终态同步方向 → Executor 同步终态、按独立仓库提交本阶段变更并推送到各自当前分支、回读远端 SHA → Planner 终态复核并确认该阶段 `COMPLETED` → 下一迭代。不得把多个迭代累积成一次大提交。
+
+阶段 `COMPLETED` 属于 P60 内部阶段状态，不替代 P60 整体完成；I1—I6 全部完成前，P60 保持 `IN_PROGRESS`，正式完成功能数与关联 P 编号不因单阶段完成而变化，也不创建版本标签或 Release。新会话按主方向、该阶段方向、最近验收与终态同步回执恢复，不依赖上一会话聊天历史。
+
+当前 I1 已通过阶段验收，唯一下一入口为 `direction-stage-i1-terminal-sync.md`；完成终态同步、各仓库当前分支提交推送和 Planner 终态复核后，再进入 I2。
+
 ## 5. 0.3.0 整体验收标准
 
 1. 管理员能够配置用户、角色、部门、岗位、负责人、表单、流程、SSO 和通知；普通用户不能通过页面、深链或构造请求获得管理能力。
@@ -194,8 +202,8 @@
 
 Executor 进入后先按 `system.md`、`roles/executor.md`、`project.md` 和两仓工程宪法恢复上下文，核对当前 knowledge 权威与本方向基点差异，并读取 `advanced-capability-feature-checklist.md`，然后制定六阶段内部实施计划。首次功能清单同步必须把 64 条高级能力以规划项映射进正式工程功能清单，保持稳定追溯键并与 P60 的 0.3.0 验收计数分开；若编号冲突，保留 `ADV-*` 作为外部追溯键并在回执给出映射。若权威现状证明某项已完整交付，应提交行为证据申请锁定，不重复建设；若仅有结构、SPI、Mock 或历史快照，不得当作已完成。
 
-每个迭代提交追加式阶段回执；六阶段自验完成后提交：
+每个迭代按 §4.1 形成独立方向、执行回执、规划验收、终态同步回执与终态复核；六阶段自验完成后提交：
 
 `product/v0.3.0-oa-completion/receipts/completion-v0.3.0-oa-completion-01.md`
 
-执行层合法提交状态为 `VERIFYING / EXECUTION_SUBMITTED`。Planner 对阶段和整体标准独立验收，全部通过后才裁决功能级 `PASSED` 并另行下发阶段三唯一终态值清单。Executor 不得提前核销 P60 或关联 P 编号、晋级正式基线、移动方向到 `passed/`、写 `COMPLETED` 或发布 0.3.0。
+阶段实现回执的合法提交状态为 `VERIFYING / EXECUTION_SUBMITTED`；阶段验收 PASSED 后，Executor 只能按该阶段终态同步方向写阶段级 `COMPLETED（待规划确认） / TERMINAL_SYNC_SUBMITTED`。Planner 对六阶段和整体标准全部验收后才裁决 P60 功能级 `PASSED` 并另行下发 P60 整体终态值清单。Executor 不得提前核销 P60 或关联 P 编号、晋级正式基线、移动主方向到 `passed/`、写 P60 `COMPLETED` 或发布 0.3.0。

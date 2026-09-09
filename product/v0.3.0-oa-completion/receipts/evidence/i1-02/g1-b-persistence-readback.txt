@@ -1,0 +1,35 @@
+== G1-B 持久化回读（H2 Shell 直查，2026-09-09 10:36:49 +0800）
+
+--- sys_dept（负责人落列 leader_id）
+ID                  | CODE | NAME   | PARENT_ID | STATUS | LEADER_ID           | TENANT_ID | DELETED
+2097514363824496641 | I1D1 | I1证据一部 | 1         | 0      | 2097514365208616961 | 0         | 0
+2097514364214566914 | I1D1 | 重码部门   | 1         | 0      | null                | 0         | 0
+2097514364013240322 | I1D2 | I1证据二部 | 1         | 0      | 2097514366630486018 | 0         | 0
+1                   | root | 根部门    | 0         | 0      | null                | 0         | 0
+(4 rows, 5 ms)
+
+--- sys_user_post（任职对象契约 dept_id 落列）
+USER_ID             | USERNAME | POST_ID             | CODE | DEPT_ID             | DEPT_CODE | TENANT_ID | DELETED
+2097514366630486018 | i1_pm    | 2097514363035967490 | PM   | 2097514363824496641 | I1D1      | 0         | 0
+2097514367301574657 | i1_pm2   | 2097514363035967490 | PM   | 2097514364013240322 | I1D2      | 0         | 0
+2097514365984563201 | i1_init  | 2097514363241488386 | DEV  | 2097514363824496641 | I1D1      | 0         | 0
+(3 rows, 4 ms)
+
+--- sys_user_role / sys_role_menu（撤权基础）
+USER_ID             | USERNAME  | ROLE_ID             | CODE
+1                   | admin     | 1                   | superadmin
+2097514368643751938 | i1_revoke | 2097514370896093185 | I1_ROLE
+(2 rows, 3 ms)
+ROLE_ID             | CODE    | MENU_ID | PERMISSION
+2097514370896093185 | I1_ROLE | 13      | system:dept:list
+(1 row, 3 ms)
+
+--- V67 按钮种子（ids 340-345）与授权
+ID  | NAME       | PERMISSION         | MENU_TYPE
+340 | DeptCreate | system:dept:create | 2
+341 | DeptUpdate | system:dept:update | 2
+342 | DeptDelete | system:dept:delete | 2
+343 | PostCreate | system:post:create | 2
+344 | PostUpdate | system:post:update | 2
+345 | PostDelete | system:post:delete | 2
+(6 rows, 5 ms)

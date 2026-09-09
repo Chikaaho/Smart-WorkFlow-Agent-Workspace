@@ -1,0 +1,193 @@
+== G1-A 组织对象创建链  2026-09-09 10:36:05 +0800
+admin login ok token_len=146
+
+### 10:36:08 --> POST /system/post
+REQ: {"code":"PM","name":"项目经理","sort":1,"status":1}
+{"code":0,"msg":"success","data":"2097514363035967490"}
+HTTP_STATUS:200
+
+### 10:36:08 --> POST /system/post
+REQ: {"code":"DEV","name":"开发工程师","sort":2,"status":1}
+{"code":0,"msg":"success","data":"2097514363241488386"}
+HTTP_STATUS:200
+
+### 10:36:08 --> POST /system/post
+REQ: {"code":"PM","name":"重复编码岗位","sort":9,"status":1}
+{"code":400,"msg":"岗位编码已存在","data":null}
+HTTP_STATUS:200
+
+### 10:36:08 --> POST /system/post/page
+REQ: {"pageNum":1,"pageSize":50}
+{"code":0,"msg":"success","data":{"records":[{"id":"2097514363035967490","createTime":"2026-09-09T10:36:08.738039","createBy":"1","updateTime":"2026-09-09T10:36:08.738052","updateBy":"1","deleted":0,"version":"0","tenantId":"0","code":"PM","name":"项目经理","sort":1,"status":1,"description":null},{"id":"2097514363241488386","createTime":"2026-09-09T10:36:08.78711","createBy":"1","updateTime":"2026-09-09T10:36:08.787116","updateBy":"1","deleted":0,"version":"0","tenantId":"0","code":"DEV","name":"开发工程师","sort":2,"status":1,"description":null}],"total":"2","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS:200
+PM_ID=2097514363035967490 DEV_ID=2097514363241488386
+
+### 10:36:08 --> POST /system/dept
+REQ: {"code":"I1D1","name":"I1证据一部","sort":1,"status":0,"parentId":1}
+{"code":0,"msg":"success","data":"2097514363824496641"}
+HTTP_STATUS:200
+
+### 10:36:08 --> POST /system/dept
+REQ: {"code":"I1D2","name":"I1证据二部","sort":2,"status":0,"parentId":1}
+{"code":0,"msg":"success","data":"2097514364013240322"}
+HTTP_STATUS:200
+
+### 10:36:09 --> POST /system/dept
+REQ: {"code":"I1D1","name":"重码部门","sort":9,"status":0,"parentId":1}
+{"code":0,"msg":"success","data":"2097514364214566914"}
+HTTP_STATUS:200
+D1=2097514363824496641 D2=2097514364013240322
+
+### 10:36:09 --> POST /system/user
+REQ: {"username":"i1_leader","realName":"部门负责人张三","deptId":2097514363824496641,"status":0,"plainPassword":"Admin12345"}
+{"code":0,"msg":"success","data":"2097514365208616961"}
+HTTP_STATUS:200
+
+### 10:36:09 --> POST /system/user/page
+REQ: {"pageNum":1,"pageSize":50,"username":"i1_leader"}
+{"code":0,"msg":"success","data":{"records":[{"id":"1","createTime":"2026-09-09T10:35:11.91754","createBy":null,"updateTime":"2026-09-09T10:35:11.91754","updateBy":null,"deleted":0,"version":"0","tenantId":"0","username":"admin","realName":"系统管理员","email":null,"phone":null,"sex":0,"status":0,"deptId":"1","isAdmin":1,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514365208616961","createTime":"2026-09-09T10:36:09.256132","createBy":"1","updateTime":"2026-09-09T10:36:09.256142","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_leader","realName":"部门负责人张三","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null}],"total":"2","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS:200
+
+### 10:36:09 --> POST /system/user
+REQ: {"username":"i1_init","realName":"流程发起人李四","deptId":2097514363824496641,"status":0,"plainPassword":"Admin12345"}
+{"code":0,"msg":"success","data":"2097514365984563201"}
+HTTP_STATUS:200
+
+### 10:36:09 --> POST /system/user/page
+REQ: {"pageNum":1,"pageSize":50,"username":"i1_init"}
+{"code":0,"msg":"success","data":{"records":[{"id":"1","createTime":"2026-09-09T10:35:11.91754","createBy":null,"updateTime":"2026-09-09T10:35:11.91754","updateBy":null,"deleted":0,"version":"0","tenantId":"0","username":"admin","realName":"系统管理员","email":null,"phone":null,"sex":0,"status":0,"deptId":"1","isAdmin":1,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514365208616961","createTime":"2026-09-09T10:36:09.256132","createBy":"1","updateTime":"2026-09-09T10:36:09.256142","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_leader","realName":"部门负责人张三","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514365984563201","createTime":"2026-09-09T10:36:09.441247","createBy":"1","updateTime":"2026-09-09T10:36:09.441255","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_init","realName":"流程发起人李四","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null}],"total":"3","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS:200
+
+### 10:36:09 --> POST /system/user
+REQ: {"username":"i1_pm","realName":"岗位任职王五","deptId":2097514363824496641,"status":0,"plainPassword":"Admin12345"}
+{"code":0,"msg":"success","data":"2097514366630486018"}
+HTTP_STATUS:200
+
+### 10:36:09 --> POST /system/user/page
+REQ: {"pageNum":1,"pageSize":50,"username":"i1_pm"}
+{"code":0,"msg":"success","data":{"records":[{"id":"1","createTime":"2026-09-09T10:35:11.91754","createBy":null,"updateTime":"2026-09-09T10:35:11.91754","updateBy":null,"deleted":0,"version":"0","tenantId":"0","username":"admin","realName":"系统管理员","email":null,"phone":null,"sex":0,"status":0,"deptId":"1","isAdmin":1,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514365208616961","createTime":"2026-09-09T10:36:09.256132","createBy":"1","updateTime":"2026-09-09T10:36:09.256142","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_leader","realName":"部门负责人张三","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514365984563201","createTime":"2026-09-09T10:36:09.441247","createBy":"1","updateTime":"2026-09-09T10:36:09.441255","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_init","realName":"流程发起人李四","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514366630486018","createTime":"2026-09-09T10:36:09.5951","createBy":"1","updateTime":"2026-09-09T10:36:09.595107","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_pm","realName":"岗位任职王五","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null}],"total":"4","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS:200
+
+### 10:36:09 --> POST /system/user
+REQ: {"username":"i1_pm2","realName":"二部岗位赵六","deptId":2097514364013240322,"status":0,"plainPassword":"Admin12345"}
+{"code":0,"msg":"success","data":"2097514367301574657"}
+HTTP_STATUS:200
+
+### 10:36:09 --> POST /system/user/page
+REQ: {"pageNum":1,"pageSize":50,"username":"i1_pm2"}
+{"code":0,"msg":"success","data":{"records":[{"id":"1","createTime":"2026-09-09T10:35:11.91754","createBy":null,"updateTime":"2026-09-09T10:35:11.91754","updateBy":null,"deleted":0,"version":"0","tenantId":"0","username":"admin","realName":"系统管理员","email":null,"phone":null,"sex":0,"status":0,"deptId":"1","isAdmin":1,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514365208616961","createTime":"2026-09-09T10:36:09.256132","createBy":"1","updateTime":"2026-09-09T10:36:09.256142","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_leader","realName":"部门负责人张三","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514365984563201","createTime":"2026-09-09T10:36:09.441247","createBy":"1","updateTime":"2026-09-09T10:36:09.441255","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_init","realName":"流程发起人李四","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514366630486018","createTime":"2026-09-09T10:36:09.5951","createBy":"1","updateTime":"2026-09-09T10:36:09.595107","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_pm","realName":"岗位任职王五","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514367301574657","createTime":"2026-09-09T10:36:09.754619","createBy":"1","updateTime":"2026-09-09T10:36:09.754626","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_pm2","realName":"二部岗位赵六","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514364013240322","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null}],"total":"5","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS:200
+
+### 10:36:09 --> POST /system/user
+REQ: {"username":"i1_plain","realName":"普通无权用户","deptId":2097514363824496641,"status":0,"plainPassword":"Admin12345"}
+{"code":0,"msg":"success","data":"2097514367976857601"}
+HTTP_STATUS:200
+
+### 10:36:09 --> POST /system/user/page
+REQ: {"pageNum":1,"pageSize":50,"username":"i1_plain"}
+{"code":0,"msg":"success","data":{"records":[{"id":"1","createTime":"2026-09-09T10:35:11.91754","createBy":null,"updateTime":"2026-09-09T10:35:11.91754","updateBy":null,"deleted":0,"version":"0","tenantId":"0","username":"admin","realName":"系统管理员","email":null,"phone":null,"sex":0,"status":0,"deptId":"1","isAdmin":1,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514365208616961","createTime":"2026-09-09T10:36:09.256132","createBy":"1","updateTime":"2026-09-09T10:36:09.256142","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_leader","realName":"部门负责人张三","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514365984563201","createTime":"2026-09-09T10:36:09.441247","createBy":"1","updateTime":"2026-09-09T10:36:09.441255","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_init","realName":"流程发起人李四","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514366630486018","createTime":"2026-09-09T10:36:09.5951","createBy":"1","updateTime":"2026-09-09T10:36:09.595107","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_pm","realName":"岗位任职王五","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514367301574657","createTime":"2026-09-09T10:36:09.754619","createBy":"1","updateTime":"2026-09-09T10:36:09.754626","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_pm2","realName":"二部岗位赵六","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514364013240322","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514367976857601","createTime":"2026-09-09T10:36:09.915697","createBy":"1","updateTime":"2026-09-09T10:36:09.915705","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_plain","realName":"普通无权用户","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null}],"total":"6","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS:200
+
+### 10:36:09 --> POST /system/user
+REQ: {"username":"i1_revoke","realName":"待撤权用户","deptId":2097514363824496641,"status":0,"plainPassword":"Admin12345"}
+{"code":0,"msg":"success","data":"2097514368643751938"}
+HTTP_STATUS:200
+
+### 10:36:10 --> POST /system/user/page
+REQ: {"pageNum":1,"pageSize":50,"username":"i1_revoke"}
+{"code":0,"msg":"success","data":{"records":[{"id":"1","createTime":"2026-09-09T10:35:11.91754","createBy":null,"updateTime":"2026-09-09T10:35:11.91754","updateBy":null,"deleted":0,"version":"0","tenantId":"0","username":"admin","realName":"系统管理员","email":null,"phone":null,"sex":0,"status":0,"deptId":"1","isAdmin":1,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514365208616961","createTime":"2026-09-09T10:36:09.256132","createBy":"1","updateTime":"2026-09-09T10:36:09.256142","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_leader","realName":"部门负责人张三","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514365984563201","createTime":"2026-09-09T10:36:09.441247","createBy":"1","updateTime":"2026-09-09T10:36:09.441255","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_init","realName":"流程发起人李四","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514366630486018","createTime":"2026-09-09T10:36:09.5951","createBy":"1","updateTime":"2026-09-09T10:36:09.595107","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_pm","realName":"岗位任职王五","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514367301574657","createTime":"2026-09-09T10:36:09.754619","createBy":"1","updateTime":"2026-09-09T10:36:09.754626","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_pm2","realName":"二部岗位赵六","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514364013240322","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514367976857601","createTime":"2026-09-09T10:36:09.915697","createBy":"1","updateTime":"2026-09-09T10:36:09.915705","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_plain","realName":"普通无权用户","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514368643751938","createTime":"2026-09-09T10:36:10.075178","createBy":"1","updateTime":"2026-09-09T10:36:10.075187","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_revoke","realName":"待撤权用户","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null}],"total":"7","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS:200
+
+### 10:36:10 --> POST /system/user
+REQ: {"username":"i1_off","realName":"将停用用户","deptId":2097514363824496641,"status":0,"plainPassword":"Admin12345"}
+{"code":0,"msg":"success","data":"2097514369331617794"}
+HTTP_STATUS:200
+
+### 10:36:10 --> POST /system/user/page
+REQ: {"pageNum":1,"pageSize":50,"username":"i1_off"}
+{"code":0,"msg":"success","data":{"records":[{"id":"1","createTime":"2026-09-09T10:35:11.91754","createBy":null,"updateTime":"2026-09-09T10:35:11.91754","updateBy":null,"deleted":0,"version":"0","tenantId":"0","username":"admin","realName":"系统管理员","email":null,"phone":null,"sex":0,"status":0,"deptId":"1","isAdmin":1,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514365208616961","createTime":"2026-09-09T10:36:09.256132","createBy":"1","updateTime":"2026-09-09T10:36:09.256142","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_leader","realName":"部门负责人张三","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514365984563201","createTime":"2026-09-09T10:36:09.441247","createBy":"1","updateTime":"2026-09-09T10:36:09.441255","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_init","realName":"流程发起人李四","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514366630486018","createTime":"2026-09-09T10:36:09.5951","createBy":"1","updateTime":"2026-09-09T10:36:09.595107","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_pm","realName":"岗位任职王五","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514367301574657","createTime":"2026-09-09T10:36:09.754619","createBy":"1","updateTime":"2026-09-09T10:36:09.754626","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_pm2","realName":"二部岗位赵六","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514364013240322","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514367976857601","createTime":"2026-09-09T10:36:09.915697","createBy":"1","updateTime":"2026-09-09T10:36:09.915705","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_plain","realName":"普通无权用户","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514368643751938","createTime":"2026-09-09T10:36:10.075178","createBy":"1","updateTime":"2026-09-09T10:36:10.075187","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_revoke","realName":"待撤权用户","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514369331617794","createTime":"2026-09-09T10:36:10.238373","createBy":"1","updateTime":"2026-09-09T10:36:10.238383","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_off","realName":"将停用用户","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null}],"total":"8","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS:200
+
+### 10:36:10 --> POST /system/user/page
+REQ: {"pageNum":1,"pageSize":50}
+{"code":0,"msg":"success","data":{"records":[{"id":"1","createTime":"2026-09-09T10:35:11.91754","createBy":null,"updateTime":"2026-09-09T10:35:11.91754","updateBy":null,"deleted":0,"version":"0","tenantId":"0","username":"admin","realName":"系统管理员","email":null,"phone":null,"sex":0,"status":0,"deptId":"1","isAdmin":1,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514365208616961","createTime":"2026-09-09T10:36:09.256132","createBy":"1","updateTime":"2026-09-09T10:36:09.256142","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_leader","realName":"部门负责人张三","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514365984563201","createTime":"2026-09-09T10:36:09.441247","createBy":"1","updateTime":"2026-09-09T10:36:09.441255","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_init","realName":"流程发起人李四","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514366630486018","createTime":"2026-09-09T10:36:09.5951","createBy":"1","updateTime":"2026-09-09T10:36:09.595107","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_pm","realName":"岗位任职王五","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514367301574657","createTime":"2026-09-09T10:36:09.754619","createBy":"1","updateTime":"2026-09-09T10:36:09.754626","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_pm2","realName":"二部岗位赵六","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514364013240322","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514367976857601","createTime":"2026-09-09T10:36:09.915697","createBy":"1","updateTime":"2026-09-09T10:36:09.915705","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_plain","realName":"普通无权用户","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514368643751938","createTime":"2026-09-09T10:36:10.075178","createBy":"1","updateTime":"2026-09-09T10:36:10.075187","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_revoke","realName":"待撤权用户","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null},{"id":"2097514369331617794","createTime":"2026-09-09T10:36:10.238373","createBy":"1","updateTime":"2026-09-09T10:36:10.238383","updateBy":"1","deleted":0,"version":"0","tenantId":"0","username":"i1_off","realName":"将停用用户","email":null,"phone":null,"sex":0,"status":0,"deptId":"2097514363824496641","isAdmin":0,"avatar":null,"roleIds":null,"postIds":null}],"total":"8","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS:200
+U_LEADER=2097514365208616961 U_INIT=2097514365984563201 U_PM=2097514366630486018 U_PM2=2097514367301574657 U_PLAIN=2097514367976857601 U_REVOKE=2097514368643751938 U_OFF=2097514369331617794
+
+### 10:36:10 --> PUT /system/dept
+REQ: {"id":2097514363824496641,"code":"I1D1","name":"I1证据一部","sort":1,"status":0,"parentId":1,"leaderId":2097514365208616961}
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS:200
+
+### 10:36:10 --> PUT /system/dept
+REQ: {"id":2097514364013240322,"code":"I1D2","name":"I1证据二部","sort":2,"status":0,"parentId":1,"leaderId":2097514366630486018}
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS:200
+
+### 10:36:10 --> GET /system/dept/2097514363824496641
+{"code":0,"msg":"success","data":{"id":"2097514363824496641","createTime":"2026-09-09T10:36:08.925832","createBy":"1","updateTime":"2026-09-09T10:36:10.338131","updateBy":"1","deleted":0,"version":"0","tenantId":"0","parentId":"1","name":"I1证据一部","code":"I1D1","sort":1,"status":0,"leaderId":"2097514365208616961"}}
+HTTP_STATUS:200
+
+### 10:36:10 --> PUT /system/dept
+REQ: {"id":2097514363824496641,"code":"I1D1","name":"I1证据一部","sort":1,"status":0,"parentId":1,"leaderId":999999}
+{"code":400,"msg":"部门负责人不存在、已停用或无效","data":null}
+HTTP_STATUS:200
+
+### 10:36:10 --> PUT /system/dept
+REQ: {"id":1,"code":"root","name":"根部门","sort":0,"status":0,"parentId":2097514363824496641}
+{"code":400,"msg":"上级部门不能是自身的子部门","data":null}
+HTTP_STATUS:200
+
+### 10:36:10 --> PUT /system/user/2097514366630486018/posts
+REQ: [{"postId":2097514363035967490,"deptId":2097514363824496641}]
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS:200
+
+### 10:36:10 --> PUT /system/user/2097514367301574657/posts
+REQ: [{"postId":2097514363035967490,"deptId":2097514364013240322}]
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS:200
+
+### 10:36:10 --> PUT /system/user/2097514365984563201/posts
+REQ: [{"postId":2097514363241488386,"deptId":2097514363824496641}]
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS:200
+
+### 10:36:10 --> GET /system/user/2097514366630486018/posts
+{"code":0,"msg":"success","data":[{"postId":"2097514363035967490","deptId":"2097514363824496641"}]}
+HTTP_STATUS:200
+
+### 10:36:10 --> PUT /system/user/2097514366630486018/posts
+REQ: [{"postId":999999,"deptId":2097514363824496641}]
+{"code":400,"msg":"只能绑定启用的岗位","data":null}
+HTTP_STATUS:400
+
+### 10:36:10 --> POST /system/role
+REQ: {"code":"I1_ROLE","name":"I1证据角色","sort":1,"status":1,"dataScope":0}
+{"code":0,"msg":"success","data":"2097514370896093185"}
+HTTP_STATUS:200
+
+### 10:36:10 --> POST /system/role/page
+REQ: {"pageNum":1,"pageSize":50}
+{"code":0,"msg":"success","data":{"records":[{"id":"1","createTime":"2026-09-09T10:35:11.891679","createBy":null,"updateTime":"2026-09-09T10:35:11.891679","updateBy":null,"deleted":0,"version":"0","tenantId":"0","name":"超级管理员","code":"superadmin","sort":0,"status":1,"dataScope":null,"deptIds":[],"builtIn":true,"description":"系统内置超级管理员角色，拥有所有权限"},{"id":"2","createTime":"2026-09-09T10:35:12.104623","createBy":null,"updateTime":"2026-09-09T10:35:12.104623","updateBy":null,"deleted":0,"version":"0","tenantId":"0","name":"管理员","code":"admin","sort":10,"status":1,"dataScope":0,"deptIds":[],"builtIn":false,"description":"系统初始化普通管理员角色"},{"id":"2097514370896093185","createTime":"2026-09-09T10:36:10.611271","createBy":"1","updateTime":"2026-09-09T10:36:10.611277","updateBy":"1","deleted":0,"version":"0","tenantId":"0","name":"I1证据角色","code":"I1_ROLE","sort":1,"status":1,"dataScope":0,"deptIds":[],"builtIn":false,"description":null}],"total":"3","pageNum":"1","pageSize":"10"}}
+HTTP_STATUS:200
+
+### 10:36:10 --> PUT /system/role/2097514370896093185/menus
+REQ: [13]
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS:200
+
+### 10:36:10 --> GET /system/role/2097514370896093185/menus
+{"code":0,"msg":"success","data":["13"]}
+HTTP_STATUS:200
+
+### 10:36:10 --> PUT /system/user/2097514368643751938/roles
+REQ: [2097514370896093185]
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS:200
+
+### 10:36:10 --> GET /system/user/2097514368643751938/roles
+{"code":0,"msg":"success","data":["2097514370896093185"]}
+HTTP_STATUS:200
+R_ID=2097514370896093185
+== G1-A 完成 2026-09-09 10:36:10
