@@ -1,0 +1,4 @@
+== evidence/i1-terminal-sync-06/pre-push MANIFEST 校验记录 ==
+cwd: /usr/local/projects/Smart-WorkFlow/product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-06/pre-push
+生成命令: find . -type f ! -name 'MANIFEST-SHA256.txt' ! -name 'manifest-verify.txt' | sort | sed 's|^\./||' | while read f; do shasum -a 256 "$f"; done > MANIFEST-SHA256.txt
+回读命令: shasum -a 256 -c MANIFEST-SHA256.txt
