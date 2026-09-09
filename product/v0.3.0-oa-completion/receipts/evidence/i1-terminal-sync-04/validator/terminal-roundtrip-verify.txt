@@ -1,0 +1,8 @@
+== TS-R1 终态 Validator 往返核对（回执 04）==
+cwd: /usr/local/projects/Smart-WorkFlow
+调用: bash -c 'sh .codex/governance/validate-terminal.sh < terminal-input.txt > terminal-stdout.txt 2> terminal-stderr.txt; echo $? > terminal-exit.txt'（单进程同一次调用）
+回执 04 末行载荷与 terminal-input.txt cmp 退出码: 0
+terminal-input.json 解析退出码: 0
+Validator 实际退出码: 0
+stdout 字节数: 0  stderr 字节数: 0
+事实: 末行==输入(cmp exit=0) 且 JSON 通过 且 Validator exit=0 => 闭环
