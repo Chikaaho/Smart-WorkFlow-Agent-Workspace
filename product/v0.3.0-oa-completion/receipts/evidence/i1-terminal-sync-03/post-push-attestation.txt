@@ -1,47 +1,41 @@
 == TS-G1 post-push attestation（推送后本地规划验收附件）==
-生成时间: 2026-09-09 17:2x +0800
-本文件为推送后生成的本地审查附件，不包含于被证明的提交（aa77c585…/328ff2a…）内，不声称自身已推送。
-workspace 远端完整 SHA: aa77c585efed3a44979d2de41f4c63debe40dbeb
+生成时间: 2026-09-09 +0800
+本文件为推送后生成的本地审查附件，不包含于被证明的提交（921f27343841c9cd4aa51e90c9c94a2c63ce0124）内，不声称自身已推送。
+workspace 远端完整 SHA: 921f27343841c9cd4aa51e90c9c94a2c63ce0124
 server 远端完整 SHA: 328ff2a926fed5b195675a1f351d9a806a40b230
 --- 发布集合逐文件：远端对象(git show <远端SHA>:<path> | sha256) vs 提交前哈希
-OK  product/v0.3.0-oa-completion/receipts/planning-review-terminal-sync-stage-i1-v0.3.0-oa-completion-01.md
-OK  product/v0.3.0-oa-completion/receipts/planning-review-terminal-sync-stage-i1-v0.3.0-oa-completion-02.md
-OK  product/v0.3.0-oa-completion/receipts/planning-execution-prompt-v0.3.0-oa-completion-i1-terminal-sync-01.md
-OK  product/v0.3.0-oa-completion/receipts/terminal-sync-stage-i1-v0.3.0-oa-completion-03.md
-OK  knowledge/current-status.md
-OK  knowledge/session-handoff.md
-OK  knowledge/features/v0.3.0-oa-completion.md
-OK  memory/README.md
-OK  memory/features.md
-OK  memory/handoff.md
-OK  memory/state.md
-OK  todo/requirement-pool.md
-FAIL Smart-WorkFlow-Server/功能清单.md
-    expected=8da3f4118f28aed71752a1b1b030f355c9275e738b14bdbe4a397b4b5a6ef3fa remote=None
-FAIL evidence/i1-terminal-sync-03/MANIFEST-SHA256.txt
-    expected=19e3726207ecf0f4c1f9708d7f5301b53958c6e1d4aaec3bc8ff0da0f9f71c3b remote=None
-FAIL evidence/i1-terminal-sync-03/knowledge-readable-copies/current-status.md
-    expected=93abfdbefad52b40e4175f183190b8556ae25a1532578da9ba80ef547fbf84a7 remote=None
-FAIL evidence/i1-terminal-sync-03/knowledge-readable-copies/function-checklist-current-focus.md
-    expected=d35e51784de534a924c3886342d5907278f108167553910fcb0ec559e17d4592 remote=None
-FAIL evidence/i1-terminal-sync-03/knowledge-readable-copies/session-handoff.md
-    expected=4cadbb3f10d68e48d1d142218f0bf9d8c8a9498d8650607b918026498992d2e7 remote=None
-FAIL evidence/i1-terminal-sync-03/knowledge-readable-copies/v0.3.0-oa-completion.md
-    expected=f0d91aa916b4b41c6c36ccd51db562671a02ed5c9aa92f68278f030abfad273f remote=None
-FAIL evidence/i1-terminal-sync-03/publish-set-before.txt
-    expected=14045bd81a19357b1d72842756c326748ce7c0d1d09749802dc776d79e7db56c remote=None
-FAIL evidence/i1-terminal-sync-03/ts-k1-reverse-scan.txt
-    expected=692cc8d93e44f62aaf5fa03a7491f18105bd70844f77229601a3536fe2aca406 remote=None
-FAIL evidence/i1-terminal-sync-03/validator/terminal-exit.txt
-    expected=9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa remote=None
-FAIL evidence/i1-terminal-sync-03/validator/terminal-input.txt
-    expected=fee44ca5ec3c31b106257c3aa137ea811c807dc1848ed735ccb1b563185a0671 remote=None
-FAIL evidence/i1-terminal-sync-03/validator/terminal-roundtrip-verify.txt
-    expected=b1c0b232905614f86895cb4cfb5076a4315a1670e3ce237ac123ea43bffdeac9 remote=None
-FAIL evidence/i1-terminal-sync-03/validator/terminal-stderr.txt
-    expected=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 remote=None
-FAIL evidence/i1-terminal-sync-03/validator/terminal-stdout.txt
-    expected=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 remote=None
+OK  [ws] product/v0.3.0-oa-completion/receipts/planning-review-terminal-sync-stage-i1-v0.3.0-oa-completion-01.md
+OK  [ws] product/v0.3.0-oa-completion/receipts/planning-review-terminal-sync-stage-i1-v0.3.0-oa-completion-02.md
+OK  [ws] product/v0.3.0-oa-completion/receipts/planning-execution-prompt-v0.3.0-oa-completion-i1-terminal-sync-01.md
+FAIL [ws] product/v0.3.0-oa-completion/receipts/terminal-sync-stage-i1-v0.3.0-oa-completion-03.md
+    expected=11c84ffa09a5ee6d101cd80ce803138a36ad11869caa082d33c79f77a5a8349a remote=1266d2c2b273ed882021f81e2f9024b73e88a6c6962d158d8585e768660fef0b
+OK  [ws] knowledge/current-status.md
+OK  [ws] knowledge/session-handoff.md
+OK  [ws] knowledge/features/v0.3.0-oa-completion.md
+OK  [ws] memory/README.md
+OK  [ws] memory/features.md
+OK  [ws] memory/handoff.md
+OK  [ws] memory/state.md
+OK  [ws] todo/requirement-pool.md
+FAIL [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/MANIFEST-SHA256.txt
+    expected=4e60639f99cc2bfa1c9b563c44c73489bf456a17b3142a0d91265410bc1fc6f5 remote=dbe1511bba14e2b72f2d11e02306ad06d9df33ffb7eb9e010f0dae8e35c8e1f1
+OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/knowledge-readable-copies/current-status.md
+OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/knowledge-readable-copies/function-checklist-current-focus.md
+OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/knowledge-readable-copies/session-handoff.md
+OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/knowledge-readable-copies/v0.3.0-oa-completion.md
+OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/manifest-verify.txt
+OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/post-push-attestation.txt
+FAIL [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/publish-set-before.txt
+    expected=5f2f679254d564e9ddf294876467468001a7e4b0a0ece9ec33f0f99ee7c61b2b remote=08689a910e4052e41e45b576b73c1790d7a669cd895786689a92c1e269a84da4
+OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/ts-k1-reverse-scan.txt
+OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/validator/terminal-exit.txt
+FAIL [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/validator/terminal-input.txt
+    expected=fee44ca5ec3c31b106257c3aa137ea811c807dc1848ed735ccb1b563185a0671 remote=e746a914e4c67e2f1dfd7c218d1a68685f21697b827dc413981dbc83fa16c113
+FAIL [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/validator/terminal-roundtrip-verify.txt
+    expected=b1c0b232905614f86895cb4cfb5076a4315a1670e3ce237ac123ea43bffdeac9 remote=5414d62d5f4b656b8e1af9d56a6ede3e087fac97a7fa192518ddd79967a75f5b
+OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/validator/terminal-stderr.txt
+OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/validator/terminal-stdout.txt
+OK  [server] 功能清单.md
 --- 结论：发布集合逐文件远端哈希与提交前一致 = 存在不一致
---- 本地工作树残留（除本附件与既有无关残留外无新增）：
+--- 本地工作树残留（除本附件外仅既有无关残留/Planner 后续裁决）：
 （干净）
