@@ -1,0 +1,8 @@
+== T7 终态 Validator 往返核对 ==
+cwd: /usr/local/projects/Smart-WorkFlow
+调用: bash -c 'sh .codex/governance/validate-terminal.sh < terminal-input.txt > terminal-stdout.txt 2> terminal-stderr.txt; echo $? > terminal-exit.txt'（单进程同一次调用）
+回执 02 末行载荷抽取后与 terminal-input.txt cmp 退出码: 0
+terminal-input.txt JSON 解析退出码: 0
+Validator 实际退出码: 0
+stdout 字节数: 0  stderr 字节数: 0
+事实: 回执末行==Validator输入(cmp exit=0) 且 JSON 解析通过 且 Validator exit=0 => T7 闭环
