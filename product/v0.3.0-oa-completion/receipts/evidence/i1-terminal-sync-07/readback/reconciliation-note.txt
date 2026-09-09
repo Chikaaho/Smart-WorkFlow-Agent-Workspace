@@ -1,0 +1,8 @@
+== TS-G1e 对账注记 ==
+- 锁定起点 ae950626 是远端终点 86a5baf6 的祖先（merge-base --is-ancestor exit=0）。
+- ae950626..86a5baf6 精确提交链：2 个提交，无省略：
+  1) 304ea09fb05fbe445cf362e6a9b8b189b11abb2b（父 ae950626…，15 files）＝回执 06 + pre-push 06 全量 + 提示 04 + 复核 05
+  2) 86a5baf6712c05cae922242ba887190b11c52c24（父 304ea09f…，5 files）＝memory×4 + todo
+- 逐提交文件集合聚合（去重）= 20 个文件；远端比较集合 = 这 20 个文件；二者一致（见 per-commit-files.stdout.txt 与 remote-compare.stdout.txt）。
+- 回执 06 中的 32 项比较是 b8b92c3a..HEAD 的较宽历史范围（含回执 05 及更早锁定文件），仅证明该宽范围一致，不作为单提交或本轮精确范围证据。
+- 本轮零 commit、零 push、零 add；本 readback 包与复核 06/提示 05/回执 07 均为本地验收附件，等待 Planner 裁决。
