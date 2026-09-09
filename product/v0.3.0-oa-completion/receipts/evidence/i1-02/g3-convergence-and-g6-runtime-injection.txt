@@ -1,0 +1,146 @@
+== G3 权限即时收敛 + G6 运行时故障注入  2026-09-09 10:38:28 +0800
+
+===== 场景1 停用即拒（同一 token）=====
+
+### [S1-前] 10:38:28 --> GET /auth/me
+{"code":0,"msg":"success","data":{"user":{"id":"2097514369331617794","username":"i1_off","displayName":"将停用用户","deptId":"2097514363824496641","tenantId":"0","avatar":null},"permissions":[],"roles":[],"superAdmin":false}}
+HTTP_STATUS:200
+
+### [S1-变更] 10:38:28 --> PUT /system/user
+REQ: {"id":2097514369331617794,"username":"i1_off","realName":"将停用用户","deptId":2097514363824496641,"status":1,"version":0}
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS:200
+
+### [S1-后] 10:38:29 --> GET /auth/me
+{"code":401,"msg":"未认证","data":null}
+HTTP_STATUS:401
+
+### [S1-后] 10:38:29 --> POST /system/user/page
+REQ: {"pageNum":1,"pageSize":5}
+{"code":401,"msg":"未认证","data":null}
+HTTP_STATUS:401
+
+--- S1 持久化回读：i1_off status 应为 1
+USERNAME | STATUS | DELETED
+i1_off   | 1      | 0
+(1 row, 3 ms)
+
+===== 场景2 撤菜单即拒（同一 token）=====
+
+### [S2-前] 10:38:29 --> GET /auth/me
+{"code":0,"msg":"success","data":{"user":{"id":"2097514368643751938","username":"i1_revoke","displayName":"待撤权用户","deptId":"2097514363824496641","tenantId":"0","avatar":null},"permissions":["system:dept:list"],"roles":["I1_ROLE"],"superAdmin":false}}
+HTTP_STATUS:200
+
+### [S2-前] 10:38:29 --> GET /system/dept/tree
+{"code":0,"msg":"success","data":[{"id":"1","createTime":"2026-09-09T10:35:11.91754","createBy":null,"updateTime":"2026-09-09T10:35:11.91754","updateBy":null,"deleted":0,"version":"0","tenantId":"0","parentId":"0","name":"根部门","code":"root","sort":0,"status":0,"leaderId":null},{"id":"2097514363824496641","createTime":"2026-09-09T10:36:08.925832","createBy":"1","updateTime":"2026-09-09T10:36:10.338131","updateBy":"1","deleted":0,"version":"0","tenantId":"0","parentId":"1","name":"I1证据一部","code":"I1D1","sort":1,"status":0,"leaderId":"2097514365208616961"},{"id":"2097514364013240322","createTime":"2026-09-09T10:36:08.97084","createBy":"1","updateTime":"2026-09-09T10:36:10.368903","updateBy":"1","deleted":0,"version":"0","tenantId":"0","parentId":"1","name":"I1证据二部","code":"I1D2","sort":2,"status":0,"leaderId":"2097514366630486018"},{"id":"2097514364214566914","createTime":"2026-09-09T10:36:09.018288","createBy":"1","updateTime":"2026-09-09T10:36:09.018293","updateBy":"1","deleted":0,"version":"0","tenantId":"0","parentId":"1","name":"重码部门","code":"I1D1","sort":9,"status":0,"leaderId":null}]}
+HTTP_STATUS:200
+
+### [S2-变更] 10:38:29 --> PUT /system/role/2097514370896093185/menus
+REQ: []
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS:200
+
+### [S2-后] 10:38:30 --> GET /auth/me
+{"code":0,"msg":"success","data":{"user":{"id":"2097514368643751938","username":"i1_revoke","displayName":"待撤权用户","deptId":"2097514363824496641","tenantId":"0","avatar":null},"permissions":[],"roles":["I1_ROLE"],"superAdmin":false}}
+HTTP_STATUS:200
+
+### [S2-后] 10:38:31 --> GET /system/dept/tree
+{"code":403,"msg":"无权限","data":null}
+HTTP_STATUS:403
+
+--- S2 持久化回读：I1_ROLE 菜单应为空
+ROLE_MENU_CNT
+0
+(1 row, 6 ms)
+
+===== 场景3 撤角色即拒（同一 token）=====
+
+### [S2-变更2] 10:38:31 --> PUT /system/user/2097514368643751938/roles
+REQ: []
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS:200
+
+### [S3-后] 10:38:32 --> GET /auth/me
+{"code":0,"msg":"success","data":{"user":{"id":"2097514368643751938","username":"i1_revoke","displayName":"待撤权用户","deptId":"2097514363824496641","tenantId":"0","avatar":null},"permissions":[],"roles":[],"superAdmin":false}}
+HTTP_STATUS:200
+
+### [S3-后] 10:38:32 --> GET /system/dept/tree
+{"code":403,"msg":"无权限","data":null}
+HTTP_STATUS:403
+
+--- S3 持久化回读：i1_revoke 角色关联应为 0
+UR_CNT
+0
+(1 row, 3 ms)
+
+===== 场景4 G6：Redis 停机注入，权限变更必须失败回滚 =====
+U_G6=2097514966835388417
+i1_g6 login token_len=170
+
+### [S4-前] 10:38:33 --> GET /auth/me
+{"code":0,"msg":"success","data":{"user":{"id":"2097514966835388417","username":"i1_g6","displayName":"G6被试","deptId":"2097514363824496641","tenantId":"0","avatar":null},"permissions":[],"roles":[],"superAdmin":false}}
+HTTP_STATUS:200
+
+--- [注入] 10:38:34 停止 redis-server（kill 71930
+72946
+73409）
+Could not connect to Redis at 127.0.0.1:6379: Connection refused
+redis 已不可达（注入生效）
+
+### [S4-变更] 10:38:40 --> PUT /system/user
+REQ: {"id":2097514966835388417,"username":"i1_g6","realName":"G6被试","deptId":2097514363824496641,"status":1,"version":}
+{"code":503,"msg":"登录上下文装载失败（认证基础设施未就绪，非账号或权限问题）: Redis command timed out","data":null}
+HTTP_STATUS:503
+
+--- [恢复] 10:38:45 重启 redis-server
+redis ping: PONG
+
+### [S4-后] 10:38:48 --> GET /auth/me
+{"code":0,"msg":"success","data":{"user":{"id":"2097514966835388417","username":"i1_g6","displayName":"G6被试","deptId":"2097514363824496641","tenantId":"0","avatar":null},"permissions":[],"roles":[],"superAdmin":false}}
+HTTP_STATUS:200
+
+--- S4 持久化回读：i1_g6 status 应仍为 0（变更已回滚），旧会话仍有效是【预期】（变更未发生）
+USERNAME | STATUS | DELETED
+i1_g6    | 0      | 0
+(1 row, 3 ms)
+
+--- S4 补充：Redis 恢复后重新执行停用 → 正常收敛
+
+### [S4-恢复后变更] 10:38:51 --> PUT /system/user
+REQ: {"id":2097514966835388417,"username":"i1_g6","realName":"G6被试","deptId":2097514363824496641,"status":1,"version":}
+{"code":400,"msg":"请求体非法: Unexpected character ('}' (code 125)): expected a value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 118]","data":null}
+HTTP_STATUS:400
+
+### [S4-恢复后] 10:38:52 --> GET /auth/me
+{"code":0,"msg":"success","data":{"user":{"id":"2097514966835388417","username":"i1_g6","displayName":"G6被试","deptId":"2097514363824496641","tenantId":"0","avatar":null},"permissions":[],"roles":[],"superAdmin":false}}
+HTTP_STATUS:200
+== G3/G6 完成 2026-09-09 10:38:52
+
+===== 场景4R（重做）：Redis 停机注入 → 权限变更明确失败 → 恢复后收敛  2026-09-09 10:40:04 +0800 =====
+U_G6B=2097515353583771650
+i1_g6b login token_len=170
+### [S4R-前] 10:40:06 GET /auth/me（旧会话有效）
+{"code":0,"msg":"success","data":{"user":{"id":"2097515353583771650","username":"i1_g6b","displayName":"G6重做被试","deptId":"2097514363824496641","tenantId":"0","avatar":null},"permissions":[],"roles":[],"superAdmin":false}}
+HTTP_STATUS:200
+i1_g6b 当前 version=0
+--- [注入] 10:40:06 redis-cli shutdown nosave
+redis ping: Could not connect to Redis at 127.0.0.1:6379: Connection refused
+### [S4R-变更] 10:40:07 PUT /system/user 停用 i1_g6b（Redis 停机中）
+{"code":503,"msg":"登录上下文装载失败（认证基础设施未就绪，非账号或权限问题）: Redis command timed out","data":null}
+HTTP_STATUS:503
+--- [恢复] 10:40:12 重启 redis
+redis ping: PONG
+--- S4R 持久化回读：i1_g6b status 应仍为 0（变更未发生=无成功变更窗口）
+USERNAME | STATUS | DELETED
+i1_g6b   | 0      | 0
+(1 row, 3 ms)
+### [S4R-恢复后变更] 10:40:16 PUT /system/user 停用 i1_g6b（version=0）
+{"code":0,"msg":"success","data":null}
+HTTP_STATUS:200
+### [S4R-恢复后] 10:40:17 同一 token GET /auth/me（应 401）
+{"code":401,"msg":"未认证","data":null}
+HTTP_STATUS:401
+--- 服务端审计记录（认证基础设施异常日志摘录）
+2026-09-09T10:38:40.095+08:00 ERROR 30395 --- [io-18080-exec-9] c.s.c.s.filter.JwtAuthenticationFilter   : 登录上下文装载失败（认证基础设施异常）: Redis command timed out
+2026-09-09T10:38:45.199+08:00 ERROR 30395 --- [o-18080-exec-10] c.s.c.s.filter.JwtAuthenticationFilter   : 登录上下文装载失败（认证基础设施异常）: Redis command timed out
+2026-09-09T10:40:12.751+08:00 ERROR 30395 --- [io-18080-exec-8] c.s.c.s.filter.JwtAuthenticationFilter   : 登录上下文装载失败（认证基础设施异常）: Redis command timed out

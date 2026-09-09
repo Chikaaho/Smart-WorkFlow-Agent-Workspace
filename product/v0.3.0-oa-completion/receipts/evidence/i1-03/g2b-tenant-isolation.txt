@@ -1,0 +1,34 @@
+== G2b 非零租户主体真实认证与双向隔离  2026-09-09 11:56:25 +0800 ==
+--- 1. i1_t5（tenant 5）真实 /login 签发
+login token_len=150
+--- 2. /auth/me（tenantId 应为 5，权限应含 system:user:list/system:dept:list）
+{"code":0,"msg":"success","data":{"user":{"id":"8005","username":"i1_t5","displayName":"租户五用户","deptId":"8001","tenantId":"5","avatar":null},"permissions":["system:user:list","system:dept:list"],"roles":["T5_ROLE"],"superAdmin":false}}
+HTTP:200
+--- 3. 本租户正向：GET /system/dept/tree（只应见租户五部门）
+{"code":0,"msg":"success","data":[{"id":"8001","createTime":"2026-09-09T10:40:57.523022","createBy":null,"updateTime":"2026-09-09T10:40:57.523022","updateBy":null,"deleted":0,"version":"0","tenantId":"5","parentId":"0","name":"租户五部门","code":"T5D","sort":1,"status":0,"leaderId":null}]}
+HTTP:200
+
+--- 4. 本租户正向：POST /system/user/page（只应见 i1_t5）
+用户: ['i1_t5'] total: 1
+--- 5. 跨租户读负向：GET /system/dept/2097514363824496641 与 GET /system/user/2097514365208616961（租户0对象）
+{"code":0,"msg":"success","data":null}
+HTTP:200
+{"code":0,"msg":"success","data":null}
+HTTP:200
+--- 6. 跨租户写负向：PUT /system/dept/2097514363824496641（改名攻击）与 DELETE /system/user/2097514367976857601
+{"code":403,"msg":"无权限","data":null}
+HTTP:403
+{"code":403,"msg":"无权限","data":null}
+HTTP:403
+--- 7. 反向：admin GET /system/dept/8001（租户五对象应不可见）
+{"code":0,"msg":"success","data":null}
+HTTP:200
+--- 8. 零越权写入回读（租户0被攻击对象应原样；租户5 fixture 原样）
+ID                  | CODE | NAME
+8001                | T5D  | 租户五部门
+2097514363824496641 | I1D1 | I1证据一部
+(2 rows, 3 ms)
+ID                  | USERNAME | DELETED
+8005                | i1_t5    | 0
+2097514367976857601 | i1_plain | 0
+(2 rows, 0 ms)
