@@ -1,9 +1,9 @@
 == TS-G1 post-push attestation（推送后本地规划验收附件）==
 生成时间: 2026-09-09 +0800
-本文件为推送后生成的本地审查附件，不包含于被证明的提交（500566e1f80f525489377b6d7a8039e8fa453d62）内，不声称自身已推送。
-workspace 远端完整 SHA: 500566e1f80f525489377b6d7a8039e8fa453d62
+本文件为推送后生成的本地审查附件，不包含于被证明的提交（d9abf03f081e27f055a0c6632af37d77a26e8de0）内，不声称自身已推送。
+workspace 远端完整 SHA: d9abf03f081e27f055a0c6632af37d77a26e8de0
 server 远端完整 SHA: 328ff2a926fed5b195675a1f351d9a806a40b230
---- 发布集合逐文件：远端对象(git show <远端SHA>:<path> | sha256) vs 发布集合清单（不含清单自身；清单以最终提交 SHA 锚定）
+--- 发布集合逐文件：远端对象(git show <远端SHA>:<path> | sha256) vs 发布集合清单（清单与 MANIFEST 均以最终提交 SHA 锚定，不列自身哈希）
 OK  [ws] product/v0.3.0-oa-completion/receipts/planning-review-terminal-sync-stage-i1-v0.3.0-oa-completion-01.md
 OK  [ws] product/v0.3.0-oa-completion/receipts/planning-review-terminal-sync-stage-i1-v0.3.0-oa-completion-02.md
 OK  [ws] product/v0.3.0-oa-completion/receipts/planning-execution-prompt-v0.3.0-oa-completion-i1-terminal-sync-01.md
@@ -16,8 +16,6 @@ OK  [ws] memory/features.md
 OK  [ws] memory/handoff.md
 OK  [ws] memory/state.md
 OK  [ws] todo/requirement-pool.md
-FAIL [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/MANIFEST-SHA256.txt
-    expected=dbe1511bba14e2b72f2d11e02306ad06d9df33ffb7eb9e010f0dae8e35c8e1f1 remote=d5853947f6eeb0f86410b9a32b3b42cbf0e56ac524dea952de8f70ef448613e0
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/knowledge-readable-copies/current-status.md
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/knowledge-readable-copies/function-checklist-current-focus.md
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/knowledge-readable-copies/session-handoff.md
@@ -31,7 +29,7 @@ OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/vali
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/validator/terminal-stderr.txt
 OK  [ws] product/v0.3.0-oa-completion/receipts/evidence/i1-terminal-sync-03/validator/terminal-stdout.txt
 OK  [server] 功能清单.md
-publish-set-before.txt 远端对象 SHA: 9cac81bbfbb283fd957ff80fc609e9de5e820621e448b3b739362aae518e14bf（存在性校验：OK）
---- 结论：发布集合逐文件远端哈希与清单一致 = 存在 1 项不一致
+publish-set-before.txt 远端对象 SHA: 8a77e992e6ac0d2fac27e3e9281715f6fbf43b38d0edc6d12ae858abede9e0f2（OK）  MANIFEST-SHA256.txt 远端对象 SHA: fd428e4b9aa50ca347ad27bfec5447465e82ee685e846ecac53c81a1c63161a3（OK）
+--- 结论：发布集合逐文件远端哈希与清单一致 = 全部 OK
 --- 本地工作树残留（除本附件外仅既有无关残留/Planner 后续裁决）：
 （干净）
