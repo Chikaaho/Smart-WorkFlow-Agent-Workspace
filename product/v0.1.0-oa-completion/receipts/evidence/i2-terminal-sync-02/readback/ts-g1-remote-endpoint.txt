@@ -1,0 +1,35 @@
+=== TS-G1 Workspace remote endpoint reconciliation (read-only) ===
+observed_at: 2026-09-10 (Asia/Shanghai)
+
+baseline (receipt 01 declared sync-start HEAD): a191861c1f510f0dae1be77b38b540177e7ee621
+remote branch                              : origin/develop-sw
+ACTUAL remote endpoint SHA (ls-remote)     : afec348d020420a013818e9a2ed7a8150ae4e075
+receipt 01 declared final remote SHA       : 31de0c518f1087acfd77b8897b4fdcf16da95cb9
+local HEAD / develop-sw                    : afec348d020420a013818e9a2ed7a8150ae4e075
+local vs remote ahead/behind               : 0 / 0
+endpoint tree (remote) / local tree        : 5447a23a483e7cb305579d328ac326f3765ff9de (identical)
+
+continuous chain a191861..afec348 (linear, parent-linked, no merge/rebase/force):
+  d6121e7ec20cfd9a73f075875995db5260170a8d  parent=a191861  993 paths  chore(oa): 同步 I2 低代码表单收口阶段三终态
+  42c8e04acf4cd873e1675f7774cc9faf9bc52292  parent=d6121e7   18 paths  chore(oa): 追加 I2 阶段三终态同步回执 01 与证据
+  6e4346fe70e332369277f542447d53148f056f08  parent=42c8e04    3 paths  chore(oa): 校正 I2 终态同步回执 workspace 双提交与证据哈希
+  bc6c626aa4806611139177026c07377d93aaadcd  parent=6e4346f    1 path   chore(oa): 记录 workspace I2 终态同步最终提交链与远端 SHA
+  31de0c518f1087acfd77b8897b4fdcf16da95cb9  parent=bc6c626    1 path   chore(oa): 重算 I2 终态同步 manifest 与回读结果
+  afec348d020420a013818e9a2ed7a8150ae4e075  parent=31de0c5    3 paths  chore(oa): 定稿 I2 终态同步回执 workspace 提交链与 manifest
+
+RESOLUTION of TS-G1 contradiction:
+  - 31de0c5 is NOT the remote endpoint; it is the second-to-last commit. The remote endpoint is afec348,
+    a 7th commit created 43s after 31de0c5 solely to finalize the receipt/workspace-push-record/manifest trio.
+  - Therefore the receipt-01 content that contains "31de0c5..." is genuinely contained in afec348, not in 31de0c5.
+    The apparent self-reference paradox is a mis-stated endpoint, not an impossible artifact.
+  - The 3 files that afec348 adds over 31de0c5 are exactly:
+      product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i2-v0.1.0-oa-completion-01.md
+      product/v0.1.0-oa-completion/receipts/evidence/i2-terminal-sync-01/manifest.sha256
+      product/v0.1.0-oa-completion/receipts/evidence/i2-terminal-sync-01/workspace-push-record.txt
+  - manifest.sha256 as stored at the remote endpoint verifies 15/15 OK against remote-stored content,
+    including the receipt itself: the package is self-consistent AT the remote endpoint.
+  - Single real final Workspace SHA for the new terminal: afec348d020420a013818e9a2ed7a8150ae4e075
+
+per-commit file count 993 at d6121e7 vs receipt-01's "991": the difference is the two D (deleted)
+paths in the same commit (rename/deletion entries), which --name-only lists but the 991 manifest
+enumerated differently. Aggregate over the full chain is 1011 unique paths (998 A / 3 D / 10 M).
