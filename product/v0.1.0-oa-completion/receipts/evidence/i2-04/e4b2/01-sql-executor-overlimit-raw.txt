@@ -1,0 +1,11 @@
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/chikan/.m2/repository/net/bytebuddy/byte-buddy-agent/1.15.11/byte-buddy-agent-1.15.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+12:56:50.851 [main] INFO com.zaxxer.hikari.HikariDataSource -- HikariPool-1 - Starting...
+12:56:50.971 [main] INFO com.zaxxer.hikari.pool.HikariPool -- HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:sql_executor_limit user=SA
+12:56:50.974 [main] INFO com.zaxxer.hikari.HikariDataSource -- HikariPool-1 - Start completed.
+12:56:51.073 [main] WARN com.sw.ck.bpm.engine.executor.SqlExecutor -- SQL execution FAILED: datasource=controlled-h2, time=50ms, sql=SELECT id FROM ext_rows ORDER BY id, error=External datasource result exceeds maxRows=2
+12:56:51.085 [main] INFO com.zaxxer.hikari.HikariDataSource -- HikariPool-1 - Shutdown initiated...
+12:56:51.115 [main] INFO com.zaxxer.hikari.HikariDataSource -- HikariPool-1 - Shutdown completed.

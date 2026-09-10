@@ -1,0 +1,647 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Smart-WorkFlow                                                     [pom]
+[INFO] Smart-WorkFlow :: Dependencies                                     [pom]
+[INFO] Smart-WorkFlow :: Common                                           [jar]
+[INFO] Smart-WorkFlow :: Security                                         [jar]
+[INFO] Smart-WorkFlow :: Framework                                        [pom]
+[INFO] Smart-WorkFlow :: Basic :: Storage :: API                          [jar]
+[INFO] Smart-WorkFlow :: Basic :: Storage :: Biz                          [jar]
+[INFO] Smart-WorkFlow :: Basic :: Notify :: API                           [jar]
+[INFO] Smart-WorkFlow :: Basic :: Notify :: Biz                           [jar]
+[INFO] Smart-WorkFlow :: Basic :: Notify                                  [pom]
+[INFO] Smart-WorkFlow :: Basic :: Job :: API                              [jar]
+[INFO] Smart-WorkFlow :: Basic :: Job :: Biz                              [jar]
+[INFO] Smart-WorkFlow :: Basic :: IoT                                     [jar]
+[INFO] Smart-WorkFlow :: Basic :: Knowledge                               [jar]
+[INFO] Smart-WorkFlow :: Basic :: Agent                                   [jar]
+[INFO] Smart-WorkFlow :: Basic                                            [pom]
+[INFO] Smart-WorkFlow :: Biz :: System :: API                             [jar]
+[INFO] Smart-WorkFlow :: Biz :: System :: Biz                             [jar]
+[INFO] Smart-WorkFlow :: Biz :: System                                    [pom]
+[INFO] Smart-WorkFlow :: Biz :: Form :: API                               [jar]
+[INFO] Smart-WorkFlow :: Biz :: Form :: Biz                               [jar]
+[INFO] Smart-WorkFlow :: Biz :: Form                                      [pom]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: API                                [jar]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: Engine                             [jar]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: Process                            [jar]
+[INFO] Smart-WorkFlow :: Biz :: BPM                                       [pom]
+[INFO] Smart-WorkFlow :: Biz :: OpenAPI :: API                            [jar]
+[INFO] Smart-WorkFlow :: Biz :: OpenAPI :: Biz                            [jar]
+[INFO] Smart-WorkFlow :: Biz :: OpenAPI                                   [pom]
+[INFO] Smart-WorkFlow :: Biz                                              [pom]
+[INFO] Smart-WorkFlow :: Bootstrap                                        [jar]
+[INFO] 
+[INFO] ----------------------< com.sw.ck:smart-workflow >----------------------
+[INFO] Building Smart-WorkFlow 1.0.0-SNAPSHOT                            [1/31]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-dependencies >----------------------
+[INFO] Building Smart-WorkFlow :: Dependencies 1.0.0-SNAPSHOT            [2/31]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ------------------------< com.sw.ck:sw-common >-------------------------
+[INFO] Building Smart-WorkFlow :: Common 1.0.0-SNAPSHOT                  [3/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-common ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-common ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-common ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-framework/sw-common/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-common ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-common ---
+[INFO] 
+[INFO] -----------------------< com.sw.ck:sw-security >------------------------
+[INFO] Building Smart-WorkFlow :: Security 1.0.0-SNAPSHOT                [4/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-security ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-security ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-security ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-security ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-security ---
+[INFO] 
+[INFO] -----------------------< com.sw.ck:sw-framework >-----------------------
+[INFO] Building Smart-WorkFlow :: Framework 1.0.0-SNAPSHOT               [5/31]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] -------------------< com.sw.ck:sw-basic-storage-api >-------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Storage :: API 1.0.0-SNAPSHOT [6/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-storage-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-basic/sw-basic-storage/sw-basic-storage-api/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-storage-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-storage-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-basic/sw-basic-storage/sw-basic-storage-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-storage-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-storage-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] -------------------< com.sw.ck:sw-basic-storage-biz >-------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Storage :: Biz 1.0.0-SNAPSHOT [7/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-storage-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-storage-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-storage-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-storage-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-storage-biz ---
+[INFO] 
+[INFO] -------------------< com.sw.ck:sw-basic-notify-api >--------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Notify :: API 1.0.0-SNAPSHOT  [8/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-notify-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-basic/sw-basic-notify/sw-basic-notify-api/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-notify-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-notify-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-basic/sw-basic-notify/sw-basic-notify-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-notify-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-notify-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] -------------------< com.sw.ck:sw-basic-notify-biz >--------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Notify :: Biz 1.0.0-SNAPSHOT  [9/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-notify-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 8 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-notify-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-notify-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-notify-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-notify-biz ---
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-basic-notify >----------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Notify 1.0.0-SNAPSHOT        [10/31]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-basic-job-api >---------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Job :: API 1.0.0-SNAPSHOT    [11/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-job-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-basic/sw-basic-job/sw-basic-job-api/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-job-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-job-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-basic/sw-basic-job/sw-basic-job-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-job-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-job-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-basic-job-biz >---------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Job :: Biz 1.0.0-SNAPSHOT    [12/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-job-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-job-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-job-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-job-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-job-biz ---
+[INFO] 
+[INFO] -----------------------< com.sw.ck:sw-basic-iot >-----------------------
+[INFO] Building Smart-WorkFlow :: Basic :: IoT 1.0.0-SNAPSHOT           [13/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-iot ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 8 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-iot ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-iot ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-basic/sw-basic-iot/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-iot ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-iot ---
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-basic-knowledge >--------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Knowledge 1.0.0-SNAPSHOT     [14/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-knowledge ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-knowledge ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-knowledge ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-basic/sw-basic-knowledge/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-knowledge ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-knowledge ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] ----------------------< com.sw.ck:sw-basic-agent >----------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Agent 1.0.0-SNAPSHOT         [15/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-agent ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-agent ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-agent ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-agent ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-agent ---
+[INFO] 
+[INFO] -------------------------< com.sw.ck:sw-basic >-------------------------
+[INFO] Building Smart-WorkFlow :: Basic 1.0.0-SNAPSHOT                  [16/31]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-biz-system-api >---------------------
+[INFO] Building Smart-WorkFlow :: Biz :: System :: API 1.0.0-SNAPSHOT   [17/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-biz-system-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-api/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-biz-system-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-biz-system-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-biz-system-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-biz-system-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-biz-system-biz >---------------------
+[INFO] Building Smart-WorkFlow :: Biz :: System :: Biz 1.0.0-SNAPSHOT   [18/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-biz-system-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-biz-system-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-biz-system-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-biz-system-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-biz-system-biz ---
+[INFO] 
+[INFO] ----------------------< com.sw.ck:sw-biz-system >-----------------------
+[INFO] Building Smart-WorkFlow :: Biz :: System 1.0.0-SNAPSHOT          [19/31]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-biz-form-api >----------------------
+[INFO] Building Smart-WorkFlow :: Biz :: Form :: API 1.0.0-SNAPSHOT     [20/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-biz-form-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-api/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-biz-form-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-biz-form-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-biz-form-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-biz-form-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-biz-form-biz >----------------------
+[INFO] Building Smart-WorkFlow :: Biz :: Form :: Biz 1.0.0-SNAPSHOT     [21/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-biz-form-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 13 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-biz-form-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-biz-form-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-biz-form-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-biz-form-biz ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.sw.ck.form.service.FormI2ClosureIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-09-09T23:09:03.800+08:00  INFO 60735 --- [           main] c.s.c.f.s.FormI2ClosureIntegrationTest   : Starting FormI2ClosureIntegrationTest using Java 21.0.11 with PID 60735 (started by chikan in /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-biz)
+2026-09-09T23:09:03.802+08:00  INFO 60735 --- [           main] c.s.c.f.s.FormI2ClosureIntegrationTest   : The following 1 profile is active: "test"
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.5.9 
+2026-09-09T23:09:04.009+08:00  INFO 60735 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-09T23:09:04.113+08:00  INFO 60735 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:formi2closure user=SA
+2026-09-09T23:09:04.114+08:00  INFO 60735 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-09T23:09:04.120+08:00  INFO 60735 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : DynamicTableManager initialized with dialect: H2
+2026-09-09T23:09:04.324+08:00  INFO 60735 --- [           main] c.s.c.f.s.FormI2ClosureIntegrationTest   : Started FormI2ClosureIntegrationTest in 0.694 seconds (process running for 1.238)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/chikan/.m2/repository/net/bytebuddy/byte-buddy-agent/1.15.11/byte-buddy-agent-1.15.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-09-09T23:09:04.835+08:00  INFO 60735 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=0353311a-0c98-4ef3-b356-aaa37d2b59c4, formKey=i2_listcfg
+2026-09-09T23:09:04.854+08:00  INFO 60735 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=0353311a-0c98-4ef3-b356-aaa37d2b59c4
+2026-09-09T23:09:04.865+08:00  INFO 60735 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Executing DDL: CREATE TABLE "sw_form_t50p8h889y" (
+  "id" VARCHAR(36) NOT NULL,
+  "tenant_id" BIGINT NOT NULL DEFAULT 0,
+  "deleted" SMALLINT NOT NULL DEFAULT 0,
+  "create_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "create_by" BIGINT ,
+  "update_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "update_by" BIGINT ,
+  "version" BIGINT NOT NULL DEFAULT 0,
+  "a" VARCHAR(1000),
+  "n" NUMERIC(20,6),
+  PRIMARY KEY ("id")
+)
+2026-09-09T23:09:04.866+08:00  INFO 60735 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Created table: sw_form_t50p8h889y
+2026-09-09T23:09:04.866+08:00  INFO 60735 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Physical table created: sw_form_t50p8h889y for form: 0353311a-0c98-4ef3-b356-aaa37d2b59c4
+2026-09-09T23:09:04.870+08:00  INFO 60735 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Form published: id=0353311a-0c98-4ef3-b356-aaa37d2b59c4, formKey=i2_listcfg, physicalTable=sw_form_t50p8h889y, version=2
+2026-09-09T23:09:04.874+08:00  INFO 60735 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form list config: formId=0353311a-0c98-4ef3-b356-aaa37d2b59c4
+2026-09-09T23:09:04.919+08:00  INFO 60735 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=876e4ffb-1e56-4e49-87bc-22f8062c3280, formKey=i2_lifecycle
+2026-09-09T23:09:04.923+08:00  INFO 60735 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=876e4ffb-1e56-4e49-87bc-22f8062c3280
+2026-09-09T23:09:04.924+08:00  INFO 60735 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Executing DDL: CREATE TABLE "sw_form_odhpr2798a" (
+  "id" VARCHAR(36) NOT NULL,
+  "tenant_id" BIGINT NOT NULL DEFAULT 0,
+  "deleted" SMALLINT NOT NULL DEFAULT 0,
+  "create_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "create_by" BIGINT ,
+  "update_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "update_by" BIGINT ,
+  "version" BIGINT NOT NULL DEFAULT 0,
+  "f" VARCHAR(1000),
+  PRIMARY KEY ("id")
+)
+2026-09-09T23:09:04.925+08:00  INFO 60735 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Created table: sw_form_odhpr2798a
+2026-09-09T23:09:04.925+08:00  INFO 60735 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Physical table created: sw_form_odhpr2798a for form: 876e4ffb-1e56-4e49-87bc-22f8062c3280
+2026-09-09T23:09:04.927+08:00  INFO 60735 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Form published: id=876e4ffb-1e56-4e49-87bc-22f8062c3280, formKey=i2_lifecycle, physicalTable=sw_form_odhpr2798a, version=2
+2026-09-09T23:09:04.930+08:00  INFO 60735 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Form disabled: id=876e4ffb-1e56-4e49-87bc-22f8062c3280, reason=年度收口暂停
+2026-09-09T23:09:04.933+08:00  INFO 60735 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Form enabled: id=876e4ffb-1e56-4e49-87bc-22f8062c3280, reason=恢复
+2026-09-09T23:09:04.941+08:00  INFO 60735 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=36adef3a-2b07-4aae-88a0-545e7cf0c7ce, formKey=i2_cycle
+2026-09-09T23:09:04.943+08:00  INFO 60735 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=36adef3a-2b07-4aae-88a0-545e7cf0c7ce
+2026-09-09T23:09:04.950+08:00  INFO 60735 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=9e124422-2c46-4e3b-b71d-7eb23ab9c885, formKey=i2_types
+2026-09-09T23:09:04.954+08:00  INFO 60735 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=9e124422-2c46-4e3b-b71d-7eb23ab9c885
+2026-09-09T23:09:04.956+08:00  INFO 60735 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Executing DDL: CREATE TABLE "sw_form_rjogetsop2" (
+  "id" VARCHAR(36) NOT NULL,
+  "tenant_id" BIGINT NOT NULL DEFAULT 0,
+  "deleted" SMALLINT NOT NULL DEFAULT 0,
+  "create_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "create_by" BIGINT ,
+  "update_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "update_by" BIGINT ,
+  "version" BIGINT NOT NULL DEFAULT 0,
+  "start_time" TIME,
+  "owner" VARCHAR(64),
+  "dept_id" VARCHAR(64),
+  "price" NUMERIC(20,6),
+  "qty" NUMERIC(20,6),
+  "total" NUMERIC(20,6),
+  PRIMARY KEY ("id")
+)
+2026-09-09T23:09:04.957+08:00  INFO 60735 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Created table: sw_form_rjogetsop2
+2026-09-09T23:09:04.957+08:00  INFO 60735 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Physical table created: sw_form_rjogetsop2 for form: 9e124422-2c46-4e3b-b71d-7eb23ab9c885
+2026-09-09T23:09:04.959+08:00  INFO 60735 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Form published: id=9e124422-2c46-4e3b-b71d-7eb23ab9c885, formKey=i2_types, physicalTable=sw_form_rjogetsop2, version=2
+=== I2 类型发布结果 === table=sw_form_rjogetsop2
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.526 s -- in com.sw.ck.form.service.FormI2ClosureIntegrationTest
+[INFO] Running com.sw.ck.form.service.FormulaEngineTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in com.sw.ck.form.service.FormulaEngineTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] -----------------------< com.sw.ck:sw-biz-form >------------------------
+[INFO] Building Smart-WorkFlow :: Biz :: Form 1.0.0-SNAPSHOT            [22/31]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ------------------------< com.sw.ck:sw-bpm-api >------------------------
+[INFO] Building Smart-WorkFlow :: Biz :: BPM :: API 1.0.0-SNAPSHOT      [23/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-bpm-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-api/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-bpm-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-bpm-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-bpm-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-bpm-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] ----------------------< com.sw.ck:sw-bpm-engine >-----------------------
+[INFO] Building Smart-WorkFlow :: Biz :: BPM :: Engine 1.0.0-SNAPSHOT   [24/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-bpm-engine ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-bpm-engine ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-bpm-engine ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-bpm-engine ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-bpm-engine ---
+[INFO] 
+[INFO] ----------------------< com.sw.ck:sw-bpm-process >----------------------
+[INFO] Building Smart-WorkFlow :: Biz :: BPM :: Process 1.0.0-SNAPSHOT  [25/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-bpm-process ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 20 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-bpm-process ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-bpm-process ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-bpm-process ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-bpm-process ---
+[INFO] 
+[INFO] --------------------------< com.sw.ck:sw-bpm >--------------------------
+[INFO] Building Smart-WorkFlow :: Biz :: BPM 1.0.0-SNAPSHOT             [26/31]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-biz-openapi-api >--------------------
+[INFO] Building Smart-WorkFlow :: Biz :: OpenAPI :: API 1.0.0-SNAPSHOT  [27/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-biz-openapi-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-biz/sw-biz-openapi/sw-biz-openapi-api/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-biz-openapi-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-biz-openapi-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-biz/sw-biz-openapi/sw-biz-openapi-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-biz-openapi-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-biz-openapi-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-biz-openapi-biz >--------------------
+[INFO] Building Smart-WorkFlow :: Biz :: OpenAPI :: Biz 1.0.0-SNAPSHOT  [28/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-biz-openapi-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-biz-openapi-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-biz-openapi-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-biz/sw-biz-openapi/sw-biz-openapi-biz/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-biz-openapi-biz ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-biz-openapi-biz ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] ----------------------< com.sw.ck:sw-biz-openapi >----------------------
+[INFO] Building Smart-WorkFlow :: Biz :: OpenAPI 1.0.0-SNAPSHOT         [29/31]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --------------------------< com.sw.ck:sw-biz >--------------------------
+[INFO] Building Smart-WorkFlow :: Biz 1.0.0-SNAPSHOT                    [30/31]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] -----------------------< com.sw.ck:sw-bootstrap >-----------------------
+[INFO] Building Smart-WorkFlow :: Bootstrap 1.0.0-SNAPSHOT              [31/31]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-bootstrap ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 114 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-bootstrap ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-bootstrap ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-bootstrap/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-bootstrap ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-bootstrap ---
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Smart-WorkFlow 1.0.0-SNAPSHOT:
+[INFO] 
+[INFO] Smart-WorkFlow ..................................... SUCCESS [  0.001 s]
+[INFO] Smart-WorkFlow :: Dependencies ..................... SUCCESS [  0.000 s]
+[INFO] Smart-WorkFlow :: Common ........................... SUCCESS [  0.607 s]
+[INFO] Smart-WorkFlow :: Security ......................... SUCCESS [  0.045 s]
+[INFO] Smart-WorkFlow :: Framework ........................ SUCCESS [  0.000 s]
+[INFO] Smart-WorkFlow :: Basic :: Storage :: API .......... SUCCESS [  0.018 s]
+[INFO] Smart-WorkFlow :: Basic :: Storage :: Biz .......... SUCCESS [  0.097 s]
+[INFO] Smart-WorkFlow :: Basic :: Notify :: API ........... SUCCESS [  0.014 s]
+[INFO] Smart-WorkFlow :: Basic :: Notify :: Biz ........... SUCCESS [  0.031 s]
+[INFO] Smart-WorkFlow :: Basic :: Notify .................. SUCCESS [  0.001 s]
+[INFO] Smart-WorkFlow :: Basic :: Job :: API .............. SUCCESS [  0.014 s]
+[INFO] Smart-WorkFlow :: Basic :: Job :: Biz .............. SUCCESS [  0.031 s]
+[INFO] Smart-WorkFlow :: Basic :: IoT ..................... SUCCESS [  0.083 s]
+[INFO] Smart-WorkFlow :: Basic :: Knowledge ............... SUCCESS [  0.147 s]
+[INFO] Smart-WorkFlow :: Basic :: Agent ................... SUCCESS [  0.061 s]
+[INFO] Smart-WorkFlow :: Basic ............................ SUCCESS [  0.000 s]
+[INFO] Smart-WorkFlow :: Biz :: System :: API ............. SUCCESS [  0.015 s]
+[INFO] Smart-WorkFlow :: Biz :: System :: Biz ............. SUCCESS [  0.035 s]
+[INFO] Smart-WorkFlow :: Biz :: System .................... SUCCESS [  0.000 s]
+[INFO] Smart-WorkFlow :: Biz :: Form :: API ............... SUCCESS [  0.015 s]
+[INFO] Smart-WorkFlow :: Biz :: Form :: Biz ............... SUCCESS [  2.069 s]
+[INFO] Smart-WorkFlow :: Biz :: Form ...................... SUCCESS [  0.000 s]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: API ................ SUCCESS [  0.019 s]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: Engine ............. SUCCESS [  0.125 s]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: Process ............ SUCCESS [  0.055 s]
+[INFO] Smart-WorkFlow :: Biz :: BPM ....................... SUCCESS [  0.000 s]
+[INFO] Smart-WorkFlow :: Biz :: OpenAPI :: API ............ SUCCESS [  0.021 s]
+[INFO] Smart-WorkFlow :: Biz :: OpenAPI :: Biz ............ SUCCESS [  0.016 s]
+[INFO] Smart-WorkFlow :: Biz :: OpenAPI ................... SUCCESS [  0.000 s]
+[INFO] Smart-WorkFlow :: Biz .............................. SUCCESS [  0.000 s]
+[INFO] Smart-WorkFlow :: Bootstrap ........................ SUCCESS [  0.168 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.897 s
+[INFO] Finished at: 2026-09-09T23:09:05+08:00
+[INFO] ------------------------------------------------------------------------

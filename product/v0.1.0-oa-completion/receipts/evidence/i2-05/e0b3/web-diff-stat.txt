@@ -1,0 +1,18 @@
+ src/adapters/form-designer/index.spec.ts          | 59 ++++++++++++++++++
+ src/adapters/form-designer/index.ts               | 73 ++++++++++++++++++++++-
+ src/components/dynamic-field-registry.spec.ts     |  8 ++-
+ src/components/dynamic-field-registry.ts          | 11 ++++
+ src/contracts/form-schema.ts                      | 65 ++++++++++++++++++++
+ src/modules/form/api/form-def.ts                  |  2 +-
+ src/modules/form/api/form.ts                      |  2 +
+ src/modules/form/components/ReferenceSelector.vue |  3 +
+ src/modules/form/designer/field-config.ts         |  4 ++
+ src/modules/form/designer/field-types.spec.ts     |  8 ++-
+ src/modules/form/designer/field-types.ts          | 45 ++++++++++++++
+ src/modules/form/utils/form-def-status.ts         |  1 +
+ src/modules/form/views/FormData.vue               | 44 +++++++++++++-
+ src/modules/form/views/FormDefList.vue            | 41 ++++++++++++-
+ src/modules/form/views/FormRender.vue             | 10 ++++
+ src/router/index.ts                               |  9 +++
+ src/types/components.d.ts                         |  6 ++
+ 17 files changed, 382 insertions(+), 9 deletions(-)

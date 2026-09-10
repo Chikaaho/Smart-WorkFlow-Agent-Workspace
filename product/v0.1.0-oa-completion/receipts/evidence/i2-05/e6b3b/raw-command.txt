@@ -1,0 +1,1 @@
+MAVEN_OPTS='-Xmx2g' mvn -q -pl sw-biz/sw-biz-form/sw-biz-form-biz -am -Dtest=FormDataIsolationIntegrationTest -Dsurefire.failIfNoSpecifiedTests=false -DforkCount=0 test

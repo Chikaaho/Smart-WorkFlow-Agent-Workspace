@@ -1,0 +1,3 @@
+2026-09-10T13:01:53.169+08:00 INFO  ExternalDatasourceManager - Creating connection pool for external datasource: name=i2_04_overlimit_final, type=h2
+2026-09-10T13:01:53.219+08:00 WARN SqlExecutor - SQL execution FAILED: datasource=i2_04_overlimit_final, time=52ms, sql=SELECT ID, PAD FROM I2_BIG ORDER BY ID, error=External datasource result exceeds maxRows=1000
+2026-09-10T13:01:53.220+08:00 DEBUG SqlExecutionAuditMapper - audit parameters: datasourceId=2097913427330191362, sql=SELECT ID, PAD FROM I2_BIG ORDER BY ID, rowCount=0, success=0, error=External datasource result exceeds maxRows=1000

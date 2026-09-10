@@ -1,0 +1,9 @@
+command: rg --files sw-biz/sw-biz-form | rg 'Form.*Draft.*(Controller|Service)'
+stdout: <empty>
+stderr: <empty>
+exit: 1
+
+解析结论：表单模块没有匹配的平行草稿 Controller/Service；业务发起草稿的实际调用链为
+sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmDraftController.java
+→ sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/DraftSubmitService.java
+→ sw-biz-form-api 的 FormDefinitionService 权限门面。

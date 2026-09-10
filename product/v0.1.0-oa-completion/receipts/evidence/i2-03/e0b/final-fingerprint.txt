@@ -1,0 +1,35 @@
+# E0b 三仓候选最终指纹（task-owned；生成于最后实现变化之后）
+生成时间(UTC): 2026-09-10T03:11:59Z
+口径：仅列本轮 I2 授权范围内文件（task-owned）；工作区既有无关删除/未跟踪噪声不纳入、不吸收。
+
+## 工作区根仓
+HEAD: a191861c1f510f0dae1be77b38b540177e7ee621  branch: develop-sw
+task-owned 修改：knowledge/current-status.md、knowledge/session-handoff.md、knowledge/features/v0.1.0-oa-completion.md、product/v0.1.0-oa-completion/**（回执与证据）
+ M knowledge/current-status.md
+RM knowledge/features/v0.3.0-oa-completion.md -> knowledge/features/v0.1.0-oa-completion.md
+ M knowledge/session-handoff.md
+?? product/v0.1.0-oa-completion/
+
+## Smart-WorkFlow-Server
+HEAD: 328ff2a926fed5b195675a1f351d9a806a40b230  branch: develop
+--- I2 task-owned diff（含本轮修复）---
+ .../java/com/sw/ck/storage/api/StorageFacade.java  |   9 ++
+ .../com/sw/ck/storage/impl/StorageFacadeImpl.java  |  10 ++
+ .../sw/ck/form/api/exception/FormErrorCode.java    | 164 +++++++++++----------
+ sw-biz/sw-biz-form/sw-biz-form-biz/pom.xml         |   5 +
+ .../sw/ck/form/controller/FormDataController.java  |   3 +
+ .../form/controller/FormDataDeleteController.java  |   2 +
+ .../form/controller/FormDataQueryController.java   |   2 +
+ .../ck/form/controller/FormSubmitController.java   |   2 +
+ .../sw/ck/form/service/FormDataQueryService.java   | 163 +++++++++++++++-----
+ .../sw/ck/form/service/FormDataUpdateService.java  |  54 +++++--
+ .../ck/form/service/FormDataQueryServiceTest.java  |  49 ++++++
+ 11 files changed, 340 insertions(+), 123 deletions(-)
+
+## Smart-WorkFlow-Web
+HEAD: d20a19157c4315ece0fe3bb19f11d3c6b3ef487a  branch: develop
+--- I2 task-owned diff ---
+ src/modules/form/components/ReferenceSelector.vue |  3 +++
+ src/modules/form/views/FormRender.vue             | 10 ++++++++++
+ src/router/index.ts                               |  9 +++++++++
+ 3 files changed, 22 insertions(+)

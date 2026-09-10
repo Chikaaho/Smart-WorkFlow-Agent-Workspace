@@ -1,0 +1,185 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-biz-system-biz >---------------------
+[INFO] Building Smart-WorkFlow :: Biz :: System :: Biz 1.0.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-biz-system-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-biz-system-biz ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 81 source files with javac [debug parameters target 21] to target/classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/service/impl/UserWorkspaceServiceImpl.java: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/service/impl/UserWorkspaceServiceImpl.java使用了未经检查或不安全的操作。
+[INFO] /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/service/impl/UserWorkspaceServiceImpl.java: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-biz-system-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-biz-system-biz ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 36 source files with javac [debug parameters target 21] to target/test-classes
+[INFO] 由于在类路径中发现了一个或多个处理程序，因此启用了
+  批注处理。未来发行版的 javac 可能会禁用批注处理，
+  除非至少按名称指定了一个处理程序 (-processor)，
+  或指定了搜索路径 (--processor-path, --processor-module-path)，
+  或显式启用了批注处理 (-proc:only, -proc:full)。
+  可使用 -Xlint:-options 隐藏此消息。
+  可使用 -proc:none 禁用批注处理。
+[INFO] /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/controller/P45IsolationEvidenceFixture.java: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/controller/P45IsolationEvidenceFixture.java使用或覆盖了已过时的 API。
+[INFO] /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/controller/P45IsolationEvidenceFixture.java: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+[INFO] /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/usergroup/SysUserGroupServiceTest.java: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/usergroup/SysUserGroupServiceTest.java使用了未经检查或不安全的操作。
+[INFO] /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/usergroup/SysUserGroupServiceTest.java: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-biz-system-biz ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.sw.ck.system.security.LoginChallengeServiceTest
+22:35:08.814 [main] INFO com.sw.ck.system.security.RsaLoginKeyManager -- 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+22:35:10.704 [main] INFO com.sw.ck.system.security.RsaLoginKeyManager -- 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+22:35:10.708 [main] INFO com.sw.ck.system.security.RsaLoginKeyManager -- 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.107 s -- in com.sw.ck.system.security.LoginChallengeServiceTest
+[INFO] Running com.sw.ck.system.controller.AuthControllerTest
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/chikan/.m2/repository/net/bytebuddy/byte-buddy-agent/1.15.11/byte-buddy-agent-1.15.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+22:35:11.384 [main] INFO com.sw.ck.system.security.RsaLoginKeyManager -- 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+22:35:11.402 [main] WARN com.sw.ck.system.controller.AuthController -- 登录前置校验失败(1): code=2101, captchaIdHash=ce613f7716d040337bb6b161df639745685c73d8cca5e41e2f65f7d4182156ac
+22:35:11.405 [main] INFO com.sw.ck.system.security.RsaLoginKeyManager -- 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+22:35:11.503 [main] INFO com.sw.ck.system.controller.AuthController -- 用户登录: admin
+22:35:11.623 [main] INFO com.sw.ck.system.controller.AuthController -- 用户 admin 登录成功, userId=1
+22:35:11.625 [main] INFO com.sw.ck.system.security.RsaLoginKeyManager -- 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+22:35:11.630 [main] WARN com.sw.ck.system.controller.AuthController -- 登录前置校验失败(1): code=2102, captchaIdHash=afc34d5e28709aeae11c00fda9e11beb4ec2018831af48b464432829b7782aa1
+22:35:11.635 [main] INFO com.sw.ck.system.security.RsaLoginKeyManager -- 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+22:35:11.722 [main] INFO com.sw.ck.system.controller.AuthController -- 用户登录: disabled
+22:35:11.801 [main] WARN com.sw.ck.system.controller.AuthController -- 用户 disabled 登录被拒绝: 账号已停用
+22:35:11.802 [main] INFO com.sw.ck.system.security.RsaLoginKeyManager -- 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+22:35:11.886 [main] INFO com.sw.ck.system.controller.AuthController -- 用户登录: admin
+22:35:11.966 [main] INFO com.sw.ck.system.security.RsaLoginKeyManager -- 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+22:35:12.053 [main] INFO com.sw.ck.system.controller.AuthController -- 用户登录: admin
+22:35:12.133 [main] INFO com.sw.ck.system.controller.AuthController -- 用户 admin 登录成功, userId=1
+22:35:12.134 [main] INFO com.sw.ck.system.security.RsaLoginKeyManager -- 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+22:35:12.155 [main] WARN com.sw.ck.system.controller.AuthController -- 用户 1 refresh 被拒绝: 账号已停用
+22:35:12.157 [main] INFO com.sw.ck.system.security.RsaLoginKeyManager -- 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+22:35:12.160 [main] WARN com.sw.ck.system.controller.AuthController -- 用户 1 refresh 被拒绝: 账号已锁定
+22:35:12.161 [main] INFO com.sw.ck.system.security.RsaLoginKeyManager -- 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+22:35:12.162 [main] WARN com.sw.ck.system.controller.AuthController -- 用户 1 refresh 被拒绝: 账号已停用
+22:35:12.163 [main] INFO com.sw.ck.system.security.RsaLoginKeyManager -- 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+22:35:12.166 [main] WARN com.sw.ck.system.controller.AuthController -- 密码解密失败: 密文不是合法 Base64
+22:35:12.167 [main] INFO com.sw.ck.system.security.RsaLoginKeyManager -- 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+22:35:12.171 [main] INFO com.sw.ck.system.controller.AuthController -- 用户登录: admin
+22:35:12.172 [main] WARN com.sw.ck.system.controller.AuthController -- 登录前置校验失败(1): code=2101, captchaIdHash=f2654d56a72bb9c6f2b4bf02fce1e49aac601ed4dfd91f848ec5a87e5ed61c04
+22:35:12.173 [main] INFO com.sw.ck.system.security.RsaLoginKeyManager -- 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+22:35:12.177 [main] WARN com.sw.ck.system.controller.AuthController -- 登录前置校验失败(1): code=2101, captchaIdHash=f3ccb32c63303af1bea9127adbf6747ecf31723681caec0ddf550b3317181010
+22:35:12.178 [main] INFO com.sw.ck.system.security.RsaLoginKeyManager -- 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+22:35:12.180 [main] INFO com.sw.ck.system.security.RsaLoginKeyManager -- 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+22:35:12.184 [main] INFO com.sw.ck.system.controller.AuthController -- 用户登录: unknown
+22:35:12.185 [main] INFO com.sw.ck.system.security.RsaLoginKeyManager -- 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+22:35:12.267 [main] INFO com.sw.ck.system.controller.AuthController -- 用户登录: admin
+22:35:12.346 [main] INFO com.sw.ck.system.controller.AuthController -- 用户 admin 登录成功, userId=1
+22:35:12.346 [main] WARN com.sw.ck.system.controller.AuthController -- 登录前置校验失败(1): code=2101, captchaIdHash=d6d723a9061033cd7979c9025574693adfd141366e93d39260be5c94ee59c283
+22:35:12.347 [main] INFO com.sw.ck.system.security.RsaLoginKeyManager -- 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+22:35:12.430 [main] INFO com.sw.ck.system.controller.AuthController -- 用户登录: locked
+22:35:12.508 [main] WARN com.sw.ck.system.controller.AuthController -- 用户 locked 登录被拒绝: 账号已锁定
+22:35:12.510 [main] INFO com.sw.ck.system.security.RsaLoginKeyManager -- 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+22:35:12.591 [main] WARN com.sw.ck.system.controller.AuthController -- 登录前置校验失败(3): code=2103
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.867 s -- in com.sw.ck.system.controller.AuthControllerTest
+[INFO] Running com.sw.ck.system.controller.AuthFlowIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-09-09T22:35:12.886+08:00  INFO 93516 --- [           main] c.s.c.s.c.AuthFlowIntegrationTest        : Starting AuthFlowIntegrationTest using Java 21.0.11 with PID 93516 (started by chikan in /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-biz/sw-biz-system/sw-biz-system-biz)
+2026-09-09T22:35:12.887+08:00  INFO 93516 --- [           main] c.s.c.s.c.AuthFlowIntegrationTest        : No active profile set, falling back to 1 default profile: "default"
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.5.9 
+2026-09-09T22:35:13.728+08:00  INFO 93516 --- [           main] c.s.c.s.security.RsaLoginKeyManager      : 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+2026-09-09T22:35:13.770+08:00  INFO 93516 --- [           main] c.s.c.s.c.AuthFlowIntegrationTest        : Started AuthFlowIntegrationTest in 1.018 seconds (process running for 5.462)
+2026-09-09T22:35:13.775+08:00  INFO 93516 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-09T22:35:13.895+08:00  INFO 93516 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:authflow user=SA
+2026-09-09T22:35:13.896+08:00  INFO 93516 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-09T22:35:14.017+08:00  INFO 93516 --- [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-09-09T22:35:14.017+08:00  INFO 93516 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-09T22:35:14.018+08:00  INFO 93516 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-09-09T22:35:14.115+08:00  INFO 93516 --- [           main] c.s.ck.system.controller.AuthController  : 用户登录: disabled-user
+2026-09-09T22:35:14.217+08:00  WARN 93516 --- [           main] c.s.ck.system.controller.AuthController  : 用户 disabled-user 登录被拒绝: 账号已停用
+2026-09-09T22:35:14.234+08:00  INFO 93516 --- [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-09-09T22:35:14.234+08:00  INFO 93516 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-09T22:35:14.234+08:00  INFO 93516 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-09-09T22:35:14.240+08:00  INFO 93516 --- [           main] c.s.ck.system.controller.AuthController  : 用户登录: nonexistent
+2026-09-09T22:35:14.253+08:00  INFO 93516 --- [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-09-09T22:35:14.254+08:00  INFO 93516 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-09T22:35:14.254+08:00  INFO 93516 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-09-09T22:35:14.261+08:00  INFO 93516 --- [           main] c.s.ck.system.controller.AuthController  : 用户登录: admin
+2026-09-09T22:35:14.437+08:00  INFO 93516 --- [           main] c.s.ck.system.controller.AuthController  : 用户 admin 登录成功, userId=1
+2026-09-09T22:35:14.505+08:00  INFO 93516 --- [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-09-09T22:35:14.506+08:00  INFO 93516 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-09T22:35:14.506+08:00  INFO 93516 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-09-09T22:35:14.513+08:00  WARN 93516 --- [           main] c.s.ck.system.controller.AuthController  : 登录前置校验失败(1): code=2101, captchaIdHash=fbd8c99fe6c48419885d713c736689c03a8a1cbe9130a6978fcba140840f1a49
+2026-09-09T22:35:14.523+08:00  INFO 93516 --- [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-09-09T22:35:14.523+08:00  INFO 93516 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-09T22:35:14.523+08:00  INFO 93516 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-09-09T22:35:14.530+08:00  WARN 93516 --- [           main] c.s.ck.system.controller.AuthController  : 登录前置校验失败(3): code=2103
+2026-09-09T22:35:14.540+08:00  INFO 93516 --- [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-09-09T22:35:14.540+08:00  INFO 93516 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-09T22:35:14.540+08:00  INFO 93516 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-09-09T22:35:14.547+08:00  INFO 93516 --- [           main] c.s.ck.system.controller.AuthController  : 用户登录: admin
+2026-09-09T22:35:14.638+08:00  INFO 93516 --- [           main] c.s.ck.system.controller.AuthController  : 用户 admin 登录成功, userId=1
+2026-09-09T22:35:14.712+08:00  INFO 93516 --- [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-09-09T22:35:14.712+08:00  INFO 93516 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-09T22:35:14.712+08:00  INFO 93516 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-09-09T22:35:14.718+08:00  INFO 93516 --- [           main] c.s.ck.system.controller.AuthController  : 用户登录: admin
+2026-09-09T22:35:14.799+08:00  INFO 93516 --- [           main] c.s.ck.system.controller.AuthController  : 用户 admin 登录成功, userId=1
+2026-09-09T22:35:14.813+08:00  WARN 93516 --- [           main] c.s.ck.system.controller.AuthController  : 用户 1 refresh 被拒绝: 账号已停用
+2026-09-09T22:35:14.823+08:00  INFO 93516 --- [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-09-09T22:35:14.823+08:00  INFO 93516 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-09T22:35:14.823+08:00  INFO 93516 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-09-09T22:35:14.835+08:00  INFO 93516 --- [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-09-09T22:35:14.836+08:00  INFO 93516 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-09T22:35:14.836+08:00  INFO 93516 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-09-09T22:35:14.842+08:00  INFO 93516 --- [           main] c.s.ck.system.controller.AuthController  : 用户登录: admin
+2026-09-09T22:35:14.936+08:00  INFO 93516 --- [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-09-09T22:35:14.937+08:00  INFO 93516 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-09T22:35:14.937+08:00  INFO 93516 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-09-09T22:35:14.946+08:00  INFO 93516 --- [           main] c.s.ck.system.controller.AuthController  : 用户登录: admin
+2026-09-09T22:35:15.033+08:00  INFO 93516 --- [           main] c.s.ck.system.controller.AuthController  : 用户 admin 登录成功, userId=1
+2026-09-09T22:35:15.035+08:00  WARN 93516 --- [           main] c.s.ck.system.controller.AuthController  : 登录前置校验失败(1): code=2101, captchaIdHash=160fe889d9a1f0fd6aa8746bf97e93f305198eb0575d335a5a87854506d04cad
+2026-09-09T22:35:15.045+08:00  INFO 93516 --- [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-09-09T22:35:15.045+08:00  INFO 93516 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-09T22:35:15.045+08:00  INFO 93516 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-09-09T22:35:15.052+08:00  INFO 93516 --- [           main] c.s.ck.system.controller.AuthController  : 用户登录: locked-user
+2026-09-09T22:35:15.133+08:00  WARN 93516 --- [           main] c.s.ck.system.controller.AuthController  : 用户 locked-user 登录被拒绝: 账号已锁定
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.532 s -- in com.sw.ck.system.controller.AuthFlowIntegrationTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 31, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  12.977 s
+[INFO] Finished at: 2026-09-09T22:35:15+08:00
+[INFO] ------------------------------------------------------------------------

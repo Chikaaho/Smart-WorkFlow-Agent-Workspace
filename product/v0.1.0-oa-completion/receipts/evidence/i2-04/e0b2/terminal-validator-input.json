@@ -1,0 +1,72 @@
+{
+  "schema": "agent-coding-engine.executor-terminal.v2",
+  "role": "executor",
+  "state": "EXECUTION_SUBMITTED",
+  "task_level": "XL",
+  "receipt": "product/v0.1.0-oa-completion/receipts/stage-i2-v0.1.0-oa-completion-04.md",
+  "evidence": [
+    "product/v0.1.0-oa-completion/receipts/evidence/i2-04/e0b2/candidate-crosscheck.md",
+    "product/v0.1.0-oa-completion/receipts/evidence/i2-04/e2c2/invalid-reference-before.json",
+    "product/v0.1.0-oa-completion/receipts/evidence/i2-04/e2c2/invalid-reference-request.json",
+    "product/v0.1.0-oa-completion/receipts/evidence/i2-04/e2c2/invalid-reference-after.json",
+    "product/v0.1.0-oa-completion/receipts/evidence/i2-04/e4b2/overlimit-response.json",
+    "product/v0.1.0-oa-completion/receipts/evidence/i2-04/e4b2/audit-after.json",
+    "product/v0.1.0-oa-completion/receipts/evidence/i2-04/e5b2/endpoint-conflict.md",
+    "product/v0.1.0-oa-completion/receipts/evidence/i2-04/e6b2/tenant-matrix.json",
+    "product/v0.1.0-oa-completion/receipts/evidence/i2-04/e7b2/after-record-old-token.json",
+    "product/v0.1.0-oa-completion/receipts/evidence/i2-04/e0b2/04-server-full-gate-exit.txt"
+  ],
+  "feature_status": "VERIFYING",
+  "work_items": [
+    {"id":"E0b2","status":"COMPLETED","authorized":true,"dependency_satisfied":true,"actionable":false,"next_action":"等待 Planner 核对三仓候选清单与冻结顺序"},
+    {"id":"E2c2","status":"COMPLETED","authorized":true,"dependency_satisfied":true,"actionable":false,"next_action":"等待 Planner 核对三组负向请求前后零副作用证据"},
+    {"id":"E4b2","status":"COMPLETED","authorized":true,"dependency_satisfied":true,"actionable":false,"next_action":"等待 Planner 核对 1219 超限契约、审计与扫描附件"},
+    {"id":"E5b2","status":"BLOCKED","authorized":true,"dependency_satisfied":true,"actionable":false,"next_action":"Planner 决定是否扩展公开生命周期接口以独立建立四类删除引用，并核对停用后直接 flowStart 回执边界"},
+    {"id":"E6b2","status":"BLOCKED","authorized":true,"dependency_satisfied":true,"actionable":false,"next_action":"Planner 决定是否补充当前 Server 未提供的授权导入入口后再采集正向导入回读"},
+    {"id":"E7b2","status":"COMPLETED","authorized":true,"dependency_satisfied":true,"actionable":false,"next_action":"等待 Planner 将新鲜撤权时间线与锁定的 E3b 定义漂移证据合并核对"}
+  ],
+  "remaining_actionable_count": 0,
+  "independent_work_exhausted": true,
+  "next_action": "等待 Planner 复核执行回执与两项真实接口边界；不改 I2 状态、不提交、不推送",
+  "next_action_type": "WAIT_PLANNER",
+  "progress_fingerprint": "i2-04-e0b2-c6e612d270d0de681e120bba9e465a460cd272f37aa06336bc2a19d5d7e7d375",
+  "progress_basis": {
+    "files_changed": [
+      "Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-api/src/main/java/com/sw/ck/form/api/exception/ExternalDatasourceResultLimitExceededException.java",
+      "Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-api/src/main/java/com/sw/ck/form/api/exception/FormErrorCode.java",
+      "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/executor/SqlExecutor.java",
+      "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/controller/ExternalDatasourceController.java",
+      "Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/service/FieldPermissionService.java",
+      "Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/service/FormFieldEnrichmentService.java",
+      "Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/service/FormSubmitService.java",
+      "Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/service/impl/FormDefServiceImpl.java",
+      "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/DraftSubmitService.java",
+      "Smart-WorkFlow-Server/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmDraftController.java"
+    ],
+    "tool_actions": [
+      "MAVEN_OPTS=-Xmx2g mvn -q compile",
+      "MAVEN_OPTS=-Xmx2g mvn -q test",
+      "SqlExecutorTest, FormI2ClosureIntegrationTest, FieldPermissionServiceTest, BpmDraftControllerTest",
+      "packaged jar runtime overlimit and same-object permission HTTP readbacks",
+      "persistent process Ctrl-C stop and port release verification"
+    ],
+    "new_evidence": [
+      "product/v0.1.0-oa-completion/receipts/evidence/i2-04/e2c2/",
+      "product/v0.1.0-oa-completion/receipts/evidence/i2-04/e4b2/",
+      "product/v0.1.0-oa-completion/receipts/evidence/i2-04/e5b2/",
+      "product/v0.1.0-oa-completion/receipts/evidence/i2-04/e6b2/",
+      "product/v0.1.0-oa-completion/receipts/evidence/i2-04/e7b2/",
+      "product/v0.1.0-oa-completion/receipts/evidence/i2-04/e0b2/"
+    ],
+    "closed_work_items": ["E0b2","E2c2","E4b2","E7b2"]
+  },
+  "stop_reason": "WAITING_FOR_PLANNER",
+  "tool_results": [
+    {"tool":"Server compile","outcome":"SUCCEEDED","detail":"MAVEN_OPTS=-Xmx2g mvn -q compile exit 0"},
+    {"tool":"Server full test","outcome":"SUCCEEDED","detail":"MAVEN_OPTS=-Xmx2g mvn -q test exit 0; raw output retains intentional negative-path fixture logs"},
+    {"tool":"targeted regression tests","outcome":"SUCCEEDED","detail":"SqlExecutorTest, FormI2ClosureIntegrationTest, FieldPermissionServiceTest and BpmDraftControllerTest exit 0"},
+    {"tool":"runtime HTTP verification","outcome":"SUCCEEDED","detail":"H2 overlimit returned code 1219 with data null; filler flow instance delta 0; admin instance/task delta 1; old/new revoked tokens returned 403"},
+    {"tool":"runtime cleanup","outcome":"SUCCEEDED","detail":"PID 14356 stopped by persistent terminal Ctrl-C; 8080 port closed on subsequent probe"}
+  ],
+  "browser_status": "NOT_APPLICABLE"
+}

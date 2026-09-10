@@ -1,0 +1,157 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-09-10T13:03:14.327+08:00  INFO 14643 --- [           main] c.s.c.f.s.FormI2ClosureIntegrationTest   : Starting FormI2ClosureIntegrationTest using Java 21.0.11 with PID 14643 (started by chikan in /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-biz)
+2026-09-10T13:03:14.328+08:00  INFO 14643 --- [           main] c.s.c.f.s.FormI2ClosureIntegrationTest   : The following 1 profile is active: "test"
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.5.9 
+2026-09-10T13:03:14.601+08:00  INFO 14643 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-10T13:03:14.746+08:00  INFO 14643 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:formi2closure user=SA
+2026-09-10T13:03:14.747+08:00  INFO 14643 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-10T13:03:14.755+08:00  INFO 14643 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : DynamicTableManager initialized with dialect: H2
+2026-09-10T13:03:15.027+08:00  INFO 14643 --- [           main] c.s.c.f.s.FormI2ClosureIntegrationTest   : Started FormI2ClosureIntegrationTest in 0.881 seconds (process running for 1.484)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/chikan/.m2/repository/net/bytebuddy/byte-buddy-agent/1.15.11/byte-buddy-agent-1.15.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-09-10T13:03:15.537+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=5b5e14b1-8bce-44e1-868a-140902611800, formKey=i2_action_permission
+2026-09-10T13:03:15.559+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=5b5e14b1-8bce-44e1-868a-140902611800
+2026-09-10T13:03:15.571+08:00  INFO 14643 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Executing DDL: CREATE TABLE "sw_form_c6nr7j9suz" (
+  "id" VARCHAR(36) NOT NULL,
+  "tenant_id" BIGINT NOT NULL DEFAULT 0,
+  "deleted" SMALLINT NOT NULL DEFAULT 0,
+  "create_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "create_by" BIGINT ,
+  "update_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "update_by" BIGINT ,
+  "version" BIGINT NOT NULL DEFAULT 0,
+  "note" VARCHAR(1000),
+  PRIMARY KEY ("id")
+)
+2026-09-10T13:03:15.573+08:00  INFO 14643 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Created table: sw_form_c6nr7j9suz
+2026-09-10T13:03:15.573+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Physical table created: sw_form_c6nr7j9suz for form: 5b5e14b1-8bce-44e1-868a-140902611800
+2026-09-10T13:03:15.576+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Form published: id=5b5e14b1-8bce-44e1-868a-140902611800, formKey=i2_action_permission, physicalTable=sw_form_c6nr7j9suz, version=2
+2026-09-10T13:03:15.628+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=da637d79-cbfb-48de-ab1c-9bdd0636026c, formKey=i2_delete_audit
+2026-09-10T13:03:15.631+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=da637d79-cbfb-48de-ab1c-9bdd0636026c
+2026-09-10T13:03:15.633+08:00  INFO 14643 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Executing DDL: CREATE TABLE "sw_form_pgb1kqp1jh" (
+  "id" VARCHAR(36) NOT NULL,
+  "tenant_id" BIGINT NOT NULL DEFAULT 0,
+  "deleted" SMALLINT NOT NULL DEFAULT 0,
+  "create_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "create_by" BIGINT ,
+  "update_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "update_by" BIGINT ,
+  "version" BIGINT NOT NULL DEFAULT 0,
+  "f" VARCHAR(1000),
+  PRIMARY KEY ("id")
+)
+2026-09-10T13:03:15.634+08:00  INFO 14643 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Created table: sw_form_pgb1kqp1jh
+2026-09-10T13:03:15.634+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Physical table created: sw_form_pgb1kqp1jh for form: da637d79-cbfb-48de-ab1c-9bdd0636026c
+2026-09-10T13:03:15.636+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Form published: id=da637d79-cbfb-48de-ab1c-9bdd0636026c, formKey=i2_delete_audit, physicalTable=sw_form_pgb1kqp1jh, version=2
+2026-09-10T13:03:15.653+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=08eca296-fd8b-4ba6-9c7b-6b9a6bb7f9a1, formKey=i2_listcfg
+2026-09-10T13:03:15.656+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=08eca296-fd8b-4ba6-9c7b-6b9a6bb7f9a1
+2026-09-10T13:03:15.658+08:00  INFO 14643 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Executing DDL: CREATE TABLE "sw_form_bnacvw75b2" (
+  "id" VARCHAR(36) NOT NULL,
+  "tenant_id" BIGINT NOT NULL DEFAULT 0,
+  "deleted" SMALLINT NOT NULL DEFAULT 0,
+  "create_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "create_by" BIGINT ,
+  "update_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "update_by" BIGINT ,
+  "version" BIGINT NOT NULL DEFAULT 0,
+  "a" VARCHAR(1000),
+  "n" NUMERIC(20,6),
+  PRIMARY KEY ("id")
+)
+2026-09-10T13:03:15.659+08:00  INFO 14643 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Created table: sw_form_bnacvw75b2
+2026-09-10T13:03:15.659+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Physical table created: sw_form_bnacvw75b2 for form: 08eca296-fd8b-4ba6-9c7b-6b9a6bb7f9a1
+2026-09-10T13:03:15.661+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Form published: id=08eca296-fd8b-4ba6-9c7b-6b9a6bb7f9a1, formKey=i2_listcfg, physicalTable=sw_form_bnacvw75b2, version=2
+2026-09-10T13:03:15.664+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form list config: formId=08eca296-fd8b-4ba6-9c7b-6b9a6bb7f9a1
+2026-09-10T13:03:15.675+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=a5cf8107-2705-439e-9483-aadbaf16aa8b, formKey=i2_lifecycle
+2026-09-10T13:03:15.677+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=a5cf8107-2705-439e-9483-aadbaf16aa8b
+2026-09-10T13:03:15.678+08:00  INFO 14643 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Executing DDL: CREATE TABLE "sw_form_irppk79wew" (
+  "id" VARCHAR(36) NOT NULL,
+  "tenant_id" BIGINT NOT NULL DEFAULT 0,
+  "deleted" SMALLINT NOT NULL DEFAULT 0,
+  "create_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "create_by" BIGINT ,
+  "update_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "update_by" BIGINT ,
+  "version" BIGINT NOT NULL DEFAULT 0,
+  "f" VARCHAR(1000),
+  PRIMARY KEY ("id")
+)
+2026-09-10T13:03:15.679+08:00  INFO 14643 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Created table: sw_form_irppk79wew
+2026-09-10T13:03:15.679+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Physical table created: sw_form_irppk79wew for form: a5cf8107-2705-439e-9483-aadbaf16aa8b
+2026-09-10T13:03:15.681+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Form published: id=a5cf8107-2705-439e-9483-aadbaf16aa8b, formKey=i2_lifecycle, physicalTable=sw_form_irppk79wew, version=2
+2026-09-10T13:03:15.682+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Form disabled: id=a5cf8107-2705-439e-9483-aadbaf16aa8b, reason=年度收口暂停
+2026-09-10T13:03:15.685+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Form enabled: id=a5cf8107-2705-439e-9483-aadbaf16aa8b, reason=恢复
+2026-09-10T13:03:15.693+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=618e149e-f698-4d67-8527-3b2142bf4be9, formKey=i2_att_neg
+2026-09-10T13:03:15.695+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=618e149e-f698-4d67-8527-3b2142bf4be9
+2026-09-10T13:03:15.696+08:00  INFO 14643 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Executing DDL: CREATE TABLE "sw_form_jq3ihwaah6" (
+  "id" VARCHAR(36) NOT NULL,
+  "tenant_id" BIGINT NOT NULL DEFAULT 0,
+  "deleted" SMALLINT NOT NULL DEFAULT 0,
+  "create_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "create_by" BIGINT ,
+  "update_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "update_by" BIGINT ,
+  "version" BIGINT NOT NULL DEFAULT 0,
+  "att" CLOB,
+  PRIMARY KEY ("id")
+)
+2026-09-10T13:03:15.697+08:00  INFO 14643 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Created table: sw_form_jq3ihwaah6
+2026-09-10T13:03:15.697+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Physical table created: sw_form_jq3ihwaah6 for form: 618e149e-f698-4d67-8527-3b2142bf4be9
+2026-09-10T13:03:15.699+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Form published: id=618e149e-f698-4d67-8527-3b2142bf4be9, formKey=i2_att_neg, physicalTable=sw_form_jq3ihwaah6, version=2
+2026-09-10T13:03:15.708+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=cf5ddba3-9c8e-42db-bc62-a5e4837859b6, formKey=i2_ref_neg
+2026-09-10T13:03:15.710+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=cf5ddba3-9c8e-42db-bc62-a5e4837859b6
+2026-09-10T13:03:15.712+08:00  INFO 14643 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Executing DDL: CREATE TABLE "sw_form_s8005qehq1" (
+  "id" VARCHAR(36) NOT NULL,
+  "tenant_id" BIGINT NOT NULL DEFAULT 0,
+  "deleted" SMALLINT NOT NULL DEFAULT 0,
+  "create_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "create_by" BIGINT ,
+  "update_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "update_by" BIGINT ,
+  "version" BIGINT NOT NULL DEFAULT 0,
+  "ref_ref_id" VARCHAR(36),
+  PRIMARY KEY ("id")
+)
+2026-09-10T13:03:15.713+08:00  INFO 14643 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Created table: sw_form_s8005qehq1
+2026-09-10T13:03:15.713+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Physical table created: sw_form_s8005qehq1 for form: cf5ddba3-9c8e-42db-bc62-a5e4837859b6
+2026-09-10T13:03:15.715+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Form published: id=cf5ddba3-9c8e-42db-bc62-a5e4837859b6, formKey=i2_ref_neg, physicalTable=sw_form_s8005qehq1, version=2
+2026-09-10T13:03:15.726+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=0b72b921-caa5-4647-b11e-515e53f7423a, formKey=i2_cycle
+2026-09-10T13:03:15.728+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=0b72b921-caa5-4647-b11e-515e53f7423a
+2026-09-10T13:03:15.738+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=5f26eb06-618b-4389-83ad-ba219569dff0, formKey=i2_types
+2026-09-10T13:03:15.741+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=5f26eb06-618b-4389-83ad-ba219569dff0
+2026-09-10T13:03:15.743+08:00  INFO 14643 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Executing DDL: CREATE TABLE "sw_form_qz0fibmnt3" (
+  "id" VARCHAR(36) NOT NULL,
+  "tenant_id" BIGINT NOT NULL DEFAULT 0,
+  "deleted" SMALLINT NOT NULL DEFAULT 0,
+  "create_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "create_by" BIGINT ,
+  "update_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "update_by" BIGINT ,
+  "version" BIGINT NOT NULL DEFAULT 0,
+  "start_time" TIME,
+  "owner" VARCHAR(64),
+  "dept_id" VARCHAR(64),
+  "price" NUMERIC(20,6),
+  "qty" NUMERIC(20,6),
+  "total" NUMERIC(20,6),
+  PRIMARY KEY ("id")
+)
+2026-09-10T13:03:15.744+08:00  INFO 14643 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Created table: sw_form_qz0fibmnt3
+2026-09-10T13:03:15.744+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Physical table created: sw_form_qz0fibmnt3 for form: 5f26eb06-618b-4389-83ad-ba219569dff0
+2026-09-10T13:03:15.745+08:00  INFO 14643 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Form published: id=5f26eb06-618b-4389-83ad-ba219569dff0, formKey=i2_types, physicalTable=sw_form_qz0fibmnt3, version=2
+=== I2 类型发布结果 === table=sw_form_qz0fibmnt3
