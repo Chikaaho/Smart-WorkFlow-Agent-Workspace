@@ -1,0 +1,17 @@
+=== Server / Web read-only drift confirmation (no commit, no push) ===
+Server repo    : /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server
+Server branch  : develop
+Server local HEAD : 7342de3c1810d8b5307dcd2b24ce5e7cc87051f3
+Server ls-remote  : 7342de3c1810d8b5307dcd2b24ce5e7cc87051f3  refs/heads/develop
+Server verdict : NO DRIFT (local == remote == receipt-01 recorded I2 commit)
+Server recorded-commit file count 67 == actual commit file set 67 (diff exit 0)
+
+Web repo       : /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Web
+Web branch     : develop
+Web local HEAD : 5dfd6ee36cd34b3943c7db0e2164c57d2578ec8f
+Web ls-remote  : 5dfd6ee36cd34b3943c7db0e2164c57d2578ec8f  refs/heads/develop
+Web verdict    : NO DRIFT (local == remote == receipt-01 recorded I2 commit)
+Web recorded-commit file count 26 == actual commit file set 26 (diff exit 0)
+
+Both repos retain their pre-existing unrelated working-tree residue (Server: p4/bpmn-adapter
+historical deletions + uploads/; Web: f-cfg.json, f-cfg-fix.json, graph.json). Untouched this round.

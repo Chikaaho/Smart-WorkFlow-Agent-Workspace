@@ -125,4 +125,4 @@ Executor 按 `system.md`、`roles/executor.md`、`project.md`、两仓工程宪�
 
 本阶段实现期间不移动方向、不提交或推送阶段 Git、不创建标签或 Release。待 Planner 功能级验收 `PASSED` 后，再单独下发 I2 终态同步及阶段提交推送方向。
 
-最终裁决（2026-09-10）：回执 06 经 `planning-review-stage-i2-v0.1.0-oa-completion-06-passed.md` 验收通过，I2 功能级状态为 `PASSED`，全部行为、门禁、terminal 与 manifest 原子锁定。本方向归档至 `passed/`；当前唯一执行入口切换为 `../ready/direction-stage-i2-terminal-sync.md`，只做阶段三终态同步，不重跑业务或门禁，不开始 I3。
+最终裁决（2026-09-10）：回执 06 经 `planning-review-stage-i2-v0.1.0-oa-completion-06-passed.md` 功能级验收通过；终态回执 02 经 `planning-final-review-terminal-sync-stage-i2-v0.1.0-oa-completion-02-passed.md` 最终复核通过。I2 正式为 `COMPLETED（规划已确认，2026-09-10）`，本方向与 `direction-stage-i2-terminal-sync.md` 均已归档 `passed/`；下一动作由 Planner 形成 I3 正式阶段方向，不重开 I2。

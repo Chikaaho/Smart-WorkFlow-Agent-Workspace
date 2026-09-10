@@ -4,7 +4,7 @@
 > 指定角色：执行（Executor）  
 > 日期：2026-09-10  
 > 前置裁决：`../receipts/planning-review-stage-i2-v0.1.0-oa-completion-06-passed.md`  
-> 阶段状态：`PASSED`，待终态同步与规划复核
+> 阶段状态：`COMPLETED（规划已确认，2026-09-10）`
 
 ## 1. 同步目标与边界
 
@@ -12,7 +12,9 @@
 
 只提交可由 I2 回执、候选状态和 task-owned crosscheck 证明归属的文件。工作树中的既有无关改动、历史删除、上传文件或其他功能内容继续保留，不得借终态同步一并提交、清理、reset 或覆盖。
 
-## 2. 唯一终态值清单
+## 2. 唯一终态值清单（执行时授权值，历史）
+
+下表保留 Executor 阶段三执行时的精确授权值；Planner 最终确认后的当前状态与归档位置以 §7 为准。
 
 | 字段 | 唯一授权值 |
 |---|---|
@@ -31,7 +33,7 @@
 | 同步后唯一下一动作 | 等待 Planner 终态复核；确认 I2 `COMPLETED` 后再规划 I3 |
 | P60 主方向 | `product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md` |
 | I2 主方向 | `product/v0.1.0-oa-completion/passed/direction-stage-i2-low-code-form-closure.md` |
-| I2 终态同步方向 | `product/v0.1.0-oa-completion/ready/direction-stage-i2-terminal-sync.md` |
+| I2 终态同步方向 | `product/v0.1.0-oa-completion/ready/direction-stage-i2-terminal-sync.md`（执行时路径；最终归档见 §7） |
 | 标签与 Release | 不创建、不发布 |
 
 ## 3. 锁定验证基线集合
@@ -78,3 +80,9 @@ Executor 按实际文件结构机械同步：
 回执至少提供：唯一终态值的实际同步位置与全文回读、memory 压缩前后字节数、三仓各自当前分支/提交 SHA/远端 SHA/push 结果、逐仓提交文件与 task-owned 对账、未提交残留归属，以及现行 terminal Validator 的 input/stdout/stderr/exit、末行逐字节 cmp 和 manifest 回读。
 
 Executor 合法提交状态为：I2 `COMPLETED（待规划确认，2026-09-10）`，P60 `IN_PROGRESS`，机器状态 `TERMINAL_SYNC_SUBMITTED`，`remaining_actionable_count=0`，下一动作 `WAIT_PLANNER`。Planner 复核前不得写“规划已确认”，不得开始 I3。
+
+## 7. 最终复核状态
+
+终态同步回执 02 经 `../receipts/planning-final-review-terminal-sync-stage-i2-v0.1.0-oa-completion-02-passed.md` 最终复核通过。Workspace 实际远端终点为 `afec348d020420a013818e9a2ed7a8150ae4e075`；六提交连续链、1011 项聚合集合与归属矩阵、Server/Web 远端 SHA、terminal 及 manifest 均已核销。
+
+I2 正式为 `COMPLETED（规划已确认，2026-09-10）`，本方向归档至 `passed/`。下一动作由 Planner 形成 I3「人工审批能力」正式阶段方向；在方向下发前不得直接开始 I3 实现。
