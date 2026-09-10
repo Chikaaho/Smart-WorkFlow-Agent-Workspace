@@ -1,5 +1,7 @@
 # CH-aPaaS 高级能力功能明细清单
 
+> **登记兼容说明（2026-09-09）**：本路径仅为既有 I1 回执与证据链保留，不再作为当前清单入口。当前清单位于 `product/v0.1.0-oa-completion/ready/advanced-capability-feature-checklist.md`。
+
 > 所属方向：P60 `v0.3.0-oa-completion`  
 > 清单性质：高级能力正式规划清单  
 > 规划状态：REGISTERED  
