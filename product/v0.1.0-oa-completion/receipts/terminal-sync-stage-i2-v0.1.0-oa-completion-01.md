@@ -35,7 +35,7 @@
 
 | 仓库 | 当前分支 | 同步前 HEAD | I2 提交 SHA | 远端分支 SHA | 结果 |
 |---|---|---|---|---|---|
-| Workspace | `develop-sw` | `a191861c1f510f0dae1be77b38b540177e7ee621` | `d6121e7ec20cfd9a73f075875995db5260170a8d`（治理与阶段文件）、`42c8e04acf4cd873e1675f7774cc9faf9bc52292`（本回执与证据） | `42c8e04acf4cd873e1675f7774cc9faf9bc52292` | 推送成功，远端 SHA 一致 |
+| Workspace | `develop-sw` | `a191861c1f510f0dae1be77b38b540177e7ee621` | `d6121e7ec20cfd9a73f075875995db5260170a8d`→`42c8e04acf4cd873e1675f7774cc9faf9bc52292`→`6e4346fe70e332369277f542447d53148f056f08`→`bc6c626aa4806611139177026c07377d93aaadcd`（治理、阶段文件、本回执、证据、manifest 依次追加） | `31de0c518f1087acfd77b8897b4fdcf16da95cb9`（`bc6c626a` 后续 manifest 重算提交） | 推送成功，远端 SHA 一致 |
 | Server | `develop` | `328ff2a926fed5b195675a1f351d9a806a40b230` | `7342de3c1810d8b5307dcd2b24ce5e7cc87051f3` | `7342de3c1810d8b5307dcd2b24ce5e7cc87051f3` | 推送成功，远端 SHA 一致 |
 | Web | `develop` | `d20a19157c4315ece0fe3bb19f11d3c6b3ef487a` | `5dfd6ee36cd34b3943c7db0e2164c57d2578ec8f` | `5dfd6ee36cd34b3943c7db0e2164c57d2578ec8f` | 推送成功，远端 SHA 一致 |
 
