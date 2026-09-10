@@ -1,0 +1,3 @@
+Server compile: MAVEN_OPTS='-Xmx2g' mvn -q -pl sw-biz/sw-biz-form/sw-biz-form-biz -am -DskipTests compile
+Bootstrap package: MAVEN_OPTS='-Xmx2g' mvn -q -pl sw-bootstrap -am -DskipTests package
+Server full test: MAVEN_OPTS='-Xmx2g' mvn -q test

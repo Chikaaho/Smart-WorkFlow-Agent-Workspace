@@ -1,0 +1,8 @@
+workspace=/usr/local/projects/Smart-WorkFlow
+server=/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server
+web=/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Web
+git -C "$repo" rev-parse HEAD
+git -C "$repo" branch --show-current
+git -C "$repo" status --short --untracked-files=all
+git -C "$repo" diff --stat HEAD
+The four commands above were run for each of workspace, server, and web; Web was limited to Git metadata.
