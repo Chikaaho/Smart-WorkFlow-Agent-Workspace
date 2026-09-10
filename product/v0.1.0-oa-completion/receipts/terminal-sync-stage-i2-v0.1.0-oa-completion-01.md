@@ -35,7 +35,7 @@
 
 | 仓库 | 当前分支 | 同步前 HEAD | I2 提交 SHA | 远端分支 SHA | 结果 |
 |---|---|---|---|---|---|
-| Workspace | `develop-sw` | `a191861c1f510f0dae1be77b38b540177e7ee621` | `d6121e7ec20cfd9a73f075875995db5260170a8d` | `d6121e7ec20cfd9a73f075875995db5260170a8d` | 推送成功，远端 SHA 一致 |
+| Workspace | `develop-sw` | `a191861c1f510f0dae1be77b38b540177e7ee621` | `d6121e7ec20cfd9a73f075875995db5260170a8d`（治理与阶段文件）、`42c8e04acf4cd873e1675f7774cc9faf9bc52292`（本回执与证据） | `42c8e04acf4cd873e1675f7774cc9faf9bc52292` | 推送成功，远端 SHA 一致 |
 | Server | `develop` | `328ff2a926fed5b195675a1f351d9a806a40b230` | `7342de3c1810d8b5307dcd2b24ce5e7cc87051f3` | `7342de3c1810d8b5307dcd2b24ce5e7cc87051f3` | 推送成功，远端 SHA 一致 |
 | Web | `develop` | `d20a19157c4315ece0fe3bb19f11d3c6b3ef487a` | `5dfd6ee36cd34b3943c7db0e2164c57d2578ec8f` | `5dfd6ee36cd34b3943c7db0e2164c57d2578ec8f` | 推送成功，远端 SHA 一致 |
 
@@ -43,7 +43,7 @@
 
 ## 4. 逐仓提交文件与 task-owned 对账
 
-- Workspace：991 项，全部为 I2 归属（`product/v0.1.0-oa-completion/` 回执与证据、I1 承接的 `product/v0.3.0-oa-completion/` 归档、knowledge/session-handoff/features、todo、memory 短文件）。清单 `workspace-commit-files.txt`。
+- Workspace：991 项为 I2 归属（`product/v0.1.0-oa-completion/` 回执与证据、I1 承接的 `product/v0.3.0-oa-completion/` 归档、knowledge/session-handoff/features、todo、memory 短文件）；后续追加提交含本回执与 `evidence/i2-terminal-sync-01/`。清单 `workspace-commit-files.txt`。
 - Server：67 项，仅 I2 表单收口服务端源码、迁移（V68 动作权限、form V69）、测试与 `sw-bootstrap/src` 配置；**未**包含工作树中既有的 `product/p4-oa-personal-center-dual-dispatch`、`product/bpmn-adapter` 历史删除与 `uploads/`。清单 `server-commit-files.txt`。
 - Web：26 项，仅 I2 前端控件、设计器配置、契约、路由与视图；**未**包含工作树残留的 `f-cfg.json`、`f-cfg-fix.json`、`graph.json`。清单 `web-commit-files.txt`。
 - Web 提交由 lint-staged 触发，提交后校验备份树与 HEAD 树哈希相同（`049605ae3b307d9b247ace2d77dc4cd441f979e5`），确认钩子未改写任何被提交内容。
