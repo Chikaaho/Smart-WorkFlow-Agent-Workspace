@@ -1,0 +1,22 @@
+=== workspace push record (round 02, Owner-authorized commit+push) ===
+repo=/usr/local/projects/Smart-WorkFlow
+branch=develop-sw
+head_before=afec348d020420a013818e9a2ed7a8150ae4e075
+head_after=df7bc325f79aa3dc0a3ab03089cbd04dfb6facb6
+remote_sha=df7bc325f79aa3dc0a3ab03089cbd04dfb6facb6
+upstream=origin/develop-sw
+mode=non-force (afec348..df7bc32 fast-forward)
+commit_files=142
+subject=chore(oa): 定稿 I2 终态同步回执 02 与终态复核归档
+
+post-push readback:
+  ls-remote refs/heads/develop-sw = df7bc325f79aa3dc0a3ab03089cbd04dfb6facb6
+  local develop-sw == origin/develop-sw, ahead/behind 0/0
+  merge-base --is-ancestor df7bc32 origin/develop-sw = 0
+  remote contains receipts/terminal-sync-stage-i2-v0.1.0-oa-completion-02.md
+  remote contains passed/direction-stage-i2-terminal-sync.md
+
+excluded residue (unchanged, pre-existing, not I2):
+  ?? dump.rdb
+  ?? search_fallback/v0.1.0-oa-completion-i2-current-seams.md
+  ?? search_task/v0.1.0-oa-completion-i2-current-seams.md
