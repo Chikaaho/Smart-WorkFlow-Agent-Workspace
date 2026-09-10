@@ -72,4 +72,3 @@ Executor 按实际文件结构机械同步：
 回执至少给出：唯一终态值的实际同步位置、memory 体积、三个独立仓库各自的当前分支/提交 SHA/远端 SHA/push 结果、未提交残留归属，以及现行机器终态 Validator 原始结果。
 
 Executor 合法提交状态为：阶段 `COMPLETED（待规划确认）`，P60 `IN_PROGRESS`，机器状态 `TERMINAL_SYNC_SUBMITTED`，`remaining_actionable_count=0`，下一动作 `WAIT_PLANNER`。Planner 复核前不得写“规划已确认”，不得开始 I2。
-

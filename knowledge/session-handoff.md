@@ -1,28 +1,31 @@
 # 会话交接（session-handoff）— 当前压缩版
 
-> 同步点：2026-09-09，P60 `v0.3.0-oa-completion`（0.3.0 OA 全功能收口，XL，P0）执行中：I1「组织与权限底座」已 **COMPLETED（待规划确认，2026-09-09）**（验收 04 PASSED），终态同步方向（`ready/direction-stage-i1-terminal-sync.md`）执行完成，三个独立仓库 I1 变更已提交推送并远端 SHA 回读。更早历史见 `knowledge/history/README.md`。
+> 同步点：2026-09-10，P60 `v0.1.0-oa-completion`（0.1.0 OA 全功能收口，XL，P0）执行中：目标版本已由 Owner 确认统一登记为 `0.1.0`（更正回执 `product/v0.1.0-oa-completion/receipts/planning-registration-correction-v0.1.0-01.md`）；I1「组织与权限底座」**COMPLETED（规划已确认，2026-09-09）**（最终复核 07 PASSED）；**I2「低代码表单收口」COMPLETED（待规划确认，2026-09-10）**（规划验收 06 PASSED，阶段三终态同步已执行，机器状态 `TERMINAL_SYNC_SUBMITTED`），当前唯一执行入口 `product/v0.1.0-oa-completion/ready/direction-stage-i2-terminal-sync.md`。更早历史见 `knowledge/history/README.md`。
 
-## 当前唯一值（v0.3.0-oa-completion 执行入口）
+## 当前唯一值（v0.1.0-oa-completion 执行入口）
 
 | 字段 | 值 |
 |---|---|
-| 当前活动正式功能 | `v0.3.0-oa-completion`（P60 0.3.0 OA 全功能收口）：**IN_PROGRESS**；I1「组织与权限底座」**COMPLETED（待规划确认，2026-09-09）**，终态同步完成；I2 未开始 |
+| 当前活动正式功能 | `v0.1.0-oa-completion`（P60 0.1.0 OA 全功能收口）：**IN_PROGRESS**；I1「组织与权限底座」**COMPLETED（规划已确认，2026-09-09）**；I2「低代码表单收口」**COMPLETED（待规划确认，2026-09-10）** |
 | 正式业务功能数 | **44**（p21-iot-device-access 为第 44 个正式功能，COMPLETED（规划已确认，2026-09-08）） |
 | 清单规模 | 10 模块、55 功能、90 明细（业务）＋ **ADV 高级能力规划项 8 模块、64 条**（不计入统计） |
 | 清单状态计数 | **✅46 / 🟦22 / ⬜22**（46+22+22=90，业务明细零变化；ADV 64 条统一 ⬜ 规划登记/待现状核实） |
 | P 编号 | **P21 已核销/完成（2026-09-08）**；**P2/P4 开放、部分实现未核销**；P34/P35/P37/P38/P39 部分实现未核销；P60 版本统筹项不替代既有编号；I 集合 54 条不增删（**I14 已满足/关闭**；I38/I39/I40/I45 保持开放） |
-| Server 基线 | **12 个模块汇总，1223 tests / 0 failures / 0 errors / 0 skipped；BUILD SUCCESS**（I1 终态候选锁定） |
-| Web 基线 | 126 files passed + 1 skipped / 1176 tests passed + 3 skipped；typecheck/lint/test/build exit 0（I1 终态候选锁定） |
-| Flyway | H2 V66（66）/ PG V66（65） |
-| 产品行为基线 | Owner Broker 真实双向 MQTT；19 个原子工作项全部 COMPLETED；最终 r3 固定输入 16/16 哈希通过；browser_status=`OPERABLE`；Validator exit=0 |
-| 当前任务状态 | `v0.3.0-oa-completion`：**IN_PROGRESS**；I1 **COMPLETED（待规划确认，2026-09-09）**；终态同步复核 02 VERIFYING（T4/T7 锁定，TS-K1/TS-G1 待核销），当前入口=一级提示 `planning-execution-prompt-v0.3.0-oa-completion-i1-terminal-sync-01.md`，下一动作=Planner 复核回执 03 |
-| 活动业务实现功能 | `v0.3.0-oa-completion`（P60） |
-| 唯一下一动作 | **Planner 终态复核 I1 同步回执 03（`receipts/terminal-sync-stage-i1-v0.3.0-oa-completion-03.md`）并确认 I1 COMPLETED**；确认后进入 I2「低代码表单收口」 |
+| Server 基线 | I2 锁定：表单模块 compile、Bootstrap package、Server `mvn -q test` 均 exit 0（`evidence/i2-05/e0b3/affected-gates-*`） |
+| Web 基线 | 126 files passed + 1 skipped / 1179 tests passed + 3 skipped；typecheck/lint/test/build exit 0（I2 回执 02 锁定，后续候选未修改 Web） |
+| Flyway | H2 69 / PG 68 迁移链（I2 回执 02 锁定；后续无迁移改动反证） |
+| 产品行为基线 | I2 五类身份权限、跨租户隔离、PC/375px 移动、撤权与版本历史全链证据见 `receipts/evidence/i2-05/`；I1 产品行为基线（Owner Broker 双向 MQTT/19 原子工作项/r3 16/16 哈希）为历史锁定 |
+| 当前任务状态 | `v0.1.0-oa-completion`：**IN_PROGRESS**；I1 **COMPLETED（规划已确认）**；I2 **COMPLETED（待规划确认，2026-09-10）**，机器状态 `TERMINAL_SYNC_SUBMITTED` |
+| 活动业务实现功能 | 无（I2 已终态同步，待 Planner 确认后规划 I3） |
+| 唯一下一动作 | **Planner 终态复核 I2 阶段三终态同步回执 01（`receipts/terminal-sync-stage-i2-v0.1.0-oa-completion-01.md`），确认 I2 `COMPLETED` 后再规划 I3**；P60 保持 IN_PROGRESS，功能数 44 与清单 ✅46/🟦22/⬜22、P 编号不变 |
 
-## v0.3.0-oa-completion 关键事实
+## v0.1.0-oa-completion 关键事实
 
-- 唯一执行入口：`product/v0.3.0-oa-completion/ready/direction-v0.3.0-oa-completion.md`（六次迭代：I1 组织与权限底座、I2 低代码表单收口、I3 人工审批能力、I4 编排/流程运营/工作台、I5 第三方 SSO、I6 通知与版本收口）。
-- 高级能力规划：`ready/advanced-capability-feature-checklist.md`（ADV-M11—ADV-M18、8 模块/64 条、统一 ⬜ 规划登记/待现状核实）；已映射进 `Smart-WorkFlow-Server/功能清单.md` 文末 ADV 章节，**未纳入 0.3.0 验收**。
+- 主方向：`product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md`（六次迭代：I1 组织与权限底座、I2 低代码表单收口、I3 人工审批能力、I4 编排/流程运营/工作台、I5 第三方 SSO、I6 通知与版本收口）。
+- I2 阶段方向（已归档）：`product/v0.1.0-oa-completion/passed/direction-stage-i2-low-code-form-closure.md`；探索审查 `receipts/planning-review-i2-current-seams-01.md` 通过；I2 功能级裁决 `receipts/planning-review-stage-i2-v0.1.0-oa-completion-06-passed.md` PASSED。
+- 当前唯一执行入口：`product/v0.1.0-oa-completion/ready/direction-stage-i2-terminal-sync.md`（I2 阶段三终态同步，已执行完毕，待 Planner 终态复核）。
+- 历史材料（I1 阶段证据，不改）：`product/v0.3.0-oa-completion/`。
+- 高级能力规划：`ready/advanced-capability-feature-checklist.md`（ADV-M11—ADV-M18、8 模块/64 条）；已映射进 `Smart-WorkFlow-Server/功能清单.md` 文末 ADV 章节，**未纳入 0.1.0 验收**。
 - 统筹但不提前核销：P2/P4/P26/P31/P34/P35/P37/P38/P39 等既有开放 OA 范围。
 - 六阶段外部依赖：四个 SSO Provider 测试应用/回调域/凭据，以及短信/飞书/钉钉/企业微信/小程序/邮件渠道可控测试配置（凭据只进安全配置，不进仓库/截图/日志/回执正文）。
 
@@ -54,7 +57,7 @@
 
 ## 任务指针
 
-- v0.3.0-oa-completion（P60）：方向与规划定义 `product/v0.3.0-oa-completion/ready/`；首次清单同步回执 `product/v0.3.0-oa-completion/receipts/checklist-sync-v0.3.0-oa-completion-01.md`；任务登记 `knowledge/features/v0.3.0-oa-completion.md`（I1 业务验收 PASSED、终态待规划确认、I2—I6 未开始；最新复核=终态同步复核 03，当前唯一入口=`planning-execution-prompt-v0.3.0-oa-completion-i1-terminal-sync-02.md`，下一动作=Planner 复核回执 04）。
+- v0.1.0-oa-completion（P60，当前活动）：方向与规划定义 `product/v0.1.0-oa-completion/ready/`；主方向 `ready/direction-v0.1.0-oa-completion.md`；I2 主方向已归档 `passed/direction-stage-i2-low-code-form-closure.md`；当前唯一执行入口 `ready/direction-stage-i2-terminal-sync.md`；任务登记 `knowledge/features/v0.1.0-oa-completion.md`（由 `v0.3.0-oa-completion.md` 更名承接；目标版本 Owner 确认登记 `0.1.0`；I1 COMPLETED（规划已确认，2026-09-09）；I2 COMPLETED（待规划确认，2026-09-10）——规划验收 06 PASSED，终态同步回执=`receipts/terminal-sync-stage-i2-v0.1.0-oa-completion-01.md`，下一动作=Planner 终态复核）。I1 历史证据（只读历史）：`product/v0.3.0-oa-completion/`。
 - p21-iot-device-access：主方向与阶段三方向均归档 `product/p21-iot-device-access/passed/`；最终裁决 `receipts/planning-final-review-terminal-sync-p21-iot-02-passed.md`（COMPLETED 规划已确认，2026-09-08）；任务登记 `knowledge/features/p21-iot-device-access.md`。
 - v0.0.2-oa：主方向与 A8 方向归档 `product/v0.0.2-oa/passed/`；任务登记 `knowledge/features/v0.0.2-oa.md`；COMPLETED（规划已确认，2026-09-08 复核确认）。
 - P4：主方向与能力边界方向均归档 `product/p4-oa-personal-center-dual-dispatch/passed/`；最终裁决 `receipts/planning-final-review-terminal-sync-p4-02-passed.md`（COMPLETED 规划已确认，2026-09-07）；任务登记 `knowledge/features/p4-oa-personal-center-dual-dispatch.md`。
