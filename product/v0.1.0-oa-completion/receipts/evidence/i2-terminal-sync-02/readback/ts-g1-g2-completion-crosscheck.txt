@@ -1,0 +1,29 @@
+=== 独立复核：规划复核 01 完成条件逐项对照（只读） ===
+
+TS-G1 完成条件（规划复核 01 §3）:
+ [x] a191861 到实际远端终点的连续提交链
+     实测 6 提交线性链条，逐提交父指针相接：d6121e7 -> 42c8e04 -> 6e4346f -> bc6c626 -> 31de0c5 -> afec348
+     merge-base --is-ancestor a191861 origin/develop-sw = 0
+ [x] 每个提交文件           -> workspace-per-commit-files.txt / workspace-per-commit-counts.txt
+ [x] 聚合文件集合           -> workspace-aggregate-name-status.txt (1011 项)
+ [x] 远端分支 SHA           -> afec348d020420a013818e9a2ed7a8150ae4e075 (ls-remote 与 rev-parse 一致)
+ [x] 当前 HEAD/状态         -> workspace-head / workspace-status（本地==远端，ahead/behind 0/0）
+ [x] 远端逐文件内容         -> remote-file-compare 仅 3 项缺失，恰为 3 个删除项；manifest 端点复算 15/15 OK
+ [x] post-push 本地验收附件定性 -> 回执 02 §5 明确本回执/证据不声称位于被证明的远端提交中
+ [x] 单一实际最终 Workspace SHA -> afec348；正文、terminal、远端回读三方一致
+
+反向排除:
+ [x] 不再声称回执自身位于无法自证的提交中
+ [x] 原「31de0c5 无法包含含 31de0c5 的 push record」悖论已消解：31de0c5 是倒数第二提交，实际终点 afec348
+ [x] 未执行 reset/rebase/强推（reflog 仅 normal commit，远端 SHA 与本地完全一致）
+
+TS-G2 完成条件（规划复核 01 §3）:
+ [x] 对实际 Workspace 提交聚合集合生成机器清单 -> ts-g2-ownership-matrix.tsv (1011 行)
+ [x] 逐项分类：I2 实现/证据 924、I1 承接 52、I2 回执 19、I2 终态治理 12、I2 方向 4、未分类 0
+ [x] 计数、路径与零遗漏比较 -> matrix 路径集 == 聚合路径集，diff 0 行，0 重复，0 未分类
+ [x] 解释 52 项 v0.3.0 的必要归属 -> I1 终态同步既有收尾（mtime 2026-09-09），非 I2 新造，属 P60 版本更正所需 I1 历史承接
+ [x] 解释 todo/v0.3.0-oa-plan.md 等非 I2 路径必要性 -> v0.3.0->v0.1.0 版本路径归一（属 I2 终态治理）
+ [x] 未追溯改写/reset/强推/事后改名 -> reflog 无 reset，远端未 force，历史回执未改写（以回执 02 更正并保留回执 01）
+ [x] 真正无关文件已推送时如实登记 -> 未发现完全无关文件；52 项为同主题 I1 承接，已登记交由 Owner 知悉
+
+性质声明: 本轮为本地规划验收附件，不声称已包含在被证明的远端提交 afec348 中。

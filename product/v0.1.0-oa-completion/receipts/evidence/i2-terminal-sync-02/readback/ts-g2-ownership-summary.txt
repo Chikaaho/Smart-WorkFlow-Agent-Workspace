@@ -1,0 +1,37 @@
+=== TS-G2 task-owned reconciliation over the actual Workspace commit aggregate (read-only) ===
+scope  : every path changed between baseline a191861 and remote endpoint afec348 (the pushed set)
+source : git diff --name-status --no-renames a191861 afec348
+total  : 1011 unique paths   (998 A / 3 D / 10 M)
+
+分类计数 (machine list in ts-g2-ownership-matrix.tsv, 1011 rows, 0 unclassified):
+  I2-IMPLEMENTATION-EVIDENCE  924   product/v0.1.0-oa-completion/receipts/evidence/**
+  I1-ARCHIVE-CARRYOVER         52   product/v0.3.0-oa-completion/**
+  I2-RECEIPT                   19   product/v0.1.0-oa-completion/receipts/*.md
+  I2-TERMINAL-GOVERNANCE       12   knowledge/** memory/** todo/**
+  I2-DIRECTION                  4   product/v0.1.0-oa-completion/{ready,passed}/*.md
+  UNCLASSIFIED                  0
+
+零遗漏: matrix path set == aggregate path set (diff exit 0, 1011 == 1011, 0 duplicates).
+
+I1-ARCHIVE-CARRYOVER 52 项精确归属 (终态方向未逐项授权，如实登记):
+  provenance: 全部 49 个新增文件 mtime = 2026-09-09（I1 终态同步年代），非 I2 新造（I2 为 2026-09-10）。
+  content   : I1 阶段三终态同步收尾 —— i1-terminal-sync-03/04/05/06 post-push 证据 46 项、
+              I1 终态最终复核 07-passed、I1 阻塞回执、I1 方向 ready->passed 归档、以及
+              ready/direction-v0.3.0-oa-completion.md 与 advanced-capability-feature-checklist.md 指针更新。
+  necessity : 这些是 I1 终态同步的既有收尾产物，在进入 I2 终态同步时仍以未提交工作树形式存在，
+              属于 P60 版本更正所必需的 I1 历史承接；随 I2 终态提交一并固化，不是 I2 新功能。
+  file-set  : baseline a191861 未含 49 个新增项；remote endpoint 含全部 265 个 v0.3.0 路径。
+
+版本路径更正 (v0.3.0 -> v0.1.0 命名归一，属 I2 终态治理):
+  D todo/v0.3.0-oa-plan.md            -> A todo/v0.1.0-oa-plan.md
+  D knowledge/features/v0.3.0-oa-completion.md -> A knowledge/features/v0.1.0-oa-completion.md
+  D product/v0.3.0-oa-completion/ready/direction-stage-i1-terminal-sync.md
+                                      -> A product/v0.3.0-oa-completion/passed/direction-stage-i1-terminal-sync.md
+                                        (内容仅差 1 个空行，为 ready->passed 归档移动)
+
+与回执 01 陈述的差异 (如实登记，不追溯改写):
+  - 回执 01 称 "Workspace：991 项"；实际 d6121e7 提交 993 条 name-only 记录，全链聚合 1011 项。
+    991 是当时以另一枚举口径生成的清单，与本轮机器聚合口径不同；本轮以 1011 为准并给出逐项归属。
+  - 回执 01 称 v0.3.0 为 "I1 承接归档" 并计 51 项；本轮机器聚合为 52 项，多出 1 项来自
+    product/v0.3.0-oa-completion/ready/direction-v0.3.0-oa-completion.md（M，指针更新）。
+  - 无发现与 I2 完全无关的外部文件被推送；上述 52 项均为 I1/P60 同主题历史承接，交由 Owner 知悉。
