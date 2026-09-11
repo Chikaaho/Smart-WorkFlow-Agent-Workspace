@@ -1,0 +1,62 @@
+URL: http://localhost:5173/workflow/defs/2098220447350415361/design
+时间: 2026-09-11T03:35:06.500Z
+说明: 自研设计器（服务端能力契约面板+校验交互结果）
+
+- complementary:
+  - img "CH-aPaaS"
+  - generic: CH-aPaaS
+  - menubar:
+    - menuitem "系统管理":
+      - generic: 系统管理
+    - menuitem "低代码":
+      - generic: 低代码
+    - menuitem "流程引擎":
+      - generic: 流程引擎
+    - menuitem "智能体":
+      - generic: 智能体
+    - menuitem "物联网":
+      - generic: 物联网
+    - menuitem "开放接口":
+      - text: 开放接口
+    - menuitem "定时任务":
+      - generic: 定时任务
+- button "toggle sidebar":
+- navigation "Breadcrumb"
+- button "返回前台":
+  - generic: 返回前台
+- button "系统管理员":
+  - generic: 系统管理员
+- main:
+  - button "返回定义列表":
+    - generic: 返回定义列表
+  - separator
+  - generic: I3证据-单审批
+  - generic: (bpm_8ac1d73e19644994)
+  - button "撤销" [disabled]:
+    - generic: 撤销
+  - button "删除所选" [disabled]:
+    - generic: 删除所选
+  - button "适配":
+    - generic: 适配
+  - button "校验":
+    - generic: 校验
+  - button "保存草稿":
+    - generic: 保存草稿
+  - button "发布":
+    - generic: 发布
+  - generic: 节点（来自服务端能力契约）
+  - generic: 审批
+  - generic: APPROVAL
+  - generic: 条件分支
+  - generic: CONDITION
+  - generic: 会签
+  - generic: CONSENSUS
+  - generic: 抄送
+  - generic: COPY
+  - generic: 结束
+  - generic: END
+  - generic: 通知
+  - generic: NOTIFICATION
+  - generic: 开始
+  - generic: START
+  - paragraph: 选择或拖入节点后配置属性

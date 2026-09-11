@@ -1,0 +1,93 @@
+{
+  "log": [
+    {
+      "step": "forms",
+      "ids": {
+        "form_i3ev_d1": "b9233b18-6263-46aa-9c84-5498dcb5c92d",
+        "form_i3ev_d2": "fb8dc68b-e505-4776-bae1-9c11eabe2aab",
+        "form_i3ev_d3": "1693df9c-bc9e-4e96-9587-beab456a7999",
+        "form_i3ev_d4": "1cd68016-6d51-4252-b5cb-9385e5a68496",
+        "form_i3ev_d5": "bc5d7c28-d400-425d-a4a7-39fbb2be3e3c",
+        "form_i3ev_d6": "3dfaa95b-3026-4954-9c70-0c9e589b86c5",
+        "form_i3ev_d7": "c0a9767c-1d9e-402b-bbe7-011efbdfb345"
+      }
+    },
+    {
+      "step": "D1 publish",
+      "defId": "2098306588791537666",
+      "resp": {
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "id": "2098306588791537666",
+          "createTime": "2026-09-11T15:04:10.076614",
+          "createBy": "1",
+          "updateTime": "2026-09-11T15:04:10.076625",
+          "updateBy": "1",
+          "deleted": 0,
+          "version": "2",
+          "tenantId": "0",
+          "processKey": "bpm_a40b3867638442bb",
+          "name": "I3证据-单审批",
+          "formKey": "i3ev_d1",
+          "defVersion": 1,
+          "status": "PUBLISHED",
+          "deploymentId": "fcc06dde-adae-11f1-a94e-8e7a76db281d",
+          "processDefinitionId": "bpm_a40b3867638442bb:1:fcfba121-adae-11f1-a94e-8e7a76db281d",
+          "graphJson": "{\"processKey\":\"bpm_a40b3867638442bb\",\"name\":\"I3证据-单审批\",\"formKey\":\"i3ev_d1\",\"version\":null,\"elements\":[{\"id\":\"node_start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":100.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"node_1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"审批A\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[1]}},\"style\":null,\"x\":300.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_1\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_start\",\"target\":\"node_1\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"node_end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":520.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_2\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_1\",\"target\":\"node_end\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null}],\"contractVersion\":2,\"canvas\":{}}",
+          "categoryId": null,
+          "iotAccessEnabled": false,
+          "iotDeviceActionJson": null,
+          "publishedVersion": null
+        }
+      }
+    },
+    {
+      "step": "D2 publish",
+      "defId": "2098306591098404865"
+    },
+    {
+      "step": "D3 publish",
+      "defId": "2098306591677218817"
+    },
+    {
+      "step": "D4 publish",
+      "defId": "2098306592486719489"
+    },
+    {
+      "step": "D5 publish",
+      "defId": "2098306593220722690"
+    },
+    {
+      "step": "D6 publish",
+      "defId": "2098306594021834754"
+    },
+    {
+      "step": "D7 draft only",
+      "defId": "2098306594562899970"
+    }
+  ],
+  "ids": {
+    "form_i3ev_d1": "b9233b18-6263-46aa-9c84-5498dcb5c92d",
+    "form_i3ev_d2": "fb8dc68b-e505-4776-bae1-9c11eabe2aab",
+    "form_i3ev_d3": "1693df9c-bc9e-4e96-9587-beab456a7999",
+    "form_i3ev_d4": "1cd68016-6d51-4252-b5cb-9385e5a68496",
+    "form_i3ev_d5": "bc5d7c28-d400-425d-a4a7-39fbb2be3e3c",
+    "form_i3ev_d6": "3dfaa95b-3026-4954-9c70-0c9e589b86c5",
+    "form_i3ev_d7": "c0a9767c-1d9e-402b-bbe7-011efbdfb345",
+    "d1": "2098306588791537666",
+    "d2": "2098306591098404865",
+    "d3": "2098306591677218817",
+    "d4": "2098306592486719489",
+    "d5": "2098306593220722690",
+    "d6": "2098306594021834754",
+    "d7": "2098306594562899970"
+  },
+  "_snapshot": {
+    "snapshotId": "i3-05-frozen-a",
+    "jar_sha256": "2900e136d1b99c41c8c5ad5bfc8a6ef2ee56d1e1ede3d0168f15072155150246",
+    "instance_A": "PID 64431 @ 8081",
+    "instance_B": "PID 64463 @ 8082",
+    "fingerprint_file": "evidence/i3-05/final-candidate-fingerprint.txt"
+  }
+}

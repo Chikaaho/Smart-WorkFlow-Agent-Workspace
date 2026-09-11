@@ -1,0 +1,176 @@
+{
+  "snapshotId": "i3-06-frozen-a",
+  "jar_sha256": "383ae1a7725319ae74df819c52f830e6f399a152d2de1226d36478db64a31215",
+  "defId": 2098396897832820737,
+  "defName": "z2-designer",
+  "errDefId": 2098406783220146178,
+  "final_graph_sha256": "6659b18fb026924901bee8b13d904ee47ef4b399955c95fe1c98408e2d33e757",
+  "actions": [
+    {
+      "step": "1-drag-in",
+      "action": "palette 审批 APPROVAL → canvas",
+      "input": "cua.drag (353,176)→(655,385)",
+      "after": {
+        "node_1_added": true,
+        "selected": "node_1",
+        "screen": "01"
+      }
+    },
+    {
+      "step": "2-connect",
+      "action": "START port sticky 点击 (567,405) → 点击 node_1 主体 (697,405)",
+      "before_edges": [
+        "edge_1:node_start->node_end"
+      ],
+      "after_edges": [
+        "edge_1",
+        "edge_2:node_start->node_1"
+      ],
+      "db_verify": "edge_2 落库（graph_json）",
+      "screen": "02"
+    },
+    {
+      "step": "3-connect-end",
+      "action": "node_1 port (708,392) sticky → END (904,405)",
+      "after_edges": [
+        "edge_3:node_1->node_end"
+      ],
+      "db_verify": "edge_3 落库",
+      "screen": "02"
+    },
+    {
+      "step": "4-move",
+      "action": "node_1 主体拖动 (660,405)→(660,510)",
+      "before": {
+        "node_1_bbox": "x≈652,y≈389"
+      },
+      "after": {
+        "node_1_bbox": "y≈510（连线跟随变折线）"
+      },
+      "screen": "03"
+    },
+    {
+      "step": "5-select-edge",
+      "action": "点击 START→END 直连边 (620,404)",
+      "after": {
+        "selected": "edge_1（线高亮蓝色）",
+        "panel": "空态"
+      },
+      "screen": "04"
+    },
+    {
+      "step": "6-delete-edge",
+      "action": "删除所选 → edge_1 移除 → 保存",
+      "before_edges": [
+        "edge_1",
+        "edge_2",
+        "edge_3"
+      ],
+      "after_edges": [
+        "edge_2",
+        "edge_3"
+      ],
+      "db_verify": "edge_1 不在 graph_json",
+      "screen": "05"
+    },
+    {
+      "step": "7-copy-in",
+      "action": "拖入 COPY 抄送 → node_2",
+      "after": {
+        "nodeCount": 4
+      },
+      "screen": "06"
+    },
+    {
+      "step": "8-delete-node",
+      "action": "选中 node_2 → 删除所选",
+      "before": {
+        "nodeCount": 4
+      },
+      "after": {
+        "nodeCount": 3
+      },
+      "screen": "06"
+    },
+    {
+      "step": "9-undo",
+      "action": "撤销",
+      "before": {
+        "nodeCount": 3
+      },
+      "after": {
+        "nodeCount": 4
+      },
+      "screen": "06（undo 恢复的抄送可见）"
+    },
+    {
+      "step": "10-zoom-pan-fit",
+      "action": "画布 +/− 缩放、空白拖拽平移、适配",
+      "after": {
+        "view_changed": true,
+        "fit_applied": true
+      },
+      "screen": "06"
+    },
+    {
+      "step": "11-property-edit",
+      "action": "node_1 面板：审批人（兼容）与参与人填 {\"strategy\":\"FIXED_USER\",\"value\":[1]}，Tab 触发 applyProps（toast 属性已更新×3）",
+      "before": {
+        "participant": "空"
+      },
+      "after": {
+        "participant": "FIXED_USER[1]",
+        "echo": "JSON 文本回显，无 [object Object]（回显修复验证）"
+      },
+      "screen": "07"
+    },
+    {
+      "step": "12-delete-copy-save",
+      "action": "删除 node_2 → 保存",
+      "after": {
+        "nodeCount": 3
+      },
+      "screen": "08"
+    },
+    {
+      "step": "13-refresh-restore",
+      "action": "页面刷新",
+      "after": {
+        "nodes_restored": [
+          "node_start",
+          "node_1",
+          "node_end"
+        ],
+        "edges": [
+          "edge_2",
+          "edge_3"
+        ],
+        "positions_kept": true,
+        "config_kept": true
+      },
+      "screen": "08"
+    },
+    {
+      "step": "14-validate-publish",
+      "action": "校验 → 0 错误 → 发布 → 确定发布",
+      "after": {
+        "toast": "发布成功：图、节点配置、表单与函数版本已冻结"
+      },
+      "screen": "09"
+    },
+    {
+      "step": "15-error-scene",
+      "action": "另一草稿 z2-err：拖入审批不连线+清空参与人 → 校验",
+      "after": {
+        "errors_once": [
+          "2202 审批节点缺少 approver 配置",
+          "2004 节点入/出边基数违规",
+          "2005 存在孤儿/不可达节点"
+        ],
+        "target": "定位 node_1，画布红框"
+      },
+      "screen": "screens-z2err-validate-3errors.png"
+    }
+  ],
+  "graph_hash_note": "final_graph_sha256 为保存后服务端 graph_json 全文 sha256（psql 读回，含 edge_2/edge_3 与 FIXED_USER 配置）"
+}

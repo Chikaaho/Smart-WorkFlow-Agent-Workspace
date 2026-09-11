@@ -1,0 +1,21 @@
+# Z0 凭证清零扫描命令（2026-09-11）
+# 命中口径（before，验收 04 §3.2 对齐）：
+#   grep -rlE 'Authorization:[[:space:]]Bearer [A-Za-z0-9_-]{10,}|Bearer eyJ' evidence/i3-0{3,4,5,6}
+#   grep -rlE 'eyJ[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}' evidence/i3-0{3,4,5,6}
+# 脱敏（不可逆，原地，无备份/无压缩包/无 /tmp 复制）：
+#   python3 正则全文替换：
+#   JWT 三段式 eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{5,} → [REDACTED_JWT]
+#   'Authorization:<sp>Bearer <token>' → 'Authorization: [REDACTED_BEARER]'（占位行亦改写，Bearer 前缀形态清零）
+#   refreshToken 值 → [REDACTED]
+# 复扫口径：auth_bearer_files（Authorization 头 Bearer 前缀）/ jwt_files（eyJ 三段式 10+/10+/5+）
+# 结果：hit-count-after.txt 全 0
+# 采集脚本 lib.py 已加落盘即脱敏（redact_header/redact_text），新采集不再产生可重放凭证
+
+# ========== ROUND 2（2026-09-11 22:xx，崩溃恢复会话） ==========
+# 事实：round1 清零后，Z2 采证的 login.mjs 在 rawOut 中落盘了 accessToken 正文（JWT），
+#      命中 i3-06/raw/step1/raw-transcript.txt（1 文件）——违反 Z0 反向断言「不得输出凭证正文」。
+# 修复：scripts/login.mjs 改为 rawOut 中对 accessToken/refreshToken 输出 [REDACTED_*]（正文仅长度/sha256）；
+#      Z0/scrub-round2.py 原地正则替换四目录（无备份/无副本）。
+# 复扫结果见 hit-count-after.txt ROUND2 段（全 0）。
+# 说明：i3-06 的 manifest 按 Z10 规则仅在终态封装时生成一次，不存在中途 manifest；i3-03/04/05
+#      manifest 已在 round1/round2 后重算校验（见 manifest-verify.txt ROUND2 段）。

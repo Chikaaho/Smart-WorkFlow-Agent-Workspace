@@ -1,0 +1,28 @@
+{
+  "_snapshot": {
+    "snapshotId": "i3-05-frozen-a",
+    "jar_sha256": "2900e136d1b99c41c8c5ad5bfc8a6ef2ee56d1e1ede3d0168f15072155150246",
+    "instance_A": "PID 64431 @ 8081",
+    "instance_B": "PID 64463 @ 8082",
+    "fingerprint_file": "evidence/i3-05/final-candidate-fingerprint.txt"
+  },
+  "rows": [
+    {
+      "gid": "G13",
+      "case": "节点函数",
+      "result": {
+        "function_resolved_assignee": "1",
+        "participant_snapshot": "1",
+        "frozen_function_versions": "{\"func_tenant_admins\":1}",
+        "bad_version_validate": {
+          "errors": []
+        },
+        "bad_version_publish": {
+          "code": 2412,
+          "msg": "节点函数不存在"
+        },
+        "verdict": "registered function resolved participants at runtime with frozen v1; unknown version rejected at publish (zero deploy)"
+      }
+    }
+  ]
+}

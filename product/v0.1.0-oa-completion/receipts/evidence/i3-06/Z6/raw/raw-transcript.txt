@@ -1,0 +1,615 @@
+===== LOGIN CHAIN 2026-09-11T15:47:53.961Z =====
+GET /api/auth/challenge (用户名=admin 端口=8081)
+----- RESP -----
+{"code":0,"msg":"success","data":{"captchaImage":"data:image/png;base64,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","captchaId":"80f95103-7944-410b-88eb-81975372b633","publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsDYGzaq4GSYV8zdPnyIg/MCATP+29HW1mcaGTQ8NhFK3vTzg6OvkPLrQctVUn1SXlQ1ScSiTLWmJVZ5xiubrwlu1YhLqh7xGHpwVjiZVBdvL1oGEDTyoq5rLAqhgNi3gDBGS0YikEjAMgv/2qoOY7hoNktGr02eFVqWIO7tTB14oVwPHVNTiJqhv8W2eOB8dehKcQtp1hsZ7fKXqcGnPIg5iM8pt/DZTpkjncSBvKSL05RXWyucqBSpKmYBMAVqQJizCW9XeUCXcEuBfJE9SpS4qEQDkVe/bX9P04bKuKap0TwCh3pna9UpqchkaQaAv53IFN9EgSNOCHHBcY5QNLQIDAQAB","keyVersion":"v1","expiresIn":"300","serverTime":"1789141673737"}}
+----- REQ POST /api/auth/login -----
+{"username":"admin","password":"[REDACTED_PASSWORD]","captcha":"1234","captchaId":"80f95103-7944-410b-88eb-81975372b633","timestamp":"masked"}
+----- RESP -----
+{"code":0,"msg":"success","data":{"accessToken":"[REDACTED len=146 sha256=fdf0f0f7883f4b5c]","expiresIn":"900"}}
+
+===== LOGIN OK 0001 2026-09-11T23:47:53 =====
+POST /api/auth/login (challenge->RSA-OAEP->login 链) user=admin port=8081
+----- RESP -----
+accessToken_len=146 accessToken_sha256=fdf0f0f7883f4b5c16bb91f0d14b3ff4d9611367eb7a53d474e6b54217a3f3b5
+
+===== LOGIN CHAIN 2026-09-11T15:47:54.177Z =====
+GET /api/auth/challenge (用户名=initiator 端口=8081)
+----- RESP -----
+{"code":0,"msg":"success","data":{"captchaImage":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAAAsCAIAAAAmd/c0AAAIJUlEQVR4Xu2a+VcTRxzA/XtqD6u2vvpaq9WWlnorfSiKInjLXRqkQEEKyBFyEAIJJlhBiOUWERSoFK0XFFBrQVErh4pAiAJB7U/9pmOHcb+bZLMJJFjf+zwfO/ud3Z357M53ZuIc87O/3+B25uCi15XEkhwAl3sCbzR4BP8jDZgkuQ7A5TOP+zWMDA2OTzyjhzPZNTN5L9u4R8Pgg76mIunxRH/lzsXpm9+S+r+nl6xtO3vCPJ1dc748r0l7GjidnwBM341EMNMaHj8cqJRHZG59B3ofU5qxzzz5AtdyEhAAHI/9FoDDWaNBW1RJwKecoa2hVB60CPc+S3tTOa4oGiKAOMBnMcQQLhdI5aFiAJfbxY4GXnC8EIYHH3J6HAalsz+lwRfAFuYGLze7YmiiAshYhAN48SwNFLb307anpvomScMVKWvispN1IvQcjfEhfQ1/9Fy7RMtbytSsiVHjiDMaOAKEO3AjdjRQ7nbcTVt+MH7efkJ6QCrWwAt7kQuVGujlKkXE2LiZLR8bm4AsTTXc7+7EDyAEVgAczhYHZiEajENPTkQX/PD+AeoAyPo6nhOGBWDyNDpl3B5tYQW+i2rPJ1TD4wf9OMA2pOtbyvIMKrUm51dJWJmPV/ba5Yqw3SVwePHCHVzFeSwjmDYB7ntSJbnVfn5i8jmOEYh9DY/7R1gBlP7uARyMwTJY/JK/AzT64nS/t4kD9f6l+CI2YL+AbRsU3p/KeMnOasJ1naRGHZMbvIK+PTn7lsIsHIcJwb4GQOWTbBmIVhysSSujGpqPNuBIgXA0qNLiaGPkUZtZT7guhRVARqGgLUexAIoLv4nEkpxobRLMJuhjE4oStuJgIQjS0JhbWyevMo1OjJufpyyJIhr0u5Q4UhyGlCDaEnW2An80HLITwzkCCJLQUujuqJDSksIrbW29V6/+lRx/impQZIh/bziEZIZ/s2cZxwHQesaAg4UgSAOL4dsjRMOhD0NBDA5wlP47f6b7zSXNKIzfxDnL64DClktDZHmxJ251P2arj5omfVfnEQ2JMdX47o5iMj2BKQYWAGRte99kNOIqQnBYw5WK3+i4dL2hAwfYgHcaWq2S0JZ0t/2Ka1HYL4DjBhwA2NnQ8PiaFUqiQSXjTw/Cd14H7nZrI73p0xZEb9BL1tLDiqxQXEUgDmsYfmiksyZHlypYA0yKMre+S5pxLNYXVyHwDkEUOjGlvS/PK02VGiIjC3b46oiDdV7ZPT1DuK5ZsIaOc1WygAW002s1ccODD9h59s1LjbiWQBzWAKh9DxMN0q/i8FmKkBXpmYJk2oyu1mYcYFuA+V8HuHBvwDE2Oe8LKOxo78NhAoFlTa02nj6nbPv89l8sc+4rdcdpYfbuj8cnJnFdSEhCcpIYDfWKk3Rc6uuyOse3qyHAX7nOK5I0g80KMP52ttToolYbkgOJAGuX4nUAxERWsBpWL1fASoKTNgRiHBkqOLiRdrc2whuSGTkFz0zL6/VJuK55WjX0tN2mGs7pz+IAgWzakLT2i3DSjFu/t5hGje1N5aXpezO3vBymlLsWk0heDdYcAJmp9SuXyf3WaVd9NrWS2Oit7us34WDbXKzR076ulIXDK0LKH/beo+U+uz6F+SuuKxwxGibML1KXfEc06HYqoGR0+Gn76dbW6ss4mAMZxwFoj2LnR7QlhtSdNEmw9N2+ae0iuJwCE6Rxs2XDHFI0rKKpCVn6WRxsOzdAHqYPUyELu3m5kfxI1XxCScv9wlayV7B9QV7EaAAMUTqiIWFBcP72LPjXkiq+jMWRHKiGkrho3Okc5DsWXr9Qx3sFfGVrPB175u+TTzQE+RXgABu91n+nCz8VpIF6/Y/qA1PrhpbSV6rbuKA1HNZgGhnrqGvL3y6l4xKLjVTBIT9sM24hQeo/Xxe+tTwloyGvmtPpjjogKKWNRMN6LxU+a4O7f7Tqo9fjJ3wFv7mDA724rkM4pqE4Qpu4MAT3PpD4QYguSHHv2l+4Fi8w/+O0JytggT4yoPKwrFFTQz8aloK9SvYQX5OX3r5Rv/Wal1/DlqM4wC7wTTQWZqj3L+UK+I+iRP/OZqfWho5pMEj0nN7P9Pq+IqGo80y7yTiO483WfwlpNigyt1h+Cs30n3cszrc2N/Z8mZrOTTkTDOyAl7qcU77equT4Uz8Xt9adulFd0ZkQXQW5muaGjOR6/CQCmZh8fqv9/EmVBIZKbMLy8y2qIhzHNLRWXbK8+AtDjgTKzx2p771pfzLOq4H0dbk0+M6Nq3R/mF0ixB7IBshawdq7jzU0ak6vYjqdA8yUBh68MlPCy0m7wKAfIZ9a9lNwDnMIxzTAjMjy4o+M4VOuhfogv+OTv3EYZpvPESwACN1VjFfR4jQExkxlNZ1kjV6yTh64CJZ4OFg4jmmYYeAFpw5YcCSlsaErV9kcH10ZFVIKi7iUhNpC/cWuPx/hSHGMjgy/soFx2bKBYRwWszBkcUqDwCWiODgDEZZh24eTsE1jJ6BoA2PqP7o5g4dq4E0GFOwD4E1CorGmAeam5wwKTejn6ZYNjB9xRWvwbgRQnNIwTdh2wMJq0AbGA9P6iUwx+aLn+pVH/fe55daZTRqsTYrsgj+OGfLhIjxIg2gHHLCP6VAiYpZlA0/R4IwDa3s4WIYLfbyGGkQLIFjTwIJ9uFCJ87hfg2gHpPeFOGDBMjzBh5s1iHZgFquBgmW40YfbNDiTDFyOaA2uyhDu1IALZx2zXsMbWDxFg2u3ImYdM6FByJc7Yxpsbyq4C0/RQJi+vUKKZ2r4ByyFRHA2rW/bAAAAAElFTkSuQmCC","captchaId":"2ea59d28-0a2d-48e8-b16a-a4e5e9c46caa","publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsDYGzaq4GSYV8zdPnyIg/MCATP+29HW1mcaGTQ8NhFK3vTzg6OvkPLrQctVUn1SXlQ1ScSiTLWmJVZ5xiubrwlu1YhLqh7xGHpwVjiZVBdvL1oGEDTyoq5rLAqhgNi3gDBGS0YikEjAMgv/2qoOY7hoNktGr02eFVqWIO7tTB14oVwPHVNTiJqhv8W2eOB8dehKcQtp1hsZ7fKXqcGnPIg5iM8pt/DZTpkjncSBvKSL05RXWyucqBSpKmYBMAVqQJizCW9XeUCXcEuBfJE9SpS4qEQDkVe/bX9P04bKuKap0TwCh3pna9UpqchkaQaAv53IFN9EgSNOCHHBcY5QNLQIDAQAB","keyVersion":"v1","expiresIn":"300","serverTime":"1789141674064"}}
+----- REQ POST /api/auth/login -----
+{"username":"initiator","password":"[REDACTED_PASSWORD]","captcha":"1234","captchaId":"2ea59d28-0a2d-48e8-b16a-a4e5e9c46caa","timestamp":"masked"}
+----- RESP -----
+{"code":0,"msg":"success","data":{"accessToken":"[REDACTED len=150 sha256=1e895157e022a2b8]","expiresIn":"900"}}
+
+===== LOGIN OK 0002 2026-09-11T23:47:54 =====
+POST /api/auth/login (challenge->RSA-OAEP->login 链) user=initiator port=8081
+----- RESP -----
+accessToken_len=150 accessToken_sha256=1e895157e022a2b8cd26f7685b59df317db0a30f531815a35c15efb72d203b48
+
+===== REQ 0003 2026-09-11T23:47:54 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:1e895157]
+
+{"amount": 1}
+----- RESP 0003 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"769e2ca4-5bd5-4336-9ac9-7e4ec1676e0d"}
+
+===== REQ 0004 2026-09-11T23:49:26 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:1e895157]
+
+{"amount": 100}
+----- RESP 0004 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"b30981db-65f3-4676-8dc2-127e138b1c22"}
+
+===== REQ 0005 2026-09-11T23:49:28 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:1e895157]
+
+{"amount": 101}
+----- RESP 0005 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"2a9afb8a-fb4c-4679-a2a0-b85b6121b5aa"}
+
+===== REQ 0006 2026-09-11T23:49:30 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:1e895157]
+
+{"amount": 102}
+----- RESP 0006 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"6f2b4bab-cfa4-4fc8-8167-6f548107d23c"}
+
+===== REQ 0007 2026-09-11T23:49:32 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:1e895157]
+
+{"amount": 103}
+----- RESP 0007 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"7841dc6a-c1cc-46e2-8ffb-823dea368552"}
+
+===== REQ 0008 2026-09-11T23:49:34 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:1e895157]
+
+{"amount": 104}
+----- RESP 0008 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"1031d2f7-dfc9-41b9-b41d-4fe6120e5734"}
+
+===== REQ 0009 2026-09-11T23:49:36 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:1e895157]
+
+{"amount": 105}
+----- RESP 0009 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"01a55a18-1938-46a2-a9cb-a987f80afe25"}
+
+===== REQ 0010 2026-09-11T23:49:38 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:1e895157]
+
+{"amount": 106}
+----- RESP 0010 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"831a241e-a399-490a-9745-384f4847d2b2"}
+
+===== REQ 0011 2026-09-11T23:49:40 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:1e895157]
+
+{"amount": 107}
+----- RESP 0011 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"bf523509-4bcc-4008-8a12-80c24bd817bd"}
+
+===== REQ 0012 2026-09-11T23:49:42 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:1e895157]
+
+{"amount": 108}
+----- RESP 0012 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"e33acc0c-11b9-4d39-b3db-9db747ad9921"}
+
+===== REQ 0013 2026-09-11T23:49:44 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:1e895157]
+
+{"amount": 109}
+----- RESP 0013 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"df369dc4-1b9e-4147-9464-9ad02674e58d"}
+
+===== REQ 0014 2026-09-11T23:49:46 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:1e895157]
+
+{"amount": 110}
+----- RESP 0014 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"db54890e-f2bd-4440-813b-c50a873b94ff"}
+
+===== REQ 0015 2026-09-11T23:49:48 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:1e895157]
+
+{"amount": 111}
+----- RESP 0015 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"3abbc51b-f33a-40e1-bf64-04d85d3bd741"}
+
+===== REQ 0016 2026-09-11T23:51:36 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdf0f0f7]
+
+{"formKey": "i3ev_z6r", "name": "Z6-\u63d0\u9192\u5ba1\u6279"}
+----- RESP 0016 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"ee1f9a65-301d-4968-9e9c-b5a86b7a0e05","formKey":"i3ev_z6r","name":"Z6-提醒审批","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-11T23:51:36.092161","updateTime":"2026-09-11T23:51:36.092163"}}
+
+===== REQ 0017 2026-09-11T23:51:36 =====
+POST http://localhost:8081/api/form/def/ee1f9a65-301d-4968-9e9c-b5a86b7a0e05/config
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdf0f0f7]
+
+{"definition": "{\"fields\": [{\"name\": \"amount\", \"label\": \"\u91d1\u989d\", \"type\": \"NUMBER\"}]}"}
+----- RESP 0017 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0018 2026-09-11T23:51:36 =====
+POST http://localhost:8081/api/form/def/ee1f9a65-301d-4968-9e9c-b5a86b7a0e05/publish
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdf0f0f7]
+
+----- RESP 0018 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0019 2026-09-11T23:51:36 =====
+GET http://localhost:8081/api/workflow/defs?pageNum=1&pageSize=100&formKey=i3ev_z6r
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdf0f0f7]
+
+----- RESP 0019 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"100"}}
+
+===== REQ 0020 2026-09-11T23:51:36 =====
+POST http://localhost:8081/api/workflow/defs
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdf0f0f7]
+
+{"name": "Z6-\u63d0\u9192\u5ba1\u6279", "formKey": "i3ev_z6r"}
+----- RESP 0020 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"defId":"2098439323133882370","graph":{"processKey":"bpm_cda6e5d36bce4258","name":"Z6-提醒审批","formKey":"i3ev_z6r","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300},"x":null,"y":null,"waypoints":null},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300},"x":null,"y":null,"waypoints":null},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{},"x":null,"y":null,"waypoints":null}],"contractVersion":null,"canvas":{}}}}
+
+===== REQ 0021 2026-09-11T23:51:36 =====
+PUT http://localhost:8081/api/workflow/defs/2098439323133882370/graph
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdf0f0f7]
+
+{"processKey": "", "name": "Z6-\u63d0\u9192\u5ba1\u6279", "formKey": "i3ev_z6r", "contractVersion": 2, "elements": [{"id": "node_start", "kind": "node", "type": "START", "x": 100, "y": 300, "config": {}}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "x": 320, "y": 300, "config": {"name": "\u63d0\u9192\u5ba1\u6279", "participant": {"strategy": "FIXED_USER", "value": [1]}, "deadline": {"dueMinutes": 1}}}, {"id": "node_end", "kind": "node", "type": "END", "x": 540, "y": 300, "config": {}}, {"id": "edge_1", "kind": "edge", "source": "node_start", "target": "node_1", "config": {}}, {"id": "edge_2", "kind": "edge", "source": "node_1", "target": "node_end", "config": {}}], "canvas": {}}
+----- RESP 0021 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0022 2026-09-11T23:51:36 =====
+POST http://localhost:8081/api/workflow/defs/2098439323133882370/validate
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdf0f0f7]
+
+----- RESP 0022 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":[]}
+
+===== REQ 0023 2026-09-11T23:51:36 =====
+POST http://localhost:8081/api/workflow/defs/2098439323133882370/publish
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdf0f0f7]
+
+----- RESP 0023 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"2098439323133882370","createTime":"2026-09-11T23:51:36.410198","createBy":"1","updateTime":"2026-09-11T23:51:36.41021","updateBy":"1","deleted":0,"version":"2","tenantId":"0","processKey":"bpm_cda6e5d36bce4258","name":"Z6-提醒审批","formKey":"i3ev_z6r","defVersion":1,"status":"PUBLISHED","deploymentId":"ab701513-adf8-11f1-adbb-d24845ae031d","processDefinitionId":"bpm_cda6e5d36bce4258:1:ab7c4a16-adf8-11f1-adbb-d24845ae031d","graphJson":"{\"processKey\":\"bpm_cda6e5d36bce4258\",\"name\":\"Z6-提醒审批\",\"formKey\":\"i3ev_z6r\",\"version\":null,\"elements\":[{\"id\":\"node_start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":100.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"node_1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"提醒审批\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[1]},\"deadline\":{\"dueMinutes\":1}},\"style\":null,\"x\":320.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"node_end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":540.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_1\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_start\",\"target\":\"node_1\",\"config\":{},\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"edge_2\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_1\",\"target\":\"node_end\",\"config\":{},\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null}],\"contractVersion\":2,\"canvas\":{}}","categoryId":null,"iotAccessEnabled":false,"iotDeviceActionJson":null,"publishedVersion":null}}
+
+===== REQ 0024 2026-09-11T23:51:36 =====
+POST http://localhost:8081/api/form/data/i3ev_z6r
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:1e895157]
+
+{"amount": 1}
+----- RESP 0024 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"de4e0ef4-5671-4fa9-b57f-49da61a9f12b"}
+
+===== REQ 0025 2026-09-11T23:52:47 =====
+POST http://localhost:8081/api/form/data/i3ev_z6r
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:1e895157]
+
+{"amount": 1}
+----- RESP 0025 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"bc36f204-3daa-4c97-a09f-3d36615001fc"}
+
+===== REQ 0026 2026-09-11T23:52:50 =====
+POST http://localhost:8081/api/workflow/my/instances/2098439621546016769/urge
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:1e895157]
+
+----- RESP 0026 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"result":"ACCEPTED","detail":"已通知待办人: [1]","recordId":"2098439633994723330"}}
+
+===== REQ 0027 2026-09-11T23:52:51 =====
+POST http://localhost:8081/api/workflow/my/instances/2098439621546016769/urge
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:1e895157]
+
+----- RESP 0027 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"result":"COOLDOWN","detail":"冷却中，约 598 秒后可再次催办","recordId":"2098439638285496321"}}
+
+===== REQ 0028 2026-09-11T23:52:51 =====
+POST http://localhost:8081/api/form/data/i3ev_z6r
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:1e895157]
+
+{"amount": 1}
+----- RESP 0028 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"209e71e1-1cbc-49d5-927e-e0ae3a99582d"}
+
+===== LOGIN CHAIN 2026-09-11T16:57:00.739Z =====
+GET /api/auth/challenge (用户名=admin 端口=8081)
+----- RESP -----
+{"code":0,"msg":"success","data":{"captchaImage":"data:image/png;base64,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","captchaId":"5fbfaa27-f0c7-441c-9798-60dc94b45fd3","publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsDYGzaq4GSYV8zdPnyIg/MCATP+29HW1mcaGTQ8NhFK3vTzg6OvkPLrQctVUn1SXlQ1ScSiTLWmJVZ5xiubrwlu1YhLqh7xGHpwVjiZVBdvL1oGEDTyoq5rLAqhgNi3gDBGS0YikEjAMgv/2qoOY7hoNktGr02eFVqWIO7tTB14oVwPHVNTiJqhv8W2eOB8dehKcQtp1hsZ7fKXqcGnPIg5iM8pt/DZTpkjncSBvKSL05RXWyucqBSpKmYBMAVqQJizCW9XeUCXcEuBfJE9SpS4qEQDkVe/bX9P04bKuKap0TwCh3pna9UpqchkaQaAv53IFN9EgSNOCHHBcY5QNLQIDAQAB","keyVersion":"v1","expiresIn":"300","serverTime":"1789145820607"}}
+----- REQ POST /api/auth/login -----
+{"username":"admin","password":"[REDACTED_PASSWORD]","captcha":"1234","captchaId":"5fbfaa27-f0c7-441c-9798-60dc94b45fd3","timestamp":"masked"}
+----- RESP -----
+{"code":0,"msg":"success","data":{"accessToken":"[REDACTED len=146 sha256=2e633ea743dcb30e]","expiresIn":"900"}}
+
+===== LOGIN OK 0001 2026-09-12T00:57:00 =====
+POST /api/auth/login (challenge->RSA-OAEP->login 链) user=admin port=8081
+----- RESP -----
+accessToken_len=146 accessToken_sha256=2e633ea743dcb30e5a8d2e3bd1ea3b3a694c68543826a87388458fd9d1e51704
+
+===== LOGIN CHAIN 2026-09-11T16:57:00.916Z =====
+GET /api/auth/challenge (用户名=initiator 端口=8081)
+----- RESP -----
+{"code":0,"msg":"success","data":{"captchaImage":"data:image/png;base64,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","captchaId":"e3d62d95-6489-44a1-8423-b0511ef0af73","publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsDYGzaq4GSYV8zdPnyIg/MCATP+29HW1mcaGTQ8NhFK3vTzg6OvkPLrQctVUn1SXlQ1ScSiTLWmJVZ5xiubrwlu1YhLqh7xGHpwVjiZVBdvL1oGEDTyoq5rLAqhgNi3gDBGS0YikEjAMgv/2qoOY7hoNktGr02eFVqWIO7tTB14oVwPHVNTiJqhv8W2eOB8dehKcQtp1hsZ7fKXqcGnPIg5iM8pt/DZTpkjncSBvKSL05RXWyucqBSpKmYBMAVqQJizCW9XeUCXcEuBfJE9SpS4qEQDkVe/bX9P04bKuKap0TwCh3pna9UpqchkaQaAv53IFN9EgSNOCHHBcY5QNLQIDAQAB","keyVersion":"v1","expiresIn":"300","serverTime":"1789145820812"}}
+----- REQ POST /api/auth/login -----
+{"username":"initiator","password":"[REDACTED_PASSWORD]","captcha":"1234","captchaId":"e3d62d95-6489-44a1-8423-b0511ef0af73","timestamp":"masked"}
+----- RESP -----
+{"code":0,"msg":"success","data":{"accessToken":"[REDACTED len=150 sha256=fdbc21da0204bea9]","expiresIn":"900"}}
+
+===== LOGIN OK 0002 2026-09-12T00:57:00 =====
+POST /api/auth/login (challenge->RSA-OAEP->login 链) user=initiator port=8081
+----- RESP -----
+accessToken_len=150 accessToken_sha256=fdbc21da0204bea9354ed850ee8b41a384c437fd7bf927de2a556dbf03a3305d
+
+===== REQ 0003 2026-09-12T00:57:00 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdbc21da]
+
+{"amount": 1}
+----- RESP 0003 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"6f450139-d8b8-464e-b723-3b0f40ef1d47"}
+
+===== REQ 0004 2026-09-12T00:58:12 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdbc21da]
+
+{"amount": 100}
+----- RESP 0004 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"578580ed-2a7f-4de7-b597-777cf2bcdc36"}
+
+===== REQ 0005 2026-09-12T00:58:14 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdbc21da]
+
+{"amount": 101}
+----- RESP 0005 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"a2de3668-b326-4115-b804-9e2a817814ca"}
+
+===== REQ 0006 2026-09-12T00:58:16 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdbc21da]
+
+{"amount": 102}
+----- RESP 0006 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"e8cd1d47-1087-49c4-8b06-9112d68255ef"}
+
+===== REQ 0007 2026-09-12T00:58:18 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdbc21da]
+
+{"amount": 103}
+----- RESP 0007 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"8ac28eee-26e9-468e-aa78-53015356f4c6"}
+
+===== REQ 0008 2026-09-12T00:58:20 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdbc21da]
+
+{"amount": 104}
+----- RESP 0008 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"c34b35cf-051b-449f-b7fa-2c9b691c02bf"}
+
+===== REQ 0009 2026-09-12T00:58:22 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdbc21da]
+
+{"amount": 105}
+----- RESP 0009 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"89f06460-1301-4ca3-a132-28dfc4409a5a"}
+
+===== REQ 0010 2026-09-12T00:58:24 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdbc21da]
+
+{"amount": 106}
+----- RESP 0010 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"e48fc232-d96a-4f79-9992-b2bde380bc80"}
+
+===== REQ 0011 2026-09-12T00:58:26 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdbc21da]
+
+{"amount": 107}
+----- RESP 0011 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"672cfaca-c914-4a3f-a894-9ba9c355f1ed"}
+
+===== REQ 0012 2026-09-12T00:58:28 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdbc21da]
+
+{"amount": 108}
+----- RESP 0012 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"b78aacdc-5280-4cc0-a896-e997b340d4d1"}
+
+===== REQ 0013 2026-09-12T00:58:30 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdbc21da]
+
+{"amount": 109}
+----- RESP 0013 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"b6ae5daa-942f-4ae8-bcb4-c26bd6c99599"}
+
+===== REQ 0014 2026-09-12T00:58:32 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdbc21da]
+
+{"amount": 110}
+----- RESP 0014 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"4048498b-2443-4677-8cdd-8b0999b70e3a"}
+
+===== REQ 0015 2026-09-12T00:58:34 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdbc21da]
+
+{"amount": 111}
+----- RESP 0015 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"5c27abc1-7fba-4a0f-870c-e6ec8d148552"}
+
+===== REQ 0016 2026-09-12T01:00:21 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:2e633ea7]
+
+{"formKey": "i3ev_z6r", "name": "Z6-\u63d0\u9192\u5ba1\u6279"}
+----- RESP 0016 -----
+STATUS: 200
+
+{"code":1001,"msg":"表单标识 'i3ev_z6r' 已存在","data":null}
+
+===== REQ 0017 2026-09-12T01:00:21 =====
+GET http://localhost:8081/api/form/def/by-key/i3ev_z6r
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:2e633ea7]
+
+----- RESP 0017 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"ee1f9a65-301d-4968-9e9c-b5a86b7a0e05","formKey":"i3ev_z6r","name":"Z6-提醒审批","logicalTableName":null,"status":"PUBLISHED","physicalTableName":"sw_form_qcx67uv3va","formVersion":2,"description":null,"visibilityScope":null,"createTime":"2026-09-11T23:51:36.092161","updateTime":"2026-09-11T23:51:36.164696"}}
+
+===== REQ 0018 2026-09-12T01:00:21 =====
+POST http://localhost:8081/api/form/def/ee1f9a65-301d-4968-9e9c-b5a86b7a0e05/config
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:2e633ea7]
+
+{"definition": "{\"fields\": [{\"name\": \"amount\", \"label\": \"\u91d1\u989d\", \"type\": \"NUMBER\"}]}"}
+----- RESP 0018 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0019 2026-09-12T01:00:21 =====
+POST http://localhost:8081/api/form/def/ee1f9a65-301d-4968-9e9c-b5a86b7a0e05/publish
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:2e633ea7]
+
+----- RESP 0019 -----
+STATUS: 200
+
+{"code":1100,"msg":"表单已发布，不能重复发布","data":null}
+
+===== REQ 0020 2026-09-12T01:00:21 =====
+GET http://localhost:8081/api/workflow/defs?pageNum=1&pageSize=100&formKey=i3ev_z6r
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:2e633ea7]
+
+----- RESP 0020 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"records":[{"id":"2098439323133882370","createTime":"2026-09-11T23:51:36.410198","createBy":"1","updateTime":"2026-09-11T23:51:36.598251","updateBy":"1","deleted":0,"version":"2","tenantId":"0","processKey":"bpm_cda6e5d36bce4258","name":"Z6-提醒审批","formKey":"i3ev_z6r","defVersion":1,"status":"PUBLISHED","deploymentId":"ab701513-adf8-11f1-adbb-d24845ae031d","processDefinitionId":"bpm_cda6e5d36bce4258:1:ab7c4a16-adf8-11f1-adbb-d24845ae031d","graphJson":null,"categoryId":null,"iotAccessEnabled":false,"iotDeviceActionJson":null,"publishedVersion":1}],"total":"1","pageNum":"1","pageSize":"100"}}
+
+===== REQ 0021 2026-09-12T01:00:21 =====
+PUT http://localhost:8081/api/workflow/defs/2098439323133882370/graph
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:2e633ea7]
+
+{"processKey": "", "name": "Z6-\u63d0\u9192\u5ba1\u6279", "formKey": "i3ev_z6r", "contractVersion": 2, "elements": [{"id": "node_start", "kind": "node", "type": "START", "x": 100, "y": 300, "config": {}}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "x": 320, "y": 300, "config": {"name": "\u63d0\u9192\u5ba1\u6279", "participant": {"strategy": "FIXED_USER", "value": [1]}, "deadline": {"dueMinutes": 1}}}, {"id": "node_end", "kind": "node", "type": "END", "x": 540, "y": 300, "config": {}}, {"id": "edge_1", "kind": "edge", "source": "node_start", "target": "node_1", "config": {}}, {"id": "edge_2", "kind": "edge", "source": "node_1", "target": "node_end", "config": {}}], "canvas": {}}
+----- RESP 0021 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0022 2026-09-12T01:00:21 =====
+POST http://localhost:8081/api/workflow/defs/2098439323133882370/validate
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:2e633ea7]
+
+----- RESP 0022 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":[]}
+
+===== REQ 0023 2026-09-12T01:00:21 =====
+POST http://localhost:8081/api/workflow/defs/2098439323133882370/publish
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:2e633ea7]
+
+----- RESP 0023 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"2098439323133882370","createTime":"2026-09-11T23:51:36.410198","createBy":"1","updateTime":"2026-09-11T23:51:36.598251","updateBy":"1","deleted":0,"version":"4","tenantId":"0","processKey":"bpm_cda6e5d36bce4258","name":"Z6-提醒审批","formKey":"i3ev_z6r","defVersion":2,"status":"PUBLISHED","deploymentId":"462c1e5a-ae02-11f1-b512-d24845ae031d","processDefinitionId":"bpm_cda6e5d36bce4258:2:4636096d-ae02-11f1-b512-d24845ae031d","graphJson":"{\"processKey\":\"bpm_cda6e5d36bce4258\",\"name\":\"Z6-提醒审批\",\"formKey\":\"i3ev_z6r\",\"version\":null,\"elements\":[{\"id\":\"node_start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":100.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"node_1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"提醒审批\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[1]},\"deadline\":{\"dueMinutes\":1}},\"style\":null,\"x\":320.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"node_end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":540.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_1\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_start\",\"target\":\"node_1\",\"config\":{},\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"edge_2\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_1\",\"target\":\"node_end\",\"config\":{},\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null}],\"contractVersion\":2,\"canvas\":{}}","categoryId":null,"iotAccessEnabled":false,"iotDeviceActionJson":null,"publishedVersion":1}}
+
+===== REQ 0024 2026-09-12T01:00:21 =====
+POST http://localhost:8081/api/form/data/i3ev_z6r
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdbc21da]
+
+{"amount": 1}
+----- RESP 0024 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"5a051ec1-6db5-4067-9413-77041a7a1dbf"}
+
+===== REQ 0025 2026-09-12T01:01:37 =====
+POST http://localhost:8081/api/form/data/i3ev_z6r
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdbc21da]
+
+{"amount": 1}
+----- RESP 0025 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"d728b2e6-224b-44e6-9d8b-24363a813ebd"}
+
+===== REQ 0026 2026-09-12T01:01:40 =====
+POST http://localhost:8081/api/workflow/my/instances/2098456944105406466/urge
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdbc21da]
+
+----- RESP 0026 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"result":"ACCEPTED","detail":"已通知待办人: [1]","recordId":"2098456956851896322"}}
+
+===== REQ 0027 2026-09-12T01:01:41 =====
+POST http://localhost:8081/api/workflow/my/instances/2098456944105406466/urge
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdbc21da]
+
+----- RESP 0027 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"result":"COOLDOWN","detail":"冷却中，约 598 秒后可再次催办","recordId":"2098456961251721218"}}
+
+===== REQ 0028 2026-09-12T01:01:41 =====
+POST http://localhost:8081/api/form/data/i3ev_z6r
+Content-type: application/json
+Authorization: Authorization: [REDACTED_BEARER sha256:fdbc21da]
+
+{"amount": 1}
+----- RESP 0028 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"a1a0f54c-7533-4826-971d-627d85d9bb46"}
+

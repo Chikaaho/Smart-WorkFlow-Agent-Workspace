@@ -1,0 +1,6 @@
+# snapshot={"snapshotId": "i3-06-frozen-e", "jar_sha256": "90d8bb895a129d523c67e327807840192c606d2fbee44ed7e049d0cc298a16ba", "web_dist_merkle": "f16e31ae1869e5f176405b7d5bc21abcf6d3afc17848dee8c71858a52156e479", "instance_A": "PID 26398 @ 8081", "instance_B": "PID 26448 @ 8082", "fingerprint_file": "evidence/i3-06/Z1/candidate-e.json", "note": "supersedes frozen-a/b/c/d：负向终态覆盖、加签取消唯一键冲突、调度结果标注覆盖、内建函数白名单变量名四项修复后重冻结"}
+2026-09-12T00:56:24.957+08:00  INFO 27292 --- [           main] c.b.p.s.NodeFunctionNegativeContractTest : Started NodeFunctionNegativeContractTest in 2.564 seconds (process running for 3.229)
+2026-09-12T00:56:25.294+08:00  WARN 27292 --- [           main] c.s.c.b.p.service.NodeFunctionService    : 节点函数解析失败: funcKey=func_bomb_v1, error=boom
+2026-09-12T00:56:25.306+08:00  WARN 27292 --- [           main] c.s.c.b.p.service.NodeFunctionService    : 节点函数解析失败: funcKey=func_fb_v1, error=fb-boom
+2026-09-12T00:56:25.316+08:00  INFO 27292 --- [           main] c.s.c.b.p.service.NodeFunctionService    : 节点函数解析参与人成功: funcKey=func_ok_v1, version=1, nodeKey=node_a, size=1
+2026-09-12T00:56:25.328+08:00  INFO 27292 --- [           main] c.s.c.b.p.service.NodeFunctionService    : 节点函数解析参与人成功: funcKey=func_ok_v1, version=1, nodeKey=node_a, size=1

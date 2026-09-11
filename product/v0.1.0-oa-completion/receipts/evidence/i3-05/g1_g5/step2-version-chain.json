@@ -1,0 +1,115 @@
+{
+  "_snapshot": {
+    "snapshotId": "i3-05-frozen-a",
+    "jar_sha256": "2900e136d1b99c41c8c5ad5bfc8a6ef2ee56d1e1ede3d0168f15072155150246",
+    "instance_A": "PID 64431 @ 8081",
+    "instance_B": "PID 64463 @ 8082",
+    "fingerprint_file": "evidence/i3-05/final-candidate-fingerprint.txt"
+  },
+  "rows": [
+    {
+      "case": "publish-v2",
+      "version": 2,
+      "processDefinitionId": "bpm_a40b3867638442bb:2:241da299-adaf-11f1-a94e-8e7a76db281d",
+      "deploymentId": "24127f06-adaf-11f1-a94e-8e7a76db281d"
+    },
+    {
+      "case": "versions-frozen-graph",
+      "versions": [
+        {
+          "id": "2098306866236358657",
+          "createTime": "2026-09-11T15:05:16.224544",
+          "createBy": "1",
+          "updateTime": "2026-09-11T15:05:16.224547",
+          "updateBy": "1",
+          "deleted": 0,
+          "version": "0",
+          "tenantId": "0",
+          "defId": "2098306588791537666",
+          "graphVersion": 2,
+          "status": "PUBLISHED",
+          "name": "I3证据-单审批",
+          "formKey": "i3ev_d1",
+          "formVersion": "2",
+          "functionVersions": "{}",
+          "deploymentId": "24127f06-adaf-11f1-a94e-8e7a76db281d",
+          "processDefinitionId": "bpm_a40b3867638442bb:2:241da299-adaf-11f1-a94e-8e7a76db281d",
+          "publishedBy": "1",
+          "publishedAt": "2026-09-11T15:05:16.224411"
+        },
+        {
+          "id": "2098306590922244098",
+          "createTime": "2026-09-11T15:04:10.58527",
+          "createBy": "1",
+          "updateTime": "2026-09-11T15:04:10.585276",
+          "updateBy": "1",
+          "deleted": 0,
+          "version": "0",
+          "tenantId": "0",
+          "defId": "2098306588791537666",
+          "graphVersion": 1,
+          "status": "PUBLISHED",
+          "name": "I3证据-单审批",
+          "formKey": "i3ev_d1",
+          "formVersion": "2",
+          "functionVersions": "{}",
+          "deploymentId": "fcc06dde-adae-11f1-a94e-8e7a76db281d",
+          "processDefinitionId": "bpm_a40b3867638442bb:1:fcfba121-adae-11f1-a94e-8e7a76db281d",
+          "publishedBy": "1",
+          "publishedAt": "2026-09-11T15:04:10.583865"
+        }
+      ],
+      "v1_elements": 5,
+      "v2_elements": 5
+    },
+    {
+      "case": "failed-publish-zero-deploy",
+      "errorCode": 2002,
+      "msg": "图缺少结束节点",
+      "deployments_before": "10",
+      "deployments_after": "10"
+    },
+    {
+      "case": "frozen-rows",
+      "versions": [
+        2,
+        1
+      ],
+      "deployIds": [
+        "24127f06-adaf-11f1-a94e-8e7a76db281d",
+        "fcc06dde-adae-11f1-a94e-8e7a76db281d"
+      ]
+    },
+    {
+      "case": "suspend-v2",
+      "versionStatus": {
+        "2": "SUSPENDED",
+        "1": "PUBLISHED"
+      },
+      "flowableSuspensionState": "2"
+    },
+    {
+      "case": "activate-v2",
+      "versionStatus": {
+        "2": "PUBLISHED",
+        "1": "PUBLISHED"
+      },
+      "flowableSuspensionState": "1"
+    },
+    {
+      "case": "safe-delete",
+      "draftDelete": "ok",
+      "publishedDelete": {
+        "code": 2416,
+        "msg": "发布版本状态不允许该操作",
+        "data": null
+      }
+    },
+    {
+      "case": "instance-binds-published-version",
+      "recordId": "0c1aa769-e1bd-4034-84cc-f3b8a40261e2",
+      "processInstanceId": "247b53af-adaf-11f1-bb59-8e7a76db281d",
+      "defVersion": "2"
+    }
+  ]
+}

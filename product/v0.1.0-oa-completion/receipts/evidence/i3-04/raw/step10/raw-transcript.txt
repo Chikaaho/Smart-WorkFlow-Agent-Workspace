@@ -1,0 +1,158 @@
+===== LOGIN CHAIN 2026-09-11T04:45:00.205Z =====
+GET /api/auth/challenge (用户名=admin 端口=8081)
+----- RESP -----
+{"code":0,"msg":"success","data":{"captchaImage":"data:image/png;base64,<REDACTED_CAPTCHA_IMAGE>","captchaId":"bc798c1f-25a1-4db6-96ef-26c3812d2944","publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwtCGz1B9+uMf7R2iYuX3wdWYSaI1OGHEw2B5GNjigRaNo7M1ZkXKTdQnUOpO6F1YVEWmOt0rlbegsBCCIVgbohEnF0sA7FMF6jBpx/gzifzUMjq3cg8jbqpwTavw2GfYWf6NCo9pmSH6pA3dm6JRLSQ35o2iuVFwQMaJMQzaPIoaOQiME9d5hFfeotJ2mYLcDs9ORhEBHKXQzHkBCARbd67G3PS+M5cc7L/Fk0S2+XrfKlDDNGPqJYvL+mp3HNhPCszT7V40GDBW3Qevf0h3lfecWPyhLvOu6IkO5wk1F149p0ta0sjR7dLCBchl+6KkD7/Gg935mTF2C55Ip/pZjQIDAQAB","keyVersion":"v1","expiresIn":"300","serverTime":"1789101900101"}}
+----- REQ POST /api/auth/login -----
+{"username":"admin","password":"[REDACTED_PASSWORD]","captcha":"1234","captchaId":"bc798c1f-25a1-4db6-96ef-26c3812d2944","timestamp":"masked"}
+----- RESP -----
+{"code":0,"msg":"success","data":{"accessToken":"[REDACTED]","expiresIn":"900"}}
+
+===== LOGIN OK 0001 2026-09-11T12:45:00 =====
+POST /api/auth/login (challenge->RSA-OAEP->login 链) user=admin port=8081
+----- RESP -----
+accessToken_len=146 accessToken_sha256=b1c5fe5b58af96d548660116a06e3bc5acd18bce6ef0b4bbb03acd86aeb6a7c1
+
+===== LOGIN CHAIN 2026-09-11T04:45:00.375Z =====
+GET /api/auth/challenge (用户名=admin 端口=8081)
+----- RESP -----
+{"code":0,"msg":"success","data":{"captchaImage":"data:image/png;base64,<REDACTED_CAPTCHA_IMAGE>","captchaId":"a0f5bfd2-4d66-4ae1-9d58-799775cb2404","publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwtCGz1B9+uMf7R2iYuX3wdWYSaI1OGHEw2B5GNjigRaNo7M1ZkXKTdQnUOpO6F1YVEWmOt0rlbegsBCCIVgbohEnF0sA7FMF6jBpx/gzifzUMjq3cg8jbqpwTavw2GfYWf6NCo9pmSH6pA3dm6JRLSQ35o2iuVFwQMaJMQzaPIoaOQiME9d5hFfeotJ2mYLcDs9ORhEBHKXQzHkBCARbd67G3PS+M5cc7L/Fk0S2+XrfKlDDNGPqJYvL+mp3HNhPCszT7V40GDBW3Qevf0h3lfecWPyhLvOu6IkO5wk1F149p0ta0sjR7dLCBchl+6KkD7/Gg935mTF2C55Ip/pZjQIDAQAB","keyVersion":"v1","expiresIn":"300","serverTime":"1789101900274"}}
+----- REQ POST /api/auth/login -----
+{"username":"admin","password":"[REDACTED_PASSWORD]","captcha":"1234","captchaId":"a0f5bfd2-4d66-4ae1-9d58-799775cb2404","timestamp":"masked"}
+----- RESP -----
+{"code":0,"msg":"success","data":{"accessToken":"[REDACTED]","expiresIn":"900"}}
+
+===== LOGIN OK 0002 2026-09-11T12:45:00 =====
+POST /api/auth/login (challenge->RSA-OAEP->login 链) user=admin port=8081
+----- RESP -----
+accessToken_len=146 accessToken_sha256=b1c5fe5b58af96d548660116a06e3bc5acd18bce6ef0b4bbb03acd86aeb6a7c1
+
+===== REQ 0003 2026-09-11T12:45:00 =====
+GET http://localhost:8081/api/system/auth/me
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0003 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"user":{"id":"1","username":"admin","displayName":"系统管理员","deptId":"1","tenantId":"0","avatar":null},"permissions":[],"roles":["superadmin"],"superAdmin":true}}
+
+===== LOGIN CHAIN 2026-09-11T04:45:00.567Z =====
+GET /api/auth/challenge (用户名=user2 端口=8081)
+----- RESP -----
+{"code":0,"msg":"success","data":{"captchaImage":"data:image/png;base64,<REDACTED_CAPTCHA_IMAGE>","captchaId":"3eca01d2-d261-4f11-9371-cb0d6f6304c5","publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwtCGz1B9+uMf7R2iYuX3wdWYSaI1OGHEw2B5GNjigRaNo7M1ZkXKTdQnUOpO6F1YVEWmOt0rlbegsBCCIVgbohEnF0sA7FMF6jBpx/gzifzUMjq3cg8jbqpwTavw2GfYWf6NCo9pmSH6pA3dm6JRLSQ35o2iuVFwQMaJMQzaPIoaOQiME9d5hFfeotJ2mYLcDs9ORhEBHKXQzHkBCARbd67G3PS+M5cc7L/Fk0S2+XrfKlDDNGPqJYvL+mp3HNhPCszT7V40GDBW3Qevf0h3lfecWPyhLvOu6IkO5wk1F149p0ta0sjR7dLCBchl+6KkD7/Gg935mTF2C55Ip/pZjQIDAQAB","keyVersion":"v1","expiresIn":"300","serverTime":"1789101900462"}}
+----- REQ POST /api/auth/login -----
+{"username":"user2","password":"[REDACTED_PASSWORD]","captcha":"1234","captchaId":"3eca01d2-d261-4f11-9371-cb0d6f6304c5","timestamp":"masked"}
+----- RESP -----
+{"code":0,"msg":"success","data":{"accessToken":"[REDACTED]","expiresIn":"900"}}
+
+===== LOGIN OK 0004 2026-09-11T12:45:00 =====
+POST /api/auth/login (challenge->RSA-OAEP->login 链) user=user2 port=8081
+----- RESP -----
+accessToken_len=150 accessToken_sha256=695545c22d09edf0788d346375d8db9a7d598399cfee371e3cb72cedf1fc16be
+
+===== REQ 0005 2026-09-11T12:45:00 =====
+GET http://localhost:8081/api/system/auth/me
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0005 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"user":{"id":"2001","username":"user2","displayName":"审批人二号","deptId":"1","tenantId":"0","avatar":null},"permissions":["openapi:view","system:dict:view","system:view","system:user:list","system:role:list","system:dept:list","system:post:list","agent:view","agent:model:view","storage:view","job:view","job:list","job:log","job:create","job:update","job:delete","job:pause","job:resume","job:trigger","storage:upload","storage:delete","storage:download","notify:view","workflow:view","workflow:todo:view","workflow:processed:view","workflow:instance:view","workflow:def:view","system:user:create","system:user:update","system:user:delete","system:role:create","system:role:update","system:role:delete","form:view","form:design","form:design:save","form:design:publish","workflow:def:create","workflow:def:save","workflow:def:publish","workflow:def:delete","workflow:my:view","workflow:catalog:view","workflow:cc:view","iot:view","system:dept:create","system:dept:update","system:dept:delete","system:post:create","system:post:update","system:post:delete","form:data:submit","form:data:edit","form:data:query","workflow:def:design","workflow:def:validate","workflow:def:suspend","workflow:task:transfer","workflow:task:delegate","workflow:task:authorize","workflow:task:add-sign","workflow:task:withdraw","workflow:task:communicate","workflow:task:discard","workflow:task:manage"],"roles":["admin"],"superAdmin":false}}
+
+===== LOGIN CHAIN 2026-09-11T04:45:00.739Z =====
+GET /api/auth/challenge (用户名=user3 端口=8081)
+----- RESP -----
+{"code":0,"msg":"success","data":{"captchaImage":"data:image/png;base64,<REDACTED_CAPTCHA_IMAGE>","captchaId":"43cdf73d-fe05-4056-a2c9-01e822eb7e95","publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwtCGz1B9+uMf7R2iYuX3wdWYSaI1OGHEw2B5GNjigRaNo7M1ZkXKTdQnUOpO6F1YVEWmOt0rlbegsBCCIVgbohEnF0sA7FMF6jBpx/gzifzUMjq3cg8jbqpwTavw2GfYWf6NCo9pmSH6pA3dm6JRLSQ35o2iuVFwQMaJMQzaPIoaOQiME9d5hFfeotJ2mYLcDs9ORhEBHKXQzHkBCARbd67G3PS+M5cc7L/Fk0S2+XrfKlDDNGPqJYvL+mp3HNhPCszT7V40GDBW3Qevf0h3lfecWPyhLvOu6IkO5wk1F149p0ta0sjR7dLCBchl+6KkD7/Gg935mTF2C55Ip/pZjQIDAQAB","keyVersion":"v1","expiresIn":"300","serverTime":"1789101900639"}}
+----- REQ POST /api/auth/login -----
+{"username":"user3","password":"[REDACTED_PASSWORD]","captcha":"1234","captchaId":"43cdf73d-fe05-4056-a2c9-01e822eb7e95","timestamp":"masked"}
+----- RESP -----
+{"code":0,"msg":"success","data":{"accessToken":"[REDACTED]","expiresIn":"900"}}
+
+===== LOGIN OK 0006 2026-09-11T12:45:00 =====
+POST /api/auth/login (challenge->RSA-OAEP->login 链) user=user3 port=8081
+----- RESP -----
+accessToken_len=150 accessToken_sha256=9efb4bf3813b8fe2cb87fda98aedbc04169b29cd7879a1be071a61cdfee166b0
+
+===== REQ 0007 2026-09-11T12:45:00 =====
+GET http://localhost:8081/api/system/auth/me
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0007 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"user":{"id":"2002","username":"user3","displayName":"受托人三号","deptId":"1","tenantId":"0","avatar":null},"permissions":["openapi:view","system:dict:view","system:view","system:user:list","system:role:list","system:dept:list","system:post:list","agent:view","agent:model:view","storage:view","job:view","job:list","job:log","job:create","job:update","job:delete","job:pause","job:resume","job:trigger","storage:upload","storage:delete","storage:download","notify:view","workflow:view","workflow:todo:view","workflow:processed:view","workflow:instance:view","workflow:def:view","system:user:create","system:user:update","system:user:delete","system:role:create","system:role:update","system:role:delete","form:view","form:design","form:design:save","form:design:publish","workflow:def:create","workflow:def:save","workflow:def:publish","workflow:def:delete","workflow:my:view","workflow:catalog:view","workflow:cc:view","iot:view","system:dept:create","system:dept:update","system:dept:delete","system:post:create","system:post:update","system:post:delete","form:data:submit","form:data:edit","form:data:query","workflow:def:design","workflow:def:validate","workflow:def:suspend","workflow:task:transfer","workflow:task:delegate","workflow:task:authorize","workflow:task:add-sign","workflow:task:withdraw","workflow:task:communicate","workflow:task:discard","workflow:task:manage"],"roles":["admin"],"superAdmin":false}}
+
+===== LOGIN CHAIN 2026-09-11T04:45:00.921Z =====
+GET /api/auth/challenge (用户名=user4 端口=8081)
+----- RESP -----
+{"code":0,"msg":"success","data":{"captchaImage":"data:image/png;base64,<REDACTED_CAPTCHA_IMAGE>","captchaId":"5f6f020a-b6a2-4a20-880c-b3c4b46a8e03","publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwtCGz1B9+uMf7R2iYuX3wdWYSaI1OGHEw2B5GNjigRaNo7M1ZkXKTdQnUOpO6F1YVEWmOt0rlbegsBCCIVgbohEnF0sA7FMF6jBpx/gzifzUMjq3cg8jbqpwTavw2GfYWf6NCo9pmSH6pA3dm6JRLSQ35o2iuVFwQMaJMQzaPIoaOQiME9d5hFfeotJ2mYLcDs9ORhEBHKXQzHkBCARbd67G3PS+M5cc7L/Fk0S2+XrfKlDDNGPqJYvL+mp3HNhPCszT7V40GDBW3Qevf0h3lfecWPyhLvOu6IkO5wk1F149p0ta0sjR7dLCBchl+6KkD7/Gg935mTF2C55Ip/pZjQIDAQAB","keyVersion":"v1","expiresIn":"300","serverTime":"1789101900816"}}
+----- REQ POST /api/auth/login -----
+{"username":"user4","password":"[REDACTED_PASSWORD]","captcha":"1234","captchaId":"5f6f020a-b6a2-4a20-880c-b3c4b46a8e03","timestamp":"masked"}
+----- RESP -----
+{"code":0,"msg":"success","data":{"accessToken":"[REDACTED]","expiresIn":"900"}}
+
+===== LOGIN OK 0008 2026-09-11T12:45:00 =====
+POST /api/auth/login (challenge->RSA-OAEP->login 链) user=user4 port=8081
+----- RESP -----
+accessToken_len=150 accessToken_sha256=50712e5fffd60240e16abaaad40d61731915d85727f084a5ad49a456d4bff76f
+
+===== REQ 0009 2026-09-11T12:45:00 =====
+GET http://localhost:8081/api/system/auth/me
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0009 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"user":{"id":"2003","username":"user4","displayName":"沟通接收人","deptId":"1","tenantId":"0","avatar":null},"permissions":["openapi:view","system:dict:view","system:view","system:user:list","system:role:list","system:dept:list","system:post:list","agent:view","agent:model:view","storage:view","job:view","job:list","job:log","job:create","job:update","job:delete","job:pause","job:resume","job:trigger","storage:upload","storage:delete","storage:download","notify:view","workflow:view","workflow:todo:view","workflow:processed:view","workflow:instance:view","workflow:def:view","system:user:create","system:user:update","system:user:delete","system:role:create","system:role:update","system:role:delete","form:view","form:design","form:design:save","form:design:publish","workflow:def:create","workflow:def:save","workflow:def:publish","workflow:def:delete","workflow:my:view","workflow:catalog:view","workflow:cc:view","iot:view","system:dept:create","system:dept:update","system:dept:delete","system:post:create","system:post:update","system:post:delete","form:data:submit","form:data:edit","form:data:query","workflow:def:design","workflow:def:validate","workflow:def:suspend","workflow:task:transfer","workflow:task:delegate","workflow:task:authorize","workflow:task:add-sign","workflow:task:withdraw","workflow:task:communicate","workflow:task:discard","workflow:task:manage"],"roles":["admin"],"superAdmin":false}}
+
+===== LOGIN CHAIN 2026-09-11T04:45:01.104Z =====
+GET /api/auth/challenge (用户名=user5 端口=8081)
+----- RESP -----
+{"code":0,"msg":"success","data":{"captchaImage":"data:image/png;base64,<REDACTED_CAPTCHA_IMAGE>","captchaId":"a3d3ffd5-e249-42ae-bd2a-945b8903a5b1","publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwtCGz1B9+uMf7R2iYuX3wdWYSaI1OGHEw2B5GNjigRaNo7M1ZkXKTdQnUOpO6F1YVEWmOt0rlbegsBCCIVgbohEnF0sA7FMF6jBpx/gzifzUMjq3cg8jbqpwTavw2GfYWf6NCo9pmSH6pA3dm6JRLSQ35o2iuVFwQMaJMQzaPIoaOQiME9d5hFfeotJ2mYLcDs9ORhEBHKXQzHkBCARbd67G3PS+M5cc7L/Fk0S2+XrfKlDDNGPqJYvL+mp3HNhPCszT7V40GDBW3Qevf0h3lfecWPyhLvOu6IkO5wk1F149p0ta0sjR7dLCBchl+6KkD7/Gg935mTF2C55Ip/pZjQIDAQAB","keyVersion":"v1","expiresIn":"300","serverTime":"1789101900997"}}
+----- REQ POST /api/auth/login -----
+{"username":"user5","password":"[REDACTED_PASSWORD]","captcha":"1234","captchaId":"a3d3ffd5-e249-42ae-bd2a-945b8903a5b1","timestamp":"masked"}
+----- RESP -----
+{"code":0,"msg":"success","data":{"accessToken":"[REDACTED]","expiresIn":"900"}}
+
+===== LOGIN OK 0010 2026-09-11T12:45:01 =====
+POST /api/auth/login (challenge->RSA-OAEP->login 链) user=user5 port=8081
+----- RESP -----
+accessToken_len=150 accessToken_sha256=5fc281ba37f8c6c98bd5ba9482f0e9109ce04e3714307dfff99de3d50ce9c557
+
+===== REQ 0011 2026-09-11T12:45:01 =====
+GET http://localhost:8081/api/system/auth/me
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0011 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"user":{"id":"2004","username":"user5","displayName":"无权用户","deptId":"1","tenantId":"0","avatar":null},"permissions":[],"roles":[],"superAdmin":false}}
+
+===== LOGIN CHAIN 2026-09-11T04:45:01.284Z =====
+GET /api/auth/challenge (用户名=tenant1user 端口=8081)
+----- RESP -----
+{"code":0,"msg":"success","data":{"captchaImage":"data:image/png;base64,<REDACTED_CAPTCHA_IMAGE>","captchaId":"8b967c35-b890-4fdb-828a-aa0ee8920331","publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwtCGz1B9+uMf7R2iYuX3wdWYSaI1OGHEw2B5GNjigRaNo7M1ZkXKTdQnUOpO6F1YVEWmOt0rlbegsBCCIVgbohEnF0sA7FMF6jBpx/gzifzUMjq3cg8jbqpwTavw2GfYWf6NCo9pmSH6pA3dm6JRLSQ35o2iuVFwQMaJMQzaPIoaOQiME9d5hFfeotJ2mYLcDs9ORhEBHKXQzHkBCARbd67G3PS+M5cc7L/Fk0S2+XrfKlDDNGPqJYvL+mp3HNhPCszT7V40GDBW3Qevf0h3lfecWPyhLvOu6IkO5wk1F149p0ta0sjR7dLCBchl+6KkD7/Gg935mTF2C55Ip/pZjQIDAQAB","keyVersion":"v1","expiresIn":"300","serverTime":"1789101901182"}}
+----- REQ POST /api/auth/login -----
+{"username":"tenant1user","password":"[REDACTED_PASSWORD]","captcha":"1234","captchaId":"8b967c35-b890-4fdb-828a-aa0ee8920331","timestamp":"masked"}
+----- RESP -----
+{"code":0,"msg":"success","data":{"accessToken":"[REDACTED]","expiresIn":"900"}}
+
+===== LOGIN OK 0012 2026-09-11T12:45:01 =====
+POST /api/auth/login (challenge->RSA-OAEP->login 链) user=tenant1user port=8081
+----- RESP -----
+accessToken_len=150 accessToken_sha256=730786903cd9ce08207c44596b015b2318bcecac9ac807e0111a72bf4278ea23
+
+===== REQ 0013 2026-09-11T12:45:01 =====
+GET http://localhost:8081/api/system/auth/me
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0013 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"user":{"id":"2901","username":"tenant1user","displayName":"跨租户用户","deptId":"1","tenantId":"1","avatar":null},"permissions":["openapi:view","system:dict:view","system:view","system:user:list","system:role:list","system:dept:list","system:post:list","agent:view","agent:model:view","storage:view","job:view","job:list","job:log","job:create","job:update","job:delete","job:pause","job:resume","job:trigger","storage:upload","storage:delete","storage:download","notify:view","workflow:view","workflow:todo:view","workflow:processed:view","workflow:instance:view","workflow:def:view","system:user:create","system:user:update","system:user:delete","system:role:create","system:role:update","system:role:delete","form:view","form:design","form:design:save","form:design:publish","workflow:def:create","workflow:def:save","workflow:def:publish","workflow:def:delete","workflow:my:view","workflow:catalog:view","workflow:cc:view","iot:view","system:dept:create","system:dept:update","system:dept:delete","system:post:create","system:post:update","system:post:delete","form:data:submit","form:data:edit","form:data:query","workflow:def:design","workflow:def:validate","workflow:def:suspend","workflow:task:transfer","workflow:task:delegate","workflow:task:authorize","workflow:task:add-sign","workflow:task:withdraw","workflow:task:communicate","workflow:task:discard","workflow:task:manage"],"roles":["admin"],"superAdmin":false}}
+

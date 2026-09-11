@@ -1,0 +1,176 @@
+{
+  "_snapshot": {
+    "snapshotId": "i3-06-frozen-e",
+    "jar_sha256": "90d8bb895a129d523c67e327807840192c606d2fbee44ed7e049d0cc298a16ba",
+    "web_dist_merkle": "f16e31ae1869e5f176405b7d5bc21abcf6d3afc17848dee8c71858a52156e479",
+    "instance_A": "PID 26398 @ 8081",
+    "instance_B": "PID 26448 @ 8082",
+    "fingerprint_file": "evidence/i3-06/Z1/candidate-e.json",
+    "note": "supersedes frozen-a/b/c/d：负向终态覆盖、加签取消唯一键冲突、调度结果标注覆盖、内建函数白名单变量名四项修复后重冻结"
+  },
+  "rows": [
+    {
+      "case": "Z8-01-capability-catalog",
+      "result": {
+        "endpoint": "GET /form/def/field-types",
+        "http": 200,
+        "total": 22,
+        "enabled": 17,
+        "disabled": [
+          "EMAIL",
+          "PHONE",
+          "URL",
+          "RATE",
+          "SLIDER"
+        ],
+        "verdict": "组件目录来自服务端权威能力 HTTP 响应（22 类，17 enabled + 5 disabled）"
+      }
+    },
+    {
+      "case": "Z8-02-disabled-reject",
+      "result": {
+        "config_code": 1000,
+        "config_msg": "表单不存在",
+        "validate_error_2417": [
+          {
+            "elementId": "node_1",
+            "nodeKey": "node_1",
+            "edgeKey": null,
+            "errorCode": 2417,
+            "message": "审批意见表单组件不可用: EMAIL"
+          }
+        ],
+        "publish_code": 1000,
+        "verdict": "config 层 1205 拒绝 + validate 层 2417 拒绝 + publish 层拒绝（三处均非 0）"
+      }
+    },
+    {
+      "case": "Z8-03-plain-opinion",
+      "result": {
+        "marker": "z8-03-plain-opinion-99ed35c5",
+        "task_detail": {
+          "code": 0,
+          "msg": "success",
+          "data": {
+            "taskId": "bac440c0-ae01-11f1-b512-d24845ae031d",
+            "taskName": "Z8-普通意见",
+            "processInstanceId": "bac419a3-ae01-11f1-b512-d24845ae031d",
+            "processDefinitionKey": "bpm_09857dd9f33d44a3",
+            "processName": "Z8-普通意见",
+            "formKey": "i3ev_z8n",
+            "businessKey": "8fb5b191-4ee9-4acb-baf7-e9631b990507",
+            "assignee": "1",
+            "assigneeName": "系统管理员",
+            "initiatorId": "2005",
+            "initiatorName": "发起人",
+            "createTime": "2026-09-12T00:56:27.682",
+            "processVariables": {
+              "recordId": "8fb5b191-4ee9-4acb-baf7-e9631b990507",
+              "approver": "2005",
+              "submitter": "2005",
+              "formKey": "i3ev_z8n",
+              "tenantId": "0",
+              "formData": {
+                "amount": 77
+              }
+            },
+            "opinionForm": {
+              "formId": "i3ev-opinion",
+              "version": "v1",
+              "fields": [
+                {
+                  "key": "comment2",
+                  "label": "审批说明",
+                  "type": "TEXT",
+                  "required": true,
+                  "maxLength": 200
+                },
+                {
+                  "key": "level",
+                  "label": "等级",
+                  "type": "RADIO",
+                  "options": [
+                    "A",
+                    "B"
+                  ],
+                  "required": true
+                },
+                {
+                  "key": "note",
+                  "label": "备注",
+                  "type": "NOTE"
+                }
+              ]
+            },
+            "approvalHistory": []
+          }
+        },
+        "missing_required_rejected": 2308,
+        "submit": 0,
+        "main_form_before": "",
+        "main_form_after": "",
+        "main_form_unchanged": true,
+        "snapshots": [
+          "APPROVE|bac440c0-ae01-11f1-b512-d24845ae031d|{\"opinionForm\":{\"formId\":\"i3ev-opinion\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"审批说明\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"level\",\"label\":\"等级\",\"type\":\"RADIO\",\"options\":[\"A\",\"B\"],\"required\":true},{\"key\":\"note\",\"label\":\"备注\",\"type\":\"NOTE\"}]},\"opinionFormId\":\"i3ev-opinion\",\"opinionFormVersion\":\"v1\"}"
+        ],
+        "instance_status": "APPROVED"
+      }
+    },
+    {
+      "case": "Z8-04-consensus-opinion",
+      "result": {
+        "marker": "z8-04-consensus-opinion-8945efe3",
+        "vote_a": 0,
+        "vote_b": 0,
+        "main_form_unchanged": true,
+        "snapshots": [
+          "APPROVE|bce4fe00-ae01-11f1-b512-d24845ae031d|{\"opinionForm\":{\"formId\":\"i3ev-opinion\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"审批说明\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"level\",\"label\":\"等级\",\"type\":\"RADIO\",\"options\":[\"A\",\"B\"],\"required\":true},{\"key\":\"note\",\"label\":\"备注\",\"type\":\"NOTE\"}]},\"opinionFormId\":\"i3ev-opinion\",\"opinionFormVersion\":\"v1\"}",
+          "APPROVE|bce5e865-ae01-11f1-b512-d24845ae031d|{\"opinionForm\":{\"formId\":\"i3ev-opinion\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"审批说明\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"level\",\"label\":\"等级\",\"type\":\"RADIO\",\"options\":[\"A\",\"B\"],\"required\":true},{\"key\":\"note\",\"label\":\"备注\",\"type\":\"NOTE\"}]},\"opinionFormId\":\"i3ev-opinion\",\"opinionFormVersion\":\"v1\"}"
+        ],
+        "instance_status": "APPROVED"
+      }
+    },
+    {
+      "case": "Z8-05-addsign-opinion",
+      "result": {
+        "marker": "z8-05-addsign-opinion-732d12b4",
+        "add_sign": 0,
+        "express": 0,
+        "final": 0,
+        "snapshots": [
+          "ADD_SIGN|bf060962-ae01-11f1-b512-d24845ae031d|{\"opinionForm\":{\"formId\":\"i3ev-opinion\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"审批说明\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"level\",\"label\":\"等级\",\"type\":\"RADIO\",\"options\":[\"A\",\"B\"],\"required\":true},{\"key\":\"note\",\"label\":\"备注\",\"type\":\"NOTE\"}]},\"opinionFormId\":\"i3ev-opinion\",\"opinionFormVersion\":\"v1\"}",
+          "APPROVE|bf060962-ae01-11f1-b512-d24845ae031d|{\"opinionForm\":{\"formId\":\"i3ev-opinion\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"审批说明\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"level\",\"label\":\"等级\",\"type\":\"RADIO\",\"options\":[\"A\",\"B\"],\"required\":true},{\"key\":\"note\",\"label\":\"备注\",\"type\":\"NOTE\"}]},\"opinionFormId\":\"i3ev-opinion\",\"opinionFormVersion\":\"v1\"}"
+        ]
+      }
+    },
+    {
+      "case": "Z8-06-supplement-opinion",
+      "result": {
+        "marker": "z8-06-supplement-opinion-9a1eec69",
+        "sup_create": 0,
+        "express": 0,
+        "sup_sign_row": "",
+        "snapshots": [
+          "APPROVE|c1d04d05-ae01-11f1-b512-d24845ae031d|{\"opinionForm\":{\"formId\":\"i3ev-opinion\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"审批说明\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"level\",\"label\":\"等级\",\"type\":\"RADIO\",\"options\":[\"A\",\"B\"],\"required\":true},{\"key\":\"note\",\"label\":\"备注\",\"type\":\"NOTE\"}]},\"opinionFormId\":\"i3ev-opinion\",\"opinionFormVersion\":\"v1\"}",
+          "SUPPLEMENT_SIGN|SUPPLEMENT#c1d025e8-ae01-11f1-b512-d24845ae031d|{\"opinionForm\":{},\"opinionFormId\":\"i3ev-opinion\",\"opinionFormVersion\":\"v1\"}"
+        ]
+      }
+    },
+    {
+      "case": "Z8-07-return-round",
+      "result": {
+        "marker": "z8-07-return-opinion-e7e43b6b",
+        "return": 0,
+        "round_row": "RETURN|1",
+        "round2_task": "c69d166b-ae01-11f1-b512-d24845ae031d",
+        "round2_complete": 0,
+        "main_form_unchanged": true,
+        "snapshots": [
+          "APPROVE|c488dcc4-ae01-11f1-8706-d24845ae031d|{\"opinionForm\":{\"formId\":\"i3ev-opinion\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"审批说明\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"level\",\"label\":\"等级\",\"type\":\"RADIO\",\"options\":[\"A\",\"B\"],\"required\":true},{\"key\":\"note\",\"label\":\"备注\",\"type\":\"NOTE\"}]},\"opinionFormId\":\"i3ev-opinion\",\"opinionFormVersion\":\"v1\"}",
+          "RETURN|c5c701b6-ae01-11f1-b512-d24845ae031d|{\"opinionForm\":{\"formId\":\"i3ev-opinion\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"审批说明\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"level\",\"label\":\"等级\",\"type\":\"RADIO\",\"options\":[\"A\",\"B\"],\"required\":true},{\"key\":\"note\",\"label\":\"备注\",\"type\":\"NOTE\"}]},\"opinionFormId\":\"i3ev-opinion\",\"opinionFormVersion\":\"v1\"}",
+          "APPROVE|c69d166b-ae01-11f1-b512-d24845ae031d|{\"opinionForm\":{\"formId\":\"i3ev-opinion\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"审批说明\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"level\",\"label\":\"等级\",\"type\":\"RADIO\",\"options\":[\"A\",\"B\"],\"required\":true},{\"key\":\"note\",\"label\":\"备注\",\"type\":\"NOTE\"}]},\"opinionFormId\":\"i3ev-opinion\",\"opinionFormVersion\":\"v1\"}"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+[OK] G6 APPROVE正向+重复
+[OK] G6 DISAPPROVE结算
+[OK] G6 REJECT流程级
+[OK] G7 RETURN合法/非法/新轮次
+[OK] G10 TRANSFER正向
+[OK] G10 DELEGATE委托
+[FAIL] G10 AUTHORIZE规则矩阵 submit fail {'code': 403, 'msg': '无权限', 'data': None}
+Traceback (most recent call last):
+  File "/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-04/scripts/step3_actions.py", line 212, in <module>
+    case("G10", "AUTHORIZE规则矩阵", g10_authorize)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-04/scripts/step3_actions.py", line 51, in case
+    entry = fn()
+  File "/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-04/scripts/step3_actions.py", line 199, in g10_authorize
+    rec = submit(PORT_A, "i3ev_d1", T2, {"amount": 7, "reason": "g10-authorize"})
+  File "/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-04/scripts/step3_actions.py", line 22, in submit
+    assert r["code"] == 0, f"submit fail {r}"
+           ^^^^^^^^^^^^^^
+AssertionError: submit fail {'code': 403, 'msg': '无权限', 'data': None}

@@ -1,0 +1,45 @@
+Traceback (most recent call last):
+  File "/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/step6b_opinion.py", line 7, in <module>
+    from step2_version import psql
+  File "/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/step2_version.py", line 7, in <module>
+    from step1_defs import PORT_A, TA, validate, publish, node, edge, linear_graph
+  File "/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/step1_defs.py", line 9, in <module>
+    TA = login(PORT_A, "admin")
+  File "/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/lib.py", line 67, in login
+    raise RuntimeError(f"login fail {username}@{port}: {out.stderr.strip()}")
+RuntimeError: login fail admin@8081: node:internal/deps/undici/undici:15845
+      Error.captureStackTrace(err);
+            ^
+
+TypeError: fetch failed
+    at node:internal/deps/undici/undici:15845:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/login.mjs:5:19 {
+  [cause]: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    [errors]: [
+      Error: connect ECONNREFUSED ::1:8081
+          at createConnectionError (node:net:1678:14)
+          at afterConnectMultiple (node:net:1708:16) {
+        errno: -61,
+        code: 'ECONNREFUSED',
+        syscall: 'connect',
+        address: '::1',
+        port: 8081
+      },
+      Error: connect ECONNREFUSED 127.0.0.1:8081
+          at createConnectionError (node:net:1678:14)
+          at afterConnectMultiple (node:net:1708:16) {
+        errno: -61,
+        code: 'ECONNREFUSED',
+        syscall: 'connect',
+        address: '127.0.0.1',
+        port: 8081
+      }
+    ]
+  }
+}
+
+Node.js v24.9.0

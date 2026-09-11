@@ -1,0 +1,25 @@
+{
+  "snapshotId": "i3-06-frozen-a",
+  "frozen_at": "2026-09-11T20:36+08:00",
+  "gate": {
+    "server_full_test": {"exit": 0, "summary": "Tests run: 1261, Failures: 0, Errors: 0（surefire-totals.txt 可复算）", "log": "server-full-test.stdout/server-full-test.stderr/server-full-test.exit"},
+    "web_gates": {"typecheck_exit": 0, "lint_exit": 0, "test_exit": 0, "build_exit": 0},
+    "migration_chain": "FlywayFullChain H2/PG 计入 server 全量（1261 中），终点版本 75",
+    "package": {"exit": 0, "log": "server-package.stdout/server-package.stderr/server-package.exit"}
+  },
+  "backend_jar": {
+    "path": "Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar",
+    "sha256": "383ae1a7725319ae74df819c52f830e6f399a152d2de1226d36478db64a31215"
+  },
+  "web_dist": {
+    "path": "Smart-WorkFlow-Web/dist",
+    "merkle_sha256": "ec1968fdf493e53910b46a7ed254856906af6a9f8db330b07cbc58d142e74976"
+  },
+  "source_diff": {
+    "server_diff_hash": "6b98ba535ef951ff73d70062275443864655ca9f48007998d43c203a535ec365",
+    "web_diff_hash": "dad41a743f9770323da0207b15e20f2f8633709b35e9975139e62c56a68eb313",
+    "server_scope": "85 files changed, 1255 insertions(+), 2038 deletions(-)（相对 HEAD develop-sw）"
+  },
+  "post_freeze_rule": "冻结后零代码修改、零重打包、零 dist 重建；Z2—Z9 行为采集只能引用本 candidate.json 的唯一 snapshotId/JAR/Web hash。",
+  "superseded": ["i3-05-frozen-a (jar 2900e136…)", "i3-05-frozen-b (jar 1172aff5…)"]
+}

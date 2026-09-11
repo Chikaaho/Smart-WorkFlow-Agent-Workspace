@@ -1,0 +1,909 @@
+{
+  "_snapshot": {
+    "snapshotId": "i3-06-frozen-e",
+    "jar_sha256": "90d8bb895a129d523c67e327807840192c606d2fbee44ed7e049d0cc298a16ba",
+    "web_dist_merkle": "f16e31ae1869e5f176405b7d5bc21abcf6d3afc17848dee8c71858a52156e479",
+    "instance_A": "PID 26398 @ 8081",
+    "instance_B": "PID 26448 @ 8082",
+    "fingerprint_file": "evidence/i3-06/Z1/candidate-e.json",
+    "note": "supersedes frozen-a/b/c/d：负向终态覆盖、加签取消唯一键冲突、调度结果标注覆盖、内建函数白名单变量名四项修复后重冻结"
+  },
+  "rows": [
+    {
+      "case": "Z9-01-identity-matrix",
+      "result": {
+        "identities": {
+          "admin": {
+            "userId": "1",
+            "tenantId": "0",
+            "roles": "superadmin",
+            "menu_count": "1",
+            "todo_api_ok": true
+          },
+          "initiator": {
+            "userId": "2005",
+            "tenantId": "0",
+            "roles": "admin",
+            "menu_count": "69",
+            "todo_api_ok": true
+          },
+          "user2": {
+            "userId": "2001",
+            "tenantId": "0",
+            "roles": "admin",
+            "menu_count": "69",
+            "todo_api_ok": true
+          },
+          "user3": {
+            "userId": "2002",
+            "tenantId": "0",
+            "roles": "admin",
+            "menu_count": "69",
+            "todo_api_ok": true
+          },
+          "user4": {
+            "userId": "2003",
+            "tenantId": "0",
+            "roles": "admin",
+            "menu_count": "69",
+            "todo_api_ok": true
+          },
+          "user5": {
+            "userId": "2004",
+            "tenantId": "0",
+            "roles": "(无角色)",
+            "menu_count": "0",
+            "todo_api_ok": true
+          },
+          "tenant1user": {
+            "userId": "2901",
+            "tenantId": "1",
+            "roles": "admin",
+            "menu_count": "69",
+            "todo_api_ok": true
+          }
+        }
+      }
+    },
+    {
+      "case": "Z9-02-duty-matrix",
+      "result": {
+        "marker": "z9-02-matrix-d09403a7",
+        "matrix": {
+          "design_publish": {
+            "positive_admin": 0,
+            "negative_user5": 403
+          },
+          "task_transfer": {
+            "positive_admin": 0,
+            "negative_user5": 403
+          },
+          "transferee_complete": {
+            "positive_user3": 0
+          },
+          "cross_tenant": {
+            "tenant1user_todo_rows": 0,
+            "leak_of_tenant0_business": 0
+          },
+          "menus": {
+            "admin": "1",
+            "initiator": "69",
+            "user2": "69",
+            "user3": "69",
+            "user4": "69",
+            "user5": "0",
+            "tenant1user": "69"
+          }
+        }
+      }
+    },
+    {
+      "case": "Z9-03-machine-ledger",
+      "result": {
+        "scoped_instances": 191,
+        "scope_note": "tenant 0 且冻结时刻后创建（本轮 Z2—Z8 采证对象集）",
+        "counts": {
+          "instances": 191,
+          "trace_rows": 962,
+          "notify_rows": 4,
+          "action_required_field_empty": 0,
+          "duplicate_action_groups": 0,
+          "trace_usertask_assignee_empty": 0,
+          "notify_required_field_empty": 0,
+          "duplicate_notify_rows": 0,
+          "opinion_form_snapshot_missing": 0,
+          "sign_row_bad": 0,
+          "deadline_done_result_missing": 0,
+          "function_audit_bad": 0
+        },
+        "dup_groups_detail": [
+          {
+            "pid": "7e42eebe-adfe-11f1-860b-d24845ae031d",
+            "group": "WF_TODO|7e42eebe-adfe-11f1-860b-d24845ae031d|2001|2",
+            "justified": true,
+            "sign_cnt": "2"
+          },
+          {
+            "pid": "88236ff3-ae01-11f1-b512-d24845ae031d",
+            "group": "WF_TODO|88236ff3-ae01-11f1-b512-d24845ae031d|2001|2",
+            "justified": true,
+            "sign_cnt": "2"
+          }
+        ],
+        "ledger": [
+          {
+            "pid": "4a574e38-adfe-11f1-94e5-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "4d454678-adfe-11f1-94e5-d24845ae031d",
+            "status": "REJECTED"
+          },
+          {
+            "pid": "4f6f5278-adfe-11f1-94e5-d24845ae031d",
+            "status": "REJECTED"
+          },
+          {
+            "pid": "5191e46f-adfe-11f1-860b-d24845ae031d",
+            "status": "RUNNING"
+          },
+          {
+            "pid": "562b69b8-adfe-11f1-94e5-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "58ebc266-adfe-11f1-860b-d24845ae031d",
+            "status": "REJECTED"
+          },
+          {
+            "pid": "5d31f7ce-adfe-11f1-860b-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "5f5525a6-adfe-11f1-94e5-d24845ae031d",
+            "status": "REJECTED"
+          },
+          {
+            "pid": "6176576f-adfe-11f1-860b-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "63a3e5f7-adfe-11f1-860b-d24845ae031d",
+            "status": "REJECTED"
+          },
+          {
+            "pid": "65d1265e-adfe-11f1-860b-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "689353cc-adfe-11f1-860b-d24845ae031d",
+            "status": "REJECTED"
+          },
+          {
+            "pid": "6b5d978e-adfe-11f1-860b-d24845ae031d",
+            "status": "REJECTED"
+          },
+          {
+            "pid": "6d818826-adfe-11f1-860b-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "6ff2884d-adfe-11f1-860b-d24845ae031d",
+            "status": "RUNNING"
+          },
+          {
+            "pid": "7213e1d0-adfe-11f1-860b-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "74861a78-adfe-11f1-860b-d24845ae031d",
+            "status": "RUNNING"
+          },
+          {
+            "pid": "7831e48b-adfe-11f1-860b-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "7b879f74-adfe-11f1-94e5-d24845ae031d",
+            "status": "RUNNING"
+          },
+          {
+            "pid": "7e42eebe-adfe-11f1-860b-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "823537a1-adfe-11f1-860b-d24845ae031d",
+            "status": "RUNNING"
+          },
+          {
+            "pid": "845865e4-adfe-11f1-94e5-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "87ab3a54-adfe-11f1-860b-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "89ceb6a7-adfe-11f1-860b-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "8d2ada04-adfe-11f1-94e5-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "9031fe9a-adfe-11f1-860b-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "938a787d-adfe-11f1-860b-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "9739ebd4-adfe-11f1-94e5-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "99e90677-adfe-11f1-860b-d24845ae031d",
+            "status": "WITHDRAWN"
+          },
+          {
+            "pid": "9c591c27-adfe-11f1-860b-d24845ae031d",
+            "status": "RUNNING"
+          },
+          {
+            "pid": "9d9f3084-adfe-11f1-94e5-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "9fb0d2ba-adfe-11f1-860b-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "a3691f94-adfe-11f1-94e5-d24845ae031d",
+            "status": "DISCARDED"
+          },
+          {
+            "pid": "a60db2fd-adfe-11f1-860b-d24845ae031d",
+            "status": "RUNNING"
+          },
+          {
+            "pid": "ac6ae161-adfe-11f1-860b-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "b00ee338-adfe-11f1-860b-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "b232d4bf-adfe-11f1-860b-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "566dad04-adff-11f1-94e5-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "5a1b72d4-adff-11f1-94e5-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "5c3b6d38-adff-11f1-860b-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "5e5aa334-adff-11f1-94e5-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "90eb1ffa-adff-11f1-860b-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "9574ee34-adff-11f1-94e5-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "974b0dd4-adff-11f1-94e5-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "995e362a-adff-11f1-860b-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "9c184d2d-adff-11f1-860b-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "9ed23d28-adff-11f1-860b-d24845ae031d",
+            "status": "RUNNING"
+          },
+          {
+            "pid": "54266a0e-ae01-11f1-8706-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "5759819e-ae01-11f1-8706-d24845ae031d",
+            "status": "REJECTED"
+          },
+          {
+            "pid": "597cfdce-ae01-11f1-b512-d24845ae031d",
+            "status": "REJECTED"
+          },
+          {
+            "pid": "5ba6468e-ae01-11f1-8706-d24845ae031d",
+            "status": "RUNNING"
+          },
+          {
+            "pid": "5fe96e7f-ae01-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "62f96dc6-ae01-11f1-b512-d24845ae031d",
+            "status": "REJECTED"
+          },
+          {
+            "pid": "66f57a7e-ae01-11f1-8706-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "692998e7-ae01-11f1-b512-d24845ae031d",
+            "status": "REJECTED"
+          },
+          {
+            "pid": "6b4a7cdc-ae01-11f1-8706-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "6d6e95c9-ae01-11f1-b512-d24845ae031d",
+            "status": "REJECTED"
+          },
+          {
+            "pid": "6f94349a-ae01-11f1-8706-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "72487fa9-ae01-11f1-b512-d24845ae031d",
+            "status": "REJECTED"
+          },
+          {
+            "pid": "752364af-ae01-11f1-8706-d24845ae031d",
+            "status": "REJECTED"
+          },
+          {
+            "pid": "774b9bfd-ae01-11f1-8706-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "798f70fe-ae01-11f1-b512-d24845ae031d",
+            "status": "RUNNING"
+          },
+          {
+            "pid": "7b96170b-ae01-11f1-8706-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "7e6f27c9-ae01-11f1-8706-d24845ae031d",
+            "status": "RUNNING"
+          },
+          {
+            "pid": "82082c80-ae01-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "855f94f3-ae01-11f1-b512-d24845ae031d",
+            "status": "RUNNING"
+          },
+          {
+            "pid": "88236ff3-ae01-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "8c125d76-ae01-11f1-b512-d24845ae031d",
+            "status": "RUNNING"
+          },
+          {
+            "pid": "8e3563f7-ae01-11f1-8706-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "9137a819-ae01-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "9358172c-ae01-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "96ab8802-ae01-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "99bfccff-ae01-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "9d15ade7-ae01-11f1-8706-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "a102c689-ae01-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "a3bd52bc-ae01-11f1-b512-d24845ae031d",
+            "status": "WITHDRAWN"
+          },
+          {
+            "pid": "a62eef07-ae01-11f1-8706-d24845ae031d",
+            "status": "RUNNING"
+          },
+          {
+            "pid": "a7606a2c-ae01-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "a9814e6f-ae01-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "ad7285e2-ae01-11f1-b512-d24845ae031d",
+            "status": "DISCARDED"
+          },
+          {
+            "pid": "afe385f2-ae01-11f1-b512-d24845ae031d",
+            "status": "RUNNING"
+          },
+          {
+            "pid": "b1b3d8f7-ae01-11f1-8706-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "bac419a3-ae01-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "bce461aa-ae01-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "bf05e245-ae01-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "c1d025e8-ae01-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "c488b5a7-ae01-11f1-8706-d24845ae031d",
+            "status": "RUNNING"
+          },
+          {
+            "pid": "ced0d9d7-ae01-11f1-8706-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "f911ce87-ae01-11f1-8706-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "fa4767f4-ae01-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "fb814794-ae01-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "fcbc11e7-ae01-11f1-8706-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "fdee5004-ae01-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "ff29b644-ae01-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "00619a57-ae02-11f1-8706-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "019ab654-ae02-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "02d61cd7-ae02-11f1-8706-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "0415efe7-ae02-11f1-8706-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "054bfe94-ae02-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "06856957-ae02-11f1-8706-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "468ded6e-ae02-11f1-b512-d24845ae031d",
+            "status": "RUNNING"
+          },
+          {
+            "pid": "7376345e-ae02-11f1-b512-d24845ae031d",
+            "status": "RUNNING"
+          },
+          {
+            "pid": "762eec25-ae02-11f1-8706-d24845ae031d",
+            "status": "RUNNING"
+          },
+          {
+            "pid": "d1f99bde-ae02-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d2018b2e-ae02-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d205a9ee-ae02-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d210585e-ae02-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d1f81544-ae02-11f1-8866-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d217845e-ae02-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d21ded0e-ae02-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d2236b5e-ae02-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d221e474-ae02-11f1-8866-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d22a6f4e-ae02-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d232fade-ae02-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d234d044-ae02-11f1-8866-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d23b384e-ae02-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d24682fe-ae02-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d2480a34-ae02-11f1-8866-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d24dd60e-ae02-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d252b81e-ae02-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d253f124-ae02-11f1-8866-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d258848e-ae02-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d25ffeae-ae02-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d26185c4-ae02-11f1-8866-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d264e0be-ae02-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d2724db4-ae02-11f1-8866-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d274983e-ae02-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d28205ce-ae02-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d28364c4-ae02-11f1-8866-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d287ab2e-ae02-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d28d9eae-ae02-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d28d9e04-ae02-11f1-8866-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d2953f34-ae02-11f1-8866-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d29c4424-ae02-11f1-8866-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d2a25eb4-ae02-11f1-8866-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d2a8c764-ae02-11f1-8866-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d2af7e34-ae02-11f1-8866-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d2b52394-ae02-11f1-8866-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d2bb8c44-ae02-11f1-8866-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d2c131a4-ae02-11f1-8866-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d2c6fe14-ae02-11f1-8866-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d2cdb4e4-ae02-11f1-8866-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "d2d38154-ae02-11f1-8866-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "191a12c6-ae03-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "1921db06-ae03-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "1925d2b6-ae03-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19290716-ae03-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "192c3b76-ae03-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "192f96e6-ae03-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19338e96-ae03-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "1937d466-ae03-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "193dc7e6-ae03-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19465376-ae03-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "1950dad6-ae03-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19560a06-ae03-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "195dd246-ae03-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19621816-ae03-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19680b96-ae03-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19582cf6-ae03-11f1-bb6e-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "196dd806-ae03-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19729306-ae03-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "1977ea46-ae03-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "197a33f6-ae03-11f1-bb6e-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "197d8fa6-ae03-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19844676-ae03-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "1987c896-ae03-11f1-bb6e-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19986a76-ae03-11f1-bb6e-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "199fe496-ae03-11f1-bb6e-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19a7d3e6-ae03-11f1-bb6e-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19af26f6-ae03-11f1-bb6e-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19b54186-ae03-11f1-bb6e-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19bbf856-ae03-11f1-bb6e-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19c239f6-ae03-11f1-bb6e-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19c82d76-ae03-11f1-bb6e-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19ce20f6-ae03-11f1-bb6e-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19d37836-ae03-11f1-bb6e-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19dc78f6-ae03-11f1-bb6e-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19e5c7d6-ae03-11f1-bb6e-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19ebba56-ae03-11f1-bb6e-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19f22306-ae03-11f1-bb6e-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19f88bb6-ae03-11f1-bb6e-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "19fecd56-ae03-11f1-bb6e-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "1a03fd86-ae03-11f1-bb6e-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "24876b2e-ae05-11f1-bb6e-d24845ae031d",
+            "status": "RUNNING"
+          },
+          {
+            "pid": "2b8daace-ae05-11f1-bb6e-d24845ae031d",
+            "status": "RUNNING"
+          },
+          {
+            "pid": "a9d9364a-ae05-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "cd859800-ae05-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "48476016-ae06-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "8f10688c-ae06-11f1-b512-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "01d0c86e-ae07-11f1-bb6e-d24845ae031d",
+            "status": "APPROVED"
+          },
+          {
+            "pid": "98ad155e-ae07-11f1-bb6e-d24845ae031d",
+            "status": "APPROVED"
+          }
+        ]
+      }
+    },
+    {
+      "case": "Z9-04-http500-count",
+      "result": {
+        "count": 0,
+        "scope": "Z3—Z9 raw transcripts（本轮冻结候选采集）"
+      }
+    }
+  ]
+}

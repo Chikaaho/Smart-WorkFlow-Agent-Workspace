@@ -1,0 +1,61 @@
+{
+  "_snapshot": {
+    "snapshotId": "i3-05-frozen-a",
+    "jar_sha256": "2900e136d1b99c41c8c5ad5bfc8a6ef2ee56d1e1ede3d0168f15072155150246",
+    "instance_A": "PID 64431 @ 8081",
+    "instance_B": "PID 64463 @ 8082",
+    "fingerprint_file": "evidence/i3-05/final-candidate-fingerprint.txt"
+  },
+  "rows": [
+    {
+      "gid": "G12a",
+      "case": "到期自动动作+通知解耦",
+      "result": {
+        "deadline_id": "2098328149913260034",
+        "row": "DONE|AUTO_APPROVE",
+        "instance_status": "APPROVED",
+        "action_row": "APPROVE|APPROVED",
+        "notify_after": "WF_APPROVED|1"
+      }
+    },
+    {
+      "gid": "G12b",
+      "case": "双进程竞争认领原子性",
+      "result": {
+        "deadline": "2098328455514443777|PENDING",
+        "claim_a": "2098328455514443777\nUPDATE 1",
+        "claim_b": "UPDATE 0",
+        "verdict": "PENDING→PROCESSING 条件更新只允许一个进程认领成功（另一进程更新 0 行）——与调度器 claim SQL 同形态"
+      }
+    },
+    {
+      "gid": "G13a",
+      "case": "resolveParticipants 正向/冻结/未知版本/零部署",
+      "result": {
+        "positive": {
+          "assignee": "1",
+          "frozen": "{\"func_tenant_admins\":1}"
+        },
+        "bad_version_publish": {
+          "code": 2412,
+          "msg": "节点函数不存在",
+          "deployments_unchanged": true
+        },
+        "snapshot_rows": "1"
+      }
+    },
+    {
+      "gid": "G13b",
+      "case": "handleResult 内建运行+零脚本入口",
+      "result": {
+        "node_capabilities_contains_no_script_entry": false,
+        "complete": {
+          "code": 0
+        },
+        "action_row": "APPROVE|APPROVED|",
+        "instance_status": "APPROVED",
+        "audit_function_row": "{}"
+      }
+    }
+  ]
+}

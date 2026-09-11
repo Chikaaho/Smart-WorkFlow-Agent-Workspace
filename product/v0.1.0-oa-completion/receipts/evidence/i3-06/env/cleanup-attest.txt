@@ -1,0 +1,9 @@
+CLEANUP_AT=2026-09-12 01:41:52
+方法：G17b 已锁定方法（同 i3-04/i3-05）——停服务不留数据，不重建数据库伪造零残留
+- 实例 A/B（frozen-e, jar 90d8bb89）：pkill sw-bootstrap → 端口 8081/8082 listeners=0
+- PG 集群 /tmp/i3-03/pgdata（端口 50886）：pg_ctl stop -m fast → "server stopped"，listeners=0
+- redis（端口 16390）：shutdown nosave，listeners=0
+- 前端 dev server（端口 5173）：pkill vite，listeners=0
+- 本轮新增测试对象（Z2—Z9 采证实例/定义/表单/规则）保留于集群数据目录内随集群停用，
+  未清理历史业务对象，未重建数据库
+readback：8081=0 8082=0 50886=0 16390=0 5173=0

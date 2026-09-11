@@ -1,0 +1,61 @@
+{
+  "identities": [
+    {
+      "username": "admin",
+      "login": "OK",
+      "userId": null,
+      "tenantId": null,
+      "roles": "superadmin",
+      "realName": null
+    },
+    {
+      "username": "user2",
+      "login": "OK",
+      "userId": null,
+      "tenantId": null,
+      "roles": "superadmin",
+      "realName": null
+    },
+    {
+      "username": "user3",
+      "login": "OK",
+      "userId": null,
+      "tenantId": null,
+      "roles": "superadmin",
+      "realName": null
+    },
+    {
+      "username": "user4",
+      "login": "OK",
+      "userId": null,
+      "tenantId": null,
+      "roles": "superadmin",
+      "realName": null
+    },
+    {
+      "username": "user5",
+      "login": "OK",
+      "userId": null,
+      "tenantId": null,
+      "roles": "",
+      "realName": null
+    },
+    {
+      "username": "tenant1user",
+      "login": "OK",
+      "userId": null,
+      "tenantId": null,
+      "roles": "superadmin",
+      "realName": null
+    }
+  ],
+  "negative_action_index": {
+    "转办本人拒绝": "raw/step3 (2401 ACTION_SELF_INVALID)",
+    "无权处理任务(user4 complete)": "raw/step3 g11_communicate receiver_complete_rejected",
+    "跨租户 complete 拒绝": "raw/step6 g15 cross_tenant_complete",
+    "跨租户实例读取拒绝": "raw/step6 g15 cross_tenant_instance_read",
+    "无角色 user5": "本脚本 /me + raw/step6 v-perm 种子覆盖",
+    "越界撤回拒绝": "raw/step3 g11_withdraw boundary_reject",
+    "重复废弃幂等": "raw/step3 g11_discard repeat"
+  }
+}

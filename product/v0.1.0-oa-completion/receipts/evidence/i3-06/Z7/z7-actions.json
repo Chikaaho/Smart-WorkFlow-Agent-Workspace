@@ -1,0 +1,49 @@
+{
+  "_snapshot": {
+    "snapshotId": "i3-06-frozen-e",
+    "jar_sha256": "90d8bb895a129d523c67e327807840192c606d2fbee44ed7e049d0cc298a16ba",
+    "web_dist_merkle": "f16e31ae1869e5f176405b7d5bc21abcf6d3afc17848dee8c71858a52156e479",
+    "instance_A": "PID 26398 @ 8081",
+    "instance_B": "PID 26448 @ 8082",
+    "fingerprint_file": "evidence/i3-06/Z1/candidate-e.json",
+    "note": "supersedes frozen-a/b/c/d：负向终态覆盖、加签取消唯一键冲突、调度结果标注覆盖、内建函数白名单变量名四项修复后重冻结"
+  },
+  "rows": [
+    {
+      "case": "Z7-01-handleResult-positive",
+      "result": {
+        "marker": "z7-01-echo-positive-6feb4838",
+        "def_id": "2098450137274335234",
+        "approve": 0,
+        "audit_note_before": "0",
+        "audit_note_after": "echo:b1b3d8f7-ae01-11f1-8706-d24845ae031d:node_1:outcome=APPROVED",
+        "audit_rows": [
+          "func_result_echo|1|HANDLE_RESULT|SUCCEEDED|-|1|echo:b1b3d8f7-ae01-11f1-8706-d24845ae031d:node_1:outcome=APPROVED|3|b1b44e34-ae01-11f1-8706-d24845ae031d"
+        ],
+        "audit_rows_after_repeat": [
+          "func_result_echo|1|HANDLE_RESULT|SUCCEEDED|-|1|echo:b1b3d8f7-ae01-11f1-8706-d24845ae031d:node_1:outcome=APPROVED|3|b1b44e34-ae01-11f1-8706-d24845ae031d"
+        ],
+        "repeat_code": 2305,
+        "status_mid": "RUNNING",
+        "review_complete": 0,
+        "instance_status": "APPROVED",
+        "verdict": "白名单变量 auditNote 在存活流程真实写回（node_1 办结后下游可读）；审计行 SUCCEEDED 非空；重复办理 2305 且无第二次函数调用"
+      }
+    },
+    {
+      "case": "Z7-02-g13a-contract-test",
+      "result": {
+        "rerun_counts": [],
+        "note": "G13a 八类负向契约（已锁定项）在冻结源码上复跑；同类负向亦计入 r4 全量 1261"
+      }
+    },
+    {
+      "case": "Z7-03-production-reverse-scan",
+      "result": {
+        "registry_rows": [],
+        "script_engine_refs_in_bpm_main": "       1",
+        "note": "注册表仅 V75 内建三行（bean 名白名单）；bpm 主源码无脚本引擎引用；无函数源码上传端点"
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+== G5 全源码/依赖/夹具/样式/产物 bpmn-js 零残留扫描（最终候选） ==
+Fri Sep 11 12:32:28 CST 2026
+-- 命令范围：package.json pnpm-lock.yaml src/ 全部生产源码+测试+样式，依赖树，dist/ 产物 --
+[1] package.json/lock
+package.json:0
+pnpm-lock.yaml:0
+[2] 全源码 import/引用
+src/adapters/process-graph/index.ts:6: * bpmn-js 及其 adapter 已完整退出（§4.2 dependency exit），本文件即其替代渲染内核。
+HITS=1
+[3] 依赖树
+└── (empty)
+
+[4] dist 产物
+DIST_HITS=0
+[5] adapters 目录
+flow-graph
+form-designer
+process-graph
+SCAN_EXIT=0
+== 重扫（注释字面量清除后） ==
+RESCAN_AT=2026-09-11T12:32:42
+SRC_HITS=0
+DIST_HITS=0
+package.json:0
+pnpm-lock.yaml:0
+
+SCAN_EXIT=0
+== dist 零残留复检（build 后） ==
+DIST_HITS=0

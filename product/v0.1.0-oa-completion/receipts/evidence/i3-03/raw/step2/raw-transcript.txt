@@ -1,0 +1,971 @@
+===== LOGIN CHAIN 2026-09-11T01:25:26.530Z =====
+GET /api/auth/challenge (用户名=admin 端口=8081)
+----- RESP -----
+{"code":0,"msg":"success","data":{"captchaImage":"data:image/png;base64,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","captchaId":"577f3b10-d74a-4cdf-b1ca-f28195084a0c","publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA8UmkqiiX2Dx/7kvwdydjqZeFzVy7DwCJdiuet+vbUfCLbw71F7/85THyeOsBlV/4jCEZ8+oLd89kKAgKx64EWK8+Jehou/P8HaIuYQn+IPZcJrpHcuXtl6D+6Vr37bQWTQcBorzNVugb4te7gWR4RhQCNd/BqJjo4erNsoZKTAkKQsrXdWv78KhzHx8MBl1oPwzzZ1m+Wx34YgG4IbrPmboldHYGYXCUxWHkqSYNWz1dvirUx4HvA3hiZMDrgpIIHQAOPVe0rIvX5rSnGPer586XFBGwWCal8hU4Io/7vTX+s1RPBtrlU0d1Mg52QPlTKcRsbRaW6SM+RYOVCstPAwIDAQAB","keyVersion":"v1","expiresIn":"300","serverTime":"1789089926427"}}
+----- REQ POST /api/auth/login -----
+{"username":"admin","password":"[REDACTED_PASSWORD]","captcha":"1234","captchaId":"577f3b10-d74a-4cdf-b1ca-f28195084a0c","timestamp":"masked"}
+----- RESP -----
+{"code":0,"msg":"success","data":{"accessToken":"[REDACTED]","expiresIn":"900"}}
+
+===== LOGIN OK 0001 2026-09-11T09:25:26 =====
+POST /api/auth/login (challenge->RSA-OAEP->login 链) user=admin port=8081
+----- RESP -----
+accessToken_len=146 accessToken_sha256=9448090557378308186527586d3f4cb0d7abe4e48c951d6088cd1c8af5797c8a
+
+===== REQ 0002 2026-09-11T09:25:26 =====
+GET http://localhost:8081/api/workflow/defs/2098220447350415361
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0002 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"processKey":"bpm_8ac1d73e19644994","name":"I3证据-单审批","formKey":"i3ev_d1","version":null,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":null,"x":100.0,"y":300.0,"waypoints":null},{"id":"node_1","kind":"node","type":"APPROVAL","source":null,"target":null,"config":{"name":"审批A","participant":{"strategy":"FIXED_USER","value":[1]}},"style":null,"x":300.0,"y":300.0,"waypoints":null},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_1","config":null,"style":null,"x":null,"y":null,"waypoints":null},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":null,"x":520.0,"y":300.0,"waypoints":null},{"id":"edge_2","kind":"edge","type":null,"source":"node_1","target":"node_end","config":null,"style":null,"x":null,"y":null,"waypoints":null}],"contractVersion":2,"canvas":{}}}
+
+===== REQ 0003 2026-09-11T09:25:26 =====
+PUT http://localhost:8081/api/workflow/defs/2098220447350415361/graph
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"processKey": "bpm_8ac1d73e19644994", "name": "I3\u8bc1\u636e-\u5355\u5ba1\u6279", "formKey": "i3ev_d1", "version": null, "elements": [{"id": "node_start", "kind": "node", "type": "START", "source": null, "target": null, "config": {}, "style": null, "x": 100.0, "y": 300.0, "waypoints": null}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "source": null, "target": null, "config": {"name": "\u5ba1\u6279A(\u6539)", "participant": {"strategy": "FIXED_USER", "value": [1]}}, "style": null, "x": 330.0, "y": 300.0, "waypoints": null}, {"id": "edge_1", "kind": "edge", "type": null, "source": "node_start", "target": "node_1", "config": null, "style": null, "x": null, "y": null, "waypoints": null}, {"id": "node_end", "kind": "node", "type": "END", "source": null, "target": null, "config": {}, "style": null, "x": 520.0, "y": 300.0, "waypoints": null}, {"id": "edge_2", "kind": "edge", "type": null, "source": "node_1", "target": "node_end", "config": null, "style": null, "x": null, "y": null, "waypoints": null}], "contractVersion": 2, "canvas": {}}
+----- RESP 0003 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0004 2026-09-11T09:25:26 =====
+POST http://localhost:8081/api/workflow/defs/2098220447350415361/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0004 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"2098220447350415361","createTime":"2026-09-11T09:21:52.356809","createBy":"1","updateTime":"2026-09-11T09:25:25.791567","updateBy":"1","deleted":0,"version":"12","tenantId":"0","processKey":"bpm_8ac1d73e19644994","name":"I3证据-单审批","formKey":"i3ev_d1","defVersion":5,"status":"PUBLISHED","deploymentId":"aaf5725b-ad7f-11f1-8e9c-ee8448c149f7","processDefinitionId":"bpm_8ac1d73e19644994:5:aafa545e-ad7f-11f1-8e9c-ee8448c149f7","graphJson":"{\"processKey\":\"bpm_8ac1d73e19644994\",\"name\":\"I3证据-单审批\",\"formKey\":\"i3ev_d1\",\"version\":null,\"elements\":[{\"id\":\"node_start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":100.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"node_1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"审批A(改)\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[1]}},\"style\":null,\"x\":330.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_1\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_start\",\"target\":\"node_1\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"node_end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":520.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_2\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_1\",\"target\":\"node_end\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null}],\"contractVersion\":2,\"canvas\":{}}","categoryId":null,"iotAccessEnabled":false,"iotDeviceActionJson":null,"publishedVersion":4}}
+
+===== REQ 0005 2026-09-11T09:25:26 =====
+GET http://localhost:8081/api/workflow/defs/2098220447350415361/versions
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0005 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":[{"id":"2098221346063933442","createTime":"2026-09-11T09:25:26.627479","createBy":"1","updateTime":"2026-09-11T09:25:26.627483","updateBy":"1","deleted":0,"version":"0","tenantId":"0","defId":"2098220447350415361","graphVersion":5,"status":"PUBLISHED","name":"I3证据-单审批","formKey":"i3ev_d1","formVersion":"2","functionVersions":"{}","deploymentId":"aaf5725b-ad7f-11f1-8e9c-ee8448c149f7","processDefinitionId":"bpm_8ac1d73e19644994:5:aafa545e-ad7f-11f1-8e9c-ee8448c149f7","publishedBy":"1","publishedAt":"2026-09-11T09:25:26.627383"},{"id":"2098221342553300993","createTime":"2026-09-11T09:25:25.790583","createBy":"1","updateTime":"2026-09-11T09:25:25.790586","updateBy":"1","deleted":0,"version":"0","tenantId":"0","defId":"2098220447350415361","graphVersion":4,"status":"PUBLISHED","name":"I3证据-单审批","formKey":"i3ev_d1","formVersion":"2","functionVersions":"{}","deploymentId":"aa72fbd3-ad7f-11f1-8e9c-ee8448c149f7","processDefinitionId":"bpm_8ac1d73e19644994:4:aa7a00b6-ad7f-11f1-8e9c-ee8448c149f7","publishedBy":"1","publishedAt":"2026-09-11T09:25:25.790499"},{"id":"2098220728708521985","createTime":"2026-09-11T09:22:59.43794","createBy":"1","updateTime":"2026-09-11T09:22:59.622753","updateBy":"1","deleted":0,"version":"0","tenantId":"0","defId":"2098220447350415361","graphVersion":3,"status":"PUBLISHED","name":"I3证据-单审批","formKey":"i3ev_d1","formVersion":"2","functionVersions":"{}","deploymentId":"5336fb6c-ad7f-11f1-8e9c-ee8448c149f7","processDefinitionId":"bpm_8ac1d73e19644994:3:533e004f-ad7f-11f1-8e9c-ee8448c149f7","publishedBy":"1","publishedAt":"2026-09-11T09:22:59.43779"},{"id":"2098220467877339138","createTime":"2026-09-11T09:21:57.250672","createBy":"1","updateTime":"2026-09-11T09:21:57.250679","updateBy":"1","deleted":0,"version":"0","tenantId":"0","defId":"2098220447350415361","graphVersion":2,"status":"PUBLISHED","name":"I3证据-单审批","formKey":"i3ev_d1","formVersion":"2","functionVersions":"{}","deploymentId":"2e26eaa9-ad7f-11f1-8e9c-ee8448c149f7","processDefinitionId":"bpm_8ac1d73e19644994:2:2e2cb70c-ad7f-11f1-8e9c-ee8448c149f7","publishedBy":"1","publishedAt":"2026-09-11T09:21:57.250426"},{"id":"2098220448558374913","createTime":"2026-09-11T09:21:52.645018","createBy":"1","updateTime":"2026-09-11T09:21:52.645023","updateBy":"1","deleted":0,"version":"0","tenantId":"0","defId":"2098220447350415361","graphVersion":1,"status":"PUBLISHED","name":"I3证据-单审批","formKey":"i3ev_d1","formVersion":"2","functionVersions":"{}","deploymentId":"2b4fd5c1-ad7f-11f1-8e9c-ee8448c149f7","processDefinitionId":"bpm_8ac1d73e19644994:1:2b6d21c4-ad7f-11f1-8e9c-ee8448c149f7","publishedBy":"1","publishedAt":"2026-09-11T09:21:52.644335"}]}
+
+===== REQ 0006 2026-09-11T09:25:26 =====
+GET http://localhost:8081/api/workflow/defs/2098220447350415361/versions/1/graph
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0006 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"processKey":"bpm_8ac1d73e19644994","name":"I3证据-单审批","formKey":"i3ev_d1","version":null,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":null,"x":100.0,"y":300.0,"waypoints":null},{"id":"node_1","kind":"node","type":"APPROVAL","source":null,"target":null,"config":{"name":"审批A","participant":{"strategy":"FIXED_USER","value":[1]}},"style":null,"x":300.0,"y":300.0,"waypoints":null},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_1","config":null,"style":null,"x":null,"y":null,"waypoints":null},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":null,"x":520.0,"y":300.0,"waypoints":null},{"id":"edge_2","kind":"edge","type":null,"source":"node_1","target":"node_end","config":null,"style":null,"x":null,"y":null,"waypoints":null}],"contractVersion":2,"canvas":{}}}
+
+===== REQ 0007 2026-09-11T09:25:26 =====
+GET http://localhost:8081/api/workflow/defs/2098220447350415361/versions/5/graph
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0007 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"processKey":"bpm_8ac1d73e19644994","name":"I3证据-单审批","formKey":"i3ev_d1","version":null,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":null,"x":100.0,"y":300.0,"waypoints":null},{"id":"node_1","kind":"node","type":"APPROVAL","source":null,"target":null,"config":{"name":"审批A(改)","participant":{"strategy":"FIXED_USER","value":[1]}},"style":null,"x":330.0,"y":300.0,"waypoints":null},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_1","config":null,"style":null,"x":null,"y":null,"waypoints":null},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":null,"x":520.0,"y":300.0,"waypoints":null},{"id":"edge_2","kind":"edge","type":null,"source":"node_1","target":"node_end","config":null,"style":null,"x":null,"y":null,"waypoints":null}],"contractVersion":2,"canvas":{}}}
+
+===== PSQL 2026-09-11T09:25:26 =====
+select count(*) from act_re_deployment
+----- RESULT (exit=0) -----
+21
+
+===== REQ 0008 2026-09-11T09:25:26 =====
+PUT http://localhost:8081/api/workflow/defs/2098220447350415361/graph
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"processKey": "bpm_8ac1d73e19644994", "name": "I3\u8bc1\u636e-\u5355\u5ba1\u6279", "formKey": "i3ev_d1", "version": null, "elements": [{"id": "node_start", "kind": "node", "type": "START", "source": null, "target": null, "config": {}, "style": null, "x": 100.0, "y": 300.0, "waypoints": null}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "source": null, "target": null, "config": {"name": "\u5ba1\u6279A(\u6539)", "participant": {"strategy": "FIXED_USER", "value": [1]}}, "style": null, "x": 330.0, "y": 300.0, "waypoints": null}, {"id": "edge_1", "kind": "edge", "type": null, "source": "node_start", "target": "node_1", "config": null, "style": null, "x": null, "y": null, "waypoints": null}, {"id": "edge_2", "kind": "edge", "type": null, "source": "node_1", "target": "node_end", "config": null, "style": null, "x": null, "y": null, "waypoints": null}], "contractVersion": 2, "canvas": {}}
+----- RESP 0008 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0009 2026-09-11T09:25:26 =====
+POST http://localhost:8081/api/workflow/defs/2098220447350415361/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0009 -----
+STATUS: 200
+
+{"code":2002,"msg":"图缺少结束节点","data":null}
+
+===== PSQL 2026-09-11T09:25:26 =====
+select count(*) from act_re_deployment
+----- RESULT (exit=0) -----
+21
+
+===== REQ 0010 2026-09-11T09:25:26 =====
+PUT http://localhost:8081/api/workflow/defs/2098220447350415361/graph
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"processKey": "bpm_8ac1d73e19644994", "name": "I3\u8bc1\u636e-\u5355\u5ba1\u6279", "formKey": "i3ev_d1", "version": null, "elements": [{"id": "node_start", "kind": "node", "type": "START", "source": null, "target": null, "config": {}, "style": null, "x": 100.0, "y": 300.0, "waypoints": null}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "source": null, "target": null, "config": {"name": "\u5ba1\u6279A(\u6539)", "participant": {"strategy": "FIXED_USER", "value": [1]}}, "style": null, "x": 330.0, "y": 300.0, "waypoints": null}, {"id": "edge_1", "kind": "edge", "type": null, "source": "node_start", "target": "node_1", "config": null, "style": null, "x": null, "y": null, "waypoints": null}, {"id": "node_end", "kind": "node", "type": "END", "source": null, "target": null, "config": {}, "style": null, "x": 520.0, "y": 300.0, "waypoints": null}, {"id": "edge_2", "kind": "edge", "type": null, "source": "node_1", "target": "node_end", "config": null, "style": null, "x": null, "y": null, "waypoints": null}], "contractVersion": 2, "canvas": {}}
+----- RESP 0010 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0011 2026-09-11T09:25:26 =====
+POST http://localhost:8081/api/workflow/defs/2098220447350415361/versions/5/suspend
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0011 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0012 2026-09-11T09:25:26 =====
+GET http://localhost:8081/api/workflow/defs/2098220447350415361/versions
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0012 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":[{"id":"2098221346063933442","createTime":"2026-09-11T09:25:26.627479","createBy":"1","updateTime":"2026-09-11T09:25:26.754625","updateBy":"1","deleted":0,"version":"0","tenantId":"0","defId":"2098220447350415361","graphVersion":5,"status":"SUSPENDED","name":"I3证据-单审批","formKey":"i3ev_d1","formVersion":"2","functionVersions":"{}","deploymentId":"aaf5725b-ad7f-11f1-8e9c-ee8448c149f7","processDefinitionId":"bpm_8ac1d73e19644994:5:aafa545e-ad7f-11f1-8e9c-ee8448c149f7","publishedBy":"1","publishedAt":"2026-09-11T09:25:26.627383"},{"id":"2098221342553300993","createTime":"2026-09-11T09:25:25.790583","createBy":"1","updateTime":"2026-09-11T09:25:25.790586","updateBy":"1","deleted":0,"version":"0","tenantId":"0","defId":"2098220447350415361","graphVersion":4,"status":"PUBLISHED","name":"I3证据-单审批","formKey":"i3ev_d1","formVersion":"2","functionVersions":"{}","deploymentId":"aa72fbd3-ad7f-11f1-8e9c-ee8448c149f7","processDefinitionId":"bpm_8ac1d73e19644994:4:aa7a00b6-ad7f-11f1-8e9c-ee8448c149f7","publishedBy":"1","publishedAt":"2026-09-11T09:25:25.790499"},{"id":"2098220728708521985","createTime":"2026-09-11T09:22:59.43794","createBy":"1","updateTime":"2026-09-11T09:22:59.622753","updateBy":"1","deleted":0,"version":"0","tenantId":"0","defId":"2098220447350415361","graphVersion":3,"status":"PUBLISHED","name":"I3证据-单审批","formKey":"i3ev_d1","formVersion":"2","functionVersions":"{}","deploymentId":"5336fb6c-ad7f-11f1-8e9c-ee8448c149f7","processDefinitionId":"bpm_8ac1d73e19644994:3:533e004f-ad7f-11f1-8e9c-ee8448c149f7","publishedBy":"1","publishedAt":"2026-09-11T09:22:59.43779"},{"id":"2098220467877339138","createTime":"2026-09-11T09:21:57.250672","createBy":"1","updateTime":"2026-09-11T09:21:57.250679","updateBy":"1","deleted":0,"version":"0","tenantId":"0","defId":"2098220447350415361","graphVersion":2,"status":"PUBLISHED","name":"I3证据-单审批","formKey":"i3ev_d1","formVersion":"2","functionVersions":"{}","deploymentId":"2e26eaa9-ad7f-11f1-8e9c-ee8448c149f7","processDefinitionId":"bpm_8ac1d73e19644994:2:2e2cb70c-ad7f-11f1-8e9c-ee8448c149f7","publishedBy":"1","publishedAt":"2026-09-11T09:21:57.250426"},{"id":"2098220448558374913","createTime":"2026-09-11T09:21:52.645018","createBy":"1","updateTime":"2026-09-11T09:21:52.645023","updateBy":"1","deleted":0,"version":"0","tenantId":"0","defId":"2098220447350415361","graphVersion":1,"status":"PUBLISHED","name":"I3证据-单审批","formKey":"i3ev_d1","formVersion":"2","functionVersions":"{}","deploymentId":"2b4fd5c1-ad7f-11f1-8e9c-ee8448c149f7","processDefinitionId":"bpm_8ac1d73e19644994:1:2b6d21c4-ad7f-11f1-8e9c-ee8448c149f7","publishedBy":"1","publishedAt":"2026-09-11T09:21:52.644335"}]}
+
+===== PSQL 2026-09-11T09:25:26 =====
+select suspension_state_ from act_re_procdef where id_ = 'bpm_8ac1d73e19644994:5:aafa545e-ad7f-11f1-8e9c-ee8448c149f7'
+----- RESULT (exit=0) -----
+2
+
+===== REQ 0013 2026-09-11T09:25:26 =====
+POST http://localhost:8081/api/workflow/defs/2098220447350415361/versions/5/activate
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0013 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0014 2026-09-11T09:25:26 =====
+GET http://localhost:8081/api/workflow/defs/2098220447350415361/versions
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0014 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":[{"id":"2098221346063933442","createTime":"2026-09-11T09:25:26.627479","createBy":"1","updateTime":"2026-09-11T09:25:26.794738","updateBy":"1","deleted":0,"version":"0","tenantId":"0","defId":"2098220447350415361","graphVersion":5,"status":"PUBLISHED","name":"I3证据-单审批","formKey":"i3ev_d1","formVersion":"2","functionVersions":"{}","deploymentId":"aaf5725b-ad7f-11f1-8e9c-ee8448c149f7","processDefinitionId":"bpm_8ac1d73e19644994:5:aafa545e-ad7f-11f1-8e9c-ee8448c149f7","publishedBy":"1","publishedAt":"2026-09-11T09:25:26.627383"},{"id":"2098221342553300993","createTime":"2026-09-11T09:25:25.790583","createBy":"1","updateTime":"2026-09-11T09:25:25.790586","updateBy":"1","deleted":0,"version":"0","tenantId":"0","defId":"2098220447350415361","graphVersion":4,"status":"PUBLISHED","name":"I3证据-单审批","formKey":"i3ev_d1","formVersion":"2","functionVersions":"{}","deploymentId":"aa72fbd3-ad7f-11f1-8e9c-ee8448c149f7","processDefinitionId":"bpm_8ac1d73e19644994:4:aa7a00b6-ad7f-11f1-8e9c-ee8448c149f7","publishedBy":"1","publishedAt":"2026-09-11T09:25:25.790499"},{"id":"2098220728708521985","createTime":"2026-09-11T09:22:59.43794","createBy":"1","updateTime":"2026-09-11T09:22:59.622753","updateBy":"1","deleted":0,"version":"0","tenantId":"0","defId":"2098220447350415361","graphVersion":3,"status":"PUBLISHED","name":"I3证据-单审批","formKey":"i3ev_d1","formVersion":"2","functionVersions":"{}","deploymentId":"5336fb6c-ad7f-11f1-8e9c-ee8448c149f7","processDefinitionId":"bpm_8ac1d73e19644994:3:533e004f-ad7f-11f1-8e9c-ee8448c149f7","publishedBy":"1","publishedAt":"2026-09-11T09:22:59.43779"},{"id":"2098220467877339138","createTime":"2026-09-11T09:21:57.250672","createBy":"1","updateTime":"2026-09-11T09:21:57.250679","updateBy":"1","deleted":0,"version":"0","tenantId":"0","defId":"2098220447350415361","graphVersion":2,"status":"PUBLISHED","name":"I3证据-单审批","formKey":"i3ev_d1","formVersion":"2","functionVersions":"{}","deploymentId":"2e26eaa9-ad7f-11f1-8e9c-ee8448c149f7","processDefinitionId":"bpm_8ac1d73e19644994:2:2e2cb70c-ad7f-11f1-8e9c-ee8448c149f7","publishedBy":"1","publishedAt":"2026-09-11T09:21:57.250426"},{"id":"2098220448558374913","createTime":"2026-09-11T09:21:52.645018","createBy":"1","updateTime":"2026-09-11T09:21:52.645023","updateBy":"1","deleted":0,"version":"0","tenantId":"0","defId":"2098220447350415361","graphVersion":1,"status":"PUBLISHED","name":"I3证据-单审批","formKey":"i3ev_d1","formVersion":"2","functionVersions":"{}","deploymentId":"2b4fd5c1-ad7f-11f1-8e9c-ee8448c149f7","processDefinitionId":"bpm_8ac1d73e19644994:1:2b6d21c4-ad7f-11f1-8e9c-ee8448c149f7","publishedBy":"1","publishedAt":"2026-09-11T09:21:52.644335"}]}
+
+===== PSQL 2026-09-11T09:25:26 =====
+select suspension_state_ from act_re_procdef where id_ = 'bpm_8ac1d73e19644994:5:aafa545e-ad7f-11f1-8e9c-ee8448c149f7'
+----- RESULT (exit=0) -----
+1
+
+===== REQ 0015 2026-09-11T09:25:26 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"formKey": "i3ev_d7b2", "name": "I3\u8bc1\u636e-\u8349\u7a3f\u8868\u53552"}
+----- RESP 0015 -----
+STATUS: 200
+
+{"code":1001,"msg":"表单标识 'i3ev_d7b2' 已存在","data":null}
+
+===== REQ 0016 2026-09-11T09:25:26 =====
+POST http://localhost:8081/api/workflow/defs
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"name": "I3\u8bc1\u636e-\u8349\u7a3f2", "formKey": "i3ev_d7b"}
+----- RESP 0016 -----
+STATUS: 200
+
+{"code":2009,"msg":"绑定表单不存在","data":null}
+
+===== REQ 0017 2026-09-11T09:25:26 =====
+POST http://localhost:8081/api/workflow/defs
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"name": "I3\u8bc1\u636e-\u8349\u7a3f2-1789089926.850262", "formKey": "i3ev_d7b2"}
+----- RESP 0017 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"defId":"2098221347024429057","graph":{"processKey":"bpm_8822d2b66e5d4417","name":"I3证据-草稿2-1789089926.850262","formKey":"i3ev_d7b2","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300},"x":null,"y":null,"waypoints":null},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300},"x":null,"y":null,"waypoints":null},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{},"x":null,"y":null,"waypoints":null}],"contractVersion":null,"canvas":{}}}}
+
+===== REQ 0018 2026-09-11T09:25:26 =====
+DELETE http://localhost:8081/api/workflow/defs/2098221347024429057
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0018 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0019 2026-09-11T09:25:26 =====
+DELETE http://localhost:8081/api/workflow/defs/2098220447350415361
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0019 -----
+STATUS: 200
+
+{"code":2416,"msg":"发布版本状态不允许该操作","data":null}
+
+===== REQ 0020 2026-09-11T09:25:26 =====
+POST http://localhost:8081/api/form/data/i3ev_d1
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"amount": 100, "reason": "i3ev bind"}
+----- RESP 0020 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"77416c99-f95e-4b98-92c6-c9116caf71ec"}
+
+===== PSQL 2026-09-11T09:25:28 =====
+select process_instance_id from sw_bpm_instance where business_key='77416c99-f95e-4b98-92c6-c9116caf71ec'
+----- RESULT (exit=0) -----
+ab44078f-ad7f-11f1-8e9c-ee8448c149f7
+
+===== PSQL 2026-09-11T09:25:28 =====
+select def_version from sw_bpm_instance where business_key='77416c99-f95e-4b98-92c6-c9116caf71ec'
+----- RESULT (exit=0) -----
+5
+
+===== PSQL 2026-09-11T09:25:28 =====
+select published_version from sw_bpm_process_def where id='2098220447350415361'
+----- RESULT (exit=0) -----
+5
+
+===== LOGIN CHAIN 2026-09-11T03:26:23.568Z =====
+GET /api/auth/challenge (用户名=admin 端口=8081)
+----- RESP -----
+{"code":0,"msg":"success","data":{"captchaImage":"data:image/png;base64,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","captchaId":"f4cbd540-38b6-4235-a2fe-9dd4f6452157","publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA8UmkqiiX2Dx/7kvwdydjqZeFzVy7DwCJdiuet+vbUfCLbw71F7/85THyeOsBlV/4jCEZ8+oLd89kKAgKx64EWK8+Jehou/P8HaIuYQn+IPZcJrpHcuXtl6D+6Vr37bQWTQcBorzNVugb4te7gWR4RhQCNd/BqJjo4erNsoZKTAkKQsrXdWv78KhzHx8MBl1oPwzzZ1m+Wx34YgG4IbrPmboldHYGYXCUxWHkqSYNWz1dvirUx4HvA3hiZMDrgpIIHQAOPVe0rIvX5rSnGPer586XFBGwWCal8hU4Io/7vTX+s1RPBtrlU0d1Mg52QPlTKcRsbRaW6SM+RYOVCstPAwIDAQAB","keyVersion":"v1","expiresIn":"300","serverTime":"1789097183426"}}
+----- REQ POST /api/auth/login -----
+{"username":"admin","password":"[REDACTED_PASSWORD]","captcha":"1234","captchaId":"f4cbd540-38b6-4235-a2fe-9dd4f6452157","timestamp":"masked"}
+----- RESP -----
+{"code":0,"msg":"success","data":{"accessToken":"[REDACTED]","expiresIn":"900"}}
+
+===== LOGIN OK 0001 2026-09-11T11:26:23 =====
+POST /api/auth/login (challenge->RSA-OAEP->login 链) user=admin port=8081
+----- RESP -----
+accessToken_len=146 accessToken_sha256=cba019d105de6fb1a57966c3d4d9c020d8c44d3ebceed21a21463e2238c911e2
+
+===== LOGIN CHAIN 2026-09-11T03:26:23.748Z =====
+GET /api/auth/challenge (用户名=admin 端口=8081)
+----- RESP -----
+{"code":0,"msg":"success","data":{"captchaImage":"data:image/png;base64,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","captchaId":"ccd3162b-8277-43e9-9e33-8c57e5617323","publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA8UmkqiiX2Dx/7kvwdydjqZeFzVy7DwCJdiuet+vbUfCLbw71F7/85THyeOsBlV/4jCEZ8+oLd89kKAgKx64EWK8+Jehou/P8HaIuYQn+IPZcJrpHcuXtl6D+6Vr37bQWTQcBorzNVugb4te7gWR4RhQCNd/BqJjo4erNsoZKTAkKQsrXdWv78KhzHx8MBl1oPwzzZ1m+Wx34YgG4IbrPmboldHYGYXCUxWHkqSYNWz1dvirUx4HvA3hiZMDrgpIIHQAOPVe0rIvX5rSnGPer586XFBGwWCal8hU4Io/7vTX+s1RPBtrlU0d1Mg52QPlTKcRsbRaW6SM+RYOVCstPAwIDAQAB","keyVersion":"v1","expiresIn":"300","serverTime":"1789097183637"}}
+----- REQ POST /api/auth/login -----
+{"username":"admin","password":"[REDACTED_PASSWORD]","captcha":"1234","captchaId":"ccd3162b-8277-43e9-9e33-8c57e5617323","timestamp":"masked"}
+----- RESP -----
+{"code":0,"msg":"success","data":{"accessToken":"[REDACTED]","expiresIn":"900"}}
+
+===== LOGIN OK 0002 2026-09-11T11:26:23 =====
+POST /api/auth/login (challenge->RSA-OAEP->login 链) user=admin port=8081
+----- RESP -----
+accessToken_len=146 accessToken_sha256=cba019d105de6fb1a57966c3d4d9c020d8c44d3ebceed21a21463e2238c911e2
+
+===== REQ 0003 2026-09-11T11:26:23 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"formKey": "vmxform_vmxT4", "name": "vmx-vmxform_vmxT4"}
+----- RESP 0003 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"c3a1e781-5041-4e1c-ad6e-219b8911462b","formKey":"vmxform_vmxT4","name":"vmx-vmxform_vmxT4","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-11T11:26:23.781739","updateTime":"2026-09-11T11:26:23.78174"}}
+
+===== REQ 0004 2026-09-11T11:26:23 =====
+POST http://localhost:8081/api/form/def/c3a1e781-5041-4e1c-ad6e-219b8911462b/config
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"definition": "{\"fields\": [{\"name\": \"amount\", \"label\": \"\\u91d1\\u989d\", \"type\": \"NUMBER\"}]}"}
+----- RESP 0004 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0005 2026-09-11T11:26:23 =====
+POST http://localhost:8081/api/form/def/c3a1e781-5041-4e1c-ad6e-219b8911462b/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0005 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0006 2026-09-11T11:26:23 =====
+POST http://localhost:8081/api/workflow/defs/validate
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"processKey": "vmx_TEXT", "name": "vmx", "formKey": "vmxform_vmxT4", "contractVersion": 2, "elements": [{"id": "node_start", "kind": "node", "type": "START", "x": 100, "y": 300, "config": {}}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "x": 300, "y": 300, "config": {"name": "m", "participant": {"strategy": "FIXED_USER", "value": [1]}, "opinionForm": {"formId": "m-TEXT", "version": "v1", "fields": [{"key": "f1", "label": "TEXT", "type": "TEXT"}]}}}, {"id": "node_end", "kind": "node", "type": "END", "x": 600, "y": 300, "config": {}}, {"id": "e1", "kind": "edge", "source": "node_start", "target": "node_1"}, {"id": "e2", "kind": "edge", "source": "node_1", "target": "node_end"}]}
+----- RESP 0006 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":[]}
+
+===== REQ 0007 2026-09-11T11:26:23 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"formKey": "vmxform_vmxT8", "name": "vmx-vmxform_vmxT8"}
+----- RESP 0007 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"bd8c2b0f-1954-4d84-bcc6-06a009732ac5","formKey":"vmxform_vmxT8","name":"vmx-vmxform_vmxT8","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-11T11:26:23.864745","updateTime":"2026-09-11T11:26:23.864746"}}
+
+===== REQ 0008 2026-09-11T11:26:23 =====
+POST http://localhost:8081/api/form/def/bd8c2b0f-1954-4d84-bcc6-06a009732ac5/config
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"definition": "{\"fields\": [{\"name\": \"amount\", \"label\": \"\\u91d1\\u989d\", \"type\": \"NUMBER\"}]}"}
+----- RESP 0008 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0009 2026-09-11T11:26:23 =====
+POST http://localhost:8081/api/form/def/bd8c2b0f-1954-4d84-bcc6-06a009732ac5/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0009 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0010 2026-09-11T11:26:23 =====
+POST http://localhost:8081/api/workflow/defs/validate
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"processKey": "vmx_TEXTAREA", "name": "vmx", "formKey": "vmxform_vmxT8", "contractVersion": 2, "elements": [{"id": "node_start", "kind": "node", "type": "START", "x": 100, "y": 300, "config": {}}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "x": 300, "y": 300, "config": {"name": "m", "participant": {"strategy": "FIXED_USER", "value": [1]}, "opinionForm": {"formId": "m-TEXTAREA", "version": "v1", "fields": [{"key": "f1", "label": "TEXTAREA", "type": "TEXTAREA"}]}}}, {"id": "node_end", "kind": "node", "type": "END", "x": 600, "y": 300, "config": {}}, {"id": "e1", "kind": "edge", "source": "node_start", "target": "node_1"}, {"id": "e2", "kind": "edge", "source": "node_1", "target": "node_end"}]}
+----- RESP 0010 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":[]}
+
+===== REQ 0011 2026-09-11T11:26:23 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"formKey": "vmxform_vmxN6", "name": "vmx-vmxform_vmxN6"}
+----- RESP 0011 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"0ca12626-6dcf-4f93-8249-993bf9bdc7e5","formKey":"vmxform_vmxN6","name":"vmx-vmxform_vmxN6","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-11T11:26:23.951356","updateTime":"2026-09-11T11:26:23.951356"}}
+
+===== REQ 0012 2026-09-11T11:26:23 =====
+POST http://localhost:8081/api/form/def/0ca12626-6dcf-4f93-8249-993bf9bdc7e5/config
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"definition": "{\"fields\": [{\"name\": \"amount\", \"label\": \"\\u91d1\\u989d\", \"type\": \"NUMBER\"}]}"}
+----- RESP 0012 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0013 2026-09-11T11:26:23 =====
+POST http://localhost:8081/api/form/def/0ca12626-6dcf-4f93-8249-993bf9bdc7e5/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0013 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0014 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/workflow/defs/validate
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"processKey": "vmx_NUMBER", "name": "vmx", "formKey": "vmxform_vmxN6", "contractVersion": 2, "elements": [{"id": "node_start", "kind": "node", "type": "START", "x": 100, "y": 300, "config": {}}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "x": 300, "y": 300, "config": {"name": "m", "participant": {"strategy": "FIXED_USER", "value": [1]}, "opinionForm": {"formId": "m-NUMBER", "version": "v1", "fields": [{"key": "f1", "label": "NUMBER", "type": "NUMBER"}]}}}, {"id": "node_end", "kind": "node", "type": "END", "x": 600, "y": 300, "config": {}}, {"id": "e1", "kind": "edge", "source": "node_start", "target": "node_1"}, {"id": "e2", "kind": "edge", "source": "node_1", "target": "node_end"}]}
+----- RESP 0014 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":[]}
+
+===== REQ 0015 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"formKey": "vmxform_vmxR5", "name": "vmx-vmxform_vmxR5"}
+----- RESP 0015 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"6a442bde-8624-4098-a66d-bfce532a1217","formKey":"vmxform_vmxR5","name":"vmx-vmxform_vmxR5","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-11T11:26:24.013005","updateTime":"2026-09-11T11:26:24.013006"}}
+
+===== REQ 0016 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/form/def/6a442bde-8624-4098-a66d-bfce532a1217/config
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"definition": "{\"fields\": [{\"name\": \"amount\", \"label\": \"\\u91d1\\u989d\", \"type\": \"NUMBER\"}]}"}
+----- RESP 0016 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0017 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/form/def/6a442bde-8624-4098-a66d-bfce532a1217/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0017 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0018 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/workflow/defs/validate
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"processKey": "vmx_RADIO", "name": "vmx", "formKey": "vmxform_vmxR5", "contractVersion": 2, "elements": [{"id": "node_start", "kind": "node", "type": "START", "x": 100, "y": 300, "config": {}}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "x": 300, "y": 300, "config": {"name": "m", "participant": {"strategy": "FIXED_USER", "value": [1]}, "opinionForm": {"formId": "m-RADIO", "version": "v1", "fields": [{"key": "f1", "label": "RADIO", "type": "RADIO"}]}}}, {"id": "node_end", "kind": "node", "type": "END", "x": 600, "y": 300, "config": {}}, {"id": "e1", "kind": "edge", "source": "node_start", "target": "node_1"}, {"id": "e2", "kind": "edge", "source": "node_1", "target": "node_end"}]}
+----- RESP 0018 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":[]}
+
+===== REQ 0019 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"formKey": "vmxform_vmxC8", "name": "vmx-vmxform_vmxC8"}
+----- RESP 0019 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"7d23d79d-ec31-4370-9970-0b558373c8e7","formKey":"vmxform_vmxC8","name":"vmx-vmxform_vmxC8","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-11T11:26:24.099117","updateTime":"2026-09-11T11:26:24.099118"}}
+
+===== REQ 0020 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/form/def/7d23d79d-ec31-4370-9970-0b558373c8e7/config
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"definition": "{\"fields\": [{\"name\": \"amount\", \"label\": \"\\u91d1\\u989d\", \"type\": \"NUMBER\"}]}"}
+----- RESP 0020 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0021 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/form/def/7d23d79d-ec31-4370-9970-0b558373c8e7/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0021 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0022 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/workflow/defs/validate
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"processKey": "vmx_CHECKBOX", "name": "vmx", "formKey": "vmxform_vmxC8", "contractVersion": 2, "elements": [{"id": "node_start", "kind": "node", "type": "START", "x": 100, "y": 300, "config": {}}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "x": 300, "y": 300, "config": {"name": "m", "participant": {"strategy": "FIXED_USER", "value": [1]}, "opinionForm": {"formId": "m-CHECKBOX", "version": "v1", "fields": [{"key": "f1", "label": "CHECKBOX", "type": "CHECKBOX"}]}}}, {"id": "node_end", "kind": "node", "type": "END", "x": 600, "y": 300, "config": {}}, {"id": "e1", "kind": "edge", "source": "node_start", "target": "node_1"}, {"id": "e2", "kind": "edge", "source": "node_1", "target": "node_end"}]}
+----- RESP 0022 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":[]}
+
+===== REQ 0023 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"formKey": "vmxform_vmxS6", "name": "vmx-vmxform_vmxS6"}
+----- RESP 0023 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"ac045689-56c9-45b8-903b-6b17542ee8b8","formKey":"vmxform_vmxS6","name":"vmx-vmxform_vmxS6","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-11T11:26:24.145696","updateTime":"2026-09-11T11:26:24.145697"}}
+
+===== REQ 0024 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/form/def/ac045689-56c9-45b8-903b-6b17542ee8b8/config
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"definition": "{\"fields\": [{\"name\": \"amount\", \"label\": \"\\u91d1\\u989d\", \"type\": \"NUMBER\"}]}"}
+----- RESP 0024 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0025 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/form/def/ac045689-56c9-45b8-903b-6b17542ee8b8/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0025 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0026 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/workflow/defs/validate
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"processKey": "vmx_SELECT", "name": "vmx", "formKey": "vmxform_vmxS6", "contractVersion": 2, "elements": [{"id": "node_start", "kind": "node", "type": "START", "x": 100, "y": 300, "config": {}}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "x": 300, "y": 300, "config": {"name": "m", "participant": {"strategy": "FIXED_USER", "value": [1]}, "opinionForm": {"formId": "m-SELECT", "version": "v1", "fields": [{"key": "f1", "label": "SELECT", "type": "SELECT"}]}}}, {"id": "node_end", "kind": "node", "type": "END", "x": 600, "y": 300, "config": {}}, {"id": "e1", "kind": "edge", "source": "node_start", "target": "node_1"}, {"id": "e2", "kind": "edge", "source": "node_1", "target": "node_end"}]}
+----- RESP 0026 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":[]}
+
+===== REQ 0027 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"formKey": "vmxform_vmxD8", "name": "vmx-vmxform_vmxD8"}
+----- RESP 0027 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"1941c6f6-2a95-4beb-91c0-cd20f196cf1b","formKey":"vmxform_vmxD8","name":"vmx-vmxform_vmxD8","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-11T11:26:24.197174","updateTime":"2026-09-11T11:26:24.197174"}}
+
+===== REQ 0028 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/form/def/1941c6f6-2a95-4beb-91c0-cd20f196cf1b/config
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"definition": "{\"fields\": [{\"name\": \"amount\", \"label\": \"\\u91d1\\u989d\", \"type\": \"NUMBER\"}]}"}
+----- RESP 0028 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0029 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/form/def/1941c6f6-2a95-4beb-91c0-cd20f196cf1b/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0029 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0030 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/workflow/defs/validate
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"processKey": "vmx_DATETIME", "name": "vmx", "formKey": "vmxform_vmxD8", "contractVersion": 2, "elements": [{"id": "node_start", "kind": "node", "type": "START", "x": 100, "y": 300, "config": {}}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "x": 300, "y": 300, "config": {"name": "m", "participant": {"strategy": "FIXED_USER", "value": [1]}, "opinionForm": {"formId": "m-DATETIME", "version": "v1", "fields": [{"key": "f1", "label": "DATETIME", "type": "DATETIME"}]}}}, {"id": "node_end", "kind": "node", "type": "END", "x": 600, "y": 300, "config": {}}, {"id": "e1", "kind": "edge", "source": "node_start", "target": "node_1"}, {"id": "e2", "kind": "edge", "source": "node_1", "target": "node_end"}]}
+----- RESP 0030 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":[]}
+
+===== REQ 0031 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"formKey": "vmxform_vmxN4", "name": "vmx-vmxform_vmxN4"}
+----- RESP 0031 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"5550d616-b6a1-4e59-82f4-bbb8556b3d89","formKey":"vmxform_vmxN4","name":"vmx-vmxform_vmxN4","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-11T11:26:24.249519","updateTime":"2026-09-11T11:26:24.24952"}}
+
+===== REQ 0032 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/form/def/5550d616-b6a1-4e59-82f4-bbb8556b3d89/config
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"definition": "{\"fields\": [{\"name\": \"amount\", \"label\": \"\\u91d1\\u989d\", \"type\": \"NUMBER\"}]}"}
+----- RESP 0032 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0033 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/form/def/5550d616-b6a1-4e59-82f4-bbb8556b3d89/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0033 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0034 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/workflow/defs/validate
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"processKey": "vmx_NOTE", "name": "vmx", "formKey": "vmxform_vmxN4", "contractVersion": 2, "elements": [{"id": "node_start", "kind": "node", "type": "START", "x": 100, "y": 300, "config": {}}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "x": 300, "y": 300, "config": {"name": "m", "participant": {"strategy": "FIXED_USER", "value": [1]}, "opinionForm": {"formId": "m-NOTE", "version": "v1", "fields": [{"key": "f1", "label": "NOTE", "type": "NOTE"}]}}}, {"id": "node_end", "kind": "node", "type": "END", "x": 600, "y": 300, "config": {}}, {"id": "e1", "kind": "edge", "source": "node_start", "target": "node_1"}, {"id": "e2", "kind": "edge", "source": "node_1", "target": "node_end"}]}
+----- RESP 0034 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":[]}
+
+===== REQ 0035 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"formKey": "vmxform_vmxR9", "name": "vmx-vmxform_vmxR9"}
+----- RESP 0035 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"376d3722-6c31-4be9-a535-9cea55aa9193","formKey":"vmxform_vmxR9","name":"vmx-vmxform_vmxR9","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-11T11:26:24.296152","updateTime":"2026-09-11T11:26:24.296152"}}
+
+===== REQ 0036 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/form/def/376d3722-6c31-4be9-a535-9cea55aa9193/config
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"definition": "{\"fields\": [{\"name\": \"amount\", \"label\": \"\\u91d1\\u989d\", \"type\": \"NUMBER\"}]}"}
+----- RESP 0036 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0037 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/form/def/376d3722-6c31-4be9-a535-9cea55aa9193/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+----- RESP 0037 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0038 2026-09-11T11:26:24 =====
+POST http://localhost:8081/api/workflow/defs/validate
+Content-type: application/json
+Authorization: [REDACTED_BEARER]
+
+{"processKey": "vmx_RICH_TEXT", "name": "vmx", "formKey": "vmxform_vmxR9", "contractVersion": 2, "elements": [{"id": "node_start", "kind": "node", "type": "START", "x": 100, "y": 300, "config": {}}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "x": 300, "y": 300, "config": {"name": "m", "participant": {"strategy": "FIXED_USER", "value": [1]}, "opinionForm": {"formId": "m-RICH_TEXT", "version": "v1", "fields": [{"key": "f1", "label": "RICH_TEXT", "type": "RICH_TEXT"}]}}}, {"id": "node_end", "kind": "node", "type": "END", "x": 600, "y": 300, "config": {}}, {"id": "e1", "kind": "edge", "source": "node_start", "target": "node_1"}, {"id": "e2", "kind": "edge", "source": "node_1", "target": "node_end"}]}
+----- RESP 0038 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":[{"elementId":"node_1","nodeKey":"node_1","edgeKey":null,"errorCode":2417,"message":"审批意见表单组件不可用: RICH_TEXT"}]}
+
+===== PSQL 2026-09-11T11:26:24 =====
+select * from sw_bpm_instance order by create_time desc limit 40
+----- RESULT (exit=0) -----
+2098251604771332098|2026-09-11 11:25:40.864462|1|2026-09-11 11:25:40.864467|1|0|0|0|76fd183f-ad90-11f1-ac37-ee8448c149f7|bpm_b3c3e74b31ae4c43|5d51637a-43c9-4b71-858e-820fab2d1089|i3ev_o4|1|RUNNING|2
+2098251572479385601|2026-09-11 11:25:33.166262|1|2026-09-11 11:25:33.166266|1|0|0|0|7267ff8c-ad90-11f1-ac37-ee8448c149f7|bpm_b3c3e74b31ae4c43|7060feff-6a41-46fb-8214-2791cf8c3c0f|i3ev_o4|1|APPROVED|2
+2098251544851382274|2026-09-11 11:25:26.579545|1|2026-09-11 11:25:26.579549|1|0|0|0|6e7a7119-ad90-11f1-b1f2-ee8448c149f7|bpm_b3c3e74b31ae4c43|be3b1bbf-01e9-46f8-878f-a2959a51d229|i3ev_o4|1|APPROVED|1
+2098251518867791873|2026-09-11 11:25:20.384643|1|2026-09-11 11:25:20.384647|1|0|0|0|6ac90255-ad90-11f1-ac37-ee8448c149f7|bpm_b3c3e74b31ae4c43|bcd4a437-588c-4285-a692-334c2b4b9e05|i3ev_o4|1|RUNNING|1
+2098251493047656450|2026-09-11 11:25:14.228496|1|2026-09-11 11:25:14.228502|1|0|0|0|671d3855-ad90-11f1-ac37-ee8448c149f7|bpm_b3c3e74b31ae4c43|fa3e4216-9659-45e0-93c1-6b3fa624cbb4|i3ev_o4|1|RUNNING|1
+2098251461183406081|2026-09-11 11:25:06.6308|1|2026-09-11 11:25:06.630804|1|0|0|0|62971479-ad90-11f1-b1f2-ee8448c149f7|bpm_80641839468947a5|6fe5e126-a1b6-48a1-8108-5c961958418e|i3ev_d4c|1|APPROVED|2
+2098251435338104834|2026-09-11 11:25:00.468323|1|2026-09-11 11:25:00.468385|1|0|0|0|5ee6b699-ad90-11f1-b1f2-ee8448c149f7|bpm_80641839468947a5|233538b4-3357-472e-88dc-a6d4e1ccef61|i3ev_d4c|1|APPROVED|1
+2098251409404846082|2026-09-11 11:24:54.285693|1|2026-09-11 11:24:54.285698|1|0|0|0|5b393e67-ad90-11f1-ac37-ee8448c149f7|bpm_80641839468947a5|21aad461-58f5-46df-83eb-418e23779401|i3ev_d4c|1|RUNNING|1
+2098251383496507393|2026-09-11 11:24:48.108967|1|2026-09-11 11:24:48.108972|1|0|0|0|5788ba09-ad90-11f1-b1f2-ee8448c149f7|bpm_80641839468947a5|b977fe9f-270a-47dc-b7f2-f3b8b8494718|i3ev_d4c|1|RUNNING|1
+2098251203472908290|2026-09-11 11:24:05.18837|1|2026-09-11 11:24:05.188374|1|0|0|0|3df72963-ad90-11f1-ac37-ee8448c149f7|bpm_38293c4649424daa|5f14beef-663e-4558-afa9-2382186afd52|i3ev_d4c|1|RUNNING|2
+2098251175731658753|2026-09-11 11:23:58.574565|1|2026-09-11 11:23:58.574571|1|0|0|0|3a035a79-ad90-11f1-b1f2-ee8448c149f7|bpm_38293c4649424daa|04811b9e-ac6e-4c65-9364-dfe5b6902220|i3ev_d4c|1|APPROVED|1
+2098251149940883458|2026-09-11 11:23:52.425075|1|2026-09-11 11:23:52.425081|1|0|0|0|3657de99-ad90-11f1-b1f2-ee8448c149f7|bpm_38293c4649424daa|579cfa77-84b7-487f-a1ce-586178567f3d|i3ev_d4c|1|RUNNING|1
+2098251122493480962|2026-09-11 11:23:45.881182|1|2026-09-11 11:23:45.881186|1|0|0|0|32743b3c-ad90-11f1-ac37-ee8448c149f7|bpm_38293c4649424daa|454091f4-5b7e-4d69-a255-a38e8a719cfa|i3ev_d4c|1|RUNNING|1
+2098251039345598466|2026-09-11 11:23:26.056471|1|2026-09-11 11:23:26.056475|1|0|0|0|26a2def5-ad90-11f1-ac37-ee8448c149f7|bpm_d69ccb1f590c468b|ef90eb28-9112-4cd2-b29c-9b7a80aa0037|i3ev_d4c|1|APPROVED|1
+2098251013097521153|2026-09-11 11:23:19.799233|1|2026-09-11 11:23:19.799238|1|0|0|0|22e6e8f9-ad90-11f1-b1f2-ee8448c149f7|bpm_d69ccb1f590c468b|c920b574-b726-4e67-9fc8-6e7c2c1d985f|i3ev_d4c|1|RUNNING|1
+2098250987281580033|2026-09-11 11:23:13.643868|1|2026-09-11 11:23:13.643875|1|0|0|0|1f3b4609-ad90-11f1-b1f2-ee8448c149f7|bpm_d69ccb1f590c468b|8b0cc61e-ef76-48af-8b65-fed78c8e2e8c|i3ev_d4c|1|RUNNING|1
+2098250714400161793|2026-09-11 11:22:08.583744|1|2026-09-11 11:22:08.583763|1|0|0|0|f8710189-ad8f-11f1-b1f2-ee8448c149f7|bpm_d90edbba3ad14cba|fbe2767a-a606-4c90-9b2e-d3b206311962|i3ev_o4|1|RUNNING|2
+2098250679847485441|2026-09-11 11:22:00.346217|1|2026-09-11 11:22:00.346224|1|0|0|0|f37b7979-ad8f-11f1-b1f2-ee8448c149f7|bpm_d90edbba3ad14cba|b2e678ee-70c3-46b2-88a5-f9d5a5ba71c6|i3ev_o4|1|RUNNING|2
+2098250651099848706|2026-09-11 11:21:53.491768|1|2026-09-11 11:21:53.491781|1|0|0|0|ef73380a-ad8f-11f1-ac37-ee8448c149f7|bpm_d90edbba3ad14cba|a18e3734-29cf-4888-aa64-5b7ed990236a|i3ev_o4|1|APPROVED|1
+2098250625040637953|2026-09-11 11:21:47.279175|1|2026-09-11 11:21:47.279183|1|0|0|0|ebc17a9a-ad8f-11f1-ac37-ee8448c149f7|bpm_d90edbba3ad14cba|676d29b8-8393-4ce7-a0e4-7afd36231302|i3ev_o4|1|RUNNING|1
+2098250596934606850|2026-09-11 11:21:40.57828|1|2026-09-11 11:21:40.578296|1|0|0|0|e7bc941a-ad8f-11f1-ac37-ee8448c149f7|bpm_d90edbba3ad14cba|c3f4ea2a-d61e-45d1-bc63-831664226dc7|i3ev_o4|1|RUNNING|1
+2098249570403749889|2026-09-11 11:17:35.83384|1|2026-09-11 11:17:35.833845|1|0|0|0|55e31546-ad8f-11f1-86d2-ee8448c149f7|bpm_0882c6dc620b4011|f610a641-4b7e-433a-8350-ed8531c28f84|i3ev_o4|1|RUNNING|2
+2098249538401210369|2026-09-11 11:17:28.203849|1|2026-09-11 11:17:28.203854|1|0|0|0|515799a6-ad8f-11f1-86d2-ee8448c149f7|bpm_0882c6dc620b4011|bdf373a7-7fa6-4522-8896-a2e1b6a7f512|i3ev_o4|1|RUNNING|2
+2098249510576197634|2026-09-11 11:17:21.569747|1|2026-09-11 11:17:21.569752|1|0|0|0|4d6306d6-ad8f-11f1-86d2-ee8448c149f7|bpm_0882c6dc620b4011|bf7ba1b3-aec6-4b15-82bc-59f213587a70|i3ev_o4|1|APPROVED|1
+2098249484852531201|2026-09-11 11:17:15.437023|1|2026-09-11 11:17:15.437028|1|0|0|0|49bae656-ad8f-11f1-86d2-ee8448c149f7|bpm_0882c6dc620b4011|45508ecf-35da-42c3-8121-f5c545097258|i3ev_o4|1|RUNNING|1
+2098249457874870274|2026-09-11 11:17:09.004706|1|2026-09-11 11:17:09.004711|1|0|0|0|45e54d54-ad8f-11f1-8442-ee8448c149f7|bpm_0882c6dc620b4011|61e5a5b0-8b3d-41ef-b496-93961c07ff30|i3ev_o4|1|RUNNING|1
+2098249189531688961|2026-09-11 11:16:05.027627|1|2026-09-11 11:16:05.027632|1|0|0|0|1fc44120-ad8f-11f1-8442-ee8448c149f7|bpm_2a78965dc880440c|43c90c46-fa90-4ab8-817f-97617a9d94f6|i3ev_o4|1|RUNNING|2
+2098249160897073153|2026-09-11 11:15:58.199729|1|2026-09-11 11:15:58.199734|1|0|0|0|1bb1c616-ad8f-11f1-86d2-ee8448c149f7|bpm_2a78965dc880440c|20527df8-cf9d-42a1-a323-aad7fce6276c|i3ev_o4|1|RUNNING|2
+2098249133030117378|2026-09-11 11:15:51.556189|1|2026-09-11 11:15:51.556194|1|0|0|0|17bc48e6-ad8f-11f1-86d2-ee8448c149f7|bpm_2a78965dc880440c|d7f897f2-f242-4872-8d16-9c3e9fd64dff|i3ev_o4|1|APPROVED|1
+2098249106245394433|2026-09-11 11:15:45.169451|1|2026-09-11 11:15:45.169457|1|0|0|0|13ec7c39-ad8f-11f1-8442-ee8448c149f7|bpm_2a78965dc880440c|fb1b2c44-3886-4c68-8f5f-da7ea00da6f9|i3ev_o4|1|RUNNING|1
+2098249079737290753|2026-09-11 11:15:38.849987|1|2026-09-11 11:15:38.849994|1|0|0|0|10289756-ad8f-11f1-86d2-ee8448c149f7|bpm_2a78965dc880440c|b11fc32a-ed23-4a69-95f9-56a065d7c8d4|i3ev_o4|1|RUNNING|1
+2098248968932167681|2026-09-11 11:15:12.43242|1|2026-09-11 11:15:12.43243|1|0|0|0|00662ac6-ad8f-11f1-86d2-ee8448c149f7|bpm_8ac1d73e19644994|59b9e1c1-2d81-4984-aa87-923263787ecb|i3ev_d1|1|RUNNING|5
+2098248952847114241|2026-09-11 11:15:08.597664|1|2026-09-11 11:15:08.59767|1|0|0|0|fe20595a-ad8e-11f1-8442-ee8448c149f7|bpm_3ab2ca40113842cf|07607578-d7bc-4672-84f3-9155830019e7|i3ev_d4b|1|APPROVED|1
+2098248933461041154|2026-09-11 11:15:03.974893|1|2026-09-11 11:15:03.974899|1|0|0|0|fb6000c6-ad8e-11f1-8442-ee8448c149f7|bpm_38a1b2f9fde5476f|4f04cb8e-532a-404f-bc9f-0bc0539fd18f|i3ev_d5|1|RUNNING|2
+2098248764497698817|2026-09-11 11:14:23.692016|1|2026-09-11 11:14:23.692032|1|0|0|0|e35537af-ad8e-11f1-8442-ee8448c149f7|bpm_b92894cb793d4969|556cfc04-45b0-4da1-b15d-2b181f855fe1|i3ev_d4b|1|APPROVED|1
+2098248745174437890|2026-09-11 11:14:19.084287|1|2026-09-11 11:14:19.084293|1|0|0|0|e09bbd36-ad8e-11f1-86d2-ee8448c149f7|bpm_38a1b2f9fde5476f|45ade4cf-8a55-4817-a792-f2169ef075f6|i3ev_d5|1|RUNNING|2
+2098248598080196610|2026-09-11 11:13:44.014153|1|2026-09-11 11:13:44.014159|1|0|0|0|cbb083a6-ad8e-11f1-86d2-ee8448c149f7|bpm_67c817718a5e43f4|bdabf96a-f6e6-427b-b849-caabd19431d9|i3ev_d4b|1|APPROVED|1
+2098248576232169473|2026-09-11 11:13:38.805036|1|2026-09-11 11:13:38.805046|1|0|0|0|c88fbb60-ad8e-11f1-8442-ee8448c149f7|bpm_38a1b2f9fde5476f|bff66f66-4715-4089-8029-958af4a04e6c|i3ev_d5|1|RUNNING|2
+2098246854398976001|2026-09-11 11:06:48.287645|1|2026-09-11 11:06:48.287654|1|0|0|0|d3de9653-ad8d-11f1-aa84-ee8448c149f7|bpm_f86e74fa8e92482b|7717e716-8bb5-4d25-9a17-a3333e4e1ba0|i3ev_d6|1|APPROVED|2
+2098245157119336449|2026-09-11 11:00:03.625558|1|2026-09-11 11:00:03.625565|1|0|0|0|e2a9ee91-ad8c-11f1-b1d9-ee8448c149f7|bpm_f86e74fa8e92482b|dc2e518a-ed54-4a66-a964-fcbec9ab939a|i3ev_d6|1|APPROVED|2
+
+===== PSQL 2026-09-11T11:26:24 =====
+select * from sw_bpm_approval_action order by create_time desc limit 60
+----- RESULT (exit=0) -----
+2098251598748311553|2026-09-11 11:25:39.428855|1|2026-09-11 11:25:39.428887|1|0|0|0|7267ff8c-ad90-11f1-ac37-ee8448c149f7|node_1|726826a9-ad90-11f1-ac37-ee8448c149f7|1|APPROVE|i3ev-opinion-o4|v1|{"source":"processVariables.formData","sourceFields":["amount"]}|{}|APPROVED|||||||{"opinionForm":{"formId":"i3ev-opinion-o4","version":"v1","fields":[{"key":"comment2","label":"审批说明(改)","type":"TEXTAREA","required":false},{"key":"level","label":"等级(改)","type":"SELECT","options":["X","Y"],"required":false}]},"opinionFormId":"i3ev-opinion-o4","opinionFormVersion":"v1"}
+2098251571112042498|2026-09-11 11:25:32.84043|1|2026-09-11 11:25:32.840434|1|0|0|0|6e7a7119-ad90-11f1-b1f2-ee8448c149f7|node_1|6e7a9836-ad90-11f1-b1f2-ee8448c149f7|1|APPROVE|i3ev-opinion-o4|v1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment2":"同意","level":"A"}|APPROVED|||||||{"opinionForm":{"formId":"i3ev-opinion-o4","version":"v1","fields":[{"key":"comment2","label":"审批说明","type":"TEXT","required":true,"maxLength":200},{"key":"level","label":"等级","type":"RADIO","options":["A","B"],"required":true},{"key":"note","label":"备注","type":"NOTE"}]},"opinionFormId":"i3ev-opinion-o4","opinionFormVersion":"v1"}
+2098251487305654273|2026-09-11 11:25:12.860077|1|2026-09-11 11:25:12.860082|1|0|0|0|62971479-ad90-11f1-b1f2-ee8448c149f7|node_1|62973a96-ad90-11f1-b1f2-ee8448c149f7|1|APPROVE|i3ev-opinion-c|v1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment2":"v2 口径"}|APPROVED|||||||{"opinionForm":{"formId":"i3ev-opinion-c","version":"v1","fields":[{"key":"comment2","label":"审批说明(改)","type":"TEXTAREA","required":false},{"key":"level","label":"等级(改)","type":"SELECT","options":["X","Y"],"required":false}]},"opinionFormId":"i3ev-opinion-c","opinionFormVersion":"v1"}
+2098251460160118785|2026-09-11 11:25:06.386596|1|2026-09-11 11:25:06.3866|1|0|0|0|5ee6b699-ad90-11f1-b1f2-ee8448c149f7|node_1|5ee72bd6-ad90-11f1-b1f2-ee8448c149f7|1|APPROVE|i3ev-opinion-c|v1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment2":"同意","level":"A"}|APPROVED|||||||{"opinionForm":{"formId":"i3ev-opinion-c","version":"v1","fields":[{"key":"comment2","label":"审批说明","type":"TEXT","required":true,"maxLength":200},{"key":"level","label":"等级","type":"RADIO","options":["A","B"],"required":true},{"key":"note","label":"备注","type":"NOTE"}]},"opinionFormId":"i3ev-opinion-c","opinionFormVersion":"v1"}
+2098251201266704385|2026-09-11 11:24:04.662039|1|2026-09-11 11:24:04.662044|1|0|0|0|3a035a79-ad90-11f1-b1f2-ee8448c149f7|node_1|3a03a8a6-ad90-11f1-b1f2-ee8448c149f7|1|APPROVE|i3ev-opinion-c|v1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment2":"同意","level":"A"}|APPROVED|||||||{"opinionForm":{"formId":"i3ev-opinion-c","version":"v1","fields":[{"key":"comment2","label":"审批说明","type":"TEXT","required":true,"maxLength":200},{"key":"level","label":"等级","type":"RADIO","options":["A","B"],"required":true},{"key":"note","label":"备注","type":"NOTE"}]},"opinionFormId":"i3ev-opinion-c","opinionFormVersion":"v1"}
+2098251065534832641|2026-09-11 11:23:32.301007|1|2026-09-11 11:23:32.301016|1|0|0|0|26a2def5-ad90-11f1-ac37-ee8448c149f7|node_1|26a30612-ad90-11f1-ac37-ee8448c149f7|1|APPROVE|i3ev-opinion-c|v1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment2":"同意","level":"A"}|APPROVED|||||||{"opinionForm":{"formId":"i3ev-opinion-c","version":"v1","fields":[{"key":"comment2","label":"审批说明","type":"TEXT","required":true,"maxLength":200},{"key":"level","label":"等级","type":"RADIO","options":["A","B"],"required":true},{"key":"note","label":"备注","type":"NOTE"}]},"opinionFormId":"i3ev-opinion-c","opinionFormVersion":"v1"}
+2098250677712707585|2026-09-11 11:21:59.836471|1|2026-09-11 11:21:59.836483|1|0|0|0|ef73380a-ad8f-11f1-ac37-ee8448c149f7|node_1|ef73d457-ad8f-11f1-ac37-ee8448c149f7|1|APPROVE|i3ev-opinion-o4|v1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment2":"同意","level":"A"}|APPROVED|||||||{"opinionForm":{"formId":"i3ev-opinion-o4","version":"v1","fields":[{"key":"comment2","label":"审批说明","type":"TEXT","required":true,"maxLength":200},{"key":"level","label":"等级","type":"RADIO","options":["A","B"],"required":true},{"key":"note","label":"备注","type":"NOTE"}]},"opinionFormId":"i3ev-opinion-o4","opinionFormVersion":"v1"}
+2098249537012998145|2026-09-11 11:17:27.873327|1|2026-09-11 11:17:27.873335|1|0|0|0|4d6306d6-ad8f-11f1-86d2-ee8448c149f7|node_1|4d632df3-ad8f-11f1-86d2-ee8448c149f7|1|APPROVE|i3ev-opinion-o4|v1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment2":"同意","level":"A"}|APPROVED|||||||{"opinionForm":{"formId":"i3ev-opinion-o4","version":"v1","fields":[{"key":"comment2","label":"审批说明","type":"TEXT","required":true,"maxLength":200},{"key":"level","label":"等级","type":"RADIO","options":["A","B"],"required":true},{"key":"note","label":"备注","type":"NOTE"}]},"opinionFormId":"i3ev-opinion-o4","opinionFormVersion":"v1"}
+2098249159362060289|2026-09-11 11:15:57.833966|1|2026-09-11 11:15:57.833972|1|0|0|0|17bc48e6-ad8f-11f1-86d2-ee8448c149f7|node_1|17bc7003-ad8f-11f1-86d2-ee8448c149f7|1|APPROVE|i3ev-opinion-o4|v1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment2":"同意","level":"A"}|APPROVED|||||||{"opinionForm":{"formId":"i3ev-opinion-o4","version":"v1","fields":[{"key":"comment2","label":"审批说明","type":"TEXT","required":true,"maxLength":200},{"key":"level","label":"等级","type":"RADIO","options":["A","B"],"required":true},{"key":"note","label":"备注","type":"NOTE"}]},"opinionFormId":"i3ev-opinion-o4","opinionFormVersion":"v1"}
+2098248961554489345|2026-09-11 11:15:10.673868|1|2026-09-11 11:15:10.673879|1|0|0|0|fe20595a-ad8e-11f1-8442-ee8448c149f7|node_1|fe208077-ad8e-11f1-8442-ee8448c149f7|1|APPROVE|i3ev-opinion-b|v1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment2":"同意，按 A 级办理","level":"A"}|APPROVED|||||||{"opinionForm":{"formId":"i3ev-opinion-b","version":"v1","fields":[{"key":"comment2","label":"审批说明","type":"TEXT","required":true,"maxLength":200},{"key":"level","label":"等级","type":"RADIO","options":["A","B"],"required":true},{"key":"note","label":"备注","type":"NOTE"}]},"opinionFormId":"i3ev-opinion-b","opinionFormVersion":"v1"}
+2098248772676591618|2026-09-11 11:14:25.642033|1|2026-09-11 11:14:25.642038|1|0|0|0|e35537af-ad8e-11f1-8442-ee8448c149f7|node_1|e355acec-ad8e-11f1-8442-ee8448c149f7|1|APPROVE|i3ev-opinion-b|v1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment2":"同意，按 A 级办理","level":"A"}|APPROVED|||||||{"opinionForm":{"formId":"i3ev-opinion-b","version":"v1","fields":[{"key":"comment2","label":"审批说明","type":"TEXT","required":true,"maxLength":200},{"key":"level","label":"等级","type":"RADIO","options":["A","B"],"required":true},{"key":"note","label":"备注","type":"NOTE"}]},"opinionFormId":"i3ev-opinion-b","opinionFormVersion":"v1"}
+2098248605655212034|2026-09-11 11:13:45.819763|1|2026-09-11 11:13:45.81977|1|0|0|0|cbb083a6-ad8e-11f1-86d2-ee8448c149f7|node_1|cbb0d1d3-ad8e-11f1-86d2-ee8448c149f7|1|APPROVE|i3ev-opinion-b|v1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment2":"同意，按 A 级办理","level":"A"}|APPROVED|||||||{"opinionForm":{"formId":"i3ev-opinion-b","version":"v1","fields":[{"key":"comment2","label":"审批说明","type":"TEXT","required":true,"maxLength":200},{"key":"level","label":"等级","type":"RADIO","options":["A","B"],"required":true},{"key":"note","label":"备注","type":"NOTE"}]},"opinionFormId":"i3ev-opinion-b","opinionFormVersion":"v1"}
+2098247172314632193|2026-09-11 11:08:04.085113|1|2026-09-11 11:08:04.085117|1|0|0|0|d3de9653-ad8d-11f1-aa84-ee8448c149f7|node_1|d3e3ed90-ad8d-11f1-aa84-ee8448c149f7|1|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment":""}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098245410019086338|2026-09-11 11:01:03.921703|1|2026-09-11 11:01:03.921709|1|0|0|0|e2a9ee91-ad8c-11f1-b1d9-ee8448c149f7|node_1|e2b0573e-ad8c-11f1-b1d9-ee8448c149f7|1|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment":""}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098243647350370306|2026-09-11 10:54:03.668174|1|2026-09-11 10:54:03.668188|1|0|0|0|e21285f0-ad8b-11f1-86d2-ee8448c149f7|node_1|e212fb2d-ad8b-11f1-86d2-ee8448c149f7|1|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment":""}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098243244722352129|2026-09-11 10:52:27.673529|2001|2026-09-11 10:52:27.673533|2001|0|0|0|d113eff2-ad8b-11f1-b5da-ee8448c149f7|node_1|d117727d-ad8b-11f1-b5da-ee8448c149f7|2001|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment":"modes"}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098243239970205698|2026-09-11 10:52:26.540536|1|2026-09-11 10:52:26.540542|1|0|0|0|d113eff2-ad8b-11f1-b5da-ee8448c149f7|node_1|d1152888-ad8b-11f1-b5da-ee8448c149f7|1|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment":"modes"}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098243216687624194|2026-09-11 10:52:20.990309|1|2026-09-11 10:52:20.990314|1|0|0|0|cdbc876b-ad8b-11f1-b5da-ee8448c149f7|node_1|cdbcd5a1-ad8b-11f1-b5da-ee8448c149f7|1|REJECT|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment":"modes"}|REJECTED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098243197389631489|2026-09-11 10:52:16.388981|2001|2026-09-11 10:52:16.388985|2001|0|0|0|caffff53-ad8b-11f1-b5da-ee8448c149f7|node_1|cb00c2be-ad8b-11f1-b5da-ee8448c149f7|2001|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment":"modes"}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098243174111244290|2026-09-11 10:52:10.839306|1|2026-09-11 10:52:10.83931|1|0|0|0|c7ab07cb-ad8b-11f1-b5da-ee8448c149f7|node_1|c7ab7d11-ad8b-11f1-b5da-ee8448c149f7|1|REJECT|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment":"modes"}|REJECTED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098243174039941121|2026-09-11 10:52:10.822157|1|2026-09-11 10:52:10.822182|1|0|0|0|c7ab07cb-ad8b-11f1-b5da-ee8448c149f7|INSTANCE|ACTION#c7ab07cb-ad8b-11f1-b5da-ee8448c149f7|0|DISAPPROVE|||||CONSENSUS_SETTLED||||||{"reason":"ANY:rejected=1","nodeKey":"node_1"}|
+2098243155517894657|2026-09-11 10:52:06.406852|2001|2026-09-11 10:52:06.406856|2001|0|0|0|c545a0e2-ad8b-11f1-86d2-ee8448c149f7|node_1|c547c3dd-ad8b-11f1-86d2-ee8448c149f7|2001|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment":"modes"}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098243135775305730|2026-09-11 10:52:01.698366|1|2026-09-11 10:52:01.69837|1|0|0|0|c2299349-ad8b-11f1-b5da-ee8448c149f7|node_1|c22aa4cf-ad8b-11f1-b5da-ee8448c149f7|1|REJECT|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment":"modes"}|REJECTED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098243135704002562|2026-09-11 10:52:01.681194|1|2026-09-11 10:52:01.681198|1|0|0|0|c2299349-ad8b-11f1-b5da-ee8448c149f7|INSTANCE|ACTION#c2299349-ad8b-11f1-b5da-ee8448c149f7|0|DISAPPROVE|||||CONSENSUS_SETTLED||||||{"reason":"ALL:rejected=1","nodeKey":"node_1"}|
+2098242896733532161|2026-09-11 10:51:04.708907|1|2026-09-11 10:51:04.708969|1|0|0|0|9f8f16ad-ad8b-11f1-b5da-ee8448c149f7|node_1|9f8f64e3-ad8b-11f1-b5da-ee8448c149f7|1|REJECT|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment":"A-veto"}|REJECTED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098242895290568705|2026-09-11 10:51:04.363028|2001|2026-09-11 10:51:04.363037|2001|0|0|0|9f8f16ad-ad8b-11f1-b5da-ee8448c149f7|node_1|9f8fda18-ad8b-11f1-b5da-ee8448c149f7|2001|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment":"B-ok"}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098242895252942850|2026-09-11 10:51:04.355541|1|2026-09-11 10:51:04.355563|1|0|0|0|9f8f16ad-ad8b-11f1-b5da-ee8448c149f7|INSTANCE|ACTION#9f8f16ad-ad8b-11f1-b5da-ee8448c149f7|0|DISAPPROVE|||||CONSENSUS_SETTLED||||||{"reason":"VETO:rejected=1","nodeKey":"node_1"}|
+2098242873861992450|2026-09-11 10:50:59.254305|1|2026-09-11 10:50:59.254311|1|0|0|0|9c7ef00a-ad8b-11f1-86d2-ee8448c149f7|node_1|9c7fb370-ad8b-11f1-86d2-ee8448c149f7|1|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount","reason"]}|{"comment":"procA"}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098242851443437570|2026-09-11 10:50:53.90944|1|2026-09-11 10:50:53.909444|1|0|0|0|99bee584-ad8b-11f1-86d2-ee8448c149f7|node_1|99bf33ba-ad8b-11f1-86d2-ee8448c149f7|1|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount","reason"]}|{"comment":"A-admin"}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098242851158102017|2026-09-11 10:50:53.840654|2001|2026-09-11 10:50:53.840658|2001|0|0|0|99bee584-ad8b-11f1-86d2-ee8448c149f7|node_1|99bfcfff-ad8b-11f1-86d2-ee8448c149f7|2001|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount","reason"]}|{"comment":"B-user2"}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098242731486220290|2026-09-11 10:50:25.309136|2001|2026-09-11 10:50:25.30914|2001|0|0|0|49ee287d-ad8b-11f1-b5da-ee8448c149f7|node_1|49f02468-ad8b-11f1-b5da-ee8448c149f7|2001|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount","reason"]}|{"comment":"manual-completion-test"}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098242309354811393|2026-09-11 10:48:44.665245|1|2026-09-11 10:48:44.665256|1|0|0|0|4cad2194-ad8b-11f1-b5da-ee8448c149f7|node_1|4cad48ba-ad8b-11f1-b5da-ee8448c149f7|1|REJECT|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment":"A-veto"}|REJECTED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098242309082181633|2026-09-11 10:48:44.600265|1|2026-09-11 10:48:44.600291|1|0|0|0|4cad2194-ad8b-11f1-b5da-ee8448c149f7|INSTANCE|ACTION#4cad2194-ad8b-11f1-b5da-ee8448c149f7|0|DISAPPROVE|||||CONSENSUS_SETTLED||||||{"reason":"VETO:rejected=1","nodeKey":"node_1"}|
+2098242309040115714|2026-09-11 10:48:44.58978|2001|2026-09-11 10:48:44.590139|2001|0|0|0|4cad2194-ad8b-11f1-b5da-ee8448c149f7|node_1|4cadbdef-ad8b-11f1-b5da-ee8448c149f7|2001|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment":"B-ok"}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098242292476932098|2026-09-11 10:48:40.640905|1|2026-09-11 10:48:40.640926|1|0|0|0|49ee287d-ad8b-11f1-b5da-ee8448c149f7|node_1|49ef3a03-ad8b-11f1-b5da-ee8448c149f7|1|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount","reason"]}|{"comment":"procA"}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098242269315985409|2026-09-11 10:48:35.11898|1|2026-09-11 10:48:35.118984|1|0|0|0|47360cf0-ad8b-11f1-86d2-ee8448c149f7|node_1|4736f766-ad8b-11f1-86d2-ee8448c149f7|1|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount","reason"]}|{"comment":"A-admin"}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098241719451119618|2026-09-11 10:46:24.020585|1|2026-09-11 10:46:24.020591|1|0|0|0|f8df45c0-ad8a-11f1-b5da-ee8448c149f7|node_1|f8df93f6-ad8a-11f1-b5da-ee8448c149f7|1|REJECT|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment":"A-veto"}|REJECTED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098241719191072770|2026-09-11 10:46:23.959229|1|2026-09-11 10:46:23.959236|1|0|0|0|f8df45c0-ad8a-11f1-b5da-ee8448c149f7|INSTANCE|ACTION#f8df45c0-ad8a-11f1-b5da-ee8448c149f7|0|DISAPPROVE|||||CONSENSUS_SETTLED||||||{"reason":"VETO:rejected=1","nodeKey":"node_1"}|
+2098241719107063810|2026-09-11 10:46:23.938854|2001|2026-09-11 10:46:23.938861|2001|0|0|0|f8df45c0-ad8a-11f1-b5da-ee8448c149f7|node_1|f8e0092b-ad8a-11f1-b5da-ee8448c149f7|2001|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment":"B-ok"}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098241703495987202|2026-09-11 10:46:20.217359|1|2026-09-11 10:46:20.217366|1|0|0|0|f61947c9-ad8a-11f1-b5da-ee8448c149f7|node_1|f61af58f-ad8a-11f1-b5da-ee8448c149f7|1|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount","reason"]}|{"comment":"procA"}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098241680238448642|2026-09-11 10:46:14.672875|2001|2026-09-11 10:46:14.672884|2001|0|0|0|f3100023-ad8a-11f1-86d2-ee8448c149f7|node_1|f3199d2e-ad8a-11f1-86d2-ee8448c149f7|2001|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount","reason"]}|{"comment":"B-user2"}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098240883740205057|2026-09-11 10:43:04.772821|1|2026-09-11 10:43:04.772829|1|0|0|0|81ac9863-ad8a-11f1-834d-ee8448c149f7|node_1|81afccc9-ad8a-11f1-834d-ee8448c149f7|1|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount","reason"]}|{"comment":"procA"}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098240860872867841|2026-09-11 10:42:59.319798|2001|2026-09-11 10:42:59.319811|2001|0|0|0|7e8b0cc8-ad8a-11f1-9be6-ee8448c149f7|node_1|7e9768f3-ad8a-11f1-9be6-ee8448c149f7|2001|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount","reason"]}|{"comment":"B-user2"}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098240859924946945|2026-09-11 10:42:59.093772|1|2026-09-11 10:42:59.093782|1|0|0|0|7e8b0cc8-ad8a-11f1-9be6-ee8448c149f7|node_1|7e934a3e-ad8a-11f1-9be6-ee8448c149f7|1|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount","reason"]}|{"comment":"A-admin"}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098221551068930050|2026-09-11 09:26:15.504285|1|2026-09-11 09:26:15.504289|1|0|0|0|c6f9fe3f-ad7f-11f1-8edd-ee8448c149f7|node_1|c6fa9a95-ad7f-11f1-8edd-ee8448c149f7|1|REJECT|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount"]}|{"comment":"A-veto"}|REJECTED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098221551001821186|2026-09-11 09:26:15.488328|1|2026-09-11 09:26:15.488332|1|0|0|0|c6f9fe3f-ad7f-11f1-8edd-ee8448c149f7|INSTANCE|ACTION#c6f9fe3f-ad7f-11f1-8edd-ee8448c149f7|0|DISAPPROVE|||||CONSENSUS_SETTLED||||||{"reason":"VETO:rejected=1","nodeKey":"node_1"}|
+2098221532186173442|2026-09-11 09:26:11.001938|1|2026-09-11 09:26:11.001942|1|0|0|0|c3a0c0e3-ad7f-11f1-8e9c-ee8448c149f7|node_1|c3a18449-ad7f-11f1-8e9c-ee8448c149f7|1|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount","reason"]}|{"comment":"procA"}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098221509910224897|2026-09-11 09:26:05.69185|1|2026-09-11 09:26:05.691855|1|0|0|0|c13677b5-ad7f-11f1-8edd-ee8448c149f7|node_1|c136c5eb-ad7f-11f1-8edd-ee8448c149f7|1|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount","reason"]}|{"comment":"A-admin"}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098221497037905922|2026-09-11 09:26:02.621611|1|2026-09-11 09:26:02.621617|1|0|0|0|bf60cd45-ad7f-11f1-8edd-ee8448c149f7|INSTANCE|ACTION#bf60cd45-ad7f-11f1-8edd-ee8448c149f7|1|DISCARD|||||DISCARDED||||||{"reason":"invalid","beforeStatus":"RUNNING"}|
+2098221487328092161|2026-09-11 09:26:00.30712|1|2026-09-11 09:26:00.307122|1|0|0|0|bddcec4e-ad7f-11f1-8e9c-ee8448c149f7|node_1|bddd136b-ad7f-11f1-8e9c-ee8448c149f7|1|COMMUNICATE||||{}|COMMUNICATED||||||{"receivers":["2003"]}|
+2098221478067068930|2026-09-11 09:25:58.099083|1|2026-09-11 09:25:58.099088|1|0|0|0|bca4452e-ad7f-11f1-8e9c-ee8448c149f7|INSTANCE|ACTION#bca4452e-ad7f-11f1-8e9c-ee8448c149f7|1|WITHDRAW|||||WITHDRAWN||||||{"reason":"g11"}|
+2098221467883298818|2026-09-11 09:25:55.671292|1|2026-09-11 09:25:55.671296|1|0|0|0|bb1d2feb-ad7f-11f1-8e9c-ee8448c149f7|node_1|bb1d5708-ad7f-11f1-8e9c-ee8448c149f7|1|REJECT|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount","reason"]}|{"comment":""}|REJECTED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098221454490886145|2026-09-11 09:25:52.478726|2001|2026-09-11 09:25:52.478733|2001|0|0|0|b90154f5-ad7f-11f1-8edd-ee8448c149f7|node_1|b901a322-ad7f-11f1-8edd-ee8448c149f7|2001|ADD_SIGN||||{}|SIGN_APPROVE||||||{"recordId":"2098221453454893057"}|
+2098221453459087361|2026-09-11 09:25:52.23199|1|2026-09-11 09:25:52.231993|1|0|0|0|b90154f5-ad7f-11f1-8edd-ee8448c149f7|node_1|b901a322-ad7f-11f1-8edd-ee8448c149f7|1|ADD_SIGN||||{}|SIGN_REQUESTED||||||{"participants":["2001"],"mode":"PARALLEL"}|
+2098221430277169154|2026-09-11 09:25:46.705211|1|2026-09-11 09:25:46.705216|1|0|0|0|b5ebfe55-ad7f-11f1-8e9c-ee8448c149f7|node_1|b5ec2572-ad7f-11f1-8e9c-ee8448c149f7|1|DELEGATE||||{}|DELEGATED||2001||||{"targetUserId":"2001"}|
+2098221420970008578|2026-09-11 09:25:44.486012|1|2026-09-11 09:25:44.486018|1|0|0|0|b464e912-ad7f-11f1-8e9c-ee8448c149f7|node_1|b464e91f-ad7f-11f1-8e9c-ee8448c149f7|1|TRANSFER||||{}|TRANSFERRED||2001||||{"targetUserId":"2001","reason":"g10","originalAssignee":"1"}|
+2098221403236491265|2026-09-11 09:25:40.257286|2001|2026-09-11 09:25:40.25729|2001|0|0|0|b10e6bf8-ad7f-11f1-8e9c-ee8448c149f7|node_2|b23fbf1b-ad7f-11f1-8e9c-ee8448c149f7|2001|RETURN|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount","reason"]}|{"comment":"g7 return to A"}|RETURNED||||1|||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098221397267996674|2026-09-11 09:25:38.835239|1|2026-09-11 09:25:38.835242|1|0|0|0|b10e6bf8-ad7f-11f1-8e9c-ee8448c149f7|node_1|b10e9215-ad7f-11f1-8e9c-ee8448c149f7|1|APPROVE|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount","reason"]}|{"comment":"A pass"}|APPROVED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098221387872755714|2026-09-11 09:25:36.594376|1|2026-09-11 09:25:36.59438|1|0|0|0|afd48c55-ad7f-11f1-8e9c-ee8448c149f7|node_1|afd4b372-ad7f-11f1-8e9c-ee8448c149f7|1|REJECT|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount","reason"]}|{"comment":"g6 reject terminal"}|REJECTED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+2098221378427183106|2026-09-11 09:25:34.342809|1|2026-09-11 09:25:34.342813|1|0|0|0|ae6607b5-ad7f-11f1-8edd-ee8448c149f7|node_1|ae6655e2-ad7f-11f1-8edd-ee8448c149f7|1|REJECT|DEFAULT_REMARK|1|{"source":"processVariables.formData","sourceFields":["amount","reason"]}|{"comment":"g6 disapprove"}|REJECTED|||||||{"opinionForm":{},"opinionFormId":"DEFAULT_REMARK","opinionFormVersion":"1"}
+
+===== PSQL 2026-09-11T11:26:24 =====
+select * from sw_bpm_participant_snapshot order by create_time desc limit 80
+----- RESULT (exit=0) -----
+2098251604712611841|2026-09-11 11:25:40.85054|1|2026-09-11 11:25:40.850546|1|0|0|0|76fd183f-ad90-11f1-ac37-ee8448c149f7|node_1|76fd3f5c-ad90-11f1-ac37-ee8448c149f7|1|PENDING||系统管理员
+2098251572441636865|2026-09-11 11:25:33.157203|1|2026-09-11 11:25:33.157208|1|0|0|0|7267ff8c-ad90-11f1-ac37-ee8448c149f7|node_1|726826a9-ad90-11f1-ac37-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098251544801050625|2026-09-11 11:25:26.56696|1|2026-09-11 11:25:26.566966|1|0|0|0|6e7a7119-ad90-11f1-b1f2-ee8448c149f7|node_1|6e7a9836-ad90-11f1-b1f2-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098251518821654529|2026-09-11 11:25:20.372994|1|2026-09-11 11:25:20.373002|1|0|0|0|6ac90255-ad90-11f1-ac37-ee8448c149f7|node_1|6ac92972-ad90-11f1-ac37-ee8448c149f7|1|PENDING||系统管理员
+2098251492993130498|2026-09-11 11:25:14.215044|1|2026-09-11 11:25:14.215052|1|0|0|0|671d3855-ad90-11f1-ac37-ee8448c149f7|node_1|671d5f72-ad90-11f1-ac37-ee8448c149f7|1|PENDING||系统管理员
+2098251461145657346|2026-09-11 11:25:06.621484|1|2026-09-11 11:25:06.621489|1|0|0|0|62971479-ad90-11f1-b1f2-ee8448c149f7|node_1|62973a96-ad90-11f1-b1f2-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098251435254218753|2026-09-11 11:25:00.448963|1|2026-09-11 11:25:00.448971|1|0|0|0|5ee6b699-ad90-11f1-b1f2-ee8448c149f7|node_1|5ee72bd6-ad90-11f1-b1f2-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098251409346125825|2026-09-11 11:24:54.271992|1|2026-09-11 11:24:54.272|1|0|0|0|5b393e67-ad90-11f1-ac37-ee8448c149f7|node_1|5b398c94-ad90-11f1-ac37-ee8448c149f7|1|PENDING||系统管理员
+2098251383412621314|2026-09-11 11:24:48.08938|1|2026-09-11 11:24:48.089389|1|0|0|0|5788ba09-ad90-11f1-b1f2-ee8448c149f7|node_1|57895656-ad90-11f1-b1f2-ee8448c149f7|1|PENDING||系统管理员
+2098251203422576642|2026-09-11 11:24:05.175875|1|2026-09-11 11:24:05.17588|1|0|0|0|3df72963-ad90-11f1-ac37-ee8448c149f7|node_1|3df75080-ad90-11f1-ac37-ee8448c149f7|1|PENDING||系统管理员
+2098251175651966977|2026-09-11 11:23:58.555861|1|2026-09-11 11:23:58.555868|1|0|0|0|3a035a79-ad90-11f1-b1f2-ee8448c149f7|node_1|3a03a8a6-ad90-11f1-b1f2-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098251149848608770|2026-09-11 11:23:52.403147|1|2026-09-11 11:23:52.403153|1|0|0|0|3657de99-ad90-11f1-b1f2-ee8448c149f7|node_1|36593e36-ad90-11f1-b1f2-ee8448c149f7|1|PENDING||系统管理员
+2098251122430566402|2026-09-11 11:23:45.866641|1|2026-09-11 11:23:45.866646|1|0|0|0|32743b3c-ad90-11f1-ac37-ee8448c149f7|node_1|32746259-ad90-11f1-ac37-ee8448c149f7|1|PENDING||系统管理员
+2098251039278489602|2026-09-11 11:23:26.041267|1|2026-09-11 11:23:26.041272|1|0|0|0|26a2def5-ad90-11f1-ac37-ee8448c149f7|node_1|26a30612-ad90-11f1-ac37-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098251013017829377|2026-09-11 11:23:19.780418|1|2026-09-11 11:23:19.780444|1|0|0|0|22e6e8f9-ad90-11f1-b1f2-ee8448c149f7|node_1|22e73726-ad90-11f1-b1f2-ee8448c149f7|1|PENDING||系统管理员
+2098250987185111042|2026-09-11 11:23:13.620855|1|2026-09-11 11:23:13.620861|1|0|0|0|1f3b4609-ad90-11f1-b1f2-ee8448c149f7|node_1|1f3b6d26-ad90-11f1-b1f2-ee8448c149f7|1|PENDING||系统管理员
+2098250714240778241|2026-09-11 11:22:08.545456|1|2026-09-11 11:22:08.54546|1|0|0|0|f8710189-ad8f-11f1-b1f2-ee8448c149f7|node_1|f87176c6-ad8f-11f1-b1f2-ee8448c149f7|1|PENDING||系统管理员
+2098250679725850626|2026-09-11 11:22:00.316803|1|2026-09-11 11:22:00.316808|1|0|0|0|f37b7979-ad8f-11f1-b1f2-ee8448c149f7|node_1|f386c426-ad8f-11f1-b1f2-ee8448c149f7|1|PENDING||系统管理员
+2098250650974019585|2026-09-11 11:21:53.461975|1|2026-09-11 11:21:53.461991|1|0|0|0|ef73380a-ad8f-11f1-ac37-ee8448c149f7|node_1|ef73d457-ad8f-11f1-ac37-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098250624944168962|2026-09-11 11:21:47.256609|1|2026-09-11 11:21:47.256615|1|0|0|0|ebc17a9a-ad8f-11f1-ac37-ee8448c149f7|node_1|ebc1efd7-ad8f-11f1-ac37-ee8448c149f7|1|PENDING||系统管理员
+2098250596775223298|2026-09-11 11:21:40.539955|1|2026-09-11 11:21:40.539965|1|0|0|0|e7bc941a-ad8f-11f1-ac37-ee8448c149f7|node_1|e7be68e7-ad8f-11f1-ac37-ee8448c149f7|1|PENDING||系统管理员
+2098249570340835329|2026-09-11 11:17:35.818912|1|2026-09-11 11:17:35.818917|1|0|0|0|55e31546-ad8f-11f1-86d2-ee8448c149f7|node_1|55e38a83-ad8f-11f1-86d2-ee8448c149f7|1|PENDING||系统管理员
+2098249538342490113|2026-09-11 11:17:28.190284|1|2026-09-11 11:17:28.190289|1|0|0|0|515799a6-ad8f-11f1-86d2-ee8448c149f7|node_1|5157e7d3-ad8f-11f1-86d2-ee8448c149f7|1|PENDING||系统管理员
+2098249510521671682|2026-09-11 11:17:21.556916|1|2026-09-11 11:17:21.556921|1|0|0|0|4d6306d6-ad8f-11f1-86d2-ee8448c149f7|node_1|4d632df3-ad8f-11f1-86d2-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098249484777033729|2026-09-11 11:17:15.419031|1|2026-09-11 11:17:15.419037|1|0|0|0|49bae656-ad8f-11f1-86d2-ee8448c149f7|node_1|49bb0d73-ad8f-11f1-86d2-ee8448c149f7|1|PENDING||系统管理员
+2098249457795178497|2026-09-11 11:17:08.986158|1|2026-09-11 11:17:08.986162|1|0|0|0|45e54d54-ad8f-11f1-8442-ee8448c149f7|node_1|45e57471-ad8f-11f1-8442-ee8448c149f7|1|PENDING||系统管理员
+2098249189481357314|2026-09-11 11:16:05.014961|1|2026-09-11 11:16:05.014967|1|0|0|0|1fc44120-ad8f-11f1-8442-ee8448c149f7|node_1|1fc4683d-ad8f-11f1-8442-ee8448c149f7|1|PENDING||系统管理员
+2098249160825769985|2026-09-11 11:15:58.183365|1|2026-09-11 11:15:58.183379|1|0|0|0|1bb1c616-ad8f-11f1-86d2-ee8448c149f7|node_1|1bb1ed33-ad8f-11f1-86d2-ee8448c149f7|1|PENDING||系统管理员
+2098249132979785729|2026-09-11 11:15:51.543936|1|2026-09-11 11:15:51.543941|1|0|0|0|17bc48e6-ad8f-11f1-86d2-ee8448c149f7|node_1|17bc7003-ad8f-11f1-86d2-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098249106157314050|2026-09-11 11:15:45.148664|1|2026-09-11 11:15:45.14867|1|0|0|0|13ec7c39-ad8f-11f1-8442-ee8448c149f7|node_1|13ecca66-ad8f-11f1-8442-ee8448c149f7|1|PENDING||系统管理员
+2098249079653404673|2026-09-11 11:15:38.83021|1|2026-09-11 11:15:38.830215|1|0|0|0|10289756-ad8f-11f1-86d2-ee8448c149f7|node_1|1028bd73-ad8f-11f1-86d2-ee8448c149f7|1|PENDING||系统管理员
+2098248968806338562|2026-09-11 11:15:12.402134|1|2026-09-11 11:15:12.402144|1|0|0|0|00662ac6-ad8f-11f1-86d2-ee8448c149f7|node_1|00678a63-ad8f-11f1-86d2-ee8448c149f7|1|PENDING||系统管理员
+2098248952784199682|2026-09-11 11:15:08.582391|1|2026-09-11 11:15:08.582398|1|0|0|0|fe20595a-ad8e-11f1-8442-ee8448c149f7|node_1|fe208077-ad8e-11f1-8442-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098248933406515202|2026-09-11 11:15:03.961746|1|2026-09-11 11:15:03.961751|1|0|0|0|fb6000c6-ad8e-11f1-8442-ee8448c149f7|node_1|fb604ef3-ad8e-11f1-8442-ee8448c149f7|1|PENDING||系统管理员
+2098248764304760834|2026-09-11 11:14:23.644907|1|2026-09-11 11:14:23.644922|1|0|0|0|e35537af-ad8e-11f1-8442-ee8448c149f7|node_1|e355acec-ad8e-11f1-8442-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098248745098940417|2026-09-11 11:14:19.066592|1|2026-09-11 11:14:19.066606|1|0|0|0|e09bbd36-ad8e-11f1-86d2-ee8448c149f7|node_1|e09cceb3-ad8e-11f1-86d2-ee8448c149f7|1|PENDING||系统管理员
+2098248597958561793|2026-09-11 11:13:43.985779|1|2026-09-11 11:13:43.985796|1|0|0|0|cbb083a6-ad8e-11f1-86d2-ee8448c149f7|node_1|cbb0d1d3-ad8e-11f1-86d2-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098248576056008705|2026-09-11 11:13:38.762365|1|2026-09-11 11:13:38.762374|1|0|0|0|c88fbb60-ad8e-11f1-8442-ee8448c149f7|node_1|c895129d-ad8e-11f1-8442-ee8448c149f7|1|PENDING||系统管理员
+2098246854218620929|2026-09-11 11:06:48.24537|1|2026-09-11 11:06:48.245379|1|0|0|0|d3de9653-ad8d-11f1-aa84-ee8448c149f7|node_1|d3e3ed90-ad8d-11f1-aa84-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098245156918009858|2026-09-11 11:00:03.577531|1|2026-09-11 11:00:03.577538|1|0|0|0|e2a9ee91-ad8c-11f1-b1d9-ee8448c149f7|node_1|e2b0573e-ad8c-11f1-b1d9-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098243351370797058|2026-09-11 10:52:53.101037|1|2026-09-11 10:52:53.101042|1|0|0|0|e21285f0-ad8b-11f1-86d2-ee8448c149f7|node_1|e212fb2d-ad8b-11f1-86d2-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098243231527071745|2026-09-11 10:52:24.527947|1|2026-09-11 10:52:24.527953|1|0|0|0|d113eff2-ad8b-11f1-b5da-ee8448c149f7|node_1|d117727d-ad8b-11f1-b5da-ee8448c149f7|2001|INVALIDATED|节点已由 1 以 APPROVE 处理|审批人二号
+2098243231472545793|2026-09-11 10:52:24.515391|1|2026-09-11 10:52:24.515397|1|0|0|0|d113eff2-ad8b-11f1-b5da-ee8448c149f7|node_1|d1152888-ad8b-11f1-b5da-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098243207929917442|2026-09-11 10:52:18.902356|1|2026-09-11 10:52:18.902361|1|0|0|0|cdbc876b-ad8b-11f1-b5da-ee8448c149f7|node_1|cdbd71e6-ad8b-11f1-b5da-ee8448c149f7|2001|INVALIDATED|节点已由 1 以 REJECT 处理|审批人二号
+2098243207917334530|2026-09-11 10:52:18.899346|1|2026-09-11 10:52:18.899352|1|0|0|0|cdbc876b-ad8b-11f1-b5da-ee8448c149f7|node_1|cdbcd5a1-ad8b-11f1-b5da-ee8448c149f7|1|HANDLED|REJECT|系统管理员
+2098243188665479170|2026-09-11 10:52:14.309608|1|2026-09-11 10:52:14.309612|1|0|0|0|caffff53-ad8b-11f1-b5da-ee8448c149f7|node_1|cb00c2be-ad8b-11f1-b5da-ee8448c149f7|2001|HANDLED|APPROVE|审批人二号
+2098243188657090561|2026-09-11 10:52:14.307133|1|2026-09-11 10:52:14.307139|1|0|0|0|caffff53-ad8b-11f1-b5da-ee8448c149f7|node_1|cb004d89-ad8b-11f1-b5da-ee8448c149f7|1|INVALIDATED|节点已由 2001 以 APPROVE 处理|系统管理员
+2098243165231902721|2026-09-11 10:52:08.722489|1|2026-09-11 10:52:08.722497|1|0|0|0|c7ab07cb-ad8b-11f1-b5da-ee8448c149f7|node_1|c7ac1956-ad8b-11f1-b5da-ee8448c149f7|2001|INVALIDATED|节点已由 1 以 REJECT 处理|审批人二号
+2098243165223514113|2026-09-11 10:52:08.719949|1|2026-09-11 10:52:08.719957|1|0|0|0|c7ab07cb-ad8b-11f1-b5da-ee8448c149f7|node_1|c7ab7d11-ad8b-11f1-b5da-ee8448c149f7|1|HANDLED|REJECT|系统管理员
+2098243148400037889|2026-09-11 10:52:04.709444|1|2026-09-11 10:52:04.709449|1|0|0|0|c545a0e2-ad8b-11f1-86d2-ee8448c149f7|node_1|c547c3dd-ad8b-11f1-86d2-ee8448c149f7|2001|HANDLED|APPROVE|审批人二号
+2098243148387454977|2026-09-11 10:52:04.70628|1|2026-09-11 10:52:04.706291|1|0|0|0|c545a0e2-ad8b-11f1-86d2-ee8448c149f7|node_1|c546b268-ad8b-11f1-86d2-ee8448c149f7|1|INVALIDATED|节点已由 2001 以 APPROVE 处理|系统管理员
+2098243126510088193|2026-09-11 10:51:59.48976|1|2026-09-11 10:51:59.489764|1|0|0|0|c2299349-ad8b-11f1-b5da-ee8448c149f7|node_1|c22b6824-ad8b-11f1-b5da-ee8448c149f7|2001|INVALIDATED|节点已由 1 以 REJECT 处理|审批人二号
+2098243126501699586|2026-09-11 10:51:59.487482|1|2026-09-11 10:51:59.48749|1|0|0|0|c2299349-ad8b-11f1-b5da-ee8448c149f7|node_1|c22aa4cf-ad8b-11f1-b5da-ee8448c149f7|1|HANDLED|REJECT|系统管理员
+2098242882980409345|2026-09-11 10:51:01.428342|1|2026-09-11 10:51:01.428346|1|0|0|0|9f8f16ad-ad8b-11f1-b5da-ee8448c149f7|node_1|9f8fda18-ad8b-11f1-b5da-ee8448c149f7|2001|HANDLED|APPROVE|审批人二号
+2098242882972020738|2026-09-11 10:51:01.425876|1|2026-09-11 10:51:01.425881|1|0|0|0|9f8f16ad-ad8b-11f1-b5da-ee8448c149f7|node_1|9f8f64e3-ad8b-11f1-b5da-ee8448c149f7|1|INVALIDATED|节点已由 2001 以 APPROVE 处理|系统管理员
+2098242861442535426|2026-09-11 10:50:56.292787|1|2026-09-11 10:50:56.292791|1|0|0|0|9c7ef00a-ad8b-11f1-86d2-ee8448c149f7|node_1|9c804fb5-ad8b-11f1-86d2-ee8448c149f7|2001|INVALIDATED|节点已由 1 以 APPROVE 处理|审批人二号
+2098242861429952513|2026-09-11 10:50:56.290097|1|2026-09-11 10:50:56.290107|1|0|0|0|9c7ef00a-ad8b-11f1-86d2-ee8448c149f7|node_1|9c7fb370-ad8b-11f1-86d2-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098242842077433857|2026-09-11 10:50:51.675847|1|2026-09-11 10:50:51.67585|1|0|0|0|99bee584-ad8b-11f1-86d2-ee8448c149f7|node_1|99bfcfff-ad8b-11f1-86d2-ee8448c149f7|2001|HANDLED|APPROVE|审批人二号
+2098242842069045249|2026-09-11 10:50:51.673988|1|2026-09-11 10:50:51.673992|1|0|0|0|99bee584-ad8b-11f1-86d2-ee8448c149f7|node_1|99bf33ba-ad8b-11f1-86d2-ee8448c149f7|1|INVALIDATED|节点已由 2001 以 APPROVE 处理|系统管理员
+2098242299745660929|2026-09-11 10:48:42.373953|1|2026-09-11 10:48:42.373958|1|0|0|0|4cad2194-ad8b-11f1-b5da-ee8448c149f7|node_1|4cadbdef-ad8b-11f1-b5da-ee8448c149f7|2001|HANDLED|APPROVE|审批人二号
+2098242299728883713|2026-09-11 10:48:42.370443|1|2026-09-11 10:48:42.370448|1|0|0|0|4cad2194-ad8b-11f1-b5da-ee8448c149f7|node_1|4cad48ba-ad8b-11f1-b5da-ee8448c149f7|1|INVALIDATED|节点已由 2001 以 APPROVE 处理|系统管理员
+2098242280456056833|2026-09-11 10:48:37.775465|1|2026-09-11 10:48:37.77547|1|0|0|0|49ee287d-ad8b-11f1-b5da-ee8448c149f7|node_1|49f02468-ad8b-11f1-b5da-ee8448c149f7|2001|INVALIDATED|节点已由 1 以 APPROVE 处理|审批人二号
+2098242280447668225|2026-09-11 10:48:37.77248|1|2026-09-11 10:48:37.772486|1|0|0|0|49ee287d-ad8b-11f1-b5da-ee8448c149f7|node_1|49ef3a03-ad8b-11f1-b5da-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098242261321519106|2026-09-11 10:48:33.212885|1|2026-09-11 10:48:33.21289|1|0|0|0|47360cf0-ad8b-11f1-86d2-ee8448c149f7|node_1|4737e1cb-ad8b-11f1-86d2-ee8448c149f7|2001|INVALIDATED|节点已由 1 以 APPROVE 处理|审批人二号
+2098242261300547585|2026-09-11 10:48:33.208595|1|2026-09-11 10:48:33.2086|1|0|0|0|47360cf0-ad8b-11f1-86d2-ee8448c149f7|node_1|4736f766-ad8b-11f1-86d2-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098241710030712834|2026-09-11 10:46:21.774422|1|2026-09-11 10:46:21.774426|1|0|0|0|f8df45c0-ad8a-11f1-b5da-ee8448c149f7|node_1|f8e0092b-ad8a-11f1-b5da-ee8448c149f7|2001|HANDLED|APPROVE|审批人二号
+2098241710018129922|2026-09-11 10:46:21.771876|1|2026-09-11 10:46:21.771882|1|0|0|0|f8df45c0-ad8a-11f1-b5da-ee8448c149f7|node_1|f8df93f6-ad8a-11f1-b5da-ee8448c149f7|1|INVALIDATED|节点已由 2001 以 APPROVE 处理|系统管理员
+2098241690590113793|2026-09-11 10:46:17.140075|1|2026-09-11 10:46:17.140082|1|0|0|0|f61947c9-ad8a-11f1-b5da-ee8448c149f7|node_1|f61cca54-ad8a-11f1-b5da-ee8448c149f7|2001|INVALIDATED|节点已由 1 以 APPROVE 处理|审批人二号
+2098241690573336578|2026-09-11 10:46:17.135956|1|2026-09-11 10:46:17.135964|1|0|0|0|f61947c9-ad8a-11f1-b5da-ee8448c149f7|node_1|f61af58f-ad8a-11f1-b5da-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098241669400367105|2026-09-11 10:46:12.087997|1|2026-09-11 10:46:12.08802|1|0|0|0|f3100023-ad8a-11f1-86d2-ee8448c149f7|node_1|f3199d2e-ad8a-11f1-86d2-ee8448c149f7|2001|HANDLED|APPROVE|审批人二号
+2098241669354229762|2026-09-11 10:46:12.076926|1|2026-09-11 10:46:12.076934|1|0|0|0|f3100023-ad8a-11f1-86d2-ee8448c149f7|node_1|f316b6f9-ad8a-11f1-86d2-ee8448c149f7|1|INVALIDATED|节点已由 2001 以 APPROVE 处理|系统管理员
+2098240871362822145|2026-09-11 10:43:01.820795|1|2026-09-11 10:43:01.8208|1|0|0|0|81ac9863-ad8a-11f1-834d-ee8448c149f7|node_1|81b17a7e-ad8a-11f1-834d-ee8448c149f7|2001|INVALIDATED|节点已由 1 以 APPROVE 处理|审批人二号
+2098240871346044930|2026-09-11 10:43:01.816929|1|2026-09-11 10:43:01.816936|1|0|0|0|81ac9863-ad8a-11f1-834d-ee8448c149f7|node_1|81afccc9-ad8a-11f1-834d-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098240849552433153|2026-09-11 10:42:56.620584|1|2026-09-11 10:42:56.620595|1|0|0|0|7e8b0cc8-ad8a-11f1-9be6-ee8448c149f7|node_1|7e9768f3-ad8a-11f1-9be6-ee8448c149f7|2001|INVALIDATED|节点已由 1 以 APPROVE 处理|审批人二号
+2098240849510490113|2026-09-11 10:42:56.610774|1|2026-09-11 10:42:56.610812|1|0|0|0|7e8b0cc8-ad8a-11f1-9be6-ee8448c149f7|node_1|7e934a3e-ad8a-11f1-9be6-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098221543087263746|2026-09-11 09:26:13.600979|1|2026-09-11 09:26:13.600988|1|0|0|0|c6f9fe3f-ad7f-11f1-8edd-ee8448c149f7|node_1|c6fb0fcb-ad7f-11f1-8edd-ee8448c149f7|2001|INVALIDATED|节点已由 1 以 REJECT 处理|审批人二号
+2098221543074680834|2026-09-11 09:26:13.598571|1|2026-09-11 09:26:13.598577|1|0|0|0|c6f9fe3f-ad7f-11f1-8edd-ee8448c149f7|node_1|c6fa9a95-ad7f-11f1-8edd-ee8448c149f7|1|HANDLED|REJECT|系统管理员
+2098221519527763969|2026-09-11 09:26:07.983695|1|2026-09-11 09:26:07.983698|1|0|0|0|c3a0c0e3-ad7f-11f1-8e9c-ee8448c149f7|node_1|c3a1f97f-ad7f-11f1-8e9c-ee8448c149f7|2001|INVALIDATED|节点已由 1 以 APPROVE 处理|审批人二号
+2098221519515181058|2026-09-11 09:26:07.981198|1|2026-09-11 09:26:07.981203|1|0|0|0|c3a0c0e3-ad7f-11f1-8e9c-ee8448c149f7|node_1|c3a18449-ad7f-11f1-8e9c-ee8448c149f7|1|HANDLED|APPROVE|系统管理员
+2098221502528344066|2026-09-11 09:26:03.930322|1|2026-09-11 09:26:03.930328|1|0|0|0|c13677b5-ad7f-11f1-8edd-ee8448c149f7|node_1|c1376231-ad7f-11f1-8edd-ee8448c149f7|2001|INVALIDATED|节点已由 1 以 APPROVE 处理|审批人二号
+
+===== PSQL 2026-09-11T11:26:24 =====
+select * from sw_bpm_communication order by create_time desc limit 20
+----- RESULT (exit=0) -----
+2098221487323897857|2026-09-11 09:26:00.306312|1|2026-09-11 09:26:00.509549|2003|0|0|0|bddcec4e-ad7f-11f1-8e9c-ee8448c149f7|node_1|bddd136b-ad7f-11f1-8e9c-ee8448c149f7|1|1|2003|g11|reply from user4|REPLIED|2026-09-11 09:26:00.509339
+2098220600648032258|2026-09-11 09:22:28.905648|1|2026-09-11 09:22:29.117206|2003|0|0|0|3fdb146c-ad7f-11f1-8e9c-ee8448c149f7|node_1|3fdb3b89-ad7f-11f1-8e9c-ee8448c149f7|1|1|2003|g11|reply from user4|REPLIED|2026-09-11 09:22:29.116641
+
+===== PSQL 2026-09-11T11:26:24 =====
+select * from sw_bpm_sign_record order by create_time desc limit 20
+----- RESULT (exit=0) -----
+2098221468038488066|2026-09-11 09:25:55.708275|1|2026-09-11 09:25:55.949899|2001|0|0|0|bb1d2feb-ad7f-11f1-8e9c-ee8448c149f7|node_1|SUPPLEMENT#bb1d2feb-ad7f-11f1-8e9c-ee8448c149f7|SUPPLEMENT_SIGN|PARALLEL|1|2001|0|DONE|APPROVE|||REJECTED|{"auditOnly":true,"businessAction":"","result":"APPROVE","opinionData":{},"actor":"2001"}
+2098221453454893057|2026-09-11 09:25:52.230828|1|2026-09-11 09:25:52.475792|2001|0|0|0|b90154f5-ad7f-11f1-8edd-ee8448c149f7|node_1|b901a322-ad7f-11f1-8edd-ee8448c149f7|ADD_SIGN|PARALLEL|1|2001|0|DONE|APPROVE||||{"policy":"ALL_PASS","comment":null,"result":"APPROVE","opinionData":{},"actor":"2001"}
+2098220581438119938|2026-09-11 09:22:24.326182|1|2026-09-11 09:22:24.561971|2001|0|0|0|3d1b09f9-ad7f-11f1-8e9c-ee8448c149f7|node_1|SUPPLEMENT#3d1b09f9-ad7f-11f1-8e9c-ee8448c149f7|SUPPLEMENT_SIGN|PARALLEL|1|2001|0|DONE|APPROVE|||REJECTED|{"auditOnly":true,"businessAction":"","result":"APPROVE","opinionData":{},"actor":"2001"}
+2098220566913245185|2026-09-11 09:22:20.862859|1|2026-09-11 09:22:21.104247|2001|0|0|0|3b47f841-ad7f-11f1-8edd-ee8448c149f7|node_1|3b481f5e-ad7f-11f1-8edd-ee8448c149f7|ADD_SIGN|PARALLEL|1|2001|0|DONE|APPROVE||||{"policy":"ALL_PASS","comment":null,"result":"APPROVE","opinionData":{},"actor":"2001"}
+
+===== PSQL 2026-09-11T11:26:24 =====
+select * from sw_bpm_task_deadline order by create_time desc limit 20
+----- RESULT (exit=0) -----
+2098246854193455105|2026-09-11 11:06:48.238927|1|2026-09-11 11:08:04.09449|1|0|0|0|d3de9653-ad8d-11f1-aa84-ee8448c149f7|node_1|d3e3ed90-ad8d-11f1-aa84-ee8448c149f7|2026-09-11 11:07:48.237882|0|0|APPROVE|{}|DONE|AUTO_APPROVE||2026-09-11 11:08:04.013699
+2098245156884455425|2026-09-11 11:00:03.569736|1|2026-09-11 11:01:03.936878|1|0|0|0|e2a9ee91-ad8c-11f1-b1d9-ee8448c149f7|node_1|e2b0573e-ad8c-11f1-b1d9-ee8448c149f7|2026-09-11 11:01:03.568604|0|0|APPROVE|{}|DONE|AUTO_APPROVE||2026-09-11 11:01:03.829453
+2098243351333048322|2026-09-11 10:52:53.092341|1|2026-09-11 10:54:03.675519|1|0|0|0|e21285f0-ad8b-11f1-86d2-ee8448c149f7|node_1|e212fb2d-ad8b-11f1-86d2-ee8448c149f7|2026-09-11 10:53:53.088592|0|0|APPROVE|{}|DONE|AUTO_APPROVE||2026-09-11 10:54:03.55667
+
+===== PSQL 2026-09-11T11:26:24 =====
+select * from sw_bpm_authorize_rule order by create_time desc limit 20
+----- RESULT (exit=0) -----
+2098221430608519169|2026-09-11 09:25:46.784699|2001|2026-09-11 09:25:50.115643|2001|0|0|0|2001|2002|GLOBAL||||{}|2026-09-10 00:00:00|2027-01-01 00:00:00|REVOKED|
+2098220544180117506|2026-09-11 09:22:15.442971|2001|2026-09-11 09:22:18.770201|2001|0|0|0|2001|2002|GLOBAL||||{}|2026-09-10 00:00:00|2027-01-01 00:00:00|REVOKED|
+
+===== PSQL 2026-09-11T11:26:24 =====
+select * from sw_bpm_consensus_vote order by create_time desc limit 40
+----- RESULT (exit=0) -----
+2098243244562968577|2026-09-11 10:52:27.636303|2001|2026-09-11 10:52:27.636303|2001|0|0|0|d113eff2-ad8b-11f1-b5da-ee8448c149f7|node_1|d117727d-ad8b-11f1-b5da-ee8448c149f7|2001|APPROVE
+2098243239840182273|2026-09-11 10:52:26.510211|1|2026-09-11 10:52:26.510211|1|0|0|0|d113eff2-ad8b-11f1-b5da-ee8448c149f7|node_1|d1152888-ad8b-11f1-b5da-ee8448c149f7|1|APPROVE
+2098243216486297602|2026-09-11 10:52:20.942329|1|2026-09-11 10:52:20.942329|1|0|0|0|cdbc876b-ad8b-11f1-b5da-ee8448c149f7|node_1|cdbcd5a1-ad8b-11f1-b5da-ee8448c149f7|1|DISAPPROVE
+2098243197158944769|2026-09-11 10:52:16.33443|2001|2026-09-11 10:52:16.33443|2001|0|0|0|caffff53-ad8b-11f1-b5da-ee8448c149f7|node_1|cb00c2be-ad8b-11f1-b5da-ee8448c149f7|2001|APPROVE
+2098243173926694913|2026-09-11 10:52:10.795281|1|2026-09-11 10:52:10.795281|1|0|0|0|c7ab07cb-ad8b-11f1-b5da-ee8448c149f7|node_1|c7ab7d11-ad8b-11f1-b5da-ee8448c149f7|1|DISAPPROVE
+2098243155312373762|2026-09-11 10:52:06.357662|2001|2026-09-11 10:52:06.357662|2001|0|0|0|c545a0e2-ad8b-11f1-86d2-ee8448c149f7|node_1|c547c3dd-ad8b-11f1-86d2-ee8448c149f7|2001|APPROVE
+2098243135590756354|2026-09-11 10:52:01.654748|1|2026-09-11 10:52:01.654748|1|0|0|0|c2299349-ad8b-11f1-b5da-ee8448c149f7|node_1|c22aa4cf-ad8b-11f1-b5da-ee8448c149f7|1|DISAPPROVE
+2098242894447513602|2026-09-11 10:51:04.161031|2001|2026-09-11 10:51:04.161031|2001|0|0|0|9f8f16ad-ad8b-11f1-b5da-ee8448c149f7|node_1|9f8fda18-ad8b-11f1-b5da-ee8448c149f7|2001|APPROVE
+2098242894351167489|2026-09-11 10:51:04.137747|1|2026-09-11 10:51:04.137747|1|0|0|0|9f8f16ad-ad8b-11f1-b5da-ee8448c149f7|node_1|9f8f64e3-ad8b-11f1-b5da-ee8448c149f7|1|DISAPPROVE
+2098242873652277249|2026-09-11 10:50:59.203172|1|2026-09-11 10:50:59.203172|1|0|0|0|9c7ef00a-ad8b-11f1-86d2-ee8448c149f7|node_1|9c7fb370-ad8b-11f1-86d2-ee8448c149f7|1|APPROVE
+2098242851032395777|2026-09-11 10:50:53.810551|1|2026-09-11 10:50:53.810551|1|0|0|0|99bee584-ad8b-11f1-86d2-ee8448c149f7|node_1|99bf33ba-ad8b-11f1-86d2-ee8448c149f7|1|APPROVE
+2098242851019689985|2026-09-11 10:50:53.807906|2001|2026-09-11 10:50:53.807906|2001|0|0|0|99bee584-ad8b-11f1-86d2-ee8448c149f7|node_1|99bfcfff-ad8b-11f1-86d2-ee8448c149f7|2001|APPROVE
+2098242731293282306|2026-09-11 10:50:25.26348|2001|2026-09-11 10:50:25.26348|2001|0|0|0|49ee287d-ad8b-11f1-b5da-ee8448c149f7|node_1|49f02468-ad8b-11f1-b5da-ee8448c149f7|2001|APPROVE
+2098242308847177730|2026-09-11 10:48:44.54364|2001|2026-09-11 10:48:44.54364|2001|0|0|0|4cad2194-ad8b-11f1-b5da-ee8448c149f7|node_1|4cadbdef-ad8b-11f1-b5da-ee8448c149f7|2001|APPROVE
+2098242308843106306|2026-09-11 10:48:44.543237|1|2026-09-11 10:48:44.543237|1|0|0|0|4cad2194-ad8b-11f1-b5da-ee8448c149f7|node_1|4cad48ba-ad8b-11f1-b5da-ee8448c149f7|1|DISAPPROVE
+2098242292317548546|2026-09-11 10:48:40.602772|1|2026-09-11 10:48:40.602772|1|0|0|0|49ee287d-ad8b-11f1-b5da-ee8448c149f7|node_1|49ef3a03-ad8b-11f1-b5da-ee8448c149f7|1|APPROVE
+2098242269068521473|2026-09-11 10:48:35.059598|1|2026-09-11 10:48:35.059598|1|0|0|0|47360cf0-ad8b-11f1-86d2-ee8448c149f7|node_1|4736f766-ad8b-11f1-86d2-ee8448c149f7|1|APPROVE
+2098241718888960001|2026-09-11 10:46:23.886828|2001|2026-09-11 10:46:23.886828|2001|0|0|0|f8df45c0-ad8a-11f1-b5da-ee8448c149f7|node_1|f8e0092b-ad8a-11f1-b5da-ee8448c149f7|2001|APPROVE
+2098241718884888577|2026-09-11 10:46:23.885342|1|2026-09-11 10:46:23.885342|1|0|0|0|f8df45c0-ad8a-11f1-b5da-ee8448c149f7|node_1|f8df93f6-ad8a-11f1-b5da-ee8448c149f7|1|DISAPPROVE
+2098241703273689089|2026-09-11 10:46:20.163882|1|2026-09-11 10:46:20.163882|1|0|0|0|f61947c9-ad8a-11f1-b5da-ee8448c149f7|node_1|f61af58f-ad8a-11f1-b5da-ee8448c149f7|1|APPROVE
+2098241679751909377|2026-09-11 10:46:14.55613|2001|2026-09-11 10:46:14.55613|2001|0|0|0|f3100023-ad8a-11f1-86d2-ee8448c149f7|node_1|f3199d2e-ad8a-11f1-86d2-ee8448c149f7|2001|APPROVE
+2098240883509518338|2026-09-11 10:43:04.717228|1|2026-09-11 10:43:04.717228|1|0|0|0|81ac9863-ad8a-11f1-834d-ee8448c149f7|node_1|81afccc9-ad8a-11f1-834d-ee8448c149f7|1|APPROVE
+2098240859765571586|2026-09-11 10:42:59.054696|2001|2026-09-11 10:42:59.054696|2001|0|0|0|7e8b0cc8-ad8a-11f1-9be6-ee8448c149f7|node_1|7e9768f3-ad8a-11f1-9be6-ee8448c149f7|2001|APPROVE
+2098240859442601985|2026-09-11 10:42:58.978982|1|2026-09-11 10:42:58.978982|1|0|0|0|7e8b0cc8-ad8a-11f1-9be6-ee8448c149f7|node_1|7e934a3e-ad8a-11f1-9be6-ee8448c149f7|1|APPROVE
+2098221550901157890|2026-09-11 09:26:15.464275|1|2026-09-11 09:26:15.464275|1|0|0|0|c6f9fe3f-ad7f-11f1-8edd-ee8448c149f7|node_1|c6fa9a95-ad7f-11f1-8edd-ee8448c149f7|1|DISAPPROVE
+2098221532068732930|2026-09-11 09:26:10.974642|1|2026-09-11 09:26:10.974642|1|0|0|0|c3a0c0e3-ad7f-11f1-8e9c-ee8448c149f7|node_1|c3a18449-ad7f-11f1-8e9c-ee8448c149f7|1|APPROVE
+2098221509784395778|2026-09-11 09:26:05.660678|1|2026-09-11 09:26:05.660678|1|0|0|0|c13677b5-ad7f-11f1-8edd-ee8448c149f7|node_1|c136c5eb-ad7f-11f1-8edd-ee8448c149f7|1|APPROVE
+2098220820668637185|2026-09-11 09:23:21.362706|1|2026-09-11 09:23:21.362706|1|0|0|0|5f1ffe26-ad7f-11f1-8edd-ee8448c149f7|node_1|5f209a7c-ad7f-11f1-8edd-ee8448c149f7|1|DISAPPROVE
+2098220802222088194|2026-09-11 09:23:16.965393|1|2026-09-11 09:23:16.965393|1|0|0|0|5c0eed75-ad7f-11f1-8edd-ee8448c149f7|node_1|5c0f62bb-ad7f-11f1-8edd-ee8448c149f7|1|APPROVE
+2098220779795144705|2026-09-11 09:23:11.616945|1|2026-09-11 09:23:11.616945|1|0|0|0|5951c990-ad7f-11f1-8e9c-ee8448c149f7|node_1|59535046-ad7f-11f1-8e9c-ee8448c149f7|1|APPROVE
+
+===== PSQL 2026-09-11T11:26:24 =====
+select id, def_id, graph_version, status, name, form_key, form_version, function_versions, deployment_id, process_definition_id, published_by, published_at from sw_bpm_process_def_version order by create_time desc limit 30
+----- RESULT (exit=0) -----
+2098251602841952258|2098251602552545281|1|PUBLISHED|I3矩阵NOTE|i3ev_mx_NOTE_140272|2|{}|76b3b32b-ad90-11f1-ac37-ee8448c149f7|bpm_73e40b41bcb949cc:1:76b97f8e-ad90-11f1-ac37-ee8448c149f7|1|2026-09-11 11:25:40.405212
+2098251602271526913|2098251602007285761|1|PUBLISHED|I3矩阵DATETIME|i3ev_mx_DATETIME_140160|2|{}|76a0ee77-ad90-11f1-ac37-ee8448c149f7|bpm_be54484bbf0a4df4:1:76a4bf0a-ad90-11f1-ac37-ee8448c149f7|1|2026-09-11 11:25:40.2687
+2098251601805959169|2098251601566883842|1|PUBLISHED|I3矩阵SELECT|i3ev_mx_SELECT_140032|2|{}|768ffe83-ad90-11f1-ac37-ee8448c149f7|bpm_8972ac83dcbc45bf:1:7693cf16-ad90-11f1-ac37-ee8448c149f7|1|2026-09-11 11:25:40.157561
+2098251601264893953|2098251601000652802|1|PUBLISHED|I3矩阵CHECKBOX|i3ev_mx_CHECKBOX_139925|2|{}|767aefdf-ad90-11f1-ac37-ee8448c149f7|bpm_35b25e5f1cde4cc9:1:767ff8f2-ad90-11f1-ac37-ee8448c149f7|1|2026-09-11 11:25:40.029064
+2098251600820297729|2098251600572833793|1|PUBLISHED|I3矩阵RADIO|i3ev_mx_RADIO_139802|2|{}|766b868b-ad90-11f1-ac37-ee8448c149f7|bpm_24404bf5b5434881:1:766fcc4e-ad90-11f1-ac37-ee8448c149f7|1|2026-09-11 11:25:39.922793
+2098251600296009730|2098251600052740098|1|PUBLISHED|I3矩阵NUMBER|i3ev_mx_NUMBER_139678|2|{}|76590ff7-ad90-11f1-ac37-ee8448c149f7|bpm_7baa24f1b2d84a5d:1:765ce08a-ad90-11f1-ac37-ee8448c149f7|1|2026-09-11 11:25:39.798155
+2098251599763333122|2098251599532646401|1|PUBLISHED|I3矩阵TEXTAREA|i3ev_mx_TEXTAREA_139569|2|{}|764560e3-ad90-11f1-ac37-ee8448c149f7|bpm_fd6f3e2b3a8044d9:1:76497f96-ad90-11f1-ac37-ee8448c149f7|1|2026-09-11 11:25:39.6709
+2098251599327125505|2098251599012552706|1|PUBLISHED|I3矩阵TEXT|i3ev_mx_TEXT_139438|2|{}|7633d4af-ad90-11f1-ac37-ee8448c149f7|bpm_131670652a464b32:1:7639a112-ad90-11f1-ac37-ee8448c149f7|1|2026-09-11 11:25:39.567143
+2098251571917348865|2098251491529318401|2|PUBLISHED|I3证据-意见O4|i3ev_o4|2|{}|72475828-ad90-11f1-ac37-ee8448c149f7|bpm_b3c3e74b31ae4c43:2:7252f0eb-ad90-11f1-ac37-ee8448c149f7|1|2026-09-11 11:25:33.031974
+2098251491818725377|2098251491529318401|1|PUBLISHED|I3证据-意见O4|i3ev_o4|2|{}|66ee1201-ad90-11f1-ac37-ee8448c149f7|bpm_b3c3e74b31ae4c43:1:66f27ed4-ad90-11f1-ac37-ee8448c149f7|1|2026-09-11 11:25:13.935731
+2098251460738932738|2098251381303009282|2|PUBLISHED|I3证据-意见表单C|i3ev_d4c|2|{}|62822c5a-ad90-11f1-ac37-ee8448c149f7|bpm_80641839468947a5:2:6287838d-ad90-11f1-ac37-ee8448c149f7|1|2026-09-11 11:25:06.524628
+2098251381806325761|2098251381303009282|1|PUBLISHED|I3证据-意见表单C|i3ev_d4c|2|{}|5746f593-ad90-11f1-ac37-ee8448c149f7|bpm_80641839468947a5:1:574e2186-ad90-11f1-ac37-ee8448c149f7|1|2026-09-11 11:24:47.705852
+2098251202143313922|2098251121017085953|2|PUBLISHED|I3证据-意见表单C|i3ev_d4c|2|{}|3dc013cf-ad90-11f1-ac37-ee8448c149f7|bpm_38293c4649424daa:2:3dc766d2-ad90-11f1-ac37-ee8448c149f7|1|2026-09-11 11:24:04.870709
+2098251122082439169|2098251121017085953|1|PUBLISHED|I3证据-意见表单C|i3ev_d4c|2|{}|324fea58-ad90-11f1-ac37-ee8448c149f7|bpm_38293c4649424daa:1:32614f7b-ad90-11f1-ac37-ee8448c149f7|1|2026-09-11 11:23:45.782945
+2098250986119880706|2098250985528483842|1|PUBLISHED|I3证据-意见表单C|i3ev_d4c|2|{}|1f0a9891-ad90-11f1-ac37-ee8448c149f7|bpm_d69ccb1f590c468b:1:1f143584-ad90-11f1-ac37-ee8448c149f7|1|2026-09-11 11:23:13.366879
+2098250713251045378|2098250712915501058|1|PUBLISHED|I3矩阵NOTE|i3ev_mx_NOTE_928164|2|{}|f848b88d-ad8f-11f1-ac37-ee8448c149f7|bpm_7539fa623239471c:1:f84d9a90-ad8f-11f1-ac37-ee8448c149f7|1|2026-09-11 11:22:08.309342
+2098250712626094081|2098250712261189633|1|PUBLISHED|I3矩阵DATETIME|i3ev_mx_DATETIME_927995|2|{}|f8315ff9-ad8f-11f1-ac37-ee8448c149f7|bpm_c880c2906f404d15:1:f836de3c-ad8f-11f1-ac37-ee8448c149f7|1|2026-09-11 11:22:08.160546
+2098250711917256706|2098250711388774401|1|PUBLISHED|I3矩阵SELECT|i3ev_mx_SELECT_927784|2|{}|f8159a95-ad8f-11f1-ac37-ee8448c149f7|bpm_48f716b070684822:1:f81c9f78-ad8f-11f1-ac37-ee8448c149f7|1|2026-09-11 11:22:07.991379
+2098250711007092737|2098250710415695874|1|PUBLISHED|I3矩阵CHECKBOX|i3ev_mx_CHECKBOX_927453|2|{}|f7f1bee1-ad8f-11f1-ac37-ee8448c149f7|bpm_cde925ceefed42b1:1:f7fabf94-ad8f-11f1-ac37-ee8448c149f7|1|2026-09-11 11:22:07.774601
+2098250709643943938|2098250708935106562|1|PUBLISHED|I3矩阵RADIO|i3ev_mx_RADIO_927227|2|{}|f7c3aafd-ad8f-11f1-ac37-ee8448c149f7|bpm_cbe1c8a11cee4c7c:1:f7c9c480-ad8f-11f1-ac37-ee8448c149f7|1|2026-09-11 11:22:07.449627
+2098250708691836929|2098250708272406530|1|PUBLISHED|I3矩阵NUMBER|i3ev_mx_NUMBER_927033|2|{}|f79f3309-ad8f-11f1-ac37-ee8448c149f7|bpm_2cabe5e8222b4788:1:f7a7977c-ad8f-11f1-ac37-ee8448c149f7|1|2026-09-11 11:22:07.222695
+2098250707781672961|2098250707345465345|1|PUBLISHED|I3矩阵TEXTAREA|i3ev_mx_TEXTAREA_926786|2|{}|f77e6495-ad8f-11f1-ac37-ee8448c149f7|bpm_a5a96179b78d4bf4:1:f786c908-ad8f-11f1-ac37-ee8448c149f7|1|2026-09-11 11:22:07.005232
+2098250706837954562|2098250706301083650|1|PUBLISHED|I3矩阵TEXT|i3ev_mx_TEXT_926451|2|{}|f75a88e1-ad8f-11f1-ac37-ee8448c149f7|bpm_aab3127cab4041a0:1:f7638994-ad8f-11f1-ac37-ee8448c149f7|1|2026-09-11 11:22:06.780595
+2098250678589317122|2098250593432363009|2|PUBLISHED|I3证据-意见O4|i3ev_o4|2|{}|f357290d-ad8f-11f1-ac37-ee8448c149f7|bpm_d90edbba3ad14cba:2:f36077e0-ad8f-11f1-ac37-ee8448c149f7|1|2026-09-11 11:22:00.045679
+2098250594908758018|2098250593432363009|1|PUBLISHED|I3证据-意见O4|i3ev_o4|2|{}|e758a226-ad8f-11f1-ac37-ee8448c149f7|bpm_d90edbba3ad14cba:1:e77a5af9-ad8f-11f1-ac37-ee8448c149f7|1|2026-09-11 11:21:40.093907
+2098249569921507329|2098249569598545922|1|PUBLISHED|I3矩阵RICH_TEXT|i3ev_mx_RICH_TEXT_655552|2|{}|55cdb89b-ad8f-11f1-8442-ee8448c149f7|bpm_cb2a24deb2854929:1:55d3fa2e-ad8f-11f1-8442-ee8448c149f7|1|2026-09-11 11:17:35.719375
+2098249569187504130|2098249568612884481|1|PUBLISHED|I3矩阵NOTE|i3ev_mx_NOTE_655339|2|{}|55b2b687-ad8f-11f1-8442-ee8448c149f7|bpm_1be3998e000743c0:1:55b9463a-ad8f-11f1-8442-ee8448c149f7|1|2026-09-11 11:17:35.543316
+2098249568315088898|2098249568055042050|1|PUBLISHED|I3矩阵DATETIME|i3ev_mx_DATETIME_655223|2|{}|5594f553-ad8f-11f1-8442-ee8448c149f7|bpm_7a3436d248ca4e88:1:5599b046-ad8f-11f1-8442-ee8448c149f7|1|2026-09-11 11:17:35.336077
+2098249567832743938|2098249567560114177|1|PUBLISHED|I3矩阵SELECT|i3ev_mx_SELECT_655111|2|{}|5583691f-ad8f-11f1-8442-ee8448c149f7|bpm_af08761eebb747f1:1:55882412-ad8f-11f1-8442-ee8448c149f7|1|2026-09-11 11:17:35.221005
+2098249567358787585|2098249567077769217|1|PUBLISHED|I3矩阵CHECKBOX|i3ev_mx_CHECKBOX_654976|2|{}|557203fb-ad8f-11f1-8442-ee8448c149f7|bpm_6c479413d3cc4a99:1:5576e5fe-ad8f-11f1-8442-ee8448c149f7|1|2026-09-11 11:17:35.108214
+
+===== PSQL 2026-09-11T11:26:24 =====
+select proc_inst_id_, activity_type_, activity_name_, start_time_, end_time_, delete_reason_ from act_hi_actinst where proc_inst_id_ in (select process_instance_id from sw_bpm_instance order by create_time desc limit 15) order by proc_inst_id_, start_time_
+----- RESULT (exit=1) -----
+
+STDERR: ERROR:  column "activity_type_" does not exist
+LINE 1: select proc_inst_id_, activity_type_, activity_name_, start_...
+                              ^
+
+===== PSQL 2026-09-11T11:26:24 =====
+select to_char(create_time,'YYYY-MM-DD HH24:MI') || ' -> ' || coalesce(recipient_id::text,'-') || ' : ' || coalesce(title,'-') from sw_notify_record order by create_time desc limit 25
+----- RESULT (exit=1) -----
+
+STDERR: ERROR:  relation "sw_notify_record" does not exist
+LINE 1: ...d::text,'-') || ' : ' || coalesce(title,'-') from sw_notify_...
+                                                             ^
+
+===== PSQL 2026-09-11T11:26:24 =====
+select table_name from information_schema.tables where table_schema='public' and table_name like '%notify%' or table_name like 'sw_message%' or table_name like 'sw_message%' limit 10
+----- RESULT (exit=0) -----
+sw_notify_template
+sw_notify_message
+sw_notify_send_attempt
+

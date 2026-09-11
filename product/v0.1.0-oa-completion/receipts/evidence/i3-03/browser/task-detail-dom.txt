@@ -1,0 +1,120 @@
+URL: http://localhost:5173/workflow/task/76fd3f5c-ad90-11f1-ac37-ee8448c149f7
+时间: 2026-09-11T03:35:23.338Z
+说明: 任务详情页（意见表单动态渲染 + 通过/驳回 + 转办/委托/沟通/加签/补签按钮全部渲染）
+
+- complementary:
+  - img "CH-aPaaS"
+  - generic: CH-aPaaS
+  - menubar:
+    - menuitem "流程引擎":
+      - generic: 流程引擎
+    - menuitem "通知":
+      - generic: 通知
+- button "toggle sidebar":
+- navigation "Breadcrumb"
+- button "进入后台":
+  - generic: 进入后台
+- button "系统管理员":
+  - generic: 系统管理员
+- main:
+  - button "← 返回待办":
+    - generic: ← 返回待办
+  - heading "任务详情" [level=2]
+  - generic: 基本信息
+  - table:
+    - rowgroup:
+      - row "任务名称 意见审批 任务编号 ...48c149f7":
+        - cell "任务名称"
+        - cell "意见审批"
+        - cell "任务编号"
+        - cell "...48c149f7"
+      - row "流程名称 I3证据-意见O4 流程标识 bpm_b3c3e74b31ae4c43":
+        - cell "流程名称"
+        - cell "I3证据-意见O4"
+        - cell "流程标识"
+        - cell "bpm_b3c3e74b31ae4c43"
+      - row "表单标识 i3ev_o4 业务单号 5d51637a-43c9-4b71-858e-820fab2d1089":
+        - cell "表单标识"
+        - cell "i3ev_o4"
+        - cell "业务单号"
+        - cell "5d51637a-43c9-4b71-858e-820fab2d1089"
+      - row "当前审批人 系统管理员 发起人 系统管理员":
+        - cell "当前审批人"
+        - cell "系统管理员"
+        - cell "发起人"
+        - cell "系统管理员"
+      - row "创建时间 2026-09-11T11:25:40.84":
+        - cell "创建时间"
+        - cell "2026-09-11T11:25:40.84"
+  - generic: 表单数据（本次提交）
+  - table:
+    - rowgroup:
+      - row "金额 1":
+        - cell "金额"
+        - cell "1"
+  - generic: 流程变量
+  - table:
+    - rowgroup:
+      - row "变量名 变量值":
+        - columnheader "变量名":
+          - generic: 变量名
+        - columnheader "变量值":
+          - generic: 变量值
+  - table:
+    - rowgroup:
+      - row "recordId 5d51637a-43c9-4b71-858e-820fab2d1089":
+        - cell "recordId":
+          - generic: recordId
+        - cell "5d51637a-43c9-4b71-858e-820fab2d1089":
+          - generic: 5d51637a-43c9-4b71-858e-820fab2d1089
+      - row "approver 1":
+        - cell "approver":
+          - generic: approver
+        - cell "1":
+          - generic: "1"
+      - row "submitter 1":
+        - cell "submitter":
+          - generic: submitter
+        - cell "1":
+          - generic: "1"
+      - row "formKey i3ev_o4":
+        - cell "formKey":
+          - generic: formKey
+        - cell "i3ev_o4":
+          - generic: i3ev_o4
+      - row "tenantId 0":
+        - cell "tenantId":
+          - generic: tenantId
+        - cell "0":
+          - generic: "0"
+      - row "formData [object Object]":
+        - cell "formData":
+          - generic: formData
+        - cell "[object Object]":
+          - generic: "[object Object]"
+  - generic: 审批历史
+  - alert:
+    - generic: 暂无审批历史
+  - generic: 审批意见（i3ev-opinion-o4 vv1）
+  - generic: 审批说明(改)
+  - textbox "审批说明(改)"
+  - generic: 等级(改)
+  - combobox "等级(改)":
+    - option "请选择" [selected]
+    - option "X"
+    - option "Y"
+  - button "审批通过":
+    - generic: 审批通过
+  - button "驳回":
+    - generic: 驳回
+  - separator
+  - button "转办":
+    - generic: 转办
+  - button "委托":
+    - generic: 委托
+  - button "沟通":
+    - generic: 沟通
+  - button "加签":
+    - generic: 加签
+  - button "补签":
+    - generic: 补签

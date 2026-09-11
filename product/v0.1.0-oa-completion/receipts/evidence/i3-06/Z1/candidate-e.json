@@ -1,0 +1,23 @@
+{
+  "snapshotId": "i3-06-frozen-e",
+  "frozen_at": "2026-09-12 00:52:35+08:00",
+  "supersedes": "i3-06-frozen-d（jar 409d60f6…）",
+  "supersede_reason": "Z7 采出第四个真实缺陷：V75 内建结果函数 func_result_echo/AuditTrailResultFunction 输出变量名 auditNote 含大写，被 G13b 白名单正则拒绝（运行日志：结果函数输出不合法），白名单正向写回从未可能成功。修复为 audit_note 后重跑 Z1 全部门禁并冻结 frozen-e。",
+  "fixes_since_frozen_a": [
+    "TaskActionService：processGone 重读实例状态，非 RUNNING 跳过动作侧终态改写（修 RATIO/ANY 负向被最后 APPROVE 覆盖）",
+    "ApprovalActionService.upsertDuplicate：动作行按 V74 唯一键幂等写入（修加签取消 500）",
+    "TaskDeadlineScheduler：TASK_GONE 分支 PENDING 条件推进；提醒/升级先原子认领再通知（修结果标注覆盖与双通知）",
+    "ResultEchoFunction/AuditTrailResultFunction：结果变量名 audit_note（修内建函数输出违反白名单）"
+  ],
+  "gate": {
+    "server_full_test": {"exit": 0, "log": "server-full-test-r6.stdout/-stderr/-exit", "counts": "surefire-totals-r6.txt：1261/0/0/0 全 reactor"},
+    "web_gates": {"typecheck": "web-typecheck-r5.exit=0", "lint": "web-lint-r5.exit=0", "test": "web-test-r5.exit=0", "build": "web-build-r5.exit=0"},
+    "migration_chain": "FlywayFullChain H2/PG 计入 server 全量（1261 中），终点版本 75",
+    "package": {"exit": 0, "log": "server-package-r5.stdout/-stderr/-exit"}
+  },
+  "backend_jar": {"path": "Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar", "sha256": "90d8bb895a129d523c67e327807840192c606d2fbee44ed7e049d0cc298a16ba"},
+  "web_dist": {"path": "Smart-WorkFlow-Web/dist", "merkle_sha256": "f16e31ae1869e5f176405b7d5bc21abcf6d3afc17848dee8c71858a52156e479"},
+  "source_diff": {"server_diff_hash": "c7ea4de0db7f1f626b15cf741c392ae9791faa2afba496ffbbc6208a28504371", "web_diff_hash": "89aad6be7a632a5beb57349f4830837d0d8b1ba022cae2a8100eaa6a8a2063d8"},
+  "instances": {"A": "PID 26398 @ 8081", "B": "PID 26448 @ 8082"},
+  "post_freeze_rule": "冻结后零代码修改、零重打包、零 dist 重建；Z2—Z9 行为采集只引用本 candidate 的唯一 snapshotId/JAR/Web hash。"
+}

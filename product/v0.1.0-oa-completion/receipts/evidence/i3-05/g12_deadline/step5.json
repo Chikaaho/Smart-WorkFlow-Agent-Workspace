@@ -1,0 +1,34 @@
+{
+  "_snapshot": {
+    "snapshotId": "i3-05-frozen-a",
+    "jar_sha256": "2900e136d1b99c41c8c5ad5bfc8a6ef2ee56d1e1ede3d0168f15072155150246",
+    "instance_A": "PID 64431 @ 8081",
+    "instance_B": "PID 64463 @ 8082",
+    "fingerprint_file": "evidence/i3-05/final-candidate-fingerprint.txt"
+  },
+  "rows": [
+    {
+      "case": "deadline-row-created-on-task-create",
+      "task": "6e3592f2-adb0-11f1-bb59-8e7a76db281d",
+      "deadline_id": "2098309189037846530",
+      "due": "2026-09-11 15:15:30.018778",
+      "run_state": "PENDING"
+    },
+    {
+      "case": "auto-action-fired",
+      "run_state": "DONE",
+      "result_status": "AUTO_APPROVE",
+      "instance_status_after": "APPROVED",
+      "task_gone": "0",
+      "action_row": "APPROVE|APPROVED"
+    },
+    {
+      "case": "restart-recovery",
+      "instance_a_restarted": true,
+      "deadline_final": "DONE|AUTO_APPROVE",
+      "action_rows_for_task": "1",
+      "instance_status_final": "APPROVED",
+      "verdict": "restart safe: state persisted in PG; scanner re-run produced no second action (run_state DONE gate)"
+    }
+  ]
+}

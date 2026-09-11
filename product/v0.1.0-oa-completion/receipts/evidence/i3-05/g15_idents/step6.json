@@ -1,0 +1,116 @@
+{
+  "_snapshot": {
+    "snapshotId": "i3-05-frozen-a",
+    "jar_sha256": "2900e136d1b99c41c8c5ad5bfc8a6ef2ee56d1e1ede3d0168f15072155150246",
+    "instance_A": "PID 64431 @ 8081",
+    "instance_B": "PID 64463 @ 8082",
+    "fingerprint_file": "evidence/i3-05/final-candidate-fingerprint.txt"
+  },
+  "rows": [
+    {
+      "gid": "G13",
+      "case": "节点函数",
+      "result": {
+        "function_resolved_assignee": "1",
+        "participant_snapshot": "1",
+        "frozen_function_versions": "{\"func_tenant_admins\":1}",
+        "bad_version_validate": {
+          "errors": []
+        },
+        "bad_version_publish": {
+          "code": 2412,
+          "msg": "节点函数不存在"
+        },
+        "verdict": "registered function resolved participants at runtime with frozen v1; unknown version rejected at publish (zero deploy)"
+      }
+    },
+    {
+      "gid": "G14",
+      "case": "意见表单快照+矩阵",
+      "result": {
+        "missing_required_rejected": {
+          "code": 2308
+        },
+        "bad_radio_rejected": {
+          "code": 2307,
+          "msg": "审批意见不合法"
+        },
+        "valid_submit": {
+          "code": 0
+        },
+        "action_row": "APPROVE|i3ev-opinion-b|v1|{\"comment2\":\"同意，按 A 级办理\",\"level\":\"A\"}|{\"opinionForm\":{\"formId\":\"i3ev-opinion-b\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"审批说明\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"level\",\"label\":\"等级\",\"type\":\"RADIO\",\"options\":[\"A\",\"B\"],\"required\":true},{\"key\":\"note\",\"label\":\"备注\",\"type\":\"NOTE\"}]},\"opinionFormId\":\"i3ev-opinion-b\",\"opinionFormVersion\":\"v1\"}",
+        "immutable_ref_after_v2": {
+          "before": "APPROVE|i3ev-opinion-b|v1|{\"comment2\":\"同意，按 A 级办理\",\"level\":\"A\"}|{\"opinionForm\":{\"formId\":\"i3ev-opinion-b\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"审批说明\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"level\",\"label\":\"等级\",\"type\":\"RADIO\",\"options\":[\"A\",\"B\"],\"required\":true},{\"key\":\"note\",\"label\":\"备注\",\"type\":\"NOTE\"}]},\"opinionFormId\":\"i3ev-opinion-b\",\"opinionFormVersion\":\"v1\"}",
+          "after": "{\"opinionForm\":{\"formId\":\"i3ev-opinion-b\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"审批说明\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"level\",\"label\":\"等级\",\"type\":\"RADIO\",\"options\":[\"A\",\"B\"],\"required\":true},{\"key\":\"note\",\"label\":\"备注\",\"type\":\"NOTE\"}]},\"opinionFormId\":\"i3ev-opinion-b\",\"opinionFormVersion\":\"v1\"}|{\"comment2\":\"同意，按 A 级办理\",\"level\":\"A\"}"
+        },
+        "component_matrix": [
+          {
+            "fieldType": "TEXT",
+            "publishAccepted": true,
+            "submitAccepted": null
+          },
+          {
+            "fieldType": "TEXTAREA",
+            "publishAccepted": true,
+            "submitAccepted": null
+          },
+          {
+            "fieldType": "NUMBER",
+            "publishAccepted": true,
+            "submitAccepted": null
+          },
+          {
+            "fieldType": "RADIO",
+            "publishAccepted": true,
+            "submitAccepted": null
+          },
+          {
+            "fieldType": "CHECKBOX",
+            "publishAccepted": true,
+            "submitAccepted": null
+          },
+          {
+            "fieldType": "SELECT",
+            "publishAccepted": true,
+            "submitAccepted": null
+          },
+          {
+            "fieldType": "DATETIME",
+            "publishAccepted": true,
+            "submitAccepted": null
+          },
+          {
+            "fieldType": "NOTE",
+            "publishAccepted": true,
+            "submitAccepted": null
+          },
+          {
+            "fieldType": "RICH_TEXT",
+            "publishAccepted": false,
+            "submitAccepted": null
+          }
+        ],
+        "verdict": "opinion snapshot immutable across def v2 publish; per-type accept/reject matrix recorded"
+      }
+    },
+    {
+      "gid": "G15",
+      "case": "权限矩阵(跨租户)",
+      "result": {
+        "cross_tenant_todo_leak": {
+          "count": 0,
+          "contains_target": false
+        },
+        "cross_tenant_complete": {
+          "code": 403,
+          "msg": "无权处理该任务"
+        },
+        "cross_tenant_instance_read": {
+          "code": 404,
+          "msg": "流程实例不存在"
+        },
+        "verdict": "cross-tenant user: no todo leak, complete denied, instance read denied"
+      }
+    }
+  ]
+}

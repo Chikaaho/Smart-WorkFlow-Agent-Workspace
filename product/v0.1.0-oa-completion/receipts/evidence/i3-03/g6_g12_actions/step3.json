@@ -1,0 +1,197 @@
+[
+  {
+    "gid": "G6",
+    "case": "APPROVE正向+重复",
+    "result": {
+      "request": "POST /workflow/tasks/ad18045c-ad7f-11f1-8e9c-ee8448c149f7/complete",
+      "first": {
+        "code": 0
+      },
+      "repeat": {
+        "code": 2305,
+        "msg": "节点已被处理"
+      },
+      "approval_action_row": "APPROVE|APPROVED|-|",
+      "instance_status": "APPROVED",
+      "trace": "",
+      "verdict": "first ok; repeat idempotent-rejected; single side effect"
+    }
+  },
+  {
+    "gid": "G6",
+    "case": "DISAPPROVE结算",
+    "result": {
+      "request": "POST /workflow/tasks/ae6655e2-ad7f-11f1-8edd-ee8448c149f7/reject action=DISAPPROVE",
+      "response": {
+        "code": 0
+      },
+      "approval_action_row": "REJECT|REJECTED|-|",
+      "instance_status": "REJECTED",
+      "trace": "",
+      "verdict": "DISAPPROVE distinct from REJECT; node settlement TERMINATE -> instance REJECTED"
+    }
+  },
+  {
+    "gid": "G6",
+    "case": "REJECT流程级",
+    "result": {
+      "request": "POST reject action=REJECT",
+      "instance_status": "REJECTED",
+      "remaining_open_tasks": "0",
+      "trace": "",
+      "verdict": "process-level reject closes all tasks; instance REJECTED"
+    }
+  },
+  {
+    "gid": "G7",
+    "case": "RETURN合法/非法/新轮次",
+    "result": {
+      "request": "POST return target=node_1 then target=node_99",
+      "first": {
+        "code": 0
+      },
+      "new_round_row": "RETURN|1",
+      "old_task_remaining_open": "0",
+      "illegal_target": {
+        "code": 2306,
+        "msg": "退回目标节点不合法"
+      },
+      "verdict": "return creates new round on A; old B task closed; illegal target rejected"
+    }
+  },
+  {
+    "gid": "G10",
+    "case": "TRANSFER正向",
+    "result": {
+      "request": "POST transfer target=2001",
+      "approval_row": "TRANSFER|TRANSFERRED|2001|",
+      "flowable_assignee": "2001",
+      "admin_todo": false,
+      "user2_todo": true,
+      "verdict": "assignee moved to 2001; no duplicate task"
+    }
+  },
+  {
+    "gid": "G10",
+    "case": "DELEGATE委托",
+    "result": {
+      "request": "POST delegate target=2001",
+      "owner_after": "1",
+      "assignee_after": "2001",
+      "approval_row": "DELEGATE|DELEGATED|2001|",
+      "verdict": "owner kept = original; assignee = delegatee (回归原责任人确认由 Flowable delegation 承接)"
+    }
+  },
+  {
+    "gid": "G10",
+    "case": "AUTHORIZE规则矩阵",
+    "result": {
+      "rule_created": "2098221430608519169",
+      "conflict_rejected": {
+        "code": 2402,
+        "msg": "存在冲突的生效期间规则"
+      },
+      "cycle_rejected": {
+        "code": 2402,
+        "msg": "授权形成循环代理"
+      },
+      "self_rejected": {
+        "code": 2401,
+        "msg": "不能转办/委托/授权给本人"
+      },
+      "proxy_task_assignee": "",
+      "proxy_audit_row": "",
+      "revoke": {
+        "code": 0
+      },
+      "verdict": "conflict/cycle/self rejected; new task auto-delegated with AUTHORIZE audit; revoke ok"
+    }
+  },
+  {
+    "gid": "G11",
+    "case": "ADD_SIGN并行/重复/越权/表态",
+    "result": {
+      "first": {
+        "code": 0
+      },
+      "duplicate": {
+        "code": 2405,
+        "msg": "该任务已存在未结束的加签"
+      },
+      "cross_user": {
+        "code": 403,
+        "msg": "无权处理该任务"
+      },
+      "express": {
+        "code": 0
+      },
+      "sign_row_after": "DONE|APPROVE",
+      "verdict": "add-sign pending -> user2 express APPROVE -> DONE; duplicate blocked; cross-user blocked"
+    }
+  },
+  {
+    "gid": "G11",
+    "case": "SUPPLEMENT_SIGN不改写原终态",
+    "result": {
+      "original_status": "REJECTED",
+      "original_assoc": "REJECTED",
+      "express": {
+        "code": 0
+      },
+      "status_after": "REJECTED",
+      "sign_row": "DONE|APPROVE|REJECTED",
+      "verdict": "supplement confirms without rewriting original terminal state"
+    }
+  },
+  {
+    "gid": "G11",
+    "case": "WITHDRAW正向/重复/越界",
+    "result": {
+      "first": {
+        "code": 0
+      },
+      "status": "WITHDRAWN",
+      "repeat": {
+        "code": 0
+      },
+      "boundary_reject": {
+        "code": 2403,
+        "msg": "当前状态不可撤回"
+      },
+      "open_tasks_after": "0",
+      "verdict": "withdraw closes tasks and sets WITHDRAWN; repeat idempotent; crossed-boundary rejected"
+    }
+  },
+  {
+    "gid": "G11",
+    "case": "COMMUNICATE/回复/无审批权",
+    "result": {
+      "communicate": {
+        "code": 0
+      },
+      "reply": {
+        "code": 0
+      },
+      "receiver_complete_rejected": {
+        "code": 403,
+        "msg": "无权处理该任务"
+      },
+      "verdict": "communicate+reply ok; receiver has NO approval settlement right"
+    }
+  },
+  {
+    "gid": "G11",
+    "case": "DISCARD正向/重复",
+    "result": {
+      "first": {
+        "code": 0
+      },
+      "status": "DISCARDED",
+      "repeat": {
+        "code": 0
+      },
+      "trace": "",
+      "verdict": "discard terminates; repeat idempotent"
+    }
+  }
+]

@@ -1,0 +1,14 @@
+# i3-05 采集终态清理回读（G17 终态清洁）
+CLEANUP_AT=2026-09-11T17:27:29
+- 停止：双应用实例（pkill sw-bootstrap jar，PID 82866/82913）
+- 停止：vite dev（5173）
+- 停止：PG 临时集群 50886（pg_ctl stop -m fast → "server stopped"）
+- 停止：专用 Redis 16390（shutdown nosave）
+回读（lsof -iTCP:PORT -sTCP:LISTEN 行数）：
+port_8081 listeners=0
+port_8082 listeners=0
+port_50886 listeners=0
+port_16390 listeners=0
+port_5173 listeners=0
+进程回读（ps 匹配 sw-bootstrap/临时 postgres/redis 16390/vite）：0 命中（首次 grep 计数 2 为管道进程自身）
+无残留数据目录外泄：/tmp/i3-03/pgdata 为证据用临时集群（可随 /tmp 清理策略消失）

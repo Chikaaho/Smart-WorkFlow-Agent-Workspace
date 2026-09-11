@@ -1,0 +1,14 @@
+[OK] G13
+DEBUG rmiss {'code': 2308, 'msg': '审批意见不能为空', 'data': None}
+DEBUG rbad {'code': 2307, 'msg': '审批意见不合法', 'data': None}
+Traceback (most recent call last):
+  File "/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/step6_fn_opinion.py", line 149, in <module>
+    case14()
+    ~~~~~~^^
+  File "/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/step6_fn_opinion.py", line 146, in case14
+    LOG.append({"gid": "G14", "case": "意见表单快照+矩阵", "result": g14()})
+                                                                     ~~~^^
+  File "/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/step6_fn_opinion.py", line 132, in g14
+    mid = r0["data"]["defId"]
+          ~~~~~~~~~~^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable

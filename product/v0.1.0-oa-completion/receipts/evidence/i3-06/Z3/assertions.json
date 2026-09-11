@@ -1,0 +1,83 @@
+{
+  "result": "PASS",
+  "assertions": {
+    "action_row_total": 11,
+    "user_action_row_count": 10,
+    "system_settlement_rows": [
+      "2098455040029802498|INSTANCE|ACTION#62f96dc6-ae01-11f1-b512-d24845ae031d|0|DISAPPROVE|CONSENSUS_SETTLED|-|-"
+    ],
+    "settlement_row_note": "node_key=INSTANCE、task_id=ACTION#*、actor_id=0 为会签系统结算聚合行；opinion_data/actor 为设计空值，逐行列出，不计入人员动作空值统计",
+    "action_required_field_empty_count": 0,
+    "trace_total_rows": 22,
+    "trace_usertask_total": 11,
+    "trace_usertask_assignee_empty_count": 0,
+    "notify_row_total": 12,
+    "notify_required_field_empty_count": 0,
+    "semantics": {
+      "disapprove_action_rows": [
+        "2098454953912352769|node_1|5759cfcb-ae01-11f1-8706-d24845ae031d|1|DISAPPROVE|DISAPPROVED|-|{\"comment\":\"z3-02-disapprove-baa2d65e\"}"
+      ],
+      "disapprove_not_reject": true,
+      "disapprove_notify": [
+        "WF_REJECTED|5759819e-ae01-11f1-8706-d24845ae031d|2005|您的申请未通过|您的发起申请被不通过意见拦截",
+        "WF_TODO|5759cfcb-ae01-11f1-8706-d24845ae031d|1|您有一条待办|您有一条新的待办任务待处理"
+      ],
+      "reject_notify": [
+        "WF_REJECTED|597cfdce-ae01-11f1-b512-d24845ae031d|2005|您的申请已驳回|您发起的申请已审批驳回",
+        "WF_TODO|5980804b-ae01-11f1-b512-d24845ae031d|1|您有一条待办|您有一条新的待办任务待处理"
+      ],
+      "consensus_disapprove_action_rows": [
+        "2098455039639732225|node_1|62fbdedc-ae01-11f1-b512-d24845ae031d|1|APPROVE|APPROVED|-|{\"comment\":\"z3-06-consensus-disapprove-43026ca0\"}",
+        "2098455040029802498|INSTANCE|ACTION#62f96dc6-ae01-11f1-b512-d24845ae031d|0|DISAPPROVE|CONSENSUS_SETTLED|-|-",
+        "2098455040113688578|node_1|62ff3a41-ae01-11f1-b512-d24845ae031d|2001|DISAPPROVE|DISAPPROVED|-|{\"comment\":\"z3-06-consensus-disapprove-43026ca0-user2-neg\"}"
+      ],
+      "return_action_rows": [
+        "2098454983494778881|node_1|5ba6e2db-ae01-11f1-8706-d24845ae031d|1|APPROVE|APPROVED|-|{\"comment\":\"z3-A-pass-round1\"}",
+        "2098454988947374081|node_2|5cd74c74-ae01-11f1-b512-d24845ae031d|2001|RETURN|RETURNED|1|{\"comment\":\"z3-04-return-c1348676\"}",
+        "2098454999659626497|node_1|5d9e45f9-ae01-11f1-b512-d24845ae031d|1|APPROVE|APPROVED|-|{\"comment\":\"z3-round2-final-approve\"}"
+      ],
+      "return_trace_rows": [
+        "startEvent|Start|-|-",
+        "userTask|审批A|1|-",
+        "userTask|审批B|2001|Change activity to node_1",
+        "userTask|审批A|1|-",
+        "userTask|审批B|2001|-"
+      ]
+    },
+    "negatives": {
+      "repeat_approve": {
+        "code": 2305,
+        "msg": "节点已被处理"
+      },
+      "illegal_target": {
+        "code": 2306,
+        "msg": "退回目标节点不合法"
+      },
+      "missing_target": {
+        "code": 2306,
+        "msg": "退回目标节点不合法"
+      },
+      "forbidden_actor": {
+        "code": 403,
+        "msg": "无权处理该任务"
+      },
+      "zero_side_effect_after_negatives": {
+        "action_rows": 2
+      }
+    }
+  },
+  "empty_counts": {
+    "action": 0,
+    "trace_usertask": 0,
+    "notify": 0
+  },
+  "_snapshot": {
+    "snapshotId": "i3-06-frozen-e",
+    "jar_sha256": "90d8bb895a129d523c67e327807840192c606d2fbee44ed7e049d0cc298a16ba",
+    "web_dist_merkle": "f16e31ae1869e5f176405b7d5bc21abcf6d3afc17848dee8c71858a52156e479",
+    "instance_A": "PID 26398 @ 8081",
+    "instance_B": "PID 26448 @ 8082",
+    "fingerprint_file": "evidence/i3-06/Z1/candidate-e.json",
+    "note": "supersedes frozen-a/b/c/d：负向终态覆盖、加签取消唯一键冲突、调度结果标注覆盖、内建函数白名单变量名四项修复后重冻结"
+  }
+}

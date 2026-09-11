@@ -1,0 +1,14 @@
+[OK] G6 APPROVE正向+重复
+[OK] G6 DISAPPROVE结算
+[OK] G6 REJECT流程级
+[FAIL] G7 RETURN合法/非法/新轮次 user2 todo missing at node B
+Traceback (most recent call last):
+  File "/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-04/scripts/step3_actions.py", line 144, in <module>
+    case("G7", "RETURN合法/非法/新轮次", g7_return)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-04/scripts/step3_actions.py", line 51, in case
+    entry = fn()
+  File "/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-04/scripts/step3_actions.py", line 125, in g7_return
+    assert task_b, "user2 todo missing at node B"
+           ^^^^^^
+AssertionError: user2 todo missing at node B

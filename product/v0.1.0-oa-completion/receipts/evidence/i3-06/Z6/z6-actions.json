@@ -1,0 +1,121 @@
+{
+  "_snapshot": {
+    "snapshotId": "i3-06-frozen-e",
+    "jar_sha256": "90d8bb895a129d523c67e327807840192c606d2fbee44ed7e049d0cc298a16ba",
+    "web_dist_merkle": "f16e31ae1869e5f176405b7d5bc21abcf6d3afc17848dee8c71858a52156e479",
+    "instance_A": "PID 26398 @ 8081",
+    "instance_B": "PID 26448 @ 8082",
+    "fingerprint_file": "evidence/i3-06/Z1/candidate-e.json",
+    "note": "supersedes frozen-a/b/c/d：负向终态覆盖、加签取消唯一键冲突、调度结果标注覆盖、内建函数白名单变量名四项修复后重冻结"
+  },
+  "rows": [
+    {
+      "case": "Z6-01-auto-approve",
+      "result": {
+        "marker": "z6-01-auto-approve-cb0947d7",
+        "deadline_id": "2098455785466699778",
+        "before": {
+          "deadline": "2098455785466699778|ced19d34-ae01-11f1-8706-d24845ae031d|PENDING|-|APPROVE|00:58:01",
+          "instance_status": "RUNNING",
+          "open_task": "1"
+        },
+        "after": {
+          "deadline": "2098455785466699778|ced19d34-ae01-11f1-8706-d24845ae031d|DONE|AUTO_APPROVE|APPROVE|00:58:01",
+          "instance_status": "APPROVED",
+          "action_rows": [
+            "2098456070943588353|node_1|ced19d34-ae01-11f1-8706-d24845ae031d|1|APPROVE|APPROVED|-|-|-|{\"comment\":\"\"}"
+          ]
+        },
+        "deadline_final": "2098455785466699778|ced19d34-ae01-11f1-8706-d24845ae031d|DONE|AUTO_APPROVE|APPROVE|00:58:01"
+      }
+    },
+    {
+      "case": "Z6-02-dual-scanner",
+      "result": {
+        "marker": "z6-02-dual-scan-ae68c2c3",
+        "instances": 12,
+        "deadline_ids": [
+          "2098456082788327425",
+          "2098456091273379842",
+          "2098456099884285954",
+          "2098456108583297025",
+          "2098456116984463362",
+          "2098456125633118209",
+          "2098456134227271682",
+          "2098456142846541825",
+          "2098456151516192769",
+          "2098456160278093825",
+          "2098456168800894977",
+          "2098456177436991490"
+        ],
+        "b_skip_lines": 0,
+        "a_done_lines": 3,
+        "b_done_lines": 10,
+        "skipped_by_b_and_completed": [],
+        "deadline_result_groups": "DONE/AUTO_APPROVE/12",
+        "log_files": [
+          "Z6/instance-a-scheduler.log",
+          "Z6/instance-b-scheduler.log"
+        ]
+      }
+    },
+    {
+      "case": "z6_dual_scanner",
+      "error": "AssertionError('B 日志无认领竞争跳过记录')"
+    },
+    {
+      "case": "Z6-03-remind-escalate",
+      "result": {
+        "marker": "z6-03-remind-808a603d",
+        "deadline_id": "2098456628005879809",
+        "before": {
+          "deadline": "2098456628005879809|468e148b-ae02-11f1-b512-d24845ae031d|PENDING|-|-|01:01:22",
+          "task": "468e148b-ae02-11f1-b512-d24845ae031d|1"
+        },
+        "after": {
+          "deadline": "2098456628005879809|468e148b-ae02-11f1-b512-d24845ae031d|DONE|ESCALATED|-|01:01:22",
+          "instance_status": "RUNNING",
+          "action_rows": [],
+          "notify": []
+        }
+      }
+    },
+    {
+      "case": "Z6-04-urge-manual",
+      "result": {
+        "marker": "z6-04-urge-8cf1b1d7",
+        "instance_pk": "2098456944105406466",
+        "urge_1": {
+          "result": "ACCEPTED",
+          "detail": "已通知待办人: [1]",
+          "recordId": "2098456956851896322"
+        },
+        "urge_2_repeat": {
+          "result": "COOLDOWN",
+          "detail": "冷却中，约 598 秒后可再次催办",
+          "recordId": "2098456961251721218"
+        },
+        "urge_rows": "",
+        "urge_notify_rows": ""
+      }
+    },
+    {
+      "case": "Z6-05-notify-failure",
+      "result": {
+        "marker": "z6-05-notify-failure-276d47fd",
+        "deadline_id": "2098456963197902849",
+        "before": {
+          "deadline": "2098456963197902849|762f8872-ae02-11f1-8706-d24845ae031d|PENDING|-|-|01:02:42",
+          "assignee": "unresolvable-recipient"
+        },
+        "after": {
+          "deadline": "2098456963197902849|762f8872-ae02-11f1-8706-d24845ae031d|DONE|ESCALATED|-|01:02:42",
+          "instance_status": "RUNNING",
+          "notify_for_task": "0",
+          "task_alive": "1"
+        },
+        "note": "收件人不可解析→提醒通知投递失败；deadline 仍推进 DONE/ESCALATED，任务与实例不回滚（调度器 notifyDeadline catch 不回滚 + 提交层 TZ 状态推进）"
+      }
+    }
+  ]
+}

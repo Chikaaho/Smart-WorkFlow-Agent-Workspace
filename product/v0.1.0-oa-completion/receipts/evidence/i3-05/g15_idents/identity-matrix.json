@@ -1,0 +1,80 @@
+{
+  "identities": [
+    {
+      "username": "admin",
+      "login": "OK",
+      "userId": "1",
+      "tenantId": "0",
+      "roles": "superadmin",
+      "realName": "系统管理员",
+      "superAdmin": true,
+      "permissionCount": 0
+    },
+    {
+      "username": "user2",
+      "login": "OK",
+      "userId": "2001",
+      "tenantId": "0",
+      "roles": "admin",
+      "realName": "审批人二号",
+      "superAdmin": false,
+      "permissionCount": 66
+    },
+    {
+      "username": "user3",
+      "login": "OK",
+      "userId": "2002",
+      "tenantId": "0",
+      "roles": "admin",
+      "realName": "受托人三号",
+      "superAdmin": false,
+      "permissionCount": 66
+    },
+    {
+      "username": "user4",
+      "login": "OK",
+      "userId": "2003",
+      "tenantId": "0",
+      "roles": "admin",
+      "realName": "沟通接收人",
+      "superAdmin": false,
+      "permissionCount": 66
+    },
+    {
+      "username": "user5",
+      "login": "OK",
+      "userId": "2004",
+      "tenantId": "0",
+      "roles": "",
+      "realName": "无权用户",
+      "superAdmin": false,
+      "permissionCount": 0
+    },
+    {
+      "username": "tenant1user",
+      "login": "OK",
+      "userId": "2901",
+      "tenantId": "1",
+      "roles": "admin",
+      "realName": "跨租户用户",
+      "superAdmin": false,
+      "permissionCount": 66
+    }
+  ],
+  "negative_action_index": {
+    "转办本人拒绝": "raw/step3 (2401 ACTION_SELF_INVALID)",
+    "无权处理任务(user4 complete)": "raw/step3 g11_communicate receiver_complete_rejected",
+    "跨租户 complete 拒绝": "raw/step6 g15 cross_tenant_complete",
+    "跨租户实例读取拒绝": "raw/step6 g15 cross_tenant_instance_read",
+    "无角色 user5": "本脚本 /me + raw/step6 v-perm 种子覆盖",
+    "越界撤回拒绝": "raw/step3 g11_withdraw boundary_reject",
+    "重复废弃幂等": "raw/step3 g11_discard repeat"
+  },
+  "_snapshot": {
+    "snapshotId": "i3-05-frozen-a",
+    "jar_sha256": "2900e136d1b99c41c8c5ad5bfc8a6ef2ee56d1e1ede3d0168f15072155150246",
+    "instance_A": "PID 64431 @ 8081",
+    "instance_B": "PID 64463 @ 8082",
+    "fingerprint_file": "evidence/i3-05/final-candidate-fingerprint.txt"
+  }
+}

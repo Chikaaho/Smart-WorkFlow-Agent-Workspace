@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-04/scripts/step20_actions2.py", line 76, in <module>
+    g6()
+    ~~^^
+  File "/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-04/scripts/step20_actions2.py", line 51, in g6
+    bk, pid = submit(PORT_A, "i3ev_d1", TI)
+              ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-04/scripts/step20_actions2.py", line 26, in submit
+    assert r["code"] == 0, r
+           ^^^^^^^^^^^^^^
+AssertionError: {'code': 1000, 'msg': "表单 'i3ev_d1' 不存在", 'data': None}

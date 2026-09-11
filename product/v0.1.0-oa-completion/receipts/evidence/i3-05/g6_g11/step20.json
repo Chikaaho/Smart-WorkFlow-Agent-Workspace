@@ -1,0 +1,199 @@
+{
+  "_snapshot": {
+    "snapshotId": "i3-05-frozen-a",
+    "jar_sha256": "2900e136d1b99c41c8c5ad5bfc8a6ef2ee56d1e1ede3d0168f15072155150246",
+    "instance_A": "PID 64431 @ 8081",
+    "instance_B": "PID 64463 @ 8082",
+    "fingerprint_file": "evidence/i3-05/final-candidate-fingerprint.txt"
+  },
+  "rows": [
+    {
+      "gid": "G6",
+      "case": "四动作语义分离",
+      "result": {
+        "disapprove": {
+          "http": {
+            "code": 0
+          },
+          "action_row": "DISAPPROVE|DISAPPROVED",
+          "status": "REJECTED",
+          "trace": ""
+        },
+        "reject": {
+          "http": {
+            "code": 0
+          },
+          "action_row": "REJECT|REJECTED",
+          "remaining_open_tasks": "0",
+          "status": "REJECTED"
+        },
+        "approve": {
+          "http": {
+            "code": 0
+          },
+          "action_row": "APPROVE|APPROVED",
+          "status": "APPROVED",
+          "repeat": {
+            "code": 2305,
+            "msg": "节点已被处理"
+          }
+        },
+        "verdict": "DISAPPROVE 行=DISAPPROVE/DISAPPROVED（节点结算语义，与流程级 REJECT 枚举分离）；REJECT 行=REJECT/REJECTED；轨迹非空；APPROVE 正向+重复明确拒绝"
+      }
+    },
+    {
+      "gid": "G7",
+      "case": "RETURN 合法/非法/新轮次/回看",
+      "result": {
+        "return_http": {
+          "code": 0
+        },
+        "round_row": "RETURN|1",
+        "old_task_open": "0",
+        "illegal_target": {
+          "code": 2306,
+          "msg": "退回目标节点不合法"
+        },
+        "rounds_after": "|APPROVE|APPROVED\n1|RETURN|RETURNED\n|APPROVE|APPROVED",
+        "trace": "Start:-\n审批A:-\n\n审批B:Change activity to node_1\n\n审批A:-\n审批B:-",
+        "verdict": "合法历史节点新轮次、旧轮次零双活、非法目标拒绝、轮次与取消原因可回看"
+      }
+    },
+    {
+      "gid": "G9a",
+      "case": "加签串行/顺序/失效人员",
+      "result": {
+        "serial_create": {
+          "create": {
+            "code": 0
+          },
+          "rows": "ADD_SIGN|0|PENDING|2001\nADD_SIGN|1|PENDING|2002"
+        },
+        "express_1": {
+          "code": 0
+        },
+        "express_2": {
+          "code": 0
+        },
+        "after": "ADD_SIGN|0|PENDING|2001\nADD_SIGN|1|PENDING|2002",
+        "invalid_user": {
+          "code": 2400,
+          "msg": "目标人员无效或不属于当前租户: 999999"
+        },
+        "verdict": "串行 seq_no 门控生效；失效人员拒绝"
+      }
+    },
+    {
+      "gid": "G9b",
+      "case": "补签 正向/重复/越权/原终态不变",
+      "result": {
+        "orig_status": "REJECTED",
+        "create": {
+          "code": 0
+        },
+        "assoc": "REJECTED|2001",
+        "repeat": {
+          "code": 2405,
+          "msg": "该参与人已有待处理补签，不得重复补签"
+        },
+        "cross_user": {
+          "code": 2404,
+          "msg": "仅发起人或系统管理员可对该实例补签"
+        },
+        "status_after": "REJECTED",
+        "verdict": "补签不改写原终态；重复/越权明确拒绝"
+      }
+    },
+    {
+      "gid": "G10a",
+      "case": "委托办理+回归/受控完成",
+      "result": {
+        "owner_after_delegate": "1",
+        "assignee_after_delegate": "2001",
+        "delegatee_complete": {
+          "code": 0
+        },
+        "final_status": "APPROVED",
+        "action_rows": "DELEGATE|1|-\nAPPROVE|2001|-",
+        "trace": "userTask:审批A(改):-\nstartEvent:Start:-\n\nendEvent:End:-",
+        "verdict": "owner 保留原责任人；受托人办理；终态/责任链可回看"
+      }
+    },
+    {
+      "gid": "G10b",
+      "case": "AUTHORIZE 正向/边界/撤销",
+      "result": {
+        "rule_create": {
+          "code": 0
+        },
+        "positive": {
+          "task_assignee": "2002",
+          "proxy_audit_row": "AUTHORIZE|2002|2001|PROXY_JOINED",
+          "agent_todo_found": true,
+          "agent_complete": {
+            "code": 0
+          }
+        },
+        "boundaries": {
+          "self_rejected": {
+            "code": 2401,
+            "msg": "不能转办/委托/授权给本人"
+          },
+          "cycle_rejected": {
+            "code": 2402,
+            "msg": "授权形成循环代理"
+          },
+          "conflict": {
+            "code": 2402,
+            "msg": "存在冲突的生效期间规则"
+          },
+          "revoke": {
+            "code": 0
+          },
+          "assignee_after_revoke": "2001"
+        }
+      }
+    },
+    {
+      "gid": "G11",
+      "case": "三动作对象链",
+      "result": {
+        "withdraw": {
+          "http": {
+            "code": 0
+          },
+          "status": "WITHDRAWN",
+          "open_tasks": "0",
+          "repeat": {
+            "code": 0,
+            "msg": "success"
+          }
+        },
+        "communicate": {
+          "create": {
+            "code": 0
+          },
+          "comm_row": "1->2003 msg=g11-comm reply=- status=PENDING",
+          "reply": {
+            "code": 0
+          },
+          "receiver_complete_denied": {
+            "code": 403,
+            "msg": "无权处理该任务"
+          }
+        },
+        "discard": {
+          "first": {
+            "code": 0
+          },
+          "status": "DISCARDED",
+          "repeat": {
+            "code": 0,
+            "msg": "success"
+          },
+          "trace": ""
+        }
+      }
+    }
+  ]
+}

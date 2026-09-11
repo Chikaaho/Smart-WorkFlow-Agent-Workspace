@@ -1,0 +1,76 @@
+{
+  "_snapshot": {
+    "snapshotId": "i3-05-frozen-a",
+    "jar_sha256": "2900e136d1b99c41c8c5ad5bfc8a6ef2ee56d1e1ede3d0168f15072155150246",
+    "instance_A": "PID 64431 @ 8081",
+    "instance_B": "PID 64463 @ 8082",
+    "fingerprint_file": "evidence/i3-05/final-candidate-fingerprint.txt"
+  },
+  "rows": [
+    {
+      "case": "test-report",
+      "source": "sw-biz/sw-bpm/sw-bpm-process/target/surefire-reports/com.sw.ck.bpm.process.service.NodeFunctionNegativeContractTest.txt",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "classes": [
+        "超时(2415)",
+        "异常(2414)",
+        "非法格式(2413)",
+        "超限输出(2413)",
+        "跨租户用户(2413)",
+        "FALLBACK策略",
+        "重复调用双行审计",
+        "审计完整性(actor/instance/node/idempotent 非空)",
+        "发布期跨租户函数隔离(2412)"
+      ]
+    },
+    {
+      "case": "production-registry-negative-scan",
+      "scan_root": "sw-bpm-process/src/main/java",
+      "terms": [
+        "func_slow_v1",
+        "func_bomb_v1",
+        "func_badfmt_v1",
+        "func_over_v1",
+        "func_fb_v1",
+        "func_ok_v1",
+        "func_cross_v1",
+        "func_secret_v1",
+        "g13aSlow",
+        "g13aBomb",
+        "g13aBadFmt",
+        "g13aOver",
+        "g13aFallback",
+        "g13aOk",
+        "g13aCross"
+      ],
+      "hits": {
+        "func_slow_v1": 0,
+        "func_bomb_v1": 0,
+        "func_badfmt_v1": 0,
+        "func_over_v1": 0,
+        "func_fb_v1": 0,
+        "func_ok_v1": 0,
+        "func_cross_v1": 0,
+        "func_secret_v1": 0,
+        "g13aSlow": 0,
+        "g13aBomb": 0,
+        "g13aBadFmt": 0,
+        "g13aOver": 0,
+        "g13aFallback": 0,
+        "g13aOk": 0,
+        "g13aCross": 0
+      },
+      "all_zero": true,
+      "verdict": "受控故障函数与测试 bean 仅存在于测试配置（src/test），生产注册表零脚本入口"
+    },
+    {
+      "case": "production-registry-and-runtime-audit",
+      "registry_rows": "9001|func_tenant_admins|1|RESOLVE_PARTICIPANTS|func_tenant_admins|enabled=1\n9002|func_audit_trail|1|HANDLE_RESULT|func_audit_trail|enabled=1\n9003|func_result_echo|1|HANDLE_RESULT|func_result_echo|enabled=1",
+      "audit_row_count": "1",
+      "audit_sample": "func_audit_trail|1|HANDLE_RESULT|SUCCEEDED|-|audit:23480d7a-adbb-11f1-b465-8e7a76db281d:node_1:outcome=APPROVED",
+      "verdict": "注册表仅含内建函数注册（无用户上传/脚本入口）；运行期审计每次调用一行（SUCCEEDED/FAILED+error_code+duration）"
+    }
+  ]
+}
