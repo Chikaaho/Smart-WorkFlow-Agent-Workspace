@@ -1,0 +1,293 @@
+== [1] 临时 PG 集群 ==
+postgres (PostgreSQL) 16.15 (Homebrew)
+INITDB_EXIT=0
+waiting for server to start.... done
+server started
+PGCTL_EXIT=0
+CREATE DATABASE
+CREATE_DB_OK
+PG_URL=jdbc:postgresql://localhost:50886/smart_workflow?user=postgres&password=postgres
+== [2] 种子身份（与既有回执口径一致 + 增加无角色 user5） ==
+ERROR:  relation "sys_user" does not exist
+LINE 1: INSERT INTO sys_user (id, create_time, update_time, deleted,...
+                    ^
+SEED_EXIT=3 (user5 id=2004 有意不绑角色——无权身份)
+ERROR:  relation "sys_user" does not exist
+LINE 1: ...ect id||':'||username||':tenant='||tenant_id from sys_user w...
+                                                             ^
+ERROR:  relation "sys_user_role" does not exist
+LINE 1: select user_id||'->role='||role_id from sys_user_role order ...
+                                                ^
+== [3] 启动双应用实例 ==
+JAR_SHA256=b7c5496abee899b3ec9f993e3b43218882386de6db4513a41426670b3f6fb372
+INSTANCE pid=21498 port=8081
+INSTANCE pid=21500 port=8082
+== [4] 等待两个实例 Started（最长 180s） ==
+t=5s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=10s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=15s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=20s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=25s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=30s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=35s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=40s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=45s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=50s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=55s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=60s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=65s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=70s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=75s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=80s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=85s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=90s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=95s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=100s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=105s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=110s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=115s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=120s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=125s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=130s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=135s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=140s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=145s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=150s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=155s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=160s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=165s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=170s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=175s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+t=180s started_a=0
+0 started_b=0
+0
+/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/env/start-runtime.sh: line 75: [: 0
+0: integer expression expected
+== [5] 健康检查 ==
+A /auth/challenge HTTP=000
+B /auth/challenge HTTP=000
+72
+== [6] 环境身份 ==
+PG: port=50886 datadir=/tmp/i3-03/pgdata pg_version=16.15
+A: port=8081 pid=21498
+B: port=8082 pid=21500
+JAR_SHA256=b7c5496abee899b3ec9f993e3b43218882386de6db4513a41426670b3f6fb372
+ENV: SW_CIPHER_KEY/SW_LOGIN_RSA_PRIVATE_KEY/SW_LOGIN_DIGEST_SECRET 两实例共享（值见脚本，测试专用非生产密钥）
+REDIS: localhost:6379 (系统 redis，双实例共用)
+RUNTIME_UP_AT=2026-09-11T09:14:37
+INSTANCE pid=21958 port=8081
+INSTANCE pid=21960 port=8082
+t=5s started_a=0 started_b=0
+t=10s started_a=0 started_b=0
+t=15s started_a=0 started_b=0
+t=20s started_a=0 started_b=0
+t=25s started_a=0 started_b=0
+t=30s started_a=0 started_b=0
+t=35s started_a=0 started_b=0
+t=40s started_a=0 started_b=0
+t=45s started_a=0 started_b=0
+t=50s started_a=0 started_b=0
+t=55s started_a=0 started_b=0
+t=60s started_a=0 started_b=0
+t=65s started_a=0 started_b=0
+t=70s started_a=0 started_b=0
+t=75s started_a=0 started_b=0
+t=80s started_a=0 started_b=0
+t=85s started_a=0 started_b=0
+t=90s started_a=0 started_b=0
+t=95s started_a=0 started_b=0
+t=100s started_a=0 started_b=0
+t=105s started_a=0 started_b=0
+t=110s started_a=0 started_b=0
+t=115s started_a=0 started_b=0
+t=120s started_a=0 started_b=0
+t=125s started_a=0 started_b=0
+t=130s started_a=0 started_b=0
+t=135s started_a=0 started_b=0
+t=140s started_a=0 started_b=0
+t=145s started_a=0 started_b=0
+t=150s started_a=0 started_b=0
+t=155s started_a=0 started_b=0
+t=160s started_a=0 started_b=0
+t=165s started_a=0 started_b=0
+t=170s started_a=0 started_b=0
+t=175s started_a=0 started_b=0
+t=180s started_a=0 started_b=0
+A /auth/challenge HTTP=000
+B /auth/challenge HTTP=000
+flyway_success=72
+users=1
+INSTANCES_UP_AT=2026-09-11T09:17:57
+INSTANCE pid=22572 port=8081
+INSTANCE pid=22574 port=8082
+t=5s started_a=0 started_b=0
+t=10s started_a=0 started_b=0
+t=15s started_a=0 started_b=0
+t=20s started_a=1 started_b=1
+== Flyway 建表完成后补种身份（v1 顺序错误已修正：先建表后种子） ==
+INSERT 0 5
+INSERT 0 4
+SEED_EXIT=0 (2004/user5 有意不绑角色——无权身份)
+A /auth/challenge HTTP=500
+B /auth/challenge HTTP=500
+flyway_success=72
+users=6
+INSTANCES_UP_AT=2026-09-11T09:20:28
+REDIS_16390=PONG
+INSTANCE pid=22769 port=8081
+INSTANCE pid=22771 port=8082
+t=5s started_a=0 started_b=0
+t=10s started_a=0 started_b=0
+t=15s started_a=0 started_b=0
+t=20s started_a=0 started_b=1
+t=25s started_a=1 started_b=1
+== Flyway 建表完成后补种身份（v1 顺序错误已修正：先建表后种子） ==
+INSERT 0 0
+INSERT 0 0
+SEED_EXIT=0 (2004/user5 有意不绑角色——无权身份)
+A /auth/challenge HTTP=200
+B /auth/challenge HTTP=200
+flyway_success=72
+users=6
+INSTANCES_UP_AT=2026-09-11T09:21:26
+RUNTIME_JAR_SHA256=52cf4ded6f6226ec16747f4d1e61632fabde55476ec55d4ff75c753e2462e754

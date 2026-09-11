@@ -1,0 +1,22 @@
+{
+  "snapshotId": "i3-06-frozen-d",
+  "frozen_at": "2026-09-12 00:30:52+08:00",
+  "supersedes": "i3-06-frozen-c（jar c5ee7177…）",
+  "supersede_reason": "Z6 双扫描器竞争波采出第三个真实缺陷：多实例竞争下败者分支以无条件 updateById 把胜者写的 AUTO_APPROVE 结果标注覆盖为 TASK_GONE，且提醒/升级通知未先原子认领（双实例可能双通知）。修复（claim 先行 + PENDING 条件推进）后重跑 Z1 全部门禁并冻结 frozen-d；frozen-c 上的行为采集全部作废重采。",
+  "fixes_since_frozen_a": [
+    "TaskActionService：processGone 重读实例状态，非 RUNNING 跳过动作侧终态改写（修 RATIO/ANY 负向被最后 APPROVE 覆盖）",
+    "ApprovalActionService.upsertDuplicate：动作行按 V74 唯一键幂等写入（修加签取消 500）",
+    "TaskDeadlineScheduler：TASK_GONE 分支改 PENDING 条件推进；提醒/升级先原子认领再通知（修结果标注覆盖与双通知）"
+  ],
+  "gate": {
+    "server_full_test": {"exit": 0, "log": "server-full-test-r5.stdout/-stderr/-exit", "counts": "surefire-totals-r5.txt：1261/0/0/0 全 reactor"},
+    "web_gates": {"typecheck": "web-typecheck-r4.exit=0", "lint": "web-lint-r4.exit=0", "test": "web-test-r4.exit=0", "build": "web-build-r4.exit=0"},
+    "migration_chain": "FlywayFullChain H2/PG 计入 server 全量（1261 中），终点版本 75",
+    "package": {"exit": 0, "log": "server-package-r4.stdout/-stderr/-exit"}
+  },
+  "backend_jar": {"path": "Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar", "sha256": ""},
+  "web_dist": {"path": "Smart-WorkFlow-Web/dist", "merkle_sha256": "f16e31ae1869e5f176405b7d5bc21abcf6d3afc17848dee8c71858a52156e479"},
+  "source_diff": {"server_diff_hash": "c7ea4de0db7f1f626b15cf741c392ae9791faa2afba496ffbbc6208a28504371", "web_diff_hash": "89aad6be7a632a5beb57349f4830837d0d8b1ba022cae2a8100eaa6a8a2063d8"},
+  "instances": {"A": "PID 23722 @ 8081", "B": "PID 23764 @ 8082", "log_files": "/tmp/i3-03/instance-a2.log, instance-b2.log（00:30 截断 = Z6 干净窗口）"},
+  "post_freeze_rule": "冻结后零代码修改、零重打包、零 dist 重建；Z2—Z9 行为采集只引用本 candidate 的唯一 snapshotId/JAR/Web hash。"
+}

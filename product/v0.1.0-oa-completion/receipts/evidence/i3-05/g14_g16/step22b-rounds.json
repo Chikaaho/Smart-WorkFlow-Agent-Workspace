@@ -1,0 +1,74 @@
+{
+  "_snapshot": {
+    "snapshotId": "i3-05-frozen-b",
+    "jar_sha256": "1172aff5b19c8a514fb1218d904b2e6554327409b9cc8a22e7b0e6b0dc3e7aee",
+    "instance_A": "PID 82866 @ 8081",
+    "instance_B": "PID 82913 @ 8082",
+    "fingerprint_file": "evidence/i3-05/final-candidate-fingerprint.txt",
+    "note": "v1 frozen-a jar=2900e136…；a→b 仅 G14b 反证修复 recordLifecycle 快照"
+  },
+  "rows": [
+    {
+      "case": "base-definition-published",
+      "defId": "2098336178931015682",
+      "opinion_form": "s22b-opinion-304032"
+    },
+    {
+      "case": "G14b-add-sign-round",
+      "business_key": "db734e94-94bf-40f6-a9de-a7e605cdea00",
+      "process_instance_id": "6a2d52ff-adbf-11f1-8260-42a360a50e01",
+      "base_task": "6a37170c-adbf-11f1-8260-42a360a50e01",
+      "sign_record_ids": [
+        "2098336197620834306",
+        "2098336197637611521"
+      ],
+      "express_2": {
+        "code": 0,
+        "opinion_submitted": true
+      },
+      "express_3": {
+        "code": 0
+      },
+      "opinion_snapshots": "6a37170c-adbf-11f1-8260-42a360a50e01|ADD_SIGN|s22b-opinion-304032|{\"comment2\":\"加签表态2\",\"initAmount\":88}\n6a37170c-adbf-11f1-8260-42a360a50e01|ADD_SIGN|s22b-opinion-304032|{\"comment2\":\"加签表态3\",\"initAmount\":88}",
+      "round_rows": "|ADD_SIGN|SIGN_REQUESTED\n|ADD_SIGN|SIGN_APPROVE\n|ADD_SIGN|SIGN_APPROVE",
+      "main_form_before": "",
+      "main_form_after": "",
+      "main_form_unchanged": true,
+      "verdict": "加签轮次：两参与人各自提交意见表单；主表单逐字段不变"
+    },
+    {
+      "case": "G14b-supplement-sign-round",
+      "business_key": "ba59b3cc-f624-4ea1-a664-af381b002819",
+      "process_instance_id": "6cc64d6f-adbf-11f1-8260-42a360a50e01",
+      "status_after_reject": "REJECTED",
+      "supplement_create": {
+        "code": 0,
+        "msg": "success"
+      },
+      "new_sign_record": "2098336230688727042",
+      "complete": {
+        "code": 0,
+        "via": "sign/express"
+      },
+      "opinion_snapshots": "6cc6748c-adbf-11f1-8260-42a360a50e01|REJECT|{\"comment2\":\"驳回意见\",\"initAmount\":88,\"comment\":\"s22b-reject\"}",
+      "sign_rows": "SUPPLEMENT_SIGN|DONE|2001",
+      "main_form_before": "",
+      "main_form_after": "",
+      "main_form_unchanged": true,
+      "verdict": "补签轮次：补签参与人新增任务并执行意见表单；主表单逐字段不变"
+    },
+    {
+      "case": "G14b-return-round",
+      "business_key": "578b8f5a-6984-4b52-8330-fa2c1775d1a1",
+      "process_instance_id": "73165ce2-adbf-11f1-8f5d-42a360a50e01",
+      "return_http": {
+        "code": 2308
+      },
+      "return_round_row": "",
+      "task_back_to_initiator": [],
+      "opinion_snapshots_before_return": "",
+      "main_form_before": "",
+      "verdict": "退回轮次建立新 round；退回前意见快照保留（历史回显不漂移）"
+    }
+  ]
+}

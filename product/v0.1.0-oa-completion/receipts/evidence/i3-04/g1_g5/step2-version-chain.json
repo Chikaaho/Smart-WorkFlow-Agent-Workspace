@@ -1,0 +1,131 @@
+[
+  {
+    "case": "publish-v2",
+    "version": 2,
+    "processDefinitionId": "bpm_7af6c64295bf489e:3:3e70ba91-ad9a-11f1-8e1b-628dc5168c33",
+    "deploymentId": "3e64376e-ad9a-11f1-8e1b-628dc5168c33"
+  },
+  {
+    "case": "versions-frozen-graph",
+    "versions": [
+      {
+        "id": "2098269221263282178",
+        "createTime": "2026-09-11T12:35:40.963892",
+        "createBy": "1",
+        "updateTime": "2026-09-11T12:35:40.963901",
+        "updateBy": "1",
+        "deleted": 0,
+        "version": "0",
+        "tenantId": "0",
+        "defId": "2098265683422371842",
+        "graphVersion": 3,
+        "status": "PUBLISHED",
+        "name": "I3证据-单审批",
+        "formKey": "i3ev_d1",
+        "formVersion": "2",
+        "functionVersions": "{}",
+        "deploymentId": "3e64376e-ad9a-11f1-8e1b-628dc5168c33",
+        "processDefinitionId": "bpm_7af6c64295bf489e:3:3e70ba91-ad9a-11f1-8e1b-628dc5168c33",
+        "publishedBy": "1",
+        "publishedAt": "2026-09-11T12:35:40.963684"
+      },
+      {
+        "id": "2098269212820148225",
+        "createTime": "2026-09-11T12:35:38.951172",
+        "createBy": "1",
+        "updateTime": "2026-09-11T12:35:38.951183",
+        "updateBy": "1",
+        "deleted": 0,
+        "version": "0",
+        "tenantId": "0",
+        "defId": "2098265683422371842",
+        "graphVersion": 2,
+        "status": "PUBLISHED",
+        "name": "I3证据-单审批",
+        "formKey": "i3ev_d1",
+        "formVersion": "2",
+        "functionVersions": "{}",
+        "deploymentId": "3d11c6b6-ad9a-11f1-8e1b-628dc5168c33",
+        "processDefinitionId": "bpm_7af6c64295bf489e:2:3d31f8e9-ad9a-11f1-8e1b-628dc5168c33",
+        "publishedBy": "1",
+        "publishedAt": "2026-09-11T12:35:38.950794"
+      },
+      {
+        "id": "2098265685636964353",
+        "createTime": "2026-09-11T12:21:38.004747",
+        "createBy": "1",
+        "updateTime": "2026-09-11T12:21:38.004753",
+        "updateBy": "1",
+        "deleted": 0,
+        "version": "0",
+        "tenantId": "0",
+        "defId": "2098265683422371842",
+        "graphVersion": 1,
+        "status": "PUBLISHED",
+        "name": "I3证据-单审批",
+        "formKey": "i3ev_d1",
+        "formVersion": "2",
+        "functionVersions": "{}",
+        "deploymentId": "47cb0ed0-ad98-11f1-bd88-628dc5168c33",
+        "processDefinitionId": "bpm_7af6c64295bf489e:1:47fd6973-ad98-11f1-bd88-628dc5168c33",
+        "publishedBy": "1",
+        "publishedAt": "2026-09-11T12:21:38.002543"
+      }
+    ],
+    "v1_elements": 5,
+    "v2_elements": 5
+  },
+  {
+    "case": "failed-publish-zero-deploy",
+    "errorCode": 2002,
+    "msg": "图缺少结束节点",
+    "deployments_before": "34",
+    "deployments_after": "34"
+  },
+  {
+    "case": "frozen-rows",
+    "versions": [
+      3,
+      2,
+      1
+    ],
+    "deployIds": [
+      "3d11c6b6-ad9a-11f1-8e1b-628dc5168c33",
+      "3e64376e-ad9a-11f1-8e1b-628dc5168c33",
+      "47cb0ed0-ad98-11f1-bd88-628dc5168c33"
+    ]
+  },
+  {
+    "case": "suspend-v2",
+    "versionStatus": {
+      "3": "SUSPENDED",
+      "2": "PUBLISHED",
+      "1": "PUBLISHED"
+    },
+    "flowableSuspensionState": "2"
+  },
+  {
+    "case": "activate-v2",
+    "versionStatus": {
+      "3": "PUBLISHED",
+      "2": "PUBLISHED",
+      "1": "PUBLISHED"
+    },
+    "flowableSuspensionState": "1"
+  },
+  {
+    "case": "safe-delete",
+    "draftDelete": "ok",
+    "publishedDelete": {
+      "code": 2416,
+      "msg": "发布版本状态不允许该操作",
+      "data": null
+    }
+  },
+  {
+    "case": "instance-binds-published-version",
+    "recordId": "1be8ce36-7a6a-41ba-bdc7-29c0de82540d",
+    "processInstanceId": "3ef21f92-ad9a-11f1-8e1b-628dc5168c33",
+    "defVersion": "3"
+  }
+]

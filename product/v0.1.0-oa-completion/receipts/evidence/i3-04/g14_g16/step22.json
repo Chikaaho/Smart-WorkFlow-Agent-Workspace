@@ -1,0 +1,147 @@
+[
+  {
+    "gid": "G14a",
+    "case": "I2 全组件 17 类 → 意见表单适用矩阵",
+    "result": {
+      "i2_catalog": [
+        "TEXT",
+        "RICH_TEXT",
+        "NUMBER",
+        "DATE",
+        "BOOL",
+        "DICT",
+        "REFERENCE",
+        "TABLE",
+        "MULTISELECT",
+        "ATTACHMENT",
+        "IMAGE",
+        "LABEL",
+        "TIME",
+        "USER",
+        "DEPT",
+        "FORMULA",
+        "DATASOURCE"
+      ],
+      "accepted_for_opinion": [
+        "TEXT",
+        "NUMBER"
+      ],
+      "rejected_with_code": [
+        [
+          "RICH_TEXT",
+          [
+            2417
+          ]
+        ],
+        [
+          "DATE",
+          [
+            2417
+          ]
+        ],
+        [
+          "BOOL",
+          [
+            2417
+          ]
+        ],
+        [
+          "DICT",
+          [
+            2417
+          ]
+        ],
+        [
+          "REFERENCE",
+          [
+            2417
+          ]
+        ],
+        [
+          "TABLE",
+          [
+            2417
+          ]
+        ],
+        [
+          "MULTISELECT",
+          [
+            2417
+          ]
+        ],
+        [
+          "ATTACHMENT",
+          [
+            2417
+          ]
+        ],
+        [
+          "IMAGE",
+          [
+            2417
+          ]
+        ],
+        [
+          "LABEL",
+          [
+            2417
+          ]
+        ],
+        [
+          "TIME",
+          [
+            2417
+          ]
+        ],
+        [
+          "USER",
+          [
+            2417
+          ]
+        ],
+        [
+          "DEPT",
+          [
+            2417
+          ]
+        ],
+        [
+          "FORMULA",
+          [
+            2417
+          ]
+        ],
+        [
+          "DATASOURCE",
+          [
+            2417
+          ]
+        ]
+      ],
+      "verdict": "矩阵覆盖 I2 组件全集；接受项可在意见表单使用（服务端校验/历史回显按方向）,拒绝项 2417=设计端拒绝且构造请求侧 ApprovalOpinionValidator 同口径拒绝（SUPPORTED_TYPES）"
+    }
+  },
+  {
+    "gid": "G14b",
+    "case": "初始化映射+普通审批+会签意见",
+    "result": {
+      "normal": {
+        "task_detail_has_opinion_form": true,
+        "init_value_visible": true,
+        "submit": {
+          "code": 0
+        },
+        "snapshot": "{\"comment2\":\"ok\",\"initAmount\":123}|{\"opinionForm\":{\"formId\":\"i3ev-opinion-s22\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"审批说明\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"initAmount\",\"label\":\"主表金额(只读初始化)\",\"type\":\"NUMBER\",\"required\":false,\"initialExpression\":\"${amount}\"},{\"key\":\"note\",\"label\":\"备注\",\"",
+        "status": "APPROVED"
+      },
+      "consensus": {
+        "v1": {
+          "code": 0
+        },
+        "v1_row": "{\"comment2\":\"c1\",\"initAmount\":1}",
+        "v2_found": true,
+        "status": "RUNNING"
+      }
+    }
+  }
+]

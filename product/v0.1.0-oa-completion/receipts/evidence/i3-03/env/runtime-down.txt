@@ -1,0 +1,15 @@
+== I3-03 运行时清理 ==
+CLEANUP_START=2026-09-11T13:20:15
+== 清理前进程快照 ==
+REDIS_16390_SHUTDOWN
+server stopped
+PG_STOPPED
+PGDATA_REMOVED
+RSA_PEM_REMOVED
+== 清理后校验 ==
+PORT_8081=0 rows
+PORT_8082=0 rows
+PORT_50886=0 rows
+PORT_16390=Could not connect to Redis at 127.0.0.1:16390: Connection refused
+RESIDUAL_PROC_ROWS=0
+CLEANUP_DONE=2026-09-11T13:20:17

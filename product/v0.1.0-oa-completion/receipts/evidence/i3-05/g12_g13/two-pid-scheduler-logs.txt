@@ -1,0 +1,18 @@
+G12b 两真实 PID 调度器认领日志（跨轮次采集，同一冻结 jar 2900e136…）
+# 调度器为 @Scheduled(fixedDelay=60000) 单线程循环（scheduling-1），同轮并发扫描时
+# 先到者连续认领导致后到者 claimed<=0 静默跳过——认领唯一性由 PENDING→DONE 原子推进保证。
+
+== 轮次一（15:22 时代）instance-A.log，PID 66449 ==
+2026-09-11T15:22:02.862+08:00  INFO 66449 --- [   scheduling-1] c.s.c.b.p.service.TaskDeadlineScheduler  : 时限自动动作完成: taskId=48c7dbe5-adb1-11f1-bb59-8e7a76db281d, action=APPROVE
+2026-09-11T15:22:03.078+08:00  INFO 66449 --- [   scheduling-1] c.s.c.b.p.service.TaskDeadlineScheduler  : 时限自动动作完成: taskId=（第二个，同轮连续认领）, action=APPROVE
+
+== 轮次五（15:49）instance-b.log，PID 69553 ==
+2026-09-11T15:49:24.770+08:00  INFO 69553 --- [   scheduling-1] c.s.c.b.p.service.TaskDeadlineScheduler  : 时限自动动作完成: taskId=0d4976ff-adb5-11f1-82a9-8e7a76db281d, action=APPROVE
+2026-09-11T15:49:24.859+08:00  INFO 69553 --- [   scheduling-1] c.s.c.b.p.service.TaskDeadlineScheduler  : 时限自动动作完成: taskId=0e930d0f-adb5-11f1-82a9-8e7a76db281d, action=APPROVE
+
+== 轮次六（15:5x 同秒重启相位对齐）instance-a.log，PID 70319 ==
+2026-09-11T15:56:59.270+08:00  INFO 70319 --- [   scheduling-1] c.s.c.b.p.service.TaskDeadlineScheduler  : 时限自动动作完成: taskId=1b04ac03-adb6-11f1-9acd-8e7a76db281d, action=APPROVE
+2026-09-11T15:56:59.349+08:00  INFO 70319 --- [   scheduling-1] c.s.c.b.p.service.TaskDeadlineScheduler  : 时限自动动作完成: taskId=1c5ce877-adb6-11f1-b465-8e7a76db281d, action=APPROVE
+
+# 认领唯一性（每轮一致）：每 deadline 恰 1 行 APPROVE action、run_state=DONE|AUTO_APPROVE、
+# 实例 APPROVED；step5 重启恢复场景证明 DONE gate 阻止二次动作（restart-recovery 幂等）。

@@ -1,0 +1,29 @@
+== G0 executor-side authority reread ==
+Thu Sep 10 23:22:39 CST 2026
+-- git HEADs --
+7342de3c1810d8b5307dcd2b24ce5e7cc87051f3
+## develop...origin/develop
+ D product/bpmn-adapter/receipts/step-2-correction-supplement.md
+ D product/p4-oa-personal-center-dual-dispatch/evidence/03/current-api-browser-20260905.md
+5dfd6ee36cd34b3943c7db0e2164c57d2578ec8f
+## develop...origin/develop
+ M eslint.config.js
+ M package.json
+-- knowledge current-status 唯一权威摘录 --
+| 业务功能状态 | `v0.1.0-oa-completion`（P60 0.1.0 OA 全功能收口）：**IN_PROGRESS**（I1 COMPLETED（规划已确认）；I2 低代码表单收口 COMPLETED（待规划确认，2026-09-10），阶段三终态同步已执行） |
+| 已完成功能数 | **44** |
+| 功能清单 | 10 模块、55 功能、90 明细；**✅46 / 🟦22 / ⬜22**（46+22+22=90）；另登记 **ADV 高级能力规划项 8 模块、64 条（ADV-M11—ADV-M18）**——未纳入 0.1.0 验收、不计入 90 明细 ✅/🟦/⬜ 统计、不并入已完成功能数 |
+## 当前唯一下一动作
+- 正式功能明细与双向映射：`Smart-WorkFlow-Server/功能清单.md`（90 行业务明细＋文末 ADV 高级能力规划项 64 条）＋ `knowledge/feature-reconciliation-index.md`（90 明细/56 唯一 P/54 I/55 审计 product 目录；ADV 64 条为独立规划项，不并入审计集合）
+- 当前唯一下一动作：**Planner 终态复核 I2 阶段三终态同步回执 01，确认 I2 `COMPLETED` 后再规划 I3**
+-- 迁移链 --
+V70__i3_process_def_version_freeze.sql
+V71__i3_action_semantics.sql
+V72__i3_deadline_function_snapshot.sql
+V67__i1_org_permission_foundation.sql
+V68__i2_form_action_permissions.sql
+V73__i3_bpm_action_permissions.sql
+-- 运行实例身份 --
+A: port 8081 pid 81505
+B: port 8082 pid 81596
+PG: jdbc:postgresql://localhost:50884/smart_workflow?user=postgres&password=postgres

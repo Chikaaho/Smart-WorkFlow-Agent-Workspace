@@ -1,0 +1,122 @@
+{
+  "defId": "2098321447826546689",
+  "frozen_v1": {
+    "version": 1,
+    "processDefinitionId": "bpm_1bd218acf31e4d52:1:3c97d62f-adb7-11f1-9acd-8e7a76db281d"
+  },
+  "binding_after_publish": "t",
+  "missing_required_rejected": {
+    "code": 2308,
+    "msg": "审批意见不能为空"
+  },
+  "bad_radio_rejected": {
+    "code": 2307,
+    "msg": "审批意见不合法"
+  },
+  "valid_submit": {
+    "code": 0
+  },
+  "action_row_v1": "APPROVE|i3ev-opinion-o4|v1|{\"comment2\":\"同意\",\"level\":\"A\"}",
+  "snapshot_v1": {
+    "opinionForm": {
+      "formId": "i3ev-opinion-o4",
+      "version": "v1",
+      "fields": [
+        {
+          "key": "comment2",
+          "label": "审批说明",
+          "type": "TEXT",
+          "required": true,
+          "maxLength": 200
+        },
+        {
+          "key": "level",
+          "label": "等级",
+          "type": "RADIO",
+          "options": [
+            "A",
+            "B"
+          ],
+          "required": true
+        },
+        {
+          "key": "note",
+          "label": "备注",
+          "type": "NOTE"
+        }
+      ]
+    },
+    "opinionFormId": "i3ev-opinion-o4",
+    "opinionFormVersion": "v1"
+  },
+  "v2_publish": {
+    "code": 0,
+    "version": 2
+  },
+  "immutable_snapshot_after_v2": true,
+  "v2_submit_by_v2_rules": {
+    "code": 0
+  },
+  "component_matrix": [
+    {
+      "fieldType": "TEXT",
+      "publishAccepted": true,
+      "rejectCode": null
+    },
+    {
+      "fieldType": "TEXTAREA",
+      "publishAccepted": true,
+      "rejectCode": null
+    },
+    {
+      "fieldType": "NUMBER",
+      "publishAccepted": true,
+      "rejectCode": null
+    },
+    {
+      "fieldType": "RADIO",
+      "publishAccepted": true,
+      "rejectCode": null
+    },
+    {
+      "fieldType": "CHECKBOX",
+      "publishAccepted": true,
+      "rejectCode": null
+    },
+    {
+      "fieldType": "SELECT",
+      "publishAccepted": true,
+      "rejectCode": null
+    },
+    {
+      "fieldType": "DATETIME",
+      "publishAccepted": true,
+      "rejectCode": null
+    },
+    {
+      "fieldType": "NOTE",
+      "publishAccepted": true,
+      "rejectCode": null
+    },
+    {
+      "fieldType": "RICH_TEXT",
+      "publishAccepted": false,
+      "rejectCode": 2417
+    }
+  ],
+  "g15": {
+    "cross_tenant_todo_count": 0,
+    "leak": false,
+    "cross_tenant_complete": {
+      "code": 403,
+      "msg": "无权处理该任务"
+    }
+  },
+  "_snapshot": {
+    "snapshotId": "i3-05-frozen-a",
+    "jar_sha256": "2900e136d1b99c41c8c5ad5bfc8a6ef2ee56d1e1ede3d0168f15072155150246",
+    "instance_A": "PID 64431 @ 8081",
+    "instance_B": "PID 64463 @ 8082",
+    "fingerprint_file": "evidence/i3-05/final-candidate-fingerprint.txt"
+  }
+}

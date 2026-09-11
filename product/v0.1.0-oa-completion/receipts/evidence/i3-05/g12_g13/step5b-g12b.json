@@ -1,0 +1,104 @@
+{
+  "_snapshot": {
+    "snapshotId": "i3-05-frozen-a",
+    "jar_sha256": "2900e136d1b99c41c8c5ad5bfc8a6ef2ee56d1e1ede3d0168f15072155150246",
+    "instance_A": "PID 64431 @ 8081",
+    "instance_B": "PID 64463 @ 8082",
+    "fingerprint_file": "evidence/i3-05/final-candidate-fingerprint.txt"
+  },
+  "rows": [
+    {
+      "case": "both-instances-simultaneous-restart",
+      "A": {
+        "port": 8081,
+        "new_pid": "70319",
+        "same_minute_launch": true
+      },
+      "B": {
+        "port": 8082,
+        "new_pid": "70321",
+        "same_minute_launch": true
+      },
+      "verdict": "A/B 同秒启动 → @Scheduled fixedDelay 首扫相位对齐 → 到期后同轮并发扫描同一 PENDING 集"
+    },
+    {
+      "case": "two-due-deadlines-created",
+      "results": [
+        {
+          "seq": 61,
+          "business_key": "2cf7b2cc-5cfa-4ec1-bb0d-d4107da6b57c",
+          "process_instance_id": "1afdce26-adb6-11f1-9acd-8e7a76db281d",
+          "task_id": "1b04ac03-adb6-11f1-9acd-8e7a76db281d",
+          "deadline_id": "2098319412288872449",
+          "due_at": "2026-09-11 15:56:07.435861",
+          "run_state_before": "PENDING",
+          "run_state_after": "DONE|AUTO_APPROVE",
+          "action_rows": "1",
+          "instance_status": "APPROVED",
+          "deadline_update_by": "1"
+        },
+        {
+          "seq": 52,
+          "business_key": "f5b051d2-5d58-4ce6-8f8f-8a2268abe9da",
+          "process_instance_id": "1c55bc7a-adb6-11f1-b465-8e7a76db281d",
+          "task_id": "1c5ce877-adb6-11f1-b465-8e7a76db281d",
+          "deadline_id": "2098319421788934145",
+          "due_at": "2026-09-11 15:56:09.698724",
+          "run_state_before": "PENDING",
+          "run_state_after": "DONE|AUTO_APPROVE",
+          "action_rows": "1",
+          "instance_status": "APPROVED",
+          "deadline_update_by": "1"
+        }
+      ],
+      "verdict": "同一 D6 定义两个实例，deadline PENDING 未到期前无人认领"
+    },
+    {
+      "case": "claim-uniqueness-check",
+      "results": [
+        {
+          "seq": 61,
+          "business_key": "2cf7b2cc-5cfa-4ec1-bb0d-d4107da6b57c",
+          "process_instance_id": "1afdce26-adb6-11f1-9acd-8e7a76db281d",
+          "task_id": "1b04ac03-adb6-11f1-9acd-8e7a76db281d",
+          "deadline_id": "2098319412288872449",
+          "due_at": "2026-09-11 15:56:07.435861",
+          "run_state_before": "PENDING",
+          "run_state_after": "DONE|AUTO_APPROVE",
+          "action_rows": "1",
+          "instance_status": "APPROVED",
+          "deadline_update_by": "1"
+        },
+        {
+          "seq": 52,
+          "business_key": "f5b051d2-5d58-4ce6-8f8f-8a2268abe9da",
+          "process_instance_id": "1c55bc7a-adb6-11f1-b465-8e7a76db281d",
+          "task_id": "1c5ce877-adb6-11f1-b465-8e7a76db281d",
+          "deadline_id": "2098319421788934145",
+          "due_at": "2026-09-11 15:56:09.698724",
+          "run_state_before": "PENDING",
+          "run_state_after": "DONE|AUTO_APPROVE",
+          "action_rows": "1",
+          "instance_status": "APPROVED",
+          "deadline_update_by": "1"
+        }
+      ],
+      "dup_check": "1b04ac03-adb6-11f1-9acd-8e7a76db281d=1\n1c5ce877-adb6-11f1-b465-8e7a76db281d=1",
+      "verdict": "每个 deadline 仅一行 APPROVE action（认领原子唯一），实例被自动动作推进为 APPROVED"
+    },
+    {
+      "case": "two-pid-scheduler-logs",
+      "instance_A_log": {
+        "pid": "70319",
+        "file": "/tmp/i3-03/instance-a.log",
+        "lines": "2026-09-11T15:56:59.270+08:00  INFO 70319 --- [   scheduling-1] c.s.c.b.p.service.TaskDeadlineScheduler  : 时限自动动作完成: taskId=1b04ac03-adb6-11f1-9acd-8e7a76db281d, action=APPROVE\n2026-09-11T15:56:59.349+08:00  INFO 70319 --- [   scheduling-1] c.s.c.b.p.service.TaskDeadlineScheduler  : 时限自动动作完成: taskId=1c5ce877-adb6-11f1-b465-8e7a76db281d, action=APPROVE"
+      },
+      "instance_B_log": {
+        "pid": "70321",
+        "file": "/tmp/i3-03/instance-b.log",
+        "lines": ""
+      },
+      "verdict": "两个真实 java 进程的 @Scheduled 调度器各自留下处理行（认领成功路径）,认领由 DB 原子推进 PENDING→DONE 保证唯一；重启未换 jar（同一 sha256）"
+    }
+  ]
+}

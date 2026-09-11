@@ -1,0 +1,115 @@
+{
+  "defId": "2098251491529318401",
+  "frozen_v1": {
+    "version": 1,
+    "processDefinitionId": "bpm_b3c3e74b31ae4c43:1:66f27ed4-ad90-11f1-ac37-ee8448c149f7"
+  },
+  "binding_after_publish": "t",
+  "missing_required_rejected": {
+    "code": 2308,
+    "msg": "审批意见不能为空"
+  },
+  "bad_radio_rejected": {
+    "code": 2307,
+    "msg": "审批意见不合法"
+  },
+  "valid_submit": {
+    "code": 0
+  },
+  "action_row_v1": "APPROVE|i3ev-opinion-o4|v1|{\"comment2\":\"同意\",\"level\":\"A\"}",
+  "snapshot_v1": {
+    "opinionForm": {
+      "formId": "i3ev-opinion-o4",
+      "version": "v1",
+      "fields": [
+        {
+          "key": "comment2",
+          "label": "审批说明",
+          "type": "TEXT",
+          "required": true,
+          "maxLength": 200
+        },
+        {
+          "key": "level",
+          "label": "等级",
+          "type": "RADIO",
+          "options": [
+            "A",
+            "B"
+          ],
+          "required": true
+        },
+        {
+          "key": "note",
+          "label": "备注",
+          "type": "NOTE"
+        }
+      ]
+    },
+    "opinionFormId": "i3ev-opinion-o4",
+    "opinionFormVersion": "v1"
+  },
+  "v2_publish": {
+    "code": 0,
+    "version": 2
+  },
+  "immutable_snapshot_after_v2": true,
+  "v2_submit_by_v2_rules": {
+    "code": 0
+  },
+  "component_matrix": [
+    {
+      "fieldType": "TEXT",
+      "publishAccepted": true,
+      "rejectCode": null
+    },
+    {
+      "fieldType": "TEXTAREA",
+      "publishAccepted": true,
+      "rejectCode": null
+    },
+    {
+      "fieldType": "NUMBER",
+      "publishAccepted": true,
+      "rejectCode": null
+    },
+    {
+      "fieldType": "RADIO",
+      "publishAccepted": true,
+      "rejectCode": null
+    },
+    {
+      "fieldType": "CHECKBOX",
+      "publishAccepted": true,
+      "rejectCode": null
+    },
+    {
+      "fieldType": "SELECT",
+      "publishAccepted": true,
+      "rejectCode": null
+    },
+    {
+      "fieldType": "DATETIME",
+      "publishAccepted": true,
+      "rejectCode": null
+    },
+    {
+      "fieldType": "NOTE",
+      "publishAccepted": true,
+      "rejectCode": null
+    },
+    {
+      "fieldType": "RICH_TEXT",
+      "publishAccepted": false,
+      "rejectCode": 2417
+    }
+  ],
+  "g15": {
+    "cross_tenant_todo_count": 0,
+    "leak": false,
+    "cross_tenant_complete": {
+      "code": 403,
+      "msg": "无权处理该任务"
+    }
+  }
+}

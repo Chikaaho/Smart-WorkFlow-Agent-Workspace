@@ -1,0 +1,144 @@
+===== LOGIN CHAIN 2026-09-11T07:14:29.584Z =====
+GET /api/auth/challenge (用户名=admin 端口=8081)
+----- RESP -----
+{"code":0,"msg":"success","data":{"captchaImage":"data:image/png;base64,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","captchaId":"9c24449d-521c-428d-becb-8ed0a2bd13b1","publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsDYGzaq4GSYV8zdPnyIg/MCATP+29HW1mcaGTQ8NhFK3vTzg6OvkPLrQctVUn1SXlQ1ScSiTLWmJVZ5xiubrwlu1YhLqh7xGHpwVjiZVBdvL1oGEDTyoq5rLAqhgNi3gDBGS0YikEjAMgv/2qoOY7hoNktGr02eFVqWIO7tTB14oVwPHVNTiJqhv8W2eOB8dehKcQtp1hsZ7fKXqcGnPIg5iM8pt/DZTpkjncSBvKSL05RXWyucqBSpKmYBMAVqQJizCW9XeUCXcEuBfJE9SpS4qEQDkVe/bX9P04bKuKap0TwCh3pna9UpqchkaQaAv53IFN9EgSNOCHHBcY5QNLQIDAQAB","keyVersion":"v1","expiresIn":"300","serverTime":"1789110869433"}}
+----- REQ POST /api/auth/login -----
+{"username":"admin","password":"[REDACTED_PASSWORD]","captcha":"1234","captchaId":"9c24449d-521c-428d-becb-8ed0a2bd13b1","timestamp":"masked"}
+----- RESP -----
+{"code":0,"msg":"success","data":{"accessToken":"[REDACTED_JWT]","expiresIn":"900"}}
+
+===== LOGIN OK 0001 2026-09-11T15:14:29 =====
+POST /api/auth/login (challenge->RSA-OAEP->login 链) user=admin port=8081
+----- RESP -----
+accessToken_len=146 accessToken_sha256=2e5c4086be41beca490ee56a1eb885a16f63e013fa7a7ebdc695eadff6683212
+
+===== LOGIN CHAIN 2026-09-11T07:14:29.838Z =====
+GET /api/auth/challenge (用户名=admin 端口=8081)
+----- RESP -----
+{"code":0,"msg":"success","data":{"captchaImage":"data:image/png;base64,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","captchaId":"105b65da-8700-49c7-a389-e35bcdd7e89c","publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsDYGzaq4GSYV8zdPnyIg/MCATP+29HW1mcaGTQ8NhFK3vTzg6OvkPLrQctVUn1SXlQ1ScSiTLWmJVZ5xiubrwlu1YhLqh7xGHpwVjiZVBdvL1oGEDTyoq5rLAqhgNi3gDBGS0YikEjAMgv/2qoOY7hoNktGr02eFVqWIO7tTB14oVwPHVNTiJqhv8W2eOB8dehKcQtp1hsZ7fKXqcGnPIg5iM8pt/DZTpkjncSBvKSL05RXWyucqBSpKmYBMAVqQJizCW9XeUCXcEuBfJE9SpS4qEQDkVe/bX9P04bKuKap0TwCh3pna9UpqchkaQaAv53IFN9EgSNOCHHBcY5QNLQIDAQAB","keyVersion":"v1","expiresIn":"300","serverTime":"1789110869656"}}
+----- REQ POST /api/auth/login -----
+{"username":"admin","password":"[REDACTED_PASSWORD]","captcha":"1234","captchaId":"105b65da-8700-49c7-a389-e35bcdd7e89c","timestamp":"masked"}
+----- RESP -----
+{"code":0,"msg":"success","data":{"accessToken":"[REDACTED_JWT]","expiresIn":"900"}}
+
+===== LOGIN OK 0002 2026-09-11T15:14:29 =====
+POST /api/auth/login (challenge->RSA-OAEP->login 链) user=admin port=8081
+----- RESP -----
+accessToken_len=146 accessToken_sha256=2e5c4086be41beca490ee56a1eb885a16f63e013fa7a7ebdc695eadff6683212
+
+===== REQ 0003 2026-09-11T15:14:29 =====
+POST http://localhost:8081/api/form/data/i3ev_d6
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9.4U1B4u-Bs8KXrxQgfoX3jyIBS1Q9HynioQIYsWZvmZ0V_JuFJChzErnRz001MVbT
+
+{"amount": 0}
+----- RESP 0003 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"67abf6aa-736c-4241-8837-77097cbd899f"}
+
+===== PSQL 2026-09-11T15:14:32 =====
+select process_instance_id from sw_bpm_instance where business_key='67abf6aa-736c-4241-8837-77097cbd899f'
+----- RESULT (exit=0) -----
+6e340c45-adb0-11f1-bb59-8e7a76db281d
+
+===== PSQL 2026-09-11T15:14:32 =====
+select id_ from act_ru_task where proc_inst_id_='6e340c45-adb0-11f1-bb59-8e7a76db281d' limit 1
+----- RESULT (exit=0) -----
+6e3592f2-adb0-11f1-bb59-8e7a76db281d
+
+===== PSQL 2026-09-11T15:14:32 =====
+select id from sw_bpm_task_deadline where task_id='6e3592f2-adb0-11f1-bb59-8e7a76db281d'
+----- RESULT (exit=0) -----
+2098309189037846530
+
+===== PSQL 2026-09-11T15:14:32 =====
+select due_at from sw_bpm_task_deadline where id=2098309189037846530
+----- RESULT (exit=0) -----
+2026-09-11 15:15:30.018778
+
+===== PSQL 2026-09-11T15:14:32 =====
+select run_state from sw_bpm_task_deadline where id=2098309189037846530
+----- RESULT (exit=0) -----
+PENDING
+
+===== PSQL 2026-09-11T15:14:32 =====
+select run_state from sw_bpm_task_deadline where id=2098309189037846530
+----- RESULT (exit=0) -----
+PENDING
+
+===== PSQL 2026-09-11T15:14:42 =====
+select run_state from sw_bpm_task_deadline where id=2098309189037846530
+----- RESULT (exit=0) -----
+PENDING
+
+===== PSQL 2026-09-11T15:14:52 =====
+select run_state from sw_bpm_task_deadline where id=2098309189037846530
+----- RESULT (exit=0) -----
+PENDING
+
+===== PSQL 2026-09-11T15:15:02 =====
+select run_state from sw_bpm_task_deadline where id=2098309189037846530
+----- RESULT (exit=0) -----
+PENDING
+
+===== PSQL 2026-09-11T15:15:12 =====
+select run_state from sw_bpm_task_deadline where id=2098309189037846530
+----- RESULT (exit=0) -----
+PENDING
+
+===== PSQL 2026-09-11T15:15:22 =====
+select run_state from sw_bpm_task_deadline where id=2098309189037846530
+----- RESULT (exit=0) -----
+PENDING
+
+===== PSQL 2026-09-11T15:15:32 =====
+select run_state from sw_bpm_task_deadline where id=2098309189037846530
+----- RESULT (exit=0) -----
+PENDING
+
+===== PSQL 2026-09-11T15:15:42 =====
+select run_state from sw_bpm_task_deadline where id=2098309189037846530
+----- RESULT (exit=0) -----
+DONE
+
+===== PSQL 2026-09-11T15:15:42 =====
+select run_state from sw_bpm_task_deadline where id=2098309189037846530
+----- RESULT (exit=0) -----
+DONE
+
+===== PSQL 2026-09-11T15:15:42 =====
+select result_status from sw_bpm_task_deadline where id=2098309189037846530
+----- RESULT (exit=0) -----
+AUTO_APPROVE
+
+===== PSQL 2026-09-11T15:15:42 =====
+select status from sw_bpm_instance where process_instance_id='6e340c45-adb0-11f1-bb59-8e7a76db281d'
+----- RESULT (exit=0) -----
+APPROVED
+
+===== PSQL 2026-09-11T15:15:42 =====
+select count(*) from act_ru_task where id_='6e3592f2-adb0-11f1-bb59-8e7a76db281d'
+----- RESULT (exit=0) -----
+0
+
+===== PSQL 2026-09-11T15:15:42 =====
+select action, settlement_status from sw_bpm_approval_action where task_id='6e3592f2-adb0-11f1-bb59-8e7a76db281d'
+----- RESULT (exit=0) -----
+APPROVE|APPROVED
+
+===== PSQL 2026-09-11T15:20:33 =====
+select run_state, result_status from sw_bpm_task_deadline where id=2098309189037846530
+----- RESULT (exit=0) -----
+DONE|AUTO_APPROVE
+
+===== PSQL 2026-09-11T15:20:33 =====
+select count(*) from sw_bpm_approval_action where task_id='6e3592f2-adb0-11f1-bb59-8e7a76db281d'
+----- RESULT (exit=0) -----
+1
+
+===== PSQL 2026-09-11T15:20:33 =====
+select status from sw_bpm_instance where process_instance_id='6e340c45-adb0-11f1-bb59-8e7a76db281d'
+----- RESULT (exit=0) -----
+APPROVED
+
