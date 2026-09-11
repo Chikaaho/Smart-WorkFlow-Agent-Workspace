@@ -1,0 +1,235 @@
+{
+  "_snapshot": {
+    "snapshotId": "i3-06-frozen-b",
+    "jar_sha256": "5b3e60dbfaabbf3c8ed3ef8bc417512cbada0bec0a5ee841f234eb80757042ba",
+    "web_dist_merkle": "f16e31ae1869e5f176405b7d5bc21abcf6d3afc17848dee8c71858a52156e479",
+    "instance_A": "PID 12413 @ 8081",
+    "instance_B": "PID 12292 @ 8082",
+    "fingerprint_file": "evidence/i3-06/Z1/candidate-b.json",
+    "note": "supersedes i3-06-frozen-a：RATIO/ANY 负向结算终态覆盖缺陷修复后重冻结；frozen-a 上的行为采集作废"
+  },
+  "rows": [
+    {
+      "case": "Z4-01-all-approve",
+      "result": {
+        "marker": "z4-01-all-approve-37b14195",
+        "after_vote1": {
+          "expected_total": 2,
+          "completed": 1,
+          "vote_rows": [
+            "bd816260-adf2-11f1-9577-d24845ae031d|1|APPROVE"
+          ],
+          "approved": 1,
+          "rejected": 0,
+          "instance_status": "RUNNING"
+        },
+        "after_vote2": {
+          "expected_total": 2,
+          "completed": 2,
+          "vote_rows": [
+            "bd816260-adf2-11f1-9577-d24845ae031d|1|APPROVE",
+            "bd829ae5-adf2-11f1-9577-d24845ae031d|2001|APPROVE"
+          ],
+          "approved": 2,
+          "rejected": 0,
+          "instance_status": "APPROVED"
+        }
+      }
+    },
+    {
+      "case": "Z4-02-all-negative",
+      "result": {
+        "marker": "z4-02-all-negative-124432ac",
+        "final_stats": {
+          "expected_total": 2,
+          "completed": 2,
+          "vote_rows": [
+            "bfb35dae-adf2-11f1-9577-d24845ae031d|1|APPROVE",
+            "bfb4bd43-adf2-11f1-9577-d24845ae031d|2001|DISAPPROVE"
+          ],
+          "approved": 1,
+          "rejected": 1,
+          "instance_status": "REJECTED"
+        }
+      }
+    },
+    {
+      "case": "Z4-03-any-positive",
+      "result": {
+        "marker": "z4-03-any-positive-986c22c7",
+        "after_vote1_D": {
+          "expected_total": 2,
+          "completed": 1,
+          "vote_rows": [
+            "c1dc7f2b-adf2-11f1-a9c4-d24845ae031d|1|DISAPPROVE"
+          ],
+          "approved": 0,
+          "rejected": 1,
+          "instance_status": "RUNNING"
+        },
+        "after_vote2": {
+          "expected_total": 2,
+          "completed": 2,
+          "vote_rows": [
+            "c1dc7f2b-adf2-11f1-a9c4-d24845ae031d|1|DISAPPROVE",
+            "c1ddb7b0-adf2-11f1-a9c4-d24845ae031d|2001|APPROVE"
+          ],
+          "approved": 1,
+          "rejected": 1,
+          "instance_status": "APPROVED"
+        }
+      }
+    },
+    {
+      "case": "Z4-04-any-negative",
+      "result": {
+        "marker": "z4-04-any-negative-dfefe0ca",
+        "final_stats": {
+          "expected_total": 2,
+          "completed": 2,
+          "vote_rows": [
+            "c413f8cc-adf2-11f1-9577-d24845ae031d|1|DISAPPROVE",
+            "c4153151-adf2-11f1-9577-d24845ae031d|2001|DISAPPROVE"
+          ],
+          "approved": 0,
+          "rejected": 2,
+          "instance_status": "REJECTED"
+        }
+      }
+    },
+    {
+      "case": "Z4-05-ratio-positive",
+      "result": {
+        "marker": "z4-05-ratio-positive-e5342e28",
+        "after_1_of_3": {
+          "expected_total": 3,
+          "completed": 1,
+          "vote_rows": [
+            "c62db10e-adf2-11f1-a9c4-d24845ae031d|1|APPROVE"
+          ],
+          "approved": 1,
+          "rejected": 0,
+          "instance_status": "RUNNING"
+        },
+        "after_2_of_3": {
+          "expected_total": 3,
+          "completed": 2,
+          "vote_rows": [
+            "c62db10e-adf2-11f1-a9c4-d24845ae031d|1|APPROVE",
+            "c62e2643-adf2-11f1-a9c4-d24845ae031d|2001|APPROVE"
+          ],
+          "approved": 2,
+          "rejected": 0,
+          "instance_status": "APPROVED"
+        }
+      }
+    },
+    {
+      "case": "Z4-06-ratio-negative",
+      "result": {
+        "marker": "z4-06-ratio-negative-3a195f31",
+        "final_stats": {
+          "expected_total": 3,
+          "completed": 3,
+          "vote_rows": [
+            "c8fc3a8c-adf2-11f1-a9c4-d24845ae031d|1|DISAPPROVE",
+            "c8fcafc1-adf2-11f1-a9c4-d24845ae031d|2001|DISAPPROVE",
+            "c8fd4c06-adf2-11f1-a9c4-d24845ae031d|2002|APPROVE"
+          ],
+          "approved": 1,
+          "rejected": 2,
+          "instance_status": "REJECTED"
+        }
+      }
+    },
+    {
+      "case": "Z4-07-veto-negative",
+      "result": {
+        "marker": "z4-07-veto-negative-cdf7ff21",
+        "final_stats": {
+          "expected_total": 2,
+          "completed": 2,
+          "vote_rows": [
+            "cbbc1dca-adf2-11f1-9577-d24845ae031d|1|APPROVE",
+            "cbbda46f-adf2-11f1-9577-d24845ae031d|2001|DISAPPROVE"
+          ],
+          "approved": 1,
+          "rejected": 1,
+          "instance_status": "REJECTED"
+        }
+      }
+    },
+    {
+      "case": "Z4-08-veto-positive",
+      "result": {
+        "marker": "z4-08-veto-positive-1bb84deb",
+        "final_stats": {
+          "expected_total": 2,
+          "completed": 2,
+          "vote_rows": [
+            "ce26dc86-adf2-11f1-a9c4-d24845ae031d|1|APPROVE",
+            "ce27c6eb-adf2-11f1-a9c4-d24845ae031d|2001|APPROVE"
+          ],
+          "approved": 2,
+          "rejected": 0,
+          "instance_status": "APPROVED"
+        }
+      }
+    },
+    {
+      "case": "Z4-09-repeat-vote",
+      "result": {
+        "marker": "z4-09-repeat-vote-aa99ded4",
+        "vote_rows_before": 1,
+        "vote_rows_after": 1,
+        "final_stats": {
+          "expected_total": 2,
+          "completed": 1,
+          "vote_rows": [
+            "d050244d-adf2-11f1-a9c4-d24845ae031d|1|APPROVE"
+          ],
+          "approved": 1,
+          "rejected": 0,
+          "instance_status": "RUNNING"
+        }
+      }
+    },
+    {
+      "case": "Z4-10-dual-settle-race",
+      "result": {
+        "marker": "z4-10-dual-settle-52ec9087",
+        "final_stats": {
+          "expected_total": 2,
+          "completed": 2,
+          "vote_rows": [
+            "d2772320-adf2-11f1-a9c4-d24845ae031d|1|DISAPPROVE",
+            "d277bf65-adf2-11f1-a9c4-d24845ae031d|2001|APPROVE"
+          ],
+          "approved": 1,
+          "rejected": 1,
+          "instance_status": "APPROVED"
+        },
+        "wf_approved_notify_count": "0",
+        "note": "A/B 双进程同时间窗：B 经 8082 表决、A 重复提交同任务票 → 结算一次、无重复副作用"
+      }
+    },
+    {
+      "case": "Z4-11-dual-same-task-race",
+      "result": {
+        "marker": "z4-11-dual-same-task-5da6232d",
+        "A_code": 200,
+        "B_code": 2305,
+        "final_stats": {
+          "expected_total": 2,
+          "completed": 1,
+          "vote_rows": [
+            "d4ec4258-adf2-11f1-9577-d24845ae031d|1|APPROVE"
+          ],
+          "approved": 1,
+          "rejected": 0,
+          "instance_status": "RUNNING"
+        }
+      }
+    }
+  ]
+}

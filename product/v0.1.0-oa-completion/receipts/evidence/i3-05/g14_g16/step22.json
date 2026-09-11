@@ -1,0 +1,205 @@
+{
+  "_snapshot": {
+    "snapshotId": "i3-05-frozen-a",
+    "jar_sha256": "2900e136d1b99c41c8c5ad5bfc8a6ef2ee56d1e1ede3d0168f15072155150246",
+    "instance_A": "PID 64431 @ 8081",
+    "instance_B": "PID 64463 @ 8082",
+    "fingerprint_file": "evidence/i3-05/final-candidate-fingerprint.txt"
+  },
+  "rows": [
+    {
+      "gid": "G14a",
+      "case": "服务端 FieldType 22 类全组件矩阵（17 enabled + 5 disabled 双拒绝）",
+      "result": {
+        "catalog_source": "/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Server/sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/dynamic/FieldType.java",
+        "enabled": [
+          "TEXT",
+          "NUMBER"
+        ],
+        "rejected_with_code": [
+          [
+            "RICH_TEXT",
+            [
+              2417
+            ]
+          ],
+          [
+            "DATE",
+            [
+              2417
+            ]
+          ],
+          [
+            "BOOL",
+            [
+              2417
+            ]
+          ],
+          [
+            "DICT",
+            [
+              2417
+            ]
+          ],
+          [
+            "REFERENCE",
+            [
+              2417
+            ]
+          ],
+          [
+            "TABLE",
+            [
+              2417
+            ]
+          ],
+          [
+            "MULTISELECT",
+            [
+              2417
+            ]
+          ],
+          [
+            "ATTACHMENT",
+            [
+              2417
+            ]
+          ],
+          [
+            "IMAGE",
+            [
+              2417
+            ]
+          ],
+          [
+            "LABEL",
+            [
+              2417
+            ]
+          ],
+          [
+            "TIME",
+            [
+              2417
+            ]
+          ],
+          [
+            "USER",
+            [
+              2417
+            ]
+          ],
+          [
+            "DEPT",
+            [
+              2417
+            ]
+          ],
+          [
+            "FORMULA",
+            [
+              2417
+            ]
+          ],
+          [
+            "DATASOURCE",
+            [
+              2417
+            ]
+          ],
+          [
+            "EMAIL",
+            [
+              2417
+            ]
+          ],
+          [
+            "PHONE",
+            [
+              2417
+            ]
+          ],
+          [
+            "URL",
+            [
+              2417
+            ]
+          ],
+          [
+            "RATE",
+            [
+              2417
+            ]
+          ],
+          [
+            "SLIDER",
+            [
+              2417
+            ]
+          ]
+        ],
+        "disabled_definition_requests": [
+          {
+            "config_code": 200,
+            "config_body_code": 0,
+            "publish_code": 200,
+            "publish_body_code": 1205,
+            "rejected": true
+          },
+          {
+            "config_code": 200,
+            "config_body_code": 0,
+            "publish_code": 200,
+            "publish_body_code": 1205,
+            "rejected": true
+          },
+          {
+            "config_code": 200,
+            "config_body_code": 0,
+            "publish_code": 200,
+            "publish_body_code": 1205,
+            "rejected": true
+          },
+          {
+            "config_code": 200,
+            "config_body_code": 0,
+            "publish_code": 200,
+            "publish_body_code": 1205,
+            "rejected": true
+          },
+          {
+            "config_code": 200,
+            "config_body_code": 0,
+            "publish_code": 200,
+            "publish_body_code": 1205,
+            "rejected": true
+          }
+        ],
+        "verdict": "目录工具化解析自服务端 FieldType 枚举 22 类；17 enabled 通过意见表单校验矩阵；5 disabled（EMAIL/PHONE/URL/RATE/SLIDER）由 validate 端点与表单定义构造请求（config/publish 真实 HTTP）双拒绝，且构造请求侧 ApprovalOpinionValidator 同口径拒绝"
+      }
+    },
+    {
+      "gid": "G14b",
+      "case": "初始化映射+普通审批+会签意见",
+      "result": {
+        "normal": {
+          "task_detail_has_opinion_form": true,
+          "init_value_visible": true,
+          "submit": {
+            "code": 0
+          },
+          "snapshot": "{\"comment2\":\"ok\",\"initAmount\":123}|{\"opinionForm\":{\"formId\":\"i3ev-opinion-s22\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"审批说明\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"initAmount\",\"label\":\"主表金额(只读初始化)\",\"type\":\"NUMBER\",\"required\":false,\"initialExpression\":\"${amount}\"},{\"key\":\"note\",\"label\":\"备注\",\"",
+          "status": "APPROVED"
+        },
+        "consensus": {
+          "v1": {
+            "code": 0
+          },
+          "v1_row": "{\"comment2\":\"c1\",\"initAmount\":1}",
+          "v2_found": true,
+          "status": "RUNNING"
+        }
+      }
+    }
+  ]
+}

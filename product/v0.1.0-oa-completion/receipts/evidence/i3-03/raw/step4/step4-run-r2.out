@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/step4_dual.py", line 112, in <module>
+    LOG.append({"gid": "G8", "case": "C VETO 并发相反意见", "result": case_c()})
+                                                                      ~~~~~~^^
+  File "/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/step4_dual.py", line 90, in case_c
+    rec, pid = submit(PORT_A, "i3ev_d3v", TA)
+               ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/projects/Smart-WorkFlow/product/v0.1.0-oa-completion/receipts/evidence/i3-03/step4_dual.py", line 21, in submit
+    assert r["code"] == 0, r
+           ^^^^^^^^^^^^^^
+AssertionError: {'code': 1400, 'msg': "提交了未定义的字段: 'reason'", 'data': None}

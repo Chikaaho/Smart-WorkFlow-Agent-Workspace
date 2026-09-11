@@ -1,0 +1,982 @@
+===== LOGIN CHAIN 2026-09-11T07:25:09.500Z =====
+GET /api/auth/challenge (用户名=admin 端口=8081)
+----- RESP -----
+{"code":0,"msg":"success","data":{"captchaImage":"data:image/png;base64,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","captchaId":"3b6e0aac-d296-424d-9719-4196bf5fa300","publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAswmLyy5Er70xHRNcQoxUqBsUQynUnj+8mwdaBClx0qSdlyQL/11CRPT0ojfw/rh/uE2lCnzVBtrj04CQgynud82f+YQiSGa07FNL3sCQ3RM1b701012wpheoCR5uI+NHTkLIXWLrhDAvxoWzJ+ykwciPsgOsAW0VatShMyIL1jxSlRSVPiIGPT71pmae7Qp+MoxcK0XbcI+YqyE6zDHpPv4glq3wY2cyKTX98mhgH4NjDC6SCIA7+P9etVM8fiSiFB5vq56pCrWVt5tcP5fxAYgv+WFqtUUwynKSW/LPdw2D4iQgsKBKR9hIHbwycfkzMVfSpElyC3nbZaoFl4iI4wIDAQAB","keyVersion":"v1","expiresIn":"300","serverTime":"1789111509338"}}
+----- REQ POST /api/auth/login -----
+{"username":"admin","password":"[REDACTED_PASSWORD]","captcha":"1234","captchaId":"3b6e0aac-d296-424d-9719-4196bf5fa300","timestamp":"masked"}
+----- RESP -----
+{"code":0,"msg":"success","data":{"accessToken":"[REDACTED_JWT]","expiresIn":"900"}}
+
+===== LOGIN OK 0001 2026-09-11T15:25:09 =====
+POST /api/auth/login (challenge->RSA-OAEP->login 链) user=admin port=8081
+----- RESP -----
+accessToken_len=146 accessToken_sha256=147bb88a978f0ac2be3152af657163b840b5e1d38a3999ec25e1115ebbb5245e
+
+===== LOGIN CHAIN 2026-09-11T07:25:09.676Z =====
+GET /api/auth/challenge (用户名=admin 端口=8081)
+----- RESP -----
+{"code":0,"msg":"success","data":{"captchaImage":"data:image/png;base64,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","captchaId":"71ea618f-6d03-42c0-adb7-56deb68d07e2","publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAswmLyy5Er70xHRNcQoxUqBsUQynUnj+8mwdaBClx0qSdlyQL/11CRPT0ojfw/rh/uE2lCnzVBtrj04CQgynud82f+YQiSGa07FNL3sCQ3RM1b701012wpheoCR5uI+NHTkLIXWLrhDAvxoWzJ+ykwciPsgOsAW0VatShMyIL1jxSlRSVPiIGPT71pmae7Qp+MoxcK0XbcI+YqyE6zDHpPv4glq3wY2cyKTX98mhgH4NjDC6SCIA7+P9etVM8fiSiFB5vq56pCrWVt5tcP5fxAYgv+WFqtUUwynKSW/LPdw2D4iQgsKBKR9hIHbwycfkzMVfSpElyC3nbZaoFl4iI4wIDAQAB","keyVersion":"v1","expiresIn":"300","serverTime":"1789111509572"}}
+----- REQ POST /api/auth/login -----
+{"username":"admin","password":"[REDACTED_PASSWORD]","captcha":"1234","captchaId":"71ea618f-6d03-42c0-adb7-56deb68d07e2","timestamp":"masked"}
+----- RESP -----
+{"code":0,"msg":"success","data":{"accessToken":"[REDACTED_JWT]","expiresIn":"900"}}
+
+===== LOGIN OK 0002 2026-09-11T15:25:09 =====
+POST /api/auth/login (challenge->RSA-OAEP->login 链) user=admin port=8081
+----- RESP -----
+accessToken_len=146 accessToken_sha256=147bb88a978f0ac2be3152af657163b840b5e1d38a3999ec25e1115ebbb5245e
+
+===== LOGIN CHAIN 2026-09-11T07:25:09.843Z =====
+GET /api/auth/challenge (用户名=user2 端口=8081)
+----- RESP -----
+{"code":0,"msg":"success","data":{"captchaImage":"data:image/png;base64,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","captchaId":"f0c1751b-a38c-4365-90eb-15f841701ed7","publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAswmLyy5Er70xHRNcQoxUqBsUQynUnj+8mwdaBClx0qSdlyQL/11CRPT0ojfw/rh/uE2lCnzVBtrj04CQgynud82f+YQiSGa07FNL3sCQ3RM1b701012wpheoCR5uI+NHTkLIXWLrhDAvxoWzJ+ykwciPsgOsAW0VatShMyIL1jxSlRSVPiIGPT71pmae7Qp+MoxcK0XbcI+YqyE6zDHpPv4glq3wY2cyKTX98mhgH4NjDC6SCIA7+P9etVM8fiSiFB5vq56pCrWVt5tcP5fxAYgv+WFqtUUwynKSW/LPdw2D4iQgsKBKR9hIHbwycfkzMVfSpElyC3nbZaoFl4iI4wIDAQAB","keyVersion":"v1","expiresIn":"300","serverTime":"1789111509741"}}
+----- REQ POST /api/auth/login -----
+{"username":"user2","password":"[REDACTED_PASSWORD]","captcha":"1234","captchaId":"f0c1751b-a38c-4365-90eb-15f841701ed7","timestamp":"masked"}
+----- RESP -----
+{"code":0,"msg":"success","data":{"accessToken":"[REDACTED_JWT]","expiresIn":"900"}}
+
+===== LOGIN OK 0003 2026-09-11T15:25:09 =====
+POST /api/auth/login (challenge->RSA-OAEP->login 链) user=user2 port=8081
+----- RESP -----
+accessToken_len=150 accessToken_sha256=f2ee3086cb09f7d2eef29488030222c80e559a11f65e3fb6c113c581bd4e1cd5
+
+===== LOGIN CHAIN 2026-09-11T07:25:10.011Z =====
+GET /api/auth/challenge (用户名=user4 端口=8081)
+----- RESP -----
+{"code":0,"msg":"success","data":{"captchaImage":"data:image/png;base64,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","captchaId":"ead21190-dac1-4b75-b164-46c3ae1d67a0","publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAswmLyy5Er70xHRNcQoxUqBsUQynUnj+8mwdaBClx0qSdlyQL/11CRPT0ojfw/rh/uE2lCnzVBtrj04CQgynud82f+YQiSGa07FNL3sCQ3RM1b701012wpheoCR5uI+NHTkLIXWLrhDAvxoWzJ+ykwciPsgOsAW0VatShMyIL1jxSlRSVPiIGPT71pmae7Qp+MoxcK0XbcI+YqyE6zDHpPv4glq3wY2cyKTX98mhgH4NjDC6SCIA7+P9etVM8fiSiFB5vq56pCrWVt5tcP5fxAYgv+WFqtUUwynKSW/LPdw2D4iQgsKBKR9hIHbwycfkzMVfSpElyC3nbZaoFl4iI4wIDAQAB","keyVersion":"v1","expiresIn":"300","serverTime":"1789111509908"}}
+----- REQ POST /api/auth/login -----
+{"username":"user4","password":"[REDACTED_PASSWORD]","captcha":"1234","captchaId":"ead21190-dac1-4b75-b164-46c3ae1d67a0","timestamp":"masked"}
+----- RESP -----
+{"code":0,"msg":"success","data":{"accessToken":"[REDACTED_JWT]","expiresIn":"900"}}
+
+===== LOGIN OK 0004 2026-09-11T15:25:10 =====
+POST /api/auth/login (challenge->RSA-OAEP->login 链) user=user4 port=8081
+----- RESP -----
+accessToken_len=150 accessToken_sha256=ff9cbfa9eb7d615ab571482e8d066eadbe62560bd0cf96693972ce8ffb273e35
+
+===== LOGIN CHAIN 2026-09-11T07:25:10.216Z =====
+GET /api/auth/challenge (用户名=tenant1user 端口=8081)
+----- RESP -----
+{"code":0,"msg":"success","data":{"captchaImage":"data:image/png;base64,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","captchaId":"cdfe8f67-aabd-4cf5-bd81-91d1cf559eec","publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAswmLyy5Er70xHRNcQoxUqBsUQynUnj+8mwdaBClx0qSdlyQL/11CRPT0ojfw/rh/uE2lCnzVBtrj04CQgynud82f+YQiSGa07FNL3sCQ3RM1b701012wpheoCR5uI+NHTkLIXWLrhDAvxoWzJ+ykwciPsgOsAW0VatShMyIL1jxSlRSVPiIGPT71pmae7Qp+MoxcK0XbcI+YqyE6zDHpPv4glq3wY2cyKTX98mhgH4NjDC6SCIA7+P9etVM8fiSiFB5vq56pCrWVt5tcP5fxAYgv+WFqtUUwynKSW/LPdw2D4iQgsKBKR9hIHbwycfkzMVfSpElyC3nbZaoFl4iI4wIDAQAB","keyVersion":"v1","expiresIn":"300","serverTime":"1789111510080"}}
+----- REQ POST /api/auth/login -----
+{"username":"tenant1user","password":"[REDACTED_PASSWORD]","captcha":"1234","captchaId":"cdfe8f67-aabd-4cf5-bd81-91d1cf559eec","timestamp":"masked"}
+----- RESP -----
+{"code":0,"msg":"success","data":{"accessToken":"[REDACTED_JWT]","expiresIn":"900"}}
+
+===== LOGIN OK 0005 2026-09-11T15:25:10 =====
+POST /api/auth/login (challenge->RSA-OAEP->login 链) user=tenant1user port=8081
+----- RESP -----
+accessToken_len=150 accessToken_sha256=a67d5aa6dbea1565b312a7542f6cffbfe5cc70873da4a505bba8c5fbfa737d89
+
+===== REQ 0006 2026-09-11T15:25:10 =====
+POST http://localhost:8081/api/form/data/i3ev_d5
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"amount": 100}
+----- RESP 0006 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"80ee7b3b-fbb1-4330-8397-006529acdb0c"}
+
+===== PSQL 2026-09-11T15:25:12 =====
+select process_instance_id from sw_bpm_instance where business_key='80ee7b3b-fbb1-4330-8397-006529acdb0c'
+----- RESULT (exit=0) -----
+ebee0fca-adb1-11f1-8e5e-8e7a76db281d
+
+===== PSQL 2026-09-11T15:25:12 =====
+select assignee_ from act_ru_task where proc_inst_id_='ebee0fca-adb1-11f1-8e5e-8e7a76db281d'
+----- RESULT (exit=0) -----
+1
+
+===== PSQL 2026-09-11T15:25:14 =====
+select participant_id from sw_bpm_participant_snapshot where process_instance_id='ebee0fca-adb1-11f1-8e5e-8e7a76db281d'
+----- RESULT (exit=0) -----
+1
+
+===== PSQL 2026-09-11T15:25:14 =====
+select function_versions from sw_bpm_process_def_version where def_id=2098306593220722690
+----- RESULT (exit=0) -----
+{"func_tenant_admins":1}
+
+===== REQ 0007 2026-09-11T15:25:14 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"formKey": "i3ev_d5bad", "name": "I3\u8bc1\u636e-\u51fd\u6570\u574f\u7248\u672c\u8868\u5355"}
+----- RESP 0007 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"aba8ebc2-c9d8-41cc-972a-ac040415fb7d","formKey":"i3ev_d5bad","name":"I3证据-函数坏版本表单","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-11T15:25:14.448047","updateTime":"2026-09-11T15:25:14.448049"}}
+
+===== REQ 0008 2026-09-11T15:25:14 =====
+POST http://localhost:8081/api/form/def/aba8ebc2-c9d8-41cc-972a-ac040415fb7d/config
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"definition": "{\"fields\": [{\"name\": \"amount\", \"label\": \"\\u91d1\\u989d\", \"type\": \"NUMBER\"}]}"}
+----- RESP 0008 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0009 2026-09-11T15:25:14 =====
+POST http://localhost:8081/api/form/def/aba8ebc2-c9d8-41cc-972a-ac040415fb7d/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0009 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0010 2026-09-11T15:25:14 =====
+POST http://localhost:8081/api/workflow/defs
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"name": "I3\u8bc1\u636e-\u51fd\u6570\u574f\u7248\u672c", "formKey": "i3ev_d5bad"}
+----- RESP 0010 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"defId":"2098311892816121857","graph":{"processKey":"bpm_f15484b1e6d541e1","name":"I3证据-函数坏版本","formKey":"i3ev_d5bad","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300},"x":null,"y":null,"waypoints":null},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300},"x":null,"y":null,"waypoints":null},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{},"x":null,"y":null,"waypoints":null}],"contractVersion":null,"canvas":{}}}}
+
+===== REQ 0011 2026-09-11T15:25:14 =====
+PUT http://localhost:8081/api/workflow/defs/2098311892816121857/graph
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"processKey": "i3ev_d5bad", "name": "I3\u8bc1\u636e-\u51fd\u6570\u574f\u7248\u672c", "formKey": "i3ev_d5bad", "contractVersion": 2, "elements": [{"id": "node_start", "kind": "node", "type": "START", "x": 100.0, "y": 300.0, "config": {}}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "x": 300.0, "y": 300.0, "config": {"name": "x", "participant": {"strategy": "FIXED_USER", "value": [1]}, "functions": [{"key": "func_tenant_admins", "version": 99}]}}, {"id": "edge_1", "kind": "edge", "source": "node_start", "target": "node_1"}, {"id": "node_end", "kind": "node", "type": "END", "x": 520.0, "y": 300.0, "config": {}}, {"id": "edge_2", "kind": "edge", "source": "node_1", "target": "node_end"}], "canvas": {}}
+----- RESP 0011 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0012 2026-09-11T15:25:14 =====
+POST http://localhost:8081/api/workflow/defs/2098311892816121857/validate
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0012 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":[]}
+
+===== REQ 0013 2026-09-11T15:25:14 =====
+POST http://localhost:8081/api/workflow/defs/2098311892816121857/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0013 -----
+STATUS: 200
+
+{"code":2412,"msg":"节点函数不存在","data":null}
+
+===== REQ 0014 2026-09-11T15:25:14 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"formKey": "i3ev_d4b", "name": "I3\u8bc1\u636e-\u610f\u89c1\u8868\u5355B"}
+----- RESP 0014 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"3f9ded60-924f-4a42-91a8-17711436d73e","formKey":"i3ev_d4b","name":"I3证据-意见表单B","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-11T15:25:14.723437","updateTime":"2026-09-11T15:25:14.723438"}}
+
+===== REQ 0015 2026-09-11T15:25:14 =====
+POST http://localhost:8081/api/form/def/3f9ded60-924f-4a42-91a8-17711436d73e/config
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"definition": "{\"fields\": [{\"name\": \"amount\", \"label\": \"\\u91d1\\u989d\", \"type\": \"NUMBER\"}]}"}
+----- RESP 0015 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0016 2026-09-11T15:25:14 =====
+POST http://localhost:8081/api/form/def/3f9ded60-924f-4a42-91a8-17711436d73e/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0016 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0017 2026-09-11T15:25:14 =====
+POST http://localhost:8081/api/workflow/defs
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"name": "I3\u8bc1\u636e-\u610f\u89c1\u8868\u5355B", "formKey": "i3ev_d4b"}
+----- RESP 0017 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"defId":"2098311893281689602","graph":{"processKey":"bpm_1726ee07910a40fc","name":"I3证据-意见表单B","formKey":"i3ev_d4b","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300},"x":null,"y":null,"waypoints":null},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300},"x":null,"y":null,"waypoints":null},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{},"x":null,"y":null,"waypoints":null}],"contractVersion":null,"canvas":{}}}}
+
+===== REQ 0018 2026-09-11T15:25:14 =====
+PUT http://localhost:8081/api/workflow/defs/2098311893281689602/graph
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"processKey": "i3ev_d4b", "name": "I3\u8bc1\u636e-\u610f\u89c1\u8868\u5355B", "formKey": "i3ev_d4b", "contractVersion": 2, "elements": [{"id": "node_start", "kind": "node", "type": "START", "x": 100.0, "y": 300.0, "config": {}}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "x": 300.0, "y": 300.0, "config": {"name": "\u610f\u89c1\u5ba1\u6279", "participant": {"strategy": "FIXED_USER", "value": [1]}, "opinionForm": {"formId": "i3ev-opinion-b", "version": "v1", "fields": [{"key": "comment2", "label": "\u5ba1\u6279\u8bf4\u660e", "type": "TEXT", "required": true, "maxLength": 200}, {"key": "level", "label": "\u7b49\u7ea7", "type": "RADIO", "options": ["A", "B"], "required": true}, {"key": "note", "label": "\u5907\u6ce8", "type": "NOTE"}]}}}, {"id": "edge_1", "kind": "edge", "source": "node_start", "target": "node_1"}, {"id": "node_end", "kind": "node", "type": "END", "x": 520.0, "y": 300.0, "config": {}}, {"id": "edge_2", "kind": "edge", "source": "node_1", "target": "node_end"}], "canvas": {}}
+----- RESP 0018 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0019 2026-09-11T15:25:14 =====
+POST http://localhost:8081/api/workflow/defs/2098311893281689602/validate
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0019 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":[]}
+
+===== REQ 0020 2026-09-11T15:25:15 =====
+POST http://localhost:8081/api/workflow/defs/2098311893281689602/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0020 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"2098311893281689602","createTime":"2026-09-11T15:25:14.766263","createBy":"1","updateTime":"2026-09-11T15:25:14.766268","updateBy":"1","deleted":0,"version":"2","tenantId":"0","processKey":"bpm_1726ee07910a40fc","name":"I3证据-意见表单B","formKey":"i3ev_d4b","defVersion":1,"status":"PUBLISHED","deploymentId":"ee8c3ac9-adb1-11f1-ac2f-8e7a76db281d","processDefinitionId":"bpm_1726ee07910a40fc:1:eeab5b8c-adb1-11f1-ac2f-8e7a76db281d","graphJson":"{\"processKey\":\"bpm_1726ee07910a40fc\",\"name\":\"I3证据-意见表单B\",\"formKey\":\"i3ev_d4b\",\"version\":null,\"elements\":[{\"id\":\"node_start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":100.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"node_1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"意见审批\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[1]},\"opinionForm\":{\"formId\":\"i3ev-opinion-b\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"审批说明\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"level\",\"label\":\"等级\",\"type\":\"RADIO\",\"options\":[\"A\",\"B\"],\"required\":true},{\"key\":\"note\",\"label\":\"备注\",\"type\":\"NOTE\"}]}},\"style\":null,\"x\":300.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_1\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_start\",\"target\":\"node_1\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"node_end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":520.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_2\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_1\",\"target\":\"node_end\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null}],\"contractVersion\":2,\"canvas\":{}}","categoryId":null,"iotAccessEnabled":false,"iotDeviceActionJson":null,"publishedVersion":null}}
+
+===== REQ 0021 2026-09-11T15:25:15 =====
+POST http://localhost:8081/api/form/data/i3ev_d4b
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"amount": 0}
+----- RESP 0021 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"b816ddb9-ac6c-4b53-b9a6-e056c7d11461"}
+
+===== PSQL 2026-09-11T15:25:17 =====
+select process_instance_id from sw_bpm_instance where business_key='b816ddb9-ac6c-4b53-b9a6-e056c7d11461'
+----- RESULT (exit=0) -----
+eec96a6a-adb1-11f1-8e5e-8e7a76db281d
+
+===== REQ 0022 2026-09-11T15:25:17 =====
+GET http://localhost:8081/api/workflow/tasks/todo?pageNum=1&pageSize=50
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0022 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"records":[{"taskId":"eec9b897-adb1-11f1-8e5e-8e7a76db281d","processInstanceId":"eec96a6a-adb1-11f1-8e5e-8e7a76db281d","processName":"I3证据-意见表单B","formKey":"i3ev_d4b","businessKey":"b816ddb9-ac6c-4b53-b9a6-e056c7d11461","createTime":"2026-09-11T15:25:15.221"},{"taskId":"ebf785b7-adb1-11f1-8e5e-8e7a76db281d","processInstanceId":"ebee0fca-adb1-11f1-8e5e-8e7a76db281d","processName":"I3证据-函数","formKey":"i3ev_d5","businessKey":"80ee7b3b-fbb1-4330-8397-006529acdb0c","createTime":"2026-09-11T15:25:10.463"},{"taskId":"69991c6c-adaf-11f1-bb59-8e7a76db281d","processInstanceId":"6998ce3f-adaf-11f1-bb59-8e7a76db281d","processName":"I3证据-单审批","formKey":"i3ev_d1","businessKey":"51be9a0b-c0d8-473b-b8a2-ea74680a41fb","createTime":"2026-09-11T15:07:12.772"},{"taskId":"64b595bc-adaf-11f1-bb59-8e7a76db281d","processInstanceId":"64b56e9f-adaf-11f1-bb59-8e7a76db281d","processName":"I3证据-单审批","formKey":"i3ev_d1","businessKey":"c909585c-6bfb-4dff-b20a-93a380ddd0d5","createTime":"2026-09-11T15:07:04.57"},{"taskId":"62e45883-adaf-11f1-a94e-8e7a76db281d","processInstanceId":"62e45876-adaf-11f1-a94e-8e7a76db281d","processName":"I3证据-单审批","formKey":"i3ev_d1","businessKey":"844d4e60-346a-4dc3-a31f-88497961c784","createTime":"2026-09-11T15:07:01.521"},{"taskId":"5ea6125b-adaf-11f1-a94e-8e7a76db281d","processInstanceId":"5ab095ff-adaf-11f1-bb59-8e7a76db281d","processName":"I3证据-两审批","formKey":"i3ev_d2","businessKey":"d9ca6234-1b61-41f3-844f-12b928e7fa22","createTime":"2026-09-11T15:06:54.402"},{"taskId":"24962ebc-adaf-11f1-bb59-8e7a76db281d","processInstanceId":"247b53af-adaf-11f1-bb59-8e7a76db281d","processName":"I3证据-单审批","formKey":"i3ev_d1","businessKey":"0c1aa769-e1bd-4034-84cc-f3b8a40261e2","createTime":"2026-09-11T15:05:16.959"}],"total":"7","pageNum":"1","pageSize":"50"}}
+
+===== REQ 0023 2026-09-11T15:25:17 =====
+POST http://localhost:8081/api/workflow/tasks/eec9b897-adb1-11f1-8e5e-8e7a76db281d/complete
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"action": "APPROVE", "opinionData": {"comment2": ""}}
+----- RESP 0023 -----
+STATUS: 200
+
+{"code":2308,"msg":"审批意见不能为空","data":null}
+
+===== REQ 0024 2026-09-11T15:25:17 =====
+POST http://localhost:8081/api/workflow/tasks/eec9b897-adb1-11f1-8e5e-8e7a76db281d/complete
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"action": "APPROVE", "opinionData": {"comment2": "ok", "level": "Z"}}
+----- RESP 0024 -----
+STATUS: 200
+
+{"code":2307,"msg":"审批意见不合法","data":null}
+
+===== REQ 0025 2026-09-11T15:25:17 =====
+POST http://localhost:8081/api/workflow/tasks/eec9b897-adb1-11f1-8e5e-8e7a76db281d/complete
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"action": "APPROVE", "opinionData": {"comment2": "\u540c\u610f\uff0c\u6309 A \u7ea7\u529e\u7406", "level": "A"}, "opinionFormId": "i3ev-opinion-b", "opinionFormVersion": "v1"}
+----- RESP 0025 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== PSQL 2026-09-11T15:25:17 =====
+select action, opinion_form_id, opinion_form_version, opinion_data, opinion_form_snapshot from sw_bpm_approval_action where task_id='eec9b897-adb1-11f1-8e5e-8e7a76db281d'
+----- RESULT (exit=0) -----
+APPROVE|i3ev-opinion-b|v1|{"comment2":"同意，按 A 级办理","level":"A"}|{"opinionForm":{"formId":"i3ev-opinion-b","version":"v1","fields":[{"key":"comment2","label":"审批说明","type":"TEXT","required":true,"maxLength":200},{"key":"level","label":"等级","type":"RADIO","options":["A","B"],"required":true},{"key":"note","label":"备注","type":"NOTE"}]},"opinionFormId":"i3ev-opinion-b","opinionFormVersion":"v1"}
+
+===== REQ 0026 2026-09-11T15:25:17 =====
+GET http://localhost:8081/api/workflow/defs/2098311893281689602
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0026 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"processKey":"bpm_1726ee07910a40fc","name":"I3证据-意见表单B","formKey":"i3ev_d4b","version":null,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":null,"x":100.0,"y":300.0,"waypoints":null},{"id":"node_1","kind":"node","type":"APPROVAL","source":null,"target":null,"config":{"name":"意见审批","participant":{"strategy":"FIXED_USER","value":[1]},"opinionForm":{"formId":"i3ev-opinion-b","version":"v1","fields":[{"key":"comment2","label":"审批说明","type":"TEXT","required":true,"maxLength":200},{"key":"level","label":"等级","type":"RADIO","options":["A","B"],"required":true},{"key":"note","label":"备注","type":"NOTE"}]}},"style":null,"x":300.0,"y":300.0,"waypoints":null},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_1","config":null,"style":null,"x":null,"y":null,"waypoints":null},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":null,"x":520.0,"y":300.0,"waypoints":null},{"id":"edge_2","kind":"edge","type":null,"source":"node_1","target":"node_end","config":null,"style":null,"x":null,"y":null,"waypoints":null}],"contractVersion":2,"canvas":{}}}
+
+===== REQ 0027 2026-09-11T15:25:17 =====
+PUT http://localhost:8081/api/workflow/defs/2098311893281689602/graph
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"processKey": "bpm_1726ee07910a40fc", "name": "I3\u8bc1\u636e-\u610f\u89c1\u8868\u5355B", "formKey": "i3ev_d4b", "version": null, "elements": [{"id": "node_start", "kind": "node", "type": "START", "source": null, "target": null, "config": {}, "style": null, "x": 100.0, "y": 300.0, "waypoints": null}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "source": null, "target": null, "config": {"name": "\u610f\u89c1\u5ba1\u6279", "participant": {"strategy": "FIXED_USER", "value": [1]}, "opinionForm": {"formId": "i3ev-opinion-b", "version": "v1", "fields": [{"key": "comment2", "label": "\u5ba1\u6279\u8bf4\u660e(\u6539)", "type": "TEXTAREA", "required": false, "maxLength": 100}, {"key": "level", "label": "\u7b49\u7ea7(\u6539)", "type": "SELECT", "options": ["X", "Y"], "required": false}]}}, "style": null, "x": 300.0, "y": 300.0, "waypoints": null}, {"id": "edge_1", "kind": "edge", "type": null, "source": "node_start", "target": "node_1", "config": null, "style": null, "x": null, "y": null, "waypoints": null}, {"id": "node_end", "kind": "node", "type": "END", "source": null, "target": null, "config": {}, "style": null, "x": 520.0, "y": 300.0, "waypoints": null}, {"id": "edge_2", "kind": "edge", "type": null, "source": "node_1", "target": "node_end", "config": null, "style": null, "x": null, "y": null, "waypoints": null}], "contractVersion": 2, "canvas": {}}
+----- RESP 0027 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0028 2026-09-11T15:25:17 =====
+POST http://localhost:8081/api/workflow/defs/2098311893281689602/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0028 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"2098311893281689602","createTime":"2026-09-11T15:25:14.766263","createBy":"1","updateTime":"2026-09-11T15:25:15.042245","updateBy":"1","deleted":0,"version":"4","tenantId":"0","processKey":"bpm_1726ee07910a40fc","name":"I3证据-意见表单B","formKey":"i3ev_d4b","defVersion":2,"status":"PUBLISHED","deploymentId":"f01dd750-adb1-11f1-ac2f-8e7a76db281d","processDefinitionId":"bpm_1726ee07910a40fc:2:f0263bc3-adb1-11f1-ac2f-8e7a76db281d","graphJson":"{\"processKey\":\"bpm_1726ee07910a40fc\",\"name\":\"I3证据-意见表单B\",\"formKey\":\"i3ev_d4b\",\"version\":null,\"elements\":[{\"id\":\"node_start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":100.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"node_1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"意见审批\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[1]},\"opinionForm\":{\"formId\":\"i3ev-opinion-b\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"审批说明(改)\",\"type\":\"TEXTAREA\",\"required\":false,\"maxLength\":100},{\"key\":\"level\",\"label\":\"等级(改)\",\"type\":\"SELECT\",\"options\":[\"X\",\"Y\"],\"required\":false}]}},\"style\":null,\"x\":300.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_1\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_start\",\"target\":\"node_1\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"node_end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":520.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_2\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_1\",\"target\":\"node_end\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null}],\"contractVersion\":2,\"canvas\":{}}","categoryId":null,"iotAccessEnabled":false,"iotDeviceActionJson":null,"publishedVersion":1}}
+
+===== PSQL 2026-09-11T15:25:17 =====
+select opinion_form_snapshot, opinion_data from sw_bpm_approval_action where task_id='eec9b897-adb1-11f1-8e5e-8e7a76db281d'
+----- RESULT (exit=0) -----
+{"opinionForm":{"formId":"i3ev-opinion-b","version":"v1","fields":[{"key":"comment2","label":"审批说明","type":"TEXT","required":true,"maxLength":200},{"key":"level","label":"等级","type":"RADIO","options":["A","B"],"required":true},{"key":"note","label":"备注","type":"NOTE"}]},"opinionFormId":"i3ev-opinion-b","opinionFormVersion":"v1"}|{"comment2":"同意，按 A 级办理","level":"A"}
+
+===== REQ 0029 2026-09-11T15:25:17 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"formKey": "i3ev_m_TEXT", "name": "mx-TEXT"}
+----- RESP 0029 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"6f2536cf-e207-437c-8dd8-20c75fec8d01","formKey":"i3ev_m_TEXT","name":"mx-TEXT","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-11T15:25:17.557438","updateTime":"2026-09-11T15:25:17.557438"}}
+
+===== REQ 0030 2026-09-11T15:25:17 =====
+POST http://localhost:8081/api/form/def/6f2536cf-e207-437c-8dd8-20c75fec8d01/config
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"definition": "{\"fields\": [{\"name\": \"amount\", \"label\": \"\\u91d1\\u989d\", \"type\": \"NUMBER\"}]}"}
+----- RESP 0030 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0031 2026-09-11T15:25:17 =====
+POST http://localhost:8081/api/form/def/6f2536cf-e207-437c-8dd8-20c75fec8d01/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0031 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0032 2026-09-11T15:25:17 =====
+POST http://localhost:8081/api/workflow/defs
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"name": "I3\u8bc1\u636e-\u77e9\u9635TEXT", "formKey": "i3ev_m_TEXT"}
+----- RESP 0032 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"defId":"2098311905168347137","graph":{"processKey":"bpm_ae80d6c71c9b4396","name":"I3证据-矩阵TEXT","formKey":"i3ev_m_TEXT","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300},"x":null,"y":null,"waypoints":null},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300},"x":null,"y":null,"waypoints":null},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{},"x":null,"y":null,"waypoints":null}],"contractVersion":null,"canvas":{}}}}
+
+===== REQ 0033 2026-09-11T15:25:17 =====
+PUT http://localhost:8081/api/workflow/defs/2098311905168347137/graph
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"processKey": "i3ev_m_TEXT", "name": "I3\u8bc1\u636e-\u77e9\u9635TEXT", "formKey": "i3ev_m_TEXT", "contractVersion": 2, "elements": [{"id": "node_start", "kind": "node", "type": "START", "x": 100.0, "y": 300.0, "config": {}}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "x": 300.0, "y": 300.0, "config": {"name": "m", "participant": {"strategy": "FIXED_USER", "value": [1]}, "opinionForm": {"formId": "m-TEXT", "version": "v1", "fields": [{"key": "f_text", "label": "TEXT", "type": "TEXT"}]}}}, {"id": "edge_1", "kind": "edge", "source": "node_start", "target": "node_1"}, {"id": "node_end", "kind": "node", "type": "END", "x": 520.0, "y": 300.0, "config": {}}, {"id": "edge_2", "kind": "edge", "source": "node_1", "target": "node_end"}], "canvas": {}}
+----- RESP 0033 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0034 2026-09-11T15:25:17 =====
+POST http://localhost:8081/api/workflow/defs/2098311905168347137/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0034 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"2098311905168347137","createTime":"2026-09-11T15:25:17.600237","createBy":"1","updateTime":"2026-09-11T15:25:17.60024","updateBy":"1","deleted":0,"version":"2","tenantId":"0","processKey":"bpm_ae80d6c71c9b4396","name":"I3证据-矩阵TEXT","formKey":"i3ev_m_TEXT","defVersion":1,"status":"PUBLISHED","deploymentId":"f038b254-adb1-11f1-ac2f-8e7a76db281d","processDefinitionId":"bpm_ae80d6c71c9b4396:1:f04164e7-adb1-11f1-ac2f-8e7a76db281d","graphJson":"{\"processKey\":\"bpm_ae80d6c71c9b4396\",\"name\":\"I3证据-矩阵TEXT\",\"formKey\":\"i3ev_m_TEXT\",\"version\":null,\"elements\":[{\"id\":\"node_start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":100.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"node_1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"m\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[1]},\"opinionForm\":{\"formId\":\"m-TEXT\",\"version\":\"v1\",\"fields\":[{\"key\":\"f_text\",\"label\":\"TEXT\",\"type\":\"TEXT\"}]}},\"style\":null,\"x\":300.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_1\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_start\",\"target\":\"node_1\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"node_end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":520.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_2\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_1\",\"target\":\"node_end\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null}],\"contractVersion\":2,\"canvas\":{}}","categoryId":null,"iotAccessEnabled":false,"iotDeviceActionJson":null,"publishedVersion":null}}
+
+===== REQ 0035 2026-09-11T15:25:17 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"formKey": "i3ev_m_TEXTAREA", "name": "mx-TEXTAREA"}
+----- RESP 0035 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"3814af15-e93c-4fb9-8462-d5a49b589c9c","formKey":"i3ev_m_TEXTAREA","name":"mx-TEXTAREA","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-11T15:25:17.708035","updateTime":"2026-09-11T15:25:17.708036"}}
+
+===== REQ 0036 2026-09-11T15:25:17 =====
+POST http://localhost:8081/api/form/def/3814af15-e93c-4fb9-8462-d5a49b589c9c/config
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"definition": "{\"fields\": [{\"name\": \"amount\", \"label\": \"\\u91d1\\u989d\", \"type\": \"NUMBER\"}]}"}
+----- RESP 0036 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0037 2026-09-11T15:25:17 =====
+POST http://localhost:8081/api/form/def/3814af15-e93c-4fb9-8462-d5a49b589c9c/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0037 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0038 2026-09-11T15:25:17 =====
+POST http://localhost:8081/api/workflow/defs
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"name": "I3\u8bc1\u636e-\u77e9\u9635TEXTAREA", "formKey": "i3ev_m_TEXTAREA"}
+----- RESP 0038 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"defId":"2098311905772326913","graph":{"processKey":"bpm_dd33249a9a9a4560","name":"I3证据-矩阵TEXTAREA","formKey":"i3ev_m_TEXTAREA","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300},"x":null,"y":null,"waypoints":null},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300},"x":null,"y":null,"waypoints":null},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{},"x":null,"y":null,"waypoints":null}],"contractVersion":null,"canvas":{}}}}
+
+===== REQ 0039 2026-09-11T15:25:17 =====
+PUT http://localhost:8081/api/workflow/defs/2098311905772326913/graph
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"processKey": "i3ev_m_TEXTAREA", "name": "I3\u8bc1\u636e-\u77e9\u9635TEXTAREA", "formKey": "i3ev_m_TEXTAREA", "contractVersion": 2, "elements": [{"id": "node_start", "kind": "node", "type": "START", "x": 100.0, "y": 300.0, "config": {}}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "x": 300.0, "y": 300.0, "config": {"name": "m", "participant": {"strategy": "FIXED_USER", "value": [1]}, "opinionForm": {"formId": "m-TEXTAREA", "version": "v1", "fields": [{"key": "f_textarea", "label": "TEXTAREA", "type": "TEXTAREA"}]}}}, {"id": "edge_1", "kind": "edge", "source": "node_start", "target": "node_1"}, {"id": "node_end", "kind": "node", "type": "END", "x": 520.0, "y": 300.0, "config": {}}, {"id": "edge_2", "kind": "edge", "source": "node_1", "target": "node_end"}], "canvas": {}}
+----- RESP 0039 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0040 2026-09-11T15:25:17 =====
+POST http://localhost:8081/api/workflow/defs/2098311905772326913/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0040 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"2098311905772326913","createTime":"2026-09-11T15:25:17.743654","createBy":"1","updateTime":"2026-09-11T15:25:17.743658","updateBy":"1","deleted":0,"version":"2","tenantId":"0","processKey":"bpm_dd33249a9a9a4560","name":"I3证据-矩阵TEXTAREA","formKey":"i3ev_m_TEXTAREA","defVersion":1,"status":"PUBLISHED","deploymentId":"f04e3628-adb1-11f1-ac2f-8e7a76db281d","processDefinitionId":"bpm_dd33249a9a9a4560:1:f05ab94b-adb1-11f1-ac2f-8e7a76db281d","graphJson":"{\"processKey\":\"bpm_dd33249a9a9a4560\",\"name\":\"I3证据-矩阵TEXTAREA\",\"formKey\":\"i3ev_m_TEXTAREA\",\"version\":null,\"elements\":[{\"id\":\"node_start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":100.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"node_1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"m\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[1]},\"opinionForm\":{\"formId\":\"m-TEXTAREA\",\"version\":\"v1\",\"fields\":[{\"key\":\"f_textarea\",\"label\":\"TEXTAREA\",\"type\":\"TEXTAREA\"}]}},\"style\":null,\"x\":300.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_1\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_start\",\"target\":\"node_1\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"node_end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":520.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_2\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_1\",\"target\":\"node_end\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null}],\"contractVersion\":2,\"canvas\":{}}","categoryId":null,"iotAccessEnabled":false,"iotDeviceActionJson":null,"publishedVersion":null}}
+
+===== REQ 0041 2026-09-11T15:25:17 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"formKey": "i3ev_m_NUMBER", "name": "mx-NUMBER"}
+----- RESP 0041 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"519e40f8-6a57-4658-af0a-a0bbf3983950","formKey":"i3ev_m_NUMBER","name":"mx-NUMBER","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-11T15:25:17.87495","updateTime":"2026-09-11T15:25:17.874951"}}
+
+===== REQ 0042 2026-09-11T15:25:17 =====
+POST http://localhost:8081/api/form/def/519e40f8-6a57-4658-af0a-a0bbf3983950/config
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"definition": "{\"fields\": [{\"name\": \"amount\", \"label\": \"\\u91d1\\u989d\", \"type\": \"NUMBER\"}]}"}
+----- RESP 0042 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0043 2026-09-11T15:25:17 =====
+POST http://localhost:8081/api/form/def/519e40f8-6a57-4658-af0a-a0bbf3983950/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0043 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0044 2026-09-11T15:25:17 =====
+POST http://localhost:8081/api/workflow/defs
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"name": "I3\u8bc1\u636e-\u77e9\u9635NUMBER", "formKey": "i3ev_m_NUMBER"}
+----- RESP 0044 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"defId":"2098311906468581377","graph":{"processKey":"bpm_e861b4251a364ad7","name":"I3证据-矩阵NUMBER","formKey":"i3ev_m_NUMBER","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300},"x":null,"y":null,"waypoints":null},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300},"x":null,"y":null,"waypoints":null},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{},"x":null,"y":null,"waypoints":null}],"contractVersion":null,"canvas":{}}}}
+
+===== REQ 0045 2026-09-11T15:25:17 =====
+PUT http://localhost:8081/api/workflow/defs/2098311906468581377/graph
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"processKey": "i3ev_m_NUMBER", "name": "I3\u8bc1\u636e-\u77e9\u9635NUMBER", "formKey": "i3ev_m_NUMBER", "contractVersion": 2, "elements": [{"id": "node_start", "kind": "node", "type": "START", "x": 100.0, "y": 300.0, "config": {}}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "x": 300.0, "y": 300.0, "config": {"name": "m", "participant": {"strategy": "FIXED_USER", "value": [1]}, "opinionForm": {"formId": "m-NUMBER", "version": "v1", "fields": [{"key": "f_number", "label": "NUMBER", "type": "NUMBER"}]}}}, {"id": "edge_1", "kind": "edge", "source": "node_start", "target": "node_1"}, {"id": "node_end", "kind": "node", "type": "END", "x": 520.0, "y": 300.0, "config": {}}, {"id": "edge_2", "kind": "edge", "source": "node_1", "target": "node_end"}], "canvas": {}}
+----- RESP 0045 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0046 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/workflow/defs/2098311906468581377/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0046 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"2098311906468581377","createTime":"2026-09-11T15:25:17.910649","createBy":"1","updateTime":"2026-09-11T15:25:17.910671","updateBy":"1","deleted":0,"version":"2","tenantId":"0","processKey":"bpm_e861b4251a364ad7","name":"I3证据-矩阵NUMBER","formKey":"i3ev_m_NUMBER","defVersion":1,"status":"PUBLISHED","deploymentId":"f0678a8c-adb1-11f1-ac2f-8e7a76db281d","processDefinitionId":"bpm_e861b4251a364ad7:1:f071c3bf-adb1-11f1-ac2f-8e7a76db281d","graphJson":"{\"processKey\":\"bpm_e861b4251a364ad7\",\"name\":\"I3证据-矩阵NUMBER\",\"formKey\":\"i3ev_m_NUMBER\",\"version\":null,\"elements\":[{\"id\":\"node_start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":100.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"node_1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"m\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[1]},\"opinionForm\":{\"formId\":\"m-NUMBER\",\"version\":\"v1\",\"fields\":[{\"key\":\"f_number\",\"label\":\"NUMBER\",\"type\":\"NUMBER\"}]}},\"style\":null,\"x\":300.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_1\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_start\",\"target\":\"node_1\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"node_end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":520.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_2\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_1\",\"target\":\"node_end\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null}],\"contractVersion\":2,\"canvas\":{}}","categoryId":null,"iotAccessEnabled":false,"iotDeviceActionJson":null,"publishedVersion":null}}
+
+===== REQ 0047 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"formKey": "i3ev_m_RADIO", "name": "mx-RADIO"}
+----- RESP 0047 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"b2bfd22a-82b7-460d-9275-b81342b5a340","formKey":"i3ev_m_RADIO","name":"mx-RADIO","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-11T15:25:18.06171","updateTime":"2026-09-11T15:25:18.061711"}}
+
+===== REQ 0048 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/form/def/b2bfd22a-82b7-460d-9275-b81342b5a340/config
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"definition": "{\"fields\": [{\"name\": \"amount\", \"label\": \"\\u91d1\\u989d\", \"type\": \"NUMBER\"}]}"}
+----- RESP 0048 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0049 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/form/def/b2bfd22a-82b7-460d-9275-b81342b5a340/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0049 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0050 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/workflow/defs
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"name": "I3\u8bc1\u636e-\u77e9\u9635RADIO", "formKey": "i3ev_m_RADIO"}
+----- RESP 0050 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"defId":"2098311907286470657","graph":{"processKey":"bpm_328d68732ea545cc","name":"I3证据-矩阵RADIO","formKey":"i3ev_m_RADIO","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300},"x":null,"y":null,"waypoints":null},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300},"x":null,"y":null,"waypoints":null},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{},"x":null,"y":null,"waypoints":null}],"contractVersion":null,"canvas":{}}}}
+
+===== REQ 0051 2026-09-11T15:25:18 =====
+PUT http://localhost:8081/api/workflow/defs/2098311907286470657/graph
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"processKey": "i3ev_m_RADIO", "name": "I3\u8bc1\u636e-\u77e9\u9635RADIO", "formKey": "i3ev_m_RADIO", "contractVersion": 2, "elements": [{"id": "node_start", "kind": "node", "type": "START", "x": 100.0, "y": 300.0, "config": {}}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "x": 300.0, "y": 300.0, "config": {"name": "m", "participant": {"strategy": "FIXED_USER", "value": [1]}, "opinionForm": {"formId": "m-RADIO", "version": "v1", "fields": [{"key": "f_radio", "label": "RADIO", "type": "RADIO"}]}}}, {"id": "edge_1", "kind": "edge", "source": "node_start", "target": "node_1"}, {"id": "node_end", "kind": "node", "type": "END", "x": 520.0, "y": 300.0, "config": {}}, {"id": "edge_2", "kind": "edge", "source": "node_1", "target": "node_end"}], "canvas": {}}
+----- RESP 0051 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0052 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/workflow/defs/2098311907286470657/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0052 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"2098311907286470657","createTime":"2026-09-11T15:25:18.104868","createBy":"1","updateTime":"2026-09-11T15:25:18.104871","updateBy":"1","deleted":0,"version":"2","tenantId":"0","processKey":"bpm_328d68732ea545cc","name":"I3证据-矩阵RADIO","formKey":"i3ev_m_RADIO","defVersion":1,"status":"PUBLISHED","deploymentId":"f0854bc0-adb1-11f1-ac2f-8e7a76db281d","processDefinitionId":"bpm_328d68732ea545cc:1:f08c77b3-adb1-11f1-ac2f-8e7a76db281d","graphJson":"{\"processKey\":\"bpm_328d68732ea545cc\",\"name\":\"I3证据-矩阵RADIO\",\"formKey\":\"i3ev_m_RADIO\",\"version\":null,\"elements\":[{\"id\":\"node_start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":100.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"node_1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"m\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[1]},\"opinionForm\":{\"formId\":\"m-RADIO\",\"version\":\"v1\",\"fields\":[{\"key\":\"f_radio\",\"label\":\"RADIO\",\"type\":\"RADIO\"}]}},\"style\":null,\"x\":300.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_1\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_start\",\"target\":\"node_1\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"node_end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":520.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_2\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_1\",\"target\":\"node_end\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null}],\"contractVersion\":2,\"canvas\":{}}","categoryId":null,"iotAccessEnabled":false,"iotDeviceActionJson":null,"publishedVersion":null}}
+
+===== REQ 0053 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"formKey": "i3ev_m_CHECKBOX", "name": "mx-CHECKBOX"}
+----- RESP 0053 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"33ae430d-1dcb-4687-bcea-61e529619ff9","formKey":"i3ev_m_CHECKBOX","name":"mx-CHECKBOX","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-11T15:25:18.208167","updateTime":"2026-09-11T15:25:18.208169"}}
+
+===== REQ 0054 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/form/def/33ae430d-1dcb-4687-bcea-61e529619ff9/config
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"definition": "{\"fields\": [{\"name\": \"amount\", \"label\": \"\\u91d1\\u989d\", \"type\": \"NUMBER\"}]}"}
+----- RESP 0054 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0055 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/form/def/33ae430d-1dcb-4687-bcea-61e529619ff9/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0055 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0056 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/workflow/defs
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"name": "I3\u8bc1\u636e-\u77e9\u9635CHECKBOX", "formKey": "i3ev_m_CHECKBOX"}
+----- RESP 0056 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"defId":"2098311907894644738","graph":{"processKey":"bpm_8086342358774262","name":"I3证据-矩阵CHECKBOX","formKey":"i3ev_m_CHECKBOX","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300},"x":null,"y":null,"waypoints":null},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300},"x":null,"y":null,"waypoints":null},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{},"x":null,"y":null,"waypoints":null}],"contractVersion":null,"canvas":{}}}}
+
+===== REQ 0057 2026-09-11T15:25:18 =====
+PUT http://localhost:8081/api/workflow/defs/2098311907894644738/graph
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"processKey": "i3ev_m_CHECKBOX", "name": "I3\u8bc1\u636e-\u77e9\u9635CHECKBOX", "formKey": "i3ev_m_CHECKBOX", "contractVersion": 2, "elements": [{"id": "node_start", "kind": "node", "type": "START", "x": 100.0, "y": 300.0, "config": {}}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "x": 300.0, "y": 300.0, "config": {"name": "m", "participant": {"strategy": "FIXED_USER", "value": [1]}, "opinionForm": {"formId": "m-CHECKBOX", "version": "v1", "fields": [{"key": "f_checkbox", "label": "CHECKBOX", "type": "CHECKBOX"}]}}}, {"id": "edge_1", "kind": "edge", "source": "node_start", "target": "node_1"}, {"id": "node_end", "kind": "node", "type": "END", "x": 520.0, "y": 300.0, "config": {}}, {"id": "edge_2", "kind": "edge", "source": "node_1", "target": "node_end"}], "canvas": {}}
+----- RESP 0057 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0058 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/workflow/defs/2098311907894644738/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0058 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"2098311907894644738","createTime":"2026-09-11T15:25:18.250306","createBy":"1","updateTime":"2026-09-11T15:25:18.250309","updateBy":"1","deleted":0,"version":"2","tenantId":"0","processKey":"bpm_8086342358774262","name":"I3证据-矩阵CHECKBOX","formKey":"i3ev_m_CHECKBOX","defVersion":1,"status":"PUBLISHED","deploymentId":"f09e5204-adb1-11f1-ac2f-8e7a76db281d","processDefinitionId":"bpm_8086342358774262:1:f0af41f7-adb1-11f1-ac2f-8e7a76db281d","graphJson":"{\"processKey\":\"bpm_8086342358774262\",\"name\":\"I3证据-矩阵CHECKBOX\",\"formKey\":\"i3ev_m_CHECKBOX\",\"version\":null,\"elements\":[{\"id\":\"node_start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":100.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"node_1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"m\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[1]},\"opinionForm\":{\"formId\":\"m-CHECKBOX\",\"version\":\"v1\",\"fields\":[{\"key\":\"f_checkbox\",\"label\":\"CHECKBOX\",\"type\":\"CHECKBOX\"}]}},\"style\":null,\"x\":300.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_1\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_start\",\"target\":\"node_1\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"node_end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":520.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_2\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_1\",\"target\":\"node_end\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null}],\"contractVersion\":2,\"canvas\":{}}","categoryId":null,"iotAccessEnabled":false,"iotDeviceActionJson":null,"publishedVersion":null}}
+
+===== REQ 0059 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"formKey": "i3ev_m_SELECT", "name": "mx-SELECT"}
+----- RESP 0059 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"3771c7c0-3f2a-4764-946e-2f31111fcf4a","formKey":"i3ev_m_SELECT","name":"mx-SELECT","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-11T15:25:18.489075","updateTime":"2026-09-11T15:25:18.489077"}}
+
+===== REQ 0060 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/form/def/3771c7c0-3f2a-4764-946e-2f31111fcf4a/config
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"definition": "{\"fields\": [{\"name\": \"amount\", \"label\": \"\\u91d1\\u989d\", \"type\": \"NUMBER\"}]}"}
+----- RESP 0060 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0061 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/form/def/3771c7c0-3f2a-4764-946e-2f31111fcf4a/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0061 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0062 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/workflow/defs
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"name": "I3\u8bc1\u636e-\u77e9\u9635SELECT", "formKey": "i3ev_m_SELECT"}
+----- RESP 0062 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"defId":"2098311909157130242","graph":{"processKey":"bpm_f9d1900c1ec94a07","name":"I3证据-矩阵SELECT","formKey":"i3ev_m_SELECT","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300},"x":null,"y":null,"waypoints":null},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300},"x":null,"y":null,"waypoints":null},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{},"x":null,"y":null,"waypoints":null}],"contractVersion":null,"canvas":{}}}}
+
+===== REQ 0063 2026-09-11T15:25:18 =====
+PUT http://localhost:8081/api/workflow/defs/2098311909157130242/graph
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"processKey": "i3ev_m_SELECT", "name": "I3\u8bc1\u636e-\u77e9\u9635SELECT", "formKey": "i3ev_m_SELECT", "contractVersion": 2, "elements": [{"id": "node_start", "kind": "node", "type": "START", "x": 100.0, "y": 300.0, "config": {}}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "x": 300.0, "y": 300.0, "config": {"name": "m", "participant": {"strategy": "FIXED_USER", "value": [1]}, "opinionForm": {"formId": "m-SELECT", "version": "v1", "fields": [{"key": "f_select", "label": "SELECT", "type": "SELECT"}]}}}, {"id": "edge_1", "kind": "edge", "source": "node_start", "target": "node_1"}, {"id": "node_end", "kind": "node", "type": "END", "x": 520.0, "y": 300.0, "config": {}}, {"id": "edge_2", "kind": "edge", "source": "node_1", "target": "node_end"}], "canvas": {}}
+----- RESP 0063 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0064 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/workflow/defs/2098311909157130242/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0064 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"2098311909157130242","createTime":"2026-09-11T15:25:18.550663","createBy":"1","updateTime":"2026-09-11T15:25:18.550667","updateBy":"1","deleted":0,"version":"2","tenantId":"0","processKey":"bpm_f9d1900c1ec94a07","name":"I3证据-矩阵SELECT","formKey":"i3ev_m_SELECT","defVersion":1,"status":"PUBLISHED","deploymentId":"f0ca6b18-adb1-11f1-ac2f-8e7a76db281d","processDefinitionId":"bpm_f9d1900c1ec94a07:1:f0d0d3bb-adb1-11f1-ac2f-8e7a76db281d","graphJson":"{\"processKey\":\"bpm_f9d1900c1ec94a07\",\"name\":\"I3证据-矩阵SELECT\",\"formKey\":\"i3ev_m_SELECT\",\"version\":null,\"elements\":[{\"id\":\"node_start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":100.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"node_1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"m\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[1]},\"opinionForm\":{\"formId\":\"m-SELECT\",\"version\":\"v1\",\"fields\":[{\"key\":\"f_select\",\"label\":\"SELECT\",\"type\":\"SELECT\"}]}},\"style\":null,\"x\":300.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_1\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_start\",\"target\":\"node_1\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"node_end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":520.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_2\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_1\",\"target\":\"node_end\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null}],\"contractVersion\":2,\"canvas\":{}}","categoryId":null,"iotAccessEnabled":false,"iotDeviceActionJson":null,"publishedVersion":null}}
+
+===== REQ 0065 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"formKey": "i3ev_m_DATETIME", "name": "mx-DATETIME"}
+----- RESP 0065 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"4d366da1-7f0b-41d7-b68f-9d3ab20df84d","formKey":"i3ev_m_DATETIME","name":"mx-DATETIME","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-11T15:25:18.65203","updateTime":"2026-09-11T15:25:18.652031"}}
+
+===== REQ 0066 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/form/def/4d366da1-7f0b-41d7-b68f-9d3ab20df84d/config
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"definition": "{\"fields\": [{\"name\": \"amount\", \"label\": \"\\u91d1\\u989d\", \"type\": \"NUMBER\"}]}"}
+----- RESP 0066 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0067 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/form/def/4d366da1-7f0b-41d7-b68f-9d3ab20df84d/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0067 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0068 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/workflow/defs
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"name": "I3\u8bc1\u636e-\u77e9\u9635DATETIME", "formKey": "i3ev_m_DATETIME"}
+----- RESP 0068 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"defId":"2098311909727555586","graph":{"processKey":"bpm_c5fa1b76752e4ba3","name":"I3证据-矩阵DATETIME","formKey":"i3ev_m_DATETIME","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300},"x":null,"y":null,"waypoints":null},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300},"x":null,"y":null,"waypoints":null},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{},"x":null,"y":null,"waypoints":null}],"contractVersion":null,"canvas":{}}}}
+
+===== REQ 0069 2026-09-11T15:25:18 =====
+PUT http://localhost:8081/api/workflow/defs/2098311909727555586/graph
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"processKey": "i3ev_m_DATETIME", "name": "I3\u8bc1\u636e-\u77e9\u9635DATETIME", "formKey": "i3ev_m_DATETIME", "contractVersion": 2, "elements": [{"id": "node_start", "kind": "node", "type": "START", "x": 100.0, "y": 300.0, "config": {}}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "x": 300.0, "y": 300.0, "config": {"name": "m", "participant": {"strategy": "FIXED_USER", "value": [1]}, "opinionForm": {"formId": "m-DATETIME", "version": "v1", "fields": [{"key": "f_datetime", "label": "DATETIME", "type": "DATETIME"}]}}}, {"id": "edge_1", "kind": "edge", "source": "node_start", "target": "node_1"}, {"id": "node_end", "kind": "node", "type": "END", "x": 520.0, "y": 300.0, "config": {}}, {"id": "edge_2", "kind": "edge", "source": "node_1", "target": "node_end"}], "canvas": {}}
+----- RESP 0069 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0070 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/workflow/defs/2098311909727555586/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0070 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"2098311909727555586","createTime":"2026-09-11T15:25:18.687043","createBy":"1","updateTime":"2026-09-11T15:25:18.687056","updateBy":"1","deleted":0,"version":"2","tenantId":"0","processKey":"bpm_c5fa1b76752e4ba3","name":"I3证据-矩阵DATETIME","formKey":"i3ev_m_DATETIME","defVersion":1,"status":"PUBLISHED","deploymentId":"f0e71adc-adb1-11f1-ac2f-8e7a76db281d","processDefinitionId":"bpm_c5fa1b76752e4ba3:1:f0ed837f-adb1-11f1-ac2f-8e7a76db281d","graphJson":"{\"processKey\":\"bpm_c5fa1b76752e4ba3\",\"name\":\"I3证据-矩阵DATETIME\",\"formKey\":\"i3ev_m_DATETIME\",\"version\":null,\"elements\":[{\"id\":\"node_start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":100.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"node_1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"m\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[1]},\"opinionForm\":{\"formId\":\"m-DATETIME\",\"version\":\"v1\",\"fields\":[{\"key\":\"f_datetime\",\"label\":\"DATETIME\",\"type\":\"DATETIME\"}]}},\"style\":null,\"x\":300.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_1\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_start\",\"target\":\"node_1\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"node_end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":520.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_2\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_1\",\"target\":\"node_end\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null}],\"contractVersion\":2,\"canvas\":{}}","categoryId":null,"iotAccessEnabled":false,"iotDeviceActionJson":null,"publishedVersion":null}}
+
+===== REQ 0071 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"formKey": "i3ev_m_NOTE", "name": "mx-NOTE"}
+----- RESP 0071 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"e717d23c-958a-4518-810d-abdbf024c104","formKey":"i3ev_m_NOTE","name":"mx-NOTE","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-11T15:25:18.851106","updateTime":"2026-09-11T15:25:18.851107"}}
+
+===== REQ 0072 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/form/def/e717d23c-958a-4518-810d-abdbf024c104/config
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"definition": "{\"fields\": [{\"name\": \"amount\", \"label\": \"\\u91d1\\u989d\", \"type\": \"NUMBER\"}]}"}
+----- RESP 0072 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0073 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/form/def/e717d23c-958a-4518-810d-abdbf024c104/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0073 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0074 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/workflow/defs
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"name": "I3\u8bc1\u636e-\u77e9\u9635NOTE", "formKey": "i3ev_m_NOTE"}
+----- RESP 0074 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"defId":"2098311910587387905","graph":{"processKey":"bpm_b6ab3e18cbf444fc","name":"I3证据-矩阵NOTE","formKey":"i3ev_m_NOTE","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300},"x":null,"y":null,"waypoints":null},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300},"x":null,"y":null,"waypoints":null},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{},"x":null,"y":null,"waypoints":null}],"contractVersion":null,"canvas":{}}}}
+
+===== REQ 0075 2026-09-11T15:25:18 =====
+PUT http://localhost:8081/api/workflow/defs/2098311910587387905/graph
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"processKey": "i3ev_m_NOTE", "name": "I3\u8bc1\u636e-\u77e9\u9635NOTE", "formKey": "i3ev_m_NOTE", "contractVersion": 2, "elements": [{"id": "node_start", "kind": "node", "type": "START", "x": 100.0, "y": 300.0, "config": {}}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "x": 300.0, "y": 300.0, "config": {"name": "m", "participant": {"strategy": "FIXED_USER", "value": [1]}, "opinionForm": {"formId": "m-NOTE", "version": "v1", "fields": [{"key": "f_note", "label": "NOTE", "type": "NOTE"}]}}}, {"id": "edge_1", "kind": "edge", "source": "node_start", "target": "node_1"}, {"id": "node_end", "kind": "node", "type": "END", "x": 520.0, "y": 300.0, "config": {}}, {"id": "edge_2", "kind": "edge", "source": "node_1", "target": "node_end"}], "canvas": {}}
+----- RESP 0075 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0076 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/workflow/defs/2098311910587387905/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0076 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"2098311910587387905","createTime":"2026-09-11T15:25:18.89181","createBy":"1","updateTime":"2026-09-11T15:25:18.891814","updateBy":"1","deleted":0,"version":"2","tenantId":"0","processKey":"bpm_b6ab3e18cbf444fc","name":"I3证据-矩阵NOTE","formKey":"i3ev_m_NOTE","defVersion":1,"status":"PUBLISHED","deploymentId":"f0fdd730-adb1-11f1-ac2f-8e7a76db281d","processDefinitionId":"bpm_b6ab3e18cbf444fc:1:f103a393-adb1-11f1-ac2f-8e7a76db281d","graphJson":"{\"processKey\":\"bpm_b6ab3e18cbf444fc\",\"name\":\"I3证据-矩阵NOTE\",\"formKey\":\"i3ev_m_NOTE\",\"version\":null,\"elements\":[{\"id\":\"node_start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":100.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"node_1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"m\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[1]},\"opinionForm\":{\"formId\":\"m-NOTE\",\"version\":\"v1\",\"fields\":[{\"key\":\"f_note\",\"label\":\"NOTE\",\"type\":\"NOTE\"}]}},\"style\":null,\"x\":300.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_1\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_start\",\"target\":\"node_1\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"node_end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":520.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_2\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_1\",\"target\":\"node_end\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null}],\"contractVersion\":2,\"canvas\":{}}","categoryId":null,"iotAccessEnabled":false,"iotDeviceActionJson":null,"publishedVersion":null}}
+
+===== REQ 0077 2026-09-11T15:25:18 =====
+POST http://localhost:8081/api/form/def
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"formKey": "i3ev_m_RICH_TEXT", "name": "mx-RICH_TEXT"}
+----- RESP 0077 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"id":"22c9e370-2e8b-4391-a7b2-5dcc57c71a42","formKey":"i3ev_m_RICH_TEXT","name":"mx-RICH_TEXT","logicalTableName":null,"status":"DRAFT","physicalTableName":null,"formVersion":1,"description":null,"visibilityScope":null,"createTime":"2026-09-11T15:25:18.989849","updateTime":"2026-09-11T15:25:18.98985"}}
+
+===== REQ 0078 2026-09-11T15:25:19 =====
+POST http://localhost:8081/api/form/def/22c9e370-2e8b-4391-a7b2-5dcc57c71a42/config
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"definition": "{\"fields\": [{\"name\": \"amount\", \"label\": \"\\u91d1\\u989d\", \"type\": \"NUMBER\"}]}"}
+----- RESP 0078 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0079 2026-09-11T15:25:19 =====
+POST http://localhost:8081/api/form/def/22c9e370-2e8b-4391-a7b2-5dcc57c71a42/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0079 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0080 2026-09-11T15:25:19 =====
+POST http://localhost:8081/api/workflow/defs
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"name": "I3\u8bc1\u636e-\u77e9\u9635RICH_TEXT", "formKey": "i3ev_m_RICH_TEXT"}
+----- RESP 0080 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"defId":"2098311911245893634","graph":{"processKey":"bpm_7ec40b44376b46c9","name":"I3证据-矩阵RICH_TEXT","formKey":"i3ev_m_RICH_TEXT","version":1,"elements":[{"id":"node_start","kind":"node","type":"START","source":null,"target":null,"config":{},"style":{"x":100,"y":300},"x":null,"y":null,"waypoints":null},{"id":"node_end","kind":"node","type":"END","source":null,"target":null,"config":{},"style":{"x":700,"y":300},"x":null,"y":null,"waypoints":null},{"id":"edge_1","kind":"edge","type":null,"source":"node_start","target":"node_end","config":{},"style":{},"x":null,"y":null,"waypoints":null}],"contractVersion":null,"canvas":{}}}}
+
+===== REQ 0081 2026-09-11T15:25:19 =====
+PUT http://localhost:8081/api/workflow/defs/2098311911245893634/graph
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"processKey": "i3ev_m_RICH_TEXT", "name": "I3\u8bc1\u636e-\u77e9\u9635RICH_TEXT", "formKey": "i3ev_m_RICH_TEXT", "contractVersion": 2, "elements": [{"id": "node_start", "kind": "node", "type": "START", "x": 100.0, "y": 300.0, "config": {}}, {"id": "node_1", "kind": "node", "type": "APPROVAL", "x": 300.0, "y": 300.0, "config": {"name": "m", "participant": {"strategy": "FIXED_USER", "value": [1]}, "opinionForm": {"formId": "m-RICH_TEXT", "version": "v1", "fields": [{"key": "f_rich_text", "label": "RICH_TEXT", "type": "RICH_TEXT"}]}}}, {"id": "edge_1", "kind": "edge", "source": "node_start", "target": "node_1"}, {"id": "node_end", "kind": "node", "type": "END", "x": 520.0, "y": 300.0, "config": {}}, {"id": "edge_2", "kind": "edge", "source": "node_1", "target": "node_end"}], "canvas": {}}
+----- RESP 0081 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":null}
+
+===== REQ 0082 2026-09-11T15:25:19 =====
+POST http://localhost:8081/api/workflow/defs/2098311911245893634/publish
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0082 -----
+STATUS: 200
+
+{"code":2417,"msg":"审批意见表单组件不可用: RICH_TEXT","data":null}
+
+===== REQ 0083 2026-09-11T15:25:19 =====
+POST http://localhost:8081/api/form/data/i3ev_d1
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+{"amount": 0}
+----- RESP 0083 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":"fc0f462b-a146-4a38-a784-fedd8534d346"}
+
+===== PSQL 2026-09-11T15:25:21 =====
+select process_instance_id from sw_bpm_instance where business_key='fc0f462b-a146-4a38-a784-fedd8534d346'
+----- RESULT (exit=0) -----
+f144a3aa-adb1-11f1-8e5e-8e7a76db281d
+
+===== REQ 0084 2026-09-11T15:25:21 =====
+GET http://localhost:8081/api/workflow/tasks/todo?pageNum=1&pageSize=50
+Content-type: application/json
+Authorization: [REDACTED_BEARER]9._AYmygGpm9-IdmyDgY0ncgAyTzMndaWABHmBjuFfVdvfB1bjIF6nP0-a5JnRkmUX
+
+----- RESP 0084 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"records":[{"taskId":"f145b527-adb1-11f1-8e5e-8e7a76db281d","processInstanceId":"f144a3aa-adb1-11f1-8e5e-8e7a76db281d","processName":"I3证据-单审批","formKey":"i3ev_d1","businessKey":"fc0f462b-a146-4a38-a784-fedd8534d346","createTime":"2026-09-11T15:25:19.388"},{"taskId":"ebf785b7-adb1-11f1-8e5e-8e7a76db281d","processInstanceId":"ebee0fca-adb1-11f1-8e5e-8e7a76db281d","processName":"I3证据-函数","formKey":"i3ev_d5","businessKey":"80ee7b3b-fbb1-4330-8397-006529acdb0c","createTime":"2026-09-11T15:25:10.463"},{"taskId":"69991c6c-adaf-11f1-bb59-8e7a76db281d","processInstanceId":"6998ce3f-adaf-11f1-bb59-8e7a76db281d","processName":"I3证据-单审批","formKey":"i3ev_d1","businessKey":"51be9a0b-c0d8-473b-b8a2-ea74680a41fb","createTime":"2026-09-11T15:07:12.772"},{"taskId":"64b595bc-adaf-11f1-bb59-8e7a76db281d","processInstanceId":"64b56e9f-adaf-11f1-bb59-8e7a76db281d","processName":"I3证据-单审批","formKey":"i3ev_d1","businessKey":"c909585c-6bfb-4dff-b20a-93a380ddd0d5","createTime":"2026-09-11T15:07:04.57"},{"taskId":"62e45883-adaf-11f1-a94e-8e7a76db281d","processInstanceId":"62e45876-adaf-11f1-a94e-8e7a76db281d","processName":"I3证据-单审批","formKey":"i3ev_d1","businessKey":"844d4e60-346a-4dc3-a31f-88497961c784","createTime":"2026-09-11T15:07:01.521"},{"taskId":"5ea6125b-adaf-11f1-a94e-8e7a76db281d","processInstanceId":"5ab095ff-adaf-11f1-bb59-8e7a76db281d","processName":"I3证据-两审批","formKey":"i3ev_d2","businessKey":"d9ca6234-1b61-41f3-844f-12b928e7fa22","createTime":"2026-09-11T15:06:54.402"},{"taskId":"24962ebc-adaf-11f1-bb59-8e7a76db281d","processInstanceId":"247b53af-adaf-11f1-bb59-8e7a76db281d","processName":"I3证据-单审批","formKey":"i3ev_d1","businessKey":"0c1aa769-e1bd-4034-84cc-f3b8a40261e2","createTime":"2026-09-11T15:05:16.959"}],"total":"7","pageNum":"1","pageSize":"50"}}
+
+===== REQ 0085 2026-09-11T15:25:21 =====
+GET http://localhost:8081/api/workflow/tasks/todo?pageNum=1&pageSize=50
+Content-type: application/json
+Authorization: [REDACTED_BEARER]0MTB9.xfE3ImsCAhX_8i9mI4HgDgqTHZQwX3lZ-cAS2UQBx_wzKrdZBP_a2hpUIcYESCxJ
+
+----- RESP 0085 -----
+STATUS: 200
+
+{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"50"}}
+
+===== REQ 0086 2026-09-11T15:25:21 =====
+POST http://localhost:8081/api/workflow/tasks/f145b527-adb1-11f1-8e5e-8e7a76db281d/complete
+Content-type: application/json
+Authorization: [REDACTED_BEARER]0MTB9.xfE3ImsCAhX_8i9mI4HgDgqTHZQwX3lZ-cAS2UQBx_wzKrdZBP_a2hpUIcYESCxJ
+
+{"action": "APPROVE"}
+----- RESP 0086 -----
+STATUS: 200
+
+{"code":403,"msg":"无权处理该任务","data":null}
+
+===== REQ 0087 2026-09-11T15:25:21 =====
+GET http://localhost:8081/api/workflow/instances/f144a3aa-adb1-11f1-8e5e-8e7a76db281d
+Content-type: application/json
+Authorization: [REDACTED_BEARER]0MTB9.xfE3ImsCAhX_8i9mI4HgDgqTHZQwX3lZ-cAS2UQBx_wzKrdZBP_a2hpUIcYESCxJ
+
+----- RESP 0087 -----
+STATUS: 200
+
+{"code":404,"msg":"流程实例不存在","data":null}
+

@@ -1,0 +1,94 @@
+{
+  "log": [
+    {
+      "step": "forms",
+      "ids": {
+        "form_i3ev_d1": "07f5e2b5-02d4-45b8-9e91-d7005baea0e3",
+        "form_i3ev_d2": "00d72c99-8f67-4af1-9159-a020984bf48c",
+        "form_i3ev_d3": "d4026ff5-045b-4c31-9c03-f5a578900685",
+        "form_i3ev_d4": "8fafacaf-eb53-4f52-ac58-8f180a778371",
+        "form_i3ev_d5": "cceb905e-aa21-4a58-b826-f6098bb0c529",
+        "form_i3ev_d6": "27740d69-25b7-456c-b5d6-5f59d616234d",
+        "form_i3ev_d7": "0bcff294-9594-43a5-bec7-fd6aee5143d5"
+      }
+    },
+    {
+      "step": "D1 publish",
+      "defId": "2098396535440760834",
+      "resp": {
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "id": "2098396535440760834",
+          "createTime": "2026-09-11T21:01:35.028236",
+          "createBy": "1",
+          "updateTime": "2026-09-11T21:01:35.028242",
+          "updateBy": "1",
+          "deleted": 0,
+          "version": "2",
+          "tenantId": "0",
+          "processKey": "bpm_d6c17337ea8c470b",
+          "name": "I3证据-单审批",
+          "formKey": "i3ev_d1",
+          "defVersion": 1,
+          "status": "PUBLISHED",
+          "deploymentId": "eaf17ccf-ade0-11f1-8282-6688cd206317",
+          "processDefinitionId": "bpm_d6c17337ea8c470b:1:eb1bc022-ade0-11f1-8282-6688cd206317",
+          "graphJson": "{\"processKey\":\"bpm_d6c17337ea8c470b\",\"name\":\"I3证据-单审批\",\"formKey\":\"i3ev_d1\",\"version\":null,\"elements\":[{\"id\":\"node_start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":100.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"node_1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"审批A\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[1]}},\"style\":null,\"x\":300.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_1\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_start\",\"target\":\"node_1\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"node_end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{},\"style\":null,\"x\":520.0,\"y\":300.0,\"waypoints\":null},{\"id\":\"edge_2\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_1\",\"target\":\"node_end\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null}],\"contractVersion\":2,\"canvas\":{}}",
+          "categoryId": null,
+          "iotAccessEnabled": false,
+          "iotDeviceActionJson": null,
+          "publishedVersion": null
+        }
+      }
+    },
+    {
+      "step": "D2 publish",
+      "defId": "2098396537760210946"
+    },
+    {
+      "step": "D3 publish",
+      "defId": "2098396538410328065"
+    },
+    {
+      "step": "D4 publish",
+      "defId": "2098396539152719874"
+    },
+    {
+      "step": "D5 publish",
+      "defId": "2098396539853168641"
+    },
+    {
+      "step": "D6 publish",
+      "defId": "2098396541702856706"
+    },
+    {
+      "step": "D7 draft only",
+      "defId": "2098396542361362433"
+    }
+  ],
+  "ids": {
+    "form_i3ev_d1": "07f5e2b5-02d4-45b8-9e91-d7005baea0e3",
+    "form_i3ev_d2": "00d72c99-8f67-4af1-9159-a020984bf48c",
+    "form_i3ev_d3": "d4026ff5-045b-4c31-9c03-f5a578900685",
+    "form_i3ev_d4": "8fafacaf-eb53-4f52-ac58-8f180a778371",
+    "form_i3ev_d5": "cceb905e-aa21-4a58-b826-f6098bb0c529",
+    "form_i3ev_d6": "27740d69-25b7-456c-b5d6-5f59d616234d",
+    "form_i3ev_d7": "0bcff294-9594-43a5-bec7-fd6aee5143d5",
+    "d1": "2098396535440760834",
+    "d2": "2098396537760210946",
+    "d3": "2098396538410328065",
+    "d4": "2098396539152719874",
+    "d5": "2098396539853168641",
+    "d6": "2098396541702856706",
+    "d7": "2098396542361362433"
+  },
+  "_snapshot": {
+    "snapshotId": "i3-06-frozen-a",
+    "jar_sha256": "383ae1a7725319ae74df819c52f830e6f399a152d2de1226d36478db64a31215",
+    "web_dist_merkle": "ec1968fdf493e53910b46a7ed254856906af6a9f8db330b07cbc58d142e74976",
+    "instance_A": "PID 96764 @ 8081",
+    "instance_B": "PID 96797 @ 8082",
+    "fingerprint_file": "evidence/i3-06/Z1/candidate.json"
+  }
+}

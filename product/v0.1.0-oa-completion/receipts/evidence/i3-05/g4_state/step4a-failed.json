@@ -1,0 +1,63 @@
+{
+  "_snapshot": {
+    "snapshotId": "i3-05-frozen-a",
+    "jar_sha256": "2900e136d1b99c41c8c5ad5bfc8a6ef2ee56d1e1ede3d0168f15072155150246",
+    "instance_A": "PID 64431 @ 8081",
+    "instance_B": "PID 64463 @ 8082",
+    "fingerprint_file": "evidence/i3-05/final-candidate-fingerprint.txt"
+  },
+  "rows": [
+    {
+      "case": "definition-published",
+      "defId": "2098327506557394945",
+      "formKey": "s4a_g4a_237186",
+      "condition_edge": "amount > 'zzz'（amount 为 NUMBER 字段，运行期与字符串字面量数字比较抛类型不匹配）"
+    },
+    {
+      "case": "branch-evaluation-failure",
+      "task_id": "9985efd7-adba-11f1-b465-8e7a76db281d",
+      "complete_http": 200,
+      "complete_code": 2311,
+      "expected_code": 2311,
+      "instance_id": "9984de5a-adba-11f1-b465-8e7a76db281d",
+      "instance_status": "FAILED",
+      "detail": "分支条件求值失败: 表达式比较类型不匹配"
+    },
+    {
+      "case": "five-state-instances",
+      "rows": [
+        {
+          "state": "RUNNING(当前)",
+          "instance_id": "247b53af-adaf-11f1-bb59-8e7a76db281d",
+          "status": "RUNNING"
+        },
+        {
+          "state": "APPROVED(完成)",
+          "instance_id": "",
+          "status": ""
+        },
+        {
+          "state": "DISCARDED(废弃)",
+          "instance_id": "6b1e5d49-adaf-11f1-a94e-8e7a76db281d",
+          "status": "DISCARDED"
+        },
+        {
+          "state": "WITHDRAWN(撤回)",
+          "instance_id": "68602799-adaf-11f1-a94e-8e7a76db281d",
+          "status": "WITHDRAWN"
+        },
+        {
+          "state": "FAILED(失败)",
+          "instance_id": "9984de5a-adba-11f1-b465-8e7a76db281d",
+          "status": "FAILED"
+        }
+      ]
+    },
+    {
+      "case": "failed-instance-activity-trace",
+      "instance_id": "9984de5a-adba-11f1-b465-8e7a76db281d",
+      "activities": "node_start:startEvent:2026-09-11 16:27:17.641 , e1:sequenceFlow:2026-09-11 16:27:17.641 , node_approve:userTask:RUNNING",
+      "verdict": "FAILED 为真实终态：分支求值失败（2311）后实例独立于 WITHDRAWN/DISCARDED 落 FAILED"
+    }
+  ]
+}

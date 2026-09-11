@@ -1,0 +1,358 @@
+{
+  "_snapshot": {
+    "snapshotId": "i3-06-frozen-d",
+    "jar_sha256": "409d60f6bf2097f3fa720b0b86baa323deadb20b48787eb57030c81ee8011a99",
+    "web_dist_merkle": "f16e31ae1869e5f176405b7d5bc21abcf6d3afc17848dee8c71858a52156e479",
+    "instance_A": "PID 23722 @ 8081",
+    "instance_B": "PID 23764 @ 8082",
+    "fingerprint_file": "evidence/i3-06/Z1/candidate-d.json",
+    "note": "supersedes frozen-a/b/c：负向终态覆盖、加签取消唯一键冲突、调度结果标注覆盖三项修复后重冻结"
+  },
+  "rows": [
+    {
+      "case": "Z5-01-addsign-serial",
+      "result": {
+        "marker": "z5-01-addsign-serial-ca4d515e",
+        "create": 0,
+        "serial_gate_violation": 2400,
+        "express_u2": 0,
+        "express_u3": 0,
+        "final": 0,
+        "sign_before": [],
+        "sign_after": [],
+        "chain": {
+          "request_marker": "z5-01-addsign-serial-ca4d515e",
+          "action_rows": [
+            "2098449780263567361|node_1|78320ba8-adfe-11f1-860b-d24845ae031d|1|ADD_SIGN|SIGN_REQUESTED|-|-|-|{}",
+            "2098449780762689537|node_1|78320ba8-adfe-11f1-860b-d24845ae031d|2001|ADD_SIGN|SIGN_APPROVE|-|-|-|{}",
+            "2098449780884324353|node_1|78320ba8-adfe-11f1-860b-d24845ae031d|2002|ADD_SIGN|SIGN_APPROVE|-|-|-|{}",
+            "2098449785552584706|node_1|78320ba8-adfe-11f1-860b-d24845ae031d|1|APPROVE|APPROVED|-|-|-|{\"comment\":\"z5-01-addsign-serial-ca4d515e-final\"}"
+          ],
+          "trace_rows": [
+            "startEvent|Start|-|-",
+            "userTask|审批A|1|-",
+            "endEvent|End|-|-"
+          ],
+          "notify_rows": [
+            "WF_APPROVED|7831e48b-adfe-11f1-860b-d24845ae031d|2005|您的申请已通过",
+            "WF_TODO|7831e48b-adfe-11f1-860b-d24845ae031d|2001|您收到一条加签任务",
+            "WF_TODO|7831e48b-adfe-11f1-860b-d24845ae031d|2002|您收到一条加签任务",
+            "WF_TODO|78320ba8-adfe-11f1-860b-d24845ae031d|1|您有一条待办"
+          ],
+          "instance_status": "APPROVED"
+        }
+      }
+    },
+    {
+      "case": "Z5-02-addsign-parallel",
+      "result": {
+        "marker": "z5-02-addsign-parallel-5b1f1232",
+        "create": 0,
+        "express_u3": 0,
+        "express_u2": 0,
+        "sign_after": [],
+        "chain": {
+          "request_marker": "z5-02-addsign-parallel-5b1f1232",
+          "action_rows": [
+            "2098449804229820417|node_1|7b87eda1-adfe-11f1-94e5-d24845ae031d|1|ADD_SIGN|SIGN_REQUESTED|-|-|-|{}",
+            "2098449804502450178|node_1|7b87eda1-adfe-11f1-94e5-d24845ae031d|2002|ADD_SIGN|SIGN_APPROVE|-|-|-|{}",
+            "2098449804590530562|node_1|7b87eda1-adfe-11f1-94e5-d24845ae031d|2001|ADD_SIGN|SIGN_APPROVE|-|-|-|{}"
+          ],
+          "trace_rows": [
+            "startEvent|Start|-|-",
+            "userTask|审批A|1|-"
+          ],
+          "notify_rows": [
+            "WF_TODO|7b879f74-adfe-11f1-94e5-d24845ae031d|2001|您收到一条加签任务",
+            "WF_TODO|7b879f74-adfe-11f1-94e5-d24845ae031d|2002|您收到一条加签任务",
+            "WF_TODO|7b87eda1-adfe-11f1-94e5-d24845ae031d|1|您有一条待办"
+          ],
+          "instance_status": "RUNNING"
+        }
+      }
+    },
+    {
+      "case": "Z5-03-addsign-cancel-repeat",
+      "result": {
+        "marker": "z5-03-addsign-cancel-ec2f6630",
+        "create": 0,
+        "cancel": 0,
+        "sign_status_after_cancel": "CANCELLED",
+        "express_after_cancel_rejected": 2400,
+        "re_add_sign": 0,
+        "express": 0,
+        "repeat_idempotent": 0,
+        "final": 0,
+        "sign_after": [],
+        "chain": {
+          "request_marker": "z5-03-addsign-cancel-ec2f6630",
+          "action_rows": [
+            "2098449823074828289|node_1|7e4315db-adfe-11f1-860b-d24845ae031d|1|ADD_SIGN|SIGN_REQUESTED|-|-|-|{}",
+            "2098449828066050049|node_1|7e4315db-adfe-11f1-860b-d24845ae031d|2001|ADD_SIGN|SIGN_APPROVE|-|-|-|{}",
+            "2098449832562343937|node_1|7e4315db-adfe-11f1-860b-d24845ae031d|1|APPROVE|APPROVED|-|-|-|{\"comment\":\"z5-03-addsign-cancel-ec2f6630-final\"}"
+          ],
+          "trace_rows": [
+            "startEvent|Start|-|-",
+            "userTask|审批A|1|-",
+            "endEvent|End|-|-"
+          ],
+          "notify_rows": [
+            "WF_APPROVED|7e42eebe-adfe-11f1-860b-d24845ae031d|2005|您的申请已通过",
+            "WF_TODO|7e42eebe-adfe-11f1-860b-d24845ae031d|2001|您收到一条加签任务",
+            "WF_TODO|7e4315db-adfe-11f1-860b-d24845ae031d|1|您有一条待办"
+          ],
+          "instance_status": "APPROVED"
+        }
+      }
+    },
+    {
+      "case": "Z5-04-addsign-negatives",
+      "result": {
+        "marker": "z5-04-addsign-neg-3dbaf339",
+        "invalid_user": 2400,
+        "self_add": 2405,
+        "forbidden_perm": 403
+      }
+    },
+    {
+      "case": "Z5-05-supplement-sign",
+      "result": {
+        "marker": "z5-05-supplement-94588b9d",
+        "sup_create": 0,
+        "express": 0,
+        "status_before": "APPROVED",
+        "status_after": "APPROVED",
+        "dup_same_participant": 2405,
+        "forbidden_actor": 403,
+        "sign_rows": [],
+        "chain": {
+          "request_marker": "z5-05-supplement-94588b9d",
+          "action_rows": [
+            "2098449865118531586|node_1|8458b411-adfe-11f1-94e5-d24845ae031d|1|APPROVE|APPROVED|-|-|-|{\"comment\":\"z5-05-supplement-94588b9d-pass\"}",
+            "2098449874576687106|INSTANCE|SUPPLEMENT#845865e4-adfe-11f1-94e5-d24845ae031d|2001|SUPPLEMENT_SIGN|SIGN_APPROVE|-|-|-|{}"
+          ],
+          "trace_rows": [
+            "startEvent|Start|-|-",
+            "userTask|审批A|1|-",
+            "endEvent|End|-|-"
+          ],
+          "notify_rows": [
+            "WF_APPROVED|845865e4-adfe-11f1-94e5-d24845ae031d|2005|您的申请已通过",
+            "WF_TODO|8458b411-adfe-11f1-94e5-d24845ae031d|1|您有一条待办"
+          ],
+          "instance_status": "APPROVED"
+        }
+      }
+    },
+    {
+      "case": "Z5-06-transfer",
+      "result": {
+        "marker": "z5-06-transfer-82f257d9",
+        "transfer": 0,
+        "assignee_before": "1",
+        "assignee_after": "2001",
+        "orig_complete_rejected": 403,
+        "transferee_complete": 0,
+        "chain": {
+          "request_marker": "z5-06-transfer-82f257d9",
+          "action_rows": [
+            "2098449902770798594|node_1|89cf04d4-adfe-11f1-860b-d24845ae031d|1|TRANSFER|TRANSFERRED|-|2001|-|{}",
+            "2098449907858489346|node_1|89cf04d4-adfe-11f1-860b-d24845ae031d|2001|APPROVE|APPROVED|-|-|-|{\"comment\":\"z5-06-transfer-82f257d9-by-transferee\"}"
+          ],
+          "trace_rows": [
+            "startEvent|Start|-|-",
+            "userTask|审批A|2001|-",
+            "endEvent|End|-|-"
+          ],
+          "notify_rows": [
+            "WF_APPROVED|89ceb6a7-adfe-11f1-860b-d24845ae031d|2005|您的申请已通过",
+            "WF_TODO|89ceb6a7-adfe-11f1-860b-d24845ae031d|2001|您收到一条转办任务",
+            "WF_TODO|89cf04d4-adfe-11f1-860b-d24845ae031d|1|您有一条待办"
+          ],
+          "instance_status": "APPROVED"
+        }
+      }
+    },
+    {
+      "case": "Z5-07-delegate",
+      "result": {
+        "marker": "z5-07-delegate-1198100c",
+        "delegate": 0,
+        "assignee_after_delegate": "2001",
+        "delegatee_complete": 0,
+        "chain": {
+          "request_marker": "z5-07-delegate-1198100c",
+          "action_rows": [
+            "2098449926003048449|node_1|8d2b4e41-adfe-11f1-94e5-d24845ae031d|1|DELEGATE|DELEGATED|-|2001|-|{}",
+            "2098449930478370817|node_1|8d2b4e41-adfe-11f1-94e5-d24845ae031d|2001|APPROVE|APPROVED|-|-|-|{\"comment\":\"z5-07-delegate-1198100c-by-delegatee\"}"
+          ],
+          "trace_rows": [
+            "startEvent|Start|-|-",
+            "userTask|审批A|2001|-",
+            "endEvent|End|-|-"
+          ],
+          "notify_rows": [
+            "WF_APPROVED|8d2ada04-adfe-11f1-94e5-d24845ae031d|2005|您的申请已通过",
+            "WF_TODO|8d2ada04-adfe-11f1-94e5-d24845ae031d|2001|您收到一条委托任务",
+            "WF_TODO|8d2b4e41-adfe-11f1-94e5-d24845ae031d|1|您有一条待办"
+          ],
+          "instance_status": "APPROVED"
+        }
+      }
+    },
+    {
+      "case": "Z5-08-authorize",
+      "result": {
+        "marker": "z5-08-authorize-1401358a",
+        "rule_id": "2098449940116881409",
+        "create": 0,
+        "task_assignee_while_active": "2002",
+        "proxy_audit_rows": "0",
+        "agent_complete": 0,
+        "revoke": 0,
+        "assignee_after_revoke": "2001",
+        "chain": {
+          "request_marker": "z5-08-authorize-1401358a",
+          "action_rows": [
+            "2098449940523728897|node_1|903225b7-adfe-11f1-860b-d24845ae031d|2002|AUTHORIZE|PROXY_JOINED|-|-|2001|-",
+            "2098449953547042818|node_1|903225b7-adfe-11f1-860b-d24845ae031d|2002|APPROVE|APPROVED|-|-|-|{\"comment\":\"z5-08-authorize-1401358a-agent\"}"
+          ],
+          "trace_rows": [
+            "startEvent|Start|-|-",
+            "userTask|审批U|2001|-",
+            "endEvent|End|-|-"
+          ],
+          "notify_rows": [
+            "WF_APPROVED|9031fe9a-adfe-11f1-860b-d24845ae031d|2005|您的申请已通过",
+            "WF_TODO|903225b7-adfe-11f1-860b-d24845ae031d|2002|您有一条待办"
+          ],
+          "instance_status": "APPROVED"
+        }
+      }
+    },
+    {
+      "case": "Z5-09-authorize-negatives",
+      "result": {
+        "marker": "z5-09-authorize-neg-5059dc90",
+        "self_proxy": 2401,
+        "invalid_agent": 2400,
+        "bad_scope": 2402,
+        "forbidden": 403
+      }
+    },
+    {
+      "case": "Z5-10-authorize-future-window",
+      "result": {
+        "marker": "z5-10-authorize-future-92901095",
+        "create": 0,
+        "assignee_before_window": "2001",
+        "self_complete": 0,
+        "revoke": 0,
+        "chain": {
+          "request_marker": "z5-10-authorize-future-92901095",
+          "action_rows": [
+            "2098450003358597122|node_1|973a6111-adfe-11f1-94e5-d24845ae031d|2001|APPROVE|APPROVED|-|-|-|{\"comment\":\"z5-future-self\"}"
+          ],
+          "trace_rows": [
+            "startEvent|Start|-|-",
+            "userTask|审批U|2001|-",
+            "endEvent|End|-|-"
+          ],
+          "notify_rows": [
+            "WF_APPROVED|9739ebd4-adfe-11f1-94e5-d24845ae031d|2005|您的申请已通过",
+            "WF_TODO|973a6111-adfe-11f1-94e5-d24845ae031d|2001|您有一条待办"
+          ],
+          "instance_status": "APPROVED"
+        }
+      }
+    },
+    {
+      "case": "Z5-11-withdraw",
+      "result": {
+        "marker": "z5-11-withdraw-9c0b2da4",
+        "withdraw": 0,
+        "status_after": "WITHDRAWN",
+        "repeat_idempotent": 0,
+        "forbidden": 403,
+        "blocked_after_action": 2403,
+        "chain": {
+          "request_marker": "z5-11-withdraw-9c0b2da4",
+          "action_rows": [
+            "2098450021356355585|INSTANCE|ACTION#99e90677-adfe-11f1-860b-d24845ae031d|2005|WITHDRAW|WITHDRAWN|-|-|-|-"
+          ],
+          "trace_rows": [
+            "startEvent|Start|-|-",
+            "userTask|审批A|1|WITHDRAWN"
+          ],
+          "notify_rows": [
+            "WF_REJECTED|99e90677-adfe-11f1-860b-d24845ae031d|2005|您的申请已撤回"
+          ],
+          "instance_status": "WITHDRAWN"
+        }
+      }
+    },
+    {
+      "case": "Z5-12-communicate",
+      "result": {
+        "marker": "z5-12-communicate-d4a675af",
+        "create": 0,
+        "comm_rows": "2098450057439952897|PENDING|1|2003",
+        "receiver_approve_rejected": 403,
+        "reply": 0,
+        "reply_row": "REPLIED|z5-12-communicate-d4a675af-reply",
+        "owner_complete": 0,
+        "chain": {
+          "request_marker": "z5-12-communicate-d4a675af",
+          "action_rows": [
+            "2098450057460924417|node_1|9fb0d2c7-adfe-11f1-860b-d24845ae031d|1|COMMUNICATE|COMMUNICATED|-|-|-|{}",
+            "2098450066612895746|node_1|9fb0d2c7-adfe-11f1-860b-d24845ae031d|1|APPROVE|APPROVED|-|-|-|{\"comment\":\"z5-12-communicate-d4a675af-owner-still-approves\"}"
+          ],
+          "trace_rows": [
+            "startEvent|Start|-|-",
+            "userTask|审批A|1|-",
+            "endEvent|End|-|-"
+          ],
+          "notify_rows": [
+            "WF_APPROVED|9fb0d2ba-adfe-11f1-860b-d24845ae031d|2005|您的申请已通过",
+            "WF_TODO|9fb0d2ba-adfe-11f1-860b-d24845ae031d|2003|您收到一条沟通征询",
+            "WF_TODO|9fb0d2c7-adfe-11f1-860b-d24845ae031d|1|您有一条待办"
+          ],
+          "instance_status": "APPROVED"
+        }
+      }
+    },
+    {
+      "case": "Z5-13-discard",
+      "result": {
+        "marker": "z5-13-discard-bf26edc0",
+        "discard": 0,
+        "status_before": "RUNNING",
+        "status_after": "DISCARDED",
+        "action_rows": [
+          "2098450088670740481|INSTANCE|ACTION#a3691f94-adfe-11f1-94e5-d24845ae031d|1|DISCARD|DISCARDED|-|-|-|-"
+        ],
+        "trace": [
+          "startEvent|Start|-|-",
+          "userTask|审批A|1|DISCARDED"
+        ],
+        "repeat_idempotent": 0,
+        "forbidden": 403,
+        "open_tasks_after": "0",
+        "chain": {
+          "request_marker": "z5-13-discard-bf26edc0",
+          "action_rows": [
+            "2098450088670740481|INSTANCE|ACTION#a3691f94-adfe-11f1-94e5-d24845ae031d|1|DISCARD|DISCARDED|-|-|-|-"
+          ],
+          "trace_rows": [
+            "startEvent|Start|-|-",
+            "userTask|审批A|1|DISCARDED"
+          ],
+          "notify_rows": [
+            "WF_REJECTED|a3691f94-adfe-11f1-94e5-d24845ae031d|2005|您的申请已废弃"
+          ],
+          "instance_status": "DISCARDED"
+        }
+      }
+    }
+  ]
+}

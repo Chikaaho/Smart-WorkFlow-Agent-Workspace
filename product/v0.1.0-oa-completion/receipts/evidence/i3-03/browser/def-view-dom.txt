@@ -1,0 +1,286 @@
+URL: http://localhost:5173/workflow/defs (查看流程图对话框——自研渲染内核)
+时间: 2026-09-11T03:37:42.791Z
+说明: 定义查看由 ProcessGraphView 自研内核承接（非 bpmn-js）
+
+- complementary:
+  - img "CH-aPaaS"
+  - generic: CH-aPaaS
+  - menubar:
+    - menuitem "系统管理":
+      - generic: 系统管理
+    - menuitem "低代码":
+      - generic: 低代码
+    - menuitem "流程引擎" [expanded]:
+      - generic: 流程引擎
+      - menu:
+        - menuitem "流程监控"
+    - menuitem "智能体":
+      - generic: 智能体
+    - menuitem "物联网":
+      - generic: 物联网
+    - menuitem "开放接口":
+      - text: 开放接口
+    - menuitem "定时任务":
+      - generic: 定时任务
+- button "toggle sidebar":
+- navigation "Breadcrumb":
+  - link "流程引擎"
+  - text: /
+  - link "流程定义"
+- button "返回前台":
+  - generic: 返回前台
+- button "系统管理员":
+  - generic: 系统管理员
+- main:
+  - heading "流程定义" [level=2]
+  - generic: 共 74 条记录
+  - button "创建流程定义":
+    - text: 创建流程定义
+  - table:
+    - rowgroup:
+      - row "流程名称 流程标识 关联表单 版本 状态 更新时间 操作":
+        - columnheader "流程名称":
+          - generic: 流程名称
+        - columnheader "流程标识":
+          - generic: 流程标识
+        - columnheader "关联表单":
+          - generic: 关联表单
+        - columnheader "版本":
+          - generic: 版本
+        - columnheader "状态":
+          - generic: 状态
+        - columnheader "更新时间":
+          - generic: 更新时间
+        - columnheader "操作":
+          - generic: 操作
+  - table:
+    - rowgroup:
+      - row "I3矩阵RICH_TEXT140411 bpm_0fb1eec2a40b4cdd i3ev_mx_RICH_TEXT_140411 1 草稿 2026-09-11T11:25:40.450192 查看流程图 设计 发布 删除":
+        - cell "I3矩阵RICH_TEXT140411":
+          - generic: I3矩阵RICH_TEXT140411
+        - cell "bpm_0fb1eec2a40b4cdd":
+          - generic: bpm_0fb1eec2a40b4cdd
+        - cell "i3ev_mx_RICH_TEXT_140411":
+          - generic: i3ev_mx_RICH_TEXT_140411
+        - cell "1":
+          - generic: "1"
+        - cell "草稿":
+          - generic: 草稿
+        - cell "2026-09-11T11:25:40.450192":
+          - generic: 2026-09-11T11:25:40.450192
+        - cell "查看流程图 设计 发布 删除":
+          - button "查看流程图":
+            - generic: 查看流程图
+          - button "设计":
+            - generic: 设计
+          - button "发布":
+            - generic: 发布
+          - button "删除":
+            - generic: 删除
+      - row "I3矩阵NOTE140272 bpm_73e40b41bcb949cc i3ev_mx_NOTE_140272 1 已发布 2026-09-11T11:25:40.405805 查看流程图 设计 发布 删除":
+        - cell "I3矩阵NOTE140272":
+          - generic: I3矩阵NOTE140272
+        - cell "bpm_73e40b41bcb949cc":
+          - generic: bpm_73e40b41bcb949cc
+        - cell "i3ev_mx_NOTE_140272":
+          - generic: i3ev_mx_NOTE_140272
+        - cell "1":
+          - generic: "1"
+        - cell "已发布":
+          - generic: 已发布
+        - cell "2026-09-11T11:25:40.405805":
+          - generic: 2026-09-11T11:25:40.405805
+        - cell "查看流程图 设计 发布 删除":
+          - button "查看流程图":
+            - generic: 查看流程图
+          - button "设计":
+            - generic: 设计
+          - button "发布":
+            - generic: 发布
+          - button "删除" [disabled]:
+            - generic: 删除
+      - row "I3矩阵DATETIME140160 bpm_be54484bbf0a4df4 i3ev_mx_DATETIME_140160 1 已发布 2026-09-11T11:25:40.269232 查看流程图 设计 发布 删除":
+        - cell "I3矩阵DATETIME140160":
+          - generic: I3矩阵DATETIME140160
+        - cell "bpm_be54484bbf0a4df4":
+          - generic: bpm_be54484bbf0a4df4
+        - cell "i3ev_mx_DATETIME_140160":
+          - generic: i3ev_mx_DATETIME_140160
+        - cell "1":
+          - generic: "1"
+        - cell "已发布":
+          - generic: 已发布
+        - cell "2026-09-11T11:25:40.269232":
+          - generic: 2026-09-11T11:25:40.269232
+        - cell "查看流程图 设计 发布 删除":
+          - button "查看流程图":
+            - generic: 查看流程图
+          - button "设计":
+            - generic: 设计
+          - button "发布":
+            - generic: 发布
+          - button "删除" [disabled]:
+            - generic: 删除
+      - row "I3矩阵SELECT140032 bpm_8972ac83dcbc45bf i3ev_mx_SELECT_140032 1 已发布 2026-09-11T11:25:40.158207 查看流程图 设计 发布 删除":
+        - cell "I3矩阵SELECT140032":
+          - generic: I3矩阵SELECT140032
+        - cell "bpm_8972ac83dcbc45bf":
+          - generic: bpm_8972ac83dcbc45bf
+        - cell "i3ev_mx_SELECT_140032":
+          - generic: i3ev_mx_SELECT_140032
+        - cell "1":
+          - generic: "1"
+        - cell "已发布":
+          - generic: 已发布
+        - cell "2026-09-11T11:25:40.158207":
+          - generic: 2026-09-11T11:25:40.158207
+        - cell "查看流程图 设计 发布 删除":
+          - button "查看流程图":
+            - generic: 查看流程图
+          - button "设计":
+            - generic: 设计
+          - button "发布":
+            - generic: 发布
+          - button "删除" [disabled]:
+            - generic: 删除
+      - row "I3矩阵CHECKBOX139925 bpm_35b25e5f1cde4cc9 i3ev_mx_CHECKBOX_139925 1 已发布 2026-09-11T11:25:40.029592 查看流程图 设计 发布 删除":
+        - cell "I3矩阵CHECKBOX139925":
+          - generic: I3矩阵CHECKBOX139925
+        - cell "bpm_35b25e5f1cde4cc9":
+          - generic: bpm_35b25e5f1cde4cc9
+        - cell "i3ev_mx_CHECKBOX_139925":
+          - generic: i3ev_mx_CHECKBOX_139925
+        - cell "1":
+          - generic: "1"
+        - cell "已发布":
+          - generic: 已发布
+        - cell "2026-09-11T11:25:40.029592":
+          - generic: 2026-09-11T11:25:40.029592
+        - cell "查看流程图 设计 发布 删除":
+          - button "查看流程图":
+            - generic: 查看流程图
+          - button "设计":
+            - generic: 设计
+          - button "发布":
+            - generic: 发布
+          - button "删除" [disabled]:
+            - generic: 删除
+      - row "I3矩阵RADIO139802 bpm_24404bf5b5434881 i3ev_mx_RADIO_139802 1 已发布 2026-09-11T11:25:39.923434 查看流程图 设计 发布 删除":
+        - cell "I3矩阵RADIO139802":
+          - generic: I3矩阵RADIO139802
+        - cell "bpm_24404bf5b5434881":
+          - generic: bpm_24404bf5b5434881
+        - cell "i3ev_mx_RADIO_139802":
+          - generic: i3ev_mx_RADIO_139802
+        - cell "1":
+          - generic: "1"
+        - cell "已发布":
+          - generic: 已发布
+        - cell "2026-09-11T11:25:39.923434":
+          - generic: 2026-09-11T11:25:39.923434
+        - cell "查看流程图 设计 发布 删除":
+          - button "查看流程图":
+            - generic: 查看流程图
+          - button "设计":
+            - generic: 设计
+          - button "发布":
+            - generic: 发布
+          - button "删除" [disabled]:
+            - generic: 删除
+      - row "I3矩阵NUMBER139678 bpm_7baa24f1b2d84a5d i3ev_mx_NUMBER_139678 1 已发布 2026-09-11T11:25:39.798733 查看流程图 设计 发布 删除":
+        - cell "I3矩阵NUMBER139678":
+          - generic: I3矩阵NUMBER139678
+        - cell "bpm_7baa24f1b2d84a5d":
+          - generic: bpm_7baa24f1b2d84a5d
+        - cell "i3ev_mx_NUMBER_139678":
+          - generic: i3ev_mx_NUMBER_139678
+        - cell "1":
+          - generic: "1"
+        - cell "已发布":
+          - generic: 已发布
+        - cell "2026-09-11T11:25:39.798733":
+          - generic: 2026-09-11T11:25:39.798733
+        - cell "查看流程图 设计 发布 删除":
+          - button "查看流程图":
+            - generic: 查看流程图
+          - button "设计":
+            - generic: 设计
+          - button "发布":
+            - generic: 发布
+          - button "删除" [disabled]:
+            - generic: 删除
+      - row "I3矩阵TEXTAREA139569 bpm_fd6f3e2b3a8044d9 i3ev_mx_TEXTAREA_139569 1 已发布 2026-09-11T11:25:39.671425 查看流程图 设计 发布 删除":
+        - cell "I3矩阵TEXTAREA139569":
+          - generic: I3矩阵TEXTAREA139569
+        - cell "bpm_fd6f3e2b3a8044d9":
+          - generic: bpm_fd6f3e2b3a8044d9
+        - cell "i3ev_mx_TEXTAREA_139569":
+          - generic: i3ev_mx_TEXTAREA_139569
+        - cell "1":
+          - generic: "1"
+        - cell "已发布":
+          - generic: 已发布
+        - cell "2026-09-11T11:25:39.671425":
+          - generic: 2026-09-11T11:25:39.671425
+        - cell "查看流程图 设计 发布 删除":
+          - button "查看流程图":
+            - generic: 查看流程图
+          - button "设计":
+            - generic: 设计
+          - button "发布":
+            - generic: 发布
+          - button "删除" [disabled]:
+            - generic: 删除
+      - row "I3矩阵TEXT139438 bpm_131670652a464b32 i3ev_mx_TEXT_139438 1 已发布 2026-09-11T11:25:39.567773 查看流程图 设计 发布 删除":
+        - cell "I3矩阵TEXT139438":
+          - generic: I3矩阵TEXT139438
+        - cell "bpm_131670652a464b32":
+          - generic: bpm_131670652a464b32
+        - cell "i3ev_mx_TEXT_139438":
+          - generic: i3ev_mx_TEXT_139438
+        - cell "1":
+          - generic: "1"
+        - cell "已发布":
+          - generic: 已发布
+        - cell "2026-09-11T11:25:39.567773":
+          - generic: 2026-09-11T11:25:39.567773
+        - cell "查看流程图 设计 发布 删除":
+          - button "查看流程图":
+            - generic: 查看流程图
+          - button "设计":
+            - generic: 设计
+          - button "发布":
+            - generic: 发布
+          - button "删除" [disabled]:
+            - generic: 删除
+      - row "I3证据-意见O4 bpm_b3c3e74b31ae4c43 i3ev_o4 2 已发布 2026-09-11T11:25:33.033691 查看流程图 设计 发布 删除":
+        - cell "I3证据-意见O4":
+          - generic: I3证据-意见O4
+        - cell "bpm_b3c3e74b31ae4c43":
+          - generic: bpm_b3c3e74b31ae4c43
+        - cell "i3ev_o4":
+          - generic: i3ev_o4
+        - cell "2":
+          - generic: "2"
+        - cell "已发布":
+          - generic: 已发布
+        - cell "2026-09-11T11:25:33.033691":
+          - generic: 2026-09-11T11:25:33.033691
+        - cell "查看流程图 设计 发布 删除":
+          - button "查看流程图":
+            - generic: 查看流程图
+          - button "设计":
+            - generic: 设计
+          - button "发布":
+            - generic: 发布
+          - button "删除" [disabled]:
+            - generic: 删除
+  - dialog "流程图 - I3矩阵RICH_TEXT140411":
+    - heading "流程图 - I3矩阵RICH_TEXT140411" [level=2]
+    - button "Close this dialog":
+    - button "＋":
+      - generic: ＋
+    - button "－":
+      - generic: －
+    - button "适配":
+      - generic: 适配
