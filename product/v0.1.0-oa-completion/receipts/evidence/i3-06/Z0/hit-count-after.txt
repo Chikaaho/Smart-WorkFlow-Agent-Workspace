@@ -1,0 +1,11 @@
+# Z0 凭证清零 after 计数（最终口径：scrub-round2.py scan，auth_bearer_files/jwt_files 双指标）
+# ROUND1（2026-09-11 20:0x，上一会话）：i3-03/04/05/06 全 0（该结论当时成立）
+# ROUND2 事实：round1 后 Z2 采证的 login.mjs 在 rawOut 落盘 JWT 正文，命中 i3-06/raw/step1/raw-transcript.txt
+# ROUND2 修复：scripts/login.mjs 落盘脱敏（token→[REDACTED len/sha256]）+ Z0/scrub-round2.py 原地清零
+# ROUND2 最终 after（2026-09-11 22:xx，崩溃恢复会话）：
+i3-03: auth_bearer_files=0 jwt_files=0
+i3-04: auth_bearer_files=0 jwt_files=0
+i3-05: auth_bearer_files=0 jwt_files=0
+i3-06: auth_bearer_files=0 jwt_files=0
+# 复扫命令：python3 Z0/scrub-round2.py scan（输出见 scrub-round2-output.txt）
+# 自测：node scripts/login.mjs 落盘自测 token 已脱敏（自测文件用后即删，不属证据）

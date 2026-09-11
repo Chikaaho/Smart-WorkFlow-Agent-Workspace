@@ -1,0 +1,34 @@
+{
+  "_snapshot": {
+    "snapshotId": "i3-06-frozen-d",
+    "jar_sha256": "409d60f6bf2097f3fa720b0b86baa323deadb20b48787eb57030c81ee8011a99",
+    "web_dist_merkle": "f16e31ae1869e5f176405b7d5bc21abcf6d3afc17848dee8c71858a52156e479",
+    "instance_A": "PID 23722 @ 8081",
+    "instance_B": "PID 23764 @ 8082",
+    "fingerprint_file": "evidence/i3-06/Z1/candidate-d.json",
+    "note": "supersedes frozen-a/b/c：负向终态覆盖、加签取消唯一键冲突、调度结果标注覆盖三项修复后重冻结"
+  },
+  "rows": [
+    {
+      "case": "Z7-01-handleResult-positive",
+      "result": {
+        "marker": "z7-01-echo-positive-554ee375",
+        "def_id": "2098450137274335234",
+        "approve": 0,
+        "auditNote_before": "0",
+        "auditNote_after": "",
+        "audit_rows": [
+          "func_result_echo|1|HANDLE_RESULT|SUCCEEDED|-|1|echo:90eb1ffa-adff-11f1-860b-d24845ae031d:node_1:outcome=APPROVED|0|90eb2007-adff-11f1-860b-d24845ae031d"
+        ],
+        "audit_rows_after_repeat": [
+          "func_result_echo|1|HANDLE_RESULT|SUCCEEDED|-|1|echo:90eb1ffa-adff-11f1-860b-d24845ae031d:node_1:outcome=APPROVED|0|90eb2007-adff-11f1-860b-d24845ae031d"
+        ],
+        "repeat_code": 2305,
+        "status_mid": "RUNNING",
+        "review_complete": 0,
+        "instance_status": "APPROVED",
+        "verdict": "白名单变量 auditNote 在存活流程真实写回（node_1 办结后下游可读）；审计行 SUCCEEDED 非空；重复办理 2305 且无第二次函数调用"
+      }
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+[
+  {
+    "case": "ALL 负向（一票不通过）",
+    "result": {
+      "votes": [
+        {
+          "actor": "admin",
+          "action": "DISAPPROVE",
+          "code": 0,
+          "msg": "success"
+        }
+      ],
+      "instance_status": "REJECTED",
+      "votes_total": "1",
+      "settled": "CONSENSUS_SETTLED"
+    }
+  },
+  {
+    "case": "ANY 正向（一票通过）",
+    "result": {
+      "votes": [
+        {
+          "actor": "user2",
+          "action": "APPROVE",
+          "code": 0,
+          "msg": "success"
+        }
+      ],
+      "instance_status": "APPROVED",
+      "votes_total": "1",
+      "settled": ""
+    }
+  },
+  {
+    "case": "ANY 负向（全不通过）",
+    "result": {
+      "votes": [
+        {
+          "actor": "admin",
+          "action": "DISAPPROVE",
+          "code": 0,
+          "msg": "success"
+        },
+        {
+          "actor": "user2",
+          "action": "DISAPPROVE",
+          "code": 404,
+          "msg": "任务不存在"
+        }
+      ],
+      "instance_status": "REJECTED",
+      "votes_total": "1",
+      "settled": "CONSENSUS_SETTLED"
+    }
+  },
+  {
+    "case": "RATIO 50% 正向（1/2 票）",
+    "result": {
+      "votes": [
+        {
+          "actor": "user2",
+          "action": "APPROVE",
+          "code": 0,
+          "msg": "success"
+        }
+      ],
+      "instance_status": "APPROVED",
+      "votes_total": "1",
+      "settled": ""
+    }
+  },
+  {
+    "case": "RATIO 50% 负向（0/2 通过票）",
+    "result": {
+      "votes": [
+        {
+          "actor": "admin",
+          "action": "DISAPPROVE",
+          "code": 0,
+          "msg": "success"
+        },
+        {
+          "actor": "user2",
+          "action": "DISAPPROVE",
+          "code": 404,
+          "msg": "任务不存在"
+        }
+      ],
+      "instance_status": "REJECTED",
+      "votes_total": "1",
+      "settled": ""
+    }
+  },
+  {
+    "case": "VETO 正向（全部通过）",
+    "result": {
+      "votes": [
+        {
+          "actor": "admin",
+          "action": "APPROVE",
+          "code": 0,
+          "msg": "success"
+        },
+        {
+          "actor": "user2",
+          "action": "APPROVE",
+          "code": 0,
+          "msg": "success"
+        }
+      ],
+      "instance_status": "APPROVED",
+      "votes_total": "2",
+      "settled": ""
+    }
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "snapshotId": "i3-06-frozen-b",
+  "frozen_at": "2026-09-11T23:08:09+0800",
+  "supersedes": "i3-06-frozen-a（jar 383ae1a7…）",
+  "supersede_reason": "Z4 采出真实产品缺陷：会签 RATIO/ANY 负向结算的实例终态被最后投票人 APPROVE 覆盖（TaskActionService.processGone 以投票人自身 action 推导终态）。修复后按三级提示 §3 重跑 Z1 全部门禁并重新冻结；frozen-a 上的行为采集全部作废重采。",
+  "fix": "TaskActionService：processGone 时重读实例状态，非 RUNNING（节点结算已写终态）则跳过动作侧终态改写与通知发布",
+  "gate": {
+    "server_full_test": {"exit": 0, "log": "server-full-test-r3.stdout/-stderr/-exit", "counts": "surefire-totals-r3.txt：1261/0/0/0 全 reactor"},
+    "web_gates": {"typecheck": "web-typecheck-r2.exit=0", "lint": "web-lint-r2.exit=0", "test": "web-test-r2.exit=0（Test Files 126 passed + 1 skipped；Tests 1178 passed + 3 skipped）", "build": "web-build-r2.exit=0"},
+    "migration_chain": "FlywayFullChain H2/PG 计入 server 全量（1261 中），终点版本 75",
+    "package": {"exit": 0, "log": "server-package-r2.stdout/-stderr/-exit"}
+  },
+  "backend_jar": {
+    "path": "Smart-WorkFlow-Server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar",
+    "sha256": "5b3e60dbfaabbf3c8ed3ef8bc417512cbada0bec0a5ee841f234eb80757042ba"
+  },
+  "web_dist": {
+    "path": "Smart-WorkFlow-Web/dist",
+    "merkle_sha256": "f16e31ae1869e5f176405b7d5bc21abcf6d3afc17848dee8c71858a52156e479"
+  },
+  "source_diff": {
+    "server_diff_hash": "7d2c87885c4ba8f4c3df166102863eb655538f7779b87656f89a6b5458bda91f",
+    "web_diff_hash": "89aad6be7a632a5beb57349f4830837d0d8b1ba022cae2a8100eaa6a8a2063d8"
+  },
+  "instances": {"A": "PID 12413 @ 8081", "B": "PID 12292 @ 8082", "log_files": "/tmp/i3-03/instance-a2.log, instance-b2.log（quiet logging：root/com.sw.ck=INFO + MyBatis NoLoggingImpl）"},
+  "post_freeze_rule": "冻结后零代码修改、零重打包、零 dist 重建；Z2—Z9 行为采集只引用本 candidate 的唯一 snapshotId/JAR/Web hash。"
+}

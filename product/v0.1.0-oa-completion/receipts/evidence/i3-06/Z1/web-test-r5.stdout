@@ -1,0 +1,328 @@
+
+ RUN  v4.1.9 /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-Web
+
+ ✓ src/modules/system/views/RoleList.spec.ts (9 tests) 1884ms
+     ✓ calls pageRoles on mount with default pagination  483ms
+     ✓ 编辑回填：openEdit 调用 getRoleMenus 并 setCheckedKeys 到真实 el-tree  386ms
+ ✓ src/modules/workflow/views/__tests__/ProcessInstanceList.spec.ts (4 tests) 2830ms
+     ✓ 挂载后加载实例列表并渲染表格行  745ms
+     ✓ API 报错时显示错误提示  745ms
+     ✓ 点击"查看详情"打开抽屉并显示实例基本信息  535ms
+     ✓ 实例不存在时 drawer 内显示错误  797ms
+ ✓ src/modules/agent/views/ToolList.spec.ts (19 tests) 2193ms
+     ✓ mount 时加载内部工具列表（默认 Tab）  961ms
+     ✓ 外部 Tab 空态：列表为空时显示空态  316ms
+ ✓ src/modules/agent/views/GraphDesigner.spec.ts (25 tests) 2515ms
+     ✓ 加载：getGraphDef(42) → elementsToFlowGraphData → mountFlowGraph 挂载画布  841ms
+ ✓ src/modules/notify/views/NotifyTemplateList.spec.ts (9 tests) 2879ms
+     ✓ 挂载时加载模板列表并渲染行数  1331ms
+     ✓ 管理权限可见时展示新增按钮；无权限隐藏  724ms
+stdout | src/modules/agent/views/tool-production-menu-chain-v2.spec.ts > K1-v2 生产菜单 → router.push → authGuard → ToolList 挂载（mock 语义） > admin（有权普通用户）：菜单含工具项 → push → authGuard 放行 → ToolList 挂载 → 渲染
+
+=== K1-v2 身份1: admin 生产链（mock 语义） ===
+身份: admin（普通管理员，非超管）
+菜单: 返回工具管理(agent/tool, agent:tool:view)
+router.push: /agent/tool → authGuard 放行 → ToolList 挂载
+页面渲染: 含「工具管理」
+=== 验证通过 ===
+
+
+stdout | src/modules/agent/views/tool-production-menu-chain-v2.spec.ts > K1-v2 生产菜单 → router.push → authGuard → ToolList 挂载（mock 语义） > user（撤权普通用户）：菜单无工具项；直达 /agent/tool 被守卫拒绝到 /403
+
+=== K1-v2 身份2: user 撤权链（mock 语义） ===
+身份: user（普通用户，无任何权限）
+菜单: 无 agent/tool 项
+直达路由 /agent/tool: 守卫拒绝 → /403（服务端 403 由后端集成测试证明）
+=== 验证通过 ===
+
+
+stdout | src/modules/agent/views/tool-production-menu-chain-v2.spec.ts > K1-v2 生产菜单 → router.push → authGuard → ToolList 挂载（mock 语义） > 未认证（无 token）→ authGuard 拒绝 → 重定向 /login
+
+=== K1-v2 身份3: 未认证 → /login ===
+路径: /login
+=== 验证通过 ===
+
+
+stdout | src/modules/agent/views/tool-production-menu-chain-v2.spec.ts > K1-v2 生产菜单 → router.push → authGuard → ToolList 挂载（mock 语义） > superadmin → 菜单含工具项 → push → authGuard 放行 → ToolList 挂载 → 渲染
+
+=== K1-v2 身份4: superadmin 生产链（mock 语义） ===
+菜单: 含工具管理
+页面渲染: 含「工具管理」
+=== 验证通过 ===
+
+
+ ✓ src/modules/agent/views/tool-production-menu-chain-v2.spec.ts (4 tests) 6797ms
+     ✓ admin（有权普通用户）：菜单含工具项 → push → authGuard 放行 → ToolList 挂载 → 渲染  5960ms
+     ✓ superadmin → 菜单含工具项 → push → authGuard 放行 → ToolList 挂载 → 渲染  515ms
+ ✓ src/modules/system/views/UserGroupList.spec.ts (8 tests) 4248ms
+     ✓ 加载列表并渲染行（业务标识/名称/状态）  1573ms
+     ✓ 筛选：输入名称并查询 → pageUserGroups 携带筛选  745ms
+     ✓ 新建：打开弹窗，填写并提交 → createUserGroup 携带 memberIds，随后刷新列表  586ms
+     ✓ 编辑：加载详情并回填成员，保存时更新主记录并整量替换成员  376ms
+ ✓ src/modules/job/views/JobList.spec.ts (14 tests) 830ms
+ ✓ src/modules/form/designer/RelatedProcessesPanel.spec.ts (4 tests) 978ms
+     ✓ mount 时以 formKey 请求后端过滤的流程列表  491ms
+ ✓ src/components/page-layout/page-layout.spec.ts (35 tests) 868ms
+     ✓ emits update:pageNum when page changes  544ms
+ ✓ src/modules/agent/views/DebugSessionView.spec.ts (15 tests) 629ms
+ ✓ src/modules/workflow/views/TaskDetail.spec.ts (11 tests) 678ms
+ ✓ src/modules/agent/views/ModelList.spec.ts (10 tests) 562ms
+ ✓ src/router/notify-template-route-guard.evidence.spec.ts (3 tests) 912ms
+     ✓ 身份B 获授非超管（菜单含模板项）：经菜单路径 push 与直达 URL 均解析到模板管理页并实际挂载  844ms
+ ✓ src/foundation/dict/DictSelect.spec.ts (6 tests) 1136ms
+     ✓ renders el-select by default (renderAs omitted, component resolved)  491ms
+ ✓ src/modules/system/views/PostList.spec.ts (4 tests) 776ms
+     ✓ calls pagePosts on mount with default pagination  662ms
+ ✓ src/modules/system/views/DeptList.spec.ts (15 tests) 1312ms
+     ✓ calls listDeptTree on mount  617ms
+ ✓ src/modules/agent/views/tool-external-feedback.spec.ts (5 tests) 569ms
+     ✓ 外部工具启用成功 → 显示成功消息 + 列表刷新  385ms
+ ✓ src/modules/workflow/views/__tests__/ProcessDefList.spec.ts (8 tests) 547ms
+ ✓ src/modules/agent/views/ExecutionDetail.spec.ts (28 tests) 617ms
+ ✓ src/modules/storage/views/StorageList.spec.ts (13 tests) 664ms
+     ✓ calls listFiles on mount  316ms
+ ✓ src/modules/system/views/UserList.spec.ts (9 tests) 612ms
+     ✓ calls pageUsers on mount with default pagination  381ms
+ ✓ src/modules/agent/views/DebugExecutionLogClosure.spec.ts (4 tests) 638ms
+     ✓ G11-02 既有运行日志入口合并调试记录 — ExecutionList 经真实路由并行拉取两域、渲染"调试"标识并正确分流导航  547ms
+ ✓ src/components/DynamicField.spec.ts (32 tests) 755ms
+ ✓ src/modules/workflow/views/TodoList.spec.ts (11 tests) 672ms
+     ✓ calls queryTodoTasks with pagination on mount  370ms
+ ✓ src/modules/workflow/views/ProcessedList.spec.ts (9 tests) 645ms
+     ✓ calls queryProcessedTasks with pageNum=1 pageSize=10 on mount  463ms
+ ✓ src/modules/workflow/views/__tests__/FormSelectDialog.spec.ts (11 tests) 924ms
+     ✓ loads form list when dialog opens  576ms
+ ✓ src/modules/workflow/views/MyDrafts.spec.ts (11 tests) 895ms
+     ✓ mounts and calls myDrafts with pagination  457ms
+ ✓ src/modules/workflow/views/WorkspaceHome.spec.ts (4 tests) 748ms
+     ✓ 隐藏组件（myInitiated/cc）不发起任何数据查询  463ms
+stdout | src/router/notify-batch-send-route-guard.evidence.spec.ts > S3：notify:batch:send 真实 router/authGuard 导航证据 > 仅收件箱/模板权限的普通用户直达发送路由被拒绝；授权后同一路由实际挂载页面
+{"denied":{"identity":"ordinary-inbox-or-template-user","permissions":[],"entry":"/notify/batch-send","route":"/403","expected":"/403","mounted":false},"allowed":{"identity":"ordinary-user-with-notify:batch:send","permissions":["notify:batch:send"],"entry":"/notify/batch-send","route":"/notify/batch-send","expected":"/notify/batch-send","mounted":true}}
+
+stdout | src/router/notify-batch-send-route-guard.evidence.spec.ts > S3：notify:batch:send 真实 router/authGuard 导航证据 > 未认证身份直达发送路由按真实 authGuard 规则重定向登录页
+{"identity":"unauthenticated","entry":"/notify/batch-send","route":"/login?redirect=/notify/batch-send","expected":"/login?redirect=/notify/batch-send"}
+
+ ✓ src/router/notify-batch-send-route-guard.evidence.spec.ts (2 tests) 1117ms
+     ✓ 仅收件箱/模板权限的普通用户直达发送路由被拒绝；授权后同一路由实际挂载页面  1052ms
+ ✓ src/modules/agent/components/execution/NodeTrajectory.spec.ts (15 tests) 1105ms
+ ✓ src/modules/notify/views/NotifyHome.spec.ts (9 tests) 1097ms
+     ✓ calls queryNotifyMessages on mount and renders list  804ms
+ ✓ src/modules/workflow/views/MyInstances.spec.ts (4 tests) 1134ms
+     ✓ mounts and calls myInstances with pagination  924ms
+ ✓ src/modules/form/views/FormRender.spec.ts (12 tests) 373ms
+ ✓ src/modules/workflow/views/ProcessDefList.spec.ts (5 tests) 589ms
+     ✓ calls pageProcessDefs with pageNum=1 pageSize=10 on mount  308ms
+ ✓ src/modules/workflow/views/MyProcessed.spec.ts (4 tests) 619ms
+     ✓ mounts and calls myProcessed with pagination  488ms
+ ✓ src/modules/system/views/DictDataList.spec.ts (5 tests) 485ms
+ ✓ src/modules/agent/views/ExternalToolFormDialog.spec.ts (13 tests) 477ms
+ ✓ src/modules/system/views/DictTypeList.spec.ts (5 tests) 594ms
+     ✓ calls pageDictTypes on mount with default pagination  482ms
+ ✓ src/modules/job/views/JobLog.spec.ts (5 tests) 534ms
+     ✓ calls pageJobLogs with jobId from route query on mount  413ms
+ ✓ src/modules/agent/views/GraphDefList.spec.ts (6 tests) 623ms
+     ✓ mount 时以 pageNum=1 pageSize=10 调用 pageGraphDefs 并渲染分页数据  426ms
+ ✓ src/foundation/auth/rsa.spec.ts (3 tests) 629ms
+     ✓ should produce different ciphertext for the same password (OAEP random seeding)  390ms
+ ✓ src/modules/form/views/FormDesigner.spec.ts (7 tests) 435ms
+ ✓ src/router/agent-execution-access.spec.ts (13 tests) 612ms
+     ✓ D169-6a: 有权直达执行详情 → 真实导航挂载 ExecutionDetail 并渲染 Token 统计  465ms
+ ✓ src/modules/notify/views/NotifyBatchSend.spec.ts (9 tests) 289ms
+ ✓ src/modules/agent/views/InternalToolFormDialog.spec.ts (12 tests) 359ms
+ ✓ src/modules/form/designer/HistoryVersionsDialog.spec.ts (4 tests) 387ms
+ ✓ src/adapters/flow-graph/index.spec.ts (6 tests) 509ms
+ ✓ src/router/agent-debug-refresh.spec.ts (1 test) 225ms
+ ✓ src/modules/agent/views/ConversationDetail.spec.ts (5 tests) 342ms
+ ✓ src/modules/agent/views/ModelFormDialog.spec.ts (7 tests) 449ms
+ ✓ src/foundation/dict/index.spec.ts (3 tests) 129ms
+ ✓ src/modules/form/designer/PreviewModal.spec.ts (3 tests) 115ms
+ ✓ src/components/dynamic-field-plugability.spec.ts (4 tests) 154ms
+ ✓ src/modules/form/designer/DesignerCanvas.spec.ts (9 tests) 229ms
+ ✓ src/modules/form/designer/SubFieldDesigner.spec.ts (5 tests) 124ms
+ ✓ src/modules/agent/views/tool-api-integration.spec.ts (11 tests) 130ms
+ ✓ src/modules/agent/views/ConversationList.spec.ts (4 tests) 164ms
+stdout | src/modules/notify/views/NotifyBatchSend-s4.evidence.spec.ts > S4：批量发送页面真实 API/Mock 人数确认链 > 页面选择→resolve-count→确认框→batch-send→Mock新增数全链路为 3
+{"selectedInput":{"recipientUserIds":[1],"recipientDeptIds":[1],"recipientRoleCodes":["user"]},"resolveCountResponse":{"recipientCount":3},"renderedServerCount":3,"confirmDialogText":"确认向 3 人发送通知？","batchSendResponse":{"recipientCount":3},"persistedDelta":3}
+
+ ✓ src/modules/notify/views/NotifyBatchSend-s4.evidence.spec.ts (1 test) 388ms
+     ✓ 页面选择→resolve-count→确认框→batch-send→Mock新增数全链路为 3  384ms
+ ✓ src/router/guard.spec.ts (7 tests) 27ms
+ ✓ src/modules/job/views/JobLog.no-id.spec.ts (1 test) 95ms
+ ✓ src/layouts/components/AppSidebar.spec.ts (4 tests) 128ms
+stdout | src/modules/agent/views/tool-timeout-boundary.spec.ts > K5: 真实后端 timeout 边界 > timeout 边界值对账报告
+
+=== K5 timeout 边界值对账报告 ===
+timeoutSeconds=0: 预期=400 拒绝, 实际=拒绝
+timeoutSeconds=1: 预期=成功，值=1, 实际=成功，值=1
+=== 报告结束 ===
+
+
+ ✓ src/modules/agent/views/tool-timeout-boundary.spec.ts (6 tests) 59ms
+ ✓ src/modules/agent/views/ExecutionList.spec.ts (24 tests) 171ms
+ ✓ src/foundation/mock/workflow-my-handlers.spec.ts (10 tests) 51ms
+ ✓ src/modules/form/designer/definition-convert.spec.ts (16 tests) 11ms
+ ✓ src/foundation/mock/tool-handlers.spec.ts (34 tests) 41ms
+stdout | src/foundation/request/index.spec.ts > request 非 2xx 归一（S1 读取权限拒绝态前置） > 真实请求在进入 axios 前注入非秘密 X-Request-Id
+[requestId] request web-810a1ed4-0ea8-4c6a-83f2-54a4399066a9 GET /workflow/tasks/todo
+
+ ✓ src/foundation/request/index.spec.ts (4 tests) 36ms
+stdout | src/modules/agent/views/tool-four-identity-chain.spec.ts > K1: 四身份生产可达与拒绝链 > 完整四身份链路总结
+
+=== K1 四身份生产可达与拒绝链报告 ===
+身份: admin（有权普通用户）
+  动作: GET /agent/tool/internal
+  结果: 成功，返回 3 条
+身份: user（撤权普通用户）
+  动作: 权限检查
+  结果: permissions=[]，无 agent:tool:view
+身份: 未认证
+  动作: POST /agent/tool/internal
+  结果: 拒绝，HTTP 401
+身份: superadmin
+  动作: GET /agent/tool/internal
+  结果: 成功，返回 3 条
+=== 报告结束 ===
+
+
+ ✓ src/modules/agent/views/tool-four-identity-chain.spec.ts (5 tests) 47ms
+ ✓ src/modules/storage/api/index.spec.ts (8 tests) 11ms
+ ✓ src/App.spec.ts (1 test) 38ms
+stdout | src/modules/agent/views/tool-permission-rejection.spec.ts > K8: 权限拒绝副作用 > 权限拒绝副作用完整报告
+
+=== K8 权限拒绝副作用报告 ===
+未认证 - 内部工具: 响应=拒绝, 数据变化=false
+未认证 - 外部工具: 响应=拒绝, 数据变化=false
+无权限 - 内部工具: 响应=拒绝, 数据变化=false
+无权限 - 外部工具: 响应=拒绝, 数据变化=false
+=== 报告结束 ===
+
+
+ ✓ src/modules/agent/views/tool-permission-rejection.spec.ts (5 tests) 87ms
+ ✓ src/modules/workflow/api/index.spec.ts (15 tests) 28ms
+ ✓ src/modules/system/api/role.spec.ts (10 tests) 17ms
+ ✓ src/adapters/form-designer/index.spec.ts (34 tests) 23ms
+ ✓ src/modules/system/api/userGroup.spec.ts (10 tests) 32ms
+stdout | src/foundation/auth/dev-debug.spec.ts > dev-only debug auth seam > debug initialization and switch-off perform zero persistence writes
+[E2-debug-auth] init=1 switch_off=1 localStorage_setItem=0 sessionStorage_setItem=0 cookie_set=0
+
+ ✓ src/foundation/auth/dev-debug.spec.ts (4 tests) 5ms
+ ✓ src/foundation/mock/tool-options-flow.spec.ts (7 tests) 18ms
+ ✓ src/router/notify-template-access.evidence.spec.ts (9 tests) 211ms
+ ✓ src/foundation/mock/agent-debug-handlers.spec.ts (15 tests) 15ms
+ ✓ src/foundation/mock/agent-execution-handlers.spec.ts (11 tests) 14ms
+ ✓ src/modules/form/api/form-def.spec.ts (13 tests) 9ms
+ ✓ src/foundation/mock/role-menus.spec.ts (13 tests) 20ms
+ ✓ src/foundation/mock/index.spec.ts (24 tests) 38ms
+ ✓ src/foundation/mock/notify-template-handlers.evidence.spec.ts (16 tests) 26ms
+ ✓ src/modules/system/api/user.spec.ts (9 tests) 12ms
+ ✓ src/adapters/process-graph/index.spec.ts (11 tests) 15ms
+ ✓ src/foundation/mock/agent-models.spec.ts (9 tests) 42ms
+ ✓ src/modules/form/utils/derive-list-config.spec.ts (21 tests) 26ms
+ ✓ src/foundation/mock/form-import-export-mock.spec.ts (10 tests) 21ms
+ ✓ src/modules/form/designer/subfield-convert.spec.ts (6 tests) 6ms
+ ✓ src/modules/system/api/dict.spec.ts (11 tests) 14ms
+ ✓ src/modules/form/utils/resolve-reference-display.spec.ts (7 tests) 9ms
+ ✓ src/foundation/mock/i1-org-handlers.spec.ts (4 tests) 12ms
+ ✓ src/modules/notify/api/index.spec.ts (6 tests) 6ms
+ ✓ src/foundation/mock/auth-session.spec.ts (13 tests) 16ms
+ ✓ src/foundation/auth/index.spec.ts (8 tests) 14ms
+ ✓ src/modules/form/api/form.spec.ts (20 tests) 29ms
+ ✓ src/modules/system/api/dept.spec.ts (12 tests) 39ms
+ ✓ src/foundation/mock/graph-defs-handlers.spec.ts (9 tests) 8ms
+ ✓ src/foundation/mock/agent-conversation-handlers.spec.ts (13 tests) 141ms
+ ✓ src/modules/agent/utils/graphAdapter.spec.ts (12 tests) 12ms
+ ✓ src/foundation/menu/index.spec.ts (12 tests) 8ms
+ ✓ src/foundation/area.spec.ts (7 tests) 23ms
+stdout | src/modules/agent/views/tool-production-menu-chain.spec.ts > K1: 生产菜单到页面请求完整链 > 身份1: admin（有权普通用户）→ 菜单可见 → API 查询成功
+
+=== K1 身份1: admin 完整链验证 ===
+身份: admin（有权普通用户）
+菜单可见: 是（agent:tool:view 权限存在）
+API 请求: GET /agent/tool/internal 成功，返回 1 条
+=== 验证通过 ===
+
+
+stdout | src/modules/agent/views/tool-production-menu-chain.spec.ts > K1: 生产菜单到页面请求完整链 > 身份2: user（撤权普通用户）→ 无权限 → API 请求被拒绝
+
+=== K1 身份2: user 完整链验证 ===
+身份: user（撤权普通用户）
+菜单不可见: 是（permissions=[]，无 agent:tool:view）
+API 请求: GET /agent/tool/internal 被拒绝（Forbidden）
+=== 验证通过 ===
+
+
+stdout | src/modules/agent/views/tool-production-menu-chain.spec.ts > K1: 生产菜单到页面请求完整链 > 身份3: 未认证（user.id=null）→ 401
+
+=== K1 身份3: 未认证完整链验证 ===
+身份: 未认证（user.id=null）
+API 请求: GET /agent/tool/internal 被拒绝（Unauthorized）
+=== 验证通过 ===
+
+
+stdout | src/modules/agent/views/tool-production-menu-chain.spec.ts > K1: 生产菜单到页面请求完整链 > 身份4: superadmin → 菜单可见 → 成功
+
+=== K1 身份4: superadmin 完整链验证 ===
+身份: superadmin（超级管理员）
+菜单可见: 是（超管旁路）
+API 请求: GET /agent/tool/internal 成功，返回 1 条
+=== 验证通过 ===
+
+
+stdout | src/modules/agent/views/tool-production-menu-chain.spec.ts > K1: 生产菜单到页面请求完整链 > 完整四身份链路总结
+
+=== K1 生产菜单到页面请求完整链报告 ===
+
+身份: admin（有权普通用户）
+  菜单可见: 是
+  API结果: 成功，返回 1 条
+
+身份: user（撤权普通用户）
+  菜单可见: 否
+  API结果: 拒绝，Forbidden
+
+身份: 未认证
+  菜单可见: 否
+  API结果: 拒绝，Unauthorized
+
+身份: superadmin
+  菜单可见: 是
+  API结果: 成功，返回 1 条
+
+=== 报告结束 ===
+
+
+ ✓ src/modules/agent/views/tool-production-menu-chain.spec.ts (5 tests) 51ms
+ ✓ src/modules/job/api/index.spec.ts (13 tests) 23ms
+ ✓ src/modules/form/designer/field-types.spec.ts (6 tests) 22ms
+ ✓ src/modules/system/api/i1-org.spec.ts (3 tests) 14ms
+ ✓ src/modules/form/utils/visibility-rules.spec.ts (4 tests) 12ms
+ ✓ src/modules/form/designer/workbench.spec.ts (10 tests) 11ms
+ ✓ src/router/index.spec.ts (7 tests) 28ms
+ ✓ src/foundation/request/error-code-map.spec.ts (8 tests) 10ms
+ ✓ src/styles/tokens.spec.ts (9 tests) 4ms
+ ✓ src/foundation/session/index.spec.ts (5 tests) 5ms
+stdout | src/foundation/mock/notify-batch-send.evidence.spec.ts > S3/S5 批量发送实际 Mock 行为证据 > S3：生产形态权限资源可绑定普通非超管角色，实际四身份请求结果分离
+{"productionPermissionResource":{"page":"43","action":"430"},"ordinaryRoleBinding":{"roleId":"2","menuIds":[1,2,3,5,11,12,13,14,15,16,17,18,43,430,110,111,112,120,121,122,170,230,231,232]},"identities":[{"identity":"admin","permissions":["system:user:create","system:user:update","system:user:delete","system:role:create","system:role:update","system:role:delete","form:data:template","form:data:import","form:data:export","notify:batch:send","agent:tool:manage"],"status":0},{"identity":"inbox-only","permissions":[],"status":403},{"identity":"template-only","permissions":["notify:template:manage"],"status":403},{"identity":"unauthenticated","permissions":[],"status":401}]}
+
+stdout | src/foundation/mock/notify-batch-send.evidence.spec.ts > S3/S5 批量发送实际 Mock 行为证据 > S5：父部门 1 不递归展开未提交子部门 11，实际 Mock resolve/batch 集合与人数一致
+{"request":{"recipientUserIds":[1],"recipientDeptIds":[1],"recipientRoleCodes":["user"],"title":"S3 权限测试","content":"S3/S5 实际 Mock 请求"},"mockRecipientIds":[1,2,3],"mockCount":3,"resolveCount":3,"unsubmittedChildRecipientPresent":false}
+
+ ✓ src/foundation/mock/notify-batch-send.evidence.spec.ts (2 tests) 19ms
+ ✓ src/modules/system/api/post.spec.ts (6 tests) 17ms
+ ✓ src/foundation/auth/permission.spec.ts (5 tests) 3ms
+ ✓ src/foundation/auth/token.spec.ts (12 tests) 10ms
+ ✓ src/modules/workflow/utils/node-capabilities.spec.ts (4 tests) 13ms
+ ✓ src/modules/form/utils/form-layout.spec.ts (3 tests) 9ms
+ ✓ src/modules/form/designer/field-config.spec.ts (5 tests) 5ms
+ ✓ src/modules/agent/views/panels/node-panel-registry.spec.ts (6 tests) 6ms
+ ✓ src/components/dynamic-field-registry.spec.ts (6 tests) 16ms
+ ✓ src/layouts/menu-utils.spec.ts (5 tests) 5ms
+ ✓ src/modules/form/designer/column-name.spec.ts (10 tests) 5ms
+ ↓ src/modules/agent/views/tool-real-permission-rejection.spec.ts (3 tests | 3 skipped)
+ ✓ src/modules/form/utils/form-def-status.spec.ts (6 tests) 6ms
+
+ Test Files  126 passed | 1 skipped (127)
+      Tests  1178 passed | 3 skipped (1181)
+   Start at  00:49:41
+   Duration  76.22s (transform 24.63s, setup 0ms, import 177.11s, tests 56.74s, environment 240.60s)
+

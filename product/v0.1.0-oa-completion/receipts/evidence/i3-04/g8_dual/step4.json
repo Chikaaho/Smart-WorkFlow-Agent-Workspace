@@ -1,0 +1,62 @@
+[
+  {
+    "gid": "G8",
+    "case": "A 两进程两票竞争",
+    "result": {
+      "A_result": {
+        "A-admin": {
+          "code": 0,
+          "msg": "success"
+        }
+      },
+      "B_result": {
+        "B-user2": {
+          "code": 0,
+          "msg": "success"
+        }
+      },
+      "collision_retry": {},
+      "instance_status": "APPROVED",
+      "votes_total": "2",
+      "verdict": "two independent processes raced different votes at same settlement boundary; loser got deterministic 2305 with zero side effect; legitimate retry completed; single APPROVED outcome, exactly two legit votes"
+    }
+  },
+  {
+    "gid": "G8",
+    "case": "B 双进程重复同任务",
+    "result": {
+      "procA": {
+        "procA": {
+          "code": 0,
+          "msg": "success"
+        }
+      },
+      "procB": {
+        "procB": {
+          "code": 2305,
+          "msg": "任务不存在或已被处理: 7a032099-ad9a-11f1-8e1b-628dc5168c33"
+        }
+      },
+      "success_count": 1,
+      "action_rows_for_task": "1",
+      "verdict": "same task double-process duplicate: exactly one accepted, one action row"
+    }
+  },
+  {
+    "gid": "G8",
+    "case": "C VETO 并发相反意见",
+    "result": {
+      "votes": {
+        "B-ok": {
+          "code": 0
+        },
+        "A-veto": {
+          "code": 2305
+        }
+      },
+      "instance_status": "RUNNING",
+      "consensus_settled_row": "",
+      "verdict": "VETO: concurrent opposite votes -> single REJECTED outcome via settlement port (idempotent)"
+    }
+  }
+]

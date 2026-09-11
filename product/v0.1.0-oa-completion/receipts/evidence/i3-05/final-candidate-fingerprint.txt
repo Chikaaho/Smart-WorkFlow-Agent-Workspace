@@ -1,0 +1,52 @@
+# G17a 最终候选指纹（一次冻结，此后禁改代码，此后禁重打包）
+# G17a 最终候选指纹 v2（snapshotId=i3-05-frozen-b）：
+#   a→b 变更 = G14b 采集中发现的直接反证「加签/补签表态执行意见表单但 recordLifecycle
+#   不落 opinion_form_snapshot（complete 路径有快照、生命周期路径漏写）」——按二级提示
+#   §4.10 五类轮次快照要求修复 ApprovalLifecycleServiceImpl.recordLifecycle（一处），
+#   重跑 BPM 模块回归（BUILD SUCCESS）后重新 package。a 期间其余行为附件不受影响
+#   （修复仅在既有 recordLifecycle 行上补写快照字段，不改变任何既有动作结果）。
+# 采集期间零代码改动、零重打包（b 冻结后适用）。
+# 依据：二级执行补充提示 02 §2 G17a —— 所有修复、测试、打包完成后只冻结一次；
+# 启动日志逐 PID 记录同一 JAR hash，之后不再改代码/重打包；所有行为附件引用同一 snapshotId。
+
+snapshotId = i3-05-frozen-b（v2；v1=i3-05-frozen-a，a→b 变更仅 G14b 反证修复 recordLifecycle 快照）
+freeze_time = 2026-09-11 16:57 CST ( Asia/Shanghai )
+freeze_stage = 全量 mvn test 1261/0/0（a 前置门禁）+ BPM 模块回归（b 后）+ mvn package -DskipTests BUILD SUCCESS + pnpm build 成功后冻结
+
+# ── 源码差异（相对 HEAD develop-sw，b 版重算） ──
+server_diff_hash = 4e04a9d6e4def9bb4c4e25ae0a3cd3e564abc12a359265139df7c715d3aabac0
+web_diff_hash = a94cb56d1979c7f2bf1d37cf50d61d762a25f572705547d7a1bf40f156d8322c
+
+# ── 后端产物（v2） ──
+backend_jar = sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar
+backend_jar_sha256 = 1172aff5b19c8a514fb1218d904b2e6554327409b9cc8a22e7b0e6b0dc3e7aee
+backend_jar_sha256_v1_frozen_a = 2900e136d1b99c41c8c5ad5bfc8a6ef2ee56d1e1ede3d0168f15072155150246
+
+# ── 前端产物（v2：G4a 反证修复后重 build） ──
+web_dist_dir = Smart-WorkFlow-Web/dist
+web_dist_merkle_sha256 = 10b48fe0a38dba38e26f75e22d743c9a88ef497adcfd1af23ff1c33f8cf1854c
+web_dist_merkle_v1_frozen_a = 2452ff87556480fc54a6ef738654b999244f05539cb28127bf48027ecc0b0a16
+web_change = G4a 反证修复：ProcessInstanceList.vue 状态筛选补齐六态选项（+3 el-option），其余未动
+web_build_cmd = VITE_PROXY_TARGET=http://localhost:8081 pnpm build → BUILD_EXIT=0
+
+# ── 门禁记录 ──
+gate_full_test = mvn test（全 reactor）→ Tests run: 1261, Failures: 0, Errors: 0, Skipped: 0, BUILD SUCCESS（/tmp/i3-03/full-mvn-test.log，MVN_EXIT=0）
+gate_bpm_module_v2 = sw-bpm-process 回归 BUILD SUCCESS（快照修复后复跑，/tmp/i3-03/process-regress2.log）
+gate_bpm_module = sw-bpm 全家回归 BUILD SUCCESS（api 17 / engine 46 / process 186 全绿）
+gate_g13a = NodeFunctionNegativeContractTest Tests run: 9, Failures: 0, Errors: 0（八类负向全覆盖）
+gate_flyway = FlywayFullChainH2Test + FlywayFullChainPostgresTest 全绿（V75 终点版本 75）
+
+# ── 运行环境（v2 重启后逐 PID 回填） ──
+pg_cluster = /tmp/i3-03/pgdata, port 50886, flyway 最高版本 V75 已执行（sw_bpm_node_function 含 9001/9002/9003 三行注册）
+redis = 127.0.0.1:16390
+instance_A = PID 82866 @ 8081（同 backend_jar_sha256 1172aff5…7aee，v2 jar）
+instance_B = PID 82913 @ 8082（同 backend_jar_sha256 1172aff5…7aee）
+start_time_v2 = INSTANCES_UP_AT=2026-09-11T16:57:46（A/B challenge 均 200）
+seeds = admin=id1 超管；user2/3/4/initiator=role2；user5 无角色；tenant1user=租户1
+seed_output = /tmp/i3-03/instances-i305b.log
+
+# ── 行为采集引用规则 ──
+# evidence/i3-05/ 下行为附件引用 snapshotId：frozen-a 期间采集的附件 _snapshot.jar_sha256=2900e136…50246；
+# frozen-b 期间（17:00 后）重采的附件（step22b/step23/G1b/G4a）_snapshot.jar_sha256=1172aff5…7aee。
+# a→b 后端变更仅 recordLifecycle 快照补写（既有动作结果不变）；b→web v2 仅筛选选项补齐。
+# b 冻结（16:57:46）后零代码改动、零重打包。

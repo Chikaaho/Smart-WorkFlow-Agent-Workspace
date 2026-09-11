@@ -1,0 +1,309 @@
+{
+  "_snapshot": {
+    "snapshotId": "i3-06-frozen-a",
+    "jar_sha256": "383ae1a7725319ae74df819c52f830e6f399a152d2de1226d36478db64a31215",
+    "web_dist_merkle": "ec1968fdf493e53910b46a7ed254856906af6a9f8db330b07cbc58d142e74976",
+    "instance_A": "PID 5767 @ 8081（22:08 同 JAR 重启后，见 Z1/instance-restart-log.md）",
+    "instance_B": "PID 5807 @ 8082（22:08 同 JAR 重启后，见 Z1/instance-restart-log.md）",
+    "fingerprint_file": "evidence/i3-06/Z1/candidate.json"
+  },
+  "rows": [
+    {
+      "case": "Z3-01-approve",
+      "result": {
+        "plain_def_id": "2098419617068896257",
+        "http": {
+          "code": 0
+        },
+        "repeat": {
+          "code": 2305,
+          "msg": "节点已被处理"
+        },
+        "row_count_before_repeat": 1,
+        "row_count_after_repeat": 1,
+        "chain": {
+          "request_marker": "z3-01-approve-6ffe0e22",
+          "action_rows": [
+            "2098420266456207362|node_1|162597c8-adee-11f1-a854-d24845ae031d|1|APPROVE|APPROVED|-|{\"comment\":\"z3-01-approve-6ffe0e22\"}"
+          ],
+          "trace_rows": [
+            "startEvent|Start|-|-",
+            "userTask|审批A|1|-",
+            "endEvent|End|-|-"
+          ],
+          "notify_rows": [
+            "WF_APPROVED|162570ab-adee-11f1-a854-d24845ae031d|2005|您的申请已通过|您发起的申请已审批通过",
+            "WF_TODO|162597c8-adee-11f1-a854-d24845ae031d|1|您有一条待办|您有一条新的待办任务待处理"
+          ],
+          "instance_status": "APPROVED"
+        }
+      }
+    },
+    {
+      "case": "Z3-02-disapprove",
+      "result": {
+        "http": {
+          "code": 0
+        },
+        "chain": {
+          "request_marker": "z3-02-disapprove-ba652a21",
+          "action_rows": [
+            "2098420284860813313|node_1|18e701cb-adee-11f1-a854-d24845ae031d|1|DISAPPROVE|DISAPPROVED|-|{\"comment\":\"z3-02-disapprove-ba652a21\"}"
+          ],
+          "trace_rows": [
+            "startEvent|Start|-|-",
+            "userTask|审批A|1|-",
+            "endEvent|End|-|-"
+          ],
+          "notify_rows": [
+            "WF_REJECTED|18e6daae-adee-11f1-a854-d24845ae031d|2005|您的申请未通过|您的发起申请被不通过意见拦截",
+            "WF_TODO|18e701cb-adee-11f1-a854-d24845ae031d|1|您有一条待办|您有一条新的待办任务待处理"
+          ],
+          "instance_status": "REJECTED"
+        }
+      }
+    },
+    {
+      "case": "Z3-03-reject",
+      "result": {
+        "http": {
+          "code": 0
+        },
+        "remaining_open_tasks": "0",
+        "chain": {
+          "request_marker": "z3-03-reject-8ebc3f62",
+          "action_rows": [
+            "2098420299213721601|node_1|1abe0b9d-adee-11f1-873d-d24845ae031d|1|REJECT|REJECTED|-|{\"comment\":\"z3-03-reject-8ebc3f62\"}"
+          ],
+          "trace_rows": [
+            "startEvent|Start|-|-",
+            "userTask|审批A|1|-",
+            "endEvent|End|-|-"
+          ],
+          "notify_rows": [
+            "WF_REJECTED|1abdbd70-adee-11f1-873d-d24845ae031d|2005|您的申请已驳回|您发起的申请已审批驳回",
+            "WF_TODO|1abe0b9d-adee-11f1-873d-d24845ae031d|1|您有一条待办|您有一条新的待办任务待处理"
+          ],
+          "instance_status": "REJECTED"
+        }
+      }
+    },
+    {
+      "case": "Z3-04-return",
+      "result": {
+        "return_http": {
+          "code": 0
+        },
+        "round_row_marker": "z3-04-return-114c7001",
+        "old_task_open_after_return": "0",
+        "round2_task_id": "1e96b22c-adee-11f1-a854-d24845ae031d",
+        "taskB_before": {
+          "code": 0,
+          "msg": "success",
+          "data": {
+            "taskId": "1dea4587-adee-11f1-a854-d24845ae031d",
+            "taskName": "审批B",
+            "processInstanceId": "1ce04f84-adee-11f1-a854-d24845ae031d",
+            "processDefinitionKey": "bpm_c963b2e89ae24285",
+            "processName": "I3证据-两审批",
+            "formKey": "i3ev_d2",
+            "businessKey": "05bf3715-b0cf-4435-911d-7fbb1ccbc344",
+            "assignee": "2001",
+            "assigneeName": "审批人二号",
+            "initiatorId": "2005",
+            "initiatorName": "发起人",
+            "createTime": "2026-09-11T22:36:04.091",
+            "processVariables": {
+              "recordId": "05bf3715-b0cf-4435-911d-7fbb1ccbc344",
+              "approver": "2005",
+              "submitter": "2005",
+              "formKey": "i3ev_d2",
+              "tenantId": "0",
+              "formData": {
+                "amount": 1
+              },
+              "outcome": "APPROVED"
+            },
+            "opinionForm": {},
+            "approvalHistory": [
+              {
+                "taskId": "1ce076a1-adee-11f1-a854-d24845ae031d",
+                "taskName": "审批A",
+                "nodeKey": "node_1",
+                "assignee": "1",
+                "assigneeName": "系统管理员",
+                "createTime": "2026-09-11T22:36:02.348",
+                "endTime": "2026-09-11T22:36:04.088",
+                "action": "APPROVE",
+                "approvalResult": "APPROVED",
+                "opinionData": {
+                  "comment": "z3-A-pass-round1"
+                },
+                "opinionFormId": "DEFAULT_REMARK",
+                "opinionFormVersion": "1"
+              }
+            ]
+          }
+        },
+        "taskA_round2_after": {
+          "code": 0,
+          "msg": "success",
+          "data": {
+            "taskId": "1e96b22c-adee-11f1-a854-d24845ae031d",
+            "taskName": "审批A",
+            "processInstanceId": "1ce04f84-adee-11f1-a854-d24845ae031d",
+            "processDefinitionKey": "bpm_c963b2e89ae24285",
+            "processName": "I3证据-两审批",
+            "formKey": "i3ev_d2",
+            "businessKey": "05bf3715-b0cf-4435-911d-7fbb1ccbc344",
+            "assignee": "1",
+            "assigneeName": "系统管理员",
+            "initiatorId": "2005",
+            "initiatorName": "发起人",
+            "createTime": "2026-09-11T22:36:05.221",
+            "processVariables": {
+              "recordId": "05bf3715-b0cf-4435-911d-7fbb1ccbc344",
+              "approver": "2005",
+              "submitter": "2005",
+              "formKey": "i3ev_d2",
+              "tenantId": "0",
+              "formData": {
+                "amount": 1
+              },
+              "outcome": "APPROVED"
+            },
+            "opinionForm": {},
+            "approvalHistory": [
+              {
+                "taskId": "1dea4587-adee-11f1-a854-d24845ae031d",
+                "taskName": "审批B",
+                "nodeKey": "node_2",
+                "assignee": "2001",
+                "assigneeName": "审批人二号",
+                "createTime": "2026-09-11T22:36:04.091",
+                "endTime": "2026-09-11T22:36:05.22",
+                "action": "RETURN",
+                "approvalResult": null,
+                "opinionData": {
+                  "comment": "z3-04-return-114c7001"
+                },
+                "opinionFormId": "DEFAULT_REMARK",
+                "opinionFormVersion": "1"
+              },
+              {
+                "taskId": "1ce076a1-adee-11f1-a854-d24845ae031d",
+                "taskName": "审批A",
+                "nodeKey": "node_1",
+                "assignee": "1",
+                "assigneeName": "系统管理员",
+                "createTime": "2026-09-11T22:36:02.348",
+                "endTime": "2026-09-11T22:36:04.088",
+                "action": "APPROVE",
+                "approvalResult": "APPROVED",
+                "opinionData": {
+                  "comment": "z3-A-pass-round1"
+                },
+                "opinionFormId": "DEFAULT_REMARK",
+                "opinionFormVersion": "1"
+              }
+            ]
+          }
+        },
+        "illegal_target": {
+          "code": 2306,
+          "msg": "退回目标节点不合法"
+        },
+        "missing_target": {
+          "code": 2306,
+          "msg": "退回目标节点不合法"
+        },
+        "forbidden_actor": {
+          "code": 403,
+          "msg": "无权处理该任务"
+        },
+        "action_rows_before_neg": 2,
+        "action_rows_after_neg": 2,
+        "chain": {
+          "request_marker": "z3-04-return-114c7001",
+          "action_rows": [
+            "2098420313289805826|node_1|1ce076a1-adee-11f1-a854-d24845ae031d|1|APPROVE|APPROVED|-|{\"comment\":\"z3-A-pass-round1\"}",
+            "2098420318046146562|node_2|1dea4587-adee-11f1-a854-d24845ae031d|2001|RETURN|RETURNED|1|{\"comment\":\"z3-04-return-114c7001\"}",
+            "2098420327642714113|node_1|1e96b22c-adee-11f1-a854-d24845ae031d|1|APPROVE|APPROVED|-|{\"comment\":\"z3-round2-final-approve\"}"
+          ],
+          "trace_rows": [
+            "startEvent|Start|-|-",
+            "userTask|审批A|1|-",
+            "userTask|审批B|2001|Change activity to node_1",
+            "userTask|审批A|1|-",
+            "userTask|审批B|2001|-"
+          ],
+          "notify_rows": [
+            "WF_RETURNED|1ce04f84-adee-11f1-a854-d24845ae031d|2005|您的申请已退回|您发起的申请需要重新处理",
+            "WF_TODO|1ce076a1-adee-11f1-a854-d24845ae031d|1|您有一条待办|您有一条新的待办任务待处理"
+          ],
+          "instance_status": "RUNNING"
+        }
+      }
+    },
+    {
+      "case": "Z3-05-consensus-all-approve",
+      "result": {
+        "approve_a": {
+          "code": 0
+        },
+        "approve_b": {
+          "code": 0
+        },
+        "chain": {
+          "request_marker": "z3-05-consensus-all-26a0ceea",
+          "action_rows": [
+            "2098420346361892866|node_1|20d50946-adee-11f1-873d-d24845ae031d|1|APPROVE|APPROVED|-|{\"comment\":\"z3-05-consensus-all-26a0ceea\"}",
+            "2098420346823266306|node_1|20d668db-adee-11f1-873d-d24845ae031d|2001|APPROVE|APPROVED|-|{\"comment\":\"z3-05-consensus-all-26a0ceea-user2\"}"
+          ],
+          "trace_rows": [
+            "startEvent|Start|-|-",
+            "userTask|会签|1|-",
+            "userTask|会签|2001|-",
+            "endEvent|End|-|-"
+          ],
+          "notify_rows": [
+            "WF_APPROVED|20d3d0b0-adee-11f1-873d-d24845ae031d|2005|您的申请已通过|您发起的申请已审批通过",
+            "WF_TODO|20d50946-adee-11f1-873d-d24845ae031d|1|您有一条待办|您有一条新的待办任务待处理"
+          ],
+          "instance_status": "APPROVED"
+        }
+      }
+    },
+    {
+      "case": "Z3-06-consensus-disapprove",
+      "result": {
+        "approve_a": {
+          "code": 0
+        },
+        "disapprove_b": {
+          "code": 0,
+          "msg": "success"
+        },
+        "chain": {
+          "request_marker": "z3-06-consensus-disapprove-334e85f5",
+          "action_rows": [
+            "2098420365534056449|node_1|238c3a51-adee-11f1-a854-d24845ae031d|1|APPROVE|APPROVED|-|{\"comment\":\"z3-06-consensus-disapprove-334e85f5\"}",
+            "2098420365840240641|INSTANCE|ACTION#238c132b-adee-11f1-a854-d24845ae031d|0|DISAPPROVE|CONSENSUS_SETTLED|-|-",
+            "2098420365915738113|node_1|238c8776-adee-11f1-a854-d24845ae031d|2001|DISAPPROVE|DISAPPROVED|-|{\"comment\":\"z3-06-consensus-disapprove-334e85f5-user2-neg\"}"
+          ],
+          "trace_rows": [
+            "startEvent|Start|-|-",
+            "userTask|会签|1|-",
+            "userTask|会签|2001|-",
+            "endEvent|End|-|-"
+          ],
+          "notify_rows": [
+            "WF_REJECTED|238c132b-adee-11f1-a854-d24845ae031d|2005|您的申请已驳回|您发起的申请已审批驳回",
+            "WF_TODO|238c3a51-adee-11f1-a854-d24845ae031d|1|您有一条待办|您有一条新的待办任务待处理"
+          ],
+          "instance_status": "REJECTED"
+        }
+      }
+    }
+  ]
+}

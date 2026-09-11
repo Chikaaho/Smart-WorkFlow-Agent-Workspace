@@ -1,0 +1,28 @@
+{
+  "_snapshot": {
+    "snapshotId": "i3-05-frozen-a",
+    "jar_sha256": "2900e136d1b99c41c8c5ad5bfc8a6ef2ee56d1e1ede3d0168f15072155150246",
+    "instance_A": "PID 64431 @ 8081",
+    "instance_B": "PID 64463 @ 8082",
+    "fingerprint_file": "evidence/i3-05/final-candidate-fingerprint.txt"
+  },
+  "rows": [
+    {
+      "gid": "G8",
+      "case": "C VETO 并发相反意见",
+      "result": {
+        "votes": {
+          "A-veto": {
+            "code": 0
+          },
+          "B-ok": {
+            "code": 404
+          }
+        },
+        "instance_status": "REJECTED",
+        "consensus_settled_row": "CONSENSUS_SETTLED",
+        "verdict": "VETO: concurrent opposite votes -> single REJECTED outcome via settlement port (idempotent)"
+      }
+    }
+  ]
+}
