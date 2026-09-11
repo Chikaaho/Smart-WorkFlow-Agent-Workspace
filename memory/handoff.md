@@ -3,44 +3,38 @@
 ## 1. 功能名称
 P60 CH-aPaaS v0.1.0 OA 全功能收口（`v0.1.0-oa-completion`）。
 
-## 2. 功能目标
-完成组织权限、低代码表单、流程管理与办理、个人工作台、四类第三方 SSO 和七类通知的完整 OA 闭环。
+## 2. 最终状态
+**IN_PROGRESS（2026-09-12）**。I1、I2 `COMPLETED（规划已确认）`；I3 回执 06 经规划验收 05 未通过，保持 **VERIFYING**；I4—I6 未开始。正式功能数 44、清单 ✅46/🟦22/⬜22、P4/P34/P35/P47/P60 均不核销。
 
-## 3. 最终状态
-**IN_PROGRESS（2026-09-10）**。目标版本 `0.1.0`，优先级 P0，任务等级 XL；I1 **COMPLETED（规划已确认，2026-09-09）**；`S-DEV-CAPTCHA-01` 已验收通过；I2 **COMPLETED（规划已确认，2026-09-10）**；I3—I6 未开始。
+## 3. 本轮验收结论
+回执 06 的自研设计器真实浏览器全链、审批动作语义、会签规则和多数生命周期动作成立并已锁定；但附件仍存在以下直接反证：
 
-## 4. 本轮做了什么
-Planner 复核只读终态回执 02：确认 Workspace 实际远端终点为 `afec348…`，六提交父链连续，1011 项归属矩阵零遗漏；Server/Web 无漂移。I2 终态最终复核 02 PASSED，两个 I2 方向均归档。
+- 验收时 i3-03/i3-04 检出 119/154 个非占位 accessToken 值；推送前已完成安全脱敏，但 R0 正式证据仍须由 Executor 按提示 04 封装；
+- `Z1/candidate.json` 和实例重启记录仍指向 frozen-a，未与 frozen-e/PID 演进收口，门禁 command 文件缺失；
+- RETURN 缺表单 before/after/scope；Z5 缺强制 assertions 汇总；
+- Z6 保留 error，提醒/催办通知行为空，调度 PID 链不一致；
+- Z7 注册表为空且脚本引擎扫描值为 1，却写成零；
+- Z8 禁用组件以“表单不存在”冒充契约拒绝，普通主表单前后为空，补签表态行为空；
+- Z9 只覆盖少量职责，未形成逐职责页面/深链/API 正负矩阵；
+- Z10 manifest/Validator 虽自洽，但因上游未全过而没有终态效力。
 
-## 5. Executor 内部 Step 汇总
-I2 收口链：实现/自验回执 01 → 补证修复回执 02 → 九原子补证回执 03 → 五原子锁定回执 05 → E0b4 封装回执 06 → 功能级 PASSED → 终态回执 01/只读对账 02 → Planner 确认 COMPLETED。
+## 4. 已锁定、禁止重验
+G1a/G1b/G2/G3、G4a/G4b/G5、G6、G8a、G9/G10/G11 的既有行为、G13a、G17b、i3-04 manifest。Z5 仅允许从既有附件派生断言汇总。
 
-## 6. 实际修改范围
-只写治理材料：knowledge/current-status、session-handoff、features/v0.1.0-oa-completion、todo/requirement-pool、todo/v0.1.0-oa-plan、P60 主方向、memory 短文件、终态同步回执与证据；未修改业务代码、工程配置或测试。
+## 5. 当前唯一执行入口
+`product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i3-v0.1.0-oa-completion-04.md`
 
-## 7. 测试和验收结果
-I2 功能与终态均已通过。锁定基线：Server 表单模块 compile、Bootstrap package、Server full test 均 exit 0；Web typecheck/lint/test(1179 passed + 3 skipped)/build exit 0；Flyway H2 69 / PG 68；Workspace/Server/Web 远端分别为 `afec348…` / `7342de3…` / `5dfd6ee…`。
+依据审查：`product/v0.1.0-oa-completion/receipts/planning-review-stage-i3-v0.1.0-oa-completion-05.md`
 
-## 8. 关键设计决策
-一个 XL 主功能、六阶段各走完整 L/XL 生命周期；每阶段 PASSED 后下发终态同步方向，Executor 同步、按独立仓库提交并推送当前分支，Planner 确认阶段 COMPLETED 后再进入下一阶段。P60 统筹但不替代既有 P 编号；ADV 64 条不计入 0.1.0 完成条件，SSO/外部通知必须真实验证。
+下一回执：`product/v0.1.0-oa-completion/receipts/stage-i3-v0.1.0-oa-completion-07.md`
 
-## 9. 当前系统状态
-P60 仍为 IN_PROGRESS；I1、I2 均 **COMPLETED（规划已确认）**；`S-DEV-CAPTCHA-01` **PASSED**；正式功能数 44、清单 ✅46/🟦22/⬜22、P 编号不变；I3 未开始。
+新证据根：`product/v0.1.0-oa-completion/receipts/evidence/i3-07/`
 
-## 10. 还有什么没做
-I3—I6 与 0.1.0 整体候选验收尚未完成；I2 无剩余执行项。
+## 6. 下一轮固定范围
+只处理 R0 凭证清零、R1 frozen-e 候选/PID/command 封装、R3 RETURN 表单范围、R5 已锁定行为汇总、R6 调度通知与 PID 链、R7 生产反向扫描、R8 意见表单、R9 权限总账、R10 终态封装。禁止重跑锁定行为、扩大需求、改变正式状态或提前终态。
 
-## 11. 已知问题和风险
-动态并行、加签、函数输出、SSO身份绑定和外部通知均涉及权限、并发或第三方真实性。缺 Provider 凭据时不得用 Mock 宣称完成。
+## 7. 新机器启动提示词
+本会话角色声明为执行。先完整读取 `system.md`、`roles/executor.md`、`project.md`、两端工程宪法，再读取 I3 正式方向、规划验收 05 与三级继续收敛提示 04。只处理提示 04 的 R0/R1/R3/R5/R6/R7/R8/R9/R10，禁止重验锁定项。全部真实字段与断言一致后提交回执 07 和 `evidence/i3-07/`；合法状态保持 `VERIFYING / EXECUTION_SUBMITTED`，不得提前写 PASSED/COMPLETED。
 
-## 12. 下一轮要做什么
-Planner 形成 I3「人工审批能力」正式阶段方向，明确目标、非目标、风险与验收边界；方向下发前不执行 I3。
-
-## 13. 下一轮要达到什么结果
-形成 I3 唯一正式执行入口；I2 不再作为待办，P60 保持 `IN_PROGRESS`，正式计数与开放 P 编号不变。
-
-## 14. 下一轮开始前必须读取的知识文件
-P60 主方向、I2 最终复核 `planning-final-review-terminal-sync-stage-i2-v0.1.0-oa-completion-02-passed.md`、memory 当前摘要；规划 I3 前按需下发探索任务，不直接读取代码或 knowledge。
-
-## 15. 新会话启动提示词
-本会话角色必须先由 Owner 明确。Planner 读取 P60 主方向、I2 最终复核与当前 memory，形成 I3「人工审批能力」正式阶段方向；方向下发前不让 Executor 开始实现，不重开 I2。
+## 8. Git 边界
+本次 Planner 只完成规划验收及 Planner 范围文档同步。Planner 角色无 Git commit/push 权限；工作区所有改动尚未由本会话提交。换机前如需提交，Owner 必须显式切换为“执行”或“管理员”，再由相应角色按三仓库实际状态完成提交与回读。
