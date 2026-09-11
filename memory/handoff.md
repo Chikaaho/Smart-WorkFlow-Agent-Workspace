@@ -36,5 +36,5 @@ G1a/G1b/G2/G3、G4a/G4b/G5、G6、G8a、G9/G10/G11 的既有行为、G13a、G17b
 ## 7. 新机器启动提示词
 本会话角色声明为执行。先完整读取 `system.md`、`roles/executor.md`、`project.md`、两端工程宪法，再读取 I3 正式方向、规划验收 05 与三级继续收敛提示 04。只处理提示 04 的 R0/R1/R3/R5/R6/R7/R8/R9/R10，禁止重验锁定项。全部真实字段与断言一致后提交回执 07 和 `evidence/i3-07/`；合法状态保持 `VERIFYING / EXECUTION_SUBMITTED`，不得提前写 PASSED/COMPLETED。
 
-## 8. Git 边界
-本次 Planner 只完成规划验收及 Planner 范围文档同步。Planner 角色无 Git commit/push 权限；工作区所有改动尚未由本会话提交。换机前如需提交，Owner 必须显式切换为“执行”或“管理员”，再由相应角色按三仓库实际状态完成提交与回读。
+## 8. Git 交接基线
+Owner 已切换管理员并授权直接提交推送。三仓库远端回读一致：Workspace 为 `develop-sw` 本文件所在提交，Server `develop=f7101c873aff09cbaf50da00f634c4a5f4cd58c8`，Web `develop=192e0647a8f1b1e2b270d4ea13e87854b247fcc7`。本机 Redis 数据、上传目录、Python 缓存和前端采证临时 JSON 未进入 Git，不属于换机恢复基线。
