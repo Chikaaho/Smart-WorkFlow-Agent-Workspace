@@ -1,0 +1,11 @@
+# R7 生产反向边界扫描（提示 04 §2 R7；G13a 已锁定不重跑，仅登记引用）
+# 执行主机：换机 Windows（Server develop=f7101c873aff09cbaf50da00f634c4a5f4cd58c8，工作树 clean）
+# 1 脚本引擎入口扫描（期望 0）：
+grep -rniE "groovy|ScriptEngineManager|Nashorn|javax\.script" sw-biz/sw-bpm --include="*.java" --include="*.xml" --include="*.yml" --include="*.sql" > script-engine-scan.stdout
+# 2 函数源码上传端点扫描（期望：非函数源码类上传 0 个）：
+grep -rniE "MultipartFile|upload" sw-biz/sw-bpm --include="*.java" > upload-endpoint-scan.stdout
+# 3 合法 audit_note 写回保留性（源码级）：
+grep -rn "audit_note" sw-biz/sw-bpm --include="*.java" > audit-note-source.stdout
+# 4 生产注册表实读（运行库，JDBC 直读）：
+java RegRead jdbc:postgresql://localhost:50886/smart_workflow postgres postgres > registry-rows.txt
+# G13a 引用（锁定，不复制不重跑）：evidence/i3-06/Z7/g13a-contract-test-rerun.txt + i3-06/Z1 surefire-totals-r6.txt（NodeFunctionNegativeContractTest 计入 1261）

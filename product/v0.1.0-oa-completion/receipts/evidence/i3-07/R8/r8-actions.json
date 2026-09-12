@@ -1,0 +1,224 @@
+{
+ "_snapshot": {
+  "source": "Smart-WorkFlow-aPaaS-server develop=c18d074 (fix deadline notify tx; parent f7101c873aff09cbaf50da00f634c4a5f4cd58c8)",
+  "runtime_jar_sha256": "74926960ff615681f3064e4061e3622480e8e56fdcfce94caf2d0f12738c73ad",
+  "frozen_e_jar_sha256": "90d8bb895a129d523c67e327807840192c606d2fbee44ed7e049d0cc298a16ba",
+  "runtime_rebuild_note": "换机恢复性重打包（非代码修改），见 R1/runtime-rebuild.txt",
+  "instance_A": "PID 34124 @ 8081",
+  "instance_B": "PID 31072 @ 8082"
+ },
+ "LOG": {
+  "catalog": {
+   "endpoint": "GET /form/def/field-types",
+   "total": 22,
+   "disabled": [
+    "EMAIL",
+    "PHONE",
+    "URL",
+    "RATE",
+    "SLIDER"
+   ]
+  },
+  "disabled_component": {
+   "form_def_created": false,
+   "config_code": 1000,
+   "config_publish_code": 1000,
+   "validate_errors": [
+    {
+     "elementId": "node_1",
+     "nodeKey": "node_1",
+     "edgeKey": null,
+     "errorCode": 2417,
+     "message": "审批意见表单组件不可用: EMAIL"
+    }
+   ],
+   "validate_disabled_errors": [
+    {
+     "elementId": "node_1",
+     "nodeKey": "node_1",
+     "edgeKey": null,
+     "errorCode": 2417,
+     "message": "审批意见表单组件不可用: EMAIL"
+    }
+   ],
+   "note": "config 层与 publish 层拒绝码见上；validate 层 2417 组件不可用；提交层由 ApprovalOpinionValidator 以同目录口径校验（Z8-03 missing_required 同路径）"
+  },
+  "plain": {
+   "marker": "r8-plain-23419142",
+   "init_task_detail_present": true,
+   "missing_required_rejected": 2308,
+   "submit": 0,
+   "main_form_before": {
+    "version": "0",
+    "amount": 77,
+    "sha256": "c8cc2f883a4eb9a184fdd04815219ee26576ee70011148091919b7a6fdf34528"
+   },
+   "main_form_after": {
+    "version": "0",
+    "amount": 77,
+    "sha256": "c8cc2f883a4eb9a184fdd04815219ee26576ee70011148091919b7a6fdf34528"
+   },
+   "field_diff": {
+    "amount": {
+     "before": 77,
+     "after": 77,
+     "unchanged": true
+    },
+    "version": {
+     "before": "0",
+     "after": "0",
+     "unchanged": true
+    },
+    "record_sha256": {
+     "before": "c8cc2f883a4eb9a184fdd04815219ee26576ee70011148091919b7a6fdf34528",
+     "after": "c8cc2f883a4eb9a184fdd04815219ee26576ee70011148091919b7a6fdf34528",
+     "unchanged": true
+    }
+   },
+   "snapshots": [
+    "APPROVE|704e272e-ae51-11f1-b602-00ffa7734675|{\"opinionForm\":{\"formId\":\"i3ev-r8-opinion\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"����˵��\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"level\",\"label\":\"�ȼ�\",\"type\":\"RADIO\",\"options\":[\"A\",\"B\"],\"required\":true},{\"key\":\"note\",\"label\":\"��ע\",\"type\":\"NOTE\"}]},\"opinionFormId\":\"i3ev-r8-opinion\",\"opinionFormVersion\":\"v1\"}"
+   ],
+   "history_echo": [
+    {}
+   ],
+   "instance_status": "APPROVED"
+  },
+  "consensus": {
+   "marker": "r8-consensus-354610f8",
+   "vote_a": 0,
+   "vote_b": 0,
+   "main_form_before": {
+    "version": "0",
+    "amount": 78,
+    "sha256": "4ded63d511ad130dfaee37fe7495f0ed618d418261c5ed9eaab8220b7083c1ed"
+   },
+   "main_form_after": {
+    "version": "0",
+    "amount": 78,
+    "sha256": "4ded63d511ad130dfaee37fe7495f0ed618d418261c5ed9eaab8220b7083c1ed"
+   },
+   "sign_rows": [],
+   "snapshots": [
+    "APPROVE|73a393de-ae51-11f1-b602-00ffa7734675|{\"opinionForm\":{\"formId\":\"i3ev-r8-opinion\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"����˵��\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"level\",\"label\":\"�ȼ�\",\"type\":\"RADIO\",\"options\":[\"A\",\"B\"],\"required\":true},{\"key\":\"note\",\"label\":\"��ע\",\"type\":\"NOTE\"}]},\"opinionFormId\":\"i3ev-r8-opinion\",\"opinionFormVersion\":\"v1\"}",
+    "APPROVE|73a45733-ae51-11f1-b602-00ffa7734675|{\"opinionForm\":{\"formId\":\"i3ev-r8-opinion\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"����˵��\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"level\",\"label\":\"�ȼ�\",\"type\":\"RADIO\",\"options\":[\"A\",\"B\"],\"required\":true},{\"key\":\"note\",\"label\":\"��ע\",\"type\":\"NOTE\"}]},\"opinionFormId\":\"i3ev-r8-opinion\",\"opinionFormVersion\":\"v1\"}"
+   ],
+   "history_echo": [
+    {},
+    {}
+   ],
+   "instance_status": "APPROVED"
+  },
+  "addsign": {
+   "marker": "r8-addsign-c479f401",
+   "add_sign": 0,
+   "express": 0,
+   "final": 0,
+   "sign_rows": [],
+   "snapshots": [
+    "ADD_SIGN|77439e20-ae51-11f1-b602-00ffa7734675|{\"opinionForm\":{\"formId\":\"i3ev-r8-opinion\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"����˵��\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"level\",\"label\":\"�ȼ�\",\"type\":\"RADIO\",\"options\":[\"A\",\"B\"],\"required\":true},{\"key\":\"note\",\"label\":\"��ע\",\"type\":\"NOTE\"}]},\"opinionFormId\":\"i3ev-r8-opinion\",\"opinionFormVersion\":\"v1\"}",
+    "APPROVE|77439e20-ae51-11f1-b602-00ffa7734675|{\"opinionForm\":{\"formId\":\"i3ev-r8-opinion\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"����˵��\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"level\",\"label\":\"�ȼ�\",\"type\":\"RADIO\",\"options\":[\"A\",\"B\"],\"required\":true},{\"key\":\"note\",\"label\":\"��ע\",\"type\":\"NOTE\"}]},\"opinionFormId\":\"i3ev-r8-opinion\",\"opinionFormVersion\":\"v1\"}"
+   ],
+   "history_echo": [
+    {}
+   ]
+  },
+  "supplement": {
+   "marker": "r8-supp-2c1b11db",
+   "sup_create": 0,
+   "express": 0,
+   "sup_sign_row": "SUPPLEMENT_SIGN|DONE|{\"auditOnly\":true,\"businessAction\":\"\",\"result\":\"APPROVE\",\"opinionData\":{\"comment2\":\"r8-supp-2c1b11db-confirm\",\"level\":\"B\"},\"actor\":\"2001\"}",
+   "snapshots": [
+    "APPROVE|7b2f7e63-ae51-11f1-b602-00ffa7734675|{\"opinionForm\":{\"formId\":\"i3ev-r8-opinion\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"����˵��\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"level\",\"label\":\"�ȼ�\",\"type\":\"RADIO\",\"options\":[\"A\",\"B\"],\"required\":true},{\"key\":\"note\",\"label\":\"��ע\",\"type\":\"NOTE\"}]},\"opinionFormId\":\"i3ev-r8-opinion\",\"opinionFormVersion\":\"v1\"}",
+    "SUPPLEMENT_SIGN|SUPPLEMENT#7b2f7e56-ae51-11f1-b602-00ffa7734675|{\"opinionForm\":{},\"opinionFormId\":\"i3ev-r8-opinion\",\"opinionFormVersion\":\"v1\"}"
+   ],
+   "history_echo": [],
+   "instance_status": "APPROVED"
+  },
+  "returnRound": {
+   "marker": "r8-return-741ec5a5",
+   "return": 0,
+   "round_row": "RETURN|1",
+   "round2_task": "82b37995-ae51-11f1-b602-00ffa7734675",
+   "round2_complete": 0,
+   "main_form_before": {
+    "version": "0",
+    "amount": 81,
+    "sha256": "77f6a66d7726aec79a550dfddd30e5f9ea120ec47969e2f55da7c48097afb640"
+   },
+   "main_form_after": {
+    "version": "0",
+    "amount": 81,
+    "sha256": "77f6a66d7726aec79a550dfddd30e5f9ea120ec47969e2f55da7c48097afb640"
+   },
+   "snapshots": [
+    "APPROVE|804e606a-ae51-11f1-b602-00ffa7734675|{\"opinionForm\":{\"formId\":\"i3ev-r8-opinion\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"����˵��\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"level\",\"label\":\"�ȼ�\",\"type\":\"RADIO\",\"options\":[\"A\",\"B\"],\"required\":true},{\"key\":\"note\",\"label\":\"��ע\",\"type\":\"NOTE\"}]},\"opinionFormId\":\"i3ev-r8-opinion\",\"opinionFormVersion\":\"v1\"}",
+    "RETURN|81eb95b0-ae51-11f1-b602-00ffa7734675|{\"opinionForm\":{\"formId\":\"i3ev-r8-opinion\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"����˵��\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"level\",\"label\":\"�ȼ�\",\"type\":\"RADIO\",\"options\":[\"A\",\"B\"],\"required\":true},{\"key\":\"note\",\"label\":\"��ע\",\"type\":\"NOTE\"}]},\"opinionFormId\":\"i3ev-r8-opinion\",\"opinionFormVersion\":\"v1\"}",
+    "APPROVE|82b37995-ae51-11f1-b602-00ffa7734675|{\"opinionForm\":{\"formId\":\"i3ev-r8-opinion\",\"version\":\"v1\",\"fields\":[{\"key\":\"comment2\",\"label\":\"����˵��\",\"type\":\"TEXT\",\"required\":true,\"maxLength\":200},{\"key\":\"level\",\"label\":\"�ȼ�\",\"type\":\"RADIO\",\"options\":[\"A\",\"B\"],\"required\":true},{\"key\":\"note\",\"label\":\"��ע\",\"type\":\"NOTE\"}]},\"opinionFormId\":\"i3ev-r8-opinion\",\"opinionFormVersion\":\"v1\"}"
+   ],
+   "history_echo": [
+    {},
+    {}
+   ]
+  },
+  "version_hash_stability": {
+   "hashes_before": {
+    "plain": [
+     "50bc66f1858954dba5ceeebad95f602a81398635dd7608aa21e652afe7c4e003"
+    ],
+    "consensus": [
+     "b5871cbc76346e2bd7a07f7f4edddb243fd6b2d8cae1d901ece1a47cf43a7e67",
+     "3d8a0d1fa9ec885dd784445b2973e25f52165aa21ef9c663c4b9443064f853e9"
+    ],
+    "addsign": [
+     "03a23682e881ecc7c9553fb5c8ec0e07ee75097d8e44b6ff20eefbcefdf7c2cd",
+     "46d0b286d40e6ad63e7a351b31d789888b51760bec62e5b3243d5c7b7b74f812"
+    ],
+    "supplement": [
+     "0be4ca5c0b0232d20795bc35b1f0a70c2f01eebbacff7631098437c0196cd130",
+     "df895f27b36e6d878f7ac08743708ed7db0d23e725b1ed41cfcd19c0065f1d17"
+    ],
+    "returnRound": [
+     "46b9de059168f9cfcea62ac6a690c76dba23ff8038d6a79dc78decb715c4c4f5",
+     "e9351e9e6524669408dd25b103ee2bd4eb07f89f347d5b1a66a14486c79a7cb8",
+     "8694f939462901c9029348dd5cc2aacd48c570bebb1bb891056c5895830213c0"
+    ]
+   },
+   "hashes_after": {
+    "plain": [
+     "50bc66f1858954dba5ceeebad95f602a81398635dd7608aa21e652afe7c4e003"
+    ],
+    "consensus": [
+     "b5871cbc76346e2bd7a07f7f4edddb243fd6b2d8cae1d901ece1a47cf43a7e67",
+     "3d8a0d1fa9ec885dd784445b2973e25f52165aa21ef9c663c4b9443064f853e9"
+    ],
+    "addsign": [
+     "03a23682e881ecc7c9553fb5c8ec0e07ee75097d8e44b6ff20eefbcefdf7c2cd",
+     "46d0b286d40e6ad63e7a351b31d789888b51760bec62e5b3243d5c7b7b74f812"
+    ],
+    "supplement": [
+     "0be4ca5c0b0232d20795bc35b1f0a70c2f01eebbacff7631098437c0196cd130",
+     "df895f27b36e6d878f7ac08743708ed7db0d23e725b1ed41cfcd19c0065f1d17"
+    ],
+    "returnRound": [
+     "46b9de059168f9cfcea62ac6a690c76dba23ff8038d6a79dc78decb715c4c4f5",
+     "e9351e9e6524669408dd25b103ee2bd4eb07f89f347d5b1a66a14486c79a7cb8",
+     "8694f939462901c9029348dd5cc2aacd48c570bebb1bb891056c5895830213c0"
+    ]
+   },
+   "unchanged": true
+  }
+ },
+ "assertions": {
+  "catalog_22_types_5_disabled": true,
+  "disabled_config_rejected": true,
+  "disabled_publish_rejected": true,
+  "disabled_validate_2417_present": true,
+  "plain": true,
+  "consensus": true,
+  "addsign": true,
+  "supplement": true,
+  "returnRound": true,
+  "version_hash_stability": true
+ },
+ "pass": true
+}
