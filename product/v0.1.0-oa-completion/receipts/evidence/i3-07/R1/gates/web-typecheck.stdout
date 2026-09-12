@@ -1,0 +1,77 @@
+? Verifying lockfile against supply-chain policies (693 entries)...
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +639
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 639, reused 422, downloaded 0, added 0
+Progress: resolved 639, reused 637, downloaded 1, added 25
+
+   ╭─────────────────────────────────────────╮
+   │                                         │
+   │   Update available! 11.9.0 → 12.4.1.    │
+   │   Changelog: https://pnpm.io/v/12.4.1   │
+   │    To update, run: pnpm add -g pnpm     │
+   │                                         │
+   ╰─────────────────────────────────────────╯
+
+Progress: resolved 639, reused 638, downloaded 1, added 54
+Progress: resolved 639, reused 638, downloaded 1, added 130
+Progress: resolved 639, reused 638, downloaded 1, added 257
+✓ Lockfile passes supply-chain policies (693 entries in 5.9s)
+Progress: resolved 639, reused 638, downloaded 1, added 419
+Progress: resolved 639, reused 638, downloaded 1, added 607
+Progress: resolved 639, reused 638, downloaded 1, added 634
+Progress: resolved 639, reused 638, downloaded 1, added 636
+Progress: resolved 639, reused 638, downloaded 1, added 637
+Progress: resolved 639, reused 638, downloaded 1, added 638
+Progress: resolved 639, reused 638, downloaded 1, added 639, done
+.../node_modules/simple-git-hooks postinstall$ node ./postinstall.js
+.../node_modules/simple-git-hooks postinstall: [INFO] Successfully set the pre-commit with command: pnpm lint-staged
+.../node_modules/simple-git-hooks postinstall: [INFO] Successfully set the commit-msg with command: pnpm commitlint --edit $1
+.../node_modules/simple-git-hooks postinstall: Done
+
+dependencies:
++ @element-plus/icons-vue 2.3.2
++ @form-create/designer 3.5.0
++ @form-create/element-ui 3.3.1
++ @vue-flow/core 1.48.2
++ axios 1.18.1
++ dompurify 3.4.11
++ element-plus 2.14.2
++ expr-eval-fork 3.0.3
++ pinia 3.0.4
++ vue 3.5.38
++ vue-draggable-plus 0.6.1
++ vue-i18n 11.4.6
++ vue-router 5.1.0
+
+devDependencies:
++ @commitlint/cli 21.1.0
++ @commitlint/config-conventional 21.1.0
++ @eslint/js 10.0.1
++ @types/node 24.13.2
++ @vitejs/plugin-vue 6.0.7
++ @vitest/coverage-v8 4.1.9
++ @vue/test-utils 2.4.11
++ @vue/tsconfig 0.9.1
++ eslint 10.5.0
++ eslint-config-prettier 10.1.8
++ eslint-import-resolver-typescript 4.4.5
++ eslint-plugin-import 2.32.0
++ eslint-plugin-prettier 5.5.6
++ eslint-plugin-vue 10.9.2
++ jsdom 29.1.1
++ lint-staged 17.0.8
++ openapi-typescript 7.13.0
++ prettier 3.8.4
++ simple-git-hooks 2.14.0
++ typescript 6.0.3
++ typescript-eslint 8.62.0
++ unplugin-auto-import 21.0.0
++ unplugin-vue-components 32.1.0
++ vite 8.1.0
++ vitest 4.1.9
++ vue-eslint-parser 10.4.1
++ vue-tsc 3.3.5
+
+Done in 16.1s using pnpm v11.9.0

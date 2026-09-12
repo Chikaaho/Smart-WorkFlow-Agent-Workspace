@@ -1,0 +1,119 @@
+{
+ "_snapshot": {
+  "source": "Smart-WorkFlow-aPaaS-server develop=c18d074 (fix deadline notify tx; parent f7101c873aff09cbaf50da00f634c4a5f4cd58c8)",
+  "runtime_jar_sha256": "74926960ff615681f3064e4061e3622480e8e56fdcfce94caf2d0f12738c73ad",
+  "frozen_e_jar_sha256": "90d8bb895a129d523c67e327807840192c606d2fbee44ed7e049d0cc298a16ba",
+  "runtime_rebuild_note": "换机恢复性重打包（非代码修改），见 R1/runtime-rebuild.txt",
+  "instance_A": "PID 34124 @ 8081",
+  "instance_B": "PID 31072 @ 8082"
+ },
+ "marker": "r6-sched-a7c8e7ba",
+ "flow": {
+  "graph_put": {
+   "code": 0
+  },
+  "validate": {
+   "code": 0,
+   "errors": []
+  },
+  "publish": {
+   "code": 0
+  },
+  "remind": {
+   "deadline_id": "2098597233367343105",
+   "deadline_row": "2098597233367343105|53c76931-ae50-11f1-b0da-00ffa7734675|DONE|ESCALATED|-|2026-09-12 10:20:05",
+   "notify_rows": [
+    "WF_TODO|53c76931-ae50-11f1-b0da-00ffa7734675|2001|����ʱ������|����һ�����������ٽ�/�ѳ�ʱ��",
+    "WF_TODO|53c76931-ae50-11f1-b0da-00ffa7734675|2001|����һ������|����һ���µĴ������������"
+   ],
+   "action_row_count": "0",
+   "instance_status": "RUNNING"
+  },
+  "urge": {
+   "instance_pk": "2098598175445790721",
+   "urge1": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+     "result": "ACCEPTED",
+     "detail": "已通知待办人: [2001]",
+     "recordId": "2098598189429600259"
+    }
+   },
+   "urge2_cooldown": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+     "result": "COOLDOWN",
+     "detail": "冷却中，约 598 秒后可再次催办",
+     "recordId": "2098598194538262529"
+    }
+   },
+   "urge_rows": [
+    "2098598189429600259|d9a5bbf5-ae50-11f1-b602-00ffa7734675|1|2001|ACCEPTED",
+    "-"
+   ],
+   "urge_notify_rows": [
+    "WF_TODO|d9a5bbf5-ae50-11f1-b602-00ffa7734675|2001|�߰�����|���д������񱻴߰죺ʵ�� d9a5bbf5-ae50-11f1-b602-00ffa7734675",
+    "WF_TODO|d9a5bc02-ae50-11f1-b602-00ffa7734675|2001|����һ������|����һ���µĴ������������"
+   ]
+  }
+ },
+ "assertions": {
+  "reminder_triggered": true,
+  "reminder_result": "ESCALATED",
+  "reminder_notify_rows_present": true,
+  "reminder_notify_rows": [
+   "WF_TODO|53c76931-ae50-11f1-b0da-00ffa7734675|2001|����ʱ������|����һ�����������ٽ�/�ѳ�ʱ��",
+   "WF_TODO|53c76931-ae50-11f1-b0da-00ffa7734675|2001|����һ������|����һ���µĴ������������"
+  ],
+  "reminder_zero_action_rows": true,
+  "reminder_instance_still_running": true,
+  "urge_record_rows": 2,
+  "urge_notify_rows": [
+   "WF_TODO|d9a5bbf5-ae50-11f1-b602-00ffa7734675|2001|�߰�����|���д������񱻴߰죺ʵ�� d9a5bbf5-ae50-11f1-b602-00ffa7734675",
+   "WF_TODO|d9a5bc02-ae50-11f1-b602-00ffa7734675|2001|����һ������|����һ���µĴ������������"
+  ],
+  "urge_notify_present": true,
+  "urge_cooldown_second_request_info": true,
+  "zero_500": true
+ },
+ "final_summary": {
+  "verdict": "PASS",
+  "supersedes": {
+   "item": "i3-06/Z6/z6-actions.json 内 z6_dual_scanner.error=AssertionError(“B 日志无认领竞争跳过记录”)",
+   "reason": "旧失败项产生于相位未对齐的早期尝试；其后以相位同步法重启 B 重采，最终 40/40 唯一完成、14 个 deadline 双 PID 同窗、零双完成（evidence/i3-06/Z6/dual-scan-result.json，locked），旧 error 字段由本摘要正式作废，唯一终态以本摘要与 dual-scan-result.json 为准",
+   "superseded_at": "2026-09-12T02:22:58.912Z"
+  },
+  "pid_chain": {
+   "frozen_e_candidate": {
+    "A": "PID 26398 @ 8081",
+    "B": "PID 26448 @ 8082",
+    "jar": "90d8bb895a129d523c67e327807840192c606d2fbee44ed7e049d0cc298a16ba",
+    "source": "evidence/i3-06/Z1/candidate-e.json"
+   },
+   "dual_scan_final_old_machine": {
+    "A": "PID 26398 @ 8081",
+    "B": "PID 28816 @ 8082",
+    "jar": "90d8bb895a129d523c67e327807840192c606d2fbee44ed7e049d0cc298a16ba",
+    "b_restart_reason": "Z6 相位对齐重启（同 JAR，instance-b-scheduler.log 全程 PID 28816）"
+   },
+   "handover_new_machine": {
+    "A": "PID 34124 @ 8081",
+    "B": "PID 31072 @ 8082",
+    "jar": "74926960ff615681f3064e4061e3622480e8e56fdcfce94caf2d0f12738c73ad",
+    "restart_reason": "换机恢复性重建（非代码修改，R1/runtime-rebuild.txt）",
+    "source_git": "Smart-WorkFlow-aPaaS-server develop=c18d074 (fix deadline notify tx; parent f7101c873aff09cbaf50da00f634c4a5f4cd58c8)"
+   }
+  },
+  "locked_references": {
+   "common_deadline_evidence": "evidence/i3-06/Z6/dual-scan-result.json（40 deadlines、overlap_count=14、double_done=[]）",
+   "claim_skip_logs": [
+    "evidence/i3-06/Z6/instance-a-scheduler.log（全程 PID 26398）",
+    "evidence/i3-06/Z6/instance-b-scheduler.log（全程 PID 28816）"
+   ],
+   "unique_terminal_state": "DONE/AUTO_APPROVE 40/40 恰一完成；本机 R6 补证仅新增提醒/催办真实对象行"
+  }
+ },
+ "pass": true
+}

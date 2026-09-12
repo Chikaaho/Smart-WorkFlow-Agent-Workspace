@@ -1,0 +1,24 @@
+{
+  "verdict": "PASS",
+  "scan_host": "Windows 换机（Server develop=c18d074，工作树 clean，runtime jar 74926960…，R7 扫描在修复提交后重跑）",
+  "registry_rows": [
+    {"id": 9001, "func_key": "func_tenant_admins", "func_version": 1, "func_type": "RESOLVE_PARTICIPANTS", "impl_bean": "func_tenant_admins", "enabled": 1, "deleted": 0},
+    {"id": 9002, "func_key": "func_audit_trail", "func_version": 1, "func_type": "HANDLE_RESULT", "impl_bean": "func_audit_trail", "enabled": 1, "deleted": 0},
+    {"id": 9003, "func_key": "func_result_echo", "func_version": 1, "func_type": "HANDLE_RESULT", "impl_bean": "func_result_echo", "enabled": 1, "deleted": 0}
+  ],
+  "builtin_bean_source_refs": [
+    "sw-bpm-process .../nodefunc/TenantAdminParticipantFunction.java:@Component(\"func_tenant_admins\")",
+    "sw-bpm-process .../nodefunc/AuditTrailResultFunction.java:@Component(\"func_audit_trail\") 输出变量 audit_note",
+    "sw-bpm-process .../nodefunc/ResultEchoFunction.java:@Component(\"func_result_echo\") 输出变量 audit_note"
+  ],
+  "script_engine_refs_in_bpm_main": 0,
+  "script_engine_scan_files": "R7/script-engine-scan.stdout/.stderr/.exit（exit=1 为 grep 无命中，stdout 0 行）",
+  "function_source_upload_endpoints": 0,
+  "upload_scan_note": "upload-endpoint-scan.stdout 5 行命中全部位于 WorkflowAttachmentController（附件上传 /upload，StorageUploadResult），非函数源码上传端点；bpm 模块无任何函数源码提交/上传入口",
+  "audit_note_writeback_retained": true,
+  "audit_note_evidence": [
+    "源码级：R7/audit-note-source.stdout（ResultEchoFunction/AuditTrailResultFunction 均写 audit_note）",
+    "行为级（锁定引用，不重跑）：i3-06/Z7/z7-actions.json func_result_echo audit_note 0→echo:<pid>:node_1:outcome=APPROVED"
+  ],
+  "g13a": {"policy": "已锁定，禁止重跑", "reference": "evidence/i3-06/Z7/g13a-contract-test-rerun.txt；同口径计入 surefire-totals-r6.txt 1261"}
+}

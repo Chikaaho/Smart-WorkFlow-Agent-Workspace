@@ -1,0 +1,314 @@
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.9 [39m[90mE:/code/Smart-WorkFlow-Agent-Workspace/Smart-WorkFlow-aPaaS-Web[39m
+
+ [32m✓[39m src/adapters/form-designer/index.spec.ts [2m([22m[2m34 tests[22m[2m)[22m[32m 49[2mms[22m[39m
+ [32m✓[39m src/foundation/mock/notify-template-handlers.evidence.spec.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 24[2mms[22m[39m
+ [32m✓[39m src/foundation/mock/tool-handlers.spec.ts [2m([22m[2m34 tests[22m[2m)[22m[32m 41[2mms[22m[39m
+ [32m✓[39m src/modules/agent/components/execution/NodeTrajectory.spec.ts [2m([22m[2m15 tests[22m[2m)[22m[33m 549[2mms[22m[39m
+ [32m✓[39m src/modules/agent/views/ExecutionList.spec.ts [2m([22m[2m24 tests[22m[2m)[22m[32m 144[2mms[22m[39m
+ [32m✓[39m src/modules/agent/views/DebugExecutionLogClosure.spec.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 629[2mms[22m[39m
+     [33m[2m✓[22m[39m G11-02 既有运行日志入口合并调试记录 — ExecutionList 经真实路由并行拉取两域、渲染"调试"标识并正确分流导航 [33m 516[2mms[22m[39m
+ [32m✓[39m src/modules/agent/views/ExecutionDetail.spec.ts [2m([22m[2m28 tests[22m[2m)[22m[33m 841[2mms[22m[39m
+ [32m✓[39m src/router/agent-execution-access.spec.ts [2m([22m[2m13 tests[22m[2m)[22m[33m 331[2mms[22m[39m
+ [32m✓[39m src/modules/agent/views/DebugSessionView.spec.ts [2m([22m[2m15 tests[22m[2m)[22m[33m 918[2mms[22m[39m
+ [32m✓[39m src/modules/agent/views/ToolList.spec.ts [2m([22m[2m19 tests[22m[2m)[22m[33m 1166[2mms[22m[39m
+     [33m[2m✓[22m[39m mount 时加载内部工具列表（默认 Tab） [33m 378[2mms[22m[39m
+ [32m✓[39m src/modules/agent/views/GraphDesigner.spec.ts [2m([22m[2m25 tests[22m[2m)[22m[33m 1559[2mms[22m[39m
+     [33m[2m✓[22m[39m 加载：getGraphDef(42) → elementsToFlowGraphData → mountFlowGraph 挂载画布 [33m 389[2mms[22m[39m
+ [32m✓[39m src/components/page-layout/page-layout.spec.ts [2m([22m[2m35 tests[22m[2m)[22m[33m 828[2mms[22m[39m
+     [33m[2m✓[22m[39m emits update:pageNum when page changes [33m 507[2mms[22m[39m
+ [32m✓[39m src/foundation/mock/index.spec.ts [2m([22m[2m24 tests[22m[2m)[22m[32m 32[2mms[22m[39m
+ [32m✓[39m src/modules/agent/views/ExternalToolFormDialog.spec.ts [2m([22m[2m13 tests[22m[2m)[22m[33m 498[2mms[22m[39m
+ [32m✓[39m src/foundation/mock/agent-models.spec.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 22[2mms[22m[39m
+ [32m✓[39m src/modules/agent/views/tool-api-integration.spec.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 56[2mms[22m[39m
+ [32m✓[39m src/components/DynamicField.spec.ts [2m([22m[2m32 tests[22m[2m)[22m[33m 1022[2mms[22m[39m
+     [33m[2m✓[22m[39m RICH_TEXT → el-input textarea [33m 329[2mms[22m[39m
+ [32m✓[39m src/foundation/mock/agent-debug-handlers.spec.ts [2m([22m[2m15 tests[22m[2m)[22m[32m 22[2mms[22m[39m
+ [32m✓[39m src/foundation/mock/auth-session.spec.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+ [32m✓[39m src/router/notify-template-access.evidence.spec.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 158[2mms[22m[39m
+ [32m✓[39m src/modules/agent/views/InternalToolFormDialog.spec.ts [2m([22m[2m12 tests[22m[2m)[22m[33m 406[2mms[22m[39m
+ [32m✓[39m src/modules/form/views/FormRender.spec.ts [2m([22m[2m12 tests[22m[2m)[22m[33m 375[2mms[22m[39m
+ [32m✓[39m src/modules/agent/utils/graphAdapter.spec.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+ [32m✓[39m src/modules/job/views/JobList.spec.ts [2m([22m[2m14 tests[22m[2m)[22m[33m 992[2mms[22m[39m
+     [33m[2m✓[22m[39m calls pageJobInfos on mount [33m 375[2mms[22m[39m
+ [32m✓[39m src/modules/form/designer/definition-convert.spec.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 25[2mms[22m[39m
+[90mstdout[2m | src/modules/agent/views/tool-permission-rejection.spec.ts[2m > [22m[2mK8: 权限拒绝副作用[2m > [22m[2m权限拒绝副作用完整报告
+[22m[39m
+=== K8 权限拒绝副作用报告 ===
+未认证 - 内部工具: 响应=拒绝, 数据变化=false
+未认证 - 外部工具: 响应=拒绝, 数据变化=false
+无权限 - 内部工具: 响应=拒绝, 数据变化=false
+无权限 - 外部工具: 响应=拒绝, 数据变化=false
+=== 报告结束 ===
+
+
+ [32m✓[39m src/modules/agent/views/tool-permission-rejection.spec.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 40[2mms[22m[39m
+ [32m✓[39m src/modules/agent/views/ModelList.spec.ts [2m([22m[2m10 tests[22m[2m)[22m[33m 951[2mms[22m[39m
+     [33m[2m✓[22m[39m mount 时以 pageNum=1 pageSize=10 调用 pageModels 并渲染分页数据 [33m 467[2mms[22m[39m
+ [32m✓[39m src/modules/storage/views/StorageList.spec.ts [2m([22m[2m13 tests[22m[2m)[22m[33m 697[2mms[22m[39m
+     [33m[2m✓[22m[39m calls listFiles on mount [33m 317[2mms[22m[39m
+ [32m✓[39m src/modules/form/utils/derive-list-config.spec.ts [2m([22m[2m21 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+[90mstdout[2m | src/modules/agent/views/tool-production-menu-chain.spec.ts[2m > [22m[2mK1: 生产菜单到页面请求完整链[2m > [22m[2m身份1: admin（有权普通用户）→ 菜单可见 → API 查询成功
+[22m[39m
+=== K1 身份1: admin 完整链验证 ===
+身份: admin（有权普通用户）
+菜单可见: 是（agent:tool:view 权限存在）
+API 请求: GET /agent/tool/internal 成功，返回 1 条
+=== 验证通过 ===
+
+
+[90mstdout[2m | src/modules/agent/views/tool-production-menu-chain.spec.ts[2m > [22m[2mK1: 生产菜单到页面请求完整链[2m > [22m[2m身份2: user（撤权普通用户）→ 无权限 → API 请求被拒绝
+[22m[39m
+=== K1 身份2: user 完整链验证 ===
+身份: user（撤权普通用户）
+菜单不可见: 是（permissions=[]，无 agent:tool:view）
+API 请求: GET /agent/tool/internal 被拒绝（Forbidden）
+=== 验证通过 ===
+
+
+[90mstdout[2m | src/modules/agent/views/tool-production-menu-chain.spec.ts[2m > [22m[2mK1: 生产菜单到页面请求完整链[2m > [22m[2m身份3: 未认证（user.id=null）→ 401
+[22m[39m
+=== K1 身份3: 未认证完整链验证 ===
+身份: 未认证（user.id=null）
+API 请求: GET /agent/tool/internal 被拒绝（Unauthorized）
+=== 验证通过 ===
+
+
+[90mstdout[2m | src/modules/agent/views/tool-production-menu-chain.spec.ts[2m > [22m[2mK1: 生产菜单到页面请求完整链[2m > [22m[2m身份4: superadmin → 菜单可见 → 成功
+[22m[39m
+=== K1 身份4: superadmin 完整链验证 ===
+身份: superadmin（超级管理员）
+菜单可见: 是（超管旁路）
+API 请求: GET /agent/tool/internal 成功，返回 1 条
+=== 验证通过 ===
+
+
+[90mstdout[2m | src/modules/agent/views/tool-production-menu-chain.spec.ts[2m > [22m[2mK1: 生产菜单到页面请求完整链[2m > [22m[2m完整四身份链路总结
+[22m[39m
+=== K1 生产菜单到页面请求完整链报告 ===
+
+身份: admin（有权普通用户）
+  菜单可见: 是
+  API结果: 成功，返回 1 条
+
+身份: user（撤权普通用户）
+  菜单可见: 否
+  API结果: 拒绝，Forbidden
+
+身份: 未认证
+  菜单可见: 否
+  API结果: 拒绝，Unauthorized
+
+身份: superadmin
+  菜单可见: 是
+  API结果: 成功，返回 1 条
+
+=== 报告结束 ===
+
+
+ [32m✓[39m src/modules/agent/views/tool-production-menu-chain.spec.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 23[2mms[22m[39m
+ [32m✓[39m src/modules/system/views/RoleList.spec.ts [2m([22m[2m9 tests[22m[2m)[22m[33m 1118[2mms[22m[39m
+     [33m[2m✓[22m[39m calls pageRoles on mount with default pagination [33m 341[2mms[22m[39m
+ [32m✓[39m src/modules/system/views/DeptList.spec.ts [2m([22m[2m15 tests[22m[2m)[22m[33m 934[2mms[22m[39m
+     [33m[2m✓[22m[39m calls listDeptTree on mount [33m 340[2mms[22m[39m
+ [32m✓[39m src/router/notify-template-route-guard.evidence.spec.ts [2m([22m[2m3 tests[22m[2m)[22m[33m 631[2mms[22m[39m
+     [33m[2m✓[22m[39m 身份B 获授非超管（菜单含模板项）：经菜单路径 push 与直达 URL 均解析到模板管理页并实际挂载 [33m 514[2mms[22m[39m
+ [32m✓[39m src/foundation/menu/index.spec.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+ [32m✓[39m src/modules/workflow/api/index.spec.ts [2m([22m[2m15 tests[22m[2m)[22m[32m 97[2mms[22m[39m
+ [32m✓[39m src/modules/form/api/form-def.spec.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+ [32m✓[39m src/modules/form/api/form.spec.ts [2m([22m[2m20 tests[22m[2m)[22m[32m 23[2mms[22m[39m
+ [32m✓[39m src/modules/notify/views/NotifyBatchSend.spec.ts [2m([22m[2m9 tests[22m[2m)[22m[33m 574[2mms[22m[39m
+ [32m✓[39m src/foundation/mock/agent-conversation-handlers.spec.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+ [32m✓[39m src/modules/workflow/views/TaskDetail.spec.ts [2m([22m[2m11 tests[22m[2m)[22m[33m 939[2mms[22m[39m
+     [33m[2m✓[22m[39m calls queryTaskDetail with taskId on mount [33m 426[2mms[22m[39m
+ [32m✓[39m src/modules/workflow/views/TodoList.spec.ts [2m([22m[2m11 tests[22m[2m)[22m[33m 493[2mms[22m[39m
+ [32m✓[39m src/modules/workflow/views/MyDrafts.spec.ts [2m([22m[2m11 tests[22m[2m)[22m[33m 511[2mms[22m[39m
+ [32m✓[39m src/modules/agent/views/ModelFormDialog.spec.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 287[2mms[22m[39m
+ [32m✓[39m src/foundation/mock/role-menus.spec.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 21[2mms[22m[39m
+ [32m✓[39m src/modules/workflow/views/__tests__/FormSelectDialog.spec.ts [2m([22m[2m11 tests[22m[2m)[22m[33m 651[2mms[22m[39m
+     [33m[2m✓[22m[39m loads form list when dialog opens [33m 350[2mms[22m[39m
+ [32m✓[39m src/router/agent-debug-refresh.spec.ts [2m([22m[2m1 test[22m[2m)[22m[32m 207[2mms[22m[39m
+ [32m✓[39m src/modules/notify/views/NotifyTemplateList.spec.ts [2m([22m[2m9 tests[22m[2m)[22m[33m 1627[2mms[22m[39m
+     [33m[2m✓[22m[39m 挂载时加载模板列表并渲染行数 [33m 563[2mms[22m[39m
+ [32m✓[39m src/modules/workflow/views/__tests__/ProcessDefList.spec.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 700[2mms[22m[39m
+     [33m[2m✓[22m[39m calls pageProcessDefs on mount [33m 301[2mms[22m[39m
+ [32m✓[39m src/foundation/mock/form-import-export-mock.spec.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 20[2mms[22m[39m
+ [32m✓[39m src/foundation/mock/workflow-my-handlers.spec.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 30[2mms[22m[39m
+ [32m✓[39m src/modules/job/api/index.spec.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+[90mstdout[2m | src/modules/agent/views/tool-production-menu-chain-v2.spec.ts[2m > [22m[2mK1-v2 生产菜单 → router.push → authGuard → ToolList 挂载（mock 语义）[2m > [22m[2madmin（有权普通用户）：菜单含工具项 → push → authGuard 放行 → ToolList 挂载 → 渲染
+[22m[39m
+=== K1-v2 身份1: admin 生产链（mock 语义） ===
+身份: admin（普通管理员，非超管）
+菜单: 返回工具管理(agent/tool, agent:tool:view)
+router.push: /agent/tool → authGuard 放行 → ToolList 挂载
+页面渲染: 含「工具管理」
+=== 验证通过 ===
+
+
+[90mstdout[2m | src/modules/agent/views/tool-production-menu-chain-v2.spec.ts[2m > [22m[2mK1-v2 生产菜单 → router.push → authGuard → ToolList 挂载（mock 语义）[2m > [22m[2muser（撤权普通用户）：菜单无工具项；直达 /agent/tool 被守卫拒绝到 /403
+[22m[39m
+=== K1-v2 身份2: user 撤权链（mock 语义） ===
+身份: user（普通用户，无任何权限）
+菜单: 无 agent/tool 项
+直达路由 /agent/tool: 守卫拒绝 → /403（服务端 403 由后端集成测试证明）
+=== 验证通过 ===
+
+
+[90mstdout[2m | src/modules/agent/views/tool-production-menu-chain-v2.spec.ts[2m > [22m[2mK1-v2 生产菜单 → router.push → authGuard → ToolList 挂载（mock 语义）[2m > [22m[2m未认证（无 token）→ authGuard 拒绝 → 重定向 /login
+[22m[39m
+=== K1-v2 身份3: 未认证 → /login ===
+路径: /login
+=== 验证通过 ===
+
+
+ [32m✓[39m src/router/guard.spec.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 25[2mms[22m[39m
+[90mstdout[2m | src/modules/agent/views/tool-production-menu-chain-v2.spec.ts[2m > [22m[2mK1-v2 生产菜单 → router.push → authGuard → ToolList 挂载（mock 语义）[2m > [22m[2msuperadmin → 菜单含工具项 → push → authGuard 放行 → ToolList 挂载 → 渲染
+[22m[39m
+=== K1-v2 身份4: superadmin 生产链（mock 语义） ===
+菜单: 含工具管理
+页面渲染: 含「工具管理」
+=== 验证通过 ===
+
+
+ [32m✓[39m src/modules/agent/views/tool-production-menu-chain-v2.spec.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 6648[2mms[22m[39m
+     [33m[2m✓[22m[39m admin（有权普通用户）：菜单含工具项 → push → authGuard 放行 → ToolList 挂载 → 渲染 [33m 5740[2mms[22m[39m
+     [33m[2m✓[22m[39m superadmin → 菜单含工具项 → push → authGuard 放行 → ToolList 挂载 → 渲染 [33m 543[2mms[22m[39m
+ [32m✓[39m src/modules/agent/views/tool-external-feedback.spec.ts [2m([22m[2m5 tests[22m[2m)[22m[33m 556[2mms[22m[39m
+     [33m[2m✓[22m[39m 外部工具启用成功 → 显示成功消息 + 列表刷新 [33m 363[2mms[22m[39m
+ [32m✓[39m src/modules/form/views/FormDesigner.spec.ts [2m([22m[2m7 tests[22m[2m)[22m[33m 407[2mms[22m[39m
+ [2m[90m↓[39m[22m src/modules/agent/views/tool-real-permission-rejection.spec.ts [2m([22m[2m3 tests[22m[2m | [22m[33m3 skipped[39m[2m)[22m
+ [32m✓[39m src/modules/notify/views/NotifyHome.spec.ts [2m([22m[2m9 tests[22m[2m)[22m[33m 433[2mms[22m[39m
+[90mstdout[2m | src/modules/agent/views/tool-four-identity-chain.spec.ts[2m > [22m[2mK1: 四身份生产可达与拒绝链[2m > [22m[2m完整四身份链路总结
+[22m[39m
+=== K1 四身份生产可达与拒绝链报告 ===
+身份: admin（有权普通用户）
+  动作: GET /agent/tool/internal
+  结果: 成功，返回 3 条
+身份: user（撤权普通用户）
+  动作: 权限检查
+  结果: permissions=[]，无 agent:tool:view
+身份: 未认证
+  动作: POST /agent/tool/internal
+  结果: 拒绝，HTTP 401
+身份: superadmin
+  动作: GET /agent/tool/internal
+  结果: 成功，返回 3 条
+=== 报告结束 ===
+
+
+ [32m✓[39m src/modules/agent/views/tool-four-identity-chain.spec.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 47[2mms[22m[39m
+ [32m✓[39m src/modules/system/api/dict.spec.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+ [32m✓[39m src/modules/workflow/views/__tests__/ProcessInstanceList.spec.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 1547[2mms[22m[39m
+     [33m[2m✓[22m[39m 挂载后加载实例列表并渲染表格行 [33m 541[2mms[22m[39m
+     [33m[2m✓[22m[39m 点击"查看详情"打开抽屉并显示实例基本信息 [33m 477[2mms[22m[39m
+     [33m[2m✓[22m[39m 实例不存在时 drawer 内显示错误 [33m 333[2mms[22m[39m
+ [32m✓[39m src/foundation/mock/graph-defs-handlers.spec.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+[90mstdout[2m | src/foundation/mock/notify-batch-send.evidence.spec.ts[2m > [22m[2mS3/S5 批量发送实际 Mock 行为证据[2m > [22m[2mS3：生产形态权限资源可绑定普通非超管角色，实际四身份请求结果分离
+[22m[39m{"productionPermissionResource":{"page":"43","action":"430"},"ordinaryRoleBinding":{"roleId":"2","menuIds":[1,2,3,5,11,12,13,14,15,16,17,18,43,430,110,111,112,120,121,122,170,230,231,232]},"identities":[{"identity":"admin","permissions":["system:user:create","system:user:update","system:user:delete","system:role:create","system:role:update","system:role:delete","form:data:template","form:data:import","form:data:export","notify:batch:send","agent:tool:manage"],"status":0},{"identity":"inbox-only","permissions":[],"status":403},{"identity":"template-only","permissions":["notify:template:manage"],"status":403},{"identity":"unauthenticated","permissions":[],"status":401}]}
+
+[90mstdout[2m | src/foundation/mock/notify-batch-send.evidence.spec.ts[2m > [22m[2mS3/S5 批量发送实际 Mock 行为证据[2m > [22m[2mS5：父部门 1 不递归展开未提交子部门 11，实际 Mock resolve/batch 集合与人数一致
+[22m[39m{"request":{"recipientUserIds":[1],"recipientDeptIds":[1],"recipientRoleCodes":["user"],"title":"S3 权限测试","content":"S3/S5 实际 Mock 请求"},"mockRecipientIds":[1,2,3],"mockCount":3,"resolveCount":3,"unsubmittedChildRecipientPresent":false}
+
+ [32m✓[39m src/foundation/mock/notify-batch-send.evidence.spec.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+ [32m✓[39m src/modules/system/views/UserGroupList.spec.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 2996[2mms[22m[39m
+     [33m[2m✓[22m[39m 加载列表并渲染行（业务标识/名称/状态） [33m 673[2mms[22m[39m
+     [33m[2m✓[22m[39m 新建：打开弹窗，填写并提交 → createUserGroup 携带 memberIds，随后刷新列表 [33m 461[2mms[22m[39m
+     [33m[2m✓[22m[39m 编辑：加载详情并回填成员，保存时更新主记录并整量替换成员 [33m 540[2mms[22m[39m
+     [33m[2m✓[22m[39m 编辑回显：成员含停用/不可见用户 → 展示失效成员标签 [33m 328[2mms[22m[39m
+[90mstdout[2m | src/router/notify-batch-send-route-guard.evidence.spec.ts[2m > [22m[2mS3：notify:batch:send 真实 router/authGuard 导航证据[2m > [22m[2m仅收件箱/模板权限的普通用户直达发送路由被拒绝；授权后同一路由实际挂载页面
+[22m[39m{"denied":{"identity":"ordinary-inbox-or-template-user","permissions":[],"entry":"/notify/batch-send","route":"/403","expected":"/403","mounted":false},"allowed":{"identity":"ordinary-user-with-notify:batch:send","permissions":["notify:batch:send"],"entry":"/notify/batch-send","route":"/notify/batch-send","expected":"/notify/batch-send","mounted":true}}
+
+[90mstdout[2m | src/router/notify-batch-send-route-guard.evidence.spec.ts[2m > [22m[2mS3：notify:batch:send 真实 router/authGuard 导航证据[2m > [22m[2m未认证身份直达发送路由按真实 authGuard 规则重定向登录页
+[22m[39m{"identity":"unauthenticated","entry":"/notify/batch-send","route":"/login?redirect=/notify/batch-send","expected":"/login?redirect=/notify/batch-send"}
+
+ [32m✓[39m src/router/notify-batch-send-route-guard.evidence.spec.ts [2m([22m[2m2 tests[22m[2m)[22m[33m 671[2mms[22m[39m
+     [33m[2m✓[22m[39m 仅收件箱/模板权限的普通用户直达发送路由被拒绝；授权后同一路由实际挂载页面 [33m 616[2mms[22m[39m
+ [32m✓[39m src/router/index.spec.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+ [32m✓[39m src/modules/form/designer/DesignerCanvas.spec.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 226[2mms[22m[39m
+ [32m✓[39m src/foundation/mock/tool-options-flow.spec.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+ [32m✓[39m src/adapters/process-graph/index.spec.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+ [32m✓[39m src/modules/storage/api/index.spec.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+ [32m✓[39m src/modules/system/api/userGroup.spec.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+ [32m✓[39m src/modules/system/views/UserList.spec.ts [2m([22m[2m9 tests[22m[2m)[22m[33m 447[2mms[22m[39m
+ [32m✓[39m src/components/dynamic-field-plugability.spec.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 137[2mms[22m[39m
+ [32m✓[39m src/modules/agent/views/GraphDefList.spec.ts [2m([22m[2m6 tests[22m[2m)[22m[33m 369[2mms[22m[39m
+ [32m✓[39m src/modules/workflow/views/ProcessedList.spec.ts [2m([22m[2m9 tests[22m[2m)[22m[33m 449[2mms[22m[39m
+[90mstdout[2m | src/modules/agent/views/tool-timeout-boundary.spec.ts[2m > [22m[2mK5: 真实后端 timeout 边界[2m > [22m[2mtimeout 边界值对账报告
+[22m[39m
+=== K5 timeout 边界值对账报告 ===
+timeoutSeconds=0: 预期=400 拒绝, 实际=拒绝
+timeoutSeconds=1: 预期=成功，值=1, 实际=成功，值=1
+=== 报告结束 ===
+
+
+ [32m✓[39m src/modules/agent/views/tool-timeout-boundary.spec.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 40[2mms[22m[39m
+ [32m✓[39m src/modules/system/api/user.spec.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+ [32m✓[39m src/foundation/auth/index.spec.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 15[2mms[22m[39m
+ [32m✓[39m src/modules/system/api/dept.spec.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+ [32m✓[39m src/foundation/mock/agent-execution-handlers.spec.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+ [32m✓[39m src/foundation/area.spec.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+ [32m✓[39m src/modules/system/api/role.spec.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+ [32m✓[39m src/modules/agent/views/ConversationDetail.spec.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 241[2mms[22m[39m
+ [32m✓[39m src/modules/form/designer/subfield-convert.spec.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 14[2mms[22m[39m
+ [32m✓[39m src/modules/job/views/JobLog.spec.ts [2m([22m[2m5 tests[22m[2m)[22m[33m 419[2mms[22m[39m
+ [32m✓[39m src/foundation/mock/i1-org-handlers.spec.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+[90mstdout[2m | src/modules/notify/views/NotifyBatchSend-s4.evidence.spec.ts[2m > [22m[2mS4：批量发送页面真实 API/Mock 人数确认链[2m > [22m[2m页面选择→resolve-count→确认框→batch-send→Mock新增数全链路为 3
+[22m[39m{"selectedInput":{"recipientUserIds":[1],"recipientDeptIds":[1],"recipientRoleCodes":["user"]},"resolveCountResponse":{"recipientCount":3},"renderedServerCount":3,"confirmDialogText":"确认向 3 人发送通知？","batchSendResponse":{"recipientCount":3},"persistedDelta":3}
+
+ [32m✓[39m src/modules/notify/views/NotifyBatchSend-s4.evidence.spec.ts [2m([22m[2m1 test[22m[2m)[22m[32m 139[2mms[22m[39m
+ [32m✓[39m src/modules/system/views/DictDataList.spec.ts [2m([22m[2m5 tests[22m[2m)[22m[33m 390[2mms[22m[39m
+     [33m[2m✓[22m[39m calls pageDictData with dictCode from route query on mount [33m 314[2mms[22m[39m
+ [32m✓[39m src/modules/form/designer/RelatedProcessesPanel.spec.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 734[2mms[22m[39m
+     [33m[2m✓[22m[39m mount 时以 formKey 请求后端过滤的流程列表 [33m 434[2mms[22m[39m
+ [32m✓[39m src/modules/workflow/views/MyInstances.spec.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 410[2mms[22m[39m
+ [32m✓[39m src/modules/form/utils/resolve-reference-display.spec.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m src/modules/workflow/views/WorkspaceHome.spec.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 405[2mms[22m[39m
+ [32m✓[39m src/foundation/session/index.spec.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m src/modules/workflow/views/ProcessDefList.spec.ts [2m([22m[2m5 tests[22m[2m)[22m[33m 444[2mms[22m[39m
+ [32m✓[39m src/modules/system/views/DictTypeList.spec.ts [2m([22m[2m5 tests[22m[2m)[22m[33m 383[2mms[22m[39m
+ [32m✓[39m src/modules/agent/views/ConversationList.spec.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 106[2mms[22m[39m
+ [32m✓[39m src/adapters/flow-graph/index.spec.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 243[2mms[22m[39m
+ [32m✓[39m src/foundation/auth/token.spec.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m src/modules/system/api/post.spec.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+ [32m✓[39m src/components/dynamic-field-registry.spec.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m src/modules/form/designer/field-config.spec.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m src/layouts/components/AppSidebar.spec.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 111[2mms[22m[39m
+ [32m✓[39m src/modules/form/designer/SubFieldDesigner.spec.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 89[2mms[22m[39m
+ [32m✓[39m src/modules/workflow/utils/node-capabilities.spec.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m src/modules/system/views/PostList.spec.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 320[2mms[22m[39m
+ [32m✓[39m src/modules/form/designer/HistoryVersionsDialog.spec.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 315[2mms[22m[39m
+ [32m✓[39m src/modules/notify/api/index.spec.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m src/layouts/menu-utils.spec.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m src/modules/form/designer/PreviewModal.spec.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 76[2mms[22m[39m
+ [32m✓[39m src/foundation/auth/rsa.spec.ts [2m([22m[2m3 tests[22m[2m)[22m[33m 954[2mms[22m[39m
+     [33m[2m✓[22m[39m should encrypt UTF-8 multibyte characters without truncation [33m 575[2mms[22m[39m
+ [32m✓[39m src/modules/system/api/i1-org.spec.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+[90mstdout[2m | src/foundation/request/index.spec.ts[2m > [22m[2mrequest 非 2xx 归一（S1 读取权限拒绝态前置）[2m > [22m[2m真实请求在进入 axios 前注入非秘密 X-Request-Id
+[22m[39m[requestId] request web-7ba60cb9-6c88-4b53-b819-c07b62766146 GET /workflow/tasks/todo
+
+ [32m✓[39m src/foundation/request/index.spec.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 47[2mms[22m[39m
+ [32m✓[39m src/modules/workflow/views/MyProcessed.spec.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 323[2mms[22m[39m
+ [32m✓[39m src/modules/agent/views/panels/node-panel-registry.spec.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m src/modules/form/designer/column-name.spec.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m src/modules/form/designer/workbench.spec.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m src/modules/form/utils/visibility-rules.spec.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m src/foundation/auth/permission.spec.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+[90mstdout[2m | src/foundation/auth/dev-debug.spec.ts[2m > [22m[2mdev-only debug auth seam[2m > [22m[2mdebug initialization and switch-off perform zero persistence writes
+[22m[39m[E2-debug-auth] init=1 switch_off=1 localStorage_setItem=0 sessionStorage_setItem=0 cookie_set=0
+
+ [32m✓[39m src/foundation/auth/dev-debug.spec.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m src/modules/form/designer/field-types.spec.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+ [32m✓[39m src/foundation/request/error-code-map.spec.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m src/foundation/dict/index.spec.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 143[2mms[22m[39m
+ [32m✓[39m src/styles/tokens.spec.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m src/modules/form/utils/form-layout.spec.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m src/foundation/dict/DictSelect.spec.ts [2m([22m[2m6 tests[22m[2m)[22m[33m 369[2mms[22m[39m
+ [32m✓[39m src/modules/form/utils/form-def-status.spec.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 4[2mms[22m[39m
+ [32m✓[39m src/App.spec.ts [2m([22m[2m1 test[22m[2m)[22m[32m 15[2mms[22m[39m
+ [32m✓[39m src/modules/job/views/JobLog.no-id.spec.ts [2m([22m[2m1 test[22m[2m)[22m[32m 41[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m126 passed[39m[22m[2m | [22m[33m1 skipped[39m[90m (127)[39m
+[2m      Tests [22m [1m[32m1178 passed[39m[22m[2m | [22m[33m3 skipped[39m[90m (1181)[39m
+[2m   Start at [22m 09:27:23
+[2m   Duration [22m 102.58s[2m (transform 28.06s, setup 0ms, import 391.74s, tests 43.56s, environment 573.28s)[22m
+

@@ -1,0 +1,35 @@
+{
+  "snapshotId": "i3-07-frozen-f",
+  "note": "唯一最终候选（第 5 次冻结）。取代 i3-06-frozen-a/b/c/d/e 全部历史候选；i3-06/Z1/candidate.json 的 frozen-a 别名作废。R3/R6/R8/R9 行为采证唯一绑定本候选。",
+  "frozen_at": "2026-09-12T10:20:00+08:00",
+  "supersedes": [
+    "i3-06-frozen-a（jar 383ae1a7…，i3-06/Z1/candidate.json 陈旧别名已作废）",
+    "i3-06-frozen-b（Z1/candidate-b.json）",
+    "i3-06-frozen-c（Z1/candidate-c.json）",
+    "i3-06-frozen-d（jar 409d60f6…）",
+    "i3-06-frozen-e（jar 90d8bb89…，Z1/candidate-e.json；其行为证据中已被锁定项按审查 05 §2 继续以哈希指针引用，不重采）"
+  ],
+  "fixes_chain": [
+    "frozen-a→e（旧机四项）：负向终态覆盖、加签取消唯一键冲突、调度结果标注覆盖与双通知、内建函数白名单变量名（回执 06 §0）",
+    "frozen-e→f（换机第五项，commit c18d074）：TaskDeadlineScheduler 升级提醒通知在无事务上下文发布 BpmNotifyEvent，被 @TransactionalEventListener(AFTER_COMMIT)（默认 fallbackExecution=false）静默丢弃——办理时限提醒通知从未落库（R6 采证实测，即审查 05 §3.5 notify=[] 根因）；通知+结算改经 TransactionTemplate 事务内发布，先原子认领后通知的恰一次语义不变"
+  ],
+  "gate": {
+    "server_full_test": { "counts": "gates/surefire-totals-fae.txt：1261 口径中恰 6 例 IoT 沙箱环境性失败（不含修复的基线 f7101c8 同机复跑同 6 例，与修复及 I3 范围无关）；sw-bpm-process 186/0/0/0、sw-bootstrap 43/0/0/0（含 FlywayFullChain H2 终点 V75）、sw-bpm-engine/sw-biz-form/sw-biz-system 全过", "logs": "gates/server-full-reactor-fae.*、gates/bpm-process-test.*、gates/bootstrap-test.*" },
+    "web_gates": { "typecheck": "gates/web-typecheck.exit=0", "lint": "gates/web-lint.exit=0", "test": "gates/web-test.exit=0", "build": "gates/web-build.exit=0" },
+    "package": { "exit": 0, "log": "runtime-rebuild.txt（第二次重建，clean package）" }
+  },
+  "backend_jar": {
+    "path": "Smart-WorkFlow-aPaaS-server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar",
+    "sha256": "74926960ff615681f3064e4061e3622480e8e56fdcfce94caf2d0f12738c73ad",
+    "frozen_e_jar_sha256": "90d8bb895a129d523c67e327807840192c606d2fbee44ed7e049d0cc298a16ba",
+    "note": "冻结工件 90d8bb89 换机后不可复原；本候选以源码提交版 c18d074 重建，重建属换机恢复+已授权缺陷修复闭环，见 runtime-rebuild.txt"
+  },
+  "web_dist": { "path": "Smart-WorkFlow-aPaaS-Web/dist", "merkle_sha256": "f16e31ae1869e5f176405b7d5bc21abcf6d3afc17848dee8c71858a52156e479（frozen-e 冻结值；Web 无改动，build 门禁 exit 0）" },
+  "source": {
+    "server_git": "Smart-WorkFlow-aPaaS-server develop=c18d074（fix(workflow) 调度提醒通知事务内发布；父提交 f7101c873aff09cbaf50da00f634c4a5f4cd58c8，工作树 clean）",
+    "web_git": "Smart-WorkFlow-aPaaS-Web develop=192e0647a8f1b1e2b270d4ea13e87854b247fcc7（工作树 clean）",
+    "source_diff_note": "i3-06 candidate 的 server/web diff hash（c7ea4de0…/89aad6be…）为旧机 frozen-a 期 diff 口径快照，a→e 四次修复后未重算；终树以 Server c18d074 / Web 192e0647 提交内容为准"
+  },
+  "instances_final": { "A": "PID 34124 @ 8081", "B": "PID 31072 @ 8082", "same_jar": "74926960 双进程一致", "evolution": "instance-restart-log.md" },
+  "post_freeze_rule": "冻结后零代码修改、零重打包；R3/R6/R8/R9 行为采集只引用本候选 snapshotId/运行时 jar hash。"
+}
