@@ -1,0 +1,26 @@
+# memory 容量与「本轮未修改」声明（补证轮）
+
+## 当前逐文件字节数（Planner 复核 01 指针更新后）
+  713 memory/constraints.md
+  739 memory/README.md
+  808 memory/architecture.md
+ 2327 memory/decisions.md
+ 2425 memory/handoff.md
+ 2766 memory/issues.md
+ 3208 memory/features.md
+ 3699 memory/state.md
+16685 total
+
+total = 16685 字节
+max single file = 3699 字节（state.md）
+限值：单文件 <5120、总量 <20480 → 满足
+
+## 时点对照
+回执 01 轮次（Executor 同步后）        : 17535 字节
+规划复核 01 记录值                     : 17535 字节（最大单文件 3914）
+复核 01 指针更新后（当前）             : 16685 字节（最大单文件 3699）
+
+## 本轮属性
+Executor 本轮未修改任何 memory 文件（复核 01 §5 禁止改 memory 值）。
+当前数值差异 17535 → 16685 全部来自 Planner 复核 01 自身的指针压缩，
+差异内容见 planner-pointer-updates.diff（仅当前指针文本）。

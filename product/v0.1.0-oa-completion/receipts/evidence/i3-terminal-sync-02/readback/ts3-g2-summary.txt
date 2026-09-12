@@ -1,0 +1,45 @@
+# TS3-G2 结论：Server 工作树中的 I3 未跟踪临时测试副本已按哈希保护清理
+
+## 1. 处置对象（精确路径）
+
+    Smart-WorkFlow-aPaaS-server/sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/validator/ApprovalOpinionValidatorDisabledTypeIntegrationTest.java
+
+## 2. 删除前核对（`ts3-g2-pre-delete-verify.txt`）
+
+| 核对项 | 结果 |
+|---|---|
+| 精确路径存在 | 是（2671 字节，mtime 2026-09-12 12:38） |
+| 未跟踪状态 | `git status --porcelain -uall` 为 `?? …/ApprovalOpinionValidatorDisabledTypeIntegrationTest.java` |
+| 未被 git 跟踪 | `git ls-files --error-unmatch` 报 pathspec 不匹配，exit=1 |
+| sha256（Server 工作树副本） | `c34412d906a0360be189253dfc6c155049af1033c155ee666d2edbf7729b6965` |
+| sha256（Workspace 已提交证据副本） | `c34412d906a0360be189253dfc6c155049af1033c155ee666d2edbf7729b6965` |
+| 逐字节 `cmp` | exit=**0** |
+| Workspace 证据副本提交归属 | `1d4dd9d`（I3 执行回执 08 与 i3-08 证据根） |
+
+## 3. 执行的清理动作
+
+只删除 Server 工作树中的这一份临时副本，命令为单文件 `rm`：
+
+    $ rm -- Smart-WorkFlow-aPaaS-server/sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/validator/ApprovalOpinionValidatorDisabledTypeIntegrationTest.java
+    rm exit=0
+
+未使用通配符、未递归删除、未触碰同目录其他文件、未删除或改写任何已提交证据。
+
+## 4. 删除后回读（`ts3-g2-post-delete-readback.txt`）
+
+| 核对项 | 结果 |
+|---|---|
+| 目标路径 | 已不存在 |
+| Workspace 已提交证据副本 | 仍存在，sha256 仍为 `c34412d9…`（未被触碰） |
+| 同目录其他文件 | `validator-integration-run.exit/.stderr/.stdout` 等仍在，未被批量删除 |
+| Server 工作树 | `git status --porcelain -uall` 行数 = **0**（clean） |
+| Server HEAD | `c18d074f4c9f85c5baf65af222e159437fb1e509`（未变） |
+| Server origin/develop | `c18d074f4c9f85c5baf65af222e159437fb1e509`（未变） |
+| Server ahead/behind | `0	0` |
+| Server 提交 | 未创建任何提交；近 3 条提交仍为 `c18d074` / `f7101c8` / `7342de3` |
+
+## 5. 边界
+
+- 未修改业务实现、未重跑工程门禁、未执行 add/commit/push；
+- 未删除或改写 `i3-08/R8a/` 中受 manifest 保护的已提交证据副本（sha256 未变）；
+- 未在 Server 创建任何提交以容纳或移除该文件。

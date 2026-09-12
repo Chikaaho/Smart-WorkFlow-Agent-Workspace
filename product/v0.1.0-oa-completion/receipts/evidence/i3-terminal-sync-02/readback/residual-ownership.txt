@@ -1,0 +1,47 @@
+# 未提交残留归属（I3 终态同步补证轮，2026-09-12）
+# 观察点：Workspace tip = a2267da02306082852fafbf5539b8a33caed230e（本轮未 add/commit/push）
+
+## 1. Workspace 本轮未触碰、未提交的既有改动（Planner 复核 01 的指针更新）
+
+以下 6 个文件相对 tip 为 `M`，其 mtime 为 **2026-09-12 16:14—16:15**，紧随 `planning-review-terminal-sync-stage-i3-v0.1.0-oa-completion-01.md`（mtime 16:13）之后，
+内容均为把「当前唯一下一动作」更新为只处理 TS3-G1/TS3-G2 并指向回执 02：
+
+- `memory/README.md`、`memory/features.md`、`memory/handoff.md`、`memory/state.md`
+- `todo/requirement-pool.md`、`todo/v0.1.0-oa-plan.md`
+
+**归属：规划（Planner）复核 01 的指针更新，非 Executor 本轮产物。**
+本轮按复核 01 §5 的禁止项**未修改**这些文件、**未 add/commit/push**；完整差异见 `planner-pointer-updates.diff`。
+
+## 2. Workspace 未跟踪（本轮相关）
+
+- `product/v0.1.0-oa-completion/receipts/planning-review-terminal-sync-stage-i3-v0.1.0-oa-completion-01.md`
+  归属：规划复核 01 正文（Planner 产出），本轮未提交。
+- `product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-02/`
+  归属：**本补证轮新增证据根**（含 `readback/`）。
+- `product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i3-v0.1.0-oa-completion-02.md`
+  归属：**本补证轮回执 02**。
+- 上述三项按复核 01 §5「回执02与新证据明确作为本地规划验收附件，不声称其自身包含在被证明的远端提交中，也不得在最终远端回读后再追加证明性提交」的要求，
+  **保持未提交**；因此 Workspace 远端终点稳定为 `a2267da0…`。
+
+## 3. Workspace 未跟踪（既有存量，与本轮无关）
+
+- `Smart-WorkFlow-aPaaS-Web/`
+- `Smart-WorkFlow-aPaaS-server/`
+
+两个独立业务仓库以工作区子目录形式 checkout；`.gitignore` 只声明 `Smart-WorkFlow-Server/`、`Smart-WorkFlow-Web/`，与实际目录名不匹配（既有条件）。
+本轮未暂存、未提交、未清理、未 reset、未覆盖。复核 01 §3 已接受其为既有 checkout 残留、不计入 I3 终态差异。
+
+## 4. Smart-WorkFlow-aPaaS-server（develop = c18d074）
+
+- 本轮按 TS3-G2 删除了唯一的未跟踪 I3 临时测试副本（精确单文件 `rm`，见 `ts3-g2-post-delete-readback.txt`）。
+- 删除后 `git status --porcelain -uall` 行数 = **0**，工作树 clean；HEAD 与 origin/develop 仍为 `c18d074…`；未创建提交。
+- **无残留。**
+
+## 5. Smart-WorkFlow-aPaaS-Web（develop = 192e0647）
+
+- `git status --porcelain -uall` 为空；无残留、无空提交。
+
+## 6. 结论
+
+本轮除 TS3-G2 授权的单个临时副本清理外，未修改业务实现、knowledge 状态值、memory 值、已锁定证据或历史回执；
+未执行 add/commit/push、工程门禁、迁移、浏览器、标签或 Release。
