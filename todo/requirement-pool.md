@@ -9,7 +9,7 @@
 
 ## Owner 优先级覆盖
 
-**2026-09-11 P0 版本当前规划**：Owner 已将 **0.1.0 OA 全功能收口**指定为 P0 优先级，登记为 **P60**（版本统筹项，XL），采用六次迭代依次完成组织权限、低代码表单、人工审批与自研流程设计器、编排与流程运营、四类 SSO、七类通知及版本总验收。P60 当前为 `IN_PROGRESS`；I1 `COMPLETED（规划已确认，2026-09-09）`；`S-DEV-CAPTCHA-01` 已验收通过；I2 `COMPLETED（规划已确认，2026-09-10）`。I3 回执 05 经规划验收 04 未通过，阶段保持 `VERIFYING`；G4a/G4b/G5/G13a/G17b/manifest 已锁定，三级零裁量提示 03 已下发，当前唯一下一动作是 Executor 提交回执 06 和 `evidence/i3-06/`。功能数 44、清单 ✅46/🟦22/⬜22、开放 P 编号不变；P60 统筹 P2/P4/P26/P31/P34/P35/P37/P38/P39/P47 等剩余 OA 范围但不替代或提前核销既有编号。
+**2026-09-12 P0 版本当前规划**：Owner已将 **0.1.0 OA全功能收口**指定为P0优先级，登记为 **P60**（版本统筹项，XL），采用六次迭代依次完成组织权限、低代码表单、人工审批与自研流程设计器、编排与流程运营、四类SSO、七类通知及版本总验收。P60当前为`IN_PROGRESS`；I1`COMPLETED（规划已确认，2026-09-09）`；`S-DEV-CAPTCHA-01`已验收通过；I2`COMPLETED（规划已确认，2026-09-10）`。I3回执09经规划验收08确认功能级`PASSED`，主方向已归档；I3阶段三终态同步已执行并提交同步回执01，阶段写为`COMPLETED（待规划确认，2026-09-12）`、机器状态`TERMINAL_SYNC_SUBMITTED`；当前唯一下一动作是Planner终态复核回执01，确认后再形成I4正式阶段方向。功能数44、清单✅46/🟦22/⬜22、开放P编号不变；P60统筹P2/P4/P26/P31/P34/P35/P37/P38/P39/P47等剩余OA范围但不替代或提前核销既有编号。
 
 **2026-09-08 P21 终态基线（P60 立项前历史点）**：P21功能级 **PASSED**，阶段三补证 TS1/TS2 经 `planning-final-review-terminal-sync-p21-iot-02-passed.md` 复核通过，正式确认为 **COMPLETED（规划已确认，2026-09-08）**。功能44、清单✅46/🟦22/⬜22、P21核销、I14关闭均锁定；主方向与阶段三方向均在passed。当时无活动正式功能并等待Owner选择，该下一动作现已由上方 P60 当前规划取代。
 
@@ -89,7 +89,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 
 蓝凌官方公开材料还包含自由/嵌入式/即席子流程、流程仿真、完整流程大数据分析，以及页面/图表/报表设计、动作流/数据流/连接流、主数据整合、多级门户、内容引擎、知识搜索和应用市场。它们属于更广的 PaaS 能力，不作为 P60 的“完整 OA”通过条件；现已正式登记为 8 个高级能力模块、64 条稳定明细，见 [高级能力功能明细清单](../product/v0.1.0-oa-completion/ready/advanced-capability-feature-checklist.md)。P60 只吸收与日常 OA 交易闭环直接相关的最小能力，避免版本范围失控；对标详情与来源见正式方向 §3.10—§3.11。
 
-正式方向：[v0.1.0 OA 全功能收口](../product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md)。I1、I2 均已 `COMPLETED（规划已确认）`；I3 [正式阶段方向](../product/v0.1.0-oa-completion/ready/direction-stage-i3-manual-approval-first-party-process-designer.md) 已进入执行，但 [规划验收 04](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i3-v0.1.0-oa-completion-04.md) 未通过，状态 `VERIFYING`，当前入口为[三级零裁量提示 03](../product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i3-v0.1.0-oa-completion-03.md)。外部 SSO/通知渠道仍必须有真实官方测试应用、沙箱或可控账号行为证据。
+正式方向：[v0.1.0 OA全功能收口](../product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md)。I1、I2均已`COMPLETED（规划已确认）`；I3[正式阶段方向](../product/v0.1.0-oa-completion/passed/direction-stage-i3-manual-approval-first-party-process-designer.md)经[规划验收08](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i3-v0.1.0-oa-completion-08-passed.md)功能级`PASSED`，[I3阶段三终态同步方向](../product/v0.1.0-oa-completion/ready/direction-stage-i3-terminal-sync.md)已执行并提交[同步回执01](../product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i3-v0.1.0-oa-completion-01.md)，待 Planner 终态复核。外部SSO/通知渠道仍必须有真实官方测试应用、沙箱或可控账号行为证据。
 
 ## 一、已开发且未满足（D83 回执确认：90/90 清单一致，缺口逐行核实，此为全量索引）
 
@@ -145,7 +145,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 | P57 | BPM Engine 统一流程节点扩展能力 | Owner 2026-09-02 补充需求；优先级 P1；XL | ✅ **已核销/完成**（2026-09-03，功能级 PASSED + 阶段三 `COMPLETED（已确认）`；不对应既有明细、90 项明细状态零变化、功能数 40、清单 ✅34/🟦23/⬜33）；主方向与阶段三方向均已归档 `passed/` |
 | P58 | 流程节点界面与具体能力优化 | Owner 2026-09-02/03 补充需求；优先级 P1；XL | ✅ **已核销/完成**（2026-09-04，功能级 PASSED + 阶段三 `COMPLETED（已确认）`；不对应既有明细、90 项明细状态零变化、功能数 41、清单 ✅34/🟦23/⬜33、基线 1035/0/0/0（152份Surefire报告）、117f+1sk/1110t+3sk、H2 V49（49）/PG V49（48））；主方向与开发调试认证方向均已归档 `passed/` |
 | P59 | CH-aPaaS 项目说明、仓库与 main 分支整理及自动发版；三个示例仅记录 | Owner 2026-09-04；[统一需求](ch-apaas-project-update.md) | ✅ **已核销/完成**（**COMPLETED，规划已确认，2026-09-05**；功能级PASSED为2026-09-04审查07；非新增业务功能，功能数41、90明细与基线不变）；主方向及终态同步方向均归档 `passed/` |
-| P60 | v0.1.0 OA 全功能收口（组织权限、表单、流程设计与审批、流程运营、工作台、SSO、通知） | Owner 2026-09-08；优先级 P0；[正式方向](../product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md) | `IN_PROGRESS`；I1、I2 **COMPLETED（规划已确认）**；I3「人工审批与自研流程设计器」**VERIFYING**，规划验收 04 未通过，三级提示 03 已下发，等待回执 06；统筹既有开放 OA 编号但不替代或提前核销 |
+| P60 | v0.1.0 OA全功能收口（组织权限、表单、流程设计与审批、流程运营、工作台、SSO、通知） | Owner 2026-09-08；优先级P0；[正式方向](../product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md) | `IN_PROGRESS`；I1、I2 **COMPLETED（规划已确认）**；I3「人工审批与自研流程设计器」功能级 **PASSED**，阶段三终态同步已执行（`COMPLETED（待规划确认，2026-09-12）`）待 Planner 终态复核；统筹既有开放OA编号但不替代或提前核销 |
 
 
 ### P51 Owner 补充需求定义（2026-08-30）
@@ -500,7 +500,7 @@ P58已于2026-09-04功能级 **PASSED**（规划验收08）＋阶段三终态同
 | P44 | M01-F01-02 部门修改 | 缺拖拽调整层级与排序（无 draggable，DeptList.vue:148/310） | 未排期 |
 | P45 | M02-F06-01 登录安全：RSA 密码加密、验证码、客户端时间校验及登录态持久化 | 既有验证码缺口 + Owner 2026-08-30/09-01 补充需求 | ✅ **已核销/完成**（2026-09-01，功能级PASSED + 阶段三终态复核 `COMPLETED（已确认）`；M02-F06-01 🟦→✅） |
 | P46 | M03-F01-01 表单设计器拖拽 | 拖拽已实现；栅格布局仅渲染端硬编码 2 列（FormRender.vue:397-398），设计器无栅格配置 | ✅ **已核销**（2026-09-02，由 P56 表单设计器 24 列网格布局完整覆盖并完成：设计器与渲染端统一 24 列语义、拖动排序、紧凑重排，M03-F01-01 升✅；P46 与 P56 同一交付两个索引，不新增第二个正式功能计数） |
-| P47 | M04-F01-01 流程设计器拖拽 | 已纳入 P60 I3“人工审批与自研流程设计器”；自研能力直接消费统一节点能力与 `ProcessGraph` 图契约，覆盖设计、查看和实例轨迹高亮，并完整移除 `bpmn-js`。验收前不核销 | I3 `VERIFYING`，规划验收 04 未通过，三级提示 03 已下发 |
+| P47 | M04-F01-01 流程设计器拖拽 | 已纳入P60 I3“人工审批与自研流程设计器”；自研能力直接消费统一节点能力与`ProcessGraph`图契约，覆盖设计、查看和实例轨迹高亮，并完整移除`bpmn-js`。P60分阶段期间保持开放 | I3功能级`PASSED`，阶段三终态同步已执行待 Planner 终态复核；本阶段不核销 |
 | P48 | M07-F03-02 工具/函数调用 | 后端 CRUD+Function Calling 齐全（I45 汇总提及）；缺前端工具配置管理页（ToolPanel 仅只读下拉） | ✅ **已核销**（D203 12/12 PASSED + 阶段三终态同步，2026-08-25）；M07-F03-02 升✅、功能数 31、清单 ✅27/🟦23/⬜40、基线 827/338、100f/981t、V37 |
 | P49 | M10-F01-01 运行监控 | actuator 仅 health/metrics/prometheus（I45 提及）；缺服务器/JVM/Redis/在线用户监控——实为最薄 🟦，属"已开发未满足" | 未排期 |
 | P50 | M10-F08-01 API管理 | springdoc 接口文档已有（I45 提及）；缺接口调用监控、管理页/菜单 | 未排期 |
