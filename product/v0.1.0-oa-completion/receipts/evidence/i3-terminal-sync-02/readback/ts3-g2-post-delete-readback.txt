@@ -1,0 +1,35 @@
+# TS3-G2 单文件删除与删后回读
+time: 2026-09-12T16:16:11+08:00
+
+## 1 执行的删除动作（仅此一个文件）
+$ rm -- Smart-WorkFlow-aPaaS-server/sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/validator/ApprovalOpinionValidatorDisabledTypeIntegrationTest.java
+rm exit=0
+
+## 2 目标路径已不存在
+absent (OK)
+
+## 3 Workspace 已提交证据副本仍存在（未被触碰）
+-rw-r--r-- 1 hjxch 197121 2671 Sep 12 12:50 product/v0.1.0-oa-completion/receipts/evidence/i3-08/R8a/ApprovalOpinionValidatorDisabledTypeIntegrationTest.java
+c34412d906a0360be189253dfc6c155049af1033c155ee666d2edbf7729b6965 *product/v0.1.0-oa-completion/receipts/evidence/i3-08/R8a/ApprovalOpinionValidatorDisabledTypeIntegrationTest.java
+
+## 4 目录其余内容未被批量删除（同目录仍有既有已提交文件）
+total 9
+drwxr-xr-x 1 hjxch 197121    0 Sep 12 12:50 .
+drwxr-xr-x 1 hjxch 197121    0 Sep 12 12:49 ..
+-rw-r--r-- 1 hjxch 197121 2671 Sep 12 12:50 ApprovalOpinionValidatorDisabledTypeIntegrationTest.java
+-rw-r--r-- 1 hjxch 197121    2 Sep 12 12:38 validator-integration-run.exit
+-rw-r--r-- 1 hjxch 197121    0 Sep 12 12:38 validator-integration-run.stderr
+-rw-r--r-- 1 hjxch 197121 3398 Sep 12 12:38 validator-integration-run.stdout
+
+## 5 删后 Server 工作树（期望 clean，porcelain 空）
+porcelain line count = 0
+
+## 6 删后 Server HEAD / origin/develop（期望仍为 c18d074…）
+HEAD           = c18d074f4c9f85c5baf65af222e159437fb1e509
+origin/develop = c18d074f4c9f85c5baf65af222e159437fb1e509
+ahead/behind   = 0	0
+
+## 7 Server 未创建任何提交（近 3 条提交不变）
+c18d074 fix(workflow): 时限升级提醒通知改在事务内发布，避免 AFTER_COMMIT 监听器静默丢弃
+f7101c8 feat(workflow): 完善人工审批与流程运行能力
+7342de3 feat(form): 交付 I2 低代码表单收口服务端能力
