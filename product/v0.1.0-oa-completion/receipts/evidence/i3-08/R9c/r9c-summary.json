@@ -1,0 +1,94 @@
+{
+ "_snapshot": {
+  "candidate": "i3-07-frozen-f（无代码变化，继续有效）",
+  "runtime_jar_sha256": "74926960ff615681f3064e4061e3622480e8e56fdcfce94caf2d0f12738c73ad",
+  "instance_A": "PID 21936 @ 8081",
+  "instance_B": "PID 31072 @ 8082",
+  "frontend": "vite dev @5173，/api 代理 → 8081（VITE_PROXY_TARGET）",
+  "browser": "ZCode In-app Browser（真实渲染 + 真实登录会话）"
+ },
+ "page_family": [
+  {
+   "page": "设计器深链 /workflow/defs/{defId}/design",
+   "duties": [
+    "设计与发布",
+    "时限管理（节点 deadline 配置）"
+   ],
+   "evidence": "R9c/01-admin-designer-deeplink.png",
+   "result": "admin 登录会话渲染真实设计器（R9b-时限图-be9144，START→审批一→END，能力面板/校验/发布按钮在位）"
+  },
+  {
+   "page": "任务详情 /workflow/task/{taskId}",
+   "duties": [
+    "办理",
+    "加签",
+    "沟通",
+    "转办",
+    "委托"
+   ],
+   "evidence": "R9c/02-admin-task-detail.png",
+   "result": "渲染真实待办（审批一/R9-生命周期/表单数据/流程变量）"
+  },
+  {
+   "page": "实例列表 /workflow/instances",
+   "duties": [
+    "废弃",
+    "补签入口",
+    "跨租户可见性"
+   ],
+   "evidence": "R9c/03-admin-instance-list.png",
+   "result": "流程监控 112 条真实记录 + 状态徽标 + 查看详情操作"
+  },
+  {
+   "page": "实例详情（查看详情抽屉）",
+   "duties": [
+    "撤回",
+    "补签",
+    "时限进度"
+   ],
+   "evidence": "R9c/04-admin-instance-detail.png",
+   "result": "实例身份/状态/流程图当前节点高亮（审批B 运行中）"
+  },
+  {
+   "page": "user5 工作台",
+   "duties": [
+    "负向：无权身份零菜单零数据"
+   ],
+   "evidence": "R9c/05-user5-workspace-empty-menus.png",
+   "result": "侧栏菜单为空（与 /auth/menus count=0 一致），待办/发起/抄送全部为空"
+  },
+  {
+   "page": "user5 设计器深链（负向）",
+   "duties": [
+    "设计与发布负向"
+   ],
+   "evidence": "R9c/06-user5-designer-deeplink-denied.png",
+   "result": "直接访问深链被路由守卫拒绝 → /403"
+  },
+  {
+   "page": "user5 实例列表（负向）",
+   "duties": [
+    "废弃/监控负向"
+   ],
+   "evidence": "R9c/07-user5-instances-denied.png",
+   "result": "直接访问 /workflow/instances → /403"
+  }
+ ],
+ "identity_links": {
+  "admin": {
+   "superAdmin": true,
+   "menus_http": "200 code=0 count=9（见 R9c 同级 r08-r09-api.json r9a 段）",
+   "ui_sidebar": "全量（系统管理/低代码/流程引擎/智能体/物联网/开放接口/定时任务）"
+  },
+  "user5": {
+   "superAdmin": false,
+   "menus_http": "200 code=0 count=0",
+   "ui_sidebar": "空"
+  }
+ },
+ "http_500_scan": {
+  "note": "本页族全部导航与接口调用逐次记录于 ../raw/raw-transcript.txt（lib 自动落盘），无 500；i3-07 的 500 系采证脚本误用 /auth/me/menus 路径（NoResourceFoundException），非产品缺陷，诊断记录见 r08-r09-api.json r9a.wrong_path_diagnosis",
+  "hardcoded_empty_array": false
+ },
+ "pass": true
+}
