@@ -4,7 +4,7 @@
 > 指定角色：执行（Executor）  
 > 日期：2026-09-12  
 > 前置裁决：`../receipts/planning-review-stage-i3-v0.1.0-oa-completion-08-passed.md`  
-> 当前阶段：I3功能级`PASSED`，终态同步待执行
+> 阶段状态：`COMPLETED（规划已确认，2026-09-12）`
 
 ## 1. 同步目标与边界
 
@@ -12,7 +12,9 @@
 
 只提交可由I3回执、冻结候选和task-owned对账证明归属的文件。工作树中的既有无关改动继续保留，不得一并提交、清理、reset或覆盖。Server修复提交`c18d074`已被执行回执声明为推送完成，仍须只读回读其当前分支和远端包含关系；无新增归属变化的仓库不得制造空提交。
 
-## 2. 唯一终态值清单
+## 2. 唯一终态值清单（执行时授权值，历史）
+
+下表保留 Executor 执行终态同步时的精确授权值；Planner 最终确认后的当前状态与归档位置以 §7 为准。
 
 | 字段 | 唯一授权值 |
 |---|---|
@@ -32,7 +34,7 @@
 | 同步后唯一下一动作 | 等待Planner终态复核；确认I3 `COMPLETED`后再形成I4正式阶段方向 |
 | P60主方向 | `product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md` |
 | I3主方向 | `product/v0.1.0-oa-completion/passed/direction-stage-i3-manual-approval-first-party-process-designer.md` |
-| I3终态同步方向 | `product/v0.1.0-oa-completion/ready/direction-stage-i3-terminal-sync.md` |
+| I3终态同步方向 | `product/v0.1.0-oa-completion/ready/direction-stage-i3-terminal-sync.md`（执行时路径；最终归档见 §7） |
 | 标签与Release | 不创建、不发布 |
 
 以上值由规划角色唯一确定。执行层不得重新计算、选择或解释成其他值。
@@ -86,3 +88,8 @@ Server `c18d074`、Web既有I3提交若已位于远端当前分支，只记录�
 
 Executor合法提交状态为：I3 `COMPLETED（待规划确认，2026-09-12）`，P60 `IN_PROGRESS`，机器状态`TERMINAL_SYNC_SUBMITTED`，`remaining_actionable_count=0`，下一动作`WAIT_PLANNER`。Planner复核前不得写“规划已确认”，不得开始I4。
 
+## 7. 最终复核状态
+
+终态同步回执 02 经 `../receipts/planning-final-review-terminal-sync-stage-i3-v0.1.0-oa-completion-02-passed.md` 最终复核通过。Workspace 实际远端终点为 `a2267da02306082852fafbf5539b8a33caed230e`；八提交连续链、`A..tip` 36 项限定附件范围、Server 授权临时副本清理、Server/Web 远端 SHA、terminal 与 33 项 manifest 均已核销。
+
+I3 正式为 `COMPLETED（规划已确认，2026-09-12）`，本方向归档至 `passed/`。P60 继续 `IN_PROGRESS`，P47 等开放编号不核销；下一动作由 Planner 形成 I4「编排、流程运营与工作台」正式阶段方向，在方向下发前不得直接开始 I4 实现。
