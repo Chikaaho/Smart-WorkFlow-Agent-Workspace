@@ -1,18 +1,22 @@
 # post-push 回读记录 — I3 阶段三终态同步（Workspace develop-sw）
 # 采集时点：2026-09-12
-
-## 提交链（附件链不改动 A 中任何治理状态值）
-A (治理状态)              = e2597ed8529b28ca9677c4afe1b45b90824b444b
-B (回执与证据)            = 79aa885a1d4a13a3ccd9331f2299065f13dc6f78
-C (回读记录)              = 58eea47b62d6b618234d59bf1800eab2042fe550
-D (回读记录与 manifest 定稿) = 307ed40ed6ca4640c563e67044e92509e09fc07c
-本文件所在提交为回读记录定稿提交；其自身 SHA 不写入本文件（避免自引用），Planner 以
-`git ls-remote origin develop-sw` 回读 Workspace 权威终点。
+#
+# 说明：本文件不固化 Workspace tip。回读记录本身会改变 tip（提交即改变末端），
+# 因此此处只记录各步提交的 SHA 与各次回读的原始输出；Workspace 权威终点以
+# `git ls-remote origin develop-sw` 回读为准，避免自引用与随后失准。
 
 ## 基线
 同步前 HEAD = a9f4716bc12006366a772739a1942f0d31585f84
 
-## 推送原始输出
+## 提交链（附件链不改动 A 中任何治理状态值）
+A (治理状态)                 = e2597ed8529b28ca9677c4afe1b45b90824b444b
+B (回执与证据)               = 79aa885a1d4a13a3ccd9331f2299065f13dc6f78
+C (回读记录)                 = 58eea47b62d6b618234d59bf1800eab2042fe550
+D (回读记录与 manifest 定稿) = 307ed40ed6ca4640c563e67044e92509e09fc07c
+E (回读记录与证据定稿)       = 47781b5fb083434e1a1bafdf32b9aafe463410a5
+A 为「本轮唯一被证明 Workspace SHA」，正文与 terminal 统一引用 A；B—E 为 post-push 附件链。
+
+## 推送原始输出（均为 fast-forward）
 $ git push origin develop-sw            # A
 To https://github.com/Chikaaho/Smart-WorkFlow-Agent-Workspace.git
    a9f4716..e2597ed  develop-sw -> develop-sw
@@ -22,109 +26,31 @@ $ git push origin develop-sw            # C
    79aa885..58eea47  develop-sw -> develop-sw
 $ git push origin develop-sw            # D
    58eea47..307ed40  develop-sw -> develop-sw
-（每次远端均报告 Bypassed rule violations: Changes must be made through a pull request——
-  绕过的是「必须经 PR」的分支规则，非内容违规；全部为 fast-forward，未强推、未改写历史。）
+$ git push origin develop-sw            # E
+   307ed40..47781b5  develop-sw -> develop-sw
+
+每次远端均报告 `Bypassed rule violations ... Changes must be made through a pull request`——
+绕过的是「必须经 PR」的分支规则，非内容违规；全部为 fast-forward，未强推、未改写历史、未删除远端分支。
 
 ## A 推送后 ls-remote 回读（本轮唯一被证明 SHA）
 $ git ls-remote origin develop-sw
 e2597ed8529b28ca9677c4afe1b45b90824b444b	refs/heads/develop-sw
 
-## D 推送后（末端）ls-remote 回读
+## D 推送后 ls-remote 回读（当时 tip = 307ed40ed6ca4640c563e67044e92509e09fc07c）
+$ git ls-remote origin develop-sw
 307ed40ed6ca4640c563e67044e92509e09fc07c	refs/heads/develop-sw
 
-## D 推送后本地/远端一致性与 tree
-local HEAD     = 307ed40ed6ca4640c563e67044e92509e09fc07c
-remote HEAD    = 307ed40ed6ca4640c563e67044e92509e09fc07c
-ahead/behind   = 0	0
-tree(local)    = cbfaab0b6b37d443490e77d51d86bd66db209b89
-tree(remote)   = cbfaab0b6b37d443490e77d51d86bd66db209b89
+## A 的 tree
+A tree = b1961378a18788001224a5a621b7a5b736117d0d
+A 推送时本地 HEAD 即该提交，本地/远端为同一 commit；可由
+`git ls-remote origin develop-sw` 与 `git rev-parse e2597ed8^{tree}` 独立复核。
 
-## a9f4716..D 聚合文件清单（50 项）
-M	knowledge/current-status.md
-M	knowledge/features/v0.1.0-oa-completion.md
-M	knowledge/session-handoff.md
-M	memory/README.md
-M	memory/features.md
-M	memory/handoff.md
-M	memory/state.md
-R099	product/v0.1.0-oa-completion/ready/direction-stage-i3-manual-approval-first-party-process-designer.md	product/v0.1.0-oa-completion/passed/direction-stage-i3-manual-approval-first-party-process-designer.md
-A	product/v0.1.0-oa-completion/ready/direction-stage-i3-terminal-sync.md
-M	product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md
-M	product/v0.1.0-oa-completion/receipts/evidence/i3-08/R10/manifest.json
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/locked-baseline-verification.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/manifest-recompute.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/manifest-verify-exit.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/manifest-verify.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/manifest.json
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/memory-sizes.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/payload-hash.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/readback-after-push.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/residual-ownership.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/server-containment.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/server-identity.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/server-ls-remote.stdout
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/server-test-asset-comparison.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/terminal-payload.json
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/terminal-value-readback.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/terminal-verbatim-cmp-exit.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/validator-command.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/validator-exit.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/validator-stderr.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/validator-stdout.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/web-containment.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/web-identity.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/web-ls-remote.stdout
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-ahead-behind.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-ancestor-exit.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-commit-a-files.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-identity.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-local-tree.sha
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-log-chain.stdout
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-ls-remote.stdout
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-push-head.sha
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-push-record.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-remote-sha.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-remote-tree.sha
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-status-after-commit.txt
-A	product/v0.1.0-oa-completion/receipts/planning-review-stage-i3-v0.1.0-oa-completion-08-passed.md
-A	product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i3-v0.1.0-oa-completion-01.md
-M	todo/requirement-pool.md
-M	todo/v0.1.0-oa-plan.md
+## 附件链文件清单（相对 A：`git diff --name-status e2597ed8..<tip>`）
+仅新增/修改两类路径：
+  product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i3-v0.1.0-oa-completion-01.md
+  product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/**（33 个文件，含本文件）
 
-## B/C/D 附件链文件清单（相对 A）
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/locked-baseline-verification.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/manifest-recompute.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/manifest-verify-exit.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/manifest-verify.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/manifest.json
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/memory-sizes.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/payload-hash.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/readback-after-push.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/residual-ownership.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/server-containment.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/server-identity.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/server-ls-remote.stdout
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/server-test-asset-comparison.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/terminal-payload.json
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/terminal-value-readback.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/terminal-verbatim-cmp-exit.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/validator-command.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/validator-exit.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/validator-stderr.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/validator-stdout.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/web-containment.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/web-identity.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/web-ls-remote.stdout
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-ahead-behind.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-ancestor-exit.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-commit-a-files.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-identity.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-local-tree.sha
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-log-chain.stdout
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-ls-remote.stdout
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-push-head.sha
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-push-record.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-remote-sha.txt
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-remote-tree.sha
-A	product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/workspace-status-after-commit.txt
-A	product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i3-v0.1.0-oa-completion-01.md
+## 结论
+- A 为被证明的治理提交；
+- B—E 为 post-push 附件链，不改动 A 中任何治理状态值；
+- Workspace 权威终点以 `git ls-remote origin develop-sw` 回读为准。
