@@ -1,0 +1,248 @@
+{
+ "_snapshot": {
+  "source": "Smart-WorkFlow-aPaaS-server develop=c18d074 (fix deadline notify tx; parent f7101c873aff09cbaf50da00f634c4a5f4cd58c8)",
+  "runtime_jar_sha256": "74926960ff615681f3064e4061e3622480e8e56fdcfce94caf2d0f12738c73ad",
+  "frozen_e_jar_sha256": "90d8bb895a129d523c67e327807840192c606d2fbee44ed7e049d0cc298a16ba",
+  "runtime_rebuild_note": "换机恢复性重打包（非代码修改），见 R1/runtime-rebuild.txt",
+  "instance_A": "PID 34124 @ 8081",
+  "instance_B": "PID 31072 @ 8082"
+ },
+ "flow": {
+  "form_publish": {
+   "code": 1100
+  },
+  "graph_put": {
+   "code": 0
+  },
+  "graph_validate": {
+   "code": 0,
+   "errors": []
+  },
+  "def_publish": {
+   "code": 0,
+   "version": "10"
+  },
+  "submit": {
+   "code": 0
+  },
+  "instance": {
+   "business_key": "f1b89c40-da96-4ae4-a6b7-cac511240950",
+   "process_instance_id": "eef3ae44-ae50-11f1-b0da-00ffa7734675"
+  },
+  "round1_node1_approve": {
+   "code": 0
+  },
+  "return": {
+   "code": 0,
+   "msg": "success",
+   "task_id": "f0c0cddc-ae50-11f1-b602-00ffa7734675",
+   "round1_task_open_after": "0"
+  },
+  "scope_owner_update": {
+   "code": 0,
+   "msg": "success"
+  },
+  "scope_non_owner_rejected": {
+   "code": 1508,
+   "msg": "缺少 version 字段，无法更新（乐观锁）"
+  },
+  "round2_task_id": "f192c3e1-ae50-11f1-b602-00ffa7734675",
+  "round2_node1_approve": {
+   "code": 0
+  },
+  "round2_final": {
+   "code": 0
+  }
+ },
+ "main_form_before": {
+  "record_id": "f1b89c40-da96-4ae4-a6b7-cac511240950",
+  "data": {
+   "id": "f1b89c40-da96-4ae4-a6b7-cac511240950",
+   "create_time": "2026-09-12T02:23:25.341+00:00",
+   "create_by": "1",
+   "update_time": "2026-09-12T02:23:25.341+00:00",
+   "update_by": "1",
+   "version": "0",
+   "amount": 100,
+   "reason": "r3-return-e0a766a5-initial"
+  },
+  "sha256": "6db516af2dc27336da1804d693bad6151366e5f19a8a0cf8120a9596ddb96f1a"
+ },
+ "main_form_after": {
+  "record_id": "f1b89c40-da96-4ae4-a6b7-cac511240950",
+  "data": {
+   "id": "f1b89c40-da96-4ae4-a6b7-cac511240950",
+   "create_time": "2026-09-12T02:23:25.341+00:00",
+   "create_by": "1",
+   "update_time": "2026-09-12T02:23:31.905+00:00",
+   "update_by": "1",
+   "version": "1",
+   "amount": 200,
+   "reason": "r3-return-e0a766a5-revised"
+  },
+  "sha256": "bef5b3c684a0ec32288033de775d37a6c59e41edcf25dc5184edc7d1b4001686"
+ },
+ "chain": {
+  "request_marker": "r3-return-e0a766a5",
+  "action_rows": [
+   "2098598338134454273|node_1|eef3d561-ae50-11f1-b0da-00ffa7734675|2001|APPROVE|APPROVED|-|{\"comment\":\"r3-return-e0a766a5-round1-node1\"}",
+   "2098598343855484929|node_2|f0c0cddc-ae50-11f1-b602-00ffa7734675|2002|RETURN|RETURNED|1|{\"comment\":\"r3-return-e0a766a5\"}",
+   "2098598356476145666|node_1|f192c3e1-ae50-11f1-b602-00ffa7734675|2001|APPROVE|APPROVED|-|{\"comment\":\"r3-return-e0a766a5-round2-node1\"}",
+   "2098598361987461121|node_2|f35e3515-ae50-11f1-b602-00ffa7734675|2002|APPROVE|APPROVED|-|{\"comment\":\"r3-return-e0a766a5-round2-final\"}"
+  ],
+  "trace_rows": [
+   "startEvent|Start|-|-",
+   "-",
+   "userTask|����һ|2001|-",
+   "-",
+   "userTask|������|2002|Change activity to node_1",
+   "userTask|����һ|2001|-",
+   "-",
+   "userTask|������|2002|-",
+   "-",
+   "endEvent|End|-|-"
+  ],
+  "notify_rows": [
+   "WF_APPROVED|eef3ae44-ae50-11f1-b0da-00ffa7734675|1|����������ͨ��",
+   "WF_RETURNED|eef3ae44-ae50-11f1-b0da-00ffa7734675|1|�����������˻�",
+   "WF_TODO|eef3d561-ae50-11f1-b0da-00ffa7734675|2001|����һ������"
+  ],
+  "instance_status": "APPROVED",
+  "return_round_rows": [
+   "RETURN|1|node_2"
+  ]
+ },
+ "task2_before_return": {
+  "taskId": "f0c0cddc-ae50-11f1-b602-00ffa7734675",
+  "taskName": "审批二",
+  "processInstanceId": "eef3ae44-ae50-11f1-b0da-00ffa7734675",
+  "processDefinitionKey": "bpm_544a37281e3a40e4",
+  "processName": "R3-两节点退回",
+  "formKey": "i3ev_r3",
+  "businessKey": "f1b89c40-da96-4ae4-a6b7-cac511240950",
+  "assignee": "2002",
+  "assigneeName": "受托人三号",
+  "initiatorId": "1",
+  "initiatorName": "系统管理员",
+  "createTime": "2026-09-12T10:23:28.498",
+  "processVariables": {
+   "approver": "1",
+   "recordId": "f1b89c40-da96-4ae4-a6b7-cac511240950",
+   "submitter": "1",
+   "formKey": "i3ev_r3",
+   "tenantId": "0",
+   "formData": {
+    "amount": 100,
+    "reason": "r3-return-e0a766a5-initial"
+   },
+   "outcome": "APPROVED"
+  },
+  "opinionForm": {},
+  "approvalHistory": [
+   {
+    "taskId": "eef3d561-ae50-11f1-b0da-00ffa7734675",
+    "taskName": "审批一",
+    "nodeKey": "node_1",
+    "assignee": "2001",
+    "assigneeName": "审批人二号",
+    "createTime": "2026-09-12T10:23:25.476",
+    "endTime": "2026-09-12T10:23:28.489",
+    "action": "APPROVE",
+    "approvalResult": "APPROVED",
+    "opinionData": {
+     "comment": "r3-return-e0a766a5-round1-node1"
+    },
+    "opinionFormId": "DEFAULT_REMARK",
+    "opinionFormVersion": "1"
+   }
+  ]
+ },
+ "task1_round2_detail": {
+  "taskId": "f192c3e1-ae50-11f1-b602-00ffa7734675",
+  "taskName": "审批一",
+  "processInstanceId": "eef3ae44-ae50-11f1-b0da-00ffa7734675",
+  "processDefinitionKey": "bpm_544a37281e3a40e4",
+  "processName": "R3-两节点退回",
+  "formKey": "i3ev_r3",
+  "businessKey": "f1b89c40-da96-4ae4-a6b7-cac511240950",
+  "assignee": "2001",
+  "assigneeName": "审批人二号",
+  "initiatorId": "1",
+  "initiatorName": "系统管理员",
+  "createTime": "2026-09-12T10:23:29.874",
+  "processVariables": {
+   "approver": "1",
+   "recordId": "f1b89c40-da96-4ae4-a6b7-cac511240950",
+   "submitter": "1",
+   "formKey": "i3ev_r3",
+   "tenantId": "0",
+   "formData": {
+    "amount": 100,
+    "reason": "r3-return-e0a766a5-initial"
+   },
+   "outcome": "APPROVED"
+  },
+  "opinionForm": {},
+  "approvalHistory": [
+   {
+    "taskId": "f0c0cddc-ae50-11f1-b602-00ffa7734675",
+    "taskName": "审批二",
+    "nodeKey": "node_2",
+    "assignee": "2002",
+    "assigneeName": "受托人三号",
+    "createTime": "2026-09-12T10:23:28.498",
+    "endTime": "2026-09-12T10:23:29.869",
+    "action": "RETURN",
+    "approvalResult": null,
+    "opinionData": {
+     "comment": "r3-return-e0a766a5"
+    },
+    "opinionFormId": "DEFAULT_REMARK",
+    "opinionFormVersion": "1"
+   },
+   {
+    "taskId": "eef3d561-ae50-11f1-b0da-00ffa7734675",
+    "taskName": "审批一",
+    "nodeKey": "node_1",
+    "assignee": "2001",
+    "assigneeName": "审批人二号",
+    "createTime": "2026-09-12T10:23:25.476",
+    "endTime": "2026-09-12T10:23:28.489",
+    "action": "APPROVE",
+    "approvalResult": "APPROVED",
+    "opinionData": {
+     "comment": "r3-return-e0a766a5-round1-node1"
+    },
+    "opinionFormId": "DEFAULT_REMARK",
+    "opinionFormVersion": "1"
+   }
+  ]
+ },
+ "assertions": {
+  "return_code_0": true,
+  "round1_task_closed": true,
+  "return_action_row_present": true,
+  "round_no_on_return": "1",
+  "trace_node1_two_rounds": true,
+  "main_form_before_present": true,
+  "main_form_after_present": true,
+  "main_form_changed": true,
+  "field_diff": {
+   "amount": {
+    "before": 100,
+    "after": 200
+   },
+   "reason": {
+    "before": "r3-return-e0a766a5-initial",
+    "after": "r3-return-e0a766a5-revised"
+   }
+  },
+  "non_owner_update_rejected": true,
+  "history_chain": {
+   "instance_detail_status": "APPROVED",
+   "instance_detail_round": null,
+   "processed_rows_for_instance": 1
+  }
+ },
+ "pass": true
+}

@@ -1,0 +1,7 @@
+SUREFIRE_TOTAL 2026-09-12 · Server develop=c18d074（含 I3 第 5 项修复：调度升级提醒通知事务内发布）
+= 全 reactor `mvn test -fae`（surefire XML 复算：run=1218 fail=6 err=0 skip=0 files=196，含 sw-bpm-process 186/0/0/0）
++ sw-bootstrap 单独复跑（43/0/0/0，含 FlywayFullChain H2 15 例；XML 因 clean package 清理，stdout 存档 bootstrap-test.stdout）
+→ 全量口径 1261 中恰 6 失败，全部为 TEST-com.sw.ck.iot.script.JavaSubprocessSandboxTest
+环境性失败证明：不含本次修复的基线 f7101c8 在同机复跑该测试类同为 6/7 失败（gates/sandbox-env-failure-without-fix-proof.stdout），
+失败模块为 IoT Java 沙箱子进程（Windows/JDK21 环境差异），与 I3 OA 审批/设计器范围及本次修复无关。
+Web 四门（typecheck/lint/test/build）r6：全部 exit=0（gates/web-*.exit）。
