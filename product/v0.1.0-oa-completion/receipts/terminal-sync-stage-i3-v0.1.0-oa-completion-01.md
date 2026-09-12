@@ -107,7 +107,7 @@ Server 工作树存在 1 个未跟踪文件：`sw-biz/sw-bpm/sw-bpm-process/src/
 
 1. **提交 A `e2597ed8529b28ca9677c4afe1b45b90824b444b`（治理状态）**：§4.1 的 14 条目，已推送并回读，即 §4「本轮唯一 Workspace SHA」。
 2. **提交 B（本回执与 `evidence/i3-terminal-sync-01/`）**：post-push 验收附件；`A..B` 仅新增本回执路径与证据目录，不改动 A 中任何治理状态值；已推送。
-3. **提交 C（post-push 回读记录）**：记录 B 的推送与 `ls-remote` 回读原始输出，`B..C` 仅新增 `evidence/i3-terminal-sync-01/readback-after-push.txt`；C 为末端提交。
+3. **提交 C（回读记录与 manifest 定稿）**：新增 `evidence/i3-terminal-sync-01/readback-after-push.txt`（记录 B 的推送与 `ls-remote` 回读原始输出、A..B 逐项清单），并按 C 时点重新生成 `manifest.json` 与其回读产物、同步修正本回执 §8 的 manifest 表述；C 为末端提交。
 
 正文与 terminal 统一使用 §4 的唯一 SHA `e2597ed8…`（被证明的治理提交，其原始回读在 A 推送后即刻采集）。B 与 C 的 SHA 不写入本回执正文，以避免自引用；Planner 可用 `git ls-remote origin develop-sw` 与 `git show --name-status e2597ed8..<tip>` 独立复核 B/C 的范围与 Workspace 终点。
 
@@ -124,7 +124,7 @@ Server 工作树存在 1 个未跟踪文件：`sw-biz/sw-bpm/sw-bpm-process/src/
 - 现行 Validator 实跑：`validate-terminal.ps1`（同契约 PowerShell 实现；本机无 `/usr/bin/jq`）**exit 0**，stdout/stderr 均为真实空输出（`validator-command.txt`、`validator-stdout.txt`、`validator-stderr.txt`、`validator-exit.txt`）。
   - 如实说明：首次调用因传入 POSIX 路径被 PowerShell 解析为相对路径而报 `DirectoryNotFoundException`（exit 1）；改用 Windows 路径后上述正式结果 exit 0，未修改 payload 或 Validator。
 - 本回执末行逐字附加 terminal 原文，独立 `cmp` exit **0**（`terminal-verbatim-cmp-exit.txt`）。
-- `manifest.json` 最后生成并以相对路径回读：**32 项 bad=0、exit 0**（`manifest-verify.txt` / `manifest-verify-exit.txt`）；manifest 覆盖本回执与 `evidence/i3-terminal-sync-01/` 下全部文件，**`manifest.json` 自身为 self_excluded**；`manifest-verify.txt` 与 `manifest-verify-exit.txt` 为回读产物、在 manifest 生成后写出，故不在其哈希集合内。
+- `manifest.json` 在提交 C 时点最后生成并以相对路径独立回读：**bad=0、exit 0**（`manifest-verify.txt` / `manifest-verify-exit.txt`）。manifest 覆盖本回执与 `evidence/i3-terminal-sync-01/` 下全部文件，**`manifest.json` 自身为 `self_excluded`**；`manifest-verify.txt` 与 `manifest-verify-exit.txt` 为回读产物、在 manifest 生成后写出，故不在其哈希集合内。覆盖文件数量以 `manifest.json` 的 `file_count` 为准（不在此处固化数字，避免与 C 时点定稿冲突）。
 
 ## 9. 边界与合法性
 
