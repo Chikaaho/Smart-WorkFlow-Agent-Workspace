@@ -4,37 +4,30 @@
 P60 CH-aPaaS v0.1.0 OA 全功能收口（`v0.1.0-oa-completion`）。
 
 ## 2. 最终状态
-**IN_PROGRESS（2026-09-12）**。I1、I2 `COMPLETED（规划已确认）`；I3 回执 06 经规划验收 05 未通过，保持 **VERIFYING**；I4—I6 未开始。正式功能数 44、清单 ✅46/🟦22/⬜22、P4/P34/P35/P47/P60 均不核销。
+**IN_PROGRESS（2026-09-12）**。I1、I2`COMPLETED（规划已确认）`；I3回执09经规划验收08功能级 **PASSED**，阶段三终态同步已执行（I3 `COMPLETED（待规划确认，2026-09-12）` / `TERMINAL_SYNC_SUBMITTED`）；I4—I6未开始。正式功能数44、清单✅46/🟦22/⬜22、P4/P34/P35/P47/P60均不核销。
 
 ## 3. 本轮验收结论
-回执 06 的自研设计器真实浏览器全链、审批动作语义、会签规则和多数生命周期动作成立并已锁定；但附件仍存在以下直接反证：
+回执09以真实任务ID完成A-R1→B-RETURN-R1→A-R2→B-R2；权威历史恰四步且意见字段非空，实例APPROVED/PENDING=0，主表单零反写，动作4/RETURN1/实例1。24行原始流可解析且5xx=0；manifest13项独立复算bad=0，payload哈希与Validator一致。结合验收05—07锁定项，I3方向§7十八项标准全部通过。
 
-- 验收时 i3-03/i3-04 检出 119/154 个非占位 accessToken 值；推送前已完成安全脱敏，但 R0 正式证据仍须由 Executor 按提示 04 封装；
-- `Z1/candidate.json` 和实例重启记录仍指向 frozen-a，未与 frozen-e/PID 演进收口，门禁 command 文件缺失；
-- RETURN 缺表单 before/after/scope；Z5 缺强制 assertions 汇总；
-- Z6 保留 error，提醒/催办通知行为空，调度 PID 链不一致；
-- Z7 注册表为空且脚本引擎扫描值为 1，却写成零；
-- Z8 禁用组件以“表单不存在”冒充契约拒绝，普通主表单前后为空，补签表态行为空；
-- Z9 只覆盖少量职责，未形成逐职责页面/深链/API 正负矩阵；
-- Z10 manifest/Validator 虽自洽，但因上游未全过而没有终态效力。
+Server全量门禁仍按真实exit1申报；6例IoT Java沙箱失败已有`f7101c8`同机Windows/JDK21对照，继续裁定为I3非回归。R6真实产品缺陷已由Server`c18d074`修复并锁定。
 
 ## 4. 已锁定、禁止重验
-G1a/G1b/G2/G3、G4a/G4b/G5、G6、G8a、G9/G10/G11 的既有行为、G13a、G17b、i3-04 manifest。Z5 仅允许从既有附件派生断言汇总。
+I3 R0—R10全部功能与封装原子。终态同步只引用锁定基线，禁止重验；若只读候选核对发现代码、冻结JAR或附件在验收08后变化，停止并回传差异。
 
 ## 5. 当前唯一执行入口
-`product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i3-v0.1.0-oa-completion-04.md`
+`product/v0.1.0-oa-completion/ready/direction-stage-i3-terminal-sync.md`（已执行完毕）
 
-依据审查：`product/v0.1.0-oa-completion/receipts/planning-review-stage-i3-v0.1.0-oa-completion-05.md`
+依据审查：`product/v0.1.0-oa-completion/receipts/planning-review-stage-i3-v0.1.0-oa-completion-08-passed.md`
 
-下一回执：`product/v0.1.0-oa-completion/receipts/stage-i3-v0.1.0-oa-completion-07.md`
+终态同步回执：`product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i3-v0.1.0-oa-completion-01.md`
 
-新证据根：`product/v0.1.0-oa-completion/receipts/evidence/i3-07/`
+I3主方向：`product/v0.1.0-oa-completion/passed/direction-stage-i3-manual-approval-first-party-process-designer.md`
 
 ## 6. 下一轮固定范围
-只处理 R0 凭证清零、R1 frozen-e 候选/PID/command 封装、R3 RETURN 表单范围、R5 已锁定行为汇总、R6 调度通知与 PID 链、R7 生产反向扫描、R8 意见表单、R9 权限总账、R10 终态封装。禁止重跑锁定行为、扩大需求、改变正式状态或提前终态。
+等待Planner终态复核I3同步回执01；确认I3 `COMPLETED` 后再由Planner形成I4正式阶段方向。Executor不得开始I4、不核销P编号、不创建标签或Release。
 
 ## 7. 新机器启动提示词
-本会话角色声明为执行。先完整读取 `system.md`、`roles/executor.md`、`project.md`、两端工程宪法，再读取 I3 正式方向、规划验收 05 与三级继续收敛提示 04。只处理提示 04 的 R0/R1/R3/R5/R6/R7/R8/R9/R10，禁止重验锁定项。全部真实字段与断言一致后提交回执 07 和 `evidence/i3-07/`；合法状态保持 `VERIFYING / EXECUTION_SUBMITTED`，不得提前写 PASSED/COMPLETED。
+本会话角色声明为执行。先完整读取`system.md`、`roles/executor.md`、`project.md`、两端工程宪法，再读取I3已归档主方向、规划验收08与阶段三终态同步方向及其回执01。只按Planner下发的正式方向执行；不得改业务实现、重验锁定行为或自行核销编号。I3当前合法状态为`COMPLETED（待规划确认，2026-09-12） / TERMINAL_SYNC_SUBMITTED`，下一动作=`WAIT_PLANNER`。
 
 ## 8. Git 交接基线
-Owner 已切换管理员并授权直接提交推送。三仓库远端回读一致：Workspace 为 `develop-sw` 本文件所在提交，Server `develop=f7101c873aff09cbaf50da00f634c4a5f4cd58c8`，Web `develop=192e0647a8f1b1e2b270d4ea13e87854b247fcc7`。本机 Redis 数据、上传目录、Python 缓存和前端采证临时 JSON 未进入 Git，不属于换机恢复基线。
+Server `develop=c18d074`（父`f7101c8`，运行时JAR`74926960…`）、Web `develop=192e0647…` 均已位于远端当前分支，I3终态同步只读回读包含关系、未制造空提交；Workspace `develop-sw` 承载I3终态同步归属提交。本机临时运行资产不属于换机恢复基线。
