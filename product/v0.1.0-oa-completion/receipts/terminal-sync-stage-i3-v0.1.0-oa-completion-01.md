@@ -105,11 +105,10 @@ Server 工作树存在 1 个未跟踪文件：`sw-biz/sw-bpm/sw-bpm-process/src/
 
 本轮 Workspace 采用分步提交，使被证明对象与验收附件自证一致，不出现「回执声称自己位于无从自证的提交中」的情况：
 
-1. **提交 A `e2597ed8529b28ca9677c4afe1b45b90824b444b`（治理状态）**：§4.1 的 14 条目，已推送并回读，即 §4「本轮唯一 Workspace SHA」。
-2. **提交 B（本回执与 `evidence/i3-terminal-sync-01/`）**：post-push 验收附件；`A..B` 仅新增本回执路径与证据目录，不改动 A 中任何治理状态值；已推送。
-3. **提交 C（回读记录与 manifest 定稿）**：新增 `evidence/i3-terminal-sync-01/readback-after-push.txt`（记录 B 的推送与 `ls-remote` 回读原始输出、A..B 逐项清单），并按 C 时点重新生成 `manifest.json` 与其回读产物、同步修正本回执 §8 的 manifest 表述；C 为末端提交。
+1. **治理状态提交 A = `e2597ed8529b28ca9677c4afe1b45b90824b444b`**：§4.1 的 14 条目，已推送并回读，即 §4「本轮唯一 Workspace SHA」。
+2. **其后为附件提交链**：回执与证据提交（本回执 + `evidence/i3-terminal-sync-01/`）、回读记录提交（`readback-after-push.txt`）、manifest 定稿提交。附件链**不改动 A 中任何治理状态值**，逐项范围可用 `git show --name-status e2597ed8529b28ca9677c4afe1b45b90824b444b..<tip>` 独立复核；末端提交为 manifest 定稿提交。
 
-正文与 terminal 统一使用 §4 的唯一 SHA `e2597ed8…`（被证明的治理提交，其原始回读在 A 推送后即刻采集）。B 与 C 的 SHA 不写入本回执正文，以避免自引用；Planner 可用 `git ls-remote origin develop-sw` 与 `git show --name-status e2597ed8..<tip>` 独立复核 B/C 的范围与 Workspace 终点。
+正文与 terminal 统一使用 §4 的唯一 SHA `e2597ed8…`（被证明的治理提交，其原始回读在 A 推送后即刻采集）。附件链各提交的 SHA 不写入本回执正文，以避免自引用；Planner 可用 `git ls-remote origin develop-sw` 与 `git log --oneline a9f4716..origin/develop-sw` 独立复核附件链范围与 Workspace 终点。
 
 ## 7. 逐字节回读条件与固定值核对
 
