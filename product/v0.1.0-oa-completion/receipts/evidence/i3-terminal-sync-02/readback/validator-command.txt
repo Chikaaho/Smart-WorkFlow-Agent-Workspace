@@ -1,0 +1,3 @@
+# I3 终态同步补证轮 Validator 实跑命令（Windows 主机无 /usr/bin/jq，使用同契约 PowerShell 实现）
+powershell -NoProfile -Command "& 'E:/code/Smart-WorkFlow-Agent-Workspace/.codex/governance/validate-terminal.ps1' -InputJson ([System.IO.File]::ReadAllText('E:/code/Smart-WorkFlow-Agent-Workspace/product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-02/readback/terminal-payload.json', [System.Text.Encoding]::UTF8))"
+# sh 等价（需 jq）：sh .codex/governance/validate-terminal.sh < i3-terminal-sync-02/readback/terminal-payload.json

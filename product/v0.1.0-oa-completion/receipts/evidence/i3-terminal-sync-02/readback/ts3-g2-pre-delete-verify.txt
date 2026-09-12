@@ -1,0 +1,28 @@
+# TS3-G2 删除前核对（哈希保护）
+time: 2026-09-12T16:16:05+08:00
+
+## 1 精确路径与存在性
+path: Smart-WorkFlow-aPaaS-server/sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/validator/ApprovalOpinionValidatorDisabledTypeIntegrationTest.java
+-rw-r--r-- 1 hjxch 197121 2671 Sep 12 12:38 Smart-WorkFlow-aPaaS-server/sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/validator/ApprovalOpinionValidatorDisabledTypeIntegrationTest.java
+
+## 2 未跟踪状态（git status --porcelain -uall，Server）
+?? sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/validator/ApprovalOpinionValidatorDisabledTypeIntegrationTest.java
+
+## 3 未被 git 跟踪（ls-files --error-unmatch 应失败）
+error: pathspec 'sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/validator/ApprovalOpinionValidatorDisabledTypeIntegrationTest.java' did not match any file(s) known to git
+Did you forget to 'git add'?
+exit=1
+
+## 4 sha256（Server 工作树副本 与 Workspace 已提交证据副本）
+c34412d906a0360be189253dfc6c155049af1033c155ee666d2edbf7729b6965 *Smart-WorkFlow-aPaaS-server/sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/validator/ApprovalOpinionValidatorDisabledTypeIntegrationTest.java
+c34412d906a0360be189253dfc6c155049af1033c155ee666d2edbf7729b6965 *product/v0.1.0-oa-completion/receipts/evidence/i3-08/R8a/ApprovalOpinionValidatorDisabledTypeIntegrationTest.java
+
+## 5 逐字节 cmp
+cmp exit=0
+
+## 6 删除前 Server HEAD / origin/develop
+HEAD          = c18d074f4c9f85c5baf65af222e159437fb1e509
+origin/develop = c18d074f4c9f85c5baf65af222e159437fb1e509
+
+## 7 Workspace 证据副本的提交归属（保留对象）
+1d4dd9d chore(oa): 提交 I3 执行回执 08 与 i3-08 证据根（R3a/R8a/R8b/R9a/R9b/R9c/R10a）

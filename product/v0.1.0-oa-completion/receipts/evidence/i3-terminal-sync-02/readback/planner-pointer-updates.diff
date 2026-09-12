@@ -1,0 +1,151 @@
+diff --git a/memory/README.md b/memory/README.md
+index 1e1b4e6..f8b7045 100644
+--- a/memory/README.md
++++ b/memory/README.md
+@@ -2,7 +2,7 @@
+ 
+ `memory/` 保存 Planner 可直接恢复和决策的最小摘要；不承载完整历史、原始证据或完整决策正文。
+ 
+-- 当前摘要：`state.md`、`handoff.md`（截至2026-09-12 / P60 `v0.1.0-oa-completion`为`IN_PROGRESS`；I1、I2`COMPLETED（规划已确认）`；I3功能级验收08`PASSED`、阶段三终态同步已执行（`COMPLETED（待规划确认，2026-09-12）`），当前唯一动作是Planner终态复核同步回执01；正式功能数仍44、既有90项清单✅46/🟦22/⬜22）
++- 当前摘要：`state.md`、`handoff.md`（截至2026-09-12 / P60`IN_PROGRESS`；I1、I2已确认完成；I3功能级`PASSED`，阶段三复核01保持`COMPLETED（待规划确认）`，只待Workspace最终远端tip只读闭环与Server临时测试副本清理；正式功能数44、清单✅46/🟦22/⬜22）
+ - 全量双向映射索引：`knowledge/feature-reconciliation-index.md`（90 明细/56 唯一 P/54 I/55 product 目录）
+ - 未关闭问题：`knowledge/known-issues.md`
+ - 完整功能清单：`Smart-WorkFlow-Server/功能清单.md`
+diff --git a/memory/features.md b/memory/features.md
+index 7f8f269..fcd351f 100644
+--- a/memory/features.md
++++ b/memory/features.md
+@@ -1,9 +1,9 @@
+ # 功能摘要
+ 
+-> 规划侧最新同步点：2026-09-12（P60 `v0.1.0-oa-completion` IN_PROGRESS；I1、I2 **COMPLETED（规划已确认）**；I3功能级验收08 **PASSED**、阶段三终态同步已执行，I3写为 **COMPLETED（待规划确认，2026-09-12）**；正式功能数仍为44）。
++> 规划侧最新同步点：2026-09-12（P60`IN_PROGRESS`；I1、I2 **COMPLETED（规划已确认）**；I3功能级 **PASSED**，阶段三复核01保持待规划确认，只补TS3-G1/TS3-G2；正式功能数仍44）。
+ > 清单当前值 **✅46/🟦22/⬜22**（90，M08 十行 🟦/⬜→✅，其余 80 行零变化）；功能数 44；全量双向映射见 `knowledge/feature-reconciliation-index.md`。
+ 
+-- `v0.1.0-oa-completion`（P60，优先级P0）：**IN_PROGRESS**。I1、I2 **COMPLETED（规划已确认）**；I3“人工审批与自研流程设计器”功能级 **PASSED**，P47仍不核销；阶段三终态同步已执行，I3 `COMPLETED（待规划确认，2026-09-12）` / `TERMINAL_SYNC_SUBMITTED`。规划验收08已锁定R0—R10全部原子；下一动作 = Planner终态复核`terminal-sync-stage-i3-v0.1.0-oa-completion-01.md`，确认 I3 `COMPLETED` 后再形成 I4 正式阶段方向。
++- `v0.1.0-oa-completion`（P60，优先级P0）：**IN_PROGRESS**。I1、I2已确认完成；I3功能级 **PASSED**，阶段三仍为`COMPLETED（待规划确认） / TERMINAL_SYNC_SUBMITTED`，P47不核销。功能与门禁锁定；下一动作=Executor按终态复核01补Workspace最终远端tip与Server临时测试副本清理证据，提交回执02。
+ 
+ - `p21-iot-device-access`：**COMPLETED（规划已确认，2026-09-08）**，第44个正式功能；P21已核销、I14关闭、M08 10✅/1🟦/2⬜。主方向与阶段三方向均归档 `passed/`；最终裁决 `planning-final-review-terminal-sync-p21-iot-02-passed.md`。
+ 
+diff --git a/memory/handoff.md b/memory/handoff.md
+index b2819c3..831af3b 100644
+--- a/memory/handoff.md
++++ b/memory/handoff.md
+@@ -4,30 +4,28 @@
+ P60 CH-aPaaS v0.1.0 OA 全功能收口（`v0.1.0-oa-completion`）。
+ 
+ ## 2. 最终状态
+-**IN_PROGRESS（2026-09-12）**。I1、I2`COMPLETED（规划已确认）`；I3回执09经规划验收08功能级 **PASSED**，阶段三终态同步已执行（I3 `COMPLETED（待规划确认，2026-09-12）` / `TERMINAL_SYNC_SUBMITTED`）；I4—I6未开始。正式功能数44、清单✅46/🟦22/⬜22、P4/P34/P35/P47/P60均不核销。
++**IN_PROGRESS（2026-09-12）**。I1、I2已确认完成；I3功能级 **PASSED**，阶段三复核01未确认终态，保持`COMPLETED（待规划确认，2026-09-12） / TERMINAL_SYNC_SUBMITTED`；I4—I6未开始。功能数44、清单✅46/🟦22/⬜22、P4/P34/P35/P47/P60均不核销。
+ 
+ ## 3. 本轮验收结论
+-回执09以真实任务ID完成A-R1→B-RETURN-R1→A-R2→B-R2；权威历史恰四步且意见字段非空，实例APPROVED/PENDING=0，主表单零反写，动作4/RETURN1/实例1。24行原始流可解析且5xx=0；manifest13项独立复算bad=0，payload哈希与Validator一致。结合验收05—07锁定项，I3方向§7十八项标准全部通过。
+-
+-Server全量门禁仍按真实exit1申报；6例IoT Java沙箱失败已有`f7101c8`同机Windows/JDK21对照，继续裁定为I3非回归。R6真实产品缺陷已由Server`c18d074`修复并锁定。
++同步回执01的唯一状态值、计数、memory、治理提交`e2597ed…`、Server`c18d074…`和Web`192e0647…`远端已锁定。终态未闭合：Workspace附件链推进后仍以治理提交冒充最终tip；Server遗留一个I3未跟踪临时测试副本。功能行为、R6修复及IoT环境性非回归均不重验。
+ 
+ ## 4. 已锁定、禁止重验
+-I3 R0—R10全部功能与封装原子。终态同步只引用锁定基线，禁止重验；若只读候选核对发现代码、冻结JAR或附件在验收08后变化，停止并回传差异。
++I3 R0—R10、终态唯一值/计数/memory、治理提交A、Server/Web远端。只补TS3-G1/TS3-G2，禁止重验。
+ 
+ ## 5. 当前唯一执行入口
+-`product/v0.1.0-oa-completion/ready/direction-stage-i3-terminal-sync.md`（已执行完毕）
++`product/v0.1.0-oa-completion/receipts/planning-review-terminal-sync-stage-i3-v0.1.0-oa-completion-01.md`
+ 
+ 依据审查：`product/v0.1.0-oa-completion/receipts/planning-review-stage-i3-v0.1.0-oa-completion-08-passed.md`
+ 
+-终态同步回执：`product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i3-v0.1.0-oa-completion-01.md`
++下一回执：`product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i3-v0.1.0-oa-completion-02.md`
+ 
+ I3主方向：`product/v0.1.0-oa-completion/passed/direction-stage-i3-manual-approval-first-party-process-designer.md`
+ 
+ ## 6. 下一轮固定范围
+-等待Planner终态复核I3同步回执01；确认I3 `COMPLETED` 后再由Planner形成I4正式阶段方向。Executor不得开始I4、不核销P编号、不创建标签或Release。
++先清理Server精确未跟踪临时测试副本并回读clean，再只读闭合Workspace最终远端tip、完整附件链和范围；生成回执02。不得提交/推送、改状态值、重验功能或开始I4。
+ 
+ ## 7. 新机器启动提示词
+-本会话角色声明为执行。先完整读取`system.md`、`roles/executor.md`、`project.md`、两端工程宪法，再读取I3已归档主方向、规划验收08与阶段三终态同步方向及其回执01。只按Planner下发的正式方向执行；不得改业务实现、重验锁定行为或自行核销编号。I3当前合法状态为`COMPLETED（待规划确认，2026-09-12） / TERMINAL_SYNC_SUBMITTED`，下一动作=`WAIT_PLANNER`。
++本会话角色声明为执行。完整读取治理入口后，读取I3终态同步方向、回执01与规划复核01。只处理TS3-G1/TS3-G2：哈希保护下删除Server精确未跟踪临时测试副本并回读clean；随后只读核对Workspace最终tip/附件链/范围与Server/Web SHA，生成本地回执02和非自引用证据。不得add/commit/push、改业务/状态、重验功能或开始I4。
+ 
+ ## 8. Git 交接基线
+ Server `develop=c18d074`（父`f7101c8`，运行时JAR`74926960…`）、Web `develop=192e0647…` 均已位于远端当前分支，I3终态同步只读回读包含关系、未制造空提交；Workspace `develop-sw` 承载I3终态同步归属提交。本机临时运行资产不属于换机恢复基线。
+diff --git a/memory/state.md b/memory/state.md
+index d0c59b7..4bc9f5b 100644
+--- a/memory/state.md
++++ b/memory/state.md
+@@ -1,12 +1,12 @@
+ # 当前状态摘要
+ 
+-> 当前规划（2026-09-12）：P60 `v0.1.0-oa-completion`为 **P0 / XL / IN_PROGRESS**。I1、I2均 **COMPLETED（规划已确认）**；I3回执09经规划验收08确认功能级 **PASSED**，阶段三终态同步已执行，I3写为 **COMPLETED（待规划确认，2026-09-12）**、机器状态 `TERMINAL_SYNC_SUBMITTED`。R8c真实RETURN链已证明A-R1→B-RETURN-R1→A-R2→B-R2、四份意见、零主表反写与单一终态；i3-09 manifest 13/13、5xx=0、Validator=0。R6事务缺陷修复（Server `c18d074`，frozen-f/JAR `74926960…`）及IoT 6例Windows/JDK21环境性非回归裁决继续锁定。I3主方向已归档，当前唯一入口为终态同步方向；下一动作=Planner终态复核同步回执01，确认后形成I4方向；复核前不写I3规划已确认、不开始I4。正式功能数44、清单✅46/🟦22/⬜22、P编号均不变。
++> 当前规划（2026-09-12）：P60 `v0.1.0-oa-completion`为 **P0 / XL / IN_PROGRESS**。I1、I2均 **COMPLETED（规划已确认）**；I3功能级验收08 **PASSED**，阶段三复核01未终态确认，继续为 **COMPLETED（待规划确认，2026-09-12） / TERMINAL_SYNC_SUBMITTED**。状态值、计数、memory、治理提交A及Server/Web远端已锁定；剩余TS3-G1为Workspace附件链结束后的实际远端tip只读闭环，TS3-G2为清理Server中与已提交证据逐字节一致的I3未跟踪临时测试副本。R0—R10与Server`c18d074`修复、IoT 6例环境性非回归均继续锁定。当前唯一动作是Executor提交终态同步回执02；不开始I4。正式功能数44、清单✅46/🟦22/⬜22、P编号不变。
+ 
+ > 最近完成基线：P21 **COMPLETED（规划已确认，2026-09-08）**。功能44、清单✅46/🟦22/⬜22、P21核销、I14关闭均锁定；正式计数以 `knowledge/current-status.md` 为准。
+ 
+ > 历史（2026-09-05）：P59 COMPLETED（规划已确认）、已核销，两个方向归档 passed。knowledge-full-reconciliation COMPLETED（已确认，2026-09-04）。历史细节见 knowledge/history 与 features/。
+ 
+-- `v0.1.0-oa-completion`（P60，P0）：**IN_PROGRESS**。I1、I2 **COMPLETED（规划已确认）**；I3功能级 **PASSED**，阶段三终态同步已执行（`COMPLETED（待规划确认，2026-09-12）`、`TERMINAL_SYNC_SUBMITTED`），当前唯一入口`direction-stage-i3-terminal-sync.md`，下一动作=Planner终态复核回执01；I4—I6未开始。正式功能数与清单计数不变。
++- `v0.1.0-oa-completion`（P60，P0）：**IN_PROGRESS**。I1、I2 **COMPLETED（规划已确认）**；I3功能级 **PASSED**、阶段三待确认，当前依据为终态同步规划复核01，下一动作=Executor提交只读/清理补证回执02；I4—I6未开始。正式功能数与清单计数不变。
+ - `p21-iot-device-access`（P21 IoT 设备接入、受控脚本与流程联动）：**COMPLETED（规划已确认，2026-09-08）**，第 **44** 个正式功能。交付 M08 十行升✅（F01-01/02/03、F02-01/02、F03-01/02、F04-03/04、F05-01）；F04-01 保持🟦、F04-02/F05-02 保持⬜；P21 已核销、I14 已满足/关闭（腾讯实网按 Owner 免验）。主方向与阶段三方向均归档 `product/p21-iot-device-access/passed/`。
+ - `v0.0.2-oa`（v0.0.2 OA 完善）：**COMPLETED（规划已确认，2026-09-07）**，第 **43** 个正式功能（历史点）。交付 A1—A8；P3/P54/P55 核销、P2/P4 开放。登记 `knowledge/features/v0.0.2-oa.md`。
+ - 终态值：功能数 **44**；清单 **✅46/🟦22/⬜22**（90，零变化）；**P21 已核销（2026-09-08）**；P2/P4 开放部分实现未核销、P34/P35/P37/P38/P39 部分实现未核销，P47 已纳入 I3 但未核销；I 集合 54 条不增删（**I14 已满足/关闭**、I38/I39/I40/I45 保持开放）。
+diff --git a/todo/requirement-pool.md b/todo/requirement-pool.md
+index d490bb3..073eaef 100644
+--- a/todo/requirement-pool.md
++++ b/todo/requirement-pool.md
+@@ -9,7 +9,7 @@
+ 
+ ## Owner 优先级覆盖
+ 
+-**2026-09-12 P0 版本当前规划**：Owner已将 **0.1.0 OA全功能收口**指定为P0优先级，登记为 **P60**（版本统筹项，XL），采用六次迭代依次完成组织权限、低代码表单、人工审批与自研流程设计器、编排与流程运营、四类SSO、七类通知及版本总验收。P60当前为`IN_PROGRESS`；I1`COMPLETED（规划已确认，2026-09-09）`；`S-DEV-CAPTCHA-01`已验收通过；I2`COMPLETED（规划已确认，2026-09-10）`。I3回执09经规划验收08确认功能级`PASSED`，主方向已归档；I3阶段三终态同步已执行并提交同步回执01，阶段写为`COMPLETED（待规划确认，2026-09-12）`、机器状态`TERMINAL_SYNC_SUBMITTED`；当前唯一下一动作是Planner终态复核回执01，确认后再形成I4正式阶段方向。功能数44、清单✅46/🟦22/⬜22、开放P编号不变；P60统筹P2/P4/P26/P31/P34/P35/P37/P38/P39/P47等剩余OA范围但不替代或提前核销既有编号。
++**2026-09-12 P0 版本当前规划**：Owner已将 **0.1.0 OA全功能收口**指定为P0优先级，登记为 **P60**（版本统筹项，XL）。P60当前为`IN_PROGRESS`；I1/I2已确认完成，I3功能级`PASSED`、阶段三保持`COMPLETED（待规划确认） / TERMINAL_SYNC_SUBMITTED`。终态复核01已锁定状态值、计数、memory、治理提交A及Server/Web远端；当前唯一动作是Executor补TS3-G1 Workspace最终远端tip和TS3-G2 Server临时测试副本清理，提交同步回执02。功能数44、清单✅46/🟦22/⬜22、开放P编号不变；I4尚未开始。
+ 
+ **2026-09-08 P21 终态基线（P60 立项前历史点）**：P21功能级 **PASSED**，阶段三补证 TS1/TS2 经 `planning-final-review-terminal-sync-p21-iot-02-passed.md` 复核通过，正式确认为 **COMPLETED（规划已确认，2026-09-08）**。功能44、清单✅46/🟦22/⬜22、P21核销、I14关闭均锁定；主方向与阶段三方向均在passed。当时无活动正式功能并等待Owner选择，该下一动作现已由上方 P60 当前规划取代。
+ 
+@@ -89,7 +89,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户
+ 
+ 蓝凌官方公开材料还包含自由/嵌入式/即席子流程、流程仿真、完整流程大数据分析，以及页面/图表/报表设计、动作流/数据流/连接流、主数据整合、多级门户、内容引擎、知识搜索和应用市场。它们属于更广的 PaaS 能力，不作为 P60 的“完整 OA”通过条件；现已正式登记为 8 个高级能力模块、64 条稳定明细，见 [高级能力功能明细清单](../product/v0.1.0-oa-completion/ready/advanced-capability-feature-checklist.md)。P60 只吸收与日常 OA 交易闭环直接相关的最小能力，避免版本范围失控；对标详情与来源见正式方向 §3.10—§3.11。
+ 
+-正式方向：[v0.1.0 OA全功能收口](../product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md)。I1、I2均已`COMPLETED（规划已确认）`；I3[正式阶段方向](../product/v0.1.0-oa-completion/passed/direction-stage-i3-manual-approval-first-party-process-designer.md)经[规划验收08](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i3-v0.1.0-oa-completion-08-passed.md)功能级`PASSED`，[I3阶段三终态同步方向](../product/v0.1.0-oa-completion/ready/direction-stage-i3-terminal-sync.md)已执行并提交[同步回执01](../product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i3-v0.1.0-oa-completion-01.md)，待 Planner 终态复核。外部SSO/通知渠道仍必须有真实官方测试应用、沙箱或可控账号行为证据。
++正式方向：[v0.1.0 OA全功能收口](../product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md)。I1、I2均已确认完成；I3[正式阶段方向](../product/v0.1.0-oa-completion/passed/direction-stage-i3-manual-approval-first-party-process-designer.md)经[规划验收08](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i3-v0.1.0-oa-completion-08-passed.md)功能级`PASSED`，[终态同步复核01](../product/v0.1.0-oa-completion/receipts/planning-review-terminal-sync-stage-i3-v0.1.0-oa-completion-01.md)仅退回TS3-G1/TS3-G2，等待同步回执02。外部SSO/通知渠道仍须有真实官方测试应用、沙箱或可控账号行为证据。
+ 
+ ## 一、已开发且未满足（D83 回执确认：90/90 清单一致，缺口逐行核实，此为全量索引）
+ 
+@@ -145,7 +145,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户
+ | P57 | BPM Engine 统一流程节点扩展能力 | Owner 2026-09-02 补充需求；优先级 P1；XL | ✅ **已核销/完成**（2026-09-03，功能级 PASSED + 阶段三 `COMPLETED（已确认）`；不对应既有明细、90 项明细状态零变化、功能数 40、清单 ✅34/🟦23/⬜33）；主方向与阶段三方向均已归档 `passed/` |
+ | P58 | 流程节点界面与具体能力优化 | Owner 2026-09-02/03 补充需求；优先级 P1；XL | ✅ **已核销/完成**（2026-09-04，功能级 PASSED + 阶段三 `COMPLETED（已确认）`；不对应既有明细、90 项明细状态零变化、功能数 41、清单 ✅34/🟦23/⬜33、基线 1035/0/0/0（152份Surefire报告）、117f+1sk/1110t+3sk、H2 V49（49）/PG V49（48））；主方向与开发调试认证方向均已归档 `passed/` |
+ | P59 | CH-aPaaS 项目说明、仓库与 main 分支整理及自动发版；三个示例仅记录 | Owner 2026-09-04；[统一需求](ch-apaas-project-update.md) | ✅ **已核销/完成**（**COMPLETED，规划已确认，2026-09-05**；功能级PASSED为2026-09-04审查07；非新增业务功能，功能数41、90明细与基线不变）；主方向及终态同步方向均归档 `passed/` |
+-| P60 | v0.1.0 OA全功能收口（组织权限、表单、流程设计与审批、流程运营、工作台、SSO、通知） | Owner 2026-09-08；优先级P0；[正式方向](../product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md) | `IN_PROGRESS`；I1、I2 **COMPLETED（规划已确认）**；I3「人工审批与自研流程设计器」功能级 **PASSED**，阶段三终态同步已执行（`COMPLETED（待规划确认，2026-09-12）`）待 Planner 终态复核；统筹既有开放OA编号但不替代或提前核销 |
++| P60 | v0.1.0 OA全功能收口（组织权限、表单、流程设计与审批、流程运营、工作台、SSO、通知） | Owner 2026-09-08；优先级P0；[正式方向](../product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md) | `IN_PROGRESS`；I1、I2 **COMPLETED（规划已确认）**；I3功能级 **PASSED**、阶段三待确认，终态复核01只待TS3-G1/TS3-G2回执02；统筹既有开放OA编号但不替代或提前核销 |
+ 
+ 
+ ### P51 Owner 补充需求定义（2026-08-30）
+@@ -500,7 +500,7 @@ P58已于2026-09-04功能级 **PASSED**（规划验收08）＋阶段三终态同
+ | P44 | M01-F01-02 部门修改 | 缺拖拽调整层级与排序（无 draggable，DeptList.vue:148/310） | 未排期 |
+ | P45 | M02-F06-01 登录安全：RSA 密码加密、验证码、客户端时间校验及登录态持久化 | 既有验证码缺口 + Owner 2026-08-30/09-01 补充需求 | ✅ **已核销/完成**（2026-09-01，功能级PASSED + 阶段三终态复核 `COMPLETED（已确认）`；M02-F06-01 🟦→✅） |
+ | P46 | M03-F01-01 表单设计器拖拽 | 拖拽已实现；栅格布局仅渲染端硬编码 2 列（FormRender.vue:397-398），设计器无栅格配置 | ✅ **已核销**（2026-09-02，由 P56 表单设计器 24 列网格布局完整覆盖并完成：设计器与渲染端统一 24 列语义、拖动排序、紧凑重排，M03-F01-01 升✅；P46 与 P56 同一交付两个索引，不新增第二个正式功能计数） |
+-| P47 | M04-F01-01 流程设计器拖拽 | 已纳入P60 I3“人工审批与自研流程设计器”；自研能力直接消费统一节点能力与`ProcessGraph`图契约，覆盖设计、查看和实例轨迹高亮，并完整移除`bpmn-js`。P60分阶段期间保持开放 | I3功能级`PASSED`，阶段三终态同步已执行待 Planner 终态复核；本阶段不核销 |
++| P47 | M04-F01-01 流程设计器拖拽 | 已纳入P60 I3“人工审批与自研流程设计器”；自研能力直接消费统一节点能力与`ProcessGraph`图契约，覆盖设计、查看和实例轨迹高亮，并完整移除`bpmn-js`。P60分阶段期间保持开放 | I3功能级`PASSED`，阶段三终态复核01只待TS3-G1/TS3-G2；本阶段不核销 |
+ | P48 | M07-F03-02 工具/函数调用 | 后端 CRUD+Function Calling 齐全（I45 汇总提及）；缺前端工具配置管理页（ToolPanel 仅只读下拉） | ✅ **已核销**（D203 12/12 PASSED + 阶段三终态同步，2026-08-25）；M07-F03-02 升✅、功能数 31、清单 ✅27/🟦23/⬜40、基线 827/338、100f/981t、V37 |
+ | P49 | M10-F01-01 运行监控 | actuator 仅 health/metrics/prometheus（I45 提及）；缺服务器/JVM/Redis/在线用户监控——实为最薄 🟦，属"已开发未满足" | 未排期 |
+ | P50 | M10-F08-01 API管理 | springdoc 接口文档已有（I45 提及）；缺接口调用监控、管理页/菜单 | 未排期 |
+diff --git a/todo/v0.1.0-oa-plan.md b/todo/v0.1.0-oa-plan.md
+index 5329136..81d1bcf 100644
+--- a/todo/v0.1.0-oa-plan.md
++++ b/todo/v0.1.0-oa-plan.md
+@@ -1,6 +1,6 @@
+ # v0.1.0 OA P0 需求索引
+ 
+-0.1.0 OA全功能收口已按P0优先级登记为P60，任务等级XL，当前状态`IN_PROGRESS`，采用六次迭代完成。I1、I2均已`COMPLETED（规划已确认）`；S级插单`S-DEV-CAPTCHA-01`已验收通过。功能数44、清单✅46/🟦22/⬜22与开放P编号不变。I3回执09经规划验收08确认功能级`PASSED`，主方向已归档；I3阶段三终态同步已执行并提交同步回执01，I3写为`COMPLETED（待规划确认，2026-09-12）`、机器状态`TERMINAL_SYNC_SUBMITTED`，当前唯一下一动作是Planner终态复核回执01，确认后再形成I4正式阶段方向。更广的平台能力保持后续边界，正式范围与验收标准以正式方向为准：
++0.1.0 OA全功能收口已按P0优先级登记为P60，任务等级XL，当前状态`IN_PROGRESS`。I1、I2已`COMPLETED（规划已确认）`；I3功能级`PASSED`，阶段三复核01保持`COMPLETED（待规划确认，2026-09-12） / TERMINAL_SYNC_SUBMITTED`。状态值、计数、memory、治理提交A及Server/Web远端已锁定；当前唯一动作是Executor补TS3-G1 Workspace最终远端tip和TS3-G2 Server临时测试副本清理，提交终态同步回执02。功能数44、清单✅46/🟦22/⬜22与开放P编号不变；I4尚未开始。更广的平台能力保持后续边界，正式范围与验收标准以正式方向为准：
+ 
+ [CH-aPaaS v0.1.0 OA 全功能收口正式方向](../product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md)
+ 
+@@ -44,6 +44,8 @@
+ 
+ [I3 阶段三终态同步回执 01：待 Planner 终态复核](../product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i3-v0.1.0-oa-completion-01.md)
+ 
++[I3 终态同步规划复核 01：Workspace终点与Server临时资产待补](../product/v0.1.0-oa-completion/receipts/planning-review-terminal-sync-stage-i3-v0.1.0-oa-completion-01.md)
++
+ [I2 低代码表单收口正式阶段方向（已归档）](../product/v0.1.0-oa-completion/passed/direction-stage-i2-low-code-form-closure.md)
+ 
+ [I2 规划验收 01：E0—E8](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i2-v0.1.0-oa-completion-01.md)
