@@ -107,6 +107,7 @@ Server 工作树存在 1 个未跟踪文件：`sw-biz/sw-bpm/sw-bpm-process/src/
 
 1. **治理状态提交 A = `e2597ed8529b28ca9677c4afe1b45b90824b444b`**：§4.1 的 14 条目，已推送并回读，即 §4「本轮唯一 Workspace SHA」。
 2. **其后为附件提交链**：回执与证据提交（本回执 + `evidence/i3-terminal-sync-01/`）、回读记录与 manifest 定稿提交。附件链**不改动 A 中任何治理状态值**，逐项范围可用 `git show --name-status e2597ed8529b28ca9677c4afe1b45b90824b444b..<tip>` 独立复核；末端提交为回读记录与 manifest 定稿提交。
+3. **附件链的定稿过程（如实登记）**：为使回执正文、terminal payload 与原始回读三方一致，并避免「回读记录自身一旦提交就改变末端」的自引用，附件链经过**若干次仅为回读记录/证据 manifest 定稿的提交**（完整清单见 `git log --oneline a9f4716..origin/develop-sw`）。每次均为 fast-forward、未强推、未改写历史；**所有附件提交只新增或修改本回执与 `evidence/i3-terminal-sync-01/**`，不改动治理提交 A 中任何状态值**（可用 `git diff --name-only e2597ed8..origin/develop-sw` 核验，结果只含上述两类路径）。
 
 正文与 terminal 统一使用 §4 的唯一 SHA `e2597ed8…`（被证明的治理提交，其原始回读在 A 推送后即刻采集）。附件链各提交的 SHA 不写入本回执正文，以避免自引用；Planner 可用 `git ls-remote origin develop-sw` 与 `git log --oneline a9f4716..origin/develop-sw` 独立复核附件链范围与 Workspace 终点。
 
