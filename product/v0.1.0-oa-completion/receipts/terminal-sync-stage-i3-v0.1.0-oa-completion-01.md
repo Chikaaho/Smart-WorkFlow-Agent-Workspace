@@ -106,7 +106,7 @@ Server 工作树存在 1 个未跟踪文件：`sw-biz/sw-bpm/sw-bpm-process/src/
 本轮 Workspace 采用分步提交，使被证明对象与验收附件自证一致，不出现「回执声称自己位于无从自证的提交中」的情况：
 
 1. **治理状态提交 A = `e2597ed8529b28ca9677c4afe1b45b90824b444b`**：§4.1 的 14 条目，已推送并回读，即 §4「本轮唯一 Workspace SHA」。
-2. **其后为附件提交链**：回执与证据提交（本回执 + `evidence/i3-terminal-sync-01/`）、回读记录提交（`readback-after-push.txt`）、manifest 定稿提交。附件链**不改动 A 中任何治理状态值**，逐项范围可用 `git show --name-status e2597ed8529b28ca9677c4afe1b45b90824b444b..<tip>` 独立复核；末端提交为 manifest 定稿提交。
+2. **其后为附件提交链**：回执与证据提交（本回执 + `evidence/i3-terminal-sync-01/`）、回读记录与 manifest 定稿提交。附件链**不改动 A 中任何治理状态值**，逐项范围可用 `git show --name-status e2597ed8529b28ca9677c4afe1b45b90824b444b..<tip>` 独立复核；末端提交为回读记录与 manifest 定稿提交。
 
 正文与 terminal 统一使用 §4 的唯一 SHA `e2597ed8…`（被证明的治理提交，其原始回读在 A 推送后即刻采集）。附件链各提交的 SHA 不写入本回执正文，以避免自引用；Planner 可用 `git ls-remote origin develop-sw` 与 `git log --oneline a9f4716..origin/develop-sw` 独立复核附件链范围与 Workspace 终点。
 
