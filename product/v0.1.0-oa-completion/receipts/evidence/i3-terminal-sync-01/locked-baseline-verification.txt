@@ -1,0 +1,38 @@
+# I3 locked-baseline read-only verification (2026-09-12)
+
+## Server candidate c18d074
+server HEAD            : c18d074f4c9f85c5baf65af222e159437fb1e509
+server origin/develop  : c18d074f4c9f85c5baf65af222e159437fb1e509
+c18d074 parent         : f7101c873aff09cbaf50da00f634c4a5f4cd58c8
+
+## Runtime frozen JAR
+74926960ff615681f3064e4061e3622480e8e56fdcfce94caf2d0f12738c73ad *Smart-WorkFlow-aPaaS-server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar
+expected                : 74926960ff615681f3064e4061e3622480e8e56fdcfce94caf2d0f12738c73ad
+
+## Web candidate 192e0647
+web HEAD               : 192e0647a8f1b1e2b270d4ea13e87854b247fcc7
+web origin/develop     : 192e0647a8f1b1e2b270d4ea13e87854b247fcc7
+
+## Locked attachment paths present
+i3-08/R9c PNG count : 7
+i3-09/R8c : assertions.json
+i3-09/R8c : collector.mjs
+i3-09/R8c : lib.mjs
+i3-09/R8c : raw-transcript.txt
+i3-09/R8c : summary.json
+i3-09/R10 : 5xx-scan.json
+i3-09/R10 : cleanup-attest.txt
+i3-09/R10 : manifest-verify.txt
+i3-09/R10 : manifest.json
+i3-09/R10 : payload-hash.txt
+i3-09/R10 : terminal-payload.json
+i3-09/R10 : validator-exit.txt
+i3-09/R10 : validator-stderr.txt
+i3-09/R10 : validator-stdout.txt
+
+## terminal payload sha256 (expected bec34c67...)
+bec34c67f4aa8095551fe65431faa4c6bdf4be9fa883b98a50b9a2abe5675c42 *product/v0.1.0-oa-completion/receipts/evidence/i3-09/R10/terminal-payload.json
+
+## i3-08/R10/manifest.json working-tree vs HEAD diff (content)
+ product/v0.1.0-oa-completion/receipts/evidence/i3-08/R10/manifest.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
