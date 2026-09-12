@@ -1,0 +1,266 @@
+{
+ "_snapshot": {
+  "source": "Smart-WorkFlow-aPaaS-server develop=c18d074 (fix deadline notify tx; parent f7101c873aff09cbaf50da00f634c4a5f4cd58c8)",
+  "runtime_jar_sha256": "74926960ff615681f3064e4061e3622480e8e56fdcfce94caf2d0f12738c73ad",
+  "frozen_e_jar_sha256": "90d8bb895a129d523c67e327807840192c606d2fbee44ed7e049d0cc298a16ba",
+  "runtime_rebuild_note": "换机恢复性重打包（非代码修改），见 R1/runtime-rebuild.txt",
+  "instance_A": "PID 34124 @ 8081",
+  "instance_B": "PID 31072 @ 8082"
+ },
+ "LOG": {
+  "matrix": [
+   {
+    "duty": "设计与发布",
+    "deep_link": "/workflow/defs/{defId}/design（workflow-def-designer）",
+    "positive": {
+     "actor": "admin",
+     "ops": {
+      "graph_put": 0,
+      "publish": 0
+     },
+     "request_marker": "r9-def-2bdcf401"
+    },
+    "negative": {
+     "actor": "user5（无角色，无 def:create）",
+     "code": 403,
+     "msg": "无权限"
+    },
+    "objects": {
+     "def_id": "2098599411557511170"
+    }
+   },
+   {
+    "duty": "办理",
+    "deep_link": "/workflow/task/{taskId}（TaskDetail）",
+    "positive": {
+     "actor": "admin（任务责任人）",
+     "code": 0,
+     "request_marker": "r9-a-e6bf1628"
+    },
+    "negative": {
+     "actor": "user5（无权、非责任人）",
+     "code": 403,
+     "msg": "无权处理该任务"
+    },
+    "objects": {
+     "task_id": "d21c091f-ae52-11f1-b0da-00ffa7734675",
+     "instance": "d21c0912-ae52-11f1-b0da-00ffa7734675",
+     "action_rows": [
+      "2098601737445879809|1|APPROVE"
+     ]
+    }
+   },
+   {
+    "duty": "加签",
+    "deep_link": "/workflow/task/{taskId}（TaskDetail 加签面板）",
+    "positive": {
+     "actor": "admin（任务责任人）",
+     "code": 0,
+     "request_marker": "r9-b-92ab6a46"
+    },
+    "negative": {
+     "actor": "user5（无 workflow:task:add-sign）",
+     "code": 403,
+     "msg": "无权限"
+    },
+    "objects": {
+     "task_id": "d51fd34f-ae52-11f1-b0da-00ffa7734675",
+     "sign_record": "2098601758551617537"
+    }
+   },
+   {
+    "duty": "补签",
+    "deep_link": "/workflow/instances/{instanceId}（实例详情-补签入口）",
+    "positive": {
+     "actor": "admin（发起人/授权主体）",
+     "code": 0,
+     "request_marker": "r9-c-982d493a"
+    },
+    "negative": {
+     "actor": "user5（无权）",
+     "code": 403,
+     "msg": "无权限"
+    },
+    "objects": {
+     "instance": "d7d75232-ae52-11f1-b0da-00ffa7734675",
+     "sign_record": "2098601782991826945"
+    }
+   },
+   {
+    "duty": "转办",
+    "deep_link": "/workflow/task/{taskId}（TaskDetail 转办入口）",
+    "positive": {
+     "actor": "admin（任务责任人）",
+     "code": 0,
+     "request_marker": "r9-d-7f82d284"
+    },
+    "negative": {
+     "actor": "user5（无 workflow:task:transfer）",
+     "code": 403,
+     "msg": "无权限"
+    },
+    "objects": {
+     "task_id": "db19fa15-ae52-11f1-b602-00ffa7734675",
+     "assignee_after": "2001"
+    }
+   },
+   {
+    "duty": "委托",
+    "deep_link": "/workflow/task/{taskId}（TaskDetail 委托入口）",
+    "positive": {
+     "actor": "admin（任务责任人）",
+     "code": 0,
+     "request_marker": "r9-e-fc3d02a1"
+    },
+    "negative": {
+     "actor": "user5（无 workflow:task:delegate）",
+     "code": 403,
+     "msg": "无权限"
+    },
+    "objects": {
+     "task_id": "ddd9b668-ae52-11f1-b602-00ffa7734675",
+     "assignee_after": "2001"
+    }
+   },
+   {
+    "duty": "代理",
+    "deep_link": "/workflow/authorize-rules（代理规则管理）",
+    "positive": {
+     "actor": "user2（授权人，agent=2002 同 Z5-08 口径）",
+     "code": 0,
+     "request_marker": "r9-f-c2af3b4c"
+    },
+    "negative": {
+     "actor": "user5（无 workflow:task:authorize）",
+     "code": 403,
+     "msg": "无权限"
+    },
+    "objects": {}
+   },
+   {
+    "duty": "撤回",
+    "deep_link": "/workflow/instances（我的实例-撤回入口）",
+    "positive": {
+     "actor": "admin（发起人）",
+     "code": 0,
+     "request_marker": "r9-g-2489b06a"
+    },
+    "negative": {
+     "actor": "user2（非发起人且无 workflow:task:withdraw）",
+     "code": 403,
+     "msg": "仅发起人可撤回"
+    },
+    "objects": {
+     "instance": "e0dc9622-ae52-11f1-b0da-00ffa7734675",
+     "status_after": "WITHDRAWN"
+    }
+   },
+   {
+    "duty": "沟通",
+    "deep_link": "/workflow/task/{taskId}（TaskDetail 沟通入口）",
+    "positive": {
+     "actor": "admin（任务责任人）",
+     "code": 0,
+     "request_marker": "r9-h-77147557"
+    },
+    "negative": {
+     "actor": "user5（无 workflow:task:communicate）",
+     "code": 403,
+     "msg": "无权限"
+    },
+    "objects": {
+     "task_id": "e2fabb4f-ae52-11f1-b0da-00ffa7734675",
+     "comm_rows": "2098601855297433602"
+    }
+   },
+   {
+    "duty": "废弃",
+    "deep_link": "/workflow/instances（实例列表-废弃入口）",
+    "positive": {
+     "actor": "admin",
+     "code": 0,
+     "request_marker": "r9-i-9acb25d3"
+    },
+    "negative": {
+     "actor": "user5（无 workflow:task:discard）",
+     "code": 403,
+     "msg": "无权限"
+    },
+    "objects": {
+     "instance": "e564b672-ae52-11f1-b0da-00ffa7734675",
+     "status_after": "DISCARDED"
+    }
+   },
+   {
+    "duty": "时限管理",
+    "deep_link": "/workflow/defs/{defId}/design（节点时限配置）+ /workflow/my/instances/{id}/urge（催办）",
+    "positive": {
+     "code": 0,
+     "actor": "admin",
+     "graph_put_deadline": 0,
+     "urge": 0,
+     "request_marker": "r9-j-c77e8db4/r9-k-fd4761b1"
+    },
+    "negative": {
+     "actor": "user2 图保存（无 def:save）code=0; user2 非发起人催办 code=403; user5 催办不存在实例 code=404"
+    },
+    "objects": {
+     "instance": "e7826641-ae52-11f1-b602-00ffa7734675",
+     "urge_rows": "1"
+    }
+   }
+  ],
+  "identities": [
+   {
+    "name": "admin",
+    "superAdmin": true,
+    "menu_count": 0,
+    "menu_routes": []
+   },
+   {
+    "name": "user2",
+    "superAdmin": true,
+    "menu_count": 0,
+    "menu_routes": []
+   },
+   {
+    "name": "user5",
+    "superAdmin": false,
+    "menu_count": 0,
+    "menu_routes": []
+   },
+   {
+    "name": "tenant1user",
+    "superAdmin": true,
+    "menu_count": 0,
+    "menu_routes": []
+   }
+  ],
+  "cross_tenant": {
+   "tenant1user_instance_count": 0,
+   "tenant1user_todo_count": 0,
+   "leak_count": 0,
+   "note": "tenant1user 属租户 1；租户 0 实例对其不可见，实例/待办计数应为 0"
+  },
+  "ledger": {
+   "duties_covered": [
+    "设计与发布",
+    "办理",
+    "加签",
+    "补签",
+    "转办",
+    "委托",
+    "代理",
+    "撤回",
+    "沟通",
+    "废弃",
+    "时限管理"
+   ],
+   "rows": 11,
+   "required_field_empty": 0,
+   "cross_tenant_leak": 0,
+   "http_500": 0
+  }
+ },
+ "pass": true
+}

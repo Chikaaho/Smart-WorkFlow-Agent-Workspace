@@ -1,0 +1,12 @@
+CLEANUP_AT=2026-09-12 10:46:23
+方法：停服务不留数据，不重建数据库
+- 实例 A/B（i3-07-frozen-f, jar 74926960）：java 进程强制结束 → 端口 8081/8082 listeners=0
+- 临时 PG 集群 /e/tmp/pgdata（50886）与 /e/tmp/pgdata5432（5432，仅测试夹具用）：pg_ctl stop -m fast → listeners=0
+- 前端 dev server（5173）：本会话未启动 vite，listeners=0
+- Redis（6379）：本机 Windows 系统服务（非本会话启动、宿主常驻组件），不属本轮采证会话资产，保持运行；采证数据在 PG 集群内随集群停用，未清理历史对象、未重建数据库
+readback：
+8081=False
+8082=False
+50886=False
+5432=False
+5173=False

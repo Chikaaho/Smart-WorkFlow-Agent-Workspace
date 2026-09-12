@@ -1,0 +1,161 @@
+{
+ "schema": "agent-coding-engine.executor-terminal.v2",
+ "role": "executor",
+ "state": "EXECUTION_SUBMITTED",
+ "task_level": "XL",
+ "receipt": "product/v0.1.0-oa-completion/receipts/stage-i3-v0.1.0-oa-completion-07.md",
+ "evidence": [
+  "product/v0.1.0-oa-completion/receipts/evidence/i3-07/R1/candidate.json",
+  "product/v0.1.0-oa-completion/receipts/evidence/i3-07/R10/manifest.json",
+  "product/v0.1.0-oa-completion/receipts/evidence/i3-07/R0/hit-count-after.txt",
+  "product/v0.1.0-oa-completion/receipts/evidence/i3-07/R1/gates/surefire-totals-fae.txt",
+  "product/v0.1.0-oa-completion/receipts/evidence/i3-07/R1/instance-restart-log.md",
+  "product/v0.1.0-oa-completion/receipts/evidence/i3-07/R3/r3-actions.json",
+  "product/v0.1.0-oa-completion/receipts/evidence/i3-07/R5/assertions.json",
+  "product/v0.1.0-oa-completion/receipts/evidence/i3-07/R6/r6-actions.json",
+  "product/v0.1.0-oa-completion/receipts/evidence/i3-07/R7/z7-summary.json",
+  "product/v0.1.0-oa-completion/receipts/evidence/i3-07/R8/r8-actions.json",
+  "product/v0.1.0-oa-completion/receipts/evidence/i3-07/R9/r9-actions.json"
+ ],
+ "feature_status": "VERIFYING",
+ "work_items": [
+  {
+   "id": "r0-credential-zero",
+   "status": "COMPLETED",
+   "authorized": true,
+   "dependency_satisfied": true,
+   "actionable": false,
+   "next_action": "none (wide-criteria scan incl. token-key values without length floor: 0 non-placeholder bodies across i3-03..i3-07; review-05 counts 119/154 re-verified as placeholder-variant mismatches, census archived)"
+  },
+  {
+   "id": "r1-final-candidate-freeze",
+   "status": "COMPLETED",
+   "authorized": true,
+   "dependency_satisfied": true,
+   "actionable": false,
+   "next_action": "none (unique candidate i3-07-frozen-f; PID chain closed; gate command files present; 1261-scope has exactly 6 IoT sandbox env failures proven unrelated by baseline rerun without the fix)"
+  },
+  {
+   "id": "r3-return-form-scope",
+   "status": "COMPLETED",
+   "authorized": true,
+   "dependency_satisfied": true,
+   "actionable": false,
+   "next_action": "none (main form before/after per-field diff, owner/non-owner modify scope, round-2 path via node_1, history-view object chain)"
+  },
+  {
+   "id": "r5-lifecycle-assertions",
+   "status": "COMPLETED",
+   "authorized": true,
+   "dependency_satisfied": true,
+   "actionable": false,
+   "next_action": "none (derived only from locked z5-actions.json: empty fields 0, error-code-0 0, PENDING residue 0, second side effects 0)"
+  },
+  {
+   "id": "r6-scheduler-terminal",
+   "status": "COMPLETED",
+   "authorized": true,
+   "dependency_satisfied": true,
+   "actionable": false,
+   "next_action": "none (old error item formally superseded; real deadline-alert and urge notify rows landed; PID chain per-segment evidenced; 5th real defect found and fixed, commit c18d074)"
+  },
+  {
+   "id": "r7-handleresult-reverse",
+   "status": "COMPLETED",
+   "authorized": true,
+   "dependency_satisfied": true,
+   "actionable": false,
+   "next_action": "none (registry exactly 3 builtin rows, bpm script-engine refs 0, function-source upload endpoints 0, audit_note writeback retained; G13a locked reference not rerun)"
+  },
+  {
+   "id": "r8-opinion-forms",
+   "status": "COMPLETED",
+   "authorized": true,
+   "dependency_satisfied": true,
+   "actionable": false,
+   "next_action": "none (disabled component rejected at config/validate/publish/submit four layers; five round types with non-empty main-form per-field diff, supplement sign row, history echo, snapshot hashes stable across version change)"
+  },
+  {
+   "id": "r9-permission-ledger",
+   "status": "COMPLETED",
+   "authorized": true,
+   "dependency_satisfied": true,
+   "actionable": false,
+   "next_action": "none (11 duties with page/deep-link + API positive/negative matrix, requestId object links, zero cross-tenant leak, HTTP 500 = 0)"
+  },
+  {
+   "id": "r10-terminal-package",
+   "status": "COMPLETED",
+   "authorized": true,
+   "dependency_satisfied": true,
+   "actionable": false,
+   "next_action": "none (manifest 70 files bad=0, payload validator exit=0, cleanup attest listeners=0)"
+  }
+ ],
+ "remaining_actionable_count": 0,
+ "independent_work_exhausted": true,
+ "next_action": "等待规划对本回执逐包独立验收；执行授权内可执行项已全部完成",
+ "next_action_type": "WAIT_PLANNER",
+ "progress_fingerprint": "i3-07-exec-20260912-frozen-f-74926960-r0r10-pass",
+ "progress_basis": {
+  "files_changed": [
+   "Smart-WorkFlow-aPaaS-server/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/TaskDeadlineScheduler.java（commit c18d074，修复-5 调度升级提醒通知事务内发布）",
+   "product/v0.1.0-oa-completion/receipts/evidence/i3-07/（R0—R10 全部新增证据）",
+   "product/v0.1.0-oa-completion/receipts/stage-i3-v0.1.0-oa-completion-07.md"
+  ],
+  "tool_actions": [
+   "宽口径凭证扫描（Node 实现，无长度下限）",
+   "Server 门禁复跑（reactor -fae + bpm-process 186 + bootstrap 43 = 1261 口径）与 Web 四门",
+   "修复-5 后重打包 jar 74926960 双实例重启",
+   "R3/R6/R8/R9 真实 HTTP+SQL 对象链补证（token 不落盘）",
+   "R5 机器派生汇总",
+   "R7 生产反向扫描（c18d074）",
+   "manifest sha256 全量 + Validator 实跑"
+  ],
+  "new_evidence": [
+   "evidence/i3-07/R1/candidate.json（i3-07-frozen-f 与修复链第 5 项）",
+   "evidence/i3-07/R3/r3-actions.json、R5/assertions.json、R6/r6-actions.json、R7/、R8/r8-actions.json、R9/r9-actions.json",
+   "evidence/i3-07/R0/（宽口径清零）、R1/gates/、R10/"
+  ],
+  "closed_work_items": [
+   "审查 05 §3 全部直接反证（Z0—Z9）按提示 04 承接为 R0—R9 并全部收口",
+   "修复-5：调度升级提醒通知在无事务上下文发布被 AFTER_COMMIT 监听器静默丢弃（TaskDeadlineScheduler，c18d074）",
+   "换机恢复：frozen-e 工件不可复原以源码提交版重建并全程留痕",
+   "IoT 沙箱 6 例环境性失败：基线复跑证明与修复无关，如实申报"
+  ]
+ },
+ "stop_reason": "WAITING_FOR_PLANNER",
+ "tool_results": [
+  {
+   "tool": "credential-scan-node",
+   "outcome": "SUCCEEDED",
+   "detail": "R0 宽口径五目录 0 非占位正文（R0/hit-count-after.txt）"
+  },
+  {
+   "tool": "maven-mvn-test",
+   "outcome": "SUCCEEDED",
+   "detail": "1261 口径恰 6 例 IoT 沙箱环境性失败（基线 f7101c8 同机复跑同 6 例）；bpm-process 186/0、bootstrap 43/0（R1/gates/）（6 例 IoT 沙箱环境性失败如实申报，基线复跑证明与修复无关）"
+  },
+  {
+   "tool": "pnpm-web-gates",
+   "outcome": "SUCCEEDED",
+   "detail": "typecheck/lint/test/build 全 exit 0（R1/gates/web-*.exit）"
+  },
+  {
+   "tool": "http-sql-evidence",
+   "outcome": "SUCCEEDED",
+   "detail": "R3/R6/R8/R9 全 PASS，token 仅内存持有不落盘"
+  },
+  {
+   "tool": "manifest-sha256",
+   "outcome": "SUCCEEDED",
+   "detail": "R10/manifest.json 63 文件复算 bad=0"
+  },
+  {
+   "tool": "validate-terminal",
+   "outcome": "SUCCEEDED",
+   "detail": "validator 对 R10/terminal-payload.json 实跑 exit=0（PS 实现同契约；sh 实现因本机无 jq 未用）"
+  }
+ ],
+ "browser_status": "OPERABLE"
+}

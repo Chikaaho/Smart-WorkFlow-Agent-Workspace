@@ -1,0 +1,102 @@
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (E:\Maven\repository\net\bytebuddy\byte-buddy-agent\1.15.11\byte-buddy-agent-1.15.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+[ERROR] Tests run: 7, Failures: 6, Errors: 0, Skipped: 0, Time elapsed: 8.365 s <<< FAILURE! -- in com.sw.ck.iot.script.JavaSubprocessSandboxTest
+[ERROR] com.sw.ck.iot.script.JavaSubprocessSandboxTest.testFileWriteBlockedBySecurityManager -- Time elapsed: 7.100 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <SUCCESS> but was: <FAILED>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.sw.ck.iot.script.JavaSubprocessSandboxTest.testFileWriteBlockedBySecurityManager(JavaSubprocessSandboxTest.java:219)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] com.sw.ck.iot.script.JavaSubprocessSandboxTest.testNormalExecutionAndHostLog -- Time elapsed: 0.242 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: error=JSON �����ַ��� ==> expected: <SUCCESS> but was: <FAILED>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:188)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1167)
+	at com.sw.ck.iot.script.JavaSubprocessSandboxTest.testNormalExecutionAndHostLog(JavaSubprocessSandboxTest.java:110)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] com.sw.ck.iot.script.JavaSubprocessSandboxTest.testJavaCorrelationAcrossActionPublishAndEvent -- Time elapsed: 0.245 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: error=JSON �����ַ��� ==> expected: <SUCCESS> but was: <FAILED>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:188)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1167)
+	at com.sw.ck.iot.script.JavaSubprocessSandboxTest.testJavaCorrelationAcrossActionPublishAndEvent(JavaSubprocessSandboxTest.java:192)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] com.sw.ck.iot.script.JavaSubprocessSandboxTest.testSideEffectGuarded -- Time elapsed: 0.213 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <SUCCESS> but was: <FAILED>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.sw.ck.iot.script.JavaSubprocessSandboxTest.testSideEffectGuarded(JavaSubprocessSandboxTest.java:129)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] com.sw.ck.iot.script.JavaSubprocessSandboxTest.testInfiniteLoopForceKilled -- Time elapsed: 0.248 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <TIMEOUT> but was: <FAILED>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.sw.ck.iot.script.JavaSubprocessSandboxTest.testInfiniteLoopForceKilled(JavaSubprocessSandboxTest.java:250)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] com.sw.ck.iot.script.JavaSubprocessSandboxTest.testProcessExecBlocked -- Time elapsed: 0.215 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <SUCCESS> but was: <FAILED>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.sw.ck.iot.script.JavaSubprocessSandboxTest.testProcessExecBlocked(JavaSubprocessSandboxTest.java:237)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] Failures: 
+[ERROR]   JavaSubprocessSandboxTest.testFileWriteBlockedBySecurityManager:219 expected: <SUCCESS> but was: <FAILED>
+[ERROR]   JavaSubprocessSandboxTest.testInfiniteLoopForceKilled:250 expected: <TIMEOUT> but was: <FAILED>
+[ERROR]   JavaSubprocessSandboxTest.testJavaCorrelationAcrossActionPublishAndEvent:192 error=JSON �����ַ��� ==> expected: <SUCCESS> but was: <FAILED>
+[ERROR]   JavaSubprocessSandboxTest.testNormalExecutionAndHostLog:110 error=JSON �����ַ��� ==> expected: <SUCCESS> but was: <FAILED>
+[ERROR]   JavaSubprocessSandboxTest.testProcessExecBlocked:237 expected: <SUCCESS> but was: <FAILED>
+[ERROR]   JavaSubprocessSandboxTest.testSideEffectGuarded:129 expected: <SUCCESS> but was: <FAILED>
+[ERROR] Tests run: 7, Failures: 6, Errors: 0, Skipped: 0
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.2.5:test (default-cli) on project sw-basic-iot: There are test failures.
+[ERROR] 
+[ERROR] Please refer to E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-iot\target\surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

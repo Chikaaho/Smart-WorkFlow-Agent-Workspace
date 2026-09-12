@@ -1,0 +1,4 @@
+# Server 全量测试门禁 command（r6 产物：i3-06/Z1/z1-server-full-test-r6.* + surefire-totals-r6.txt = 1261/0/0/0）
+# 执行主机：旧 macOS 采证机（/usr/local/projects/Smart-WorkFlow-Server）；结果保留，不重跑
+cd Smart-WorkFlow-Server && mvn test
+# 口径：全 reactor，含 FlywayFullChainTest（H2/PG 迁移链，终点 V75）与 NodeFunctionNegativeContractTest（G13a）

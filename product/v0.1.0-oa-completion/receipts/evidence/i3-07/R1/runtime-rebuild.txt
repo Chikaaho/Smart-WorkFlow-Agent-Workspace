@@ -1,0 +1,15 @@
+# 换机恢复性重打包与修复后重建留痕
+Host: Windows 10（换机后首次 I3 执行会话，2026-09-12）
+## 第一次重建（换机恢复，源码 = 交接基线 f7101c873aff09cbaf50da00f634c4a5f4cd58c8，工作树 clean）
+Command: mvn -q -DskipTests package
+PKG_EXIT=0
+runtime_jar_sha256=be0585e090a0545946c72508981b0cf13faace14d8407ad2aeb8b1db451179f1
+frozen_e_jar_sha256=90d8bb895a129d523c67e327807840192c606d2fbee44ed7e049d0cc298a16ba（冻结工件，本机不可复原）
+## 第二次重建（R6 采证暴露真实缺陷修复，commit c18d074）
+Defect: TaskDeadlineScheduler 升级提醒在无事务上下文发布 BpmNotifyEvent，AFTER_COMMIT 监听器（fallbackExecution=false）静默丢弃 → 办理时限提醒通知从未落库（R6 采证实测；即审查 05 §3.5「Z6-03 notify=[]」根因）
+Fix commit: c18d074 fix(workflow)（1 file changed, 22 insertions(+), 4 deletions(-)）
+Gate rerun: Server 1261 口径（见 gates/surefire-totals-fae.txt）；Web 四门 0（web 无改动）
+Command: mvn -q -pl sw-bootstrap clean package -DskipTests
+PKG_EXIT=0
+runtime_jar_sha256=74926960ff615681f3064e4061e3622480e8e56fdcfce94caf2d0f12738c73ad（内含 sw-bpm-process TaskDeadlineScheduler 含 notifyTx 修复，unzip 验证）
+note: R3/R6/R8/R9 全部行为采证唯一绑定 runtime jar 74926960（实例 A=PID 34124 @ 8081、B=PID 31072 @ 8082）；第一次重建 jar（be0585e0）上的 R3/R6 首采已全部作废重采。

@@ -1,0 +1,14 @@
+R0 宽口径凭证扫描（提示 04 §2 R0）
+运行: node r0-scan.js scan i3-03 i3-04 i3-05 i3-06 i3-07   （Node v22.14.0，无 Python 环境）
+口径:
+  1. JWT: eyJ 开头三段式（. 分隔），段内 [A-Za-z0-9_-]，首段>=8、二三段>=4，无长度上限假设
+  2. Bearer: Authorization ... Bearer <value>，value 到空白/引号/逗号/括号为止
+  3. accessToken/access_token/refreshToken/refresh_token 键后 [:|=] 直接跟值，无长度下限
+非占位判定: 值不为空且不匹配占位语法 ^\[REDACTED[^\]]*\]$ / 含 placeholder|redacted|***|××
+
+审查 05 §3.1 所称 i3-03=119 / i3-04=154 复核结论:
+  按 accessToken 键取值的全部出现形式去重后仅两类，均为占位符（占位语法未覆盖其变体导致被误计为非占位）:
+    i3-03/04/05 合计  "accessToken":"[REDACTED]"     273 处
+    i3-03/04/05 合计  "accessToken":"[REDACTED_JWT]" 123 处
+  另有摘要行 accessToken_len=<n> accessToken_sha256=<hex>（派生元数据，非正文）
+  eyJ 命中 3 处均在密文 base64 块内部，非 JWT 结构（i3-03/raw/step6b、i3-04/raw/step2、i3-05/raw/step2）

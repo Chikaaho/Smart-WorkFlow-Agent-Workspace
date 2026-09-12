@@ -1,0 +1,5 @@
+sw-biz/sw-bpm\sw-bpm-process\src\main\java\com\sw\ck\bpm\process\controller\WorkflowAttachmentController.java:15:import com.sw.ck.storage.api.StorageUploadResult;
+sw-biz/sw-bpm\sw-bpm-process\src\main\java\com\sw\ck\bpm\process\controller\WorkflowAttachmentController.java:27:import org.springframework.web.multipart.MultipartFile;
+sw-biz/sw-bpm\sw-bpm-process\src\main\java\com\sw\ck\bpm\process\controller\WorkflowAttachmentController.java:63:    @PostMapping("/upload")
+sw-biz/sw-bpm\sw-bpm-process\src\main\java\com\sw\ck\bpm\process\controller\WorkflowAttachmentController.java:64:    public R<Map<String, Object>> upload(@RequestParam("file") MultipartFile file) throws IOException {
+sw-biz/sw-bpm\sw-bpm-process\src\main\java\com\sw\ck\bpm\process\controller\WorkflowAttachmentController.java:68:        StorageUploadResult result = storageFacade.upload(file.getInputStream(),
