@@ -1,0 +1,93 @@
+{
+ "schema": "agent-coding-engine.executor-terminal.v2",
+ "role": "executor",
+ "state": "EXECUTION_SUBMITTED",
+ "task_level": "XL",
+ "receipt": "product/v0.1.0-oa-completion/receipts/stage-i3-v0.1.0-oa-completion-09.md",
+ "evidence": [
+  "product/v0.1.0-oa-completion/receipts/evidence/i3-09/R8c/summary.json",
+  "product/v0.1.0-oa-completion/receipts/evidence/i3-09/R8c/assertions.json",
+  "product/v0.1.0-oa-completion/receipts/evidence/i3-09/R8c/raw-transcript.txt",
+  "product/v0.1.0-oa-completion/receipts/evidence/i3-09/R10/5xx-scan.json",
+  "product/v0.1.0-oa-completion/receipts/evidence/i3-09/R10/manifest.json",
+  "product/v0.1.0-oa-completion/receipts/evidence/i3-09/R10/cleanup-attest.txt"
+ ],
+ "feature_status": "VERIFYING",
+ "work_items": [
+  {
+   "id": "r8c-real-return-chain",
+   "status": "COMPLETED",
+   "authorized": true,
+   "dependency_satisfied": true,
+   "actionable": false,
+   "next_action": "none (real B task id from todo polling; RETURN code 0; old B closed; A2/B2 new distinct ids; history exactly APPROVE(A-R1)->RETURN(B-RETURN-R1)->APPROVE(A-R2)->APPROVE(B-R2) with non-empty opinionData/formId/version; main form zero writeback; single instance/return; terminal APPROVED pending=0)"
+  },
+  {
+   "id": "r10b-terminal-package",
+   "status": "COMPLETED",
+   "authorized": true,
+   "dependency_satisfied": true,
+   "actionable": false,
+   "next_action": "none (5xx machine scan of final raw stream = 0; manifest file_count=13 verify bad=0; validator exit=0; cleanup listeners=0)"
+  }
+ ],
+ "remaining_actionable_count": 0,
+ "independent_work_exhausted": true,
+ "next_action": "等待规划按提示 06 逐项验收 R8c 与 R10b",
+ "next_action_type": "WAIT_PLANNER",
+ "progress_fingerprint": "i3-09-exec-20260912-frozen-f-74926960-r8c-r10b-pass",
+ "progress_basis": {
+  "files_changed": [
+   "product/v0.1.0-oa-completion/receipts/evidence/i3-09/（R8c + R10b 全部新增证据）",
+   "product/v0.1.0-oa-completion/receipts/stage-i3-v0.1.0-oa-completion-09.md"
+  ],
+  "tool_actions": [
+   "R8c 零裁量九步真实采集（真实任务 ID、逐请求原始流落盘）",
+   "采证残留清理：R9 遗留 ACTIVE 代理规则经 owner API 删除并记录（非产品断言）",
+   "5xx 机器扫描（逐条 JSON 解析，非硬编码）",
+   "manifest sha256 工具生成 + 独立复算；Validator 实跑"
+  ],
+  "new_evidence": [
+   "evidence/i3-09/R8c/（summary/assertions/raw/collector）",
+   "evidence/i3-09/R10/（5xx-scan/manifest/verify/payload/hash/validator/cleanup）"
+  ],
+  "closed_work_items": [
+   "验收 07 §4 剩余原子：R8c（真实 RETURN 二轮链）、R10b（终态封装）",
+   "R8b 假阳性根因闭环：节点 B 办理人受 R9 遗留代理规则影响（采证残留，非产品缺陷）+ 采证脚本任务选择错误已修正"
+  ]
+ },
+ "stop_reason": "WAITING_FOR_PLANNER",
+ "tool_results": [
+  {
+   "tool": "http-sql-evidence",
+   "outcome": "SUCCEEDED",
+   "detail": "R8c 九步全过，fails 数组为空，四步历史意见字段全非空（R8c/summary.json、assertions.json）"
+  },
+  {
+   "tool": "maven-mvn-test",
+   "outcome": "FAILED",
+   "detail": "本轮零代码变化未重跑全量；沿用验收 06 锁定事实：全量实际 exit 1，6 例 IoT JavaSubprocessSandboxTest 为 Windows/JDK21 环境性失败（同机基线对照已锁定，非回归）；sw-bpm-process 186/0、sw-bootstrap 43/0 如实引用，不写成功"
+  },
+  {
+   "tool": "web-gates",
+   "outcome": "SUCCEEDED",
+   "detail": "Web 零变化，沿用锁定四门 exit=0（i3-07/R1/gates/web-*.exit）"
+  },
+  {
+   "tool": "five-xx-machine-scan",
+   "outcome": "SUCCEEDED",
+   "detail": "R8c/raw-transcript.txt 24 行逐条解析，5xx 计数=0，unparsed=0（R10/5xx-scan.json）；i3-08 历史包保持原样"
+  },
+  {
+   "tool": "manifest-sha256",
+   "outcome": "SUCCEEDED",
+   "detail": "R10/manifest.json file_count=13，独立复算 bad=0（R10/manifest-verify.txt）"
+  },
+  {
+   "tool": "validate-terminal",
+   "outcome": "SUCCEEDED",
+   "detail": "validator 对 R10/terminal-payload.json 实跑 exit=0（R10/validator-exit.txt；PS 同契约实现，本机无 jq）"
+  }
+ ],
+ "browser_status": "OPERABLE"
+}

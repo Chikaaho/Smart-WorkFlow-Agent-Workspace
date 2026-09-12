@@ -1,0 +1,167 @@
+{
+ "_snapshot": {
+  "source": "Smart-WorkFlow-aPaaS-server develop=c18d074 (fix deadline notify tx; parent f7101c873aff09cbaf50da00f634c4a5f4cd58c8)",
+  "runtime_jar_sha256": "74926960ff615681f3064e4061e3622480e8e56fdcfce94caf2d0f12738c73ad",
+  "frozen_e_jar_sha256": "90d8bb895a129d523c67e327807840192c606d2fbee44ed7e049d0cc298a16ba",
+  "runtime_rebuild_note": "换机恢复性重打包（非代码修改），见 R1/runtime-rebuild.txt",
+  "instance_A": "PID 26988 @ 8081",
+  "instance_B": "PID 29832 @ 8082",
+  "note": "frozen-f 同 JAR 会话重启，无重打包"
+ },
+ "marker": "i309-return-e17b79",
+ "objects": {
+  "form_key": "i3ev_r8c_e17b79",
+  "form_def_id": "ca172044-f5b6-41c5-8204-eae689dac5a9",
+  "def_id": "2098644151741112322",
+  "business_key": "836a1a6f-4140-4e86-9a64-428f7909d28c",
+  "process_instance_id": "5f66920e-ae6a-11f1-a7dd-00ffa7734675",
+  "instance_pk": "2098644152726773761"
+ },
+ "steps": {
+  "step1": {
+   "instance": "5f66920e-ae6a-11f1-a7dd-00ffa7734675",
+   "business_key": "836a1a6f-4140-4e86-9a64-428f7909d28c",
+   "A1_task_id": "5f66b92b-ae6a-11f1-a7dd-00ffa7734675",
+   "node": null,
+   "task_name": null,
+   "assignee": "1",
+   "task_detail_status": "OPEN"
+  },
+  "step2": {
+   "http": 0,
+   "opinion": "i309-return-e17b79-A-R1",
+   "A1_task_closed": true
+  },
+  "step3": {
+   "B1_task_id": "61329f91-ae6a-11f1-a7dd-00ffa7734675",
+   "node": null,
+   "task_name": null
+  },
+  "step4": {
+   "http": 0,
+   "opinion": "i309-return-e17b79-B-RETURN-R1",
+   "target_node": "node_a",
+   "B1_task_closed": true
+  },
+  "step5": {
+   "A2_task_id": "62757fd6-ae6a-11f1-a7dd-00ffa7734675",
+   "node": null,
+   "different_from_A1": true
+  },
+  "step6": {
+   "http": 0,
+   "opinion": "i309-return-e17b79-A-R2",
+   "B2_task_id": "63b4b69a-ae6a-11f1-a7dd-00ffa7734675"
+  },
+  "step7": {
+   "http": 0,
+   "opinion": "i309-return-e17b79-B-R2",
+   "instance_status": "APPROVED",
+   "pending_tasks": "0"
+  },
+  "step8": {
+   "history": [
+    {
+     "action": "APPROVE",
+     "node": "node_a",
+     "task_id": "5f66b92b-ae6a-11f1-a7dd-00ffa7734675",
+     "assignee": "1",
+     "opinionData": {
+      "comment2": "i309-return-e17b79-A-R1",
+      "comment": "i309-return-e17b79-A-R1"
+     },
+     "opinionFormId": "i3ev-r8c-opinion",
+     "opinionFormVersion": "v1",
+     "comment": null,
+     "endTime": "2026-09-12T13:25:34.563",
+     "approvalResult": "APPROVED"
+    },
+    {
+     "action": "RETURN",
+     "node": "node_b",
+     "task_id": "61329f91-ae6a-11f1-a7dd-00ffa7734675",
+     "assignee": "2001",
+     "opinionData": {
+      "comment2": "i309-return-e17b79-B-RETURN-R1",
+      "comment": "i309-return-e17b79-B-RETURN-R1"
+     },
+     "opinionFormId": "i3ev-r8c-opinion",
+     "opinionFormVersion": "v1",
+     "comment": null,
+     "endTime": "2026-09-12T13:25:36.682",
+     "approvalResult": "RETURNED"
+    },
+    {
+     "action": "APPROVE",
+     "node": "node_a",
+     "task_id": "62757fd6-ae6a-11f1-a7dd-00ffa7734675",
+     "assignee": "1",
+     "opinionData": {
+      "comment2": "i309-return-e17b79-A-R2",
+      "comment": "i309-return-e17b79-A-R2"
+     },
+     "opinionFormId": "i3ev-r8c-opinion",
+     "opinionFormVersion": "v1",
+     "comment": null,
+     "endTime": "2026-09-12T13:25:38.773",
+     "approvalResult": "APPROVED"
+    },
+    {
+     "action": "APPROVE",
+     "node": "node_b",
+     "task_id": "63b4b69a-ae6a-11f1-a7dd-00ffa7734675",
+     "assignee": "2001",
+     "opinionData": {
+      "comment2": "i309-return-e17b79-B-R2",
+      "comment": "i309-return-e17b79-B-R2"
+     },
+     "opinionFormId": "i3ev-r8c-opinion",
+     "opinionFormVersion": "v1",
+     "comment": null,
+     "endTime": "2026-09-12T13:25:40.416",
+     "approvalResult": "APPROVED"
+    }
+   ]
+  },
+  "step9": {
+   "main_form": {
+    "amount": 42,
+    "version": "0",
+    "unchanged_since_submit": true
+   },
+   "snapshot_rows": [
+    "APPROVE|5f66b92b-ae6a-11f1-a7dd-00ffa7734675|{\"opinionForm\":{\"formId\":\"i3ev-r8c-opinion\",\"version\":\"v1\",\"",
+    "RETURN|61329f91-ae6a-11f1-a7dd-00ffa7734675|{\"opinionForm\":{\"formId\":\"i3ev-r8c-opinion\",\"version\":\"v1\",\"",
+    "APPROVE|62757fd6-ae6a-11f1-a7dd-00ffa7734675|{\"opinionForm\":{\"formId\":\"i3ev-r8c-opinion\",\"version\":\"v1\",\"",
+    "APPROVE|63b4b69a-ae6a-11f1-a7dd-00ffa7734675|{\"opinionForm\":{\"formId\":\"i3ev-r8c-opinion\",\"version\":\"v1\",\""
+   ],
+   "snapshot_immutable_note": "快照列随动作行写入后无更新接口；行数=动作数且内容含表单契约",
+   "action_row_count": "4",
+   "instance_count": "1",
+   "return_row_count": "1",
+   "round_rows": [
+    "APPROVE|-",
+    "RETURN|1",
+    "APPROVE|-",
+    "APPROVE|-"
+   ]
+  }
+ },
+ "assertions": {
+  "residue_rules_cleaned": true,
+  "submit_ok": true,
+  "a1_task_real": true,
+  "a1_complete_code0": true,
+  "b1_task_real": true,
+  "return_code0_real_task": true,
+  "a2_task_new": true,
+  "b2_task_new": true,
+  "history_exact_four_steps": true,
+  "all_opinions_nonempty": true,
+  "main_form_zero_writeback": true,
+  "single_instance_single_return": true,
+  "terminal_no_pending": true,
+  "pass": true
+ },
+ "fails": []
+}
