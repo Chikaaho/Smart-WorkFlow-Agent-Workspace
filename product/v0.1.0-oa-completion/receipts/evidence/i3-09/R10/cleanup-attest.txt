@@ -1,0 +1,10 @@
+CLEANUP_AT=2026-09-12 13:26:51
+方法：停服务不留数据，不重建数据库（i3-09 会话）
+- 实例 A/B（frozen-f, jar 74926960，本会话 A=26988/B=29832）：java 进程结束 → listeners=0
+- 临时 PG 集群 /e/tmp/pgdata（50886）：pg_ctl stop -m fast → listeners=0
+- Redis（6379）：Windows 系统服务非本会话资产，保持运行
+readback：
+8081=False
+8082=False
+50886=False
+5173=False
