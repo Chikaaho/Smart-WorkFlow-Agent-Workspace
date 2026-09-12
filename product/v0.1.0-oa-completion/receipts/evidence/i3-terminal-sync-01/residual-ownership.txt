@@ -1,0 +1,34 @@
+# 未提交/未推送残留归属（I3 阶段三终态同步，2026-09-12）
+# 观察点：Workspace 治理提交 e2597ed8529b28ca9677c4afe1b45b90824b444b 之后
+
+## 1. Workspace（develop-sw）
+- `?? Smart-WorkFlow-aPaaS-Web/`
+- `?? Smart-WorkFlow-aPaaS-server/`
+  归属：两个独立业务仓库以工作区子目录形式 checkout，属既有存量。
+  `.gitignore` 只声明了 `Smart-WorkFlow-Server/`、`Smart-WorkFlow-Web/`，与实际目录名
+  `Smart-WorkFlow-aPaaS-server/`、`Smart-WorkFlow-aPaaS-Web/` 不匹配，因此一直以未跟踪形式出现。
+  本端：**未暂存、未提交、未清理、未 reset、未覆盖**。与 I3 归属无关。
+- 本轮新增（I3 终态同步归属，随后续提交交付，见回执 §4/§5）：
+  `product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i3-v0.1.0-oa-completion-01.md`
+  与 `product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-01/`。
+
+## 2. Smart-WorkFlow-aPaaS-server（develop，HEAD=c18d074）
+- `?? sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/validator/ApprovalOpinionValidatorDisabledTypeIntegrationTest.java`
+  归属：**I3 归属的验证资产**（I3 执行回执 08 已在 `progress_basis.files_changed` 声明，
+  i3-08/R10/terminal-payload.json 第 80 行；i3-08/R10/manifest.json 已收入其 sha256
+  `c34412d906a0360be189253dfc6c155049af1033c155ee666d2edbf7729b6965`）。
+  处置：**本轮不提交**，理由见回执 §4.3：
+  ①创建冻结候选 `i3-07-frozen-f` 时该路径未被跟踪，候选快照记 `source.server_git`
+  为 `develop=c18d074（父 f7101c8）`、`工作树 clean`；
+  ②终态同步方向 §3 将 Server 候选锁定为 `c18d074`、§5 要求 Server 已位于远端当前分支时
+  “只记录包含关系”，提交该文件会使 Server HEAD 离开锁定候选；
+  ③该文件为测试资产、不入运行时 JAR，权威副本已随 i3-08 证据包提交，
+  与工作树副本逐字节一致（`server-test-asset-comparison.txt`，cmp exit 0）。
+  本端未清理、未覆盖、未改名。
+
+## 3. Smart-WorkFlow-aPaaS-Web（develop，HEAD=192e0647）
+- `git status --porcelain` 为空；无残留，无空提交。
+
+## 4. 结论
+三仓均未因本轮终态同步被清理、reset、强推或删除远端分支。
+未发现与 I3/P60 完全无关的外部文件被提交。
