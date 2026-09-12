@@ -1,0 +1,385 @@
+{
+ "_snapshot": {
+  "source": "Smart-WorkFlow-aPaaS-server develop=c18d074 (fix deadline notify tx; parent f7101c873aff09cbaf50da00f634c4a5f4cd58c8)",
+  "runtime_jar_sha256": "74926960ff615681f3064e4061e3622480e8e56fdcfce94caf2d0f12738c73ad",
+  "frozen_e_jar_sha256": "90d8bb895a129d523c67e327807840192c606d2fbee44ed7e049d0cc298a16ba",
+  "runtime_rebuild_note": "换机恢复性重打包（非代码修改），见 R1/runtime-rebuild.txt",
+  "instance_A": "PID 21936 @ 8081",
+  "instance_B": "PID 31072 @ 8082",
+  "note": "frozen-f 同 JAR 重启（PID 变化属换机后第二次会话重启，无重打包）"
+ },
+ "r3a_pass": true,
+ "r8a_pass": true,
+ "r9b_pass": true,
+ "r8b_echo_checks": {
+  "plain_history_nonempty": true,
+  "consensus_history_nonempty": true,
+  "addsign_row_nonempty": true,
+  "supplement_row_nonempty": true,
+  "return_history_nonempty": true
+ },
+ "OUT": {
+  "r3a": {
+   "marker": "i308-r3a-b74cd1f3",
+   "non_owner": {
+    "actor": "user5(2004) superAdmin=false 无角色 非属主",
+    "http": 403,
+    "code": 403,
+    "msg": "无权限",
+    "request_envelope": {
+     "data": true,
+     "version": "0"
+    }
+   },
+   "rejected_not_for": {
+    "missing_version": true,
+    "record_missing": true,
+    "version_conflict_only": true
+   },
+   "before": {
+    "amount": 500,
+    "reason": "i308-r3a-b74cd1f3",
+    "version": "0",
+    "sha256": "03581c47d6fd44c2d3718f1433e06032434f2485e2de69ca37faa5a82de7c978"
+   },
+   "after_rejected_readback": {
+    "amount": 500,
+    "reason": "i308-r3a-b74cd1f3",
+    "version": "0",
+    "sha256": "03581c47d6fd44c2d3718f1433e06032434f2485e2de69ca37faa5a82de7c978"
+   },
+   "zero_side_effect": {
+    "amount_unchanged": true,
+    "reason_unchanged": true,
+    "version_unchanged": true,
+    "record_sha256_unchanged": true
+   },
+   "owner_control_same_envelope": {
+    "http": 200,
+    "code": 0,
+    "after": {
+     "amount": 501,
+     "version": "1"
+    }
+   },
+   "side_effect_count": {
+    "action_rows_total_delta": 0,
+    "note": "form data update 不写 sw_bpm_approval_action；user5 拒绝前后无新增（语句级 count 见 side_effect_count）",
+    "approval_action_count": "132"
+   },
+   "pass": true
+  },
+  "r8a": {
+   "form_key": "i3ev_r8a_740418",
+   "form_def_id": "c45bf392-d3b8-48cd-bc28-9069b51cd8f0",
+   "by_key_readback_id": null,
+   "config": {
+    "http": 200,
+    "code": 1205,
+    "msg": "字段类型暂不允许发布: EMAIL"
+   },
+   "form_def_readback_exists": true,
+   "validate": {
+    "http": 200,
+    "code": 0,
+    "errors": [
+     {
+      "elementId": "node_1",
+      "nodeKey": "node_1",
+      "edgeKey": null,
+      "errorCode": 2417,
+      "message": "审批意见表单组件不可用: EMAIL"
+     }
+    ],
+    "disabled_2417": [
+     {
+      "elementId": "node_1",
+      "nodeKey": "node_1",
+      "edgeKey": null,
+      "errorCode": 2417,
+      "message": "审批意见表单组件不可用: EMAIL"
+     }
+    ]
+   },
+   "publish": {
+    "http": 200,
+    "code": 1208,
+    "msg": "表单 definition 为空，不能发布"
+   },
+   "no_undefined_paths": true,
+   "pass": true
+  },
+  "r8b_plain": {
+   "marker": "i308-plain-4a857d3a",
+   "init_opinion_form": {
+    "formId": "i3ev-r8b-opinion",
+    "version": "v1",
+    "fields": [
+     {
+      "key": "comment2",
+      "label": "审批说明",
+      "type": "TEXT",
+      "required": true,
+      "maxLength": 200
+     },
+     {
+      "key": "level",
+      "label": "等级",
+      "type": "RADIO",
+      "options": [
+       "A",
+       "B"
+      ],
+      "required": true
+     },
+     {
+      "key": "note",
+      "label": "备注",
+      "type": "NOTE"
+     }
+    ]
+   },
+   "task_id": "885198c5-ae63-11f1-8967-00ffa7734675",
+   "instance": "885171a8-ae63-11f1-8967-00ffa7734675",
+   "history_echo": [
+    {
+     "node": "node_1",
+     "taskName": "审批A",
+     "action": "APPROVE",
+     "assignee": "1",
+     "opinionData": {
+      "comment2": "i308-plain-4a857d3a",
+      "level": "A",
+      "note": "n",
+      "comment": "i308-plain-4a857d3a"
+     },
+     "opinionFormId": "i3ev-r8b-opinion",
+     "opinionFormVersion": "v1",
+     "approvalResult": "APPROVED"
+    }
+   ],
+   "main_form_zero_writeback": true,
+   "snapshots": [
+    "APPROVE|{\"opinionForm\":{\"formId\":\"i3ev-r8b-opinion\",\"version\":\"v1\",\"fields\":[{\"key\":\"com"
+   ]
+  },
+  "r8b_consensus": {
+   "marker": "i308-cons-f958da1b",
+   "instance": "8b538dfd-ae63-11f1-8967-00ffa7734675",
+   "history_echo_admin": [
+    {
+     "node": "node_1",
+     "taskName": "会签",
+     "action": "APPROVE",
+     "assignee": "2001",
+     "opinionData": {
+      "comment2": "i308-cons-f958da1b-B",
+      "level": "A",
+      "comment": "i308-cons-f958da1b-B"
+     },
+     "opinionFormId": "i3ev-r8b-opinion",
+     "opinionFormVersion": "v1",
+     "approvalResult": "APPROVED"
+    },
+    {
+     "node": "node_1",
+     "taskName": "会签",
+     "action": "APPROVE",
+     "assignee": "2001",
+     "opinionData": {
+      "comment2": "i308-cons-f958da1b-A",
+      "level": "B",
+      "comment": "i308-cons-f958da1b-A"
+     },
+     "opinionFormId": "i3ev-r8b-opinion",
+     "opinionFormVersion": "v1",
+     "approvalResult": "APPROVED"
+    }
+   ],
+   "history_echo_user2": [
+    {
+     "node": "node_1",
+     "taskName": "会签",
+     "action": "APPROVE",
+     "assignee": "2001",
+     "opinionData": {
+      "comment2": "i308-cons-f958da1b-B",
+      "level": "A",
+      "comment": "i308-cons-f958da1b-B"
+     },
+     "opinionFormId": "i3ev-r8b-opinion",
+     "opinionFormVersion": "v1",
+     "approvalResult": "APPROVED"
+    },
+    {
+     "node": "node_1",
+     "taskName": "会签",
+     "action": "APPROVE",
+     "assignee": "2001",
+     "opinionData": {
+      "comment2": "i308-cons-f958da1b-A",
+      "level": "B",
+      "comment": "i308-cons-f958da1b-A"
+     },
+     "opinionFormId": "i3ev-r8b-opinion",
+     "opinionFormVersion": "v1",
+     "approvalResult": "APPROVED"
+    }
+   ],
+   "sign_rows": []
+  },
+  "r8b_addsign": {
+   "marker": "i308-asign-3d0ccc77",
+   "instance": "8ea61388-ae63-11f1-8967-00ffa7734675",
+   "express": 0,
+   "final": 0,
+   "sign_rows": [
+    "2098631886736416770|ADD_SIGN|DONE|{\"policy\":\"ALL_PASS\",\"comment\":null,\"result\":\"APPROVE\",\"opinionData\":{\"comment2\":\"i308-asign-3d0ccc77-sign\",\"level\":\"A\"},\"actor\":\"2001\"}"
+   ],
+   "history_echo": [
+    {
+     "node": "node_1",
+     "taskName": "审批A",
+     "action": "APPROVE",
+     "assignee": "1",
+     "opinionData": {
+      "comment2": "i308-asign-3d0ccc77-final",
+      "level": "A",
+      "comment": "i308-asign-3d0ccc77-final"
+     },
+     "opinionFormId": "i3ev-r8b-opinion",
+     "opinionFormVersion": "v1",
+     "approvalResult": "APPROVED"
+    }
+   ],
+   "sign_row_count": 1
+  },
+  "r8b_supplement": {
+   "marker": "i308-sup-6b7751ff",
+   "instance": "9323d378-ae63-11f1-8967-00ffa7734675",
+   "express": 0,
+   "supplement_sign_row": "2098631923214278657|SUPPLEMENT_SIGN|DONE|{\"auditOnly\":true,\"businessAction\":\"\",\"result\":\"APPROVE\",\"opinionData\":{\"comment2\":\"i308-sup-6b7751ff-confirm\",\"level\":\"B\"},\"actor\":\"2001\"}",
+   "sign_rows": [
+    "2098631923214278657|SUPPLEMENT_SIGN|DONE|{\"auditOnly\":true,\"businessAction\":\"\",\"result\":\"APPROVE\",\"opinionData\":{\"comment2\":\"i308-sup-6b7751ff-confirm\",\"level\":\"B\"},\"actor\":\"2001\"}"
+   ],
+   "history_echo": [
+    {
+     "node": "node_1",
+     "taskName": "审批A",
+     "action": "APPROVE",
+     "assignee": "1",
+     "opinionData": {
+      "comment2": "i308-sup-6b7751ff-orig",
+      "level": "A",
+      "comment": "i308-sup-6b7751ff-pass"
+     },
+     "opinionFormId": "i3ev-r8b-opinion",
+     "opinionFormVersion": "v1",
+     "approvalResult": "APPROVED"
+    }
+   ]
+  },
+  "r8b_return": {
+   "marker": "i308-ret-e6325dd2",
+   "instance": "97f69148-ae63-11f1-8967-00ffa7734675",
+   "return_code": 404,
+   "round2_detail_approval_history": [],
+   "history_echo": [
+    {
+     "node": "node_1",
+     "taskName": "审批A",
+     "action": "APPROVE",
+     "assignee": "1",
+     "opinionData": {
+      "comment2": "i308-ret-e6325dd2-r1",
+      "level": "A",
+      "comment": "i308-ret-e6325dd2-r1"
+     },
+     "opinionFormId": "i3ev-r8b-opinion",
+     "opinionFormVersion": "v1",
+     "approvalResult": "APPROVED"
+    }
+   ],
+   "snapshots": [
+    "APPROVE|{\"opinionForm\":{\"formId\":\"i3ev-r8b-opinion\",\"version\":\"v1\",\""
+   ]
+  },
+  "r9a": {
+   "identities": [
+    {
+     "user": "admin",
+     "superAdmin": true,
+     "http": 200,
+     "code": 0,
+     "menu_count": 9,
+     "routes": [
+      "system",
+      "form",
+      "workflow",
+      "notify",
+      "agent",
+      "iot",
+      "openapi",
+      "storage",
+      "job"
+     ]
+    },
+    {
+     "user": "user2",
+     "superAdmin": true,
+     "http": 200,
+     "code": 0,
+     "menu_count": 9,
+     "routes": [
+      "system",
+      "form",
+      "workflow",
+      "notify",
+      "agent",
+      "iot",
+      "openapi",
+      "storage",
+      "job"
+     ]
+    },
+    {
+     "user": "user5",
+     "superAdmin": false,
+     "http": 200,
+     "code": 0,
+     "menu_count": 0,
+     "routes": []
+    }
+   ],
+   "wrong_path_diagnosis": {
+    "called": "/api/auth/me/menus",
+    "result": "NoResourceFoundException: No static resource auth/me/menus（GlobalExceptionHandler unexpected exception → 500）",
+    "real_endpoint": "/api/auth/menus（AuthMeController @RequestMapping({\"/system/auth\",\"/auth\"}) + @GetMapping(\"/menus\")）",
+    "classification": "采证脚本路径错误（环境/采集口径），非产品缺陷；无代码变化，frozen-f 有效"
+   }
+  },
+  "r9b": {
+   "marker": "i308-r9b-5421847a",
+   "def_id": "2098631970987401218",
+   "publish": 0,
+   "positive_admin": {
+    "actor": "admin superAdmin=true",
+    "code": 0
+   },
+   "negative_user5": {
+    "actor": "user5(2004) superAdmin=false 无角色",
+    "http": null,
+    "code": 403,
+    "msg": "无权限"
+   },
+   "graph_before": {
+    "graph_sha256": "cb971142369428f1bb76a4af681305af75cacf4ae64a532c284504f7831c4f46"
+   },
+   "graph_after_rejected": {
+    "graph_sha256": "cb971142369428f1bb76a4af681305af75cacf4ae64a532c284504f7831c4f46"
+   },
+   "unchanged": true,
+   "pass": true
+  }
+ }
+}

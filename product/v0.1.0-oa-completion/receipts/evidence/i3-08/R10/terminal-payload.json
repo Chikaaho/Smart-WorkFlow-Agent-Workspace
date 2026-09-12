@@ -1,0 +1,136 @@
+{
+ "schema": "agent-coding-engine.executor-terminal.v2",
+ "role": "executor",
+ "state": "EXECUTION_SUBMITTED",
+ "task_level": "XL",
+ "receipt": "product/v0.1.0-oa-completion/receipts/stage-i3-v0.1.0-oa-completion-08.md",
+ "evidence": [
+  "product/v0.1.0-oa-completion/receipts/evidence/i3-08/R10/manifest.json",
+  "product/v0.1.0-oa-completion/receipts/evidence/i3-08/r08-r09-api.json",
+  "product/v0.1.0-oa-completion/receipts/evidence/i3-08/R8a/validator-integration-run.exit",
+  "product/v0.1.0-oa-completion/receipts/evidence/i3-08/R9c/r9c-summary.json",
+  "product/v0.1.0-oa-completion/receipts/evidence/i3-08/R10/cleanup-attest.txt"
+ ],
+ "feature_status": "VERIFYING",
+ "work_items": [
+  {
+   "id": "r3a-nonowner-valid-negative",
+   "status": "COMPLETED",
+   "authorized": true,
+   "dependency_satisfied": true,
+   "actionable": false,
+   "next_action": "none (user5 superAdmin=false valid {data,version} envelope -> HTTP 403; zero side effect per-field readback; owner control same envelope code 0)"
+  },
+  {
+   "id": "r8a-disabled-component-identity",
+   "status": "COMPLETED",
+   "authorized": true,
+   "dependency_satisfied": true,
+   "actionable": false,
+   "next_action": "none (real fid fixed, config 1205, validate 2417, publish 1208, no /undefined/; submit layer via ApprovalOpinionValidator integration run 2/0/0/0 exit 0, EMAIL rejected 2307)"
+  },
+  {
+   "id": "r8b-history-echo-sign-rows",
+   "status": "COMPLETED",
+   "authorized": true,
+   "dependency_satisfied": true,
+   "actionable": false,
+   "next_action": "none (five round types with non-empty history echo objects incl opinionData via /workflow/my/instances/{id} history; addsign/supplement sign rows non-empty with opinionData in detail)"
+  },
+  {
+   "id": "r9a-menus-500-diagnosis",
+   "status": "COMPLETED",
+   "authorized": true,
+   "dependency_satisfied": true,
+   "actionable": false,
+   "next_action": "none (root cause: evidence script used /api/auth/me/menus -> NoResourceFoundException 500; real endpoint /api/auth/menus returns 200 code=0 for admin/user2 count=9 and user5 count=0; no product defect, no code change, frozen-f remains valid)"
+  },
+  {
+   "id": "r9b-unprivileged-graph-negative",
+   "status": "COMPLETED",
+   "authorized": true,
+   "dependency_satisfied": true,
+   "actionable": false,
+   "next_action": "none (user5 same-structure graph PUT -> 403; def detail sha256 and version unchanged)"
+  },
+  {
+   "id": "r9c-real-page-family",
+   "status": "COMPLETED",
+   "authorized": true,
+   "dependency_satisfied": true,
+   "actionable": false,
+   "next_action": "none (7 screenshots: admin designer deep-link/task detail/instance list/instance detail rendered with real data; user5 empty sidebar and /403 on deep-links)"
+  },
+  {
+   "id": "r10a-terminal-package",
+   "status": "COMPLETED",
+   "authorized": true,
+   "dependency_satisfied": true,
+   "actionable": false,
+   "next_action": "none (manifest file_count=25 single value, verify bad=0; validator exit=0; cleanup listeners=0)"
+  }
+ ],
+ "remaining_actionable_count": 0,
+ "independent_work_exhausted": true,
+ "next_action": "等待规划按提示 05 逐原子验收本回执与 i3-08 证据",
+ "next_action_type": "WAIT_PLANNER",
+ "progress_fingerprint": "i3-08-exec-20260912-frozen-f-74926960-r3a-r10a-pass",
+ "progress_basis": {
+  "files_changed": [
+   "Smart-WorkFlow-aPaaS-server/sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/validator/ApprovalOpinionValidatorDisabledTypeIntegrationTest.java（新增验证资产，不改实现）",
+   "product/v0.1.0-oa-completion/receipts/evidence/i3-08/（R3a/R8a/R8b/R9a/R9b/R9c/R10 全部新增证据）",
+   "product/v0.1.0-oa-completion/receipts/stage-i3-v0.1.0-oa-completion-08.md"
+  ],
+  "tool_actions": [
+   "R3a/R8a/R8b/R9a/R9b 真实 HTTP+SQL 对象链采集（token 仅内存持有，raw 流自动落盘）",
+   "R8a 提交层 ApprovalOpinionValidator 集成运行（2/0/0/0 exit 0）",
+   "R9c 真实浏览器页面族采集（ZCode IAB 真实登录会话 + vite 代理）",
+   "manifest sha256 工具生成 + 独立回读",
+   "Validator 实跑（PS 同契约实现，exit=0）"
+  ],
+  "new_evidence": [
+   "evidence/i3-08/r08-r09-api.json（R3a/R8a/R8b/R9a/R9b 全部真实字段与断言）",
+   "evidence/i3-08/R8a/（集成运行原始输出 + 测试源码）",
+   "evidence/i3-08/R9c/（7 张页面截图 + 页面职责映射 + fixtures）",
+   "evidence/i3-08/R10/（manifest/verify/payload/validator/cleanup）"
+  ],
+  "closed_work_items": [
+   "验收 06 §4 全部剩余原子：R3a、R8a、R8b、R9a、R9b、R9c、R10a",
+   "i3-07 采证脚本三处缺陷修正：非属主请求缺 version、/form/def/undefined 路径链、/auth/me/menus 误用路径"
+  ]
+ },
+ "stop_reason": "WAITING_FOR_PLANNER",
+ "tool_results": [
+  {
+   "tool": "http-sql-evidence",
+   "outcome": "SUCCEEDED",
+   "detail": "R3a/R8a/R8b/R9a/R9b 全部断言真实通过（r08-r09-api.json，pass 字段逐原子为 true）"
+  },
+  {
+   "tool": "maven-mvn-test",
+   "outcome": "FAILED",
+   "detail": "聚焦运行 ApprovalOpinionValidatorDisabledTypeIntegrationTest 为 2/0/0/0 exit 0（R8a/validator-integration-run.*）；全量 mvn test 在本 Windows/JDK21 主机 exit 1，6 例失败全部为 IoT JavaSubprocessSandboxTest 环境性失败——已按验收 06 §3.2 裁决为非回归并锁定（基线 f7101c8 同机复跑同 6 例），不写 SUCCEEDED，如实标注 exit=1"
+  },
+  {
+   "tool": "web-gates",
+   "outcome": "SUCCEEDED",
+   "detail": "Web 无代码变化，沿用验收 06 锁定的四门 exit=0（i3-07/R1/gates/web-*.exit）"
+  },
+  {
+   "tool": "browser-cua",
+   "outcome": "SUCCEEDED",
+   "detail": "R9c 真实页面族 7 张截图 + 真实登录会话（R9c/）"
+  },
+  {
+   "tool": "manifest-sha256",
+   "outcome": "SUCCEEDED",
+   "detail": "R10/manifest.json file_count=25，独立回读 bad=0（R10/manifest-verify.txt）"
+  },
+  {
+   "tool": "validate-terminal",
+   "outcome": "SUCCEEDED",
+   "detail": "validator 对 R10/terminal-payload.json 实跑 exit=0（R10/validator-exit.txt；PS 同契约实现，本机无 jq）"
+  }
+ ],
+ "browser_status": "OPERABLE"
+}

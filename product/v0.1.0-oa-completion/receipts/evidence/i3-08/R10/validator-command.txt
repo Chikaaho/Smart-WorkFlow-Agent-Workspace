@@ -1,0 +1,3 @@
+# R10a Validator 实跑命令（Windows 换机主机，无 /usr/bin/jq，使用同契约 PowerShell 实现）
+powershell -Command "& '<workspace>/.codex/governance/validate-terminal.ps1' -InputJson ([System.IO.File]::ReadAllText('<workspace>/product/v0.1.0-oa-completion/receipts/evidence/i3-08/R10/terminal-payload.json', [System.Text.Encoding]::UTF8))"
+# sh 等价（需 jq）：sh .codex/governance/validate-terminal.sh < R10/terminal-payload.json
