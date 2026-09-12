@@ -7,7 +7,7 @@
 > 阶段：I3  
 > 优先级：P0  
 > 任务等级：XL  
-> 阶段状态：VERIFYING  
+> 阶段状态：PASSED  
 > 日期：2026-09-10  
 > 前置探索：`search_fallback/v0.1.0-oa-completion-i3-current-seams.md`  
 > 范围裁决：`product/v0.1.0-oa-completion/receipts/planning-scope-update-stage-i3-designer-02.md`
@@ -181,7 +181,7 @@ I3 变更使下列既有证据可能失效：硬编码图生成、前端手写 `
 
 本文件是 I3 唯一正式执行入口：
 
-`product/v0.1.0-oa-completion/ready/direction-stage-i3-manual-approval-first-party-process-designer.md`
+`product/v0.1.0-oa-completion/passed/direction-stage-i3-manual-approval-first-party-process-designer.md`
 
 Executor 在本方向内自主制定内部实施计划、拆解 Step、选择实现结构并连续完成实现与验证；不得改变单一 `ProcessGraph` 权威、完整依赖退出、发布版本冻结、动作语义、历史不可变、服务端权限和多实例幂等边界。
 

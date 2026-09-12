@@ -1,9 +1,9 @@
 # 功能摘要
 
-> 规划侧最新同步点：2026-09-12（P60 `v0.1.0-oa-completion` IN_PROGRESS；I1、I2 **COMPLETED（规划已确认）**；I3 规划验收 05 未通过、保持 VERIFYING；三级继续收敛提示 04 已下发；正式功能数仍为44）。
+> 规划侧最新同步点：2026-09-12（P60 `v0.1.0-oa-completion` IN_PROGRESS；I1、I2 **COMPLETED（规划已确认）**；I3功能级验收08 **PASSED**、阶段三终态同步已执行，I3写为 **COMPLETED（待规划确认，2026-09-12）**；正式功能数仍为44）。
 > 清单当前值 **✅46/🟦22/⬜22**（90，M08 十行 🟦/⬜→✅，其余 80 行零变化）；功能数 44；全量双向映射见 `knowledge/feature-reconciliation-index.md`。
 
-- `v0.1.0-oa-completion`（P60，优先级P0）：**IN_PROGRESS**。I1、I2 **COMPLETED（规划已确认）**；I3“人工审批与自研流程设计器”为 **VERIFYING**，P47 纳入但未核销。规划验收 05 未通过：自研设计全链、审批语义、会签规则和生命周期行为已锁定；剩余 accessToken 清零、候选/PID 封装、RETURN 表单范围、调度通知链、handleResult 反向扫描、意见表单及权限总账。下一动作 = Executor 按三级继续收敛提示 04 提交回执 07 与 `evidence/i3-07/`。
+- `v0.1.0-oa-completion`（P60，优先级P0）：**IN_PROGRESS**。I1、I2 **COMPLETED（规划已确认）**；I3“人工审批与自研流程设计器”功能级 **PASSED**，P47仍不核销；阶段三终态同步已执行，I3 `COMPLETED（待规划确认，2026-09-12）` / `TERMINAL_SYNC_SUBMITTED`。规划验收08已锁定R0—R10全部原子；下一动作 = Planner终态复核`terminal-sync-stage-i3-v0.1.0-oa-completion-01.md`，确认 I3 `COMPLETED` 后再形成 I4 正式阶段方向。
 
 - `p21-iot-device-access`：**COMPLETED（规划已确认，2026-09-08）**，第44个正式功能；P21已核销、I14关闭、M08 10✅/1🟦/2⬜。主方向与阶段三方向均归档 `passed/`；最终裁决 `planning-final-review-terminal-sync-p21-iot-02-passed.md`。
 
