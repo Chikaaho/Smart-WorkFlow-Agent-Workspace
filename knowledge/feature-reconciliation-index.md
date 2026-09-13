@@ -7,7 +7,7 @@
 ## 0. 权威值（与 current-status/功能清单一致）
 
 - 清单：10 模块、55 功能、90 明细；**✅46/🟦22/⬜22**（p21-iot-device-access 十行 🟦/⬜→✅：M08-F01-01/02/03、F02-01/02、F03-01/02、F04-03/04、F05-01；其余 80 行不变）
-- 高级能力规划项（P60 v0.3.0-oa-completion 首次同步，2026-09-08）：**8 模块、64 条（ADV-M11—ADV-M18，键 `ADV-M11-F01-01`—`ADV-M18-F03-01`）**，正式登记于 `Smart-WorkFlow-Server/功能清单.md` 文末 ADV 章节；**未纳入 0.3.0 验收、不计入上方 90 明细 ✅/🟦/⬜ 统计、不并入已完成功能数**，状态统一 ⬜ 规划登记/待现状核实；规划定义权威为 `product/v0.3.0-oa-completion/ready/advanced-capability-feature-checklist.md`（本审计集合不并入该 64 条）
+- 高级能力规划项（P60 首次功能清单同步，2026-09-08；当时版本口径 `v0.3.0-oa-completion`，后经 Owner 更正统一登记为成熟 OA 目标 `0.1.0`）：**8 模块、64 条（ADV-M11—ADV-M18，键 `ADV-M11-F01-01`—`ADV-M18-F03-01`）**，正式登记于 `Smart-WorkFlow-aPaaS-server/功能清单.md` 文末 ADV 章节；**未纳入 `0.1.0` 路线验收、不计入上方 90 明细 ✅/🟦/⬜ 统计、不并入已完成功能数**，状态统一 ⬜ 规划登记/待现状核实；规划定义权威为 `product/v0.1.0-oa-completion/ready/advanced-capability-feature-checklist.md`（本审计集合不并入该 64 条）
 - P：物理 57 行、唯一 56 编号（P48 总表/明细双入口同值；P13 已核销移除、P23 零引用备案）
 - I：索引 54 条、区间 I1—I55 缺 I27（I27 缺行证据待定位，见 §5；I14 已满足/关闭 2026-09-08）
 - product 审计目录：55（总 57 − governance − knowledge-full-reconciliation）
@@ -171,7 +171,7 @@
 - **待 Owner 确认（1）**：P53
 - **仅骨架（1）**：P22
 - **无池行备案**：P13（已核销闭环，经 knowledge/features/sysrole-v5-column-alignment.md，合规移除）；P23（全工作区零引用）
-- **审计外新增编号（1）**：P59（CH-aPaaS 项目说明、仓库与 main 分支整理及自动发版；Owner 2026-09-04；非新增业务功能统一交付，不映射 90 明细；2026-09-04 功能级 PASSED 并核销，待阶段三终态复核，见 `knowledge/features/p59-ch-apaas-project-update.md`）
+- **审计外新增编号（1）**：P59（CH-aPaaS 项目说明、仓库与 main 分支整理及自动发版；Owner 2026-09-04；非新增业务功能统一交付，不映射 90 明细；**已核销并完成终态复核**：规划复验 PASSED（2026-09-05）`product/p59-ch-apaas-project-update/receipts/planning-final-review-p59-terminal-sync-02-passed.md`，功能状态 COMPLETED（规划已确认，2026-09-05），见 `knowledge/features/p59-ch-apaas-project-update.md`）
 
 ## 3. I 编号全集（54 条，I1—I55 区间缺 I27）
 
@@ -206,11 +206,11 @@
 | P23 | 全工作区零引用（todo/knowledge/memory 均无）；记录枚举事实，不重建 |
 | agent-model-orchestration feature 链接 | `session-handoff` 旧必读清单中的该链接指向不存在文件；已改指本索引（§6）；不重建已缺失正文 |
 | search 局部通知任务 | `search_task/notification-personal-workflow-reconciliation-20260904.md` 已被主方向吸收（方向 §1「不再单独推进/提交局部结项」）；三类查询与通知结论见 audit-ledger-d、audit-ledger-e 及本索引 M04-F05-01/M06 行 |
-| 其余 search 资料 | 7 份活动目录中的探索文件已回传且为历史资料；4 份已归档（.archive/）；11 份无任务历史回传保留链接；knowledge-full-reconciliation 任务已完成（COMPLETED 已确认），阶段三方向已归档 `passed/direction-knowledge-full-reconciliation-terminal-sync.md`，历史文件不删除；当前执行入口见 `knowledge/current-status.md`「当前唯一下一动作」（P59 终态复核） |
+| 其余 search 资料 | 7 份活动目录中的探索文件已回传且为历史资料；4 份已归档（.archive/）；11 份无任务历史回传保留链接；knowledge-full-reconciliation 任务已完成（COMPLETED 已确认），阶段三方向已归档 `passed/direction-knowledge-full-reconciliation-terminal-sync.md`，历史文件不删除；当前执行入口以 `knowledge/current-status.md`「当前唯一下一动作」为准（2026-09-13 为 I4 终态三层状态全量对账，方向 `product/v0.1.0-oa-completion/ready/direction-stage-i4-status-reconciliation.md`） |
 
 ## 6. 链接与追踪
 
-- 当前状态权威：`knowledge/current-status.md`；清单：`Smart-WorkFlow-Server/功能清单.md`；问题注册：`knowledge/known-issues.md`；需求池：`todo/requirement-pool.md`
+- 当前状态权威：`knowledge/current-status.md`；清单：`Smart-WorkFlow-aPaaS-server/功能清单.md`；问题注册：`knowledge/known-issues.md`；需求池：`todo/requirement-pool.md`
 - 任务登记：`knowledge/features/p59-ch-apaas-project-update.md`（P59 统一交付任务，COMPLETED 规划已确认，2026-09-05）；`knowledge/features/knowledge-full-reconciliation.md`（非业务功能，COMPLETED 已确认，历史）
 - 会议交接：`knowledge/session-handoff.md`（已压缩，原 P57 时点全文见 `knowledge/history/session-handoff-before-knowledge-full-reconciliation-20260904.md`）
 - 本索引建立于审计账本 A—E（`product/knowledge-full-reconciliation/receipts/`），原件仅供追溯

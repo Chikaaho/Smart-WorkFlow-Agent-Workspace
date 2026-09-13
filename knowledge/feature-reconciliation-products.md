@@ -86,6 +86,16 @@
 | feature-tracking-terminal-state-cleanup | 知识状态清理任务（D91） | product/feature-tracking-terminal-state-cleanup/passed/ + product/feature-tracking-terminal-state-cleanup/receipts/completion.md | X5：缺规划裁决回执，保留历史结论 |
 | v0.0.1-beta-release-readiness | v0.0.1-beta 发布任务 | product/v0.0.1-beta-release-readiness/passed/ + product/v0.0.1-beta-release-readiness/receipts/planning-review-v0.0.1-beta-git-release-20260830.md | X7：RELEASED；方向归档集合不完整 |
 
+## F 组：2026-09-04 审计后新增正式功能（42—44，附加映射，不并入 A—E 的 55 键审计集合）
+
+> 附加同步：2026-09-13（I4 终态三层状态全量对账，方向 `product/v0.1.0-oa-completion/ready/direction-stage-i4-status-reconciliation.md`）。A—E 组的 55 键集合校验为 **2026-09-04 快照**，其结论不变；本组为审计后新完成正式功能的反向映射补齐，使正式功能序号链由 41 续至当前权威值 **44**（`knowledge/current-status.md`）。
+
+| 目录键 | 性质 | 证据指针 | 对应明细/P 或范围 |
+|---|---|---|---|
+| p4-oa-personal-center-dual-dispatch | 正式功能第 42 个（功能状态 COMPLETED（规划已确认，2026-09-07）） | product/p4-oa-personal-center-dual-dispatch/passed/ + product/p4-oa-personal-center-dual-dispatch/receipts/planning-final-review-terminal-sync-p4-02-passed.md | P4 本轮子集；M04-F05-01 ✅（P4 总项仍开放未核销：转办/委托/加签/撤回、流程版本/挂起激活等候选） |
+| v0.0.2-oa | 正式功能第 43 个（功能状态 COMPLETED（规划已确认，2026-09-07）） | product/v0.0.2-oa/passed/ + product/v0.0.2-oa/receipts/planning-final-review-terminal-sync-v0.0.2-oa-03-passed.md | A1—A8 交付：M04-F05-01、M06-F04-01 两行 🟦→✅；P3/P54/P55 核销，P2/P4 开放部分实现未核销 |
+| p21-iot-device-access | 正式功能第 44 个（功能状态 COMPLETED（规划已确认，2026-09-08）） | product/p21-iot-device-access/passed/ + product/p21-iot-device-access/receipts/planning-final-review-terminal-sync-p21-iot-02-passed.md | P21 核销；M08 十行 ⬜/🟦→✅（F01-01/02/03、F02-01/02、F03-01/02、F04-03/04、F05-01）；F04-01 保持 🟦、F04-02/F05-02 保持 ⬜；I14 已满足/关闭 |
+
 ## 集合校验（双向差集，原始输出见 evidence-sync-b-correction-02）
 
 - 期望键：`evidence-correction-g1-g5/raw-product-dirs-audited.txt`（55）。
