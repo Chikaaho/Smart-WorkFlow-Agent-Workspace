@@ -3,7 +3,7 @@
 > 规划侧最新同步点：2026-09-13（P60=`IN_PROGRESS`；I1—I4 `COMPLETED（规划已确认）`；I5—I6未开始；正式功能数44）。
 > 清单当前值 **✅46/🟦22/⬜22**（90，M08 十行 🟦/⬜→✅，其余 80 行零变化）；功能数 44；全量双向映射见 `knowledge/feature-reconciliation-index.md`。
 
-- `v0.1.0-oa-completion`（P60，优先级P0）：整体 **IN_PROGRESS**。I4终态同步最终复核03 `PASSED`，I4规划确认终态投影完成、三个方向均归档`passed/`；当前唯一入口=`search_task/v0.1.0-oa-completion-i5-current-seams.md`，下一动作=I5第三方SSO现状接缝只读探索（不授权实现）。
+- `v0.1.0-oa-completion`（P60，优先级P0）：整体 **IN_PROGRESS**。I4规划确认终态投影复核01 `PASSED`，四个I4方向均归档`passed/`；当前唯一入口为已激活的I5第三方SSO现状接缝只读探索。
 
 - `p21-iot-device-access`：**COMPLETED（规划已确认，2026-09-08）**，第44个正式功能；P21已核销、I14关闭、M08 10✅/1🟦/2⬜。主方向与阶段三方向均归档 `passed/`；最终裁决 `planning-final-review-terminal-sync-p21-iot-02-passed.md`。
 

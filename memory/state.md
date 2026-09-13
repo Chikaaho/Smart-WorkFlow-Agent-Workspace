@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-> 当前规划（2026-09-13）：P60成熟OA`0.1.0`目标/当前迭代`0.0.3`，**P0 / XL / IN_PROGRESS**。I1—I4 **COMPLETED（规划已确认）**；I5—I6未开始。I4终态同步最终复核03 `PASSED`，I4规划确认值已投影完成，三个方向均归档`passed/`；当前唯一入口=`search_task/v0.1.0-oa-completion-i5-current-seams.md`，唯一动作=I5第三方SSO现状接缝只读探索（不授权实现）。功能数44、✅46/🟦22/⬜22、ADV64与P编号不变。
+> 当前规划（2026-09-13）：P60成熟OA`0.1.0`目标/当前迭代`0.0.3`，**P0 / XL / IN_PROGRESS**。I1—I4 **COMPLETED（规划已确认）**；I5—I6未开始。I4规划确认终态投影复核01 `PASSED`，四个I4方向均归档`passed/`；当前唯一入口=`search_task/v0.1.0-oa-completion-i5-current-seams.md`，唯一动作=I5第三方SSO现状接缝只读探索。功能数44、✅46/🟦22/⬜22、ADV64与P编号不变。
 
 > 最近完成基线：P21 **COMPLETED（规划已确认，2026-09-08）**。功能44、清单✅46/🟦22/⬜22、P21核销、I14关闭均锁定；正式计数以 `knowledge/current-status.md` 为准。
 
