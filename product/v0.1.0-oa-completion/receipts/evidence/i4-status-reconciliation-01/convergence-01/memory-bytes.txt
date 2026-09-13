@@ -1,0 +1,30 @@
+== memory 字节数（I4 终态三层一致性收敛轮）==
+口径: wc -c memory/*.md （逐字节）
+
+-- 对照基线：上一提交（64efc5f）--
+     753  memory/README.md
+     857  memory/architecture.md
+     713  memory/constraints.md
+    2586  memory/decisions.md
+    2626  memory/features.md
+    2231  memory/handoff.md
+    2766  memory/issues.md
+    3130  memory/state.md
+total(before) = 15662
+
+-- 本轮修正后（工作树实测）--
+  770 memory/README.md
+  857 memory/architecture.md
+  713 memory/constraints.md
+ 2586 memory/decisions.md
+ 2579 memory/features.md
+ 2333 memory/handoff.md
+ 2766 memory/issues.md
+ 3274 memory/state.md
+15878 total
+total(after) = 15878
+max single file = 3274 bytes
+净变化 = 216 字节
+
+-- 约束核对：每短文件 <5KB(5120)、总量 <20KB(20480) --
+max=3274  total=15878

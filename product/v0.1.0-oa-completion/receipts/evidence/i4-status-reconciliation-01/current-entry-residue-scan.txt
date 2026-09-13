@@ -1,45 +1,47 @@
-== I4 三层对账：当前入口残留扫描（修正后，2026-09-13）==
+== I4 终态三层一致性：当前入口残留扫描（修正后，权威结果）==
+生成时点: 2026-09-13T05:46:38.803Z
+验证器: product/v0.1.0-oa-completion/receipts/evidence/i4-status-reconciliation-01/convergence-01/verify-three-layer-consistency.js
+同源结果: product/v0.1.0-oa-completion/receipts/evidence/i4-status-reconciliation-01/convergence-01/real-run-after-fix.json  sha256=b00f51ee9c41f46de94175732ef3feaa2b77c7d92d2cb62817c980eccf6510ad
 
--- A. 过期当前指针模式扫描 --
-(无命中)
+本文件与 post-fix-scan.txt 由**同一个验证器、同一次真实运行**生成，二者计数器与命中明细完全一致，并以同一 sha256 绑定。
 
-当前指针违规命中数 = 0
-历史事件行命中数(按“历史回执原文保留”允许) = 0
+-- 扫描对象（当前状态段/当前状态表格行/当前待办段/当前焦点/唯一入口）--
+  1. knowledge/current-status.md
+  2. knowledge/session-handoff.md
+  3. knowledge/features/v0.1.0-oa-completion.md
+  4. memory/README.md
+  5. memory/state.md
+  6. memory/features.md
+  7. memory/handoff.md
+  8. todo/v0.1.0-oa-plan.md
+  9. todo/requirement-pool.md
+  10. Smart-WorkFlow-aPaaS-server/功能清单.md
+  11. product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md
 
--- B. 关键令牌普查（区分历史事件行 / 其他，透明登记，不改写历史）--
---- TERMINAL_SYNC_SUBMITTED ---
-  [其他] knowledge/current-status.md:20 | 变更类型记录 | 2026-09-13 I4 三层状态全量对账（阶段级，非版本级）：按 `ready/direction-stage-i4-status-reconciliation.md` 对工程《功能清单》90 明细、knowled
-  [其他] knowledge/current-status.md:23 | 最近审查 | `product/v0.1.0-oa-completion/receipts/planning-review-stage-i4-v0.0.3-oa-iteration-06-passed.md`（I4 功能级验收 PASS
-  [历史事件行] knowledge/features/v0.1.0-oa-completion.md:32 - **2026-09-13 I4 阶段三终态同步**（方向 `ready/direction-stage-i4-terminal-sync.md`；回执 `receipts/terminal-sync-stage-i4-v0.0.3-oa
-  [历史事件行] knowledge/features/v0.1.0-oa-completion.md:38 - **2026-09-12 I3 阶段三终态同步**（方向 `ready/direction-stage-i3-terminal-sync.md`；回执 `receipts/terminal-sync-stage-i3-v0.1.0-oa
-  [历史事件行] knowledge/features/v0.1.0-oa-completion.md:42 - **2026-09-10 I2 阶段三终态同步**（方向 `ready/direction-stage-i2-terminal-sync.md`；回执 `receipts/terminal-sync-stage-i2-v0.1.0-oa
-  [历史事件行] knowledge/features/v0.1.0-oa-completion.md:54 - **2026-09-09 I1 终态同步**（验收 `receipts/planning-review-stage-i1-v0.3.0-oa-completion-04-passed.md` PASSED；方向 `ready/direc
---- v0.3.0-oa-completion ---
-  [其他] knowledge/current-status.md:27 - `v0.1.0-oa-completion`（P60 0.1.0 OA 全功能收口）：方向 **READY（2026-09-08）→ IN_PROGRESS**；主方向 `product/v0.1.0-oa-completion/rea
-  [其他] knowledge/current-status.md:43 - P60 方向与定义：`product/v0.1.0-oa-completion/`（ready/direction-*.md、ready/advanced-capability-feature-checklist.md、passed/、
-  [其他] knowledge/session-handoff.md:28 - 历史材料（I1 阶段证据，不改）：`product/v0.3.0-oa-completion/`。
-  [其他] knowledge/session-handoff.md:61 - v0.1.0-oa-completion（P60，当前活动）：方向与规划定义 `product/v0.1.0-oa-completion/ready/`；主方向 `ready/direction-v0.1.0-oa-completion
-  [其他] knowledge/features/v0.1.0-oa-completion.md:3 > 本文件为该 XL 主功能的执行追踪登记；唯一执行入口 `product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md`。目标版本由 Owner 确认统一登记为 
-  [其他] knowledge/features/v0.1.0-oa-completion.md:15 | 关键回执 | 历史：`product/v0.3.0-oa-completion/receipts/`（I1 验收/终态同步系列）；I2：`receipts/planning-review-stage-i2-v0.1.0-oa-compl
-  [历史事件行] knowledge/features/v0.1.0-oa-completion.md:52 - **2026-09-09 G0 登记同步 + I2 执行进入**：按更正回执 01 与 I2 阶段方向 §2，将执行侧权威材料（current-status/session-handoff/features，features 文件由 `
-  [历史事件行] knowledge/features/v0.1.0-oa-completion.md:54 - **2026-09-09 I1 终态同步**（验收 `receipts/planning-review-stage-i1-v0.3.0-oa-completion-04-passed.md` PASSED；方向 `ready/direc
-  [历史事件行] knowledge/features/v0.1.0-oa-completion.md:56 - **2026-09-09 I1 三验（G1b/G2b/G3b/G5b/G7b1 锁定，唯一剩 G7b2）→ 补证回执 04**（`receipts/stage-i1-v0.3.0-oa-completion-04.md`，证据 `evi
-  [历史事件行] knowledge/features/v0.1.0-oa-completion.md:58 - **2026-09-09 I1 二验（G4/G6 锁定，剩 G1b/G2b/G3b/G5b/G7b）→ 补证回执 03**（`receipts/stage-i1-v0.3.0-oa-completion-03.md`，证据 `evide
-  [历史事件行] knowledge/features/v0.1.0-oa-completion.md:60 - **2026-09-09 I1 首验 VERIFYING（G1—G7）→ 补证回执 02**（`receipts/stage-i1-v0.3.0-oa-completion-02.md`，证据 `evidence/i1-02/`）：G6
-  [历史事件行] knowledge/features/v0.1.0-oa-completion.md:62 - **2026-09-08 I1「组织与权限底座」实现与自验**（阶段回执 `receipts/stage-i1-v0.3.0-oa-completion-01.md`，待规划验收）：迁移 V67（sys_user_post.dept_i
-  [历史事件行] knowledge/features/v0.1.0-oa-completion.md:64 - **2026-09-08 首次功能清单同步**：核对基点差异（P21 最终复核 02 PASSED 已确认；direction 与 requirement-pool 均登记 P60 READY）；核对 ADV 键与既有 Mxx-Fyy-
-  [其他] knowledge/feature-reconciliation-index.md:10 - 高级能力规划项（P60 首次功能清单同步，2026-09-08；当时版本口径 `v0.3.0-oa-completion`，后经 Owner 更正统一登记为成熟 OA 目标 `0.1.0`）：**8 模块、64 条（ADV-M11—AD
-  [其他] Smart-WorkFlow-aPaaS-server/功能清单.md:28 > 2026-09-08（P60 首次功能清单同步；当时版本口径 `v0.3.0-oa-completion`，后经 Owner 更正统一登记为成熟 OA 目标 `0.1.0`／当前交付迭代 `0.0.3`）：文末新增 **ADV-M11—
-  [其他] Smart-WorkFlow-aPaaS-server/功能清单.md:38 P60 首次功能清单同步（2026-09-08，当时版本口径 `v0.3.0-oa-completion`，后经 Owner 更正为成熟 OA 目标 `0.1.0`）：新增 ADV 章节 8 模块/64 条，不计入上方 90 明细统计；M0
-  [其他] Smart-WorkFlow-aPaaS-server/功能清单.md:227 > 登记事件：P60 首次功能清单同步（2026-09-08；当时版本口径 `v0.3.0-oa-completion`，后经 Owner 更正统一登记为成熟 OA 目标 `0.1.0`；方向 `product/v0.1.0-oa-comp
---- product/v0.3.0-oa-completion ---
-  [其他] knowledge/current-status.md:27 - `v0.1.0-oa-completion`（P60 0.1.0 OA 全功能收口）：方向 **READY（2026-09-08）→ IN_PROGRESS**；主方向 `product/v0.1.0-oa-completion/rea
-  [其他] knowledge/current-status.md:43 - P60 方向与定义：`product/v0.1.0-oa-completion/`（ready/direction-*.md、ready/advanced-capability-feature-checklist.md、passed/、
-  [其他] knowledge/session-handoff.md:28 - 历史材料（I1 阶段证据，不改）：`product/v0.3.0-oa-completion/`。
-  [其他] knowledge/session-handoff.md:61 - v0.1.0-oa-completion（P60，当前活动）：方向与规划定义 `product/v0.1.0-oa-completion/ready/`；主方向 `ready/direction-v0.1.0-oa-completion
-  [其他] knowledge/features/v0.1.0-oa-completion.md:3 > 本文件为该 XL 主功能的执行追踪登记；唯一执行入口 `product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md`。目标版本由 Owner 确认统一登记为 
-  [其他] knowledge/features/v0.1.0-oa-completion.md:15 | 关键回执 | 历史：`product/v0.3.0-oa-completion/receipts/`（I1 验收/终态同步系列）；I2：`receipts/planning-review-stage-i2-v0.1.0-oa-compl
---- P59 终态复核 ---
+-- 历史豁免规则（只有落在显式历史容器内才豁免，落点在当前容器内的旧指针一律判失败）--
+  H1 HTML 注释块；H2 有日期的事件条目（- **20dd-mm-dd）；H3 数据化历史记录行（^(**)?20dd-mm-dd）；
+  H4 以关键字命名的章节（已执行动作/对账记录/对账轮/同步轮/变更记录/变更类型记录/审计账本/历史记录/历史快照/附录/证据链）；
+  H5 标题自带日期（形如（2026-09-02））的时点化章节；H6 行内含明确历史措辞（（历史/历史记录/已归档/不再适用/已被…取代/当时版本口径/只作历史/历史快照/作为历史 等）。
+  未落在上述任一种的行一律按当前陈述校验。
+
+-- 计数器（权威值）--
+  stale_entry = 0
+  stale_action = 0
+  multiple_current_entry = 0
+  registration_missing = 0
+  current_state_conflict = 0
+  broken_current_path = 0
+  total_failures = 0
+
+-- 偏差明细（应为空）--
   (无)
---- 1223 tests ---
-  (无)
+
+-- 当前入口声明集合（必须唯一等于收敛提示 01）--
+  product/v0.1.0-oa-completion/receipts/planning-execution-prompt-terminal-sync-stage-i4-v0.0.3-oa-iteration-01.md
+
+-- 负向夹具（必须各自非零失败、exit=1）--
+  fixture-stale-entry.md（旧 terminal-sync 指针）: exit=1 counters={"stale_entry":1,"stale_action":1,"multiple_current_entry":1,"registration_missing":0,"current_state_conflict":0,"broken_current_path":0}
+  fixture-waiting-action.md（旧等待动作）: exit=1 counters={"stale_entry":0,"stale_action":1,"multiple_current_entry":0,"registration_missing":0,"current_state_conflict":0,"broken_current_path":0}
+  fixture-broken-path.md（断链当前路径）: exit=1 counters={"stale_entry":1,"stale_action":0,"multiple_current_entry":1,"registration_missing":0,"current_state_conflict":0,"broken_current_path":1}
+  fixture-state-conflict.md（当前状态值冲突）: exit=1 counters={"stale_entry":0,"stale_action":0,"multiple_current_entry":0,"registration_missing":0,"current_state_conflict":4,"broken_current_path":0}
+  fixture-missing-registration.tsv（缺失登记路径）: exit=1 counters=null

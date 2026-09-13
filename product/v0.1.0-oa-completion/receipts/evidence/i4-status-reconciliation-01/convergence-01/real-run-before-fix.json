@@ -1,0 +1,37 @@
+{
+  "mode": "real",
+  "expected_entry": "product/v0.1.0-oa-completion/receipts/planning-execution-prompt-terminal-sync-stage-i4-v0.0.3-oa-iteration-01.md",
+  "expected_action_hint": "关闭 TS4-R1a/b/c 并提交回执 03",
+  "declared_current_entries": [
+    "ready/direction-stage-i4-status-reconciliation.md",
+    "product/v0.1.0-oa-completion/ready/direction-stage-i4-status-reconciliation.md"
+  ],
+  "stale_entry": [
+    "knowledge/current-status.md:43 → 入口 `ready/direction-stage-i4-status-reconciliation.md`（期望收敛提示）",
+    "knowledge/current-status.md:50 → 入口 `product/v0.1.0-oa-completion/ready/direction-stage-i4-status-reconciliation.md`（期望收敛提示）",
+    "knowledge/session-handoff.md:3 → 入口 `product/v0.1.0-oa-completion/ready/direction-stage-i4-status-reconciliation.md`（期望收敛提示）",
+    "knowledge/session-handoff.md:27 → 入口 `product/v0.1.0-oa-completion/ready/direction-stage-i4-status-reconciliation.md`（期望收敛提示）",
+    "knowledge/features/v0.1.0-oa-completion.md:8 → 入口 `product/v0.1.0-oa-completion/ready/direction-stage-i4-status-reconciliation.md`（期望收敛提示）"
+  ],
+  "stale_action": [
+    "product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md:8 → > 功能状态：IN_PROGRESS（I1、I2、I3 均 COMPLETED（规划已确认）；I4 COMPLETED（待规划确认，2026-09-13）、机器状态 `TERMINAL_SYNC_SUBMITTED` 待"
+  ],
+  "broken_current_path": [],
+  "current_state_conflict": [
+    "knowledge/current-status.md:20 → I3 应为 COMPLETED（规划已确认，2026-09-12）",
+    "knowledge/current-status.md:20 → I4 应为 COMPLETED（待规划确认，2026-09-13）"
+  ],
+  "multiple_current_entry": [
+    "当前入口集合含非期望项 `ready/direction-stage-i4-status-reconciliation.md`",
+    "当前入口集合含非期望项 `product/v0.1.0-oa-completion/ready/direction-stage-i4-status-reconciliation.md`"
+  ],
+  "registration_missing": [],
+  "counters": {
+    "stale_entry": 5,
+    "multiple_current_entry": 2,
+    "registration_missing": 0,
+    "current_state_conflict": 2,
+    "broken_current_path": 0
+  },
+  "total_failures": 9
+}
