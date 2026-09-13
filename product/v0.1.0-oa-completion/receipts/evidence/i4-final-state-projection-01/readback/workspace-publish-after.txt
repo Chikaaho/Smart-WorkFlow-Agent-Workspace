@@ -1,0 +1,26 @@
+== I4 规划确认终态投影：推送后只读回读（定稿）@ 2026-09-13T14:14:55+08:00 ==
+
+-- git ls-remote origin develop-sw --
+9b6ea5cb483b67306d95007a322a1275f1578fc8	refs/heads/develop-sw
+
+-- 本轮 Workspace 提交 --
+9b6ea5c chore(oa): 投影 I4 规划确认终态并切换当前入口至 I5 现状接缝探索
+
+-- 本地 / 跟踪引用 / tree --
+HEAD              = 9b6ea5cb483b67306d95007a322a1275f1578fc8
+origin/develop-sw = 9b6ea5cb483b67306d95007a322a1275f1578fc8
+ahead/behind      = 0	0
+tree local        = 5064370ce069474d18164136f7f04b937361e8f7
+tree remote       = 5064370ce069474d18164136f7f04b937361e8f7
+
+-- push 结果 --
+885a0b8..9b6ea5c  develop-sw -> develop-sw
+
+-- 端点内容抽查 --
+投影回执 cmp=0
+投影回执末行前缀: ENGINE_TERMINAL 
+I5 探索任务 cmp=0
+远端 passed/ I4 方向数: 3
+
+-- 口径 --
+推送后权威远端终点以 `git ls-remote origin develop-sw` 实时回读为准。

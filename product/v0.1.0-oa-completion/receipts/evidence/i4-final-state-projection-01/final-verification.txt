@@ -1,0 +1,36 @@
+== I4 规划确认终态投影最终复核快照 @ 2026-09-13T14:14:57+08:00 ==
+
+--- 三仓 branch / local / remote / ahead-behind ---
+[Workspace] branch=develop-sw local=9b6ea5cb483b67306d95007a322a1275f1578fc8 remote=9b6ea5cb483b67306d95007a322a1275f1578fc8 aheadBehind=0	0
+[Server] branch=develop local=dd51f7694780a504b8e0cd6aca5fb50de71273cf remote=dd51f7694780a504b8e0cd6aca5fb50de71273cf aheadBehind=0	0
+[Web] branch=develop local=8dfc8dc710acfe6227040a00fd009457f8d03b4e remote=8dfc8dc710acfe6227040a00fd009457f8d03b4e aheadBehind=0	0
+
+--- I4 三方向均在 passed/ ---
+direction-stage-i4-orchestration-process-operations-workbench.md
+direction-stage-i4-status-reconciliation.md
+direction-stage-i4-terminal-sync.md
+
+--- 验证器（复用，I5 期望值）---
+exit=0
+counters={"stale_entry":0,"stale_action":0,"multiple_current_entry":0,"registration_missing":0,"current_state_conflict":0,"broken_current_path":0}
+declared=["search_task/v0.1.0-oa-completion-i5-current-seams.md"]
+
+--- 证据 manifest 回读 ---
+OK=18
+(no failures)
+
+--- 远端 tip 处投影回执末行校验 ---
+validator(remote tip) exit=0
+remote tip lastline == validated payload (cmp=0)
+
+--- memory 容量 ---
+total=15493 max=3006
+
+--- 未提交残留 ---
+?? Smart-WorkFlow-aPaaS-Web/
+?? Smart-WorkFlow-aPaaS-server/
+?? product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-02/readback/workspace-publish-after.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i4-02/server-dev.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i4-final-state-projection-01/final-verification.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i4-final-state-projection-01/readback/
+?? product/v0.1.0-oa-completion/receipts/evidence/i4-final-state-projection-01/real-run-final.json
