@@ -1,0 +1,31 @@
+{
+  "user": "admin",
+  "method": "POST",
+  "path": "/workflow/templates",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "id": "2098846812961071105",
+      "createTime": "2026-09-13T02:50:49.5563143",
+      "createBy": "1",
+      "updateTime": "2026-09-13T02:50:49.5563143",
+      "updateBy": "1",
+      "deleted": 0,
+      "version": "0",
+      "tenantId": "0",
+      "name": "I4 协作模板M",
+      "category": "协同办公",
+      "description": "I4 模板生命周期来源",
+      "formKey": "i4_leave_form",
+      "graphJson": "{\"processKey\":\"i4_dynamic_parallel_def\",\"name\":\"I4 动态并行协作审批\",\"formKey\":\"i4_leave_form\",\"version\":1,\"contractVersion\":2,\"elements\":[{\"id\":\"start\",\"kind\":\"node\",\"type\":\"START\",\"x\":80,\"y\":200},{\"id\":\"dyn\",\"kind\":\"node\",\"type\":\"DYNAMIC_PARALLEL\",\"x\":300,\"y\":200,\"config\":{\"name\":\"部门负责人并行审批\",\"mode\":\"ALL\",\"maxBranches\":50,\"emptyStrategy\":\"BLOCK\",\"invalidStrategy\":\"SKIP\",\"source\":{\"type\":\"VARIABLE\",\"value\":\"deptList\"}}},{\"id\":\"end\",\"kind\":\"node\",\"type\":\"END\",\"x\":560,\"y\":200},{\"id\":\"e1\",\"kind\":\"edge\",\"source\":\"start\",\"target\":\"dyn\"},{\"id\":\"e2\",\"kind\":\"edge\",\"source\":\"dyn\",\"target\":\"end\"}]}",
+      "templateVersion": 1,
+      "status": "ENABLED",
+      "scopeType": "GLOBAL",
+      "scopeDeptId": null,
+      "sourceDefId": null,
+      "sourceDefVersion": null
+    }
+  }
+}

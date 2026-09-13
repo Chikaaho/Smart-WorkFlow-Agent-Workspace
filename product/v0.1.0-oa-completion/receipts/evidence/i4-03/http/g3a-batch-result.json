@@ -1,0 +1,55 @@
+{
+  "user": "leader1",
+  "method": "POST",
+  "path": "/workflow/tasks/batch-action",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "success": "2",
+      "total": 6,
+      "failed": "4",
+      "results": [
+        {
+          "taskId": "370d1139-aedb-11f1-9447-00ffa7734675",
+          "action": "APPROVE",
+          "success": true
+        },
+        {
+          "taskId": "3affcf61-aedb-11f1-9447-00ffa7734675",
+          "action": "APPROVE",
+          "success": false,
+          "errorCode": 403,
+          "message": "无权处理该任务"
+        },
+        {
+          "taskId": "3cd1f765-aedb-11f1-9447-00ffa7734675",
+          "action": "APPROVE",
+          "success": false,
+          "errorCode": 2308,
+          "message": "审批意见不能为空"
+        },
+        {
+          "taskId": "3cd1f765-aedb-11f1-9447-00ffa7734675",
+          "action": "APPROVE",
+          "success": true
+        },
+        {
+          "taskId": "370d1139-aedb-11f1-9447-00ffa7734675",
+          "action": "APPROVE",
+          "success": false,
+          "errorCode": 2305,
+          "message": "节点已被处理"
+        },
+        {
+          "taskId": "38e098cd-aedb-11f1-9447-00ffa7734675",
+          "action": "APPROVE",
+          "success": false,
+          "errorCode": 2305,
+          "message": "节点已被处理"
+        }
+      ]
+    }
+  }
+}

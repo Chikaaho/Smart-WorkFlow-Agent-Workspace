@@ -1,0 +1,68 @@
+{
+  "user": "initiator",
+  "method": "GET",
+  "path": "/workflow/my/instances/2098939102085795842",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "instance": {
+        "id": "2098939102085795842",
+        "createTime": "2026-09-13T08:57:32.998225",
+        "createBy": "2098938976311201793",
+        "updateTime": "2026-09-13T08:57:32.998225",
+        "updateBy": "2098938976311201793",
+        "deleted": 0,
+        "version": "0",
+        "tenantId": "0",
+        "processInstanceId": "1a3af432-af0e-11f1-b771-00ffa7734675",
+        "processDefKey": "bpm_58249f78618e4e01",
+        "businessKey": "56c85a0f-fbe6-47e1-a371-a1176a15e331",
+        "formKey": "i4_leave_form",
+        "initiatorId": "2098938976311201793",
+        "status": "APPROVED",
+        "defVersion": 2
+      },
+      "processName": "I4 动态并行协作审批",
+      "formKey": "i4_leave_form",
+      "businessKey": "56c85a0f-fbe6-47e1-a371-a1176a15e331",
+      "status": "APPROVED",
+      "progress": [],
+      "history": [
+        {
+          "taskId": "1a3d3e3d-af0e-11f1-b771-00ffa7734675",
+          "taskName": "部门负责人并行审批",
+          "nodeKey": "dyn",
+          "assignee": "2098938975967268865",
+          "assigneeName": "leader2",
+          "createTime": "2026-09-13T08:57:32.982",
+          "endTime": "2026-09-13T08:57:36.72",
+          "action": "APPROVE",
+          "approvalResult": "APPROVED",
+          "opinionData": {
+            "comment": "I4-r4 历史意见二"
+          },
+          "opinionFormId": "DEFAULT_REMARK",
+          "opinionFormVersion": "1"
+        },
+        {
+          "taskId": "1a3ca1f8-af0e-11f1-b771-00ffa7734675",
+          "taskName": "部门负责人并行审批",
+          "nodeKey": "dyn",
+          "assignee": "2098938975577198593",
+          "assigneeName": "leader1",
+          "createTime": "2026-09-13T08:57:32.978",
+          "endTime": "2026-09-13T08:57:36.602",
+          "action": "APPROVE",
+          "approvalResult": "APPROVED",
+          "opinionData": {
+            "comment": "I4-r4 历史意见一"
+          },
+          "opinionFormId": "DEFAULT_REMARK",
+          "opinionFormVersion": "1"
+        }
+      ]
+    }
+  }
+}

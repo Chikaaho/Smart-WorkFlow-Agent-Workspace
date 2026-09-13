@@ -1,0 +1,5 @@
+== web four gates @ candidate C4 ==
+lint(npm run eslint .)=0
+typecheck(npx vue-tsc -b)=0
+test(npx vitest run)=0  # 128 files, 1183 passed + 3 skipped
+build(npx vite build)=0

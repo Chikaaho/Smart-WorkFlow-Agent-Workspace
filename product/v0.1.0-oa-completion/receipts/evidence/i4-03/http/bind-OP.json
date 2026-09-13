@@ -1,0 +1,34 @@
+{
+  "user": "admin",
+  "method": "POST",
+  "path": "/workflow/defs/2098846812357091330/publish",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "id": "2098846812357091330",
+      "createTime": "2026-09-13T02:50:49.411314",
+      "createBy": "1",
+      "updateTime": "2026-09-13T02:50:49.529313",
+      "updateBy": "1",
+      "deleted": 0,
+      "version": "3",
+      "tenantId": "0",
+      "processKey": "bpm_173637dac1ce4220",
+      "name": "I4 强制意见审批",
+      "formKey": "i4_leave_form",
+      "defVersion": 2,
+      "status": "PUBLISHED",
+      "deploymentId": "3c133b34-aedb-11f1-9447-00ffa7734675",
+      "processDefinitionId": "bpm_173637dac1ce4220:2:3c1a8e37-aedb-11f1-9447-00ffa7734675",
+      "graphJson": "{\"processKey\":\"bpm_173637dac1ce4220\",\"name\":\"I4 强制意见审批\",\"formKey\":\"i4_leave_form\",\"version\":1,\"elements\":[{\"id\":\"start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":null,\"style\":null,\"x\":80.0,\"y\":200.0,\"waypoints\":null},{\"id\":\"appr\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"主管审批\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[\"2098846806564757505\"]},\"opinionForm\":{\"formId\":\"I4_OPINION_FORM\",\"version\":\"1\",\"fields\":[{\"key\":\"comment\",\"type\":\"TEXTAREA\",\"required\":true,\"label\":\"审批意见\"}]}},\"style\":null,\"x\":320.0,\"y\":200.0,\"waypoints\":null},{\"id\":\"end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":null,\"style\":null,\"x\":560.0,\"y\":200.0,\"waypoints\":null},{\"id\":\"e1\",\"kind\":\"edge\",\"type\":null,\"source\":\"start\",\"target\":\"appr\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"e2\",\"kind\":\"edge\",\"type\":null,\"source\":\"appr\",\"target\":\"end\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null}],\"contractVersion\":2,\"canvas\":null}",
+      "categoryId": null,
+      "iotAccessEnabled": false,
+      "iotDeviceActionJson": null,
+      "publishedVersion": 1,
+      "sourceTemplateId": null,
+      "sourceTemplateVersion": null
+    }
+  }
+}

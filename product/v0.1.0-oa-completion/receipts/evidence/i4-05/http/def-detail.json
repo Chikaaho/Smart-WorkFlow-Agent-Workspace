@@ -1,0 +1,90 @@
+{
+  "user": "admin",
+  "method": "GET",
+  "path": "/workflow/defs/2098963588600348673",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "processKey": "bpm_5d4c52f1e17540c9",
+      "name": "I4 动态并行协作审批",
+      "formKey": "i4_leave_form",
+      "version": 1,
+      "elements": [
+        {
+          "id": "start",
+          "kind": "node",
+          "type": "START",
+          "source": null,
+          "target": null,
+          "config": null,
+          "style": null,
+          "x": 80,
+          "y": 200,
+          "waypoints": null
+        },
+        {
+          "id": "dyn",
+          "kind": "node",
+          "type": "DYNAMIC_PARALLEL",
+          "source": null,
+          "target": null,
+          "config": {
+            "name": "部门负责人并行审批",
+            "mode": "ALL",
+            "maxBranches": 50,
+            "emptyStrategy": "BLOCK",
+            "invalidStrategy": "SKIP",
+            "source": {
+              "type": "VARIABLE",
+              "value": "deptList"
+            }
+          },
+          "style": null,
+          "x": 300,
+          "y": 200,
+          "waypoints": null
+        },
+        {
+          "id": "end",
+          "kind": "node",
+          "type": "END",
+          "source": null,
+          "target": null,
+          "config": null,
+          "style": null,
+          "x": 560,
+          "y": 200,
+          "waypoints": null
+        },
+        {
+          "id": "e1",
+          "kind": "edge",
+          "type": null,
+          "source": "start",
+          "target": "dyn",
+          "config": null,
+          "style": null,
+          "x": null,
+          "y": null,
+          "waypoints": null
+        },
+        {
+          "id": "e2",
+          "kind": "edge",
+          "type": null,
+          "source": "dyn",
+          "target": "end",
+          "config": null,
+          "style": null,
+          "x": null,
+          "y": null,
+          "waypoints": null
+        }
+      ],
+      "contractVersion": 2,
+      "canvas": null
+    }
+  }
+}

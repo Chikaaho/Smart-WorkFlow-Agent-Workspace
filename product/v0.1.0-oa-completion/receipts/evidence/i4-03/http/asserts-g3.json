@@ -1,0 +1,360 @@
+{
+  "total": 23,
+  "failed": 0,
+  "rows": [
+    {
+      "name": "G3a.tasks.ready",
+      "pass": true,
+      "detail": {
+        "tB1": "370d1139-aedb-11f1-9447-00ffa7734675",
+        "tOp": "3cd1f765-aedb-11f1-9447-00ffa7734675",
+        "tDone": "38e098cd-aedb-11f1-9447-00ffa7734675",
+        "tOther": "3affcf61-aedb-11f1-9447-00ffa7734675"
+      }
+    },
+    {
+      "name": "G3a.batch.accepted",
+      "pass": true,
+      "detail": {
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "success": "2",
+          "total": 6,
+          "failed": "4",
+          "results": [
+            {
+              "taskId": "370d1139-aedb-11f1-9447-00ffa7734675",
+              "action": "APPROVE",
+              "success": true
+            },
+            {
+              "taskId": "3affcf61-aedb-11f1-9447-00ffa7734675",
+              "action": "APPROVE",
+              "success": false,
+              "errorCode": 403,
+              "message": "无权处理该任务"
+            },
+            {
+              "taskId": "3cd1f765-aedb-11f1-9447-00ffa7734675",
+              "action": "APPROVE",
+              "success": false,
+              "errorCode": 2308,
+              "message": "审批意见不能为空"
+            },
+            {
+              "taskId": "3cd1f765-aedb-11f1-9447-00ffa7734675",
+              "action": "APPROVE",
+              "success": true
+            },
+            {
+              "taskId": "370d1139-aedb-11f1-9447-00ffa7734675",
+              "action": "APPROVE",
+              "success": false,
+              "errorCode": 2305,
+              "message": "节点已被处理"
+            },
+            {
+              "taskId": "38e098cd-aedb-11f1-9447-00ffa7734675",
+              "action": "APPROVE",
+              "success": false,
+              "errorCode": 2305,
+              "message": "节点已被处理"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "G3a.item1.success",
+      "pass": true,
+      "detail": {
+        "taskId": "370d1139-aedb-11f1-9447-00ffa7734675",
+        "action": "APPROVE",
+        "success": true
+      }
+    },
+    {
+      "name": "G3a.item2.foreignDenied",
+      "pass": true,
+      "detail": {
+        "taskId": "3affcf61-aedb-11f1-9447-00ffa7734675",
+        "action": "APPROVE",
+        "success": false,
+        "errorCode": 403,
+        "message": "无权处理该任务"
+      }
+    },
+    {
+      "name": "G3a.item3.opinionRequired",
+      "pass": true,
+      "detail": {
+        "taskId": "3cd1f765-aedb-11f1-9447-00ffa7734675",
+        "action": "APPROVE",
+        "success": false,
+        "errorCode": 2308,
+        "message": "审批意见不能为空"
+      }
+    },
+    {
+      "name": "G3a.item4.forcedOpinionOk",
+      "pass": true,
+      "detail": {
+        "taskId": "3cd1f765-aedb-11f1-9447-00ffa7734675",
+        "action": "APPROVE",
+        "success": true
+      }
+    },
+    {
+      "name": "G3a.item5.duplicateDenied",
+      "pass": true,
+      "detail": {
+        "taskId": "370d1139-aedb-11f1-9447-00ffa7734675",
+        "action": "APPROVE",
+        "success": false,
+        "errorCode": 2305,
+        "message": "节点已被处理"
+      }
+    },
+    {
+      "name": "G3a.item6.terminalDenied",
+      "pass": true,
+      "detail": {
+        "taskId": "38e098cd-aedb-11f1-9447-00ffa7734675",
+        "action": "APPROVE",
+        "success": false,
+        "errorCode": 2305,
+        "message": "节点已被处理"
+      }
+    },
+    {
+      "name": "G3a.other.zeroSideEffect",
+      "pass": true,
+      "detail": "other task missing from leader2 todo"
+    },
+    {
+      "name": "G3a.op.singleAction",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "G3b.leader2TwoTasks",
+      "pass": true,
+      "detail": [
+        {
+          "id": "429b4a60-aedb-11f1-9447-00ffa7734675",
+          "pi": "429a38dc-aedb-11f1-9447-00ffa7734675"
+        },
+        {
+          "id": "416206f9-aedb-11f1-9447-00ffa7734675",
+          "pi": "4160a755-aedb-11f1-9447-00ffa7734675"
+        }
+      ]
+    },
+    {
+      "name": "G3b.ruleActive.created",
+      "pass": true,
+      "detail": {
+        "code": 0,
+        "msg": "success",
+        "data": "2098847521769086977"
+      }
+    },
+    {
+      "name": "G3b.ruleExpired.created",
+      "pass": true,
+      "detail": {
+        "code": 0,
+        "msg": "success",
+        "data": "2098847521806835713"
+      }
+    },
+    {
+      "name": "G3b.rules.ready",
+      "pass": true,
+      "detail": {
+        "activeRuleId": "2098847521769086977",
+        "expiredRuleId": "2098847521806835713"
+      }
+    },
+    {
+      "name": "G3b.hv1.migrated2",
+      "pass": true,
+      "detail": {
+        "id": "2098847521899110402",
+        "createTime": "2026-09-13T02:53:38.5793238",
+        "createBy": "1",
+        "updateTime": "2026-09-13T02:53:38.5793238",
+        "updateBy": "1",
+        "deleted": 0,
+        "version": "1",
+        "tenantId": "0",
+        "fromUserId": "2098846806925467649",
+        "toUserId": "2098846807613333505",
+        "scopeDefKeys": "bpm_bf82dbf3a9c44eb5",
+        "includeProxyRules": false,
+        "status": "COMPLETED",
+        "totalItems": 2,
+        "migratedItems": 2,
+        "failedItems": 0,
+        "operatorId": "1",
+        "executedAt": "2026-09-13T02:53:38.5783237"
+      }
+    },
+    {
+      "name": "G3b.hv1.itemsMatch",
+      "pass": true,
+      "detail": [
+        {
+          "id": "2098847521928470529",
+          "createTime": "2026-09-13T02:53:38.587324",
+          "createBy": "1",
+          "updateTime": "2026-09-13T02:53:38.587324",
+          "updateBy": "1",
+          "deleted": 0,
+          "version": "0",
+          "tenantId": "0",
+          "handoverId": "2098847521899110402",
+          "taskId": "416206f9-aedb-11f1-9447-00ffa7734675",
+          "processInstanceId": "4160a755-aedb-11f1-9447-00ffa7734675",
+          "itemType": "TASK",
+          "beforeAssignee": "2098846806925467649",
+          "afterAssignee": "2098846807613333505",
+          "result": "MIGRATED",
+          "failReason": null,
+          "ruleId": null
+        },
+        {
+          "id": "2098847521949442049",
+          "createTime": "2026-09-13T02:53:38.591323",
+          "createBy": "1",
+          "updateTime": "2026-09-13T02:53:38.591323",
+          "updateBy": "1",
+          "deleted": 0,
+          "version": "0",
+          "tenantId": "0",
+          "handoverId": "2098847521899110402",
+          "taskId": "429b4a60-aedb-11f1-9447-00ffa7734675",
+          "processInstanceId": "429a38dc-aedb-11f1-9447-00ffa7734675",
+          "itemType": "TASK",
+          "beforeAssignee": "2098846806925467649",
+          "afterAssignee": "2098846807613333505",
+          "result": "MIGRATED",
+          "failReason": null,
+          "ruleId": null
+        }
+      ]
+    },
+    {
+      "name": "G3b.hv1.rulesUntouched",
+      "pass": true,
+      "detail": "rules mutated by hv1"
+    },
+    {
+      "name": "G3b.history.unrewritten",
+      "pass": true,
+      "detail": "history mutated"
+    },
+    {
+      "name": "G3b.hv2.accepted",
+      "pass": true,
+      "detail": {
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "id": "2098847522062688258",
+          "createTime": "2026-09-13T02:53:38.6183253",
+          "createBy": "1",
+          "updateTime": "2026-09-13T02:53:38.6183253",
+          "updateBy": "1",
+          "deleted": 0,
+          "version": "1",
+          "tenantId": "0",
+          "fromUserId": "2098846806925467649",
+          "toUserId": "2098846807613333505",
+          "scopeDefKeys": "bpm_bf82dbf3a9c44eb5",
+          "includeProxyRules": true,
+          "status": "COMPLETED",
+          "totalItems": 1,
+          "migratedItems": 1,
+          "failedItems": 0,
+          "operatorId": "1",
+          "executedAt": "2026-09-13T02:53:38.6183253"
+        }
+      }
+    },
+    {
+      "name": "G3b.hv2.ruleMigrated",
+      "pass": true,
+      "detail": [
+        {
+          "id": "2098847522096242690",
+          "createTime": "2026-09-13T02:53:38.627322",
+          "createBy": "1",
+          "updateTime": "2026-09-13T02:53:38.627322",
+          "updateBy": "1",
+          "deleted": 0,
+          "version": "0",
+          "tenantId": "0",
+          "handoverId": "2098847522062688258",
+          "taskId": null,
+          "processInstanceId": null,
+          "itemType": "PROXY_RULE",
+          "beforeAssignee": "2098846806925467649",
+          "afterAssignee": "2098846807613333505",
+          "result": "MIGRATED",
+          "failReason": null,
+          "ruleId": "2098847521769086977"
+        }
+      ]
+    },
+    {
+      "name": "G3b.hv2.expiredUntouched",
+      "pass": true,
+      "detail": [
+        {
+          "id": "2098847521806835713",
+          "principal": "2098846806925467649",
+          "status": "ACTIVE"
+        },
+        {
+          "id": "2098847521769086977",
+          "principal": "2098846806925467649",
+          "status": "HANDOVER_MIGRATED"
+        }
+      ]
+    },
+    {
+      "name": "G3b.retry.zero",
+      "pass": true,
+      "detail": {
+        "id": "2098847522167545858",
+        "createTime": "2026-09-13T02:53:38.6443231",
+        "createBy": "1",
+        "updateTime": "2026-09-13T02:53:38.6443231",
+        "updateBy": "1",
+        "deleted": 0,
+        "version": "1",
+        "tenantId": "0",
+        "fromUserId": "2098846806925467649",
+        "toUserId": "2098846807613333505",
+        "scopeDefKeys": "bpm_bf82dbf3a9c44eb5",
+        "includeProxyRules": true,
+        "status": "COMPLETED",
+        "totalItems": 0,
+        "migratedItems": 0,
+        "failedItems": 0,
+        "operatorId": "1",
+        "executedAt": "2026-09-13T02:53:38.6443231"
+      }
+    },
+    {
+      "name": "G3b.crosstenant.denied",
+      "pass": true,
+      "detail": {
+        "code": 400,
+        "msg": "目标用户无效、已停用或不属于当前租户"
+      }
+    }
+  ]
+}

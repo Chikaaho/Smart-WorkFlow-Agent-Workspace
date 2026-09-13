@@ -5,15 +5,16 @@
 > 需求编号：P60（版本统筹项，不替代既有 P 编号）  
 > 优先级：P0  
 > 任务等级：XL  
-> 功能状态：IN_PROGRESS（I1、I2 均 COMPLETED（规划已确认）；I3 COMPLETED（待规划确认，2026-09-12），阶段三终态同步已执行、待 Planner 终态复核）  
+> 功能状态：IN_PROGRESS（I1、I2、I3 均 COMPLETED（规划已确认）；I4 COMPLETED（待规划确认，2026-09-13）、机器状态 `TERMINAL_SYNC_SUBMITTED` 待 Planner 终态复核；I5—I6 未开始）  
 > 日期：2026-09-08  
-> 目标版本：0.1.0
+> 成熟 OA 目标版本：0.1.0  
+> 当前交付迭代：0.0.3
 
 ## 1. 版本目标
 
 0.1.0 以“OA 全功能可独立使用”为版本目标，完成组织权限、低代码表单、流程管理、个人工作台、第三方 SSO 和消息通知的统一闭环。管理员能够配置组织、权限、表单、流程、登录方式和通知渠道；普通用户能够登录、发起、办理、回看和接收通知；系统能够以同一真实业务对象证明从表单提交到流程终态及消息送达的全过程。
 
-本方向是一个 XL 主功能，按六个迭代阶段推进；六个阶段均属于 `v0.1.0-oa-completion`，不得拆成互不勾稽的版本目标。每阶段独立验收，最后再做 0.1.0 整体候选验收与终态同步。
+本方向是一个 XL 主功能，按六个迭代阶段推进；六个阶段均属于 `v0.1.0-oa-completion` 成熟 OA 路线，不得拆成互不勾稽的产品目标。当前 I4 交付迭代为 `0.0.3`；每阶段独立验收，六阶段全部完成后再做 0.1.0 整体候选验收与终态同步。
 
 用户原始清单中的“角色管理”出现两次，本方向合并为一个角色管理能力域，不据此新增其他模块。
 
@@ -150,7 +151,7 @@
 
 阶段 `COMPLETED` 属于 P60 内部阶段状态，不替代 P60 整体完成；I1—I6 全部完成前，P60 保持 `IN_PROGRESS`，正式完成功能数与关联 P 编号不因单阶段完成而变化，也不创建版本标签或 Release。新会话按主方向、该阶段方向、最近验收与终态同步回执恢复，不依赖上一会话聊天历史。
 
-当前 I1 已于 2026-09-09 完成阶段验收、终态同步、各仓库当前分支提交推送与 Planner 终态复核，状态为 `COMPLETED（规划已确认）`；S 级插单 `S-DEV-CAPTCHA-01` 已于 2026-09-10 经规划验收通过；I2 功能验收 06 `PASSED`，阶段三回执 02 经 `planning-final-review-terminal-sync-stage-i2-v0.1.0-oa-completion-02-passed.md` 最终复核通过，正式为 `COMPLETED（规划已确认，2026-09-10）`。P60 仍为 `IN_PROGRESS`，正式计数与 P 编号不变。I3 经三级提示 03—06 逐原子收敛，规划验收 08 裁决功能级 `PASSED`（R0—R10 全部原子、§5 相关验收标准通过）；阶段三终态同步已执行，I3 写为 `COMPLETED（待规划确认，2026-09-12）`、机器状态 `TERMINAL_SYNC_SUBMITTED`，当前唯一下一动作是 Planner 终态复核 I3 阶段三终态同步回执 01，确认后再形成 I4 正式阶段方向。
+当前 I1、I2、I3 均已完成阶段验收、终态同步、授权内仓库提交推送与 Planner 终态复核，状态为 `COMPLETED（规划已确认）`；锁定基线仅在受影响、候选变化或出现反证时复核。P60 仍为 `IN_PROGRESS`，正式计数与 P 编号不变。I4 已功能级验收 `PASSED` 并完成阶段三终态同步（`COMPLETED（待规划确认，2026-09-13） / TERMINAL_SYNC_SUBMITTED`），等待 Planner 终态复核。
 
 ## 5. 0.1.0 整体验收标准
 
@@ -200,13 +201,13 @@
 
 ## 9. 状态、回执与唯一执行入口
 
-P60 当前状态为 `IN_PROGRESS`，I1、I2 均已 `COMPLETED（规划已确认）`，I3 为 `COMPLETED（待规划确认，2026-09-12）`（阶段三终态同步已执行，待 Planner 终态复核），I4—I6 未开始。本文件是 0.1.0 OA 主功能的唯一总方向入口：
+P60 当前状态为 `IN_PROGRESS`，I1、I2、I3 均已 `COMPLETED（规划已确认）`，I4 为 `COMPLETED（待规划确认，2026-09-13）`（`TERMINAL_SYNC_SUBMITTED`，待 Planner 终态复核），I5—I6 未开始。成熟 OA 目标为 `0.1.0`，当前交付迭代为 `0.0.3`。本文件是成熟 OA 主功能的唯一总方向入口：
 
 `product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md`
 
 Executor 进入后先按 `system.md`、`roles/executor.md`、`project.md` 和两仓工程宪法恢复上下文，核对当前 knowledge 权威与本方向基点差异，并读取 `advanced-capability-feature-checklist.md`，然后制定六阶段内部实施计划。首次功能清单同步必须把 64 条高级能力以规划项映射进正式工程功能清单，保持稳定追溯键并与 P60 的 0.1.0 验收计数分开；若编号冲突，保留 `ADV-*` 作为外部追溯键并在回执给出映射。若权威现状证明某项已完整交付，应提交行为证据申请锁定，不重复建设；若仅有结构、SPI、Mock 或历史快照，不得当作已完成。
 
-`S-DEV-CAPTCHA-01` 已验收关闭。I2 主方向与终态同步方向均已归档：`product/v0.1.0-oa-completion/passed/direction-stage-i2-low-code-form-closure.md`、`product/v0.1.0-oa-completion/passed/direction-stage-i2-terminal-sync.md`；功能验收 06 与终态最终复核 02 均已通过，I2 正式为 `COMPLETED（规划已确认，2026-09-10）`。I2 实现、行为、门禁、发布与终态均不再作为待办。I3 主方向已归档 `product/v0.1.0-oa-completion/passed/direction-stage-i3-manual-approval-first-party-process-designer.md`；规划验收 08 裁决功能级 `PASSED`，当前唯一执行入口为 `product/v0.1.0-oa-completion/ready/direction-stage-i3-terminal-sync.md`，终态同步回执为 `product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i3-v0.1.0-oa-completion-01.md`，待 Planner 终态复核确认 I3 `COMPLETED`。P60 保持 `IN_PROGRESS`。
+`S-DEV-CAPTCHA-01` 已验收关闭。I2 与 I3 的主方向和终态同步方向均已归档，功能验收与最终复核均已通过；其实现、行为、门禁、发布与终态不再作为待办。I4 主方向已归档 `product/v0.1.0-oa-completion/passed/direction-stage-i4-orchestration-process-operations-workbench.md`，功能级验收 PASSED 于 `product/v0.1.0-oa-completion/receipts/planning-review-stage-i4-v0.0.3-oa-iteration-06-passed.md`，终态同步回执为 `product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i4-v0.0.3-oa-iteration-01.md`，当前唯一执行入口 `product/v0.1.0-oa-completion/ready/direction-stage-i4-terminal-sync.md`。P60 保持 `IN_PROGRESS`；Planner 终态复核确认 I4 `COMPLETED` 后，再由 Planner 形成 I5 SSO 正式阶段方向。
 
 每个迭代按 §4.1 形成独立方向、执行回执、规划验收、终态同步回执与终态复核；六阶段自验完成后提交：
 

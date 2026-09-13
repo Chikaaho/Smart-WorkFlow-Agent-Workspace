@@ -1,0 +1,23 @@
+== Workspace 首次推送被远端拒绝（GH001）原始记录 ==
+时间: 2026-09-13T12:19:36+08:00
+
+-- 1) 观察到的 push stderr（第一版同步提交 ff66692，含 657MB 日志）--
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+To https://github.com/Chikaaho/Smart-WorkFlow-Agent-Workspace.git
+ ! [remote rejected] develop-sw -> develop-sw (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/Chikaaho/Smart-WorkFlow-Agent-Workspace.git'
+
+-- 2) 拒绝后远端仍为提交前 SHA（证明该提交未被接收）--
+f10d6a9714aaf4694be18a18f65b767825fe84ff	refs/heads/develop-sw
+
+-- 3) 被拒提交 ff66692 确实包含该超限文件 --
+commit exists in object db: commit
+ff66692 包含 server-dev.log: 1
+该 blob 大小(字节): 657362860
+
+-- 4) 工作树该文件现状（保留、未提交）--
+-rw-r--r-- 1 hjxch 197121 657362860 Sep 12 23:21 product/v0.1.0-oa-completion/receipts/evidence/i4-02/server-dev.log
+行数: 2759291
+
+-- 5) 重新提交后索引中有无该文件 --
+索引中无 server-dev.log（已排除）

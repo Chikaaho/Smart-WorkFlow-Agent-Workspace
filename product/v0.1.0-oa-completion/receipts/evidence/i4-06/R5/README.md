@@ -1,0 +1,6 @@
+# R5 同一对象闭环与附件授权链（iteration-06）
+
+- **原子ID**：`R5-h5-same-object-attachment`
+- **原始位置**：服务端链原始 HTTP 在 `../http/`（`m-submit.json`、`m-submit-instances.json`、`m-record-readback.json`、`m-task-detail-readback.json`、`att-upload.json`、`r5-fk-ref-submit.json`；下载原始响应在本目录 `owner-download-raw.json`、`outsider-download-raw.json`）；浏览器原始 DOM 在本目录 `r6-h5-m-*.dom.txt` 与截图 `r6-h5-m-*.png`（viewport 375x812，scrollWidth=375=clientWidth 无主体横向溢出）；`object-index.json`、`equality-table.json`、`asserts-final.json` 同目录。
+- **实际结果**：固定对象 M（businessKey `0f870b17-d72a-4209-9912-22de59733fba` / processInstanceId `7c646895-af22-11f1-95b7-00ffa7734675` / taskId `7c6468a2-af22-11f1-95b7-00ffa7734675`）；附件 ATT（storageKey `2026/09/13/4474496a-f286-48eb-a8c6-829c8ba33655.txt`）先上传、随 M 提交绑定（recordKey=M.businessKey）并在 H5 详情可见文件名与下载入口；外键 `dept_ref` 在 H5 详情显示可读关联对象“I4-r6 关联协作单目标”；owner 下载 200（octet-stream，长度/SHA-256 与上传正文一致）；已认证 outsider 下载被对象权限拒绝（code 403）；M 经 H5 正式意见表单办结后结果查询行（entity id `2098975821552160769`）状态 APPROVED 且与 API 回读同对象。最终断言 `asserts-final.json`：17 项 0 失败。
+- **边界**：仅重采同一对象 M 的链路与附件授权；iteration-05 已锁定的 375px 响应式布局、可读外键样式、正式意见表单与必填拒绝未重验；代价为本轮在该 H2 夹具中新增了 M 与参照记录两条业务数据（保留只读，不做清理外删除）。凭据不入包：登录索取走 `/tmp/i4-tokens`，附件正文为白样文本，无 token/密码。

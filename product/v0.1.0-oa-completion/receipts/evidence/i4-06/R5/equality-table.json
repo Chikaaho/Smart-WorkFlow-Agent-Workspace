@@ -1,0 +1,69 @@
+{
+  "note": "同一对象 M 的 BK/PI/T 在各视图逐字相等；浏览器 DOM 键与 HTTP/object-index 同源。",
+  "m": {
+    "businessKey": "0f870b17-d72a-4209-9912-22de59733fba",
+    "processInstanceId": "7c646895-af22-11f1-95b7-00ffa7734675",
+    "taskId": "7c6468a2-af22-11f1-95b7-00ffa7734675",
+    "fkRecordId": "adb17ac1-c38a-40b5-b04b-b04433284a76",
+    "attachment": {
+      "storageKey": "2026/09/13/4474496a-f286-48eb-a8c6-829c8ba33655.txt",
+      "name": "I4-r6 附件样本.txt",
+      "fileSize": "60",
+      "recordKey": "0f870b17-d72a-4209-9912-22de59733fba"
+    }
+  },
+  "browser": {
+    "initiatedEntityId": "2098975821552160769",
+    "detailBusinessKey": "0f870b17-d72a-4209-9912-22de59733fba",
+    "todoTaskId": "7c6468a2-af22-11f1-95b7-00ffa7734675",
+    "fkDisplay": "I4-r6 关联协作单目标",
+    "pages": [
+      "/m/workflow 待办->详情(375x812)",
+      "/m/workflow 我发起的(结果查询)"
+    ]
+  },
+  "assertions": [
+    {
+      "view": "H5 详情 DOM(375x812)",
+      "key": "businessKey",
+      "value": "0f870b17-d72a-4209-9912-22de59733fba",
+      "equals": "m.businessKey"
+    },
+    {
+      "view": "H5 待办列表标题(taskId)",
+      "key": "taskId",
+      "value": "7c6468a2-af22-11f1-95b7-00ffa7734675",
+      "equals": "m.taskId"
+    },
+    {
+      "view": "提交 HTTP m-submit.json 响应",
+      "key": "businessKey",
+      "value": "0f870b17-d72a-4209-9912-22de59733fba",
+      "equals": "m.businessKey"
+    },
+    {
+      "view": "提交实例 HTTP m-submit-instances.json",
+      "key": "processInstanceId",
+      "value": "7c646895-af22-11f1-95b7-00ffa7734675",
+      "equals": "m.processInstanceId"
+    },
+    {
+      "view": "API 任务详情 m-task-detail-readback.json",
+      "key": "businessKey/processInstanceId",
+      "value": "0f870b17-d72a-4209-9912-22de59733fba/7c646895-af22-11f1-95b7-00ffa7734675",
+      "equals": "m.businessKey/m.processInstanceId"
+    },
+    {
+      "view": "结果查询 DOM(我发起的行 id, APPROVED)",
+      "key": "entityId",
+      "value": "2098975821552160769",
+      "equals": "m-myprocessed-row.id(API 回读)"
+    },
+    {
+      "view": "附件入口 href recordId/storageKey",
+      "key": "M.businessKey/M.attachment.storageKey",
+      "value": "0f870b17-d72a-4209-9912-22de59733fba/2026/09/13/4474496a-f286-48eb-a8c6-829c8ba33655.txt",
+      "equals": "m.businessKey/m.attachment.storageKey"
+    }
+  ]
+}

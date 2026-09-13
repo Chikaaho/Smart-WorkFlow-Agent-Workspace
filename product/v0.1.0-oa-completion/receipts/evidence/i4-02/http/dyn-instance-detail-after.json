@@ -1,0 +1,90 @@
+{
+  "user": "admin",
+  "method": "GET",
+  "path": "/workflow/instances/8ac16b74-aea3-11f1-9ecd-00ffa7734675",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "id": "2098747140178903041",
+      "processInstanceId": "8ac16b74-aea3-11f1-9ecd-00ffa7734675",
+      "processDefKey": "bpm_d9844cbae5c44c81",
+      "processName": "I4 动态并行协作审批",
+      "businessKey": "7a9c1e4e-3acb-40b2-a50c-8c2060206727",
+      "formKey": "i4_leave_form",
+      "initiatorId": "2098744049035575297",
+      "initiatorName": "initiator",
+      "status": "APPROVED",
+      "createTime": "2026-09-12T20:14:45.711969",
+      "activeNodeIds": [],
+      "flowTrace": [
+        {
+          "activityId": "start",
+          "activityName": "Start",
+          "activityType": "startEvent",
+          "startTime": "2026-09-12T20:14:45.618",
+          "endTime": "2026-09-12T20:14:45.622",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "e1",
+          "activityName": null,
+          "activityType": "sequenceFlow",
+          "startTime": "2026-09-12T20:14:45.623",
+          "endTime": "2026-09-12T20:14:45.623",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "dyn",
+          "activityName": "部门负责人并行审批",
+          "activityType": "userTask",
+          "startTime": "2026-09-12T20:14:45.662",
+          "endTime": "2026-09-12T20:17:03.382",
+          "assignee": "2098744048293183489",
+          "assigneeName": "leader1",
+          "taskId": "8acaba5a-aea3-11f1-9ecd-00ffa7734675"
+        },
+        {
+          "activityId": "dyn",
+          "activityName": "部门负责人并行审批",
+          "activityType": "userTask",
+          "startTime": "2026-09-12T20:14:45.68",
+          "endTime": "2026-09-12T20:17:03.524",
+          "assignee": "2098744048293183489",
+          "assigneeName": "leader1",
+          "taskId": "8acd2b5f-aea3-11f1-9ecd-00ffa7734675"
+        },
+        {
+          "activityId": "e2",
+          "activityName": null,
+          "activityType": "sequenceFlow",
+          "startTime": "2026-09-12T20:17:03.558",
+          "endTime": "2026-09-12T20:17:03.558",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "end",
+          "activityName": "End",
+          "activityType": "endEvent",
+          "startTime": "2026-09-12T20:17:03.558",
+          "endTime": "2026-09-12T20:17:03.559",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        }
+      ],
+      "formData": {
+        "days": 2,
+        "reason": "I4 动态并行正向链",
+        "deptList": "2098745061439897602,2098745061477646337,2098745061511200770"
+      }
+    }
+  }
+}

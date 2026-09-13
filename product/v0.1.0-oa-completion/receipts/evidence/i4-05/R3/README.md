@@ -1,0 +1,1 @@
+R3-analytics-exact → a2-fullset-raw.json（含 APPROVED/RUNNING/REJECTED/TERMINATED 矩阵）+ recompute + summary-api + 逐字段 delta（全部为 0）+ returned/rejectedAction/overdue 非零（17/-1/-5）→ 边界：novelty 到位不再复记——exact-equality 保持且新指标非零。

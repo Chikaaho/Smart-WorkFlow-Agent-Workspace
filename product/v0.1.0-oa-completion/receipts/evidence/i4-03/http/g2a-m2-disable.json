@@ -1,0 +1,31 @@
+{
+  "user": "admin",
+  "method": "PUT",
+  "path": "/workflow/templates/2098846812998819841/status/0",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "id": "2098846812998819841",
+      "createTime": "2026-09-13T02:50:49.563314",
+      "createBy": "1",
+      "updateTime": "2026-09-13T02:52:44.4188347",
+      "updateBy": "1",
+      "deleted": 0,
+      "version": "1",
+      "tenantId": "0",
+      "name": "I4 协作模板M2",
+      "category": "协同办公",
+      "description": "I4 停用后拒复制样本",
+      "formKey": "i4_leave_form",
+      "graphJson": "{\"processKey\":\"i4_single_approval_def\",\"name\":\"I4 单节点审批一\",\"formKey\":\"i4_leave_form\",\"version\":1,\"contractVersion\":2,\"elements\":[{\"id\":\"start\",\"kind\":\"node\",\"type\":\"START\",\"x\":80,\"y\":200},{\"id\":\"appr\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"x\":300,\"y\":200,\"config\":{\"name\":\"主管审批\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[\"1\"]}}},{\"id\":\"end\",\"kind\":\"node\",\"type\":\"END\",\"x\":560,\"y\":200},{\"id\":\"e1\",\"kind\":\"edge\",\"source\":\"start\",\"target\":\"dyn\"},{\"id\":\"e2\",\"kind\":\"edge\",\"source\":\"dyn\",\"target\":\"end\"}]}",
+      "templateVersion": 1,
+      "status": "DISABLED",
+      "scopeType": "GLOBAL",
+      "scopeDeptId": null,
+      "sourceDefId": null,
+      "sourceDefVersion": null
+    }
+  }
+}

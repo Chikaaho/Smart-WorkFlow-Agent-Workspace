@@ -1,0 +1,31 @@
+{
+  "user": "admin",
+  "method": "GET",
+  "path": "/workflow/monitor/analytics/summary",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "launched": "2",
+      "completed": "1",
+      "running": "1",
+      "rejected": "0",
+      "avgDurationMs": 0,
+      "p50DurationMs": "0",
+      "p90DurationMs": "0",
+      "durationSample": 1,
+      "handlerWorkload": {
+        "2098744048293183489": "1",
+        "2098744048691642370": "1"
+      },
+      "nodeStats": {
+        "dyn": {
+          "avgStayMs": 137782,
+          "count": 2,
+          "p90StayMs": "137832"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "total": 5,
+  "failed": 0,
+  "rows": [
+    {
+      "name": "R5.wTask.submitted",
+      "pass": true,
+      "detail": {
+        "submit": {
+          "status": 200,
+          "body": {
+            "code": 0,
+            "msg": "success",
+            "data": "b62b9d20-6f0a-4bd4-9641-ad0ab4a06d48"
+          }
+        },
+        "pi": "1e502e7d-af0e-11f1-b771-00ffa7734675",
+        "entity": "2098939130766446594"
+      }
+    },
+    {
+      "name": "R5.wTask.onW",
+      "pass": true,
+      "detail": "1e50559a-af0e-11f1-b771-00ffa7734675"
+    },
+    {
+      "name": "R5.detail.hasOpinionForm",
+      "pass": true,
+      "detail": {
+        "formId": "I4_R5_OPINION_FORM",
+        "version": "1",
+        "fields": [
+          {
+            "key": "comment",
+            "type": "TEXTAREA",
+            "required": true,
+            "label": "审批意见",
+            "maxLength": 200
+          },
+          {
+            "key": "rating",
+            "type": "RADIO",
+            "required": true,
+            "label": "协作评价",
+            "options": [
+              "满意",
+              "不满意"
+            ]
+          },
+          {
+            "key": "note",
+            "type": "NOTE",
+            "label": "请依据协作单信息如实评价"
+          }
+        ]
+      }
+    },
+    {
+      "name": "R5.missingRequired.denied",
+      "pass": true,
+      "detail": {
+        "commandId": "2098939144418906114",
+        "commandType": "TASK_APPROVE",
+        "channel": "NORMAL",
+        "status": "FAILED",
+        "result": null,
+        "failureReason": "审批意见不能为空",
+        "retryCount": 4,
+        "createTime": "2026-09-13T08:57:43.091467",
+        "finishedAt": "2026-09-13T08:57:58.723949",
+        "flowStart": null
+      }
+    },
+    {
+      "name": "R5.outsider.detailDenied",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "code": 403
+      }
+    }
+  ]
+}

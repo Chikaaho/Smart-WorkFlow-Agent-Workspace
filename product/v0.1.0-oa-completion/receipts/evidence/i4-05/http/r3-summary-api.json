@@ -1,0 +1,44 @@
+{
+  "user": "admin",
+  "method": "GET",
+  "path": "/workflow/monitor/analytics/summary",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "launched": "3",
+      "completed": "1",
+      "running": "2",
+      "rejected": "1",
+      "handlerWorkload": {
+        "2098963585257488385": "2",
+        "2098963585643364353": "1"
+      },
+      "returnedCount": "1",
+      "rejectedActionCount": "1",
+      "overdueCount": "1",
+      "nodeStats": {
+        "a1": {
+          "avgStayMs": 4099,
+          "p90StayMs": "4099",
+          "count": 1
+        },
+        "a2": {
+          "avgStayMs": 2090,
+          "p90StayMs": "2090",
+          "count": 1
+        },
+        "appr": {
+          "avgStayMs": 3644,
+          "p90StayMs": "3644",
+          "count": 1
+        }
+      },
+      "avgDurationMs": 3595,
+      "p50DurationMs": "3595",
+      "p90DurationMs": "3595",
+      "durationSample": 1
+    }
+  }
+}

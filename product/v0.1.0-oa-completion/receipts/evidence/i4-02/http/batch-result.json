@@ -1,0 +1,29 @@
+{
+  "user": "leader1",
+  "method": "POST",
+  "path": "/workflow/tasks/batch-action",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "results": [
+        {
+          "taskId": "2824ae4c-aea7-11f1-95c4-00ffa7734675",
+          "action": "APPROVE",
+          "success": true
+        },
+        {
+          "taskId": "2826aa21-aea7-11f1-95c4-00ffa7734675",
+          "action": "APPROVE",
+          "success": false,
+          "errorCode": 403,
+          "message": "无权处理该任务"
+        }
+      ],
+      "success": "1",
+      "total": 2,
+      "failed": "1"
+    }
+  }
+}

@@ -1,0 +1,96 @@
+== candidate C @ 2026-09-13T03:17:15+08:00 ==
+--- server HEAD ---
+c18d074f4c9f85c5baf65af222e159437fb1e509
+--- web HEAD ---
+192e0647a8f1b1e2b270d4ea13e87854b247fcc7
+--- server status ---
+ M sw-basic/sw-basic-agent/src/test/java/com/sw/ck/agent/service/impl/AgentGraphDefServiceImplTest.java
+ M sw-biz/sw-biz-openapi/sw-biz-openapi-biz/pom.xml
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysRoleMenuMapper.java
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/service/impl/SysRoleServiceImpl.java
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/service/impl/UserWorkspaceServiceImpl.java
+ M sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/exception/BpmErrorCode.java
+ M sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/facade/BpmRuntimeFacade.java
+ M sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/facade/BpmTaskFacade.java
+ M sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/facade/BpmRuntimeFacadeImpl.java
+ M sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/facade/BpmTaskFacadeImpl.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmInstanceController.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmMyInstanceController.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmTodoController.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/entity/BpmProcessDef.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/BpmProcessDefService.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/ParticipantNameService.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/ApprovalLifecycleServiceImpl.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/BpmProcessDefServiceImpl.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/controller/BpmInstanceControllerTest.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/controller/BpmTodoControllerTest.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/service/ParticipantNameSnapshotTest.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/service/impl/ConsensusVoteConcurrencyTest.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/test/resources/db/schema-process-def-h2.sql
+ M sw-bootstrap/src/main/resources/application.yml
+ M sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainH2Test.java
+ M sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainPostgresTest.java
+ M sw-bootstrap/src/test/java/com/sw/ck/bootstrap/p21/H7TenantIsolationIntegrationTest.java
+?? sw-biz/sw-biz-openapi/sw-biz-openapi-api/src/main/java/com/sw/ck/openapi/api/exception/
+?? sw-biz/sw-biz-openapi/sw-biz-openapi-biz/src/main/java/com/sw/ck/openapi/biz/
+?? sw-biz/sw-biz-openapi/sw-biz-openapi-biz/src/main/resources/db/migration/openapi/h2/
+?? sw-biz/sw-biz-openapi/sw-biz-openapi-biz/src/main/resources/db/migration/openapi/postgresql/
+?? sw-biz/sw-biz-openapi/sw-biz-openapi-biz/src/test/
+?? sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/participant/DynamicBranchPort.java
+?? sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/delegate/DynamicBranchCollectionResolver.java
+?? sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/listener/DynamicBranchTaskListener.java
+?? sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/translator/DynamicParallelNodeTranslator.java
+?? sw-biz/sw-bpm/sw-bpm-engine/src/test/java/com/sw/ck/bpm/engine/integration/I4DynamicParallelFlowableTest.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/config/DynamicBranchPortConfiguration.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmMonitorController.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmOpsController.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmProcessTemplateController.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/entity/BpmHandover.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/entity/BpmHandoverItem.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/entity/BpmInstanceIntervention.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/entity/BpmProcessTemplate.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/entity/DynamicBranchSnapshot.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/BpmHandoverItemMapper.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/BpmHandoverMapper.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/BpmInstanceInterventionMapper.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/BpmMonitorMapper.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/BpmProcessTemplateMapper.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/DynamicBranchSnapshotMapper.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/BpmBatchService.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/BpmHandoverService.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/BpmMonitorService.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/BpmProcessTemplateService.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/BpmBatchServiceImpl.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/BpmHandoverServiceImpl.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/BpmMonitorServiceImpl.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/BpmProcessTemplateServiceImpl.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/resources/db/migration/bpm/h2/V76__i4_dynamic_parallel_branch.sql
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/resources/db/migration/bpm/h2/V77__i4_process_template.sql
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/resources/db/migration/bpm/h2/V78__i4_instance_intervention.sql
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/resources/db/migration/bpm/h2/V79__i4_handover.sql
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/resources/db/migration/bpm/h2/V82__i4_ops_menus.sql
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/resources/db/migration/bpm/postgresql/V76__i4_dynamic_parallel_branch.sql
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/resources/db/migration/bpm/postgresql/V77__i4_process_template.sql
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/resources/db/migration/bpm/postgresql/V78__i4_instance_intervention.sql
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/resources/db/migration/bpm/postgresql/V79__i4_handover.sql
+?? sw-biz/sw-bpm/sw-bpm-process/src/main/resources/db/migration/bpm/postgresql/V82__i4_ops_menus.sql
+?? sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/config/
+?? sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/service/impl/BpmBatchServiceTest.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/service/impl/BpmHandoverServiceTest.java
+?? sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/service/impl/BpmProcessTemplateServiceTest.java
+?? sw-bootstrap/src/test/java/com/sw/ck/bootstrap/i4/
+--- web status ---
+ M src/contracts/catalog.ts
+ M src/foundation/mock/handlers.ts
+ M src/modules/workflow/views/WorkspaceHome.vue
+ M src/router/index.ts
+?? src/modules/workflow/api/i4.ts
+?? src/modules/workflow/views/BatchApproval.spec.ts
+?? src/modules/workflow/views/BatchApproval.vue
+?? src/modules/workflow/views/InstanceMonitor.vue
+?? src/modules/workflow/views/MobileWorkspace.vue
+?? src/modules/workflow/views/ProcessAnalytics.vue
+?? src/modules/workflow/views/TaskHandover.vue
+?? src/modules/workflow/views/TemplateCenter.spec.ts
+?? src/modules/workflow/views/TemplateCenter.vue
+?? src/modules/workflow/views/WorkflowCenter.vue
