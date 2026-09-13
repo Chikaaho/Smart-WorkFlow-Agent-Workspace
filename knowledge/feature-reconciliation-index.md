@@ -206,7 +206,7 @@
 | P23 | 全工作区零引用（todo/knowledge/memory 均无）；记录枚举事实，不重建 |
 | agent-model-orchestration feature 链接 | `session-handoff` 旧必读清单中的该链接曾指向不存在文件，已改指本索引（§6）；**2026-09-13 补录**：`knowledge/features/agent-model-orchestration.md` 已按 `product/agent-model-orchestration/passed/`（Step1—12，D53—D71，末步 PASSED（D71，2026-08-12））与主索引既有记录补齐登记（第 15 个正式功能；只复述可追溯历史事实，不重跑验收、不改状态与计数） |
 | search 局部通知任务 | `search_task/notification-personal-workflow-reconciliation-20260904.md` 已被主方向吸收（方向 §1「不再单独推进/提交局部结项」）；三类查询与通知结论见 audit-ledger-d、audit-ledger-e 及本索引 M04-F05-01/M06 行 |
-| 其余 search 资料 | 7 份活动目录中的探索文件已回传且为历史资料；4 份已归档（.archive/）；11 份无任务历史回传保留链接；knowledge-full-reconciliation 任务已完成（COMPLETED 已确认），阶段三方向已归档 `passed/direction-knowledge-full-reconciliation-terminal-sync.md`，历史文件不删除；当前执行入口以 `knowledge/current-status.md`「当前唯一下一动作」为准（2026-09-13 为 I4 终态三层状态全量对账，方向 `product/v0.1.0-oa-completion/ready/direction-stage-i4-status-reconciliation.md`） |
+| 其余 search 资料 | 7 份活动目录中的探索文件已回传且为历史资料；4 份已归档（.archive/）；11 份无任务历史回传保留链接；knowledge-full-reconciliation 任务已完成（COMPLETED 已确认），阶段三方向已归档 `passed/direction-knowledge-full-reconciliation-terminal-sync.md`，历史文件不删除；当前执行入口以 `knowledge/current-status.md`「当前唯一下一动作」为准（2026-09-13 为 I5 第三方 SSO 现状接缝只读探索，任务 `search_task/v0.1.0-oa-completion-i5-current-seams.md`） |
 
 ## 6. 链接与追踪
 

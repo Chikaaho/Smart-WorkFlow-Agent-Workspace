@@ -4,7 +4,7 @@
 > 指定角色：执行（Executor）  
 > 日期：2026-09-13  
 > 前置裁决：`../receipts/planning-review-stage-i4-v0.0.3-oa-iteration-06-passed.md`  
-> 阶段状态：`COMPLETED（待规划确认，2026-09-13）`
+> 阶段状态：`COMPLETED（规划已确认，2026-09-13）`
 
 ## 1. 同步目标与边界
 
@@ -78,3 +78,7 @@ Executor 按实际文件结构机械同步：
 回执至少提供：唯一终态值的实际同步位置与全文回读、memory 压缩前后字节数、三仓当前分支/提交 SHA/远端 SHA/push 结果、逐仓提交文件与 task-owned 对账、未提交残留归属，以及现行 terminal Validator 的 input/stdout/stderr/exit、末行逐字节比较和 manifest 回读。
 
 Executor 合法提交状态为：I4 `COMPLETED（待规划确认，2026-09-13）`，P60 `IN_PROGRESS`，机器状态 `TERMINAL_SYNC_SUBMITTED`，`remaining_actionable_count=0`，下一动作 `WAIT_PLANNER`。Planner 复核前不得写“规划已确认”，不得开始 I5。
+
+## 7. 最终复核状态
+
+终态同步回执01、三层状态对账回执02及一致性收敛回执03经 `../receipts/planning-final-review-terminal-sync-stage-i4-v0.0.3-oa-iteration-03-passed.md` 最终复核通过。I4正式为 `COMPLETED（规划已确认，2026-09-13）`，本方向归档至`passed/`。
