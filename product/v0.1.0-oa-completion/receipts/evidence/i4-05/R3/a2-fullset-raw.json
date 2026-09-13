@@ -1,0 +1,278 @@
+{
+  "total": "5",
+  "ids": [
+    "ec407108-af1b-11f1-8a14-00ffa7734675",
+    "e8e3b161-af1b-11f1-8a14-00ffa7734675",
+    "bc189059-af1b-11f1-8a14-00ffa7734675",
+    "b72e79eb-af1b-11f1-8a14-00ffa7734675",
+    "b3c2c624-af1b-11f1-8a14-00ffa7734675"
+  ],
+  "statuses": {
+    "TERMINATED": 1,
+    "APPROVED": 1,
+    "RUNNING": 2,
+    "REJECTED": 1
+  },
+  "raws": [
+    {
+      "pi": "ec407108-af1b-11f1-8a14-00ffa7734675",
+      "status": "TERMINATED",
+      "createTime": "2026-09-13T10:36:28.797663",
+      "initiatorId": "2098963585999880194",
+      "flowTrace": [
+        {
+          "activityId": "e1",
+          "activityName": null,
+          "activityType": "sequenceFlow",
+          "startTime": "2026-09-13T10:36:28.782",
+          "endTime": "2026-09-13T10:36:28.782",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "start",
+          "activityName": "Start",
+          "activityType": "startEvent",
+          "startTime": "2026-09-13T10:36:28.782",
+          "endTime": "2026-09-13T10:36:28.782",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "appr",
+          "activityName": "主管审批",
+          "activityType": "userTask",
+          "startTime": "2026-09-13T10:36:28.782",
+          "endTime": "2026-09-13T10:36:32.375",
+          "assignee": "2098963585257488385",
+          "assigneeName": "leader1",
+          "taskId": "ec409825-af1b-11f1-8a14-00ffa7734675"
+        }
+      ]
+    },
+    {
+      "pi": "e8e3b161-af1b-11f1-8a14-00ffa7734675",
+      "status": "APPROVED",
+      "createTime": "2026-09-13T10:36:23.156989",
+      "initiatorId": "2098963585999880194",
+      "flowTrace": [
+        {
+          "activityId": "e1",
+          "activityName": null,
+          "activityType": "sequenceFlow",
+          "startTime": "2026-09-13T10:36:23.142",
+          "endTime": "2026-09-13T10:36:23.142",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "start",
+          "activityName": "Start",
+          "activityType": "startEvent",
+          "startTime": "2026-09-13T10:36:23.142",
+          "endTime": "2026-09-13T10:36:23.142",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "appr",
+          "activityName": "主管审批",
+          "activityType": "userTask",
+          "startTime": "2026-09-13T10:36:23.142",
+          "endTime": "2026-09-13T10:36:26.729",
+          "assignee": "2098963585257488385",
+          "assigneeName": "leader1",
+          "taskId": "e8e3d87e-af1b-11f1-8a14-00ffa7734675"
+        },
+        {
+          "activityId": "e2",
+          "activityName": null,
+          "activityType": "sequenceFlow",
+          "startTime": "2026-09-13T10:36:26.729",
+          "endTime": "2026-09-13T10:36:26.729",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "end",
+          "activityName": "End",
+          "activityType": "endEvent",
+          "startTime": "2026-09-13T10:36:26.729",
+          "endTime": "2026-09-13T10:36:26.729",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        }
+      ]
+    },
+    {
+      "pi": "bc189059-af1b-11f1-8a14-00ffa7734675",
+      "status": "RUNNING",
+      "createTime": "2026-09-13T10:35:08.007804",
+      "initiatorId": "2098963585999880194",
+      "flowTrace": [
+        {
+          "activityId": "appr",
+          "activityName": "主管审批",
+          "activityType": "userTask",
+          "startTime": "2026-09-13T10:35:07.991",
+          "endTime": null,
+          "assignee": "2098963585257488385",
+          "assigneeName": "leader1",
+          "taskId": "bc18b776-af1b-11f1-8a14-00ffa7734675"
+        },
+        {
+          "activityId": "e1",
+          "activityName": null,
+          "activityType": "sequenceFlow",
+          "startTime": "2026-09-13T10:35:07.991",
+          "endTime": "2026-09-13T10:35:07.991",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "start",
+          "activityName": "Start",
+          "activityType": "startEvent",
+          "startTime": "2026-09-13T10:35:07.991",
+          "endTime": "2026-09-13T10:35:07.991",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        }
+      ]
+    },
+    {
+      "pi": "b72e79eb-af1b-11f1-8a14-00ffa7734675",
+      "status": "RUNNING",
+      "createTime": "2026-09-13T10:34:59.764808",
+      "initiatorId": "2098963585999880194",
+      "flowTrace": [
+        {
+          "activityId": "a1",
+          "activityName": "一审",
+          "activityType": "userTask",
+          "startTime": "2026-09-13T10:35:05.938",
+          "endTime": null,
+          "assignee": "2098963585257488385",
+          "assigneeName": "leader1",
+          "taskId": "badf7413-af1b-11f1-8a14-00ffa7734675"
+        },
+        {
+          "activityId": "e1",
+          "activityName": null,
+          "activityType": "sequenceFlow",
+          "startTime": "2026-09-13T10:34:59.746",
+          "endTime": "2026-09-13T10:34:59.746",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "start",
+          "activityName": "Start",
+          "activityType": "startEvent",
+          "startTime": "2026-09-13T10:34:59.746",
+          "endTime": "2026-09-13T10:34:59.746",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "a1",
+          "activityName": "一审",
+          "activityType": "userTask",
+          "startTime": "2026-09-13T10:34:59.746",
+          "endTime": "2026-09-13T10:35:03.845",
+          "assignee": "2098963585257488385",
+          "assigneeName": "leader1",
+          "taskId": "b72ea108-af1b-11f1-8a14-00ffa7734675"
+        },
+        {
+          "activityId": "e2",
+          "activityName": null,
+          "activityType": "sequenceFlow",
+          "startTime": "2026-09-13T10:35:03.846",
+          "endTime": "2026-09-13T10:35:03.846",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "a2",
+          "activityName": "二审",
+          "activityType": "userTask",
+          "startTime": "2026-09-13T10:35:03.846",
+          "endTime": "2026-09-13T10:35:05.936",
+          "assignee": "2098963585643364353",
+          "assigneeName": "leader2",
+          "taskId": "b9a03d4e-af1b-11f1-8a14-00ffa7734675"
+        }
+      ]
+    },
+    {
+      "pi": "b3c2c624-af1b-11f1-8a14-00ffa7734675",
+      "status": "REJECTED",
+      "createTime": "2026-09-13T10:34:54.072457",
+      "initiatorId": "2098963585999880194",
+      "flowTrace": [
+        {
+          "activityId": "start",
+          "activityName": "Start",
+          "activityType": "startEvent",
+          "startTime": "2026-09-13T10:34:54.019",
+          "endTime": "2026-09-13T10:34:54.021",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "e1",
+          "activityName": null,
+          "activityType": "sequenceFlow",
+          "startTime": "2026-09-13T10:34:54.023",
+          "endTime": "2026-09-13T10:34:54.023",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "appr",
+          "activityName": "主管审批",
+          "activityType": "userTask",
+          "startTime": "2026-09-13T10:34:54.023",
+          "endTime": "2026-09-13T10:34:57.667",
+          "assignee": "2098963585257488385",
+          "assigneeName": "leader1",
+          "taskId": "b3c75a11-af1b-11f1-8a14-00ffa7734675"
+        },
+        {
+          "activityId": "e2",
+          "activityName": null,
+          "activityType": "sequenceFlow",
+          "startTime": "2026-09-13T10:34:57.667",
+          "endTime": "2026-09-13T10:34:57.667",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "end",
+          "activityName": "End",
+          "activityType": "endEvent",
+          "startTime": "2026-09-13T10:34:57.667",
+          "endTime": "2026-09-13T10:34:57.668",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,238 @@
+{
+  "sampleSet": [
+    "e05fbc79-aeda-11f1-9447-00ffa7734675",
+    "e2b45b00-aeda-11f1-9447-00ffa7734675",
+    "2477873b-aedb-11f1-9447-00ffa7734675",
+    "32bf13ab-aedb-11f1-9447-00ffa7734675"
+  ],
+  "raws": [
+    {
+      "pi": "e05fbc79-aeda-11f1-9447-00ffa7734675",
+      "status": "APPROVED",
+      "createTime": "2026-09-13T02:50:51.658625",
+      "flowTrace": [
+        {
+          "activityId": "start",
+          "activityName": "Start",
+          "activityType": "startEvent",
+          "startTime": "2026-09-13T02:50:51.577",
+          "endTime": "2026-09-13T02:50:51.579",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "e1",
+          "activityName": null,
+          "activityType": "sequenceFlow",
+          "startTime": "2026-09-13T02:50:51.58",
+          "endTime": "2026-09-13T02:50:51.58",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "dyn",
+          "activityName": "部门负责人并行审批",
+          "activityType": "userTask",
+          "startTime": "2026-09-13T02:50:51.615",
+          "endTime": "2026-09-13T02:50:54.274",
+          "assignee": "2098846806564757505",
+          "assigneeName": "leader1",
+          "taskId": "e0675daf-aeda-11f1-9447-00ffa7734675"
+        },
+        {
+          "activityId": "dyn",
+          "activityName": "部门负责人并行审批",
+          "activityType": "userTask",
+          "startTime": "2026-09-13T02:50:51.628",
+          "endTime": "2026-09-13T02:50:54.397",
+          "assignee": "2098846806925467649",
+          "assigneeName": "leader2",
+          "taskId": "e0690b64-aeda-11f1-9447-00ffa7734675"
+        },
+        {
+          "activityId": "e2",
+          "activityName": null,
+          "activityType": "sequenceFlow",
+          "startTime": "2026-09-13T02:50:54.43",
+          "endTime": "2026-09-13T02:50:54.43",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "end",
+          "activityName": "End",
+          "activityType": "endEvent",
+          "startTime": "2026-09-13T02:50:54.43",
+          "endTime": "2026-09-13T02:50:54.431",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        }
+      ]
+    },
+    {
+      "pi": "e2b45b00-aeda-11f1-9447-00ffa7734675",
+      "status": "APPROVED",
+      "createTime": "2026-09-13T02:50:55.498493",
+      "flowTrace": [
+        {
+          "activityId": "e1",
+          "activityName": null,
+          "activityType": "sequenceFlow",
+          "startTime": "2026-09-13T02:50:55.477",
+          "endTime": "2026-09-13T02:50:55.477",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "start",
+          "activityName": "Start",
+          "activityType": "startEvent",
+          "startTime": "2026-09-13T02:50:55.477",
+          "endTime": "2026-09-13T02:50:55.477",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "dyn",
+          "activityName": "部门负责人并行审批",
+          "activityType": "userTask",
+          "startTime": "2026-09-13T02:50:55.484",
+          "endTime": "2026-09-13T02:51:15.837",
+          "assignee": "2098846806564757505",
+          "assigneeName": "leader1",
+          "taskId": "e2b59394-aeda-11f1-9447-00ffa7734675"
+        },
+        {
+          "activityId": "e2",
+          "activityName": null,
+          "activityType": "sequenceFlow",
+          "startTime": "2026-09-13T02:51:15.865",
+          "endTime": "2026-09-13T02:51:15.865",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "end",
+          "activityName": "End",
+          "activityType": "endEvent",
+          "startTime": "2026-09-13T02:51:15.865",
+          "endTime": "2026-09-13T02:51:15.865",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        }
+      ]
+    },
+    {
+      "pi": "2477873b-aedb-11f1-9447-00ffa7734675",
+      "status": "RUNNING",
+      "createTime": "2026-09-13T02:52:45.839184",
+      "flowTrace": [
+        {
+          "activityId": "dyn",
+          "activityName": "部门负责人并行审批",
+          "activityType": "userTask",
+          "startTime": "2026-09-13T02:52:45.819",
+          "endTime": null,
+          "assignee": "2098846806564757505",
+          "assigneeName": "leader1",
+          "taskId": "24793501-aedb-11f1-9447-00ffa7734675"
+        },
+        {
+          "activityId": "dyn",
+          "activityName": "部门负责人并行审批",
+          "activityType": "userTask",
+          "startTime": "2026-09-13T02:52:45.823",
+          "endTime": null,
+          "assignee": "2098846806925467649",
+          "assigneeName": "leader2",
+          "taskId": "2479d146-aedb-11f1-9447-00ffa7734675"
+        },
+        {
+          "activityId": "e1",
+          "activityName": null,
+          "activityType": "sequenceFlow",
+          "startTime": "2026-09-13T02:52:45.808",
+          "endTime": "2026-09-13T02:52:45.808",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "start",
+          "activityName": "Start",
+          "activityType": "startEvent",
+          "startTime": "2026-09-13T02:52:45.808",
+          "endTime": "2026-09-13T02:52:45.808",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        }
+      ]
+    },
+    {
+      "pi": "32bf13ab-aedb-11f1-9447-00ffa7734675",
+      "status": "REJECTED",
+      "createTime": "2026-09-13T02:53:09.785917",
+      "flowTrace": [
+        {
+          "activityId": "e1",
+          "activityName": null,
+          "activityType": "sequenceFlow",
+          "startTime": "2026-09-13T02:53:09.765",
+          "endTime": "2026-09-13T02:53:09.765",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "start",
+          "activityName": "Start",
+          "activityType": "startEvent",
+          "startTime": "2026-09-13T02:53:09.765",
+          "endTime": "2026-09-13T02:53:09.765",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "dyn",
+          "activityName": "部门负责人并行审批",
+          "activityType": "userTask",
+          "startTime": "2026-09-13T02:53:09.772",
+          "endTime": "2026-09-13T02:53:13.378",
+          "assignee": "2098846806564757505",
+          "assigneeName": "leader1",
+          "taskId": "32c0252f-aedb-11f1-9447-00ffa7734675"
+        },
+        {
+          "activityId": "e2",
+          "activityName": null,
+          "activityType": "sequenceFlow",
+          "startTime": "2026-09-13T02:53:13.423",
+          "endTime": "2026-09-13T02:53:13.423",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "end",
+          "activityName": "End",
+          "activityType": "endEvent",
+          "startTime": "2026-09-13T02:53:13.423",
+          "endTime": "2026-09-13T02:53:13.423",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        }
+      ]
+    }
+  ]
+}

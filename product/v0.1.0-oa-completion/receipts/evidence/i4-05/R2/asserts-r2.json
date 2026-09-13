@@ -1,0 +1,84 @@
+{
+  "total": 8,
+  "failed": 0,
+  "rows": [
+    {
+      "name": "o3.threeBranches",
+      "pass": true,
+      "detail": {
+        "submit": {
+          "status": 200,
+          "body": {
+            "code": 0,
+            "msg": "success",
+            "data": "0ab41057-1f4e-444f-bd98-350621959141"
+          }
+        },
+        "pi": "ce8b56c2-af18-11f1-8057-00ffa7734675"
+      }
+    },
+    {
+      "name": "o3.branchCount3",
+      "pass": true,
+      "detail": [
+        {
+          "idx": 0,
+          "leader": "2098958369443381250"
+        },
+        {
+          "idx": 1,
+          "leader": "2098958369833451522"
+        },
+        {
+          "idx": 2,
+          "leader": "2098958370512928770"
+        }
+      ]
+    },
+    {
+      "name": "o3.tasksReady",
+      "pass": true,
+      "detail": {
+        "tL1": "ce931f0a-af18-11f1-8057-00ffa7734675",
+        "tW": "ce956904-af18-11f1-8057-00ffa7734675"
+      }
+    },
+    {
+      "name": "o3.unselectedUntouched",
+      "pass": true,
+      "detail": "ce956904-af18-11f1-8057-00ffa7734675"
+    },
+    {
+      "name": "o3.auditMatchesSelected",
+      "pass": true,
+      "detail": [
+        {
+          "from": "2098958369443381250",
+          "to": "2098958369833451522",
+          "n": 1
+        }
+      ]
+    },
+    {
+      "name": "outsider.terminateDenied",
+      "pass": true,
+      "detail": {
+        "status": 403,
+        "code": 403
+      }
+    },
+    {
+      "name": "outsider.zeroIncrement",
+      "pass": true,
+      "detail": {
+        "before": 1,
+        "after": 1
+      }
+    },
+    {
+      "name": "o3.stillRunning",
+      "pass": true,
+      "detail": "ce8b56c2-af18-11f1-8057-00ffa7734675"
+    }
+  ]
+}

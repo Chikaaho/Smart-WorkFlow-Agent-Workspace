@@ -1,0 +1,1 @@
+R2-monitor-intervention → r2-o3-*.json + asserts.json → O3 三任务选择性迁移（taskIds 选择子集）：未选任务保持原办理人、审计恰 1 行 from=leader1 affectedTasks=1；outsider TERMINATE 被拒且审计/任务零增量；实例保持 RUNNING → 边界：O1 全迁样本已被本轮 O3 替换并登记（iteration-04 登记保留）。

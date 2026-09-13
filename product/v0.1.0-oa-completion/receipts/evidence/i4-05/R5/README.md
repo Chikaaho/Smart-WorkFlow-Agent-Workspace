@@ -1,0 +1,1 @@
+R5-h5-detail-opinion-form → r5-h5-*.png + r5-record-backref.json（外键经 form:data:query 授权可读回显：关联协作单=I4-r5 APPROVED 样本而非原始 ID）+ 附件/下载授权正反向（r5-h5 采证前 iteration-04 http/att-*.json；本轮脚本内 ownerDownload200/outsiderDenied，见 http/r5-att-*.json）→ 375px 全程 scrollW==clientW 无主体横溢、拒绝/已办页面均可用 → 边界：外键目标记录读取经授权单查接口（resolveReferenceDisplay 单源）。

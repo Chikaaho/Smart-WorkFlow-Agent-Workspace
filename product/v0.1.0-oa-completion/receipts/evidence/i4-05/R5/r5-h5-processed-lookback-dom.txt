@@ -1,0 +1,41 @@
+- button "toggle sidebar":
+- navigation "Breadcrumb"
+- button "进入后台":
+  - generic: 进入后台
+- button "w":
+  - generic: w
+- main:
+  - heading "已办任务" [level=2]
+  - generic: 共 1 条记录
+  - button "待办任务":
+    - generic: 待办任务
+  - table:
+    - rowgroup:
+      - row "任务名称 流程名称 表单标识 业务单号 创建时间 完成时间":
+        - columnheader "任务名称":
+          - generic: 任务名称
+        - columnheader "流程名称":
+          - generic: 流程名称
+        - columnheader "表单标识":
+          - generic: 表单标识
+        - columnheader "业务单号":
+          - generic: 业务单号
+        - columnheader "创建时间":
+          - generic: 创建时间
+        - columnheader "完成时间":
+          - generic: 完成时间
+  - table:
+    - rowgroup:
+      - row "移动审批 I4 移动意见审批 i4_r5_detail 349f4170-74f4-4463-b9a0-7c705a5f33c7 2026-09-13T10:23:41.443 2026-09-13T10:25:25.327":
+        - cell "移动审批":
+          - generic: 移动审批
+        - cell "I4 移动意见审批":
+          - generic: I4 移动意见审批
+        - cell "i4_r5_detail":
+          - generic: i4_r5_detail
+        - cell "349f4170-74f4-4463-b9a0-7c705a5f33c7":
+          - generic: 349f4170-74f4-4463-b9a0-7c705a5f33c7
+        - cell "2026-09-13T10:23:41.443":
+          - generic: 2026-09-13T10:23:41.443
+        - cell "2026-09-13T10:25:25.327":
+          - generic: 2026-09-13T10:25:25.327

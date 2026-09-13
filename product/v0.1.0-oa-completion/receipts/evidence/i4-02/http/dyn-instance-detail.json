@@ -1,0 +1,72 @@
+{
+  "user": "admin",
+  "method": "GET",
+  "path": "/workflow/instances/cd5b0f70-aeb0-11f1-aca2-00ffa7734675",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "id": "2098771027709005826",
+      "processInstanceId": "cd5b0f70-aeb0-11f1-aca2-00ffa7734675",
+      "processDefKey": "bpm_aad362d1a91f4020",
+      "processName": "I4 动态并行协作审批",
+      "businessKey": "e097a515-ecb5-4585-832a-7247e81dc9bb",
+      "formKey": "i4_leave_form",
+      "initiatorId": "2098770920297074689",
+      "initiatorName": "initiator",
+      "status": "RUNNING",
+      "createTime": "2026-09-12T21:49:40.942366",
+      "activeNodeIds": [
+        "dyn"
+      ],
+      "flowTrace": [
+        {
+          "activityId": "dyn",
+          "activityName": "部门负责人并行审批",
+          "activityType": "userTask",
+          "startTime": "2026-09-12T21:49:40.902",
+          "endTime": null,
+          "assignee": "2098770919533711361",
+          "assigneeName": "leader1",
+          "taskId": "cd6b151b-aeb0-11f1-aca2-00ffa7734675"
+        },
+        {
+          "activityId": "start",
+          "activityName": "Start",
+          "activityType": "startEvent",
+          "startTime": "2026-09-12T21:49:40.815",
+          "endTime": "2026-09-12T21:49:40.824",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "e1",
+          "activityName": null,
+          "activityType": "sequenceFlow",
+          "startTime": "2026-09-12T21:49:40.827",
+          "endTime": "2026-09-12T21:49:40.827",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "dyn",
+          "activityName": "部门负责人并行审批",
+          "activityType": "userTask",
+          "startTime": "2026-09-12T21:49:40.885",
+          "endTime": "2026-09-12T21:55:15.386",
+          "assignee": "2098770919533711361",
+          "assigneeName": "leader1",
+          "taskId": "cd68f236-aeb0-11f1-aca2-00ffa7734675"
+        }
+      ],
+      "formData": {
+        "days": 2,
+        "reason": "I4 动态并行正向链",
+        "deptList": "2098770920737476609,2098770920783613954,2098770920825556993"
+      }
+    }
+  }
+}

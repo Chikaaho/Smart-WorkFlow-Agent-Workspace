@@ -1,0 +1,59 @@
+viewport=375x812 innerWidth/Height=375/812 scrollWidth=375 clientWidth=375 (no horizontal overflow)
+- banner:
+  - heading "工作台" [level=1]
+  - button "发起":
+    - generic: 发起
+- tablist:
+  - tab "待办" [selected]
+  - tab "我发起的"
+  - tab "草稿"
+- tabpanel "待办"
+- list:
+  - generic: 7c6468a2-af22-11f1-95b7-00ffa7734675
+  - generic: 待办理
+  - generic: 2026-09-13T11:23:27.59
+  - generic: 6bffa17e-af22-11f1-95b7-00ffa7734675
+  - generic: 待办理
+  - generic: 2026-09-13T11:23:00.086
+- dialog:
+  - banner:
+    - generic: 移动审批
+    - button "Close this dialog":
+  - heading "任务信息" [level=3]
+  - generic: 流程名称
+  - generic: I4 移动意见审批
+  - generic: 发起人
+  - generic: w
+  - generic: 当前办理人
+  - generic: w
+  - generic: 业务单号
+  - generic: 0f870b17-d72a-4209-9912-22de59733fba
+  - generic: 创建时间
+  - generic: 2026-09-13T11:23:27.59
+  - heading "表单数据（本次提交）" [level=3]
+  - generic: 天数
+  - generic: "1"
+  - generic: 事由
+  - generic: I4-r6 同对象验证
+  - generic: 关联协作单
+  - generic: I4-r6 关联协作单目标
+  - generic: 附件
+  - link "4474496a-f286-48eb-a8c6-829c8ba33655.txt":
+    - /url: /api/workflow/attachments/0f870b17-d72a-4209-9912-22de59733fba/download?storageKey=2026%2F09%2F13%2F4474496a-f286-48eb-a8c6-829c8ba33655.txt&name=4474496a-f286-48eb-a8c6-829c8ba33655.txt
+  - generic: ref_dept_ref_id
+  - generic: adb17ac1-c38a-40b5-b04b-b04433284a76
+  - heading "审批意见（正式意见表单）" [level=3]
+  - generic: 审批意见 *
+  - textbox "审批意见 *"
+  - generic: 协作评价 *
+  - radio "满意"
+  - text: 满意
+  - radio "不满意"
+  - text: 不满意
+  - generic: 请依据协作单信息如实评价
+  - button "取消":
+    - generic: 取消
+  - button "不通过":
+    - generic: 不通过
+  - button "通过":
+    - generic: 通过

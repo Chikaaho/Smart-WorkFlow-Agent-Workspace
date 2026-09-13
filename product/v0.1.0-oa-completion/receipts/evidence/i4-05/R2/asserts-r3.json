@@ -1,0 +1,292 @@
+{
+  "total": 28,
+  "failed": 1,
+  "rows": [
+    {
+      "name": "rj.submitted",
+      "pass": true,
+      "detail": {
+        "submit": {
+          "status": 200,
+          "body": {
+            "code": 0,
+            "msg": "success",
+            "data": "3ebcd33c-95a2-438f-8ab7-1cddbcf84603"
+          }
+        },
+        "pi": "b3c2c624-af1b-11f1-8a14-00ffa7734675"
+      }
+    },
+    {
+      "name": "rj.rejected",
+      "pass": true,
+      "detail": {
+        "commandId": "2098963615565529089",
+        "commandType": "TASK_REJECT",
+        "channel": "NORMAL",
+        "status": "COMPLETED",
+        "result": "{\"status\":\"DONE\",\"actionRecordId\":2098963616492470273}",
+        "failureReason": null,
+        "retryCount": 0,
+        "createTime": "2026-09-13T10:34:57.468843",
+        "finishedAt": "2026-09-13T10:34:57.699787",
+        "flowStart": null
+      }
+    },
+    {
+      "name": "rj.instanceRejected",
+      "pass": true,
+      "detail": "b3c2c624-af1b-11f1-8a14-00ffa7734675"
+    },
+    {
+      "name": "rt.submitted",
+      "pass": true,
+      "detail": {
+        "submit": {
+          "status": 200,
+          "body": {
+            "code": 0,
+            "msg": "success",
+            "data": "ab252a8d-7803-4ce8-ac76-dff1e37453a5"
+          }
+        },
+        "pi": "b72e79eb-af1b-11f1-8a14-00ffa7734675"
+      }
+    },
+    {
+      "name": "rt.returned",
+      "pass": true,
+      "detail": {
+        "commandId": "2098963649879130113",
+        "commandType": "TASK_RETURN",
+        "channel": "NORMAL",
+        "status": "COMPLETED",
+        "result": "{\"status\":\"DONE\",\"actionRecordId\":2098963651175170049}",
+        "failureReason": null,
+        "retryCount": 0,
+        "createTime": "2026-09-13T10:35:05.648022",
+        "finishedAt": "2026-09-13T10:35:05.961162",
+        "flowStart": null
+      }
+    },
+    {
+      "name": "rt.backToA1",
+      "pass": true,
+      "detail": "b72e79eb-af1b-11f1-8a14-00ffa7734675"
+    },
+    {
+      "name": "td.submitted",
+      "pass": true,
+      "detail": {
+        "submit": {
+          "status": 200,
+          "body": {
+            "code": 0,
+            "msg": "success",
+            "data": "93e9d0cf-bcb4-4516-8774-9fa77c0985f0"
+          }
+        },
+        "pi": "bc189059-af1b-11f1-8a14-00ffa7734675"
+      }
+    },
+    {
+      "name": "td.overdueRow",
+      "pass": true,
+      "detail": [
+        {
+          "taskId": "bc18b776-af1b-11f1-8a14-00ffa7734675",
+          "nodeKey": "appr",
+          "dueAt": "2026-09-13T10:36:07.995803",
+          "handled": false,
+          "overdue": true
+        }
+      ]
+    },
+    {
+      "name": "att.uploaded",
+      "pass": true,
+      "detail": {
+        "storageKey": "2026/09/13/f0dccf48-7488-4aba-a5c2-82203e2d751e.txt",
+        "fileSize": "21",
+        "storageName": "f0dccf48-7488-4aba-a5c2-82203e2d751e.txt"
+      }
+    },
+    {
+      "name": "a2.matrix",
+      "pass": false,
+      "detail": {
+        "RUNNING": 2,
+        "REJECTED": 1
+      }
+    },
+    {
+      "name": "exact.launched",
+      "pass": true,
+      "detail": {
+        "api": "3",
+        "rc": 3
+      }
+    },
+    {
+      "name": "exact.completed",
+      "pass": true,
+      "detail": {
+        "api": "1",
+        "rc": 1
+      }
+    },
+    {
+      "name": "exact.running",
+      "pass": true,
+      "detail": {
+        "api": "2",
+        "rc": 2
+      }
+    },
+    {
+      "name": "exact.rejected",
+      "pass": true,
+      "detail": {
+        "api": "1",
+        "rc": 1
+      }
+    },
+    {
+      "name": "exact.durationSample",
+      "pass": true,
+      "detail": {
+        "api": 1,
+        "rc": 1
+      }
+    },
+    {
+      "name": "exact.avgDurationMs",
+      "pass": true,
+      "detail": {
+        "api": 3595,
+        "rc": 3595
+      }
+    },
+    {
+      "name": "exact.p50DurationMs",
+      "pass": true,
+      "detail": {
+        "api": "3595",
+        "rc": 3595
+      }
+    },
+    {
+      "name": "exact.p90DurationMs",
+      "pass": true,
+      "detail": {
+        "api": "3595",
+        "rc": 3595
+      }
+    },
+    {
+      "name": "nonzero.duration",
+      "pass": true,
+      "detail": {
+        "n": 1
+      }
+    },
+    {
+      "name": "nonzero.rejected",
+      "pass": true,
+      "detail": 1
+    },
+    {
+      "name": "nonzero.returned",
+      "pass": true,
+      "detail": 1
+    },
+    {
+      "name": "nonzero.overdue",
+      "pass": true,
+      "detail": 1
+    },
+    {
+      "name": "exact.handlerWorkload",
+      "pass": true,
+      "detail": {
+        "api": {
+          "2098963585257488385": "2",
+          "2098963585643364353": "1"
+        },
+        "rc": {
+          "2098963585643364353": 1,
+          "2098963585257488385": 2
+        }
+      }
+    },
+    {
+      "name": "exact.returnedCount",
+      "pass": true,
+      "detail": {
+        "api": "1",
+        "rc": 1
+      }
+    },
+    {
+      "name": "exact.rejectedActionCount",
+      "pass": true,
+      "detail": {
+        "api": "1",
+        "rc": 1
+      }
+    },
+    {
+      "name": "exact.overdueCount",
+      "pass": true,
+      "detail": {
+        "api": "1",
+        "rc": 1
+      }
+    },
+    {
+      "name": "exact.nodeStats",
+      "pass": true,
+      "detail": {
+        "api": {
+          "a1": {
+            "count": 1,
+            "avgStayMs": 4099,
+            "p90StayMs": 4099
+          },
+          "a2": {
+            "count": 1,
+            "avgStayMs": 2090,
+            "p90StayMs": 2090
+          },
+          "appr": {
+            "count": 1,
+            "avgStayMs": 3644,
+            "p90StayMs": 3644
+          }
+        },
+        "rc": {
+          "a1": {
+            "count": 1,
+            "avgStayMs": 4099,
+            "p90StayMs": 4099
+          },
+          "a2": {
+            "count": 1,
+            "avgStayMs": 2090,
+            "p90StayMs": 2090
+          },
+          "appr": {
+            "count": 1,
+            "avgStayMs": 3644,
+            "p90StayMs": 3644
+          }
+        }
+      }
+    },
+    {
+      "name": "outsider.summaryDenied",
+      "pass": true,
+      "detail": 403
+    }
+  ]
+}

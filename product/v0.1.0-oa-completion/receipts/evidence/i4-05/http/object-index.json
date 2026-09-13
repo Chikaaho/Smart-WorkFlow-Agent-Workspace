@@ -1,0 +1,80 @@
+{
+  "generatedAt": "2026-09-13T02:34:51.812Z",
+  "tenant": 0,
+  "users": {
+    "admin": "1",
+    "leader1": "2098963585257488385",
+    "leader2": "2098963585643364353",
+    "initiator": "2098963585999880194",
+    "w": "2098963586348007425",
+    "outsider": "2098963586691940353"
+  },
+  "depts": {
+    "A": "2098963586855518210",
+    "B": "2098963586897461250",
+    "D": "2098963586931015681"
+  },
+  "forms": {
+    "leave": "i4_leave_form",
+    "r5": "i4_r5_detail"
+  },
+  "defs": {
+    "R": {
+      "defId": "2098963588600348673",
+      "processKey": "bpm_5d4c52f1e17540c9",
+      "name": "I4 动态并行协作审批"
+    },
+    "TWO": {
+      "defId": "2098963589489541122",
+      "processKey": "bpm_8c5f1760b2e74a90",
+      "name": "I4 两节点退回审批"
+    },
+    "RJ": {
+      "defId": "2098963590106103809",
+      "processKey": "bpm_4e75f53678dc4fb9",
+      "name": "I4 驳回单节点"
+    },
+    "TD": {
+      "defId": "2098963590710083586",
+      "processKey": "bpm_dc3ab4bd4e194332",
+      "name": "I4 超时单节点"
+    },
+    "OPW": {
+      "defId": "2098963591318257666",
+      "processKey": "bpm_b437c969c55948df",
+      "name": "I4 移动意见审批"
+    }
+  },
+  "instances": {
+    "O3": "ce8b56c2-af18-11f1-8057-00ffa7734675",
+    "REJ": "b3c2c624-af1b-11f1-8a14-00ffa7734675",
+    "RET": "b72e79eb-af1b-11f1-8a14-00ffa7734675",
+    "OVERDUE": "bc189059-af1b-11f1-8a14-00ffa7734675",
+    "APPROVED_S": "e8e3b161-af1b-11f1-8a14-00ffa7734675",
+    "TERM_S": "ec407108-af1b-11f1-8a14-00ffa7734675",
+    "R5X": "fe4d90f0-af1b-11f1-8a14-00ffa7734675"
+  },
+  "tasks": {
+    "O3_T_L1": "ce931f0a-af18-11f1-8057-00ffa7734675",
+    "O3_T_W": "ce956904-af18-11f1-8057-00ffa7734675"
+  },
+  "attachment": {
+    "recordKey": null,
+    "storageKey": "2026/09/13/f0dccf48-7488-4aba-a5c2-82203e2d751e.txt",
+    "storageName": "f0dccf48-7488-4aba-a5c2-82203e2d751e.txt",
+    "fileSize": "21"
+  },
+  "bindingLog": [
+    {
+      "def": "R",
+      "at": "2026-09-13T02:15:52.649Z"
+    },
+    {
+      "def": "R",
+      "at": "2026-09-13T02:36:20.189Z"
+    }
+  ],
+  "r5RefRecordId": "f350b2e4-3258-4e08-ac92-adad25a146f7",
+  "taskIdR5": "fe4db80d-af1b-11f1-8a14-00ffa7734675",
+  "r5BusinessKey": "bd355a5c-d5c1-4c04-a159-50d1b79e220b"
+}

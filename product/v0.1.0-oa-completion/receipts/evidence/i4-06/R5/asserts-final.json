@@ -1,0 +1,225 @@
+{
+  "total": 17,
+  "failed": 0,
+  "source": [
+    "http/asserts-r5.json",
+    "http/asserts-r5b.json"
+  ],
+  "rows": [
+    {
+      "phase": "r5",
+      "name": "fk.refRecordCreated",
+      "pass": true,
+      "detail": "adb17ac1-c38a-40b5-b04b-b04433284a76"
+    },
+    {
+      "phase": "r5",
+      "name": "att.uploaded",
+      "pass": true,
+      "detail": {
+        "fileSize": "60",
+        "storageKey": "2026/09/13/4474496a-f286-48eb-a8c6-829c8ba33655.txt",
+        "storageName": "4474496a-f286-48eb-a8c6-829c8ba33655.txt"
+      }
+    },
+    {
+      "phase": "r5",
+      "name": "m.submitted",
+      "pass": true,
+      "detail": {
+        "submit": {
+          "status": 200,
+          "body": {
+            "code": 0,
+            "msg": "success",
+            "data": "0f870b17-d72a-4209-9912-22de59733fba"
+          }
+        },
+        "pi": "7c646895-af22-11f1-95b7-00ffa7734675"
+      }
+    },
+    {
+      "phase": "r5",
+      "name": "m.instanceRunning",
+      "pass": true,
+      "detail": "7c646895-af22-11f1-95b7-00ffa7734675"
+    },
+    {
+      "phase": "r5",
+      "name": "m.taskOnW",
+      "pass": true,
+      "detail": "7c6468a2-af22-11f1-95b7-00ffa7734675"
+    },
+    {
+      "phase": "r5",
+      "name": "m.recordAttachmentBound",
+      "pass": true,
+      "detail": {
+        "record": [
+          "2026/09/13/4474496a-f286-48eb-a8c6-829c8ba33655.txt"
+        ],
+        "expect": [
+          "2026/09/13/4474496a-f286-48eb-a8c6-829c8ba33655.txt"
+        ]
+      }
+    },
+    {
+      "phase": "r5",
+      "name": "m.recordRefBound",
+      "pass": true,
+      "detail": {
+        "record": "adb17ac1-c38a-40b5-b04b-b04433284a76",
+        "fk": "adb17ac1-c38a-40b5-b04b-b04433284a76"
+      }
+    },
+    {
+      "phase": "r5",
+      "name": "m.apiDetail.businessKey",
+      "pass": true,
+      "detail": {
+        "api": "0f870b17-d72a-4209-9912-22de59733fba",
+        "m": "0f870b17-d72a-4209-9912-22de59733fba"
+      }
+    },
+    {
+      "phase": "r5",
+      "name": "m.apiDetail.processInstanceId",
+      "pass": true,
+      "detail": {
+        "api": "7c646895-af22-11f1-95b7-00ffa7734675",
+        "m": "7c646895-af22-11f1-95b7-00ffa7734675"
+      }
+    },
+    {
+      "phase": "r5",
+      "name": "m.apiInstance.businessKey",
+      "pass": true,
+      "detail": {
+        "api": "0f870b17-d72a-4209-9912-22de59733fba",
+        "m": "0f870b17-d72a-4209-9912-22de59733fba"
+      }
+    },
+    {
+      "phase": "r5",
+      "name": "att.ownerDownload200",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "headers": {
+          "content-disposition": "attachment; filename*=UTF-8''I4-r6+%E9%99%84%E4%BB%B6%E6%A0%B7%E6%9C%AC.txt",
+          "x-content-type-options": "nosniff",
+          "x-xss-protection": "0",
+          "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+          "pragma": "no-cache",
+          "expires": "0",
+          "x-frame-options": "DENY",
+          "content-type": "application/octet-stream",
+          "transfer-encoding": "chunked",
+          "date": "Sun, 13 Sep 2026 03:23:31 GMT",
+          "keep-alive": "timeout=60",
+          "connection": "keep-alive"
+        }
+      }
+    },
+    {
+      "phase": "r5",
+      "name": "att.ownerBodyMatches",
+      "pass": true,
+      "detail": {
+        "length": 60,
+        "uploaded": 60
+      }
+    },
+    {
+      "phase": "r5",
+      "name": "att.outsiderDenied403",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "code": 403,
+        "contentType": "application/json"
+      }
+    },
+    {
+      "phase": "r5b",
+      "name": "final.myInstanceRowSameObject",
+      "pass": true,
+      "detail": {
+        "row": {
+          "id": "2098975821552160769",
+          "createTime": "2026-09-13T11:23:27.601485",
+          "createBy": "2098975491217166337",
+          "updateTime": "2026-09-13T11:23:27.601485",
+          "updateBy": "2098975491217166337",
+          "deleted": 0,
+          "version": "0",
+          "tenantId": "0",
+          "processInstanceId": "7c646895-af22-11f1-95b7-00ffa7734675",
+          "processDefKey": "bpm_404ef47dd69a4acf",
+          "businessKey": "0f870b17-d72a-4209-9912-22de59733fba",
+          "formKey": "i4_r5_detail",
+          "initiatorId": "2098975491217166337",
+          "status": "APPROVED",
+          "defVersion": 4
+        },
+        "browser": {
+          "initiatedEntityId": "2098975821552160769",
+          "detailBusinessKey": "0f870b17-d72a-4209-9912-22de59733fba",
+          "todoTaskId": "7c6468a2-af22-11f1-95b7-00ffa7734675",
+          "fkDisplay": "I4-r6 关联协作单目标",
+          "pages": [
+            "/m/workflow 待办->详情(375x812)",
+            "/m/workflow 我发起的(结果查询)"
+          ]
+        }
+      }
+    },
+    {
+      "phase": "r5b",
+      "name": "final.processedByW",
+      "pass": true,
+      "detail": {
+        "doneRow": {
+          "taskId": "7c6468a2-af22-11f1-95b7-00ffa7734675",
+          "taskName": "移动审批",
+          "nodeKey": "appr",
+          "assignee": "2098975491217166337",
+          "assigneeName": "w",
+          "createTime": "2026-09-13T11:23:27.59",
+          "endTime": "2026-09-13T11:25:20.803",
+          "action": "APPROVE",
+          "approvalResult": "APPROVED",
+          "opinionData": {
+            "comment": "I4-r6 已办结果查询读取（正式意见表单提交）",
+            "rating": "满意"
+          },
+          "opinionFormId": "I4_R5_OPINION_FORM",
+          "opinionFormVersion": "1"
+        },
+        "taskId": "7c6468a2-af22-11f1-95b7-00ffa7734675"
+      }
+    },
+    {
+      "phase": "r5b",
+      "name": "final.attachmentStillBound",
+      "pass": true,
+      "detail": {
+        "attCol": [
+          "2026/09/13/4474496a-f286-48eb-a8c6-829c8ba33655.txt"
+        ],
+        "expect": [
+          "2026/09/13/4474496a-f286-48eb-a8c6-829c8ba33655.txt"
+        ]
+      }
+    },
+    {
+      "phase": "r5b",
+      "name": "final.recordRefStillBound",
+      "pass": true,
+      "detail": {
+        "record": "adb17ac1-c38a-40b5-b04b-b04433284a76",
+        "fk": "adb17ac1-c38a-40b5-b04b-b04433284a76"
+      }
+    }
+  ]
+}

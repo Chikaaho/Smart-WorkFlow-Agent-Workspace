@@ -1,0 +1,72 @@
+{
+  "user": "admin",
+  "method": "GET",
+  "path": "/workflow/monitor/instances/c5f7641c-aea4-11f1-9ecd-00ffa7734675/interventions",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": [
+      {
+        "id": "2098749419585994753",
+        "createTime": "2026-09-12T20:23:49.164735",
+        "createBy": "1",
+        "updateTime": "2026-09-12T20:23:49.164735",
+        "updateBy": "1",
+        "deleted": 0,
+        "version": "0",
+        "tenantId": "0",
+        "processInstanceId": "c5f7641c-aea4-11f1-9ecd-00ffa7734675",
+        "action": "TRANSFER",
+        "operatorId": "1",
+        "reason": "I4 迁移办理人验证",
+        "beforeState": "RUNNING",
+        "afterState": "RUNNING",
+        "fromAssignee": "2098744048293183489",
+        "toAssignee": "2098744048691642370",
+        "affectedTasks": 1,
+        "intervenedAt": "2026-09-12T20:23:49.153736"
+      },
+      {
+        "id": "2098749419493720066",
+        "createTime": "2026-09-12T20:23:49.143223",
+        "createBy": "1",
+        "updateTime": "2026-09-12T20:23:49.143223",
+        "updateBy": "1",
+        "deleted": 0,
+        "version": "0",
+        "tenantId": "0",
+        "processInstanceId": "c5f7641c-aea4-11f1-9ecd-00ffa7734675",
+        "action": "RESUME",
+        "operatorId": "1",
+        "reason": "I4 运营恢复验证",
+        "beforeState": "SUSPENDED",
+        "afterState": "RUNNING",
+        "fromAssignee": null,
+        "toAssignee": null,
+        "affectedTasks": 0,
+        "intervenedAt": "2026-09-12T20:23:49.138219"
+      },
+      {
+        "id": "2098749419422416898",
+        "createTime": "2026-09-12T20:23:49.125222",
+        "createBy": "1",
+        "updateTime": "2026-09-12T20:23:49.125222",
+        "updateBy": "1",
+        "deleted": 0,
+        "version": "0",
+        "tenantId": "0",
+        "processInstanceId": "c5f7641c-aea4-11f1-9ecd-00ffa7734675",
+        "action": "SUSPEND",
+        "operatorId": "1",
+        "reason": "I4 运营挂起验证",
+        "beforeState": "RUNNING",
+        "afterState": "SUSPENDED",
+        "fromAssignee": null,
+        "toAssignee": null,
+        "affectedTasks": 0,
+        "intervenedAt": "2026-09-12T20:23:49.113705"
+      }
+    ]
+  }
+}

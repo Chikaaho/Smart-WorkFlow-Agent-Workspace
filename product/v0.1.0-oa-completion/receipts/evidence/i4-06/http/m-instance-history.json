@@ -1,0 +1,53 @@
+{
+  "user": "w",
+  "method": "GET",
+  "path": "/workflow/my/instances/2098975821552160769",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "instance": {
+        "id": "2098975821552160769",
+        "createTime": "2026-09-13T11:23:27.601485",
+        "createBy": "2098975491217166337",
+        "updateTime": "2026-09-13T11:23:27.601485",
+        "updateBy": "2098975491217166337",
+        "deleted": 0,
+        "version": "0",
+        "tenantId": "0",
+        "processInstanceId": "7c646895-af22-11f1-95b7-00ffa7734675",
+        "processDefKey": "bpm_404ef47dd69a4acf",
+        "businessKey": "0f870b17-d72a-4209-9912-22de59733fba",
+        "formKey": "i4_r5_detail",
+        "initiatorId": "2098975491217166337",
+        "status": "APPROVED",
+        "defVersion": 4
+      },
+      "processName": "I4 移动意见审批",
+      "formKey": "i4_r5_detail",
+      "businessKey": "0f870b17-d72a-4209-9912-22de59733fba",
+      "status": "APPROVED",
+      "progress": [],
+      "history": [
+        {
+          "taskId": "7c6468a2-af22-11f1-95b7-00ffa7734675",
+          "taskName": "移动审批",
+          "nodeKey": "appr",
+          "assignee": "2098975491217166337",
+          "assigneeName": "w",
+          "createTime": "2026-09-13T11:23:27.59",
+          "endTime": "2026-09-13T11:25:20.803",
+          "action": "APPROVE",
+          "approvalResult": "APPROVED",
+          "opinionData": {
+            "comment": "I4-r6 已办结果查询读取（正式意见表单提交）",
+            "rating": "满意"
+          },
+          "opinionFormId": "I4_R5_OPINION_FORM",
+          "opinionFormVersion": "1"
+        }
+      ]
+    }
+  }
+}

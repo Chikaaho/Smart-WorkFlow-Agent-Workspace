@@ -1,0 +1,74 @@
+{
+  "total": 5,
+  "failed": 0,
+  "rows": [
+    {
+      "name": "R4.x.submitted",
+      "pass": true,
+      "detail": {
+        "submit": {
+          "status": 200,
+          "body": {
+            "code": 0,
+            "msg": "success",
+            "data": "56c85a0f-fbe6-47e1-a371-a1176a15e331"
+          }
+        },
+        "pi": "1a3af432-af0e-11f1-b771-00ffa7734675",
+        "entity": "2098939102085795842"
+      }
+    },
+    {
+      "name": "r4-x-history-before.status200",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "code": 0
+      }
+    },
+    {
+      "name": "R4.handover.accepted",
+      "pass": true,
+      "detail": {
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "id": "2098939120867889154",
+          "createTime": "2026-09-13T08:57:37.475191",
+          "createBy": "1",
+          "updateTime": "2026-09-13T08:57:37.4761902",
+          "updateBy": "1",
+          "deleted": 0,
+          "version": "1",
+          "tenantId": "0",
+          "fromUserId": "2098938975967268865",
+          "toUserId": "2098938976663523330",
+          "scopeDefKeys": "bpm_58249f78618e4e01",
+          "includeProxyRules": false,
+          "status": "COMPLETED",
+          "totalItems": 0,
+          "migratedItems": 0,
+          "failedItems": 0,
+          "operatorId": "1",
+          "executedAt": "2026-09-13T08:57:37.4741922"
+        }
+      }
+    },
+    {
+      "name": "r4-x-history-after.status200",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "code": 0
+      }
+    },
+    {
+      "name": "R4.history.diffZero",
+      "pass": true,
+      "detail": {
+        "before": 2,
+        "after": 2
+      }
+    }
+  ]
+}
