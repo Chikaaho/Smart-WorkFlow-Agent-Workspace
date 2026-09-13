@@ -1,0 +1,26 @@
+== Workspace I4 三层对账：推送后只读回读（定稿）@ 2026-09-13T13:05:44+08:00 ==
+
+-- git ls-remote origin develop-sw --
+e4b03f342079568b257c9af9852c883028a8c1c0	refs/heads/develop-sw
+
+-- 本轮 Workspace 提交 --
+e4b03f3 chore(oa): 完成 I4 终态三层状态全量对账与口径校正
+
+-- 本地 / 跟踪引用 / tree --
+HEAD              = e4b03f342079568b257c9af9852c883028a8c1c0
+origin/develop-sw = e4b03f342079568b257c9af9852c883028a8c1c0
+ahead/behind      = 0	0
+tree local        = 7b76a7b1ad301ceaea368089147bea95da23baa6
+tree remote       = 7b76a7b1ad301ceaea368089147bea95da23baa6
+
+-- push 结果 --
+c33081e..e4b03f3  develop-sw -> develop-sw
+
+-- 端点内容抽查：远端 tip 处回执与本地逐字节比较 --
+回执 cmp=0
+回执末行前缀: ENGINE_TERMINAL 
+远端 功能清单 与本地 cmp=(功能清单在 Server 仓，见下)
+
+-- 口径 --
+本文件记录回读时点的值。推送后权威远端终点一律以 `git ls-remote origin develop-sw` 实时回读为准；
+不把本文件所在提交之后的 tip 写入自身（避免自引用）。
