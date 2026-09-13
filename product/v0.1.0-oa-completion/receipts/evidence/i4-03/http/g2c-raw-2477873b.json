@@ -1,0 +1,73 @@
+{
+  "user": "admin",
+  "method": "GET",
+  "path": "/workflow/instances/2477873b-aedb-11f1-9447-00ffa7734675",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "id": "2098847300687323138",
+      "processInstanceId": "2477873b-aedb-11f1-9447-00ffa7734675",
+      "processDefKey": "bpm_bf82dbf3a9c44eb5",
+      "processName": "I4 动态并行协作审批",
+      "businessKey": "da216122-491c-49f2-a505-b0ff2940f313",
+      "formKey": "i4_leave_form",
+      "initiatorId": "2098846807273594882",
+      "initiatorName": "initiator",
+      "status": "RUNNING",
+      "createTime": "2026-09-13T02:52:45.839184",
+      "activeNodeIds": [
+        "dyn",
+        "dyn"
+      ],
+      "flowTrace": [
+        {
+          "activityId": "dyn",
+          "activityName": "部门负责人并行审批",
+          "activityType": "userTask",
+          "startTime": "2026-09-13T02:52:45.819",
+          "endTime": null,
+          "assignee": "2098846806564757505",
+          "assigneeName": "leader1",
+          "taskId": "24793501-aedb-11f1-9447-00ffa7734675"
+        },
+        {
+          "activityId": "dyn",
+          "activityName": "部门负责人并行审批",
+          "activityType": "userTask",
+          "startTime": "2026-09-13T02:52:45.823",
+          "endTime": null,
+          "assignee": "2098846806925467649",
+          "assigneeName": "leader2",
+          "taskId": "2479d146-aedb-11f1-9447-00ffa7734675"
+        },
+        {
+          "activityId": "e1",
+          "activityName": null,
+          "activityType": "sequenceFlow",
+          "startTime": "2026-09-13T02:52:45.808",
+          "endTime": "2026-09-13T02:52:45.808",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "start",
+          "activityName": "Start",
+          "activityType": "startEvent",
+          "startTime": "2026-09-13T02:52:45.808",
+          "endTime": "2026-09-13T02:52:45.808",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        }
+      ],
+      "formData": {
+        "days": 3,
+        "reason": "I4-r3 监控干预族 O",
+        "deptList": "2098846808154398722,2098846808200536066"
+      }
+    }
+  }
+}

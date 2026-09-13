@@ -1,0 +1,34 @@
+{
+  "user": "admin",
+  "method": "POST",
+  "path": "/workflow/defs/2098846810373185538/publish",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "id": "2098846810373185538",
+      "createTime": "2026-09-13T02:50:48.938696",
+      "createBy": "1",
+      "updateTime": "2026-09-13T02:50:49.055812",
+      "updateBy": "1",
+      "deleted": 0,
+      "version": "3",
+      "tenantId": "0",
+      "processKey": "bpm_15137fb953414535",
+      "name": "I4 动态并行阻断审批",
+      "formKey": "i4_leave_form",
+      "defVersion": 2,
+      "status": "PUBLISHED",
+      "deploymentId": "efd1bf4d-aeda-11f1-9447-00ffa7734675",
+      "processDefinitionId": "bpm_15137fb953414535:2:efda4ad0-aeda-11f1-9447-00ffa7734675",
+      "graphJson": "{\"processKey\":\"bpm_15137fb953414535\",\"name\":\"I4 动态并行阻断审批\",\"formKey\":\"i4_leave_form\",\"version\":1,\"elements\":[{\"id\":\"start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":null,\"style\":null,\"x\":80.0,\"y\":200.0,\"waypoints\":null},{\"id\":\"dyn\",\"kind\":\"node\",\"type\":\"DYNAMIC_PARALLEL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"部门负责人并行审批\",\"mode\":\"ALL\",\"maxBranches\":50,\"emptyStrategy\":\"BLOCK\",\"invalidStrategy\":\"BLOCK\",\"source\":{\"type\":\"VARIABLE\",\"value\":\"deptList\"}},\"style\":null,\"x\":300.0,\"y\":200.0,\"waypoints\":null},{\"id\":\"end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":null,\"style\":null,\"x\":560.0,\"y\":200.0,\"waypoints\":null},{\"id\":\"e1\",\"kind\":\"edge\",\"type\":null,\"source\":\"start\",\"target\":\"dyn\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"e2\",\"kind\":\"edge\",\"type\":null,\"source\":\"dyn\",\"target\":\"end\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null}],\"contractVersion\":2,\"canvas\":null}",
+      "categoryId": null,
+      "iotAccessEnabled": false,
+      "iotDeviceActionJson": null,
+      "publishedVersion": 1,
+      "sourceTemplateId": null,
+      "sourceTemplateVersion": null
+    }
+  }
+}

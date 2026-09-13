@@ -1,0 +1,83 @@
+{
+  "user": "admin",
+  "method": "GET",
+  "path": "/workflow/monitor/instances?pageNum=1&pageSize=200",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "records": [
+        {
+          "instance": {
+            "id": "2098939102085795842",
+            "createTime": "2026-09-13T08:57:32.998225",
+            "createBy": "2098938976311201793",
+            "updateTime": "2026-09-13T08:57:32.998225",
+            "updateBy": "2098938976311201793",
+            "deleted": 0,
+            "version": "0",
+            "tenantId": "0",
+            "processInstanceId": "1a3af432-af0e-11f1-b771-00ffa7734675",
+            "processDefKey": "bpm_58249f78618e4e01",
+            "businessKey": "56c85a0f-fbe6-47e1-a371-a1176a15e331",
+            "formKey": "i4_leave_form",
+            "initiatorId": "2098938976311201793",
+            "status": "APPROVED",
+            "defVersion": 2
+          },
+          "activeNodeIds": [],
+          "suspended": false
+        },
+        {
+          "instance": {
+            "id": "2098939012671623169",
+            "createTime": "2026-09-13T08:57:11.679232",
+            "createBy": "2098938976311201793",
+            "updateTime": "2026-09-13T08:57:11.679232",
+            "updateBy": "2098938976311201793",
+            "deleted": 0,
+            "version": "0",
+            "tenantId": "0",
+            "processInstanceId": "0d874e3b-af0e-11f1-b771-00ffa7734675",
+            "processDefKey": "bpm_58249f78618e4e01",
+            "businessKey": "f52c6f25-5c0d-46a0-bd4c-a42a0b5f70d3",
+            "formKey": "i4_leave_form",
+            "initiatorId": "2098938976311201793",
+            "status": "TERMINATED",
+            "defVersion": 2
+          },
+          "activeNodeIds": [],
+          "suspended": false
+        },
+        {
+          "instance": {
+            "id": "2098938989191909377",
+            "createTime": "2026-09-13T08:57:06.081158",
+            "createBy": "2098938976311201793",
+            "updateTime": "2026-09-13T08:57:06.081158",
+            "updateBy": "2098938976311201793",
+            "deleted": 0,
+            "version": "0",
+            "tenantId": "0",
+            "processInstanceId": "0a2648cb-af0e-11f1-b771-00ffa7734675",
+            "processDefKey": "bpm_58249f78618e4e01",
+            "businessKey": "32706d09-c274-4389-aa3b-15a6c896941d",
+            "formKey": "i4_leave_form",
+            "initiatorId": "2098938976311201793",
+            "status": "RUNNING",
+            "defVersion": 2
+          },
+          "activeNodeIds": [
+            "dyn",
+            "dyn"
+          ],
+          "suspended": false
+        }
+      ],
+      "total": "3",
+      "pageNum": "1",
+      "pageSize": "200"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "user": "admin",
+  "method": "POST",
+  "path": "/workflow/defs",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "defId": "2098938979838611457",
+      "graph": {
+        "processKey": "bpm_7a5a45cceb8342fb",
+        "name": "I4 移动意见审批",
+        "formKey": "i4_r5_detail",
+        "version": 1,
+        "elements": [
+          {
+            "id": "node_start",
+            "kind": "node",
+            "type": "START",
+            "source": null,
+            "target": null,
+            "config": {},
+            "style": {
+              "x": 100,
+              "y": 300
+            },
+            "x": null,
+            "y": null,
+            "waypoints": null
+          },
+          {
+            "id": "node_end",
+            "kind": "node",
+            "type": "END",
+            "source": null,
+            "target": null,
+            "config": {},
+            "style": {
+              "x": 700,
+              "y": 300
+            },
+            "x": null,
+            "y": null,
+            "waypoints": null
+          },
+          {
+            "id": "edge_1",
+            "kind": "edge",
+            "type": null,
+            "source": "node_start",
+            "target": "node_end",
+            "config": {},
+            "style": {},
+            "x": null,
+            "y": null,
+            "waypoints": null
+          }
+        ],
+        "contractVersion": null,
+        "canvas": {}
+      }
+    }
+  }
+}

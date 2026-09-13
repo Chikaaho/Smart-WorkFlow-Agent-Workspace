@@ -1,0 +1,8 @@
+== validate-terminal.sh 在本机的可用性实测 ==
+which jq: which: no jq in (/c/Users/hjxch/bin:/mingw64/bin:/usr/local/bin:/usr/bin:/bin:/mingw64/bin:/usr/bin:/c/Users/hjxch/bin:/c/Program Files/Common Files/Oracle/Java/javapath:/f/VmWare/soft/bin:/c/Windows/system32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowerShell/v1.0:/c/Windows/System32/OpenSSH:/c/Program Files/Bandizip:/c/Program Files/dotnet:/d/Data/mingw64/bin:/d/Soft/微信web开发者工具/dll:/cmd:/c/Program Files/Docker/Docker/resources/bin:/c/Users/hjxch/AppData/Local/nvm:/e/Maven/apache-maven-3.9.1/bin:/c/Users/hjxch/.local/bin:/c/Program Files/MySQL/MySQL Shell 8.0/bin:/c/Users/hjxch/AppData/Local/Microsoft/WindowsApps:/d/IntelliJ IDEA 2023.1.2/bin:/d/Soft/DataGrip 2020.1.5/bin:/d/Soft/Microsoft VS Code/bin:/c/Users/hjxch/AppData/Roaming/npm:/e/IDE/IntelliJ IDEA Community Edition 2023.1.2/bin:/c/Program Files/nodejs:/f/soft/zcode/resources/tools/ripgrep:/f/soft/zcode/resources/tools/ugrep:/usr/bin/vendor_perl:/usr/bin/core_perl)
+ls /usr/bin/jq: ls: cannot access '/usr/bin/jq': No such file or directory
+--- 以同一 input.json 直接调用 .sh 变体 ---
+exit=2
+stdout bytes=0
+stderr: terminal: payload: invalid JSON
+--- 结论：.sh 变体依赖 /usr/bin/jq，本机缺失；现行可用实现为 validate-terminal.ps1（exit 0）---

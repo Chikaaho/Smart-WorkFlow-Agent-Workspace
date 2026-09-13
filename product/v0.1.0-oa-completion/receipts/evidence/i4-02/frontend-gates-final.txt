@@ -1,0 +1,11 @@
+== typecheck ==
+$ vue-tsc -b --noEmit
+TYPECHECK_EXIT=0
+== lint ==
+$ eslint .
+LINT_EXIT=0
+== test ==
+[2m Test Files [22m [1m[32m128 passed[39m[22m[2m | [22m[33m1 skipped[39m[90m (129)[39m
+[2m      Tests [22m [1m[32m1183 passed[39m[22m[2m | [22m[33m3 skipped[39m[90m (1186)[39m
+== build ==
+BUILD_EXIT=0

@@ -1,0 +1,68 @@
+{
+  "user": "initiator",
+  "method": "GET",
+  "path": "/workflow/my/instances/2098846821777498113",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "instance": {
+        "id": "2098846821777498113",
+        "createTime": "2026-09-13T02:50:51.658625",
+        "createBy": "2098846807273594882",
+        "updateTime": "2026-09-13T02:50:51.658625",
+        "updateBy": "2098846807273594882",
+        "deleted": 0,
+        "version": "0",
+        "tenantId": "0",
+        "processInstanceId": "e05fbc79-aeda-11f1-9447-00ffa7734675",
+        "processDefKey": "bpm_bf82dbf3a9c44eb5",
+        "businessKey": "3b30d688-d3d6-4158-9b2d-a8c13d925bd9",
+        "formKey": "i4_leave_form",
+        "initiatorId": "2098846807273594882",
+        "status": "APPROVED",
+        "defVersion": 2
+      },
+      "processName": "I4 动态并行协作审批",
+      "formKey": "i4_leave_form",
+      "businessKey": "3b30d688-d3d6-4158-9b2d-a8c13d925bd9",
+      "status": "APPROVED",
+      "progress": [],
+      "history": [
+        {
+          "taskId": "e0690b64-aeda-11f1-9447-00ffa7734675",
+          "taskName": "部门负责人并行审批",
+          "nodeKey": "dyn",
+          "assignee": "2098846806925467649",
+          "assigneeName": "leader2",
+          "createTime": "2026-09-13T02:50:51.628",
+          "endTime": "2026-09-13T02:50:54.391",
+          "action": "APPROVE",
+          "approvalResult": "APPROVED",
+          "opinionData": {
+            "comment": "I4-r3 X 分支二通过"
+          },
+          "opinionFormId": "DEFAULT_REMARK",
+          "opinionFormVersion": "1"
+        },
+        {
+          "taskId": "e0675daf-aeda-11f1-9447-00ffa7734675",
+          "taskName": "部门负责人并行审批",
+          "nodeKey": "dyn",
+          "assignee": "2098846806564757505",
+          "assigneeName": "leader1",
+          "createTime": "2026-09-13T02:50:51.615",
+          "endTime": "2026-09-13T02:50:54.267",
+          "action": "APPROVE",
+          "approvalResult": "APPROVED",
+          "opinionData": {
+            "comment": "I4-r3 X 分支一通过"
+          },
+          "opinionFormId": "DEFAULT_REMARK",
+          "opinionFormVersion": "1"
+        }
+      ]
+    }
+  }
+}

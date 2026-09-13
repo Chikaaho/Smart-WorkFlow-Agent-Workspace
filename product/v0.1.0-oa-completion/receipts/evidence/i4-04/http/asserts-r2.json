@@ -1,0 +1,127 @@
+{
+  "total": 10,
+  "failed": 0,
+  "rows": [
+    {
+      "name": "R2.o1.running",
+      "pass": true,
+      "detail": {
+        "submit": {
+          "status": 200,
+          "body": {
+            "code": 0,
+            "msg": "success",
+            "data": "32706d09-c274-4389-aa3b-15a6c896941d"
+          }
+        },
+        "pi": "0a2648cb-af0e-11f1-b771-00ffa7734675",
+        "entity": "2098938989191909377"
+      }
+    },
+    {
+      "name": "R2.o1.tasks",
+      "pass": true,
+      "detail": {
+        "tL1": "0a2e3821-af0e-11f1-b771-00ffa7734675",
+        "tL2": "0a30a926-af0e-11f1-b771-00ffa7734675"
+      }
+    },
+    {
+      "name": "R2.o1.transferEffect",
+      "pass": true,
+      "detail": {
+        "l1After": 2
+      }
+    },
+    {
+      "name": "R2.o1.auditGrouped",
+      "pass": true,
+      "detail": [
+        {
+          "from": "2098938975577198593",
+          "to": "2098938975577198593",
+          "n": 1
+        },
+        {
+          "from": "2098938975967268865",
+          "to": "2098938975577198593",
+          "n": 1
+        }
+      ]
+    },
+    {
+      "name": "R2.o2.running",
+      "pass": true,
+      "detail": {
+        "submit": {
+          "status": 200,
+          "body": {
+            "code": 0,
+            "msg": "success",
+            "data": "f52c6f25-5c0d-46a0-bd4c-a42a0b5f70d3"
+          }
+        },
+        "pi": "0d874e3b-af0e-11f1-b771-00ffa7734675",
+        "entity": "2098939012671623169"
+      }
+    },
+    {
+      "name": "R2.o2.terminated",
+      "pass": true,
+      "detail": "0d874e3b-af0e-11f1-b771-00ffa7734675"
+    },
+    {
+      "name": "R2.o2.handleDeniedAfterTerminate",
+      "pass": true,
+      "detail": {
+        "commandId": "2098939033211129858",
+        "commandType": "TASK_APPROVE",
+        "channel": "NORMAL",
+        "status": "FAILED",
+        "result": null,
+        "failureReason": "任务不存在",
+        "retryCount": 4,
+        "createTime": "2026-09-13T08:57:16.577133",
+        "finishedAt": "2026-09-13T08:57:31.942006",
+        "flowStart": null
+      }
+    },
+    {
+      "name": "R2.o2.audit",
+      "pass": true,
+      "detail": {
+        "id": "2098939026764484609",
+        "createTime": "2026-09-13T08:57:15.039455",
+        "createBy": "1",
+        "updateTime": "2026-09-13T08:57:15.039455",
+        "updateBy": "1",
+        "deleted": 0,
+        "version": "0",
+        "tenantId": "0",
+        "processInstanceId": "0d874e3b-af0e-11f1-b771-00ffa7734675",
+        "action": "TERMINATE",
+        "operatorId": "1",
+        "reason": "I4-r4 终止验证",
+        "beforeState": "RUNNING",
+        "afterState": "TERMINATED",
+        "fromAssignee": null,
+        "toAssignee": null,
+        "affectedTasks": 1,
+        "intervenedAt": "2026-09-13T08:57:15.010454"
+      }
+    },
+    {
+      "name": "R2.outsider.denied",
+      "pass": true,
+      "detail": {
+        "t": 403,
+        "s": 403
+      }
+    },
+    {
+      "name": "R2.outsider.auditZeroIncrement",
+      "pass": true,
+      "detail": 2
+    }
+  ]
+}

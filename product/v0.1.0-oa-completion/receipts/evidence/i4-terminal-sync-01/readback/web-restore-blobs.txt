@@ -1,0 +1,21 @@
+== Web 三个文件：锁定候选哈希 与 提交前（钩子重排）哈希 对照 ==
+-- 锁定候选 sha256（i4-06/R6/manifest.sha256）--
+5a9b2d0fc5c617e57bd96995529616b98c49e0c8f1935f16993ddd53a46edf50 *Smart-WorkFlow-aPaaS-Web/src/foundation/mock/handlers.ts
+2cd736952969e0c9d52cf509e4a21e5d7db03c7ad370d2feb2910ddad4fea500 *Smart-WorkFlow-aPaaS-Web/src/modules/workflow/views/MobileWorkspace.vue
+ce530e5296f77d02bbc4500cdad804bd9666c2d08273755d1d9ef132a06530bb *Smart-WorkFlow-aPaaS-Web/src/modules/workflow/views/TaskDetail.vue
+
+-- 被钩子重排后的提交内容 sha256（commit bbcf569）--
+96949c6a1a8798b28a3a303f7e7b3e62501042395ef245067b9ad2ec2f95269c *-
+a53c222a87e0b94ae5233e2210c2e4e15025a10f106ef184160e726b10f11b75 *-
+bea1ec29b50bd236dc9a00e67978276bf729398b2ec559789cfa1de45ea537bb *-
+
+-- 未被钩子改动的不可达 blob（提交前暂存内容），sha256 与锁定候选一致 --
+restored blob map: 6a95144f...->handlers.ts 8cc50a7e...->MobileWorkspace.vue 7c9087b5...->TaskDetail.vue
+5a9b2d0fc5c617e57bd96995529616b98c49e0c8f1935f16993ddd53a46edf50 *-
+2cd736952969e0c9d52cf509e4a21e5d7db03c7ad370d2feb2910ddad4fea500 *-
+ce530e5296f77d02bbc4500cdad804bd9666c2d08273755d1d9ef132a06530bb *-
+
+-- 还原后 HEAD(8dfc8dc) 内容 sha256（应与锁定候选逐字节一致）--
+5a9b2d0fc5c617e57bd96995529616b98c49e0c8f1935f16993ddd53a46edf50 *-
+2cd736952969e0c9d52cf509e4a21e5d7db03c7ad370d2feb2910ddad4fea500 *-
+ce530e5296f77d02bbc4500cdad804bd9666c2d08273755d1d9ef132a06530bb *-

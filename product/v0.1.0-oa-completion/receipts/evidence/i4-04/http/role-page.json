@@ -1,0 +1,53 @@
+{
+  "user": "admin",
+  "method": "POST",
+  "path": "/system/role/page",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "records": [
+        {
+          "id": "1",
+          "createTime": "2026-09-13T08:56:15.071255",
+          "createBy": null,
+          "updateTime": "2026-09-13T08:56:15.071255",
+          "updateBy": null,
+          "deleted": 0,
+          "version": "0",
+          "tenantId": "0",
+          "name": "超级管理员",
+          "code": "superadmin",
+          "sort": 0,
+          "status": 1,
+          "dataScope": null,
+          "deptIds": [],
+          "builtIn": true,
+          "description": "系统内置超级管理员角色，拥有所有权限"
+        },
+        {
+          "id": "2",
+          "createTime": "2026-09-13T08:56:15.274277",
+          "createBy": null,
+          "updateTime": "2026-09-13T08:56:15.274277",
+          "updateBy": null,
+          "deleted": 0,
+          "version": "0",
+          "tenantId": "0",
+          "name": "管理员",
+          "code": "admin",
+          "sort": 10,
+          "status": 1,
+          "dataScope": 0,
+          "deptIds": [],
+          "builtIn": false,
+          "description": "系统初始化普通管理员角色"
+        }
+      ],
+      "total": "2",
+      "pageNum": "1",
+      "pageSize": "10"
+    }
+  }
+}

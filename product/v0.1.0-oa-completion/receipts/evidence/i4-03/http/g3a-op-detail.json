@@ -1,0 +1,52 @@
+{
+  "user": "initiator",
+  "method": "GET",
+  "path": "/workflow/my/instances/2098847471982698498",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "instance": {
+        "id": "2098847471982698498",
+        "createTime": "2026-09-13T02:53:26.678744",
+        "createBy": "2098846807273594882",
+        "updateTime": "2026-09-13T02:53:26.678744",
+        "updateBy": "2098846807273594882",
+        "deleted": 0,
+        "version": "0",
+        "tenantId": "0",
+        "processInstanceId": "3cd1f758-aedb-11f1-9447-00ffa7734675",
+        "processDefKey": "bpm_173637dac1ce4220",
+        "businessKey": "bc949a83-578f-4f50-a285-aad028db8138",
+        "formKey": "i4_leave_form",
+        "initiatorId": "2098846807273594882",
+        "status": "APPROVED",
+        "defVersion": 2
+      },
+      "processName": "I4 强制意见审批",
+      "formKey": "i4_leave_form",
+      "businessKey": "bc949a83-578f-4f50-a285-aad028db8138",
+      "status": "APPROVED",
+      "progress": [],
+      "history": [
+        {
+          "taskId": "3cd1f765-aedb-11f1-9447-00ffa7734675",
+          "taskName": "主管审批",
+          "nodeKey": "appr",
+          "assignee": "2098846806564757505",
+          "assigneeName": "leader1",
+          "createTime": "2026-09-13T02:53:26.666",
+          "endTime": "2026-09-13T02:53:30.951",
+          "action": "APPROVE",
+          "approvalResult": "APPROVED",
+          "opinionData": {
+            "comment": "I4-r3 批量强制意见通过"
+          },
+          "opinionFormId": "I4_OPINION_FORM",
+          "opinionFormVersion": "1"
+        }
+      ]
+    }
+  }
+}

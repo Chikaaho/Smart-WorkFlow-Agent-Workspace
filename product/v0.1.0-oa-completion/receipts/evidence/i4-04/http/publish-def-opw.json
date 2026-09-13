@@ -1,0 +1,34 @@
+{
+  "user": "admin",
+  "method": "POST",
+  "path": "/workflow/defs/2098938979838611457/publish",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "id": "2098938979838611457",
+      "createTime": "2026-09-13T08:57:03.852838",
+      "createBy": "1",
+      "updateTime": "2026-09-13T08:57:03.852838",
+      "updateBy": "1",
+      "deleted": 0,
+      "version": "2",
+      "tenantId": "0",
+      "processKey": "bpm_7a5a45cceb8342fb",
+      "name": "I4 移动意见审批",
+      "formKey": "i4_r5_detail",
+      "defVersion": 1,
+      "status": "PUBLISHED",
+      "deploymentId": "08e6eaf3-af0e-11f1-b771-00ffa7734675",
+      "processDefinitionId": "bpm_7a5a45cceb8342fb:1:08f0d606-af0e-11f1-b771-00ffa7734675",
+      "graphJson": "{\"processKey\":\"bpm_7a5a45cceb8342fb\",\"name\":\"I4 移动意见审批\",\"formKey\":\"i4_r5_detail\",\"version\":1,\"elements\":[{\"id\":\"start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":null,\"style\":null,\"x\":80.0,\"y\":200.0,\"waypoints\":null},{\"id\":\"appr\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"移动审批\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[\"2098938976663523330\"]},\"opinionForm\":{\"formId\":\"I4_R5_OPINION_FORM\",\"version\":\"1\",\"fields\":[{\"key\":\"comment\",\"type\":\"TEXTAREA\",\"required\":true,\"label\":\"审批意见\",\"maxLength\":200},{\"key\":\"rating\",\"type\":\"RADIO\",\"required\":true,\"label\":\"协作评价\",\"options\":[\"满意\",\"不满意\"]},{\"key\":\"note\",\"type\":\"NOTE\",\"label\":\"请依据协作单信息如实评价\"}]}},\"style\":null,\"x\":320.0,\"y\":200.0,\"waypoints\":null},{\"id\":\"end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":null,\"style\":null,\"x\":560.0,\"y\":200.0,\"waypoints\":null},{\"id\":\"e1\",\"kind\":\"edge\",\"type\":null,\"source\":\"start\",\"target\":\"appr\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"e2\",\"kind\":\"edge\",\"type\":null,\"source\":\"appr\",\"target\":\"end\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null}],\"contractVersion\":2,\"canvas\":null}",
+      "categoryId": null,
+      "iotAccessEnabled": false,
+      "iotDeviceActionJson": null,
+      "publishedVersion": null,
+      "sourceTemplateId": null,
+      "sourceTemplateVersion": null
+    }
+  }
+}

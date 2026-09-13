@@ -1,0 +1,68 @@
+{
+  "method": "GET",
+  "path": "/openapi/v1/callbacks?bizRef=68dde76e-aedb-11f1-9447-00ffa7734675&event=PROCESS_APPROVED",
+  "status": 200,
+  "reqBody": null,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "records": [
+        {
+          "id": "2098847797322276866",
+          "createTime": "2026-09-13T02:54:44.245283",
+          "createBy": "0",
+          "updateTime": "2026-09-13T02:54:44.245283",
+          "updateBy": "0",
+          "deleted": 0,
+          "version": "0",
+          "tenantId": "0",
+          "appId": "i4-demo-app",
+          "event": "PROCESS_APPROVED",
+          "bizRef": "68dde76e-aedb-11f1-9447-00ffa7734675",
+          "url": "http://localhost:9999/i4/callback",
+          "attempt": 3,
+          "status": "FAILED",
+          "responseSummary": "ConnectException: Connection refused: getsockopt",
+          "deliveredAt": "2026-09-13T02:54:44.245283"
+        },
+        {
+          "id": "2098847793111195650",
+          "createTime": "2026-09-13T02:54:43.241246",
+          "createBy": "0",
+          "updateTime": "2026-09-13T02:54:43.241246",
+          "updateBy": "0",
+          "deleted": 0,
+          "version": "0",
+          "tenantId": "0",
+          "appId": "i4-demo-app",
+          "event": "PROCESS_APPROVED",
+          "bizRef": "68dde76e-aedb-11f1-9447-00ffa7734675",
+          "url": "http://localhost:9999/i4/callback",
+          "attempt": 2,
+          "status": "FAILED",
+          "responseSummary": "ConnectException: Connection refused: getsockopt",
+          "deliveredAt": "2026-09-13T02:54:43.241246"
+        },
+        {
+          "id": "2098847791005655042",
+          "createTime": "2026-09-13T02:54:42.739474",
+          "createBy": "0",
+          "updateTime": "2026-09-13T02:54:42.739474",
+          "updateBy": "0",
+          "deleted": 0,
+          "version": "0",
+          "tenantId": "0",
+          "appId": "i4-demo-app",
+          "event": "PROCESS_APPROVED",
+          "bizRef": "68dde76e-aedb-11f1-9447-00ffa7734675",
+          "url": "http://localhost:9999/i4/callback",
+          "attempt": 1,
+          "status": "FAILED",
+          "responseSummary": "ConnectException: Connection refused: getsockopt",
+          "deliveredAt": "2026-09-13T02:54:42.739474"
+        }
+      ]
+    }
+  }
+}

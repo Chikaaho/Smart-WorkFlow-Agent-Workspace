@@ -1,0 +1,127 @@
+{
+  "total": 13,
+  "failed": 0,
+  "rows": [
+    {
+      "name": "fk.refRecordCreated",
+      "pass": true,
+      "detail": "adb17ac1-c38a-40b5-b04b-b04433284a76"
+    },
+    {
+      "name": "att.uploaded",
+      "pass": true,
+      "detail": {
+        "fileSize": "60",
+        "storageKey": "2026/09/13/4474496a-f286-48eb-a8c6-829c8ba33655.txt",
+        "storageName": "4474496a-f286-48eb-a8c6-829c8ba33655.txt"
+      }
+    },
+    {
+      "name": "m.submitted",
+      "pass": true,
+      "detail": {
+        "submit": {
+          "status": 200,
+          "body": {
+            "code": 0,
+            "msg": "success",
+            "data": "0f870b17-d72a-4209-9912-22de59733fba"
+          }
+        },
+        "pi": "7c646895-af22-11f1-95b7-00ffa7734675"
+      }
+    },
+    {
+      "name": "m.instanceRunning",
+      "pass": true,
+      "detail": "7c646895-af22-11f1-95b7-00ffa7734675"
+    },
+    {
+      "name": "m.taskOnW",
+      "pass": true,
+      "detail": "7c6468a2-af22-11f1-95b7-00ffa7734675"
+    },
+    {
+      "name": "m.recordAttachmentBound",
+      "pass": true,
+      "detail": {
+        "record": [
+          "2026/09/13/4474496a-f286-48eb-a8c6-829c8ba33655.txt"
+        ],
+        "expect": [
+          "2026/09/13/4474496a-f286-48eb-a8c6-829c8ba33655.txt"
+        ]
+      }
+    },
+    {
+      "name": "m.recordRefBound",
+      "pass": true,
+      "detail": {
+        "record": "adb17ac1-c38a-40b5-b04b-b04433284a76",
+        "fk": "adb17ac1-c38a-40b5-b04b-b04433284a76"
+      }
+    },
+    {
+      "name": "m.apiDetail.businessKey",
+      "pass": true,
+      "detail": {
+        "api": "0f870b17-d72a-4209-9912-22de59733fba",
+        "m": "0f870b17-d72a-4209-9912-22de59733fba"
+      }
+    },
+    {
+      "name": "m.apiDetail.processInstanceId",
+      "pass": true,
+      "detail": {
+        "api": "7c646895-af22-11f1-95b7-00ffa7734675",
+        "m": "7c646895-af22-11f1-95b7-00ffa7734675"
+      }
+    },
+    {
+      "name": "m.apiInstance.businessKey",
+      "pass": true,
+      "detail": {
+        "api": "0f870b17-d72a-4209-9912-22de59733fba",
+        "m": "0f870b17-d72a-4209-9912-22de59733fba"
+      }
+    },
+    {
+      "name": "att.ownerDownload200",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "headers": {
+          "content-disposition": "attachment; filename*=UTF-8''I4-r6+%E9%99%84%E4%BB%B6%E6%A0%B7%E6%9C%AC.txt",
+          "x-content-type-options": "nosniff",
+          "x-xss-protection": "0",
+          "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+          "pragma": "no-cache",
+          "expires": "0",
+          "x-frame-options": "DENY",
+          "content-type": "application/octet-stream",
+          "transfer-encoding": "chunked",
+          "date": "Sun, 13 Sep 2026 03:23:31 GMT",
+          "keep-alive": "timeout=60",
+          "connection": "keep-alive"
+        }
+      }
+    },
+    {
+      "name": "att.ownerBodyMatches",
+      "pass": true,
+      "detail": {
+        "length": 60,
+        "uploaded": 60
+      }
+    },
+    {
+      "name": "att.outsiderDenied403",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "code": 403,
+        "contentType": "application/json"
+      }
+    }
+  ]
+}

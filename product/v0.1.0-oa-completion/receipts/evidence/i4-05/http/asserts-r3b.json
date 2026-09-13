@@ -1,0 +1,214 @@
+{
+  "total": 19,
+  "failed": 0,
+  "rows": [
+    {
+      "name": "ap.submitted",
+      "pass": true,
+      "detail": {
+        "submit": {
+          "status": 200,
+          "body": {
+            "code": 0,
+            "msg": "success",
+            "data": "f350b2e4-3258-4e08-ac92-adad25a146f7"
+          }
+        },
+        "pi": "e8e3b161-af1b-11f1-8a14-00ffa7734675"
+      }
+    },
+    {
+      "name": "ap.completed",
+      "pass": true,
+      "detail": {
+        "commandId": "2098963988749533186",
+        "commandType": "TASK_APPROVE",
+        "channel": "NORMAL",
+        "status": "COMPLETED",
+        "result": "{\"status\":\"DONE\",\"actionRecordId\":2098963989999435777}",
+        "failureReason": null,
+        "retryCount": 0,
+        "createTime": "2026-09-13T10:36:26.440195",
+        "finishedAt": "2026-09-13T10:36:26.74804",
+        "flowStart": null
+      }
+    },
+    {
+      "name": "ap.approved",
+      "pass": true,
+      "detail": "e8e3b161-af1b-11f1-8a14-00ffa7734675"
+    },
+    {
+      "name": "tm.submitted",
+      "pass": true,
+      "detail": {
+        "submit": {
+          "status": 200,
+          "body": {
+            "code": 0,
+            "msg": "success",
+            "data": "8728dd47-8c98-48a9-ace5-291a28db2a4f"
+          }
+        },
+        "pi": "ec407108-af1b-11f1-8a14-00ffa7734675"
+      }
+    },
+    {
+      "name": "tm.terminated",
+      "pass": true,
+      "detail": "ec407108-af1b-11f1-8a14-00ffa7734675"
+    },
+    {
+      "name": "a2.matrix",
+      "pass": true,
+      "detail": {
+        "TERMINATED": 1,
+        "APPROVED": 1,
+        "RUNNING": 2,
+        "REJECTED": 1
+      }
+    },
+    {
+      "name": "final.launched",
+      "pass": true,
+      "detail": {
+        "api": "5",
+        "rc": 5
+      }
+    },
+    {
+      "name": "final.completed",
+      "pass": true,
+      "detail": {
+        "api": "2",
+        "rc": 2
+      }
+    },
+    {
+      "name": "final.running",
+      "pass": true,
+      "detail": {
+        "api": "2",
+        "rc": 2
+      }
+    },
+    {
+      "name": "final.rejected",
+      "pass": true,
+      "detail": {
+        "api": "1",
+        "rc": 1
+      }
+    },
+    {
+      "name": "final.durationSample",
+      "pass": true,
+      "detail": {
+        "api": 2,
+        "rc": 2
+      }
+    },
+    {
+      "name": "final.avgDurationMs",
+      "pass": true,
+      "detail": {
+        "api": 3583.5,
+        "rc": 3583.5
+      }
+    },
+    {
+      "name": "final.p50DurationMs",
+      "pass": true,
+      "detail": {
+        "api": "3584",
+        "rc": 3584
+      }
+    },
+    {
+      "name": "final.p90DurationMs",
+      "pass": true,
+      "detail": {
+        "api": "3593",
+        "rc": 3593
+      }
+    },
+    {
+      "name": "final.handlerWorkload",
+      "pass": true,
+      "detail": {
+        "api": {
+          "2098963585257488385": "3",
+          "2098963585643364353": "1"
+        },
+        "rc": {
+          "2098963585257488385": 3,
+          "2098963585643364353": 1
+        }
+      }
+    },
+    {
+      "name": "final.returnedCount",
+      "pass": true,
+      "detail": {
+        "api": "1",
+        "rc": 1
+      }
+    },
+    {
+      "name": "final.rejectedActionCount",
+      "pass": true,
+      "detail": {
+        "api": "1",
+        "rc": 1
+      }
+    },
+    {
+      "name": "final.overdueCount",
+      "pass": true,
+      "detail": {
+        "api": "1",
+        "rc": 1
+      }
+    },
+    {
+      "name": "final.nodeStats",
+      "pass": true,
+      "detail": {
+        "api": {
+          "a1": {
+            "count": 1,
+            "avgStayMs": 4099,
+            "p90StayMs": 4099
+          },
+          "a2": {
+            "count": 1,
+            "avgStayMs": 2090,
+            "p90StayMs": 2090
+          },
+          "appr": {
+            "count": 3,
+            "avgStayMs": 3608,
+            "p90StayMs": 3634
+          }
+        },
+        "rc": {
+          "appr": {
+            "count": 3,
+            "avgStayMs": 3608,
+            "p90StayMs": 3634
+          },
+          "a1": {
+            "count": 1,
+            "avgStayMs": 4099,
+            "p90StayMs": 4099
+          },
+          "a2": {
+            "count": 1,
+            "avgStayMs": 2090,
+            "p90StayMs": 2090
+          }
+        }
+      }
+    }
+  ]
+}

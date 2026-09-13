@@ -1,0 +1,162 @@
+{
+  "generatedAt": "2026-09-12T18:50:49.567Z",
+  "tenant": 0,
+  "users": {
+    "admin": "1",
+    "leader1": "2098846806564757505",
+    "leader2": "2098846806925467649",
+    "initiator": "2098846807273594882",
+    "w": "2098846807613333505",
+    "outsider": "2098846807974043649"
+  },
+  "depts": {
+    "A": "2098846808154398722",
+    "B": "2098846808200536066",
+    "C": "2098846808229896194",
+    "E": "2098846808267644930"
+  },
+  "roles": {
+    "employee": "2098846808607383553",
+    "basic": "2098846808770961410"
+  },
+  "form": {
+    "formKey": "i4_leave_form",
+    "formId": "ed06be35-2985-43ad-ac83-de53f6429b45"
+  },
+  "defs": {
+    "R": {
+      "defId": "2098846809521741826",
+      "processKey": "bpm_bf82dbf3a9c44eb5",
+      "name": "I4 动态并行协作审批"
+    },
+    "RB": {
+      "defId": "2098846810373185538",
+      "processKey": "bpm_15137fb953414535",
+      "name": "I4 动态并行阻断审批"
+    },
+    "SA": {
+      "defId": "2098846811044274177",
+      "processKey": "bpm_2bbb03531b844cb7",
+      "name": "I4 单节点审批一"
+    },
+    "SB": {
+      "defId": "2098846811740528641",
+      "processKey": "bpm_c9ead56b20bd4393",
+      "name": "I4 单节点审批二"
+    },
+    "OP": {
+      "defId": "2098846812357091330",
+      "processKey": "bpm_173637dac1ce4220",
+      "name": "I4 强制意见审批"
+    },
+    "D": {
+      "defId": "2098847294135820289",
+      "processKey": "bpm_4ed0280cba9b407e",
+      "name": "I4 派生定义D"
+    }
+  },
+  "templates": {
+    "M": {
+      "id": "2098846812961071105",
+      "createTime": "2026-09-13T02:50:49.5563143",
+      "createBy": "1",
+      "updateTime": "2026-09-13T02:50:49.5563143",
+      "updateBy": "1",
+      "deleted": 0,
+      "version": "0",
+      "tenantId": "0",
+      "name": "I4 协作模板M",
+      "category": "协同办公",
+      "description": "I4 模板生命周期来源",
+      "formKey": "i4_leave_form",
+      "graphJson": "{\"processKey\":\"i4_dynamic_parallel_def\",\"name\":\"I4 动态并行协作审批\",\"formKey\":\"i4_leave_form\",\"version\":1,\"contractVersion\":2,\"elements\":[{\"id\":\"start\",\"kind\":\"node\",\"type\":\"START\",\"x\":80,\"y\":200},{\"id\":\"dyn\",\"kind\":\"node\",\"type\":\"DYNAMIC_PARALLEL\",\"x\":300,\"y\":200,\"config\":{\"name\":\"部门负责人并行审批\",\"mode\":\"ALL\",\"maxBranches\":50,\"emptyStrategy\":\"BLOCK\",\"invalidStrategy\":\"SKIP\",\"source\":{\"type\":\"VARIABLE\",\"value\":\"deptList\"}}},{\"id\":\"end\",\"kind\":\"node\",\"type\":\"END\",\"x\":560,\"y\":200},{\"id\":\"e1\",\"kind\":\"edge\",\"source\":\"start\",\"target\":\"dyn\"},{\"id\":\"e2\",\"kind\":\"edge\",\"source\":\"dyn\",\"target\":\"end\"}]}",
+      "templateVersion": 1,
+      "status": "ENABLED",
+      "scopeType": "GLOBAL",
+      "scopeDeptId": null,
+      "sourceDefId": null,
+      "sourceDefVersion": null
+    },
+    "M2": {
+      "id": "2098846812998819841",
+      "createTime": "2026-09-13T02:50:49.5633136",
+      "createBy": "1",
+      "updateTime": "2026-09-13T02:50:49.5633136",
+      "updateBy": "1",
+      "deleted": 0,
+      "version": "0",
+      "tenantId": "0",
+      "name": "I4 协作模板M2",
+      "category": "协同办公",
+      "description": "I4 停用后拒复制样本",
+      "formKey": "i4_leave_form",
+      "graphJson": "{\"processKey\":\"i4_single_approval_def\",\"name\":\"I4 单节点审批一\",\"formKey\":\"i4_leave_form\",\"version\":1,\"contractVersion\":2,\"elements\":[{\"id\":\"start\",\"kind\":\"node\",\"type\":\"START\",\"x\":80,\"y\":200},{\"id\":\"appr\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"x\":300,\"y\":200,\"config\":{\"name\":\"主管审批\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[\"1\"]}}},{\"id\":\"end\",\"kind\":\"node\",\"type\":\"END\",\"x\":560,\"y\":200},{\"id\":\"e1\",\"kind\":\"edge\",\"source\":\"start\",\"target\":\"dyn\"},{\"id\":\"e2\",\"kind\":\"edge\",\"source\":\"dyn\",\"target\":\"end\"}]}",
+      "templateVersion": 1,
+      "status": "ENABLED",
+      "scopeType": "GLOBAL",
+      "scopeDeptId": null,
+      "sourceDefId": null,
+      "sourceDefVersion": null
+    }
+  },
+  "bindingLog": [],
+  "instances": {
+    "X": "e05fbc79-aeda-11f1-9447-00ffa7734675",
+    "F": "e2b45b00-aeda-11f1-9447-00ffa7734675",
+    "DEDUP": "2029d7d6-aedb-11f1-9447-00ffa7734675",
+    "O": "2477873b-aedb-11f1-9447-00ffa7734675",
+    "P": "32bf13ab-aedb-11f1-9447-00ffa7734675",
+    "B1": "370cea1c-aedb-11f1-9447-00ffa7734675",
+    "OP1": "3cd1f758-aedb-11f1-9447-00ffa7734675",
+    "B0": "38e098c0-aedb-11f1-9447-00ffa7734675",
+    "B2": "3affa844-aedb-11f1-9447-00ffa7734675",
+    "H1": "4160a755-aedb-11f1-9447-00ffa7734675",
+    "H2": "429a38dc-aedb-11f1-9447-00ffa7734675",
+    "E": "68dde76e-aedb-11f1-9447-00ffa7734675"
+  },
+  "negatives": {
+    "empty": {
+      "draftId": "2098846933845106690",
+      "parentCommandId": "2098846933945769985",
+      "flowStartCommandId": "2098846934361006081",
+      "cmdStatus": "FAILED",
+      "reason": "动态并行来源集合为空且未配置受控放行策略"
+    },
+    "noleader": {
+      "draftId": "2098847000949776385",
+      "parentCommandId": "2098847001046245378",
+      "flowStartCommandId": "2098847001411149826",
+      "cmdStatus": "FAILED",
+      "reason": "部门 [2098846808267644930] 失效或负责人缺失"
+    },
+    "invalid": {
+      "draftId": "2098847067937005569",
+      "parentCommandId": "2098847068029280258",
+      "flowStartCommandId": "2098847068473876482",
+      "cmdStatus": "FAILED",
+      "reason": "部门 [999999999] 失效或负责人缺失"
+    },
+    "crosstenant": {
+      "draftId": "2098847134995537921",
+      "parentCommandId": "2098847135129755649",
+      "flowStartCommandId": "2098847135620489218",
+      "cmdStatus": "FAILED",
+      "reason": "部门 [8899000000000000001] 失效或负责人缺失"
+    },
+    "overlimit": {
+      "draftId": "2098847202003738625",
+      "parentCommandId": "2098847202096013314",
+      "flowStartCommandId": "2098847202272174081",
+      "cmdStatus": "FAILED",
+      "reason": "动态并行来源部门数 51 超过上限 50"
+    }
+  },
+  "openapi": {
+    "appId": "i4-demo-app",
+    "businessKey": "i4-r3-ext-biz-20260912185440",
+    "idempotencyKey": "i4-r3-ext-idem-20260912185440",
+    "recordId": "7a2f535a-1458-44f1-830d-05ee79b5c4bd",
+    "secretSha256": "fcba56c261010a10a795ef40b347938165fcf6b69cbe9ab60eded236849dd49a",
+    "secretLen": 21
+  }
+}

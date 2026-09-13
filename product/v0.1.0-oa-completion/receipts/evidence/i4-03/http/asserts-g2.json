@@ -1,0 +1,326 @@
+{
+  "total": 31,
+  "failed": 0,
+  "rows": [
+    {
+      "name": "G2a.copy.ok",
+      "pass": true,
+      "detail": {
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "id": "2098847294135820289",
+          "createTime": "2026-09-13T02:52:44.277833",
+          "createBy": "1",
+          "updateTime": "2026-09-13T02:52:44.277833",
+          "updateBy": "1",
+          "deleted": 0,
+          "version": "2",
+          "tenantId": "0",
+          "processKey": "bpm_4ed0280cba9b407e",
+          "name": "I4 派生定义D",
+          "formKey": "i4_leave_form",
+          "defVersion": 1,
+          "status": "DRAFT",
+          "deploymentId": null,
+          "processDefinitionId": null,
+          "graphJson": "{\"processKey\":\"bpm_4ed0280cba9b407e\",\"name\":\"I4 动态并行协作审批\",\"formKey\":\"i4_leave_form\",\"version\":1,\"elements\":[{\"id\":\"start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":null,\"style\":null,\"x\":80.0,\"y\":200.0,\"waypoints\":null},{\"id\":\"dyn\",\"kind\":\"node\",\"type\":\"DYNAMIC_PARALLEL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"部门负责人并行审批\",\"mode\":\"ALL\",\"maxBranches\":50,\"emptyStrategy\":\"BLOCK\",\"invalidStrategy\":\"SKIP\",\"source\":{\"type\":\"VARIABLE\",\"value\":\"deptList\"}},\"style\":null,\"x\":300.0,\"y\":200.0,\"waypoints\":null},{\"id\":\"end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":null,\"style\":null,\"x\":560.0,\"y\":200.0,\"waypoints\":null},{\"id\":\"e1\",\"kind\":\"edge\",\"type\":null,\"source\":\"start\",\"target\":\"dyn\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"e2\",\"kind\":\"edge\",\"type\":null,\"source\":\"dyn\",\"target\":\"end\",\"config\":null,\"style\":null,\"x\":null,\"y\":null,\"waypoints\":null}],\"contractVersion\":2,\"canvas\":null}",
+          "categoryId": null,
+          "iotAccessEnabled": false,
+          "iotDeviceActionJson": null,
+          "publishedVersion": null,
+          "sourceTemplateId": "2098846812961071105",
+          "sourceTemplateVersion": 1
+        }
+      }
+    },
+    {
+      "name": "G2a.d.published",
+      "pass": true,
+      "detail": {
+        "id": "2098847294135820289",
+        "createTime": "2026-09-13T02:52:44.277833",
+        "createBy": "1",
+        "updateTime": "2026-09-13T02:52:44.378831",
+        "updateBy": "1",
+        "deleted": 0,
+        "version": "3",
+        "tenantId": "0",
+        "processKey": "bpm_4ed0280cba9b407e",
+        "name": "I4 派生定义D",
+        "formKey": "i4_leave_form",
+        "defVersion": 1,
+        "status": "PUBLISHED",
+        "deploymentId": "23927e63-aedb-11f1-9447-00ffa7734675",
+        "processDefinitionId": "bpm_4ed0280cba9b407e:1:239a4696-aedb-11f1-9447-00ffa7734675",
+        "graphJson": null,
+        "categoryId": null,
+        "iotAccessEnabled": false,
+        "iotDeviceActionJson": null,
+        "publishedVersion": 1,
+        "sourceTemplateId": "2098846812961071105",
+        "sourceTemplateVersion": 1
+      }
+    },
+    {
+      "name": "G2a.m.unchanged",
+      "pass": true,
+      "detail": "template M mutated"
+    },
+    {
+      "name": "G2a.r.unchanged",
+      "pass": true,
+      "detail": "def R mutated"
+    },
+    {
+      "name": "G2a.x.unchanged",
+      "pass": true,
+      "detail": "instance X branches mutated"
+    },
+    {
+      "name": "G2a.m2.copyDenied",
+      "pass": true,
+      "detail": {
+        "code": 400,
+        "status": 200
+      }
+    },
+    {
+      "name": "G2a.outsider.zeroVisible",
+      "pass": true,
+      "detail": {
+        "status": 403,
+        "n": 0
+      }
+    },
+    {
+      "name": "G2a.outsider.zeroWrite",
+      "pass": true,
+      "detail": {
+        "status": 403,
+        "code": 403
+      }
+    },
+    {
+      "name": "G2b.o.running",
+      "pass": true,
+      "detail": {
+        "submit": {
+          "status": 200,
+          "body": {
+            "code": 0,
+            "msg": "success",
+            "data": "da216122-491c-49f2-a505-b0ff2940f313"
+          }
+        },
+        "pi": "2477873b-aedb-11f1-9447-00ffa7734675",
+        "status": "RUNNING"
+      }
+    },
+    {
+      "name": "G2b.q.status.hit",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "G2b.q.instance.hit",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "G2b.q.def.hit",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "G2b.q.initiator.hit",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "G2b.q.node.hit",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "G2b.q.assignee.hit",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "G2b.q.time.hit",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "G2b.q.status.excl",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "G2b.q.time.excl",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "G2b.q.assignee.excl",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "G2b.o.suspended",
+      "pass": true,
+      "detail": {
+        "instance": {
+          "id": "2098847300687323138",
+          "createTime": "2026-09-13T02:52:45.839184",
+          "createBy": "2098846807273594882",
+          "updateTime": "2026-09-13T02:52:45.839184",
+          "updateBy": "2098846807273594882",
+          "deleted": 0,
+          "version": "0",
+          "tenantId": "0",
+          "processInstanceId": "2477873b-aedb-11f1-9447-00ffa7734675",
+          "processDefKey": "bpm_bf82dbf3a9c44eb5",
+          "businessKey": "da216122-491c-49f2-a505-b0ff2940f313",
+          "formKey": "i4_leave_form",
+          "initiatorId": "2098846807273594882",
+          "status": "RUNNING",
+          "defVersion": 3
+        },
+        "activeNodeIds": [
+          "dyn",
+          "dyn"
+        ],
+        "suspended": true
+      }
+    },
+    {
+      "name": "G2b.o.suspendedHandleDenied",
+      "pass": true,
+      "detail": {
+        "commandId": "2098847321210052610",
+        "commandType": "TASK_APPROVE",
+        "channel": "NORMAL",
+        "status": "FAILED",
+        "result": null,
+        "failureReason": "org.flowable.common.engine.api.FlowableException: Cannot complete a suspended Task[id=24793501-aedb-11f1-9447-00ffa7734675, key=dyn, name=部门负责人并行审批, processInstanceId=2477873b-aedb-11f1-9447-00ffa7734675, executionId=24784a9b-aedb-11f1-9447-00ffa7734675, processDefinitionId=bpm_bf82dbf3a9c44eb5:3:23c1087a-aedb-11f1-9447-00ffa7734675]",
+        "retryCount": 4,
+        "createTime": "2026-09-13T02:52:50.731048",
+        "finishedAt": "2026-09-13T02:53:06.222358",
+        "flowStart": null
+      }
+    },
+    {
+      "name": "G2b.o.transferEffect",
+      "pass": true,
+      "detail": {
+        "transferTask": "2479d146-aedb-11f1-9447-00ffa7734675",
+        "l2Before": true,
+        "l2After": false,
+        "l1After": true
+      }
+    },
+    {
+      "name": "G2b.o.audit3",
+      "pass": true,
+      "detail": [
+        {
+          "action": "TRANSFER",
+          "op": "1"
+        },
+        {
+          "action": "RESUME",
+          "op": "1"
+        },
+        {
+          "action": "SUSPEND",
+          "op": "1"
+        }
+      ]
+    },
+    {
+      "name": "G2b.outsider.queryDenied",
+      "pass": true,
+      "detail": {
+        "status": 403,
+        "code": 403
+      }
+    },
+    {
+      "name": "G2b.outsider.interveneDenied",
+      "pass": true,
+      "detail": {
+        "status": 403,
+        "code": 403
+      }
+    },
+    {
+      "name": "G2b.outsider.zeroWrite",
+      "pass": true,
+      "detail": 3
+    },
+    {
+      "name": "G2c.summary.ok",
+      "pass": true,
+      "detail": {
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "launched": "5",
+          "completed": "4",
+          "running": "1",
+          "rejected": "1",
+          "avgDurationMs": 0,
+          "p50DurationMs": "0",
+          "p90DurationMs": "0",
+          "durationSample": 4,
+          "handlerWorkload": {
+            "0": "1",
+            "2098846806925467649": "2",
+            "2098846806564757505": "3"
+          },
+          "nodeStats": {
+            "dyn": {
+              "count": 5,
+              "p90StayMs": "13658",
+              "avgStayMs": 6600.6
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "G2c.summary.launchedConsistent",
+      "pass": true,
+      "detail": {
+        "api": "5",
+        "recompute": 4
+      }
+    },
+    {
+      "name": "G2c.summary.completedConsistent",
+      "pass": true,
+      "detail": {
+        "api": "4",
+        "recompute": 2
+      }
+    },
+    {
+      "name": "G2c.outsider.summaryDenied",
+      "pass": true,
+      "detail": {
+        "status": 403,
+        "code": 403
+      }
+    },
+    {
+      "name": "G2c.outsider.drillDenied",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "code": 403
+      }
+    }
+  ]
+}

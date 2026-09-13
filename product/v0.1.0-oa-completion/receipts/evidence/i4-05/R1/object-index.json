@@ -1,0 +1,21 @@
+{
+  "tenantA": 0,
+  "tenantB": 88,
+  "deptA": 7001000000000000000,
+  "userA": 7002000000000000000,
+  "userA2": 7002000000000000000,
+  "deptB": 7088000000000000000,
+  "userB": 7088000000000000000,
+  "entries": [
+    {
+      "entry": "dynamic resolution (正式 DynamicBranchCollectionResolver + Dept/User Facade + DynamicBranchPort)",
+      "positive": "tenant B resolves real dept -> leader UB frozen (1 row t88)",
+      "negative": "tenant A same dept -> DYNAMIC_BRANCH_LEADER_MISSING, zero rows tenant A"
+    },
+    {
+      "entry": "handover service entry",
+      "positive": "same-tenant UA->UA2 COMPLETED totalItems=0",
+      "negative": "UA->UB rejected 目标用户无效/不属于当前租户; handover/item zero rows"
+    }
+  ]
+}

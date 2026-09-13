@@ -1,0 +1,1 @@
+R1-cross-tenant-runtime → gate-r1-pg-raw.log + pg-runtime.txt（真实 PostgreSQL 17.5 embedded）+ object-index.json → 双租户经正式 service entry（DynamicBranchCollectionResolver/BpmHandoverService）确定拒绝、B 上下文正向命中 → 边界：Flowable 引擎自建表独立 in-mem 库不承载跨租户断言。

@@ -1,0 +1,80 @@
+{
+  "user": "admin",
+  "method": "GET",
+  "path": "/workflow/instances/e2b45b00-aeda-11f1-9447-00ffa7734675",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "id": "2098846837887819777",
+      "processInstanceId": "e2b45b00-aeda-11f1-9447-00ffa7734675",
+      "processDefKey": "bpm_bf82dbf3a9c44eb5",
+      "processName": "I4 动态并行协作审批",
+      "businessKey": "90413c93-be0e-46d0-b0c8-765e32e7db5f",
+      "formKey": "i4_leave_form",
+      "initiatorId": "2098846807273594882",
+      "initiatorName": "initiator",
+      "status": "APPROVED",
+      "createTime": "2026-09-13T02:50:55.498493",
+      "activeNodeIds": [],
+      "flowTrace": [
+        {
+          "activityId": "e1",
+          "activityName": null,
+          "activityType": "sequenceFlow",
+          "startTime": "2026-09-13T02:50:55.477",
+          "endTime": "2026-09-13T02:50:55.477",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "start",
+          "activityName": "Start",
+          "activityType": "startEvent",
+          "startTime": "2026-09-13T02:50:55.477",
+          "endTime": "2026-09-13T02:50:55.477",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "dyn",
+          "activityName": "部门负责人并行审批",
+          "activityType": "userTask",
+          "startTime": "2026-09-13T02:50:55.484",
+          "endTime": "2026-09-13T02:51:15.837",
+          "assignee": "2098846806564757505",
+          "assigneeName": "leader1",
+          "taskId": "e2b59394-aeda-11f1-9447-00ffa7734675"
+        },
+        {
+          "activityId": "e2",
+          "activityName": null,
+          "activityType": "sequenceFlow",
+          "startTime": "2026-09-13T02:51:15.865",
+          "endTime": "2026-09-13T02:51:15.865",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        },
+        {
+          "activityId": "end",
+          "activityName": "End",
+          "activityType": "endEvent",
+          "startTime": "2026-09-13T02:51:15.865",
+          "endTime": "2026-09-13T02:51:15.865",
+          "assignee": null,
+          "assigneeName": null,
+          "taskId": null
+        }
+      ],
+      "formData": {
+        "days": 1,
+        "reason": "I4-r3 冻结不改写 F",
+        "deptList": "2098846808154398722"
+      }
+    }
+  }
+}

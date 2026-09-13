@@ -1,0 +1,40 @@
+{
+  "user": "admin",
+  "method": "GET",
+  "path": "/workflow/monitor/instances?pageNum=1&pageSize=10&status=RUNNING",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "records": [
+        {
+          "instance": {
+            "id": "2098749357925531649",
+            "createTime": "2026-09-12T20:23:34.463779",
+            "createBy": "2098744049035575297",
+            "updateTime": "2026-09-12T20:23:34.463779",
+            "updateBy": "2098744049035575297",
+            "deleted": 0,
+            "version": "0",
+            "tenantId": "0",
+            "processInstanceId": "c5f7641c-aea4-11f1-9ecd-00ffa7734675",
+            "processDefKey": "bpm_d9844cbae5c44c81",
+            "businessKey": "86ec3125-2972-4256-ab1d-31131604c9a0",
+            "formKey": "i4_leave_form",
+            "initiatorId": "2098744049035575297",
+            "status": "RUNNING",
+            "defVersion": 1
+          },
+          "activeNodeIds": [
+            "dyn"
+          ],
+          "suspended": false
+        }
+      ],
+      "total": "1",
+      "pageNum": "1",
+      "pageSize": "10"
+    }
+  }
+}

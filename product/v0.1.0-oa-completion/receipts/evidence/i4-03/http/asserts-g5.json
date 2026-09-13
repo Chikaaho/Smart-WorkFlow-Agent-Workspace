@@ -1,0 +1,184 @@
+{
+  "total": 16,
+  "failed": 0,
+  "rows": [
+    {
+      "name": "G5a.start.ok",
+      "pass": true,
+      "detail": {
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "recordId": "7a2f535a-1458-44f1-830d-05ee79b5c4bd",
+          "idempotentReplay": false
+        }
+      }
+    },
+    {
+      "name": "G5a.instance.resolved",
+      "pass": true,
+      "detail": {
+        "recordId": "7a2f535a-1458-44f1-830d-05ee79b5c4bd"
+      }
+    },
+    {
+      "name": "G5a.duplicate.idempotent",
+      "pass": true,
+      "detail": {
+        "recordId": "7a2f535a-1458-44f1-830d-05ee79b5c4bd",
+        "idempotentReplay": true
+      }
+    },
+    {
+      "name": "G5a.status.running",
+      "pass": true,
+      "detail": {
+        "processInstanceId": "68dde76e-aedb-11f1-9447-00ffa7734675",
+        "businessKey": "7a2f535a-1458-44f1-830d-05ee79b5c4bd",
+        "status": "RUNNING"
+      }
+    },
+    {
+      "name": "G5a.badsign.denied",
+      "pass": true,
+      "detail": {
+        "code": 3002
+      }
+    },
+    {
+      "name": "G5a.nonce.replayDenied",
+      "pass": true,
+      "detail": {
+        "code": 3004,
+        "msg": "随机串已使用（防重放拒绝）"
+      }
+    },
+    {
+      "name": "G5a.eTask.ready",
+      "pass": true,
+      "detail": {
+        "taskId": "68df4712-aedb-11f1-9447-00ffa7734675",
+        "processInstanceId": "68dde76e-aedb-11f1-9447-00ffa7734675",
+        "processName": "I4 动态并行协作审批",
+        "formKey": "i4_leave_form",
+        "businessKey": "7a2f535a-1458-44f1-830d-05ee79b5c4bd",
+        "createTime": "2026-09-13T02:54:40.573"
+      }
+    },
+    {
+      "name": "G5a.complete.accepted",
+      "pass": true,
+      "detail": {
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "commandId": "2098847788518432770",
+          "commandKey": "TASK_APPROVE:68df4712-aedb-11f1-9447-00ffa7734675:2098846806925467649",
+          "commandType": "TASK_APPROVE",
+          "channel": "NORMAL",
+          "status": "ACCEPTED",
+          "duplicated": true
+        }
+      }
+    },
+    {
+      "name": "G5b.failedThree.queryable",
+      "pass": true,
+      "detail": [
+        {
+          "attempt": 3,
+          "status": "FAILED",
+          "summary": "ConnectException: Connection refused: getsockopt"
+        },
+        {
+          "attempt": 2,
+          "status": "FAILED",
+          "summary": "ConnectException: Connection refused: getsockopt"
+        },
+        {
+          "attempt": 1,
+          "status": "FAILED",
+          "summary": "ConnectException: Connection refused: getsockopt"
+        }
+      ]
+    },
+    {
+      "name": "G5a.terminal.notRolledBack",
+      "pass": true,
+      "detail": {
+        "processInstanceId": "68dde76e-aedb-11f1-9447-00ffa7734675",
+        "businessKey": "7a2f535a-1458-44f1-830d-05ee79b5c4bd",
+        "status": "APPROVED"
+      }
+    },
+    {
+      "name": "G5b.resend.delivered",
+      "pass": true,
+      "detail": {
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "event": "PROCESS_APPROVED",
+          "processInstanceId": "68dde76e-aedb-11f1-9447-00ffa7734675",
+          "deduped": false,
+          "delivered": true
+        }
+      }
+    },
+    {
+      "name": "G5b.receiver.gotE",
+      "pass": true,
+      "detail": 1
+    },
+    {
+      "name": "G5b.signature.recomputedPass",
+      "pass": true,
+      "detail": {
+        "pass": true,
+        "expectLen": 64,
+        "sigHeaderLen": 64
+      }
+    },
+    {
+      "name": "G5b.payload.whitelist",
+      "pass": true,
+      "detail": "{\"event\":\"PROCESS_APPROVED\",\"processInstanceId\":\"68dde76e-aedb-11f1-9447-00ffa7734675\",\"tenantId\":0}"
+    },
+    {
+      "name": "G5b.resend2.deduped",
+      "pass": true,
+      "detail": {
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "event": "PROCESS_APPROVED",
+          "processInstanceId": "68dde76e-aedb-11f1-9447-00ffa7734675",
+          "deduped": true,
+          "delivered": false
+        }
+      }
+    },
+    {
+      "name": "G5b.final.zeroIncrement",
+      "pass": true,
+      "detail": [
+        {
+          "a": 1,
+          "s": "SUCCESS"
+        },
+        {
+          "a": 3,
+          "s": "FAILED"
+        },
+        {
+          "a": 2,
+          "s": "FAILED"
+        },
+        {
+          "a": 1,
+          "s": "FAILED"
+        }
+      ]
+    }
+  ]
+}

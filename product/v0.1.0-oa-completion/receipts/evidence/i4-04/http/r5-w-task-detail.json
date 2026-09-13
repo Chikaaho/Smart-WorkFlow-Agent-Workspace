@@ -1,0 +1,65 @@
+{
+  "user": "w",
+  "method": "GET",
+  "path": "/workflow/tasks/1e50559a-af0e-11f1-b771-00ffa7734675",
+  "status": 200,
+  "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "taskId": "1e50559a-af0e-11f1-b771-00ffa7734675",
+      "taskName": "移动审批",
+      "processInstanceId": "1e502e7d-af0e-11f1-b771-00ffa7734675",
+      "processDefinitionKey": "bpm_7a5a45cceb8342fb",
+      "processName": "I4 移动意见审批",
+      "formKey": "i4_r5_detail",
+      "businessKey": "b62b9d20-6f0a-4bd4-9641-ad0ab4a06d48",
+      "assignee": "2098938976663523330",
+      "assigneeName": "w",
+      "initiatorId": "2098938976663523330",
+      "initiatorName": "w",
+      "createTime": "2026-09-13T08:57:39.818",
+      "processVariables": {
+        "approver": "2098938976663523330",
+        "recordId": "b62b9d20-6f0a-4bd4-9641-ad0ab4a06d48",
+        "submitter": "2098938976663523330",
+        "formKey": "i4_r5_detail",
+        "tenantId": "0",
+        "formData": {
+          "days": 1,
+          "reason": "I4-r4 移动详情样本",
+          "dept_ref": "56c85a0f-fbe6-47e1-a371-a1176a15e331"
+        }
+      },
+      "opinionForm": {
+        "formId": "I4_R5_OPINION_FORM",
+        "version": "1",
+        "fields": [
+          {
+            "key": "comment",
+            "type": "TEXTAREA",
+            "required": true,
+            "label": "审批意见",
+            "maxLength": 200
+          },
+          {
+            "key": "rating",
+            "type": "RADIO",
+            "required": true,
+            "label": "协作评价",
+            "options": [
+              "满意",
+              "不满意"
+            ]
+          },
+          {
+            "key": "note",
+            "type": "NOTE",
+            "label": "请依据协作单信息如实评价"
+          }
+        ]
+      },
+      "approvalHistory": []
+    }
+  }
+}
