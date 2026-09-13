@@ -1,0 +1,30 @@
+== memory 字节数（I4 规划确认终态投影轮）==
+口径: wc -c memory/*.md （逐字节）
+
+-- 对照基线：上一提交（885a0b8）--
+     770  memory/README.md
+     857  memory/architecture.md
+     713  memory/constraints.md
+    2586  memory/decisions.md
+    2579  memory/features.md
+    2333  memory/handoff.md
+    2766  memory/issues.md
+    3274  memory/state.md
+total(before) = 15878
+
+-- 本轮投影后（工作树实测）--
+  736 memory/README.md
+  857 memory/architecture.md
+  713 memory/constraints.md
+ 2586 memory/decisions.md
+ 2400 memory/features.md
+ 2429 memory/handoff.md
+ 2766 memory/issues.md
+ 3006 memory/state.md
+15493 total
+total(after) = 15493
+max single file = 3006 bytes
+净变化 = -385 字节
+
+-- 约束：每短文件 <5KB(5120)、总量 <20KB(20480) --
+max=3006  total=15493
