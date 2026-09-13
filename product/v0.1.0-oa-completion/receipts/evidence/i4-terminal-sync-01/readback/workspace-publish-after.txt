@@ -1,26 +1,28 @@
-== Workspace I4 终态同步：推送后只读回读 ==
-采集时点: 2026-09-13T12:20:13+08:00
+== Workspace I4 终态同步：推送后只读回读（定稿）==
+采集时点: 2026-09-13T12:25:32+08:00
 
 -- git ls-remote origin develop-sw --
-d57a6de9c6b28ba67cbc4e484c93e7aeb540e10e	refs/heads/develop-sw
+9a828aa22d227cac48c62a29dd950ad163984d72	refs/heads/develop-sw
 
--- 本地与远端跟踪引用 --
-git rev-parse HEAD              = d57a6de9c6b28ba67cbc4e484c93e7aeb540e10e
-git rev-parse origin/develop-sw = d57a6de9c6b28ba67cbc4e484c93e7aeb540e10e
-ahead/behind HEAD...origin/develop-sw = 0	0
-
--- tree 一致 --
-HEAD tree            = 2169cfa9a29d11b30daadac2cf5c6ac11b0be155
-origin/develop-sw tree = 2169cfa9a29d11b30daadac2cf5c6ac11b0be155
-
--- 本轮同步提交 --
+-- 本轮 Workspace 提交链（同步提交 + 证据/修正提交）--
+9a828aa chore(oa): 修正 I4 终态同步 memory 字节数与回执末行
+a164ca5 chore(oa): 登记 I4 终态同步 Workspace 推送回读证据
 d57a6de chore(oa): 同步 I4 编排流程运营与工作台阶段三终态
-f10d6a9 chore(oa): 归档 I3 终态同步方向并提交最终复核 02
 
--- 推送结果（原始）--
-f10d6a9..d57a6de  develop-sw -> develop-sw
-(远端 advisory: Changes must be made through a pull request. —— 非拒绝，远端引用已更新为 d57a6de)
+-- 本地 / 跟踪引用 / ahead-behind --
+git rev-parse HEAD              = 9a828aa22d227cac48c62a29dd950ad163984d72
+git rev-parse origin/develop-sw = 9a828aa22d227cac48c62a29dd950ad163984d72
+ahead/behind = 0	0
+tree: local=97e5e871305d7031f603b2157116dd04dacca8cd remote=97e5e871305d7031f603b2157116dd04dacca8cd
 
--- 端点内容抽查：远端 tip 处回执与本地工作树副本逐字节比较 --
-receipt cmp=0
-远端回执末行前缀: ENGINE_TERMINAL 
+-- 端点内容抽查（远端 tip 处）--
+回执与本地逐字节: cmp=0
+回执末行前缀: ENGINE_TERMINAL 
+远端 evidence/i4-terminal-sync-01 文件数: 25
+远端 receipts/evidence/i4-* 文件数: 854
+
+-- 口径 --
+本文件记录回读时点的值。推送后权威远端终点一律以 `git ls-remote origin develop-sw` 实时回读为准；
+不把本文件所在提交之后的 tip 写入自身（避免自引用）。
+推送结果(同步提交): f10d6a9..d57a6de  develop-sw -> develop-sw
+首次推送曾因 657MB 文件被 GH001 拒绝（见 workspace-push-rejected.txt），该提交未被远端接收。
