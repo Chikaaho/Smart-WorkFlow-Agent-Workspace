@@ -5,7 +5,7 @@
 > 需求编号：P60（版本统筹项，不替代既有 P 编号）  
 > 优先级：P0  
 > 任务等级：XL  
-> 功能状态：IN_PROGRESS（I1、I2、I3 均 COMPLETED（规划已确认）；I4 COMPLETED（待规划确认，2026-09-13）、机器状态 `TERMINAL_SYNC_SUBMITTED` 待 Planner 终态复核；I5—I6 未开始）  
+> 功能状态：IN_PROGRESS（I1、I2、I3 均 COMPLETED（规划已确认）；I4 COMPLETED（待规划确认，2026-09-13）、终态同步复核 01/02 均 `VERIFYING`，待关闭 TS4-R1a/b/c；I5—I6 未开始）  
 > 日期：2026-09-08  
 > 成熟 OA 目标版本：0.1.0  
 > 当前交付迭代：0.0.3
@@ -207,7 +207,7 @@ P60 当前状态为 `IN_PROGRESS`，I1—I3 已 `COMPLETED（规划已确认）`
 
 Executor 进入后先按 `system.md`、`roles/executor.md`、`project.md` 和两仓工程宪法恢复上下文，核对当前 knowledge 权威与本方向基点差异，并读取 `advanced-capability-feature-checklist.md`，然后制定六阶段内部实施计划。首次功能清单同步必须把 64 条高级能力以规划项映射进正式工程功能清单，保持稳定追溯键并与 P60 的 0.1.0 验收计数分开；若编号冲突，保留 `ADV-*` 作为外部追溯键并在回执给出映射。若权威现状证明某项已完整交付，应提交行为证据申请锁定，不重复建设；若仅有结构、SPI、Mock 或历史快照，不得当作已完成。
 
-`S-DEV-CAPTCHA-01` 已验收关闭。I2、I3 的主方向和终态同步方向均已归档。I4 主方向已归档，功能验收与三仓发布证据锁定；终态同步复核01因工程功能清单、knowledge与memory不一致保持VERIFYING。P60保持`IN_PROGRESS`；当前唯一入口为`product/v0.1.0-oa-completion/ready/direction-stage-i4-status-reconciliation.md`，I5探索顺延。
+`S-DEV-CAPTCHA-01` 已验收关闭。I2、I3 的主方向和终态同步方向均已归档。I4 主方向已归档，功能验收、90键/ADV、三仓发布和terminal证据锁定；终态同步复核02保持VERIFYING。P60保持`IN_PROGRESS`；当前唯一入口为`product/v0.1.0-oa-completion/receipts/planning-execution-prompt-terminal-sync-stage-i4-v0.0.3-oa-iteration-01.md`，I5顺延。
 
 每个迭代按 §4.1 形成独立方向、执行回执、规划验收、终态同步回执与终态复核；六阶段自验完成后提交：
 
