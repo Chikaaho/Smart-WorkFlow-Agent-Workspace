@@ -15,7 +15,7 @@ I4 R1—R6、十二项功能验收、三仓发布与terminal封装已锁定。�
 ## 5. 当前唯一规划入口
 `search_task/v0.1.0-oa-completion-i5-current-seams.md`（I5 第三方 SSO 现状接缝只读探索）。
 
-I4 主方向、终态同步方向与三层状态对账方向均已归档 `passed/`，I4 不再是业务验收待办；规划确认终态投影方向已完成（回执 `final-state-projection-stage-i4-v0.0.3-oa-iteration-01.md`），不再作为当前入口。
+I4主方向、终态同步方向、三层状态对账方向与规划确认终态投影方向均已归档`passed/`，I4不再是验收待办；I5探索已激活。
 
 ## 6. 下一轮固定范围
 Executor 按 I5 探索任务 §2 的 8 组问题做只读核实，结论写入 `search_fallback/v0.1.0-oa-completion-i5-current-seams.md`，区分「已实现且有行为证据／已有结构但未证实／缺失／需要外部真实条件」。不修改代码/配置/数据/治理状态，不写 I5 状态，不开始 Provider 接入。
