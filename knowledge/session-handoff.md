@@ -1,12 +1,12 @@
 # 会话交接（session-handoff）— 当前压缩版
 
-> 同步点：2026-09-13，P60 `v0.1.0-oa-completion`（0.1.0 OA 全功能收口，XL，P0）执行中：目标版本已由 Owner 确认统一登记为 `0.1.0`（更正回执 `product/v0.1.0-oa-completion/receipts/planning-registration-correction-v0.1.0-01.md`）；I1「组织与权限底座」**COMPLETED（规划已确认，2026-09-09）**（最终复核 07 PASSED）；I2「低代码表单收口」**COMPLETED（规划已确认，2026-09-10）**（终态最终复核 02 PASSED）；I3「人工审批与自研流程设计器」**COMPLETED（规划已确认，2026-09-12）**（终态最终复核 02 PASSED）；**I4「编排、流程运营与工作台」COMPLETED（待规划确认，2026-09-13）**（规划验收 06 PASSED，三仓发布与 terminal 封装已锁定；终态同步复核 01/02 均 `VERIFYING`），当前唯一执行入口 `product/v0.1.0-oa-completion/receipts/planning-execution-prompt-terminal-sync-stage-i4-v0.0.3-oa-iteration-01.md`（三层一致性收敛提示 01）。更早历史见 `knowledge/history/README.md`。
+> 同步点：2026-09-13，P60 `v0.1.0-oa-completion`（0.1.0 OA 全功能收口，XL，P0）执行中：目标版本已由 Owner 确认统一登记为 `0.1.0`（更正回执 `product/v0.1.0-oa-completion/receipts/planning-registration-correction-v0.1.0-01.md`）；I1「组织与权限底座」**COMPLETED（规划已确认，2026-09-09）**（最终复核 07 PASSED）；I2「低代码表单收口」**COMPLETED（规划已确认，2026-09-10）**（终态最终复核 02 PASSED）；I3「人工审批与自研流程设计器」**COMPLETED（规划已确认，2026-09-12）**（终态最终复核 02 PASSED）；**I4「编排、流程运营与工作台」COMPLETED（规划已确认，2026-09-13）**（规划验收 06 PASSED，终态同步最终复核 03 PASSED，三个方向均已归档 `passed/`），当前唯一入口 `search_task/v0.1.0-oa-completion-i5-current-seams.md`（I5 第三方 SSO 现状接缝只读探索）。更早历史见 `knowledge/history/README.md`。
 
 ## 当前唯一值（v0.1.0-oa-completion 执行入口）
 
 | 字段 | 值 |
 |---|---|
-| 当前活动正式功能 | `v0.1.0-oa-completion`（P60 0.1.0 OA 全功能收口）：**IN_PROGRESS**；I1「组织与权限底座」**COMPLETED（规划已确认，2026-09-09）**；I2「低代码表单收口」**COMPLETED（规划已确认，2026-09-10）**；I3「人工审批与自研流程设计器」**COMPLETED（规划已确认，2026-09-12）**；I4「编排、流程运营与工作台」**COMPLETED（待规划确认，2026-09-13）** |
+| 当前活动正式功能 | `v0.1.0-oa-completion`（P60 0.1.0 OA 全功能收口）：**IN_PROGRESS**；I1「组织与权限底座」**COMPLETED（规划已确认，2026-09-09）**；I2「低代码表单收口」**COMPLETED（规划已确认，2026-09-10）**；I3「人工审批与自研流程设计器」**COMPLETED（规划已确认，2026-09-12）**；I4「编排、流程运营与工作台」**COMPLETED（规划已确认，2026-09-13）** |
 | 正式业务功能数 | **44**（p21-iot-device-access 为第 44 个正式功能，COMPLETED（规划已确认，2026-09-08）） |
 | 清单规模 | 10 模块、55 功能、90 明细（业务）＋ **ADV 高级能力规划项 8 模块、64 条**（不计入统计） |
 | 清单状态计数 | **✅46 / 🟦22 / ⬜22**（46+22+22=90，业务明细零变化；ADV 64 条统一 ⬜ 规划登记/待现状核实） |
@@ -15,16 +15,16 @@
 | Web 基线 | I4 终态锁定（候选 C4）：typecheck/lint/test/build 四门实际 exit 0（`receipts/evidence/i4-06/R6/gate-web-*.log`），128 个测试文件、**1183 passed + 3 skipped**；Web 候选 HEAD `192e0647a8f1b1e2b270d4ea13e87854b247fcc7`，I4 新增/修改 16 个前端文件 |
 | Flyway | H2/PostgreSQL 同一迁移身份，终点 **V82**（I4 新增 bpm V76—V79 + V82 运营菜单种子；openapi V80/V81；`sw-bootstrap` FlywayFullChain H2 15/15、PG 12/12） |
 | 产品行为基线 | I4 R1—R6 与十二项验收标准的真实行为/页面/HTTP/持久化证据见 `receipts/evidence/i4-01/`—`evidence/i4-06/`（含同一对象 M BK `0f870b17-d72a-4209-9912-22de59733fba` 同对象链、附件 ATT 绑定与 owner 200/authenticated outsider 403、375px H5 详情/发起/已办截图与 DOM）；I1/I2/I3 产品行为基线为历史锁定 |
-| 当前任务状态 | `v0.1.0-oa-completion`：**IN_PROGRESS**；I1 **COMPLETED（规划已确认）**；I2 **COMPLETED（规划已确认，2026-09-10）**；I3 **COMPLETED（规划已确认，2026-09-12）**；I4 **COMPLETED（待规划确认，2026-09-13）**，终态同步复核 01/02 均 `VERIFYING`（待关闭 TS4-R1a/b/c） |
-| 活动业务实现功能 | 无（I4 已终态同步；当前只关闭第 15 项功能登记、当前入口统一与残留验证器三个缺口；收敛通过后由 Planner 复核确认 I4 `COMPLETED` 并形成 I5 SSO 正式阶段方向） |
-| 唯一下一动作 | **Executor 按 `receipts/planning-execution-prompt-terminal-sync-stage-i4-v0.0.3-oa-iteration-01.md` 关闭 TS4-R1a/b/c 并提交 `receipts/terminal-sync-stage-i4-v0.0.3-oa-iteration-03.md`，等待 Planner 复核**；P60 保持 IN_PROGRESS，功能数 44 与清单 ✅46/🟦22/⬜22、P 编号不变 |
+| 当前任务状态 | `v0.1.0-oa-completion`：**IN_PROGRESS**；I1 **COMPLETED（规划已确认）**；I2 **COMPLETED（规划已确认，2026-09-10）**；I3 **COMPLETED（规划已确认，2026-09-12）**；I4 **COMPLETED（规划已确认，2026-09-13）**，三个方向均已归档 `passed/` |
+| 活动业务实现功能 | 无（I4 已规划确认；当前唯一任务为 I5 第三方 SSO 现状接缝**只读探索**，不实现 Provider 接入） |
+| 唯一下一动作 | **Executor 按 `search_task/v0.1.0-oa-completion-i5-current-seams.md` 执行 I5 第三方 SSO 现状接缝只读探索，结论写入 `search_fallback/v0.1.0-oa-completion-i5-current-seams.md`**；P60 保持 IN_PROGRESS，功能数 44 与清单 ✅46/🟦22/⬜22、P 编号不变 |
 
 ## v0.1.0-oa-completion 关键事实
 
 - 主方向：`product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md`（六次迭代：I1 组织与权限底座、I2 低代码表单收口、I3 人工审批与自研流程设计器、I4 编排/流程运营/工作台、I5 第三方 SSO、I6 通知与版本收口）。
 - I3 阶段方向（已归档）：`product/v0.1.0-oa-completion/passed/direction-stage-i3-manual-approval-first-party-process-designer.md`；I3 功能级裁决 `receipts/planning-review-stage-i3-v0.1.0-oa-completion-08-passed.md` **PASSED**（R0—R10 全部原子，十八项验收标准通过）；I3 终态最终复核 `receipts/planning-final-review-terminal-sync-stage-i3-v0.1.0-oa-completion-02-passed.md` **PASSED**（已确认 `COMPLETED`）。
-- I4 阶段方向（已归档）：`product/v0.1.0-oa-completion/passed/direction-stage-i4-orchestration-process-operations-workbench.md`；I4 功能级裁决 `receipts/planning-review-stage-i4-v0.0.3-oa-iteration-06-passed.md` **PASSED**（R5/R6 关闭缺口，十二项验收标准全部通过）；终态同步复核 01 `receipts/planning-review-terminal-sync-stage-i4-v0.0.3-oa-iteration-01.md` 为 `VERIFYING`（三仓发布与 terminal 封装已锁定，三层状态一致性待补）。
-- 当前唯一执行入口：`product/v0.1.0-oa-completion/receipts/planning-execution-prompt-terminal-sync-stage-i4-v0.0.3-oa-iteration-01.md`（I4 终态三层一致性收敛提示 01：关闭 TS4-R1a/b/c；I4 终态同步方向 `ready/direction-stage-i4-terminal-sync.md` 与三层对账方向 `ready/direction-stage-i4-status-reconciliation.md` 均已执行完毕）。
+- I4 阶段方向（已归档）：`product/v0.1.0-oa-completion/passed/direction-stage-i4-orchestration-process-operations-workbench.md`；I4 功能级裁决 `receipts/planning-review-stage-i4-v0.0.3-oa-iteration-06-passed.md` **PASSED**（R5/R6 关闭缺口，十二项验收标准全部通过）；终态同步最终复核 `receipts/planning-final-review-terminal-sync-stage-i4-v0.0.3-oa-iteration-03-passed.md` **PASSED**（I4 正式确认 `COMPLETED（规划已确认，2026-09-13）`）；终态同步方向与三层状态对账方向亦均已归档 `passed/`。
+- 当前唯一执行入口：`search_task/v0.1.0-oa-completion-i5-current-seams.md`（I5 第三方 SSO 现状接缝**只读探索**，回传至 `search_fallback/v0.1.0-oa-completion-i5-current-seams.md`；不授权实现）。
 - 历史材料（I1 阶段证据，不改）：`product/v0.3.0-oa-completion/`。
 - 高级能力规划：`ready/advanced-capability-feature-checklist.md`（ADV-M11—ADV-M18、8 模块/64 条）；已映射进 `Smart-WorkFlow-aPaaS-server/功能清单.md` 文末 ADV 章节，**未纳入 0.1.0 验收**。
 - 统筹但不提前核销：P2/P4/P26/P31/P34/P35/P37/P38/P39 等既有开放 OA 范围。
@@ -58,7 +58,7 @@
 
 ## 任务指针
 
-- v0.1.0-oa-completion（P60，当前活动）：方向与规划定义 `product/v0.1.0-oa-completion/ready/`；主方向 `ready/direction-v0.1.0-oa-completion.md`；I2 主方向与终态同步方向均已归档 `passed/`（规划已确认，2026-09-10）；I3 主方向与终态同步方向均已归档 `passed/`（规划已确认，2026-09-12）；I4 主方向已归档 `passed/direction-stage-i4-orchestration-process-operations-workbench.md`；当前唯一执行入口 `receipts/planning-execution-prompt-terminal-sync-stage-i4-v0.0.3-oa-iteration-01.md`（三层一致性收敛提示 01）；任务登记 `knowledge/features/v0.1.0-oa-completion.md`（由 `v0.3.0-oa-completion.md` 更名承接；目标版本 Owner 确认登记 `0.1.0`；I1 COMPLETED（规划已确认，2026-09-09）；I2 COMPLETED（规划已确认，2026-09-10）；I3 COMPLETED（规划已确认，2026-09-12）；I4 COMPLETED（待规划确认，2026-09-13）——规划验收 `planning-review-stage-i4-v0.0.3-oa-iteration-06-passed.md` PASSED，终态同步回执=`receipts/terminal-sync-stage-i4-v0.0.3-oa-iteration-01.md`，终态同步复核 01/02 均 `VERIFYING`，下一动作=关闭 TS4-R1a/b/c 并提交回执 03 待 Planner 复核）。I1 历史证据（只读历史）：`product/v0.3.0-oa-completion/`。
+- v0.1.0-oa-completion（P60，当前活动）：方向与规划定义 `product/v0.1.0-oa-completion/ready/`；主方向 `ready/direction-v0.1.0-oa-completion.md`；I2 主方向与终态同步方向均已归档 `passed/`（规划已确认，2026-09-10）；I3 主方向与终态同步方向均已归档 `passed/`（规划已确认，2026-09-12）；I4 主方向、终态同步方向与三层状态对账方向均已归档 `passed/`（规划已确认，2026-09-13，最终复核 03 PASSED）；当前唯一执行入口 `search_task/v0.1.0-oa-completion-i5-current-seams.md`（I5 现状接缝只读探索）；任务登记 `knowledge/features/v0.1.0-oa-completion.md`（由 `v0.3.0-oa-completion.md` 更名承接；目标版本 Owner 确认登记 `0.1.0`；I1 COMPLETED（规划已确认，2026-09-09）；I2 COMPLETED（规划已确认，2026-09-10）；I3 COMPLETED（规划已确认，2026-09-12）；I4 COMPLETED（规划已确认，2026-09-13），下一动作=I5 现状接缝只读探索）。I1 历史证据（只读历史）：`product/v0.3.0-oa-completion/`。
 - p21-iot-device-access：主方向与阶段三方向均归档 `product/p21-iot-device-access/passed/`；最终裁决 `receipts/planning-final-review-terminal-sync-p21-iot-02-passed.md`（COMPLETED 规划已确认，2026-09-08）；任务登记 `knowledge/features/p21-iot-device-access.md`。
 - v0.0.2-oa：主方向与 A8 方向归档 `product/v0.0.2-oa/passed/`；任务登记 `knowledge/features/v0.0.2-oa.md`；COMPLETED（规划已确认，2026-09-08 复核确认）。
 - P4：主方向与能力边界方向均归档 `product/p4-oa-personal-center-dual-dispatch/passed/`；最终裁决 `receipts/planning-final-review-terminal-sync-p4-02-passed.md`（COMPLETED 规划已确认，2026-09-07）；任务登记 `knowledge/features/p4-oa-personal-center-dual-dispatch.md`。

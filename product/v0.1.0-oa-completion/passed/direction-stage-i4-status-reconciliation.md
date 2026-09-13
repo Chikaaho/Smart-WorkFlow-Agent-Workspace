@@ -5,7 +5,7 @@
 > 日期：2026-09-13  
 > 任务等级：XL  
 > 唯一前置：`../receipts/planning-review-terminal-sync-stage-i4-v0.0.3-oa-iteration-01.md`  
-> 阶段状态：I4 `COMPLETED（待规划确认，2026-09-13）`
+> 阶段状态：`PASSED`；I4 `COMPLETED（规划已确认，2026-09-13）`
 
 ## 1. 目标
 
@@ -73,3 +73,7 @@
 证据至少包含：完整逐项矩阵、修正前差异表、修正后 validator 结果、计数复算、当前入口残留扫描、memory 字节数、task-owned 文件清单、提交/推送/远端回读及 terminal input/stdout/stderr/exit。证据清单使用相对路径和哈希 manifest，回执末行与 validator input 逐字节一致。
 
 合法提交状态为 I4 `COMPLETED（待规划确认，2026-09-13）`、P60 `IN_PROGRESS`、机器状态 `TERMINAL_SYNC_SUBMITTED`、remaining=0、next=`WAIT_PLANNER`。Planner 复核前不得写 I4“规划已确认”，不得执行 I5 探索或实现。
+
+## 6. 最终复核
+
+回执02暴露的第15项登记和当前入口扫描缺口已由回执03关闭，最终裁决见 `../receipts/planning-final-review-terminal-sync-stage-i4-v0.0.3-oa-iteration-03-passed.md`。本方向归档至`passed/`。
