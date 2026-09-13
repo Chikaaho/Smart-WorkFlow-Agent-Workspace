@@ -1,9 +1,9 @@
 # 功能摘要
 
-> 规划侧最新同步点：2026-09-13（P60=`IN_PROGRESS`；I1—I3 **COMPLETED（规划已确认）**；I4 `COMPLETED（待规划确认，2026-09-13）`、终态同步复核 01 `VERIFYING`；I5—I6未开始；工程功能清单/knowledge/memory 三层全量一致性对账中；正式功能数44）。
+> 规划侧最新同步点：2026-09-13（P60=`IN_PROGRESS`；I1—I3`COMPLETED（规划已确认）`；I4 `COMPLETED（待规划确认，2026-09-13）`、终态同步复核02 `VERIFYING`；I5—I6未开始；正式功能数44）。
 > 清单当前值 **✅46/🟦22/⬜22**（90，M08 十行 🟦/⬜→✅，其余 80 行零变化）；功能数 44；全量双向映射见 `knowledge/feature-reconciliation-index.md`。
 
-- `v0.1.0-oa-completion`（P60，优先级P0）：成熟 OA 目标 `0.1.0`，当前交付迭代 `0.0.3`，整体 **IN_PROGRESS**。I1—I3 **COMPLETED（规划已确认）**；I4 `COMPLETED（待规划确认，2026-09-13）`、终态同步复核 01 `VERIFYING`，I5—I6未开始。下一动作=Executor 完成工程功能清单、knowledge 与 memory 逐项全量对账并提交终态同步回执02。
+- `v0.1.0-oa-completion`（P60，优先级P0）：整体 **IN_PROGRESS**。回执02锁定90键、ADV64、计数与发布；当前唯一入口=I4 终态三层一致性收敛提示 01（`receipts/planning-execution-prompt-terminal-sync-stage-i4-v0.0.3-oa-iteration-01.md`），唯一动作=关闭 TS4-R1a（补第15项功能登记）、TS4-R1b（统一当前入口）、TS4-R1c（带负向夹具的验证器）并提交回执03。
 
 - `p21-iot-device-access`：**COMPLETED（规划已确认，2026-09-08）**，第44个正式功能；P21已核销、I14关闭、M08 10✅/1🟦/2⬜。主方向与阶段三方向均归档 `passed/`；最终裁决 `planning-final-review-terminal-sync-p21-iot-02-passed.md`。
 
