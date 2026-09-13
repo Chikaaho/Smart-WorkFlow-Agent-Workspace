@@ -1,0 +1,7 @@
+== 负向夹具复跑（期望入口/动作已切换为 I5，夹具必须仍各自非零失败）@ 2026-09-13T14:12:23+08:00 ==
+
+fixture-stale-entry.md	exit=1	counters={"stale_entry":1,"stale_action":1,"multiple_current_entry":1,"registration_missing":0,"current_state_conflict":0,"broken_current_path":1}
+fixture-waiting-action.md	exit=1	counters={"stale_entry":0,"stale_action":1,"multiple_current_entry":0,"registration_missing":0,"current_state_conflict":0,"broken_current_path":0}
+fixture-broken-path.md	exit=1	counters={"stale_entry":1,"stale_action":0,"multiple_current_entry":1,"registration_missing":0,"current_state_conflict":0,"broken_current_path":2}
+fixture-state-conflict.md	exit=1	counters={"stale_entry":0,"stale_action":0,"multiple_current_entry":0,"registration_missing":0,"current_state_conflict":4,"broken_current_path":0}
+fixture-missing-registration.tsv	exit=1	counters={"stale_entry":0,"stale_action":0,"multiple_current_entry":0,"registration_missing":1,"current_state_conflict":0,"broken_current_path":0}

@@ -1,0 +1,44 @@
+== I4 规划确认终态投影：当前入口一致性扫描（权威结果）==
+生成时点: 2026-09-13T06:12:37.914Z
+验证器（复用，未复制）: product/v0.1.0-oa-completion/receipts/evidence/i4-status-reconciliation-01/convergence-01/verify-three-layer-consistency.js
+同源结果: product/v0.1.0-oa-completion/receipts/evidence/i4-final-state-projection-01/real-run.json  sha256=4e244abdd8b297a4ca0ebef0e29c075f655fadabdf6b7f0386b6c13acb2dee58
+期望入口: search_task/v0.1.0-oa-completion-i5-current-seams.md
+期望动作: I5 第三方 SSO 现状接缝只读探索
+
+-- 扫描对象（当前状态段/当前状态表格行/当前待办段/当前焦点/唯一入口）--
+  1. knowledge/current-status.md
+  2. knowledge/session-handoff.md
+  3. knowledge/features/v0.1.0-oa-completion.md
+  4. knowledge/feature-reconciliation-index.md
+  5. memory/README.md
+  6. memory/state.md
+  7. memory/features.md
+  8. memory/handoff.md
+  9. todo/v0.1.0-oa-plan.md
+  10. todo/requirement-pool.md
+  11. Smart-WorkFlow-aPaaS-server/功能清单.md
+  12. product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md
+
+-- 历史豁免规则：仅显式历史容器可豁免（HTML 注释块／有日期事件条目／数据化历史记录行／关键字命名章节／标题自带日期的时点化章节／行内明确历史措辞）；落点在当前容器内的旧指针一律判失败 --
+
+-- 计数器（权威值）--
+  stale_entry = 0
+  stale_action = 0
+  multiple_current_entry = 0
+  registration_missing = 0
+  current_state_conflict = 0
+  broken_current_path = 0
+  total_failures = 0
+
+-- 偏差明细 --
+  (无)
+
+-- 当前入口声明集合（必须唯一等于 I5 现状接缝探索任务）--
+  search_task/v0.1.0-oa-completion-i5-current-seams.md
+
+-- 负向夹具（期望入口/动作切换后仍须各自非零失败）--
+  fixture-stale-entry.md	exit=1	counters={"stale_entry":1,"stale_action":1,"multiple_current_entry":1,"registration_missing":0,"current_state_conflict":0,"broken_current_path":1}
+  fixture-waiting-action.md	exit=1	counters={"stale_entry":0,"stale_action":1,"multiple_current_entry":0,"registration_missing":0,"current_state_conflict":0,"broken_current_path":0}
+  fixture-broken-path.md	exit=1	counters={"stale_entry":1,"stale_action":0,"multiple_current_entry":1,"registration_missing":0,"current_state_conflict":0,"broken_current_path":2}
+  fixture-state-conflict.md	exit=1	counters={"stale_entry":0,"stale_action":0,"multiple_current_entry":0,"registration_missing":0,"current_state_conflict":4,"broken_current_path":0}
+  fixture-missing-registration.tsv	exit=1	counters={"stale_entry":0,"stale_action":0,"multiple_current_entry":0,"registration_missing":1,"current_state_conflict":0,"broken_current_path":0}

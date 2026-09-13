@@ -19,13 +19,21 @@ const fs = require("fs");
 const path = require("path");
 
 const WS = "E:/code/Smart-WorkFlow-Agent-Workspace/";
-const EXPECTED_ENTRY = "product/v0.1.0-oa-completion/receipts/planning-execution-prompt-terminal-sync-stage-i4-v0.0.3-oa-iteration-01.md";
-const EXPECTED_ACTION_HINT = "关闭 TS4-R1a/b/c 并提交回执 03";
+// 期望入口/动作可经 CLI 覆盖（--expected-entry / --expected-action），
+// 以便在阶段推进（如 I4 终态投影后切换到 I5 探索）时**重用同一验证器**，
+// 而不复制或改写已验证的校验逻辑。
+const DEFAULT_EXPECTED_ENTRY = "product/v0.1.0-oa-completion/receipts/planning-execution-prompt-terminal-sync-stage-i4-v0.0.3-oa-iteration-01.md";
+const DEFAULT_EXPECTED_ACTION_HINT = "关闭 TS4-R1a/b/c 并提交回执 03";
+const cliArgs = process.argv.slice(2);
+const cliVal = name => { const i = cliArgs.indexOf(name); return i >= 0 ? cliArgs[i + 1] : null; };
+const EXPECTED_ENTRY = cliVal("--expected-entry") || DEFAULT_EXPECTED_ENTRY;
+const EXPECTED_ACTION_HINT = cliVal("--expected-action") || DEFAULT_EXPECTED_ACTION_HINT;
 
 const TARGETS = [
   "knowledge/current-status.md",
   "knowledge/session-handoff.md",
   "knowledge/features/v0.1.0-oa-completion.md",
+  "knowledge/feature-reconciliation-index.md",
   "memory/README.md",
   "memory/state.md",
   "memory/features.md",
@@ -103,10 +111,14 @@ const STALE_ACTION_RES = [
   /等待\s*Planner\s*终态复核/, /待\s*Planner\s*终态复核/, /等待Planner终态复核/, /等待终态复核/,
   /终态同步合法状态/,
   /确认\s*I4\s*`?COMPLETED`?\s*后再形成\s*I5/,
-  /对账通过后确认\s*I4\s*`?COMPLETED`?\s*再形成\s*I5/
+  /对账通过后确认\s*I4\s*`?COMPLETED`?\s*再形成\s*I5/,
+  /关闭\s*TS4-R1a\/b\/c/,
+  /机械投影\s*I4\s*规划确认值/,
+  /提交(?:终态同步)?回执\s*0?2/,
+  /补(?:正式功能)?第\s*15\s*项(?:功能)?登记/
 ];
 const PATH_TOKEN_RE = /`([A-Za-z0-9._\-\/]+\.(?:md|tsv|json|txt|js))`/g;
-const FUTURE_ARTIFACT_RE = /完成后提交|待提交|计划提交|尚未生成|未来产出|并提交|将提交|本轮提交|提交回执|提交[^`\n]{0,14}回执|待本轮提交/;
+const FUTURE_ARTIFACT_RE = /完成后提交|待提交|计划提交|尚未生成|未来产出|并提交|将提交|本轮提交|提交回执|提交[^`\n]{0,14}回执|待本轮提交|结论写入|结论回传|回传至/;
 
 function scanFile(absPath, displayName, checks) {
   const lines = fs.readFileSync(absPath, "utf8").split(/\r?\n/);
