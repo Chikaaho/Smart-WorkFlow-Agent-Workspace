@@ -1,0 +1,28 @@
+== I4 规划确认投影轮：归档发布后只读回读 @ 2026-09-13T14:27:05+08:00 ==
+
+-- git ls-remote origin develop-sw --
+ff434a855b8ff5927d947d0906bfc5fdb91380fd	refs/heads/develop-sw
+
+-- 本轮归档提交 --
+ff434a8 chore(oa): 归档 I4 规划确认投影方向并提交投影复核 01
+a0a1907 chore(oa): 登记 I4 规划确认终态投影推送回读与最终复核证据
+
+-- 本地/远端/tree --
+HEAD=ff434a855b8ff5927d947d0906bfc5fdb91380fd
+origin/develop-sw=ff434a855b8ff5927d947d0906bfc5fdb91380fd
+ahead/behind=0	0
+tree local=68305aab2f30b7a402c87600e3a534f3eb8b42e8  remote=68305aab2f30b7a402c87600e3a534f3eb8b42e8
+
+-- 三仓 --
+Workspace develop-sw=ff434a855b8ff5927d947d0906bfc5fdb91380fd
+Server    develop   =dd51f7694780a504b8e0cd6aca5fb50de71273cf  remote=dd51f7694780a504b8e0cd6aca5fb50de71273cf
+Web       develop   =8dfc8dc710acfe6227040a00fd009457f8d03b4e  remote=8dfc8dc710acfe6227040a00fd009457f8d03b4e
+Server 工作树：?? sw-bootstrap/uploads/|?? uploads/|(仅既有未跟踪上传残留)
+Web 工作树：(clean)
+
+-- 端点内容抽查 --
+投影复核01 cmp=0
+远端 passed/ I4 方向数: 4
+
+-- 口径 --
+推送后权威远端终点以 `git ls-remote origin develop-sw` 实时回读为准。
