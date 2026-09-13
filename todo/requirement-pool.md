@@ -2,14 +2,14 @@
 
 > 与 `product/`、`knowledge/` 平级的工作区目录，规划层维护（2026-08-16 新建；D83 回执回收后修订）。
 > 收录**已开发但未满足**的功能（清单 🟦 行、known-issues 待修复项、已落地模块的缺口）以及未开发候选。
-> 每条必须可追溯（known-issues 编号 / 清单行 / 方向文档）。通常只做索引；Owner 直接补充且尚未形成正式方向的产品边界，可在对应 P 编号下暂存可验收定义，后续选为正式功能时再收敛进方向文档。既有问题与实现现状的权威来源为 `knowledge/known-issues.md`、`Smart-WorkFlow-Server/功能清单.md`、`knowledge/current-status.md` 与 `knowledge/feature-reconciliation-index.md`（全量对账索引）；历史探索回执（如 D83 相关）仅作追溯，不再作为当前缺口明细权威。
+> 每条必须可追溯（known-issues 编号 / 清单行 / 方向文档）。通常只做索引；Owner 直接补充且尚未形成正式方向的产品边界，可在对应 P 编号下暂存可验收定义，后续选为正式功能时再收敛进方向文档。既有问题与实现现状的权威来源为 `knowledge/known-issues.md`、`Smart-WorkFlow-aPaaS-server/功能清单.md`、`knowledge/current-status.md` 与 `knowledge/feature-reconciliation-index.md`（全量对账索引）；历史探索回执（如 D83 相关）仅作追溯，不再作为当前缺口明细权威。
 > 与 `todo/README.md` 的分工：README=已拍板"暂不修复"的决策速查；本文件=需要投入资源的待办候选。
 
 > 2026-09-05 选题整理：[功能与待办概览](requirements-review-20260905.md)（90 条明细模块统计、37 个开放 P 编号分组及候选比较；P4 本轮子集已COMPLETED，最终裁决见下文）。
 
 ## Owner 优先级覆盖
 
-**2026-09-13 P0 版本当前规划**：P60承载成熟OA `0.1.0`路线目标，当前交付迭代为`0.0.3`，优先级P0、等级XL、整体`IN_PROGRESS`。I1/I2/I3均`COMPLETED（规划已确认）`；I4已功能级验收`PASSED`并完成阶段三终态同步（`COMPLETED（待规划确认，2026-09-13）`、机器状态`TERMINAL_SYNC_SUBMITTED`），I5—I6未开始。当前唯一动作是等待Planner终态复核I4终态同步回执01，确认I4`COMPLETED`后再由Planner形成I5 SSO正式阶段方向。功能数44、清单✅46/🟦22/⬜22、开放P编号不变。
+**2026-09-13 P0 版本当前规划**：P60承载成熟OA `0.1.0`路线目标，当前交付迭代为`0.0.3`，优先级P0、等级XL、整体`IN_PROGRESS`。I1—I3已确认，I4`COMPLETED（待规划确认）`，I5—I6未开始。当前唯一动作是Executor全量对账工程功能清单逐项状态、knowledge与memory并提交回执02；目标功能数44、清单✅46/🟦22/⬜22、开放P编号不变。
 
 **2026-09-08 P21 终态基线（P60 立项前历史点）**：P21功能级 **PASSED**，阶段三补证 TS1/TS2 经 `planning-final-review-terminal-sync-p21-iot-02-passed.md` 复核通过，正式确认为 **COMPLETED（规划已确认，2026-09-08）**。功能44、清单✅46/🟦22/⬜22、P21核销、I14关闭均锁定；主方向与阶段三方向均在passed。当时无活动正式功能并等待Owner选择，该下一动作现已由上方 P60 当前规划取代。
 
@@ -89,7 +89,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 
 蓝凌官方公开材料还包含自由/嵌入式/即席子流程、流程仿真、完整流程大数据分析，以及页面/图表/报表设计、动作流/数据流/连接流、主数据整合、多级门户、内容引擎、知识搜索和应用市场。它们属于更广的 PaaS 能力，不作为 P60 的“完整 OA”通过条件；现已正式登记为 8 个高级能力模块、64 条稳定明细，见 [高级能力功能明细清单](../product/v0.1.0-oa-completion/ready/advanced-capability-feature-checklist.md)。P60 只吸收与日常 OA 交易闭环直接相关的最小能力，避免版本范围失控；对标详情与来源见正式方向 §3.10—§3.11。
 
-成熟OA路线方向：[v0.1.0 OA全功能收口](../product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md)；当前交付迭代=`0.0.3`。I1、I2、I3均已确认完成；I4[正式阶段方向](../product/v0.1.0-oa-completion/passed/direction-stage-i4-orchestration-process-operations-workbench.md)已归档，[规划验收06](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i4-v0.0.3-oa-iteration-06-passed.md)裁决`PASSED`，[阶段三终态同步回执01](../product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i4-v0.0.3-oa-iteration-01.md)已提交（`TERMINAL_SYNC_SUBMITTED`）。当前等待Planner终态复核，确认I4`COMPLETED`后再形成I5 SSO正式阶段方向。外部SSO/通知渠道仍须有真实官方测试应用、沙箱或可控账号行为证据。
+成熟OA路线方向：[v0.1.0 OA全功能收口](../product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md)；当前交付迭代=`0.0.3`。I1—I3均`COMPLETED（规划已确认）`；I4[正式阶段方向](../product/v0.1.0-oa-completion/passed/direction-stage-i4-orchestration-process-operations-workbench.md)已归档，[规划验收06](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i4-v0.0.3-oa-iteration-06-passed.md)裁决`PASSED`，[阶段三终态同步回执01](../product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i4-v0.0.3-oa-iteration-01.md)已提交，[终态同步复核01](../product/v0.1.0-oa-completion/receipts/planning-review-terminal-sync-stage-i4-v0.0.3-oa-iteration-01.md)为`VERIFYING`。当前唯一动作为[三层全量对账方向](../product/v0.1.0-oa-completion/ready/direction-stage-i4-status-reconciliation.md)执行并提交回执02；对账通过后确认I4`COMPLETED`再形成I5 SSO正式阶段方向。外部SSO/通知渠道仍须有真实官方测试应用、沙箱或可控账号行为证据。
 
 ## 一、已开发且未满足（D83 回执确认：90/90 清单一致，缺口逐行核实，此为全量索引）
 
@@ -145,7 +145,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 | P57 | BPM Engine 统一流程节点扩展能力 | Owner 2026-09-02 补充需求；优先级 P1；XL | ✅ **已核销/完成**（2026-09-03，功能级 PASSED + 阶段三 `COMPLETED（已确认）`；不对应既有明细、90 项明细状态零变化、功能数 40、清单 ✅34/🟦23/⬜33）；主方向与阶段三方向均已归档 `passed/` |
 | P58 | 流程节点界面与具体能力优化 | Owner 2026-09-02/03 补充需求；优先级 P1；XL | ✅ **已核销/完成**（2026-09-04，功能级 PASSED + 阶段三 `COMPLETED（已确认）`；不对应既有明细、90 项明细状态零变化、功能数 41、清单 ✅34/🟦23/⬜33、基线 1035/0/0/0（152份Surefire报告）、117f+1sk/1110t+3sk、H2 V49（49）/PG V49（48））；主方向与开发调试认证方向均已归档 `passed/` |
 | P59 | CH-aPaaS 项目说明、仓库与 main 分支整理及自动发版；三个示例仅记录 | Owner 2026-09-04；[统一需求](ch-apaas-project-update.md) | ✅ **已核销/完成**（**COMPLETED，规划已确认，2026-09-05**；功能级PASSED为2026-09-04审查07；非新增业务功能，功能数41、90明细与基线不变）；主方向及终态同步方向均归档 `passed/` |
-| P60 | 成熟OA `0.1.0`路线（组织权限、表单、流程设计与审批、流程运营、工作台、SSO、通知）；当前交付迭代`0.0.3` | Owner 2026-09-08；优先级P0；[正式方向](../product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md) | `IN_PROGRESS`；I1、I2、I3 **COMPLETED（规划已确认）**；I4 **COMPLETED（待规划确认，2026-09-13）**（功能级验收 06 PASSED、终态同步已提交 `TERMINAL_SYNC_SUBMITTED`，待 Planner 终态复核）、I5—I6未开始；统筹既有开放OA编号但不替代或提前核销 |
+| P60 | 成熟OA `0.1.0`路线（组织权限、表单、流程设计与审批、流程运营、工作台、SSO、通知）；当前交付迭代`0.0.3` | Owner 2026-09-08；优先级P0；[正式方向](../product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md) | `IN_PROGRESS`；I1、I2、I3 **COMPLETED（规划已确认）**；I4 **COMPLETED（待规划确认，2026-09-13）**（功能级验收 06 PASSED、三仓发布与 terminal 封装已锁定，终态同步复核 01 `VERIFYING`，待三层全量对账回执 02）、I5—I6未开始；统筹既有开放OA编号但不替代或提前核销 |
 
 
 ### P51 Owner 补充需求定义（2026-08-30）
@@ -586,7 +586,7 @@ P45已完成规划功能级验收与阶段三终态复核，正式状态为 **`C
 2. 条目落地完成后：从本文件删除（或标注已完成+归档），同步 `knowledge/known-issues.md` 状态与 `功能清单.md` 状态列。
 3. "已开发且未满足"的判定依据：功能清单 🟦 行（部分实现）、known-issues 待修复/待排期且代码已存在。
 4. **清单↔需求池同步（D85，防"清单独有"）**：功能清单 🟦/⬜ 行有任何缺口即在本文件登记 P 编号，功能清单备注列回注 P 编号（§3.3 第10项强制）；不读功能清单也看不到的需求=流程违规。
-5. 当前缺口明细以池内行级证据为准（各行状态与 `knowledge/known-issues.md`、`knowledge/feature-reconciliation-index.md`、`knowledge/current-status.md`、`Smart-WorkFlow-Server/功能清单.md` 对齐）；历史探索回执仅作追溯（2026-09-04 知识库全量整理对账更正，原「以 D83 三份探索回执 + knowledge-sync-apply 回执为准」的引用已失效——该四文件已退化为历史指针 stub，正文不存在）。
+5. 当前缺口明细以池内行级证据为准（各行状态与 `knowledge/known-issues.md`、`knowledge/feature-reconciliation-index.md`、`knowledge/current-status.md`、`Smart-WorkFlow-aPaaS-server/功能清单.md` 对齐）；历史探索回执仅作追溯（2026-09-04 知识库全量整理对账更正，原「以 D83 三份探索回执 + knowledge-sync-apply 回执为准」的引用已失效——该四文件已退化为历史指针 stub，正文不存在）。
 
 ---
 

@@ -1,0 +1,45 @@
+== I4 三层对账：修正前差异扫描 @ 2026-09-13T12:55:08+08:00 ==
+
+--- R1 功能清单.md 当前焦点（L49）---
+> 当前焦点：`v0.3.0-oa-completion`（P60 0.3.0 OA 全功能收口，XL，P0）执行中（2026-09-08 进入执行）：首次功能清单同步完成——64 条 ADV 高级能力以规划项登记于文末 ADV 章节（未纳入 0.3.0 验收、不计入本清单 90 行统计）；I1「组织与权限底座」业务验收 **PASSED**、阶段 **COMPLETED（待规划确认，2026-09-09）**，终态同步复核 02 VERIFYING（当前唯一入口 `product/v0.3.0-oa-completion/receipts/planning-execution-prompt-v0.3.0-oa-completion-i1-terminal-sync-01.md`），下一动作=Planner 复核回执 03；**I2—I6 未开始**。上一完成功能 `p21-iot-device-access`（P21 IoT 设备接入、受控脚本与流程联动，第 44 个正式功能，COMPLETED（规划已确认，2026-09-08，最终复核 02 PASSED））；当前业务 90 行终态 **✅46/🟦22/⬜22**（46+22+22=90）；功能数 **44**；正式基线 Server 12 模块汇总 **1223 tests / 0 failures / 0 errors / 0 skipped（BUILD SUCCESS）** ＋ 前端 126 files passed + 1 skipped / 1176 tests passed + 3 skipped（四门禁 exit 0）、Flyway H2 V67（67）/PG V67（66，I1 V67 一条加列/回填/种子）。当前唯一下一动作见 `knowledge/current-status.md`（I1 终态复核后进入 I2）。历史基线（v0.0.2-oa 时点 1156/V58、P4 时点 1128/1153/V55 等）为历史记录，不作为当前值；完整映射见 `knowledge/feature-reconciliation-index.md`。
+
+--- R1b 功能清单.md ADV 可见注记（L28）/ ADV 章节抬头（L227,L229,L231,L236）---
+> 2026-09-08（P60 v0.3.0-oa-completion 首次功能清单同步）：文末新增 **ADV-M11—ADV-M18 高级能力规划项** 章节（8 模块、64 条，键 `ADV-M11-F01-01`—`ADV-M18-F03-01`）。规划项**未纳入 0.3.0 验收**，**不计入上方 M01—M10 的 55 功能/90 明细统计与 ✅/🟦/⬜ 计数**；状态统一 ⬜ 规划登记/待现状核实，正式版本范围需后续独立方向。M01—M10 全部 90 行状态零变化、功能数 44 不变。规划键与既有 `Mxx-Fyy-zz` 无冲突，保留 `ADV-*` 作为稳定外部追溯键。
+> 登记事件：P60 `v0.3.0-oa-completion` 首次功能清单同步（2026-09-08，方向 `product/v0.3.0-oa-completion/ready/direction-v0.3.0-oa-completion.md` §3.11/§9）。
+> 计数规则：**未纳入 0.3.0 P0 验收**，不计入上方 M01—M10 的 90 明细统计、不计入 ✅/🟦/⬜ 完成计数、不并入已完成功能数 44。
+> 定义权威：可验收定义唯一权威为规划清单 `product/v0.3.0-oa-completion/ready/advanced-capability-feature-checklist.md`（本表只登记 ID/名称/优先级/状态，不复制全文，避免双源漂移）。
+| 模块 ID | 模块名称 | 明细数 | 建议 P1 | 建议 P2 | 0.3.0 关系 |
+
+--- R1c 功能清单.md 注释块重复行（L38，与 L28 同事件）---
+P60 v0.3.0-oa-completion 首次功能清单同步（2026-09-08）：方向 READY（`product/v0.3.0-oa-completion/ready/`）；文末新增 ADV-M11—ADV-M18 高级能力规划项章节 8 模块/64 条，**未纳入 0.3.0 验收、不计入上方 M01—M10 的 90 明细统计与 ✅/🟦/⬜ 计数**，状态统一 ⬜ 规划登记/待现状核实；M01—M10 全部 90 行状态零变化（✅46/🟦22/⬜22 不变）、功能数 44 不变；规划键 `ADV-M11-F01-01`—`ADV-M18-F03-01` 与既有 Mxx-Fyy-zz 无冲突，保持稳定外部追溯。 -->
+
+--- R2 knowledge/current-status.md 基线行（L14-L18）---
+| 后端正式基线 | **12 个模块汇总，1223 tests / 0 failures / 0 errors / 0 skipped；BUILD SUCCESS**（I1 终态候选锁定） |
+| 前端正式基线 | **Test Files 126 passed + 1 skipped；Tests 1176 passed + 3 skipped**；typecheck/lint/test/build exit 0（I1 终态候选锁定） |
+| 迁移基线 | Flyway **H2 V67（67 migrations）/ PostgreSQL V67（66 migrations）**（I1 V67 一条为加列/回填/种子；V66 已被 P21 iot 迁移占用） |
+| 产品行为基线 | Owner Broker 真实双向 MQTT；19 个原子工作项全部 COMPLETED；最终 r3 固定输入 16/16 哈希通过；browser_status=`OPERABLE`；Validator exit=0 |
+| 验证基线变更集合 | Server/Web/Flyway/产品行为四组（见上）；不得沿用 v0.0.2-oa 的 1156/V58 旧基线或最后单模块 43 tests 计数 |
+
+--- R3 断链引用 Smart-WorkFlow-Server/ 与 Smart-WorkFlow-Web/ ---
+knowledge/session-handoff.md:29:- 高级能力规划：`ready/advanced-capability-feature-checklist.md`（ADV-M11—ADV-M18、8 模块/64 条）；已映射进 `Smart-WorkFlow-Server/功能清单.md` 文末 ADV 章节，**未纳入 0.1.0 验收**。
+knowledge/session-handoff.md:68:- 必读入口：`knowledge/current-status.md`、`Smart-WorkFlow-Server/功能清单.md`、`knowledge/known-issues.md`、`todo/requirement-pool.md`、本交接
+knowledge/current-status.md:42:- 正式功能明细与双向映射：`Smart-WorkFlow-Server/功能清单.md`（90 行业务明细＋文末 ADV 高级能力规划项 64 条）＋ `knowledge/feature-reconciliation-index.md`（90 明细/56 唯一 P/54 I/55 审计 product 目录；ADV 64 条为独立规划项，不并入审计集合）
+memory/\README.md:7:- 未关闭问题：`knowledge/known-issues.md`；完整功能清单：`Smart-WorkFlow-Server/功能清单.md`；历史证据：`product/*/receipts/`
+memory/\architecture.md:5:系统为后端 Java 21 / Spring Boot 3.4 模块化单体与前端 Vue 3 / TypeScript SPA；产品名称/类型为 **CH-aPaaS / PaaS**（P59 规范值）；工作区根负责统一治理。后端子仓为 `Smart-WorkFlow-Server/`（remote `Chikaaho/Smart-WorkFlow-aPaaS-server`），前端子仓为 `Smart-WorkFlow-Web/`（remote `Chikaaho/Smart-WorkFlow-aPaaS-Web`），工作区 remote `Chikaaho/Smart-WorkFlow-Agent-Workspace`，三者均为 P59 规范地址。工程专属约束分别见两端 `docs/governance/engineering-constitution.md`。模块完成度粗粒度总览见 `knowledge/architecture.md` §5（2026-09-04 刷新：BPM/Agent/IoT 为已交付子能力描述，不将模块整体写完成）。
+knowledge/feature-reconciliation-index.md:10:- 高级能力规划项（P60 v0.3.0-oa-completion 首次同步，2026-09-08）：**8 模块、64 条（ADV-M11—ADV-M18，键 `ADV-M11-F01-01`—`ADV-M18-F03-01`）**，正式登记于 `Smart-WorkFlow-Server/功能清单.md` 文末 ADV 章节；**未纳入 0.3.0 验收、不计入上方 90 明细 ✅/🟦/⬜ 统计、不并入已完成功能数**，状态统一 ⬜ 规划登记/待现状核实；规划定义权威为 `product/v0.3.0-oa-completion/ready/advanced-capability-feature-checklist.md`（本审计集合不并入该 64 条）
+knowledge/feature-reconciliation-index.md:213:- 当前状态权威：`knowledge/current-status.md`；清单：`Smart-WorkFlow-Server/功能清单.md`；问题注册：`knowledge/known-issues.md`；需求池：`todo/requirement-pool.md`
+knowledge/features/v0.1.0-oa-completion.md:11:| ADV 规划项 | **8 模块 / 64 条**（ADV-M11—ADV-M18），已映射进 `Smart-WorkFlow-Server/功能清单.md` 文末 ADV 章节；**未纳入 0.1.0 验收、不计入 90 明细统计**，状态统一 ⬜ 规划登记/待现状核实 |
+knowledge/features/v0.1.0-oa-completion.md:62:- **2026-09-08 首次功能清单同步**：核对基点差异（P21 最终复核 02 PASSED 已确认；direction 与 requirement-pool 均登记 P60 READY）；核对 ADV 键与既有 Mxx-Fyy-zz 无冲突；将 64 条 ADV 高级能力以规划项映射进正式工程功能清单（`Smart-WorkFlow-Server/功能清单.md` 文末 ADV 章节，统一 ⬜ 规划登记/待现状核实，未纳入 0.1.0 验收）；更新 feature-reconciliation-index/current-status/session-handoff 口径；P21 终态文字落实为规划已确认。回执：`receipts/checklist-sync-v0.3.0-oa-completion-01.md`。
+todo/\requirement-pool.md:5:> 每条必须可追溯（known-issues 编号 / 清单行 / 方向文档）。通常只做索引；Owner 直接补充且尚未形成正式方向的产品边界，可在对应 P 编号下暂存可验收定义，后续选为正式功能时再收敛进方向文档。既有问题与实现现状的权威来源为 `knowledge/known-issues.md`、`Smart-WorkFlow-Server/功能清单.md`、`knowledge/current-status.md` 与 `knowledge/feature-reconciliation-index.md`（全量对账索引）；历史探索回执（如 D83 相关）仅作追溯，不再作为当前缺口明细权威。
+todo/\requirement-pool.md:589:5. 当前缺口明细以池内行级证据为准（各行状态与 `knowledge/known-issues.md`、`knowledge/feature-reconciliation-index.md`、`knowledge/current-status.md`、`Smart-WorkFlow-Server/功能清单.md` 对齐）；历史探索回执仅作追溯（2026-09-04 知识库全量整理对账更正，原「以 D83 三份探索回执 + knowledge-sync-apply 回执为准」的引用已失效——该四文件已退化为历史指针 stub，正文不存在）。
+todo/\frontend-eslint-module-boundaries.md:5:- 位置：`Smart-WorkFlow-Web/eslint.config.js`。
+
+--- R4 index.md 过期条目（L10/L174/L209/L213）---
+- 高级能力规划项（P60 v0.3.0-oa-completion 首次同步，2026-09-08）：**8 模块、64 条（ADV-M11—ADV-M18，键 `ADV-M11-F01-01`—`ADV-M18-F03-01`）**，正式登记于 `Smart-WorkFlow-Server/功能清单.md` 文末 ADV 章节；**未纳入 0.3.0 验收、不计入上方 90 明细 ✅/🟦/⬜ 统计、不并入已完成功能数**，状态统一 ⬜ 规划登记/待现状核实；规划定义权威为 `product/v0.3.0-oa-completion/ready/advanced-capability-feature-checklist.md`（本审计集合不并入该 64 条）
+- **审计外新增编号（1）**：P59（CH-aPaaS 项目说明、仓库与 main 分支整理及自动发版；Owner 2026-09-04；非新增业务功能统一交付，不映射 90 明细；2026-09-04 功能级 PASSED 并核销，待阶段三终态复核，见 `knowledge/features/p59-ch-apaas-project-update.md`）
+| 其余 search 资料 | 7 份活动目录中的探索文件已回传且为历史资料；4 份已归档（.archive/）；11 份无任务历史回传保留链接；knowledge-full-reconciliation 任务已完成（COMPLETED 已确认），阶段三方向已归档 `passed/direction-knowledge-full-reconciliation-terminal-sync.md`，历史文件不删除；当前执行入口见 `knowledge/current-status.md`「当前唯一下一动作」（P59 终态复核） |
+- 当前状态权威：`knowledge/current-status.md`；清单：`Smart-WorkFlow-Server/功能清单.md`；问题注册：`knowledge/known-issues.md`；需求池：`todo/requirement-pool.md`
+
+--- R5 44 项功能链：products 子表当前只到 41 ---
+41
+9:## A 组：正式功能目录（41 个，含早期批处理与 PASSED 归档）
