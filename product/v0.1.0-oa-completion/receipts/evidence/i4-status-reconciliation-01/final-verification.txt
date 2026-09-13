@@ -1,0 +1,28 @@
+== I4 三层对账最终复核快照 @ 2026-09-13T13:05:54+08:00 ==
+
+--- 三仓 branch / local HEAD / remote SHA / ahead-behind ---
+[Workspace] branch=develop-sw local=e4b03f342079568b257c9af9852c883028a8c1c0 remote=e4b03f342079568b257c9af9852c883028a8c1c0 aheadBehind=0	0
+[Server] branch=develop local=127c4f7bc24563ebf89d9328938520c90c8a66df remote=127c4f7bc24563ebf89d9328938520c90c8a66df aheadBehind=0	0
+[Web] branch=develop local=8dfc8dc710acfe6227040a00fd009457f8d03b4e remote=8dfc8dc710acfe6227040a00fd009457f8d03b4e aheadBehind=0	0
+
+--- Server 功能清单：远端 tip vs 本地 ---
+cmp=0
+远端 功能清单 M01-M10 行数 / ADV 行数:
+90
+64
+
+--- 证据 manifest 回读（18 项）---
+OK=18
+(no failures)
+
+--- 远端 tip 回执末行校验 ---
+validator(remote tip receipt lastline) exit=0
+remote tip lastline == validated payload (cmp=0)
+
+--- 未提交残留（应仅既有项）---
+?? Smart-WorkFlow-aPaaS-Web/
+?? Smart-WorkFlow-aPaaS-server/
+?? product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-02/readback/workspace-publish-after.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i4-02/server-dev.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i4-status-reconciliation-01/final-verification.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i4-status-reconciliation-01/readback/
