@@ -1,0 +1,36 @@
+== memory 字节数（I4 三层对账轮）==
+口径: wc -c memory/*.md （逐字节）
+
+-- 对照基线：上一提交（c33081e）的 memory 版本 --
+     744  memory/README.md
+     808  memory/architecture.md
+     713  memory/constraints.md
+    2586  memory/decisions.md
+    2667  memory/features.md
+    2645  memory/handoff.md
+    2766  memory/issues.md
+    3074  memory/state.md
+total(before) = 16003
+
+-- 本轮修正后（工作树实测）--
+  753 memory/README.md
+  857 memory/architecture.md
+  713 memory/constraints.md
+ 2586 memory/decisions.md
+ 2626 memory/features.md
+ 2231 memory/handoff.md
+ 2766 memory/issues.md
+ 3130 memory/state.md
+15662 total
+total(after) = 15662
+max single file = 3130 bytes
+
+净变化 = -341 字节
+
+-- 约束核对 --
+每短文件 <5KB(5120): max=3130 => PASS
+总量 <20KB(20480): total=15662 => PASS
+
+-- 说明 --
+本表 before 取上一提交的 memory 版本（可 git 复核）。Planner 在本轮下发前对 memory/README,state,features,handoff 做过口径更新，
+该中间态未单独提交；before/after 均以可复核的提交基线与本轮实测值为准，不推算中间值。

@@ -1,0 +1,61 @@
+== task-owned 文件清单（本轮 I4 三层对账）@ 2026-09-13T13:03:47+08:00 ==
+
+-- Workspace: 相对 HEAD 的已修改/新增（排除嵌套仓与既有残留）--
+ M knowledge/current-status.md
+ M knowledge/feature-reconciliation-index.md
+ M knowledge/feature-reconciliation-products.md
+ M knowledge/features/v0.1.0-oa-completion.md
+ M knowledge/session-handoff.md
+ M memory/README.md
+ M memory/architecture.md
+ M memory/features.md
+ M memory/handoff.md
+ M memory/state.md
+ M product/v0.1.0-oa-completion/ready/direction-stage-i4-terminal-sync.md
+ M product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md
+ M todo/frontend-eslint-module-boundaries.md
+ M todo/requirement-pool.md
+ M todo/v0.1.0-oa-plan.md
+?? product/v0.1.0-oa-completion/ready/direction-stage-i4-status-reconciliation.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i4-status-reconciliation-01/
+?? product/v0.1.0-oa-completion/receipts/planning-review-terminal-sync-stage-i4-v0.0.3-oa-iteration-01.md
+?? search_task/v0.1.0-oa-completion-i5-current-seams.md
+
+-- Server: 相对 HEAD --
+?? sw-bootstrap/uploads/
+?? uploads/
+
+-- Web: 相对 HEAD（应为空）--
+(空 = 无变化)
+
+-- 授权范围核对（方向 §4）--
+允许：工程《功能清单》、knowledge/、memory/、todo/、P60 当前指针；本轮回执与证据
+禁止：业务源码、测试、迁移、运行配置、既有历史回执
+
+-- 实际改动集合分类 --
+Server: Smart-WorkFlow-aPaaS-server/功能清单.md（工程清单，允许）
+Workspace 状态/清单/摘要类（允许）：
+  knowledge/current-status.md
+  knowledge/feature-reconciliation-index.md
+  knowledge/feature-reconciliation-products.md
+  knowledge/features/v0.1.0-oa-completion.md
+  knowledge/session-handoff.md
+  memory/README.md
+  memory/architecture.md
+  memory/features.md
+  memory/handoff.md
+  memory/state.md
+  product/v0.1.0-oa-completion/ready/direction-stage-i4-terminal-sync.md
+  product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md
+  todo/frontend-eslint-module-boundaries.md
+  todo/requirement-pool.md
+  todo/v0.1.0-oa-plan.md
+Workspace 新增（方向/复核/回执/证据，允许）：
+  product/v0.1.0-oa-completion/ready/direction-stage-i4-status-reconciliation.md
+  product/v0.1.0-oa-completion/receipts/evidence/i4-status-reconciliation-01/
+  product/v0.1.0-oa-completion/receipts/planning-review-terminal-sync-stage-i4-v0.0.3-oa-iteration-01.md
+  search_task/v0.1.0-oa-completion-i5-current-seams.md
+Workspace 未提交残留（非本轮归属，保留）：
+  product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-02/readback/workspace-publish-after.txt
+  product/v0.1.0-oa-completion/receipts/evidence/i4-02/server-dev.log
+  Smart-WorkFlow-aPaaS-Web/ 、 Smart-WorkFlow-aPaaS-server/（嵌套仓，不随 Workspace 提交）
