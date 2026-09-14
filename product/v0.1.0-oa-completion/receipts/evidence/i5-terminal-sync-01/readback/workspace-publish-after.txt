@@ -1,250 +1,27 @@
-# I5 terminal sync - workspace post-commit read-only readback (no push)
-captured_at=2026-09-14T10:44:07+08:00
+# I5 terminal sync - workspace commit chain readback (post-commit, NO push)
+captured_at=2026-09-14T10:53:01+08:00
 repo=E:/code/Smart-WorkFlow-Agent-Workspace
 branch=develop-sw
 upstream=origin/develop-sw
-head=4d702cb32c3247cf798c9dbf9a067ca0fb8d4a5c
-head_short=4d702cb
-head_subject=chore(oa): I5 阶段三终态同步——知识/记忆/待办与方向指针
-head_tree=f6f6c7c0834529a57d064c267a29abbb987335ac
-prev_head=107510707ec98cd25daf1b9ff35e69b58ca06fde
-committed_files=227
-ahead_behind(HEAD...origin/develop-sw)=2	1
+chain_head=ef1e8b3fd6a67d37d2f54baacd1b2ee2c1905f98   # 本文件所属登记提交的父提交（避免自引用）
+chain_head_short=ef1e8b3
+prev_heads=1075107 -> 4d702cb (同步提交 227 文件) -> 34b2cb8 (回读登记) -> ef1e8b3 (校验证据登记)
+chain_head_tree=b7781cc74cfd0582161754337de81115a29efae4
+sync_commit=4d702cb32c3247cf798c9dbf9a067ca0fb8d4a5c  files=227
+ahead_behind(HEAD...origin/develop-sw)=4	1
 ls_remote_origin_develop_sw=28dfc6da55c588781ec63578bcae33c50ccf1a0e
-push_executed=NO (Owner authorization for exact remote/branch/range not granted)
+push_executed=NO (Owner authorization for exact remote/branch/range not granted; direction section 5)
+remote_divergence=origin/develop-sw has 28dfc6d (P53 Figma registration) not present locally -> push requires Owner-authorized integration (report section 4.1)
 
-== commit file list ==
-knowledge/current-status.md
-knowledge/features/v0.1.0-oa-completion.md
-knowledge/session-handoff.md
-memory/README.md
-memory/decisions.md
-memory/features.md
-memory/handoff.md
-memory/issues.md
-memory/state.md
-product/v0.1.0-oa-completion/passed/direction-stage-i5-tenant-safe-third-party-sso.md
-product/v0.1.0-oa-completion/ready/direction-stage-i5-terminal-sync.md
-product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md
-product/v0.1.0-oa-completion/receipts/evidence/i5-02/g1-chain-tenant0.raw.json
-product/v0.1.0-oa-completion/receipts/evidence/i5-02/g1-chain-tenant100.raw.json
-product/v0.1.0-oa-completion/receipts/evidence/i5-02/g1-poll-tenant0.raw.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-02/g1-poll-tenant100.raw.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-02/g2-dev-server-boot.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-02/g2-g4-g5-g7-negatives.raw.json
-product/v0.1.0-oa-completion/receipts/evidence/i5-02/g3-prod-boot-no-secrets.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-02/g3-prod-boottest.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-02/g5-nonce-official-mapping.md
-product/v0.1.0-oa-completion/receipts/evidence/i5-02/g6-bind-chain.raw.json
-product/v0.1.0-oa-completion/receipts/evidence/i5-02/g7-sentinel-scan.txt
-product/v0.1.0-oa-completion/receipts/evidence/i5-02/g9-bootstrap-final.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-02/g9-bootstrap-tests-raw.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-02/g9-bootstrap-tests-raw2.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-02/g9-server-affected-tests-final.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-02/g9-server-affected-tests-raw.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-02/g9-server-bootstrap-rerun-raw.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-02/g9-server-bootstrap-rerun2-raw.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-02/g9-server-changed-files-manifest.txt
-product/v0.1.0-oa-completion/receipts/evidence/i5-02/g9-system-bpm-tests-raw.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-02/g9-web-four-gates.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-03/README-object-ledger.md
-product/v0.1.0-oa-completion/receipts/evidence/i5-03/dev-server-boot.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-03/g1-g2a-g4a-g5b-g6-g7-matrix.raw.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-03/g2b-session-convergence.raw.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-03/g3-prod-final.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-03/g4b-browser-nobody-mobile-workspace.png
-product/v0.1.0-oa-completion/receipts/evidence/i5-03/g5a-dev-server-boot.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-03/g5a-dev-server-boot2.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-03/g5a-dev-server-boot3.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-03/g5a-dev-server-boot4.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-03/g5a-whitelist-outbound-counts.raw.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-03/g5c-browser-feishu-disabled.png
-product/v0.1.0-oa-completion/receipts/evidence/i5-03/g5c-browser-sso-return-error.png
-product/v0.1.0-oa-completion/receipts/evidence/i5-03/g5c-browser-wecom-404-pc.png
-product/v0.1.0-oa-completion/receipts/evidence/i5-03/g7b-sentinel-rescan.txt
-product/v0.1.0-oa-completion/receipts/evidence/i5-03/g9-server-changed-files-manifest.txt
-product/v0.1.0-oa-completion/receipts/evidence/i5-03/g9-server-final.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-03/g9-server-sha256sums.txt
-product/v0.1.0-oa-completion/receipts/evidence/i5-03/g9-web-four-gates.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-03/web-dev-server.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-04/g2a1-openapi-auth.raw.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-04/g3b2-sso-credential-matrix.raw.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-04/g6a-g6b-sso-tenant-safety.raw.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-04/g9a1-final-candidate-diff.md
-product/v0.1.0-oa-completion/receipts/evidence/i5-04/g9a1-manifest-verify.exit
-product/v0.1.0-oa-completion/receipts/evidence/i5-04/g9a1-manifest-verify.stderr
-product/v0.1.0-oa-completion/receipts/evidence/i5-04/g9a1-manifest-verify.stdout
-product/v0.1.0-oa-completion/receipts/evidence/i5-04/g9b-final-gates.raw.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-04/object-ledger.md
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g1a1-capture.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g1a1-form-objects.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g1a2-form-pg.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g1b1-capture.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g1b1-trace.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g1c1-capture.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g1c1-cross-tenant.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g2a1-openapi-http-pg.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g2a2-capture.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g2a2-iot.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g2a3-async.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g2a3-capture.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g2b1-run.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g2b1-session.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g3b1-db-auth.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g3b1a-final.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g3b1b-wrong-user.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g3b1c-wrong-password.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g3b2-provider-boot.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g3b2a-disabled.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g3b2b-wecom-missing.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g3b2c-feishu-placeholder.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g3b2d-ding-missing.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g4a1-permission.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g4b1-browser.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g4b1-mobile.png
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g4b1-pc.png
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g5-capture.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g5a1-8081-final.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g5a1-allowlist.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g5b1-extra.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g5b1-state-code.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g5c1-browser.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g5c1-mobile.png
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g5c1-pc.png
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g6a1-pg-concurrency.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g6b1-binding-session.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g7a1-audit.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g7a1-capture.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g7b1-residue.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g8-real-provider.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g9a1-candidate.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g9a1-manifest.sha256
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g9a1-verify.exit
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g9a1-verify.stderr
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g9a1-verify.stdout
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g9b-server-gates.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g9b-web-gates.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/g9b1-gates.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/object-ledger.md
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/p45-redis.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/p45/l1-command.txt
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/p45/l1-concurrency.json
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/p45/l1-cross.json
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/p45/l1-db-readback.json
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/p45/l1-users.json
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/p45/l2-command.txt
-product/v0.1.0-oa-completion/receipts/evidence/i5-05/p45/l2-rotation-map.json
-product/v0.1.0-oa-completion/receipts/evidence/i5-06/g3b2-full-run2.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-06/g3b2-neg-DINGTALK-missing.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-06/g3b2-neg-DINGTALK-placeholder.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-06/g3b2-neg-FEISHU-missing.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-06/g3b2-neg-FEISHU-placeholder.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-06/g3b2-neg-WECOM-missing.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-06/g3b2-neg-WECOM-placeholder.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-06/g3b2-positive-all.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-06/g3b2-provider-matrix.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-06/g6a1-session-zero.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-06/g6b1-expire-unbind.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-06/g9-fingerprint.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-06/g9-manifest.sha256
-product/v0.1.0-oa-completion/receipts/evidence/i5-06/g9-verify.exit
-product/v0.1.0-oa-completion/receipts/evidence/i5-06/g9-verify.stderr
-product/v0.1.0-oa-completion/receipts/evidence/i5-06/g9-verify.stdout
-product/v0.1.0-oa-completion/receipts/evidence/i5-06/object-ledger.md
-product/v0.1.0-oa-completion/receipts/evidence/i5-07/g6c1-boot.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-07/g6c1-generation-isolation.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-07/g9-fingerprint.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-07/g9-manifest.sha256
-product/v0.1.0-oa-completion/receipts/evidence/i5-07/g9-verify.exit
-product/v0.1.0-oa-completion/receipts/evidence/i5-07/g9-verify.stderr
-product/v0.1.0-oa-completion/receipts/evidence/i5-07/g9-verify.stdout
-product/v0.1.0-oa-completion/receipts/evidence/i5-07/object-ledger.md
-product/v0.1.0-oa-completion/receipts/evidence/i5-08/g6c1a-boot.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-08/g6c1a-defect-repro.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-08/g6c1a-generation-isolation.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-08/g6c1a-regression.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-08/g9-fingerprint.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-08/g9-manifest.sha256
-product/v0.1.0-oa-completion/receipts/evidence/i5-08/g9-verify.exit
-product/v0.1.0-oa-completion/receipts/evidence/i5-08/g9-verify.stderr
-product/v0.1.0-oa-completion/receipts/evidence/i5-08/g9-verify.stdout
-product/v0.1.0-oa-completion/receipts/evidence/i5-08/object-ledger.md
-product/v0.1.0-oa-completion/receipts/evidence/i5-08/package.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-09/g9-fingerprint.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-09/g9-manifest.sha256
-product/v0.1.0-oa-completion/receipts/evidence/i5-09/g9-verify.exit
-product/v0.1.0-oa-completion/receipts/evidence/i5-09/g9-verify.stderr
-product/v0.1.0-oa-completion/receipts/evidence/i5-09/g9-verify.stdout
-product/v0.1.0-oa-completion/receipts/evidence/i5-09/g9c1-agent-tests.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-09/g9c1-notify-test.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-09/object-ledger.md
-product/v0.1.0-oa-completion/receipts/evidence/i5-10/doc-comparison.md
-product/v0.1.0-oa-completion/receipts/evidence/i5-10/feishu-fix-sso-test.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-10/g9-doc-fingerprint.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-10/g9-doc-manifest.sha256
-product/v0.1.0-oa-completion/receipts/evidence/i5-10/g9-doc-verify.exit
-product/v0.1.0-oa-completion/receipts/evidence/i5-10/g9-doc-verify.stdout
-product/v0.1.0-oa-completion/receipts/evidence/i5-10/secret-scan-and-consistency.txt
-product/v0.1.0-oa-completion/receipts/evidence/i5-10/system-biz-regression.log
-product/v0.1.0-oa-completion/receipts/evidence/i5-11/g8-handoff-fingerprint.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-11/g8-handoff-manifest.sha256
-product/v0.1.0-oa-completion/receipts/evidence/i5-11/g8-handoff-verify.exit
-product/v0.1.0-oa-completion/receipts/evidence/i5-11/g8-handoff-verify.stdout
-product/v0.1.0-oa-completion/receipts/evidence/i5-11/handoff-readback.raw
-product/v0.1.0-oa-completion/receipts/evidence/i5-11/object-ledger.md
-product/v0.1.0-oa-completion/receipts/evidence/i5-terminal-sync-01/readback/lastline-compare.txt
-product/v0.1.0-oa-completion/receipts/evidence/i5-terminal-sync-01/readback/manifest-verify.txt
-product/v0.1.0-oa-completion/receipts/evidence/i5-terminal-sync-01/readback/repo-git-state.txt
-product/v0.1.0-oa-completion/receipts/evidence/i5-terminal-sync-01/readback/server-commit-readback.txt
-product/v0.1.0-oa-completion/receipts/evidence/i5-terminal-sync-01/validator/exit.txt
-product/v0.1.0-oa-completion/receipts/evidence/i5-terminal-sync-01/validator/input.json
-product/v0.1.0-oa-completion/receipts/evidence/i5-terminal-sync-01/validator/stderr.txt
-product/v0.1.0-oa-completion/receipts/evidence/i5-terminal-sync-01/validator/stdout.txt
-product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i5-tenant-safe-sso-01.md
-product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i5-tenant-safe-sso-02.md
-product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i5-tenant-safe-sso-03.md
-product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i5-tenant-safe-sso-04.md
-product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i5-tenant-safe-sso-05.md
-product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i5-tenant-safe-sso-06.md
-product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i5-tenant-safe-sso-07.md
-product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i5-tenant-safe-sso-08.md
-product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i5-tenant-safe-sso-09.md
-product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i5-tenant-safe-sso-10.md
-product/v0.1.0-oa-completion/receipts/planning-review-i5-current-seams-01-passed.md
-product/v0.1.0-oa-completion/receipts/planning-review-stage-i5-v0.0.3-oa-iteration-01.md
-product/v0.1.0-oa-completion/receipts/planning-review-stage-i5-v0.0.3-oa-iteration-02.md
-product/v0.1.0-oa-completion/receipts/planning-review-stage-i5-v0.0.3-oa-iteration-03.md
-product/v0.1.0-oa-completion/receipts/planning-review-stage-i5-v0.0.3-oa-iteration-04.md
-product/v0.1.0-oa-completion/receipts/planning-review-stage-i5-v0.0.3-oa-iteration-05.md
-product/v0.1.0-oa-completion/receipts/planning-review-stage-i5-v0.0.3-oa-iteration-06.md
-product/v0.1.0-oa-completion/receipts/planning-review-stage-i5-v0.0.3-oa-iteration-07.md
-product/v0.1.0-oa-completion/receipts/planning-review-stage-i5-v0.0.3-oa-iteration-08.md
-product/v0.1.0-oa-completion/receipts/planning-review-stage-i5-v0.0.3-oa-iteration-09.md
-product/v0.1.0-oa-completion/receipts/planning-review-stage-i5-v0.0.3-oa-iteration-10.md
-product/v0.1.0-oa-completion/receipts/planning-review-stage-i5-v0.0.3-oa-iteration-11.md
-product/v0.1.0-oa-completion/receipts/planning-review-stage-i5-v0.0.3-oa-owner-waiver-01-passed.md
-product/v0.1.0-oa-completion/receipts/planning-review-tenant-hardcoding-audit-01-passed.md
-product/v0.1.0-oa-completion/receipts/planning-scope-update-stage-i5-freeze-miniprogram-01.md
-product/v0.1.0-oa-completion/receipts/stage-i5-v0.0.3-oa-iteration-02.md
-product/v0.1.0-oa-completion/receipts/stage-i5-v0.0.3-oa-iteration-03.md
-product/v0.1.0-oa-completion/receipts/stage-i5-v0.0.3-oa-iteration-04.md
-product/v0.1.0-oa-completion/receipts/stage-i5-v0.0.3-oa-iteration-05.md
-product/v0.1.0-oa-completion/receipts/stage-i5-v0.0.3-oa-iteration-06.md
-product/v0.1.0-oa-completion/receipts/stage-i5-v0.0.3-oa-iteration-07.md
-product/v0.1.0-oa-completion/receipts/stage-i5-v0.0.3-oa-iteration-08.md
-product/v0.1.0-oa-completion/receipts/stage-i5-v0.0.3-oa-iteration-09.md
-product/v0.1.0-oa-completion/receipts/stage-i5-v0.0.3-oa-iteration-10.md
-product/v0.1.0-oa-completion/receipts/stage-i5-v0.0.3-oa-iteration-11.md
-product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md
-search_fallback/v0.1.0-oa-completion-i5-current-seams.md
-search_fallback/v0.1.0-oa-completion-tenant-hardcoding-audit.md
-search_task/v0.1.0-oa-completion-tenant-hardcoding-audit.md
-todo/requirement-pool.md
-todo/v0.1.0-oa-plan.md
+== unpushed local chain ==
+ef1e8b3 chore(oa): 登记 I5 终态同步校验证据与终态值复核
+34b2cb8 chore(oa): 登记 I5 终态同步 Workspace 提交回读（未推送）
+4d702cb chore(oa): I5 阶段三终态同步——知识/记忆/待办与方向指针
+1075107 chore(oa): 提交 I5 阶段实现回执 01（EXECUTION_SUBMITTED，待规划验收）
 
-== working tree residue (untracked, not committed by design) ==
+== working tree residue (untracked, deliberately not committed) ==
+ M product/v0.1.0-oa-completion/receipts/evidence/i5-terminal-sync-01/readback/workspace-publish-after.txt
 ?? Smart-WorkFlow-aPaaS-Web/
 ?? Smart-WorkFlow-aPaaS-server/
 ?? product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-02/readback/workspace-publish-after.txt
 ?? product/v0.1.0-oa-completion/receipts/evidence/i4-02/server-dev.log
-?? product/v0.1.0-oa-completion/receipts/evidence/i5-terminal-sync-01/readback/workspace-publish-after.txt
