@@ -1,23 +1,29 @@
-# I5 terminal sync - workspace commit chain readback (post-commit, NO push)
-captured_at=2026-09-14T10:53:01+08:00
+# I5 terminal sync - workspace commit chain readback (NO push)
+captured_at=2026-09-14T10:54:52+08:00
 repo=E:/code/Smart-WorkFlow-Agent-Workspace
-branch=develop-sw
-upstream=origin/develop-sw
-chain_head=ef1e8b3fd6a67d37d2f54baacd1b2ee2c1905f98   # 本文件所属登记提交的父提交（避免自引用）
-chain_head_short=ef1e8b3
-prev_heads=1075107 -> 4d702cb (同步提交 227 文件) -> 34b2cb8 (回读登记) -> ef1e8b3 (校验证据登记)
-chain_head_tree=b7781cc74cfd0582161754337de81115a29efae4
-sync_commit=4d702cb32c3247cf798c9dbf9a067ca0fb8d4a5c  files=227
-ahead_behind(HEAD...origin/develop-sw)=4	1
+branch=develop-sw   upstream=origin/develop-sw
+head_at_capture=d531bebf5215c6912c896cb74766d6ccde19ddf3
+head_tree_at_capture=f3dd928265c50322aff57e2147b24f5a5c54d89d
+ahead_behind_at_capture(HEAD...origin/develop-sw)=6	1
 ls_remote_origin_develop_sw=28dfc6da55c588781ec63578bcae33c50ccf1a0e
-push_executed=NO (Owner authorization for exact remote/branch/range not granted; direction section 5)
-remote_divergence=origin/develop-sw has 28dfc6d (P53 Figma registration) not present locally -> push requires Owner-authorized integration (report section 4.1)
+push_executed=NO (direction section 5: remote push requires explicit Owner authorization for the exact remote/branch/range)
+note=本文件记录抓取时点的提交链；若其后仍有登记提交，以 git log 只读回读为准，本文件自身 SHA 不入表以避免自引用
 
-== unpushed local chain ==
+== unpushed local chain (origin/develop-sw..HEAD) ==
+d531beb chore(oa): 修正 I5 终态同步回执交叉引用并重录校验证据
+728c411 chore(oa): 登记 I5 终态同步提交链回读（未推送）
 ef1e8b3 chore(oa): 登记 I5 终态同步校验证据与终态值复核
 34b2cb8 chore(oa): 登记 I5 终态同步 Workspace 提交回读（未推送）
 4d702cb chore(oa): I5 阶段三终态同步——知识/记忆/待办与方向指针
 1075107 chore(oa): 提交 I5 阶段实现回执 01（EXECUTION_SUBMITTED，待规划验收）
+
+== sync commit file count ==
+4d702cb files=227
+
+== remote divergence ==
+origin/develop-sw=28dfc6da55c588781ec63578bcae33c50ccf1a0e
+remote-only commit: 28dfc6d docs(todo): 登记P53 Figma UI设计需求  -> 仅改 todo/requirement-pool.md（P53 Figma 登记，+5/-4），本地工作树不含其内容
+push 需先整合远端提交；属 Owner 授权范围，本轮未 merge/rebase/fetch
 
 == working tree residue (untracked, deliberately not committed) ==
  M product/v0.1.0-oa-completion/receipts/evidence/i5-terminal-sync-01/readback/workspace-publish-after.txt
