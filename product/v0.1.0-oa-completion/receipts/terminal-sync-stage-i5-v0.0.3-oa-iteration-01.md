@@ -70,7 +70,7 @@
 
 | 仓库 | 根 | 分支 | upstream | 本轮提交 | 提交前 HEAD | 远端当前 SHA | 本地领先 | push |
 |---|---|---|---|---|---|---|---|---|
-| Workspace | `E:/code/Smart-WorkFlow-Agent-Workspace` | `develop-sw` | `origin/develop-sw` | 见 §4.2（post-commit 只读回读） | `107510707ec98cd25daf1b9ff35e69b58ca06fde` | `28dfc6da55c588781ec63578bcae33c50ccf1a0e` | 见 §4.2 | **未执行** |
+| Workspace | `E:/code/Smart-WorkFlow-Agent-Workspace` | `develop-sw` | `origin/develop-sw` | 见 §7.1（post-commit 只读回读） | `107510707ec98cd25daf1b9ff35e69b58ca06fde` | `28dfc6da55c588781ec63578bcae33c50ccf1a0e` | 见 §7.1 | **未执行** |
 | Server | `E:/code/Smart-WorkFlow-Agent-Workspace/Smart-WorkFlow-aPaaS-server` | `develop` | `origin/develop` | `26961ca`（35 文件）＋`eeb23f2`＋`4c7fc24`（各 1 文件） | `4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889` | `dd51f7694780a504b8e0cd6aca5fb50de71273cf` | **6** | **未执行** |
 | Web | `E:/code/Smart-WorkFlow-Agent-Workspace/Smart-WorkFlow-aPaaS-Web` | `develop` | `origin/develop` | 无（工作树零修改，未制造空提交） | `5788ead33c4347214a350d124331237e85068bdf` | `8dfc8dc710acfe6227040a00fd009457f8d03b4e` | **2**（`fc5f70b`、`5788ead`，I5 既有本地提交） | **未执行** |
 
@@ -132,7 +132,7 @@
 |---|---|---|---|
 | `product/v0.1.0-oa-completion/receipts/evidence/i4-02/server-dev.log`（657362860 字节） | I4 执行回执 02 的 dev 后端运行日志 | 保留于工作树（未跟踪），不提交 | 超过 GitHub 单文件 100 MB 上限，远端 pre-receive 曾拒绝（I4 回执 §4.5）；同批紧凑证据与 `evidence/i4-06/` 已提交 |
 | `product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-02/readback/workspace-publish-after.txt` | I3 终态同步轮残留（已由 I3 终态最终复核 02 PASSED 确认） | 保留于工作树，本轮不提交 | 方向 §5「既有无关改动不得提交、清理、reset 或覆盖」；不夹带他人轮次产物 |
-| `readback/workspace-publish-after.txt`（本轮新增，§4.2） | 本轮回执后生成的 Workspace 提交后只读回读 | 提交后生成；随紧随其后的登记提交入库 | 避免回执自引用（与 I4 回执 §4.4 同口径） |
+| `readback/workspace-publish-after.txt`（本轮新增，§7.1） | 本轮回执后生成的 Workspace 提交后只读回读 | 提交后生成；随紧随其后的登记提交入库 | 避免回执自引用（与 I4 回执 §4.4 同口径） |
 
 - 上述残留均未删除、未清理、未 reset、未覆盖；未提交残留中**不含**任何 I5 源码、测试、迁移或治理状态文件。
 - Server 提交后工作树 clean；Web 工作树 clean。
