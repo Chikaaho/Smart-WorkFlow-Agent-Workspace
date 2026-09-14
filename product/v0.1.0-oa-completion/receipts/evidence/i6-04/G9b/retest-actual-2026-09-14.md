@@ -25,3 +25,7 @@
 ## 结论
 
 G9b 当前门禁证据为 Server 1361/0/0/0 BUILD SUCCESS，Web 四门 exit 0；浏览器既有 PC/H5 截图链继续作为 G4a/G4b 证据，不再重复抓图。固定验证码开关已在 dev/local 配置和实际 dev 进程中生效。G5b 的真实 Provider 成功链仍需 Owner 提供外部凭据与选型。
+
+## 终态契约回读
+
+`G8a/terminal-input.json` 为本轮机器终态输入；`terminal-validator.stdout.log`、`terminal-validator.stderr.log` 与 `terminal-validator.exit-code.txt` 分离保存，validator exit 为 `0`。输入账本将 G5b 标为 dependency 未满足且不可执行，其余原子无 actionable 项，故终态为 `EXECUTION_SUBMITTED` 等待 Planner。
