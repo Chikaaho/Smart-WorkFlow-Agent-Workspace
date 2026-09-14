@@ -1,0 +1,9 @@
+# G4b 原始流（2026-09-14，同一浏览器 375x667 移动视口 + 真实后端）
+# 1) /m/notify：u1_100 收件箱（未读 0、全部已读状态、同一消息集合）shot-01-h5-inbox.png
+# 2) 深链：查看详情 → /notify/inbox/{id}/link → /m/workflow?ref=57e144a5… → 自动打开流程实例详情抽屉
+#    shot-02-h5-deeplink.png（基本信息+流转记录）
+# 3) 刷新/深路由恢复：reload 后抽屉重新打开（服务端重新鉴权）shot-03-h5-reload-recovery.png
+# 4) 跨租户拒绝：u1_200(T200) 打开 T100 实例 ref → 「流程实例不存在」（不泄露存在性）
+#    shot-04-h5-crosstenant-reject.png
+# 5) Mock 检查：同 G4a（.env 非 mock、全部真实 /api/*）
+# 修复登记：MobileWorkspace 未消费 ref 深链 → 补 ref 恢复抽屉（getInstanceDetail，服务端鉴权 fail closed）

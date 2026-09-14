@@ -1,0 +1,7 @@
+ 2099411482677272577 |       100 |        10002 | 额度 1234.5 截止 2026-09-30 | I6G2ET_TPL100
+
+ I6G2ET_TPL100 | t       | amount:NUMBER,due:DATE,stage:ENUM(PLAN|RUN|DONE),mail:EMAIL,note:TEXT
+
+== V92 迁移与 500/幂等修复原始流（节选自 /tmp/i6logs/boot.log）
+2026-09-14T16:18:48.325+08:00  INFO 42616 --- [nio-8080-exec-4] c.s.c.n.c.NotifyTemplateController       : 模板直发幂等回照: code=I6G2ET_TPL100, recipient=10002, msgId=2099411482677272577
+2026-09-14T16:18:48.344+08:00  INFO 42616 --- [io-8080-exec-10] c.s.c.n.c.NotifyTemplateController       : 模板直发幂等回照: code=I6G2ET_TPL100, recipient=10002, msgId=2099411482677272577

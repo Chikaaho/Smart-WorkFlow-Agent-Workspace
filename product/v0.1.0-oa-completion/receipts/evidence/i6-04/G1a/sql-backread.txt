@@ -1,0 +1,14 @@
+# i6-04 G1a SQL 回读（docker exec postgres psql，2026-09-14）
+## 消息与尝试（失败链 message 2099430376506863617 / task 链 2099430373809926145）
+-- select id, recipient_id, channel, delivery_status, failure_reason, retry_count, event_type from sw_notify_message order by id desc limit 4
+2099430376506863617 | 10001 | EMAIL | FAILED | 邮件投递失败: IllegalArgumentException | 0 | PROCESS_APPROVED
+2099430376456531969 | 10001 | IN_APP | SUCCESS |  | 0 | PROCESS_APPROVED
+2099430373809926145 | 10002 | EMAIL | FAILED | 邮件投递失败: IllegalArgumentException | 0 | TODO_CREATED
+2099430373658931202 | 10002 | IN_APP | SUCCESS |  | 0 | TODO_CREATED
+-- select attempt_no, channel, status, failure_reason, failure_class, message_id, started_at, finished_at from sw_notify_send_attempt where ...
+1 | EMAIL | FAILED | 邮件投递失败: IllegalArgumentException | RETRYABLE | 2099430373809926145 | 2026-09-14 17:29:41.307767 | 2026-09-14 17:29:41.307767
+1 | EMAIL | FAILED | 邮件投递失败: IllegalArgumentException | RETRYABLE | 2099430376506863617 | 2026-09-14 17:29:41.950233 | 2026-09-14 17:29:41.950233
+-- rule I6G2G_R101
+I6G2G_R101 | PROCESS_APPROVED | IN_APP,EMAIL | INITIATOR;ASSIGNEE | 0 | RETRY | t
+-- instance after notify failure
+2099430373554073601 | d018f57a-b01e-11f1-9198-00ffa7734675 | APPROVED | 10001

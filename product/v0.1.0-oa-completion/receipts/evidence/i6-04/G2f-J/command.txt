@@ -1,0 +1,6 @@
+# G2f-J 原始流（2026-09-14）
+# 1) 对象铺设（变更登记，测后已还原）：UPDATE sw_notify_message id=2099445362495004673
+#    link_type='EVIL' link_id='javascript:alert(1)'（伪造任意类型+危险协议 ID）；测后还原 WF_PROCESS/21bca43c
+# 2) 真实浏览器：u1_100 收件箱点击「跳转」（shot-01-forged-link-reject.png）
+#    → 服务端受控响应，前端路由白名单不匹配 → toast「该消息没有可跳转对象」，URL 不变、无脚本执行
+# 3) 正向同源：合法 WF_PROCESS 消息跳转（G4a shot-04 / G4b shot-02，服务端仅返回 {linkType,linkId}）
