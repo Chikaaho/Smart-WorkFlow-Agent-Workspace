@@ -15,6 +15,7 @@
 4. 回读开发环境固定验证码配置：`application-dev.yml:6`、`application-local.yml:6` 的 `ch.dev.test-mock: true`；当前 8080 进程为纯 `dev` profile。真实登录原始结果只保留状态码与 token 长度，未落盘凭据或 token。
 5. 将版本材料从旧的 V90 投影统一修正为现行 V92：`version.json`、`CHANGELOG.md`、`release/0.1.0/{UPGRADE,ROLLBACK,CONFIG-CHANGES,DB-MIGRATIONS}.md`；V91 主体绑定与 V92 布尔兼容迁移路径按仓库实际文件回读。
 6. 重新生成候选 `release/0.1.0/MANIFEST.json` 及 G8a 快照；三仓 SHA、门禁计数、V92 终点和 G5b 外部边界均以工具读取结果为准。
+7. 生成终态 JSON 并运行 `.codex/governance/validate-terminal.ps1`；validator exit `0`，输入/标准输出/错误输出/退出码均分离留存于 `G8a/`。
 
 ## 2. 原子账本追加裁决
 
