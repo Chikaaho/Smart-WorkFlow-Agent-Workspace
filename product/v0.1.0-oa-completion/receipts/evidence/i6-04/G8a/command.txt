@@ -1,0 +1,9 @@
+# G8a 原始流（2026-09-14）
+# 1) 时点：Server 全量门禁（1361/0/0/0 BUILD SUCCESS）与 Web 四门（exit 0）之后；三仓工作树 clean
+# 2) manifest 工具生成：heredoc JSON（三仓 git rev-parse + 迁移计数 + 门禁计数 + G5b 边界）
+#    → release/0.1.0/MANIFEST.json + 本目录 manifest-snapshot.json（字节一致）
+# 3) hash：sha256sum MANIFEST.json = 80a9c333411326fe979d52f188aebcc32db05e366913c2043741f954bf738eba
+#          sha256sum version.json  = 1fcd2438943b359cd80e3ee6068b4137670a241860de7ffeec5d9107c8f34e4a
+# 4) 三仓状态：Server HEAD e941d74…（clean，develop）/ Web HEAD 0a746e3…（clean，develop）/
+#    Workspace HEAD 946a3b9…（本 manifest 提交前时点，随后与回执04一并提交）
+# 5) 回读：G8a/actual.md 引用 manifest-snapshot.json 与 sha256 输出（stdout 见会话原始流）
