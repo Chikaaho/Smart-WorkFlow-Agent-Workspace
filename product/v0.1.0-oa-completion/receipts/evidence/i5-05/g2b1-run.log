@@ -1,0 +1,14 @@
+[G2b1.firstLogin] {"at":"2026-09-13T16:17:22.659Z","status":200,"code":0,"hasToken":true,"hasRefreshCookie":true,"tokenSha256Prefix":"fb2b6ec70f16"}
+[G2b1.meValid] {"status":200,"code":0,"tenantId":"1000","roles":["t1000_admin"]}
+[G2b1.dsCreate] {"code":0,"id":"2099170585809170433"}
+[G2b1.tenantRow1000] {"code":0,"data":"{\"columns\":[\"ID\",\"STATUS\",\"EXPIRE_AT\"],\"rows\":[{\"ID\":\"1000\",\"STATUS\":0,\"EXPIRE_AT\":\"2026-09-14 00:17:53\"}],\"rowCount\":1,\"executionTimeMs\":\"7\"}"}
+[G2b1.redisSessionBefore] {"exists":":1|","ttl":":816|"}
+[G2b1.waitingForExpiry] {"waitMs":71151,"until":"2026-09-13T16:18:35.000Z"}
+[G2b1.tenantRowAfterExpiry] {"code":0,"data":"{\"columns\":[\"ID\",\"STATUS\",\"EXPIRE_AT\"],\"rows\":[{\"ID\":\"1000\",\"STATUS\":0,\"EXPIRE_AT\":\"2026-09-14 00:17:53\"}],\"rowCount\":1,\"executionTimeMs\":\"3\"}"}
+[G2b1.loginAfterExpiry] {"at":"2026-09-13T16:18:35.012Z","status":200,"code":401,"msg":"所属租户不可用，无法登录","hasToken":false}
+[G2b1.refreshAfterExpiry] {"status":200,"body":"{\"code\":401,\"msg\":\"所属租户不可用，会话已终止\",\"data\":null}"}
+[G2b1.meWithCacheStill] {"status":200,"code":0}
+[G2b1.redisDel] {"del":":1|"}
+[G2b1.meAfterAuthorityReload] {"status":401,"code":401,"msg":"未认证"}
+[G2b1.redisSessionAfter] {"exists":":0|"}
+[G2b1.t100ControlMe] {"status":200}

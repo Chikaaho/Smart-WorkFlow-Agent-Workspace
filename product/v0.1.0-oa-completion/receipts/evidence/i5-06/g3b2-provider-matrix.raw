@@ -1,0 +1,26 @@
+atomic_id=G3b2
+captured_at=2026-09-14T05:52:00+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=456b60f5bccc4dbc3706214a3829d32fc5fd2e96（iteration-06 最终工作树）
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; 每用例独立 OS 进程 java -jar（sw-bootstrap-1.0.0-SNAPSHOT.jar, 05:43:51 构建——含解绑会话撤销实现）；真实 PostgreSQL 17.5（zonky initdb scram-sha-256, 127.0.0.1:5433/postgres, PG 链 v87）；prod profile；配置行经 JDBC 种子工具注入 sys_sso_provider_config（app_secret_enc NOT NULL：missing=空字符串）
+database=真实 PostgreSQL；单数据源 master
+tenant_id=100（配置行租户）
+actor=executor-local-dev
+object_ids=配置行 id：正向组 90101(WECOM)/90102(FEISHU)/90103(DINGTALK)（app_id=ww-i5g3b2-wecom / cli-i5g3b2-feishu / ding-i5g3b2，密文=各自非占位测试密钥的 AES-GCM 密文，密钥=进程 env SW_SSO_CIPHER_KEY）；负向组每进程单行 90110（仅改目标 Provider 一个失败条件）
+positive_assertion=三 Provider enabled=1 + 有效非秘密测试配置的同一 prod 进程完整启动成功（health 200, HEALTH_OK ~12s），并逐 Provider 回读 enabled=1（DINGTALK=1 / FEISHU=1 / WECOM=1）——按提示 04 §2 允许以"全启用有效配置"单进程替代三个正向进程
+negative_assertion=六个独立负向进程（WECOM/FEISHU/DINGTALK × missing/placeholder）各自 exit=1，首因均为该 Provider 配置门（「启用 Provider 必须配置有效 appId 与 secret」）；placeholder 行为占位明文 AES-GCM 密文（解密后命中占位黑名单）；全部日志配置原值零命中
+positive_pass=true
+negative_pass=true
+cleanup=正向进程 taskkill；负向进程自行退出；矩阵后清空配置行；PG 实例停止
+uncovered=none for the captured G3b2 package
+observed=
+[positive] {"rows":"updated=3","boot":"HEALTH_OK after ~12s","enabledReadback":["DINGTALK=1","FEISHU=1","WECOM=1"],"log":"g3b2-positive-all.log"}
+[neg WECOM/missing] {"exit_code":1,"firstCause":"启用 Provider 必须配置有效 appId 与 secret","log":"g3b2-neg-WECOM-missing.log"}
+[neg WECOM/placeholder] {"exit_code":1,"firstCause":"启用 Provider 必须配置有效 appId 与 secret","log":"g3b2-neg-WECOM-placeholder.log"}
+[neg FEISHU/missing] {"exit_code":1,"firstCause":"启用 Provider 必须配置有效 appId 与 secret","log":"g3b2-neg-FEISHU-missing.log"}
+[neg FEISHU/placeholder] {"exit_code":1,"firstCause":"启用 Provider 必须配置有效 appId 与 secret","log":"g3b2-neg-FEISHU-placeholder.log"}
+[neg DINGTALK/missing] {"exit_code":1,"firstCause":"启用 Provider 必须配置有效 appId 与 secret","log":"g3b2-neg-DINGTALK-missing.log"}
+[neg DINGTALK/placeholder] {"exit_code":1,"firstCause":"启用 Provider 必须配置有效 appId 与 secret","log":"g3b2-neg-DINGTALK-placeholder.log"}
+[residueScan] {"surfaces":"7 份进程日志","hits":0}
+[v1RunNote] {"note":"首轮矩阵因脚本内 node 读取 $DRIVER 路径解析失败，placeholder 三格退化为 empty 复测、正向为空密文被正确拒绝（HEALTH_TIMEOUT）——该轮结果不计；v2 以值文件传递后九格全部成立"}

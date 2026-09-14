@@ -1,0 +1,77 @@
+### A. provider-config-example.yml 字段级回读（脱敏）
+--- (A1) 系统 keys ---
+15:# SW_SSO_CIPHER_KEY: __SET_ME_BASE64_32B__
+19:# SW_SSO_CALLBACK_BASE_URL: __SET_ME_HTTPS_BASE__
+23:# SW_SSO_CALLBACK_ALLOWLIST: __SET_ME_HTTPS_BASE__/api/auth/sso/wecom/callback,__SET_ME_HTTPS_BASE__/api/auth/sso/feishu/callback,__SET_ME_HTTPS_BASE__/api/auth/sso/dingtalk/callback
+--- (A2) 三 Provider 行模板（provider/enabled/secret 状态/extra/redirect） ---
+32:#   provider='WECOM',    enabled=0, app_id='__SET_ME_CORPID__',      app_secret_enc=NULL, extra_config='{"agentId":"__SET_ME_AGENTID__"}', redirect_path='/workspace'
+33:#   provider='FEISHU',   enabled=0, app_id='__SET_ME_APP_ID__',     app_secret_enc=NULL, extra_config='{}', redirect_path='/workspace'
+34:#   provider='DINGTALK', enabled=0, app_id='__SET_ME_APP_KEY__',    app_secret_enc=NULL, extra_config='{}', redirect_path='/workspace'
+--- (A3) enabled 计数（期望 3 个 enabled=0，0 个 enabled=1） ---
+4
+1
+--- (A4) secret 占位状态（期望仅 NULL/密文说明/哨兵） ---
+29:#       app_secret_enc(AES-256-GCM 密文，密钥=SW_SSO_CIPHER_KEY)、
+32:#   provider='WECOM',    enabled=0, app_id='__SET_ME_CORPID__',      app_secret_enc=NULL, extra_config='{"agentId":"__SET_ME_AGENTID__"}', redirect_path='/workspace'
+33:#   provider='FEISHU',   enabled=0, app_id='__SET_ME_APP_ID__',     app_secret_enc=NULL, extra_config='{}', redirect_path='/workspace'
+34:#   provider='DINGTALK', enabled=0, app_id='__SET_ME_APP_KEY__',    app_secret_enc=NULL, extra_config='{}', redirect_path='/workspace'
+--- (A5) __SET_ME__ 哨兵清单 ---
+32:__SET_ME_AGENTID__
+33:__SET_ME_APP_ID__
+34:__SET_ME_APP_KEY__
+15:__SET_ME_BASE64_32B__
+32:__SET_ME_CORPID__
+19:__SET_ME_HTTPS_BASE__
+6:__SET_ME__
+
+### B. owner-acceptance-handbook.md 章节级回读
+--- (B1) 章节标题 ---
+1:# 三方 SSO（企业微信 / 飞书 / 钉钉）Owner 自验手册
+8:## 0. 从哪里开始
+13:## 1. 系统级配置（启动边界）
+23:## 2. Provider 控制台配置项（官方侧，逐 Provider 独立应用）
+25:### 企业微信（WECOM）
+30:### 飞书（FEISHU）
+35:### 钉钉（DINGTALK）
+40:## 3. 凭据注入与启用顺序
+54:## 4. 自验步骤（逐 Provider，预期结果）
+76:## 5. 清理与问题定位边界
+83:## 6. 安全口径（验收红线）
+--- (B2) 关键要素覆盖行 ---
+11:2. 按本手册 §1 准备系统级配置 → §2 在各 Provider 官方控制台建应用 → §3 注入凭据并启用 → §4 逐 Provider 走绑定/登录/解绑自验 → §5 失败恢复与问题定位。
+17:| `SW_SSO_CIPHER_KEY` | Provider secret 的 AES-256-GCM 加密密钥（Base64，32 字节） | 启动失败（fail-fast） |
+18:| `SW_SSO_CALLBACK_BASE_URL` | 服务端对外 HTTPS 基址 | 留空=相对路径模式（仅同源代理可用） |
+19:| `SW_SSO_CALLBACK_ALLOWLIST` | 回调 URL 前缀白名单（逗号分隔） | 配了基址但不在白名单 → 回调地址生成直接拒绝（fail closed） |
+21:回调路径固定：`{BASE}/api/auth/sso/{provider}/callback`（provider 小写）。认证层放行已内建（`/auth/sso/*/callback` 等已在 permit 名单），无需 Owner 修改代码或安全配置。
+27:- 「企业微信授权登录」中配置**授权回调域**：必须与访问链接域名完全一致（含端口，不支持泛域名，不含协议头）。
+32:- 「安全设置」登记重定向 URL：`{BASE}/api/auth/sso/feishu/callback`。
+37:- 「登录与分享」登记回调地址：`{BASE}/api/auth/sso/dingtalk/callback`。
+42:Provider 配置行（`sys_sso_provider_config`）当前**无 HTTP 管理端点**（`SsoAuthService.saveConfig` 仅为服务层契约）；凭据注入按以下顺序操作：
+44:1. 确认 `SW_SSO_CIPHER_KEY` 已在运行环境注入且服务可用该密钥。
+47:   - 先以 `enabled=0` 落行：app_id、extra_config、redirect_path 就位，`app_secret_enc` 置密文；
+48:   - 核对 §2 控制台回调域/重定向 URL 与 `SW_SSO_CALLBACK_ALLOWLIST` 一致；
+49:   - 再置 `enabled=1` 启用。启用边界会拒绝空值/占位值（`placeholder/changeme/example/your-*/replace-me/__SET_ME__` 等）——这是预期保护，不是故障。
+52:**禁用/停用**：置 `enabled=0` 即可，停用不要求凭据（支持安全下线）。
+58:**绑定**（已登录第一方会话）：
+59:1. `GET /api/auth/sso/{provider}/authorize`（需认证）→ 返回 Provider 授权页 URL（含 state 摘要落库）。
+60:2. 用户在 Provider 页面扫码/确认 → 回调 `{BASE}/api/auth/sso/{provider}/callback?code&state`。
+62:4. `POST /api/auth/sso/bind-candidate` → `GET /api/auth/sso/bindings` 出现该 Provider 绑定。预期：200；`sys_sso_audit_record` 新增 BIND/SUCCESS；本地角色表零增量。
+64:**已绑定登录**（未登录态）：
+65:1. `GET /api/auth/sso/{provider}/authorize-login?tenant=...` → 授权页 URL；回调后 `POST /api/auth/sso/ticket` 一次性兑换 → 与第一方同契约的 accessToken/refresh cookie。
+68:**解绑与会话撤销**：
+69:1. `POST /api/auth/sso/unbind {"provider":...}`（Bearer 当前会话）→ 200。
+70:2. 预期：当前会话 me 401、refresh 拒绝；绑定视图清空；新第一方登录立即成功、不被旧撤销标记误伤（同秒亦然，jti 唯一性已锁定）。
+72:**失败恢复**：
+76:## 5. 清理与问题定位边界
+78:- 审计：`GET /api/auth/sso/audit?provider=...` 查询绑定/解绑/拒绝事件。
+80:- 换票失败优先核对：code 是否一次性且 5 分钟内、回调域/重定向 URL 是否与控制台登记**完全一致**、凭据是否启用状态、（飞书）redirect_uri 相关错误见对照账本观察点。
+81:- 自验完成后清理：解绑测试绑定、停用或删除测试配置行、轮换测试期间暴露给浏览器的授权 URL（state 一次性已内建）。
+83:## 6. 安全口径（验收红线）
+86:- Provider 一旦启用，占位凭据在启用边界 fail-fast；未启用时样例保持哨兵值。
+
+### C. 飞书修改文件回读
+43:        // response_type=code 为官方授权 URL 必带固定值（iteration-10 文档对照 G8-DOC-FEISHU 补齐）
+46:                + "&response_type=code"
+
+### D. 回读秘密检查（期望 NO-HITS）
+NO-HITS

@@ -1,0 +1,35 @@
+atomic_id=G5b1
+captured_at=2026-09-14T00:58:30+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=本轮采集对应含审计修复与 V903 的工作树（最终 SHA 以 G9a1 核对为准）
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; 真实 HTTP（dev server, java -jar 含审计修复候选）；出站经 127.0.0.1:8899 计数代理（对 Provider 域的 CONNECT 计数）；受控对端=真实 Provider 官方域（无效测试凭据被官方拒绝=受控失败），自然过期用真实 300 秒 TTL
+database=H2 (dev)；sys_sso_auth_state 经只读外部数据源通道回读（provider/tenant/consumed/expire_at）
+tenant_id=100
+actor=tenant-100 登录前发起（免认证）+ Provider 回调
+object_ids=三 Provider（WECOM/FEISHU/DINGTALK）；state 摘要前缀（44144db40f49/f8f7b5bf3998/5b0633166599）；code 仅哨兵 ctl-*；state 行 consumed/expire_at；绑定表与会话计数
+positive_assertion=三 Provider 各自首次有效 state+code 进入受控换票边界：计数代理对 qyapi.weixin.qq.com / open.feishu.cn / api.dingtalk.com 恰好各 +1，官方对端以受控错误拒绝（WECOM errcode=40013、FEISHU code=10003、DINGTALK HTTP 400），state 行原子置 consumed=1
+negative_assertion=重放同一 state/code、篡改 state、Provider 错配（未消费 WECOM state 打到 FEISHU/DINGTALK 回调且不消费 state）、自然过期（300 秒 TTL 后回调）、发起期租户错配（tenant=999/200/300/缺省）全部本地 fail closed，外呼零增量；绑定表 0→0，无任何绑定或会话产生
+positive_pass=true
+negative_pass=true
+cleanup=无删除动作；state 行保留于本轮 H2 内存库
+uncovered=none for the captured G5b1 package（G8 真实成功链保持 PENDING 外部依赖）
+observed=
+[G5b1.countsBefore] {"qyapi.weixin.qq.com":5,"open.feishu.cn":3,"api.dingtalk.com":3}
+[G5b1.WECOM.firstCallback] {"code":400,"msg":"SSO 回调被拒绝: 企业微信凭据被拒绝: errcode=40013","stateDigest":"44144db40f49"}
+[G5b1.WECOM.countsAfterFirst] {"qyapi.weixin.qq.com":6,"open.feishu.cn":3,"api.dingtalk.com":3}
+[G5b1.FEISHU.firstCallback] {"code":400,"msg":"SSO 回调被拒绝: 飞书凭据被拒绝: code=10003","stateDigest":"f8f7b5bf3998"}
+[G5b1.FEISHU.countsAfterFirst] {"qyapi.weixin.qq.com":6,"open.feishu.cn":4,"api.dingtalk.com":3}
+[G5b1.DINGTALK.firstCallback] {"code":400,"msg":"SSO 回调被拒绝: 钉钉换票失败: HTTP 400","stateDigest":"5b0633166599"}
+[G5b1.DINGTALK.countsAfterFirst] {"qyapi.weixin.qq.com":6,"open.feishu.cn":4,"api.dingtalk.com":4}
+[G5b1.replay] {"WECOM":"授权状态已消费","FEISHU":"授权状态已消费","DINGTALK":"授权状态已消费","countsUnchanged":true}
+[G5b1.tampered] {"WECOM":"授权状态无效","FEISHU":"授权状态无效","DINGTALK":"授权状态无效","countsUnchanged":true}
+[G5b1.mismatch.consumedState] {"fei":"授权状态已消费","ding":"授权状态已消费","countsUnchanged":true}
+[G5b1.mismatch.unconsumed] {"fei":"Provider 与授权状态不匹配","ding":"Provider 与授权状态不匹配","stateRowAfter":{"PROVIDER":"WECOM","CONSUMED":0},"countsUnchanged":true}
+[G5b1.issue.tenant999] {"code":400,"msg":"租户无效或已停用/过期: tenantId=999"}
+[G5b1.issue.tenant200disabled] {"code":400,"msg":"租户无效或已停用/过期: tenantId=200"}
+[G5b1.issue.tenant300expired] {"code":400,"msg":"租户无效或已停用/过期: tenantId=300"}
+[G5b1.issue.missingTenant] {"code":400,"msg":"登录前发起必须显式指定租户"}
+[G5b1.expire] {"waitedSeconds":310,"callback":"SSO 回调被拒绝: 授权状态已过期","countsUnchanged":true}
+[G5b1.stateRows] {"rows":"六行 state（三 Provider × 发起两轮），首轮 consumed=1、expire_at≈签发+300s、redirect_path=/workspace、tenant_id=100（完整行见采集日志）"}
+[G5b1.bindingsDelta] {"before":0,"after":0}

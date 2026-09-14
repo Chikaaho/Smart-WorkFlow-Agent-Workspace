@@ -1,0 +1,16 @@
+[ctx] {"formKey":"leave_i5g1b1_mu00ti1x"}
+[form.publish] {"status":200,"code":0}
+[flow.graph] {"status":200,"code":0}
+[flow.publish] {"status":200,"code":0,"processKey":"bpm_44b5f6858db84bc9"}
+[binding.sql] {"columns":["FORM_KEY","PROCESS_DEF_KEY","ACTIVE","TENANT_ID"],"rows":[{"FORM_KEY":"leave_i5g1b1_mu00ti1x","PROCESS_DEF_KEY":"bpm_44b5f6858db84bc9","ACTIVE":true,"TENANT_ID":"100"}],"rowCount":1,"executionTimeMs":"4"}
+[draft.submit] {"status":200,"code":0,"commandId":"2099171483553804290","statusQ":"ACCEPTED"}
+[task.todo] {"found":true,"taskId":"1a1a47a3-af8f-11f1-a166-00ffa7734675"}
+[task.sql] {"columns":["ID_","PROC_INST_ID_","TENANT_ID_","ASSIGNEE_"],"rows":[{"ID_":"1a1a47a3-af8f-11f1-a166-00ffa7734675","PROC_INST_ID_":"1a151776-af8f-11f1-a166-00ffa7734675","TENANT_ID_":"100","ASSIGNEE_":"9001"}],"rowCount":1,"executionTimeMs":"3"}
+[instance.sql] {"columns":["ID","PROCESS_INSTANCE_ID","TENANT_ID","FORM_KEY","STATUS"],"rows":[{"ID":"2099171486959579138","PROCESS_INSTANCE_ID":"1a151776-af8f-11f1-a166-00ffa7734675","TENANT_ID":"100","FORM_KEY":"leave_i5g1b1_mu00ti1x","STATUS":"RUNNING"}],"rowCount":1,"executionTimeMs":"2"}
+[task.complete] {"status":200,"code":0,"msg":"success"}
+[instance.status] {"status":"APPROVED","id":"2099171486959579138"}
+[instance.detailTrace] {"status":200,"code":0,"traceSize":5,"trace":"[{\"activityId\":\"s\",\"activityName\":\"Start\",\"activityType\":\"startEvent\",\"startTime\":\"2026-09-14T00:20:57.809\",\"endTime\":\"2026-09-14T00:20:57.811\",\"assignee\":null,\"assigneeName\":null,\"taskId\":null},{\"activityId\":\"e1\",\"activityName\":null,\"activityType\":\"sequenceFlow\",\"startTime\":\"2026-09-14T00:20:57.813\",\"endTime\":\"2026-09-14T00:20:57.813\",\"assignee\":null,\"assigneeName\":null,\"taskId\":null},{\"activityId\":\"ap\",\"activityName\":\"审批\",\"activityType\":\"userTask\",\"startTime\":\"2026-09-14T00:20:57.813\",\"endTime\":\"2026-09-14T00:21:00.142\",\"assignee\":\"9001\",\"assigneeName\":\"租户100管理员\",\"taskId\":\"1a1a47a3-af8f-11f1"}
+[trace.sql.hiAct] {"columns":["ID_","ACT_TYPE_","TENANT_ID_","ASSIGNEE_"],"rows":[{"ID_":"1a16ec40-af8f-11f1-a166-00ffa7734675","ACT_TYPE_":"startEvent","TENANT_ID_":"100","ASSIGNEE_":null},{"ID_":"1a178882-af8f-11f1-a166-00ffa7734675","ACT_TYPE_":"userTask","TENANT_ID_":"100","ASSIGNEE_":"9001"},{"ID_":"1a178881-af8f-11f1-a166-00ffa7734675","ACT_TYPE_":"sequenceFlow","TENANT_ID_":"100","ASSIGNEE_":null},{"ID_":"1b7b1028-af8f-11f1-a166-00ffa7734675","ACT_TYPE_":"endEvent","TENANT_ID_":"100","ASSIGNEE_":null},{"ID_":"1b7ae917-af8f-11f1-a166-00ffa7734675","ACT_TYPE_":"sequenceFlow","TENANT_ID_":"100","ASSIGNEE_":null}],"rowCount":5,"executionTimeMs":"3"}
+[trace.sql.hiTask] {"columns":["ID_","NAME_","ASSIGNEE_","TENANT_ID_"],"rows":[{"ID_":"1a1a47a3-af8f-11f1-a166-00ffa7734675","NAME_":"审批","ASSIGNEE_":"9001","TENANT_ID_":"100"}],"rowCount":1,"executionTimeMs":"3"}
+[notify.sql] {"columns":["ID","TENANT_ID","RECIPIENT_ID","BIZ_TYPE"],"rows":[{"ID":"2099171496631644161","TENANT_ID":"100","RECIPIENT_ID":"9001","BIZ_TYPE":"WF_APPROVED"},{"ID":"2099171487014105090","TENANT_ID":"100","RECIPIENT_ID":"9001","BIZ_TYPE":"WF_TODO"}],"rowCount":2,"executionTimeMs":"2"}
+[trace.tenantSet] {"columns":["TID"],"rows":[{"TID":"100"}],"rowCount":1,"executionTimeMs":"3"}

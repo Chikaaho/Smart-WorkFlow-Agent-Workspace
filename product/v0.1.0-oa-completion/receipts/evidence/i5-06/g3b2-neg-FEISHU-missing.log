@@ -1,0 +1,188 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-09-14T05:57:26.171+08:00  INFO 37880 --- [           main] com.sw.ck.bootstrap.StarterApplication   : Starting StarterApplication using Java 21.0.5 with PID 37880 (E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-bootstrap\target\sw-bootstrap-1.0.0-SNAPSHOT.jar started by hjxch in C:\Users\hjxch\AppData\Local\Temp\i5-driver)
+2026-09-14T05:57:26.172+08:00 DEBUG 37880 --- [           main] com.sw.ck.bootstrap.StarterApplication   : Running with Spring Boot v3.4.4, Spring v6.2.5
+2026-09-14T05:57:26.172+08:00  INFO 37880 --- [           main] com.sw.ck.bootstrap.StarterApplication   : The following 1 profile is active: "prod"
+2026-09-14T05:57:28.286+08:00  INFO 37880 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-09-14T05:57:28.289+08:00  INFO 37880 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-09-14T05:57:28.304+08:00  INFO 37880 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2026-09-14T05:57:28.421+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphDebugNodeMapper' and 'com.sw.ck.agent.mapper.AgentGraphDebugNodeMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.422+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphDebugSessionMapper' and 'com.sw.ck.agent.mapper.AgentGraphDebugSessionMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.422+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphDefMapper' and 'com.sw.ck.agent.mapper.AgentGraphDefMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.422+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphExecutionMapper' and 'com.sw.ck.agent.mapper.AgentGraphExecutionMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.422+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphExecutionNodeMapper' and 'com.sw.ck.agent.mapper.AgentGraphExecutionNodeMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.422+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentMessageMapper' and 'com.sw.ck.agent.mapper.AgentMessageMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.422+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentModelConfigMapper' and 'com.sw.ck.agent.mapper.AgentModelConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.422+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentSessionMapper' and 'com.sw.ck.agent.mapper.AgentSessionMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.422+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentToolCallLogMapper' and 'com.sw.ck.agent.mapper.AgentToolCallLogMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.422+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentToolExternalConfigMapper' and 'com.sw.ck.agent.mapper.tool.AgentToolExternalConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.422+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentToolInternalConfigMapper' and 'com.sw.ck.agent.mapper.tool.AgentToolInternalConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.422+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.agent.mapper]' package. Please check your configuration.
+2026-09-14T05:57:28.424+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formConfigMapper' and 'com.sw.ck.form.mapper.FormConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.424+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formDefMapper' and 'com.sw.ck.form.mapper.FormDefMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.424+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formExtQueryMapper' and 'com.sw.ck.form.mapper.FormExtQueryMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.424+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formLifecycleAuditMapper' and 'com.sw.ck.form.mapper.FormLifecycleAuditMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.424+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formListConfigMapper' and 'com.sw.ck.form.mapper.FormListConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.424+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formSnapshotMapper' and 'com.sw.ck.form.mapper.FormSnapshotMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.424+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formTraceMapper' and 'com.sw.ck.form.mapper.FormTraceMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.424+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.form.mapper]' package. Please check your configuration.
+2026-09-14T05:57:28.426+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'jobInfoMapper' and 'com.sw.ck.job.mapper.JobInfoMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.426+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'jobLogMapper' and 'com.sw.ck.job.mapper.JobLogMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.426+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.job.mapper]' package. Please check your configuration.
+2026-09-14T05:57:28.428+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifyMessageMapper' and 'com.sw.ck.notify.mapper.NotifyMessageMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.428+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifySendAttemptMapper' and 'com.sw.ck.notify.mapper.NotifySendAttemptMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.428+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifyTemplateMapper' and 'com.sw.ck.notify.mapper.NotifyTemplateMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.428+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.notify.mapper]' package. Please check your configuration.
+2026-09-14T05:57:28.432+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'storageFileMapper' and 'com.sw.ck.storage.mapper.StorageFileMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T05:57:28.432+08:00  WARN 37880 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.storage.mapper]' package. Please check your configuration.
+2026-09-14T05:57:28.435+08:00  INFO 37880 --- [           main] faultConfiguringBeanFactoryPostProcessor : No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2026-09-14T05:57:28.444+08:00  INFO 37880 --- [           main] faultConfiguringBeanFactoryPostProcessor : No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2026-09-14T05:57:29.032+08:00  WARN 37880 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration' of type [org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-09-14T05:57:29.035+08:00  WARN 37880 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'stringOrNumberMigrationVersionConverter' of type [org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration$StringOrNumberToMigrationVersionConverter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-09-14T05:57:29.492+08:00  INFO 37880 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8093 (http)
+2026-09-14T05:57:29.510+08:00  INFO 37880 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-14T05:57:29.510+08:00  INFO 37880 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2026-09-14T05:57:29.551+08:00  INFO 37880 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2026-09-14T05:57:29.552+08:00  INFO 37880 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3335 ms
+2026-09-14T05:57:30.200+08:00 DEBUG 37880 --- [           main] c.s.c.s.filter.JwtAuthenticationFilter   : Filter 'jwtAuthenticationFilter' configured for use
+2026-09-14T05:57:30.203+08:00 DEBUG 37880 --- [           main] c.s.c.s.f.DebugAuthenticationFilter      : Filter 'debugAuthenticationFilter' configured for use
+2026-09-14T05:57:30.203+08:00 DEBUG 37880 --- [           main] c.s.c.s.filter.AccessLoggingFilter       : Filter 'accessLoggingFilter' configured for use
+2026-09-14T05:57:30.251+08:00  INFO 37880 --- [           main] c.s.c.s.provider.CosStorageProvider      : COS 存储提供商初始化完成，bucket: , region: ap-guangzhou
+2026-09-14T05:57:30.255+08:00  INFO 37880 --- [           main] c.s.c.s.provider.LocalStorageProvider    : 本地存储提供商初始化完成，基路径: C:\Users\hjxch\AppData\Local\Temp\i5-driver\uploads
+2026-09-14T05:57:30.419+08:00  INFO 37880 --- [           main] c.s.c.s.provider.MinioStorageProvider    : MinIO 客户端已创建，endpoint: http://localhost:9000
+2026-09-14T05:57:30.515+08:00  WARN 37880 --- [           main] c.s.c.s.provider.MinioStorageProvider    : MinIO 初始化时检查 bucket 失败，将在首次上传时重试: Failed to connect to localhost/[0:0:0:0:0:0:0:1]:9000
+2026-09-14T05:57:30.521+08:00  INFO 37880 --- [           main] c.s.c.s.provider.QiniuStorageProvider    : 七牛云存储提供商初始化完成，bucket: , domain: 
+2026-09-14T05:57:30.523+08:00  INFO 37880 --- [           main] c.s.c.s.p.StorageProviderRegistry        : 存储提供商注册表初始化完成，已注册类型: [cos, local, minio, qiniu]
+2026-09-14T05:57:31.270+08:00  INFO 37880 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1,master} inited
+2026-09-14T05:57:31.272+08:00  INFO 37880 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource - add a datasource named [master] success
+2026-09-14T05:57:31.272+08:00  INFO 37880 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+Logging initialized using 'class org.apache.ibatis.logging.stdout.StdOutImpl' adapter.
+2026-09-14T05:57:31.410+08:00 DEBUG 37880 --- [           main] c.b.m.e.s.MybatisSqlSessionFactoryBean   : Registered plugin: 'MybatisPlusInterceptor{interceptors=[TenantLineInnerInterceptor(super=BaseMultiTableInnerInterceptor(super=com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor@dfd1a653), tenantLineHandler=com.sw.ck.common.config.mybatis.tenant.CommonTenantLineHandler@7aabbe81), DataPermissionInterceptor(super=BaseMultiTableInnerInterceptor(super=com.baomidou.mybatisplus.extension.plugins.inner.DataPermissionInterceptor@2fb160a1), dataPermissionHandler=com.sw.ck.common.config.mybatis.datascope.DataScopeHandler@58885a2e), com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor@3d2bcf0a, PaginationInnerInterceptor(logger=org.apache.ibatis.logging.slf4j.Slf4jImpl@72e806, overflow=false, maxLimit=null, dbType=null, dialect=null, optimizeJoin=true)]}'
+2026-09-14T05:57:31.411+08:00 DEBUG 37880 --- [           main] c.b.m.e.s.MybatisSqlSessionFactoryBean   : Property 'mapperLocations' was not specified.
+Get /172.21.208.1 network interface 
+Get network interface info: name:ethernet_32779 (Hyper-V Virtual Ethernet Adapter)
+Initialization Sequence datacenterId:13 workerId:10
+2026-09-14T05:57:31.475+08:00 DEBUG 37880 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-09-14T05:57:31.652+08:00  INFO 37880 --- [           main] c.s.c.b.config.FlywayConfiguration       : Executing primary Flyway migration (locations = db/migration/{vendor})
+2026-09-14T05:57:31.707+08:00  INFO 37880 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://127.0.0.1:5433/postgres?stringtype=unspecified (PostgreSQL 17.5)
+2026-09-14T05:57:31.799+08:00  INFO 37880 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 86 migrations (execution time 00:00.065s)
+2026-09-14T05:57:31.811+08:00  INFO 37880 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 87
+2026-09-14T05:57:31.813+08:00  INFO 37880 --- [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-14T05:57:31.817+08:00  INFO 37880 --- [           main] c.s.c.b.config.FlywayConfiguration       : Primary Flyway migration completed
+2026-09-14T05:57:31.817+08:00  INFO 37880 --- [           main] c.s.c.b.config.FlywayConfiguration       : Detected database vendor: postgresql
+2026-09-14T05:57:31.817+08:00  INFO 37880 --- [           main] c.s.c.b.config.FlywayConfiguration       : Executing prod-update Flyway migration (vendor = postgresql, locations = db/prod-update/postgresql)
+2026-09-14T05:57:31.826+08:00  INFO 37880 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://127.0.0.1:5433/postgres?stringtype=unspecified (PostgreSQL 17.5)
+2026-09-14T05:57:31.831+08:00  INFO 37880 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.002s)
+2026-09-14T05:57:31.834+08:00  INFO 37880 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2026-09-14T05:57:31.835+08:00  INFO 37880 --- [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-14T05:57:31.836+08:00  INFO 37880 --- [           main] c.s.c.b.config.FlywayConfiguration       : Prod-update Flyway migration completed (vendor = postgresql)
+2026-09-14T05:57:32.320+08:00  INFO 37880 --- [           main] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2026-09-14T05:57:32.331+08:00  INFO 37880 --- [           main] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2026-09-14T05:57:32.331+08:00  INFO 37880 --- [           main] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2026-09-14T05:57:32.332+08:00  INFO 37880 --- [           main] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2026-09-14T05:57:32.333+08:00  INFO 37880 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2026-09-14T05:57:32.333+08:00  INFO 37880 --- [           main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2026-09-14T05:57:32.333+08:00  INFO 37880 --- [           main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2026-09-14T05:57:32.333+08:00  INFO 37880 --- [           main] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@65899694
+2026-09-14T05:57:32.966+08:00  INFO 37880 --- [           main] c.sw.ck.iot.config.IotAutoConfiguration  : 使用 Mock IoT Provider（providerMode=mock)
+2026-09-14T05:57:33.830+08:00  INFO 37880 --- [           main] c.s.c.s.security.RsaLoginKeyManager      : 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@34207fde] was not registered for synchronization because synchronization is not active
+2026-09-14T05:57:34.171+08:00 DEBUG 37880 --- [           main] c.b.m.e.p.i.TenantLineInnerInterceptor   : original SQL: SELECT  id,provider,enabled,app_id,app_secret_enc,extra_config,redirect_path,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_sso_provider_config  WHERE deleted=0     AND (enabled = ?)
+2026-09-14T05:57:34.228+08:00 DEBUG 37880 --- [           main] c.b.m.e.p.i.TenantLineInnerInterceptor   : SQL to parse, SQL: SELECT  id,provider,enabled,app_id,app_secret_enc,extra_config,redirect_path,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_sso_provider_config  WHERE deleted=0     AND (enabled = ?)
+2026-09-14T05:57:34.230+08:00 DEBUG 37880 --- [           main] c.b.m.e.p.i.TenantLineInnerInterceptor   : parse the finished SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (enabled = ?)
+2026-09-14T05:57:34.231+08:00 DEBUG 37880 --- [           main] c.b.m.e.p.i.DataPermissionInterceptor    : original SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (enabled = ?)
+2026-09-14T05:57:34.234+08:00 DEBUG 37880 --- [           main] c.b.m.e.p.i.DataPermissionInterceptor    : SQL to parse, SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (enabled = ?)
+2026-09-14T05:57:34.234+08:00 DEBUG 37880 --- [           main] c.b.m.e.p.i.DataPermissionInterceptor    : parse the finished SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (enabled = ?)
+2026-09-14T05:57:34.242+08:00 DEBUG 37880 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+JDBC Connection [ConnectionProxyImpl{connectedTime=2026-09-14 05:57:31.261, closeCount=0, lastValidateTimeMillis=2026-09-14 05:57:31.261}] will not be managed by Spring
+==>  Preparing: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (enabled = ?)
+==> Parameters: 1(Integer)
+<==    Columns: id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version
+<==        Row: 90110, FEISHU, 1, cli-i5g3b2-neg, , {}, /workspace, 100, 2026-09-14 05:57:24.958768, null, 2026-09-14 05:57:24.958768, null, 0, 0
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@34207fde]
+2026-09-14T05:57:34.268+08:00  WARN 37880 --- [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'ssoAuthController' defined in URL [jar:nested:/E:/code/Smart-WorkFlow-Agent-Workspace/Smart-WorkFlow-aPaaS-server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-biz-system-biz-1.0.0-SNAPSHOT.jar!/com/sw/ck/system/controller/SsoAuthController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'ssoAuthService': Invocation of init method failed
+2026-09-14T05:57:34.269+08:00  INFO 37880 --- [           main] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2026-09-14T05:57:34.269+08:00  INFO 37880 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2026-09-14T05:57:34.269+08:00  INFO 37880 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2026-09-14T05:57:34.269+08:00  INFO 37880 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2026-09-14T05:57:34.271+08:00  INFO 37880 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource start closing ....
+2026-09-14T05:57:34.274+08:00  INFO 37880 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2026-09-14T05:57:34.277+08:00  INFO 37880 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2026-09-14T05:57:34.277+08:00  INFO 37880 --- [           main] c.b.d.d.d.DefaultDataSourceDestroyer     : dynamic-datasource close the datasource named [master] success,
+2026-09-14T05:57:34.277+08:00  INFO 37880 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource all closed success,bye
+2026-09-14T05:57:34.288+08:00  INFO 37880 --- [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-09-14T05:57:34.318+08:00  INFO 37880 --- [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-09-14T05:57:34.338+08:00 ERROR 37880 --- [           main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'ssoAuthController' defined in URL [jar:nested:/E:/code/Smart-WorkFlow-Agent-Workspace/Smart-WorkFlow-aPaaS-server/sw-bootstrap/target/sw-bootstrap-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/sw-biz-system-biz-1.0.0-SNAPSHOT.jar!/com/sw/ck/system/controller/SsoAuthController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'ssoAuthService': Invocation of init method failed
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1381) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1218) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1155) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1121) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1056) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.5.jar!/:6.2.5]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.5.jar!/:6.2.5]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.4.jar!/:3.4.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.4.jar!/:3.4.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.4.jar!/:3.4.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.4.jar!/:3.4.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.4.jar!/:3.4.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.4.jar!/:3.4.4]
+	at com.sw.ck.bootstrap.StarterApplication.main(StarterApplication.java:19) ~[!/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:102) ~[sw-bootstrap-1.0.0-SNAPSHOT.jar:na]
+	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:64) ~[sw-bootstrap-1.0.0-SNAPSHOT.jar:na]
+	at org.springframework.boot.loader.launch.JarLauncher.main(JarLauncher.java:40) ~[sw-bootstrap-1.0.0-SNAPSHOT.jar:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ssoAuthService': Invocation of init method failed
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:222) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:423) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1609) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1555) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	... 26 common frames omitted
+Caused by: java.lang.IllegalStateException: 启用 Provider 必须配置有效 appId 与 secret
+	at com.sw.ck.system.sso.SsoAuthService.validateEnabledConfig(SsoAuthService.java:524) ~[sw-biz-system-biz-1.0.0-SNAPSHOT.jar!/:na]
+	at com.sw.ck.system.sso.SsoAuthService.validateEnabledProviderConfigsAtStartup(SsoAuthService.java:126) ~[sw-biz-system-biz-1.0.0-SNAPSHOT.jar!/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:457) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:401) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:219) ~[spring-beans-6.2.5.jar!/:6.2.5]
+	... 38 common frames omitted
+

@@ -1,0 +1,11 @@
+{"path":"/auth/sso/bindings","status":200,"body":{"code":0,"msg":"success","data":{"bindings":[]}}}
+{"path":"/auth/sso/bind","status":200,"body":{"code":0,"msg":"success","data":null}}
+{"path":"/auth/sso/bindings","status":200,"body":{"code":0,"msg":"success","data":{"bindings":[{"provider":"WECOM","externalDigestPrefix":"4cda05c6"}]}}}
+{"path":"/auth/sso/bind","status":200,"body":{"code":400,"msg":"该本地账号已绑定其他外部身份","data":null}}
+{"path":"/auth/sso/bind","status":200,"body":{"code":400,"msg":"该本地账号已绑定其他外部身份","data":null}}
+{"path":"/auth/sso/unbind","status":200,"body":{"code":0,"msg":"success","data":null}}
+{"path":"/auth/sso/bindings","status":200,"body":{"code":0,"msg":"success","data":{"bindings":[]}}}
+{"path":"/auth/sso/unbind","status":200,"body":{"code":400,"msg":"未找到有效绑定","data":null}}
+{"path":"/auth/sso/bind","status":401,"body":{"code":401,"msg":"未认证","data":null}}
+{"path":"/auth/sso/audit?page=0&size=50","status":200,"body":{"code":0,"msg":"success","data":{"tenantId":"100","records":[{"detail":"","localUserId":"9001","result":"SUCCESS","id":"2099101902498168833","eventType":"UNBIND","createTime":"2026-09-13T19:44:27.640658","externalDigestPrefix":"4cda05c6","actorId":"9001","provider":"WECOM"},{"detail":"","localUserId":"9001","result":"SUCCESS","id":"2099
+{"path":"/auth/sso/audit?page=0&size=50","status":200,"body":{"code":0,"msg":"success","data":{"tenantId":"0","records":[]}}}

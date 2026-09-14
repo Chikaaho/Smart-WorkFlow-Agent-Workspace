@@ -1,0 +1,24 @@
+===== G3b2 正向：三 Provider 全启用有效测试配置 =====
+updated=3
+HEALTH_OK after ~12s
+enabledReadback:
+DINGTALK=1|
+FEISHU=1|
+WECOM=1|
+
+===== G3b2 负向 6 格 =====
+neg[WECOM/missing] exit_code=1
+启用 Provider 必须配置有效 appId 与 secret
+neg[WECOM/placeholder] exit_code=1
+启用 Provider 必须配置有效 appId 与 secret
+neg[FEISHU/missing] exit_code=1
+启用 Provider 必须配置有效 appId 与 secret
+neg[FEISHU/placeholder] exit_code=1
+启用 Provider 必须配置有效 appId 与 secret
+neg[DINGTALK/missing] exit_code=1
+启用 Provider 必须配置有效 appId 与 secret
+neg[DINGTALK/placeholder] exit_code=1
+启用 Provider 必须配置有效 appId 与 secret
+===== 配置原值零命中扫描 =====
+0
+matrix v2 done

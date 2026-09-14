@@ -1,0 +1,35 @@
+$ vite
+
+  [32m[1mVITE[22m v8.1.0[39m  [2mready in [0m[1m844[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+[2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[2m21:03:43[22m [31m[1m[vite][22m[39m [31mInternal server error: [vue/compiler-sfc] Unexpected token (87:0)
+
+E:/code/Smart-WorkFlow-Agent-Workspace/Smart-WorkFlow-aPaaS-Web/src/views/LoginPage.vue
+84 |      ssoBusy.value = false
+85 |    }
+86 |  }
+   |    ^
+87 |  </script>
+   |  ^
+88 |  [39m
+  Plugin: [35mvite:vue[39m
+  File: [36mE:/code/Smart-WorkFlow-Agent-Workspace/Smart-WorkFlow-aPaaS-Web/src/views/LoginPage.vue[39m:87:0
+[33m  82 |      ssoError.value = error instanceof Error ? error.message : '第三方登录发起失败'
+  83 |    } finally {
+  84 |      ssoBusy.value = false
+     |          ^
+  85 |    }
+  86 |  }[39m
+      at constructor (E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-Web\node_modules\.pnpm\@babel+parser@7.29.7\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-Web\node_modules\.pnpm\@babel+parser@7.29.7\node_modules\@babel\parser\lib\index.js:6616:19)
+      at TypeScriptParserMixin.unexpected (E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-Web\node_modules\.pnpm\@babel+parser@7.29.7\node_modules\@babel\parser\lib\index.js:6636:16)
+      at TypeScriptParserMixin.parseExprAtom (E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-Web\node_modules\.pnpm\@babel+parser@7.29.7\node_modules\@babel\parser\lib\index.js:11459:22)
+      at TypeScriptParserMixin.parseExprSubscripts (E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-Web\node_modules\.pnpm\@babel+parser@7.29.7\node_modules\@babel\parser\lib\index.js:11098:23)
+      at TypeScriptParserMixin.parseUpdate (E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-Web\node_modules\.pnpm\@babel+parser@7.29.7\node_modules\@babel\parser\lib\index.js:11083:21)
+      at TypeScriptParserMixin.parseMaybeUnary (E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-Web\node_modules\.pnpm\@babel+parser@7.29.7\node_modules\@babel\parser\lib\index.js:11063:23)
+      at TypeScriptParserMixin.parseMaybeUnary (E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-Web\node_modules\.pnpm\@babel+parser@7.29.7\node_modules\@babel\parser\lib\index.js:9854:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-Web\node_modules\.pnpm\@babel+parser@7.29.7\node_modules\@babel\parser\lib\index.js:10916:61)
+      at TypeScriptParserMixin.parseExprOps (E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-Web\node_modules\.pnpm\@babel+parser@7.29.7\node_modules\@babel\parser\lib\index.js:10921:23)
+[ELIFECYCLE] Command failed with exit code 1.

@@ -1,0 +1,32 @@
+atomic_id=G1b1
+captured_at=2026-09-14T00:21:02+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=a78ef93c40e5b3ff091ce909ffd80851f010404957800d8f52924f64f254cd10
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; real HTTP against dev-profile server（java -jar 当前候选, port 8080）；命令经持久队列异步消费（3s 轮询观察）
+database=H2 (dev)；Flowable ACT_* 与业务表经只读外部数据源通道 SQL 回读
+tenant_id=100
+actor=user 9001 (t100 admin, DESIGNATED 审批人=发起人同对象链)
+object_ids=formKey=leave_i5g1b1_mu00ti1x; processKey=bpm_44b5f6858db84bc9; commandId=2099171483553804290; business instance=2099171486959579138; flowable procInst=1a151776-af8f-11f1-a166-00ffa7734675; taskId=1a1a47a3-af8f-11f1-a166-00ffa7734675
+positive_assertion=真实完成（任务办理后）实例状态=APPROVED；/workflow/instances/{pid} 轨迹 5 条 activity 与 ACT_HI_ACTINST/ACT_HI_TASKINST 为同 task(node ap)/node/actor(assignee 9001)；binding/instance/task/notify 各层 tenantId=100 勾稽一致
+negative_assertion=该实例全部历史 activity 与历史 task 的 tenant 集合仅 {100}，不出现异租户 activity/task
+positive_pass=true
+negative_pass=true
+cleanup=无删除动作；对象保留于本轮 H2 内存库
+uncovered=none for the captured G1b1 package
+observed=
+[form.publish] {"status":200,"code":0}
+[flow.graph] {"status":200,"code":0}
+[flow.publish] {"status":200,"code":0,"processKey":"bpm_44b5f6858db84bc9"}
+[binding.sql] {"rows":[{"FORM_KEY":"leave_i5g1b1_mu00ti1x","PROCESS_DEF_KEY":"bpm_44b5f6858db84bc9","ACTIVE":true,"TENANT_ID":"100"}]}
+[draft.submit] {"status":200,"code":0,"commandId":"2099171483553804290","statusQ":"ACCEPTED"}
+[task.todo] {"found":true,"taskId":"1a1a47a3-af8f-11f1-a166-00ffa7734675"}
+[task.sql] {"rows":[{"ID_":"1a1a47a3-af8f-11f1-a166-00ffa7734675","PROC_INST_ID_":"1a151776-af8f-11f1-a166-00ffa7734675","TENANT_ID_":"100","ASSIGNEE_":"9001"}]}
+[instance.sql] {"rows":[{"ID":"2099171486959579138","PROCESS_INSTANCE_ID":"1a151776-af8f-11f1-a166-00ffa7734675","TENANT_ID":"100","FORM_KEY":"leave_i5g1b1_mu00ti1x","STATUS":"RUNNING"}]}
+[task.complete] {"status":200,"code":0,"msg":"success"}
+[instance.status] {"status":"APPROVED","id":"2099171486959579138"}
+[instance.detailTrace] {"status":200,"code":0,"traceSize":5,"traceNodes":"startEvent(s) → sequenceFlow(e1) → userTask(ap, assignee=9001, taskId=1a1a47a3…, end=00:21:00.142) → sequenceFlow → endEvent"}
+[trace.sql.hiAct] {"rows":[{"ACT_TYPE_":"startEvent","TENANT_ID_":"100"},{"ACT_TYPE_":"userTask","TENANT_ID_":"100","ASSIGNEE_":"9001"},{"ACT_TYPE_":"sequenceFlow","TENANT_ID_":"100"},{"ACT_TYPE_":"endEvent","TENANT_ID_":"100"},{"ACT_TYPE_":"sequenceFlow","TENANT_ID_":"100"}]}
+[trace.sql.hiTask] {"rows":[{"ID_":"1a1a47a3-af8f-11f1-a166-00ffa7734675","NAME_":"审批","ASSIGNEE_":"9001","TENANT_ID_":"100"}]}
+[notify.sql] {"rows":[{"ID":"2099171496631644161","TENANT_ID":"100","RECIPIENT_ID":"9001","BIZ_TYPE":"WF_APPROVED"},{"ID":"2099171487014105090","TENANT_ID":"100","RECIPIENT_ID":"9001","BIZ_TYPE":"WF_TODO"}]}
+[trace.tenantSet] {"rows":[{"TID":"100"}]}

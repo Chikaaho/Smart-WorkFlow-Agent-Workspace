@@ -1,0 +1,9 @@
+[rows.before] {"columns":["CMDS","INSTS"],"rows":[{"CMDS":"14","INSTS":"7"}],"rowCount":1,"executionTimeMs":"5"}
+[valid.submit] {"status":"ACCEPTED","code":0,"commandId":"2099173775757717505","commandKey":"DRAFT_SUBMIT:2099173775686414338:1","channel":"NORMAL","duplicated":false}
+[valid.commandRow] {"columns":["ID","COMMAND_TYPE","CHANNEL","STATUS","INITIATOR_ID","TENANT_ID"],"rows":[{"ID":"2099173775757717505","COMMAND_TYPE":"DRAFT_SUBMIT","CHANNEL":"NORMAL","STATUS":"COMPLETED","INITIATOR_ID":"9001","TENANT_ID":"100"}],"rowCount":1,"executionTimeMs":"2"}
+[valid.instanceRows] {"columns":["ID","TENANT_ID","FORM_KEY","STATUS"],"rows":[{"ID":"2099173780103016449","TENANT_ID":"100","FORM_KEY":"leave_i5g2a3_mu0157y1","STATUS":"RUNNING"}],"rowCount":1,"executionTimeMs":"2"}
+[neg.anonSubmit] {"status":401,"code":401}
+[neg.disabledTenantProducer] {"username":"t200admin","status":200,"code":401,"msg":"所属租户不可用，无法登录","hasToken":false}
+[neg.expiredTenantProducer] {"username":"t300admin","status":200,"code":401,"msg":"所属租户不可用，无法登录","hasToken":false}
+[neg.crossKeyStart] {"status":200,"code":404,"msg":"表单 'leave_i5g2a3_mu0157y1' 不存在"}
+[rows.after] {"columns":["CMDS","INSTS"],"rows":[{"CMDS":"16","INSTS":"8"}],"rowCount":1,"executionTimeMs":"3"}

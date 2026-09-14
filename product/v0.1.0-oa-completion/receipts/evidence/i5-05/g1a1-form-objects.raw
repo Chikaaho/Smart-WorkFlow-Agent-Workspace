@@ -1,0 +1,46 @@
+atomic_id=G1a1
+captured_at=2026-09-14T00:19:53+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=a78ef93c40e5b3ff091ce909ffd80851f010404957800d8f52924f64f254cd10
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; real HTTP against dev-profile server (java -jar 当前候选, port 8080); dev CAPTCHA 固定 1234（Owner 指令）
+database=H2 (dev, JDBC 回读经已登记只读外部数据源通道)
+tenant_id=0 and 100
+actor=user 1 (t0 admin) and user 9001 (t100 admin)
+object_ids=formKey=leave_i5g1a1_mu00s4og; T0 form=7feeaad3…→本轮 b218b14b-fbca-4b46-a4fe-ebcd9fe5d11a; T100 form=4d957e50-3ab9-460b-8793-896cb381c7d1（同键双租户各一：definition/config/snapshot/list-config 逐对象见 observed）
+positive_assertion=两租户以同一 formKey 分别创建并读回 definition（marker=各自标题）、config、发布 snapshot（各 1 条）与 list-config（marker=T0-/T100--LC-MARKER）；跨租户写被拒后 before/after 行数不变（defs/cfgs/snaps = 6/6/6）
+negative_assertion=跨租户读取/发布/列表写全部拒绝或空（code 1000/1300/400/data=null），行数 before/after 完全一致；同租户重复 formKey 被数据库约束拒绝（code 1001）
+positive_pass=true
+negative_pass=true
+cleanup=无删除动作；对象保留于本轮 H2 内存库（随进程消亡）
+uncovered=none for the captured G1a1 package
+observed=
+[ctx] {"formKey":"leave_i5g1a1_mu00s4og"}
+[T0.defCreate] {"status":200,"code":0,"id":"b218b14b-fbca-4b46-a4fe-ebcd9fe5d11a"}
+[T0.configSave] {"status":200,"code":0}
+[T0.publish] {"status":200,"code":0}
+[T0.listConfigSave] {"status":200,"code":0}
+[T100.defCreate] {"status":200,"code":0,"id":"4d957e50-3ab9-460b-8793-896cb381c7d1"}
+[T100.configSave] {"status":200,"code":0}
+[T100.publish] {"status":200,"code":0}
+[T100.listConfigSave] {"status":200,"code":0}
+[T0.readback.def] {"status":200,"code":0,"formKey":"leave_i5g1a1_mu00s4og","name":"T0-同键表单"}
+[T0.readback.definition] {"status":200,"code":0,"marker":true}
+[T0.readback.snapshots] {"status":200,"count":1}
+[T0.readback.listConfig] {"status":200,"code":0,"marker":true}
+[T100.readback.def] {"status":200,"code":0,"formKey":"leave_i5g1a1_mu00s4og","name":"T100-同键表单"}
+[T100.readback.definition] {"status":200,"code":0,"marker":true}
+[T100.readback.snapshots] {"status":200,"count":1}
+[T100.readback.listConfig] {"status":200,"code":0,"marker":true}
+[cross.t0defByT100] {"status":200,"code":1000}
+[cross.t0definitionByT100] {"status":200,"code":1300}
+[cross.t0snapshotsByT100] {"status":200,"code":1000}
+[cross.t0listConfigByT100] {"status":200,"code":0,"data":null}
+[cross.t100defByT0] {"status":200,"code":1000}
+[cross.t100publishByT0] {"status":200,"code":1000}
+[cross.listConfigWriteByT100ontoT0] {"status":200,"code":1000}
+[rows.before] {"columns":["DEFS","CFGS","SNAPS"],"rows":[{"DEFS":"6","CFGS":"6","SNAPS":"6"}]}
+[rows.after] {"columns":["DEFS","CFGS","SNAPS"],"rows":[{"DEFS":"6","CFGS":"6","SNAPS":"6"}]}
+[rows.byTenant] {"rows":[{"TENANT_ID":"0","N":"1"},{"TENANT_ID":"100","N":"1"}]}
+[rows.configByForm] {"rows":[{"TENANT_ID":"0","FORM_ID":"b218b14b-fbca-4b46-a4fe-ebcd9fe5d11a"},{"TENANT_ID":"100","FORM_ID":"4d957e50-3ab9-460b-8793-896cb381c7d1"}]}
+[dup.t100SameKey] {"status":200,"code":1001,"msg":"表单标识 'leave_i5g1a1_mu00s4og' 已存在"}

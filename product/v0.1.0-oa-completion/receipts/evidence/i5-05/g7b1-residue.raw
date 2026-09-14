@@ -1,0 +1,21 @@
+atomic_id=G7b1
+captured_at=2026-09-14T02:05:00+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=最终树 db8b25556bd9a9958d06ab727372a1fe1853b26e（见 G9a1）
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; grep -rl 全文扫描（扫描器 exit=0）
+database=不适用
+tenant_id=不适用
+actor=executor-local-dev
+object_ids=hashLabel 映射（仅存 $TEMP/i5-driver/sentinel-map-g5.json 与驱动脚本，不写入 product）：OPENAPI_SECRET、FEISHU_SECRET、DINGTALK_SECRET、DEV_FIXTURE_PASSWORD、G6_SUBJECT_A、G6_SUBJECT_B、PROD_TEST_JWT、PROD_TEST_DIGEST、PROD_TEST_RSA、DEV_CIPHER_KEY
+positive_assertion=映射中每个真实测试值在本轮全部要求表面（evidence/i5-05/** 含本报告、stage-i5-v0.0.3-oa-iteration-05.md、object-ledger.md）命中 0；两仓 main 源码/配置（sw-biz/sw-basic/sw-bootstrap/src/main/sw-framework/sw-web src）对新哨兵命中 0
+negative_assertion=本报告仅含 hashLabel 不含原值（自命中=0）；回执与对象账本无原值、无自命中
+positive_pass=true
+negative_pass=true
+cleanup=哨兵明文仅存 temp；PG/jar 进程已停
+uncovered=none for the captured G7b1 package
+observed=
+[current_surfaces] {"surfaces":["evidence/i5-05/**","stage-i5-v0.1.0-oa-iteration-05.md(写后复扫)","object-ledger.md"],"hits":"10/10 hashLabel = 0"}
+[repo_source] {"surfaces":["server: sw-biz,sw-basic,sw-bootstrap/src/main,sw-framework","web: src"],"hits":"5/5 哨兵 = 0（V903/V901 仅存密文与哨兵 appId，属仓库 devseed 白名单口径）"}
+[exclusions] {"locked_history":[{"file":"receipts/evidence/i5-03/g7b-sentinel-rescan.txt","reason":"历史扫描报告自身含所列哨兵名（i5-03 已自注『命中=1 即本工具文件内的哨兵名称』），禁止修改历史证据"},{"file":"receipts/evidence/i5-02/g7-sentinel-scan.txt","reason":"同上（历史扫描工具文件，含历史哨兵名与 digest secret 前缀）"},{"file":"receipts/stage-i2-…/evidence/i2-02,i3-03…i3-06（admin123 登录脚本共 17 文件）","reason":"I2/I3 历史锁定证据的 dev 夹具口令；本轮表面不含"}],"generic_terms":["PG 本机测试实例口令（通用词，无法以子串扫描表达）","dev 固定验证码 1234（Owner 指令公开值，iteration-04 回执已明示，非秘密哨兵）"]}
+[exit] {"scanner":"grep -rl","exit":0}

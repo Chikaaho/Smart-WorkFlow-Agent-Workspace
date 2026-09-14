@@ -1,0 +1,31 @@
+[G5a1.WECOM] {"status":200,"code":0,"redirectUriInAllowlist":true,"host":"login.work.weixin.qq.com","statePrefix":"6a7e1e77c66d"}
+[G5a1.FEISHU] {"status":200,"code":0,"redirectUriInAllowlist":true,"host":"open.feishu.cn","statePrefix":"b74ba82e892f"}
+[G5a1.DINGTALK] {"status":200,"code":0,"redirectUriInAllowlist":true,"host":"login.dingtalk.com","statePrefix":"2736a9941220"}
+[G5b1.bindingsBefore] {"columns":["N"],"rows":[{"N":"0"}],"rowCount":1,"executionTimeMs":"22"}
+[G5b1.countsBefore] {"qyapi.weixin.qq.com":5,"open.feishu.cn":3,"api.dingtalk.com":3}
+[G5b1.WECOM.firstCallback] {"status":200,"code":400,"msg":"SSO 回调被拒绝: 企业微信凭据被拒绝: errcode=40013","stateDigest":"44144db40f49"}
+[G5b1.WECOM.countsAfterFirst] {"qyapi.weixin.qq.com":6,"open.feishu.cn":3,"api.dingtalk.com":3}
+[G5b1.FEISHU.firstCallback] {"status":200,"code":400,"msg":"SSO 回调被拒绝: 飞书凭据被拒绝: code=10003","stateDigest":"f8f7b5bf3998"}
+[G5b1.FEISHU.countsAfterFirst] {"qyapi.weixin.qq.com":6,"open.feishu.cn":4,"api.dingtalk.com":3}
+[G5b1.DINGTALK.firstCallback] {"status":200,"code":400,"msg":"SSO 回调被拒绝: 钉钉换票失败: HTTP 400","stateDigest":"5b0633166599"}
+[G5b1.DINGTALK.countsAfterFirst] {"qyapi.weixin.qq.com":6,"open.feishu.cn":4,"api.dingtalk.com":4}
+[G5b1.WECOM.replay] {"code":400,"msg":"SSO 回调被拒绝: 授权状态已消费"}
+[G5b1.FEISHU.replay] {"code":400,"msg":"SSO 回调被拒绝: 授权状态已消费"}
+[G5b1.DINGTALK.replay] {"code":400,"msg":"SSO 回调被拒绝: 授权状态已消费"}
+[G5b1.countsAfterReplay] {"qyapi.weixin.qq.com":6,"open.feishu.cn":4,"api.dingtalk.com":4}
+[G5b1.WECOM.tampered] {"code":400,"msg":"SSO 回调被拒绝: 授权状态无效"}
+[G5b1.FEISHU.tampered] {"code":400,"msg":"SSO 回调被拒绝: 授权状态无效"}
+[G5b1.DINGTALK.tampered] {"code":400,"msg":"SSO 回调被拒绝: 授权状态无效"}
+[G5b1.countsAfterTamper] {"qyapi.weixin.qq.com":6,"open.feishu.cn":4,"api.dingtalk.com":4}
+[G5b1.mismatch.fei] {"code":400,"msg":"SSO 回调被拒绝: 授权状态已消费"}
+[G5b1.mismatch.ding] {"code":400,"msg":"SSO 回调被拒绝: 授权状态已消费"}
+[G5b1.countsAfterMismatch] {"qyapi.weixin.qq.com":6,"open.feishu.cn":4,"api.dingtalk.com":4}
+[G5b1.stateRows] {"columns":["PROVIDER","TENANT_ID","CONSUMED","EXPIRE_AT","REDIRECT_PATH"],"rows":[{"PROVIDER":"DINGTALK","TENANT_ID":"100","CONSUMED":1,"EXPIRE_AT":"2026-09-14 00:58:02","REDIRECT_PATH":"/workspace"},{"PROVIDER":"FEISHU","TENANT_ID":"100","CONSUMED":1,"EXPIRE_AT":"2026-09-14 00:58:02","REDIRECT_PATH":"/workspace"},{"PROVIDER":"WECOM","TENANT_ID":"100","CONSUMED":1,"EXPIRE_AT":"2026-09-14 00:58:01","REDIRECT_PATH":"/workspace"},{"PROVIDER":"DINGTALK","TENANT_ID":"100","CONSUMED":0,"EXPIRE_AT":"2026-09-14 00:58:01","REDIRECT_PATH":"/workspace"},{"PROVIDER":"FEISHU","TENANT_ID":"100","CONSUMED":0,"EXPIRE_AT":"2026-09-14 00:58:01","REDIRECT_PATH":"/workspace"},{"PROVIDER":"WECOM","TENANT_ID":"100","CONSUMED":0,"EXPIRE_AT":"2026-09-14 00:58:01","REDIRECT_PATH":"/workspace"}],"rowCount":6,"executionTimeMs":"8"}
+[G5b1.bindingsAfter] {"columns":["N"],"rows":[{"N":"0"}],"rowCount":1,"executionTimeMs":"7"}
+[G6.fix.bindT100] {"status":200,"code":0}
+[G6.fix.bindDuplicate] {"status":200,"code":400,"msg":"该本地账号已绑定其他外部身份"}
+[G6.fix.bindings] {"status":200,"body":"{\"bindings\":[{\"externalDigestPrefix\":\"e83a6cff\",\"provider\":\"WECOM\"}]}"}
+[G6.fix.unbind] {"status":200,"code":0}
+[G6.fix.unbindAgain] {"status":200,"code":400,"msg":"未找到有效绑定"}
+[G6.fix.bindingRows] {"columns":["PROVIDER","TENANT_ID","USER_ID","BIND_STATUS","ID_IS_DIGEST"],"rows":[{"PROVIDER":"WECOM","TENANT_ID":"100","USER_ID":"9001","BIND_STATUS":"UNBOUND","ID_IS_DIGEST":1}],"rowCount":1,"executionTimeMs":"6"}
+[G5b1.roleDeltaCheck] {"columns":["N"],"rows":[{"N":"3"}],"rowCount":1,"executionTimeMs":"6"}

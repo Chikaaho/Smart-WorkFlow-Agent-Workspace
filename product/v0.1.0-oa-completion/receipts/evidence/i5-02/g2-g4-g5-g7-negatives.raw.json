@@ -1,0 +1,32 @@
+{"path":"/auth/login(t200admin,captcha=1234)","status":200,"body":{"code":401,"msg":"所属租户不可用，无法登录","data":null}}
+{"path":"/auth/login(t300admin,captcha=1234)","status":200,"body":{"code":401,"msg":"所属租户不可用，无法登录","data":null}}
+{"path":"/auth/login(admin,captcha=9999)","status":200,"body":{"code":2101,"msg":"验证码错误","data":null}}
+{"path":"/system/auth/me","method":"GET","status":401,"body":{"code":401,"msg":"未认证","data":null}}
+{"path":"/system/user/list","method":"GET","status":401,"body":{"code":401,"msg":"未认证","data":null}}
+{"path":"/openapi/v1/form-data/list","method":"GET","status":500,"body":{"code":500,"msg":"系统异常","data":null}}
+{"path":"/iot/device/page","method":"GET","status":401,"body":{"code":401,"msg":"未认证","data":null}}
+{"path":"/actuator/metrics","method":"GET","status":401,"body":{"code":401,"msg":"未认证","data":null}}
+{"path":"/actuator/env","method":"GET","status":401,"body":{"code":401,"msg":"未认证","data":null}}
+{"path":"/v3/api-docs","method":"GET","status":401,"body":{"code":401,"msg":"未认证","data":null}}
+{"path":"/swagger-ui/index.html","method":"GET","status":401,"body":{"code":401,"msg":"未认证","data":null}}
+{"path":"/auth/sso/WECOM/authorize-login","method":"GET","status":200,"body":{"code":400,"msg":"登录前发起必须显式指定租户","data":null}}
+{"path":"/auth/sso/WECOM/authorize-login?tenant=999","method":"GET","status":200,"body":{"code":400,"msg":"租户无效或已停用/过期: tenantId=999","data":null}}
+{"path":"/auth/sso/WECOM/authorize-login?tenant=200","method":"GET","status":200,"body":{"code":400,"msg":"租户无效或已停用/过期: tenantId=200","data":null}}
+{"path":"/auth/sso/WECOM/authorize-login?tenant=300","method":"GET","status":200,"body":{"code":400,"msg":"租户无效或已停用/过期: tenantId=300","data":null}}
+{"path":"/auth/sso/WECOM/authorize-login?tenant=100","method":"GET","status":200,"body":{"code":0,"msg":"success","data":{"state":"94d23729dcae90b886bd4da75d19223d27d2cf19228924d2e7ded906c28a8b4a","authorizeUrl":"https://login.work.weixin.qq.com/wwopen/sso/qrConnect?appid=ww-sentinel-app-id&agentid=1000002&redirect_uri=%2Fapi%2Fauth%2Fsso%2Fwecom%2Fcallback&state=94d23729dcae90b886bd4da75d19223d27d2cf19228924d2e7ded906c28a8b4a"}}}
+{"path":"/auth/sso/FEISHU/authorize-login?tenant=100","method":"GET","status":200,"body":{"code":400,"msg":"该 Provider 未启用: FEISHU","data":null}}
+{"path":"/auth/sso/WECOM/callback?code=ctl-code&state=forged-state","method":"GET","status":200,"body":{"code":400,"msg":"SSO 回调被拒绝: 授权状态无效","data":null}}
+{"path":"/auth/sso/WECOM/callback?code=ctl-code&state=a8b370c4ebbd45dc308d323460e040d86b564331902c73c0559aaf45eaa031dc","method":"GET","status":200,"body":{"code":400,"msg":"SSO 回调被拒绝: 企业微信凭据被拒绝: errcode=40013","data":null}}
+{"path":"/auth/sso/WECOM/callback?code=ctl-code&state=a8b370c4ebbd45dc308d323460e040d86b564331902c73c0559aaf45eaa031dc","method":"GET","status":200,"body":{"code":400,"msg":"SSO 回调被拒绝: 企业微信凭据被拒绝: errcode=40013","data":null}}
+{"path":"/auth/sso/ticket","method":"POST","status":200,"body":{"code":401,"msg":"登录票据无效或已过期","data":null}}
+{"path":"/auth/sso/candidate","method":"POST","status":200,"body":{"code":401,"msg":"绑定票据无效或已过期","data":null}}
+{"path":"/auth/login(t100nobody)","status":200,"ok":true}
+{"path":"/system/auth/me","method":"GET","status":200,"body":{"code":0,"msg":"success","data":{"user":{"id":"9101","username":"t100nobody","displayName":"无角色用户","deptId":"1001","tenantId":"100","avatar":null},"permissions":[],"roles":[],"superAdmin":false}}}
+{"path":"/system/auth/menus","method":"GET","status":200,"body":{"code":0,"msg":"success","data":[]}}
+{"path":"/system/user/list?pageNum=1&pageSize=5","method":"GET","status":400,"body":{"code":400,"msg":"参数非法: id","data":null}}
+{"path":"/form/def/page?pageNum=1&pageSize=5","method":"GET","status":403,"body":{"code":403,"msg":"无权限","data":null}}
+{"path":"/workflow/tasks/todo?pageNum=1&pageSize=5","method":"GET","status":200,"body":{"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"5"}}}
+{"path":"/form/def/058ce952-d8db-46ac-8c81-04975e434deb","method":"GET","status":200,"body":{"code":1000,"msg":"表单不存在","data":null}}
+{"path":"/workflow/instances/2099091639627677698","method":"GET","status":200,"body":{"code":404,"msg":"流程实例不存在","data":null}}
+{"path":"/auth/sso/audit?page=0&size=20","method":"GET","status":200,"body":{"code":0,"msg":"success","data":{"tenantId":"100","records":[{"createTime":"2026-09-13T19:22:01.586316","eventType":"AUTH_START","id":"2099096256738545665","result":"SUCCESS","localUserId":"null","detail":"pre-login tenant=100","provider":"WECOM","actorId":"null","externalDigestPrefix":""},{"createTime":"2026-09-13T19:22:01.566753","eventType":"AUTH_START","id":"2099096256650465281","result":"SUCCESS","localUserId":"nul
+{"path":"/auth/sso/audit?page=0&size=20","method":"GET","status":401,"body":{"code":401,"msg":"未认证","data":null}}

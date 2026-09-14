@@ -1,0 +1,59 @@
+[login] {"tenant0":true,"tenant100":true}
+[G1a.t0] {"id":"bba58e8e-7f2e-474f-b913-a39c123b5706","publishCode":0,"listConfig":"{\"code\":0,\"msg\":\"success\",\"data\":null}"}
+[G1a.t100] {"id":"5a9cf9c1-6327-4372-b7d6-eaaf92f06386","publishCode":0,"listConfig":"{\"code\":0,\"msg\":\"success\",\"data\":null}"}
+[G1a.crossRead] {"path":"/form/def/bba58e8e-7f2e-474f-b913-a39c123b5706/list-config","method":"GET","status":200,"body":{"code":0,"msg":"success","data":null}}
+[G1a.dupSameTenant] {"status":200,"code":1001,"msg":"表单标识 'g3_leave_mtzt4zeu' 已存在"}
+[G1.ds] {"code":0,"msg":"success","data":"2099117373303508993"}
+[G1a.formRows] {"code":0,"msg":"success","data":{"columns":["FORM_KEY","TENANT_ID","TABLE_NAME"],"rows":[{"FORM_KEY":"g3_leave_mtzt4zeu","TENANT_ID":"0","TABLE_NAME":"sw_form_zelpiicldk"},{"FORM_KEY":"g3_leave_mtzt4zeu","TENANT_ID":"100","TABLE_NAME":"sw_form_ivefob8tup"}],"rowCount":2,"executionTimeMs":"5"}}
+[G1b.flowPublish] {"code":0,"msg":"success"}
+[G1b.binding] {"code":0,"msg":"success","data":{"columns":["FORM_KEY","PROCESS_DEF_KEY","ACTIVE","TENANT_ID"],"rows":[{"FORM_KEY":"g3_leave_mtzt4zeu","PROCESS_DEF_KEY":"bpm_f2dc8b3b69ab4b8b","ACTIVE":true,"TENANT_ID":"100"}],"rowCount":1,"executionTimeMs":"2"}}
+[G1b.submit] {"commandId":"2099117374335307777","status":"ACCEPTED"}
+[G1b.command] {"code":0,"msg":"success","data":{"columns":["ID","COMMAND_TYPE","CHANNEL","STATUS","TENANT_ID"],"rows":[{"ID":"2099117374335307777","COMMAND_TYPE":"DRAFT_SUBMIT","CHANNEL":"NORMAL","STATUS":"COMPLETED","TENANT_ID":"100"}],"rowCount":1,"executionTimeMs":"3"}}
+[G1b.todo] {"total":"1","taskId":"10c0ec40-af71-11f1-bdc4-00ffa7734675"}
+[G1b.task] {"code":0,"msg":"success","data":{"columns":["ID_","PROC_INST_ID_","TENANT_ID_","ASSIGNEE_"],"rows":[{"ID_":"10c0ec40-af71-11f1-bdc4-00ffa7734675","PROC_INST_ID_":"10bcf493-af71-11f1-bdc4-00ffa7734675","TENANT_ID_":"100","ASSIGNEE_":"9001"}],"rowCount":1,"executionTimeMs":"2"}}
+[G1b.inst] {"code":0,"msg":"success","data":{"columns":["ID","PROCESS_INSTANCE_ID","TENANT_ID","FORM_KEY","STATUS"],"rows":[{"ID":"2099117377971769346","PROCESS_INSTANCE_ID":"10bcf493-af71-11f1-bdc4-00ffa7734675","TENANT_ID":"100","FORM_KEY":"g3_leave_mtzt4zeu","STATUS":"RUNNING"}],"rowCount":1,"executionTimeMs":"2"}}
+[G1b.complete] {"code":0,"msg":"success"}
+[G1b.notify] {"code":0,"msg":"success","data":{"columns":["ID","TENANT_ID","RECIPIENT_ID","BIZ_TYPE"],"rows":[{"ID":"2099117400017031170","TENANT_ID":"100","RECIPIENT_ID":"9001","BIZ_TYPE":"WF_APPROVED"},{"ID":"2099117378026295298","TENANT_ID":"100","RECIPIENT_ID":"9001","BIZ_TYPE":"WF_TODO"}],"rowCount":2,"executionTimeMs":"3"}}
+[G1c.x.formGet] {"path":"/form/def/bba58e8e-7f2e-474f-b913-a39c123b5706","method":"GET","status":200,"body":{"code":1000,"msg":"表单不存在","data":null}}
+[G1c.x.formPublish] {"path":"/form/def/bba58e8e-7f2e-474f-b913-a39c123b5706/publish","method":"POST","status":200,"body":{"code":1000,"msg":"表单不存在","data":null}}
+[G1c.x.defGet] {"path":"/workflow/defs/2099117373441921026","method":"GET","status":200,"body":{"code":2010,"msg":"流程定义不存在","data":null}}
+[G1c.x.taskDone] {"note":"租户0 todo 中不含租户100任务","tenant0Todo":"{\"records\":[],\"total\":\"0\",\"pageNum\":\"1\",\"pageSize\":\"20\"}"}
+[G1c.x.instanceGet] {"path":"/workflow/instances/2099091639627677698","method":"GET","status":200,"body":{"code":404,"msg":"流程实例不存在","data":null}}
+[G1c.x.sideEffect] {"before":{"code":0,"msg":"success","data":{"columns":["N"],"rows":[{"N":"1"}],"rowCount":1,"executionTimeMs":"8"}},"after":{"code":0,"msg":"success","data":{"columns":["N"],"rows":[{"N":"1"}],"rowCount":1,"executionTimeMs":"8"}}}
+[G1c.layoutSql] {"code":500,"msg":"系统异常","data":null}
+[G1c.layoutT100] "{\"code\":0,\"msg\":\"success\",\"data\":{\"layout\":{\"components\":[{\"key\":\"todo\",\"visible\":true,\"order\":1,\"span\":1}],\"g3Marker\":\"T100-MARKER\"},\"custom\":true}}"
+[G1c.layoutT0] "{\"code\":0,\"msg\":\"success\",\"data\":{\"layout\":{\"components\":[{\"key\":\"todo\",\"visible\":true,\"order\":1,\"span\":1}],\"g3Marker\":\"T0-MARKER\"},\"custom\":true}}"
+[G2a.openapiUnknown] {"path":"/openapi/v1/form-data/list","method":"POST","status":404,"body":{"code":404,"msg":"资源不存在","data":null}}
+[G2a.openapiAnon] {"path":"/openapi/v1/processes","method":"POST","status":200,"body":{"code":3002,"msg":"缺少鉴权头（X-App-Id / X-Timestamp / X-Nonce / X-Signature）","data":null}}
+[G2a.openapiBadSig] {"path":"/openapi/v1/processes","method":"POST","status":200,"body":{"code":3002,"msg":"签名校验失败","data":null}}
+[G2a.openapiValidT100] {"path":"/openapi/v1/processes","method":"POST","status":200,"body":{"code":3002,"msg":"签名校验失败","data":null}}
+[G2a.openapiExpiredTenant] {"path":"/openapi/v1/processes","method":"POST","status":200,"body":{"code":3009,"msg":"应用所属租户不可用","data":null}}
+[G2a.iotAnon] {"path":"/iot/device/page?pageNum=1&pageSize=5","method":"GET","status":401,"body":{"code":401,"msg":"未认证","data":null}}
+[G2a.iotValidTenant] {"path":"/iot/device/page?pageNum=1&pageSize=5","method":"GET","status":404,"body":{"code":404,"msg":"资源不存在","data":null}}
+[G2a.asyncNoTenant] {"path":"/workflow/drafts","method":"POST","status":401,"body":{"code":401,"msg":"未认证","data":null}}
+[G4a.me] "{\"code\":0,\"msg\":\"success\",\"data\":{\"user\":{\"id\":\"9101\",\"username\":\"t100nobody\",\"displayName\":\"无角色用户\",\"deptId\":\"1001\",\"tenantId\":\"100\",\"avatar\":null},\"permissions\":[],\"roles\":[],\"superAdmin\":false}}"
+[G4a.userPage] {"path":"/system/user/page","method":"POST","status":403,"body":{"code":403,"msg":"无权限","data":null}}
+[G4a.userListLegal] {"path":"/system/user/list","method":"GET","status":400,"body":{"code":400,"msg":"参数非法: id","data":null}}
+[G4a.deptList] {"path":"/system/dept/list","method":"GET","status":400,"body":{"code":400,"msg":"参数非法: id","data":null}}
+[G4a.rolePage] {"path":"/system/role/page","method":"POST","status":403,"body":{"code":403,"msg":"无权限","data":null}}
+[G5b.firstCallback] {"code":400,"msg":"SSO 回调被拒绝: 企业微信凭据被拒绝: errcode=40013"}
+[G5b.replayCallback] {"code":400,"msg":"SSO 回调被拒绝: 授权状态已消费"}
+[G5b.stateRow] {"code":0,"msg":"success","data":{"columns":["ID","PROVIDER","TENANT_ID","CONSUMED","EXPIRE_AT"],"rows":[{"ID":"2099117401220796418","PROVIDER":"WECOM","TENANT_ID":"100","CONSUMED":1,"EXPIRE_AT":"2026-09-13T12:51:02.823+00:00"}],"rowCount":1,"executionTimeMs":"3"}}
+[G6a.bindT100] {"path":"/auth/sso/bind","method":"POST","status":200,"body":{"code":0,"msg":"success","data":null}}
+[G6a.bindT0SameSubject] {"path":"/auth/sso/bind","method":"POST","status":200,"body":{"code":400,"msg":"该外部身份已在其他租户绑定，不能跨租户重复绑定","data":null}}
+[G6a.bindingRows] {"code":0,"msg":"success","data":{"columns":["PROVIDER","TENANT_ID","USER_ID","BIND_STATUS","ID_LEN","ID_IS_DIGEST"],"rows":[{"PROVIDER":"WECOM","TENANT_ID":"100","USER_ID":"9001","BIND_STATUS":"ACTIVE","ID_LEN":"64","ID_IS_DIGEST":true}],"rowCount":1,"executionTimeMs":"3"}}
+[G6b.grantNobody] {"code":0,"msg":"success","data":null}
+[G6b.meAfterGrant] "{\"code\":0,\"msg\":\"success\",\"data\":{\"user\":{\"id\":\"9101\",\"username\":\"t100nobody\",\"displayName\":\"无角色用户\",\"deptId\":\"1001\",\"tenantId\":\"100\",\"avatar\":null},\"permissions\":[\"system:view\",\"form:view\",\"form:design\",\"workflow:view\",\""
+[G6b.revokeNobody] {"path":"/system/user/9101/roles","method":"PUT","status":200,"body":{"code":0,"msg":"success","data":null}}
+[G6b.nobodyMeAfterRevoke] "{\"code\":0,\"msg\":\"success\",\"data\":{\"user\":{\"id\":\"9101\",\"username\":\"t100nobody\",\"displayName\":\"无角色用户\",\"deptId\":\"1001\",\"tenantId\":\"100\",\"avatar\":null},\"permissions\":[],\"roles\":[],\"superAdmin\":false}}"
+[G6b.nobodyBind] {"path":"/auth/sso/bind","method":"POST","status":200,"body":{"code":0,"msg":"success","data":null}}
+[G6b.disableNobody] {"path":"/system/user","method":"PUT","status":200,"body":{"code":0,"msg":"success","data":null}}
+[G6b.nobodyMeAfterDisable] 401
+[G7a.byProvider] "{\"code\":0,\"msg\":\"success\",\"data\":{\"records\":[{\"actorId\":\"9101\",\"provider\":\"WECOM\",\"detail\":\"\",\"localUserId\":\"9101\",\"result\":\"SUCCESS\",\"id\":\"2099117402734940163\",\"eventType\":\"BIND\",\"createTime\":\"2026-09-13T20:46:03.184496\",\"externalDigestPrefix\":\"afe513c6\"},{\"actorId\":\"9001\",\"provider\":\"WECOM\",\"detai"
+[G7a.byEvent] "{\"code\":0,\"msg\":\"success\",\"data\":{\"records\":[{\"actorId\":\"9101\",\"provider\":\"WECOM\",\"detail\":\"\",\"localUserId\":\"9101\",\"result\":\"SUCCESS\",\"id\":\"2099117402734940163\",\"eventType\":\"BIND\",\"createTime\":\"2026-09-13T20:46:03.184496\",\"externalDigestPrefix\":\"afe513c6\"},{\"actorId\":\"9001\",\"provider\":\"WECOM\",\"detai"
+[G7a.byResult] "{\"code\":0,\"msg\":\"success\",\"data\":{\"records\":[],\"tenantId\":\"100\"}}"
+[G7a.byUser] "{\"code\":0,\"msg\":\"success\",\"data\":{\"records\":[{\"actorId\":\"9001\",\"provider\":\"WECOM\",\"detail\":\"\",\"localUserId\":\"9001\",\"result\":\"SUCCESS\",\"id\":\"2099117402302926849\",\"eventType\":\"BIND\",\"createTime\":\"2026-09-13T20:46:03.081497\",\"externalDigestPrefix\":\"f3e54645\"}],\"tenantId\":\"100\"}}"
+[G7a.noPermAnon] 401
+[G7a.noPermNobody] 401
+[G7a.crossTenant] "{\"code\":0,\"msg\":\"success\",\"data\":{\"records\":[],\"tenantId\":\"0\"}}"
+{"status":200,"body":"{\"code\":1401,\"msg\":\"必填字段 'reason' 缺失\",\"data\":null}"}

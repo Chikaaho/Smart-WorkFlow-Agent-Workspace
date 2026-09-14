@@ -1,0 +1,19 @@
+atomic_id=G8
+captured_at=2026-09-14T02:09:00+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=db8b25556bd9a9958d06ab727372a1fe1853b26e
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11；外部真实条件未提供
+database=不适用
+tenant_id=不适用
+actor=不适用
+object_ids=WECOM/FEISHU/DINGTALK 官方测试应用、HTTPS 回调白名单域、可控测试身份（均未获得）
+positive_assertion=PENDING——三 Provider 真实成功链（授权发起→真实回调换票→绑定→已绑定登录→解绑后拒绝→Provider 失败恢复）未执行：官方应用凭据/HTTPS 回调域/可控测试身份全部缺失（方向 §5 外部依赖边界）
+negative_assertion=PENDING——解绑后拒绝与 Provider 失败恢复的官方对端真实链未执行；本包不以受控对端（G5/G6 已用的真实域+无效凭据）冒充成功链
+positive_pass=false
+negative_pass=false
+cleanup=不适用
+uncovered=dependency_satisfied=false；等待 Owner/环境提供三 Provider 测试应用与回调域后补证
+observed=
+[dependency] {"officialApps":"缺","httpsCallbackDomain":"缺（当前白名单域 oa.example.com 为受控测试值）","testIdentity":"缺","blockType":"EXTERNAL"}
+[coveredElsewhere] {"controlledPeer":"G5a1/G5b1 已用真实官方域+无效凭据覆盖发起/回调/换票边界的正反行为（零外呼负向矩阵）","browserEntry":"G5c1 已覆盖真实授权跳转（accounts.feishu.cn）与零残留"}

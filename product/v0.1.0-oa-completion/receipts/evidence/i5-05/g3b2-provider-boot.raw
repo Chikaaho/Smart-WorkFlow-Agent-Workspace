@@ -1,0 +1,21 @@
+atomic_id=G3b2
+captured_at=2026-09-14T01:36:30+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=本轮采集对应最终工作树（jar=01:30:59 构建，含审计修复+票据挂起修复+V903，见 G9a1）
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; 每用例独立 OS 进程 java -jar（prod profile，真实 PostgreSQL 5433）；Provider 配置行经 JDBC 种子工具注入 sys_sso_provider_config（PG 方言；app_secret_enc 列 NOT NULL，缺失=空字符串语义）
+database=真实 PostgreSQL；sys_sso_provider_config 每用例 DELETE 后单行注入
+tenant_id=100（配置行租户）
+actor=executor-local-dev
+object_ids=WECOM/FEISHU/DINGTALK 配置行（id=90011-90013 禁用组；90021/90022/90023 负向组）；启用门禁=SsoAuthService.validateEnabledConfig @PostConstruct
+positive_assertion=三 Provider enabled=0（禁用行存在且不参与校验）的 prod 进程完整启动成功（health 200，PG 行回读 DINGTALK|0 / FEISHU|0 / WECOM|0）
+negative_assertion=WECOM enabled=1+空密文、FEISHU enabled=1+placeholder 密文（AES-GCM 解密为 placeholder 后命中占位黑名单）、DINGTALK enabled=1+空密文，三者各自进程 fail-fast exit=1，首因均为「启用 Provider 必须配置有效 appId 与 secret」（无 Mockito/service 替代，真实进程退出码）
+positive_pass=true
+negative_pass=true
+cleanup=成功批次 taskkill；失败批次自行退出；矩阵结束后清空配置行
+uncovered=none for the captured G3b2 package
+observed=
+[G3b2a.disabled] {"rows":"DINGTALK|0; FEISHU|0; WECOM|0","boot":"HEALTH_OK after ~12s (health 200)","log":"g3b2a-disabled.log"}
+[G3b2b.wecomMissing] {"exit_code":1,"firstCause":"启用 Provider 必须配置有效 appId 与 secret","log":"g3b2b-wecom-missing.log"}
+[G3b2c.feishuPlaceholder] {"exit_code":1,"firstCause":"启用 Provider 必须配置有效 appId 与 secret（placeholder 经 AES-GCM 解密命中占位黑名单）","log":"g3b2c-feishu-placeholder.log"}
+[G3b2d.dingMissing] {"exit_code":1,"firstCause":"启用 Provider 必须配置有效 appId 与 secret","log":"g3b2d-ding-missing.log"}

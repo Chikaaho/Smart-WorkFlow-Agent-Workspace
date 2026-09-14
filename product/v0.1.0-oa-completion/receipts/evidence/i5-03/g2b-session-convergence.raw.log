@@ -1,0 +1,22 @@
+[G2b.firstLogin] {"code":0,"hasToken":true,"hasCookie":true}
+[G2b.meValid] 200
+[G2b.waitingForExpiry] {"elapsedMs":773,"waitMs":194227}
+[G2b.loginAfterExpiry] {"code":401,"msg":"所属租户不可用，无法登录","data":null}
+[G2b.refreshAfterExpiry] {"status":200,"body":"{\"code\":401,\"msg\":\"所属租户不可用，会话已终止\",\"data\":null}"}
+[G2b.meAfterExpiryAndCacheExpiry] 401
+node:events:496
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20)
+Emitted 'error' event on Socket instance at:
+    at emitErrorNT (node:internal/streams/destroy:170:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:129:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+
+Node.js v22.14.0

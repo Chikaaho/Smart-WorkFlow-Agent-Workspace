@@ -1,0 +1,27 @@
+atomic_id=G2a3
+captured_at=2026-09-14T00:30:23+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=a78ef93c40e5b3ff091ce909ffd80851f010404957800d8f52924f64f254cd10
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; real HTTP against dev-profile server（java -jar 当前候选, port 8080）；异步消费=持久命令队列 CommandDispatcher（NORMAL 通道真实轮询）
+database=H2 (dev)；sw_bpm_command / sw_bpm_instance 经只读外部数据源通道 SQL 回读
+tenant_id=100（有效）、200（停用）、300（过期）、0（跨租户键对照）
+actor=user 9001 (t100 admin) 为有效生产者；匿名与 t200/t300 为负向
+object_ids=formKey=leave_i5g2a3_mu0157y1; commandId=2099173775757717505; commandKey=DRAFT_SUBMIT:2099173775686414338:1; instance=2099173780103016449; 发起人=9001
+positive_assertion=有效生产者信封（tenant 100, initiator 9001, NORMAL 通道）入队受理（ACCEPTED）并由真实调度器消费至 COMPLETED，业务实例创建（tenant 100, RUNNING）
+negative_assertion=缺失租户（匿名）401；停用 t200/过期 t300 登录即被拒（401 所属租户不可用）无法成为生产者；跨租户键发起 404（无本租户表单/绑定）；负向动作命令/实例增量均为 0
+positive_pass=true
+negative_pass=true
+cleanup=无删除动作；对象保留于本轮 H2 内存库
+uncovered=none for the captured G2a3 package（消费侧身份/租户权威回查由 CommandDispatcher→UserDetailsProvider 承担，其会话收敛行为已由 G2b1 真实时间序列覆盖）
+observed=
+[rows.before] {"CMDS":"14","INSTS":"7"}
+[valid.submit] {"status":"ACCEPTED","code":0,"commandId":"2099173775757717505","commandKey":"DRAFT_SUBMIT:2099173775686414338:1","channel":"NORMAL","duplicated":false}
+[valid.commandRow] {"rows":[{"ID":"2099173775757717505","COMMAND_TYPE":"DRAFT_SUBMIT","CHANNEL":"NORMAL","STATUS":"COMPLETED","INITIATOR_ID":"9001","TENANT_ID":"100"}]}
+[valid.instanceRows] {"rows":[{"ID":"2099173780103016449","TENANT_ID":"100","FORM_KEY":"leave_i5g2a3_mu0157y1","STATUS":"RUNNING"}]}
+[neg.anonSubmit] {"status":401,"code":401}
+[neg.disabledTenantProducer] {"username":"t200admin","code":401,"msg":"所属租户不可用，无法登录","hasToken":false}
+[neg.expiredTenantProducer] {"username":"t300admin","code":401,"msg":"所属租户不可用，无法登录","hasToken":false}
+[neg.crossKeyStart] {"status":200,"code":404,"msg":"表单 'leave_i5g2a3_mu0157y1' 不存在"}
+[rows.after] {"CMDS":"16","INSTS":"8"}
+[delta.note] {"commandDelta":"+2 全部来自本包有效链（受理+回调登记），负向零增量","instanceDelta":"+1 仅有效链"}

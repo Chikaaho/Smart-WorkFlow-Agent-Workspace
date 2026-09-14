@@ -1,0 +1,415 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Smart-WorkFlow                                                     [pom]
+[INFO] Smart-WorkFlow :: Common                                           [jar]
+[INFO] Smart-WorkFlow :: Security                                         [jar]
+[INFO] Smart-WorkFlow :: Basic :: Storage :: API                          [jar]
+[INFO] Smart-WorkFlow :: Basic :: Knowledge                               [jar]
+[INFO] Smart-WorkFlow :: Basic :: Agent                                   [jar]
+[INFO] 
+[INFO] ----------------------< com.sw.ck:smart-workflow >----------------------
+[INFO] Building Smart-WorkFlow 1.0.0-SNAPSHOT                             [1/6]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ------------------------< com.sw.ck:sw-common >-------------------------
+[INFO] Building Smart-WorkFlow :: Common 1.0.0-SNAPSHOT                   [2/6]
+[INFO]   from sw-framework\sw-common\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-common ---
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-common ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-common ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-framework\sw-common\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-common ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-common ---
+[INFO] 
+[INFO] -----------------------< com.sw.ck:sw-security >------------------------
+[INFO] Building Smart-WorkFlow :: Security 1.0.0-SNAPSHOT                 [3/6]
+[INFO]   from sw-framework\sw-security\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-security ---
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-security ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-security ---
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-security ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-security ---
+[INFO] 
+[INFO] -------------------< com.sw.ck:sw-basic-storage-api >-------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Storage :: API 1.0.0-SNAPSHOT  [4/6]
+[INFO]   from sw-basic\sw-basic-storage\sw-basic-storage-api\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-basic-storage-api ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-storage\sw-basic-storage-api\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-basic-storage-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-basic-storage-api ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-storage\sw-basic-storage-api\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-basic-storage-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-basic-storage-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-basic-knowledge >--------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Knowledge 1.0.0-SNAPSHOT       [5/6]
+[INFO]   from sw-basic\sw-basic-knowledge\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-basic-knowledge ---
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-basic-knowledge ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-basic-knowledge ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-knowledge\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-basic-knowledge ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-basic-knowledge ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] ----------------------< com.sw.ck:sw-basic-agent >----------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Agent 1.0.0-SNAPSHOT           [6/6]
+[INFO]   from sw-basic\sw-basic-agent\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-basic-agent ---
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-basic-agent ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-basic-agent ---
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-basic-agent ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-basic-agent ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.sw.ck.agent.controller.AgentConversationControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-09-14T09:04:24.631+08:00  INFO 27708 --- [           main] .s.c.a.c.AgentConversationControllerTest : Starting AgentConversationControllerTest using Java 21.0.5 with PID 27708 (started by hjxch in E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-agent)
+2026-09-14T09:04:24.633+08:00  INFO 27708 --- [           main] .s.c.a.c.AgentConversationControllerTest : No active profile set, falling back to 1 default profile: "default"
+2026-09-14T09:04:25.453+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-09-14T09:04:25.455+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-09-14T09:04:25.509+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 0 Redis repository interfaces.
+2026-09-14T09:04:25.600+08:00  WARN 27708 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.agent.controller]' package. Please check your configuration.
+2026-09-14T09:04:26.019+08:00  INFO 27708 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noopUserDetailsService
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (E:\Maven\repository\net\bytebuddy\byte-buddy-agent\1.15.11\byte-buddy-agent-1.15.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-09-14T09:04:28.162+08:00  INFO 27708 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-14T09:04:28.162+08:00  INFO 27708 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-14T09:04:28.269+08:00  INFO 27708 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 107 ms
+2026-09-14T09:04:28.390+08:00  WARN 27708 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource initial loaded [0] datasource,Please add your primary datasource or check your configuration
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.5.9 
+2026-09-14T09:04:29.230+08:00  INFO 27708 --- [           main] .s.c.a.c.AgentConversationControllerTest : Started AgentConversationControllerTest in 4.844 seconds (process running for 5.746)
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.585 s -- in com.sw.ck.agent.controller.AgentConversationControllerTest
+[INFO] Running com.sw.ck.agent.controller.AgentGraphDebugSecurityIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-09-14T09:04:29.674+08:00  INFO 27708 --- [           main] c.AgentGraphDebugSecurityIntegrationTest : Starting AgentGraphDebugSecurityIntegrationTest using Java 21.0.5 with PID 27708 (started by hjxch in E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-agent)
+2026-09-14T09:04:29.675+08:00  INFO 27708 --- [           main] c.AgentGraphDebugSecurityIntegrationTest : No active profile set, falling back to 1 default profile: "default"
+2026-09-14T09:04:29.955+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-09-14T09:04:29.955+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-09-14T09:04:29.971+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
+2026-09-14T09:04:30.062+08:00  INFO 27708 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noopUserDetailsService
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.5.9 
+2026-09-14T09:04:30.492+08:00  INFO 27708 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-14T09:04:30.492+08:00  INFO 27708 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-14T09:04:30.515+08:00  INFO 27708 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 23 ms
+2026-09-14T09:04:30.677+08:00  INFO 27708 --- [           main] c.AgentGraphDebugSecurityIntegrationTest : Started AgentGraphDebugSecurityIntegrationTest in 1.037 seconds (process running for 7.193)
+2026-09-14T09:04:30.697+08:00  INFO 27708 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-14T09:04:30.866+08:00  INFO 27708 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:agentdebugsec user=SA
+2026-09-14T09:04:30.868+08:00  INFO 27708 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+[INFO] Tests run: 28, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.098 s -- in com.sw.ck.agent.controller.AgentGraphDebugSecurityIntegrationTest
+[INFO] Running com.sw.ck.agent.controller.AgentGraphDefControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-09-14T09:04:31.751+08:00  INFO 27708 --- [           main] c.s.c.a.c.AgentGraphDefControllerTest    : Starting AgentGraphDefControllerTest using Java 21.0.5 with PID 27708 (started by hjxch in E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-agent)
+2026-09-14T09:04:31.751+08:00  INFO 27708 --- [           main] c.s.c.a.c.AgentGraphDefControllerTest    : No active profile set, falling back to 1 default profile: "default"
+2026-09-14T09:04:31.963+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-09-14T09:04:31.963+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-09-14T09:04:31.977+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
+2026-09-14T09:04:32.035+08:00  INFO 27708 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noopUserDetailsService
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.5.9 
+2026-09-14T09:04:32.230+08:00  INFO 27708 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-14T09:04:32.230+08:00  INFO 27708 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-14T09:04:32.249+08:00  INFO 27708 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 19 ms
+2026-09-14T09:04:32.431+08:00  INFO 27708 --- [           main] c.s.c.a.c.AgentGraphDefControllerTest    : Started AgentGraphDefControllerTest in 0.699 seconds (process running for 8.946)
+2026-09-14T09:04:32.432+08:00  INFO 27708 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-09-14T09:04:32.434+08:00  INFO 27708 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:agentgraphctrl user=SA
+2026-09-14T09:04:32.434+08:00  INFO 27708 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.009 s -- in com.sw.ck.agent.controller.AgentGraphDefControllerTest
+[INFO] Running com.sw.ck.agent.controller.AgentGraphDefSecurityIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-09-14T09:04:32.759+08:00  INFO 27708 --- [           main] a.c.AgentGraphDefSecurityIntegrationTest : Starting AgentGraphDefSecurityIntegrationTest using Java 21.0.5 with PID 27708 (started by hjxch in E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-agent)
+2026-09-14T09:04:32.760+08:00  INFO 27708 --- [           main] a.c.AgentGraphDefSecurityIntegrationTest : No active profile set, falling back to 1 default profile: "default"
+2026-09-14T09:04:32.935+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-09-14T09:04:32.935+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-09-14T09:04:32.953+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+2026-09-14T09:04:33.004+08:00  INFO 27708 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noopUserDetailsService
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.5.9 
+2026-09-14T09:04:33.162+08:00  INFO 27708 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-14T09:04:33.163+08:00  INFO 27708 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-14T09:04:33.176+08:00  INFO 27708 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 13 ms
+2026-09-14T09:04:33.347+08:00  INFO 27708 --- [           main] a.c.AgentGraphDefSecurityIntegrationTest : Started AgentGraphDefSecurityIntegrationTest in 0.605 seconds (process running for 9.863)
+2026-09-14T09:04:33.349+08:00  INFO 27708 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2026-09-14T09:04:33.351+08:00  INFO 27708 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection conn20: url=jdbc:h2:mem:agentdefsec user=SA
+2026-09-14T09:04:33.351+08:00  INFO 27708 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.773 s -- in com.sw.ck.agent.controller.AgentGraphDefSecurityIntegrationTest
+[INFO] Running com.sw.ck.agent.controller.AgentGraphExecutionSecurityIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-09-14T09:04:33.532+08:00  INFO 27708 --- [           main] entGraphExecutionSecurityIntegrationTest : Starting AgentGraphExecutionSecurityIntegrationTest using Java 21.0.5 with PID 27708 (started by hjxch in E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-agent)
+2026-09-14T09:04:33.532+08:00  INFO 27708 --- [           main] entGraphExecutionSecurityIntegrationTest : No active profile set, falling back to 1 default profile: "default"
+2026-09-14T09:04:33.717+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-09-14T09:04:33.717+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-09-14T09:04:33.728+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2026-09-14T09:04:33.783+08:00  INFO 27708 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noopUserDetailsService
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.5.9 
+2026-09-14T09:04:33.949+08:00  INFO 27708 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-14T09:04:33.949+08:00  INFO 27708 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-14T09:04:33.963+08:00  INFO 27708 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 14 ms
+2026-09-14T09:04:34.094+08:00  INFO 27708 --- [           main] entGraphExecutionSecurityIntegrationTest : Started AgentGraphExecutionSecurityIntegrationTest in 0.578 seconds (process running for 10.61)
+2026-09-14T09:04:34.095+08:00  INFO 27708 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2026-09-14T09:04:34.096+08:00  INFO 27708 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection conn30: url=jdbc:h2:mem:agentexsec user=SA
+2026-09-14T09:04:34.096+08:00  INFO 27708 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.740 s -- in com.sw.ck.agent.controller.AgentGraphExecutionSecurityIntegrationTest
+[INFO] Running com.sw.ck.agent.controller.AgentModelControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-09-14T09:04:34.272+08:00  INFO 27708 --- [           main] c.s.c.a.c.AgentModelControllerTest       : Starting AgentModelControllerTest using Java 21.0.5 with PID 27708 (started by hjxch in E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-agent)
+2026-09-14T09:04:34.272+08:00  INFO 27708 --- [           main] c.s.c.a.c.AgentModelControllerTest       : No active profile set, falling back to 1 default profile: "default"
+2026-09-14T09:04:34.429+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-09-14T09:04:34.429+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-09-14T09:04:34.440+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2026-09-14T09:04:34.487+08:00  INFO 27708 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noopUserDetailsService
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.5.9 
+2026-09-14T09:04:34.587+08:00  INFO 27708 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-14T09:04:34.587+08:00  INFO 27708 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-14T09:04:34.604+08:00  INFO 27708 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 17 ms
+2026-09-14T09:04:34.778+08:00  INFO 27708 --- [           main] c.s.c.a.c.AgentModelControllerTest       : Started AgentModelControllerTest in 0.522 seconds (process running for 11.294)
+2026-09-14T09:04:34.779+08:00  INFO 27708 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2026-09-14T09:04:34.780+08:00  INFO 27708 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection conn40: url=jdbc:h2:mem:agentctrl user=SA
+2026-09-14T09:04:34.780+08:00  INFO 27708 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.612 s -- in com.sw.ck.agent.controller.AgentModelControllerTest
+[INFO] Running com.sw.ck.agent.controller.AgentOrchestrationControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-09-14T09:04:34.884+08:00  INFO 27708 --- [           main] s.c.a.c.AgentOrchestrationControllerTest : Starting AgentOrchestrationControllerTest using Java 21.0.5 with PID 27708 (started by hjxch in E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-agent)
+2026-09-14T09:04:34.884+08:00  INFO 27708 --- [           main] s.c.a.c.AgentOrchestrationControllerTest : No active profile set, falling back to 1 default profile: "default"
+2026-09-14T09:04:35.069+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-09-14T09:04:35.070+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-09-14T09:04:35.081+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 0 Redis repository interfaces.
+2026-09-14T09:04:35.133+08:00  INFO 27708 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noopUserDetailsService
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.5.9 
+2026-09-14T09:04:35.281+08:00  INFO 27708 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-14T09:04:35.281+08:00  INFO 27708 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-14T09:04:35.293+08:00  INFO 27708 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 12 ms
+2026-09-14T09:04:35.460+08:00  INFO 27708 --- [           main] s.c.a.c.AgentOrchestrationControllerTest : Started AgentOrchestrationControllerTest in 0.59 seconds (process running for 11.975)
+2026-09-14T09:04:35.461+08:00  INFO 27708 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2026-09-14T09:04:35.462+08:00  INFO 27708 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection conn50: url=jdbc:h2:mem:agentorchtl user=SA
+2026-09-14T09:04:35.462+08:00  INFO 27708 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.738 s -- in com.sw.ck.agent.controller.AgentOrchestrationControllerTest
+[INFO] Running com.sw.ck.agent.controller.AgentToolConfigControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-09-14T09:04:35.628+08:00  INFO 27708 --- [           main] c.s.c.a.c.AgentToolConfigControllerTest  : Starting AgentToolConfigControllerTest using Java 21.0.5 with PID 27708 (started by hjxch in E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-agent)
+2026-09-14T09:04:35.628+08:00  INFO 27708 --- [           main] c.s.c.a.c.AgentToolConfigControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-09-14T09:04:35.799+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-09-14T09:04:35.799+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-09-14T09:04:35.808+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2026-09-14T09:04:35.822+08:00  WARN 27708 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.agent.controller]' package. Please check your configuration.
+2026-09-14T09:04:35.851+08:00  INFO 27708 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noopUserDetailsService
+2026-09-14T09:04:35.911+08:00  INFO 27708 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-14T09:04:35.911+08:00  INFO 27708 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-14T09:04:35.923+08:00  INFO 27708 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 12 ms
+2026-09-14T09:04:35.942+08:00  WARN 27708 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource initial loaded [0] datasource,Please add your primary datasource or check your configuration
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.5.9 
+2026-09-14T09:04:36.016+08:00  INFO 27708 --- [           main] c.s.c.a.c.AgentToolConfigControllerTest  : Started AgentToolConfigControllerTest in 0.406 seconds (process running for 12.532)
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.440 s -- in com.sw.ck.agent.controller.AgentToolConfigControllerTest
+[INFO] Running com.sw.ck.agent.controller.AgentToolConfigSecurityIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-09-14T09:04:36.065+08:00  INFO 27708 --- [           main] c.AgentToolConfigSecurityIntegrationTest : Starting AgentToolConfigSecurityIntegrationTest using Java 21.0.5 with PID 27708 (started by hjxch in E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-agent)
+2026-09-14T09:04:36.065+08:00  INFO 27708 --- [           main] c.AgentToolConfigSecurityIntegrationTest : No active profile set, falling back to 1 default profile: "default"
+2026-09-14T09:04:36.220+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-09-14T09:04:36.220+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-09-14T09:04:36.229+08:00  INFO 27708 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2026-09-14T09:04:36.287+08:00  WARN 27708 --- [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: c9cfd323-0f02-4ce4-aab9-4329e0f671c1
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-09-14T09:04:36.289+08:00  INFO 27708 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.5.9 
+2026-09-14T09:04:36.382+08:00  INFO 27708 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-14T09:04:36.382+08:00  INFO 27708 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-14T09:04:36.398+08:00  INFO 27708 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 16 ms
+2026-09-14T09:04:36.611+08:00  INFO 27708 --- [           main] c.AgentToolConfigSecurityIntegrationTest : Started AgentToolConfigSecurityIntegrationTest in 0.561 seconds (process running for 13.126)
+2026-09-14T09:04:36.613+08:00  INFO 27708 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2026-09-14T09:04:36.615+08:00  INFO 27708 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Added connection conn60: url=jdbc:h2:mem:tool_perm_it user=SA
+2026-09-14T09:04:36.615+08:00  INFO 27708 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+[场景2] 外部工具 × 未认证: 401, msg=未认证, 行数 0→0
+[补充] 外部工具 × view-only(缺manage): 403, msg=无权限, 行数 0→0
+[场景1] 内部工具 × 未认证: 401, msg=未认证, 行数 0→0
+[场景4] 外部工具 × 缺manage(无权限): 403, msg=无权限, 行数 0→0
+[对照] superadmin 外部工具写入: id=2099303266849095681, name=perm_reject_external, timeout=30
+[L5] timeoutSeconds=1 → 原样, id=2099303266891038721, 存储值=1, 行数 0→1
+[场景3] 内部工具 × 缺manage(无权限): 403, msg=无权限, 行数 0→0
+[L5] timeoutSeconds=0 → 归一化 1, id=2099303266958147586, 存储值=1, 行数 0→1, 详情回读 timeoutSeconds=1
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.641 s -- in com.sw.ck.agent.controller.AgentToolConfigSecurityIntegrationTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 104, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Smart-WorkFlow 1.0.0-SNAPSHOT:
+[INFO] 
+[INFO] Smart-WorkFlow ..................................... SUCCESS [  0.002 s]
+[INFO] Smart-WorkFlow :: Common ........................... SUCCESS [  0.884 s]
+[INFO] Smart-WorkFlow :: Security ......................... SUCCESS [  0.120 s]
+[INFO] Smart-WorkFlow :: Basic :: Storage :: API .......... SUCCESS [  0.052 s]
+[INFO] Smart-WorkFlow :: Basic :: Knowledge ............... SUCCESS [  0.278 s]
+[INFO] Smart-WorkFlow :: Basic :: Agent ................... SUCCESS [ 14.184 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  15.818 s
+[INFO] Finished at: 2026-09-14T09:04:37+08:00
+[INFO] ------------------------------------------------------------------------

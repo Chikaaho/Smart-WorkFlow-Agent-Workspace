@@ -1,0 +1,40 @@
+atomic_id=G1c1
+captured_at=2026-09-14T00:24:48+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=a78ef93c40e5b3ff091ce909ffd80851f010404957800d8f52924f64f254cd10
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; real HTTP against dev-profile server（java -jar 当前候选, port 8080）；命令经持久队列异步消费
+database=H2 (dev)；行数与 SQL 回读经只读外部数据源通道
+tenant_id=0 与 100（tenant-user 对 (0,1) 与 (100,9001)）
+actor=user 1 (t0 admin) 与 user 9001 (t100 admin)
+object_ids=T0: form=0a054e10…→本轮 e48105e5-236f-4d9d-b776-62daf2420ad8, defId=2099172425242161153, instance=2099172428564049922, task=9fedc5ba-af8f-11f1-a166-00ffa7734675; T100: form=14743a03-4ee8-4f28-8e3c-8f8ddac955ab, defId=2099172438605213698, instance=2099172441427980290, task=a1c1e98e-af8f-11f1-a166-00ffa7734675; 布局行 (0,1)/(100,9001)
+positive_assertion=两对 tenant-user 各自保存并读回自己的布局 marker（HTTP 回读 hasT0/hasT100 互斥）；本租户对象链正常可用
+negative_assertion=定义/流程定义/实例/任务/工作台布局的跨租户读取、更新、发布、发起、办理全部拒绝（业务码 1000/2010/404/403），全部拒绝动作 before/after 行数不变（instances 7→7、tasks 6→6、bindings 8→8、两任务保持 PENDING 于原租户），全部响应无 500
+positive_pass=true
+negative_pass=true
+cleanup=无删除动作；对象保留于本轮 H2 内存库
+uncovered=布局 layout 列（CLOB）经回读通道直读会 500——与 iteration-03 矩阵 [G1c.layoutSql] 同款既有通道边界（rs.getObject(Clob) 序列化），非跨租户拒绝路径；本轮以 HTTP 标记互斥 + 行数增量证明隔离，不在 I5 范围修复
+observed=
+[objects.t0] {"formId":"e48105e5-236f-4d9d-b776-62daf2420ad8","defId":"2099172425242161153","taskId":"9fedc5ba-af8f-11f1-a166-00ffa7734675","instance":"2099172428564049922","tenant":"0"}
+[objects.t100] {"formId":"14743a03-4ee8-4f28-8e3c-8f8ddac955ab","defId":"2099172438605213698","taskId":"a1c1e98e-af8f-11f1-a166-00ffa7734675","instance":"2099172441427980290","tenant":"100"}
+[rows.before] {"INSTS":"7","TASKS":"6","LAYOUTS":"0","BINDINGS":"8"}
+[x100to0.formGet] {"status":200,"code":1000}
+[x100to0.flowDefGet] {"status":200,"code":2010}
+[x100to0.instanceGet] {"status":200,"code":404}
+[x100to0.myInstanceGet] {"status":200,"code":404}
+[x100to0.taskComplete] {"status":200,"code":403,"msg":"无权处理该任务"}
+[x100to0.taskTransfer] {"status":200,"code":403,"msg":"无权处理该任务"}
+[x100to0.startWithT0Key] {"status":200,"code":404,"msg":"表单 'leave_g1c1_t0_mu00yblv' 不存在"}
+[x0to100.formGet] {"status":200,"code":1000}
+[x0to100.flowDefGet] {"status":200,"code":2010}
+[x0to100.instanceGet] {"status":200,"code":404}
+[x0to100.taskComplete] {"status":200,"code":403,"msg":"无权处理该任务"}
+[x0to100.startWithT100Key] {"status":200,"code":404,"msg":"表单 'leave_g1c1_t100_mu00ye2f' 不存在"}
+[layout.putT0] {"status":200,"code":0}
+[layout.putT100] {"status":200,"code":0}
+[layout.getT0] {"status":200,"hasT0":true,"hasT100":false}
+[layout.getT100] {"status":200,"hasT0":false,"hasT100":true}
+[rows.after] {"INSTS":"7","TASKS":"6","LAYOUTS":"2","BINDINGS":"8"}
+[task0.stillPending] {"ID_":"9fedc5ba-af8f-11f1-a166-00ffa7734675","TENANT_ID_":"0"}
+[task100.stillPending] {"ID_":"a1c1e98e-af8f-11f1-a166-00ffa7734675","TENANT_ID_":"100"}
+[readback.channel.clobNote] {"attempt":"SELECT layout / LENGTH(layout) / CAST(layout AS VARCHAR) 于 sys_user_workspace","result":"500 系统异常（CLOB 列经 rs.getObject 序列化失败；iteration-03 g1-g2a-g4a-g5b-g6-g7-matrix.raw.log 的 [G1c.layoutSql] 为同款 500）","classification":"readback 工具通道既有边界，非本轮对象/拒绝路径"}

@@ -1,0 +1,17 @@
+[ctx] {"productId":"prod-i5g2a2-mu016cy9","deviceName":"dev-i5g2a2-001"}
+[register] {"status":200,"code":0,"id":"2099173997963554818","status_":"OFFLINE"}
+[device.sql] {"columns":["ID","TENANT_ID","PRODUCT_ID","DEVICE_NAME","STATUS"],"rows":[{"ID":"2099173997963554818","TENANT_ID":"100","PRODUCT_ID":"prod-i5g2a2-mu016cy9","DEVICE_NAME":"dev-i5g2a2-001","STATUS":"OFFLINE"}],"rowCount":1,"executionTimeMs":"4"}
+[rows.before] {"columns":["CMDS"],"rows":[{"CMDS":"0"}],"rowCount":1,"executionTimeMs":"4"}
+[dispatch] {"status":200,"code":0,"commandId":"2099173998101966849","status_":"QUEUED"}
+[reportResult] {"status":200,"code":0,"status_":"SUCCESS"}
+[commands.list] {"status":200,"count":1,"first":{"status":"SUCCESS","type":"PROPERTY"}}
+[neg.anonDispatch] {"status":401,"code":401}
+[neg.crossDetail] {"status":200,"code":404,"msg":"设备不存在: productId=prod-i5g2a2-mu016cy9, deviceName=dev-i5g2a2-001"}
+[neg.crossDispatch] {"status":200,"code":404,"msg":"设备不存在: productId=prod-i5g2a2-mu016cy9, deviceName=dev-i5g2a2-001"}
+[neg.crossCommands] {"status":200,"count":0}
+[neg.disabledTenant] {"username":"t200admin","code":401,"msg":"所属租户不可用，无法登录","hasToken":false}
+[neg.expiredTenant] {"username":"t300admin","code":401,"msg":"所属租户不可用，无法登录","hasToken":false}
+[conflict.sameKeyOtherTenant] {"status":200,"code":0,"msg":"success","id":"2099173998861135874","tenant":"0"}
+[t100.device.intact] {"status":200,"code":0,"deviceKey":"key-i5g2a2"}
+[rows.after] {"columns":["CMDS"],"rows":[{"CMDS":"1"}],"rowCount":1,"executionTimeMs":"3"}
+[commands.sql] {"columns":["ID","TENANT_ID","PRODUCT_ID","DEVICE_NAME","COMMAND_KEY","STATUS"],"rows":[{"ID":"2099173998101966849","TENANT_ID":"100","PRODUCT_ID":"prod-i5g2a2-mu016cy9","DEVICE_NAME":"dev-i5g2a2-001","COMMAND_KEY":"cmd-i5g2a2-1","STATUS":"SUCCESS"}],"rowCount":1,"executionTimeMs":"2"}

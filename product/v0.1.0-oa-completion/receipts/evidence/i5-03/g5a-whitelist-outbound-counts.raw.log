@@ -1,0 +1,12 @@
+[G5a.proxyCountsInitial] {"qyapi.weixin.qq.com":1}
+[G5a.authorizePositive] {"code":0,"authorizeUrl":"https://login.work.weixin.qq.com/wwopen/sso/qrConnect?appid=ww-sentinel-app-id&agentid=1000002&redirect_uri=https%3A%2F%2Foa.example.com%2Fapi%2Fauth%2Fsso%2Fwecom%2Fcallback&state=ab1016adb71c62b86f26c522205ec975489d43f9d994fe36c9c917774386589e","state":"ab1016ad..."}
+[G5a.forgedState] {"code":400,"msg":"SSO 回调被拒绝: 授权状态无效"}
+[G5a.countsAfterForged] {"qyapi.weixin.qq.com":1}
+[G5a.validStateProvErr] {"code":400,"msg":"SSO 回调被拒绝: 企业微信凭据被拒绝: errcode=40013"}
+[G5a.countsAfterValidCall] {"qyapi.weixin.qq.com":2}
+[G5a.replayLocalReject] {"code":400,"msg":"SSO 回调被拒绝: 授权状态已消费"}
+[G5a.countsAfterReplay] {"qyapi.weixin.qq.com":2}
+
+[G5a.negativeNote] 白名单外回调 fail closed（绝对模式、allowlist 未命中 → 授权发起被拒）：
+原始响应见 g5a-dev-server-boot3.log，响应体为 {"code":400,"msg":"回调地址不在受控白名单内: https://oa.example.com/api/auth/sso/wecom/callback"}
+（该 boot3实例未绑定 allowlist 环境变量，命中：base-url 已配置而白名单为空 = fail closed 正确行为）

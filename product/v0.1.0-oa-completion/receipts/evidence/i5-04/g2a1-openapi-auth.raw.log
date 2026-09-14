@@ -1,0 +1,32 @@
+atomic_id=G2a1
+captured_at=2026-09-13T22:07:58+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889 (working tree under test; five uncommitted Server files listed in g9a1)
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=JVM 21; Maven test; Mockito service fixture; no external secret
+database=mock OpenApiAppMapper/OpenApiNonceMapper; nonce row count before=0
+tenant_id=1 in direct fixture; invalid-tenant case uses app tenant_id=1
+actor_user=8; object=appId digest omitted from logs; request=SERVICE OpenApiAuthService.authenticate
+request_method=SERVICE
+request_path=OpenApiAuthService.authenticate
+request_body_hash=sha256({})=44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a (body not persisted)
+response_transport_status=exception boundary
+response_business_code=3009 for invalid tenant; 3005 for valid signature reaching scope validation
+
+[positive]
+valid signed request uses the stored secret digest signing path and passes app/status/timestamp/signature checks; the existing OpenApiServiceTest then reaches required-scope validation and returns SCOPE_DENIED=3005 for an unauthorized scope. This is a service-level positive boundary, not a claim of a live HTTP business mutation.
+
+[negative-invalid-tenant]
+tenantValidityFacade.isValid(1)=false; same valid signature; result=TENANT_INVALID=3009; nonceMapper.insert invocation count delta=0; LoginUserHolder remains unset.
+
+[negative-existing]
+bad signature=3002; expired timestamp=3003; duplicate nonce=3004; missing scope=3005. These are covered by the same test class.
+
+[assertions]
+positive_signature_reached_business_validation=true
+invalid_tenant_rejected_before_nonce=true
+invalid_tenant_nonce_before=0
+invalid_tenant_nonce_after=0
+business_table_before=not applicable (auth fixture does not enter a business handler)
+business_table_after=not applicable
+cleanup=LoginUserHolder.clear in @AfterEach; no process or port opened
+uncovered=real HTTP OpenAPI route and PostgreSQL row-count evidence were not re-run in this iteration; G2a2 IoT and G2a3 async producer remain outside this artifact

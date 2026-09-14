@@ -1,0 +1,25 @@
+atomic_id=G6a1
+captured_at=2026-09-14T05:45:00+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=456b60f5bccc4dbc3706214a3829d32fc5fd2e96
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; I5PgTenantBehaviorBootTest（zonky 真实 PG + 完整应用 + 本机真实 Redis 6379）；同一并发批次（两线程 CyclicBarrier 同窗）前后回读
+database=PostgreSQL（真实）+ Redis（真实）；键空间 sw:security:login-user:*
+tenant_id=0 与 100
+actor=user 1 (t0) 与 user 9001 (t100)，同 (WECOM, subject digest)
+object_ids=会话键 sw:security:login-user:1 / sw:security:login-user:9001；全局会话键集合
+positive_assertion=并发批次同时间窗回读（05:42:07.279 → 05:42:07.376）：before keys=0（user1=false, user9001=false）→ after keys=0, addedKeys=[]（user1=false, user9001=false）——bind 成功侧与失败侧均未因 bind 创建任何会话/缓存
+negative_assertion=并发失败侧仍为业务冲突（IllegalStateException，非 500）；绑定全局 1 行、role 零增量、DENIED 审计独立落库——iteration-05 已锁定的并发/绑定/role/audit 底证全部复现成立
+positive_pass=true
+negative_pass=true
+cleanup=测试上下文关闭，内嵌 PG 实例随之关闭
+uncovered=none for the captured G6a1 package
+observed=
+[G6a1] sessionBefore keys=0 user1=false user9001=false at=2026-09-14T05:42:07.279847300
+[G6a1] tenant0 result=OK:0
+[G6a1] tenant100 result=DENIED(IllegalStateException):该外部身份已在其他租户绑定，不能跨租户重复绑定
+[G6a1] bindingRowsForDigest=1
+[G6a1] deniedAuditRows=1
+[G6a1] sessionAfter keys=0 addedKeys=[] user1=false user9001=false at=2026-09-14T05:42:07.376635900
+[G6a1] PASS
+[baseEvidence] {"pointer":"iteration-05 evidence/i5-05/g6a1-pg-concurrency.raw（并发/绑定/role/audit 底证，审查 05 已锁定）","relation":"本包仅补 session/cache 前后回读，与该并发批次同对象同时间窗"}

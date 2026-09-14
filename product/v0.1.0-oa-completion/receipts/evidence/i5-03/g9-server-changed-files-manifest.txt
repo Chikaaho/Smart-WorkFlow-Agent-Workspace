@@ -1,0 +1,46 @@
+# I5 复验 03 最后候选 manifest（工具生成 + sha256sum -c 回读）
+# Server 最后候选: 4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+# 中间候选: 5e976b898aa0d55061402f1ecbf366ed0060bb57（iteration-02）
+# 基点: aaafd747b41622810870b0609afa6a0dcd89d553（iteration-01 候选）
+# Web 最后候选: 5788ead33c4347214a350d124331237e85068bdf（基点 fc5f70b）
+# 生成/校验时间: 2026-09-13T13:35:24.330Z
+# 手段: git diff --name-only → sha256sum → sha256sum --quiet -c 回读（exit 0，33 项全部 OK）
+# 回读命令: git diff aaafd747 --name-only | xargs sha256sum > sums.txt && sha256sum --quiet -c sums.txt
+# 变更文件数: 33
+
+bdee80bfbdf419feb3ca87208f748778921d548c0f9bd164a28a6982e3c97d6a *sw-basic/sw-basic-iot/src/main/java/com/sw/ck/iot/service/impl/CommandQueueServiceImpl.java
+26bd4d3957f8af9ddc037286135b801c1aa437ca68256cea8c45b870d4c8aa70 *sw-basic/sw-basic-job/sw-basic-job-biz/src/main/java/com/sw/ck/job/service/impl/JobInfoServiceImpl.java
+06330b4e098af1eb13c663180a5c9fd5f19255df9adbe8c21b0cf6cd4740113c *sw-biz/sw-biz-openapi/sw-biz-openapi-api/src/main/java/com/sw/ck/openapi/api/exception/OpenApiErrorCode.java
+686199be898ea6f0c03010f7508f766d3a937eea18836cea7a3287246e0b352d *sw-biz/sw-biz-openapi/sw-biz-openapi-biz/src/main/java/com/sw/ck/openapi/biz/service/OpenApiAuthService.java
+02bfce3c1f1ba5c284af53770013b09c1c4e7313e3bc3ffa08328bc809393b6d *sw-biz/sw-biz-openapi/sw-biz-openapi-biz/src/test/java/com/sw/ck/openapi/biz/service/OpenApiServiceTest.java
+fa7bc0f343ef0711faefa93be680bfe9603564cbe074e3a4e73e8e4c33e79476 *sw-biz/sw-biz-system/sw-biz-system-api/src/main/java/com/sw/ck/system/api/tenant/TenantValidityFacade.java
+710a915ae4876527a3981c1ec5e39b06d46c9ef0a146a8cce1f1469b35b4ad8f *sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/config/SystemAutoConfiguration.java
+7ef89e4897b8ac305ae32f6f73efdd1967bade62fd6e7e51a1db0461cc692e88 *sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/controller/SsoAuthController.java
+c8e94c80d9bbb5244ba18f99865f85ee80bf68535d34529515412d6067d04719 *sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/sso/SsoAuthService.java
+4a632e9b61508aa510cf7b359bfc5fbb735663f777f13207a76c878dca65ef6a *sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/sso/SsoCallbackPolicy.java
+a8393ad4973ad96d1134f0b93b8a7f6f605651ea18a39515f20d60a4e5c28b13 *sw-biz/sw-biz-system/sw-biz-system-biz/src/main/resources/db/migration/system/h2/V86__i5_provider_app_unique.sql
+1ee049c95ec39f12b04a430bb51d08f75b99e8103752e0e56e2c7b86fd232860 *sw-biz/sw-biz-system/sw-biz-system-biz/src/main/resources/db/migration/system/h2/V87__i5_binding_digest_global_unique.sql
+a8393ad4973ad96d1134f0b93b8a7f6f605651ea18a39515f20d60a4e5c28b13 *sw-biz/sw-biz-system/sw-biz-system-biz/src/main/resources/db/migration/system/postgresql/V86__i5_provider_app_unique.sql
+1ee049c95ec39f12b04a430bb51d08f75b99e8103752e0e56e2c7b86fd232860 *sw-biz/sw-biz-system/sw-biz-system-biz/src/main/resources/db/migration/system/postgresql/V87__i5_binding_digest_global_unique.sql
+064ec262cb226541027021eba360eedd61c4b432d0b3c570b5f1ea716050a4d6 *sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/sso/SsoAuthServiceTest.java
+fc71d9490e58ceaaa480b729e79f2a3cc9d24416c59d3bd3a745b424d1ab114c *sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/queue/PersistentBpmCommandQueue.java
+8ce92be6db3e0832b9d23abf49593349afbdf0a175ebf91025102c9866862ac4 *sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/TaskDeadlineScheduler.java
+5fd3a4efa27b2b278fe8c340fb203714705a0fea11ea3d8822440eb870a7401d *sw-bootstrap/src/main/java/com/sw/ck/bootstrap/verify/BpmVerificationRunner.java
+20636575be8437a8756e12f2943e450fc2bbc2014105cc66d91d80b532434cc9 *sw-bootstrap/src/main/java/com/sw/ck/bootstrap/verify/VerificationRunner.java
+c82b3ec345afd71230465c497ed04d3907b1067f89af891b4bed0c8a6b32eb1e *sw-bootstrap/src/main/resources/application-dev.yml
+3e48de1fd4a9b0d46e46638517de915946158bbb1cb8952837aee9a650c3fba4 *sw-bootstrap/src/main/resources/application.yml
+86878abed19303f3b63bc6ebb61807c04ab17bec88beb8d39380cd6c7c076877 *sw-bootstrap/src/main/resources/db/migration/devseed/h2/V900__i5_tenant100_test_fixtures.sql
+965f611ddf0e284e808b74de377e97131a98d03f2b371b99b364026b9b45a80c *sw-bootstrap/src/main/resources/db/migration/devseed/h2/V901__i5_g2_g4_negative_fixtures.sql
+11709e8b4752f0d8c13acb2881e5bdbbcd5ca225c2275adcb39a9d8ea2f8672c *sw-bootstrap/src/main/resources/db/migration/devseed/h2/V902__i5_g2_g6_fixtures.sql
+bf673ef352fac6b9e5d5aa1e0abeafb53370bc919a4a19bba55d71e6444b2f3d *sw-bootstrap/src/main/resources/db/migration/h2/V85__i5_seed_default_tenant.sql
+aadcbc809ab0d24f6894c47f66fdae3c0a94ec79973d1b7cfbf6b0f0be65edc2 *sw-bootstrap/src/main/resources/db/migration/h2/V88__i5_drop_form_key_global_unique.sql
+a14062a19c4287bf01c4fd3d8c2f74493dfa537b1d8b21b805b70a4ce4af9080 *sw-bootstrap/src/main/resources/db/migration/postgresql/V85__i5_seed_default_tenant.sql
+c088a657fb82acd4d491430172f04f987a3edec34bc24a5f98fddd238326ca62 *sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainH2Test.java
+c1adf98e791472cb68bbfd1df3e295c9e44dc0f363279e7f319e2866cc012b2a *sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainPostgresTest.java
+81aa9d618cd7c02f6a2e5b764d8cb1c46f86df86034a63db7d80e77045f7eaba *sw-bootstrap/src/test/java/com/sw/ck/bootstrap/i5/I5ProdProfileSecurityBootTest.java
+979c091968e8170db85bf086895df36a94c04e16fabdda683063fb4f72b3307b *sw-bootstrap/src/test/java/com/sw/ck/bootstrap/i5/ProdBootTestApplication.java
+343dbd42377b72a7577427991bf3607ce4d3a2f49cd58b393579043ac144f4fc *sw-framework/sw-common/src/main/java/com/sw/ck/common/exception/GlobalExceptionHandler.java
+a92734bbeea630220a5665abd0b83ded1f4bbe6712317368137298c78150532f *sw-framework/sw-security/src/main/java/com/sw/ck/security/config/SecurityProperties.java
+
+# 回读校验执行记录：sha256sum --quiet -c 输出无 FAILED，退出码 0（33 文件）。
+# 清单不含清单自身（本清单位于工作区回执目录，不在两仓候选文件集内）。

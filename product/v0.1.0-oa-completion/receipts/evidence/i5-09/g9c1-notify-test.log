@@ -1,0 +1,168 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Smart-WorkFlow                                                     [pom]
+[INFO] Smart-WorkFlow :: Common                                           [jar]
+[INFO] Smart-WorkFlow :: Security                                         [jar]
+[INFO] Smart-WorkFlow :: Basic :: Notify :: API                           [jar]
+[INFO] Smart-WorkFlow :: Basic :: Notify :: Biz                           [jar]
+[INFO] 
+[INFO] ----------------------< com.sw.ck:smart-workflow >----------------------
+[INFO] Building Smart-WorkFlow 1.0.0-SNAPSHOT                             [1/5]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ------------------------< com.sw.ck:sw-common >-------------------------
+[INFO] Building Smart-WorkFlow :: Common 1.0.0-SNAPSHOT                   [2/5]
+[INFO]   from sw-framework\sw-common\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-common ---
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-common ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-common ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-framework\sw-common\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-common ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-common ---
+[INFO] 
+[INFO] -----------------------< com.sw.ck:sw-security >------------------------
+[INFO] Building Smart-WorkFlow :: Security 1.0.0-SNAPSHOT                 [3/5]
+[INFO]   from sw-framework\sw-security\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-security ---
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-security ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-security ---
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-security ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-security ---
+[INFO] 
+[INFO] -------------------< com.sw.ck:sw-basic-notify-api >--------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Notify :: API 1.0.0-SNAPSHOT   [4/5]
+[INFO]   from sw-basic\sw-basic-notify\sw-basic-notify-api\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-basic-notify-api ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-notify\sw-basic-notify-api\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-basic-notify-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-basic-notify-api ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-notify\sw-basic-notify-api\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-basic-notify-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-basic-notify-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] -------------------< com.sw.ck:sw-basic-notify-biz >--------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Notify :: Biz 1.0.0-SNAPSHOT   [5/5]
+[INFO]   from sw-basic\sw-basic-notify\sw-basic-notify-biz\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-basic-notify-biz ---
+[INFO] Copying 8 resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-basic-notify-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-basic-notify-biz ---
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-basic-notify-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-basic-notify-biz ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.sw.ck.notify.controller.NotifyTemplateSecurityIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-09-14T09:04:47.087+08:00  INFO 29104 --- [           main] .c.NotifyTemplateSecurityIntegrationTest : Starting NotifyTemplateSecurityIntegrationTest using Java 21.0.5 with PID 29104 (started by hjxch in E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-notify\sw-basic-notify-biz)
+2026-09-14T09:04:47.090+08:00  INFO 29104 --- [           main] .c.NotifyTemplateSecurityIntegrationTest : No active profile set, falling back to 1 default profile: "default"
+2026-09-14T09:04:47.734+08:00  INFO 29104 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-09-14T09:04:47.736+08:00  INFO 29104 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-09-14T09:04:47.801+08:00  INFO 29104 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 0 Redis repository interfaces.
+2026-09-14T09:04:48.340+08:00  WARN 29104 --- [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 610235d1-9806-4f07-a42e-7fbf3142787c
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-09-14T09:04:48.361+08:00  INFO 29104 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (E:\Maven\repository\net\bytebuddy\byte-buddy-agent\1.15.11\byte-buddy-agent-1.15.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.5.9 
+2026-09-14T09:04:50.844+08:00  INFO 29104 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-14T09:04:50.844+08:00  INFO 29104 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-14T09:04:50.964+08:00  INFO 29104 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 120 ms
+2026-09-14T09:04:51.514+08:00  INFO 29104 --- [           main] .c.NotifyTemplateSecurityIntegrationTest : Started NotifyTemplateSecurityIntegrationTest in 4.693 seconds (process running for 5.467)
+2026-09-14T09:04:51.527+08:00  INFO 29104 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-14T09:04:51.748+08:00  INFO 29104 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:notifytpl_sec user=SA
+2026-09-14T09:04:51.749+08:00  INFO 29104 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+[G2-e] template:view-only POST 创建: HTTP 403 msg=无权限, 行数 0->0
+2026-09-14T09:04:52.406+08:00  INFO 29104 --- [           main] c.s.c.n.c.NotifyTemplateController       : 模板通知已发送: code=G2_MGR_SEND, recipient=9, msgId=2099303332917723138
+[G2-c4] manager POST send: HTTP 200 code=0 msgId=2099303332917723138, title=你好 张三, bizType=SYSTEM, 通知行数 0->1
+[G2-d1] notify:view-only GET 列表: HTTP 403 msg=无权限
+[G2-d2] template:view GET 列表: HTTP 200 code=0 total=2 records=2 firstCode=G2_LIST_B
+[G2-b2] notify:view-only toggle/delete/send: 全部 HTTP 403 msg=无权限, 目标行 enabled=true deleted=0, 通知行数 0->0
+[G2-a1] 未认证 POST 创建: HTTP 401, body={"code":401,"msg":"未认证"}, 行数 0->0
+[G2-a2] 未认证 toggle/delete/send: 全部 HTTP 401 msg=未认证, 模板行数 0->0, 通知行数 0->0
+[G2-b1] notify:view-only POST 创建: HTTP 403, body={"code":403,"msg":"无权限"}, 行数 0->0
+[G2-c3] manager DELETE ×2（幂等）: HTTP 200 ×2, 落库 deleted=1, 有效行数=0
+[G2-c2] manager PUT toggle(enabled=false): HTTP 200 code=0, 落库 enabled=false
+[G2-c1] manager POST 创建: HTTP 200 code=0 id=2099303333764972546, 落库 tenant_id=100 create_by=7, 行数 0->1
+[G2-a3] 未认证 GET 列表: HTTP 401, msg=未认证
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.121 s -- in com.sw.ck.notify.controller.NotifyTemplateSecurityIntegrationTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Smart-WorkFlow 1.0.0-SNAPSHOT:
+[INFO] 
+[INFO] Smart-WorkFlow ..................................... SUCCESS [  0.002 s]
+[INFO] Smart-WorkFlow :: Common ........................... SUCCESS [  0.888 s]
+[INFO] Smart-WorkFlow :: Security ......................... SUCCESS [  0.105 s]
+[INFO] Smart-WorkFlow :: Basic :: Notify :: API ........... SUCCESS [  0.044 s]
+[INFO] Smart-WorkFlow :: Basic :: Notify :: Biz ........... SUCCESS [  6.980 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.324 s
+[INFO] Finished at: 2026-09-14T09:04:52+08:00
+[INFO] ------------------------------------------------------------------------

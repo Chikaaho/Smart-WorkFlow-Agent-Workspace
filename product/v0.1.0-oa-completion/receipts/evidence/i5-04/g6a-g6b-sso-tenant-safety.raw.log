@@ -1,0 +1,29 @@
+atomic_id=G6a1,G6b1
+captured_at=2026-09-13T22:07:58+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889 (working tree under test)
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=JVM 21; Maven test; SSO clients are in-process controlled doubles
+database=mock state/binding/audit mappers; no role/session writes in service fixture
+tenant_id=100 invalid callback case; tenant_id=2 concurrent-binding race case
+actor_user=2; object=state id 17 / external subject digest computed in service and not emitted
+request_method=SERVICE
+request_path=SsoAuthService.handleCallback / SsoAuthService.bind
+request_body_hash=code/state/external subject are not persisted in evidence
+response_transport_status=exception boundary
+response_business_code=IllegalStateException with tenant-invalid or cross-tenant binding rejection
+
+[G6b1-invalid-tenant-callback]
+state=unconsumed, unexpired, provider=WECOM, tenant=100; TenantValidityService.requireValid throws before state CAS consume and before provider exchange; stateMapper.update delta=0; controlled provider outbound delta=0 by call-path assertion.
+
+[G6a1-unique-race]
+pre-read external binding=null, user binding=null, cross-tenant count=0; binding insert raises DuplicateKeyException (database unique-key race simulation); service converts it to business rejection and writes only one DENIED CONFLICT_REJECTED audit record; no success audit, role write, or session write.
+
+[assertions]
+invalid_tenant_callback_rejected_before_state_consume=true
+invalid_tenant_callback_state_update_before=0
+unique_constraint_race_fail_closed=true
+unique_constraint_race_success_side_effects=0
+role_rows_before=not applicable (no role mapper in service)
+role_rows_after=not applicable
+cleanup=LoginUserHolder.clear in @AfterEach; no process or port opened
+uncovered=live concurrent two-tenant PostgreSQL race, ticket exchange HTTP, and real provider code exchange were not re-run; unbound-login behavior remains the existing active-binding query path
