@@ -1,0 +1,19 @@
+atomic_id=G8-DOC / G8-OWNER-HANDOFF
+captured_at=2026-09-14T09:52:07+0800
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=486b1116eb6016024c8e1e4a00b50244af2f3cb5（iteration-10 最终工作树；前轮 30fd54b2a7ddab4addeb9e30cbe0a2fae9ee7b91）
+web_sha=5788ead33c4347214a350d124331237e85068bdf（零修改）
+environment=Windows 11; git write-tree（临时索引含未跟踪文件）；sha256sum manifest verify
+database=不适用
+tenant_id=不适用
+actor=executor-local-dev
+object_ids=交付物=Smart-WorkFlow-aPaaS-server/docs/sso/{owner-acceptance-handbook.md,provider-config-example.yml}
+positive_assertion=三 Provider 官方文档对照完成（doc-comparison.md，绑定官方 URL+访问日期）；确证差异 1 处（FEISHU response_type=code）已修复并过聚焦+模块回归（SsoAuthServiceTest 22/22、system-biz 295/0/0/0）；占位样例默认禁用态；秘密零残留扫描 NO-HITS；manifest verify exit=0
+negative_assertion=增量仅触及 G8-DOC-FEISHU 授权 URL 一行与 docs/sso 新增文档；未重验锁定项；未发起真实 Provider 出站调用；未写任何真实凭据；原 G8 三条真实链保持 WAIT_OWNER_ACCEPTANCE
+positive_pass=true
+negative_pass=true
+cleanup=不适用
+uncovered=G8-WECOM/G8-FEISHU/G8-DINGTALK 真实成功链=Owner 后续验收
+observed=
+[delta] {"from":"30fd54b2","to":"486b1116eb6016024c8e1e4a00b50244af2f3cb5","scope":"FeishuSsoProviderClient 授权 URL 补 response_type=code + docs/sso 交接包（手册+禁用态样例）+ evidence/i5-10"}
+[manifest] {"file":"g9-doc-manifest.sha256","entries":"dedup","verify_exit":0}

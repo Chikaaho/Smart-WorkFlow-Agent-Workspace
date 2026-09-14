@@ -9,7 +9,7 @@
 
 ## Owner 优先级覆盖
 
-**2026-09-13 P0 版本当前规划**：P60成熟OA目标`0.1.0`、当前迭代`0.0.3`，整体`IN_PROGRESS`。I1—I4 **COMPLETED（规划已确认）**，I5—I6未开始。I4终态同步最终复核03 `PASSED`，I4规划确认值已投影完成、四个I4方向均归档`passed/`；当前唯一入口=`search_task/v0.1.0-oa-completion-i5-current-seams.md`，唯一动作=I5第三方SSO现状接缝只读探索（不授权实现）。功能数44、✅46/🟦22/⬜22、ADV64与开放P编号不变。
+**2026-09-14 P0 版本当前规划**：P60成熟OA目标`0.1.0`、当前迭代`0.0.3`，整体`IN_PROGRESS`。I1—I4 **COMPLETED（规划已确认）**；**I5=`COMPLETED（待规划确认，2026-09-14）`**（功能级验收 `planning-review-stage-i5-v0.0.3-oa-owner-waiver-01-passed.md` PASSED；三 Provider 真实成功链按 Owner 2026-09-14 裁决**延期免验/未验证**；主方向已归档`passed/`）；I6通知与版本收口未开始。当前唯一入口=`product/v0.1.0-oa-completion/ready/direction-stage-i5-terminal-sync.md`，下一动作=等待 Planner 终态复核 I5 阶段三终态同步回执 01，确认后由 Planner 形成 I6 正式方向；远程推送待 Owner 对具体远端/分支/范围授权。功能数44、✅46/🟦22/⬜22、ADV64与开放P编号不变。
 
 **2026-09-08 P21 终态基线（P60 立项前历史点）**：P21功能级 **PASSED**，阶段三补证 TS1/TS2 经 `planning-final-review-terminal-sync-p21-iot-02-passed.md` 复核通过，正式确认为 **COMPLETED（规划已确认，2026-09-08）**。功能44、清单✅46/🟦22/⬜22、P21核销、I14关闭均锁定；主方向与阶段三方向均在passed。当时无活动正式功能并等待Owner选择，该下一动作现已由上方 P60 当前规划取代。
 
@@ -69,12 +69,14 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 - 节点扩展：受控函数封装，用于节点审批人解析及节点结果返回；
 - 审批意见：节点可绑定以低代码表单为壳子的审批意见表单并保留版本化历史；
 - 流程运营与工作台：模板中心、监控、基础分析、流程专用跨系统接入、批量审批、流程交接，以及我发起的、草稿、流程分类/常用事项、待办、已办、抄送和消息入口；
-- SSO：企业微信、飞书、钉钉和微信小程序；
-- 通知：站内信、短信、飞书卡片、钉钉、企业微信卡片、微信小程序和邮件。
+- SSO：企业微信、飞书和钉钉；
+- 通知：站内信、短信、飞书卡片、钉钉、企业微信卡片和邮件。
+- 冻结候选：微信小程序客户端、SSO 与通知不属于当前 P60/0.1.0 完成条件。
+- 硬编码审计延期风险：MinIO/MQTT 生产默认凭据、当前不可达的腾讯 Hook 签名边界与未使用的前端 `checkDataScope` 占位不并入 I5；保留为后续安全/基础设施候选，不因 I5 完成自动关闭。
 
 #### 3. 排期与状态
 
-采用六次迭代：I1 组织与权限底座；I2 低代码表单收口；I3 人工审批与自研流程设计器；I4 编排、流程运营与工作台；I5 四类 SSO；I6 七类通知与版本总验收。每次迭代独立验收，全部通过后再形成 0.1.0 固定候选。
+采用六次迭代：I1 组织与权限底座；I2 低代码表单收口；I3 人工审批与自研流程设计器；I4 编排、流程运营与工作台；I5 三类 SSO；I6 六类通知与版本总验收。每次迭代独立验收，全部通过后再形成 0.1.0 固定候选。
 
 #### 3.1 已完成插单：S-DEV-CAPTCHA-01
 
@@ -89,7 +91,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 
 蓝凌官方公开材料还包含自由/嵌入式/即席子流程、流程仿真、完整流程大数据分析，以及页面/图表/报表设计、动作流/数据流/连接流、主数据整合、多级门户、内容引擎、知识搜索和应用市场。它们属于更广的 PaaS 能力，不作为 P60 的“完整 OA”通过条件；现已正式登记为 8 个高级能力模块、64 条稳定明细，见 [高级能力功能明细清单](../product/v0.1.0-oa-completion/ready/advanced-capability-feature-checklist.md)。P60 只吸收与日常 OA 交易闭环直接相关的最小能力，避免版本范围失控；对标详情与来源见正式方向 §3.10—§3.11。
 
-成熟OA路线方向：[v0.1.0 OA全功能收口](../product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md)；当前迭代=`0.0.3`。I1—I4均`COMPLETED（规划已确认）`，I5—I6未开始。I4终态同步最终复核03[已PASSED](../product/v0.1.0-oa-completion/receipts/planning-final-review-terminal-sync-stage-i4-v0.0.3-oa-iteration-03-passed.md)，[规划确认终态投影](../product/v0.1.0-oa-completion/passed/direction-stage-i4-final-confirmed-state-projection.md)已完成（回执[投影回执01](../product/v0.1.0-oa-completion/receipts/final-state-projection-stage-i4-v0.0.3-oa-iteration-01.md)），四个I4方向均已归档`passed/`；当前唯一入口=[I5 SSO现状接缝探索](../search_task/v0.1.0-oa-completion-i5-current-seams.md)，唯一动作=I5只读探索，结论回传`search_fallback/`。外部SSO/通知渠道仍须有真实官方测试应用、沙箱或可控账号行为证据。
+成熟OA路线方向：[v0.1.0 OA全功能收口](../product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md)；当前迭代=`0.0.3`。I1—I4均`COMPLETED（规划已确认）`；**I5功能级`PASSED`（Owner延期免验三Provider真实链）、阶段`COMPLETED（待规划确认，2026-09-14）`**，主方向已归档`passed/`；I6未开始。当前唯一入口=[I5阶段三终态同步方向](../product/v0.1.0-oa-completion/ready/direction-stage-i5-terminal-sync.md)，下一动作=等待Planner终态复核[终态同步回执01](../product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md)。
 
 ## 一、已开发且未满足（D83 回执确认：90/90 清单一致，缺口逐行核实，此为全量索引）
 
@@ -145,7 +147,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 | P57 | BPM Engine 统一流程节点扩展能力 | Owner 2026-09-02 补充需求；优先级 P1；XL | ✅ **已核销/完成**（2026-09-03，功能级 PASSED + 阶段三 `COMPLETED（已确认）`；不对应既有明细、90 项明细状态零变化、功能数 40、清单 ✅34/🟦23/⬜33）；主方向与阶段三方向均已归档 `passed/` |
 | P58 | 流程节点界面与具体能力优化 | Owner 2026-09-02/03 补充需求；优先级 P1；XL | ✅ **已核销/完成**（2026-09-04，功能级 PASSED + 阶段三 `COMPLETED（已确认）`；不对应既有明细、90 项明细状态零变化、功能数 41、清单 ✅34/🟦23/⬜33、基线 1035/0/0/0（152份Surefire报告）、117f+1sk/1110t+3sk、H2 V49（49）/PG V49（48））；主方向与开发调试认证方向均已归档 `passed/` |
 | P59 | CH-aPaaS 项目说明、仓库与 main 分支整理及自动发版；三个示例仅记录 | Owner 2026-09-04；[统一需求](ch-apaas-project-update.md) | ✅ **已核销/完成**（**COMPLETED，规划已确认，2026-09-05**；功能级PASSED为2026-09-04审查07；非新增业务功能，功能数41、90明细与基线不变）；主方向及终态同步方向均归档 `passed/` |
-| P60 | 成熟OA `0.1.0`路线（组织权限、表单、流程设计与审批、流程运营、工作台、SSO、通知）；当前交付迭代`0.0.3` | Owner 2026-09-08；优先级P0；[正式方向](../product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md) | `IN_PROGRESS`；I1—I4 **COMPLETED（规划已确认）**（I4 终态同步最终复核 03 PASSED，四个I4方向均归档 `passed/`），I5—I6未开始；当前唯一入口=I5 SSO 现状接缝只读探索（`search_task/v0.1.0-oa-completion-i5-current-seams.md`，不授权实现）；统筹既有开放OA编号但不替代或提前核销 |
+| P60 | 成熟OA `0.1.0`路线（组织权限、表单、流程设计与审批、流程运营、工作台、SSO、通知）；当前交付迭代`0.0.3` | Owner 2026-09-08；优先级P0；[正式方向](../product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md) | `IN_PROGRESS`；I1—I4 **COMPLETED（规划已确认）**；**I5=`COMPLETED（待规划确认，2026-09-14）`**（功能级PASSED、主方向归档`passed/`、终态同步回执01已提交待Planner复核；三Provider真实成功链=Owner延期免验/未验证）；I6未开始；当前入口=I5终态同步方向；统筹既有开放OA编号但不替代或提前核销 |
 
 
 ### P51 Owner 补充需求定义（2026-08-30）

@@ -1,0 +1,33 @@
+atomic_id=G2a2
+captured_at=2026-09-14T00:30:56+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=a78ef93c40e5b3ff091ce909ffd80851f010404957800d8f52924f64f254cd10
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; real HTTP against dev-profile server（java -jar 当前候选, port 8080）；IoT 命令/结果回写走真实 HTTP 设备入口
+database=H2 (dev)；sw_iot_device / sw_iot_device_command 经只读外部数据源通道 SQL 回读
+tenant_id=100（有效）、0（跨租户对照）、200（停用）、300（过期）
+actor=user 9001 (t100 admin)、user 1 (t0 admin)、匿名
+object_ids=productId=prod-i5g2a2-mu016cy9; deviceName=dev-i5g2a2-001; t100 device id=2099173997963554818; command id=2099173998101966849; t0 冲突对照行 id=2099173998861135874
+positive_assertion=有效租户真实登记设备（sw_iot_device 行 tenant_id=100）并经真实命令入口下发（QUEUED）后由设备回调入口回写结果（SUCCESS），命令表增量 0→1 且 tenant_id=100
+negative_assertion=匿名派发 401；跨租户（t0）读详情/派发/列命令均 404 或空集（租户作用域查找）；停用 t200/过期 t300 用户登录即被拒（401 所属租户不可用）无法成为调用方；全部负向动作后命令表增量 0；同 (productId,deviceName) 在 t0 登记为独立行不冲突不泄漏，t100 设备原样（deviceKey=key-i5g2a2）
+positive_pass=true
+negative_pass=true
+cleanup=无删除动作；对象保留于本轮 H2 内存库
+uncovered=none for the captured G2a2 package（MQTT 原生通道需要外部 broker 1883，本环境未运行；HTTP 命令入口为方向 §5 允许的真实存在入口）
+observed=
+[register] {"status":200,"code":0,"id":"2099173997963554818","status_":"OFFLINE"}
+[device.sql] {"rows":[{"ID":"2099173997963554818","TENANT_ID":"100","PRODUCT_ID":"prod-i5g2a2-mu016cy9","DEVICE_NAME":"dev-i5g2a2-001","STATUS":"OFFLINE"}]}
+[rows.before] {"CMDS":"0"}
+[dispatch] {"status":200,"code":0,"commandId":"2099173998101966849","status_":"QUEUED"}
+[reportResult] {"status":200,"code":0,"status_":"SUCCESS"}
+[commands.list] {"status":200,"count":1,"first":{"status":"SUCCESS","type":"PROPERTY"}}
+[neg.anonDispatch] {"status":401,"code":401}
+[neg.crossDetail] {"status":200,"code":404,"msg":"设备不存在: productId=…, deviceName=…"}
+[neg.crossDispatch] {"status":200,"code":404,"msg":"设备不存在: …"}
+[neg.crossCommands] {"status":200,"count":0}
+[neg.disabledTenant] {"username":"t200admin","code":401,"msg":"所属租户不可用，无法登录","hasToken":false}
+[neg.expiredTenant] {"username":"t300admin","code":401,"msg":"所属租户不可用，无法登录","hasToken":false}
+[conflict.sameKeyOtherTenant] {"status":200,"code":0,"id":"2099173998861135874","tenant":"0"}
+[t100.device.intact] {"status":200,"code":0,"deviceKey":"key-i5g2a2"}
+[rows.after] {"CMDS":"1"}
+[commands.sql] {"rows":[{"ID":"2099173998101966849","TENANT_ID":"100","PRODUCT_ID":"prod-i5g2a2-mu016cy9","DEVICE_NAME":"dev-i5g2a2-001","COMMAND_KEY":"cmd-i5g2a2-1","STATUS":"SUCCESS"}]}

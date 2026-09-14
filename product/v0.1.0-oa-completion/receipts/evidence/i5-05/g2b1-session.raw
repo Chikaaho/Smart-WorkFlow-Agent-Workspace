@@ -1,0 +1,32 @@
+atomic_id=G2b1
+captured_at=2026-09-14T00:18:35+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=a78ef93c40e5b3ff091ce909ffd80851f010404957800d8f52924f64f254cd10
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; real HTTP against dev-profile server（java -jar 当前候选, port 8080）；Redis=本机 6379 真实实例
+database=H2 (dev) + Redis 会话缓存（键与 TTL 真实回读）
+tenant_id=1000（限时租户：seed 后 180 秒过期，权威 expire_at 见 observed）与 100 对照
+actor=user 9401 (t1000admin) 与 user 9001 (t100admin 对照)
+object_ids=sys_tenant row 1000（status=0, expire_at=2026-09-14 00:17:53）；access token digest 前缀 fb2b6ec70f16（首登）/ 0671027e0826（更早预登）；refresh cookie 存在；Redis 会话键 sw:security:login-user:9401
+positive_assertion=有效租户内登录 200、me 200（tenantId=1000, roles=[t1000_admin]）、refresh cookie 签发，Redis 会话行存在（TTL 816）
+negative_assertion=权威 expire_at 到点后：新登录 401「所属租户不可用，无法登录」、refresh 401「所属租户不可用，会话已终止」；既有 access 装载在缓存剔除后（下一次权威装载）401 未认证，Redis 行被清理（exists 1→0）；t100 对照会话不受影响
+positive_pass=true
+negative_pass=true
+cleanup=仅删除本轮 t1000 的会话缓存键；未动其他租户对象
+uncovered=none for the captured G2b1 package（缓存窗口内 me 仍 200 属缓存语义，已在 observed 如实记录，权威收敛由缓存剔除后 401 证明）
+observed=
+[00:15:58 预登] {"status":200,"code":0,"hasToken":true,"expiresInSeconds":"900","tokenSha256Prefix":"0671027e0826","me":{"status":200,"tenantId":"1000","username":"t1000admin"}}
+[G2b1.firstLogin] {"at":"2026-09-13T16:17:22.659Z","status":200,"code":0,"hasToken":true,"hasRefreshCookie":true,"tokenSha256Prefix":"fb2b6ec70f16"}
+[G2b1.meValid] {"status":200,"code":0,"tenantId":"1000","roles":["t1000_admin"]}
+[G2b1.dsCreate] {"code":0,"id":"2099170585809170433"}
+[G2b1.tenantRow1000] {"rows":[{"ID":"1000","STATUS":0,"EXPIRE_AT":"2026-09-14 00:17:53"}]}
+[G2b1.redisSessionBefore] {"exists":1,"ttl":816}
+[G2b1.waitingForExpiry] {"until":"2026-09-13T16:18:35.000Z"}
+[G2b1.tenantRowAfterExpiry] {"rows":[{"ID":"1000","STATUS":0,"EXPIRE_AT":"2026-09-14 00:17:53"}]}
+[G2b1.loginAfterExpiry] {"at":"2026-09-13T16:18:35.012Z","status":200,"code":401,"msg":"所属租户不可用，无法登录","hasToken":false}
+[G2b1.refreshAfterExpiry] {"status":200,"code":401,"msg":"所属租户不可用，会话已终止"}
+[G2b1.meWithCacheStill] {"status":200,"code":0}
+[G2b1.redisDel] {"del":1}
+[G2b1.meAfterAuthorityReload] {"status":401,"code":401,"msg":"未认证"}
+[G2b1.redisSessionAfter] {"exists":0}
+[G2b1.t100ControlMe] {"status":200}

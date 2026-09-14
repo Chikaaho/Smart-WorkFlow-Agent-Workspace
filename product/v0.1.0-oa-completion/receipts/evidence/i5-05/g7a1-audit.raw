@@ -1,0 +1,26 @@
+atomic_id=G7a1
+captured_at=2026-09-14T01:03:20+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=本轮采集对应含审计修复与 V903 的工作树（最终 SHA 以 G9a1 核对为准）
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; 真实 HTTP（dev server, java -jar 含审计修复候选）；DENIED 事件由 G5b1/G6b1 真实拒绝动作产生（重放/篡改/错配/换票失败/绑定冲突）
+database=H2 (dev)；sys_sso_audit_record 经 HTTP 查询与只读外部数据源通道双重回读
+tenant_id=100（事件主租户）与 0（跨租户查询对照）
+actor=user 9001（t100 admin，有权查询）、user 9101（t100 空角色）、匿名、user 1（t0 admin 跨租户）
+object_ids=真实 DENIED 事件 8 条（REPLAY_REJECTED×6、CONFLICT_REJECTED×1、LOGIN_FAILED provider-mismatch×1）；摘要前缀 6bccfed8 命中事件 id=2099179561393225730
+positive_assertion=真实 DENIED 事件按 result=DENIED 命中 8 条；external digest 前缀筛选命中（LIKE '6bccfed8%' 返回完整摘要行）；provider/eventType/localUserId 筛选分别命中 9/1/3 条
+negative_assertion=未停用无权用户（t100nobody）查询 403；匿名 401；跨租户（t0 admin）查询仅见本租户事件（t0 视角 1 条=租户未知时的系统拒绝记录，租户 100 的 8 条 DENIED 不可见）
+positive_pass=true
+negative_pass=true
+cleanup=无删除动作；审计行保留于本轮 H2 内存库
+uncovered=none for the captured G7a1 package
+observed=
+[G7a1.byResultDENIED] {"count":8,"events":"REPLAY_REJECTED×6(WECOM/FEISHU/DINGTALK)、CONFLICT_REJECTED×1(WECOM, digestPrefix=6bccfed8)、LOGIN_FAILED provider-mismatch×1(DINGTALK)"}
+[G7a1.byProvider] {"count":9}
+[G7a1.byEventType] {"eventType":"CONFLICT_REJECTED","count":1}
+[G7a1.byUser] {"localUserId":9001,"count":3}
+[G7a1.digestFilter] {"rows":[{"ID":"2099179561393225730","PROVIDER":"WECOM","EVENT_TYPE":"CONFLICT_REJECTED","RESULT":"DENIED","EXTERNAL_DIGEST":"6bccfed841c1045c4ec04954cc7cfd13ec6173ea8163ea7123232a040b2b5ff1"}]}
+[G7a1.nobodyPerm] {"status":403,"code":403}
+[G7a1.anon] {"status":401,"code":401}
+[G7a1.crossTenant] {"tenantId":"0","count":1,"note":"仅系统级租户未知拒绝记录；t100 的 8 条 DENIED 对 t0 不可见"}
+[G7a1.fixNote] {"defect":"修复前拒绝审计随 @Transactional 回滚丢失（G7a1 首采 result=DENIED 命中 0）","fix":"SsoAuthService.auditDenial 以 REQUIRES_NEW 独立事务提交全部拒绝审计并为有 stateRow 的回调拒绝携带 state 所属租户；SsoAuthController 跨租户绑定候选 403 增补独立审计；SsoAuthServiceTest 22/22 回归通过"}

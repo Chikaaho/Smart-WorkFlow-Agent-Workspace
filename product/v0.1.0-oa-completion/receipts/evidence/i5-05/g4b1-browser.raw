@@ -1,0 +1,25 @@
+atomic_id=G4b1
+captured_at=2026-09-14T01:20:30+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=本轮采集对应含审计修复、票据兑换挂起修复与 V903 的工作树（最终 SHA 以 G9a1 核对为准）
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; 真实 Chromium IAB + Vite Web(5173) → dev Server(8080)；PC viewport 1280x800；移动 viewport 375x812（同一 SPA 会话仅切换视口，token 内存态保持）；dev 固定验证码 1234（Owner 指令）
+database=Server dev profile (H2)
+tenant_id=100
+actor=t100nobody / user 9101（同一浏览器会话）
+object_ids=currentUrl=/workspace 与 /404；可见选择器=工作台卡片（我的待办/我的已办/我发起的/抄送/常用事项/草稿/消息）+「配置」个人对话框；menubar 为空；网络对照 GET /api/system/user/list → 401
+positive_assertion=PC 与移动两视口同一会话普通工作台完整可用（截图 g4b1-pc.png / g4b1-mobile.png 存在）；「配置」仅为个人工作台布局对话框（组件显隐/顺序/常用事项/恢复默认），不调用管理 API、不授予管理能力
+negative_assertion=管理菜单不可见（menubar 空）；/system/user 深链与刷新均进入安全页 /404（「404 / 页面不存在」）；同源管理 API 请求被拒（无凭据 fetch → 401；管理调用在空菜单会话中无从发起，服务端权威拒绝由 G4a1 真实 HTTP 403 矩阵锁定）
+positive_pass=true
+negative_pass=true
+cleanup=浏览器停留工作台；无数据变更操作
+uncovered=none for the captured G4b1 package
+observed=
+[PC.workspace.snapshot] {"menubar":"空（无任何管理菜单项）","user":"无角色用户","cards":["我的待办","我的已办","我发起的","抄送","常用事项","草稿","消息"],"configButton":"工作台配置对话框（个人布局，仅组件显隐/顺序/常用事项选择/恢复默认/保存配置）"}
+[PC.deepLink] {"goto":"/system/user","result":"http://localhost:5173/404","page":"404 / 页面不存在"}
+[PC.refreshDeepLink] {"reload":"http://localhost:5173/404（保持安全页）"}
+[PC.screenshot] {"file":"g4b1-pc.png","bytes":63596}
+[MOBILE.sameSession] {"viewport":"375x812","url":"/workspace（SPA 未重载，同会话）","snapshot":"同一无角色工作台卡片集，无管理入口"}
+[MOBILE.deepLink] {"goto":"/system/user","result":"http://localhost:5173/404"}
+[MOBILE.screenshot] {"file":"g4b1-mobile.png","bytes":53103}
+[network.check] {"sameOriginFetch":"/api/system/user/list?pageNum=1&pageSize=5 → HTTP 401（无凭据）；带凭据管理请求 403 由 G4a1 HTTP 矩阵锁定"}

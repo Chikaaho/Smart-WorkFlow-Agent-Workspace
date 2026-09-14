@@ -1,0 +1,27 @@
+== G7b 修复后哨兵重扫（根 = 最后候选的服务端运行日志 + 全部 i5-03 证据 + 两仓源码/配置）
+== maybe扫描哨兵：sentinel-wecom-secret-g7（Provider secret 明文）/ sentinel-openapi-secret-g2a（OpenAPI secret 明文）/ i5-g6a-subject-9f3a 与 i5-g6b-subject（外部主体明文）/ 全部注入密钥值前缀
+-- 1) evidence/i5-03 归属面（排除本文件自身；命中=1 即本工具文件内的哨兵名称，非敏感值泄漏面）
+   sentinel-wecom-secret-g7:
+1
+   sentinel-openapi-secret-g2a:
+1
+   i5-g6a-subject-9f3a:
+1
+   i5-g6b-subject:
+1
+-- 2) 服务端最终运行日志（g5a/g1矩阵/dev-server-boot）
+   sentinel-wecom-secret-g7: 0
+   sentinel-openapi-secret-g2a: 0
+   i5-g6a-subject-9f3a: 0
+   i5-g6b-subject: 0
+-- 3) 注入密钥值前缀（dev 全量日志 + i5-03 证据）
+   JWT_SECRET 前缀命中=0
+   SW_SSO_CIPHER_KEY 前缀命中=0
+   SW_LOGIN_RSA_PRIVATE_KEY 前缀命中=0
+   SW_LOGIN_DIGEST_SECRET 前缀命中=0
+   SW_CIPHER_KEY 前缀命中=0
+-- 4) 源码/配置残留（两仓 main+resources，排除测试与 devseed 白名单哈希）
+   sentinel-wecom-secret-g7 src命中=0
+   sentinel-openapi-secret-g2a src命中=0
+   i5-g6a-subject-9f3a src命中=0
+   i5-g6b-subject src命中=0

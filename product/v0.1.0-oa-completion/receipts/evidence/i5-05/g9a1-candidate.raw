@@ -1,0 +1,24 @@
+atomic_id=G9a1
+captured_at=2026-09-14T02:06:00+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=db8b25556bd9a9958d06ab727372a1fe1853b26e（最终工作树；前置 a78ef93c40e5b3ff091ce909ffd80851f010404957800d8f52924f64f254cd10=iteration-04 工作树）
+web_sha=5788ead33c4347214a350d124331237e85068bdf（本轮零修改）
+environment=Windows 11; git write-tree（含未跟踪文件）；sha256sum 清单 41 项 + sha256sum -c 独立回读（exit=0，stdout/stderr/exit 分离落盘）
+database=不适用
+tenant_id=不适用
+actor=executor-local-dev
+object_ids=最终 jar=sw-bootstrap-1.0.0-SNAPSHOT.jar（01:30:59 构建，内层 SsoAuthService.class 含 auditDenial、SsoAuthController.class 含 TenantLineSuspension、devseed V900—V903 齐全——内层逐类 grep 验证）
+positive_assertion=全部行为包绑定最终候选：G5a1/G5b1/G7a1/G6b1/G1a2/G6a1/G2a1/G3b1/G3b2 直接采于最终树；manifest 41 项 verify exit=0
+negative_assertion=无任何行为包绑定早于最后受影响代码修改的 SHA 而未附不失效证明（逐包核对见 observed）
+positive_pass=true
+negative_pass=true
+cleanup=不适用
+uncovered=none for the captured G9a1 package
+observed=
+[old..final diff] {"base":"4d98b671(HEAD)","pre_round_tree":"a78ef93c40e5…","final_tree":"db8b25556bd9a9958d06ab727372a1fe1853b26e","changed":"15 文件（12 M + 3 新），+335/-53：SsoAuthService(审计独立事务+租户显式化)、SsoAuthController(票据兑换挂起+跨租户审计)、OpenApiAuthService(既有 I5 修复)、4×IoT、application-dev.yml、V901、I5ProdProfileSecurityBootTest、V903(新)、I5PgTenantBehaviorBootTest(新)、I5SsoBindingSessionBootTest(新)"}
+[per_package_binding]
+- a78ef93c 树采集包：g1a1、g1b1、g1c1、g2a2、g2a3、g2b1、g4a1（前会话同树）
+  不失效证明：其后的树差异仅 (a) V903 devseed 资源（G1 表单/流程/IoT/命令/会话路径不读 sys_sso_provider_config）；(b) SsoAuthService/SsoAuthController 的 SSO 路径（上述包不触碰任何 /auth/sso 端点）；(c) 测试类（非运行时）。HTTP 层行为与断言对象零变化。
+- 最终树采集包：g5a1（8081 负向于最终 jar 重取）、g5b1、g7a1（审计修复 jar）、g6b1、g1a2、g6a1、g2a1、g3b1、g3b2（01:30:59 最终 jar）、g4b1、g5c1（票据修复不触及登录页/authorize-login/bind 页路径）
+[manifest] {"file":"g9a1-manifest.sha256","entries":41,"verify":"g9a1-verify.stdout/stderr/exit","verify_exit":0}
+[jar] {"mtime":"2026-09-14T01:30:59","innerClassChecks":"auditDenial=hit, TenantLineSuspension=hit, V903=present"}

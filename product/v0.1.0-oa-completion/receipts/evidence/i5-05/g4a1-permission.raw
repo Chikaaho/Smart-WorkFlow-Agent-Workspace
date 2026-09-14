@@ -1,0 +1,17 @@
+atomic_id=G4a1
+captured_at=2026-09-13T23:31:20+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=a78ef93c40e5b3ff091ce909ffd80851f010404957800d8f52924f64f254cd10
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; local running Server HTTP API and Vite Web app; fixed development CAPTCHA 1234
+database=Server dev profile with seeded tenant/user data
+tenant_id=100
+actor=t100nobody / user 9101; active, no roles
+object_ids=login session; /system/auth/me; /system/auth/menus; user/dept/role/form/workflow management endpoints
+positive_assertion=the active no-role user logged in through real HTTP; me returned empty roles and permissions and dataScope was not ALL; menus returned an empty list
+negative_assertion=the same session received 403 for legal user, department, role, form, and workflow management requests
+positive_pass=true
+negative_pass=true
+cleanup=browser session left at ordinary workspace; no data mutation endpoints were called
+uncovered=none for the captured G4a1 HTTP matrix
+observed=POST /api/auth/login -> HTTP 200 code=0; GET /api/system/auth/me -> HTTP 200 code=0 roles=[] permissions=[] dataScope=[]; GET /api/system/auth/menus -> HTTP 200 code=0 count=0; POST /api/system/user/page?pageNum=1&pageSize=10 body={} -> HTTP 403; GET /api/system/dept/tree -> HTTP 403; POST /api/system/role/page?pageNum=1&pageSize=10 body={} -> HTTP 403; GET /api/form/def/page?pageNum=1&pageSize=10 -> HTTP 403; GET /api/workflow/defs?pageNum=1&pageSize=10 -> HTTP 403
