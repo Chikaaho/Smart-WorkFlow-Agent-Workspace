@@ -1,0 +1,6 @@
+send valid-self → 200 {"code":0,"msg":"success","data":{"channel":"EMAIL","status":"FAILED","externalMessageId":null,"failureReason":"邮件投递失败: IllegalArgumentException"}}
+send missing-user → 200 {"code":0,"msg":"success","data":{"channel":"EMAIL","status":"FAILED","externalMessageId":null,"failureReason":"无法解析收件邮箱（用户无效或未登记邮箱），拒绝发送"}}
+send cross-tenant → 200 {"code":0,"msg":"success","data":{"channel":"EMAIL","status":"FAILED","externalMessageId":null,"failureReason":"无法解析收件邮箱（用户无效或未登记邮箱），拒绝发送"}}
+send deleted-user → 200 {"code":0,"msg":"success","data":{"channel":"EMAIL","status":"FAILED","externalMessageId":null,"failureReason":"无法解析收件邮箱（用户无效或未登记邮箱），拒绝发送"}}
+send no-email-user → 200 {"code":0,"msg":"success","data":{"channel":"EMAIL","status":"FAILED","externalMessageId":null,"failureReason":"邮件投递失败: IllegalArgumentException"}}
+idempotent double send → {"code":0,"msg":"success","data":{"channel":"EMAIL","status":"FAILED","externalMessageId":null,"failureReason":"邮件投递失败: IllegalArgumentException"}} {"code":0,"msg":"success","data":{"channel":"EMAIL","status":"FAILED","externalMessageId":null,"failureReason":"邮件投递失败: IllegalArgumentException"}}

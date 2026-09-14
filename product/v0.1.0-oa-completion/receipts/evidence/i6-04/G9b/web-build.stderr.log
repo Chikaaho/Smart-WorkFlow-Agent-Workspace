@@ -1,0 +1,21 @@
+$ vue-tsc -b && vite build
+[INVALID_ANNOTATION] A comment "/* #__PURE__ */" in "node_modules/.pnpm/@vueuse+core@14.3.0_vue@3.5.38_typescript@6.0.3_/node_modules/@vueuse/core/dist/index.js" contains an annotation that Rolldown cannot interpret due to the position of the comment.
+      ╭─[ node_modules/.pnpm/@vueuse+core@14.3.0_vue@3.5.38_typescript@6.0.3_/node_modules/@vueuse/core/dist/index.js:3362:1 ]
+      │
+ 3362 │ /* #__PURE__ */
+      │ ───────┬───────  
+      │        ╰───────── comment ignored due to position
+      │ 
+      │ Help: For more information on how to use pure annotations correctly, check the documentation: https://rolldown.rs/in-depth/dead-code-elimination#pure
+──────╯
+
+[INVALID_ANNOTATION] A comment "/* #__PURE__ */" in "node_modules/.pnpm/@vueuse+core@14.3.0_vue@3.5.38_typescript@6.0.3_/node_modules/@vueuse/core/dist/index.js" contains an annotation that Rolldown cannot interpret due to the position of the comment.
+      ╭─[ node_modules/.pnpm/@vueuse+core@14.3.0_vue@3.5.38_typescript@6.0.3_/node_modules/@vueuse/core/dist/index.js:5780:23 ]
+      │
+ 5780 │ const defaultState = (/* #__PURE__ */ {
+      │                       ───────┬───────  
+      │                              ╰───────── comment ignored due to position
+      │ 
+      │ Help: For more information on how to use pure annotations correctly, check the documentation: https://rolldown.rs/in-depth/dead-code-elimination#pure
+──────╯
+
