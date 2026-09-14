@@ -1,0 +1,7 @@
+# G3f 原始流（2026-09-14）
+# 0) 修复前泄露取证：pre-fix-leak.txt（GRA 的 sys_user 完整行含邮箱/bcrypt 出现在 dev 运行日志 stdout，命中 141 处）
+#    根因：mybatis-plus log-impl=StdOutImpl 直写 stdout + dev 日志 debug
+# 1) 收敛实现：application.yml log-impl → Slf4jImpl；application-dev.yml / application-local.yml
+#    行级 SQL（org.springframework.jdbc/org.mybatis/mybatis-plus/mapper命名空间 com.sw.ck）收敛为 info
+# 2) 重启后真实 HTTP 流：http-exposure.log（u3 普通用户收件箱/偏好、u1 管理员记录列表/摘要详情/必要详情含审计）
+# 3) 修复后日志扫描：boot2.log 命中 example.invalid=0、subject_cipher/RSA/JWT/CIPHER_KEY=0（命令行 grep，输出在本包 postfix-scan.txt）

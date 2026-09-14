@@ -1,0 +1,16 @@
+# G9b 原始流（2026-09-14，最终实现快照 Server HEAD e941d74 / Web HEAD 0a746e3）
+# Server 正式门禁：mvn test（根目录全仓）→ server-gate-final.log
+#   结果：Tests run 1361, Failures 0, Errors 0, Skipped 0；BUILD SUCCESS；SERVER_EXIT=0
+#   含 I6 聚焦专项：I6NotifyClosureIntegrationTest、I6G1cRecoveryExhaustedBootTest、
+#   FlywayFullChain H2/PG、I6G7UpgradeDrillH2Test、I6G7bOldBaselineUpgradePostgresTest 等
+# Web 四门（各自独立原始流）：
+#   typecheck（vue-tsc）exit=0（web-typecheck-final.log，0 error）
+#   lint exit=0（web-lint-final.log，0 error 1 warning）
+#   test exit=0：1185 passed + 3 skipped（web-test-final.log）
+#   build exit=0（web-build-final.log）
+# 修复链（失败→修复→重跑受影响门）：
+#   attempt1 cipher bean 缺失（AuthFlow 窄上下文）→ NotifySubjectBindingServiceImpl 惰性化（commit 4f556df）
+#   attempt2 DraftSubmitCommandHandler.onFinalFailure Long 解析（commit 3676af1）
+#   attempt3-4 迁移门禁计数 V92 终点 + G7b 幂等化（commit e941d74）
+#   attempt4-5 环境铺设：PG 角色 chikan、smart_workflow.sw_iot_connection（对象铺设，登记于账本）
+#   attempt1 web：focus 深链 TS 守卫（commit 0a746e3）

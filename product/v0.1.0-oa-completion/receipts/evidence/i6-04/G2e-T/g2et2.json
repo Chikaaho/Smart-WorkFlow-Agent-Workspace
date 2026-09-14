@@ -1,0 +1,112 @@
+[
+ [
+  "0.toggle-enable",
+  {
+   "status": 200,
+   "body": {
+    "code": 0,
+    "msg": "success",
+    "data": null
+   }
+  }
+ ],
+ [
+  "2.preview-ok",
+  {
+   "status": 200,
+   "body": {
+    "code": 400,
+    "msg": "缺少变量: amount, due",
+    "data": null
+   }
+  }
+ ],
+ [
+  "3.type-mismatch-number",
+  {
+   "status": 200,
+   "body": {
+    "code": 400,
+    "msg": "缺少变量: amount, due",
+    "data": null
+   }
+  }
+ ],
+ [
+  "4.date-mismatch",
+  {
+   "status": 200,
+   "body": {
+    "code": 400,
+    "msg": "缺少变量: amount, due",
+    "data": null
+   }
+  }
+ ],
+ [
+  "5.enum-mismatch",
+  {
+   "status": 200,
+   "body": {
+    "code": 400,
+    "msg": "缺少变量: amount, due",
+    "data": null
+   }
+  }
+ ],
+ [
+  "6.email-mismatch",
+  {
+   "status": 200,
+   "body": {
+    "code": 400,
+    "msg": "缺少变量: amount, due",
+    "data": null
+   }
+  }
+ ],
+ [
+  "7.unknown-var-given",
+  {
+   "status": 200,
+   "body": {
+    "code": 400,
+    "msg": "缺少变量: amount, due",
+    "data": null
+   }
+  }
+ ],
+ [
+  "8.send-ok",
+  {
+   "status": 200,
+   "body": {
+    "code": 0,
+    "msg": "success",
+    "data": "2099411482677272577"
+   }
+  }
+ ],
+ [
+  "9.send-type-mismatch",
+  {
+   "status": 500,
+   "body": {
+    "code": 500,
+    "msg": "系统异常",
+    "data": null
+   }
+  }
+ ],
+ [
+  "10.send-zero-residue",
+  {
+   "status": 500,
+   "body": {
+    "code": 500,
+    "msg": "系统异常",
+    "data": null
+   }
+  }
+ ]
+]

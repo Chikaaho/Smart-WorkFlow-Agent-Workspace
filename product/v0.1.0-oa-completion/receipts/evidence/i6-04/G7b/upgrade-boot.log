@@ -1,0 +1,193 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-09-14T21:00:48.281+08:00  INFO 46424 --- [           main] com.sw.ck.bootstrap.StarterApplication   : Starting StarterApplication using Java 21.0.5 with PID 46424 (E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-bootstrap\target\classes started by hjxch in E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-bootstrap)
+2026-09-14T21:00:48.283+08:00  INFO 46424 --- [           main] com.sw.ck.bootstrap.StarterApplication   : The following 1 profile is active: "dev"
+2026-09-14T21:00:49.989+08:00  INFO 46424 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-09-14T21:00:49.991+08:00  INFO 46424 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-09-14T21:00:50.007+08:00  INFO 46424 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+2026-09-14T21:00:50.113+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphDebugNodeMapper' and 'com.sw.ck.agent.mapper.AgentGraphDebugNodeMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.113+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphDebugSessionMapper' and 'com.sw.ck.agent.mapper.AgentGraphDebugSessionMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.113+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphDefMapper' and 'com.sw.ck.agent.mapper.AgentGraphDefMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.113+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphExecutionMapper' and 'com.sw.ck.agent.mapper.AgentGraphExecutionMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.113+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphExecutionNodeMapper' and 'com.sw.ck.agent.mapper.AgentGraphExecutionNodeMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.113+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentMessageMapper' and 'com.sw.ck.agent.mapper.AgentMessageMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.113+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentModelConfigMapper' and 'com.sw.ck.agent.mapper.AgentModelConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.113+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentSessionMapper' and 'com.sw.ck.agent.mapper.AgentSessionMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.113+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentToolCallLogMapper' and 'com.sw.ck.agent.mapper.AgentToolCallLogMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.113+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentToolExternalConfigMapper' and 'com.sw.ck.agent.mapper.tool.AgentToolExternalConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.113+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentToolInternalConfigMapper' and 'com.sw.ck.agent.mapper.tool.AgentToolInternalConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.113+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.agent.mapper]' package. Please check your configuration.
+2026-09-14T21:00:50.115+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formConfigMapper' and 'com.sw.ck.form.mapper.FormConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.115+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formDefMapper' and 'com.sw.ck.form.mapper.FormDefMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.115+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formExtQueryMapper' and 'com.sw.ck.form.mapper.FormExtQueryMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.115+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formLifecycleAuditMapper' and 'com.sw.ck.form.mapper.FormLifecycleAuditMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.115+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formListConfigMapper' and 'com.sw.ck.form.mapper.FormListConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.115+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formSnapshotMapper' and 'com.sw.ck.form.mapper.FormSnapshotMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.115+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formTraceMapper' and 'com.sw.ck.form.mapper.FormTraceMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.115+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.form.mapper]' package. Please check your configuration.
+2026-09-14T21:00:50.116+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'jobInfoMapper' and 'com.sw.ck.job.mapper.JobInfoMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.116+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'jobLogMapper' and 'com.sw.ck.job.mapper.JobLogMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.117+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.job.mapper]' package. Please check your configuration.
+2026-09-14T21:00:50.118+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifyChannelConfigMapper' and 'com.sw.ck.notify.mapper.NotifyChannelConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.118+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifyMessageMapper' and 'com.sw.ck.notify.mapper.NotifyMessageMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.118+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifyRuleMapper' and 'com.sw.ck.notify.mapper.NotifyRuleMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.118+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifySendAttemptMapper' and 'com.sw.ck.notify.mapper.NotifySendAttemptMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.118+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifySubscriptionMapper' and 'com.sw.ck.notify.mapper.NotifySubscriptionMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.118+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifyTemplateMapper' and 'com.sw.ck.notify.mapper.NotifyTemplateMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.118+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifyTemplateVersionMapper' and 'com.sw.ck.notify.mapper.NotifyTemplateVersionMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.118+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.notify.mapper]' package. Please check your configuration.
+2026-09-14T21:00:50.121+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'storageFileMapper' and 'com.sw.ck.storage.mapper.StorageFileMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T21:00:50.121+08:00  WARN 46424 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.storage.mapper]' package. Please check your configuration.
+2026-09-14T21:00:50.123+08:00  INFO 46424 --- [           main] faultConfiguringBeanFactoryPostProcessor : No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2026-09-14T21:00:50.131+08:00  INFO 46424 --- [           main] faultConfiguringBeanFactoryPostProcessor : No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2026-09-14T21:00:50.604+08:00  WARN 46424 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration' of type [org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-09-14T21:00:50.606+08:00  WARN 46424 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'stringOrNumberMigrationVersionConverter' of type [org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration$StringOrNumberToMigrationVersionConverter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-09-14T21:00:50.965+08:00  INFO 46424 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2026-09-14T21:00:50.979+08:00  INFO 46424 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-14T21:00:50.979+08:00  INFO 46424 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2026-09-14T21:00:51.079+08:00  INFO 46424 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2026-09-14T21:00:51.080+08:00  INFO 46424 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2760 ms
+2026-09-14T21:00:52.088+08:00  INFO 46424 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1,master} inited
+2026-09-14T21:00:52.089+08:00  INFO 46424 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource - add a datasource named [master] success
+2026-09-14T21:00:52.090+08:00  INFO 46424 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+2026-09-14T21:00:52.375+08:00  INFO 46424 --- [           main] c.s.c.b.config.FlywayConfiguration       : Executing primary Flyway migration (locations = db/migration/{vendor})
+2026-09-14T21:00:52.420+08:00  INFO 46424 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://127.0.0.1:5432/i6_g7b_pg (PostgreSQL 18.4)
+2026-09-14T21:00:52.433+08:00  WARN 46424 --- [           main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 17.
+2026-09-14T21:00:52.538+08:00  INFO 46424 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 90 migrations (execution time 00:00.085s)
+2026-09-14T21:00:52.558+08:00  INFO 46424 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 87
+2026-09-14T21:00:52.574+08:00  INFO 46424 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "89 - i6 notify closure"
+2026-09-14T21:00:52.642+08:00  INFO 46424 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "90 - i6 notify menus"
+2026-09-14T21:00:52.665+08:00  INFO 46424 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "91 - i6 notify subject binding"
+2026-09-14T21:00:52.687+08:00  INFO 46424 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "92 - i6 notify flag boolean"
+2026-09-14T21:00:52.722+08:00  INFO 46424 --- [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 4 migrations to schema "public", now at version v92 (execution time 00:00.080s)
+2026-09-14T21:00:52.728+08:00  INFO 46424 --- [           main] c.s.c.b.config.FlywayConfiguration       : Primary Flyway migration completed
+2026-09-14T21:00:52.728+08:00  INFO 46424 --- [           main] c.s.c.b.config.FlywayConfiguration       : Detected database vendor: postgresql
+2026-09-14T21:00:52.728+08:00  INFO 46424 --- [           main] c.s.c.b.config.FlywayConfiguration       : Executing prod-update Flyway migration (vendor = postgresql, locations = db/prod-update/postgresql)
+2026-09-14T21:00:52.738+08:00  INFO 46424 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://127.0.0.1:5432/i6_g7b_pg (PostgreSQL 18.4)
+2026-09-14T21:00:52.744+08:00  WARN 46424 --- [           main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 17.
+2026-09-14T21:00:52.748+08:00  INFO 46424 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.003s)
+2026-09-14T21:00:52.758+08:00  INFO 46424 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2026-09-14T21:00:52.759+08:00  INFO 46424 --- [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-14T21:00:52.763+08:00  INFO 46424 --- [           main] c.s.c.b.config.FlywayConfiguration       : Prod-update Flyway migration completed (vendor = postgresql)
+2026-09-14T21:00:52.954+08:00  INFO 46424 --- [           main] c.s.c.b.e.c.BpmEngineAutoConfiguration   : BPM engine auto-configuration started (Flowable process engine)
+2026-09-14T21:00:53.106+08:00  INFO 46424 --- [           main] c.s.c.s.provider.CosStorageProvider      : COS 存储提供商初始化完成，bucket: , region: ap-guangzhou
+2026-09-14T21:00:53.108+08:00  INFO 46424 --- [           main] c.s.c.s.provider.LocalStorageProvider    : 本地存储提供商初始化完成，基路径: E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-bootstrap\uploads
+2026-09-14T21:00:53.250+08:00  INFO 46424 --- [           main] c.s.c.s.provider.MinioStorageProvider    : MinIO 客户端已创建，endpoint: http://localhost:9000
+2026-09-14T21:00:53.306+08:00  WARN 46424 --- [           main] c.s.c.s.provider.MinioStorageProvider    : MinIO 初始化时检查 bucket 失败，将在首次上传时重试: Failed to connect to localhost/[0:0:0:0:0:0:0:1]:9000
+2026-09-14T21:00:53.310+08:00  INFO 46424 --- [           main] c.s.c.s.provider.QiniuStorageProvider    : 七牛云存储提供商初始化完成，bucket: , domain: 
+2026-09-14T21:00:53.312+08:00  INFO 46424 --- [           main] c.s.c.s.p.StorageProviderRegistry        : 存储提供商注册表初始化完成，已注册类型: [cos, local, minio, qiniu]
+2026-09-14T21:00:53.796+08:00  INFO 46424 --- [           main] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2026-09-14T21:00:53.804+08:00  INFO 46424 --- [           main] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2026-09-14T21:00:53.804+08:00  INFO 46424 --- [           main] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2026-09-14T21:00:53.805+08:00  INFO 46424 --- [           main] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2026-09-14T21:00:53.805+08:00  INFO 46424 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2026-09-14T21:00:53.806+08:00  INFO 46424 --- [           main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2026-09-14T21:00:53.806+08:00  INFO 46424 --- [           main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2026-09-14T21:00:53.806+08:00  INFO 46424 --- [           main] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@7ce87db5
+2026-09-14T21:00:54.360+08:00  INFO 46424 --- [           main] c.sw.ck.iot.config.IotAutoConfiguration  : 使用 Mock IoT Provider（providerMode=mock)
+2026-09-14T21:00:55.089+08:00  INFO 46424 --- [           main] c.s.c.s.security.RsaLoginKeyManager      : 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+2026-09-14T21:00:55.939+08:00  INFO 46424 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : DynamicTableManager initialized with dialect: POSTGRESQL
+2026-09-14T21:00:56.182+08:00  INFO 46424 --- [           main] o.f.s.b.e.EventRegistryAutoConfiguration : No deployment resources were found for autodeployment
+2026-09-14T21:00:56.435+08:00  INFO 46424 --- [           main] o.f.c.e.i.a.DefaultAsyncTaskExecutor     : Creating thread pool queue of size 100
+2026-09-14T21:00:56.436+08:00  INFO 46424 --- [           main] o.f.c.e.i.a.DefaultAsyncTaskExecutor     : Creating thread factory with naming pattern flowable-async-task-invoker-%d
+2026-09-14T21:00:56.437+08:00  INFO 46424 --- [           main] o.f.c.e.i.a.DefaultAsyncTaskExecutor     : Creating executor service with corePoolSize 8, maxPoolSize 8 and keepAliveTime 5000
+2026-09-14T21:00:56.638+08:00  INFO 46424 --- [           main] c.s.c.b.e.c.BpmEngineAutoConfiguration   : Flowable engine bound to master DataSource (extracted from DynamicRoutingDataSource)
+2026-09-14T21:00:56.644+08:00  INFO 46424 --- [           main] o.f.s.SpringProcessEngineConfiguration   : Found 2 Engine Configurators in total:
+2026-09-14T21:00:56.645+08:00  INFO 46424 --- [           main] o.f.s.SpringProcessEngineConfiguration   : class org.flowable.eventregistry.spring.configurator.SpringEventRegistryConfigurator (priority:100000)
+2026-09-14T21:00:56.645+08:00  INFO 46424 --- [           main] o.f.s.SpringProcessEngineConfiguration   : class org.flowable.idm.engine.configurator.IdmEngineConfigurator (priority:150000)
+2026-09-14T21:00:56.645+08:00  INFO 46424 --- [           main] o.f.s.SpringProcessEngineConfiguration   : Executing beforeInit() of class org.flowable.eventregistry.spring.configurator.SpringEventRegistryConfigurator (priority:100000)
+2026-09-14T21:00:56.650+08:00  INFO 46424 --- [           main] o.f.s.SpringProcessEngineConfiguration   : Executing beforeInit() of class org.flowable.idm.engine.configurator.IdmEngineConfigurator (priority:150000)
+2026-09-14T21:00:57.296+08:00  INFO 46424 --- [           main] o.f.s.SpringProcessEngineConfiguration   : Executing configure() of class org.flowable.eventregistry.spring.configurator.SpringEventRegistryConfigurator (priority:100000)
+2026-09-14T21:00:57.311+08:00  INFO 46424 --- [           main] o.f.e.impl.EventRegistryEngineImpl       : EventRegistryEngine default created
+2026-09-14T21:00:57.312+08:00  INFO 46424 --- [           main] o.f.s.SpringProcessEngineConfiguration   : Executing configure() of class org.flowable.idm.engine.configurator.IdmEngineConfigurator (priority:150000)
+2026-09-14T21:00:57.324+08:00  INFO 46424 --- [           main] o.f.idm.engine.impl.IdmEngineImpl        : IdmEngine default created
+2026-09-14T21:00:57.357+08:00  INFO 46424 --- [           main] o.f.engine.impl.ProcessEngineImpl        : ProcessEngine default created
+2026-09-14T21:00:57.370+08:00  INFO 46424 --- [           main] o.f.e.impl.cmd.ValidateV5EntitiesCmd     : Total of v5 deployments found: 0
+2026-09-14T21:00:58.248+08:00  INFO 46424 --- [           main] c.s.c.b.process.queue.CommandDispatcher  : 命令调度器已启动: normalPoll=500ms, p0Poll=100ms, batch=20, p0Batch=5, maxRetries=5
+2026-09-14T21:00:58.301+08:00  INFO 46424 --- [           main] c.s.c.b.e.c.BpmEngineAutoConfiguration   : ApproverResolverMap initialized with 2 entries: [SCRIPT, DESIGNATED]
+2026-09-14T21:00:58.356+08:00  INFO 46424 --- [           main] c.s.c.n.c.NotifyChannelStartupValidator  : NotifyChannelStartupValidator：渠道配置校验通过（启用渠道数量由装配结果决定）
+2026-09-14T21:00:58.975+08:00  INFO 46424 --- [           main] c.s.c.b.p.c.BpmProcessAutoConfiguration  : BPM process auto-configuration started (business processing layer)
+2026-09-14T21:00:59.017+08:00  INFO 46424 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noopUserDetailsService
+2026-09-14T21:00:59.339+08:00  INFO 46424 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-14T21:01:00.504+08:00  INFO 46424 --- [           main] o.s.i.endpoint.EventDrivenConsumer       : Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2026-09-14T21:01:00.505+08:00  INFO 46424 --- [           main] o.s.i.channel.PublishSubscribeChannel    : Channel 'application.errorChannel' has 1 subscriber(s).
+2026-09-14T21:01:00.505+08:00  INFO 46424 --- [           main] o.s.i.endpoint.EventDrivenConsumer       : started bean '_org.springframework.integration.errorLogger'
+2026-09-14T21:01:00.511+08:00  INFO 46424 --- [           main] o.f.j.s.i.a.AbstractAsyncExecutor        : Starting up the async job executor [org.flowable.spring.job.service.SpringAsyncExecutor] for engine bpmn
+2026-09-14T21:01:00.519+08:00  INFO 46424 --- [           main] o.f.s.c.DefaultAutoDeploymentStrategy    : Deploying resources [URL [jar:file:/E:/Maven/repository/com/sw/ck/sw-bpm-process/0.1.0/sw-bpm-process-0.1.0.jar!/processes/skeleton_approval.bpmn20.xml]] for engine org.flowable.engine.impl.ProcessEngineImpl@2aad9c31 deployment name hint SpringBootAutoDeployment
+2026-09-14T21:01:00.520+08:00  INFO 46424 --- [      Thread-17] o.f.j.s.i.a.ResetExpiredJobsRunnable     : starting to reset expired jobs for engine bpmn
+2026-09-14T21:01:00.520+08:00  INFO 46424 --- [      Thread-16] o.f.j.s.i.a.AcquireTimerJobsRunnable     : starting to acquire async jobs due for engine bpmn
+2026-09-14T21:01:00.521+08:00  INFO 46424 --- [      Thread-15] o.f.j.s.i.a.AcquireAsyncJobsDueRunnable  : starting to acquire async jobs due for engine bpmn
+2026-09-14T21:01:00.601+08:00  INFO 46424 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/api'
+2026-09-14T21:01:00.602+08:00  INFO 46424 --- [           main] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2026-09-14T21:01:00.602+08:00  INFO 46424 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2026-09-14T21:01:00.617+08:00  INFO 46424 --- [           main] com.sw.ck.bootstrap.StarterApplication   : Started StarterApplication in 12.747 seconds (process running for 13.239)
+2026-09-14T21:01:00.625+08:00  INFO 46424 --- [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-09-14T21:01:00.640+08:00 ERROR 46424 --- [           main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.IllegalStateException: JWT 签名密钥未配置或仍为仓库占位值：必须经外部安全配置注入 sw.security.jwt.secret（如环境变量 JWT_SECRET），默认/占位密钥不允许上线
+	at com.sw.ck.security.config.SecurityAutoConfiguration.lambda$jwtSecretPresenceCheck$2(SecurityAutoConfiguration.java:108) ~[sw-security-0.1.0.jar:na]
+	at org.springframework.boot.SpringApplication.lambda$callRunner$4(SpringApplication.java:784) ~[spring-boot-3.4.4.jar:3.4.4]
+	at org.springframework.util.function.ThrowingConsumer$1.acceptWithException(ThrowingConsumer.java:82) ~[spring-core-6.2.5.jar:6.2.5]
+	at org.springframework.util.function.ThrowingConsumer.accept(ThrowingConsumer.java:60) ~[spring-core-6.2.5.jar:6.2.5]
+	at org.springframework.util.function.ThrowingConsumer$1.accept(ThrowingConsumer.java:86) ~[spring-core-6.2.5.jar:6.2.5]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:796) ~[spring-boot-3.4.4.jar:3.4.4]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:784) ~[spring-boot-3.4.4.jar:3.4.4]
+	at org.springframework.boot.SpringApplication.lambda$callRunners$3(SpringApplication.java:772) ~[spring-boot-3.4.4.jar:3.4.4]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184) ~[na:na]
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:510) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:772) ~[spring-boot-3.4.4.jar:3.4.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:325) ~[spring-boot-3.4.4.jar:3.4.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.4.jar:3.4.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.4.jar:3.4.4]
+	at com.sw.ck.bootstrap.StarterApplication.main(StarterApplication.java:19) ~[classes/:na]
+
+2026-09-14T21:01:00.645+08:00  INFO 46424 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2026-09-14T21:01:00.646+08:00  INFO 46424 --- [           main] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-09-14T21:01:00.653+08:00  INFO 46424 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-09-14T21:01:00.659+08:00  INFO 46424 --- [           main] o.s.i.endpoint.EventDrivenConsumer       : Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2026-09-14T21:01:00.659+08:00  INFO 46424 --- [           main] o.s.i.channel.PublishSubscribeChannel    : Channel 'application.errorChannel' has 0 subscriber(s).
+2026-09-14T21:01:00.659+08:00  INFO 46424 --- [           main] o.s.i.endpoint.EventDrivenConsumer       : stopped bean '_org.springframework.integration.errorLogger'
+2026-09-14T21:01:00.667+08:00  INFO 46424 --- [           main] o.f.j.s.i.a.AbstractAsyncExecutor        : Shutting down the async job executor [org.flowable.spring.job.service.SpringAsyncExecutor] for engine bpmn
+2026-09-14T21:01:00.667+08:00  INFO 46424 --- [et-expired-jobs] o.f.j.s.i.a.ResetExpiredJobsRunnable     : stopped resetting expired jobs for engine bpmn
+2026-09-14T21:01:00.667+08:00  INFO 46424 --- [uire-async-jobs] o.f.j.s.i.a.AcquireAsyncJobsDueRunnable  : stopped async job due acquisition for engine bpmn
+2026-09-14T21:01:00.667+08:00  INFO 46424 --- [uire-timer-jobs] o.f.j.s.i.a.AcquireTimerJobsRunnable     : stopped async job due acquisition for engine bpmn
+2026-09-14T21:01:00.674+08:00  INFO 46424 --- [           main] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2026-09-14T21:01:00.674+08:00  INFO 46424 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2026-09-14T21:01:00.674+08:00  INFO 46424 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2026-09-14T21:01:00.674+08:00  INFO 46424 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2026-09-14T21:01:00.675+08:00  INFO 46424 --- [           main] c.s.c.b.e.d.ExternalDatasourceManager    : Shutting down all external datasource connection pools (count=0)
+2026-09-14T21:01:00.682+08:00  INFO 46424 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource start closing ....
+2026-09-14T21:01:00.684+08:00  INFO 46424 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2026-09-14T21:01:00.688+08:00  INFO 46424 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2026-09-14T21:01:00.689+08:00  INFO 46424 --- [           main] c.b.d.d.d.DefaultDataSourceDestroyer     : dynamic-datasource close the datasource named [master] success,
+2026-09-14T21:01:00.689+08:00  INFO 46424 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource all closed success,bye
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.4.4:run (default-cli) on project sw-bootstrap: Process terminated with exit code: 1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

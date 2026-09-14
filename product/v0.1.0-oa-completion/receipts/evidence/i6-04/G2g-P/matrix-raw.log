@@ -1,0 +1,12 @@
+[2026-09-14T09:33:19.809Z] 0 u1 create required rule -> {"code":0,"msg":"success","data":"2099431290269544449"}
+[2026-09-14T09:33:19.819Z] 1a u1 rule list -> 403 {"code":403,"msg":"无权限","data":null}
+[2026-09-14T09:33:19.843Z] 1b u3 rule list -> 403 {"code":403,"msg":"无权限","data":null}
+[2026-09-14T09:33:19.849Z] 1c u3 create rule -> 403 {"code":403,"msg":"无权限","data":null}
+[2026-09-14T09:33:19.859Z] 2a u3 prefs before -> {"code":0,"msg":"success","data":[]}
+[2026-09-14T09:33:19.877Z] 2b u3 disable EMAIL -> 200 {"code":0,"msg":"success","data":null}
+[2026-09-14T09:33:19.886Z] 2c u3 prefs after -> {"code":0,"msg":"success","data":[{"eventType":"TODO_CREATED","channel":"EMAIL","enabled":false}]}
+[2026-09-14T09:33:19.898Z] 3a u3 forced disable IN_APP -> 200 {"code":400,"msg":"必须送达事件/渠道不允许关闭: TODO_CREATED/IN_APP","data":null}
+[2026-09-14T09:33:19.909Z] 3b prefs unchanged(IN_APP optout rejected) -> {"code":0,"msg":"success","data":[{"eventType":"TODO_CREATED","channel":"EMAIL","enabled":false}]}
+[2026-09-14T09:33:19.922Z] 4a u1 self-save -> 200 {"code":0,"msg":"success","data":null}
+[2026-09-14T09:33:19.931Z] 4b u3 prefs after u1 save -> {"code":0,"msg":"success","data":[{"eventType":"TODO_CREATED","channel":"EMAIL","enabled":false}]}
+DONE. forcedRuleId=2099431290269544449

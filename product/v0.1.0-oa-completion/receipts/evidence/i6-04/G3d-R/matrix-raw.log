@@ -1,0 +1,19 @@
+[2026-09-14T09:55:06.300Z] R1 T100 rule create -> {"code":0,"msg":"success","data":"2099436770089971713"}
+[2026-09-14T09:55:06.360Z] R2 T200 rule create -> {"code":0,"msg":"success","data":"2099436770350018562"}
+[2026-09-14T09:55:06.388Z] R3 forged tenantId create -> {"code":0,"msg":"success","data":"2099436770454876161"}
+[2026-09-14T09:55:06.401Z] R3a cross-tenant rule get -> 403 {"code":403,"msg":"无权限","data":null}
+[2026-09-14T09:55:06.415Z] R3b cross-tenant rule put -> 200 {"code":404,"msg":"通知规则不存在","data":null}
+[2026-09-14T09:55:06.426Z] R3c cross-tenant rule delete -> 200 {"code":404,"msg":"通知规则不存在","data":null}
+[2026-09-14T09:55:06.437Z] R3d cross-tenant rule toggle -> 200 {"code":404,"msg":"通知规则不存在","data":null}
+[2026-09-14T09:55:06.447Z] R4a T100 tpl create -> {"code":400,"msg":"模板名称不能为空","data":null}
+[2026-09-14T09:55:06.453Z] R4b same-code T100/T200 template create -> {"code":400,"msg":"模板名称不能为空","data":null}
+[2026-09-14T09:55:06.464Z] R5 cross-tenant template detail -> {"code":400,"msg":"参数非法: id","data":null}
+[2026-09-14T09:55:06.510Z] A1 T200-u2 record list -> 200 {"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"5"}}
+[2026-09-14T09:55:06.528Z] A2 cross-tenant record detail -> 200 {"code":404,"msg":"发送记录不存在","data":null}
+[2026-09-14T09:55:06.540Z] A3 cross-tenant full detail -> 200 {"code":404,"msg":"发送记录不存在","data":null}
+[2026-09-14T09:55:06.557Z] A4 cross-tenant resend -> 200 {"code":404,"msg":"发送记录不存在","data":null}
+[2026-09-14T09:55:06.567Z] A5 cross-tenant inbox link -> 200 {"code":404,"msg":"通知不存在","data":null}
+[2026-09-14T09:55:06.577Z] A6 cross-tenant message read -> 200 {"code":404,"msg":"通知不存在","data":null}
+[2026-09-14T09:55:06.584Z] A7 T200-admin cross-tenant record detail -> 200 {"code":404,"msg":"发送记录不存在","data":null}
+[2026-09-14T09:55:06.593Z] A8 T200-admin cross-tenant full detail -> 200 {"code":404,"msg":"发送记录不存在","data":null}
+DONE

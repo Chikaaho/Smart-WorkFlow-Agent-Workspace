@@ -1,0 +1,11 @@
+# G5b 真实五渠道条件检查（2026-09-14，只记录可用性事实，零秘密落盘）
+## 环境变量检查（owner 凭据）
+## 配置占位检查（application.yml/dev，凭据零可用默认值）
+126:        access-key: ${MINIO_ACCESS_KEY:}
+127:        secret-key: ${MINIO_SECRET_KEY:}
+130:        secret-id: ${COS_SECRET_ID:}
+131:        secret-key: ${COS_SECRET_KEY:}
+## 运行时渠道适配器可用性（本会话 boot4/boot5 日志 + G3e-I 矩阵）
+- EMAIL：适配器在（enabled=true），真实 SMTP 127.0.0.1:2525 无监听 → 投递失败（G1a/G3e-I 真实失败链）
+- FEISHU/DINGTALK/WECHAT_WORK：适配器在，但无真实 Provider 应用凭据 → G5a-I 仅本地主体绑定矩阵（不要求真实发送）
+- SMS：生产适配器未实现（Owner 未提供选型）；dev 由 P58 调试适配器占位（不作证据）

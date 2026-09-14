@@ -1,0 +1,363 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-09-14T20:53:01.246+08:00  INFO 35132 --- [           main] com.sw.ck.bootstrap.StarterApplication   : Starting StarterApplication using Java 21.0.5 with PID 35132 (E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-bootstrap\target\classes started by hjxch in E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-bootstrap)
+2026-09-14T20:53:01.248+08:00  INFO 35132 --- [           main] com.sw.ck.bootstrap.StarterApplication   : The following 1 profile is active: "dev"
+2026-09-14T20:53:02.852+08:00  INFO 35132 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-09-14T20:53:02.855+08:00  INFO 35132 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-09-14T20:53:02.870+08:00  INFO 35132 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+2026-09-14T20:53:02.974+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphDebugNodeMapper' and 'com.sw.ck.agent.mapper.AgentGraphDebugNodeMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.974+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphDebugSessionMapper' and 'com.sw.ck.agent.mapper.AgentGraphDebugSessionMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.974+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphDefMapper' and 'com.sw.ck.agent.mapper.AgentGraphDefMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.974+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphExecutionMapper' and 'com.sw.ck.agent.mapper.AgentGraphExecutionMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.974+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphExecutionNodeMapper' and 'com.sw.ck.agent.mapper.AgentGraphExecutionNodeMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.974+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentMessageMapper' and 'com.sw.ck.agent.mapper.AgentMessageMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.974+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentModelConfigMapper' and 'com.sw.ck.agent.mapper.AgentModelConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.974+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentSessionMapper' and 'com.sw.ck.agent.mapper.AgentSessionMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.974+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentToolCallLogMapper' and 'com.sw.ck.agent.mapper.AgentToolCallLogMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.974+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentToolExternalConfigMapper' and 'com.sw.ck.agent.mapper.tool.AgentToolExternalConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.974+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentToolInternalConfigMapper' and 'com.sw.ck.agent.mapper.tool.AgentToolInternalConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.974+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.agent.mapper]' package. Please check your configuration.
+2026-09-14T20:53:02.976+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formConfigMapper' and 'com.sw.ck.form.mapper.FormConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.976+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formDefMapper' and 'com.sw.ck.form.mapper.FormDefMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.976+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formExtQueryMapper' and 'com.sw.ck.form.mapper.FormExtQueryMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.976+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formLifecycleAuditMapper' and 'com.sw.ck.form.mapper.FormLifecycleAuditMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.976+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formListConfigMapper' and 'com.sw.ck.form.mapper.FormListConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.976+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formSnapshotMapper' and 'com.sw.ck.form.mapper.FormSnapshotMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.976+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formTraceMapper' and 'com.sw.ck.form.mapper.FormTraceMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.976+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.form.mapper]' package. Please check your configuration.
+2026-09-14T20:53:02.978+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'jobInfoMapper' and 'com.sw.ck.job.mapper.JobInfoMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.978+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'jobLogMapper' and 'com.sw.ck.job.mapper.JobLogMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.978+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.job.mapper]' package. Please check your configuration.
+2026-09-14T20:53:02.979+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifyChannelConfigMapper' and 'com.sw.ck.notify.mapper.NotifyChannelConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.979+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifyMessageMapper' and 'com.sw.ck.notify.mapper.NotifyMessageMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.979+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifyRuleMapper' and 'com.sw.ck.notify.mapper.NotifyRuleMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.979+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifySendAttemptMapper' and 'com.sw.ck.notify.mapper.NotifySendAttemptMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.979+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifySubscriptionMapper' and 'com.sw.ck.notify.mapper.NotifySubscriptionMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.979+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifyTemplateMapper' and 'com.sw.ck.notify.mapper.NotifyTemplateMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.979+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifyTemplateVersionMapper' and 'com.sw.ck.notify.mapper.NotifyTemplateVersionMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.979+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.notify.mapper]' package. Please check your configuration.
+2026-09-14T20:53:02.983+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'storageFileMapper' and 'com.sw.ck.storage.mapper.StorageFileMapper' mapperInterface. Bean already defined with the same name!
+2026-09-14T20:53:02.983+08:00  WARN 35132 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sw.ck.storage.mapper]' package. Please check your configuration.
+2026-09-14T20:53:02.985+08:00  INFO 35132 --- [           main] faultConfiguringBeanFactoryPostProcessor : No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2026-09-14T20:53:02.992+08:00  INFO 35132 --- [           main] faultConfiguringBeanFactoryPostProcessor : No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2026-09-14T20:53:03.470+08:00  WARN 35132 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration' of type [org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-09-14T20:53:03.473+08:00  WARN 35132 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'stringOrNumberMigrationVersionConverter' of type [org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration$StringOrNumberToMigrationVersionConverter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-09-14T20:53:03.840+08:00  INFO 35132 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2026-09-14T20:53:03.855+08:00  INFO 35132 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-14T20:53:03.855+08:00  INFO 35132 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2026-09-14T20:53:03.963+08:00  INFO 35132 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2026-09-14T20:53:03.964+08:00  INFO 35132 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2683 ms
+2026-09-14T20:53:05.005+08:00  INFO 35132 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1,master} inited
+2026-09-14T20:53:05.006+08:00  INFO 35132 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource - add a datasource named [master] success
+2026-09-14T20:53:05.008+08:00  INFO 35132 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+2026-09-14T20:53:05.291+08:00  INFO 35132 --- [           main] c.s.c.b.config.FlywayConfiguration       : Executing primary Flyway migration (locations = db/migration/{vendor})
+2026-09-14T20:53:05.331+08:00  INFO 35132 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://127.0.0.1:5432/i6_g7b_pg (PostgreSQL 18.4)
+2026-09-14T20:53:05.342+08:00  WARN 35132 --- [           main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 17.
+2026-09-14T20:53:05.411+08:00  INFO 35132 --- [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-09-14T20:53:05.416+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 90 migrations (execution time 00:00.060s)
+2026-09-14T20:53:05.431+08:00  INFO 35132 --- [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-09-14T20:53:05.467+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-09-14T20:53:05.480+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - init schema"
+2026-09-14T20:53:05.545+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - init data"
+2026-09-14T20:53:05.601+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3 - external datasource"
+2026-09-14T20:53:05.630+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "4 - seed system data"
+2026-09-14T20:53:05.649+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "5 - m seam rbac"
+2026-09-14T20:53:05.699+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "6 - m seam menu seed"
+2026-09-14T20:53:05.725+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "7 - init form metadata"
+2026-09-14T20:53:05.760+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "8 - init bpm metadata"
+2026-09-14T20:53:05.787+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "9 - init notify message"
+2026-09-14T20:53:05.808+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "10 - add dict menu"
+2026-09-14T20:53:05.822+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "11 - fix system menu to directory"
+2026-09-14T20:53:05.835+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "12 - upgrade form config to per table"
+2026-09-14T20:53:05.854+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "13 - logical delete unique constraints"
+2026-09-14T20:53:05.881+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "14 - add process def"
+2026-09-14T20:53:05.904+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "15 - system mgmt menu"
+2026-09-14T20:53:05.921+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "16 - init storage file"
+2026-09-14T20:53:05.948+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "17 - init job tables"
+2026-09-14T20:53:05.989+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "18 - init refresh token table"
+2026-09-14T20:53:06.011+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "19 - init agent model config"
+2026-09-14T20:53:06.030+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "20 - init agent tool config"
+2026-09-14T20:53:06.052+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "21 - init agent session"
+2026-09-14T20:53:06.072+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "22 - init agent message"
+2026-09-14T20:53:06.091+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "23 - init agent tool call log"
+2026-09-14T20:53:06.110+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "24 - alter agent model config multikey"
+2026-09-14T20:53:06.135+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "25 - init agent graph def"
+2026-09-14T20:53:06.155+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "26 - agent graph menu seed"
+2026-09-14T20:53:06.170+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "27 - init agent graph execution"
+2026-09-14T20:53:06.194+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "28 - init agent graph execution node"
+2026-09-14T20:53:06.214+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "29 - job storage menu seed"
+2026-09-14T20:53:06.230+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "30 - sys role dept"
+2026-09-14T20:53:06.245+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "31 - admin role governance"
+2026-09-14T20:53:06.267+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "32 - sys user post"
+2026-09-14T20:53:06.284+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "33 - agent model menu seed"
+2026-09-14T20:53:06.299+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "34 - sys user group"
+2026-09-14T20:53:06.317+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "35 - agent token usage"
+2026-09-14T20:53:06.335+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "36 - init agent graph debug session"
+2026-09-14T20:53:06.364+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "37 - agent tool menu seed"
+2026-09-14T20:53:06.378+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "38 - notify template and menu"
+2026-09-14T20:53:06.398+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "39 - notify batch send permission"
+2026-09-14T20:53:06.411+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "40 - init iot device command"
+2026-09-14T20:53:06.430+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "42 - iot device identity upgrade"
+2026-09-14T20:53:06.455+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "43 - form data import export permission"
+2026-09-14T20:53:06.470+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "44 - workflow child menus"
+2026-09-14T20:53:06.487+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "45 - system crud button perms"
+2026-09-14T20:53:06.504+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "46 - drop lowcode naming"
+2026-09-14T20:53:06.520+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "47 - p52 workbench operation perms"
+2026-09-14T20:53:06.536+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "48 - p58 notify channels"
+2026-09-14T20:53:06.554+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "49 - p58 workflow node capabilities"
+2026-09-14T20:53:06.577+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "50 - p4 command queue and draft"
+2026-09-14T20:53:06.596+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "51 - p4 p0 dispatch permission"
+2026-09-14T20:53:06.608+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "52 - form trace idempotency key"
+2026-09-14T20:53:06.622+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "53 - p4 personal center menus"
+2026-09-14T20:53:06.637+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "54 - p4 form visibility scope"
+2026-09-14T20:53:06.649+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "55 - p4 command claim token and action command linkage"
+2026-09-14T20:53:06.662+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "56 - v002 oa catalog category and urge"
+2026-09-14T20:53:06.681+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "57 - v002 oa notify send attempt"
+2026-09-14T20:53:06.698+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "58 - v002 oa workspace and menus"
+2026-09-14T20:53:06.720+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "59 - p21 iot platform"
+2026-09-14T20:53:06.786+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "60 - p21 iot process access"
+2026-09-14T20:53:06.800+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "61 - p21 iot admin menus"
+2026-09-14T20:53:06.816+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "62 - p21 iot process access"
+2026-09-14T20:53:06.820+08:00  WARN 35132 --- [           main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: column "iot_access_enabled" of relation "sw_bpm_process_def" already exists, skipping (SQL State: 42701 - Error Code: 0)
+2026-09-14T20:53:06.831+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "63 - p21 iot device action"
+2026-09-14T20:53:06.845+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "64 - p21 iot menu directory"
+2026-09-14T20:53:06.859+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "65 - p21 iot flow actions menu"
+2026-09-14T20:53:06.873+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "66 - p21 iot audit and correlation"
+2026-09-14T20:53:06.894+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "67 - i1 org permission foundation"
+2026-09-14T20:53:06.916+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "68 - i2 form action permissions"
+2026-09-14T20:53:06.931+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "69 - i2 form closure"
+2026-09-14T20:53:06.952+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "70 - i3 process def version freeze"
+2026-09-14T20:53:06.969+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "71 - i3 action semantics"
+2026-09-14T20:53:07.000+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "72 - i3 deadline function snapshot"
+2026-09-14T20:53:07.024+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "73 - i3 bpm action permissions"
+2026-09-14T20:53:07.042+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "74 - i3 proxy join audit unique"
+2026-09-14T20:53:07.057+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "75 - i3 node function audit"
+2026-09-14T20:53:07.072+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "76 - i4 dynamic parallel branch"
+2026-09-14T20:53:07.088+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "77 - i4 process template"
+2026-09-14T20:53:07.106+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "78 - i4 instance intervention"
+2026-09-14T20:53:07.121+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "79 - i4 handover"
+2026-09-14T20:53:07.142+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "80 - i4 openapi base"
+2026-09-14T20:53:07.167+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "81 - i4 openapi dev seed"
+2026-09-14T20:53:07.182+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "82 - i4 ops menus"
+2026-09-14T20:53:07.203+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "83 - i5 form def tenant unique"
+2026-09-14T20:53:07.219+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "84 - i5 sso identity"
+2026-09-14T20:53:07.251+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "85 - i5 seed default tenant"
+2026-09-14T20:53:07.265+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "86 - i5 provider app unique"
+2026-09-14T20:53:07.279+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "87 - i5 binding digest global unique"
+2026-09-14T20:53:07.295+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 86 migrations to schema "public", now at version v87 (execution time 00:00.817s)
+2026-09-14T20:53:07.302+08:00  INFO 35132 --- [           main] c.s.c.b.config.FlywayConfiguration       : Primary Flyway migration completed
+2026-09-14T20:53:07.302+08:00  INFO 35132 --- [           main] c.s.c.b.config.FlywayConfiguration       : Detected database vendor: postgresql
+2026-09-14T20:53:07.302+08:00  INFO 35132 --- [           main] c.s.c.b.config.FlywayConfiguration       : Executing prod-update Flyway migration (vendor = postgresql, locations = db/prod-update/postgresql)
+2026-09-14T20:53:07.311+08:00  INFO 35132 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://127.0.0.1:5432/i6_g7b_pg (PostgreSQL 18.4)
+2026-09-14T20:53:07.316+08:00  WARN 35132 --- [           main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 17.
+2026-09-14T20:53:07.319+08:00  INFO 35132 --- [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history_prod" does not exist yet
+2026-09-14T20:53:07.320+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.002s)
+2026-09-14T20:53:07.320+08:00  WARN 35132 --- [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-09-14T20:53:07.328+08:00  INFO 35132 --- [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history_prod" with baseline ...
+2026-09-14T20:53:07.337+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbBaseline     : Successfully baselined schema with version: 1
+2026-09-14T20:53:07.346+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2026-09-14T20:53:07.347+08:00  INFO 35132 --- [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-14T20:53:07.350+08:00  INFO 35132 --- [           main] c.s.c.b.config.FlywayConfiguration       : Prod-update Flyway migration completed (vendor = postgresql)
+2026-09-14T20:53:07.542+08:00  INFO 35132 --- [           main] c.s.c.b.e.c.BpmEngineAutoConfiguration   : BPM engine auto-configuration started (Flowable process engine)
+2026-09-14T20:53:07.692+08:00  INFO 35132 --- [           main] c.s.c.s.provider.CosStorageProvider      : COS 存储提供商初始化完成，bucket: , region: ap-guangzhou
+2026-09-14T20:53:07.694+08:00  INFO 35132 --- [           main] c.s.c.s.provider.LocalStorageProvider    : 本地存储提供商初始化完成，基路径: E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-bootstrap\uploads
+2026-09-14T20:53:07.842+08:00  INFO 35132 --- [           main] c.s.c.s.provider.MinioStorageProvider    : MinIO 客户端已创建，endpoint: http://localhost:9000
+2026-09-14T20:53:07.896+08:00  WARN 35132 --- [           main] c.s.c.s.provider.MinioStorageProvider    : MinIO 初始化时检查 bucket 失败，将在首次上传时重试: Failed to connect to localhost/[0:0:0:0:0:0:0:1]:9000
+2026-09-14T20:53:07.900+08:00  INFO 35132 --- [           main] c.s.c.s.provider.QiniuStorageProvider    : 七牛云存储提供商初始化完成，bucket: , domain: 
+2026-09-14T20:53:07.902+08:00  INFO 35132 --- [           main] c.s.c.s.p.StorageProviderRegistry        : 存储提供商注册表初始化完成，已注册类型: [cos, local, minio, qiniu]
+2026-09-14T20:53:08.421+08:00  INFO 35132 --- [           main] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2026-09-14T20:53:08.432+08:00  INFO 35132 --- [           main] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2026-09-14T20:53:08.432+08:00  INFO 35132 --- [           main] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2026-09-14T20:53:08.433+08:00  INFO 35132 --- [           main] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2026-09-14T20:53:08.434+08:00  INFO 35132 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2026-09-14T20:53:08.434+08:00  INFO 35132 --- [           main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2026-09-14T20:53:08.434+08:00  INFO 35132 --- [           main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2026-09-14T20:53:08.434+08:00  INFO 35132 --- [           main] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@5e5d26e4
+2026-09-14T20:53:09.022+08:00  INFO 35132 --- [           main] c.sw.ck.iot.config.IotAutoConfiguration  : 使用 Mock IoT Provider（providerMode=mock)
+2026-09-14T20:53:09.762+08:00  INFO 35132 --- [           main] c.s.c.s.security.RsaLoginKeyManager      : 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+2026-09-14T20:53:10.570+08:00  INFO 35132 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : DynamicTableManager initialized with dialect: POSTGRESQL
+2026-09-14T20:53:10.811+08:00  INFO 35132 --- [           main] o.f.s.b.e.EventRegistryAutoConfiguration : No deployment resources were found for autodeployment
+2026-09-14T20:53:11.063+08:00  INFO 35132 --- [           main] o.f.c.e.i.a.DefaultAsyncTaskExecutor     : Creating thread pool queue of size 100
+2026-09-14T20:53:11.064+08:00  INFO 35132 --- [           main] o.f.c.e.i.a.DefaultAsyncTaskExecutor     : Creating thread factory with naming pattern flowable-async-task-invoker-%d
+2026-09-14T20:53:11.066+08:00  INFO 35132 --- [           main] o.f.c.e.i.a.DefaultAsyncTaskExecutor     : Creating executor service with corePoolSize 8, maxPoolSize 8 and keepAliveTime 5000
+2026-09-14T20:53:11.245+08:00  INFO 35132 --- [           main] c.s.c.b.e.c.BpmEngineAutoConfiguration   : Flowable engine bound to master DataSource (extracted from DynamicRoutingDataSource)
+2026-09-14T20:53:11.251+08:00  INFO 35132 --- [           main] o.f.s.SpringProcessEngineConfiguration   : Found 2 Engine Configurators in total:
+2026-09-14T20:53:11.251+08:00  INFO 35132 --- [           main] o.f.s.SpringProcessEngineConfiguration   : class org.flowable.eventregistry.spring.configurator.SpringEventRegistryConfigurator (priority:100000)
+2026-09-14T20:53:11.251+08:00  INFO 35132 --- [           main] o.f.s.SpringProcessEngineConfiguration   : class org.flowable.idm.engine.configurator.IdmEngineConfigurator (priority:150000)
+2026-09-14T20:53:11.252+08:00  INFO 35132 --- [           main] o.f.s.SpringProcessEngineConfiguration   : Executing beforeInit() of class org.flowable.eventregistry.spring.configurator.SpringEventRegistryConfigurator (priority:100000)
+2026-09-14T20:53:11.258+08:00  INFO 35132 --- [           main] o.f.s.SpringProcessEngineConfiguration   : Executing beforeInit() of class org.flowable.idm.engine.configurator.IdmEngineConfigurator (priority:150000)
+2026-09-14T20:53:11.902+08:00  INFO 35132 --- [           main] o.f.s.SpringProcessEngineConfiguration   : Executing configure() of class org.flowable.eventregistry.spring.configurator.SpringEventRegistryConfigurator (priority:100000)
+2026-09-14T20:53:11.917+08:00  INFO 35132 --- [           main] o.f.e.impl.EventRegistryEngineImpl       : EventRegistryEngine default created
+2026-09-14T20:53:11.917+08:00  INFO 35132 --- [           main] o.f.s.SpringProcessEngineConfiguration   : Executing configure() of class org.flowable.idm.engine.configurator.IdmEngineConfigurator (priority:150000)
+2026-09-14T20:53:11.930+08:00  INFO 35132 --- [           main] o.f.idm.engine.impl.IdmEngineImpl        : IdmEngine default created
+2026-09-14T20:53:11.947+08:00  INFO 35132 --- [           main] o.f.c.e.impl.db.CommonDbSchemaManager    : performing create on common with resource org/flowable/common/db/create/flowable.postgres.create.common.sql
+2026-09-14T20:53:12.162+08:00  INFO 35132 --- [           main] o.f.e.impl.db.ProcessDbSchemaManager     : performing create on engine with resource org/flowable/db/create/flowable.postgres.create.engine.sql
+2026-09-14T20:53:12.375+08:00  INFO 35132 --- [           main] o.f.e.impl.db.ProcessDbSchemaManager     : performing create on history with resource org/flowable/db/create/flowable.postgres.create.history.sql
+2026-09-14T20:53:12.425+08:00  INFO 35132 --- [           main] o.f.i.engine.impl.db.IdmDbSchemaManager  : performing create on identity with resource org/flowable/idm/db/create/flowable.postgres.create.identity.sql
+2026-09-14T20:53:12.466+08:00  INFO 35132 --- [           main] o.f.e.impl.db.EventDbSchemaManager       : performing create on eventregistry with resource org/flowable/eventregistry/db/create/flowable.postgres.create.eventregistry.sql
+2026-09-14T20:53:12.486+08:00  INFO 35132 --- [           main] o.f.engine.impl.ProcessEngineImpl        : ProcessEngine default created
+2026-09-14T20:53:12.501+08:00  INFO 35132 --- [           main] o.f.e.impl.cmd.ValidateV5EntitiesCmd     : Total of v5 deployments found: 0
+2026-09-14T20:53:13.395+08:00  INFO 35132 --- [           main] c.s.c.b.process.queue.CommandDispatcher  : 命令调度器已启动: normalPoll=500ms, p0Poll=100ms, batch=20, p0Batch=5, maxRetries=5
+2026-09-14T20:53:13.459+08:00  INFO 35132 --- [           main] c.s.c.b.e.c.BpmEngineAutoConfiguration   : ApproverResolverMap initialized with 2 entries: [SCRIPT, DESIGNATED]
+2026-09-14T20:53:13.528+08:00  INFO 35132 --- [           main] c.s.c.n.c.NotifyChannelStartupValidator  : NotifyChannelStartupValidator：渠道配置校验通过（启用渠道数量由装配结果决定）
+2026-09-14T20:53:14.119+08:00  INFO 35132 --- [           main] c.s.c.b.p.c.BpmProcessAutoConfiguration  : BPM process auto-configuration started (business processing layer)
+2026-09-14T20:53:14.161+08:00  INFO 35132 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noopUserDetailsService
+2026-09-14T20:53:14.441+08:00  INFO 35132 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-14T20:53:15.593+08:00  INFO 35132 --- [           main] o.s.i.endpoint.EventDrivenConsumer       : Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2026-09-14T20:53:15.593+08:00  INFO 35132 --- [           main] o.s.i.channel.PublishSubscribeChannel    : Channel 'application.errorChannel' has 1 subscriber(s).
+2026-09-14T20:53:15.593+08:00  INFO 35132 --- [           main] o.s.i.endpoint.EventDrivenConsumer       : started bean '_org.springframework.integration.errorLogger'
+2026-09-14T20:53:15.599+08:00  INFO 35132 --- [           main] o.f.j.s.i.a.AbstractAsyncExecutor        : Starting up the async job executor [org.flowable.spring.job.service.SpringAsyncExecutor] for engine bpmn
+2026-09-14T20:53:15.606+08:00  INFO 35132 --- [           main] o.f.s.c.DefaultAutoDeploymentStrategy    : Deploying resources [URL [jar:file:/E:/Maven/repository/com/sw/ck/sw-bpm-process/0.1.0/sw-bpm-process-0.1.0.jar!/processes/skeleton_approval.bpmn20.xml]] for engine org.flowable.engine.impl.ProcessEngineImpl@67718026 deployment name hint SpringBootAutoDeployment
+2026-09-14T20:53:15.606+08:00  INFO 35132 --- [      Thread-17] o.f.j.s.i.a.ResetExpiredJobsRunnable     : starting to reset expired jobs for engine bpmn
+2026-09-14T20:53:15.607+08:00  INFO 35132 --- [      Thread-15] o.f.j.s.i.a.AcquireAsyncJobsDueRunnable  : starting to acquire async jobs due for engine bpmn
+2026-09-14T20:53:15.607+08:00  INFO 35132 --- [      Thread-16] o.f.j.s.i.a.AcquireTimerJobsRunnable     : starting to acquire async jobs due for engine bpmn
+2026-09-14T20:53:15.802+08:00  INFO 35132 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/api'
+2026-09-14T20:53:15.803+08:00  INFO 35132 --- [           main] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2026-09-14T20:53:15.803+08:00  INFO 35132 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2026-09-14T20:53:15.818+08:00  INFO 35132 --- [           main] com.sw.ck.bootstrap.StarterApplication   : Started StarterApplication in 14.978 seconds (process running for 15.465)
+2026-09-14T20:53:15.829+08:00  INFO 35132 --- [           main] c.sw.ck.job.scheduler.JobStartupRunner   : 无待恢复的定时任务
+2026-09-14T20:53:15.831+08:00  INFO 35132 --- [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-09-14T20:53:15.848+08:00 ERROR 35132 --- [           main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.IllegalStateException: JWT 签名密钥未配置或仍为仓库占位值：必须经外部安全配置注入 sw.security.jwt.secret（如环境变量 JWT_SECRET），默认/占位密钥不允许上线
+	at com.sw.ck.security.config.SecurityAutoConfiguration.lambda$jwtSecretPresenceCheck$2(SecurityAutoConfiguration.java:108) ~[sw-security-0.1.0.jar:na]
+	at org.springframework.boot.SpringApplication.lambda$callRunner$4(SpringApplication.java:784) ~[spring-boot-3.4.4.jar:3.4.4]
+	at org.springframework.util.function.ThrowingConsumer$1.acceptWithException(ThrowingConsumer.java:82) ~[spring-core-6.2.5.jar:6.2.5]
+	at org.springframework.util.function.ThrowingConsumer.accept(ThrowingConsumer.java:60) ~[spring-core-6.2.5.jar:6.2.5]
+	at org.springframework.util.function.ThrowingConsumer$1.accept(ThrowingConsumer.java:86) ~[spring-core-6.2.5.jar:6.2.5]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:796) ~[spring-boot-3.4.4.jar:3.4.4]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:784) ~[spring-boot-3.4.4.jar:3.4.4]
+	at org.springframework.boot.SpringApplication.lambda$callRunners$3(SpringApplication.java:772) ~[spring-boot-3.4.4.jar:3.4.4]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184) ~[na:na]
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:510) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:772) ~[spring-boot-3.4.4.jar:3.4.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:325) ~[spring-boot-3.4.4.jar:3.4.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.4.jar:3.4.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.4.jar:3.4.4]
+	at com.sw.ck.bootstrap.StarterApplication.main(StarterApplication.java:19) ~[classes/:na]
+
+2026-09-14T20:53:15.855+08:00  INFO 35132 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2026-09-14T20:53:15.856+08:00  INFO 35132 --- [           main] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-09-14T20:53:15.863+08:00  INFO 35132 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-09-14T20:53:15.871+08:00 ERROR 35132 --- [   scheduling-1] o.s.s.s.TaskUtils$LoggingErrorHandler    : Unexpected error occurred in scheduled task
+
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: org.postgresql.util.PSQLException: ERROR: column "event_type" does not exist
+  位置：157
+### The error may exist in com/sw/ck/notify/mapper/NotifyMessageMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT id, recipient_id, title, content, biz_type, biz_id, is_read AS read, channel, delivery_status, external_message_id, failure_reason, idempotency_key, event_type, occurrence_no, template_id, template_version, link_type, link_id, retry_count, next_retry_time, failure_class, receipt_digest, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sw_notify_message WHERE deleted = 0 AND (failure_class = ? AND delivery_status IN (?, ?, ?) AND next_retry_time IS NOT NULL AND next_retry_time <= ? AND retry_count < ?) ORDER BY next_retry_time ASC LIMIT 100
+### Cause: org.postgresql.util.PSQLException: ERROR: column "event_type" does not exist
+  位置：157
+; bad SQL grammar []
+	at org.springframework.jdbc.support.SQLStateSQLExceptionTranslator.doTranslate(SQLStateSQLExceptionTranslator.java:112) ~[spring-jdbc-6.2.5.jar:6.2.5]
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107) ~[spring-jdbc-6.2.5.jar:6.2.5]
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:116) ~[spring-jdbc-6.2.5.jar:6.2.5]
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:116) ~[spring-jdbc-6.2.5.jar:6.2.5]
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:93) ~[mybatis-spring-3.0.4.jar:3.0.4]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:347) ~[mybatis-spring-3.0.4.jar:3.0.4]
+	at jdk.proxy2/jdk.proxy2.$Proxy138.selectList(Unknown Source) ~[na:na]
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:194) ~[mybatis-spring-3.0.4.jar:3.0.4]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.executeForMany(MybatisMapperMethod.java:164) ~[mybatis-plus-core-3.5.9.jar:3.5.9]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:77) ~[mybatis-plus-core-3.5.9.jar:3.5.9]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:152) ~[mybatis-plus-core-3.5.9.jar:3.5.9]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89) ~[mybatis-plus-core-3.5.9.jar:3.5.9]
+	at jdk.proxy2/jdk.proxy2.$Proxy158.selectList(Unknown Source) ~[na:na]
+	at com.sw.ck.notify.service.impl.NotifyDeliveryRecoveryServiceImpl.recoverDue(NotifyDeliveryRecoveryServiceImpl.java:58) ~[sw-basic-notify-biz-0.1.0.jar:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.runInternal(ScheduledMethodRunnable.java:130) ~[spring-context-6.2.5.jar:6.2.5]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.lambda$run$2(ScheduledMethodRunnable.java:124) ~[spring-context-6.2.5.jar:6.2.5]
+	at io.micrometer.observation.Observation.observe(Observation.java:498) ~[micrometer-observation-1.14.5.jar:1.14.5]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:124) ~[spring-context-6.2.5.jar:6.2.5]
+	at org.springframework.scheduling.config.Task$OutcomeTrackingRunnable.run(Task.java:85) ~[spring-context-6.2.5.jar:6.2.5]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) ~[spring-context-6.2.5.jar:6.2.5]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:358) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: org.postgresql.util.PSQLException: ERROR: column "event_type" does not exist
+  位置：157
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2733) ~[postgresql-42.7.5.jar:42.7.5]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2420) ~[postgresql-42.7.5.jar:42.7.5]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:372) ~[postgresql-42.7.5.jar:42.7.5]
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:517) ~[postgresql-42.7.5.jar:42.7.5]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:434) ~[postgresql-42.7.5.jar:42.7.5]
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194) ~[postgresql-42.7.5.jar:42.7.5]
+	at org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:180) ~[postgresql-42.7.5.jar:42.7.5]
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3462) ~[druid-1.2.24.jar:na]
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:434) ~[druid-1.2.24.jar:na]
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3460) ~[druid-1.2.24.jar:na]
+	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.execute(PreparedStatementProxyImpl.java:158) ~[druid-1.2.24.jar:na]
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:483) ~[druid-1.2.24.jar:na]
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:65) ~[mybatis-3.5.16.jar:3.5.16]
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:80) ~[mybatis-3.5.16.jar:3.5.16]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:61) ~[mybatis-3.5.16.jar:3.5.16]
+	at jdk.proxy2/jdk.proxy2.$Proxy217.query(Unknown Source) ~[na:na]
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:65) ~[mybatis-3.5.16.jar:3.5.16]
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:336) ~[mybatis-3.5.16.jar:3.5.16]
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:158) ~[mybatis-3.5.16.jar:3.5.16]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:110) ~[mybatis-3.5.16.jar:3.5.16]
+	at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:81) ~[mybatis-plus-extension-3.5.9.jar:3.5.9]
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:59) ~[mybatis-3.5.16.jar:3.5.16]
+	at jdk.proxy2/jdk.proxy2.$Proxy216.query(Unknown Source) ~[na:na]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:154) ~[mybatis-3.5.16.jar:3.5.16]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147) ~[mybatis-3.5.16.jar:3.5.16]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142) ~[mybatis-3.5.16.jar:3.5.16]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:333) ~[mybatis-spring-3.0.4.jar:3.0.4]
+	... 22 common frames omitted
+
+2026-09-14T20:53:15.876+08:00  INFO 35132 --- [           main] o.s.i.endpoint.EventDrivenConsumer       : Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2026-09-14T20:53:15.876+08:00  INFO 35132 --- [           main] o.s.i.channel.PublishSubscribeChannel    : Channel 'application.errorChannel' has 0 subscriber(s).
+2026-09-14T20:53:15.876+08:00  INFO 35132 --- [           main] o.s.i.endpoint.EventDrivenConsumer       : stopped bean '_org.springframework.integration.errorLogger'
+2026-09-14T20:53:15.884+08:00  INFO 35132 --- [           main] o.f.j.s.i.a.AbstractAsyncExecutor        : Shutting down the async job executor [org.flowable.spring.job.service.SpringAsyncExecutor] for engine bpmn
+2026-09-14T20:53:15.885+08:00  INFO 35132 --- [et-expired-jobs] o.f.j.s.i.a.ResetExpiredJobsRunnable     : stopped resetting expired jobs for engine bpmn
+2026-09-14T20:53:15.885+08:00  INFO 35132 --- [uire-timer-jobs] o.f.j.s.i.a.AcquireTimerJobsRunnable     : stopped async job due acquisition for engine bpmn
+2026-09-14T20:53:15.885+08:00  INFO 35132 --- [uire-async-jobs] o.f.j.s.i.a.AcquireAsyncJobsDueRunnable  : stopped async job due acquisition for engine bpmn
+2026-09-14T20:53:15.891+08:00  INFO 35132 --- [           main] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2026-09-14T20:53:15.891+08:00  INFO 35132 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2026-09-14T20:53:15.892+08:00  INFO 35132 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2026-09-14T20:53:15.892+08:00  INFO 35132 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2026-09-14T20:53:15.892+08:00  INFO 35132 --- [           main] c.s.c.b.e.d.ExternalDatasourceManager    : Shutting down all external datasource connection pools (count=0)
+2026-09-14T20:53:15.900+08:00  INFO 35132 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource start closing ....
+2026-09-14T20:53:15.902+08:00  INFO 35132 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2026-09-14T20:53:15.905+08:00  INFO 35132 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2026-09-14T20:53:15.905+08:00  INFO 35132 --- [           main] c.b.d.d.d.DefaultDataSourceDestroyer     : dynamic-datasource close the datasource named [master] success,
+2026-09-14T20:53:15.905+08:00  INFO 35132 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource all closed success,bye
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.4.4:run (default-cli) on project sw-bootstrap: Process terminated with exit code: 1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

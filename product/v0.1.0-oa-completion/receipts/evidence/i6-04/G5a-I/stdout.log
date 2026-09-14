@@ -1,0 +1,69 @@
+[
+ [
+  "1.bind-feishu-ok",
+  {
+   "status": 200,
+   "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+     "bindStatus": "ACTIVE",
+     "subjectDigest": "2bd010303c22d874aee2cafbf20a0f84b0858bff61c5bc740d5be6cc927bcf96",
+     "provider": "FEISHU",
+     "userId": "10002",
+     "id": "2099409639603679234"
+    }
+   }
+  }
+ ],
+ [
+  "2.bind-dup",
+  {
+   "status": 200,
+   "body": {
+    "code": 400,
+    "msg": "该用户已存在同 Provider 的有效绑定",
+    "data": null
+   }
+  }
+ ],
+ [
+  "3.bind-badprovider",
+  {
+   "status": 200,
+   "body": {
+    "code": 400,
+    "msg": "未支持的 Provider: FAKE_SSO",
+    "data": null
+   }
+  }
+ ],
+ [
+  "4.bind-blank",
+  {
+   "status": 200,
+   "body": {
+    "code": 400,
+    "msg": "用户/Provider/主体不能为空",
+    "data": null
+   }
+  }
+ ],
+ [
+  "5.bind-cross-tenant",
+  {
+   "status": 200,
+   "body": {
+    "code": 400,
+    "msg": "用户不存在或已停用",
+    "data": null
+   }
+  }
+ ],
+ [
+  "6.list",
+  {
+   "code": 0,
+   "rows": [
+    {
+     "bindStatus

@@ -1,0 +1,10 @@
+[2026-09-14T11:14:30.250Z] 1a 发起人读实例详情 → 200 {"code":0,"msg":"success","data":{"id":"2099445359529631746","processInstanceId":"21bca43c-b027-11f1-a00c-00ffa7734675",
+[2026-09-14T11:14:30.279Z] 1b 审批人（参与人）读实例详情 → 200 {"code":0,"msg":"success","data":{"id":"2099445359529631746","processInstanceId":"21bca43c-b027-11f1-a00c-00ffa7734675",
+[2026-09-14T11:14:30.338Z] 1c 抄送人读实例详情 → 200 {"code":0,"msg":"success","data":{"id":"2099445359529631746","processInstanceId":"21bca43c-b027-11f1-a00c-00ffa7734675",
+[2026-09-14T11:14:30.366Z] 1d 无权用户读非参与实例详情 → 200 {"code":403,"msg":"无权查看该流程实例","data":null}
+[2026-09-14T11:14:30.393Z] 1e 管理员读退回链实例（本人发起） → 200 {"code":0,"msg":"success","data":{"id":"2099447084391010305","processInstanceId":"16cc3c94-b028-11f1-a7d5-00ffa7734675",
+[2026-09-14T11:14:30.404Z] 2a u3 抄送我的列表 → 200 {"code":0,"msg":"success","data":{"records":[{"id":"2099445362121711618","processInstanceId":"21bca43c-b027-11f1-a00c-00ffa7734675","nodeKey":"n_copy","taskId":null,"recipientId":"10003","deliveryStatus":"SUCCESS","createTime":"2026-09-14T18:29:14.795321","for
+[2026-09-14T11:14:30.410Z] 2b u2 抄送我的列表（应为空或不含 u3 的行） → 200 {"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"5"}}
+[2026-09-14T11:14:30.479Z] 3a u3 冒办 u2 待办 → 200 {"code":0,"msg":"success","data":{"commandId":"2099456752496619521","commandKey":"TASK_APPROVE:f549f3da-b02c-11f1-af29-00ffa7734675:10003","
+[2026-09-14T11:14:30.488Z] 3b u3 转办他人待办 → 403 {"code":403,"msg":"无权限","data":null}
+DONE

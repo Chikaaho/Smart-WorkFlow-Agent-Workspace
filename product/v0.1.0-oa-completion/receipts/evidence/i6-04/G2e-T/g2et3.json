@@ -1,0 +1,83 @@
+[
+ [
+  "2.preview-ok",
+  {
+   "status": 200,
+   "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+     "title": "额度 1234.5 截止 2026-09-30",
+     "content": "阶段 RUN 邮箱 u2@example.com 备注 fine"
+    }
+   }
+  }
+ ],
+ [
+  "3.type-mismatch-number",
+  {
+   "status": 200,
+   "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+     "title": "额度 abc 截止 2026-09-30",
+     "content": "阶段 RUN 邮箱 u2@example.com 备注 fine"
+    }
+   }
+  }
+ ],
+ [
+  "4.date-mismatch",
+  {
+   "status": 200,
+   "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+     "title": "额度 1234.5 截止 09/30/2026",
+     "content": "阶段 RUN 邮箱 u2@example.com 备注 fine"
+    }
+   }
+  }
+ ],
+ [
+  "5.enum-mismatch",
+  {
+   "status": 200,
+   "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+     "title": "额度 1234.5 截止 2026-09-30",
+     "content": "阶段 HACK 邮箱 u2@example.com 备注 fine"
+    }
+   }
+  }
+ ],
+ [
+  "6.email-mismatch",
+  {
+   "status": 200,
+   "body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+     "title": "额度 1234.5 截止 2026-09-30",
+     "content": "阶段 RUN 邮箱 not-an-email 备注 fine"
+    }
+   }
+  }
+ ],
+ [
+  "7.unknown-var-given",
+  {
+   "status": 200,
+   "body": {
+    "code": 400,
+    "msg": "变量未登记白名单: evil",
+    "data": null
+   }
+  }
+ ]
+]

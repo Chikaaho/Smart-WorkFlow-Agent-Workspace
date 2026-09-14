@@ -1,0 +1,10 @@
+# G7b 原始流（2026-09-14，真实 PG18 docker postgres:5432）
+# 0) 旧克隆 DB（2个月前脚本代的 V11 形态：wf_external_datasource 等旧表名）升级尝试 → 现行链 V13 起失败
+#    （baseline-build 尝试日志在 baseline-build-boot.log 前段/会话记录）；判定：非受支持旧基线（脚本代漂移）
+# 1) 受支持旧基线构建：现行迁移脚本 target=87（pre-I6）→ 成功建至 V87（baseline-build-boot.log:155 行
+#    "Successfully applied 86 migrations ... now at version v87"）
+# 2) 迁移前历史回灌（同 ID）：G7B-PRE-90001/90002/90003（含 FAILED 90002 + 失败尝试 90012）、
+#    模板 90011、流程实例 90020（inst-100-1）—— SQL 语句见会话与 db-backread.txt
+# 3) 升级：同一 DB 不重建不换名，boot Flyway V87→V92（upgrade-boot.log；V89 i6_notify_closure 重塑 +
+#    V90 菜单 + V91 subject binding + V92 boolean，携带既有数据）
+# 4) 同 ID 回读：db-backread.txt（docker exec psql 原始输出）
