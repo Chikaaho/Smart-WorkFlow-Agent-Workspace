@@ -3,9 +3,9 @@
 #    Workspace 仅有 Server 内误生成的隔离临时 evidence 目录，未进入候选代码；manifest 自身按自引用规则排除
 # 2) manifest 工具生成：Node.js JSON（三仓 git rev-parse + 迁移计数 + 门禁计数 + G5b 边界）
 #    → release/0.1.0/MANIFEST.json + 本目录 manifest-snapshot.json（字节一致）
-# 3) hash：SHA-256 MANIFEST.json = 520b8db57f829c2bb737c31d887bc2c6365587be9b3137e9044d85f624ee53f5
+# 3) hash：SHA-256 MANIFEST.json = 9ce273755279db40dd439fdc979eb22a47a036f07879f776f7536527479d98dd
 #          SHA-256 version.json  = 9c1a24675c7bc7d3b47a6d8bb775e79e56518a8f8c2a4d92a4df47c5d11def24
 # 4) 三仓状态：Server HEAD e941d74…（clean，develop）/ Web HEAD 0a746e3…（clean，develop）/
-#    Workspace HEAD 4af109d…（候选生成前提交；root status 仅为 Server 内临时 evidence）
+#    Workspace HEAD bfb58bd…（候选生成前提交；root status 仅为 Server 内临时 evidence）
 # 5) 回读：manifest 与 G8a/manifest-snapshot.json MATCH；G8a/actual.md 引用当前快照与 SHA-256 输出
 # 6) terminal-contract validator：输入 terminal-input.json，stdout/stderr 分离保存，exit-code=0
