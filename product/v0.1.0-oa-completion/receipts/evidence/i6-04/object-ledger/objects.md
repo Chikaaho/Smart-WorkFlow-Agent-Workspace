@@ -29,3 +29,17 @@
 - 固定验证码依据 I5 门禁代码 `LoginChallengeService.generateCaptcha`：纯 dev/test profile + ch.dev.test-mock=true 时答案固定 1234；实测 challenge→login(u1_100/admin123/1234)=200 code=0 accessToken 下发（object-setup/login-fixed-captcha.js 原始流）
 - 旧 local profile 进程（PID 41236，jar 遗留）已终止，端口 8080 由 dev profile 进程接替
 - devseed 口令 admin123 与 V900 种子同源（仓库公开 dev fixture，非秘密）
+
+## 终版（G8a 前时点，2026-09-14 晚）
+- Server HEAD: e941d74ffb3e5388e1b3ac3efb234d4634436aea（develop，clean）；提交链 1ea3d41→4f556df→3676af1→e941d74
+- Web HEAD: 0a746e3d6e0e0aaa0c4ee8633c58c75c295546d6（develop，clean）；acdd3af→0a746e3
+- Workspace: fa4bddf（证据）→946a3b9（gitlink）→d151bb0（G8a manifest）
+- 门禁：Server 1361/0/0/0 BUILD SUCCESS；Web typecheck/lint/test(1185+3)/build 全 exit 0
+- Flyway：H2 终点 V92（92 条）/ PG 终点 V92（90 条）；G7b 库 i6_g7b_pg=V92（90 条，同 ID 90001-90003/90011/90012/90020 保留）
+- 对象变更登记汇总：TaskActionService 退回新轮次通知；BpmNotifyLinkAuthorizer 新增；
+  NotifyHome 深链按钮/ProcessInstanceList focus/MobileWorkspace ref 恢复；日志 log-impl Slf4jImpl；
+  DraftSubmitCommandHandler.onFinalFailure Long 解析；NotifySubjectBindingServiceImpl 密钥惰性化；
+  data_scope(T100/T200 管理员)=0；PG 角色 chikan 与 smart_workflow.sw_iot_connection（环境铺设）；
+  G7b 库重建为 V87 现行脚本基线 + 历史 ID 回灌（旧克隆非受支持基线，见 G7b/actual.md）
+- G4/G6 对象集合：G1a 实例 d018f57a/任务 d0191c97/消息 2099430376456531969(IN_APP M)+2099430376506863617(EMAIL FAILED)；
+  G6a 事件矩阵实例族（含抄送链 21bca43c、退回链 57e144a5/16cc3c94、时限链 f549f3da）
