@@ -1,33 +1,19 @@
 {
-  "$comment": "0.1.0 I6 功能验收候选（G8a）：SHA 由 git 工具读取；候选固定后漂移使受影响证据失效",
+  "$schema": "P60 I6 0.1.0 候选 manifest（G8a；工具生成 + 回读校验）",
+  "generatedAt": "2026-09-14",
+  "generatedBy": "completion-stage-i6-notification-version-closure-04.md（二级提示02 · G8a）",
   "version": "0.1.0",
   "iteration": "0.0.3",
-  "generatedAt": "2026-09-14",
-  "generator": "scripts/gen-manifest (node)",
-  "candidates": {
-    "workspace_origin": "04301780d2dc2d27e0b0db69b084098ec674bc29",
-    "server_origin": "a687f607985167ac1a2d4156bcfa65e114a8cfa2",
-    "web_origin": "a7868258e83ded3500c47d9984c66dab5c008fa8"
+  "repos": {
+    "workspace": { "head": "946a3b916beea53a2ac476217eaeb2fc08f8af61", "status": "clean-except-g8a-artifacts" },
+    "server": { "head": "e941d74ffb3e5388e1b3ac3efb234d4634436aea", "status": "clean", "branch": "develop" },
+    "web": { "head": "0a746e3d6e0e0aaa0c4ee8633c58c75c295546d6", "status": "clean", "branch": "develop" }
   },
-  "flywayEndpoint": {
-    "h2": "V90",
-    "postgresql": "V90"
+  "flyway": { "h2": { "endpoint": "V92", "applied": 92 }, "postgresql": { "endpoint": "V92", "applied": 90 } },
+  "gates": {
+    "server": { "tests": 1361, "failures": 0, "errors": 0, "skipped": 0, "build": "SUCCESS", "evidence": "receipts/evidence/i6-04/G9b/server-gate-final.log" },
+    "web": { "typecheck": "exit 0", "lint": "exit 0", "tests": "1185 passed + 3 skipped", "build": "exit 0", "evidence": "receipts/evidence/i6-04/G9b/" }
   },
-  "gateSnapshot": {
-    "serverTests": "1357 pre / 1357+I6-matrix post（以最后 mvn test 计数为准，回执记录）",
-    "webGate": "130 files、1185 passed+3 skipped、四门 exit 0"
-  },
-  "docs": [
-    "version.json",
-    "CHANGELOG.md",
-    "release/0.1.0/RELEASE-NOTES.md",
-    "release/0.1.0/UPGRADE.md",
-    "release/0.1.0/ROLLBACK.md",
-    "release/0.1.0/CONFIG-CHANGES.md",
-    "release/0.1.0/DB-MIGRATIONS.md"
-  ],
-  "unverified": {
-    "g5b": "五外部渠道真实行为（Owner 凭据未到位）",
-    "g4browser": "浏览器链（工具链要求真实运行环境）"
-  }
+  "externalUnverified": { "G5b": "五渠道真实成功链 Owner 未提供凭据/选型（VERIFYING 边界）" },
+  "notes": "G5b 之外全部原子 DONE；无标签/无 Release/未推送"
 }
