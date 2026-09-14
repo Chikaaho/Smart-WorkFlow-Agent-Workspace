@@ -15,7 +15,9 @@
 
 ### 数据库
 
-- 无新增数据源配置；I6 表由 Flyway V89/V90（`db/migration/notify/{h2,postgresql}` 与 `db/migration/{h2,postgresql}`）管理。
+- 无新增数据源配置；I6 表由 Flyway V89/V90/V91/V92（`db/migration/notify/{h2,postgresql}` 与 `db/migration/{h2,postgresql}`）管理。
+- V91 新增通知 Provider 主体绑定的租户隔离存储；主体密文只经运行时密钥加密，响应仅返回摘要。
+- V92 将通知模板/规则启用标志统一为数据库布尔语义，保留旧库既有值。
 
 ### 日志
 
