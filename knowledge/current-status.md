@@ -35,7 +35,7 @@
 
 ## 当前唯一下一动作
 
-**P60 v0.1.0-oa-completion：等待 Planner 终态复核 I5 阶段三终态同步回执 01（`product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md`，`TERMINAL_SYNC_SUBMITTED`，前置裁决 `receipts/planning-review-stage-i5-v0.0.3-oa-owner-waiver-01-passed.md`）：** Planner 复核通过并确认 I5 `COMPLETED（规划已确认，2026-09-14）` 后，由 Planner 形成 I6「通知与版本收口」正式阶段方向，并把 I5 终态同步方向归档 `passed/`。Executor 侧本轮动作已闭合：I5 唯一终态值已机械同步至 knowledge/memory/todo/工程《功能清单》与方向当前指针，I5 task-owned 文件已本地提交，三仓远端回读完成。**远程推送仍须 Owner 对具体远端、分支和范围明确授权**（Server `origin/develop` 3 个 I5 提交；Workspace `origin/develop-sw` 本轮同步提交）；授权前不得 push，禁止强推、历史改写、标签或 Release。三 Provider 真实成功链保持 `Owner 延期免验 / 未验证`，小程序继续冻结。P60 保持 `IN_PROGRESS`，I1—I4 均 `COMPLETED（规划已确认）`，I5 `COMPLETED（待规划确认，2026-09-14）`，功能数 44、清单 ✅46/🟦22/⬜22、ADV64 与 P 编号全部不变。**（P60 不替代、不提前核销 P2/P4/P26/P31/P34/P35/P37/P38/P39/P47 等既有开放编号。）**
+**P60 v0.1.0-oa-completion：等待 Planner 终态复核 I5 阶段三终态同步回执 01（`product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md`，`TERMINAL_SYNC_SUBMITTED`，前置裁决 `receipts/planning-review-stage-i5-v0.0.3-oa-owner-waiver-01-passed.md`）：** Planner 复核通过并确认 I5 `COMPLETED` 后，由 Planner 形成 I6「通知与版本收口」正式阶段方向，并把 I5 终态同步方向归档 `passed/`。Executor 侧本轮动作已闭合：I5 唯一终态值已机械同步至 knowledge/memory/todo/工程《功能清单》与方向当前指针，I5 task-owned 文件已本地提交，三仓远端回读完成。**远程推送仍须 Owner 对具体远端、分支和范围明确授权**（Server `origin/develop` 3 个 I5 提交；Workspace `origin/develop-sw` 本轮同步提交）；授权前不得 push，禁止强推、历史改写、标签或 Release。三 Provider 真实成功链保持 `Owner 延期免验 / 未验证`，小程序继续冻结。P60 保持 `IN_PROGRESS`，I1—I4 均 `COMPLETED（规划已确认）`，I5 `COMPLETED（待规划确认，2026-09-14）`，功能数 44、清单 ✅46/🟦22/⬜22、ADV64 与 P 编号全部不变。**（P60 不替代、不提前核销 P2/P4/P26/P31/P34/P35/P37/P38/P39/P47 等既有开放编号。）**
 
 ## 当前未关闭项入口
 

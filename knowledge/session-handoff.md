@@ -17,7 +17,7 @@
 | 产品行为基线 | I5 G1—G9 真实行为/HTTP/持久化/浏览器证据见 `receipts/evidence/i5-02/`—`i5-11/`（非零租户 OA 全链同一对象链 tenantId 勾稽、生产匿名矩阵、SSO state 重放/错配/白名单拒绝、绑定/解绑与冲突拒绝、同秒 jti 撤销隔离、审计零残留与秘密扫描 NO-HITS、Owner 自验交接包回读与逐文件 manifest）；I1—I4 行为证据继续锁定。**三 Provider 真实成功链=Owner 延期免验/未验证** |
 | 当前任务状态 | `v0.1.0-oa-completion`：**IN_PROGRESS**；I1—I4 **COMPLETED（规划已确认）**；**I5 COMPLETED（待规划确认，2026-09-14）**（终态同步回执 `receipts/terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md`，`TERMINAL_SYNC_SUBMITTED`）；I6 未开始 |
 | 活动业务实现功能 | 无（I5 已提交终态同步待规划复核；I6 通知与版本收口未开始，需 Planner 另行下发正式阶段方向） |
-| 唯一下一动作 | **等待 Planner 终态复核 I5 阶段三终态同步回执 01**（`product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md`）；确认 I5 `COMPLETED（规划已确认，2026-09-14）` 后由 Planner 形成 I6 正式方向并归档 I5 终态同步方向。**远程推送待 Owner 对具体远端/分支/范围明确授权**（Server `origin/develop` 3 个 I5 提交、Workspace `origin/develop-sw` 本轮同步提交）；P60 保持 IN_PROGRESS，功能数 44 与清单 ✅46/🟦22/⬜22、ADV64、P 编号不变 |
+| 唯一下一动作 | **等待 Planner 终态复核 I5 阶段三终态同步回执 01**（`product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md`）；确认 I5 `COMPLETED` 后由 Planner 形成 I6 正式方向并归档 I5 终态同步方向。**远程推送待 Owner 对具体远端/分支/范围明确授权**（Server `origin/develop` 3 个 I5 提交、Workspace `origin/develop-sw` 本轮同步提交）；P60 保持 IN_PROGRESS，功能数 44 与清单 ✅46/🟦22/⬜22、ADV64、P 编号不变 |
 
 ## v0.1.0-oa-completion 关键事实
 

@@ -16,7 +16,7 @@ I1—I4历史基线继续锁定；I5 #1—#10、#12、#13、#15—#17与#14本�
 `product/v0.1.0-oa-completion/ready/direction-stage-i5-terminal-sync.md`（执行侧已闭合；Planner复核通过后归档`passed/`）。
 
 ## 6. 下一轮固定范围
-等待Planner终态复核确认I5 `COMPLETED（规划已确认，2026-09-14）`后，由Planner形成I6「通知与版本收口」正式方向。远程推送须Owner对具体远端、分支和范围明确授权。
+等待Planner终态复核确认I5 `COMPLETED` 后，由Planner形成I6「通知与版本收口」正式方向。远程推送须Owner对具体远端、分支和范围明确授权。
 
 ## 7. 新机器启动提示词
 本会话角色声明为执行。读取I5功能级PASSED裁决（`planning-review-stage-i5-v0.0.3-oa-owner-waiver-01-passed.md`）与终态同步回执`terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md`；下一动作=等待Planner终态复核。未经Owner明确授权不得推送；不开始I6；三Provider真实链不得写成已验证成功。
