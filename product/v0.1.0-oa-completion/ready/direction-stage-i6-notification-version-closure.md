@@ -6,7 +6,7 @@
 > 需求编号：P60 / I6  
 > 优先级：P0  
 > 任务等级：XL  
-> 阶段状态：READY（I6 现状探索已完成；实现前须补齐 I5 规划确认终态投影回执与当前状态一致性）  
+> 阶段状态：VERIFYING（实现回执01已提交；规划审查01锁定L1—L7，剩余G1—G9）  
 > 成熟 OA 目标：`0.1.0`  
 > 当前交付迭代：`0.0.3`
 
@@ -28,7 +28,7 @@ I6 是 P60 的最后一个阶段，但 I6 通过不自动等于 P60 `PASSED` 或
 
 探索确认现有通知底座只有站内信具备真实行为；短信只有 dev 调试桩；飞书、钉钉、企业微信、邮件无生产适配器，其中邮件尚无渠道枚举。模板版本、渠道规则、订阅、可靠重试、外部回执、受保护深链和移动通知入口均未完成。已有 SPI、Mock、调试成功或落库 `FAILED` 不算外部渠道完成。
 
-实现前必须先完成 I5 规划确认状态投影方向要求的机械同步与回执，修正 `memory/`、P60 当前段、I6 激活状态及唯一入口；只做状态一致性检查，不重跑 I5 测试。当前缺失的预期回执为：
+I5 规划确认状态投影方向要求的机械同步与回执已经提交并由规划审查01接收，I6 实现前门禁已关闭。投影回执为：
 
 `product/v0.1.0-oa-completion/receipts/final-state-projection-stage-i5-v0.0.3-oa-iteration-01.md`
 
@@ -150,11 +150,15 @@ P60 总方向 §3.9 的六类通知渠道全部属于 I6 和 `0.1.0` 验收范�
 
 ## 8. 状态、回执与唯一入口
 
-当前规划入口为本方向；实现授权仍受 §2 的 I5 投影回执门禁约束。门禁关闭后，I6 状态由 `READY` 进入 `IN_PROGRESS`，Executor 在本方向产品边界内自行制定实施计划并连续完成授权内可独立工作。
+当前规划入口为`../receipts/planning-review-stage-i6-notification-version-closure-01.md`。I6 实现回执01已提交，阶段处于`VERIFYING`；Executor 只补审查01的G1—G9，不重验L1—L7。
 
-I6 首次实现回执写入：
+I6 首次实现回执已写入：
 
 `product/v0.1.0-oa-completion/receipts/completion-stage-i6-notification-version-closure-01.md`
+
+下一回执写入：
+
+`product/v0.1.0-oa-completion/receipts/completion-stage-i6-notification-version-closure-02.md`
 
 合法提交状态为阶段 `VERIFYING`、机器 `EXECUTION_SUBMITTED`。回执必须按 §4 的 18 个验收原子逐项给出行为证据、未验证边界和候选身份；仍有授权内 actionable 项时不得以中间总结停止。Planner 验收通过后将另行归档本方向并下发 I6 阶段三唯一终态值清单。
 
