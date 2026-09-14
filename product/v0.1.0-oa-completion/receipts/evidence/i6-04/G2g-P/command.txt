@@ -1,0 +1,8 @@
+# 工具可用性真实结果（2026-09-14）
+# 首次自助启动实录：
+#  1) mvn -q -pl sw-bootstrap spring-boot:run -Dspring-boot.run.profiles=local → 启动至 Druid 主库连接失败退出
+#  2) jdbc:postgresql://127.0.0.1:5432/smart_workflow → Connection refused (getsockopt)，本地 5432 无监听
+#  3) docker daemon 未运行：error during connect: pipe/docker_engine not found
+#  4) psql/pg_ctl 不在 PATH；本机未注册 postgres 服务（sc query 1060）
+#  5) Redis Windows 服务存在：`net start Redis` → 系统错误 5 拒绝访问（非 admin）
+# 结论：真实本地 PG 不可用；Redis 注册表服务存在但无权限；Docker Desktop 未运行。
