@@ -70,13 +70,21 @@ Executor 按实际文件结构同步：
 
 分别只读核对 Workspace、Server、Web 的仓库根、当前分支、HEAD、upstream、远端和工作树；仅暂存 I5 task-owned 实现/测试/迁移/文档，以及本终态同步授权的治理状态文件。既有无关改动不得提交、清理、reset 或覆盖；无归属变化的仓库不得制造空提交。
 
-允许按 Conventional Commits 创建本地归属提交。**远程推送仍须 Owner 对具体远端、分支和范围明确授权**；授权前只能保存待推送提交与只读远端状态，不得 push。拟议范围固定为各仓当前 upstream 分支上的 I5 task-owned 提交；禁止强推、历史改写、标签或 Release。
+本地归属提交已经由回执01完成。Owner于2026-09-14在获知精确远端、分支、提交范围及Workspace分叉后明确回复“合并就行”，授权按`../receipts/planning-review-terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md`处理：Workspace普通merge保留远端P53登记并推送`origin/develop-sw`；Server 6个I5提交推送`origin/develop`；Web 2个I5提交推送`origin/develop`。禁止rebase、强推、历史改写、删除任一侧内容、标签或Release。
 
 ## 6. 回执与合法终态
 
-首次回执写入：
+首次回执已写入：
 
 `product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md`
+
+该回执的终态值同步与本地提交已通过规划复核，唯一未完成为TS5-PUBLISH。当前入口为：
+
+`product/v0.1.0-oa-completion/receipts/planning-execution-prompt-terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md`
+
+发布收尾回执写入：
+
+`product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i5-v0.0.3-oa-iteration-02.md`
 
 回执至少包含唯一值逐入口回读、memory 压缩前后字节数、三仓 task-owned 文件清单、候选核对、分支/HEAD/upstream/远端状态、本地提交结果、推送授权及实际结果、terminal Validator 和 manifest。
 

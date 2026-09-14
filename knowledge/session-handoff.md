@@ -17,7 +17,7 @@
 | 产品行为基线 | I5 G1—G9 真实行为/HTTP/持久化/浏览器证据见 `receipts/evidence/i5-02/`—`i5-11/`（非零租户 OA 全链同一对象链 tenantId 勾稽、生产匿名矩阵、SSO state 重放/错配/白名单拒绝、绑定/解绑与冲突拒绝、同秒 jti 撤销隔离、审计零残留与秘密扫描 NO-HITS、Owner 自验交接包回读与逐文件 manifest）；I1—I4 行为证据继续锁定。**三 Provider 真实成功链=Owner 延期免验/未验证** |
 | 当前任务状态 | `v0.1.0-oa-completion`：**IN_PROGRESS**；I1—I4 **COMPLETED（规划已确认）**；**I5 COMPLETED（待规划确认，2026-09-14）**（终态同步回执 `receipts/terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md`，`TERMINAL_SYNC_SUBMITTED`）；I6 未开始 |
 | 活动业务实现功能 | 无（I5 已提交终态同步待规划复核；I6 通知与版本收口未开始，需 Planner 另行下发正式阶段方向） |
-| 唯一下一动作 | **等待 Planner 终态复核 I5 阶段三终态同步回执 01**（`product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md`）；确认 I5 `COMPLETED` 后由 Planner 形成 I6 正式方向并归档 I5 终态同步方向。**远程推送待 Owner 对具体远端/分支/范围明确授权**（Server `origin/develop` 3 个 I5 提交、Workspace `origin/develop-sw` 本轮同步提交）；P60 保持 IN_PROGRESS，功能数 44 与清单 ✅46/🟦22/⬜22、ADV64、P 编号不变 |
+| 唯一下一动作 | **执行 I5 发布收尾提示 01「TS5-PUBLISH」**（`product/v0.1.0-oa-completion/receipts/planning-execution-prompt-terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md`）：Workspace 普通 merge 保留远端 P53 登记与本地 I5 内容，三仓非强制推送（Server `origin/develop` 6 提交、Web `origin/develop` 2 提交、Workspace `origin/develop-sw` 同步链）与远端包含关系回读，提交 `terminal-sync-stage-i5-v0.0.3-oa-iteration-02.md`；Owner 已明确授权该合并与推送范围。确认 I5 `COMPLETED` 后由 Planner 形成 I6 正式方向并归档 I5 终态同步方向。P60 保持 IN_PROGRESS，功能数 44 与清单 ✅46/🟦22/⬜22、ADV64、P 编号不变 |
 
 ## v0.1.0-oa-completion 关键事实
 
@@ -25,7 +25,7 @@
 - I3 阶段方向（已归档）：`product/v0.1.0-oa-completion/passed/direction-stage-i3-manual-approval-first-party-process-designer.md`；I3 功能级裁决 `receipts/planning-review-stage-i3-v0.1.0-oa-completion-08-passed.md` **PASSED**（R0—R10 全部原子，十八项验收标准通过）；I3 终态最终复核 `receipts/planning-final-review-terminal-sync-stage-i3-v0.1.0-oa-completion-02-passed.md` **PASSED**（已确认 `COMPLETED`）。
 - I4 阶段方向（已归档）：`product/v0.1.0-oa-completion/passed/direction-stage-i4-orchestration-process-operations-workbench.md`；I4 功能级裁决 `receipts/planning-review-stage-i4-v0.0.3-oa-iteration-06-passed.md` **PASSED**（R5/R6 关闭缺口，十二项验收标准全部通过）；终态同步最终复核 `receipts/planning-final-review-terminal-sync-stage-i4-v0.0.3-oa-iteration-03-passed.md` **PASSED**（I4 正式确认 `COMPLETED（规划已确认，2026-09-13）`）；终态同步方向与三层状态对账方向亦均已归档 `passed/`。
 - I5 阶段方向（已归档）：`product/v0.1.0-oa-completion/passed/direction-stage-i5-tenant-safe-third-party-sso.md`；I5 功能级裁决 `receipts/planning-review-stage-i5-v0.0.3-oa-owner-waiver-01-passed.md` **PASSED**（Owner 2026-09-14 明确延期免验三 Provider 真实链，其余标准与文档级可用交付锁定）；I5 阶段三终态同步回执 `receipts/terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md`（`TERMINAL_SYNC_SUBMITTED`），I5 终态同步方向 `ready/direction-stage-i5-terminal-sync.md`（Planner 终态复核后方可归档 `passed/`）。
-- 当前唯一执行入口：`product/v0.1.0-oa-completion/ready/direction-stage-i5-terminal-sync.md`（I5 阶段三终态同步；执行侧已闭合，等待 Planner 终态复核）。
+- 当前唯一执行入口：`product/v0.1.0-oa-completion/receipts/planning-execution-prompt-terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md`（I5 发布收尾 TS5-PUBLISH；终态值与本地提交已通过规划复核 01，仅剩三仓远程发布）。
 - 历史材料（I1 阶段证据，不改）：`product/v0.3.0-oa-completion/`。
 - 高级能力规划：`ready/advanced-capability-feature-checklist.md`（ADV-M11—ADV-M18、8 模块/64 条）；已映射进 `Smart-WorkFlow-aPaaS-server/功能清单.md` 文末 ADV 章节，**未纳入 0.1.0 验收**。
 - 统筹但不提前核销：P2/P4/P26/P31/P34/P35/P37/P38/P39 等既有开放 OA 范围。

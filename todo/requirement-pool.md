@@ -9,7 +9,7 @@
 
 ## Owner 优先级覆盖
 
-**2026-09-14 P0 版本当前规划**：P60成熟OA目标`0.1.0`、当前迭代`0.0.3`，整体`IN_PROGRESS`。I1—I4 **COMPLETED（规划已确认）**；**I5=`COMPLETED（待规划确认，2026-09-14）`**（功能级验收 `planning-review-stage-i5-v0.0.3-oa-owner-waiver-01-passed.md` PASSED；三 Provider 真实成功链按 Owner 2026-09-14 裁决**延期免验/未验证**；主方向已归档`passed/`）；I6通知与版本收口未开始。当前唯一入口=`product/v0.1.0-oa-completion/ready/direction-stage-i5-terminal-sync.md`，下一动作=等待 Planner 终态复核 I5 阶段三终态同步回执 01，确认后由 Planner 形成 I6 正式方向；远程推送待 Owner 对具体远端/分支/范围授权。功能数44、✅46/🟦22/⬜22、ADV64与开放P编号不变。
+**2026-09-14 P0 版本当前规划**：P60成熟OA目标`0.1.0`、当前迭代`0.0.3`，整体`IN_PROGRESS`。I1—I4 **COMPLETED（规划已确认）**；**I5=`COMPLETED（待规划确认，2026-09-14）`**（功能级验收 `planning-review-stage-i5-v0.0.3-oa-owner-waiver-01-passed.md` PASSED；三 Provider 真实成功链按 Owner 2026-09-14 裁决**延期免验/未验证**；主方向已归档`passed/`）；I6通知与版本收口未开始。终态值与本地提交已通过规划终态复核 01；当前唯一入口=`product/v0.1.0-oa-completion/receipts/planning-execution-prompt-terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md`（TS5-PUBLISH），下一动作=普通 merge 保留远端 P53 Figma 登记并按既定范围完成三仓非强制推送与远端包含关系回读，提交 `terminal-sync-stage-i5-v0.0.3-oa-iteration-02.md`。Owner 已于 2026-09-14 明确授权合并与三仓推送；确认 I5 后由 Planner 形成 I6 正式方向。功能数44、✅46/🟦22/⬜22、ADV64与开放P编号不变。
 
 **2026-09-08 P21 终态基线（P60 立项前历史点）**：P21功能级 **PASSED**，阶段三补证 TS1/TS2 经 `planning-final-review-terminal-sync-p21-iot-02-passed.md` 复核通过，正式确认为 **COMPLETED（规划已确认，2026-09-08）**。功能44、清单✅46/🟦22/⬜22、P21核销、I14关闭均锁定；主方向与阶段三方向均在passed。当时无活动正式功能并等待Owner选择，该下一动作现已由上方 P60 当前规划取代。
 
@@ -91,7 +91,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 
 蓝凌官方公开材料还包含自由/嵌入式/即席子流程、流程仿真、完整流程大数据分析，以及页面/图表/报表设计、动作流/数据流/连接流、主数据整合、多级门户、内容引擎、知识搜索和应用市场。它们属于更广的 PaaS 能力，不作为 P60 的“完整 OA”通过条件；现已正式登记为 8 个高级能力模块、64 条稳定明细，见 [高级能力功能明细清单](../product/v0.1.0-oa-completion/ready/advanced-capability-feature-checklist.md)。P60 只吸收与日常 OA 交易闭环直接相关的最小能力，避免版本范围失控；对标详情与来源见正式方向 §3.10—§3.11。
 
-成熟OA路线方向：[v0.1.0 OA全功能收口](../product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md)；当前迭代=`0.0.3`。I1—I4均`COMPLETED（规划已确认）`；**I5功能级`PASSED`（Owner延期免验三Provider真实链）、阶段`COMPLETED（待规划确认，2026-09-14）`**，主方向已归档`passed/`；I6未开始。当前唯一入口=[I5阶段三终态同步方向](../product/v0.1.0-oa-completion/ready/direction-stage-i5-terminal-sync.md)，下一动作=等待Planner终态复核[终态同步回执01](../product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md)。
+成熟OA路线方向：[v0.1.0 OA全功能收口](../product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md)；当前迭代=`0.0.3`。I1—I4均`COMPLETED（规划已确认）`；**I5功能级`PASSED`（Owner延期免验三Provider真实链）、阶段`COMPLETED（待规划确认，2026-09-14）`**，主方向已归档`passed/`；I6未开始。终态值与本地提交已通过[终态复核01](../product/v0.1.0-oa-completion/receipts/planning-review-terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md)；当前唯一入口=[发布收尾提示01（TS5-PUBLISH）](../product/v0.1.0-oa-completion/receipts/planning-execution-prompt-terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md)，下一动作=普通merge保留远端P53登记并完成三仓非强制推送与远端回读，提交[发布收尾回执02](../product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i5-v0.0.3-oa-iteration-02.md)。
 
 ## 一、已开发且未满足（D83 回执确认：90/90 清单一致，缺口逐行核实，此为全量索引）
 
