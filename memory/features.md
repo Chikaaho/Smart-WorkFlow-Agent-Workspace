@@ -3,7 +3,7 @@
 > 规划侧最新同步点：2026-09-14（P60=`IN_PROGRESS`；I1—I4 `COMPLETED（规划已确认）`；**I5=`COMPLETED（待规划确认，2026-09-14）`**，功能级PASSED、三Provider真实链=Owner延期免验/未验证；I6未开始；正式功能数44）。
 > 清单当前值 **✅46/🟦22/⬜22**（90，M08 十行 🟦/⬜→✅，其余 80 行零变化）；功能数 44；全量双向映射见 `knowledge/feature-reconciliation-index.md`。
 
-- `v0.1.0-oa-completion`（P60，优先级P0）：整体 **IN_PROGRESS**。I5阶段三终态同步回执01已提交，等待Planner终态复核；确认后由Planner形成I6「通知与版本收口」正式方向。I5功能级裁决=`planning-review-stage-i5-v0.0.3-oa-owner-waiver-01-passed.md`（三Provider真实链按Owner裁决延期免验/未验证）。I5范围=租户归属与流程主链收口、生产认证与运维暴露收敛、租户有效性与权限收敛、三Provider SSO（服务端发起/回调换票、state限时一次性、稳定主体绑定、本地权限链、最小持久审计）。P60/P31不核销，功能数44、清单✅46/🟦22/⬜22、ADV64零变化。
+- `v0.1.0-oa-completion`（P60，优先级P0）：整体 **IN_PROGRESS**。I5终态值与本地提交已通过复核（功能级裁决=`planning-review-stage-i5-v0.0.3-oa-owner-waiver-01-passed.md`）；当前仅执行TS5-PUBLISH提示01（`product/v0.1.0-oa-completion/receipts/planning-execution-prompt-terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md`）：Workspace普通merge保留P53登记，三仓授权非强制推送与远端回读。完成后确认I5并形成I6方向。三Provider真实链仍按Owner裁决延期免验/未验证；计数与P编号不变。
 
 - `p21-iot-device-access`：**COMPLETED（规划已确认，2026-09-08）**，第44个正式功能；P21已核销、I14关闭、M08 10✅/1🟦/2⬜。主方向与阶段三方向均归档 `passed/`；最终裁决 `planning-final-review-terminal-sync-p21-iot-02-passed.md`。
 

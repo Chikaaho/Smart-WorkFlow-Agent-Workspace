@@ -1,0 +1,67 @@
+# I5 TS5-PUBLISH (iteration-02) — value + stage-pointer assertions
+captured_at=2026-09-14T03:05:03.507Z
+
+== authorized terminal values (must still hold) ==
+  OK   I5 阶段状态=COMPLETED（待规划确认）                     | knowledge/current-status.md
+  OK   P60 保持 IN_PROGRESS                           | knowledge/current-status.md
+  OK   I5 阶段状态=COMPLETED（待规划确认）                     | knowledge/session-handoff.md
+  OK   P60 保持 IN_PROGRESS                           | knowledge/session-handoff.md
+  OK   I5 阶段状态=COMPLETED（待规划确认）                     | knowledge/features/v0.1.0-oa-completion.md
+  OK   P60 保持 IN_PROGRESS                           | knowledge/features/v0.1.0-oa-completion.md
+  OK   I5 阶段状态=COMPLETED（待规划确认）                     | Smart-WorkFlow-aPaaS-server/功能清单.md
+  OK   P60 保持 IN_PROGRESS                           | Smart-WorkFlow-aPaaS-server/功能清单.md
+  OK   I5 阶段状态=COMPLETED（待规划确认）                     | todo/v0.1.0-oa-plan.md
+  OK   P60 保持 IN_PROGRESS                           | todo/v0.1.0-oa-plan.md
+  OK   I5 阶段状态=COMPLETED（待规划确认）                     | todo/requirement-pool.md
+  OK   P60 保持 IN_PROGRESS                           | todo/requirement-pool.md
+  OK   I5 阶段状态=COMPLETED（待规划确认）                     | memory/state.md
+  OK   P60 保持 IN_PROGRESS                           | memory/state.md
+  OK   I5 阶段状态=COMPLETED（待规划确认）                     | memory/features.md
+  OK   P60 保持 IN_PROGRESS                           | memory/features.md
+  OK   I5 阶段状态=COMPLETED（待规划确认）                     | memory/handoff.md
+  OK   P60 保持 IN_PROGRESS                           | memory/handoff.md
+  OK   I5 功能级验收裁决路径                                 | knowledge/current-status.md
+  OK   I5 功能级验收裁决路径                                 | knowledge/session-handoff.md
+  OK   I5 功能级验收裁决路径                                 | knowledge/features/v0.1.0-oa-completion.md
+  OK   I5 功能级验收裁决路径                                 | memory/state.md
+  OK   I5 功能级验收裁决路径                                 | memory/features.md
+  OK   I5 功能级验收裁决路径                                 | memory/handoff.md
+  OK   I5 功能级验收裁决路径                                 | todo/requirement-pool.md
+  OK   三 Provider 真实链=Owner 延期免验/未验证                | knowledge/current-status.md
+  OK   三 Provider 真实链=Owner 延期免验/未验证                | memory/state.md
+  OK   三 Provider 真实链=Owner 延期免验/未验证                | memory/handoff.md
+  OK   三 Provider 真实链=Owner 延期免验/未验证                | todo/requirement-pool.md
+  OK   I1 已确认值                                      | knowledge/current-status.md
+  OK   I2 已确认值                                      | knowledge/current-status.md
+  OK   I3 已确认值                                      | knowledge/current-status.md
+  OK   I4 已确认值                                      | knowledge/current-status.md
+  OK   正式功能数 44，不增加                                 | knowledge/current-status.md
+  OK   90 明细计数 ✅46/🟦22/⬜22                         | knowledge/current-status.md
+  OK   ADV 64 条不计入 90                               | knowledge/current-status.md
+  OK   I6 未开始                                       | knowledge/current-status.md
+  OK   工程功能清单 90 计数不变                               | Smart-WorkFlow-aPaaS-server/功能清单.md
+  OK   todo 计划 90 计数不变                              | todo/v0.1.0-oa-plan.md
+
+== stage pointers advanced to TS5-PUBLISH ==
+  OK   当前入口=发布收尾提示 01                               | memory/state.md
+  OK   当前入口=发布收尾提示 01                               | memory/handoff.md
+  OK   当前入口=发布收尾提示 01                               | memory/features.md
+  OK   当前入口=发布收尾提示 01                               | todo/requirement-pool.md
+  OK   当前入口=发布收尾提示 01                               | product/v0.1.0-oa-completion/ready/direction-stage-i5-terminal-sync.md
+  OK   下一回执=iteration-02                            | todo/requirement-pool.md
+  OK   终态同步方向指向 iteration-02                        | product/v0.1.0-oa-completion/ready/direction-stage-i5-terminal-sync.md
+  OK   方向记录 Owner 授权与禁止事项                           | product/v0.1.0-oa-completion/ready/direction-stage-i5-terminal-sync.md
+
+== negative assertions (exact literals, current-value entries) ==
+  OK   无 I5「规划已确认，2026-09-14」提前写入                   | hits=0
+  OK   无「P60 已完成」声明                                 | hits=0
+  OK   无旧 I5 VERIFYING 当前值                          | hits=0
+  OK   无三 Provider 真实链已验证成功声明                       | hits=0
+
+== memory budget ==
+  files=8 total=16065 bytes (<20480 required)  max_file=3622 bytes (<5120 required)
+  OK   memory 总量 <20KB                             
+  OK   memory 单文件 <5KB                             
+
+RESULT: pass=53 fail=0
+stage02_exit=0
