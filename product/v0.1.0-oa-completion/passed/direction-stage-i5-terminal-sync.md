@@ -4,8 +4,8 @@
 > 指定角色：执行（Executor）  
 > 日期：2026-09-14  
 > 前置裁决：`../receipts/planning-review-stage-i5-v0.0.3-oa-owner-waiver-01-passed.md`  
-> 当前指针：终态同步回执 `../receipts/terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md` 已提交（机器状态 `TERMINAL_SYNC_SUBMITTED`），I5 写为 `COMPLETED（待规划确认，2026-09-14）`；执行侧动作已闭合，等待 Planner 终态复核。本方向在 Planner 复核通过后由 Planner 移入 `passed/`。  
-> 阶段状态：`COMPLETED（待规划确认，2026-09-14）`，待规划终态复核  
+> 当前指针：终态同步回执02已经`planning-final-review-terminal-sync-stage-i5-v0.0.3-oa-iteration-02-passed.md`复核通过；当前入口为`../ready/direction-stage-i5-final-confirmed-state-projection.md`。  
+> 阶段状态：`COMPLETED（规划已确认，2026-09-14）`  
 
 ## 1. 唯一目标与边界
 
@@ -88,4 +88,4 @@ Executor 按实际文件结构同步：
 
 回执至少包含唯一值逐入口回读、memory 压缩前后字节数、三仓 task-owned 文件清单、候选核对、分支/HEAD/upstream/远端状态、本地提交结果、推送授权及实际结果、terminal Validator 和 manifest。
 
-完整阶段同步的合法提交状态为 I5 `COMPLETED（待规划确认，2026-09-14）`、P60 `IN_PROGRESS`、机器 `TERMINAL_SYNC_SUBMITTED`、`remaining_actionable_count=0`、下一动作 `WAIT_PLANNER`。若唯一未完成动作是尚未获得远程推送授权，必须如实保持未完成并列出精确远端/分支/提交范围，不得冒充终态同步完成。
+终态同步回执01与发布收尾回执02已通过规划最终复核。I5正式为`COMPLETED（规划已确认，2026-09-14）`，本方向归档至`passed/`；下一步只执行I5规划确认状态投影并切换到I6现状接缝探索。

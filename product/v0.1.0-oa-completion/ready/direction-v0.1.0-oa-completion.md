@@ -5,7 +5,7 @@
 > 需求编号：P60（版本统筹项，不替代既有 P 编号）  
 > 优先级：P0  
 > 任务等级：XL  
-> 功能状态：IN_PROGRESS（I1—I4均COMPLETED（规划已确认）；I5功能级PASSED、阶段COMPLETED（待规划确认，2026-09-14），三Provider真实成功链按Owner裁决延期免验/未验证；I6未开始；当前唯一入口为I5阶段三终态同步方向）  
+> 功能状态：IN_PROGRESS（I1—I5均COMPLETED（规划已确认）；三Provider真实成功链按Owner裁决延期免验/未验证；I6现状探索已完成、正式方向READY；实现前须补I5最终确认状态投影回执）  
 > 日期：2026-09-08  
 > 成熟 OA 目标版本：0.1.0  
 > 当前交付迭代：0.0.3
@@ -152,7 +152,7 @@
 
 阶段 `COMPLETED` 属于 P60 内部阶段状态，不替代 P60 整体完成；I1—I6 全部完成前，P60 保持 `IN_PROGRESS`，正式完成功能数与关联 P 编号不因单阶段完成而变化，也不创建版本标签或 Release。新会话按主方向、该阶段方向、最近验收与终态同步回执恢复，不依赖上一会话聊天历史。
 
-当前I1—I4均为`COMPLETED（规划已确认）`。I5功能级验收已`PASSED`（`planning-review-stage-i5-v0.0.3-oa-owner-waiver-01-passed.md`；Owner 2026-09-14明确裁决三Provider真实成功链延期免验，记录为未验证边界），阶段写为`COMPLETED（待规划确认，2026-09-14）`并提交终态同步回执`receipts/terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md`。P60保持`IN_PROGRESS`，计数与P编号不变，I6未开始。
+当前I1—I5均为`COMPLETED（规划已确认）`。I5最终复核为`receipts/planning-final-review-terminal-sync-stage-i5-v0.0.3-oa-iteration-02-passed.md`；Owner对三Provider真实成功链的延期免验仅记录为未验证边界。P60保持`IN_PROGRESS`，计数与P编号不变。I6现状探索已完成并形成`ready/direction-stage-i6-notification-version-closure.md`；I6实现前须补齐I5最终确认状态投影回执。
 
 ## 5. 0.1.0 整体验收标准
 
@@ -203,13 +203,13 @@
 
 ## 9. 状态、回执与唯一执行入口
 
-P60当前状态为`IN_PROGRESS`，I1—I4已`COMPLETED（规划已确认）`，I5为`COMPLETED（待规划确认，2026-09-14）`，I6未开始。成熟OA目标为`0.1.0`，当前交付迭代为`0.0.3`。本文件是成熟OA主功能的总方向入口：
+P60当前状态为`IN_PROGRESS`，I1—I5已`COMPLETED（规划已确认）`，I6现状探索已完成、正式方向为`READY`。成熟OA目标为`0.1.0`，当前交付迭代为`0.0.3`。本文件是成熟OA主功能的总方向入口：
 
 `product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md`
 
 Executor 进入后先按 `system.md`、`roles/executor.md`、`project.md` 和两仓工程宪法恢复上下文，核对当前 knowledge 权威与本方向基点差异，并读取 `advanced-capability-feature-checklist.md`，然后制定六阶段内部实施计划。首次功能清单同步必须把 64 条高级能力以规划项映射进正式工程功能清单，保持稳定追溯键并与 P60 的 0.1.0 验收计数分开；若编号冲突，保留 `ADV-*` 作为外部追溯键并在回执给出映射。若权威现状证明某项已完整交付，应提交行为证据申请锁定，不重复建设；若仅有结构、SPI、Mock 或历史快照，不得当作已完成。
 
-`S-DEV-CAPTCHA-01`历史验收已关闭，但生产固定验证码风险已由I5纳入受影响安全范围。I2、I3、I4的主方向与终态方向均已归档，I4已确认`COMPLETED（规划已确认，2026-09-13）`。I5现状探索与硬编码审计复核均PASSED，I5功能级验收PASSED，主方向已归档`passed/direction-stage-i5-tenant-safe-third-party-sso.md`；当前唯一入口为`product/v0.1.0-oa-completion/ready/direction-stage-i5-terminal-sync.md`（阶段三终态同步回执01已提交，等待Planner终态复核）。
+`S-DEV-CAPTCHA-01`历史验收已关闭，但生产固定验证码风险已由I5纳入受影响安全范围。I2— I5的主方向与终态方向均已归档，I5已确认`COMPLETED（规划已确认，2026-09-14）`。I6探索回执为`search_fallback/v0.1.0-oa-completion-i6-current-seams.md`，正式方向为`product/v0.1.0-oa-completion/ready/direction-stage-i6-notification-version-closure.md`。当前执行前置入口仍是`product/v0.1.0-oa-completion/ready/direction-stage-i5-final-confirmed-state-projection.md`，只用于补交缺失投影回执与状态一致性；关闭后唯一执行入口切换到I6正式方向，不重复探索。
 
 每个迭代按 §4.1 形成独立方向、执行回执、规划验收、终态同步回执与终态复核；六阶段自验完成后提交：
 
