@@ -6,7 +6,7 @@
 > 需求编号：P60 / I6  
 > 优先级：P0  
 > 任务等级：XL  
-> 阶段状态：VERIFYING（实现回执01已提交；规划审查01锁定L1—L7，剩余G1—G9）  
+> 阶段状态：VERIFYING（实现回执02已审查；L1—L16锁定；一级执行补充提示01为唯一入口）  
 > 成熟 OA 目标：`0.1.0`  
 > 当前交付迭代：`0.0.3`
 
@@ -150,15 +150,15 @@ P60 总方向 §3.9 的六类通知渠道全部属于 I6 和 `0.1.0` 验收范�
 
 ## 8. 状态、回执与唯一入口
 
-当前规划入口为`../receipts/planning-review-stage-i6-notification-version-closure-01.md`。I6 实现回执01已提交，阶段处于`VERIFYING`；Executor 只补审查01的G1—G9，不重验L1—L7。
+当前执行入口为`../receipts/planning-execution-prompt-stage-i6-notification-version-closure-01.md`。I6 实现回执02审查仍为`VERIFYING`；Executor 只补提示01的剩余原子，不重验L1—L16。
 
 I6 首次实现回执已写入：
 
 `product/v0.1.0-oa-completion/receipts/completion-stage-i6-notification-version-closure-01.md`
 
-下一回执写入：
+下一回执改为：
 
-`product/v0.1.0-oa-completion/receipts/completion-stage-i6-notification-version-closure-02.md`
+`product/v0.1.0-oa-completion/receipts/completion-stage-i6-notification-version-closure-03.md`
 
 合法提交状态为阶段 `VERIFYING`、机器 `EXECUTION_SUBMITTED`。回执必须按 §4 的 18 个验收原子逐项给出行为证据、未验证边界和候选身份；仍有授权内 actionable 项时不得以中间总结停止。Planner 验收通过后将另行归档本方向并下发 I6 阶段三唯一终态值清单。
 

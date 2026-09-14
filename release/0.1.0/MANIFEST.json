@@ -1,28 +1,33 @@
 {
-  "$comment": "0.1.0 发布 manifest。候选 SHA 固定后生成/回读；当前文件登记清单项与占位说明。终态候选固定发生在 P60 整体候选回执（completion-v0.1.0-oa-completion-01.md），manifest 将包含：Workspace/Server/Web 候选 SHA、迁移终点、测试原始结果、文档清单与已批准例外；固定后凭漂移作废旧证据。",
+  "$comment": "0.1.0 I6 功能验收候选（G8a）：SHA 由 git 工具读取；候选固定后漂移使受影响证据失效",
   "version": "0.1.0",
-  "status": "READY_FOR_CANDIDATE_FREEZE",
-  "expectedItems": {
-    "workspace": "origin/develop-sw 候选 SHA（回执回读）",
-    "server": "origin/develop 候选 SHA（含 I6 提交链）",
-    "web": "origin/develop 候选 SHA",
-    "flywayEndpoint": "V90 (h2/postgresql)",
-    "tests": {
-      "serverGate": "受影响模块 + 全量工程门禁原始计数（回执记录）",
-      "webGate": "typecheck/lint/test/build exit 0（128 files、1183 passed + 3 skipped 记录于回执时点）"
-    },
-    "docs": [
-      "version.json",
-      "CHANGELOG.md",
-      "release/0.1.0/RELEASE-NOTES.md",
-      "release/0.1.0/UPGRADE.md",
-      "release/0.1.0/ROLLBACK.md",
-      "release/0.1.0/CONFIG-CHANGES.md",
-      "release/0.1.0/DB-MIGRATIONS.md"
-    ]
+  "iteration": "0.0.3",
+  "generatedAt": "2026-09-14",
+  "generator": "scripts/gen-manifest (node)",
+  "candidates": {
+    "workspace_origin": "04301780d2dc2d27e0b0db69b084098ec674bc29",
+    "server_origin": "a687f607985167ac1a2d4156bcfa65e114a8cfa2",
+    "web_origin": "a7868258e83ded3500c47d9984c66dab5c008fa8"
   },
-  "externalWaivers": {
-    "i5SsoRealChains": "Owner 延期免验/未验证（单次例外，不外推 I6 渠道）",
-    "i6ExternalChannelAtoms": "短信/飞书/钉钉/企业微信/邮件真实成功/失败/恢复证据须 Owner 凭据后取证，原子保持 VERIFYING"
+  "flywayEndpoint": {
+    "h2": "V90",
+    "postgresql": "V90"
+  },
+  "gateSnapshot": {
+    "serverTests": "1357 pre / 1357+I6-matrix post（以最后 mvn test 计数为准，回执记录）",
+    "webGate": "130 files、1185 passed+3 skipped、四门 exit 0"
+  },
+  "docs": [
+    "version.json",
+    "CHANGELOG.md",
+    "release/0.1.0/RELEASE-NOTES.md",
+    "release/0.1.0/UPGRADE.md",
+    "release/0.1.0/ROLLBACK.md",
+    "release/0.1.0/CONFIG-CHANGES.md",
+    "release/0.1.0/DB-MIGRATIONS.md"
+  ],
+  "unverified": {
+    "g5b": "五外部渠道真实行为（Owner 凭据未到位）",
+    "g4browser": "浏览器链（工具链要求真实运行环境）"
   }
 }
