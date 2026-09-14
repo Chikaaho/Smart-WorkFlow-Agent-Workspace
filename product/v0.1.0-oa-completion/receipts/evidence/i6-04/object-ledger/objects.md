@@ -43,3 +43,10 @@
   G7b 库重建为 V87 现行脚本基线 + 历史 ID 回灌（旧克隆非受支持基线，见 G7b/actual.md）
 - G4/G6 对象集合：G1a 实例 d018f57a/任务 d0191c97/消息 2099430376456531969(IN_APP M)+2099430376506863617(EMAIL FAILED)；
   G6a 事件矩阵实例族（含抄送链 21bca43c、退回链 57e144a5/16cc3c94、时限链 f549f3da）
+
+## 追加收口记录（2026-09-14，completion-04-supplement-01）
+- Server 最终门禁重跑绑定 `e941d74ffb3e5388e1b3ac3efb234d4634436aea`；Web 绑定 `0a746e3d6e0e0aaa0c4ee8633c58c75c295546d6`；两仓 HEAD 未发生业务代码漂移。
+- Workspace 当前工作基线为 `e7fece80100875495426c614748411939ffc5326`；本轮新增均为证据/版本材料/追加回执，候选 manifest 以代码候选时点与自身排除语义记录。
+- Server 原始门禁流：`G9b/stdout.log`、`G9b/stderr.log`、`G9b/exit-code.txt`；Web 四门原始流：`G9b/web-typecheck.*`、`web-lint.*`、`web-test.*`、`web-build.*`。
+- 固定验证码对象设置：`sw-bootstrap/src/main/resources/application-dev.yml` 与 `application-local.yml` 的 `ch.dev.test-mock: true`；真实登录只保留 `status=200 code=0` 与 token 长度，不落盘 token/密码。
+- G5b 仍是唯一未满足外部成功链：未提供五渠道凭据/短信 Provider 选型；已保存可用性与 EMAIL 失败/重试实测，不把外部缺口写成通过。
