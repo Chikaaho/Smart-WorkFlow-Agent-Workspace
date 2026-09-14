@@ -1,14 +1,19 @@
-# I5 terminal sync - server local commit + candidate verification
-captured_at=2026-09-14T10:41:34+08:00
+# I5 terminal sync - server local commit + candidate verification (final)
+captured_at=2026-09-14T10:52:14+08:00
 branch=develop
-head=eeb23f2ef974851a2a7af6803f83782aab878522
-head_tree=6374e871caafaf8a59249ba53829e7d717a65905
-locked_candidate=486b1116eb6016024c8e1e4a00b50244af2f3cb5
+head=4c7fc241de3710b58a718ff2c072ceac784b43f3
+head_tree=8a6bee00b7fee3bf641afdf142887c7643129aee
+locked_candidate_486b1116=486b1116eb6016024c8e1e4a00b50244af2f3cb5
+candidate_commit=26961ca  -> tree=486b1116eb6016024c8e1e4a00b50244af2f3cb5  (== locked candidate, byte-identical I5 task-owned set)
+governance_commit=eeb23f2  -> tree=6374e871caafaf8a59249ba53829e7d717a65905
+governance_commit=4c7fc24  -> tree=8a6bee00b7fee3bf641afdf142887c7643129aee
 pre_commit_head=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
-upstream=origin/develop  ahead_behind=5	0
+upstream=origin/develop  ahead_behind=6	0
 ls_remote_origin_develop=dd51f7694780a504b8e0cd6aca5fb50de71273cf
+push_executed=NO (Owner authorization for exact remote/branch/range not granted)
 
 == new commits (unpushed) ==
+4c7fc24 docs(system): 功能清单当前焦点补显 P60 整体 IN_PROGRESS
 eeb23f2 docs(system): 功能清单当前焦点投影 I5 阶段终态同步
 26961ca fix(i5): 复验缺口收口与三方 SSO 安全修复
 4d98b67 fix(i5): 复验 03 修正——真实行为缺陷收口
@@ -53,9 +58,11 @@ aaafd74 feat(i5): 租户安全收口与第三方 SSO 服务端实现
  .../sw/ck/security/jwt/JwtTokenProviderImpl.java   |  11 +-
  35 files changed, 1651 insertions(+), 79 deletions(-)
 
-== commit eeb23f2: governance checklist ==
+== commit eeb23f2 / 4c7fc24: governance checklist ==
+ "\345\212\237\350\203\275\346\270\205\345\215\225.md" | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
  "\345\212\237\350\203\275\346\270\205\345\215\225.md" | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-== working tree after commit ==
+== working tree after commits ==
 (empty above = clean)
