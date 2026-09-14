@@ -1,0 +1,28 @@
+{
+  "$comment": "0.1.0 发布 manifest。候选 SHA 固定后生成/回读；当前文件登记清单项与占位说明。终态候选固定发生在 P60 整体候选回执（completion-v0.1.0-oa-completion-01.md），manifest 将包含：Workspace/Server/Web 候选 SHA、迁移终点、测试原始结果、文档清单与已批准例外；固定后凭漂移作废旧证据。",
+  "version": "0.1.0",
+  "status": "READY_FOR_CANDIDATE_FREEZE",
+  "expectedItems": {
+    "workspace": "origin/develop-sw 候选 SHA（回执回读）",
+    "server": "origin/develop 候选 SHA（含 I6 提交链）",
+    "web": "origin/develop 候选 SHA",
+    "flywayEndpoint": "V90 (h2/postgresql)",
+    "tests": {
+      "serverGate": "受影响模块 + 全量工程门禁原始计数（回执记录）",
+      "webGate": "typecheck/lint/test/build exit 0（128 files、1183 passed + 3 skipped 记录于回执时点）"
+    },
+    "docs": [
+      "version.json",
+      "CHANGELOG.md",
+      "release/0.1.0/RELEASE-NOTES.md",
+      "release/0.1.0/UPGRADE.md",
+      "release/0.1.0/ROLLBACK.md",
+      "release/0.1.0/CONFIG-CHANGES.md",
+      "release/0.1.0/DB-MIGRATIONS.md"
+    ]
+  },
+  "externalWaivers": {
+    "i5SsoRealChains": "Owner 延期免验/未验证（单次例外，不外推 I6 渠道）",
+    "i6ExternalChannelAtoms": "短信/飞书/钉钉/企业微信/邮件真实成功/失败/恢复证据须 Owner 凭据后取证，原子保持 VERIFYING"
+  }
+}

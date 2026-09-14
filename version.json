@@ -1,0 +1,33 @@
+{
+  "$schema": "P60 0.1.0 候选版本权威（单一机器可读源；变更须走新回执）",
+  "product": "CH-aPaaS",
+  "version": "0.1.0",
+  "iteration": "0.0.3",
+  "registeredAt": "2026-09-14",
+  "registeredBy": "P60 I6 通知与版本收口正式方向 §3.8 / 回执 completion-stage-i6-notification-version-closure-01.md",
+  "projections": {
+    "serverRepo": {
+      "path": "Smart-WorkFlow-aPaaS-server",
+      "mavenVersion": "0.1.0",
+      "flywayEndpoint": { "h2": "V90", "postgresql": "V90" }
+    },
+    "webRepo": {
+      "path": "Smart-WorkFlow-aPaaS-Web",
+      "packageVersion": "0.1.0"
+    },
+    "workspace": {
+      "path": "Smart-WorkFlow-Agent-Workspace",
+      "changelog": "CHANGELOG.md",
+      "releaseNotes": "release/0.1.0/RELEASE-NOTES.md",
+      "upgrade": "release/0.1.0/UPGRADE.md",
+      "rollback": "release/0.1.0/ROLLBACK.md",
+      "configChanges": "release/0.1.0/CONFIG-CHANGES.md",
+      "dbMigrations": "release/0.1.0/DB-MIGRATIONS.md",
+      "manifest": "release/0.1.0/MANIFEST.json（候选 SHA 固定后生成；固定前不写标签/Release）"
+    }
+  },
+  "rules": {
+    "candidateFreeze": "候选固定后只允许通过新回执审查的变更进入；代码/迁移/依赖/配置漂移使受影响证据失效并重固定候选",
+    "tagAndRelease": "0.1.0 标签/Release 须在 P60 整体验收、终态同步及发布授权完成且 Owner 明确授权后创建"
+  }
+}

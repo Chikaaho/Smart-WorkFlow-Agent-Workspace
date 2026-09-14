@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-> 当前规划（2026-09-14）：P60成熟OA`0.1.0`目标/当前迭代`0.0.3`，**P0 / XL / IN_PROGRESS**。I1—I5 **COMPLETED（规划已确认）**；I6现状探索已完成并形成正式方向，阶段为`READY`。I5发布复核02通过，三仓远端为Workspace`49cca1f`、Server`4c7fc24`、Web`5788ead`，P53/I5双保留；三Provider真实链仍为Owner延期免验/未验证。当前规划入口=`product/v0.1.0-oa-completion/ready/direction-stage-i6-notification-version-closure.md`；实现前须补齐I5最终确认状态投影回执和当前状态一致性。功能数44、✅46/🟦22/⬜22、ADV64与P编号不变。
+> 当前规划（2026-09-14）：P60成熟OA`0.1.0`目标/当前迭代`0.0.3`，**P0 / XL / IN_PROGRESS**。I1—I5 **COMPLETED（规划已确认）**；I6已进入-IN_PROGRESS（实现回执01 `EXECUTION_SUBMITTED`，阶段VERIFYING；五外部渠道真实原子VERIFYING待Owner凭据；版本权威version.json与release/0.1.0/材料就绪）。I5发布复核02通过，三仓远端为Workspace`49cca1f`、Server`4c7fc24`、Web`5788ead`，P53/I5双保留；三Provider真实链仍为Owner延期免验/未验证。当前规划入口=`product/v0.1.0-oa-completion/ready/direction-stage-i6-notification-version-closure.md`；实现前须补齐I5最终确认状态投影回执和当前状态一致性。功能数44、✅46/🟦22/⬜22、ADV64与P编号不变。
 
 > 最近完成基线：P21 **COMPLETED（规划已确认，2026-09-08）**，第44个正式功能；功能44、清单✅46/🟦22/⬜22、P21核销、I14关闭均锁定。正式计数以 `knowledge/current-status.md` 为准。
 
