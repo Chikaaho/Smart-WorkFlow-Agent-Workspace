@@ -5,7 +5,7 @@
 > 需求编号：P60（版本统筹项，不替代既有 P 编号）  
 > 优先级：P0  
 > 任务等级：XL  
-> 功能状态：IN_PROGRESS（I1—I5均COMPLETED（规划已确认）；三Provider真实成功链按Owner裁决延期免验/未验证；I6回执03审查仍为VERIFYING；二级执行补充提示02为当前入口）  
+> 功能状态：**COMPLETED（规划已确认，2026-09-15）**（I1—I6均已确认，整体14/14；0.1.0已发布并锁定：Server main `c15428f0002f6bb0ceeff05c7cbcf842bd3d3148`、Web main `963df360ed18bc1c604652a13edb2a7ed0be8963`、tag/Release `0.1.0`、迁移终点V93）  
 > 日期：2026-09-08  
 > 成熟 OA 目标版本：0.1.0  
 > 当前交付迭代：0.0.3
@@ -152,7 +152,7 @@
 
 阶段 `COMPLETED` 属于 P60 内部阶段状态，不替代 P60 整体完成；I1—I6 全部完成前，P60 保持 `IN_PROGRESS`，正式完成功能数与关联 P 编号不因单阶段完成而变化，也不创建版本标签或 Release。新会话按主方向、该阶段方向、最近验收与终态同步回执恢复，不依赖上一会话聊天历史。
 
-当前I1—I5均为`COMPLETED（规划已确认）`。I5最终复核与投影门禁均已关闭；Owner对三Provider真实成功链的延期免验仅记录为未验证边界。P60保持`IN_PROGRESS`，计数与P编号不变。I6回执03审查仍为`VERIFYING`，L1—L16锁定且本轮无新增锁定；一级提示后仍有同类缺口，已下发二级补充提示02。
+当前I1—I6与P60整体终态均已`COMPLETED（规划已确认）`。Server/Web的main、`0.1.0`标签、Actions与Release已经锁定，Workspace完全退出版本判断。当前规划入口切换为`search_task/p61-user-facing-message-humanization-current-seams.md`。
 
 ## 5. 0.1.0 整体验收标准
 
@@ -174,7 +174,7 @@
 ## 6. 外部依赖与验收纪律
 
 - Owner 或环境需在对应阶段提供企业微信、飞书、钉钉三个 SSO Provider 的测试应用、回调域与凭据，以及短信、飞书、钉钉、企业微信和邮件渠道的可控测试配置。所有凭据只进入安全配置，不进入仓库、截图、日志或回执正文。
-- 缺少某个 Provider 的真实配置时，Executor 仍应完成不依赖该秘密的实现与验证，但该 Provider 对应验收项保持 `VERIFYING`；只有真实工具结果证明外部条件不可获得且独立工作已穷尽时，才可按契约报告该原子项阻塞。I5 三个 Provider（WECOM/FEISHU/DINGTALK）真实成功链已由 Owner 2026-09-14 明确裁决**延期免验**并记录为未验证边界；该例外不外推到 I6 通知渠道或其他 Provider。
+- 缺少某个 Provider 的真实配置时，Executor 仍应完成不依赖该秘密的实现与验证，但该 Provider 对应验收项保持 `VERIFYING`；只有真实工具结果证明外部条件不可获得且独立工作已穷尽时，才可按契约报告该原子项阻塞。I5 三个 Provider（WECOM/FEISHU/DINGTALK）真实成功链由Owner 2026-09-14裁决延期免验；I6五个外部通知渠道另由Owner 2026-09-15独立裁决延期并转P2待办。两项均记录为未验证边界，不构成真实通过先例。
 - 不得用 Mock、隔离 Adapter、接口 200、配置已保存或厂商 SDK 初始化替代真实登录/发送结果；也不得把“文件已复制/代码已存在”称为渠道已启用。
 - 证据按迭代追加到 `product/v0.1.0-oa-completion/receipts/`，每项绑定实际候选、真实身份、对象 ID、请求/响应、页面、持久化/流程轨迹、外部结果、清理和工程门禁。
 
@@ -203,13 +203,13 @@
 
 ## 9. 状态、回执与唯一执行入口
 
-P60当前状态为`IN_PROGRESS`，I1—I5已`COMPLETED（规划已确认）`，I6为`VERIFYING`。成熟OA目标为`0.1.0`，当前交付迭代为`0.0.3`。本文件是成熟OA主功能的总方向入口：
+P60状态为`COMPLETED（规划已确认，2026-09-15）`，I1—I6均已确认，整体验收14/14。成熟OA目标`0.1.0`已发布；本文件是成熟OA主功能的归档方向：
 
-`product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md`
+`product/v0.1.0-oa-completion/passed/direction-v0.1.0-oa-completion.md`
 
 Executor 进入后先按 `system.md`、`roles/executor.md`、`project.md` 和两仓工程宪法恢复上下文，核对当前 knowledge 权威与本方向基点差异，并读取 `advanced-capability-feature-checklist.md`，然后制定六阶段内部实施计划。首次功能清单同步必须把 64 条高级能力以规划项映射进正式工程功能清单，保持稳定追溯键并与 P60 的 0.1.0 验收计数分开；若编号冲突，保留 `ADV-*` 作为外部追溯键并在回执给出映射。若权威现状证明某项已完整交付，应提交行为证据申请锁定，不重复建设；若仅有结构、SPI、Mock 或历史快照，不得当作已完成。
 
-`S-DEV-CAPTCHA-01`历史验收已关闭，但生产固定验证码风险已由I5纳入受影响安全范围。I2— I5的主方向与终态方向均已归档，I5已确认`COMPLETED（规划已确认，2026-09-14）`，投影回执已接收。I6正式方向保持`ready/`；当前唯一执行入口为`product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i6-notification-version-closure-02.md`，下一回执为`completion-stage-i6-notification-version-closure-04.md`。
+`S-DEV-CAPTCHA-01`历史验收已关闭。I2—I6与P60终态方向均已归档；R8五渠道按Owner裁决延期未验证并转P2待办。Workspace与0.1.0无关；Server/Web不可变候选、工程门禁、main合并、精确`0.1.0`标签、Release及回执契约均已通过。当前进入P61提示语人性化治理探索，不重复发布。
 
 每个迭代按 §4.1 形成独立方向、执行回执、规划验收、终态同步回执与终态复核；六阶段自验完成后提交：
 
