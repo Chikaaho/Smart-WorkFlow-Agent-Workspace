@@ -13,6 +13,7 @@ Owner 指令：本轮剩余未提交内容提交并推送；推送时 GitHub 以
 | 其余 4 份 >10MB 运行日志（75.5 / 41.4 / 35.4 / 10.3 MB） | 已跟踪 | 取消跟踪 + 加入忽略（本地文件保留） | `git rm --cached` + `.gitignore` |
 | Server `sw-bootstrap/target`（构建产物） | 422 MB（含 2 个 fat jar：208.8MB + 208.0MB） | **5.1 MB** | 删除 jar（构建可再生成；发布产物已存在于 GitHub Release） |
 | Server / Web `.git` | 7.5 MB / 2.5 MB（最大 blob 0.2 / 0.3 MB） | 未变更 | 无需处理 |
+| **远端已发布历史中的 9 份大日志** | 626.9 / 75.5 / 41.4 / 35.4 / 10.3 / 9.8 / 9.0 / 8.3 / 7.8 MB | **已从远端历史移除** | Owner 2026-09-15 明确授权后，两轮 `filter-branch` + `--force-with-lease` 强推；全新克隆验证远端历史 ≥5MB blob = 0、目标路径 0 命中 |
 
 ## 3. 忽略规则（.gitignore 新增）
 ```
@@ -24,10 +25,11 @@ product/**/receipts/evidence/**/*lastrun*.log
 说明：4 份 >10MB 日志均为开发/启动运行日志；`git check-ignore` 已确认命中。既有 ≤10MB 的 385 份证据日志仍保持跟踪（本次未批量取消跟踪）。
 Server/Web 两仓 `.gitignore` 已覆盖 `target/`、`*.log`、`node_modules`、`dist` 等，无需追加。
 
-## 4. 未处置项（需 Owner 明确授权）
-远端已发布历史中仍存在 3 份大体积日志（`origin/develop-sw` 内）：
-`p4 …/backend-dev-lastrun-full.log`（75.5MB）、`i5-03/dev-server-boot.log`（41.4MB）、`i5-02/g2-dev-server-boot.log`（35.4MB）。
-彻底移除需要改写**已发布**历史并强制推送（force push），属破坏性远程操作，未执行。
+## 4. 远端历史清理（Owner 2026-09-15 明确授权后执行）
+首轮报告 3 份（75.5 / 41.4 / 35.4MB）之外，实际扫描到同类 ≥5MB 日志共 9 份；已分两轮改写 **已发布** 历史并强推
+（第一轮范围 `d3b1f9e^..`，第二轮 `34e8994^..`，均使用 `--force-with-lease`）。最终 `origin/develop-sw` = `1cfb257`。
+验证：GitHub 全新克隆中 ≥5MB blob = 0、9 个目标日志路径命中均为 0、关键回执与 knowledge 文件在 tip 完整存在。
+注意：两轮重写使 2026-09-07 之后的提交 SHA 全部变更，此前文档中的对应 SHA 为历史引用。
 
 ## 5. 附
 - `rewrite-sha-mapping.md`：22 个被重写提交的旧→新 SHA 对照（主题逐条校验一致）。
