@@ -9,3 +9,9 @@ Thumbs.db
 *.swo
 *~
 receipts/evidence-06/bootstrap.jar
+
+# 大型开发/启动日志与运行产物：体量大且非交付物，本地保留、不入库（避免再次超出托管单文件限制）
+product/**/receipts/evidence/**/*-dev*.log
+product/**/receipts/evidence/**/*dev-server*.log
+product/**/receipts/evidence/**/*boot*.log
+product/**/receipts/evidence/**/*lastrun*.log
