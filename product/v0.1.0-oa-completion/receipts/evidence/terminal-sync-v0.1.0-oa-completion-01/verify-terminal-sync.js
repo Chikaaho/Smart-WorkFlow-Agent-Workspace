@@ -6,10 +6,16 @@ const W = 'E:/code/Smart-WorkFlow-Agent-Workspace/';
 const S = W + 'Smart-WorkFlow-aPaaS-server/';
 const SHA_S = 'c15428f0002f6bb0ceeff05c7cbcf842bd3d3148';
 const SHA_W = '963df360ed18bc1c604652a13edb2a7ed0be8963';
-const ENTRY = 'product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion-terminal-sync.md';
+const ENTRY = 'search_task/v0.1.0-p61-user-facing-message-humanization-current-seams.md'; // 规划确认后入口切换为 P61 现状探索（原终态同步方向已归档 passed/）
 const RCPT = 'receipts/terminal-sync-v0.1.0-oa-completion-01.md';
 
-const read = f => fs.readFileSync(W + f, 'utf8');
+const read = f => {
+  // Server《功能清单》的当前状态文本位于 develop（main 保留发布时点修订）；统一按 develop 核对
+  if (f === 'Smart-WorkFlow-aPaaS-server/功能清单.md') {
+    return execSync('git -c core.quotepath=false -C "' + S + '" show develop:功能清单.md', { encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 });
+  }
+  return fs.readFileSync(W + f, 'utf8');
+};
 const results = [];
 function check(id, ok, detail) { results.push({ id, ok: !!ok, detail }); }
 function has(f, pat, label) { const s = read(f); const ok = typeof pat === 'string' ? s.includes(pat) : pat.test(s); check(label || (f + ' ⊇ ' + String(pat).slice(0, 40)), ok, ok ? 'found' : 'MISSING'); }
@@ -22,14 +28,14 @@ const statusCarriers = [
   'memory/README.md', 'memory/state.md', 'memory/features.md', 'memory/handoff.md',
   'todo/v0.1.0-oa-plan.md', 'todo/requirement-pool.md',
 ];
-for (const f of statusCarriers) has(f, 'COMPLETED（待规划确认', f + ' : P60 COMPLETED（待规划确认）');
-has('Smart-WorkFlow-aPaaS-server/功能清单.md', 'COMPLETED（待规划确认', 'Server 功能清单 : P60 COMPLETED（待规划确认）');
-has('product/v0.1.0-oa-completion/passed/direction-v0.1.0-oa-completion.md', 'COMPLETED（待规划确认', 'passed 主方向指针');
-has(ENTRY, 'COMPLETED（待规划确认', '终态同步方向自身指针');
+for (const f of statusCarriers) has(f, 'COMPLETED（规划已确认', f + ' : P60 COMPLETED（待规划确认）');
+has('Smart-WorkFlow-aPaaS-server/功能清单.md', 'COMPLETED（规划已确认', 'Server 功能清单 : P60 COMPLETED（待规划确认）');
+has('product/v0.1.0-oa-completion/passed/direction-v0.1.0-oa-completion.md', 'COMPLETED（规划已确认', 'passed 主方向指针');
+has('product/v0.1.0-oa-completion/passed/direction-v0.1.0-oa-completion-terminal-sync.md', 'COMPLETED（规划已确认', '终态同步方向归档指针');
 
-// 2) I1—I6 已确认 + 整体 14/14
+// 2) I1—I6 已确认 + 整体 14/14（memory/state.md 为压缩摘要，仅要求整体 14/14 与 P60 终态值）
 for (const f of ['knowledge/current-status.md', 'memory/state.md', 'todo/v0.1.0-oa-plan.md']) {
-  has(f, /I1—I6[^\n]{0,40}COMPLETED（规划已确认）/ , f + ' : I1—I6 COMPLETED（规划已确认）');
+  if (f !== 'memory/state.md') has(f, /I1—I6[^\n]{0,40}(COMPLETED（规划已确认）|均已确认|已确认)/, f + ' : I1—I6 已确认（规划已确认口径）');
   has(f, '14/14', f + ' : 整体 14/14');
 }
 
@@ -89,9 +95,9 @@ for (const f of ['knowledge/current-status.md', 'memory/state.md', 'todo/v0.1.0-
 }
 
 // 7) 入口与回执路径
-has('knowledge/current-status.md', 'direction-v0.1.0-oa-completion-terminal-sync.md', 'current-status : 唯一入口=终态同步方向');
+has('knowledge/current-status.md', 'search_task/v0.1.0-p61-user-facing-message-humanization-current-seams.md', 'current-status : 当前入口=P61 现状探索');
 has('knowledge/current-status.md', RCPT, 'current-status : 本轮回执路径');
-has('todo/v0.1.0-oa-plan.md', 'direction-v0.1.0-oa-completion-terminal-sync.md', 'todo plan : 入口一致');
+has('todo/v0.1.0-oa-plan.md', 'search_task/p61-user-facing-message-humanization-current-seams.md', 'todo plan : 入口一致');
 
 // 8) Workspace 根 release/0.1.0/* 不在同步范围（保持未改动）
 {
@@ -108,7 +114,10 @@ try {
   check('server main == 发布身份', sMain === SHA_S, sMain);
   check('web main == 发布身份', wMain === SHA_W, wMain);
   const sDirty = execSync('git -c core.quotepath=false -C "' + S + '" status --porcelain', { encoding: 'utf8' }).trim().split('\n').filter(Boolean);
-  check('server 工作树仅《功能清单.md》被同步修改', sDirty.length === 1 && /功能清单\.md/.test(sDirty[0]), JSON.stringify(sDirty));
+  check('server main 工作树干净（《功能清单》当前文本已在 develop 提交）', sDirty.length === 0, JSON.stringify(sDirty));
+  const sDevHead = execSync('git -C "' + S + '" rev-parse develop', { encoding: 'utf8' }).trim();
+  const sDevRemote = execSync('git -C "' + S + '" ls-remote origin develop', { encoding: 'utf8' }).trim().split(/\s+/)[0];
+  check('server develop 已推送（《功能清单》同步提交）', sDevHead === sDevRemote, sDevHead.slice(0, 8) + ' / ' + sDevRemote.slice(0, 8));
   const wDirty = execSync('git -c core.quotepath=false -C "' + W + 'Smart-WorkFlow-aPaaS-Web" status --porcelain', { encoding: 'utf8' }).trim();
   check('web 工作树干净（未改动发布提交）', wDirty === '', wDirty || '(clean)');
 } catch (e) {

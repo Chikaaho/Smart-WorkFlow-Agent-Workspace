@@ -6,7 +6,7 @@
 
 | 字段 | 值 |
 |---|---|
-| 当前活动正式功能 | `v0.1.0-oa-completion`（P60 0.1.0 OA 全功能收口）：**COMPLETED（待规划确认，2026-09-15）**（整体 14/14 通过，发布最终验收 02 PASSED）；I1「组织与权限底座」**COMPLETED（规划已确认，2026-09-09）**；I2「低代码表单收口」**COMPLETED（规划已确认，2026-09-10）**；I3「人工审批与自研流程设计器」**COMPLETED（规划已确认，2026-09-12）**；I4「编排、流程运营与工作台」**COMPLETED（规划已确认，2026-09-13）**；**I5「租户安全与三方 SSO」COMPLETED（规划已确认，2026-09-14）**；**I6「通知与版本收口」COMPLETED（规划已确认，2026-09-15）**（功能级验收 07 PASSED；阶段三最终复核 01 PASSED；确认值投影回执已提交） |
+| 当前活动正式功能 | `v0.1.0-oa-completion`（P60 0.1.0 OA 全功能收口）：**COMPLETED（规划已确认，2026-09-15）**（整体 14/14 通过，发布最终验收 02 PASSED；终态同步最终复核 01 PASSED）；I1「组织与权限底座」**COMPLETED（规划已确认，2026-09-09）**；I2「低代码表单收口」**COMPLETED（规划已确认，2026-09-10）**；I3「人工审批与自研流程设计器」**COMPLETED（规划已确认，2026-09-12）**；I4「编排、流程运营与工作台」**COMPLETED（规划已确认，2026-09-13）**；**I5「租户安全与三方 SSO」COMPLETED（规划已确认，2026-09-14）**；**I6「通知与版本收口」COMPLETED（规划已确认，2026-09-15）**（功能级验收 07 PASSED；阶段三最终复核 01 PASSED；确认值投影回执已提交） |
 | 正式业务功能数 | **44**（p21-iot-device-access 为第 44 个正式功能，COMPLETED（规划已确认，2026-09-08）） |
 | 清单规模 | 10 模块、55 功能、90 明细（业务）＋ **ADV 高级能力规划项 8 模块、64 条**（不计入统计） |
 | 清单状态计数 | **✅46 / 🟦22 / ⬜22**（46+22+22=90，业务明细零变化；ADV 64 条统一 ⬜ 规划登记/待现状核实） |
@@ -15,9 +15,9 @@
 | Web 基线 | 0.1.0 最终门禁（终态同步轮只同步引用、不重跑）：typecheck/lint/test/build 四门 exit 0，128 个测试文件、**1185 passed + 3 skipped**；0.1.0 发布身份：Web main `963df360ed18bc1c604652a13edb2a7ed0be8963`（annotated tag/Release `0.1.0`，Actions 34942666025 成功，自动产物 `dist-963df36….zip`） |
 | Flyway | H2/PostgreSQL 同一迁移身份，终点 **V93**（V92 与 V93 完成通知标志列布尔口径收口；I6 通知与版本收口迁移及可重复脚本；I5 新增 V83 formKey 租户唯一、V84 SSO 身份四表、V85/V86 Provider 应用归属唯一（`sw-biz-system` system 迁移目录）；devseed H2 V900—V903 仅 dev 装载；`sw-bootstrap` FlywayFullChain H2 15 条 / PG 12 条） |
 | 产品行为基线 | I6 真实行为/浏览器证据见 `receipts/evidence/i6-05/`、`i6-06/`（R3 管理员通知闭环与重发/权限分流、R4 PC/H5 同对象同深链、R5 正式多角色流程含委托与抄送只读链、R7 三仓内容指纹 manifest＋sidecar＋独立复算一致）；正式流程均来自可见交互式浏览器 `headless=false`，17 个 PNG/WebP 可回读。I5 G1—G9（`receipts/evidence/i5-02/`—`i5-11/`）与 I1—I4 行为证据继续锁定。**R8 五渠道（SMS/EMAIL/FEISHU/DINGTALK/WECHAT_WORK）=Owner延期 / 未验证（P2 待办）；三 Provider=Owner 延期免验/未验证** |
-| 当前任务状态 | `v0.1.0-oa-completion`：**COMPLETED（待规划确认，2026-09-15）**（整体 14/14）；I1—I6 **COMPLETED（规划已确认）**（**I6 `COMPLETED（规划已确认，2026-09-15）`**：功能级验收 `planning-review-stage-i6-notification-version-closure-07-owner-deferral-passed.md` PASSED、阶段三最终复核 `planning-final-review-terminal-sync-stage-i6-v0.0.3-oa-iteration-01-passed.md` PASSED、确认值投影回执 `final-state-projection-stage-i6-v0.0.3-oa-iteration-01.md` `TERMINAL_SYNC_SUBMITTED`） |
+| 当前任务状态 | `v0.1.0-oa-completion`：**COMPLETED（规划已确认，2026-09-15）**（整体 14/14）；I1—I6 **COMPLETED（规划已确认）**（**I6 `COMPLETED（规划已确认，2026-09-15）`**：功能级验收 `planning-review-stage-i6-notification-version-closure-07-owner-deferral-passed.md` PASSED、阶段三最终复核 `planning-final-review-terminal-sync-stage-i6-v0.0.3-oa-iteration-01-passed.md` PASSED、确认值投影回执 `final-state-projection-stage-i6-v0.0.3-oa-iteration-01.md` `TERMINAL_SYNC_SUBMITTED`） |
 | 活动业务实现功能 | 无（I6 确认值投影已完成；P60 整体 14 条验收标准复核待 Planner 启动） |
-| 唯一下一动作 | **Planner 复核整体终态同步回执并确认 P60 `COMPLETED（规划已确认）`；确认前不启动 P61、不改变计数**（当前唯一规划入口 `ready/direction-v0.1.0-oa-completion-terminal-sync.md`）。P60 已写 `COMPLETED（待规划确认）`，功能数 44 与清单 ✅46/🟦22/⬜22、ADV64、开放 P 编号不变；0.1.0 两仓已发布并锁定（不得重复发布） |
+| 唯一下一动作 | **P61 用户可见错误码与提示语人性化治理现状探索**（入口 `search_task/v0.1.0-p61-user-facing-message-humanization-current-seams.md`；P60 终态同步方向已归档 `passed/`，最终复核 01 PASSED）。P60 已写 `COMPLETED（规划已确认，2026-09-15）`，功能数 44 与清单 ✅46/🟦22/⬜22、ADV64、开放 P 编号不变；0.1.0 两仓已发布并锁定（不得重复发布） |
 
 ## v0.1.0-oa-completion 关键事实
 
