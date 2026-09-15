@@ -43,6 +43,26 @@ sync=$(printf '%s' "$sync" | /usr/bin/jq -c '. + {progress_basis:{files_changed:
 blocked=$(printf '%s' "$blocked" | /usr/bin/jq -c '. + {progress_basis:{files_changed:["login-check"],tool_actions:["browser.login"],new_evidence:["error"],closed_work_items:[]}}')
 blocked_observations=$(printf '%s' "$blocked" | /usr/bin/jq -c '{browser_status,tool_results,progress_fingerprint}')
 
+formal_browser=$(printf '%s' "$execution" | /usr/bin/jq -c '.browser_status="OPERABLE"')
+formal_visible=$(printf '%s' "$formal_browser" | /usr/bin/jq -c '. + {formal_browser_acceptance:true,browser_evidence:{tier:"FORMAL_FLOW",headless:false,artifacts:["product/demo/evidence/r5-formal.webp"],url:"/workflow/my-cc",viewport:"1786x1280",identity:"T100审批人",object:"f42ba34b-b0ac-11f1-b25f-00ffa7734675",network_index:"product/demo/evidence/network-index.md"}}')
+formal_headless=$(printf '%s' "$formal_visible" | /usr/bin/jq -c '.browser_evidence.headless=true')
+formal_no_artifacts=$(printf '%s' "$formal_visible" | /usr/bin/jq -c 'del(.browser_evidence.artifacts)')
+formal_no_url=$(printf '%s' "$formal_visible" | /usr/bin/jq -c 'del(.browser_evidence.url)')
+formal_without_evidence=$(printf '%s' "$formal_browser" | /usr/bin/jq -c '. + {formal_browser_acceptance:true}')
+formal_wrong_tier=$(printf '%s' "$formal_visible" | /usr/bin/jq -c '.browser_evidence.tier="ISOLATED_REGRESSION"')
+headless_component=$(printf '%s' "$formal_browser" | /usr/bin/jq -c '. + {browser_evidence:{tier:"COMPONENT_TEST",headless:true}}')
+light_browser_evidence=$(printf '%s' "$direct_s" | /usr/bin/jq -c '. + {browser_evidence:{tier:"FORMAL_FLOW",headless:false}}')
+
+confirmation_local=$(printf '%s' "$blocked" | /usr/bin/jq -c '. + {confirmation:{category:"DETERMINISTIC_LOCAL_INPUT",input_source:"DEV_TEST_CONFIG",action:"请求用户输入固定验证码"}}')
+confirmation_contract=$(printf '%s' "$blocked" | /usr/bin/jq -c '. + {confirmation:{category:"SECRET",input_source:"EXISTING_TEST_CONTRACT",action:"请求既有测试契约中的测试口令"}}')
+confirmation_secret_ok=$(printf '%s' "$blocked" | /usr/bin/jq -c '. + {confirmation:{category:"SECRET",input_source:"USER_SECRET",action:"请求真实测试账号口令"}}')
+confirmation_secret_unbound=$(printf '%s' "$confirmation_secret_ok" | /usr/bin/jq -c '.tool_results=[{tool:"browser.login",outcome:"FAILED",detail:"可见页面登录未完成"}]')
+confirmation_mfa_ok=$(printf '%s' "$blocked" | /usr/bin/jq -c '.browser_status="REQUIRES_MFA" | .tool_results=[{tool:"browser.mfa",outcome:"REQUIRES_MFA",detail:"需要真实 MFA 设备"}] | . + {confirmation:{category:"MFA",input_source:"USER_SECRET",action:"等待真实 MFA 验证"}}')
+confirmation_remote_ok=$(printf '%s' "$blocked" | /usr/bin/jq -c '. + {confirmation:{category:"REMOTE_PUBLISH",input_source:"NONE",action:"等待远程发布授权"}}')
+confirmation_in_execution=$(printf '%s' "$execution" | /usr/bin/jq -c '. + {confirmation:{category:"SECRET",input_source:"USER_SECRET",action:"请求口令"}}')
+local_input_block=$(printf '%s' "$blocked" | /usr/bin/jq -c '.browser_status="UNAVAILABLE" | .block_type="ENVIRONMENT" | .stop_reason="ENVIRONMENT_UNAVAILABLE" | .tool_results=[{tool:"browser.login",outcome:"FAILED",detail:"未使用 dev/test 配置中的固定验证码"}] | . + {confirmation:{category:"DETERMINISTIC_LOCAL_INPUT",input_source:"DEV_TEST_CONFIG",action:"请求用户输入固定验证码"}}')
+local_input_observations=$(printf '%s' "$local_input_block" | /usr/bin/jq -c '{browser_status,tool_results,progress_fingerprint}')
+
 validator_case direct_s pass "$direct_s"
 validator_case direct_m pass "$direct_m"
 validator_case execution pass "$execution"
@@ -76,6 +96,21 @@ validator_case actionable_sync fail '{"schema":"agent-coding-engine.executor-ter
 validator_case independent_work_left fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"BLOCKED","task_level":"L","receipt":"product/demo/receipts/x.md","evidence":["error"],"block_type":"EXTERNAL","attempted":["retry"],"release_condition":"service restored","work_items":[{"id":"blocked","status":"BLOCKED","authorized":true,"dependency_satisfied":false,"actionable":false,"next_action":"等待服务"},{"id":"independent","status":"IN_PROGRESS","authorized":true,"dependency_satisfied":true,"actionable":true,"next_action":"继续独立项"}],"remaining_actionable_count":1,"independent_work_exhausted":false,"next_action":"继续独立项","next_action_type":"CONTINUE","progress_fingerprint":"fp-independent","stop_reason":"EXTERNAL_DEPENDENCY","tool_results":[{"tool":"service","outcome":"UNAVAILABLE","detail":"服务返回不可用"}],"browser_status":"NOT_APPLICABLE"}' 'next_action: independent actionable work remains; do not submit BLOCKED'
 validator_case browser_operable_block fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"BLOCKED","task_level":"M","evidence":["login claim"],"block_type":"EVIDENCE_GAP","attempted":["inspect page"],"release_condition":"captcha visible","work_items":[{"id":"login","status":"BLOCKED","authorized":true,"dependency_satisfied":true,"actionable":false,"next_action":"填写可见验证码"}],"remaining_actionable_count":0,"independent_work_exhausted":true,"next_action":"填写可见验证码","next_action_type":"WAIT_EXTERNAL","progress_fingerprint":"fp-browser","stop_reason":"EVIDENCE_GAP","tool_results":[{"tool":"browser.snapshot","outcome":"SUCCEEDED","detail":"页面、DOM 和网络仍可操作"}],"browser_status":"OPERABLE"}' 'browser_status: OPERABLE browser session remains'
 validator_case permission_without_denial fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"BLOCKED","task_level":"M","evidence":["permission claim"],"block_type":"PERMISSION_DENIED","attempted":["run tool"],"release_condition":"permission granted","work_items":[{"id":"local-action","status":"BLOCKED","authorized":true,"dependency_satisfied":true,"actionable":false,"next_action":"重试工具"}],"remaining_actionable_count":0,"independent_work_exhausted":true,"next_action":"重试工具","next_action_type":"WAIT_EXTERNAL","progress_fingerprint":"fp-permission","stop_reason":"PERMISSION_DENIED","tool_results":[{"tool":"shell","outcome":"FAILED","detail":"命令未返回权限拒绝"}],"browser_status":"NOT_APPLICABLE"}' 'PERMISSION_DENIED requires an actual DENIED tool result'
+validator_case formal_visible pass "$formal_visible"
+validator_case formal_headless fail "$formal_headless" 'browser_evidence.headless: formal flow acceptance must use a visible interactive session'
+validator_case formal_no_artifacts fail "$formal_no_artifacts" 'browser_evidence.artifacts: formal flow acceptance requires at least one readback visual artifact'
+validator_case formal_no_url fail "$formal_no_url" 'browser_evidence.url: required for formal flow acceptance'
+validator_case formal_without_evidence fail "$formal_without_evidence" 'browser_evidence: required when formal_browser_acceptance is true'
+validator_case formal_wrong_tier fail "$formal_wrong_tier" 'browser_evidence.tier: formal_browser_acceptance requires FORMAL_FLOW'
+validator_case headless_component pass "$headless_component"
+validator_case light_browser_evidence fail "$light_browser_evidence" 'browser_evidence: forbidden for state TASK_COMPLETED'
+validator_case confirmation_local fail "$confirmation_local" 'confirmation: authorized deterministic input is a continue action'
+validator_case confirmation_contract fail "$confirmation_contract" 'confirmation: authorized deterministic input is a continue action'
+validator_case confirmation_secret_ok pass "$confirmation_secret_ok"
+validator_case confirmation_secret_unbound fail "$confirmation_secret_unbound" 'confirmation.category: SECRET requires an actual REQUIRES_SECRET tool result'
+validator_case confirmation_mfa_ok pass "$confirmation_mfa_ok"
+validator_case confirmation_remote_ok pass "$confirmation_remote_ok"
+validator_case confirmation_in_execution fail "$confirmation_in_execution" 'confirmation: forbidden for state EXECUTION_SUBMITTED'
 
 set +e
 contract_output=$(/usr/bin/jq -r '. as $root | ($root.properties | keys) as $properties | $root.states | to_entries[] | select(((.value.allowed + .value.forbidden) | unique | sort) != ($properties | sort)) | .key' "$contract" 2>&1)
@@ -165,6 +200,29 @@ supervisor_replan_case() {
   record "$ok" supervisor/replan "output=$output"
 }
 
+local_input_case() {
+  input=$(/usr/bin/jq -cn --arg message "ENGINE_TERMINAL $local_input_block" --argjson observations "$local_input_observations" '{active_role:"executor",last_assistant_message:$message,stop_hook_active:false,background_tasks:[],execution_observations:$observations}')
+  claude_output=$(printf '%s' "$input" | sh "$claude_hook")
+  codex_output=$(printf '%s' "$input" | sh "$codex_hook")
+  ok=0
+  printf '%s' "$claude_output" | /usr/bin/jq -e '.decision == "block" and (.reason|contains("continue action")) and .supervisor.action == "reinject" and .supervisor.mode == "REINJECT" and (.follow_up_prompt|contains("直接完成"))' >/dev/null 2>&1 || ok=1
+  printf '%s' "$codex_output" | /usr/bin/jq -e '.decision == "block" and (.reason|contains("continue action"))' >/dev/null 2>&1 || ok=1
+  [ "$claude_output" = "$codex_output" ] || ok=1
+  record "$ok" hooks/authorized_local_input "claude=$claude_output codex=$codex_output"
+}
+
+browser_evidence_observation_case() {
+  observed=$(printf '%s' "$formal_visible" | /usr/bin/jq -c '.browser_evidence + {headless:true}')
+  input=$(/usr/bin/jq -cn --arg message "ENGINE_TERMINAL $formal_visible" --argjson evidence "$observed" '{active_role:"executor",last_assistant_message:$message,stop_hook_active:false,background_tasks:[],execution_observations:{browser_evidence:$evidence}}')
+  claude_output=$(printf '%s' "$input" | sh "$claude_hook")
+  codex_output=$(printf '%s' "$input" | sh "$codex_hook")
+  ok=0
+  printf '%s' "$claude_output" | /usr/bin/jq -e '.decision == "block" and (.reason|contains("browser_evidence does not match")) and .supervisor.action == "reinject"' >/dev/null 2>&1 || ok=1
+  printf '%s' "$codex_output" | /usr/bin/jq -e '.decision == "block" and (.reason|contains("browser_evidence does not match"))' >/dev/null 2>&1 || ok=1
+  [ "$claude_output" = "$codex_output" ] || ok=1
+  record "$ok" hooks/browser_evidence_observation "claude=$claude_output codex=$codex_output"
+}
+
 model_invariance_case() {
   message='summary only'
   input_a=$(/usr/bin/jq -cn --arg message "$message" '{active_role:"executor",last_assistant_message:$message,stop_hook_active:false,background_tasks:[],model:"model-a"}')
@@ -184,6 +242,8 @@ progress_guard_case
 observation_mismatch_case
 supervisor_replan_case
 model_invariance_case
+local_input_case
+browser_evidence_observation_case
 
 printf 'terminal-governance cases=%s passed=%s failed=%s\n' "$((passed + failed))" "$passed" "$failed"
 [ "$failed" -eq 0 ]

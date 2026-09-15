@@ -53,6 +53,17 @@ claimed_browser_status=$(printf '%s' "$terminal_json" | /usr/bin/jq -r '.browser
 observed_tool_results=$(printf '%s' "$input" | /usr/bin/jq -cS '.execution_observations.tool_results // null' 2>/dev/null || printf '%s' 'null')
 claimed_tool_results=$(printf '%s' "$terminal_json" | /usr/bin/jq -cS '.tool_results // null' 2>/dev/null || printf '%s' 'null')
 observed_progress_fingerprint=$(printf '%s' "$input" | /usr/bin/jq -r '.execution_observations.progress_fingerprint // ""' 2>/dev/null || printf '%s' '')
+claimed_browser_evidence=$(printf '%s' "$terminal_json" | /usr/bin/jq -cS 'if (.browser_evidence|type) == "object" then .browser_evidence else null end' 2>/dev/null || printf '%s' 'null')
+observed_browser_evidence=$(printf '%s' "$input" | /usr/bin/jq -cS 'if (.execution_observations.browser_evidence|type) == "object" then .execution_observations.browser_evidence else null end' 2>/dev/null || printf '%s' 'null')
+confirmation_continue=$(printf '%s' "$terminal_json" | /usr/bin/jq -r '
+  if (.confirmation|type) == "object" then
+    if .confirmation.category == "DETERMINISTIC_LOCAL_INPUT" then "true"
+    elif ((.confirmation.input_source == "DEV_TEST_CONFIG" or .confirmation.input_source == "EXISTING_TEST_CONTRACT") and
+          ((["DESTRUCTIVE","REMOTE_PUBLISH","OUT_OF_AUTHORIZATION"]|index(.confirmation.category)) == null)) then "true"
+    else "false" end
+  else "false" end' 2>/dev/null || printf '%s' 'false')
+confirmation_continue_diagnostic='confirmation: authorized deterministic input is a continue action; complete it without requesting user input'
+confirmation_continue_action='该输入由 dev/test 配置或既有测试契约确定，属于已授权可继续动作：直接完成该动作并继续后续授权项，不请求用户输入。'
 
 if [ "$validate_status" -eq 0 ] && [ "$terminal_state" = "BLOCKED" ] && [ "$observation_present" != "true" ]; then
   validate_status=1
@@ -82,6 +93,22 @@ if [ "$validate_status" -eq 0 ] && [ "$terminal_state" = "BLOCKED" ] && [ "$obse
   validate_status=1
   diagnostic='observations: progress_fingerprint does not match the Harness observation'
   next_action='record the observed progress and perform the next atomic action'
+fi
+
+if [ "$validate_status" -eq 0 ] && [ "$claimed_browser_evidence" != "null" ] && [ "$observed_browser_evidence" != "null" ] && [ "$observed_browser_evidence" != "$claimed_browser_evidence" ]; then
+  validate_status=1
+  diagnostic='observations: browser_evidence does not match the Harness observation'
+  next_action='reconcile the visible browser session and its readback evidence before claiming formal flow acceptance'
+fi
+
+if [ "$terminal_state" = "BLOCKED" ] && [ "$confirmation_continue" = "true" ]; then
+  next_action="$confirmation_continue_action"
+  if [ "$validate_status" -eq 0 ]; then
+    validate_status=1
+    diagnostic="$confirmation_continue_diagnostic"
+  else
+    diagnostic=$(printf '%s\n%s' "$diagnostic" "$confirmation_continue_diagnostic")
+  fi
 fi
 
 if [ "$validate_status" -eq 0 ] && [ "$terminal_state" = "BLOCKED" ] && {
