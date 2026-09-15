@@ -1,17 +1,16 @@
 # 当前状态摘要
 
-> 当前规划（2026-09-14）：P60成熟OA`0.1.0`目标/当前迭代`0.0.3`，**P0 / XL / IN_PROGRESS**。I1—I5 **COMPLETED（规划已确认）**；I6回执03规划审查仍为`VERIFYING`，L1—L16锁定、本轮无新增锁定。一级提示后仍有授权内缺口且新增声明缺原始行为流，二级执行补充提示02为唯一入口；剩余原子覆盖审批不回滚/终态、模板规则、完整权限、PC/H5、Provider映射与真实渠道、流程全景、PG旧库升级、候选及前端门禁。功能数44、✅46/🟦22/⬜22、ADV64与P编号不变。
+> 当前规划（2026-09-15）：P60成熟OA`0.1.0`已**COMPLETED（规划已确认）**，整体14/14，Server/Web发布锁定、迁移终点V93，Workspace与版本无关。当前任务=P61全系统用户可见错误码与提示语人性化治理（P1/L/EXPLORING），入口=`search_task/p61-user-facing-message-humanization-current-seams.md`。R8五渠道保持延期/未验证。
 
 > 最近完成基线：P21 **COMPLETED（规划已确认，2026-09-08）**，第44个正式功能；功能44、清单✅46/🟦22/⬜22、P21核销、I14关闭均锁定。正式计数以 `knowledge/current-status.md` 为准。
 
 > 历史：P59 与 knowledge-full-reconciliation 均已确认完成（2026-09-04/05），详见 knowledge/history 与 features/。
 
-- `v0.1.0-oa-completion`（P60）：**IN_PROGRESS**。I1—I5 **COMPLETED（规划已确认）**；I6=`VERIFYING`。当前唯一入口=`planning-execution-prompt-stage-i6-notification-version-closure-02.md`；下一回执=`completion-stage-i6-notification-version-closure-04.md`。
-- I5 门禁基线（锁定，终态同步轮不重跑）：Server 八模块 **766/0/0/0 BUILD SUCCESS**（含 Flyway H2 86/PG 85 终点 **V86**；飞书修复后 SsoAuthServiceTest 22/0、system-biz 295/0/0/0）；Web 四门 exit 0（128 files、1183 passed + 3 skipped）；文档级交付 `Smart-WorkFlow-aPaaS-server/docs/sso/`（Owner 自验手册＋禁用态配置样例）。
-- 终态值：功能数 **44**；清单 **✅46/🟦22/⬜22**（90，零变化）；**P21 已核销（2026-09-08）**；P2/P4 开放部分实现未核销、P34/P35/P37/P38/P39 部分实现未核销，P47 已纳入 I3 但未核销；I 集合 54 条不增删（**I14 已满足/关闭**、I38/I39/I40/I45 保持开放）。**P60/P31 及其他开放编号 I5 阶段不核销。**
-- `p21-iot-device-access`（P21 IoT 设备接入、受控脚本与流程联动）：**COMPLETED（规划已确认，2026-09-08）**，第 **44** 个正式功能；M08 十行升✅（F04-01 保持🟦、F04-02/F05-02 保持⬜），P21 已核销、I14 关闭（腾讯实网按 Owner 免验），主方向与阶段三方向均归档 `passed/`。
-- `v0.0.2-oa`：**COMPLETED（规划已确认，2026-09-07）**，第 **43** 个正式功能（历史点）；A1—A8 锁定，P3/P54/P55 核销、P2/P4 开放。
-- 更早已确认功能（详见 `knowledge/history/` 与 features/）：p4 第42个（09-07，P4 总项仍开放）、P59（09-05）、p58 第41个、p57 第40个、p56 第39个＋P46、p52 第38个、p45 第37个、p51 Engine 解耦（不计功能数）。
-- 发布终态：I5三仓提交已推送并回读，Workspace/Server/Web远端分别为`49cca1f`/`4c7fc24`/`5788ead`，ahead/behind均0/0；不创建0.1.0标签或Release。
-- P 剩余边界：P2 其余（计算公式/外部数据源/表单删除/列表配置持久化）；P4 候选（转办/委托/加签/撤回、流程版本/挂起激活）；M08-F04-01 🟦、F04-02/F05-02 ⬜；P34/P35/P37/P38/P39 剩余；腾讯实网与三 Provider 真实链免验未做；小程序继续冻结。
-- P61 已登记：P60/`0.1.0` 最终收尾后开展全系统用户可见错误码与提示语人性化治理；当前不并入 I6，不改变状态与计数。
+- `v0.1.0-oa-completion`（P60）：**COMPLETED（规划已确认，2026-09-15）**，整体14/14；最终裁决=`planning-final-review-terminal-sync-v0.1.0-oa-completion-01-passed.md`。P60版本统筹项核销，不增加业务功能计数。
+- I6阶段门禁历史基线：Server 1361/0/0/0、迁移终点V92；0.1.0发布修复后最终基线：Server **1362/0/0/0、V93**，Web **1185 passed + 3 skipped**。阶段证据保持锁定，终态同步不重跑。
+- 终态值：功能数 **44**；清单 **✅46/🟦22/⬜22**（90，零变化）；**ADV64**（独立规划项，不计入）；**P21 已核销（2026-09-08）**；P2/P4 开放部分实现未核销、P34/P35/P37/P38/P39 部分实现未核销，P47 已纳入 I3 但未核销；I 集合 54 条不增删（**I14 已满足/关闭**、I38/I39/I40/I45 保持开放）。**P60/P31 及其他开放编号本轮零变化。**
+- `p21-iot-device-access`（P21）：**COMPLETED（规划已确认，2026-09-08）**，第 **44** 个正式功能；M08 十行升✅（F04-01🟦、F04-02/F05-02⬜保留），P21 已核销、I14 关闭（腾讯实网按 Owner 免验），主方向与阶段三方向均归档 `passed/`。
+- `v0.0.2-oa`：**COMPLETED（规划已确认，2026-09-07）**，第 **43** 个正式功能（历史点）；A1—A8 锁定，P3/P54/P55 核销、P2/P4 开放。更早：p4 第42个（09-07，P4 总项仍开放）、P59（09-05）、p58 第41个、p57 第40个、p56 第39个＋P46、p52 第38个、p45 第37个、p51 Engine 解耦（不计功能数）——详见 `knowledge/history/`。
+- 发布事实：Server `main=c15428f0002f6bb0ceeff05c7cbcf842bd3d3148`、Web `main=963df360ed18bc1c604652a13edb2a7ed0be8963`；两仓annotated tag及公开Release `0.1.0`已存在，对应main Actions成功（Server 34946504087 / Web 34942666025）。发布行为锁定，不再执行Git或重复发布。
+- P 剩余边界：P2 其余（计算公式/外部数据源/表单删除/列表配置持久化）；P4 候选（转办/委托/加签/撤回、流程版本/挂起激活）；M08-F04-01 🟦、F04-02/F05-02 ⬜；P34/P35/P37/P38/P39 剩余；腾讯实网与三 Provider 真实链免验未做；**I6 五外部通知渠道（SMS/EMAIL/FEISHU/DINGTALK/WECHAT_WORK）真实链转 P2 待办（`todo/i6-external-notification-channels-real-verification.md`），保持`Owner延期 / 未验证`**；小程序继续冻结。
+- P61：**EXPLORING**。全量治理Server/Web用户可见错误码描述、接口消息、页面提示与恢复指引；不以Owner举例或关键词抽样为边界，机器码默认兼容。当前只读探索，不改变功能计数。
