@@ -1,0 +1,7 @@
+[pc] /inbox -> 通知消息，共 25 条记录；目标消息 2099530783065350145 从未读变为已读
+[pc] mark-read request -> POST /api/notify/messages/2099530783065350145/read -> HTTP 200
+[h5] /m/notify -> 收件箱（未读 6）；同一目标消息进入 H5 列表
+[h5] open-link -> /m/workflow?ref=8c752756-b056-11f1-a6e0-00ffa7734675；流程实例详情显示状态 APPROVED、发起人 10001
+[h5] refresh -> URL 与流程详情保持不变，状态仍为 APPROVED，流转记录保留
+[readback] inbox target -> HTTP 200, read true, linkType WF_PROCESS, linkId 8c752756-b056-11f1-a6e0-00ffa7734675
+[readback] workflow instance -> HTTP 200, status APPROVED, initiatorId 10001, traceCount 7

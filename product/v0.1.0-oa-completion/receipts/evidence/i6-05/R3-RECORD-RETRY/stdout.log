@@ -1,0 +1,8 @@
+[browser] /notify/template -> 消息模板，共 4 条记录；R6 COPY_CREATED 模板 V2 可见
+[browser] /notify/channel -> 渠道配置，共 1 条记录；EMAIL 已装配、租户启用
+[browser] /notify/rule -> 通知规则，共 9 条记录；R6 COPY_CREATED 与 R1 规则可见
+[browser] /notify/record -> 通知发送记录，共 156 条记录；失败记录 2099530803114123265 可见
+[browser] detail -> 记录 2099530803114123265 / EMAIL / FAILED；投递尝试 1..7，全部 FAILED
+[browser] resend -> 页面提示“重发结果：FAILED”；重发后仍为同一业务记录，列表总数保持 156
+[readback] GET /notify/records/2099530803114123265/detail -> HTTP 200, code 0, attemptCount 7, all attempts FAILED
+[readback] visible resend request -> POST /api/notify/records/2099530803114123265/resend -> HTTP 200

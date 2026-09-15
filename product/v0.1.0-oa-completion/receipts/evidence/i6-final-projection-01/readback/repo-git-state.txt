@@ -1,0 +1,57 @@
+=== I6 planner-confirmed projection round - read-only repo state (2026-09-15) ===
+=== workspace ===
+root: /e/code/Smart-WorkFlow-Agent-Workspace
+branch: develop-sw
+head: 8e87899ab8d45e5289efa643fa6489c55168dfa3
+head_subject: chore(governance): 收紧连续执行与可见浏览器证据门禁
+upstream: origin/develop-sw
+ahead/behind: 19	0
+dirty_entries: 35
+remote_develop_sw: 69c319777a27b489fd985591f63c388787e6a948
+tags: []
+
+=== server ===
+root: /e/code/Smart-WorkFlow-Agent-Workspace/Smart-WorkFlow-aPaaS-server
+branch: develop
+head: e941d74ffb3e5388e1b3ac3efb234d4634436aea
+head_subject: test(i6): 迁移门禁计数与 G7b 幂等化——V92 终点、受支持基线 V87、同 ID 校验对齐真实铺设
+upstream: origin/develop
+ahead/behind: 8	0
+dirty_entries: 17
+remote_develop: 4c7fc241de3710b58a718ff2c072ceac784b43f3
+tags: [0.0.2 build-20fffc1ddec13ea665fc388f4243c6e063974883 build-6ab9ae50080b2ae884eefaa728ae021702661ece v0.0.1 v0.0.1-beta ]
+dirty_files:
+ M sw-basic/sw-basic-notify/sw-basic-notify-api/src/main/java/com/sw/ck/notify/api/NotifyRoutingService.java
+ M sw-basic/sw-basic-notify/sw-basic-notify-api/src/main/java/com/sw/ck/notify/api/NotifyTargetResolver.java
+ M sw-basic/sw-basic-notify/sw-basic-notify-biz/src/main/java/com/sw/ck/notify/controller/P58DebugNotifyController.java
+ M sw-basic/sw-basic-notify/sw-basic-notify-biz/src/main/java/com/sw/ck/notify/service/impl/NotifyRoutingServiceImpl.java
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/notify/NotifyTargetResolverImpl.java
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/security/DevProperties.java
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/test/java/com/sw/ck/system/security/LoginChallengeServiceTest.java
+ M sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/delegate/CopyNodeDelegate.java
+ M sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/listener/ApprovalTaskListener.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/TaskActionService.java
+ M sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainH2Test.java
+ M sw-bootstrap/src/test/java/com/sw/ck/bootstrap/FlywayFullChainPostgresTest.java
+ M "\345\212\237\350\203\275\346\270\205\345\215\225.md"
+?? sw-basic/sw-basic-notify/sw-basic-notify-api/src/main/java/com/sw/ck/notify/api/NotifyTargetResolution.java
+?? sw-basic/sw-basic-notify/sw-basic-notify-api/src/main/java/com/sw/ck/notify/api/NotifyTemplateSelection.java
+?? sw-bootstrap/src/main/resources/db/migration/h2/R__i6_notify_menu_reconciliation.sql
+?? sw-bootstrap/src/main/resources/db/migration/postgresql/R__i6_notify_menu_reconciliation.sql
+功能清单_dirty: 1
+
+=== web ===
+root: /e/code/Smart-WorkFlow-Agent-Workspace/Smart-WorkFlow-aPaaS-Web
+branch: develop
+head: 0a746e3d6e0e0aaa0c4ee8633c58c75c295546d6
+head_subject: fix(i6): 门禁修复——深链类型守卫与路由可选链（g4a/g4b 补充）
+upstream: origin/develop
+ahead/behind: 4	0
+dirty_entries: 4
+remote_develop: 5788ead33c4347214a350d124331237e85068bdf
+tags: [0.0.2 build-0bf6e8925059e4c254328c5d1643ebd8c1a2943e build-4c044c671318627599560320efd217a0a520b5aa build-4ed9fdbfaaaf4e7be469201e2d0297c319a37c35 v0.0.1 v0.0.1-beta ]
+dirty_files:
+ M src/contracts/bpm-node.ts
+ M src/modules/notify/api/index.ts
+ M src/modules/notify/api/records.ts
+ M src/modules/workflow/views/TaskDetail.vue

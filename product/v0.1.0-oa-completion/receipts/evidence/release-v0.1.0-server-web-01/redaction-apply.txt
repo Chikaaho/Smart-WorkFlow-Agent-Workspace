@@ -1,0 +1,23 @@
+# 脱敏执行与跨度修复记录（2026-09-15，规划裁决 R2）
+
+## 1. 脱敏动作
+- 占位符（稳定）：accessToken → `<REDACTED-ACCESS-TOKEN>`；refreshToken → `<REDACTED-REFRESH-TOKEN>`；
+  idToken → `<REDACTED-ID-TOKEN>`；sessionToken → `<REDACTED-SESSION-TOKEN>`；bearer → `<REDACTED-BEARER-TOKEN>`
+- 实际命中：仅 accessToken 字段，6 份日志 × 4 处 = 24 处（server-mvn-install.log、-run2、-run4-v93、
+  -run5-v93、-run6-v93-final、server-bootstrap-tests-v93）
+- 其余形态（refreshToken / Bearer / 裸 JWT / Authorization 头 / apiKey）命中数为 0。
+
+## 2. 跨度溢出与修复（如实记录）
+- 事实：这些 accessToken 打印按用例自身截断输出，令牌在日志行末被截断、没有闭合引号；
+  首轮替换使用“到下一个引号”的口径，因此在 24 处中同时吞掉了紧随其后的原始输出（2—13 行：
+  应用 AccessLoggingFilter/租户校验日志与相邻测试打印）。被测断言、计数与失败/退出结果不受影响。
+- 修复口径：
+  - `server-mvn-install-run6-v93-final.log`（最终门禁日志）：按同一 run 的 surefire 记录逐字节还原被吞跨度
+    （`sw-bootstrap/target/surefire-reports/TEST-com.sw.ck.bootstrap.i5.I5SsoBindingSessionBootTest.xml`
+    与 `TEST-com.sw.ck.bootstrap.i6.I6G7bOldBaselineUpgradePostgresTest.xml`），仅令牌值以占位符表示。
+  - 其余 5 份日志：同类跨度含 run 特定值（时间/进程/线程/requestId/costMs），无法逐字节还原，
+    改以稳定标记 `[REDACTION-SPAN]` 注明，并保留可确定的相邻打印标签（测试名称/HTTP 状态/业务码）。
+
+## 3. 不变项
+- 未删除任何日志文件；失败与修复过程（run1 门禁失败、run4/run5 失败、被终止的 bootstrap 运行）全部保留。
+- 未重跑 Server/Web 工程门禁；未改动任何仓库的提交、分支、标签或 Release。

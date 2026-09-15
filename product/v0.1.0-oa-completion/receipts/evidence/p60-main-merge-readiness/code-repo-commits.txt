@@ -1,0 +1,40 @@
+### SERVER unpushed: origin/develop..develop (8) ###
+bf27126 2026-09-14 docs(system): 功能清单当前焦点投影 I5 规划确认并切换 I6 实现入口
+c1a71c0 2026-09-14 feat(i6): 通知与版本收口——统一投递权威、模板版本、渠道契约、收件箱多端与 0.1.0 投影
+a687f60 2026-09-14 test(i6): 补证轮 G1/G2/G3/G7/G9 重启恢复、不可变版本、双租户矩阵、旧库升级与门禁证据
+7ccecac 2026-09-14 feat(i6): 伪造租户护栏与变量超长限制（方向§3.6/§3.4）及 G2e/G2f/G2g/G3d/G1c 证据矩阵
+1ea3d41 2026-09-14 feat(i6): 二级提示02原子收口——退回新轮次通知、深链对象权限裁决、日志暴露收敛与 G1a-G7b 证据链
+4f556df 2026-09-14 fix(i6): 主体绑定密钥依赖惰性化——窄测试上下文不装配 AesGcmCipher 时上下文可创建，使用时明确失败
+3676af1 2026-09-14 fix(i6): 草稿终态失败显式 Long 解析——与 handle 同口径（pg bigint 列不接受 varchar 比较）
+e941d74 2026-09-14 test(i6): 迁移门禁计数与 G7b 幂等化——V92 终点、受支持基线 V87、同 ID 校验对齐真实铺设
+### SERVER main-only: develop..origin/main (16) ###
+7cfadad 2026-05-15 Initial commit
+290fb82 2026-08-30 merge: 发布 v0.0.1-beta 候选（ba59539）至 main
+dfa080e 2026-08-30 chore(release): 同步后端项目入口到 main
+526e303 2026-08-30 security: 停止跟踪本地开发配置
+f18555f 2026-08-30 chore: 添加 Linux 服务启停脚本
+89e404e 2026-08-31 fix: harden production deployment startup
+d55ecc6 2026-08-31 chore: develop 合入 main（生产配置修复）
+912ba89 2026-08-31 chore: develop 合入 main（权限装配修复与 V45 按钮权限菜单）
+4b05036 2026-08-31 chore: develop 合入 main（lowcode 命名清理）
+e0e899d 2026-08-31 docs(governance): 按任务风险调整后端验证要求
+142f279 2026-09-04 ci(server): main 分支自动编译并生成 GitHub Release 与构建产物
+096f707 2026-09-04 fix(flyway): main 全链测试计数与真实迁移集合对齐（H2 46/PG 45，升级链同步）
+946c0fe 2026-09-04 ci(server): 修正可执行 jar 定位以匹配 main 的 finalName=bootstrap 产物
+6afe910 2026-09-04 ci(server): 发布固定目标提交（--target 完整 SHA），同名 tag 冲突拒绝覆盖，重跑仅重建同提交 Release
+6ab9ae5 2026-09-04 ci(server): tag 查询失败时停止发布（不得当作无 tag 继续）
+20fffc1 2026-09-07 chore(oa): v0.0.2 develop 合入 main（Flyway 全链测试计数对齐 V58 基线）
+### WEB unpushed: origin/develop..develop (4) ###
+026c279 2026-09-14 feat(i6): 通知多端与 0.1.0 投影——收件箱分页/全部已读/深链、渠道规则订阅页、移动 H5 收件箱
+a786825 2026-09-14 test(i6): 新增渠道配置与订阅偏好聚焦测试（未装配拒绝/必须送达关闭拒绝）
+acdd3af 2026-09-14 feat(i6): g4a/g4b 浏览器链收口——pc 收件箱深链、监控 focus 自动打开、移动深链恢复
+0a746e3 2026-09-14 fix(i6): 门禁修复——深链类型守卫与路由可选链（g4a/g4b 补充）
+### WEB main-only: develop..origin/main (8) ###
+6bec8ac 2026-08-31 chore: develop 合入 main（字典状态映射修复）
+0e3526b 2026-08-31 docs(governance): 按任务风险调整前端验证要求
+662601c 2026-09-04 ci(web): main 分支自动编译并生成 GitHub Release 与构建产物
+b9e0c39 2026-09-04 ci(web): 发布固定目标提交（--target 完整 SHA），同名 tag 冲突拒绝覆盖，重跑仅重建同提交 Release
+5377bc7 2026-09-04 ci(web): tag 查询失败时停止发布（不得当作无 tag 继续）
+8690a22 2026-09-04 ci(web): 移除 setup-node pnpm 缓存（workspace 无 packages 字段导致 store path 探测失败）
+c45c529 2026-09-04 chore(web): pnpm-workspace 显式声明 packages: ['.']（pnpm 9 要求，语义不变）
+4ed9fdb 2026-09-07 Merge remote-tracking branch 'origin/develop'

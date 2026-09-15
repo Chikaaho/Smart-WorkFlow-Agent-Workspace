@@ -1,0 +1,194 @@
+### WS: HEAD vs origin/main ###
+-- merge-base --
+87648d11d74f12fb00f01a9724c2ea8fc9b96a90
+-- rev-list --left-right --count origin/main...develop-sw (left=main-only right=br-only) --
+22	114
+-- is-ancestor main->HEAD (true means fast-forward possible) --
+FF_POSSIBLE=no
+-- git status --porcelain --
+ M Smart-WorkFlow-aPaaS-Web
+ M Smart-WorkFlow-aPaaS-server
+ M knowledge/current-status.md
+ M knowledge/feature-reconciliation-index.md
+ M knowledge/features/v0.1.0-oa-completion.md
+ M knowledge/session-handoff.md
+ M memory/README.md
+ M memory/decisions.md
+ M memory/features.md
+ M memory/handoff.md
+ M memory/issues.md
+ M memory/state.md
+ D product/v0.1.0-oa-completion/ready/direction-stage-i6-notification-version-closure.md
+ M product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md
+ M todo/requirement-pool.md
+ M todo/v0.1.0-oa-plan.md
+?? product/v0.1.0-oa-completion/passed/direction-stage-i6-final-confirmed-state-projection.md
+?? product/v0.1.0-oa-completion/passed/direction-stage-i6-notification-version-closure.md
+?? product/v0.1.0-oa-completion/passed/direction-stage-i6-terminal-sync.md
+?? product/v0.1.0-oa-completion/receipts/completion-stage-i6-notification-version-closure-05.md
+?? product/v0.1.0-oa-completion/receipts/completion-stage-i6-notification-version-closure-06.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R1-RULE-VIEW/actual.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R1-RULE-VIEW/command.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R1-RULE-VIEW/exit-code.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R1-RULE-VIEW/objects.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R1-RULE-VIEW/stderr.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R1-RULE-VIEW/stdout.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R2-PHONE-RESOLUTION/actual.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R2-PHONE-RESOLUTION/command.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R2-PHONE-RESOLUTION/exit-code.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R2-PHONE-RESOLUTION/objects.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R2-PHONE-RESOLUTION/stderr.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R2-PHONE-RESOLUTION/stdout.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R3-RECORD-RETRY/actual.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R3-RECORD-RETRY/browser-network.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R3-RECORD-RETRY/browser-screenshots.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R3-RECORD-RETRY/browser-url.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R3-RECORD-RETRY/browser-viewport.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R3-RECORD-RETRY/command.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R3-RECORD-RETRY/exit-code.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R3-RECORD-RETRY/objects.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R3-RECORD-RETRY/stderr.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R3-RECORD-RETRY/stdout.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R4-PC-H5-DEEPLINK/actual.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R4-PC-H5-DEEPLINK/browser-network.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R4-PC-H5-DEEPLINK/browser-screenshots.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R4-PC-H5-DEEPLINK/browser-url.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R4-PC-H5-DEEPLINK/browser-viewport.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R4-PC-H5-DEEPLINK/command.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R4-PC-H5-DEEPLINK/exit-code.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R4-PC-H5-DEEPLINK/objects.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R4-PC-H5-DEEPLINK/stderr.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R4-PC-H5-DEEPLINK/stdout.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R5-ROLE-CHAIN/actual.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R5-ROLE-CHAIN/browser-network.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R5-ROLE-CHAIN/browser-screenshots.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R5-ROLE-CHAIN/browser-url.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R5-ROLE-CHAIN/browser-viewport.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R5-ROLE-CHAIN/command.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R5-ROLE-CHAIN/exit-code.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R5-ROLE-CHAIN/objects.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R5-ROLE-CHAIN/stderr.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R5-ROLE-CHAIN/stdout.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R6-COPY-TEMPLATE-VERSION/actual.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R6-COPY-TEMPLATE-VERSION/command.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R6-COPY-TEMPLATE-VERSION/exit-code.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R6-COPY-TEMPLATE-VERSION/objects.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R6-COPY-TEMPLATE-VERSION/stderr.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R6-COPY-TEMPLATE-VERSION/stdout.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R7-CANDIDATE/FINAL-GATE/actual.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R7-CANDIDATE/FINAL-GATE/flyway-focused.exit-code.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R7-CANDIDATE/FINAL-GATE/flyway-focused.stderr.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R7-CANDIDATE/FINAL-GATE/flyway-focused.stdout.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R7-CANDIDATE/FINAL-GATE/objects.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R7-CANDIDATE/FINAL-GATE/server-command.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R7-CANDIDATE/FINAL-GATE/server.exit-code.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R7-CANDIDATE/FINAL-GATE/server.stderr.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R7-CANDIDATE/FINAL-GATE/server.stdout.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R7-CANDIDATE/FINAL-GATE/web-command.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R7-CANDIDATE/FINAL-GATE/web.exit-code.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R7-CANDIDATE/FINAL-GATE/web.stderr.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R7-CANDIDATE/FINAL-GATE/web.stdout.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R7-CANDIDATE/actual.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R7-CANDIDATE/candidate-manifest.json
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R7-CANDIDATE/candidate-manifest.sha256
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R7-CANDIDATE/command.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R7-CANDIDATE/exit-code.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R7-CANDIDATE/manifest-readback.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R7-CANDIDATE/objects.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R7-CANDIDATE/stderr.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R7-CANDIDATE/stdout.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R8-EXTERNAL/actual.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R8-EXTERNAL/command.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R8-EXTERNAL/exit-code.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R8-EXTERNAL/objects.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R8-EXTERNAL/stderr.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/R8-EXTERNAL/stdout.log
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/object-ledger/objects.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/scripts/r1-rule-view.js
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/scripts/r2-phone-resolution.js
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/scripts/r5-role-chain.js
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/scripts/r6-copy-template-version.js
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-05/scripts/r8-external-availability.js
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/R3-VISIBLE-ADMIN/browser-events.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/R4-VISIBLE-CROSS/browser-events.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/R5-VISIBLE-FLOW/browser-events.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/R5-VISIBLE-FLOW/readback/formal-flow-readback.json
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/R5-VISIBLE-FLOW/readback/setup-stdout.json
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/R5-VISIBLE-FLOW/scripts/setup-formal-flow.js
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/R7-CONTENT-FINGERPRINT/README.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/R7-CONTENT-FINGERPRINT/fingerprint-exit-code.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/R7-CONTENT-FINGERPRINT/fingerprint-manifest.json
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/R7-CONTENT-FINGERPRINT/fingerprint-manifest.sha256
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/R7-CONTENT-FINGERPRINT/fingerprint-stderr.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/R7-CONTENT-FINGERPRINT/fingerprint-stdout.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/R7-CONTENT-FINGERPRINT/recompute-output.json
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/R7-CONTENT-FINGERPRINT/scripts/generate-fingerprint.ps1
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/R7-CONTENT-FINGERPRINT/terminal-input.json
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R3-admin-channel.webp
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R3-admin-record-after-retry.webp
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R3-admin-record-log.webp
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R3-admin-rule.webp
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R3-admin-template-preview.webp
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R3-admin-template.webp
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R4-h5-message-instance.webp
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R4-h5-negative-403.webp
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R4-h5-refresh-instance.webp
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R4-pc-negative-403.webp
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R4-pc-positive-inbox.webp
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R5-U0-instance-403.png
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R5-U0-task-not-found.png
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R5-admin-flow-trace.webp
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R5-copy-readonly-trace.webp
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R5-delegatee-workspace.webp
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R5-s1-workspace.webp
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R5-s2-workspace.webp
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-06/scripts/capture-server.js
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-final-projection-01/readback/lastline-compare.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-final-projection-01/readback/projection-values-readback.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-final-projection-01/readback/repo-git-state.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-final-projection-01/readback/verify-projection-values.js
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-final-projection-01/validator/build-input.js
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-final-projection-01/validator/build-receipt.js
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-final-projection-01/validator/compare-lastline.js
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-final-projection-01/validator/exit.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-final-projection-01/validator/input.json
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-final-projection-01/validator/stderr.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-final-projection-01/validator/stdout.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-terminal-sync-01/readback/lastline-compare.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-terminal-sync-01/readback/r7-recompute-post.json
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-terminal-sync-01/readback/r7-recompute-post.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-terminal-sync-01/readback/repo-git-state.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-terminal-sync-01/readback/terminal-values-readback.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-terminal-sync-01/readback/verify-r7-fingerprint.ps1
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-terminal-sync-01/readback/verify-terminal-values.js
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-terminal-sync-01/validator/build-input.js
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-terminal-sync-01/validator/build-receipt.js
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-terminal-sync-01/validator/compare-lastline.js
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-terminal-sync-01/validator/exit.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-terminal-sync-01/validator/input.json
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-terminal-sync-01/validator/stderr.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/i6-terminal-sync-01/validator/stdout.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/p60-main-merge-readiness/ws-merge-base.txt
+?? product/v0.1.0-oa-completion/receipts/evidence/p60-main-merge-readiness/ws-refs.txt
+?? product/v0.1.0-oa-completion/receipts/final-state-projection-stage-i6-v0.0.3-oa-iteration-01.md
+?? product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i6-notification-version-closure-03.md
+?? product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i6-notification-version-closure-04.md
+?? product/v0.1.0-oa-completion/receipts/planning-final-review-terminal-sync-stage-i6-v0.0.3-oa-iteration-01-passed.md
+?? product/v0.1.0-oa-completion/receipts/planning-review-final-state-projection-stage-i6-v0.0.3-oa-iteration-01-passed.md
+?? product/v0.1.0-oa-completion/receipts/planning-review-stage-i6-notification-version-closure-04.md
+?? product/v0.1.0-oa-completion/receipts/planning-review-stage-i6-notification-version-closure-05.md
+?? product/v0.1.0-oa-completion/receipts/planning-review-stage-i6-notification-version-closure-06-blocked.md
+?? product/v0.1.0-oa-completion/receipts/planning-review-stage-i6-notification-version-closure-07-owner-deferral-passed.md
+?? product/v0.1.0-oa-completion/receipts/planning-review-v0.1.0-oa-completion-01-merge-not-ready.md
+?? product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i6-v0.0.3-oa-iteration-01.md
+?? search_task/v0.1.0-p60-main-merge-readiness.md
+?? todo/admin-machine-gate-continuous-visible-browser.md
+?? todo/i6-external-notification-channels-real-verification.md
+-- submodule/gitlink status --
+ M Smart-WorkFlow-aPaaS-Web
+ M Smart-WorkFlow-aPaaS-server
+-- gitlink recorded vs actual --
+160000 0a746e3d6e0e0aaa0c4ee8633c58c75c295546d6 0	Smart-WorkFlow-aPaaS-Web
+160000 e941d74ffb3e5388e1b3ac3efb234d4634436aea 0	Smart-WorkFlow-aPaaS-server
+0a746e3d6e0e0aaa0c4ee8633c58c75c295546d6
+e941d74ffb3e5388e1b3ac3efb234d4634436aea
