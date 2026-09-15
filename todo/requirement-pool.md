@@ -9,7 +9,7 @@
 
 ## Owner 优先级覆盖
 
-**2026-09-14 P0 版本当前规划**：P60成熟OA目标`0.1.0`、当前迭代`0.0.3`，整体`IN_PROGRESS`。I1—I5 **COMPLETED（规划已确认）**；三 Provider 真实登录链按 Owner 裁决记录为**延期免验/未验证**。I6回执03规划审查仍为`VERIFYING`，L1—L16锁定且本轮无新增锁定；二级执行补充提示02为唯一入口。功能数44、✅46/🟦22/⬜22、ADV64与开放P编号不变。P61提示语言治理固定在P60最终收尾后执行，不并入I6。
+**2026-09-15 P0版本终态**：P60成熟OA `0.1.0`已**COMPLETED（规划已确认）**、整体14/14，I1—I6均已确认；Server/Web发布锁定、Workspace不参与版本判断、迁移终点V93。I5三Provider与I6五外部通知渠道保持Owner延期/未验证，I6 R8由P2待办跟踪。功能数44、✅46/🟦22/⬜22、ADV64与其他开放P编号不变。当前任务切换为P61提示语人性化治理现状探索：`search_task/p61-user-facing-message-humanization-current-seams.md`。
 
 **2026-09-08 P21 终态基线（P60 立项前历史点）**：P21功能级 **PASSED**，阶段三补证 TS1/TS2 经 `planning-final-review-terminal-sync-p21-iot-02-passed.md` 复核通过，正式确认为 **COMPLETED（规划已确认，2026-09-08）**。功能44、清单✅46/🟦22/⬜22、P21核销、I14关闭均锁定；主方向与阶段三方向均在passed。当时无活动正式功能并等待Owner选择，该下一动作现已由上方 P60 当前规划取代。
 
@@ -91,7 +91,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 
 蓝凌官方公开材料还包含自由/嵌入式/即席子流程、流程仿真、完整流程大数据分析，以及页面/图表/报表设计、动作流/数据流/连接流、主数据整合、多级门户、内容引擎、知识搜索和应用市场。它们属于更广的 PaaS 能力，不作为 P60 的“完整 OA”通过条件；现已正式登记为 8 个高级能力模块、64 条稳定明细，见 [高级能力功能明细清单](../product/v0.1.0-oa-completion/ready/advanced-capability-feature-checklist.md)。P60 只吸收与日常 OA 交易闭环直接相关的最小能力，避免版本范围失控；对标详情与来源见正式方向 §3.10—§3.11。
 
-成熟OA路线方向：[v0.1.0 OA全功能收口](../product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md)；当前迭代=`0.0.3`。I1—I5均`COMPLETED（规划已确认）`，I5三Provider真实登录链按Owner延期免验并保留未验证边界；I6回执03审查为`VERIFYING`，当前唯一入口为[二级执行补充提示02](../product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i6-notification-version-closure-02.md)，下一回执为`completion-stage-i6-notification-version-closure-04.md`。
+成熟OA路线方向：[v0.1.0 OA全功能收口（已归档）](../product/v0.1.0-oa-completion/passed/direction-v0.1.0-oa-completion.md)。[P60终态最终复核01](../product/v0.1.0-oa-completion/receipts/planning-final-review-terminal-sync-v0.1.0-oa-completion-01-passed.md)确认`COMPLETED（规划已确认）`；R8五渠道继续由[P2待办](i6-external-notification-channels-real-verification.md)跟踪。当前执行[P61现状探索](../search_task/p61-user-facing-message-humanization-current-seams.md)。
 
 ## 一、已开发且未满足（D83 回执确认：90/90 清单一致，缺口逐行核实，此为全量索引）
 
@@ -147,8 +147,12 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 | P57 | BPM Engine 统一流程节点扩展能力 | Owner 2026-09-02 补充需求；优先级 P1；XL | ✅ **已核销/完成**（2026-09-03，功能级 PASSED + 阶段三 `COMPLETED（已确认）`；不对应既有明细、90 项明细状态零变化、功能数 40、清单 ✅34/🟦23/⬜33）；主方向与阶段三方向均已归档 `passed/` |
 | P58 | 流程节点界面与具体能力优化 | Owner 2026-09-02/03 补充需求；优先级 P1；XL | ✅ **已核销/完成**（2026-09-04，功能级 PASSED + 阶段三 `COMPLETED（已确认）`；不对应既有明细、90 项明细状态零变化、功能数 41、清单 ✅34/🟦23/⬜33、基线 1035/0/0/0（152份Surefire报告）、117f+1sk/1110t+3sk、H2 V49（49）/PG V49（48））；主方向与开发调试认证方向均已归档 `passed/` |
 | P59 | CH-aPaaS 项目说明、仓库与 main 分支整理及自动发版；三个示例仅记录 | Owner 2026-09-04；[统一需求](ch-apaas-project-update.md) | ✅ **已核销/完成**（**COMPLETED，规划已确认，2026-09-05**；功能级PASSED为2026-09-04审查07；非新增业务功能，功能数41、90明细与基线不变）；主方向及终态同步方向均归档 `passed/` |
-| P60 | 成熟OA `0.1.0`路线（组织权限、表单、流程设计与审批、流程运营、工作台、SSO、通知）；当前交付迭代`0.0.3` | Owner 2026-09-08；优先级P0；[正式方向](../product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md) | `IN_PROGRESS`；I1—I5 **COMPLETED（规划已确认）**；I6回执03规划审查`VERIFYING`，L1—L16锁定且无新增，二级提示02为入口；三Provider真实登录链=Owner延期免验/未验证；统筹既有开放OA编号但不替代或提前核销 |
-| P61 | 全系统用户可见错误码与提示语人性化治理 | Owner 2026-09-14；P60最终收尾后执行；优先级P1；L | 待现状探索与正式规划；不并入P60/0.1.0验收，不改变当前计数与入口 |
+| P60 | 成熟OA `0.1.0`路线（组织权限、表单、流程设计与审批、流程运营、工作台、SSO、通知）；当前交付迭代`0.0.3` | Owner 2026-09-08；优先级P0；[归档方向](../product/v0.1.0-oa-completion/passed/direction-v0.1.0-oa-completion.md) | `COMPLETED（规划已确认，2026-09-15）`；整体14/14；Workspace退出0.1.0判断；Server/Web `0.1.0`已发布；版本统筹项完成核销但不增加业务功能计数；R8五渠道及三Provider真实链=Owner延期/未验证 |
+| P61 | 全系统用户可见错误码与提示语人性化治理 | Owner 2026-09-14；优先级P1；L；[探索任务](../search_task/p61-user-facing-message-humanization-current-seams.md) | `EXPLORING`；覆盖Server/Web所有用户可达文案，不以“登录挑战”等关键词抽样为边界；不并入P60/0.1.0计数 |
+
+管理员P0治理插单（2026-09-15）：[连续执行与可见浏览器验收门禁](admin-machine-gate-continuous-visible-browser.md)已`COMPLETED（规划确认）`，本地提交`8e87899`，治理测试sh 70/70、PowerShell 49/49。该任务不并入P60业务计数；远程发布仍需Owner另行授权。
+
+I6延期项（优先级P2）：[五类外部通知渠道真实验证](i6-external-notification-channels-real-verification.md)。SMS、EMAIL、FEISHU、DINGTALK、WECHAT_WORK保持Owner延期/未验证，不阻塞I6本轮通过，不核销P37/P38/P39。
 
 ### P61 Owner 补充需求定义（2026-09-14；P60 最终收尾后执行）
 

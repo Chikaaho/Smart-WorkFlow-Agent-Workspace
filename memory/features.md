@@ -1,13 +1,14 @@
 # 功能摘要
 
-> 规划侧最新同步点：2026-09-14（P60=`IN_PROGRESS`；I1—I5 `COMPLETED（规划已确认）`；I5三Provider真实链=Owner延期免验/未验证；I6回执03规划审查=`VERIFYING`；正式功能数44）。
+> 规划侧最新同步点：2026-09-15（P60=`COMPLETED（规划已确认）`、整体14/14；Server/Web `0.1.0`已发布；当前P61=`EXPLORING`；正式功能数44、ADV64）。
 > 清单当前值 **✅46/🟦22/⬜22**（90，M08 十行 🟦/⬜→✅，其余 80 行零变化）；功能数 44；全量双向映射见 `knowledge/feature-reconciliation-index.md`。
 
-- `v0.1.0-oa-completion`（P60，优先级P0）：整体 **IN_PROGRESS**。I5已确认；I6回执03审查为`VERIFYING`，L1—L16锁定且无新增锁定，二级补充提示02为唯一入口；下一回执为`completion-stage-i6-notification-version-closure-04.md`。
+- `v0.1.0-oa-completion`（P60，优先级P0）：**COMPLETED（规划已确认）**，整体14/14；版本身份=Server `c15428f…` / Web `963df36…`，迁移终点V93。
+- P61（P1/L）：**EXPLORING**。全系统用户可见错误码与提示语人性化治理，覆盖Server/Web所有可达文案及中英文质量，保持机器码兼容与认证防枚举。
 
 - `p21-iot-device-access`：**COMPLETED（规划已确认，2026-09-08）**，第44个正式功能；P21已核销、I14关闭、M08 10✅/1🟦/2⬜。主方向与阶段三方向均归档 `passed/`；最终裁决 `planning-final-review-terminal-sync-p21-iot-02-passed.md`。
 
-- `v0.0.2-oa`：**COMPLETED（规划已确认，2026-09-07）**，第43个正式功能；A1—A8全部锁定。P3/P54/P55已核销，P2/P4开放部分实现。历史基线已被 P21/I5 基线取代。三方向归档`product/v0.0.2-oa/passed/`；登记`knowledge/features/v0.0.2-oa.md`。
+- `v0.0.2-oa`：**COMPLETED（规划已确认，2026-09-07）**，第43个正式功能；A1—A8全部锁定。P3/P54/P55已核销，P2/P4开放部分实现。历史基线已被 P21/I6 基线取代。三方向归档`product/v0.0.2-oa/passed/`；登记`knowledge/features/v0.0.2-oa.md`。
 
 - `p4-oa-personal-center-dual-dispatch`：**功能状态 COMPLETED（2026-09-07）**（验收事件：功能级 PASSED，规划复验09），第 42 个正式功能；P4 总项开放、部分实现未核销（流程中心分类/双视角、抄送我的查询/催办已由 v0.0.2-oa 交付；转办/委托/加签/撤回、流程版本/挂起激活等候选仍开放）。登记 `knowledge/features/p4-oa-personal-center-dual-dispatch.md`。
 
