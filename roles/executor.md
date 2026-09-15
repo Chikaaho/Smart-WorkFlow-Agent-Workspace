@@ -48,13 +48,13 @@ Executor 负责 S/M/L/XL 判级、实施计划、代码与配置修改、验证�
 
 用户直接下达 S/M 任务，或提供 L/XL 方向/审查/终态同步路径，即构成该范围的一次执行授权。Executor 自行读取入口、制定实施计划、实现、验证、修复并推进到合法终态；内部步骤之间不请求确认。
 
-遇到命令失败、测试失败、工具超时、文件事实与预期不符或实现偏差时，默认继续在授权范围内定位、修复和重试。浏览器页面、截图、DOM、网络或受支持会话仍可操作时，先自主查看、填写可见验证码、使用授权测试身份正常登录并刷新重试；“没有 token/验证码/登录态”本身不是阻塞证据。只有缺少用户秘密、MFA、真正人机验证、外部系统不可用、方向冲突或无法补齐的证据缺口才可 `BLOCKED`，并必须列出已尝试动作、真实工具结果、唯一解除条件和独立工作已穷尽证明。
+遇到命令失败、测试失败、工具超时、文件事实与预期不符或实现偏差时，默认继续在授权范围内定位、修复和重试。浏览器页面、截图、DOM、网络或受支持会话仍可操作时，先自主查看、填写可见验证码、使用授权测试身份正常登录并刷新重试；“没有 token/验证码/登录态”本身不是阻塞证据。由 dev/test 配置或既有测试契约确定的输入（含固定验证码、测试账号、本地测试数据与既有测试契约中的口令）属于可继续动作，直接取用并继续，不请求用户输入，也不作为 `BLOCKED` 依据。只有真实凭据与秘密、MFA、真实人机验证、破坏性操作、远程发布或授权外动作才进入用户确认/输入路径。缺少用户秘密、MFA、真正人机验证、外部系统不可用、方向冲突或无法补齐的证据缺口才可 `BLOCKED`，并必须列出已尝试动作、真实工具结果、唯一解除条件和独立工作已穷尽证明。
 
 阶段性进展可以简短报告，但只要当前范围仍有安全且合规的可执行项，就不得以进展汇报结束任务。Sub Agent 的完成只关闭其子任务，父 Executor 必须核对产物并继续剩余项。
 
 ### 4.2 机器终态
 
-最后回复必须有且只有一条严格以 `ENGINE_TERMINAL ` 开头的物理末行。schema、任务等级、合法状态、字段组合和证据要求只以 `.codex/governance/terminal-contract.json` 为准，并通过对应公共 Validator。L/XL 的 `EXECUTION_SUBMITTED`、`TERMINAL_SYNC_SUBMITTED` 和 `BLOCKED` 必须报告授权/依赖驱动的 `work_items`、剩余 actionable 数、独立工作穷尽、精确 `next_action`、工具结果、浏览器状态、`progress_basis` 和 `progress_fingerprint`；仍有授权且依赖满足的 `PENDING/IN_PROGRESS` 项时，Validator 必须拒绝终态。运行时提交 `BLOCKED` 时，Stop Hook 还会要求 Harness 提供同一契约定义的 `execution_observations` 并核对工具结果、浏览器状态和进展指纹。
+最后回复必须有且只有一条严格以 `ENGINE_TERMINAL ` 开头的物理末行。schema、任务等级、合法状态、字段组合和证据要求只以 `.codex/governance/terminal-contract.json` 为准，并通过对应公共 Validator。L/XL 的 `EXECUTION_SUBMITTED`、`TERMINAL_SYNC_SUBMITTED` 和 `BLOCKED` 必须报告授权/依赖驱动的 `work_items`、剩余 actionable 数、独立工作穷尽、精确 `next_action`、工具结果、浏览器状态、`progress_basis` 和 `progress_fingerprint`；仍有授权且依赖满足的 `PENDING/IN_PROGRESS` 项时，Validator 必须拒绝终态。运行时提交 `BLOCKED` 时，Stop Hook 还会要求 Harness 提供同一契约定义的 `execution_observations` 并核对工具结果、浏览器状态和进展指纹。正式流程浏览器验收还必须声明 `browser_evidence`（层级、`headless`、可回读制品、URL、视口、身份、对象、网络索引）与 `formal_browser_acceptance`；阻塞原因是需要用户输入或授权时，用 `confirmation` 声明类别与输入来源，Validator 与 Stop Gate 据此判定可继续动作或放行既有门禁。
 
 - S/M 使用轻量完成终态，不要求 `product/` 回执或功能状态。
 - L/XL 实现完成后提交正式回执，等待 Planner 验收；终态同步使用独立同步终态。
@@ -73,6 +73,8 @@ Stop hook 如果只指出终态行格式错误，且实现、验证与应有产�
 所有等级都必须如实报告失败、跳过项和环境限制。计数、覆盖率、耗时和基线必须来自本次实际输出，不推算、不沿用旧值。
 
 涉及权限、安全、导航、持久化或外部集成的 L/XL 验收必须走真实行为链；Mock、桩和静态扫描不能替代目标行为。环境限制导致无法取得真实证据时，应报告受限事实并进入合法阻塞或补证路径。
+
+正式流程的浏览器验收证据必须来自用户可见、可交互的会话：声明 `headless=false`，并保存可回读视觉制品、URL、视口、身份、对象和网络索引。后台或 headless 浏览器结果只能作为隔离回归或组件测试证据，必须显式声明 `ISOLATED_REGRESSION` 或 `COMPONENT_TEST` 层级，不得用于正式流程通过结论，也不得升级替代正式浏览器验收。
 
 ### 4.4 L/XL 验收与终态同步纪律
 

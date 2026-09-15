@@ -84,6 +84,10 @@ Executor 终态的唯一机器契约是 `.codex/governance/terminal-contract.jso
 
 Stop Hook 的唯一实现入口是 `.codex/governance/stop-gate.sh`，`.claude/` 与 `.codex/` 仅负责根定位。原生 Codex 宿主由 `.codex/hooks/codex-stop-adapter.sh` 在缺少 `active_role` 时，仅依据宿主显式提供的 `AGENT_CODING_ENGINE_ACTIVE_ROLE` 绑定会话角色，并向宿主投影其支持的 `decision`/`reason` 字段；未显式绑定角色时不启用 Executor 门禁。门禁拒绝提前停止后，必须通过 `.codex/governance/supervisor-reinject.sh` 返回精确 `next_action` 的自动回注请求；禁止把用户点击“继续”作为恢复链路。对 `BLOCKED`，Hook 还必须接收并比对同一契约声明的 Harness `execution_observations`，包括实际工具结果、浏览器状态和进展指纹；缺失或不一致均不得放行。重复进展指纹先要求原子动作，再要求切换路径，最后请求 supervisor 重规划；不得因重复失败自称 `BLOCKED` 放行。门禁判断不得按模型名称分支，只使用任务状态、授权、依赖、工具结果和进展证据。
 
+已授权工作项内、输入值由 dev/test 配置或既有测试契约确定、不是秘密，且动作不触发破坏性、远程发布或授权外状态变化时，该动作是**可继续动作**：Stop Gate 与 Supervisor 必须判定为可继续，并通过自动回注要求 Executor 直接完成，不得产生新的用户确认节点，也不得包装成 `BLOCKED`。只有真实凭据与秘密、MFA、真实人机验证、破坏性操作、远程发布或授权外动作允许进入用户确认/输入路径；此类阻塞必须用 `confirmation` 声明输入来源与类别，并绑定真实工具结果。
+
+正式流程浏览器验收的证据必须来自用户可见、可交互的会话：终态声明 `headless=false`，保存可回读视觉制品、URL、视口、身份、对象和网络索引，并在 `browser_evidence` 与 `formal_browser_acceptance` 上保持同层一致。后台或 headless 浏览器结果不能作为正式流程通过依据；它们只允许以 `ISOLATED_REGRESSION` 或 `COMPONENT_TEST` 层级用于不承担正式通过结论的隔离回归或组件测试，且必须声明该层级，不得升级为正式浏览器证据。
+
 获授权执行 Git 提交的角色，提交信息遵循 Angular/Conventional Commits 格式，主题默认使用中文，不含 Harness 自动署名或模型归属。远程发布、历史改写、强制推送或破坏性操作前，必须说明远程、分支、精确范围与风险，并取得用户对该动作的明确授权。
 
 ### 0.9 角色定义文件
