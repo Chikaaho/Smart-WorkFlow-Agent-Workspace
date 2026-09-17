@@ -1,0 +1,155 @@
+{
+ "steps": [
+  {
+   "step": "login-admin"
+  },
+  {
+   "step": "create-category",
+   "name": "行政办公-p53ev",
+   "httpStatus": 200,
+   "code": 0,
+   "id": "2100393533039640577"
+  },
+  {
+   "step": "create-category",
+   "name": "人事财务-p53ev",
+   "httpStatus": 200,
+   "code": 0,
+   "id": "2100393533194829826"
+  },
+  {
+   "step": "assign-category-existing-def",
+   "httpStatus": 200,
+   "code": 0
+  },
+  {
+   "step": "create-def",
+   "httpStatus": 200,
+   "code": 0,
+   "data": {
+    "defId": "2100393533614260225",
+    "graph": {
+     "processKey": "bpm_ef5a3a2d9a8842de",
+     "name": "P53 取证事项-p53ev",
+     "formKey": "p61r10_batch_form",
+     "version": 1,
+     "elements": [
+      {
+       "id": "node_start",
+       "kind": "node",
+       "type": "START",
+       "source": null,
+       "target": null,
+       "config": {},
+       "style": {
+        "x": 100,
+        "y": 300
+       },
+       "x": null,
+       "y": null,
+       "waypoints": null
+      },
+      {
+       "id": "node_end",
+       "kind": "node",
+       "type": "END",
+       "source": null,
+       "target": null,
+       "config": {},
+       "style": {
+        "x": 700,
+        "y": 300
+       },
+       "x": null,
+       "y": null,
+       "waypoints": null
+      },
+      {
+       "id": "edge_1",
+       "kind": "edge",
+       "type": null,
+       "source": "node_start",
+       "target": "node_end",
+       "config": {},
+       "style": {},
+       "x": null,
+       "y": null,
+       "waypoints": null
+      }
+     ],
+     "contractVersion": null,
+     "canvas": {}
+    }
+   }
+  },
+  {
+   "step": "save-def-graph",
+   "httpStatus": 200,
+   "code": 0
+  },
+  {
+   "step": "publish-def",
+   "defId": "2100393533614260225",
+   "httpStatus": 200,
+   "code": 0,
+   "msg": "success"
+  },
+  {
+   "step": "assign-category-new-def",
+   "itemKey": "bpm_ef5a3a2d9a8842de",
+   "httpStatus": 200,
+   "code": 0
+  },
+  {
+   "step": "form-fields",
+   "formKey": "p61r10_batch_form",
+   "fieldCount": 0,
+   "submitKeys": []
+  },
+  {
+   "step": "submit-form",
+   "httpStatus": 200,
+   "code": 0,
+   "businessKey": "3dd83e1a-9065-4157-87bd-a31caf5ff2ba"
+  },
+  {
+   "step": "approve-task",
+   "note": "no todo task appeared for businessKey (binding may not start process)"
+  },
+  {
+   "step": "create-user",
+   "uname": "p53ev_u1",
+   "roleIds": [
+    1
+   ],
+   "httpStatus": 400,
+   "code": 400
+  },
+  {
+   "step": "create-user",
+   "uname": "p53ev_u0",
+   "roleIds": [],
+   "httpStatus": 200,
+   "code": 0,
+   "login": "ok",
+   "menuTopKeys": 0
+  },
+  {
+   "step": "portal-catalog",
+   "categories": [
+    {
+     "id": "2100393533039640577",
+     "name": "行政办公-p53ev"
+    },
+    {
+     "id": "2100393533194829826",
+     "name": "人事财务-p53ev"
+    }
+   ],
+   "itemCount": "1",
+   "itemNames": [
+    "P53 取证事项-p53ev"
+   ]
+  }
+ ]
+}

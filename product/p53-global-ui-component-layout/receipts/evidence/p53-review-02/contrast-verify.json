@@ -1,0 +1,78 @@
+{
+ "method": "WCAG 2.1 relative luminance; fg/bg 取自修复后运行时 getComputedStyle 实测值（见 *-facts.json）与 tokens.css 令牌定义",
+ "threshold": "normal text ≥ 4.5:1（方向 §4.6）",
+ "pairs": [
+  {
+   "page": "m/workflow (MobileWorkspace.vue)",
+   "fg": "#697386 (--sw-text-secondary)",
+   "bg": "#ffffff (--sw-surface-card, m-item/m-empty 卡片)",
+   "role": "meta/空态正文 12-13px",
+   "r": 4.775776046320532,
+   "ratio": 4.78,
+   "pass": true
+  },
+  {
+   "page": "m/notify (NotifyInboxMobile.vue)",
+   "fg": "#697386 (--sw-text-secondary)",
+   "bg": "#ffffff (消息卡片，本轮新增卡片底)",
+   "role": "content/time 12-13px",
+   "r": 4.775776046320532,
+   "ratio": 4.78,
+   "pass": true
+  },
+  {
+   "page": "m/notify",
+   "fg": "#172033 (--sw-text-primary)",
+   "bg": "#ffffff (消息卡片)",
+   "role": "标题 14px/600",
+   "r": 16.268480224545662,
+   "ratio": 16.27,
+   "pass": true
+  },
+  {
+   "page": "m/notify",
+   "fg": "#000000 (UA 默认，页头 h2)",
+   "bg": "#f7f8fc (页面底)",
+   "role": "页头标题 18px",
+   "r": 19.78744702900924,
+   "ratio": 19.79,
+   "pass": true
+  },
+  {
+   "page": "m/workflow",
+   "fg": "#303133 (既有标题色)",
+   "bg": "#ffffff",
+   "role": "列表标题 14px",
+   "r": 13.020800699671739,
+   "ratio": 13.02,
+   "pass": true
+  },
+  {
+   "page": "m/form (FormRender 页型 A)",
+   "fg": "#303133",
+   "bg": "#ffffff",
+   "role": "表单标签/正文",
+   "r": 13.020800699671739,
+   "ratio": 13.02,
+   "pass": true
+  },
+  {
+   "page": "login (LoginPage.vue)",
+   "fg": "#303133",
+   "bg": "#ffffff (登录卡片)",
+   "role": "表单标签/输入",
+   "r": 13.020800699671739,
+   "ratio": 13.02,
+   "pass": true
+  },
+  {
+   "page": "m/workflow 意见表单标签",
+   "fg": "#606266",
+   "bg": "#ffffff",
+   "role": "label 13px",
+   "r": 6.111234714930595,
+   "ratio": 6.11,
+   "pass": true
+  }
+ ]
+}

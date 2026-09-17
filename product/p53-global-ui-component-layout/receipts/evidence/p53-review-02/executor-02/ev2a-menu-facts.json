@@ -1,0 +1,45 @@
+{
+  "atom": "P53-EV-02a",
+  "capture": {
+    "source": "Codex In-app Browser",
+    "headless": false,
+    "viewport": "1440x1024",
+    "review": "截图在内置浏览器工具输出中可见并已人工核对；本地证据目录没有 PNG 文件。"
+  },
+  "identity": {
+    "user": "admin",
+    "displayName": "系统管理员",
+    "area": "T0"
+  },
+  "cases": [
+    {
+      "area": "admin",
+      "url": "http://localhost:5173/form/form-def-list",
+      "visibleMenuItems": [
+        "账号绑定",
+        "返回前台",
+        "退出登录"
+      ],
+      "forbiddenItemsAbsent": [
+        "进入后台",
+        "修改密码",
+        "忘记密码"
+      ]
+    },
+    {
+      "area": "portal",
+      "url": "http://localhost:5173/workspace",
+      "visibleMenuItems": [
+        "账号绑定",
+        "进入后台",
+        "退出登录"
+      ],
+      "forbiddenItemsAbsent": [
+        "返回前台",
+        "修改密码",
+        "忘记密码"
+      ]
+    }
+  ],
+  "artifactBoundary": "截图未落盘，故没有 PNG 哈希；本文件只记录浏览器实际 DOM/可见状态，不替代 PNG。"
+}

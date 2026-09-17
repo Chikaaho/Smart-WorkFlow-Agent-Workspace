@@ -1,0 +1,89 @@
+{
+  "atom": "P53-EV-03a",
+  "capture": {
+    "source": "Codex In-app Browser",
+    "headless": false,
+    "viewport": "1440x1024",
+    "measurement": "DOM bounding boxes/computed styles and visible screenshot review"
+  },
+  "identity": {
+    "user": "admin",
+    "displayName": "系统管理员",
+    "area": "T0"
+  },
+  "sharedHeader": {
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 64,
+    "logoTile": {
+      "x": 24,
+      "y": 11,
+      "width": 40,
+      "height": 42
+    },
+    "brandRegion": {
+      "x": 16,
+      "width": 224
+    },
+    "navRegion": {
+      "x": 240,
+      "width": 864
+    },
+    "actionRegion": {
+      "x": 1104,
+      "width": 336
+    },
+    "userControl": {
+      "x": 1286,
+      "width": 130,
+      "height": 30
+    }
+  },
+  "pages": [
+    {
+      "area": "portal",
+      "url": "http://localhost:5173/workspace",
+      "headerBackground": "rgb(64, 54, 154)",
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "horizontalScroll": false
+    },
+    {
+      "area": "portal",
+      "url": "http://localhost:5173/workflow/catalog",
+      "headerBackground": "rgb(64, 54, 154)",
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "horizontalScroll": false
+    },
+    {
+      "area": "portal",
+      "url": "http://localhost:5173/workflow/task/af63f9ac-b248-11f1-9b6a-00ffa7734675",
+      "headerBackground": "rgb(64, 54, 154)",
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "horizontalScroll": false
+    },
+    {
+      "area": "admin",
+      "url": "http://localhost:5173/form/form-def-list",
+      "headerBackground": "rgb(17, 27, 59)",
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "horizontalScroll": false
+    }
+  ],
+  "visualRegression": {
+    "updateExit": 0,
+    "verifyExit": 0,
+    "passed": 27,
+    "skipped": 5,
+    "command": "pnpm test:visual [--update] --workers=1 --grep P53-visual-shell-targets"
+  },
+  "imageLimits": {
+    "pngFilesPersisted": false,
+    "alphaSamplingPerformed": false,
+    "note": "浏览器截图可见且 DOM 测量无 8px gutter；未落盘 PNG，因此未核验像素 alpha。"
+  }
+}

@@ -1,0 +1,86 @@
+cmd: pnpm test:visual baselines.spec.ts -g 管理端壳 --update-snapshots（初建基线按稳定态归位）+ families 验证
+start: 2026-09-17T08:48:16+08:00
+$ playwright test "baselines.spec.ts" "-g" "管理端壳" "--update-snapshots"
+[WebServer] $ vite --mode mock "--port" "5174" "--strictPort"
+
+Running 4 tests using 4 workers
+
+  -  4 [chrome-375] › e2e\visual\baselines.spec.ts:43:3 › P53 视觉基线 › 管理端壳三区基线（进入后台，节点 04）
+E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-Web\e2e\visual\baselines.spec.ts-snapshots\admin-topbar-chrome-1440-win32.png is re-generated, writing actual.
+E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-Web\e2e\visual\baselines.spec.ts-snapshots\admin-topbar-chrome-1920-win32.png is re-generated, writing actual.
+E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-Web\e2e\visual\baselines.spec.ts-snapshots\admin-sidebar-chrome-1440-win32.png is re-generated, writing actual.
+E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-Web\e2e\visual\baselines.spec.ts-snapshots\admin-sidebar-chrome-1920-win32.png is re-generated, writing actual.
+  ok 3 [chrome-1280] › e2e\visual\baselines.spec.ts:43:3 › P53 视觉基线 › 管理端壳三区基线（进入后台，节点 04） (4.4s)
+E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-Web\e2e\visual\baselines.spec.ts-snapshots\admin-main-chrome-1440-win32.png is re-generated, writing actual.
+  ok 1 [chrome-1440] › e2e\visual\baselines.spec.ts:43:3 › P53 视觉基线 › 管理端壳三区基线（进入后台，节点 04） (5.0s)
+E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-Web\e2e\visual\baselines.spec.ts-snapshots\admin-main-chrome-1920-win32.png is re-generated, writing actual.
+  ok 2 [chrome-1920] › e2e\visual\baselines.spec.ts:43:3 › P53 视觉基线 › 管理端壳三区基线（进入后台，节点 04） (5.1s)
+
+  1 skipped
+  3 passed (12.4s)
+$ playwright test "families.spec.ts" "baselines.spec.ts"
+[WebServer] $ vite --mode mock "--port" "5174" "--strictPort"
+
+Running 56 tests using 6 workers
+
+  ok  2 [chrome-1440] › e2e\visual\baselines.spec.ts:14:3 › P53 视觉基线 › 节点 06 登录页整页基线 (4.0s)
+  ok  4 [chrome-1440] › e2e\visual\baselines.spec.ts:29:3 › P53 视觉基线 › 已登录壳三区基线（工作台） (4.0s)
+  ok  3 [chrome-1440] › e2e\visual\families.spec.ts:50:3 › P53 页面族矩阵（EV-03） › 01 工作台：默认态区域基线与关键交互阻断 (4.5s)
+  ok  6 [chrome-1440] › e2e\visual\families.spec.ts:65:3 › P53 页面族矩阵（EV-03） › 05 企业门户：默认态 hero 与服务卡 (5.0s)
+  ok  1 [chrome-1440] › e2e\visual\baselines.spec.ts:43:3 › P53 视觉基线 › 管理端壳三区基线（进入后台，节点 04） (6.8s)
+  ok  5 [chrome-1440] › e2e\visual\families.spec.ts:78:3 › P53 页面族矩阵（EV-03） › 04 管理端壳：深色顶栏结构、主导航可达与存档 (6.6s)
+  ok  7 [chrome-1440] › e2e\visual\families.spec.ts:90:3 › P53 页面族矩阵（EV-03） › 21-26 流程中心：分类默认态、搜索空态与存档 (5.4s)
+  -  10 [chrome-1440] › e2e\visual\families.spec.ts:150:3 › P53 页面族矩阵（EV-03） › 15/16/17/18 意见详情弹窗：打开、Escape 关闭
+  ok  8 [chrome-1440] › e2e\visual\families.spec.ts:109:3 › P53 页面族矩阵（EV-03） › 02 数据列表：默认态、筛选空态与详情弹窗 (6.6s)
+  ok  9 [chrome-1440] › e2e\visual\families.spec.ts:133:3 › P53 页面族矩阵（EV-03） › 03/10/19/20 任务详情：流转记录、流程图与审批列表三 tab (7.1s)
+  ok 13 [chrome-1440] › e2e\visual\families.spec.ts:201:3 › P53 页面族矩阵（EV-03） › 09/12 流程设计器：默认画布与审批人候选弹窗 (4.3s)
+  ok 12 [chrome-1440] › e2e\visual\families.spec.ts:186:3 › P53 页面族矩阵（EV-03） › 07/11 表单设计器：默认画布与字段清单弹窗 (7.4s)
+  ok 14 [chrome-1440] › e2e\visual\families.spec.ts:223:3 › P53 页面族矩阵（EV-03） › 28/29/30/32 个人菜单浮层：portal 与 admin 两形态 (4.9s)
+  ok 11 [chrome-1440] › e2e\visual\families.spec.ts:170:3 › P53 页面族矩阵（EV-03） › 27 发起流程：默认双栏、未知 formKey 错误态 (8.1s)
+  ok 15 [chrome-1920] › e2e\visual\baselines.spec.ts:14:3 › P53 视觉基线 › 节点 06 登录页整页基线 (1.9s)
+  ok 16 [chrome-1920] › e2e\visual\baselines.spec.ts:29:3 › P53 视觉基线 › 已登录壳三区基线（工作台） (2.0s)
+  ok 17 [chrome-1920] › e2e\visual\baselines.spec.ts:43:3 › P53 视觉基线 › 管理端壳三区基线（进入后台，节点 04） (4.1s)
+  ok 18 [chrome-1920] › e2e\visual\families.spec.ts:50:3 › P53 页面族矩阵（EV-03） › 01 工作台：默认态区域基线与关键交互阻断 (3.6s)
+  ok 19 [chrome-1920] › e2e\visual\families.spec.ts:90:3 › P53 页面族矩阵（EV-03） › 21-26 流程中心：分类默认态、搜索空态与存档 (5.6s)
+  ok 20 [chrome-1920] › e2e\visual\families.spec.ts:109:3 › P53 页面族矩阵（EV-03） › 02 数据列表：默认态、筛选空态与详情弹窗 (5.2s)
+  ok 21 [chrome-1920] › e2e\visual\families.spec.ts:65:3 › P53 页面族矩阵（EV-03） › 05 企业门户：默认态 hero 与服务卡 (4.9s)
+  -  23 [chrome-1920] › e2e\visual\families.spec.ts:150:3 › P53 页面族矩阵（EV-03） › 15/16/17/18 意见详情弹窗：打开、Escape 关闭
+  ok 22 [chrome-1920] › e2e\visual\families.spec.ts:78:3 › P53 页面族矩阵（EV-03） › 04 管理端壳：深色顶栏结构、主导航可达与存档 (6.0s)
+  ok 24 [chrome-1920] › e2e\visual\families.spec.ts:133:3 › P53 页面族矩阵（EV-03） › 03/10/19/20 任务详情：流转记录、流程图与审批列表三 tab (5.5s)
+  ok 27 [chrome-1920] › e2e\visual\families.spec.ts:201:3 › P53 页面族矩阵（EV-03） › 09/12 流程设计器：默认画布与审批人候选弹窗 (3.4s)
+  ok 26 [chrome-1920] › e2e\visual\families.spec.ts:186:3 › P53 页面族矩阵（EV-03） › 07/11 表单设计器：默认画布与字段清单弹窗 (4.8s)
+  ok 25 [chrome-1920] › e2e\visual\families.spec.ts:170:3 › P53 页面族矩阵（EV-03） › 27 发起流程：默认双栏、未知 formKey 错误态 (5.7s)
+  ok 28 [chrome-1920] › e2e\visual\families.spec.ts:223:3 › P53 页面族矩阵（EV-03） › 28/29/30/32 个人菜单浮层：portal 与 admin 两形态 (5.0s)
+  ok 30 [chrome-1280] › e2e\visual\baselines.spec.ts:14:3 › P53 视觉基线 › 节点 06 登录页整页基线 (2.1s)
+  ok 29 [chrome-1280] › e2e\visual\baselines.spec.ts:29:3 › P53 视觉基线 › 已登录壳三区基线（工作台） (2.5s)
+  ok 32 [chrome-1280] › e2e\visual\families.spec.ts:50:3 › P53 页面族矩阵（EV-03） › 01 工作台：默认态区域基线与关键交互阻断 (3.0s)
+  ok 31 [chrome-1280] › e2e\visual\baselines.spec.ts:43:3 › P53 视觉基线 › 管理端壳三区基线（进入后台，节点 04） (3.7s)
+  ok 34 [chrome-1280] › e2e\visual\families.spec.ts:90:3 › P53 页面族矩阵（EV-03） › 21-26 流程中心：分类默认态、搜索空态与存档 (4.0s)
+  ok 33 [chrome-1280] › e2e\visual\families.spec.ts:65:3 › P53 页面族矩阵（EV-03） › 05 企业门户：默认态 hero 与服务卡 (4.8s)
+  -  38 [chrome-1280] › e2e\visual\families.spec.ts:150:3 › P53 页面族矩阵（EV-03） › 15/16/17/18 意见详情弹窗：打开、Escape 关闭
+  ok 35 [chrome-1280] › e2e\visual\families.spec.ts:109:3 › P53 页面族矩阵（EV-03） › 02 数据列表：默认态、筛选空态与详情弹窗 (6.1s)
+  ok 37 [chrome-1280] › e2e\visual\families.spec.ts:133:3 › P53 页面族矩阵（EV-03） › 03/10/19/20 任务详情：流转记录、流程图与审批列表三 tab (4.3s)
+  ok 36 [chrome-1280] › e2e\visual\families.spec.ts:78:3 › P53 页面族矩阵（EV-03） › 04 管理端壳：深色顶栏结构、主导航可达与存档 (5.6s)
+  ok 41 [chrome-1280] › e2e\visual\families.spec.ts:201:3 › P53 页面族矩阵（EV-03） › 09/12 流程设计器：默认画布与审批人候选弹窗 (3.4s)
+  ok 39 [chrome-1280] › e2e\visual\families.spec.ts:170:3 › P53 页面族矩阵（EV-03） › 27 发起流程：默认双栏、未知 formKey 错误态 (6.1s)
+  ok 40 [chrome-1280] › e2e\visual\families.spec.ts:186:3 › P53 页面族矩阵（EV-03） › 07/11 表单设计器：默认画布与字段清单弹窗 (4.9s)
+  ok 42 [chrome-1280] › e2e\visual\families.spec.ts:223:3 › P53 页面族矩阵（EV-03） › 28/29/30/32 个人菜单浮层：portal 与 admin 两形态 (5.1s)
+  ok 43 [chrome-375] › e2e\visual\baselines.spec.ts:14:3 › P53 视觉基线 › 节点 06 登录页整页基线 (1.7s)
+  -  44 [chrome-375] › e2e\visual\baselines.spec.ts:29:3 › P53 视觉基线 › 已登录壳三区基线（工作台）
+  -  45 [chrome-375] › e2e\visual\baselines.spec.ts:43:3 › P53 视觉基线 › 管理端壳三区基线（进入后台，节点 04）
+  -  47 [chrome-375] › e2e\visual\families.spec.ts:90:3 › P53 页面族矩阵（EV-03） › 21-26 流程中心：分类默认态、搜索空态与存档
+  -  49 [chrome-375] › e2e\visual\families.spec.ts:109:3 › P53 页面族矩阵（EV-03） › 02 数据列表：默认态、筛选空态与详情弹窗
+  -  46 [chrome-375] › e2e\visual\families.spec.ts:50:3 › P53 页面族矩阵（EV-03） › 01 工作台：默认态区域基线与关键交互阻断
+  -  48 [chrome-375] › e2e\visual\families.spec.ts:65:3 › P53 页面族矩阵（EV-03） › 05 企业门户：默认态 hero 与服务卡
+  -  50 [chrome-375] › e2e\visual\families.spec.ts:133:3 › P53 页面族矩阵（EV-03） › 03/10/19/20 任务详情：流转记录、流程图与审批列表三 tab
+  -  52 [chrome-375] › e2e\visual\families.spec.ts:150:3 › P53 页面族矩阵（EV-03） › 15/16/17/18 意见详情弹窗：打开、Escape 关闭
+  -  51 [chrome-375] › e2e\visual\families.spec.ts:78:3 › P53 页面族矩阵（EV-03） › 04 管理端壳：深色顶栏结构、主导航可达与存档
+  -  54 [chrome-375] › e2e\visual\families.spec.ts:186:3 › P53 页面族矩阵（EV-03） › 07/11 表单设计器：默认画布与字段清单弹窗
+  -  53 [chrome-375] › e2e\visual\families.spec.ts:170:3 › P53 页面族矩阵（EV-03） › 27 发起流程：默认双栏、未知 formKey 错误态
+  -  55 [chrome-375] › e2e\visual\families.spec.ts:201:3 › P53 页面族矩阵（EV-03） › 09/12 流程设计器：默认画布与审批人候选弹窗
+  -  56 [chrome-375] › e2e\visual\families.spec.ts:223:3 › P53 页面族矩阵（EV-03） › 28/29/30/32 个人菜单浮层：portal 与 admin 两形态
+
+  16 skipped
+  40 passed (1.0m)
+exit: 0
+end: 2026-09-17T08:49:33+08:00

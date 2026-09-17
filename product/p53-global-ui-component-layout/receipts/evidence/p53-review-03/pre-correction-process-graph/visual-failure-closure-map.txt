@@ -1,0 +1,32 @@
+旧全量视觉结果：61 passed / 17 skipped / 10 failed / exit 1；见 10 个失败条目。
+本轮无 grep 单 worker 复核：71 passed / 17 skipped / 0 failed / exit 0。
+1. 管理端壳三区基线（进入后台）
+   旧：product/p53-global-ui-component-layout/receipts/evidence/p53-review-02/executor-02/visual-update.log:865 1) [chrome-1440] › e2e\visual\baselines.spec.ts:43:3 › P53 视觉基线 › 管理端壳三区基线（进入后台，节点 04） ───────────
+   新：product/p53-global-ui-component-layout/receipts/evidence/p53-review-03/visual-verify.log:24 ok  3 [chrome-1440] › e2e\visual\baselines.spec.ts:43:3 › P53 视觉基线 › 管理端壳三区基线（进入后台，节点 04） (2.0s)
+2. 管理端壳：深色顶栏结构、主导航可达与存档
+   旧：product/p53-global-ui-component-layout/receipts/evidence/p53-review-02/executor-02/visual-update.log:900 2) [chrome-1440] › e2e\visual\families.spec.ts:78:3 › P53 页面族矩阵（EV-03） › 04 管理端壳：深色顶栏结构、主导航可达与存档 ─
+   新：product/p53-global-ui-component-layout/receipts/evidence/p53-review-03/visual-verify.log:39 ok  6 [chrome-1440] › e2e\visual\families.spec.ts:78:3 › P53 页面族矩阵（EV-03） › 04 管理端壳：深色顶栏结构、主导航可达与存档 (1.7s)
+3. 流程中心：分类默认态、搜索空态与存档
+   旧：product/p53-global-ui-component-layout/receipts/evidence/p53-review-02/executor-02/visual-update.log:936 3) [chrome-1440] › e2e\visual\families.spec.ts:90:3 › P53 页面族矩阵（EV-03） › 21-26 流程中心：分类默认态、搜索空态与存档
+   新：product/p53-global-ui-component-layout/receipts/evidence/p53-review-03/visual-verify.log:45 ok  7 [chrome-1440] › e2e\visual\families.spec.ts:90:3 › P53 页面族矩阵（EV-03） › 21-26 流程中心：分类默认态、搜索空态与存档 (2.2s)
+4. 数据列表：默认态、筛选空态与详情弹窗
+   旧：product/p53-global-ui-component-layout/receipts/evidence/p53-review-02/executor-02/visual-update.log:969 4) [chrome-1440] › e2e\visual\families.spec.ts:109:3 › P53 页面族矩阵（EV-03） › 02 数据列表：默认态、筛选空态与详情弹窗 ──
+   新：product/p53-global-ui-component-layout/receipts/evidence/p53-review-03/visual-verify.log:52 ok  8 [chrome-1440] › e2e\visual\families.spec.ts:109:3 › P53 页面族矩阵（EV-03） › 02 数据列表：默认态、筛选空态与详情弹窗 (2.0s)
+5. 任务详情：流转记录、流程图与审批列表三 tab
+   旧：product/p53-global-ui-component-layout/receipts/evidence/p53-review-02/executor-02/visual-update.log:1004 5) [chrome-1440] › e2e\visual\families.spec.ts:133:3 › P53 页面族矩阵（EV-03） › 03/10/19/20 任务详情：流转记录、流程图与审批列表三 tab
+   新：product/p53-global-ui-component-layout/receipts/evidence/p53-review-03/visual-verify.log:79 ok  9 [chrome-1440] › e2e\visual\families.spec.ts:133:3 › P53 页面族矩阵（EV-03） › 03/10/19/20 任务详情：流转记录、流程图与审批列表三 tab (2.9s)
+6. 发起流程：默认双栏、未知 formKey 错误态
+   旧：product/p53-global-ui-component-layout/receipts/evidence/p53-review-02/executor-02/visual-update.log:1032 6) [chrome-1440] › e2e\visual\families.spec.ts:170:3 › P53 页面族矩阵（EV-03） › 27 发起流程：默认双栏、未知 formKey 错误态
+   新：product/p53-global-ui-component-layout/receipts/evidence/p53-review-03/visual-verify.log:114 ok 11 [chrome-1440] › e2e\visual\families.spec.ts:170:3 › P53 页面族矩阵（EV-03） › 27 发起流程：默认双栏、未知 formKey 错误态 (2.6s)
+7. 表单设计器 @ chrome-1440
+   旧：product/p53-global-ui-component-layout/receipts/evidence/p53-review-02/executor-02/visual-update.log:1065 7) [chrome-1440] › e2e\visual\families.spec.ts:186:3 › P53 页面族矩阵（EV-03） › 07/11 表单设计器：默认画布与字段清单弹窗
+   新：product/p53-global-ui-component-layout/receipts/evidence/p53-review-03/visual-verify.log:266 ok 12 [chrome-1440] › e2e\visual\families.spec.ts:186:3 › P53 页面族矩阵（EV-03） › 07/11 表单设计器：默认画布与字段清单弹窗 (2.5s)
+8. 流程设计器 @ chrome-1440
+   旧：product/p53-global-ui-component-layout/receipts/evidence/p53-review-02/executor-02/visual-update.log:1098 8) [chrome-1440] › e2e\visual\families.spec.ts:201:3 › P53 页面族矩阵（EV-03） › 09/12 流程设计器：默认画布与审批人候选弹窗
+   新：product/p53-global-ui-component-layout/receipts/evidence/p53-review-03/visual-verify.log:272 ok 13 [chrome-1440] › e2e\visual\families.spec.ts:201:3 › P53 页面族矩阵（EV-03） › 09/12 流程设计器：默认画布与审批人候选弹窗 (1.7s)
+9. 表单设计器 @ chrome-1920
+   旧：product/p53-global-ui-component-layout/receipts/evidence/p53-review-02/executor-02/visual-update.log:1131 9) [chrome-1920] › e2e\visual\families.spec.ts:186:3 › P53 页面族矩阵（EV-03） › 07/11 表单设计器：默认画布与字段清单弹窗
+   新：product/p53-global-ui-component-layout/receipts/evidence/p53-review-03/visual-verify.log:561 ok 34 [chrome-1920] › e2e\visual\families.spec.ts:186:3 › P53 页面族矩阵（EV-03） › 07/11 表单设计器：默认画布与字段清单弹窗 (2.3s)
+10. 表单设计器 @ chrome-1280
+   旧：product/p53-global-ui-component-layout/receipts/evidence/p53-review-02/executor-02/visual-update.log:1164 10) [chrome-1280] › e2e\visual\families.spec.ts:186:3 › P53 页面族矩阵（EV-03） › 07/11 表单设计器：默认画布与字段清单弹窗
+   新：product/p53-global-ui-component-layout/receipts/evidence/p53-review-03/visual-verify.log:856 ok 56 [chrome-1280] › e2e\visual\families.spec.ts:186:3 › P53 页面族矩阵（EV-03） › 07/11 表单设计器：默认画布与字段清单弹窗 (2.1s)

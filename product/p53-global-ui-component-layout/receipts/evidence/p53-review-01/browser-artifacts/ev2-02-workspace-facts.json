@@ -1,0 +1,70 @@
+{
+ "url": "http://localhost:5173/workspace",
+ "viewport": {
+  "width": 1440,
+  "height": 1024
+ },
+ "lang": "zh-CN",
+ "identity": "系系统管理员",
+ "greeting": "早上好，系统管理员",
+ "statCards": [
+  "待我处理1",
+  "我发起的5",
+  "已办任务3",
+  "草稿0"
+ ],
+ "network": [
+  {
+   "status": 200,
+   "url": "/api/auth/refresh"
+  },
+  {
+   "status": 200,
+   "url": "/api/system/auth/me"
+  },
+  {
+   "status": 200,
+   "url": "/api/system/auth/menus"
+  },
+  {
+   "status": 200,
+   "url": "/src/modules/workflow/api/oa.ts"
+  },
+  {
+   "status": 200,
+   "url": "/src/modules/workflow/api/index.ts"
+  },
+  {
+   "status": 200,
+   "url": "/src/modules/notify/api/index.ts"
+  },
+  {
+   "status": 200,
+   "url": "/api/system/workspace/layout"
+  },
+  {
+   "status": 200,
+   "url": "/api/workflow/tasks/todo"
+  },
+  {
+   "status": 200,
+   "url": "/api/workflow/my/processed"
+  },
+  {
+   "status": 200,
+   "url": "/api/workflow/my/instances"
+  },
+  {
+   "status": 200,
+   "url": "/api/workflow/drafts"
+  },
+  {
+   "status": 200,
+   "url": "/api/workflow/my/copies"
+  },
+  {
+   "status": 200,
+   "url": "/api/workflow/catalog/items"
+  }
+ ]
+}

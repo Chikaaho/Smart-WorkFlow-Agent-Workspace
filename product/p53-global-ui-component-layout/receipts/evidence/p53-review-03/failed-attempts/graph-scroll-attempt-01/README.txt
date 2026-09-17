@@ -1,0 +1,1 @@
+Formal capture reached the real task graph but its bounding box ended at y=1025 in a 1024px viewport after scrollIntoViewIfNeeded(). The script now scrolls with a 24px viewport margin before capture. Partial PNGs/facts and capture-formal-p53-final-attempt-04.log are retained.

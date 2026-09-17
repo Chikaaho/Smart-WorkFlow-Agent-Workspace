@@ -1,0 +1,268 @@
+{
+  "generated_at": "2026-09-17T09:36:36.627Z",
+  "method": "设计色来自锁定 SVG 填充统计与 PNG 采样；令牌来自 src/styles/tokens.css；computed style 来自 Playwright getComputedStyle（1440x1024, zh-CN, admin）；截图采样来自 System.Drawing GetPixel 同坐标对比。",
+  "samples": [
+    {
+      "purpose": "页面底色",
+      "design_source": "PNG(1430,500)/(720,1000) 节点01/02/21",
+      "design_value": "#F4F6FB",
+      "token": "--sw-surface-page: #f7f8fc",
+      "computed": "rgb(247, 248, 252)",
+      "screenshot_sample": "#F7F8FC",
+      "delta_max_channel": 3,
+      "verdict": "FAIL-EXACT",
+      "fix": "令牌改为 #f4f6fb"
+    },
+    {
+      "purpose": "侧栏底色",
+      "design_source": "PNG 网格(20..200,80..1000) 节点01/02/04/21",
+      "design_value": "#111B3B",
+      "token": "--sw-nav-sidebar-bg: #17213a",
+      "computed": "rgb(23,33,58)",
+      "screenshot_sample": "#17213A",
+      "delta_max_channel": 22,
+      "verdict": "FAIL",
+      "fix": "令牌改为 #111b3b"
+    },
+    {
+      "purpose": "侧栏顶级激活项",
+      "design_source": "PNG(110,102) 节点01",
+      "design_value": "#6F2DFF",
+      "token": "(无专令牌，hover rgba(111,45,255,0.28))",
+      "computed": null,
+      "screenshot_sample": null,
+      "verdict": "GAP",
+      "fix": "新增 --sw-nav-item-active-bg: #6f2dff 并消费"
+    },
+    {
+      "purpose": "侧栏子项激活",
+      "design_source": "PNG(150,215) 节点04",
+      "design_value": "#29235C",
+      "token": "(无)",
+      "computed": null,
+      "screenshot_sample": null,
+      "verdict": "GAP",
+      "fix": "新增 --sw-nav-subitem-active-bg: #29235c"
+    },
+    {
+      "purpose": "用户端顶栏",
+      "design_source": "PNG(700,32) 节点01/05/21",
+      "design_value": "#40369A",
+      "token": "--sw-nav-topbar-portal-bg: #40369a",
+      "computed": "rgb(64, 54, 154)",
+      "screenshot_sample": "#40369A",
+      "delta_max_channel": 0,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "用户端顶栏激活块",
+      "design_source": "PNG(320,58) 节点01",
+      "design_value": "#332B81",
+      "token": "--sw-nav-topbar-portal-active-bg: #332b81",
+      "computed": null,
+      "screenshot_sample": null,
+      "verdict": "PASS-TOKEN",
+      "fix": "确认消费路径"
+    },
+    {
+      "purpose": "管理端顶栏",
+      "design_source": "PNG(700,32)/(600,32) 节点04",
+      "design_value": "#111B3B",
+      "token": "--sw-nav-topbar-admin-bg: #111b3b",
+      "computed": "rgb(17, 27, 59)",
+      "screenshot_sample": "#111B3B",
+      "delta_max_channel": 0,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "管理端顶栏激活块",
+      "design_source": "PNG(455,58) 节点04",
+      "design_value": "#27345C",
+      "token": "--sw-nav-topbar-admin-active-bg: #27345c",
+      "computed": null,
+      "screenshot_sample": null,
+      "verdict": "PASS-TOKEN"
+    },
+    {
+      "purpose": "品牌主色",
+      "design_source": "SVG fill #6f2dff 全部节点",
+      "design_value": "#6F2DFF",
+      "token": "--sw-color-primary: #6f2dff",
+      "computed": "rgb(111, 45, 255)",
+      "screenshot_sample": null,
+      "delta_max_channel": 0,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "正文主文本",
+      "design_source": "SVG #172033",
+      "design_value": "#172033",
+      "token": "--sw-text-primary: #172033（未绑定 EP）",
+      "computed": "EP 默认 rgb(48,49,51) #303133",
+      "screenshot_sample": null,
+      "delta_max_channel": 19,
+      "verdict": "FAIL",
+      "fix": "html:root 绑定 --el-text-color-primary"
+    },
+    {
+      "purpose": "常规文本",
+      "design_source": "SVG #303a55/#6b7280",
+      "design_value": "#303A55 / #697386",
+      "token": "--sw-text-regular: #303a55; --sw-text-secondary: #697386（未绑定 EP）",
+      "computed": "EP 默认 #606266/#909399",
+      "screenshot_sample": null,
+      "verdict": "FAIL",
+      "fix": "绑定 --el-text-color-regular/secondary"
+    },
+    {
+      "purpose": "一级边框",
+      "design_source": "SVG #ccd5e5",
+      "design_value": "#CCD5E5",
+      "token": "--sw-border-base: #ccd5e5（未绑定 EP）",
+      "computed": "EP 默认 rgb(220,223,230) #dcdfe6",
+      "screenshot_sample": "#DCDFE6",
+      "delta_max_channel": 15,
+      "verdict": "FAIL",
+      "fix": "绑定 --el-border-color 系列"
+    },
+    {
+      "purpose": "控件圆角",
+      "design_source": "方向注释：控件 6/卡 10/弹窗 12",
+      "design_value": "6px",
+      "token": "--sw-radius-base: 6px（未绑定 EP）",
+      "computed": "EP 默认 4px（部分页面 3px）",
+      "screenshot_sample": null,
+      "verdict": "FAIL",
+      "fix": "绑定 --el-border-radius-base 等"
+    },
+    {
+      "purpose": "卡片圆角",
+      "design_source": "设计卡圆角 10-12",
+      "design_value": "10px",
+      "computed": "el-card 4px",
+      "verdict": "FAIL",
+      "fix": "--el-card-border-radius: 10px"
+    },
+    {
+      "purpose": "弹窗圆角",
+      "design_source": "设计弹窗圆角 12",
+      "design_value": "12px",
+      "computed": "el-dialog 4px",
+      "verdict": "FAIL",
+      "fix": "--el-dialog-border-radius: 12px"
+    },
+    {
+      "purpose": "卡片阴影",
+      "design_source": "设计：0 1px 3px rgba(23,33,58,.05), 0 4px 12px rgba(23,33,58,.04)",
+      "design_value": "--sw-shadow-card",
+      "computed": "EP 默认 rgba(0,0,0,.12) 0 0 12px",
+      "screenshot_sample": null,
+      "verdict": "FAIL",
+      "fix": "绑定 --el-box-shadow-light 等"
+    },
+    {
+      "purpose": "语义-成功",
+      "design_source": "SVG #18a67a/#eafbf7",
+      "design_value": "#18A67A",
+      "token": "--sw-success: #18a67a",
+      "computed": "rgb(24,166,122)",
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "语义-警告",
+      "design_source": "SVG #f59e0b/#fff7e8",
+      "design_value": "#F59E0B",
+      "token": "--sw-warning: #f59e0b",
+      "computed": null,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "语义-危险",
+      "design_source": "SVG #e04b55",
+      "design_value": "#E04B55",
+      "token": "--sw-danger: #e5484d",
+      "computed": null,
+      "delta_max_channel": 5,
+      "verdict": "CHECK",
+      "fix": "与设计对照后统一并登记偏差"
+    },
+    {
+      "purpose": "语义-信息",
+      "design_source": "SVG #20b8cd/#e7f8fa",
+      "design_value": "#20B8CD",
+      "token": "--sw-info: #20b8cd",
+      "computed": "rgb(32,184,205)",
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "表头底色",
+      "design_source": "设计表格表头 #fafbfe/#f4f6fc",
+      "design_value": "#FAFBFE",
+      "token": "(无 EP 绑定)",
+      "computed": "rgb(244,246,251)",
+      "screenshot_sample": null,
+      "verdict": "CHECK",
+      "fix": "绑定 --el-table-header-bg-color: #fafbfe; header 文本 #697386"
+    },
+    {
+      "purpose": "门户统计块1",
+      "design_source": "PNG(965,205) 节点05",
+      "design_value": "#202F63",
+      "token": "(组件内联)",
+      "computed": null,
+      "screenshot_sample": "#1C253A",
+      "verdict": "FAIL",
+      "fix": "PortalHome 统计块配色"
+    },
+    {
+      "purpose": "门户统计块2",
+      "design_source": "PNG(1146,205) 节点05",
+      "design_value": "#6F2DFF",
+      "computed": null,
+      "screenshot_sample": null,
+      "verdict": "CHECK",
+      "fix": "对齐"
+    },
+    {
+      "purpose": "门户统计块3",
+      "design_source": "PNG(1288,205) 节点05",
+      "design_value": "#8FDBE6",
+      "computed": null,
+      "screenshot_sample": null,
+      "verdict": "FAIL",
+      "fix": "PortalHome 统计块配色"
+    },
+    {
+      "purpose": "登录 hero 渐变",
+      "design_source": "PNG(700,32)=#3F1E8E (110,500)=#16143E (720,620)=#1A204C 节点06",
+      "design_value": "深靛+紫辐射",
+      "screenshot_sample": "#2D2663/#FFFFFF/#27314A",
+      "delta_max_channel": 55,
+      "verdict": "FAIL",
+      "fix": "LoginPage 渐变重构"
+    },
+    {
+      "purpose": "旧品牌残留",
+      "design_source": "方向 §4.1 取代 #7e306b",
+      "design_value": "不允许出现",
+      "token": "(散落硬编码)",
+      "computed": "SsoReturnPage/SsoBindPage/ProcessAnalytics/AccountBindings 中 #7e306b",
+      "verdict": "FAIL",
+      "fix": "全部替换为 var(--sw-color-primary) 系"
+    },
+    {
+      "purpose": "EP 默认蓝残留",
+      "design_source": "设计无 #409eff",
+      "design_value": "不允许出现",
+      "computed": "NodeTrajectory/ConversationDetail/DebugSessionView 中 #409eff/#ecf5ff/#d9ecff",
+      "verdict": "FAIL",
+      "fix": "替换为令牌"
+    }
+  ],
+  "summary": {
+    "total": 27,
+    "pass": 8,
+    "fail": 15,
+    "check": 4
+  }
+}
