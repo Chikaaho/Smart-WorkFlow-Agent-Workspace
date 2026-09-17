@@ -1,0 +1,45 @@
+{
+  "atom": "P53-EV-02b",
+  "capture": {
+    "source": "Codex In-app Browser",
+    "headless": false,
+    "viewport": "1440x1024",
+    "url": "http://localhost:5173/workflow/defs/2100424929376403458/design"
+  },
+  "identity": {
+    "user": "admin",
+    "displayName": "系统管理员",
+    "candidateId": "1"
+  },
+  "object": {
+    "definitionId": "2100424929376403458",
+    "processName": "P53 取证双审批-p53ev2",
+    "processKey": "bpm_ea1731b3ae1e4f38",
+    "node": "节点一-管理员审批"
+  },
+  "actualUiSteps": [
+    "打开查看候选弹窗并读取服务端候选列表",
+    "选择系统管理员（id=1）",
+    "界面审批人字段回填 {\"type\":\"DESIGNATED\",\"value\":[\"1\"]}",
+    "保存草稿后界面显示“草稿已保存”",
+    "服务端校验后界面显示“校验通过：可判定错误 0 条”"
+  ],
+  "network": [
+    {
+      "method": "GET",
+      "path": "/api/workflow/defs/approver-candidates?keyword=",
+      "status": 200
+    },
+    {
+      "method": "PUT",
+      "path": "/api/workflow/defs/2100424929376403458/graph",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/workflow/defs/2100424929376403458/validate",
+      "status": 200
+    }
+  ],
+  "artifactBoundary": "真实界面与请求结果已在可见会话检查；正式截图未落盘，网络事实由会话网络记录转录至本文件。未新增 Server 契约或硬编码审批人。"
+}

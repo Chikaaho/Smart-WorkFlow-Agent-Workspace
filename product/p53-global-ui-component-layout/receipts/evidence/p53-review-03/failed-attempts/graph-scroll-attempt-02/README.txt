@@ -1,0 +1,1 @@
+The viewport-margin correction used window.scrollBy(), which did not move the nested BasicLayout scroll container; graph bounding box remained y=543/h=482. capture script now uses Element.scrollIntoView({block:"center"}) so the actual scroll ancestor is adjusted. Partial artifacts and attempt-05 log remain available.
