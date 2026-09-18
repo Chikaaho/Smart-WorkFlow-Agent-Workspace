@@ -36,14 +36,24 @@ if ([string]::IsNullOrWhiteSpace($root)) {
 }
 $runtime = Get-GateRuntimeRoot -EngineRoot $root -Override $RuntimeRoot
 
-$declaration = [ordered] @{ path = '.zcode/config.json'; present = $false; hooks_enabled = $false; events = @(); command_ok = $false }
-$configPath = Join-Path $root '.zcode/config.json'
-if (Test-Path -LiteralPath $configPath -PathType Leaf) {
+# 声明以仓库内 `.codex/governance/zcode-hooks-declaration.json` 为唯一来源；
+# 生效位置由 install-zcode-hooks.ps1 同步到用户级配置（工作区级声明会被宿主信任层反复失效）。
+$declaration = [ordered] @{
+    source            = '.codex/governance/zcode-hooks-declaration.json'
+    present           = $false
+    hooks_enabled     = $false
+    events            = @()
+    command_ok        = $false
+    effective_scope   = ''
+    user_config       = ''
+    drift             = $true
+    drift_error       = ''
+}
+$declarationPath = Join-Path $root '.codex/governance/zcode-hooks-declaration.json'
+if (Test-Path -LiteralPath $declarationPath -PathType Leaf) {
     $declaration.present = $true
-    $config = ConvertFrom-GateJson -Text ([System.IO.File]::ReadAllText($configPath, [System.Text.Encoding]::UTF8))
-    $hooks = Get-GateJsonProperty $config 'hooks'
-    $enabled = Get-GateJsonProperty $hooks 'enabled'
-    $declaration.hooks_enabled = $enabled -is [bool] -and $enabled
+    $declarationDocument = ConvertFrom-GateJson -Text ([System.IO.File]::ReadAllText($declarationPath, [System.Text.Encoding]::UTF8))
+    $hooks = Get-GateJsonProperty $declarationDocument 'hooks'
     $events = Get-GateJsonProperty $hooks 'events'
     $eventNames = @()
     $commandsOk = $true
@@ -55,13 +65,35 @@ if (Test-Path -LiteralPath $configPath -PathType Leaf) {
                     $command = Get-GateJsonText $hook 'command'
                     $arguments = Get-GateJsonProperty $hook 'args'
                     $joined = "$command " + (@($arguments) -join ' ')
-                    if ($joined -notmatch 'stop-gate\.ps1|session-role\.ps1') { $commandsOk = $false }
+                    if ($joined -notmatch 'zcode-stop-gate\.cmd|zcode-role-bind\.cmd') { $commandsOk = $false }
                 }
             }
         }
     }
+    $enabled = Get-GateJsonProperty $hooks 'enabled'
+    $declaration.hooks_enabled = $enabled -is [bool] -and $enabled
     $declaration.events = $eventNames
     $declaration.command_ok = $commandsOk -and ($eventNames -contains 'Stop')
+}
+$installer = Join-Path $PSScriptRoot 'install-zcode-hooks.ps1'
+if (Test-Path -LiteralPath $installer -PathType Leaf) {
+    $previousPreference = $ErrorActionPreference
+    $ErrorActionPreference = 'Continue'
+    try {
+        $installerOutput = & $installer -Check 2>$null | Out-String
+    } finally {
+        $ErrorActionPreference = $previousPreference
+    }
+    $installerResult = ConvertFrom-GateJson -Text $installerOutput.Trim()
+    if ($null -ne $installerResult) {
+        $declaration.effective_scope = Get-GateJsonText $installerResult 'effective_scope'
+        $declaration.user_config = Get-GateJsonText $installerResult 'user_config'
+        $declaration.drift = (Get-GateJsonProperty $installerResult 'drift') -eq $true
+    } else {
+        $declaration.drift_error = 'installer-check-failed'
+    }
+} else {
+    $declaration.drift_error = 'installer-missing'
 }
 
 $files = @(
@@ -150,6 +182,15 @@ if (Test-Path -LiteralPath $logDir -PathType Container) {
 }
 $recentHostFailures = [int] (Get-GateJsonProperty $hostHookFailures 'recent_count')
 
+# 入口包装层（.codex/hooks/zcode-*.cmd）在两次调用 PowerShell 都失败时会写这条台账，
+# 它比门禁自身的审计更早失败，必须一起暴露。
+$entryFailures = [ordered] @{ path = '.codex/governance/runtime/zcode/entry-failures.log'; present = $false; lines = @() }
+$entryLogPath = Join-Path $runtime 'entry-failures.log'
+if (Test-Path -LiteralPath $entryLogPath -PathType Leaf) {
+    $entryFailures.present = $true
+    $entryFailures.lines = @(Get-Content -LiteralPath $entryLogPath | Where-Object { -not [string]::IsNullOrWhiteSpace($_) } | Select-Object -Last 5 | ForEach-Object { [string] $_ })
+}
+
 $report = [ordered] @{
     schema           = 'agent-coding-engine.zcode-hook-selfcheck.v1'
     engine_root      = $root
@@ -160,11 +201,12 @@ $report = [ordered] @{
     bound_sessions   = $boundSessions
     workspace_trust  = $trustStore
     host_hook_failures = $hostHookFailures
+    entry_failures   = $entryFailures
     posix_jq         = [ordered] @{
         available = $null -ne (Get-Command jq -ErrorAction SilentlyContinue)
         note      = 'POSIX/Codex 宿主入口在缺少 jq 时 fail closed；ZCode 入口不依赖 jq'
     }
-    live             = ($declaration.present -and $declaration.hooks_enabled -and $audit.records -gt 0 -and $recentHostFailures -eq 0)
+    live             = ($declaration.present -and $declaration.hooks_enabled -and -not $declaration.drift -and $audit.records -gt 0 -and $recentHostFailures -eq 0 -and -not $entryFailures.present)
 }
 Write-Output ($report | ConvertTo-Json -Depth 8)
 exit 0

@@ -11,6 +11,7 @@ Set-StrictMode -Version Latest
 [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
 
 $rootDir = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+. (Join-Path $PSScriptRoot 'zcode-gate-common.ps1')
 $gatePath = Join-Path $rootDir '.codex/governance/stop-gate.ps1'
 $rolePath = Join-Path $rootDir '.codex/governance/session-role.ps1'
 $powerShellExe = (Get-Process -Id $PID).Path
@@ -234,7 +235,81 @@ Test-GateCase -Name 'repeat_first_block' -PayloadFile $repeatPayload -Expected b
 Test-GateCase -Name 'repeat_second_block_escalates' -PayloadFile $repeatPayload -Expected block -ExpectedText '最小原子动作' -ObservationFile $noObservation
 Test-GateCase -Name 'repeat_third_block_switches_path' -PayloadFile $repeatPayload -Expected block -ExpectedText '切换' -ObservationFile $noObservation
 
-# --- 上下文占用不是停止依据：任何“上下文已满”收尾都必须被拒 -----------------
+# --- 宿主入口包装层（cmd）----------------------------------------------
+function Test-WrapperCase {
+    param(
+        [Parameter(Mandatory = $true)] [string] $Name,
+        [Parameter(Mandatory = $true)] [string] $PayloadFile,
+        [string] $GateScript = '',
+        [string] $ExpectedText = '',
+        [int] $ExpectedExit = 0,
+        [switch] $ExpectJson
+    )
+
+    $wrapper = Join-Path $rootDir '.codex/hooks/zcode-stop-gate.cmd'
+    $logDir = Join-Path $workDir ("wrapper-log-{0}" -f [guid]::NewGuid().ToString('N'))
+    # 包装层不带 -RuntimeRoot，门禁读生产运行时目录，因此测试会话的角色文件写在那里并事后清理。
+    $productionSessions = Join-Path $rootDir '.codex/governance/runtime/zcode/sessions'
+    $productionRoleFile = Join-Path $productionSessions 'sess_wrap_case.role.json'
+    if (-not (Test-Path -LiteralPath $productionSessions -PathType Container)) { New-Item -ItemType Directory -Path $productionSessions -Force | Out-Null }
+    [System.IO.File]::WriteAllText($productionRoleFile, '{"role":"executor"}', [System.Text.UTF8Encoding]::new($false))
+    $previousGate = $env:ZCODE_GATE_SCRIPT
+    $previousLog = $env:ZCODE_GATE_LOGDIR
+    $previousRoot = $env:ZCODE_PROJECT_DIR
+    $env:ZCODE_PROJECT_DIR = $rootDir
+    $env:ZCODE_GATE_LOGDIR = $logDir
+    if ([string]::IsNullOrWhiteSpace($GateScript)) { Remove-Item Env:\ZCODE_GATE_SCRIPT -ErrorAction SilentlyContinue } else { $env:ZCODE_GATE_SCRIPT = $GateScript }
+    $previousPreference = $ErrorActionPreference
+    $ErrorActionPreference = 'Continue'
+    try {
+        $startInfo = [System.Diagnostics.ProcessStartInfo]::new()
+        $startInfo.FileName = $env:ComSpec
+        $startInfo.Arguments = "/d /s /c `"`"$wrapper`"`""
+        $startInfo.WorkingDirectory = $rootDir
+        $startInfo.UseShellExecute = $false
+        $startInfo.RedirectStandardInput = $true
+        $startInfo.RedirectStandardOutput = $true
+        $startInfo.RedirectStandardError = $true
+        $startInfo.StandardOutputEncoding = [System.Text.UTF8Encoding]::new($false)
+        $startInfo.StandardErrorEncoding = [System.Text.UTF8Encoding]::new($false)
+        $process = [System.Diagnostics.Process]::Start($startInfo)
+        $process.StandardInput.Write([System.IO.File]::ReadAllText($PayloadFile, [System.Text.Encoding]::UTF8))
+        $process.StandardInput.Close()
+        $stdout = $process.StandardOutput.ReadToEnd()
+        $stderr = $process.StandardError.ReadToEnd()
+        $process.WaitForExit()
+        $raw = $stdout + $stderr
+        $exitCode = $process.ExitCode
+    } finally {
+        $ErrorActionPreference = $previousPreference
+        if ($null -eq $previousGate) { Remove-Item Env:\ZCODE_GATE_SCRIPT -ErrorAction SilentlyContinue } else { $env:ZCODE_GATE_SCRIPT = $previousGate }
+        if ($null -eq $previousLog) { Remove-Item Env:\ZCODE_GATE_LOGDIR -ErrorAction SilentlyContinue } else { $env:ZCODE_GATE_LOGDIR = $previousLog }
+        if ($null -eq $previousRoot) { Remove-Item Env:\ZCODE_PROJECT_DIR -ErrorAction SilentlyContinue } else { $env:ZCODE_PROJECT_DIR = $previousRoot }
+    }
+
+    $problems = @()
+    if ($exitCode -ne $ExpectedExit) { $problems += "exit=$exitCode expected=$ExpectedExit" }
+    if ($ExpectJson) {
+        $trimmed = $stdout.Trim()
+        if (-not $trimmed.StartsWith('{')) { $problems += "stdout-not-json=$($trimmed.Substring(0, [Math]::Min(80, $trimmed.Length)))" }
+        else {
+            $parsed = ConvertFrom-GateJson -Text $trimmed
+            if ($null -eq $parsed -or (Get-GateJsonText $parsed 'decision') -ne 'block') { $problems += "decision-not-block=$trimmed" }
+        }
+    }
+    if (-not [string]::IsNullOrWhiteSpace($ExpectedText)) {
+        if (-not (($raw -replace '\s', '').Contains(($ExpectedText -replace '\s', '')))) { $problems += "missing-text=$ExpectedText" }
+    }
+    if (Test-Path -LiteralPath $productionRoleFile) { Remove-Item -LiteralPath $productionRoleFile -Force }
+    if ($problems.Count -eq 0) { $script:passed++ } else { $script:failed++; Write-Output "FAIL $Name :: $($problems -join ' | ') :: output=$($raw.Trim())" }
+}
+
+New-RoleFile -Session 'sess_wrap_case' -Role 'executor' | Out-Null
+$wrapperPayload = New-StopPayloadFile -Session 'sess_wrap_case' -Message '上下文已达物理极限，我先停下等压缩。'
+Test-WrapperCase -Name 'wrapper_block_normal' -PayloadFile $wrapperPayload -ExpectJson -ExpectedText 'ENGINE_TERMINAL'
+Test-WrapperCase -Name 'wrapper_fallback_block' -PayloadFile $wrapperPayload -GateScript (Join-Path $workDir 'missing-gate.ps1') -ExpectJson -ExpectedText 'failed twice'
+
+# --- “上下文已满”自我估计：必须有宿主实测证据 ---------------------------
 $lowUsage = New-ObservationFile -Open 0 -ContextTokens 584256 -ContextLimit 1000000
 $highUsage = New-ObservationFile -Open 0 -ContextTokens 920000 -ContextLimit 1000000
 $overUsage = New-ObservationFile -Open 0 -ContextTokens 990000 -ContextLimit 1000000 -ContextExceeded $true
