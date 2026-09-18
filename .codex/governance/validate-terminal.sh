@@ -1,10 +1,23 @@
 #!/bin/sh
 set -eu
+# 解析可用的 jq：宿主机不再保证 /usr/bin/jq，缺失时由调用方 fail closed。
+resolve_jq() {
+  for candidate in "${AGENT_CODING_ENGINE_JQ:-}" "$(command -v jq 2>/dev/null || true)" /usr/bin/jq /usr/local/bin/jq /opt/homebrew/bin/jq; do
+    if [ -n "$candidate" ] && [ -x "$candidate" ]; then printf '%s' "$candidate"; return 0; fi
+  done
+  return 1
+}
 root_dir=$(CDPATH= cd -- "$(dirname "$0")/../.." && pwd)
 contract="$root_dir/.codex/governance/terminal-contract.json"
 payload=$(cat)
+jq_bin=$(resolve_jq || true)
+if [ -z "$jq_bin" ]; then
+  # Validator 无法证明契约成立时必须拒绝，而不是放行。
+  printf '%s\n' 'terminal: validator unavailable: no usable jq on this host' >&2
+  exit 1
+fi
 
-if ! payload_type=$(printf '%s' "$payload" | /usr/bin/jq -r 'type' 2>/dev/null); then
+if ! payload_type=$(printf '%s' "$payload" | "$jq_bin" -r 'type' 2>/dev/null); then
   printf '%s\n' 'terminal: payload: invalid JSON' >&2
   exit 2
 fi
@@ -14,7 +27,7 @@ if [ "$payload_type" != "object" ]; then
   exit 1
 fi
 
-diagnostics=$(printf '%s' "$payload" | /usr/bin/jq -r --slurpfile c "$contract" '
+diagnostics=$(printf '%s' "$payload" | "$jq_bin" -r --slurpfile c "$contract" '
   def nonblank: type == "string" and test("\\S");
   def nonnegative_integer: type == "number" and floor == . and . >= 0;
   def actionable_item:
