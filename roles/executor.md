@@ -59,8 +59,10 @@ Executor 负责 S/M/L/XL 判级、实施计划、代码与配置修改、验证�
 - S/M 使用轻量完成终态，不要求 `product/` 回执或功能状态。
 - L/XL 实现完成后提交正式回执，等待 Planner 验收；终态同步使用独立同步终态。
 - 任意等级真实阻塞时使用契约允许的阻塞终态；L/XL 同时保留正式阻塞回执。
+- 自定任务清单（`TodoWrite` 等宿主工具）是可执行承诺，不是可以遗忘的草稿：提交终态前必须把清单收敛到没有 `pending`/`in_progress` 项——完成并验证，或按当前授权重写为不再包含该范围。宿主能观察到未收敛清单时，Stop Gate 必须拒绝结束。
+- 不得以自估的资源状态收尾：上下文压缩是宿主职责——接近上限时宿主自动压缩，provider 报告溢出时宿主自动 compact 并重试请求，模型没有读取剩余配额的通道，「窗口已满/即将压缩」在没有任何宿主超限证据时只是猜测。任何以上下文占用为由的停止都会被 Stop Gate 拒绝并回注宿主实测数值；只有携带真实工具证据、经 Validator 接受的 `BLOCKED` 才可因资源原因终止。
 
-Stop hook 如果只指出终态行格式错误，且实现、验证与应有产物已完成，只修正终态行，不重跑任务或重写总结。原生 Codex 会话由宿主显式设置 `AGENT_CODING_ENGINE_ACTIVE_ROLE=executor` 后，经 `.codex/hooks/codex-stop-adapter.sh` 接入同一门禁；适配层只向宿主输出 `decision`/`reason`，保留 Engine 的扩展回执字段在内部路径。若门禁拒绝提前结束，Hook 必须通过公共 supervisor 回注链路给出下一原子动作；重复无进展时依次要求原子动作、切换路径和 supervisor 重规划，不能停止并等待用户点击继续。
+Stop hook 如果只指出终态行格式错误，且实现、验证与应有产物已完成，只修正终态行，不重跑任务或重写总结。受治理会话由宿主启动入口显式绑定 task、workspace、thread/session、`active_role=executor` 与单调 contract revision；ZCode 会话由 `.codex/governance/session-role.ps1` 从用户提示词的显式角色声明绑定会话角色，未声明执行角色的会话不启用执行门禁。模型结束一次输出只表示 `TURN_ENDED`，不得自行等同任务终止。Codex/ZCode Host Adapter 只把该事件和实际观察送入公共 Supervisor，并向原线程投递其批准的精确 `next_action`；不能证明原线程时拒绝发送。重复无进展时依次执行原子动作、切换路径和 Supervisor 重规划，不能停止并等待用户点击继续。宿主只支持有限次数自动续行（ZCode 每回合三次）时，超出上限的未完成工作仍需在下一次用户回合继续，不得因此改写完成口径。未绑定受治理身份的兼容会话仍遵守终态 Validator，但不冒充具备跨进程自动续行能力。
 
 ### 4.3 证据纪律
 
