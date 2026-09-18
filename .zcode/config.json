@@ -6,48 +6,5 @@
         "url": "https://mcp.figma.com/mcp"
       }
     }
-  },
-  "hooks": {
-    "enabled": true,
-    "events": {
-      "UserPromptSubmit": [
-        {
-          "hooks": [
-            {
-              "type": "process",
-              "command": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-              "enabled": true,
-              "statusMessage": "绑定会话角色",
-              "args": [
-                "-NoProfile",
-                "-ExecutionPolicy",
-                "Bypass",
-                "-File",
-                "${ZCODE_PROJECT_DIR}/.codex/governance/session-role.ps1"
-              ]
-            }
-          ]
-        }
-      ],
-      "Stop": [
-        {
-          "hooks": [
-            {
-              "type": "process",
-              "command": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-              "enabled": true,
-              "statusMessage": "校验执行终态",
-              "args": [
-                "-NoProfile",
-                "-ExecutionPolicy",
-                "Bypass",
-                "-File",
-                "${ZCODE_PROJECT_DIR}/.codex/governance/stop-gate.ps1"
-              ]
-            }
-          ]
-        }
-      ]
-    }
   }
 }
