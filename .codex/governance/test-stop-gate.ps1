@@ -194,11 +194,18 @@ function Test-RoleCase {
     if (Test-Path -LiteralPath $roleFile) {
         $actualRole = (Get-Content -LiteralPath $roleFile -Raw | ConvertFrom-Json).role
     }
-    if ($actualRole -eq $ExpectedRole -and [string]::IsNullOrWhiteSpace($output)) {
+    # 入口同时注入门禁状态行（hookSpecificOutput.additionalContext），测试校验其形状与角色一致。
+    $status = $null
+    try { $status = $output.Trim() | ConvertFrom-Json } catch { }
+    $statusContext = ''
+    if ($null -ne $status) { $statusContext = [string] (Get-GateJsonProperty (Get-GateJsonProperty $status 'hookSpecificOutput') 'additionalContext') }
+    $statusRoleOk = $statusContext.Contains('【执行门禁】')
+    if ($ExpectedRole -ne '') { $statusRoleOk = $statusRoleOk -and $statusContext.Contains("会话角色=$ExpectedRole") }
+    if ($actualRole -eq $ExpectedRole -and $statusRoleOk) {
         $script:passed++
     } else {
         $script:failed++
-        Write-Output "FAIL $Name :: role='$actualRole' expected='$ExpectedRole' output=$output"
+        Write-Output "FAIL $Name :: role='$actualRole' expected='$ExpectedRole' status=[$statusContext] output=$output"
     }
 }
 

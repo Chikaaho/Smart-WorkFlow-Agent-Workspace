@@ -170,3 +170,49 @@ function Read-GateState {
     if (-not (Test-Path -LiteralPath $Path -PathType Leaf)) { return $null }
     try { return ([System.IO.File]::ReadAllText($Path, [System.Text.Encoding]::UTF8) | ConvertFrom-Json) } catch { return $null }
 }
+
+function Resolve-ObservationReader {
+    # 观察读取器只用于宿主观察；缓存命中即跳过探测，失败返回空串由调用方降级。
+    param([Parameter(Mandatory = $true)] [string] $Runtime)
+
+    $cachePath = Join-Path $Runtime 'reader.json'
+    $cached = Read-GateState -Path $cachePath
+    $cachedPath = Get-GateJsonText $cached 'python'
+    if (-not [string]::IsNullOrWhiteSpace($cachedPath) -and (Test-Path -LiteralPath $cachedPath -PathType Leaf)) {
+        return $cachedPath
+    }
+
+    $candidates = [System.Collections.Generic.List[string]]::new()
+    if (-not [string]::IsNullOrWhiteSpace($env:AGENT_CODING_ENGINE_PYTHON)) { $candidates.Add($env:AGENT_CODING_ENGINE_PYTHON) }
+    if (-not [string]::IsNullOrWhiteSpace($env:USERPROFILE)) {
+        $candidates.Add((Join-Path $env:USERPROFILE '.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe'))
+    }
+    foreach ($name in @('python.exe', 'python')) {
+        try {
+            $command = Get-Command $name -ErrorAction Stop
+            if (-not [string]::IsNullOrWhiteSpace($command.Source)) { $candidates.Add($command.Source) }
+        } catch { }
+    }
+
+    foreach ($candidate in $candidates) {
+        if ([string]::IsNullOrWhiteSpace($candidate) -or -not (Test-Path -LiteralPath $candidate -PathType Leaf)) { continue }
+        try {
+            $null = & $candidate -c 'import sqlite3' 2>$null
+            if ($LASTEXITCODE -eq 0) {
+                Write-GateState -Path $cachePath -State ([ordered] @{
+                    schema      = 'agent-coding-engine.zcode-observer-reader.v1'
+                    python      = $candidate
+                    verified_at = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
+                })
+                return $candidate
+            }
+        } catch { }
+    }
+    return ''
+}
+
+function ConvertFrom-HookJson {
+    param([AllowNull()] [string] $Text)
+
+    return ConvertFrom-GateJson -Text $Text
+}

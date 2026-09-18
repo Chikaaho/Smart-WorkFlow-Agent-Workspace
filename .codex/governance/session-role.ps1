@@ -4,7 +4,8 @@
 # 本入口只做一件事：把用户提示词里的显式角色声明归一化为会话角色记录，
 # 供 Stop Gate 判定该会话是否属于受治理的 Executor 执行会话。
 #
-# 本文件不包含任何终态规则，也不产生任何输出（静默通过）。
+# 本文件不包含任何终态规则；输出只注入一行门禁状态（角色、是否上膛、上次拦截、清单与上下文实测），
+# 供 Owner 与模型确认门禁是否在运行。角色写入失败不阻断提示词，但会写审计。
 
 [CmdletBinding()]
 param(
@@ -115,5 +116,72 @@ if (-not $NoAudit) {
         engine_root = $root
     })
 }
+
+# 把门禁状态注入对话：Owner 与模型都能看到门禁是否上膛、清单还剩多少、上次拦截原因，
+# 不必靠猜或事后翻日志。状态行只报事实，不做裁决。
+$effectiveRole = $role
+if ([string]::IsNullOrWhiteSpace($effectiveRole)) {
+    $stored = Read-GateState -Path $rolePath
+    $effectiveRole = Get-GateJsonText $stored 'role'
+}
+$statusParts = [System.Collections.Generic.List[string]]::new()
+if ([string]::IsNullOrWhiteSpace($effectiveRole)) {
+    $statusParts.Add('会话角色=未声明（执行门禁不启用）')
+} else {
+    $statusParts.Add("会话角色=$effectiveRole")
+}
+
+$declarationPath = Join-Path $root '.codex/governance/zcode-hooks-declaration.json'
+$userConfigPath = Join-Path $env:USERPROFILE '.zcode/cli/config.json'
+$armedNote = '已上膛'
+if (-not (Test-Path -LiteralPath $declarationPath -PathType Leaf)) {
+    $armedNote = '未上膛（仓库声明缺失）'
+} elseif (-not (Test-Path -LiteralPath $userConfigPath -PathType Leaf)) {
+    $armedNote = '未上膛（机器级声明缺失，运行 install-zcode-hooks.ps1）'
+} else {
+    $declaredHooks = Get-GateJsonProperty (ConvertFrom-GateJson -Text ([System.IO.File]::ReadAllText($declarationPath, [System.Text.Encoding]::UTF8))) 'hooks'
+    $installedHooks = Get-GateJsonProperty (ConvertFrom-GateJson -Text ([System.IO.File]::ReadAllText($userConfigPath, [System.Text.Encoding]::UTF8))) 'hooks'
+    $declaredJson = if ($null -eq $declaredHooks) { '' } else { $declaredHooks | ConvertTo-Json -Depth 16 -Compress }
+    $installedJson = if ($null -eq $installedHooks) { '' } else { $installedHooks | ConvertTo-Json -Depth 16 -Compress }
+    if ($declaredJson -ne $installedJson) { $armedNote = '未上膛（声明漂移，运行 install-zcode-hooks.ps1 修复）' }
+}
+$statusParts.Add("门禁=$armedNote")
+
+$sessionState = Read-GateState -Path (Join-Path (Join-Path $runtime 'sessions') "$sessionKey.state.json")
+$lastReason = Get-GateJsonText $sessionState 'last_reason_code'
+$lastBlocks = Get-GateJsonInt $sessionState 'consecutive_blocks'
+if (-not [string]::IsNullOrWhiteSpace($lastReason)) {
+    $statusParts.Add("上次拦截=$lastReason（连续 $lastBlocks 次）")
+} else {
+    $statusParts.Add('上次拦截=无')
+}
+
+$readerPath = Join-Path $root '.codex/governance/session-observation.py'
+$python = Resolve-ObservationReader -Runtime $runtime
+if (-not [string]::IsNullOrWhiteSpace($python) -and (Test-Path -LiteralPath $readerPath -PathType Leaf)) {
+    try {
+        $raw = & $python $readerPath --session-id $sessionId 2>$null | Out-String
+        $observation = ConvertFrom-HookJson -Text $raw
+        $todo = Get-GateJsonProperty $observation 'todo'
+        if ((Get-GateJsonProperty $todo 'available') -eq $true) {
+            $statusParts.Add("自定清单未完成=$(Get-GateJsonInt $todo 'open') 项")
+        }
+        $context = Get-GateJsonProperty $observation 'context'
+        if ((Get-GateJsonProperty $context 'available') -eq $true) {
+            $statusParts.Add("上下文=$(Get-GateJsonInt $context 'tokens')/$(Get-GateJsonInt $context 'limit')（$((Get-GateJsonProperty $context 'percent'))%）")
+        }
+    } catch { }
+}
+
+$entryFailuresPath = Join-Path $runtime 'entry-failures.log'
+if (Test-Path -LiteralPath $entryFailuresPath -PathType Leaf) { $statusParts.Add('入口失败台账=有记录') }
+
+$hookOutput = [ordered] @{
+    hookSpecificOutput = [ordered] @{
+        hookEventName    = 'UserPromptSubmit'
+        additionalContext = "【执行门禁】" + ($statusParts -join ' | ') + '。门禁只拒绝无终态契约的收尾与无证据的上下文收尾理由；上下文压缩由宿主自动完成。'
+    }
+}
+Write-Output ($hookOutput | ConvertTo-Json -Compress)
 
 exit 0
