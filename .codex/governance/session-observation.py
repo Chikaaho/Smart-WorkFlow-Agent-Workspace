@@ -91,8 +91,13 @@ def read_latest_assistant_tokens(connection: sqlite3.Connection, session_id: str
             input_tokens = tokens.get("input") if isinstance(tokens.get("input"), (int, float)) else 0
             output_tokens = tokens.get("output") if isinstance(tokens.get("output"), (int, float)) else 0
             total = input_tokens + output_tokens
+        total = int(total)
+        # 占位/空回合的 assistant 消息可能带 0 token；回退到最近一次真实请求的用量，
+        # 避免把 0% 当成实测值回注。
+        if total <= 0:
+            continue
         return {
-            "tokens": int(total),
+            "tokens": total,
             "model_id": record.get("modelId") if isinstance(record.get("modelId"), str) else "",
             "provider_id": record.get("providerId") if isinstance(record.get("providerId"), str) else "",
         }

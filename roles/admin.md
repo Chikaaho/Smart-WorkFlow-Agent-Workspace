@@ -29,7 +29,7 @@
 - 读写 `roles/`（角色定义文件，见本文 §4）
 - 读写架构文档：`memory/architecture.md`、`knowledge/architecture.md`
 - 读写各 coding 仓库的宪法和工程配置，包括 `AGENTS.md`、`docs/governance/engineering-constitution.md`、构建、工具链、CI 与运行时配置文件
-- 读写 **Governance Implementation**：`.claude/hooks/`、`.codex/hooks/`、`.codex/governance/` 下的公共终态契约、公共 Validator、宿主外 Supervisor、Host Adapter、宿主 Stop Gate 入口（`stop-gate.sh` / `stop-gate.ps1`）、会话角色绑定入口、宿主观察读取器与治理契约测试；并以工程配置身份维护 `.zcode/config.json` 的 hook 声明。宿主入口只绑定会话身份、规范化宿主载荷、调用同一公共 Validator、投影宿主支持的结束决定并写脱敏审计，不自行裁决终态；工作区 hook 的宿主信任评审由 Owner 在宿主界面完成，管理员不代持信任
+- 读写 **Governance Implementation**：`.claude/hooks/`、`.codex/hooks/`、`.codex/governance/` 下的公共终态契约、公共 Validator、宿主外 Supervisor、Host Adapter、宿主 Stop Gate 入口（`stop-gate.sh` / `stop-gate.ps1`）、会话角色绑定入口、宿主观察读取器、声明安装器（`install-zcode-hooks.ps1` 与 `zcode-hooks-declaration.json`）与治理契约测试；并维护宿主 hook 声明（仓库来源 + 机器级生效副本）。宿主入口只绑定会话身份、规范化宿主载荷、调用同一公共 Validator、投影宿主支持的结束决定并写脱敏审计，不自行裁决终态；工作区 hook 的宿主信任评审由 Owner 在宿主界面完成，管理员不代持信任
 - 维护宿主门禁可观察性：`.codex/governance/hook-selfcheck.ps1` 报告声明、入口、观察读取器、信任状态与审计台账；门禁是否实际运行以审计台账为准，不以文件存在代替
 - 维护 S/M/L/XL 分级契约及其文档、机器终态、Validator 与治理契约测试的一致性
 - 仅为治理信息结构迁移而重排 `knowledge/current-status.md` 及其 `knowledge/history/` 归档：允许移动历史段落和建立映射，但不得改变任何业务状态值、功能数、P/I 编号、测试基线或验收结论
@@ -59,8 +59,8 @@
 | 角色定义 | `roles/planner.md`、`roles/executor.md`、`roles/admin.md` | 三个角色的完整定义（2026-08-22 自 system.md 拆分） |
 | 架构文档 | `memory/architecture.md`、`knowledge/architecture.md` | 架构文档（memory 为摘要口径，knowledge 为权威口径） |
 | coding 仓库工程配置 | 项目说明声明的各 coding 仓库 `AGENTS.md`、各仓 `docs/governance/engineering-constitution.md`、构建/工具链/CI/运行时配置文件 | 工程宪法与配置 |
-| Governance Implementation | `.claude/hooks/`、`.codex/hooks/`、`.codex/governance/`（含 `stop-gate.ps1`、`session-role.ps1`、`zcode-gate-common.ps1`、`session-observation.py`、`hook-selfcheck.ps1` 与对应契约测试） | 分级感知的单一机器契约、公共 Validator、治理契约测试与薄 Harness 适配；不得承载业务逻辑 |
-| 宿主 hook 声明 | `.zcode/config.json`（`hooks` 段） | 只固定入口路径与事件；规则仍在 `.codex/governance/`；声明变化需 Owner 在宿主界面重新完成信任评审 |
+| Governance Implementation | `.claude/hooks/`、`.codex/hooks/`、`.codex/governance/`（含 ZCode cmd 入口 `zcode-stop-gate.cmd`/`zcode-role-bind.cmd`、`stop-gate.ps1`、`session-role.ps1`、`zcode-gate-common.ps1`、`session-observation.py`、`hook-selfcheck.ps1` 与对应契约测试） | 分级感知的单一机器契约、公共 Validator、治理契约测试与薄 Harness 适配；cmd 入口只做兜底（捕获输出、重试、fail-closed 与入口失败台账），不得承载终态规则；不得承载业务逻辑 |
+| 宿主 hook 声明 | 仓库来源 `.codex/governance/zcode-hooks-declaration.json`；经 `.codex/governance/install-zcode-hooks.ps1` 同步到用户级 `~/.zcode/cli/config.json` | 只固定宿主入口与事件；规则仍在 `.codex/governance/`；工作区级声明会被宿主信任层反复失效，故生效位置固定在用户级，安装器支持 `-Check` 漂移检查；改规则不改声明 |
 | 治理状态结构 | `knowledge/current-status.md`、`knowledge/history/` | 仅可做当前/历史物理分离和引用迁移，不得改业务值或作状态裁决 |
 | 配套同步 | 引用 system.md 章节号的知识索引/目录注释（如 `knowledge/model-registry.md` 的权威路径索引） | 只同步路径与职责，不复制治理正文 |
 
