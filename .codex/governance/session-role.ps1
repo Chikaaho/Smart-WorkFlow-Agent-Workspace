@@ -13,6 +13,7 @@ param(
     [string] $InputFile = '',
     [string] $EngineRoot = '',
     [string] $RuntimeRoot = '',
+    [string] $FirstPromptText = '',
     [switch] $NoAudit
 )
 
@@ -89,8 +90,38 @@ $existing = Read-GateState -Path $rolePath
 $declaration = Get-DeclaredRole -Prompt $prompt
 $action = 'unchanged'
 $role = ''
+$roleSource = 'user_prompt_submit'
 if ($declaration.reason -eq 'declared') {
     $role = $declaration.role
+} elseif ($null -eq $existing) {
+    # 回填：hook 尚未生效（或首次派发失败）的历史会话，其角色声明只存在于宿主保存的首个提示词里。
+    # 只读宿主记录、只在角色未绑定时执行，且仍然要求显式声明结构。
+    $firstPrompt = $FirstPromptText
+    if ([string]::IsNullOrWhiteSpace($firstPrompt)) {
+        $readerPath = Join-Path $PSScriptRoot 'session-observation.py'
+        $python = Resolve-ObservationReader -Runtime $runtime
+        if (-not [string]::IsNullOrWhiteSpace($python) -and (Test-Path -LiteralPath $readerPath -PathType Leaf)) {
+            try {
+                $raw = & $python $readerPath --session-id $sessionId 2>$null | Out-String
+                $firstPrompt = Get-GateJsonText (ConvertFrom-HookJson -Text $raw) 'first_prompt'
+            } catch { $firstPrompt = '' }
+        }
+    }
+    if (-not [string]::IsNullOrWhiteSpace($firstPrompt)) {
+        $backfill = Get-DeclaredRole -Prompt $firstPrompt
+        if ($backfill.reason -eq 'declared') {
+            $role = $backfill.role
+            $roleSource = 'host_first_prompt'
+            $action = 'backfilled'
+        } elseif ($backfill.reason -eq 'ambiguous') {
+            $action = 'ambiguous'
+        }
+    }
+} elseif ($declaration.reason -eq 'ambiguous') {
+    $action = 'ambiguous'
+}
+
+if (-not [string]::IsNullOrWhiteSpace($role)) {
     $digest = [System.BitConverter]::ToString(
         [System.Security.Cryptography.SHA256]::Create().ComputeHash([System.Text.Encoding]::UTF8.GetBytes($sessionId))
     ).Replace('-', '').Substring(0, 16).ToLowerInvariant()
@@ -98,12 +129,12 @@ if ($declaration.reason -eq 'declared') {
         schema            = 'agent-coding-engine.zcode-session-role.v1'
         session_id_digest = $digest
         role              = $role
-        source            = 'user_prompt_submit'
+        source            = $roleSource
         declared_at       = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
     })
-    $action = if ($null -ne $existing -and (Get-GateJsonText $existing 'role') -eq $role) { 'confirmed' } else { 'bound' }
-} elseif ($declaration.reason -eq 'ambiguous') {
-    $action = 'ambiguous'
+    if ($action -eq 'unchanged') {
+        $action = if ($null -ne $existing -and (Get-GateJsonText $existing 'role') -eq $role) { 'confirmed' } else { 'bound' }
+    }
 }
 
 if (-not $NoAudit) {
@@ -120,15 +151,18 @@ if (-not $NoAudit) {
 # 把门禁状态注入对话：Owner 与模型都能看到门禁是否上膛、清单还剩多少、上次拦截原因，
 # 不必靠猜或事后翻日志。状态行只报事实，不做裁决。
 $effectiveRole = $role
+$roleOrigin = ''
 if ([string]::IsNullOrWhiteSpace($effectiveRole)) {
     $stored = Read-GateState -Path $rolePath
     $effectiveRole = Get-GateJsonText $stored 'role'
+    $storedSource = Get-GateJsonText $stored 'source'
+    if ($storedSource -eq 'host_first_prompt') { $roleOrigin = '（首个提示词回填）' }
 }
 $statusParts = [System.Collections.Generic.List[string]]::new()
 if ([string]::IsNullOrWhiteSpace($effectiveRole)) {
     $statusParts.Add('会话角色=未声明（执行门禁不启用）')
 } else {
-    $statusParts.Add("会话角色=$effectiveRole")
+    $statusParts.Add("会话角色=$effectiveRole$roleOrigin")
 }
 
 $declarationPath = Join-Path $root '.codex/governance/zcode-hooks-declaration.json'

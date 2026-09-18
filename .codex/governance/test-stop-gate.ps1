@@ -171,7 +171,8 @@ function Test-RoleCase {
         [Parameter(Mandatory = $true)] [string] $Name,
         [Parameter(Mandatory = $true)] [string] $Prompt,
         [string] $Session = 'sess_role_case',
-        [string] $ExpectedRole = ''
+        [string] $ExpectedRole = '',
+        [string] $FirstPromptText = ''
     )
 
     $payloadFile = Join-Path $workDir ("role-{0}.json" -f [guid]::NewGuid().ToString('N'))
@@ -183,10 +184,12 @@ function Test-RoleCase {
     }) | Out-Null
     $roleFile = Join-Path $sessions "$Session.role.json"
     if (Test-Path -LiteralPath $roleFile) { Remove-Item -LiteralPath $roleFile -Force }
+    $arguments = @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', $rolePath, '-InputFile', $payloadFile, '-EngineRoot', $rootDir, '-RuntimeRoot', $runtime, '-NoAudit')
+    if (-not [string]::IsNullOrWhiteSpace($FirstPromptText)) { $arguments += @('-FirstPromptText', $FirstPromptText) }
     $previousPreference = $ErrorActionPreference
     $ErrorActionPreference = 'Continue'
     try {
-        $output = & $powerShellExe -NoProfile -ExecutionPolicy Bypass -File $rolePath -InputFile $payloadFile -EngineRoot $rootDir -RuntimeRoot $runtime -NoAudit 2>&1 | Out-String
+        $output = & $powerShellExe @arguments 2>&1 | Out-String
     } finally {
         $ErrorActionPreference = $previousPreference
     }
@@ -348,6 +351,11 @@ Test-RoleCase -Name 'role_declared_planner' -Prompt '角色：规划。请形成
 Test-RoleCase -Name 'role_declared_as_admin' -Prompt '以管理员身份维护治理实现。' -ExpectedRole 'admin'
 Test-RoleCase -Name 'role_mentioned_not_declared' -Prompt '让执行角色去做这件事，规划先给出方向。' -ExpectedRole ''
 Test-RoleCase -Name 'role_ambiguous_not_bound' -Prompt '本会话角色是执行，你的身份是管理员。' -ExpectedRole ''
+
+# --- 历史会话回填：hook 生效前发出的角色声明 ---------------------------
+Test-RoleCase -Name 'role_backfill_from_first_prompt' -Prompt '继续推进当前任务。' -FirstPromptText '你是管理员，检查一下项目hook门禁，近期发现了不下20次中间态汇报。' -ExpectedRole 'admin'
+Test-RoleCase -Name 'role_backfill_ignored_when_prompt_declares' -Prompt '本会话角色为执行，继续。' -FirstPromptText '你是管理员，检查一下项目hook门禁。' -ExpectedRole 'executor'
+Test-RoleCase -Name 'role_no_backfill_without_declaration' -Prompt '继续推进当前任务。' -FirstPromptText '帮我看看这个报错。' -ExpectedRole ''
 
 # --- 宿主载荷异常：fail closed -------------------------------------------
 $invalidPayload = Join-Path $workDir 'payload-invalid.json'

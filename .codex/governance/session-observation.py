@@ -153,6 +153,29 @@ def read_context(connection: sqlite3.Connection, session_id: str, config_path: P
     }
 
 
+def read_first_prompt(connection: sqlite3.Connection, session_id: str, max_chars: int = 4000) -> str:
+    """会话最早的 sendText 提示词原文：用于回填"hook 尚未生效时发出的角色声明"。
+
+    只读取文本，不落盘、不写审计；调用方只在角色未绑定时使用它。
+    """
+    rows = connection.execute(
+        "select payload from session_input where session_id = ? order by time_created limit 5",
+        (session_id,),
+    ).fetchall()
+    for raw in rows:
+        text = raw[0] if isinstance(raw[0], str) else bytes(raw[0]).decode("utf-8", "replace")
+        try:
+            payload = json.loads(text)
+        except (TypeError, ValueError):
+            continue
+        if not isinstance(payload, dict):
+            continue
+        candidate = payload.get("text")
+        if isinstance(candidate, str) and candidate.strip():
+            return candidate[:max_chars]
+    return ""
+
+
 def read_observation(session_id: str, db_path: Path, config_path: Path, timeout: float) -> dict:
     if not db_path.is_file():
         return {"todo": {"available": False, "error": "session-db-not-found"}, "context": {"available": False, "error": "session-db-not-found"}}
@@ -172,12 +195,16 @@ def read_observation(session_id: str, db_path: Path, config_path: Path, timeout:
     except sqlite3.Error as exc:
         todo = {"available": False, "error": f"query-failed: {exc}"}
     try:
+        first_prompt = read_first_prompt(connection, session_id)
+    except sqlite3.Error:
+        first_prompt = ""
+    try:
         context = read_context(connection, session_id, config_path)
     except (sqlite3.Error, OSError, ValueError) as exc:
         context = {"available": False, "error": f"context-query-failed: {exc}"}
     finally:
         connection.close()
-    return {"todo": todo, "context": context}
+    return {"todo": todo, "context": context, "first_prompt": first_prompt}
 
 
 def main() -> int:
