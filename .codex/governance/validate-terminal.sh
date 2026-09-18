@@ -1,10 +1,23 @@
 #!/bin/sh
 set -eu
+# 解析可用的 jq：宿主机不再保证 /usr/bin/jq，缺失时由调用方 fail closed。
+resolve_jq() {
+  for candidate in "${AGENT_CODING_ENGINE_JQ:-}" "$(command -v jq 2>/dev/null || true)" /usr/bin/jq /usr/local/bin/jq /opt/homebrew/bin/jq; do
+    if [ -n "$candidate" ] && [ -x "$candidate" ]; then printf '%s' "$candidate"; return 0; fi
+  done
+  return 1
+}
 root_dir=$(CDPATH= cd -- "$(dirname "$0")/../.." && pwd)
 contract="$root_dir/.codex/governance/terminal-contract.json"
 payload=$(cat)
+jq_bin=$(resolve_jq || true)
+if [ -z "$jq_bin" ]; then
+  # Validator 无法证明契约成立时必须拒绝，而不是放行。
+  printf '%s\n' 'terminal: validator unavailable: no usable jq on this host' >&2
+  exit 1
+fi
 
-if ! payload_type=$(printf '%s' "$payload" | /usr/bin/jq -r 'type' 2>/dev/null); then
+if ! payload_type=$(printf '%s' "$payload" | "$jq_bin" -r 'type' 2>/dev/null); then
   printf '%s\n' 'terminal: payload: invalid JSON' >&2
   exit 2
 fi
@@ -14,7 +27,7 @@ if [ "$payload_type" != "object" ]; then
   exit 1
 fi
 
-diagnostics=$(printf '%s' "$payload" | /usr/bin/jq -r --slurpfile c "$contract" '
+diagnostics=$(printf '%s' "$payload" | "$jq_bin" -r --slurpfile c "$contract" '
   def nonblank: type == "string" and test("\\S");
   def nonnegative_integer: type == "number" and floor == . and . >= 0;
   def actionable_item:
@@ -87,6 +100,40 @@ diagnostics=$(printf '%s' "$payload" | /usr/bin/jq -r --slurpfile c "$contract" 
        )
      else empty end),
     (if ($o|has("browser_status")) and ($o.browser_status|type) != "string" then "browser_status: expected string" elif ($o|has("browser_status")) and ((["NOT_APPLICABLE","OPERABLE","UNAVAILABLE","REQUIRES_SECRET","REQUIRES_MFA","REQUIRES_HUMAN_VERIFICATION"]|index($o.browser_status)) == null) then "browser_status: unknown value" else empty end),
+    (if ($o|has("browser_evidence")) and ($o.browser_evidence|type) != "object" then "browser_evidence: expected object"
+     elif ($o|has("browser_evidence")) then
+       (($o.browser_evidence|keys_unsorted[]) as $k | if (["tier","headless","artifacts","url","viewport","identity","object","network_index"]|index($k)) == null then "browser_evidence.\($k): unknown field" else empty end),
+       (["tier","headless"][] as $k | if ($o.browser_evidence|has($k)|not) then "browser_evidence.\($k): missing required field" else empty end),
+       (if ($o.browser_evidence|has("tier")) and (($o.browser_evidence.tier|type) != "string" or (["FORMAL_FLOW","ISOLATED_REGRESSION","COMPONENT_TEST"]|index($o.browser_evidence.tier)) == null) then "browser_evidence.tier: unknown value" else empty end),
+       (if ($o.browser_evidence|has("headless")) and ($o.browser_evidence.headless|type) != "boolean" then "browser_evidence.headless: expected boolean" else empty end),
+       (if ($o.browser_evidence|has("artifacts")) and (($o.browser_evidence.artifacts|type) != "array" or ($o.browser_evidence.artifacts|length) < 1 or any($o.browser_evidence.artifacts[]; type != "string" or (nonblank|not))) then "browser_evidence.artifacts: expected non-empty array of non-blank strings" else empty end),
+       (["url","viewport","identity","object","network_index"][] as $k | if ($o.browser_evidence|has($k)) and (($o.browser_evidence[$k]|nonblank)|not) then "browser_evidence.\($k): must be non-blank string" else empty end),
+       (if $o.browser_evidence.tier == "FORMAL_FLOW" then
+          (if $o.browser_evidence.headless == true then "browser_evidence.headless: formal flow acceptance must use a visible interactive session, not a headless or background browser" else empty end),
+          (if ($o.browser_evidence|has("artifacts")|not) then "browser_evidence.artifacts: formal flow acceptance requires at least one readback visual artifact" else empty end),
+          (["url","viewport","identity","object","network_index"][] as $k | if ($o.browser_evidence|has($k)|not) then "browser_evidence.\($k): required for formal flow acceptance" else empty end)
+        else empty end)
+     else empty end),
+    (if ($o|has("formal_browser_acceptance")) and ($o.formal_browser_acceptance|type) != "boolean" then "formal_browser_acceptance: expected boolean" else empty end),
+    (if $o.formal_browser_acceptance == true then
+       (if ($o|has("browser_evidence")|not) then "browser_evidence: required when formal_browser_acceptance is true" else empty end),
+       (if ($o|has("browser_evidence")) and ($o.browser_evidence|type) == "object" and ($o.browser_evidence.tier != "FORMAL_FLOW") then "browser_evidence.tier: formal_browser_acceptance requires FORMAL_FLOW" else empty end)
+     else empty end),
+    (if ($o|has("confirmation")) and ($o.confirmation|type) != "object" then "confirmation: expected object"
+     elif ($o|has("confirmation")) then
+       (($o.confirmation|keys_unsorted[]) as $k | if (["category","input_source","action"]|index($k)) == null then "confirmation.\($k): unknown field" else empty end),
+       (["category","input_source","action"][] as $k | if ($o.confirmation|has($k)|not) then "confirmation.\($k): missing required field" else empty end),
+       (if ($o.confirmation|has("category")) and (($o.confirmation.category|type) != "string" or (["SECRET","MFA","HUMAN_VERIFICATION","DESTRUCTIVE","REMOTE_PUBLISH","OUT_OF_AUTHORIZATION","DETERMINISTIC_LOCAL_INPUT"]|index($o.confirmation.category)) == null) then "confirmation.category: unknown value" else empty end),
+       (if ($o.confirmation|has("input_source")) and (($o.confirmation.input_source|type) != "string" or (["DEV_TEST_CONFIG","EXISTING_TEST_CONTRACT","USER_SECRET","EXTERNAL_SYSTEM","NONE"]|index($o.confirmation.input_source)) == null) then "confirmation.input_source: unknown value" else empty end),
+       (if ($o.confirmation|has("action")) and (($o.confirmation.action|nonblank)|not) then "confirmation.action: must be non-blank string" else empty end),
+       (if (($o.confirmation.category == "DETERMINISTIC_LOCAL_INPUT") or
+            ((($o.confirmation.input_source == "DEV_TEST_CONFIG") or ($o.confirmation.input_source == "EXISTING_TEST_CONTRACT")) and ((["DESTRUCTIVE","REMOTE_PUBLISH","OUT_OF_AUTHORIZATION"]|index($o.confirmation.category)) == null)))
+        then "confirmation: authorized deterministic input is a continue action; complete it without requesting user input" else empty end),
+       (if ((["SECRET","MFA","HUMAN_VERIFICATION"]|index($o.confirmation.category)) != null) and ((["USER_SECRET","EXTERNAL_SYSTEM"]|index($o.confirmation.input_source)) == null) then "confirmation.input_source: real secret, MFA, or human verification input must come from the user or an external system" else empty end),
+       (if $o.confirmation.category == "SECRET" and (any($o.tool_results[]?; .outcome == "REQUIRES_SECRET")|not) then "confirmation.category: SECRET requires an actual REQUIRES_SECRET tool result" else empty end),
+       (if $o.confirmation.category == "MFA" and (any($o.tool_results[]?; .outcome == "REQUIRES_MFA")|not) then "confirmation.category: MFA requires an actual REQUIRES_MFA tool result" else empty end),
+       (if $o.confirmation.category == "HUMAN_VERIFICATION" and (any($o.tool_results[]?; .outcome == "REQUIRES_HUMAN_VERIFICATION")|not) then "confirmation.category: HUMAN_VERIFICATION requires an actual REQUIRES_HUMAN_VERIFICATION tool result" else empty end)
+     else empty end),
     (if ($o.state? | type) == "string" and ($s.states|has($o.state)) then
        ($s.states[$o.state].required[] as $k | if ($o|has($k)|not) then "\($k): required for state \($o.state)" else empty end),
        (($o|keys_unsorted[]) as $k |
