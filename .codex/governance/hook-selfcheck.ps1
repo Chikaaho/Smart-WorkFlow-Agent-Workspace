@@ -65,7 +65,8 @@ if (Test-Path -LiteralPath $declarationPath -PathType Leaf) {
                     $command = Get-GateJsonText $hook 'command'
                     $arguments = Get-GateJsonProperty $hook 'args'
                     $joined = "$command " + (@($arguments) -join ' ')
-                    if ($joined -notmatch 'zcode-stop-gate\.cmd|zcode-role-bind\.cmd') { $commandsOk = $false }
+                    # 合法入口两种形态：command 型 .cmd 包装器，或 process 型直连 governance 内 .ps1。
+                    if ($joined -notmatch 'zcode-stop-gate\.cmd|zcode-role-bind\.cmd|governance[/\\](stop-gate|session-role)\.ps1') { $commandsOk = $false }
                 }
             }
         }
