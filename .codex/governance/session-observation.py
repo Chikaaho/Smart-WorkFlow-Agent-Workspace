@@ -153,6 +153,58 @@ def read_context(connection: sqlite3.Connection, session_id: str, config_path: P
     }
 
 
+def read_marker(default: str = "ENGINE_TERMINAL") -> str:
+    """终态行 marker 只来自 terminal-contract.json（与 Stop Gate 同源）。"""
+    contract = Path(__file__).resolve().parent / "terminal-contract.json"
+    try:
+        value = json.loads(contract.read_text(encoding="utf-8-sig")).get("marker")
+    except (OSError, ValueError):
+        return default
+    return value if isinstance(value, str) and value.strip() else default
+
+
+def read_last_assistant_message(connection: sqlite3.Connection, session_id: str, marker: str, max_scan: int = 10) -> dict:
+    """会话最近一条带正文的 assistant 消息是否以合法终态行结尾。
+
+    宿主对 Stop hook 的派发实测可能静默缺失（不上门禁也不留失败日志），因此
+    UserPromptSubmit 入口需要独立回答"上一回合是否无契约收尾"。判定与 Gate 的
+    物理末行规则一致：最后一行必须以 `marker ` 开头。
+    """
+    rows = connection.execute(
+        "select id, time_created from message where session_id = ? order by time_created desc limit ?",
+        (session_id, max_scan),
+    ).fetchall()
+    prefix = f"{marker} "
+    for message_id, time_created in rows:
+        parts = connection.execute(
+            "select data from part where message_id = ? order by sequence",
+            (message_id,),
+        ).fetchall()
+        texts = []
+        for (raw,) in parts:
+            text = raw if isinstance(raw, str) else bytes(raw).decode("utf-8", "replace")
+            try:
+                piece = json.loads(text)
+            except (TypeError, ValueError):
+                continue
+            if isinstance(piece, dict) and piece.get("type") == "text" and isinstance(piece.get("text"), str):
+                texts.append(piece["text"])
+        body = "\n".join(texts).strip()
+        if not body:
+            continue
+        lines = [line.rstrip() for line in body.splitlines()]
+        while lines and lines[-1] == "":
+            lines.pop()
+        return {
+            "available": True,
+            "message_id": message_id,
+            "time_created": int(time_created),
+            "text_chars": len(body),
+            "has_marker": bool(lines) and lines[-1].startswith(prefix),
+        }
+    return {"available": False, "error": "assistant-text-not-found"}
+
+
 def read_first_prompt(connection: sqlite3.Connection, session_id: str, max_chars: int = 4000) -> str:
     """会话最早的 sendText 提示词原文：用于回填"hook 尚未生效时发出的角色声明"。
 
@@ -202,9 +254,13 @@ def read_observation(session_id: str, db_path: Path, config_path: Path, timeout:
         context = read_context(connection, session_id, config_path)
     except (sqlite3.Error, OSError, ValueError) as exc:
         context = {"available": False, "error": f"context-query-failed: {exc}"}
+    try:
+        last_assistant = read_last_assistant_message(connection, session_id, read_marker())
+    except sqlite3.Error as exc:
+        last_assistant = {"available": False, "error": f"last-assistant-query-failed: {exc}"}
     finally:
         connection.close()
-    return {"todo": todo, "context": context, "first_prompt": first_prompt}
+    return {"todo": todo, "context": context, "first_prompt": first_prompt, "last_assistant": last_assistant}
 
 
 def main() -> int:
