@@ -200,7 +200,58 @@ function New-ReasonText {
     return $reason
 }
 
-$payloadText = Read-GatePayload -InlineJson $InputJson -FromFile $InputFile
+# 派发回执：宿主只要真的执行了本入口就留痕，用于区分"宿主未派发 Stop hook"与
+# "入口静默退出（空载荷/根缺失/角色未绑定）"。宿主对 Stop 的派发实测不稳定，
+# 该回执是派发率的地面真相；写失败不得影响裁决。
+function Write-GateInvocationReceipt {
+    param(
+        [Parameter(Mandatory = $true)] [AllowEmptyString()] [string] $Runtime,
+        [Parameter(Mandatory = $true)] [AllowEmptyString()] [string] $Outcome,
+        [AllowEmptyString()] [string] $Session = '',
+        [int] $Bytes = 0,
+        [AllowEmptyString()] [string] $Detail = ''
+    )
+
+    try {
+        $receiptPath = if ([string]::IsNullOrWhiteSpace($Runtime)) { Join-Path $PSScriptRoot 'runtime/zcode/invocations.log' } else { Join-Path $Runtime 'invocations.log' }
+        $receiptDirectory = Split-Path -Parent $receiptPath
+        if (-not (Test-Path -LiteralPath $receiptDirectory -PathType Container)) {
+            New-Item -ItemType Directory -Path $receiptDirectory -Force | Out-Null
+        }
+        $receipt = [ordered] @{
+            ts       = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
+            event    = 'Stop'
+            dispatch = $Outcome
+            session  = $Session
+            bytes    = $Bytes
+        }
+        if (-not [string]::IsNullOrWhiteSpace($Detail)) { $receipt.detail = $Detail.Substring(0, [Math]::Min(240, $Detail.Length)) }
+        [System.IO.File]::AppendAllText($receiptPath, ($receipt | ConvertTo-Json -Compress) + [Environment]::NewLine, [System.Text.UTF8Encoding]::new($false))
+    } catch { }
+}
+
+Write-GateInvocationReceipt -Runtime $RuntimeRoot -Outcome 'invoked'
+
+# trap 作用于整个脚本作用域（含其声明位置之前的语句），因此审计路径与会话键必须
+# 在任何可能抛出的语句之前完成初始化，否则早期异常会让 trap 自身再炸一次。
+$auditPath = ''
+$sessionKey = 'unknown-session'
+$toolCallCount = 0
+
+# 载荷读取必须在 trap 生效前自行兜底：stdin 管道异常（宿主写入中断/管道损坏）会从这里
+# 抛出，历史上直接导致整脚本 rc=1、宿主记 hook.run.failed、回合静默漏放。按宪法
+# "入口缺少裁决所需能力时必须 fail closed"，读取失败时以可裁决的 block 收场并留痕。
+$payloadText = ''
+try {
+    $payloadText = Read-GatePayload -InlineJson $InputJson -FromFile $InputFile
+} catch {
+    $payloadError = "$($_.Exception.GetType().FullName): $($_.Exception.Message)"
+    Write-GateInvocationReceipt -Runtime $RuntimeRoot -Outcome 'payload-read-error' -Detail $payloadError
+    [Console]::Error.WriteLine("执行会话不能结束：停止门禁无法读取宿主载荷（$payloadError），按 fail-closed 拦截。下一步动作：继续执行授权内工作项并按 .codex/governance/terminal-contract.json 输出终态行；把该记录交给管理员。")
+    Write-Output (@{ decision = 'block'; reason = "执行会话不能结束：停止门禁无法读取宿主载荷（$payloadError），fail-closed 拦截。下一步动作：继续执行授权内工作项，并在正文最后一行输出唯一合法终态行。" } | ConvertTo-Json -Compress)
+    exit 0
+}
+Write-GateInvocationReceipt -Runtime $RuntimeRoot -Outcome 'payload-read' -Bytes $payloadText.Length
 if ([string]::IsNullOrWhiteSpace($payloadText)) { exit 0 }
 $payload = ConvertFrom-GateJson -Text $payloadText
 if ($null -eq $payload) {
