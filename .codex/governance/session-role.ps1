@@ -53,7 +53,12 @@ function Get-DeclaredRole {
     return @{ role = @($found)[0]; reason = 'declared' }
 }
 
-$payloadText = Read-GatePayload -InlineJson $InputJson -FromFile $InputFile
+# 角色绑定是提示词时点的尽力而为：stdin 管道异常不得阻断用户提示词，直接降级退出。
+try {
+    $payloadText = Read-GatePayload -InlineJson $InputJson -FromFile $InputFile
+} catch {
+    exit 0
+}
 $payload = ConvertFrom-GateJson -Text $payloadText
 if ($null -eq $payload) { exit 0 }
 
@@ -192,6 +197,7 @@ if (-not [string]::IsNullOrWhiteSpace($lastReason)) {
 
 $readerPath = Join-Path $root '.codex/governance/session-observation.py'
 $python = Resolve-ObservationReader -Runtime $runtime
+$observation = $null
 if (-not [string]::IsNullOrWhiteSpace($python) -and (Test-Path -LiteralPath $readerPath -PathType Leaf)) {
     try {
         $raw = & $python $readerPath --session-id $sessionId 2>$null | Out-String
@@ -207,13 +213,50 @@ if (-not [string]::IsNullOrWhiteSpace($python) -and (Test-Path -LiteralPath $rea
     } catch { }
 }
 
+# 上回合收尾检测：宿主对 Stop hook 的派发实测可能静默缺失（门禁零裁决也不留失败日志），
+# 因此在提示词时点独立核查"上一回合是否以合法终态行结束"。上一回合带正文且无终态行时，
+# 状态行直接标注未过门禁，并向模型注入纠偏要求；同时写审计以度量宿主派发缺失频率。
+$previousTurnUngated = $false
+if ($effectiveRole -eq 'executor' -and $null -ne $observation) {
+    $lastAssistant = Get-GateJsonProperty $observation 'last_assistant'
+    if ((Get-GateJsonProperty $lastAssistant 'available') -eq $true -and (Get-GateJsonInt $lastAssistant 'text_chars') -gt 0) {
+        if ((Get-GateJsonProperty $lastAssistant 'has_marker') -eq $true) {
+            $statusParts.Add('上回合=已带终态')
+        } else {
+            $previousTurnUngated = $true
+            $statusParts.Add('上回合=未过门禁（无终态契约收尾）')
+        }
+    }
+}
+
 $entryFailuresPath = Join-Path $runtime 'entry-failures.log'
 if (Test-Path -LiteralPath $entryFailuresPath -PathType Leaf) { $statusParts.Add('入口失败台账=有记录') }
 
-$hookOutput = [ordered] @{
-    hookSpecificOutput = [ordered] @{
-        hookEventName    = 'UserPromptSubmit'
-        additionalContext = "【执行门禁】" + ($statusParts -join ' | ') + '。门禁只拒绝无终态契约的收尾与无证据的上下文收尾理由；上下文压缩由宿主自动完成。'
+if ($previousTurnUngated) {
+    if (-not $NoAudit) {
+        Write-GateAudit -Path $auditPath -Record ([ordered] @{
+            ts          = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
+            event       = 'UserPromptSubmit'
+            session     = $sessionKey
+            role        = $effectiveRole
+            action      = 'previous_turn_ungated'
+            reason_code = 'STOP_DISPATCH_MISSED'
+            engine_root = $root
+        })
+    }
+    $correction = '纠偏要求：上回合以无契约收尾且未被 Stop 门禁拦截（宿主派发缺失），宿主漏放不等于终态被接受；本回合不得默认接受上回合的中途汇报，先核对其声明的剩余工作项并继续执行，完成本轮实际工作后再按 .codex/governance/terminal-contract.json 输出唯一合法终态行。'
+    $hookOutput = [ordered] @{
+        hookSpecificOutput = [ordered] @{
+            hookEventName     = 'UserPromptSubmit'
+            additionalContext = "【执行门禁】" + ($statusParts -join ' | ') + "。$correction"
+        }
+    }
+} else {
+    $hookOutput = [ordered] @{
+        hookSpecificOutput = [ordered] @{
+            hookEventName     = 'UserPromptSubmit'
+            additionalContext = "【执行门禁】" + ($statusParts -join ' | ') + '。门禁只拒绝无终态契约的收尾与无证据的上下文收尾理由；上下文压缩由宿主自动完成。'
+        }
     }
 }
 Write-Output ($hookOutput | ConvertTo-Json -Compress)
