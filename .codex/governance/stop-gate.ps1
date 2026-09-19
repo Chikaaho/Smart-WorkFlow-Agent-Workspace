@@ -24,6 +24,40 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
+
+# —— 派发回执（必须是脚本最前期的可执行语句）——
+# 宿主长时高负载窗口实测存在 Stop hook 进程启动最初期即崩溃的形态（170-309ms、
+# 无任何脚本痕迹）。回执越靠前，越能区分"spawn/启动早期失败"（无 invoked 回执）
+# 与"脚本内失败"（有 invoked、后续 outcome 缺失）。写失败不得影响裁决。
+function Write-GateInvocationReceipt {
+    param(
+        [Parameter(Mandatory = $true)] [AllowEmptyString()] [string] $Runtime,
+        [Parameter(Mandatory = $true)] [AllowEmptyString()] [string] $Outcome,
+        [AllowEmptyString()] [string] $Session = '',
+        [int] $Bytes = 0,
+        [AllowEmptyString()] [string] $Detail = ''
+    )
+
+    try {
+        $receiptPath = if ([string]::IsNullOrWhiteSpace($Runtime)) { Join-Path $PSScriptRoot 'runtime/zcode/invocations.log' } else { Join-Path $Runtime 'invocations.log' }
+        $receiptDirectory = Split-Path -Parent $receiptPath
+        if (-not (Test-Path -LiteralPath $receiptDirectory -PathType Container)) {
+            New-Item -ItemType Directory -Path $receiptDirectory -Force | Out-Null
+        }
+        $receipt = [ordered] @{
+            ts       = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
+            event    = 'Stop'
+            dispatch = $Outcome
+            session  = $Session
+            bytes    = $Bytes
+        }
+        if (-not [string]::IsNullOrWhiteSpace($Detail)) { $receipt.detail = $Detail.Substring(0, [Math]::Min(240, $Detail.Length)) }
+        [System.IO.File]::AppendAllText($receiptPath, ($receipt | ConvertTo-Json -Compress) + [Environment]::NewLine, [System.Text.UTF8Encoding]::new($false))
+    } catch { }
+}
+
+Write-GateInvocationReceipt -Runtime $RuntimeRoot -Outcome 'invoked'
+
 Set-StrictMode -Version Latest
 # 宿主按 UTF-8 解码 hook 输出；Windows PowerShell 5.1 默认按 OEM 代码页写 stdout/stderr，
 # 不显式指定会让回注的中文 reason 变成乱码。
@@ -200,38 +234,6 @@ function New-ReasonText {
     return $reason
 }
 
-# 派发回执：宿主只要真的执行了本入口就留痕，用于区分"宿主未派发 Stop hook"与
-# "入口静默退出（空载荷/根缺失/角色未绑定）"。宿主对 Stop 的派发实测不稳定，
-# 该回执是派发率的地面真相；写失败不得影响裁决。
-function Write-GateInvocationReceipt {
-    param(
-        [Parameter(Mandatory = $true)] [AllowEmptyString()] [string] $Runtime,
-        [Parameter(Mandatory = $true)] [AllowEmptyString()] [string] $Outcome,
-        [AllowEmptyString()] [string] $Session = '',
-        [int] $Bytes = 0,
-        [AllowEmptyString()] [string] $Detail = ''
-    )
-
-    try {
-        $receiptPath = if ([string]::IsNullOrWhiteSpace($Runtime)) { Join-Path $PSScriptRoot 'runtime/zcode/invocations.log' } else { Join-Path $Runtime 'invocations.log' }
-        $receiptDirectory = Split-Path -Parent $receiptPath
-        if (-not (Test-Path -LiteralPath $receiptDirectory -PathType Container)) {
-            New-Item -ItemType Directory -Path $receiptDirectory -Force | Out-Null
-        }
-        $receipt = [ordered] @{
-            ts       = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
-            event    = 'Stop'
-            dispatch = $Outcome
-            session  = $Session
-            bytes    = $Bytes
-        }
-        if (-not [string]::IsNullOrWhiteSpace($Detail)) { $receipt.detail = $Detail.Substring(0, [Math]::Min(240, $Detail.Length)) }
-        [System.IO.File]::AppendAllText($receiptPath, ($receipt | ConvertTo-Json -Compress) + [Environment]::NewLine, [System.Text.UTF8Encoding]::new($false))
-    } catch { }
-}
-
-Write-GateInvocationReceipt -Runtime $RuntimeRoot -Outcome 'invoked'
-
 # trap 作用于整个脚本作用域（含其声明位置之前的语句），因此审计路径与会话键必须
 # 在任何可能抛出的语句之前完成初始化，否则早期异常会让 trap 自身再炸一次。
 $auditPath = ''
@@ -251,7 +253,9 @@ try {
     Write-Output (@{ decision = 'block'; reason = "执行会话不能结束：停止门禁无法读取宿主载荷（$payloadError），fail-closed 拦截。下一步动作：继续执行授权内工作项，并在正文最后一行输出唯一合法终态行。" } | ConvertTo-Json -Compress)
     exit 0
 }
-Write-GateInvocationReceipt -Runtime $RuntimeRoot -Outcome 'payload-read' -Bytes $payloadText.Length
+$receiptPayload = $null
+try { if (-not [string]::IsNullOrWhiteSpace($payloadText)) { $receiptPayload = ConvertFrom-GateJson -Text $payloadText } } catch { }
+Write-GateInvocationReceipt -Runtime $RuntimeRoot -Outcome 'payload-read' -Session $(if ($null -ne $receiptPayload) { Get-GateJsonText $receiptPayload 'session_id' }) -Bytes $payloadText.Length
 if ([string]::IsNullOrWhiteSpace($payloadText)) { exit 0 }
 $payload = ConvertFrom-GateJson -Text $payloadText
 if ($null -eq $payload) {
