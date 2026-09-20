@@ -11,8 +11,8 @@
 ```
 
 - 目标、非目标和范围来自已授权方向；本参考文档不建立二次授权门。
-- 后端专属实现规则见 `Smart-WorkFlow-Server/docs/governance/engineering-constitution.md`。
-- 前端专属实现规则见 `Smart-WorkFlow-Web/docs/governance/engineering-constitution.md`。
+- 后端专属实现规则见 `Smart-WorkFlow-aPaaS-server/docs/governance/engineering-constitution.md`。
+- 前端专属实现规则见 `Smart-WorkFlow-aPaaS-Web/docs/governance/engineering-constitution.md`。
 - 跨端安全、接缝、资源互斥与设计系统见 `knowledge/shared-constraints.md`。
 
 ## 2. 校验门

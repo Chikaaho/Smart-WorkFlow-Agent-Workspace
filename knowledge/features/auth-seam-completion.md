@@ -98,11 +98,11 @@
 
 - **2026-07-22（F1 方案生成）**：规划层完成 F1 方案。方案覆盖 5 个核心改动点：(1) `token.ts` 新增到期戳 + `isTokenNearExpiry()` + `setTokenResponse()` + `clearToken()`；(2) `auth/index.ts` login 契约适配 + refresh 单飞实现 + logout 接真实端点；(3) `request/index.ts` 请求拦截器到期刷新 + refreshHandler 依赖注入；(4) `router/index.ts` 注入 refreshHandler；(5) `router/guard.ts` 冷启动续登。新增 2 个 spec 文件（token.spec.ts ≥6 + index.spec.ts ≥6 用例）。12 条验收标准。推荐模型：deepseek-v4-pro。方案路径：`product/auth-seam-completion/ready/step-6-f1-frontend-auth.md`。
 
-- **2026-07-22（F1 执行+验收通过）**：前端执行代理在 Smart-WorkFlow-Web 中完成 Step F1。8 文件改动（5 改 + 2 新 spec + 1 测试扩增）：`token.ts` +35 行（4 新导出，4 旧签名不变），`auth/index.ts` +54/-19（login 契约适配 `R<TokenResponseDTO>` + refresh 单飞 + logout try/catch/finally），`request/index.ts` +34/-3（async 拦截器 + refreshHandler 注入 + AUTH_ENDPOINTS 追加 `/auth/logout`），`router/index.ts` +6/-1（`setRefreshHandler(refresh)` 注入），`guard.ts` +4/-1（注释更新）。新建 `token.spec.ts`（12 用例）+ `index.spec.ts`（7 用例），扩增 `guard.spec.ts`（+1 冷启动成功路径）。四连全绿：`pnpm typecheck` 零错误，`pnpm lint` 零告警，`pnpm test` **56 files / 491 tests / 0 失败**（基线 471 + 20 新增），`pnpm build` BUILD SUCCESS。2 个偏差：(1) `logout()` 新增 catch 块（方案伪代码 try...finally + 测试期望"不应抛异常"矛盾，对齐测试期望）；(2) 基线 203→471（知识库过期数字，非执行问题）。循环依赖未出现（依赖反转注入有效）。构建产物 tree-shake 确认：dist 中 dispatchMock 零命中。12 条验收标准全部满足，规划层独立复核确认。**PASSED** ✅。方案已归档至 `passed/`，回执存 `receipts/`。下一 Step：**F2（PENDING）**。
+- **2026-07-22（F1 执行+验收通过）**：前端执行代理在 Smart-WorkFlow-aPaaS-Web 中完成 Step F1。8 文件改动（5 改 + 2 新 spec + 1 测试扩增）：`token.ts` +35 行（4 新导出，4 旧签名不变），`auth/index.ts` +54/-19（login 契约适配 `R<TokenResponseDTO>` + refresh 单飞 + logout try/catch/finally），`request/index.ts` +34/-3（async 拦截器 + refreshHandler 注入 + AUTH_ENDPOINTS 追加 `/auth/logout`），`router/index.ts` +6/-1（`setRefreshHandler(refresh)` 注入），`guard.ts` +4/-1（注释更新）。新建 `token.spec.ts`（12 用例）+ `index.spec.ts`（7 用例），扩增 `guard.spec.ts`（+1 冷启动成功路径）。四连全绿：`pnpm typecheck` 零错误，`pnpm lint` 零告警，`pnpm test` **56 files / 491 tests / 0 失败**（基线 471 + 20 新增），`pnpm build` BUILD SUCCESS。2 个偏差：(1) `logout()` 新增 catch 块（方案伪代码 try...finally + 测试期望"不应抛异常"矛盾，对齐测试期望）；(2) 基线 203→471（知识库过期数字，非执行问题）。循环依赖未出现（依赖反转注入有效）。构建产物 tree-shake 确认：dist 中 dispatchMock 零命中。12 条验收标准全部满足，规划层独立复核确认。**PASSED** ✅。方案已归档至 `passed/`，回执存 `receipts/`。下一 Step：**F2（PENDING）**。
 
 - **2026-07-22（F2 方案生成）**：规划层完成 F2 方案。3 个 mock handler 更新/新增：(1) login handler 从 `R<string>` 改为 `R<{accessToken, expiresIn: 900}>`；(2) 新增 refresh handler（返回新 token）；(3) 新增 logout handler（返回 `null`，幂等）。mock spec 对应更新 3 处断言。2 文件改动（handlers.ts + index.spec.ts），其余零改动。12 条验收标准。推荐模型：deepseek-v4-flash。方案路径：`product/auth-seam-completion/ready/step-7-f2-frontend-mock.md`。
 
-- **2026-07-22（F2 执行+验收通过）**：前端执行代理在 Smart-WorkFlow-Web 中完成 Step F2。2 文件改动（handlers.ts + index.spec.ts，43 insertions / 5 deletions）：(1) login handler 返回值从 `string` → `{accessToken, expiresIn: 900}`；(2) 新增 refresh handler（返回 `{accessToken, expiresIn: 900}`）；(3) 新增 logout handler（返回 `data: null`，幂等）。mock spec 断言更新：login 从 `typeof string` → `toMatchObject`，refresh/logout 各新增注册验证。四连全绿：`pnpm typecheck` 零错误，`pnpm lint` 0 errors/0 warnings，`pnpm test` **56 files / 491 tests / 0 失败**（F1 基线 491，零退化），`pnpm build` BUILD SUCCESS (3.36s)。零偏差。构建产物 tree-shake 确认：dist 中 `dispatchMock`/`mock-access-token`/`mock-refreshed-token` 零命中。12 条验收标准全部满足，规划层独立复核确认。**PASSED** ✅。方案已归档至 `passed/`，回执存 `receipts/`。**全部 7 Steps（V1/B1/B2/B3/B4/F1/F2）均 PASSED，auth-seam-completion 功能完成。**
+- **2026-07-22（F2 执行+验收通过）**：前端执行代理在 Smart-WorkFlow-aPaaS-Web 中完成 Step F2。2 文件改动（handlers.ts + index.spec.ts，43 insertions / 5 deletions）：(1) login handler 返回值从 `string` → `{accessToken, expiresIn: 900}`；(2) 新增 refresh handler（返回 `{accessToken, expiresIn: 900}`）；(3) 新增 logout handler（返回 `data: null`，幂等）。mock spec 断言更新：login 从 `typeof string` → `toMatchObject`，refresh/logout 各新增注册验证。四连全绿：`pnpm typecheck` 零错误，`pnpm lint` 0 errors/0 warnings，`pnpm test` **56 files / 491 tests / 0 失败**（F1 基线 491，零退化），`pnpm build` BUILD SUCCESS (3.36s)。零偏差。构建产物 tree-shake 确认：dist 中 `dispatchMock`/`mock-access-token`/`mock-refreshed-token` 零命中。12 条验收标准全部满足，规划层独立复核确认。**PASSED** ✅。方案已归档至 `passed/`，回执存 `receipts/`。**全部 7 Steps（V1/B1/B2/B3/B4/F1/F2）均 PASSED，auth-seam-completion 功能完成。**
 
 ## 9. 遗留与已知问题
 
@@ -133,7 +133,7 @@
 
 ### 10.3 实际修改范围
 
-**后端（Smart-WorkFlow-Server/）**：
+**后端（Smart-WorkFlow-aPaaS-server/）**：
 
 | Step | 文件数 | 新建 | 修改 | 关键产出 |
 |:----:|:------:|------|------|----------|
@@ -147,7 +147,7 @@
 - **新建类**：TokenResponse, CookieUtils, RefreshTokenService, SysRefreshToken, SysRefreshTokenMapper
 - **后端测试基线**：462 tests（26 文件）
 
-**前端（Smart-WorkFlow-Web/）**：
+**前端（Smart-WorkFlow-aPaaS-Web/）**：
 
 | Step | 文件数 | 新建 | 修改 | 关键产出 |
 |:----:|:------:|------|------|----------|

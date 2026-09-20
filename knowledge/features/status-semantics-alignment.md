@@ -16,7 +16,7 @@
 | 功能目标 | 统一系统管理前端与后端的状态值语义：用户/部门页面提交、回填、筛选及展示的「正常/停用」含义与后端契约一致 |
 | 创建日期 | 2026-08-17 |
 | 当前状态 | **PASSED 并已归档**（2026-08-17 规划层最终验收 PASSED，无独立 D 编号；前端 66f/576t 四连全绿；归档 `product/status-semantics-alignment/passed/`） |
-| 涉及模块 | 前端 `Smart-WorkFlow-Web`：src/modules/system（用户页/部门页）、src/foundation/mock（seeds/handlers）、测试 |
+| 涉及模块 | 前端 `Smart-WorkFlow-aPaaS-Web`：src/modules/system（用户页/部门页）、src/foundation/mock（seeds/handlers）、测试 |
 
 ---
 

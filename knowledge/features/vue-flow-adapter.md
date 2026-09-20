@@ -18,7 +18,7 @@
 | 功能目标 | 将 `adapters/flow-graph/index.ts` 从接口壳（`throw new Error('not implemented')`）实现为可用的 Vue Flow 防腐层：挂载画布、导出图数据、生命周期销毁、基础事件回调，见 §2.1 |
 | 创建日期 | 2026-07-25 |
 | 当前状态 | **COMPLETED** ✅（Step 0 PASSED，Step 1 PASSED，2026-07-25 阶段三收尾完成） |
-| 涉及模块 | 仅前端 `Smart-WorkFlow-Web/src/adapters/flow-graph/`（CONFIRMED 2026-07-25 Step 0：零消费方，不涉及 `modules/form/`；`modules/agent/` 目前仅骨架，本功能不修改任何 `modules/`） |
+| 涉及模块 | 仅前端 `Smart-WorkFlow-aPaaS-Web/src/adapters/flow-graph/`（CONFIRMED 2026-07-25 Step 0：零消费方，不涉及 `modules/form/`；`modules/agent/` 目前仅骨架，本功能不修改任何 `modules/`） |
 
 ---
 
@@ -72,7 +72,7 @@
 
 - **状态**：**PASSED**
 - **目标**：厘清 Vue Flow adapter 当前实现现状、消费场景归属（M07 AI 调度图 vs 表单设计器可视化）、与 BPMN adapter 的结构对比，为后续 Step 1 正式方案提供依据
-- **执行位置**：规划层自身会话（`/data/reasonix/files`），不下发到 `Smart-WorkFlow-Web/`
+- **执行位置**：规划层自身会话（`/data/reasonix/files`），不下发到 `Smart-WorkFlow-aPaaS-Web/`
 - **结构**：按 system.md §0.4.1 精简 5 项清单（非 §6 完整 17 项结构）
 - **任务原文**：已下发并存档至 `product/vue-flow-adapter/step-0-exploration-task.md`（不进入 §11.2 `ready/`→`passed/` 流转，为 Step 0 专用存档位置）
 - **探索摘要**：✅ 已产出并存档至 `product/vue-flow-adapter/step-0-exploration-summary.md`（2026-07-25）。关键结论：
@@ -123,8 +123,8 @@
 
 | 文件 | 操作 | 行数 | 说明 |
 |------|------|:---:|------|
-| `Smart-WorkFlow-Web/src/adapters/flow-graph/index.ts` | 重写 | 147 行 | 从 8 行接口壳重写为完整防腐层：6 导出符号 + 2 内部转换函数 + `mountFlowGraph`（createApp + defineComponent + h() 渲染函数） |
-| `Smart-WorkFlow-Web/src/adapters/flow-graph/index.spec.ts` | 新建 | 96 行 | 6 测试场景：挂载/初始数据/空数据/destroy 清空 DOM/destroy 幂等/events 回调 |
+| `Smart-WorkFlow-aPaaS-Web/src/adapters/flow-graph/index.ts` | 重写 | 147 行 | 从 8 行接口壳重写为完整防腐层：6 导出符号 + 2 内部转换函数 + `mountFlowGraph`（createApp + defineComponent + h() 渲染函数） |
+| `Smart-WorkFlow-aPaaS-Web/src/adapters/flow-graph/index.spec.ts` | 新建 | 96 行 | 6 测试场景：挂载/初始数据/空数据/destroy 清空 DOM/destroy 幂等/events 回调 |
 
 无其他文件被修改。`package.json`、`pnpm-lock.yaml` 零改动。
 

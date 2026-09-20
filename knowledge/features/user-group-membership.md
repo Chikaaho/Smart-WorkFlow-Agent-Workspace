@@ -14,7 +14,7 @@
 | 功能目标 | 租户内扁平虚拟用户组的维护与成员多对多绑定闭环，为后续流程/权限消费提供引用基础（本轮不接消费端） |
 | 创建日期 | 2026-08-19（D112 方向下发） |
 | 当前状态 | **COMPLETED**（D117 PASSED + 阶段三同步，2026-08-19） |
-| 涉及模块 | 后端 sw-biz-system / 前端 Smart-WorkFlow-Web system 模块 |
+| 涉及模块 | 后端 sw-biz-system / 前端 Smart-WorkFlow-aPaaS-Web system 模块 |
 
 ## 2. 功能生命周期
 

@@ -31,7 +31,7 @@ COMPLETED 2026-08-23（D180 规划层最终验收 15/15 PASSED + 终态同步，
 
 ## 核心产物（实现，D175—D177 锁定）
 - 后端（sw-basic-agent）：`AgentGraphDebugController`（调试会话 CRUD/断点/步进/终止端点）、`AgentGraphDebugService(Impl)`（会话/断点/步进生命周期 + 权限）、`AgentGraphDebugEngine`（图单步解释器，state_json 冻结规则 graphKey null 跳过检查）、`AgentGraphDebugSession/Node/Entity + Mapper`、DTO 等；Flyway V36（调试会话表，H2/PG 双方言）。
-- 前端（Smart-WorkFlow-Web）：DebugSessionView.vue（调试会话详情/控制）、ExecutionList 合并入口（调试/执行来源标识+分流路由+降级）、ConversationList/Detail 等。
+- 前端（Smart-WorkFlow-aPaaS-Web）：DebugSessionView.vue（调试会话详情/控制）、ExecutionList 合并入口（调试/执行来源标识+分流路由+降级）、ConversationList/Detail 等。
 - 测试：后端 4 个新 Debug 测试类（Security 28 / Behavior 15 / Engine 13 / Service 15）+ Flyway H2/PG V36 全链（36 条）；前端 agent-debug-refresh 1 + DebugExecutionLogClosure 4 等。
 
 ## 当前基线（G14 补证后，拟待规划复验确认）

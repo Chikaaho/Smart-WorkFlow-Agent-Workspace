@@ -14,7 +14,7 @@ CH-aPaaS 是一个**嵌入 AI Agent 的企业级低代码 PaaS 平台**，核心
 | 项目 | 定位 | 技术主体 |
 |------|------|----------|
 | **Smart-WorkFlow** | 后端 API 服务 | Java 21 + Spring Boot 3.4 模块化单体 |
-| **Smart-WorkFlow-Web** | 前端 SPA | Vue 3 + TypeScript + Vite |
+| **Smart-WorkFlow-aPaaS-Web** | 前端 SPA | Vue 3 + TypeScript + Vite |
 
 形态为**模块化单体**（`-api`/`-biz` 拆分，支持未来按需抽取微服务）。
 
@@ -36,14 +36,14 @@ CH-aPaaS 是一个**嵌入 AI Agent 的企业级低代码 PaaS 平台**，核心
 ## 2. 系统关系
 
 ```
-┌──────────────────────────┐        ┌──────────────────────────┐
-│   Smart-WorkFlow-Web     │  HTTP  │    Smart-WorkFlow         │
-│   (前端 SPA)              │ ────→ │    (后端 API)              │
-│                          │  /api  │                          │
-│   Vue 3 + TS             │        │   Java 21 + Spring Boot   │
-│   Port: 5173 (dev)       │        │   Port: 8080              │
-│                          │        │   Context: /api           │
-└──────────────────────────┘        └──────────────────────────┘
+┌────────────────────────────────┐        ┌────────────────────────────────┐
+│   Smart-WorkFlow-aPaaS-Web     │  HTTP  │   Smart-WorkFlow-aPaaS-server  │
+│   (前端 SPA)                   │ ──────→│   (后端 API)                   │
+│                                │  /api  │                                │
+│   Vue 3 + TS                   │        │   Java 21 + Spring Boot        │
+│   Port: 5173 (dev)             │        │   Port: 8080                   │
+│                                │        │   Context: /api                │
+└────────────────────────────────┘        └────────────────────────────────┘
 ```
 
 - 前端开发服务器代理 `/api` → `http://localhost:8080`
@@ -234,7 +234,7 @@ locales/         — 国际化（zh-CN）
 | 10 | 系统运维 | 8 / 9 | `sw-biz-system + sw-basic(storage/job)` | 需求明确 |
 | — | **合计** | **55 / 90** | — | — |
 
-完整功能明细见 `Smart-WorkFlow-Server/功能清单.md`（10 模块、**55** 功能、**90** 明细，含 Mxx-Fyy-zz ID 体系；2026-09-04 知识库全量整理复核确认，M04 为 8/10）。逐项状态与映射以 `knowledge/feature-reconciliation-index.md` 为准。
+完整功能明细见 `Smart-WorkFlow-aPaaS-server/功能清单.md`（10 模块、**55** 功能、**90** 明细，含 Mxx-Fyy-zz ID 体系；2026-09-04 知识库全量整理复核确认，M04 为 8/10）。逐项状态与映射以 `knowledge/feature-reconciliation-index.md` 为准。
 
 ---
 

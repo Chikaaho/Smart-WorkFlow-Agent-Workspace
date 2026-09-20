@@ -41,7 +41,7 @@
 | `db/migration/h2/V38__notify_template_and_menu.sql` | PG 镜像（H2 无 COMMENT ON） |
 | `application.yml` | 追加 `sw.notify.enabled: true`（此前无任何 profile 设置该值，通知模块运行时未激活） |
 
-### 前端（Smart-WorkFlow-Web）
+### 前端（Smart-WorkFlow-aPaaS-Web）
 
 | 文件 | 内容 |
 |------|------|
