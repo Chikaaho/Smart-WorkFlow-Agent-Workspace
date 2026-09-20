@@ -1,0 +1,17 @@
+atomic_id=P45-GATE
+captured_at=2026-09-13T23:31:20+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=a78ef93c40e5b3ff091ce909ffd80851f010404957800d8f52924f64f254cd10
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; Maven; real Redis instance on port 6379
+database=Redis 6379 plus module test database fixtures
+tenant_id=0 fixture matrix
+actor=affected-module test runner
+object_ids=OpenAPI/System affected-module Surefire reports; P45 Redis fixture
+positive_assertion=affected module suite runs with Redis available
+negative_assertion=no Redis environment error remains in the final affected-module run
+positive_pass=true
+negative_pass=true
+cleanup=test fixtures cleaned by test lifecycle
+uncovered=none for the Redis gate; this is not a substitute for the remaining HTTP/PG/browser/provider atoms
+observed=command exit=0; XML aggregate tests=305 failures=0 errors=0 skipped=0; no waiver used

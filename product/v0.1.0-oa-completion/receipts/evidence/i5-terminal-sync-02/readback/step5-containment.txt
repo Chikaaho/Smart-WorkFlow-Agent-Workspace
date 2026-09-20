@@ -1,0 +1,49 @@
+# TS5-PUBLISH step 5 - ls-remote readback + ancestry containment + remote dual preservation
+captured_at=2026-09-14T03:07:11.969Z
+
+== ls-remote (live remote refs) ==
+  Workspace  eaab37acfc8e0bd2a867e4e64c7ea5d4e4ca76be	refs/heads/develop-sw
+  Server     4c7fc241de3710b58a718ff2c072ceac784b43f3	refs/heads/develop
+  Web        5788ead33c4347214a350d124331237e85068bdf	refs/heads/develop
+
+== Server: authorized commits contained in origin/develop ==
+  CONTAINED aaafd74 (aaafd747b41622810870b0609afa6a0dcd89d553)  feat(i5): 租户安全收口与第三方 SSO 服务端实现
+  CONTAINED 5e976b8 (5e976b898aa0d55061402f1ecbf366ed0060bb57)  fix(i5): 复验 02 修正——真实环境收口与 G1—G9 缺口
+  CONTAINED 4d98b67 (4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889)  fix(i5): 复验 03 修正——真实行为缺陷收口
+  CONTAINED 26961ca (26961ca9ce8d01dbb65b557612e0ed95d02afa66)  fix(i5): 复验缺口收口与三方 SSO 安全修复
+  CONTAINED eeb23f2 (eeb23f2ef974851a2a7af6803f83782aab878522)  docs(system): 功能清单当前焦点投影 I5 阶段终态同步
+  CONTAINED 4c7fc24 (4c7fc241de3710b58a718ff2c072ceac784b43f3)  docs(system): 功能清单当前焦点补显 P60 整体 IN_PROGRESS
+  remote=4c7fc241de3710b58a718ff2c072ceac784b43f3
+  ahead_behind(HEAD...origin/develop)=0	0
+
+== Web: authorized commits contained in origin/develop ==
+  CONTAINED fc5f70b (fc5f70b8d071ff0d5f5d4f11850f847c802a5a40)  feat(i5): 权限 fail-closed 与第三方 SSO 前端页面
+  CONTAINED 5788ead (5788ead33c4347214a350d124331237e85068bdf)  feat(i5): 登录页第三方安全发起入口（G5c）
+  remote=5788ead33c4347214a350d124331237e85068bdf
+  ahead_behind(HEAD...origin/develop)=0	0
+
+== Workspace: authorized commits contained in origin/develop-sw ==
+  CONTAINED 1075107 (107510707ec98cd25daf1b9ff35e69b58ca06fde)  chore(oa): 提交 I5 阶段实现回执 01（EXECUTION_SUBMITTED，待规划验收）
+  CONTAINED 4d702cb (4d702cb32c3247cf798c9dbf9a067ca0fb8d4a5c)  chore(oa): I5 阶段三终态同步——知识/记忆/待办与方向指针
+  CONTAINED 34b2cb8 (34b2cb8dfbe15cf22c8ce630daef8fbc42d06a26)  chore(oa): 登记 I5 终态同步 Workspace 提交回读（未推送）
+  CONTAINED ef1e8b3 (ef1e8b3fd6a67d37d2f54baacd1b2ee2c1905f98)  chore(oa): 登记 I5 终态同步校验证据与终态值复核
+  CONTAINED 728c411 (728c411d5d0157ebb45ef7dd9f29e01d300c79be)  chore(oa): 登记 I5 终态同步提交链回读（未推送）
+  CONTAINED d531beb (d531bebf5215c6912c896cb74766d6ccde19ddf3)  chore(oa): 修正 I5 终态同步回执交叉引用并重录校验证据
+  CONTAINED eec171c (eec171c5dc42d0a1b2319f478ad06f0533c3f02f)  chore(oa): 登记 I5 终态同步完整提交链回读（未推送）
+  CONTAINED cef6029 (cef602900d95c693b7e4ff62d0c7c7751820db88)  chore(oa): 修正 I5 终态同步回执推送范围计数并重录校验证据
+  CONTAINED 28dfc6d (28dfc6da55c588781ec63578bcae33c50ccf1a0e)  docs(todo): 登记P53 Figma UI设计需求
+  CONTAINED 47fa269 (47fa2696b5ae76dfb8f788420e721f056ad347bc)  merge(oa): 合并远端 P53 Figma 需求登记，保留 P53 与 I5 双侧内容
+  CONTAINED eaab37a (eaab37acfc8e0bd2a867e4e64c7ea5d4e4ca76be)  chore(oa): I5 发布收尾治理提交——合并 P53 登记与当前发布指针
+  remote=eaab37acfc8e0bd2a867e4e64c7ea5d4e4ca76be
+  ahead_behind(HEAD...origin/develop-sw)=0	0
+
+== Workspace dual preservation on the remote ref (origin/develop-sw blob) ==
+  OK   remote P53 Figma 登记表行
+  OK   remote P53 Figma 插件边界
+  OK   remote P53 参考图不上传边界
+  OK   remote I5 终态值 COMPLETED（待规划确认，2026-09-14）
+  OK   remote TS5-PUBLISH 入口指针
+  sha256(remote blob)=0cc231d6b02ea5575fc88e4be98792a5ffe090b28205cd7466d3c1e54fb738c3
+
+RESULT: fail=0
+exit=0

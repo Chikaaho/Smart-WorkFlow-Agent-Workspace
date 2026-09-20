@@ -1,0 +1,127 @@
+{
+  "schema": "agent-coding-engine.executor-terminal.v2",
+  "role": "executor",
+  "state": "BLOCKED",
+  "task_level": "XL",
+  "receipt": "product/v0.1.0-oa-completion/receipts/completion-stage-i6-notification-version-closure-06.md",
+  "evidence": [
+    "product/v0.1.0-oa-completion/receipts/completion-stage-i6-notification-version-closure-06.md",
+    "product/v0.1.0-oa-completion/receipts/evidence/i6-06/R3-VISIBLE-ADMIN/browser-events.md",
+    "product/v0.1.0-oa-completion/receipts/evidence/i6-06/R4-VISIBLE-CROSS/browser-events.md",
+    "product/v0.1.0-oa-completion/receipts/evidence/i6-06/R5-VISIBLE-FLOW/browser-events.md",
+    "product/v0.1.0-oa-completion/receipts/evidence/i6-06/R5-VISIBLE-FLOW/readback/formal-flow-readback.json",
+    "product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R3-admin-record-log.webp",
+    "product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R3-admin-record-after-retry.webp",
+    "product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R4-pc-positive-inbox.webp",
+    "product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R4-h5-message-instance.webp",
+    "product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R4-h5-refresh-instance.webp",
+    "product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R4-pc-negative-403.webp",
+    "product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R4-h5-negative-403.webp",
+    "product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R5-s1-workspace.webp",
+    "product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R5-s2-workspace.webp",
+    "product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R5-delegatee-workspace.webp",
+    "product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R5-copy-readonly-trace.webp",
+    "product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R5-admin-flow-trace.webp",
+    "product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R5-U0-instance-403.png",
+    "product/v0.1.0-oa-completion/receipts/evidence/i6-06/browser-media/R5-U0-task-not-found.png",
+    "product/v0.1.0-oa-completion/receipts/evidence/i6-06/R7-CONTENT-FINGERPRINT/fingerprint-manifest.json",
+    "product/v0.1.0-oa-completion/receipts/evidence/i6-06/R7-CONTENT-FINGERPRINT/fingerprint-manifest.sha256",
+    "product/v0.1.0-oa-completion/receipts/evidence/i6-06/R7-CONTENT-FINGERPRINT/recompute-output.json"
+  ],
+  "block_type": "EXTERNAL",
+  "attempted": [
+    "R3 管理员可见页面、规则动作、失败记录重发和无权限分流",
+    "R4 同一消息/实例的 PC、H5、刷新和双端无权限可见流程",
+    "R5 发起人、S1、S2、代理人、抄送人、管理员和 U0 的可见角色链",
+    "R7 三仓工作树清单、SHA-256 指纹、sidecar 与独立复算"
+  ],
+  "release_condition": "Owner 提供 SMS、EMAIL、FEISHU、DINGTALK、WECHAT_WORK 各自真实 Provider、非占位凭据、租户主体绑定和测试接收条件后，仅验证发生变化的渠道并回读真实投递结果。",
+  "work_items": [
+    {
+      "id": "R3-VISIBLE-ADMIN",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "保持证据闭合，等待后续规划"
+    },
+    {
+      "id": "R4-VISIBLE-CROSS",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "保持证据闭合，等待后续规划"
+    },
+    {
+      "id": "R5-VISIBLE-FLOW",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "保持证据闭合，等待后续规划"
+    },
+    {
+      "id": "R7-CONTENT-FINGERPRINT",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "保持最终指纹与受测工作树一致，等待后续规划"
+    },
+    {
+      "id": "R8-EXTERNAL-CHANNEL-CONDITIONS",
+      "status": "BLOCKED",
+      "authorized": false,
+      "dependency_satisfied": false,
+      "actionable": false,
+      "next_action": "等待 Owner 提供五渠道真实条件"
+    }
+  ],
+  "remaining_actionable_count": 0,
+  "independent_work_exhausted": true,
+  "next_action": "等待 Owner 提供 R8 五渠道真实条件；条件变化后只验证变化渠道。",
+  "next_action_type": "WAIT_EXTERNAL",
+  "progress_fingerprint": "i6-r7-content-fingerprint:3942311b2d2712e490a011594102183ee2806abb11eefc46c0bb449ba16e716f",
+  "progress_basis": {
+    "files_changed": [
+      "product/v0.1.0-oa-completion/receipts/completion-stage-i6-notification-version-closure-06.md",
+      "product/v0.1.0-oa-completion/receipts/evidence/i6-06/"
+    ],
+    "tool_actions": [
+      "Codex 内置可见浏览器 headless=false 完成 R3/R4/R5",
+      "后端固定验证码聚焦测试和构建",
+      "Web typecheck、lint、test、build",
+      "三仓内容指纹生成、sidecar 校验和独立复算"
+    ],
+    "new_evidence": [
+      "R3/R4/R5 实际 PNG/WebP 浏览器制品",
+      "R5 正式角色流程回读与 R7 manifest"
+    ],
+    "closed_work_items": [
+      "R3-VISIBLE-ADMIN",
+      "R4-VISIBLE-CROSS",
+      "R5-VISIBLE-FLOW",
+      "R7-CONTENT-FINGERPRINT"
+    ]
+  },
+  "stop_reason": "EXTERNAL_DEPENDENCY",
+  "tool_results": [
+    {
+      "tool": "R3/R4/R5 Codex 内置可见浏览器流程",
+      "outcome": "SUCCEEDED",
+      "detail": "正式角色动作已在可见浏览器完成，截图/回读文件已保存。"
+    },
+    {
+      "tool": "R7 三仓内容指纹复算",
+      "outcome": "SUCCEEDED",
+      "detail": "manifest、sidecar 和 recompute 均一致，脚本退出码为 0。"
+    },
+    {
+      "tool": "Owner 提供的 R8 五渠道真实条件",
+      "outcome": "REQUIRES_SECRET",
+      "detail": "沿用 L33 锁定：当前范围没有 Owner 提供的外部 Provider、非占位凭据和测试接收条件；本轮未重复外部可用性检查。"
+    }
+  ],
+  "browser_status": "NOT_APPLICABLE"
+}

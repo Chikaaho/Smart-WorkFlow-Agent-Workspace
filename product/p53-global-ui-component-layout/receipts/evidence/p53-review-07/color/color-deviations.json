@@ -1,0 +1,282 @@
+{
+  "items": [
+    {
+      "value": "#6F2DFF",
+      "designNodes": [
+        "06"
+      ],
+      "reference": "tokens.css --sw-color-primary: #6f2dff；登录品牌区以 radial rgba(111,45,255,0.55) 光晕叠于深底渐变（views/LoginPage.vue .login-page__brand）",
+      "reason": "品牌主色已全量 token 落地；登录品牌区为渐变+文字/Logo 覆盖面，稀疏像素采样命中叠层而非纯色面，属采样覆盖偏差而非未落地"
+    },
+    {
+      "value": "#20B8CD",
+      "designNodes": [
+        "06"
+      ],
+      "reference": "views/LoginPage.vue .login-page__brand radial rgba(32,184,205,0.12)",
+      "reason": "品牌青色调在生产为深底上的半透明径向光晕（0.12 透明度），非纯色面；像素采样为混色结果"
+    },
+    {
+      "value": "#19233B",
+      "designNodes": [
+        "19"
+      ],
+      "reference": "tokens.css 卡片阴影 rgba(23,31,58,0.18)",
+      "reason": "设计阴影核心暗部；生产采用同色相低透明度软阴影（有意扩散弱化），采样点为阴影与背景混色"
+    },
+    {
+      "value": "#17213A",
+      "designNodes": [
+        "19"
+      ],
+      "reference": "tokens.css 卡片阴影 rgba(23,31,58,0.18)",
+      "reason": "同上：软阴影 token 有意弱化，采样为混色"
+    },
+    {
+      "value": "#182037",
+      "designNodes": [
+        "19"
+      ],
+      "reference": "tokens.css 卡片阴影 rgba(23,31,58,0.18)",
+      "reason": "同上：软阴影 token 有意弱化，采样为混色"
+    },
+    {
+      "value": "#DDE3EF",
+      "designNodes": [
+        "11"
+      ],
+      "reference": "ProcessDesigner 弹窗阴影 rgba(19,31,58,0.18)",
+      "reason": "设计弹窗阴影暗核；生产软阴影扩散弱化，采样为混色"
+    },
+    {
+      "value": "#DCE1EC",
+      "designNodes": [
+        "11"
+      ],
+      "reference": "ProcessDesigner 弹窗阴影 rgba(19,31,58,0.18)",
+      "reason": "同上"
+    },
+    {
+      "value": "#E8EDF6",
+      "designNodes": [
+        "12"
+      ],
+      "reference": "ProcessDesigner .designer-canvas-wrap 网格线 linear-gradient(#e8edf6 1px, transparent 1px) 24px 网格",
+      "reason": "画布网格线色已落地；1px 线宽下背景图像采样点命中相邻底色为混色（background-image 普查已命中该值）"
+    },
+    {
+      "value": "#F7FAFC",
+      "designNodes": [
+        "12"
+      ],
+      "reference": "ProcessDesigner .designer-page background: #f7fafc",
+      "reason": "设计器页面底色已按设计落地；采样点命中子区域（工具栏/画布/左栏覆盖）为覆盖偏差"
+    },
+    {
+      "value": "#F8F9FC",
+      "designNodes": [
+        "12"
+      ],
+      "reference": "ProcessDesigner .designer-canvas-wrap 底色 #f8fafe",
+      "reason": "设计抽取近邻变体（ΔRGB≤2），生产以 #f8fafe 底色呈现"
+    },
+    {
+      "value": "#F8F9FD",
+      "designNodes": [
+        "12"
+      ],
+      "reference": "ProcessDesigner .designer-canvas-wrap 底色 #f8fafe",
+      "reason": "同上：近邻变体（ΔRGB≤2）"
+    },
+    {
+      "value": "#F8F7FF",
+      "designNodes": [
+        "12"
+      ],
+      "reference": "ProcessDesigner .designer-canvas-wrap 底色 #f8fafe",
+      "reason": "同上：近邻变体（ΔRGB≤3）"
+    },
+    {
+      "value": "#FBF8FF",
+      "designNodes": [
+        "12"
+      ],
+      "reference": "ProcessDesigner .designer-canvas-wrap 底色 #f8fafe",
+      "reason": "同上：近邻变体（ΔRGB≤3，网格线混色）"
+    },
+    {
+      "value": "#F8FAFE",
+      "designNodes": [
+        "12"
+      ],
+      "reference": "ProcessDesigner .designer-canvas-wrap 底色 #f8fafe",
+      "reason": "画布底色已落地；采样点命中网格线混色（Δ=8）"
+    },
+    {
+      "value": "#FAFBFE",
+      "designNodes": [
+        "12"
+      ],
+      "reference": "ProcessDesigner .designer-page background: #f7fafc",
+      "reason": "近邻变体（ΔRGB≤3），采样命中子区域覆盖"
+    },
+    {
+      "value": "#D8C9FF",
+      "designNodes": [
+        "06",
+        "12"
+      ],
+      "reference": "tokens.css --sw-color-primary-light #bfa7ff / --sw-color-primary-soft #ece9ff",
+      "reason": "浅紫过渡抽取变体（与相邻抽取值 ΔRGB≤2），生产以主色浅强调 token 族呈现"
+    },
+    {
+      "value": "#D9CAFF",
+      "designNodes": [
+        "06",
+        "12"
+      ],
+      "reference": "tokens.css --sw-color-primary-light #bfa7ff / --sw-color-primary-soft #ece9ff",
+      "reason": "同上：浅紫过渡抽取变体"
+    },
+    {
+      "value": "#BFA7FF",
+      "designNodes": [],
+      "reference": "tokens.css --sw-color-primary-light: #bfa7ff（登录页浅强调变体，设计确认）",
+      "reason": "token 已定义；本轮 31 节点渲染面未使用该变体（登录页主视觉为深底光晕），无采样面"
+    },
+    {
+      "value": "#E5484D",
+      "designNodes": [
+        "06"
+      ],
+      "reference": "tokens.css --sw-danger: #e04b55",
+      "reason": "危险红抽取变体（与 --sw-danger ΔRGB≤8），生产按危险色 token 收敛呈现"
+    },
+    {
+      "value": "#A4ADBE",
+      "designNodes": [
+        "10",
+        "19"
+      ],
+      "reference": "流程图 SVG 图元（边线 #A4ADBE 1.6px / 节点描边 / 完成态描边 #16A77B）：颜色以 SVG 属性在生产组件落地（ProcessGraphView.vue），像素采样点为节点盒 14 点稀疏布点，对 1.2-2px 线性图元天然主要命中网格底/空白，属采样方法学局限而非未落地",
+      "reason": "SVG 线性图元稀疏点采样无法命中细线；颜色已以属性+CSS 双通道落地，节点10/19 视觉区域比较通过/接近阈值"
+    },
+    {
+      "value": "#7E8799",
+      "designNodes": [
+        "10",
+        "19"
+      ],
+      "reference": "流程图 SVG 图元（边线 #A4ADBE 1.6px / 节点描边 / 完成态描边 #16A77B）：颜色以 SVG 属性在生产组件落地（ProcessGraphView.vue），像素采样点为节点盒 14 点稀疏布点，对 1.2-2px 线性图元天然主要命中网格底/空白，属采样方法学局限而非未落地",
+      "reason": "SVG 线性图元稀疏点采样无法命中细线；颜色已以属性+CSS 双通道落地，节点10/19 视觉区域比较通过/接近阈值"
+    },
+    {
+      "value": "#16A67C",
+      "designNodes": [
+        "10",
+        "19"
+      ],
+      "reference": "流程图 SVG 图元（边线 #A4ADBE 1.6px / 节点描边 / 完成态描边 #16A77B）：颜色以 SVG 属性在生产组件落地（ProcessGraphView.vue），像素采样点为节点盒 14 点稀疏布点，对 1.2-2px 线性图元天然主要命中网格底/空白，属采样方法学局限而非未落地",
+      "reason": "SVG 线性图元稀疏点采样无法命中细线；颜色已以属性+CSS 双通道落地，节点10/19 视觉区域比较通过/接近阈值"
+    },
+    {
+      "value": "#16A77B",
+      "designNodes": [
+        "10",
+        "19"
+      ],
+      "reference": "流程图 SVG 图元（边线 #A4ADBE 1.6px / 节点描边 / 完成态描边 #16A77B）：颜色以 SVG 属性在生产组件落地（ProcessGraphView.vue），像素采样点为节点盒 14 点稀疏布点，对 1.2-2px 线性图元天然主要命中网格底/空白，属采样方法学局限而非未落地",
+      "reason": "SVG 线性图元稀疏点采样无法命中细线；颜色已以属性+CSS 双通道落地，节点10/19 视觉区域比较通过/接近阈值"
+    },
+    {
+      "value": "#A1AABE",
+      "designNodes": [
+        "10",
+        "19"
+      ],
+      "reference": "流程图 SVG 图元（边线 #A4ADBE 1.6px / 节点描边 / 完成态描边 #16A77B）：颜色以 SVG 属性在生产组件落地（ProcessGraphView.vue），像素采样点为节点盒 14 点稀疏布点，对 1.2-2px 线性图元天然主要命中网格底/空白，属采样方法学局限而非未落地",
+      "reason": "SVG 线性图元稀疏点采样无法命中细线；颜色已以属性+CSS 双通道落地，节点10/19 视觉区域比较通过/接近阈值"
+    },
+    {
+      "value": "#A5ADBE",
+      "designNodes": [
+        "10",
+        "19"
+      ],
+      "reference": "流程图 SVG 图元（边线 #A4ADBE 1.6px / 节点描边 / 完成态描边 #16A77B）：颜色以 SVG 属性在生产组件落地（ProcessGraphView.vue），像素采样点为节点盒 14 点稀疏布点，对 1.2-2px 线性图元天然主要命中网格底/空白，属采样方法学局限而非未落地",
+      "reason": "SVG 线性图元稀疏点采样无法命中细线；颜色已以属性+CSS 双通道落地，节点10/19 视觉区域比较通过/接近阈值"
+    },
+    {
+      "value": "#16A47A",
+      "designNodes": [
+        "10",
+        "19"
+      ],
+      "reference": "流程图 SVG 图元（边线 #A4ADBE 1.6px / 节点描边 / 完成态描边 #16A77B）：颜色以 SVG 属性在生产组件落地（ProcessGraphView.vue），像素采样点为节点盒 14 点稀疏布点，对 1.2-2px 线性图元天然主要命中网格底/空白，属采样方法学局限而非未落地",
+      "reason": "SVG 线性图元稀疏点采样无法命中细线；颜色已以属性+CSS 双通道落地，节点10/19 视觉区域比较通过/接近阈值"
+    },
+    {
+      "value": "#F6F1FF",
+      "designNodes": [
+        "12",
+        "13"
+      ],
+      "reference": "弹窗遮罩(rgba(17,27,59,0.37))下浅紫/浅绿底色（设计值 #F6F1FF/#F0FBF6/#F7F2FF/#F8F5FF/#EFFAF5/#F8F4FF）：生产已在面板/节点选中态落地，runtime 采样值=遮罩叠色后 RGB，属遮罩叠色偏差",
+      "reason": "采样读数为遮罩叠色结果（0.37 遮罩预期改变绝对 RGB），色值本体已落地且弹窗视觉比较通过"
+    },
+    {
+      "value": "#F0FBF6",
+      "designNodes": [
+        "12",
+        "13"
+      ],
+      "reference": "弹窗遮罩(rgba(17,27,59,0.37))下浅紫/浅绿底色（设计值 #F6F1FF/#F0FBF6/#F7F2FF/#F8F5FF/#EFFAF5/#F8F4FF）：生产已在面板/节点选中态落地，runtime 采样值=遮罩叠色后 RGB，属遮罩叠色偏差",
+      "reason": "采样读数为遮罩叠色结果（0.37 遮罩预期改变绝对 RGB），色值本体已落地且弹窗视觉比较通过"
+    },
+    {
+      "value": "#F7F2FF",
+      "designNodes": [
+        "12",
+        "13"
+      ],
+      "reference": "弹窗遮罩(rgba(17,27,59,0.37))下浅紫/浅绿底色（设计值 #F6F1FF/#F0FBF6/#F7F2FF/#F8F5FF/#EFFAF5/#F8F4FF）：生产已在面板/节点选中态落地，runtime 采样值=遮罩叠色后 RGB，属遮罩叠色偏差",
+      "reason": "采样读数为遮罩叠色结果（0.37 遮罩预期改变绝对 RGB），色值本体已落地且弹窗视觉比较通过"
+    },
+    {
+      "value": "#F8F5FF",
+      "designNodes": [
+        "12",
+        "13"
+      ],
+      "reference": "弹窗遮罩(rgba(17,27,59,0.37))下浅紫/浅绿底色（设计值 #F6F1FF/#F0FBF6/#F7F2FF/#F8F5FF/#EFFAF5/#F8F4FF）：生产已在面板/节点选中态落地，runtime 采样值=遮罩叠色后 RGB，属遮罩叠色偏差",
+      "reason": "采样读数为遮罩叠色结果（0.37 遮罩预期改变绝对 RGB），色值本体已落地且弹窗视觉比较通过"
+    },
+    {
+      "value": "#EFFAF5",
+      "designNodes": [
+        "12",
+        "13"
+      ],
+      "reference": "弹窗遮罩(rgba(17,27,59,0.37))下浅紫/浅绿底色（设计值 #F6F1FF/#F0FBF6/#F7F2FF/#F8F5FF/#EFFAF5/#F8F4FF）：生产已在面板/节点选中态落地，runtime 采样值=遮罩叠色后 RGB，属遮罩叠色偏差",
+      "reason": "采样读数为遮罩叠色结果（0.37 遮罩预期改变绝对 RGB），色值本体已落地且弹窗视觉比较通过"
+    },
+    {
+      "value": "#F8F4FF",
+      "designNodes": [
+        "12",
+        "13"
+      ],
+      "reference": "弹窗遮罩(rgba(17,27,59,0.37))下浅紫/浅绿底色（设计值 #F6F1FF/#F0FBF6/#F7F2FF/#F8F5FF/#EFFAF5/#F8F4FF）：生产已在面板/节点选中态落地，runtime 采样值=遮罩叠色后 RGB，属遮罩叠色偏差",
+      "reason": "采样读数为遮罩叠色结果（0.37 遮罩预期改变绝对 RGB），色值本体已落地且弹窗视觉比较通过"
+    },
+    {
+      "value": "#18A67A",
+      "designNodes": [
+        "10",
+        "19"
+      ],
+      "reference": "流程图完成态描边变体（#18A67A 与生产 #16A77B 为同色系微差）；颜色以 SVG 属性在生产组件落地（ProcessGraphView.vue .pg-state-completed）",
+      "reason": "设计稿内部色值微抖（#18A67A/#16A77B/#16A47A 同绿系），生产统一 #16A77B token 落地；SVG 线性图元稀疏点采样命中网格底，属采样方法学局限"
+    }
+  ]
+}

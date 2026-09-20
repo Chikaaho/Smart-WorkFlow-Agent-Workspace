@@ -1,0 +1,14 @@
+# P61 Stage B — 前端工程门禁原始输出
+# 采集时间: 2026-09-15 22:08:13
+# Web HEAD: 963df360ed18bc1c604652a13edb2a7ed0be8963
+
+$ NODE_OPTIONS="--max-old-space-size=2048" pnpm typecheck
+exit=0
+$ NODE_OPTIONS="--max-old-space-size=2048" pnpm lint
+exit=0（--fix 后二次验证 exit=0，0 error 0 warning）
+$ NODE_OPTIONS="--max-old-space-size=2048" pnpm test
+exit=0
+Test Files  131 passed | 1 skipped (132)
+Tests  1191 passed | 3 skipped (1194)
+$ NODE_OPTIONS="--max-old-space-size=2048" pnpm build
+exit=0  ✓ built in 2.50s

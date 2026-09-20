@@ -1,0 +1,32 @@
+# P61 审查后缺口关闭（R3/R5/R6/R8-部分）门禁与证据
+# 采集时间: 2026-09-16 08:07:21
+# Server HEAD: c15428f0002f6bb0ceeff05c7cbcf842bd3d3148
+
+## 1. 门禁
+$ MAVEN_OPTS="-Xmx2g" mvn test → BUILD SUCCESS
+TESTS=1415 ERRORS=0 SKIPPED=0 FAILURES=0
+
+## 2. R5 — 事件引用服务端权威（EventRefTest 8/8）
+关键用例：同值重放头产生不同引用 / 引用取服务端生成值不取客户端头 / 容器短 id 可重复时仍生成唯一引用 / 请求内稳定 / 无上下文返回 null
+
+## 3. R6 — 真实容器 HTTP 证据（P61RuntimeBehaviorBootTest 8/8，内嵌 PG + prod profile + 随机端口）
+已证：401 双语成对（zh『登录状态已失效，请重新登录』/ en『Your session has expired...』同 errorKey=common.unauthenticated）
+已证：畸形 JSON 400 双语（common.request_body_unreadable），响应不含 Jackson 原文/类名/栈
+已证：登录缺验证码统一收敛 2101（auth.captcha_mismatch），不回显 captchaId/digest
+已证：同值重放 X-Request-Id 两次 → 事件引用不同；5 次采样引用无重复
+已证：真实响应形如 {"code":400,"msg":"The request data is malformed...","errorKey":"common.request_body_unreadable","eventRef":"req-…"}
+
+## 4. R6 过程中发现并修复的两个真实缺陷
+缺陷1：容器内 MessageSource 为空占位（DelegatingMessageSource），spring.messages.basename 未生效 → 所有解析回退中文。修复：新增 P61MessageSourceAutoConfiguration 显式装配 i18n/messages（UTF-8、不回退系统 locale），并注册进 AutoConfiguration.imports
+缺陷2：内嵌 Tomcat 的 request.getRequestId() 返回每连接自增的小整数（如 "1"），跨请求重复 → 事件引用会碰撞。修复：EventRef 恒定生成 req-<128位随机>，不再采用容器 id
+
+## 5. R8（部分）— 文件超限边界关闭
+GlobalExceptionHandler 新增 MaxUploadSizeExceededException → 400 + common.upload_too_large（双语）
+业务层 5MB 上限仍以 1499 精确拒绝；容器层 6MB 由本分支给出可行动结论
+
+## 6. R3 — 字段键回显关闭（主路径）
+FormFieldEnrichmentService：六类增补 + TABLE 子行全部改用 displayOf(field,name) 显示名；FieldPermissionService.assertEditablePayload 新增带 labels 重载，提示改为「您没有编辑字段「显示名」的权限」
+FormI2ClosureIntegrationTest 断言由文案子串改为 errorKey 语义断言
+
+## 7. 双编码审计（本轮回滚修复记录）
+FormFieldValidator.java 曾因 perl 宽字符输出产生 580 处双编码 → git checkout 回滚后用编辑工具重做 → 审计 0 残留；FormFieldEnrichmentService.java 全仓审计 0 残留

@@ -1,0 +1,3 @@
+# G5a-I 对象
+- 两租户（T100/T200）× 三 Provider（FEISHU/DINGTALK/WECHAT_WORK）主体绑定矩阵；
+  绑定 2099409639603679234（FEISHU, userId=10002, ACTIVE）；V91 迁移已应用

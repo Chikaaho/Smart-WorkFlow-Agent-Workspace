@@ -1,0 +1,9 @@
+# G1a 完整链原始流（2026-09-14，真实本地 server + PG）
+# 1) 启动：bash /tmp/i6boot/start-server.sh（dev profile 固定验证码 1234；PG smart_workflow_run 命令行覆盖；环境变量注入密钥，不落盘）
+# 2) EMAIL 渠道经真实 API 启用：POST /api/notify/channels/EMAIL {tenantEnabled:true}（email-enable.log）
+# 3) 主链原始流：node G1a/g1a-run.js（首链 draft 005；第二链 draft 006 见 g1a-run2.log）
+#    - draft 006 id=2099430369473015810, formKey=i6g1a_form_t100b, tenant T=100
+#    - 提交命令 2099430369632399361 → COMPLETED，流程实例 P=d018f57a-… STARTED
+#    - 审批任务 K=d0191c97-…，u2_100(10002) 受理 APPROVE 命令 2099430374522957825 → COMPLETED, duplicated:true 幂等回照
+#    - 动作 A=APPROVE；消息 M(WF_APPROVED)=2099430376506863617（EMAIL FAILED）+ IN_APP SUCCESS
+# 工作目录：product/v0.1.0-oa-completion/receipts/evidence/i6-04/G1a；源码：Smart-WorkFlow-aPaaS-server HEAD（见 object-ledger）

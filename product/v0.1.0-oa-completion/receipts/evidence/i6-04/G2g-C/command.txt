@@ -1,0 +1,7 @@
+# G2g-C 原始流（2026-09-14）
+# 1) 非法组合负向 + 建组合规则：node g2gc-effect.js（effect-raw.log）
+#    - EMAIL-only 非法组合 → 400「渠道顺序必须以 IN_APP 开头（站内信保底）」
+#    - IN_APP,EMAIL 组合规则 I6G2G_CE(tenant 100) 建立
+# 2) 真实投递对照：链A(CE启用 R100并存)、链C(仅CE停用)、链D(全部TODO规则停用但G3D规则启用)、
+#    链E(全部T100 TODO_CREATED规则停用) —— 各链任务/消息全量见 db-effect.txt 与主文 actual.md
+# 3) 启停：POST /notify/rules/{id}/enabled/false（effect-chainD.log / effect-chainE.log / effect-chainC.log）

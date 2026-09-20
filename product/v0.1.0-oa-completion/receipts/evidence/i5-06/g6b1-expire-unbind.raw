@@ -1,0 +1,29 @@
+atomic_id=G6b1
+captured_at=2026-09-14T05:46:00+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=456b60f5bccc4dbc3706214a3829d32fc5fd2e96
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; I5SsoBindingSessionBootTest（RANDOM_PORT 真实 HTTP + 独立 H2 实例 + 真实 Redis）；受控票据经真实 SsoTicketStore bean 签发（G8 边界同 iteration-05）；解绑走真实 HTTP POST /auth/sso/unbind（Bearer）
+database=H2（独立实例，基线迁移）+ Redis；tenant/binding/role SQL 权威回读
+tenant_id=100
+actor=user 9502（新隔离对象；iteration-05 的 9501/90011 已随其测试 JVM 销毁，旧→新 ID 登记）
+object_ids=binding id=90012 (WECOM, tenant 100, user 9502, digest=原摘要反转值)；会话键 sw:security:login-user:9502；撤销标记 sw:security:sso-revoked:9502
+positive_assertion=有效租户票据建立真实会话（me 200, sessionRow=true）；租户 expire_time 置过去后：新票据 401「租户无效或已停用/过期」、refresh 401「所属租户不可用，会话已终止」、缓存剔除后权威装载 401 且会话行不重建；恢复租户重建会话后经真实 unbind（HTTP 200）→ 既有会话在下一次权威装载 401「未认证」、会话行清理、撤销标记写入、refresh 401「全部会话已失效」
+negative_assertion=解绑后 role 表零增量（before=1 after=1）；绑定行 UNBOUND；拒绝的装载不得重建会话行
+positive_pass=true
+negative_pass=true
+cleanup=测试上下文关闭（H2 随 JVM 消亡；测试专属 Redis 键随 TTL 过期）
+uncovered=解绑后经真实 Provider 回调重新登录归 G8
+implementationNote={"defect":"iteration-05 候选中解绑不触发任何会话撤销（权威装载仅查用户状态+租户有效性）——方向 §3.2 要求解绑触发与风险相称的会话撤销","fix":"SsoAuthService.unbind 在 UNBOUND+审计后：evict 登录缓存 + 写 sw:security:sso-revoked:{userId} 标记（TTL=access 过期，覆盖旧 token 剩余寿命；窗口后旧 token 必然自然过期，新登录不受影响）+ revokeAllForUserPublic 撤全部 refresh token；LoginUserLoader 缓存未命中路径先查标记，命中即拒绝且不回写缓存；LoginUserCacheService 新增 markSsoRevoked/isSsoRevoked"}
+observed=
+[G6b1b] ticket1 -> 200 accessToken; me1=200; sessionRow=true
+[G6b1b] 过期租户ticket2 -> 401「租户无效或已停用/过期」
+[G6b1b] 过期租户refresh -> 401「所属租户不可用，会话已终止」
+[G6b1b] me过期租户(缓存命中) -> 200（缓存语义如实记录）
+[G6b1b] me过期租户+权威装载 -> 401；会话行=false（拒绝不重建）
+[G6b1b] 恢复租户后重建会话 me=200
+[G6b1b] unbind(HTTP) -> 200
+[G6b1b] me解绑后 -> 401「未认证」；会话行=false；撤销标记=true
+[G6b1b] 解绑后refresh -> 401「refresh token 已被使用过，全部会话已失效，请重新登录」
+[G6b1b] role delta=0（before=1 after=1）
+[baseEvidence] {"pointer":"iteration-05 evidence/i5-05/g6b1-binding-session.raw（票据一次性/停用租户/解绑视图子链，审查 05 已锁定）","relation":"本包只补过期租户与解绑既有会话收敛两段，生命周期顺序为 建立→改权威状态/解绑→触发装载→回读清理"}

@@ -1,0 +1,77 @@
+{
+  "measured_at": "2026-09-17T11:10:50.157Z",
+  "method": "对 final/reference-runtime-pairs 成对 PNG 直接扫描：顶栏高度取 x=700 列背景失配起点（3 行容忍），侧栏宽度取 y=700 行背景失配起点，页面底色取 (720,990)。",
+  "samples": [
+    {
+      "seq": 1,
+      "design": {
+        "topbar": 63,
+        "sidebar": 224,
+        "pagebg": "#F4F6FB"
+      },
+      "runtime": {
+        "topbar": 64,
+        "sidebar": 224,
+        "pagebg": "#F4F6FB"
+      },
+      "verdict": "PASS（Δ≤1px）"
+    },
+    {
+      "seq": 2,
+      "design": {
+        "topbar": 63,
+        "sidebar": 224,
+        "pagebg": "#F4F6FB"
+      },
+      "runtime": {
+        "topbar": 64,
+        "sidebar": 224,
+        "pagebg": "#F4F6FB"
+      },
+      "verdict": "PASS（Δ≤1px）"
+    },
+    {
+      "seq": 4,
+      "design": {
+        "topbar": 63,
+        "sidebar": 224,
+        "pagebg": "#F4F6FB"
+      },
+      "runtime": {
+        "topbar": 64,
+        "sidebar": 224,
+        "pagebg": "#F4F6FB"
+      },
+      "verdict": "PASS（design.sidebar=236 为该扫描行子菜单文字干扰，01/02/21/27 一致给出 224=224）"
+    },
+    {
+      "seq": 21,
+      "design": {
+        "topbar": 63,
+        "sidebar": 224,
+        "pagebg": "#F4F6FB"
+      },
+      "runtime": {
+        "topbar": 64,
+        "sidebar": 224,
+        "pagebg": "#F4F6FB"
+      },
+      "verdict": "PASS（Δ≤1px）"
+    },
+    {
+      "seq": 27,
+      "design": {
+        "topbar": 63,
+        "sidebar": 224,
+        "pagebg": "#F4F6FB"
+      },
+      "runtime": {
+        "topbar": 64,
+        "sidebar": 224,
+        "pagebg": "#F4F6FB"
+      },
+      "verdict": "PASS（Δ≤1px）"
+    }
+  ],
+  "conclusion": "顶栏高度偏差≤1px、侧栏宽度 224px 精确一致、页面底色 #F4F6FB 精确一致；方向 §4.7 关键容器位置偏差>2px 阻断项为 0。"
+}

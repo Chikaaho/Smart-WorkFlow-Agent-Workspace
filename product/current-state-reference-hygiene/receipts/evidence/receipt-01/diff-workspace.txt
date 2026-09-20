@@ -1,0 +1,60 @@
+diff --git a/knowledge/current-status.md b/knowledge/current-status.md
+index 29232bc..20a06d6 100644
+--- a/knowledge/current-status.md
++++ b/knowledge/current-status.md
+@@ -55,3 +55,3 @@
+ - 更早上轮完成：**P61 阶段三终态同步**（方向 `product/p61-user-facing-message-humanization/passed/direction-p61-user-facing-message-humanization-terminal-sync.md`（已归档）；回执 `product/p61-user-facing-message-humanization/receipts/terminal-sync-p61-user-facing-message-humanization-01.md`，`TERMINAL_SYNC_SUBMITTED`）：把 P61 `COMPLETED（规划已确认，2026-09-20）`（最终复核 01 PASSED）、功能级 `PASSED（2026-09-20）`、已核销与 P61 治理验证基线集合（Server 1423/0/0/0、Web 1217+3）机械同步至 knowledge、memory、todo；功能数 44、90 明细 ✅46/🟦22/⬜22、ADV64 与其余开放 P 编号零变化；未运行工程构建/测试/迁移、未改业务代码、未执行 Git 写动作
+-- 更早上轮完成：**P60 整体终态同步**（方向 `ready/direction-v0.1.0-oa-completion-terminal-sync.md`；回执 `receipts/terminal-sync-v0.1.0-oa-completion-01.md`，`TERMINAL_SYNC_SUBMITTED`）：把 P60 `COMPLETED（待规划确认）`、迁移终点 V93、两仓发布身份与最终门禁机械同步至 knowledge、memory、todo 与工程《功能清单》当前段；功能数 44、90 明细 ✅46/🟦22/⬜22、ADV64 与开放 P 编号零变化；未运行工程构建/测试/迁移、未执行 Git 写动作
++- 更早上轮完成：**P60 整体终态同步**（方向 `passed/direction-v0.1.0-oa-completion-terminal-sync.md`（已归档）；回执 `receipts/terminal-sync-v0.1.0-oa-completion-01.md`，`TERMINAL_SYNC_SUBMITTED`）：把 P60 `COMPLETED（待规划确认）`、迁移终点 V93、两仓发布身份与最终门禁机械同步至 knowledge、memory、todo 与工程《功能清单》当前段；功能数 44、90 明细 ✅46/🟦22/⬜22、ADV64 与开放 P 编号零变化；未运行工程构建/测试/迁移、未执行 Git 写动作
+ - 更早：**I6「通知与版本收口」规划确认终态投影**（回执 `receipts/final-state-projection-stage-i6-v0.0.3-oa-iteration-01.md`，`TERMINAL_SYNC_SUBMITTED`）：按唯一终态值清单把 I6 的「规划已确认」值、两份方向归档路径与下一动作机械投影至 knowledge、memory、todo、工程《功能清单》与 P60 当前段；P60 保持 `IN_PROGRESS`；R8 五渠道保持 `Owner延期 / 未验证` 与 P2 待办；未重跑 L1—L37、未修改业务实现、未 commit/push/tag/Release
+diff --git a/knowledge/feature-reconciliation-index.md b/knowledge/feature-reconciliation-index.md
+index d0f1e76..7c38edc 100644
+--- a/knowledge/feature-reconciliation-index.md
++++ b/knowledge/feature-reconciliation-index.md
+@@ -208,3 +208,3 @@
+ | search 局部通知任务 | `search_task/notification-personal-workflow-reconciliation-20260904.md` 已被主方向吸收（方向 §1「不再单独推进/提交局部结项」）；三类查询与通知结论见 audit-ledger-d、audit-ledger-e 及本索引 M04-F05-01/M06 行 |
+-| 其余 search 资料 | 7 份活动目录中的探索文件已回传且为历史资料；4 份已归档（.archive/）；11 份无任务历史回传保留链接；knowledge-full-reconciliation 任务已完成（COMPLETED 已确认），阶段三方向已归档 `passed/direction-knowledge-full-reconciliation-terminal-sync.md`，历史文件不删除；当前执行入口以 `knowledge/current-status.md`「当前唯一下一动作」为准（2026-09-15 为 P60 整体终态同步——P60 写为 `COMPLETED（规划已确认，2026-09-15）`、迁移终点 V93、两仓发布身份锁定——方向 `product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion-terminal-sync.md`，回执 `receipts/terminal-sync-v0.1.0-oa-completion-01.md`；P60 整体 14/14 通过并经发布最终验收 02 `receipts/planning-final-review-release-v0.1.0-server-web-02-passed.md` PASSED，0.1.0 两仓已发布并锁定；下一动作=P61 用户可见错误码与提示语人性化治理现状探索（入口 `search_task/v0.1.0-p61-user-facing-message-humanization-current-seams.md`）；I6 现状接缝探索 `search_task/v0.1.0-oa-completion-i6-current-seams.md` 已回传 `search_fallback/`） |
++| 其余 search 资料 | 7 份活动目录中的探索文件已回传且为历史资料；4 份已归档（.archive/）；11 份无任务历史回传保留链接；knowledge-full-reconciliation 任务已完成（COMPLETED 已确认），阶段三方向已归档 `passed/direction-knowledge-full-reconciliation-terminal-sync.md`，历史文件不删除；当前执行入口以 `knowledge/current-status.md`「当前唯一下一动作」为准（2026-09-15 为 P60 整体终态同步——P60 写为 `COMPLETED（规划已确认，2026-09-15）`、迁移终点 V93、两仓发布身份锁定——方向 `product/v0.1.0-oa-completion/passed/direction-v0.1.0-oa-completion-terminal-sync.md`（已归档），回执 `receipts/terminal-sync-v0.1.0-oa-completion-01.md`；P60 整体 14/14 通过并经发布最终验收 02 `receipts/planning-final-review-release-v0.1.0-server-web-02-passed.md` PASSED，0.1.0 两仓已发布并锁定；下一动作=继续执行 P53 提示07（入口 `product/p53-global-ui-component-layout/receipts/planning-execution-prompt-p53-global-ui-component-layout-07.md`）；P61 用户可见错误码与提示语人性化治理已完成并经规划确认（`COMPLETED（规划已确认，2026-09-20）`、已核销、三份方向归档 `product/p61-user-facing-message-humanization/passed/`），其现状探索 `search_task/p61-user-facing-message-humanization-current-seams.md` 仅作已完成追溯；I6 现状接缝探索 `search_task/v0.1.0-oa-completion-i6-current-seams.md` 已回传 `search_fallback/`） |
+ 
+diff --git a/knowledge/features/v0.0.2-oa.md b/knowledge/features/v0.0.2-oa.md
+index 93c1e9d..dc1c1ad 100644
+--- a/knowledge/features/v0.0.2-oa.md
++++ b/knowledge/features/v0.0.2-oa.md
+@@ -2,3 +2,3 @@
+ 
+-> 本文件为该交付的功能追踪登记；主方向与 A8 方向已归档 `product/v0.0.2-oa/passed/`；阶段三终态同步方向 `product/v0.0.2-oa/ready/direction-v0.0.2-oa-terminal-sync.md`（仅 Planner 复核通过后移 passed）。历史方向与回执见 `product/v0.0.2-oa/`。
++> 本文件为该交付的功能追踪登记；主方向与 A8 方向已归档 `product/v0.0.2-oa/passed/`；阶段三终态同步方向 `product/v0.0.2-oa/passed/direction-v0.0.2-oa-terminal-sync.md`（已归档）。历史方向与回执见 `product/v0.0.2-oa/`。
+ 
+@@ -7,3 +7,3 @@
+ | 功能标识/名称 | v0.0.2-oa / v0.0.2 OA 完善 |
+-| 功能状态 | **COMPLETED（待规划确认，2026-09-07）**；验收事件：功能级 PASSED（2026-09-07，规划验收06 `planning-review-v0.0.2-oa-06-passed.md`，A1—A8 全部通过并锁定）；审核信息：阶段三终态同步回执 `terminal-sync-v0.0.2-oa-01.md` 待 Planner 复核确认（不影响已授权功能状态） |
++| 功能状态 | **COMPLETED（规划已确认，2026-09-07）**；验收事件：功能级 PASSED（2026-09-07，规划验收06 `planning-review-v0.0.2-oa-06-passed.md`，A1—A8 全部通过并锁定）；审核信息：阶段三终态同步回执 `terminal-sync-v0.0.2-oa-01.md` 经最终复核 `planning-final-review-terminal-sync-v0.0.2-oa-03-passed.md` 确认（不影响已授权功能状态） |
+ | 完成日期 | 2026-09-07 |
+@@ -34,2 +34,2 @@
+ - P4：开放、部分实现未整体核销（流程中心/抄送查询/催办已交付；转办/委托/加签/撤回、流程版本/挂起激活等候选仍开放）。
+-- 发布：v0.0.2 尚未发布；远程合并、推送、标签和发布须另获 Owner 明确授权（当前唯一下一动作见 `knowledge/current-status.md`）。
+\ No newline at end of file
++- 发布：v0.0.2 已于 2026-09-07 发布（Server `20fffc1ddec13ea665fc388f4243c6e063974883`、Web `0bf6e8925059e4c254328c5d1643ebd8c1a2943e`；两仓 annotated tag `0.0.2` peeled 到各自最终 main；发布执行回执 `receipts/release-v0.0.2-oa-01.md`、规划复核 `receipts/planning-review-release-v0.0.2-oa-01-passed.md` PASSED）；后续远程合并、推送、标签和发布仍须另获 Owner 明确授权（当前唯一下一动作见 `knowledge/current-status.md`）。
+diff --git a/knowledge/features/v0.1.0-oa-completion.md b/knowledge/features/v0.1.0-oa-completion.md
+index e443a7b..43cb883 100644
+--- a/knowledge/features/v0.1.0-oa-completion.md
++++ b/knowledge/features/v0.1.0-oa-completion.md
+@@ -2,3 +2,3 @@
+ 
+-> 本文件为该 XL 主功能的执行追踪登记；唯一执行入口 `product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md`。目标版本由 Owner 确认统一登记为 `0.1.0`（更正回执 `product/v0.1.0-oa-completion/receipts/planning-registration-correction-v0.1.0-01.md`，2026-09-09；本文件由 `v0.3.0-oa-completion.md` 更名承接，历史记录保留）。I2、I3、I4 阶段方向与终态同步方向均已归档 `product/v0.1.0-oa-completion/passed/`；I5 主方向与终态同步方向亦均已归档 `product/v0.1.0-oa-completion/passed/`；**I6 主方向与终态同步方向均已归档 `product/v0.1.0-oa-completion/passed/`（功能级 PASSED + 阶段三最终复核 01 PASSED，I6 确认 `COMPLETED（规划已确认，2026-09-15）`）**；当前唯一规划入口 `product/v0.1.0-oa-completion/ready/direction-stage-i6-final-confirmed-state-projection.md`（I6 规划确认终态投影方向）。历史方向与回执见 `product/v0.3.0-oa-completion/`（仅作 I1 阶段历史证据）。
++> 本文件为该 XL 主功能的执行追踪登记；无活动执行入口（P60 已完成并发布，主方向与终态同步方向均已归档 `product/v0.1.0-oa-completion/passed/`）。目标版本由 Owner 确认统一登记为 `0.1.0`（更正回执 `product/v0.1.0-oa-completion/receipts/planning-registration-correction-v0.1.0-01.md`，2026-09-09；本文件由 `v0.3.0-oa-completion.md` 更名承接，历史记录保留）。I2、I3、I4 阶段方向与终态同步方向均已归档 `product/v0.1.0-oa-completion/passed/`；I5 主方向与终态同步方向亦均已归档 `product/v0.1.0-oa-completion/passed/`；**I6 主方向与终态同步方向均已归档 `product/v0.1.0-oa-completion/passed/`（功能级 PASSED + 阶段三最终复核 01 PASSED，I6 确认 `COMPLETED（规划已确认，2026-09-15）`）**；原规划入口 `product/v0.1.0-oa-completion/passed/direction-stage-i6-final-confirmed-state-projection.md`（I6 规划确认终态投影方向，已归档）；当前主功能入口见 `knowledge/current-status.md`。历史方向与回执见 `product/v0.3.0-oa-completion/`（仅作 I1 阶段历史证据）。
+ 
+@@ -12,3 +12,3 @@
+ | 统筹范围 | P2/P4/P26/P31/P34/P35/P37/P38/P39/P47 等既有开放 OA 范围（统筹收口，不提前核销；I3 已交付自研设计器与人工审批能力、I4 已交付编排与流程运营能力，但本阶段不核销 P47/P34/P35 等既有编号） |
+-| 方向位置 | `product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md`；I2 阶段方向与终态同步方向已归档 `passed/`；I3 阶段方向与终态同步方向已归档 `passed/`；I4 阶段方向、终态同步方向与三层状态对账方向已归档 `passed/`；**I5 阶段方向与终态同步方向均已归档 `passed/`**；**I6 阶段方向与终态同步方向均已归档 `passed/`（功能级 PASSED + 阶段三最终复核 01 PASSED）**；当前唯一规划入口 `ready/direction-stage-i6-final-confirmed-state-projection.md`（I6 规划确认终态投影方向） |
++| 方向位置 | 主方向与终态同步方向均已归档 `product/v0.1.0-oa-completion/passed/`；I2 阶段方向与终态同步方向已归档 `passed/`；I3 阶段方向与终态同步方向已归档 `passed/`；I4 阶段方向、终态同步方向与三层状态对账方向已归档 `passed/`；**I5 阶段方向与终态同步方向均已归档 `passed/`**；**I6 阶段方向与终态同步方向均已归档 `passed/`（功能级 PASSED + 阶段三最终复核 01 PASSED）**；I6 规划确认终态投影方向亦已归档 `passed/direction-stage-i6-final-confirmed-state-projection.md`；无活动执行入口 |
+ | 规划清单 | `product/v0.1.0-oa-completion/ready/advanced-capability-feature-checklist.md` |
+diff --git a/todo/v0.1.0-oa-plan.md b/todo/v0.1.0-oa-plan.md
+index 232ca4b..a83648b 100644
+--- a/todo/v0.1.0-oa-plan.md
++++ b/todo/v0.1.0-oa-plan.md
+@@ -2,3 +2,3 @@
+ 
+-P60成熟OA `0.1.0`路线已**COMPLETED（规划已确认，2026-09-15）**，整体14/14；I1—I6均已确认。Server/Web `0.1.0`发布锁定，Workspace不参与版本判断；迁移终点V93。R8五渠道与I5三Provider保持Owner延期/未验证；功能数44、✅46/🟦22/⬜22、ADV64与其他开放P编号不变。当前规划入口切换为P61：`search_task/p61-user-facing-message-humanization-current-seams.md`。
++P60成熟OA `0.1.0`路线已**COMPLETED（规划已确认，2026-09-15）**，整体14/14；I1—I6均已确认。Server/Web `0.1.0`发布锁定，Workspace不参与版本判断；迁移终点V93。R8五渠道与I5三Provider保持Owner延期/未验证；功能数44、✅46/🟦22/⬜22、ADV64与其他开放P编号不变。当前主功能入口为 P53 提示07：`product/p53-global-ui-component-layout/receipts/planning-execution-prompt-p53-global-ui-component-layout-07.md`；P61 已 `COMPLETED（规划已确认，2026-09-20）` 并核销，仅作完成追溯（三份方向归档 `product/p61-user-facing-message-humanization/passed/`，现状探索 `search_task/p61-user-facing-message-humanization-current-seams.md`）。
+ 

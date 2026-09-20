@@ -1,0 +1,30 @@
+atomic_id=G6c1
+captured_at=2026-09-14T08:14:00+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=6ec847a6f6505d0fa271cf45f3d77a26816d0a4f（iteration-07 最终工作树）
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; I5SsoBindingSessionBootTest（RANDOM_PORT 真实 HTTP + 独立 H2 实例 + 真实 Redis 6379）；第一方登录走真实 /auth/login（challenge + RSA-OAEP-SHA256 + dev 固定验证码 1234，Owner 指令）；原始控制台流=g6c1-boot.log
+database=H2（独立实例）+ Redis（真实）；sys_user_role/绑定 SQL 权威回读
+tenant_id=100
+actor=user 9503（同 user 的 A/B 两代会话；9501→iteration-05、9502→iteration-06，均随其测试 JVM 销毁，旧→新登记）
+object_ids=binding id=90013 (WECOM, ACTIVE→UNBOUND)；digestA=20b9d6d1ed63…（A access token SHA-256 前缀）；digestB=登录 B token 摘要（与 A 不同，全文不落盘）；撤销标记键 sw:security:token-revoked:{digest}
+positive_assertion=解绑后同一 user 经第一方登录建立新会话 B：B 的 me=200、refresh=200（轮换 cookie 后重载后 refresh 仍 200）；主动清除 B 的登录缓存后 B 仍由权威装载恢复（me=200）
+negative_assertion=旧 access A 在 B 建立前、B 建立后（B 的 userId 缓存存在）、B 缓存重载后三个检查点始终 401（不借 B 缓存复活）；旧 refresh A 在解绑后即 401（全部会话失效）；B 无撤销标记（digestB 键不存在）；role 表零增量
+positive_pass=true
+negative_pass=true
+cleanup=测试上下文关闭（H2 随 JVM 消亡；测试专属 Redis 键随 TTL 过期）
+uncovered=真实 Provider 再登录归 G8
+implementationNote={"defect":"iteration-06 的撤销标记为 userId 维度且仅在缓存未命中检查——旧 token 可借新会话的 userId 缓存复活，新登录会被同一标记误伤（验收 06 §3 可判定风险成立）","fix":"撤销标记改 token 摘要维度：LoginUserCacheService.markTokenRevoked/isTokenRevoked（sw:security:token-revoked:{sha256(token)}，TTL=access 过期）；JwtAuthenticationFilter 在 JWT 校验后、装载前检查；LoginUserLoader 回退 userId 级检查；SsoAuthService.unbind 新增携带当前 token 的重载，SsoAuthController 传入 Authorization 中的 access token"}
+observed=
+[G6c1] loginA -> 200（me=200, digestA=20b9d6d1ed63, sessionRow=true, marker(digestA)=false）
+[G6c1] unbind -> 200（Bearer A）
+[G6c1] A 解绑后 me -> 401
+[G6c1] A 解绑后 refresh -> 401「refresh token 已被使用过，全部会话已失效，请重新登录」
+[G6c1] sessionRow=false; revokedKeys 含 token-revoked:20b9d6d1ed63…
+[G6c1] loginB -> 200（跨秒 1.1s 登录；见已知边界）
+[G6c1] B me -> 200（新会话不被 A 标记误伤）; B refresh -> 200（轮换出新 cookie）
+[G6c1] A 借 B 缓存尝试 me -> 401（B 的 userId 缓存存在，A 不复活）
+[G6c1] B 缓存重载 me -> 200（权威装载恢复）; B 重载后 refresh -> 200
+[G6c1] A 终局 me -> 401; marker(digestA)=true; marker(digestB)=false
+[G6c1] role delta=0（before=1 after=1）
+[knownEdge] {"observation":"JWT 无 jti、iat 为秒级：同一秒内两次登录产出逐字节相同的 token（本轮 loginA/loginB 同秒时 digestA==digestB 曾致断言失败）","impact":"同秒边界下 B 会与被撤销的 A 同 token 而被一并拒绝，直至标记 TTL 过期","disposition":"本轮以跨秒登录规避并登记为已知边界；建议后续为 token 引入 jti（属 token 契约变更，超出提示 05 修改范围）"}

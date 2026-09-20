@@ -1,0 +1,26 @@
+atomic_id=G2a1
+captured_at=2026-09-14T01:28:00+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=本轮采集对应含审计修复、票据兑换挂起修复与 V903 的工作树（最终 SHA 以 G9a1 核对为准）
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; 完整应用上下文（I5PgTenantBehaviorBootTest）+ zonky 内嵌真实 PostgreSQL 17.5；java.net.http HttpClient 对 RANDOM_PORT 真实 HTTP 发起签名请求
+database=PostgreSQL（真实）；sw_openapi_nonce / sw_openapi_app 经 PG JDBC 权威回读
+tenant_id=100（有效应用）与 300（过期租户应用）
+actor=已登记 OpenAPI 应用 i5-pg-openapi-t100（tenant 100, PROCESS_START/PROCESS_QUERY/TASK_HANDLE, actAs=9001）与 i5-pg-openapi-t300（tenant 300 过期）
+object_ids=app digest=secret_hash 为 SHA-256（哨兵明文不落盘）；签名材料=appId+timestamp+nonce+sha256(body)，HMAC-SHA256(secretHash)；nonce=i5nonce-bad-1/i5nonce-t300-1/i5nonce-old-1/i5nonce-ok-1
+positive_assertion=登记应用的合法签名 HTTP 穿过签名/时间窗/防重放/租户有效/scope 全链到达业务 handler 边界（业务层返回「表单不存在」1000——业务语义错误而非鉴权错误）；PG sw_openapi_nonce 真实落库一行（app_id=i5-pg-openapi-t100, tenant_id=100, deleted=0）
+negative_assertion=缺鉴权头 3002、坏签名 3002、过期租户应用 3009（应用所属租户不可用）、过期时间戳 3003 全部拒绝且 nonce 表零增量（before=0 after=0）；同一 nonce 重放 3004「随机串已使用（防重放拒绝）」且不新增行
+positive_pass=true
+negative_pass=true
+cleanup=测试上下文关闭，zonky PG 实例随之关闭
+uncovered=none for the captured G2a1 package
+observed=
+[G2a1] missingHeaders -> HTTP 200 body {"code":3002,"msg":"缺少鉴权头（X-App-Id / X-Timestamp / X-Nonce / X-Signature）"}
+[G2a1] badSignature -> {"code":3002,"msg":"签名校验失败"}
+[G2a1] expiredTenant -> {"code":3009,"msg":"应用所属租户不可用"}
+[G2a1] staleTimestamp -> {"code":3003,"msg":"请求时间戳超出允许窗口"}
+[G2a1] nonceRowsAfterNegatives=0 (before=0)
+[G2a1] validSigned -> {"code":1000,"msg":"表单 'null' 不存在"}（鉴权/租户/scope 全通过，到达业务边界）
+[G2a1] pgNonceRow=[{app_id=i5-pg-openapi-t100, tenant_id=100, nonce=i5nonce-ok-1, deleted=0}]
+[G2a1] nonceReplay -> {"code":3004,"msg":"随机串已使用（防重放拒绝）"}
+[G2a1] note=首采时 negatives 后 nonce=1 系本地仓库 openapi 构件滞后于工作树 I5 修复（nonce 先写后查租户）；全仓 mvn install 统一构件后复测为 0，与工作树行为一致

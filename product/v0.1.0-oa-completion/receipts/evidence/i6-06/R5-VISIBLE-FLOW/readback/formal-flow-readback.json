@@ -1,0 +1,40 @@
+{
+  "definitionId": "2099686286806409218",
+  "processKey": "bpm_25abb15a82254bf6",
+  "definitionName": "I6 R5 visible role flow 1789439195299",
+  "businessKey": "264cb225-8492-4f1d-a344-ee7c3d5ead38",
+  "formKey": "i6g1a_form_t100b",
+  "instanceId": "f42ba34b-b0ac-11f1-b25f-00ffa7734675",
+  "databaseInstanceId": "2099686432160014337",
+  "status": "APPROVED",
+  "tasks": {
+    "s1": {
+      "taskId": "f4305e48-b0ac-11f1-b25f-00ffa7734675",
+      "assignee": "10002",
+      "visibleAction": "审批通过"
+    },
+    "s2": {
+      "taskId": "1b18d91f-b0ad-11f1-b25f-00ffa7734675",
+      "originalAssignee": "2099538680159641602",
+      "visibleAction": "委托",
+      "delegateTarget": "2099538680528740353",
+      "delegateNote": "I6 R5 visible delegation"
+    },
+    "delegatee": {
+      "username": "i6_r5_proxy_1789404003476",
+      "visibleAction": "审批通过"
+    }
+  },
+  "copy": {
+    "recipient": "u3_100",
+    "recordId": "2099687316675813378",
+    "nodeKey": "n_copy",
+    "delivery": "SUCCESS"
+  },
+  "trace": [
+    { "action": "APPROVE", "status": "APPROVED" },
+    { "action": "DELEGATE", "status": "DELEGATED" },
+    { "action": "APPROVE", "status": "APPROVED" }
+  ],
+  "readbackScope": "API/DB readback after visible UI actions; no role action was executed by this file"
+}

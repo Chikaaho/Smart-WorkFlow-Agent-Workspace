@@ -1,0 +1,22 @@
+atomic_id=G9b1
+captured_at=2026-09-14T02:08:00+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=db8b25556bd9a9958d06ab727372a1fe1853b26e（最终工作树）
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; MAVEN_OPTS=-Xmx2g mvn test（六模块聚合，一次退出码）；NODE_OPTIONS=2048 pnpm typecheck && lint && test && build（四门串联，一次退出码）；前后端编译互斥遵守（先后后前）
+database=bootstrap 门内含 FlywayFullChain H2(15)+PostgreSQL(12) 全迁移链与 I4TenantIsolationPostgres(2)；P45 夹具在真实 Redis 6379 下加载成功（iteration-04 的 ApplicationContext error 不复现）
+tenant_id=模块夹具口径
+actor=executor-local-dev
+object_ids=受影响模块集合=sw-biz-system-biz、sw-biz-openapi-biz、sw-bpm-process、sw-basic-iot、sw-basic-job-biz、sw-bootstrap；Web=四门
+positive_assertion=六模块 tests=658、failures=0、errors=0、skipped=0、BUILD SUCCESS（进程 exit=0）；迁移链 H2 15 + PG 12 全绿；Web typecheck/lint/test/build 四门 exit=0（Test Files 128 passed + 1 skipped；Tests 1183 passed + 3 skipped）；g9b-server-gates.log 与 g9b-web-gates.log 原始流落盘并纳入 manifest
+negative_assertion=全部引用附件存在（g9a1-manifest.sha256 41 项 verify exit=0，含两份门禁原始流与 g4b1/g5c1 四张截图）；browser_status=OPERABLE（本轮真实浏览器证据已闭合）；无缺失附件、静默豁免或 terminal 矛盾
+positive_pass=true
+negative_pass=true
+cleanup=门禁后无残留进程（dev server/8081/PG 5433 已停；Vite 5173 保留为既有会话进程）
+uncovered=G8 三 Provider 真实成功链保持 PENDING（外部依赖，未计入门禁）
+observed=
+[server] {"modules":{"job-biz":51,"iot":46,"system-biz":295,"bpm-process":205,"openapi-biz":7,"bootstrap":54},"total":658,"failures":0,"errors":0,"skipped":0,"build":"BUILD SUCCESS","exit":0}
+[migrations] {"flywayFullChain":"H2 15/15, PostgreSQL 12/12（终点 v87 PG 链 / V88 H2）","i4TenantIsolationPostgres":"2/2"}
+[p45redis] {"fixtureError":"0（真实 Redis 6379，iteration-04 的 1 error 已消失）"}
+[web] {"typecheck":"exit 0 (vue-tsc -b --noEmit)","lint":"exit 0 (eslint .)","test":"exit 0","testFiles":"128 passed + 1 skipped (129)","tests":"1183 passed + 3 skipped (1186)","build":"exit 0 (vue-tsc -b && vite build, built in 2.42s)"}
+[attachments] {"manifest":"g9a1-manifest.sha256 (41 entries)","verify_exit":0,"screenshots":["g4b1-pc.png","g4b1-mobile.png","g5c1-pc.png","g5c1-mobile.png"],"raw_gate_logs":["g9b-server-gates.log","g9b-web-gates.log"]}

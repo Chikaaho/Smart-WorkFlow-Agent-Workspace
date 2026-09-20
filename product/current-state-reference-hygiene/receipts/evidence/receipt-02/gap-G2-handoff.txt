@@ -1,0 +1,13 @@
+GAP G2  file: knowledge/session-handoff.md
+ORIGINAL (failing fact): current-handoff anchors L24 主方向 and L29 当前唯一规划入口 both presented P60 paths under product/v0.1.0-oa-completion/ready/ as current entries.
+ACTUAL after fix (full-line readback):
+  L24 (164 chars): - 主方向（已归档）：`product/v0.1.0-oa-completion/passed/direction-v0.1.0-oa-completion.md`（六次迭代：I1 组织与权限底座、I2 低代码表单收口、I3 人工审批与自研流程设计器、I4 编排/流程运营/工作台、I5 第三方 SSO、I6 通知与版本收口）。
+  L29 (337 chars): - 当前唯一规划入口：继续执行 P53 提示07（`product/p53-global-ui-component-layout/receipts/planning-execution-prompt-p53-global-ui-component-layout-07.md`）；P60/I6 已无活动入口（I6 规划确认终态投影方向亦已归档 `passed/direction-stage-i6-final-confirmed-state-projection.md`）；R8 五渠道后续入口为 P2 待办 `todo/i6-external-notification-channels-real-verification.md`，等待 Owner 重新排期并提供外部条件。
+REVERSE ASSERTION (the two anchors as one unit):
+  contains ready/ : False
+  L24 contains passed/direction-v0.1.0-oa-completion.md : True
+  L29 contains P53 prompt-07 entry : True
+  L29 contains R8 P2 todo entry : True
+WHOLE-FILE SCAN  rg v0.1.0-oa-completion/ready/  -> 1 hit:
+  63:- v0.1.0-oa-completion（P60，当前活动）：方向与规划定义 `product/v0.1.0-oa-completion/ready/`；主方向 `ready/direction-v0.1.0-oa-completion.md`；...
+BOUNDARY: the remaining hit is the line-63 task-pointer entry. The supplemental prompt matrix names only the two current-handoff anchors (L24/L29), so line 63 is outside G1-G3 and was NOT modified. Disclosed for planner adjudication.

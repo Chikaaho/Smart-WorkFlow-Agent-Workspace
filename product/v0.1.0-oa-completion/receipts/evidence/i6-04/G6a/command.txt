@@ -1,0 +1,11 @@
+# G6a 原始流（2026-09-14）
+# 事件驱动脚本（node，真实 HTTP）：g6a-chain.js(events-part1/2.log, RETURN/REJECT/APPROVE/TRANSFER/DELEGATE/WITHDRAW)
+#   events-comm.log(COMMUNICATE receivers)、g6a-part3.js(events-part3.log, ADD_SIGN/DISCARD)、
+#   events-part4.log(DISAPPROVE via /tasks/{id}/reject action=DISAPPROVE; RETURN 单节点 2306 反向)
+#   g6a-return-chain.js(return-def.log) + return-chain.log/return-round2.log(双节点 n2→n1 退回)
+#   g6a-copy-def.js(copy-chain.log/copy-chain2.log, 抄送节点真实发布与投递)
+#   g6a-deadline.js(deadline-def.log/deadline-chain.log, dueMinutes=1 → 调度器扫描真实触发)
+#   催办：POST /workflow/my/instances/2099447084391010305/urge（RESPONSe in transcript, TASK_URGE 落库）
+# 修复实现：TaskActionService 退回新轮次 TODO_CREATED（方向§6-96；boot4.log:183 行 info），
+#   模块已 install（-pl sw-biz/sw-bpm/sw-bpm-process -DskipTests），server 重启后取证
+# 事件矩阵落库回读：event-matrix.txt（docker exec psql smart_workflow_run）

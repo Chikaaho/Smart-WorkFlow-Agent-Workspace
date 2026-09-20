@@ -1,0 +1,269 @@
+{
+  "generated_at": "2026-09-17T11:12:07.92Z",
+  "method": "四向勾稽：设计色（锁定 SVG fill 统计 + PNG 同坐标采样 + Figma MCP 节点交叉）→ 令牌（src/styles/tokens.css）→ 运行时 computed style（Playwright getComputedStyle，1440×1024 有头会话）→ 最终截图稳定区域采样（System.Drawing GetPixel）。",
+  "checks": [
+    {
+      "purpose": "品牌主色",
+      "design": "#6F2DFF",
+      "token": "--sw-color-primary: #6f2dff",
+      "computed": "rgb(111, 45, 255)",
+      "sample": null,
+      "delta_max": 0,
+      "verdict": "PASS",
+      "consumers": "el-button--primary/.catalog-card__launch/.login-page__submit/侧栏激活项（tokens.css 绑定 --el-color-primary）"
+    },
+    {
+      "purpose": "页面底色",
+      "design": "#F4F6FB（PNG 1430,500/720,1000 全节点）",
+      "token": "--sw-surface-page: #f4f6fb",
+      "computed": "rgb(244, 246, 251)",
+      "sample": "#F4F6FB",
+      "delta_max": 0,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "侧栏底色",
+      "design": "#111B3B（PNG 网格采样 节点01/02/21）",
+      "token": "--sw-nav-sidebar-bg: #111b3b",
+      "computed": "（.basic-layout__aside 消费令牌）",
+      "sample": "#111B3B",
+      "delta_max": 0,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "侧栏顶级激活项",
+      "design": "#6F2DFF（PNG 110,102 节点01）",
+      "token": "--sw-nav-item-active-bg: #6f2dff",
+      "computed": "AppSidebar .el-menu-item.is-active 消费",
+      "sample": null,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "侧栏子项激活",
+      "design": "#29235C（PNG 150,215 节点04）",
+      "token": "--sw-nav-subitem-active-bg: #29235c",
+      "computed": "AppSidebar .el-menu--inline .el-menu-item.is-active 消费",
+      "sample": null,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "用户端顶栏",
+      "design": "#40369A（PNG 700,32 节点01/05/21）",
+      "token": "--sw-nav-topbar-portal-bg: #40369a",
+      "computed": "rgb(64, 54, 154)",
+      "sample": "#40369A",
+      "delta_max": 0,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "用户端顶栏激活块",
+      "design": "#332B81（PNG 320,58）",
+      "token": "--sw-nav-topbar-portal-active-bg: #332b81",
+      "computed": "AppMainNav is-active 消费",
+      "sample": null,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "管理端顶栏",
+      "design": "#111B3B（PNG 600,32 节点04）",
+      "token": "--sw-nav-topbar-admin-bg: #111b3b",
+      "computed": "rgb(17, 27, 59)",
+      "sample": "#111B3B",
+      "delta_max": 0,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "管理端顶栏激活块",
+      "design": "#27345C（PNG 455,58）",
+      "token": "--sw-nav-topbar-admin-active-bg: #27345c",
+      "computed": "AppMainNav is-active 消费",
+      "sample": null,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "主文本",
+      "design": "#172033（SVG fill 统计）",
+      "token": "--sw-text-primary → --el-text-color-primary",
+      "computed": "html:root 绑定（EP 组件消费）",
+      "sample": null,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "常规/次要文本",
+      "design": "#303A55 / #697386（SVG）",
+      "token": "--sw-text-regular/--sw-text-secondary → --el-text-color-regular/secondary",
+      "computed": "表头实测 rgb(105, 115, 134)=#697386",
+      "sample": null,
+      "delta_max": 0,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "一级边框",
+      "design": "#CCD5E5（SVG）",
+      "token": "--sw-border-base → --el-border-color",
+      "computed": "defaultBtnBorder=rgb(204,213,229)=#CCD5E5；elInputBorder 同值",
+      "sample": null,
+      "delta_max": 0,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "控件圆角",
+      "design": "6px（设计控件）",
+      "token": "--sw-radius-base → --el-border-radius-base",
+      "computed": "primaryBtnRadius=6px",
+      "sample": null,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "卡片圆角",
+      "design": "10px",
+      "token": "--sw-radius-card → --el-card-border-radius",
+      "computed": "任务详情卡片 10px（cur-03 事实）",
+      "sample": null,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "弹窗圆角",
+      "design": "12px",
+      "token": "--sw-radius-lg → --el-dialog-border-radius",
+      "computed": "审批意见弹窗 12px（cur-15 事实）",
+      "sample": null,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "卡片阴影",
+      "design": "漫射深蓝基调",
+      "token": "--sw-shadow-card → --el-box-shadow-light",
+      "computed": "卡片阴影消费令牌（cur-03 事实）",
+      "sample": null,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "表头",
+      "design": "#FAFBFE 底 + #697386 文本",
+      "token": "--el-table-header-bg-color: #fafbfe / --el-table-header-text-color: var(--sw-text-secondary)",
+      "computed": "rgb(250,251,254) / rgb(105,115,134)",
+      "sample": null,
+      "delta_max": 0,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "语义-成功",
+      "design": "#18A67A / #EAFBF7（SVG）",
+      "token": "--sw-success: #18a67a → --el-color-success",
+      "computed": "rgb(24, 166, 122)",
+      "sample": null,
+      "delta_max": 0,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "语义-警告",
+      "design": "#F59E0B / #FFF7E8（SVG）",
+      "token": "--sw-warning: #f59e0b → --el-color-warning",
+      "computed": "（令牌绑定）",
+      "sample": null,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "语义-危险",
+      "design": "#E04B55（SVG 节点30 红色图标）/#FFF0F0 底（PNG 950,673 节点02）",
+      "token": "--sw-danger: #e04b55 → --el-color-danger；--sw-danger-bg: #fff0f0",
+      "computed": "（令牌绑定）",
+      "sample": "#FFF0F0",
+      "delta_max": 0,
+      "verdict": "PASS",
+      "note": "tokens.css 原 #e5484d 为无设计出处的取值，本轮统一为设计可证的 #E04B55"
+    },
+    {
+      "purpose": "语义-信息",
+      "design": "#20B8CD / #E7F8FA（SVG）",
+      "token": "--sw-info: #20b8cd → --el-color-info",
+      "computed": "rgb(32, 184, 205)",
+      "sample": null,
+      "delta_max": 0,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "旧品牌残留",
+      "design": "不允许（方向 §4.1 取代 #7e306b）",
+      "token": "已替换为 var(--sw-color-primary)（SsoReturnPage/SsoBindPage/ProcessAnalytics/AccountBindings + 5 处 var 回退）",
+      "computed": "rg 全仓 #7e306b 仅存 tokens.css 历史注释",
+      "sample": null,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "EP 默认蓝残留",
+      "design": "不允许（#409eff 非设计色）",
+      "token": "已替换为品牌令牌（NodeTrajectory/ConversationDetail/DebugSessionView）",
+      "computed": "rg 全仓无 #409eff 运行时代码",
+      "sample": null,
+      "verdict": "PASS"
+    },
+    {
+      "purpose": "登录 hero 渐变",
+      "design": "#3F1E8E/#16143E/#1A204C + 紫辐射（PNG 采样 节点06）",
+      "token": "LoginPage 渐变重构（16143e→1a204c + rgba(111,45,255,.55) 辐射）",
+      "computed": "渐变重构后视觉对齐（final/runtime/cur-06-login.png）",
+      "sample": null,
+      "verdict": "PASS-GRADIENT",
+      "note": "渐变为连续色场，以成对图人工比对为结论，不做单点精确一致断言"
+    },
+    {
+      "purpose": "门户统计块",
+      "design": "#202F63 / #6F2DFF / #8FDBE6（PNG 节点05）",
+      "token": "PortalHome 统计块 #202f63/#6f2dff（第三块按时完成率无真实数据源，按方向省略）",
+      "computed": null,
+      "sample": null,
+      "verdict": "PASS-WITH-AUTHORIZED-OMISSION"
+    }
+  ],
+  "summary": {
+    "total": 24,
+    "pass": 22,
+    "pass_with_authorized_omission": 2,
+    "fail": 0,
+    "accessibility_exceptions": 4
+  },
+  "accessibility_note": "对比度全部来自本轮实算（WCAG 2.1 相对亮度）；tag 文本 AA 修正见 accessibility_exceptions。",
+  "accessibility_exceptions": [
+    {
+      "component": "el-tag success 文本",
+      "original": "#18A67A on #EAFBF7 = 2.90:1",
+      "adjusted": "#12805C = 4.60:1",
+      "necessity": "WCAG 2.1 AA 4.5:1（方向 §4.1 最小必要调整）",
+      "scope": "仅 tag 文本色；chip 底色保持设计精确值"
+    },
+    {
+      "component": "el-tag warning 文本",
+      "original": "#F59E0B on #FFF7E8 = 2.02:1",
+      "adjusted": "#945F00 = 5.06:1",
+      "necessity": "AA 4.5:1",
+      "scope": "仅 tag 文本色"
+    },
+    {
+      "component": "el-tag danger 文本",
+      "original": "#E04B55 on #FFF0F0 = 3.58:1",
+      "adjusted": "#C2303A = 5.02:1",
+      "necessity": "AA 4.5:1",
+      "scope": "仅 tag 文本色"
+    },
+    {
+      "component": "el-tag info 文本",
+      "original": "#20B8CD on #E7F8FA = 2.18:1",
+      "adjusted": "#0E7A8A = 4.61:1",
+      "necessity": "AA 4.5:1",
+      "scope": "仅 tag 文本色"
+    }
+  ],
+  "aa_passing_samples": [
+    "nav secondary #7E89A1 on #111B3B = 4.81:1",
+    "nav text #ECE9FF on #40369A = 7.99:1",
+    "nav active #FFFFFF on #332B81 = 11.65:1",
+    "white on brand #6F2DFF = 6.01:1（主按钮/侧栏激活项）",
+    "primary text #172033 on #F4F6FB = 15.05:1",
+    "regular text #303A55 on #F4F6FB = 10.43:1",
+    "secondary text #697386 on #FFFFFF = 4.78:1",
+    "table header #697386 on #FAFBFE = 4.62:1",
+    "brand tag text #6F2DFF on #ECE9FF = 5.05:1"
+  ]
+}

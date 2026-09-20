@@ -1,0 +1,27 @@
+{
+  "feature": "p53-global-ui-component-layout",
+  "reviewRound": "p53-review-07",
+  "attempt": {
+    "channel": "Figma MCP（按提示06 §3 顺序第一优先）",
+    "triedAt": "2026-09-18",
+    "method": "枚举当前 ZCode 会话可用 MCP 服务器与工具注册表",
+    "result": "UNAVAILABLE",
+    "evidence": {
+      "availableMcpServers": [
+        "browser-use (node_repl browser control)",
+        "document-skills (image_search)",
+        "web_reader"
+      ],
+      "figmaToolPresent": false,
+      "detail": "会话工具注册表中不存在任何 Figma MCP 工具（mcp__figma* / figma-developer-mcp 等均未注册），无法读取当前 Figma 文件/节点属性。"
+    }
+  },
+  "fallback": {
+    "source": "review-04 锁定本地设计包",
+    "svg": "docs/ui/svg/*.svg（属性与几何：fill/stroke/stop-color/filter 阴影）",
+    "png": "docs/ui/png/*.png（稳定内点交叉采样，不用抗锯齿边缘）",
+    "hashLock": "product/p53-global-ui-component-layout/receipts/evidence/p53-review-04/reference/local-design-index.json（64 项 SHA-256）",
+    "note": "按提示06 §3.2：MCP 不可用不等待、不提交阶段报告，直接回退锁定资产。"
+  },
+  "conflictPolicy": "MCP 与锁定资产冲突时以可追溯的当前 Figma 属性为主；本轮 MCP 不可用，以锁定 SVG 属性为主、PNG 内点采样校验。品牌主色 #6F2DFF 与无障碍边界不变。"
+}

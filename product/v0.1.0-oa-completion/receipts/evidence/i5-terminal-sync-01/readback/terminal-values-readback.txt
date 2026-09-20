@@ -1,0 +1,77 @@
+# I5 terminal value readback — per-entry assertions
+captured_at=2026-09-14T02:56:01.474Z
+method=逐入口声明其必须承载的值并逐条断言；负向断言为精确字面匹配（排除已标注的历史事件行与禁止性/规则表述）
+
+== positive assertions ==
+  OK   I5 阶段状态=COMPLETED（待规划确认）                     | knowledge/current-status.md
+  OK   P60 保持 IN_PROGRESS                           | knowledge/current-status.md
+  OK   I5 阶段状态=COMPLETED（待规划确认）                     | knowledge/session-handoff.md
+  OK   P60 保持 IN_PROGRESS                           | knowledge/session-handoff.md
+  OK   I5 阶段状态=COMPLETED（待规划确认）                     | knowledge/features/v0.1.0-oa-completion.md
+  OK   P60 保持 IN_PROGRESS                           | knowledge/features/v0.1.0-oa-completion.md
+  OK   I5 阶段状态=COMPLETED（待规划确认）                     | Smart-WorkFlow-aPaaS-server/功能清单.md
+  OK   P60 保持 IN_PROGRESS                           | Smart-WorkFlow-aPaaS-server/功能清单.md
+  OK   I5 阶段状态=COMPLETED（待规划确认）                     | todo/v0.1.0-oa-plan.md
+  OK   P60 保持 IN_PROGRESS                           | todo/v0.1.0-oa-plan.md
+  OK   I5 阶段状态=COMPLETED（待规划确认）                     | todo/requirement-pool.md
+  OK   P60 保持 IN_PROGRESS                           | todo/requirement-pool.md
+  OK   I5 阶段状态=COMPLETED（待规划确认）                     | memory/state.md
+  OK   P60 保持 IN_PROGRESS                           | memory/state.md
+  OK   I5 阶段状态=COMPLETED（待规划确认）                     | memory/features.md
+  OK   P60 保持 IN_PROGRESS                           | memory/features.md
+  OK   I5 阶段状态=COMPLETED（待规划确认）                     | memory/handoff.md
+  OK   P60 保持 IN_PROGRESS                           | memory/handoff.md
+  OK   90 明细计数 ✅46/🟦22/⬜22                         | knowledge/current-status.md
+  OK   90 明细计数 ✅46/🟦22/⬜22                         | knowledge/session-handoff.md
+  OK   90 明细计数 ✅46/🟦22/⬜22                         | knowledge/features/v0.1.0-oa-completion.md
+  OK   90 明细计数 ✅46/🟦22/⬜22                         | Smart-WorkFlow-aPaaS-server/功能清单.md
+  OK   90 明细计数 ✅46/🟦22/⬜22                         | todo/v0.1.0-oa-plan.md
+  OK   90 明细计数 ✅46/🟦22/⬜22                         | todo/requirement-pool.md
+  OK   90 明细计数 ✅46/🟦22/⬜22                         | memory/state.md
+  OK   90 明细计数 ✅46/🟦22/⬜22                         | memory/features.md
+  OK   I5 功能级验收裁决路径                                 | knowledge/current-status.md
+  OK   I5 功能级验收裁决路径                                 | knowledge/session-handoff.md
+  OK   I5 功能级验收裁决路径                                 | knowledge/features/v0.1.0-oa-completion.md
+  OK   I5 功能级验收裁决路径                                 | memory/state.md
+  OK   I5 功能级验收裁决路径                                 | memory/features.md
+  OK   I5 功能级验收裁决路径                                 | memory/handoff.md
+  OK   I5 功能级验收裁决路径                                 | todo/requirement-pool.md
+  OK   三 Provider 真实链=Owner 延期免验/未验证                | knowledge/current-status.md
+  OK   三 Provider 真实链=Owner 延期免验/未验证                | knowledge/session-handoff.md
+  OK   三 Provider 真实链=Owner 延期免验/未验证                | memory/state.md
+  OK   三 Provider 真实链=Owner 延期免验/未验证                | memory/features.md
+  OK   三 Provider 真实链=Owner 延期免验/未验证                | memory/handoff.md
+  OK   三 Provider 真实链=Owner 延期免验/未验证                | todo/requirement-pool.md
+  OK   下一动作=等待 Planner 终态复核                         | knowledge/current-status.md
+  OK   下一动作=等待 Planner 终态复核                         | knowledge/session-handoff.md
+  OK   下一动作=等待 Planner 终态复核                         | memory/state.md
+  OK   下一动作=等待 Planner 终态复核                         | memory/features.md
+  OK   下一动作=等待 Planner 终态复核                         | memory/handoff.md
+  OK   I1 已确认值（未改写）                                 | knowledge/current-status.md
+  OK   I2 已确认值（未改写）                                 | knowledge/current-status.md
+  OK   I3 已确认值（未改写）                                 | knowledge/current-status.md
+  OK   I4 已确认值（未改写）                                 | knowledge/current-status.md
+  OK   正式功能数 44，不增加                                 | knowledge/current-status.md
+  OK   ADV 64 条不计入 90                               | knowledge/current-status.md
+  OK   P 编号全部保持现状、本阶段不核销                            | knowledge/current-status.md
+  OK   I6 未开始                                       | knowledge/current-status.md
+  OK   I5 终态同步方向当前指针                                | product/v0.1.0-oa-completion/ready/direction-stage-i5-terminal-sync.md
+  OK   I5 已归档主方向阶段状态                                | product/v0.1.0-oa-completion/passed/direction-stage-i5-tenant-safe-third-party-sso.md
+  OK   I5 主方向下一入口                                   | product/v0.1.0-oa-completion/passed/direction-stage-i5-tenant-safe-third-party-sso.md
+  OK   P60 主方向 §9 当前状态（I5）                          | product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md
+  OK   P60 主方向 §9 已脱离旧 VERIFYING 口径                 | product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md
+
+== negative assertions (exact literals) ==
+  OK   无 I5「规划已确认，2026-09-14」提前写入                   (hits=0)
+  OK   无「P60 已完成」声明                                 (hits=0)
+  OK   无 P60 阶段完成声明                                 (hits=0)
+  OK   无 P60 主方向旧 I5 VERIFYING 当前值                  (hits=0)
+  OK   无入口把三 Provider 真实链写成已验证成功                    (hits=0)
+
+== informational (allowed contexts) ==
+真实链禁止性表述（非通过声明）: 5 处
+历史事件行（显式标注“历史事件，非当前值”）: 1 行（内含 2026-09-13 I5 VERIFYING 历史记录，允许保留）
+P60 主方向 §9 规则文本提及「写 P60 COMPLETED」为禁止性规则，非完成声明
+
+RESULT: pass=62 fail=0
+verifier_exit=0

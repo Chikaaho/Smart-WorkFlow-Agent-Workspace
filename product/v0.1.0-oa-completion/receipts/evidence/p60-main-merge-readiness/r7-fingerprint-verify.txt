@@ -1,0 +1,44 @@
+--- workspace ---
+  recorded(OLD manifest field) : b72f119ba4e00632e16e51d79de7951b33e485caf4c3786962b34973b3f852c3
+  recomputed from OLD fileslist: b72f119ba4e00632e16e51d79de7951b33e485caf4c3786962b34973b3f852c3  match=true
+  recorded(NEW manifest field) : 01a440423cdf37c33669687069483a5fb1b9ca116293475dec2215af75be4c85
+  recomputed from NEW fileslist: 01a440423cdf37c33669687069483a5fb1b9ca116293475dec2215af75be4c85  match=true
+--- server ---
+  recorded(OLD manifest field) : 46f8563cd43d7b98e7b7538f19059393cb5eb26184551a53e4c478d24c3f3fd0
+  recomputed from OLD fileslist: 46f8563cd43d7b98e7b7538f19059393cb5eb26184551a53e4c478d24c3f3fd0  match=true
+  recorded(NEW manifest field) : 97de38b1e580df3b3604eecdbcc330c46e51b9e618b0b31675ffb786f9332e33
+  recomputed from NEW fileslist: 97de38b1e580df3b3604eecdbcc330c46e51b9e618b0b31675ffb786f9332e33  match=true
+--- web ---
+  recorded(OLD manifest field) : c801e4c6c3222d42db6041b555d512d10ceb3b282bce06a02ed5912a3c59dcc6
+  recomputed from OLD fileslist: c801e4c6c3222d42db6041b555d512d10ceb3b282bce06a02ed5912a3c59dcc6  match=true
+  recorded(NEW manifest field) : 2305a3c1d4f6241b3ac454e8f21511f11ac10299bffc575e1b32c2a186ee7275
+  recomputed from NEW fileslist: 2305a3c1d4f6241b3ac454e8f21511f11ac10299bffc575e1b32c2a186ee7275  match=true
+
+=== recorded sidecar (fingerprint-manifest.sha256) ===
+3942311b2d2712e490a011594102183ee2806abb11eefc46c0bb449ba16e716f  fingerprint-manifest.json
+
+actual sha256 of recorded manifest bytes: 3942311b2d2712e490a011594102183ee2806abb11eefc46c0bb449ba16e716f
+--- web --- orderIdentical=false
+ firstDiffIndex=33
+   [30] OLD=src/App.vue   NEW=src/App.vue
+   [31] OLD=src/assets/logo.png   NEW=src/assets/logo.png
+   [32] OLD=src/components/BlankPage.vue   NEW=src/components/BlankPage.vue
+   [33] OLD=src/components/dynamic-field-controls/AttachmentControl.vue   NEW=src/components/DynamicField.spec.ts
+   [34] OLD=src/components/dynamic-field-controls/BoolControl.vue   NEW=src/components/DynamicField.vue
+   [35] OLD=src/components/dynamic-field-controls/DatasourceControl.vue   NEW=src/components/dynamic-field-controls/AttachmentControl.vue
+   [36] OLD=src/components/dynamic-field-controls/DateControl.vue   NEW=src/components/dynamic-field-controls/BoolControl.vue
+   [37] OLD=src/components/dynamic-field-controls/DeptControl.vue   NEW=src/components/dynamic-field-controls/DatasourceControl.vue
+   [38] OLD=src/components/dynamic-field-controls/DictControl.vue   NEW=src/components/dynamic-field-controls/DateControl.vue
+ sizeDiff count=0 []
+--- server --- orderIdentical=false
+ firstDiffIndex=3
+   [0] OLD=.claude/settings.json   NEW=.claude/settings.json
+   [1] OLD=.claude/settings.local.json   NEW=.claude/settings.local.json
+   [2] OLD=.gitignore   NEW=.gitignore
+   [3] OLD=功能清单.md   NEW=AGENTS.md
+   [4] OLD=AGENTS.md   NEW=docs/governance/engineering-constitution.md
+   [5] OLD=docs/governance/engineering-constitution.md   NEW=docs/images/ch-apaas-logo.png
+   [6] OLD=docs/images/ch-apaas-logo.png   NEW=docs/sso/owner-acceptance-handbook.md
+   [7] OLD=docs/sso/owner-acceptance-handbook.md   NEW=docs/sso/provider-config-example.yml
+   [8] OLD=docs/sso/provider-config-example.yml   NEW=pom.xml
+ sizeDiff count=1 [ '功能清单.md' ]

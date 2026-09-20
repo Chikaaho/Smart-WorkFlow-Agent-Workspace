@@ -1,0 +1,2 @@
+# G2f-R 对象
+- 固定模板版本（I6G2ET_TPL100）与三卡片载体（FEISHU/DINGTALK/WECHAT_WORK 渲染断言）

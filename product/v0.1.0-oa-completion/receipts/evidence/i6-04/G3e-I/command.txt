@@ -1,0 +1,5 @@
+# G3e-I 原始流（2026-09-14）
+# 1) EMAIL 解析矩阵：node 脚本经真实 HTTP /api/notify/debug/send（NotifyFacade 统一投递权威）六案例；
+#    原始输出 email-matrix.log；对象：T100 u1_100(10001/u3_100(10003)、缺失 id=999999、跨租户 20001、全局 1
+# 2) SQL 回读：docker exec postgres psql smart_workflow_run → db-rows.txt（幂等双发仅 1 行 idem-e1）
+# 工作目录 G3e-I；源码 NotifyTargetResolverImpl（同租户有效用户 sys_user 条件）+ EmailNotifyChannelAdapter 解析失败/投递失败两分支

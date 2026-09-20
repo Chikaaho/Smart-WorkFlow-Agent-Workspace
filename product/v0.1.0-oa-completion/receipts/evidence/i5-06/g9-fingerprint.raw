@@ -1,0 +1,21 @@
+atomic_id=G9
+captured_at=2026-09-14T05:58:00+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=456b60f5bccc4dbc3706214a3829d32fc5fd2e96（iteration-06 最终工作树；前轮 db8b25556bd9a9958d06ab727372a1fe1853b26e）
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; git write-tree（含未跟踪文件）；sha256sum 清单 11 项 + verify exit=0
+database=不适用
+tenant_id=不适用
+actor=executor-local-dev
+object_ids=fat jar=sw-bootstrap-1.0.0-SNAPSHOT.jar（05:43:51 构建，含解绑会话撤销实现）
+positive_assertion=db8b2555 → 456b60f5 的增量仅为提示 04 授权的「绑定/会话路径 + 直接验证资产」：LoginUserCacheService（+撤销标记）、LoginUserLoader（未命中撤销检查）、SsoAuthService（unbind 撤销）、SystemAutoConfiguration（装配）、RefreshTokenService（公开撤销入口）、两个 BootTest 扩充；G3b2 九格、G6a1 session 零增量、G6b1 两段时间序列全部采于该最终候选
+negative_assertion=未触及审查 05 已锁定路径的实现（G1/G2 表单、OpenAPI、IoT、租户会话过期链未变）；纯补证未重跑全量门禁
+positive_pass=true
+negative_pass=true
+cleanup=不适用
+uncovered=G8 保持 PENDING
+observed=
+[affectedRegressions] {"SsoAuthServiceTest":"22/22","system-biz 模块":"295/0/0/0 BUILD SUCCESS（LoginUserLoader 触及认证链的相称回归）","I5PgTenantBehaviorBootTest":"3/3","I5SsoBindingSessionBootTest":"2/2"}
+[jar] {"mtime":"2026-09-14T05:43:51","usage":"G3b2 矩阵正向/负向全部进程"}
+[manifest] {"file":"g9-manifest.sha256","entries":11,"verify_exit":0}
+[delta] {"from":"db8b2555","to":"456b60f5","files":"+4 修改主代码（LoginUserCacheService/LoginUserLoader/SsoAuthService/SystemAutoConfiguration/RefreshTokenService）+2 BootTest 扩充","stat":"16 files changed, +399/-60（相对 HEAD 4d98b671 的累计 diff）"}

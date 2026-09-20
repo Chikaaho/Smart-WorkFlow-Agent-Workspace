@@ -1,0 +1,12 @@
+# P61 E11 — Server 消息目录全量双语覆盖
+# 采集时间: 2026-09-16 00:34:23
+
+## 键数与对齐
+zh=149 en=149 缺失=0 多余=0 重复=0
+覆盖命名空间: common(9) auth(4) system(18) form(47) bpm(61) openapi(10) = 149？
+（实际 149 唯一键 = 127 枚举 errorKey + 22 个出口专用键，见 BilingualMessageContractTest）
+
+## 门禁
+$ mvn test → BUILD SUCCESS
+TESTS=1408 ERRORS=0 SKIPPED=0 FAILURES=0
+BilingualMessageContractTest 8/8（含『目录覆盖全部枚举 errorKey 且 zh/en 键集一致』）

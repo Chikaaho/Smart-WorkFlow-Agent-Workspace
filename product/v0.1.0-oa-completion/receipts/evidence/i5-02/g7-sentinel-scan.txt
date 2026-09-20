@@ -1,0 +1,17 @@
+== 扫描范围：dev 服务器全量启动/运行日志 + i5-02 全部证据文件 ==
+== 哨兵值：sentinel-wecom-secret-g7（Provider secret 明文）、sentinel-ext-g6-user（外部身份原文，仅允许以 SHA-256 摘要形式出现在审计/绑定接口响应）==
+--- 哨兵: sentinel-wecom-secret-g7
+0
+--- 哨兵: sentinel-ext-g6-user（服务端日志原文命中）
+7
+--- 密钥值泄漏检查（JWT/RSA/SSO/CIPHER 值前 16 字符）
+JWT_SECRET 前缀 cf44cbdc555148e2 日志命中=product/v0.1.0-oa-completion/receipts/evidence/i5-02/g2-dev-server-boot.log:0
+0
+SW_LOGIN_RSA_PRIVATE_KEY 前缀 MIIEvQIBADANBgkq 日志命中=product/v0.1.0-oa-completion/receipts/evidence/i5-02/g2-dev-server-boot.log:0
+0
+SW_SSO_CIPHER_KEY 前缀 6CxKuI85yHaXzS77 日志命中=product/v0.1.0-oa-completion/receipts/evidence/i5-02/g2-dev-server-boot.log:0
+0
+SW_CIPHER_KEY 前缀 6CxKuI85yHaXzS77 日志命中=product/v0.1.0-oa-completion/receipts/evidence/i5-02/g2-dev-server-boot.log:0
+0
+SW_LOGIN_DIGEST_SECRET 前缀 Mvt2nnQKizRd9093 日志命中=product/v0.1.0-oa-completion/receipts/evidence/i5-02/g2-dev-server-boot.log:0
+0

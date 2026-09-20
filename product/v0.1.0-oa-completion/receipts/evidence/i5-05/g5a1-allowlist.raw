@@ -1,0 +1,24 @@
+atomic_id=G5a1
+captured_at=2026-09-14T00:55:00+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=本轮采集对应含审计修复与 V903 的工作树（最终 SHA 以 G9a1 核对为准）
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; 真实 HTTP；dev server（java -jar 当前候选）以 SW_SSO_CALLBACK_BASE_URL=https://oa.example.com + SW_SSO_CALLBACK_ALLOWLIST=https://oa.example.com/api/auth/sso/ 启动；出站经 127.0.0.1:8899 计数代理；负向为独立 8081 进程（白名单外基址 https://other.example.com/api/auth/sso/）
+database=H2 (dev)；sys_sso_provider_config 三 Provider 行由 devseed V901/V903 提供（enabled=1，密文经启动 @PostConstruct 校验）
+tenant_id=100
+actor=tenant-100 登录前 SSO 发起（免认证 authorize-login）
+object_ids=WECOM/FEISHU/DINGTALK；redirect_uri=https://oa.example.com/api/auth/sso/{provider}/callback；白名单前缀=https://oa.example.com/api/auth/sso/
+positive_assertion=三 Provider authorize-login 均返回 200/code=0，authorizeUrl 的 redirect_uri 恰为白名单内绝对 URL（host 分别为 login.work.weixin.qq.com / open.feishu.cn / login.dingtalk.com）
+negative_assertion=独立 8081 进程（基址不在白名单）对三 Provider 的 authorize-login 全部 fail closed（code=400「回调地址不在受控白名单内」），计数代理外呼增量 0
+positive_pass=true
+negative_pass=true
+cleanup=负向 8081 进程采集后终止
+uncovered=none for the captured G5a1 package
+observed=
+[G5a1.WECOM] {"status":200,"code":0,"redirectUriInAllowlist":true,"host":"login.work.weixin.qq.com","statePrefix":"6a7e1e77c66d"}
+[G5a1.FEISHU] {"status":200,"code":0,"redirectUriInAllowlist":true,"host":"open.feishu.cn","statePrefix":"b74ba82e892f"}
+[G5a1.DINGTALK] {"status":200,"code":0,"redirectUriInAllowlist":true,"host":"login.dingtalk.com","statePrefix":"2736a9941220"}
+[G5a1.miss8081.WECOM] {"code":400,"msg":"回调地址不在受控白名单内: https://oa.example.com/api/auth/sso/wecom/callback"}
+[G5a1.miss8081.FEISHU] {"code":400,"msg":"回调地址不在受控白名单内: https://oa.example.com/api/auth/sso/feishu/callback"}
+[G5a1.miss8081.DINGTALK] {"code":400,"msg":"回调地址不在受控白名单内: https://oa.example.com/api/auth/sso/dingtalk/callback"}
+[G5a1.final8081] {"capture":"于最终 jar（含审计修复）的独立 8081 进程重取；三 Provider 全部 code=400 白名单外拒绝；计数代理外呼增量 0（附件 g5a1-8081-final.log，控制台中文为本地编码显示问题，消息内容与 8081 首采一致）"}

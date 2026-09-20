@@ -1,0 +1,23 @@
+atomic_id=G6a1
+captured_at=2026-09-14T01:28:00+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=本轮采集对应含审计修复、票据兑换挂起修复与 V903 的工作树（最终 SHA 以 G9a1 核对为准）
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; 完整应用上下文（I5PgTenantBehaviorBootTest）+ zonky 内嵌真实 PostgreSQL 17.5（真实 DB 级唯一约束 barrier）；两真实线程 CyclicBarrier 同步后并发调用真实 SsoAuthService.bind
+database=PostgreSQL（真实）；全局唯一键 sys_sso_user_binding(provider, external_digest) V87 迁移为最终仲裁
+tenant_id=0 与 100
+actor=user 1 (t0) 与 user 9001 (t100)，同一外部主体（摘要=SHA-256("i5-g6a1-pg-subject-<批次>")，明文不落盘）
+object_ids=provider=WECOM；external digest=并发批次摘要（结果文件仅记录行数与 DENIED 审计行）
+positive_assertion=barrier 并发恰好一方成功（本批次 t0 成功、t100 业务拒绝），全局 (provider, digest) 绑定行=1
+negative_assertion=失败侧为 IllegalStateException 业务冲突（「该外部身份已在其他租户绑定，不能跨租户重复绑定」，非 500/裸 DuplicateKey）；失败侧 binding 增量 0（总计恰 +1 行）；sys_user_role 增量 0；无会话产生；失败侧写真实 DENIED 冲突审计（独立事务，deniedAuditRows=1）
+positive_pass=true
+negative_pass=true
+cleanup=测试上下文关闭，zonky PG 实例随之关闭
+uncovered=none for the captured G6a1 package
+observed=
+[G6a1] tenant0 result=OK:0
+[G6a1] tenant100 result=DENIED(IllegalStateException):该外部身份已在其他租户绑定，不能跨租户重复绑定
+[G6a1] bindingRowsForDigest=1
+[G6a1] bindingTotalDelta=+1（仅成功侧）
+[G6a1] roleDelta=0
+[G6a1] deniedAuditRows=1

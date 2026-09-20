@@ -1,0 +1,58 @@
+{
+  "atom": "P53-EV-04a",
+  "capture": {
+    "source": "Codex In-app Browser",
+    "headless": false,
+    "viewport": "375x812"
+  },
+  "cases": [
+    {
+      "url": "http://localhost:5173/login",
+      "background": "#f7f8fc",
+      "horizontalScroll": false,
+      "inputHeightMin": 40,
+      "submitHeight": 42
+    },
+    {
+      "url": "http://localhost:5173/m/form/p61r10_batch_form",
+      "background": "#f5f7fa",
+      "horizontalScroll": false,
+      "fieldWrapperHeight": 42,
+      "submitHeight": 40,
+      "hintColor": "#626b7a",
+      "hintContrast": 5.01,
+      "primaryTextContrast": 15.16,
+      "buttonContrast": 6.01
+    },
+    {
+      "url": "http://localhost:5173/m/workflow",
+      "background": "#f7f8fc",
+      "horizontalScroll": false,
+      "launchAction": {
+        "width": 54,
+        "height": 40
+      },
+      "tabsMinHeight": 40,
+      "bodyTextContrast": 19.79,
+      "emptyStateTextContrast": 4.78,
+      "ctaContrast": 5.66
+    },
+    {
+      "url": "http://localhost:5173/m/notify",
+      "background": "#f7f8fc",
+      "horizontalScroll": false,
+      "allActionButtonsMinHeight": 40,
+      "bodyTextContrast": 19.79,
+      "secondaryTextContrast": 4.78,
+      "actionContrast": 6.01,
+      "clientWidth": 360,
+      "scrollWidth": 360,
+      "note": "375 viewport 下 360 CSS 内容宽度来自纵向滚动条；无横向滚动。"
+    }
+  ],
+  "imageLimits": {
+    "pngFilesPersisted": false,
+    "alphaSamplingPerformed": false,
+    "note": "四个路由均在可见浏览器中检查；未落盘 PNG，因此中心 alpha 未直接采样。"
+  }
+}

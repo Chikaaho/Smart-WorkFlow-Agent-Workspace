@@ -1,0 +1,25 @@
+COMMIT ROUND EVIDENCE  task: current-state-reference-hygiene (planner PASSED 2026-09-20, user instruction: commit this round only)
+
+1) Workspace (Smart-WorkFlow-Agent-Workspace)
+   repo: E:/code/Smart-WorkFlow-Agent-Workspace   branch: develop-sw   ahead of origin/develop-sw: 1
+   commit: 4c1772aa762293c9b7761e7a395285c49a87fe71
+   subject: docs(state-hygiene): 当前状态引用卫生整改——当前入口与版本口径收敛
+   files: 56 (knowledge 5 + memory 1 + todo 1 + product/current-state-reference-hygiene 49)
+   scope check: paths matching p53 | Smart-WorkFlow-aPaaS* | visualizations in this commit = 0
+   gitlink entries NOT advanced (still recorded as released main SHAs 963df360... / c15428f000...)
+
+2) Server (Smart-WorkFlow-aPaaS-server)
+   branch: feature/p61-user-facing-message-humanization
+   commit: c29f4bafa7fc7bb60ab6ad84b75a040192a56a54
+   subject: docs(state-hygiene): README 版本口径与《功能清单》当前焦点收敛到 0.1.0
+   files: README.md, 功能清单.md (2 files, 4 insertions / 4 deletions)
+   worktree after commit: clean
+
+3) Web (Smart-WorkFlow-aPaaS-Web)
+   branch: feature/p61-user-facing-message-humanization
+   commit: 674bad928829102613d75ce7fff12e788c8f6689
+   subject: docs(state-hygiene): 版本口径收敛到 0.1.0 并修正对仓链接
+   files: README.md only (1 file, 3 insertions / 3 deletions)
+   note: commitlint rejected the first subject variant (leading ALL-CAPS word 被 subject-case 拒绝), message amended before commit; lint-staged (prettier) 仅规范化该 md，未引入额外差异
+
+NO REMOTE ACTION: nothing pushed; no merge, tag, release or history rewrite performed.

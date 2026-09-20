@@ -1,0 +1,46 @@
+# 发布后只读回读记录（Owner 指示发布，2026-09-12）
+# 本文件于最后一次远端写入之后采集，为本地规划验收附件，不随提交发布（回执 02 §10）
+
+## 提交链（a2267da 之后）
+6e259c8e3d787f5815a4818621d7df15d71f4334  chore(oa): 提交 I3 终态同步回执 02 与补证证据并发布
+f10d6a9714aaf4694be18a18f65b767825fe84ff  chore(oa): 归档 I3 终态同步方向并提交最终复核 02
+
+## 推送原始输出
+$ git push origin develop-sw   # 第 1 次
+   a2267da..6e259c8  develop-sw -> develop-sw
+$ git push origin develop-sw   # 第 2 次
+   6e259c8..f10d6a9  develop-sw -> develop-sw
+
+## 发布后权威远端终点（Workspace develop-sw）
+$ git ls-remote origin develop-sw
+f10d6a9714aaf4694be18a18f65b767825fe84ff	refs/heads/develop-sw
+$ git rev-parse HEAD
+f10d6a9714aaf4694be18a18f65b767825fe84ff
+$ git rev-parse origin/develop-sw
+f10d6a9714aaf4694be18a18f65b767825fe84ff
+$ git rev-list --left-right --count HEAD...origin/develop-sw
+0	0
+$ git rev-parse HEAD^{tree} / origin/develop-sw^{tree}
+24748182a3baac4502d109c262c8a8375bad0421
+24748182a3baac4502d109c262c8a8375bad0421
+
+## 第 2 次提交文件清单（6e259c8..f10d6a9）
+R085	product/v0.1.0-oa-completion/ready/direction-stage-i3-terminal-sync.md	product/v0.1.0-oa-completion/passed/direction-stage-i3-terminal-sync.md
+A	product/v0.1.0-oa-completion/receipts/planning-final-review-terminal-sync-stage-i3-v0.1.0-oa-completion-02-passed.md
+
+## 发布后工作树残留（应为：两个既有子目录 + 本文件）
+?? Smart-WorkFlow-aPaaS-Web/
+?? Smart-WorkFlow-aPaaS-server/
+?? product/v0.1.0-oa-completion/receipts/evidence/i3-terminal-sync-02/readback/workspace-publish-after.txt
+
+## 结论
+- Workspace 权威远端终点 = f10d6a9714aaf4694be18a18f65b767825fe84ff
+- 本地 HEAD、origin/develop-sw、ls-remote 三方同值；ahead/behind 0/0；本地/远端 tree 同为 24748182a3baac4502d109c262c8a8375bad0421
+- 两次推送均为 fast-forward，未强推、未改写历史；远端提示绕过的是「必须经 PR」的分支规则，非内容违规
+- 本文件为本地附件、不提交，故不改变远端终点
+
+## 与规划最终复核 02 的口径差异（如实登记，需 Planner/Owner 知悉）
+- 最终复核 02 记录 Workspace 被证明 tip = a2267da0…，并述回执 02 与 evidence/i3-terminal-sync-02/ 为本地验收附件；
+  该复核作出于 Owner 指示发布之前。Owner 指示发布后，tip 已推进至 f10d6a9…，回执 02、补证证据、复核 01 正文与最终复核 02 均已进入远端。
+- 已发布的 memory/handoff 指针（Planner 于 16:24 写入、经 6e259c8 发布）中引用的 Workspace tip 仍写作 a2267da…，
+  该值在 Planner 撰写时点为真，经本次发布后已被取代；按 Executor 不擅改 Planner 指针的边界，此处只如实登记。

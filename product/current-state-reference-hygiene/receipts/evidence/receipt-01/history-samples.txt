@@ -1,0 +1,40 @@
+[HIST-v010-L30] knowledge/features/v0.1.0-oa-completion.md:30 (752 chars)
+    - **2026-09-15 P60 整体终态同步（本轮）**（方向 `ready/direction-v0.1.0-oa-completion-terminal-sync.md`；前置裁决 `receipts/planning-final-review-release-v0.1.0-server-web-02-passed.md` = PASSED，P60 整体 14/14；回执 `receipts/terminal-sync-v0. [truncated]
+
+[HIST-cs-L18] knowledge/current-status.md:18 (508 chars)
+    | 验证基线变更集合 | Server/Web/Flyway/产品行为四组（见上）；0.1.0 最终值为 Server 1362/0/0/0、Web 1185+3、迁移终点 V93；P61 治理验证基线集合（2026-09-20，只证明 P61，不构成 P53 视觉或功能通过）：Server **1423 tests / 0 failures / 0 errors / 0 skipped**（BUILD SUCCESS、exit 0，含 [truncated]
+
+[HIST-cs-L21] knowledge/current-status.md:21 (5194 chars)
+    | 变更类型记录（历史事件，非当前值） | 2026-09-20 P53/P61 集成顺序记录（`product/p53-global-ui-component-layout/receipts/planning-integration-order-p61-before-p53-merge-20260920.md`）：Owner 裁决 P61 独立提交先保留、暂不合并，P53 结束后统一合并；合并必须同时保留 P53 结构/新增键与 P6 [truncated]
+
+[HIST-sh-L45] knowledge/session-handoff.md:45 (213 chars)
+    - 发布终态：Server `0.0.2` → `20fffc1ddec13ea665fc388f4243c6e063974883`；Web `0.0.2` → `0bf6e8925059e4c254328c5d1643ebd8c1a2943e`。两仓 Actions/Release 成功、服务器部署生效；工作区零 Git 发布动作，通用 `main` 未变。P59 发布时点 SHA（2026-09-04）见更早历史存档。
+
+[HIST-v002-L12] knowledge/features/v0.0.2-oa.md:12 (168 chars)
+    | 后端正式基线 | 181 份 Surefire 报告 / **1156 tests / 0 failures / 0 errors / 0 skipped**；`mvn -q test` exit 0（`product/v0.0.2-oa/receipts/completion-v0.0.2-oa-04.md` 最近锁定证据） |
+
+[HIST-v002-L14] knowledge/features/v0.0.2-oa.md:14 (78 chars)
+    | 迁移正式基线 | Flyway **H2 V58（58）/ PostgreSQL V58（57）**（V56—V58 本轮新增，回执01/03支持） |
+
+[HIST-idx-L161] knowledge/feature-reconciliation-index.md:161 (223 chars)
+    - **已核销/完成（23）**：P1、P3、P5、P6、P7、P8、P10、P12、P21、P24、P28、P32、P36、P45、P46、P48、P51、P52、P54、P55、P56、P57、P58（P3 于 2026-09-07 随 v0.0.2-oa A6 核销；P54/P55 于 2026-09-07 随 v0.0.2-oa A4/A1 核销；P21 于 2026-09-08 随 p21-iot-device-access  [truncated]
+
+[HIST-idx-L166] knowledge/feature-reconciliation-index.md:166 (26 chars)
+    - **未开发候选（3）**：P18、P19、P20
+
+[HIST-idx-L182] knowledge/feature-reconciliation-index.md:182 (108 chars)
+    **v0.0.2-oa 阶段三同步轮（2026-09-07）：I 集合维持 54 条、I1—I55 缺 I27，不增删；I38/I39/I40（P2 表单缺口）与 I45 保持开放，P3 核销不关闭共享 I45。**
+
+[HIST-fl-L29] Smart-WorkFlow-aPaaS-server/功能清单.md:29 (305 chars)
+    <!-- 终态：✅ 31 / 🟦 25 / ⬜ 34（minimal-business-closure 功能级 PASSED（2026-08-28）阶段三落值：M08-F01-02/F02-01/F02-02/F04-01/F04-04 五行升🟦（部分完成，不虚报 ✅）；历史：M05-F01-01 已升✅（2026-08-27）、M05-F02-01 已升✅（P36）、M05-F01-02/F01-03 已升✅（D210）、M07- [truncated]
+
+[HIST-fl-L38] Smart-WorkFlow-aPaaS-server/功能清单.md:38 (204 chars)
+    P60 首次功能清单同步（2026-09-08，当时版本口径 `v0.3.0-oa-completion`，后经 Owner 更正为成熟 OA 目标 `0.1.0`）：新增 ADV 章节 8 模块/64 条，不计入上方 90 明细统计；M01—M10 全部 90 行状态零变化（✅46/🟦22/⬜22 不变）、功能数 44 不变。当前口径以本文件上方可见注记与「当前焦点」为准，不在注释内重复展开。 -->
+
+--- P61 pending-planner-confirmation phrase retained ---
+30:- **2026-09-15 P60 整体终态同步（本轮）**（方向 `ready/direction-v0.1.0-oa-completion-terminal-sync.md`；前置裁决 `receipts/planning-final-review-release-v0.1.0-server-web-02-passed.md` = PASSED，P60 整体 14/14；回执 `receipts/terminal-sync-v0.1.0-oa-completion-01.md`，`TERMINAL_SYNC_SUBMITTED`）：按唯一终态值清单把 P60 写为 `COMPLETED（待规划确认）`、迁移终点 **V93**、两仓发布身份（Server `c15428f0002f6bb0ceeff05c7cbcf842bd3d3148` / Web `963df360ed18bc1c604652a13edb2a7ed0be8963`，tag/Release `0.1.0`，Actions 34946504087 / 34942666025 成功）与最终门禁（Server 1362/0/0/0、Web 1185+3）机械同步至 knowledge、memory、todo 与工程《功能清单》当前段；P60 主方向与发布方向均已归档 `passed/`；功能数 44、90 明细 ✅46/🟦22/⬜22、ADV64 与开放 P 编号零变化；I5 三 Provider 与 I6 五渠道保持 `Owner延期 / 未验证`；P61 等待规划确认后启动。未运行工程构建/测试/迁移、未执行浏览器验收、未调用外部 Provider、未执行 commit/push/tag/Release。
+rg-exit=0
+
+--- legal-history README v0.0.2 scope phrase retained in scenario section ---
+Smart-WorkFlow-aPaaS-server/README.md:55:> 当前平台已经具备上述场景中的部分可复用基础能力（如审批流程、通知与告警、定时任务、知识检索与设备接入），三个完整端到端场景仍在持续完善中，不属于 v0.0.2 已交付范围。 Smart-WorkFlow-aPaaS-Web/README.md:53:> 当前平台已经具备上述场景中的部分可复用基础能力（如审批流程、通知与告警、定时任务、知识检索与设备接入），三个完整端到端场景仍在持续完善中，不属于 v0.0.2 已交付范围。
+rg-exit=0

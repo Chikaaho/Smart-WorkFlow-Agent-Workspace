@@ -1,0 +1,51 @@
+[
+ [
+  "me",
+  {
+   "perms": 103
+  }
+ ],
+ [
+  "8.send-first",
+  {
+   "status": 200,
+   "body": {
+    "code": 0,
+    "msg": "success",
+    "data": "2099411482677272577"
+   }
+  }
+ ],
+ [
+  "8b.send-repeat-idempotent",
+  {
+   "status": 200,
+   "body": {
+    "code": 0,
+    "msg": "success",
+    "data": "2099411482677272577"
+   }
+  }
+ ],
+ [
+  "9.send-type-mismatch",
+  {
+   "status": 200,
+   "body": {
+    "code": 400,
+    "msg": "变量 amount 类型不符（应为 NUMBER）",
+    "data": null
+   }
+  }
+ ],
+ [
+  "11.sendsql-zero",
+  {
+   "status": 404,
+   "body": {
+    "http": 404,
+    "raw": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 404 – Not Found</title><style type=\"text/css\">body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b {color:white;background-color:#525D76;} "
+   }
+  }
+ ]
+]

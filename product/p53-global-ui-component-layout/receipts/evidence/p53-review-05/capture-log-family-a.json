@@ -1,0 +1,44 @@
+{
+  "targets": [
+    "01",
+    "04",
+    "05",
+    "06",
+    "21",
+    "27"
+  ],
+  "results": [
+    {
+      "seq": "01",
+      "ok": true,
+      "url": "http://localhost:5174/workspace"
+    },
+    {
+      "seq": "05",
+      "ok": true,
+      "url": "http://localhost:5174/portal"
+    },
+    {
+      "seq": "06",
+      "ok": true,
+      "url": "http://localhost:5174/login"
+    },
+    {
+      "seq": "21",
+      "ok": true,
+      "url": "http://localhost:5174/workflow/catalog"
+    },
+    {
+      "seq": "27",
+      "ok": true,
+      "url": "http://localhost:5174/form/form-render/leave-request"
+    }
+  ],
+  "failures": [
+    {
+      "seq": "04",
+      "error": "locator.click: Timeout 30000ms exceeded. | Call log: | \u001b[2m  - waiting for locator('.el-dropdown-menu').first().getByText('进入后台')\u001b[22m | "
+    }
+  ],
+  "finishedAt": "2026-09-17T12:53:15.039Z"
+}

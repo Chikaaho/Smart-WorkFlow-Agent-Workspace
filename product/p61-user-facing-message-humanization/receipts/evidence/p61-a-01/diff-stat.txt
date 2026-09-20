@@ -1,0 +1,37 @@
+ .../impl/AgentOrchestrationServiceImpl.java        |  29 +++-
+ .../java/com/sw/ck/iot/mqtt/MqttBrokerManager.java |  20 +++
+ .../java/com/sw/ck/iot/script/GraalJsRunner.java   |   6 +-
+ .../sw/ck/iot/service/IotConnectionService.java    |   4 +-
+ .../sw/ck/form/api/exception/FormErrorCode.java    | 107 +++++++-------
+ .../ck/openapi/api/exception/OpenApiErrorCode.java |  27 ++--
+ .../com/sw/ck/system/security/AuthErrorCode.java   |  20 ++-
+ .../com/sw/ck/bpm/api/exception/BpmErrorCode.java  | 158 ++++++++++++---------
+ .../bpm/process/controller/BpmDraftController.java |   6 +-
+ .../ck/bpm/process/service/DraftSubmitService.java |   5 +
+ .../process/controller/BpmDraftControllerTest.java |   5 +-
+ .../com/sw/ck/common/exception/BaseException.java  |  18 +++
+ .../sw/ck/common/exception/CommonErrorCode.java    |  14 +-
+ .../java/com/sw/ck/common/exception/ErrorCode.java |  17 +++
+ .../common/exception/GlobalExceptionHandler.java   |  79 ++++++++---
+ .../src/main/java/com/sw/ck/common/response/R.java |  27 ++++
+ 16 files changed, 374 insertions(+), 168 deletions(-)
+ M sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentOrchestrationServiceImpl.java
+ M sw-basic/sw-basic-iot/src/main/java/com/sw/ck/iot/mqtt/MqttBrokerManager.java
+ M sw-basic/sw-basic-iot/src/main/java/com/sw/ck/iot/script/GraalJsRunner.java
+ M sw-basic/sw-basic-iot/src/main/java/com/sw/ck/iot/service/IotConnectionService.java
+ M sw-biz/sw-biz-form/sw-biz-form-api/src/main/java/com/sw/ck/form/api/exception/FormErrorCode.java
+ M sw-biz/sw-biz-openapi/sw-biz-openapi-api/src/main/java/com/sw/ck/openapi/api/exception/OpenApiErrorCode.java
+ M sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/security/AuthErrorCode.java
+ M sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/exception/BpmErrorCode.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmDraftController.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/DraftSubmitService.java
+ M sw-biz/sw-bpm/sw-bpm-process/src/test/java/com/sw/ck/bpm/process/controller/BpmDraftControllerTest.java
+ M sw-framework/sw-common/src/main/java/com/sw/ck/common/exception/BaseException.java
+ M sw-framework/sw-common/src/main/java/com/sw/ck/common/exception/CommonErrorCode.java
+ M sw-framework/sw-common/src/main/java/com/sw/ck/common/exception/ErrorCode.java
+ M sw-framework/sw-common/src/main/java/com/sw/ck/common/exception/GlobalExceptionHandler.java
+ M sw-framework/sw-common/src/main/java/com/sw/ck/common/response/R.java
+?? docs/governance/error-code-catalog.md
+?? sw-bootstrap/src/test/java/com/sw/ck/bootstrap/ErrorCodeCatalogTest.java
+?? sw-framework/sw-common/src/main/java/com/sw/ck/common/trace/
+?? sw-framework/sw-common/src/test/java/com/sw/ck/common/trace/

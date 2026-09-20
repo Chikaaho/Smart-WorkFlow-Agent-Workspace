@@ -1,0 +1,27 @@
+atomic_id=G6b1
+captured_at=2026-09-14T01:12:00+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=本轮采集对应含审计修复、票据兑换挂起修复与 V903 的工作树（最终 SHA 以 G9a1 核对为准）
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; 真实 RANDOM_PORT HTTP 完整应用（sw-bootstrap I5SsoBindingSessionBootTest）；本测试专属 H2 内存库（基线迁移 V1—V88 + 模块迁移，tenant/dept/user/binding 由 JDBC 显式夹具建立）；本机真实 Redis（会话键 sw:security:login-user:9501 与运行中 dev server 隔离）；受控票据经真实 SsoTicketStore bean 签发（等价受控 Provider 对端——G8 真实回调成功链保持外部依赖）
+database=H2 (专属实例) + Redis；sys_user_role/binding/tenant 权威 SQL 回读
+tenant_id=100
+actor=user 9501（测试专属身份，绑定 WECOM 外部主体摘要 a1b2c3d4…(64hex)；与第一方登录同一 TokenResponse/refresh cookie 契约）
+object_ids=binding id=90011 (tenant 100, user 9501, WECOM, ACTIVE)；ticket1/ticket2（仅测试进程内存）；会话键 sw:security:login-user:9501
+positive_assertion=有效租户内受控票据兑换真实会话 200（accessToken+expiresIn；me 200 且 tenantId=100）；Redis 会话行存在；租户恢复后 me 200；解绑后 bindings=[] 且绑定行 UNBOUND
+negative_assertion=同一票据二次兑换 401「登录票据无效或已过期」；租户停用后新票据兑换 401「租户无效或已停用/过期」；既有会话在缓存剔除后权威装载收敛 401；全程 sys_user_role 增量 0（before=1 after=1）
+positive_pass=true
+negative_pass=true
+cleanup=测试上下文关闭（H2 内存库随 JVM 消亡；测试专属 Redis 键随会话 TTL 过期）
+uncovered=解绑后经真实 Provider 重新回调登录被拒属 G8 外部依赖（本包以绑定行 UNBOUND + bindings 视图清空为界）
+observed=
+[G6b1] ticket1兑换 -> 200 :: {"code":0,"data":{"accessToken":"<jwt>","expiresIn":900}}
+[G6b1] me(token1) -> 200 :: tenantId=100, username=i5g6b1user
+[G6b1] redis session row exists=true
+[G6b1] ticket1重放 -> HTTP 200 body code=401「登录票据无效或已过期」
+[G6b1] 停用租户ticket2 -> HTTP 200 body code=401「租户无效或已停用/过期」
+[G6b1] me停用租户+权威装载 -> 401「未认证」
+[G6b1] me恢复租户 -> 200
+[G6b1] 解绑后bindings -> {"bindings":[]}（绑定行 bind_status=UNBOUND）
+[G6b1] role delta=0（before=1 after=1）
+[defectNote] {"defect":"首采发现 /auth/sso/ticket 兑换在匿名上下文调用 getById 触发租户拦截器 fail-closed（租户上下文缺失）→ 已绑定登录整链 500","fix":"SsoAuthController.exchangeTicket 按 I5 免认证路径既有模式以 TenantLineSuspension 挂起拦截器，租户语义由票据载荷 tenantId 与账号行 tenantId 一致性显式校验承担；修复后本包全链通过"}

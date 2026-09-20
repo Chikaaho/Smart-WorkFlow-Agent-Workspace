@@ -1,0 +1,21 @@
+atomic_id=G3b1
+captured_at=2026-09-14T01:36:00+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=本轮采集对应最终工作树（jar=01:30:59 构建，含审计修复+票据挂起修复+V903，见 G9a1）
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; 独立 OS 进程 java -jar（spring-boot repackage fat jar）；真实 PostgreSQL 17.5 服务器进程（zonky 二进制 initdb scram-sha-256, 127.0.0.1:5433/postgres）；prod profile；进程命令摘要=java -jar sw-bootstrap-1.0.0-SNAPSHOT.jar --spring.profiles.active=prod --server.port=<8090|8091|8092>（env 注入 PG_URL/PG_USERNAME/PG_PASSWORD/JWT_SECRET/SW_LOGIN_RSA_PRIVATE_KEY/SW_LOGIN_DIGEST_SECRET/SW_CIPHER_KEY/SW_SSO_CIPHER_KEY）
+database=真实 PostgreSQL（非 H2/非测试内嵌替代）；Flyway PG 链 V1—V87 全迁移（正确凭据批次）
+tenant_id=与启动认证无关
+actor=executor-local-dev
+object_ids=三份独立进程日志 g3b1a-final.log / g3b1b-wrong-user.log / g3b1c-wrong-password.log；目标=数据源认证凭据（用户名/密码维度分离）
+positive_assertion=正确 PG 凭据的 prod 进程完整启动成功（Started StarterApplication in 14.4s；/api/actuator/health HTTP 200；Flyway 全链迁移至 v87）
+negative_assertion=仅改错误用户名 → 进程 exit=1，首因=PostgreSQL 认证拒绝（PSQLException: 用户 "i5-wrong-user" Password 认证失败，PG 17 scram 对不存在角色同样返回认证失败以防枚举）；仅改错误密码 → 进程 exit=1，首因=PSQLException: 用户 "postgres" Password 认证失败 + Druid init datasource error；两份日志均不出现明文密码
+positive_pass=true
+negative_pass=true
+cleanup=成功批次进程以 taskkill 终止（记录 pid）；失败批次进程自行退出；PG 服务器保留至矩阵结束
+uncovered=none for the captured G3b1 package（Druid 独立控制台凭据在生产 profile 无应用级开关，认证边界由 master 数据源用户名/密码承担——与 I5ProdProfileSecurityBootTest G3b 断言口径一致）
+observed=
+[G3b1a.correct] {"boot":"Started StarterApplication in 14.407 seconds (process running for 15.064)","health":"HTTP 200 /api/actuator/health","migrations":"86 migrations → v87","log":"g3b1a-final.log"}
+[G3b1b.wrongUser] {"exit_code":1,"firstCause":"org.postgresql.util.PSQLException: 用户 \"i5-wrong-user\" Password 认证失败（PG 17 scram 反枚举语义）","log":"g3b1b-wrong-user.log"}
+[G3b1c.wrongPassword] {"exit_code":1,"firstCause":"org.postgresql.util.PSQLException: 用户 \"postgres\" Password 认证失败 + ERROR init datasource error (druid)","log":"g3b1c-wrong-password.log"}
+[secretScan] {"grepPatterns":["i5-wrong-password","JWT_SECRET 明文","RSA 明文前缀","digest secret 明文"],"hits":0}

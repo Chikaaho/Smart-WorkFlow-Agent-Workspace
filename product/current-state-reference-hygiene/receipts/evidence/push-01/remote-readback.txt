@@ -1,0 +1,32 @@
+REMOTE READBACK AFTER PUSH (2026-09-20)
+authorized action: 用户指令「可以了，全部push」——推送本轮交付提交与关联 feature 分支的本地提交
+
+push results (git push origin <branch>:<branch>):
+  workspace  ee13be6..924f899  develop-sw                                 push-exit=0
+  server     f55300b..c29f4ba  feature/p61-user-facing-message-humanization push-exit=0
+  web        381ef74..674bad9  feature/p61-user-facing-message-humanization push-exit=0
+  web-extra  [new branch]      feature/p61-msg-scope-corrected             push-exit=0
+
+readback (local ref vs remote ref):
+  [workspace] develop-sw
+     local  HEAD = 924f8993f6077b008ec5b8dc596549ad8c8fefbc
+     origin           = 924f8993f6077b008ec5b8dc596549ad8c8fefbc
+     identical = true
+  [server] feature/p61-user-facing-message-humanization
+     local  HEAD = c29f4bafa7fc7bb60ab6ad84b75a040192a56a54
+     origin           = c29f4bafa7fc7bb60ab6ad84b75a040192a56a54
+     identical = true
+  [web] feature/p61-user-facing-message-humanization
+     local  HEAD = 674bad928829102613d75ce7fff12e788c8f6689
+     origin           = 674bad928829102613d75ce7fff12e788c8f6689
+     identical = true
+  [web-extra] feature/p61-msg-scope-corrected
+     local  feature/p61-msg-scope-corrected = d110ed8b17161c8cfcd0036c69309d0ddb5e4dd7
+     origin           = d110ed8b17161c8cfcd0036c69309d0ddb5e4dd7
+     identical = true
+
+scope notes:
+  - no tag, no Release, no merge to main/develop, no history rewrite, no force push; all pushes were fast-forward (see dry-run ranges above)
+  - web branch feature/p61-user-facing-message-humanization additionally carries two already-committed P53 commits (c5bc126 全局 UI 设计令牌与组件布局还原, e882cb5 设计还原 fixture 管线与壳层设计校准 review-05 中间态) that were local-only before this push
+  - web branch feature/p61-msg-scope-corrected is the local-only branch holding the P61 Web commit d110ed8 (paired with Server 742adb8 pushed in the server range)
+  - uncommitted P53 work-in-progress was NOT pushed (it is not committed anywhere)

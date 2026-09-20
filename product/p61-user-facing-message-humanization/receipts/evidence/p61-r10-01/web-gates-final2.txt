@@ -1,0 +1,135 @@
+===== hardcode-gate =====
+{
+  "generatedAt": "2026-09-16T14:32:20.790Z",
+  "cwd": "E:\\code\\Smart-WorkFlow-Agent-Workspace\\Smart-WorkFlow-aPaaS-Web",
+  "rawLines": 0,
+  "rawFiles": 0,
+  "keyedLines": 0,
+  "excludedFiles": 144,
+  "registeredNonCopyLines": 9,
+  "registeredNonCopyLiterals": 9,
+  "topFiles": []
+}
+
+P61 硬编码门禁：通过（生产可达中文文案已全部治理）
+EXIT_CODE=0
+===== locale-single-source =====
+一致	src/locales/zh-CN.ts
+一致	src/locales/en-US.ts
+
+字典条目: 1615；locale 文件与单源一致
+EXIT_CODE=0
+===== dictionary-validate =====
+{
+  "dictionaryEntries": 1615,
+  "templateEntries": 169,
+  "manualKeys": 39,
+  "localeKeys": 1624,
+  "distinctKeys": 1766,
+  "crossBatchKeyChanges": 24
+}
+
+（信息）跨批次键收敛记录：
+  「可选」 common.optional → notify.optionalTag
+  「记录已被他人修改，请刷新后重试」 form.recordChangedByOthers → foundation.errRecordModified
+  「表单不存在」 form.notFound → foundation.errFormNotFound
+  「您没有执行该操作的权限，请联系管理员分配相应权限」 errors.permissionDenied → foundation.errPermissionDenied
+  「加载任务详情失败」 workflow.loadTaskDetailFailed → workflow.mobileTaskDetailLoadFailed
+  「审批通过」 workflow.approve → workflow.approved
+  「审批操作失败」 workflow.approveFailed → workflow.approveActionFailed
+  「驳回操作失败」 workflow.rejectFailed → workflow.rejectActionFailed
+  「抄送我的」 workflow.myCc → router.myCc
+  「表单数据」 job.formData → router.formData
+  「流程设计器」 workflow.processDesigner → router.processDesigner
+  「工具管理」 agent.toolManagement → router.toolManagement
+  「消息模板」 notify.templates → router.messageTemplate
+  「我的已办」 workflow.myProcessedTitle → workflow.myProcessed
+  「抄送」 workflow.ccTab → workflow.cc
+  「上传失败」 storage.uploadFailed → common.uploadFailed
+  「搜索表单名称或 formKey」 form.searchFormOrKeyPlaceholder → workflow.searchFormNamePlaceholder
+  「暂无可选表单」 form.noSelectableForms → workflow.noSelectableForms
+  「正文」 notify.contentLabel → notify.bodyLabel
+  「本部门」 system.dataScopeDept → workflow.scopeDept
+  「密码」 system.password → common.password
+  「耗时(ms)」 iot.durationMs → common.durationMs
+  「新建规则」 notify.newRule → common.newRule
+  「新增规则」 iot.newRule → common.newRule
+
+P61 字典校验：通过（键唯一、双语齐备、键集零差异）
+EXIT_CODE=0
+===== key-coverage =====
+目录键数: zh-CN 1762 / en-US 1762
+源码引用键位: 2737
+
+P61 键覆盖：通过（源码引用的键在双语目录中均存在）
+EXIT_CODE=0
+===== term-audit =====
+目录条目: 1762
+
+【1】同文多键（0 组）：同一中文被多个键持有
+
+【1b】同文异译（0 组）：同一句中文在英文侧分叉——这是必须收敛的冲突
+
+【2】同义异键（5 组）：术语表同义组落在不同键
+  新增类:
+    新建 → common.create=新建, common.newTask=新建任务, common.newRule=新建规则, system.newDept=新建部门, system.newSubDept=新建子部门, system.newDictType=新建字典类型, system.newDictItem=新建字典项, system.newPost=新建岗位, system.newRole=新建角色, system.newUser=新建用户, system.newUserGroup=新建用户组, form.newForm=新建表单, form.createRelatedProcess=新建关联流程, form.createDefaultPlaceholder=新建填报时的默认值, workflow.createProcessDef=新建流程定义, workflow.newCategory=新建分类, notify.newTemplate=新建模板, iot.newDevice=新建设备, iot.newProduct=新建产品, iot.newScript=新建脚本, iot.newConnection=新建连接, iot.newTopic=新建 Topic, agent.newGraphDef=新建图定义, agent.newModelConfig=新建大模型配置, agent.newExternalHttpTool=新建外部 HTTP 工具, agent.newInternalTool=新建内部工具, agent.newExternalTool=新建外部工具
+    创建 → common.createSuccess=创建成功, common.createTime=创建时间, workflow.createFailed=创建失败, notify.templateCodeImmutableEdit=创建后不可变更, notify.templateCodeImmutableNew=创建后不可修改, agent.graphCreatedEnteringDesigner=创建成功，进入设计器, agent.graphDefCreateFailed=创建图定义失败, agent.debugSessionCreateFailed=创建调试会话失败, agent.createTimeLabel=创建时间:
+  删除类:
+    删除 → common.delete=删除, common.deleteConfirmTitle=删除确认, common.deleteSuccess=删除成功, common.deleteFailed=删除失败, form.deleteField=删除字段, workflow.draftDeleteFailed=删除草稿失败, workflow.categoryDeleteFailed=删除失败（分类下仍有事项时须先解除归属）, workflow.deleteSelected=删除所选, notify.confirmDeleteTemplate=删除后不可再按此模板发送；历史通知内容不受影响。确认删除？, notify.deleteTemplate=删除模板, iot.deleteConnectionConfirm=删除连接「{name}」？, iot.deleteTopicConfirm=删除 Topic「{topic}」？, agent.deleteNode=删除节点, agent.deleteEdge=删除边
+    移除 → common.remove=移除, system.removeConfirmTitle=移除确认, system.memberRemoveFailed=移除成员失败
+  退回类:
+    退回 → common.returnBack=退回, workflow.returnConfirmTitle=退回确认, workflow.returnFailed=退回操作失败, workflow.returnToLabel=退回到
+    撤回 → common.withdraw=撤回, workflow.withdrawFailed=撤回失败, workflow.withdrawConfirmTitle=撤回确认
+  查询类:
+    查询 → common.query=查询, form.queryContractKeyLabel=查询契约 queryKey, form.targetFormDataQueryFailed=查询目标表单数据失败, form.queryFailed=查询失败：{msg}
+    搜索 → common.search=搜索, system.searchUserPlaceholder=搜索用户名添加成员, workflow.searchCatalogPlaceholder=搜索事项名称/表单标识, workflow.searchFormNamePlaceholder=搜索表单名称或 formKey, notify.searchTemplatePlaceholder=搜索代码或名称, notify.searchPlaceholder=搜索标题或内容, notify.searchUsernamePlaceholder=搜索用户名..., notify.searching=搜索中...
+  保存类:
+    提交 → errors.inputInvalid=提交的内容有误，请按提示修改后重试, common.submit=提交, common.submitFailed=提交失败, common.submitSuccess=提交成功, common.statusSubmitting=提交中, form.submittedProcessStarted=提交成功，流程已发起, form.submittedDataOnly=提交成功（该表单未关联已发布流程，仅保存数据）, form.submitEndpointUnavailable=提交失败：后端提交端点待上线, form.draftSubmitFailed=提交草稿失败, form.submitDraft=提交草稿, form.submitSuccessWithId=提交成功，记录 ID：{id}, workflow.submitConfirmTitle=提交确认
+    保存 → common.save=保存, common.saveSuccess=保存成功, common.saveFailed=保存失败, common.saveDraft=保存草稿, common.saveDraftFailed=保存草稿失败, common.saving=保存中, form.saveFailed=保存失败，请稍后重试, form.saveAndContinue=保存并继续, form.visibilityScopeSaveFailed=保存发起可见范围失败, workflow.workspaceSaveFailed=保存配置失败, workflow.categorySaveFailed=保存分类失败, workflow.saveWorkspaceConfig=保存配置, notify.savePreferences=保存偏好
+
+【3】枚举直出（0 处）：模板直接渲染裸枚举字段
+
+同义区分复核：5/5 组已给出依据
+  已复核  新增类：「新建」是创建动作的动词（按钮/标题统一用它）；「创建」只出现在结果与时间名词中（创建成功/创建失败/创建时间），属事件描述而非操作标签。
+  已复核  删除类：「删除」销毁对象；「移除」把成员移出集合（用户组/角色成员），对象本身仍存在。
+  已复核  退回类：「退回」把待办退回上一节点；「撤回」是发起人收回自己发起的实例。两个不同的流程动作。
+  已复核  查询类：「查询」是精确条件提交（按钮）；「搜索」是输入框的模糊匹配（含「搜索中…」等状态词）。
+  已复核  保存类：「保存」写入草稿不改状态；「提交」走审批流并改变单据状态。
+
+P61 术语审计：通过（同文零分叉、枚举零直出、同义分叉均已复核）
+EXIT_CODE=0
+===== failure-audit =====
+node:internal/modules/cjs/loader:1228
+  throw err;
+  ^
+
+Error: Cannot find module 'E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-Web\scripts\p61-failure-audit.mjs'
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1225:15)
+    at Function._load (node:internal/modules/cjs/loader:1055:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:220:24)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)
+    at node:internal/main/run_main_module:36:49 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v22.14.0
+EXIT_CODE=1
+===== frozen-locale-audit =====
+模块加载期求值命中: 0
+EXIT_CODE=0
+===== locale-reconcile =====
+
+已收敛 0 键；无解释的丢失 0 键
+对账通过：所有消失的键都由收敛映射解释
+EXIT_CODE=0
+===== failure-audit (corrected) =====
+【1】请求静默吞错：0 处
+
+【2】catch 内猜测单一成因：0 处
+
+【3】失败伪装空态风险：0 处
+
+P61 失败态审计：通过（失败必反馈、不猜成因、失败不冒充空态）
+EXIT_CODE=0

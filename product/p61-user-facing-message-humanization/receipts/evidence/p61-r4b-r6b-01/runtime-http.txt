@@ -1,0 +1,211 @@
+===== R6b-1 匿名访问受保护资源 =====
+[R6b-1] POST /system/user/page → HTTP 401
+  body: {"code":401,"msg":"登录状态已失效，请重新登录","data":null,"errorKey":"common.unauthenticated","eventRef":"req-e425613a9a511563190c3d2f98ed31f0"}
+  assert status=401: true
+  assert errorKey 非空: true
+  assert eventRef 非空且形如 req-<hex>: true
+  assert 断言零堆栈/类名: true
+
+===== R4b-0 创建无诊断权限用户 B（真实接口） =====
+[R4b-0] POST /system/user → HTTP 200
+  body: {"code":0,"msg":"success","data":"2100109455916703745"}
+  身份 B userId=2100109455916703745
+
+===== R6b-2 认证后业务失败（表单不存在） =====
+[R6b-2] GET /form/def/by-key/__p61_no_such_form__ → HTTP 200
+  body: {"code":1000,"msg":"表单不存在","data":null,"errorKey":"form.not_found","eventRef":"req-b2037fd6ebf8681514e8d25116448e5d"}
+  assert errorKey 非空: true
+  assert eventRef 非空: true
+  assert 零内部细节: true
+
+===== R6b-3 / R4b 身份 B（无权限）访问管理资源 =====
+[R6b-3] POST /system/user/page → HTTP 403
+  body: {"code":403,"msg":"您没有执行该操作的权限，请联系管理员分配相应权限","data":null,"errorKey":"common.forbidden","eventRef":"req-baa60fe71695c5a9d6ce6c3b5f07fe21"}
+  assert status=403: true
+  assert errorKey 非空: true
+  assert 零堆栈/租户秘密: true
+
+===== R6b-4 同一错误双语 =====
+[R6b-4zh] GET /form/def/by-key/__p61_no_such_form__ → HTTP 200
+  body: {"code":1000,"msg":"表单不存在","data":null,"errorKey":"form.not_found","eventRef":"req-539cc065cb16fb4e3057b8c1a01e85aa"}
+[R6b-4en] GET /form/def/by-key/__p61_no_such_form__ → HTTP 200
+  body: {"code":1000,"msg":"The form does not exist.","data":null,"errorKey":"form.not_found","eventRef":"req-53abdb1b1df37995401e0d153cbd499b"}
+  assert errorKey 相同: true (form.not_found)
+  assert msg 不同: true
+  zh msg = "表单不存在"
+  en msg = "The form does not exist."
+
+===== R4b/R6b-5 持久化诊断（定时任务失败日志） =====
+[R4b-5a] POST /job/info → HTTP 200
+  body: {"code":0,"msg":"success","data":"2100109456424214530"}
+  jobId=2100109456424214530
+[R4b-5b] POST /job/info/2100109456424214530/trigger → HTTP 200
+  body: {"code":0,"msg":"success","data":null}
+[R4b-5c] POST /job/log/page?jobId=2100109456424214530&pageNum=1&pageSize=5 → HTTP 200
+  body: {"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"5"}}
+  jobLogRow = null
+[R4b-5d] POST /job/log/page?jobId=2100109456424214530&pageNum=1&pageSize=5 → HTTP 403
+  body: {"code":403,"msg":"您没有执行该操作的权限，请联系管理员分配相应权限","data":null,"errorKey":"common.forbidden","eventRef":"req-9e90ffb721e5d6a1b5b7b0124443ad36"}
+  assert B 被拒（403）: true
+  assert B 响应零诊断内容: true
+[R4b-5e] POST /job/log/page?jobId=2100109456424214530&pageNum=1&pageSize=5 → HTTP 200
+  body: {"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"5"}}
+  assert A 可读且与首次一致: false
+
+===== 汇总 =====
+{
+  "anonymous401": true,
+  "anonymousHasErrorKey": true,
+  "anonymousHasEventRef": true,
+  "businessFailHasErrorKey": true,
+  "businessFailHasEventRef": true,
+  "forbiddenIs403": true,
+  "forbiddenHasErrorKey": true,
+  "sameErrorKeyAcrossLocales": true,
+  "differentMsgAcrossLocales": true,
+  "diagnosticReadableByA": false,
+  "diagnosticDeniedToB": true,
+  "diagnosticSanitized": null,
+  "userIdB": "2100109455916703745",
+  "jobId": "2100109456424214530",
+  "jobLogExceptionStack": null
+}
+===== R6b-1 匿名访问受保护资源 =====
+[R6b-1] POST /system/user/page → HTTP 401
+  body: {"code":401,"msg":"登录状态已失效，请重新登录","data":null,"errorKey":"common.unauthenticated","eventRef":"req-e425613a9a511563190c3d2f98ed31f0"}
+  assert status=401: true
+  assert errorKey 非空: true
+  assert eventRef 非空且形如 req-<hex>: true
+  assert 断言零堆栈/类名: true
+
+===== R4b-0 创建无诊断权限用户 B（真实接口） =====
+[R4b-0] POST /system/user → HTTP 200
+  body: {"code":0,"msg":"success","data":"2100109455916703745"}
+  身份 B userId=2100109455916703745
+
+===== R6b-2 认证后业务失败（表单不存在） =====
+[R6b-2] GET /form/def/by-key/__p61_no_such_form__ → HTTP 200
+  body: {"code":1000,"msg":"表单不存在","data":null,"errorKey":"form.not_found","eventRef":"req-b2037fd6ebf8681514e8d25116448e5d"}
+  assert errorKey 非空: true
+  assert eventRef 非空: true
+  assert 零内部细节: true
+
+===== R6b-3 / R4b 身份 B（无权限）访问管理资源 =====
+[R6b-3] POST /system/user/page → HTTP 403
+  body: {"code":403,"msg":"您没有执行该操作的权限，请联系管理员分配相应权限","data":null,"errorKey":"common.forbidden","eventRef":"req-baa60fe71695c5a9d6ce6c3b5f07fe21"}
+  assert status=403: true
+  assert errorKey 非空: true
+  assert 零堆栈/租户秘密: true
+
+===== R6b-4 同一错误双语 =====
+[R6b-4zh] GET /form/def/by-key/__p61_no_such_form__ → HTTP 200
+  body: {"code":1000,"msg":"表单不存在","data":null,"errorKey":"form.not_found","eventRef":"req-539cc065cb16fb4e3057b8c1a01e85aa"}
+[R6b-4en] GET /form/def/by-key/__p61_no_such_form__ → HTTP 200
+  body: {"code":1000,"msg":"The form does not exist.","data":null,"errorKey":"form.not_found","eventRef":"req-53abdb1b1df37995401e0d153cbd499b"}
+  assert errorKey 相同: true (form.not_found)
+  assert msg 不同: true
+  zh msg = "表单不存在"
+  en msg = "The form does not exist."
+
+===== R4b/R6b-5 持久化诊断（定时任务失败日志） =====
+[R4b-5a] POST /job/info → HTTP 200
+  body: {"code":0,"msg":"success","data":"2100109456424214530"}
+  jobId=2100109456424214530
+[R4b-5b] POST /job/info/2100109456424214530/trigger → HTTP 200
+  body: {"code":0,"msg":"success","data":null}
+[R4b-5c] POST /job/log/page?jobId=2100109456424214530&pageNum=1&pageSize=5 → HTTP 200
+  body: {"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"5"}}
+  jobLogRow = null
+[R4b-5d] POST /job/log/page?jobId=2100109456424214530&pageNum=1&pageSize=5 → HTTP 403
+  body: {"code":403,"msg":"您没有执行该操作的权限，请联系管理员分配相应权限","data":null,"errorKey":"common.forbidden","eventRef":"req-9e90ffb721e5d6a1b5b7b0124443ad36"}
+  assert B 被拒（403）: true
+  assert B 响应零诊断内容: true
+[R4b-5e] POST /job/log/page?jobId=2100109456424214530&pageNum=1&pageSize=5 → HTTP 200
+  body: {"code":0,"msg":"success","data":{"records":[],"total":"0","pageNum":"1","pageSize":"5"}}
+  assert A 可读且与首次一致: false
+
+===== 汇总 =====
+{
+  "anonymous401": true,
+  "anonymousHasErrorKey": true,
+  "anonymousHasEventRef": true,
+  "businessFailHasErrorKey": true,
+  "businessFailHasEventRef": true,
+  "forbiddenIs403": true,
+  "forbiddenHasErrorKey": true,
+  "sameErrorKeyAcrossLocales": true,
+  "differentMsgAcrossLocales": true,
+  "diagnosticReadableByA": false,
+  "diagnosticDeniedToB": true,
+  "diagnosticSanitized": null,
+  "userIdB": "2100109455916703745",
+  "jobId": "2100109456424214530",
+  "jobLogExceptionStack": null
+}
+===== R4b/R6b-6 持久化诊断（通知发送失败流水） =====
+[R4b-6a] POST /notify/messages/batch-send → HTTP 200
+  body: {"code":0,"msg":"success","data":{"recipientCount":0}}
+[R4b-6b] GET /notify/records?pageNum=1&pageSize=5 → HTTP 200
+  body: {"code":0,"msg":"success","data":{"records":[{"id":"2100109467388125186","title":"P61 探针通知","bizType":"SYSTEM","bizId":null,"recipientId":"1","recipientMask":"U1","channel":"EMAIL","deliveryStatus":"FAILED","attemptCount":2,"templateId":null,"templateVersion":null,"createTime":"2026-09-16T14:28:09.830704"}],"total":"1","pageNum":"1","pageSize":"5"}}
+  记录数=1
+  failedRow={"id":"2100109467388125186","title":"P61 探针通知","bizType":"SYSTEM","bizId":null,"recipientId":"1","recipientMask":"U1","channel":"EMAIL","deliveryStatus":"FAILED","attemptCount":2,"templateId":null,"templateVersion":null,"createTime":"2026-09-16T14:28:09.830704"}
+[R4b-6c] GET /notify/records/2100109467388125186 → HTTP 200
+  body: {"code":0,"msg":"success","data":{"message":{"id":"2100109467388125186","createTime":"2026-09-16T14:28:09.830704","createBy":null,"updateTime":null,"updateBy":null,"deleted":null,"version":null,"tenantId":null,"recipientId":"1","title":"P61 探针通知","content":null,"bizType":"SYSTEM","bizId":null,"read":null,"channel":"EMAIL","deliveryStatus":"FAILED","externalMessageId":null,"failureReason":null,"ide
+  assert 零 Java 栈帧: true
+  assert 零内部主机/绝对路径/凭据: true
+[R4b-6d] GET /notify/records?pageNum=1&pageSize=5 → HTTP 403
+  body: {"code":403,"msg":"您没有执行该操作的权限，请联系管理员分配相应权限","data":null,"errorKey":"common.forbidden","eventRef":"req-7c66056fdb334dc465b41a2f8104bed0"}
+  assert B 被拒（403）: true
+  assert B 响应零诊断内容: true
+
+===== 追加汇总 =====
+{
+  "notifySendHttp": 200,
+  "notifyRecordReadableByA": true,
+  "notifyRecordDeniedToB": true,
+  "diagnosticNoStack": true,
+  "diagnosticNoInternals": true,
+  "failedRowSample": {
+    "id": "2100109467388125186",
+    "title": "P61 探针通知",
+    "bizType": "SYSTEM",
+    "bizId": null,
+    "recipientId": "1",
+    "recipientMask": "U1",
+    "channel": "EMAIL",
+    "deliveryStatus": "FAILED",
+    "attemptCount": 2,
+    "templateId": null,
+    "templateVersion": null,
+    "createTime": "2026-09-16T14:28:09.830704"
+  }
+}
+
+===== R8c 设备回写受控标记（存储 + API 两层） =====
+[R8c-1] POST /iot/devices → HTTP 200
+  body: {"code":0,"msg":"success","data":{"id":"2100109474195480577","createTime":"2026-09-16T14:28:11.4531778","createBy":"1","updateTime":"2026-09-16T14:28:11.4531778","updateBy":"1","deleted":0,"version":"0","tenantId":"0","productId":"p61-prod-91436","deviceName":"p61-dev-91436","deviceKey":"p61-prod-91436-key","name":"P61 探针设备","deviceType":"probe","status":"OFFLINE","tencentStatus":"offline","lastOn
+[R8c-2] POST /iot/devices/p61-prod-91436/p61-dev-91436/commands → HTTP 200
+  body: {"code":0,"msg":"success","data":{"id":"2100109474304532482","createTime":"2026-09-16T14:28:11.4780125","createBy":"1","updateTime":"2026-09-16T14:28:11.4780125","updateBy":"1","deleted":0,"version":"0","tenantId":"0","productId":"p61-prod-91436","deviceName":"p61-dev-91436","deviceKey":"p61-prod-91436-key","commandType":"PROBE","commandKey":"cmd-91458","semanticMode":"DEFERRED","payload":"{}","st
+[R8c-3] POST /iot/devices/commands/2100109474304532482/result → HTTP 200
+  body: {"code":0,"msg":"success","data":{"id":"2100109474304532482","createTime":"2026-09-16T14:28:11.478013","createBy":"1","updateTime":"2026-09-16T14:28:11.478013","updateBy":"1","deleted":0,"version":"1","tenantId":"0","productId":"p61-prod-91436","deviceName":"p61-dev-91436","deviceKey":"p61-prod-91436-key","commandType":"PROBE","commandKey":"cmd-91458","semanticMode":"DEFERRED","payload":"{}","stat
+[R8c-4] GET /iot/devices/p61-prod-91436/p61-dev-91436/commands → HTTP 200
+  body: {"code":0,"msg":"success","data":[{"id":"2100109474304532482","createTime":"2026-09-16T14:28:11.478013","createBy":"1","updateTime":"2026-09-16T14:28:11.478013","updateBy":"1","deleted":0,"version":"1","tenantId":"0","productId":"p61-prod-91436","deviceName":"p61-dev-91436","deviceKey":"p61-prod-91436-key","commandType":"PROBE","commandKey":"cmd-91458","semanticMode":"DEFERRED","payload":"{}","sta
+  assert 存储/API 层保留可定位标记: true
+  assert 存储/API 层零栈帧: true
+  assert 存储/API 层零绝对路径: true
+  assert 存储/API 层已限长: true（实际 643）
+[R8c-5] GET /iot/devices/p61-prod-91436/p61-dev-91436/commands → HTTP 403
+  body: {"code":403,"msg":"您没有执行该操作的权限，请联系管理员分配相应权限","data":null,"errorKey":"common.forbidden","eventRef":"req-63ee75c764e98f359e37695f327fc0e5"}
+  assert B 读取设备命令被拒: true (HTTP 403)
+  assert B 响应零标记: true
+
+===== R8c 汇总 =====
+{
+  "commandId": "2100109474304532482",
+  "markerKept": true,
+  "noStack": true,
+  "noAbsolutePath": true,
+  "boundedLength": true,
+  "deniedToB": true,
+  "storedSample": "[{\"id\":\"2100109474304532482\",\"createTime\":\"2026-09-16T14:28:11.478013\",\"createBy\":\"1\",\"updateTime\":\"2026-09-16T14:28:11.478013\",\"updateBy\":\"1\",\"deleted\":0,\"version\":\"1\",\"tenantId\":\"0\",\"productId\":\"p61-prod-91436\",\"deviceName\":\"p61-dev-91436\",\"deviceKey\":\"p61-prod-91436-key\",\"commandType\":\"PROBE\",\"co"
+}

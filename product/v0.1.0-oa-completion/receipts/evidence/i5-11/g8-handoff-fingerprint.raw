@@ -1,0 +1,19 @@
+atomic_id=G8-HANDOFF-READBACK / G8-HANDOFF-MANIFEST
+captured_at=2026-09-14T10:01:52+0800
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=486b1116eb6016024c8e1e4a00b50244af2f3cb5（iteration-11 最终工作树，与 iteration-10 一致：本轮增量仅在仓外 product 证据；前轮 486b1116eb6016024c8e1e4a00b50244af2f3cb5）
+web_sha=5788ead33c4347214a350d124331237e85068bdf（零修改）
+environment=Windows 11; git write-tree（临时索引含未跟踪文件）；sha256sum manifest verify
+database=不适用
+tenant_id=不适用
+actor=executor-local-dev
+object_ids=交付对象=docs/sso/{owner-acceptance-handbook.md,provider-config-example.yml}+FeishuSsoProviderClient.java（逐路径哈希见 g8-handoff-manifest.sha256）
+positive_assertion=回读证据 handoff-readback.raw 覆盖样例字段级（三 Provider enabled=0、app_secret_enc=NULL、哨兵清单、系统 3 键）与手册章节级（6 章+控制台/回调/启用顺序/绑定/登录/解绑/失败恢复/清理/红线要素行）；回读秘密检查 NO-HITS；manifest 逐文件 sha256sum -c 全部 OK exit=0
+negative_assertion=本轮零业务代码修改（增量仅为 evidence/i5-11 证据）；manifest 排除自身、工具生成非手抄；未重跑任何已锁定测试、未重做官方文档对照、未外部调用
+positive_pass=true
+negative_pass=true
+cleanup=不适用
+uncovered=G8-WECOM/G8-FEISHU/G8-DINGTALK 真实链=Owner 后续验收
+observed=
+[readback_note] enabled=1 命中 1 处为样例 §3「启用边界」说明文字，非启用的行模板；行模板三 Provider 均 enabled=0
+[manifest] {"file":"g8-handoff-manifest.sha256","entries":"6 dedup","verify_exit":0}

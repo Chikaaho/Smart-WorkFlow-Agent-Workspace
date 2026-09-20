@@ -1,0 +1,17 @@
+# P61 Stage E — 双语接线门禁与覆盖事实
+# 采集时间: 2026-09-15 23:42:31
+# Server HEAD: c15428f0002f6bb0ceeff05c7cbcf842bd3d3148
+
+## 1. Server 门禁
+$ MAVEN_OPTS="-Xmx2g" mvn -q compile  → exit=0
+$ MAVEN_OPTS="-Xmx2g" mvn test           → BUILD SUCCESS
+TESTS=1407 ERRORS=0 SKIPPED=0 FAILURES=0
+双语契约测试: BilingualMessageContractTest 7/7
+
+## 2. 消息目录键数（zh 与 en 必须一致）
+sw-framework/sw-common/src/main/resources/i18n/messages_zh_CN.properties: 31 键
+sw-framework/sw-common/src/main/resources/i18n/messages_en_US.properties: 31 键
+
+## 3. 已收录命名空间 vs 未收录（回退 zh 默认）
+已收录: common(9) auth(4) system(18) = 31
+未收录: form(47) bpm(61) openapi(10) — 目录缺失时回退枚举 zh-CN 默认文案（不出现键名/空文案）

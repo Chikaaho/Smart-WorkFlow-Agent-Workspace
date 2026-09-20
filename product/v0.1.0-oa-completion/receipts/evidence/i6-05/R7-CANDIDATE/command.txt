@@ -1,0 +1,6 @@
+R7 final gate commands (executed from the corresponding repository roots):
+
+1. Server: $env:MAVEN_OPTS='-Xmx2g'; mvn test
+2. Web: $env:NODE_OPTIONS='--max-old-space-size=2048'; pnpm typecheck; pnpm lint; pnpm test; pnpm build
+
+Gate streams (sensitive test values redacted): FINAL-GATE/server.stdout.log, FINAL-GATE/server.stderr.log, FINAL-GATE/server.exit-code.txt, FINAL-GATE/web.stdout.log, FINAL-GATE/web.stderr.log, FINAL-GATE/web.exit-code.txt.

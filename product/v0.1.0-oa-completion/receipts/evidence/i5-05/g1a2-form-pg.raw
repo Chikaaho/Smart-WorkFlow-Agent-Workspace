@@ -1,0 +1,23 @@
+atomic_id=G1a2
+captured_at=2026-09-14T01:28:00+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=本轮采集对应含审计修复、票据兑换挂起修复与 V903 的工作树（最终 SHA 以 G9a1 核对为准）
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; 完整应用上下文（sw-bootstrap I5PgTenantBehaviorBootTest, RANDOM_PORT）+ zonky 内嵌真实 PostgreSQL 17.5 二进制 + 全链 Flyway 迁移（PG 链 V1—V87）
+database=PostgreSQL（真实服务器进程，非 H2 替代）；PG JDBC 摘要=org.postgresql JDBC（zonky embedded 17.5, msvc-19.43.34808 编译），schema public 迁移至 v87
+tenant_id=0 与 100
+actor=user 1 (t0) 与 user 9001 (t100) 经 LoginUserHolder 真实服务层上下文
+object_ids=formKey=leave_pg_g1a2_mu035l7y; t0 form id=29ed03b2-ecb4-4396-a324-ce178c1d46e9 → 物理表 sw_form_fxo8819r17; t100 form id=f7238f25-3df6-4769-a068-2b67c0f9dd8d → 物理表 sw_form_jb114xrh4v
+positive_assertion=两租户以同一 formKey 各自创建-配置-发布成功且 form id 不同；PG JDBC information_schema 回读两物理表名全局无碰撞（sw_form_fxo8819r17 ≠ sw_form_jb114xrh4v）；两表均真实存在于 PostgreSQL 且带 id/tenant_id/deleted 系统列
+negative_assertion=同租户（t100）重复 formKey 创建被拒绝（BaseException「表单标识已存在」），sw_form_def 中该 (formKey, tenant 100) 行数保持 1，无重复行
+positive_pass=true
+negative_pass=true
+cleanup=测试上下文关闭，zonky PG 实例随之关闭
+uncovered=none for the captured G1a2 package
+observed=
+[G1a2] formRows=[{tid=0, fid=29ed03b2-ecb4-4396-a324-ce178c1d46e9, tbl=sw_form_fxo8819r17}, {tid=100, fid=f7238f25-3df6-4769-a068-2b67c0f9dd8d, tbl=sw_form_jb114xrh4v}]
+[G1a2] table0=sw_form_fxo8819r17 table100=sw_form_jb114xrh4v
+[G1a2] sw_form_fxo8819r17 systemCols=[deleted, id, tenant_id]
+[G1a2] sw_form_jb114xrh4v systemCols=[deleted, id, tenant_id]
+[G1a2] dupSameTenant -> BaseException: 表单标识 'leave_pg_g1a2_mu035l7y' 已存在
+[G1a2] dupRowsCheck -> (formKey,tenant100) 行数=1

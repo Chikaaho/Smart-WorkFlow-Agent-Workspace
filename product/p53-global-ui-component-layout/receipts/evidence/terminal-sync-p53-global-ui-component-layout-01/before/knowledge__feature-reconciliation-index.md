@@ -1,0 +1,216 @@
+# 功能映射索引（feature-reconciliation-index）
+
+> 知识库全量整理（knowledge-full-reconciliation）产物；对账任务已 **COMPLETED（已确认，2026-09-04）**（`product/knowledge-full-reconciliation/receipts/planning-final-review-terminal-sync-02-passed.md`）。2026-09-04 P59（非业务功能统一交付）已核销；90 明细/56 审计唯一编号/54 I 集合不变。
+> 本索引固化全量双向映射与独立范围说明：**90 项清单明细**、**56 个唯一 P 编号**、**54 条 I 编号**、**55 个审计 product 目录**；每个稳定 ID 均可定位。
+> 41 是历史正式功能计数（P52—P58 等正式功能序列），**不是** product 目录数或 feature 文件数；本审计不增加业务功能。
+
+## 0. 权威值（与 current-status/功能清单一致）
+
+- 清单：10 模块、55 功能、90 明细；**✅46/🟦22/⬜22**（p21-iot-device-access 十行 🟦/⬜→✅：M08-F01-01/02/03、F02-01/02、F03-01/02、F04-03/04、F05-01；其余 80 行不变）
+- 高级能力规划项（P60 首次功能清单同步，2026-09-08；当时版本口径 `v0.3.0-oa-completion`，后经 Owner 更正统一登记为成熟 OA 目标 `0.1.0`）：**8 模块、64 条（ADV-M11—ADV-M18，键 `ADV-M11-F01-01`—`ADV-M18-F03-01`）**，正式登记于 `Smart-WorkFlow-aPaaS-server/功能清单.md` 文末 ADV 章节；**未纳入 `0.1.0` 路线验收、不计入上方 90 明细 ✅/🟦/⬜ 统计、不并入已完成功能数**，状态统一 ⬜ 规划登记/待现状核实；规划定义权威为 `product/v0.1.0-oa-completion/ready/advanced-capability-feature-checklist.md`（本审计集合不并入该 64 条）
+- P：物理 57 行、唯一 56 编号（P48 总表/明细双入口同值；P13 已核销移除、P23 零引用备案）
+- I：索引 54 条、区间 I1—I55 缺 I27（I27 缺行证据待定位，见 §5；I14 已满足/关闭 2026-09-08）
+- product 审计目录：55（总 57 − governance − knowledge-full-reconciliation）
+- 正式功能数：**44**（p21-iot-device-access 为第 44 个，功能状态 COMPLETED（规划已确认）2026-09-08，43＋1 不另建 P 编号；历史点：v0.0.2-oa 为第 43 个，P4 OA 本轮子集为第 42 个，P58 为第 41 个）
+- P59：Owner 2026-09-04 新增统一交付编号（不在审计 56 唯一编号集合内），非新增业务功能、不映射清单明细，**已核销**（功能级 PASSED，见 `knowledge/features/p59-ch-apaas-project-update.md`）；上列审计计数保持原值
+
+## 1. 90 项清单明细 ↔ 交付/P 编号 双向映射
+
+### M01 组织架构（13 行）
+
+| ID | 状态 | 映射交付 / P / I | 范围说明 |
+|---|---|---|---|
+| M01-F01-01 部门新增 | ✅ | system-mgmt-crud（第 2 个） | 已交付 |
+| M01-F01-02 部门修改 | 🟦 | P44 | 拖拽层级/排序缺口 |
+| M01-F01-03 部门删除 | ✅ | system-mgmt-crud | 已交付 |
+| M01-F01-04 部门查询 | ✅ | department-query-filtering（第 22 个）/ I31 | 已交付 |
+| M01-F01-05 负责人设置 | ⬜ | P26 | 未排期 |
+| M01-F02-01 人员新增 | ✅ | user-org-association-query（第 21 个）/ I32 | 已交付 |
+| M01-F02-02 人员修改 | ✅ | checklist-gap-hardening（第 12 个）/ I33 | 已交付 |
+| M01-F02-03 人员删除 | ✅ | system-mgmt-crud | 已交付 |
+| M01-F02-04 人员查询 | ✅ | user-org-association-query / I34 | 已交付 |
+| M01-F02-05 批量导入导出 | ⬜ | P27 | 未排期 |
+| M01-F03-01 岗位管理 | ✅ | user-org-association-query / I35 | 已交付 |
+| M01-F04-01 用户组管理 | 🟦 | user-group-membership（第 25 个）/ P28 / I36 | 维护+成员绑定已闭环；流程/权限消费端未接 |
+| M01-F05-01 租户/公司管理 | ⬜ | P29 | 未排期 |
+
+### M02 权限控制（7 行）
+
+| ID | 状态 | 映射交付 / P / I | 范围说明 |
+|---|---|---|---|
+| M02-F01-01 角色管理 | 🟦 | P1 已核销（2026-08-20）；其余范围独立待核 | 菜单/按钮已覆盖（P1 全部子项 I31/I36/F02/F03 已闭合核销）；该明细剩余缺口（角色管理完整维护范围）未完成，保持 🟦 |
+| M02-F02-01 菜单权限 | ✅ | role-menu-permission-parity（第 26 个）/ P1 | 已交付核销 |
+| M02-F03-01 按钮权限 | ✅ | role-menu-permission-parity / P1 | 已交付核销 |
+| M02-F04-01 数据权限 | ✅ | data-scope-enforcement（第 13 个）/ I37 | 已交付；I46 手写 SQL 不纳管为已知限制 |
+| M02-F05-01 资源管理 | ⬜ | P30 | 未排期 |
+| M02-F06-01 登录认证 | ✅ | p45-login-security（第 37 个）/ P45 | 已交付核销 |
+| M02-F06-02 单点登录 | ⬜ | P31 | 仅 SPI 预留 |
+
+### M03 低代码表单（8 行）
+
+| ID | 状态 | 映射交付 / P / I | 范围说明 |
+|---|---|---|---|
+| M03-F01-01 拖拽设计 | ✅ | p56-form-grid-layout（第 39 个）/ P56/P46 | P46 同一交付一并核销、单一计数 |
+| M03-F01-02 控件库 | 🟦 | P2 / I38（8/17 控件） | v0.0.2-oa A5 已交付多选/附件/图片/说明文字四控件子集；子表单、关联查询等仍缺，保持 🟦 |
+| M03-F02-01 表单管理 | 🟦 | P2 / I39（删除/版本） | 待修复 |
+| M03-F03-01 联动校验 | 🟦 | P2 | v0.0.2-oa A5 已交付显隐联动、默认值、必填/校验；计算公式等仍缺，保持 🟦 |
+| M03-F04-01 数据管理 | 🟦 | P2 / I40 | 列表/查询条件仅派生 |
+| M03-F04-02 导入导出 | ✅ | form-data-import-export（第 36 个）/ P32 | 已交付核销 |
+| M03-F05-01 数据源 | 🟦 | P2 | 外部数据源缺口 |
+| M03-F06-01 打印模板 | ⬜ | P33 | 未排期 |
+
+### M04 流程引擎（10 行）
+
+| ID | 状态 | 映射交付 / P | 范围说明 |
+|---|---|---|---|
+| M04-F01-01 流程设计器拖拽 | 🟦 | P47 | 「前端无设计器路由（I3 按设计排除）」为 **P47 登记的旧实现结论（历史快照，未经本轮对账验证）**，不宣称当前已验证；M04-F01-01 ID 不被其他交付占用；当前事实以代码与后续规划为准 |
+| M04-F01-02 节点审批人配置 | 🟦 | P58 已覆盖子集 | 通用选人（固定用户/角色/表达式/适配器）已实；岗位/部门主管/上级/表单字段待核 |
+| M04-F01-03 会签规则 | 🟦（本轮 ⬜→🟦） | P34（开放未核销） | 已交付子集：ALL/ANY/RATIO 会签结算、独立意见、取消语义（P58）；剩余：原明细完整规则（含一票否决）覆盖待确认 |
+| M04-F02-01 流程定义维护 | 🟦 | workflow-process-def-create + form-binding（X3 登记） | 创建/表单绑定子集已交付；部署/版本/挂起/激活未做 |
+| M04-F03-01 流程发起 | ✅ | process-initiation（X3 登记） | 前端发起子集已交付 |
+| M04-F04-01 流程审批 | 🟦 | P58 已覆盖子集 | 同意/驳回/退回+意见校验已实；转办/委托/加签/抢办/撤回/终止待核 |
+| M04-F05-01 待办中心 | ✅（v0.0.2-oa 轮 🟦→✅） | bpm-task-center + P4（开放、部分实现未核销） | **P4 OA 本轮子集已完成（第 42 个正式功能，功能状态 COMPLETED 2026-09-07，验收事件 功能级 PASSED 规划复验09）**：个人中心四入口=我发起的、我的草稿、我的待办、我的已办（含 0 草稿空态发起入口修复）、已办真实历史过滤+同时间确定性分页、普通可靠异步与 P0 单次同步（实际启动完成后返回、超时受理态可凭原标识经 flowStart 回查处理中/成功/失败）、租约原子写回与跨租户读隔离。**v0.0.2-oa（第 43 个正式功能，功能级 PASSED 规划验收06）补齐流程中心分类与双视角（A2）、抄送我的查询与催办（A3），覆盖本明细完整描述，🟦→✅（2026-09-07）**；P4 总项仍开放未整体核销（转办/委托/加签/撤回、流程版本/挂起激活等候选） |
+| M04-F06-01 流程监控 | 🟦 | process-monitoring（第 11 个）+ bpmn-adapter | 首批 2/4；耗时分析/干预未做 |
+| M04-F07-01 流程规则 | 🟦（本轮 ⬜→🟦） | P35（开放未核销） | 已交付子集：受控条件表达式、条件分支（P58）；剩余：超时处理、自动审批/自动通过规则 |
+| M04-F08-01 可插拔机制 | ✅ | bpm-plugin-architecture（第 16 个） | 已交付 |
+
+### M05 站内信（4 行，已落地 sw-basic-notify）
+
+| ID | 状态 | 映射交付 / P / I | 范围说明 |
+|---|---|---|---|
+| M05-F01-01 消息发送 | ✅ | notify-batch-send（第 34 个）/ P3 子集 | 指定人/部门/角色、去重、上限、事务落库 |
+| M05-F01-02 消息接收 | ✅ | notify-management-closure（第 32 个）/ I41 | 已读/未读/删除+越权校验 |
+| M05-F01-03 消息查询 | ✅ | notify-management-closure / I42 | 状态+关键字过滤 |
+| M05-F02-01 消息模板 | ✅ | notify-template-management（第 33 个）/ P36 | 变量渲染+落库前拒绝+租户隔离 |
+
+### M06 系统通知（4 行）
+
+| ID | 状态 | 映射交付 / P | 范围说明 |
+|---|---|---|---|
+| M06-F01-01 通知渠道 | 🟦（本轮 ⬜→🟦） | P37（开放未核销） | 已交付子集：站内信、统一渠道 SPI 及已验收扩展接缝（P58）；剩余：真实厂商渠道、配置开关及账号联调 |
+| M06-F02-01 通知模板 | 🟦（本轮 ⬜→🟦） | P38（开放未核销，不新编号） | 已交付子集：可复用通用消息模板与变量渲染（与 M05 同实现）；剩余：按渠道配置内容与变量 |
+| M06-F03-01 通知规则 | 🟦（本轮 ⬜→🟦） | P39（开放未核销） | 已交付子集：内置审批事件、通知节点触发（P58）；剩余：用户可配置规则、订阅设置 |
+| M06-F04-01 发送记录 | ✅（v0.0.2-oa 轮 🟦→✅） | P3（已核销 2026-09-07） | v0.0.2-oa A6 交付：发送记录状态查询、管理入口、失败重发、单发/批量失败子记录与关联日志（含此前已交付的投递状态持久化与幂等）；覆盖本明细完整描述，🟦→✅（2026-09-07）；P3 已核销，I45 保持开放不随核销关闭 |
+
+### M07 AI 智能助手（14 行）
+
+| ID | 状态 | 映射交付 / P | 范围说明 |
+|---|---|---|---|
+| M07-F01-01 模型接入 | ✅ | agent-model-management-frontend（第 23 个）/ P5 | 已交付核销 |
+| M07-F01-02 动态装载 | ✅ | 同上 | 已交付核销 |
+| M07-F01-03 参数配置 | ✅ | 同上 | 已交付核销 |
+| M07-F01-04 密钥管理 | ✅ | 同上 | 已交付核销 |
+| M07-F01-05 连通性测试 | ✅ | 同上 | 已交付核销 |
+| M07-F02-01 图设计器 | ✅ | agent-model-orchestration（第 15 个） | 已交付 |
+| M07-F02-02 节点 Prompt 配置 | ✅ | agent-graph-prompt-configuration（第 28 个）/ P6 | 已交付核销（D157 复验） |
+| M07-F02-03 图管理 | ✅ | agent-model-orchestration | 已交付 |
+| M07-F02-04 调试运行 | ✅ | agent-graph-execution-observability（第 27 个）+ agent-graph-step-debugging（第 30 个）/ P7 | 运行日志+单步调试双契，P7 已核销 |
+| M07-F03-01 助手配置 | ⬜ | P18 | 未开发候选 |
+| M07-F03-02 工具/函数调用 | ✅ | agent-tool-configuration-frontend（第 31 个）/ P48 | 已交付核销 |
+| M07-F03-03 知识库 RAG | ⬜ | P19 | 未开发候选 |
+| M07-F04-01 对话窗口 | ⬜ | P20 | 零代码 |
+| M07-F04-02 会话管理 | ✅ | agent-token-usage-observability（第 29 个）/ P8 | 已交付核销 |
+
+### M08 IoT（13 行）
+
+| ID | 状态 | 映射交付 / P | 范围说明 |
+|---|---|---|---|
+| M08-F01-01 原生 MQTT 配置 | ✅（p21-iot-device-access 轮 ⬜→✅） | P21（已核销 2026-09-08） | 原生 MQTT 双通道配置已交付：Broker/ClientId/口令/QoS/SSL/心跳等；账号口令加密存储、脱敏展示 |
+| M08-F01-02 腾讯 IoT 配置 | ✅（p21-iot-device-access 轮 🟦→✅） | P21（已核销 2026-09-08） | 全局 Provider 配置＋每设备 DeviceSecret 已交付；真实账号/RequestId/物理设备按 Owner 本轮免验，不写成实网已验证 |
+| M08-F01-03 连接管理 | ✅（p21-iot-device-access 轮 ⬜→✅） | P21（已核销 2026-09-08） | 连接/断开、连接状态监控、断线自动重连已交付 |
+| M08-F02-01 设备维护 | ✅（p21-iot-device-access 轮 🟦→✅） | P21（已核销 2026-09-08） | 设备/产品新增、修改、删除/注销、查询、分组已交付；生命周期与连接状态分离 |
+| M08-F02-02 状态监控 | ✅（p21-iot-device-access 轮 🟦→✅） | P21（已核销 2026-09-08） | 在线/离线监控、心跳检测、最后上报时间已交付 |
+| M08-F03-01 Topic 订阅 | ✅（p21-iot-device-access 轮 ⬜→✅） | P21（已核销 2026-09-08） | 自定义 Topic 订阅/取消订阅、通配符与 QoS、订阅恢复/去重已交付 |
+| M08-F03-02 Topic 发布配置 | ✅（p21-iot-device-access 轮 ⬜→✅） | P21（已核销 2026-09-08） | 发布 Topic 与 Payload 模板、模板变量/retain/物模型映射已交付 |
+| M08-F04-01 按钮发送 | 🟦 | P21 | 已交付命令下发、流程触发和受控重试；不扩称为任意 Payload 的独立手动按钮完整能力（前端按钮未做） |
+| M08-F04-02 定时发送 | ⬜ | P21 | 未开发（Cron 定时发送不在 P21 本轮方向） |
+| M08-F04-03 数据上报 | ✅（p21-iot-device-access 轮 ⬜→✅） | P21（已核销 2026-09-08） | 设备上报数据接收、解析、存储与展示已交付 |
+| M08-F04-04 消息日志 | ✅（p21-iot-device-access 轮 🟦→✅） | P21（已核销 2026-09-08） | 上行/下行消息记录与查询已交付 |
+| M08-F05-01 硬件编排规则 | ✅（p21-iot-device-access 轮 ⬜→✅） | P21（已核销 2026-09-08） | 场景联动规则编排（条件触发动作：A 上报触发 B 下发）、规则新增/修改/删除/启停已交付 |
+| M08-F05-02 指令模板 | ⬜ | P21 | 未开发（Topic/规则/流程参数映射不扩称为独立指令模板管理） |
+
+### M09 开放接口（8 行，P22 仅骨架）
+
+| ID | 状态 | 范围说明 |
+|---|---|---|
+| M09-F01-01 应用维护 | ⬜ | 仅骨架 |
+| M09-F02-01 接口授权 | ⬜ | 未开发 |
+| M09-F03-01 签名鉴权 | ⬜ | 未开发 |
+| M09-F03-02 访问控制 | ⬜ | 未开发 |
+| M09-F04-01 限流配额 | ⬜ | 未开发 |
+| M09-F05-01 Webhook | ⬜ | 未开发 |
+| M09-F06-01 在线文档 | 🟦 | 部分（接口文档基建） |
+| M09-F07-01 调用日志 | ⬜ | 未开发 |
+
+### M10 系统运维（9 行）
+
+| ID | 状态 | 映射交付 / P / I | 范围说明 |
+|---|---|---|---|
+| M10-F01-01 系统监控 | 🟦 | P49 | 部分（V29 菜单可达性与运行监控基建） |
+| M10-F02-01 日志查询 | ⬜ | P40 | 无 oper_log/login_log |
+| M10-F02-02 动态日志级别 | ⬜ | P41 | 无 loglevel 端点 |
+| M10-F03-01 定时任务 | ✅ | job-scheduler（第 5 个）/ I43 | 已交付 |
+| M10-F04-01 数据字典 | ✅ | system-mgmt-crud | 已交付 |
+| M10-F05-01 系统参数 | ⬜ | P42 | 无 SysConfig |
+| M10-F06-01 文件存储 | ✅ | storage-multi-provider（第 4 个）/ I44 | 已交付 |
+| M10-F07-01 备份恢复 | ⬜ | P43 | 未排期 |
+| M10-F08-01 API 管理 | 🟦 | P50 | 部分（接口文档基建） |
+
+## 2. P 编号全集（56 唯一编号；物理 57 行，P48 总表/明细双入口同值）
+
+- **已核销/完成（23）**：P1、P3、P5、P6、P7、P8、P10、P12、P21、P24、P28、P32、P36、P45、P46、P48、P51、P52、P54、P55、P56、P57、P58（P3 于 2026-09-07 随 v0.0.2-oa A6 核销；P54/P55 于 2026-09-07 随 v0.0.2-oa A4/A1 核销；P21 于 2026-09-08 随 p21-iot-device-access 核销）
+- **部分实现、未核销（v0.0.2-oa 后新增登记，2）**：P2（A5 交付四控件/默认值/显隐/校验子集；计算公式/外部数据源/表单删除/列表配置持久化仍缺）、P4（流程中心分类/双视角、抄送我的查询/催办已交付；转办/委托/加签/撤回、流程版本/挂起激活等候选开放，未整体核销）
+- **待对账、未核销（5）**：P34（M04-F01-03 会签）、P35（M04-F07-01 流程规则）、P37（M06-F01-01 通知渠道）、P38（M06-F02-01 通知模板）、P39（M06-F03-01 通知规则）
+- **待排期（3）**：P9、P14、P25
+- **未排期（14）**：P26、P27、P29、P30、P31、P33、P40、P41、P42、P43、P44、P47、P49、P50
+- **未开发候选（3）**：P18、P19、P20
+- **待设计（2）**：P15、P16
+- **待规划（0）**：P54、P55 已核销（2026-09-07）
+- **待开发（1）**：P17
+- **待决策（1）**：P11
+- **待 Owner 确认（1）**：P53
+- **仅骨架（1）**：P22
+- **无池行备案**：P13（已核销闭环，经 knowledge/features/sysrole-v5-column-alignment.md，合规移除）；P23（全工作区零引用）
+- **审计外新增编号（2）**：P61（全系统用户可见错误码与提示语人性化治理；Owner 2026-09-14/20；优先级 P1、L；非新增业务功能、不映射 90 明细；功能级 `PASSED`（2026-09-20），最终确认 `COMPLETED（规划已确认，2026-09-20）` 并正式核销；三份方向均归档 `product/p61-user-facing-message-humanization/passed/`，阶段三终态同步回执 `product/p61-user-facing-message-humanization/receipts/terminal-sync-p61-user-facing-message-humanization-01.md` 经最终复核 01 PASSED 确认；独立提交 Server `742adb8` / Web `d110ed8` 先保留，待 P53 结束后统一合并）、P59（CH-aPaaS 项目说明、仓库与 main 分支整理及自动发版；Owner 2026-09-04；非新增业务功能统一交付，不映射 90 明细；**已核销并完成终态复核**：规划复验 PASSED（2026-09-05）`product/p59-ch-apaas-project-update/receipts/planning-final-review-p59-terminal-sync-02-passed.md`，功能状态 COMPLETED（规划已确认，2026-09-05），见 `knowledge/features/p59-ch-apaas-project-update.md`）
+
+## 3. I 编号全集（54 条，I1—I55 区间缺 I27）
+
+权威注册：`knowledge/known-issues.md`。索引行 54 条；已修复/关闭/满足/绕过 39 条、待修复/开放/部分收敛 15 条（含 I4、I6、I8、I11、I12、I13、I14、I15、I16、I17、I19、I20、I21、I38、I39、I40、I46、I48、I50 等现状以 known-issues 为准——分类计数无统一可靠口径，逐行状态以已修复/已关闭/已满足/待修复/已知限制/部分收敛等实际文字为准）。I27 无索引行（证据待定位，见 §5）。本轮不增删 I 编号。
+
+**逐项完整映射（54 个稳定键，每项含当前状态、源锚点、对应 P/明细/交付或独立范围）见持久子表：`knowledge/feature-reconciliation-issues.md`**（集合双向差集与基准 exit=0、重复 0，原始输出见 `receipts/evidence-sync-b-correction-02/check-i-*.txt`）。
+
+**v0.0.2-oa 阶段三同步轮（2026-09-07）：I 集合维持 54 条、I1—I55 缺 I27，不增删；I38/I39/I40（P2 表单缺口）与 I45 保持开放，P3 核销不关闭共享 I45。**
+
+**p21-iot-device-access 阶段三同步轮（2026-09-08）：I 集合维持 54 条、I1—I55 缺 I27，不增删；I14 由部分关闭更新为已满足/关闭（2026-09-08），保留腾讯实网未验证边界，不再把 Owner 已免验事项登记为当前阻塞；I38/I39/I40 与 I45 保持开放。**
+
+## 4. product 审计目录（55）与正式功能对账
+
+41 个正式功能序号链与 product 目录对账见持久子表；**逐项完整映射（55 个稳定目录键，每项含性质、已有证据指针、对应明细/P 或独立范围）见持久子表：`knowledge/feature-reconciliation-products.md`**（集合双向差集与基准 exit=0、重复 0，原始输出见 `receipts/evidence-sync-b-correction-02/check-products-*.txt`）。
+
+说明：41 为历史正式功能计数；允许同一业务交付多目录（P58 系列多份方向），第 1 项 Walking Skeleton 无独立目录（承载于 bpm-single-node-approval/process-initiation/form-binding/workflow-process-def-create 等早期交付，已在 X3 记录），不称 41 功能与目录严格一一对应。非功能目录（minimal-closure-first-acceptance、workspace-governance-consistency-audit）、ready 未归档（p51、readme-project-entry-correction）、receipts-only（bpm-test-verification、form-binding、workflow-process-def-create、process-initiation、local-development-config、repository-history-sanitization、next-feature-candidate-comparison-20260825）、特例（governance-contract-consolidation、feature-tracking-terminal-state-cleanup、v0.0.1-beta-release-readiness）逐项在子表 B—E 组定位。
+
+## 5. 证据待定位 / 独立任务 / 历史缺口记录（不新增 P/I、不伪造验收）
+
+| 项 | 记录 |
+|---|---|
+| X1 P51 | 采用 `product/p51-agent-coding-engine-decoupling/receipts/planning-final-reconciliation-p51-main-terminal-authority-03.md`：COMPLETED（已确认，2026-08-31，Owner 授权发布，终态权威 main@e0711fb）；OA 旧 ready 路线是被后续 Owner 路线取代的历史，非独立活动功能；Engine main 保留零业务初始态，本轮不改分支不搬运历史；本地实例按 main 终态理解 |
+| X2 README 入口修正 | 独立 2026-08-30 文档任务（`product/readme-project-entry-correction/`），仅有 Admin 回执 `receipt-admin-readme-project-entry-correction-20260830.md`；**规划复核证据待定位**；不自动并入 08-29 三仓 README 任务、不补写通过 |
+| X3 三前端交付 | form-binding/workflow-process-def-create → M04-F02-01 创建/表单绑定子集执行交付证据；process-initiation → M04-F03-01 前端发起子集执行交付证据；不另加正式功能数、不将执行自述升级为新验收 |
+| X4 | bpm-single-node-approval feature ID 已改「Walking Skeleton 审批联通子集」；notify-frontend ID 已改「无独立清单 ID，服务 M05」（见 §6） |
+| X5 历史状态清理 | feature-tracking-terminal-state-cleanup 已归档但缺规划裁决回执：保留既有历史结论，标明实际可用证据（completion.md）与缺失指针；缺独立文档不等于未曾验收 |
+| X6 历史清理 | repository-history-sanitization：只记录历史脱敏回执指针 `preflight-2026-08-30.md`/`service-purge-pending-2026-08-30.md` 与证据边界；不新执行 Git 操作、不复制敏感值 |
+| X7 beta 发布 | v0.0.1-beta-release-readiness 已 RELEASED（2026-08-30 规划复验 PASSED），passed/ 仅 blockers 方向 1 份：保留既有历史结论，标明方向集合缺失指针 |
+| X8 | GOV-AUDIT-13 方向已在 passed/，current-status 文字已更新 |
+| X9 早期验收 | 早期批处理 16 目录 + PASSED 归档 3 目录规划证据在 feature 追踪/历史快照（D79/D82/D86/D87/D88/D91 等）：保留历史结论，统一补证据指针即可，不重跑验收 |
+| I27 缺行 | known-issues 索引 54 条、I1—I55 区间无 I27 行；实际枚举事实=无行；可用历史指针=无；不凭审计手工行恢复、不解释为「不存在过」 |
+| P23 | 全工作区零引用（todo/knowledge/memory 均无）；记录枚举事实，不重建 |
+| agent-model-orchestration feature 链接 | `session-handoff` 旧必读清单中的该链接曾指向不存在文件，已改指本索引（§6）；**2026-09-13 补录**：`knowledge/features/agent-model-orchestration.md` 已按 `product/agent-model-orchestration/passed/`（Step1—12，D53—D71，末步 PASSED（D71，2026-08-12））与主索引既有记录补齐登记（第 15 个正式功能；只复述可追溯历史事实，不重跑验收、不改状态与计数） |
+| search 局部通知任务 | `search_task/notification-personal-workflow-reconciliation-20260904.md` 已被主方向吸收（方向 §1「不再单独推进/提交局部结项」）；三类查询与通知结论见 audit-ledger-d、audit-ledger-e 及本索引 M04-F05-01/M06 行 |
+| 其余 search 资料 | 7 份活动目录中的探索文件已回传且为历史资料；4 份已归档（.archive/）；11 份无任务历史回传保留链接；knowledge-full-reconciliation 任务已完成（COMPLETED 已确认），阶段三方向已归档 `passed/direction-knowledge-full-reconciliation-terminal-sync.md`，历史文件不删除；当前执行入口以 `knowledge/current-status.md`「当前唯一下一动作」为准（2026-09-15 为 P60 整体终态同步——P60 写为 `COMPLETED（规划已确认，2026-09-15）`、迁移终点 V93、两仓发布身份锁定——方向 `product/v0.1.0-oa-completion/passed/direction-v0.1.0-oa-completion-terminal-sync.md`（已归档），回执 `receipts/terminal-sync-v0.1.0-oa-completion-01.md`；P60 整体 14/14 通过并经发布最终验收 02 `receipts/planning-final-review-release-v0.1.0-server-web-02-passed.md` PASSED，0.1.0 两仓已发布并锁定；下一动作=继续执行 P53 提示07（入口 `product/p53-global-ui-component-layout/receipts/planning-execution-prompt-p53-global-ui-component-layout-07.md`）；P61 用户可见错误码与提示语人性化治理已完成并经规划确认（`COMPLETED（规划已确认，2026-09-20）`、已核销、三份方向归档 `product/p61-user-facing-message-humanization/passed/`），其现状探索 `search_task/p61-user-facing-message-humanization-current-seams.md` 仅作已完成追溯；I6 现状接缝探索 `search_task/v0.1.0-oa-completion-i6-current-seams.md` 已回传 `search_fallback/`） |
+
+## 6. 链接与追踪
+
+- 当前状态权威：`knowledge/current-status.md`；清单：`Smart-WorkFlow-aPaaS-server/功能清单.md`；问题注册：`knowledge/known-issues.md`；需求池：`todo/requirement-pool.md`
+- 任务登记：`knowledge/features/p59-ch-apaas-project-update.md`（P59 统一交付任务，COMPLETED 规划已确认，2026-09-05）；`knowledge/features/knowledge-full-reconciliation.md`（非业务功能，COMPLETED 已确认，历史）；`knowledge/features/p61-user-facing-message-humanization.md`（P61 全系统用户可见错误码与提示语人性化治理，`COMPLETED（规划已确认，2026-09-20）`，已核销）
+- 会议交接：`knowledge/session-handoff.md`（已压缩，原 P57 时点全文见 `knowledge/history/session-handoff-before-knowledge-full-reconciliation-20260904.md`）
+- 本索引建立于审计账本 A—E（`product/knowledge-full-reconciliation/receipts/`），原件仅供追溯

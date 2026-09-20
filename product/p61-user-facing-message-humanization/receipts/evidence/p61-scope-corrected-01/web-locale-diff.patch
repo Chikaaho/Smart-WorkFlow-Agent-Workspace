@@ -1,0 +1,74 @@
+diff --git a/src/foundation/request/error-code-map.spec.ts b/src/foundation/request/error-code-map.spec.ts
+index e7e69da..6a84010 100644
+--- a/src/foundation/request/error-code-map.spec.ts
++++ b/src/foundation/request/error-code-map.spec.ts
+@@ -15,8 +15,8 @@ describe('foundation/request/error-code-map', () => {
+       expect(i18n.global.t(ERROR_CODE_KEYS[1500])).toMatch(/表单/)
+       expect(i18n.global.t(ERROR_CODE_KEYS[1501])).toMatch(/字段/)
+       expect(i18n.global.t(ERROR_CODE_KEYS[1502])).toMatch(/筛选/)
+-      expect(i18n.global.t(ERROR_CODE_KEYS[1503])).toMatch(/操作符/)
+-      expect(i18n.global.t(ERROR_CODE_KEYS[1504])).toMatch(/操作符/)
++      expect(i18n.global.t(ERROR_CODE_KEYS[1503])).toMatch(/筛选条件/)
++      expect(i18n.global.t(ERROR_CODE_KEYS[1504])).toMatch(/筛选/)
+       expect(i18n.global.t(ERROR_CODE_KEYS[1505])).toMatch(/引用/)
+     })
+ 
+diff --git a/src/locales/en-US.ts b/src/locales/en-US.ts
+index 5c0ae13..43b316d 100644
+--- a/src/locales/en-US.ts
++++ b/src/locales/en-US.ts
+@@ -874,11 +874,13 @@ export default {
+     errFormMissingOrUnpublished: 'The form does not exist or is not published',
+     errFieldUnknown: 'Field is unknown',
+     errNotFilterable: 'This field cannot be filtered',
+-    errOperatorTypeMismatch: 'The operator does not match the field type',
+-    errOperatorUnsupported: 'Unsupported operator',
++    errOperatorTypeMismatch: 'The filter does not match the field type',
++    errOperatorUnsupported:
++      'That filter is not supported yet. Please adjust the filter and try again.',
+     errRecordReferenced: 'The record is referenced by another form and cannot be deleted',
+     errRecordNotFound: 'The record does not exist or was deleted',
+-    errFieldTypeUnknown: 'Unknown field type',
++    errFieldTypeUnknown:
++      'This field uses an unsupported type. Please choose another type and try again.',
+     errFieldTypeNotOpen: 'This field type is not available yet. Choose another type and try again.',
+     errFieldAttributeMissing:
+       'The field is missing required properties. Complete them in the designer and publish again.',
+@@ -895,7 +897,8 @@ export default {
+     errFormUnpublished: 'This form is not published; data cannot be submitted',
+     errFieldNameInvalid: 'Invalid field name',
+     errFieldNameDuplicate: 'Duplicate field name',
+-    errDynamicTableExists: 'The dynamic wide table already exists',
++    errDynamicTableExists:
++      'The data table for this form already exists. Please refresh and try again.',
+     errFormPublishFailed: 'Could not publish the form',
+     errFormConfigNotFound: 'Form configuration not found',
+     errFormVersionNotFound: 'The form version snapshot does not exist',
+diff --git a/src/locales/zh-CN.ts b/src/locales/zh-CN.ts
+index e736e35..a921f68 100644
+--- a/src/locales/zh-CN.ts
++++ b/src/locales/zh-CN.ts
+@@ -831,11 +831,11 @@ export default {
+     errFormMissingOrUnpublished: '表单不存在或未发布',
+     errFieldUnknown: '字段未知',
+     errNotFilterable: '不可筛选',
+-    errOperatorTypeMismatch: '操作符与字段类型不匹配',
+-    errOperatorUnsupported: '操作符不支持',
++    errOperatorTypeMismatch: '筛选条件与字段类型不匹配',
++    errOperatorUnsupported: '暂不支持该筛选方式，请调整筛选条件后重试',
+     errRecordReferenced: '记录被其他表单引用，不能删除',
+     errRecordNotFound: '记录不存在或已被删除',
+-    errFieldTypeUnknown: '字段类型未知',
++    errFieldTypeUnknown: '包含无法识别的字段类型，请调整后重试',
+     errFieldTypeNotOpen: '该字段类型暂未开放，请更换类型后重试',
+     errFieldAttributeMissing: '字段缺少必要属性，请在设计器中补全后重新发布',
+     errTableFieldNested: '表格字段不能嵌套，请调整字段结构后重试',
+@@ -850,7 +850,7 @@ export default {
+     errFormUnpublished: '表单未发布，不能提交数据',
+     errFieldNameInvalid: '字段名不合法',
+     errFieldNameDuplicate: '字段名重复',
+-    errDynamicTableExists: '动态宽表已存在',
++    errDynamicTableExists: '该表单的数据表已存在，请刷新后重试',
+     errFormPublishFailed: '表单发布失败',
+     errFormConfigNotFound: '表单配置未找到',
+     errFormVersionNotFound: '表单版本快照不存在',

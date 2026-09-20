@@ -1,0 +1,15 @@
+# G4a 原始流（2026-09-14，真实浏览器 Chromium（ZCode IAB）+ 真实后端 8080 + vite dev 5173）
+# 1) 登录：/login u1_100 + 固定验证码 1234（dev profile 门禁，object-setup/login-fixed-captcha.js 同源链）
+# 2) 收件箱真实后端链：/inbox 列表(22 条)→未读 35→标记已读→全部已读(未读→0)→删除(DB deleted=1)→分页
+# 3) 深链（修复后）：/notify/inbox/{id}/link 鉴权 → /workflow/instances?focus= → 自动打开实例详情抽屉
+#    截图索引：shot-01-inbox-list / shot-03-inbox-after-actions / shot-04-deeplink-monitor / shot-05-preference / shot-06-u3-menu-visibility
+# 4) 网络请求索引（performance resource，真实 /api/*，无 Mock 通道）：
+#    auth/refresh、system/auth/me、system/auth/menus、notify/inbox 分页+unread-count、
+#    notify/inbox/{id}/link、workflow/instances/{id}、workflow/instances 列表、workflow/defs/by-key
+# 5) Mock 检查：vite 加载 .env（VITE_API_BASE_URL=/api 代理真后端）；无 .env.mock 参与；页面无 mock 数据源
+# 6) 修复登记：
+#    a) PC 收件箱缺深链入口（仅移动端有 openLink）→ NotifyHome.vue 增「跳转」按钮（同一受控契约）
+#    b) NotifyLinkAuthorizer 无实现 bean → 深链全部 fail-closed → 新增 BpmNotifyLinkAuthorizer
+#       （发起人/动作参与人/抄送接收人；sw-bpm-process，已 install 重启取证）
+#    c) 租户管理员角色 data_scope 修正为 0(ALL)（对象铺设，对齐内建管理员）
+# 7) 权限显隐：u3 直达 /inbox → 404（未授权路由不可达，shot-06）；G3d-A 的 API 负向矩阵同对象

@@ -1,0 +1,26 @@
+# TS5-PUBLISH - step 3 checks: candidate / current entry / nested repo exclusion
+captured_at=2026-09-14T11:03:32+08:00
+
+== a. locked I5 evidence objects (i5-11 five-object manifest) ==
+./Smart-WorkFlow-aPaaS-server/docs/sso/owner-acceptance-handbook.md: OK
+./Smart-WorkFlow-aPaaS-server/docs/sso/provider-config-example.yml: OK
+./Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/sso/FeishuSsoProviderClient.java: OK
+product/v0.1.0-oa-completion/receipts/evidence/i5-11/handoff-readback.raw: OK
+product/v0.1.0-oa-completion/receipts/evidence/i5-11/g8-handoff-fingerprint.raw: OK
+VERIFY_EXIT=0
+
+== b. round-01 terminal value assertions still hold ==
+P60 主方向 §9 规则文本提及「写 P60 COMPLETED」为禁止性规则，非完成声明
+
+RESULT: pass=56 fail=6
+
+== c. current entry pointers ==
+  memory/state.md                                                          entry-refs=1
+  memory/handoff.md                                                        entry-refs=1
+  memory/README.md                                                         entry-refs=0
+  todo/requirement-pool.md                                                 entry-refs=2
+  product/v0.1.0-oa-completion/ready/direction-stage-i5-terminal-sync.md   entry-refs=1
+
+== d. nested repository directories must not be tracked/staged ==
+tracked files under Smart-WorkFlow-aPaaS-server/ or -Web/ in workspace: 0
+staged files under them: 0

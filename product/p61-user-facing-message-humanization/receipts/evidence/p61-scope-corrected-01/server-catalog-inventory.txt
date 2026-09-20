@@ -1,0 +1,51 @@
+P61 范围纠偏 · 服务端中文目录键级清单（工具生成 2026-09-20）
+总键数: 154
+本轮修订键数: 22
+
+[本轮修订键]
+form.table_already_exists
+form.field_type_unknown
+form.field_type_disabled
+form.field_attr_missing
+form.definition_invalid
+form.submit_field_unknown
+form.submit_definition_invalid
+form.query_filter_op_type_mismatch
+form.query_filter_op_not_supported
+bpm.graph_missing_start
+bpm.graph_multiple_start
+bpm.graph_missing_end
+bpm.graph_multiple_end
+bpm.graph_orphan_node
+bpm.graph_edge_target_not_found
+bpm.graph_illegal_edge
+bpm.approver_resolve_empty
+bpm.participant_resolve_empty
+bpm.instance_initiator_invalid
+bpm.authorization_invalid
+bpm.dynamic_branch_empty
+bpm.dynamic_branch_leader_missing
+
+[修订键 新文案]
++error.form.table_already_exists=该表单的数据表已存在，请刷新后重试
++error.form.field_type_unknown=包含无法识别的字段类型，请调整后重试
++error.form.field_type_disabled=该字段类型暂未开放，请更换类型后重试
++error.form.field_attr_missing=字段缺少必要属性，请在设计器中补全后重新发布
++error.form.definition_invalid=表单定义配置异常，请检查后重试
++error.form.submit_field_unknown=提交包含表单未定义的字段，请刷新页面后重试
++error.form.submit_definition_invalid=表单定义配置异常，请检查后重试
++error.form.query_filter_op_type_mismatch=该筛选条件与字段「{0}」的类型不匹配
++error.form.query_filter_op_not_supported=暂不支持该筛选方式，请调整筛选条件后重试
++error.bpm.graph_missing_start=流程图缺少开始节点，请检查流程设计
++error.bpm.graph_multiple_start=流程图存在多个开始节点，请只保留一个开始节点
++error.bpm.graph_missing_end=流程图缺少结束节点，请检查流程设计
++error.bpm.graph_multiple_end=流程图存在多个结束节点，请只保留一个结束节点
++error.bpm.graph_orphan_node=存在未与流程连接的节点，请连接或删除该节点
++error.bpm.graph_edge_target_not_found=存在指向已不存在节点的连线，请调整连线后重试
++error.bpm.graph_illegal_edge=连线不合法：不能连接节点自身，也不能重复连线
++error.bpm.approver_resolve_empty=未能确定审批人，请检查该节点的审批人配置
++error.bpm.participant_resolve_empty=未能确定参与人，请检查该节点的参与人配置
++error.bpm.instance_initiator_invalid=流程发起人已不可用或不属于当前企业，请重新发起或联系管理员
++error.bpm.authorization_invalid=代理授权设置存在冲突、循环、已过期或超出范围，请调整后重新设置
++error.bpm.dynamic_branch_empty=动态并行分支没有可用来源，且未配置兜底策略，请检查并行节点的来源配置
++error.bpm.dynamic_branch_leader_missing=动态并行分支的来源存在已停用部门或缺少负责人，且未配置跳过策略，请检查部门与负责人配置

@@ -1,0 +1,115 @@
+{
+  "schema": "agent-coding-engine.executor-terminal.v2",
+  "role": "executor",
+  "state": "EXECUTION_SUBMITTED",
+  "task_level": "XL",
+  "receipt": "product/p53-global-ui-component-layout/receipts/receipt-p53-supplement-08.md",
+  "evidence": [
+    "product/p53-global-ui-component-layout/receipts/evidence/p53-review-08/manifest-layers.json",
+    "product/p53-global-ui-component-layout/receipts/evidence/p53-review-08/formal-mobile-manifest.json",
+    "product/p53-global-ui-component-layout/receipts/evidence/p53-review-08/capture-network-index.json",
+    "product/p53-global-ui-component-layout/receipts/evidence/p53-review-08/evidence-index.md",
+    "product/p53-global-ui-component-layout/receipts/evidence/p53-review-08/final-gates"
+  ],
+  "feature_status": "VERIFYING",
+  "work_items": [
+    {
+      "id": "P53-EV-07d-R1a",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "无——四页375×812最终源码复采：文字/控件碰撞=0、hScroll=false、真实对象 p53ev08_mobile_form 可达，登录语言入口入流右对齐"
+    },
+    {
+      "id": "P53-EV-07d-R1b",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "无——FORMAL_FLOW 真实后端采集（5 制品、20 条 /api/* 网络索引、pageErrors=0）、分层 manifest 与 11 类绑定表落盘、登录未授权能力 DOM=0"
+    },
+    {
+      "id": "P53-EV-07d-R1c",
+      "status": "COMPLETED",
+      "authorized": true,
+      "dependency_satisfied": true,
+      "actionable": false,
+      "next_action": "无——公共 agent-coding-engine.executor-terminal.v2 载荷经 validate-terminal.ps1 exit0，回执物理末行唯一 ENGINE_TERMINAL"
+    }
+  ],
+  "remaining_actionable_count": 0,
+  "independent_work_exhausted": true,
+  "next_action": "等待规划按 review-10 §6 复核 receipt-p53-supplement-08.md 与 evidence/p53-review-08/；两项提请裁决：①节点06 DESIGN_FIDELITY 为方向§2.3/§4.4 授权内的记录性安全偏差（比较器 main=0.023062>0.02，其余5节点 PASS）②e2e 视觉套件 34 项失败经 stash 取证为 review-04..07 存量漂移、非本轮引入",
+  "next_action_type": "WAIT_PLANNER",
+  "progress_fingerprint": "web:674bad9+dirty(final)=87308a682165568340fd869805f09f10db5e0a6f8aa90c248aea6fcb36f0e080;capture-window=0c581160c908103caecfd0b68fca42d9a90f7899af22cb5c974f5ec1baf04dd5",
+  "progress_basis": {
+    "files_changed": [
+      "Smart-WorkFlow-aPaaS-Web/src/views/LoginPage.vue",
+      "Smart-WorkFlow-aPaaS-Web/src/modules/form/views/FormRender.vue",
+      "Smart-WorkFlow-aPaaS-Web/src/types/components.d.ts（unplugin 自动再生成）",
+      "Smart-WorkFlow-aPaaS-Web/e2e/visual/baselines.spec.ts-snapshots/login-06-full-*.png（授权内基线重建）"
+    ],
+    "tool_actions": [
+      "pnpm typecheck/vitest/build/lint 四门 exit0（vitest 1217 passed + 3 skipped，134 files）",
+      "playwright 登录基线重建 4/4 通过（--workers=1）",
+      "node capture-nodes.mjs 06/27 重采 + compare-family.mjs a 复核（5 PASS + 06 记录性偏差）",
+      "FORMAL_FLOW headed 采集 5 制品（真实 PNG 验证码人工读数、20 条真实 /api/* 网络索引、碰撞=0、pageErrors=0）",
+      "validate-terminal.ps1 公共 validator exit0"
+    ],
+    "new_evidence": [
+      "product/p53-global-ui-component-layout/receipts/evidence/p53-review-08/ 全部制品"
+    ],
+    "closed_work_items": [
+      "P53-EV-07d-R1a",
+      "P53-EV-07d-R1b",
+      "P53-EV-07d-R1c"
+    ]
+  },
+  "stop_reason": "WAITING_FOR_PLANNER",
+  "tool_results": [
+    {
+      "tool": "pnpm typecheck/vitest/build/lint",
+      "outcome": "SUCCEEDED",
+      "detail": "最终源码四门全 0：vitest 134 files（1217 passed + 3 skipped）、build 通过、lint 0 error/0 warning，原始输出见 evidence/p53-review-08/final-gates/"
+    },
+    {
+      "tool": "playwright headed FORMAL capture",
+      "outcome": "SUCCEEDED",
+      "detail": "5 制品（375×812 登录/表单/工作台/通知 + 1440 登录复核）：真实后端 8080、真实 PNG 验证码人工读数回填、RSA-OAEP 登录、DOM 碰撞=0、hScroll=false、未授权登录能力 DOM=0、pageErrors=0"
+    },
+    {
+      "tool": "node compare-family.mjs a（review-08）",
+      "outcome": "SUCCEEDED",
+      "detail": "01/04/05/21/27 PASS（27 本轮重采）；06 main=0.023062>0.02 为方向§2.3/§4.4 授权内记录性安全偏差，diff 归因于删除的未授权能力区域"
+    },
+    {
+      "tool": "playwright visual suite --workers=1",
+      "outcome": "SUCCEEDED",
+      "detail": "登录基线 4/4 通过；全套件 37 passed/34 failed/17 skipped，34 项失败经 stash 取证为存量漂移（final-gates/visual-stale-preexisting-proof.log），非本轮两文件引入"
+    },
+    {
+      "tool": "validate-terminal.ps1",
+      "outcome": "SUCCEEDED",
+      "detail": "公共 validator exit0，roundtrip 与 input 一致（terminal-validation.* 落盘）"
+    }
+  ],
+  "browser_status": "OPERABLE",
+  "browser_evidence": {
+    "tier": "FORMAL_FLOW",
+    "headless": false,
+    "artifacts": [
+      "product/p53-global-ui-component-layout/receipts/evidence/p53-review-08/ev08m-login-375.png",
+      "product/p53-global-ui-component-layout/receipts/evidence/p53-review-08/ev08m-form-375.png",
+      "product/p53-global-ui-component-layout/receipts/evidence/p53-review-08/ev08m-workflow-375.png",
+      "product/p53-global-ui-component-layout/receipts/evidence/p53-review-08/ev08m-notify-375.png",
+      "product/p53-global-ui-component-layout/receipts/evidence/p53-review-08/ev08f-login-1440.png"
+    ],
+    "url": "http://localhost:5176/m/form/p53ev08_mobile_form（另含 /login、/m/workflow、/m/notify，逐条见 formal-mobile-manifest.json）",
+    "viewport": "375×812（四移动页）与 1440×1024（登录复核）",
+    "identity": "admin / 系统管理员 / T0（真实后端 8080，授权 dev/test 身份，真实 PNG 验证码人工读数 + RSA-OAEP）",
+    "object": "真实表单定义 p53ev08_mobile_form（defId=24cbb61b-6453-40b3-a236-ce03705b0d03，已发布）+ 真实待办/通知数据",
+    "network_index": "product/p53-global-ui-component-layout/receipts/evidence/p53-review-08/capture-network-index.json（20 条真实 /api/* 请求）"
+  },
+  "formal_browser_acceptance": true
+}

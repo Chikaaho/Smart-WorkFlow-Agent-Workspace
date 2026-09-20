@@ -1,0 +1,23 @@
+atomic_id=G5c1
+captured_at=2026-09-14T01:26:00+08:00
+server_sha=4d98b6710f6d3e5ba9ad4bdef4e59afc191dc889
+server_modified_tree_sha256=本轮采集对应含审计修复、票据兑换挂起修复与 V903 的工作树（最终 SHA 以 G9a1 核对为准）
+web_sha=5788ead33c4347214a350d124331237e85068bdf
+environment=Windows 11; 真实 Chromium IAB + Vite Web(5173) → dev Server(8080)；PC 1280x800 与移动 375x812；未登录新标签页上下文
+database=不涉及（登录前入口）
+tenant_id=100（授权发起显式租户）
+actor=登录前浏览器访客
+object_ids=登录页「第三方账号登录」区（Provider 下拉：企业微信/飞书/钉钉 + 租户 ID + 前往授权）；/sso/bind 页；授权跳转 URL（accounts.feishu.cn, app_id=cli_sentinel_feishu_g5, redirect_uri=https://oa.example.com/api/auth/sso/feishu/callback, state=de48567f…64hex）
+positive_assertion=三 Provider 登录前入口在 PC/移动均可见（截图 g5c1-pc.png / g5c1-mobile.png）；选择飞书+租户 100 点击「前往授权」真实跳转至 accounts.feishu.cn 授权页（app_id/redirect_uri/state 正确）；/sso/bind 页无票据时呈现确定安全态（「绑定票据缺失，请从登录入口重新发起」+ 返回登录链接）
+negative_assertion=伪造候选票据 POST /auth/sso/candidate → code=401「绑定票据无效或已过期」；失败/取消回跳后最终 URL 无 code/state/token，localStorage 与 sessionStorage 均为空对象（零残留）
+positive_pass=true
+negative_pass=true
+cleanup=浏览器停留登录页；未提交任何绑定
+uncovered=三 Provider 真实回调换票成功后的页面链属 G8 外部依赖；本包以授权发起跳转 + 同源安全态为界
+observed=
+[loginPage] {"providers":["企业微信","飞书","钉钉"],"tenantInput":true,"authorizeButton":"前往授权"}
+[authorizeNavigation] {"provider":"FEISHU","tenant":100,"landedUrl":"https://accounts.feishu.cn/open-apis/authen/v1/authorize?app_id=cli_sentinel_feishu_g5&redirect_uri=https%3A%2F%2Foa.example.com%2Fapi%2Fauth%2Fsso%2Ffeishu%2Fcallback&state=de48567f1abc4b06e178a02ba3a4a49ab3341c4c151d55de22f48d1b80d5bab7","title":"飞书"}
+[bindPage.noTicket] {"url":"/sso/bind","page":"绑定第三方账号 / 绑定票据缺失，请从登录入口重新发起 / 返回登录"}
+[forgedCandidate] {"httpCode":200,"body":"{\"code\":401,\"msg\":\"绑定票据无效或已过期\"}"}
+[returnAndResidue] {"finalUrl":"http://localhost:5173/login","localStorage":"{}","sessionStorage":"{}","urlResidue":false}
+[screenshots] {"pc":"g5c1-pc.png (31960B)","mobile":"g5c1-mobile.png (27908B)"}

@@ -1,0 +1,29 @@
+# P61 Stage A — 后端工程门禁原始输出（最终修订）
+# 采集时间: 2026-09-15 21:14:59
+# Server HEAD: c15428f0002f6bb0ceeff05c7cbcf842bd3d3148  工作树: 含 P61 Stage A 改动
+
+## 1. compile 门
+$ MAVEN_OPTS="-Xmx2g" mvn -q compile
+exit=0（无输出）
+
+## 2. 全量测试门（最终修订）
+$ MAVEN_OPTS="-Xmx2g" mvn test
+MVN_EXIT=0   [INFO] BUILD SUCCESS
+
+## 3. testsuite 计数（surefire XML 聚合，仅统计本次运行写入的报告）
+TESTS=1381 ERRORS=0 SKIPPED=0 FAILURES=0
+本次运行报告文件数: 228
+
+## 4. 陈旧报告（未参与本次统计，已显式排除）
+2026-09-13  ./sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire-reports/TEST-com.sw.ck.system.controller.P45IsolationEvidenceFixture.xml
+2026-09-13  ./sw-bootstrap/target/surefire-reports/TEST-com.sw.ck.bootstrap.DiagMigrationsTest.xml
+P45IsolationEvidenceFixture：源码存在但不匹配 surefire 默认包含模式(*Test/Test*/*Tests/*TestCase)，mvn test 不执行该夹具
+DiagMigrationsTest：源码已不存在，报告为历史残留
+
+## 5. 基线对照（如实记录，不推算）
+knowledge/current-status.md 记录的 0.1.0 最终门禁: 1362 tests / 0 failures / 0 errors / 0 skipped
+本轮新增测试: EventRefTest 9 + ErrorCodeCatalogTest 8 = 17
+1362 + 17 = 1379（预期）；本轮实测 1381（实测值）
+差值 +2 未能归因：复用既有测试类未改动计数，新增类计数已核对；
+不排除 0.1.0 基线计数口径与本轮（按本次运行写入的报告聚合）存在差异。
+本回执以本轮实测 1381/0/0/0 为 P61 阶段 A 的事实，不声称与 1362 逐项可比。
