@@ -1,0 +1,243 @@
+diff --git a/sw-biz/sw-biz-form/sw-biz-form-api/src/main/java/com/sw/ck/form/api/exception/FormErrorCode.java b/sw-biz/sw-biz-form/sw-biz-form-api/src/main/java/com/sw/ck/form/api/exception/FormErrorCode.java
+index 09b20df..5832355 100644
+--- a/sw-biz/sw-biz-form/sw-biz-form-api/src/main/java/com/sw/ck/form/api/exception/FormErrorCode.java
++++ b/sw-biz/sw-biz-form/sw-biz-form-api/src/main/java/com/sw/ck/form/api/exception/FormErrorCode.java
+@@ -28,13 +28,13 @@ public enum FormErrorCode implements ErrorCode {
+     // ==================== 发布校验（1200-1299） ====================
+     INVALID_COLUMN_NAME(1200, "form.invalid_column_name", "字段名不合法"),
+     DUPLICATE_COLUMN(1201, "form.duplicate_column", "字段名重复"),
+-    TABLE_ALREADY_EXISTS(1202, "form.table_already_exists", "动态宽表已存在"),
++    TABLE_ALREADY_EXISTS(1202, "form.table_already_exists", "该表单的数据表已存在，请刷新后重试"),
+     PUBLISH_FAILED(1203, "form.publish_failed", "表单发布失败"),
+-    FIELD_TYPE_UNKNOWN(1204, "form.field_type_unknown", "字段类型未知"),
+-    FIELD_TYPE_DISABLED(1205, "form.field_type_disabled", "字段类型暂不允许发布"),
+-    FIELD_ATTR_MISSING(1206, "form.field_attr_missing", "字段缺少必要属性"),
++    FIELD_TYPE_UNKNOWN(1204, "form.field_type_unknown", "包含无法识别的字段类型，请调整后重试"),
++    FIELD_TYPE_DISABLED(1205, "form.field_type_disabled", "该字段类型暂未开放，请更换类型后重试"),
++    FIELD_ATTR_MISSING(1206, "form.field_attr_missing", "字段缺少必要属性，请在设计器中补全后重新发布"),
+     FIELD_NESTED_TABLE(1207, "form.field_nested_table", "表格字段不能嵌套"),
+-    DEFINITION_INVALID(1208, "form.definition_invalid", "表单定义配置异常"),
++    DEFINITION_INVALID(1208, "form.definition_invalid", "表单定义配置异常，请检查后重试"),
+     FORMULA_INVALID(1209, "form.formula_invalid", "公式表达式非法"),
+     FORMULA_CYCLE(1210, "form.formula_cycle", "公式存在循环依赖"),
+     FORMULA_UNKNOWN_FIELD(1211, "form.formula_unknown_field", "公式引用了未定义字段"),
+@@ -52,19 +52,19 @@ public enum FormErrorCode implements ErrorCode {
+     SNAPSHOT_NOT_FOUND(1301, "form.snapshot_not_found", "表单版本快照不存在"),
+ 
+     // ==================== 提交校验（1400-1499） ====================
+-    SUBMIT_FIELD_UNKNOWN(1400, "form.submit_field_unknown", "提交了未定义的字段"),
++    SUBMIT_FIELD_UNKNOWN(1400, "form.submit_field_unknown", "提交包含表单未定义的字段，请刷新页面后重试"),
+     SUBMIT_FIELD_REQUIRED(1401, "form.submit_field_required", "必填字段缺失"),
+     SUBMIT_FIELD_TYPE_MISMATCH(1402, "form.submit_field_type_mismatch", "字段类型不匹配"),
+     SUBMIT_DICT_INVALID(1403, "form.submit_dict_invalid", "字典值不在允许范围内"),
+     SUBMIT_FAILED(1499, "form.submit_failed", "表单提交失败"),
+-    SUBMIT_DEFINITION_INVALID(1404, "form.submit_definition_invalid", "表单定义配置异常"),
++    SUBMIT_DEFINITION_INVALID(1404, "form.submit_definition_invalid", "表单定义配置异常，请检查后重试"),
+ 
+     // ==================== 数据查询（1500-1599） ====================
+     QUERY_FORM_NOT_EXIST(1500, "form.query_form_not_exist", "表单不存在或未发布"),
+     QUERY_FILTER_FIELD_UNKNOWN(1501, "form.query_filter_field_unknown", "过滤字段不在表单定义中"),
+     QUERY_FILTER_FIELD_NOT_FILTERABLE(1502, "form.query_filter_field_not_filterable", "该字段类型不支持筛选"),
+-    QUERY_FILTER_OP_TYPE_MISMATCH(1503, "form.query_filter_op_type_mismatch", "过滤操作符与字段类型不匹配"),
+-    QUERY_FILTER_OP_NOT_SUPPORTED(1504, "form.query_filter_op_not_supported", "该过滤操作符 v1 暂不支持"),
++    QUERY_FILTER_OP_TYPE_MISMATCH(1503, "form.query_filter_op_type_mismatch", "筛选条件与字段类型不匹配"),
++    QUERY_FILTER_OP_NOT_SUPPORTED(1504, "form.query_filter_op_not_supported", "暂不支持该筛选方式，请调整筛选条件后重试"),
+ 
+     // ==================== 数据删除（1505-1509） ====================
+     DELETE_RESTRICT_REFERENCED(1505, "form.delete_restrict_referenced", "记录被其他表单引用，不能删除"),
+diff --git a/sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/exception/BpmErrorCode.java b/sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/exception/BpmErrorCode.java
+index a8828aa..9fcafb1 100644
+--- a/sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/exception/BpmErrorCode.java
++++ b/sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/exception/BpmErrorCode.java
+@@ -17,14 +17,14 @@ import lombok.Getter;
+ public enum BpmErrorCode implements ErrorCode {
+ 
+     // ==================== 图校验（2000-2009） ====================
+-    GRAPH_MISSING_START(2000, "bpm.graph_missing_start", "图缺少开始节点"),
+-    GRAPH_MULTIPLE_START(2001, "bpm.graph_multiple_start", "图存在多个开始节点"),
+-    GRAPH_MISSING_END(2002, "bpm.graph_missing_end", "图缺少结束节点"),
+-    GRAPH_MULTIPLE_END(2003, "bpm.graph_multiple_end", "图存在多个结束节点"),
++    GRAPH_MISSING_START(2000, "bpm.graph_missing_start", "流程图缺少开始节点，请检查流程设计"),
++    GRAPH_MULTIPLE_START(2001, "bpm.graph_multiple_start", "流程图存在多个开始节点，请只保留一个开始节点"),
++    GRAPH_MISSING_END(2002, "bpm.graph_missing_end", "流程图缺少结束节点，请检查流程设计"),
++    GRAPH_MULTIPLE_END(2003, "bpm.graph_multiple_end", "流程图存在多个结束节点，请只保留一个结束节点"),
+     GRAPH_NODE_EDGE_CARDINALITY(2004, "bpm.graph_node_edge_cardinality", "节点连线数量不符合规则，请检查该节点的入口与出口"),
+-    GRAPH_ORPHAN_NODE(2005, "bpm.graph_orphan_node", "存在孤儿/不可达节点"),
+-    GRAPH_EDGE_TARGET_NOT_FOUND(2006, "bpm.graph_edge_target_not_found", "边指向不存在的节点"),
+-    GRAPH_ILLEGAL_EDGE(2007, "bpm.graph_illegal_edge", "非法边（自环或重复边）"),
++    GRAPH_ORPHAN_NODE(2005, "bpm.graph_orphan_node", "存在未与流程连接的节点，请连接或删除该节点"),
++    GRAPH_EDGE_TARGET_NOT_FOUND(2006, "bpm.graph_edge_target_not_found", "存在指向已不存在节点的连线，请调整连线后重试"),
++    GRAPH_ILLEGAL_EDGE(2007, "bpm.graph_illegal_edge", "连线不合法：不能连接节点自身，也不能重复连线"),
+     GRAPH_UNKNOWN_NODE_TYPE(2008, "bpm.graph_unknown_node_type", "流程中存在无法识别的节点类型，请删除后重新添加"),
+     GRAPH_FORM_NOT_FOUND(2009, "bpm.graph_form_not_found", "绑定表单不存在"),
+ 
+@@ -43,7 +43,7 @@ public enum BpmErrorCode implements ErrorCode {
+     NODE_REGISTRATION_INVALID(2108, "bpm.node_registration_invalid", "节点配置不完整，请在流程设计中补全后重试"),
+ 
+     // ==================== 审批人解析（22xx） ====================
+-    APPROVER_RESOLVE_EMPTY(2200, "bpm.approver_resolve_empty", "审批人解析结果为空"),
++    APPROVER_RESOLVE_EMPTY(2200, "bpm.approver_resolve_empty", "未能确定审批人，请检查该节点的审批人配置"),
+     APPROVER_TYPE_NOT_IMPLEMENTED(2201, "bpm.approver_type_not_implemented", "该审批人类型暂不可用，请更换审批人来源后重试"),
+     APPROVER_CONFIG_MISSING(2202, "bpm.approver_config_missing", "审批人配置缺失"),
+     APPROVER_TENANT_ID_MISSING(2203, "bpm.approver_tenant_id_missing", "流程发起信息不完整，无法确定审批人，请重新发起或联系管理员"),
+@@ -51,7 +51,7 @@ public enum BpmErrorCode implements ErrorCode {
+     // ==================== P58 共享参与人与审批（23xx） ====================
+     PARTICIPANT_CONFIG_INVALID(2300, "bpm.participant_config_invalid", "参与人配置不合法"),
+     PARTICIPANT_TYPE_NOT_IMPLEMENTED(2301, "bpm.participant_type_not_implemented", "该参与人类型暂不可用，请更换参与人来源后重试"),
+-    PARTICIPANT_RESOLVE_EMPTY(2302, "bpm.participant_resolve_empty", "参与人解析结果为空"),
++    PARTICIPANT_RESOLVE_EMPTY(2302, "bpm.participant_resolve_empty", "未能确定参与人，请检查该节点的参与人配置"),
+     PARTICIPANT_ADAPTER_NOT_FOUND(2303, "bpm.participant_adapter_not_found", "参与人来源不可用，请重新选择参与人"),
+     APPROVAL_ACTION_INVALID(2304, "bpm.approval_action_invalid", "审批动作不合法"),
+     APPROVAL_ALREADY_HANDLED(2305, "bpm.approval_already_handled", "节点已被处理"),
+@@ -63,12 +63,12 @@ public enum BpmErrorCode implements ErrorCode {
+     BRANCH_EVALUATION_FAILED(2311, "bpm.branch_evaluation_failed", "分支条件求值失败"),
+     NODE_DELIVERY_FAILED(2312, "bpm.node_delivery_failed", "节点投递失败"),
+     INSTANCE_FAILED(2313, "bpm.instance_failed", "流程实例已失败，不可继续审批"),
+-    INSTANCE_INITIATOR_INVALID(2314, "bpm.instance_initiator_invalid", "流程发起人无效、已停用或不属于当前租户"),
++    INSTANCE_INITIATOR_INVALID(2314, "bpm.instance_initiator_invalid", "流程发起人已不可用或不属于当前企业，请重新发起或联系管理员"),
+ 
+     // ==================== I3 动作/会签/时限/函数（24xx；2415 为枚举内重复值，已登记弃用） ====================
+     ACTION_NOT_ALLOWED(2400, "bpm.action_not_allowed", "当前状态不允许该动作"),
+     ACTION_SELF_INVALID(2401, "bpm.action_self_invalid", "不能转办/委托/授权给本人"),
+-    AUTHORIZATION_INVALID(2402, "bpm.authorization_invalid", "代理授权不合法（冲突、循环、失效或越租户）"),
++    AUTHORIZATION_INVALID(2402, "bpm.authorization_invalid", "代理授权设置存在冲突、循环、已过期或超出范围，请调整后重新设置"),
+     WITHDRAW_NOT_PERMITTED(2403, "bpm.withdraw_not_permitted", "当前状态不可撤回"),
+     INVALIDATE_NOT_PERMITTED(2404, "bpm.invalidate_not_permitted", "当前主体无权废弃该实例"),
+     ADD_SIGN_INVALID(2405, "bpm.add_sign_invalid", "加签/补签请求不合法"),
+@@ -87,8 +87,8 @@ public enum BpmErrorCode implements ErrorCode {
+     OPINION_FORM_COMPONENT_UNAVAILABLE(2417, "bpm.opinion_form_component_unavailable", "审批意见表单组件不可用"),
+ 
+     // ==================== I4 动态并行编排（242x） ====================
+-    DYNAMIC_BRANCH_EMPTY(2418, "bpm.dynamic_branch_empty", "动态并行来源集合为空且未配置受控放行策略"),
+-    DYNAMIC_BRANCH_LEADER_MISSING(2419, "bpm.dynamic_branch_leader_missing", "动态并行存在失效部门或负责人缺失，且未配置受控跳过策略"),
++    DYNAMIC_BRANCH_EMPTY(2418, "bpm.dynamic_branch_empty", "动态并行分支没有可用来源，且未配置兜底策略，请检查并行节点的来源配置"),
++    DYNAMIC_BRANCH_LEADER_MISSING(2419, "bpm.dynamic_branch_leader_missing", "动态并行分支的来源存在已停用部门或缺少负责人，且未配置跳过策略，请检查部门与负责人配置"),
+     DYNAMIC_BRANCH_LIMIT_EXCEEDED(2420, "bpm.dynamic_branch_limit_exceeded", "动态并行分支数超过安全上限"),
+     ;
+ 
+diff --git a/sw-framework/sw-common/src/main/resources/i18n/messages_en_US.properties b/sw-framework/sw-common/src/main/resources/i18n/messages_en_US.properties
+index 19f75eb..7abdd8a 100644
+--- a/sw-framework/sw-common/src/main/resources/i18n/messages_en_US.properties
++++ b/sw-framework/sw-common/src/main/resources/i18n/messages_en_US.properties
+@@ -49,7 +49,7 @@ error.form.field_edit_denied=You do not have permission to edit this field.
+ error.form.field_view_denied=You do not have permission to view this field.
+ error.form.invalid_column_name=One or more field identifiers are invalid. Please adjust them and try again.
+ error.form.duplicate_column=Field identifiers must be unique. Please adjust them and try again.
+-error.form.table_already_exists=The data table for this form already exists.
++error.form.table_already_exists=The data table for this form already exists. Please refresh and try again.
+ error.form.publish_failed=Publishing did not succeed. Please try again later, or contact an administrator if it persists.
+ error.form.field_type_unknown=This field uses an unsupported type. Please choose another type and try again.
+ error.form.field_type_disabled=This field type is not available yet. Please choose another type and try again.
+@@ -79,7 +79,7 @@ error.form.query_form_not_exist=The form does not exist or is not published.
+ error.form.query_filter_field_unknown=Filter field "{0}" is not part of this form.
+ error.form.query_filter_field_not_filterable=Field "{0}" (type {1}) cannot be filtered.
+ error.form.query_filter_op_type_mismatch=That filter does not match the type of field "{0}".
+-error.form.query_filter_op_not_supported=That filter is not supported yet.
++error.form.query_filter_op_not_supported=That filter is not supported yet. Please adjust the filter and try again.
+ error.form.delete_restrict_referenced=This record is referenced by another form and cannot be deleted.
+ error.form.delete_record_not_exist=The record does not exist or has already been deleted.
+ error.form.record_not_found=The record does not exist or has already been deleted.
+diff --git a/sw-framework/sw-common/src/main/resources/i18n/messages_zh_CN.properties b/sw-framework/sw-common/src/main/resources/i18n/messages_zh_CN.properties
+index 205098e..defde60 100644
+--- a/sw-framework/sw-common/src/main/resources/i18n/messages_zh_CN.properties
++++ b/sw-framework/sw-common/src/main/resources/i18n/messages_zh_CN.properties
+@@ -49,13 +49,13 @@ error.form.field_edit_denied=当前身份无该字段编辑权限
+ error.form.field_view_denied=当前身份无该字段查看权限
+ error.form.invalid_column_name=字段名不合法
+ error.form.duplicate_column=字段名重复
+-error.form.table_already_exists=动态宽表已存在
++error.form.table_already_exists=该表单的数据表已存在，请刷新后重试
+ error.form.publish_failed=表单发布失败
+-error.form.field_type_unknown=字段类型未知
+-error.form.field_type_disabled=字段类型暂不允许发布
+-error.form.field_attr_missing=字段缺少必要属性
++error.form.field_type_unknown=包含无法识别的字段类型，请调整后重试
++error.form.field_type_disabled=该字段类型暂未开放，请更换类型后重试
++error.form.field_attr_missing=字段缺少必要属性，请在设计器中补全后重新发布
+ error.form.field_nested_table=表格字段不能嵌套
+-error.form.definition_invalid=表单定义配置异常
++error.form.definition_invalid=表单定义配置异常，请检查后重试
+ error.form.formula_invalid=公式表达式非法
+ error.form.formula_cycle=公式存在循环依赖
+ error.form.formula_unknown_field=公式引用了未定义字段
+@@ -69,29 +69,29 @@ error.form.attachment_file_not_found=附件/图片文件不存在或不可见
+ error.form.ext_result_limit_exceeded=外部数据源结果超过行数上限
+ error.form.config_not_found=表单配置未找到
+ error.form.snapshot_not_found=表单版本快照不存在
+-error.form.submit_field_unknown=提交了未定义的字段
++error.form.submit_field_unknown=提交包含表单未定义的字段，请刷新页面后重试
+ error.form.submit_field_required=必填字段缺失
+ error.form.submit_field_type_mismatch=字段类型不匹配
+ error.form.submit_dict_invalid=字典值不在允许范围内
+ error.form.submit_failed=表单提交失败
+-error.form.submit_definition_invalid=表单定义配置异常
++error.form.submit_definition_invalid=表单定义配置异常，请检查后重试
+ error.form.query_form_not_exist=表单不存在或未发布
+ error.form.query_filter_field_unknown=过滤字段「{0}」不在表单定义中
+ error.form.query_filter_field_not_filterable=字段「{0}」（类型 {1}）不支持筛选
+-error.form.query_filter_op_type_mismatch=过滤操作符与字段「{0}」的类型不匹配
+-error.form.query_filter_op_not_supported=该过滤操作符 v1 暂不支持
++error.form.query_filter_op_type_mismatch=该筛选条件与字段「{0}」的类型不匹配
++error.form.query_filter_op_not_supported=暂不支持该筛选方式，请调整筛选条件后重试
+ error.form.delete_restrict_referenced=记录被其他表单引用，不能删除
+ error.form.delete_record_not_exist=记录不存在或已删除
+ error.form.record_not_found=记录不存在或已删除
+ error.form.version_conflict=数据版本冲突，请刷新后重试
+-error.bpm.graph_missing_start=图缺少开始节点
+-error.bpm.graph_multiple_start=图存在多个开始节点
+-error.bpm.graph_missing_end=图缺少结束节点
+-error.bpm.graph_multiple_end=图存在多个结束节点
++error.bpm.graph_missing_start=流程图缺少开始节点，请检查流程设计
++error.bpm.graph_multiple_start=流程图存在多个开始节点，请只保留一个开始节点
++error.bpm.graph_missing_end=流程图缺少结束节点，请检查流程设计
++error.bpm.graph_multiple_end=流程图存在多个结束节点，请只保留一个结束节点
+ error.bpm.graph_node_edge_cardinality=节点连线数量不符合规则，请检查该节点的入口与出口
+-error.bpm.graph_orphan_node=存在孤儿/不可达节点
+-error.bpm.graph_edge_target_not_found=边指向不存在的节点
+-error.bpm.graph_illegal_edge=非法边（自环或重复边）
++error.bpm.graph_orphan_node=存在未与流程连接的节点，请连接或删除该节点
++error.bpm.graph_edge_target_not_found=存在指向已不存在节点的连线，请调整连线后重试
++error.bpm.graph_illegal_edge=连线不合法：不能连接节点自身，也不能重复连线
+ error.bpm.graph_unknown_node_type=流程中存在无法识别的节点类型，请删除后重新添加
+ error.bpm.graph_form_not_found=绑定表单不存在
+ error.bpm.process_def_not_found=流程定义不存在
+@@ -104,13 +104,13 @@ error.bpm.process_def_published=流程定义已发布，不可修改
+ error.bpm.node_config_invalid=节点配置不合法
+ error.bpm.node_capability_missing=节点配置不完整，请在流程设计中补全后重试
+ error.bpm.node_registration_invalid=节点配置不完整，请在流程设计中补全后重试
+-error.bpm.approver_resolve_empty=审批人解析结果为空
++error.bpm.approver_resolve_empty=未能确定审批人，请检查该节点的审批人配置
+ error.bpm.approver_type_not_implemented=该审批人类型暂不可用，请更换审批人来源后重试
+ error.bpm.approver_config_missing=审批人配置缺失
+ error.bpm.approver_tenant_id_missing=流程发起信息不完整，无法确定审批人，请重新发起或联系管理员
+ error.bpm.participant_config_invalid=参与人配置不合法
+ error.bpm.participant_type_not_implemented=该参与人类型暂不可用，请更换参与人来源后重试
+-error.bpm.participant_resolve_empty=参与人解析结果为空
++error.bpm.participant_resolve_empty=未能确定参与人，请检查该节点的参与人配置
+ error.bpm.participant_adapter_not_found=参与人来源不可用，请重新选择参与人
+ error.bpm.approval_action_invalid=审批动作不合法
+ error.bpm.approval_already_handled=节点已被处理
+@@ -122,10 +122,10 @@ error.bpm.branch_config_invalid=分支配置不合法
+ error.bpm.branch_evaluation_failed=分支条件求值失败
+ error.bpm.node_delivery_failed=节点投递失败
+ error.bpm.instance_failed=流程实例已失败，不可继续审批
+-error.bpm.instance_initiator_invalid=流程发起人无效、已停用或不属于当前租户
++error.bpm.instance_initiator_invalid=流程发起人已不可用或不属于当前企业，请重新发起或联系管理员
+ error.bpm.action_not_allowed=当前状态不允许该动作
+ error.bpm.action_self_invalid=不能转办/委托/授权给本人
+-error.bpm.authorization_invalid=代理授权不合法（冲突、循环、失效或越租户）
++error.bpm.authorization_invalid=代理授权设置存在冲突、循环、已过期或超出范围，请调整后重新设置
+ error.bpm.withdraw_not_permitted=当前状态不可撤回
+ error.bpm.invalidate_not_permitted=当前主体无权废弃该实例
+ error.bpm.add_sign_invalid=加签/补签请求不合法
+@@ -142,8 +142,8 @@ error.bpm.node_function_timeout=节点函数执行超时
+ error.bpm.opinion_form_gone=意见表单不可用（未发布或版本缺失）
+ error.bpm.version_state_invalid=发布版本状态不允许该操作
+ error.bpm.opinion_form_component_unavailable=审批意见表单组件不可用
+-error.bpm.dynamic_branch_empty=动态并行来源集合为空且未配置受控放行策略
+-error.bpm.dynamic_branch_leader_missing=动态并行存在失效部门或负责人缺失，且未配置受控跳过策略
++error.bpm.dynamic_branch_empty=动态并行分支没有可用来源，且未配置兜底策略，请检查并行节点的来源配置
++error.bpm.dynamic_branch_leader_missing=动态并行分支的来源存在已停用部门或缺少负责人，且未配置跳过策略，请检查部门与负责人配置
+ error.bpm.dynamic_branch_limit_exceeded=动态并行分支数超过安全上限
+ error.openapi.app_not_found=开放应用不存在
+ error.openapi.app_disabled=开放应用已停用

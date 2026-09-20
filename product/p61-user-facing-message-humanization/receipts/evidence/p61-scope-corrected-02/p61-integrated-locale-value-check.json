@@ -1,0 +1,103 @@
+{
+  "check": "C2-V integrated locale 8-value verbatim comparison",
+  "date": "2026-09-20T00:15:32.850Z",
+  "integratedWorktree": {
+    "path": "E:\\code\\Smart-WorkFlow-Agent-Workspace\\Smart-WorkFlow-aPaaS-Web",
+    "identity": "Smart-WorkFlow-aPaaS-Web main tree (P53 latest mergeable, uncommitted set included)",
+    "head": "e882cb5eb3bcbfaab04037363417701154c5087d"
+  },
+  "expectedCommit": "d110ed8",
+  "comparisons": [
+    {
+      "key": "errDynamicTableExists",
+      "lang": "zh-CN",
+      "expected": "该表单的数据表已存在，请刷新后重试",
+      "actual": "该表单的数据表已存在，请刷新后重试",
+      "match": true,
+      "expectedOccurrences": 1,
+      "actualOccurrences": 1,
+      "missing": false,
+      "duplicate": false
+    },
+    {
+      "key": "errFieldTypeUnknown",
+      "lang": "zh-CN",
+      "expected": "包含无法识别的字段类型，请调整后重试",
+      "actual": "包含无法识别的字段类型，请调整后重试",
+      "match": true,
+      "expectedOccurrences": 1,
+      "actualOccurrences": 1,
+      "missing": false,
+      "duplicate": false
+    },
+    {
+      "key": "errOperatorTypeMismatch",
+      "lang": "zh-CN",
+      "expected": "筛选条件与字段类型不匹配",
+      "actual": "筛选条件与字段类型不匹配",
+      "match": true,
+      "expectedOccurrences": 1,
+      "actualOccurrences": 1,
+      "missing": false,
+      "duplicate": false
+    },
+    {
+      "key": "errOperatorUnsupported",
+      "lang": "zh-CN",
+      "expected": "暂不支持该筛选方式，请调整筛选条件后重试",
+      "actual": "暂不支持该筛选方式，请调整筛选条件后重试",
+      "match": true,
+      "expectedOccurrences": 1,
+      "actualOccurrences": 1,
+      "missing": false,
+      "duplicate": false
+    },
+    {
+      "key": "errDynamicTableExists",
+      "lang": "en-US",
+      "expected": "The data table for this form already exists. Please refresh and try again.",
+      "actual": "The data table for this form already exists. Please refresh and try again.",
+      "match": true,
+      "expectedOccurrences": 1,
+      "actualOccurrences": 1,
+      "missing": false,
+      "duplicate": false
+    },
+    {
+      "key": "errFieldTypeUnknown",
+      "lang": "en-US",
+      "expected": "This field uses an unsupported type. Please choose another type and try again.",
+      "actual": "This field uses an unsupported type. Please choose another type and try again.",
+      "match": true,
+      "expectedOccurrences": 1,
+      "actualOccurrences": 1,
+      "missing": false,
+      "duplicate": false
+    },
+    {
+      "key": "errOperatorTypeMismatch",
+      "lang": "en-US",
+      "expected": "The filter does not match the field type",
+      "actual": "The filter does not match the field type",
+      "match": true,
+      "expectedOccurrences": 1,
+      "actualOccurrences": 1,
+      "missing": false,
+      "duplicate": false
+    },
+    {
+      "key": "errOperatorUnsupported",
+      "lang": "en-US",
+      "expected": "That filter is not supported yet. Please adjust the filter and try again.",
+      "actual": "That filter is not supported yet. Please adjust the filter and try again.",
+      "match": true,
+      "expectedOccurrences": 1,
+      "actualOccurrences": 1,
+      "missing": false,
+      "duplicate": false
+    }
+  ],
+  "missingCount": 0,
+  "duplicateCount": 0,
+  "allMatch": true
+}

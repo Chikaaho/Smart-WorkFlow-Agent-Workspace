@@ -1,0 +1,32 @@
+# P61 R1 Web 文案键化 — 本轮工具与门禁原始输出
+# 采集时间: 2026-09-16 09:24:11
+# Web HEAD: 963df360ed18bc1c604652a13edb2a7ed0be8963
+# 工作目录: /e/code/Smart-WorkFlow-Agent-Workspace/Smart-WorkFlow-aPaaS-Web
+
+## 工具链（已入库，可复算）
+scripts/p61-copy-inventory.mjs   — 自动盘点 + 硬编码门禁（--check 非零退出）
+scripts/p61-unmapped.mjs         — 未入字典字面量清单
+scripts/p61-literal-frequency.mjs — 词频（建字典用）
+scripts/p61-gen-locales.mjs      — locale 单源生成 + 一致性校验（--check）
+scripts/p61-key-copy.mjs         — 展示位 codemod（不改业务值）
+scripts/p61-copy-dictionary*.json — 术语字典（3 批，253 条）
+
+## 大盘点口径
+探索基线（含 spec/mock）：229 文件 / 354 调用点
+本轮口径（排除 spec/mock/locales，精确到行）：
+P61 Web 文案盘点
+  未治理行: 1673（135 个文件）
+  已键化行: 6
+  排除文件: 142
+
+## 进度（本轮实测）
+起始 2622 行 → 本轮 1673 行；已键化 949 行，未治理唯一字面量 1250+
+
+## 门禁（本轮实测）
+typecheck=0  lint=0(0 problems)  test=0(1200 passed + 3 skipped, 133 文件)  build=0
+locale 单源一致性 --check: exit 0
+硬编码门禁 --check: exit 1（仍有未治理文案，尚不允许收口）
+
+## codemod 安全性（正向+反向）
+正向：仅改写展示位 —— 模板文本节点、label/placeholder/title/description 静态属性、消息调用实参、消息框字面量
+反向：测试 setup 统一注入 i18n 后 1200 测试零改动全通过，证明 zh-CN 下行为等价；typecheck 通过

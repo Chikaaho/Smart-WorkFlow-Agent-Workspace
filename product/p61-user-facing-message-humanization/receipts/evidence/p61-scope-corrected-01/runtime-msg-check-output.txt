@@ -1,0 +1,49 @@
+===== 0. 匿名 401（统一异常出口在位） =====
+  assert 匿名 401 状态: PASS
+  assert errorKey=common.unauthenticated: PASS
+  assert zh 文案: PASS
+  assert 匿名 401 零泄漏: PASS
+===== 1. 表单类（发布 + 查询过滤 op=IN → 1504） =====
+[1a] (zh-CN) POST /form/def → HTTP 200 code=0 errorKey=-
+  msg: success 
+  formId=2ee77fb5-26b4-4c4f-95c8-1dda13b59035
+[1b] (zh-CN) POST /form/def/2ee77fb5-26b4-4c4f-95c8-1dda13b59035/config → HTTP 200 code=0 errorKey=-
+  msg: success 
+[1c] (zh-CN) POST /form/def/2ee77fb5-26b4-4c4f-95c8-1dda13b59035/publish → HTTP 200 code=0 errorKey=-
+  msg: success 
+[1d] (zh-CN) POST /form/data/p61msgpygxl/query → HTTP 200 code=1504 errorKey=form.query_filter_op_not_supported
+  msg: 暂不支持该筛选方式，请调整筛选条件后重试 
+  assert 1504 数值码: PASS
+  assert 1504 errorKey: PASS
+  assert 1504 zh 新文案: PASS
+  assert 1504 zh 零泄漏: PASS
+[1d] (en-US) POST /form/data/p61msgpygxl/query → HTTP 200 code=1504 errorKey=form.query_filter_op_not_supported
+  msg: That filter is not supported yet. Please adjust the filter and try again. 
+  assert 1504 errorKey 不随语言: PASS
+  assert 1504 en 文案: PASS
+  assert 1504 en 零泄漏: PASS
+[1e] (zh-CN) POST /form/data/p61msgpygxl → HTTP 200 code=1400 errorKey=form.submit_field_unknown
+  msg: 提交包含表单未定义的字段，请刷新页面后重试 
+  assert 1400 数值码: PASS
+  assert 1400 errorKey: PASS
+  assert 1400 zh 新文案: PASS
+  assert 1400 zh 零泄漏: PASS
+===== 2. 流程类（发布空图 → 2000） =====
+[2a] (zh-CN) POST /workflow/defs → HTTP 200 code=0 errorKey=-
+  msg: success 
+  defId=2101377483866324994
+[2b] (zh-CN) PUT /workflow/defs/2101377483866324994/graph → HTTP 200 code=0 errorKey=-
+  msg: success 
+[2c] (zh-CN) POST /workflow/defs/2101377483866324994/publish → HTTP 200 code=2000 errorKey=bpm.graph_missing_start
+  msg: 流程图缺少开始节点，请检查流程设计 
+  assert 2000 数值码: PASS
+  assert 2000 errorKey: PASS
+  assert 2000 zh 新文案: PASS
+  assert 2000 zh 零泄漏: PASS
+[2c] (en-US) POST /workflow/defs/2101377483866324994/publish → HTTP 200 code=2000 errorKey=bpm.graph_missing_start
+  msg: The flow is missing a start node. 
+  assert 2000 errorKey 不随语言: PASS
+  assert 2000 en 文案: PASS
+  assert 2000 en 零泄漏: PASS
+===== 汇总 =====
+断言总数=22，通过=22，失败=0

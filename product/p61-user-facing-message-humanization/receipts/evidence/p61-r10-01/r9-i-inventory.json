@@ -1,0 +1,790 @@
+{
+  "generatedAt": "2026-09-16T14:17:11.659Z",
+  "manifest": "r7-f-snapshot-manifest.json",
+  "enums": {
+    "files": [
+      {
+        "file": "sw-biz/sw-biz-form/sw-biz-form-api/src/main/java/com/sw/ck/form/api/exception/FormErrorCode.java",
+        "count": 47,
+        "constants": [
+          {
+            "constName": "FORM_NOT_FOUND",
+            "code": 1000,
+            "errorKey": "form.not_found"
+          },
+          {
+            "constName": "FORM_KEY_DUPLICATE",
+            "code": 1001,
+            "errorKey": "form.key_duplicate"
+          },
+          {
+            "constName": "FORM_NAME_DUPLICATE",
+            "code": 1002,
+            "errorKey": "form.name_duplicate"
+          },
+          {
+            "constName": "FORM_ALREADY_PUBLISHED",
+            "code": 1100,
+            "errorKey": "form.already_published"
+          },
+          {
+            "constName": "FORM_ALREADY_DRAFT",
+            "code": 1101,
+            "errorKey": "form.already_draft"
+          },
+          {
+            "constName": "FORM_NOT_PUBLISHED",
+            "code": 1102,
+            "errorKey": "form.not_published"
+          },
+          {
+            "constName": "FORM_DISABLED",
+            "code": 1103,
+            "errorKey": "form.disabled"
+          },
+          {
+            "constName": "FORM_DELETE_RESTRICTED",
+            "code": 1104,
+            "errorKey": "form.delete_restricted"
+          },
+          {
+            "constName": "FIELD_EDIT_DENIED",
+            "code": 1105,
+            "errorKey": "form.field_edit_denied"
+          },
+          {
+            "constName": "FIELD_VIEW_DENIED",
+            "code": 1106,
+            "errorKey": "form.field_view_denied"
+          },
+          {
+            "constName": "INVALID_COLUMN_NAME",
+            "code": 1200,
+            "errorKey": "form.invalid_column_name"
+          },
+          {
+            "constName": "DUPLICATE_COLUMN",
+            "code": 1201,
+            "errorKey": "form.duplicate_column"
+          },
+          {
+            "constName": "TABLE_ALREADY_EXISTS",
+            "code": 1202,
+            "errorKey": "form.table_already_exists"
+          },
+          {
+            "constName": "PUBLISH_FAILED",
+            "code": 1203,
+            "errorKey": "form.publish_failed"
+          },
+          {
+            "constName": "FIELD_TYPE_UNKNOWN",
+            "code": 1204,
+            "errorKey": "form.field_type_unknown"
+          },
+          {
+            "constName": "FIELD_TYPE_DISABLED",
+            "code": 1205,
+            "errorKey": "form.field_type_disabled"
+          },
+          {
+            "constName": "FIELD_ATTR_MISSING",
+            "code": 1206,
+            "errorKey": "form.field_attr_missing"
+          },
+          {
+            "constName": "FIELD_NESTED_TABLE",
+            "code": 1207,
+            "errorKey": "form.field_nested_table"
+          },
+          {
+            "constName": "DEFINITION_INVALID",
+            "code": 1208,
+            "errorKey": "form.definition_invalid"
+          },
+          {
+            "constName": "FORMULA_INVALID",
+            "code": 1209,
+            "errorKey": "form.formula_invalid"
+          },
+          {
+            "constName": "FORMULA_CYCLE",
+            "code": 1210,
+            "errorKey": "form.formula_cycle"
+          },
+          {
+            "constName": "FORMULA_UNKNOWN_FIELD",
+            "code": 1211,
+            "errorKey": "form.formula_unknown_field"
+          },
+          {
+            "constName": "EXT_QUERY_NOT_FOUND",
+            "code": 1212,
+            "errorKey": "form.ext_query_not_found"
+          },
+          {
+            "constName": "EXT_QUERY_DISABLED",
+            "code": 1213,
+            "errorKey": "form.ext_query_disabled"
+          },
+          {
+            "constName": "EXT_OUTPUT_MISMATCH",
+            "code": 1214,
+            "errorKey": "form.ext_output_mismatch"
+          },
+          {
+            "constName": "EXT_OBJECT_NOT_FOUND",
+            "code": 1215,
+            "errorKey": "form.ext_object_not_found"
+          },
+          {
+            "constName": "LIST_CONFIG_INVALID",
+            "code": 1216,
+            "errorKey": "form.list_config_invalid"
+          },
+          {
+            "constName": "REFERENCE_OBJECT_NOT_FOUND",
+            "code": 1217,
+            "errorKey": "form.reference_object_not_found"
+          },
+          {
+            "constName": "ATTACHMENT_FILE_NOT_FOUND",
+            "code": 1218,
+            "errorKey": "form.attachment_file_not_found"
+          },
+          {
+            "constName": "EXT_RESULT_LIMIT_EXCEEDED",
+            "code": 1219,
+            "errorKey": "form.ext_result_limit_exceeded"
+          },
+          {
+            "constName": "CONFIG_NOT_FOUND",
+            "code": 1300,
+            "errorKey": "form.config_not_found"
+          },
+          {
+            "constName": "SNAPSHOT_NOT_FOUND",
+            "code": 1301,
+            "errorKey": "form.snapshot_not_found"
+          },
+          {
+            "constName": "SUBMIT_FIELD_UNKNOWN",
+            "code": 1400,
+            "errorKey": "form.submit_field_unknown"
+          },
+          {
+            "constName": "SUBMIT_FIELD_REQUIRED",
+            "code": 1401,
+            "errorKey": "form.submit_field_required"
+          },
+          {
+            "constName": "SUBMIT_FIELD_TYPE_MISMATCH",
+            "code": 1402,
+            "errorKey": "form.submit_field_type_mismatch"
+          },
+          {
+            "constName": "SUBMIT_DICT_INVALID",
+            "code": 1403,
+            "errorKey": "form.submit_dict_invalid"
+          },
+          {
+            "constName": "SUBMIT_FAILED",
+            "code": 1499,
+            "errorKey": "form.submit_failed"
+          },
+          {
+            "constName": "SUBMIT_DEFINITION_INVALID",
+            "code": 1404,
+            "errorKey": "form.submit_definition_invalid"
+          },
+          {
+            "constName": "QUERY_FORM_NOT_EXIST",
+            "code": 1500,
+            "errorKey": "form.query_form_not_exist"
+          },
+          {
+            "constName": "QUERY_FILTER_FIELD_UNKNOWN",
+            "code": 1501,
+            "errorKey": "form.query_filter_field_unknown"
+          },
+          {
+            "constName": "QUERY_FILTER_FIELD_NOT_FILTERABLE",
+            "code": 1502,
+            "errorKey": "form.query_filter_field_not_filterable"
+          },
+          {
+            "constName": "QUERY_FILTER_OP_TYPE_MISMATCH",
+            "code": 1503,
+            "errorKey": "form.query_filter_op_type_mismatch"
+          },
+          {
+            "constName": "QUERY_FILTER_OP_NOT_SUPPORTED",
+            "code": 1504,
+            "errorKey": "form.query_filter_op_not_supported"
+          },
+          {
+            "constName": "DELETE_RESTRICT_REFERENCED",
+            "code": 1505,
+            "errorKey": "form.delete_restrict_referenced"
+          },
+          {
+            "constName": "DELETE_RECORD_NOT_EXIST",
+            "code": 1506,
+            "errorKey": "form.delete_record_not_exist"
+          },
+          {
+            "constName": "RECORD_NOT_FOUND",
+            "code": 1507,
+            "errorKey": "form.record_not_found"
+          },
+          {
+            "constName": "VERSION_CONFLICT",
+            "code": 1508,
+            "errorKey": "form.version_conflict"
+          }
+        ]
+      },
+      {
+        "file": "sw-biz/sw-biz-openapi/sw-biz-openapi-api/src/main/java/com/sw/ck/openapi/api/exception/OpenApiErrorCode.java",
+        "count": 10,
+        "constants": [
+          {
+            "constName": "APP_NOT_FOUND",
+            "code": 3000,
+            "errorKey": "openapi.app_not_found"
+          },
+          {
+            "constName": "APP_DISABLED",
+            "code": 3001,
+            "errorKey": "openapi.app_disabled"
+          },
+          {
+            "constName": "SIGN_INVALID",
+            "code": 3002,
+            "errorKey": "openapi.signature_invalid"
+          },
+          {
+            "constName": "TIMESTAMP_EXPIRED",
+            "code": 3003,
+            "errorKey": "openapi.timestamp_out_of_window"
+          },
+          {
+            "constName": "NONCE_REUSED",
+            "code": 3004,
+            "errorKey": "openapi.nonce_reused"
+          },
+          {
+            "constName": "SCOPE_DENIED",
+            "code": 3005,
+            "errorKey": "openapi.scope_denied"
+          },
+          {
+            "constName": "IDEMPOTENCY_CONFLICT",
+            "code": 3006,
+            "errorKey": "openapi.idempotency_conflict"
+          },
+          {
+            "constName": "PROCESS_NOT_VISIBLE",
+            "code": 3007,
+            "errorKey": "openapi.process_not_visible"
+          },
+          {
+            "constName": "CALLBACK_FAILED",
+            "code": 3008,
+            "errorKey": "openapi.callback_failed"
+          },
+          {
+            "constName": "TENANT_INVALID",
+            "code": 3009,
+            "errorKey": "openapi.tenant_invalid"
+          }
+        ]
+      },
+      {
+        "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/security/AuthErrorCode.java",
+        "count": 4,
+        "constants": [
+          {
+            "constName": "CAPTCHA_ERROR",
+            "code": 2101,
+            "errorKey": "auth.captcha_mismatch"
+          },
+          {
+            "constName": "CAPTCHA_EXPIRED",
+            "code": 2102,
+            "errorKey": "auth.captcha_expired"
+          },
+          {
+            "constName": "CLIENT_TIME_ABNORMAL",
+            "code": 2103,
+            "errorKey": "auth.client_time_abnormal"
+          },
+          {
+            "constName": "PASSWORD_ERROR",
+            "code": 2104,
+            "errorKey": "auth.credential_invalid"
+          }
+        ]
+      },
+      {
+        "file": "sw-biz/sw-bpm/sw-bpm-api/src/main/java/com/sw/ck/bpm/api/exception/BpmErrorCode.java",
+        "count": 61,
+        "constants": [
+          {
+            "constName": "GRAPH_MISSING_START",
+            "code": 2000,
+            "errorKey": "bpm.graph_missing_start"
+          },
+          {
+            "constName": "GRAPH_MULTIPLE_START",
+            "code": 2001,
+            "errorKey": "bpm.graph_multiple_start"
+          },
+          {
+            "constName": "GRAPH_MISSING_END",
+            "code": 2002,
+            "errorKey": "bpm.graph_missing_end"
+          },
+          {
+            "constName": "GRAPH_MULTIPLE_END",
+            "code": 2003,
+            "errorKey": "bpm.graph_multiple_end"
+          },
+          {
+            "constName": "GRAPH_NODE_EDGE_CARDINALITY",
+            "code": 2004,
+            "errorKey": "bpm.graph_node_edge_cardinality"
+          },
+          {
+            "constName": "GRAPH_ORPHAN_NODE",
+            "code": 2005,
+            "errorKey": "bpm.graph_orphan_node"
+          },
+          {
+            "constName": "GRAPH_EDGE_TARGET_NOT_FOUND",
+            "code": 2006,
+            "errorKey": "bpm.graph_edge_target_not_found"
+          },
+          {
+            "constName": "GRAPH_ILLEGAL_EDGE",
+            "code": 2007,
+            "errorKey": "bpm.graph_illegal_edge"
+          },
+          {
+            "constName": "GRAPH_UNKNOWN_NODE_TYPE",
+            "code": 2008,
+            "errorKey": "bpm.graph_unknown_node_type"
+          },
+          {
+            "constName": "GRAPH_FORM_NOT_FOUND",
+            "code": 2009,
+            "errorKey": "bpm.graph_form_not_found"
+          },
+          {
+            "constName": "PROCESS_DEF_NOT_FOUND",
+            "code": 2010,
+            "errorKey": "bpm.process_def_not_found"
+          },
+          {
+            "constName": "FORM_NOT_PUBLISHED",
+            "code": 2100,
+            "errorKey": "bpm.bound_form_not_published"
+          },
+          {
+            "constName": "PROCESS_KEY_FROZEN",
+            "code": 2101,
+            "errorKey": "bpm.process_key_frozen"
+          },
+          {
+            "constName": "TRANSLATION_FAILED",
+            "code": 2102,
+            "errorKey": "bpm.translation_failed"
+          },
+          {
+            "constName": "DEPLOYMENT_FAILED",
+            "code": 2103,
+            "errorKey": "bpm.deployment_failed"
+          },
+          {
+            "constName": "PROCESS_NOT_PUBLISHED",
+            "code": 2104,
+            "errorKey": "bpm.process_not_published"
+          },
+          {
+            "constName": "PROCESS_DEF_PUBLISHED",
+            "code": 2105,
+            "errorKey": "bpm.process_def_published"
+          },
+          {
+            "constName": "NODE_CONFIG_INVALID",
+            "code": 2106,
+            "errorKey": "bpm.node_config_invalid"
+          },
+          {
+            "constName": "NODE_CAPABILITY_MISSING",
+            "code": 2107,
+            "errorKey": "bpm.node_capability_missing"
+          },
+          {
+            "constName": "NODE_REGISTRATION_INVALID",
+            "code": 2108,
+            "errorKey": "bpm.node_registration_invalid"
+          },
+          {
+            "constName": "APPROVER_RESOLVE_EMPTY",
+            "code": 2200,
+            "errorKey": "bpm.approver_resolve_empty"
+          },
+          {
+            "constName": "APPROVER_TYPE_NOT_IMPLEMENTED",
+            "code": 2201,
+            "errorKey": "bpm.approver_type_not_implemented"
+          },
+          {
+            "constName": "APPROVER_CONFIG_MISSING",
+            "code": 2202,
+            "errorKey": "bpm.approver_config_missing"
+          },
+          {
+            "constName": "APPROVER_TENANT_ID_MISSING",
+            "code": 2203,
+            "errorKey": "bpm.approver_tenant_id_missing"
+          },
+          {
+            "constName": "PARTICIPANT_CONFIG_INVALID",
+            "code": 2300,
+            "errorKey": "bpm.participant_config_invalid"
+          },
+          {
+            "constName": "PARTICIPANT_TYPE_NOT_IMPLEMENTED",
+            "code": 2301,
+            "errorKey": "bpm.participant_type_not_implemented"
+          },
+          {
+            "constName": "PARTICIPANT_RESOLVE_EMPTY",
+            "code": 2302,
+            "errorKey": "bpm.participant_resolve_empty"
+          },
+          {
+            "constName": "PARTICIPANT_ADAPTER_NOT_FOUND",
+            "code": 2303,
+            "errorKey": "bpm.participant_adapter_not_found"
+          },
+          {
+            "constName": "APPROVAL_ACTION_INVALID",
+            "code": 2304,
+            "errorKey": "bpm.approval_action_invalid"
+          },
+          {
+            "constName": "APPROVAL_ALREADY_HANDLED",
+            "code": 2305,
+            "errorKey": "bpm.approval_already_handled"
+          },
+          {
+            "constName": "APPROVAL_RETURN_TARGET_INVALID",
+            "code": 2306,
+            "errorKey": "bpm.approval_return_target_invalid"
+          },
+          {
+            "constName": "APPROVAL_OPINION_INVALID",
+            "code": 2307,
+            "errorKey": "bpm.approval_opinion_invalid"
+          },
+          {
+            "constName": "APPROVAL_OPINION_REQUIRED",
+            "code": 2308,
+            "errorKey": "bpm.approval_opinion_required"
+          },
+          {
+            "constName": "COUNTER_CONFIG_INVALID",
+            "code": 2309,
+            "errorKey": "bpm.counter_config_invalid"
+          },
+          {
+            "constName": "BRANCH_CONFIG_INVALID",
+            "code": 2310,
+            "errorKey": "bpm.branch_config_invalid"
+          },
+          {
+            "constName": "BRANCH_EVALUATION_FAILED",
+            "code": 2311,
+            "errorKey": "bpm.branch_evaluation_failed"
+          },
+          {
+            "constName": "NODE_DELIVERY_FAILED",
+            "code": 2312,
+            "errorKey": "bpm.node_delivery_failed"
+          },
+          {
+            "constName": "INSTANCE_FAILED",
+            "code": 2313,
+            "errorKey": "bpm.instance_failed"
+          },
+          {
+            "constName": "INSTANCE_INITIATOR_INVALID",
+            "code": 2314,
+            "errorKey": "bpm.instance_initiator_invalid"
+          },
+          {
+            "constName": "ACTION_NOT_ALLOWED",
+            "code": 2400,
+            "errorKey": "bpm.action_not_allowed"
+          },
+          {
+            "constName": "ACTION_SELF_INVALID",
+            "code": 2401,
+            "errorKey": "bpm.action_self_invalid"
+          },
+          {
+            "constName": "AUTHORIZATION_INVALID",
+            "code": 2402,
+            "errorKey": "bpm.authorization_invalid"
+          },
+          {
+            "constName": "WITHDRAW_NOT_PERMITTED",
+            "code": 2403,
+            "errorKey": "bpm.withdraw_not_permitted"
+          },
+          {
+            "constName": "INVALIDATE_NOT_PERMITTED",
+            "code": 2404,
+            "errorKey": "bpm.invalidate_not_permitted"
+          },
+          {
+            "constName": "ADD_SIGN_INVALID",
+            "code": 2405,
+            "errorKey": "bpm.add_sign_invalid"
+          },
+          {
+            "constName": "SIGN_RECORD_NOT_FOUND",
+            "code": 2406,
+            "errorKey": "bpm.sign_record_not_found"
+          },
+          {
+            "constName": "DELEGATE_RELATION_INVALID",
+            "code": 2407,
+            "errorKey": "bpm.delegate_relation_invalid"
+          },
+          {
+            "constName": "COMMUNICATION_INVALID",
+            "code": 2408,
+            "errorKey": "bpm.communication_invalid"
+          },
+          {
+            "constName": "CONSENSUS_VETOED",
+            "code": 2409,
+            "errorKey": "bpm.consensus_vetoed"
+          },
+          {
+            "constName": "DEADLINE_NOT_FOUND",
+            "code": 2410,
+            "errorKey": "bpm.deadline_not_found"
+          },
+          {
+            "constName": "AUTO_ACTION_INVALID",
+            "code": 2411,
+            "errorKey": "bpm.auto_action_invalid"
+          },
+          {
+            "constName": "NODE_FUNCTION_NOT_FOUND",
+            "code": 2412,
+            "errorKey": "bpm.node_function_not_found"
+          },
+          {
+            "constName": "NODE_FUNCTION_INVALID_OUTPUT",
+            "code": 2413,
+            "errorKey": "bpm.node_function_invalid_output"
+          },
+          {
+            "constName": "NODE_FUNCTION_FAILED",
+            "code": 2414,
+            "errorKey": "bpm.node_function_failed"
+          },
+          {
+            "constName": "NODE_FUNCTION_TIMEOUT",
+            "code": 2415,
+            "errorKey": "bpm.node_function_timeout"
+          },
+          {
+            "constName": "OPINION_FORM_GONE",
+            "code": 2415,
+            "errorKey": "bpm.opinion_form_gone"
+          },
+          {
+            "constName": "VERSION_STATE_INVALID",
+            "code": 2416,
+            "errorKey": "bpm.version_state_invalid"
+          },
+          {
+            "constName": "OPINION_FORM_COMPONENT_UNAVAILABLE",
+            "code": 2417,
+            "errorKey": "bpm.opinion_form_component_unavailable"
+          },
+          {
+            "constName": "DYNAMIC_BRANCH_EMPTY",
+            "code": 2418,
+            "errorKey": "bpm.dynamic_branch_empty"
+          },
+          {
+            "constName": "DYNAMIC_BRANCH_LEADER_MISSING",
+            "code": 2419,
+            "errorKey": "bpm.dynamic_branch_leader_missing"
+          },
+          {
+            "constName": "DYNAMIC_BRANCH_LIMIT_EXCEEDED",
+            "code": 2420,
+            "errorKey": "bpm.dynamic_branch_limit_exceeded"
+          }
+        ]
+      },
+      {
+        "file": "sw-framework/sw-common/src/main/java/com/sw/ck/common/exception/CommonErrorCode.java",
+        "count": 5,
+        "constants": [
+          {
+            "constName": "SYSTEM_ERROR",
+            "code": 500,
+            "errorKey": "common.system_error"
+          },
+          {
+            "constName": "PARAM_ERROR",
+            "code": 400,
+            "errorKey": "common.param_error"
+          },
+          {
+            "constName": "UNAUTHORIZED",
+            "code": 401,
+            "errorKey": "common.unauthenticated"
+          },
+          {
+            "constName": "FORBIDDEN",
+            "code": 403,
+            "errorKey": "common.forbidden"
+          },
+          {
+            "constName": "NOT_FOUND",
+            "code": 404,
+            "errorKey": "common.not_found"
+          }
+        ]
+      },
+      {
+        "file": "sw-framework/sw-common/src/main/java/com/sw/ck/common/exception/ErrorCode.java",
+        "count": 0,
+        "constants": []
+      }
+    ],
+    "totalConstants": 127,
+    "baseline": 127,
+    "baselineEnums": 5,
+    "delta": 0,
+    "baselineFiles": 5,
+    "note": "第 6 个 *ErrorCode.java 命中为 ErrorCode 接口（0 常量）；实际 5 枚举 127 常量与基线一致，delta=0"
+  },
+  "unifiedExceptionExits": {
+    "count": 10,
+    "baseline": 9,
+    "exits": [
+      "BaseException.class",
+      "AuthorizationDeniedException.class",
+      "org.springframework.http.converter.HttpMessageNotReadableException.class",
+      "org.springframework.web.multipart.MaxUploadSizeExceededException.class",
+      "org.springframework.web.method.annotation.MethodArgumentTypeMismatchException.class",
+      "java.lang.IllegalArgumentException.class",
+      "org.springframework.web.bind.MethodArgumentNotValidException.class",
+      "org.springframework.web.bind.MissingServletRequestParameterException.class",
+      "org.springframework.web.servlet.resource.NoResourceFoundException.class",
+      "Exception.class"
+    ],
+    "note": "基线 9 出口 + P61 R4a 探针新增 handleMissingParam（缺参 400 受控）= 10"
+  },
+  "securityExits": {
+    "count": 4,
+    "baseline": 4,
+    "detail": [
+      {
+        "file": "sw-framework/sw-security/src/main/java/com/sw/ck/security/handler/RestAuthenticationEntryPoint.java",
+        "failSites": 1
+      },
+      {
+        "file": "sw-framework/sw-security/src/main/java/com/sw/ck/security/handler/RestAccessDeniedHandler.java",
+        "failSites": 1
+      },
+      {
+        "file": "sw-framework/sw-security/src/main/java/com/sw/ck/security/filter/JwtAuthenticationFilter.java",
+        "failSites": 1
+      },
+      {
+        "file": "sw-framework/sw-security/src/main/java/com/sw/ck/security/filter/DebugAuthenticationFilter.java",
+        "failSites": 1
+      }
+    ]
+  },
+  "messageCallSites": {
+    "throwSites": 696,
+    "rFailSites": 63,
+    "localizedCallSites": 19,
+    "total": 778,
+    "baseline": 354
+  },
+  "cjkFiles": {
+    "total": 788,
+    "baseline": 229,
+    "excluded": [
+      {
+        "file": "sw-basic/sw-basic-job/sw-basic-job-biz/src/main/java/com/sw/ck/job/scheduler/JobStartupRunner.java",
+        "excluded": true,
+        "reason": "运行器 log.* 运维诊断层（R8b 已核查）"
+      },
+      {
+        "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/runner/BpmDeployRunner.java",
+        "excluded": true,
+        "reason": "运行器 log.* 运维诊断层（R8b 已核查）"
+      }
+    ],
+    "active": 786
+  },
+  "catalog": {
+    "zhKeys": 154,
+    "enKeys": 154,
+    "zhOnly": [],
+    "enOnly": [],
+    "parameterizedKeys": [
+      "error.form.query_filter_field_unknown",
+      "error.form.query_filter_field_not_filterable",
+      "error.form.query_filter_op_type_mismatch"
+    ]
+  },
+  "perModule": {
+    "sw-basic/sw-basic-agent": 82,
+    "sw-basic/sw-basic-iot": 30,
+    "sw-basic/sw-basic-job": 10,
+    "sw-basic/sw-basic-notify": 65,
+    "sw-basic/sw-basic-storage": 5,
+    "sw-biz/sw-biz-form": 238,
+    "sw-biz/sw-biz-openapi": 13,
+    "sw-biz/sw-biz-system": 86,
+    "sw-biz/sw-bpm": 228,
+    "sw-bootstrap/src": 1,
+    "sw-framework/sw-common": 13,
+    "sw-framework/sw-security": 7
+  },
+  "webCopy": {
+    "baseline": {
+      "filesWithHardcodedZh": 229,
+      "unkeyedCallSites": 354,
+      "source": "stage-e E10 未完成基线"
+    },
+    "current": {
+      "filesWithHardcodedZh": 0,
+      "unkeyedCallSites": 0,
+      "excludedFiles": 144,
+      "registeredNonCopyLiterals": 9
+    },
+    "tool": "Smart-WorkFlow-aPaaS-Web/scripts/p61-copy-inventory.mjs（--check 门禁同源）"
+  },
+  "serverMessages": {
+    "methodology": "throw new BaseException + R.fail + LocalizedMessages.text 调用点合计",
+    "total": 778
+  }
+}

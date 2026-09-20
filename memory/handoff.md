@@ -1,27 +1,30 @@
 # 功能交接摘要
 
-## 1. 功能名称
-P60 CH-aPaaS v0.1.0 OA 全功能收口（`v0.1.0-oa-completion`）。
+## 1. 当前任务
 
-## 2. 最终状态
-**COMPLETED（规划已确认，2026-09-15）**。成熟OA `0.1.0`整体14/14，I1—I6均已确认；功能数44、清单✅46/🟦22/⬜22、ADV64与其他开放P编号不变。
+P53 全局 UI 与组件布局优化继续作为 P0/XL 主任务，状态 `VERIFYING`，唯一入口为提示07；P61用户提示语治理已`COMPLETED（规划已确认，2026-09-20）`并核销。
 
-## 3. 本轮结论
-P60终态最终复核01已通过；Server/Web `0.1.0`发布与V93锁定，Workspace不参与版本身份。当前切换到P61提示语治理现状探索。
+## 2. Owner 排序
 
-## 4. 已锁定、禁止重验
-I1—I4历史基线继续锁定；I5 #1—#10、#12、#13、#15—#17与#14本地边界锁定，仅#11/G8真实Provider成功链按Owner裁决延期免验。I6 L1—L37、R3/R4/R5/R7锁定；无新增反证、实现变化或快照失效依据不得重验。R8五渠道不纳入通过基线。
+P53 与 P61 并行推进：P53 负责颜色、布局、组件与响应式；P61 只负责用户提示语与必要安全净化。共享文件必须隔离实施并在基于 P53 最新结果集成后复核，P61 不承担 P53 视觉验收。
 
-## 5. 当前唯一规划入口
-`search_task/p61-user-facing-message-humanization-current-seams.md`。
+## 3. 当前执行入口
 
-## 6. 下一轮固定范围
-P61只读盘点Server/Web所有用户可达错误码、接口消息、页面提示、状态文案与恢复指引，形成稳定问题ID、触发路径、治理分类和实施接缝；不得只查“挑战”等关键词，不改代码或Git。
+- P53：`product/p53-global-ui-component-layout/receipts/planning-execution-prompt-p53-global-ui-component-layout-07.md`。
+- P61：三份方向均归档`product/p61-user-facing-message-humanization/passed/`，无待执行入口。
 
-P61已进入现状探索，不并入P60/0.1.0计数；回传=`search_fallback/p61-user-facing-message-humanization-current-seams.md`。
+## 4. P61 状态
+
+P61最终确认为`COMPLETED（规划已确认，2026-09-20）`并核销；独立提交Server `742adb8`、Web `d110ed8`先保留，暂不合并。P53结束后统一合并，必须同时保留P53结构/新增键与P61八值8/8；P53视觉不因P61完成而获得通过结论。
+
+## 5. 锁定基线
+
+P60/0.1.0 已 `COMPLETED（规划已确认）`，发布与迁移终点V93锁定。功能数44、清单✅46/🟦22/⬜22、ADV64不变。多宿主Supervisor真实ZCode闭环仍开放；I6五外部通知渠道保持Owner延期/未验证。
+
+## 6. 独立状态卫生任务
+
+P61终态投影已通过规划复核，不重开。较晚的陈旧引用审计确认12项当前错误，规划将J1纳入后共13项；J2裁决为双仓README当前口径统一到0.1.0。独立L级方向：`product/current-state-reference-hygiene/ready/direction-current-state-reference-hygiene.md`，必须由独立执行任务、独立回执收口，不追加到P53或P61；只做定向文本收敛，合法历史保留。
 
 ## 7. 新机器启动提示词
-本会话角色声明为规划或执行。P60已完成；读取`search_task/p61-user-facing-message-humanization-current-seams.md`，只读探索全系统用户提示语并回传指定`search_fallback`，不做实现。
 
-## 8. Git 交接基线
-0.1.0发布事实：Server `origin/main=c15428f0002f6bb0ceeff05c7cbcf842bd3d3148`、Web `origin/main=963df360ed18bc1c604652a13edb2a7ed0be8963`；两仓annotated tag与公开Release均为`0.1.0`，对应main Actions成功；迁移终点V93。I6本地候选（Server `e941d74`、Web `0a746e3`）与I5历史远端基线（Workspace `origin/develop-sw=49cca1f8…`等）只作历史阶段证据。发布已锁定，不得重复发布；Workspace不参与0.1.0版本身份。
+主功能下一动作：P53现有执行会话继续提示07并提交其下一份合法完成回执；P61不再是活动功能，统一合并延后到P53结束。状态卫生任务另开独立执行入口与独立完成回执，不得发送给当前P53任务，也不得并入P53/P61提交或验收。

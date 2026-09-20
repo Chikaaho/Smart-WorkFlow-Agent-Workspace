@@ -1,0 +1,16 @@
+# P61 Stage B — 后端工程门禁原始输出
+# 采集时间: 2026-09-15 22:08:06
+# Server HEAD: c15428f0002f6bb0ceeff05c7cbcf842bd3d3148
+
+## compile 门
+$ MAVEN_OPTS="-Xmx2g" mvn -q compile
+exit=0
+
+## 全量测试门
+$ MAVEN_OPTS="-Xmx2g" mvn test
+MVN_EXIT=0  [INFO] BUILD SUCCESS
+TESTS=1394 ERRORS=0 SKIPPED=0 FAILURES=0
+（口径：仅聚合本次运行写入的报告；2 份 2026-09-13 陈旧报告仍排除）
+
+## Stage B 新增/改造测试
+P61DiagnosticBoundaryTest 8 / FailureCategoryContractTest 5 / EventRefTest 9 / ErrorCodeCatalogTest 8

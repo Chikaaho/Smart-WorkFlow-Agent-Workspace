@@ -1,0 +1,15 @@
+diff --git a/src/foundation/request/error-code-map.spec.ts b/src/foundation/request/error-code-map.spec.ts
+index e7e69da..6a84010 100644
+--- a/src/foundation/request/error-code-map.spec.ts
++++ b/src/foundation/request/error-code-map.spec.ts
+@@ -15,8 +15,8 @@ describe('foundation/request/error-code-map', () => {
+       expect(i18n.global.t(ERROR_CODE_KEYS[1500])).toMatch(/表单/)
+       expect(i18n.global.t(ERROR_CODE_KEYS[1501])).toMatch(/字段/)
+       expect(i18n.global.t(ERROR_CODE_KEYS[1502])).toMatch(/筛选/)
+-      expect(i18n.global.t(ERROR_CODE_KEYS[1503])).toMatch(/操作符/)
+-      expect(i18n.global.t(ERROR_CODE_KEYS[1504])).toMatch(/操作符/)
++      expect(i18n.global.t(ERROR_CODE_KEYS[1503])).toMatch(/筛选条件/)
++      expect(i18n.global.t(ERROR_CODE_KEYS[1504])).toMatch(/筛选/)
+       expect(i18n.global.t(ERROR_CODE_KEYS[1505])).toMatch(/引用/)
+     })
+ 

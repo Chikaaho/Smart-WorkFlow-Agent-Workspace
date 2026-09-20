@@ -1,0 +1,42 @@
+R8b 分类结论（对 365 处迁移 DML 中文逐类判定）
+采集时间(UTC): 2026-09-16T08:36:24Z
+
+分类口径与处置：
+A. 菜单与权限标题（sys_menu 种子；侧边栏/面包屑/角色授权树可见）
+   处置：已治理。Web 侧按节点 name 映射语义键（src/layouts/menu-title.ts，119 条映射，含运行时菜单树差集补齐），
+   服务端 title 作回退——运行期自建菜单没有键，仍显示作者填写的标题。
+   验证：可见浏览器 en-US 下 /workspace、/role、/job/list、/inbox 无文案级中文残留（成对证据见 p61-r7-01）。
+B. 字典标签（V2__init_data.sql 等，如 性别/用户状态/正常/停用）
+   处置：运行时数据，权威在字典管理界面（管理员可维护），不进静态文案目录；展示侧由数据驱动。
+C. 租户名（V85__i5_seed_default_tenant.sql：默认租户）
+   处置：运行时数据，权威在租户管理界面。
+D. dev 专用夹具（db/migration/devseed/**）与测试资源（*/src/test/resources/**）
+   处置：非生产面，按路径即可判定；不进入生产迁移链（devseed 仅 dev profile 装载）。
+E. 迁移头部注释中文（1645 行）
+   处置：非用户文本，按语法位置（-- 注释）判定；扫描器已逐行剔除。
+
+--- 命中按文件分布（前 20）---
+     39 sw-bootstrap/src/main/resources/db/migration/postgresql/V2__init_data.sql
+     39 sw-bootstrap/src/main/resources/db/migration/h2/V2__init_data.sql
+     23 sw-biz/sw-biz-system/sw-biz-system-biz/src/test/resources/db/data-h2.sql
+     11 sw-bootstrap/src/main/resources/db/migration/postgresql/V73__i3_bpm_action_permissions.sql
+     11 sw-bootstrap/src/main/resources/db/migration/postgresql/V31__admin_role_governance.sql
+     11 sw-bootstrap/src/main/resources/db/migration/h2/V73__i3_bpm_action_permissions.sql
+     11 sw-bootstrap/src/main/resources/db/migration/h2/V31__admin_role_governance.sql
+     11 sw-biz/sw-bpm/sw-bpm-process/src/main/resources/db/migration/bpm/postgresql/V82__i4_ops_menus.sql
+     11 sw-biz/sw-bpm/sw-bpm-process/src/main/resources/db/migration/bpm/h2/V82__i4_ops_menus.sql
+      8 sw-bootstrap/src/main/resources/db/migration/postgresql/V6__m_seam_menu_seed.sql
+      8 sw-bootstrap/src/main/resources/db/migration/h2/V6__m_seam_menu_seed.sql
+      8 sw-bootstrap/src/main/resources/db/migration/devseed/h2/V902__i5_g2_g6_fixtures.sql
+      8 sw-bootstrap/src/main/resources/db/migration/devseed/h2/V901__i5_g2_g4_negative_fixtures.sql
+      7 sw-bootstrap/src/main/resources/db/migration/postgresql/V61__p21_iot_admin_menus.sql
+      7 sw-bootstrap/src/main/resources/db/migration/h2/V61__p21_iot_admin_menus.sql
+      6 sw-bootstrap/src/main/resources/db/migration/postgresql/V90__i6_notify_menus.sql
+      6 sw-bootstrap/src/main/resources/db/migration/postgresql/V67__i1_org_permission_foundation.sql
+      6 sw-bootstrap/src/main/resources/db/migration/postgresql/V58__v002_oa_workspace_and_menus.sql
+      6 sw-bootstrap/src/main/resources/db/migration/postgresql/V47__p52_workbench_operation_perms.sql
+      6 sw-bootstrap/src/main/resources/db/migration/postgresql/V45__system_crud_button_perms.sql
+
+--- 命中总数 ---
+含中文的注释行: 1645
+DML/字符串中文命中: 365

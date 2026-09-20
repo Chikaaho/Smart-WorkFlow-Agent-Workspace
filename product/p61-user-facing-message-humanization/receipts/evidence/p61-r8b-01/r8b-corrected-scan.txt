@@ -1,0 +1,26 @@
+R8b 更正后扫描（正确遍历 .sql；此前误用只收 .ts/.vue 的遍历器，结论为空集）
+采集时间(UTC): 2026-09-16T06:35:37Z
+命令: node .p61-tmp/r8b-scan2.mjs
+
+（完整命中清单见 r8b-full-scan.txt）
+
+     39 sw-bootstrap/src/main/resources/db/migration/postgresql/V2__init_data.sql
+     39 sw-bootstrap/src/main/resources/db/migration/h2/V2__init_data.sql
+     23 sw-biz/sw-biz-system/sw-biz-system-biz/src/test/resources/db/data-h2.sql
+     11 sw-bootstrap/src/main/resources/db/migration/postgresql/V73__i3_bpm_action_permissions.sql
+     11 sw-bootstrap/src/main/resources/db/migration/postgresql/V31__admin_role_governance.sql
+     11 sw-bootstrap/src/main/resources/db/migration/h2/V73__i3_bpm_action_permissions.sql
+     11 sw-bootstrap/src/main/resources/db/migration/h2/V31__admin_role_governance.sql
+     11 sw-biz/sw-bpm/sw-bpm-process/src/main/resources/db/migration/bpm/postgresql/V82__i4_ops_menus.sql
+     11 sw-biz/sw-bpm/sw-bpm-process/src/main/resources/db/migration/bpm/h2/V82__i4_ops_menus.sql
+      8 sw-bootstrap/src/main/resources/db/migration/postgresql/V6__m_seam_menu_seed.sql
+      8 sw-bootstrap/src/main/resources/db/migration/h2/V6__m_seam_menu_seed.sql
+      8 sw-bootstrap/src/main/resources/db/migration/devseed/h2/V902__i5_g2_g6_fixtures.sql
+      8 sw-bootstrap/src/main/resources/db/migration/devseed/h2/V901__i5_g2_g4_negative_fixtures.sql
+      7 sw-bootstrap/src/main/resources/db/migration/postgresql/V61__p21_iot_admin_menus.sql
+      7 sw-bootstrap/src/main/resources/db/migration/h2/V61__p21_iot_admin_menus.sql
+
+--- 汇总 ---
+DML中文 sw-bootstrap/src/main/resources/db/migration/postgresql/V90__i6_notify_menus.sql:36  SELECT 223, current_timestamp, current_timestamp, 0, 0, 0, 'NotifyRecordDetail', '记录必要详情（含正文与尝试流水，独立权限并审计）', 2, '', '', 'notify:record:detai
+含中文的注释行: 1645
+DML/字符串中文命中: 365

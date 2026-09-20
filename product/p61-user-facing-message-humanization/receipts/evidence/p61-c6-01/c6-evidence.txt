@@ -1,0 +1,30 @@
+# P61 C6 补齐 — Web 侧错误码语义对齐与同码异文收敛
+# 采集时间: 2026-09-15 23:51:31
+# Web HEAD: 963df360ed18bc1c604652a13edb2a7ed0be8963
+
+## 门禁（四门）
+typecheck=0 lint=0 test=0(1200 passed/3 skipped) build=0(2.46s)
+
+## 1204-1208 兜底文案已对齐后端真实码义
+37:  1204: '字段类型未知',
+38:  1205: '该字段类型暂未开放，请更换类型后重试',
+39:  1206: '字段缺少必要属性，请在设计器中补全后重新发布',
+40:  1207: '表格字段不能嵌套，请调整字段结构后重试',
+41:  1208: '表单定义配置异常，请检查后重试',
+
+## 2101-2105 冲突数值已标注不得仅凭数值分流
+64:  /* 2105 同样是冲突数值：auth 未占用，但流程语义（bpm.process_def_published）需以 errorKey 确认 */
+65:  2105: '流程定义已发布，不可修改',
+
+## FormRender 本地映射已删除（同码异文收敛到中央权威）
+236:function businessError(code: number, fallback: string): string {
+237-  return getErrorMessage(code, fallback)
+238-}
+239-
+--
+357:        errorMsg.value = businessError(err.code, err.msg)
+358-      } else {
+359-        errorMsg.value = '保存失败，请稍后重试'
+
+## 残留检查：FormPublishValidator 幽灵引用应零命中
+(零命中)

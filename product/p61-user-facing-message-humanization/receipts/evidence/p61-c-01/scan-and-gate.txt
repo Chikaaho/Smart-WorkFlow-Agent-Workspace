@@ -1,0 +1,26 @@
+# P61 Stage C — 表单与流程主链治理：零残留扫描与门禁
+# 采集时间: 2026-09-15 22:17:59
+# Server HEAD: c15428f0002f6bb0ceeff05c7cbcf842bd3d3148
+
+## 1. 门禁
+$ MAVEN_OPTS="-Xmx2g" mvn -q compile   → exit=0
+$ MAVEN_OPTS="-Xmx2g" mvn test            → BUILD SUCCESS
+TESTS=1394 ERRORS=0 SKIPPED=0 FAILURES=0
+
+## 2. 表单侧：物理表/列名与原始异常外泄零残留
+$ grep -rn '无物理表|表名格式异常' sw-biz-form/src/main
+(零命中)
+
+$ grep -rn '"查询失败: " + e.getMessage()' 等原始异常拼接（sw-biz-form/src/main）
+(零命中)
+
+## 3. 表单侧：发布校验英文原文与内部枚举名零残留
+$ grep -rn '不在 FieldType 枚举中|is not enabled|(disabled)|— " + e.getMessage()' sw-biz-form/src/main
+(零命中)
+
+## 4. 流程侧：实现词汇零残留（BpmErrorCode 文案）
+$ grep -n 'process_key|BPMN|tenantId|入/出边|注册契约|缺少必要能力|适配器不存在|类型未实现|未注册的节点' BpmErrorCode.java
+36:    PROCESS_KEY_FROZEN(2101, "bpm.process_key_frozen", "流程标识在首次发布后不可变更，如需调整请新建流程定义"),
+
+## 5. 引用删除消息改为业务可识别
+226:                            "该记录已被表单「" + refFormName + "」的关联字段「" + logicalName

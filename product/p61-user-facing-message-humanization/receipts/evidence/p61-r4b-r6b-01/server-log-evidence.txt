@@ -1,0 +1,12 @@
+P61 R6b/R4b 运行时补充证据：服务端日志与注册表
+采集时间(UTC): 2026-09-16T06:23:23Z
+
+--- errorKey 注册表启动日志 ---
+2026-09-16T14:20:54.272+08:00  INFO 55924 --- [           main] c.s.c.b.c.ErrorKeyRegistryConfiguration  : P61 errorKey 注册表就绪：已登记数值码 122 个，冲突码 5 个（冲突码不猜测含义，查表返回 null）
+
+--- 同一 eventRef 的访问日志（证明可定位） ---
+2026-09-16T14:21:23.744+08:00  INFO 55924 --- [nio-8080-exec-6] c.s.c.s.filter.AccessLoggingFilter       : ACCESS method=GET path=/api/form/def/by-key/__p61_no_such_form__ status=200 costMs=16 eventRef=req-60ee13cdcc8ace
+
+--- 身份 B 被拒后的 debug_auth 决策 ---
+2026-09-16T14:21:23.759+08:00  INFO 55924 --- [nio-8080-exec-5] c.s.c.s.f.DebugAuthenticationFilter      : debug_auth decision=ACCEPTED debugTokenId=test_2100107763745787905 userId=2100107763745787905
+2026-09-16T14:21:26.420+08:00  INFO 55924 --- [nio-8080-exec-1] c.s.c.s.f.DebugAuthenticationFilter      : debug_auth decision=ACCEPTED debugTokenId=test_2100107763745787905 userId=2100107763745787905

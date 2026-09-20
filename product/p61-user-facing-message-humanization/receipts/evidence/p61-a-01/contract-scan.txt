@@ -1,0 +1,38 @@
+# P61 Stage A — 契约事实与零残留扫描原始输出
+# 采集时间: 2026-09-15 21:08:23
+# 过滤口径: 仅 main 源码（排除 target 与 src/test，路径分隔符无关）
+
+## A. errorKey 全局唯一性（脚本比对 127 常量）
+常量总数: 127
+唯一 errorKey 数: 127
+重复 errorKey 数: 0
+唯一 code 数: 122
+重复 code: 2101 2102 2103 2104 2415 
+
+## B. 异常文案/子串作为业务分支 —— main 源码零残留
+$ grep -rnE 'getMessage\(\)\s*\.(contains|equals|startsWith|endsWith|matches|indexOf|equalsIgnoreCase)' --include=*.java <main dirs> | grep -vE 'target|src[\/]test'
+(零命中)
+
+## C. BPM-16 解耦：控制流判据已改为语义键
+旧判据（getMessage().contains("尚未关联")）在 main 源码:
+(零命中 — 已解除)
+
+新判据（errorKey 语义键）:
+sw-biz\sw-bpm\sw-bpm-api\src\main\java\com\sw\ck\bpm\api\exception\BpmErrorCode.java:101:    public static final String DRAFT_NO_ACTIVE_BINDING = "bpm.draft_no_active_binding";
+sw-biz\sw-bpm\sw-bpm-process\src\main\java\com\sw\ck\bpm\process\controller\BpmDraftController.java:223:            if (BpmErrorCode.DRAFT_NO_ACTIVE_BINDING.equals(ex.getErrorKey())) {
+sw-biz\sw-bpm\sw-bpm-process\src\main\java\com\sw\ck\bpm\process\service\DraftSubmitService.java:238:                    BpmErrorCode.DRAFT_NO_ACTIVE_BINDING,
+sw-biz\sw-bpm\sw-bpm-process\src\test\java\com\sw\ck\bpm\process\controller\BpmDraftControllerTest.java:291:                    .hasFieldOrPropertyWithValue("errorKey", BpmErrorCode.DRAFT_NO_ACTIVE_BINDING);
+sw-biz\sw-bpm\sw-bpm-process\src\test\java\com\sw\ck\bpm\process\controller\BpmDraftControllerTest.java:304:                    .hasFieldOrPropertyWithValue("errorKey", BpmErrorCode.DRAFT_NO_ACTIVE_BINDING);
+sw-bootstrap\src\test\java\com\sw\ck\bootstrap\ErrorCodeCatalogTest.java:52:            BpmErrorCode.DRAFT_NO_ACTIVE_BINDING,
+sw-bootstrap\src\test\java\com\sw\ck\bootstrap\ErrorCodeCatalogTest.java:167:        BaseException explicitKey = new BaseException(400, BpmErrorCode.DRAFT_NO_ACTIVE_BINDING, "文案");
+sw-bootstrap\src\test\java\com\sw\ck\bootstrap\ErrorCodeCatalogTest.java:168:        assertEquals(BpmErrorCode.DRAFT_NO_ACTIVE_BINDING, explicitKey.getErrorKey());
+
+注：DraftSubmitService 中仍保留文案 '表单尚未关联唯一已发布流程…'，它是用户可见消息本身（应保留），不再承担业务分支
+
+## D. 第三方文案依赖解除
+GraalJS 'Statement count limit' 文案依赖:
+(零命中 — 改用 ResourceLimits.onLimit 内建标志)
+MQTT contains("AUTH") 文案依赖:
+sw-basic/sw-basic-iot/src/main/java\com\sw\ck\iot\mqtt\MqttBrokerManager.java:199:     * <p>调用方不得再用异常文案子串（如 {@code contains("AUTH")}）判断认证失败——
+agent 429 宽松子串:
+sw-basic/sw-basic-agent/src/main/java\com\sw\ck\agent\service\impl\AgentOrchestrationServiceImpl.java:344:     * 不再使用 {@code contains("429")} 这类任意位置子串匹配——后者会把响应体里偶然

@@ -1,0 +1,59 @@
+# P61 Stage C / D — 门禁与零残留扫描原始输出
+# 采集时间: 2026-09-15 22:46:42
+# Server HEAD: c15428f0002f6bb0ceeff05c7cbcf842bd3d3148
+
+## 1. 门禁
+$ MAVEN_OPTS="-Xmx2g" mvn -q compile  → exit=0
+$ MAVEN_OPTS="-Xmx2g" mvn test           → BUILD SUCCESS
+TESTS=1400 ERRORS=0 SKIPPED=0 FAILURES=0
+
+## 2. Stage C — 表单侧零残留
+$ grep -rn "无物理表|表名格式异常" sw-biz/sw-biz-form (main)
+(零命中)
+$ grep -rn "原始异常拼接" sw-biz/sw-biz-form (main)
+(零命中)
+$ grep -rn "内部枚举名/英文校验原文" sw-biz/sw-biz-form (main)
+(零命中)
+
+## 3. Stage C — 流程侧实现词汇（BpmErrorCode 用户文案）
+(零命中 — 实现词汇已从用户文案移除)
+
+## 4. Stage D — 完整 Java 栈不再进入任务日志接口
+$ grep -n "setExceptionStack|printStackTrace|getStackTrace" SwJobBean.java
+125:            jobLog.setExceptionStack("ref=" + eventRef + " category="
+(仅剩安全引用行，无栈写入)
+
+## 5. Stage D — 持久化诊断文本脱敏出口
+
+## 6. Stage D — Agent 失败摘要按类型分层
+
+## 7. Stage D — 开放 API 回调摘要
+141:                record(app, event, attempt, "FAILED", callbackFailureSummary(e));
+192:    private static String callbackFailureSummary(RuntimeException e) {
+## 5. Stage D — 持久化诊断文本脱敏出口（DiagnosticText）— 复用点
+
+## 6. Stage D — Agent 失败摘要按类型分层 — 复用点
+## 5. Stage D — 持久化诊断文本脱敏出口（DiagnosticText）复用点
+sw-basic/sw-basic-iot/src/main/java/com/sw/ck/iot/mqtt/MqttBrokerManager.java
+sw-basic/sw-basic-iot/src/main/java/com/sw/ck/iot/service/IotConnectionService.java
+sw-basic/sw-basic-notify/sw-basic-notify-biz/src/main/java/com/sw/ck/notify/service/impl/NotifyDeliveryRecoveryServiceImpl.java
+sw-basic/sw-basic-notify/sw-basic-notify-biz/src/main/java/com/sw/ck/notify/service/impl/NotifyRecordServiceImpl.java
+
+## 6. Stage D — Agent 失败摘要按类型分层复用点
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/orchestration/AgentFailureSummarizer.java
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphExecutionServiceImpl.java
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentOrchestrationServiceImpl.java
+
+## 8. Stage D 追加 — 剩余持久化诊断清洗点
+sw-basic/sw-basic-iot/src/main/java/com/sw/ck/iot/mqtt/MqttBrokerManager.java
+sw-basic/sw-basic-iot/src/main/java/com/sw/ck/iot/service/IotConnectionService.java
+sw-basic/sw-basic-iot/src/main/java/com/sw/ck/iot/service/MessageIngestService.java
+sw-basic/sw-basic-notify/sw-basic-notify-biz/src/main/java/com/sw/ck/notify/impl/NotifyFacadeImpl.java
+sw-basic/sw-basic-notify/sw-basic-notify-biz/src/main/java/com/sw/ck/notify/service/impl/NotifyDeliveryRecoveryServiceImpl.java
+sw-basic/sw-basic-notify/sw-basic-notify-biz/src/main/java/com/sw/ck/notify/service/impl/NotifyRecordServiceImpl.java
+
+## 9. 最终门禁（Stage C+D 全部改动后）
+$ MAVEN_OPTS="-Xmx2g" mvn test
+MVN_EXIT=0  BUILD SUCCESS
+TESTS=1400 ERRORS=0 SKIPPED=0 FAILURES=0

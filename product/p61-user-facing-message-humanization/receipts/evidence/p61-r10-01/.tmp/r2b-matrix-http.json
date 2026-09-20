@@ -1,0 +1,52 @@
+[
+  {
+    "mode": "403",
+    "empty": false,
+    "err": true,
+    "msg": "P61-INJECTED",
+    "path": "/iot/connections",
+    "rec": "Ask an administrator for access",
+    "reqs": 1,
+    "retry": false
+  },
+  {
+    "mode": "404",
+    "empty": false,
+    "err": true,
+    "msg": "P61-INJECTED",
+    "path": "/iot/connections",
+    "rec": "Back to the list and refresh",
+    "reqs": 2,
+    "retry": false
+  },
+  {
+    "mode": "409",
+    "empty": false,
+    "err": true,
+    "msg": "P61-INJECTED",
+    "path": "/iot/connections",
+    "rec": "Refresh and try again",
+    "reqs": 2,
+    "retry": true
+  },
+  {
+    "mode": "500",
+    "empty": false,
+    "err": true,
+    "msg": "P61-INJECTED",
+    "path": "/iot/connections",
+    "rec": "Try again later",
+    "reqs": 2,
+    "retry": true
+  },
+  {
+    "mode": "503",
+    "empty": false,
+    "err": true,
+    "msg": "P61-INJECTED",
+    "path": "/iot/connections",
+    "rec": "Try again later",
+    "reqs": 2,
+    "retry": true
+  }
+]
