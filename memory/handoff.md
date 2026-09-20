@@ -23,8 +23,8 @@ P60/0.1.0 已 `COMPLETED（规划已确认）`，发布与迁移终点V93锁定�
 
 ## 6. 独立状态卫生任务
 
-P61终态投影已通过规划复核，不重开。较晚的陈旧引用审计确认12项当前错误，规划将J1纳入后共13项；J2裁决为双仓README当前口径统一到0.1.0。独立L级方向：`product/current-state-reference-hygiene/ready/direction-current-state-reference-hygiene.md`，必须由独立执行任务、独立回执收口，不追加到P53或P61；只做定向文本收敛，合法历史保留。
+当前状态引用卫生整改已PASSED：H1—H13、G1—G4全部关闭，合法历史保留；方向归档`product/current-state-reference-hygiene/passed/direction-current-state-reference-hygiene.md`，无后续执行入口。该任务独立完成，未追加到P53或P61。
 
 ## 7. 新机器启动提示词
 
-主功能下一动作：P53现有执行会话继续提示07并提交其下一份合法完成回执；P61不再是活动功能，统一合并延后到P53结束。状态卫生任务另开独立执行入口与独立完成回执，不得发送给当前P53任务，也不得并入P53/P61提交或验收。
+主功能下一动作：P53现有执行会话继续提示07；P61不再是活动功能，统一合并延后到P53结束。状态卫生任务已关闭，不并入P53/P61提交或验收。

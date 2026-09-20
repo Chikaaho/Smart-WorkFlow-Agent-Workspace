@@ -1,0 +1,20 @@
+### terminal four-piece transcript (input / stdout / stderr / exit)
+
+validator: E:\code\Smart-WorkFlow-Agent-Workspace\.codex\governance\validate-terminal.ps1
+invocation: payload piped to validator (stdin path); contract: .codex/governance/terminal-contract.json
+input file: terminal-input.json
+input bytes: 5344
+input sha256: 056bbb9ce60ec86fbb2e67c8ad632989dfcd878a73c43edeaa907e80e9806fc2
+stdout file: terminal-stdout.txt (empty by design: validator prints nothing on success)
+stderr file: terminal-stderr.txt (empty)
+exit: 0
+
+state=EXECUTION_SUBMITTED | task_level=L | feature_status=VERIFYING | remaining_actionable_count=0 | next_action_type=WAIT_PLANNER | stop_reason=WAITING_FOR_PLANNER | browser_status=NOT_APPLICABLE
+work_items: H1..H13 all COMPLETED / authorized=true / dependency_satisfied=true / actionable=false
+
+### negative control (proves the validator is not a no-op)
+
+input: terminal-negative-control.json (same payload with state replaced by TASK_COMPLETED)
+result file: terminal-negative-control.txt
+exit: 1
+diagnostics: 13 lines, e.g. 'terminal: receipt: forbidden for state TASK_COMPLETED', 'terminal: task_level: incompatible with state TASK_COMPLETED'
