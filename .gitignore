@@ -1,6 +1,6 @@
-# 排除两个业务代码项目（由 Smart-WorkFlow-Server / Smart-WorkFlow-Web 各自独立管理）
-Smart-WorkFlow-Server/
-Smart-WorkFlow-Web/
+# 排除两个业务代码项目（由 Smart-WorkFlow-aPaaS-server / Smart-WorkFlow-aPaaS-Web 各自独立管理；工作区以 gitlink 记录其推送态）
+Smart-WorkFlow-aPaaS-server/
+Smart-WorkFlow-aPaaS-Web/
 
 # 系统文件
 .DS_Store
@@ -10,12 +10,24 @@ Thumbs.db
 *~
 receipts/evidence-06/bootstrap.jar
 
-# 大型开发/启动日志与运行产物：体量大且非交付物，本地保留、不入库（避免再次超出托管单文件限制）
-product/**/receipts/evidence/**/*-dev*.log
-product/**/receipts/evidence/**/*dev-server*.log
-product/**/receipts/evidence/**/*boot*.log
-product/**/receipts/evidence/**/*lastrun*.log
-product/**/receipts/evidence/**/*-server.log
+# 原始运行日志、命令原始输出与测试产物：体量大且非交付物，本地保留、不入库
+# 仍正常入库：执行任务、方向与 prompt、回执、结构化证据（json/jsonl/md/mjs/ps1）与截图（png）
+# 确需入库的原始输出请用 git add -f 显式加入
+*.log
+*.stdout
+*.stderr
+product/**/receipts/**/*.zip
+product/**/receipts/**/*.txt
+
+# 本机重定向与临时产物（不入库）
+/0
+/1
+/-*.ts
+/lint*.txt
+/lint*.err
+/tmp-*.png
+/scripts-patch-*.mjs
+/codeSmart-WorkFlow-Agent-Workspace/
 
 # 宿主外执行监督器的本地租约、token 与审计运行态
 .codex/governance/runtime/
