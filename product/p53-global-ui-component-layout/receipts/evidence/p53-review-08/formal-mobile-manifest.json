@@ -1,0 +1,150 @@
+{
+  "generatedAt": "2026-09-20T17:56:51.123Z",
+  "tier": "FORMAL_FLOW",
+  "headless": false,
+  "browser": {
+    "name": "Playwright Chromium",
+    "visible": true,
+    "baseUrl": "http://localhost:5176",
+    "backend": "http://localhost:8080 (real)"
+  },
+  "identity": {
+    "username": "admin",
+    "displayName": "系统管理员",
+    "tenantContext": "T0（真实后端 8080，授权 dev/test 身份）",
+    "authMode": "real captcha bitmap + RSA-OAEP login"
+  },
+  "sourceFingerprint": "0c581160c908103caecfd0b68fca42d9a90f7899af22cb5c974f5ec1baf04dd5",
+  "entryCount": 5,
+  "entries": [
+    {
+      "id": "ev08m-login-375",
+      "url": "http://localhost:5176/login",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "identity": null,
+      "objectIds": {
+        "route": "/login"
+      },
+      "screenshot": {
+        "relativePath": "ev08m-login-375.png",
+        "sha256": "822e2cc73bd60f6e3b2b77c17750cbb36ea9e683ecf80a9ea2edd58a0a8d5979",
+        "width": 375,
+        "height": 812
+      },
+      "factsPath": "facts/ev08m-login-375.json"
+    },
+    {
+      "id": "ev08m-form-375",
+      "url": "http://localhost:5176/m/form/p53ev08_mobile_form",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "identity": {
+        "username": "admin",
+        "displayName": "系统管理员",
+        "tenantContext": "T0（真实后端 8080，授权 dev/test 身份）",
+        "authMode": "real captcha bitmap + RSA-OAEP login"
+      },
+      "objectIds": {
+        "formKey": "p53ev08_mobile_form"
+      },
+      "screenshot": {
+        "relativePath": "ev08m-form-375.png",
+        "sha256": "8a11a2ea5d40e2f8dd099b64237c97f473110919efb92764ff370d94f70e291f",
+        "width": 375,
+        "height": 812
+      },
+      "factsPath": "facts/ev08m-form-375.json"
+    },
+    {
+      "id": "ev08m-workflow-375",
+      "url": "http://localhost:5176/m/workflow",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "identity": {
+        "username": "admin",
+        "displayName": "系统管理员",
+        "tenantContext": "T0（真实后端 8080，授权 dev/test 身份）",
+        "authMode": "real captcha bitmap + RSA-OAEP login"
+      },
+      "objectIds": {
+        "page": "mobile-workflow"
+      },
+      "screenshot": {
+        "relativePath": "ev08m-workflow-375.png",
+        "sha256": "dd3544876a6d9bac6853c14fde6ccbd1ee0f2b9fc6d54460300b2a8c80ea2b4b",
+        "width": 375,
+        "height": 812
+      },
+      "factsPath": "facts/ev08m-workflow-375.json"
+    },
+    {
+      "id": "ev08m-notify-375",
+      "url": "http://localhost:5176/m/notify",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "identity": {
+        "username": "admin",
+        "displayName": "系统管理员",
+        "tenantContext": "T0（真实后端 8080，授权 dev/test 身份）",
+        "authMode": "real captcha bitmap + RSA-OAEP login"
+      },
+      "objectIds": {
+        "page": "mobile-notify"
+      },
+      "screenshot": {
+        "relativePath": "ev08m-notify-375.png",
+        "sha256": "e4f4c29a97d335e479d26009b2edf6c1c2ed8c0cbc43970273b193fe73291026",
+        "width": 375,
+        "height": 812
+      },
+      "factsPath": "facts/ev08m-notify-375.json"
+    },
+    {
+      "id": "ev08f-login-1440",
+      "url": "http://localhost:5176/login",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "identity": {
+        "username": "admin",
+        "displayName": "系统管理员",
+        "tenantContext": "T0（真实后端 8080，授权 dev/test 身份）",
+        "authMode": "real captcha bitmap + RSA-OAEP login"
+      },
+      "objectIds": {
+        "route": "/login",
+        "viewport": "1440x1024"
+      },
+      "screenshot": {
+        "relativePath": "ev08f-login-1440.png",
+        "sha256": "ebc69591cdfcc494c886e700874e06b440be796495033f4003b526aef2fdc913",
+        "width": 1440,
+        "height": 1024
+      },
+      "factsPath": "facts/ev08f-login-1440.json"
+    }
+  ],
+  "checks": {
+    "collisionCountTotal": 0,
+    "horizontalScroll": false,
+    "pageErrors": [],
+    "unauthorizedLoginCapabilities": {
+      "tenantLabelInMainForm": 0,
+      "rememberLoginState": 0,
+      "forgotPassword": 0,
+      "note": "SSO 区块租户 ID 输入为 EV-06 锁定契约（方向 §4.4），不属于账号登录未授权能力"
+    },
+    "realCaptchaPng": true,
+    "realNetworkRequestCount": 20
+  }
+}

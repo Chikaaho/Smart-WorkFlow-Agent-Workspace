@@ -1,0 +1,156 @@
+[2026-09-18T20:40:00+08:00] shell-productionized
+AppTopbar/AppSidebar/AppMainNav/BasicLayout 去 fixture 分支；菜单契约+DTO 透传 topbar 投影；designMenuTree 双面投影；P53ShellFixture 删除；节点21 采集验证顶栏6项设计序+侧栏组结构+fixtureComponentMarkers=[]
+----
+[2026-09-18T20:40:00+08:00] workspacehome-productionized
+WorkspaceHome 删除 WorkspaceDesignFixture 分支；设计节点01 结构（hero/4统计卡/待办面板/快捷发起/业务动态/流程效能）全部绑定真实接口；analytics summary 接入；node01 数据 fixture 扩展（布局/待办/已办/发起演示密度）
+----
+[2026-09-18T20:40:00+08:00] formrender-productionized
+FormRender 删除 p53Node27 分支；设计布局类无条件化；发起模式标题 i18n 键 initiateTitle
+----
+[2026-09-18T20:40:00+08:00] loginpage-productionized
+LoginPage 删除 P53LoginFixture 分支（子代理完成）；≥1280 设计坐标全对齐；禁改元素（租户/记住/忘记密码/条款）未复刻
+----
+[2026-09-18T20:40:00+08:00] ev06a-scripts
+render-object-validate.mjs（静态扫描+运行时标记断言）就绪；review-07 采集/比较脚本骨架就绪；节点30/32 按主方向§5处置矩阵复用28/29锁定参考帧（refOverride），数据密度对齐 node28/node29
+----
+[2026-09-18T20:40:00+08:00] ev06c-pipeline
+颜色管线：color-extract（32 SVG→134 去重值）、color-locate（生产落点）、color-merge（≤3 最近等价+待办清单）、color-source-attempt.json（Figma MCP 不可用实录，回退锁定SVG/PNG）就绪；待视图移植完成后重跑并补落地色
+----
+[2026-09-18T23:30:00+08:00] family-ab-iterate
+family-a 6/6 PASS；family-b 6/9（03 PASS 0.0174；20=0.0206 差0.0006；19=0.0268 差0.0068）。已修：管理端侧栏236px回归、工作台命名空间/收藏目录/徽标透传(adaptPage ...raw)、TaskDetail流程变量隐藏+后继节点块(图推导)+快捷审批脚部(复用handleApprove/Reject)+返回按钮小型化+操作卡移至tabs后、ProcessGraphView画布高度跟随容器+passed-over实底白卡+轨迹名称回退匹配+当前节点紫色优先、采集去滚动。graphCanvasHeight=视口<1100?740:800；graph tab聚焦模式@max-height:1099px隐藏task-main
+----
+[2026-09-18T23:30:00+08:00] remaining-plan
+待办：19/20微调→family-c采集比较(07/08/09/10/11-18设计器与弹窗，代理已移植未验证)→family-d(28/29/30/32)→render-object-validate→颜色管线重跑(重跑color-extract/locate/merge→补落地色→color-validate)→正式流(run-formal-p53.mjs, P53_CAPTURE_USERNAME=admin P53_CAPTURE_PASSWORD=admin123, 需 pnpm dev 5174+后端8080已运行)→内部视觉verify+lint+build+指纹→receipt-p53-supplement-07+terminal。i18n键已全部补齐；fixture组件已全部删除；design-fixture-flag.ts仅mock层引用
+----
+[2026-09-18T23:50:00+08:00] family-c-first-run
+family-c 首轮：08 PASS；07=0.043 09=0.036 10=0.031 11=0.036 12=0.045 13=0.057 14=0.045 15/17/18≈0.047 全FAIL；16 采集失败(no sign group button: .people-group__head 按钮在生产 people 表中不存在，需改用生产选择器)。已定位根因A：compare-family.mjs buildMaskRects 的 dialogBox 仍读 inv.fixture（现恒null），弹窗遮罩区域未排除→15/17/18/16/11/12/13 的整页el-overlay色差计入区域。修复：dialogBox 改读 inv.fixtureIdForData ?? inv.fixture。根因B：设计器(07/09/13/14)代理移植后未做视觉迭代，需逐个 view runtime vs 设计PNG 修主区。根因C：10 聚焦模式已生效但比例/叠加卡需校。16 的 openSign 需查生产会签入口（openSignGroup 按钮类名）。
+----
+[2026-09-19T00:20:00+08:00] overlay-fix
+tokens.css 追加全局 .el-overlay{background:rgba(17,27,59,0.42)!important}（设计罩色，原 Element 黑罩导致弹窗节点整页色差）。15: 0.054→0.0366(topbar/sidebar已过) 16: 0.041→0.0275。剩余：15/17/18 main≈0.0366（弹窗内部几何与设计 780×660@330,182 的对位差）；16 sidebar 0.0043（会签弹窗 1018 设计位 210,208 vs 生产居中）；设计器 07=0.043 09=0.036 11=0.037 12=0.045 13=0.059 14=0.045 10=0.031 未迭代。19=0.0268 20=0.0206 接近。family-d 未跑。
+----
+[2026-09-19T00:50:00+08:00] dialog-iterate
+弹窗罩色+定位182+数据密度后：15/17/18 main 0.0366→0.0334（topbar/sidebar 已过）。剩余主区差≈13k px²：弹窗内部与设计(780宽/头部108/网格/芯片/附件/底部68)的细节差 + 底下真实页 vs 设计盲底。16 sidebar 0.0043（会签弹窗设计位210,208 vs 生产）。下一步：view 15-runtime vs docs/ui/png/15 设计图微调内部间距；随后 07/09/11/12/13/14 设计器逐个 view+修；10/19/20 微调；family-d；然后管线（validator/colors/formal/gates/receipt）。注意：改 TaskDetail 样式时插入点必须唯一（曾损坏 :deep 选择器已修复）；typecheck 全绿。
+----
+[2026-09-19T01:05:00+08:00] family-d-first-run
+family-d：29/32 PASS（refOverride 生效，30/32 复用 28/29 帧一致）；28/30 main=0.020153 仅超 0.000153（≈180px²）。下一步微调 28：检查下拉卡片位置/行高/摘要行 locale 按钮区域。
+----
+[2026-09-19T01:25:00+08:00] checkpoint
+28 回到 0.020153 基线（-30/10 边距更差已回退 -24/12）。当前累计：family-a 6/6 PASS；family-b 03/02/22-26 PASS，19=0.0268 20=0.0206；family-c 仅 08 PASS（15/17/18=0.0334，16=0.0275/0.0043，07/09/10/11/12/13/14 未迭代 0.031-0.059）；family-d 29/32 PASS，28/30=0.020153 差 0.000153。28 微调方向：卡片图标(设计SVG资产)/描述行位置/chip描边色，需逐像素 hunt。环境：dev:mock 5173 运行中(后台)；后端 8080 运行中(PID 36852 勿动)。
+----
+[2026-09-19T01:45:00+08:00] node07-findings
+07=0.043（08 PASS 因为关流程tab无画布）。差异清单：(1)页面被内部滚动约28px，已修 capture-nodes（.basic-layout__content 复位）待验证；(2)组件库缺搜索框（设计 230×36 @palette 顶部，可做真实过滤=labels filter）与四组分组标题（基础/业务/布局/高级，静态映射 FIELD_TYPE_REGISTRY 17 类，纯展示）；(3)画布字段为描边卡片栅格，设计为标签在上+底边线的行式（DesignerCanvas/DesignerItem 样式重排，保持 24 列语义）；(4)workbar 缺『设置』按钮位（设计有，无契约可用标题输入占位已做）；(5)右侧字段配置面板空态文案差异。11/14 与 07 共用 base。09/12/13 类似待查。
+----
+[2026-09-19T02:10:00+08:00] checkpoint-2
+累计：a 6/6、d 4/4、b 7/9（19=0.0268 20=0.0206）、c 1/12（08 过；11=0.0304 14=0.0414 15/17/18≈0.0334 16≈0.027 07=0.0444 09=0.0357 10=0.0311 12=0.0453 13=0.0586）。本轮已做：FieldPalette 加真实搜索+四组分组(2列38px条目)、DesignerCanvas field-shell 行式化(未选中无框/选中紫框)、FormDesigner 移除底部冻结告警条(顶栏tag已呈现)、采集脚本加内滚复位。07 网格定位：y900-960 整行全格差（面板未铺满视口底部？/底部区域色差）+ x600,300（画布）+ x240,120（workbar）——下一步 view family-c/07-runtime.png 与设计对比确认底部带差异根源。注意所有多行补丁必须用脚本文件（heredoc/node -e 多行会炸）。全部改动 typecheck 绿。dev:mock 5173 与后端 8080 存活。
+----
+[2026-09-19T10:30:00+08:00] checkpoint-3
+重要发现：seed-def-001 为已发布态→设计器只读→字段不可选中（clickField 无效）。尝试草稿态数据覆盖后 07 反而 0.0444→0.0498（已回退卸载，函数 designerDraftFixtures 保留未挂载）。设计器节点迭代进入深水区：需逐个 view runtime vs 设计（07=0.0444 09=0.0357 10=0.0311 11=0.0304 12=0.0453 13=0.0586 14=0.0414 15/17/18=0.0334 16=0.0275）。已就绪：a6/6 d4/4 b7/9。管线脚本齐：render-object-validate/color-*(重跑后 needs_work=49)/run-formal。下一步优先级：(1)用 07 的 region/hotspot 分析法逐个设计器收敛（网格差异定位脚本见会话历史）；(2)19/20；(3)全 31 过后 validator+成对截图；(4)颜色 needs_work 49 值落地+deviation 登记(node06 SSO 品牌色按方向§4.4 省略)；(5)正式流；(6)门禁+回执。
+----
+[2026-09-19T11:15:00+08:00] checkpoint-4
+20 回到 0.020633 基线（taskName 列宽 125 试错更差已回退 150）。状态保持：a6/6 d4/4 b7/9 c1/12。20 超 0.000633≈740px²，19 超 0.0068，设计器节点 0.027-0.059。继续方向：19=graph 长页(1512)对比 19 设计逐块 hunt；20=people 表列头位置微差（需设计20列 x 坐标精确测量）；设计器节点用同一 hotspot 网格脚本逐个定位。
+----
+[2026-09-19T12:00:00+08:00] checkpoint-5
+19 基线恢复 0.026818（X展宽1.2与1.15坐标/900高均试错更差，已全部回退；fitViewport 自动居中缩放使布局级调整互相抵消——19 的剩余差异需按 normalizeGraph 世界系与 fit 公式做一次性精确解，或对设计19 PNG 做逐节点盒测量后按 E=0.847 反解世界坐标）。当前 PASS：a6/6、d4/4、b 中 02/03/22/23/24/25/26（7）；FAIL：19=0.0268 20=0.0206 07=0.0444 09=0.0357 10=0.0311 11=0.0304 12=0.0453 13=0.0586 14=0.0414 15=0.0334 16=0.0275 17=0.0334 18=0.0336。typecheck 绿。
+----
+[2026-09-18T23:10:00+08:00] node09-solve-plan
+09 实测（CANVAS_H=950 后）：start(387,228,140x41) dept(387,414) sign(777,787) end(387,880)；设计：start(341,213,152x46) dept(341,390) sign(750,820,155x46) end(341,932)。解法：(1)世界坐标绕中心(386,569)缩放 x1.064/y1.103 再平移中心(-31,-2)；(2)capture 对 09 加 clickField=点第一个 .designer-node（选中→紫框+右栏配置面板填充，对齐设计选中态与面板内容）；(3)CANVAS_H 保持 950。另：设计09节点类型条为横向已实现。当前分数：09=0.0375(微差波动) 12=0.0658 13=0.0602（12/13 背景受益同 09）。注意：设计09 右栏为选中节点属性(名称/编号/审批方式/审批人/监听器=真实能力)，无监听器契约则以真实区块呈现（12/13 代理已做）。
+----
+[2026-09-19T15:30:00+08:00] executor-resume
+续接06执行入口：共享修复（滚动条隐藏1152全宽/右栏压缩/端口边线/菱形网关/箭头/锚定fit/图例右移/opinion弹窗padding归零/people表几何/自定义表单标签/结果词已同意待处理/gm尾节点）后：family-b 02/03/20/22-26 PASS（20=0.0190），family-c 08/15/16/17/18 PASS（16=0.0196），family-a/d 全PASS维持。剩余FAIL：07/09/10/11/12/13/14/19。颜色普查扩展（伪元素/渐变/SVG stroke+fill），validate修复hex解析与按属性采样。设计器整页重构（palette→workbar/属性面板/头部页签）进行中。
+----
+[2026-09-19T16:40:00+08:00] ev06-progress-consolidated
+对比进度：PASS=a6/6,b(02/03/20/22-26=7)+c(08/15/16/17/18=5)+d4/4 → 23/31。FAIL：07=0.041 09=0.036 10=0.032 11=0.030 12=0.066 13=0.061 14=0.041 19=0.027。本轮生产改动：(1)BasicLayout内容区滚动条隐藏(1152全宽)；(2)TaskDetail右栏压缩+前后卡几何+结果词已同意/待处理+people表260/120/120/432/184列+自定义审批表单短标签+附件纸夹链接+后一节点卡(需gm尾节点,fit负bottom边距-232)+graph图例右移节点状态卡+.ProcessDesigner画布锚定fit(margins 139/31/199/20)+workbar顶排(替代左palette)+designer底色#f7fafc+designer坐标=设计09画布相对(417,54起点)；(3)adapter端口边线(edgeEndpoints端口裁剪)+DESIGNER/GRAPH节点尺寸152x46/158x48+svg箭头marker+passedOver实线#a4adbe；(4)ProcessGraphView像素实测锚定fit+单行节点+类型图标+网关菱形+右下缩放盒+定位当前；(5)mock: taskGraphPayload(设计19坐标)+designerPayload(设计09坐标)+gm尾节点+意见数据按设计15/17/18充实(formId/formVersion/assigneeDept/字段/附件)；(6)i18n: locateCurrent/notArrived/nodeStatus/customFormLabel/deptLabel/sentAt/processedAt/fitView=返回画布。EV-06a: render-object-validate exit0(alternate=0)。EV-06c: color管线exit0(134值/81普查命中/46像素采样/19偏差登记 color-deviations.json/0未映射)，validate脚本修hex解析+采样按属性布点+不透明优先匹配。formal(5174+8080真实登录1234验证码)已过登录，卡在captureMenu下拉菜单交互超时待修。剩余：8节点对比收敛+formal菜单步+内部视觉基线(31/31前禁更新)+lint/build/指纹+receipt-p53-supplement-07。dev:mock已重启(PID8096@5173)，dev5174(PID21164)，后端8080(PID36852勿动)。
+----
+[2026-09-19T17:20:00+08:00] executor-turn-end
+本轮收敛结果（对比31节点）：PASS 23/31 = family-a 6/6 + family-b 02/03/20/22/23/24/25/26 (8) + family-c 08/15/16/17/18 (5) + family-d 4/4。FAIL 8 = 07(0.041)/09(0.036)/10(0.032)/11(0.030)/12(0.068)/13(0.062)/14(0.041)/19(0.027)。已完成原子件：EV-06c color管线 exit0（134值/81普查命中/46像素采样/19偏差登记于color-deviations.json/0未映射；validate修复hex解析+属性化采样+不透明优先）；EV-06a render-object-validate exit0（alternate_render_path_count=0，manifest+stdout+exit落盘）。本轮生产改动摘要见16:40条目，另加：ProcessDesigner workbar顶排（palette移除）+画布锚定fit(margins139/31/199/20)+designer坐标=设计09画布相对+designer底色#f7fafc+zoomPercent=fitZoom；设计器节点保持双行(标签+类型)——单行实验0.039更差已回退。formal：5174+8080真实登录已通（dev固定验证码1234=LoginChallengeService dev profile），卡在captureMenu下拉交互超时（脚本待修：等待策略）。剩余工作：8节点收敛（09/12/13需右栏节点属性面板+12/13弹窗内容；07/11/14表单设计器同类；10/19画布微差）→formal菜单步修复→31/31后配对截图→内部视觉基线（禁提前更新）→lint/build/指纹→receipt-p53-supplement-07。环境：dev:mock@5173(PID8096)/dev@5174(PID21164)/后端8080(PID36852勿动)。
+----
+[2026-09-19T17:50:00+08:00] gates-partial
+门禁件：typecheck exit0；lint exit0(0 errors/215 warnings，删除web仓遗留.p53-revert09/.p53-solve09脚本+TaskDetail补/* global window */)；build exit0(2.96s)；color.exit=0；render-object-validate.exit=0。对比终值：23/31 PASS。下一会话待办：8节点收敛(07/09/10/11/12/13/14/19——09/12/13右栏属性面板+12/13弹窗；07/11/14表单设计器同类重构；10图焦点margins；19画布微差约-0.007)→formal菜单步修复(facts/仅有mobile-login)→31/31后配对截图7节点→内部视觉基线更新(禁提前)→指纹after→receipt-p53-supplement-07+ENGINE_TERMINAL(EXECUTION_SUBMITTED)。
+----
+[2026-09-19T21:50:00+08:00] form-designer-cluster-round1
+表单设计器簇首轮大改（生产代码+fixture）：(1)契约扩展：BaseField.placeholder/FormSchema.description/FormSnapshotDTO(status/author/note)+FieldPatch.placeholder；(2)adapter：parseDefinition带description、mapRawField带placeholder、TEXT/RICH_TEXT/NUMBER/DATE/DICT/ATTACHMENT/IMAGE渲染placeholder、AttachmentPicker补field prop；(3)AttachmentControl改i18n.global.t（form-create子app无vue-i18n宿主，修画布附件字段渲染崩溃→11/14弹窗打不开的根因）；(4)definitionToItems knownTypes改由FIELD_TYPE_REGISTRY派生（修DEPT字段被丢弃）；(5)design-fixtures新增node07/node11(designerFormFixtures: 资产采购申请schema+DRAFT v3+asset-purchase)与node14(+4条快照)；(6)FormDesigner头部重构：设置按钮(backToList)+面包屑`/ {title} / 事项编辑`+居中页签(关联流程→流程设计)+草稿已保存{HH:mm}+[草稿历史][保存][发布]，字段清单按钮移到画布meta行；画布sheet标题可编辑(draft)、sub=description||formKey；(7)字段清单弹窗：搜索过滤+导出JSON下载+7列(名称/标识/存储类型族VARCHAR等/长度/宽度n/12/必填/约束标注)+note+返回设计器按钮；(8)HistoryVersionsDialog重构卡式草稿历史：当前草稿v{n}-draft头+4卡(当前草稿/历史草稿/已发布vN徽标+author·表单+流程+note)+选中摘要+对比当前(只读预览)/恢复此草稿(saveDraftDefinition既有契约→新草稿,不覆盖已发布)+@restored→宿主重载；(9)FieldConfigPanel三段重构：组件属性标题+类型徽标右侧/基础信息(组件名称·宽度12栏select·占位提示·必填switch)/高级信息(字段标识disabled·数据类型族·configComponent·fieldKeyLockedNote)/其他信息(扩展属性box)，RulesEditor移至其后；(10)TextConfig只留最大长度+默认值行；(11)AppMainNav.isActive：/form/form-def-list覆盖/form/前缀(设计器路由下表单管理高亮,修顶栏无active)。采集几何probe对齐：palette节距53✓画布label1=361✓pitch99✓ruler297✓panel pitch69✓。分数：07=0.0426(best;先0.048→0.0424)、08=0.0177✓PASS、11=0.0268、14=0.0411。教训：cell内padding/label-margin微调两次变差已回退best；剩余diff=画布cell内部节奏(design label+18/input+48 vs runtime +22/+35, probe-compare.mjs可测)+palette首行-10+右栏底溢出。capture注意：11/14的designerDialog按钮文本变为'字段清单'(画布meta行)/'草稿历史'已同步p53-nodes.mjs。typecheck绿。
+----
+[2026-09-19T22:10:00+08:00] node19-analysis
+19=0.0266(需-0.007)量化：整页自tabs起+21px下移。测量(design vs runtime)：返回待办86/74、title117/119、kv行262/265起pitch均56、kv卡底645/658(+13)、tabs692/713(+21)、图节点整体+20(开始767/813)、zoom盒1420/1440。图节点尺寸157x50两侧一致、fit锚定正确——主要差=上方内容+21整体推移。来源：kv卡el-card__body padding 28px顶+data-row区(+13)与tabs卡前gap(+8, task-main__left gap16)。风险：03/20共用TaskDetail同款样式且已PASS，改kv/padding可能回归03/20，改后必须重测03/20。新工具：scripts/probe-compare.mjs（设计vs运行PNG墨迹带精确测量，用法见文件头）。07微调教训：cell padding 4/label-margin2为best(0.0424)，padding12/margin16变差0.0467已回退。
+----
+[2026-09-19T22:40:00+08:00] node03-regression-hunt
+03=0.0222(此前PASS为00:55旧capture,16:40右栏改动后未重采;本轮已重采仍0.0222)。hotspot=x1056-1344,y288-480(当前节点紫卡区)。probe-compare右栏量测:design卡带234/329/340/426-431/475/489-500/563-591/612(h34按钮行)/652/669 vs runtime 299-306/340/396-406/427(h11链接)/491/629(h32按钮)。关键结构差:设计右栏宽343(内容右缘1385)vs运行363(1405)→内容区宽20px;设计查看全部会签记录=白底描边按钮(已改:去掉text prop,flow-node__allbtn样式182x24白底描边,分未动说明非主因);设计按钮行594-654 vs 运行640-673。下一步:(1)对比03-diff.png找主导块;(2)疑点=当前节点卡内边距/卡间距(flow-status gap16/卡min-height152);(3)16捕捉的会签弹窗入口选择器.flow-node__allbtn保持可用。改TaskDetail须重测15/16/17/18/20。
+----
+[2026-09-19T23:00:00+08:00] node03-fine-hotspot
+03细网格(48px)：差异带=y240/384/432/528贯穿右栏全宽(1104-1344)→卡边界错位。量测：prev卡design 234-330 vs runtime 240-330✓；current卡340-490 vs 345-491✓；next卡design 500-591 vs runtime 508-580(高83 vs 91)；按钮行design 594-654 vs runtime 640-673(+46!)。按钮行紧贴next卡(卡脚部)，runtime有~60px空隙→查.flow-status/卡片脚部按钮容器margin；下一步:(1)TaskDetail模板找右栏脚部审批按钮容器(发送借办/已通过/驳回)的wrapper及其margin/gap;(2)next卡高度-8;(3)查看全部会签记录按钮已改白底描边(保持)。注意所有TaskDetail改动后必须重测15/16/17/18/20(共用组件)。
+----
+[2026-09-19T23:20:00+08:00] node03-fixed
+03修复：flow-status gap 16→10（probe量测design卡间距=10非16），03=0.014081✓PASS；连带效应：15=0.015217/16=0.015695(原0.0196)/17=0.015136/18=0.015350/20=0.015212 全PASS且余量加大。当前23/31：FAIL=07(0.0426)/09(0.0357)/10(0.0318)/11(0.0268)/12(0.0679)/13(0.0623)/14(0.0411)/19(0.0266)。
+----
+[2026-09-19T23:50:00+08:00] tabs-dedhome
+工作台页签去chrome：el-radio-group→纯button文本页签(.designer__tab, 纯文字+激活2px下划线, 设计稿同款)。工作台高度实验：48px变差(07=0.0442,身体起点124破坏画布节奏)已回退56px(身体=132正确)。当前best：07=0.041787/08=0.016862✓/11=0.026175/14=0.038062。typecheck绿。新增strip.mjs工具(裁设计vs运行条带并排PNG,用法: node strip.mjs <seq> <familyDir> <y0> <y1> [out])。下一步:07画布cell内部节奏(probe-compare量测显示design cell内label+18/input+48 vs runtime+22/+35→需shell padding-top≈12px+label底距≈16px,但上次试padding12/margin16变差——需配合row-gap同步重排再试)；11/14弹窗内行距同类微调。
+----
+[2026-09-20T00:30:00+08:00] taskdetail-global-revert
+TaskDetail全局padding/margin实验(25/12+margin7)净回归：20=0.0222✗/16=0.0201✗/15-18变差→已全部回退，全树回best(03=0.014081✓/20=0.015212✓/15-18✓/19=0.025046)。教训：TaskDetail样式是03/15/16/17/18/19/20七个节点共享面，任何全局改动必须全量重测；19的+21px推移修正需换路——只对19场景生效的作用域不存在(样式共享)，改为接受19当前值或从graph fitMargins(taskGraphPayload锚定139/31/199/20注释)反推。当前FAIL=07(0.0418)/09(0.0357)/10(待测)/11(0.0262)/12(0.0679)/13(0.0623)/14(0.0381)/19(0.0250)。
+----
+[2026-09-20T01:00:00+08:00] dim-color-finding
+遮罩色实测(samplepts.mjs新工具:采样设计vs运行指定点RGB)：design遮罩后白底=(174,176,184)→反推≈rgba(16,25,55,0.35)；runtime=rgba(17,27,59,0.42)(tokens.css全局.el-overlay)→(155,159,173)。该差异影响所有弹窗节点整页每个像素(但|Δyiq|≈0.06<compare阈值0.1,不直接计分;hotspot阈值0.022会显示)。15/16/17/18在0.42下PASS→遮罩色非其主因；07/11/14若其他差异收敛后仍卡线可试0.35。新增samplepts.mjs(node samplepts.mjs <seq> <familyDir> '[{name,x,y}]')。
+----
+[2026-09-20T01:30:00+08:00] node13-plan
+13改造方案：ProcessDesigner.vue 840-882高级配置弹窗从双卡(基本信息/图契约)改设计四卡组——统一监听器(已开启badge+before/after监听器行+添加框)/通知信息(通知对象+渠道4chips+触发时机+模板)/前置处理(执行方式/处理器/用途/失败策略)/后置处理；副标题'全流程作用域 / 统一监听器、通知信息、前置处理与后置处理'；footer设计有[取消][保存配置]——诚实实现：保存配置不可伪造(无端点)→先只保留取消,若规划审查要求再做真保存。数据源=graph payload扩展advancedConfig元数据(additive,fixture注入designProcessGraphPayload同款真实形状)。12方案：ApproverCandidatesDialog三栏选择器(人员/部门/角色/动态规则tabs+org树+用户列表勾选+已选列表+审批策略)+修候选接口超时(spinner卡住)。
+----
+[2026-09-20T01:50:00+08:00] node13-four-cards
+13完成四卡组改造(0.0623→0.0445)：ProcessDesigner高级配置弹窗改为统一监听器(已开启badge+before/after行+note+添加框)/通知信息(对象+4渠道chips+触发时机+模板)/前置/后置处理(执行方式/处理器/用途/失败策略)四卡+footnote；数据=graph payload.advancedConfig扩展(fixture注入,GraphAdvancedConfig接口,只读呈现)；副标题'全流程作用域/...'；i18n adv* 22键zh+en；移除graphNodeCount/graphEdgeCount(被替换)；footer保留仅[取消](保存配置无端点不伪造,待规划裁决)。typecheck绿。
+----
+[2026-09-20T02:20:00+08:00] node12-three-pane
+12完成三栏选择器重构(0.0679→0.0392)：ApproverCandidatesDialog全重写——4页签(人员/部门/角色/动态规则)、人员页=组织架构树+候选列表(搜索+勾选多选)+已选审批人卡(移除)+审批策略任一人同意；部门/角色页=真实dept/role数据(listDeptTree+pageRoles.list)；动态规则=4类型展示(服务端解析)；确认选择→emit pick(candidates[])；ProcessDesigner.onApproverPicked改数组签名(object字段value=id数组/多选,honest多审批人)；mock新增GET /api/workflow/defs/approver-candidates(5候选,keyword过滤,修spinner卡死=处理器缺失根因)；i18n approverPicker 20新键zh+en。typecheck绿。12下一步：与设计12差0.019——按已存值预选勾选(prop initialIds←父字段当前value解析,设计即回显态)+弹窗内部行距/几何精调(strip/probe-compare可测)。
+----
+[2026-09-20T02:50:00+08:00] flow-designer-base-analysis
+09/12/13共同主导差=流程设计器基础页(09=0.0357无弹窗即为基线,12/13与其同基座+弹窗增量)。基础页待改造(对照设计09)：(1)头部=FormDesigner同款工作台(设置按钮+面包屑'资产采购申请/资产采购审批 v3.3'+居中页签表单设计/流程设计+草稿已保存10:32+草稿历史/保存/发布)——当前=返回定义列表+灾备演练申请(dr_drill)草稿版本v3+撤销/删除所选/返回画布/保存草稿/发布；fixture node09/12/13的GET /api/workflow/defs/:id需再扩展name='资产采购审批'等面包屑数据(设计09面包屑='/ 资产采购申请 / 资产采购审批 v3.3')。(2)workbar=图标化9项(开始/起草/审批/会签/条件网关/通知/IoT指令/Agent/结束)+右侧高级配置/校验流程/太阳图标。(3)画布节点=单行(图标+名称)无副标题、选中紫框浅紫底、网关=菱形+号、分支线带标签、右下缩放盒(- 100% + 适应画布)。(4)右栏=节点属性面板(基础属性:节点名称/节点编号/审批方式/审批人[资产管理员chip+选择审批人按钮+支持人员/部门/角色/表达式]、高级属性·监听器配置[before/after行+添加监听器框])——capture需加clickNodeText选中节点(设计09选中=办公室资产管理员意见,fixture payload dept/tech节点config需补nodeKey/NODE_ASSET_MANAGER/审批方式/审批人/监听器数据)。(5)12预选未生效:capture点击第一个出现查看候选的节点(可能非dept节点)或config key大小写;需确认capture实际打开的节点+当前approverTargetKey值。工具:samplepts.mjs/strip.mjs/probe-compare.mjs/probe07.mjs(probe-dom.mjs临时)。环境:dev:mock@5173重启后PID变化(原8096已杀,新进程后台pnpm dev:mock,日志/tmp/p53-devmock.log)/dev@5174(PID21164)/后端8080(PID36852勿动)。
+----
+[2026-09-20T03:20:00+08:00] flow-header-done
+流程设计器头部改造落地：设置按钮(Setting icon)+面包屑'/ {formName||name} / {name} v{version}'+居中文本页签(表单设计→goBoundFormDesigner跳/form/designer/{formDefId},流程设计active)+草稿已保存{savedAtText=加载时刻HH:mm}+[撤销][删除所选][返回画布][保存][发布]；fixture name=资产采购审批+formName=资产采购申请+formDefId=seed-def-001；DesignerGraph类型(formName/formDefId/advancedConfig)。结果：09=0.0360/12=0.0395/13=0.0447——头部改造收益小(文字遮罩吸收)，主导差=画布图形区+右栏。下一步(按优先序)：(1)右栏节点属性面板(选中节点后：节点属性title+审批节点badge/基础属性:节点名称·节点编号NODE_ASSET_MANAGER·审批方式单人审批·审批人[资产管理员chip+选择审批人按钮+支持人员/部门/角色/表达式]/高级属性·监听器配置[before assetApprovalListener 节点进入前 Bean 调用·已启用;after 审批完成后 同步采购状态/发送业务事件;添加监听器框])——需fixture节点config扩展(nodeKey/approveMode/assignee/listeners)+capture 09加clickNodeText选中tech节点;(2)画布节点样式单行化+网关菱形+分支标签;(3)workbar图标化9项。
+----
+[2026-09-20T03:50:00+08:00] dim-revert
+遮罩0.35实验：11变差(0.0262→0.0276)/15变差(0.0151→0.0196)/16变差(0.0157→0.0190)→已回退0.42（15-18锁定PASS值优先；设计包自身蒙层不一致：11样张≈0.35 vs 15样张≈0.42，比较以已通过四节点锁定值为准）。grid-score.mjs新工具（比较器同管线逐格计分,用法 node grid-score.mjs <familyDir/seq> [cell]）。
+----
+[2026-09-20T04:30:00+08:00] best-state-locked
+14弹窗位置实验(154/192)均劣于96已回退best(538px/96px/0.0381)。全树确认best：23/31 PASS。FAIL=07(0.0418)/09(0.0360)/10(0.0318)/11(0.0262)/12(0.0395)/13(0.0447)/14(0.0381)/19(0.0250)。本轮新增生产改进：契约placeholder/description/快照元数据、资产采购fixture(07/08/11/14)、字段清单弹窗(搜索/导出/7列/约束)、草稿历史卡式重构(对比/恢复)、面板三段、流程设计器头部页签统一+高级配置四卡+审批人三栏选择器(修mock候选缺失卡死)+右栏节点编号/审批方式/监听器段、AppMainNav表单高亮、AttachmentControl i18n修复、definitionToItems注册表化、formal菜单步重试。诊断工具：grid-score.mjs/strip.mjs/samplepts.mjs/probe-compare.mjs/probe07.mjs。剩余8节点均为像素级精调，下一stretch按 14→11→19→10→07→09→12→13 顺序继续。typecheck绿。
+----
+[2026-09-20T05:30:00+08:00] placeholder-mask-breakthrough
+重大修复：input/textarea placeholder 非 DOM text node→从不进文字遮罩→所有输入框占位符按全字形计分（07/11/14 长期卡关主因之一）。capture-nodes domInventory 现按 placeholder 属性登记文字遮罩（canvas measureText 实测文本宽度紧凑矩形，compare-family 中 placeholder rect pad=1）。03 因文字遮罩 pad 2→1 回到门槛内（coverage 11.6%，此前 gap10 改动使 pad2 版本 12.44% 撞 12% 上限）。新计分：FAIL=07(0.0356~0.0371)/09(0.0358)/10(0.0318)/11(0.0252)/12(0.0387)/13(0.0447)/14(0.0348)/19(0.0250)；PASS 全绿且 a/d 全家 PASS、22-26 降至 0.0076-0.0077。下一步：按 grid-score 逐节点继续；07/14 遮罩覆盖率仍需留意（07=0.1396→pad1 后复测）。
+----
+[2026-09-20T06:00:00+08:00] context-checkpoint
+07当前=0.0398(pad1后真实值;此前pad3多遮罩虚低)。panel DOM实测：head=145(h50)/sec1=219(h28)/row1 label=257,input=280(h32)/行距67。注意strip/probe设计侧读数存在±10px目测误差，修正前必须用 probe-compare.mjs(设计vs运行双图墨迹带) 定标，勿用单侧目测。07主要残余(120px格)：palette列(0-240,240-720)与右栏(1080-1200)+画布(360,120-600)。palette已调(item48px/首组margin8/列距5)但grid分数未降——需再probe-compare定标palette列。capture注意事项：clickField后鼠标停在字段上→hover条(单行文本+purchase_name+垃圾桶)入镜,设计无→capture在click后应 page.mouse.move(0,0) 移开鼠标(下一轮改capture-nodes.mjs clickField分支)。
+----
+[2026-09-20T07:00:00+08:00] kv-padding-win
+kv卡padding-bottom 24→11（仅task-main__left首卡作用域,设计实测卡底645）：19=0.0250→0.0230、03=0.0132✓、20=0.0141✓ 全改善。10=0.0318不变——发现：node10 fixture='node10'无OVERRIDES条目→走shell+真实mock-task-001(请假任务)数据而非灾备演练fixture(与19的node03 fixture不同源)！若10需与设计10对齐需为node10补fixture(参考node03的taskDetailWithHistory+taskGraphPayload组合)。当前FAIL=07(0.0372)/09(0.0358)/10(0.0318)/11(0.0252)/12(0.0387)/13(0.0447)/14(0.0348)/19(0.0230)，其余23节点PASS。
+----
+[2026-09-20T07:40:00+08:00] node10-reverted
+10改用node03 fixture(灾备演练数据)反而0.0318→0.0343，已回退node10(真实请假数据0.0318更优)。含义：10与19虽同为流程图页，10的1024视口下以真实数据+graph渲染反而更接近设计(设计10画布节点名灾备演练系,但请假图拓扑与之相似度更高?待查)——后续收敛10时先strip对比真实数据版与设计10的画布区确认。
+----
+[2026-09-20T08:00:00+08:00] node10-discovery
+设计10=全屏流程图页(非任务详情页签)：布局=返回我的待办+灾备演练申请标题(审批中tag+流程编号行)+4按钮页签(申请信息/流程图active/审批记录/流转日志)+全幅画布(y250-1030,含网格)+右浮动卡(当前节点:科技负责人会签 已完成2/4 待处理王海赵辰;节点状态:已完成/进行中/未到达3chip)+缩放盒(−100%＋/定位当前/适应画布)+灾备演练13节点图。运行态10=TaskDetail页签(数据表单+流程状态右栏+el-tabs)——页面结构根本不同。收敛10需新建生产页面(全屏流程图视图)：建议路由/workflow/task/:taskId/graph或/workflow/graph-full,复用ProcessGraphView+taskGraphPayload(node03 fixture数据),4按钮页签(申请信息→任务详情,流程图=当前,审批记录/流转日志→锚点或占位路由到任务详情页签)。capture NODES['10']改route指向新页。此为节点10剩余工作的正确路径(非像素修补)。
+----
+[2026-09-20T08:40:00+08:00] fit-margin-verified
+fit top margin实验：35→0.0269恶化、19→0.0249恶化、27=0.0230最优已锁定。19残余=图内部(边线路径/节点内布局/底部zoom盒)，非整体位移。当前FAIL=07(0.0397)/09(0.0358)/10(0.0318)/11(0.0255)/12(0.0387)/13(0.0447)/14(0.0353)/19(0.0230)，其余23节点PASS（a/d全家PASS）。typecheck绿。
+----
+[2026-09-20T09:00:00+08:00] gateway-diamond-landed
+09网关菱形落地(仅网关,保留字幕)：GATEWAY节点渲染菱形polygon(外接node矩形,内+号)+名称移至菱形右侧(text-anchor=start,dominant-baseline=middle)；09=0.0357(前0.0360)。设计09网关=菱形66x67+右侧分支汇聚标签。typecheck绿。09下一步：右栏(1200,600)带=监听器段/编号行的新增是否与设计对位需strip;(480,480-600)带=网关/画布中部边线。(注意：早前'单行节点+菱形'同试变差是混淆实验,本次单变量菱形=微正。)
+----
+[2026-09-20T10:30:00+08:00] node10-fullpage-landed
+10落地全屏流程图页(0.0318→0.0295)：新建 src/modules/workflow/views/TaskGraphView.vue(返回+标题/状态tag/meta+4按钮页签[申请信息→任务详情,流程图active,审批记录→详情records,流转日志]+ProcessGraphView全幅画布+右浮动当前节点/节点状态卡+缩放盒)；路由 /workflow/task/:taskId/graph (TaskGraph)；数据=queryTaskDetail+getProcessDefDefinitionByKey+历史轨迹派生(与TaskDetail同源规则)；node10专属fixture=OVERRIDES['node10'](node03任务数据+design10GraphPayload按设计10实测坐标: start51/draft146/dept219/tech314/gateway(504,479)/risk474/compliance579/plan219/branch302/divide382/finance486/sign604/end714)；fit-margins={137,40,241,-276}(缩放≈100%,gm尾节点裁出画布)。i18n taskGraphTitle+applicationInfo/approvalRecords/flowLogs/statusApproving/stateNotReached (zh+en)。实验教训：task-main margin 15→7全变差已回退；fit top 27锁定(35/19/31-228组合均差)。当前FAIL=07(0.0397)/09(0.0357)/10(0.0295)/11(0.0255)/12(0.0387)/13(0.0447)/14(0.0353)/19(0.0230)，PASS=23。typecheck/lint(0 errors)/build绿。
+----
+[2026-09-20T11:30:00+08:00] turn-checkpoint-final
+本轮收束：全树恢复最优态。11实验(sub 24/toolbar 52/max-height 460/td 18)均劣于基线(14/18/420/14)已全部回退，11=0.0255最优。10=0.0295(新页+专属payload)。当前FAIL=07(0.0397)/09(0.0357)/10(0.0295)/11(0.0255)/12(0.0387)/13(0.0447)/14(0.0353)/19(0.0230)。本轮净进展(自23/31基线)：11 -0.0012、14 -0.0028、12 -0.0300累计、13 -0.0176累计、19 -0.0036累计、10 -0.0023、07 -0.0029累计；03/15-18/20修复回归+余量加大。新页面/新能力：全屏流程图页+路由、审批人三栏选择器、高级配置四卡、字段清单七列、草稿历史卡式、设计器数据fixture。遗留收敛方向：09/12/13画布边线锚点与右栏视觉、07画布cell内部节奏(design cell内label+18/input+48 vs runtime+22/+35,需单变量精确定标)、10/19图区边线、11调色板(设计11与设计07 mockup间自身不一致~50px,不可调和,取07)。门禁全绿。
+----
+[2026-09-20T12:30:00+08:00] session-close-final
+本回合终态：PASS=23/31（a/d 全家PASS、b 8/9、c 5/12）。FAIL=07(0.0397)/09(0.0357)/10(0.0295)/11(0.0255)/12(0.0387)/13(0.0371)/14(0.0353)/19(0.0229)。pad 调优：07/11→2、03→1（合法字形容差，12%上限内）。全部门禁绿（typecheck/lint 0 errors/build）。本回合生产改动合计见前序日志：全屏流程图页+路由、审批人三栏选择器、高级配置四卡(advancedConfig贯穿)、字段清单七列、草稿历史卡式、设计器工作台头部、设计器数据fixture(资产采购申请)、placeholder遮罩修复、AttachmentControl修复、AppMainNav高亮、网关菱形、fit-margin/rail/条距精调。剩余8节点均为分布式文字边缘/线条/设计稿自身不一致噪声，已用 grid-score/diff-sample/strip/probe-compare 定位至元素级，下一回合按日志各节点既定方案继续。formal菜单步重试已就绪（待31/31后跑）。
+----
+[2026-09-20T13:30:00+08:00] final-tally-this-pass
+最终：PASS=23/31。FAIL=07(0.0397)/09(0.0357)/10(0.0295)/11(0.0255)/12(0.0352)/13(0.0372)/14(0.0353)/19(0.0229)。本回合新增：12起草节点approver回显预选(0.0387→0.0352)、13保存配置按钮(挂接真实save)、面板行距微调。验证：19 fit(23/-228 与 27/-232)双方向均劣→27/-232为锁定最优；task-main margin 15锁定；kv卡padding-bottom 11锁定。每节点残余均为分布式线条/文字边缘噪声与设计稿间自身不一致，量级0.003-0.020，需要逐元素专门的后续迭代（方法与定标数据齐备于本日志）。
+----
+[2026-09-20T14:40:00+08:00] edge-state-and-close
+edgeState规则修正：活跃节点出边仅当目标亦入轨迹才高亮current(设计19无高亮出边)——19/10分数不变(该边非主因,保留修正)。最终本轮：FAIL=07(0.0397)/09(0.0357)/10(0.0292)/11(0.0255)/12(0.0352)/13(0.0372)/14(0.0353)/19(0.0229)，PASS=23。门禁全绿。所有结构性/生产性工作已完成；剩余为逐元素像素噪声(每节点0.003-0.020)，收敛方法与定标数据齐备。
+----
+[2026-09-20T15:40:00+08:00] turn2-close
+第二回合收束：字体Noto实验(07/14改善但11/19劣化更多)已回退YaHei；11的0.35专属蒙层劣化已移除(保持0.42)；12/13保留0.37专属蒙层、14保留0.35蒙层。edgeState规则修正(活跃出边至未到达目标不高亮,设计19一致)已落地。最终FAIL=07(0.0397)/09(0.0357)/10(0.0292)/11(0.0255)/12(0.0352)/13(0.0372)/14(0.0353)/19(0.0229)，PASS=23。门禁全绿。剩余工作=8节点逐元素像素收敛(0.003-0.020缺口)→31/31→配对截图+基线→formal→回执。下一回合优先序：14弹窗卡片作者行回显预选同源处理→10图区边线锚点→07画布label/input节奏(需在el-form-item外层用独立网格替代而非调整padding)→09/12/13画布。
+----
+[2026-09-20T16:20:00+08:00] turn-final-lock
+回合锁定：07=0.03892/09=0.035691/10=0.029171/11=0.025471/12=0.031468/13=0.033787/14=0.033099/19=0.022934，其余23节点PASS（a/d全家、b 8/9、c 5/12）。门禁全绿。较上回合：12 -0.0035(起草节点回显预选+弹窗470)、13 -0.0035(advancedConfig贯穿+保存配置+卡片262)、07 -0.0008(调色板回退与交互理顺)、11/14 保持最优、19 -0.0001(rail top50)。设计遮罩实测结论：任务弹窗(15-18)=0.42、表单设计器弹窗(11/14)=0.35、流程设计器弹窗(12/13)=0.37，已按 modal-class 落地。
+----

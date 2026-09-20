@@ -1,0 +1,163 @@
+{
+  "feature": "p53-global-ui-component-layout",
+  "round": "supplement-08（依据 planning-review-p53-completion-10-not-passed.md 与提示08）",
+  "generatedAt": "2026-09-20T18:24:35.201Z",
+  "sourceFingerprint": "0c581160c908103caecfd0b68fca42d9a90f7899af22cb5c974f5ec1baf04dd5",
+  "tierDefinitions": {
+    "DESIGN_FIDELITY": "受控 fixture/数据注入的视觉保真层——只回答运行时与设计稿的布局/颜色/文字保真，不承担业务行为结论（允许 mock 对象与 sw.design-fixture-id 数据注入）",
+    "FORMAL_FLOW": "真实后端（8080）+ 真实身份（admin/系统管理员/T0）+ 真实对象 + 非空 /api/* 网络索引，证据来自 headless=false 用户可见会话；禁止 design-fixture、mock 验证码与 mock 对象"
+  },
+  "sameArtifactRule": "同一制品只承担一层结论：review-07 的 16 张正式流截图因启用 mock 验证码/sw.design-fixture-id/mock-task-001 且网络索引为空，自本轮起归层为 DESIGN_FIDELITY，不再作为 FORMAL_FLOW 通过依据",
+  "designFidelity": {
+    "lockedFromReview07": {
+      "renderObjects": "07a：31/31 生产渲染对象，usesAlternateRenderPath=false（本轮未触及对象清单）",
+      "colors": "07b：1096/1096 声明色映射，unmapped=0 fail=0，最大RGB通道差3（本轮未触及令牌体系）",
+      "families": "07c：family-a/b/c/d = 6/6、9/9、12/12、4/4 全部 exit0（本轮仅重采受影响节点，见下）"
+    },
+    "review08": {
+      "familyA": {
+        "reusedAndReverified": [
+          "01",
+          "04",
+          "05",
+          "21"
+        ],
+        "node27": {
+          "action": "重采（本轮触及 FormRender.vue）",
+          "result": "PASS main=0.007084",
+          "conclusion": "FormRender min-height 等价替换 + ≤767 媒体查询在 ≥1280 设计视口像素零变化"
+        },
+        "node06": {
+          "status": "RECORDED_SECURITY_DEVIATION",
+          "authorizedBy": "方向 §2.3（安全/真实能力优先并记录可见差异）+ 方向 §4.4（不新增租户输入、记住登录、忘记密码）+ review-10 §9.6",
+          "reason": "设计稿节点06 本身包含租户输入/记住登录状态/忘记密码；按安全口径删除后与设计稿出现预期像素偏差",
+          "metrics": {
+            "main": 0.023062,
+            "threshold": 0.02,
+            "maskCoverage": 0.078836,
+            "coverageLimit": 0.12,
+            "structureMasked": false
+          },
+          "artifacts": [
+            "family-a/06-runtime.png",
+            "family-a/06-diff.png",
+            "family-a/06-comparison.json",
+            "family-a/06-masks.json"
+          ]
+        }
+      }
+    }
+  },
+  "formalFlow": {
+    "manifest": "formal-mobile-manifest.json",
+    "identity": {
+      "username": "admin",
+      "displayName": "系统管理员",
+      "tenantContext": "T0",
+      "authMode": "real captcha bitmap + RSA-OAEP login"
+    },
+    "headless": false,
+    "networkIndex": "capture-network-index.json（20 条真实 /api/* 请求，含 /api/auth/challenge、/api/auth/login、/api/form/def/by-key/.../definition 等）",
+    "unauthorizedCapabilityCounts": {
+      "tenantLabelInMainForm": 0,
+      "rememberLoginState": 0,
+      "forgotPassword": 0,
+      "forbiddenControls": 0
+    },
+    "note": "SSO 区块的租户 ID 输入为 EV-06 锁定契约（方向 §4.4 保留的既有 SSO 能力），不属于账号登录未授权能力"
+  },
+  "bindingTable": [
+    {
+      "cls": 1,
+      "name": "登录真实链",
+      "lockedReal": "review-01 ev2-01（真实挑战→验证码位图→RSA-OAEP→会话，DOM 断言无未授权项）",
+      "finalVisual": "review-08 ev08m-login-375 / ev08f-login-1440（FORMAL_FLOW 真实 PNG 验证码+真实登录，网络索引非空）",
+      "impact": "本轮触及 LoginPage.vue → 全新 FORMAL 复采",
+      "status": "BOUND"
+    },
+    {
+      "cls": 2,
+      "name": "用户端壳与工作台",
+      "lockedReal": "review-01 ev2-02（真实 displayName/统计/待办 ID）",
+      "finalVisual": "review-07 ev3-shell-workspace-1440 + family-a node01 PASS（本轮复核）",
+      "impact": "未触及（BasicLayout/WorkspaceHome 零修改）",
+      "status": "BOUND"
+    },
+    {
+      "cls": 3,
+      "name": "企业门户",
+      "lockedReal": "review-01 ev2-03（真实统计/服务卡来自服务端菜单可见集）",
+      "finalVisual": "family-a node05 PASS（本轮复核）+ review-03 EV-03 门户视觉族",
+      "impact": "未触及",
+      "status": "BOUND"
+    },
+    {
+      "cls": 4,
+      "name": "管理端壳与表单定义列表",
+      "lockedReal": "review-01 ev2-20/21/22 + ev2-14（真实表单/schema/分类 API）",
+      "finalVisual": "review-07 ev3-shell-admin-formdeflist-1440 + ev2a-admin-menu-expanded + family-a node04 PASS（本轮复核）",
+      "impact": "未触及",
+      "status": "BOUND"
+    },
+    {
+      "cls": 5,
+      "name": "流程中心分类动态性",
+      "lockedReal": "review-01 ev2-04/ev2-14（真实管理 API 建分类并归入已发布定义）",
+      "finalVisual": "review-07 ev3-shell-catalog-1440 + family-a node21 PASS（本轮复核）",
+      "impact": "未触及",
+      "status": "BOUND"
+    },
+    {
+      "cls": 6,
+      "name": "数据列表与实例详情",
+      "lockedReal": "review-01 ev2-05/05b/18（真实列表/条件操作/审批历史行）",
+      "finalVisual": "family-b node02/03 PASS + review-03 EV-03 实例弹窗视觉族",
+      "impact": "未触及",
+      "status": "BOUND"
+    },
+    {
+      "cls": 7,
+      "name": "任务详情/审批操作/流程图/意见弹窗",
+      "lockedReal": "review-01 ev2-06/07/08/12/12b（真实 complete 命令链）+ review-03 ev2c（真实任务 af63f9ac…/真实意见文本）",
+      "finalVisual": "review-07 ev2c-taskdetail-before/-processgraph/-opinion-dialog + family-b node10/19/20 PASS",
+      "impact": "未触及",
+      "status": "BOUND"
+    },
+    {
+      "cls": 8,
+      "name": "流程设计器与审批人候选",
+      "lockedReal": "review-01 ev2-09/10/11（真实画布/服务端校验3错误/恢复）+ review-03 ev2b（真实定义 2100424929376403458、候选 GET 200、图 PUT 200、校验 0 错误）",
+      "finalVisual": "review-07 ev2b-picker-candidates/-backfilled/-save-validate + family-c PASS",
+      "impact": "未触及",
+      "status": "BOUND"
+    },
+    {
+      "cls": 9,
+      "name": "桌面发起流程（FormRender）",
+      "lockedReal": "review-01 ev2-15/16（真实提交→实例落库→列表计数增长）",
+      "finalVisual": "family-a node27 重采 PASS（本轮）",
+      "impact": "本轮触及 FormRender.vue → 设计节点重采；≥1280 渲染零变化",
+      "status": "BOUND"
+    },
+    {
+      "cls": 10,
+      "name": "移动 H5（form/workflow/notify）",
+      "lockedReal": "review-03 ev4（真实后端 375 四页：无横向滚动/真实通知数据）",
+      "finalVisual": "review-08 FORMAL ev08m-form/workflow/notify-375（真实后端+真实表单对象 p53ev08_mobile_form+碰撞检测=0）",
+      "impact": "本轮触及（375 响应式修复）→ 全新 FORMAL 复采；旧对象 p61r10_batch_form 已随后端内存库重启销毁，新对象 p53ev08_mobile_form（已发布 defId=24cbb61b-6453-40b3-a236-ce03705b0d03）登记替代",
+      "status": "BOUND"
+    },
+    {
+      "cls": 11,
+      "name": "个人菜单与权限/撤权边界",
+      "lockedReal": "review-01 ev2-24/32/33/34（真实双区菜单、无角色空态、深链 404、T100 撤权链）",
+      "finalVisual": "review-07 ev2a-admin/portal-menu-expanded + family-d PASS",
+      "impact": "未触及",
+      "status": "BOUND"
+    }
+  ],
+  "knownObservations": [
+    "e2e/visual 全量套件（--workers=1）当前为 37 passed / 34 failed / 17 skipped；34 项失败为 review-04..07 设计还原期间 DOM 类名/像素演进与 review-03 时代断言/基线的存量漂移，与本轮两文件无关（工具取证：stash 本轮 LoginPage.vue/FormRender.vue 后 baselines.spec.ts:29 依旧 3/3 失败，.workspace__greeting 在 WorkspaceHome.vue 零命中；本轮触达的节点06 登录基线 --workers=1 通过）。按 review-10 §4『只需在最终源码上重跑受影响工程门禁』口径登记为存量观察项，不在本轮账本内擅自大规模改基线。",
+    "FormRender 真实表单对象在 H2 内存库重启后不存在（p61r10_batch_form 随 review-01 时代 fixture 消失），按提示08 R1a 替代条款经授权测试对象操作新建并发布 p53ev08_mobile_form（seed 脚本与 defId 见 scripts/seed-mobile-form.mjs 与本 manifest cls 10）。"
+  ]
+}

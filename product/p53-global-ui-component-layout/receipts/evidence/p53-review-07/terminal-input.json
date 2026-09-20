@@ -1,0 +1,15 @@
+{
+  "schema": "p53-terminal-input.v1",
+  "feature": "p53-global-ui-component-layout",
+  "reviewRound": "p53-review-07",
+  "expectedFeatureStatus": "VERIFYING",
+  "expectedReceipt": "product/p53-global-ui-component-layout/receipts/receipt-p53-supplement-07.md",
+  "validator": "product/p53-global-ui-component-layout/receipts/evidence/p53-review-07/scripts/terminal-validate.mjs",
+  "checks": [
+    "formal capture manifest is 16/16 and source fingerprint is stable",
+    "render-object validation is complete with no alternate render path",
+    "color mapping is complete with zero unresolved records and zero failures",
+    "family-a through family-d all pass",
+    "typecheck, test, build, lint, and formal flow all exit zero"
+  ]
+}
