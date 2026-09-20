@@ -27,7 +27,7 @@
 | 2026-09-20 范围纠偏方向（已归档） | `product/p61-user-facing-message-humanization/passed/direction-p61-user-facing-message-humanization-scope-correction-20260920.md` |
 | 阶段三终态同步方向（已归档） | `product/p61-user-facing-message-humanization/passed/direction-p61-user-facing-message-humanization-terminal-sync.md` |
 | 阶段三最终复核 | `product/p61-user-facing-message-humanization/receipts/planning-final-review-terminal-sync-p61-user-facing-message-humanization-01-passed.md`（**PASSED**，`COMPLETED（规划已确认，2026-09-20）`） |
-| 集成顺序记录 | `product/p53-global-ui-component-layout/receipts/planning-integration-order-p61-before-p53-merge-20260920.md`（P61 独立提交 Server `742adb8` / Web `d110ed8` 先保留；P53 结束后统一合并；locale 冲突须同时保留 P53 结构/新增键与 P61 八值 8/8） |
+| 集成顺序记录 | `product/p53-global-ui-component-layout/receipts/planning-integration-order-p61-before-p53-merge-20260920.md`（P61 独立提交 Server `742adb8` / Web `d110ed8`；已随 P53 于 2026-09-21 合入两仓 develop 并推送（Web `fc37608`、Server `fa96290`）；locale 冲突按「P53 结构/新增键 + P61 八值 8/8」消解） |
 | 功能级验收 | `product/p61-user-facing-message-humanization/receipts/planning-review-p61-scope-corrected-completion-03-passed.md`（**PASSED**，2026-09-20） |
 | 阶段三回执 | `product/p61-user-facing-message-humanization/receipts/terminal-sync-p61-user-facing-message-humanization-01.md`（`TERMINAL_SYNC_SUBMITTED`） |
 
@@ -53,8 +53,7 @@
 - 需求编号：**P61 已核销**；P2/P4/P31/P34/P35/P37/P38/P39/P47 及其他开放编号状态不变。
 - 计数：业务功能数 **44**（P61 不增加）、清单 **✅46 / 🟦22 / ⬜22**（90）、**ADV64**，均零变化；I 集合 54 条不增删。
 - 终态同步：回执 `receipts/terminal-sync-p61-user-facing-message-humanization-01.md`（`TERMINAL_SYNC_SUBMITTED`）已经最终复核 01 PASSED 确认；三份方向均归档 `passed/`。
-- 集成顺序：P61 独立提交（Server `742adb8`、Web `d110ed8`）先保留、暂不合并；P53 结束后统一合并，locale 冲突按「P53 结构与新增键全部保留 + P61 八值 8/8 保留」处理。
+- 集成顺序：P61 独立提交（Server `742adb8`、Web `d110ed8`）已于 2026-09-21 随 P53 统一合入两仓 develop 并推送（Web `fc37608`、Server `fa96290`）；locale 冲突按「P53 结构与新增键全部保留 + P61 八值 8/8 保留」处理，合并后八值复算 8/8。
 
 ---
 > 登记说明：本文件由执行角色在 P61 阶段三终态同步轮按唯一终态值清单登记；不含业务代码与迁移。
-

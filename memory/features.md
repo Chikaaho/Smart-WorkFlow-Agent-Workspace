@@ -1,11 +1,11 @@
 # 功能摘要
 
-> 规划侧最新同步点：2026-09-20（P53=P0/XL/`VERIFYING`并继续提示07；P61=`COMPLETED（规划已确认，2026-09-20）`并已核销；P60=`COMPLETED（规划已确认）`且Server/Web `0.1.0`已发布；正式业务功能数44、ADV64）。
-> 清单当前值 **✅46/🟦22/⬜22**（90，M08 十行 🟦/⬜→✅，其余 80 行零变化）；功能数 44；全量双向映射见 `knowledge/feature-reconciliation-index.md`。
+> 规划侧最新同步点：2026-09-21（P53=`COMPLETED（规划已确认，2026-09-21）`、已核销、第45个正式业务功能；P61=`COMPLETED（规划已确认，2026-09-20）`并已核销；P60=`COMPLETED（规划已确认）`且Server/Web `0.1.0`已发布并锁定；清单✅46/🟦22/⬜22、ADV64）。
+> 清单当前值 **✅46/🟦22/⬜22**（90，M08 十行 🟦/⬜→✅，其余 80 行零变化）；功能数 **45**（P53 为第 45 个正式功能）；全量双向映射见 `knowledge/feature-reconciliation-index.md`。
 
 - `v0.1.0-oa-completion`（P60，优先级P0）：**COMPLETED（规划已确认）**，整体14/14；版本身份=Server `c15428f…` / Web `963df36…`，迁移终点V93。
-- P53（P0/XL）：**VERIFYING，验收09不接受`BLOCKED`**。当前最终证据23/31，b/c exit1；颜色33条超差被自动免失败且max diff=218；terminal缺包并与progress不一致。提示07改用受限glyph边界和SVG声明颜色方法，要求连续完成31/31、真实流与terminal；唯一入口=`product/p53-global-ui-component-layout/receipts/planning-execution-prompt-p53-global-ui-component-layout-07.md`。
-- P61（P1/L）：**`COMPLETED（规划已确认，2026-09-20）`，已核销**。独立提交Server `742adb8`、Web `d110ed8`先保留，待P53结束后统一合并；三份方向归档`passed/`，不增加业务功能数。
+- P53（P0/XL）：**功能级`PASSED（2026-09-21）`、`COMPLETED（规划已确认，2026-09-21）`、已核销，第45个正式功能**。视觉套件71 passed/17 skipped/0 failed、Web四门exit0、真实FORMAL_FLOW与节点06安全偏差锁定；主方向与阶段三方向均已归档`passed/`。
+- P61（P1/L）：**`COMPLETED（规划已确认，2026-09-20）`，已核销**。独立提交Server `742adb8`、Web `d110ed8`已随P53合入两仓develop并推送（Web `fc37608`、Server `fa96290`）；三份方向归档`passed/`，不增加业务功能数。
 
 - `p21-iot-device-access`：**COMPLETED（规划已确认，2026-09-08）**，第44个正式功能；P21已核销、I14关闭、M08 10✅/1🟦/2⬜。主方向与阶段三方向均归档 `passed/`；最终裁决 `planning-final-review-terminal-sync-p21-iot-02-passed.md`。
 

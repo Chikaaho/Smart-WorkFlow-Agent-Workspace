@@ -9,7 +9,7 @@
 
 ## Owner 优先级覆盖
 
-**2026-09-20 当前排期**：P53继续作为P0/XL主任务，状态`VERIFYING`，唯一入口为提示07。P61已`COMPLETED（规划已确认）`并核销，独立提交先保留；待P53结束后统一合并。功能数44、✅46/🟦22/⬜22、ADV64不变。
+**2026-09-21 当前排期**：P53 已经规划最终复核01 PASSED 确认`COMPLETED（规划已确认，2026-09-21）`并核销（第45个正式功能）；正式业务功能数45，清单✅46/🟦22/⬜22与ADV64不变。P53/P61 已按 Owner 授权与既定 P61→P53 顺序统一合入两仓 develop 并推送（Web `fc37608`、Server `fa96290`），受影响检查：Web 四连 exit0＋locale 八值8/8、Server compile exit0＋聚焦测试35/0/0/0。下一动作=无待执行方向，等待 Owner/Planner 下发下一轮任务。
 
 **2026-09-15 P0版本终态**：P60成熟OA `0.1.0`已**COMPLETED（规划已确认）**、整体14/14，I1—I6均已确认；Server/Web发布锁定、Workspace不参与版本判断、迁移终点V93。I5三Provider与I6五外部通知渠道保持Owner延期/未验证，I6 R8由P2待办跟踪。功能数44、✅46/🟦22/⬜22、ADV64与其他开放P编号不变。
 
@@ -93,7 +93,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 
 蓝凌官方公开材料还包含自由/嵌入式/即席子流程、流程仿真、完整流程大数据分析，以及页面/图表/报表设计、动作流/数据流/连接流、主数据整合、多级门户、内容引擎、知识搜索和应用市场。它们属于更广的 PaaS 能力，不作为 P60 的“完整 OA”通过条件；现已正式登记为 8 个高级能力模块、64 条稳定明细，见 [高级能力功能明细清单](../product/v0.1.0-oa-completion/ready/advanced-capability-feature-checklist.md)。P60 只吸收与日常 OA 交易闭环直接相关的最小能力，避免版本范围失控；对标详情与来源见正式方向 §3.10—§3.11。
 
-成熟OA路线方向：[v0.1.0 OA全功能收口（已归档）](../product/v0.1.0-oa-completion/passed/direction-v0.1.0-oa-completion.md)。[P60终态最终复核01](../product/v0.1.0-oa-completion/receipts/planning-final-review-terminal-sync-v0.1.0-oa-completion-01-passed.md)确认`COMPLETED（规划已确认）`；R8五渠道继续由[P2待办](i6-external-notification-channels-real-verification.md)跟踪。当前执行[P53提示07](../product/p53-global-ui-component-layout/receipts/planning-execution-prompt-p53-global-ui-component-layout-07.md)。
+成熟OA路线方向：[v0.1.0 OA全功能收口（已归档）](../product/v0.1.0-oa-completion/passed/direction-v0.1.0-oa-completion.md)。[P60终态最终复核01](../product/v0.1.0-oa-completion/receipts/planning-final-review-terminal-sync-v0.1.0-oa-completion-01-passed.md)确认`COMPLETED（规划已确认）`；R8五渠道继续由[P2待办](i6-external-notification-channels-real-verification.md)跟踪。P53已`COMPLETED（规划已确认，2026-09-21）`并核销，[阶段三方向](../product/p53-global-ui-component-layout/passed/direction-p53-global-ui-component-layout-terminal-sync.md)已归档；正式业务功能数45。
 
 ## 一、已开发且未满足（D83 回执确认：90/90 清单一致，缺口逐行核实，此为全量索引）
 
@@ -142,7 +142,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 | P22 | M09 OpenAPI 模块（授权粒度/配额） | I15 | 仅骨架，最后优先级 |
 | P51 | 将工作区根知识/治理仓抽取为通用 Agent Coding Engine | Owner 2026-08-30 补充需求 | ✅ **已完成**（2026-08-31）：功能级 PASSED、阶段三 COMPLETED、Owner 已授权并发布 main/develop-sw；不新增 OA 功能计数 |
 | P52 | 表单设计器顶部工作台与关联流程管理 | Owner 2026-08-30 补充需求 | ✅ **已核销/完成**（2026-09-02，`COMPLETED（已确认）`；P52不对应既有清单明细，所有明细状态不变）；主方向与阶段三方向均归档`product/p52-form-workbench/passed/` |
-| P53 | 全局 UI 与组件布局优化 | Owner 2026-08-30、2026-09-13、2026-09-16、2026-09-17、2026-09-18、2026-09-19；优先级P0；XL；[提示07](../product/p53-global-ui-component-layout/receipts/planning-execution-prompt-p53-global-ui-component-layout-07.md) | `VERIFYING`；验收09不接受`BLOCKED`：最终证据23/31，颜色和terminal不合格且仍有明确下一动作；须连续完成31节点、正式流与有效terminal |
+| P53 | 全局 UI 与组件布局优化 | Owner 2026-08-30、2026-09-13、2026-09-16、2026-09-17、2026-09-18、2026-09-19、2026-09-21；优先级P0；XL；[归档方向](../product/p53-global-ui-component-layout/passed/direction-p53-global-ui-component-layout.md) | ✅ `COMPLETED（规划已确认，2026-09-21）`、已核销；[最终裁决](../product/p53-global-ui-component-layout/receipts/planning-final-review-terminal-sync-p53-global-ui-component-layout-01-passed.md)；第45个正式业务功能 |
 | P54 | 千人千面工作台 | Owner 2026-09-02 补充需求；优先级 P2 | ✅ **已核销/完成**（2026-09-07，v0.0.2-oa A4 交付：登录/根入口默认进入工作台、待办/我发起的/抄送/常用事项四组件显示隐藏/排序/布局、按用户持久化刷新重登恢复、默认布局与恢复默认、权限变化回落；覆盖 P54 定义全部范围与验收边界） |
 | P55 | 前后台分层与管理入口权限 | Owner 2026-09-02 补充需求；优先级 P2 | ✅ **已核销/完成**（2026-09-07，v0.0.2-oa A1 交付：前后台页面归属、进入后台入口仅超管/管理员可见可用、返回前台路径、服务端权限判定（直连后台地址/接口拒绝）、管理员按实际权限展示、撤权一致更新；覆盖 P55 定义全部范围与验收边界） |
 | P56 | 表单设计器 24 列网格布局 | Owner 2026-09-02 补充需求；优先级 P1 | ✅ **已核销/完成**（2026-09-02，功能级 PASSED + 阶段三 `COMPLETED（已确认）`；M03-F01-01 升✅、P46 一并完成核销、功能数 39、清单 ✅34/🟦23/⬜33） |
@@ -295,7 +295,7 @@ P51 已 `COMPLETED（已确认，2026-08-31）`：main 正式历史已完成规�
 
 #### 4. 当前状态
 
-`VERIFYING（P0/XL，当前主任务）`。验收09不接受阻塞回执01；当前唯一入口为 `product/p53-global-ui-component-layout/receipts/planning-execution-prompt-p53-global-ui-component-layout-07.md`。执行须修正证据schema、声明色与glyph比较方法，连续关闭31节点视觉、真实流程和最终门禁；禁止中间回执/`WAIT_PLANNER`或以难度包装阻塞。P61 已 `COMPLETED（规划已确认，2026-09-20）` 并核销，独立提交先保留、待 P53 结束后统一合并。
+功能级`PASSED（2026-09-21）`、最终状态`COMPLETED（规划已确认，2026-09-21）`并已核销；主方向与阶段三终态同步方向均归档`product/p53-global-ui-component-layout/passed/`；规划最终复核01 PASSED；P53 与 P61 已按 Owner 授权与既定 P61→P53 顺序统一合入两仓 develop 并推送（Web `fc37608`、Server `fa96290`），受影响检查：Web 四连 exit0＋locale 八值8/8、Server compile exit0＋聚焦测试35/0/0/0。正式业务功能数45、清单✅46/🟦22/⬜22与ADV64不变，Server/Flyway 不因 P53 晋级；当前无待执行方向，等待 Owner/Planner 下发下一轮任务。
 
 ### P54 Owner 补充需求定义（2026-09-02，优先级 P2）
 
