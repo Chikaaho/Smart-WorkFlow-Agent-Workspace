@@ -1,8 +1,8 @@
 # CH-aPaaS 发布说明 / Release Notes
 
-## 0.1.0（候选 · 2026-09-14）
+## 0.1.0（2026-09-15 发布）
 
-成熟 OA 0.1.0 版本（P60：v0.1.0-oa-completion）。本版本为候选收口；标签与 Release 須在 P60 整体验收、终态同步 và 发布授权完成后由 Owner 明确授权创建。
+0.1.0 全功能收口版本（P60 路线：`v0.1.0-oa-completion`，交付办公审批场景能力）。本版本已于 2026-09-15 发布并锁定：Server main `c15428f0002f6bb0ceeff05c7cbcf842bd3d3148`、Web main `963df360ed18bc1c604652a13edb2a7ed0be8963`；两仓 annotated tag 与公开 Release 均为 `0.1.0`，迁移终点 V93。
 
 ### 新增（I6 通知与版本收口，P0）
 
@@ -15,9 +15,9 @@
 - **敏感收敛**：生产环境关闭全量 SQL 参数日志；接收人信息脱敏。
 - **版本收口**：单一机器可读版本权威 `version.json`；Server Maven 与 Web 包版本投影 `0.1.0`；Flyway 迁移终点 V92（H2/PostgreSQL 同一迁移身份，含通知主体绑定与布尔标志兼容修正）。
 
-### 五类外部渠道边界（须 Owner 条件）
+### 五类外部渠道边界（Owner 延期 / 未验证）
 
-短信、飞书、钉钉、企业微信、邮件的生产适配器、配置契约与失败语义已实现并在本地受控验证；各渠道的"真实一次成功 / 一次可控失败 / 一次恢复重试"行为证据須 Owner 提供可控测试账号与凭据后逐一取得，对应验收原子保持 `VERIFYING`（详见 `release/0.1.0/RELEASE-NOTES.md` 边界登记）。
+短信、飞书、钉钉、企业微信、邮件的生产适配器、配置契约与失败语义已实现并在本地受控验证；各渠道的"真实一次成功 / 一次可控失败 / 一次恢复重试"行为证据仍待 Owner 提供可控测试账号与凭据后逐一取得，当前固定记录为 Owner 延期 / 未验证，并转 P2 待办 `todo/i6-external-notification-channels-real-verification.md`（详见 `release/0.1.0/RELEASE-NOTES.md` 边界登记）。
 
 ### 升级 / 回滚
 

@@ -1,6 +1,6 @@
-# Smart-WorkFlow 生产运维手册（Ops Manual）
+# CH-aPaaS 生产运维手册（Ops Manual）
 
-> 适用范围：Smart-WorkFlow 生产环境（单机部署，本仓库维护的正式运维手册）。
+> 适用范围：CH-aPaaS 生产环境（单机部署，本仓库维护的正式运维手册；部署目录与库名沿用历史 `smart-workflow` / `smart_workflow` 命名）。
 > **连接凭据不落入本文档**：主机 IP、SSH 密钥路径、SSH 用户/端口等一律由本地脚本 `~/ssh/ssh/ssh_personal.sh` / `~/ssh/ssh/scp_personal.sh` 封装，本文档只引用脚本，不写原始 IP 与私钥路径。
 > 说明：本文件基于对生产服务器的只读巡检与架构文档编写（2026-09-01），记录除连接凭据与域名/证书之外的完整运维细节。
 > **信息披露口径**：本文档只暴露前后端**部署位置与端口**；连接凭据（IP/密钥）、对外域名与 TLS 证书信息一律不写入。新增内容须遵守此口径。
@@ -19,7 +19,7 @@ nginx（反向代理 + TLS 终止 + 前端静态托管）
   │  /sw          → 前端静态构建（/opt/smart-workflow/web）
   │  /sw-server/  → 后端 API（反代到 127.0.0.1:8080）
   v
-Smart-WorkFlow 后端（Java 21 / Spring Boot，:8080，bootstrap.jar）
+CH-aPaaS 后端（Java 21 / Spring Boot，:8080，bootstrap.jar）
   ├── PostgreSQL 14（:5433，内网，库 smart_workflow）
   └── Redis（:6379，内网）
 ```
@@ -59,7 +59,7 @@ Smart-WorkFlow 后端（Java 21 / Spring Boot，:8080，bootstrap.jar）
 | 服务 | 进程/端口 | 监听地址 | 说明 |
 |---|---|---|---|
 | nginx | 80 / 443 | 0.0.0.0 | 反向代理、TLS 终止、前端静态托管 |
-| 后端 | Java `bootstrap.jar`，8080 | `*:8080` | Smart-WorkFlow API 服务 |
+| 后端 | Java `bootstrap.jar`，8080 | `*:8080` | CH-aPaaS API 服务 |
 | PostgreSQL 14 | 5433（非默认端口） | 127.0.0.1 / 127.0.1.1 | 业务数据库，库名 `smart_workflow` |
 | Redis | 6379 | 127.0.0.1 | 缓存 / 会话 |
 
@@ -312,4 +312,4 @@ ls -lh /data/backup
 
 ---
 
-*本手册为 Smart-WorkFlow 生产环境的真实运维知识。改动部署结构、路径、端口或库后，应及时修订本文档；连接凭据变更只需改本地脚本即可。本文件含服务器部署细节，仅存放于私有仓库或本机，勿推送到公开仓库。*
+*本手册为 CH-aPaaS 生产环境的真实运维知识。改动部署结构、路径、端口或库后，应及时修订本文档；连接凭据变更只需改本地脚本即可。本文件含服务器部署细节，仅存放于私有仓库或本机，勿推送到公开仓库。*

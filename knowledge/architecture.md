@@ -1,6 +1,6 @@
-# Smart-WorkFlow 系统架构
+# CH-aPaaS 系统架构
 
-> 工作区统一知识库 — 架构分册。描述 Smart-WorkFlow 平台的整体架构设计与项目间关系。
+> 工作区统一知识库 — 架构分册。描述 CH-aPaaS 平台的整体架构设计与项目间关系。
 > 项目内部实现细节见各项目 `docs/governance/engineering-constitution.md`。
 >
 > 信息来源：`CLAUDE-java.md` · `CLAUDE-vue.md` · `Smart-WorkFlow-PRD.md` · `Smart-WorkFlow-前端架构与现状-知识库.md`（均来自 `SmartWorkFlow_files.zip`，2026-07-16）。
@@ -9,12 +9,12 @@
 
 ## 1. 系统定位
 
-CH-aPaaS 是一个**嵌入 AI Agent 的企业级低代码 PaaS 平台**，核心能力为「可视化表单设计 → 数据沉淀 → 流程审批 → 多渠道通知」端到端闭环，并预留 **AI 智能助手、IoT 接入、开放接口** 三条扩展轨道。
+CH-aPaaS 是一个**嵌入 AI Agent 的企业级低代码 PaaS 平台**，核心能力为「可视化表单设计 → 数据沉淀 → 流程审批 → 多渠道通知」端到端闭环，并沿 **AI 智能助手、IoT 接入、开放接口** 三条扩展轨道推进（各轨道当前完成度见 §5）。
 
-| 项目 | 定位 | 技术主体 |
+| 仓库 | 定位 | 技术主体 |
 |------|------|----------|
-| **Smart-WorkFlow** | 后端 API 服务 | Java 21 + Spring Boot 3.4 模块化单体 |
-| **Smart-WorkFlow-Web** | 前端 SPA | Vue 3 + TypeScript + Vite |
+| **Smart-WorkFlow-aPaaS-server** | 后端 API 服务 | Java 21 + Spring Boot 3.4 模块化单体 |
+| **Smart-WorkFlow-aPaaS-Web** | 前端 SPA | Vue 3 + TypeScript + Vite |
 
 形态为**模块化单体**（`-api`/`-biz` 拆分，支持未来按需抽取微服务）。
 
@@ -36,14 +36,14 @@ CH-aPaaS 是一个**嵌入 AI Agent 的企业级低代码 PaaS 平台**，核心
 ## 2. 系统关系
 
 ```
-┌──────────────────────────┐        ┌──────────────────────────┐
-│   Smart-WorkFlow-Web     │  HTTP  │    Smart-WorkFlow         │
-│   (前端 SPA)              │ ────→ │    (后端 API)              │
-│                          │  /api  │                          │
-│   Vue 3 + TS             │        │   Java 21 + Spring Boot   │
-│   Port: 5173 (dev)       │        │   Port: 8080              │
-│                          │        │   Context: /api           │
-└──────────────────────────┘        └──────────────────────────┘
+┌────────────────────────────────┐        ┌────────────────────────────────┐
+│ Smart-WorkFlow-aPaaS-Web       │  HTTP  │ Smart-WorkFlow-aPaaS-server    │
+│ (前端 SPA)                      │ ────→ │ (后端 API)                      │
+│                                │  /api  │                                │
+│ Vue 3 + TS                     │        │ Java 21 + Spring Boot          │
+│ Port: 5173 (dev)               │        │ Port: 8080                     │
+│                                │        │ Context: /api                  │
+└────────────────────────────────┘        └────────────────────────────────┘
 ```
 
 - 前端开发服务器代理 `/api` → `http://localhost:8080`
@@ -141,7 +141,7 @@ sw-dependencies (BOM 版本管理)
 
 ### 4.1 技术选型与理由
 
-- **框架：Vue 3 + TypeScript(strict)**。低代码 OA 工作流场景下，Vue 在三块"硬骨头设计器"里占两块：表单设计器（form-create/VForm 系，OA 实战多）、BPMN（bpmn-js 框架无关 + Vue 封装多）；唯一偏 React 的是 AI 调度图（React Flow），用 Vue Flow 兜。
+- **框架：Vue 3 + TypeScript(strict)**。低代码表单与流程场景下，Vue 在三块"硬骨头设计器"里占两块：表单设计器（form-create/VForm 系，低代码平台实战多）、BPMN（bpmn-js 框架无关 + Vue 封装多）；唯一偏 React 的是 AI 调度图（React Flow），用 Vue Flow 兜。
 - **不继承 vben 等框架做基座**。继承大框架本身就是"改小需求像挖地基"的风险源。改为**精简、自有、可完全掌控**的 Vite 单应用。
 - **不上 monorepo**。前端无后端那种微服务抽取诉求；模块隔离用目录结构 + ESLint 导入边界实现。
 - **核心库**：Vite / Vue Router 5 / Pinia / Element Plus（按需自动导入）/ vue-i18n / axios（封装）/ openapi-typescript（从后端 Swagger 生成类型）/ dompurify / expr-eval-fork（受限求值）/ ESLint flat + Prettier / Vitest。
@@ -206,7 +206,7 @@ locales/         — 国际化（zh-CN）
 | 系统管理 (RBAC/字典) | ✅ 核心就位 | ✅ CRUD + DictSelect/DictTag | 用户/角色/菜单/部门/字典 |
 | 表单引擎 | ✅ 已封版 | ✅ 设计器 + 渲染器 | 8 字段类型 + 动态宽表 + REFERENCE 选择器 |
 | BPM/工作流 | 🟦 已交付子能力 | ✅ 已联通 | BPMN 转换/待办/审批；P57 统一节点扩展、P58 选人/会签/分支/抄送/通知已交付；转办/委托/加签/个人查询等缺口开放 |
-| 通知 | ✅ 基础完成 | ✅ 已落地 | 站内信收发/模板/批量发送（M05 全✅）；通知 SPI 与隔离 Adapter 已验收（P58），厂商渠道未接入 |
+| 通知 | ✅ 0.1.0 收口 | ✅ 已落地 | 站内信收发/模板/批量发送（M05 全✅）；0.1.0（I6）交付六渠道统一投递权威、模板版本快照、通知规则与订阅偏好、收件箱真分页与移动 H5；五外部渠道（短信/邮件/飞书/钉钉/企业微信）生产 Adapter 已实现，真实凭据链为 Owner 延期/未验证 |
 | AI Agent | 🟦 已交付子能力 | ✅ 已联通 | M07 多轮交付：模型管理/图编排/调试/工具调用/会话管理已 COMPLETED；助手配置/对话窗口/知识库 RAG 未做 |
 | IoT | 🟦 已交付子能力 | ✅ 部分 | minimal-business-closure 已交付腾讯 IoT 最小接入（命令队列/状态回调/审批驱动）；真实账号联调/原生 MQTT/完整设备管理开放 |
 | 知识库 | ⬜ 骨架 | N/A | AutoConfiguration 占位；RAG 未立项（P19） |
@@ -214,7 +214,7 @@ locales/         — 国际化（zh-CN）
 | 存储 (Storage) | ✅ 完整 | N/A | CONFIRMED 2026-07-22：-api/-biz 拆分 + 4 提供商 + Service/Controller/测试，storage-multi-provider 已 COMPLETED |
 | 定时任务 (Job) | ✅ 完整 | N/A | CONFIRMED 2026-07-22：-api/-biz 拆分 + Quartz 集成 + Controller/Facade/测试 + Flyway V17，job-scheduler 已 COMPLETED |
 
-> 注：本表为粗粒度总览。**逐模块权威完成度与文件数以 `knowledge/current-status.md` 与 `knowledge/feature-reconciliation-index.md` 为准**（2026-09-04 知识库全量整理同步刷新；BPM/Agent/IoT 按已交付子能力描述，不将模块整体写完成）。
+> 注：本表为粗粒度总览。**逐模块权威完成度与文件数以 `knowledge/current-status.md` 与 `knowledge/feature-reconciliation-index.md` 为准**（2026-09-04 知识库全量整理同步刷新，2026-09-21 按 0.1.0 交付现状校正"通知"行；BPM/Agent/IoT 按已交付子能力描述，不将模块整体写完成）。
 
 ---
 
@@ -234,7 +234,7 @@ locales/         — 国际化（zh-CN）
 | 10 | 系统运维 | 8 / 9 | `sw-biz-system + sw-basic(storage/job)` | 需求明确 |
 | — | **合计** | **55 / 90** | — | — |
 
-完整功能明细见 `Smart-WorkFlow-Server/功能清单.md`（10 模块、**55** 功能、**90** 明细，含 Mxx-Fyy-zz ID 体系；2026-09-04 知识库全量整理复核确认，M04 为 8/10）。逐项状态与映射以 `knowledge/feature-reconciliation-index.md` 为准。
+完整功能明细见 `Smart-WorkFlow-aPaaS-server/功能清单.md`（10 模块、**55** 功能、**90** 明细，含 Mxx-Fyy-zz ID 体系；2026-09-04 知识库全量整理复核确认，M04 为 8/10）。逐项状态与映射以 `knowledge/feature-reconciliation-index.md` 为准。
 
 ---
 
@@ -254,11 +254,11 @@ locales/         — 国际化（zh-CN）
 
 ### 7.3 当前焦点
 
-Walking Skeleton 四环已全部闭合 ✅。正式业务功能已确认 **41 个**（P58 为第 41 个，2026-09-04 已确认）：早期批处理（system-mgmt-crud、bpm-task-center、storage-multi-provider、job-scheduler、kb-verification 等）直至 P52—P58 系列均已闭环；完整清单见 `knowledge/current-status.md` 与 `knowledge/feature-reconciliation-index.md`。（更新 2026-09-04 知识库全量整理同步）
+Walking Skeleton 四环已全部闭合 ✅。正式业务功能已确认 **45 个**（P53 为第 45 个，2026-09-21 已确认）：早期批处理（system-mgmt-crud、bpm-task-center、storage-multi-provider、job-scheduler、kb-verification 等）直至 P52—P53、P57—P61 系列均已闭环；完整清单见 `knowledge/current-status.md` 与 `knowledge/feature-reconciliation-index.md`。
 
-当前无活动业务功能；`knowledge-full-reconciliation`（知识库全量整理，非业务功能）已 **COMPLETED（已确认，2026-09-04）**；P59（ch-apaas-project-update，非新增业务功能统一交付）**COMPLETED（规划已确认，2026-09-05）**。当前状态权威见 `knowledge/current-status.md`。
+当前无活动业务功能；`knowledge-full-reconciliation`（知识库全量整理，非业务功能）**COMPLETED（已确认，2026-09-04）**；P59（ch-apaas-project-update，项目说明与仓库地址统一交付）**COMPLETED（规划已确认，2026-09-05）**；P60（成熟目标 `0.1.0`，登记目录 `v0.1.0-oa-completion`）**COMPLETED（规划已确认，2026-09-15）**；P61（用户可见错误码与提示语人性化）**COMPLETED（规划已确认，2026-09-20）**；P53（全局 UI 与组件布局优化）**COMPLETED（规划已确认，2026-09-21）**。当前状态权威见 `knowledge/current-status.md`。
 
-工作区自身的元架构（规划层/执行层三方角色边界、规划层内部探索模型/规划模型分工、`product/`+`todo/`+`knowledge/` 的原始记忆/压缩记忆分层）已固化为 `system.md` §0.3/§0.4/§11.2、`roles/planner.md` §4（规划写入范围）/§8（记忆分层）与 `shared-constraints.md` §9 的硬约束，本文件只覆盖 Smart-WorkFlow **产品系统**架构，不重复记录工作区元架构。
+工作区自身的元架构（规划层/执行层三方角色边界、规划层内部探索模型/规划模型分工、`product/`+`todo/`+`knowledge/` 的原始记忆/压缩记忆分层）已固化为 `system.md` §0.3/§0.4/§11.2、`roles/planner.md` §4（规划写入范围）/§8（记忆分层）与 `shared-constraints.md` §9 的硬约束，本文件只覆盖 CH-aPaaS **产品系统**架构，不重复记录工作区元架构。
 
 ---
 
