@@ -171,7 +171,7 @@
 - **待 Owner 确认（1）**：P53
 - **仅骨架（1）**：P22
 - **无池行备案**：P13（已核销闭环，经 knowledge/features/sysrole-v5-column-alignment.md，合规移除）；P23（全工作区零引用）
-- **审计外新增编号（1）**：P59（CH-aPaaS 项目说明、仓库与 main 分支整理及自动发版；Owner 2026-09-04；非新增业务功能统一交付，不映射 90 明细；**已核销并完成终态复核**：规划复验 PASSED（2026-09-05）`product/p59-ch-apaas-project-update/receipts/planning-final-review-p59-terminal-sync-02-passed.md`，功能状态 COMPLETED（规划已确认，2026-09-05），见 `knowledge/features/p59-ch-apaas-project-update.md`）
+- **审计外新增编号（2）**：P61（全系统用户可见错误码与提示语人性化治理；Owner 2026-09-14/20；优先级 P1、L；非新增业务功能、不映射 90 明细；功能级 `PASSED`（2026-09-20），最终确认 `COMPLETED（规划已确认，2026-09-20）` 并正式核销；三份方向均归档 `product/p61-user-facing-message-humanization/passed/`，阶段三终态同步回执 `product/p61-user-facing-message-humanization/receipts/terminal-sync-p61-user-facing-message-humanization-01.md` 经最终复核 01 PASSED 确认；独立提交 Server `742adb8` / Web `d110ed8` 先保留，待 P53 结束后统一合并）、P59（CH-aPaaS 项目说明、仓库与 main 分支整理及自动发版；Owner 2026-09-04；非新增业务功能统一交付，不映射 90 明细；**已核销并完成终态复核**：规划复验 PASSED（2026-09-05）`product/p59-ch-apaas-project-update/receipts/planning-final-review-p59-terminal-sync-02-passed.md`，功能状态 COMPLETED（规划已确认，2026-09-05），见 `knowledge/features/p59-ch-apaas-project-update.md`）
 
 ## 3. I 编号全集（54 条，I1—I55 区间缺 I27）
 
@@ -211,6 +211,6 @@
 ## 6. 链接与追踪
 
 - 当前状态权威：`knowledge/current-status.md`；清单：`Smart-WorkFlow-aPaaS-server/功能清单.md`；问题注册：`knowledge/known-issues.md`；需求池：`todo/requirement-pool.md`
-- 任务登记：`knowledge/features/p59-ch-apaas-project-update.md`（P59 统一交付任务，COMPLETED 规划已确认，2026-09-05）；`knowledge/features/knowledge-full-reconciliation.md`（非业务功能，COMPLETED 已确认，历史）
+- 任务登记：`knowledge/features/p59-ch-apaas-project-update.md`（P59 统一交付任务，COMPLETED 规划已确认，2026-09-05）；`knowledge/features/knowledge-full-reconciliation.md`（非业务功能，COMPLETED 已确认，历史）；`knowledge/features/p61-user-facing-message-humanization.md`（P61 全系统用户可见错误码与提示语人性化治理，`COMPLETED（规划已确认，2026-09-20）`，已核销）
 - 会议交接：`knowledge/session-handoff.md`（已压缩，原 P57 时点全文见 `knowledge/history/session-handoff-before-knowledge-full-reconciliation-20260904.md`）
 - 本索引建立于审计账本 A—E（`product/knowledge-full-reconciliation/receipts/`），原件仅供追溯
