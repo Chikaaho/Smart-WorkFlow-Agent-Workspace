@@ -44,4 +44,4 @@
 | M06-F02-01 通知模板 | 🟦 | 可复用通用消息模板与变量渲染（P36 已核销） | 按渠道配置内容与变量（P38，不新编号） |
 | M06-F03-01 通知规则 | 🟦 | 内置审批事件、通知节点触发 | 用户可配置规则、订阅设置（P39） |
 
-完整双向映射见 `knowledge/feature-reconciliation-index.md`；当前清单计数 ✅34/🟦28/⬜28 以 `knowledge/current-status.md` 与 `Smart-WorkFlow-Server/功能清单.md` 为准。
+完整双向映射见 `knowledge/feature-reconciliation-index.md`；当前清单计数 ✅34/🟦28/⬜28 以 `knowledge/current-status.md` 与 `Smart-WorkFlow-aPaaS-server/功能清单.md` 为准。
