@@ -132,7 +132,7 @@
 | `sw-biz/sw-bpm/sw-bpm-engine/.../translator/GraphToBpmnTranslatorTest.java` | 修改 | B2 +1 测试（18→19） |
 | `sw-biz/sw-bpm/sw-bpm-engine/.../translator/NodeTypeTranslatorPlugabilityTest.java` | 新增 | B3 可插拔性证明（TEST_NODE→ServiceTask 零改动即翻译 + 内置类型不受影响 + 未知类型 warn+skip） |
 
-**前端 Smart-WorkFlow-Web（3 提交：`a56c5eb` / `ba144ce` / `3d6fa51`）**
+**前端 Smart-WorkFlow-aPaaS-Web（3 提交：`a56c5eb` / `ba144ce` / `3d6fa51`）**
 
 | 文件路径 | 修改类型 | 摘要 |
 |----------|:---:|------|

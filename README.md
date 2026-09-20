@@ -22,8 +22,8 @@ CH-aPaaS 是面向企业协作场景的低代码 PaaS 与 AI Agent 平台。项�
 | 仓库 | 职责 | 开发入口 |
 | --- | --- | --- |
 | Smart-WorkFlow-Agent-Workspace（本仓库） | 项目规划、需求方向、回执、架构知识与工作区治理 | [`system.md`](system.md)、[`knowledge/`](knowledge/architecture.md) |
-| Smart-WorkFlow-aPaaS-server | Java 后端、数据库、认证授权、业务服务与 API | [`Smart-WorkFlow-Server/README.md`](Smart-WorkFlow-Server/README.md) |
-| Smart-WorkFlow-aPaaS-Web | Vue 前端、页面交互、前端架构与 API/Mock 开发模式 | [`Smart-WorkFlow-Web/README.md`](Smart-WorkFlow-Web/README.md) |
+| Smart-WorkFlow-aPaaS-server | Java 后端、数据库、认证授权、业务服务与 API | [`Smart-WorkFlow-aPaaS-server/README.md`](Smart-WorkFlow-aPaaS-server/README.md) |
+| Smart-WorkFlow-aPaaS-Web | Vue 前端、页面交互、前端架构与 API/Mock 开发模式 | [`Smart-WorkFlow-aPaaS-Web/README.md`](Smart-WorkFlow-aPaaS-Web/README.md) |
 
 典型运行关系如下：
 
@@ -50,20 +50,20 @@ git clone --branch develop-sw git@github.com:Chikaaho/Smart-WorkFlow-Agent-Works
 cd Smart-WorkFlow-Agent-Workspace
 ```
 
-再将后端与前端仓库克隆到工作区根目录，并指定本地目录名以便 README 配套入口可解析：
+再将后端与前端仓库克隆到工作区根目录，本地目录名与仓库名保持一致：
 
 ```bash
-git clone git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-server.git Smart-WorkFlow-Server
+git clone git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-server.git
 ```
 
 ```bash
-git clone git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-Web.git Smart-WorkFlow-Web
+git clone git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-Web.git
 ```
 
 进入对应工程后，按后端或前端 README 准备环境并启动服务：
 
-- [后端环境与启动](Smart-WorkFlow-Server/README.md#快速开始)
-- [前端环境与启动](Smart-WorkFlow-Web/README.md#快速开始)
+- [后端环境与启动](Smart-WorkFlow-aPaaS-server/README.md)
+- [前端环境与启动](Smart-WorkFlow-aPaaS-Web/README.md)
 
 ## 与 Agent Coding Engine 的关系
 
@@ -110,5 +110,5 @@ git clone git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-Web.git Smart-WorkFlow-We
 | 整体架构 | [`knowledge/architecture.md`](knowledge/architecture.md) |
 | 当前项目状态 | [`knowledge/current-status.md`](knowledge/current-status.md) |
 | 需求方向与交付回执 | [`product/`](product/) |
-| 后端工程规范 | [`Smart-WorkFlow-Server/docs/governance/engineering-constitution.md`](Smart-WorkFlow-Server/docs/governance/engineering-constitution.md) |
-| 前端工程规范 | [`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md`](Smart-WorkFlow-Web/docs/governance/engineering-constitution.md) |
+| 后端工程规范 | [`Smart-WorkFlow-aPaaS-server/docs/governance/engineering-constitution.md`](Smart-WorkFlow-aPaaS-server/docs/governance/engineering-constitution.md) |
+| 前端工程规范 | [`Smart-WorkFlow-aPaaS-Web/docs/governance/engineering-constitution.md`](Smart-WorkFlow-aPaaS-Web/docs/governance/engineering-constitution.md) |

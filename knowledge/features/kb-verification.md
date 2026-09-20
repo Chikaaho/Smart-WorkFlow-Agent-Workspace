@@ -59,7 +59,7 @@
 1. `mvn -q compile` 退出码 0 ✅
 2. `mvn -q test` 退出码 0 + Surefire XML 汇总运行期 `Tests run` 总数 203，逐模块分解齐全（sw-biz-form 76 / sw-biz-system 37 / sw-basic-job 37 / sw-bpm 26 / sw-basic-storage 12 / sw-basic-notify 7 / sw-security 4 / sw-common 4）✅
 3. 运行期总数 203，与静态 `@Test` 计数 203 完全吻合、零差异；原「406」判定为回执误报（ASSUMED，未能溯源具体成因） ✅
-4. `git status` 确认 `Smart-WorkFlow-Server/` 无源码 diff（规划层独立复核：`git status --short` 无输出） ✅
+4. `git status` 确认 `Smart-WorkFlow-aPaaS-server/` 无源码 diff（规划层独立复核：`git status --short` 无输出） ✅
 5. 结论 PASSED ✅
 
 **规划层独立复核**：git status 干净性已由根代理自行执行 `git status --short` 验证（非仅采信回执），证据一致。
@@ -70,7 +70,7 @@
 1. 四条命令退出码：typecheck=0, lint=0（0 errors/0 warnings), test=0, build=0 ✅
 2. 运行期 `Test Files 54 passed (54)`、`Tests 471 passed (471)` ✅
 3. 运行期用例总数 471；与静态 463 差值 +8，来源为 `src/styles/tokens.spec.ts` 的 `for` 循环包裹 9 类 token、单 `it(` 展开为 9 用例 ✅
-4. `git status` 确认 `Smart-WorkFlow-Web/` 无源码/配置 diff ✅
+4. `git status` 确认 `Smart-WorkFlow-aPaaS-Web/` 无源码/配置 diff ✅
 5. 结论 PASSED ✅
 
 **规划层独立复核**：根代理独立读取 `tokens.spec.ts` 源码，确认 `CATEGORIES` 恰有 9 个条目且被 `for...of` 包裹 `it(`，与回执声称的差异根因完全一致；另独立执行 `git status --short` 确认两个子项目均无源码 diff。均为独立验证，非仅采信回执 PASSED 结论。

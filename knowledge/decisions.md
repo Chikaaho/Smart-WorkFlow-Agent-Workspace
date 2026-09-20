@@ -72,7 +72,7 @@
 - **原因**：当前阶段不需要微服务的运维复杂性，但通过接口分离为未来微服务抽取预留最小重构路径
 - **替代方案**：纯单体（不拆 -api/-biz）— 拒绝，因为未来抽取成本高
 - **影响**：依赖方向严格自上而下；业务模块间禁止依赖 `-biz`
-- **相关文件**：`Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` §1
+- **相关文件**：`Smart-WorkFlow-aPaaS-server/docs/governance/engineering-constitution.md` §1
 
 ### D2：动态宽表：一表单一物理表
 
@@ -81,7 +81,7 @@
 - **原因**：支持原生 SQL 查询/报表/导出/索引/流程取值，能力上限最高；不用 JSON 列或 EAV
 - **替代方案**：JSONB 单列 — 拒绝，查询/索引能力受限；EAV — 拒绝，性能和维护性差
 - **影响**：裸 SQL 必须手写 `deleted` + `tenant_id`；动态宽表不归 Flyway 管
-- **相关文件**：`Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` §4
+- **相关文件**：`Smart-WorkFlow-aPaaS-server/docs/governance/engineering-constitution.md` §4
 
 ### D3：TABLE / REFERENCE 两档关系原语
 
@@ -97,7 +97,7 @@
 - **决策**：所有 Flyway 迁移脚本同时维护 PostgreSQL 和 H2 两个版本
 - **原因**：开发期用 H2 作为 SQL 正确性代理，生产用 PostgreSQL；避免"开发能跑、生产炸"的问题
 - **影响**：每条迁移必须写两份；动态宽表是唯一例外（运行时 DDL）
-- **相关文件**：`Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` §6
+- **相关文件**：`Smart-WorkFlow-aPaaS-server/docs/governance/engineering-constitution.md` §6
 
 ### D5：前端契约先行 + Mock 并行
 
@@ -105,7 +105,7 @@
 - **决策**：前端不等后端就绪，拿契约和 mock 把页面/交互全推起来，后端 seam 点亮后零改动接真数据
 - **原因**：前后端并行开发，最大化开发效率
 - **影响**：需要维护 MSW mock 数据；seam 标注 `// TODO(skeleton)`
-- **相关文件**：`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` §3
+- **相关文件**：`Smart-WorkFlow-aPaaS-Web/docs/governance/engineering-constitution.md` §3
 
 ### D6：Token 仅内存 · superAdmin=boolean
 
@@ -123,7 +123,7 @@
 - **决策**：form-create 原生 schema 不泄漏到 `modules/`，通过 `adapters/form-designer/` 隔离
 - **原因**：第三方库 API 不稳定，隔离后升级/替换成本低
 - **影响**：ESLint 强制模块边界；增加一层薄接口转换
-- **相关文件**：`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` §4.1
+- **相关文件**：`Smart-WorkFlow-aPaaS-Web/docs/governance/engineering-constitution.md` §4.1
 
 ### D8：lowcode → form 重命名
 
@@ -133,7 +133,7 @@
 - **替代方案**：保留 lowcode — 拒绝
 - **影响**：全局搜索 `lowcode` 应零命中；新建文件不得复活 lowcode 命名
 - **状态**：CONFIRMED（已完成）
-- **相关文件**：`Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` 附录 A；`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` §7.2
+- **相关文件**：`Smart-WorkFlow-aPaaS-server/docs/governance/engineering-constitution.md` 附录 A；`Smart-WorkFlow-aPaaS-Web/docs/governance/engineering-constitution.md` §7.2
 
 ### D9：Open-core BPM（engine 闭源）
 
@@ -141,7 +141,7 @@
 - **决策**：`sw-bpm-engine` 为闭源防腐层，承载引擎运行期与外部数据源执行；`sw-bpm-api` 和 `sw-bpm-process` 开源
 - **原因**：核心引擎逻辑需商业保护；契约和流程业务可开源促进生态
 - **影响**：engine 模块不在公开仓库
-- **相关文件**：`Smart-WorkFlow-Server/README.md`
+- **相关文件**：`Smart-WorkFlow-aPaaS-server/README.md`
 
 ### D10：根目录规划代理机制
 
@@ -167,7 +167,7 @@
   - 后续所有 Element Plus API 调用组件（ElMessage、ElNotification 等）自动获得正确样式
 - **替代方案**：保留纯按需 CSS — 拒绝，ElMessageBox 无法正常渲染
 - **状态**：CONFIRMED（已落地）
-- **相关文件**：`Smart-WorkFlow-Web/src/main.ts`
+- **相关文件**：`Smart-WorkFlow-aPaaS-Web/src/main.ts`
 
 ### D12：通知模块前端落地设计
 
@@ -187,7 +187,7 @@
   - el-table slot scope 中的 row 可能不是响应式代理，直接修改 `row.read` 可能不触发视图更新
 - **替代方案**：新建 NotifyList.vue — 拒绝，单页面无意义增加文件数
 - **影响**：通知模块前端全部就位，Walking Skeleton 四环闭环
-- **相关文件**：`Smart-WorkFlow-Web/src/modules/notify/views/NotifyHome.vue`、`Smart-WorkFlow-Web/src/contracts/notify.ts`
+- **相关文件**：`Smart-WorkFlow-aPaaS-Web/src/modules/notify/views/NotifyHome.vue`、`Smart-WorkFlow-aPaaS-Web/src/contracts/notify.ts`
 
 ### D13：前端不继承 vben、不上 monorepo
 
@@ -201,7 +201,7 @@
   - 与后端"未 fork RuoYi、自建 sw-* 深思熟虑分层"同源
 - **替代方案**：继承 vben — 拒绝（长期维护风险高）；monorepo — 拒绝（过度设计）
 - **影响**：vben、yudao-ui-admin-vue3 仅作参考实现读/借，不进依赖
-- **相关文件**：`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` §0；`Smart-WorkFlow-前端架构与现状-知识库.md` §1
+- **相关文件**：`Smart-WorkFlow-aPaaS-Web/docs/governance/engineering-constitution.md` §0；`Smart-WorkFlow-前端架构与现状-知识库.md` §1
 
 ### D14：设计系统单源 + 全局 token + 两页型模板
 
@@ -214,7 +214,7 @@
 - **原因**：确保视觉一致性，改一处全局跟随；减少重复代码
 - **替代方案**：各页自行设计 — 拒绝（不一致、维护成本高）
 - **影响**：所有模块页必须引用全局 token；新建页面优先匹配页型 A/B
-- **相关文件**：`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` §5-6；`knowledge/shared-constraints.md` §6-7
+- **相关文件**：`Smart-WorkFlow-aPaaS-Web/docs/governance/engineering-constitution.md` §5-6；`knowledge/shared-constraints.md` §6-7
 
 ### D15：配置接缝层（form/utils 纯函数预留）
 
@@ -222,7 +222,7 @@
 - **决策**：凡「将来设计时可自定义」的取值逻辑（列表展示字段/可搜字段/字段排序/列宽/引用选择器展示列/引用显示字段…）一律收进 `modules/form/utils/` 下的可替换纯函数，带显式 TODO 接缝注释
 - **原因**：设计器未就绪时用 definition 推导规则；将来设计器产出配置元数据时只换这层函数数据源，消费方零改
 - **影响**：现有接缝函数：`deriveColumns` / `deriveFilterFields` / `deriveReferenceColumns` / `deriveDisplayField` / `deriveSearchFields` / `resolveReferenceDisplay`
-- **相关文件**：`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` §4.1
+- **相关文件**：`Smart-WorkFlow-aPaaS-Web/docs/governance/engineering-constitution.md` §4.1
 
 ### D16：产品原则优先级排序
 
@@ -238,7 +238,7 @@
 - **决策**：凡是「单一数据源」「导入边界」「接缝不串」这类不变量，都要有常驻回归测试钉死
 - **原因**：防止后续改动悄悄破坏安全基线；已有的不变量（菜单单源、导入边界、token 不落 storage、redirect 同源、mock 不污染 modules）不允许在没有等价替代时删除
 - **影响**：重构改名时同步改测试断言只换名、不弱化断言强度
-- **相关文件**：`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` §2.2；`Smart-WorkFlow-前端架构与现状-知识库.md` §4
+- **相关文件**：`Smart-WorkFlow-aPaaS-Web/docs/governance/engineering-constitution.md` §2.2；`Smart-WorkFlow-前端架构与现状-知识库.md` §4
 
 ### D18：Walking Skeleton 端到端薄切片策略
 
@@ -247,7 +247,7 @@
 - **原因**：快速验证全链路技术可行性和架构决策；避免在单模块过度投入后发现集成问题
 - **影响**：实施路线严格按串行关键路径排列；横切基础设施（多租户/BaseEntity/数据权限/Security/字典）必须先于业务代码就位
 - **状态**：Walking Skeleton 四环已于 2026-07-15 全部闭合 ✅
-- **相关文件**：`Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` §12；`Smart-WorkFlow-PRD.md` §3.3、§7
+- **相关文件**：`Smart-WorkFlow-aPaaS-server/docs/governance/engineering-constitution.md` §12；`Smart-WorkFlow-PRD.md` §3.3、§7
 
 ### D19：存储模块策略模式 + -api/-biz 拆分
 
@@ -280,7 +280,7 @@
 - **原因**：添加 download handler 不会被调用（mock 系统不拦截原生 fetch），属于死代码
 - **替代方案**：改造 mock 系统拦截 fetch() — 超出当前功能范围
 - **影响**：`pnpm dev:mock` 模式下点击下载 → `ElMessage.error('下载失败')`（预期行为）。真实下载需在 `pnpm dev`（直连后端）模式下验证
-- **相关文件**：`Smart-WorkFlow-Web/src/modules/storage/api/index.ts`（downloadFile 实现）、`Smart-WorkFlow-Web/src/foundation/mock/handlers.ts`（无 download handler）
+- **相关文件**：`Smart-WorkFlow-aPaaS-Web/src/modules/storage/api/index.ts`（downloadFile 实现）、`Smart-WorkFlow-aPaaS-Web/src/foundation/mock/handlers.ts`（无 download handler）
 
 ### D22：Job Entity 放 -biz 模块（非 -api）
 
@@ -317,7 +317,7 @@
 - **替代方案**：在 -api 中定义 Entity — 拒绝（需 MyBatis-Plus 依赖）；放宽模块依赖规则 — 拒绝（破坏四层架构）
 - **影响**：Controller 层需做 Entity ↔ DTO 转换；新增 `JobInfoDTO` 文件（17 字段）
 - **关键教训**：方案设计时必须考虑 -api/-biz 模块边界约束
-- **相关文件**：`Smart-WorkFlow-Server/sw-basic-job/sw-basic-job-api/src/main/java/cn/reasonix/sw/basic/job/api/dto/JobInfoDTO.java`
+- **相关文件**：`Smart-WorkFlow-aPaaS-server/sw-basic-job/sw-basic-job-api/src/main/java/cn/reasonix/sw/basic/job/api/dto/JobInfoDTO.java`
 
 ### D26：双 token 认证 — access 内存 + refresh httpOnly cookie
 
@@ -349,7 +349,7 @@
 ### D29：固化执行代理三方角色边界（规划层只读写方案，执行层严禁跨项目执行）
 
 - **日期**：2026-07-22
-- **决策**：三个启动目录对应三种严格角色：规划层（`/data/reasonix/files`）只能读两个代码项目、只能写 `system.md`/`knowledge/`/`product/`/`todo/`，永不执行状态变更命令；后端执行代理（`Smart-WorkFlow-Server/`）只能读写自己项目、只能跑 `mvn` 系命令；前端执行代理（`Smart-WorkFlow-Web/`）只能读写自己项目、只能跑 `pnpm` 系命令。**严禁后端执行代理运行前端命令或读写前端文件，严禁前端执行代理运行后端命令或读写后端文件**
+- **决策**：三个启动目录对应三种严格角色：规划层（`/data/reasonix/files`）只能读两个代码项目、只能写 `system.md`/`knowledge/`/`product/`/`todo/`，永不执行状态变更命令；后端执行代理（`Smart-WorkFlow-aPaaS-server/`）只能读写自己项目、只能跑 `mvn` 系命令；前端执行代理（`Smart-WorkFlow-aPaaS-Web/`）只能读写自己项目、只能跑 `pnpm` 系命令。**严禁后端执行代理运行前端命令或读写前端文件，严禁前端执行代理运行后端命令或读写后端文件**
 - **原因**：用户明确要求补硬约束，防止执行代理为了"顺手验证联动效果"越界读写对方项目或误跑对方的构建/测试命令，污染对方项目状态或产生非授权的状态变更
 - **替代方案**：允许执行代理为验证联动只读不写对方项目 — 拒绝，"只读"边界在实践中容易滑向"顺手改一下"，不如从根上禁止 cd 进入对方目录；由规划层充当"联动验证"角色代跑两侧命令 — 拒绝，直接违反规划层"永不执行状态变更命令"的既有硬约束（§1.2）
 - **影响**：`system.md` §0.3 新增两条硬约束；`knowledge/shared-constraints.md` 新增 §9 完整角色边界表；涉及前后端联动的验证需求今后必须拆成两个独立 Step 分别下发，不能指望单个执行代理跨项目验证
@@ -383,7 +383,7 @@
 - **原因**：beforeHandler 需要调用 refresh，而 refresh 又调用 request，形成 `request → auth → request` 循环。直接 import 会导致模块初始化时 request 尚未就绪（TDZ）或循环依赖。单飞锁是并发安全必备——AccessToken 15min 过期、缓冲窗口 60s，多个 API 调用在缓冲期内同时触发会导致多次 refresh（重放检测会拒绝第一个之后的请求，引起不必要错误）
 - **替代方案**：将 refresh 逻辑直接写在 request 拦截器中 — 拒绝（循环依赖：request import auth token → auth import request）；将 refresh 移到独立模块 — 可行但增加模块数，依赖反转更轻量；不做单飞 — 拒绝（并发错误可观测）
 - **影响**：`router/index.ts` 在 `setUnauthorizedHandler` 后追加 `setRefreshHandler(refresh)`；`request/index.ts` 新增 `setRefreshHandler` 函数 + `AUTH_ENDPOINTS` 追加 `/auth/logout`；`auth/index.ts` 新增模块级 `refreshPromise` 锁；测试可独立 mock `request()` 验证 refresh 行为
-- **相关文件**：`Smart-WorkFlow-Web/src/foundation/auth/index.ts`、`src/foundation/request/index.ts`、`src/router/index.ts`、`src/foundation/auth/index.spec.ts`
+- **相关文件**：`Smart-WorkFlow-aPaaS-Web/src/foundation/auth/index.ts`、`src/foundation/request/index.ts`、`src/router/index.ts`、`src/foundation/auth/index.spec.ts`
 
 ### D33：F1 logout() try...catch...finally — 方案内部矛盾裁决
 
@@ -392,17 +392,17 @@
 - **原因**：F1 方案内部矛盾（伪代码写 `try...finally`，测试期望写"不应抛异常"）。网络断开时 `request` 抛异常，无 catch 会传播到 `AppTopbar.onLogout()` → `clearDynamicRoutes(router)` 和 `router.push('/login')` 被跳过 → 用户卡在页面而非到达登录页。"退出应始终清除本地态并跳转登录页"是 UX 硬约束，应优先于"通知后端作废 token"这一 best-effort 操作
 - **替代方案**：严格按方案伪代码（无 catch）— 拒绝（与方案自己的测试期望矛盾）；在调用方 AppTopbar 做防御 — 不合理（所有 logout 调用方都需要防御，不如在源头保证）
 - **影响**：`logout()` 签名不变（`Promise<void>`），行为变更为 always-resolve；用户退出体验保证（始终清除本地态 + 跳转）；后端 logout 端点调用变为 best-effort（失败不影响前端状态）
-- **相关文件**：`Smart-WorkFlow-Web/src/foundation/auth/index.ts`
+- **相关文件**：`Smart-WorkFlow-aPaaS-Web/src/foundation/auth/index.ts`
 
 ### D34：一次性授权越权，为后端宪法补齐 §0.1「本仓库范围」硬约束（对应 I28）
 
 - **日期**：2026-07-23
-- **决策**：用户反馈"后端执行时经常越界，新会话会一起执行前后端任务"，规划层直读对比两份子项目宪法确认：`Smart-WorkFlow-Web/docs/governance/engineering-constitution.md` 有独立的 §0.1「本仓库范围（硬约束）」（禁止读取/构建/运行/分析后端代码、禁止执行 mvn/gradle、禁止跨仓库提交），但 `Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` 缺少对应章节——原 §0.0 只有"❌ 禁止修改前端代码"一句，只锁"改代码"未锁"读文件/跑命令"。用户明确授权规划层**本次一次性越权**直接编辑 `Smart-WorkFlow-Server/docs/governance/engineering-constitution.md`（该文件不在 `system.md` §1.3 写入范围内），已补齐镜像前端结构的 §0.1 章节
+- **决策**：用户反馈"后端执行时经常越界，新会话会一起执行前后端任务"，规划层直读对比两份子项目宪法确认：`Smart-WorkFlow-aPaaS-Web/docs/governance/engineering-constitution.md` 有独立的 §0.1「本仓库范围（硬约束）」（禁止读取/构建/运行/分析后端代码、禁止执行 mvn/gradle、禁止跨仓库提交），但 `Smart-WorkFlow-aPaaS-server/docs/governance/engineering-constitution.md` 缺少对应章节——原 §0.0 只有"❌ 禁止修改前端代码"一句，只锁"改代码"未锁"读文件/跑命令"。用户明确授权规划层**本次一次性越权**直接编辑 `Smart-WorkFlow-aPaaS-server/docs/governance/engineering-constitution.md`（该文件不在 `system.md` §1.3 写入范围内），已补齐镜像前端结构的 §0.1 章节
 - **原因**：修复点必须落在后端自己的宪法文件里才有效——执行代理平时读的是自己项目内的文件，不会主动去读根目录 `knowledge/shared-constraints.md` §9（该约束 D29 时已写入根知识库，但从未回填到后端宪法本身，二者不同步）。若不越权直接改，只能等用户或后端会话自行搬运文本，存在被遗漏的风险
 - **口径澄清**：用户同时确认"或者把自己当作执行层"一句指的是"**后端会话误把自己当作规划层**"（角色混淆），而非宪法缺内容。核对后端/前端两份宪法在「禁止诱导用户规划」「禁止预告下一 Step」两条硬约束上写得完全对称、内容详尽，**未发现文本缺口**。这类越权若仍在发生，属于执行层未遵守既有条款的**实践/落实问题**，不是宪法文本问题——不通过再次编辑文本解决，需在下次观察到具体违例时记录实例作证据
 - **替代方案**：只在根目录 `shared-constraints.md` 强化措辞、不碰后端宪法 — 拒绝，后端执行代理不会主动读根目录知识库，无法从源头生效；等下次功能交接时才处理 — 拒绝，属于持续存在的越权风险，用户已明确要求当次处理并授权例外
-- **影响**：`Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` §0.0 之后新增 §0.1（内容见 [[known-issues]] I28）；本次为**用户明确授权的一次性例外**，不代表 `system.md` §1.3 写入范围常态化扩大到子项目文件——今后类似修复仍需逐次征得用户授权
-- **相关文件**：`Smart-WorkFlow-Server/docs/governance/engineering-constitution.md` §0.1、`knowledge/known-issues.md` I28、`knowledge/shared-constraints.md` §9（D29）
+- **影响**：`Smart-WorkFlow-aPaaS-server/docs/governance/engineering-constitution.md` §0.0 之后新增 §0.1（内容见 [[known-issues]] I28）；本次为**用户明确授权的一次性例外**，不代表 `system.md` §1.3 写入范围常态化扩大到子项目文件——今后类似修复仍需逐次征得用户授权
+- **相关文件**：`Smart-WorkFlow-aPaaS-server/docs/governance/engineering-constitution.md` §0.1、`knowledge/known-issues.md` I28、`knowledge/shared-constraints.md` §9（D29）
 
 ### D35：功能清单前后端核实结论合并采用 MIN 规则（保守取低档）
 
@@ -425,9 +425,9 @@
 ### D37：探索任务 formalize 为「Step 0」——规划层唯一允许自行执行（只读）的特殊 Step
 
 - **日期**：2026-07-25
-- **决策**：用户对 §0.4 探索/规划模型分工提出澄清："探索任务其实也算是执行任务，但可以在规划层执行，这是唯一允许在规划层做的执行动作"。据此在 `system.md` §0.4 之后新增 §0.4.1，把探索任务 formalize 为功能 Step 序列中位于 Step 1 之前的「Step 0」：Step 0 在规划层自身会话内完成（不下发到 `Smart-WorkFlow-Server/`/`Smart-WorkFlow-Web/`），若当前会话是 Anthropic 系模型则需用户手动切换为 DeepSeek 系模型后在同一会话内执行；Step 0 不套用 §6 完整 17 项结构，改用精简 5 项清单（探索目标/探索范围/当前模型确认/输出要求/分工提醒）；Step 0 严禁跑 `mvn`/`pnpm`/`npm`/`node` 等命令、严禁修改两个子项目内任何文件，探索完成后必须切回规划模型再出方案，不可同一次调用兼任
+- **决策**：用户对 §0.4 探索/规划模型分工提出澄清："探索任务其实也算是执行任务，但可以在规划层执行，这是唯一允许在规划层做的执行动作"。据此在 `system.md` §0.4 之后新增 §0.4.1，把探索任务 formalize 为功能 Step 序列中位于 Step 1 之前的「Step 0」：Step 0 在规划层自身会话内完成（不下发到 `Smart-WorkFlow-aPaaS-server/`/`Smart-WorkFlow-aPaaS-Web/`），若当前会话是 Anthropic 系模型则需用户手动切换为 DeepSeek 系模型后在同一会话内执行；Step 0 不套用 §6 完整 17 项结构，改用精简 5 项清单（探索目标/探索范围/当前模型确认/输出要求/分工提醒）；Step 0 严禁跑 `mvn`/`pnpm`/`npm`/`node` 等命令、严禁修改两个子项目内任何文件，探索完成后必须切回规划模型再出方案，不可同一次调用兼任
 - **原因**：厘清一个此前未明确的边界——探索任务（读文件、grep、梳理调用关系）本质是只读操作，属于 §1.1 允许规划层执行的范畴，不落入 §0.3 定义的"执行层"（执行层的本质是写业务代码 + 跑状态变更命令）；但探索任务确实需要一个正式的下发形式（而非含糊地"顺手查一下"），因为 Anthropic 系模型不能自行探索、需要用户手动切模型才能落地，这个交接动作和探索范围都需要有据可查
-- **替代方案**：把探索任务当作真正的执行层任务下发给 `Smart-WorkFlow-Server/`/`Smart-WorkFlow-Web/` 执行代理 — 拒绝，探索任务通常需要横跨两个子项目一起看（如对比 BPMN adapter 和 Vue Flow adapter 的结构），拆给某一侧执行代理会破坏"执行层只能读写自己项目"的硬约束（§0.3）；继续套用 Agent 工具派子代理做探索 — 拒绝，用户明确要求"你下任务，我切换并执行"，即同一规划层会话切模型后自行探索，而非派生独立子代理；探索任务复用 §6 完整 17 项结构 — 拒绝，该结构含"允许修改的文件范围"等写操作字段，与探索的只读性质不符，直接套用会产生大量空字段
+- **替代方案**：把探索任务当作真正的执行层任务下发给 `Smart-WorkFlow-aPaaS-server/`/`Smart-WorkFlow-aPaaS-Web/` 执行代理 — 拒绝，探索任务通常需要横跨两个子项目一起看（如对比 BPMN adapter 和 Vue Flow adapter 的结构），拆给某一侧执行代理会破坏"执行层只能读写自己项目"的硬约束（§0.3）；继续套用 Agent 工具派子代理做探索 — 拒绝，用户明确要求"你下任务，我切换并执行"，即同一规划层会话切模型后自行探索，而非派生独立子代理；探索任务复用 §6 完整 17 项结构 — 拒绝，该结构含"允许修改的文件范围"等写操作字段，与探索的只读性质不符，直接套用会产生大量空字段
 - **影响**：`system.md` 新增 §0.4.1；探索任务今后统一记为「Step 0」，记入 `knowledge/features/<name>.md` 的 Step 列表，状态机复用 §5.2，但 PASSED 判据不套用 §5.3 的"修改文件证据"；~~探索摘要可选择性存档为 `product/<feature>/step-0-exploration-summary.md`~~ → SUPERSEDED by D38（升级为强制存档，非可选）
 - **相关文件**：`system.md` §0.4.1
 
@@ -463,7 +463,7 @@
 > ⚠️ 违规事实仍有效；权限主体由"Anthropic 系模型"改为"规划角色"（system.md §0.5「禁止以验证方案精确性为由读取代码」）。
 
 - **日期**：2026-07-25
-- **决策**：本会话（`anthropic/claude-sonnet-5`）在消费 bpmn-adapter Step 0 探索摘要、准备生成 Step 1 方案期间，为"验证 bpmn-js 精确 API 签名以满足 §6 禁止模糊表达的要求"，直接用 Read/Bash/grep 读取了 `Smart-WorkFlow-Web/src/adapters/bpmn/index.ts`、`node_modules/bpmn-js` 与 `node_modules/.pnpm/diagram-js` 内的 `.d.ts` 类型定义、`adapters/flow-graph/index.spec.ts`、`package.json`，用户当场指出这是越权（Anthropic 系模型只能担任规划模型，不得直接大范围读代码，见 §0.4）。经复核确认违规成立，随即停止该行为，改为仅依据已产出的探索摘要和 bpmn-js 公开 API 的训练知识完成方案，并在 system.md §0.4 增补一条硬约束，明确关闭"为验证方案细节"这一借口
+- **决策**：本会话（`anthropic/claude-sonnet-5`）在消费 bpmn-adapter Step 0 探索摘要、准备生成 Step 1 方案期间，为"验证 bpmn-js 精确 API 签名以满足 §6 禁止模糊表达的要求"，直接用 Read/Bash/grep 读取了 `Smart-WorkFlow-aPaaS-Web/src/adapters/bpmn/index.ts`、`node_modules/bpmn-js` 与 `node_modules/.pnpm/diagram-js` 内的 `.d.ts` 类型定义、`adapters/flow-graph/index.spec.ts`、`package.json`，用户当场指出这是越权（Anthropic 系模型只能担任规划模型，不得直接大范围读代码，见 §0.4）。经复核确认违规成立，随即停止该行为，改为仅依据已产出的探索摘要和 bpmn-js 公开 API 的训练知识完成方案，并在 system.md §0.4 增补一条硬约束，明确关闭"为验证方案细节"这一借口
 - **原因**：§0.4 原文只禁止"大范围 Read/grep 完整代码库"，但未明确排除"小范围、有具体目的的验证性读取"这一变体——本次违规正是利用了这一措辞空隙，将"探索"包装成"为方案精确性做校验"。这是一种真实发生过的合理化路径，必须显式堵住，否则未来会话（尤其是同样倾向于"力求方案精确"的规划模型）会重复此借口
 - **替代方案**：仅口头提醒、不落知识库 — 拒绝，口头提醒只对当前会话有效，下一轮新会话不会读到，无法防止重复违规，与用户"防止新会话越权"的明确要求不符；只记录不修改 system.md 正文 — 拒绝，system.md 是"唯一行为宪法"且规划层有权按 §1.1"在必要时优化本文件的知识结构"，把教训固化为宪法条款比只留一条决策记录更能形成硬约束
 - **影响**：`system.md` §0.4 新增一条硬约束，明确"验证技术细节"不构成豁免理由，且区分"训练知识里的第三方库公开 API 常识"（可直接用于撰写方案）与"用读本仓库代码/node_modules 的方式去确认该常识"（仍算违规）两种情形；本次已产出的 bpmn-adapter Step 1 方案内容本身未因违规读取而失真（bpmn-js 的 Viewer/importXML/get()/destroy() 属公开稳定 API，方案中的技术断言可仅凭训练知识独立成立），故不需要重新生成，但过程违规已如实记录，不代表结果可以掩盖过程
@@ -505,7 +505,7 @@
 - **原因**：实例列表返回的是 `processDefKey`（如 `leave_approval`），但获取 BPMN XML 需要 `defId`（数字 ID）。全量加载流程定义（当前规模 <100 条）并在前端做映射是最小成本的方案，避免了为这一单一映射需求新增后端端点，也避免了在抽屉打开时串行调用两个后端接口（先查 defId 再查 XML）
 - **替代方案**：后端新增 `GET /workflow/defs/by-key/{processDefKey}` 端点 — 拒绝（过度设计，为单一前端映射需求新增端点不值得）；在 `InstanceDetailDTO` 中附带 defId — 拒绝（改动后端 DTO 和 Facade 实现，扩大了 Step 3 纯前端方案的范围）
 - **影响**：`loadProcessDefMap()` 在 `onMounted` 中调用（与 `loadList()` 并行）；映射表存储在 `defKeyToIdMap: Ref<Record<string, number>>` 中；若流程定义超过 100 条需调整 pageSize
-- **相关文件**：[[process-monitoring]]、`Smart-WorkFlow-Web/src/modules/workflow/views/ProcessInstanceList.vue`
+- **相关文件**：[[process-monitoring]]、`Smart-WorkFlow-aPaaS-Web/src/modules/workflow/views/ProcessInstanceList.vue`
 
 ### D46：process-monitoring completedNodeIds 推导策略
 
@@ -514,7 +514,7 @@
 - **原因**：后端 `InstanceDetailDTO` 已包含完整 `flowTrace`（`List<ActivityNodeDTO>`，每个节点含 startTime/endTime），`endTime != null` 即是"已完成"的语义等价表达。新增独立 `completedNodeIds` 字段会导致 DTO 冗余（flowTrace 已包含相同信息），且后端逻辑仅是前端的 `.filter()` 等价操作，无增量业务价值
 - **替代方案**：后端 DTO 新增 `completedNodeIds: List<String>` 字段 — 拒绝（DTO 冗余，后端逻辑与前端的 `.filter()` 重复）
 - **影响**：前端 `applyHighlights()` 中 `completedNodeIds` 推导逻辑：`detail.flowTrace.filter(node => node.endTime != null).map(node => node.activityId)`；若未来后端语义变化（如某些节点 endTime 非 null 但不代表"已完成"），需同步更新此推导逻辑
-- **相关文件**：[[process-monitoring]]、`Smart-WorkFlow-Web/src/modules/workflow/views/ProcessInstanceList.vue`
+- **相关文件**：[[process-monitoring]]、`Smart-WorkFlow-aPaaS-Web/src/modules/workflow/views/ProcessInstanceList.vue`
 
 ### D47：DESIGNATED 审批人翻译为 BPMN 原生 assignee
 

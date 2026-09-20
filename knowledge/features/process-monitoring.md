@@ -18,7 +18,7 @@
 | 功能目标 | 提供流程实例监控页面：列表查看运行中/已完成实例，在流程图上高亮活跃节点/已完成节点，展示审批流转时间线 |
 | 创建日期 | 2026-07-26 |
 | 当前状态 | **COMPLETED** ✅（Steps 0-3 PASSED，阶段三收尾完成，2026-07-30） |
-| 涉及模块 | 后端 `sw-bpm`（新增 `BpmRuntimeFacade` 方法 + `BpmInstanceController`）；前端 `Smart-WorkFlow-Web/src/modules/workflow/`（新建 `ProcessInstanceList.vue`） |
+| 涉及模块 | 后端 `sw-bpm`（新增 `BpmRuntimeFacade` 方法 + `BpmInstanceController`）；前端 `Smart-WorkFlow-aPaaS-Web/src/modules/workflow/`（新建 `ProcessInstanceList.vue`） |
 | 前置依赖 | [[bpmn-adapter]] Steps 0-3 COMPLETED（查看器防腐层 + 后端 BPMN XML 端点 + ProcessDefList 查看入口） |
 
 ---
@@ -96,7 +96,7 @@
 
 ## 6. 实际修改范围
 
-### 后端（Smart-WorkFlow-Server/）— Steps 1-2
+### 后端（Smart-WorkFlow-aPaaS-server/）— Steps 1-2
 
 | 文件 | Step | 操作 | 摘要 |
 |------|:---:|:---:|------|
@@ -112,7 +112,7 @@
 | `sw-bpm-api/.../BpmErrorCode.java` | 1 | 修改 | +1 错误码 2105（INSTANCE_NOT_FOUND） |
 | `sw-bpm-process/pom.xml` | 1 | 修改 | +5 行 H2 依赖（方案缺陷：要求 @SpringBootTest 但禁止改 pom.xml，矛盾所致） |
 
-### 前端（Smart-WorkFlow-Web/）— Step 3
+### 前端（Smart-WorkFlow-aPaaS-Web/）— Step 3
 
 | 文件 | 操作 | 摘要 |
 |------|:---:|------|

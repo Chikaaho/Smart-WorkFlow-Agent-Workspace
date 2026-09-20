@@ -73,7 +73,7 @@ M07-F04-02 / P8
 - 迁移：`sw-bootstrap/src/main/resources/db/migration/{h2,postgresql}/V35__agent_token_usage.sql`
 - 后端实体/DTO：`sw-basic/sw-basic-agent` 三表实体与查询DTO新增token字段
 - 后端逻辑：`AgentGraphFactory` / `AgentGraphInterpreter` / `TokenUsageResolver` / Service落库
-- 前端：`Smart-WorkFlow-Web/src/contracts/agent.ts`、`src/modules/agent/views/`、`src/mocks/handlers.ts`
+- 前端：`Smart-WorkFlow-aPaaS-Web/src/contracts/agent.ts`、`src/modules/agent/views/`、`src/mocks/handlers.ts`
 - 测试：`AgentTokenUsageBehaviorTest`、`AgentGraphInterpreterTokenTest`、`AgentGraphExecutionServiceImplTest`、`AgentOrchestrationServiceImplTest`、`AgentConversationControllerTest`、`ConversationList/Detail.spec`、`ExecutionDetail/NodeTrajectory token`、`agent-conversation-handlers.spec`
 
 ## 已知限制
@@ -96,4 +96,4 @@ M07-F04-02 / P8
 - 实体类：`sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/entity/`
 - DTO：`sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/dto/`
 - 业务逻辑：`sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/orchestration/`
-- 前端页面：`Smart-WorkFlow-Web/src/modules/agent/views/`
+- 前端页面：`Smart-WorkFlow-aPaaS-Web/src/modules/agent/views/`

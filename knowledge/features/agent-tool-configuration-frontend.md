@@ -14,7 +14,7 @@
 | 功能目标 | 为既有工具 CRUD 与 Function Calling 能力补齐可达、可授权、可验证的前端配置闭环（统一「工具管理」入口维护内部/外部 HTTP 工具，启用后可被图设计器 TOOL 节点选择） |
 | 创建日期 | 2026-08-24（D184 方向下发） |
 | 当前状态 | COMPLETED（D203 功能级 12/12 PASSED + 阶段三终态同步，2026-08-25，第31个） |
-| 涉及模块 | 前端 Smart-WorkFlow-Web（Agent 工具管理页/表单/API/Mock/路由/权限）+ 后端仅 V37 菜单 seed（双方言） |
+| 涉及模块 | 前端 Smart-WorkFlow-aPaaS-Web（Agent 工具管理页/表单/API/Mock/路由/权限）+ 后端仅 V37 菜单 seed（双方言） |
 
 ---
 

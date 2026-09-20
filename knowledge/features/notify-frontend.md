@@ -4,7 +4,7 @@
 > 本文件记录通知模块前端落地的完整规划、Step 状态和测试结果（2026-07-15，第 14 个已完成功能）。
 > ⚠️ **2026-08-14 角色制上线**：本文件中的"推荐模型/实际模型"字段为当时执行事实，仅作历史存档；当前权限按会话角色（规划/执行/管理员）划分，与模型无关（见根目录 `system.md` §0.2）。
 >
-> ⚠️ **2026-09-04 知识库全量整理 ID 更正**：本功能原编号误标「M02-F01-01」（与清单 M02-F01-01 角色管理行重复）。实际无独立清单 ID，**服务 M05 站内信**（Walking Skeleton 第四环，通知列表页+已读/删除交互）；清单 M05 系列完成情况以 `Smart-WorkFlow-Server/功能清单.md` 与 `knowledge/feature-reconciliation-index.md` 为准。
+> ⚠️ **2026-09-04 知识库全量整理 ID 更正**：本功能原编号误标「M02-F01-01」（与清单 M02-F01-01 角色管理行重复）。实际无独立清单 ID，**服务 M05 站内信**（Walking Skeleton 第四环，通知列表页+已读/删除交互）；清单 M05 系列完成情况以 `Smart-WorkFlow-aPaaS-server/功能清单.md` 与 `knowledge/feature-reconciliation-index.md` 为准。
 
 ---
 
@@ -32,16 +32,16 @@
 **新建（3 个）：**
 | 文件 | 说明 |
 |------|------|
-| `Smart-WorkFlow-Web/src/contracts/notify.ts` | NotifyMessage TS 类型 |
-| `Smart-WorkFlow-Web/src/modules/notify/api/index.ts` | API 层（queryNotifyMessages / markAsRead） |
-| `Smart-WorkFlow-Web/src/modules/notify/api/index.spec.ts` | API 层单测 |
+| `Smart-WorkFlow-aPaaS-Web/src/contracts/notify.ts` | NotifyMessage TS 类型 |
+| `Smart-WorkFlow-aPaaS-Web/src/modules/notify/api/index.ts` | API 层（queryNotifyMessages / markAsRead） |
+| `Smart-WorkFlow-aPaaS-Web/src/modules/notify/api/index.spec.ts` | API 层单测 |
 
 **修改（3 个）：**
 | 文件 | 改动 |
 |------|------|
-| `Smart-WorkFlow-Web/src/foundation/mock/seeds.ts` | 追加 MOCK_NOTIFY_MESSAGES 种子 + `notify:view` 到 permissions |
-| `Smart-WorkFlow-Web/src/foundation/mock/handlers.ts` | 追加 2 个 MSW handler |
-| `Smart-WorkFlow-Web/src/modules/notify/views/NotifyHome.vue` | 替换为完整通知列表页 |
+| `Smart-WorkFlow-aPaaS-Web/src/foundation/mock/seeds.ts` | 追加 MOCK_NOTIFY_MESSAGES 种子 + `notify:view` 到 permissions |
+| `Smart-WorkFlow-aPaaS-Web/src/foundation/mock/handlers.ts` | 追加 2 个 MSW handler |
+| `Smart-WorkFlow-aPaaS-Web/src/modules/notify/views/NotifyHome.vue` | 替换为完整通知列表页 |
 
 **数据库表：** 无改动
 
