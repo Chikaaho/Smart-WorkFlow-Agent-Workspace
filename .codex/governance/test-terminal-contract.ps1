@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param()
 
 $ErrorActionPreference = 'Stop'
@@ -25,7 +25,9 @@ function Invoke-ValidatorCase {
     $actual = $LASTEXITCODE
     $ErrorActionPreference = $previousErrorActionPreference
     $expectedExit = @{ pass = 0; fail = 1; parse = 2 }[$Expected]
-    $ok = $actual -eq $expectedExit -and ([string]::IsNullOrEmpty($ExpectedText) -or $output.Contains($ExpectedText))
+    $compactOutput = $output -replace '\s', ''
+    $compactExpectedText = $ExpectedText -replace '\s', ''
+    $ok = $actual -eq $expectedExit -and ([string]::IsNullOrEmpty($ExpectedText) -or $compactOutput.Contains($compactExpectedText))
     if ($ok) {
         $script:passed++
     } else {
@@ -82,6 +84,98 @@ Invoke-ValidatorCase actionable_sync fail '{"schema":"agent-coding-engine.execut
 Invoke-ValidatorCase independent_work_left fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"BLOCKED","task_level":"L","evidence":["error"],"block_type":"EXTERNAL","attempted":["retry"],"release_condition":"service restored","work_items":[{"id":"blocked","status":"BLOCKED","authorized":true,"dependency_satisfied":false,"actionable":false,"next_action":"等待服务"},{"id":"independent","status":"IN_PROGRESS","authorized":true,"dependency_satisfied":true,"actionable":true,"next_action":"继续独立项"}],"remaining_actionable_count":1,"independent_work_exhausted":false,"next_action":"继续独立项","next_action_type":"CONTINUE","progress_fingerprint":"fp-independent","stop_reason":"EXTERNAL_DEPENDENCY","tool_results":[{"tool":"service","outcome":"UNAVAILABLE","detail":"服务返回不可用"}],"browser_status":"NOT_APPLICABLE"}' 'next_action: independent actionable work remains; do not submit BLOCKED'
 Invoke-ValidatorCase browser_operable_block fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"BLOCKED","task_level":"M","evidence":["login claim"],"block_type":"EVIDENCE_GAP","attempted":["inspect page"],"release_condition":"captcha visible","work_items":[{"id":"login","status":"BLOCKED","authorized":true,"dependency_satisfied":true,"actionable":false,"next_action":"填写可见验证码"}],"remaining_actionable_count":0,"independent_work_exhausted":true,"next_action":"填写可见验证码","next_action_type":"WAIT_EXTERNAL","progress_fingerprint":"fp-browser","stop_reason":"EVIDENCE_GAP","tool_results":[{"tool":"browser.snapshot","outcome":"SUCCEEDED","detail":"页面、DOM 和网络仍可操作"}],"browser_status":"OPERABLE"}' 'browser_status: OPERABLE browser session remains'
 Invoke-ValidatorCase permission_without_denial fail '{"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"BLOCKED","task_level":"M","evidence":["permission claim"],"block_type":"PERMISSION_DENIED","attempted":["run tool"],"release_condition":"permission granted","work_items":[{"id":"local-action","status":"BLOCKED","authorized":true,"dependency_satisfied":true,"actionable":false,"next_action":"重试工具"}],"remaining_actionable_count":0,"independent_work_exhausted":true,"next_action":"重试工具","next_action_type":"WAIT_EXTERNAL","progress_fingerprint":"fp-permission","stop_reason":"PERMISSION_DENIED","tool_results":[{"tool":"shell","outcome":"FAILED","detail":"命令未返回权限拒绝"}],"browser_status":"NOT_APPLICABLE"}' 'PERMISSION_DENIED requires an actual DENIED tool result'
+
+$formalBrowserObject = $execution | ConvertFrom-Json
+$formalBrowserObject.browser_status = 'OPERABLE'
+$formalBrowser = $formalBrowserObject | ConvertTo-Json -Compress -Depth 100
+
+$formalVisibleObject = $formalBrowser | ConvertFrom-Json
+$formalVisibleObject | Add-Member -NotePropertyName formal_browser_acceptance -NotePropertyValue $true
+$formalVisibleObject | Add-Member -NotePropertyName browser_evidence -NotePropertyValue ([pscustomobject]@{
+    tier = 'FORMAL_FLOW'
+    headless = $false
+    artifacts = @('product/demo/evidence/r5-formal.webp')
+    url = '/workflow/my-cc'
+    viewport = '1786x1280'
+    identity = 'T100'
+    object = 'f42ba34b-b0ac-11f1-b25f-00ffa7734675'
+    network_index = 'product/demo/evidence/network-index.md'
+})
+$formalVisible = $formalVisibleObject | ConvertTo-Json -Compress -Depth 100
+
+$formalHeadlessObject = $formalVisible | ConvertFrom-Json
+$formalHeadlessObject.browser_evidence.headless = $true
+$formalHeadless = $formalHeadlessObject | ConvertTo-Json -Compress -Depth 100
+
+$formalNoArtifactsObject = $formalVisible | ConvertFrom-Json
+$formalNoArtifactsObject.browser_evidence.PSObject.Properties.Remove('artifacts')
+$formalNoArtifacts = $formalNoArtifactsObject | ConvertTo-Json -Compress -Depth 100
+
+$formalNoUrlObject = $formalVisible | ConvertFrom-Json
+$formalNoUrlObject.browser_evidence.PSObject.Properties.Remove('url')
+$formalNoUrl = $formalNoUrlObject | ConvertTo-Json -Compress -Depth 100
+
+$formalWithoutEvidenceObject = $formalBrowser | ConvertFrom-Json
+$formalWithoutEvidenceObject | Add-Member -NotePropertyName formal_browser_acceptance -NotePropertyValue $true
+$formalWithoutEvidence = $formalWithoutEvidenceObject | ConvertTo-Json -Compress -Depth 100
+
+$formalWrongTierObject = $formalVisible | ConvertFrom-Json
+$formalWrongTierObject.browser_evidence.tier = 'ISOLATED_REGRESSION'
+$formalWrongTier = $formalWrongTierObject | ConvertTo-Json -Compress -Depth 100
+
+$headlessComponentObject = $formalBrowser | ConvertFrom-Json
+$headlessComponentObject | Add-Member -NotePropertyName browser_evidence -NotePropertyValue ([pscustomobject]@{tier = 'COMPONENT_TEST'; headless = $true})
+$headlessComponent = $headlessComponentObject | ConvertTo-Json -Compress -Depth 100
+
+$lightBrowserEvidenceObject = $directS | ConvertFrom-Json
+$lightBrowserEvidenceObject | Add-Member -NotePropertyName browser_evidence -NotePropertyValue ([pscustomobject]@{tier = 'FORMAL_FLOW'; headless = $false})
+$lightBrowserEvidence = $lightBrowserEvidenceObject | ConvertTo-Json -Compress -Depth 100
+
+$confirmationLocalObject = $blocked | ConvertFrom-Json
+$confirmationLocalObject | Add-Member -NotePropertyName confirmation -NotePropertyValue ([pscustomobject]@{category = 'DETERMINISTIC_LOCAL_INPUT'; input_source = 'DEV_TEST_CONFIG'; action = 'ask the user for the fixed captcha'})
+$confirmationLocal = $confirmationLocalObject | ConvertTo-Json -Compress -Depth 100
+
+$confirmationContractObject = $blocked | ConvertFrom-Json
+$confirmationContractObject | Add-Member -NotePropertyName confirmation -NotePropertyValue ([pscustomobject]@{category = 'SECRET'; input_source = 'EXISTING_TEST_CONTRACT'; action = 'ask the user for the test credential'})
+$confirmationContract = $confirmationContractObject | ConvertTo-Json -Compress -Depth 100
+
+$confirmationSecretObject = $blocked | ConvertFrom-Json
+$confirmationSecretObject | Add-Member -NotePropertyName confirmation -NotePropertyValue ([pscustomobject]@{category = 'SECRET'; input_source = 'USER_SECRET'; action = 'ask the user for the real credential'})
+$confirmationSecretOk = $confirmationSecretObject | ConvertTo-Json -Compress -Depth 100
+
+$confirmationSecretUnboundObject = $confirmationSecretOk | ConvertFrom-Json
+$confirmationSecretUnboundObject.tool_results = @([pscustomobject]@{tool = 'browser.login'; outcome = 'FAILED'; detail = 'visible login not completed'})
+$confirmationSecretUnbound = $confirmationSecretUnboundObject | ConvertTo-Json -Compress -Depth 100
+
+$confirmationMfaObject = $blocked | ConvertFrom-Json
+$confirmationMfaObject.browser_status = 'REQUIRES_MFA'
+$confirmationMfaObject.tool_results = @([pscustomobject]@{tool = 'browser.mfa'; outcome = 'REQUIRES_MFA'; detail = 'real MFA device required'})
+$confirmationMfaObject | Add-Member -NotePropertyName confirmation -NotePropertyValue ([pscustomobject]@{category = 'MFA'; input_source = 'USER_SECRET'; action = 'await real MFA verification'})
+$confirmationMfaOk = $confirmationMfaObject | ConvertTo-Json -Compress -Depth 100
+
+$confirmationRemoteObject = $blocked | ConvertFrom-Json
+$confirmationRemoteObject | Add-Member -NotePropertyName confirmation -NotePropertyValue ([pscustomobject]@{category = 'REMOTE_PUBLISH'; input_source = 'NONE'; action = 'await remote publish authorization'})
+$confirmationRemoteOk = $confirmationRemoteObject | ConvertTo-Json -Compress -Depth 100
+
+$confirmationInExecutionObject = $execution | ConvertFrom-Json
+$confirmationInExecutionObject | Add-Member -NotePropertyName confirmation -NotePropertyValue ([pscustomobject]@{category = 'SECRET'; input_source = 'USER_SECRET'; action = 'ask the user for the real credential'})
+$confirmationInExecution = $confirmationInExecutionObject | ConvertTo-Json -Compress -Depth 100
+
+Invoke-ValidatorCase formal_visible pass $formalVisible
+Invoke-ValidatorCase formal_headless fail $formalHeadless 'browser_evidence.headless: formal flow acceptance must use a visible interactive session'
+Invoke-ValidatorCase formal_no_artifacts fail $formalNoArtifacts 'browser_evidence.artifacts: formal flow acceptance requires at least one readback visual artifact'
+Invoke-ValidatorCase formal_no_url fail $formalNoUrl 'browser_evidence.url: required for formal flow acceptance'
+Invoke-ValidatorCase formal_without_evidence fail $formalWithoutEvidence 'browser_evidence: required when formal_browser_acceptance is true'
+Invoke-ValidatorCase formal_wrong_tier fail $formalWrongTier 'browser_evidence.tier: formal_browser_acceptance requires FORMAL_FLOW'
+Invoke-ValidatorCase headless_component pass $headlessComponent
+Invoke-ValidatorCase light_browser_evidence fail $lightBrowserEvidence 'browser_evidence: forbidden for state TASK_COMPLETED'
+Invoke-ValidatorCase confirmation_local fail $confirmationLocal 'confirmation: authorized deterministic input is a continue action'
+Invoke-ValidatorCase confirmation_contract fail $confirmationContract 'confirmation: authorized deterministic input is a continue action'
+Invoke-ValidatorCase confirmation_secret_ok pass $confirmationSecretOk
+Invoke-ValidatorCase confirmation_secret_unbound fail $confirmationSecretUnbound 'confirmation.category: SECRET requires an actual REQUIRES_SECRET tool result'
+Invoke-ValidatorCase confirmation_mfa_ok pass $confirmationMfaOk
+Invoke-ValidatorCase confirmation_remote_ok pass $confirmationRemoteOk
+Invoke-ValidatorCase confirmation_in_execution fail $confirmationInExecution 'confirmation: forbidden for state EXECUTION_SUBMITTED'
 
 $contract = Get-Content -LiteralPath $contractPath -Raw | ConvertFrom-Json
 $propertyNames = @($contract.properties.PSObject.Properties.Name | Sort-Object)

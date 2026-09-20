@@ -73,12 +73,23 @@ function Test-FailureOutcome {
         $Result.outcome -in @('FAILED', 'DENIED', 'UNAVAILABLE', 'TIMEOUT', 'REQUIRES_SECRET', 'REQUIRES_MFA', 'REQUIRES_HUMAN_VERIFICATION')
 }
 
+function Test-ToolOutcome {
+    param(
+        [AllowNull()] [object] $Results,
+        [Parameter(Mandatory = $true)] [string] $Outcome
+    )
+
+    if ($null -eq $Results) { return $false }
+    return @(@($Results) | Where-Object { (Test-Property $_ 'outcome') -and $_.outcome -eq $Outcome }).Count -gt 0
+}
+
 $rootDir = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 $contractPath = Join-Path $rootDir '.codex/governance/terminal-contract.json'
 $payloadText = if ($pipelineChunks.Count -gt 0) {
     $pipelineChunks -join [Environment]::NewLine
 } else {
-    [Console]::In.ReadToEnd()
+    $stdinReader = [System.IO.StreamReader]::new([Console]::OpenStandardInput(), [System.Text.UTF8Encoding]::new($false), $true)
+    $stdinReader.ReadToEnd()
 }
 
 try {
@@ -371,6 +382,118 @@ if (Test-Property $payload 'browser_status') {
     }
 }
 
+if (Test-Property $payload 'browser_evidence') {
+    if ($payload.browser_evidence -isnot [pscustomobject]) {
+        Add-Diagnostic $diagnostics 'browser_evidence: expected object'
+    } else {
+        foreach ($name in @($payload.browser_evidence.PSObject.Properties.Name)) {
+            if ($name -notin @('tier', 'headless', 'artifacts', 'url', 'viewport', 'identity', 'object', 'network_index')) {
+                Add-Diagnostic $diagnostics "browser_evidence.$name`: unknown field"
+            }
+        }
+        foreach ($name in @('tier', 'headless')) {
+            if (-not (Test-Property $payload.browser_evidence $name)) {
+                Add-Diagnostic $diagnostics "browser_evidence.$name`: missing required field"
+            }
+        }
+        if ((Test-Property $payload.browser_evidence 'tier') -and ($payload.browser_evidence.tier -isnot [string] -or $payload.browser_evidence.tier -notin @('FORMAL_FLOW', 'ISOLATED_REGRESSION', 'COMPONENT_TEST'))) {
+            Add-Diagnostic $diagnostics 'browser_evidence.tier: unknown value'
+        }
+        if ((Test-Property $payload.browser_evidence 'headless') -and $payload.browser_evidence.headless -isnot [bool]) {
+            Add-Diagnostic $diagnostics 'browser_evidence.headless: expected boolean'
+        }
+        if (Test-Property $payload.browser_evidence 'artifacts') {
+            if ($payload.browser_evidence.artifacts -isnot [System.Array] -or
+                $payload.browser_evidence.artifacts.Count -lt 1 -or
+                @($payload.browser_evidence.artifacts | Where-Object { -not (Test-NonBlankString $_) }).Count -gt 0) {
+                Add-Diagnostic $diagnostics 'browser_evidence.artifacts: expected non-empty array of non-blank strings'
+            }
+        }
+        foreach ($name in @('url', 'viewport', 'identity', 'object', 'network_index')) {
+            if ((Test-Property $payload.browser_evidence $name) -and -not (Test-NonBlankString $payload.browser_evidence.$name)) {
+                Add-Diagnostic $diagnostics "browser_evidence.$name`: must be non-blank string"
+            }
+        }
+        $evidenceTierValue = if (Test-Property $payload.browser_evidence 'tier') { $payload.browser_evidence.tier } else { $null }
+        if ($evidenceTierValue -eq 'FORMAL_FLOW') {
+            if ((Test-Property $payload.browser_evidence 'headless') -and $payload.browser_evidence.headless -eq $true) {
+                Add-Diagnostic $diagnostics 'browser_evidence.headless: formal flow acceptance must use a visible interactive session, not a headless or background browser'
+            }
+            if (-not (Test-Property $payload.browser_evidence 'artifacts')) {
+                Add-Diagnostic $diagnostics 'browser_evidence.artifacts: formal flow acceptance requires at least one readback visual artifact'
+            }
+            foreach ($name in @('url', 'viewport', 'identity', 'object', 'network_index')) {
+                if (-not (Test-Property $payload.browser_evidence $name)) {
+                    Add-Diagnostic $diagnostics "browser_evidence.$name`: required for formal flow acceptance"
+                }
+            }
+        }
+    }
+}
+
+if ((Test-Property $payload 'formal_browser_acceptance') -and $payload.formal_browser_acceptance -isnot [bool]) {
+    Add-Diagnostic $diagnostics 'formal_browser_acceptance: expected boolean'
+}
+
+if ((Test-Property $payload 'formal_browser_acceptance') -and $payload.formal_browser_acceptance -eq $true) {
+    if (-not (Test-Property $payload 'browser_evidence')) {
+        Add-Diagnostic $diagnostics 'browser_evidence: required when formal_browser_acceptance is true'
+    }
+    if ((Test-Property $payload 'browser_evidence') -and $payload.browser_evidence -is [pscustomobject]) {
+        $acceptanceTierValue = if (Test-Property $payload.browser_evidence 'tier') { $payload.browser_evidence.tier } else { $null }
+        if ($acceptanceTierValue -ne 'FORMAL_FLOW') {
+            Add-Diagnostic $diagnostics 'browser_evidence.tier: formal_browser_acceptance requires FORMAL_FLOW'
+        }
+    }
+}
+
+if (Test-Property $payload 'confirmation') {
+    if ($payload.confirmation -isnot [pscustomobject]) {
+        Add-Diagnostic $diagnostics 'confirmation: expected object'
+    } else {
+        $confirmation = $payload.confirmation
+        foreach ($name in @($confirmation.PSObject.Properties.Name)) {
+            if ($name -notin @('category', 'input_source', 'action')) {
+                Add-Diagnostic $diagnostics "confirmation.$name`: unknown field"
+            }
+        }
+        foreach ($name in @('category', 'input_source', 'action')) {
+            if (-not (Test-Property $confirmation $name)) {
+                Add-Diagnostic $diagnostics "confirmation.$name`: missing required field"
+            }
+        }
+        if ((Test-Property $confirmation 'category') -and ($confirmation.category -isnot [string] -or $confirmation.category -notin @('SECRET', 'MFA', 'HUMAN_VERIFICATION', 'DESTRUCTIVE', 'REMOTE_PUBLISH', 'OUT_OF_AUTHORIZATION', 'DETERMINISTIC_LOCAL_INPUT'))) {
+            Add-Diagnostic $diagnostics 'confirmation.category: unknown value'
+        }
+        if ((Test-Property $confirmation 'input_source') -and ($confirmation.input_source -isnot [string] -or $confirmation.input_source -notin @('DEV_TEST_CONFIG', 'EXISTING_TEST_CONTRACT', 'USER_SECRET', 'EXTERNAL_SYSTEM', 'NONE'))) {
+            Add-Diagnostic $diagnostics 'confirmation.input_source: unknown value'
+        }
+        if ((Test-Property $confirmation 'action') -and -not (Test-NonBlankString $confirmation.action)) {
+            Add-Diagnostic $diagnostics 'confirmation.action: must be non-blank string'
+        }
+        $confirmationCategory = if (Test-Property $confirmation 'category') { $confirmation.category } else { $null }
+        $confirmationSource = if (Test-Property $confirmation 'input_source') { $confirmation.input_source } else { $null }
+        $externalEffectCategories = @('DESTRUCTIVE', 'REMOTE_PUBLISH', 'OUT_OF_AUTHORIZATION')
+        if (($confirmationCategory -eq 'DETERMINISTIC_LOCAL_INPUT') -or
+            (($confirmationSource -eq 'DEV_TEST_CONFIG' -or $confirmationSource -eq 'EXISTING_TEST_CONTRACT') -and ($confirmationCategory -notin $externalEffectCategories))) {
+            Add-Diagnostic $diagnostics 'confirmation: authorized deterministic input is a continue action; complete it without requesting user input'
+        }
+        if (($confirmationCategory -in @('SECRET', 'MFA', 'HUMAN_VERIFICATION')) -and ($confirmationSource -notin @('USER_SECRET', 'EXTERNAL_SYSTEM'))) {
+            Add-Diagnostic $diagnostics 'confirmation.input_source: real secret, MFA, or human verification input must come from the user or an external system'
+        }
+        $confirmationToolResults = if (Test-Property $payload 'tool_results') { $payload.tool_results } else { $null }
+        if ($confirmationCategory -eq 'SECRET' -and -not (Test-ToolOutcome $confirmationToolResults 'REQUIRES_SECRET')) {
+            Add-Diagnostic $diagnostics 'confirmation.category: SECRET requires an actual REQUIRES_SECRET tool result'
+        }
+        if ($confirmationCategory -eq 'MFA' -and -not (Test-ToolOutcome $confirmationToolResults 'REQUIRES_MFA')) {
+            Add-Diagnostic $diagnostics 'confirmation.category: MFA requires an actual REQUIRES_MFA tool result'
+        }
+        if ($confirmationCategory -eq 'HUMAN_VERIFICATION' -and -not (Test-ToolOutcome $confirmationToolResults 'REQUIRES_HUMAN_VERIFICATION')) {
+            Add-Diagnostic $diagnostics 'confirmation.category: HUMAN_VERIFICATION requires an actual REQUIRES_HUMAN_VERIFICATION tool result'
+        }
+    }
+}
+
 if ((Test-Property $payload 'state') -and $payload.state -is [string] -and (Test-Property $contract.states $payload.state)) {
     $stateContract = $contract.states.($payload.state)
     foreach ($name in @($stateContract.required)) {
@@ -472,7 +595,7 @@ if ((Test-Property $payload 'state') -and $payload.state -eq 'BLOCKED' -and
         Add-Diagnostic $diagnostics "browser_status: $browserStatusValue requires a matching tool result"
     }
     foreach ($result in @($payload.tool_results)) {
-        if (Test-FailureOutcome $result -and -not (Test-NonBlankString $result.detail)) {
+        if ((Test-FailureOutcome $result) -and (-not (Test-NonBlankString $result.detail))) {
             Add-Diagnostic $diagnostics 'tool_results: failed or externally blocked results require non-blank detail'
         }
     }

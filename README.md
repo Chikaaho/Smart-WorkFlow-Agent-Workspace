@@ -50,20 +50,20 @@ git clone --branch develop-sw git@github.com:Chikaaho/Smart-WorkFlow-Agent-Works
 cd Smart-WorkFlow-Agent-Workspace
 ```
 
-再将后端与前端仓库克隆到工作区根目录，本地目录名与仓库名保持一致：
+再将后端与前端仓库克隆到工作区根目录；本地目录名与远端仓库同名，工作区各文档中的相对路径按该目录名解析：
 
 ```bash
-git clone git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-server.git
+git clone git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-server.git Smart-WorkFlow-aPaaS-server
 ```
 
 ```bash
-git clone git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-Web.git
+git clone git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-Web.git Smart-WorkFlow-aPaaS-Web
 ```
 
-进入对应工程后，按后端或前端 README 准备环境并启动服务：
+进入对应工程后，先读仓库 README 了解产品定位，再按各仓工程宪法与工作区开发流程准备环境、启动服务并执行验证（命令导航见 [`knowledge/development-workflow.md`](knowledge/development-workflow.md)）：
 
-- [后端环境与启动](Smart-WorkFlow-aPaaS-server/README.md)
-- [前端环境与启动](Smart-WorkFlow-aPaaS-Web/README.md)
+- 后端：[仓库 README](Smart-WorkFlow-aPaaS-server/README.md) · [工程宪法](Smart-WorkFlow-aPaaS-server/docs/governance/engineering-constitution.md)
+- 前端：[仓库 README](Smart-WorkFlow-aPaaS-Web/README.md) · [工程宪法](Smart-WorkFlow-aPaaS-Web/docs/governance/engineering-constitution.md)
 
 ## 与 Agent Coding Engine 的关系
 

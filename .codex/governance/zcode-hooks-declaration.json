@@ -1,0 +1,42 @@
+{
+  "schema": "agent-coding-engine.zcode-hook-declaration.v1",
+  "note": "受治理工作区在 ZCode 中的 hook 声明（仓库唯一来源）。由 .codex/governance/install-zcode-hooks.ps1 同步到用户级 ~/.zcode/cli/config.json：工作区级声明会被宿主工作区信任层反复失效（实测批准后仍回到待信任并静默禁用），因此生效位置固定在用户级。命令只固定宿主入口并按 ${ZCODE_PROJECT_DIR} 定位仓库内实现，非受治理工作区自动无操作。规则与实现全部在 .codex/governance/，改规则不需要改本声明。Stop 事件必须保持 process/argv 型（绝对路径 powershell.exe）：2026-09-19 实测本机宿主对 command 型 Stop 派发不可靠（六次回合结束仅一次到达门禁，且失败完全静默无 hook.run.failed），而 process 型在同类多工具长回合曾稳定到达；UserPromptSubmit 的 command 型实测一直稳定，保留。stop-gate.ps1 的 dispatch 回执（runtime/zcode/invocations.log）用于持续度量派发是否发生。",
+  "hooks": {
+    "enabled": true,
+    "events": {
+      "UserPromptSubmit": [
+        {
+          "hooks": [
+            {
+              "type": "command",
+              "command": "if exist \"${ZCODE_PROJECT_DIR}\\.codex\\hooks\\zcode-role-bind.cmd\" \"${ZCODE_PROJECT_DIR}\\.codex\\hooks\\zcode-role-bind.cmd\"",
+              "enabled": true,
+              "statusMessage": "绑定会话角色"
+            }
+          ]
+        }
+      ],
+      "Stop": [
+        {
+          "hooks": [
+            {
+              "type": "process",
+              "command": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+              "args": [
+                "-NoLogo",
+                "-NoProfile",
+                "-NonInteractive",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-File",
+                "${ZCODE_PROJECT_DIR}/.codex/governance/stop-gate.ps1"
+              ],
+              "enabled": true,
+              "statusMessage": "校验执行终态"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

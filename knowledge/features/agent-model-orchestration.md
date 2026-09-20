@@ -17,7 +17,7 @@
 | 功能目标 | 在 `sw-basic-agent` 落地大模型接入配置管理与调度图编排的执行骨架：模型注册 CRUD／密钥加密存储／连通性测试、图定义 CRUD／版本／发布、图解释执行引擎（含并行与循环节点）、多变量执行上下文与图执行历史持久化，并交付前端图设计器骨架 |
 | 创建日期 | 2026-08-09（Step1—3 PASSED，提交 `b222a78`；F04 前置调研同批） |
 | 历史完成状态/时点 | **COMPLETED（历史功能链）**——末步 Step12 通过规划裁决 **PASSED（D71，2026-08-12）**；全过程裁决链 D53—D71（Step1—3 D55、Step4 D59、Step5 D61、Step6 D63、Step7 D64/D65、Step8 D64、Step9 D65、Step10 D66/D67、Step11 D68—D70、Step12 D71），执行时间 2026-08-09 → 2026-08-12 |
-| 涉及模块 | 后端 `sw-basic-agent`（模型/图定义/解释器/持久化）与 `sw-bootstrap` 统一迁移路径（H2 与 PostgreSQL 双份）；前端 `Smart-WorkFlow-aPaaS-Web` agent 模块（图设计器骨架） |
+| 涉及模块 | 后端 `sw-basic-agent`（模型/图定义/解释器/持久化）与 `sw-bootstrap` 统一迁移路径（H2 与 PostgreSQL 双份）；前端 `Smart-WorkFlow-Web` agent 模块（图设计器骨架） |
 | 历史功能序号 | 第 15 个（主索引 §4 / 功能映射子表 A 组「正式功能第 15 个（早期批处理）」） |
 
 ## 2. 交付范围（按 Step 方向文件复述）
