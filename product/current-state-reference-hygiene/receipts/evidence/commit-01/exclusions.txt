@@ -1,0 +1,15 @@
+EXCLUSION EVIDENCE (P53 in-flight work and gitlinks must stay uncommitted)
+
+workspace repo:
+  product/p53-global-ui-component-layout entries still uncommitted = 16
+  sample: M product/p53-global-ui-component-layout/receipts/evidence/p53-review-04/capture-source-fingerprint-after.json
+          ?? product/p53-global-ui-component-layout/receipts/evidence/p53-review-06/ , p53-review-07/ , handoff-executor-session-p53-*.md , planning-execution-prompt-*-04..07.md , receipt-p53-*.md
+  gitlinks: ' M Smart-WorkFlow-aPaaS-Web' / ' M Smart-WorkFlow-aPaaS-server' remain modified-in-worktree; ls-files still records the released main SHAs 963df360ed18bc1c604652a13edb2a7ed0be8963 and c15428f0002f6bb0ceeff05c7cbcf842bd3d3148 (no gitlink advance committed)
+
+web repo (P53 in-flight session):
+  dirty entries after this round's commit = 127 (unchanged set; README.md no longer among them)
+  sample: M src/styles/tokens.css ; M src/layouts/BasicLayout.vue ; M src/modules/workflow/views/WorkspaceHome.vue ; ?? src/modules/workflow/views/TaskGraphView.vue
+  staged entries after commit = none
+  git stash list = empty (lint-staged restore completed; no leftover stash)
+
+conclusion: this round committed only its own deliverables; P53 work-in-progress, nested-repo commits and gitlink pointers were left exactly as found.
