@@ -1,18 +1,21 @@
 #!/usr/bin/env python3
-"""执行会话宿主外监督器（Watchdog）。
+"""执行会话宿主外监督器（Watchdog）v2——CLI 恢复式纠偏。
 
 宪法要求"任务能否终止由宿主外监督器调用同一公共 Validator 后唯一裁决"、"禁止把
-用户点击继续作为恢复链路"。本监督器独立于 ZCode 宿主进程运行（任务计划程序驱动），
-不依赖任何 in-host hook 存活：
+用户点击继续作为恢复链路"。本监督器独立于 ZCode GUI 进程运行（任务计划程序驱动），
+不依赖任何 in-host hook 存活（实测宿主 Stop hook 在长时高负载窗口存在 spawn 早期
+崩溃，in-host 通道不可作为唯一防线）：
 
 1. 检测：扫描已绑定 executor 角色的会话，取其最后一条带正文助手消息，按与 Stop Gate
    同源的物理末行规则判定是否以合法终态行收尾（复用 session-observation 的实现）；
-2. 执行：对"已静默超过阈值且未处理"的无终态收尾，向对应 ZCode 窗口注入纠偏提示词
-   （剪贴板粘贴 + 回车，等效用户打字，走实测 100% 可靠的 UserPromptSubmit 通道），
-   强制会话续做并补交终态；
-3. 台账：每次检测与注入写 supervisor.jsonl，幂等键 = 会话 + 消息 id，同一收尾不重复注入。
+2. 执行：对"静默超过阈值、发生在行动窗口内、未被处理"的无终态收尾，通过 ZCode 引擎
+   CLI 无头恢复目标会话（--resume <sess> --prompt <纠偏> --mode yolo）——会话级精准、
+   不触碰 GUI、全新进程使 in-host 门禁恢复可靠；纠偏提示词随后经 UserPromptSubmit
+   通道（实测 100% 可靠）进入会话，执行会话自主续做并补交终态；
+3. 台账：每次检测与注入写 supervisor.jsonl，幂等键 = 会话 + 消息 id；单会话在行动
+   窗口内最多纠偏 MAX_INJECTIONS 次，超限记 escalation-exhausted 交还管理员。
 
-只读宿主数据库；除台账与注入外不写任何状态。
+只读宿主数据库；除台账、状态文件与受控的无头恢复进程外不写任何状态。
 """
 
 from __future__ import annotations
@@ -28,14 +31,24 @@ import time
 from pathlib import Path
 
 GOVERNANCE_DIR = Path(__file__).resolve().parent
+WORKSPACE_DIR = GOVERNANCE_DIR.parent.parent
 RUNTIME_DIR = GOVERNANCE_DIR / "runtime" / "zcode"
 SESSIONS_DIR = RUNTIME_DIR / "sessions"
 LEDGER_PATH = RUNTIME_DIR / "supervisor.jsonl"
 LOCK_PATH = RUNTIME_DIR / "supervisor.lock"
+HEADLESS_LOG_DIR = RUNTIME_DIR / "headless"
 
-IDLE_SECONDS = 480          # 会话静默 8 分钟才认定回合已结束（进行中的回合消息持续落库）
-LOOKBACK_SECONDS = 12 * 3600  # 只看 12 小时内的收尾，不复活陈旧会话
-INJECT_COOLDOWN_SECONDS = 1800  # 同会话两次注入的最小间隔
+ENGINE_CLI = Path(os.environ.get(
+    "ZCODE_ENGINE_CLI",
+    r"F:\soft\zcode\resources\glm\zcode.cjs",
+))
+ENGINE_NODE = os.environ.get("ZCODE_NODE", r"C:\Program Files\nodejs\node.exe")
+
+IDLE_SECONDS = int(os.environ.get("WATCHDOG_IDLE_SECONDS", "480"))   # 静默 8 分钟认定回合已结束
+ACTION_WINDOW_SECONDS = 90 * 60        # 只自动恢复 90 分钟内的停滞：更旧的会话视为已交接/归档
+LOOKBACK_SECONDS = 12 * 3600           # 台账与统计的观察窗
+INJECT_COOLDOWN_SECONDS = 30 * 60      # 同会话两次纠偏的最小间隔
+MAX_INJECTIONS_PER_SESSION = 6         # 行动窗口内最多纠偏次数，超限交还管理员
 
 
 def load_observation_module():
@@ -70,54 +83,22 @@ def read_executor_sessions() -> list[str]:
     return sessions
 
 
-def last_message_time(connection: sqlite3.Connection, session_id: str) -> int | None:
-    row = connection.execute(
-        "select max(time_updated) from message where session_id = ?", (session_id,)
-    ).fetchone()
-    return int(row[0]) if row and row[0] else None
-
-
 def append_ledger(record: dict) -> None:
     LEDGER_PATH.parent.mkdir(parents=True, exist_ok=True)
     with LEDGER_PATH.open("a", encoding="utf-8") as handle:
         handle.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 
-def read_ledger_keys() -> set[str]:
+def read_ledger() -> list[dict]:
     if not LEDGER_PATH.is_file():
-        return set()
-    keys = set()
+        return []
+    records = []
     for line in LEDGER_PATH.read_text(encoding="utf-8").splitlines():
         try:
-            record = json.loads(line)
+            records.append(json.loads(line))
         except ValueError:
             continue
-        if record.get("action") == "inject" and record.get("key"):
-            keys.add(record["key"])
-    return keys
-
-
-def last_inject_time(keys_times: dict, session: str) -> float:
-    return keys_times.get(session, 0.0)
-
-
-def scan_injection_times() -> dict:
-    times: dict = {}
-    if not LEDGER_PATH.is_file():
-        return times
-    now = time.time()
-    for line in LEDGER_PATH.read_text(encoding="utf-8").splitlines():
-        try:
-            record = json.loads(line)
-        except ValueError:
-            continue
-        if record.get("action") != "inject":
-            continue
-        session = record.get("session", "")
-        ts = record.get("epoch", 0)
-        if session and ts and now - float(ts) < INJECT_COOLDOWN_SECONDS * 3:
-            times[session] = max(times.get(session, 0.0), float(ts))
-    return times
+    return records
 
 
 CORRECTION_PROMPT = (
@@ -128,21 +109,39 @@ CORRECTION_PROMPT = (
 )
 
 
-def inject_via_window(session_title: str, prompt: str) -> tuple[bool, str]:
-    """调用 PowerShell 注入脚本，把纠偏提示词送进目标 ZCode 窗口。"""
-    script = GOVERNANCE_DIR / "inject-prompt.ps1"
-    result = subprocess.run(
-        [
-            "powershell", "-NoLogo", "-NoProfile", "-NonInteractive",
-            "-ExecutionPolicy", "Bypass", "-File", str(script),
-            "-TitlePattern", session_title[:16],
-            "-PromptText", prompt,
-        ],
-        capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120,
-    )
-    output = (result.stdout or "").strip()
-    ok = result.returncode == 0 and '"ok":true' in output.replace(" ", "")
-    return ok, (output or (result.stderr or "")[-300:])
+def spawn_headless_resume(session: str, cwd: str) -> tuple[bool, str]:
+    """以分离进程无头恢复目标会话并投递纠偏提示词。"""
+    if not ENGINE_CLI.is_file():
+        return False, f"engine-cli-missing: {ENGINE_CLI}"
+    HEADLESS_LOG_DIR.mkdir(parents=True, exist_ok=True)
+    log_path = HEADLESS_LOG_DIR / f"{session[:40]}.log"
+    log_handle = open(log_path, "a", encoding="utf-8")
+    log_handle.write(f"\n===== watchdog resume {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())} =====\n")
+    log_handle.flush()
+    creationflags = 0
+    if sys.platform == "win32":
+        creationflags = subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP
+    try:
+        subprocess.Popen(
+            [
+                ENGINE_NODE, str(ENGINE_CLI),
+                "--resume", session,
+                "--prompt", CORRECTION_PROMPT,
+                "--cwd", cwd,
+                "--mode", "yolo",
+            ],
+            stdout=log_handle,
+            stderr=subprocess.STDOUT,
+            stdin=subprocess.DEVNULL,
+            cwd=str(WORKSPACE_DIR),
+            creationflags=creationflags,
+            close_fds=True,
+        )
+        return True, f"headless-resume-spawned log={log_path.name}"
+    except OSError as exc:
+        return False, f"spawn-failed: {exc}"
+    finally:
+        log_handle.close()
 
 
 def acquire_lock() -> bool:
@@ -164,7 +163,8 @@ def release_lock() -> None:
         pass
 
 
-def run(dry_run: bool, db_path: Path | None = None) -> int:
+def run(dry_run: bool, db_path: Path | None = None, idle_seconds: int | None = None) -> int:
+    idle = idle_seconds if idle_seconds is not None else IDLE_SECONDS
     if not acquire_lock():
         print(json.dumps({"status": "skipped-locked"}, ensure_ascii=False))
         return 0
@@ -178,8 +178,18 @@ def run(dry_run: bool, db_path: Path | None = None) -> int:
         connection = sqlite3.connect(f"file:{db.as_posix()}?mode=ro", uri=True, timeout=10)
         connection.execute("pragma busy_timeout = 5000")
         now_ms = int(time.time() * 1000)
-        handled = read_ledger_keys()
-        inject_times = scan_injection_times()
+        now_s = time.time()
+        ledger = read_ledger()
+        handled = {r["key"] for r in ledger if r.get("action") == "inject" and r.get("key")}
+        inject_times: dict = {}
+        inject_counts: dict = {}
+        for r in ledger:
+            if r.get("action") in ("inject", "inject-failed") and r.get("session"):
+                ts = float(r.get("epoch") or 0)
+                if now_s - ts < INJECT_COOLDOWN_SECONDS:
+                    inject_times[r["session"]] = max(inject_times.get(r["session"], 0.0), ts)
+                if now_s - ts < ACTION_WINDOW_SECONDS:
+                    inject_counts[r["session"]] = inject_counts.get(r["session"], 0) + 1
         results = []
         for session in read_executor_sessions():
             try:
@@ -206,32 +216,36 @@ def run(dry_run: bool, db_path: Path | None = None) -> int:
                 entry["status"] = "already-handled"
                 results.append(entry)
                 continue
-            if age_ms > LOOKBACK_SECONDS * 1000:
-                entry["status"] = "stale-beyond-lookback"
+            if age_ms > ACTION_WINDOW_SECONDS * 1000:
+                entry["status"] = "stale-beyond-action-window"
                 results.append(entry)
                 continue
-            last_activity = last_message_time(connection, session)
-            if last_activity and now_ms - last_activity < IDLE_SECONDS * 1000:
+            row = connection.execute(
+                "select directory from session where id = ?", (session,)
+            ).fetchone()
+            session_dir = (row[0] if row and row[0] else str(WORKSPACE_DIR))
+            last_activity = connection.execute(
+                "select max(time_updated) from message where session_id = ?", (session,)
+            ).fetchone()[0]
+            if last_activity and now_ms - int(last_activity) < idle * 1000:
                 entry["status"] = "session-active-waiting-idle"
                 results.append(entry)
                 continue
-            if time.time() - last_inject_time(inject_times, session) < INJECT_COOLDOWN_SECONDS:
+            if now_s - inject_times.get(session, 0.0) < INJECT_COOLDOWN_SECONDS:
                 entry["status"] = "cooldown"
                 results.append(entry)
                 continue
-            title_row = connection.execute(
-                "select title from session where id = ?", (session,)
-            ).fetchone()
-            title = (title_row[0] or "") if title_row else ""
+            if inject_counts.get(session, 0) >= MAX_INJECTIONS_PER_SESSION:
+                entry["status"] = "escalation-exhausted"
+                results.append(entry)
+                continue
             entry["status"] = "injecting"
-            entry["title"] = title[:40]
             if dry_run:
                 entry["status"] = "would-inject"
-                entry["ok"] = None
                 append_ledger({"ts": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "action": "dry-run", "key": key, "session": session})
                 results.append(entry)
                 continue
-            ok, detail = inject_via_window(title, CORRECTION_PROMPT)
+            ok, detail = spawn_headless_resume(session, session_dir)
             entry["ok"] = ok
             entry["detail"] = detail[:160]
             append_ledger({
@@ -256,12 +270,13 @@ def run(dry_run: bool, db_path: Path | None = None) -> int:
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Host-external executor session watchdog")
+    parser = argparse.ArgumentParser(description="Host-external executor session watchdog (v2, CLI resume)")
     parser.add_argument("--dry-run", action="store_true", help="只检测与留痕，不注入")
     parser.add_argument("--db")
+    parser.add_argument("--idle-seconds", type=int, default=None, help="覆盖静默阈值（测试用）")
     args = parser.parse_args()
     try:
-        raise SystemExit(run(args.dry_run, Path(args.db) if args.db else None))
+        raise SystemExit(run(args.dry_run, Path(args.db) if args.db else None, args.idle_seconds))
     except Exception as exc:  # 监督器自身故障不得静默
         print(json.dumps({"status": "watchdog-error", "error": f"{type(exc).__name__}: {exc}"}, ensure_ascii=False))
         raise SystemExit(1)
