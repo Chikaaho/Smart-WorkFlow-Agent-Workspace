@@ -9,7 +9,7 @@
 
 ## Owner 优先级覆盖
 
-**2026-09-21 当前排期**：P53 已经规划最终复核01 PASSED 确认`COMPLETED（规划已确认，2026-09-21）`并核销（第45个正式功能）；正式业务功能数45，清单✅46/🟦22/⬜22与ADV64不变。P53/P61 已按 Owner 授权与既定 P61→P53 顺序统一合入两仓 develop 并推送（Web `fc37608`、Server `fa96290`），受影响检查：Web 四连 exit0＋locale 八值8/8、Server compile exit0＋聚焦测试35/0/0/0。下一动作=无待执行方向，等待 Owner/Planner 下发下一轮任务。
+**2026-09-21 当前排期**：0.1.0 P53/P61 演示环境发布已经规划最终审查02 PASSED，两仓 main/tag/公开 Release（Server `d18e9a39c552918615be8b158dfe0cc278cb309f`／Release ID `392753737`、Web `039f987437ed6369c3c131631bd7622c6ae482e7`／Release ID `392753751`）、CI 资产、演示库 V93 与 Owner 登录全部锁定；阶段三终态同步已提交（发布任务状态 `COMPLETED（待规划确认，2026-09-21）`，方向 `product/v0.1.0-p53-p61-production-release/ready/direction-v0.1.0-p53-p61-production-release-terminal-sync.md` 待 Planner 复核）。P53 已经规划最终复核01 PASSED 确认`COMPLETED（规划已确认，2026-09-21）`并核销（第45个正式功能）；正式业务功能数45，清单✅46/🟦22/⬜22与ADV64不变。P53/P61 已按 Owner 授权与既定 P61→P53 顺序统一合入两仓 develop 并推送（Web `fc37608`、Server `fa96290`）。下一动作=等待 Owner 自行体验，发现问题时另行立项，否则等待下一轮任务；0.1.0 发布身份锁定，不得重复发布。
 
 **2026-09-15 P0版本终态**：P60成熟OA `0.1.0`已**COMPLETED（规划已确认）**、整体14/14，I1—I6均已确认；Server/Web发布锁定、Workspace不参与版本判断、迁移终点V93。I5三Provider与I6五外部通知渠道保持Owner延期/未验证，I6 R8由P2待办跟踪。功能数44、✅46/🟦22/⬜22、ADV64与其他开放P编号不变。
 
