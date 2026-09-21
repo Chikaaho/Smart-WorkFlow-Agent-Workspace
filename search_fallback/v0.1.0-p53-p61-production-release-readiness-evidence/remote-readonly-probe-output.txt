@@ -1,0 +1,181 @@
+### 1 IDENTITY
+iZ7xvarg8s85vgvy2kuj2wZ
+2026-09-21T13:34:23+08:00
+ 13:34:23 up 34 days, 19:13,  0 users,  load average: 0.03, 0.03, 0.00
+PRETTY_NAME=[REDACTED]
+NAME=[REDACTED]
+VERSION_ID=[REDACTED]
+### 2 DISK_MEM
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda3        20G   17G  1.8G  91% /
+               total        used        free      shared  buff/cache   available
+Mem:           1.6Gi       967Mi        82Mi       9.0Mi       559Mi       469Mi
+Swap:          1.5Gi       749Mi       786Mi
+### 3 DEPLOY_TREE
+total 16
+drwxr-xr-x 4 root root 4096 Aug 30 22:15 .
+drwxr-xr-x 6 root root 4096 Aug 30 22:15 ..
+drwxr-xr-x 5 root root 4096 Sep  7 20:28 server
+drwxr-xr-x 4 root root 4096 Sep  7 20:32 web
+-- server --
+total 603396
+drwxr-xr-x 5 root root      4096 Sep  7 20:28 .
+drwxr-xr-x 4 root root      4096 Aug 30 22:15 ..
+drwxr-xr-x 4 root root      4096 Aug 30 23:10 BOOT-INF
+-rw-r--r-- 1 root root 154752595 Sep  7 20:08 bootstrap.jar
+-rw-r--r-- 1 root root 154353632 Aug 31 00:09 bootstrap.jar.bak
+-rw-r--r-- 1 root root 154355142 Aug 31 10:05 bootstrap.jar.bak2
+-rw-r--r-- 1 root root 154358866 Aug 31 11:03 bootstrap.jar.bak3
+drwxr-xr-x 3 root root      4096 Aug 31 00:00 logs
+-rw------- 1 root root      1994 Sep  7 20:28 server.env
+-rw------- 1 root root         7 Sep  7 20:28 server.pid
+-rwxr-xr-x 1 root root      1380 Aug 30 23:17 start.sh
+-rwxr-xr-x 1 root root      1743 Aug 30 23:33 stop.sh
+drwxr-xr-x 2 root root      4096 Aug 30 23:02 uploads
+-- web --
+total 36
+drwxr-xr-x 4 root root  4096 Sep  7 20:32 .
+drwxr-xr-x 4 root root  4096 Aug 30 22:15 ..
+drwxr-xr-x 2 root root 20480 Sep  7 20:03 assets
+drwxr-xr-x 3 root root  4096 Sep  7 20:31 backup-20260907
+-rw-r--r-- 1 root root   932 Sep  7 20:03 index.html
+### 4 JAR_FINGERPRINTS
+== bootstrap.jar
+size=[REDACTED]
+91d7b50be28194161a3b317ac69abd236d013bfae7d0b0f6b8b6be6cbe702c4e  /opt/smart-workflow/server/bootstrap.jar
+== bootstrap.jar.bak
+size=[REDACTED]
+744d976ce71b783032afb9f7188dcf6312b1a7017e19bdf37ec524016ba73b17  /opt/smart-workflow/server/bootstrap.jar.bak
+== bootstrap.jar.bak2
+size=[REDACTED]
+0f2131a7f5e16c1078289c26a6fa4937759c129c8d7422afad296bb3bb837655  /opt/smart-workflow/server/bootstrap.jar.bak2
+### 5 WEB_ASSETS
+total 36
+drwxr-xr-x 4 root root  4096 Sep  7 20:32 .
+drwxr-xr-x 4 root root  4096 Aug 30 22:15 ..
+drwxr-xr-x 2 root root 20480 Sep  7 20:03 assets
+drwxr-xr-x 3 root root  4096 Sep  7 20:31 backup-20260907
+-rw-r--r-- 1 root root   932 Sep  7 20:03 index.html
+-- index.html --
+60ea0e522d5c19bc0c91ecd53201cccc8ef928e322a9264874b45537eab46f96  /opt/smart-workflow/web/index.html
+-- assets --
+total 3200
+drwxr-xr-x 2 root root  20480 Sep  7 20:03 .
+drwxr-xr-x 4 root root   4096 Sep  7 20:32 ..
+-rw-r--r-- 1 root root    201 Sep  7 20:03 AgentHome-CshN92Kw.js
+-rw-r--r-- 1 root root   5091 Sep  7 20:03 api-2x6_W2SE.js
+-rw-r--r-- 1 root root   1325 Sep  7 20:03 api-Dkc8tnkL.js
+-rw-r--r-- 1 root root   8892 Sep  7 20:03 api-DUFJx5Sq.js
+-rw-r--r-- 1 root root    857 Sep  7 20:03 api-uiQ8GBui.js
+-rw-r--r-- 1 root root   1728 Sep  7 20:03 _baseIteratee-CdnfOb5V.js
+-rw-r--r-- 1 root root  24950 Sep  7 20:03 BasicLayout-DleiQsry.css
+-rw-r--r-- 1 root root  39169 Sep  7 20:03 BasicLayout-DnfQGPBz.js
+-rw-r--r-- 1 root root    304 Sep  7 20:03 BlankPage-CrvOKP7h.js
+### 6 PROCESS
+pidfile=[REDACTED]
+    PID                  STARTED     ELAPSED   RSS COMMAND
+ 803211 Mon Sep  7 20:28:21 2026 13-17:06:11 146152 java -jar /opt/smart-workflow/server/bootstrap.jar
+-- listening --
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                                                                                     
+LISTEN 0      511          0.0.0.0:443        0.0.0.0:*    users:(("nginx",pid=1032845,fd=10),("nginx",pid=1032844,fd=10),("nginx",pid=1032841,fd=10))
+LISTEN 0      511          0.0.0.0:80         0.0.0.0:*    users:(("nginx",pid=1032845,fd=9),("nginx",pid=1032844,fd=9),("nginx",pid=1032841,fd=9))   
+LISTEN 0      128          0.0.0.0:22         0.0.0.0:*    users:(("sshd",pid=684677,fd=3))                                                           
+LISTEN 0      4096       127.0.0.1:7890       0.0.0.0:*    users:(("mihomo",pid=1003,fd=3))                                                           
+LISTEN 0      100          0.0.0.0:1883       0.0.0.0:*    users:(("mosquitto",pid=797896,fd=5))                                                      
+LISTEN 0      244        127.0.1.1:5433       0.0.0.0:*    users:(("postgres",pid=797342,fd=6))                                                       
+LISTEN 0      511          0.0.0.0:3897       0.0.0.0:*    users:(("nginx",pid=1032845,fd=8),("nginx",pid=1032844,fd=8),("nginx",pid=1032841,fd=8))   
+LISTEN 0      244        127.0.0.1:5433       0.0.0.0:*    users:(("postgres",pid=797342,fd=5))                                                       
+LISTEN 0      4096   127.0.0.53%lo:53         0.0.0.0:*    users:(("systemd-resolve",pid=797325,fd=14))                                               
+LISTEN 0      511        127.0.0.1:6379       0.0.0.0:*    users:(("redis-server",pid=797276,fd=6))                                                   
+LISTEN 0      511            [::1]:6379          [::]:*    users:(("redis-server",pid=797276,fd=7))                                                   
+LISTEN 0      511             [::]:80            [::]:*    users:(("nginx",pid=1032845,fd=11),("nginx",pid=1032844,fd=11),("nginx",pid=1032841,fd=11))
+LISTEN 0      128             [::]:22            [::]:*    users:(("sshd",pid=684677,fd=4))                                                           
+LISTEN 0      100             [::]:1883          [::]:*    users:(("mosquitto",pid=797896,fd=6))                                                      
+LISTEN 0      100                *:8080             *:*    users:(("java",pid=803211,fd=29))                                                          
+LISTEN 0      4096               *:38784            *:*    users:(("reasonix",pid=1617,fd=11))                                                        
+### 7 SERVICES
+nginx=[REDACTED]
+redis-server=active
+postgresql@14-main=active
+### 8 NGINX
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+total 8
+drwxr-xr-x 2 root root 4096 Jul  5 20:11 .
+drwxr-xr-x 9 root root 4096 Sep 15 06:56 ..
+lrwxrwxrwx 1 root root   34 Jul  5 20:11 default -> /etc/nginx/sites-available/default
+### 9 HEALTH
+backend_root_http=[REDACTED]
+actuator_health_http=[REDACTED]
+### 10 LOGS
+total 3723332
+drwxr-xr-x 3 root root       4096 Aug 31 00:00 .
+drwxr-xr-x 5 root root       4096 Sep  7 20:28 ..
+drwxr-xr-x 2 root root       4096 Sep 21 00:00 backup
+-rw-r--r-- 1 root root 3812672712 Sep 21 13:34 server.log
+-- tail server.log --
+2026-09-21T13:34:33.842+08:00 DEBUG 803211 --- [mand-dispatcher] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+JDBC Connection [ConnectionProxyImpl{connectedTime=2026-09-21 03:01:46.702, closeCount=0, lastValidateTimeMillis=2026-09-21 13:30:31.892}] will not be managed by Spring
+==>  Preparing: SELECT id, command_key, command_type, channel, status, payload, result, failure_reason, retry_count, next_retry_at, claimed_at, claim_token, finished_at, initiator_id, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sw_bpm_command WHERE deleted = 0 AND (status = ? AND channel IN (?) AND (next_retry_at IS NULL OR next_retry_at <= ?)) AND tenant_id = 0 ORDER BY create_time ASC LIMIT 5
+==> Parameters: PENDING(String), P0(String), 2026-09-21T13:34:33.840643623(LocalDateTime)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@10be85b8]
+### 11 BACKUP_ROLLBACK_ASSETS
+-- /data/backup --
+ls: cannot access '/data/backup/': No such file or directory
+-- web.bak --
+ls: cannot access '/opt/smart-workflow/web.bak': No such file or directory
+ls: cannot access '/opt/smart-workflow/web.bak': No such file or directory
+### 12 DB_MIGRATION
+could not change directory to "/root": Permission denied
+58
+could not change directory to "/root": Permission denied
+57|58|v002 oa workspace and menus|true|2026-09-07 20:10:17.910361
+56|57|v002 oa notify send attempt|true|2026-09-07 20:10:17.77762
+55|56|v002 oa catalog category and urge|true|2026-09-07 20:10:17.610042
+54|55|p4 command claim token and action command linkage|true|2026-09-07 20:10:17.507397
+53|54|p4 form visibility scope|true|2026-09-07 20:10:17.414351
+52|53|p4 personal center menus|true|2026-09-07 20:10:17.320625
+### 13 ENV_KEYS_ONLY
+server.env size=1994 mode=600 mtime=2026-09-07 20:28:22.405440184 +0800
+
+
+export OPENAI_API_KEY=[REDACTED]
+export PG_PASSWORD=[REDACTED]
+export PG_USERNAME=[REDACTED]
+export SPRING_PROFILES_ACTIVE=[REDACTED]
+export SW_CIPHER_KEY=[REDACTED]
+export SW_LOGIN_DIGEST_SECRET=[REDACTED]
+export SW_LOGIN_DIGEST_SECRET=[REDACTED]
+export SW_LOGIN_RSA_PRIVATE_KEY=[REDACTED]
+### 14 SERVER_YML
+ls: cannot access '/opt/smart-workflow/server/*.yml': No such file or directory
+ls: cannot access '/opt/smart-workflow/server/*.properties': No such file or directory
+### 15 UPLOADS
+total 8
+drwxr-xr-x 2 root root 4096 Aug 30 23:02 .
+drwxr-xr-x 5 root root 4096 Sep  7 20:28 ..
+### 16 CRON
+# Edit this file to introduce tasks to be run by cron.
+# 
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+# 
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').
+# 
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+# 
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+# 
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+# 
+### 17 JVM_CMDLINE_MASKED
+ 803211 java -jar /opt/smart-workflow/server/bootstrap.jar
+### DONE
