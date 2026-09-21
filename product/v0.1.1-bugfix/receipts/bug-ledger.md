@@ -9,8 +9,8 @@
 
 | 仓库 | 分支 | 起点（0.1.0 发布 main / tag `0.1.0`） | 远端 |
 |---|---|---|---|
-| Smart-WorkFlow-aPaaS-server | `0.1.1-bugfix` | `d18e9a39c552918615be8b158dfe0cc278cb309f` | 未推送（本地） |
-| Smart-WorkFlow-aPaaS-Web | `0.1.1-bugfix` | `039f987437ed6369c3c131631bd7622c6ae482e7` | 未推送（本地） |
+| Smart-WorkFlow-aPaaS-server | `0.1.1-bugfix` | `d18e9a39c552918615be8b158dfe0cc278cb309f` | origin 已推送（2026-09-22） |
+| Smart-WorkFlow-aPaaS-Web | `0.1.1-bugfix` | `039f987437ed6369c3c131631bd7622c6ae482e7` | origin 已推送（2026-09-22） |
 
 ## 2. 状态口径
 
