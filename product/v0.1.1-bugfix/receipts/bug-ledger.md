@@ -30,7 +30,7 @@
 | 编号 | 状态 | 简述 | 受影响仓库 | Server SHA | Web SHA | 单缺陷回执 | 收件日期 | 最近更新 |
 |---|---|---|---|---|---|---|---|---|
 | V011-BUG-001 | 已提交候选 | 登录页按 4:3 定宽设计，宽屏自适应异常 | Web | — | `387ff36` | `receipts/V011-BUG-001.md` | 2026-09-21 | 2026-09-21 |
-| V011-BUG-002 | 已提交候选 | 工作台改为后台配置驱动的低代码卡片并按用户保存 JSON 元数据 | Server / Web | `750ad39` | `360fca4`, `9ca7b1e`, `8d77112`, `5ead521`, `8b16359`, `525c3e3`, `d8f5434`, `1c585ba`, `fabb8c9` | `receipts/V011-BUG-002.md` | 2026-09-21 | 2026-09-21 |
+| V011-BUG-002 | 已提交候选 | 工作台改为后台配置驱动的低代码卡片并按用户保存 JSON 元数据 | Server / Web | `750ad39` | `360fca4`, `9ca7b1e`, `8d77112`, `5ead521`, `8b16359`, `525c3e3`, `d8f5434`, `1c585ba`, `fabb8c9`, `0b1c945` | `receipts/V011-BUG-002.md` | 2026-09-21 | 2026-09-22 |
 | V011-BUG-003 | 已收件 | 工作台响应式布局与移除左下角工作空间提醒 | Web | — | 待提交 | `receipts/V011-BUG-003.md` | 2026-09-21 | 2026-09-21 |
 
 ## 4. 提交流水（按提交时间追加）
@@ -48,6 +48,7 @@
 | 2026-09-21 | Smart-WorkFlow-aPaaS-Web | V011-BUG-002 | `525c3e3` | fix(workspace): [V011-BUG-002] 修复编辑页样式块损坏导致的编译失败 |
 | 2026-09-21 | Smart-WorkFlow-aPaaS-Web | V011-BUG-002 | `1c585ba` | fix(workspace): [V011-BUG-002] 修复编辑态全幅布局与效能 NaN |
 | 2026-09-21 | Smart-WorkFlow-aPaaS-Web | V011-BUG-002 | `fabb8c9` | feat(workspace): [V011-BUG-002] 卡片边缘线缩放热区与蓝色高亮 |
+| 2026-09-22 | Smart-WorkFlow-aPaaS-Web | V011-BUG-002 | `0b1c945` | feat(workspace): [V011-BUG-002] 编辑态卡片选中态与边框线 |
 | 2026-09-21 | Smart-WorkFlow-aPaaS-Web | V011-BUG-002 | `d8f5434` | fix(workspace): [V011-BUG-002] 编辑页所见即所得渲染真实卡片 |
 
 ## 5. 列车当前状态
