@@ -1,0 +1,133 @@
+# 成熟 OA 0.1.0 路线 / 当前 0.0.3 迭代 P0 需求索引
+
+P60成熟OA `0.1.0`路线已**COMPLETED（规划已确认，2026-09-15）**，整体14/14；I1—I6均已确认。Server/Web `0.1.0`发布锁定，Workspace不参与版本判断；迁移终点V93。R8五渠道与I5三Provider保持Owner延期/未验证；功能数44、✅46/🟦22/⬜22、ADV64与其他开放P编号不变。当前主功能入口为 P53 提示07：`product/p53-global-ui-component-layout/receipts/planning-execution-prompt-p53-global-ui-component-layout-07.md`；P61 已 `COMPLETED（规划已确认，2026-09-20）` 并核销，仅作完成追溯（三份方向归档 `product/p61-user-facing-message-humanization/passed/`，现状探索 `search_task/p61-user-facing-message-humanization-current-seams.md`）。
+
+[CH-aPaaS v0.1.0 OA 全功能收口正式方向（已归档）](../product/v0.1.0-oa-completion/passed/direction-v0.1.0-oa-completion.md)
+
+[CH-aPaaS 高级能力功能明细清单（8 模块 / 64 明细）](../product/v0.1.0-oa-completion/ready/advanced-capability-feature-checklist.md)
+
+[I6 通知与 0.1.0 版本收口正式方向（已归档）](../product/v0.1.0-oa-completion/passed/direction-stage-i6-notification-version-closure.md)
+
+[I6 阶段三终态同步方向（已归档）](../product/v0.1.0-oa-completion/passed/direction-stage-i6-terminal-sync.md) ｜ [0.1.0发布最终验收02：PASSED](../product/v0.1.0-oa-completion/receipts/planning-final-review-release-v0.1.0-server-web-02-passed.md) ｜ [P60终态最终复核01：PASSED](../product/v0.1.0-oa-completion/receipts/planning-final-review-terminal-sync-v0.1.0-oa-completion-01-passed.md) ｜ [P61现状探索](../search_task/p61-user-facing-message-humanization-current-seams.md) ｜ [I6 五类外部通知渠道真实验证（P2 待办）](i6-external-notification-channels-real-verification.md)
+
+[P61 全系统用户可见错误码与提示语人性化治理](requirement-pool.md#p61-owner-补充需求定义2026-09-14p60-最终收尾后执行)
+
+[I3 自研流程设计与查看范围调整记录 02](../product/v0.1.0-oa-completion/receipts/planning-scope-update-stage-i3-designer-02.md)
+
+[I3 人工审批与自研流程设计器前置探索](../search_task/v0.1.0-oa-completion-i3-current-seams.md)
+
+[I3 人工审批与自研流程设计器正式阶段方向（已归档）](../product/v0.1.0-oa-completion/passed/direction-stage-i3-manual-approval-first-party-process-designer.md)
+
+[I3 规划验收 01：VERIFYING](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i3-v0.1.0-oa-completion-01.md)
+
+[I3 规划验收 02：VERIFYING](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i3-v0.1.0-oa-completion-02.md)
+
+[I3 一级执行补充提示 01](../product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i3-v0.1.0-oa-completion-01.md)
+
+[I3 规划验收 03：VERIFYING](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i3-v0.1.0-oa-completion-03.md)
+
+[I3 二级执行补充提示 02](../product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i3-v0.1.0-oa-completion-02.md)
+
+[I3 规划验收 04：VERIFYING](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i3-v0.1.0-oa-completion-04.md)
+
+[I3 三级零裁量提示 03](../product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i3-v0.1.0-oa-completion-03.md)
+
+[I3 规划验收 05：VERIFYING](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i3-v0.1.0-oa-completion-05.md)
+
+[I3 三级继续收敛提示 04](../product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i3-v0.1.0-oa-completion-04.md)
+
+[I3 规划验收 06：VERIFYING](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i3-v0.1.0-oa-completion-06.md)
+
+[I3 三级继续收敛提示 05](../product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i3-v0.1.0-oa-completion-05.md)
+
+[I3 规划验收 07：VERIFYING](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i3-v0.1.0-oa-completion-07.md)
+
+[I3 三级原子补证提示 06](../product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i3-v0.1.0-oa-completion-06.md)
+
+[I3 规划验收 08：PASSED](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i3-v0.1.0-oa-completion-08-passed.md)
+
+[I3 阶段三终态同步方向（已归档）](../product/v0.1.0-oa-completion/passed/direction-stage-i3-terminal-sync.md)
+
+[I3 阶段三终态同步回执 01](../product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i3-v0.1.0-oa-completion-01.md)
+
+[I3 终态同步规划复核 01：Workspace终点与Server临时资产待补](../product/v0.1.0-oa-completion/receipts/planning-review-terminal-sync-stage-i3-v0.1.0-oa-completion-01.md)
+
+[I3 阶段三终态同步回执 02：只读闭环与授权清理](../product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i3-v0.1.0-oa-completion-02.md)
+
+[I3 终态同步最终复核 02：PASSED](../product/v0.1.0-oa-completion/receipts/planning-final-review-terminal-sync-stage-i3-v0.1.0-oa-completion-02-passed.md)
+
+[I4 编排、流程运营与工作台现状接缝探索](../search_task/v0.1.0-oa-completion-i4-current-seams.md)
+
+[I4 现状接缝探索规划验收 01：VERIFYING](../product/v0.1.0-oa-completion/receipts/planning-review-i4-current-seams-01.md)
+
+[I4 现状接缝探索补充 01](../search_task/v0.1.0-oa-completion-i4-current-seams-supplement-01.md)
+
+[P60 当前版本基线：成熟 OA 0.1.0 / 当前迭代 0.0.3](../product/v0.1.0-oa-completion/receipts/planning-version-baseline-p60-current-iteration-02.md)
+
+[I4 现状接缝探索最终验收 02：PASSED](../product/v0.1.0-oa-completion/receipts/planning-final-review-i4-current-seams-02-passed.md)
+
+[I4 编排、流程运营与工作台正式阶段方向（已归档）](../product/v0.1.0-oa-completion/passed/direction-stage-i4-orchestration-process-operations-workbench.md)
+
+[I4 首次执行回执验收 01：VERIFYING](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i4-v0.0.3-oa-iteration-01.md)
+
+[I4 第二次执行回执验收 02：VERIFYING](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i4-v0.0.3-oa-iteration-02.md)
+
+[I4 一级执行补充提示 01](../product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i4-v0.0.3-oa-iteration-01.md)
+
+[I4 规划验收 03](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i4-v0.0.3-oa-iteration-03.md) ｜ [I4 二级执行补充提示 02](../product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i4-v0.0.3-oa-iteration-02.md) ｜ [I4 规划验收 04](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i4-v0.0.3-oa-iteration-04.md)
+
+[I4 三级执行补充提示 03](../product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i4-v0.0.3-oa-iteration-03.md) ｜ [I4 规划验收 05](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i4-v0.0.3-oa-iteration-05.md) ｜ [I4 四级执行补充提示 04](../product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i4-v0.0.3-oa-iteration-04.md)
+
+[I4 执行回执 03](../product/v0.1.0-oa-completion/receipts/stage-i4-v0.0.3-oa-iteration-03.md) ｜ [I4 执行回执 04](../product/v0.1.0-oa-completion/receipts/stage-i4-v0.0.3-oa-iteration-04.md) ｜ [I4 执行回执 05](../product/v0.1.0-oa-completion/receipts/stage-i4-v0.0.3-oa-iteration-05.md)
+
+[I4 执行回执 06：R5/R6 收敛（最终原子）](../product/v0.1.0-oa-completion/receipts/stage-i4-v0.0.3-oa-iteration-06.md) ｜ [I4 功能级验收 06：PASSED](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i4-v0.0.3-oa-iteration-06-passed.md)
+
+[I4 阶段三终态同步方向（已归档）](../product/v0.1.0-oa-completion/passed/direction-stage-i4-terminal-sync.md) ｜ [I4 阶段三终态同步回执 01](../product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i4-v0.0.3-oa-iteration-01.md) ｜ [I4 终态同步复核 01：VERIFYING](../product/v0.1.0-oa-completion/receipts/planning-review-terminal-sync-stage-i4-v0.0.3-oa-iteration-01.md)
+
+[I4 功能清单/knowledge/memory全量对账方向（已归档）](../product/v0.1.0-oa-completion/passed/direction-stage-i4-status-reconciliation.md)
+
+[I4 终态同步复核02：VERIFYING](../product/v0.1.0-oa-completion/receipts/planning-review-terminal-sync-stage-i4-v0.0.3-oa-iteration-02.md) ｜ [I4 三层一致性收敛提示01](../product/v0.1.0-oa-completion/receipts/planning-execution-prompt-terminal-sync-stage-i4-v0.0.3-oa-iteration-01.md)
+
+[I4 终态同步回执03](../product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i4-v0.0.3-oa-iteration-03.md) ｜ [I4 最终复核03：PASSED](../product/v0.1.0-oa-completion/receipts/planning-final-review-terminal-sync-stage-i4-v0.0.3-oa-iteration-03-passed.md) ｜ [I4 规划确认终态投影（已归档）](../product/v0.1.0-oa-completion/passed/direction-stage-i4-final-confirmed-state-projection.md)
+
+[I5 第三方 SSO 现状接缝探索（历史）](../search_task/v0.1.0-oa-completion-i5-current-seams.md) ｜ [I5 现状接缝探索验收 01：PASSED](../product/v0.1.0-oa-completion/receipts/planning-review-i5-current-seams-01-passed.md)
+
+[I5 租户硬编码审计验收 01：PASSED](../product/v0.1.0-oa-completion/receipts/planning-review-tenant-hardcoding-audit-01-passed.md)
+
+[I5 租户安全与三方 SSO 正式阶段方向（已归档）](../product/v0.1.0-oa-completion/passed/direction-stage-i5-tenant-safe-third-party-sso.md)
+
+[I5 执行回执 11：Owner 自验交接包对象固化（最终原子）](../product/v0.1.0-oa-completion/receipts/stage-i5-v0.0.3-oa-iteration-11.md) ｜ [I5 规划验收 11：交接包通过](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i5-v0.0.3-oa-iteration-11.md)
+
+[I5 功能级验收：PASSED（Owner 延期免验三 Provider 真实链）](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i5-v0.0.3-oa-owner-waiver-01-passed.md)
+
+[I5 阶段三终态同步方向（已归档）](../product/v0.1.0-oa-completion/passed/direction-stage-i5-terminal-sync.md) ｜ [I5 终态同步回执 01/02](../product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md) ｜ [I5 终态最终复核 02：PASSED](../product/v0.1.0-oa-completion/receipts/planning-final-review-terminal-sync-stage-i5-v0.0.3-oa-iteration-02-passed.md)
+
+[I5 规划确认终态投影方向（实现前置门禁）](../product/v0.1.0-oa-completion/ready/direction-stage-i5-final-confirmed-state-projection.md)
+
+[I6 通知与版本收口正式阶段方向（已归档）](../product/v0.1.0-oa-completion/passed/direction-stage-i6-notification-version-closure.md) ｜ [I6 功能级验收07：PASSED](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i6-notification-version-closure-07-owner-deferral-passed.md) ｜ [I6 阶段三终态同步方向（已归档）](../product/v0.1.0-oa-completion/passed/direction-stage-i6-terminal-sync.md)
+
+[I2 低代码表单收口正式阶段方向（已归档）](../product/v0.1.0-oa-completion/passed/direction-stage-i2-low-code-form-closure.md)
+
+[I2 规划验收 01：E0—E8](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i2-v0.1.0-oa-completion-01.md)
+
+[I2 规划验收 02：S 插单通过、I2 未通过](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i2-v0.1.0-oa-completion-02.md)
+
+[I2 一级执行补充提示 01](../product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i2-v0.1.0-oa-completion-01.md)
+
+[I2 规划验收 03：锁定 E2b/E3b/E8b、六项未通过](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i2-v0.1.0-oa-completion-03.md)
+
+[I2 二级执行补充提示 02](../product/v0.1.0-oa-completion/receipts/planning-execution-prompt-stage-i2-v0.1.0-oa-completion-02.md)
+
+[I2 规划验收 06：功能级 PASSED](../product/v0.1.0-oa-completion/receipts/planning-review-stage-i2-v0.1.0-oa-completion-06-passed.md)
+
+[I2 阶段三终态同步方向（已归档）](../product/v0.1.0-oa-completion/passed/direction-stage-i2-terminal-sync.md)
+
+[I2 阶段三终态同步回执 01](../product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i2-v0.1.0-oa-completion-01.md)
+
+[I2 终态同步规划复核 01：Workspace 只读对账待补](../product/v0.1.0-oa-completion/receipts/planning-review-terminal-sync-stage-i2-v0.1.0-oa-completion-01.md)
+
+[I2 终态同步回执 02：只读对账](../product/v0.1.0-oa-completion/receipts/terminal-sync-stage-i2-v0.1.0-oa-completion-02.md)
+
+[I2 终态同步最终复核 02：PASSED](../product/v0.1.0-oa-completion/receipts/planning-final-review-terminal-sync-stage-i2-v0.1.0-oa-completion-02-passed.md)
+
+本文件仅作需求池索引，不承载平行执行口径。既有 P2/P4/P26/P31/P34/P35/P37/P38/P39/P47 等编号保持原意，由 P60 统筹收口但不提前核销。

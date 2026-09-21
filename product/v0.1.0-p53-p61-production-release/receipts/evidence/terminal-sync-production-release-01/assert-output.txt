@@ -1,0 +1,66 @@
+PASS V1-cs :: 发布任务状态 COMPLETED（待规划确认，2026-09-21） 出现于 knowledge/current-status.md
+PASS V1-sh :: 发布任务状态 COMPLETED（待规划确认，2026-09-21） 出现于 knowledge/session-handoff.md
+PASS V1-ft :: 发布任务状态 COMPLETED（待规划确认，2026-09-21） 出现于 knowledge/features/v0.1.0-oa-completion.md
+PASS V1-mr :: 发布任务状态 COMPLETED（待规划确认，2026-09-21） 出现于 memory/README.md
+PASS V1-ms :: 发布任务状态 COMPLETED（待规划确认，2026-09-21） 出现于 memory/state.md
+PASS V1-mf :: 发布任务状态 COMPLETED（待规划确认，2026-09-21） 出现于 memory/features.md
+PASS V1-mh :: 发布任务状态 COMPLETED（待规划确认，2026-09-21） 出现于 memory/handoff.md
+PASS V1-tp :: 发布任务状态 COMPLETED（待规划确认，2026-09-21） 出现于 todo/v0.1.0-oa-plan.md
+PASS V1-rp :: 发布任务状态 COMPLETED（待规划确认，2026-09-21） 出现于 todo/requirement-pool.md
+PASS V1-no-preliminary-confirm :: 不得把发布任务写成 COMPLETED（规划已确认）
+PASS V2-cs :: 发布身份（main/tag、Release ID、CI run）齐全于 knowledge/current-status.md
+PASS V2-sh :: 发布身份（main/tag、Release ID、CI run）齐全于 knowledge/session-handoff.md
+PASS V2-ft :: 发布身份（main/tag、Release ID、CI run）齐全于 knowledge/features/v0.1.0-oa-completion.md
+PASS V2-ms :: 发布身份（main/tag、Release ID、CI run）齐全于 memory/state.md
+PASS V2-mh :: 发布身份（main/tag、Release ID、CI run）齐全于 memory/handoff.md
+PASS V2-mr :: 发布身份（main/tag、Release ID、CI run）齐全于 memory/README.md
+PASS V2-mf :: 发布身份（main/tag、Release ID、CI run）齐全于 memory/features.md
+PASS V2-tp :: 发布身份（main/tag、Release ID、CI run）齐全于 todo/v0.1.0-oa-plan.md
+PASS V2-rp :: 发布身份（main/tag、Release ID、CI run）齐全于 todo/requirement-pool.md
+PASS V2-ix :: 发布身份（main/tag、Release ID、CI run）齐全于 knowledge/feature-reconciliation-index.md
+PASS V2-release-id-old-not-current :: 旧公开 Release 不呈现为当前身份（无 388979846/388979873 出现）
+PASS V3-cs :: 演示环境 V93 与 Owner 登录通过登记于 knowledge/current-status.md
+PASS V3-sh :: 演示环境 V93 与 Owner 登录通过登记于 knowledge/session-handoff.md
+PASS V3-ft :: 演示环境 V93 与 Owner 登录通过登记于 knowledge/features/v0.1.0-oa-completion.md
+PASS V3-ms :: 演示环境 V93 与 Owner 登录通过登记于 memory/state.md
+PASS V3-mh :: 演示环境 V93 与 Owner 登录通过登记于 memory/handoff.md
+PASS V3-tp :: 演示环境 V93 与 Owner 登录通过登记于 todo/v0.1.0-oa-plan.md
+PASS V4-cs-count :: current-status 已完成功能数保持 45
+PASS V4-sh-count :: session-handoff 正式业务功能数 45
+PASS V4-ft-count :: features/v0.1.0-oa-completion 正式功能数 45（登记路径 45/45）
+PASS V4-ix-count :: feature-reconciliation-index 正式功能数 45
+PASS V4-ms-count :: memory/state 功能数 45
+PASS V4-mf-count :: memory/features 功能数 45
+PASS V4-tp-count :: todo/v0.1.0-oa-plan 功能数45
+PASS V4-checklist-cs :: current-status 清单 ✅46/🟦22/⬜22（90）
+PASS V4-checklist-sh :: session-handoff 清单 ✅46/🟦22/⬜22
+PASS V4-checklist-others :: memory 与 todo 清单计数零变化
+PASS V4-adv :: ADV64 零变化（current-status / session-handoff / memory / todo）
+PASS V4-milestone-unchanged :: 里程碑/明细 ID 零变化（90 明细映射段落未被本轮改写）
+PASS V5-p53 :: P53 保持既有已核销（规划已确认，2026-09-21）
+PASS V5-p61 :: P61 保持既有已核销（规划已确认，2026-09-20）
+PASS V5-no-new-p :: 本发布任务不新增/核销 P 编号（声明存在）
+PASS V5-index-p-class :: 索引 §2 P 编号分类计数未变（已核销/完成 24）
+PASS V6-cs-no-active :: current-status 无活动正式功能
+PASS V6-sh-no-active :: session-handoff 无活动正式功能
+PASS V6-mh-no-active :: memory/handoff 无活动正式功能
+PASS V6-next-cs :: 唯一下一动作（等待 Owner 自行体验）登记于 knowledge/current-status.md
+PASS V6-next-sh :: 唯一下一动作（等待 Owner 自行体验）登记于 knowledge/session-handoff.md
+PASS V6-next-ms :: 唯一下一动作（等待 Owner 自行体验）登记于 memory/state.md
+PASS V6-next-mr :: 唯一下一动作（等待 Owner 自行体验）登记于 memory/README.md
+PASS V6-next-mh :: 唯一下一动作（等待 Owner 自行体验）登记于 memory/handoff.md
+PASS V6-next-tp :: 唯一下一动作（等待 Owner 自行体验）登记于 todo/v0.1.0-oa-plan.md
+PASS V6-next-rp :: 唯一下一动作（等待 Owner 自行体验）登记于 todo/requirement-pool.md
+PASS V6-no-republish :: 锁定口径（不得重复发布 / 不得移动或重建 main/tag/Release）
+PASS V7-main-passed :: 主方向已归档 passed/（direction-v0.1.0-p53-p61-production-release.md）
+PASS V7-sync-ready :: 终态同步方向保持 ready/ 未被移动
+PASS V7-no-sync-in-passed :: passed/ 内不存在终态同步方向（执行侧未归档）
+PASS V7-ready-only-sync :: ready/ 仅含终态同步方向
+PASS V7-pointer :: 方向内含执行侧状态指针与未确认声明
+PASS V8-max-file :: memory 单文件 <5KB（最大 4950 bytes）
+PASS V8-total :: memory 总量 <20KB（实际 17873 bytes）
+PASS V9-old-identity-historical :: 旧 2026-09-15 发布身份仅以历史时点口径出现
+PASS V10-server-clean :: Server 代码仓工作树 clean（本轮零改动）
+PASS V10-web-clean :: Web 代码仓工作树 clean（本轮零改动）
+PASS V11-no-new-evidence-dirs :: 本轮未生成工程构建/测试产物目录
+RESULT: 65/65 ALL CHECKS PASSED

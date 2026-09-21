@@ -139,15 +139,15 @@ tail -f /var/log/nginx/default.error.log
 ### 6.3 健康检查
 
 ```bash
-# 后端存活（本机自检）
-curl -sS -o /dev/null -w "HTTP %{http_code}\n" http://127.0.0.1:8080/
+# 后端存活（本机自检；context-path 为 /api）
+curl -sS -o /dev/null -w "HTTP %{http_code}\n" http://127.0.0.1:8080/api/actuator/health
 
 # 经 nginx 反代校验前端与 API（本机回环 + Host，域名以占位符代替）
 curl -sS -o /dev/null -w "HTTP %{http_code}\n" -H "Host: <对外域名>" http://127.0.0.1:80/sw/
-curl -sS -o /dev/null -w "HTTP %{http_code}\n" -H "Host: <对外域名>" http://127.0.0.1:80/sw-server/actuator/health  # 若启用 actuator
+curl -sS -o /dev/null -w "HTTP %{http_code}\n" -H "Host: <对外域名>" http://127.0.0.1:80/sw-server/api/actuator/health
 ```
 
-> 若后端暴露 Spring Boot Actuator 健康端点，`curl 127.0.0.1:8080/actuator/health` 应返回 `{"status":"UP"}`；未启用则该地址 404 属正常。
+> 后端 context-path 为 `/api`：`curl 127.0.0.1:8080/api/actuator/health` 应返回 `{"status":"UP"}`；未启用则该地址 404 属正常。
 
 ### 6.4 停止 / 启动 / 重启后端
 
@@ -178,6 +178,9 @@ STOP_TIMEOUT=30 ./stop.sh
 
 - `PG_USERNAME`、`PG_PASSWORD` — PostgreSQL 连接凭据
 - `SW_CIPHER_KEY` — 应用加密密钥
+- `JWT_SECRET` — JWT 签名密钥；0.1.0 起生产缺失或为占位值时启动期 fail-fast
+- `SW_SSO_CIPHER_KEY` — SSO 主体凭据加密密钥；0.1.0 起生产缺失时启动期 fail-fast
+- `SW_LOGIN_RSA_PRIVATE_KEY`、`SW_LOGIN_DIGEST_SECRET` — 登录口令 RSA 私钥与摘要盐
 - `SPRING_PROFILES_ACTIVE` — Spring 激活 profile
 - `OPENAI_API_KEY` — AI 能力 API 凭据
 
@@ -266,8 +269,8 @@ ls -lh /data/backup
 
 ### 9.2 磁盘与日志清理
 
-- 系统盘 20G，当前已用约 67%（约 6.1G 可用），**需关注增长**。
-- 后端主日志 `/opt/smart-workflow/server/logs/server.log` 当前约 39MB 且持续增长（另有 `logs/backup/`）。建议：
+- 系统盘 20G；水位以 `df -h` 实时为准（2026-09-21 发布前巡检：已用约 91%、可用约 1.8G，主日志 + `logs/` 合计约 8G，已列入 0.1.0 发布前强制清理项）。
+- 后端主日志 `/opt/smart-workflow/server/logs/server.log` 增长无上限（巡检时已达 GB 级）。0.1.0 起本项目部署配套 logrotate 轮转与保留上限；仍建议：
   - 确认/配置应用日志滚动策略或 `logrotate`，避免单文件无限增长；
   - 定期归档或清理 `logs/backup/` 与陈旧 `server.log`。
 - 历史 jar 备份（`.bak`/`.bak2`，各约 150MB）与前端 `web.bak` 按需清理。
@@ -305,7 +308,7 @@ ls -lh /data/backup
 ## 12. 安全注意
 
 - SSH 仅密钥登录：连接脚本固定使用本地私钥，所封装的主机 IP 与私钥路径**不写入本文档**；妥善保管密钥，勿外传。
-- **公网仅开放 80/443/22**：8080、5433、6379 均在本地/内网监听，保持其不暴露公网。
+- **公网端口收敛**：5433、6379 仅本地监听；8080 实际监听 `*:8080`，公网可达性由云安全组/防火墙决定，须核实仅放行 80/443/22，8080 不对公网开放。
 - `server.env` 含生产凭据，严禁提交版本库或外发。
 - 生产变更执行前取得 Owner 授权；发布、回滚、数据库操作按 §8/§9 流程做足备份。
 - 定期轮换 TLS 证书与密钥（证书由 nginx 使用，具体位置以服务器本地记录为准），关注 TLS 配置。

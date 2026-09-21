@@ -1,5 +1,14 @@
 # 0.1.0 配置变化清单
 
+## 启动期必需（fail-fast，0.1.0 起）
+
+| 环境变量 | 说明 |
+|---|---|
+| `JWT_SECRET` | JWT 签名密钥；生产缺失或含 `CHANGE-ME` 占位值时启动即失败（`SecurityAutoConfiguration.jwtSecretPresenceCheck`） |
+| `SW_SSO_CIPHER_KEY` | SSO 主体凭据加密密钥；生产缺失时启动即失败（`SystemAutoConfiguration.ssoCipher`），明文凭据不允许落库 |
+
+两者一律经环境变量/秘密管理注入（如 `server.env`，mode 600），不落配置文件。
+
 ## 新增配置（全部可选；不配置时对应渠道保持禁用，默认禁用不算已交付）
 
 ### 系统级渠道（`sw.notify.channels.*`，秘密一律经环境变量注入）
@@ -15,9 +24,9 @@
 
 ### 数据库
 
-- 无新增数据源配置；I6 表由 Flyway V89/V90/V91/V92（`db/migration/notify/{h2,postgresql}` 与 `db/migration/{h2,postgresql}`）管理。
+- 无新增数据源配置；I6 表由 Flyway V89/V90/V91/V92/V93（`db/migration/notify/{h2,postgresql}` 与 `db/migration/{h2,postgresql}`）管理。
 - V91 新增通知 Provider 主体绑定的租户隔离存储；主体密文只经运行时密钥加密，响应仅返回摘要。
-- V92 将通知模板/规则启用标志统一为数据库布尔语义，保留旧库既有值。
+- V92/V93 将通知启用标志统一为数据库布尔语义（V92 覆盖模板列，V93 收口规则/订阅/渠道配置列并兜底模板列），保留旧库既有值。
 
 ### 日志
 

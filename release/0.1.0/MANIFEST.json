@@ -1,54 +1,94 @@
 {
-  "$schema": "P60 I6 0.1.0 候选 manifest（G8a；工具生成 + 回读校验）",
-  "generatedAt": "2026-09-14",
-  "generatedBy": "completion-stage-i6-notification-version-closure-04-supplement-01.md（二级提示02 · G8a）",
+  "$schema": "0.1.0 P53/P61 production release manifest（按 v0.1.0-p53-p61-production-release 方向 §4.4 以最终候选重生成；CI 资产摘要已于 main CI 完成后回填）",
+  "generatedAt": "2026-09-21",
+  "generatedBy": "product/v0.1.0-p53-p61-production-release 正式方向 §4.4；执行回执 production-release-01.md",
   "version": "0.1.0",
   "iteration": "0.0.3",
   "repos": {
     "workspace": {
-      "head": "9929dba0d8905e0a0f0c0bbf07ba146f9b0f5ecd",
-      "status": "clean"
+      "head": "3cff42ee5ee1476e8b9abc2e6f5d58072aba119e",
+      "status": "发布材料修正未提交（version.json、CHANGELOG.md、release/0.1.0/*、docs/ops/production-ops.md）；Workspace 不参与代码版本身份"
     },
     "server": {
-      "head": "e941d74ffb3e5388e1b3ac3efb234d4634436aea",
+      "head": "d18e9a39c552918615be8b158dfe0cc278cb309f",
       "status": "clean",
-      "branch": "develop"
+      "branch": "main",
+      "mergeMode": "ff-only；来源 develop=d18e9a39c552918615be8b158dfe0cc278cb309f（已推送，origin/main=d18e9a39c552918615be8b158dfe0cc278cb309f）",
+      "tag": { "name": "0.1.0", "tagObject": "c258386123390acfcfeee1686a8222a7f7e70169", "peeled": "d18e9a39c552918615be8b158dfe0cc278cb309f", "releaseId": 392753737, "releaseUrl": "https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server/releases/tag/0.1.0", "disposition": "旧 tag 对象 ac37c6a2…与旧 Release 388979846 已按 Owner 2026-09-21 授权删除重建（Latest）" }
     },
     "web": {
-      "head": "0a746e3d6e0e0aaa0c4ee8633c58c75c295546d6",
+      "head": "039f987437ed6369c3c131631bd7622c6ae482e7",
       "status": "clean",
-      "branch": "develop"
+      "branch": "main",
+      "mergeMode": "ff-only；来源 develop=039f987437ed6369c3c131631bd7622c6ae482e7（已推送，origin/main=039f987437ed6369c3c131631bd7622c6ae482e7）",
+      "tag": { "name": "0.1.0", "tagObject": "250bfcb4fe0f8562d64b7965bce8d59c6ed95ca9", "peeled": "039f987437ed6369c3c131631bd7622c6ae482e7", "releaseId": 392753751, "releaseUrl": "https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web/releases/tag/0.1.0", "disposition": "旧 tag 对象 ea196a43…与旧 Release 388979873 已按 Owner 2026-09-21 授权删除重建（Latest）" }
     }
   },
+  "previousReleaseIdentity": {
+    "server": { "tag": "0.1.0", "tagObject": "ac37c6a29d9cd510ced34d90593e127820f782db", "target": "c15428f0002f6bb0ceeff05c7cbcf842bd3d3148" },
+    "web": { "tag": "0.1.0", "tagObject": "ea196a43ab08f6127073d7a9a85c62f8f1f56530", "target": "963df360ed18bc1c604652a13edb2a7ed0be8963" },
+    "disposition": "旧 tag/Release 未部署、无构建附件、下载 0；经 Owner 授权后删除并在合并后 main 上重建 annotated tag 与公开 Release"
+  },
   "flyway": {
-    "h2": {
-      "endpoint": "V92",
-      "applied": 92
-    },
-    "postgresql": {
-      "endpoint": "V92",
-      "applied": 90
-    }
+    "h2": { "endpoint": "V93", "distinctVersions": 41 },
+    "postgresql": { "endpoint": "V93", "distinctVersions": 40 }
   },
   "gates": {
     "server": {
-      "tests": 1361,
+      "command": "MAVEN_OPTS=-Xmx2g mvn -B test（候选 develop=d18e9a3…）",
+      "tests": 1423,
       "failures": 0,
       "errors": 0,
       "skipped": 0,
       "build": "SUCCESS",
-      "evidence": "receipts/evidence/i6-04/G9b/stdout.log"
+      "evidence": "release-gate-server-mvn-test.log（归档 receipts/evidence/production-release-01/）"
     },
     "web": {
+      "command": "NODE_OPTIONS=--max-old-space-size=2048 pnpm typecheck && pnpm lint && pnpm test && pnpm build（候选 develop=039f987…）",
       "typecheck": "exit 0",
       "lint": "exit 0",
-      "tests": "1185 passed + 3 skipped",
+      "testFiles": "134 passed + 1 skipped (135)",
+      "tests": "1217 passed + 3 skipped (1220)",
       "build": "exit 0",
-      "evidence": "receipts/evidence/i6-04/G9b/"
+      "evidence": "release-gate-web.log（归档 receipts/evidence/production-release-01/）"
     }
   },
-  "externalUnverified": {
-    "G5b": "五渠道真实成功链 Owner 未提供凭据/选型（VERIFYING 边界）"
+  "environmentPreGates": {
+    "disk": "演示环境磁盘 92%→66%（可用 1.6G→6.4G）；删除 BOOT-INF 抽取残留 149M、旧 jar 副本 441M、logs/backup 467M、/tmp/sb.jar，截断 3.8G 陈旧 server.log（路径与归属均先回读验证）",
+    "logrotate": "/etc/logrotate.d/smart-workflow：daily + maxsize 100M + compress + rotate 7 + copytruncate；旧 cron /data/logs_backup.sh 行已注释停用（脚本保留）",
+    "secrets": "JWT_SECRET 与 SW_SSO_CIPHER_KEY 已在服务器侧生成并注入 /opt/smart-workflow/server/server.env（mode 600）；仅记录脱敏指纹 jwt=c0d2cec61c80 sso=7c2959175b26"
   },
-  "notes": "G5b 之外全部授权内原子 DONE；三仓当前工作树 clean；无标签/无 Release/未推送。"
+  "ciAssets": {
+    "status": "VERIFIED",
+    "server": {
+      "run": 35569219107,
+      "conclusion": "success",
+      "asset": "bootstrap.jar",
+      "bytes": 218971165,
+      "sha256": "cce9efbe7203ea44209aad27ab954493da6bb4855c9bd8e2b222654649ed24e0",
+      "sourceRelease": "build-d18e9a39c552918615be8b158dfe0cc278cb309f",
+      "digestVerified": "本地下载后与服务器落位后双重 sha256 一致"
+    },
+    "web": {
+      "run": 35569219967,
+      "conclusion": "success",
+      "asset": "dist-039f987437ed6369c3c131631bd7622c6ae482e7.zip",
+      "bytes": 994295,
+      "sha256": "17814747b8b9b4e6ce5e3c9acf7a6f912e0da37dc7d209aa45ad9102188d9beb",
+      "sourceRelease": "build-039f987437ed6369c3c131631bd7622c6ae482e7",
+      "digestVerified": "本地下载后与服务器解包前双重 sha256 一致"
+    }
+  },
+  "deployment": {
+    "date": "2026-09-21",
+    "server": "CI bootstrap.jar 已部署，进程唯一，/api/actuator/health UP",
+    "web": "CI dist 已覆盖静态目录，nginx -t 通过，/sw/ 200",
+    "database": "本项目库清空重建至 V93（0 failed）；重建前备份 /data/backup/smart_workflow_20260921_1512.dump",
+    "security": "JWT_SECRET 与 SW_SSO_CIPHER_KEY 服务器侧生成注入（mode 600）；启动日志 0 ERROR、0 秘密泄漏",
+    "acceptance": "正式浏览器验收由 Owner 于 2026-09-21 亲自执行（执行侧移交）"
+  },
+  "externalUnverified": {
+    "boundary": "I6 五外部通知渠道与 I5 三 SSO Provider 真实凭据链 = Owner 延期 / 未验证",
+    "note": "沿用已确认登记边界，本轮不扩大、不核销"
+  }
 }

@@ -1,0 +1,97 @@
+// TS-G1 补证回执 02 的机器终态行与公共 Validator 输入（正例 + 负向自检）。
+import { writeFileSync } from 'node:fs';
+const EV = 'E:/code/Smart-WorkFlow-Agent-Workspace/product/v0.1.0-p53-p61-production-release/receipts/evidence/terminal-sync-production-release-02';
+const RCPT = 'product/v0.1.0-p53-p61-production-release/receipts/terminal-sync-production-release-02.md';
+const EVP = 'product/v0.1.0-p53-p61-production-release/receipts/evidence/terminal-sync-production-release-02';
+
+const terminal = {
+  schema: 'agent-coding-engine.executor-terminal.v2',
+  role: 'executor',
+  state: 'TERMINAL_SYNC_SUBMITTED',
+  task_level: 'XL',
+  receipt: RCPT,
+  feature_status: 'COMPLETED',
+  evidence: [
+    RCPT,
+    'product/v0.1.0-p53-p61-production-release/receipts/planning-owner-authorization-terminal-sync-ts-g1.md（Owner 精确授权）',
+    'product/v0.1.0-p53-p61-production-release/receipts/planning-review-terminal-sync-production-release-01-verifying.md（复核 01 §3 唯一允许的修正）',
+    'Smart-WorkFlow-aPaaS-server/功能清单.md（develop，commit 073cb39f4bf5d60f9a9f1547d906e9ced0608669：仅「当前焦点」段 1 行改动）',
+    'Smart-WorkFlow-aPaaS-server origin/develop=073cb39f4bf5d60f9a9f1547d906e9ced0608669；origin/main=d18e9a39c552918615be8b158dfe0cc278cb309f 未变；tag 0.1.0=c258386123390acfcfeee1686a8222a7f7e70169（peeled d18e9a39…）未变；公开 Release 392753737 未变',
+    EVP + '/before-功能清单.md',
+    EVP + '/apply-focus-sync.mjs',
+    EVP + '/apply-log.json',
+    EVP + '/verify-focus-sync.mjs',
+    EVP + '/assert-output.txt',
+    EVP + '/assert-output.json',
+    EVP + '/focus-diff-before-commit.txt',
+    EVP + '/commit-message.txt',
+    EVP + '/push-output.txt',
+    EVP + '/ls-remote.txt',
+    EVP + '/verify-remote-readback.ps1',
+    EVP + '/remote-readback.txt',
+    EVP + '/validator/input.json',
+    EVP + '/validator/diagnostics.txt',
+    EVP + '/validator/validator.exit.txt',
+    EVP + '/validator-negative/negative-input.json',
+    EVP + '/validator-negative/diagnostics.txt',
+    EVP + '/validator-negative/validator.exit.txt',
+    EVP + '/terminal-line.txt',
+    EVP + '/receipt-body.md',
+    EVP + '/assemble-receipt-02.mjs',
+    EVP + '/lastline-compare.txt'
+  ],
+  memory_compression: { before_bytes: 17134, after_bytes: 17134 },
+  work_items: [
+    { id: 'TSG1-focus-fix', status: 'COMPLETED', authorized: true, dependency_satisfied: true, actionable: false, next_action: 'Server《功能清单》「当前焦点」段已按复核 01 §3 新值修正，全文件仅 1 行变化' },
+    { id: 'TSG1-commit-push', status: 'COMPLETED', authorized: true, dependency_satisfied: true, actionable: false, next_action: 'docs-only 中文 Conventional Commit 073cb39f4bf5d60f9a9f1547d906e9ced0608669 已普通推送 origin/develop' },
+    { id: 'TSG1-readback', status: 'COMPLETED', authorized: true, dependency_satisfied: true, actionable: false, next_action: '提交 SHA、origin/develop、修改文件清单、精确差异、main/tag/Release 未变化均已回读留证' },
+    { id: 'TSG1-assert-validator', status: 'COMPLETED', authorized: true, dependency_satisfied: true, actionable: false, next_action: '当前焦点新值定向断言 28/28 exit 0、远端内容回读一致、公共 Validator 正例 exit 0 与负向自检 exit 1 已完成' }
+  ],
+  remaining_actionable_count: 0,
+  independent_work_exhausted: true,
+  next_action: '等待 Planner 复核 terminal-sync-production-release-02.md 并确认 0.1.0 发布任务 COMPLETED（规划已确认）；确认前不重复同步、不改 memory/knowledge/todo、不重跑工程门禁、不发布部署、不执行其他 Git 写动作',
+  next_action_type: 'WAIT_PLANNER',
+  progress_fingerprint: 'ts-g1-focus-fix|server-develop-073cb39|focus-line-only-1-1|identity-d18e9a39/392753737/35569219107+039f9874/392753751/35569219967|gates-1423+1217-3|demo-v93-owner-login|main-d18e9a39-unchanged|tag-0.1.0-c2583861-unchanged|release-392753737-unchanged|assert-28-28',
+  progress_basis: {
+    files_changed: [
+      'Smart-WorkFlow-aPaaS-server/功能清单.md（develop，仅「当前焦点」段 1 行；1 insertion / 1 deletion）',
+      RCPT + ' 与 ' + EVP + '/（同步前后快照、修改脚本与日志、定向断言、diff、提交与推送输出、远端回读、Validator 输入输出）'
+    ],
+    tool_actions: [
+      'apply-focus-sync.mjs 定点修正 3 处锚点（全部唯一命中，36432 → 36898 bytes）',
+      'verify-focus-sync.mjs 定向断言 28 项（仅 1 行变化、新值 12 项在位、旧值 6 项清零、90 明细逐行一致，exit 0）',
+      'git add/commit（docs-only，仅该文件）+ git push origin develop（普通推送，ff d18e9a3..073cb39）',
+      'git rev-parse / ls-remote 与 GitHub API 回读 main、tag 0.1.0、Release 392753737 未变化',
+      'raw.githubusercontent 回读 develop 上《功能清单》正文，新值齐全、旧值清零、90 明细行',
+      '公共 Validator（PowerShell）正例与负向自检，并做回执末行 JSON 字节比对'
+    ],
+    new_evidence: [
+      'focus-diff-before-commit.txt（--stat 1 file changed, 1 insertion(+), 1 deletion(-)；--numstat 1/1；完整 diff）',
+      'assert-output.txt / assert-output.json（28/28 ALL CHECKS PASSED，exit 0）',
+      'push-output.txt（d18e9a3..073cb39 develop -> develop）+ ls-remote.txt（开发分支、main、tag 回读）',
+      'remote-readback.txt（远端《功能清单》新值/旧值断言 + Release 392753737 与 latest Release 元数据）',
+      'validator/diagnostics.txt 与 validator-negative/diagnostics.txt（正例无诊断；负向 exit 1 带 required 诊断）'
+    ],
+    closed_work_items: ['TSG1-focus-fix', 'TSG1-commit-push', 'TSG1-readback', 'TSG1-assert-validator']
+  },
+  stop_reason: 'WAITING_FOR_PLANNER',
+  tool_results: [
+    { tool: 'apply-focus-sync.mjs（定点修正）', outcome: 'SUCCEEDED', detail: '3 处锚点全部唯一命中，功能清单.md 36432 → 36898 bytes，exit 0' },
+    { tool: 'verify-focus-sync.mjs（定向断言）', outcome: 'SUCCEEDED', detail: '28/28 ALL CHECKS PASSED，exit 0；仅「当前焦点」1 行变化，新值 12 项在位、旧值 6 项清零，90 明细 90 行逐行一致' },
+    { tool: 'git commit（docs-only）', outcome: 'SUCCEEDED', detail: '073cb39f4bf5d60f9a9f1547d906e9ced0608669；1 file changed, 1 insertion(+), 1 deletion(-)；提交后工作树 clean' },
+    { tool: 'git push origin develop（普通推送）', outcome: 'SUCCEEDED', detail: 'd18e9a3..073cb39 develop -> develop，exit 0' },
+    { tool: 'git ls-remote / rev-parse（回读）', outcome: 'SUCCEEDED', detail: 'develop=073cb39…；main=d18e9a39… 未变；tag 0.1.0=c2583861…（peeled d18e9a39…）未变' },
+    { tool: 'GitHub API Release 回读', outcome: 'SUCCEEDED', detail: 'Release 392753737 / tag 0.1.0 / created 2026-09-21T07:09:28Z 未变，latest Release 仍为该 Release（非 draft/prerelease）' },
+    { tool: 'raw.githubusercontent 内容回读', outcome: 'SUCCEEDED', detail: 'develop 上《功能清单》36898 bytes，当前焦点行新值齐全、旧值清零、M 明细 90 行' },
+    { tool: 'validate-terminal.ps1（公共 Validator 正例）', outcome: 'SUCCEEDED', detail: '末行终态 JSON 通过契约校验，exit 0，无诊断' },
+    { tool: 'validate-terminal.ps1（负向自检）', outcome: 'FAILED', detail: '移除 feature_status 后按预期 exit 1 并给出 required 诊断，证明校验器实际生效' }
+  ],
+  browser_status: 'NOT_APPLICABLE'
+};
+
+writeFileSync(EV + '/validator/input.json', JSON.stringify(terminal), 'utf8');
+writeFileSync(EV + '/terminal-line.txt', 'ENGINE_TERMINAL ' + JSON.stringify(terminal), 'utf8');
+const negative = Object.assign({}, terminal);
+delete negative.feature_status;
+writeFileSync(EV + '/validator-negative/negative-input.json', JSON.stringify(negative), 'utf8');
+console.log('OK terminal bytes=' + Buffer.byteLength(JSON.stringify(terminal), 'utf8'));

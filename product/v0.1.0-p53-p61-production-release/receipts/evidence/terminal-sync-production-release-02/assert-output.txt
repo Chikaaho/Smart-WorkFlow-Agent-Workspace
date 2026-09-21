@@ -1,0 +1,29 @@
+PASS L1-line-count :: 行数与快照一致
+PASS L2-only-one-line-changed :: 仅 1 行发生变化
+PASS L3-changed-line-is-focus :: 变化行是「当前焦点」段
+PASS N-Server main/tag 新值 :: 新值存在：Server main/tag 新值
+PASS N-Web main/tag 新值 :: 新值存在：Web main/tag 新值
+PASS N-Server Release ID :: 新值存在：Server Release ID
+PASS N-Web Release ID :: 新值存在：Web Release ID
+PASS N-Server CI run :: 新值存在：Server CI run
+PASS N-Web CI run :: 新值存在：Web CI run
+PASS N-Server 门禁 1423 :: 新值存在：Server 门禁 1423
+PASS N-Web 门禁 1217+3 :: 新值存在：Web 门禁 1217+3
+PASS N-演示库 V93 :: 新值存在：演示库 V93
+PASS N-Owner 登录通过 :: 新值存在：Owner 登录通过
+PASS N-发布任务状态 :: 新值存在：发布任务状态
+PASS N-唯一下一动作 :: 新值存在：唯一下一动作
+PASS O-旧 Server SHA :: 旧值已清零：旧 Server SHA
+PASS O-旧 Web SHA :: 旧值已清零：旧 Web SHA
+PASS O-旧 Server Actions :: 旧值已清零：旧 Server Actions
+PASS O-旧 Web Actions :: 旧值已清零：旧 Web Actions
+PASS O-旧 Server 门禁 1362 :: 旧值已清零：旧 Server 门禁 1362
+PASS O-旧 Web 门禁 1185 :: 旧值已清零：旧 Web 门禁 1185
+PASS K-功能数45 :: 功能数 45 未被改动
+PASS K-清单计数 :: 清单 ✅46/🟦22/⬜22 未被改动
+PASS K-ADV64 :: ADV 64 条口径未变
+PASS K-P53登记 :: P53 登记路径未变
+PASS K-历史段 :: 历史基线段仍在当前焦点行内保留
+PASS K-90明细行数 :: M01—M10 明细行仍为 90 行
+PASS K-90明细内容未变 :: 90 行明细逐行与快照一致
+RESULT: 28/28 ALL CHECKS PASSED
