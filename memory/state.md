@@ -1,19 +1,12 @@
 # 当前状态摘要
 
-> 当前规划（2026-09-21）：P53已`COMPLETED（规划已确认，2026-09-21）`并核销，为第45个正式业务功能；当前无活动正式功能。P61已`COMPLETED（规划已确认，2026-09-20）`并核销；P53/P61 已按 Owner 授权与既定 P61→P53 顺序统一合入两仓 develop 并推送（Web `fc37608`、Server `fa96290`），受影响检查通过（Web 四连 exit0＋locale 八值8/8；Server compile exit0＋聚焦测试35/0/0/0）；唯一下一动作=无待执行方向，等待 Owner/Planner 下发下一轮任务。P60/0.1.0与V93锁定。
+> 发布（XL）：0.1.0任务已`COMPLETED（规划已确认，2026-09-21）`；main/tag/Release、双CI、演示库V93、Owner登录及Server develop文档投影均锁定。
 
-> 上一位次基线：P21 **COMPLETED（规划已确认，2026-09-08）**，第44个正式功能；功能45（P53为第45个）、清单✅46/🟦22/⬜22、I14关闭均锁定。正式计数以 `knowledge/current-status.md` 为准。
+> 唯一下一动作：等待Owner体验反馈或下一轮任务；无活动正式功能与待执行方向。
 
-> 历史：P59 与 knowledge-full-reconciliation 均已确认完成（2026-09-04/05），详见 knowledge/history 与 features/。
-
-- `v0.1.0-oa-completion`（P60）：**COMPLETED（规划已确认，2026-09-15）**，整体14/14；最终裁决=`planning-final-review-terminal-sync-v0.1.0-oa-completion-01-passed.md`。P60版本统筹项核销，不增加业务功能计数。
-- I6阶段门禁历史基线：Server 1361/0/0/0、迁移终点V92；0.1.0发布修复后最终基线：Server **1362/0/0/0、V93**，Web **1185 passed + 3 skipped**。阶段证据保持锁定，终态同步不重跑。
-- 终态值：功能数 **45**（P53 第45个，规划已确认）；清单 **✅46/🟦22/⬜22**（90，零变化）；**ADV64**（独立规划项，不计入）；**P21 已核销（2026-09-08）**；P2/P4 开放部分实现未核销、P34/P35/P37/P38/P39 部分实现未核销，P47 已纳入 I3 但未核销；I 集合 54 条不增删（**I14 已满足/关闭**、I38/I39/I40/I45 保持开放）。**P60/P31 及其他开放编号本轮零变化。**
-- `p21-iot-device-access`（P21）：**COMPLETED（规划已确认，2026-09-08）**，第 **44** 个正式功能；M08 十行升✅（F04-01🟦、F04-02/F05-02⬜保留），P21 已核销、I14 关闭（腾讯实网按 Owner 免验），主方向与阶段三方向均归档 `passed/`。
-- `v0.0.2-oa`：**COMPLETED（规划已确认，2026-09-07）**，第 **43** 个正式功能（历史点）；A1—A8 锁定，P3/P54/P55 核销、P2/P4 开放。更早：p4 第42个（09-07，P4 总项仍开放）、P59（09-05）、p58 第41个、p57 第40个、p56 第39个＋P46、p52 第38个、p45 第37个、p51 Engine 解耦（不计功能数）——详见 `knowledge/history/`。
-- 仓库健康（2026-09-15 Owner 指令）：本轮剩余内容已提交并推送（Workspace `develop-sw`=cdf5616、Server `origin/develop`=47c8b86）；两仓发布身份与 `0.1.0` 标签/Release 未改动。626.9MB 运行日志经未推送历史重写移除，4 份 >10MB 日志移出跟踪并加入忽略规则；`.git` 165MB→65MB、Server 构建产物 422MB→5.1MB。
-- 发布事实：Server `main=c15428f0002f6bb0ceeff05c7cbcf842bd3d3148`、Web `main=963df360ed18bc1c604652a13edb2a7ed0be8963`；两仓annotated tag及公开Release `0.1.0`已存在，对应main Actions成功（Server 34946504087 / Web 34942666025）。发布行为锁定，不再执行Git或重复发布。
-- P 剩余边界：P2 其余（计算公式/外部数据源/表单删除/列表配置持久化）；P4 候选（转办/委托/加签/撤回、流程版本/挂起激活）；M08-F04-01 🟦、F04-02/F05-02 ⬜；P34/P35/P37/P38/P39 剩余；腾讯实网与三 Provider 真实链免验未做；**I6 五外部通知渠道（SMS/EMAIL/FEISHU/DINGTALK/WECHAT_WORK）真实链转 P2 待办（`todo/i6-external-notification-channels-real-verification.md`），保持`Owner延期 / 未验证`**；小程序继续冻结。
-- 多宿主执行监督治理（P0/XL，非业务计数）：**阶段性实施，真实ZCode闭环未完成**。Windows契约49/49、Supervisor 13/13、ZCode Adapter 4/4、真实Supervisor重启1/1；`session/send=-32031`且可见多窗口未验。方向保持`ready/`，回执=`admin-implementation-progress-20260916.md`。
-- P53：**功能级`PASSED（2026-09-21）`、状态`COMPLETED（规划已确认，2026-09-21）`、已核销，第45个正式功能**。验收12确认18项标准通过；视觉套件71通过/17跳过/0失败、Web四门exit0（Vitest 1217+3）、可见FORMAL_FLOW 5制品/20条真实`/api/*`、节点06安全偏差锁定；主方向与阶段三方向均已归档`passed/`，最终裁决=`planning-final-review-terminal-sync-p53-global-ui-component-layout-01-passed.md`。
-- P61：**`COMPLETED（规划已确认，2026-09-20）`，已核销**。八值8/8、154键/22修订、HTTP 22/22、Server 1423、Web 1217+3锁定；独立提交已随 P53 合入两仓 develop 并推送（Web `fc37608`、Server `fa96290`）；不增加业务功能数。
+- 终态值：功能数 **45**（P53为第45个，规划已确认）；清单 **✅46/🟦22/⬜22**（90，零变化）；**ADV64**（独立规划项，不计入）；P21/P61/P53已核销；P2/P4开放、部分实现未核销，P34/P35/P37/P38/P39部分实现未核销；本发布任务不新增/核销P编号。
+- 验证基线（2026-09-21发布轮实跑，终态同步不重跑）：Server **1423/0/0/0 BUILD SUCCESS**（Flyway终点V93）；Web四门exit 0、**1217 passed + 3 skipped**；2026-09-15首次发布值1362/0/0/0、1185+3为历史点。
+- 活动功能：**无**。P53（第45个，视觉71 passed/17 skipped/0 failed、Web四门exit0、可见FORMAL_FLOW 5制品/20条真实`/api/*`、节点06安全偏差锁定）与P61（八值8/8、154键/22修订、HTTP 22/22）均已确认核销。
+- `v0.1.0-oa-completion`（P60）：**COMPLETED（规划已确认，2026-09-15）**，整体14/14；终态同步最终复核01 PASSED。
+- 上一位次基线：P21 **COMPLETED（规划已确认，2026-09-08）**，第44个正式功能；更早：v0.0.2-oa第43个（09-07）、P4第42个（09-07）、P59（09-05）、p58第41个、p57第40个、p56第39个＋P46、p52第38个、p45第37个、p51引擎解耦（不计功能数）——详见`knowledge/history/`。
+- P剩余边界：P2其余（计算公式/外部数据源/表单删除/列表配置持久化）；P4候选（转办/委托/加签/撤回、流程版本/挂起激活）；M08-F04-01🟦、F04-02/F05-02⬜；P34/P35/P37/P38/P39剩余；腾讯实网与三Provider真实链免验未做；**I6五外部通知渠道真实链转P2待办（`todo/i6-external-notification-channels-real-verification.md`），保持Owner延期 / 未验证**；小程序冻结；多宿主执行监督治理真实ZCode闭环未完成（方向保持`ready/`）。
