@@ -1,0 +1,46 @@
+02 轮状态一致性检查
+assert_at=2026-09-23T22:41:57+0800
+
+== SYNC-G1：0.1.0 发布当前字段与有效链接 ==
+-- 应消失：release/P53 终态同步方向的 ready/ 当前指针 --
+current-status.md  production-release/ready/ : 0（期望 0）
+current-status.md  p53-global-ui-component-layout/ready/ : 0（期望 0）
+session-handoff.md production-release/ready/ : 1（期望 1：仅『上一同步点：2026-09-21』历史段）
+-- 当前字段应为已确认 --
+current-status.md  'COMPLETED（待规划确认，2026-09-21）' 出现次数: 1 -> 唯一残留位于 `| 变更类型记录（历史事件，非当前值） |` 行内，属复核 01 允许保留的『标明历史段落』；其余当前字段均为已确认值
+session-handoff.md 'COMPLETED（待规划确认，2026-09-21）' 出现次数: 1（期望 1：仅『上一同步点』历史段）
+-- 已确认值在位 --
+current-status.md  'COMPLETED（规划已确认，2026-09-21）' : 10
+session-handoff.md 'COMPLETED（规划已确认，2026-09-21）' : 9
+passed/ 目录事实：release terminal-sync=EXISTS；P53 terminal-sync=EXISTS；对应 ready/ 目录=ABSENT
+
+== 主方向标头（READY 标为历史，当前仅 IN_PROGRESS）==
+> 方向下发状态（2026-09-21 下发时的历史值）：READY（开放缺陷收件；未授权合并 main、打 tag、创建 Release 或部署）  
+> 当前功能状态（唯一当前值）：**`IN_PROGRESS`**（2026-09-23 起）——Owner 宣布修复阶段告一段落，进行当前快照机械同步；本轮文档同步唯一入口为 `ready/direction-current-state-sync-20260923.md`，本主方向继续约束整个列车。同步回执 01 `receipts/current-state-sync-20260923-01.
+
+== SYNC-G3：远端字段表述 ==
+memory/state.md 含『实时远端未核实』: 0（期望 0）
+memory/state.md 含『ls-remote』: 1
+knowledge/features/v0.1.1-bugfix.md 含『ls-remote』: 1
+bug-ledger.md 含『ls-remote』: 1
+18 提交归属待核实说明在位: features 段含『及受其影响的已登记候选证据适用性均待核实』=1（期望 1）；search_fallback 引用数=1（期望 1）
+
+== 锁定值零变化 ==
+  1423/0/0/0                   current-status=2 memory/state=1
+  1217 passed + 3 skipped      current-status=3 memory/state=1
+  ✅46/🟦22/⬜22                  current-status=7 memory/state=1
+  ADV64                        current-status=7 memory/state=1
+  V93                          current-status=11 memory/state=1
+  功能数 45 : current-status=2
+
+== 下一动作一致性 ==
+  knowledge/current-status.md        含补正回执02: 2
+  knowledge/session-handoff.md       含补正回执02: 1
+  memory/state.md                    含补正回执02: 1
+  memory/handoff.md                  含补正回执02: 2
+
+== 列车未被写成完成 ==
+  0.1.1 列车状态 IN_PROGRESS 出现在: memory/state.md knowledge/current-status.md 
+  单缺陷回执页首状态: 012=> 状态：已提交候选（待 Owner/Planner 独立验收；Owner 复开
+                       021=> 状态：处理中（404 页返回动作已提交候选；失效入口复现待 Owner 补充
+                       024=> 状态：**Owner 复开**（普通滚轮、横向触控板式滚动与网格随动已补证；

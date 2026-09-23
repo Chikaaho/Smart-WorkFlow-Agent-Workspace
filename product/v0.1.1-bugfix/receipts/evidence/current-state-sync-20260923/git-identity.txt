@@ -1,0 +1,37 @@
+=== git identity at sync time ===
+recorded_at=2026-09-23T22:04:06+0800
+--- repo: . ---
+branch: develop-sw
+HEAD:   50a710f614a77d0938384f8f776c41e4be1a5ff3
+--- repo: Smart-WorkFlow-aPaaS-server ---
+branch: 0.1.1-bugfix
+HEAD:   7ff4743b3aff714f9058ede783d0b1af8eb8fd9f
+--- repo: Smart-WorkFlow-aPaaS-Web ---
+branch: 0.1.1-bugfix
+HEAD:   281892e43b67b466326b25fb83f2e471a5ca48fe
+--- origin/0.1.1-bugfix ---
+server: 750ad391d6d2c9760f6c29aee0ea17bfbbabfe2e
+web:    5eb6da1edcb6599f029b578fa4abe465f38ac951
+--- unregistered commits (ahead of last registered SHA) ---
+server 750ad39..HEAD count: 2
+web 5eb6da1..HEAD count:    16
+--- server 750ad39..HEAD ---
+7ff4743b3aff714f9058ede783d0b1af8eb8fd9f 2026-09-23 20:44:57 +0800 feat(admin): 表单设计改为设计器内部页签，侧栏不再单列入口
+690772a21cd3cb3bf3f929b7abc62bf1a7b0fba6 2026-09-23 19:40:48 +0800 feat(admin): 后台信息架构规整迁移 V95（更名/归位/路径规范化）
+--- web 5eb6da1..HEAD ---
+281892e43b67b466326b25fb83f2e471a5ca48fe 2026-09-23 21:37:13 +0800 fix(workflow): 我发起的筛选与列表随容器自适应拉伸
+99a37a802be0fc9d718796c5969da670a6027747 2026-09-23 20:56:28 +0800 fix(form): 前台发起流程后回到我发起的而非后台流程实例
+7b771a35344f57d7f8b66252d6d6b7d89066b966 2026-09-23 20:44:53 +0800 fix(form): 表单列表分类树与列表并排，修复页面布局错位
+aa912d88f6a718476e3dd0a1b056d5135016ea29 2026-09-23 20:31:47 +0800 fix(menu): 二级路径页面仍锁定所属分区不再回退整棵树
+61aa1c504a2e8fa366083c1a25febf34cd4d75e8 2026-09-23 20:19:28 +0800 test(menu): 对齐侧栏按顶部分区收敛后的断言
+783e51d10e87674c44931d1dcdb76d5b743a1153 2026-09-23 20:11:25 +0800 feat(form): 表单列表增加分类树（分类到表单）
+f8e1f913b1202b02db5784ecd62821ed940ff133 2026-09-23 20:11:21 +0800 fix(menu): 后台侧栏按顶部分区收敛并高亮所属菜单项
+efd88e9c9c36339f159ce08002909e4a7fd078dc 2026-09-23 19:39:55 +0800 feat(admin): 低代码改表单管理、流程引擎改流程管理
+c9018dda9cb411ab70ba2ebc8c4a537057190713 2026-09-23 19:39:51 +0800 fix(menu): 有按钮的页面不再被区域过滤丢弃
+f15ac231196414031f25940a3ae19116a38e1709 2026-09-23 19:39:47 +0800 fix(menu): 修复后台目录点击 404 并让顶栏落到后台首叶
+6ba5bbf63d7d3831f6a9d6511790cad86026218e 2026-09-23 17:39:03 +0800 fix(form): 整块画布可放置组件并在落点实时渲染预览
+0165478bc29808dcd6403a83b180f984526298e3 2026-09-23 14:45:48 +0800 chore(form): 同步文字对齐单选按钮的按需组件声明
+fa31207ae7aee5137b895dff23d42cba22a72705 2026-09-23 14:42:07 +0800 feat(form): 文字组件支持左中右对齐方式
+05fc292d7993d267866f8b11f0235d3e62919fea 2026-09-23 14:22:01 +0800 feat(form): 字段标题支持五种位置并新增文字组件
+0ad05acee7b3935b5b7780e78887ad69229e8106 2026-09-23 13:03:37 +0800 fix(form): 移除画布悬浮拖拽标志
+5df1a5daec20839556041b53044521e02e8a4b80 2026-09-23 12:58:59 +0800 fix(workflow): 移除流程画布设计切换标签

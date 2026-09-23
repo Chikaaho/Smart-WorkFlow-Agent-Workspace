@@ -1,0 +1,54 @@
+assert_at=2026-09-23T22:07:52+0800
+=== A. '23 项已提交候选' 出现在所有当前入口 ===
+  knowledge/current-status.md                                  hits=13
+  knowledge/session-handoff.md                                 hits=5
+  knowledge/features/v0.1.1-bugfix.md                          hits=9
+  memory/state.md                                              hits=4
+  memory/handoff.md                                            hits=6
+  memory/issues.md                                             hits=2
+  memory/features.md                                           hits=2
+  product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md       hits=1
+  product/v0.1.1-bugfix/receipts/bug-ledger.md                 hits=14
+  todo/requirement-pool.md                                     hits=16
+=== B. 账本 §5 已提交候选数 = 23 ===
+109:- 已提交候选缺陷数：**23**（V011-BUG-001—020 共 20 项 + V011-BUG-022、023、025；均待 Owner/Planner 验收）
+129:| 1 | §5 已提交候选缺陷数 | 24（V011-BUG-001—020 + 022—025） | **23**（V011-BUG-001—020 + 022、023、025） | 工具按 §3 逐行复算：25 = 23+1+1；原「24」把 Owner 复开的 BUG-024 计入了候选 |
+=== C. 未处置 = 2 ===
+knowledge/features/v0.1.1-bugfix.md:95:当前统计（2026-09-23 阶段快照同步，工具按账本 §3 逐行复算）：收件开放，累计登记 **25** 项 = 已提交候选 **23** 项 + 处理中 **1** 项（V011-BUG-021）+ Owner 复开 **1** 项（V011-BUG-024），即 23+1+1=25；未处置合计 **2** 项（021、024）。状态与 SHA 以 `product/v0.1.1-bugfix/receipts/bug-ledger.md` 为准；账本旧汇总「24 候选」已在 2026-09-23 同步更正为 23。
+product/v0.1.1-bugfix/receipts/bug-ledger.md:106:- 未处置（已收件/待复现/处理中/待验证/Owner 复开）缺陷数：**2**
+product/v0.1.1-bugfix/receipts/bug-ledger.md:114:- 计数口径（2026-09-23 工具复算）：按本文件 §3 缺陷总表逐行统计，`V011-BUG-*` 行共 **25** 行 = 已提交候选 **23** + 处理中 **1**（021）+ Owner 复开 **1**（024），即 23+1+1=25；未处置合计 2。
+=== D. 下一动作含同步回执待复核 ===
+knowledge/current-status.md:2
+memory/handoff.md:1
+memory/state.md:1
+knowledge/session-handoff.md:3
+=== E. 锁定值零变化 ===
+knowledge/session-handoff.md:2
+memory/state.md:1
+knowledge/current-status.md:2
+knowledge/current-status.md:11
+memory/state.md:1
+memory/state.md:1
+knowledge/current-status.md:6
+knowledge/session-handoff.md:3
+=== F. 无 PASSED/COMPLETED 误写（0.1.1 列车）===
+knowledge/session-handoff.md:22:| 唯一下一动作 | **执行 `product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md` 并提交机械同步回执；提交后由 Planner 复核该回执**（执行侧已完成本轮 knowledge/memory/README 同步，回执 `product/v0.1.1-bugfix/receipts/current-state-sync-20260923-01.md`）。同步完成后列车回到验收与收件线：等待 Owner/Planner 独立验收 **23 项**已提交候选并继续开放收件，未处置 2 项（V011-BUG-021 失效入口待具体复现输入、V011-BUG-024 Shift+滚轮专项未关闭）；两仓 `0.1.1-bugfix` 本地 HEAD Server `7ff4743b3aff714f9058ede783d0b1af8eb8fd9f` / Web `281892e43b67b466326b25fb83f2e471a5ca48fe`，已登记候选最后 SHA 之后另有 2 个 Server 提交与 16 个 Web 提交未登记、未推送（`knowledge/features/v0.1.1-bugfix.md` §3.1，待 Planner 裁决）。0.1.0 P53/P61 演示环境发布已经规划最终审查 02 PASSED 并完成阶段三终态同步（发布任务状态 `COMPLETED（待规划确认，2026-09-21）`，方向保持 `ready/` 待 Planner 复核）；P53 已经规划最终复核 01 PASSED 确认 `COMPLETED（规划已确认，2026-09-21）` 并核销（第 45 个正式功能），P53/P61 已按 Owner 授权合入两仓 develop 并推送（Web `fc37608`、Server `fa96290`）；正式业务功能数 45 与清单 ✅46/🟦22/⬜22、ADV64、开放 P 编号不变；0.1.0 发布身份锁定，不得重复发布、不得移动或重建 main/tag/Release；收件结束前不得合并 0.1.1 到 main、创建 `0.1.1` tag/Release 或部署 |
+knowledge/current-status.md:7:> **当前轮（2026-09-23）：0.1.1 缺陷修复列车阶段快照机械同步**——Owner 宣布修复阶段告一段落，Planner 下发 `product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md`（当前文档同步唯一入口；主方向 `ready/direction-v0.1.1-bugfix.md` 继续约束整个列车）。本轮只同步文档状态：不修业务代码、不补跑缺陷行为、不宣告列车 `PASSED/COMPLETED`、不核销编号、不发布、不改变运行服务。同步后账本事实为 **25 项登记 = 23 项已提交候选 + 1 项处理中（V011-BUG-021，失效入口待具体复现输入）+ 1 项 Owner 复开（V011-BUG-024，Shift+滚轮专项仍未关闭）**，未处置合计 2 项；V011-BUG-012 已按整条顶栏居中（`5eb6da1`）并补齐 16:9/16:10/4:3 headed 页签居中补证；V011-BUG-024 普通滚轮、横向触控板式滚动与网格/节点/连线随动已补证（`e68250e`）；候选全部待 Owner/Planner 独立验收。收件保持开放，发布门禁与 0.1.0 发布身份不变。
+knowledge/current-status.md:28:| 当前活动任务（0.1.1） | **`v0.1.1-bugfix`（XL）长周期缺陷修复与版本发布列车：功能状态 `IN_PROGRESS`（2026-09-23 阶段快照同步）**；主方向 `product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md`（READY，2026-09-21），当前文档同步唯一入口 `product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md`；分支两仓同名 `0.1.1-bugfix`（Server 起点 `d18e9a39c552918615be8b158dfe0cc278cb309f`、Web 起点 `039f987437ed6369c3c131631bd7622c6ae482e7`；当前本地 HEAD Server `7ff4743b3aff714f9058ede783d0b1af8eb8fd9f`、Web `281892e43b67b466326b25fb83f2e471a5ca48fe`，`origin/0.1.1-bugfix` 仍为 Server `750ad391d6d2c9760f6c29aee0ea17bfbbabfe2e`、Web `5eb6da1edcb6599f029b578fa4abe465f38ac951`）；累积缺陷账本 `product/v0.1.1-bugfix/receipts/bug-ledger.md`（累计 25 项 = 23 项已提交候选 + 1 项处理中（V011-BUG-021）+ 1 项 Owner 复开（V011-BUG-024），未处置合计 2 项）；执行侧登记 `knowledge/features/v0.1.1-bugfix.md`（含 §3.1 未登记提交差异）；本任务非新增业务功能计数、不核销 P 编号，功能级状态由 Planner 裁决（执行侧未写 `PASSED/COMPLETED`） |
+memory/state.md:11:- 活动功能：**无活动正式功能**；`v0.1.1-bugfix`（XL，`IN_PROGRESS`，非业务功能计数）。P60（`v0.1.0-oa-completion`）：**COMPLETED（规划已确认，2026-09-15）**，整体 14/14。
+memory/features.md:3:> 规划侧最新同步点：2026-09-23。0.1.1 主任务 `IN_PROGRESS`，Owner 宣布修复阶段告一段落并完成阶段快照机械同步（执行回执 `product/v0.1.1-bugfix/receipts/current-state-sync-20260923-01.md`，待 Planner 复核）；0.1.0 发布任务已 COMPLETED（2026-09-21）。
+=== G. 三份关键入口字节数 ===
+   60239 knowledge/current-status.md
+   29145 knowledge/session-handoff.md
+   11205 knowledge/features/v0.1.1-bugfix.md
+  100589 total
+=== F 说明（人工判定，非自动通过）===
+上述 F 段命中均为同一行同时出现「v0.1.1-bugfix」与「PASSED/COMPLETED」的文本巧合，逐条核对结论如下，无一处把 0.1.1 列车写为通过或完成：
+  - knowledge/current-status.md:7：写「不宣告列车 `PASSED/COMPLETED`」——否定式。
+  - knowledge/current-status.md:28：写「功能级状态由 Planner 裁决（执行侧未写 `PASSED/COMPLETED`）」——否定式。
+  - knowledge/session-handoff.md:22：同行的 PASSED/COMPLETED 全部指向 0.1.0 P53/P61 发布与 P53 核销（历史锁定事实），0.1.1 段落写「等待 Owner/Planner 独立验收 23 项已提交候选」。
+  - memory/state.md:11、memory/features.md:3：同行的 COMPLETED 指向 P60 `v0.1.0-oa-completion`（2026-09-15 已确认），0.1.1 写 `IN_PROGRESS`。
+补充断言：
+  - 0.1.1 列车功能状态在三处权威入口均写 `IN_PROGRESS`：knowledge/current-status.md（当前活动任务行）、knowledge/features/v0.1.1-bugfix.md（§1 与 §3 统计）、memory/state.md（活动功能行）。
+  - 单缺陷回执页首状态：BUG-012 = 已提交候选（待独立验收）、BUG-021 = 处理中、BUG-024 = Owner 复开；均无 `PASSED/COMPLETED`。
+  - 方向目录未移动：主方向仍在 product/v0.1.1-bugfix/ready/，本同步方向仍在 ready/，无 passed/ 新增。

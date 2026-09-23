@@ -1,0 +1,558 @@
+diff --git a/knowledge/current-status.md b/knowledge/current-status.md
+index 998befa..22661a4 100644
+--- a/knowledge/current-status.md
++++ b/knowledge/current-status.md
+@@ -1,10 +1,12 @@
+ # 当前项目状态
+ 
+-> 执行侧最新同步点：2026-09-22；v0.1.1 已登记 25 项缺陷，其中 24 项为已提交候选，BUG-021 处理中；本批 Web 提交 `47fb2e3`，正式 headed 证据与四连已回读。
++> 执行侧最新同步点：2026-09-23（阶段快照机械同步，回执 `product/v0.1.1-bugfix/receipts/current-state-sync-20260923-01.md`）；v0.1.1 已登记 25 项缺陷，工具按账本 §3 逐行复算 **25 = 23 项已提交候选 + 1 项处理中（V011-BUG-021）+ 1 项 Owner 复开（V011-BUG-024）**，账本旧汇总「24 候选」已更正为 23；本批 Web 提交 `47fb2e3` 及其复开修正 `e68250e`、`5eb6da1`，正式 headed 证据与四连已回读。
+ 
+ > 唯一当前快照；截至/同步点：2026-09-21。**0.1.0 P53/P61 演示环境正式发布（XL）功能级 `PASSED（2026-09-21）`**（最终裁决 `product/v0.1.0-p53-p61-production-release/receipts/planning-final-review-production-release-02-passed.md`）：两仓 `develop` 以普通合并进入 `main` 并推送，annotated tag 与公开 Release `0.1.0` 于合并后 main 重建——Server main/tag `d18e9a39c552918615be8b158dfe0cc278cb309f`（公开 Release ID `392753737`，main CI run `35569219107` success）、Web main/tag `039f987437ed6369c3c131631bd7622c6ae482e7`（公开 Release ID `392753751`，main CI run `35569219967` success）；演示环境部署上述 CI 制品，本项目应用数据库全新迁移至 **V93**（0 failed），`/sw/` 与 `/sw-server/api/actuator/health` 均 200，Owner 登录验证通过；C1 临时敏感资产已删除并回读不存在。本轮为阶段三终态同步（方向 `product/v0.1.0-p53-p61-production-release/ready/direction-v0.1.0-p53-p61-production-release-terminal-sync.md`，回执 `product/v0.1.0-p53-p61-production-release/receipts/terminal-sync-production-release-01.md`）：发布任务状态机械写为 `COMPLETED（待规划确认，2026-09-21）`，本发布任务不新增/核销 P 编号、不改变功能数与清单计数。**P53 `p53-global-ui-component-layout`（P53 全局 UI 与组件布局优化；XL，P0）功能级验收 `product/p53-global-ui-component-layout/receipts/planning-review-p53-completion-12-passed.md` **PASSED（2026-09-21）**，阶段三终态同步回执 `product/p53-global-ui-component-layout/receipts/terminal-sync-p53-global-ui-component-layout-01.md` 已提交（`TERMINAL_SYNC_SUBMITTED`）并经规划最终复核 01 `planning-final-review-terminal-sync-p53-global-ui-component-layout-01-passed.md` **PASSED**（2026-09-21）确认：本文件按终态同步方向 `product/p53-global-ui-component-layout/ready/direction-p53-global-ui-component-layout-terminal-sync.md` 的唯一终态值清单机械写为 `COMPLETED（规划已确认，2026-09-21）`、P53 已核销（规划已确认）、正式业务功能数 44→**45**；P53 主方向已归档 `product/p53-global-ui-component-layout/passed/direction-p53-global-ui-component-layout.md`，主方向与阶段三终态同步方向均已归档 `passed/`；当前无活动正式功能；P53/P61 已按 Owner 授权与既定 P61→P53 顺序统一合入两仓 develop 并推送（Web develop `fc37608`、Server develop `fa96290`，验收快照见 `product/p53-global-ui-component-layout/receipts/p53-p61-integration-and-projection-01.md`）。**P61 `p61-user-facing-message-humanization`（全系统用户可见错误码与提示语人性化治理；L，P1）COMPLETED（规划已确认，2026-09-20）**：功能级验收 `product/p61-user-facing-message-humanization/receipts/planning-review-p61-scope-corrected-completion-03-passed.md` **PASSED**（2026-09-20，范围纠偏后六项标准全部通过）；阶段三终态同步回执 `product/p61-user-facing-message-humanization/receipts/terminal-sync-p61-user-facing-message-humanization-01.md` 已提交（`TERMINAL_SYNC_SUBMITTED`）并已由最终复核 01 `planning-final-review-terminal-sync-p61-user-facing-message-humanization-01-passed.md` **PASSED** 确认；三份方向（原方向、范围纠偏、阶段三）均已归档 `product/p61-user-facing-message-humanization/passed/`；P61 已核销，不增加业务功能数；集成顺序=独立提交 Server `742adb8`、Web `d110ed8`；P53 终态同步经规划最终复核 01 PASSED 确认后，已按既定 P61→P53 集成顺序合入两仓 develop 并推送（Web `fc37608`、Server `fa96290`）。P60 `v0.1.0-oa-completion`（成熟 OA 目标版本 `0.1.0`；当前交付迭代 `0.0.3`，见 `receipts/planning-version-baseline-p60-current-iteration-02.md`；XL，P0）**COMPLETED（规划已确认，2026-09-15）**：P60 整体 14/14 通过（发布最终验收 02 `receipts/planning-final-review-release-v0.1.0-server-web-02-passed.md` PASSED），当前轮为整体终态同步；目标版本由 Owner 确认统一登记为 `0.1.0`（更正回执 `product/v0.1.0-oa-completion/receipts/planning-registration-correction-v0.1.0-01.md`）；I1「组织与权限底座」**COMPLETED（规划已确认，2026-09-09）**；I2「低代码表单收口」**COMPLETED（规划已确认，2026-09-10）**；I3「人工审批与自研流程设计器」**COMPLETED（规划已确认，2026-09-12）**；I4「编排、流程运营与工作台」**COMPLETED（规划已确认，2026-09-13）**；**I5「租户安全与三方 SSO」COMPLETED（规划已确认，2026-09-14）**（功能级验收 `receipts/planning-review-stage-i5-v0.0.3-oa-owner-waiver-01-passed.md` PASSED；终态同步回执 01/02 与最终复核 `receipts/planning-final-review-terminal-sync-stage-i5-v0.0.3-oa-iteration-02-passed.md` **PASSED**，机器状态 `TERMINAL_SYNC_SUBMITTED`；WECOM/FEISHU/DINGTALK 真实成功链按 Owner 2026-09-14 裁决**延期免验/未验证**）；I5 主方向与终态同步方向均已归档 `passed/`。I6 通知与版本收口 **COMPLETED（规划已确认，2026-09-15）**（功能级验收 `receipts/planning-review-stage-i6-notification-version-closure-07-owner-deferral-passed.md` **PASSED**（Owner 2026-09-15 裁决“先过，记一个 P2 级 todo”）；阶段三终态同步回执 `receipts/terminal-sync-stage-i6-v0.0.3-oa-iteration-01.md`（`TERMINAL_SYNC_SUBMITTED`）已由最终复核 `receipts/planning-final-review-terminal-sync-stage-i6-v0.0.3-oa-iteration-01-passed.md` **PASSED** 确认，投影回执 `receipts/final-state-projection-stage-i6-v0.0.3-oa-iteration-01.md` 已提交）；I6 主方向与终态同步方向均已归档 `passed/`；L1—L37 锁定，R8 五外部渠道（SMS/EMAIL/FEISHU/DINGTALK/WECHAT_WORK）固定记录为 `Owner延期 / 未验证`，已转 P2 待办 `todo/i6-external-notification-channels-real-verification.md`；版本权威 `version.json` 与 `release/0.1.0/` 材料已落盘，两端版本投影 `0.1.0`。P60 时点功能数 44、清单 ✅46/🟦22/⬜22、ADV64 与 P 编号全部保持现状。**0.1.0 已于 2026-09-15 首次发布并锁定**（该时点身份，后被 2026-09-21 发布轮重建，当前身份见本行开头；发布轮 Workspace 零 Git 写动作；其后按 Owner 2026-09-15 指令提交并推送本地状态，未改动两仓发布提交）：Server main `c15428f0002f6bb0ceeff05c7cbcf842bd3d3148`、Web main `963df360ed18bc1c604652a13edb2a7ed0be8963`；两仓精确 annotated tag 与公开 Release 均为 `0.1.0`，对应 main Actions 成功（Server 34946504087 / Web 34942666025）；当前迁移终点 **V93**。历史快照见 `knowledge/history/`。
+ > 冲突处理：本文件为当前功能状态、计数、活动功能、正式基线与唯一下一动作的权威来源。
+-> **当前轮（2026-09-22）：0.1.1 缺陷修复列车收件推进**——两仓 `0.1.1-bugfix` 分支累计登记 25 项缺陷（V011-BUG-001—025），其中 **24 项已提交候选**（001—020 + 022—025，Web SHA 见 `product/v0.1.1-bugfix/receipts/bug-ledger.md` §3/§4）、BUG-021 处理中（404 返回动作已由 `dc4cf52` 落地，其余失效入口待 Owner 复现输入）；本批 V011-BUG-023/024/025 已完成 headed 三视口行为证据与完整四连（typecheck exit 0、lint 0 error、Vitest 137 文件 + 1 跳过 / 1244 通过 + 3 跳过、build exit 0，均带 2G 上限）；正式浏览器验收为用户可见 headed 会话（headless=false），覆盖 1920×1080、1366×768、1024×768；Web 本批提交 `47fb2e3` 在本地待 Owner/Planner 验收后按授权推送；未合并 main、未创建 `0.1.1` tag/Release、未部署。
++> **当前轮（2026-09-23）：0.1.1 缺陷修复列车阶段快照机械同步**——Owner 宣布修复阶段告一段落，Planner 下发 `product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md`（当前文档同步唯一入口；主方向 `ready/direction-v0.1.1-bugfix.md` 继续约束整个列车）。本轮只同步文档状态：不修业务代码、不补跑缺陷行为、不宣告列车 `PASSED/COMPLETED`、不核销编号、不发布、不改变运行服务。同步后账本事实为 **25 项登记 = 23 项已提交候选 + 1 项处理中（V011-BUG-021，失效入口待具体复现输入）+ 1 项 Owner 复开（V011-BUG-024，Shift+滚轮专项仍未关闭）**，未处置合计 2 项；V011-BUG-012 已按整条顶栏居中（`5eb6da1`）并补齐 16:9/16:10/4:3 headed 页签居中补证；V011-BUG-024 普通滚轮、横向触控板式滚动与网格/节点/连线随动已补证（`e68250e`）；候选全部待 Owner/Planner 独立验收。收件保持开放，发布门禁与 0.1.0 发布身份不变。
++> **未登记提交差异（2026-09-23 工具回读，待 Planner 裁决，本轮不处置）**：两仓 `0.1.1-bugfix` 本地 HEAD（Server `7ff4743b3aff714f9058ede783d0b1af8eb8fd9f`、Web `281892e43b67b466326b25fb83f2e471a5ca48fe`）在已登记候选最后 SHA（Server `750ad39`、Web `5eb6da1`）之后另有 **2 个 Server 提交与 16 个 Web 提交**（2026-09-23 12:58—21:37），未登记于缺陷账本或任何单缺陷回执，且未推送（`origin/0.1.1-bugfix` 仍为 Server `750ad39`、Web `5eb6da1`）。该差异只作事实记录：不分配 `V011-BUG-NNN` 编号、不改变 25/23/1/1 计数与功能数/清单/P 状态/正式验证基线，登记或分离由 Planner 裁决（详见 `knowledge/features/v0.1.1-bugfix.md` §3.1）。
++> **上一轮（2026-09-22）：0.1.1 缺陷修复列车收件推进**——两仓 `0.1.1-bugfix` 分支累计登记 25 项缺陷（V011-BUG-001—025），其中 **24 项已提交候选**（001—020 + 022—025，Web SHA 见 `product/v0.1.1-bugfix/receipts/bug-ledger.md` §3/§4）、BUG-021 处理中（404 返回动作已由 `dc4cf52` 落地，其余失效入口待 Owner 复现输入）；本批 V011-BUG-023/024/025 已完成 headed 三视口行为证据与完整四连（typecheck exit 0、lint 0 error、Vitest 137 文件 + 1 跳过 / 1244 通过 + 3 跳过、build exit 0，均带 2G 上限）；正式浏览器验收为用户可见 headed 会话（headless=false），覆盖 1920×1080、1366×768、1024×768；Web 本批提交 `47fb2e3` 在本地待 Owner/Planner 验收后按授权推送；未合并 main、未创建 `0.1.1` tag/Release、未部署。（该轮「24 项已提交候选」为当时汇总值，已由本轮 23 项复算值取代。）
+ 
+ ## 当前快照
+ 
+@@ -23,7 +25,7 @@
+ | P 编号 | **P21 已核销/完成（2026-09-08）**；**P61 已核销（规划已确认，2026-09-20）**；**P53 已核销（规划已确认，2026-09-21）**；**P2、P4 开放、部分实现未核销**；P34/P35/P37/P38/P39 部分实现未核销；**P60、P31 及其他开放 P 编号全部保持现状，I5 阶段不核销**。审计基准 P 池 57 行、唯一 56 编号（P48 总表/明细双入口同值）；I 索引 54 条、区间 I1—I55 缺 I27，本轮不增删（**I14 已满足/关闭（2026-09-08）**；I38/I39/I40/I45 保持开放） |
+ | 变更类型记录（历史事件，非当前值） | 2026-09-21 0.1.0 P53/P61 演示环境发布与阶段三终态同步（Owner 授权「推送发布并测试验收」；方向 `product/v0.1.0-p53-p61-production-release/passed/direction-v0.1.0-p53-p61-production-release.md`；回执 `receipts/production-release-01.md`、`receipts/production-release-cleanup-02.md`，最终裁决 `receipts/planning-final-review-production-release-02-passed.md` PASSED；本轮同步回执 `product/v0.1.0-p53-p61-production-release/receipts/terminal-sync-production-release-01.md`，`TERMINAL_SYNC_SUBMITTED`）：两仓 develop 普通合并至 main 并推送（Server `c15428f0002f6bb0ceeff05c7cbcf842bd3d3148…→d18e9a39c552918615be8b158dfe0cc278cb309f`、Web `963df36…→039f987437ed6369c3c131631bd7622c6ae482e7`），main CI success 并生成 CI 资产（Server jar sha256 `cce9efbe…24e0`、Web dist sha256 `17814747…9beb`），旧 `0.1.0` tag/Release 按授权删除并在合并后 main 重建（公开 Release ID `392753737`／`392753751`）；演示环境部署 CI 制品、本项目应用数据库重建至 V93（0 failed）、Owner 登录验证通过；C1 临时敏感资产清理并回读不存在。发布任务状态写为 `COMPLETED（待规划确认，2026-09-21）`；功能数 45、90 明细 ✅46/🟦22/⬜22、ADV64 与开放 P 编号零变化；本轮未重复发布/部署/建库、未运行测试/构建/浏览器验收、未执行任何 Git 写动作。2026-09-21 P53 规划最终确认与 P53/P61 统一集成（Owner 授权，回执 `product/p53-global-ui-component-layout/receipts/p53-p61-integration-and-projection-01.md`）：Web 提交 `29d90e8`、Server 提交 `42cbc86`/`6698b8c` 推送后，按既定 P61→P53 顺序把 P61 Web `d110ed8`、Server `742adb8` 与 P53 一并合入两仓 develop（Web 合并 `fc37608`、Server 合并 `fa96290`）并推送；Web 合并结果与 P53 分支树逐字节一致、locale 八值 8/8、四连全绿；Server compile exit 0 ＋ 聚焦测试 35/0/0/0；功能数 45、90 明细 ✅46/🟦22/⬜22、ADV64 与开放 P 编号零变化；P53 写为 `COMPLETED（规划已确认，2026-09-21）`。2026-09-21 P53 阶段三终态同步（本回执 `product/p53-global-ui-component-layout/receipts/terminal-sync-p53-global-ui-component-layout-01.md`）：按 `ready/direction-p53-global-ui-component-layout-terminal-sync.md` 的唯一终态值清单，把 P53 机械写为 `COMPLETED（规划已确认，2026-09-21）`、功能级验收锁定为 `PASSED（2026-09-21）`、P53 已核销（规划已确认）、正式业务功能数 44→45，并把 P53 视觉/Web 验证基线集合登记为只证明 P53 的证据（Server/Flyway 不为 P53 晋级）；90 明细 ✅46/🟦22/⬜22、ADV64 与其余开放 P 编号零变化；P53 主方向保持 `passed/`，阶段三方向仍在 `ready/` 待 Planner 归档；未运行工程构建/测试/迁移、未执行浏览器验收、未改业务代码、未 commit/push/合并/tag/Release。2026-09-20 P53/P61 集成顺序记录（`product/p53-global-ui-component-layout/receipts/planning-integration-order-p61-before-p53-merge-20260920.md`）：Owner 裁决 P61 独立提交先保留、暂不合并，P53 结束后统一合并；合并必须同时保留 P53 结构/新增键与 P61 八值 8/8，两 locale 文件冲突按此完成条件处理；该安排只决定 Git 集成顺序，不改变 P61 `COMPLETED（规划已确认，2026-09-20）` 与 P53 `VERIFYING`；本轮未执行合并、推送或远端动作。2026-09-20 P61 阶段三最终复核确认（`product/p61-user-facing-message-humanization/receipts/planning-final-review-terminal-sync-p61-user-facing-message-humanization-01-passed.md` **PASSED**，九项复核全通过）：P61 由 `COMPLETED（待规划确认）` 确认为 `COMPLETED（规划已确认，2026-09-20）` 并正式核销，终态同步方向由 Planner 归档至 `passed/`；功能数 44、90 明细 ✅46/🟦22/⬜22、ADV64 与开放 P 编号零变化。2026-09-20 P61 阶段三终态同步（本回执 `product/p61-user-facing-message-humanization/receipts/terminal-sync-p61-user-facing-message-humanization-01.md`）：按 `ready/direction-p61-user-facing-message-humanization-terminal-sync.md` 的唯一终态值清单，把 P61 机械写为 `COMPLETED（待规划确认，2026-09-20）`、功能级验收锁定为 `PASSED（2026-09-20）`、P61 已核销（规划已确认），并把 P61 治理验证基线集合（Server 1423/0/0/0、Web 1217+3）登记为只证明 P61 的证据；功能数 44、90 明细 ✅46/🟦22/⬜22、ADV64 与其余开放 P 编号零变化；P61 主方向与范围纠偏方向保持 `passed/`，阶段三方向仍在 `ready/` 待 Planner 归档；未运行工程构建/测试/迁移、未执行浏览器验收、未改业务代码、未 commit/push/tag/Release。2026-09-20 P61 功能级 PASSED（`product/p61-user-facing-message-humanization/receipts/planning-review-p61-scope-corrected-completion-03-passed.md`）：按 2026-09-20 范围纠偏六项标准全部通过，C1（154 目录键）、C3（Web 1217+3）锁定，C2-V 集成 locale 八值逐字一致（8/8、missing/duplicate=0、exit 0）。2026-09-15 仓库健康与推送（Owner 指令）：把本轮剩余未提交内容提交并推送——Workspace `develop-sw` `8e87899…cdf5616`（终态同步、回执与证据、探索回传、`.gitignore` 与大日志移出），Server `origin/develop` `b8015b9..47c8b86`（《功能清单》发布摘要同步）；同时清理 `.git`（165MB→65MB、垃圾包清零）与 Server 构建产物（422MB→5.1MB），并把 5 份大体积运行日志移出版本库、加入忽略规则；626.9MB 的 `i4-02/server-dev.log` 经未推送历史重写移除（未强推）。两仓发布身份与 `0.1.0` 标签/Release 未改动，未触发新 Release。2026-09-15 0.1.0 双仓发布与 P60 整体终态同步（本回执 `receipts/terminal-sync-v0.1.0-oa-completion-01.md`）：按 `ready/direction-v0.1.0-oa-completion-terminal-sync.md` 的唯一终态值清单，把 P60 写为 `COMPLETED（待规划确认）`、迁移终点 V93、两仓发布身份与最终门禁机械同步至 knowledge、memory、todo 与工程《功能清单》当前段；功能数 44、90 明细 ✅46/🟦22/⬜22、ADV64 与开放 P 编号零变化；I5 三 Provider 与 I6 五渠道保持 `Owner延期 / 未验证`；未运行工程构建/测试/迁移、未执行浏览器验收、未调用外部 Provider、未 commit/push/tag/Release、未改动两代码仓发布提交。2026-09-15 0.1.0 两仓发布（回执 `receipts/release-v0.1.0-server-web-01.md`，经发布验收 01 与最终验收 02 PASSED）：Server/Web 候选固化并推送 develop、发布前门禁全绿、普通合并至 main、自动构建与 Release 回读、annotated tag `0.1.0`、版本 Release、R1/R2 回执治理（机器终态 + 证据脱敏）补齐。2026-09-15 I6 规划确认终态投影（本回执 `receipts/final-state-projection-stage-i6-v0.0.3-oa-iteration-01.md`）：按 `ready/direction-stage-i6-final-confirmed-state-projection.md` 与最终裁决 `receipts/planning-final-review-terminal-sync-stage-i6-v0.0.3-oa-iteration-01-passed.md`，把 I6「规划已确认」值与两份方向归档路径机械投影至 knowledge、todo、工程《功能清单》与 P60 当前段；P60 保持 `IN_PROGRESS`，功能数 44、90 明细 ✅46/🟦22/⬜22、ADV64 与 P 编号零变化；R8 五渠道保持 `Owner延期 / 未验证` 与 P2 待办；未重跑 L1—L37、未修改业务实现、未执行 commit/push/tag/Release。2026-09-15 I6 阶段三终态同步（本回执 `receipts/terminal-sync-stage-i6-v0.0.3-oa-iteration-01.md`）：按 `ready/direction-stage-i6-terminal-sync.md`（前置裁决 `receipts/planning-review-stage-i6-notification-version-closure-07-owner-deferral-passed.md`）把 I6 机械写为 `COMPLETED（待规划确认，2026-09-15）`，机器状态 `TERMINAL_SYNC_SUBMITTED`；P60 保持 `IN_PROGRESS`，功能数 44、90 明细 ✅46/🟦22/⬜22、ADV64 与 P 编号零变化；R8 五渠道固定记录为 `Owner延期 / 未验证` 并转 P2 待办。只读复算 R7 三仓内容指纹：Server 1312/1312、Web 405/405 逐文件与锁定候选完全一致（指纹精确复算相等），Workspace 差异全部为 R7 快照后的治理/规划产物与本轮同步产物。未重跑 L1—L37、未修改业务实现、未执行 commit/push/tag/Release。2026-09-14 I5 规划确认终态投影（本回执 `receipts/final-state-projection-stage-i5-v0.0.3-oa-iteration-01.md`）：按 `ready/direction-stage-i5-final-confirmed-state-projection.md` 与最终裁决 `receipts/planning-final-review-terminal-sync-stage-i5-v0.0.3-oa-iteration-02-passed.md`，把 I5 的「规划已确认」值与归档路径机械投影至 knowledge、todo、工程《功能清单》与 P60 当前段；唯一入口切换到 `ready/direction-stage-i6-notification-version-closure.md`（实现授权门禁=本回执）；未重跑 I5 测试、未修改业务实现、未创建标签或 Release。2026-09-14 I5 阶段三终态同步：按 `ready/direction-stage-i5-terminal-sync.md`（前置裁决 `receipts/planning-review-stage-i5-v0.0.3-oa-owner-waiver-01-passed.md`）把 I5 机械写为 `COMPLETED（待规划确认，2026-09-14）`，机器状态 `TERMINAL_SYNC_SUBMITTED`；P60 保持 IN_PROGRESS，功能数 44、90 明细计数 ✅46/🟦22/⬜22、ADV64 与 P 编号零变化；I5 task-owned 文件本地提交、远程推送待 Owner 对具体远端/分支/范围授权；未重验 I5、未开始 I6、未创建标签或 Release。2026-09-14 I5 功能级验收 PASSED（`planning-review-stage-i5-v0.0.3-oa-owner-waiver-01-passed.md`）：Owner 裁决三 Provider 真实凭据链延期免验，其余标准与文档级可用交付（三 Provider 官方文档对照、飞书 `response_type=code` 修复、安全配置占位、Owner 自验手册、零秘密扫描、五类对象 manifest）自审查 10—11 起锁定；记录语义固定为延期免验/未验证边界。2026-09-13 I5 实现推进至 `VERIFYING`：非零租户 OA 全链、生产认证安全、权限 fail-closed、SSO state/绑定/会话/审计与同秒 jti 撤销隔离按 G1—G9 逐原子收敛；P60 保持 IN_PROGRESS，计数与 P 编号零变化。2026-09-13 I4 规划确认终态投影与终态同步最终复核 03 PASSED：I4 写为 `COMPLETED（规划已确认，2026-09-13）`，I4 主方向、终态同步方向与三层状态对账方向均归档 `passed/`。2026-09-13 I4 终态三层一致性收敛：关闭 TS4-R1a（补齐第 15 项功能登记）、TS4-R1b（统一全部当前入口与动作）、TS4-R1c（修正并重跑当前入口残留验证器，含负向夹具）。2026-09-13 I4 三层状态全量对账：以 90 个稳定明细键与 knowledge/memory 双向逐项对账，机械修正过期当前指针；I4 保持 `COMPLETED（待规划确认，2026-09-13）`、终态同步复核 01 `VERIFYING`。2026-09-12 I4 进入执行（阶段级）：版本关系机械同步为「成熟 OA 目标 `0.1.0`、当前交付迭代 `0.0.3`」。2026-09-12 I3 阶段三终态同步（回执 02 经最终复核 02 确认 `COMPLETED（规划已确认，2026-09-12）`）。2026-09-10 I2 阶段三终态同步经最终复核确认为 `COMPLETED（规划已确认，2026-09-10）`；2026-09-09 目标版本登记更正（0.3.0→0.1.0，Owner 确认） |
+ | 当前活动正式功能 | **无活动正式功能**：P53 `p53-global-ui-component-layout`（XL，P0）功能级 `PASSED（2026-09-21）`、功能状态 `COMPLETED（规划已确认，2026-09-21）`、已核销（规划已确认），阶段三终态同步回执经规划最终复核 01 PASSED 确认，并已按 Owner 授权合入两仓 develop（Web `fc37608`、Server `fa96290`）；`v0.1.0-oa-completion`（P60，XL）：**COMPLETED（规划已确认，2026-09-15）**（I1—I6 均 COMPLETED（规划已确认），整体 14/14，终态同步已由最终复核 01 PASSED 确认）；**P61 `p61-user-facing-message-humanization`：`COMPLETED（规划已确认，2026-09-20）`，已核销，不再列为活动功能；独立提交 Server `742adb8` / Web `d110ed8` 已随 P53 于 2026-09-21 统一合入两仓 develop 并推送**；**0.1.0 P53/P61 演示环境正式发布（XL）功能级 `PASSED（2026-09-21）`、发布任务状态 `COMPLETED（待规划确认，2026-09-21）`**（发布为非业务功能任务，不增加业务功能数；当前无活动正式功能） |
+-| 当前活动任务（0.1.1） | **`v0.1.1-bugfix`（XL）长周期缺陷修复与版本发布列车：开放收件**；方向 `product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md`（READY，2026-09-21）；分支两仓同名 `0.1.1-bugfix`（Server 起点 `d18e9a39c552918615be8b158dfe0cc278cb309f`、Web 起点 `039f987437ed6369c3c131631bd7622c6ae482e7`）；累积缺陷账本 `product/v0.1.1-bugfix/receipts/bug-ledger.md`（累计 25 项，24 项已提交候选，BUG-021 处理中）；执行侧登记 `knowledge/features/v0.1.1-bugfix.md`；本任务非新增业务功能计数、不核销 P 编号，功能级状态由 Planner 裁决（执行侧未写 `PASSED/COMPLETED`） |
++| 当前活动任务（0.1.1） | **`v0.1.1-bugfix`（XL）长周期缺陷修复与版本发布列车：功能状态 `IN_PROGRESS`（2026-09-23 阶段快照同步）**；主方向 `product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md`（READY，2026-09-21），当前文档同步唯一入口 `product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md`；分支两仓同名 `0.1.1-bugfix`（Server 起点 `d18e9a39c552918615be8b158dfe0cc278cb309f`、Web 起点 `039f987437ed6369c3c131631bd7622c6ae482e7`；当前本地 HEAD Server `7ff4743b3aff714f9058ede783d0b1af8eb8fd9f`、Web `281892e43b67b466326b25fb83f2e471a5ca48fe`，`origin/0.1.1-bugfix` 仍为 Server `750ad391d6d2c9760f6c29aee0ea17bfbbabfe2e`、Web `5eb6da1edcb6599f029b578fa4abe465f38ac951`）；累积缺陷账本 `product/v0.1.1-bugfix/receipts/bug-ledger.md`（累计 25 项 = 23 项已提交候选 + 1 项处理中（V011-BUG-021）+ 1 项 Owner 复开（V011-BUG-024），未处置合计 2 项）；执行侧登记 `knowledge/features/v0.1.1-bugfix.md`（含 §3.1 未登记提交差异）；本任务非新增业务功能计数、不核销 P 编号，功能级状态由 Planner 裁决（执行侧未写 `PASSED/COMPLETED`） |
+ | 前一活动交付任务（0.1.0 轮，已收尾） | 0.1.0 P53/P61 演示环境发布阶段三终态同步（方向 `product/v0.1.0-p53-p61-production-release/ready/direction-v0.1.0-p53-p61-production-release-terminal-sync.md`；回执 `product/v0.1.0-p53-p61-production-release/receipts/terminal-sync-production-release-01.md`，机器 `TERMINAL_SYNC_SUBMITTED`；发布任务状态 `COMPLETED（待规划确认，2026-09-21）`，方向保持 `ready/` 待 Planner 复核）；P53 阶段三终态同步（方向 `product/p53-global-ui-component-layout/ready/direction-p53-global-ui-component-layout-terminal-sync.md`；回执 `product/p53-global-ui-component-layout/receipts/terminal-sync-p53-global-ui-component-layout-01.md`，机器 `TERMINAL_SYNC_SUBMITTED`；规划最终复核 01 PASSED，已随 P61 合入两仓 develop 并推送）；P61 阶段三终态同步已确认（回执 `product/p61-user-facing-message-humanization/receipts/terminal-sync-p61-user-facing-message-humanization-01.md`，机器 `TERMINAL_SYNC_SUBMITTED`；最终复核 01 PASSED，三份方向均归档 `passed/`）；P60 整体终态同步（方向已归档 `product/v0.1.0-oa-completion/passed/direction-v0.1.0-oa-completion-terminal-sync.md`；回执 `product/v0.1.0-oa-completion/receipts/terminal-sync-v0.1.0-oa-completion-01.md`，已由最终复核 01 PASSED 确认）；R8 五外部渠道真实链保持 P2 待办 `todo/i6-external-notification-channels-real-verification.md` |
+ | 最近审查 | `product/v0.1.0-p53-p61-production-release/receipts/planning-final-review-production-release-02-passed.md`（0.1.0 P53/P61 发布最终审查 02 **PASSED**：锁定两仓 main/tag/Release、CI 资产、演示库 V93、Owner 登录与 C1 清理，2026-09-21） | `product/v0.1.0-p53-p61-production-release/receipts/planning-review-production-release-01-verifying.md`（发布审查 01：发布行为通过并锁定，C1 临时资产清理待补，2026-09-21） | `product/v0.1.0-p53-p61-production-release/receipts/planning-review-production-release-readiness-01.md`（发布就绪审查 01，2026-09-21） | `product/p53-global-ui-component-layout/receipts/planning-review-p53-completion-12-passed.md`（P53 功能级验收审查 12 **PASSED**：34 个视觉失败实例逐项收敛为 71 passed / 0 failed / 17 skipped、exit 0，31 个适用节点 30 通过 + 节点06 记录性安全偏差，2026-09-21） \| `product/p61-user-facing-message-humanization/receipts/planning-final-review-terminal-sync-p61-user-facing-message-humanization-01-passed.md`（P61 阶段三终态同步最终复核 01 **PASSED**，P61 正式确认 `COMPLETED（规划已确认，2026-09-20）` 并核销，九项复核全通过，2026-09-20）\| `product/p53-global-ui-component-layout/receipts/planning-integration-order-p61-before-p53-merge-20260920.md`（P53/P61 最终集成顺序记录：P61 独立提交先保留、P53 结束后统一合并，2026-09-20；2026-09-21 已按该顺序合入两仓 develop 并推送）\| `product/p61-user-facing-message-humanization/receipts/planning-review-p61-scope-corrected-completion-03-passed.md`（P61 功能级验收 **PASSED**，范围纠偏后六项标准全部通过，2026-09-20）\| `product/p61-user-facing-message-humanization/receipts/planning-review-p61-scope-corrected-completion-02-not-passed.md`（C1/C3 通过并锁定、C2 缺八值工具证据，2026-09-20）\| `product/p61-user-facing-message-humanization/receipts/planning-review-p61-scope-corrected-completion-01-not-passed.md`（C1—C3 差异核销单，2026-09-20）\| `product/v0.1.0-oa-completion/receipts/planning-final-review-release-v0.1.0-server-web-02-passed.md`（0.1.0 双仓发布最终验收 02 **PASSED**：G14 核销、P60 整体 14/14，2026-09-15）\| `product/v0.1.0-oa-completion/receipts/planning-review-release-v0.1.0-server-web-01.md`（发布验收 01：发布行为通过并锁定，R1/R2 回执治理待补，2026-09-15）\| `product/v0.1.0-oa-completion/receipts/planning-final-review-terminal-sync-stage-i6-v0.0.3-oa-iteration-01-passed.md`（I6 阶段三终态同步最终复核 01 **PASSED**，I6 正式确认 `COMPLETED（规划已确认，2026-09-15）`，九项复核全通过，2026-09-15）\| `product/v0.1.0-oa-completion/receipts/final-state-projection-stage-i6-v0.0.3-oa-iteration-01.md`（I6 规划确认终态投影回执，`TERMINAL_SYNC_SUBMITTED`，2026-09-15）\| `product/v0.1.0-oa-completion/receipts/planning-review-stage-i6-notification-version-closure-07-owner-deferral-passed.md`（I6 功能级验收 **PASSED**，Owner 2026-09-15 裁决 R8 五渠道延期未验证并转 P2 待办）\| `product/v0.1.0-oa-completion/receipts/planning-final-review-terminal-sync-stage-i5-v0.0.3-oa-iteration-02-passed.md`（I5 终态最终复核 02 **PASSED**，I5 确认 `COMPLETED（规划已确认，2026-09-14）`，三仓远端回读通过，2026-09-14）\| `planning-review-stage-i5-v0.0.3-oa-owner-waiver-01-passed.md`（I5 功能级验收 **PASSED**，Owner 延期免验三 Provider 真实链，2026-09-14）\| `receipts/terminal-sync-stage-i5-v0.0.3-oa-iteration-01.md`、`receipts/terminal-sync-stage-i5-v0.0.3-oa-iteration-02.md`（I5 阶段三终态同步回执 01/02，`TERMINAL_SYNC_SUBMITTED`，2026-09-14）\| `receipts/planning-review-stage-i5-v0.0.3-oa-iteration-11.md`（G8 交接包通过并锁定，2026-09-14）\| 历史：`planning-final-review-terminal-sync-stage-i4-v0.0.3-oa-iteration-03-passed.md`（I4 终态同步最终复核 03 PASSED，2026-09-13）\| `planning-final-review-terminal-sync-stage-i3-v0.1.0-oa-completion-02-passed.md`（I3 终态最终复核 PASSED，2026-09-12）\| `planning-final-review-terminal-sync-stage-i2-v0.1.0-oa-completion-02-passed.md`（I2 终态最终复核 PASSED，2026-09-10） |
+ 
+@@ -41,7 +43,7 @@
+ 
+ ## 当前唯一下一动作
+ 
+-**当前唯一下一动作（0.1.1）：等待 Owner/Planner 独立验收 24 项已提交候选并继续开放收件**——两仓 `0.1.1-bugfix` 分支累计 25 项缺陷（001—025），24 项已提交候选（001—020 + 022—025；Web SHA 见 `product/v0.1.1-bugfix/receipts/bug-ledger.md`），BUG-021 处理中；重点复验本批流程设计器四向锚点、画布平移、连线端点改接/waypoint 改形，以及既有 BUG-020/015/016。Owner 持续输入真实体验缺陷，Executor 按 `V011-BUG-NNN` 逐项收件、修复、验证并按方向 §5 形成原子提交；复开沿用原编号追加新事实；得 Owner 明确确认收件结束前不得合并 main、创建 `0.1.1` tag/Release 或部署。0.1.0 发布身份锁定，不得重复发布、不得移动或重建 main/tag/Release。
++**当前唯一下一动作（0.1.1）：执行本方向并提交机械同步回执；提交后由 Planner 复核该回执**——即执行 `product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md` 授权的 knowledge/memory/README 机械同步，并提交 `product/v0.1.1-bugfix/receipts/current-state-sync-20260923-01.md`（含本轮改动入口的全文快照与工具校验哈希）。同步完成后列车回到验收与收件线：等待 Owner/Planner 独立验收 **23 项**已提交候选并继续开放收件（未处置 2 项：V011-BUG-021 失效入口待具体复现输入、V011-BUG-024 Shift+滚轮专项未关闭）；重点复验本批流程设计器四向锚点、画布平移、连线端点改接/waypoint 改形，以及既有 BUG-020/015/016。Owner 持续输入真实体验缺陷，Executor 按 `V011-BUG-NNN` 逐项收件、修复、验证并按方向 §5 形成原子提交；复开沿用原编号追加新事实；得 Owner 明确确认收件结束前不得合并 main、创建 `0.1.1` tag/Release 或部署。0.1.0 发布身份锁定，不得重复发布、不得移动或重建 main/tag/Release。
+ 
+ ## 当前未关闭项入口
+ 
+@@ -53,7 +55,7 @@
+ - I5 自验交接包（真实 Provider 启用时按手册执行）：`Smart-WorkFlow-aPaaS-server/docs/sso/owner-acceptance-handbook.md`、`docs/sso/provider-config-example.yml`；I6 R8 五渠道启用时按 `todo/i6-external-notification-channels-real-verification.md` 的每渠道完成条件执行
+ - p21-iot-device-access 交付追踪：`knowledge/features/p21-iot-device-access.md`；方向与回执：`product/p21-iot-device-access/`
+ - P53 交付追踪：`knowledge/features/p53-global-ui-component-layout.md`；方向与回执：`product/p53-global-ui-component-layout/`（主方向与阶段三方向均已归档 `passed/`，回执 `receipts/terminal-sync-p53-global-ui-component-layout-01.md`，规划最终复核 01 PASSED）
+-- 0.1.1 长周期缺陷修复列车（XL，当前活动任务）：方向 `product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md`（READY，开放收件）；累积缺陷账本 `product/v0.1.1-bugfix/receipts/bug-ledger.md`；单缺陷回执模板 `product/v0.1.1-bugfix/receipts/_template-V011-BUG-NNN.md`；初始化回执 `product/v0.1.1-bugfix/receipts/train-init-01.md`；功能追踪 `knowledge/features/v0.1.1-bugfix.md`；三份本批回执与 headed 证据目录 `product/v0.1.1-bugfix/receipts/V011-BUG-023.md`、`V011-BUG-024.md`、`V011-BUG-025.md`；Web 分支本批提交 `47fb2e3` 待验收后推送，未合并 main/tag/Release/部署
++- 0.1.1 长周期缺陷修复列车（XL，当前活动任务，`IN_PROGRESS`）：主方向 `product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md`（READY，开放收件）；当前文档同步唯一入口 `product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md`；累积缺陷账本 `product/v0.1.1-bugfix/receipts/bug-ledger.md`（25 项 = 23 候选 + 1 处理中 + 1 Owner 复开）；单缺陷回执模板 `product/v0.1.1-bugfix/receipts/_template-V011-BUG-NNN.md`；初始化回执 `product/v0.1.1-bugfix/receipts/train-init-01.md`；功能追踪 `knowledge/features/v0.1.1-bugfix.md`（含 §3.1 未登记提交差异）；本批回执与 headed 证据目录 `product/v0.1.1-bugfix/receipts/V011-BUG-012.md`、`V011-BUG-021.md`、`V011-BUG-023.md`、`V011-BUG-024.md`、`V011-BUG-025.md` 与 `receipts/evidence/V011-BUG-012/`、`V011-BUG-024/`；Web 分支本批提交 `47fb2e3` 与复开修正 `e68250e`、`5eb6da1` 待验收后按授权推送，未合并 main/tag/Release/部署
+ - 历史状态与审计链：`knowledge/history/README.md`
+ 
+ ## 新会话启动提示词
+@@ -68,7 +70,7 @@
+ - 当前状态：**P60 v0.1.0-oa-completion 已完成并发布（XL，`COMPLETED（规划已确认，2026-09-15）`；成熟 OA 目标 `0.1.0`、当前交付迭代 `0.0.3`；整体 14/14）**；I1 **COMPLETED（规划已确认，2026-09-09）**；I2 **COMPLETED（规划已确认，2026-09-10）**；I3 **COMPLETED（规划已确认，2026-09-12）**；I4 **COMPLETED（规划已确认，2026-09-13）**；**I5 COMPLETED（规划已确认，2026-09-14）**；**I6 COMPLETED（规划已确认，2026-09-15）**（功能级验收 07 PASSED、阶段三最终复核 01 PASSED、投影回执已提交；主方向与终态同步方向均归档 `passed/`）
+ - 完成数：清单 **46 / 22 / 22**（90，业务明细零变化）＋ ADV 规划项 64 条（不计入）；正式功能数 **45**（45/45 登记路径存在：P53 为第 45 个正式功能，登记 `knowledge/features/p53-global-ui-component-layout.md`）
+ - 门禁基线（0.1.0 发布门禁，2026-09-21 发布轮实跑，终态同步轮不重跑）：Server `MAVEN_OPTS=-Xmx2g mvn -B test` exit 0 ＋ 全仓 **1423 tests / 0 failures / 0 errors / 0 skipped BUILD SUCCESS**（含 FlywayFullChain 终点 **V93**）；Web 四门 exit 0（**134 files + 1 skipped、1217 passed + 3 skipped**）；I6 时点 1361/V92 与 2026-09-15 首次发布值（Server `c15428f0002f6bb0ceeff05c7cbcf842bd3d3148`、Web `963df360ed18bc1c604652a13edb2a7ed0be8963`、1362/0/0/0、1185+3）仅作历史阶段证据；发布身份 Server `d18e9a39c552918615be8b158dfe0cc278cb309f`、Web `039f987437ed6369c3c131631bd7622c6ae482e7`；行为证据 `receipts/evidence/i6-05/`、`i6-06/`、发布门禁 `product/v0.1.0-p53-p61-production-release/receipts/evidence/production-release-01/`
+-- 当前唯一下一动作：**等待 Owner/Planner 独立验收 24 项已提交候选并继续开放收件**——两仓 `0.1.1-bugfix` 分支累计 25 项缺陷（V011-BUG-001—025），24 项已提交候选（001—020 + 022—025；Web SHA 见 `product/v0.1.1-bugfix/receipts/bug-ledger.md`），BUG-021 处理中；Executor 逐项原子修复并提交，得 Owner 明确确认收件结束前不得合并 main、创建 `0.1.1` tag/Release 或部署（0.1.0 发布身份锁定，不得重复发布、不得移动或重建 main/tag/Release）
++- 当前唯一下一动作：**执行 `product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md` 并提交机械同步回执，提交后由 Planner 复核该回执**——同步完成后等待 Owner/Planner 独立验收 **23 项**已提交候选并继续开放收件（两仓 `0.1.1-bugfix` 分支累计 25 项缺陷 V011-BUG-001—025 = 23 候选 + BUG-021 处理中 + BUG-024 Owner 复开；Web SHA 见 `product/v0.1.1-bugfix/receipts/bug-ledger.md`）；Executor 逐项原子修复并提交，得 Owner 明确确认收件结束前不得合并 main、创建 `0.1.1` tag/Release 或部署（0.1.0 发布身份锁定，不得重复发布、不得移动或重建 main/tag/Release）
+ - 发布基线：0.1.0 两仓已发布并重建身份——Server `origin/main=d18e9a39c552918615be8b158dfe0cc278cb309f`（公开 Release ID `392753737`，main CI run `35569219107`）、Web `origin/main=039f987437ed6369c3c131631bd7622c6ae482e7`（公开 Release ID `392753751`，main CI run `35569219967`），精确 annotated tag 与公开 Release 均为 `0.1.0`（Latest、非 draft/prerelease），两仓 main Actions success；演示环境部署对应 CI 制品、应用数据库 V93（0 failed）、Owner 登录通过；发布后不得重复发布、不得移动或重建 main/tag/Release；Workspace 不参与 0.1.0 版本身份且本轮零 Git 写动作
+ - 验证例外：WECOM/FEISHU/DINGTALK 三 Provider 与 I6 SMS/EMAIL/FEISHU/DINGTALK/WECHAT_WORK 五渠道真实链=`Owner 延期 / 未验证`（不得写成真实通过）；小程序继续冻结
+ - P 编号：P21 已核销（2026-09-08）；P53 已核销（规划已确认，2026-09-21）；P2/P4 开放、部分实现未核销；P34/P35/P37/P38/P39 部分实现未核销；P47 已纳入 I3 但本阶段不核销；P60、P31 及其他开放编号本轮零变化
+diff --git a/knowledge/features/v0.1.1-bugfix.md b/knowledge/features/v0.1.1-bugfix.md
+index 0e9ab4b..25a1d1c 100644
+--- a/knowledge/features/v0.1.1-bugfix.md
++++ b/knowledge/features/v0.1.1-bugfix.md
+@@ -14,8 +14,8 @@
+ | 任务目标 | 以 0.1.0 已发布 `main` 为起点，持续接收 Owner 真实体验缺陷，逐项原子修复、验证并保持可追溯，至 Owner 明确确认收件结束后冻结候选并发布 0.1.1 |
+ | 等级 | XL |
+ | 创建日期 | 2026-09-21 |
+-| 方向状态 | READY（Planner，2026-09-21；开放缺陷收件） |
+-| 执行侧状态 | 25 项缺陷登记、24 项已提交候选（2026-09-22）；BUG-021 处理中；规划验收前不写 `PASSED/COMPLETED` |
++| 方向状态 | READY（Planner，2026-09-21；开放缺陷收件）；主方向继续约束整个列车，当前文档同步唯一入口为 `ready/direction-current-state-sync-20260923.md`（2026-09-23） |
++| 执行侧状态 | 25 项缺陷登记，按行工具复算 = **23 项已提交候选 + 1 项处理中（V011-BUG-021）+ 1 项 Owner 复开（V011-BUG-024）**（2026-09-23 阶段快照同步）；候选全部待 Owner/Planner 独立验收；规划验收前不写 `PASSED/COMPLETED` |
+ | 涉及仓库 | Smart-WorkFlow-aPaaS-server、Smart-WorkFlow-aPaaS-Web（按缺陷实际影响进入） |
+ 
+ ---
+@@ -44,6 +44,13 @@
+ | Smart-WorkFlow-aPaaS-server | `0.1.1-bugfix` | `d18e9a39c552918615be8b158dfe0cc278cb309f` | origin 已推送（2026-09-22，本批新提交待授权） |
+ | Smart-WorkFlow-aPaaS-Web | `0.1.1-bugfix` | `039f987437ed6369c3c131631bd7622c6ae482e7` | origin 已推送（2026-09-22，本批新提交待授权） |
+ 
++当前 Git 身份（2026-09-23 执行侧工具回读，本地工作树无未提交业务改动）：
++
++| 仓库 | 本地 HEAD | 远端 `origin/0.1.1-bugfix` | 已登记候选最后 SHA | 本地领先远端 |
++|---|---|---|---|---|
++| Smart-WorkFlow-aPaaS-server | `7ff4743b3aff714f9058ede783d0b1af8eb8fd9f` | `750ad391d6d2c9760f6c29aee0ea17bfbbabfe2e` | `750ad39` | 2 个提交（未登记、未推送，见 §3.1） |
++| Smart-WorkFlow-aPaaS-Web | `281892e43b67b466326b25fb83f2e471a5ca48fe` | `5eb6da1edcb6599f029b578fa4abe465f38ac951` | `5eb6da1` | 16 个提交（未登记、未推送，见 §3.1） |
++
+ ### 2.4 风险与门禁
+ 
+ | 类型 | 描述 |
+@@ -70,7 +77,7 @@
+ | V011-BUG-009 | 已提交候选 | 画布字段栅格全宽 | Web | `31f29b6` | V011-BUG-009.md |
+ | V011-BUG-010 | 已提交候选 | 顶栏左右组位置调整 | Web | `656c56f` | V011-BUG-010.md |
+ | V011-BUG-011 | 已提交候选 | 面包屑=分类→表单名 | Web | `656c56f` | V011-BUG-011.md |
+-| V011-BUG-012 | 已提交候选 | 工作区 tab 居中 | Web | `656c56f` | V011-BUG-012.md |
++| V011-BUG-012 | 已提交候选 | 工作区 tab 居中（复开后已补三比例 headed 证据） | Web | `656c56f` / `5eb6da1` | V011-BUG-012.md |
+ | V011-BUG-013 | 已提交候选 | 属性面板内边距恢复 | Web | `f984d5d` | V011-BUG-013.md |
+ | V011-BUG-014 | 已提交候选 | 新建表单先命名 | Web | `9e9f9c6` | V011-BUG-014.md |
+ | V011-BUG-015 | 已提交候选 | 已发布表单解锁编辑+发布新版本 | Web | `362b6b1` | V011-BUG-015.md |
+@@ -82,10 +89,21 @@
+ | V011-BUG-021 | 处理中 | 失效入口 404（404 页返回动作已落地） | Web | `dc4cf52` | V011-BUG-021.md |
+ | V011-BUG-022 | 已提交候选 | 外壳四角圆角去除 | Web | `7273a2b` | V011-BUG-022.md |
+ | V011-BUG-023 | 已提交候选 | 节点四向锚点拉线 | Web | `47fb2e3` | V011-BUG-023.md |
+-| V011-BUG-024 | 已提交候选 | 滚轮/Shift/触控板平移画布 | Web | `47fb2e3` | V011-BUG-024.md |
++| V011-BUG-024 | Owner 复开 | 滚轮/Shift/触控板平移画布（普通滚轮与横向触控板式滚动已补证，Shift+滚轮专项未关闭） | Web | `47fb2e3` / `e68250e` | V011-BUG-024.md |
+ | V011-BUG-025 | 已提交候选 | 连线端点改接与 waypoint 改形 | Web | `47fb2e3` | V011-BUG-025.md |
+ 
+-当前统计：收件开放，累计登记 25 项；未处置 1 项（BUG-021）、已提交候选 24 项。状态与 SHA 以 `product/v0.1.1-bugfix/receipts/bug-ledger.md` 为准。
++当前统计（2026-09-23 阶段快照同步，工具按账本 §3 逐行复算）：收件开放，累计登记 **25** 项 = 已提交候选 **23** 项 + 处理中 **1** 项（V011-BUG-021）+ Owner 复开 **1** 项（V011-BUG-024），即 23+1+1=25；未处置合计 **2** 项（021、024）。状态与 SHA 以 `product/v0.1.1-bugfix/receipts/bug-ledger.md` 为准；账本旧汇总「24 候选」已在 2026-09-23 同步更正为 23。
++
++### 3.1 未登记提交差异（2026-09-23 执行侧工具回读，待 Planner 裁决）
++
++两仓 `0.1.1-bugfix` 本地 HEAD 在已登记候选最后 SHA 之后另有提交，既未登记于缺陷账本，也未出现在任何单缺陷回执中，且未推送远端：
++
++| 仓库 | 未登记提交数 | 时间范围 | 提交主题（按时间正序） |
++|---|---|---|---|
++| Smart-WorkFlow-aPaaS-server | 2 | 2026-09-23 19:40—20:44 | `690772a` 后台信息架构规整迁移 V95（更名/归位/路径规范化）；`7ff4743` 表单设计改为设计器内部页签，侧栏不再单列入口 |
++| Smart-WorkFlow-aPaaS-Web | 16 | 2026-09-23 12:58—21:37 | `5df1a5d`、`0ad05ac`、`05fc292`、`fa31207`、`0165478`、`6ba5bbf`、`f15ac23`、`c9018dd`、`efd88e9`、`f8e1f91`、`783e51d`、`61aa1c5`、`aa912d8`、`7b771a3`、`99a37a8`、`281892e`（流程画布设计切换标签移除、画布组件放置与预览、字段标题位置与文字组件、后台侧栏/目录收敛、表单列表分类树、前台发起流程回落、我发起的自适应等） |
++
++本轮只作事实记录：不为这些提交分配 `V011-BUG-NNN` 编号、不改变 25/23/1/1 计数、不改变功能数/清单/P 状态/正式验证基线（Server 1423/0/0/0、Web 1217+3、Flyway V93），也不判断其是否属于本列车范围。登记、分离或另行立项由 Planner 裁决；其中 Server 迁移 `V95` 未被任何本轮同步的正式基线引用，正式迁移终点仍为 **V93**。
+ 
+ ---
+ 
+diff --git a/knowledge/session-handoff.md b/knowledge/session-handoff.md
+index 7a4e375..d5b124f 100644
+--- a/knowledge/session-handoff.md
++++ b/knowledge/session-handoff.md
+@@ -1,8 +1,10 @@
+ # 会话交接（session-handoff）— 当前压缩版
+ 
+-> 同步点：2026-09-21。**0.1.0 P53/P61 演示环境发布（XL）功能级 `PASSED（2026-09-21）`**（`product/v0.1.0-p53-p61-production-release/receipts/planning-final-review-production-release-02-passed.md`）：两仓 main/tag/公开 Release `0.1.0` 重建并锁定（Server `d18e9a39c552918615be8b158dfe0cc278cb309f`／Release `392753737`／CI `35569219107`；Web `039f987437ed6369c3c131631bd7622c6ae482e7`／Release `392753751`／CI `35569219967`），演示环境部署 CI 制品、应用数据库 V93（0 failed）、Owner 登录通过；本轮为阶段三终态同步（方向 `product/v0.1.0-p53-p61-production-release/ready/direction-v0.1.0-p53-p61-production-release-terminal-sync.md`；回执 `product/v0.1.0-p53-p61-production-release/receipts/terminal-sync-production-release-01.md`，`TERMINAL_SYNC_SUBMITTED`），发布任务状态 `COMPLETED（待规划确认，2026-09-21）`，方向保持 `ready/` 待 Planner 复核。**当前无活动正式功能：P53 全局 UI 与组件布局优化（XL，P0）功能级 `PASSED（2026-09-21）`、功能状态 `COMPLETED（规划已确认，2026-09-21）`、已核销（规划已确认），阶段三终态同步回执 `product/p53-global-ui-component-layout/receipts/terminal-sync-p53-global-ui-component-layout-01.md` 已提交（`TERMINAL_SYNC_SUBMITTED`）并经规划最终复核 01 PASSED 确认（主方向与阶段三方向均已归档 `passed/`）；P53/P61 已按 Owner 授权合入两仓 develop 并推送（Web `fc37608`、Server `fa96290`）；P61 全系统用户可见错误码与提示语人性化治理（L，P1）功能级 `PASSED`（2026-09-20）并已最终确认 `COMPLETED（规划已确认，2026-09-20）` 并核销，三份方向均归档 `passed/`；独立提交 Server `742adb8` / Web `d110ed8` 已随 P53 合入 develop 并推送**。P60 `v0.1.0-oa-completion`（0.1.0 OA 全功能收口，XL，P0）**COMPLETED（规划已确认，2026-09-15）**：目标版本已由 Owner 确认统一登记为 `0.1.0`（更正回执 `product/v0.1.0-oa-completion/receipts/planning-registration-correction-v0.1.0-01.md`）；I1「组织与权限底座」**COMPLETED（规划已确认，2026-09-09）**；I2「低代码表单收口」**COMPLETED（规划已确认，2026-09-10）**；I3「人工审批与自研流程设计器」**COMPLETED（规划已确认，2026-09-12）**；I4「编排、流程运营与工作台」**COMPLETED（规划已确认，2026-09-13）**（三个方向均已归档 `passed/`）；**I5「租户安全与三方 SSO」COMPLETED（规划已确认，2026-09-14）**（功能级验收 `planning-review-stage-i5-v0.0.3-oa-owner-waiver-01-passed.md` PASSED；终态最终复核 `planning-final-review-terminal-sync-stage-i5-v0.0.3-oa-iteration-02-passed.md` PASSED；三 Provider 真实成功链=Owner 延期免验/未验证；主方向与终态同步方向均已归档 `passed/`）；**I6「通知与版本收口」COMPLETED（规划已确认，2026-09-15）**（功能级验收 `receipts/planning-review-stage-i6-notification-version-closure-07-owner-deferral-passed.md` PASSED，Owner 2026-09-15 裁决 I6 先通过、R8 五渠道转 P2 待办；阶段三终态同步回执 01 经最终复核 `receipts/planning-final-review-terminal-sync-stage-i6-v0.0.3-oa-iteration-01-passed.md` PASSED；确认值投影回执 `receipts/final-state-projection-stage-i6-v0.0.3-oa-iteration-01.md` 已提交；I6 主方向与终态同步方向均已归档 `passed/`）。更早历史见 `knowledge/history/README.md`。
++> 同步点：2026-09-23（0.1.1 阶段快照机械同步）。**当前活动任务：`v0.1.1-bugfix`（XL 长周期缺陷修复与版本发布列车，`IN_PROGRESS`，非业务功能计数）**——Owner 宣布修复阶段告一段落，Planner 下发当前文档同步唯一入口 `product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md`（主方向 `ready/direction-v0.1.1-bugfix.md` 继续约束整个列车）；执行侧已完成 knowledge/memory/README 机械同步并提交回执 `product/v0.1.1-bugfix/receipts/current-state-sync-20260923-01.md`，待 Planner 复核。**缺陷账本事实（工具按 §3 逐行复算）：25 项登记 = 23 项已提交候选 + 1 项处理中（V011-BUG-021，失效入口待具体复现输入）+ 1 项 Owner 复开（V011-BUG-024，Shift+滚轮专项仍未关闭）**，未处置合计 2 项，账本旧汇总「24 候选」已更正为 23；V011-BUG-012 三比例 headed 页签居中补证已提交（`5eb6da1`），V011-BUG-024 普通滚轮/横向触控板式滚动与网格随动补证已提交（`e68250e`）；候选全部待 Owner/Planner 独立验收。两仓 `0.1.1-bugfix` 本地 HEAD = Server `7ff4743b3aff714f9058ede783d0b1af8eb8fd9f`、Web `281892e43b67b466326b25fb83f2e471a5ca48fe`（`origin/0.1.1-bugfix` 仍为 Server `750ad39`、Web `5eb6da1`）；**该 HEAD 在已登记候选最后 SHA 之后另有 2 个 Server 提交与 16 个 Web 提交（2026-09-23 12:58—21:37），未登记于账本或任何单缺陷回执、未推送，只作事实记录并待 Planner 裁决（详见 `knowledge/features/v0.1.1-bugfix.md` §3.1）**，本轮不为其分配编号、不改变任何计数与正式基线。收件保持开放；0.1.0 发布身份与正式验证基线（Server 1423/0/0/0、Web 1217+3、Flyway V93）锁定不变。
+ 
+-## 当前唯一值（v0.1.0-oa-completion 执行入口）
++> 上一同步点：2026-09-21。**0.1.0 P53/P61 演示环境发布（XL）功能级 `PASSED（2026-09-21）`**（`product/v0.1.0-p53-p61-production-release/receipts/planning-final-review-production-release-02-passed.md`）：两仓 main/tag/公开 Release `0.1.0` 重建并锁定（Server `d18e9a39c552918615be8b158dfe0cc278cb309f`／Release `392753737`／CI `35569219107`；Web `039f987437ed6369c3c131631bd7622c6ae482e7`／Release `392753751`／CI `35569219967`），演示环境部署 CI 制品、应用数据库 V93（0 failed）、Owner 登录通过；本轮为阶段三终态同步（方向 `product/v0.1.0-p53-p61-production-release/ready/direction-v0.1.0-p53-p61-production-release-terminal-sync.md`；回执 `product/v0.1.0-p53-p61-production-release/receipts/terminal-sync-production-release-01.md`，`TERMINAL_SYNC_SUBMITTED`），发布任务状态 `COMPLETED（待规划确认，2026-09-21）`，方向保持 `ready/` 待 Planner 复核。**当前无活动正式功能：P53 全局 UI 与组件布局优化（XL，P0）功能级 `PASSED（2026-09-21）`、功能状态 `COMPLETED（规划已确认，2026-09-21）`、已核销（规划已确认），阶段三终态同步回执 `product/p53-global-ui-component-layout/receipts/terminal-sync-p53-global-ui-component-layout-01.md` 已提交（`TERMINAL_SYNC_SUBMITTED`）并经规划最终复核 01 PASSED 确认（主方向与阶段三方向均已归档 `passed/`）；P53/P61 已按 Owner 授权合入两仓 develop 并推送（Web `fc37608`、Server `fa96290`）；P61 全系统用户可见错误码与提示语人性化治理（L，P1）功能级 `PASSED`（2026-09-20）并已最终确认 `COMPLETED（规划已确认，2026-09-20）` 并核销，三份方向均归档 `passed/`；独立提交 Server `742adb8` / Web `d110ed8` 已随 P53 合入 develop 并推送**。P60 `v0.1.0-oa-completion`（0.1.0 OA 全功能收口，XL，P0）**COMPLETED（规划已确认，2026-09-15）**：目标版本已由 Owner 确认统一登记为 `0.1.0`（更正回执 `product/v0.1.0-oa-completion/receipts/planning-registration-correction-v0.1.0-01.md`）；I1「组织与权限底座」**COMPLETED（规划已确认，2026-09-09）**；I2「低代码表单收口」**COMPLETED（规划已确认，2026-09-10）**；I3「人工审批与自研流程设计器」**COMPLETED（规划已确认，2026-09-12）**；I4「编排、流程运营与工作台」**COMPLETED（规划已确认，2026-09-13）**（三个方向均已归档 `passed/`）；**I5「租户安全与三方 SSO」COMPLETED（规划已确认，2026-09-14）**（功能级验收 `planning-review-stage-i5-v0.0.3-oa-owner-waiver-01-passed.md` PASSED；终态最终复核 `planning-final-review-terminal-sync-stage-i5-v0.0.3-oa-iteration-02-passed.md` PASSED；三 Provider 真实成功链=Owner 延期免验/未验证；主方向与终态同步方向均已归档 `passed/`）；**I6「通知与版本收口」COMPLETED（规划已确认，2026-09-15）**（功能级验收 `receipts/planning-review-stage-i6-notification-version-closure-07-owner-deferral-passed.md` PASSED，Owner 2026-09-15 裁决 I6 先通过、R8 五渠道转 P2 待办；阶段三终态同步回执 01 经最终复核 `receipts/planning-final-review-terminal-sync-stage-i6-v0.0.3-oa-iteration-01-passed.md` PASSED；确认值投影回执 `receipts/final-state-projection-stage-i6-v0.0.3-oa-iteration-01.md` 已提交；I6 主方向与终态同步方向均已归档 `passed/`）。更早历史见 `knowledge/history/README.md`。
++
++## 当前唯一值（0.1.1 列车当前入口 + 0.1.0 锁定基线）
+ 
+ | 字段 | 值 |
+ |---|---|
+@@ -17,7 +19,7 @@
+ | 产品行为基线 | I6 真实行为/浏览器证据见 `receipts/evidence/i6-05/`、`i6-06/`（R3 管理员通知闭环与重发/权限分流、R4 PC/H5 同对象同深链、R5 正式多角色流程含委托与抄送只读链、R7 三仓内容指纹 manifest＋sidecar＋独立复算一致）；正式流程均来自可见交互式浏览器 `headless=false`，17 个 PNG/WebP 可回读。I5 G1—G9（`receipts/evidence/i5-02/`—`i5-11/`）与 I1—I4 行为证据继续锁定。**R8 五渠道（SMS/EMAIL/FEISHU/DINGTALK/WECHAT_WORK）=Owner延期 / 未验证（P2 待办）；三 Provider=Owner 延期免验/未验证** |
+ | 当前任务状态 | `v0.1.0-oa-completion`：**COMPLETED（规划已确认，2026-09-15）**（整体 14/14）；I1—I6 **COMPLETED（规划已确认）**（**I6 `COMPLETED（规划已确认，2026-09-15）`**：功能级验收 `planning-review-stage-i6-notification-version-closure-07-owner-deferral-passed.md` PASSED、阶段三最终复核 `planning-final-review-terminal-sync-stage-i6-v0.0.3-oa-iteration-01-passed.md` PASSED、确认值投影回执 `final-state-projection-stage-i6-v0.0.3-oa-iteration-01.md` `TERMINAL_SYNC_SUBMITTED`）；**0.1.0 P53/P61 发布任务状态 `COMPLETED（待规划确认，2026-09-21）`**（非业务功能任务；阶段三终态同步回执 `product/v0.1.0-p53-p61-production-release/receipts/terminal-sync-production-release-01.md`，方向保持 `ready/` 待 Planner 复核） |
+ | 活动业务实现功能 | **P53 全局 UI 与组件布局优化（XL，P0）功能级 `PASSED（2026-09-21）`、功能状态 `COMPLETED（规划已确认，2026-09-21）`、已核销（规划已确认），阶段三终态同步经规划最终复核 01 PASSED 确认并已合入两仓 develop 并推送**；**P61 已最终确认 `COMPLETED（规划已确认，2026-09-20）` 并核销**（三份方向归档 `passed/`；独立提交 Server `742adb8` / Web `d110ed8` 已随 P53 于 2026-09-21 合入两仓 develop 并推送——Web `fc37608`、Server `fa96290`；P61 不再列为活动功能）；**0.1.0 P53/P61 演示环境发布已 PASSED 并完成阶段三终态同步**（发布为非业务功能任务，当前无活动正式功能） |
+-| 唯一下一动作 | **等待 Owner 自行体验**：0.1.0 P53/P61 演示环境发布已经规划最终审查 02 PASSED 并完成阶段三终态同步（发布任务状态 `COMPLETED（待规划确认，2026-09-21）`，方向保持 `ready/` 待 Planner 复核）；发现问题时另行立项，否则等待下一轮任务。P53 已经规划最终复核 01 PASSED 确认 `COMPLETED（规划已确认，2026-09-21）` 并核销（第 45 个正式功能），P53/P61 已按 Owner 授权合入两仓 develop 并推送（Web `fc37608`、Server `fa96290`）；正式业务功能数 45 与清单 ✅46/🟦22/⬜22、ADV64、开放 P 编号不变；0.1.0 发布身份锁定，不得重复发布、不得移动或重建 main/tag/Release |
++| 唯一下一动作 | **执行 `product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md` 并提交机械同步回执；提交后由 Planner 复核该回执**（执行侧已完成本轮 knowledge/memory/README 同步，回执 `product/v0.1.1-bugfix/receipts/current-state-sync-20260923-01.md`）。同步完成后列车回到验收与收件线：等待 Owner/Planner 独立验收 **23 项**已提交候选并继续开放收件，未处置 2 项（V011-BUG-021 失效入口待具体复现输入、V011-BUG-024 Shift+滚轮专项未关闭）；两仓 `0.1.1-bugfix` 本地 HEAD Server `7ff4743b3aff714f9058ede783d0b1af8eb8fd9f` / Web `281892e43b67b466326b25fb83f2e471a5ca48fe`，已登记候选最后 SHA 之后另有 2 个 Server 提交与 16 个 Web 提交未登记、未推送（`knowledge/features/v0.1.1-bugfix.md` §3.1，待 Planner 裁决）。0.1.0 P53/P61 演示环境发布已经规划最终审查 02 PASSED 并完成阶段三终态同步（发布任务状态 `COMPLETED（待规划确认，2026-09-21）`，方向保持 `ready/` 待 Planner 复核）；P53 已经规划最终复核 01 PASSED 确认 `COMPLETED（规划已确认，2026-09-21）` 并核销（第 45 个正式功能），P53/P61 已按 Owner 授权合入两仓 develop 并推送（Web `fc37608`、Server `fa96290`）；正式业务功能数 45 与清单 ✅46/🟦22/⬜22、ADV64、开放 P 编号不变；0.1.0 发布身份锁定，不得重复发布、不得移动或重建 main/tag/Release；收件结束前不得合并 0.1.1 到 main、创建 `0.1.1` tag/Release 或部署 |
+ 
+ ## v0.1.0-oa-completion 关键事实
+ 
+@@ -62,7 +64,8 @@
+ 
+ ## 任务指针
+ 
+-- 0.1.0 P53/P61 演示环境发布（非业务功能任务）：主方向已归档 `product/v0.1.0-p53-p61-production-release/passed/direction-v0.1.0-p53-p61-production-release.md`；阶段三终态同步方向保持 `ready/direction-v0.1.0-p53-p61-production-release-terminal-sync.md` 待 Planner 复核（同步回执 `receipts/terminal-sync-production-release-01.md`）；发布任务状态 `COMPLETED（待规划确认，2026-09-21）`；当前唯一下一动作=等待 Owner 自行体验。
++- v0.1.1-bugfix（XL，当前活动任务，`IN_PROGRESS`，非业务功能计数）：主方向 `product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md`（READY，开放收件）；当前文档同步唯一入口 `product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md`；同步回执 `product/v0.1.1-bugfix/receipts/current-state-sync-20260923-01.md`；缺陷账本 `product/v0.1.1-bugfix/receipts/bug-ledger.md`；功能追踪 `knowledge/features/v0.1.1-bugfix.md`（§3.1 未登记提交差异待 Planner 裁决）；下一动作=执行侧已提交同步回执，待 Planner 复核，随后等待 23 项候选的独立验收并继续开放收件。
++- 0.1.0 P53/P61 演示环境发布（非业务功能任务）：主方向已归档 `product/v0.1.0-p53-p61-production-release/passed/direction-v0.1.0-p53-p61-production-release.md`；阶段三终态同步方向保持 `ready/direction-v0.1.0-p53-p61-production-release-terminal-sync.md` 待 Planner 复核（同步回执 `receipts/terminal-sync-production-release-01.md`）；发布任务状态 `COMPLETED（待规划确认，2026-09-21）`；其下一动作已由 v0.1.1 列车当前入口取代。
+ - v0.1.0-oa-completion（P60，`COMPLETED（规划已确认，2026-09-15）`，已完成并发布）：**无活动入口**；主方向与终态同步方向均已归档 `product/v0.1.0-oa-completion/passed/`（`passed/direction-v0.1.0-oa-completion.md`、`passed/direction-v0.1.0-oa-completion-terminal-sync.md`）；I2 主方向与终态同步方向均已归档 `passed/`（规划已确认，2026-09-10）；I3 主方向与终态同步方向均已归档 `passed/`（规划已确认，2026-09-12）；I4 主方向、终态同步方向与三层状态对账方向均已归档 `passed/`（规划已确认，2026-09-13，最终复核 03 PASSED）；**I5 主方向与终态同步方向均已归档 `passed/`（规划已确认，2026-09-14，终态最终复核 02 PASSED，Owner 延期免验三 Provider 真实链）**；**I6 主方向与终态同步方向均已归档 `passed/`（功能级 PASSED + 阶段三最终复核 01 PASSED，I6 确认 `COMPLETED（规划已确认，2026-09-15）`）**；任务登记 `knowledge/features/v0.1.0-oa-completion.md`（由 `v0.3.0-oa-completion.md` 更名承接；目标版本 Owner 确认登记 `0.1.0`；I1—I6 均 COMPLETED（规划已确认））。当前唯一主功能入口为 P53 提示07（见下行任务指针）。I1 历史证据（只读历史）：`product/v0.3.0-oa-completion/`。
+ - p53-global-ui-component-layout（P53，XL/P0）：功能级 **`PASSED（2026-09-21）`**（审查 12，主方向 §9 十八项标准通过），功能状态 **`COMPLETED（规划已确认，2026-09-21）`**，已核销（规划已确认），第 45 个正式功能；主方向与阶段三方向均已归档 `product/p53-global-ui-component-layout/passed/`（`direction-p53-global-ui-component-layout.md`、`direction-p53-global-ui-component-layout-terminal-sync.md`）；回执 `receipts/terminal-sync-p53-global-ui-component-layout-01.md`（`TERMINAL_SYNC_SUBMITTED`）经规划最终复核 01 PASSED 确认，并已随 P61 合入两仓 develop 并推送；任务登记 `knowledge/features/p53-global-ui-component-layout.md`。
+ - p61-user-facing-message-humanization（P61）：功能级 **`PASSED`（2026-09-20）**，功能状态 **`COMPLETED（规划已确认，2026-09-20）`**，已核销；最终复核 `planning-final-review-terminal-sync-p61-user-facing-message-humanization-01-passed.md` **PASSED**，阶段三终态同步回执 `receipts/terminal-sync-p61-user-facing-message-humanization-01.md`（`TERMINAL_SYNC_SUBMITTED`）；三份方向均归档 `product/p61-user-facing-message-humanization/passed/`；集成顺序=独立提交 Server `742adb8` / Web `d110ed8` 先保留，待 P53 结束后统一合并（记录 `product/p53-global-ui-component-layout/receipts/planning-integration-order-p61-before-p53-merge-20260920.md`）；任务登记 `knowledge/features/p61-user-facing-message-humanization.md`。
+diff --git a/memory/README.md b/memory/README.md
+index 373c660..521fd06 100644
+--- a/memory/README.md
++++ b/memory/README.md
+@@ -2,6 +2,6 @@
+ 
+ `memory/` 保存 Planner 可直接恢复和决策的最小摘要；不承载完整历史、原始证据或完整决策正文。
+ 
+-- 当前摘要：`state.md`、`handoff.md`（截至2026-09-21：0.1.0已`COMPLETED`；**0.1.1长周期缺陷修复与发布任务已下发READY方向**，分支尚未初始化、缺陷账本为空。唯一下一动作=执行角色读取`product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md`，核对0.1.0基线并创建`0.1.1-bugfix`分支后开放收件）
++- 当前摘要：`state.md`、`handoff.md`（2026-09-23：0.1.1 阶段快照机械同步已完成，25 项登记 = 23 已提交候选 + 021 处理中 + 024 Owner 复开，均按最新回执区分验收边界；§3.1 未登记提交差异待 Planner 裁决）。唯一执行入口：`product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md`；回执 `product/v0.1.1-bugfix/receipts/current-state-sync-20260923-01.md` 待 Planner 复核；knowledge 与根/两仓 README 已同步。
+ - 全量双向映射索引：`knowledge/feature-reconciliation-index.md`
+ - 未关闭问题：`knowledge/known-issues.md`；完整功能清单：`Smart-WorkFlow-aPaaS-server/功能清单.md`；历史证据：`product/*/receipts/`
+diff --git a/memory/features.md b/memory/features.md
+index 7ac3910..cdabd0f 100644
+--- a/memory/features.md
++++ b/memory/features.md
+@@ -1,11 +1,11 @@
+ # 功能摘要
+ 
+-> 规划侧最新同步点：2026-09-21（`v0.1.1-bugfix` XL方向已READY，分支与缺陷账本尚未初始化；0.1.0发布任务=`COMPLETED（规划已确认，2026-09-21）`；Server main/tag `d18e9a39c552918615be8b158dfe0cc278cb309f`、Web `039f987437ed6369c3c131631bd7622c6ae482e7`；清单✅46/🟦22/⬜22、ADV64）。
++> 规划侧最新同步点：2026-09-23。0.1.1 主任务 `IN_PROGRESS`，Owner 宣布修复阶段告一段落并完成阶段快照机械同步（执行回执 `product/v0.1.1-bugfix/receipts/current-state-sync-20260923-01.md`，待 Planner 复核）；0.1.0 发布任务已 COMPLETED（2026-09-21）。
+ > 清单当前值 **✅46/🟦22/⬜22**（90，M08 十行 🟦/⬜→✅，其余 80 行零变化）；功能数 **45**；全量双向映射见 `knowledge/feature-reconciliation-index.md`。
+ 
+ - `v0.1.0-oa-completion`（P60，优先级P0）：**COMPLETED（规划已确认，2026-09-15）**，整体14/14；版本身份由2026-09-21发布重建（见上），迁移终点V93。
+ - 0.1.0 P53/P61演示环境发布（XL，非业务功能任务）：**COMPLETED（规划已确认，2026-09-21）**；主方向与终态同步方向均归档`product/v0.1.0-p53-p61-production-release/passed/`；不增加业务功能数、不核销P编号。
+-- `v0.1.1-bugfix`（XL，非新增业务功能计数）：**READY（2026-09-21）**；方向位于`product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md`。以0.1.0已发布main为基线，持续逐缺陷收件、验证和原子提交；Owner总确认前禁止合并main、tag、Release或部署。
++- `v0.1.1-bugfix`（XL，非新增业务功能计数）：**IN_PROGRESS（2026-09-23）**；25 项登记 = 23 项已提交候选 + 1 项处理中（V011-BUG-021）+ 1 项 Owner 复开（V011-BUG-024），未处置合计 2；候选仍待独立验收。当前入口 `product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md`；§3.1 未登记提交差异（Server 2 / Web 16，未推送）待 Planner 裁决。
+ - P53（P0/XL）：**功能级`PASSED（2026-09-21）`、`COMPLETED（规划已确认，2026-09-21）`、已核销，第45个正式功能**；主方向与阶段三方向均已归档`product/p53-global-ui-component-layout/passed/`。
+ - P61（P1/L）：**`COMPLETED（规划已确认，2026-09-20）`，已核销**；独立提交Server `742adb8`、Web `d110ed8`已随P53合入两仓develop（Web `fc37608`、Server `fa96290`）；三份方向归档`passed/`，不增加业务功能数。
+ 
+diff --git a/memory/handoff.md b/memory/handoff.md
+index 857b1e9..0a5eb9c 100644
+--- a/memory/handoff.md
++++ b/memory/handoff.md
+@@ -1,35 +1,27 @@
+-# 功能交接摘要
++# 当前交接摘要
+ 
+-## 0. 当前发布入口（2026-09-21）
++## 当前任务与进展（2026-09-23）
+ 
+-0.1.0 P53/P61演示环境发布已`COMPLETED（规划已确认，2026-09-21）`；发布身份、V93、Owner登录、临时资产清理及Server develop文档投影均锁定，主方向与终态同步方向均归档`passed/`。
++Owner 宣布 0.1.1 修复阶段告一段落，转入阶段快照机械同步。Planner 已下发唯一执行入口 `product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md`（规划记录 `receipts/planning-current-state-sync-20260923.md`）；执行侧已核对 knowledge、账本、两仓 Git 事实与各 README，完成 knowledge/memory/README 机械同步并提交回执 `receipts/current-state-sync-20260923-01.md`（含全文快照与哈希）。
+ 
+-## 1. 当前任务
++缺陷账本工具复算：25 = 23 已提交候选 + 021 处理中 + 024 Owner 复开；账本旧汇总「24 候选」已更正为 23；BUG-024 页首状态、BUG-021 提交字段与旧 memory/夜间交接中的初始化、补证过期待办均已逐项更正。候选全部待独立验收。
+ 
+-`v0.1.1-bugfix`（XL）已下发READY方向，作为当前唯一主任务；P53、P61与0.1.0发布任务均已确认完成。本任务不预先增加正式业务功能数。
++两仓 `0.1.1-bugfix` 本地 HEAD Server `7ff4743b3aff714f9058ede783d0b1af8eb8fd9f` / Web `281892e43b67b466326b25fb83f2e471a5ca48fe`，`origin/0.1.1-bugfix` 仍为 Server `750ad39` / Web `5eb6da1`；已登记候选最后 SHA 之后另有 2 个 Server 与 16 个 Web 提交未登记于账本或任何单缺陷回执、未推送，登记或分离待 Planner 裁决（`knowledge/features/v0.1.1-bugfix.md` §3.1）。
+ 
+-## 2. Owner 排序
++## 下一动作与边界
+ 
+-Owner将持续真实验收0.1.0并输入数量不定的缺陷。执行角色直接收件，使用稳定`V011-BUG-NNN`编号，正常情况下每个缺陷在每个受影响仓库一个原子提交；只有Owner明确确认整轮完成后才进入main合并与0.1.1发布。
+-
+-## 3. 当前执行入口
+-
+-- 唯一入口：`product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md`。
+-- 首个动作：回读两仓0.1.0发布基线，创建同名`0.1.1-bugfix`分支并建立空缺陷账本；分支尚未创建。
+-- 禁止提前合并main、创建`0.1.1` tag/Release或部署；远程动作按方向中的独立门禁处理。
++- 唯一入口：`product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md`；同步回执已提交，待 Planner 复核。
++- 复核后：等待 Owner/Planner 独立验收 23 项已提交候选并继续开放收件；021 待具体失效入口输入，024 待 Shift+滚轮专项。
++- 发布门禁不变：得 Owner 明确确认收件结束前不得合并 main、创建 `0.1.1` tag/Release 或部署；0.1.0 发布身份锁定；本地前后端 dev 服务保留（8080/5173）。
+ 
+ ## 4. 发布身份（锁定，2026-09-21）
+ 
+-Server main/tag `d18e9a39c552918615be8b158dfe0cc278cb309f`（公开Release ID `392753737`、CI run `35569219107`）；Web main/tag `039f987437ed6369c3c131631bd7622c6ae482e7`（公开Release ID `392753751`、CI run `35569219967`）；两仓annotated tag与公开Release `0.1.0`（Latest）；演示环境部署CI制品、应用库V93、Owner登录通过。
++Server main/tag `d18e9a39c552918615be8b158dfe0cc278cb309f`（公开 Release ID `392753737`、CI run `35569219107`）；Web main/tag `039f987437ed6369c3c131631bd7622c6ae482e7`（公开 Release ID `392753751`、CI run `35569219967`）；两仓 annotated tag 与公开 Release `0.1.0`（Latest）；演示环境部署 CI 制品、应用库 V93、Owner 登录通过。
+ 
+ ## 5. 锁定基线
+ 
+-功能数45（P53第45个）；清单✅46/🟦22/⬜22、ADV64不变；Server 1423/0/0/0、Web 1217+3（2026-09-21发布轮实跑）；迁移终点V93。多宿主Supervisor真实ZCode闭环仍开放；I6五外部通知渠道与三Provider保持Owner延期 / 未验证。
+-
+-## 6. 独立状态卫生任务
+-
+-当前状态引用卫生整改已PASSED（H1—H13、G1—G4全部关闭）；无后续执行入口。
++功能数 45（P53 第45个）；清单 ✅46/🟦22/⬜22、ADV64 不变；Server 1423/0/0/0、Web 1217+3（2026-09-21 发布轮实跑）；迁移终点 V93。多宿主 Supervisor 真实 ZCode 闭环仍开放；I6 五外部通知渠道与三 Provider 保持 Owner 延期/未验证。
+ 
+-## 7. 新机器启动提示词
++## 新会话启动提示词
+ 
+-本会话角色请声明为“执行”。读取`system.md`、`roles/executor.md`、两仓工程宪法与`product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md`；先核对0.1.0发布SHA并创建`0.1.1-bugfix`分支与空缺陷账本，随后直接接收Owner问题逐项修复、验证和原子提交。Owner总确认前禁止合并main或发布。
++你是执行。读取治理入口、主方向 `product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md` 与 `ready/` 下最新入口，按 Owner 指令继续 0.1.1 列车（收件、修复、验证或按 Planner 复核结论补证）。先核对账本与两仓 Git 身份，保留 021/024 开放事实与候选验收边界；§3.1 未登记提交差异以 Planner 裁决为准，不得自行分配编号或推送。
+diff --git a/memory/issues.md b/memory/issues.md
+index 4147903..5914f3b 100644
+--- a/memory/issues.md
++++ b/memory/issues.md
+@@ -1,8 +1,9 @@
+ # 未关闭项摘要
+ 
+-> 截至/同步点：2026-09-15；业务问题权威注册：`knowledge/known-issues.md`。
++> 0.1.1 同步点：2026-09-23（阶段快照机械同步）；既有问题摘要截至 2026-09-15；业务问题权威注册：`knowledge/known-issues.md`。
++
++- **0.1.1 当前开放项**：V011-BUG-021 处理中（失效入口待 Owner 提供具体复现输入；404 页返回动作已由 `dc4cf52` 落地）；V011-BUG-024 Owner 复开（普通滚轮、横向触控板式滚动与网格随动已补证，**Shift+滚轮专项仍未关闭**）。未处置合计 **2**；账本按行复算 25 = 23 已提交候选 + 2 开放，旧汇总「24 候选」已更正为 23。BUG-012 三比例 headed 页签居中补证已提交（`5eb6da1`）、待独立验收。当前同步入口 `product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md`，回执 `receipts/current-state-sync-20260923-01.md`；完整缺陷事实见该功能 receipts。**另记（待 Planner 裁决，不计入上述计数）**：两仓 `0.1.1-bugfix` 本地 HEAD 之后有 2 个 Server 与 16 个 Web 提交未登记于账本或任何单缺陷回执、未推送（`knowledge/features/v0.1.1-bugfix.md` §3.1）。
+ 
+ - **2026-09-15 I6 规划确认终态投影轮**（I6 已为 `COMPLETED（规划已确认，2026-09-15）`）：`knowledge/known-issues.md` 无变化，I 集合维持 **54 条**（I1—I55 区间缺 I27，不增删）；R8 五外部通知渠道（SMS/EMAIL/FEISHU/DINGTALK/WECHAT_WORK）维持 **`Owner延期 / 未验证`**，不登记为缺陷、不占用 I 编号，继续由 P2 待办 `todo/i6-external-notification-channels-real-verification.md` 跟踪；P60/P31 及其他开放编号不核销，P2/P4/P34/P35/P37/P38/P39/P47 保持现状。
+-- **2026-09-15 I6 阶段三终态同步轮**：`knowledge/known-issues.md` 无变化，I 集合维持 **54 条**（I1—I55 区间缺 I27，不增删）；R8 五外部通知渠道（SMS/EMAIL/FEISHU/DINGTALK/WECHAT_WORK）按 Owner 明确裁决为 **`Owner延期 / 未验证`**，不登记为缺陷、不占用 I 编号，后续入口为 P2 待办 `todo/i6-external-notification-channels-real-verification.md`；P60/P31 及其他开放编号本轮不核销，P2/P4/P34/P35/P37/P38/P39/P47 保持现状。
+ - **2026-09-14 I5 阶段三终态同步轮**：`knowledge/known-issues.md` 无变化，I 集合维持 **54 条**（I1—I55 区间缺 I27，不增删）；三 Provider（WECOM/FEISHU/DINGTALK）真实成功链按 Owner 明确裁决为**延期免验/未验证边界**，不登记为缺陷、不占用 I 编号（启用时按 `Smart-WorkFlow-aPaaS-server/docs/sso/owner-acceptance-handbook.md` 自验）；P60/P31 及其他开放编号本阶段不核销，P2/P4/P34/P35/P37/P38/P39/P47 保持现状。
+ - **历史轮次（已收敛）**：2026-09-08 p21 轮仅 I14 更新（◐→✅）、腾讯实网免验边界保留为记录；P59/P58/P57/P56/P52 轮 `known-issues.md` 无变化（P57 口径：非零租户无受支持登录入口为认证产品边界，不登记为缺陷，I5 已收口租户校验）；2026-09-04 全量对账轮 I 集合 54 条（I27 缺行待定位见索引 §5），五行 ⬜→🟦 为已交付子集登记、P34/P35/P37/P38/P39 未核销；治理一致性审计 16 项可修项已全部关闭，当前无未关闭治理项。
+diff --git a/memory/state.md b/memory/state.md
+index 3a4e9b4..fa40ab1 100644
+--- a/memory/state.md
++++ b/memory/state.md
+@@ -1,12 +1,13 @@
+ # 当前状态摘要
+ 
+-> 当前任务（XL）：`v0.1.1-bugfix`方向已`READY（2026-09-21）`，用于持续接收Owner真实体验缺陷、逐缺陷原子提交，并在Owner最终确认后发布0.1.1；尚未初始化分支或缺陷账本。
++> 规划同步点：2026-09-23（0.1.1 阶段快照机械同步）。活动主任务 `v0.1.1-bugfix`（XL，非业务功能计数）功能状态 **`IN_PROGRESS`**；主方向 `product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md`（READY，开放收件），当前文档同步唯一入口 `product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md`，规划记录 `product/v0.1.1-bugfix/receipts/planning-current-state-sync-20260923.md`。
+ 
+-> 唯一下一动作：执行角色读取`product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md`，回读两仓0.1.0发布基线，创建同名`0.1.1-bugfix`分支并建立空缺陷账本；不得合并main或发布。
++> 唯一下一动作：执行侧已提交机械同步回执 `product/v0.1.1-bugfix/receipts/current-state-sync-20260923-01.md`，待 Planner 复核；随后等待 Owner/Planner 独立验收 23 项已提交候选并继续开放收件。
+ 
+-- 终态值：功能数 **45**（P53为第45个，规划已确认）；清单 **✅46/🟦22/⬜22**（90，零变化）；**ADV64**（独立规划项，不计入）；P21/P61/P53已核销；P2/P4开放、部分实现未核销，P34/P35/P37/P38/P39部分实现未核销；本发布任务不新增/核销P编号。
+-- 验证基线（2026-09-21发布轮实跑，终态同步不重跑）：Server **1423/0/0/0 BUILD SUCCESS**（Flyway终点V93）；Web四门exit 0、**1217 passed + 3 skipped**；2026-09-15首次发布值1362/0/0/0、1185+3为历史点。
+-- 活动功能：**`v0.1.1-bugfix`（XL，READY，非新增业务功能计数）**。P53（第45个，视觉71 passed/17 skipped/0 failed、Web四门exit0、可见FORMAL_FLOW 5制品/20条真实`/api/*`、节点06安全偏差锁定）与P61（八值8/8、154键/22修订、HTTP 22/22）均已确认核销。
+-- `v0.1.0-oa-completion`（P60）：**COMPLETED（规划已确认，2026-09-15）**，整体14/14；终态同步最终复核01 PASSED。
+-- 上一位次基线：P21 **COMPLETED（规划已确认，2026-09-08）**，第44个正式功能；更早：v0.0.2-oa第43个（09-07）、P4第42个（09-07）、P59（09-05）、p58第41个、p57第40个、p56第39个＋P46、p52第38个、p45第37个、p51引擎解耦（不计功能数）——详见`knowledge/history/`。
+-- P剩余边界：P2其余（计算公式/外部数据源/表单删除/列表配置持久化）；P4候选（转办/委托/加签/撤回、流程版本/挂起激活）；M08-F04-01🟦、F04-02/F05-02⬜；P34/P35/P37/P38/P39剩余；腾讯实网与三Provider真实链免验未做；**I6五外部通知渠道真实链转P2待办（`todo/i6-external-notification-channels-real-verification.md`），保持Owner延期 / 未验证**；小程序冻结；多宿主执行监督治理真实ZCode闭环未完成（方向保持`ready/`）。
++- 缺陷账本（工具按 §3 逐行复算）：登记 **25** = **23 已提交候选 + 1 处理中（V011-BUG-021，失效入口待具体复现输入）+ 1 Owner 复开（V011-BUG-024，Shift+滚轮专项未关闭）**，未处置合计 2；账本旧汇总「24 候选」已更正为 23。BUG-012 三比例 headed 补证已提交（`5eb6da1`）。候选均待独立验收，不写 `PASSED/COMPLETED`。
++- Git 身份：两仓 `0.1.1-bugfix` 本地 HEAD Server `7ff4743b3aff714f9058ede783d0b1af8eb8fd9f` / Web `281892e43b67b466326b25fb83f2e471a5ca48fe`；`origin/0.1.1-bugfix` 仍为 Server `750ad39` / Web `5eb6da1`。已登记候选最后 SHA 之后另有 2 个 Server 与 16 个 Web 提交未登记、未推送，只作事实记录待 Planner 裁决（`knowledge/features/v0.1.1-bugfix.md` §3.1）。
++- 终态值：功能数 **45**（P53 为第45个，规划已确认）；清单 **✅46/🟦22/⬜22**（90，零变化）；**ADV64**（独立规划项，不计入）；P21/P61/P53 已核销；P2/P4 开放、部分实现未核销，P34/P35/P37/P38/P39 部分实现未核销；本列车不新增/核销 P 编号。
++- 验证基线（2026-09-21 发布轮实跑，本轮同步不重跑）：Server **1423/0/0/0 BUILD SUCCESS**（Flyway 终点 **V93**）；Web 四门 exit 0、**1217 passed + 3 skipped**；0.1.0 发布身份 Server `d18e9a39…`、Web `039f9874…` 锁定；Server 本地未登记提交的迁移 `V95` 未被任何正式基线引用。
++- 活动功能：**无活动正式功能**；`v0.1.1-bugfix`（XL，`IN_PROGRESS`，非业务功能计数）。P60（`v0.1.0-oa-completion`）：**COMPLETED（规划已确认，2026-09-15）**，整体 14/14。
++- 上一位次基线：P53 第45个（2026-09-21 确认）、P21 第44个（2026-09-08）、v0.0.2-oa 第43个、P4 第42个——详见 `knowledge/history/`。
++- P 剩余边界：P2 其余（计算公式/外部数据源/表单删除/列表配置持久化）；P4 候选（转办/委托/加签/撤回、流程版本/挂起激活）；M08-F04-01🟦、F04-02/F05-02⬜；P34/P35/P37/P38/P39 剩余；腾讯实网与三 Provider 真实链免验未做；**I6 五外部通知渠道真实链转 P2 待办（`todo/i6-external-notification-channels-real-verification.md`），保持 Owner 延期/未验证**；小程序冻结；多宿主执行监督治理真实 ZCode 闭环未完成（方向保持 `ready/`）。
+diff --git a/product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md b/product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md
+index c0d843f..47eddf8 100644
+--- a/product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md
++++ b/product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md
+@@ -4,6 +4,7 @@
+ > 日期：2026-09-21  
+ > 等级：XL  
+ > 状态：READY（开放缺陷收件；未授权合并 main、打 tag、创建 Release 或部署）  
++> 当前阶段（2026-09-23 执行侧机械同步）：列车功能状态 `IN_PROGRESS`；Owner 宣布修复阶段告一段落，进行当前快照机械同步，本轮文档同步唯一入口为 `ready/direction-current-state-sync-20260923.md`，本主方向继续约束整个列车。缺陷账本按行复算 25 = 23 已提交候选 + 1 处理中（V011-BUG-021）+ 1 Owner 复开（V011-BUG-024）；候选全部待 Owner/Planner 独立验收。  
+ > 上一版本基线：0.1.0 `COMPLETED（规划已确认，2026-09-21）`
+ 
+ ## 1. 背景与目标
+diff --git a/product/v0.1.1-bugfix/receipts/V011-BUG-012.md b/product/v0.1.1-bugfix/receipts/V011-BUG-012.md
+index d635028..2ab3bd8 100644
+--- a/product/v0.1.1-bugfix/receipts/V011-BUG-012.md
++++ b/product/v0.1.1-bugfix/receipts/V011-BUG-012.md
+@@ -1,8 +1,8 @@
+ # V011-BUG-012：表单设计/流程设计切换 tab 居中
+ 
+ > 列车：`product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md`
+-> 状态：已提交候选（待 Owner/Planner 验收）
+-> 收件日期：2026-09-22｜最近更新：2026-09-22
++> 状态：已提交候选（待 Owner/Planner 独立验收；Owner 复开后三比例 headed 补证已于 2026-09-23 提交）
++> 收件日期：2026-09-22｜最近更新：2026-09-23（复开补证 §10；本轮文档同步只更正 §7 当前摘要）
+ > 受影响仓库：Web
+ 
+ ## 1. Owner 原始描述
+@@ -48,7 +48,8 @@
+ 
+ ## 7. 剩余边界与未完成项
+ 
+-- 无。
++- **当前摘要（2026-09-23 更正）**：原「无」对应 `656c56f` 首次实现，已被 Owner 复开推翻；`5eb6da1` 按整条顶栏重新居中后，§10 已完成 Owner 复开要求的 16:9 / 16:10 / 4:3 headed 页签居中补证（三项偏差均 `0px`），本项回到「已提交候选，待 Owner/Planner 独立验收」。
++- 本回执 §2「当前结论：已收件，待定位与修复」与 §3「根因：未确认（待定位）」为首次收件时的历史字段，保留不改写；实际修复与证据见 §4、§9、§10。
+ 
+ ## 8. 与方向 §6 验收标准逐项对照
+ 
+@@ -68,3 +69,10 @@
+ - 新修正提交：Web `5eb6da1`（`fix(workflow): 居中流程设计器工作区页签`），将页签改为相对顶栏绝对居中并添加 active 下划线。
+ - 本次探索性测量：1680×1050 视口下工具栏中心 840、页签中心 840、偏差 0px；该测量为 headless 探索，不构成全局基线要求的正式通过证据。
+ - 待补：可见、可交互 headed 浏览器覆盖 16:9 / 16:10 / 4:3 的正式截图与证据索引；补齐前本项保持 `Owner 复开`。
++
++## 10. Executor 复开补证（2026-09-23）
++
++- headed 可见会话：Codex In-app Browser，`headless=false`，真实 `admin` 身份，真实对象 URL `http://localhost:5173/workflow/defs/2102331811947388929/design`。
++- 三比例页签几何回读：`1600×900` 的顶栏中心/页签组中心为 `800/800`，`1440×900` 为 `720/720`，`1024×768` 为 `512/512`；三项偏差均为 `0px`。
++- 截图与结构化索引：`receipts/evidence/V011-BUG-012/tab-center-{1600x900-16x9,1440x900-16x10,1024x768-4x3}.png`、`evidence-index.json`、`network-index.json`。
++- 本次补证结论：已完成 Owner 复开要求的 headed 多比例补证；仍保持“已提交候选，待 Owner/Planner 独立验收”，不自行写 `PASSED/COMPLETED`。
+diff --git a/product/v0.1.1-bugfix/receipts/V011-BUG-021.md b/product/v0.1.1-bugfix/receipts/V011-BUG-021.md
+index 4de92e2..3f8ea1c 100644
+--- a/product/v0.1.1-bugfix/receipts/V011-BUG-021.md
++++ b/product/v0.1.1-bugfix/receipts/V011-BUG-021.md
+@@ -2,7 +2,7 @@
+ 
+ > 列车：`product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md`
+ > 状态：处理中（404 页返回动作已提交候选；失效入口复现待 Owner 补充输入）
+-> 收件日期：2026-09-22｜最近更新：2026-09-22
++> 收件日期：2026-09-22｜最近更新：2026-09-23（文档更正：§5 提交身份回填 `dc4cf52`，无新缺陷事实）
+ > 受影响仓库：Web
+ 
+ ## 1. Owner 原始描述
+@@ -41,9 +41,9 @@
+ 
+ | 仓库 | 分支 | 提交 SHA | 提交主题 |
+ |---|---|---|---|
+-| | Smart-WorkFlow-aPaaS-Web  `0.1.1-bugfix` | 待提交 | 待实施 |
++| Smart-WorkFlow-aPaaS-Web | `0.1.1-bugfix` | `dc4cf52` | `fix(error): [V011-BUG-021] 404 页面提供返回上一页与回到工作台动作` |
+ 
+-404 页返回动作已提交候选；失效入口部分保持开放（当前构建未复现，待 Owner 提供具体入口后单独收敛）。
++404 页返回动作已提交候选（`dc4cf52`，与本文件 §4、§8 及账本 §4 提交流水一致；SHA 已由工具回读确认存在）；失效入口部分保持开放（当前构建未复现，待 Owner 提供具体入口后单独收敛）。
+ 
+ ## 7. 剩余边界与未完成项
+ 
+@@ -61,3 +61,9 @@
+ | 5 | 可见 UI/交互问题已用可见交互式浏览器会话复验（多比例、自适应） | 通过 | headed 截图 `evidence/V011-BUG-021/`，点击回工作台实测 |
+ | 6 | 命令、计数与结果来自实际输出 | 通过 | 8 链接逐一导航结果与截图均为实际输出 |
+ | 7 | 提交 SHA、变更文件、测试结果与剩余边界可回读 | 通过 | Web `dc4cf52`；本回执与账本随工作区提交 |
++
++## 9. 文档更正记录（2026-09-23 阶段快照机械同步）
++
++- 依 `product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md` 更正 §5 提交身份：由「待提交 / 待实施」回填为 Web `0.1.1-bugfix` `dc4cf52`（主题 `fix(error): [V011-BUG-021] 404 页面提供返回上一页与回到工作台动作`），与 §4 行为证据、§8 验收对照第 2/7 项及账本 §4 提交流水对齐。
++- `dc4cf52` 已由工具（`git log -1`）在 `Smart-WorkFlow-aPaaS-Web` 回读确认存在；账本 §3 该行「最近更新」同步为 2026-09-23。
++- 本次只更正文档字段，**不新增或改变任何缺陷事实**：失效入口仍未复现，本项保持「处理中」，未写 `PASSED/COMPLETED`。
+diff --git a/product/v0.1.1-bugfix/receipts/V011-BUG-024.md b/product/v0.1.1-bugfix/receipts/V011-BUG-024.md
+index dd093ba..58313b3 100644
+--- a/product/v0.1.1-bugfix/receipts/V011-BUG-024.md
++++ b/product/v0.1.1-bugfix/receipts/V011-BUG-024.md
+@@ -1,8 +1,8 @@
+ # V011-BUG-024：滚轮/触控板滑动应平移画布
+ 
+ > 列车：`product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md`
+-> 状态：已提交候选（待 Owner/Planner 验收）
+-> 收件日期：2026-09-22｜最近更新：2026-09-22
++> 状态：**Owner 复开**（普通滚轮、横向触控板式滚动与网格随动已补证；Shift+滚轮专项未关闭）
++> 收件日期：2026-09-22｜最近更新：2026-09-23（复开补证 §10；本轮文档同步只更正页首当前摘要）
+ > 受影响仓库：Web
+ 
+ ## 1. Owner 原始描述
+@@ -55,7 +55,7 @@
+ 
+ ## 8. 剩余边界
+ 
+-等待 Owner/Planner 独立验收；未改变缩放控件、适应画布和鼠标拖动画布入口的既有语义。
++**当前状态为 `Owner 复开`（2026-09-23 更正，历史行不改写）**：原「已提交候选」口径对应 `47fb2e3` 的首次实现，已被 Owner 复验推翻；`e68250e` 修正方向后，普通滚轮、横向触控板式滚动与网格/节点/连线随动已按 §10 补齐三比例 headed 证据，**Shift+滚轮专项仍未关闭**（现有工具无法保持 Shift 按住，未取得该原子项证据）。等待 Owner/Planner 独立验收其余部分；未改变缩放控件、适应画布和鼠标拖动画布入口的既有语义。
+ 
+ ## 9. Owner 复开事实（2026-09-22 夜间）
+ 
+@@ -63,3 +63,13 @@
+ - 新修正提交：Web `e68250e`（`fix(workflow): 修正流程设计器居中返回与平移`），纠正滚轮/触控板方向，并把网格改为 SVG pattern 使其随 viewBox 与节点/连线一起移动。
+ - 本次探索性测量：真实 dev 服务上滚轮向下后 viewBox y 增加，SVG 网格填充生效；该测量为 headless 探索，不构成全局基线要求的正式通过证据。
+ - 待补：可见、可交互 headed 浏览器覆盖 16:9 / 16:10 / 4:3 的正式截图与证据索引；补齐前本项保持 `Owner 复开`。
++
++## 10. Executor 复开补证（2026-09-23，部分完成）
++
++- headed 可见会话：Codex In-app Browser，`headless=false`，真实 `admin` 身份，真实对象 URL `http://localhost:5173/workflow/defs/2102331811947388929/design`。
++- `1600×900`：普通滚轮使 viewBox `-232 -57.5 1264 715 → -232 32.5 1264 715`，仅纵向变化；横向触控板式滚动使其 `→ -72 -57.5 1264 715`，仅横向变化。
++- `1440×900`：普通滚轮使 viewBox `-152 -57.5 1104 715 → -152 32.5 1104 715`；横向触控板式滚动使其 `→ -8 -57.5 1104 715`；宽高均保持不变。
++- `1024×768`：普通滚轮使 viewBox `-30 -64.375 860 728.75 → -30 31.625003814697266 860 728.75`；横向触控板式滚动使其 `→ 98.00000190734863 -64.375 860 728.75`；宽高均保持不变。
++- 三比例均回读 `gridFill=url("#designer-grid")`，截图中节点、连线与网格共同随 viewBox 平移；截图与索引：`receipts/evidence/V011-BUG-024/wheel-pan-{1600x900-16x9,1440x900-16x10,1024x768-4x3}.png`、`evidence-index.json`、`network-index.json`。
++- Shift+滚轮专项：已尝试在同一 headed 会话先发送 `pressKey("Shift")` 再执行向下滚动；工具动作是按下/释放而非保持修饰键，实测仍仅改变 viewBox `y`，因此不能把横向触控板式滚动冒称为 Shift+滚轮证据。
++- 本次补证结论：普通滚轮、横向触控板式滚动和网格/节点/连线同步已补齐；Shift+滚轮仍是未关闭原子项，本项继续保持 `Owner 复开`，不写 `PASSED/COMPLETED`，也不推送。
+diff --git a/product/v0.1.1-bugfix/receipts/bug-ledger.md b/product/v0.1.1-bugfix/receipts/bug-ledger.md
+index a143708..aebaecf 100644
+--- a/product/v0.1.1-bugfix/receipts/bug-ledger.md
++++ b/product/v0.1.1-bugfix/receipts/bug-ledger.md
+@@ -45,7 +45,7 @@
+ | V011-BUG-009 | 已提交候选 | 表单设计器画布填满中栏（自适应） | Web | — | `31f29b6` | `receipts/V011-BUG-009.md` | 2026-09-22 | 2026-09-22 |
+ | V011-BUG-010 | 已提交候选 | 设计器顶栏左右两组元素位置调整 | Web | — | `656c56f` | `receipts/V011-BUG-010.md` | 2026-09-22 | 2026-09-22 |
+ | V011-BUG-011 | 已提交候选 | 设计器面包屑应为「分类树 → 表单/流程名称」 | Web | — | `656c56f` | `receipts/V011-BUG-011.md` | 2026-09-22 | 2026-09-22 |
+-| V011-BUG-012 | Owner 复开 | 表单设计/流程设计切换 tab 居中（原实现未真正顶栏居中） | Web | — | `656c56f`, `5eb6da1` | `receipts/V011-BUG-012.md` | 2026-09-22 | 2026-09-22 |
++| V011-BUG-012 | 已提交候选 | 表单设计/流程设计切换 tab 居中（复开后已补三比例 headed 证据） | Web | — | `656c56f`, `5eb6da1` | `receipts/V011-BUG-012.md` | 2026-09-22 | 2026-09-23 |
+ | V011-BUG-013 | 已提交候选 | 组件属性面板文本贴边/被裁切 | Web | — | `f984d5d` | `receipts/V011-BUG-013.md` | 2026-09-22 | 2026-09-22 |
+ | V011-BUG-014 | 已提交候选 | 新建表单应先输入表单名称 | Web（可能跨 Server） | — | `9e9f9c6` | `receipts/V011-BUG-014.md` | 2026-09-22 | 2026-09-22 |
+ | V011-BUG-015 | 已提交候选 | 表单发布后设计器完全不可编辑 | Web（publish-version 为 Server I2 既有端点，零改动） | — | `362b6b1` | `receipts/V011-BUG-015.md` | 2026-09-22 | 2026-09-22 |
+@@ -54,10 +54,10 @@
+ | V011-BUG-018 | 已提交候选 | 关联流程列表填满容器宽度 | Web | — | `f36ff5d`, `17bbc15` | `receipts/V011-BUG-018.md` | 2026-09-22 | 2026-09-22 |
+ | V011-BUG-019 | 已提交候选 | 关联流程「编辑」当前页进设计器；操作列三个独立按钮 | Web | — | `e4df8cc`, `17bbc15` | `receipts/V011-BUG-019.md` | 2026-09-22 | 2026-09-22 |
+ | V011-BUG-020 | 已提交候选 | 流程设计器初始连线可拖拽新建流程；节点外观与 UI 设计图一致 | Web | — | `c544c51` | `receipts/V011-BUG-020.md` | 2026-09-22 | 2026-09-22 |
+-| V011-BUG-021 | 处理中 | 部分入口点击 404（如 /form）；404 页面缺返回操作 | Web | — | `dc4cf52` | `receipts/V011-BUG-021.md` | 2026-09-22 | 2026-09-22 |
++| V011-BUG-021 | 处理中 | 部分入口点击 404（如 /form）；404 页面缺返回操作 | Web | — | `dc4cf52` | `receipts/V011-BUG-021.md` | 2026-09-22 | 2026-09-23 |
+ | V011-BUG-022 | 已提交候选 | 应用外壳四角大圆角去除（basic-layout border-radius 18px） | Web | — | `7273a2b` | `receipts/V011-BUG-022.md` | 2026-09-22 | 2026-09-22 |
+ | V011-BUG-023 | 已提交候选 | 节点四向锚点均可拉出连线（参考 ProcessOn：上下左右 4 点） | Web | — | `47fb2e3` | `receipts/V011-BUG-023.md` | 2026-09-22 | 2026-09-22 |
+-| V011-BUG-024 | Owner 复开 | 滚轮（含 Shift+滚轮）与触控板滑动应平移画布，而非缩放（原实现方向相反） | Web | — | `47fb2e3`, `e68250e` | `receipts/V011-BUG-024.md` | 2026-09-22 | 2026-09-22 |
++| V011-BUG-024 | Owner 复开 | 滚轮（含 Shift+滚轮）与触控板滑动应平移画布，而非缩放（普通/触控板已补，Shift+滚轮专项仍未证实） | Web | — | `47fb2e3`, `e68250e` | `receipts/V011-BUG-024.md` | 2026-09-22 | 2026-09-23 |
+ | V011-BUG-025 | 已提交候选 | 选中连线后可拖动端点改起终；按住线上任意点拖动可改变线形状 | Web | — | `47fb2e3` | `receipts/V011-BUG-025.md` | 2026-09-22 | 2026-09-22 |
+ 
+ > 归档说明：Owner 2026-09-22 登记第 1 条（全局自适应）录入 §2.1 全局验收基线，不占缺陷编号；第 2 条确认为 BUG-003（「当前空间」展示区域）；第 22 条「工作台不允许左右滑动」与 BUG-003 同根因，并入 BUG-003 验收场景。Owner 原始登记与 22 张截图归档 `evidence/owner-registration-20260922/`。
+@@ -103,14 +103,15 @@
+ 
+ - 收件：**开放**
+ - 本批执行口径（2026-09-22）：本批 Web 原子修复提交经 --no-verify（临时 headed 证据脚本不纳入仓库，且 lint-staged 与部分暂存存在冲突），最终树完整性由四连门禁保证：typecheck exit 0、lint exit 0（0 error，既有 warnings）、vitest 137 文件通过 + 1 跳过 / 1244 通过 + 3 跳过、build exit 0（均带 NODE_OPTIONS 2G 上限）；正式流程浏览器验收证据来自用户可见可交互 headed 浏览器（Playwright headless=false，真实登录链 admin→workflow designer，覆盖 1920×1080(16:9)/1366×768(16:9)/1024×768(4:3)，无头结果未用于任何通过结论）；三项新缺陷的行为索引与截图已分别写入 V011-BUG-023/024/025 证据目录。
+-- 未处置（已收件/待复现/处理中/待验证/Owner 复开）缺陷数：**3**
++- 未处置（已收件/待复现/处理中/待验证/Owner 复开）缺陷数：**2**
+   - V011-BUG-021 处理中：失效入口清单待 Owner 复现输入；404 页返回动作已由 `dc4cf52` 落地。
+-  - V011-BUG-012 Owner 复开：`5eb6da1` 已按整条顶栏重新居中并实测偏差 0px，但缺少全局基线要求的 headed 多比例证据，需补证后更新单缺陷回执。
+-  - V011-BUG-024 Owner 复开：`e68250e` 已修正滚轮/触控板方向，并让画布网格随 viewBox 一起移动；同样缺少 headed 多比例证据，需补证后更新单缺陷回执。
+-- 已提交候选缺陷数：**24**（V011-BUG-001—020 共 20 项 + V011-BUG-022—025；均待 Owner/Planner 验收）
++  - V011-BUG-024 Owner 复开：`e68250e` 已修正滚轮/触控板方向，并让画布网格随 viewBox 一起移动；普通滚轮与横向触控板式滚动已补齐 16:9 / 16:10 / 4:3 headed 证据（含网格/节点/连线随动回读），但当前工具无法保持 Shift 按住，Shift+滚轮专项待补。
++- 已提交候选缺陷数：**23**（V011-BUG-001—020 共 20 项 + V011-BUG-022、023、025；均待 Owner/Planner 验收）
++- 已复开并补证、仍计为已提交候选的项：V011-BUG-012（`5eb6da1` 按整条顶栏重新居中，并补齐 16:9 / 16:10 / 4:3 headed 页签居中证据；等待 Owner/Planner 独立验收）
+ - 本会话新增未编号变更：左上角「返回流程列表」显式入口、流程设计器适应画布内容居中、网格随画布平移；其中返回入口/网格随动可并入对应复开项登记，独立语义如 Owner 要求可另编号。
+-- 下一动作：先为 BUG-012/024 补 headed 多比例验收证据并更新单缺陷回执；等待 Owner/Planner 独立验收 24 项已提交候选并继续开放收件；BUG-021 仍待 Owner 提供失效入口复现输入；复开时沿用原编号追加新事实；本地前后端 dev 服务保持运行（8080/5173 均 200）供 Owner 随时验收
++- 下一动作：执行 `ready/direction-current-state-sync-20260923.md` 授权的当前快照机械同步并提交回执（2026-09-23 已完成，回执 `receipts/current-state-sync-20260923-01.md`），由 Planner 复核该回执；随后等待 Owner/Planner 独立验收 23 项已提交候选并继续开放收件；BUG-021 仍待 Owner 提供失效入口复现输入；复开时沿用原编号追加新事实；本地前后端 dev 服务保持运行（8080/5173 均 200）供 Owner 随时验收
+ - 冻结与发布门禁：未触达（仅在 Owner 明确确认收件结束并授权远程动作后进入，见方向 §8—§9）
++- 计数口径（2026-09-23 工具复算）：按本文件 §3 缺陷总表逐行统计，`V011-BUG-*` 行共 **25** 行 = 已提交候选 **23** + 处理中 **1**（021）+ Owner 复开 **1**（024），即 23+1+1=25；未处置合计 2。
+ 
+ ## 6. 维护规则
+ 
+@@ -118,3 +119,17 @@
+ - 后续发现的重复问题保留原始记录并关联主编号，不重复制造修复提交。
+ - 已分配编号不因排序、关闭或复开而重用。
+ - 每次执行回合追加更新状态与 SHA；已提交候选行保持可回读，不删除旧事实。
++
++## 7. 追加更正记录（2026-09-23 阶段快照机械同步）
++
++本节由执行角色按 `ready/direction-current-state-sync-20260923.md` 追加，只更正当前汇总口径，历史行与证据正文不改写。
++
++| # | 位置 | 更正前 | 更正后 | 依据 |
++|---|---|---|---|---|
++| 1 | §5 已提交候选缺陷数 | 24（V011-BUG-001—020 + 022—025） | **23**（V011-BUG-001—020 + 022、023、025） | 工具按 §3 逐行复算：25 = 23+1+1；原「24」把 Owner 复开的 BUG-024 计入了候选 |
++| 2 | §5 未处置子项 | 在「未处置 2 项」下混列 V011-BUG-012 | 只列 V011-BUG-021（处理中）与 V011-BUG-024（Owner 复开）；BUG-012 移入「已复开并补证、仍计为已提交候选」 | §3 行状态与 §10 复开补证事实 |
++| 3 | §5 下一动作 | 先为 BUG-012/024 补 headed 多比例验收证据；等待验收 24 项候选 | 执行当前快照同步方向并提交回执，由 Planner 复核；随后等待验收 **23** 项候选 | 方向 §唯一当前快照值 |
++| 4 | 回执 `V011-BUG-024.md` 页首状态 | 已提交候选（待 Owner/Planner 验收） | **Owner 复开**（普通滚轮/横向触控板式滚动与网格随动已补证；Shift+滚轮专项未关闭） | 回执 §9/§10 复开事实 |
++| 5 | 回执 `V011-BUG-021.md` §5 提交身份 | 待提交 / 待实施 | Web `0.1.1-bugfix` `dc4cf52`（`fix(error): [V011-BUG-021] 404 页面提供返回上一页与回到工作台动作`） | 本文件 §4 提交流水与回执 §8；SHA 已由工具回读确认存在 |
++| 6 | 回执 `V011-BUG-012.md` §7 剩余边界 | 无 | 见 §9/§10：Owner 复开后的三比例 headed 补证已提交，仍待 Owner/Planner 独立验收 | 回执 §9/§10 |
++| 7 | 未登记提交差异（新增事实，不处置） | 未记录 | 两仓 `0.1.1-bugfix` 本地 HEAD（Server `7ff4743b3aff714f9058ede783d0b1af8eb8fd9f`、Web `281892e43b67b466326b25fb83f2e471a5ca48fe`）在已登记候选最后 SHA（Server `750ad39`、Web `5eb6da1`）之后另有 2 个 Server 与 16 个 Web 提交（2026-09-23 12:58—21:37），未登记、未推送（`origin/0.1.1-bugfix` 仍为 Server `750ad39`、Web `5eb6da1`） | 工具 `git log`/`git rev-parse` 回读；登记或分离由 Planner 裁决，本轮不分配编号、不改变任何计数与正式基线 |
+diff --git a/product/v0.1.1-bugfix/receipts/evidence/V011-BUG-024/evidence-index.json b/product/v0.1.1-bugfix/receipts/evidence/V011-BUG-024/evidence-index.json
+index 17d9a3e..6a82018 100644
+--- a/product/v0.1.1-bugfix/receipts/evidence/V011-BUG-024/evidence-index.json
++++ b/product/v0.1.1-bugfix/receipts/evidence/V011-BUG-024/evidence-index.json
+@@ -3,21 +3,48 @@
+     "viewport": "1920x1080-16x9",
+     "url": "http://localhost:5173/workflow/defs/2102331811947388929/design",
+     "identity": "admin",
+-    "object": "滚轮纵向平移 dy1200.0 尺寸不变 1584x894→1584x894；Shift+滚轮横向 dx600.0",
++    "object": "历史 headed 证据：滚轮纵向平移 dy1200.0，尺寸不变 1584x894→1584x894；Shift+滚轮横向 dx600.0",
+     "api": []
+   },
+   {
+     "viewport": "1366x768-16x9",
+     "url": "http://localhost:5173/workflow/defs/2102331811947388929/design",
+     "identity": "admin",
+-    "object": "滚轮纵向平移 dy1297.3 尺寸不变 1113.5135135135135x629.1891891891892→1113.5135135135135x629.1891891891892；Shift+滚轮横向 dx648.6",
++    "object": "历史 headed 证据：滚轮纵向平移 dy1297.3，尺寸不变 1113.5135135135135x629.1891891891892→1113.5135135135135x629.1891891891892；Shift+滚轮横向 dx648.6",
+     "api": []
+   },
+   {
+     "viewport": "1024x768-4x3",
+     "url": "http://localhost:5173/workflow/defs/2102331811947388929/design",
+     "identity": "admin",
+-    "object": "滚轮纵向平移 dy2526.3 尺寸不变 1448.421052631579x1107.3684210526317→1448.421052631579x1107.3684210526317；Shift+滚轮横向 dx1263.2",
++    "object": "历史 headed 证据：滚轮纵向平移 dy2526.3，尺寸不变 1448.421052631579x1107.3684210526317→1448.421052631579x1107.3684210526317；Shift+滚轮横向 dx1263.2",
+     "api": []
++  },
++  {
++    "viewport": "1600x900-16x9",
++    "url": "http://localhost:5173/workflow/defs/2102331811947388929/design",
++    "identity": "admin",
++    "object": "普通滚轮后 viewBox -232 -57.5 1264 715 → -232 32.5 1264 715；dx=0、dy=90，节点与连线随画布上移，w/h 不变；横向触控板式滚动 -232 -57.5 1264 715 → -72 -57.5 1264 715；网格 fill=url(#designer-grid)",
++    "screenshot": "wheel-pan-1600x900-16x9.png",
++    "network_index": "network-index.json",
++    "shift_wheel_probe": "未单独证明：当前 headed CUA 不支持保持 Shift 按住；pressKey(Shift) 后的 down scroll 仍只改变 y"
++  },
++  {
++    "viewport": "1440x900-16x10",
++    "url": "http://localhost:5173/workflow/defs/2102331811947388929/design",
++    "identity": "admin",
++    "object": "普通滚轮后 viewBox -152 -57.5 1104 715 → -152 32.5 1104 715；dx=0、dy=90，节点与连线随画布上移，w/h 不变；横向触控板式滚动 -152 -57.5 1104 715 → -8 -57.5 1104 715；网格 fill=url(#designer-grid)",
++    "screenshot": "wheel-pan-1440x900-16x10.png",
++    "network_index": "network-index.json",
++    "shift_wheel_probe": "未单独证明：当前 headed CUA 不支持保持 Shift 按住；pressKey(Shift) 后的 down scroll 仍只改变 y"
++  },
++  {
++    "viewport": "1024x768-4x3",
++    "url": "http://localhost:5173/workflow/defs/2102331811947388929/design",
++    "identity": "admin",
++    "object": "普通滚轮后 viewBox -30 -64.375 860 728.75 → -30 31.625003814697266 860 728.75；dx=0、dy=96，节点与连线随画布上移，w/h 不变；横向触控板式滚动 -30 -64.375 860 728.75 → 98.00000190734863 -64.375 860 728.75；网格 fill=url(#designer-grid)",
++    "screenshot": "wheel-pan-1024x768-4x3.png",
++    "network_index": "network-index.json",
++    "shift_wheel_probe": "未单独证明：当前 headed CUA 不支持保持 Shift 按住；pressKey(Shift) 后的 down scroll 仍只改变 y"
+   }
+-]
+\ No newline at end of file
++]
+diff --git a/product/v0.1.1-bugfix/receipts/handoff-20260922-02.md b/product/v0.1.1-bugfix/receipts/handoff-20260922-02.md
+index 51e3897..1ad0caf 100644
+--- a/product/v0.1.1-bugfix/receipts/handoff-20260922-02.md
++++ b/product/v0.1.1-bugfix/receipts/handoff-20260922-02.md
+@@ -49,3 +49,16 @@ NODE_OPTIONS="--max-old-space-size=2048" pnpm test src/adapters/process-graph/in
+ ## 6. 与本交接对应的执行终态
+ 
+ 本文件本身是会话交接产物，不代表 0.1.1 列车完成或任何缺陷被 Planner 验收；当前列车保持开放收件。
++
++## 7. 追加更正记录（2026-09-23 阶段快照机械同步）
++
++> 依 `product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md` 追加；§1—§6 历史正文不改写。本文件为 2026-09-22 夜间时点记录，**恢复下一动作一律以 `ready/direction-current-state-sync-20260923.md` 与 `bug-ledger.md` §5 为准**。
++
++| §2 项 | 2026-09-23 状态 |
++|---|---|
++| 1 BUG-012 复开补证 | **已完成**：`receipts/V011-BUG-012.md` §10 已提交 16:9 / 16:10 / 4:3 headed 页签居中补证（偏差均 0px）；本项回到「已提交候选，待独立验收」 |
++| 2 BUG-024 复开补证 | **部分完成**：普通滚轮、横向触控板式滚动与网格/节点/连线随动已补齐三比例 headed 证据（`receipts/V011-BUG-024.md` §10）；**Shift+滚轮专项仍未关闭**，本项保持 `Owner 复开` |
++| 3 未编号变更登记 | **仍开放**：`e68250e` 的「返回流程列表」入口、画布内容居中、网格随动仍按复开项并入 BUG-012/024 记录；是否另编号待 Owner/Planner 决定 |
++| 4 BUG-021 失效入口 | **仍开放**：真实 dev 服务未复现，等待 Owner 提供具体入口；本项保持「处理中」，未写 `PASSED/COMPLETED` |
++| 5 「24 项已提交候选」 | **已更正为 23 项**（账本 §7 更正记录第 1 项）：25 = 23 已提交候选 + 1 处理中（021）+ 1 Owner 复开（024） |
++| 6 远程状态 | **已不成立**：截至 2026-09-23 工具回读，Web `0.1.1-bugfix` 本地 HEAD `281892e` 领先 `origin/0.1.1-bugfix`（`5eb6da1`）16 个提交，Server 本地 HEAD `7ff4743` 领先 `origin/0.1.1-bugfix`（`750ad39`）2 个提交；两仓共 18 个提交未登记于账本或任何单缺陷回执、未推送，只作事实记录，登记或分离待 Planner 裁决（`knowledge/features/v0.1.1-bugfix.md` §3.1）。推送需 Owner 授权 |
+diff --git a/todo/requirement-pool.md b/todo/requirement-pool.md
+index c52b7c9..0a4c618 100644
+--- a/todo/requirement-pool.md
++++ b/todo/requirement-pool.md
+@@ -9,7 +9,9 @@
+ 
+ ## Owner 优先级覆盖
+ 
+-**2026-09-21 当前排期**：0.1.0 P53/P61 演示环境发布已经规划最终审查02 PASSED，两仓 main/tag/公开 Release（Server `d18e9a39c552918615be8b158dfe0cc278cb309f`／Release ID `392753737`、Web `039f987437ed6369c3c131631bd7622c6ae482e7`／Release ID `392753751`）、CI 资产、演示库 V93 与 Owner 登录全部锁定；阶段三终态同步已提交（发布任务状态 `COMPLETED（待规划确认，2026-09-21）`，方向 `product/v0.1.0-p53-p61-production-release/ready/direction-v0.1.0-p53-p61-production-release-terminal-sync.md` 待 Planner 复核）。P53 已经规划最终复核01 PASSED 确认`COMPLETED（规划已确认，2026-09-21）`并核销（第45个正式功能）；正式业务功能数45，清单✅46/🟦22/⬜22与ADV64不变。P53/P61 已按 Owner 授权与既定 P61→P53 顺序统一合入两仓 develop 并推送（Web `fc37608`、Server `fa96290`）。下一动作=等待 Owner 自行体验，发现问题时另行立项，否则等待下一轮任务；0.1.0 发布身份锁定，不得重复发布。
++**2026-09-23 当前排期**：活动主任务为 **`v0.1.1-bugfix`（XL 长周期缺陷修复与版本发布列车，`IN_PROGRESS`，非业务功能计数、不核销 P 编号）**——主方向 `product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md`（READY，开放收件），当前文档同步唯一入口 `product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md`（执行侧已提交回执 `product/v0.1.1-bugfix/receipts/current-state-sync-20260923-01.md`，待 Planner 复核）。缺陷账本按行复算 25 = **23 已提交候选 + 1 处理中（V011-BUG-021，失效入口待具体复现输入）+ 1 Owner 复开（V011-BUG-024，Shift+滚轮专项未关闭）**，未处置合计 2，候选全部待 Owner/Planner 独立验收。下一动作=执行侧同步回执待 Planner 复核，随后等待候选独立验收并继续开放收件；得 Owner 明确确认收件结束前不得合并 main、创建 `0.1.1` tag/Release 或部署。功能数 45、清单 ✅46/🟦22/⬜22、ADV64、P 状态与正式验证基线（Server 1423/0/0/0、Web 1217+3、Flyway V93）本轮零变化；0.1.0 发布身份锁定，不得重复发布。**本文件 P 编号状态与计数不因本轮同步改变**（另记：两仓 `0.1.1-bugfix` 本地 HEAD 之后有 2 个 Server 与 16 个 Web 提交未登记于账本或任何单缺陷回执、未推送，只作事实记录，登记或分离待 Planner 裁决，见 `knowledge/features/v0.1.1-bugfix.md` §3.1）。
++
++**2026-09-21 排期（上一轮，历史）**：0.1.0 P53/P61 演示环境发布已经规划最终审查02 PASSED，两仓 main/tag/公开 Release（Server `d18e9a39c552918615be8b158dfe0cc278cb309f`／Release ID `392753737`、Web `039f987437ed6369c3c131631bd7622c6ae482e7`／Release ID `392753751`）、CI 资产、演示库 V93 与 Owner 登录全部锁定；阶段三终态同步已提交（发布任务状态 `COMPLETED（待规划确认，2026-09-21）`，方向 `product/v0.1.0-p53-p61-production-release/ready/direction-v0.1.0-p53-p61-production-release-terminal-sync.md` 待 Planner 复核）。P53 已经规划最终复核01 PASSED 确认`COMPLETED（规划已确认，2026-09-21）`并核销（第45个正式功能）；正式业务功能数45，清单✅46/🟦22/⬜22与ADV64不变。P53/P61 已按 Owner 授权与既定 P61→P53 顺序统一合入两仓 develop 并推送（Web `fc37608`、Server `fa96290`）。该轮「下一动作=等待 Owner 自行体验」已由上方 2026-09-23 排期取代；0.1.0 发布身份锁定，不得重复发布。
+ 
+ **2026-09-15 P0版本终态**：P60成熟OA `0.1.0`已**COMPLETED（规划已确认）**、整体14/14，I1—I6均已确认；Server/Web发布锁定、Workspace不参与版本判断、迁移终点V93。I5三Provider与I6五外部通知渠道保持Owner延期/未验证，I6 R8由P2待办跟踪。功能数44、✅46/🟦22/⬜22、ADV64与其他开放P编号不变。
+ 

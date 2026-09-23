@@ -1,0 +1,22 @@
+03 轮当前入口矩阵（文件 / 行号 / 分类 / 字段 / 最终值）
+assert_at=2026-09-23T22:55:24+0800
+分类说明：当前=构成当前恢复/动作入口；历史=明确标注历史、仅供追溯，不构成当前动作。
+
+| 文件 | 行 | 分类 | 字段 | 最终值/动作 |
+|---|---|---|---|---|
+| knowledge/current-status.md | 3 | 当前 | 页首最新同步点/恢复入口 | 补正入口=planning-execution-prompt-current-state-sync-20260923-01.md；补正回执 03 待 Planner 复核；01/02 为历史 |
+| knowledge/current-status.md | 8 | 当前 | 未登记提交差异 | 已登记基点至本地 HEAD 之间：Server 750ad39..7ff4743 两条、Web 5eb6da1..281892e 十六条 |
+| knowledge/current-status.md | 46 | 当前 | 唯一下一动作 | 待 Planner 复核补正回执 03；不重验 G2—G4 |
+| knowledge/current-status.md | 73 | 当前 | 新会话启动提示词·下一动作 | 待 Planner 复核补正回执 03 |
+| knowledge/session-handoff.md | 3 | 当前 | 页首同步点/恢复入口 | 补正入口=prompt01；补正回执 03 待复核；01/02 为历史 |
+| knowledge/session-handoff.md | 22 | 当前 | 唯一下一动作 | 待 Planner 复核补正回执 03；唯一当前补正入口=prompt01 |
+| knowledge/session-handoff.md | 67 | 当前 | v0.1.1 列车任务指针 | 补正入口=prompt01；补正回执 03（01/02 为历史）；下一动作=待复核 03 |
+| knowledge/session-handoff.md | 69 | 当前 | P60 任务指针 | 无活动入口；唯一当前主任务=v0.1.1 列车；P53「提示 07」明确标注为历史指针、不构成当前入口 |
+| knowledge/session-handoff.md | 5 | 历史 | 上一同步点段 | 保留 2026-09-21 提交时口径（已明确标注历史，不构成当前动作） |
+| knowledge/current-status.md | 26 | 历史 | 变更类型记录行 | 保留历史事件记录（行内 待规划确认 为提交时口径） |
+| memory/state.md | 5 | 当前 | 唯一下一动作 | 待 Planner 复核补正回执 03；G2—G4 已锁定 |
+| memory/handoff.md | 5 | 当前 | 进展段·补正状态 | 复核 02 仅剩 G1a/G1b；03 已提交待复核；01/02 为历史 |
+| memory/handoff.md | 13 | 当前 | 唯一下一动作 | 待 Planner 复核补正回执 03 |
+| memory/README.md | 5 | 当前 | 当前摘要指针 | 复核 02 判定 G2—G4 锁定、仅剩 G1a/G1b；03 待复核 |
+| memory/features.md | 3 | 当前 | 同步点/回执指针 | 补正回执 03 待 Planner 复核（01/02 为历史） |
+| memory/issues.md | 5 | 当前 | 0.1.1 开放项/入口指针 | 补正入口=prompt01；03 待复核；区间表述=已登记基点至本地 HEAD 之间 |

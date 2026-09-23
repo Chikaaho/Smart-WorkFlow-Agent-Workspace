@@ -1,0 +1,16 @@
+SYNC-G3 远端事实强度补正证据
+采集时间（本条命令实际执行时刻）：2026-09-23T22:40:58+0800
+命令：git -C <repo> ls-remote origin refs/heads/0.1.1-bugfix refs/heads/develop refs/heads/main
+性质：只读查询，直接向远端（origin）发起，不使用本地缓存引用；未执行 fetch/pull/push。
+
+--- server ---
+750ad391d6d2c9760f6c29aee0ea17bfbbabfe2e	refs/heads/0.1.1-bugfix
+073cb39f4bf5d60f9a9f1547d906e9ced0608669	refs/heads/develop
+d18e9a39c552918615be8b158dfe0cc278cb309f	refs/heads/main
+exit=0
+
+--- web ---
+5eb6da1edcb6599f029b578fa4abe465f38ac951	refs/heads/0.1.1-bugfix
+039f987437ed6369c3c131631bd7622c6ae482e7	refs/heads/develop
+039f987437ed6369c3c131631bd7622c6ae482e7	refs/heads/main
+exit=0

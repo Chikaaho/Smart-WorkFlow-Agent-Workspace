@@ -3,8 +3,11 @@
 > 角色：规划（Planner）  
 > 日期：2026-09-21  
 > 等级：XL  
-> 状态：READY（开放缺陷收件；未授权合并 main、打 tag、创建 Release 或部署）  
+> 方向下发状态（2026-09-21 下发时的历史值）：READY（开放缺陷收件；未授权合并 main、打 tag、创建 Release 或部署）  
+> 当前功能状态（唯一当前值）：**`IN_PROGRESS`**（2026-09-23 起）——Owner 宣布修复阶段告一段落，进行当前快照机械同步；本轮文档同步唯一入口为 `ready/direction-current-state-sync-20260923.md`，本主方向继续约束整个列车。同步回执 01 `receipts/current-state-sync-20260923-01.md` 经复核 01 `receipts/planning-review-current-state-sync-20260923-01-verifying.md` 退回 SYNC-G1—G4，补正回执 `receipts/current-state-sync-20260923-02.md` 待 Planner 复核。缺陷账本按行复算 25 = 23 已提交候选 + 1 处理中（V011-BUG-021）+ 1 Owner 复开（V011-BUG-024）；候选全部待 Owner/Planner 独立验收。  
 > 上一版本基线：0.1.0 `COMPLETED（规划已确认，2026-09-21）`
+
+> Owner最新阶段裁决（2026-09-23）：BUG-021/024确认通过，bug修复阶段结束，本轮收件关闭；当前转全部推送准备。详见 `../receipts/planning-owner-bugfix-stage-close-20260923.md`。下文原收件与阶段门禁按本次Owner裁决更新适用。
 
 ## 1. 背景与目标
 

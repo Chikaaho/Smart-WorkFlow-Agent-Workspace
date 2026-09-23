@@ -1,0 +1,51 @@
+阶段结束投影一致性断言
+assert_at=2026-09-23T23:09:54+0800
+范围：knowledge/current-status.md、knowledge/session-handoff.md、memory/*.md、bug-ledger.md
+
+== 正向：收件关闭 + 开放修复项 0 + 2 项 Owner确认通过 ==
+  knowledge/current-status.md      收件关闭/结束=7 开放修复项0=6 2项Owner确认通过=5
+  knowledge/session-handoff.md     收件关闭/结束=3 开放修复项0=3 2项Owner确认通过=3
+  memory/state.md                  收件关闭/结束=2 开放修复项0=1 2项Owner确认通过=1
+  memory/handoff.md                收件关闭/结束=2 开放修复项0=1 2项Owner确认通过=1
+  memory/features.md               收件关闭/结束=2 开放修复项0=2 2项Owner确认通过=0
+  memory/issues.md                 收件关闭/结束=1 开放修复项0=1 2项Owner确认通过=1
+  memory/README.md                 收件关闭/结束=1 开放修复项0=1 2项Owner确认通过=0
+  bug-ledger.md                    收件关闭=3 开放修复项0=2 2项Owner确认通过=2
+
+== 反向：不再保留 021/024 开放或继续收件的当前指令 ==
+  '收件保持开放' 命中: 0（期望 0）
+  '未处置合计 2' 当前命中: 0（期望 0；仅账本 §8 历史快照允许保留）
+  'V011-BUG-021 处理中' 命中: 0（期望 0）
+  '待 Planner 复核补正回执' 命中: 0（期望 0）
+
+== 下一动作一致（推送准备盘点） ==
+  knowledge/current-status.md      含 push-inventory=4
+  knowledge/session-handoff.md     含 push-inventory=3
+  memory/state.md                  含 push-inventory=1
+  memory/handoff.md                含 push-inventory=1
+  memory/issues.md                 含 push-inventory=1
+
+== 18 提交边界表述 ==
+  账本 §9 存在: 1
+  '不再作为自动重开' 命中: 3
+  来源待补表述在位: 2
+
+== V95 表述边界（不得写实测失败/已验证） ==
+  'V95' 与 '未运行测试' 同现: 8
+  说明：`grep 'V95.*实测失败'` 这类模式无法区分肯定句与否定句，故改为逐行语义判定。
+  含 V95 且提及「实测失败/已验证」的行数: 5
+  其中均为否定式（含 不得/不写/不改写成/未运行测试）: 5 行 -> knowledge/current-status.md:7, knowledge/session-handoff.md:3, memory/state.md:8, memory/issues.md:5, product/v0.1.1-bugfix/receipts/bug-ledger.md:175
+  肯定式误写（期望 0）: 0 行 -> (none)
+
+== 锁定值零变化 ==
+  1423/0/0/0                 current-status=2 memory/state=1
+  1217 passed + 3 skipped    current-status=3 memory/state=1
+  ✅46/🟦22/⬜22                current-status=7 memory/state=1
+  ADV64                      current-status=7 memory/state=1
+  V93                        current-status=11 memory/state=1
+  功能数                        current-status=14 memory/state=1
+  0.1.0 发布身份未动: 7 处
+
+== 推送未执行 ==
+  本轮 Git 写动作: 无（仅只读 rev-parse/ls-remote/rev-list/status）
+  '未执行任何 Git 写动作' 在位: 2
