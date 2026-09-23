@@ -177,3 +177,5 @@
 **推送授权**：本轮未执行任何 Git 写动作；推送需 Owner 对具体远端、分支、提交范围与顺序的明确授权。未授权前不得合并 `main`、创建 `0.1.1` tag/Release 或部署；0.1.0 发布身份锁定。
 
 **推送执行（2026-09-23，Owner 授权「提交并推送」）**：上述三处范围已按普通 fast-forward 推送完成并回读一致——根 `develop-sw` `50a710f..64ed9f1`、Server `0.1.1-bugfix` `750ad39..7ff4743`（2 条）、Web `0.1.1-bugfix` `5eb6da1..281892e`（16 条）；0.1.0 的 `main` 与 `tag 0.1.0` 回读未变，未合并 `main`、未建 tag/Release、未部署。执行回执 `receipts/push-execution-20260923-01.md`。本节归档的 18 个提交已随之进入远端分支，其授权来源仍为待补、证据适用性仍待裁决。
+
+**合并进 develop（2026-09-23，Owner 授权「开始合并bug修复进develop，然后分支切换为develop」）**：两仓 `0.1.1-bugfix` 已以保留逐缺陷提交的 `--no-ff` 普通合并进入 `develop`，工作分支已切换为 `develop`——Server 合并提交 `76dc947`（父 `073cb39f`+`7ff4743`）、Web 合并提交 `2c2ffe1`（父 `039f9874`+`281892e`）；`0.1.1-bugfix` 分支保留原位。`develop` **尚未推送**；`main` 合并、`0.1.1` tag/Release 与部署未授权、未执行。回执 `receipts/develop-merge-20260923-01.md`。

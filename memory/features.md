@@ -1,11 +1,11 @@
 # 功能摘要
 
-> 当前同步点：2026-09-23 Owner确认021/024通过，修复阶段结束、收件关闭，开放修复项0；转全部推送准备，主列车IN_PROGRESS。裁决 `product/v0.1.1-bugfix/receipts/planning-owner-bugfix-stage-close-20260923.md`。
+> 当前同步点：2026-09-23修复阶段结束，021/024 Owner确认通过；三仓推送复核PASSED；0.1.1 已合并进两仓 develop 并切换工作分支为 develop（develop 未推送），主列车IN_PROGRESS，后续发布待安排。
 > 清单当前值 **✅46/🟦22/⬜22**（90，M08 十行 🟦/⬜→✅，其余 80 行零变化）；功能数 **45**；全量双向映射见 `knowledge/feature-reconciliation-index.md`。
 
 - `v0.1.0-oa-completion`（P60，优先级P0）：**COMPLETED（规划已确认，2026-09-15）**，整体14/14；版本身份由2026-09-21发布重建（见上），迁移终点V93。
 - 0.1.0 P53/P61演示环境发布（XL，非业务功能任务）：**COMPLETED（规划已确认，2026-09-21）**；主方向与终态同步方向均归档`product/v0.1.0-p53-p61-production-release/passed/`；不增加业务功能数、不核销P编号。
-- `v0.1.1-bugfix`：2026-09-23 Owner确认021/024通过，修复阶段结束、收件关闭，开放修复项0；转全部推送准备，主列车IN_PROGRESS。裁决 `product/v0.1.1-bugfix/receipts/planning-owner-bugfix-stage-close-20260923.md`；盘点回执 `product/v0.1.1-bugfix/receipts/push-inventory-20260923-01.md`；**推送已按 Owner 授权执行并回读一致**（`product/v0.1.1-bugfix/receipts/push-execution-20260923-01.md`）。
+- `v0.1.1-bugfix`：2026-09-23修复阶段结束，021/024 Owner确认通过；三仓推送复核PASSED；0.1.1 已以普通合并进入两仓 `develop`（Server `76dc947`、Web `2c2ffe1`）并切换工作分支为 develop（`develop` 未推送）；主列车INPROGRESS，后续发布待安排。
 - P53（P0/XL）：**功能级`PASSED（2026-09-21）`、`COMPLETED（规划已确认，2026-09-21）`、已核销，第45个正式功能**；主方向与阶段三方向均已归档`product/p53-global-ui-component-layout/passed/`。
 - P61（P1/L）：**`COMPLETED（规划已确认，2026-09-20）`，已核销**；独立提交Server `742adb8`、Web `d110ed8`已随P53合入两仓develop（Web `fc37608`、Server `fa96290`）；三份方向归档`passed/`，不增加业务功能数。
 
