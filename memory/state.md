@@ -2,7 +2,7 @@
 
 > Owner最新裁决（2026-09-23）：BUG-021、BUG-024确认通过，bug修复阶段结束，本轮收件关闭；后续全部推送。主列车IN_PROGRESS，机械同步已通过复核03。
 > 裁决：`product/v0.1.1-bugfix/receipts/planning-owner-bugfix-stage-close-20260923.md`。
-> 下一动作：整理全部待推送提交与文档，补齐18提交归档及对应关系，列明仓库/分支/提交范围以衔接执行推送**推送已完成**：Owner 授权「提交并推送」后，推送已按 Owner 授权执行并回读一致（根 50a710f..64ed9f1、Server 750ad39..7ff4743、Web 5eb6da1..281892e）；推送执行回执 `product/v0.1.1-bugfix/receipts/push-execution-20260923-01.md` 待 Planner 复核。尚未授权：候选冻结、合并 main、`0.1.1` tag/Release、部署。
+> 推送已由Planner复核通过：根develop-sw `64ed9f1`、Server/Web 0.1.1-bugfix `7ff4743`/`281892e`，依据23:19:24远端回读。裁决 `product/v0.1.1-bugfix/receipts/planning-review-push-execution-20260923-01-passed.md`。0.1.1 修复已按 Owner 授权以保留逐缺陷提交的普通合并进入两仓 develop（Server 76dc947、Web 2c2ffe1），工作分支已切换为 develop；develop 尚未推送。下一动作：待 Owner 授权推送 develop 并安排后续候选/发布。回执 `product/v0.1.1-bugfix/receipts/develop-merge-20260923-01.md`。
 
 - 登记25项=23既有候选标签+2 Owner确认通过；开放修复项0。Owner确认是本次通过依据，历史证据未补造；不再要求021复现或024专项作为阶段结束前置。
 - 18提交及V95静态风险已纳入推送准备盘点并补齐归档；保留历史证据适用性说明（012 §10 对象已被删除、007 行为已改变、023/024/025 未受影响；V95 为静态风险，未运行测试，不写实测失败或已验证）。
