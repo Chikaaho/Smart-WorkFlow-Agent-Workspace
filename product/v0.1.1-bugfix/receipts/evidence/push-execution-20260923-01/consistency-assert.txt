@@ -1,0 +1,38 @@
+推送后状态一致性断言
+assert_at=2026-09-23T23:23:27+0800
+
+== 正向：三仓实际远端 == 本地 HEAD ==
+  .                                develop-sw     local=64ed9f1 remote=64ed9f1 一致
+  Smart-WorkFlow-aPaaS-server      0.1.1-bugfix   local=7ff4743 remote=7ff4743 一致
+  Smart-WorkFlow-aPaaS-Web         0.1.1-bugfix   local=281892e remote=281892e 一致
+
+== 反向：当前段不再称待推送/未推送 ==
+  '待推送 2 条' 当前命中: 0（期望 0）
+  '均未推送' 命中: 0（期望 0）
+  '未推送、补充归档' 命中: 0（期望 0）
+  '推送需 Owner 对该具体' 当前指令命中: 0（期望 0）
+
+== 下一动作一致（待复核推送执行回执） ==
+  knowledge/current-status.md      含 push-execution=3
+  knowledge/session-handoff.md     含 push-execution=3
+  memory/state.md                  含 push-execution=1
+  memory/handoff.md                含 push-execution=1
+  memory/features.md               含 push-execution=1
+  memory/README.md                 含 push-execution=1
+
+== 锁定身份未受影响（回读） ==
+  server main=d18e9a39c552918615be8b158dfe0cc278cb309f（期望 d18e9a39…）
+  web main=039f987437ed6369c3c131631bd7622c6ae482e7（期望 039f9874…）
+  server tag 0.1.0 peeled=d18e9a39c552918615be8b158dfe0cc278cb309f
+  web tag 0.1.0 peeled=039f987437ed6369c3c131631bd7622c6ae482e7
+
+== 锁定值零变化 ==
+  1423/0/0/0                 current-status=2
+  1217 passed + 3 skipped    current-status=3
+  ✅46/🟦22/⬜22                current-status=7
+  ADV64                      current-status=7
+  V93                        current-status=11
+
+== 未授权动作未执行 ==
+  合并 main / 建 tag / Release / 部署：均未执行（回执 §1/§4 声明 + 回读未变）
+  '未合并 main、未建 tag/Release、未部署' 在位: 3

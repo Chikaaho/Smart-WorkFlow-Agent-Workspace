@@ -1,0 +1,44 @@
+推送执行与回读证据（只读实测）
+recorded_at=2026-09-23T23:19:24+0800
+
+=== 推送前状态（23:13:27 实测） ===
+server 0.1.1-bugfix: local=7ff4743b3aff714f9058ede783d0b1af8eb8fd9f remote=750ad391d6d2c9760f6c29aee0ea17bfbbabfe2e（待推送 2）
+web    0.1.1-bugfix: local=281892e43b67b466326b25fb83f2e471a5ca48fe remote=5eb6da1edcb6599f029b578fa4abe465f38ac951（待推送 16）
+root   develop-sw : local=50a710f614a77d0938384f8f776c41e4be1a5ff3 remote=同（分支 0，工作树待提交）
+
+=== 执行的推送命令与原始输出 ===
+$ git -C Smart-WorkFlow-aPaaS-server push origin 0.1.1-bugfix
+To github.com:Chikaaho/Smart-WorkFlow-aPaaS-server.git
+   750ad39..7ff4743  0.1.1-bugfix -> 0.1.1-bugfix
+
+$ git -C Smart-WorkFlow-aPaaS-Web push origin 0.1.1-bugfix
+To github.com:Chikaaho/Smart-WorkFlow-aPaaS-Web.git
+   5eb6da1..281892e  0.1.1-bugfix -> 0.1.1-bugfix
+
+$ git push origin develop-sw
+remote: Bypassed rule violations for refs/heads/develop-sw:
+remote: - Changes must be made through a pull request.
+To github.com:Chikaaho/Smart-WorkFlow-Agent-Workspace.git
+   50a710f..64ed9f1  develop-sw -> develop-sw
+
+=== 推送后回读（actual ls-remote，23:19:24+0800） ===
+.                                develop-sw local=64ed9f1a7c26279ad8bb23074d24472130d16b05 remote=64ed9f1a7c26279ad8bb23074d24472130d16b05
+Smart-WorkFlow-aPaaS-server      0.1.1-bugfix local=7ff4743b3aff714f9058ede783d0b1af8eb8fd9f remote=7ff4743b3aff714f9058ede783d0b1af8eb8fd9f
+Smart-WorkFlow-aPaaS-Web         0.1.1-bugfix local=281892e43b67b466326b25fb83f2e471a5ca48fe remote=281892e43b67b466326b25fb83f2e471a5ca48fe
+
+=== 未受影响的锁定身份（回读） ===
+server main=d18e9a39c552918615be8b158dfe0cc278cb309f
+web main=039f987437ed6369c3c131631bd7622c6ae482e7
+server tag 0.1.0=c258386123390acfcfeee1686a8222a7f7e70169 -> peeled d18e9a39c552918615be8b158dfe0cc278cb309f
+web tag 0.1.0=250bfcb4fe0f8562d64b7965bce8d59c6ed95ca9 -> peeled 039f987437ed6369c3c131631bd7622c6ae482e7
+
+=== 根仓本轮提交 ===
+64ed9f1 docs(oa-ui): 登记 OA 核心界面体验设计方向与 Figma OAuth 阻塞回执
+d419a33 docs(bugfix): 记录 0.1.1 阶段快照同步、阶段结束裁决与推送准备盘点
+bf6dd0b chore(workflow): 同步子模块指针至 Server 7ff4743 / Web 281892e
+
+=== 根仓仍未纳入版本库的本地文件（有意排除） ===
+?? product/v0.1.0-oa-completion/ready/direction-v0.1.0-oa-completion.md
+?? product/v0.1.0-oa-completion/receipts/evidence/i3-04/scripts/__pycache__/
+?? product/v0.1.0-oa-completion/receipts/evidence/i3-05/scripts/__pycache__/
+?? product/v0.1.0-oa-completion/receipts/evidence/i3-06/scripts/__pycache__/
