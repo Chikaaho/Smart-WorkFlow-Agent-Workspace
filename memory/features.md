@@ -5,7 +5,7 @@
 
 - `v0.1.0-oa-completion`（P60，优先级P0）：**COMPLETED（规划已确认，2026-09-15）**，整体14/14；版本身份由2026-09-21发布重建（见上），迁移终点V93。
 - 0.1.0 P53/P61演示环境发布（XL，非业务功能任务）：**COMPLETED（规划已确认，2026-09-21）**；主方向与终态同步方向均归档`product/v0.1.0-p53-p61-production-release/passed/`；不增加业务功能数、不核销P编号。
-- `v0.1.1-bugfix`：2026-09-23 Owner确认021/024通过，修复阶段结束、收件关闭，开放修复项0；转全部推送准备，主列车IN_PROGRESS。裁决 `product/v0.1.1-bugfix/receipts/planning-owner-bugfix-stage-close-20260923.md`；盘点回执 `product/v0.1.1-bugfix/receipts/push-inventory-20260923-01.md`。
+- `v0.1.1-bugfix`：2026-09-23 Owner确认021/024通过，修复阶段结束、收件关闭，开放修复项0；转全部推送准备，主列车IN_PROGRESS。裁决 `product/v0.1.1-bugfix/receipts/planning-owner-bugfix-stage-close-20260923.md`；盘点回执 `product/v0.1.1-bugfix/receipts/push-inventory-20260923-01.md`；**推送已按 Owner 授权执行并回读一致**（`product/v0.1.1-bugfix/receipts/push-execution-20260923-01.md`）。
 - P53（P0/XL）：**功能级`PASSED（2026-09-21）`、`COMPLETED（规划已确认，2026-09-21）`、已核销，第45个正式功能**；主方向与阶段三方向均已归档`product/p53-global-ui-component-layout/passed/`。
 - P61（P1/L）：**`COMPLETED（规划已确认，2026-09-20）`，已核销**；独立提交Server `742adb8`、Web `d110ed8`已随P53合入两仓develop（Web `fc37608`、Server `fa96290`）；三份方向归档`passed/`，不增加业务功能数。
 
