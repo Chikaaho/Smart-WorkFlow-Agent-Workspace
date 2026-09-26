@@ -1,0 +1,8 @@
+consumer	consumed_module	consumer_class	pom_scope	edge_type	declared_in	heavy_leak	evidence
+sw-bpm-process	sw-basic-iot	business	compile	direct (POM)	sw-biz/sw-bpm/sw-bpm-process/pom.xml:77-81	MQTT/Paho 3 + GraalJS 13 + TencentSDK 2 + fastjson2 1 (all compile)	tree-sw-bpm-process.log
+sw-bootstrap	sw-basic-iot	assembly	compile	direct (POM)	sw-bootstrap/pom.xml:70-74	n/a (final artifact)	tree-sw-bootstrap.log
+sw-basic-agent	sw-basic-knowledge	basic	compile	direct (POM)	sw-basic/sw-basic-agent/pom.xml:66-70	Tika 24 + PDFBox 7 + pgvector 4 + SpringAI 21 + jsoup 1 (all compile)	tree-sw-basic-agent.log
+sw-bootstrap	sw-basic-knowledge	assembly	compile	direct (POM)	sw-bootstrap/pom.xml:75-79	n/a (final artifact)	tree-sw-bootstrap.log
+sw-bootstrap	sw-basic-agent	assembly	compile	direct (POM)	sw-bootstrap/pom.xml:80-84	n/a (final artifact)	tree-sw-bootstrap.log
+sw-basic-knowledge	sw-basic-storage-api	basic	compile	direct (POM)	sw-basic/sw-basic-knowledge/pom.xml	none	tree-sw-basic-knowledge.log
+(no consumer)	sw-basic-iot	-	-	-	-	-	0 Java imports of com.sw.ck.agent.* or com.sw.ck.knowledge.* outside their own modules

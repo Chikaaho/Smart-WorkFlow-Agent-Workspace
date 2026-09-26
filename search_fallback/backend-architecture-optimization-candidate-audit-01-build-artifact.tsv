@@ -1,0 +1,28 @@
+条目	事实	证据类型	证据位置/命令（相对 server 仓根）	实测值	生效性判定	风险
+BAO-03-1	iot 模块在自身 POM 锁定腾讯云 SDK 版本	POM	sw-basic/sw-basic-iot/pom.xml:66-71	com.tencentcloudapi:tencentcloud-sdk-java-iotexplorer:3.1.1235	生效（编译期依赖）	中
+BAO-03-2	iot 模块在自身 POM 锁定 fastjson2 版本	POM	sw-basic/sw-basic-iot/pom.xml:72-75	com.alibaba.fastjson2:fastjson2:2.0.53	生效	中
+BAO-03-3	form-biz 模块在自身 POM 锁定 POI 版本	POM	sw-biz/sw-biz-form/sw-biz-form-biz/pom.xml:65-70	org.apache.poi:poi-ooxml:5.2.5	生效	中
+BAO-03-4	bootstrap 锁定内嵌 PG 版本并自行导入 zonky 平台 BOM	POM	sw-bootstrap/pom.xml:28-35（BOM import）、:188-203（test 依赖）	io.zonky.test:embedded-postgres:2.1.0（test）	生效（仅测试类路径）	低
+BAO-03-5	四者均不在 BOM 中	POM	grep '<artifactId>(tencentcloud-sdk-java-iotexplorer|fastjson2|poi-ooxml|embedded-postgres)</artifactId>' sw-dependencies/pom.xml	0 命中	BOM 覆盖缺口	中
+BAO-03-6	内部模块版本用 ${project.version} 明确指定	POM	各模块 pom.xml（共 65 处 com.sw.ck:*）	与根 POM 同版本	属设计（根 pom.xml:47-51 注释说明自引用循环，故 BOM import 下放到各模块）	无
+BAO-04-1	enforcer 仅声明于 pluginManagement	POM	根 pom.xml:77-93	maven-enforcer-plugin 3.5.0；rules 仅 dependencyConvergence；无 executions	声明存在、未绑定	中
+BAO-04-2	enforcer 未进入任何模块的生效构建	EFF_POM	MAVEN_OPTS="-Xmx2g" mvn -B help:effective-pom -pl sw-biz/sw-biz-form/sw-biz-form-api -Doutput=/tmp/bao-eff-form-api.xml（exit 0）	effective build/plugins = []；enforcer 仅出现在 pluginManagement	任何构建都不执行	中
+BAO-04-3	全仓无其他激活点	POM	grep -rn enforcer --include=pom.xml .	仅根 pom.xml:80、:85 两处（插件声明与其 rules 依赖）	无模块、无 CI 激活	中
+BAO-04-4	无架构规则	POM	根 pom.xml:86-91	仅 dependencyConvergence；无 banned-dependencies、requireUpperBoundDeps、自定义规则	架构约束无处强制	中
+BAO-08-1	H2 以 runtime 进入 bootstrap 制品	POM	sw-bootstrap/pom.xml:158-162	com.h2database:h2，scope=runtime（非 test）	生效	中低
+BAO-08-2	制品实测携带 H2	ARTIFACT	unzip -l sw-bootstrap/target/bootstrap.jar（构建时间 2026-09-24 10:21）	BOOT-INF/lib/h2-2.3.232.jar 存在；同目录另有 postgresql-42.7.5.jar、flyway-mysql-11.3.4.jar	制品污染成立	中低
+BAO-08-3	生产 profile 指向 PostgreSQL（不会自动启用 H2）	POM	sw-bootstrap/src/main/resources/application-prod.yml:19-32；application.yml:39-51	driver-class-name=org.postgresql.Driver；master 数据源 URL 为 jdbc:postgresql:...	prod 下无错误自动装配	低
+BAO-08-4	误装配路径真实存在	ARTIFACT	unzip -l bootstrap.jar → BOOT-INF/classes/application-dev.yml 存在；BOOT-INF/classes/db/migration/devseed/** 6 条	dev profile 配置与 devseed 迁移随生产制品发布	若 SPRING_PROFILES_ACTIVE=dev，同一制品将启动 H2 内存库而无人察觉	中低
+BAO-08-5	H2 控制台未开启	POM	sw-bootstrap/src/main/resources/application.yml（无 spring.h2.console 配置）	无 h2 console 配置项	grep 0 命中	低
+BAO-09-1	根 POM 使用正式版本号而非 SNAPSHOT	POM	根 pom.xml:9	version=0.1.0	生效	中
+BAO-09-2	已发布 tag 与 develop 同一 Maven 版本	GIT	git rev-list -n1 0.1.0 = c15428f；git show 0.1.0:pom.xml	版本 0.1.0；develop 领先该 tag 15 个提交且 pom 版本仍为 0.1.0	同一坐标可对应不同字节内容	中
+BAO-09-3	分支间版本一致	GIT	git show develop:pom.xml；git show origin/main:pom.xml	两者均为 0.1.0（本地 main 落后，仍为历史 1.0.0-SNAPSHOT）	develop 与 main 共享坐标	中
+BAO-09-4	版本号历史	GIT	git log -L 9,9:pom.xml	c1a71c0（2026-09-14，「i6 … 0.1.0 投影」）将 1.0.0-SNAPSHOT 改为 0.1.0	此后无 SNAPSHOT 用于在途开发	中
+BAO-09-5	CI 制品身份靠 tag 而非坐标	POM/CMD	.github/workflows/build-release.yml:35（mvn -B -ntp install）、:41（VERSION 取自 pom）、:53（TAG=build-${GITHUB_SHA}）、:54-63（同 tag 指向他提交则失败）	Release 标题含 pom 版本，tag 为 build-<full-SHA>	身份可追溯，但坐标不区分	中
+BAO-09-6	无 CI-friendly 版本机制	POM	grep -rn "revision|flatten|ci-friendly" --include=pom.xml .	0 命中	无 ${revision}、无 flatten-maven-plugin	中
+BAO-10-1	构建期隔离只靠命名排除	POM	根 pom.xml:99-129（prod profile）	compiler excludes **/P58Debug*.java；jar excludes **/P58Debug*.class	仅在该 profile 激活时生效	中
+BAO-10-2	仓库内无任何构建激活 prod profile	CMD	.github/workflows/build-release.yml:35；start.sh/stop.sh（无 -P）	CI 执行 mvn -B -ntp install，无 -Pprod	命名排除当前未生效	中
+BAO-10-3	制品实测携带 P58 调试类	ARTIFACT	unzip -l sw-basic-notify-biz/target/sw-basic-notify-biz-0.1.0.jar；unzip -l sw-bpm-engine/target/sw-bpm-engine-0.1.0.jar；以及 bootstrap.jar 内嵌同名 jar	notify：P58DebugNotifyController（+3 嵌套）、P58DebugNotifyChannelAdapter；engine：P58DebugParticipantAdapter；共 6 个 class 文件 / 3 个顶层类型	隔离未生效（靠 @Profile("dev") 运行期兜底）	中
+BAO-10-4	devtools 未引入	POM	grep -rn devtools --include=pom.xml .	0 命中	无 devtools 污染	无
+BAO-10-5	其他 dev 设施多数有运行期门禁	CODE	DebugAuthenticationFilter（WebSecurityAutoConfiguration.java:48-56、:110；SecurityAutoConfiguration.java:85-96 启动 fail-closed）、MockCloudProvider（IotAutoConfiguration.java:31-44；TencentCloudProperties.java:54 providerMode 默认 mock）、AgentGraphDebug*（产品功能 M07-F02-04，@PreAuthorize 保护）、VerificationRunner/BpmVerificationRunner（@Profile("dev")）、BpmDeployRunner（运行期 isDevelopmentOnly 守卫 L71、:90-103）	未覆盖命名排除但均非默认开启	生产装配风险低，但隔离机制不统一	中
+BAO-10-6	dev 专用资源进入生产制品	ARTIFACT	unzip -l sw-bootstrap/target/bootstrap.jar	BOOT-INF/classes/application-dev.yml（1 条）、BOOT-INF/classes/db/migration/devseed/**（6 条）	与 BAO-08-4 同源风险	中低

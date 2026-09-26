@@ -1,0 +1,9 @@
+#	cwd	command	exit	note
+1	/usr/local/projects/Smart-WorkFlow	git rev-parse --abbrev-ref HEAD ; git rev-parse HEAD	0	develop-sw @ a46e4f3aacbf3ffc877601c0855da5ae530f116a
+2	/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server	git rev-parse --abbrev-ref HEAD ; git rev-parse HEAD ; git status --porcelain | wc -l	0	develop @ 76dc947da5e031cca557cee7f3983a64c0d682dc ; 257 dirty entries
+3	server	MAVEN_OPTS="-Xmx2g" mvn -o -B dependency:tree -pl sw-biz/sw-bpm/sw-bpm-process	0	145 resolved artifacts
+4	server	MAVEN_OPTS="-Xmx2g" mvn -o -B dependency:tree -pl sw-basic/sw-basic-iot	0	135 resolved artifacts
+5	server	MAVEN_OPTS="-Xmx2g" mvn -o -B dependency:tree -pl sw-basic/sw-basic-knowledge	0	180 resolved artifacts
+6	server	MAVEN_OPTS="-Xmx2g" mvn -o -B dependency:tree -pl sw-basic/sw-basic-agent	0	235 resolved artifacts
+7	server	MAVEN_OPTS="-Xmx2g" mvn -o -B dependency:tree -pl sw-bootstrap	0	366 resolved artifacts
+8	server	rg / find source scans (imports, path literals, stereotypes)	0	read-only

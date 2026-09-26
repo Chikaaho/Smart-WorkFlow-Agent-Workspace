@@ -1,0 +1,14 @@
+ref/tag	提交	pom 版本	制品坐标	与 develop 关系	备注
+develop (HEAD)	76dc947	0.1.0	com.sw.ck:*:0.1.0	—	领先 origin/develop 4 个提交
+origin/develop	073cb39	0.1.0	com.sw.ck:*:0.1.0	落后 4	remote-tracking，最后更新 2026-09-22 00:36
+origin/main	d18e9a3	0.1.0	com.sw.ck:*:0.1.0	同一坐标	remote-tracking，最后更新 2026-09-22 00:36
+main (本地)	20fffc1	1.0.0-SNAPSHOT	com.sw.ck:*:1.0.0-SNAPSHOT	不同坐标	落后 origin/main 42；签出于 worktree /private/tmp/p59-server-main，不代表远端
+tag 0.1.0	c15428f	0.1.0	com.sw.ck:*:0.1.0	同一坐标	已发布身份（0.1.0 锁定，不得移动/重建）
+tag 0.0.2	20fffc1	1.0.0-SNAPSHOT	com.sw.ck:*:1.0.0-SNAPSHOT	不同坐标	tag 名与坐标错配：tag 名为 0.0.2 而 pom 为 1.0.0-SNAPSHOT
+tag v0.0.1 / v0.0.1-beta	4b05036 / d55ecc6	1.0.0-SNAPSHOT	com.sw.ck:*:1.0.0-SNAPSHOT	不同坐标	同上错配
+tag build-c15428f…	c15428f	0.1.0	com.sw.ck:*:0.1.0	同一坐标	与 tag 0.1.0 指向同一提交，身份重复
+tag build-d18e9a3…	d18e9a3	0.1.0	com.sw.ck:*:0.1.0	同一坐标	= origin/main
+tag build-20fffc1…	20fffc1	1.0.0-SNAPSHOT	—	不同坐标	=
+坐标区分能力	—	—	不可区分	—	同一坐标 0.1.0 至少对应 4 个不同提交（c15428f/d18e9a3/073cb39/76dc947）；无 distributionManagement⇒无仓库级制品，身份仅靠 GitHub Release/build-<SHA> tag
+版本表达式机制	—	—	字面量	—	根 pom.xml:9 为字面 <version>0.1.0</version>；无 ${revision}、无 flatten-maven-plugin、无 changelist；34 个 POM 各含 1 处 <version>0.1.0</version>（共 34 处）
+CI 身份链路	—	—	—	—	build-release.yml：触发 push main；mvn -B -ntp install（无 -P）；VERSION 从根 pom 抓取；Release tag=build-${GITHUB_SHA}；Release 标题=CH-aPaaS-Server <pom 版本> build <SHA> ⇒ 不改 pom 版本就发 0.1.1 列车，标题仍显示 0.1.0

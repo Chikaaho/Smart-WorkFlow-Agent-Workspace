@@ -3,8 +3,9 @@
 > 角色：规划（Planner）  
 > 日期：2026-09-21  
 > 等级：XL  
-> 方向下发状态（2026-09-21 下发时的历史值）：READY（开放缺陷收件；未授权合并 main、打 tag、创建 Release 或部署）  
-> 当前功能状态（唯一当前值）：**`IN_PROGRESS`**（2026-09-23 起）——Owner 宣布修复阶段告一段落，进行当前快照机械同步；本轮文档同步唯一入口为 `ready/direction-current-state-sync-20260923.md`，本主方向继续约束整个列车。同步回执 01 `receipts/current-state-sync-20260923-01.md` 经复核 01 `receipts/planning-review-current-state-sync-20260923-01-verifying.md` 退回 SYNC-G1—G4，补正回执 `receipts/current-state-sync-20260923-02.md` 待 Planner 复核。缺陷账本按行复算 25 = 23 已提交候选 + 1 处理中（V011-BUG-021）+ 1 Owner 复开（V011-BUG-024）；候选全部待 Owner/Planner 独立验收。  
+> 方向历史状态：2026-09-21 `READY`，2026-09-23 `IN_PROGRESS`  
+> 当前功能状态（唯一当前值）：**`COMPLETED（Owner 范围关闭，2026-09-24）`**  
+> 关闭依据：Owner 最新明确裁决“0.1.1-bugfix 已经结束，状态落后，你可以直接更新”；见 `../receipts/planning-owner-v011-task-close-20260924.md`。本次是任务范围关闭，**不声称 0.1.1 已发布**：`develop` 远程推送、`main`、tag、Release 与部署皆不由本结论证明完成，最新已锁定公开版本仍为 0.1.0。  
 > 上一版本基线：0.1.0 `COMPLETED（规划已确认，2026-09-21）`
 
 > Owner最新阶段裁决（2026-09-23）：BUG-021/024确认通过，bug修复阶段结束，本轮收件关闭；当前转全部推送准备。详见 `../receipts/planning-owner-bugfix-stage-close-20260923.md`。下文原收件与阶段门禁按本次Owner裁决更新适用。
@@ -179,6 +180,8 @@ Planner 功能级验收通过且 Owner 明确授权最终远程动作后，发�
 - 不得以赶版本为由降低验收标准、合并未验证提交或虚构外部 Provider/浏览器证据。
 
 ## 11. 本方向的完成判定
+
+> **2026-09-24 Owner 范围关闭裁决（当前适用）**：Owner 已终止该任务的后续候选冻结与发布工作，并授权直接更新落后状态。因此本任务以 `COMPLETED（Owner 范围关闭）` 归档；下列条件保留为原始方向的历史发布口径，未完成部分不得改写成已发布事实。
 
 本 XL 任务只有在以下条件全部成立后才可进入最终 `COMPLETED`：
 

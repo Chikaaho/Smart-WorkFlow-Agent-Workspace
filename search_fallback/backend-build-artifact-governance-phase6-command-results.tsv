@@ -1,0 +1,11 @@
+序号	命令（后端仓根）	exit	关键输出	用途
+1	git rev-parse --abbrev-ref HEAD; git log -1	0	develop @ 76dc947；工作树 269 项未提交	身份基线
+2	python3 解析 34 个 pom.xml 的 module/version/properties	0	34 POM；32 反应堆模块；模块内有 0 处第三方版本属性	BAO-03 范围界定
+3	MAVEN_OPTS=-Xmx2g mvn -o -B validate	0	BUILD SUCCESS；32 模块全 SUCCESS；total 0.219s；无 enforcer 日志	BAO-04 生命周期实测
+4	MAVEN_OPTS=-Xmx2g mvn -o -B help:effective-pom -Doutput=/tmp/bao6/effpom-all.xml	0	7,340,826 B；32 个 <project>	BAO-04 effective 证据
+5	MAVEN_OPTS=-Xmx2g mvn -o -B dependency:tree -Dverbose（首轮）	1	BUILD FAILURE：sw-basic-iot 无法解析 com.sw.ck:sw-basic-iot-api:0.1.0（本地仓未安装、离线）	发现 Phase 5 新模块未打包
+6	cp -al ~/.m2/repository /tmp/bao6/m2；在 /tmp/bao6/server 副本内 mvn -o -Dmaven.repo.local=/tmp/bao6/m2 -pl sw-basic/sw-basic-iot-api install	0	仅向临时 local repo 安装 sw-basic-iot-api:0.1.0；未污染 ~/.m2 与 coding 仓	解除解析阻塞
+7	MAVEN_OPTS=-Xmx2g mvn -o -B -Dmaven.repo.local=/tmp/bao6/m2 dependency:tree -Dverbose	0	32 模块全解析；conflict 标记 63（compile 61 / runtime 2 / test 0）；去重 38；14 个构件	BAO-03/08 解析版本 + Q8 阻塞集
+8	MAVEN_OPTS=-Xmx2g mvn -o -B -Dmaven.repo.local=/tmp/bao6/m2 enforcer:enforce -N	1	PLUGIN RESOLUTION FAILURE：maven-enforcer-rules/enforcer-api/enforcer-rules/plexus-utils:4.0.1 不可解析	BAO-04 激活阻塞
+9	unzip -l sw-bootstrap/target/bootstrap.jar；提取内嵌 sw-basic-notify-biz/sw-bpm-engine	0	h2-2.3.232.jar 存在；6 个 P58Debug class；application-dev/local.yml 与 devseed 4 条在制品内	BAO-08/10 制品证据
+10	git tag / git branch -r / git show <ref>:pom.xml / git reflog show origin/*	0	4 个提交共享坐标 0.1.0；tag 0.0.2 对应 1.0.0-SNAPSHOT；origin/* 最后更新 2026-09-22 00:36	BAO-09（未 fetch、未 checkout、未改分支）

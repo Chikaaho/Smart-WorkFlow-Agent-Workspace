@@ -1,0 +1,10 @@
+检查项	方法/命令	实测结果	判定
+声明位置	根 pom.xml:77-93	pluginManagement 内声明 3.5.0；含 <dependency> org.apache.maven.plugins:maven-enforcer-rules:3.5.0；<configuration><rules><dependencyConvergence/></rules>	声明存在
+execution / phase	根 pom.xml:77-93；全仓 grep enforcer	0 个 <execution>，无 id、无 phase；全仓仅根 pom.xml:80、:85 两处命中	未绑定生命周期
+effective build/plugins	mvn -o -B help:effective-pom（32 模块，exit 0，7.34MB dump）	enforcer 出现在 build/pluginManagement 者 32/32；出现在 build/plugins 者 0/32	对任何构建均不生效
+实际生命周期触发	MAVEN_OPTS=-Xmx2g mvn -o -B validate（全反应堆）	BUILD SUCCESS，total 0.219s，32 模块全 SUCCESS，无 enforcer 执行日志	validate 不触发
+解析可用性	MAVEN_OPTS=-Xmx2g mvn -o -B enforcer:enforce -N	BUILD FAILURE：org.apache.maven.plugins:maven-enforcer-rules:jar:3.5.0、org.apache.maven.enforcer:enforcer-api:jar:3.5.0、org.apache.maven.enforcer:enforcer-rules:jar:3.5.0、org.codehaus.plexus:plexus-utils:jar:4.0.1 均无法解析	按当前声明激活会先解析失败
+plugin 真实规则依赖	~/.m2/.../maven-enforcer-plugin-3.5.0.pom	parent=org.apache.maven.enforcer:enforcer；依赖 org.apache.maven.enforcer:enforcer-api 与 org.apache.maven.enforcer:enforcer-rules（正确 GA 已被插件自身引入）	声明的 org.apache.maven.plugins:maven-enforcer-rules 属多余且 GA 不符
+是否曾执行过	find ~/.m2/repository -iname 'enforcer*.jar'	0 命中：无 enforcer-api.jar、无 enforcer-rules.jar（仅 enforcer 父 POM）	独立佐证：该插件在本环境从未执行
+规则集	根 pom.xml:86-91	仅 dependencyConvergence；无 bannedDependencies / requireUpperBoundDeps / 自定义或架构规则	无架构约束能力
+继承范围	effective POM 32 模块比对	pluginManagement 全模块继承（含聚合 POM），但因无 execution 而不产生任何执行	继承仅为名义

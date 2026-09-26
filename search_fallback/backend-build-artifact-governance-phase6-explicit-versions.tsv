@@ -1,0 +1,8 @@
+序号	模块	pom 行	groupId:artifactId	声明版本	实际解析版本	scope	sw-dependencies 管理	重复声明	来源
+1	sw-basic/sw-basic-iot	pom.xml:74-79	com.tencentcloudapi:tencentcloud-sdk-java-iotexplorer	3.1.1235	3.1.1235	compile	否（0 命中）	否（全仓唯一）	历史遗留
+2	sw-basic/sw-basic-iot	pom.xml:80-85	com.alibaba.fastjson2:fastjson2	2.0.53	2.0.53	compile	否（0 命中）	是（与 #3 同值）	历史遗留
+3	sw-biz/sw-bpm/sw-bpm-process	pom.xml:93-97	com.alibaba.fastjson2:fastjson2	2.0.53	2.0.53	compile	否（0 命中）	是（与 #2 同值）	Phase 5 新增（未提交工作树）
+4	sw-biz/sw-biz-form/sw-biz-form-biz	pom.xml:65-69	org.apache.poi:poi-ooxml	5.2.5	5.2.5	compile	否（0 命中）	否	历史遗留
+5	sw-bootstrap	pom.xml:194-199	io.zonky.test:embedded-postgres	2.1.0	2.1.0	test	否（0 命中）	否	历史遗留（仅测试类路径）
+6	sw-bootstrap	pom.xml:31-37	io.zonky.test.postgres:embedded-postgres-binaries-bom	17.5.0	17.5.0	import(pom)	否	否	dependencyManagement BOM import（非依赖锁定）
+附	sw-dependencies	pom.xml:127-131	com.h2database:h2	2.3.232	2.3.232	由消费方决定	是（BOM 内）	否	BOM 内以字面量硬编码，与其余 23 个 ${*.version} 属性风格不一致

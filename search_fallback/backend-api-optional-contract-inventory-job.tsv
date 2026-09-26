@@ -1,0 +1,5 @@
+id	module	type	signature	def	impl	ret_cat	missing_sem	fail_sem	optional	migration	prod_calls	test_refs	flags	note
+AM-001	job	JobFacade	JobInfoDTO getById(Long jobId)	sw-basic/sw-basic-job/sw-basic-job-api/M/job/facade/JobFacade.java:20	sw-basic/sw-basic-job/sw-basic-job-biz/M/job/impl/JobFacadeImpl.java:23	OBJECT	NULL_RETURN	TOLERANT	N	WRAP_NULL	0	0	ZERO_CALLER:RESERVED_API	
+AM-002	job	JobFacade	JobInfoDTO getByJobName(String jobName)	sw-basic/sw-basic-job/sw-basic-job-api/M/job/facade/JobFacade.java:28	sw-basic/sw-basic-job/sw-basic-job-biz/M/job/impl/JobFacadeImpl.java:29	OBJECT	NULL_RETURN	TOLERANT	N	WRAP_NULL	0	0	ZERO_CALLER:RESERVED_API	
+AM-003	job	JobHandler	void execute(String params)	sw-basic/sw-basic-job/sw-basic-job-api/M/job/handler/JobHandler.java:26	NO_MAIN_IMPL(SPI)	VOID	VOID_NA	THROWS	N	VOID_RESULT	1	0		
+AM-004	job	JobHandler	String getName()	sw-basic/sw-basic-job/sw-basic-job-api/M/job/handler/JobHandler.java:36	NO_MAIN_IMPL(SPI)	STRING	NON_NULL	TOLERANT	N	WRAP_NONNULL	0	0	ZERO_CALLER:MODULE_INTERNAL_SPI	

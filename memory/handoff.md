@@ -1,19 +1,13 @@
 # 当前交接摘要
 
-Owner于2026-09-23确认BUG-021/024通过，bug修复阶段结束，本轮收件关闭，后续全部推送。裁决：`product/v0.1.1-bugfix/receipts/planning-owner-bugfix-stage-close-20260923.md`。
+## 已完成
 
-机械同步已通过复核03并归档；主列车IN_PROGRESS。已登记25项=23既有候选标签+2 Owner确认通过，开放修复项0。021复现与024专项旧缺口保留历史，不再作为当前修复待办。
+**总体任务 `backend-architecture-optimization`（XL）已 `COMPLETED（规划已确认，2026-09-26）`，进入已完成任务集合；当前无活动任务。** Phase 1—6C 与 Final 均已完成，各阶段验收结论与证据保持锁定。
 
-推送已由Planner复核通过：根develop-sw `64ed9f1`、Server/Web 0.1.1-bugfix `7ff4743`/`281892e`，依据23:19:24远端回读。裁决 `product/v0.1.1-bugfix/receipts/planning-review-push-execution-20260923-01-passed.md`。0.1.1 修复已按 Owner 授权合并进两仓 develop（Server `76dc947`、Web `2c2ffe1`，均为 --no-ff 普通合并）并切换工作分支为 develop；develop 未推送。下一动作：待 Owner 授权推送 develop 并安排后续候选/发布。合并回执 `product/v0.1.1-bugfix/receipts/develop-merge-20260923-01.md`。
+- Phase 1 `backend-api-optional-contract`（`PASSED` 15/15）、Phase 2 审计（8 `CONFIRMED`+2 `PARTIAL`）、Phase 3 BAO-06/07（17/17）、Phase 4 BAO-05（21/21，五道 must-deliver 接缝 + G3a/G3b 单一事务边界）、Phase 5 BAO-02-IoT（8/8，零依赖 `sw-basic-iot-api`）均已完成；BAO-02 最终 `PARTIAL`（Knowledge/Agent 不拆），BAO-01 `DEFERRED`。
+- Phase 6A BAO-03/04（8/8）、Phase 6B BAO-08/10（10/10：生产入口 exit 0、正式 Jar 负向 10 项全 0/正向 6 项、真实 PG 迁移至 V96 health 200、IoT fail-closed）、Phase 6C BAO-09（10/10：`${revision}` 双版本矩阵 32/32、四向负探针、仓外消费 `sw-basic-iot-api:0.2.0`）均已完成；最终正式 Jar sha256 `4fd3174c…`。
+- Final `repository-presentation-hygiene`：**`COMPLETED（规划已确认，2026-09-26）`，`PASSED` 8/8**（裁决 `planning-review-completion-final-03-passed.md`）；后端 About=`Enterprise low-code aPaaS platform with dynamic forms, BPM workflow, RBAC, multi-tenancy, notifications, agent workflows and IoT integration.`、前端=`Web console for an enterprise low-code aPaaS platform with dynamic forms, BPM workflow, RBAC, multi-tenancy, notifications and IoT integration.`（写后 API 回读逐字一致）；根 POM `<url>`=canonical `https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server`（placeholder 0，8/8 hunks 已归属）；主方向已归档 `product/backend-architecture-optimization/passed/direction-final-repository-presentation-hygiene.md`。
 
-## 4. 发布身份（锁定，2026-09-21）
+## 下一动作
 
-Server main/tag `d18e9a39c552918615be8b158dfe0cc278cb309f`（公开 Release ID `392753737`、CI run `35569219107`）；Web main/tag `039f987437ed6369c3c131631bd7622c6ae482e7`（公开 Release ID `392753751`、CI run `35569219967`）；两仓 annotated tag 与公开 Release `0.1.0`（Latest）；演示环境部署 CI 制品、应用库 V93、Owner 登录通过。
-
-## 5. 锁定基线
-
-功能数 45（P53 第45个）；清单 ✅46/🟦22/⬜22、ADV64 不变；Server 1423/0/0/0、Web 1217+3（2026-09-21 发布轮实跑）；迁移终点 V93。多宿主 Supervisor 真实 ZCode 闭环仍开放；I6 五外部通知渠道与三 Provider 保持 Owner 延期/未验证。
-
-## 新会话恢复
-
-读取Owner阶段结束裁决与推送复核记录。修复与本次推送工作项均已结束，021/024通过、开放修复项0；主列车IN_PROGRESS，后续发布安排待Owner明确。
+**无自动工程动作，等待 Owner 另行决定下一任务或明确授权 Git 提交/推送/发布。** GitHub About 两项已按 Owner 授权更新，但两仓未 commit/push/merge/tag/Release/deploy、未改写 refs，后端 POM 变更仍在本地工作树；公开版本仍 0.1.0；Server 基线 1570/0/0/0、Flyway V96；数据库连接值只以四个 `PG_*` 变量名引用。
