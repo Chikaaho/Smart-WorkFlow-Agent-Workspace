@@ -29,10 +29,11 @@
 - Phase 4 接受边界：外部五类通知 Provider 真实送达仍 Owner 延期/未验证；引入 `@DS` 或改 Flowable DataSource/事务管理器则 G3a/G3b 快照失效；交付语义为至少一次 + 业务幂等。
 - Phase 3 接受残余：锁/语句超时固定 10 秒未配置化；极端跨表单多引用可能死锁（1511 + 回滚、无自动重试）；H2 不承担 PG 锁语义证明。
 
-## 2026-09-26 Owner 新任务
+## 2026-09-27 当前修复方向（批次 6 后更新）
 
-- `v0.1.2-bugfix`：**`IN_PROGRESS`（执行已启动并交付批次 1/2 代码，待 Owner 逐项验收）**，L 级分批修复；入口 `product/v0.1.2-bugfix/ready/direction-v0.1.2-bugfix.md`；台账 `product/v0.1.2-bugfix/receipts/bug-ledger.md`。
-- Owner 维护外部 `bugfix/bug2.0.md`（当前 3 条：V012-BUG-001/002/003）；执行每轮重新读取、分批修复验证提交推送，只有 Owner 回到规划宣布结束才收口。
-- Git 事实：两仓 `develop` 核实同步（Web `1871725`、Server `2d4278b`）后创建 `0.1.2-bugfix` 并推送；批次 1（BUG-001 前后端）Server `72b8d01`、Web `7e7c74a`；Server 基线 1573/0/0/0，Web 四连全绿 1293+3。未合并 main、未 tag/Release/部署。
-- memory 历史差异核实：版本修正 commit+push 与实际一致；handoff 旧快照描述已被取代。
-- 当前唯一下一动作：批次 2 回执与浏览器证据、根工作区治理提交；随后交 Owner 验收，等待新登记/复开。
+- `v0.1.2-bugfix`：IN_PROGRESS，Owner 反馈修复停滞，后半阶段转向缺失功能与 UI 修复；整体未关闭。
+- 当前入口：`product/v0.1.2-bugfix/ready/direction-second-half-20260927.md`；沿用主方向及现有 `0.1.2-bugfix` 分支。
+- 最新登记 19 项：001–008 回归通过；009–013、017、019 共 7 项已转后续迭代功能需求；**014–016、018 待验收（015 创建人列已由批次 6 补齐：Server `6a43d04`、Web `77f3f2b`，推送回读一致）**。
+- 操作列新标准为无底色、四格对齐、最多四个按钮且末位更多，覆盖首批两按钮口径。
+- 批次 6 基线：Server 全仓 1574/0/0/0、Web 四连 1295+3 全绿、headed 浏览器证据 `receipts/evidence/batch-06/`；回执 `batch-06-v012-bug-015-creator.md`。
+- 唯一下一动作：等待 Owner 对 014–016、018（含 015 创建人子项）验收反馈及新增/复开登记；有新登记时执行重读原文逐批修复；Owner 回到规划宣布结束后才收口。
