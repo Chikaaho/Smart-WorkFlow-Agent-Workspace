@@ -1,0 +1,75 @@
+{
+  "capture": {
+    "date": "2026-09-26",
+    "browser": "ZCode In-app Browser（用户可见、可交互，headless=false）",
+    "entry": "https://chikaho.cn/sw/",
+    "identity": "admin（迁移 V4 契约种子管理员，显示名「系统管理员」）",
+    "servedBuild": "前端 dist 0df65b10…40198（index-3g59rUSC.js）；后端 bootstrap.jar 436e4e94…9699a build.version=0.1.2"
+  },
+  "sessions": [
+    {
+      "viewport": "1920x1080-16x9",
+      "url": "https://chikaho.cn/sw/login?redirect=/ → /sw/workspace → /sw/workflow/catalog → /sw/system/user",
+      "identity": "admin / 系统管理员",
+      "object": "登录页渲染、登录成功、工作台卡片与菜单、流程中心空态、管理后台（V95 新目录 Form management/Process management 生效）",
+      "artifacts": [
+        "login-1920x1080-16x9.png",
+        "workspace-1920x1080-16x9.png",
+        "process-center-1920x1080-16x9.png",
+        "admin-console-1920x1080-16x9.png"
+      ],
+      "api": [
+        "POST /api/auth/challenge",
+        "POST /api/auth/login",
+        "GET /api/system/auth/me",
+        "GET /api/system/auth/menus",
+        "GET /api/notify/inbox/unread-count",
+        "GET /api/system/workspace/layout",
+        "GET /api/workflow/tasks/todo",
+        "GET /api/workflow/my/processed",
+        "GET /api/workflow/my/instances",
+        "GET /api/workflow/drafts",
+        "GET /api/workflow/my/copies",
+        "GET /api/workflow/catalog/items",
+        "GET /api/workflow/monitor/analytics/summary",
+        "GET /api/workflow/catalog/categories",
+        "GET /api/workflow/catalog/category-counts",
+        "GET /api/system/user/page"
+      ]
+    },
+    {
+      "viewport": "1440x900-16x10",
+      "url": "https://chikaho.cn/sw/workspace",
+      "identity": "admin / 系统管理员",
+      "object": "工作台加载完成态：统计卡、待办、快捷启动无溢出无错位",
+      "artifacts": ["workspace-1440x900-16x10.png"],
+      "api": ["会话复用 1920×1080 登录态（auth/me、menus、workspace/layout、workflow 查询）"]
+    },
+    {
+      "viewport": "1024x768-4x3",
+      "url": "https://chikaho.cn/sw/workspace",
+      "identity": "admin / 系统管理员",
+      "object": "4:3 响应式：导航合理收缩、卡片重排、无横向溢出",
+      "artifacts": ["workspace-1024x768-4x3.png"],
+      "api": ["会话复用登录态"]
+    },
+    {
+      "viewport": "1366x768-16x9",
+      "url": "https://chikaho.cn/sw/workspace → /sw/system/user",
+      "identity": "admin / 系统管理员",
+      "object": "工作台正常；管理后台用户表可用（发现两处既有 UI 小瑕疵，见观察项）",
+      "artifacts": ["workspace-1366x768-16x9.png", "admin-console-1366x768-16x9.png"],
+      "api": [
+        "POST /api/auth/refresh",
+        "GET /api/system/auth/me",
+        "GET /api/system/auth/menus",
+        "GET /api/notify/inbox/unread-count",
+        "GET /api/system/user/page"
+      ]
+    }
+  ],
+  "observations": [
+    "管理后台顶部导航在 1366×768 下相邻菜单文字轻微重叠（Form management / Process management），可读但拥挤，判定为既有样式问题，非本发布引入",
+    "用户管理表 Gender/Status 列在空值时列头竖排（列宽过窄），1920 与 1366 均可见，判定为既有 UI 瑕疵，非本发布引入"
+  ]
+}
