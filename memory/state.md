@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-> 总体任务 `backend-architecture-optimization` 已 `COMPLETED（规划已确认，2026-09-26）`，**当前无活动任务**；下一动作=等待 Owner 另行决定。
+> 总体任务 `backend-architecture-optimization` 已 `COMPLETED（规划已确认，2026-09-26）`，新活动任务见下方 0.1.2 修复方向。
 
 > Owner 裁决（2026-09-24）：`v0.1.1-bugfix` 已结束，**`COMPLETED（Owner 范围关闭）`**，主方向已归档；裁决 `product/v0.1.1-bugfix/receipts/planning-owner-v011-task-close-20260924.md`。
 
@@ -17,7 +17,7 @@
 - Phase 6A（BAO-03/04，8/8）、Phase 6B（BAO-08/10，10/10：生产入口 exit 0、Jar 负向 10 项全 0/正向 6 项、真实 PG 迁移至 V96 health 200、IoT fail-closed）、Phase 6C（BAO-09，10/10：`${revision}` 双版本矩阵 32/32、四向负探针、仓外消费 `sw-basic-iot-api:0.1.2`）：均 **`COMPLETED`**，最终正式 Jar sha256 `4fd3174c…`。
 - Final `repository-presentation-hygiene`：**`COMPLETED`，`PASSED` 8/8**；后端 About=`Enterprise low-code aPaaS platform with dynamic forms, BPM workflow, RBAC, multi-tenancy, notifications, agent workflows and IoT integration.`、前端=`Web console for an enterprise low-code aPaaS platform with dynamic forms, BPM workflow, RBAC, multi-tenancy, notifications and IoT integration.`（写后 API 回读逐字一致）；根 POM `<url>`=canonical `https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server`（placeholder 0，8/8 hunks 已归属且 Final 仅 URL 一处）；主方向已归档。
 - **10 项候选最终去向**：BAO-01 `DEFERRED`、BAO-02 `PARTIAL`、BAO-03/04、BAO-05、BAO-06/07、BAO-08/10、BAO-09 共 8 项 `COMPLETED`。
-- **当前唯一下一动作：无自动工程动作，等待 Owner 另行决定下一任务**（2026-09-26 版本修正轮已按 Owner 指令完成 commit+push：server `develop`、工作区 `develop-sw`，web 无变更；tag/Release/部署仍未执行；公开版本仍 0.1.0）。
+- **上一轮结束时下一动作：等待 Owner 决定下一任务**（2026-09-26 版本修正轮已按 Owner 指令完成 commit+push：server `develop`、工作区 `develop-sw`，web 无变更；tag/Release/部署仍未执行；公开版本仍 0.1.0）。
 
 ## 锁定基线
 
@@ -28,3 +28,11 @@
 - Phase 6C 接受边界：develop 的 `0.1.2-SNAPSHOT` 是工程版本身份、不构成已发布版本主张（公开版本仍 0.1.0）；不修改历史 branch/tag/Release，不推断远端 ahead/behind；GitHub About/根 POM URL 属 Final。
 - Phase 4 接受边界：外部五类通知 Provider 真实送达仍 Owner 延期/未验证；引入 `@DS` 或改 Flowable DataSource/事务管理器则 G3a/G3b 快照失效；交付语义为至少一次 + 业务幂等。
 - Phase 3 接受残余：锁/语句超时固定 10 秒未配置化；极端跨表单多引用可能死锁（1511 + 回滚、无自动重试）；H2 不承担 PG 锁语义证明。
+
+## 2026-09-26 Owner 新任务
+
+- `v0.1.2-bugfix`：**`IN_PROGRESS`（执行已启动并交付批次 1/2 代码，待 Owner 逐项验收）**，L 级分批修复；入口 `product/v0.1.2-bugfix/ready/direction-v0.1.2-bugfix.md`；台账 `product/v0.1.2-bugfix/receipts/bug-ledger.md`。
+- Owner 维护外部 `bugfix/bug2.0.md`（当前 3 条：V012-BUG-001/002/003）；执行每轮重新读取、分批修复验证提交推送，只有 Owner 回到规划宣布结束才收口。
+- Git 事实：两仓 `develop` 核实同步（Web `1871725`、Server `2d4278b`）后创建 `0.1.2-bugfix` 并推送；批次 1（BUG-001 前后端）Server `72b8d01`、Web `7e7c74a`；Server 基线 1573/0/0/0，Web 四连全绿 1293+3。未合并 main、未 tag/Release/部署。
+- memory 历史差异核实：版本修正 commit+push 与实际一致；handoff 旧快照描述已被取代。
+- 当前唯一下一动作：批次 2 回执与浏览器证据、根工作区治理提交；随后交 Owner 验收，等待新登记/复开。
