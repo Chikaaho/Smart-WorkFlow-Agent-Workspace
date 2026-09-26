@@ -1,0 +1,13 @@
+# 6 项验证命令结果汇总（scripts/summarize-runs.py 按 run-logged.sh 命令块解析；TAB 分隔）
+# command: python3 scripts/summarize-runs.py test-compile.log optional-contract-gate.log optional-boundary.log system-semantics.log notify-module-test.log full-maven-test.log
+# cwd: /usr/local/projects/Smart-WorkFlow
+# time: 2026-09-24T10:55:01+08:00
+# module_total_lines = 该命令块内产生测试计数的模块级总计行数（模块级运行=1；仓库根全量=13；test-compile 无测试故为 0）
+# 注: notify-module-test.log 内含 3 个命令块（运行前 ls / mvn 测试 / 运行后 ls），此处仅列出含构建结论的 mvn 块。
+log	command	cwd	start	end	exit_code	module_total_lines	tests	failures	errors	skipped	build
+test-compile.log	env MAVEN_OPTS=-Xmx2g mvn -B -o test-compile	/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server	2026-09-24T10:50:42+08:00	2026-09-24T10:50:48+08:00	0	0	0	0	0	0	BUILD SUCCESS
+optional-contract-gate.log	env MAVEN_OPTS=-Xmx2g mvn -B -o test -pl sw-bootstrap -Dtest=ApiOptionalContractGateTest -DfailIfNoTests=false	/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server	2026-09-24T10:50:55+08:00	2026-09-24T10:50:58+08:00	0	1	6	0	0	0	BUILD SUCCESS
+optional-boundary.log	env MAVEN_OPTS=-Xmx2g mvn -B -o test -pl sw-biz/sw-bpm/sw-bpm-engine -Dtest=ApiOptionalContractBoundaryTest -DfailIfNoTests=false	/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server	2026-09-24T10:50:58+08:00	2026-09-24T10:51:02+08:00	0	1	8	0	0	0	BUILD SUCCESS
+system-semantics.log	env MAVEN_OPTS=-Xmx2g mvn -B -o test -pl sw-biz/sw-biz-system/sw-biz-system-biz -Dtest=DictFacadeTest,OrgAuthorityFacadeIntegrationTest,SystemAutoConfigurationTenantValidityTest -DfailIfNoTests=false	/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server	2026-09-24T10:51:12+08:00	2026-09-24T10:51:17+08:00	0	1	13	0	0	0	BUILD SUCCESS
+notify-module-test.log	env MAVEN_OPTS=-Xmx2g mvn -B -o test -pl sw-basic/sw-basic-notify/sw-basic-notify-biz	/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server	2026-09-24T10:51:17+08:00	2026-09-24T10:51:26+08:00	0	1	118	0	0	0	BUILD SUCCESS
+full-maven-test.log	env MAVEN_OPTS=-Xmx2g mvn -B test	/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server	2026-09-24T10:51:34+08:00	2026-09-24T10:53:57+08:00	0	13	1457	0	0	0	BUILD SUCCESS

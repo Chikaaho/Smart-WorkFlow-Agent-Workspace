@@ -1,0 +1,11 @@
+命令	工作目录	退出码	计数/结论	原始日志
+MAVEN_OPTS="-Xmx2g" mvn -B -o -q -DskipTests install	Smart-WorkFlow-aPaaS-server	0	全模块编译 + 安装（收口后基线）	（本文件）
+MAVEN_OPTS="-Xmx2g" mvn -B -o test -pl sw-biz/sw-biz-form/sw-biz-form-biz	Smart-WorkFlow-aPaaS-server	0	159 tests / 0 failures / 0 errors / 0 skipped；BUILD SUCCESS	form-module-tests.log
+MAVEN_OPTS="-Xmx2g" mvn -B -o test -pl sw-biz/sw-biz-form/sw-biz-form-biz -Dtest=DynamicTableSql*Test	Smart-WorkFlow-aPaaS-server	0	17 tests（守门 7 + 契约 10）/ 0 failures / 0 errors；BUILD SUCCESS	rules-gate.log
+MAVEN_OPTS="-Xmx2g" mvn -B -o test -pl sw-bootstrap	Smart-WorkFlow-aPaaS-server	0	110 tests / 0 failures / 0 errors / 0 skipped；含 Phase3 PG 并发 7 项与 ErrorCodeCatalogTest 8 项；BUILD SUCCESS	bootstrap-module-tests.log
+MAVEN_OPTS="-Xmx2g" mvn -B -o test（仓库根全量）	Smart-WorkFlow-aPaaS-server	0	1493 tests / 0 failures / 0 errors / 0 skipped；BUILD SUCCESS；Total time 04:09 min	full-maven-test.log
+MAVEN_OPTS="-Xmx2g" mvn -B -o test -pl sw-bootstrap -Dtest=Phase3PreFixOverlapReproducerTest（父行锁临时停用）	Smart-WorkFlow-aPaaS-server	1	FAIL：orphanReferences=1、parentLive=0、两侧均 success（竞态复现）	pg-race-reproduction-lock-disabled.log
+MAVEN_OPTS="-Xmx2g" mvn -B -o test -pl sw-bootstrap -Dtest=Phase3PreFixOverlapReproducerTest（恢复父行锁）	Smart-WorkFlow-aPaaS-server	0	PASS：orphanReferences=0；写侧被拒 REFERENCE_OBJECT_NOT_FOUND(1217)	pg-same-test-with-fix.log
+MAVEN_OPTS="-Xmx2g" mvn -B -o test -pl sw-bootstrap -Dtest=Phase3ReferenceConcurrencyPostgresTest	Smart-WorkFlow-aPaaS-server	0	7 tests / 0 failures / 0 errors；含重叠/锁身份/超时 1511/引用先到 1505/删除先到 1217/跨租户/活库 schema	pg-concurrency-suite-postfix.log
+grep -rn 'jdbcTemplate\.' --include=*.java sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java | grep -v /dynamic/ | wc -l	Smart-WorkFlow-aPaaS-server	0	0（无未分类旁路）	unclassified-bypass-scan.txt
+cd <server repo root> && sha256sum -c <evidence>/behavior-input.sha256	Smart-WorkFlow-aPaaS-server	0	17/17 OK（本轮全部改动输入哈希回读通过）	behavior-input-sha256-check.txt

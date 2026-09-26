@@ -1,0 +1,19 @@
+category	item	detail
+scope	sw-basic-iot-api extraction	4 interfaces (IotDeviceFacade, IotProcessTriggerFacade, IotDeviceQueryFacade, IotFormContractChecker) + 1 event (IotProcessTriggerEvent) ; zero third-party/module deps
+scope	sw-bpm-process de-implementation	bpm-process/pom.xml re-points to -api ; BpmDeviceCommandListener drops entity+mapper ; declare fastjson2 explicitly
+scope	event relocation	IotProcessTriggerEvent moves to the api module package ; package move only, callers keep working
+scope	one mechanical boundary gate	new module-boundary gate reusing ApiOptionalContractGate classpath+codesource scan pattern
+non_goal	HTTP contracts	/iot/* (9) and /agent/* (7) routes and payloads unchanged
+non_goal	schema and migrations	no table/index/migration change ; 6 IoT migration files (V40/V59/V66 x h2/postgresql) stay in biz, wildcard locations unchanged
+non_goal	Phase 4 reliability semantics	atomic commit (I1), idempotent key (I2/I5), terminal-state no-downgrade (I4), backoff/lease/stale reclaim (I6/I7) all preserved
+non_goal	dependency versions	MQTT/Paho, GraalJS, Tencent SDK, Tika/PDFBox/pgvector versions untouched
+non_goal	other BAO items	BAO-01/03/04/08/09/10 not implemented ; no empty -api module for Knowledge/Agent
+risk	Phase 1 gate collision	API_BASE_PACKAGES whitelist plus Optional<T> rule conflicts with the 7 existing IoT interface methods (I11) -> must be ruled first
+risk	gate path literals	ReliableEventGateTest holds 14 source path literals, 5 under sw-basic-iot ; sub-module layout invalidates them (I10)
+risk	runtime mutual dependency	iot <-> bpm-process via IotFormContractChecker may be misread as one-way ; DI link must stay valid in bootstrap
+risk	intent recorder transaction semantics	unguarded in-tx facade call propagates device-missing 404 into the approval transaction (I9)
+risk	undeclared fastjson2	removing sw-basic-iot breaks compilation in 4 production files until fastjson2 is declared (I12)
+acceptance	dependency surface	mvn dependency:tree recompute: MQTT/GraalJS/Tencent reach zero in bpm-process ; sw-bootstrap artifact lib count unchanged
+acceptance	compile and assembly	full mvn test baseline 1536/0/0/0 without drift ; IotFormContractChecker injection chain still resolves in bootstrap
+acceptance	behaviour regression	Phase 4 six must-deliver seams plus sw_iot_process_trigger / sw_iot_device_command idempotency and recovery semantics
+acceptance	mechanical gate	new boundary gate active ; all 14 existing path literals still valid

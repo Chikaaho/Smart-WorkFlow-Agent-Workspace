@@ -1,0 +1,6 @@
+候选	本轮裁决	Phase2裁决	变化	风险	一句话结论
+BAO-03	CONFIRMED	CONFIRMED	范围扩大：Phase5 新增 bpm-process fastjson2 局部声明	中	BOM 外编译期锁定 3 项（tencent iotexplorer/fastjson2/poi-ooxml）+ test 级 embedded-postgres + zonky BOM import；sw-dependencies 对五者 0 命中；fastjson2 现有两处未管理声明，取值同为 2.0.53 故当前仍收敛
+BAO-04	CONFIRMED	CONFIRMED	新增：声明的 plugin dependency GA 错误，激活前即会解析失败	中	32/32 模块 effective build/plugins 内 enforcer=0，仅存在于 pluginManagement；无 execution/无 phase；mvn validate 全反应堆 exit0 未触发；本地仓无 enforcer-api/enforcer-rules/plexus-utils:4.0.1 ⇒ 从未执行
+BAO-08	CONFIRMED	CONFIRMED	制品证据时点前移（2026-09-24 16:51，Phase 5 前）	中低	h2 仅 bootstrap 声明且 scope=runtime（全仓唯一 runtime 命中）；9 个 biz 模块为 test；fat jar 内含 BOOT-INF/lib/h2-2.3.232.jar；默认 profile=prod 走 PostgreSQL，但 application-dev/local.yml 随制品发布 ⇒ 一个环境变量即可让同一制品改用 H2 内存库
+BAO-09	CONFIRMED	CONFIRMED	补充 tag 与坐标错配既有实例	中	根 POM 字面 0.1.0，无 ${revision}/flatten；≥4 个不同提交共享坐标 0.1.0（tag 0.1.0=c15428f、origin/main=d18e9a3、origin/develop=073cb39、develop=76dc947）；tag 0.0.2 的 pom 实为 1.0.0-SNAPSHOT；无 distributionManagement；CI Release 标题取自 pom 版本
+BAO-10	CONFIRMED	PARTIAL	升级理由：机制存在但零激活路径已由 CI 与制品双证据坐实；且发现真实绕过实例	中	排除规则仅在根 POM prod profile（compiler+jar excludes），全仓无任何构建激活 -Pprod ⇒ 规则从未生效；制品内嵌 6 个 P58Debug class（3 顶层类型）；命名模式外另有 VerificationRunner/BpmVerificationRunner 与 prod 显式选中的 MockCloudProvider

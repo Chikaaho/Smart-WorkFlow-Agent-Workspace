@@ -1,0 +1,19 @@
+编号	事实	证据类型	证据位置/命令	实测值	时点	判定
+A1	H2 在 bootstrap 的声明 scope	POM	sw-bootstrap/pom.xml:158-162	com.h2database:h2，scope=runtime	工作树	生效（非 test）
+A2	H2 在其它模块的 scope	POM	9 个 *-biz/bootstrap 模块 pom.xml	9 处 scope=test（storage-biz/notify-biz/job-biz/agent/system-biz/form-biz/bpm-engine/bpm-process/openapi-biz）	工作树	仅测试类路径
+A3	最终 runtime 依赖树中的 H2	EFF/TREE	mvn -o -B dependency:tree（32 模块全解析，含临时 local repo 补装 sw-basic-iot-api）	h2 命中 10 处 = 9 test + 1 runtime；runtime 唯一命中为 sw-bootstrap 的直连项 (+-)	2026-09-25 运行	生产运行时携带
+A4	生产 Boot Jar 内的 H2	ARTIFACT	unzip -l sw-bootstrap/target/bootstrap.jar	BOOT-INF/lib/h2-2.3.232.jar 存在（2,651,157 B）	Jar 时点 2026-09-24 16:51（Phase 5 之前）	制品污染成立
+A5	同 Jar 的其它数据层构件	ARTIFACT	unzip -l bootstrap.jar	postgresql-42.7.5.jar、mysql-connector-j-9.1.0.jar、flyway-mysql-11.3.4.jar、flyway-database-postgresql-11.3.4.jar 同时存在	同上	同类边界问题（超出 BAO-08 原始范围）
+A6	默认 profile 与数据源	CONFIG	application.yml:31（SPRING_PROFILES_ACTIVE 默认 prod）；application-prod.yml:19-32	默认 prod；prod 驱动 org.postgresql.Driver	工作树	默认不会误用 H2
+A7	dev/local 单变量切换路径	ARTIFACT/CONFIG	unzip -l bootstrap.jar → BOOT-INF/classes/application-dev.yml、application-local.yml 存在；application-dev.yml:36-38	同一制品设 SPRING_PROFILES_ACTIVE=dev 即以 org.h2.Driver + jdbc:h2:mem:smart_workflow 启动	同上	误装配路径真实存在
+A8	devseed 迁移随制品发布	ARTIFACT/CONFIG	jar 内 db/migration/devseed/h2/V900-V903（4 条）；application.yml:84 注释掉 devseed，仅 application-dev.yml:73 装载	文件随制品发布；prod 不装载	同上	低（含文件但默认不执行）
+B1	P58Debug 排除规则位置	POM	根 pom.xml:100-125（profiles→prod）	compiler excludes **/P58Debug*.java（:113）；jar excludes **/P58Debug*.class（:123）	工作树	规则存在
+B2	排除规则覆盖范围	POM	全仓 grep <profile>/excludes	全仓唯一 profile；仅 2 条 exclude；仅按文件名前缀 P58Debug 匹配	工作树	覆盖面窄
+B3	激活路径	CMD	build-release.yml:35（mvn -B -ntp install，无 -P）；start.sh/stop.sh 无 -P	全仓无任何构建传递 -Pprod	工作树	规则从未生效
+B4	默认生产制品结果	ARTIFACT	bootstrap.jar → 内嵌 sw-basic-notify-biz-0.1.0.jar 与 sw-bpm-engine-0.1.0.jar	notify-biz 5 个 class（P58DebugNotifyController + 3 嵌套 + P58DebugNotifyChannelAdapter）；engine 1 个（P58DebugParticipantAdapter）；合计 6 class / 3 顶层类型	Jar 时点 2026-09-24 16:51	调试类随制品发布
+B5	排除是否安全（编译可行性）	CODE	grep P58Debug* 三类名 | 排除自身定义文件	其它生产类对三者引用 = 0	工作树	排除不会破坏生产编译
+B6	同类绕过实例：运行期兜底类	CODE	@Profile("dev") 全仓 5 处	VerificationRunner、BpmVerificationRunner（sw-bootstrap，CommandLineRunner）随制品发布；@Profile("dev") 是唯一门禁	工作树	命名模式外，未纳入任何制品排除
+B7	同类绕过实例：MockCloudProvider	CODE/CONFIG	sw-basic-iot/.../MockCloudProvider.java；application-prod.yml:80-84	生产 profile 显式 sw.iot.tencent.enabled=false + provider-mode=mock ⇒ 生产默认选用 Mock 设备实现	工作树	命名模式外，且 prod 主动选中
+B8	安全类 debug 设施的门禁	CODE/CONFIG	DebugAuthenticationFilter/DebugAuthenticationProfile；SecurityAutoConfiguration.java:85-96；DevProperties；application-prod.yml:5-9	纯 dev/test profile 才允许，启动期 fail-closed（非 dev/test 抛 IllegalStateException）；prod 显式 ch.dev.test-mock=false	工作树	随制品发布但不可在 prod 生效
+B9	AgentGraphDebug* 不得纳入排除	CODE	AgentGraphDebugController.java:30-32；8 个 AgentGraphDebug* 类型	REST /agent/graph-debug-sessions，@PreAuthorize('agent:model:manage'/'view')，属正式产品能力	工作树	宽化 *Debug* 模式的误伤陷阱
+B10	p57-* profile 类	CODE	grep @Profile("p57")	6 个类全部位于 src/test，不进入制品	工作树	无制品影响

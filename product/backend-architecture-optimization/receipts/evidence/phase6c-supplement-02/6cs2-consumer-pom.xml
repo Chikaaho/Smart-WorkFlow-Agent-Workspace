@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Phase 6C 补证 02 · 仓外最小消费者。
+  本文件位于源码仓之外，未声明任何父工程块，也不以任何形式引用源码目录；
+  仅依赖一个已安装叶子模块 com.sw.ck:sw-basic-iot-api:0.2.0（零依赖契约
+  模块，Phase 5 抽取）。解析时唯一 Maven local repository 为
+  /tmp/6cs-m2-install（com.sw.ck 0.2.0 仅存在于该仓），离线运行。
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>demo.supplement</groupId>
+    <artifactId>phase6c-consumer</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>com.sw.ck</groupId>
+            <artifactId>sw-basic-iot-api</artifactId>
+            <version>0.2.0</version>
+        </dependency>
+    </dependencies>
+</project>

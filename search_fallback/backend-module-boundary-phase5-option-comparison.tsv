@@ -1,0 +1,5 @@
+option	scope	supporting_facts	opposing_facts	rollback_point	compat_window
+A (recommended)	only IoT contract extraction	new sw-basic-iot-api (4 interfaces + 1 event, zero deps) ; sw-basic-iot stays in place as biz ; bpm-process pom re-points to -api ; sole real call surface with implementation-type leak	must first rule on Phase 1 Optional gate rule and on declaring fastjson2	single-line pom revert in sw-bpm-process	none needed (class names unchanged ; only 1 package path moves ; HTTP/DB contracts unaffected)
+B	IoT then Knowledge/Agent	stagable	Knowledge/Agent have no extractable interface ; gain is cleanup + module keep/drop decision, not boundary	n/a	n/a
+C	all three same phase	formal uniformity	no shared rollback boundary (IoT has real seams + 8 migrations ; Knowledge is 29-line placeholder ; Agent is HTTP-only) ; violates master direction 4.2	n/a	n/a
+D	no split	zero risk	bpm-process keeps MQTT+GraalJS+Tencent+fastjson2 on compile/test classpath ; iot entity/mapper remain de-facto contract so any IoT entity field change breaks bpm-process at compile time	n/a	n/a

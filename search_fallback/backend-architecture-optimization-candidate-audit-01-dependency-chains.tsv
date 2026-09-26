@@ -1,0 +1,17 @@
+链路ID	起点	重型依赖	传递路径	终点消费者	scope	证据类型	证据/命令	备注
+DC-01	sw-common	spring-boot-starter-web（tomcat-embed-core 10.1.39、spring-webmvc 6.2.5）	sw-common → 全部 -api/-biz/启动	7 个 -api 及 13 个实现模块	compile	EFF_POM/TREE	mvn -B dependency:tree -pl sw-biz/sw-biz-form/sw-biz-form-api	实测 form-api 树 80 个构件中 79 个位于 sw-common 子树
+DC-02	sw-common	spring-boot-starter-data-redis（lettuce-core 6.4.2、netty 4.1.119、spring-data-redis 3.4.4）	同上	同上	compile	TREE	同上	sw-common 的非 optional 依赖，无 -api 使用者却全量下传
+DC-03	sw-common	mybatis-plus-spring-boot3-starter 3.5.9（mybatis 3.5.16、spring-boot-starter-jdbc、HikariCP 5.1.0）	同上	同上	compile	TREE	同上	契约层因此可见 JDBC/Hikari
+DC-04	sw-common	mybatis-plus-jsqlparser 3.5.9（jsqlparser 5.0、mybatis-plus-extension）	同上	同上	compile	TREE	同上	-
+DC-05	sw-common	dynamic-datasource-spring-boot3-starter 4.3.1（spring-boot-starter-aop、aspectjweaver 1.9.23）	同上	同上	compile	TREE	同上	-
+DC-06	sw-common	spring-security-core 6.4.4	同上	同上	compile	POM/TREE	sw-framework/sw-common/pom.xml:50-55	注释称 compile-time only，但未加 scope/optional，实际下传
+DC-07	sw-common	hutool-all 5.8.36	同上	同上	compile	POM/TREE	sw-framework/sw-common/pom.xml:68-71	sw-common 与 -api 内 0 处 import cn.hutool，属死重下传
+DC-08	sw-common	mapstruct 1.6.3	同上	同上	compile	TREE	同 DC-01	processor 为 provided，不进制品
+DC-09	sw-basic-iot	spring-integration-mqtt 6.4.3、org.eclipse.paho.mqttv5.client 1.2.5	sw-basic-iot → sw-bpm-process	sw-bpm-process	compile	TREE	mvn -B dependency:tree -pl sw-biz/sw-bpm/sw-bpm-process	业务模块被动获得 MQTT 客户端栈
+DC-10	sw-basic-iot	graalvm polyglot 24.1.1、js-community 24.1.1	同上	sw-bpm-process	compile	TREE	同上	脚本引擎运行时进入审批模块类路径
+DC-11	sw-basic-iot	tencentcloud-sdk-java-iotexplorer 3.1.1235	同上	sw-bpm-process	compile	POM/TREE	sw-basic/sw-basic-iot/pom.xml:66-71	BOM 外锁定（BAO-03）
+DC-12	sw-basic-iot	com.alibaba.fastjson2:fastjson2 2.0.53	同上	sw-bpm-process	compile	POM/TREE	sw-basic/sw-basic-iot/pom.xml:72-75	BOM 外锁定（BAO-03）
+DC-13	sw-basic-knowledge	tika-core/tika-parsers-standard-package 3.1.0、pdfbox 3.0.4、pgvector 0.1.6、spring-ai-starter-vector-store-pgvector	sw-basic-knowledge → sw-basic-agent → sw-bootstrap	sw-basic-agent、sw-bootstrap	compile	POM	sw-basic/sw-basic-knowledge/pom.xml（10 依赖）	模块本身惰性（sw.knowledge.enabled 未设置、0 外部引用）
+DC-14	sw-basic-agent	spring-ai-starter-model-openai、spring-ai-starter-model-ollama、langgraph4j-core 1.5.14	sw-basic-agent → sw-bootstrap	sw-bootstrap	compile	POM	sw-basic/sw-basic-agent/pom.xml（9 依赖）	无任何模块在编译期依赖 agent
+DC-15	sw-basic-storage-api / sw-basic-notify-api / sw-basic-job-api	（契约层，不下传实现依赖）	消费者仅依赖 -api；-biz 仅 bootstrap 装配	form-biz、bpm-process、bpm-engine、system-biz	compile	POM	sw-biz/sw-biz-form/sw-biz-form-biz/pom.xml:54-57 等	对照基线：无模块 import 这三个模块的 -biz 类型
+DC-16	sw-basic-iot（实现层）	iot.entity.IotDeviceCommand、iot.mapper.IotDeviceCommandMapper	跨模块直接 import 实现类型	bpm-process	compile	CODE	sw-biz/sw-bpm/sw-bpm-process/.../BpmDeviceCommandListener.java:5-6、:33-35	违反「消费者只依赖 -api」的既有模式

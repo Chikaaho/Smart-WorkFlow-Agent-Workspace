@@ -1,0 +1,12 @@
+发布点	事件/对象	事务边界	持久结构	领取者	幂等键	业务结果	重试/终态	分类	结构校验
+ApprovalTaskListener#publishNextTaskTodoCreated	BpmNotifyEvent(TODO_CREATED)	引擎回调事务内	sw_notify_message	BpmNotifyListener(AFTER_COMMIT 加速)+NotifyDeliveryRecoveryServiceImpl	租户+事件+业务对象+发生序号+接收人+渠道	站内信/外部渠道投递结论	可重试退避至 5 次→RETRY_EXHAUSTED	必须交付	PASS
+ProcessStartService#publishTodoCreatedEvent	BpmNotifyEvent(TODO_CREATED)	@Transactional(start)	sw_notify_message	同上	同上	同上	同上	必须交付	PASS
+TaskActionService#publishProcessEvent	BpmNotifyEvent(PROCESS_APPROVED/REJECTED/DISAPPROVED/RETURNED)	@Transactional(execute)	sw_notify_message + sw_openapi_callback_task	通知恢复 + OpenApiCallbackRecoveryJob	通知身份 / 应用+事件+业务对象	通知 + 回调 POST	5 次退避→RETRY_EXHAUSTED	必须交付	PASS
+TaskActionService#publishReturnedRoundTodoCreated	BpmNotifyEvent(TODO_CREATED)	@Transactional(execute)	sw_notify_message	通知恢复	通知身份	新一轮待办通知	同上	必须交付	PASS
+TaskActionService#execute	BpmDeviceCommandEvent	@Transactional(execute)	sw_iot_device_command	CommandCompensationJob	APPROVAL:{pi}:{device}:{commandKey}	设备指令下发	补偿重试≤预算，租约回收后重试	必须交付	PASS
+TaskDeadlineScheduler#notifyDeadline	BpmNotifyEvent(TASK_DEADLINE_ALERT)	显式 TransactionTemplate	sw_notify_message	通知恢复	通知身份	时限提醒	同上	必须交付	PASS
+ApprovalLifecycleServiceImpl#publishNotice	BpmNotifyEvent(TASK_*/PROCESS_*)	@Transactional(各动作)	sw_notify_message (+回调任务 for PROCESS_*)	通知恢复 + 回调恢复	通知身份 / 应用+事件+业务对象	转办/委派/沟通/加签/流程态通知	同上	必须交付	PASS
+RuleEngineService#fire	IotProcessTriggerEvent	调用方消息摄入事务内(保存点插入)	sw_iot_process_trigger	ProcessTriggerRecoveryJob→IotProcessTriggerListener	租户+幂等键(r{rule}-v{ver}-{device}-{dedup})	规则触发流程实例	退避 1/2/4/8/16 分钟，≤5 次	必须交付	PASS
+ScriptHostFunctions#funStartProcess	IotProcessTriggerEvent	脚本运行（意图即事实源）	sw_iot_process_trigger	ProcessTriggerRecoveryJob→IotProcessTriggerListener	脚本传入的稳定幂等键	脚本触发流程实例	同上	必须交付	PASS
+FormSubmitService#submitForm	FormSubmittedEvent	@Transactional(submitForm)	sw_bpm_command（FLOW_START:{recordId}）	CommandDispatcher→FlowStartCommandHandler	command_key=FLOW_START:{recordId}	流程实例受理	命令队列退避≤5 次	普通（内存兜底退役）	PASS
+SwJobBean#executeFlow	ScheduledFlowTriggerEvent	显式 TransactionTemplate	sw_bpm_command（SCHEDULED_FLOW:{jobId}:{fireTime}）	CommandDispatcher→ScheduledFlowCommandHandler	sched-{sha256(jobId:fireTime)} + command_key	流程实例启动	命令队列退避≤5 次	必须交付	PASS

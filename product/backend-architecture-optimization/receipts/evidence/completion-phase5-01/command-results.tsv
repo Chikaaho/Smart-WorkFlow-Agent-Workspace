@@ -1,0 +1,11 @@
+#	cwd	command	exit	note
+1	server	git rev-parse HEAD ; git rev-parse --abbrev-ref HEAD	0	server develop@76dc947 (269 dirty entries at freeze)
+2	server	MAVEN_OPTS=-Xmx2g mvn -B -o test -Dtest=Phase5PgDeviceCommandBoundaryBehaviourTest (pre-migration)	0	3/3 pass; behavior lock BEFORE migration; raw/00-boundary-lock-before-migration.log
+3	server	MAVEN_OPTS=-Xmx2g mvn -B -o compile	0	all main sources compile after module split + Optional migration
+4	server	MAVEN_OPTS=-Xmx2g mvn -B -o test-compile	1	expected break: BpmDeviceCommandListenerTest imported com.sw.ck.iot.entity/mapper (leak removal proof)
+5	server	MAVEN_OPTS=-Xmx2g mvn -B -o test-compile	0	after test migration; all modules compile
+6	server	MAVEN_OPTS=-Xmx2g mvn -B -o test -Dtest=... (Phase5 + Phase1 + Phase4 + isolation gates)	0	Phase5 gates 6/6, Optional semantics 5/5, boundary 3/3, Phase1 gate 6/6, Phase4 gate 7/7, isolation 4/4
+7	server	MAVEN_OPTS=-Xmx2g mvn -B -o test	1	FULL GATE run hitting ONE transient remote-PG I/O error (SQLState 08006 during Flyway V17 in Phase5PgDeviceCommandBoundaryBehaviourTest.bootAll); all other modules green; raw/full-server-gate-run-with-transient-io-error.log.gz
+8	server	MAVEN_OPTS=-Xmx2g mvn -B -o test-compile dependency:tree	0	all-module trees; raw/dep-tree-*.log
+9	server	MAVEN_OPTS=-Xmx2g mvn -B -o test	0	FULL GATE (FINAL snapshot): BUILD SUCCESS 16:08 min, 1555 tests 0/0/0, 32 modules; raw/full-server-gate.log
+10	server	MAVEN_OPTS=-Xmx2g mvn -B -o test -Dtest=BpmDeviceCommandListenerTest (post-edit verify)	0	5/5 pass; test fixture de-credentialized

@@ -1,0 +1,12 @@
+contract_module	consumed_by_business_modules	consumed_by_sw_bootstrap
+sw-basic-storage-api	sw-basic-knowledge, sw-bpm-process	yes
+sw-basic-storage-biz	NO	yes
+sw-basic-notify-api	sw-biz-system-biz, sw-bpm-engine, sw-bpm-process	yes
+sw-basic-notify-biz	NO	yes
+sw-basic-job-api	sw-bpm-process	yes
+sw-basic-job-biz	NO	yes
+sw-biz-form-api	sw-biz-openapi-biz, sw-bpm-engine, sw-bpm-process	yes
+sw-biz-form-biz	NO	yes
+sw-basic-iot	sw-bpm-process  <-- ONLY violation of the repo pattern	yes
+sw-basic-knowledge	sw-basic-agent  <-- second violation (0 code references)	yes
+sw-basic-agent	NO	yes

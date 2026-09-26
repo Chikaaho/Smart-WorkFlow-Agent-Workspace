@@ -1,14 +1,30 @@
 # 当前状态摘要
 
-> Owner最新裁决（2026-09-23）：BUG-021、BUG-024确认通过，bug修复阶段结束，本轮收件关闭；后续全部推送。主列车IN_PROGRESS，机械同步已通过复核03。
-> 裁决：`product/v0.1.1-bugfix/receipts/planning-owner-bugfix-stage-close-20260923.md`。
-> 推送已由Planner复核通过：根develop-sw `64ed9f1`、Server/Web 0.1.1-bugfix `7ff4743`/`281892e`，依据23:19:24远端回读。裁决 `product/v0.1.1-bugfix/receipts/planning-review-push-execution-20260923-01-passed.md`。0.1.1 修复已按 Owner 授权以保留逐缺陷提交的普通合并进入两仓 develop（Server 76dc947、Web 2c2ffe1），工作分支已切换为 develop；develop 尚未推送。下一动作：待 Owner 授权推送 develop 并安排后续候选/发布。回执 `product/v0.1.1-bugfix/receipts/develop-merge-20260923-01.md`。
+> 总体任务 `backend-architecture-optimization` 已 `COMPLETED（规划已确认，2026-09-26）`，**当前无活动任务**；下一动作=等待 Owner 另行决定。
 
-- 登记25项=23既有候选标签+2 Owner确认通过；开放修复项0。Owner确认是本次通过依据，历史证据未补造；不再要求021复现或024专项作为阶段结束前置。
-- 18提交及V95静态风险已纳入推送准备盘点并补齐归档；保留历史证据适用性说明（012 §10 对象已被删除、007 行为已改变、023/024/025 未受影响；V95 为静态风险，未运行测试，不写实测失败或已验证）。
+> Owner 裁决（2026-09-24）：`v0.1.1-bugfix` 已结束，**`COMPLETED（Owner 范围关闭）`**，主方向已归档；裁决 `product/v0.1.1-bugfix/receipts/planning-owner-v011-task-close-20260924.md`。
 
-- 终态值：功能数 **45**（P53 为第45个，规划已确认）；清单 **✅46/🟦22/⬜22**（90，零变化）；**ADV64**（独立规划项，不计入）；P21/P61/P53 已核销；P2/P4 开放、部分实现未核销，P34/P35/P37/P38/P39 部分实现未核销；本列车不新增/核销 P 编号。
-- 验证基线（2026-09-21 发布轮实跑，本轮同步不重跑）：Server **1423/0/0/0 BUILD SUCCESS**（Flyway 终点 **V93**）；Web 四门 exit 0、**1217 passed + 3 skipped**；0.1.0 发布身份 Server `d18e9a39…`、Web `039f9874…` 锁定；Server 本地未登记提交的迁移 `V95` 未被任何正式基线引用。
-- 活动功能：**无活动正式功能**；`v0.1.1-bugfix`（XL，`IN_PROGRESS`，非业务功能计数）。P60（`v0.1.0-oa-completion`）：**COMPLETED（规划已确认，2026-09-15）**，整体 14/14。
-- 上一位次基线：P53 第45个（2026-09-21 确认）、P21 第44个（2026-09-08）、v0.0.2-oa 第43个、P4 第42个——详见 `knowledge/history/`。
-- P 剩余边界：P2 其余（计算公式/外部数据源/表单删除/列表配置持久化）；P4 候选（转办/委托/加签/撤回、流程版本/挂起激活）；M08-F04-01🟦、F04-02/F05-02⬜；P34/P35/P37/P38/P39 剩余；腾讯实网与三 Provider 真实链免验未做；**I6 五外部通知渠道真实链转 P2 待办（`todo/i6-external-notification-channels-real-verification.md`），保持 Owner 延期/未验证**；小程序冻结；多宿主执行监督治理真实 ZCode 闭环未完成（方向保持 `ready/`）。
+- 0.1.1 边界：25 项缺陷收口、开放修复项 0；两仓已在本地合并进 `develop`（`76dc947` / `2c2ffe1`）。不声称远程 `develop`、`main`、`0.1.1` tag/Release、CI 身份或部署已完成；公开版本仍 0.1.0。
+
+## 总体任务（已完成）
+
+- `backend-architecture-optimization`：**`COMPLETED（规划已确认，2026-09-26）`**，总体方向已归档 `product/backend-architecture-optimization/passed/direction-backend-architecture-optimization.md`；目标=分阶段优化后端模块契约、依赖拓扑、构建治理、可靠性、数据安全与制品边界。
+- Phase 1 `backend-api-optional-contract`：**`COMPLETED（规划已确认，2026-09-24）`**，`PASSED` 15/15；内部 API 用 `Optional<T>`，Controller 用 `Result<T>`，真实错误不吞为 empty。
+- Phase 2 候选事实审计：**`COMPLETED（规划复核通过，2026-09-24）`**，10 = 8 `CONFIRMED` + 2 `PARTIAL`。
+- Phase 3 `dynamic-table-data-safety-reference-integrity`（BAO-06/07）：**`COMPLETED`**，`PASSED` 17/17；动态宽表 SQL 收敛唯一受控入口 `DynamicTableSql`。
+- Phase 4 `reliable-business-events`（BAO-05）：**`COMPLETED`**，`PASSED` 21/21；五道 must-deliver 接缝统一为事务内持久意图、恢复调度、幂等与可审计终态，G3a/G3b 锁定引擎/应用/流程发起的单一事务边界。
+- Phase 5 `iot-api-boundary-extraction`（BAO-02-IoT）：**`COMPLETED`**，`PASSED` 8/8；零基础设施依赖 `sw-basic-iot-api`（4 接口 + 1 事件、7/7 Optional），BPM→完整 IoT/MQTT/GraalJS/Tencent 归零。
+- Phase 6A（BAO-03/04，8/8）、Phase 6B（BAO-08/10，10/10：生产入口 exit 0、Jar 负向 10 项全 0/正向 6 项、真实 PG 迁移至 V96 health 200、IoT fail-closed）、Phase 6C（BAO-09，10/10：`${revision}` 双版本矩阵 32/32、四向负探针、仓外消费 `sw-basic-iot-api:0.2.0`）：均 **`COMPLETED`**，最终正式 Jar sha256 `4fd3174c…`。
+- Final `repository-presentation-hygiene`：**`COMPLETED`，`PASSED` 8/8**；后端 About=`Enterprise low-code aPaaS platform with dynamic forms, BPM workflow, RBAC, multi-tenancy, notifications, agent workflows and IoT integration.`、前端=`Web console for an enterprise low-code aPaaS platform with dynamic forms, BPM workflow, RBAC, multi-tenancy, notifications and IoT integration.`（写后 API 回读逐字一致）；根 POM `<url>`=canonical `https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server`（placeholder 0，8/8 hunks 已归属且 Final 仅 URL 一处）；主方向已归档。
+- **10 项候选最终去向**：BAO-01 `DEFERRED`、BAO-02 `PARTIAL`、BAO-03/04、BAO-05、BAO-06/07、BAO-08/10、BAO-09 共 8 项 `COMPLETED`。
+- **当前唯一下一动作：无自动工程动作，等待 Owner 另行决定下一任务或明确授权 Git 提交/推送/发布**（GitHub About 已按 Owner 授权更新，但两仓未 commit/push/tag/Release/deploy，后端 POM 仍为本地工作树变更；公开版本仍 0.1.0）。
+
+## 锁定基线
+
+- 功能数 **45**；清单 **✅46/🟦22/⬜22**（90）；**ADV64** 独立计数；P60/P53/P61/P21 已终态，P2/P4/P34/P35/P37/P38/P39 未核销边界不受本任务改变。
+- 当前验证基线：Server **1570/0/0/0**（`BUILD SUCCESS`；Phase 6C 正式入口保持）；Phase 6C 三包哈希 17/17、10/10、6/6，物理文件 19/12/8；真实秘密 0。Phase 6B 主证据 18/18、补证 16/16及更早时点仅作历史。
+- Flyway：H2 15/0/0/0、97 migrations、V96；PostgreSQL 12/0/0/0、95 migrations、V96；V95→V96 行为 3/0/0/0；Phase 6A 无新增迁移。Web `1217 passed + 3 skipped` 为历史基线。
+- Phase 6B 接受边界：H2 仅 test/dev 辅助、生产行为以 PG 为准；不证明腾讯 IoT 真实云端送达；版本身份已由 6C 完成。
+- Phase 6C 接受边界：develop 的 `0.2.0-SNAPSHOT` 是工程版本身份、不构成已发布版本主张（公开版本仍 0.1.0）；不修改历史 branch/tag/Release，不推断远端 ahead/behind；GitHub About/根 POM URL 属 Final。
+- Phase 4 接受边界：外部五类通知 Provider 真实送达仍 Owner 延期/未验证；引入 `@DS` 或改 Flowable DataSource/事务管理器则 G3a/G3b 快照失效；交付语义为至少一次 + 业务幂等。
+- Phase 3 接受残余：锁/语句超时固定 10 秒未配置化；极端跨表单多引用可能死锁（1511 + 回滚、无自动重试）；H2 不承担 PG 锁语义证明。

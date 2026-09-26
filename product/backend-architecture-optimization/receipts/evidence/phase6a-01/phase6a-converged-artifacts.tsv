@@ -1,0 +1,16 @@
+构件	基线各模块版本集合	收敛后版本	收敛后模块数	定版依据
+org.antlr:antlr4-runtime	4.13.1,4.13.2	4.13.2	4	取较高档 4.13.2（flyway-core 基线），spring-ai 补丁级升档
+org.bouncycastle:bcprov-jdk18on	1.78.1,1.80	1.80.2	4	取家族最高档 1.80.2，与 bcpkix/bcutil 1.80.2 一致（原制品内 1.78.1 与 1.80.2 家族内错配）
+org.apache.commons:commons-compress	1.25.0,1.26.2,1.27.1	1.27.1	5	取较高档 1.27.1（tika zip/webarchive 基线），避免把 Tika 压回基线之下
+commons-io:commons-io	2.15.0,2.16.1,2.17.0,2.18.0	2.18.0	6	取较高档 2.18.0（tika/poi-scratchpad 基线），commons-io 2.x 向后兼容
+commons-logging:commons-logging	1.2,1.3.4	1.3.4	5	取较高档 1.3.4（tika/pdfbox 基线），同时等于装配制品现值
+com.google.errorprone:error_prone_annotations	2.27.0,2.28.0	2.28.0	3	取较高档 2.28.0（minio→guava 基线）；纯注解，无运行期影响
+com.healthmarketscience.jackcess:jackcess	4.0.8	4.0.8	3	取 4.0.8（tika microsoft 基线），同时等于装配制品现值
+joda-time:joda-time	2.13.0,2.9.9	2.13.0	3	取较高档 2.13.0（flowable 基线），避免把 Flowable 压回基线之下
+com.squareup.okhttp3:okhttp	3.12.13,4.12.0	4.12.0	3	取 4.12.0：① okhttp 4 对 3.x Java 调用方二进制兼容；② 装配制品现即解析 4.12.0
+com.squareup.okio:okio	1.15.0,3.6.0	3.6.0	3	与 okhttp 同族，取 3.6.0；② 装配制品现值
+org.apache.poi:poi	5.2.5,5.4.0	5.4.0	4	取 5.4.0（tika-parent 3.1.0 的 poi.version 基线），并使 poi 家族四件一致
+org.apache.poi:poi-ooxml	5.2.5,5.4.0	5.4.0	4	同上 5.4.0；form-biz 由 5.2.5 同 major 升档，配套 Excel 回归
+io.swagger.core.v3:swagger-annotations-jakarta	2.2.30	2.2.30	3	取 2.2.30（spring-ai 基线），装配制品现值；纯注解
+com.tencentcloudapi:tencentcloud-sdk-java-common	3.1.1235,3.1.213	3.1.1235	3	取 3.1.1235（IoT Explorer 与装配制品基线），kms 保持 3.1.213 向前兼容
+org.checkerframework:checker-qual	3.43.0,3.48.3	3.48.3	4	取 3.48.3（PostgreSQL JDBC 基线），纯注解；Enforcer 实跑发现的第 15 项

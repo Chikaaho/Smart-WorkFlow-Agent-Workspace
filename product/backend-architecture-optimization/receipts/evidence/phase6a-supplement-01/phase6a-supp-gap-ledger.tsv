@@ -1,0 +1,4 @@
+ID	失败事实（规划复核 01）	完成条件（本提示 §2）	反向断言	最小充分证据	本轮状态
+G1	phase6a-validate-online.txt 实为首次失败日志（以 BUILD FAILURE 结束，记录 Enforcer 首次发现 checker-qual 分叉）	最终快照执行 MAVEN_OPTS="-Xmx2g" mvn -B validate，exit 0、32 次 Enforcer、BUILD SUCCESS	不覆盖/删除首次失败日志；不以离线日志或台账文字替代	新的完整在线成功日志 phase6a-supp-g1-validate-online.txt + exit + 32 次计数 + sha256 与现场回读	COMPLETED
+G2	Knowledge 无测试，缺 Tika/PDFBox/Spring AI 行为锚点；全量日志中无 Tika/PDFBox 锚点	新增最小离线兼容性测试：Knowledge 以 PDFBox 生成内存 PDF 再经 Tika 实际解析并断言哨兵文本；Agent 实际装配/调用 Spring AI 类型并断言结果	不用纯类存在扫描、dependency tree、编译成功或 mock 名称替代行为；不访问外网	测试资产（KnowledgeTikaPdfCompatTest / AgentSpringAiCallDomainCompatTest）+ 定向原始日志含正向断言；随后后端全量 mvn -B -o test 全绿	COMPLETED
+G3	主体回执最后非空物理行是秘密扫描说明，不是 ENGINE_TERMINAL	补正回执最后一个非空物理行为可解析的 ENGINE_TERMINAL {json}，字段与实际文件/结果一致	不改写旧回执，不写 PASSED/COMPLETED	末行解析回读 + 证据 sha256 清单与 check + 秘密扫描	COMPLETED

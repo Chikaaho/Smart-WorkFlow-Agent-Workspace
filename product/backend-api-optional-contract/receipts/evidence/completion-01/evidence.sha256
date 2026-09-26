@@ -1,0 +1,30 @@
+# 证据包 SHA-256 清单（哈希范围：completion-01 目录内全部文件，排除本清单与校验记录自身）
+# 生成时刻: 2026-09-24T11:02:11+08:00
+# 生成命令（在本目录执行）:
+#   find . -type f ! -name 'evidence.sha256' ! -name 'evidence-sha256-check.txt' | sort | xargs sha256sum
+# 格式: <sha256>  <相对路径>；回读校验: sha256sum -c evidence.sha256
+3842ca5843472e59ef8c93efc83cefbec1388bb454a5f6b695c6c08ee4b6179c  ./am-ledger-recalculation.txt
+a21464832fe9fc5550ee5e731400aab0655171960626b4d802f24397311a6489  ./behavior-input-sha256-check.txt
+5f6ccf69d59630fdfe98be9b37c7b63a9add13be11a2ed0245f7d346c5e63c8d  ./behavior-input.sha256
+3523a2c59142c4a2f76b54fac1aa92a40b131484fa62521a2ddaa80a366ea044  ./changed-files.txt
+3468eaf74f706c4b82367d12affd7827b8a2edb33dc89144c74512dfb36fe61b  ./command-results.tsv
+6630b59d1fe2f1a25af4b9bbcf102c0cdfe135d46e04600320d91305d993bf8b  ./deleted-contract-residual-scan.txt
+975089a189f53cb54a916591c6a710955c79960a595e64bc923f042ce7bd0df1  ./forbidden-pattern-scan.txt
+54d5aad77727c0bd0b545e3c772f6e4cafd5f5e8d657421f7807d98c74949e0c  ./full-maven-test.log
+1d09e0089880fa044a98dd3575cf28151ae0d66a096f9dcebfffe28d972845aa  ./notify-module-test.log
+6e7abc5f687522edf0a0f9565b739972ce891815281170f94f53902b820788a1  ./optional-boundary.log
+960fb6c6b092d4f451ce926fc94f7cb9b92be32c1cd0ef166e41bed5daa528d3  ./optional-consumer-scan.txt
+66e6a1e4f59f30e111fe0bbbef2e52c53b6c2cbdb090f715d1fbe778ab59d4f0  ./optional-contract-gate.log
+0fcf79a146425a0985d696cb5888549cbea0ed65c57df91175fffce08d2b9026  ./resource-mutex-check.txt
+d84f074060e34f64dec610ee74a3d8d319924e24af86b119fbcc0d8d5051a4e4  ./scope-drift-check.txt
+ca7680e8862e06956cfb78dfbd5a80baba6eb6cc6c72c0b8618cdc8b2aece71c  ./scripts/GateNegativeDriver.java
+22c76922d50ec4699e3c9aa926b60b579c0f9d8e95404533a7983bf9c228af02  ./scripts/explain-hits.py
+b8bc634816e1d1adfeecdb33fede90e5d8d63841f5db25daaaed0df153fbf2ea  ./scripts/ledger-recalc.py
+ecb6be334224495d1c460b7fb8b25eeea54981fa2551d4a178822a256897aa58  ./scripts/run-logged.sh
+8e21d43899c908aca0bb49661f52c88e3370e2355aeb55f831e5503935a891c5  ./scripts/scan-deleted-residuals.py
+1f0a6d0770065cce2e68f1fb9324ae9a5357eb67a4601069b2788e34751003b5  ./scripts/scan-forbidden.py
+0233a2a8f7a596fc06242f387350867bcc192a23442761ca80d05b2b64edd8c6  ./scripts/scan-optional-consumers.py
+429bd28ee6f46b9ae2d23c36be837a410864cf3d95b232813d186831afdf2502  ./scripts/summarize-runs.py
+24545d8dee08185ee1113ba8bc724be72d43aba1716c7985f1660d41c2c201b0  ./system-semantics.log
+95a8b99daea4369f2e95424ede311e7cf9af495bd95c56cc1d95d7aa00161426  ./test-compile.log
+9b038ec206e1039608c3e5a8d67d3bb3c5d6eb4bc0ab4e518905c8611a265bc0  ./workspace-identity.txt

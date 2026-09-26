@@ -1,0 +1,16 @@
+file	type	semantic	rollback	sha256
+sw-basic/sw-basic-iot/src/dev/java/com/sw/ck/iot/provider/MockCloudProvider.java	迁移(dev源根)	模拟实现从 src/main/java 迁入 src/dev/java，生产主编译输入不可见	移回 src/main/java	f1240af468a88057e47664f6aa94dd7e075b563ad80c0193a0bb0dda1d35dfd9
+sw-basic/sw-basic-iot/src/dev/java/com/sw/ck/iot/config/MockDeviceControlProviderConfiguration.java	新增(dev源根)	dev/mock 入口的 provider 装配（enabled=true 且 provider-mode=mock）	删除文件	44e05cb14b0779d5c71c264eb041ef6d46e10140f7e5efe12a3ebb90570e591c
+sw-basic/sw-basic-iot/src/main/java/com/sw/ck/iot/config/IotAutoConfiguration.java	改写	生产选择器只装配 tencent（显式配置+凭证完整），零 mock 引用	回滚到含 mock 分支的旧实现	f72b365724d620abc04bc2d8def05fef72c1fdf390246ec506673dc2aae1064b
+sw-basic/sw-basic-iot/src/main/java/com/sw/ck/iot/config/IotPropertiesAutoConfiguration.java	新增	属性绑定恒生效，修复 IoT 关闭时 IotCipherProperties/TencentCloudProperties 缺 Bean	删除文件与 imports 注册	693856d878780664a3f2ee6131b7a24462d97a0f4b9862c350cc1b8fb57ddfdf
+sw-basic/sw-basic-iot/src/main/resources/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports	修改	注册 IotPropertiesAutoConfiguration	移除该行	20b660b5cdf1c3b5c6d979d269f9f7a20f7accb3544ce0265ebf8a4b9b4026f5
+sw-basic/sw-basic-iot/src/main/java/com/sw/ck/iot/config/TencentCloudProperties.java	修改	providerMode 默认由 mock 改为 none（未配置即不装配 provider）	恢复默认 mock	d92e9ee060b32bed9c3762990a2c3c8bbde807a7f4c4c5ff9eb566703146c0ca
+sw-basic/sw-basic-iot/src/main/java/com/sw/ck/iot/util/DeferredControlUtil.java	修改	provider 改 ObjectProvider 可选获取；入队前与发送前 fail closed（503 / markFailed，不模拟成功）	恢复强制注入 DeviceControlProvider	5eb321e192fc4beff6d47cacf0a039f92a972616c6cea47e9769b1afabfab21e
+sw-basic/sw-basic-iot/src/main/java/com/sw/ck/iot/util/OnlineConfirmControlUtil.java	修改	同上：provider 可选获取，调用点 503 fail closed	恢复强制注入 DeviceControlProvider	6637e247834246d863cc3b178d9e585d2f641bf3da55c21b0bec8982538b07bf
+sw-basic/sw-basic-iot/pom.xml	修改	dev profile（src/dev/java 作 main 源根）+ 默认构建 add-test-source（仅 test 源根）	移除 build/profiles 两段	6fe7795fe1478796e6f73d1e0076a4007a586f7f1802d3e8de1a1b8bee8696c2
+sw-basic/sw-basic-iot/src/test/java/com/sw/ck/iot/config/IotAutoConfigurationTest.java	改写	上下文级装配断言：mock/none/tencent/缺凭证/dev 装配五向	恢复方法直调用例	bb0d41d3f6a1a030c2bf444e70eaabae7fe7e970dec2d8eb6b328dcae35bf66e
+sw-basic/sw-basic-iot/src/test/java/com/sw/ck/iot/config/IotFeatureToggleContextTest.java	修改	启用无 provider：可启动+fail closed；dev 入口可控制设备	恢复旧断言	7128d6170e2ede4e699cfbcddbefda06a292a98aea8c602b2573b3c88e57eb3e
+sw-basic/sw-basic-iot/src/test/java/com/sw/ck/iot/util/DeferredControlUtilTest.java	修改	ObjectProvider 构造 + 两个 fail closed 用例	恢复 @InjectMocks 直接注入	b8fa6acf99f53c71df09f084ce5f208030e2a2642b87e565f1905d7bca3bae66
+sw-basic/sw-basic-iot/src/test/java/com/sw/ck/iot/util/OnlineConfirmControlUtilTest.java	修改	ObjectProvider 构造 + 两个 fail closed 用例	恢复 @InjectMocks 直接注入	6ec81ae7f7c7016e12f5cbc91c6b838e0d1c4955949b956fd5bf438866be8f60
+sw-bootstrap/src/main/resources/application-prod.yml	修改	移除 provider-mode: mock（生产不预设 provider，缺配置 fail closed）	恢复 provider-mode: mock	ff13530ee83dd3e32285bf1440bf99245be82c22ba4ca1df0d0898d61770f4a6
+scripts/build-prod.sh	修改	入口第一步改为 clean test：避免此前 -Pdev 构建的 dev 资源残留在 target/classes 被带进正式制品	回滚为 test（不带 clean）	eeb374e5f711e27b2a5ab231398e2ddbc77f901013ba9b46e09a3c72b7510a14

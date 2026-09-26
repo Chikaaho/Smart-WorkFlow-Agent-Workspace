@@ -1,0 +1,16 @@
+序号	Step	命令（后端仓根）	exit	用途/结果
+1	—	git status --porcelain / git diff --stat（Phase 5 最终工作树身份确认）	0	工作树 269 项既有改动 + Phase 5 新增 iot-api；Phase 6A 只改 6 个 POM
+2	—	MAVEN_OPTS=-Xmx2g mvn -o -B dependency:list -DincludeScope=test（21 个有依赖的模块）	0	Step A 前后解析版本集合基线；归一化脚本 scripts/extract-list.py
+3	A	编辑 sw-dependencies/pom.xml（4 项集中化）+ sw-basic-iot / sw-bpm-process / sw-bootstrap（去 version、移入 zonky BOM）	—	Step A 修改面：4 个 POM
+4	A	MAVEN_OPTS=-Xmx2g mvn -o -B -Dmaven.repo.local=<temp> dependency:list -DincludeScope=test	0	Step A 后解析版本集合；与 before 逐行 diff = 零差异（2845 行）
+5	A	MAVEN_OPTS=-Xmx2g mvn -o -B -Dmaven.repo.local=<temp> dependency:tree -Dverbose	0	omitted for conflict 标记 63（与基线一致，未增加）
+6	A	MAVEN_OPTS=-Xmx2g mvn -o -B validate	0	Step A 后普通生命周期仍 exit 0（守门尚未激活）
+7	B	编辑 pom.xml（删 GA 错误的 plugin dep + 增 validate execution）+ sw-dependencies（15 项收敛管理）+ sw-biz-form-biz（去 POI version）	—	Step B 修改面
+8	B	MAVEN_OPTS=-Xmx2g mvn -B validate（首次）	1	Enforcer 首次真实执行并**正确失败**：sw-bootstrap 报 checker-qual 分叉（证明守门非空转）
+9	B	补充 checker-qual 3.48.3 后 MAVEN_OPTS=-Xmx2g mvn -B validate	0	BUILD SUCCESS；32 个模块各执行一次 enforce-dependency-convergence
+10	B	MAVEN_OPTS=-Xmx2g mvn -B -o validate	0	离线同样成功（32 次执行），证明不依赖网络与手工 enforcer:enforce
+11	B	MAVEN_OPTS=-Xmx2g mvn -o -B help:effective-pom -Doutput=<file>	0	32/32 模块在 build/plugins 含同一 execution（id=enforce-dependency-convergence, phase=validate）
+12	B	MAVEN_OPTS=-Xmx2g mvn -o -B -Dmaven.repo.local=<temp> dependency:tree -Dverbose → 分叉检测	0	omitted for conflict = 0；分叉模块 0 / 分叉构件 0（基线 63 / 4 / 14）
+13	B	负向探针：临时副本注入 commons-io 2.15.0 显式版本后 mvn -B validate	1	**预期失败**：sw-basic-storage-biz 报 Dependency convergence error for commons-io 2.18.0，列出两条路径
+14	验证	MAVEN_OPTS=-Xmx2g mvn -B test-compile（在线预热本地仓）	0	全部 32 模块主/测试源编译通过（含 POI 5.4.0、okhttp 4.12.0、commons-io 2.18.0 新解析）
+15	验证	MAVEN_OPTS=-Xmx2g mvn -B -o test	见回执	全工程测试计数与基线对照（见 full-test 摘要）

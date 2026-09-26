@@ -1,0 +1,12 @@
+seq	step	command	exit	purpose
+1	A	编辑 sw-dependencies/... 无（本阶段无 sw-dependencies 改动）	-	-
+2	Step1	scripts/build-prod.sh（先 mvn -B test，再 mvn -B -Pprod package -DskipTests，再制品门禁）	1	入口已实现；门禁因 MockCloudProvider 一项不通过（见 6b-gate-official.txt）
+3	Step1	bash scripts/check-prod-artifact.sh（正式制品）	1	仅 MockCloudProvider 不满足
+4	Step1	bash scripts/check-prod-artifact.sh <注入 application-dev.yml 的临时副本>	1	负向探针按预期失败；正式制品 sha256 未变
+5	Step2	MAVEN_OPTS=-Xmx2g mvn -B -o -Pprod dependency:tree	0	prod 下 h2 命中 10 全部 test scope，非 test 0；PostgreSQL 命中 4
+6	Step2/3	MAVEN_OPTS=-Xmx2g mvn -B -o test-compile（默认）	0	五个 dev-only 类与 VerifyMapper 均未编译进 target/classes
+7	Step2/3	MAVEN_OPTS=-Xmx2g mvn -B -o -Pdev test-compile	0	五个 dev-only 类与 VerifyMapper 全部编译；dev 资源进入 target/classes
+8	Step3	java -jar bootstrap-dev.jar --spring.profiles.active=dev --server.port=18081	0	RESULT=PASS（health 200）
+9	Step3	java -jar bootstrap-dev.jar --spring.profiles.active=dev --sw.iot.enabled=false	1	IotCipherProperties 缺 Bean → 上下文失败（IoT 关闭不可启动）
+10	Step1	vim .github/workflows/build-release.yml	-	Release workflow 改为显式调用 scripts/build-prod.sh 并固定使用 prod 制品路径
+11	验收	MAVEN_OPTS=-Xmx2g mvn -B -o test	见摘要	全量回归（见 6b-full-test-extract.txt）

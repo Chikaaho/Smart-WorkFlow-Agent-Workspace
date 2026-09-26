@@ -1,0 +1,15 @@
+编号	模块/类	收口前入口（动态宽表）	收口后入口	变更性质
+EQ-01	FormDataQueryService	count/data/detail/sub/canCurrentUserAccessRecord（5 存活 + 2 死代码）	DynamicTableSql.query / queryForLong（5 处）；死代码 ensureDeletedColumn 删除	统一入口 + 死代码清除；子表读取失败改为 fail closed
+EQ-02	FormDataUpdateService	主表存在性查询、主表 UPDATE、子表 INSERT/UPDATE/DELETE（5 处）	DynamicTableSql.query / update（5 处）	统一入口；列名经 requireColumn（映射+校验）
+EQ-03	FormDataDeleteService	元数据扫描、RESTRICT 单表检查、CASCADE、主表软删（4 处）	DynamicTableSql.query（元数据表白名单）/ query / update（4 处）	统一入口 + 父行锁 + 三处 fail closed（原为放行/跳过）
+EQ-04	FormSubmitService	主表 INSERT、子表 INSERT（2 处）	DynamicTableSql.update（2 处）	统一入口；表名在构造边界校验（原仅非空校验）
+EQ-05	FormFieldEnrichmentService	REFERENCE 目标 COUNT 校验（1 处）	DynamicTableSql.tryLockLiveRows / tryLockLiveRow	校验升级为存活判定 + 父行锁；覆盖子表 REFERENCE（原先跳过）
+EQ-06	FormImportExportService	导入引用 COUNT、导出子表读取、导出显示值解析（3 处）	DynamicTableSql.tryLockLiveRow / query（3 处）	导入引用加锁；导出子表失败 fail closed；显示列经 requireColumn 校验（原先绕过）
+EQ-07	DynamicTableManager	CREATE TABLE、ALTER TABLE、information_schema 探测（4 处）	DynamicTableSql.requireTableName / validatePhysicalColumn / ddl（4 处）	DDL 表名/列名校验，assert 改为真实校验；探测语句保留在 dynamic 包（基础设施内部）
+
+编号	例外对象	为何不纳入统一改造	依据
+EX-01	sw-bpm-engine SqlExecutor	外部数据源只读 SELECT 执行器（调用方 SQL）	不改造	方向 §4 非目标：非动态宽表业务 DML；已有 SELECT-only/max-rows/timeout/审计约束
+EX-02	sw-bpm-process BpmUrgeServiceImpl:233	固定业务表 sw_bpm_instance 的 FOR UPDATE 行锁	不改造	非动态宽表；主键等值 + 行锁语义，且同行有 ReentrantLock + 超时设计
+EX-03	P58DebugNotifyController / VerificationRunner / BpmVerificationRunner	dev-only 验证 SQL	不改造	@Profile("dev") 门禁，不进入生产路径
+EX-04	FormImportExportService 导出显示值解析失败	引用显示值降级为记录 id	不改造（登记例外）	只影响展示；数据本身仍受租户与数据范围约束；标识符仍经 requireColumn 校验后才进入 SQL
+EX-05	DynamicTableManager information_schema 探测	表/列存在性探测（无租户/删除语义）	保留在 dynamic 包	基础设施内部元数据探测，不承载业务数据读写
