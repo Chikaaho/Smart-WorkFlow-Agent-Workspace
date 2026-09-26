@@ -12,3 +12,5 @@
 - 更早阶段（均已 `COMPLETED`，详情见 `knowledge/features/` 与 `knowledge/history/`）：`p21-iot-device-access` 第 44（2026-09-08；P21 已核销、I14 关闭）；`v0.0.2-oa` 第 43（2026-09-07；A1—A8 锁定，P3/P54/P55 已核销，P2/P4 开放）；`p4-oa-personal-center-dual-dispatch` 第 42（2026-09-07；P4 总项开放）；`p59-ch-apaas-project-update`（2026-09-05；P59 已核销）；`knowledge-full-reconciliation`（非业务功能，2026-09-04）。更早：p58 第 41、p57 第 40、p56 第 39、p52 第 38、p45 第 37、p51 引擎解耦、form-data-import-export 第 36、minimal-business-closure 第 35。
 
 - `v0.1.2-bugfix`（L，非业务功能计数）：**`IN_PROGRESS`**；两仓 `0.1.2-bugfix` 分支已建立并推送（批次 1 Server `72b8d01`、Web `7e7c74a`）；Owner 分批登记及验收，执行逐批修复提交推送；Owner 回到规划宣布结束后收口。方向 `product/v0.1.2-bugfix/ready/direction-v0.1.2-bugfix.md`。
+
+> 2026-09-27 最新入口：`product/v0.1.2-bugfix/ready/direction-second-half-20260927.md`；任务 IN_PROGRESS，后半阶段处理缺失功能与 UI，7 项重大改动转后续迭代，整体未关闭。
