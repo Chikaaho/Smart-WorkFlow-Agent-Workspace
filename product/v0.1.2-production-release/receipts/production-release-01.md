@@ -82,8 +82,9 @@ L 级（生产发布任务：远程部署 + 版本身份 + 跨会话跟踪；Own
 
 ## 8. CI 与 Release 资产（推送 main 自动链路）
 
-- Web：main run **36226533431 completed success**（4m28s），`build-1871725…` Release 与 `dist-<sha>.zip` 资产生成。
-- Server：workflow 修复后 main run **36227258870** 触发（全量测试 + prod 打包 + 制品门禁 + `build-<sha>` Release），最终结果与资产 sha256 见 §10 补记。
+- Web：main run **36226533431 completed success**（4m28s）；公开 Release `build-1871725e85d5f8971233c7a4f6c9937e3cfa4288`（`CH-aPaaS-Web 0.1.0 build 1871725…`，标题版本取自 package.json 0.1.0，见 §6 偏差 3），资产 `dist-1871725….zip`（1,019,291B）。
+- Server：workflow 修复（`2d4278b`）后 main run **36227258870 completed success**（约 6.5 分钟，全量测试 + prod 打包 + 制品门禁 + 版本身份断言同版本贯穿）；公开 Release `build-2d4278b3d1c645b5f8a5598be70ae3d516004b00`（`CH-aPaaS-Server 0.1.2 build 2d4278b…`），资产 `bootstrap.jar`（216,898,012B，CI 侧 sha256 `84c43bfbfad46cd943bcb11066925a86a6a6fcc51bb739e000db45392f0ca453`）。
+- **制品对应关系说明**：生产部署的 jar 为 ebf26ae 源快照的本地正式构建（sha256 `436e4e94…9699a`）；CI 制品构建自 2d4278b（与 ebf26ae 的唯一差异是 `.github/workflows/build-release.yml` 一行引号修复，该文件不参与 jar 打包）。两 jar **字节数完全一致（216,898,012B）**、内容集合相同、`build.version=0.1.2`/`build.profile=prod` 同值，sha256 不同仅来自 jar 内条目时间戳等构建元数据；无功能源码差异。
 
 ## 9. Git 与工作区收尾
 
