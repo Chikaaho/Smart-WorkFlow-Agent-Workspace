@@ -1,5 +1,6 @@
 # memory 使用说明
 
+> 当前活动任务 v0.1.2-bugfix 为 IN_PROGRESS；唯一入口 `product/v0.1.2-bugfix/ready/direction-full-repair-20260927.md`。009–013、017、019 全部纳入本轮详细修复，Owner 尚未宣布结束。此前本轮排期描述由此更新。
 `memory/` 保存 Planner 可直接恢复和决策的最小摘要；不承载完整历史、原始证据或完整决策正文。
 
 - 当前摘要：`state.md`、`handoff.md`。总体任务 `backend-architecture-optimization`（XL）已 `COMPLETED（规划已确认，2026-09-26）`，进入已完成任务集合；当前活动任务 `v0.1.2-bugfix` 为 `IN_PROGRESS`（两仓 `0.1.2-bugfix` 已建立推送，批次 1 已交付 Server `72b8d01`/Web `7e7c74a`），下一动作=批次 2 收尾与浏览器证据后交 Owner 验收。

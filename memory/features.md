@@ -1,5 +1,6 @@
 # 功能摘要
 
+> 当前活动任务 v0.1.2-bugfix 为 IN_PROGRESS；唯一入口 `product/v0.1.2-bugfix/ready/direction-full-repair-20260927.md`。009–013、017、019 全部纳入本轮详细修复，Owner 尚未宣布结束。此前本轮排期描述由此更新。
 > 当前同步点：2026-09-26 总体任务 `backend-architecture-optimization`（XL）已 `COMPLETED（规划已确认，2026-09-26）`；新活动任务 `v0.1.2-bugfix` 为 `IN_PROGRESS`。
 > 清单当前值 **✅46/🟦22/⬜22**（90）；功能数 **45**；全量双向映射见 `knowledge/feature-reconciliation-index.md`。
 
