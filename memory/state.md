@@ -33,7 +33,22 @@
 
 - `v0.1.2-bugfix`：IN_PROGRESS，Owner 反馈修复停滞，后半阶段转向缺失功能与 UI 修复；整体未关闭。
 - 当前入口：`product/v0.1.2-bugfix/ready/direction-second-half-20260927.md`；沿用主方向及现有 `0.1.2-bugfix` 分支。
-- 最新登记 19 项：001–008 回归通过；009–013、017、019 共 7 项已转后续迭代功能需求；**014–016、018 待验收（015 创建人列已由批次 6 补齐：Server `6a43d04`、Web `77f3f2b`，推送回读一致）**。
+- 最新登记 19 项：001–008 回归通过；009–013、017、019 共 7 项已转后续迭代功能需求；**014–016、018 待验收（015 创建人列已由批次 6 补齐并经批次 6 修正补足证据，见下方修正段；Server `6a43d04`、Web `fe9f6be`）**。
 - 操作列新标准为无底色、四格对齐、最多四个按钮且末位更多，覆盖首批两按钮口径。
-- 批次 6 基线：Server 全仓 1574/0/0/0、Web 四连 1295+3 全绿、headed 浏览器证据 `receipts/evidence/batch-06/`；回执 `batch-06-v012-bug-015-creator.md`。
+- 批次 6 基线（修正时点）：Server 全仓 1574/0/0/0、Web 四连 1298+3 全绿、headed 浏览器证据 `receipts/evidence/batch-06/` 与 `…/batch-06-supplement-01/`；回执 `batch-06-v012-bug-015-creator.md` + 修正回执 `batch-06-evidence-supplement-01.md`。
 - 唯一下一动作：等待 Owner 对 014–016、018（含 015 创建人子项）验收反馈及新增/复开登记；有新登记时执行重读原文逐批修复；Owner 回到规划宣布结束后才收口。
+
+## 2026-09-27 批次 6 规划复核
+
+- 结论 VERIFYING：创建人视觉展示已确认；操作列截断/更多可达性、权限行为证据、原始验证与推送回读指针待补。
+- 最新复核入口：`product/v0.1.2-bugfix/receipts/planning-review-batch-06-20260927.md`。
+- 当前下一动作更新为执行处理 G1–G3 并追加回执，随后 Owner 验收；此前“仅等待 Owner”已被本次复核差异替代。
+
+## 2026-09-27 批次 6 修正（执行，G1–G3 已处理）
+
+- G1：根因=FormDefList 操作列宽 190 不足以容纳三直显按钮被单元格裁尾（sticky 正常）；修复 width 240（Web `fe9f6be`），双视口完整可见 + 1366 滚动可达（scrollLeft=160 状态列完整、操作列钉住）+ NotifyTemplateList 真实交互演示 More 菜单端到端（净零清场）+ ListActionsColumn 3 例常驻回归。
+- G2：会话内 XHR 真实捕获 `/api/form/def/page`（200+createByName）与 DOM 行同值关联；既有鉴权（7 例含 /page 放行/403/401）与租户归属（2 例）测试聚焦重跑原始输出归档。
+- G3：/tmp 原始日志未改写提取归档（全仓 1574/0/0/0 + BUILD SUCCESS）；修正后 Web 四连 1298+3 全绿；`git-readback.txt` 提交身份与远端回读一致。
+- 指针：requirements-handover 批次 5 引用修正为台账轮 6 + 治理提交 `65d8ab1`（无独立 batch-05 文件）。
+- 修正回执 `product/v0.1.2-bugfix/receipts/batch-06-evidence-supplement-01.md`，证据 `evidence/batch-06-supplement-01/`；Server 无代码改动（`6a43d04` 不变）。
+- 唯一下一动作：规划对 G1–G3 修正的证据复核；随后 Owner 对 014–016、018（含 015）单项验收与新增/复开登记。
