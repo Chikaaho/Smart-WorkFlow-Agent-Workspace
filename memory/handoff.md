@@ -20,3 +20,13 @@
 - 修正回执：`product/v0.1.2-bugfix/receipts/batch-06-evidence-supplement-01.md`（证据 `evidence/batch-06-supplement-01/`）；Server 无代码改动（`6a43d04` 不变）。
 - 批次 5 指针差异已修正：无独立 batch-05 文件，指向台账轮 6 + 治理提交 `65d8ab1`。
 - 下一动作：规划对 G1–G3 修正的证据复核；随后 Owner 单项验收（014–016、018、015）与新增/复开登记。
+
+## 批次 6 补证 01 规划复核（2026-09-27）
+
+G2/G3 与表单管理按钮/局部滚动已核销；剩余 G1a 通知模板三直显加更多完整可达、G1b 演示对象删除回读。当前唯一执行入口 `product/v0.1.2-bugfix/receipts/planning-execution-prompt-batch-06-01.md`；整体开放，Owner 验收不变。此前 G1–G3 全量待办由本条替代。
+
+## 批次 6 补充 02（执行，G1a/G1b 已处理，2026-09-27）
+
+- G1a 已修（Web `e86f6b8`：通知模板操作列宽 240，双视口四动作完整可见 + More 交互）；G1b 已补（替代对象创建/by-ID/DELETE/同 code 回读全链路 XHR 捕获，净零清场，旧对象只读回读证明不存在）。
+- 回执：`product/v0.1.2-bugfix/receipts/batch-06-evidence-supplement-02.md`（证据 `evidence/batch-06-supplement-02/`）；Server 无改动。
+- 下一动作：规划对补充回执 02 复核；随后 Owner 单项验收（014–016、018、015）与新增/复开登记。
