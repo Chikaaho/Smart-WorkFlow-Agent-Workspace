@@ -52,3 +52,14 @@
 - 指针：requirements-handover 批次 5 引用修正为台账轮 6 + 治理提交 `65d8ab1`（无独立 batch-05 文件）。
 - 修正回执 `product/v0.1.2-bugfix/receipts/batch-06-evidence-supplement-01.md`，证据 `evidence/batch-06-supplement-01/`；Server 无代码改动（`6a43d04` 不变）。
 - 唯一下一动作：规划对 G1–G3 修正的证据复核；随后 Owner 对 014–016、018（含 015）单项验收与新增/复开登记。
+
+## 批次 6 补证 01 规划复核（2026-09-27）
+
+G2/G3 与表单管理按钮/局部滚动已核销；剩余 G1a 通知模板三直显加更多完整可达、G1b 演示对象删除回读。当前唯一执行入口 `product/v0.1.2-bugfix/receipts/planning-execution-prompt-batch-06-01.md`；整体开放，Owner 验收不变。此前 G1–G3 全量待办由本条替代。
+
+## 批次 6 补充 02（执行，G1a/G1b 已处理，2026-09-27）
+
+- G1a：实测复现 NotifyTemplateList 操作列宽 170 下内容 183 溢出单元格、More 右缘超出视口（Preview 裁切同因）；修复 width 240（Web `e86f6b8`），双视口 DOM 边界 allInside=true + 截图 + More 展开交互。
+- G1b：替代对象 `V012_G1B_DEMO_01`（ID `2104030652024786945`）全链路 XHR 原始捕获——创建 / by-ID 绑定 / DELETE 200 / 列表刷新 0 条 / 同 code 回读 0 条；旧 code `V012_G1_MORE_DEMO` 只读回读 0 条；净零清场。
+- 修正后前端四连 1298+3 全绿；回执 `batch-06-evidence-supplement-02.md`，证据 `evidence/batch-06-supplement-02/`。
+- 唯一下一动作：规划对补充回执 02（G1a/G1b）复核；随后 Owner 对 014–016、018（含 015）单项验收与新增/复开登记。

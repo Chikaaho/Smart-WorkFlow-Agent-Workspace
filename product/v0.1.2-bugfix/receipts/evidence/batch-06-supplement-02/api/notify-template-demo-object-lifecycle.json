@@ -1,0 +1,96 @@
+{
+  "capturedAt": "2026-09-27T02:13:36.842Z",
+  "environment": {
+    "frontend": "http://localhost:5174 (dev, proxy /api -> :8080)",
+    "backend": "bootstrap-dev.jar local profile (PostgreSQL sw_apaas_test), health UP",
+    "identity": "admin (V4 seed)",
+    "locale": "English",
+    "viewports": [
+      "1440x900",
+      "1366x768"
+    ],
+    "webHead": "fe9f6beeff4eebf3f8f79f61227712ffb38bf059"
+  },
+  "objects": {
+    "old": {
+      "code": "V012_G1_MORE_DEMO",
+      "note": "补充提示 01 前的演示对象；删除动作无留存记录，本会话以只读回读证明已不存在",
+      "idAtCreation": null
+    },
+    "replacement": {
+      "code": "V012_G1B_DEMO_01",
+      "id": "2104030652024786945",
+      "createdVia": "POST /api/notify/templates (响应捕获 data=id)",
+      "deletedVia": "More 菜单 → Delete → 确认"
+    }
+  },
+  "xhrCaptures": [
+    {
+      "method": "GET",
+      "url": "/api/notify/templates/2104030652024786945",
+      "status": 200,
+      "reqBody": null,
+      "respBody": {
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "id": "2104030652024786945",
+          "templateCode": "V012_G1B_DEMO_01",
+          "name": "复核补充01演示对象",
+          "titleTemplate": "补充提示01演示 ${userName}",
+          "contentTemplate": "G1a/G1b 演示对象，采集后删除。${userName}",
+          "enabled": true,
+          "remark": null,
+          "eventType": "SYSTEM",
+          "channel": "IN_APP",
+          "variablesAllowed": null,
+          "jumpRef": null
+        }
+      }
+    },
+    {
+      "method": "DELETE",
+      "url": "/api/notify/templates/2104030652024786945",
+      "status": 200,
+      "reqBody": null,
+      "respBody": {
+        "code": 0,
+        "msg": "success",
+        "data": null
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/api/notify/templates?pageNum=1&pageSize=10",
+      "status": 200,
+      "reqBody": null,
+      "respBody": {
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "records": [],
+          "total": "0",
+          "pageNum": "1",
+          "pageSize": "10"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/api/notify/templates?pageNum=1&pageSize=10&keyword=V012_G1B_DEMO_01",
+      "status": 200,
+      "reqBody": null,
+      "respBody": {
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "records": [],
+          "total": "0",
+          "pageNum": "1",
+          "pageSize": "10"
+        }
+      }
+    }
+  ],
+  "note": "XHR 捕获自页面会话（axios 默认 XHR 适配器）；by-ID 删除后无 UI 触发路径，故同对象不存在性以 by-code 查询 + 全列表刷新证明，by-ID 响应（删除前）绑定 id↔templateCode"
+}
