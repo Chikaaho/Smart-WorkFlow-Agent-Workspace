@@ -29,37 +29,21 @@
 - Phase 4 接受边界：外部五类通知 Provider 真实送达仍 Owner 延期/未验证；引入 `@DS` 或改 Flowable DataSource/事务管理器则 G3a/G3b 快照失效；交付语义为至少一次 + 业务幂等。
 - Phase 3 接受残余：锁/语句超时固定 10 秒未配置化；极端跨表单多引用可能死锁（1511 + 回滚、无自动重试）；H2 不承担 PG 锁语义证明。
 
-## 2026-09-27 当前修复方向（批次 6 后更新）
+## 2026-09-27 当前修复方向
 
-- `v0.1.2-bugfix`：IN_PROGRESS，Owner 反馈修复停滞，后半阶段转向缺失功能与 UI 修复；整体未关闭。
-- 当前入口：`product/v0.1.2-bugfix/ready/direction-second-half-20260927.md`；沿用主方向及现有 `0.1.2-bugfix` 分支。
-- 最新登记 19 项：001–008 回归通过；009–013、017、019 共 7 项已转后续迭代功能需求；**014–016、018 待验收（015 创建人列已由批次 6 补齐并经批次 6 修正补足证据，见下方修正段；Server `6a43d04`、Web `fe9f6be`）**。
-- 操作列新标准为无底色、四格对齐、最多四个按钮且末位更多，覆盖首批两按钮口径。
-- 批次 6 基线（修正时点）：Server 全仓 1574/0/0/0、Web 四连 1298+3 全绿、headed 浏览器证据 `receipts/evidence/batch-06/` 与 `…/batch-06-supplement-01/`；回执 `batch-06-v012-bug-015-creator.md` + 修正回执 `batch-06-evidence-supplement-01.md`。
-- 唯一下一动作：等待 Owner 对 014–016、018（含 015 创建人子项）验收反馈及新增/复开登记；有新登记时执行重读原文逐批修复；Owner 回到规划宣布结束后才收口。
+- 活动任务 `v0.1.2-bugfix`：IN_PROGRESS；Owner 2026-09-27 要求按原始 Bug 描述完整修复后标记，7 项大需求全部本轮详细处理。
+- 唯一执行入口：`product/v0.1.2-bugfix/ready/direction-full-repair-20260927.md`。
+- 原表 19 项：001–008 Owner 已通过；009–013、017、019 本轮待完整实施；014–016、018 有已交付内容、整项待 Owner 验收。
+- BUG-019 最新反例为 /login 的 SSO 租户 ID 手填框；要求全局名称/选择器化，优先修复，不局限登录截图。
+- 批次 6 G1–G3 子项行为证据已核销；转录差异见最新规划复核。局部通过不代表全局或整体通过。
+- 下一动作：执行制定详细实施计划并推进 019，再按方向连续处理菜单、流程中心、主题规则、发起/详情与全局对账；逐批提交推送。
+- 修复栏完整实现验证后填“是”，部分完成明确剩余；Owner 回归独立记录。Owner 回规划宣布结束后才整体收口。
 
-## 2026-09-27 批次 6 规划复核
+- Owner 追加 V012-CODE-001（READY）：后端全限定类名改 import，唯一例外为同一类同时使用不同包同名类型；代码清理与开发规范落盘均须完成。方向 `product/v0.1.2-bugfix/ready/direction-backend-import-style.md`；Executor 处理代码，管理员承接工程规范。
 
-- 结论 VERIFYING：创建人视觉展示已确认；操作列截断/更多可达性、权限行为证据、原始验证与推送回读指针待补。
-- 最新复核入口：`product/v0.1.2-bugfix/receipts/planning-review-batch-06-20260927.md`。
-- 当前下一动作更新为执行处理 G1–G3 并追加回执，随后 Owner 验收；此前“仅等待 Owner”已被本次复核差异替代。
+## 2026-09-28 完整修复方向执行完毕（批次 7—12）
 
-## 2026-09-27 批次 6 修正（执行，G1–G3 已处理）
-
-- G1：根因=FormDefList 操作列宽 190 不足以容纳三直显按钮被单元格裁尾（sticky 正常）；修复 width 240（Web `fe9f6be`），双视口完整可见 + 1366 滚动可达（scrollLeft=160 状态列完整、操作列钉住）+ NotifyTemplateList 真实交互演示 More 菜单端到端（净零清场）+ ListActionsColumn 3 例常驻回归。
-- G2：会话内 XHR 真实捕获 `/api/form/def/page`（200+createByName）与 DOM 行同值关联；既有鉴权（7 例含 /page 放行/403/401）与租户归属（2 例）测试聚焦重跑原始输出归档。
-- G3：/tmp 原始日志未改写提取归档（全仓 1574/0/0/0 + BUILD SUCCESS）；修正后 Web 四连 1298+3 全绿；`git-readback.txt` 提交身份与远端回读一致。
-- 指针：requirements-handover 批次 5 引用修正为台账轮 6 + 治理提交 `65d8ab1`（无独立 batch-05 文件）。
-- 修正回执 `product/v0.1.2-bugfix/receipts/batch-06-evidence-supplement-01.md`，证据 `evidence/batch-06-supplement-01/`；Server 无代码改动（`6a43d04` 不变）。
-- 唯一下一动作：规划对 G1–G3 修正的证据复核；随后 Owner 对 014–016、018（含 015）单项验收与新增/复开登记。
-
-## 批次 6 补证 01 规划复核（2026-09-27）
-
-G2/G3 与表单管理按钮/局部滚动已核销；剩余 G1a 通知模板三直显加更多完整可达、G1b 演示对象删除回读。当前唯一执行入口 `product/v0.1.2-bugfix/receipts/planning-execution-prompt-batch-06-01.md`；整体开放，Owner 验收不变。此前 G1–G3 全量待办由本条替代。
-
-## 批次 6 补充 02（执行，G1a/G1b 已处理，2026-09-27）
-
-- G1a：实测复现 NotifyTemplateList 操作列宽 170 下内容 183 溢出单元格、More 右缘超出视口（Preview 裁切同因）；修复 width 240（Web `e86f6b8`），双视口 DOM 边界 allInside=true + 截图 + More 展开交互。
-- G1b：替代对象 `V012_G1B_DEMO_01`（ID `2104030652024786945`）全链路 XHR 原始捕获——创建 / by-ID 绑定 / DELETE 200 / 列表刷新 0 条 / 同 code 回读 0 条；旧 code `V012_G1_MORE_DEMO` 只读回读 0 条；净零清场。
-- 修正后前端四连 1298+3 全绿；回执 `batch-06-evidence-supplement-02.md`，证据 `evidence/batch-06-supplement-02/`。
-- 唯一下一动作：规划对补充回执 02（G1a/G1b）复核；随后 Owner 对 014–016、018（含 015）单项验收与新增/复开登记。
+- 七项（009/010/011/012/013/017/019）全部实现并自验，原文「是否已修复」已按授权标记「是」+子项摘要；回执 `batch-07…batch-12` 系列。
+- 后端 `85915b7`/`1e81599`/`6f39887`/`06485eb`/`a67b088`；前端 `be071b7`/`26407fa`/`db56957`/`2214d26`/`ca1df96`/`57be444`/`c14b886`；迁移终点 V102；基线 Server 1410/0/0/0、Web 1298+3 四连绿。
+- 新发现缺陷（记录未修）：「我发起的」Flow name 列全「—」且未接主题。
+- 唯一下一动作：Owner 对七项及 014–016、018 逐项回归验收；新登记（含 V012-CODE-001）继续接入。
