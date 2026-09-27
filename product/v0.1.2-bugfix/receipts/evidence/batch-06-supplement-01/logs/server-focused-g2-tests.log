@@ -1,0 +1,444 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Smart-WorkFlow                                                     [pom]
+[INFO] Smart-WorkFlow :: Common                                           [jar]
+[INFO] Smart-WorkFlow :: Security                                         [jar]
+[INFO] Smart-WorkFlow :: Basic :: Storage :: API                          [jar]
+[INFO] Smart-WorkFlow :: Biz :: System :: API                             [jar]
+[INFO] Smart-WorkFlow :: Biz :: Form :: API                               [jar]
+[INFO] Smart-WorkFlow :: Biz :: Form :: Biz                               [jar]
+[INFO] 
+[INFO] ----------------------< com.sw.ck:smart-workflow >----------------------
+[INFO] Building Smart-WorkFlow 0.1.2-SNAPSHOT                             [1/7]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ smart-workflow ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ smart-workflow ---
+[INFO] Generating flattened POM of project com.sw.ck:smart-workflow:pom:0.1.2-SNAPSHOT...
+[INFO] 
+[INFO] ------------------------< com.sw.ck:sw-common >-------------------------
+[INFO] Building Smart-WorkFlow :: Common 0.1.2-SNAPSHOT                   [2/7]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-common ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-common ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-common ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-common:jar:0.1.2-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-common ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-common ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-framework/sw-common/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-common ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-common ---
+[INFO] 
+[INFO] -----------------------< com.sw.ck:sw-security >------------------------
+[INFO] Building Smart-WorkFlow :: Security 0.1.2-SNAPSHOT                 [3/7]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-security ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-security ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-security ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-security:jar:0.1.2-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-security ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-security ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-security ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-security ---
+[INFO] 
+[INFO] -------------------< com.sw.ck:sw-basic-storage-api >-------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Storage :: API 0.1.2-SNAPSHOT  [4/7]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic-storage-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-storage-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-basic/sw-basic-storage/sw-basic-storage-api/src/main/resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-basic-storage-api ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic-storage-api:jar:0.1.2-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-storage-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-storage-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-basic/sw-basic-storage/sw-basic-storage-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-storage-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-storage-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-biz-system-api >---------------------
+[INFO] Building Smart-WorkFlow :: Biz :: System :: API 0.1.2-SNAPSHOT     [5/7]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-biz-system-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-biz-system-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-system/sw-biz-system-api/src/main/resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-biz-system-api ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-biz-system-api:jar:0.1.2-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-biz-system-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-biz-system-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-system/sw-biz-system-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-biz-system-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-biz-system-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-biz-form-api >----------------------
+[INFO] Building Smart-WorkFlow :: Biz :: Form :: API 0.1.2-SNAPSHOT       [6/7]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-biz-form-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-biz-form-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-form/sw-biz-form-api/src/main/resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-biz-form-api ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-biz-form-api:jar:0.1.2-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-biz-form-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-biz-form-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-form/sw-biz-form-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-biz-form-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-biz-form-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-biz-form-biz >----------------------
+[INFO] Building Smart-WorkFlow :: Biz :: Form :: Biz 0.1.2-SNAPSHOT       [7/7]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-biz-form-biz ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-biz-form-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 13 resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-biz-form-biz ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-biz-form-biz:jar:0.1.2-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-biz-form-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-biz-form-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-biz-form-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-biz-form-biz ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.sw.ck.form.TenantOwnershipBehaviorTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-09-27T09:56:01.415+08:00  INFO 47692 --- [           main] c.s.ck.form.TenantOwnershipBehaviorTest  : Starting TenantOwnershipBehaviorTest using Java 21.0.11 with PID 47692 (started by chikan in /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-form/sw-biz-form-biz)
+2026-09-27T09:56:01.417+08:00  INFO 47692 --- [           main] c.s.ck.form.TenantOwnershipBehaviorTest  : No active profile set, falling back to 1 default profile: "default"
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.5.9 
+2026-09-27T09:56:02.004+08:00  INFO 47692 --- [           main] c.s.ck.form.TenantOwnershipBehaviorTest  : Started TenantOwnershipBehaviorTest in 0.741 seconds (process running for 1.306)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/chikan/.m2/repository/net/bytebuddy/byte-buddy-agent/1.15.11/byte-buddy-agent-1.15.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-09-27T09:56:02.455+08:00  INFO 47692 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-27T09:56:02.558+08:00  INFO 47692 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:i5_tenant_owner user=SA
+2026-09-27T09:56:02.560+08:00  INFO 47692 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-27T09:56:02.709+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=51fee7fd-827a-4acf-ba6e-5d9a238e11ca, formKey=i5_dup_a730f1ca
+2026-09-27T09:56:02.773+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=4ed8b01b-2be9-41ee-a421-318d7de1a598, formKey=i5_isolation_58b395f2
+2026-09-27T09:56:02.780+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=eeb25030-b8c6-44ad-b365-80dce7c5cc6e, formKey=i5_isolation_58b395f2
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.753 s -- in com.sw.ck.form.TenantOwnershipBehaviorTest
+[INFO] Running com.sw.ck.form.controller.FormDefinitionControllerAuthorizationTest
+2026-09-27T09:56:03.467+08:00  INFO 47692 --- [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-09-27T09:56:03.467+08:00  INFO 47692 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-27T09:56:03.468+08:00  INFO 47692 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-09-27T09:56:03.585+08:00  INFO 47692 --- [           main] c.s.c.f.c.FormDefinitionController       : Publishing form: id=f-1
+2026-09-27T09:56:03.609+08:00  INFO 47692 --- [           main] c.s.c.f.c.FormDefinitionController       : Saving form config: id=f-1
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.799 s -- in com.sw.ck.form.controller.FormDefinitionControllerAuthorizationTest
+[INFO] Running com.sw.ck.form.service.FormDefinitionServiceTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-09-27T09:56:03.661+08:00  INFO 47692 --- [           main] c.s.c.f.s.FormDefinitionServiceTest      : Starting FormDefinitionServiceTest using Java 21.0.11 with PID 47692 (started by chikan in /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-form/sw-biz-form-biz)
+2026-09-27T09:56:03.661+08:00  INFO 47692 --- [           main] c.s.c.f.s.FormDefinitionServiceTest      : The following 1 profile is active: "test"
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.5.9 
+2026-09-27T09:56:03.682+08:00  INFO 47692 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-09-27T09:56:03.684+08:00  INFO 47692 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:formservicetest user=SA
+2026-09-27T09:56:03.684+08:00  INFO 47692 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-09-27T09:56:03.684+08:00  INFO 47692 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : DynamicTableManager initialized with dialect: H2
+2026-09-27T09:56:03.750+08:00  INFO 47692 --- [           main] c.s.c.f.s.FormDefinitionServiceTest      : Started FormDefinitionServiceTest in 0.132 seconds (process running for 3.052)
+2026-09-27T09:56:03.759+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=931fe9e9-2819-402c-b245-2754324768cb, formKey=test_emptysub
+2026-09-27T09:56:03.776+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=931fe9e9-2819-402c-b245-2754324768cb
+2026-09-27T09:56:03.799+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=7f94637a-a5f2-4069-a643-a4d3f352e845, formKey=test_nested
+2026-09-27T09:56:03.802+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=7f94637a-a5f2-4069-a643-a4d3f352e845
+=== 递归 TABLE 发布被拦截 ✓ ===
+2026-09-27T09:56:03.808+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=34cf6ee2-a2df-439e-9ff0-2b7271e0190b, formKey=test_invalid
+2026-09-27T09:56:03.810+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=34cf6ee2-a2df-439e-9ff0-2b7271e0190b
+=== 非法字段名发布被拦截 ===
+2026-09-27T09:56:03.827+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=a11cfc46-e8b4-4567-95d7-32986975a3ff, formKey=render_test
+2026-09-27T09:56:03.830+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=a11cfc46-e8b4-4567-95d7-32986975a3ff
+2026-09-27T09:56:03.841+08:00  INFO 47692 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Executing DDL: CREATE TABLE "sw_form_bldbkmksz4" (
+  "id" VARCHAR(36) NOT NULL,
+  "tenant_id" BIGINT NOT NULL DEFAULT 0,
+  "deleted" SMALLINT NOT NULL DEFAULT 0,
+  "create_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "create_by" BIGINT ,
+  "update_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "update_by" BIGINT ,
+  "version" BIGINT NOT NULL DEFAULT 0,
+  "username" VARCHAR(1000),
+  PRIMARY KEY ("id")
+)
+2026-09-27T09:56:03.843+08:00  INFO 47692 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Created table: sw_form_bldbkmksz4
+2026-09-27T09:56:03.843+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Physical table created: sw_form_bldbkmksz4 for form: a11cfc46-e8b4-4567-95d7-32986975a3ff
+2026-09-27T09:56:03.846+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Form published: id=a11cfc46-e8b4-4567-95d7-32986975a3ff, formKey=render_test, physicalTable=sw_form_bldbkmksz4, version=2
+=== 渲染接口验证 ===
+Definition by ID: {"title": "测试表单", "fields": [{"name": "username", "type": "TEXT"}]}
+
+Definition by Key: {"title": "测试表单", "fields": [{"name": "username", "type": "TEXT"}]}
+
+2026-09-27T09:56:03.855+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=9842f800-0e4e-4a1a-af67-aef9552c11e7, formKey=it_application
+2026-09-27T09:56:03.857+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=9842f800-0e4e-4a1a-af67-aef9552c11e7
+2026-09-27T09:56:03.860+08:00  INFO 47692 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Executing DDL: CREATE TABLE "sw_form_llh25vsgw4" (
+  "id" VARCHAR(36) NOT NULL,
+  "tenant_id" BIGINT NOT NULL DEFAULT 0,
+  "deleted" SMALLINT NOT NULL DEFAULT 0,
+  "create_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "create_by" BIGINT ,
+  "update_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "update_by" BIGINT ,
+  "version" BIGINT NOT NULL DEFAULT 0,
+  "applicant_name" VARCHAR(1000),
+  "department" VARCHAR(100),
+  "budget" NUMERIC(20,6),
+  "start_date" TIMESTAMP,
+  "is_urgent" SMALLINT,
+  "description" CLOB,
+  PRIMARY KEY ("id")
+)
+2026-09-27T09:56:03.861+08:00  INFO 47692 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Created table: sw_form_llh25vsgw4
+2026-09-27T09:56:03.861+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Physical table created: sw_form_llh25vsgw4 for form: 9842f800-0e4e-4a1a-af67-aef9552c11e7
+2026-09-27T09:56:03.863+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Form published: id=9842f800-0e4e-4a1a-af67-aef9552c11e7, formKey=it_application, physicalTable=sw_form_llh25vsgw4, version=2
+=== 发布结果 ===
+FormDef: id=9842f800-0e4e-4a1a-af67-aef9552c11e7, status=PUBLISHED, physicalTable=sw_form_llh25vsgw4, version=2
+=== 动态宽表 DDL ===
+CREATE TABLE sw_form_llh25vsgw4 (
+  id CHARACTER VARYING(36) NOT NULL,
+  tenant_id BIGINT NOT NULL,
+  deleted SMALLINT NOT NULL,
+  create_time TIMESTAMP NOT NULL,
+  create_by BIGINT,
+  update_time TIMESTAMP NOT NULL,
+  update_by BIGINT,
+  version BIGINT NOT NULL,
+  applicant_name CHARACTER VARYING(1000),
+  department CHARACTER VARYING(100),
+  budget NUMERIC,
+  start_date TIMESTAMP,
+  is_urgent SMALLINT,
+  description CHARACTER LARGE OBJECT(9223372036854775807)
+)
+=== Snapshot ===
+version=2, definition={
+    "fields": [
+        {"name": "applicant_name", "type": "TEXT"},
+        {"name": "department", "type": "DICT", "dictType": "sys_dept"},
+        {"name": "budget", "type": "NUMBER"},
+        {"name": "start_date", "type": "DATE"},
+        {"name": "is_urgent", "type": "BOOL"},
+        {"name": "description", "type": "RICH_TEXT"}
+    ]
+}
+
+2026-09-27T09:56:03.880+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=c9dde9c8-1725-421a-96af-0b5837fb806c, formKey=leave_request
+=== 草稿创建结果 ===
+FormDef: id=c9dde9c8-1725-421a-96af-0b5837fb806c, key=leave_request, status=DRAFT
+Config: definition={}
+2026-09-27T09:56:03.888+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=65c917fe-e952-4fcd-965c-26dd6bdfd6cc, formKey=test_notarget
+2026-09-27T09:56:03.891+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=65c917fe-e952-4fcd-965c-26dd6bdfd6cc
+2026-09-27T09:56:03.897+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=74487ce4-5fb2-4a7d-8fa4-50cf26aa4bcf, formKey=creator_a
+2026-09-27T09:56:03.898+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=1fc798fc-9cdf-487a-91f5-ce7cd889f809, formKey=creator_b
+2026-09-27T09:56:03.901+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=2372327f-c86f-4d33-acd4-1954ae4d39e9, formKey=creator_c
+2026-09-27T09:56:03.922+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=b6b82a3f-ada5-4833-b230-c2615abf31b1, formKey=test_pub
+2026-09-27T09:56:03.924+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=b6b82a3f-ada5-4833-b230-c2615abf31b1
+2026-09-27T09:56:03.926+08:00  INFO 47692 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Executing DDL: CREATE TABLE "sw_form_ps96gzcso9" (
+  "id" VARCHAR(36) NOT NULL,
+  "tenant_id" BIGINT NOT NULL DEFAULT 0,
+  "deleted" SMALLINT NOT NULL DEFAULT 0,
+  "create_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "create_by" BIGINT ,
+  "update_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "update_by" BIGINT ,
+  "version" BIGINT NOT NULL DEFAULT 0,
+  "field_a" VARCHAR(1000),
+  PRIMARY KEY ("id")
+)
+2026-09-27T09:56:03.927+08:00  INFO 47692 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Created table: sw_form_ps96gzcso9
+2026-09-27T09:56:03.927+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Physical table created: sw_form_ps96gzcso9 for form: b6b82a3f-ada5-4833-b230-c2615abf31b1
+2026-09-27T09:56:03.929+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Form published: id=b6b82a3f-ada5-4833-b230-c2615abf31b1, formKey=test_pub, physicalTable=sw_form_ps96gzcso9, version=2
+=== 已发布表单修改元数据被拒绝 ===
+2026-09-27T09:56:03.937+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=24bef220-b932-4973-8a0a-ee9229a7bec2, formKey=render_table_test
+2026-09-27T09:56:03.939+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=24bef220-b932-4973-8a0a-ee9229a7bec2
+2026-09-27T09:56:03.941+08:00  INFO 47692 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Executing DDL: CREATE TABLE "sw_form_a5e6aq9p97" (
+  "id" VARCHAR(36) NOT NULL,
+  "tenant_id" BIGINT NOT NULL DEFAULT 0,
+  "deleted" SMALLINT NOT NULL DEFAULT 0,
+  "create_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "create_by" BIGINT ,
+  "update_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "update_by" BIGINT ,
+  "version" BIGINT NOT NULL DEFAULT 0,
+  "remark" VARCHAR(1000),
+  PRIMARY KEY ("id")
+)
+2026-09-27T09:56:03.942+08:00  INFO 47692 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Created table: sw_form_a5e6aq9p97
+2026-09-27T09:56:03.942+08:00  INFO 47692 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Executing DDL: CREATE TABLE "sw_form_table_pmsijyiev6" (
+  "id" VARCHAR(36) NOT NULL,
+  "tenant_id" BIGINT NOT NULL DEFAULT 0,
+  "deleted" SMALLINT NOT NULL DEFAULT 0,
+  "create_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "create_by" BIGINT ,
+  "update_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "update_by" BIGINT ,
+  "version" BIGINT NOT NULL DEFAULT 0,
+  "parent_record_id" VARCHAR(36) NOT NULL,
+  "item_name" VARCHAR(1000),
+  PRIMARY KEY ("id")
+)
+2026-09-27T09:56:03.942+08:00  INFO 47692 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Created table: sw_form_table_pmsijyiev6
+2026-09-27T09:56:03.943+08:00  INFO 47692 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Created sub-table 'sw_form_table_pmsijyiev6' for TABLE field 'items'
+2026-09-27T09:56:03.943+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Physical table created: sw_form_a5e6aq9p97 for form: 24bef220-b932-4973-8a0a-ee9229a7bec2
+2026-09-27T09:56:03.952+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Form published: id=24bef220-b932-4973-8a0a-ee9229a7bec2, formKey=render_table_test, physicalTable=sw_form_a5e6aq9p97, version=2
+2026-09-27T09:56:03.964+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=8acc7c31-b47a-4c17-9f46-a9bbef234c8c, formKey=duplicate_key
+2026-09-27T09:56:03.970+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=0a1274b7-5d0c-4e7b-8252-5f9980493150, formKey=page_test_1
+2026-09-27T09:56:03.979+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=3c136fb8-e168-4fcb-8a88-c1b15c516ed3, formKey=page_test_2
+2026-09-27T09:56:03.988+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=fde7bcc1-c1e3-42d4-bf97-8482579b4490, formKey=page_test_3
+2026-09-27T09:56:03.995+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=6ccb229b-cb7b-494a-82af-c47a130d08dd, formKey=page_test_4
+2026-09-27T09:56:04.003+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=5bfcc42e-05c7-48a4-ae82-2987a336a6a5, formKey=page_test_5
+=== 分页查询验证 ===
+page1 total=5, records=2, first=other_form_5
+page2 total=5, records=2
+keyword match total=2
+2026-09-27T09:56:04.031+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=bdf18e59-6628-4ad7-86f6-61793732a018, formKey=test_valid_col_span
+2026-09-27T09:56:04.034+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=bdf18e59-6628-4ad7-86f6-61793732a018
+2026-09-27T09:56:04.036+08:00  INFO 47692 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Executing DDL: CREATE TABLE "sw_form_d4494lhz46" (
+  "id" VARCHAR(36) NOT NULL,
+  "tenant_id" BIGINT NOT NULL DEFAULT 0,
+  "deleted" SMALLINT NOT NULL DEFAULT 0,
+  "create_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "create_by" BIGINT ,
+  "update_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "update_by" BIGINT ,
+  "version" BIGINT NOT NULL DEFAULT 0,
+  "one" VARCHAR(1000),
+  "middle" NUMERIC(20,6),
+  "full_width" CLOB,
+  PRIMARY KEY ("id")
+)
+2026-09-27T09:56:04.037+08:00  INFO 47692 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : Created table: sw_form_d4494lhz46
+2026-09-27T09:56:04.037+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Physical table created: sw_form_d4494lhz46 for form: bdf18e59-6628-4ad7-86f6-61793732a018
+2026-09-27T09:56:04.039+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Form published: id=bdf18e59-6628-4ad7-86f6-61793732a018, formKey=test_valid_col_span, physicalTable=sw_form_d4494lhz46, version=2
+2026-09-27T09:56:04.044+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=9aa45825-2834-4ee8-987c-baf0e80be76b, formKey=test_nodt
+2026-09-27T09:56:04.046+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=9aa45825-2834-4ee8-987c-baf0e80be76b
+2026-09-27T09:56:04.053+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=2d703741-262f-407d-9d4b-3570a8224081, formKey=test_dup
+2026-09-27T09:56:04.054+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Saved form config: formId=2d703741-262f-407d-9d4b-3570a8224081
+=== 重复字段名发布被拦截 ===
+2026-09-27T09:56:04.059+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=5e2e7f76-77aa-47e8-9542-3ba6b9933255, formKey=test_disabled
+2026-09-27T09:56:04.063+08:00  INFO 47692 --- [           main] c.s.c.f.service.impl.FormDefServiceImpl  : Created form draft: id=269f36cb-c107-4fc6-9325-b0789762f129, formKey=test_invalid_col_span
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.455 s -- in com.sw.ck.form.service.FormDefinitionServiceTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 26, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Smart-WorkFlow 0.1.2-SNAPSHOT:
+[INFO] 
+[INFO] Smart-WorkFlow ..................................... SUCCESS [  0.190 s]
+[INFO] Smart-WorkFlow :: Common ........................... SUCCESS [  0.632 s]
+[INFO] Smart-WorkFlow :: Security ......................... SUCCESS [  0.075 s]
+[INFO] Smart-WorkFlow :: Basic :: Storage :: API .......... SUCCESS [  0.049 s]
+[INFO] Smart-WorkFlow :: Biz :: System :: API ............. SUCCESS [  0.052 s]
+[INFO] Smart-WorkFlow :: Biz :: Form :: API ............... SUCCESS [  0.045 s]
+[INFO] Smart-WorkFlow :: Biz :: Form :: Biz ............... SUCCESS [  3.652 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.921 s
+[INFO] Finished at: 2026-09-27T09:56:04+08:00
+[INFO] ------------------------------------------------------------------------

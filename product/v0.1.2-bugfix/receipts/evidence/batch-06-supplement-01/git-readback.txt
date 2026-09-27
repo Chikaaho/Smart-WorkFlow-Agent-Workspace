@@ -1,0 +1,15 @@
+# 批次 6 修正回执 Git 身份与远端回读
+# 生成时间：2026-09-27 09:57:19
+
+== Server ==
+HEAD 6a43d04aa7b5ce0e15f00aca371c463172d62cec feat(form): 表单定义分页列表下发创建人展示名
+6a43d04aa7b5ce0e15f00aca371c463172d62cec	refs/heads/0.1.2-bugfix
+
+== Web ==
+HEAD fe9f6beeff4eebf3f8f79f61227712ffb38bf059 fix(ui): 表单管理操作列加宽消除按钮截断并补更多菜单回归
+fe9f6beeff4eebf3f8f79f61227712ffb38bf059	refs/heads/0.1.2-bugfix
+
+== 计数核对 ==
+Server 全仓（批次 6 时点全量）: 1574/0/0/0（14 模块汇总行求和，见 logs/server-full-suite-summary-extract.log）
+Server 聚焦（本修正补充实跑）: 26/0/0/0（鉴权 7 + 租户 2 + 表单定义 17）
+Web vitest（修正后实跑）: 1298 passed + 3 skipped（= 批次 6 的 1295 + 新增 ListActionsColumn 3 例）

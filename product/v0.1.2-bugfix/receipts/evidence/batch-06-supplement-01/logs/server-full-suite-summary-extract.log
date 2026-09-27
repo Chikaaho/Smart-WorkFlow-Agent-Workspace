@@ -1,0 +1,33 @@
+# 全仓测试原始汇总提取（快照）
+# 来源：/tmp/server-test.log（2026-09-27 02:05-02:25 全仓 mvn -B -o test 原始日志，已随批次 6 运行）
+# 适用性：运行时工作树与提交 Server 6a43d04 内容一致（测试完成后无代码改动即提交）；提取行未经改写
+# 提取时间：2026-09-27 09:56:18
+
+== 各模块汇总行（Tests run 结尾行）==
+[INFO] Tests run: 32, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 29, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 118, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 51, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 57, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 349, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 305, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 160, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 61, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 213, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 171, Failures: 0, Errors: 0, Skipped: 0
+
+== 展示名/门面相关模块（system-biz OrgAuthorityFacadeIntegrationTest）==
+2026-09-27T02:06:12.625+08:00  INFO 6753 --- [           main] .c.s.o.OrgAuthorityFacadeIntegrationTest : Started OrgAuthorityFacadeIntegrationTest in 0.182 seconds (process running for 8.274)
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.216 s -- in com.sw.ck.system.orgfoundation.OrgAuthorityFacadeIntegrationTest
+
+== form-biz 模块测试行 ==
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.542 s -- in com.sw.ck.form.TenantOwnershipBehaviorTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.825 s -- in com.sw.ck.form.controller.FormDefinitionControllerAuthorizationTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.251 s -- in com.sw.ck.form.service.FormDefinitionServiceTest
+
+== 构建结论 ==
+[INFO] BUILD SUCCESS
+[INFO] Total time:  20:18 min
