@@ -1,0 +1,33 @@
+{
+  "$schema": "CH-aPaaS 版本权威（单一机器可读源；变更须走新回执）",
+  "product": "CH-aPaaS",
+  "version": "0.1.2",
+  "iteration": "0.0.3",
+  "registeredAt": "2026-09-28",
+  "registeredBy": "v0.1.2-release 正式方向（Owner 2026-09-28 授权 0.1.2-bugfix → develop → main 合并发版；发布回执 product/v0.1.2-release/receipts/release-20260928.md）",
+  "projections": {
+    "serverRepo": {
+      "path": "Smart-WorkFlow-aPaaS-server",
+      "mavenVersion": "0.1.2",
+      "flywayEndpoint": { "h2": "V102", "postgresql": "V102" }
+    },
+    "webRepo": {
+      "path": "Smart-WorkFlow-aPaaS-Web",
+      "packageVersion": "0.1.2"
+    },
+    "workspace": {
+      "path": "Smart-WorkFlow-Agent-Workspace",
+      "changelog": "CHANGELOG.md",
+      "releaseNotes": "release/0.1.2/RELEASE-NOTES.md",
+      "upgrade": "release/0.1.2/UPGRADE.md",
+      "rollback": "release/0.1.2/ROLLBACK.md",
+      "configChanges": "release/0.1.2/CONFIG-CHANGES.md",
+      "dbMigrations": "release/0.1.2/DB-MIGRATIONS.md",
+      "manifest": "release/0.1.2/MANIFEST.json（候选 SHA 固定后生成；固定前不写标签/Release）"
+    }
+  },
+  "rules": {
+    "candidateFreeze": "候选固定后只允许通过新回执审查的变更进入；代码/迁移/依赖/配置漂移使受影响证据失效并重固定候选",
+    "tagAndRelease": "0.1.2 标签/Release 须在发布授权完成且 Owner 明确授权后创建"
+  }
+}
