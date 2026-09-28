@@ -47,12 +47,16 @@
 ## 3. 同步文件快照与校验索引（规划只读边界外的实际文件）
 
 - 快照位置：`product/v0.1.2-release/receipts/evidence/terminal-sync-20260928/`（`current-status.md`、`README.md`、`state.md`、`handoff.md`、`features.md`）。
-- 校验索引 `SHA256SUMS.txt` 由 `shasum -a 256` 生成，生成后立即 `shasum -a 256 -c` 回读 **5/5 OK**（快照为写入完成后的最终内容）。
+- 校验索引 `SHA256SUMS.md` 由 `shasum -a 256` 生成，生成后立即 `shasum -a 256 -c` 回读 **5/5 OK**（快照为写入完成后的最终内容；原 .txt 命中被 `.gitignore` 第 34 行 `product/**/receipts/**/*.txt` 排除，改用 .md 承载同一索引入库）。校验值：
+  - `8c02c262740c9a9741b7c7b0265a5daefeb855ea8e4de3dfd6d6584595f4dc77`  current-status.md
+  - `0ce2ec84d073641a7f2e0531b4cd024af2d0c67868dd7c7a09e27055f1c421da`  README.md
+  - `16fe96ba179a27fadeabea7a628c4e1704428c2d4ca0380b83712b241db6abae`  state.md
+  - `5352013271e60e1e7dabf4e4a4d1e88a253176249a2d6e9ed84e3764cb3146fb`  handoff.md
+  - `11661c56df38b4c3446076e47c66864679c44c13070dc2c0e6a1c8d42c0eac75`  features.md
 
 ## 4. Git 提交与远端回读
 
-- 本批仅暂存终态同步范围：`knowledge/current-status.md`、`memory/` 四文件、`receipts/release-20260928.md`（澄清）、`receipts/terminal-sync-20260928.md`（本回执）、`receipts/evidence/terminal-sync-20260928/`，以及规划先行落盘的方向归档移动（`passed/`、`ready/` 同步方向）。
-- 分支：工作区既有跟踪分支 `develop-sw`；前一发布材料提交 `53467bc82a7f4b99dffa89e9fdfd4d876fa40da1`。本同步提交普通推送后回读 `origin/develop-sw` 与本地一致（0/0），提交 SHA 见机器终态 `progress_fingerprint` 与对话记录（文档不预填自身提交 SHA，按 §4.5.5 以提交后回读关联）。
+- 本批仅暂存终态同步范围：`knowledge/current-status.md`、`memory/` 四文件、`receipts/release-20260928.md`（澄清）、`receipts/terminal-sync-20260928.md`（本回执）、`receipts/evidence/terminal-sync-20260928/`（含 `SHA256SUMS.md`），以及规划先行落盘的方向归档移动（`passed/`、`ready/` 同步方向）。主提交 `cd03f50c63018a2f1a4cfb5523c13e7a355412d5` 推送回读 `origin/develop-sw` 一致（0/0）；校验索引改 .md 补交后以最终推送回读为准（提交 SHA 见机器终态 `progress_fingerprint` 与对话记录，文档不预填自身提交 SHA，按 §4.5.5 以提交后回读关联）。
 
 ## 5. 自验结论
 
