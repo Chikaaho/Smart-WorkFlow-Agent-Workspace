@@ -2,7 +2,7 @@
 
 ## 当前任务（2026-09-28）
 
-三方 SSO 真实接入执行中（方向 `product/dingtalk-sso/ready/direction-three-provider-sso-20260928.md`，L；P31 未核销）：共用回调 302/回跳链修复完成并推送（Server `98e0034`/`edd7a02`/`4f5454e`/`49b5f9f`/`cb5f17d`，Web `d37a57b`）；飞书真实链六段通过（证据 `product/dingtalk-sso/receipts/evidence/feishu-real-chain-01/`）；钉钉待 Owner 控制台登录（配置 Contact.User.Read+回调 URL 后跑真实链）；企业微信冻结于企业管理后台扫码/企业主体确认。回执 `product/dingtalk-sso/receipts/implementation-three-provider-01.md`。唯一下一动作=Owner 完成钉钉控制台登录后执行配置与真实链。
+三方 SSO 真实接入执行中（方向 `product/dingtalk-sso/ready/direction-three-provider-sso-20260928.md`，L；P31 未核销）：共用回调 302/回跳链修复完成并推送（Server `98e0034`/`edd7a02`/`4f5454e`/`49b5f9f`/`cb5f17d`，Web `d37a57b`）；飞书真实链自验提交、规划补证中（证据 `product/dingtalk-sso/receipts/evidence/feishu-real-chain-01/`，当前入口=一级补证提示 01）；钉钉待 Owner 控制台登录（配置 Contact.User.Read+回调 URL 后跑真实链）；企业微信冻结于企业管理后台扫码/企业主体确认。回执 `product/dingtalk-sso/receipts/implementation-three-provider-01.md`。唯一下一动作=Owner 完成钉钉控制台登录后执行配置与真实链。
 
 ## 已完成
 

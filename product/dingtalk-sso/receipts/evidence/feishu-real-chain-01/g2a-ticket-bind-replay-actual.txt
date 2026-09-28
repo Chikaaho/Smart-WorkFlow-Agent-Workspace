@@ -1,0 +1,12 @@
+== [0] 绑定表基线:
+{"code":0,"msg":"success","data":{"bindings":[]}}
+== [1] candidate peek（新候选票据）:
+{"code":0,"msg":"success","data":{"externalDigestPrefix":"6bb50608","provider":"FEISHU"}}
+== [2] bind-candidate（首次消费，t100user 登录态）:
+{"code":0,"msg":"success","data":null}
+== [3] bind-candidate 重放同票（应 401）:
+{"code":401,"msg":"登录票据无效或已过期，请重新发起第三方登录","data":null,"errorKey":"system.sso_ticket_invalid","eventRef":"req-3a25662c78e64f6c5c0
+== [4] candidate 重放同票（应 401 已消费）:
+{"code":401,"msg":"登录票据无效或已过期，请重新发起第三方登录","data":null,"errorKey":"system.sso_ticket_invalid","eventRef":"req-01abd1b950a2a8d580c
+== [5] 反向断言：恰新增 1 条绑定（FEISHU 6bb50608）:
+{"code":0,"msg":"success","data":{"bindings":[{"externalDigestPrefix":"6bb50608","provider":"FEISHU"}]}}

@@ -1,0 +1,12 @@
+t100user login: 0
+== [0] 绑定表基线（应空）:
+{"code":401,"msg":"登录状态已失效，请重新登录","data":null,"errorKey":"common.unauthenticated","eventRef":"
+== [1] candidate peek（有效票据）:
+{"code":0,"msg":"success","data":{"externalDigestPrefix":"6bb50608","provider":"FEISHU"}}
+== [2] 等 61s（TTL 60s）…
+== [3] candidate 再 peek（过期）:
+{"code":401,"msg":"登录票据无效或已过期，请重新发起第三方登录","data":null,"errorKey":"system.sso_ticket_invalid","eventRef":"req-079e2a397
+== [4] bind-candidate 过期票（重放/过期拒绝）:
+{"code":401,"msg":"登录状态已失效，请重新登录","data":null,"errorKey":"common.unauthenticated","eventRef":"req-633417210aabb9ee362290fb5f579eba"}
+== [5] 反向断言：绑定表仍空（拒绝未新增绑定）:
+{"code":401,"msg":"登录状态已失效，请重新登录","data":null,"errorKey":"common.unauthenticated","eventRef":"
