@@ -1,0 +1,11 @@
+== Server
+cb5f17d7b01805c51f39bcded98a977c154e3382
+cb5f17d7b01805c51f39bcded98a977c154e3382
+cb5f17d test(sso): 适配 exchangeExternalId 回调 URL 签名的桩更新
+49b5f9f fix(sso): 已绑定登录统一经回跳页兑换票据——redirect_path 转为兑换后去向，修复工作台路径不消费票据的断链
+4f5454e fix(sso): 飞书换票升级官方 v3 契约（form+redirect_uri+平铺解析）——SPI 传入回调 URL；旧 v2 端点实测 HTTP 400
+edd7a02 fix(sso): 回调入口归一化 provider 大小写——修复 Provider 依小写路径回跳必被拒的断链
+98e0034 fix(sso): 回调改真实 302 同源回跳并新增前端基路径合成——修复 Provider 顶层重定向落在 JSON 页的断链
+fd704ff feat(bpm): 我发起的与我的已办富化流程名/主题/发起人展示名(021/022)
+== remote readback
+cb5f17d7b01805c51f39bcded98a977c154e3382	refs/heads/develop

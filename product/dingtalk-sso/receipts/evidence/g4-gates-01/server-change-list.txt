@@ -1,0 +1,34 @@
+== 98e0034
+98e0034 fix(sso): 回调改真实 302 同源回跳并新增前端基路径合成——修复 Provider 顶层重定向落在 JSON 页的断链
+ .../sw/ck/system/controller/SsoAuthController.java | 39 ++++++++++++++--------
+ .../com/sw/ck/system/sso/SsoCallbackPolicy.java    | 25 +++++++++++++-
+ .../com/sw/ck/system/sso/SsoAuthServiceTest.java   | 35 ++++++++++++++-----
+ sw-bootstrap/src/main/resources/application.yml    |  2 ++
+ 4 files changed, 78 insertions(+), 23 deletions(-)
+== edd7a02
+edd7a02 fix(sso): 回调入口归一化 provider 大小写——修复 Provider 依小写路径回跳必被拒的断链
+ .../src/main/java/com/sw/ck/system/sso/SsoAuthService.java    |  8 ++++++--
+ .../test/java/com/sw/ck/system/sso/SsoAuthServiceTest.java    | 11 +++++++++++
+ 2 files changed, 17 insertions(+), 2 deletions(-)
+== 4f5454e
+4f5454e fix(sso): 飞书换票升级官方 v3 契约（form+redirect_uri+平铺解析）——SPI 传入回调 URL；旧 v2 端点实测 HTTP 400
+ .../ck/system/sso/DingtalkSsoProviderClient.java   |  2 +-
+ .../sw/ck/system/sso/FeishuSsoProviderClient.java  | 69 +++++-----------------
+ .../java/com/sw/ck/system/sso/SsoAuthService.java  |  3 +-
+ .../com/sw/ck/system/sso/SsoProviderClient.java    |  5 +-
+ .../sw/ck/system/sso/WecomSsoProviderClient.java   |  2 +-
+ 5 files changed, 24 insertions(+), 57 deletions(-)
+== 49b5f9f
+49b5f9f fix(sso): 已绑定登录统一经回跳页兑换票据——redirect_path 转为兑换后去向，修复工作台路径不消费票据的断链
+ .../main/java/com/sw/ck/system/controller/SsoAuthController.java | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+== cb5f17d
+cb5f17d test(sso): 适配 exchangeExternalId 回调 URL 签名的桩更新
+ .../src/test/java/com/sw/ck/system/sso/SsoAuthServiceTest.java          | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+== Web d37a57b
+d37a57b fix(sso): 回跳页支持 sso_error 拒绝分支；清理未用 XHR 回调；登录页 Provider 文案改 i18n 修复企微标签
+ src/foundation/auth/sso.ts  | 20 --------------------
+ src/views/LoginPage.vue     |  7 +++++--
+ src/views/SsoReturnPage.vue |  4 +++-
+ 3 files changed, 8 insertions(+), 23 deletions(-)

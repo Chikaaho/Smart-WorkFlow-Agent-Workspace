@@ -1,0 +1,9 @@
+== 验证环境配置回读（2026-09-28）
+SW_SSO_CALLBACK_BASE_URL=http://localhost:8081/sw-server
+SW_SSO_CALLBACK_ALLOWLIST=http://localhost:8081/sw-server/
+SW_SSO_FRONTEND_BASE_PATH=/sw
+sw.security.cookie.path=/sw-server/api/auth/（-D 覆盖）
+profile=dev（H2 内存+devseed V900-V903+临时 V904/V905，仓库外 /tmp/sw-sso-verify/seed/，0600）
+V904: DINGTALK/FEISHU 真实 appId+AES-GCM 密文（dev 公开密钥加密）+redirect_path=/sso/return，覆盖 V903 哨兵行 id 90002/90003
+V905: t100user（租户100普通账号，无角色，id=9002）
+生产 chikaho.cn 未做任何变更

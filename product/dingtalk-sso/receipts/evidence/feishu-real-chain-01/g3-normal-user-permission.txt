@@ -1,0 +1,9 @@
+t100user login: 0 | token: true
+me roles: []
+audit(no-perm): {"code":401,"msg":"登录状态已失效，请重新登录","data":null,"errorKey":"common.unauthenticated","eventRef":"req-631f9d46499090340548d194017ab5d2"}
+HTTP=401
+t100user login: 0
+me roles: [] | perms: []
+audit(no-perm): {"code":403,"msg":"您没有执行该操作的权限，请联系管理员分配相应权限","data":null,"errorKey":"common.forbidden","eventRef":"req-ada561ea1867dfc9b936a5a4f573061e"}
+HTTP=403
+menus: []

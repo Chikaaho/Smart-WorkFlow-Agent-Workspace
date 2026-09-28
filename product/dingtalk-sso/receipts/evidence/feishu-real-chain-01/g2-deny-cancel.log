@@ -1,0 +1,5 @@
+2026-09-28T22:30:21.196+08:00  WARN 90474 --- [nio-8080-exec-3] c.s.c.s.controller.SsoAuthController     : SSO 回调失败: eventRef=<ref> provider=feishu detail=飞书换票失败: HTTP 400
+2026-09-28T22:37:48.296+08:00  WARN 90474 --- [nio-8080-exec-5] c.s.c.s.controller.SsoAuthController     : SSO 回调被拒: eventRef=<ref> provider=feishu errorKey=system.sso_login_not_completed detail=第三方登录未能完成，请返回登录页重新发起，或改用账号密码登录
+2026-09-28T22:33:49.878+08:00  INFO 90474 --- [nio-8080-exec-2] c.s.c.s.filter.AccessLoggingFilter       : ACCESS method=POST path=/api/auth/sso/ticket status=200 costMs=7 eventRef=<ref> clientRequestId=web-fa95a451-c6ad-4aee-888d-e6689f8ec319 userId=null
+2026-09-28T22:36:29.931+08:00  INFO 90474 --- [nio-8080-exec-8] c.s.c.s.filter.AccessLoggingFilter       : ACCESS method=POST path=/api/auth/sso/ticket status=200 costMs=8 eventRef=<ref> clientRequestId=web-79eeb1ea-e255-43f4-951d-d5af94a8f254 userId=null
+2026-09-28T22:37:06.937+08:00  INFO 90474 --- [nio-8080-exec-4] c.s.c.s.filter.AccessLoggingFilter       : ACCESS method=POST path=/api/auth/sso/ticket status=200 costMs=10 eventRef=<ref> clientRequestId=web-194cc0dd-3c7c-4a52-bb94-6e550a847076 userId=null
