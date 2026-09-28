@@ -1,5 +1,6 @@
 # 0.1.2 分批 Bug 修复方向
 
+> 当前执行入口已统一为 [按原始登记完整修复方向](direction-full-repair-20260927.md)（Owner 2026-09-27 最新裁决）。本文保留历史；范围、标记规则与下一动作以新方向为准。
 - 日期：2026-09-26
 - 角色：Planner；接收角色：Executor
 - 等级：L（跨会话登记、修复、Owner 验收）；当前任务状态：IN_PROGRESS
@@ -54,3 +55,5 @@ Owner 已授权在两 coding 仓库核实并同步 develop 后，以该基线创
 当前 memory/state.md 记载 2026-09-26 版本修正已提交推送，memory/handoff.md 仍称未提交且 POM 留在工作树，存在摘要时点差异；执行需用 knowledge 与实际 Git 核对并在首批回执中压缩说明，不据旧摘要推断分支现状。
 
 唯一下一动作：执行读取后半阶段补充方向与最新 bug2.0.md，继续既有 0.1.2-bugfix 分支的缺失功能与 UI 修复。首次建分支与旧摘要差异已由执行台账记录关闭，以上启动阶段描述仅作历史。
+
+> 2026-09-28 Owner 宣布本轮修复结束；已按 Owner 范围关闭归档。当前发布入口：`product/v0.1.2-release/ready/direction-v0.1.2-release.md`。

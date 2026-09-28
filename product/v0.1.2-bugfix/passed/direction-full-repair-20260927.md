@@ -113,3 +113,5 @@ Owner 最新反例：`http://localhost:5174/login` 的 SSO 区仍出现“租户
 ## 7. 本轮追加代码缺陷
 
 - V012-CODE-001：后端全限定类型引用统一改为 import，仅同一类同时使用不同来源的同名类型可例外；同步写入开发规范。完整方向：[后端 import 规范](direction-backend-import-style.md)。本项加入本轮剩余账本，代码、验证、规范落盘全部完成后标记已修复。
+
+> 2026-09-28 Owner 宣布本轮修复结束；已按 Owner 范围关闭归档。当前发布入口：`product/v0.1.2-release/ready/direction-v0.1.2-release.md`。

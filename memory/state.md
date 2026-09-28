@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-> 总体任务 `backend-architecture-optimization` 已 `COMPLETED（规划已确认，2026-09-26）`，新活动任务见下方 0.1.2 修复方向。
+> 总体任务 `backend-architecture-optimization` 已 `COMPLETED（规划已确认，2026-09-26）`，新活动任务见下方「2026-09-28 Owner 关闭与发布」。
 
 > Owner 裁决（2026-09-24）：`v0.1.1-bugfix` 已结束，**`COMPLETED（Owner 范围关闭）`**，主方向已归档；裁决 `product/v0.1.1-bugfix/receipts/planning-owner-v011-task-close-20260924.md`。
 
@@ -21,33 +21,20 @@
 
 ## 锁定基线
 
-- 功能数 **45**；清单 **✅46/🟦22/⬜22**（90）；**ADV64** 独立计数；P60/P53/P61/P21 已终态，P2/P4/P34/P35/P37/P38/P39 未核销边界不受本任务改变。
-- 当前验证基线：Server **1570/0/0/0**（`BUILD SUCCESS`；Phase 6C 正式入口保持）；Phase 6C 三包哈希 17/17、10/10、6/6，物理文件 19/12/8；真实秘密 0。Phase 6B 主证据 18/18、补证 16/16及更早时点仅作历史。
-- Flyway：H2 15/0/0/0、97 migrations、V96；PostgreSQL 12/0/0/0、95 migrations、V96；V95→V96 行为 3/0/0/0；Phase 6A 无新增迁移。Web `1217 passed + 3 skipped` 为历史基线。
+- 功能数 **45**；清单 **✅46/🟦22/⬜22**（90）；**ADV64** 独立计数；P60/P53/P61/P21 已终态，P2/P4/P34/P35/P37/P38/P39 未核销边界不受发布任务改变（发布不增删功能数/P 编号）。
+- 当前验证基线：Server **1586/0/0/0**（`mvn -B test` BUILD SUCCESS exit 0，2026-09-28 发布门禁实跑 @ `fd704ff`；Phase 6C 时点 1570 仅作历史）；Web 四连全 exit 0、vitest **1301 passed + 3 skipped（142 文件 + 1 skipped）**（2026-09-28 发布门禁实跑 @ `5368e6c`）。Phase 6C 三包哈希等制品证据仅作历史。
+- Flyway：0.1.2 发布线终点 **V102**（H2/PostgreSQL 双份一致；0.1.0 终点 V93、2026-09-26 生产快照 V96 均为历史事实）；Web `1217+3` 为历史基线，当前见上。
 - Phase 6B 接受边界：H2 仅 test/dev 辅助、生产行为以 PG 为准；不证明腾讯 IoT 真实云端送达；版本身份已由 6C 完成。
-- Phase 6C 接受边界：develop 的 `0.1.2-SNAPSHOT` 是工程版本身份、不构成已发布版本主张（公开版本仍 0.1.0）；不修改历史 branch/tag/Release，不推断远端 ahead/behind；GitHub About/根 POM URL 属 Final。
+- Phase 6C 接受边界：develop 的 `0.1.2-SNAPSHOT` 是工程版本身份；公开版本已随 2026-09-28 发布轮更新为 **0.1.2**（tag/Release/CI 已回读，见下方发布段）。
 - Phase 4 接受边界：外部五类通知 Provider 真实送达仍 Owner 延期/未验证；引入 `@DS` 或改 Flowable DataSource/事务管理器则 G3a/G3b 快照失效；交付语义为至少一次 + 业务幂等。
 - Phase 3 接受残余：锁/语句超时固定 10 秒未配置化；极端跨表单多引用可能死锁（1511 + 回滚、无自动重试）；H2 不承担 PG 锁语义证明。
 
-## 2026-09-27 当前修复方向
+## 2026-09-28 Owner 关闭与发布
 
-- 活动任务 `v0.1.2-bugfix`：IN_PROGRESS；Owner 2026-09-27 要求按原始 Bug 描述完整修复后标记，7 项大需求全部本轮详细处理。
-- 唯一执行入口：`product/v0.1.2-bugfix/ready/direction-full-repair-20260927.md`。
-- 原表 19 项：001–008 Owner 已通过；009–013、017、019 本轮待完整实施；014–016、018 有已交付内容、整项待 Owner 验收。
-- BUG-019 最新反例为 /login 的 SSO 租户 ID 手填框；要求全局名称/选择器化，优先修复，不局限登录截图。
-- 批次 6 G1–G3 子项行为证据已核销；转录差异见最新规划复核。局部通过不代表全局或整体通过。
-- 下一动作：执行制定详细实施计划并推进 019，再按方向连续处理菜单、流程中心、主题规则、发起/详情与全局对账；逐批提交推送。
-- 修复栏完整实现验证后填“是”，部分完成明确剩余；Owner 回归独立记录。Owner 回规划宣布结束后才整体收口。
-
-- Owner 追加 V012-CODE-001（READY）：后端全限定类名改 import，唯一例外为同一类同时使用不同包同名类型；代码清理与开发规范落盘均须完成。方向 `product/v0.1.2-bugfix/ready/direction-backend-import-style.md`；Executor 处理代码，管理员承接工程规范。
-
-## 2026-09-28 回归复开修复轮执行完毕（批次 7—12 + 复开批次 13—16）
-
-- 批次 7—12（七项完整实现）后 Owner 2026-09-28 上午回归：011/014/015/016/017/018「通过」锁定（累计 14 项）；009/010/012/013/019 复开（已备注原因）+ 新增 V012-BUG-020（前台顶栏 tab 左对齐）。
-- 复开修复全部完成并标记原文「是」：020 tab 左对齐、010 定位分类移除+主题规则列内联入口、012/013 表单边框体系+流程图网格画布与节点层级+详情发起同款/铺满、009 流程中心列表化（分类分组带+多列条目）、019 用户/部门系统弹窗选择器；另修复收藏「取消→再收藏」撞物理唯一键 500（物理删除+回环单测）。
-- 提交：Web `d627b6e`/`9ff1c17`/`3aaa2e0`/`3aa8ff6`/`3fb7f1a`/`59a9878`；Server `0d05b5e`/`e348ff8`（迁移锚随 V102 修正）。迁移终点 V102。
-- 基线：Server 全量 1559 例（6 失败均为锚陈旧，修正后四锚类 31 例复验绿，其余同树全绿）；Web 四连 typecheck 0/lint 0/vitest 1301+3/build 0。回执 `batch-13-16-v012-bug-reopened-round.md`。
-- 新发现缺陷（记录未修）：「我发起的」Flow name 列全「—」且未接主题。
-- 2026-09-28 午后回归：010/012/013/019/020 通过（累计 19 项）；009 二轮未通过（左右留白）已修（去 1152px 上限铺满，Web `d09c748`）后 Owner 回归通过（累计 20 项）。
-- 批次 18（021/022/023 工作台优化）已完成：待办卡/业务动态卡可读化（主题+流程名·发起人·时间，状态/动作翻译；Server `fd704ff` 富化 my/instances 与 MyProcessed，顺带核销「我发起的」Flow name「—」缺陷）+ 工作台本地路由 /workspace/todo|processed|my-drafts（Web `8618922`）；E2E 三项实测通过，四连全绿。
-- 唯一下一动作：Owner 对 021/022/023 逐项回归验收；新登记（含 V012-CODE-001）继续接入。
+- 2026-09-28 Owner 宣布本轮修复结束，`v0.1.2-bugfix` 修复阶段 COMPLETED（Owner 范围关闭）；23 项历史执行与回归记录保留，不补造逐项验收。
+- `v0.1.2-release` 发布执行完成（执行自验，状态 `VERIFYING`，待规划核对发布终态）：两仓 `0.1.2-bugfix` → `develop` → `main` 普通快进合并（零冲突）并推送回读一致——Server `origin/develop = origin/main = fd704ff12af3ccd99febaa700c523d7688e91509`（develop 合入 10 提交）、Web `origin/develop = origin/main = 5368e6c656c095acd3fe2cff1875c27ee5672307`（develop 合入 26 提交 + 版本提交 `5368e6c`，package.json 0.1.0→0.1.2）。
+- 门禁：Server compile exit 0 + `mvn -B test` BUILD SUCCESS **1586/0/0/0**；Web 2G 四连全 exit 0（vitest 1301+3）。main CI 双 success：Server run `36396145288`（`bootstrap-0.1.2.jar` 216,941,567B、`build.version=0.1.2`）、Web run `36396187465`（dist zip 1,035,442B）。
+- 两仓 annotated tag `0.1.2` 已推送并回读一致（Server tag 对象 `68987243…`、Web `e280b141…`）；正式公开 Release（非 prerelease、Latest）：Server [0.1.2](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server/releases/tag/0.1.2)（sha256 `a4d59613…61c876`）、Web [0.1.2](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web/releases/tag/0.1.2)（sha256 `703fd2c4…adadbc`）；正文自上一实际发布 0.1.0 真实差异生成。工作区 `version.json`→0.1.2、`release/0.1.2/` 六份材料落盘；回执 `product/v0.1.2-release/receipts/release-20260928.md`。
+- 本次未部署：生产仍为 2026-09-26 快照（旧 main `2d4278b`/`1871725`、Flyway V96）；V97→V102 随下次授权部署增量生效。未强推、未移动/删除既有 tag/Release。
+- V012-CODE-001 核实无在途改动，仍 READY 独立跟踪，不伪造完成、不自动启动全仓清理。
+- 下一动作：规划核对发布终态（回执 §6—§11）并确认发布状态；服务器部署、V012-CODE-001、外部渠道验证均需后续独立授权。
