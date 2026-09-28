@@ -32,6 +32,17 @@
   },
   "scope": {
     "included": "两仓 0.1.2-bugfix → develop → main 普通快进合并与推送、版本元数据（Web package.json 0.1.2）、annotated tag 0.1.2、公开 Release（非 prerelease、Latest）与 CI 产物资产挂载",
-    "excluded": "服务器部署、生产库迁移/重建、历史改写、强推、既有标签/Release 删除重建（均不在本次授权范围）"
+    "excluded": "历史改写、强推、既有标签/Release 删除重建（不在授权范围）"
+  },
+  "deployment": {
+    "deployedAt": "2026-09-28",
+    "authorizedBy": "Owner 2026-09-28「completed，开始部署到服务器」",
+    "target": "生产单机（docs/ops/production-ops.md 拓扑）",
+    "serverJar": { "name": "bootstrap-0.1.2.jar", "size": 216941567, "sha256": "a4d59613d662b42b03e9256ac8476d7b707fa675e4dc7f497aef2f11dd61c876", "remoteVerified": true },
+    "webZip": { "name": "sw-web-dist-0.1.2.zip", "size": 1035442, "sha256": "703fd2c43bc87003de9669658303452fbbe8a8a08860eaca7f5217381cadadbc", "remoteVerified": true },
+    "flyway": { "before": "V96 (0 failed)", "applied": "V97—V102 共 6 个迁移", "after": "V102 (0 failed)" },
+    "verification": { "localHealth": 200, "publicSw": 200, "publicHealth": "200 UP", "frontendAsset": "assets/index-vDQskZXe.js（旧 index-3g59rUSC.js）", "startupLogErrors": 0 },
+    "backups": { "db": "/data/backup/smart_workflow_20260928_1757.dump", "jarBak": "bootstrap.jar.bak（09-26 快照）", "jarBak2": "bootstrap.jar.bak2（0.1.0）", "web": "web.bak-20260928" },
+    "receipt": "product/v0.1.2-release/receipts/deployment-20260928.md"
   }
 }
