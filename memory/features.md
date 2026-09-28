@@ -1,8 +1,9 @@
 # 功能摘要
 
-> 当前活动任务 v0.1.2-bugfix 为 IN_PROGRESS；唯一入口 `product/v0.1.2-bugfix/ready/direction-full-repair-20260927.md`。009–013、017、019 全部纳入本轮详细修复，Owner 尚未宣布结束。此前本轮排期描述由此更新。
-> 当前同步点：2026-09-26 总体任务 `backend-architecture-optimization`（XL）已 `COMPLETED（规划已确认，2026-09-26）`；新活动任务 `v0.1.2-bugfix` 为 `IN_PROGRESS`。
-> 清单当前值 **✅46/🟦22/⬜22**（90）；功能数 **45**；全量双向映射见 `knowledge/feature-reconciliation-index.md`。
+> 2026-09-28 当前：0.1.2 合并发版已执行完成（两仓 develop→main 普通快进、tag `0.1.2`、正式 Release、CI 双 success，回执 `product/v0.1.2-release/receipts/release-20260928.md`）；活动任务 `v0.1.2-release` 发布状态 `VERIFYING`，待规划核对发布终态。以下旧「当前」行仅作历史。
+> 【历史】2026-09-28 修复轮快照：v0.1.2-bugfix 曾为 IN_PROGRESS，已按 Owner 裁决收口。
+> 同步点：2026-09-28 发布执行完成（自验）；总体任务 `backend-architecture-optimization`（XL）`COMPLETED（规划已确认，2026-09-26）`。
+> 清单当前值 **✅46/🟦22/⬜22**（90）；功能数 **45**（发布零变化）；全量双向映射见 `knowledge/feature-reconciliation-index.md`。
 
 - `backend-architecture-optimization`（XL）：**`COMPLETED（规划已确认，2026-09-26）`**；Phase 1—6C 与 Final 均已完成（Final 8/8：双仓 About 与根 POM canonical URL 收口）；基线 1570/0/0/0；10 项候选去向=BAO-01 `DEFERRED` + BAO-02 `PARTIAL` + 8 项 `COMPLETED`。
 - `v0.1.0-oa-completion`（P60，P0）：**COMPLETED（规划已确认，2026-09-15）**，整体 14/14；版本身份由 2026-09-21 发布重建，迁移终点 V93。
@@ -12,6 +13,5 @@
 - P61（P1/L）：**`COMPLETED（规划已确认，2026-09-20）`，已核销**；Server `742adb8`、Web `d110ed8` 已随 P53 合入两仓 develop；不增加功能数。
 - 更早阶段（均已 `COMPLETED`，详情见 `knowledge/features/` 与 `knowledge/history/`）：`p21-iot-device-access` 第 44（2026-09-08；P21 已核销、I14 关闭）；`v0.0.2-oa` 第 43（2026-09-07；A1—A8 锁定，P3/P54/P55 已核销，P2/P4 开放）；`p4-oa-personal-center-dual-dispatch` 第 42（2026-09-07；P4 总项开放）；`p59-ch-apaas-project-update`（2026-09-05；P59 已核销）；`knowledge-full-reconciliation`（非业务功能，2026-09-04）。更早：p58 第 41、p57 第 40、p56 第 39、p52 第 38、p45 第 37、p51 引擎解耦、form-data-import-export 第 36、minimal-business-closure 第 35。
 
-- `v0.1.2-bugfix`（L，非业务功能计数）：**`IN_PROGRESS`**；两仓 `0.1.2-bugfix` 分支已建立并推送（批次 1 Server `72b8d01`、Web `7e7c74a`）；Owner 分批登记及验收，执行逐批修复提交推送；Owner 回到规划宣布结束后收口。方向 `product/v0.1.2-bugfix/ready/direction-v0.1.2-bugfix.md`。
-
-> 2026-09-27 最新入口：`product/v0.1.2-bugfix/ready/direction-second-half-20260927.md`；任务 IN_PROGRESS，后半阶段处理缺失功能与 UI，7 项重大改动转后续迭代，整体未关闭。
+- `v0.1.2-bugfix`（L，非业务功能计数）：**`COMPLETED（Owner 范围关闭，2026-09-28）`**（裁决 `product/v0.1.2-bugfix/receipts/planning-owner-close-20260928.md`）；23 项历史执行/回归记录保留，不补造逐项验收；方向归档 `product/v0.1.2-bugfix/passed/`；V012-CODE-001 仍 READY 独立跟踪。
+- `v0.1.2-release`（L，非业务功能计数）：发布执行完成（自验，`VERIFYING` 待规划核对）——两仓 develop→main 快进（Server `fd704ff…`、Web `5368e6c…`）、annotated tag `0.1.2`、正式 Release 双 success（CI 36396145288 / 36396187465）；本次未部署。回执 `product/v0.1.2-release/receipts/release-20260928.md`。

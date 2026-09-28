@@ -1,0 +1,37 @@
+{
+  "product": "CH-aPaaS",
+  "version": "0.1.2",
+  "releasedAt": "2026-09-28",
+  "previousReleasedVersion": "0.1.0",
+  "authorization": "Owner 2026-09-28 宣布本轮修复结束并授权 0.1.2-bugfix → develop → main 合并、普通推送、0.1.2 标签与正式 Release（product/v0.1.2-release/ready/direction-v0.1.2-release.md；裁决 product/v0.1.2-bugfix/receipts/planning-owner-close-20260928.md）",
+  "server": {
+    "repo": "Smart-WorkFlow-aPaaS-server",
+    "remote": "git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-server.git",
+    "candidateSha": "fd704ff12af3ccd99febaa700c523d7688e91509",
+    "mainSha": "fd704ff12af3ccd99febaa700c523d7688e91509",
+    "developSha": "fd704ff12af3ccd99febaa700c523d7688e91509",
+    "tag": { "name": "0.1.2", "type": "annotated", "tagObject": "689872436efa6ff70f7321a7b1080b762fe65549", "commit": "fd704ff12af3ccd99febaa700c523d7688e91509" },
+    "ci": { "runId": "36396145288", "url": "https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server/actions/runs/36396145288", "conclusion": "success", "headSha": "fd704ff12af3ccd99febaa700c523d7688e91509" },
+    "buildRelease": { "tag": "build-fd704ff12af3ccd99febaa700c523d7688e91509", "asset": "bootstrap.jar", "assetSize": 216941567 },
+    "release": { "url": "https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server/releases/tag/0.1.2", "asset": "bootstrap-0.1.2.jar", "assetSize": 216941567, "assetSha256": "a4d59613d662b42b03e9256ac8476d7b707fa675e4dc7f497aef2f11dd61c876", "assetBuildIdentity": { "build.version": "0.1.2", "build.profile": "prod" } },
+    "localGate": { "compile": "exit 0", "test": "BUILD SUCCESS exit 0; 1586 tests / 0 failures / 0 errors / 0 skipped", "date": "2026-09-28" },
+    "flywayEndpoint": "V102"
+  },
+  "web": {
+    "repo": "Smart-WorkFlow-aPaaS-Web",
+    "remote": "git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-Web.git",
+    "candidateSha": "5368e6c656c095acd3fe2cff1875c27ee5672307",
+    "mainSha": "5368e6c656c095acd3fe2cff1875c27ee5672307",
+    "developSha": "5368e6c656c095acd3fe2cff1875c27ee5672307",
+    "versionMetadataCommit": "5368e6c656c095acd3fe2cff1875c27ee5672307（package.json 0.1.0 → 0.1.2）",
+    "tag": { "name": "0.1.2", "type": "annotated", "tagObject": "e280b14181864d9ba0b86c3615b1c75c89075734", "commit": "5368e6c656c095acd3fe2cff1875c27ee5672307" },
+    "ci": { "runId": "36396187465", "url": "https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web/actions/runs/36396187465", "conclusion": "success", "headSha": "5368e6c656c095acd3fe2cff1875c27ee5672307" },
+    "buildRelease": { "tag": "build-5368e6c656c095acd3fe2cff1875c27ee5672307", "asset": "dist-5368e6c656c095acd3fe2cff1875c27ee5672307.zip", "assetSize": 1035442 },
+    "release": { "url": "https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web/releases/tag/0.1.2", "asset": "sw-web-dist-0.1.2.zip", "assetSize": 1035442, "assetSha256": "703fd2c43bc87003de9669658303452fbbe8a8a08860eaca7f5217381cadadbc" },
+    "localGate": { "fourGate": "typecheck/lint/test/build 全 exit 0", "vitest": "1301 passed + 3 skipped（142 文件 + 1 skipped）", "date": "2026-09-28" }
+  },
+  "scope": {
+    "included": "两仓 0.1.2-bugfix → develop → main 普通快进合并与推送、版本元数据（Web package.json 0.1.2）、annotated tag 0.1.2、公开 Release（非 prerelease、Latest）与 CI 产物资产挂载",
+    "excluded": "服务器部署、生产库迁移/重建、历史改写、强推、既有标签/Release 删除重建（均不在本次授权范围）"
+  }
+}

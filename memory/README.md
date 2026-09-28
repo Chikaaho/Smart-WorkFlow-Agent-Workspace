@@ -1,10 +1,10 @@
 # memory 使用说明
 
-> 当前活动任务 v0.1.2-bugfix 为 IN_PROGRESS；唯一入口 `product/v0.1.2-bugfix/ready/direction-full-repair-20260927.md`。009–013、017、019 全部纳入本轮详细修复，Owner 尚未宣布结束。此前本轮排期描述由此更新。
+> 2026-09-28 当前：0.1.2 合并发版已执行完成（两仓 develop→main 普通快进、annotated tag `0.1.2`、正式公开 Release、main CI 双 success；回执 `product/v0.1.2-release/receipts/release-20260928.md`）；活动任务 `v0.1.2-release` 发布状态 `VERIFYING`，待规划核对发布终态。本次未部署（生产仍为 2026-09-26 快照 V96）；V012-CODE-001 仍 READY 独立跟踪。以下旧「当前」行仅作历史。
+> 【历史】2026-09-28 修复轮：v0.1.2-bugfix 已按 Owner 范围关闭（COMPLETED，Owner 范围关闭 2026-09-28）。
+> 【历史】2026-09-27 修复入口与批次排期描述仅作历史，不构成当前指令。
 `memory/` 保存 Planner 可直接恢复和决策的最小摘要；不承载完整历史、原始证据或完整决策正文。
 
-- 当前摘要：`state.md`、`handoff.md`。总体任务 `backend-architecture-optimization`（XL）已 `COMPLETED（规划已确认，2026-09-26）`，进入已完成任务集合；当前活动任务 `v0.1.2-bugfix` 为 `IN_PROGRESS`（两仓 `0.1.2-bugfix` 已建立推送，批次 1 已交付 Server `72b8d01`/Web `7e7c74a`），下一动作=批次 2 收尾与浏览器证据后交 Owner 验收。
+- 当前摘要：`state.md`、`handoff.md`。当前活动任务 `v0.1.2-release`（L）：发布执行完成、待规划核对；发布身份 Server `fd704ff…`、Web `5368e6c…`（develop=main=tag 0.1.2 目标），CI run 36396145288 / 36396187465 双 success。
 - 全量双向映射索引：`knowledge/feature-reconciliation-index.md`
 - 未关闭问题：`knowledge/known-issues.md`；功能清单：`Smart-WorkFlow-aPaaS-server/功能清单.md`；历史证据：`product/*/receipts/`
-
-> 2026-09-27 最新入口：`product/v0.1.2-bugfix/ready/direction-second-half-20260927.md`；任务 IN_PROGRESS，后半阶段处理缺失功能与 UI，7 项重大改动转后续迭代，整体未关闭。
