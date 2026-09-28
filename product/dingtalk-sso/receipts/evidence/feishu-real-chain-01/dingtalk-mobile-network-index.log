@@ -1,0 +1,8 @@
+== G5-mobile 钉钉 390 真实链网络关联（boot 7600，T0=00:49:34 authorize-login）
+2026-09-29T00:47:57.203+08:00  INFO 7600 --- [nio-8080-exec-2] c.s.c.s.filter.AccessLoggingFilter       : ACCESS method=GET path=/api/auth/sso/DINGTALK/authorize-login status=200 costMs=70 eventRef=<ref> clientRequestId=1 userId=null
+2026-09-29T00:48:20.205+08:00  INFO 7600 --- [nio-8080-exec-4] c.s.c.s.filter.AccessLoggingFilter       : ACCESS method=GET path=/api/auth/sso/dingtalk/callback status=302 costMs=570 eventRef=<ref> clientRequestId=2 userId=null
+2026-09-29T00:49:34.587+08:00  INFO 7600 --- [io-8080-exec-10] c.s.c.s.filter.AccessLoggingFilter       : ACCESS method=GET path=/api/auth/sso/DINGTALK/authorize-login status=200 costMs=25 eventRef=<ref> clientRequestId=f userId=null
+2026-09-29T00:50:28.415+08:00  INFO 7600 --- [nio-8080-exec-1] c.s.c.s.filter.AccessLoggingFilter       : ACCESS method=GET path=/api/auth/sso/dingtalk/callback status=302 costMs=369 eventRef=<ref> clientRequestId=10 userId=null
+2026-09-29T00:50:28.560+08:00  INFO 7600 --- [nio-8080-exec-3] c.s.c.s.controller.SsoAuthController     : SSO 登录成功: userId=9002, provider-ticket
+2026-09-29T00:50:28.561+08:00  INFO 7600 --- [nio-8080-exec-3] c.s.c.s.filter.AccessLoggingFilter       : ACCESS method=POST path=/api/auth/sso/ticket status=200 costMs=9 eventRef=<ref> clientRequestId=web-786c7002-f316-4b02-95eb-c6434bf2d514 userId=null
+2026-09-29T00:50:56.424+08:00  INFO 7600 --- [io-8080-exec-10] c.s.c.s.filter.AccessLoggingFilter       : ACCESS method=POST path=/api/auth/sso/ticket status=200 costMs=21 eventRef=<ref> clientRequestId=web-971151a3-1871-4801-bcee-556c58605f9f userId=null

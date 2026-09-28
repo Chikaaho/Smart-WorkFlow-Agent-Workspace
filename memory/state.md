@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-> **当前任务：三方 SSO 真实接入（L，执行中，2026-09-28）**——方向 `product/dingtalk-sso/ready/direction-three-provider-sso-20260928.md`；回执 `product/dingtalk-sso/receipts/implementation-three-provider-01.md`。共用回调修复完成（Server develop `98e0034`/`edd7a02`/`4f5454e`/`49b5f9f`/`cb5f17d`、Web `d37a57b`；门禁 Server 314/0/0/0+BootTest 4/4、Web 1301+3）；飞书真实链自验已提交、规划补证中（授权/换票 v3/绑定/已绑定登录/解绑失效/负向与移动视口；补证回执 03 随审查02+一级提示推进）；钉钉执行就绪待 Owner 控制台登录后配置+授权；企业微信冻结于企业主体确认。P31 未核销，功能计数不变。
+> **当前任务：三方 SSO 真实接入（L，执行中，2026-09-28）**——方向 `product/dingtalk-sso/ready/direction-three-provider-sso-20260928.md`；回执 `product/dingtalk-sso/receipts/implementation-three-provider-01.md`。共用回调修复完成（Server develop `98e0034`/`edd7a02`/`4f5454e`/`49b5f9f`/`cb5f17d`、Web `d37a57b`；门禁 Server 314/0/0/0+BootTest 4/4、Web 1301+3）；飞书/钉钉真实链自验已提交、规划补证中（含 G3b 企业归属约束实现：extra_config.enterpriseId＋厂商可信企业字段校验，commit 1f950e9；钉钉移动 390 链通过；企业微信 Owner 延期）；钉钉执行就绪待 Owner 控制台登录后配置+授权；企业微信冻结于企业主体确认。P31 未核销，功能计数不变。
 
 > 总体任务 `backend-architecture-optimization` 已 `COMPLETED（规划已确认，2026-09-26）`；`v0.1.1-bugfix` **`COMPLETED（Owner 范围关闭，2026-09-24）`**（裁决 `product/v0.1.1-bugfix/receipts/planning-owner-v011-task-close-20260924.md`）；`v0.1.2-bugfix` **`COMPLETED（Owner 范围关闭，2026-09-28）`**（裁决 `product/v0.1.2-bugfix/receipts/planning-owner-close-20260928.md`）。发布事实见下方。
 

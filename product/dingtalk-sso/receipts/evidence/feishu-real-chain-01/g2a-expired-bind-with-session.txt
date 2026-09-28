@@ -1,0 +1,11 @@
+== [a] 会话有效性证明（me）:
+HTTP=200 code=0 user=t100user
+== [b] 绑定表 BEFORE（有效会话读取）:
+HTTP=200 {"code":0,"msg":"success","data":{"bindings":[{"externalDigestPrefix":"6bb50608","provider":"FEISHU"}]}}
+== [c] 候选票静置 61s（TTL 60s）…
+== [d] bind-candidate（过期票 + 有效会话）完整响应:
+HTTP=200 {"code":401,"msg":"登录票据无效或已过期，请重新发起第三方登录","data":null,"errorKey":"system.sso_ticket_invalid","eventRef":"req-428a99b959adf6738982f44efb0575d7"}
+== [e] 绑定表 AFTER（无增量）:
+HTTP=200 {"code":0,"msg":"success","data":{"bindings":[{"externalDigestPrefix":"6bb50608","provider":"FEISHU"}]}}
+== [f] 反向断言（工具判定 before==after）:
+no-increment: True | count: 1 -> 1

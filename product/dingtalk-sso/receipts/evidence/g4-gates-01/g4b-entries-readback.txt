@@ -1,0 +1,17 @@
+== G4b 入口逐文件当前值回读（2026-09-29 00:28）
+--- memory/README.md
+5:- 当前：三方 SSO 真实接入执行中（方向 `product/dingtalk-sso/ready/direction-three-provider-sso-20260928.md`）：共用回调修复完成，飞书真实链自验已提交（规划补证中，审查02+一级提示为当前入口）；钉钉待 Owner 控制台登录后配置+授权，企业微信待后台扫码核实主体。回执 `pr
+--- memory/state.md
+3:> **当前任务：三方 SSO 真实接入（L，执行中，2026-09-28）**——方向 `product/dingtalk-sso/ready/direction-three-provider-sso-20260928.md`；回执 `product/dingtalk-sso/receipts/implementation-three-provider
+--- memory/handoff.md
+5:三方 SSO 真实接入执行中（方向 `product/dingtalk-sso/ready/direction-three-provider-sso-20260928.md`，L；P31 未核销）：共用回调 302/回跳链修复完成并推送（Server `98e0034`/`edd7a02`/`4f5454e`/`49b5f9f`/`cb5f17d`，We
+--- knowledge/features/dingtalk-sso-three-provider.md
+1:# 三方 SSO 真实接入（P31 相关，执行跟踪）
+3:> 任务：`product/dingtalk-sso/ready/direction-three-provider-sso-20260928.md`（L）；P31 保持开放，功能计数不变。
+--- todo/requirement-pool.md
+65:以 0.1.0 完成 OA 全功能收口：用户、角色、部门、低代码表单、流程管理、个人工作台、第三方 SSO 和消息通知形成统一可用闭环。用户原始清单中重复出现的“角色管理”合并为一个能力域，不据此新增其他模块。
+76:- SSO：企业微信、飞书和钉钉；
+--- 生产 nginx 事实区分
+应用版本未部署：chikaho.cn 仍运行 0.1.2 旧回调代码（本地修复未上生产）
+域名配置已变更：/etc/nginx/conf.d/chikaho.cn.conf 已含 WW_verify location（bak-20260929-sso），公网 200 实测
+verify-file=200

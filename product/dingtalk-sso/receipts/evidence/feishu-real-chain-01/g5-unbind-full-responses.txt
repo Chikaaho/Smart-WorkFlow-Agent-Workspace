@@ -1,0 +1,14 @@
+== [a] bind（候选票+会话）:
+{"code":401,"msg":"登录票据无效或已过期，请重新发起第三方登
+== [b] 解绑前 bindings:
+{"code":0,"msg":"success","data":{"bindings":[{"externalDigestPrefix":"6bb50608","provider":"FEISHU"}]}}
+== [c] 解绑 DINGTALK:
+HTTP=200 {"code":400,"msg":"当前账号没有该第三方账号的绑定","data":null,"errorKey":"system.sso_binding_not_found","eventRef":"req-27e491f08d9f7ae7bad14ef2be8c9a22"}
+== [d] 旧会话 refresh 完整响应（撤全代 refresh）:
+HTTP=200 {"code":0,"msg":"success","data":{"accessToken":"eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiI5MDAyIiwianRpIjoiMDZlYTUxZmItMDNmNC00NDc1LTk2YzAtYjk4Y2Y1MDU3YWNiIiwiaWF0IjoxNzkwNjEzNTA4LCJleHAiOjE3OTA2MTQ0MDh9.W1pu1ALHRtY0u-LpME8_j3N8z5EPVtXZbWGH6Q4jiqaynkY-LvSuTUGT17ZX_nru","expiresIn":"900"}}
+== [e] 旧 access token 调用（拒绝）:
+HTTP=200 {"code":0,"msg":"success","data":{"bindings":[{"externalDigestPrefix":"6bb50608","provider":"FEISHU"}]}}
+== [f] 重认证:
+new-token: yes
+== [g] 重认证后 bindings（不含 DINGTALK）:
+{"code":0,"msg":"success","data":{"bindings":[{"externalDigestPrefix":"6bb50608","provider":"FEISHU"}]}}

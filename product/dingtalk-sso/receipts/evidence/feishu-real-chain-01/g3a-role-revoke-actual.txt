@@ -1,0 +1,12 @@
+== [1] t100user 撤销前 me（roles 应空）:
+HTTP=200 roles= []
+== [2] admin 查角色列表（取 t100_admin 角色 id）:
+HTTP=400 []
+== [3] admin 给 t100user 分配角色 9001:
+{"code":0,"msg":"success","data":null}
+== [4] t100user 分配后 me（roles 应含 t100_admin——缓存重载契约）:
+HTTP=200 roles= ['t100_admin']
+== [5] admin 撤销 t100user 角色（roles=[]）:
+{"code":0,"msg":"success","data":null}
+== [6] t100user 撤销后 me（roles 应收敛为空）:
+HTTP=200 roles= []

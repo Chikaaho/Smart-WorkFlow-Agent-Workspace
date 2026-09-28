@@ -1,0 +1,7 @@
+== G4-S 非秘密回读（2026-09-29 00:27）
+-- 1) 独立密钥文件属性：权限 600 大小 44B（Base64 44 字符=32B 密钥）；路径=/tmp（仓库外）
+-- 2) 生效加密器链（源码事实）：SystemAutoConfiguration.ssoCipher 为 @ConditionalOnMissingBean(AesGcmCipher)；AgentModelAutoConfiguration.agentAesGcmCipher 同条件先注册 → SSO 注入的是 agent 密钥（key=）；本轮运行 env SW_CIPHER_KEY=独立密钥（backend-env.sh，0600），故 SSO 实际加密器密钥=独立密钥（AEAD=0+authorize-login 0 实证）
+-- 3) 隔离与正式契约影响：本轮共享=agent 与 SSO 同用一把本轮独立密钥（单次运行、H2 内存、/tmp 密钥、仓库外）；正式（prod）契约含义=同一顶替顺序下 SSO 凭据加密实际取 SW_CIPHER_KEY，SW_SSO_CIPHER_KEY 占位仅在无 agent bean 时生效——运维须保证 SW_CIPHER_KEY 即 SSO 凭据密钥，或显式调整 bean 顺序；该契约影响登记为非缺陷观察项（不改本轮行为）
+-- 4) 旧密文扫描（dev-key 加密的真实密文是否进过仓库/证据）:
+扫描 0 命中（真实密文未进入任何制品）
+-- 5) 秘密值回传检查：本文件不含任何 secret/密文/手机号（人工+扫描双重确认）

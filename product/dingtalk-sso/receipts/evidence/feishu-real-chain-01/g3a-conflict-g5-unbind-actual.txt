@@ -1,0 +1,19 @@
+TICKET-AT: 2026-09-28T16:42:38.752Z
+== [conflict] 同主体（DINGTALK 00325d5a）再次绑定完整响应:
+HTTP=200
+{"code":400,"msg":"该第三方账号当前无法绑定，请联系管理员处理","data":null,"errorKey":"system.sso_binding_conflict","eventRef":"req-3ad5483d52a853876e5262849cce3c8c"}
+== [conflict-assert] 原 FEISHU 绑定无变化:
+{"code":0,"msg":"success","data":{"bindings":[{"externalDigestPrefix":"6bb50608","provider":"FEISHU"}]}}
+== [g5-a] 解绑 FEISHU（业务成功）:
+HTTP=200
+{"code":0,"msg":"success","data":null}
+== [g5-b] 旧会话 refresh 完整响应:
+HTTP=200
+{"code":401,"msg":"登录状态已失效，请重新登录","data":null,"errorKey":"system.session_revoked","eventRef":"req-4b97f05f470bd84b135e2fadc1791871"}
+== [g5-c] 旧 access token 调用:
+HTTP=401
+{"code":401,"msg":"登录状态已失效，请重新登录","data":null,"errorKey":"common.unauthenticated","eventRef":"req-1e25aa5fa27eab7ad753beaea030783c"}
+== [g5-d] 重认证:
+new-token: yes
+== [g5-e] 重认证后 bindings（不含 FEISHU）:
+{"code":0,"msg":"success","data":{"bindings":[]}}
