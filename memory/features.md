@@ -1,8 +1,8 @@
 # 功能摘要
 
-> 2026-09-28 当前：0.1.2 发布完成——规划发布验收 `PASSED`，发布任务 `v0.1.2-release` 终态 `COMPLETED（规划发布验收通过，终态同步待复核）`；终态同步回执待规划复核。以下旧「当前」行仅作历史。
+> 2026-09-28 当前：0.1.2 发布完成并已部署生产（V102，双端健康 200）——规划发布验收 `PASSED`，发布任务 `v0.1.2-release` 终态 `COMPLETED（规划已确认，2026-09-28）`；终态同步最终复核通过；当前无活动发布/修复任务。以下旧「当前」行仅作历史。
 > 【历史】2026-09-28 修复轮快照：v0.1.2-bugfix 曾为 IN_PROGRESS，已按 Owner 裁决收口。
-> 同步点：2026-09-28 发布执行完成（自验）；总体任务 `backend-architecture-optimization`（XL）`COMPLETED（规划已确认，2026-09-26）`。
+> 同步点：2026-09-28 发布终态规划确认；总体任务 `backend-architecture-optimization`（XL）`COMPLETED（规划已确认，2026-09-26）`。
 > 清单当前值 **✅46/🟦22/⬜22**（90）；功能数 **45**（发布零变化）；全量双向映射见 `knowledge/feature-reconciliation-index.md`。
 
 - `backend-architecture-optimization`（XL）：**`COMPLETED（规划已确认，2026-09-26）`**；Phase 1—6C 与 Final 均已完成（Final 8/8：双仓 About 与根 POM canonical URL 收口）；基线 1570/0/0/0；10 项候选去向=BAO-01 `DEFERRED` + BAO-02 `PARTIAL` + 8 项 `COMPLETED`。
@@ -14,4 +14,4 @@
 - 更早阶段（均已 `COMPLETED`，详情见 `knowledge/features/` 与 `knowledge/history/`）：`p21-iot-device-access` 第 44（2026-09-08；P21 已核销、I14 关闭）；`v0.0.2-oa` 第 43（2026-09-07；A1—A8 锁定，P3/P54/P55 已核销，P2/P4 开放）；`p4-oa-personal-center-dual-dispatch` 第 42（2026-09-07；P4 总项开放）；`p59-ch-apaas-project-update`（2026-09-05；P59 已核销）；`knowledge-full-reconciliation`（非业务功能，2026-09-04）。更早：p58 第 41、p57 第 40、p56 第 39、p52 第 38、p45 第 37、p51 引擎解耦、form-data-import-export 第 36、minimal-business-closure 第 35。
 
 - `v0.1.2-bugfix`（L，非业务功能计数）：**`COMPLETED（Owner 范围关闭，2026-09-28）`**（裁决 `product/v0.1.2-bugfix/receipts/planning-owner-close-20260928.md`）；23 项历史执行/回归记录保留，不补造逐项验收；方向归档 `product/v0.1.2-bugfix/passed/`；V012-CODE-001 仍 READY 独立跟踪。
-- `v0.1.2-release`（L，非业务功能计数）：**`COMPLETED（规划发布验收通过，终态同步待复核）`**——规划发布复核 `PASSED`（`product/v0.1.2-release/receipts/planning-review-release-20260928-passed.md`）；两仓 develop→main 快进（Server `fd704ff…`、Web `5368e6c…`）、annotated tag `0.1.2`、正式 Release（CI 36396145288 / 36396187465）；本次未部署。发布执行回执 `product/v0.1.2-release/receipts/release-20260928.md`，终态同步回执 `receipts/terminal-sync-20260928.md`。
+- `v0.1.2-release`（L，非业务功能计数）：**`COMPLETED（规划已确认，2026-09-28）`**——规划发布复核 `PASSED`（`product/v0.1.2-release/receipts/planning-review-release-20260928-passed.md`）；两仓 develop→main 快进（Server `fd704ff…`、Web `5368e6c…`）、annotated tag `0.1.2`、正式 Release（CI 36396145288 / 36396187465）；本次未部署。发布执行回执 `product/v0.1.2-release/receipts/release-20260928.md`，终态同步回执 `receipts/terminal-sync-20260928.md`。

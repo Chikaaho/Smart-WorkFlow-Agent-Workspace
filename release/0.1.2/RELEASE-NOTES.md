@@ -44,4 +44,4 @@
 
 - SMS/EMAIL/FEISHU/DINGTALK/WECHAT_WORK 五外部通知渠道与腾讯 IoT 实网真实送达：Owner 延期/未验证
 - V012-CODE-001（后端全限定类名清理与 import 规范）已登记未实施（`product/v0.1.2-bugfix/ready/direction-backend-import-style.md`）
-- 本次发布不含服务器部署与生产库操作（部署需另行授权）
+- **生产部署**：已于 2026-09-28 完成两制品上线与数据库 V96→V102 增量迁移（0 failed，双端健康 200；部署回执 `product/v0.1.2-release/receipts/deployment-20260928.md`）
