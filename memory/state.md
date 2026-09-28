@@ -1,6 +1,8 @@
 # 当前状态摘要
 
-> 总体任务 `backend-architecture-optimization` 已 `COMPLETED（规划已确认，2026-09-26）`；`v0.1.1-bugfix` **`COMPLETED（Owner 范围关闭，2026-09-24）`**（裁决 `product/v0.1.1-bugfix/receipts/planning-owner-v011-task-close-20260924.md`）；`v0.1.2-bugfix` **`COMPLETED（Owner 范围关闭，2026-09-28）`**（裁决 `product/v0.1.2-bugfix/receipts/planning-owner-close-20260928.md`）。当前无活动发布/修复任务，发布事实见下方。
+> **当前任务：三方 SSO 真实接入（L，执行中，2026-09-28）**——方向 `product/dingtalk-sso/ready/direction-three-provider-sso-20260928.md`；回执 `product/dingtalk-sso/receipts/implementation-three-provider-01.md`。共用回调修复完成（Server develop `98e0034`/`edd7a02`/`4f5454e`/`49b5f9f`/`cb5f17d`、Web `d37a57b`；门禁 Server 314/0/0/0+BootTest 4/4、Web 1301+3）；飞书真实链六段验证通过（授权/换票 v3/绑定/已绑定登录/解绑失效/负向与移动视口，证据 `receipts/evidence/feishu-real-chain-01/`）；钉钉执行就绪待 Owner 控制台登录后配置+授权；企业微信冻结于企业主体确认。P31 未核销，功能计数不变。
+
+> 总体任务 `backend-architecture-optimization` 已 `COMPLETED（规划已确认，2026-09-26）`；`v0.1.1-bugfix` **`COMPLETED（Owner 范围关闭，2026-09-24）`**（裁决 `product/v0.1.1-bugfix/receipts/planning-owner-v011-task-close-20260924.md`）；`v0.1.2-bugfix` **`COMPLETED（Owner 范围关闭，2026-09-28）`**（裁决 `product/v0.1.2-bugfix/receipts/planning-owner-close-20260928.md`）。发布事实见下方。
 
 ## 2026-09-28 0.1.2 发布（当前状态）
 
