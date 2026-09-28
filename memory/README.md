@@ -1,6 +1,6 @@
 # memory 使用说明
 
-> 2026-09-28 当前：0.1.2 合并发版已执行完成（两仓 develop→main 普通快进、annotated tag `0.1.2`、正式公开 Release、main CI 双 success；回执 `product/v0.1.2-release/receipts/release-20260928.md`）；活动任务 `v0.1.2-release` 发布状态 `VERIFYING`，待规划核对发布终态。本次未部署（生产仍为 2026-09-26 快照 V96）；V012-CODE-001 仍 READY 独立跟踪。以下旧「当前」行仅作历史。
+> 2026-09-28 当前：0.1.2 发布完成——规划发布验收 `PASSED`（`product/v0.1.2-release/receipts/planning-review-release-20260928-passed.md`），发布任务 `v0.1.2-release` 终态 `COMPLETED（规划发布验收通过，终态同步待复核）`；终态同步回执 `receipts/terminal-sync-20260928.md` 待规划复核。本次未部署（生产当前 V96，待部署应用 V97—V102，终点 V102）；V012-CODE-001 仍 READY 独立跟踪。以下旧「当前」行仅作历史。
 > 【历史】2026-09-28 修复轮：v0.1.2-bugfix 已按 Owner 范围关闭（COMPLETED，Owner 范围关闭 2026-09-28）。
 > 【历史】2026-09-27 修复入口与批次排期描述仅作历史，不构成当前指令。
 `memory/` 保存 Planner 可直接恢复和决策的最小摘要；不承载完整历史、原始证据或完整决策正文。
