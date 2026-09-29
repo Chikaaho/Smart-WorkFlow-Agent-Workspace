@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-> **当前任务：`sso-admin-config` 后台 SSO 配置管理与 B 端手机号准入（L，`READY`，2026-09-29）**——方向 `product/sso-admin-config/ready/direction-sso-admin-config.md`。前置：三方 SSO 真实接入功能级 **`PASSED（2026-09-29，审查07 `product/dingtalk-sso/receipts/planning-review-three-provider-07-passed.md`）`**、接入功能状态 `COMPLETED（待规划确认）`，主方向归档 `product/dingtalk-sso/passed/`；阶段三同步方向 `product/dingtalk-sso/ready/direction-sso-terminal-sync-20260929.md`（同步回执提交后待 Planner 复核归档）。最终候选 Server `7342e788…`、Web `d37a57b…`；验收集合 Server 本任务模块 319/0/0/0＋Boot 4/0/0/0、Web 1301+3。P31 未核销（钉钉飞书已验收、后台管理与 B 端准入待实现、企微 Owner 延期）；功能数 45/增量 0、清单 46/22/22、ADV64 不变；生产仍 0.1.2/V102。
+> **当前任务：`sso-admin-config` 后台 SSO 配置管理与 B 端手机号准入（L，`VERIFYING`，2026-09-29）**——方向 `product/sso-admin-config/ready/direction-sso-admin-config.md`；回执 01/02/03/04 见 `product/sso-admin-config/receipts/`；审查 01/02 已处理。飞书准入真实链全闭环（自动绑定/免密登录/变更拒绝/解绑重绑双循环/A2 矩阵/A3 分项权限）；**钉钉 B1 Owner 已授权恢复（IN_PROGRESS）**：900103 根因=个人测试应用绑定开发者登录会话，待 Owner 浏览器重登钉钉后重试链（配置面已全数核实）。企业微信延期。P31 未核销；功能数 45/增量 0、清单 46/22/22、ADV64 不变；生产仍 0.1.2/V102。
 
 > 总体任务 `backend-architecture-optimization` 已 `COMPLETED（规划已确认，2026-09-26）`；`v0.1.1-bugfix` **`COMPLETED（Owner 范围关闭，2026-09-24）`**（裁决 `product/v0.1.1-bugfix/receipts/planning-owner-v011-task-close-20260924.md`）；`v0.1.2-bugfix` **`COMPLETED（Owner 范围关闭，2026-09-28）`**（裁决 `product/v0.1.2-bugfix/receipts/planning-owner-close-20260928.md`）。发布事实见下方。
 

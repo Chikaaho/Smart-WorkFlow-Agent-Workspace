@@ -2,7 +2,7 @@
 
 ## 当前任务（2026-09-29）
 
-`sso-admin-config` 后台 SSO 配置管理与 B 端手机号准入（L，`READY`）：方向 `product/sso-admin-config/ready/direction-sso-admin-config.md`；关联 P31（未核销）。前置已收口：三方 SSO 真实接入功能级 **`PASSED（2026-09-29，审查07 `product/dingtalk-sso/receipts/planning-review-three-provider-07-passed.md`）`**，接入功能状态 `COMPLETED（待规划确认）`；主方向归档 `product/dingtalk-sso/passed/`；阶段三同步方向 `product/dingtalk-sso/ready/direction-sso-terminal-sync-20260929.md`（同步回执提交后待 Planner 复核）。最终候选 Server `7342e788…`、Web `d37a57b…`；验收集合 Server 本任务模块 319/0/0/0＋Boot 4/0/0/0、Web 1301+3。企业微信 Owner 延期（保留配置，真实链未验证）。唯一下一动作=执行 sso-admin-config 方向（B 端手机号准入＋租户级配置管理；B 端准入不沿用历史手动绑定通过）。
+`sso-admin-config` 后台 SSO 配置管理与 B 端手机号准入（L，`VERIFYING`）：方向 `product/sso-admin-config/ready/direction-sso-admin-config.md`；回执 01—04、审查 01/02；关联 P31（未核销）。前置已收口：三方 SSO 真实接入功能级 **`PASSED（2026-09-29，审查07 `product/dingtalk-sso/receipts/planning-review-three-provider-07-passed.md`）`**，接入功能状态 `COMPLETED（待规划确认）`；主方向归档 `product/dingtalk-sso/passed/`；阶段三同步方向 `product/dingtalk-sso/ready/direction-sso-terminal-sync-20260929.md`（同步回执提交后待 Planner 复核）。最终候选 Server `7342e788…`、Web `d37a57b…`；验收集合 Server 本任务模块 319/0/0/0＋Boot 4/0/0/0、Web 1301+3。企业微信 Owner 延期（保留配置，真实链未验证）。唯一下一动作=执行 sso-admin-config 方向（B 端手机号准入＋租户级配置管理；B 端准入不沿用历史手动绑定通过）。
 
 ## 已完成
 

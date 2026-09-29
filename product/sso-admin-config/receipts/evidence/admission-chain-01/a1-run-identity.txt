@@ -1,0 +1,34 @@
+A1/A4/A5 运行身份与门禁基线（2026-09-29 15:4x，审查 02 恢复后可信窗口采集，全部工具回读）
+
+最终候选：
+- Server HEAD 完整 SHA：a34729cd5604504dc78a63df472b1cb9494bc2ed（develop→origin/develop，工作树 0 脏项；
+  含批次 4 a34729c=A4 票据-Provider 绑定+A5 兼容测试；其父 8d5fe6b=批次 1—3）
+- Web HEAD 完整 SHA：38672cd506e023e5a128e16e0c521d71ce75daee（工作树 0 脏项；本轮 Web 零改动）
+
+实际运行产物与进程关联（lsof 文件句柄级，非环境名称）：
+- 进程 PID 88717，启动 15:38:02（ps lstart），cwd=Server 仓库根，打开句柄 2 处 =
+  /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-bootstrap/target/bootstrap-dev.jar
+- jar sha256 = a46152f04cae4abed3bd3811f61a7b7b7c147034ac7f544e458b0cddbe9f75a6
+  （a34729c 源码 mvn -Pdev 构建；构建后未再变更；flyway 终点 v907 含 A2-c 他租户夹具 V907）
+- 前端实际加载：proxy.mjs 服务 Web dist（资产 index-tfkOQLZp.js，sha256 前缀 6571ac71beb80fff5cf2f5d7；
+  dist 构建于 38672cd 工作树）
+
+门禁（本轮可信窗口实跑，原始日志同目录）：
+- 模块 sw-biz-system-biz：330/0/0/0 BUILD SUCCESS（328 + A5 兼容 2；a1-module-gate-330.log）
+- bootstrap 锚：38/0/0/0（FlywayFullChain H2/PG、I6G7、Phase4Pg、I5ProdProfileSecurity 4、
+  I5PgTenantBehavior 3；a1-anchors-38.log）
+- Boot：6/0/0/0（I5SsoBindingSession 5 + A4 ticketExchangeRejectedWhenProviderDisabled、
+  I5SsoCipherRuntimeDiag 1；a1-boot-6.log）
+
+与审查 01 A1 缺口的对应：完整 40 位 SHA ✓（原回执仅缩写）；实际产物哈希+进程加载路径+时点 ✓；
+具名测试可核（surefire 报告见 a1-surefire-*.txt：callback_admission_uniquePhoneAutoBinds /
+callback_admission_ambiguousPhone_rejected / callback_boundPhoneChanged_rejected /
+callback_boundUserDisabled_rejected / callback_admission_noLocalUser_rejected /
+callback_boundPhoneMatch_loginSuccess 等）；源码自上轮门禁后的变化仅为批次 4 本身，其受影响
+门禁=上述三组，已全部实跑，无无变化重跑。
+
+════ 审查 02 恢复后更新（2026-09-29 16:2x，可信窗口工具回读）════
+- Server HEAD（批次 6 后）：d39db4c（完整值经 git rev-parse 于提交回执记录；模块门禁 332/0/0/0 = a1-module-gate-332.log）
+- 运行进程：PID 92183（lstart 见 ps），lsof 加载 jar 句柄 2 处，jar sha256 = 8a28cb795c439e704948554461efcf8a8acec0911a20d57961d20b8b36e9a277
+- Boot 6/0/0/0（a1-boot-6.log，批次 4 时点；批次 5/6 未触碰 sw-bootstrap）；锚 38/0/0/0（a1-anchors-38.log）
+- Web 38672cd 零改动；dist 资产 index-tfkOQLZp.js
