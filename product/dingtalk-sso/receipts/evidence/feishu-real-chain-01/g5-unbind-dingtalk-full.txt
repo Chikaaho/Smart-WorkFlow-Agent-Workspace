@@ -1,0 +1,14 @@
+== [a] bind（候选票）：
+{"code":0,"msg":"success","data":null}
+== [b] 解绑前 bindings（应含 DINGTALK 00325d5a）：
+{"code":0,"msg":"success","data":{"bindings":[{"provider":"DINGTALK","externalDigestPrefix":"00325d5a"}]}}
+== [c] 解绑 DINGTALK：
+HTTP=200 {"code":0,"msg":"success","data":null}
+== [d] 旧 access token 调用（拒绝，完整响应）：
+HTTP=401 {"code":401,"msg":"登录状态已失效，请重新登录","data":null,"errorKey":"common.unauthenticated","eventRef":"req-e23a3289fb0556f2d984e58b6cae8b6f"}
+== [e] 旧 refresh 调用（拒绝，完整响应）：
+HTTP=200 {"code":401,"msg":"登录状态已失效，请重新登录","data":null,"errorKey":"system.session_revoked","eventRef":"req-eba7d98458e5ab9f47b739750851f6e7"}
+== [f] 重认证：
+new-token: yes
+== [g] 重认证后 bindings（无 DINGTALK）：
+{"code":0,"msg":"success","data":{"bindings":[]}}
