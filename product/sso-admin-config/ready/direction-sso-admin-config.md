@@ -6,7 +6,7 @@
 
 ## 2026-09-29 Owner追加决定
 
-回执06已复核，整体VERIFYING；钉钉Client ID修正与900103消除探测已锁定，B1当前手机号准入真实链待本人授权（执行方报告）；需要交互时提醒，独立补证继续。唯一账本：`../receipts/planning-review-admission-and-config-02.md`（当前对象回执06，下一交付回执07）。企业微信延期，P31开放。
+审查08已核销钉钉真实链及S1定向检查；整体VERIFYING。Owner已授权对接后应用凭据轮换，R1依赖满足。唯一执行入口：`../receipts/planning-execution-prompt-sso-admin-config-02.md`（A3触屏行为、R1轮换、A6同步；下一回执09），裁决见审查08。企业微信延期，P31开放。
 
 ## 一、目标与准入规则
 
