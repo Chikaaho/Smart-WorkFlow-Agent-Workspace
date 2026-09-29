@@ -20,3 +20,28 @@ A4 B端准入 fail-closed 真实链（飞书 headless=false，组织「个人开
 B1 钉钉：authorize 端点 login.dingtalk.com 返回 900103「应用不存在」（三种 URL 形态×两标签+静默无 prompt 均复现；控制台应用存在/开发中、回调登记在、Contact.User.Read 已开通、版本 1.0.0 已发布免审通过——今晨 10:08-10:16 同 clientId 真实链成功，午后起持续失败）。解除条件：Owner 在钉钉开放平台/客户端确认「个人测试」应用状态（必要时重建应用或换企业主体应用）。
 B2 飞书：换票/identity 成功，但手机号不可得——contact:v3 users/{open_id} 双身份（user-token HTTP 400：contact:user.base:readonly 不覆盖 v3；app-token HTTP 200 code=0 但响应无 mobile 字段，contact:contact.base:readonly 已开通且 v1.0.1 已发布）。fail-closed 按设计工作（即场景A/B2审计）。解除条件：飞书企业管理后台对应用开放手机号字段可见性（组织管理侧字段权限），或 Owner 提供带手机号返回的测试主体。
 按方向 §一：手机号不可得时 fail closed + 精确报告缺口 + 继续独立工作；两平台正向链的厂商侧解除后须补真实链验收（不得以历史手动绑定通过投影）。
+
+════ 追补（2026-09-29 13:2x）：飞书阻塞已解除并全链闭环；钉钉收敛为登录会话单点 ════
+
+【飞书 B2 已解除——根因=缺失专用字段权限 contact:user.phone:readonly（获取用户手机号）】
+- mobile 属飞书敏感字段：contact:contact.base:readonly/user.base:readonly 均不含手机号
+  （user-token 对 v3 直接 HTTP 400；app-token 200 但响应无该字段）
+- 处置：开通「获取用户手机号」→ 发布 v1.0.2（免审通过）→ 无需改代码，双身份读取链路自动生效
+- 正向真实链全闭环（headless=false，真实主体用户376282，审计 23 行见 audit-full.json）：
+  1) 13:18:17-22 AUTH_START → EXCHANGE scope=personal → BIND "phone-admission auto-bind"
+     → LOGIN_SUCCESS（预建用户 t100user 按可信手机号自动绑定直达工作台
+     positive-feishu-autobind-workspace.png）
+  2) 13:18:57-19:02 登出后再次授权 → 免密直达工作台（positive-feishu-bound-login-workspace.png）
+  3) 13:19:38-42 本地手机号改为 139…0011 → ADMISSION_REJECTED "phone changed (vendor vs local)"
+     （拒绝不自动迁移，real-feishu-phone-changed-rejected.png）
+  4) 13:20:16-20 手机号恢复 → LOGIN_SUCCESS（恢复登录 ✓）
+- 全程秘密扫描 0 命中（手机号原文不入审计/证据）
+
+【钉钉 B1 收敛——排除法后唯一变量=浏览器 login.dingtalk.com 登录态（需 Owner 扫码）】
+已排除：应用不存在于控制台（否，个人测试应用开发中）；回调未登记（否，安全设置在册）；
+Contact.User.Read 未开（否，已开通）；应用未发布（否，1.0.0 已上线 12:45:34）；可见范围
+不含开发者（否，=「仅我可见」即开发者本人）；发版生效延迟（否，13:23 复测仍 900103 新 trace）。
+今晨 10:08-10:16 同 clientId 真实链成功（当时授权页显示组织选择=login.dingtalk.com 会话活跃）；
+下午起全部尝试 900103「应用不存在」且不出现登录表单——与「个人测试应用在登录中心会话缺失时
+无法匿名发起」的行为一致。解除动作=Owner 在本浏览器重新登录钉钉（扫码，真实人机验证），
+登录后执行重试链即可（无需任何代码/配置变更）。
