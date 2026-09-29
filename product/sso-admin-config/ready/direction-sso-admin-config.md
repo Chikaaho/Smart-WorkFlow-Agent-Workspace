@@ -4,6 +4,10 @@
 
 依据：Owner后台配置开发授权、2026-09-29手机号准入补充；search_fallback/sso-admin-config-readiness-20260929.md；product/dingtalk-sso/receipts/planning-review-three-provider-07-passed.md。本方向为当前新主功能，先提交前项状态同步，再连续推进实现。企业微信延期。
 
+## 2026-09-29 Owner追加决定
+
+钉钉本轮手机号准入真实链B1暂记BLOCKED，待Owner有空明确恢复；不要求扫码、不重建应用、不轮询。其他后台/飞书工作继续，整体验收仍按剩余证据裁决。企业微信延期不变。当前审查入口：`../receipts/planning-review-admission-and-config-01.md`。
+
 ## 一、目标与准入规则
 
 本系统为B端：用户须先存在于当前租户组织架构，SSO只识别并绑定已有用户，不开通新用户。默认覆盖钉钉与飞书，个人/企业身份模式都不能绕过本地用户准入。
