@@ -6,7 +6,7 @@
 
 ## 2026-09-29 Owner追加决定
 
-钉钉手机号准入真实链B1=BLOCKED（Owner等待人工验证）；暂停重试、控制台修改和扫码催办，待Owner反馈验证结果并明确继续后恢复。900103根因待验证。企业微信延期；其他独立补证继续，整体VERIFYING。唯一执行入口与剩余账本：`../receipts/planning-review-admission-and-config-02.md`（已复核回执04）。
+钉钉B1=PENDING（Owner已反馈本地Client ID误写原因并授权继续）；执行按审查02修正本地配置与种子来源，回读运行授权URL并继续手机号准入真实链，需要扫码/授权/MFA时提醒具体操作。正确Client ID为`dingzoptrn9m3m33rwe1`。企业微信延期，整体VERIFYING；唯一执行入口及证据要求：`../receipts/planning-review-admission-and-config-02.md`（回执05复核及最新Owner恢复授权）。
 
 ## 一、目标与准入规则
 
