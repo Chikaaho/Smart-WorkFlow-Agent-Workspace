@@ -2,7 +2,7 @@
 
 ## 当前任务（2026-09-29）
 
-`sso-admin-config` VERIFYING；回执07定点补证完成：A1a同轮XML导出（48/7/4+5+1全测试名清单）、A1b Web四连exit0（vitest 1301+3，候选86c5ec1）、A2/A4断言定位（ticket_rejectedPaths_issueNoSession含verify-never会话零签发）、A3延期标记列宽修复+390真实视口三段滚动证据、A6全入口回读（current-status已同步）、S1a扫描器已知值3类CHECKED+fatal0+exit0、S1b远端当前文件0残留+轮换方案供Owner决定；B1授权页已在浏览器打开（免扫码一键授权）待Owner点击「立即登录」后核验准入真实链。唯一账本 `product/sso-admin-config/receipts/planning-review-admission-and-config-02.md`；下一回执07。企业微信延期，P31开放。
+`sso-admin-config` VERIFYING；回执08收尾完成：B1真实链双相闭环（免扫码一键授权→首次BIND auto-bind 9002→LOGIN_SUCCESS→工作台落地；二次发起绑定路径LOGIN_SUCCESS无重复BIND；state expired一次为TTL正常语义重发即恢复）、A3a/b 390真实交互tooltip全值两图（App ID 20位+callback全文）、S1 DB凭据/AI Key定向扫描三类形态0真实命中（31处JDBC定性为内嵌测试库产物非拦截）、A6入口同步完成。Owner决定钉钉应用凭据在对接完成后轮换（R1）——B1对接验证已结束，等Owner控制台安排后执行侧本地只写更新+最小复验。唯一账本 `product/sso-admin-config/receipts/planning-execution-prompt-sso-admin-config-01.md`；下一回执08待Planner复核。企业微信延期，P31开放。
 
 ## 已完成
 
@@ -16,4 +16,4 @@
 
 **生产已于 2026-09-28 部署上线 0.1.2**（Owner 授权）：两制品远端 sha256 校验一致后上线，Flyway 自动应用 V97—V102（0 failed），生产当前 V102；启动 0 ERROR、就绪 200；公网 `https://chikaho.cn/sw/` 200、health 200 UP、前端新产物 `index-vDQskZXe.js` 生效；备份齐备（DB `20260928_1757.dump`、`bootstrap.jar.bak/.bak2`、`web.bak-20260928`），回滚路径明确；部署回执 `product/v0.1.2-release/receipts/deployment-20260928.md`。V012-CODE-001 保持独立 READY，外部通知/IoT 实网验证保持延期边界。
 
-当前任务=`sso-admin-config`（VERIFYING，回执07定点补证完成待Planner复核）；下一动作=Planner复核回执07；B1授权页已在浏览器打开（免扫码），Owner点击「立即登录」后执行核验准入真实链。
+当前任务=`sso-admin-config`（VERIFYING，回执07定点补证完成待Planner复核）；下一动作=执行执行补充提示01，B1普通登录按钮直接接续；真正本人验证再提醒。
