@@ -32,3 +32,11 @@ callback_boundPhoneMatch_loginSuccess 等）；源码自上轮门禁后的变化
 - 运行进程：PID 92183（lstart 见 ps），lsof 加载 jar 句柄 2 处，jar sha256 = 8a28cb795c439e704948554461efcf8a8acec0911a20d57961d20b8b36e9a277
 - Boot 6/0/0/0（a1-boot-6.log，批次 4 时点；批次 5/6 未触碰 sw-bootstrap）；锚 38/0/0/0（a1-anchors-38.log）
 - Web 38672cd 零改动；dist 资产 index-tfkOQLZp.js
+
+════ 审查02新账本最终化（2026-09-29 17:0x，批次7后可信窗口）════
+- Server HEAD 完整 40 位：964f2cb19187d2b54119dabdd506358aa1819a54（=d39db4c+批次7 A4在途用例；工作树 0 脏项）
+- 运行进程 PID 95780（批次 7 jar 构建 17:0x 后重启），lsof 加载 jar 句柄在册
+- jar sha256 = 316dd3f1b147870ce0f277013b8ba5b656209f70fbe04e10fdc56190ca9d5725
+- 门禁（批次 7 时点）：模块 334/0/0/0（a1-module-gate-334.log：332+2 A4在途）、Boot 6/0/0/0（a1-boot-6-head.log，d39db4c+批次7 重跑）、锚 38/0/0/0（批次 4—7 无迁移变更，a1-anchors-38.log 继续有效）
+- 依赖影响说明：批次 5/6/7 变更文件=sw-biz-system-biz（SsoAuthService/SsoAuthController/SsoTicketStore/SsoUserBindingMapper+测试）与 sw-bootstrap 仅测试文件（I5SsoBindingSessionBootTest）；sw-bootstrap 生产代码自批次 4 后未变——Boot/锚日志对批次 7 的适用性以此文件级范围为证
+- 具名用例报告：a1-surefire-*.xml（SsoAuthServiceTest 42 含全部 admission/config 用例、SsoPhoneNormalizerTest 3、SsoCredentialCipherCompatTest 2、I5SsoBindingSessionBootTest 6 含 A4、I5SsoCipherRuntimeDiagTest 1）

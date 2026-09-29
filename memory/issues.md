@@ -9,3 +9,5 @@
 - **I6 五外部通知渠道**：SMS/EMAIL/FEISHU/DINGTALK/WECHAT_WORK 维持 `Owner 延期 / 未验证`，不占用 I 编号，由 P2 待办 `todo/i6-external-notification-channels-real-verification.md` 跟踪。
 - **I5 三 Provider 真实链**：钉钉/飞书已按 `direction-three-provider-sso-20260928` 完成真实授权链验收 **`PASSED（2026-09-29，审查07）`**（企业矩阵/个人模式/错配拒绝均真实链证据）；**WECOM（企业微信）保持 `Owner 延期 / 未验证`**（保留配置，nginx 域名验证 location 已有变更），启用时重入真实链验证。B 端手机号准入为新规则，由 `sso-admin-config` 方向实现与独立验收。
 - **其他未核销边界**：P2/P4/P34/P35/P37/P38/P39/P47 保持现状；多宿主 Supervisor 真实 ZCode 闭环仍开放。
+
+- `sso-admin-config`（后台配置与B端手机号准入）VERIFYING；回执04已复核，模块332/锚38/Boot6通过计数及飞书重绑审计事实已回读，A1—A6剩余证据以 `product/sso-admin-config/receipts/planning-review-admission-and-config-02.md` 为唯一账本。钉钉B1=BLOCKED（Owner等待人工验证），暂停重试与扫码催办；900103根因待验证，Owner反馈并明确继续后恢复。企业微信延期，P31未核销。

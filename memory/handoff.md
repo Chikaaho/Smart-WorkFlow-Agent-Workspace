@@ -2,7 +2,7 @@
 
 ## 当前任务（2026-09-29）
 
-`sso-admin-config` 后台 SSO 配置管理与 B 端手机号准入（L，`VERIFYING`）：方向 `product/sso-admin-config/ready/direction-sso-admin-config.md`；回执 01—04、审查 01/02；关联 P31（未核销）。前置已收口：三方 SSO 真实接入功能级 **`PASSED（2026-09-29，审查07 `product/dingtalk-sso/receipts/planning-review-three-provider-07-passed.md`）`**，接入功能状态 `COMPLETED（待规划确认）`；主方向归档 `product/dingtalk-sso/passed/`；阶段三同步方向 `product/dingtalk-sso/ready/direction-sso-terminal-sync-20260929.md`（同步回执提交后待 Planner 复核）。最终候选 Server `7342e788…`、Web `d37a57b…`；验收集合 Server 本任务模块 319/0/0/0＋Boot 4/0/0/0、Web 1301+3。企业微信 Owner 延期（保留配置，真实链未验证）。唯一下一动作=执行 sso-admin-config 方向（B 端手机号准入＋租户级配置管理；B 端准入不沿用历史手动绑定通过）。
+`sso-admin-config`（后台配置与B端手机号准入）VERIFYING；回执04已复核，模块332/锚38/Boot6通过计数及飞书重绑审计事实已回读，A1—A6剩余证据以 `product/sso-admin-config/receipts/planning-review-admission-and-config-02.md` 为唯一账本。钉钉B1=BLOCKED（Owner等待人工验证），暂停重试与扫码催办；900103根因待验证，Owner反馈并明确继续后恢复。企业微信延期，P31未核销。 三方SSO旧接入已PASSED，阶段三回执仍待Planner最终复核；与本功能独立。
 
 ## 已完成
 
@@ -16,4 +16,4 @@
 
 **生产已于 2026-09-28 部署上线 0.1.2**（Owner 授权）：两制品远端 sha256 校验一致后上线，Flyway 自动应用 V97—V102（0 failed），生产当前 V102；启动 0 ERROR、就绪 200；公网 `https://chikaho.cn/sw/` 200、health 200 UP、前端新产物 `index-vDQskZXe.js` 生效；备份齐备（DB `20260928_1757.dump`、`bootstrap.jar.bak/.bak2`、`web.bak-20260928`），回滚路径明确；部署回执 `product/v0.1.2-release/receipts/deployment-20260928.md`。V012-CODE-001 保持独立 READY，外部通知/IoT 实网验证保持延期边界。
 
-当前任务=`sso-admin-config`（`READY`，见顶部）；三方 SSO 接入已 PASSED 并提交阶段三同步。Executor 后续按 sso-admin-config 方向推进，不重复发布或业务验证。
+当前任务=`sso-admin-config`（VERIFYING）；下一动作=按审查02完成独立补证与knowledge当前入口同步；钉钉等待Owner人工验证。

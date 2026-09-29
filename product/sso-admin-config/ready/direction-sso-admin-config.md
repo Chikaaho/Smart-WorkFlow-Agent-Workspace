@@ -1,12 +1,12 @@
 # 后台SSO配置管理与B端手机号准入
 
-日期2026-09-29；Planner→Executor；等级L；状态READY；关联P31，未核销。
+日期2026-09-29；Planner→Executor；等级L；状态VERIFYING；关联P31，未核销。
 
 依据：Owner后台配置开发授权、2026-09-29手机号准入补充；search_fallback/sso-admin-config-readiness-20260929.md；product/dingtalk-sso/receipts/planning-review-three-provider-07-passed.md。本方向为当前新主功能，先提交前项状态同步，再连续推进实现。企业微信延期。
 
 ## 2026-09-29 Owner追加决定
 
-Owner最新指令已恢复钉钉本轮手机号准入真实链B1，状态PENDING（已授权恢复），原Owner-BLOCKED暂缓指令解除。执行直接核验现有浏览器登录态、应用状态与真实准入链；需要本人扫码、授权、MFA或客户端确认时，及时告知具体平台、页面和操作，完成后接续验证。无需再次申请恢复许可；不能预设扫码必然解决900103。与A1—A6独立工作并行推进，企业微信延期不变。当前恢复入口：`../receipts/planning-review-admission-and-config-02.md`；技术恢复与补证依据审查02及审查01。
+钉钉手机号准入真实链B1=BLOCKED（Owner等待人工验证）；暂停重试、控制台修改和扫码催办，待Owner反馈验证结果并明确继续后恢复。900103根因待验证。企业微信延期；其他独立补证继续，整体VERIFYING。唯一执行入口与剩余账本：`../receipts/planning-review-admission-and-config-02.md`（已复核回执04）。
 
 ## 一、目标与准入规则
 

@@ -1,0 +1,24 @@
+A5 加密兼容边界说明（sso-admin-config 审查02 A5，2026-09-29）
+
+1. 同钥历史密文可读（具名测试 SsoCredentialCipherCompatTest.sameKey_historicalCiphertextReadable）：
+   AesGcmCipher(K) 加密的密文可被 SsoCredentialCipher(K) 解密，反向亦然——
+   SsoCredentialCipher 仅包装同一 AES-256-GCM 实现（同 IV/Tag 布局），密文格式逐字兼容。
+
+2. 历史密文来源（本任务范围内实际存在的两类）：
+   a. 仓库 dev 键密文：V903 devseed 哨兵行（dev yml 缺省密钥 c21hcnQ…=smart-workflow-dev-cipher-key!!）
+      ——dev 环境未注入 SW_SSO_CIPHER_KEY 时由 yml 缺省值读取，兼容路径不变；
+   b. 隔离验证环境独立密钥密文：V904 种子（/tmp，仓库外）经 reencrypt.mjs 以 SW_SSO_CIPHER_KEY
+      重加密——启动校验（@PostConstruct validateEnabledProviderConfigsAtStartup）对不可解密行
+      fail-fast（AEADBadTagException→启动失败），这正是批次 6 前手工排查中实际观测到的失败形态。
+
+3. 不同历史密钥的安全迁移/回退边界：
+   - 密钥切换必须伴随密文重加密（reencrypt.mjs 模式：旧钥解密→新钥加密→原子替换种子/数据）；
+   - 回退=恢复旧密钥环境变量+旧密文（备份先行）；
+   - 不操作生产密钥/密文（本任务未触碰生产）。
+
+4. agent 模块影响：I5SsoCipherRuntimeDiagTest 断言运行容器 AesGcmCipher bean 唯一且为
+   agent 实例（agentAesGcmCipher），SSO 侧 SsoCredentialCipher 为非 bean 显式构造——
+   agent 密钥与其密文不受 SSO 密钥分离影响；blank-key fail-fast 断言通过。
+
+5. 具名结果：SsoCredentialCipherCompatTest 2/0/0/0、I5SsoCipherRuntimeDiagTest 1/0/0/0
+   （a1-module-gate-332.log / a1-boot-6.log 原始输出）。
