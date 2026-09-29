@@ -1,18 +1,20 @@
 # 三方 SSO 真实接入（P31 相关，执行跟踪）
 
-> 任务：`product/dingtalk-sso/ready/direction-three-provider-sso-20260928.md`（L）；P31 保持开放，功能计数不变。
-> 本文件是执行进度的事实记录；验收裁决权在 Planner。
+> 任务：`product/dingtalk-sso/passed/direction-three-provider-sso-20260928.md`（L，主方向已归档 `passed/`）。
+> **功能级验收 `PASSED（2026-09-29，审查 07 `receipts/planning-review-three-provider-07-passed.md`）`；接入功能状态 `COMPLETED（待规划确认，2026-09-29）`；P31 开放未核销，功能数 45/增量 0。**
 
-## 执行进度（2026-09-28）
+## 终态快照（2026-09-29）
 
-- **共用回调修复（方向目标 A）**：完成。Server develop `98e0034`（302+前端基路径）、`edd7a02`（provider 大小写归一化）、`4f5454e`（飞书换票 v3 契约+SPI 传回调 URL）、`49b5f9f`（已绑定登录经回跳页兑换票据）、`cb5f17d`（测试桩）；Web develop `d37a57b`（sso_error 分支/清理 XHR 回调/企微文案）。门禁：Server system-biz 314/0/0/0＋I5SsoBindingSessionBootTest 4/4（终态代码复跑）；Web 1301 passed+3 skipped、typecheck/lint/build exit 0。
-- **飞书/钉钉真实链**：自验六段全部通过（规划补证中，不得投影为 Planner 验收）；G3b 企业归属约束已按审查03裁决实现（extra_config.enterpriseId＋厂商可信字段校验，Server commit 1f950e9）（授权→v3 换票→open_id→绑定→已绑定登录（服务端 `SSO 登录成功: userId=9001`、ticket POST 200）→解绑失效；负向：伪造 code 400、state 重放拒绝；移动 390x844 视口可用）。证据 `product/dingtalk-sso/receipts/evidence/feishu-real-chain-01/`。控制台配置：重定向 URL 已登记、测试企业「SW-SSO验证」关联应用、零 API 权限（users/me 基础字段官方无权限要求）。
-- **钉钉**：执行就绪待外部——authorize URL 生成实测正确；`api.dingtalk.com` 换票端点可达（伪造 code 400）。剩余：Owner 控制台登录后开通 Contact.User.Read＋登记回调 URL，再跑真实链。
-- **企业微信**：冻结（企业管理后台扫码会话缺失＋企业主体存在性未确认；探索回执 `search_fallback/feishu-wecom-sso-readiness-20260928.md`）。
-- **实施回执**：`product/dingtalk-sso/receipts/implementation-three-provider-01.md`。
+- **验收范围与结果**：钉钉、飞书既定接入范围 PASSED——共用回调 302/前端回跳链、provider 大小写归一、飞书 v3 换票契约（`accounts.feishu.cn/oauth/v3/token`）、G3b 企业归属约束（`extra_config.enterpriseId`＋厂商可信字段：钉钉 corpId/飞书 tenant_key；错配→`LOGIN_FAILED/ENTERPRISE_MISMATCH` 且无绑定/会话增量）、个人模式显式（`scope=personal` 审计，未绑定走候选绑定页、绑定后免密直达工作台）。
+- **最终候选**：Server `7342e788d47868c0b10790c61fe19aef4269c781`（develop，工作树净，含 `762f427` corpid scope 修正与 `DingtalkSsoProviderClientScopeTest`）；Web `d37a57b70de0b11466fac9a9fc98fcdff737031a`；运行 jar sha256 `ea8c7ca97bcbc139b16112628d9c34c33244784b05676a1acc42f085c398baf6`（进程-产物 lsof 关联，见 `receipts/evidence/feishu-remaining-01/r2-run-identity.txt`）。
+- **验收集合**：Server 本任务模块 319/0/0/0（`receipts/evidence/g4-gates-01/r2-system-biz-test-319.log`）＋Boot 4/0/0/0（`r2-boot-4.log`）；Web 1301 passed + 3 skipped 及本任务四连 exit 0；不替换全仓历史 1586 基线。
+- **边界**：企业微信 Owner 延期（保留配置，真实链未验证；nginx 域名验证 location 已有变更）；企业成员批量边界（需可控第二成员）不设门槛；本任务未部署生产应用（生产仍 0.1.2/V102）。Owner 新增 B 端手机号准入不在本次 PASSED 内，由 `sso-admin-config` 方向实现。
+- **回执链**：实施 01—09、审查 01—07、补证提示 01—05；关键证据 `receipts/evidence/feishu-real-chain-01/`（六段真实链/企业矩阵）、`g4-gates-01/`（门禁/候选指纹）、`feishu-remaining-01/`（飞书错配/个人/R2 运行身份）。
 
 ## 已证实事实（供后续复核）
 
 - 旧 I5 链存在四处真实断链（JSON 非 302、provider 大小写、票据无消费页、飞书 v2 端点 400），均已在真实链中复现并修复。
 - 飞书换票官方现行契约为 `accounts.feishu.cn/oauth/v3/token`（2026-08-21 更新文档）；旧 v2 实测 400。
+- 钉钉企业模式必须 `scope=openid+corpid`（`scope=openid` 换票响应无 corpId，实测拒绝）。
+- SSO 凭据加密实际 bean 为 `agentAesGcmCipher`（`@ConditionalOnMissingBean` 顶替 `ssoCipher`），密钥源 `SW_CIPHER_KEY`——运行诊断证实（`I5SsoCipherRuntimeDiagTest`），加密依赖显式化由 `sso-admin-config` 方向承接。
 - 观察项（范围外）：第一方 logout 后 refresh cookie 疑似未失效（登出后静默 refresh 200），建议另立缺陷核实。

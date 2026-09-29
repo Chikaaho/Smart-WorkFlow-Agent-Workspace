@@ -541,7 +541,7 @@ P58已于2026-09-04功能级 **PASSED**（规划验收08）＋阶段三终态同
 | P28 | M01-F04-01 用户组管理 | 全仓 grep 零命中 | ✅ **已核销**（2026-08-19，user-group-membership D117 PASSED + 阶段三 COMPLETED） |
 | P29 | M01-F05-01 租户/公司管理 | 有 sys_tenant 表+seed+TenantLineHandler 列级隔离，但无实体/Controller/管理页（"维护"未实现） | 未排期 |
 | P30 | M02-F05-01 资源管理 | 鉴权执行机制有，但 API 资源注册表+鉴权策略配置无实体/端点/页面 | 未排期 |
-| P31 | M02-F06-02 单点登录 | 原 D83“仅 SPI”是历史快照；后续 I5 已有交付回执，三 Provider 真实链曾由 Owner 延期免验；当前实现与总项状态待执行核实 | 三平台真实接入执行中（2026-09-28，方向 `product/dingtalk-sso/ready/direction-three-provider-sso-20260928.md`）：共用回调修复完成并推送，飞书/钉钉真实链自验提交、规划补证中（回执 01-05 与审查 01-03、二级补证提示同录；企业微信 Owner 延期）；钉钉待 Owner 控制台登录后配置+授权，企业微信冻结于企业主体确认；P31 未核销 |
+| P31 | M02-F06-02 单点登录 | 钉钉/飞书既定真实接入已PASSED（2026-09-29，审查07）；企业微信Owner延期 | 开放未核销；接入待终态同步；后台配置与B端可信手机号匹配预建用户准入READY，入口 `product/sso-admin-config/ready/direction-sso-admin-config.md` |
 | P32 | M03-F04-02 表单数据导入导出 | 全仓库零代码 | ✅ **已核销**（2026-08-29，form-data-import-export 功能级 PASSED + 阶段三终态同步 COMPLETED；M03-F04-02 升✅、清单 ✅32/🟦25/⬜33、功能数 36、基线 947/0/0/0（agent346）、110f/1057t/3skipped、Flyway H2 V43/PG V43——历史终态；当前正式基线经 minimal-closure-first-acceptance 审计更新为 955/1060/V44，功能数 36、清单 ✅32/🟦25/⬜33 不变） |
 | P33 | M03-F06-01 打印模板 | 无 print/PDF/套打模板代码 | 未排期 |
 | P34 | M04-F01-03 会签规则 | P58已交付子集：ALL/ANY/RATIO 会签结算、独立意见、取消语义；剩余：原明细完整规则（含一票否决）覆盖待确认（B 方向 §3，见 feature-reconciliation-index） | 部分实现、开放未核销 |
@@ -673,5 +673,5 @@ P45已完成规划功能级验收与阶段三终态复核，正式状态为 **`C
 
 ## 2026-09-29 SSO 后续安排（关联 P31）
 
-- 企业微信按 Owner 决定延期，真实链未验证；钉钉/飞书当前仍 VERIFYING，审查入口 `product/dingtalk-sso/receipts/planning-review-three-provider-03.md`，补证入口 `planning-execution-prompt-three-provider-02.md`（同目录）。
-- 后台 SSO 配置管理：已登记，开发以前项功能验收 PASSED 为前置。范围为租户级配置维护、启停、密钥只写更新、配置检查、权限和审计；只读准备入口 `search_task/sso-admin-config-readiness-20260929.md`。不新增或核销 P 编号，不提前实现。
+- 企业微信Owner延期；钉钉/飞书原定接入PASSED，阶段三入口 `product/dingtalk-sso/ready/direction-sso-terminal-sync-20260929.md`。
+- 后台SSO配置管理与B端手机号准入：READY，先提交接入终态同步，再执行 `product/sso-admin-config/ready/direction-sso-admin-config.md`。可信手机号匹配已有SSO用户，否则仅绑定当前租户组织架构唯一有效用户；无用户拒绝登录。

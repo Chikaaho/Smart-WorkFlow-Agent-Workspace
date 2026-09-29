@@ -1,8 +1,8 @@
 # 功能摘要
 
-> 2026-09-28 当前：0.1.2 发布完成并已部署生产（V102，双端健康 200）——规划发布验收 `PASSED`，发布任务 `v0.1.2-release` 终态 `COMPLETED（规划已确认，2026-09-28）`；终态同步最终复核通过；当前无活动发布/修复任务。以下旧「当前」行仅作历史。
+> 2026-09-29 当前：三方 SSO 真实接入功能级 `PASSED`（审查07）、接入功能状态 `COMPLETED（待规划确认）`，主方向归档 `product/dingtalk-sso/passed/`；新活动功能 `sso-admin-config`（后台 SSO 配置管理与 B 端手机号准入）`READY`。0.1.2 发布完成并已部署生产（V102，双端健康 200）——规划发布验收 `PASSED`，发布任务 `v0.1.2-release` 终态 `COMPLETED（规划已确认，2026-09-28）`。以下旧「当前」行仅作历史。
 > 【历史】2026-09-28 修复轮快照：v0.1.2-bugfix 曾为 IN_PROGRESS，已按 Owner 裁决收口。
-> 同步点：2026-09-28 发布终态规划确认；总体任务 `backend-architecture-optimization`（XL）`COMPLETED（规划已确认，2026-09-26）`。
+> 同步点：2026-09-29 三方 SSO 审查07 PASSED；总体任务 `backend-architecture-optimization`（XL）`COMPLETED（规划已确认，2026-09-26）`。
 > 清单当前值 **✅46/🟦22/⬜22**（90）；功能数 **45**（发布零变化）；全量双向映射见 `knowledge/feature-reconciliation-index.md`。
 
 - `backend-architecture-optimization`（XL）：**`COMPLETED（规划已确认，2026-09-26）`**；Phase 1—6C 与 Final 均已完成（Final 8/8：双仓 About 与根 POM canonical URL 收口）；基线 1570/0/0/0；10 项候选去向=BAO-01 `DEFERRED` + BAO-02 `PARTIAL` + 8 项 `COMPLETED`。
@@ -15,3 +15,5 @@
 
 - `v0.1.2-bugfix`（L，非业务功能计数）：**`COMPLETED（Owner 范围关闭，2026-09-28）`**（裁决 `product/v0.1.2-bugfix/receipts/planning-owner-close-20260928.md`）；23 项历史执行/回归记录保留，不补造逐项验收；方向归档 `product/v0.1.2-bugfix/passed/`；V012-CODE-001 仍 READY 独立跟踪。
 - `v0.1.2-release`（L，非业务功能计数）：**`COMPLETED（规划已确认，2026-09-28）`**——规划发布复核 `PASSED`（`product/v0.1.2-release/receipts/planning-review-release-20260928-passed.md`）；两仓 develop→main 快进（Server `fd704ff…`、Web `5368e6c…`）、annotated tag `0.1.2`、正式 Release（CI 36396145288 / 36396187465）；本次未部署。发布执行回执 `product/v0.1.2-release/receipts/release-20260928.md`，终态同步回执 `receipts/terminal-sync-20260928.md`。
+- 三方 SSO 真实接入（`dingtalk-sso`，L，既有 I5 补验、非新增功能计数/增量 0）：功能级 **`PASSED（2026-09-29，审查07）`**、接入功能状态 `COMPLETED（待规划确认）`；主方向归档 `product/dingtalk-sso/passed/`。钉钉/飞书真实授权链与企业矩阵验收通过（G3b 企业归属约束、个人模式显式、错配拒绝）；验收集合 Server 本任务模块 319/0/0/0＋Boot 4/0/0/0、Web 1301+3。企业微信 Owner 延期未验证；P31 未核销。
+- `sso-admin-config`（后台 SSO 配置管理与 B 端手机号准入，L）：**`READY`**（方向 `product/sso-admin-config/ready/direction-sso-admin-config.md`，2026-09-29）；执行开始后按真实进度更新。
