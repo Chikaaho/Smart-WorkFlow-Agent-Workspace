@@ -1,9 +1,8 @@
 # 后台 SSO 配置管理与 B 端手机号准入（sso-admin-config，执行跟踪）
 
 > 任务：`product/sso-admin-config/ready/direction-sso-admin-config.md`（L）；关联 P31（开放未核销）。
-> **功能状态 `VERIFYING`（回执 05 未通过，执行补证推进中，待规划验收）**。
-> 唯一执行入口与剩余账本：`product/sso-admin-config/receipts/planning-review-admission-and-config-02.md`
-> 当前裁决（2026-09-29 回执 05 复核：整体 VERIFYING 未通过；剩余账本 A1/A2/A3/A4/A6/S1+B1）。
+> **功能状态 `COMPLETED（待规划确认，2026-09-29）`；功能验收 PASSED（审查10）**。
+> 历史裁决链已闭合（审查 10 PASSED）；执行入口链：审查02 → 补允提示01—03（已收尾）。剩余仅信息同步：Planner 复核 `receipts/terminal-sync-01.md` 后确认 COMPLETED。
 
 ## 当前状态（2026-09-29 19:3x 更新，回执 06 补证轮）
 
