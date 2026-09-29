@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.sw.ck.system.sso.SsoAdmissionZeroIncrementIntegrationTest" time="0.968" tests="4" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="socksProxyHost" value="127.0.0.1"/>
+    <property name="http.proxyHost" value="127.0.0.1"/>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-system/sw-biz-system-biz/target/test-classes:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-system/sw-biz-system-biz/target/classes:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-system/sw-biz-system-api/target/classes:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-framework/sw-common/target/classes:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-starter/3.4.4/spring-boot-starter-3.4.4.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot/3.4.4/spring-boot-3.4.4.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.4.4/spring-boot-autoconfigure-3.4.4.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.4.4/spring-boot-starter-logging-3.4.4.jar:/Users/chikan/.m2/repository/ch/qos/logback/logback-classic/1.5.18/logback-classic-1.5.18.jar:/Users/chikan/.m2/repository/ch/qos/logback/logback-core/1.5.18/logback-core-1.5.18.jar:/Users/chikan/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.24.3/log4j-to-slf4j-2.24.3.jar:/Users/chikan/.m2/repository/org/apache/logging/log4j/log4j-api/2.24.3/log4j-api-2.24.3.jar:/Users/chikan/.m2/repository/org/slf4j/jul-to-slf4j/2.0.17/jul-to-slf4j-2.0.17.jar:/Users/chikan/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/Users/chikan/.m2/repository/org/yaml/snakeyaml/2.3/snakeyaml-2.3.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-starter-data-redis/3.4.4/spring-boot-starter-data-redis-3.4.4.jar:/Users/chikan/.m2/repository/io/lettuce/lettuce-core/6.4.2.RELEASE/lettuce-core-6.4.2.RELEASE.jar:/Users/chikan/.m2/repository/io/netty/netty-common/4.1.119.Final/netty-common-4.1.119.Final.jar:/Users/chikan/.m2/repository/io/netty/netty-handler/4.1.119.Final/netty-handler-4.1.119.Final.jar:/Users/chikan/.m2/repository/io/netty/netty-resolver/4.1.119.Final/netty-resolver-4.1.119.Final.jar:/Users/chikan/.m2/repository/io/netty/netty-buffer/4.1.119.Final/netty-buffer-4.1.119.Final.jar:/Users/chikan/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.119.Final/netty-transport-native-unix-common-4.1.119.Final.jar:/Users/chikan/.m2/repository/io/netty/netty-codec/4.1.119.Final/netty-codec-4.1.119.Final.jar:/Users/chikan/.m2/repository/io/netty/netty-transport/4.1.119.Final/netty-transport-4.1.119.Final.jar:/Users/chikan/.m2/repository/io/projectreactor/reactor-core/3.7.4/reactor-core-3.7.4.jar:/Users/chikan/.m2/repository/org/reactivestreams/reactive-streams/1.0.4/reactive-streams-1.0.4.jar:/Users/chikan/.m2/repository/org/springframework/data/spring-data-redis/3.4.4/spring-data-redis-3.4.4.jar:/Users/chikan/.m2/repository/org/springframework/data/spring-data-keyvalue/3.4.4/spring-data-keyvalue-3.4.4.jar:/Users/chikan/.m2/repository/org/springframework/data/spring-data-commons/3.4.4/spring-data-commons-3.4.4.jar:/Users/chikan/.m2/repository/org/springframework/spring-tx/6.2.5/spring-tx-6.2.5.jar:/Users/chikan/.m2/repository/org/springframework/spring-oxm/6.2.5/spring-oxm-6.2.5.jar:/Users/chikan/.m2/repository/org/springframework/spring-context-support/6.2.5/spring-context-support-6.2.5.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.4.4/spring-boot-starter-web-3.4.4.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.4.4/spring-boot-starter-json-3.4.4.jar:/Users/chikan/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.18.3/jackson-datatype-jdk8-2.18.3.jar:/Users/chikan/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.18.3/jackson-datatype-jsr310-2.18.3.jar:/Users/chikan/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.18.3/jackson-module-parameter-names-2.18.3.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.4.4/spring-boot-starter-tomcat-3.4.4.jar:/Users/chikan/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.39/tomcat-embed-core-10.1.39.jar:/Users/chikan/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.39/tomcat-embed-websocket-10.1.39.jar:/Users/chikan/.m2/repository/org/springframework/spring-web/6.2.5/spring-web-6.2.5.jar:/Users/chikan/.m2/repository/org/springframework/spring-webmvc/6.2.5/spring-webmvc-6.2.5.jar:/Users/chikan/.m2/repository/org/springframework/security/spring-security-core/6.4.4/spring-security-core-6.4.4.jar:/Users/chikan/.m2/repository/org/springframework/security/spring-security-crypto/6.4.4/spring-security-crypto-6.4.4.jar:/Users/chikan/.m2/repository/org/springframework/spring-aop/6.2.5/spring-aop-6.2.5.jar:/Users/chikan/.m2/repository/org/springframework/spring-beans/6.2.5/spring-beans-6.2.5.jar:/Users/chikan/.m2/repository/org/springframework/spring-context/6.2.5/spring-context-6.2.5.jar:/Users/chikan/.m2/repository/org/springframework/spring-expression/6.2.5/spring-expression-6.2.5.jar:/Users/chikan/.m2/repository/io/micrometer/micrometer-observation/1.14.5/micrometer-observation-1.14.5.jar:/Users/chikan/.m2/repository/io/micrometer/micrometer-commons/1.14.5/micrometer-commons-1.14.5.jar:/Users/chikan/.m2/repository/com/baomidou/mybatis-plus-spring-boot3-starter/3.5.9/mybatis-plus-spring-boot3-starter-3.5.9.jar:/Users/chikan/.m2/repository/com/baomidou/mybatis-plus/3.5.9/mybatis-plus-3.5.9.jar:/Users/chikan/.m2/repository/com/baomidou/mybatis-plus-core/3.5.9/mybatis-plus-core-3.5.9.jar:/Users/chikan/.m2/repository/com/baomidou/mybatis-plus-annotation/3.5.9/mybatis-plus-annotation-3.5.9.jar:/Users/chikan/.m2/repository/com/baomidou/mybatis-plus-spring/3.5.9/mybatis-plus-spring-3.5.9.jar:/Users/chikan/.m2/repository/org/mybatis/mybatis/3.5.16/mybatis-3.5.16.jar:/Users/chikan/.m2/repository/org/mybatis/mybatis-spring/3.0.4/mybatis-spring-3.0.4.jar:/Users/chikan/.m2/repository/com/baomidou/mybatis-plus-spring-boot-autoconfigure/3.5.9/mybatis-plus-spring-boot-autoconfigure-3.5.9.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/3.4.4/spring-boot-starter-jdbc-3.4.4.jar:/Users/chikan/.m2/repository/com/zaxxer/HikariCP/5.1.0/HikariCP-5.1.0.jar:/Users/chikan/.m2/repository/org/springframework/spring-jdbc/6.2.5/spring-jdbc-6.2.5.jar:/Users/chikan/.m2/repository/com/baomidou/mybatis-plus-jsqlparser/3.5.9/mybatis-plus-jsqlparser-3.5.9.jar:/Users/chikan/.m2/repository/com/github/jsqlparser/jsqlparser/5.0/jsqlparser-5.0.jar:/Users/chikan/.m2/repository/com/baomidou/mybatis-plus-jsqlparser-common/3.5.9/mybatis-plus-jsqlparser-common-3.5.9.jar:/Users/chikan/.m2/repository/com/baomidou/mybatis-plus-extension/3.5.9/mybatis-plus-extension-3.5.9.jar:/Users/chikan/.m2/repository/com/baomidou/dynamic-datasource-spring-boot3-starter/4.3.1/dynamic-datasource-spring-boot3-starter-4.3.1.jar:/Users/chikan/.m2/repository/com/baomidou/dynamic-datasource-spring-boot-common/4.3.1/dynamic-datasource-spring-boot-common-4.3.1.jar:/Users/chikan/.m2/repository/com/baomidou/dynamic-datasource-spring/4.3.1/dynamic-datasource-spring-4.3.1.jar:/Users/chikan/.m2/repository/com/baomidou/dynamic-datasource-creator/4.3.1/dynamic-datasource-creator-4.3.1.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-starter-aop/3.4.4/spring-boot-starter-aop-3.4.4.jar:/Users/chikan/.m2/repository/org/aspectj/aspectjweaver/1.9.23/aspectjweaver-1.9.23.jar:/Users/chikan/.m2/repository/org/mapstruct/mapstruct/1.6.3/mapstruct-1.6.3.jar:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-framework/sw-security/target/classes:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-starter-security/3.4.4/spring-boot-starter-security-3.4.4.jar:/Users/chikan/.m2/repository/org/springframework/security/spring-security-config/6.4.4/spring-security-config-6.4.4.jar:/Users/chikan/.m2/repository/org/springframework/security/spring-security-web/6.4.4/spring-security-web-6.4.4.jar:/Users/chikan/.m2/repository/io/jsonwebtoken/jjwt-api/0.12.6/jjwt-api-0.12.6.jar:/Users/chikan/.m2/repository/io/jsonwebtoken/jjwt-impl/0.12.6/jjwt-impl-0.12.6.jar:/Users/chikan/.m2/repository/io/jsonwebtoken/jjwt-jackson/0.12.6/jjwt-jackson-0.12.6.jar:/Users/chikan/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.18.3/jackson-databind-2.18.3.jar:/Users/chikan/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.18.3/jackson-annotations-2.18.3.jar:/Users/chikan/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.18.3/jackson-core-2.18.3.jar:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-basic/sw-basic-notify/sw-basic-notify-api/target/classes:/Users/chikan/.m2/repository/cn/hutool/hutool-all/5.8.36/hutool-all-5.8.36.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-starter-validation/3.4.4/spring-boot-starter-validation-3.4.4.jar:/Users/chikan/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.39/tomcat-embed-el-10.1.39.jar:/Users/chikan/.m2/repository/org/hibernate/validator/hibernate-validator/8.0.2.Final/hibernate-validator-8.0.2.Final.jar:/Users/chikan/.m2/repository/jakarta/validation/jakarta.validation-api/3.0.2/jakarta.validation-api-3.0.2.jar:/Users/chikan/.m2/repository/org/jboss/logging/jboss-logging/3.6.1.Final/jboss-logging-3.6.1.Final.jar:/Users/chikan/.m2/repository/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar:/Users/chikan/.m2/repository/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.4.4/spring-boot-starter-test-3.4.4.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-test/3.4.4/spring-boot-test-3.4.4.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.4.4/spring-boot-test-autoconfigure-3.4.4.jar:/Users/chikan/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/Users/chikan/.m2/repository/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar:/Users/chikan/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.jar:/Users/chikan/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3.jar:/Users/chikan/.m2/repository/net/minidev/json-smart/2.5.2/json-smart-2.5.2.jar:/Users/chikan/.m2/repository/net/minidev/accessors-smart/2.5.2/accessors-smart-2.5.2.jar:/Users/chikan/.m2/repository/org/ow2/asm/asm/9.7.1/asm-9.7.1.jar:/Users/chikan/.m2/repository/org/assertj/assertj-core/3.26.3/assertj-core-3.26.3.jar:/Users/chikan/.m2/repository/net/bytebuddy/byte-buddy/1.15.11/byte-buddy-1.15.11.jar:/Users/chikan/.m2/repository/org/awaitility/awaitility/4.2.2/awaitility-4.2.2.jar:/Users/chikan/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/chikan/.m2/repository/org/junit/jupiter/junit-jupiter/5.11.4/junit-jupiter-5.11.4.jar:/Users/chikan/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.11.4/junit-jupiter-api-5.11.4.jar:/Users/chikan/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/chikan/.m2/repository/org/junit/platform/junit-platform-commons/1.11.4/junit-platform-commons-1.11.4.jar:/Users/chikan/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/chikan/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.11.4/junit-jupiter-params-5.11.4.jar:/Users/chikan/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.11.4/junit-jupiter-engine-5.11.4.jar:/Users/chikan/.m2/repository/org/junit/platform/junit-platform-engine/1.11.4/junit-platform-engine-1.11.4.jar:/Users/chikan/.m2/repository/org/mockito/mockito-core/5.14.2/mockito-core-5.14.2.jar:/Users/chikan/.m2/repository/net/bytebuddy/byte-buddy-agent/1.15.11/byte-buddy-agent-1.15.11.jar:/Users/chikan/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/chikan/.m2/repository/org/mockito/mockito-junit-jupiter/5.14.2/mockito-junit-jupiter-5.14.2.jar:/Users/chikan/.m2/repository/org/skyscreamer/jsonassert/1.5.3/jsonassert-1.5.3.jar:/Users/chikan/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/Users/chikan/.m2/repository/org/springframework/spring-core/6.2.5/spring-core-6.2.5.jar:/Users/chikan/.m2/repository/org/springframework/spring-jcl/6.2.5/spring-jcl-6.2.5.jar:/Users/chikan/.m2/repository/org/springframework/spring-test/6.2.5/spring-test-6.2.5.jar:/Users/chikan/.m2/repository/org/xmlunit/xmlunit-core/2.10.0/xmlunit-core-2.10.0.jar:/Users/chikan/.m2/repository/com/h2database/h2/2.3.232/h2-2.3.232.jar:"/>
+    <property name="sun.awt.enableExtraMouseButtons" value="true"/>
+    <property name="https.proxyPort" value="7897"/>
+    <property name="java.vm.vendor" value="Homebrew"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="org.jboss.logging.provider" value="slf4j"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk@21/21.0.11/libexec/openjdk.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire/surefirebooter-20260929192707866_233.jar /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire 2026-09-29T19-25-57_292-jvmRun1 surefire-20260929192707866_231tmp surefire_8-20260929192707866_232tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-system/sw-biz-system-biz/target/test-classes:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-system/sw-biz-system-biz/target/classes:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-system/sw-biz-system-api/target/classes:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-framework/sw-common/target/classes:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-starter/3.4.4/spring-boot-starter-3.4.4.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot/3.4.4/spring-boot-3.4.4.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.4.4/spring-boot-autoconfigure-3.4.4.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.4.4/spring-boot-starter-logging-3.4.4.jar:/Users/chikan/.m2/repository/ch/qos/logback/logback-classic/1.5.18/logback-classic-1.5.18.jar:/Users/chikan/.m2/repository/ch/qos/logback/logback-core/1.5.18/logback-core-1.5.18.jar:/Users/chikan/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.24.3/log4j-to-slf4j-2.24.3.jar:/Users/chikan/.m2/repository/org/apache/logging/log4j/log4j-api/2.24.3/log4j-api-2.24.3.jar:/Users/chikan/.m2/repository/org/slf4j/jul-to-slf4j/2.0.17/jul-to-slf4j-2.0.17.jar:/Users/chikan/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/Users/chikan/.m2/repository/org/yaml/snakeyaml/2.3/snakeyaml-2.3.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-starter-data-redis/3.4.4/spring-boot-starter-data-redis-3.4.4.jar:/Users/chikan/.m2/repository/io/lettuce/lettuce-core/6.4.2.RELEASE/lettuce-core-6.4.2.RELEASE.jar:/Users/chikan/.m2/repository/io/netty/netty-common/4.1.119.Final/netty-common-4.1.119.Final.jar:/Users/chikan/.m2/repository/io/netty/netty-handler/4.1.119.Final/netty-handler-4.1.119.Final.jar:/Users/chikan/.m2/repository/io/netty/netty-resolver/4.1.119.Final/netty-resolver-4.1.119.Final.jar:/Users/chikan/.m2/repository/io/netty/netty-buffer/4.1.119.Final/netty-buffer-4.1.119.Final.jar:/Users/chikan/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.119.Final/netty-transport-native-unix-common-4.1.119.Final.jar:/Users/chikan/.m2/repository/io/netty/netty-codec/4.1.119.Final/netty-codec-4.1.119.Final.jar:/Users/chikan/.m2/repository/io/netty/netty-transport/4.1.119.Final/netty-transport-4.1.119.Final.jar:/Users/chikan/.m2/repository/io/projectreactor/reactor-core/3.7.4/reactor-core-3.7.4.jar:/Users/chikan/.m2/repository/org/reactivestreams/reactive-streams/1.0.4/reactive-streams-1.0.4.jar:/Users/chikan/.m2/repository/org/springframework/data/spring-data-redis/3.4.4/spring-data-redis-3.4.4.jar:/Users/chikan/.m2/repository/org/springframework/data/spring-data-keyvalue/3.4.4/spring-data-keyvalue-3.4.4.jar:/Users/chikan/.m2/repository/org/springframework/data/spring-data-commons/3.4.4/spring-data-commons-3.4.4.jar:/Users/chikan/.m2/repository/org/springframework/spring-tx/6.2.5/spring-tx-6.2.5.jar:/Users/chikan/.m2/repository/org/springframework/spring-oxm/6.2.5/spring-oxm-6.2.5.jar:/Users/chikan/.m2/repository/org/springframework/spring-context-support/6.2.5/spring-context-support-6.2.5.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.4.4/spring-boot-starter-web-3.4.4.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.4.4/spring-boot-starter-json-3.4.4.jar:/Users/chikan/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.18.3/jackson-datatype-jdk8-2.18.3.jar:/Users/chikan/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.18.3/jackson-datatype-jsr310-2.18.3.jar:/Users/chikan/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.18.3/jackson-module-parameter-names-2.18.3.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.4.4/spring-boot-starter-tomcat-3.4.4.jar:/Users/chikan/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.39/tomcat-embed-core-10.1.39.jar:/Users/chikan/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.39/tomcat-embed-websocket-10.1.39.jar:/Users/chikan/.m2/repository/org/springframework/spring-web/6.2.5/spring-web-6.2.5.jar:/Users/chikan/.m2/repository/org/springframework/spring-webmvc/6.2.5/spring-webmvc-6.2.5.jar:/Users/chikan/.m2/repository/org/springframework/security/spring-security-core/6.4.4/spring-security-core-6.4.4.jar:/Users/chikan/.m2/repository/org/springframework/security/spring-security-crypto/6.4.4/spring-security-crypto-6.4.4.jar:/Users/chikan/.m2/repository/org/springframework/spring-aop/6.2.5/spring-aop-6.2.5.jar:/Users/chikan/.m2/repository/org/springframework/spring-beans/6.2.5/spring-beans-6.2.5.jar:/Users/chikan/.m2/repository/org/springframework/spring-context/6.2.5/spring-context-6.2.5.jar:/Users/chikan/.m2/repository/org/springframework/spring-expression/6.2.5/spring-expression-6.2.5.jar:/Users/chikan/.m2/repository/io/micrometer/micrometer-observation/1.14.5/micrometer-observation-1.14.5.jar:/Users/chikan/.m2/repository/io/micrometer/micrometer-commons/1.14.5/micrometer-commons-1.14.5.jar:/Users/chikan/.m2/repository/com/baomidou/mybatis-plus-spring-boot3-starter/3.5.9/mybatis-plus-spring-boot3-starter-3.5.9.jar:/Users/chikan/.m2/repository/com/baomidou/mybatis-plus/3.5.9/mybatis-plus-3.5.9.jar:/Users/chikan/.m2/repository/com/baomidou/mybatis-plus-core/3.5.9/mybatis-plus-core-3.5.9.jar:/Users/chikan/.m2/repository/com/baomidou/mybatis-plus-annotation/3.5.9/mybatis-plus-annotation-3.5.9.jar:/Users/chikan/.m2/repository/com/baomidou/mybatis-plus-spring/3.5.9/mybatis-plus-spring-3.5.9.jar:/Users/chikan/.m2/repository/org/mybatis/mybatis/3.5.16/mybatis-3.5.16.jar:/Users/chikan/.m2/repository/org/mybatis/mybatis-spring/3.0.4/mybatis-spring-3.0.4.jar:/Users/chikan/.m2/repository/com/baomidou/mybatis-plus-spring-boot-autoconfigure/3.5.9/mybatis-plus-spring-boot-autoconfigure-3.5.9.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/3.4.4/spring-boot-starter-jdbc-3.4.4.jar:/Users/chikan/.m2/repository/com/zaxxer/HikariCP/5.1.0/HikariCP-5.1.0.jar:/Users/chikan/.m2/repository/org/springframework/spring-jdbc/6.2.5/spring-jdbc-6.2.5.jar:/Users/chikan/.m2/repository/com/baomidou/mybatis-plus-jsqlparser/3.5.9/mybatis-plus-jsqlparser-3.5.9.jar:/Users/chikan/.m2/repository/com/github/jsqlparser/jsqlparser/5.0/jsqlparser-5.0.jar:/Users/chikan/.m2/repository/com/baomidou/mybatis-plus-jsqlparser-common/3.5.9/mybatis-plus-jsqlparser-common-3.5.9.jar:/Users/chikan/.m2/repository/com/baomidou/mybatis-plus-extension/3.5.9/mybatis-plus-extension-3.5.9.jar:/Users/chikan/.m2/repository/com/baomidou/dynamic-datasource-spring-boot3-starter/4.3.1/dynamic-datasource-spring-boot3-starter-4.3.1.jar:/Users/chikan/.m2/repository/com/baomidou/dynamic-datasource-spring-boot-common/4.3.1/dynamic-datasource-spring-boot-common-4.3.1.jar:/Users/chikan/.m2/repository/com/baomidou/dynamic-datasource-spring/4.3.1/dynamic-datasource-spring-4.3.1.jar:/Users/chikan/.m2/repository/com/baomidou/dynamic-datasource-creator/4.3.1/dynamic-datasource-creator-4.3.1.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-starter-aop/3.4.4/spring-boot-starter-aop-3.4.4.jar:/Users/chikan/.m2/repository/org/aspectj/aspectjweaver/1.9.23/aspectjweaver-1.9.23.jar:/Users/chikan/.m2/repository/org/mapstruct/mapstruct/1.6.3/mapstruct-1.6.3.jar:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-framework/sw-security/target/classes:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-starter-security/3.4.4/spring-boot-starter-security-3.4.4.jar:/Users/chikan/.m2/repository/org/springframework/security/spring-security-config/6.4.4/spring-security-config-6.4.4.jar:/Users/chikan/.m2/repository/org/springframework/security/spring-security-web/6.4.4/spring-security-web-6.4.4.jar:/Users/chikan/.m2/repository/io/jsonwebtoken/jjwt-api/0.12.6/jjwt-api-0.12.6.jar:/Users/chikan/.m2/repository/io/jsonwebtoken/jjwt-impl/0.12.6/jjwt-impl-0.12.6.jar:/Users/chikan/.m2/repository/io/jsonwebtoken/jjwt-jackson/0.12.6/jjwt-jackson-0.12.6.jar:/Users/chikan/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.18.3/jackson-databind-2.18.3.jar:/Users/chikan/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.18.3/jackson-annotations-2.18.3.jar:/Users/chikan/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.18.3/jackson-core-2.18.3.jar:/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-basic/sw-basic-notify/sw-basic-notify-api/target/classes:/Users/chikan/.m2/repository/cn/hutool/hutool-all/5.8.36/hutool-all-5.8.36.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-starter-validation/3.4.4/spring-boot-starter-validation-3.4.4.jar:/Users/chikan/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.39/tomcat-embed-el-10.1.39.jar:/Users/chikan/.m2/repository/org/hibernate/validator/hibernate-validator/8.0.2.Final/hibernate-validator-8.0.2.Final.jar:/Users/chikan/.m2/repository/jakarta/validation/jakarta.validation-api/3.0.2/jakarta.validation-api-3.0.2.jar:/Users/chikan/.m2/repository/org/jboss/logging/jboss-logging/3.6.1.Final/jboss-logging-3.6.1.Final.jar:/Users/chikan/.m2/repository/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar:/Users/chikan/.m2/repository/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.4.4/spring-boot-starter-test-3.4.4.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-test/3.4.4/spring-boot-test-3.4.4.jar:/Users/chikan/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.4.4/spring-boot-test-autoconfigure-3.4.4.jar:/Users/chikan/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/Users/chikan/.m2/repository/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar:/Users/chikan/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.jar:/Users/chikan/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3.jar:/Users/chikan/.m2/repository/net/minidev/json-smart/2.5.2/json-smart-2.5.2.jar:/Users/chikan/.m2/repository/net/minidev/accessors-smart/2.5.2/accessors-smart-2.5.2.jar:/Users/chikan/.m2/repository/org/ow2/asm/asm/9.7.1/asm-9.7.1.jar:/Users/chikan/.m2/repository/org/assertj/assertj-core/3.26.3/assertj-core-3.26.3.jar:/Users/chikan/.m2/repository/net/bytebuddy/byte-buddy/1.15.11/byte-buddy-1.15.11.jar:/Users/chikan/.m2/repository/org/awaitility/awaitility/4.2.2/awaitility-4.2.2.jar:/Users/chikan/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/chikan/.m2/repository/org/junit/jupiter/junit-jupiter/5.11.4/junit-jupiter-5.11.4.jar:/Users/chikan/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.11.4/junit-jupiter-api-5.11.4.jar:/Users/chikan/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/chikan/.m2/repository/org/junit/platform/junit-platform-commons/1.11.4/junit-platform-commons-1.11.4.jar:/Users/chikan/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/chikan/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.11.4/junit-jupiter-params-5.11.4.jar:/Users/chikan/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.11.4/junit-jupiter-engine-5.11.4.jar:/Users/chikan/.m2/repository/org/junit/platform/junit-platform-engine/1.11.4/junit-platform-engine-1.11.4.jar:/Users/chikan/.m2/repository/org/mockito/mockito-core/5.14.2/mockito-core-5.14.2.jar:/Users/chikan/.m2/repository/net/bytebuddy/byte-buddy-agent/1.15.11/byte-buddy-agent-1.15.11.jar:/Users/chikan/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/chikan/.m2/repository/org/mockito/mockito-junit-jupiter/5.14.2/mockito-junit-jupiter-5.14.2.jar:/Users/chikan/.m2/repository/org/skyscreamer/jsonassert/1.5.3/jsonassert-1.5.3.jar:/Users/chikan/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/Users/chikan/.m2/repository/org/springframework/spring-core/6.2.5/spring-core-6.2.5.jar:/Users/chikan/.m2/repository/org/springframework/spring-jcl/6.2.5/spring-jcl-6.2.5.jar:/Users/chikan/.m2/repository/org/springframework/spring-test/6.2.5/spring-test-6.2.5.jar:/Users/chikan/.m2/repository/org/xmlunit/xmlunit-core/2.10.0/xmlunit-core-2.10.0.jar:/Users/chikan/.m2/repository/com/h2database/h2/2.3.232/h2-2.3.232.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/chikan"/>
+    <property name="user.language" value="zh"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-04-21"/>
+    <property name="java.home" value="/opt/homebrew/Cellar/openjdk@21/21.0.11/libexec/openjdk.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="https.proxyHost" value="127.0.0.1"/>
+    <property name="basedir" value="/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-system/sw-biz-system-biz"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="FILE_LOG_CHARSET" value="UTF-8"/>
+    <property name="java.awt.headless" value="true"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-system/sw-biz-system-biz/target/surefire/surefirebooter-20260929192707866_233.jar"/>
+    <property name="user.script" value="Hans"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="21.0.11"/>
+    <property name="user.name" value="chikan"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="26.3.1"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Homebrew"/>
+    <property name="localRepository" value="/Users/chikan/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="java.io.tmpdir" value="/var/folders/bj/b_8gswn94js1733mt9xtckn80000gn/T/"/>
+    <property name="com.zaxxer.hikari.pool_number" value="15"/>
+    <property name="java.version" value="21.0.11"/>
+    <property name="user.dir" value="/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-system/sw-biz-system-biz"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="socksProxyPort" value="7897"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="PID" value="11996"/>
+    <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/chikan/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Homebrew"/>
+    <property name="java.vm.version" value="21.0.11"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="java.class.version" value="65.0"/>
+    <property name="http.proxyPort" value="7897"/>
+  </properties>
+  <testcase name="admissionOnlyOtherTenantHasPhone_stillRejected_otherTenantUntouched" classname="com.sw.ck.system.sso.SsoAdmissionZeroIncrementIntegrationTest" time="0.052">
+    <system-out><![CDATA[
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-09-29T19:27:29.436+08:00  INFO 11996 --- [           main] SsoAdmissionZeroIncrementIntegrationTest : Starting SsoAdmissionZeroIncrementIntegrationTest using Java 21.0.11 with PID 11996 (started by chikan in /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-system/sw-biz-system-biz)
+2026-09-29T19:27:29.437+08:00  INFO 11996 --- [           main] SsoAdmissionZeroIncrementIntegrationTest : The following 1 profile is active: "test"
+Logging initialized using 'class org.apache.ibatis.logging.stdout.StdOutImpl' adapter.
+Get /192.168.0.104 network interface 
+Get network interface info: name:en0 (en0)
+Initialization Sequence datacenterId:13 workerId:20
+2026-09-29T19:27:29.593+08:00  INFO 11996 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Starting...
+2026-09-29T19:27:29.598+08:00  INFO 11996 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-15 - Added connection conn140: url=jdbc:h2:mem:testdb_ssoadmission user=SA
+2026-09-29T19:27:29.598+08:00  INFO 11996 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Start completed.
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@332464fe] was not registered for synchronization because synchronization is not active
+original SQL: SELECT  id,provider,enabled,app_id,app_secret_enc,extra_config,redirect_path,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_sso_provider_config  WHERE deleted=0     AND (enabled = ?)
+SQL to parse, SQL: SELECT  id,provider,enabled,app_id,app_secret_enc,extra_config,redirect_path,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_sso_provider_config  WHERE deleted=0     AND (enabled = ?)
+parse the finished SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (enabled = ?)
+original SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (enabled = ?)
+SQL to parse, SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (enabled = ?)
+parse the finished SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (enabled = ?)
+JDBC Connection [HikariProxyConnection@103130420 wrapping conn140: url=jdbc:h2:mem:testdb_ssoadmission user=SA] will not be managed by Spring
+==>  Preparing: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (enabled = ?)
+==> Parameters: 1(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@332464fe]
+2026-09-29T19:27:30.041+08:00  INFO 11996 --- [           main] SsoAdmissionZeroIncrementIntegrationTest : Started SsoAdmissionZeroIncrementIntegrationTest in 0.627 seconds (process running for 22.058)
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16641839]
+original SQL: SELECT  id,provider,enabled,app_id,app_secret_enc,extra_config,redirect_path,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_sso_provider_config  WHERE deleted=0     AND (provider = ? AND tenant_id = ?)
+SQL to parse, SQL: SELECT  id,provider,enabled,app_id,app_secret_enc,extra_config,redirect_path,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_sso_provider_config  WHERE deleted=0     AND (provider = ? AND tenant_id = ?)
+parse the finished SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+original SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+SQL to parse, SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+parse the finished SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+JDBC Connection [HikariProxyConnection@220768261 wrapping conn140: url=jdbc:h2:mem:testdb_ssoadmission user=SA] will be managed by Spring
+==>  Preparing: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+==> Parameters: WECOM(String), 100(Long)
+<==    Columns: ID, PROVIDER, ENABLED, APP_ID, APP_SECRET_ENC, EXTRA_CONFIG, REDIRECT_PATH, TENANT_ID, CREATE_TIME, CREATE_BY, UPDATE_TIME, UPDATE_BY, DELETED, VERSION
+<==        Row: 91001, WECOM, 1, a2-fixture, zEz1ah+BMj2trnw4TAivdfyAYMkTEtNN3Mf3sE5u+1QAsne/DeM2GjIOuVDr, <<BLOB>>, /workspace, 100, 2026-09-29 19:27:30.048543, null, 2026-09-29 19:27:30.048543, null, 0, 0
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16641839]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16641839] from current transaction
+original SQL: INSERT INTO sys_sso_auth_state  ( id, state_value, provider,  redirect_path, consumed, expire_at, config_digest, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?,  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+SQL to parse, SQL: INSERT INTO sys_sso_auth_state  ( id, state_value, provider,  redirect_path, consumed, expire_at, config_digest, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?,  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+parse the finished SQL: INSERT INTO sys_sso_auth_state (id, state_value, provider, redirect_path, consumed, expire_at, config_digest, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==>  Preparing: INSERT INTO sys_sso_auth_state (id, state_value, provider, redirect_path, consumed, expire_at, config_digest, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==> Parameters: 2104895840330661890(Long), cc256bf791efa290d2663df6b6898f4f1c4a217fcd8aae9c0cb158d872b76b39(String), WECOM(String), /workspace(String), 0(Integer), 2026-09-29T19:32:30.064381(LocalDateTime), 5a36cb99fa24a8a99265838505c4d4b0437a72ea93ba1b318a3fd804ed32be9b(String), 100(Long), 2026-09-29T19:27:30.066176(LocalDateTime), 0(Long), 2026-09-29T19:27:30.066189(LocalDateTime), 0(Long), 0(Integer), 0(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16641839]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16641839] from current transaction
+original SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,    detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,    ?, ?, ?, ?, ?, ?, ?, ?  )
+SQL to parse, SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,    detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,    ?, ?, ?, ?, ?, ?, ?, ?  )
+parse the finished SQL: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==>  Preparing: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==> Parameters: 2104895840351633410(Long), WECOM(String), AUTH_START(String), SUCCESS(String), pre-login tenant=100(String), 100(Long), 2026-09-29T19:27:30.071176(LocalDateTime), 0(Long), 2026-09-29T19:27:30.071186(LocalDateTime), 0(Long), 0(Integer), 0(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16641839]
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16641839]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16641839]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16641839]
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2dfa0bff]
+original SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+SQL to parse, SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+parse the finished SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+original SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+SQL to parse, SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+parse the finished SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+JDBC Connection [HikariProxyConnection@1670715308 wrapping conn140: url=jdbc:h2:mem:testdb_ssoadmission user=SA] will be managed by Spring
+==>  Preparing: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+==> Parameters: cc256bf791efa290d2663df6b6898f4f1c4a217fcd8aae9c0cb158d872b76b39(String)
+<==    Columns: ID, CREATE_TIME, CREATE_BY, UPDATE_TIME, UPDATE_BY, DELETED, TENANT_ID, VERSION, STATE_VALUE, PROVIDER, NONCE, REDIRECT_PATH, CONSUMED, EXPIRE_AT, CONFIG_DIGEST
+<==        Row: 2104895840330661890, 2026-09-29 19:27:30.066176, 0, 2026-09-29 19:27:30.066189, 0, 0, 100, 0, cc256bf791efa290d2663df6b6898f4f1c4a217fcd8aae9c0cb158d872b76b39, WECOM, null, /workspace, 0, 2026-09-29 19:32:30.064381, 5a36cb99fa24a8a99265838505c4d4b0437a72ea93ba1b318a3fd804ed32be9b
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2dfa0bff]
+Transaction synchronization suspending SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2dfa0bff]
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3bbf850b]
+JDBC Connection [HikariProxyConnection@738989872 wrapping conn141: url=jdbc:h2:mem:testdb_ssoadmission user=SA] will be managed by Spring
+original SQL: UPDATE sys_sso_auth_state  SET consumed=?   WHERE deleted=0     AND (id = ? AND consumed = ?)
+SQL to parse, SQL: UPDATE sys_sso_auth_state  SET consumed=?   WHERE deleted=0     AND (id = ? AND consumed = ?)
+parse the finished SQL: UPDATE sys_sso_auth_state SET consumed = ? WHERE deleted = 0 AND (id = ? AND consumed = ?)
+original SQL: UPDATE sys_sso_auth_state SET consumed = ? WHERE deleted = 0 AND (id = ? AND consumed = ?)
+SQL to parse, SQL: UPDATE sys_sso_auth_state SET consumed = ? WHERE deleted = 0 AND (id = ? AND consumed = ?)
+parse the finished SQL: UPDATE sys_sso_auth_state SET consumed = ? WHERE deleted = 0 AND (id = ? AND consumed = ?)
+==>  Preparing: UPDATE sys_sso_auth_state SET consumed = ? WHERE deleted = 0 AND (id = ? AND consumed = ?)
+==> Parameters: 1(Integer), 2104895840330661890(Long), 0(Integer)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3bbf850b]
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3bbf850b]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3bbf850b]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3bbf850b]
+Transaction synchronization resuming SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2dfa0bff]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2dfa0bff] from current transaction
+original SQL: SELECT  id,provider,enabled,app_id,app_secret_enc,extra_config,redirect_path,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_sso_provider_config  WHERE deleted=0     AND (provider = ? AND tenant_id = ?)
+SQL to parse, SQL: SELECT  id,provider,enabled,app_id,app_secret_enc,extra_config,redirect_path,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_sso_provider_config  WHERE deleted=0     AND (provider = ? AND tenant_id = ?)
+parse the finished SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+original SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+SQL to parse, SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+parse the finished SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+==>  Preparing: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+==> Parameters: WECOM(String), 100(Long)
+<==    Columns: ID, PROVIDER, ENABLED, APP_ID, APP_SECRET_ENC, EXTRA_CONFIG, REDIRECT_PATH, TENANT_ID, CREATE_TIME, CREATE_BY, UPDATE_TIME, UPDATE_BY, DELETED, VERSION
+<==        Row: 91001, WECOM, 1, a2-fixture, zEz1ah+BMj2trnw4TAivdfyAYMkTEtNN3Mf3sE5u+1QAsne/DeM2GjIOuVDr, <<BLOB>>, /workspace, 100, 2026-09-29 19:27:30.048543, null, 2026-09-29 19:27:30.048543, null, 0, 0
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2dfa0bff]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2dfa0bff] from current transaction
+original SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,   external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,   ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+SQL to parse, SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,   external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,   ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+parse the finished SQL: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==>  Preparing: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==> Parameters: 2104895840393576449(Long), WECOM(String), EXCHANGE(String), SUCCESS(String), 95025010bb6efbecbdba49df63ef51472002b6226f179f51572d7c00e474a04c(String), scope=personal(String), 100(Long), 2026-09-29T19:27:30.081127(LocalDateTime), 0(Long), 2026-09-29T19:27:30.081136(LocalDateTime), 0(Long), 0(Integer), 0(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2dfa0bff]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2dfa0bff] from current transaction
+original SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+SQL to parse, SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+parse the finished SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+original SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+SQL to parse, SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+parse the finished SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+==>  Preparing: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+==> Parameters: WECOM(String), 100(Long), 95025010bb6efbecbdba49df63ef51472002b6226f179f51572d7c00e474a04c(String)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2dfa0bff]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2dfa0bff] from current transaction
+original SQL: SELECT  id,username,password,real_name,email,phone,sex,status,dept_id,is_admin,avatar,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_user  WHERE deleted=0     AND (tenant_id = ? AND phone IS NOT NULL)
+SQL to parse, SQL: SELECT  id,username,password,real_name,email,phone,sex,status,dept_id,is_admin,avatar,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_user  WHERE deleted=0     AND (tenant_id = ? AND phone IS NOT NULL)
+parse the finished SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+original SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+SQL to parse, SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+parse the finished SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+==>  Preparing: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+==> Parameters: 100(Long)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2dfa0bff]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2dfa0bff] from current transaction
+original SQL: SELECT  id,username,password,real_name,email,phone,sex,status,dept_id,is_admin,avatar,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_user  WHERE deleted=0     AND (tenant_id = ? AND phone IS NOT NULL)
+SQL to parse, SQL: SELECT  id,username,password,real_name,email,phone,sex,status,dept_id,is_admin,avatar,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_user  WHERE deleted=0     AND (tenant_id = ? AND phone IS NOT NULL)
+parse the finished SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+original SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+SQL to parse, SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+parse the finished SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2dfa0bff]
+Transaction synchronization suspending SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2dfa0bff]
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5a318de1]
+JDBC Connection [HikariProxyConnection@1331269115 wrapping conn141: url=jdbc:h2:mem:testdb_ssoadmission user=SA] will be managed by Spring
+original SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,   external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,   ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+SQL to parse, SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,   external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,   ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+parse the finished SQL: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==>  Preparing: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==> Parameters: 2104895840431325185(Long), WECOM(String), ADMISSION_REJECTED(String), DENIED(String), 95025010bb6efbecbdba49df63ef51472002b6226f179f51572d7c00e474a04c(String), no local user with trusted phone(String), 100(Long), 2026-09-29T19:27:30.090290(LocalDateTime), 0(Long), 2026-09-29T19:27:30.090300(LocalDateTime), 0(Long), 0(Integer), 0(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5a318de1]
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5a318de1]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5a318de1]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5a318de1]
+Transaction synchronization resuming SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2dfa0bff]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2dfa0bff]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2dfa0bff]
+]]></system-out>
+  </testcase>
+  <testcase name="admissionUniquePhonePositiveControl_bindsWithoutUserCreation" classname="com.sw.ck.system.sso.SsoAdmissionZeroIncrementIntegrationTest" time="0.09">
+    <system-out><![CDATA[Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@50233f7d]
+original SQL: SELECT  id,provider,enabled,app_id,app_secret_enc,extra_config,redirect_path,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_sso_provider_config  WHERE deleted=0     AND (provider = ? AND tenant_id = ?)
+SQL to parse, SQL: SELECT  id,provider,enabled,app_id,app_secret_enc,extra_config,redirect_path,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_sso_provider_config  WHERE deleted=0     AND (provider = ? AND tenant_id = ?)
+parse the finished SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+original SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+SQL to parse, SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+parse the finished SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+JDBC Connection [HikariProxyConnection@1913999268 wrapping conn140: url=jdbc:h2:mem:testdb_ssoadmission user=SA] will be managed by Spring
+==>  Preparing: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+==> Parameters: WECOM(String), 100(Long)
+<==    Columns: ID, PROVIDER, ENABLED, APP_ID, APP_SECRET_ENC, EXTRA_CONFIG, REDIRECT_PATH, TENANT_ID, CREATE_TIME, CREATE_BY, UPDATE_TIME, UPDATE_BY, DELETED, VERSION
+<==        Row: 91001, WECOM, 1, a2-fixture, LRMiua4Y+hS2F/E8IMbMbdqG5NYSiwqQrjyJXuYD06uJwMyMb31dlr8WNaRE, <<BLOB>>, /workspace, 100, 2026-09-29 19:27:30.097322, null, 2026-09-29 19:27:30.097322, null, 0, 0
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@50233f7d]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@50233f7d] from current transaction
+original SQL: INSERT INTO sys_sso_auth_state  ( id, state_value, provider,  redirect_path, consumed, expire_at, config_digest, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?,  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+SQL to parse, SQL: INSERT INTO sys_sso_auth_state  ( id, state_value, provider,  redirect_path, consumed, expire_at, config_digest, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?,  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+parse the finished SQL: INSERT INTO sys_sso_auth_state (id, state_value, provider, redirect_path, consumed, expire_at, config_digest, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==>  Preparing: INSERT INTO sys_sso_auth_state (id, state_value, provider, redirect_path, consumed, expire_at, config_digest, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==> Parameters: 2104895840481656833(Long), 59ff9781d9a54b7d5cda3783677670c7c4de77d725dc34845ec4377e4756a16d(String), WECOM(String), /workspace(String), 0(Integer), 2026-09-29T19:32:30.100994(LocalDateTime), 5a36cb99fa24a8a99265838505c4d4b0437a72ea93ba1b318a3fd804ed32be9b(String), 100(Long), 2026-09-29T19:27:30.101448(LocalDateTime), 0(Long), 2026-09-29T19:27:30.101452(LocalDateTime), 0(Long), 0(Integer), 0(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@50233f7d]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@50233f7d] from current transaction
+original SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,    detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,    ?, ?, ?, ?, ?, ?, ?, ?  )
+SQL to parse, SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,    detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,    ?, ?, ?, ?, ?, ?, ?, ?  )
+parse the finished SQL: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==>  Preparing: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==> Parameters: 2104895840485851137(Long), WECOM(String), AUTH_START(String), SUCCESS(String), pre-login tenant=100(String), 100(Long), 2026-09-29T19:27:30.103224(LocalDateTime), 0(Long), 2026-09-29T19:27:30.103237(LocalDateTime), 0(Long), 0(Integer), 0(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@50233f7d]
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@50233f7d]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@50233f7d]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@50233f7d]
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2]
+original SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+SQL to parse, SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+parse the finished SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+original SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+SQL to parse, SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+parse the finished SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+JDBC Connection [HikariProxyConnection@1575524574 wrapping conn140: url=jdbc:h2:mem:testdb_ssoadmission user=SA] will be managed by Spring
+==>  Preparing: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+==> Parameters: 59ff9781d9a54b7d5cda3783677670c7c4de77d725dc34845ec4377e4756a16d(String)
+<==    Columns: ID, CREATE_TIME, CREATE_BY, UPDATE_TIME, UPDATE_BY, DELETED, TENANT_ID, VERSION, STATE_VALUE, PROVIDER, NONCE, REDIRECT_PATH, CONSUMED, EXPIRE_AT, CONFIG_DIGEST
+<==        Row: 2104895840481656833, 2026-09-29 19:27:30.101448, 0, 2026-09-29 19:27:30.101452, 0, 0, 100, 0, 59ff9781d9a54b7d5cda3783677670c7c4de77d725dc34845ec4377e4756a16d, WECOM, null, /workspace, 0, 2026-09-29 19:32:30.100994, 5a36cb99fa24a8a99265838505c4d4b0437a72ea93ba1b318a3fd804ed32be9b
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2]
+Transaction synchronization suspending SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2]
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c5295e4]
+JDBC Connection [HikariProxyConnection@502715243 wrapping conn141: url=jdbc:h2:mem:testdb_ssoadmission user=SA] will be managed by Spring
+original SQL: UPDATE sys_sso_auth_state  SET consumed=?   WHERE deleted=0     AND (id = ? AND consumed = ?)
+SQL to parse, SQL: UPDATE sys_sso_auth_state  SET consumed=?   WHERE deleted=0     AND (id = ? AND consumed = ?)
+parse the finished SQL: UPDATE sys_sso_auth_state SET consumed = ? WHERE deleted = 0 AND (id = ? AND consumed = ?)
+original SQL: UPDATE sys_sso_auth_state SET consumed = ? WHERE deleted = 0 AND (id = ? AND consumed = ?)
+SQL to parse, SQL: UPDATE sys_sso_auth_state SET consumed = ? WHERE deleted = 0 AND (id = ? AND consumed = ?)
+parse the finished SQL: UPDATE sys_sso_auth_state SET consumed = ? WHERE deleted = 0 AND (id = ? AND consumed = ?)
+==>  Preparing: UPDATE sys_sso_auth_state SET consumed = ? WHERE deleted = 0 AND (id = ? AND consumed = ?)
+==> Parameters: 1(Integer), 2104895840481656833(Long), 0(Integer)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c5295e4]
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c5295e4]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c5295e4]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c5295e4]
+Transaction synchronization resuming SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2] from current transaction
+original SQL: SELECT  id,provider,enabled,app_id,app_secret_enc,extra_config,redirect_path,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_sso_provider_config  WHERE deleted=0     AND (provider = ? AND tenant_id = ?)
+SQL to parse, SQL: SELECT  id,provider,enabled,app_id,app_secret_enc,extra_config,redirect_path,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_sso_provider_config  WHERE deleted=0     AND (provider = ? AND tenant_id = ?)
+parse the finished SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+original SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+SQL to parse, SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+parse the finished SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+==>  Preparing: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+==> Parameters: WECOM(String), 100(Long)
+<==    Columns: ID, PROVIDER, ENABLED, APP_ID, APP_SECRET_ENC, EXTRA_CONFIG, REDIRECT_PATH, TENANT_ID, CREATE_TIME, CREATE_BY, UPDATE_TIME, UPDATE_BY, DELETED, VERSION
+<==        Row: 91001, WECOM, 1, a2-fixture, LRMiua4Y+hS2F/E8IMbMbdqG5NYSiwqQrjyJXuYD06uJwMyMb31dlr8WNaRE, <<BLOB>>, /workspace, 100, 2026-09-29 19:27:30.097322, null, 2026-09-29 19:27:30.097322, null, 0, 0
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2] from current transaction
+original SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,   external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,   ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+SQL to parse, SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,   external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,   ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+parse the finished SQL: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==>  Preparing: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==> Parameters: 2104895840519405569(Long), WECOM(String), EXCHANGE(String), SUCCESS(String), 4dbcc007640267094bb42e23a2c29c52e3256b582f1e48007c97099c97fed363(String), scope=personal(String), 100(Long), 2026-09-29T19:27:30.110698(LocalDateTime), 0(Long), 2026-09-29T19:27:30.110712(LocalDateTime), 0(Long), 0(Integer), 0(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2] from current transaction
+original SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+SQL to parse, SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+parse the finished SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+original SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+SQL to parse, SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+parse the finished SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+==>  Preparing: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+==> Parameters: WECOM(String), 100(Long), 4dbcc007640267094bb42e23a2c29c52e3256b582f1e48007c97099c97fed363(String)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2] from current transaction
+original SQL: SELECT  id,username,password,real_name,email,phone,sex,status,dept_id,is_admin,avatar,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_user  WHERE deleted=0     AND (tenant_id = ? AND phone IS NOT NULL)
+SQL to parse, SQL: SELECT  id,username,password,real_name,email,phone,sex,status,dept_id,is_admin,avatar,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_user  WHERE deleted=0     AND (tenant_id = ? AND phone IS NOT NULL)
+parse the finished SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+original SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+SQL to parse, SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+parse the finished SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+==>  Preparing: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+==> Parameters: 100(Long)
+<==    Columns: ID, USERNAME, PASSWORD, REAL_NAME, EMAIL, PHONE, SEX, STATUS, DEPT_ID, IS_ADMIN, AVATAR, TENANT_ID, CREATE_TIME, CREATE_BY, UPDATE_TIME, UPDATE_BY, DELETED, VERSION
+<==        Row: 9541, a2uniq, x, A2用户, null, 17800009996, 0, 0, null, 0, null, 100, 2026-09-29 19:27:30.098108, null, 2026-09-29 19:27:30.098108, null, 0, 0
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2] from current transaction
+original SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND user_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+SQL to parse, SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND user_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+parse the finished SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND user_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+original SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND user_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+SQL to parse, SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND user_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+parse the finished SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND user_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+==>  Preparing: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND user_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+==> Parameters: WECOM(String), 100(Long), 9541(Long)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2] from current transaction
+original SQL: SELECT COUNT( * ) AS total FROM sys_sso_user_binding  WHERE deleted=0     AND (provider = ? AND external_digest = ? AND bind_status = ? AND tenant_id <> ?)
+SQL to parse, SQL: SELECT COUNT( * ) AS total FROM sys_sso_user_binding  WHERE deleted=0     AND (provider = ? AND external_digest = ? AND bind_status = ? AND tenant_id <> ?)
+parse the finished SQL: SELECT COUNT(*) AS total FROM sys_sso_user_binding WHERE deleted = 0 AND (provider = ? AND external_digest = ? AND bind_status = ? AND tenant_id <> ?)
+original SQL: SELECT COUNT(*) AS total FROM sys_sso_user_binding WHERE deleted = 0 AND (provider = ? AND external_digest = ? AND bind_status = ? AND tenant_id <> ?)
+SQL to parse, SQL: SELECT COUNT(*) AS total FROM sys_sso_user_binding WHERE deleted = 0 AND (provider = ? AND external_digest = ? AND bind_status = ? AND tenant_id <> ?)
+parse the finished SQL: SELECT COUNT(*) AS total FROM sys_sso_user_binding WHERE deleted = 0 AND (provider = ? AND external_digest = ? AND bind_status = ? AND tenant_id <> ?)
+==>  Preparing: SELECT COUNT(*) AS total FROM sys_sso_user_binding WHERE deleted = 0 AND (provider = ? AND external_digest = ? AND bind_status = ? AND tenant_id <> ?)
+==> Parameters: WECOM(String), 4dbcc007640267094bb42e23a2c29c52e3256b582f1e48007c97099c97fed363(String), ACTIVE(String), 100(Long)
+<==    Columns: TOTAL
+<==        Row: 0
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2] from current transaction
+original SQL: SELECT  id,provider,external_id,external_digest,user_id,bind_status,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_sso_user_binding  WHERE deleted=0     AND (provider = ? AND tenant_id = ? AND external_digest = ? AND bind_status = ?) ORDER BY id DESC LIMIT 1
+SQL to parse, SQL: SELECT  id,provider,external_id,external_digest,user_id,bind_status,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_sso_user_binding  WHERE deleted=0     AND (provider = ? AND tenant_id = ? AND external_digest = ? AND bind_status = ?) ORDER BY id DESC LIMIT 1
+parse the finished SQL: SELECT id, provider, external_id, external_digest, user_id, bind_status, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_user_binding WHERE deleted = 0 AND (provider = ? AND tenant_id = ? AND external_digest = ? AND bind_status = ?) ORDER BY id DESC LIMIT 1
+original SQL: SELECT id, provider, external_id, external_digest, user_id, bind_status, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_user_binding WHERE deleted = 0 AND (provider = ? AND tenant_id = ? AND external_digest = ? AND bind_status = ?) ORDER BY id DESC LIMIT 1
+SQL to parse, SQL: SELECT id, provider, external_id, external_digest, user_id, bind_status, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_user_binding WHERE deleted = 0 AND (provider = ? AND tenant_id = ? AND external_digest = ? AND bind_status = ?) ORDER BY id DESC LIMIT 1
+parse the finished SQL: SELECT id, provider, external_id, external_digest, user_id, bind_status, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_user_binding WHERE deleted = 0 AND (provider = ? AND tenant_id = ? AND external_digest = ? AND bind_status = ?) ORDER BY id DESC LIMIT 1
+==>  Preparing: SELECT id, provider, external_id, external_digest, user_id, bind_status, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_user_binding WHERE deleted = 0 AND (provider = ? AND tenant_id = ? AND external_digest = ? AND bind_status = ?) ORDER BY id DESC LIMIT 1
+==> Parameters: WECOM(String), 100(Long), 4dbcc007640267094bb42e23a2c29c52e3256b582f1e48007c97099c97fed363(String), UNBOUND(String)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2] from current transaction
+original SQL: DELETE FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND deleted = 0 AND bind_status = 'UNBOUND' AND (external_digest = ? OR user_id = ?)
+SQL to parse, SQL: DELETE FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND deleted = 0 AND bind_status = 'UNBOUND' AND (external_digest = ? OR user_id = ?)
+parse the finished SQL: DELETE FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND deleted = 0 AND bind_status = 'UNBOUND' AND (external_digest = ? OR user_id = ?)
+original SQL: DELETE FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND deleted = 0 AND bind_status = 'UNBOUND' AND (external_digest = ? OR user_id = ?)
+SQL to parse, SQL: DELETE FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND deleted = 0 AND bind_status = 'UNBOUND' AND (external_digest = ? OR user_id = ?)
+parse the finished SQL: DELETE FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND deleted = 0 AND bind_status = 'UNBOUND' AND (external_digest = ? OR user_id = ?)
+==>  Preparing: DELETE FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND deleted = 0 AND bind_status = 'UNBOUND' AND (external_digest = ? OR user_id = ?)
+==> Parameters: WECOM(String), 100(Long), 4dbcc007640267094bb42e23a2c29c52e3256b582f1e48007c97099c97fed363(String), 9541(Long)
+<==    Updates: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2] from current transaction
+original SQL: INSERT INTO sys_sso_user_binding  ( id, provider, external_id, external_digest, user_id, bind_status, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+SQL to parse, SQL: INSERT INTO sys_sso_user_binding  ( id, provider, external_id, external_digest, user_id, bind_status, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+parse the finished SQL: INSERT INTO sys_sso_user_binding (id, provider, external_id, external_digest, user_id, bind_status, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==>  Preparing: INSERT INTO sys_sso_user_binding (id, provider, external_id, external_digest, user_id, bind_status, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==> Parameters: 2104895840808812546(Long), WECOM(String), 4dbcc007640267094bb42e23a2c29c52e3256b582f1e48007c97099c97fed363(String), 4dbcc007640267094bb42e23a2c29c52e3256b582f1e48007c97099c97fed363(String), 9541(Long), ACTIVE(String), 100(Long), 2026-09-29T19:27:30.179711(LocalDateTime), 0(Long), 2026-09-29T19:27:30.179720(LocalDateTime), 0(Long), 0(Integer), 0(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2] from current transaction
+original SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,  local_user_id, external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+SQL to parse, SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,  local_user_id, external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+parse the finished SQL: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, local_user_id, external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==>  Preparing: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, local_user_id, external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==> Parameters: 2104895840813006849(Long), WECOM(String), BIND(String), SUCCESS(String), 9541(Long), 4dbcc007640267094bb42e23a2c29c52e3256b582f1e48007c97099c97fed363(String), phone-admission auto-bind(String), 100(Long), 2026-09-29T19:27:30.180634(LocalDateTime), 0(Long), 2026-09-29T19:27:30.180639(LocalDateTime), 0(Long), 0(Integer), 0(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2] from current transaction
+original SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,  local_user_id, external_digest,  tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,  ?, ?,  ?, ?, ?, ?, ?, ?, ?  )
+SQL to parse, SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,  local_user_id, external_digest,  tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,  ?, ?,  ?, ?, ?, ?, ?, ?, ?  )
+parse the finished SQL: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, local_user_id, external_digest, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==>  Preparing: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, local_user_id, external_digest, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==> Parameters: 2104895840817201154(Long), WECOM(String), LOGIN_SUCCESS(String), SUCCESS(String), 9541(Long), 4dbcc007640267094bb42e23a2c29c52e3256b582f1e48007c97099c97fed363(String), 100(Long), 2026-09-29T19:27:30.181402(LocalDateTime), 0(Long), 2026-09-29T19:27:30.181406(LocalDateTime), 0(Long), 0(Integer), 0(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2]
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@451431d2]
+]]></system-out>
+  </testcase>
+  <testcase name="admissionAmbiguousPhoneInTenant_rejected_zeroIncrement" classname="com.sw.ck.system.sso.SsoAdmissionZeroIncrementIntegrationTest" time="0.048">
+    <system-out><![CDATA[Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d7660e6]
+original SQL: SELECT  id,provider,enabled,app_id,app_secret_enc,extra_config,redirect_path,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_sso_provider_config  WHERE deleted=0     AND (provider = ? AND tenant_id = ?)
+SQL to parse, SQL: SELECT  id,provider,enabled,app_id,app_secret_enc,extra_config,redirect_path,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_sso_provider_config  WHERE deleted=0     AND (provider = ? AND tenant_id = ?)
+parse the finished SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+original SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+SQL to parse, SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+parse the finished SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+JDBC Connection [HikariProxyConnection@1368810634 wrapping conn140: url=jdbc:h2:mem:testdb_ssoadmission user=SA] will be managed by Spring
+==>  Preparing: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+==> Parameters: WECOM(String), 100(Long)
+<==    Columns: ID, PROVIDER, ENABLED, APP_ID, APP_SECRET_ENC, EXTRA_CONFIG, REDIRECT_PATH, TENANT_ID, CREATE_TIME, CREATE_BY, UPDATE_TIME, UPDATE_BY, DELETED, VERSION
+<==        Row: 91001, WECOM, 1, a2-fixture, nuh5+upkg7wFS0vqLqGSpIyY8kGx+q6h7tMKgReZi+yWAfb1Imy3tgHFx+kq, <<BLOB>>, /workspace, 100, 2026-09-29 19:27:30.190845, null, 2026-09-29 19:27:30.190845, null, 0, 0
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d7660e6]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d7660e6] from current transaction
+original SQL: INSERT INTO sys_sso_auth_state  ( id, state_value, provider,  redirect_path, consumed, expire_at, config_digest, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?,  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+SQL to parse, SQL: INSERT INTO sys_sso_auth_state  ( id, state_value, provider,  redirect_path, consumed, expire_at, config_digest, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?,  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+parse the finished SQL: INSERT INTO sys_sso_auth_state (id, state_value, provider, redirect_path, consumed, expire_at, config_digest, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==>  Preparing: INSERT INTO sys_sso_auth_state (id, state_value, provider, redirect_path, consumed, expire_at, config_digest, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==> Parameters: 2104895840930447361(Long), 41b10478615ab5e3e87517a96d051a6873247098f6b0fc4e861c948cff56eaca(String), WECOM(String), /workspace(String), 0(Integer), 2026-09-29T19:32:30.208047(LocalDateTime), 5a36cb99fa24a8a99265838505c4d4b0437a72ea93ba1b318a3fd804ed32be9b(String), 100(Long), 2026-09-29T19:27:30.208558(LocalDateTime), 0(Long), 2026-09-29T19:27:30.208563(LocalDateTime), 0(Long), 0(Integer), 0(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d7660e6]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d7660e6] from current transaction
+original SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,    detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,    ?, ?, ?, ?, ?, ?, ?, ?  )
+SQL to parse, SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,    detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,    ?, ?, ?, ?, ?, ?, ?, ?  )
+parse the finished SQL: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==>  Preparing: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==> Parameters: 2104895840938835970(Long), WECOM(String), AUTH_START(String), SUCCESS(String), pre-login tenant=100(String), 100(Long), 2026-09-29T19:27:30.210646(LocalDateTime), 0(Long), 2026-09-29T19:27:30.210652(LocalDateTime), 0(Long), 0(Integer), 0(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d7660e6]
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d7660e6]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d7660e6]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d7660e6]
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@60a8d8d6]
+original SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+SQL to parse, SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+parse the finished SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+original SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+SQL to parse, SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+parse the finished SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+JDBC Connection [HikariProxyConnection@957247265 wrapping conn140: url=jdbc:h2:mem:testdb_ssoadmission user=SA] will be managed by Spring
+==>  Preparing: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+==> Parameters: 41b10478615ab5e3e87517a96d051a6873247098f6b0fc4e861c948cff56eaca(String)
+<==    Columns: ID, CREATE_TIME, CREATE_BY, UPDATE_TIME, UPDATE_BY, DELETED, TENANT_ID, VERSION, STATE_VALUE, PROVIDER, NONCE, REDIRECT_PATH, CONSUMED, EXPIRE_AT, CONFIG_DIGEST
+<==        Row: 2104895840930447361, 2026-09-29 19:27:30.208558, 0, 2026-09-29 19:27:30.208563, 0, 0, 100, 0, 41b10478615ab5e3e87517a96d051a6873247098f6b0fc4e861c948cff56eaca, WECOM, null, /workspace, 0, 2026-09-29 19:32:30.208047, 5a36cb99fa24a8a99265838505c4d4b0437a72ea93ba1b318a3fd804ed32be9b
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@60a8d8d6]
+Transaction synchronization suspending SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@60a8d8d6]
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6535ff34]
+JDBC Connection [HikariProxyConnection@1231764664 wrapping conn141: url=jdbc:h2:mem:testdb_ssoadmission user=SA] will be managed by Spring
+original SQL: UPDATE sys_sso_auth_state  SET consumed=?   WHERE deleted=0     AND (id = ? AND consumed = ?)
+SQL to parse, SQL: UPDATE sys_sso_auth_state  SET consumed=?   WHERE deleted=0     AND (id = ? AND consumed = ?)
+parse the finished SQL: UPDATE sys_sso_auth_state SET consumed = ? WHERE deleted = 0 AND (id = ? AND consumed = ?)
+original SQL: UPDATE sys_sso_auth_state SET consumed = ? WHERE deleted = 0 AND (id = ? AND consumed = ?)
+SQL to parse, SQL: UPDATE sys_sso_auth_state SET consumed = ? WHERE deleted = 0 AND (id = ? AND consumed = ?)
+parse the finished SQL: UPDATE sys_sso_auth_state SET consumed = ? WHERE deleted = 0 AND (id = ? AND consumed = ?)
+==>  Preparing: UPDATE sys_sso_auth_state SET consumed = ? WHERE deleted = 0 AND (id = ? AND consumed = ?)
+==> Parameters: 1(Integer), 2104895840930447361(Long), 0(Integer)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6535ff34]
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6535ff34]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6535ff34]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6535ff34]
+Transaction synchronization resuming SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@60a8d8d6]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@60a8d8d6] from current transaction
+original SQL: SELECT  id,provider,enabled,app_id,app_secret_enc,extra_config,redirect_path,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_sso_provider_config  WHERE deleted=0     AND (provider = ? AND tenant_id = ?)
+SQL to parse, SQL: SELECT  id,provider,enabled,app_id,app_secret_enc,extra_config,redirect_path,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_sso_provider_config  WHERE deleted=0     AND (provider = ? AND tenant_id = ?)
+parse the finished SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+original SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+SQL to parse, SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+parse the finished SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+==>  Preparing: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+==> Parameters: WECOM(String), 100(Long)
+<==    Columns: ID, PROVIDER, ENABLED, APP_ID, APP_SECRET_ENC, EXTRA_CONFIG, REDIRECT_PATH, TENANT_ID, CREATE_TIME, CREATE_BY, UPDATE_TIME, UPDATE_BY, DELETED, VERSION
+<==        Row: 91001, WECOM, 1, a2-fixture, nuh5+upkg7wFS0vqLqGSpIyY8kGx+q6h7tMKgReZi+yWAfb1Imy3tgHFx+kq, <<BLOB>>, /workspace, 100, 2026-09-29 19:27:30.190845, null, 2026-09-29 19:27:30.190845, null, 0, 0
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@60a8d8d6]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@60a8d8d6] from current transaction
+original SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,   external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,   ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+SQL to parse, SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,   external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,   ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+parse the finished SQL: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==>  Preparing: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==> Parameters: 2104895840976584705(Long), WECOM(String), EXCHANGE(String), SUCCESS(String), 1b055fbeee09e69e7ab31fcdd3a49dc0cf3d98a85a83d1dedf89908e76d4b8d3(String), scope=personal(String), 100(Long), 2026-09-29T19:27:30.219589(LocalDateTime), 0(Long), 2026-09-29T19:27:30.219596(LocalDateTime), 0(Long), 0(Integer), 0(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@60a8d8d6]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@60a8d8d6] from current transaction
+original SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+SQL to parse, SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+parse the finished SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+original SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+SQL to parse, SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+parse the finished SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+==>  Preparing: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+==> Parameters: WECOM(String), 100(Long), 1b055fbeee09e69e7ab31fcdd3a49dc0cf3d98a85a83d1dedf89908e76d4b8d3(String)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@60a8d8d6]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@60a8d8d6] from current transaction
+original SQL: SELECT  id,username,password,real_name,email,phone,sex,status,dept_id,is_admin,avatar,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_user  WHERE deleted=0     AND (tenant_id = ? AND phone IS NOT NULL)
+SQL to parse, SQL: SELECT  id,username,password,real_name,email,phone,sex,status,dept_id,is_admin,avatar,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_user  WHERE deleted=0     AND (tenant_id = ? AND phone IS NOT NULL)
+parse the finished SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+original SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+SQL to parse, SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+parse the finished SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+==>  Preparing: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+==> Parameters: 100(Long)
+<==    Columns: ID, USERNAME, PASSWORD, REAL_NAME, EMAIL, PHONE, SEX, STATUS, DEPT_ID, IS_ADMIN, AVATAR, TENANT_ID, CREATE_TIME, CREATE_BY, UPDATE_TIME, UPDATE_BY, DELETED, VERSION
+<==        Row: 9521, a2dup1, x, A2用户, null, 17800009998, 0, 0, null, 0, null, 100, 2026-09-29 19:27:30.19169, null, 2026-09-29 19:27:30.19169, null, 0, 0
+<==        Row: 9522, a2dup2, x, A2用户, null, 17800009998, 0, 0, null, 0, null, 100, 2026-09-29 19:27:30.191765, null, 2026-09-29 19:27:30.191765, null, 0, 0
+<==        Row: 9541, a2uniq, x, A2用户, null, 17800009996, 0, 0, null, 0, null, 100, 2026-09-29 19:27:30.098108, null, 2026-09-29 19:27:30.098108, null, 0, 0
+<==      Total: 3
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@60a8d8d6]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@60a8d8d6] from current transaction
+original SQL: SELECT  id,username,password,real_name,email,phone,sex,status,dept_id,is_admin,avatar,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_user  WHERE deleted=0     AND (tenant_id = ? AND phone IS NOT NULL)
+SQL to parse, SQL: SELECT  id,username,password,real_name,email,phone,sex,status,dept_id,is_admin,avatar,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_user  WHERE deleted=0     AND (tenant_id = ? AND phone IS NOT NULL)
+parse the finished SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+original SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+SQL to parse, SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+parse the finished SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@60a8d8d6]
+Transaction synchronization suspending SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@60a8d8d6]
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@d8b2da6]
+JDBC Connection [HikariProxyConnection@1670620997 wrapping conn141: url=jdbc:h2:mem:testdb_ssoadmission user=SA] will be managed by Spring
+original SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,   external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,   ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+SQL to parse, SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,   external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,   ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+parse the finished SQL: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==>  Preparing: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==> Parameters: 2104895841022722049(Long), WECOM(String), ADMISSION_REJECTED(String), DENIED(String), 1b055fbeee09e69e7ab31fcdd3a49dc0cf3d98a85a83d1dedf89908e76d4b8d3(String), ambiguous phone in tenant(String), 100(Long), 2026-09-29T19:27:30.230959(LocalDateTime), 0(Long), 2026-09-29T19:27:30.230967(LocalDateTime), 0(Long), 0(Integer), 0(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@d8b2da6]
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@d8b2da6]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@d8b2da6]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@d8b2da6]
+Transaction synchronization resuming SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@60a8d8d6]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@60a8d8d6]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@60a8d8d6]
+]]></system-out>
+  </testcase>
+  <testcase name="admissionNoLocalUser_rejected_zeroIncrement" classname="com.sw.ck.system.sso.SsoAdmissionZeroIncrementIntegrationTest" time="0.126">
+    <system-out><![CDATA[Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5205f975]
+original SQL: SELECT  id,provider,enabled,app_id,app_secret_enc,extra_config,redirect_path,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_sso_provider_config  WHERE deleted=0     AND (provider = ? AND tenant_id = ?)
+SQL to parse, SQL: SELECT  id,provider,enabled,app_id,app_secret_enc,extra_config,redirect_path,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_sso_provider_config  WHERE deleted=0     AND (provider = ? AND tenant_id = ?)
+parse the finished SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+original SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+SQL to parse, SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+parse the finished SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+JDBC Connection [HikariProxyConnection@157790370 wrapping conn140: url=jdbc:h2:mem:testdb_ssoadmission user=SA] will be managed by Spring
+==>  Preparing: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+==> Parameters: WECOM(String), 100(Long)
+<==    Columns: ID, PROVIDER, ENABLED, APP_ID, APP_SECRET_ENC, EXTRA_CONFIG, REDIRECT_PATH, TENANT_ID, CREATE_TIME, CREATE_BY, UPDATE_TIME, UPDATE_BY, DELETED, VERSION
+<==        Row: 91001, WECOM, 1, a2-fixture, KbJFfc/zyLvMia/PiwJtgf6lt20Wi1d4WxO5CgiPfd7HbeLYCoyeVfTcO84k, <<BLOB>>, /workspace, 100, 2026-09-29 19:27:30.24142, null, 2026-09-29 19:27:30.24142, null, 0, 0
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5205f975]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5205f975] from current transaction
+original SQL: INSERT INTO sys_sso_auth_state  ( id, state_value, provider,  redirect_path, consumed, expire_at, config_digest, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?,  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+SQL to parse, SQL: INSERT INTO sys_sso_auth_state  ( id, state_value, provider,  redirect_path, consumed, expire_at, config_digest, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?,  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+parse the finished SQL: INSERT INTO sys_sso_auth_state (id, state_value, provider, redirect_path, consumed, expire_at, config_digest, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==>  Preparing: INSERT INTO sys_sso_auth_state (id, state_value, provider, redirect_path, consumed, expire_at, config_digest, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==> Parameters: 2104895841224048642(Long), 62e0e377b0a0ef99a73520fb356dd165ce0118fb672e4a2e18912c5e777675e4(String), WECOM(String), /workspace(String), 0(Integer), 2026-09-29T19:32:30.278648(LocalDateTime), 5a36cb99fa24a8a99265838505c4d4b0437a72ea93ba1b318a3fd804ed32be9b(String), 100(Long), 2026-09-29T19:27:30.280013(LocalDateTime), 0(Long), 2026-09-29T19:27:30.280027(LocalDateTime), 0(Long), 0(Integer), 0(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5205f975]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5205f975] from current transaction
+original SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,    detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,    ?, ?, ?, ?, ?, ?, ?, ?  )
+SQL to parse, SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,    detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,    ?, ?, ?, ?, ?, ?, ?, ?  )
+parse the finished SQL: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==>  Preparing: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==> Parameters: 2104895841265991682(Long), WECOM(String), AUTH_START(String), SUCCESS(String), pre-login tenant=100(String), 100(Long), 2026-09-29T19:27:30.290088(LocalDateTime), 0(Long), 2026-09-29T19:27:30.290102(LocalDateTime), 0(Long), 0(Integer), 0(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5205f975]
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5205f975]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5205f975]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5205f975]
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c4d30a5]
+original SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+SQL to parse, SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+parse the finished SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+original SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+SQL to parse, SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+parse the finished SQL: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+JDBC Connection [HikariProxyConnection@639362767 wrapping conn140: url=jdbc:h2:mem:testdb_ssoadmission user=SA] will be managed by Spring
+==>  Preparing: SELECT * FROM sys_sso_auth_state WHERE state_value = ? AND deleted = 0 LIMIT 1
+==> Parameters: 62e0e377b0a0ef99a73520fb356dd165ce0118fb672e4a2e18912c5e777675e4(String)
+<==    Columns: ID, CREATE_TIME, CREATE_BY, UPDATE_TIME, UPDATE_BY, DELETED, TENANT_ID, VERSION, STATE_VALUE, PROVIDER, NONCE, REDIRECT_PATH, CONSUMED, EXPIRE_AT, CONFIG_DIGEST
+<==        Row: 2104895841224048642, 2026-09-29 19:27:30.280013, 0, 2026-09-29 19:27:30.280027, 0, 0, 100, 0, 62e0e377b0a0ef99a73520fb356dd165ce0118fb672e4a2e18912c5e777675e4, WECOM, null, /workspace, 0, 2026-09-29 19:32:30.278648, 5a36cb99fa24a8a99265838505c4d4b0437a72ea93ba1b318a3fd804ed32be9b
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c4d30a5]
+Transaction synchronization suspending SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c4d30a5]
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@983983e]
+JDBC Connection [HikariProxyConnection@1993062329 wrapping conn141: url=jdbc:h2:mem:testdb_ssoadmission user=SA] will be managed by Spring
+original SQL: UPDATE sys_sso_auth_state  SET consumed=?   WHERE deleted=0     AND (id = ? AND consumed = ?)
+SQL to parse, SQL: UPDATE sys_sso_auth_state  SET consumed=?   WHERE deleted=0     AND (id = ? AND consumed = ?)
+parse the finished SQL: UPDATE sys_sso_auth_state SET consumed = ? WHERE deleted = 0 AND (id = ? AND consumed = ?)
+original SQL: UPDATE sys_sso_auth_state SET consumed = ? WHERE deleted = 0 AND (id = ? AND consumed = ?)
+SQL to parse, SQL: UPDATE sys_sso_auth_state SET consumed = ? WHERE deleted = 0 AND (id = ? AND consumed = ?)
+parse the finished SQL: UPDATE sys_sso_auth_state SET consumed = ? WHERE deleted = 0 AND (id = ? AND consumed = ?)
+==>  Preparing: UPDATE sys_sso_auth_state SET consumed = ? WHERE deleted = 0 AND (id = ? AND consumed = ?)
+==> Parameters: 1(Integer), 2104895841224048642(Long), 0(Integer)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@983983e]
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@983983e]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@983983e]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@983983e]
+Transaction synchronization resuming SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c4d30a5]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c4d30a5] from current transaction
+original SQL: SELECT  id,provider,enabled,app_id,app_secret_enc,extra_config,redirect_path,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_sso_provider_config  WHERE deleted=0     AND (provider = ? AND tenant_id = ?)
+SQL to parse, SQL: SELECT  id,provider,enabled,app_id,app_secret_enc,extra_config,redirect_path,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_sso_provider_config  WHERE deleted=0     AND (provider = ? AND tenant_id = ?)
+parse the finished SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+original SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+SQL to parse, SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+parse the finished SQL: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+==>  Preparing: SELECT id, provider, enabled, app_id, app_secret_enc, extra_config, redirect_path, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_sso_provider_config WHERE deleted = 0 AND (provider = ? AND tenant_id = ?)
+==> Parameters: WECOM(String), 100(Long)
+<==    Columns: ID, PROVIDER, ENABLED, APP_ID, APP_SECRET_ENC, EXTRA_CONFIG, REDIRECT_PATH, TENANT_ID, CREATE_TIME, CREATE_BY, UPDATE_TIME, UPDATE_BY, DELETED, VERSION
+<==        Row: 91001, WECOM, 1, a2-fixture, KbJFfc/zyLvMia/PiwJtgf6lt20Wi1d4WxO5CgiPfd7HbeLYCoyeVfTcO84k, <<BLOB>>, /workspace, 100, 2026-09-29 19:27:30.24142, null, 2026-09-29 19:27:30.24142, null, 0, 0
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c4d30a5]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c4d30a5] from current transaction
+original SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,   external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,   ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+SQL to parse, SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,   external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,   ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+parse the finished SQL: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==>  Preparing: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==> Parameters: 2104895841463123969(Long), WECOM(String), EXCHANGE(String), SUCCESS(String), f86e184e51090b4e2517aa13e2c0e09b0b19b54641c50ac2feaac02e54939d07(String), scope=personal(String), 100(Long), 2026-09-29T19:27:30.336029(LocalDateTime), 0(Long), 2026-09-29T19:27:30.336036(LocalDateTime), 0(Long), 0(Integer), 0(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c4d30a5]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c4d30a5] from current transaction
+original SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+SQL to parse, SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+parse the finished SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+original SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+SQL to parse, SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+parse the finished SQL: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+==>  Preparing: SELECT * FROM sys_sso_user_binding WHERE provider = ? AND tenant_id = ? AND external_id = ? AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1
+==> Parameters: WECOM(String), 100(Long), f86e184e51090b4e2517aa13e2c0e09b0b19b54641c50ac2feaac02e54939d07(String)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c4d30a5]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c4d30a5] from current transaction
+original SQL: SELECT  id,username,password,real_name,email,phone,sex,status,dept_id,is_admin,avatar,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_user  WHERE deleted=0     AND (tenant_id = ? AND phone IS NOT NULL)
+SQL to parse, SQL: SELECT  id,username,password,real_name,email,phone,sex,status,dept_id,is_admin,avatar,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_user  WHERE deleted=0     AND (tenant_id = ? AND phone IS NOT NULL)
+parse the finished SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+original SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+SQL to parse, SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+parse the finished SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+==>  Preparing: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+==> Parameters: 100(Long)
+<==    Columns: ID, USERNAME, PASSWORD, REAL_NAME, EMAIL, PHONE, SEX, STATUS, DEPT_ID, IS_ADMIN, AVATAR, TENANT_ID, CREATE_TIME, CREATE_BY, UPDATE_TIME, UPDATE_BY, DELETED, VERSION
+<==        Row: 9521, a2dup1, x, A2用户, null, 17800009998, 0, 0, null, 0, null, 100, 2026-09-29 19:27:30.19169, null, 2026-09-29 19:27:30.19169, null, 0, 0
+<==        Row: 9522, a2dup2, x, A2用户, null, 17800009998, 0, 0, null, 0, null, 100, 2026-09-29 19:27:30.191765, null, 2026-09-29 19:27:30.191765, null, 0, 0
+<==        Row: 9541, a2uniq, x, A2用户, null, 17800009996, 0, 0, null, 0, null, 100, 2026-09-29 19:27:30.098108, null, 2026-09-29 19:27:30.098108, null, 0, 0
+<==      Total: 3
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c4d30a5]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c4d30a5] from current transaction
+original SQL: SELECT  id,username,password,real_name,email,phone,sex,status,dept_id,is_admin,avatar,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_user  WHERE deleted=0     AND (tenant_id = ? AND phone IS NOT NULL)
+SQL to parse, SQL: SELECT  id,username,password,real_name,email,phone,sex,status,dept_id,is_admin,avatar,tenant_id,create_time,create_by,update_time,update_by,deleted,version  FROM sys_user  WHERE deleted=0     AND (tenant_id = ? AND phone IS NOT NULL)
+parse the finished SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+original SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+SQL to parse, SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+parse the finished SQL: SELECT id, username, password, real_name, email, phone, sex, status, dept_id, is_admin, avatar, tenant_id, create_time, create_by, update_time, update_by, deleted, version FROM sys_user WHERE deleted = 0 AND (tenant_id = ? AND phone IS NOT NULL)
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c4d30a5]
+Transaction synchronization suspending SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c4d30a5]
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@71fc80df]
+JDBC Connection [HikariProxyConnection@1355873096 wrapping conn141: url=jdbc:h2:mem:testdb_ssoadmission user=SA] will be managed by Spring
+original SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,   external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,   ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+SQL to parse, SQL: INSERT INTO sys_sso_audit_record  ( id, provider, event_type, result,   external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version )  VALUES (  ?, ?, ?, ?,   ?, ?, ?, ?, ?, ?, ?, ?, ?  )
+parse the finished SQL: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==>  Preparing: INSERT INTO sys_sso_audit_record (id, provider, event_type, result, external_digest, detail, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+==> Parameters: 2104895841555398657(Long), WECOM(String), ADMISSION_REJECTED(String), DENIED(String), f86e184e51090b4e2517aa13e2c0e09b0b19b54641c50ac2feaac02e54939d07(String), no local user with trusted phone(String), 100(Long), 2026-09-29T19:27:30.357622(LocalDateTime), 0(Long), 2026-09-29T19:27:30.357640(LocalDateTime), 0(Long), 0(Integer), 0(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@71fc80df]
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@71fc80df]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@71fc80df]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@71fc80df]
+Transaction synchronization resuming SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c4d30a5]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c4d30a5]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c4d30a5]
+]]></system-out>
+  </testcase>
+</testsuite>

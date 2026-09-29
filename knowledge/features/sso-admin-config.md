@@ -47,7 +47,7 @@
 
 - Server：964f2cb → **`dff266a`**（V104+配置生命周期指纹+A2 集成测试+Boot 夹具适配；
   完整 40 位 dff266add04a59e0859547f11b647772b20f8e6a，origin/develop 回读一致）；
-  Web `38672cd` → **`9375359`**（A3 tooltip 局部修复）
+  Web `38672cd` → **`86c5ec1`**（A3 tooltip+延期标记列宽局部修复；四连 exit0）
 - 门禁（dff266a 树实跑）：模块 **351/0/0/0**（347+4 A2 集成）、bootstrap **173/0/0/0**
   （锚+Boot；Boot=I5SsoBindingSessionBootTest 5 + I5SsoCipherRuntimeDiagTest 1，
   XML 与日志同轮同源；锚测试随 V104 机械更新：全链 105(H2)/103(PG)、终点 V104）
