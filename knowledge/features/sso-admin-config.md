@@ -49,11 +49,13 @@
   **显式 click 展开只读弹窗**（tap 生成 click，无 hover 依赖；弹窗宽度小屏自适应 92%），
   实测 App ID 20 位与 callback 全文完整可见（`a3a-390-click-appid-dialog.png` /
   `a3b-390-click-callback-dialog.png`；Web `519a817`，四连 exit0 1301+3）
-- **R1 secret 轮换（控制台入口缺证，等 Owner）**：统一后控制台对该个人测试应用
-  **无 secret 重置入口**（凭证页全文检索 0/「返回旧版平台」链接失效/经典控制台路径
-  重定向同页/掩码值悬停无浮层——五项探查）；控制台步骤需 Owner（建议钉钉客户端侧
-  应用管理或控制台支持确认入口），Owner 重置并经受控运行时通道提供新值后，执行侧
-  `PUT /system/sso/config/DINGTALK/secret` 只写更新+最小登录复验
+- **R1 secret 轮换已完成（补允提示03，2026-09-29 22:5x）**：回执09 的"无重置入口"结论
+  系坐标偏差漏看——凭证页 Client Secret 标签旁 ⟳ 图标（credentials-section__reset）
+  即重置入口。已执行：⟳→「立即重置」→ 旧 secret 即刻失效；新值经**受控剪贴板通道**
+  落 /tmp 运行时文件（页面复制钮写入系统剪贴板，pbpaste 受控落盘，未回显）；
+  `PUT /system/sso/config/DINGTALK/secret` 只写更新（审计在册）→ CONFIG_CHECK 全 true →
+  真实登录复验 LOGIN_SUCCESS 9002（新 secret 换票；r1-post-rotation-audit.txt）。
+  探查曲折如实登记：轮换三次（前两次全值展示弹窗瞬时关闭未捕获），最终剪贴板通道成功
 - **企业微信**：Owner 延期（保留配置记录只读，本期无新增启用入口）
 
 ## 候选与门禁
