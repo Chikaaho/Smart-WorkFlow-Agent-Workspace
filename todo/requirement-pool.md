@@ -541,7 +541,7 @@ P58已于2026-09-04功能级 **PASSED**（规划验收08）＋阶段三终态同
 | P28 | M01-F04-01 用户组管理 | 全仓 grep 零命中 | ✅ **已核销**（2026-08-19，user-group-membership D117 PASSED + 阶段三 COMPLETED） |
 | P29 | M01-F05-01 租户/公司管理 | 有 sys_tenant 表+seed+TenantLineHandler 列级隔离，但无实体/Controller/管理页（"维护"未实现） | 未排期 |
 | P30 | M02-F05-01 资源管理 | 鉴权执行机制有，但 API 资源注册表+鉴权策略配置无实体/端点/页面 | 未排期 |
-| P31 | M02-F06-02 单点登录 | 钉钉/飞书既定真实接入已PASSED（2026-09-29，审查07）；企业微信Owner延期 | 开放未核销；接入待终态同步；后台配置与B端可信手机号匹配预建用户准入VERIFYING，钉钉错值已修正，B1准入链待本人授权，入口 `product/sso-admin-config/ready/direction-sso-admin-config.md` |
+| P31 | M02-F06-02 单点登录 | 钉钉/飞书接入已PASSED；后台配置/B端准入已COMPLETED（规划确认，2026-09-29） | 企业微信延期，开放未核销；裁决 `product/sso-admin-config/receipts/planning-final-review-terminal-sync-01-completed.md` |
 | P32 | M03-F04-02 表单数据导入导出 | 全仓库零代码 | ✅ **已核销**（2026-08-29，form-data-import-export 功能级 PASSED + 阶段三终态同步 COMPLETED；M03-F04-02 升✅、清单 ✅32/🟦25/⬜33、功能数 36、基线 947/0/0/0（agent346）、110f/1057t/3skipped、Flyway H2 V43/PG V43——历史终态；当前正式基线经 minimal-closure-first-acceptance 审计更新为 955/1060/V44，功能数 36、清单 ✅32/🟦25/⬜33 不变） |
 | P33 | M03-F06-01 打印模板 | 无 print/PDF/套打模板代码 | 未排期 |
 | P34 | M04-F01-03 会签规则 | P58已交付子集：ALL/ANY/RATIO 会签结算、独立意见、取消语义；剩余：原明细完整规则（含一票否决）覆盖待确认（B 方向 §3，见 feature-reconciliation-index） | 部分实现、开放未核销 |
@@ -674,8 +674,8 @@ P45已完成规划功能级验收与阶段三终态复核，正式状态为 **`C
 ## 2026-09-29 SSO 后续安排（关联 P31）
 
 - 企业微信Owner延期；钉钉/飞书原定接入PASSED，阶段三入口 `product/dingtalk-sso/ready/direction-sso-terminal-sync-20260929.md`。
-- 后台SSO配置管理与B端手机号准入：VERIFYING，钉钉错值修正已核验，B1准入真实链待本人授权；按审查02补独立证据，主方向 `product/sso-admin-config/ready/direction-sso-admin-config.md`。可信手机号匹配已有SSO用户，否则仅绑定当前租户组织架构唯一有效用户；无用户拒绝登录。
+后台SSO配置与B端准入COMPLETED（规划已确认，2026-09-29）；R1轮换完成，无剩余动作。企业微信延期，P31开放。裁决 `product/sso-admin-config/receipts/planning-final-review-terminal-sync-01-completed.md`。
 
 ### 2026-09-29 后台SSO当前验收安排
 
-后台管理与B端手机号准入保持VERIFYING；回执06已复核，钉钉Client ID修正及900103探测通过，当前准入链待本人授权；其余独立剩余项见 `product/sso-admin-config/receipts/planning-review-admission-and-config-02.md`（A1/A2/A3/A4/A6/S1），下一回执07。A5锁定，企业微信延期，P31开放。
+后台SSO配置与B端准入COMPLETED（规划已确认，2026-09-29）；R1轮换完成，无剩余动作。企业微信延期，P31开放。裁决 `product/sso-admin-config/receipts/planning-final-review-terminal-sync-01-completed.md`。
