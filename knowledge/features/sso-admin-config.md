@@ -45,13 +45,22 @@
   a3-restricted-ua3flist-page 四图）。差异事实仅指向本地夹具，不外推生产/控制台
 - 已锁定保留：飞书准入真实链四段闭环、A2-b 重绑缺陷修复（deleteDormantUnboundRows）、
   A3 分项权限矩阵、A5 加密兼容（审查 01/02 已核销范围）
+- **A3 触屏完整值（补允提示02 收敛）**：390 视口下 hover 不可依赖 → 两列单元格增加
+  **显式 click 展开只读弹窗**（tap 生成 click，无 hover 依赖；弹窗宽度小屏自适应 92%），
+  实测 App ID 20 位与 callback 全文完整可见（`a3a-390-click-appid-dialog.png` /
+  `a3b-390-click-callback-dialog.png`；Web `519a817`，四连 exit0 1301+3）
+- **R1 secret 轮换（控制台入口缺证，等 Owner）**：统一后控制台对该个人测试应用
+  **无 secret 重置入口**（凭证页全文检索 0/「返回旧版平台」链接失效/经典控制台路径
+  重定向同页/掩码值悬停无浮层——五项探查）；控制台步骤需 Owner（建议钉钉客户端侧
+  应用管理或控制台支持确认入口），Owner 重置并经受控运行时通道提供新值后，执行侧
+  `PUT /system/sso/config/DINGTALK/secret` 只写更新+最小登录复验
 - **企业微信**：Owner 延期（保留配置记录只读，本期无新增启用入口）
 
 ## 候选与门禁
 
 - Server：964f2cb → **`dff266a`**（V104+配置生命周期指纹+A2 集成测试+Boot 夹具适配；
   完整 40 位 dff266add04a59e0859547f11b647772b20f8e6a，origin/develop 回读一致）；
-  Web `38672cd` → **`86c5ec1`**（A3 tooltip+延期标记列宽局部修复；四连 exit0）
+  Web `38672cd` → **`519a817`**（A3 点击展开弹窗+响应式宽度；四连 exit0 1301+3）
 - 门禁（dff266a 树实跑）：模块 **351/0/0/0**（347+4 A2 集成）、bootstrap **173/0/0/0**
   （锚+Boot；Boot=I5SsoBindingSessionBootTest 5 + I5SsoCipherRuntimeDiagTest 1，
   XML 与日志同轮同源；锚测试随 V104 机械更新：全链 105(H2)/103(PG)、终点 V104）
