@@ -1,0 +1,21 @@
+R1b-F：飞书企业错配拒绝＋绑定/会话无增量（补证提示 05，2026-09-29）
+
+对象与配置摘要：
+- Provider=FEISHU，app_id=cli_aa30e5e269389cdc，enabled=1，redirect_path=/sso/return
+- 配置 extra_config.enterpriseId=deliberately-wrong-tenant-0001（受控错误值，种子 V904 于 10:36 修改后重启生效）
+- 真实厂商主体：飞书真实租户 tenant_key=19dfd15385df1b9d（feishu-tenant-key.txt，09:46 实测捕获；授权页显示组织「个人开发」）
+- 运行进程：PID 57800，10:36:13 启动，加载 jar sha256=ea8c7ca97bcbc139b16112628d9c34c33244784b05676a1acc42f085c398baf6（候选 7342e788 构建）
+
+真实授权链（浏览器 headless=false，用户可见会话）：
+1. 10:38 前基线：t100user 密码登录取得令牌 T1，me HTTP 200 code=0 userId=9002；bindings HTTP 200 {"bindings":[]}（r9b-me-before.json / r9b-bindings-before.json）
+2. 登录页填组织名「I5测试租户」→ 点击 Feishu SSO 按钮 → GET /api/auth/sso/FEISHU/authorize-login → 302 accounts.feishu.cn 授权页（真实主体：个人开发 / 用户376282）→ 点击「授权」
+3. 回调被拒 → 302 落 /sw/sso/return?sso_error=system.sso_binding_conflict → 错误页「Single sign-on not completed」（r9b-feishu-mismatch-error-page.png）
+
+反向断言（拒绝后）：
+- 同一令牌 T1 me HTTP 200 code=0 userId=9002（r9b-me-after.json）——前置会话未受影响
+- bindings HTTP 200 {"bindings":[]}（r9b-bindings-after.json）——无 FEISHU 绑定增量
+- 审计完整导出 r9b-feishu-mismatch-audit-full.json（python json.load 解析 OK，2 行）：
+  AUTH_START SUCCESS（pre-login tenant=100）+ LOGIN_FAILED result=ENTERPRISE_MISMATCH detail="enterprise mismatch (vendor field vs configured)" createTime=2026-09-29T10:38:27
+- 该进程审计窗口内 LOGIN_SUCCESS 行数 = 0——拒绝链未签发任何平台会话（审计签发记录+受控断言组合，非仅旧 me 有效推导）
+
+边界：普通绑定冲突另有独立实测（回执 07 g3a-conflict sso_binding_conflict），本场景为企业归属错配，二者不可互替。

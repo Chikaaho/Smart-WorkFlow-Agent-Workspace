@@ -1,0 +1,24 @@
+R2身份：最终候选完整 SHA 与实际运行产物（补证提示 05，2026-09-29，全部工具回读）
+
+Server（Smart-WorkFlow-aPaaS-server，分支 develop → origin/develop）：
+- HEAD 完整 40 位 SHA：7342e788d47868c0b10790c61fe19aef4269c781（git rev-parse，修正回执 08 仅 16 位的缺口）
+- 工作树状态：git status --porcelain = 0 项（干净；诊断代码回退后无残留）
+- 诊断回退核验：FeishuSsoProviderClient.java 最后提交为 1f950e9（G3b 实现），文件内 TEMPDIAG 标记 0 处
+
+实际运行进程与加载产物（lsof 文件句柄级关联，非环境名称）：
+- 矩阵时点进程：PID 55288，10:14:36 启动（ps lstart），cwd=server 仓库根，打开文件句柄 fd 4r/5r =
+  /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-bootstrap/target/bootstrap-dev.jar
+  该进程产出钉钉个人链审计 10:14:52–10:16:21（r9-dingtalk-personal-audit-full.json）。10:36 为 R1b-F 重启而退出。
+- R1b-F 进程：PID 57800，10:36:13 启动，同 jar（产出飞书错配审计 10:38:27）。10:40 为 R1c-F 重启而退出。
+- R1c-F 进程（当前）：PID 58282，10:40:26 启动，lsof fd 4r/5r 同一 jar 路径；
+  此刻 shasum -a 256 回读 = ea8c7ca97bcbc139b16112628d9c34c33244784b05676a1acc42f085c398baf6
+  （与回执 08 声明的构建产物哈希完全一致；jar mtime 10:00:45 早于全部三个进程启动时点——三个进程加载同一字节）
+- 构建来源：7342e788 源码 mvn -Pdev 构建（回执 08 记录；jar 自 10:00:45 后未再变更，本轮回读哈希一致证实）
+
+Web（Smart-WorkFlow-aPaaS-Web，分支 develop → origin/develop）：
+- HEAD 完整 SHA：d37a57b70de0b11466fac9a9fc98fcdff737031a（提交时间 2026-09-28 21:34:38），工作树干净
+- 实际加载产物：proxy.mjs（PID 83111，09-28 21:37 启动）将 /sw/* 服务于
+  /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-Web/dist（构建于 2026-09-28 22:41:07，晚于 HEAD 提交，资产指纹 index-CwWaRphI.js）
+- 本轮全部浏览器真实链经 http://localhost:8081/sw/ 即该 dist + 反向代理（后端 127.0.0.1:8080/api）
+
+时点对应：矩阵时点（钉钉个人链 10:15-10:16，进程 55288）与本轮飞书两场景（10:38 错配 / 10:41-10:42 个人，进程 57800/58282）加载同一 jar 字节（ea8c7ca9…）与同一 dist；门禁 319/0/0/0 与 Boot 4/0/0/0（r2-system-biz-test-319.log / r2-boot-4.log）对应同一 HEAD 7342e788(完整)。1f950e9（G3b）与 762f427（corpid scope）边界同回执 08，无新的源码变化。

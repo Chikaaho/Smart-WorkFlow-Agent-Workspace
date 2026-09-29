@@ -1,0 +1,13 @@
+R1封装：钉钉个人模式完整审计重导出（活进程 PID 55288，导出时点 2026-09-29 10:2x，工具 python json.load 解析 OK）
+总行数 = 7，无截断；scope=personal 在两条 EXCHANGE 行 detail 显式可见
+
+2026-09-29T10:14:52  DINGTALK  AUTH_START  SUCCESS  pre-login tenant=100
+2026-09-29T10:15:17  DINGTALK  EXCHANGE  SUCCESS  scope=personal
+2026-09-29T10:15:17  DINGTALK  LOGIN_FAILED  DENIED  not bound
+2026-09-29T10:15:35  DINGTALK  BIND  SUCCESS  
+2026-09-29T10:15:49  DINGTALK  AUTH_START  SUCCESS  pre-login tenant=100
+2026-09-29T10:16:21  DINGTALK  EXCHANGE  SUCCESS  scope=personal
+2026-09-29T10:16:21  DINGTALK  LOGIN_SUCCESS  SUCCESS  
+
+链条判读：AUTH_START(10:14:52) → EXCHANGE scope=personal + LOGIN_FAILED not bound(10:15:17，未绑定拒绝→候选绑定页，无会话签发) → BIND SUCCESS(10:15:35) → AUTH_START(10:15:49) → EXCHANGE scope=personal + LOGIN_SUCCESS(10:16:21，已绑定登录直达工作台)。
+个人模式显式：EXCHANGE detail=scope=personal；会话签发动作 LOGIN_SUCCESS 仅出现在 BIND 之后的第二次授权。
