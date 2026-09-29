@@ -1,0 +1,22 @@
+sso-admin-config 行为证据清单与阻塞披露（2026-09-29，隔离验证环境）
+
+运行身份：后端 PID 73886（12:51:24 种子时点基线；其后 13:0x 重启为 PID 73886 后续进程，jar 为 5e95793+83b9773 源码 -Pdev 构建）；代理 :8081；前端 dist=Web 23cdb45+v-perm 开关行构建。SW_SSO_CIPHER_KEY 独立密钥（dev yml 改为 ${SW_SSO_CIPHER_KEY:dev键} 占位，注释注明 prod 必须注入）。
+
+【已验收行为】
+A1 管理页面全流程（PC 1280 + 移动 390 截图齐）：
+  - 列表 admin-sso-config-list.png：三平台（DingTalk/Feishu 启用+真实 appId；WECOM Deferred (read-only) 标注、无编辑/凭据按钮、开关禁用）
+  - 检查 admin-check-dialog-dingtalk.png：configExists/appIdValid/secretUsable/enabled 全✓，summary 含「不等于真实登录已通过」
+  - 编辑 admin-edit-enterprise-mode.png：企业模式+允许企业标识必填 → 保存 → 列表持久化回显（Enterprise member+id）；随后回退 Personal
+  - 凭据 admin-secret-placeholder-rejected.png：占位值→拒绝提示「请输入有效的新应用凭据」；真实值→「App credential updated」成功且 check secretUsable 仍 true（只写不回显）
+  - 审计抽屉 admin-audit-drawer.png：CONFIG_CHECK/CONFIG_SAVE×2/CONFIG_SECRET_UPDATE SUCCESS+DENIED/CONFIG_DISABLE/CONFIG_ENABLE/CONFIG_REJECTED 全链可见
+A2 权限与越权：t100user 调配置列表/审计均 HTTP 403（errorKey 统一）；页面按钮 v-perm 显隐与会话权限一致（V103 按钮行 421-423 + V900 全量授权；Redis 旧缓存为按钮隐现根因，FLUSHALL 后五权限齐）
+A3 生效语义：停用 DINGTALK → authorize-login 立即 400（fail closed，audit CONFIG_DISABLE SUCCESS）；重新启用恢复；WECOM enabled=true 尝试 → 400「企业微信配置维护已延期，当前只读」（audit CONFIG_REJECTED DENIED wecom deferred read-only）
+A4 B端准入 fail-closed 真实链（飞书 headless=false，组织「个人开发」用户376282）：
+  - 场景A（t100user 手机号改为不匹配值 139…0011）：授权→统一拒绝页 sso_error=system.sso_admission_rejected（PC a-feishu-admission-rejected.png + 移动 mobile-feishu-admission-rejected.png），审计 ADMISSION_REJECTED "trusted phone missing"，无绑定/用户增量
+  - 审计与全部证据秘密扫描：手机号原文/app secret 0 命中
+  - 准入链单元覆盖：唯一手机号自动绑定（BIND "phone-admission auto-bind"+LOGIN_SUCCESS）、重复手机号/无用户/已绑定手机号变更/账号停用/并发唯一键（SsoAuthServiceTest 6 用例，模块门禁 328/0/0/0）
+
+【真实阻塞（外部，非本实现缺陷）——正向「预建用户→首次绑定→登录」链】
+B1 钉钉：authorize 端点 login.dingtalk.com 返回 900103「应用不存在」（三种 URL 形态×两标签+静默无 prompt 均复现；控制台应用存在/开发中、回调登记在、Contact.User.Read 已开通、版本 1.0.0 已发布免审通过——今晨 10:08-10:16 同 clientId 真实链成功，午后起持续失败）。解除条件：Owner 在钉钉开放平台/客户端确认「个人测试」应用状态（必要时重建应用或换企业主体应用）。
+B2 飞书：换票/identity 成功，但手机号不可得——contact:v3 users/{open_id} 双身份（user-token HTTP 400：contact:user.base:readonly 不覆盖 v3；app-token HTTP 200 code=0 但响应无 mobile 字段，contact:contact.base:readonly 已开通且 v1.0.1 已发布）。fail-closed 按设计工作（即场景A/B2审计）。解除条件：飞书企业管理后台对应用开放手机号字段可见性（组织管理侧字段权限），或 Owner 提供带手机号返回的测试主体。
+按方向 §一：手机号不可得时 fail closed + 精确报告缺口 + 继续独立工作；两平台正向链的厂商侧解除后须补真实链验收（不得以历史手动绑定通过投影）。
