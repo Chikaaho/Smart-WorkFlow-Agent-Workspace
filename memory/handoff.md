@@ -2,7 +2,7 @@
 
 ## 当前任务（2026-09-29）
 
-`sso-admin-config` VERIFYING；回执08收尾完成：B1真实链双相闭环（免扫码一键授权→首次BIND auto-bind 9002→LOGIN_SUCCESS→工作台落地；二次发起绑定路径LOGIN_SUCCESS无重复BIND；state expired一次为TTL正常语义重发即恢复）、A3a/b 390真实交互tooltip全值两图（App ID 20位+callback全文）、S1 DB凭据/AI Key定向扫描三类形态0真实命中（31处JDBC定性为内嵌测试库产物非拦截）、A6入口同步完成。Owner决定钉钉应用凭据在对接完成后轮换（R1）——B1对接验证已结束，等Owner控制台安排后执行侧本地只写更新+最小复验。唯一账本 `product/sso-admin-config/receipts/planning-execution-prompt-sso-admin-config-01.md`；下一回执08待Planner复核。企业微信延期，P31开放。
+`sso-admin-config` VERIFYING；回执09完成：A3a/b升级为显式点击展开弹窗（无hover依赖），390实测App ID 20位与callback全文可见（Web `519a817`，四连exit0 1301+3）；R1定证统一控制台无secret重置入口（五项探查），控制台步骤需Owner（钉钉客户端侧应用管理），新值经受控通道到达后执行本地只写更新+最小复验。审查08核销B1钉钉真实链与S1定向检查，既有A1/A2/A4/A5锁定。原剩余触屏项已闭合、R1已授权凭据轮换及A6一次同步。唯一执行入口 `product/sso-admin-config/receipts/planning-execution-prompt-sso-admin-config-02.md`；下一回执09。企业微信延期，P31开放。
 
 ## 已完成
 
@@ -16,4 +16,4 @@
 
 **生产已于 2026-09-28 部署上线 0.1.2**（Owner 授权）：两制品远端 sha256 校验一致后上线，Flyway 自动应用 V97—V102（0 failed），生产当前 V102；启动 0 ERROR、就绪 200；公网 `https://chikaho.cn/sw/` 200、health 200 UP、前端新产物 `index-vDQskZXe.js` 生效；备份齐备（DB `20260928_1757.dump`、`bootstrap.jar.bak/.bak2`、`web.bak-20260928`），回滚路径明确；部署回执 `product/v0.1.2-release/receipts/deployment-20260928.md`。V012-CODE-001 保持独立 READY，外部通知/IoT 实网验证保持延期边界。
 
-当前任务=`sso-admin-config`（VERIFYING，回执07定点补证完成待Planner复核）；下一动作=执行执行补充提示01，B1普通登录按钮直接接续；真正本人验证再提醒。
+当前任务=`sso-admin-config`（VERIFYING，回执07定点补证完成待Planner复核）；下一动作=执行补充提示02的A3/R1/A6，真实MFA需要Owner时再提醒。

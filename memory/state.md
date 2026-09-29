@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-> `sso-admin-config` VERIFYING；回执08收尾完成：B1真实链双相闭环（免扫码一键授权→首次BIND auto-bind 9002→LOGIN_SUCCESS→工作台落地；二次发起绑定路径LOGIN_SUCCESS无重复BIND；state expired一次为TTL正常语义重发即恢复）、A3a/b 390真实交互tooltip全值两图（App ID 20位+callback全文）、S1 DB凭据/AI Key定向扫描三类形态0真实命中（31处JDBC定性为内嵌测试库产物非拦截）、A6入口同步完成。Owner决定钉钉应用凭据在对接完成后轮换（R1）——B1对接验证已结束，等Owner控制台安排后执行侧本地只写更新+最小复验。唯一账本 `product/sso-admin-config/receipts/planning-execution-prompt-sso-admin-config-01.md`；下一回执08待Planner复核。企业微信延期，P31开放。
+> `sso-admin-config` VERIFYING；回执09完成：A3a/b升级为显式点击展开弹窗（无hover依赖），390实测App ID 20位与callback全文可见（Web `519a817`，四连exit0 1301+3）；R1定证统一控制台无secret重置入口（五项探查），控制台步骤需Owner（钉钉客户端侧应用管理），新值经受控通道到达后执行本地只写更新+最小复验。审查08核销B1钉钉真实链与S1定向检查，既有A1/A2/A4/A5锁定。原剩余触屏项已闭合、R1已授权凭据轮换及A6一次同步。唯一执行入口 `product/sso-admin-config/receipts/planning-execution-prompt-sso-admin-config-02.md`；下一回执09。企业微信延期，P31开放。
 
 > 总体任务 `backend-architecture-optimization` 已 `COMPLETED（规划已确认，2026-09-26）`；`v0.1.1-bugfix` **`COMPLETED（Owner 范围关闭，2026-09-24）`**（裁决 `product/v0.1.1-bugfix/receipts/planning-owner-v011-task-close-20260924.md`）；`v0.1.2-bugfix` **`COMPLETED（Owner 范围关闭，2026-09-28）`**（裁决 `product/v0.1.2-bugfix/receipts/planning-owner-close-20260928.md`）。发布事实见下方。
 
@@ -23,4 +23,4 @@
 
 ## 最终确认与下一动作
 
-终态同步 TS1–TS3 已全部核销，最终裁决 `product/v0.1.2-release/receipts/planning-final-review-terminal-sync-20260928-passed.md`；两份方向均归档 passed。**生产已于 2026-09-28 部署上线 0.1.2（V102，双端健康 200）**。三方 SSO 接入 2026-09-29 功能级 `PASSED`（审查07），阶段三同步回执 `product/dingtalk-sso/receipts/terminal-sync-20260929.md`。当前任务=`sso-admin-config`（VERIFYING）；下一动作=执行执行补充提示01，B1普通登录按钮直接接续；真正本人验证再提醒。
+终态同步 TS1–TS3 已全部核销，最终裁决 `product/v0.1.2-release/receipts/planning-final-review-terminal-sync-20260928-passed.md`；两份方向均归档 passed。**生产已于 2026-09-28 部署上线 0.1.2（V102，双端健康 200）**。三方 SSO 接入 2026-09-29 功能级 `PASSED`（审查07），阶段三同步回执 `product/dingtalk-sso/receipts/terminal-sync-20260929.md`。当前任务=`sso-admin-config`（VERIFYING）；下一动作=执行补充提示02的A3/R1/A6，真实MFA需要Owner时再提醒。

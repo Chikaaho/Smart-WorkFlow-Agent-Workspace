@@ -10,4 +10,4 @@
 - **I5 三 Provider 真实链**：钉钉/飞书已按 `direction-three-provider-sso-20260928` 完成真实授权链验收 **`PASSED（2026-09-29，审查07）`**（企业矩阵/个人模式/错配拒绝均真实链证据）；**WECOM（企业微信）保持 `Owner 延期 / 未验证`**（保留配置，nginx 域名验证 location 已有变更），启用时重入真实链验证。B 端手机号准入为新规则，由 `sso-admin-config` 方向实现与独立验收。
 - **其他未核销边界**：P2/P4/P34/P35/P37/P38/P39/P47 保持现状；多宿主 Supervisor 真实 ZCode 闭环仍开放。
 
-- `sso-admin-config` VERIFYING；回执08收尾完成：B1真实链双相闭环（免扫码一键授权→首次BIND auto-bind 9002→LOGIN_SUCCESS→工作台落地；二次发起绑定路径LOGIN_SUCCESS无重复BIND；state expired一次为TTL正常语义重发即恢复）、A3a/b 390真实交互tooltip全值两图（App ID 20位+callback全文）、S1 DB凭据/AI Key定向扫描三类形态0真实命中（31处JDBC定性为内嵌测试库产物非拦截）、A6入口同步完成。Owner决定钉钉应用凭据在对接完成后轮换（R1）——B1对接验证已结束，等Owner控制台安排后执行侧本地只写更新+最小复验。唯一账本 `product/sso-admin-config/receipts/planning-execution-prompt-sso-admin-config-01.md`；下一回执08待Planner复核。企业微信延期，P31开放。
+- `sso-admin-config` VERIFYING；回执09完成：A3a/b升级为显式点击展开弹窗（无hover依赖），390实测App ID 20位与callback全文可见（Web `519a817`，四连exit0 1301+3）；R1定证统一控制台无secret重置入口（五项探查），控制台步骤需Owner（钉钉客户端侧应用管理），新值经受控通道到达后执行本地只写更新+最小复验。审查08核销B1钉钉真实链与S1定向检查，既有A1/A2/A4/A5锁定。原剩余触屏项已闭合、R1已授权凭据轮换及A6一次同步。唯一执行入口 `product/sso-admin-config/receipts/planning-execution-prompt-sso-admin-config-02.md`；下一回执09。企业微信延期，P31开放。
