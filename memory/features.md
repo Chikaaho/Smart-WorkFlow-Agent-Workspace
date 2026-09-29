@@ -1,6 +1,6 @@
 # 功能摘要
 
-> 2026-09-29 当前：`sso-admin-config` VERIFYING；回执09完成：A3a/b升级为显式点击展开弹窗（无hover依赖），390实测App ID 20位与callback全文可见（Web `519a817`，四连exit0 1301+3）；R1定证统一控制台无secret重置入口（五项探查），控制台步骤需Owner（钉钉客户端侧应用管理），新值经受控通道到达后执行本地只写更新+最小复验。审查08核销B1钉钉真实链与S1定向检查，既有A1/A2/A4/A5锁定。原剩余触屏项已闭合、R1已授权凭据轮换及A6一次同步。唯一执行入口 `product/sso-admin-config/receipts/planning-execution-prompt-sso-admin-config-02.md`；下一回执09。企业微信延期，P31开放。
+> 2026-09-29 当前：`sso-admin-config` VERIFYING；审查09核销A3a/b，现有业务验收项全部锁定。Server dff266a、Web519a817；回执10完成：R1凭据轮换已完成（凭证页⟳图标即重置钮，回执09系坐标偏差漏看；立即重置→新值经受控剪贴板通道落运行时文件→PUT只写更新→CONFIG_CHECK全true→真实登录复验LOGIN_SUCCESS 9002用新secret换票）；A6当前入口已按固定字段回读同步。唯一入口 `product/sso-admin-config/receipts/planning-execution-prompt-sso-admin-config-03.md`；回执10已提交待Planner复核。R1未证实客户端可重置，不要求Owner找猜测入口。企业微信延期，P31开放。
 > 【历史】2026-09-28 修复轮快照：v0.1.2-bugfix 曾为 IN_PROGRESS，已按 Owner 裁决收口。
 > 同步点：2026-09-29 三方 SSO 审查07 PASSED；总体任务 `backend-architecture-optimization`（XL）`COMPLETED（规划已确认，2026-09-26）`。
 > 清单当前值 **✅46/🟦22/⬜22**（90）；功能数 **45**（发布零变化）；全量双向映射见 `knowledge/feature-reconciliation-index.md`。
@@ -16,4 +16,4 @@
 - `v0.1.2-bugfix`（L，非业务功能计数）：**`COMPLETED（Owner 范围关闭，2026-09-28）`**（裁决 `product/v0.1.2-bugfix/receipts/planning-owner-close-20260928.md`）；23 项历史执行/回归记录保留，不补造逐项验收；方向归档 `product/v0.1.2-bugfix/passed/`；V012-CODE-001 仍 READY 独立跟踪。
 - `v0.1.2-release`（L，非业务功能计数）：**`COMPLETED（规划已确认，2026-09-28）`**——规划发布复核 `PASSED`（`product/v0.1.2-release/receipts/planning-review-release-20260928-passed.md`）；两仓 develop→main 快进（Server `fd704ff…`、Web `5368e6c…`）、annotated tag `0.1.2`、正式 Release（CI 36396145288 / 36396187465）；本次未部署。发布执行回执 `product/v0.1.2-release/receipts/release-20260928.md`，终态同步回执 `receipts/terminal-sync-20260928.md`。
 - 三方 SSO 真实接入（`dingtalk-sso`，L，既有 I5 补验、非新增功能计数/增量 0）：功能级 **`PASSED（2026-09-29，审查07）`**、接入功能状态 `COMPLETED（待规划确认）`；主方向归档 `product/dingtalk-sso/passed/`。钉钉/飞书真实授权链与企业矩阵验收通过（G3b 企业归属约束、个人模式显式、错配拒绝）；验收集合 Server 本任务模块 319/0/0/0＋Boot 4/0/0/0、Web 1301+3。企业微信 Owner 延期未验证；P31 未核销。
-- `sso-admin-config` VERIFYING；回执09完成：A3a/b升级为显式点击展开弹窗（无hover依赖），390实测App ID 20位与callback全文可见（Web `519a817`，四连exit0 1301+3）；R1定证统一控制台无secret重置入口（五项探查），控制台步骤需Owner（钉钉客户端侧应用管理），新值经受控通道到达后执行本地只写更新+最小复验。审查08核销B1钉钉真实链与S1定向检查，既有A1/A2/A4/A5锁定。原剩余触屏项已闭合、R1已授权凭据轮换及A6一次同步。唯一执行入口 `product/sso-admin-config/receipts/planning-execution-prompt-sso-admin-config-02.md`；下一回执09。企业微信延期，P31开放。
+- `sso-admin-config` VERIFYING；审查09核销A3a/b，现有业务验收项全部锁定。Server dff266a、Web519a817；回执10完成：R1凭据轮换已完成（凭证页⟳图标即重置钮，回执09系坐标偏差漏看；立即重置→新值经受控剪贴板通道落运行时文件→PUT只写更新→CONFIG_CHECK全true→真实登录复验LOGIN_SUCCESS 9002用新secret换票）；A6当前入口已按固定字段回读同步。唯一入口 `product/sso-admin-config/receipts/planning-execution-prompt-sso-admin-config-03.md`；回执10已提交待Planner复核。R1未证实客户端可重置，不要求Owner找猜测入口。企业微信延期，P31开放。
