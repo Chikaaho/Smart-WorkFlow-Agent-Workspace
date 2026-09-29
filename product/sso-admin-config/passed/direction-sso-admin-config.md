@@ -1,12 +1,12 @@
 # 后台SSO配置管理与B端手机号准入
 
-日期2026-09-29；Planner→Executor；等级L；状态VERIFYING；关联P31，未核销。
+日期2026-09-29；Planner→Executor；等级L；状态PASSED（审查10）；关联P31，未核销。
 
 依据：Owner后台配置开发授权、2026-09-29手机号准入补充；search_fallback/sso-admin-config-readiness-20260929.md；product/dingtalk-sso/receipts/planning-review-three-provider-07-passed.md。本方向为当前新主功能，先提交前项状态同步，再连续推进实现。企业微信延期。
 
 ## 2026-09-29 Owner追加决定
 
-审查08已核销钉钉真实链及S1定向检查；整体VERIFYING。Owner已授权对接后应用凭据轮换，R1依赖满足。唯一执行入口：`../receipts/planning-execution-prompt-sso-admin-config-02.md`（A3触屏行为、R1轮换、A6同步；下一回执09），裁决见审查08。企业微信延期，P31开放。
+审查10确认功能PASSED，R1轮换及最小登录复验完成。阶段三已确认COMPLETED，终态裁决见`../receipts/planning-final-review-terminal-sync-01-completed.md`；企业微信延期、P31开放。
 
 ## 一、目标与准入规则
 

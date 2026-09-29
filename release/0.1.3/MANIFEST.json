@@ -1,0 +1,51 @@
+{
+  "version": "0.1.3",
+  "releasedAt": "2026-09-30",
+  "server": {
+    "repo": "Smart-WorkFlow-aPaaS-server",
+    "main": "8e23a2d373bc42bc3abdc86c584f011660edb896",
+    "tag": "0.1.3",
+    "tagObject": "8e4f36250259d028ff1fdc95a242d35798bbf786",
+    "ciRun": 36603608187,
+    "release": "https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server/releases/tag/0.1.3",
+    "asset": {
+      "name": "bootstrap-0.1.3.jar",
+      "bytes": 216837921,
+      "sha256": "483d1a98f2d92d8d02b12899031b9e4ed1b6467b29df2e3e5997e83fbee6daca",
+      "buildVersion": "0.1.3",
+      "buildProfile": "prod"
+    },
+    "developHead": "8e23a2d373bc42bc3abdc86c584f011660edb896",
+    "batches": [
+      {"sha": "a9483be7ffc3dd43d2acb27a04d238c6149d7268", "what": "feat(db): flyway 种子合并为 V0.1.0 基线（208 删除 + 基线双份 + 锚测试基线化 + 夹具冻结）"},
+      {"sha": "6960cd2a935197e46214d1b63405980171589ae8", "what": "chore(version): 版本身份 0.1.3-SNAPSHOT"},
+      {"sha": "8e23a2d373bc42bc3abdc86c584f011660edb896", "what": "fix(release): 制品门禁迁移正则兼容点分版本号"}
+    ]
+  },
+  "web": {
+    "repo": "Smart-WorkFlow-aPaaS-Web",
+    "main": "e3ae316bd60bb61bc1aae28df134534ece8eeea4",
+    "tag": "0.1.3",
+    "tagObject": "fd48809ad015977e81712231439f097a0d85d4b4",
+    "ciRun": 36602576798,
+    "release": "https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web/releases/tag/0.1.3",
+    "asset": {
+      "name": "sw-web-dist-0.1.3.zip",
+      "bytes": 1040301,
+      "sha256": "0346a3e99467025b4ae9331c5fa37e53a37c41e25c46c747587657b04105af85"
+    },
+    "developHead": "e3ae316bd60bb61bc1aae28df134534ece8eeea4"
+  },
+  "deploy": {
+    "env": "UAT（chikaho.cn 单机，docs/ops/production-ops.md 所述环境）",
+    "mode": "删库重建发版（Owner 2026-09-29 授权）",
+    "dbBackup": "/data/backup/smart_workflow_20260930_0139_pre013.dump（0.1.2/V102 全量）",
+    "flyway": {"applied": 2, "endpoint": "V0.1.0", "tables": 101},
+    "receipt": "product/v0.1.3-release/receipts/deployment-20260930.md"
+  },
+  "equivalence": {
+    "pgSha256": "ec5b532e549159c69fa11c505909bed86580c6b1e366b6facbc751c3a610a520",
+    "h2Sha256": "c5c6bf638dc06af452e398c656c30496eaf7d0fa35e29618a622fa1b62dc4e9b",
+    "evidence": "product/v0.1.3-release/receipts/evidence/seed-squash-01/"
+  }
+}
