@@ -675,3 +675,7 @@ P45已完成规划功能级验收与阶段三终态复核，正式状态为 **`C
 
 - 企业微信Owner延期；钉钉/飞书原定接入PASSED，阶段三入口 `product/dingtalk-sso/ready/direction-sso-terminal-sync-20260929.md`。
 - 后台SSO配置管理与B端手机号准入：READY，先提交接入终态同步，再执行 `product/sso-admin-config/ready/direction-sso-admin-config.md`。可信手机号匹配已有SSO用户，否则仅绑定当前租户组织架构唯一有效用户；无用户拒绝登录。
+
+### 2026-09-29 后台SSO当前验收安排
+
+后台管理与B端手机号准入保持VERIFYING；飞书自动绑定/后续登录已有真实行为证据，剩余A1—A6见 `product/sso-admin-config/receipts/planning-review-admission-and-config-01.md`。钉钉新准入真实链B1按Owner决定BLOCKED，等待Owner有空明确恢复，不重复索要扫码；企业微信继续延期。P31开放未核销，旧接入PASSED不等于本轮新准入通过。
