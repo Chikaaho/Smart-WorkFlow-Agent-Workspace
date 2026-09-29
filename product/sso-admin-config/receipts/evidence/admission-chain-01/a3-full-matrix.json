@@ -1,627 +1,627 @@
 {
- "requests": [
-  {
-   "method": "POST",
-   "path": "/system/role",
-   "body": {
-    "name": "A3查看",
-    "code": "a3flist",
-    "sort": 91,
-    "status": 1,
-    "dataScope": 0
-   },
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "PUT",
-   "path": "/system/role/2104856846858317826/menus",
-   "body": [
-    420
-   ],
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "POST",
-   "path": "/system/user",
-   "body": {
-    "username": "u_a3flist",
-    "realName": "A3查看用户",
-    "deptId": 1001,
-    "plainPassword": "admin123",
-    "status": 0,
-    "roleIds": [
-     "2104856846858317826"
-    ],
-    "postIds": []
-   },
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "POST",
-   "path": "/system/role",
-   "body": {
-    "name": "A3编辑",
-    "code": "a3fedit",
-    "sort": 91,
-    "status": 1,
-    "dataScope": 0
-   },
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "PUT",
-   "path": "/system/role/2104856847390994434/menus",
-   "body": [
-    420,
-    421
-   ],
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "POST",
-   "path": "/system/user",
-   "body": {
-    "username": "u_a3fedit",
-    "realName": "A3编辑用户",
-    "deptId": 1001,
-    "plainPassword": "admin123",
-    "status": 0,
-    "roleIds": [
-     "2104856847390994434"
-    ],
-    "postIds": []
-   },
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "POST",
-   "path": "/system/role",
-   "body": {
-    "name": "A3启停",
-    "code": "a3fenable",
-    "sort": 91,
-    "status": 1,
-    "dataScope": 0
-   },
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "PUT",
-   "path": "/system/role/2104856847839784962/menus",
-   "body": [
-    420,
-    422
-   ],
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "POST",
-   "path": "/system/user",
-   "body": {
-    "username": "u_a3fenable",
-    "realName": "A3启停用户",
-    "deptId": 1001,
-    "plainPassword": "admin123",
-    "status": 0,
-    "roleIds": [
-     "2104856847839784962"
-    ],
-    "postIds": []
-   },
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "POST",
-   "path": "/system/role",
-   "body": {
-    "name": "A3凭据",
-    "code": "a3fsecret",
-    "sort": 91,
-    "status": 1,
-    "dataScope": 0
-   },
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "PUT",
-   "path": "/system/role/2104856848338907138/menus",
-   "body": [
-    420,
-    423
-   ],
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "POST",
-   "path": "/system/user",
-   "body": {
-    "username": "u_a3fsecret",
-    "realName": "A3凭据用户",
-    "deptId": 1001,
-    "plainPassword": "admin123",
-    "status": 0,
-    "roleIds": [
-     "2104856848338907138"
-    ],
-    "postIds": []
-   },
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "GET",
-   "path": "/system/sso/config",
-   "body": null,
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "GET",
-   "path": "/system/sso/config/FEISHU/check",
-   "body": null,
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "PUT",
-   "path": "/system/sso/config/DINGTALK/basic",
-   "body": {
-    "appId": "x",
-    "extraConfig": "{}"
-   },
-   "http": 403,
-   "code": 403,
-   "msg": "您没有执行该操作的权限，请联系管理员分配相应权限"
-  },
-  {
-   "method": "PUT",
-   "path": "/system/sso/config/DINGTALK/enabled",
-   "body": {
-    "enabled": true
-   },
-   "http": 403,
-   "code": 403,
-   "msg": "您没有执行该操作的权限，请联系管理员分配相应权限"
-  },
-  {
-   "method": "PUT",
-   "path": "/system/sso/config/DINGTALK/secret",
-   "body": {
-    "appSecret": "x-secret"
-   },
-   "http": 403,
-   "code": 403,
-   "msg": "您没有执行该操作的权限，请联系管理员分配相应权限"
-  },
-  {
-   "method": "PUT",
-   "path": "/system/sso/config/DINGTALK/basic",
-   "body": {
-    "appId": "dingzoptrn9m33rwe1-temp",
-    "extraConfig": "{\"note\":\"a3\"}"
-   },
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "GET",
-   "path": "/system/sso/config",
-   "body": null,
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "PUT",
-   "path": "/system/sso/config/DINGTALK/enabled",
-   "body": {
-    "enabled": false
-   },
-   "http": 403,
-   "code": 403,
-   "msg": "您没有执行该操作的权限，请联系管理员分配相应权限"
-  },
-  {
-   "method": "PUT",
-   "path": "/system/sso/config/DINGTALK/secret",
-   "body": {
-    "appSecret": "x"
-   },
-   "http": 403,
-   "code": 403,
-   "msg": "您没有执行该操作的权限，请联系管理员分配相应权限"
-  },
-  {
-   "method": "PUT",
-   "path": "/system/sso/config/DINGTALK/basic",
-   "body": {
-    "appId": "dingzoptrn9m33rwe1",
-    "extraConfig": "{}"
-   },
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "PUT",
-   "path": "/system/sso/config/DINGTALK/enabled",
-   "body": {
-    "enabled": false
-   },
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "GET",
-   "path": "/system/sso/config",
-   "body": null,
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "PUT",
-   "path": "/system/sso/config/DINGTALK/basic",
-   "body": {
-    "appId": "y",
-    "extraConfig": "{}"
-   },
-   "http": 403,
-   "code": 403,
-   "msg": "您没有执行该操作的权限，请联系管理员分配相应权限"
-  },
-  {
-   "method": "PUT",
-   "path": "/system/sso/config/DINGTALK/secret",
-   "body": {
-    "appSecret": "y"
-   },
-   "http": 403,
-   "code": 403,
-   "msg": "您没有执行该操作的权限，请联系管理员分配相应权限"
-  },
-  {
-   "method": "PUT",
-   "path": "/system/sso/config/DINGTALK/enabled",
-   "body": {
-    "enabled": true
-   },
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "PUT",
-   "path": "/system/sso/config/DINGTALK/secret",
-   "body": {
-    "appSecret": "a3-temp-secret-value"
-   },
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "GET",
-   "path": "/system/sso/config/DINGTALK/check",
-   "body": null,
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "PUT",
-   "path": "/system/sso/config/DINGTALK/basic",
-   "body": {
-    "appId": "z",
-    "extraConfig": "{}"
-   },
-   "http": 403,
-   "code": 403,
-   "msg": "您没有执行该操作的权限，请联系管理员分配相应权限"
-  },
-  {
-   "method": "PUT",
-   "path": "/system/sso/config/DINGTALK/enabled",
-   "body": {
-    "enabled": false
-   },
-   "http": 403,
-   "code": 403,
-   "msg": "您没有执行该操作的权限，请联系管理员分配相应权限"
-  },
-  {
-   "method": "PUT",
-   "path": "/system/sso/config/DINGTALK/secret",
-   "body": {
-    "appSecret": "ccT8xe32Fti3Oz7e9xRxOC4E5rasvx9y5O1eced2I_8AfbEG2Q9fXuvSdlmgSuD3"
-   },
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  },
-  {
-   "method": "GET",
-   "path": "/system/sso/config/DINGTALK/check",
-   "body": null,
-   "http": 200,
-   "code": 0,
-   "msg": "success"
-  }
- ],
- "matrix": [
-  {
-   "who": "u_a3flist",
-   "op": "GET config",
-   "http": 200,
-   "env": {
-    "code": 0,
-    "msg": "success",
-    "data": {
-     "configs": [
-      {
-       "provider": "DINGTALK",
-       "enabled": true,
-       "appId": "dingzoptrn9m33rwe1",
-       "secretConfigured": true,
-       "identityMode": "personal",
-       "configuredEnterpriseId": "",
-       "callbackUrl": "http://localhost:8081/sw-server/api/auth/sso/dingtalk/callback",
-       "updateTime": "2026-09-29T16:45:03.925106",
-       "deferred": false
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/system/role",
+      "body": {
+        "name": "A3查看",
+        "code": "a3flist",
+        "sort": 91,
+        "status": 1,
+        "dataScope": 0
       },
-      {
-       "provider": "FEISHU",
-       "enabled": true,
-       "appId": "cli_aa30e5e269389cdc",
-       "secretConfigured": true,
-       "identityMode": "personal",
-       "configuredEnterpriseId": "",
-       "callbackUrl": "http://localhost:8081/sw-server/api/auth/sso/feishu/callback",
-       "updateTime": "2026-09-29T16:45:03.925106",
-       "deferred": false
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "PUT",
+      "path": "/system/role/2104856846858317826/menus",
+      "body": [
+        420
+      ],
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/system/user",
+      "body": {
+        "username": "u_a3flist",
+        "realName": "A3查看用户",
+        "deptId": 1001,
+        "plainPassword": "[REDACTED]",
+        "status": 0,
+        "roleIds": [
+          "2104856846858317826"
+        ],
+        "postIds": []
       },
-      {
-       "provider": "WECOM",
-       "enabled": false,
-       "appId": "ww-sentinel-app-id",
-       "secretConfigured": false,
-       "identityMode": "personal",
-       "configuredEnterpriseId": "",
-       "callbackUrl": "http://localhost:8081/sw-server/api/auth/sso/wecom/callback",
-       "updateTime": "2026-09-29T16:45:03.925106",
-       "deferred": true
-      }
-     ]
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/system/role",
+      "body": {
+        "name": "A3编辑",
+        "code": "a3fedit",
+        "sort": 91,
+        "status": 1,
+        "dataScope": 0
+      },
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "PUT",
+      "path": "/system/role/2104856847390994434/menus",
+      "body": [
+        420,
+        421
+      ],
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/system/user",
+      "body": {
+        "username": "u_a3fedit",
+        "realName": "A3编辑用户",
+        "deptId": 1001,
+        "plainPassword": "[REDACTED]",
+        "status": 0,
+        "roleIds": [
+          "2104856847390994434"
+        ],
+        "postIds": []
+      },
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/system/role",
+      "body": {
+        "name": "A3启停",
+        "code": "a3fenable",
+        "sort": 91,
+        "status": 1,
+        "dataScope": 0
+      },
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "PUT",
+      "path": "/system/role/2104856847839784962/menus",
+      "body": [
+        420,
+        422
+      ],
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/system/user",
+      "body": {
+        "username": "u_a3fenable",
+        "realName": "A3启停用户",
+        "deptId": 1001,
+        "plainPassword": "[REDACTED]",
+        "status": 0,
+        "roleIds": [
+          "2104856847839784962"
+        ],
+        "postIds": []
+      },
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/system/role",
+      "body": {
+        "name": "A3凭据",
+        "code": "a3fsecret",
+        "sort": 91,
+        "status": 1,
+        "dataScope": 0
+      },
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "PUT",
+      "path": "/system/role/2104856848338907138/menus",
+      "body": [
+        420,
+        423
+      ],
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/system/user",
+      "body": {
+        "username": "u_a3fsecret",
+        "realName": "A3凭据用户",
+        "deptId": 1001,
+        "plainPassword": "[REDACTED]",
+        "status": 0,
+        "roleIds": [
+          "2104856848338907138"
+        ],
+        "postIds": []
+      },
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/system/sso/config",
+      "body": null,
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/system/sso/config/FEISHU/check",
+      "body": null,
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "PUT",
+      "path": "/system/sso/config/DINGTALK/basic",
+      "body": {
+        "appId": "x",
+        "extraConfig": "{}"
+      },
+      "http": 403,
+      "code": 403,
+      "msg": "您没有执行该操作的权限，请联系管理员分配相应权限"
+    },
+    {
+      "method": "PUT",
+      "path": "/system/sso/config/DINGTALK/enabled",
+      "body": {
+        "enabled": true
+      },
+      "http": 403,
+      "code": 403,
+      "msg": "您没有执行该操作的权限，请联系管理员分配相应权限"
+    },
+    {
+      "method": "PUT",
+      "path": "/system/sso/config/DINGTALK/secret",
+      "body": {
+        "appSecret": "[REDACTED]"
+      },
+      "http": 403,
+      "code": 403,
+      "msg": "您没有执行该操作的权限，请联系管理员分配相应权限"
+    },
+    {
+      "method": "PUT",
+      "path": "/system/sso/config/DINGTALK/basic",
+      "body": {
+        "appId": "dingzoptrn9m33rwe1-temp",
+        "extraConfig": "{\"note\":\"a3\"}"
+      },
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/system/sso/config",
+      "body": null,
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "PUT",
+      "path": "/system/sso/config/DINGTALK/enabled",
+      "body": {
+        "enabled": false
+      },
+      "http": 403,
+      "code": 403,
+      "msg": "您没有执行该操作的权限，请联系管理员分配相应权限"
+    },
+    {
+      "method": "PUT",
+      "path": "/system/sso/config/DINGTALK/secret",
+      "body": {
+        "appSecret": "[REDACTED]"
+      },
+      "http": 403,
+      "code": 403,
+      "msg": "您没有执行该操作的权限，请联系管理员分配相应权限"
+    },
+    {
+      "method": "PUT",
+      "path": "/system/sso/config/DINGTALK/basic",
+      "body": {
+        "appId": "dingzoptrn9m33rwe1",
+        "extraConfig": "{}"
+      },
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "PUT",
+      "path": "/system/sso/config/DINGTALK/enabled",
+      "body": {
+        "enabled": false
+      },
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/system/sso/config",
+      "body": null,
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "PUT",
+      "path": "/system/sso/config/DINGTALK/basic",
+      "body": {
+        "appId": "y",
+        "extraConfig": "{}"
+      },
+      "http": 403,
+      "code": 403,
+      "msg": "您没有执行该操作的权限，请联系管理员分配相应权限"
+    },
+    {
+      "method": "PUT",
+      "path": "/system/sso/config/DINGTALK/secret",
+      "body": {
+        "appSecret": "[REDACTED]"
+      },
+      "http": 403,
+      "code": 403,
+      "msg": "您没有执行该操作的权限，请联系管理员分配相应权限"
+    },
+    {
+      "method": "PUT",
+      "path": "/system/sso/config/DINGTALK/enabled",
+      "body": {
+        "enabled": true
+      },
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "PUT",
+      "path": "/system/sso/config/DINGTALK/secret",
+      "body": {
+        "appSecret": "[REDACTED]"
+      },
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/system/sso/config/DINGTALK/check",
+      "body": null,
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "PUT",
+      "path": "/system/sso/config/DINGTALK/basic",
+      "body": {
+        "appId": "z",
+        "extraConfig": "{}"
+      },
+      "http": 403,
+      "code": 403,
+      "msg": "您没有执行该操作的权限，请联系管理员分配相应权限"
+    },
+    {
+      "method": "PUT",
+      "path": "/system/sso/config/DINGTALK/enabled",
+      "body": {
+        "enabled": false
+      },
+      "http": 403,
+      "code": 403,
+      "msg": "您没有执行该操作的权限，请联系管理员分配相应权限"
+    },
+    {
+      "method": "PUT",
+      "path": "/system/sso/config/DINGTALK/secret",
+      "body": {
+        "appSecret": "[REDACTED]"
+      },
+      "http": 200,
+      "code": 0,
+      "msg": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/system/sso/config/DINGTALK/check",
+      "body": null,
+      "http": 200,
+      "code": 0,
+      "msg": "success"
     }
-   },
-   "text": "{\"code\":0,\"msg\":\"success\",\"data\":{\"configs\":[{\"provider\":\"DINGTALK\",\"enabled\":true,\"appId\":\"dingzoptrn9m33rwe1\",\"secretConfigured\":true,\"identityMode\":\"personal\",\"configuredEnterpriseId\":\"\",\"callbackUrl\":\"http://localhost:8081/sw-server/api/auth/sso/dingtalk/callback\",\"updateTime\":\"2026-09-29T16:45:03.925106\",\"deferred\":false},{\"provider\":\"FEISHU\",\"enabled\":true,\"appId\":\"cli_aa30e5e269389cdc\",\"secretConfigured\":true,\"identityMode\":\"personal\",\"configuredEnterpriseId\":\"\",\"callbackUrl\":\"http://localhost:8081/sw-server/api/auth/sso/feishu/callback\",\"updateTime\":\"2026-09-29T16:45:03.925106\",\"deferred\":false},{\"provider\":\"WECOM\",\"enabled\":false,\"appId\":\"ww-sentinel-app-id\",\"secretConfigured\":false,\"identityMode\":\"personal\",\"configuredEnterpriseId\":\"\",\"callbackUrl\":\"http://localhost:8081/sw-server/api/auth/sso/wecom/callback\",\"updateTime\":\"2026-09-29T16:45:03.925106\",\"deferred\":true}]}}"
-  },
-  {
-   "who": "u_a3flist",
-   "op": "GET check",
-   "http": 200,
-   "env": {
-    "code": 0,
-    "msg": "success",
-    "data": {
-     "configExists": true,
-     "appIdValid": true,
-     "secretUsable": true,
-     "enterpriseIdFormat": true,
-     "enabled": true,
-     "overall": true,
-     "summary": "配置完整且已启用（不等于真实登录已通过）"
+  ],
+  "matrix": [
+    {
+      "who": "u_a3flist",
+      "op": "GET config",
+      "http": 200,
+      "env": {
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "configs": [
+            {
+              "provider": "DINGTALK",
+              "enabled": true,
+              "appId": "dingzoptrn9m33rwe1",
+              "secretConfigured": true,
+              "identityMode": "personal",
+              "configuredEnterpriseId": "",
+              "callbackUrl": "http://localhost:8081/sw-server/api/auth/sso/dingtalk/callback",
+              "updateTime": "2026-09-29T16:45:03.925106",
+              "deferred": false
+            },
+            {
+              "provider": "FEISHU",
+              "enabled": true,
+              "appId": "cli_aa30e5e269389cdc",
+              "secretConfigured": true,
+              "identityMode": "personal",
+              "configuredEnterpriseId": "",
+              "callbackUrl": "http://localhost:8081/sw-server/api/auth/sso/feishu/callback",
+              "updateTime": "2026-09-29T16:45:03.925106",
+              "deferred": false
+            },
+            {
+              "provider": "WECOM",
+              "enabled": false,
+              "appId": "ww-sentinel-app-id",
+              "secretConfigured": false,
+              "identityMode": "personal",
+              "configuredEnterpriseId": "",
+              "callbackUrl": "http://localhost:8081/sw-server/api/auth/sso/wecom/callback",
+              "updateTime": "2026-09-29T16:45:03.925106",
+              "deferred": true
+            }
+          ]
+        }
+      },
+      "text": "{\"code\":0,\"msg\":\"success\",\"data\":{\"configs\":[{\"provider\":\"DINGTALK\",\"enabled\":true,\"appId\":\"dingzoptrn9m33rwe1\",\"secretConfigured\":true,\"identityMode\":\"personal\",\"configuredEnterpriseId\":\"\",\"callbackUrl\":\"http://localhost:8081/sw-server/api/auth/sso/dingtalk/callback\",\"updateTime\":\"2026-09-29T16:45:03.925106\",\"deferred\":false},{\"provider\":\"FEISHU\",\"enabled\":true,\"appId\":\"cli_aa30e5e269389cdc\",\"secretConfigured\":true,\"identityMode\":\"personal\",\"configuredEnterpriseId\":\"\",\"callbackUrl\":\"http://localhost:8081/sw-server/api/auth/sso/feishu/callback\",\"updateTime\":\"2026-09-29T16:45:03.925106\",\"deferred\":false},{\"provider\":\"WECOM\",\"enabled\":false,\"appId\":\"ww-sentinel-app-id\",\"secretConfigured\":false,\"identityMode\":\"personal\",\"configuredEnterpriseId\":\"\",\"callbackUrl\":\"http://localhost:8081/sw-server/api/auth/sso/wecom/callback\",\"updateTime\":\"2026-09-29T16:45:03.925106\",\"deferred\":true}]}}"
+    },
+    {
+      "who": "u_a3flist",
+      "op": "GET check",
+      "http": 200,
+      "env": {
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "configExists": true,
+          "appIdValid": true,
+          "secretUsable": true,
+          "enterpriseIdFormat": true,
+          "enabled": true,
+          "overall": true,
+          "summary": "配置完整且已启用（不等于真实登录已通过）"
+        }
+      },
+      "text": "{\"code\":0,\"msg\":\"success\",\"data\":{\"configExists\":true,\"appIdValid\":true,\"secretUsable\":true,\"enterpriseIdFormat\":true,\"enabled\":true,\"overall\":true,\"summary\":\"配置完整且已启用（不等于真实登录已通过）\"}}"
+    },
+    {
+      "who": "u_a3flist",
+      "op": "PUT basic",
+      "http": 403,
+      "env": {
+        "code": 403,
+        "msg": "您没有执行该操作的权限，请联系管理员分配相应权限",
+        "data": null,
+        "errorKey": "common.forbidden",
+        "eventRef": "req-dea4146c63e8e711456e807e9d5a3d44"
+      },
+      "text": "{\"code\":403,\"msg\":\"您没有执行该操作的权限，请联系管理员分配相应权限\",\"data\":null,\"errorKey\":\"common.forbidden\",\"eventRef\":\"req-dea4146c63e8e711456e807e9d5a3d44\"}"
+    },
+    {
+      "who": "u_a3flist",
+      "op": "PUT enabled",
+      "http": 403,
+      "env": {
+        "code": 403,
+        "msg": "您没有执行该操作的权限，请联系管理员分配相应权限",
+        "data": null,
+        "errorKey": "common.forbidden",
+        "eventRef": "req-8cc001efa70dee21d5cfbb2411312a3c"
+      },
+      "text": "{\"code\":403,\"msg\":\"您没有执行该操作的权限，请联系管理员分配相应权限\",\"data\":null,\"errorKey\":\"common.forbidden\",\"eventRef\":\"req-8cc001efa70dee21d5cfbb2411312a3c\"}"
+    },
+    {
+      "who": "u_a3flist",
+      "op": "PUT secret",
+      "http": 403,
+      "env": {
+        "code": 403,
+        "msg": "您没有执行该操作的权限，请联系管理员分配相应权限",
+        "data": null,
+        "errorKey": "common.forbidden",
+        "eventRef": "req-dcb840f7b89109da815db5e10570f934"
+      },
+      "text": "{\"code\":403,\"msg\":\"您没有执行该操作的权限，请联系管理员分配相应权限\",\"data\":null,\"errorKey\":\"common.forbidden\",\"eventRef\":\"req-dcb840f7b89109da815db5e10570f934\"}"
+    },
+    {
+      "who": "u_a3fedit",
+      "op": "PUT basic 实际改值",
+      "http": 200,
+      "env": {
+        "code": 0,
+        "msg": "success",
+        "data": null
+      },
+      "text": "{\"code\":0,\"msg\":\"success\",\"data\":null}"
+    },
+    {
+      "who": "u_a3fedit",
+      "op": "GET 持久化回读",
+      "appIdAfter": "dingzoptrn9m33rwe1-temp"
+    },
+    {
+      "who": "u_a3fedit",
+      "op": "PUT enabled（应拒）",
+      "http": 403,
+      "env": {
+        "code": 403,
+        "msg": "您没有执行该操作的权限，请联系管理员分配相应权限",
+        "data": null,
+        "errorKey": "common.forbidden",
+        "eventRef": "req-5afe48a49b96cae29d73c042ccb57e32"
+      },
+      "text": "{\"code\":403,\"msg\":\"您没有执行该操作的权限，请联系管理员分配相应权限\",\"data\":null,\"errorKey\":\"common.forbidden\",\"eventRef\":\"req-5afe48a49b96cae29d73c042ccb57e32\"}"
+    },
+    {
+      "who": "u_a3fedit",
+      "op": "PUT secret（应拒）",
+      "http": 403,
+      "env": {
+        "code": 403,
+        "msg": "您没有执行该操作的权限，请联系管理员分配相应权限",
+        "data": null,
+        "errorKey": "common.forbidden",
+        "eventRef": "req-bf603ecf878f7340526ace71a69315b4"
+      },
+      "text": "{\"code\":403,\"msg\":\"您没有执行该操作的权限，请联系管理员分配相应权限\",\"data\":null,\"errorKey\":\"common.forbidden\",\"eventRef\":\"req-bf603ecf878f7340526ace71a69315b4\"}"
+    },
+    {
+      "who": "u_a3fenable",
+      "op": "PUT enabled false 实际改值",
+      "http": 200,
+      "env": {
+        "code": 0,
+        "msg": "success",
+        "data": null
+      },
+      "text": "{\"code\":0,\"msg\":\"success\",\"data\":null}"
+    },
+    {
+      "who": "u_a3fenable",
+      "op": "GET enabled 回读",
+      "enabledAfter": false
+    },
+    {
+      "who": "u_a3fenable",
+      "op": "PUT basic（应拒）",
+      "http": 403,
+      "env": {
+        "code": 403,
+        "msg": "您没有执行该操作的权限，请联系管理员分配相应权限",
+        "data": null,
+        "errorKey": "common.forbidden",
+        "eventRef": "req-c4451a1a11af9fe7e63d33b484a792e3"
+      },
+      "text": "{\"code\":403,\"msg\":\"您没有执行该操作的权限，请联系管理员分配相应权限\",\"data\":null,\"errorKey\":\"common.forbidden\",\"eventRef\":\"req-c4451a1a11af9fe7e63d33b484a792e3\"}"
+    },
+    {
+      "who": "u_a3fenable",
+      "op": "PUT secret（应拒）",
+      "http": 403,
+      "env": {
+        "code": 403,
+        "msg": "您没有执行该操作的权限，请联系管理员分配相应权限",
+        "data": null,
+        "errorKey": "common.forbidden",
+        "eventRef": "req-76541301d26e942cd4919994dd23fd17"
+      },
+      "text": "{\"code\":403,\"msg\":\"您没有执行该操作的权限，请联系管理员分配相应权限\",\"data\":null,\"errorKey\":\"common.forbidden\",\"eventRef\":\"req-76541301d26e942cd4919994dd23fd17\"}"
+    },
+    {
+      "who": "u_a3fsecret",
+      "op": "PUT secret 临时值",
+      "http": 200,
+      "env": {
+        "code": 0,
+        "msg": "success",
+        "data": null
+      },
+      "text": "{\"code\":0,\"msg\":\"success\",\"data\":null}"
+    },
+    {
+      "who": "u_a3fsecret",
+      "op": "check 临时值后",
+      "secretUsable": true
+    },
+    {
+      "who": "u_a3fsecret",
+      "op": "PUT basic（应拒）",
+      "http": 403,
+      "env": {
+        "code": 403,
+        "msg": "您没有执行该操作的权限，请联系管理员分配相应权限",
+        "data": null,
+        "errorKey": "common.forbidden",
+        "eventRef": "req-f006b7ded55f9e8065661f763b5eb3fa"
+      },
+      "text": "{\"code\":403,\"msg\":\"您没有执行该操作的权限，请联系管理员分配相应权限\",\"data\":null,\"errorKey\":\"common.forbidden\",\"eventRef\":\"req-f006b7ded55f9e8065661f763b5eb3fa\"}"
+    },
+    {
+      "who": "u_a3fsecret",
+      "op": "PUT enabled（应拒）",
+      "http": 403,
+      "env": {
+        "code": 403,
+        "msg": "您没有执行该操作的权限，请联系管理员分配相应权限",
+        "data": null,
+        "errorKey": "common.forbidden",
+        "eventRef": "req-dc7da69ef3f891cdd1ba6a1175330ca8"
+      },
+      "text": "{\"code\":403,\"msg\":\"您没有执行该操作的权限，请联系管理员分配相应权限\",\"data\":null,\"errorKey\":\"common.forbidden\",\"eventRef\":\"req-dc7da69ef3f891cdd1ba6a1175330ca8\"}"
+    },
+    {
+      "who": "u_a3fsecret",
+      "op": "PUT secret 恢复真实值",
+      "http": 200,
+      "env": {
+        "code": 0,
+        "msg": "success",
+        "data": null
+      },
+      "text": "{\"code\":0,\"msg\":\"success\",\"data\":null}"
+    },
+    {
+      "who": "u_a3fsecret",
+      "op": "check 恢复后",
+      "secretUsable": true
     }
-   },
-   "text": "{\"code\":0,\"msg\":\"success\",\"data\":{\"configExists\":true,\"appIdValid\":true,\"secretUsable\":true,\"enterpriseIdFormat\":true,\"enabled\":true,\"overall\":true,\"summary\":\"配置完整且已启用（不等于真实登录已通过）\"}}"
-  },
-  {
-   "who": "u_a3flist",
-   "op": "PUT basic",
-   "http": 403,
-   "env": {
-    "code": 403,
-    "msg": "您没有执行该操作的权限，请联系管理员分配相应权限",
-    "data": null,
-    "errorKey": "common.forbidden",
-    "eventRef": "req-dea4146c63e8e711456e807e9d5a3d44"
-   },
-   "text": "{\"code\":403,\"msg\":\"您没有执行该操作的权限，请联系管理员分配相应权限\",\"data\":null,\"errorKey\":\"common.forbidden\",\"eventRef\":\"req-dea4146c63e8e711456e807e9d5a3d44\"}"
-  },
-  {
-   "who": "u_a3flist",
-   "op": "PUT enabled",
-   "http": 403,
-   "env": {
-    "code": 403,
-    "msg": "您没有执行该操作的权限，请联系管理员分配相应权限",
-    "data": null,
-    "errorKey": "common.forbidden",
-    "eventRef": "req-8cc001efa70dee21d5cfbb2411312a3c"
-   },
-   "text": "{\"code\":403,\"msg\":\"您没有执行该操作的权限，请联系管理员分配相应权限\",\"data\":null,\"errorKey\":\"common.forbidden\",\"eventRef\":\"req-8cc001efa70dee21d5cfbb2411312a3c\"}"
-  },
-  {
-   "who": "u_a3flist",
-   "op": "PUT secret",
-   "http": 403,
-   "env": {
-    "code": 403,
-    "msg": "您没有执行该操作的权限，请联系管理员分配相应权限",
-    "data": null,
-    "errorKey": "common.forbidden",
-    "eventRef": "req-dcb840f7b89109da815db5e10570f934"
-   },
-   "text": "{\"code\":403,\"msg\":\"您没有执行该操作的权限，请联系管理员分配相应权限\",\"data\":null,\"errorKey\":\"common.forbidden\",\"eventRef\":\"req-dcb840f7b89109da815db5e10570f934\"}"
-  },
-  {
-   "who": "u_a3fedit",
-   "op": "PUT basic 实际改值",
-   "http": 200,
-   "env": {
-    "code": 0,
-    "msg": "success",
-    "data": null
-   },
-   "text": "{\"code\":0,\"msg\":\"success\",\"data\":null}"
-  },
-  {
-   "who": "u_a3fedit",
-   "op": "GET 持久化回读",
-   "appIdAfter": "dingzoptrn9m33rwe1-temp"
-  },
-  {
-   "who": "u_a3fedit",
-   "op": "PUT enabled（应拒）",
-   "http": 403,
-   "env": {
-    "code": 403,
-    "msg": "您没有执行该操作的权限，请联系管理员分配相应权限",
-    "data": null,
-    "errorKey": "common.forbidden",
-    "eventRef": "req-5afe48a49b96cae29d73c042ccb57e32"
-   },
-   "text": "{\"code\":403,\"msg\":\"您没有执行该操作的权限，请联系管理员分配相应权限\",\"data\":null,\"errorKey\":\"common.forbidden\",\"eventRef\":\"req-5afe48a49b96cae29d73c042ccb57e32\"}"
-  },
-  {
-   "who": "u_a3fedit",
-   "op": "PUT secret（应拒）",
-   "http": 403,
-   "env": {
-    "code": 403,
-    "msg": "您没有执行该操作的权限，请联系管理员分配相应权限",
-    "data": null,
-    "errorKey": "common.forbidden",
-    "eventRef": "req-bf603ecf878f7340526ace71a69315b4"
-   },
-   "text": "{\"code\":403,\"msg\":\"您没有执行该操作的权限，请联系管理员分配相应权限\",\"data\":null,\"errorKey\":\"common.forbidden\",\"eventRef\":\"req-bf603ecf878f7340526ace71a69315b4\"}"
-  },
-  {
-   "who": "u_a3fenable",
-   "op": "PUT enabled false 实际改值",
-   "http": 200,
-   "env": {
-    "code": 0,
-    "msg": "success",
-    "data": null
-   },
-   "text": "{\"code\":0,\"msg\":\"success\",\"data\":null}"
-  },
-  {
-   "who": "u_a3fenable",
-   "op": "GET enabled 回读",
-   "enabledAfter": false
-  },
-  {
-   "who": "u_a3fenable",
-   "op": "PUT basic（应拒）",
-   "http": 403,
-   "env": {
-    "code": 403,
-    "msg": "您没有执行该操作的权限，请联系管理员分配相应权限",
-    "data": null,
-    "errorKey": "common.forbidden",
-    "eventRef": "req-c4451a1a11af9fe7e63d33b484a792e3"
-   },
-   "text": "{\"code\":403,\"msg\":\"您没有执行该操作的权限，请联系管理员分配相应权限\",\"data\":null,\"errorKey\":\"common.forbidden\",\"eventRef\":\"req-c4451a1a11af9fe7e63d33b484a792e3\"}"
-  },
-  {
-   "who": "u_a3fenable",
-   "op": "PUT secret（应拒）",
-   "http": 403,
-   "env": {
-    "code": 403,
-    "msg": "您没有执行该操作的权限，请联系管理员分配相应权限",
-    "data": null,
-    "errorKey": "common.forbidden",
-    "eventRef": "req-76541301d26e942cd4919994dd23fd17"
-   },
-   "text": "{\"code\":403,\"msg\":\"您没有执行该操作的权限，请联系管理员分配相应权限\",\"data\":null,\"errorKey\":\"common.forbidden\",\"eventRef\":\"req-76541301d26e942cd4919994dd23fd17\"}"
-  },
-  {
-   "who": "u_a3fsecret",
-   "op": "PUT secret 临时值",
-   "http": 200,
-   "env": {
-    "code": 0,
-    "msg": "success",
-    "data": null
-   },
-   "text": "{\"code\":0,\"msg\":\"success\",\"data\":null}"
-  },
-  {
-   "who": "u_a3fsecret",
-   "op": "check 临时值后",
-   "secretUsable": true
-  },
-  {
-   "who": "u_a3fsecret",
-   "op": "PUT basic（应拒）",
-   "http": 403,
-   "env": {
-    "code": 403,
-    "msg": "您没有执行该操作的权限，请联系管理员分配相应权限",
-    "data": null,
-    "errorKey": "common.forbidden",
-    "eventRef": "req-f006b7ded55f9e8065661f763b5eb3fa"
-   },
-   "text": "{\"code\":403,\"msg\":\"您没有执行该操作的权限，请联系管理员分配相应权限\",\"data\":null,\"errorKey\":\"common.forbidden\",\"eventRef\":\"req-f006b7ded55f9e8065661f763b5eb3fa\"}"
-  },
-  {
-   "who": "u_a3fsecret",
-   "op": "PUT enabled（应拒）",
-   "http": 403,
-   "env": {
-    "code": 403,
-    "msg": "您没有执行该操作的权限，请联系管理员分配相应权限",
-    "data": null,
-    "errorKey": "common.forbidden",
-    "eventRef": "req-dc7da69ef3f891cdd1ba6a1175330ca8"
-   },
-   "text": "{\"code\":403,\"msg\":\"您没有执行该操作的权限，请联系管理员分配相应权限\",\"data\":null,\"errorKey\":\"common.forbidden\",\"eventRef\":\"req-dc7da69ef3f891cdd1ba6a1175330ca8\"}"
-  },
-  {
-   "who": "u_a3fsecret",
-   "op": "PUT secret 恢复真实值",
-   "http": 200,
-   "env": {
-    "code": 0,
-    "msg": "success",
-    "data": null
-   },
-   "text": "{\"code\":0,\"msg\":\"success\",\"data\":null}"
-  },
-  {
-   "who": "u_a3fsecret",
-   "op": "check 恢复后",
-   "secretUsable": true
-  }
- ]
+  ]
 }

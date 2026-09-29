@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-> `sso-admin-config`（后台配置与B端手机号准入）VERIFYING；回执04已复核，模块332/锚38/Boot6通过计数及飞书重绑审计事实已回读，A1—A6剩余证据以 `product/sso-admin-config/receipts/planning-review-admission-and-config-02.md` 为唯一账本。钉钉B1=BLOCKED（Owner等待人工验证），暂停重试与扫码催办；900103根因待验证，Owner反馈并明确继续后恢复。企业微信延期，P31未核销。 功能数45、清单46/22/22、ADV64保持不变；生产仍0.1.2/V102。
+> `sso-admin-config` VERIFYING（回执05复核未通过→回执06补证完成，待Planner复核）：A4旧授权生命周期已按方向§三修正实现（V104 state/票据绑定配置指纹，5维变更安全失败+新配置重发起，模块351/bootstrap173全绿），A2零增量与租户隔离具名集成断言4用例，A1同轮身份/计数导出（转录错轮次已承认更正），A3种子错值定源修正+回读20位+PC tooltip/受限身份截图（Web 9375359 tooltip局部修复），S1暴露范围核实+采集端脱敏工具+扫描0命中exit0，A6 knowledge逐字段回读。钉钉900103根因=Owner裁决本地Client ID种子手写误（18位≠20位），已修正；本地授权URL探测0命中900103；B端准入真实链待Owner扫码（外部依赖）。唯一账本 `product/sso-admin-config/receipts/planning-review-admission-and-config-02.md`，回执 `implementation-admission-and-config-06.md`。企业微信延期，P31开放。
 
 > 总体任务 `backend-architecture-optimization` 已 `COMPLETED（规划已确认，2026-09-26）`；`v0.1.1-bugfix` **`COMPLETED（Owner 范围关闭，2026-09-24）`**（裁决 `product/v0.1.1-bugfix/receipts/planning-owner-v011-task-close-20260924.md`）；`v0.1.2-bugfix` **`COMPLETED（Owner 范围关闭，2026-09-28）`**（裁决 `product/v0.1.2-bugfix/receipts/planning-owner-close-20260928.md`）。发布事实见下方。
 
@@ -23,4 +23,4 @@
 
 ## 最终确认与下一动作
 
-终态同步 TS1–TS3 已全部核销，最终裁决 `product/v0.1.2-release/receipts/planning-final-review-terminal-sync-20260928-passed.md`；两份方向均归档 passed。**生产已于 2026-09-28 部署上线 0.1.2（V102，双端健康 200）**。三方 SSO 接入 2026-09-29 功能级 `PASSED`（审查07），阶段三同步回执 `product/dingtalk-sso/receipts/terminal-sync-20260929.md`。当前任务=`sso-admin-config`（VERIFYING）；下一动作=执行审查02剩余独立补证，钉钉等待Owner人工验证。
+终态同步 TS1–TS3 已全部核销，最终裁决 `product/v0.1.2-release/receipts/planning-final-review-terminal-sync-20260928-passed.md`；两份方向均归档 passed。**生产已于 2026-09-28 部署上线 0.1.2（V102，双端健康 200）**。三方 SSO 接入 2026-09-29 功能级 `PASSED`（审查07），阶段三同步回执 `product/dingtalk-sso/receipts/terminal-sync-20260929.md`。当前任务=`sso-admin-config`（VERIFYING）；下一动作=执行审查02剩余独立补证，钉钉按审查02恢复配置修正与真实链验证。

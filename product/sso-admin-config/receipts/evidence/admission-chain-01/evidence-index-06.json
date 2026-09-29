@@ -1,0 +1,136 @@
+{
+ "generated_at": "2026-09-29T20:15:37",
+ "receipt": "implementation-admission-and-config-06.md",
+ "candidates": {
+  "server": "dff266add04a59e0859547f11b647772b20f8e6a",
+  "web": "9375359fae6b3bd511043e0299e96400318820f8"
+ },
+ "items": [
+  {
+   "file": "a1-run-identity-final.txt",
+   "ledger": "A1",
+   "sha256_12": "3afb9dd2ecc3",
+   "desc": "最终候选身份+产物/PID关联+同轮门禁与XML计数",
+   "exists": true
+  },
+  {
+   "file": "a1-final-upstream-gate.log",
+   "ledger": "A1",
+   "sha256_12": "1f2861d51d42",
+   "desc": "上游模块门禁原始日志（源码=dff266a；biz 351/0/0/0）",
+   "exists": true
+  },
+  {
+   "file": "a1-final-bootstrap-gate.log",
+   "ledger": "A1",
+   "sha256_12": "973ca0b3498f",
+   "desc": "bootstrap 门禁原始日志（173/0/0/0，计数修正后）",
+   "exists": true
+  },
+  {
+   "file": "s1-secret-scan.py",
+   "ledger": "S1",
+   "sha256_12": "eeb9656f8fa2",
+   "desc": "秘密扫描器（形态+已知值双通道，只输出路径/计数）",
+   "exists": true
+  },
+  {
+   "file": "s1-redact-evidence.py",
+   "ledger": "S1",
+   "sha256_12": "2ed015166a12",
+   "desc": "采集端脱敏工具（幂等，仅计数输出）",
+   "exists": true
+  },
+  {
+   "file": "s1-final-scan.txt",
+   "ledger": "S1",
+   "sha256_12": "1621813bcbd7",
+   "desc": "扫描报告（exit_code=0，real/秘密类 0 命中；合成夹具号段单列）",
+   "exists": true
+  },
+  {
+   "file": "b1-dingtalk-challenge-wrong-clientid-900103.html",
+   "ledger": "B1",
+   "sha256_12": "87c848fd53cd",
+   "desc": "Owner探针：18位错值→900103 错误页",
+   "exists": true
+  },
+  {
+   "file": "b1-dingtalk-challenge-correct-clientid-ok.html",
+   "ledger": "B1",
+   "sha256_12": "3c53f3307fcf",
+   "desc": "Owner探针：20位正确值→正常登录页",
+   "exists": true
+  },
+  {
+   "file": "b1-dingtalk-authurl-correct-clientid.txt",
+   "ledger": "B1",
+   "sha256_12": "19908c74a2ba",
+   "desc": "Owner探针：10:15:49 授权URL（20位值）",
+   "exists": true
+  },
+  {
+   "file": "b1-dingtalk-morning-chain-audit.json",
+   "ledger": "B1",
+   "sha256_12": "8210b956f1fe",
+   "desc": "上午完整链审计（AUTH_START→EXCHANGE→BIND→LOGIN_SUCCESS）",
+   "exists": true
+  },
+  {
+   "file": "b1-new-authorize-url-after-fix.txt",
+   "ledger": "B1",
+   "sha256_12": "da116cbb0c1a",
+   "desc": "修正后实例授权URL（clientId 20位）",
+   "exists": true
+  },
+  {
+   "file": "b1-new-challenge-page-after-fix.html",
+   "ledger": "B1",
+   "sha256_12": "9faedd8655d2",
+   "desc": "修正后URL探测页（200/6483B/900103×0）",
+   "exists": true
+  },
+  {
+   "file": "a3-fixed-admin-list.png",
+   "ledger": "A3",
+   "sha256_12": "313140ca31c0",
+   "desc": "修正后配置列表整页（admin 视角）",
+   "exists": true
+  },
+  {
+   "file": "a3-tooltip-appid-full.png",
+   "ledger": "A3",
+   "sha256_12": "987e9566d30f",
+   "desc": "appId tooltip 完整20位值",
+   "exists": true
+  },
+  {
+   "file": "a3-tooltip-callback-full.png",
+   "ledger": "A3",
+   "sha256_12": "45a494ebf6ae",
+   "desc": "callback tooltip 完整回调URL（Web 9375359 修复后）",
+   "exists": true
+  },
+  {
+   "file": "a3-restricted-ua3flist-page.png",
+   "ledger": "A3",
+   "sha256_12": "e2de761b5101",
+   "desc": "受限身份 u_a3flist 页面（仅 list+Check）",
+   "exists": true
+  },
+  {
+   "file": "a3-refixture-ids.txt",
+   "ledger": "A3",
+   "sha256_12": "9e551d181791",
+   "desc": "四分项夹具角色/用户重建记录",
+   "exists": true
+  },
+  {
+   "file": "a3-refixture.mjs",
+   "ledger": "A3",
+   "sha256_12": "40e13f6c7945",
+   "desc": "夹具重建脚本（幂等）",
+   "exists": true
+  }
+ ]
+}
