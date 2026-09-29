@@ -14,7 +14,11 @@
   正确值 → 正常登录页（b1-dingtalk-challenge-correct-*）。正确值有真实链背书：
   上午 10:14—10:16 完整链（AUTH_START→EXCHANGE→BIND 9002→LOGIN_SUCCESS，
   b1-dingtalk-morning-chain-audit.json）。本地夹具 V904 已修正为 20 位正确值；
-  **钉钉新准入链（B 端手机号自动绑定）待 Owner 扫码后重跑**（真实人机验证为外部依赖）
+  **钉钉准入真实链已完成（补允提示01，2026-09-29 21:5x）**：免扫码一键授权页（Owner 会话存活）
+  → 点击「立即登录」→ EXCHANGE→BIND（phone-admission auto-bind，localUserId=9002 预建用户）→
+  LOGIN_SUCCESS→工作台落地；二次发起为绑定路径 LOGIN_SUCCESS（无重复 BIND）。
+  首次失败一次为 state expired（21:31 签发/21:39 点击超 5 分钟 TTL，重发即恢复）；
+  无本地匹配拒绝侧引用已锁定隔离断言（A2 集成 4 例+batch7 审计）
 - **S1 秘密入证据（已确认+已处置）**：e7b4371（已推送 origin/develop-sw）的
   a3-full-matrix.json 曾含真实 appSecret 与明文测试密码、回执 05 曾含两个原始手机号；
   Planner 已就地脱敏，执行已补齐（桩值脱敏+采集端脱敏工具 s1-redact-evidence.py+
