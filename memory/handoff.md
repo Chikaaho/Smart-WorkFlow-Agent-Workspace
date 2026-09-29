@@ -2,7 +2,7 @@
 
 ## 当前任务（2026-09-29）
 
-`sso-admin-config` VERIFYING；审查09核销A3a/b，现有业务验收项全部锁定。Server dff266a、Web519a817；回执10完成：R1凭据轮换已完成（凭证页⟳图标即重置钮，回执09系坐标偏差漏看；立即重置→新值经受控剪贴板通道落运行时文件→PUT只写更新→CONFIG_CHECK全true→真实登录复验LOGIN_SUCCESS 9002用新secret换票）；A6当前入口已按固定字段回读同步。唯一入口 `product/sso-admin-config/receipts/planning-execution-prompt-sso-admin-config-03.md`；回执10已提交待Planner复核。R1未证实客户端可重置，不要求Owner找猜测入口。企业微信延期，P31开放。
+`sso-admin-config` `sso-admin-config` **COMPLETED（待规划确认，2026-09-29；功能验收 PASSED 审查10）**；业务项与R1全部锁定。最终候选 Server `dff266add04a59e0859547f11b647772b20f8e6a`、Web `519a8176e33232a94ab4f1a035042fd2a86793d4`；验证集合：Server system模块351/0/0/0、bootstrap173/0/0/0；Web四连exit0（vitest 1301 passed+3 skipped）；真实钉钉轮换后LOGIN_SUCCESS 9002。R1=DONE；S1限定范围通过（保留局限，不要求Owner提供DB密码/AI Key）。功能数45/增量0、清单46/22/22、ADV64、P31开放未核销（企微延期未验证）不变。唯一下一动作=Planner复核 `receipts/terminal-sync-01.md`。唯一入口 `product/sso-admin-config/ready/direction-sso-admin-config-terminal-sync.md`。企业微信延期，P31开放，功能数45/增量0。
 
 ## 已完成
 
@@ -16,4 +16,4 @@
 
 **生产已于 2026-09-28 部署上线 0.1.2**（Owner 授权）：两制品远端 sha256 校验一致后上线，Flyway 自动应用 V97—V102（0 failed），生产当前 V102；启动 0 ERROR、就绪 200；公网 `https://chikaho.cn/sw/` 200、health 200 UP、前端新产物 `index-vDQskZXe.js` 生效；备份齐备（DB `20260928_1757.dump`、`bootstrap.jar.bak/.bak2`、`web.bak-20260928`），回滚路径明确；部署回执 `product/v0.1.2-release/receipts/deployment-20260928.md`。V012-CODE-001 保持独立 READY，外部通知/IoT 实网验证保持延期边界。
 
-当前任务=`sso-admin-config`（VERIFYING，回执10收尾完成待Planner复核）；下一动作=Planner复核回执10。R1已完成（控制台⟳重置+受控剪贴板捕获新值+本地PUT只写更新+CONFIG_CHECK全true+真实登录复验LOGIN_SUCCESS 9002）。
+当前任务=sso-admin-config（COMPLETED（待规划确认，2026-09-29）；功能验收 PASSED 审查10）；下一动作=Planner复核 receipts/terminal-sync-01.md 后确认 COMPLETED。
