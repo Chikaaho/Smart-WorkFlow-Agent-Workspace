@@ -1,6 +1,8 @@
 # 三方 SSO 真实接入方向
 
-日期：2026-09-28；角色：Planner → Executor；等级：L；状态：READY。
+日期：2026-09-28；角色：Planner → Executor；等级：L；状态：PASSED（2026-09-29，钉钉/飞书原定范围；企业微信Owner延期）。
+
+最终审查：`../receipts/planning-review-three-provider-07-passed.md`。本方向历史入口由阶段三同步及后台配置新方向接替；新增手机号准入不在本次通过范围。
 
 ## 当前唯一入口与依据
 
