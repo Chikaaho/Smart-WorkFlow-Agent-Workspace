@@ -1,0 +1,8 @@
+jar-sha=ea8c7ca97bcbc139b16112628d9c34c33244784b05676a1acc42f085c398baf6
+Server candidate: 7342e788d47868c0（HEAD，含 corpid scope 修正 762f427 与 R2 scope 测试）
+Web candidate: d37a57b70de0b11466fac9a9fc98fcdff737031a
+jar(隔离运行产物) sha256=ea8c7ca97bcbc139b16112628d9c34c33244784b05676a1acc42f085c398baf6（7342e788 源码 mvn -Pdev package 构建）
+（历史记录：上一构建 f7150208327432f1 为 762f427 源码构建，已被 7342e788 构建取代）
+gate: system-biz 319/0/0/0（32 SsoAuthServiceTest+2 ScopeTest）+ Boot 4/0/0/0，EXIT=0（r2-system-biz-test-319.log / r2-boot-4.log）
+运行进程: 本地验证环境
+1f950e9（G3b 实现）与 762f427（corpid scope 修正）边界：1f950e9=企业归属校验+SPI；762f427=企业模式授权 scope 修正（在线实测发现）

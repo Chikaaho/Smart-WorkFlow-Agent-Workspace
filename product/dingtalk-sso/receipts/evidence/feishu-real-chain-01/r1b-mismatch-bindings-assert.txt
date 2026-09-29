@@ -1,0 +1,18 @@
+== 会话有效（me）：
+HTTP=200 code=0
+== bindings AFTER mismatch（应无 DINGTALK 增量）：
+HTTP=200 {"code":0,"msg":"success","data":{"bindings":[]}}
+== audit ENTERPRISE_MISMATCH 行（t100admin 查询）：
+file:///usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/[eval1]:4
+const base='http://localhost:8081/sw-server/api'; const jar='/tmp/sw-sso-verify/r1b-admin-jar.txt'; rmSync(jar,{force:true})
+                                                                                                    ^
+
+ReferenceError: rmSync is not defined
+    at file:///usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/[eval1]:4:101
+    at ModuleJob.run (node:internal/modules/esm/module_job:377:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:278:26)
+    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:275:20)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.9.0
+{"code":0,"msg":"success","data":{"records":[{"eventType":"LOGIN_FAILED","createTime":"2026-09-29T10:11:56.671253","externalDigestPrefix":"","actorId":"null","provider":"DINGTALK","detail":"enterprise mismatch (vendor field vs configured)","localUserId":"null","result":"ENTERPRISE_MISMATCH","id":"2104756029937446914"}],"tenantId":"100"}}
