@@ -6,7 +6,7 @@
 
 ## 2026-09-29 Owner追加决定
 
-钉钉B1=PENDING（Owner已反馈本地Client ID误写原因并授权继续）；执行按审查02修正本地配置与种子来源，回读运行授权URL并继续手机号准入真实链，需要扫码/授权/MFA时提醒具体操作。正确Client ID为`dingzoptrn9m3m33rwe1`。企业微信延期，整体VERIFYING；唯一执行入口及证据要求：`../receipts/planning-review-admission-and-config-02.md`（回执05复核及最新Owner恢复授权）。
+回执06已复核，整体VERIFYING；钉钉Client ID修正与900103消除探测已锁定，B1当前手机号准入真实链待本人授权（执行方报告）；需要交互时提醒，独立补证继续。唯一账本：`../receipts/planning-review-admission-and-config-02.md`（当前对象回执06，下一交付回执07）。企业微信延期，P31开放。
 
 ## 一、目标与准入规则
 
