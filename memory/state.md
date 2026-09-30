@@ -6,7 +6,7 @@
 
 - P62，XL，PLANNING：低代码事务能力与 BPM 分级执行架构；新增配套信息治理，覆盖 memory/knowledge/README/需求与功能清单等全部受影响入口。
 - 主方向 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-lowcode-transaction-bpm-tiering.md`；首事务阶段业务与同步方向均归档passed/，COMPLETED（规划已确认）。
-- 唯一下一动作：Planner收敛P62下一阶段分级执行与统一命令的范围、验收合同及ADR。
+- 唯一下一动作：Executor执行限定探索 `search_task/p62-tiered-command-readiness-20260930.md`；回执后Planner定案阶段方向、ADR及预算合同并下发实施任务。
 - 治理方向已归档passed/；G01—G06及三级提示三项均已核销。不另开治理补证。
 
 ## 已确认与待验收
