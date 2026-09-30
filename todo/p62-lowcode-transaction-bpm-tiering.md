@@ -3,7 +3,7 @@
 - 登记日期：2026-09-30
 - 角色：Planner
 - 任务等级：XL（核心架构、跨模块契约、数据一致性与持续演进）
-- 状态：PLANNING（整体）；信息治理PASSED，首事务阶段PASSED（审查03）；阶段功能状态COMPLETED（待规划确认，2026-09-30），终态同步回执待规划复核。
+- 状态：PLANNING（整体）；治理PASSED；首事务阶段COMPLETED（规划已确认，2026-09-30）。
 - 排期优先级：Owner 于 2026-09-30 启动本轮规划；事务型数据能力为本需求内部优先建设项。
 - Owner 依据：本会话明确“根据评审方案列为正式需求”。
 - 评审输入：[原始方案索引](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/README.md)、[首轮架构评审方案](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/01-architecture-review-20260930.md)、[CTO 指导稿原文](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/02-cto-guidance-20260930.md)。两份原文纳入 knowledge 供追溯；本文件为正式需求范围与验收口径。
@@ -144,13 +144,13 @@ C1 类关键数据只能通过受控动作写入，表单保存、导入、批�
 - BAO 架构优化：已有规划摘要记载引擎与业务共享提交边界；此为复用线索而非本次运行验证，不能把未核实能力写成确定缺失或无条件重建。
 - MES/WMS 为低代码平台能力的代表性验证场景，本项不自动扩大为完整 MES/WMS 产品套件、所有业务模板或所有现场拓扑交付。
 
-Owner 2026-09-30 当前排期：P62整体PLANNING；治理PASSED；首事务阶段PASSED（审查03）；阶段功能状态COMPLETED（待规划确认，2026-09-30），阶段终态同步已执行。唯一下一动作：Planner复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/terminal-sync-local-transaction-actions-01.md`。0.1.3=COMPLETED（Owner已验收），无剩余动作。
+Owner 2026-09-30 当前排期：P62整体PLANNING；治理PASSED；首事务阶段COMPLETED（规划已确认，2026-09-30）。唯一下一动作：Planner收敛下一阶段分级执行与统一命令的范围、验收合同及ADR。0.1.3=COMPLETED（Owner已验收），无剩余动作。
 
 ## 6. 登记口径
 
 本文件吸收评审结论形成正式需求。CTO 原稿中的“同库必然同事务”“内部异步不需要 Outbox”“独立资源即不受共享瓶颈影响”等绝对表述不作为验收规则，以本文件对应的事务边界、可靠传播与负载条件为准。
 
-本项整体PLANNING；首事务阶段PASSED，批准范围T01—T07通过；阶段功能状态COMPLETED（待规划确认，2026-09-30），终态同步回执待规划复核；不核销P62或增加功能数。
+本项整体PLANNING；首事务阶段COMPLETED（规划已确认），批准范围T01—T07及阶段终态同步已通过；P62不核销，后续阶段另行规划。
 
 ## 7. 本轮配套信息治理（Owner 2026-09-30）
 
