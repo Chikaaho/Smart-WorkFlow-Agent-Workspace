@@ -1,13 +1,13 @@
 # 当前状态摘要
 
-同步点：2026-09-30，信息治理执行 02。knowledge/current-status.md 为完整权威；执行01审查未通过（IG1—IG4），执行02已按审查定向补证提交（45逐名映射/90行明细/54问题明细三附件+风险登记I56—I58+完整提交回读）；待 Planner 复核。
+同步点：2026-09-30，信息治理执行 03。knowledge/current-status.md 为完整权威；执行02审查02未通过（IG1—IG4），执行03已按一级补充提示01补证提交（IG2a 45逐名映射与状态依据/IG2b 54条正文状态句比对/IG3a 入口正文与链接/IG1a 全入口统一，证据在 receipts/evidence/information-governance-03/）；待 Planner 复核回执03。
 
 ## 当前规划
 
 - P62，XL，PLANNING：低代码事务能力与 BPM 分级执行架构；新增配套信息治理，覆盖 memory/knowledge/README/需求与功能清单等全部受影响入口。
 - 主方向 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-lowcode-transaction-bpm-tiering.md`；业务阶段尚未 READY。
-- 唯一下一动作：Planner 复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/information-governance-02.md`。
-- 治理方向 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-information-governance.md` 已下发；执行 01 审查01未通过，执行 02 已按 IG1—IG4 补证提交，待复核。
+- 唯一下一动作：Planner 复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/information-governance-03.md`。
+- 治理方向 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-information-governance.md` 已下发；执行 01/02 审查未通过，执行 03 已按一级补充提示01 补证提交，待复核。
 
 ## 已确认与待验收
 
@@ -17,7 +17,7 @@
 
 ## 沿用基线与边界
 
-- 功能数45沿用；执行已报告登记存在性，功能与裁决逐名映射待补证；清单46/22/22（90）已行级复算且与映射索引双向一致；ADV64同。P62/信息治理不增加或核销。
+- 功能数45沿用；IG2a 已补证：45 行=45 唯一 ID=45 唯一登记路径全部存在（#1 由 bpm-single-node-approval 承载登记；#23 登记文件头部陈旧快照差异已列报交 Planner），状态依据完整句见回执03附件；清单46/22/22（90）行级复算且与映射索引双向一致；ADV64同。P62/信息治理不增加或核销。
 - 0.1.2 的1586/0/0/0、Web1301+3、V102及2026-09-28部署仅作对应时点事实；不得覆盖0.1.3环境回执，也不将各任务测试数字相加。
 - V012-CODE-001 既有 READY；外部通知五渠道、腾讯 IoT 实网验证及企业微信仍按原延期边界；小程序冻结。
 

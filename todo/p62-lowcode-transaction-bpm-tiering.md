@@ -3,7 +3,7 @@
 - 登记日期：2026-09-30
 - 角色：Planner
 - 任务等级：XL（核心架构、跨模块契约、数据一致性与持续演进）
-- 状态：PLANNING（探索已审查，首阶段范围已收敛；信息治理审查01未通过，执行02已按IG1—IG4补证提交待规划复核）
+- 状态：PLANNING（信息治理审查02未通过；执行03已按一级补充提示01完成IG1a/IG2a/IG2b/IG3a补证（回执03）待规划复核）
 - 排期优先级：Owner 于 2026-09-30 启动本轮规划；事务型数据能力为本需求内部优先建设项。
 - Owner 依据：本会话明确“根据评审方案列为正式需求”。
 - 评审输入：[原始方案索引](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/README.md)、[首轮架构评审方案](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/01-architecture-review-20260930.md)、[CTO 指导稿原文](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/02-cto-guidance-20260930.md)。两份原文纳入 knowledge 供追溯；本文件为正式需求范围与验收口径。
@@ -144,7 +144,7 @@ C1 类关键数据只能通过受控动作写入，表单保存、导入、批�
 - BAO 架构优化：已有规划摘要记载引擎与业务共享提交边界；此为复用线索而非本次运行验证，不能把未核实能力写成确定缺失或无条件重建。
 - MES/WMS 为低代码平台能力的代表性验证场景，本项不自动扩大为完整 MES/WMS 产品套件、所有业务模板或所有现场拓扑交付。
 
-Owner 已于 2026-09-30 启动规划。主方向：`product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-lowcode-transaction-bpm-tiering.md`。探索已由planning-review-exploration-01审查，首阶段方向及ADR-P62-001已形成。信息治理执行 01 审查01未通过（IG1—IG4）；执行 02 已按审查补证提交（回执 `product/p62-lowcode-transaction-bpm-tiering/receipts/information-governance-02.md`，含三附件与风险登记 I56—I58）；唯一下一动作=Planner 复核回执02，信息基线复核后进入业务READY。
+Owner 2026-09-30 当前排期：P62（XL）PLANNING，首阶段范围与ADR已形成，信息治理审查02未通过。执行03已按一级补充提示01补齐IG1a/IG2a/IG2b/IG3a并提交回执03（`product/p62-lowcode-transaction-bpm-tiering/receipts/information-governance-03.md`）；唯一下一动作：Planner 复核回执03；0.1.3仍待规划验收，完成数与P核销不变。此前带日期的排期仅作历史。
 
 ## 6. 登记口径
 

@@ -69,3 +69,7 @@ Executor 返回实际完整路径；不存在的候选入口标记不适用及�
 ## 8. 当前复核边界
 
 执行01首次验收未通过；当前剩余范围以 `../receipts/planning-review-information-governance-01.md` IG1—IG4为准。保留01回执，追加02；已锁定容量子项仅在实际修改后重测，不重跑业务验证。
+
+## 9. 审查02后的唯一入口
+
+剩余范围由 `../receipts/planning-execution-prompt-information-governance-01.md` 唯一承载，替代§8所指审查01剩余表。仅推进IG1a/IG2a/IG2b/IG3a，追加回执03；锁定项按审查02保留。
