@@ -48,3 +48,9 @@
 ## 自验结论
 
 IG1a/IG2b2a/IG2b2b 三项收尾全部完成并留证；自验通过，**待 Planner 复核本回执**。治理待复核、P62 整体 PLANNING；不自行 PASSED/COMPLETED、不进入业务 READY。0.1.3 保持 EXECUTION_SUBMITTED 待规划验收，不晋级基线。
+
+## 提交后附录（本回执所在提交与远端包含性，提交后追加）
+
+- 本回执（information-governance-05.md）正文所在提交：workspace/develop-sw `e438d10c500a2d037ec9beb77dfdd9c8acc8be9f`（e438d10，范围 294d553..e438d10，1 文件）。
+- 推送回读输出：`294d553..e438d10  develop-sw -> develop-sw`；`git ls-remote origin refs/heads/develop-sw` = `e438d10c500a2d037ec9beb77dfdd9c8acc8be9f`，与本地 HEAD 一致（2026-09-30）。
+- 本附录为提交后追加；此后不生成自引用提交，后续文档变更按常规批次收尾。
