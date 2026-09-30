@@ -1,5 +1,7 @@
 # P62 分级执行与统一命令：实施准入限定探索
 
+> 2026-09-30：探索已完成并经Planner复核，以下授权为探索时点历史。当前唯一实施入口：`product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-tiered-execution-unified-command.md`（READY）；不再执行本探索或追加收尾回执。
+
 日期：2026-09-30。本会话角色：规划；委派角色：执行。任务已下发，可立即执行；唯一当前执行入口为本文件。
 
 ## 任务目标

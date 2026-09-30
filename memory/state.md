@@ -6,7 +6,7 @@
 
 - P62，XL，PLANNING：低代码事务能力与 BPM 分级执行架构；新增配套信息治理，覆盖 memory/knowledge/README/需求与功能清单等全部受影响入口。
 - 主方向 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-lowcode-transaction-bpm-tiering.md`；首事务阶段业务与同步方向均归档passed/，COMPLETED（规划已确认）。
-- 唯一下一动作：Executor执行限定探索 `search_task/p62-tiered-command-readiness-20260930.md`；回执后Planner定案阶段方向、ADR及预算合同并下发实施任务。
+- 唯一下一动作：Executor按 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-tiered-execution-unified-command.md` 实施U01—U08（阶段READY，ADR002已定案）。
 - 治理方向已归档passed/；G01—G06及三级提示三项均已核销。不另开治理补证。
 
 ## 已确认与待验收
@@ -21,4 +21,4 @@
 - 0.1.2 的1586/0/0/0、Web1301+3、V102及2026-09-28部署仅作对应时点事实；不得覆盖0.1.3环境回执，也不将各任务测试数字相加。
 - V012-CODE-001 既有 READY；外部通知五渠道、腾讯 IoT 实网验证及企业微信仍按原延期边界；小程序冻结。
 
-- 探索及信息治理已通过；首事务阶段裁决 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-local-transaction-actions-03-passed.md`，后续分级/设备/性能合同继续规划。
+- 探索及信息治理已通过；首事务阶段裁决 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-local-transaction-actions-03-passed.md`，分级执行与统一命令阶段READY，限定设备待核实及测量合同已定案，完整生产保障后续规划。
