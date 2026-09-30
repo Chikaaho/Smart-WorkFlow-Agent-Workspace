@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-同步点：2026-09-30，首事务阶段终态最终复核通过，COMPLETED（规划已确认）；裁决 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-local-transaction-actions-01-completed.md`。Executor最终确认传播附录已回读knowledge两入口及Server功能清单，裁决文字传播完成；本批次提交SHA未在附录提供，不沿用旧提交代表本批次。
+同步点：2026-09-30，首事务阶段终态最终复核通过，COMPLETED（规划已确认）；裁决 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-local-transaction-actions-01-completed.md`。Executor最终确认传播附录已回读knowledge两入口及Server功能清单，裁决文字传播完成；提交身份补记已提供远端回读：workspace a7cf531、Server ca8cb87、Web19e1c47；传播批次提交身份已补齐。
 
 ## 当前规划
 
