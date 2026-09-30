@@ -1,9 +1,9 @@
 # 未关闭项摘要
 
-> 2026-09-30 P62 规划侧纠偏；既有开放项完整性待本轮探索复核；业务问题权威注册：`knowledge/known-issues.md`。
+> 2026-09-30 P62 规划侧纠偏；治理审查01未通过，执行02已按 IG1—IG4 补证提交（回执02）待复核；业务问题权威注册：`knowledge/known-issues.md`。
 
 - **0.1.1 已关闭记录**：V011-BUG-021/024 按 Owner 确认退出开放集合，25 项缺陷收口、开放修复项 0；2026-09-24 Owner 明确该列车已结束，结论 `COMPLETED（Owner 范围关闭）`。不表示远程 `develop`、`main`、`0.1.1` tag/Release 或部署已完成。
-- **信息治理执行 01 已提交**：knowledge 权威先行更正后机械同步全入口；0.1.2 的1586/0/0/0、Web1301+3及V102是2026-09-28历史证据；0.1.3执行回执报告1629/0/0/0及UAT V0.1.0，仍待规划验收。known-issues 全文重审：总54条（I1—I55缺I27）=关闭32+部分关闭2（I13/I45）+待修复5（I4/I38/I39/I40/I50）+已知限制与设计预留15。回执 `product/p62-lowcode-transaction-bpm-tiering/receipts/information-governance-01.md` 待 G01—G06 审查。
+- **信息治理执行02已提交**：执行01审查01未通过（IG1—IG4）；执行02补证=45功能逐名映射附件①、90行明细附件②、known-issues 逐条明细附件③，并按审查登记 3 条风险（I56 Agent工具配置可达性/I57 MQTT上行线程无租户身份/I58 无界线程池与无限流，均"登记待验证"，集合变 57 条=I1—I58 缺 I27；I1—I55 分类不变：关闭31+部分3（I3/I13/I45）+待修复5+限制预留15）。0.1.2 的1586/0/0/0、Web1301+3及V102是2026-09-28历史证据；0.1.3执行回执报告1629/0/0/0及UAT V0.1.0，仍待规划验收。回执 `product/p62-lowcode-transaction-bpm-tiering/receipts/information-governance-02.md` 待 Planner 复核。
 - **后端架构候选池（最终去向，总体任务已收口）**：BAO-01 `DEFERRED`（传递依赖污染成立、API 类型污染不成立，不拆 `sw-common`）；BAO-02 `PARTIAL`（IoT 完成，Knowledge/Agent 不拆）；BAO-03/04、BAO-05、BAO-06/07、BAO-08/10、BAO-09 共 8 项 `COMPLETED`。PG 为生产权威，H2 仅 test/dev 辅助。
 - **Phase 6B 接受边界**：不把 dev H2 外推为生产证明，不证明腾讯 IoT 真实云端送达；版本身份已由 Phase 6C 完成。
 - **I6 五外部通知渠道**：SMS/EMAIL/FEISHU/DINGTALK/WECHAT_WORK 维持 `Owner 延期 / 未验证`，不占用 I 编号，由 P2 待办 `todo/i6-external-notification-channels-real-verification.md` 跟踪。

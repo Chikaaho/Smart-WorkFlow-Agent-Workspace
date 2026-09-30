@@ -1,13 +1,13 @@
 # 当前状态摘要
 
-同步点：2026-09-30，信息治理执行 01。knowledge/current-status.md 为完整权威；探索已审查，信息治理执行 01 已提交回执；45 业务功能已逐名核验（45/45 登记路径存在），known-issues 已全文重审。
+同步点：2026-09-30，信息治理执行 02。knowledge/current-status.md 为完整权威；执行01审查未通过（IG1—IG4），执行02已按审查定向补证提交（45逐名映射/90行明细/54问题明细三附件+风险登记I56—I58+完整提交回读）；待 Planner 复核。
 
 ## 当前规划
 
 - P62，XL，PLANNING：低代码事务能力与 BPM 分级执行架构；新增配套信息治理，覆盖 memory/knowledge/README/需求与功能清单等全部受影响入口。
 - 主方向 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-lowcode-transaction-bpm-tiering.md`；业务阶段尚未 READY。
-- 唯一下一动作：Planner 按 G01—G06 审查治理回执 `product/p62-lowcode-transaction-bpm-tiering/receipts/information-governance-01.md`。
-- 治理方向 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-information-governance.md` 已下发；治理执行 01 已完成 knowledge 先行更正与全入口同步，待规划验收。
+- 唯一下一动作：Planner 复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/information-governance-02.md`。
+- 治理方向 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-information-governance.md` 已下发；执行 01 审查01未通过，执行 02 已按 IG1—IG4 补证提交，待复核。
 
 ## 已确认与待验收
 
@@ -17,7 +17,7 @@
 
 ## 沿用基线与边界
 
-- 功能数45已逐名核验（45/45 登记路径存在：#1 Walking Skeleton 由 A 组目录承载、#2—45 独立登记文件实测在）；清单46/22/22（90）已行级复算且与映射索引双向一致；ADV64同。P62/信息治理不增加或核销。
+- 功能数45沿用；执行已报告登记存在性，功能与裁决逐名映射待补证；清单46/22/22（90）已行级复算且与映射索引双向一致；ADV64同。P62/信息治理不增加或核销。
 - 0.1.2 的1586/0/0/0、Web1301+3、V102及2026-09-28部署仅作对应时点事实；不得覆盖0.1.3环境回执，也不将各任务测试数字相加。
 - V012-CODE-001 既有 READY；外部通知五渠道、腾讯 IoT 实网验证及企业微信仍按原延期边界；小程序冻结。
 

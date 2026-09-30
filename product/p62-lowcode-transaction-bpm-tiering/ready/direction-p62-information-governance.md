@@ -26,7 +26,7 @@ Executor 返回实际完整路径；不存在的候选入口标记不适用及�
 
 ## 3. 本轮固定状态口径
 
-- P62：PLANNING；当前主规划；唯一下一动作=Executor执行本方向并提交information-governance-01回执；随后Planner复核。
+- P62：PLANNING；当前主规划；唯一下一动作=Executor按治理审查01的IG1—IG4修正补证并追加information-governance-02回执；随后Planner复核。
 - sso-admin-config：COMPLETED（规划已确认，2026-09-29），依据其最终审查记录。
 - v0.1.3-release：EXECUTION_SUBMITTED / 待规划验收，发布/部署事实可按证据列示；不得改成 Planner 已确认 COMPLETED。
 - 功能数、清单、ADV、其他 P 编号：不因信息治理增加或核销。沿用摘要 45、46/22/22、ADV64 需本次权威复核；若重算不符，列明差异及依据交 Planner 裁决，不自行挑值。
@@ -65,3 +65,7 @@ Executor 返回实际完整路径；不存在的候选入口标记不适用及�
 部署只按回执时点表述即可，不因文档治理要求重新部署、登录生产或重复下载全部资产；如写“当前在线/健康”，必须补对应实时证据。代码javadoc修正留工程阶段，本次不改源码。
 
 回执须将G01—G06逐项对应实际修改、全文核验、计数明细及回读证据。当前无新的状态裁决阻塞；若新增冲突，隔离该字段并继续其余确定项。
+
+## 8. 当前复核边界
+
+执行01首次验收未通过；当前剩余范围以 `../receipts/planning-review-information-governance-01.md` IG1—IG4为准。保留01回执，追加02；已锁定容量子项仅在实际修改后重测，不重跑业务验证。
