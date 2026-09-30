@@ -1,0 +1,32 @@
+IG2b2b: 统计转录纠正与容量终测（information-governance-05）
+
+工作目录：工作区仓库根；生成时点：2026-09-30（全部内容编辑完成后）。
+转录纠正：执行04 正文曾写「语义一致22/仅索引10」，审查04 工具复算为 26/6 —— 本回执与证据采用审查04 锁定值：32 段中 26 条语义一致、6 条仅索引有状态；执行04 的22/10 为其转录错误，特此注明（历史04 不改）。
+
+CMD: wc -c memory/*.md
+    1064 memory/README.md
+     857 memory/architecture.md
+    1405 memory/constraints.md
+    2805 memory/decisions.md
+    4594 memory/features.md
+    1284 memory/handoff.md
+    2764 memory/issues.md
+    2674 memory/state.md
+   17447 total
+EXIT:0
+
+
+CMD: python3 os.path.getsize per file (直接读回)
+  memory/README.md: 1064 B
+  memory/architecture.md: 857 B
+  memory/constraints.md: 1405 B
+  memory/decisions.md: 2805 B
+  memory/features.md: 4594 B
+  memory/handoff.md: 1284 B
+  memory/issues.md: 2764 B
+  memory/state.md: 2674 B
+TOTAL=17447 B ; MAX=4594 B
+READBACK_OK: True
+
+
+回读结果说明：两条独立命令一致；逐文件 <5000B、总量 <20000B 均满足；本值即最终快照（此后不再编辑 memory）。
