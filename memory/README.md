@@ -1,8 +1,10 @@
 # memory 使用说明
 
-memory 保存规划恢复所需的最小摘要，完整权威见 knowledge/current-status.md，历史证据见 product/。
+memory 是规划最小摘要；完整持久权威为 knowledge/current-status.md，裁决与历史证据见 product/。
 
-- 当前：`sso-admin-config` **COMPLETED（规划已确认，2026-09-29）**。钉钉/飞书准入、后台配置、PC/H5、R1轮换均完成；S1限定范围检查保留局限。Server dff266add04a59e0859547f11b647772b20f8e6a；Web519a8176e33232a94ab4f1a035042fd2a86793d4；本任务模块351/0/0/0、bootstrap173/0/0/0、Web四连及1301+3。功能数45/增量0、清单46/22/22、ADV64不变；P31开放（企业微信延期）。本功能无剩余执行动作；裁决 `product/sso-admin-config/receipts/planning-final-review-terminal-sync-01-completed.md`。
-- 恢复入口：state.md、handoff.md；功能索引 features.md；必要边界 constraints.md、decisions.md、issues.md。
-- 最终裁决：product/v0.1.2-release/receipts/planning-final-review-terminal-sync-20260928-passed.md。
-- 0.1.2 生产已于 2026-09-28 部署上线（V102，双端健康 200，`state.md`/`handoff.md` 发布段）；V012-CODE-001 与外部验证继续独立跟踪。
+- 当前规划：P62 低代码事务能力与 BPM 分级执行架构，XL，PLANNING（Owner 2026-09-30 启动）；本轮纳入信息治理。
+- 阅读顺序：state.md → handoff.md → features.md → constraints.md；按需读 decisions/issues/architecture。
+- 唯一下一动作：Planner 按 G01—G06 审查治理回执 `product/p62-lowcode-transaction-bpm-tiering/receipts/information-governance-01.md`。探索已审查，首阶段范围及 ADR 已收敛，业务未 READY。
+- 信息治理：`product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-information-governance.md`；执行 01 已完成 knowledge/工程 README/功能清单/CHANGELOG/需求池同步，待规划独立复核。
+- 上轮：sso-admin-config 已 COMPLETED（规划确认，2026-09-29）；0.1.3 发布/UAT 部署为执行回执，待规划验收。
+- 旧版本、测试及环境事实只按回执时点引用；不由本摘要推定最新远端或在线状态。

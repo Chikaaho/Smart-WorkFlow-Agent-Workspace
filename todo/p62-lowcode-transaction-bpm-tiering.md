@@ -3,12 +3,12 @@
 - 登记日期：2026-09-30
 - 角色：Planner
 - 任务等级：XL（核心架构、跨模块契约、数据一致性与持续演进）
-- 状态：PLANNING（正式需求已登记，待排期与阶段方向收敛）
-- 排期优先级：待 Owner 排期；事务型数据能力为本需求内部优先建设项。
+- 状态：PLANNING（探索已审查，首阶段范围已收敛；信息治理执行 01 已提交回执待规划验收）
+- 排期优先级：Owner 于 2026-09-30 启动本轮规划；事务型数据能力为本需求内部优先建设项。
 - Owner 依据：本会话明确“根据评审方案列为正式需求”。
 - 评审输入：[原始方案索引](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/README.md)、[首轮架构评审方案](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/01-architecture-review-20260930.md)、[CTO 指导稿原文](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/02-cto-guidance-20260930.md)。两份原文纳入 knowledge 供追溯；本文件为正式需求范围与验收口径。
 - 原始交付文件：~/Downloads/平台业务架构指导方案-OA-MES-WMS-IoT-CTO版-20260930.md。
-- 本轮边界：需求登记，不启动实现、探索派发、版本升级、部署或阶段验收。完成计数、清单明细与既有 P 编号核销状态不变。
+- 本轮边界：正式规划与现状探索，纳入配套信息治理；业务实施待阶段方向 READY，不启动版本升级或部署。完成计数、清单明细与既有 P 编号核销状态不变。
 
 ## 1. 产品目标与 Owner 已确认条件
 
@@ -144,10 +144,14 @@ C1 类关键数据只能通过受控动作写入，表单保存、导入、批�
 - BAO 架构优化：已有规划摘要记载引擎与业务共享提交边界；此为复用线索而非本次运行验证，不能把未核实能力写成确定缺失或无条件重建。
 - MES/WMS 为低代码平台能力的代表性验证场景，本项不自动扩大为完整 MES/WMS 产品套件、所有业务模板或所有现场拓扑交付。
 
-排期后首先依据允许的事实通道核实现有接缝并收敛阶段目标，形成 product/ 下正式方向及 ADR，再进入 READY。当前唯一的 P62 下一动作是等待排期与正式阶段方向收敛；不触发执行任务。
+Owner 已于 2026-09-30 启动规划。主方向：`product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-lowcode-transaction-bpm-tiering.md`。探索已由planning-review-exploration-01审查，首阶段方向及ADR-P62-001已形成。信息治理执行 01 已提交（回执 `product/p62-lowcode-transaction-bpm-tiering/receipts/information-governance-01.md`，方向 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-information-governance.md`）；唯一下一动作 = Planner 按 G01—G06 验收该回执，信息基线复核后进入业务READY。
 
 ## 6. 登记口径
 
 本文件吸收评审结论形成正式需求。CTO 原稿中的“同库必然同事务”“内部异步不需要 Outbox”“独立资源即不受共享瓶颈影响”等绝对表述不作为验收规则，以本文件对应的事务边界、可靠传播与负载条件为准。
 
 本项状态仅为 PLANNING，尚无实施或验证结果；不变更既有功能完成数、版本事实、其他需求状态或知识权威基线。
+
+## 7. 本轮配套信息治理（Owner 2026-09-30）
+
+同步 memory、knowledge、根与工程 README、需求池、功能清单、功能映射和当前交接入口；历史回执保留时点。配套方向：`product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-information-governance.md`，G01—G06 为治理验收标准。治理是 P62 的前置及贯穿交付要求，不另增功能数、不代替既有发布验收、不核销其他 P 编号。
