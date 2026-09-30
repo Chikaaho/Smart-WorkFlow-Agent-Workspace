@@ -4,7 +4,7 @@
 M07-F02-04 单步调试子集 / P7 第二子集
 
 ## 功能状态
-**COMPLETED（D180 规划层最终验收 15/15 PASSED + 终态同步，2026-08-23）；P7 已核销、M07-F02-04 升 ✅、清单 ✅26/🟦24/⬜40、功能数 30（第30个）、正式基线 827/Agent338、86f/850t、V36；终态同步回执已提交，待规划层最终复验与归档**
+**COMPLETED（D180 规划层最终验收 15/15 PASSED + D183 终态同步最终复验 PASSED / COMPLETED（终态同步 8/8；功能标准 15/15 保持），2026-08-23；终态裁决 `product/agent-graph-step-debugging/receipts/planning-terminal-final-review-d183.md`「最终结论：PASSED / COMPLETED」）；P7 已核销、M07-F02-04 升 ✅、清单 ✅26/🟦24/⬜40、功能数 30（第 30 个）、正式基线 827/Agent338、86f/850t、V36。本节 2026-09-30 由信息治理执行04 依 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-information-governance-03.md` 授权机械更正；原"待规划层最终复验与归档"措辞为历史过程，D183 已完成该复验。**
 
 ## 功能概述
 在既有图执行历史（运行日志查看，已由 agent-graph-execution-observability 闭环）基础上，为调度图提供**单步调试**能力：调试会话创建/断点设置/暂停/恢复/单步/终止、节点执行状态与轨迹、引擎驱动、权限安全、既有运行日志入口穿透，以及调试域失败时不影响普通运行日志的降级。

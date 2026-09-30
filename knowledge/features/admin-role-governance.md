@@ -2,9 +2,9 @@
 
 | 字段 | 值 |
 |------|-----|
-| 状态 | 规划层最终验收 PASSED（D96，阶段三知识同步中；P24/I49 关闭条件满足） |
+| 状态 | **COMPLETED（D97 阶段三审查最终判定，2026-08-18；裁决 `product/admin-role-governance/receipts/planning-stage3-review-d97.md`「最终判定：COMPLETED」/「最终状态：admin-role-governance COMPLETED」；P24/I49 关闭）**。历史过程：D96 规划层最终验收 PASSED 后阶段三知识同步中（2026-09-30 信息治理执行04 依 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-information-governance-03.md` 授权机械更正为终态；本功能状态行不沿用 D97 中任何历史计数） |
 | 方向 | `product/admin-role-governance/passed/direction-admin-role-governance.md` |
-| 回执 | `product/admin-role-governance/receipts/admin-role-governance-completion.md`；阶段三 `product/admin-role-governance/receipts/post-acceptance-knowledge-sync.md` |
+| 回执 | `product/admin-role-governance/receipts/admin-role-governance-completion.md`；阶段三 `product/admin-role-governance/receipts/post-acceptance-knowledge-sync.md`；终态裁决 `product/admin-role-governance/receipts/planning-stage3-review-d97.md` |
 
 ## 已交付
 
