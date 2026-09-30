@@ -1,12 +1,12 @@
 # 当前状态摘要
 
-同步点：2026-09-30，首事务阶段审查01；阶段VERIFYING，剩余LT01—LT06见 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-local-transaction-actions-01.md`。0.1.3已按Owner明确裁决关闭；knowledge 两入口与 Server 功能清单的新状态已由 Executor 机械传播完成（2026-09-30，无规划复验）。
+同步点：2026-09-30，首事务阶段补证回执02；阶段VERIFYING，LT01—LT06逐项补齐（含3项补证修复），待规划复核见 `product/p62-lowcode-transaction-bpm-tiering/receipts/local-transaction-actions-02.md`。0.1.3已按Owner明确裁决关闭；knowledge 两入口与 Server 功能清单的新状态已由 Executor 机械传播完成（2026-09-30，无规划复验）。
 
 ## 当前规划
 
 - P62，XL，PLANNING：低代码事务能力与 BPM 分级执行架构；新增配套信息治理，覆盖 memory/knowledge/README/需求与功能清单等全部受影响入口。
-- 主方向 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-lowcode-transaction-bpm-tiering.md`；首事务阶段 `VERIFYING`（审查01，待补LT01—LT06），整体PLANNING。
-- 唯一下一动作：Executor按 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-local-transaction-actions.md` 补齐LT01—LT06，追加回执02，并立即传播0.1.3 Owner完成裁决。
+- 主方向 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-lowcode-transaction-bpm-tiering.md`；首事务阶段 `VERIFYING`（回执02已提交待规划复核），整体PLANNING。
+- 唯一下一动作：Planner复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/local-transaction-actions-02.md` 与证据包，独立验收LT01—LT06。
 - 治理方向已归档passed/；G01—G06及三级提示三项均已核销。不另开治理补证。
 
 ## 已确认与待验收
