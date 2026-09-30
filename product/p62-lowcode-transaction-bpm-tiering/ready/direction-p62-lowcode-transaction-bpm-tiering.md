@@ -4,7 +4,7 @@
 - Owner 本轮指令：开始制定 P62，并纳入 memory、knowledge、README、需求清单、功能清单等过期信息治理。
 - 本文为整体阶段方向；首事务阶段COMPLETED（规划已确认），后续阶段继续规划，整体P62尚未通过。
 - 正式需求基准：`todo/p62-lowcode-transaction-bpm-tiering.md` R01—R10、A01—A12，全部保留；本方向补充 G01—G06 信息治理验收。
-- **当前唯一下一动作**：Planner收敛下一阶段分级执行与统一命令；首事务阶段已完成，无剩余执行入口。
+- **当前唯一下一动作**：Executor执行限定探索 `search_task/p62-tiered-command-readiness-20260930.md`；回执后Planner定案阶段方向、ADR及预算合同并下发实施任务。
 
 ## 1. 目标与范围
 
@@ -50,8 +50,10 @@
 
 ## 6. 状态与授权
 
-P62整体PLANNING；治理PASSED；首事务阶段COMPLETED（规划已确认，2026-09-30）。唯一下一动作：Planner收敛下一阶段分级执行与统一命令的范围、验收合同及ADR。0.1.3=COMPLETED（Owner已验收），无剩余动作。
+P62整体PLANNING；治理PASSED；首事务阶段COMPLETED（规划已确认，2026-09-30）。唯一下一动作：Executor执行限定探索 `search_task/p62-tiered-command-readiness-20260930.md`；回执后Planner定案阶段方向、ADR及预算合同并下发实施任务。0.1.3=COMPLETED（Owner已验收），无剩余动作。
 
 信息治理 G01—G06 的审查结论见 `../receipts/planning-review-information-governance-05-passed.md`；治理方向归档至 `../passed/direction-p62-information-governance.md`。阶段方向与 ADR-P62-001 的范围和兼容边界保持，后续等级/设备/性能合同继续规划。
 
 功能数45、清单46/22/22（90）、ADV64、原54问题分类31/3/5/15及总记录57不变；不核销P62或其他P编号，不晋级正式测试基线。发布、部署、破坏性操作不在本方向授权内。
+
+当前阶段文件：`direction-p62-tiered-execution-unified-command.md`（PLANNING）及`adr-p62-002-tiered-command.md`（拟议）；执行仅按限定探索任务取证，待Planner定案后晋级READY。
