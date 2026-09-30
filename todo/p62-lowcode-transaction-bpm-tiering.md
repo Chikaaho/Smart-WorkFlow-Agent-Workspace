@@ -144,13 +144,13 @@ C1 类关键数据只能通过受控动作写入，表单保存、导入、批�
 - BAO 架构优化：已有规划摘要记载引擎与业务共享提交边界；此为复用线索而非本次运行验证，不能把未核实能力写成确定缺失或无条件重建。
 - MES/WMS 为低代码平台能力的代表性验证场景，本项不自动扩大为完整 MES/WMS 产品套件、所有业务模板或所有现场拓扑交付。
 
-Owner 2026-09-30 当前排期：P62整体PLANNING；信息治理PASSED；首事务阶段VERIFYING（回执02已提交：LT01—LT06逐项补齐含3项补证修复）。唯一下一动作：Planner复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/local-transaction-actions-02.md` 与证据包并独立验收LT01—LT06；0.1.3 = COMPLETED（Owner已验收，2026-09-30）已完成机械传播。
+Owner 2026-09-30 当前排期：P62整体PLANNING；治理PASSED；首事务阶段VERIFYING（回执03已提交：LT01a—LT05a 四项补证完成，Server `6e73a11`、门禁 1660/0/0/0）。唯一下一动作：Planner 复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/local-transaction-actions-03.md` 与证据包 `receipts/evidence/local-transaction-actions-03/`，独立验收 LT01a—LT05a。0.1.3=COMPLETED（Owner已验收），状态传播已完成。
 
 ## 6. 登记口径
 
 本文件吸收评审结论形成正式需求。CTO 原稿中的“同库必然同事务”“内部异步不需要 Outbox”“独立资源即不受共享瓶颈影响”等绝对表述不作为验收规则，以本文件对应的事务边界、可靠传播与负载条件为准。
 
-本项整体PLANNING，首事务阶段VERIFYING；执行01已提交实现与验证材料，审查01锁定基础链并列剩余LT01—LT06；补证回执02已提交（逐项补齐 + 3项补证修复，Server `5f9e066`、门禁1654/0/0/0），待规划复核。计数、P编号与正式基线不变。
+本项整体PLANNING，首事务阶段VERIFYING；审查02锁定已过子项，剩余四项按一级提示补齐；计数/P编号/正式基线不变。
 
 ## 7. 本轮配套信息治理（Owner 2026-09-30）
 

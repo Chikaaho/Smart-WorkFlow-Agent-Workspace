@@ -1,6 +1,6 @@
 # P62 首阶段：低代码本地事务动作
 
-日期：2026-09-30；Planner；P62 XL子阶段；状态 **VERIFYING（首轮审查完成，待补LT01—LT06，2026-09-30）**。本文件为当前唯一执行入口。
+日期：2026-09-30；Planner；P62 XL子阶段；状态 **VERIFYING（审查02，待补四项，2026-09-30）**。当前唯一执行入口：`../receipts/planning-execution-prompt-local-transaction-actions-01.md`。本文件保留阶段范围和验收标准。
 
 依据：主方向、正式需求R01—R10/A01—A12、探索审查01、ADR-P62-001。
 
@@ -40,10 +40,8 @@ PG行为证据证明生产数据库相关约束；H2结果保留其层级。具�
 
 ## 当前补证与状态同步
 
-唯一剩余账本：`../receipts/planning-review-local-transaction-actions-01.md` 的LT01—LT06。执行回执01和提交附录保留；按已锁定结果只补余项，追加 `../receipts/local-transaction-actions-02.md`。实现细节与测试方案由Executor制定，原始证据可用时优先复用。
+审查02锁定已通过子项。唯一执行入口及剩余账本为 `../receipts/planning-execution-prompt-local-transaction-actions-01.md`，仅LT01a/LT02a/LT04a/LT05a，完成后追加回执03。旧六项清单及回执01/02只作追溯；本阶段仍VERIFYING。
 
-Owner明确确认0.1.3插单发布已验收，唯一状态 **0.1.3 = COMPLETED（Owner已验收，2026-09-30）**，依据 `../../v0.1.3-release/receipts/owner-accepted-20260930.md`。执行侧立即将该值写入knowledge/current-status、session-handoff、相关发布索引及Server功能清单，并按影响同步README、memory和todo；明确授权这些派生状态机械同步。该同步不等待P62补证，不创建发布规划验收任务。
+0.1.3=COMPLETED（Owner已验收，2026-09-30），状态机械传播已完成，不再要求发布验收或重复传播。信息治理PASSED，P62整体PLANNING，功能45、清单46/22/22、ADV64、问题57、P编号及正式基线不变。
 
-当前值：P62整体PLANNING；信息治理PASSED；首阶段VERIFYING；功能45；清单46/22/22；ADV64；问题57（原54分类31/3/5/15）；P编号零核销；正式测试基线不变。唯一下一动作=Executor按本方向补LT01—LT06及传播Owner裁决；提交02时统一改为Planner复核回执02。
-
-补证回执携带文件/字段/实际值/核验时点的当前入口回读；历史正文保留，本次Planner变更按正常文档批次提交回读。无需另交信息治理06，不重开已通过治理或0.1.3验收。
+Executor先把本次审查的唯一下一动作写入knowledge，再按授权同步memory/todo/Server清单等受影响当前入口；本次Planner文档按正常批次提交回读。提交03时下一动作=Planner复核03。不得改写旧回执或重新展开治理/已锁定测试。

@@ -16,5 +16,5 @@
 - 三方 SSO 真实接入（`dingtalk-sso`，L，既有 I5 补验、非新增功能计数/增量 0）：功能级 **`PASSED（2026-09-29，审查07）`**、接入功能状态 `COMPLETED（待规划确认）`；主方向归档 `product/dingtalk-sso/passed/`。钉钉/飞书真实授权链与企业矩阵验收通过（G3b 企业归属约束、个人模式显式、错配拒绝）；验收集合 Server 本任务模块 319/0/0/0＋Boot 4/0/0/0、Web 1301+3。企业微信 Owner 延期未验证；P31 未核销。
 - `sso-admin-config` **COMPLETED（规划已确认，2026-09-29）**。钉钉/飞书准入、后台配置、PC/H5、R1轮换均完成；S1限定范围检查保留局限。Server dff266add04a59e0859547f11b647772b20f8e6a；Web519a8176e33232a94ab4f1a035042fd2a86793d4；本任务模块351/0/0/0、bootstrap173/0/0/0、Web四连及1301+3。功能数45/增量0、清单46/22/22、ADV64不变；P31开放（企业微信延期）。本功能无剩余执行动作；裁决 `product/sso-admin-config/receipts/planning-final-review-terminal-sync-01-completed.md`。
 
-- P62：整体PLANNING；信息治理PASSED；首事务阶段VERIFYING（回执02已提交，LT01—LT06逐项补齐含3项修复），见 `product/p62-lowcode-transaction-bpm-tiering/receipts/local-transaction-actions-02.md`；下一动作见state.md。
+- P62：整体PLANNING；治理PASSED；首事务阶段VERIFYING（回执03待复核：LT01a—LT05a 已补证，含真实 HTTP 上层入口、单对象冻结结算、非空升级链；Server `6e73a11`、门禁 1660/0/0/0）；回执 `product/p62-lowcode-transaction-bpm-tiering/receipts/local-transaction-actions-03.md`，审查依据 `receipts/planning-review-local-transaction-actions-02.md`。
 - v0.1.3-release：COMPLETED（Owner已验收，2026-09-30），Owner插单直接发版；本轮只同步状态。发布/部署身份及测试数字保留原回执时点，不新增业务功能数。

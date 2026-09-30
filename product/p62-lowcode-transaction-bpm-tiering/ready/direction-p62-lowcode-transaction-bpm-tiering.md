@@ -4,7 +4,7 @@
 - Owner 本轮指令：开始制定 P62，并纳入 memory、knowledge、README、需求清单、功能清单等过期信息治理。
 - 本文为整体阶段方向；首个事务阶段 VERIFYING，后续阶段继续规划，整体 P62 尚未通过。
 - 正式需求基准：`todo/p62-lowcode-transaction-bpm-tiering.md` R01—R10、A01—A12，全部保留；本方向补充 G01—G06 信息治理验收。
-- **当前唯一执行入口**：`product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-local-transaction-actions.md`。信息治理已通过审查05并归档，首阶段VERIFYING，按审查01补LT01—LT06。
+- **当前唯一执行入口**：`product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-local-transaction-actions-01.md`；阶段范围仍由本地事务阶段方向规定。
 
 ## 1. 目标与范围
 
@@ -50,7 +50,7 @@
 
 ## 6. 状态与授权
 
-P62整体PLANNING；信息治理PASSED；首事务阶段VERIFYING（审查01剩余LT01—LT06）。唯一下一动作：Executor按 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-local-transaction-actions.md` 完成定向补证并追加回执02；同步Owner已确定的0.1.3状态。0.1.3 = COMPLETED（Owner已验收，2026-09-30）。
+P62整体PLANNING；治理PASSED；首事务阶段VERIFYING（审查02）。唯一下一动作：Executor按 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-local-transaction-actions-01.md` 补LT01a/LT02a/LT04a/LT05a，追加回执03。0.1.3=COMPLETED（Owner已验收），状态传播已完成。
 
 信息治理 G01—G06 的审查结论见 `../receipts/planning-review-information-governance-05-passed.md`；治理方向归档至 `../passed/direction-p62-information-governance.md`。阶段方向与 ADR-P62-001 的范围和兼容边界保持，后续等级/设备/性能合同继续规划。
 
