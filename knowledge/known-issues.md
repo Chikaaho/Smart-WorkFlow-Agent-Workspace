@@ -33,6 +33,8 @@
 
 > **2026-09-26 `backend-architecture-optimization` 总体终态同步轮：不新增、不关闭 I 问题（集合维持 54 条，I1—I55 区间缺 I27，不增删）；仅登记总体收口后的长期边界**：①10 项候选最终去向：BAO-01 `DEFERRED`（传递依赖污染成立、API 类型污染不成立，不拆 `sw-common`）、BAO-02 `PARTIAL`（IoT 完成，Knowledge/Agent 保留按活调用面立项）、BAO-03/04、BAO-05、BAO-06/07、BAO-08/10、BAO-09 共 8 项 `COMPLETED`——BAO-01/02 不因总体收口改写为完成；②外部五类通知 Provider（SMS/EMAIL/FEISHU/DINGTALK/WECHAT_WORK）真实送达与腾讯 IoT 真实云端送达仍为 Owner 延期/未验证，不因 Final 的 About 文案提及能力而视为已验证；③GitHub About 两项已按 Owner 授权更新，但两仓未 commit/push/merge/tag/Release/deploy，后端根 POM URL 变更仍为本地工作树变更，公开版本仍 `0.1.0`。以上均为规划验收明确接受（`product/backend-architecture-optimization/receipts/planning-review-completion-final-03-passed.md`），不降低 must-deliver、生产制品边界、版本同源或租户隔离目标。
 
+> **2026-09-30 P62 信息治理执行02：新增 3 条风险登记（I56—I58），来源=P62 现状探索（`search_fallback/p62-current-seams-and-information-audit-20260930.md` 附件 B），均为"登记待验证"事实而非缺陷裁决，不改变 I1—I55 任何状态与计数口径；归属阶段见各条目。集合变为 57 条（I1—I58 缺 I27）。** 补证明细：`product/p62-lowcode-transaction-bpm-tiering/receipts/ig2-issues-54.md`（I1—I55 逐条分类与索引×正文一致性）。
+
 ---
 
 ## 问题索引
@@ -93,6 +95,9 @@
 | I53 | 2026-08-19 | 方法级鉴权拒绝被 GlobalExceptionHandler 兜底为 HTTP 500（403 契约失真） | 中 | ✅ 已修复（2026-08-20 role-menu-permission-parity D122 退回修正：新增 AuthorizationDeniedException 分支返回 403，移除测试专用处理器覆盖，sw-common 单测 2 用例，项目级 674/0/0/0） |
 | I54 | 2026-08-19 | 角色停用（status=0）后菜单/按钮权限仍按绑定装配（停用不能有效撤权） | 高 | ✅ 已修复（2026-08-20 role-menu-permission-parity D122 退回修正：菜单树与权限装配对称按 status=1 过滤，AuthMenus A4/A9 用例改为撤权生效断言，项目级 674/0/0/0） |
 | I55 | 2026-08-20 | M07-F02-04 运行日志前端缺口（列表页/详情页/节点轨迹子视图） | 中 | ✅ **已关闭（2026-08-20 agent-graph-execution-observability D148 功能级 PASSED）**：ExecutionList.vue（分页列表、graphDefId 过滤）、ExecutionDetail.vue（详情展示、安全渲染）、NodeTrajectory.vue（节点轨迹、branchId 由后端真实返回）全链闭环；后端零改动复用 Step12(D70-D71) 三类端点；清单 M07-F02-04 保持 🟦（运行日志查看 ✅ + 单步调试🟦，单步调试继续待排期）。后端 685/0/0/0、前端 78f/760t、Flyway V34。方向归档 `product/agent-graph-execution-observability/passed/`。 |
+| I56 | 2026-09-30 | Agent 内部工具以 DB 白名单 name→(beanName, methodName) 直调 Spring Bean，可达性取决于配置治理而非代码约束（P62 探索发现） | 低 | 已登记待验证（归属 P62 事务/保障阶段评估） |
+| I57 | 2026-09-30 | MQTT 上行消息在 Paho 回调线程直接处理且无租户身份，tenant.enabled=true 时 ingest fail-closed 整体失败；无独立投递线程池（P62 探索发现） | 中 | 已登记待验证（归属 P62 IoT 边界/资源保障阶段） |
+| I58 | 2026-09-30 | NodeFunctionService 使用无界 newCachedThreadPool，@Async 无定制执行器，平台无限流/准入组件（P62 探索发现） | 中 | 已登记待验证（归属 P62 资源保障阶段） |
 
 
 
@@ -674,3 +679,27 @@
 - **描述**：`SysMenuServiceImpl.loadMenuIdsByUserId`（菜单树）与 `UserDetailsProviderImpl.loadPermissions`（按钮 permission）直接经 `sys_user_role → sys_role_menu` 装配全部绑定角色，不按 `sys_role.status` 过滤；而 `toLoginUser` 的 roles 装配按 `status=1` 过滤——两处不对称。后果：角色停用后该角色绑定的菜单仍可见、按钮 permission 仍装配，用户仍可通过相应 permission 调用接口，**停用不能作为有效撤权手段**。
 - **影响**：停用角色仍持续授予菜单与按钮权限，直接影响普通角色授权边界（D121 验收 4/5）。
 - **✅ 修复记录（2026-08-20，role-menu-permission-parity D122 退回修正）**：①`SysMenuServiceImpl.loadMenuIdsByUserId` 装配链插入启用角色过滤（`sys_role.status=1`，与权限装配对称）；②`UserDetailsProviderImpl.loadPermissions` 同步按启用角色过滤（roles/菜单/权限三侧统一）。测试更新：`AuthMenusContractAndSecurityTest` A4 用例由「如实记录旧行为」改为「撤权生效」断言（请求级空树 + service 级空树），A9 真实装配用例改为「停用角色 permissions 不再装配」；测试类 12/12 全过。项目级全量 **674/0/0/0**。
+
+### I56：Agent 内部工具配置可达性（登记待验证，P62 探索发现）
+
+- **发现日期**：2026-09-30（P62 现状探索 `search_fallback/p62-current-seams-and-information-audit-20260930.md` 附件 B0.3）
+- **严重程度**：低（潜在；取决于配置治理）
+- **可信度**：REPORTED（源码结构线索；实际配置暴露面未审计）
+- **描述**：Agent 内部工具以 DB 白名单表 `name → (beanName, methodName)` 直调 Spring Bean（`sw-basic-agent/.../entity/tool/AgentToolInternalConfig.java:19-22`）；外部工具为白名单 URL+方法（`orchestration/AgentToolCallbackFactory.java:34,151-156`，仅 GET/POST/PUT）。代码层面未发现表单数据写入通道；风险在于工具配置表若被指向任意 bean 方法则可达性失控——属配置治理事项而非代码旁路。
+- **归属**：P62 事务阶段 C1 约束叙事与保障阶段评估；证据层级=仅结构线索。
+
+### I57：MQTT 上行处理线程无租户身份（登记待验证，P62 探索发现）
+
+- **发现日期**：2026-09-30（来源同上，附件 B2.6）
+- **严重程度**：中
+- **可信度**：REPORTED（源码结构线索+行为推断；未运行验证）
+- **描述**：上行消息在 Paho 回调线程直接处理（`sw-basic-iot/.../mqtt/MqttBrokerManager.java:97-115`），全程无 LoginUserHolder/挂起还原——tenant.enabled=true 时 `getTenantId()` 抛异常，上行落库整体失败（fail-closed 但功能不可用）；无独立投递线程池。
+- **归属**：P62 R07 IoT 边界/资源保障阶段；与租户拦截器（`CommonTenantLineHandler` fail-closed）交互需按业务行为验证。
+
+### I58：无界线程池与无限流组件（登记待验证，P62 探索发现）
+
+- **发现日期**：2026-09-30（来源同上，附件 B2.5）
+- **严重程度**：中
+- **可信度**：REPORTED（源码结构线索）
+- **描述**：`NodeFunctionService.java:46-47` 使用 newCachedThreadPool（无界）；`@EnableAsync`（FormAutoConfiguration）无定制 executor；全仓无限流/准入组件（仅注释提及）。并发控制现状=CAS 领取+有界批次。
+- **归属**：P62 R06 资源保障阶段（准入/限流/公平性设计时统一处理）。

@@ -23,7 +23,7 @@
 | checklist-gap-hardening | 正式功能第 12 个（早期批处理） | knowledge/features/checklist-gap-hardening.md | I33/I43/I44（M01-F02-02、M10-F03-01、M10-F06-01 菜单） |
 | data-scope-enforcement | 正式功能第 13 个（早期批处理） | knowledge/features/data-scope-enforcement.md | M02-F04-01 ✅（I37 关；I46 不纳管边界） |
 | notify-frontend | 正式功能第 14 个（早期批处理） | knowledge/features/notify-frontend.md | 无独立清单 ID，服务 M05 站内信（I7 关） |
-| agent-model-orchestration | 正式功能第 15 个（早期批处理） | 缺失：knowledge/features/agent-model-orchestration.md 不存在（见主索引 §5 缺失记录）；替代证据 product/agent-model-orchestration/passed/step-1-backend-model-management.md（step-1…step-12 共 12 份方向文件均在 passed/ 下，D53—D71） | M07-F01/F02/F04 骨架（D53—D71） |
+| agent-model-orchestration | 正式功能第 15 个（早期批处理） | knowledge/features/agent-model-orchestration.md（**2026-09-30 实测存在**；2026-09-04 审计时的缺失注记已被主索引 §5 的 2026-09-13 补录记载覆盖，本行当前映射以存在文件为准）；历史替代证据 product/agent-model-orchestration/passed/step-1-backend-model-management.md（step-1…step-12 共 12 份方向文件均在 passed/ 下，D53—D71） | M07-F01/F02/F04 骨架（D53—D71） |
 | bpm-plugin-architecture | 正式功能第 16 个（早期批处理） | knowledge/features/bpm-plugin-architecture.md | M04-F08-01 ✅（D82；I47 已由 bpm-h2-v8-compat 修复指针） |
 | bpm-single-node-approval | Walking Skeleton 第三环（早期批处理 COMPLETED；正式功能第 1 项 Walking Skeleton 无独立目录，本目录为其承载之一） | knowledge/features/bpm-single-node-approval.md；历史快照 08-25 | Walking Skeleton 审批联通子集，服务 M04-F04-01/M04-F05-01（ID 已更正，不占用 M04-F01-01 设计器 ID） |
 | status-semantics-alignment | 正式功能第 17 个（PASSED 归档） | knowledge/features/status-semantics-alignment.md | I51（前端 status 语义） |
