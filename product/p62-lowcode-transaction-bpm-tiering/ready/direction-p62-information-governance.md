@@ -26,7 +26,7 @@ Executor 返回实际完整路径；不存在的候选入口标记不适用及�
 
 ## 3. 本轮固定状态口径
 
-- P62：PLANNING；当前主规划；唯一下一动作=Executor按治理审查01的IG1—IG4修正补证并追加information-governance-02回执；随后Planner复核。
+- P62：PLANNING；当前主规划；唯一下一动作=Planner 复核 `../receipts/information-governance-05.md`；复核通过后信息基线锁定、事务阶段方向置 READY。
 - sso-admin-config：COMPLETED（规划已确认，2026-09-29），依据其最终审查记录。
 - v0.1.3-release：EXECUTION_SUBMITTED / 待规划验收，发布/部署事实可按证据列示；不得改成 Planner 已确认 COMPLETED。
 - 功能数、清单、ADV、其他 P 编号：不因信息治理增加或核销。沿用摘要 45、46/22/22、ADV64 需本次权威复核；若重算不符，列明差异及依据交 Planner 裁决，不自行挑值。
@@ -68,7 +68,7 @@ Executor 返回实际完整路径；不存在的候选入口标记不适用及�
 
 ## 8. 当前复核边界
 
-执行01首次验收未通过；当前剩余范围以 `../receipts/planning-review-information-governance-01.md` IG1—IG4为准。保留01回执，追加02；已锁定容量子项仅在实际修改后重测，不重跑业务验证。
+治理经审查01—04逐级收敛（映射/语义已锁定）；剩余收尾（IG1a 同步/I3 子句/转录纠正）按 `../receipts/planning-execution-prompt-information-governance-03.md` 由执行05完成（回执 `../receipts/information-governance-05.md`）；复核通过前保留治理方向 ready。01—04 回执与附件原文保留；不重跑业务验证。
 
 ## 9. 审查02后的唯一入口
 
@@ -77,3 +77,7 @@ Executor 返回实际完整路径；不存在的候选入口标记不适用及�
 ## 10. 审查03后执行入口
 
 唯一当前入口=`../receipts/planning-execution-prompt-information-governance-02.md`，替代一级提示，仅处理IG1a/IG2a/IG2b的有限残余；IG3a及审查03锁定项不重验，追加回执04。
+
+## 11. 审查04后唯一收尾入口
+
+`../receipts/planning-execution-prompt-information-governance-03.md` 替代二级提示，全部映射和问题语义锁定，仅处理IG1a、I3残留及转录纠正，追加回执05。

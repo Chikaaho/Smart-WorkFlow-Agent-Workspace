@@ -132,7 +132,7 @@
 
 - **发现日期**：前端项目初始化阶段
 - **严重程度**：中
-- **可信度**：CONFIRMED（BPMN 部分仍待开发）/ CONFIRMED（Vue Flow 部分已修复）
+- **可信度**：CONFIRMED（BPMN 查看器已按既有记录修复；剩余范围沿用当前索引状态与既有裁决）/ CONFIRMED（Vue Flow 部分已修复）（2026-09-30 信息治理执行05 依审查04 IG2b2a 机械更正：移除过期子句"BPMN 部分仍待开发"）
 - **描述**：前端 `adapters/bpmn/` 和 `adapters/flow-graph/` 原仅有接口壳（`throw new Error('not implemented')`），BPMN 流程设计器和流程图可视化尚未集成。
 - **修复（Vue Flow 部分，2026-07-25）**：[[vue-flow-adapter]] 功能 COMPLETED——`adapters/flow-graph/index.ts` 已重写为完整防腐层（mount/export/destroy + 事件回调），6 测试 / 497 tests 四连全绿。M07 AI 调度图业务模块仍未就位（预期状态，adapter 可独立先行）。
 - **修复（BPMN 部分，2026-07-25）**：[[bpmn-adapter]] Step 0/1/2 均已 PASSED——前端 `adapters/bpmn/` 查看器防腐层（mountBpmnViewer/highlight/fitViewport/destroy + 事件回调）+ 后端 `GET /workflow/defs/{id}/bpmn-xml` 只读端点（`R<String>`，项目级 241 tests BUILD SUCCESS）。
