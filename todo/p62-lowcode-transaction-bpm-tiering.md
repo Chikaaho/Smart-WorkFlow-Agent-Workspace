@@ -144,7 +144,7 @@ C1 类关键数据只能通过受控动作写入，表单保存、导入、批�
 - BAO 架构优化：已有规划摘要记载引擎与业务共享提交边界；此为复用线索而非本次运行验证，不能把未核实能力写成确定缺失或无条件重建。
 - MES/WMS 为低代码平台能力的代表性验证场景，本项不自动扩大为完整 MES/WMS 产品套件、所有业务模板或所有现场拓扑交付。
 
-Owner 2026-09-30 当前排期：P62（XL）整体 PLANNING；信息治理经审查05 PASSED，首阶段低代码本地事务动作 READY。唯一下一动作：Executor 按 `…/ready/direction-p62-local-transaction-actions.md` 推进 T01—T07（审查05 状态传播已完成）。0.1.3 仍 EXECUTION_SUBMITTED 待独立规划验收。
+Owner 2026-09-30 当前排期：P62（XL）整体 PLANNING；信息治理经审查05 PASSED，首阶段低代码本地事务动作 `VERIFYING`（执行自验通过，待规划验收；回执 `…/receipts/local-transaction-actions-01.md`）。唯一下一动作：Planner 复核阶段回执与证据包并独立验收 T01—T07。0.1.3 仍 EXECUTION_SUBMITTED 待独立规划验收。
 
 ## 6. 登记口径
 

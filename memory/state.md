@@ -1,12 +1,12 @@
 # 当前状态摘要
 
-同步点：2026-09-30，P62 首事务阶段执行中。治理 PASSED（裁决 `…/planning-review-information-governance-05-passed.md`）；首阶段 READY→IN_PROGRESS。新裁决已由 Executor 传播至 knowledge 与派生入口（传播记录将纳入阶段回执）。
+同步点：2026-09-30，P62 首事务阶段实施完成。治理 PASSED（裁决 `…/planning-review-information-governance-05-passed.md`）；首阶段 `VERIFYING`（执行自验通过，待规划验收）。裁决传播与 T01—T07 逐项证据见 `…/receipts/local-transaction-actions-01.md`。
 
 ## 当前规划
 
 - P62，XL，PLANNING：低代码事务能力与 BPM 分级执行架构；新增配套信息治理，覆盖 memory/knowledge/README/需求与功能清单等全部受影响入口。
-- 主方向 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-lowcode-transaction-bpm-tiering.md`；首事务阶段READY，整体PLANNING。
-- 唯一下一动作：Executor 按 `ready/direction-p62-local-transaction-actions.md` 推进 T01—T07（裁决传播已完成）。
+- 主方向 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-lowcode-transaction-bpm-tiering.md`；首事务阶段 `VERIFYING`（自验通过，待规划验收），整体PLANNING。
+- 唯一下一动作：Planner 复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/local-transaction-actions-01.md` 与证据包并独立验收 T01—T07。
 - 治理方向已归档passed/；G01—G06及三级提示三项均已核销。不另开治理补证。
 
 ## 已确认与待验收
