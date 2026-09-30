@@ -9,6 +9,8 @@
 
 ## Owner 优先级覆盖
 
+**2026-09-30 正式需求登记**：新增 **P62 低代码事务能力与 BPM 分级执行架构**，等级 **XL**、状态 **PLANNING（已登记，待排期）**。Owner 明确依据本轮 CTO 评审方案登记：普通 OA 可靠异步、MES 时效、WMS 一致性、IoT 联动在同一低代码平台上统一规划；[正式需求与验收边界](p62-lowcode-transaction-bpm-tiering.md)、[评审输入快照](p62-architecture-review-source-20260930.md)。本次不下发实施任务，不改变既有功能完成数、版本或其他 P 编号状态。下方带日期的历史排期仅作对应时点追溯，不作为 P62 当前执行指令。
+
 **2026-09-23 当前排期**：活动主任务为 **`v0.1.1-bugfix`（XL 长周期缺陷修复与版本发布列车，`IN_PROGRESS`，非业务功能计数、不核销 P 编号）**——主方向 `product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md`（READY，开放收件），当前文档同步唯一入口 `product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md`（执行侧已提交回执 `product/v0.1.1-bugfix/receipts/current-state-sync-20260923-01.md`，待 Planner 复核）。缺陷账本按行复算 25 = **23 已提交候选 + 1 处理中（V011-BUG-021，失效入口待具体复现输入）+ 1 Owner 复开（V011-BUG-024，Shift+滚轮专项未关闭）**，未处置合计 2，候选全部待 Owner/Planner 独立验收。下一动作=执行侧同步回执待 Planner 复核，随后等待候选独立验收并继续开放收件；得 Owner 明确确认收件结束前不得合并 main、创建 `0.1.1` tag/Release 或部署。功能数 45、清单 ✅46/🟦22/⬜22、ADV64、P 状态与正式验证基线（Server 1423/0/0/0、Web 1217+3、Flyway V93）本轮零变化；0.1.0 发布身份锁定，不得重复发布。**本文件 P 编号状态与计数不因本轮同步改变**（另记：两仓 `0.1.1-bugfix` 本地 HEAD 之后有 2 个 Server 与 16 个 Web 提交未登记于账本或任何单缺陷回执、未推送，只作事实记录，登记或分离待 Planner 裁决，见 `knowledge/features/v0.1.1-bugfix.md` §3.1）。
 
 **2026-09-21 排期（上一轮，历史）**：0.1.0 P53/P61 演示环境发布已经规划最终审查02 PASSED，两仓 main/tag/公开 Release（Server `d18e9a39c552918615be8b158dfe0cc278cb309f`／Release ID `392753737`、Web `039f987437ed6369c3c131631bd7622c6ae482e7`／Release ID `392753751`）、CI 资产、演示库 V93 与 Owner 登录全部锁定；阶段三终态同步已提交（发布任务状态 `COMPLETED（待规划确认，2026-09-21）`，方向 `product/v0.1.0-p53-p61-production-release/ready/direction-v0.1.0-p53-p61-production-release-terminal-sync.md` 待 Planner 复核）。P53 已经规划最终复核01 PASSED 确认`COMPLETED（规划已确认，2026-09-21）`并核销（第45个正式功能）；正式业务功能数45，清单✅46/🟦22/⬜22与ADV64不变。P53/P61 已按 Owner 授权与既定 P61→P53 顺序统一合入两仓 develop 并推送（Web `fc37608`、Server `fa96290`）。该轮「下一动作=等待 Owner 自行体验」已由上方 2026-09-23 排期取代；0.1.0 发布身份锁定，不得重复发布。
@@ -153,6 +155,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 | P59 | CH-aPaaS 项目说明、仓库与 main 分支整理及自动发版；三个示例仅记录 | Owner 2026-09-04；[统一需求](ch-apaas-project-update.md) | ✅ **已核销/完成**（**COMPLETED，规划已确认，2026-09-05**；功能级PASSED为2026-09-04审查07；非新增业务功能，功能数41、90明细与基线不变）；主方向及终态同步方向均归档 `passed/` |
 | P60 | 成熟OA `0.1.0`路线（组织权限、表单、流程设计与审批、流程运营、工作台、SSO、通知）；当前交付迭代`0.0.3` | Owner 2026-09-08；优先级P0；[归档方向](../product/v0.1.0-oa-completion/passed/direction-v0.1.0-oa-completion.md) | `COMPLETED（规划已确认，2026-09-15）`；整体14/14；Workspace退出0.1.0判断；Server/Web `0.1.0`已发布；版本统筹项完成核销但不增加业务功能计数；R8五渠道及三Provider真实链=Owner延期/未验证 |
 | P61 | 全系统用户可见错误码与提示语人性化治理 | Owner 2026-09-14/20；优先级P1；L；[归档方向](../product/p61-user-facing-message-humanization/passed/direction-p61-user-facing-message-humanization-scope-correction-20260920.md) | ✅ `COMPLETED（规划已确认，2026-09-20）`、已核销；不增加业务功能数 |
+| P62 | 低代码事务能力与 BPM 分级执行架构（OA / MES / WMS / IoT） | Owner 2026-09-30；XL；[正式需求](p62-lowcode-transaction-bpm-tiering.md)；[CTO 评审输入](p62-architecture-review-source-20260930.md) | PLANNING：已正式登记，待排期与阶段方向收敛；未启动实施 |
 
 管理员P0治理插单（2026-09-15）：[连续执行与可见浏览器验收门禁](admin-machine-gate-continuous-visible-browser.md)已`COMPLETED（规划确认）`，本地提交`8e87899`，治理测试sh 70/70、PowerShell 49/49。该任务不并入P60业务计数；远程发布仍需Owner另行授权。
 
