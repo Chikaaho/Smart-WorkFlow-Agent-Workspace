@@ -8,7 +8,7 @@
 - Owner 依据：本会话明确“根据评审方案列为正式需求”。
 - 评审输入：[原始方案索引](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/README.md)、[首轮架构评审方案](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/01-architecture-review-20260930.md)、[CTO 指导稿原文](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/02-cto-guidance-20260930.md)。两份原文纳入 knowledge 供追溯；本文件为正式需求范围与验收口径。
 - 原始交付文件：~/Downloads/平台业务架构指导方案-OA-MES-WMS-IoT-CTO版-20260930.md。
-- 本轮边界：信息治理已通过；业务实施仅授权首事务阶段 T01—T07，不启动版本升级或部署。完成计数、清单明细与既有 P 编号核销状态不变。
+- 本轮边界：信息治理已通过；首事务阶段T01—T07已完成；本轮授权分级执行阶段U01—U08，不启动版本升级或部署。完成计数、清单明细与既有 P 编号核销状态不变。
 
 ## 1. 产品目标与 Owner 已确认条件
 
@@ -144,13 +144,13 @@ C1 类关键数据只能通过受控动作写入，表单保存、导入、批�
 - BAO 架构优化：已有规划摘要记载引擎与业务共享提交边界；此为复用线索而非本次运行验证，不能把未核实能力写成确定缺失或无条件重建。
 - MES/WMS 为低代码平台能力的代表性验证场景，本项不自动扩大为完整 MES/WMS 产品套件、所有业务模板或所有现场拓扑交付。
 
-Owner 2026-09-30 当前排期：P62整体PLANNING；治理PASSED；首事务阶段COMPLETED（规划已确认，2026-09-30）。唯一下一动作：Executor执行限定探索 `search_task/p62-tiered-command-readiness-20260930.md`；回执后Planner定案阶段方向、ADR及预算合同并下发实施任务。0.1.3=COMPLETED（Owner已验收），无剩余动作。
+Owner 2026-09-30 当前排期：P62整体PLANNING；治理PASSED；首事务阶段COMPLETED（规划已确认，2026-09-30）。唯一下一动作：Executor按 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-tiered-execution-unified-command.md` 实施U01—U08（阶段READY，ADR002已定案）。0.1.3=COMPLETED（Owner已验收），无剩余动作。
 
 ## 6. 登记口径
 
 本文件吸收评审结论形成正式需求。CTO 原稿中的“同库必然同事务”“内部异步不需要 Outbox”“独立资源即不受共享瓶颈影响”等绝对表述不作为验收规则，以本文件对应的事务边界、可靠传播与负载条件为准。
 
-本项整体PLANNING；首事务阶段COMPLETED（规划已确认），批准范围T01—T07及阶段终态同步已通过；P62不核销，后续阶段另行规划。
+本项整体PLANNING；首事务阶段COMPLETED（规划已确认），批准范围T01—T07及阶段终态同步已通过；P62不核销；分级执行与统一命令阶段READY，按对应阶段方向实施，生产保障等后续范围另行规划。
 
 ## 7. 本轮配套信息治理（Owner 2026-09-30）
 
