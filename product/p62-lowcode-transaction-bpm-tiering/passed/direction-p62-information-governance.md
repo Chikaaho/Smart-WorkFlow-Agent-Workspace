@@ -1,8 +1,8 @@
 # P62 配套信息治理方向
 
-- 日期：2026-09-30；Planner；P62（XL）配套交付；本方向 READY，事实写入依赖探索核实。
+- 日期：2026-09-30；Planner；P62（XL）配套交付；本方向 PASSED（2026-09-30，审查05）；裁决 `../receipts/planning-review-information-governance-05-passed.md`。
 - Owner 授权范围：同步 memory、knowledge、README、需求清单、功能清单等过期信息。
-- 主方向：`direction-p62-lowcode-transaction-bpm-tiering.md`；前置探索已回传；裁决：`../receipts/planning-review-exploration-01.md`。本文件是当前唯一执行入口。
+- 主方向：`../ready/direction-p62-lowcode-transaction-bpm-tiering.md`；前置探索已回传；裁决：`../receipts/planning-review-exploration-01.md`。本文件已归档；以下执行过程按历史时点保留。当前唯一入口为 `../ready/direction-p62-local-transaction-actions.md`。
 
 ## 1. 目标
 

@@ -2,15 +2,15 @@
 
 - 日期：2026-09-30；Planner；XL；功能状态 **PLANNING**。
 - Owner 本轮指令：开始制定 P62，并纳入 memory、knowledge、README、需求清单、功能清单等过期信息治理。
-- 本文是阶段收敛稿，放在 ready/ 供后续复核；目录位置不代表业务实施已 READY。
+- 本文为整体阶段方向；首个事务阶段 READY，后续阶段继续规划，整体 P62 尚未通过。
 - 正式需求基准：`todo/p62-lowcode-transaction-bpm-tiering.md` R01—R10、A01—A12，全部保留；本方向补充 G01—G06 信息治理验收。
-- **当前唯一执行入口**：`product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-information-governance.md`。探索已审查，先完成信息治理回执；首阶段范围和ADR已形成，待基线复核后进入业务READY。
+- **当前唯一执行入口**：`product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-local-transaction-actions.md`。信息治理已通过审查05并归档，首阶段按 T01—T07 实施。
 
 ## 1. 目标与范围
 
 在同一低代码平台上，使 OA 可靠异步、MES 及时执行、WMS 数据一致性与 IoT 命令回执具有统一但可分级的业务语义。优先形成受控事务动作能力，以实际事务边界、幂等身份和版本快照保障业务结果，再扩展分级调度及资源保障。
 
-本轮信息治理作为 P62 的前置及贯穿交付要求，单列方向 `direction-p62-information-governance.md`；不另增业务功能编号或完成数。治理覆盖全部受影响当前入口，不限于 P62 新文件。历史状态保留时点，当前入口明确唯一有效结论。
+本轮信息治理作为 P62 的前置及贯穿交付要求，已归档方向 `../passed/direction-p62-information-governance.md`；不另增业务功能编号或完成数。治理覆盖全部受影响当前入口，不限于 P62 新文件。历史状态保留时点，当前入口明确唯一有效结论。
 
 ## 2. 能力边界
 
@@ -50,6 +50,8 @@
 
 ## 6. 状态与授权
 
-P62 维持 PLANNING；本轮不新增已完成功能、不核销 P62 或关联 P 编号，不晋级测试基线。清单46/22/22（90）、ADV64已由探索行级复算且与映射索引双向一致；功能数45沿用权威值，IG2a 补证后口径：45 行=45 唯一 ID=45 唯一登记路径全部存在（#1 由 bpm-single-node-approval 承载登记、#23 登记文件头部陈旧快照差异列报），状态依据完整句见回执03附件；审查04已锁定映射与语义，执行05收尾（回执 `information-governance-05.md`）待规划复核。
+P62（XL）整体 PLANNING；信息治理经审查05 PASSED，首阶段低代码本地事务动作 READY。唯一下一动作：Executor 按 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-local-transaction-actions.md` 执行（先传播审查05状态，再推进 T01—T07）。0.1.3 仍 EXECUTION_SUBMITTED 待独立规划验收。
 
-阶段方向（`ready/direction-p62-local-transaction-actions.md`）与 ADR-P62-001 已形成；当前可执行工作为信息治理收尾复核（审查04后按三级补充提示03，执行05已完成：全入口同步/I3子句修正/转录26-6/容量终测；回执 `information-governance-05.md` 待规划复核）。信息治理按配套方向规定的授权和裁决边界执行；业务实现待治理复核通过后由事务阶段方向置 READY。0.1.3 发布审查保持独立，不由文档治理代替验收。发布、部署、破坏性操作不在本方向授权内。
+信息治理 G01—G06 的审查结论见 `../receipts/planning-review-information-governance-05-passed.md`；治理方向归档至 `../passed/direction-p62-information-governance.md`。阶段方向与 ADR-P62-001 的范围和兼容边界保持，后续等级/设备/性能合同继续规划。
+
+功能数45、清单46/22/22（90）、ADV64、原54问题分类31/3/5/15及总记录57不变；不核销P62或其他P编号，不晋级正式测试基线。发布、部署、破坏性操作不在本方向授权内。
