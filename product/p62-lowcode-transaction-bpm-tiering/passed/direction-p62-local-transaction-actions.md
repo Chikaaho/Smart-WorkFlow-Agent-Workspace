@@ -1,6 +1,6 @@
 # P62 首阶段：低代码本地事务动作
 
-日期：2026-09-30；Planner；P62 XL子阶段；状态 **PASSED（审查03，2026-09-30）**，裁决 `../receipts/planning-review-local-transaction-actions-03-passed.md`。本方向已归档；终态同步入口 `../ready/direction-p62-local-transaction-actions-terminal-sync.md`。下文保留阶段验收范围，旧补证要求仅作历史。
+日期：2026-09-30；Planner；P62 XL子阶段；状态 **COMPLETED（规划已确认，2026-09-30）**；终态裁决 `../receipts/planning-final-review-terminal-sync-local-transaction-actions-01-completed.md`；业务验收 **PASSED（审查03）**，裁决 `../receipts/planning-review-local-transaction-actions-03-passed.md`。本方向已归档；终态同步入口 `direction-p62-local-transaction-actions-terminal-sync.md`。下文保留阶段验收范围，旧补证要求仅作历史。
 
 依据：主方向、正式需求R01—R10/A01—A12、探索审查01、ADR-P62-001。
 
