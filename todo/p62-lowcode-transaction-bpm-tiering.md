@@ -6,7 +6,7 @@
 - 状态：PLANNING（正式需求已登记，待排期与阶段方向收敛）
 - 排期优先级：待 Owner 排期；事务型数据能力为本需求内部优先建设项。
 - Owner 依据：本会话明确“根据评审方案列为正式需求”。
-- 评审输入：[CTO 指导稿原文快照](p62-architecture-review-source-20260930.md)。保留原文供追溯；本文件为正式需求范围与验收口径。
+- 评审输入：[原始方案索引](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/README.md)、[首轮架构评审方案](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/01-architecture-review-20260930.md)、[CTO 指导稿原文](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/02-cto-guidance-20260930.md)。两份原文纳入 knowledge 供追溯；本文件为正式需求范围与验收口径。
 - 原始交付文件：~/Downloads/平台业务架构指导方案-OA-MES-WMS-IoT-CTO版-20260930.md。
 - 本轮边界：需求登记，不启动实现、探索派发、版本升级、部署或阶段验收。完成计数、清单明细与既有 P 编号核销状态不变。
 
