@@ -63,3 +63,9 @@
 ## 自验结论
 
 IG1—IG4 逐项完成并留证（三附件+本回执+批次提交）；未发现新的状态冲突。自验通过，**待 Planner 复核本回执**；复核通过前治理方向保留 ready、事务阶段方向不置 READY；本回执不写功能 PASSED/COMPLETED、不核销 P62。
+
+## 提交后附录（G06：本回执所在提交与远端包含性，提交后追加）
+
+- 本回执（information-governance-02.md）正文所在提交：workspace/develop-sw `1a2d2cb7a80a100eb6e1caa0e9f0dfe0283e897d`（1a2d2cb，范围 91c0730..1a2d2cb，含 memory/handoff.md 节名同步，2 文件）。
+- 推送回读输出：`91c0730..1a2d2cb  develop-sw -> develop-sw`；`git ls-remote origin refs/heads/develop-sw` = `1a2d2cb7a80a100eb6e1caa0e9f0dfe0283e897d`，与本地 HEAD 一致（2026-09-30）。
+- 本附录为提交后追加（追加后随后续批次或保留为本地最新变更，不再生成自引用提交）。
