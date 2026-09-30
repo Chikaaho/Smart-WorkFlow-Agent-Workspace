@@ -3,12 +3,12 @@
 - 登记日期：2026-09-30
 - 角色：Planner
 - 任务等级：XL（核心架构、跨模块契约、数据一致性与持续演进）
-- 状态：PLANNING（审查04实质映射已锁定；执行05已按三级提示完成收尾变更并提交回执05，待规划复核）
+- 状态：PLANNING（整体）；信息治理 PASSED（审查05），首事务阶段 READY。
 - 排期优先级：Owner 于 2026-09-30 启动本轮规划；事务型数据能力为本需求内部优先建设项。
 - Owner 依据：本会话明确“根据评审方案列为正式需求”。
 - 评审输入：[原始方案索引](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/README.md)、[首轮架构评审方案](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/01-architecture-review-20260930.md)、[CTO 指导稿原文](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/02-cto-guidance-20260930.md)。两份原文纳入 knowledge 供追溯；本文件为正式需求范围与验收口径。
 - 原始交付文件：~/Downloads/平台业务架构指导方案-OA-MES-WMS-IoT-CTO版-20260930.md。
-- 本轮边界：正式规划与现状探索，纳入配套信息治理；业务实施待阶段方向 READY，不启动版本升级或部署。完成计数、清单明细与既有 P 编号核销状态不变。
+- 本轮边界：信息治理已通过；业务实施仅授权首事务阶段 T01—T07，不启动版本升级或部署。完成计数、清单明细与既有 P 编号核销状态不变。
 
 ## 1. 产品目标与 Owner 已确认条件
 
@@ -144,14 +144,14 @@ C1 类关键数据只能通过受控动作写入，表单保存、导入、批�
 - BAO 架构优化：已有规划摘要记载引擎与业务共享提交边界；此为复用线索而非本次运行验证，不能把未核实能力写成确定缺失或无条件重建。
 - MES/WMS 为低代码平台能力的代表性验证场景，本项不自动扩大为完整 MES/WMS 产品套件、所有业务模板或所有现场拓扑交付。
 
-Owner 2026-09-30 当前排期：P62（XL）PLANNING；治理审查04实质映射已锁定。执行05已按三级补充提示03完成收尾同步与I3修正并提交回执05（`product/p62-lowcode-transaction-bpm-tiering/receipts/information-governance-05.md`）；唯一下一动作=Planner 复核回执05。业务未READY，0.1.3仍待规划验收；历史排期不作本轮指令。
+Owner 2026-09-30 当前排期：P62（XL）整体 PLANNING；信息治理经审查05 PASSED，首阶段低代码本地事务动作 READY。唯一下一动作：Executor 按 `…/ready/direction-p62-local-transaction-actions.md` 推进 T01—T07（审查05 状态传播已完成）。0.1.3 仍 EXECUTION_SUBMITTED 待独立规划验收。
 
 ## 6. 登记口径
 
 本文件吸收评审结论形成正式需求。CTO 原稿中的“同库必然同事务”“内部异步不需要 Outbox”“独立资源即不受共享瓶颈影响”等绝对表述不作为验收规则，以本文件对应的事务边界、可靠传播与负载条件为准。
 
-本项状态仅为 PLANNING，尚无实施或验证结果；不变更既有功能完成数、版本事实、其他需求状态或知识权威基线。
+本项整体 PLANNING，首事务阶段 READY，尚无本阶段实施或验证结果；其他需求、版本验收与正式基线不变。
 
 ## 7. 本轮配套信息治理（Owner 2026-09-30）
 
-同步 memory、knowledge、根与工程 README、需求池、功能清单、功能映射和当前交接入口；历史回执保留时点。配套方向：`product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-information-governance.md`，G01—G06 为治理验收标准。治理是 P62 的前置及贯穿交付要求，不另增功能数、不代替既有发布验收、不核销其他 P 编号。
+同步 memory、knowledge、根与工程 README、需求池、功能清单、功能映射和当前交接入口；历史回执保留时点。配套方向：`product/p62-lowcode-transaction-bpm-tiering/passed/direction-p62-information-governance.md`，G01—G06 为治理验收标准。治理是 P62 的前置及贯穿交付要求，不另增功能数、不代替既有发布验收、不核销其他 P 编号。
