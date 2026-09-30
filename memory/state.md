@@ -1,20 +1,24 @@
 # 当前状态摘要
 
-> **0.1.3 发布完成并部署 UAT（2026-09-30，执行自验通过待规划验收）**：flyway 种子合并为 `V0.1.0__baseline_seed`（原 V1—V104，等价 sha256 PG `ec5b532e…`/H2 `c5c6bf63…`；0.1.3 起仅支持全新建库）；两仓 main/tag/Release `0.1.3` 均 Latest（Server `8e23a2d`、Web `e3ae316`，CI 36603608187/36602576798 success）；UAT 删库重建上线：Flyway 2 条→v0.1.0、health UP、公网 200、浏览器验收通过；`SW_SSO_CIPHER_KEY` 契约收紧 32 字节（UAT 已轮换）。本地全量 1629/0/0/0。材料 `release/0.1.3/`；回执 `product/v0.1.3-release/receipts/{release,deployment}-20260930.md`。
+同步点：2026-09-30，信息治理执行 01。knowledge/current-status.md 为完整权威；探索已审查，信息治理执行 01 已提交回执；45 业务功能已逐名核验（45/45 登记路径存在），known-issues 已全文重审。
 
-> `sso-admin-config` **COMPLETED（规划已确认，2026-09-29）**。钉钉/飞书准入、后台配置、PC/H5、R1轮换均完成；S1限定范围检查保留局限。Server dff266add04a59e0859547f11b647772b20f8e6a；Web519a8176e33232a94ab4f1a035042fd2a86793d4；本任务模块351/0/0/0、bootstrap173/0/0/0、Web四连及1301+3。功能数45/增量0、清单46/22/22、ADV64不变；P31开放（企业微信延期）。本功能无剩余执行动作；裁决 `product/sso-admin-config/receipts/planning-final-review-terminal-sync-01-completed.md`。
+## 当前规划
 
-> 总体任务 `backend-architecture-optimization`、`v0.1.1-bugfix`、`v0.1.2-bugfix` 均 `COMPLETED`（裁决与回执见 `product/*/receipts/`）。
+- P62，XL，PLANNING：低代码事务能力与 BPM 分级执行架构；新增配套信息治理，覆盖 memory/knowledge/README/需求与功能清单等全部受影响入口。
+- 主方向 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-lowcode-transaction-bpm-tiering.md`；业务阶段尚未 READY。
+- 唯一下一动作：Planner 按 G01—G06 审查治理回执 `product/p62-lowcode-transaction-bpm-tiering/receipts/information-governance-01.md`。
+- 治理方向 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-information-governance.md` 已下发；治理执行 01 已完成 knowledge 先行更正与全入口同步，待规划验收。
 
-## 0.1.2 发布（2026-09-28 上线；已被 0.1.3 取代）
+## 已确认与待验收
 
-- `v0.1.2-release` **COMPLETED（规划已确认，2026-09-28）**：Server/Web `origin/develop=origin/main`=fd704ff…/5368e6c…（package.json 0.1.2）；tag/Release `0.1.2` 双仓公开 Latest；**生产已部署 0.1.2/V102**（V97—V102 应用 0 failed，公网健康 200；部署回执 `product/v0.1.2-release/receipts/deployment-20260928.md`）。
+- sso-admin-config：COMPLETED（规划已确认，2026-09-29）；裁决 `product/sso-admin-config/receipts/planning-final-review-terminal-sync-01-completed.md`。P31 仍开放，企业微信延期。
+- backend-architecture-optimization、v0.1.1-bugfix、v0.1.2-bugfix、v0.1.2-release：已有 COMPLETED 裁决，保留原验收/Owner 范围。
+- v0.1.3-release：EXECUTION_SUBMITTED，待规划验收。2026-09-30 release/deployment 回执记载 Server 8e23a2d、Web e3ae316、Release 0.1.3、UAT 重建上线 V0.1.0 基线；仅支持全新建库；本地全量 1629/0/0/0 为本次执行报告，尚未作为 Planner 新锁定基线。探索已回传当时远端/CI/Release元数据一致；部署运行态与资产哈希未重新核验。
 
-## 锁定基线
+## 沿用基线与边界
 
-- 功能数 **45**；清单 **✅46/🟦22/⬜22**（90）；**ADV64**；全仓历史基线 **1586/0/0/0** 与 Web **1301+3**（@fd704ff/5368e6c，不与本任务模块计数拼接）；Flyway 制品终点 **V0.1.0 基线**（0.1.3 全新建库形态；历史 V102/V93 只作 0.1.2/0.1.0 时点事实）。
-- 独立待办：V012-CODE-001 保持 READY；外部通知五渠道与腾讯 IoT 实网验证保持 Owner 延期；小程序冻结。
+- 功能数45已逐名核验（45/45 登记路径存在：#1 Walking Skeleton 由 A 组目录承载、#2—45 独立登记文件实测在）；清单46/22/22（90）已行级复算且与映射索引双向一致；ADV64同。P62/信息治理不增加或核销。
+- 0.1.2 的1586/0/0/0、Web1301+3、V102及2026-09-28部署仅作对应时点事实；不得覆盖0.1.3环境回执，也不将各任务测试数字相加。
+- V012-CODE-001 既有 READY；外部通知五渠道、腾讯 IoT 实网验证及企业微信仍按原延期边界；小程序冻结。
 
-## 历史压缩
-
-BAO/发布/三方SSO 的阶段细节见 `knowledge/current-status.md` 及 `product/*/`；v0.1.2 最终裁决 `product/v0.1.2-release/receipts/planning-final-review-terminal-sync-20260928-passed.md`；三方 SSO 接入 PASSED（审查07，阶段三回执 `product/dingtalk-sso/receipts/terminal-sync-20260929.md`，待 Planner 确认）。sso-admin-config已COMPLETED（规划确认），本功能无剩余执行动作。
+- 探索审查：`product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-exploration-01.md`；源码阅读不等同运行验证。首阶段为低代码本地事务动作（含C1保护/预占/台账/发布校验），ADR-P62-001已形成；信息治理通过后再进入业务READY。

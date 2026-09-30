@@ -74,7 +74,7 @@ ps -ef | grep -E '[m]vn|[j]ava'
 | 角色、授权、根工作流 | `system.md` 与 `roles/` |
 | Executor terminal | `.codex/governance/terminal-contract.json` |
 | completion receipt 与补证格式 | `roles/executor.md` §8 |
-| product 生命周期 | `system.md` §5.5 |
+| product 生命周期 | `system.md` §5 |
 | 当前状态 | `knowledge/current-status.md` |
 | 后端工程专属规则 | `Smart-WorkFlow-aPaaS-server/docs/governance/engineering-constitution.md` |
 | 前端工程专属规则 | `Smart-WorkFlow-aPaaS-Web/docs/governance/engineering-constitution.md` |
