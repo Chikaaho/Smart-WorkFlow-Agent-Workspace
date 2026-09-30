@@ -9,4 +9,4 @@
 - P61：旧数值 `code` 保持兼容，以可选且全局唯一的 `errorKey` 消歧；公共 `msg` 不承载原始诊断；启用 `zh-CN/en-US` 且防枚举。
 - **BAO（backend-architecture-optimization）已整体 `COMPLETED（规划已确认，2026-09-26）`**，Phase 1—6C 与 Final 的逐阶段裁决细节不再在 memory 展开，权威记录见 `knowledge/decisions.md`、`knowledge/current-status.md` 历史区与 `product/backend-architecture-optimization/`；10 项候选去向=BAO-01 `DEFERRED` + BAO-02 `PARTIAL` + 8 项 `COMPLETED`。仍有效的关键边界：动态宽表 SQL 唯一受控入口 `DynamicTableSql`（fail closed）；引擎与业务写入共享同一提交边界、流程发起与业务实例同事务；生产 IoT 无 provider 503 fail closed、缺凭据启动失败；`${revision}` 双版本机制（0.1.2值为历史；0.1.3执行回执报告开发 `0.1.3-SNAPSHOT`/正式 `0.1.3`，当前值待执行核验）与生产入口 `scripts/build-prod.sh` 制品门禁继续生效；PG 为生产权威，不证明腾讯真实云送达。
 
-- P62（Owner 2026-09-30）：启动XL规划，事务型数据能力优先，信息治理作为前置及贯穿要求；探索已审查；ADR-P62-001确定受控本地动作、C1分类、版本冻结与意图表优先，信息治理经审查05通过，首事务阶段VERIFYING（补证回执02已提交，待规划复核），整体仍PLANNING。初始性能预算不是现有SLA，0.1.3 = COMPLETED（Owner已验收，2026-09-30）。
+- P62（Owner 2026-09-30）：事务优先；ADR-P62-001受控动作/C1/冻结版本边界保持。首事务阶段PASSED（审查03；阶段功能状态COMPLETED（待规划确认，2026-09-30））；后续分级/设备/性能合同继续规划。0.1.3=COMPLETED（Owner已验收）。
