@@ -1,12 +1,12 @@
 # 当前状态摘要
 
-同步点：2026-09-30，首事务阶段回执03已提交（LT01a/LT02a/LT04a/LT05a 四项补证完成；Server `6e73a11`；门禁 1660/0/0/0）；阶段 VERIFYING。唯一下一动作=Planner 复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/local-transaction-actions-03.md` 与证据包。0.1.3=COMPLETED（Owner已验收，2026-09-30），无剩余动作。
+同步点：2026-09-30，首事务阶段PASSED（审查03）并完成阶段终态同步（回执 `product/p62-lowcode-transaction-bpm-tiering/receipts/terminal-sync-local-transaction-actions-01.md` 待规划复核）；阶段功能状态 COMPLETED（待规划确认，2026-09-30）；0.1.3 Owner完成状态保持。
 
 ## 当前规划
 
 - P62，XL，PLANNING：低代码事务能力与 BPM 分级执行架构；新增配套信息治理，覆盖 memory/knowledge/README/需求与功能清单等全部受影响入口。
-- 主方向 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-lowcode-transaction-bpm-tiering.md`；首事务阶段 `VERIFYING`（回执03待复核），整体PLANNING。
-- 唯一下一动作：Planner 复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/local-transaction-actions-03.md` 与 `receipts/evidence/local-transaction-actions-03/`，独立验收 LT01a—LT05a。
+- 主方向 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-lowcode-transaction-bpm-tiering.md`；首事务阶段已归档passed/，PASSED；阶段功能状态COMPLETED（待规划确认，2026-09-30），终态同步回执待复核。
+- 唯一下一动作：Planner复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/terminal-sync-local-transaction-actions-01.md`。
 - 治理方向已归档passed/；G01—G06及三级提示三项均已核销。不另开治理补证。
 
 ## 已确认与待验收
@@ -21,4 +21,4 @@
 - 0.1.2 的1586/0/0/0、Web1301+3、V102及2026-09-28部署仅作对应时点事实；不得覆盖0.1.3环境回执，也不将各任务测试数字相加。
 - V012-CODE-001 既有 READY；外部通知五渠道、腾讯 IoT 实网验证及企业微信仍按原延期边界；小程序冻结。
 
-- 探索审查：`product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-exploration-01.md`；源码阅读不等同运行验证。首阶段为低代码本地事务动作（含C1保护/预占/台账/发布校验），ADR-P62-001已形成；信息治理审查05通过，首阶段VERIFYING（四项已补证，回执03待规划复核）。
+- 探索及信息治理已通过；首事务阶段裁决 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-local-transaction-actions-03-passed.md`，后续分级/设备/性能合同继续规划。

@@ -2,9 +2,9 @@
 
 - 日期：2026-09-30；Planner；XL；功能状态 **PLANNING**。
 - Owner 本轮指令：开始制定 P62，并纳入 memory、knowledge、README、需求清单、功能清单等过期信息治理。
-- 本文为整体阶段方向；首个事务阶段 VERIFYING，后续阶段继续规划，整体 P62 尚未通过。
+- 本文为整体阶段方向；首事务阶段PASSED，后续阶段继续规划，整体P62尚未通过。
 - 正式需求基准：`todo/p62-lowcode-transaction-bpm-tiering.md` R01—R10、A01—A12，全部保留；本方向补充 G01—G06 信息治理验收。
-- **当前唯一执行入口**：`product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-local-transaction-actions-01.md`；阶段范围仍由本地事务阶段方向规定。
+- **当前唯一执行入口**：`product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-local-transaction-actions-terminal-sync.md`；首事务阶段已通过，后续阶段另行规划。
 
 ## 1. 目标与范围
 
@@ -37,7 +37,7 @@
 ## 4. 关键决策与待核实事项
 
 - 已确定：普通 OA 默认可靠异步；数据保护不随 BPM 等级降低；事务型数据能力内部优先；信息治理与 P62 一并跟踪。
-- 已形成 `adr-p62-001-transaction-foundation.md` 与 `direction-p62-local-transaction-actions.md`：独立受控本地动作、显式C1分类、动作版本身份、意图表优先及非破坏数据演进。后续分级/设备未知结果/资源预算另行收敛。
+- 已形成 `adr-p62-001-transaction-foundation.md` 与 `../passed/direction-p62-local-transaction-actions.md`：独立受控本地动作、显式C1分类、动作版本身份、意图表优先及非破坏数据演进。后续分级/设备未知结果/资源预算另行收敛。
 - ADR 必须给出选定方向、现状证据、约束、兼容与回滚影响；本轮不把数据库队列、Outbox 或独立引擎写成未经核实的既成实现。
 - 待固定验收合同：硬件/拓扑/网络、并发吞吐、数据与热点分布、测量窗口、失败拒绝比例、普通 OA 最低保障、恢复目标，以及每类命令的唯一完成点和超时语义。
 - 实时动作 P99 ≤300ms 等值沿用正式需求的初始预算身份；生产命令 1—3s 范围须在相关阶段进入 READY 前收敛为按操作的单值。不得把初始预算声明为现有 SLA。
@@ -50,7 +50,7 @@
 
 ## 6. 状态与授权
 
-P62整体PLANNING；治理PASSED；首事务阶段VERIFYING（审查02）。唯一下一动作：Executor按 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-local-transaction-actions-01.md` 补LT01a/LT02a/LT04a/LT05a，追加回执03。0.1.3=COMPLETED（Owner已验收），状态传播已完成。
+P62整体PLANNING；治理PASSED；首事务阶段PASSED（审查03），待阶段终态同步。唯一下一动作：Executor按 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-local-transaction-actions-terminal-sync.md` 同步并提交terminal-sync-local-transaction-actions-01.md。0.1.3=COMPLETED（Owner已验收），无剩余动作。
 
 信息治理 G01—G06 的审查结论见 `../receipts/planning-review-information-governance-05-passed.md`；治理方向归档至 `../passed/direction-p62-information-governance.md`。阶段方向与 ADR-P62-001 的范围和兼容边界保持，后续等级/设备/性能合同继续规划。
 

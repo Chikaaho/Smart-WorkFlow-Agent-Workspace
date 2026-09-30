@@ -1,6 +1,6 @@
 # CH-aPaaS 发布说明 / Release Notes
 
-## 0.1.3（2026-09-30 发布并 UAT 删库重建部署；发布/部署回执待规划验收）
+## 0.1.3（2026-09-30 发布并 UAT 删库重建部署；Owner已验收，2026-09-30，依据 product/v0.1.3-release/receipts/owner-accepted-20260930.md）
 
 - **版本发布事实**：两仓 `develop` 快进合入 `main`（Server `8e23a2d`、Web `e3ae316`）；annotated tag 与公开 Release `0.1.3`（双仓 Latest）；Flyway 种子合并为单一基线 `V0.1.0__baseline_seed.sql`（PG 102/H2 104 唯一版本，全新建库终态与原链逐字段等价），**0.1.3 起仅支持全新建库**，≤0.1.2 原地升级被 validate 显式拒绝；UAT（chikaho.cn 单机）删库重建上线，Flyway 2 条至 v0.1.0、健康 200。材料 `release/0.1.3/`；回执 `product/v0.1.3-release/receipts/release-20260930.md`、`deployment-20260930.md`。
 - **功能内容（0.1.2→0.1.3）**：后台 SSO 配置管理与 B 端手机号准入页面（`sso-admin-config`，COMPLETED（规划已确认，2026-09-29））；`SW_SSO_CIPHER_KEY` 契约收紧为 Base64 解码后 ≤32 字节（0.1.3 fail-fast 拒绝超长旧值）。
