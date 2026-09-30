@@ -6,6 +6,6 @@
 
 最终裁决 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-local-transaction-actions-01-completed.md`。阶段验证：Server6e73a11 1660/0/0/0；Web19e1c47四门1309+3；H2/PG链V0.1.1、隔离非空升级；1920及1280/1366/1024可见浏览器证据。只作阶段集合，不覆盖项目跨批次正式基线。
 
-同步提交回读：workspace509ddbf、Server文档a468dd5、Web19e1c47。Planner本次已确认完成并修正主方向旧待同步句；knowledge/工程文件对本次最终确认的机械传播纳入下次正常文档批次，无新验收回合。
+最终确认传播附录已回读knowledge两入口与Server清单，状态/归档路径/下一动作一致；Planner复核记录见同目录planning-review-final-confirmation-propagation-01.md。本批次SHA未提供；509ddbf/a468dd5仅为前一同步批次身份。无需新验收回合。
 
 下一阶段须固定四类执行形态、统一命令/结果未知、兼容与恢复边界，再确定准入/时效合同；尚未授权该阶段业务实现。功能45、清单46/22/22、ADV64、问题57/P编号均不变；企业微信、通知五渠道、腾讯IoT延期保持，0.1.3无剩余动作。
