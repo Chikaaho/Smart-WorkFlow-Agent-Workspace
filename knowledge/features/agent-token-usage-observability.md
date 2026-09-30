@@ -4,7 +4,7 @@
 M07-F04-02 / P8
 
 ## 功能状态
-**D170功能级PASSED + D172阶段三PASSED，13/13；D173终态文字已同步，等待规划层零残留确认（第29个已完成功能）**
+**COMPLETED（D174 规划层最终验收 PASSED / COMPLETED（13/13），2026-08-22；裁决 `product/agent-token-usage-observability/receipts/planning-final-review-d174.md`「最终结论：PASSED / COMPLETED（13/13）」，其中"等待规划层零残留确认"已由该裁决直接满足）。历史链：D170 功能级 PASSED + D172 阶段三 PASSED（13/13）+ D173 终态文字同步（第 29 个已完成功能）。本节 2026-09-30 由信息治理执行04 依 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-information-governance-03.md` 授权机械更正；原"等待规划层零残留确认"措辞为历史过程，D174 已消除该未完成状态。**
 
 ## 功能概述
 让有权用户能够从既有 Agent 执行与会话历史中看到供应商实际返回的输入、输出和总 Token 用量，并在多次模型调用场景下获得可追溯、可聚合且不伪装成计费数据的使用统计。

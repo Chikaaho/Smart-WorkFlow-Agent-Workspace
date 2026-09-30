@@ -73,3 +73,7 @@ Executor 返回实际完整路径；不存在的候选入口标记不适用及�
 ## 9. 审查02后的唯一入口
 
 剩余范围由 `../receipts/planning-execution-prompt-information-governance-01.md` 唯一承载，替代§8所指审查01剩余表。仅推进IG1a/IG2a/IG2b/IG3a，追加回执03；锁定项按审查02保留。
+
+## 10. 审查03后执行入口
+
+唯一当前入口=`../receipts/planning-execution-prompt-information-governance-02.md`，替代一级提示，仅处理IG1a/IG2a/IG2b的有限残余；IG3a及审查03锁定项不重验，追加回执04。

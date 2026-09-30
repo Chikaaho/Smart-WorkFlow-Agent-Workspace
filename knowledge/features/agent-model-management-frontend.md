@@ -2,6 +2,10 @@
 
 ## 当前状态
 
+**✅ COMPLETED（D107 补证最终复验 PASSED，2026-08-19；裁决 `product/agent-model-management-frontend/receipts/planning-final-review-d107.md` §1「结论：PASSED / COMPLETED」，标准 5/6/7 补证全部 PASSED、后端项目级 591/0/0）**。
+
+> **历史过程（D106 首轮 FAILED，保留原文供追溯；终态以上句裁决为准——2026-09-30 信息治理执行04 依 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-information-governance-03.md` 授权机械更正）：**
+
 **🔄 D106 FAILED（复验中，候选终态；2026-08-19）**：D105 方向（`product/agent-model-management-frontend/ready/direction-agent-model-management-frontend.md`，11 项验收标准）下发后，执行层从工作区根以执行角色自主拆分闭环：后端菜单可达性审计 + V33 最小权限 seed + 全量验证（提交 `d4d7dc3`）→ 前端契约/API/Mock/菜单/页面 + 专项测试（提交 `e26e5f0`）→ 知识库全量同步 + 回执。完成回执与测试回执已提交至 `product/agent-model-management-frontend/receipts/`；**规划层 D106 最终验收 FAILED**（审查 `receipts/planning-review-d106.md`，§5 状态裁定）——**主体实现、V33、后端 584/0/0 与前端 69f/628t 四连证据全部保留，不要求重做**；未通过的是证据闭环：①连通性测试缺可核验的 `other` 协议与远端 4xx 仍判可达语义（当前 Mock 的锁定 429/不存在 404 不是远端服务可达语义）；②真实请求链缺未认证 `/agent/models` 401 证据；③Mock 对禁用/锁定模型的连通性行为与真实后端契约未双向核对（仅声明一致）。**补证进展（执行层进行中，补充回执未归档）**：后端连通性/权限专项 +7 用例（other 协议探测、远端 4xx→success=true、未认证 401、enabled/lockedUntil 不读取）已跑通（项目级 584+7=591/0/0 预计）；前端 Mock 语义修正进行中；复验通过前，P5 核销与清单五行上调仅为执行层候选终态，不构成规划层最终确认。
 
 ## 范围（方向 §1-§3）
