@@ -1,0 +1,42 @@
+ERROR:  syntax error at or near "."
+LINE 10: ...ty_available, qty_reserved FROM sw_form_"d7d42758".id) q LIM...
+                                                              ^
+ device-command: SUCCESS result={"source":"MANUAL_VERIFY","requestId":"VERIFY:94001","basis":"现场复核工单 GD-2026-100
+
+ verify-audit: COMMAND_MANUAL_VERIFY UNKNOWN before=UNKNOWN,after=SUCCESS,basis=现场复核工单 GD-2026-1001：空调已通电开启，厂商后台状态截图存档 #A-2309
+
+physical_table=sw_form_o6yogqz309
+    batch_key    |      status      | total_count | succeeded_count | failed_count | action_version 
+-----------------+------------------+-------------+-----------------+--------------+----------------
+ accept-batch-01 | PARTIALLY_FAILED |           2 |               1 |            1 |              1
+(1 row)
+
+ item_key |  status   | err  | attempt_count 
+----------+-----------+------+---------------
+ item-1   | SUCCEEDED | -    |             1
+ item-2   | REJECTED  | 1604 |             1
+(2 rows)
+
+ command_type |  logical_command_id   | tier | completion_point |  status   
+--------------+-----------------------+------+------------------+-----------
+ BATCH_INVOKE | BATCH:accept-batch-01 | BULK | BATCH_SETTLED    | COMPLETED
+(1 row)
+
+     command_id      |        biz_ref        
+---------------------+-----------------------
+ 2105353210896912385 | BATCH:accept-batch-01
+(1 row)
+
+        invocation_key        |  status   
+------------------------------+-----------
+ BATCH:accept-batch-01:item-1 | SUCCEEDED
+ BATCH:accept-batch-01:item-2 | REJECTED
+(2 rows)
+
+ material  | qty_available | qty_reserved 
+-----------+---------------+--------------
+ ACCEPT-A1 |     50.000000 |     1.000000
+ ACCEPT-A2 |     50.000000 |     0.000000
+ ACCEPT-A3 |     50.000000 |     0.000000
+(3 rows)
+
