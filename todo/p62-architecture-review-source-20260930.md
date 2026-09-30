@@ -515,4 +515,3 @@ T1 / T2 占用预留资源，必须受控使用。
 7. [JEP 444: Virtual Threads](https://openjdk.org/jeps/444)
 8. [JEP 491: Synchronize Virtual Threads without Pinning](https://openjdk.org/jeps/491)
 9. 工作区现有设计：`product/p4-oa-personal-center-dual-dispatch/passed/direction-p4-oa-personal-center-dual-dispatch.md`
-
