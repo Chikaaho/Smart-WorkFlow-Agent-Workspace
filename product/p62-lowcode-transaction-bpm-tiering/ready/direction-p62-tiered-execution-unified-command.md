@@ -1,7 +1,7 @@
 # P62 分级执行与统一命令 · 阶段需求方向
 
-日期：2026-09-30；Planner；XL子阶段；状态 **READY**。前置首事务阶段已COMPLETED。
-当前唯一实施入口：本文件。限定探索六问已审查通过（`../receipts/planning-review-tiered-command-readiness-01.md`）；ADR-P62-002已定案。授权Executor在本方向内设计实施计划、修改Server/Web、追加非破坏迁移、完成验证并提交正式回执；无需再等Owner确认探索或编码许可。
+日期：2026-09-30；Planner；XL子阶段；状态 **VERIFYING**。前置首事务阶段已COMPLETED。
+当前方向入口：本文件；当前唯一剩余执行账本为 `../receipts/planning-review-tiered-execution-unified-command-01.md` G1—G7，Executor立即补证修正。限定探索六问已审查通过（`../receipts/planning-review-tiered-command-readiness-01.md`）；ADR-P62-002已定案。授权Executor在本方向内设计实施计划、修改Server/Web、追加非破坏迁移、完成验证并提交正式回执；无需再等Owner确认探索或编码许可。
 
 ## 目标与范围
 
@@ -71,13 +71,13 @@
 
 不包含新Broker、JDK/响应式重写、五套恢复框架整体重构、现场离线自治、完整MES/WMS套件或发布部署。不能把这些后续项或真实厂商延期项静默核销。
 
-信息治理贯穿：本阶段变更影响的knowledge、memory、README、需求与功能清单、交接和能力目录均需同步；计数45/46-22-22/ADV64/问题57以及其他P状态保持。本阶段READY，不新增功能完成数。
+信息治理贯穿：本阶段变更影响的knowledge、memory、README、需求与功能清单、交接和能力目录均需同步；计数45/46-22-22/ADV64/问题57以及其他P状态保持。本阶段VERIFYING，不新增功能完成数。
 
 ## 执行交接与回执
 
 Executor立即从本方向及ADR-P62-002进入实施，自主拆解并连续完成U01—U08。允许修改范围为本阶段Server命令/动作port/节点/设备结果接缝及必要迁移、Web配置/执行回查/核实界面、相关验证资产和受影响文档。发现范围外问题登记，不顺带实现。
 
-授权先将knowledge/current-status与session-handoff、Server功能清单等受影响当前入口同步为“分级执行与统一命令阶段READY，下一动作Executor按本方向实施”；开始后按流程记录IN_PROGRESS。memory及需求池可机械同步同一阶段执行事实，不改P62整体PLANNING或Planner验收状态。回执提供逐字段覆盖、实际提交身份及验证集合；普通批次提交包含本次Planner规划文件，历史回执保留。
+授权先将knowledge/current-status与session-handoff、Server功能清单等受影响当前入口同步为“分级执行与统一命令阶段VERIFYING，下一动作Executor按规划复核01的G1—G7补证修正”；开始后按流程记录IN_PROGRESS。memory及需求池可机械同步同一阶段执行事实，不改P62整体PLANNING或Planner验收状态。回执提供逐字段覆盖、实际提交身份及验证集合；普通批次提交包含本次Planner规划文件，历史回执保留。
 
 正式完成回执：`product/p62-lowcode-transaction-bpm-tiering/receipts/tiered-execution-unified-command-01.md`。逐项U01—U08对应对象、行为证据、层级、源码/环境身份、原始输出与有限缺口；不以结构探索当已实现。不再提交探索收尾回执。功能通过后由Planner下发阶段终态同步；本阶段通过不代表P62整体完成。
 

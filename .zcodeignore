@@ -1,0 +1,79 @@
+# 排除两个业务代码项目（由 Smart-WorkFlow-aPaaS-server / Smart-WorkFlow-aPaaS-Web 各自独立管理；工作区以 gitlink 记录其推送态）
+Smart-WorkFlow-aPaaS-server/
+Smart-WorkFlow-aPaaS-Web/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+receipts/evidence-06/bootstrap.jar
+
+# 构建产物与运行时文件：属执行期内容，不入库
+target/
+dist/
+coverage/
+node_modules/
+*.class
+*.jar
+*.war
+*.tsbuildinfo
+*.rdb
+*.pid
+
+# 原始运行日志、命令原始输出与测试产物：体量大且非交付物，本地保留、不入库
+# 仍正常入库：执行任务、方向与 prompt、回执、结构化证据（json/jsonl/md/mjs/ps1）
+# 截图（png）默认忽略；确需入库的原始输出与截图请用 git add -f 显式加入
+*.log
+*.stdout
+*.stderr
+*.out
+*.raw
+product/**/receipts/**/*.zip
+product/**/receipts/**/*.txt
+*.png
+
+# 本机重定向与临时产物（不入库）
+/0
+/1
+/-*.ts
+/lint*.txt
+/lint*.err
+/tmp-*.png
+/scripts-patch-*.mjs
+/codeSmart-WorkFlow-Agent-Workspace/
+
+# 宿主外执行监督器的本地租约、token 与审计运行态
+.codex/governance/runtime/
+.codex/governance/__pycache__/
+
+# ===== ↑ 以上同步自 .gitignore（「从 .gitignore 同步」只重写以上部分）=====
+.git/
+.hg/
+.svn/
+bower_components/
+jspm_packages/
+__pycache__/
+site-packages/
+venv/
+htmlcov/
+lcov-report/
+cmakefiles/
+cmake-build-*/
+bazel-*/
+pods/
+deriveddata/
+storybook-static/
+playwright-report/
+test-results/
+allure-results/
+allure-report/
+cdk.out/
+*.egg-info/
+*.dist-info/
+eggs/
+pip-wheel-metadata/
+wheels/
+# ----- ↑ 以上为 ZCode 默认排除规则（自定义规则请写在本行下方，不会被同步/恢复改动）-----
+# 自定义规则写在下方（本行提示可删除）
