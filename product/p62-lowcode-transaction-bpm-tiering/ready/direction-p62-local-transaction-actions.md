@@ -1,6 +1,6 @@
 # P62 首阶段：低代码本地事务动作
 
-日期：2026-09-30；Planner；P62 XL子阶段；状态 **READY（信息治理经审查05通过，2026-09-30）**。本文件为当前唯一执行入口。
+日期：2026-09-30；Planner；P62 XL子阶段；状态 **VERIFYING（首轮审查完成，待补LT01—LT06，2026-09-30）**。本文件为当前唯一执行入口。
 
 依据：主方向、正式需求R01—R10/A01—A12、探索审查01、ADR-P62-001。
 
@@ -36,13 +36,14 @@ PG行为证据证明生产数据库相关约束；H2结果保留其层级。具�
 
 设备未知结果对账、IOT_COMMAND节点化、完整等级/准入/资源隔离、统一恢复重构及A06/A07性能合同仍由后续阶段承担。A08仅本地预占子集在本阶段交付，整体A08须包含设备未知结果。A01/A11及其余全量标准最终仍须整体对照，不由阶段通过核销。
 
-信息治理G01—G06经审查05通过，未发现改变本阶段事务/权限/迁移边界的新事实；本方向READY，无需新增产品目标确认。P62整体维持PLANNING；进入实际实施时另按功能状态流转。阶段通过不新增功能数或核销P62。
+信息治理G01—G06经审查05通过，未发现改变本阶段事务/权限/迁移边界的新事实；本方向现为VERIFYING，无需新增产品目标确认。P62整体维持PLANNING；进入实际实施时另按功能状态流转。阶段通过不新增功能数或核销P62。
 
-## 本次裁决传播与回执
+## 当前补证与状态同步
 
-执行开始时，按 `../receipts/planning-review-information-governance-05-passed.md` 将新裁决先写入 knowledge/current-status.md、session-handoff.md，再同步 Server 功能清单及所有受影响当前索引的状态、治理归档路径和唯一下一动作。明确授权必要的 memory/ 与 todo/ 状态机械同步；历史回执保持原文。README 等若含旧入口一并修正，不含则注明不适用。Planner 本次规划文件与摘要变更按正常文档批次纳入提交回读。
+唯一剩余账本：`../receipts/planning-review-local-transaction-actions-01.md` 的LT01—LT06。执行回执01和提交附录保留；按已锁定结果只补余项，追加 `../receipts/local-transaction-actions-02.md`。实现细节与测试方案由Executor制定，原始证据可用时优先复用。
 
-唯一值：P62整体PLANNING；信息治理PASSED；本阶段READY；功能45；清单46/22/22；ADV64；问题57（原54分类31/3/5/15）；P编号零核销；正式验证基线不变；0.1.3=EXECUTION_SUBMITTED待独立验收；活动规划=P62；唯一下一动作=Executor按本方向推进首阶段。进入实际实施时再依状态机记录本阶段IN_PROGRESS及P62对应实施状态，不提前写完成。
+Owner明确确认0.1.3插单发布已验收，唯一状态 **0.1.3 = COMPLETED（Owner已验收，2026-09-30）**，依据 `../../v0.1.3-release/receipts/owner-accepted-20260930.md`。执行侧立即将该值写入knowledge/current-status、session-handoff、相关发布索引及Server功能清单，并按影响同步README、memory和todo；明确授权这些派生状态机械同步。该同步不等待P62补证，不创建发布规划验收任务。
 
-这是新裁决传播，纳入首阶段交付，不重开已锁定治理验收，也不要求另交information-governance-06。状态传播保存文件/字段/实际值/时点回读；业务完成后在 `../receipts/local-transaction-actions-01.md` 提交 T01—T07 逐项证据与当前入口覆盖记录。内部实施Step由Executor制定。
+当前值：P62整体PLANNING；信息治理PASSED；首阶段VERIFYING；功能45；清单46/22/22；ADV64；问题57（原54分类31/3/5/15）；P编号零核销；正式测试基线不变。唯一下一动作=Executor按本方向补LT01—LT06及传播Owner裁决；提交02时统一改为Planner复核回执02。
 
+补证回执携带文件/字段/实际值/核验时点的当前入口回读；历史正文保留，本次Planner变更按正常文档批次提交回读。无需另交信息治理06，不重开已通过治理或0.1.3验收。
