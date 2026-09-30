@@ -70,3 +70,9 @@
 ## 自验结论
 
 IG1a/IG2a/IG2b/IG3a 全部完成并留证；自验通过，**待 Planner 复核本回执**。复核通过前治理方向保留 ready、事务阶段不置 READY；不写功能 PASSED/COMPLETED、不核销 P62。#23 陈旧快照差异与 IG2b 34 条"仅索引有当前状态"边界已如实列报，交 Planner 裁定是否需要进一步处理。
+
+## 提交后附录（本回执所在提交与远端包含性，提交后追加）
+
+- 本回执（information-governance-03.md）正文所在提交：workspace/develop-sw `47b7d4c2bf1058f7a11ba450a422770582d5366d`（47b7d4c，范围 47d9512..47b7d4c，1 文件）。
+- 推送回读输出：`47d9512..47b7d4c  develop-sw -> develop-sw`；`git ls-remote origin refs/heads/develop-sw` = `47b7d4c2bf1058f7a11ba450a422770582d5366d`，与本地 HEAD 一致（2026-09-30）。
+- 本附录为提交后追加（此后不再生成自引用提交；后续文档变更按常规批次收尾）。
