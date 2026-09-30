@@ -18,3 +18,11 @@
 ## 编辑后回读容量
 
 README.md=1234B; architecture.md=857B; constraints.md=1405B; decisions.md=2657B; features.md=4685B; handoff.md=1568B; issues.md=2496B; state.md=2561B。总量17463B，最大4685B；各文件<5000B、合计<20000B。
+
+## 2026-09-30 提交身份补记回读
+
+已读取 `terminal-sync-local-transaction-actions-01-final-confirmation-commit-appendix.md`。补记提供实际批次文件清单及 `git ls-remote` 回读：workspace `origin/develop-sw=a7cf531660bf1c96e4ecfd26aae68acf8b8e9c2e`、Server `origin/develop=ca8cb87bdfd233a143d62b0b5997507d7eca2074`、Web `19e1c472ad8b8fbfd5939811572548d69bf8d4e7`未变；workspace包含最终裁决传播与Server gitlink，Server包含清单状态传播。接受执行侧记录的该时点远端回读，原“传播批次提交SHA未提供”项关闭；不冒称Planner直接查询实时远端。
+
+补记本身无需包含自引用SHA，不为其继续创建补记/验收链。编辑前独立wc逐文件与补记一致，总量17463B、最大4685B。已将state/handoff的旧提交缺口摘要改为已补齐，并交叉核对README/features/decisions的状态和下一动作；首阶段COMPLETED、P62整体PLANNING、0.1.3 Owner已验收及既有计数均不变。首阶段无剩余业务、补证或同步验收动作，下一动作继续为Planner收敛分级执行与统一命令阶段。
+
+本次摘要更正后memory总量17566B、最大4685B，满足容量约束。本次Planner文字更新并入后续正常文档批次，不新增回执要求。
