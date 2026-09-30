@@ -1,0 +1,102 @@
+# 本轮新增/扩展断言在段 B 的原始输出（摘自 lt03-B.log）
+# 选取口径：p62 用例类运行标记 + [P62-EV] 行为输出 + 消费者链路 WARN/INFO（命令处理失败/草稿提交终态失败/草稿已提交，含异常头与栈帧，验证拒绝发生在真实消费链而非 mock）
+# lt03-B.log sha256=c7f848d89ff213244ed51000f186bd78312101c17a37928439bc286ac0909d2e；运行树 git_head=6e73a1147a0233676d3fdc33f5aec0a6b10ffa9f dirty_lines=0
+# 主机地址已脱敏为 PG_DEV_HOST:PG_DEV_PORT；完整原文见 /tmp/p62-verify/lt03-B.log
+
+[INFO] Running com.sw.ck.bootstrap.p62.P62NonEmptyUpgradePgTest
+[P62-EV] lt05a.baseline migrated=2 target=0.1.0 set=V0.1.0+R__i6 history=0.1.0:841228558:2026-09-30 18:07:16:true:223ms , i6 notify menu reconciliation:-1061893576:2026-09-30 18:07:16:true:2ms
+[P62-EV] lt05a.legacy-seeded rows=2 digest=e228ed24ed985de3364682dc089c413e digest_sha256=48d0fe9565f9b4cce318fa47c42181edebb55e9984a205b2c7fa6cb3c3e7f3e0 inserted_before_increment=true
+[P62-EV] lt05a.increment migrated=2 applied=0.1.0>i6 notify menu reconciliation>0.1.1>p62 form txn action menu history_0_1_1=0.1.1|form local transaction actions|257617857|2026-09-30 18:07:16|true|13ms
+[P62-EV] lt05a.readback rows=2 digest=e228ed24ed985de3364682dc089c413e digest_sha256=48d0fe9565f9b4cce318fa47c42181edebb55e9984a205b2c7fa6cb3c3e7f3e0 digest_equal=true p62_tables=6 history=0.1.0:841228558:2026-09-30 18:07:16:true:223ms , i6 notify menu reconciliation:-1061893576:2026-09-30 18:07:16:true:2ms , 0.1.1:257617857:2026-09-30 18:07:16:true:13ms , p62 form txn action menu:742371850:2026-09-30 18:07:16:true:2ms
+[P62-EV] lt05a.file-identity migration_file=V0.1.1__form_local_transaction_actions.sql sha256=0534ce414f92ca63017e07c5c6f43bc56679b0096d329c96fd09ad3d5354d7b2
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.607 s -- in com.sw.ck.bootstrap.p62.P62NonEmptyUpgradePgTest
+[INFO] Running com.sw.ck.bootstrap.p62.P62UpperEntryC1PgTest
+[P62-EV] lt02a.boot http=http://127.0.0.1:64149/api seed=protected+plain forms, binding, openapi-app
+2026-09-30T18:07:21.520+08:00  WARN 80726 --- [           main] c.s.c.b.process.queue.CommandDispatcher  : 命令处理失败: commandId=2105238059506790401, reason=字段 qty_available 为 C1 受保护数据，只能通过受控事务动作写入
+com.sw.ck.common.exception.BaseException: 字段 qty_available 为 C1 受保护数据，只能通过受控事务动作写入
+	at com.sw.ck.form.txn.service.C1PolicyService.assertDirectWriteAllowed(C1PolicyService.java:194) ~[classes/:na]
+	at com.sw.ck.form.txn.service.C1PolicyService.assertBulkWriteAllowed(C1PolicyService.java:219) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-6.2.5.jar:6.2.5]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:723) ~[spring-aop-6.2.5.jar:6.2.5]
+	at com.sw.ck.form.txn.service.C1PolicyService$$SpringCGLIB$$0.assertBulkWriteAllowed(<generated>) ~[classes/:na]
+	at com.sw.ck.form.service.FormSubmitService.submitForm(FormSubmitService.java:368) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-6.2.5.jar:6.2.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.5.jar:6.2.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.5.jar:6.2.5]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380) ~[spring-tx-6.2.5.jar:6.2.5]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.2.5.jar:6.2.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.5.jar:6.2.5]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:727) ~[spring-aop-6.2.5.jar:6.2.5]
+	at com.sw.ck.form.service.FormSubmitService$$SpringCGLIB$$0.submitForm(<generated>) ~[classes/:na]
+	at com.sw.ck.form.service.FormDataSubmitFacadeImpl.submit(FormDataSubmitFacadeImpl.java:43) ~[classes/:na]
+	at com.sw.ck.bpm.process.queue.DraftSubmitCommandHandler.handle(DraftSubmitCommandHandler.java:80) ~[classes/:na]
+	at com.sw.ck.bpm.process.queue.CommandDispatcher.dispatchOne(CommandDispatcher.java:175) ~[classes/:na]
+	at com.sw.ck.bpm.process.queue.CommandDispatcher.dispatchLane(CommandDispatcher.java:143) ~[classes/:na]
+	at com.sw.ck.bpm.process.queue.CommandDispatcher.pollNormal(CommandDispatcher.java:125) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at com.sw.ck.bootstrap.p62.P62UpperEntryC1PgTest.drainNormalLane(P62UpperEntryC1PgTest.java:359) ~[test-classes/:na]
+	at com.sw.ck.bootstrap.p62.P62UpperEntryC1PgTest.draftSubmitEntryEnforcesC1WithNoSideEffects(P62UpperEntryC1PgTest.java:168) ~[test-classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:767) ~[junit-platform-commons-1.11.4.jar:1.11.4]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+2026-09-30T18:07:21.534+08:00  WARN 80726 --- [           main] c.s.c.b.p.q.DraftSubmitCommandHandler    : 草稿提交终态失败: draftId=2105238059301269505, reason=字段 qty_available 为 C1 受保护数据，只能通过受控事务动作写入
+[P62-EV] lt02a.draft protected entry=accepted command=2105238059506790401 status=FAILED reason=C1 draft=2105238059301269505/FAILED rows=0 flowStart=0 instances=0 http=http://127.0.0.1:64149/api
+[P62-EV] lt02a.openapi protected code=1612 errorKey=form.c1_write_protected rows=0 idem=0 flowStart=0 instances=0
+[P62-EV] lt02a.openapi-plain entry=written record=13cb1b88-e92e-4a81-a5fe-375bb487d00d replay=same-recordId rowsDelta=1 idemDelta=1
+[P62-EV] lt02a.draft-accept commandKey=DRAFT_SUBMIT:2105238060182073346:1 channel=NORMAL
+2026-09-30T18:07:21.675+08:00  WARN 80726 --- [           main] c.s.c.b.process.queue.CommandDispatcher  : 命令处理失败: commandId=2105238060039467009, reason=流程定义未发布或不可用: processDefKey=p62_upper_flow, tenantId=0
+com.sw.ck.common.exception.BaseException: 流程定义未发布或不可用: processDefKey=p62_upper_flow, tenantId=0
+	at com.sw.ck.bpm.process.service.ProcessStartService.lambda$start$3(ProcessStartService.java:189) ~[classes/:na]
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403) ~[na:na]
+	at com.sw.ck.bpm.process.service.ProcessStartService.start(ProcessStartService.java:187) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-6.2.5.jar:6.2.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.5.jar:6.2.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.5.jar:6.2.5]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380) ~[spring-tx-6.2.5.jar:6.2.5]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.2.5.jar:6.2.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.5.jar:6.2.5]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:727) ~[spring-aop-6.2.5.jar:6.2.5]
+	at com.sw.ck.bpm.process.service.ProcessStartService$$SpringCGLIB$$0.start(<generated>) ~[classes/:na]
+	at com.sw.ck.bpm.process.queue.FlowStartCommandHandler.handle(FlowStartCommandHandler.java:54) ~[classes/:na]
+	at com.sw.ck.bpm.process.queue.CommandDispatcher.dispatchOne(CommandDispatcher.java:175) ~[classes/:na]
+	at com.sw.ck.bpm.process.queue.CommandDispatcher.dispatchLane(CommandDispatcher.java:143) ~[classes/:na]
+	at com.sw.ck.bpm.process.queue.CommandDispatcher.pollNormal(CommandDispatcher.java:125) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at com.sw.ck.bootstrap.p62.P62UpperEntryC1PgTest.drainNormalLane(P62UpperEntryC1PgTest.java:359) ~[test-classes/:na]
+	at com.sw.ck.bootstrap.p62.P62UpperEntryC1PgTest.draftSubmitEntryWritesPlainFormThroughSameChain(P62UpperEntryC1PgTest.java:200) ~[test-classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:767) ~[junit-platform-commons-1.11.4.jar:1.11.4]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+2026-09-30T18:07:21.695+08:00  INFO 80726 --- [           main] c.s.c.b.p.q.DraftSubmitCommandHandler    : 草稿已提交: draftId=2105238060182073346, recordId=5e70e977-b032-4710-8a20-caee93f5f468
+[P62-EV] lt02a.draft-plain entry=written row=5e70e977-b032-4710-8a20-caee93f5f468 draft=SUBMITTED rowsDelta=1 flowStartDelta=1 (同一入口同一身份)
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.668 s -- in com.sw.ck.bootstrap.p62.P62UpperEntryC1PgTest
+[INFO] Running com.sw.ck.bootstrap.p62.P62TxnActionPgBehaviourTest
+[P62-EV] lt04.unsupported-declaration collect=remoteSideEffect/remoteApproval save=rejected(humanWait/propagation) publish=structured-error(config.remoteSideEffect)
+[P62-EV] lt02.keys mismatch/undeclared=rejected isolation=A:5/B:7 snapshot=material
+[P62-EV] lt04.frozen-v2-published confirm=v1-semantics(qty_reserved-deducted/qty_reserved2-untouched) cross-form-credential=rejected disable=new-call-rejected/old-credential-settled/replay-ok
+[P62-EV] t03.same-tx commit=both-present rollback=both-absent (record/invocation/reservation/ledger all-absent)
+[P62-EV] t04.dup-key success=1 conflict=1 reserved=3.000000
+[P62-EV] lt02.precision scale3=1.234-ok/1.2345-rejected no-rounding scale6=6-digits-ok/7-digits-rejected adjust=zero-boundary-ok/below-rejected
+[P62-EV] t02.c1 submit/update/delete=rejected plain=ok blank-enable=rejected cross-tenant=blocked
+[P62-EV] lt02.import protected=rejected/zero-write plain=2-rows-committed
+[P62-EV] t04.race confirmSettled=false sweepSettled=true status=EXPIRED settleEntries=1
+[P62-EV] lt04a.single-object form=ea8cab38-4111-46d6-b071-dfc189b8cc55 record=77aba5d5-f109-464e-8bc8-1c8335ac55e0 reservation=34800c9a-5608-47bc-8d6b-946525ef8b20 reserveAction=3e242e43-ef82-4e47-b3b8-261cea112874(v1->v2) confirmAction=bbd4e9f0-eca9-4b5e-8dd5-da7c8a88926a policyChange=allowed(applyAt=2026-09-30T18:07:29.109597) illegalChange=rejected(policy-unchanged) settle=frozen-v1(balance95/reserved0/reserved2-7) ordinary-write=blocked-before-and-after no-double-settle=true
+[P62-EV] lt04.lost-response retry=replay/same-invocation no-duplicate-effect readback=invocation/reservation/ledger
+[P62-EV] t01.concurrent succeeded=10 rejected=10 reserved=100 oversell=false ledgerSum=100
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.684 s -- in com.sw.ck.bootstrap.p62.P62TxnActionPgBehaviourTest
