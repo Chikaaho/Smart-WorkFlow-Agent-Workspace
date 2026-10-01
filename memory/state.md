@@ -6,7 +6,7 @@
 
 - P62，XL，PLANNING：低代码事务能力与 BPM 分级执行架构；新增配套信息治理，覆盖 memory/knowledge/README/需求与功能清单等全部受影响入口。
 - 主方向 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-lowcode-transaction-bpm-tiering.md`；首事务阶段业务与同步方向均归档passed/，COMPLETED（规划已确认）。
-- 唯一下一动作：Executor按 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-tiered-execution-unified-command-01.md` G1—G7修正补证，提交回执02（阶段VERIFYING）。
+- 唯一下一动作：Planner独立复核回执03（`receipts/tiered-execution-unified-command-03.md`，2026-10-01；一级提示12项已逐原子ID交付，阶段VERIFYING，不因提交升级状态）。
 - 治理方向已归档passed/；G01—G06及三级提示三项均已核销。不另开治理补证。
 
 ## 已确认与待验收
@@ -21,4 +21,4 @@
 - 0.1.2 的1586/0/0/0、Web1301+3、V102及2026-09-28部署仅作对应时点事实；不得覆盖0.1.3环境回执，也不将各任务测试数字相加。
 - V012-CODE-001 既有 READY；外部通知五渠道、腾讯 IoT 实网验证及企业微信仍按原延期边界；小程序冻结。
 
-- 探索及信息治理已通过；首事务阶段 COMPLETED（规划已确认）；分级执行阶段回执01已复核：VERIFYING，G1—G7待补；U08未通过。阶段范围与预算不变，完整生产保障后续规划。
+- 探索及信息治理已通过；首事务阶段 COMPLETED（规划已确认）；分级执行阶段VERIFYING：复核02下发一级提示12项，Executor已逐原子ID交付并提交回执03（含G1a/G1b双场景PASS、G2a SIGKILL真实中断恢复26.8s零重复、G5a三阶段隔离、G6a设计器保存修复闭环、G3a默认BLOCK缺陷修复），待Planner复核；U08压力边界已按度量执行。阶段范围与预算不变，完整生产保障后续规划。

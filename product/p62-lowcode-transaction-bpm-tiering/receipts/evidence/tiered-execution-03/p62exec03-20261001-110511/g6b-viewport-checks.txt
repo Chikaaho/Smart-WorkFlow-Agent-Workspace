@@ -1,0 +1,14 @@
+G6b 四视口可操作检查（复核02）
+runId=p62exec03-20261001-110511 时间=2026-10-01 14:37:58
+身份=P62验收操作员(91001, role 2: iot:view/iot:device:manage/iot:command:verify)
+对象=流程 2105507486266904578(TXN_ACTION 属性面板) / 设备命令 g6b-verify-01/02(UNKNOWN 人工核实弹窗)
+
+[属性面板] 1920/1366/1024/375 全部可选中节点并回读 actionId=da166513…/instanceBusinessKey/1/BLOCK（截图 attrs-panel-*）；
+  375 发现面包屑逐字竖排缺陷 → designer-crumb 单行省略修复（attrs-panel-375-crumb-vertical-defect.png 为修复前）。
+[核实弹窗] UNKNOWN 行经生产补偿调度真实转换（SENT+过期 → markUnknown，日志'命令已转待核实'）；
+  1920 完整填写依据并提交核实成功：UNKNOWN→SUCCESS，DB result={source:MANUAL_VERIFY, basis:现场复核工单 GD-2026-1002…, operatorId:91001}；
+  1366/1024 布局完整；375 发现'提交核实'按钮被裁出视口缺陷 → 弹窗宽度 min(480px, 100vw-24px) 修复后重开截图 verify-dialog-375-fixed.png 按钮可及。
+[403横幅回读] 设备页产品下拉 GET /iot/products 需 iot:product:manage，核实员角色无此权限触发整页 403 横幅；
+  修复为读路径降级（403→空选项不阻塞列表/核实主路径）后重载 has403=false（verify-dialog-1920-filled.png 背景无横幅）。
+[传输状态声明] 隔离环境无厂商凭证（fail-closed），SENT 状态为声明性 setup（复制 markSent 后丢回执库态）；
+  UNKNOWN 转换/人工核实授权/依据审计全部经生产代码真实执行；S4 已以真实 HTTP loopback 对端证明完整生命周期。

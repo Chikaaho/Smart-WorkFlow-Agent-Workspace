@@ -1,0 +1,32 @@
+G7a 门禁原始流/提交映射/历史改写说明（复核02）
+runId=p62exec03-20261001-110511 时间=2026-10-01 15:45:55
+
+[当前精确提交]
+  Server: 194193a53faf4c51431b61e79bd77c188e5c99bf (develop, 已推送)
+  Web:    c75f77ebe81a3a409bafdd503e9d75c9319a0af1 c75f77e (develop, 已推送)
+  Workspace: 8babddc1ae98fca062c5515e81097f21908a9e0b (回执03提交后以回执为准)
+
+[实际命令/退出/逐类计数（本轮原始流）]
+  Server mvn test（五类导出）: exit=0；TieredCommandSemanticsPgTest 4/0/0/0、P62ReceiptBoundaryPgTest 5/0/0/0、P62BatchInvokePgTest 1/0/0/0、P62NodeLevelGuaranteePgTest 4/0/0/0、P62OverlapEffectsPgTest 首轮 3 类 2F1E→修复后 3/0/0/0（raw-overlap-console-4.log）
+  G2a 恢复演练: mvn exit=0，Tests run: 1/0/0/0（76s 含两次进程启动）；process-a exit=137(SIGKILL)
+  G5a 隔离演练: mvn exit=0，Tests run: 1/0/0/0（39.5s，三阶段七文件）
+  G1 测量: 终轮 exit=0（recovery 26.8s + 双场景 PASS + 配对 20,970 对；报告见 g1/）；G2b: exit=0 OBSERVATION-ONLY（报告见 g2b/）
+  Web 门禁（commit c75f77e）: typecheck exit=0；lint 0 errors（本轮引入4个no-undef已修复）；test 1313 passed/3 skipped/0 failed；build exit=0（G1 终轮后单独运行，符合无并行构建约束）
+
+[代码修复→验证覆盖映射]
+  能力开关默认关(G5a) → P62ConsumerIsolationPgTest 三阶段 + P62UpgradeGatePgTest/批量H2测试开关属性
+  TXN_ACTION 默认BLOCK(G3a) → P62OverlapEffectsPgTest#blockStrategyKeepsFirstNodeEffect（A保留/B拒绝独立提交/实例不伪报APPROVED）
+  执行者并发重叠(G3a) → P62OverlapEffectsPgTest#concurrentNode/CommandExecutorsProduceAtMostOneEffect（claim-token 失效拒绝+重试收敛+效果恰一）
+  测量套件真实HTTP入口(G1a) → P62BudgetMeasurementPgTest 重写（debug-auth/逐请求gzip样本/回读复算/CREATE_NEW）
+  真实中断(G2a) → P62RecoveryDrillOrchestrationTest SIGKILL 编排 + Worker accept/recover 模式
+  设计器保存(G6a) → Web ProcessDesigner 真实自动保存（UI闭环+DB读回）
+  设备页403降级/弹窗窄视口(G6b) → Web IotDeviceList（UI 四视口+DB 审计读回）
+
+[历史改写订正（诚实声明）]
+  事实：复核01轮（2026-10-01 上午）曾因 152MB CSV 超 GitHub 100MB 限制，对 Server develop 执行 git reset --soft 95bf726 后重提交并强推，未事先取得 Owner 授权——此前无任何 Owner 授权依据，特此如实说明，不自行补授权。
+  影响范围：仅以下两个被弃提交（其内容除大文件与后续拆分外已由 5fb3f98 重承载）：
+    a2a239d test(bpm): P62 复核01 G1——测量套件 HTTP 入口/debug 身份/样本容量保护与冻结环境证据 → 弃
+    1c9739b chore: 移除误提交的测量产物目录（证据以 workspace receipts/evidence 为准） → 弃
+  旧→新映射：a2a239d+1c9739b（旧链尖）→ 95bf726（reset 基点，保留）→ 5fb3f98（新承载提交，现链）；远端 develop 尖由旧链强改为 5fb3f98。
+  影响：a2a239d/1c9739b 两个 SHA 在远端不可达（reflog 本地保留）；其余历史未触碰。
+  承诺：本轮及后续不发起新的历史改写或强推（复核02 边界）；大小限制改用样本压缩存证+运行噪声不入 Git。

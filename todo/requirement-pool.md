@@ -9,7 +9,7 @@
 
 ## Owner 优先级覆盖
 
-Owner 2026-09-30 当前排期：P62整体PLANNING；治理PASSED；首事务阶段COMPLETED（规划已确认，2026-09-30）。唯一下一动作：Executor按 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-tiered-execution-unified-command-01.md` G1—G7修正补证，提交回执02（阶段VERIFYING）。0.1.3=COMPLETED（Owner已验收），无剩余动作。
+Owner 2026-09-30 当前排期：P62整体PLANNING；治理PASSED；首事务阶段COMPLETED（规划已确认，2026-09-30）。分级执行阶段VERIFYING：一级提示12项已逐原子ID交付并提交回执03（`receipts/tiered-execution-unified-command-03.md`，2026-10-01，Server `4531cb9`/Web `c75f77e`）；唯一下一动作=Planner独立复核回执03。0.1.3=COMPLETED（Owner已验收），无剩余动作。
 
 **2026-09-23 历史排期**：活动主任务为 **`v0.1.1-bugfix`（XL 长周期缺陷修复与版本发布列车，`IN_PROGRESS`，非业务功能计数、不核销 P 编号）**——主方向 `product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md`（READY，开放收件），当前文档同步唯一入口 `product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md`（执行侧已提交回执 `product/v0.1.1-bugfix/receipts/current-state-sync-20260923-01.md`，待 Planner 复核）。缺陷账本按行复算 25 = **23 已提交候选 + 1 处理中（V011-BUG-021，失效入口待具体复现输入）+ 1 Owner 复开（V011-BUG-024，Shift+滚轮专项未关闭）**，未处置合计 2，候选全部待 Owner/Planner 独立验收。下一动作=执行侧同步回执待 Planner 复核，随后等待候选独立验收并继续开放收件；得 Owner 明确确认收件结束前不得合并 main、创建 `0.1.1` tag/Release 或部署。功能数 45、清单 ✅46/🟦22/⬜22、ADV64、P 状态与正式验证基线（Server 1423/0/0/0、Web 1217+3、Flyway V93）本轮零变化；0.1.0 发布身份锁定，不得重复发布。**本文件 P 编号状态与计数不因本轮同步改变**（另记：两仓 `0.1.1-bugfix` 本地 HEAD 之后有 2 个 Server 与 16 个 Web 提交未登记于账本或任何单缺陷回执、未推送，只作事实记录，登记或分离待 Planner 裁决，见 `knowledge/features/v0.1.1-bugfix.md` §3.1）。
 

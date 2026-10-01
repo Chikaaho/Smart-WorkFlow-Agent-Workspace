@@ -1,0 +1,11 @@
+G1a/G1b 终轮结果（复核02，前两轮失败轮样本已隔离保留于 g1-failed-round1-401-403/ 与 g1-round2-pass-with-polluted-recovery/）
+runId=p62exec03-20261001-110511 终轮时间=2026-10-01 16:57:28
+
+[G2a 套件内恢复段（先于负载单独度量）] elapsedMs=26829 completed=100/100 effects=100 invocations=100 duplicate-effects=0
+[G1a 实时动作] HTTP入口 concurrency=16(两租户各8) warmup=60s formal=300s formalSamples=62828 legal=62828 illegal=0 rejectRate=0 p50=72.4ms p95=102.1ms p99=165.5ms max=502.7ms 预算300ms verdict=PASS
+[G1a 轻流程受理] formalSamples=51746 legal=51746 illegal=0 p50=89.1ms p95=121.8ms p99=181.4ms max=647.0ms 预算2000ms verdict=PASS
+[G1b 受理→目标提交] accepted=51746 validPairs=20970 succeededPairs=20970 rejectedPairs=0 incomplete=30776 pairP50=524162ms pairP95=641074ms pairP99=650696ms 时钟=PG双侧(create_time vs invocation.update_time)
+  说明：未完成 30,777 为 8 分钟排干窗后的真实未收敛量（受理速率≈172/s > 节点排干速率≈50/s），
+  配对时延含排队等待，按方向'另报受理至目标动作提交'如实呈报，不设阈值判定；_capacity 边界结论：稳态积压下受理-结算段无界增长。
+[身份] debug token test_91999(tenant 0)/test_92999(tenant 100)，租户经 sys_tenant 注册，权限 form:data:submit+form:action:invoke 经 role 2 正式装载
+[样本] 每场景 gzip CSV（tenant/object/时间戳/耗时/结果 逐请求全量），CREATE_NEW 不可覆盖，统计由样本回读复算，SHA256 见报告文件

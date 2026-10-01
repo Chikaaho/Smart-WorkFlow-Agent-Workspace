@@ -1,0 +1,22 @@
+G6a 设计器保存闭环（复核02）
+runId=p62exec03-20261001-110511  时间=2026-10-01 12:26:03
+
+[缺陷定位]
+  修复前: 头部'草稿已保存 HH:MM'取 load() 时刻（ProcessDesigner.vue 旧 L842-843 双写），无任何自动/真实保存；
+  画布改动仅存内存，重载即失（截图 g6a-defect-repro-*.png：12:02 假标签 → 重载后节点消失）；
+  DB 佐证: graph_json 停留在创建时刻 583 字节（update_time=11:57:57）。
+
+[修复]
+  - 头部状态改由真实保存驱动: dirty(序列化对比) + 1.5s 防抖自动保存(saveProcessDefGraph PUT /workflow/defs/{id}/graph)，成功后 markSaved()
+  - 加载时刻不再假报已保存（显示'未保存的更改'/空）；发布前存在脏状态先真实保存
+  - vue-tsc 通过；无新增端点
+
+[UI 闭环证据]
+  1. UI 填写: 组件库点击添加 TXN_ACTION + 锚点拉线 START→TXN→END + 属性面板填 actionId=da166513…/instanceBusinessKey/数量1/BLOCK
+  2. 保存: 自动保存触发，DB graph_json 583→975 字节，含 TXN_ACTION/da166513/instanceBusinessKey/BLOCK
+  3. 重开属性仍在: readback=[事务动作, da166513-a4e8-481b-8cd2-2af36f4edb40, instanceBusinessKey, 1, BLOCK]（g6a-reopen-attributes-readback.png）
+  4. 发布: status=PUBLISHED v1, Flowable 部署, form binding active=t
+  5. 同对象执行/效果: UI 发起表单(G6A-EXEC-OK,可用10,预占0) → 节点动作 SUCCEEDED，qty_reserved=1
+     另一单(G6A-EXEC-OBJ 预占10)动作 REJECTED 1604（BLOCK 拒绝真实展示，拒绝行独立提交可回查）
+
+[无API/SQL替填] 图配置全部经设计器 UI 交互与保存请求产生；SQL 仅作只读核验。

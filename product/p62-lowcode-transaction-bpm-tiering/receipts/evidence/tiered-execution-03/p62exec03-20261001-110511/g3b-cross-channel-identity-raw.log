@@ -1,0 +1,480 @@
+[INFO] Running com.sw.ck.bootstrap.p62.TieredCommandSemanticsPgTest
+2026-10-01T11:08:46.526+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      : The files belonging to this database system will be owned by user "chikan".
+2026-10-01T11:08:46.526+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      : This user must also own the server process.
+2026-10-01T11:08:46.526+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      : 
+2026-10-01T11:08:46.526+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      : The database cluster will be initialized with locale "C.UTF-8".
+2026-10-01T11:08:46.526+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      : The default text search configuration will be set to "english".
+2026-10-01T11:08:46.526+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      : 
+2026-10-01T11:08:46.526+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      : Data page checksums are disabled.
+2026-10-01T11:08:46.526+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      : 
+2026-10-01T11:08:46.526+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      : fixing permissions on existing directory /var/folders/bj/b_8gswn94js1733mt9xtckn80000gn/T/epg12068069763330679639 ... ok
+2026-10-01T11:08:46.527+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      : creating subdirectories ... ok
+2026-10-01T11:08:46.528+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      : selecting dynamic shared memory implementation ... posix
+2026-10-01T11:08:46.549+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      : selecting default "max_connections" ... 100
+2026-10-01T11:08:46.570+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      : selecting default "shared_buffers" ... 128MB
+2026-10-01T11:08:46.572+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      : selecting default time zone ... Asia/Shanghai
+2026-10-01T11:08:46.574+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      : creating configuration files ... ok
+2026-10-01T11:08:46.729+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      : running bootstrap script ... ok
+2026-10-01T11:08:47.068+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      : performing post-bootstrap initialization ... ok
+2026-10-01T11:08:47.096+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      : syncing data to disk ... ok
+2026-10-01T11:08:47.096+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      : 
+2026-10-01T11:08:47.096+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      : Success. You can now start the database server using:
+2026-10-01T11:08:47.096+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      : 
+2026-10-01T11:08:47.096+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      :     /var/folders/bj/b_8gswn94js1733mt9xtckn80000gn/T/embedded-pg/PG-5008f6c2eb051303352e7a787473c109/bin/pg_ctl -D /var/folders/bj/b_8gswn94js1733mt9xtckn80000gn/T/epg12068069763330679639 -l logfile start
+2026-10-01T11:08:47.096+08:00  INFO 55580 --- [itdb:pid(56376)] i.z.t.d.p.embedded.EmbeddedPostgres      : 
+2026-10-01T11:08:47.097+08:00  INFO 55580 --- [           main] i.z.t.d.p.embedded.EmbeddedPostgres      : c404ebf9-02c1-4b85-9f20-2a78f37ac7ed initdb completed in 00:00:00.605
+2026-10-01T11:08:47.100+08:00  INFO 55580 --- [           main] i.z.t.d.p.embedded.EmbeddedPostgres      : c404ebf9-02c1-4b85-9f20-2a78f37ac7ed postmaster started as Process[pid=56386, exitValue="not exited"] on port 64747.  Waiting up to PT10S for server startup to finish.
+2026-10-01T11:08:47.138+08:00  INFO 55580 --- [gres:pid(56386)] i.z.t.d.p.embedded.EmbeddedPostgres      : waiting for server to start....2026-10-01 11:08:47.138 CST [56388] LOG:  starting PostgreSQL 17.5 on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.6), 64-bit
+2026-10-01T11:08:47.139+08:00  INFO 55580 --- [gres:pid(56386)] i.z.t.d.p.embedded.EmbeddedPostgres      : 2026-10-01 11:08:47.139 CST [56388] LOG:  listening on IPv6 address "::1", port 64747
+2026-10-01T11:08:47.139+08:00  INFO 55580 --- [gres:pid(56386)] i.z.t.d.p.embedded.EmbeddedPostgres      : 2026-10-01 11:08:47.139 CST [56388] LOG:  listening on IPv4 address "127.0.0.1", port 64747
+2026-10-01T11:08:47.139+08:00  INFO 55580 --- [gres:pid(56386)] i.z.t.d.p.embedded.EmbeddedPostgres      : 2026-10-01 11:08:47.139 CST [56388] LOG:  listening on Unix socket "/tmp/.s.PGSQL.64747"
+2026-10-01T11:08:47.141+08:00  INFO 55580 --- [gres:pid(56386)] i.z.t.d.p.embedded.EmbeddedPostgres      : 2026-10-01 11:08:47.141 CST [56391] LOG:  database system was shut down at 2026-10-01 11:08:47 CST
+2026-10-01T11:08:47.143+08:00  INFO 55580 --- [gres:pid(56386)] i.z.t.d.p.embedded.EmbeddedPostgres      : 2026-10-01 11:08:47.143 CST [56388] LOG:  database system is ready to accept connections
+2026-10-01T11:08:47.216+08:00  INFO 55580 --- [           main] i.z.t.d.p.embedded.EmbeddedPostgres      : c404ebf9-02c1-4b85-9f20-2a78f37ac7ed postmaster startup finished in 00:00:00.119
+2026-10-01T11:08:47.219+08:00  INFO 55580 --- [gres:pid(56386)] i.z.t.d.p.embedded.EmbeddedPostgres      :  done
+2026-10-01T11:08:47.219+08:00  INFO 55580 --- [gres:pid(56386)] i.z.t.d.p.embedded.EmbeddedPostgres      : server started
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-10-01T11:08:47.371+08:00  INFO 55580 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.2.5 using Java 21.0.11 with PID 55580 (started by chikan in /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-bootstrap)
+2026-10-01T11:08:47.371+08:00  INFO 55580 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : The following 1 profile is active: "prod"
+2026-10-01T11:08:48.022+08:00  INFO 55580 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-01T11:08:48.022+08:00  INFO 55580 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-10-01T11:08:48.025+08:00  INFO 55580 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2026-10-01T11:08:48.059+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'storageFileMapper' and 'com.sw.ck.storage.mapper.StorageFileMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.059+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifyChannelConfigMapper' and 'com.sw.ck.notify.mapper.NotifyChannelConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.059+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifyMessageMapper' and 'com.sw.ck.notify.mapper.NotifyMessageMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.059+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifyRuleMapper' and 'com.sw.ck.notify.mapper.NotifyRuleMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.059+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifySendAttemptMapper' and 'com.sw.ck.notify.mapper.NotifySendAttemptMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.059+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifySubscriptionMapper' and 'com.sw.ck.notify.mapper.NotifySubscriptionMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.059+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifyTemplateMapper' and 'com.sw.ck.notify.mapper.NotifyTemplateMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.059+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'notifyTemplateVersionMapper' and 'com.sw.ck.notify.mapper.NotifyTemplateVersionMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.059+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'jobInfoMapper' and 'com.sw.ck.job.mapper.JobInfoMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.059+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'jobLogMapper' and 'com.sw.ck.job.mapper.JobLogMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.059+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphDebugNodeMapper' and 'com.sw.ck.agent.mapper.AgentGraphDebugNodeMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.059+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphDebugSessionMapper' and 'com.sw.ck.agent.mapper.AgentGraphDebugSessionMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.059+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphDefMapper' and 'com.sw.ck.agent.mapper.AgentGraphDefMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.059+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphExecutionMapper' and 'com.sw.ck.agent.mapper.AgentGraphExecutionMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.059+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentGraphExecutionNodeMapper' and 'com.sw.ck.agent.mapper.AgentGraphExecutionNodeMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.059+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentMessageMapper' and 'com.sw.ck.agent.mapper.AgentMessageMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.059+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentModelConfigMapper' and 'com.sw.ck.agent.mapper.AgentModelConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.059+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentSessionMapper' and 'com.sw.ck.agent.mapper.AgentSessionMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.059+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentToolCallLogMapper' and 'com.sw.ck.agent.mapper.AgentToolCallLogMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.059+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentToolExternalConfigMapper' and 'com.sw.ck.agent.mapper.tool.AgentToolExternalConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.059+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'agentToolInternalConfigMapper' and 'com.sw.ck.agent.mapper.tool.AgentToolInternalConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.060+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formConfigMapper' and 'com.sw.ck.form.mapper.FormConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.060+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formDefMapper' and 'com.sw.ck.form.mapper.FormDefMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.060+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formExtQueryMapper' and 'com.sw.ck.form.mapper.FormExtQueryMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.060+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formLifecycleAuditMapper' and 'com.sw.ck.form.mapper.FormLifecycleAuditMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.060+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formListConfigMapper' and 'com.sw.ck.form.mapper.FormListConfigMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.060+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formSnapshotMapper' and 'com.sw.ck.form.mapper.FormSnapshotMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.060+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'formTraceMapper' and 'com.sw.ck.form.mapper.FormTraceMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.060+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'c1PolicyMapper' and 'com.sw.ck.form.txn.mapper.C1PolicyMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.060+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'txnActionMapper' and 'com.sw.ck.form.txn.mapper.TxnActionMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.060+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'txnActionVersionMapper' and 'com.sw.ck.form.txn.mapper.TxnActionVersionMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.060+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'txnInvocationMapper' and 'com.sw.ck.form.txn.mapper.TxnInvocationMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.060+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'txnLedgerMapper' and 'com.sw.ck.form.txn.mapper.TxnLedgerMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.060+08:00  WARN 55580 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'txnReservationMapper' and 'com.sw.ck.form.txn.mapper.TxnReservationMapper' mapperInterface. Bean already defined with the same name!
+2026-10-01T11:08:48.060+08:00  INFO 55580 --- [           main] faultConfiguringBeanFactoryPostProcessor : No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2026-10-01T11:08:48.061+08:00  INFO 55580 --- [           main] faultConfiguringBeanFactoryPostProcessor : No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2026-10-01T11:08:48.092+08:00  WARN 55580 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration' of type [org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-10-01T11:08:48.092+08:00  WARN 55580 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'stringOrNumberMigrationVersionConverter' of type [org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration$StringOrNumberToMigrationVersionConverter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-10-01T11:08:48.144+08:00  INFO 55580 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-10-01T11:08:48.145+08:00  INFO 55580 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-01T11:08:48.145+08:00  INFO 55580 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2026-10-01T11:08:48.233+08:00  INFO 55580 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2026-10-01T11:08:48.233+08:00  INFO 55580 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 860 ms
+2026-10-01T11:08:48.374+08:00 DEBUG 55580 --- [           main] c.s.c.s.filter.JwtAuthenticationFilter   : Filter 'jwtAuthenticationFilter' configured for use
+2026-10-01T11:08:48.374+08:00 DEBUG 55580 --- [           main] c.s.c.s.f.DebugAuthenticationFilter      : Filter 'debugAuthenticationFilter' configured for use
+2026-10-01T11:08:48.374+08:00 DEBUG 55580 --- [           main] c.s.c.s.filter.AccessLoggingFilter       : Filter 'accessLoggingFilter' configured for use
+2026-10-01T11:08:48.382+08:00  INFO 55580 --- [           main] c.s.c.s.provider.CosStorageProvider      : COS 存储提供商初始化完成，bucket: , region: ap-guangzhou
+2026-10-01T11:08:48.383+08:00  INFO 55580 --- [           main] c.s.c.s.provider.LocalStorageProvider    : 本地存储提供商初始化完成，基路径: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-bootstrap/uploads
+2026-10-01T11:08:48.384+08:00  INFO 55580 --- [           main] c.s.c.s.provider.MinioStorageProvider    : MinIO 客户端已创建，endpoint: http://localhost:9000
+2026-10-01T11:08:48.386+08:00  WARN 55580 --- [           main] c.s.c.s.provider.MinioStorageProvider    : MinIO 初始化时检查 bucket 失败，将在首次上传时重试: Failed to connect to localhost/[0:0:0:0:0:0:0:1]:9000
+2026-10-01T11:08:48.387+08:00  INFO 55580 --- [           main] c.s.c.s.provider.QiniuStorageProvider    : 七牛云存储提供商初始化完成，bucket: , domain: 
+2026-10-01T11:08:48.387+08:00  INFO 55580 --- [           main] c.s.c.s.p.StorageProviderRegistry        : 存储提供商注册表初始化完成，已注册类型: [cos, local, minio, qiniu]
+2026-10-01T11:08:48.422+08:00  INFO 55580 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-4,master} inited
+2026-10-01T11:08:48.422+08:00  INFO 55580 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource - add a datasource named [master] success
+2026-10-01T11:08:48.422+08:00  INFO 55580 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+2026-10-01T11:08:48.457+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:48.467+08:00  INFO 55580 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://127.0.0.1:64747/postgres?stringtype=unspecified (PostgreSQL 17.5)
+2026-10-01T11:08:48.481+08:00  INFO 55580 --- [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-10-01T11:08:48.481+08:00  INFO 55580 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.008s)
+2026-10-01T11:08:48.484+08:00  INFO 55580 --- [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-10-01T11:08:48.493+08:00  INFO 55580 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-01T11:08:48.540+08:00  INFO 55580 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "0.1.0 - baseline seed"
+2026-10-01T11:08:48.704+08:00  WARN 55580 --- [           main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: column "iot_access_enabled" of relation "sw_bpm_process_def" already exists, skipping (SQL State: 42701 - Error Code: 0)
+2026-10-01T11:08:48.797+08:00  WARN 55580 --- [           main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: column "theme_rule" of relation "sw_bpm_process_def" already exists, skipping (SQL State: 42701 - Error Code: 0)
+2026-10-01T11:08:48.797+08:00  WARN 55580 --- [           main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: column "theme" of relation "sw_bpm_instance" already exists, skipping (SQL State: 42701 - Error Code: 0)
+2026-10-01T11:08:48.797+08:00  WARN 55580 --- [           main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: relation "sw_bpm_theme_seq" already exists, skipping (SQL State: 42P07 - Error Code: 0)
+2026-10-01T11:08:48.809+08:00  INFO 55580 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "0.1.1 - form local transaction actions"
+2026-10-01T11:08:48.825+08:00  INFO 55580 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "0.1.2 - tiered command semantics"
+2026-10-01T11:08:48.832+08:00  INFO 55580 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "0.1.3 - batch command"
+2026-10-01T11:08:48.839+08:00  INFO 55580 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" with repeatable migration "i6 notify menu reconciliation"
+2026-10-01T11:08:48.843+08:00  INFO 55580 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" with repeatable migration "p62 form txn action menu"
+2026-10-01T11:08:48.847+08:00  INFO 55580 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" with repeatable migration "p62 iot command verify menu"
+2026-10-01T11:08:48.850+08:00  INFO 55580 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" with repeatable migration "p62 txn batch menu"
+2026-10-01T11:08:48.853+08:00  INFO 55580 --- [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 8 migrations to schema "public", now at version v0.1.3 (execution time 00:00.283s)
+2026-10-01T11:08:49.014+08:00  INFO 55580 --- [           main] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2026-10-01T11:08:49.015+08:00  INFO 55580 --- [           main] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2026-10-01T11:08:49.015+08:00  INFO 55580 --- [           main] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2026-10-01T11:08:49.015+08:00  INFO 55580 --- [           main] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2026-10-01T11:08:49.015+08:00  INFO 55580 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2026-10-01T11:08:49.015+08:00  INFO 55580 --- [           main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2026-10-01T11:08:49.015+08:00  INFO 55580 --- [           main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2026-10-01T11:08:49.015+08:00  INFO 55580 --- [           main] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@6e0b41cb
+2026-10-01T11:08:49.522+08:00  INFO 55580 --- [           main] c.s.c.s.security.RsaLoginKeyManager      : 登录 RSA 密钥装载完成: activeVersion=v1, versions=[v1]
+2026-10-01T11:08:49.705+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:49.814+08:00  INFO 55580 --- [           main] c.s.ck.form.dynamic.DynamicTableManager  : DynamicTableManager initialized with dialect: POSTGRESQL
+2026-10-01T11:08:49.841+08:00  INFO 55580 --- [           main] c.s.c.b.e.c.BpmEngineAutoConfiguration   : BPM engine auto-configuration started (Flowable process engine)
+2026-10-01T11:08:49.852+08:00  INFO 55580 --- [           main] o.f.s.b.e.EventRegistryAutoConfiguration : No deployment resources were found for autodeployment
+2026-10-01T11:08:49.932+08:00  INFO 55580 --- [           main] o.f.c.e.i.a.DefaultAsyncTaskExecutor     : Creating thread pool queue of size 100
+2026-10-01T11:08:49.932+08:00  INFO 55580 --- [           main] o.f.c.e.i.a.DefaultAsyncTaskExecutor     : Creating thread factory with naming pattern flowable-async-task-invoker-%d
+2026-10-01T11:08:49.932+08:00  INFO 55580 --- [           main] o.f.c.e.i.a.DefaultAsyncTaskExecutor     : Creating executor service with corePoolSize 8, maxPoolSize 8 and keepAliveTime 5000
+2026-10-01T11:08:49.986+08:00  INFO 55580 --- [           main] c.s.c.b.e.c.BpmEngineAutoConfiguration   : Flowable engine bound to application DataSource=DynamicRoutingDataSource transactionManager=JdbcTransactionManager (single commit boundary)
+2026-10-01T11:08:49.987+08:00  INFO 55580 --- [           main] o.f.s.SpringProcessEngineConfiguration   : Found 2 Engine Configurators in total:
+2026-10-01T11:08:49.987+08:00  INFO 55580 --- [           main] o.f.s.SpringProcessEngineConfiguration   : class org.flowable.eventregistry.spring.configurator.SpringEventRegistryConfigurator (priority:100000)
+2026-10-01T11:08:49.987+08:00  INFO 55580 --- [           main] o.f.s.SpringProcessEngineConfiguration   : class org.flowable.idm.engine.configurator.IdmEngineConfigurator (priority:150000)
+2026-10-01T11:08:49.987+08:00  INFO 55580 --- [           main] o.f.s.SpringProcessEngineConfiguration   : Executing beforeInit() of class org.flowable.eventregistry.spring.configurator.SpringEventRegistryConfigurator (priority:100000)
+2026-10-01T11:08:49.988+08:00  INFO 55580 --- [           main] o.f.s.SpringProcessEngineConfiguration   : Executing beforeInit() of class org.flowable.idm.engine.configurator.IdmEngineConfigurator (priority:150000)
+2026-10-01T11:08:49.989+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:50.158+08:00  INFO 55580 --- [           main] o.f.s.SpringProcessEngineConfiguration   : Executing configure() of class org.flowable.eventregistry.spring.configurator.SpringEventRegistryConfigurator (priority:100000)
+2026-10-01T11:08:50.159+08:00  INFO 55580 --- [           main] o.f.e.impl.EventRegistryEngineImpl       : EventRegistryEngine default created
+2026-10-01T11:08:50.159+08:00  INFO 55580 --- [           main] o.f.s.SpringProcessEngineConfiguration   : Executing configure() of class org.flowable.idm.engine.configurator.IdmEngineConfigurator (priority:150000)
+2026-10-01T11:08:50.159+08:00  INFO 55580 --- [           main] o.f.idm.engine.impl.IdmEngineImpl        : IdmEngine default created
+2026-10-01T11:08:50.159+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:50.159+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] for JDBC transaction
+2026-10-01T11:08:50.159+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] to manual commit
+2026-10-01T11:08:50.162+08:00  INFO 55580 --- [           main] o.f.c.e.impl.db.CommonDbSchemaManager    : performing create on common with resource org/flowable/common/db/create/flowable.postgres.create.common.sql
+2026-10-01T11:08:50.214+08:00  INFO 55580 --- [           main] o.f.e.impl.db.ProcessDbSchemaManager     : performing create on engine with resource org/flowable/db/create/flowable.postgres.create.engine.sql
+2026-10-01T11:08:50.247+08:00  INFO 55580 --- [           main] o.f.e.impl.db.ProcessDbSchemaManager     : performing create on history with resource org/flowable/db/create/flowable.postgres.create.history.sql
+2026-10-01T11:08:50.259+08:00  INFO 55580 --- [           main] o.f.i.engine.impl.db.IdmDbSchemaManager  : performing create on identity with resource org/flowable/idm/db/create/flowable.postgres.create.identity.sql
+2026-10-01T11:08:50.269+08:00  INFO 55580 --- [           main] o.f.e.impl.db.EventDbSchemaManager       : performing create on eventregistry with resource org/flowable/eventregistry/db/create/flowable.postgres.create.eventregistry.sql
+2026-10-01T11:08:50.274+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:50.274+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}]
+2026-10-01T11:08:50.274+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] after transaction
+2026-10-01T11:08:50.274+08:00  INFO 55580 --- [           main] o.f.engine.impl.ProcessEngineImpl        : ProcessEngine default created
+2026-10-01T11:08:50.275+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:50.275+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] for JDBC transaction
+2026-10-01T11:08:50.275+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] to manual commit
+2026-10-01T11:08:50.277+08:00  INFO 55580 --- [           main] o.f.e.impl.cmd.ValidateV5EntitiesCmd     : Total of v5 deployments found: 0
+2026-10-01T11:08:50.277+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:50.277+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}]
+2026-10-01T11:08:50.277+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] after transaction
+2026-10-01T11:08:50.277+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:50.277+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] for JDBC transaction
+2026-10-01T11:08:50.277+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] to manual commit
+2026-10-01T11:08:50.277+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:50.277+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}]
+2026-10-01T11:08:50.277+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] after transaction
+2026-10-01T11:08:50.277+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:50.277+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] for JDBC transaction
+2026-10-01T11:08:50.277+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] to manual commit
+2026-10-01T11:08:50.278+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:50.278+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}]
+2026-10-01T11:08:50.278+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] after transaction
+2026-10-01T11:08:50.315+08:00  INFO 55580 --- [           main] c.s.c.b.p.c.BpmProcessAutoConfiguration  : BPM process auto-configuration started (business processing layer)
+2026-10-01T11:08:50.529+08:00 DEBUG 55580 --- [           main] c.s.c.b.e.t.GraphToBpmnTranslator        : GraphToBpmnTranslator initialized from BpmNodeRegistry with 9 translators
+2026-10-01T11:08:50.808+08:00  INFO 55580 --- [           main] c.s.c.b.process.queue.CommandDispatcher  : 命令调度器已启动: normalPoll=3600000ms, p0Poll=3600000ms, batch=20, p0Batch=5, maxRetries=5
+2026-10-01T11:08:50.907+08:00  INFO 55580 --- [           main] c.s.c.b.e.c.BpmEngineAutoConfiguration   : ApproverResolverMap initialized with 2 entries: [SCRIPT, DESIGNATED]
+2026-10-01T11:08:50.963+08:00  INFO 55580 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noopUserDetailsService
+2026-10-01T11:08:51.121+08:00  INFO 55580 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-01T11:08:51.167+08:00  INFO 55580 --- [           main] c.s.c.n.c.NotifyChannelStartupValidator  : NotifyChannelStartupValidator：渠道配置校验通过（启用渠道数量由装配结果决定）
+2026-10-01T11:08:51.444+08:00  INFO 55580 --- [           main] o.s.i.endpoint.EventDrivenConsumer       : Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2026-10-01T11:08:51.444+08:00  INFO 55580 --- [           main] o.s.i.channel.PublishSubscribeChannel    : Channel 'application.errorChannel' has 1 subscriber(s).
+2026-10-01T11:08:51.444+08:00  INFO 55580 --- [           main] o.s.i.endpoint.EventDrivenConsumer       : started bean '_org.springframework.integration.errorLogger'
+2026-10-01T11:08:51.445+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:51.445+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] for JDBC transaction
+2026-10-01T11:08:51.445+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] to manual commit
+2026-10-01T11:08:51.452+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:51.452+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}]
+2026-10-01T11:08:51.454+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] after transaction
+2026-10-01T11:08:51.454+08:00  INFO 55580 --- [           main] o.f.j.s.i.a.AbstractAsyncExecutor        : Starting up the async job executor [org.flowable.spring.job.service.SpringAsyncExecutor] for engine bpmn
+2026-10-01T11:08:51.455+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:51.455+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] for JDBC transaction
+2026-10-01T11:08:51.455+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] to manual commit
+2026-10-01T11:08:51.457+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:51.457+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}]
+2026-10-01T11:08:51.457+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] after transaction
+2026-10-01T11:08:51.457+08:00  INFO 55580 --- [      Thread-68] o.f.j.s.i.a.AcquireAsyncJobsDueRunnable  : starting to acquire async jobs due for engine bpmn
+2026-10-01T11:08:51.457+08:00 DEBUG 55580 --- [uire-async-jobs] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:51.457+08:00  INFO 55580 --- [           main] o.f.s.c.DefaultAutoDeploymentStrategy    : Deploying resources [file [/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-bpm/sw-bpm-process/target/classes/processes/skeleton_approval.bpmn20.xml]] for engine org.flowable.engine.impl.ProcessEngineImpl@582c2124 deployment name hint SpringBootAutoDeployment
+2026-10-01T11:08:51.457+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:51.457+08:00 DEBUG 55580 --- [uire-async-jobs] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] for JDBC transaction
+2026-10-01T11:08:51.457+08:00  INFO 55580 --- [      Thread-70] o.f.j.s.i.a.ResetExpiredJobsRunnable     : starting to reset expired jobs for engine bpmn
+2026-10-01T11:08:51.457+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] for JDBC transaction
+2026-10-01T11:08:51.457+08:00 DEBUG 55580 --- [uire-async-jobs] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] to manual commit
+2026-10-01T11:08:51.457+08:00  INFO 55580 --- [      Thread-69] o.f.j.s.i.a.AcquireTimerJobsRunnable     : starting to acquire async jobs due for engine bpmn
+2026-10-01T11:08:51.457+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] to manual commit
+2026-10-01T11:08:51.457+08:00 DEBUG 55580 --- [et-expired-jobs] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:51.457+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:51.457+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}]
+2026-10-01T11:08:51.457+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] after transaction
+2026-10-01T11:08:51.457+08:00 DEBUG 55580 --- [uire-timer-jobs] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:51.458+08:00 DEBUG 55580 --- [uire-timer-jobs] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] for JDBC transaction
+2026-10-01T11:08:51.458+08:00 DEBUG 55580 --- [uire-timer-jobs] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] to manual commit
+2026-10-01T11:08:51.458+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:51.458+08:00 DEBUG 55580 --- [uire-async-jobs] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:51.458+08:00 DEBUG 55580 --- [uire-async-jobs] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}]
+2026-10-01T11:08:51.459+08:00 DEBUG 55580 --- [uire-async-jobs] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] after transaction
+2026-10-01T11:08:51.459+08:00 DEBUG 55580 --- [et-expired-jobs] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] for JDBC transaction
+2026-10-01T11:08:51.459+08:00 DEBUG 55580 --- [et-expired-jobs] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] to manual commit
+2026-10-01T11:08:51.460+08:00 DEBUG 55580 --- [et-expired-jobs] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:51.460+08:00 DEBUG 55580 --- [et-expired-jobs] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}]
+2026-10-01T11:08:51.460+08:00 DEBUG 55580 --- [et-expired-jobs] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] after transaction
+2026-10-01T11:08:51.460+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] for JDBC transaction
+2026-10-01T11:08:51.460+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] to manual commit
+2026-10-01T11:08:51.460+08:00 DEBUG 55580 --- [et-expired-jobs] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:51.461+08:00 DEBUG 55580 --- [uire-timer-jobs] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:51.461+08:00 DEBUG 55580 --- [uire-timer-jobs] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}]
+2026-10-01T11:08:51.462+08:00 DEBUG 55580 --- [uire-timer-jobs] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] after transaction
+2026-10-01T11:08:51.462+08:00 DEBUG 55580 --- [et-expired-jobs] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] for JDBC transaction
+2026-10-01T11:08:51.462+08:00 DEBUG 55580 --- [et-expired-jobs] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] to manual commit
+2026-10-01T11:08:51.463+08:00 DEBUG 55580 --- [et-expired-jobs] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:51.463+08:00 DEBUG 55580 --- [et-expired-jobs] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}]
+2026-10-01T11:08:51.463+08:00 DEBUG 55580 --- [et-expired-jobs] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] after transaction
+2026-10-01T11:08:51.464+08:00 DEBUG 55580 --- [et-expired-jobs] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:51.464+08:00 DEBUG 55580 --- [et-expired-jobs] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] for JDBC transaction
+2026-10-01T11:08:51.464+08:00 DEBUG 55580 --- [et-expired-jobs] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] to manual commit
+2026-10-01T11:08:51.465+08:00 DEBUG 55580 --- [et-expired-jobs] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:51.465+08:00 DEBUG 55580 --- [et-expired-jobs] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}]
+2026-10-01T11:08:51.465+08:00 DEBUG 55580 --- [et-expired-jobs] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] after transaction
+2026-10-01T11:08:51.478+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:51.478+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}]
+2026-10-01T11:08:51.478+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.421, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.421}] after transaction
+2026-10-01T11:08:51.480+08:00  INFO 55580 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 64764 (http) with context path '/api'
+2026-10-01T11:08:51.480+08:00  INFO 55580 --- [           main] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2026-10-01T11:08:51.480+08:00  INFO 55580 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2026-10-01T11:08:51.500+08:00  INFO 55580 --- [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 4.158 seconds (process running for 215.833)
+2026-10-01T11:08:51.501+08:00 DEBUG 55580 --- [   scheduling-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.501+08:00  INFO 55580 --- [           main] c.s.c.b.process.runner.BpmDeployRunner   : 非 dev/test profile，跳过骨架流程部署与绑定（生产租户定义经正式发布链创建）
+2026-10-01T11:08:51.504+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.506+08:00  INFO 55580 --- [           main] c.sw.ck.job.scheduler.JobStartupRunner   : 无待恢复的定时任务
+2026-10-01T11:08:51.506+08:00 DEBUG 55580 --- [   scheduling-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+[P62-EV] tiered.boot pg=64747 migration=V0.1.2-applied
+2026-10-01T11:08:51.511+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:51.511+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] for JDBC transaction
+2026-10-01T11:08:51.511+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] to manual commit
+2026-10-01T11:08:51.512+08:00 DEBUG 55580 --- [   scheduling-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.512+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Participating in existing transaction
+2026-10-01T11:08:51.513+08:00 DEBUG 55580 --- [   scheduling-1] c.sw.ck.iot.job.CommandCompensationJob   : 开始执行命令补偿任务
+2026-10-01T11:08:51.515+08:00  INFO 55580 --- [           main] c.s.c.b.p.q.PersistentBpmCommandQueue    : 命令已受理: commandId=2105495128555429890, type=TASK_APPROVE, channel=NORMAL, key=PG-EFFECT
+2026-10-01T11:08:51.515+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:51.515+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}]
+2026-10-01T11:08:51.515+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] after transaction
+2026-10-01T11:08:51.515+08:00 DEBUG 55580 --- [   scheduling-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.517+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.517+08:00 DEBUG 55580 --- [   scheduling-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.518+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.520+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:51.520+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] for JDBC transaction
+2026-10-01T11:08:51.520+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] to manual commit
+2026-10-01T11:08:51.520+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Participating in existing transaction
+2026-10-01T11:08:51.520+08:00 DEBUG 55580 --- [   scheduling-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.523+08:00 DEBUG 55580 --- [   scheduling-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.524+08:00 DEBUG 55580 --- [   scheduling-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.525+08:00 DEBUG 55580 --- [   scheduling-1] c.sw.ck.iot.job.CommandCompensationJob   : 命令补偿任务执行完成
+2026-10-01T11:08:51.525+08:00 DEBUG 55580 --- [   scheduling-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.526+08:00  INFO 55580 --- [           main] c.s.c.b.p.queue.CommandEffectRecorder    : 命令效果权威记录已写入（与业务同事务）: commandId=2105495128555429890, bizRef=PG-BIZ-1
+2026-10-01T11:08:51.526+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:51.526+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}]
+2026-10-01T11:08:51.526+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] after transaction
+2026-10-01T11:08:51.526+08:00 DEBUG 55580 --- [           main] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-10-01T11:08:51.526+08:00 DEBUG 55580 --- [           main] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT status FROM sw_bpm_command WHERE id = ?]
+2026-10-01T11:08:51.526+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.528+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.529+08:00 DEBUG 55580 --- [   scheduling-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.530+08:00 DEBUG 55580 --- [   scheduling-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.530+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.531+08:00 DEBUG 55580 --- [   scheduling-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.532+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.533+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.533+08:00 DEBUG 55580 --- [   scheduling-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.534+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.535+08:00 DEBUG 55580 --- [   scheduling-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.536+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.536+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.sw.ck.bpm.process.queue.PersistentBpmCommandQueue.complete]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:51.536+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] for JDBC transaction
+2026-10-01T11:08:51.536+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] to manual commit
+2026-10-01T11:08:51.537+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:51.538+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}]
+2026-10-01T11:08:51.538+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] after transaction
+2026-10-01T11:08:51.538+08:00  INFO 55580 --- [           main] c.s.c.b.p.q.TieredCommandReconcileJob    : 命令据权威效果收敛完成: commandId=2105495128555429890, bizRef=PG-BIZ-1
+2026-10-01T11:08:51.538+08:00 DEBUG 55580 --- [           main] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-10-01T11:08:51.538+08:00 DEBUG 55580 --- [           main] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT status FROM sw_bpm_command WHERE id = ?]
+2026-10-01T11:08:51.538+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.538+08:00 DEBUG 55580 --- [           main] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-10-01T11:08:51.538+08:00 DEBUG 55580 --- [           main] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT result FROM sw_bpm_command WHERE id = ?]
+2026-10-01T11:08:51.538+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+[P62-EV] tiered.effect command=2105495128555429890 window-closed-by=authoritative-effect reconcile=COMPLETED effectRows=1
+2026-10-01T11:08:51.539+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:51.539+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] for JDBC transaction
+2026-10-01T11:08:51.539+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] to manual commit
+2026-10-01T11:08:51.539+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Participating in existing transaction
+2026-10-01T11:08:51.540+08:00  INFO 55580 --- [           main] c.s.c.b.p.q.PersistentBpmCommandQueue    : 命令已受理: commandId=2105495128664481794, type=TASK_APPROVE, channel=NORMAL, key=PG-STALE
+2026-10-01T11:08:51.540+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:51.540+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}]
+2026-10-01T11:08:51.540+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] after transaction
+2026-10-01T11:08:51.541+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.542+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.542+08:00 DEBUG 55580 --- [           main] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
+2026-10-01T11:08:51.542+08:00 DEBUG 55580 --- [           main] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [UPDATE sw_bpm_command SET claimed_at = ? WHERE id = ?]
+2026-10-01T11:08:51.542+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.543+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.547+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.548+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.550+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:51.550+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] for JDBC transaction
+2026-10-01T11:08:51.550+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] to manual commit
+2026-10-01T11:08:51.550+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Participating in existing transaction
+2026-10-01T11:08:51.553+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Participating transaction failed - marking existing transaction as rollback-only
+2026-10-01T11:08:51.553+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Setting JDBC transaction [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] rollback-only
+2026-10-01T11:08:51.553+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction rollback
+2026-10-01T11:08:51.553+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Rolling back JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}]
+2026-10-01T11:08:51.553+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] after transaction
+2026-10-01T11:08:51.555+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.556+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:51.556+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] for JDBC transaction
+2026-10-01T11:08:51.556+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] to manual commit
+2026-10-01T11:08:51.556+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Participating in existing transaction
+2026-10-01T11:08:51.558+08:00  INFO 55580 --- [           main] c.s.c.b.p.queue.CommandEffectRecorder    : 命令效果权威记录已写入（与业务同事务）: commandId=2105495128664481794, bizRef=PG-BIZ-2
+2026-10-01T11:08:51.558+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:51.558+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}]
+2026-10-01T11:08:51.558+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] after transaction
+2026-10-01T11:08:51.558+08:00 DEBUG 55580 --- [           main] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-10-01T11:08:51.558+08:00 DEBUG 55580 --- [           main] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT COUNT(*) FROM sw_bpm_command_effect WHERE command_id = ?]
+2026-10-01T11:08:51.558+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+[P62-EV] tiered.stale command=2105495128664481794 old-executor=rejected-by-lease new-effect=1
+2026-10-01T11:08:51.559+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:51.559+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] for JDBC transaction
+2026-10-01T11:08:51.559+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] to manual commit
+2026-10-01T11:08:51.559+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Participating in existing transaction
+2026-10-01T11:08:51.560+08:00  INFO 55580 --- [           main] c.s.c.b.p.q.PersistentBpmCommandQueue    : 命令已受理: commandId=2105495128752562177, type=TASK_APPROVE, channel=NORMAL, key=PG-LOGIC-1
+2026-10-01T11:08:51.560+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:51.560+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}]
+2026-10-01T11:08:51.561+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] after transaction
+2026-10-01T11:08:51.561+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:51.561+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] for JDBC transaction
+2026-10-01T11:08:51.561+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] to manual commit
+2026-10-01T11:08:51.561+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Participating in existing transaction
+2026-10-01T11:08:51.562+08:00  INFO 55580 --- [gres:pid(56386)] i.z.t.d.p.embedded.EmbeddedPostgres      : 2026-10-01 11:08:51.562 CST [56407] ERROR:  duplicate key value violates unique constraint "uk_sw_bpm_command_logical"
+2026-10-01T11:08:51.562+08:00  INFO 55580 --- [gres:pid(56386)] i.z.t.d.p.embedded.EmbeddedPostgres      : 2026-10-01 11:08:51.562 CST [56407] DETAIL:  Key (tenant_id, logical_command_id)=(0, PG-ID-1) already exists.
+2026-10-01T11:08:51.562+08:00  INFO 55580 --- [gres:pid(56386)] i.z.t.d.p.embedded.EmbeddedPostgres      : 2026-10-01 11:08:51.562 CST [56407] STATEMENT:  INSERT INTO sw_bpm_command (id, command_key, command_type, channel, status, payload, retry_count, initiator_id, logical_command_id, payload_fingerprint, tier, completion_point, deadline_at, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20)
+2026-10-01T11:08:51.563+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.SQLErrorCodesFactory    : Looking up default SQLErrorCodes for DataSource [com.baomidou.dynamic.datasource.DynamicRoutingDataSource@71db8ff1]
+2026-10-01T11:08:51.563+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.SQLErrorCodesFactory    : SQL error codes for 'PostgreSQL' found
+2026-10-01T11:08:51.563+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.SQLErrorCodesFactory    : Caching SQL error codes for DataSource [com.baomidou.dynamic.datasource.DynamicRoutingDataSource@71db8ff1]: database product name is 'PostgreSQL'
+2026-10-01T11:08:51.563+08:00 DEBUG 55580 --- [           main] s.j.s.SQLErrorCodeSQLExceptionTranslator : Translating SQLException with SQL state '23505', error code '0', message [ERROR: duplicate key value violates unique constraint "uk_sw_bpm_command_logical"
+  详细：Key (tenant_id, logical_command_id)=(0, PG-ID-1) already exists.] for task [
+### Error updating database.  Cause: org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "uk_sw_bpm_command_logical"
+  详细：Key (tenant_id, logical_command_id)=(0, PG-ID-1) already exists.
+### The error may exist in com/sw/ck/bpm/process/mapper/BpmCommandMapper.java (best guess)
+### The error may involve com.sw.ck.bpm.process.mapper.BpmCommandMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO sw_bpm_command (id, command_key, command_type, channel, status, payload, retry_count, initiator_id, logical_command_id, payload_fingerprint, tier, completion_point, deadline_at, tenant_id, create_time, create_by, update_time, update_by, deleted, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+### Cause: org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "uk_sw_bpm_command_logical"
+  详细：Key (tenant_id, logical_command_id)=(0, PG-ID-1) already exists.
+]
+2026-10-01T11:08:51.563+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Participating transaction failed - marking existing transaction as rollback-only
+2026-10-01T11:08:51.563+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Setting JDBC transaction [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] rollback-only
+2026-10-01T11:08:51.563+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction rollback
+2026-10-01T11:08:51.563+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Rolling back JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}]
+2026-10-01T11:08:51.563+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] after transaction
+2026-10-01T11:08:51.565+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+[P62-EV] tiered.identity logical=PG-ID-1 duplicate=rejected queryable=true
+2026-10-01T11:08:51.567+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.568+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.569+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.570+08:00  WARN 55580 --- [           main] c.s.c.b.p.q.PersistentBpmCommandQueue    : 准入截止：1 条待执行命令因效果未发生而过期（EXPIRED）
+2026-10-01T11:08:51.570+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:51.570+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] for JDBC transaction
+2026-10-01T11:08:51.570+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] to manual commit
+2026-10-01T11:08:51.570+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Participating in existing transaction
+2026-10-01T11:08:51.571+08:00  INFO 55580 --- [           main] c.s.c.b.p.q.PersistentBpmCommandQueue    : 命令已受理: commandId=2105495128794505217, type=TASK_APPROVE, channel=NORMAL, key=PG-DL-PENDING
+2026-10-01T11:08:51.571+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:51.571+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}]
+2026-10-01T11:08:51.571+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] after transaction
+2026-10-01T11:08:51.571+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:51.571+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] for JDBC transaction
+2026-10-01T11:08:51.571+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] to manual commit
+2026-10-01T11:08:51.571+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Participating in existing transaction
+2026-10-01T11:08:51.571+08:00  INFO 55580 --- [           main] c.s.c.b.p.q.PersistentBpmCommandQueue    : 命令已受理: commandId=2105495128798699521, type=TASK_APPROVE, channel=NORMAL, key=PG-DL-PROC
+2026-10-01T11:08:51.571+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:51.571+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}]
+2026-10-01T11:08:51.571+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] after transaction
+2026-10-01T11:08:51.572+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.573+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.575+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.576+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.576+08:00 DEBUG 55580 --- [           main] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-10-01T11:08:51.576+08:00 DEBUG 55580 --- [           main] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT overdue_at FROM sw_bpm_command WHERE id = ?]
+2026-10-01T11:08:51.576+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.577+08:00 DEBUG 55580 --- [           main] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-10-01T11:08:51.577+08:00 DEBUG 55580 --- [           main] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT status FROM sw_bpm_command WHERE id = ?]
+2026-10-01T11:08:51.577+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.579+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.580+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.580+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.581+08:00  WARN 55580 --- [           main] c.s.c.b.p.q.PersistentBpmCommandQueue    : 准入截止：1 条待执行命令因效果未发生而过期（EXPIRED）
+2026-10-01T11:08:51.581+08:00 DEBUG 55580 --- [           main] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-10-01T11:08:51.581+08:00 DEBUG 55580 --- [           main] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT status FROM sw_bpm_command WHERE id = ?]
+2026-10-01T11:08:51.581+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-10-01T11:08:51.581+08:00 DEBUG 55580 --- [           main] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-10-01T11:08:51.581+08:00 DEBUG 55580 --- [           main] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT status FROM sw_bpm_command WHERE id = ?]
+2026-10-01T11:08:51.581+08:00 DEBUG 55580 --- [           main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+[P62-EV] tiered.deadline pending=2105495128798699521->EXPIRED processing=2105495128794505217->overdue-only status-stable
+2026-10-01T11:08:51.583+08:00  INFO 55580 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2026-10-01T11:08:51.583+08:00  INFO 55580 --- [           main] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-01T11:08:51.586+08:00  INFO 55580 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-10-01T11:08:51.589+08:00  INFO 55580 --- [           main] o.s.i.endpoint.EventDrivenConsumer       : Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2026-10-01T11:08:51.589+08:00  INFO 55580 --- [           main] o.s.i.channel.PublishSubscribeChannel    : Channel 'application.errorChannel' has 0 subscriber(s).
+2026-10-01T11:08:51.589+08:00  INFO 55580 --- [           main] o.s.i.endpoint.EventDrivenConsumer       : stopped bean '_org.springframework.integration.errorLogger'
+2026-10-01T11:08:51.589+08:00  INFO 55580 --- [           main] c.s.c.b.e.d.ExternalDatasourceManager    : Shutting down all external datasource connection pools (count=0)
+2026-10-01T11:08:51.590+08:00  INFO 55580 --- [           main] o.f.j.s.i.a.AbstractAsyncExecutor        : Shutting down the async job executor [org.flowable.spring.job.service.SpringAsyncExecutor] for engine bpmn
+2026-10-01T11:08:51.590+08:00  INFO 55580 --- [uire-timer-jobs] o.f.j.s.i.a.AcquireTimerJobsRunnable     : stopped async job due acquisition for engine bpmn
+2026-10-01T11:08:51.590+08:00  INFO 55580 --- [uire-async-jobs] o.f.j.s.i.a.AcquireAsyncJobsDueRunnable  : stopped async job due acquisition for engine bpmn
+2026-10-01T11:08:51.590+08:00  INFO 55580 --- [et-expired-jobs] o.f.j.s.i.a.ResetExpiredJobsRunnable     : stopped resetting expired jobs for engine bpmn
+2026-10-01T11:08:51.590+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:51.590+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] for JDBC transaction
+2026-10-01T11:08:51.590+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] to manual commit
+2026-10-01T11:08:51.591+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:51.591+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}]
+2026-10-01T11:08:51.591+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] after transaction
+2026-10-01T11:08:51.591+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:51.591+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] for JDBC transaction
+2026-10-01T11:08:51.591+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] to manual commit
+2026-10-01T11:08:51.592+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:51.592+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}]
+2026-10-01T11:08:51.592+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] after transaction
+2026-10-01T11:08:51.592+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-10-01T11:08:51.592+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] for JDBC transaction
+2026-10-01T11:08:51.592+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] to manual commit
+2026-10-01T11:08:51.592+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2026-10-01T11:08:51.592+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}]
+2026-10-01T11:08:51.592+08:00 DEBUG 55580 --- [           main] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [ConnectionProxyImpl{connectedTime=2026-10-01 11:08:48.417, closeCount=0, lastValidateTimeMillis=2026-10-01 11:08:48.417}] after transaction
+2026-10-01T11:08:51.592+08:00  INFO 55580 --- [           main] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2026-10-01T11:08:51.592+08:00  INFO 55580 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2026-10-01T11:08:51.592+08:00  INFO 55580 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2026-10-01T11:08:51.592+08:00  INFO 55580 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2026-10-01T11:08:51.594+08:00  INFO 55580 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource start closing ....
+2026-10-01T11:08:51.594+08:00  INFO 55580 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-4} closing ...
+2026-10-01T11:08:51.595+08:00  INFO 55580 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-4} closed
+2026-10-01T11:08:51.595+08:00  INFO 55580 --- [           main] c.b.d.d.d.DefaultDataSourceDestroyer     : dynamic-datasource close the datasource named [master] success,
+2026-10-01T11:08:51.595+08:00  INFO 55580 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource all closed success,bye
+2026-10-01T11:08:51.714+08:00  INFO 55580 --- [_ctl:pid(56416)] i.z.t.d.p.embedded.EmbeddedPostgres      : waiting for server to shut down.... done
+2026-10-01T11:08:51.714+08:00  INFO 55580 --- [_ctl:pid(56416)] i.z.t.d.p.embedded.EmbeddedPostgres      : server stopped
+2026-10-01T11:08:51.714+08:00  INFO 55580 --- [           main] i.z.t.d.p.embedded.EmbeddedPostgres      : c404ebf9-02c1-4b85-9f20-2a78f37ac7ed shut down postmaster in 00:00:00.115
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.396 s -- in com.sw.ck.bootstrap.p62.TieredCommandSemanticsPgTest

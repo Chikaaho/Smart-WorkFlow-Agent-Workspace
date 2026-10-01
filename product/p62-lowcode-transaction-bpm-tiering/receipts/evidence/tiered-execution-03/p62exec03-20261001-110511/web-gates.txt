@@ -1,0 +1,7 @@
+Web 四门（复核02 G7a，2026-10-01）
+commit=c75f77e (develop, pushed)
+typecheck: vue-tsc -b exit=0
+lint: eslint exit=0 errors（本轮引入4个no-undef已修复为window.*）；既有90 warnings为存量非本轮范围
+test: vitest 145 files passed / 1 skipped, 1313 passed + 3 skipped / 0 failed
+build: vite build exit=0 (built in 4.83s)
+node=v24.9.0
