@@ -2,7 +2,7 @@
 
 2026-10-02，P62整体PLANNING，未核销。治理PASSED；首事务阶段COMPLETED（规划确认2026-09-30），分级执行与统一命令阶段COMPLETED（规划确认2026-10-02）。0.1.3 Owner已验收，无剩余验收动作。
 
-唯一下一动作：Executor按 `search_task/p62-resource-isolation-readiness-20261002.md` 先传播最终确认，再限定探索资源隔离/多租户保障。回传同名search_fallback后由Planner制定后续阶段方向，不授权实现/发布/部署。此任务已落盘，不等待Owner再次批准。
+唯一下一动作：Planner读取 `search_fallback/p62-resource-isolation-readiness-20261002.md`（已回传，含最终确认传播附录与提交身份）并制定资源保障阶段方向；不授权实现/发布/部署。
 
 分级阶段最终裁决：`product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-tiered-execution-unified-command-01-completed.md`。业务与同步方向均在passed/。最后两个缺口为2426载荷冲突修复、FLOW_START双命令夹具归因，均已核销。
 
