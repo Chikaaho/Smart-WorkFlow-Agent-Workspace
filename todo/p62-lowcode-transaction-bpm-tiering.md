@@ -3,12 +3,12 @@
 - 登记日期：2026-09-30
 - 角色：Planner
 - 任务等级：XL（核心架构、跨模块契约、数据一致性与持续演进）
-- 状态：PLANNING（整体）；治理PASSED；首事务阶段COMPLETED（规划已确认，2026-09-30）。
+- 状态：PLANNING（整体）；治理PASSED；首事务与分级执行两阶段COMPLETED（规划已确认）。
 - 排期优先级：Owner 于 2026-09-30 启动本轮规划；事务型数据能力为本需求内部优先建设项。
 - Owner 依据：本会话明确“根据评审方案列为正式需求”。
 - 评审输入：[原始方案索引](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/README.md)、[首轮架构评审方案](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/01-architecture-review-20260930.md)、[CTO 指导稿原文](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/02-cto-guidance-20260930.md)。两份原文纳入 knowledge 供追溯；本文件为正式需求范围与验收口径。
 - 原始交付文件：~/Downloads/平台业务架构指导方案-OA-MES-WMS-IoT-CTO版-20260930.md。
-- 本轮边界：信息治理已通过；首事务阶段T01—T07已完成；本轮授权分级执行阶段U01—U08，不启动版本升级或部署。完成计数、清单明细与既有 P 编号核销状态不变。
+- 本轮边界：信息治理已通过；首事务T01—T07与分级执行U01—U08及终态同步均已完成；资源探索已复核，待制定新阶段方向。尚未授权资源策略实现、版本升级或部署；计数与P核销状态不变。
 
 ## 1. 产品目标与 Owner 已确认条件
 
@@ -144,7 +144,7 @@ C1 类关键数据只能通过受控动作写入，表单保存、导入、批�
 - BAO 架构优化：已有规划摘要记载引擎与业务共享提交边界；此为复用线索而非本次运行验证，不能把未核实能力写成确定缺失或无条件重建。
 - MES/WMS 为低代码平台能力的代表性验证场景，本项不自动扩大为完整 MES/WMS 产品套件、所有业务模板或所有现场拓扑交付。
 
-Owner 当前排期（2026-10-02）：P62整体PLANNING；治理PASSED；首事务与分级执行/统一命令两阶段均COMPLETED（规划已确认）；P62未核销。唯一下一动作：Planner读取 `search_fallback/p62-resource-isolation-readiness-20261002.md`（已回传）并制定资源保障阶段方向。0.1.3=COMPLETED（Owner已验收）。
+Owner 当前排期（2026-10-02）：P62整体PLANNING；治理PASSED；首事务与分级执行/统一命令两阶段均COMPLETED（规划已确认）；P62未核销。唯一下一动作：Planner依据资源探索复核01制定资源保障阶段方向（探索已复核，见 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-resource-isolation-readiness-01.md`）。0.1.3=COMPLETED（Owner已验收）。
 
 ## 6. 登记口径
 
