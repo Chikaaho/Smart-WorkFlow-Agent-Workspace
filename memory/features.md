@@ -1,6 +1,6 @@
 # 功能摘要
 
-> 当前（2026-10-02）：P62整体PLANNING；首事务与分级执行两阶段COMPLETED（规划已确认），两阶段方向均归档；下一任务资源保障限定探索。功能45/清单46-22-22/ADV64不变。
+> 当前（2026-10-02）：P62整体PLANNING；首事务与分级执行两阶段COMPLETED（规划已确认），两阶段方向均归档；资源保障限定探索已回传（2026-10-02），待Planner制定阶段方向。功能45/清单46-22-22/ADV64不变。
 > 功能数45沿用；IG2a 补证后口径：45 行=45 唯一 ID=45 唯一登记路径全部存在（#1 由 bpm-single-node-approval 承载登记、#23 已按 D107 更正当前状态并落盘），状态依据完整句见回执03附件；清单46/22/22（90）与映射索引双向一致、ADV64已行级复算；本轮零核销。以下既有功能按各裁决时点引用。
 
 - `backend-architecture-optimization`（XL）：**`COMPLETED（规划已确认，2026-09-26）`**；Phase 1—6C 与 Final 均已完成（Final 8/8：双仓 About 与根 POM canonical URL 收口）；基线 1570/0/0/0（BAO历史时点）；10 项候选去向=BAO-01 `DEFERRED` + BAO-02 `PARTIAL` + 8 项 `COMPLETED`。

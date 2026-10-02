@@ -4,7 +4,7 @@
 - Owner 本轮指令：开始制定 P62，并纳入 memory、knowledge、README、需求清单、功能清单等过期信息治理。
 - 本文为整体阶段方向；首事务阶段COMPLETED（规划已确认），后续阶段继续规划，整体P62尚未通过。
 - 正式需求基准：`todo/p62-lowcode-transaction-bpm-tiering.md` R01—R10、A01—A12，全部保留；本方向补充 G01—G06 信息治理验收。
-- **当前唯一下一动作**：Executor按 `search_task/p62-resource-isolation-readiness-20261002.md` 传播最终确认并完成资源隔离/多租户保障限定探索，回传同名search_fallback。
+- **当前唯一下一动作**：Planner读取 `search_fallback/p62-resource-isolation-readiness-20261002.md`（限定探索已回传）并制定资源保障阶段方向。
 
 ## 1. 目标与范围
 
@@ -50,7 +50,7 @@
 
 ## 6. 状态与授权
 
-P62整体PLANNING；治理PASSED；首事务与分级执行/统一命令两阶段均COMPLETED（规划已确认）；P62未核销。唯一下一动作：Executor按 `search_task/p62-resource-isolation-readiness-20261002.md` 传播最终确认并完成资源隔离/多租户保障限定探索，回传同名search_fallback。
+P62整体PLANNING；治理PASSED；首事务与分级执行/统一命令两阶段均COMPLETED（规划已确认）；P62未核销。唯一下一动作：Planner读取 `search_fallback/p62-resource-isolation-readiness-20261002.md`（已回传）并制定资源保障阶段方向。
 
 信息治理 G01—G06 的审查结论见 `../receipts/planning-review-information-governance-05-passed.md`；治理方向归档至 `../passed/direction-p62-information-governance.md`。阶段方向与 ADR-P62-001 的范围和兼容边界保持，分级执行已完成；后续资源保障及尚未批准的设备/部署扩展分别规划。
 
