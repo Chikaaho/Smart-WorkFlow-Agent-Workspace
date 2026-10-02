@@ -1,0 +1,43 @@
+runId=p62exec03r07-recheck
+buildCommit=ea6d16cd98e5bd53005617bb4bbb4845fdd7de0e
+bootedAt=2026-10-02 21:01:04.647
+pgPort=54439 httpPort=54506
+processKey=bpm_554c46be67f64cd0 formKey=p62_xbnd_todo tenant=0 actor=91357 otherActor=91358
+task-started tag=asp recordId=XBND-asp-122929536854458 taskId=5a7d9221-be61-11f1-bdc5-8ec504bd95a7 ts=2026-10-02 21:01:16.561
+[async-payload] accept-1: httpStatus=200 body={"code":0,"msg":"success","data":{"commandId":"2106006604009467906","commandKey":"TASK_APPROVE:5a7d9221-be61-11f1-bdc5-8ec504bd95a7:91357","commandType":"TASK_APPROVE","channel":"NORMAL","status":"ACCEPTED","duplicated":true}}
+[async-payload] accept-in-flight(same key, different payload): httpStatus=200 body={"code":2426,"msg":"同一操作身份携带了不同的请求载荷，已被拒绝","data":null,"errorKey":"bpm.command_payload_mismatch","eventRef":"req-6f9be4085cfaf2cc4dfd7e8893fdab44"}
+[async-payload] status-1: httpStatus=200 body={"code":0,"msg":"success","data":{"commandId":"2106006604009467906","commandType":"TASK_APPROVE","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"DONE\",\"actionRecordId\":2106006605045460994}","failureReason":null,"retryCount":0,"createTime":"2026-10-02T21:01:16.764003","finishedAt":"2026-10-02T21:01:17.044484","flowStart":null}}
+[async-payload] payload-1: {"taskId":"5a7d9221-be61-11f1-bdc5-8ec504bd95a7","action":"APPROVE","comment":"第一载荷","opinionData":{},"participants":[],"receivers":[],"deadline":{}} fingerprint=f14665b9df9e62eebfcafdfc2648735aba8141defdc7c1a219459511e58e944b
+[async-payload] record-1: [{id=2106006605045460994, actor_id=91357, action=APPROVE, command_id=2106006604009467906, opinion_data={"comment":"第一载荷"}}]
+[async-payload] accept-2(same key, different payload): httpStatus=200 body={"code":2426,"msg":"同一操作身份携带了不同的请求载荷，已被拒绝","data":null,"errorKey":"bpm.command_payload_mismatch","eventRef":"req-862792159d4450e48aaa59300eeadfd5"}
+[async-payload] accept-3(same key, same payload): httpStatus=200 body={"code":0,"msg":"success","data":{"commandId":"2106006604009467906","commandKey":"TASK_APPROVE:5a7d9221-be61-11f1-bdc5-8ec504bd95a7:91357","commandType":"TASK_APPROVE","channel":"NORMAL","status":"ACCEPTED","duplicated":false}}
+[async-payload] status-after-replay: httpStatus=200 body={"code":0,"msg":"success","data":{"commandId":"2106006604009467906","commandType":"TASK_APPROVE","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"DONE\",\"actionRecordId\":2106006605045460994}","failureReason":null,"retryCount":0,"createTime":"2026-10-02T21:01:16.764003","finishedAt":"2026-10-02T21:01:17.044484","flowStart":null}}
+[async-payload] record-after-replay: [{id=2106006605045460994, actor_id=91357, action=APPROVE, command_id=2106006604009467906, opinion_data={"comment":"第一载荷"}}]
+[async-payload] counters actions=0->1 notifications=1->1 commandsByKey=0->1
+task-started tag=ssp recordId=XBND-ssp-122930361131458 taskId=5af7a435-be61-11f1-bdc5-8ec504bd95a7 ts=2026-10-02 21:01:17.290
+[sync-payload] sync-1: httpStatus=200 body={"code":0,"msg":"success","data":null}
+[sync-payload] record-1: [{id=2106006606479912962, actor_id=91357, action=APPROVE, command_id=null, opinion_data={"comment":"同步第一载荷"}}]
+[sync-payload] sync-2(same identity, different payload): httpStatus=200 body={"code":2426,"msg":"同一操作身份携带了不同的请求载荷，已被拒绝","data":null,"errorKey":"bpm.command_payload_mismatch","eventRef":"req-ec09689e15837638359383ef43ff8429"}
+[sync-payload] sync-3(same identity, same payload): httpStatus=200 body={"code":0,"msg":"success","data":null}
+[sync-payload] record-after-replay: [{id=2106006606479912962, actor_id=91357, action=APPROVE, command_id=null, opinion_data={"comment":"同步第一载荷"}}]
+[sync-payload] counters actions=0->1 notifications=1->1 runtimeTasks=0
+task-started tag=osy recordId=XBND-osy-122930541207708 taskId=5b134299-be61-11f1-bdc5-8ec504bd95a7 ts=2026-10-02 21:01:17.475
+[other-sync] sync-1(owner): httpStatus=200 body={"code":0,"msg":"success","data":null}
+[other-sync] sync-2(other actor): httpStatus=200 body={"code":2305,"msg":"节点已被处理","data":null,"errorKey":"bpm.approval_already_handled","eventRef":"req-c18bbe7a5d02cbef9a05ab6616f9144c"}
+[other-sync] counters actions=1 notifications=1
+task-started tag=oas recordId=XBND-oas-122930717347791 taskId=5b2da87d-be61-11f1-bdc5-8ec504bd95a7 ts=2026-10-02 21:01:17.628
+[other-async] accept-1(owner): httpStatus=200 body={"code":0,"msg":"success","data":{"commandId":"2106006607721426946","commandKey":"TASK_APPROVE:5b2da87d-be61-11f1-bdc5-8ec504bd95a7:91357","commandType":"TASK_APPROVE","channel":"NORMAL","status":"ACCEPTED","duplicated":true}}
+[other-async] status-1(owner): httpStatus=200 body={"code":0,"msg":"success","data":{"commandId":"2106006607721426946","commandType":"TASK_APPROVE","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"DONE\",\"actionRecordId\":2106006608224743425}","failureReason":null,"retryCount":0,"createTime":"2026-10-02T21:01:17.648973","finishedAt":"2026-10-02T21:01:17.789466","flowStart":null}}
+[other-async] accept-2(other actor): httpStatus=200 body={"code":0,"msg":"success","data":{"commandId":"2106006608937775105","commandKey":"TASK_APPROVE:5b2da87d-be61-11f1-bdc5-8ec504bd95a7:91358","commandType":"TASK_APPROVE","channel":"NORMAL","status":"ACCEPTED","duplicated":true}}
+[other-async] status-2(other actor terminal): httpStatus=200 body={"code":0,"msg":"success","data":{"commandId":"2106006608937775105","commandType":"TASK_APPROVE","channel":"NORMAL","status":"FAILED","result":null,"failureReason":"节点已被处理","retryCount":4,"createTime":"2026-10-02T21:01:17.93894","finishedAt":"2026-10-02T21:01:33.400439","flowStart":null}}
+[other-async] counters actions=1 notifications=1 commandsByKey=2
+task-started tag=acs recordId=XBND-acs-122946609723791 taskId=64a6bce1-be61-11f1-bdc5-8ec504bd95a7 ts=2026-10-02 21:01:33.555
+[action-sync] complete-1: httpStatus=200 body={"code":0,"msg":"success","data":null}
+[action-sync] reject-2(different action): httpStatus=200 body={"code":2305,"msg":"节点已被处理","data":null,"errorKey":"bpm.approval_already_handled","eventRef":"req-87ec6042884d625727302d621cf21dfa"}
+[action-sync] counters actions=1 notifications=1 record=[{id=2106006674729627649, actor_id=91357, action=APPROVE, command_id=null, opinion_data={"comment":"先同意"}}]
+task-started tag=aca recordId=XBND-aca-122946787992791 taskId=64c23435-be61-11f1-bdc5-8ec504bd95a7 ts=2026-10-02 21:01:33.715
+[action-async] accept-1(APPROVE): httpStatus=200 body={"code":0,"msg":"success","data":{"commandId":"2106006675195195394","commandKey":"TASK_APPROVE:64c23435-be61-11f1-bdc5-8ec504bd95a7:91357","commandType":"TASK_APPROVE","channel":"NORMAL","status":"ACCEPTED","duplicated":true}}
+[action-async] status-1(APPROVE): httpStatus=200 body={"code":0,"msg":"success","data":{"commandId":"2106006675195195394","commandType":"TASK_APPROVE","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"DONE\",\"actionRecordId\":2106006675841118210}","failureReason":null,"retryCount":0,"createTime":"2026-10-02T21:01:33.736086","finishedAt":"2026-10-02T21:01:33.908456","flowStart":null}}
+[action-async] accept-2(REJECT, different action): httpStatus=200 body={"code":0,"msg":"success","data":{"commandId":"2106006676361211905","commandKey":"TASK_REJECT:64c23435-be61-11f1-bdc5-8ec504bd95a7:91357","commandType":"TASK_REJECT","channel":"NORMAL","status":"ACCEPTED","duplicated":true}}
+[action-async] status-2(REJECT terminal): httpStatus=200 body={"code":0,"msg":"success","data":{"commandId":"2106006676361211905","commandType":"TASK_REJECT","channel":"NORMAL","status":"FAILED","result":null,"failureReason":"节点已被处理","retryCount":4,"createTime":"2026-10-02T21:01:34.013385","finishedAt":"2026-10-02T21:01:49.390811","flowStart":null}}
+[action-async] counters actions=1 notifications=1 commandsByKey=2

@@ -1,0 +1,9 @@
+# Server 远端读回(批次提交后,2026-10-02 21:10—21:20+08:00)
+# 批次链: ea6d16c -> 2f246ec(G3b1 生产修复+受影响测试) -> 3988af5(G3b2 夹具修正) -> ae3f6b0(功能清单当前焦点同步)
+# 推送输出1: ea6d16c..3988af5  develop -> develop
+# 推送输出2: 3988af5..ae3f6b0  develop -> develop
+# 命令: git ls-remote origin develop
+# 最终 ls-remote 原始输出:
+ae3f6b091841312c6a552b219ecce50e7bf3f7f5	refs/heads/develop
+# 本地 HEAD: ae3f6b091841312c6a552b219ecce50e7bf3f7f5(与远端一致,工作树干净)
+# 验证与提交映射: 受影响验证在 ea6d16c 工作树执行,生产修复代码(=2f246ec 内容)已于验证前 install 生效,2f246ec/3988af5/ae3f6b0 为验证后提交(3988af5 仅测试文件、ae3f6b0 仅文档,均无生产差异)

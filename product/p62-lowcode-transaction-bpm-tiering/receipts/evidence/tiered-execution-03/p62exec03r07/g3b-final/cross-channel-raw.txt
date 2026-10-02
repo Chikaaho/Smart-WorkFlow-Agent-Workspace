@@ -1,0 +1,16 @@
+runId=p62exec03r07-recheck
+buildCommit=ea6d16cd98e5bd53005617bb4bbb4845fdd7de0e
+bootedAt=2026-10-02 21:01:56.110
+pgPort=54703 httpPort=54739
+processKey=bpm_215770b1c4e74ace formKey=p62_xchan_todo tenant=0 actor=91357
+task-started tag=async-first recordId=XCHAN-async-first-122973640338708 taskId=74c3579e-be61-11f1-bdc5-8ec504bd95a7 ts=2026-10-02 21:02:00.565
+[async-first] accept response: httpStatus=200 body={"code":0,"msg":"success","data":{"commandId":"2106006787829035009","commandKey":"TASK_APPROVE:74c3579e-be61-11f1-bdc5-8ec504bd95a7:91357","commandType":"TASK_APPROVE","channel":"NORMAL","status":"ACCEPTED","duplicated":true}}
+[async-first] command status: httpStatus=200 body={"code":0,"msg":"success","data":{"commandId":"2106006787829035009","commandType":"TASK_APPROVE","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"DONE\",\"actionRecordId\":2106006788391071745}","failureReason":null,"retryCount":0,"createTime":"2026-10-02T21:02:00.590438","finishedAt":"2026-10-02T21:02:00.744546","flowStart":null}}
+[async-first] sync response: httpStatus=200 body={"code":0,"msg":"success","data":null}
+[async-first] counters actions=0->1 notifications=1->1 commandsByKey=0->1
+task-started tag=sync-first recordId=XCHAN-sync-first-122974002616375 taskId=74fa4632-be61-11f1-bdc5-8ec504bd95a7 ts=2026-10-02 21:02:00.913
+[sync-first] sync response: httpStatus=200 body={"code":0,"msg":"success","data":null}
+[sync-first] post-sync runtimeTaskRows=[] historicTaskEnd=[{end_time_=2026-10-02 21:02:00.946}]
+[sync-first] accept response: httpStatus=200 body={"code":0,"msg":"success","data":{"commandId":"2106006789494173697","commandKey":"TASK_APPROVE:74fa4632-be61-11f1-bdc5-8ec504bd95a7:91357","commandType":"TASK_APPROVE","channel":"NORMAL","status":"ACCEPTED","duplicated":true}}
+[sync-first] command status: httpStatus=200 body={"code":0,"msg":"success","data":{"commandId":"2106006789494173697","commandType":"TASK_APPROVE","channel":"NORMAL","status":"COMPLETED","result":"{\"status\":\"RECOVERED\",\"actionRecordId\":2106006789380927490}","failureReason":null,"retryCount":0,"createTime":"2026-10-02T21:02:00.987427","finishedAt":"2026-10-02T21:02:01.080353","flowStart":null}}
+[sync-first] counters actions=0->1 notifications=1->1 commandsByKey=0->1
