@@ -1,3 +1,5 @@
+> 2026-10-02：终态最终复核01通过，本阶段COMPLETED（规划已确认）；裁决见 `../receipts/planning-final-review-terminal-sync-tiered-execution-unified-command-01-completed.md`。本方向归档，以下唯一值清单保留执行时点。当前任务为search_task/p62-resource-isolation-readiness-20261002.md。
+
 # P62 分级执行与统一命令阶段终态同步方向
 
 2026-10-02，Planner，READY。依据planning-review-tiered-execution-unified-command-07-passed.md，业务阶段PASSED，剩余仅信息同步。Executor直接执行本方向，旧提示不再是待办。

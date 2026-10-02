@@ -6,7 +6,7 @@
 >
 > 可信度：CONFIRMED = 已落地执行 · SUPERSEDED = 已被后续决策替代
 >
-> **注记（2026-08-16 D84 裁定；2026-09-04 知识库全量整理范围更正）**：D47+ 决策见 `memory/decisions.md`（活跃权威，D84 裁定）+ `product/*/passed/` + `receipts/` 归档；本文件为 D1—**D48** 历史详情档案（实含 D47/D48，2026-08-29 补录）
+> **注记（2026-08-16 D84 裁定；2026-09-04 知识库全量整理范围更正；2026-10-02 摘要定位订正）**：D47+ 决策的权威详情见 `product/*/passed/`、产品 ADR 与 `receipts/` 归档；`memory/decisions.md` 只是规划最小摘要、不是决策权威（2026-10-02 P62 分级执行终态裁决订正旧"活跃权威"措辞）。P62 已采纳决策的持久指针：ADR `product/p62-lowcode-transaction-bpm-tiering/ready/adr-p62-001-transaction-foundation.md` 与 `ready/adr-p62-002-tiered-command.md`；终态裁决 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-tiered-execution-unified-command-01-completed.md`（分级执行阶段 COMPLETED（规划已确认，2026-10-02））。本文件为 D1—**D48** 历史详情档案（实含 D47/D48，2026-08-29 补录）
 
 ---
 
