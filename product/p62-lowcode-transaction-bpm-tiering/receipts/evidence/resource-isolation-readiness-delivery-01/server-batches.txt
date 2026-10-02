@@ -1,0 +1,74 @@
+# repo=/usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server branch=develop capturedAtUTC=2026-10-02T15:33:31Z local=2026-10-02 23:33:31 +0800 workdir=/usr/local/projects/Smart-WorkFlow
+
+$ status --porcelain
+exit=0
+
+$ rev-parse --abbrev-ref HEAD
+develop
+exit=0
+
+$ remote get-url origin
+git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-server.git
+exit=0
+
+$ rev-parse HEAD
+8cf1b951bfbb1f0aaf226704e00d25bd5ce03b64
+exit=0
+
+$ rev-parse 08b0917^{commit}
+08b0917d2986d5c50abe0aa4ec09de9ea8653244
+exit=0
+
+$ rev-parse 8cf1b95^{commit}
+8cf1b951bfbb1f0aaf226704e00d25bd5ce03b64
+exit=0
+
+$ log -1 --format=commit=%H%nAuthor=%an <%ae>%nAuthorDate=%ai%nSubject=%s 08b0917
+commit=08b0917d2986d5c50abe0aa4ec09de9ea8653244
+Author=Chikaaho <chikaho@mail.chikaho.cn>
+AuthorDate=2026-10-02 22:45:22 +0800
+Subject=docs(p62): 功能清单当前焦点同步——限定探索已回传，唯一下一动作=Planner读取探索制定资源保障阶段方向
+exit=0
+
+$ log -1 --format=commit=%H%nAuthor=%an <%ae>%nAuthorDate=%ai%nSubject=%s 8cf1b95
+commit=8cf1b951bfbb1f0aaf226704e00d25bd5ce03b64
+Author=Chikaaho <chikaho@mail.chikaho.cn>
+AuthorDate=2026-10-02 23:11:17 +0800
+Subject=docs(p62): 功能清单当前焦点同步——资源探索经规划复核01采信，唯一下一动作=Planner依据复核01制定资源保障阶段方向
+exit=0
+
+$ show --stat --format=batch=%h subject=%s 08b0917
+batch=08b0917 subject=docs(p62): 功能清单当前焦点同步——限定探索已回传，唯一下一动作=Planner读取探索制定资源保障阶段方向
+
+ "\345\212\237\350\203\275\346\270\205\345\215\225.md" | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+exit=0
+
+$ show --stat --format=batch=%h subject=%s 8cf1b95
+batch=8cf1b95 subject=docs(p62): 功能清单当前焦点同步——资源探索经规划复核01采信，唯一下一动作=Planner依据复核01制定资源保障阶段方向
+
+ "\345\212\237\350\203\275\346\270\205\345\215\225.md" | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+exit=0
+
+$ rev-parse --abbrev-ref @{upstream}
+origin/develop
+exit=0
+
+$ rev-list --left-right --count @{upstream}...HEAD
+0	0
+exit=0
+
+$ ls-remote origin develop
+8cf1b951bfbb1f0aaf226704e00d25bd5ce03b64	refs/heads/develop
+exit=0
+
+$ merge-base --is-ancestor 08b0917 origin/develop
+exit=0
+
+$ merge-base --is-ancestor 8cf1b95 origin/develop
+exit=0
+
+$ log --oneline 08b0917..8cf1b95
+8cf1b95 docs(p62): 功能清单当前焦点同步——资源探索经规划复核01采信，唯一下一动作=Planner依据复核01制定资源保障阶段方向
+exit=0

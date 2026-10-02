@@ -1,0 +1,108 @@
+# repo=/usr/local/projects/Smart-WorkFlow branch=develop-sw capturedAtUTC=2026-10-02T15:33:26Z local=2026-10-02 23:33:26 +0800 workdir=/usr/local/projects/Smart-WorkFlow
+
+$ status --porcelain
+ M memory/README.md
+ M memory/decisions.md
+ M memory/handoff.md
+ M memory/state.md
+ M product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-lowcode-transaction-bpm-tiering.md
+ M todo/p62-lowcode-transaction-bpm-tiering.md
+ M todo/requirement-pool.md
+?? product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-resource-isolation-readiness-01.md
+?? product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-resource-isolation-readiness-02.md
+exit=0
+
+$ rev-parse --abbrev-ref HEAD
+develop-sw
+exit=0
+
+$ remote get-url origin
+git@github.com:Chikaaho/Smart-WorkFlow-Agent-Workspace.git
+exit=0
+
+$ rev-parse HEAD
+380bd70c611d2d4122b6102357fee41187da79d2
+exit=0
+
+$ rev-parse 6f44ca6^{commit}
+6f44ca69be2a812f306fb50f86dfbf99fb2a7ad7
+exit=0
+
+$ rev-parse 380bd70^{commit}
+380bd70c611d2d4122b6102357fee41187da79d2
+exit=0
+
+$ log -1 --format=commit=%H%nAuthor=%an <%ae>%nAuthorDate=%ai%nSubject=%s 6f44ca6
+commit=6f44ca69be2a812f306fb50f86dfbf99fb2a7ad7
+Author=Chikaaho <chikaho@mail.chikaho.cn>
+AuthorDate=2026-10-02 22:45:38 +0800
+Subject=docs(p62): 资源隔离与多租户保障限定探索回传——六问逐项事实与附件、唯一下一动作二次同步、传播批次提交身份回读
+exit=0
+
+$ log -1 --format=commit=%H%nAuthor=%an <%ae>%nAuthorDate=%ai%nSubject=%s 380bd70
+commit=380bd70c611d2d4122b6102357fee41187da79d2
+Author=Chikaaho <chikaho@mail.chikaho.cn>
+AuthorDate=2026-10-02 23:12:10 +0800
+Subject=docs(p62): 资源探索订正版02——按规划复核01订正1—5（撤回B2归因、E1分层、OA窗口区分、异步OFF启用风险、索引保留），正文压缩至5KB内，唯一下一动作=依据复核01制定资源保障阶段方向
+exit=0
+
+$ show --stat --format=batch=%h subject=%s 6f44ca6
+batch=6f44ca6 subject=docs(p62): 资源隔离与多租户保障限定探索回传——六问逐项事实与附件、唯一下一动作二次同步、传播批次提交身份回读
+
+ Smart-WorkFlow-aPaaS-server                        |  2 +-
+ knowledge/current-status.md                        |  2 +-
+ knowledge/session-handoff.md                       |  2 +-
+ memory/README.md                                   |  2 +-
+ memory/features.md                                 |  2 +-
+ memory/handoff.md                                  |  2 +-
+ memory/state.md                                    |  2 +-
+ ...irection-p62-lowcode-transaction-bpm-tiering.md |  4 +-
+ ...ommand-01-final-confirmation-commit-appendix.md | 17 +++++
+ ...esource-isolation-readiness-20261002-details.md | 83 ++++++++++++++++++++++
+ .../p62-resource-isolation-readiness-20261002.md   | 24 +++++++
+ todo/p62-lowcode-transaction-bpm-tiering.md        |  2 +-
+ todo/requirement-pool.md                           |  4 +-
+ 13 files changed, 136 insertions(+), 12 deletions(-)
+exit=0
+
+$ show --stat --format=batch=%h subject=%s 380bd70
+batch=380bd70 subject=docs(p62): 资源探索订正版02——按规划复核01订正1—5（撤回B2归因、E1分层、OA窗口区分、异步OFF启用风险、索引保留），正文压缩至5KB内，唯一下一动作=依据复核01制定资源保障阶段方向
+
+ Smart-WorkFlow-aPaaS-server                        |  2 +-
+ knowledge/current-status.md                        |  2 +-
+ knowledge/session-handoff.md                       |  2 +-
+ memory/README.md                                   |  2 +-
+ memory/decisions.md                                |  2 +-
+ memory/features.md                                 |  2 +-
+ memory/handoff.md                                  |  4 ++-
+ memory/state.md                                    |  6 ++--
+ ...irection-p62-lowcode-transaction-bpm-tiering.md |  6 ++--
+ ...nning-review-resource-isolation-readiness-01.md | 38 ++++++++++++++++++++++
+ ...esource-isolation-readiness-20261002-details.md | 11 ++++---
+ .../p62-resource-isolation-readiness-20261002.md   | 26 ++++++++-------
+ todo/p62-lowcode-transaction-bpm-tiering.md        |  6 ++--
+ todo/requirement-pool.md                           |  4 +--
+ 14 files changed, 80 insertions(+), 33 deletions(-)
+exit=0
+
+$ rev-parse --abbrev-ref @{upstream}
+origin/develop-sw
+exit=0
+
+$ rev-list --left-right --count @{upstream}...HEAD
+0	0
+exit=0
+
+$ ls-remote origin develop-sw
+380bd70c611d2d4122b6102357fee41187da79d2	refs/heads/develop-sw
+exit=0
+
+$ merge-base --is-ancestor 6f44ca6 origin/develop-sw
+exit=0
+
+$ merge-base --is-ancestor 380bd70 origin/develop-sw
+exit=0
+
+$ log --oneline 6f44ca6..380bd70
+380bd70 docs(p62): 资源探索订正版02——按规划复核01订正1—5（撤回B2归因、E1分层、OA窗口区分、异步OFF启用风险、索引保留），正文压缩至5KB内，唯一下一动作=依据复核01制定资源保障阶段方向
+exit=0
