@@ -1,0 +1,6 @@
+scenario=realtime-action entry=HTTP(http://127.0.0.1:55465) concurrency=16 warmup=60s formal=300s formalSamples=20009 warmupSamples=3697 legal=19977 illegal=32 (rejected=0 timeout=32 error=0) rejectRate=0.0000 p50=79.9ms p95=107.1ms p99=135.6ms max=311.5ms budgetP99=300.0ms verdict=FAIL seed=20260930 runId=p62exec03r04-223024 shortVerify=false samplesSha256=4cf73b0a4c7366f71295ae06f90403a678b2f8af787eccabf4750b8d6cf153c4
+outcomes={SUCCEEDED=19977, TIMEOUT=32}
+target-distribution tenant=100 formal=10005 hotspotHits=998 hotspotFreq=0.0998 uniqueTargets=999 hotspotSharedWorkers=8
+target-distribution tenant=0 formal=10004 hotspotHits=993 hotspotFreq=0.0993 uniqueTargets=1000 hotspotSharedWorkers=8
+recordedAt=2026-10-02 01:37:38.526
+runId=p62exec03r04-223024

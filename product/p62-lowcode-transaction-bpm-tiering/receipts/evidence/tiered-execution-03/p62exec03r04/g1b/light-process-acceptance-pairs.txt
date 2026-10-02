@@ -1,0 +1,4 @@
+g1b.pairs scenario=light-process-acceptance accepted=62100 validPairs=22666 succeededPairs=22666 rejectedPairs=0 incomplete=39434 pairP50=541325.0ms pairP95=659199.0ms pairP99=669835.0ms pairMax=675522.0ms boundary=accept_row_ts(<=accept-commit) -> target_row_ts(<=target-visible; post-drain re-read probes visibility) runId=p62exec03r04-223024-g1b
+visibility-probe reRead=100 visible=100 observedAtPgClock=2026-10-02 11:01:11.969 (提交后只读可见；accept_row_ts<=受理提交时刻, target_row_ts<=目标可见时刻)
+recordedAt=2026-10-02 11:01:11.992
+runId=p62exec03r04-223024-g1b

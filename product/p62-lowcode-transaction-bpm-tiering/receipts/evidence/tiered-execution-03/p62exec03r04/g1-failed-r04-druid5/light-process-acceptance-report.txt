@@ -1,0 +1,6 @@
+scenario=light-process-acceptance entry=HTTP(http://127.0.0.1:55465) concurrency=16 warmup=60s formal=300s formalSamples=2578 warmupSamples=6631 legal=2562 illegal=16 (rejected=0 timeout=16 error=0) rejectRate=0.0000 p50=109.4ms p95=155.7ms p99=193.2ms max=305.4ms budgetP99=2000.0ms verdict=FAIL seed=20260930 runId=p62exec03r04-223024 shortVerify=false samplesSha256=c7b73901793b429f5d3ae58ea7116d574096d9ee6fae1eb0331fca9983a48f0e
+outcomes={ACCEPTED=2562, TIMEOUT=16}
+target-distribution tenant=0 formal=1289 hotspotHits=122 hotspotFreq=0.0946 uniqueTargets=691 hotspotSharedWorkers=8
+target-distribution tenant=100 formal=1289 hotspotHits=124 hotspotFreq=0.0962 uniqueTargets=698 hotspotSharedWorkers=8
+recordedAt=2026-10-02 01:53:54.397
+runId=p62exec03r04-223024

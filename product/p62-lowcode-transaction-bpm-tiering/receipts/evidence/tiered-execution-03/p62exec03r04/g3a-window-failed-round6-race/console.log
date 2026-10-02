@@ -1,0 +1,744 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Smart-WorkFlow                                                     [pom]
+[INFO] Smart-WorkFlow :: Common                                           [jar]
+[INFO] Smart-WorkFlow :: Security                                         [jar]
+[INFO] Smart-WorkFlow :: Basic :: Storage :: API                          [jar]
+[INFO] Smart-WorkFlow :: Basic :: Storage :: Biz                          [jar]
+[INFO] Smart-WorkFlow :: Basic :: Notify :: API                           [jar]
+[INFO] Smart-WorkFlow :: Basic :: Notify :: Biz                           [jar]
+[INFO] Smart-WorkFlow :: Basic :: Job :: API                              [jar]
+[INFO] Smart-WorkFlow :: Basic :: Job :: Biz                              [jar]
+[INFO] Smart-WorkFlow :: Basic                                            [pom]
+[INFO] Smart-WorkFlow :: Basic :: IoT :: API                              [jar]
+[INFO] Smart-WorkFlow :: Basic :: IoT                                     [jar]
+[INFO] Smart-WorkFlow :: Basic :: Knowledge                               [jar]
+[INFO] Smart-WorkFlow :: Basic :: Agent                                   [jar]
+[INFO] Smart-WorkFlow :: Biz :: System :: API                             [jar]
+[INFO] Smart-WorkFlow :: Biz :: System :: Biz                             [jar]
+[INFO] Smart-WorkFlow :: Biz :: Form :: API                               [jar]
+[INFO] Smart-WorkFlow :: Biz :: Form :: Biz                               [jar]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: API                                [jar]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: Engine                             [jar]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: Process                            [jar]
+[INFO] Smart-WorkFlow :: Biz :: OpenAPI :: API                            [jar]
+[INFO] Smart-WorkFlow :: Biz :: OpenAPI :: Biz                            [jar]
+[INFO] Smart-WorkFlow :: Bootstrap                                        [jar]
+[INFO] 
+[INFO] ----------------------< com.sw.ck:smart-workflow >----------------------
+[INFO] Building Smart-WorkFlow 0.1.3-SNAPSHOT                            [1/24]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ smart-workflow ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ smart-workflow ---
+[INFO] Generating flattened POM of project com.sw.ck:smart-workflow:pom:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] ------------------------< com.sw.ck:sw-common >-------------------------
+[INFO] Building Smart-WorkFlow :: Common 0.1.3-SNAPSHOT                  [2/24]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-common ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-common ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-common ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-common:jar:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-common ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-common ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-framework/sw-common/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-common ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-common ---
+[INFO] 
+[INFO] -----------------------< com.sw.ck:sw-security >------------------------
+[INFO] Building Smart-WorkFlow :: Security 0.1.3-SNAPSHOT                [3/24]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-security ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-security ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-security ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-security:jar:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-security ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-security ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-security ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-security ---
+[INFO] 
+[INFO] -------------------< com.sw.ck:sw-basic-storage-api >-------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Storage :: API 0.1.3-SNAPSHOT [4/24]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic-storage-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-storage-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-basic/sw-basic-storage/sw-basic-storage-api/src/main/resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-basic-storage-api ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic-storage-api:jar:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-storage-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-storage-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-basic/sw-basic-storage/sw-basic-storage-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-storage-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-storage-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] -------------------< com.sw.ck:sw-basic-storage-biz >-------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Storage :: Biz 0.1.3-SNAPSHOT [5/24]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic-storage-biz ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-storage-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-basic-storage-biz ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic-storage-biz:jar:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-storage-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-storage-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-storage-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-storage-biz ---
+[INFO] 
+[INFO] -------------------< com.sw.ck:sw-basic-notify-api >--------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Notify :: API 0.1.3-SNAPSHOT  [6/24]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic-notify-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-notify-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-basic/sw-basic-notify/sw-basic-notify-api/src/main/resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-basic-notify-api ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic-notify-api:jar:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-notify-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-notify-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-basic/sw-basic-notify/sw-basic-notify-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-notify-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-notify-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] -------------------< com.sw.ck:sw-basic-notify-biz >--------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Notify :: Biz 0.1.3-SNAPSHOT  [7/24]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic-notify-biz ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-notify-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-basic-notify-biz ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic-notify-biz:jar:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-notify-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-notify-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-notify-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-notify-biz ---
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-basic-job-api >---------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Job :: API 0.1.3-SNAPSHOT     [8/24]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic-job-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-job-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-basic/sw-basic-job/sw-basic-job-api/src/main/resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-basic-job-api ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic-job-api:jar:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-job-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-job-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-basic/sw-basic-job/sw-basic-job-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-job-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-job-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-basic-job-biz >---------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Job :: Biz 0.1.3-SNAPSHOT     [9/24]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic-job-biz ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-job-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-basic-job-biz ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic-job-biz:jar:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-job-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-job-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-job-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-job-biz ---
+[INFO] 
+[INFO] -------------------------< com.sw.ck:sw-basic >-------------------------
+[INFO] Building Smart-WorkFlow :: Basic 0.1.3-SNAPSHOT                  [10/24]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-basic ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic:pom:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-basic-iot-api >---------------------
+[INFO] Building Smart-WorkFlow :: Basic :: IoT :: API 0.1.3-SNAPSHOT    [11/24]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic-iot-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-iot-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-basic/sw-basic-iot-api/src/main/resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-basic-iot-api ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic-iot-api:jar:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-iot-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-iot-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-basic/sw-basic-iot-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-iot-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-iot-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] -----------------------< com.sw.ck:sw-basic-iot >-----------------------
+[INFO] Building Smart-WorkFlow :: Basic :: IoT 0.1.3-SNAPSHOT           [12/24]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic-iot ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-iot ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-basic-iot ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic-iot:jar:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-iot ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.6.1:add-test-source (add-dev-source-root-for-tests) @ sw-basic-iot ---
+[INFO] Test Source directory: /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-basic/sw-basic-iot/src/dev/java added.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-iot ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-basic/sw-basic-iot/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-iot ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-iot ---
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-basic-knowledge >--------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Knowledge 0.1.3-SNAPSHOT     [13/24]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic-knowledge ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-knowledge ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-basic-knowledge ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic-knowledge:jar:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-knowledge ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-knowledge ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-basic/sw-basic-knowledge/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-knowledge ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-knowledge ---
+[INFO] 
+[INFO] ----------------------< com.sw.ck:sw-basic-agent >----------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Agent 0.1.3-SNAPSHOT         [14/24]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic-agent ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-basic-agent ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-basic-agent ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic-agent:jar:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-basic-agent ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-basic-agent ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-basic-agent ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-basic-agent ---
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-biz-system-api >---------------------
+[INFO] Building Smart-WorkFlow :: Biz :: System :: API 0.1.3-SNAPSHOT   [15/24]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-biz-system-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-biz-system-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-system/sw-biz-system-api/src/main/resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-biz-system-api ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-biz-system-api:jar:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-biz-system-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-biz-system-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-system/sw-biz-system-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-biz-system-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-biz-system-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-biz-system-biz >---------------------
+[INFO] Building Smart-WorkFlow :: Biz :: System :: Biz 0.1.3-SNAPSHOT   [16/24]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-biz-system-biz ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-biz-system-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-biz-system-biz ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-biz-system-biz:jar:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-biz-system-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-biz-system-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 9 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-biz-system-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-biz-system-biz ---
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-biz-form-api >----------------------
+[INFO] Building Smart-WorkFlow :: Biz :: Form :: API 0.1.3-SNAPSHOT     [17/24]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-biz-form-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-biz-form-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-form/sw-biz-form-api/src/main/resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-biz-form-api ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-biz-form-api:jar:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-biz-form-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-biz-form-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-form/sw-biz-form-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-biz-form-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-biz-form-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-biz-form-biz >----------------------
+[INFO] Building Smart-WorkFlow :: Biz :: Form :: Biz 0.1.3-SNAPSHOT     [18/24]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-biz-form-biz ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-biz-form-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-biz-form-biz ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-biz-form-biz:jar:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-biz-form-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-biz-form-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-biz-form-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-biz-form-biz ---
+[INFO] 
+[INFO] ------------------------< com.sw.ck:sw-bpm-api >------------------------
+[INFO] Building Smart-WorkFlow :: Biz :: BPM :: API 0.1.3-SNAPSHOT      [19/24]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-bpm-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-bpm-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-bpm/sw-bpm-api/src/main/resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-bpm-api ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-bpm-api:jar:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-bpm-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-bpm-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-bpm/sw-bpm-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-bpm-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-bpm-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] ----------------------< com.sw.ck:sw-bpm-engine >-----------------------
+[INFO] Building Smart-WorkFlow :: Biz :: BPM :: Engine 0.1.3-SNAPSHOT   [20/24]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-bpm-engine ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-bpm-engine ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-bpm-engine ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-bpm-engine:jar:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-bpm-engine ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-bpm-engine ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-bpm-engine ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-bpm-engine ---
+[INFO] 
+[INFO] ----------------------< com.sw.ck:sw-bpm-process >----------------------
+[INFO] Building Smart-WorkFlow :: Biz :: BPM :: Process 0.1.3-SNAPSHOT  [21/24]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-bpm-process ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-bpm-process ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-bpm-process ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-bpm-process:jar:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-bpm-process ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-bpm-process ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 29 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-bpm-process ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-bpm-process ---
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-biz-openapi-api >--------------------
+[INFO] Building Smart-WorkFlow :: Biz :: OpenAPI :: API 0.1.3-SNAPSHOT  [22/24]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-biz-openapi-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-biz-openapi-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-openapi/sw-biz-openapi-api/src/main/resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-biz-openapi-api ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-biz-openapi-api:jar:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-biz-openapi-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-biz-openapi-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-openapi/sw-biz-openapi-api/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-biz-openapi-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-biz-openapi-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-biz-openapi-biz >--------------------
+[INFO] Building Smart-WorkFlow :: Biz :: OpenAPI :: Biz 0.1.3-SNAPSHOT  [23/24]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-biz-openapi-biz ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-biz-openapi-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-biz-openapi-biz ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-biz-openapi-biz:jar:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-biz-openapi-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-biz-openapi-biz ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-biz/sw-biz-openapi/sw-biz-openapi-biz/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-biz-openapi-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-biz-openapi-biz ---
+[INFO] 
+[INFO] -----------------------< com.sw.ck:sw-bootstrap >-----------------------
+[INFO] Building Smart-WorkFlow :: Bootstrap 0.1.3-SNAPSHOT              [24/24]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.5.0:enforce (enforce-dependency-convergence) @ sw-bootstrap ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sw-bootstrap ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 30 resources
+[INFO] 
+[INFO] --- flatten-maven-plugin:1.6.0:flatten (flatten) @ sw-bootstrap ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-bootstrap:jar:0.1.3-SNAPSHOT...
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sw-bootstrap ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sw-bootstrap ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 22 resources
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sw-bootstrap ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sw-bootstrap ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.sw.ck.bootstrap.p62.P62ProgressWindowPgTest
+23:38:57.755 [main] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- Detected a Darwin aarch64 system
+23:38:57.758 [main] INFO io.zonky.test.db.postgres.embedded.DefaultPostgresBinaryResolver -- Detected distribution: 'Unknown'
+23:38:57.759 [main] INFO io.zonky.test.db.postgres.embedded.DefaultPostgresBinaryResolver -- System specific postgres binaries found: 'postgres-darwin-arm_64.txz'
+23:38:57.889 [main] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- Postgres binaries at /var/folders/bj/b_8gswn94js1733mt9xtckn80000gn/T/embedded-pg/PG-5008f6c2eb051303352e7a787473c109
+23:38:57.956 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- The files belonging to this database system will be owned by user "chikan".
+23:38:57.956 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- This user must also own the server process.
+23:38:57.956 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 
+23:38:57.956 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- The database cluster will be initialized with locale "C.UTF-8".
+23:38:57.956 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- The default text search configuration will be set to "english".
+23:38:57.956 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 
+23:38:57.956 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- Data page checksums are disabled.
+23:38:57.956 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 
+23:38:57.956 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- fixing permissions on existing directory /var/folders/bj/b_8gswn94js1733mt9xtckn80000gn/T/epg8732934109861414909 ... ok
+23:38:57.957 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- creating subdirectories ... ok
+23:38:57.957 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- selecting dynamic shared memory implementation ... posix
+23:38:57.989 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- selecting default "max_connections" ... 100
+23:38:58.009 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- selecting default "shared_buffers" ... 128MB
+23:38:58.011 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- selecting default time zone ... Asia/Shanghai
+23:38:58.018 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- creating configuration files ... ok
+23:38:58.173 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- running bootstrap script ... ok
+23:38:58.531 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- performing post-bootstrap initialization ... ok
+23:38:58.557 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- syncing data to disk ... ok
+23:38:58.557 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 
+23:38:58.557 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- Success. You can now start the database server using:
+23:38:58.557 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 
+23:38:58.557 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres --     /var/folders/bj/b_8gswn94js1733mt9xtckn80000gn/T/embedded-pg/PG-5008f6c2eb051303352e7a787473c109/bin/pg_ctl -D /var/folders/bj/b_8gswn94js1733mt9xtckn80000gn/T/epg8732934109861414909 -l logfile start
+23:38:58.557 [initdb:pid(36391)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 
+23:38:58.557 [main] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 01e1bc5a-f1ea-40ec-9974-22a0c0f3f24e initdb completed in 00:00:00.662
+23:38:58.564 [main] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 01e1bc5a-f1ea-40ec-9974-22a0c0f3f24e postmaster started as Process[pid=36404, exitValue="not exited"] on port 64583.  Waiting up to PT10S for server startup to finish.
+23:38:58.601 [postgres:pid(36404)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- waiting for server to start....2026-10-01 23:38:58.601 CST [36406] LOG:  starting PostgreSQL 17.5 on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.6), 64-bit
+23:38:58.602 [postgres:pid(36404)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-10-01 23:38:58.602 CST [36406] LOG:  listening on IPv6 address "::1", port 64583
+23:38:58.603 [postgres:pid(36404)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-10-01 23:38:58.602 CST [36406] LOG:  listening on IPv4 address "127.0.0.1", port 64583
+23:38:58.603 [postgres:pid(36404)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-10-01 23:38:58.603 CST [36406] LOG:  listening on Unix socket "/tmp/.s.PGSQL.64583"
+23:38:58.605 [postgres:pid(36404)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-10-01 23:38:58.605 CST [36409] LOG:  database system was shut down at 2026-10-01 23:38:58 CST
+23:38:58.607 [postgres:pid(36404)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-10-01 23:38:58.607 CST [36406] LOG:  database system is ready to accept connections
+23:38:58.689 [postgres:pid(36404)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres --  done
+23:38:58.690 [postgres:pid(36404)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- server started
+23:38:58.849 [main] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 01e1bc5a-f1ea-40ec-9974-22a0c0f3f24e postmaster startup finished in 00:00:00.288
+[P62-EV] g3a.window orchestrator pgPort=64583 runId=p62exec03r04-g3a
+23:41:12.691 [main] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 01e1bc5a-f1ea-40ec-9974-22a0c0f3f24e shut down postmaster in 00:00:00.115
+23:41:12.690 [pg_ctl:pid(63796)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- waiting for server to shut down.... done
+23:41:12.692 [pg_ctl:pid(63796)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- server stopped
+[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 135.2 s <<< FAILURE! -- in com.sw.ck.bootstrap.p62.P62ProgressWindowPgTest
+[ERROR] com.sw.ck.bootstrap.p62.P62ProgressWindowPgTest.progressWindowInterruptionRecoversWithoutNewEffect -- Time elapsed: 133.7 s <<< FAILURE!
+java.lang.AssertionError: 未捕获窗口：动作提交后引擎进度仍可观测为未提交（轮询 120s）
+	at com.sw.ck.bootstrap.p62.P62ProgressWindowPgTest.waitForWindow(P62ProgressWindowPgTest.java:256)
+	at com.sw.ck.bootstrap.p62.P62ProgressWindowPgTest.progressWindowInterruptionRecoversWithoutNewEffect(P62ProgressWindowPgTest.java:114)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   P62ProgressWindowPgTest.progressWindowInterruptionRecoversWithoutNewEffect:114->waitForWindow:256 未捕获窗口：动作提交后引擎进度仍可观测为未提交（轮询 120s）
+[INFO] 
+[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Smart-WorkFlow 0.1.3-SNAPSHOT:
+[INFO] 
+[INFO] Smart-WorkFlow ..................................... SUCCESS [  0.188 s]
+[INFO] Smart-WorkFlow :: Common ........................... SUCCESS [  0.711 s]
+[INFO] Smart-WorkFlow :: Security ......................... SUCCESS [  0.095 s]
+[INFO] Smart-WorkFlow :: Basic :: Storage :: API .......... SUCCESS [  0.054 s]
+[INFO] Smart-WorkFlow :: Basic :: Storage :: Biz .......... SUCCESS [  0.134 s]
+[INFO] Smart-WorkFlow :: Basic :: Notify :: API ........... SUCCESS [  0.047 s]
+[INFO] Smart-WorkFlow :: Basic :: Notify :: Biz ........... SUCCESS [  0.083 s]
+[INFO] Smart-WorkFlow :: Basic :: Job :: API .............. SUCCESS [  0.049 s]
+[INFO] Smart-WorkFlow :: Basic :: Job :: Biz .............. SUCCESS [  0.068 s]
+[INFO] Smart-WorkFlow :: Basic ............................ SUCCESS [  0.005 s]
+[INFO] Smart-WorkFlow :: Basic :: IoT :: API .............. SUCCESS [  0.011 s]
+[INFO] Smart-WorkFlow :: Basic :: IoT ..................... SUCCESS [  0.205 s]
+[INFO] Smart-WorkFlow :: Basic :: Knowledge ............... SUCCESS [  0.262 s]
+[INFO] Smart-WorkFlow :: Basic :: Agent ................... SUCCESS [  0.131 s]
+[INFO] Smart-WorkFlow :: Biz :: System :: API ............. SUCCESS [  0.098 s]
+[INFO] Smart-WorkFlow :: Biz :: System :: Biz ............. SUCCESS [  0.119 s]
+[INFO] Smart-WorkFlow :: Biz :: Form :: API ............... SUCCESS [  0.073 s]
+[INFO] Smart-WorkFlow :: Biz :: Form :: Biz ............... SUCCESS [  0.216 s]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: API ................ SUCCESS [  0.057 s]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: Engine ............. SUCCESS [  0.151 s]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: Process ............ SUCCESS [  0.085 s]
+[INFO] Smart-WorkFlow :: Biz :: OpenAPI :: API ............ SUCCESS [  0.049 s]
+[INFO] Smart-WorkFlow :: Biz :: OpenAPI :: Biz ............ SUCCESS [  0.059 s]
+[INFO] Smart-WorkFlow :: Bootstrap ........................ FAILURE [02:16 min]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  02:19 min
+[INFO] Finished at: 2026-10-01T23:41:13+08:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.2.5:test (default-test) on project sw-bootstrap: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-bootstrap/target/surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <args> -rf :sw-bootstrap

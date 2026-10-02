@@ -1,0 +1,19 @@
+G7a 提交映射与门禁（复核03 后 9 项执行轮）
+runId=p62exec03r04-223024 时间=2026-10-02 00:05:13
+
+[当前精确提交与远端读回]
+  Server: 8f5d470143cbee7b72791fa3016651062c219fb6（develop；远端读回 refs/heads/develop 同 SHA，见 g7a-web-gates/server-remote-readback.txt）
+  Web:    c75f77e（develop；远端已推送）
+  说明: 回执03 附件身份 194193a 与正文 4531cb9 的偏差已消除——本轮全部执行基于 8f5d470 工作树（4531cb9 之上），最终身份以回执04 正文为准
+
+[导出轮与终轮分开记录（不冒称首轮 exit0）]
+  五类导出轮（回执03 时点）: Tests run 17, Failures 2, Errors 1（失败在 P62OverlapEffectsPgTest，其后修正）
+  overlap 终轮: Tests run 3, Failures 0, Errors 0（raw-overlap-console-4.log）
+  本轮新增: P62FrozenSemanticsPgTest 3/0/0/0、P62ProgressWindowPgTest 1/0/0/0（G3a 窗口）
+  过程失败轮全部保留: g3a-window-failed-round1..7（竞态/列名/参数/1小时锁各因）
+
+[Web 四门真实输出（原始流落盘）]
+  g7a-web-gates/typecheck.txt exit=0；lint.txt exit=0（0 errors，87 存量 warnings 如实呈现）；test.txt 145 files passed/1 skipped、1313 passed+3 skipped/0 failed；build.txt exit=0
+  均含 commit 头与时点；G1a/G2b 测量合同约束下未并行构建
+
+[历史改写] 无 Owner 授权事实已登记（见回执03 g7a-commits-and-rewrite.txt，路径见上一 runId 证据根）；本轮无新改写/强推

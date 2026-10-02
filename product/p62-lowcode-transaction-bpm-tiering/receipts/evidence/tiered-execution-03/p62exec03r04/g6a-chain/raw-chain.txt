@@ -1,0 +1,20 @@
+G6a 同对象原始链（复核03 G6a 剩余项）2026-10-01 23:14—23:17
+身份=P62验收操作员(91001, debug token test_91001) 浏览器=IAB 1920x1080 URL=/workflow/defs/2105507486266904578/design
+对象=流程定义 2105507486266904578（G6a复核02闭环，已发布v1后经UI编辑→v2）
+
+[1 UI保存→服务器原始记录]
+  AccessLoggingFilter: ACCESS method=PUT path=/api/workflow/defs/2105507486266904578/graph status=200 costMs=32 eventRef=req-4fd6d757a0c (2026-10-01T23:15:29)
+  DB读回: def_version=2 status=PUBLISHED graph_json含"quantity":"2"=t
+[2 UI重新打开→属性回读]
+  ACCESS GET /api/workflow/defs/2105507486266904578 status=200 (23:16:06)
+  面板回读=[事务动作, da166513-a4e8-481b-8cd2-2af36f4edb40, instanceBusinessKey, 2, BLOCK]
+[3 UI发布→v2]
+  ACCESS POST /api/workflow/defs/2105507486266904578/publish status=200 costMs=844 (23:16:11)
+  DB: published_version=2 def_version=2; UI消息='发布成功：图、节点配置、表单与函数版本已冻结'
+  GET /api/workflow/defs/{id} 原始响应(截取): {"code":0,..."processKey":"bpm_efbe8477bda2493d",...elements[start,act-1,end]...}
+[4 UI表单发起→同对象执行]
+  ACCESS POST /api/form/data/p62_accept_stock status=200 costMs=55 eventRef=req-7ef19ec3975695c930f161dff52b1ec4 (23:16:43)
+  invocation行: id=4548d692-2350-44ae-94f8-1ac9df8c9d3f status=SUCCEEDED action_version=1 invocation_key=NODE:1c72f8c7-bdab-11f1-9120-d22d583c6bf6:node_1 biz_record_id=f2e2071a-b21f-4622-a48d-bf04cc91bcff
+  库存行: material=G6A-R04-EXEC qty_available=10.0 qty_reserved=2.0（v2 数量=2 语义生效）
+
+[链完整性] UI操作→服务器ACCESS(eventRef)→DB行(同defId/recordId/invocationId)→业务效果 逐环对应；无API/SQL替填（curl仅为只读GET）。
