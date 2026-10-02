@@ -1,0 +1,26 @@
+# 生产差异映射:28d57b9(工作树验证时点)→b6e9a45(修复提交)→7ba52ee(最终HEAD)
+
+## git diff --stat 28d57b9..7ba52ee(生产代码 main/java,全量生产差异)
+ .../process/queue/TaskActionCommandHandler.java    | 31 +++++++++++++++++++---
+ .../ck/bpm/process/service/TaskActionService.java  | 27 ++++++++++++++++---
+ 2 files changed, 51 insertions(+), 7 deletions(-)
+
+## git show --stat b6e9a45(G3b 修复提交,含双向正向测试资产)
+b6e9a4568de0a790f8a17b3f5f88a9a1d96a0828 Fri Oct 2 13:01:54 2026 +0800 fix(bpm): p62 复核04 G3b 跨入口统一幂等身份——同一(任务,操作人,动作)重放恢复原结果
+
+ .../process/queue/TaskActionCommandHandler.java    |  31 +-
+ .../ck/bpm/process/service/TaskActionService.java  |  27 +-
+ .../p62/P62CrossChannelIdentityPgTest.java         | 494 +++++++++++++++++++++
+ 3 files changed, 545 insertions(+), 7 deletions(-)
+
+## 28d57b9 工作树与 b6e9a45 的对应:diff 28d57b9..b6e9a45 生产文件
+ .../process/queue/TaskActionCommandHandler.java    | 31 +++++++++++++++++++---
+ .../ck/bpm/process/service/TaskActionService.java  | 27 ++++++++++++++++---
+ 2 files changed, 51 insertions(+), 7 deletions(-)
+
+## 28d57b9..b6e9a45 测试文件(修复自带的双向正向测试)
+ .../p62/P62CrossChannelIdentityPgTest.java         | 494 +++++++++++++++++++++
+ 1 file changed, 494 insertions(+)
+
+## r05 G3b 证据 buildCommit=28d57b9 的说明:28d57b9 时修复代码已存在于工作树(b6e9a45 于 13:01:54 提交同一内容),
+## 本轮 P62CrossChannelIdentityPgTest 与全部回归在最终 HEAD 7ba52ee(含 b6e9a45)重跑,消除工作树/提交歧义。
