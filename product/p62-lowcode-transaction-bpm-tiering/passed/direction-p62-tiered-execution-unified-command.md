@@ -1,3 +1,5 @@
+> 2026-10-02：本阶段PASSED，裁决见 `../receipts/planning-review-tiered-execution-unified-command-07-passed.md`。本文归档保留验收合同；旧执行账本/回执入口仅作历史，当前任务为 `../ready/direction-p62-tiered-execution-unified-command-terminal-sync.md`。
+
 # P62 分级执行与统一命令 · 阶段需求方向
 
 日期：2026-09-30；Planner；XL子阶段；状态 **VERIFYING**。前置首事务阶段已COMPLETED。

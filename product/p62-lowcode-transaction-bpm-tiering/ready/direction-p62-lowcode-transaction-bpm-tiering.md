@@ -4,7 +4,7 @@
 - Owner 本轮指令：开始制定 P62，并纳入 memory、knowledge、README、需求清单、功能清单等过期信息治理。
 - 本文为整体阶段方向；首事务阶段COMPLETED（规划已确认），后续阶段继续规划，整体P62尚未通过。
 - 正式需求基准：`todo/p62-lowcode-transaction-bpm-tiering.md` R01—R10、A01—A12，全部保留；本方向补充 G01—G06 信息治理验收。
-- **当前唯一下一动作**：Executor已按提示05交付G3b1/G3b2并提交回执07（2026-10-02，runId p62exec03r07）；唯一下一动作=Planner 独立复核回执07（阶段VERIFYING）。
+- **当前唯一下一动作**：分级执行阶段业务验收PASSED（复核07）、阶段状态COMPLETED（待规划确认），阶段方向已归档 `passed/direction-p62-tiered-execution-unified-command.md`；终态同步回执 `receipts/terminal-sync-tiered-execution-unified-command-01.md` 已提交，唯一下一动作=Planner 复核该同步回执（最终复核通过后写规划已确认并归档同步方向）。P62整体保持PLANNING，后续范围继续由 Planner 规划。
 
 ## 1. 目标与范围
 
@@ -50,10 +50,10 @@
 
 ## 6. 状态与授权
 
-P62整体PLANNING；首事务阶段COMPLETED；唯一下一动作：Executor按 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-tiered-execution-unified-command-05.md` 修正G3b1/G3b2并提交回执07（阶段VERIFYING）。0.1.3保持Owner已验收。
+P62整体PLANNING；首事务COMPLETED；分级执行阶段PASSED。唯一下一动作：Executor按 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-tiered-execution-unified-command-terminal-sync.md` 完成阶段终态同步，提交terminal-sync-tiered-execution-unified-command-01.md。
 
 信息治理 G01—G06 的审查结论见 `../receipts/planning-review-information-governance-05-passed.md`；治理方向归档至 `../passed/direction-p62-information-governance.md`。阶段方向与 ADR-P62-001 的范围和兼容边界保持，后续等级/设备/性能合同继续规划。
 
 功能数45、清单46/22/22（90）、ADV64、原54问题分类31/3/5/15及总记录57不变；不核销P62或其他P编号，不晋级正式测试基线。发布、部署、破坏性操作不在本方向授权内。
 
-当前阶段文件：`direction-p62-tiered-execution-unified-command.md`（VERIFYING）及`adr-p62-002-tiered-command.md`（已采纳）。限定探索已复核，实施回执05未通过；Executor已按补充提示05交付G3b1/G3b2并提交回执07（2026-10-02，待复核07）；探索文件只作输入追溯。
+当前阶段业务方向已归档 `../passed/direction-p62-tiered-execution-unified-command.md`，PASSED；当前执行方向为 `direction-p62-tiered-execution-unified-command-terminal-sync.md`（READY），ADR002已采纳。
