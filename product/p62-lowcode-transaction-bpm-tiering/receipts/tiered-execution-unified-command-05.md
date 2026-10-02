@@ -6,7 +6,7 @@
 
 - Server：`7ba52ee118875355313b15b20bba0a177e3eec38`（develop，已推送；本轮批次 28d57b9→`b6e9a45`（G3b 生产修复+跨通道证据）→`369601a`（G2b/G6a 补证资产）→`7ba52ee`（功能清单同步）；远端读回 `g7a/remote-readback-server-postpush.txt`）
 - Web：`c75f77ebe81a3a409bafdd503e9d75c9319a0af1`（develop，本轮无 Web 改动；远端读回 `g7a/remote-readback-web.txt`）
-- Workspace：本轮批次提交（含规划文件、本回执与证据）
+- Workspace：`9e9567f18f97fcc66a68daef2805a181bc8fb5d8`（develop-sw，已推送；远端读回 `g7a/remote-readback-workspace-postpush.txt`；含规划文件、本回执与证据）
 
 ## 5 项逐项交付
 
@@ -66,6 +66,11 @@
 ## 过程失败轮保留清单（不可覆盖原则）
 
 `g2b-failed-round1-total-string-parse/`（采集器字段解析缺陷，README.txt 说明）、G3b 修复过程轮（旧实现 `retryCount=4` 失败终态在 `/tmp` 构建日志中，已在本回执修复根因段如实记录，未删除历史证据）。r04 及更早的失败轮样本保持未动。
+
+## 证据清单与哈希
+
+- 本轮证据根：`product/p62-lowcode-transaction-bpm-tiering/receipts/evidence/tiered-execution-03/p62exec03r05/`，哈希清单 `evidence-sha256.txt` **32/32 匹配**（`shasum -a 256 -c` 实测）。
+- 上轮 r04 证据保持未动（`p62exec03r04/` 91/91 匹配复算通过）；本轮不重跑已锁定项（G1、Web 四门、共享热点压力主体、停用冻结/旧 handler、UI/1280 布局）。
 
 ## 逐项自检
 

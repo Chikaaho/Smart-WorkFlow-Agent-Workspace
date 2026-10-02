@@ -41,3 +41,11 @@
 | Server | `功能清单.md`（1 行差异） | 规划同步文本（P62 当前焦点段落） | 不属生产代码，不影响已采集证据语义；本轮不一并提交（Server 提交范围由本轮实际修改文件界定） |
 | Workspace | 规划文档与证据（memory/todo/product 方向、prompt03、review04、evidence/r05） | 规划与执行产物 | 本轮批次提交 |
 | Web | 无 | — | — |
+
+## 4. 批次提交后回读（追加）
+
+| 仓库 | 批次提交 | 远端读回 SHA | 回读文件 |
+|---|---|---|---|
+| Server | 28d57b9→`b6e9a45`（G3b 修复+证据）→`369601a`（G2b/G6a 资产）→`7ba52ee`（功能清单同步） | `7ba52ee118875355313b15b20bba0a177e3eec38`（0/0） | `remote-readback-server-postpush.txt` |
+| Workspace | `9e9567f`（回执05 与全入口同步） | `9e9567f18f97fcc66a68daef2805a181bc8fb5d8`（0/0） | `remote-readback-workspace-postpush.txt` |
+| Web | 无本轮改动 | `c75f77ebe81a3a409bafdd503e9d75c9319a0af1`（0/0） | `remote-readback-web.txt` |
