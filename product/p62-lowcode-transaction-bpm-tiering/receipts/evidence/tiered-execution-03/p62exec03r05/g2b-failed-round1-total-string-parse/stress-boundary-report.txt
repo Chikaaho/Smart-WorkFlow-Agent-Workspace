@@ -1,0 +1,6 @@
+scenario=stress-boundary entry=HTTP(http://127.0.0.1:59408) concurrency=64 warmup=30s formal=300s formalSamples=69052 warmupSamples=5818 legal=41524 illegal=27528 (rejected=27528 timeout=0 error=0) rejectRate=0.3987 p50=263.5ms p95=490.0ms p99=652.6ms max=1086.2ms budgetP99=N/A verdict=OBSERVATION-ONLY seed=20260930 runId=p62exec03r05-1200 shortVerify=false samplesSha256=accc95ad93270f402dc7507f76b480b1b609c89c1a0bc1cf8d6c9f24527548c1
+outcomes={SUCCEEDED=41524, REJECTED=27528}
+target-distribution tenant=0 formal=34481 hotspotHits=17410 hotspotFreq=0.5049 uniqueTargets=8167 hotspotSharedWorkers=32
+target-distribution tenant=100 formal=34571 hotspotHits=17188 hotspotFreq=0.4972 uniqueTargets=8275 hotspotSharedWorkers=32
+recordedAt=2026-10-02 12:23:41.402
+runId=p62exec03r05-1200

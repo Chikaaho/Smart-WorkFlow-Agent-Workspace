@@ -1,0 +1,81 @@
+# G6a 只读原始链导出
+runId=p62exec03r05-13t00
+buildCommit=28d57b9a7ccb664960015d5a446f4c498bf29ca9
+exportedAt=2026-10-02 12:57:25.674
+scope=只读导出（不重拍UI/不重做发布/不改图配置与库存）
+原对象登记：复核04 G6a 所指定义 2105507486266904578/记录 f2e2071a-b21f-4622-a48d-bf04cc91bcff
+  所在运行环境（上一轮 EmbeddedPostgres + 18080 验收应用）随上轮进程结束销毁，
+  旧库不可再读；本轮按等价对象形状（同发布→绑定→提交→节点动作→库存语义）
+  重建最小替代链，仅补该断言所缺的原始回读；不重拍 UI、不重做发布。
+
+pgPort=64037 pgVersion=PostgreSQL 17.5 on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.6), 64-bit
+httpPort=64058
+tenant=0 actor=91358 formKey=p62_chain_stock actionKey=chain_reserve quantity=2
+
+
+=== A. 发布版本（sw_bpm_process_def） ===
+SQL> SELECT id, process_key, def_version, published_version, status, form_key FROM sw_bpm_process_def WHERE form_key = ? ORDER BY create_time DESC
+PARAMS> [p62_chain_stock]
+ROWS=1
+ROW id=2105884906245402626 | process_key=bpm_dd89305990e84272 | def_version=2 | published_version=2 | status=PUBLISHED | form_key=p62_chain_stock | 
+
+=== B. 版本冻结与绑定（sw_bpm_form_binding / 图节点绑定） ===
+SQL> SELECT process_def_key, form_key, active FROM sw_bpm_form_binding WHERE form_key = ?
+PARAMS> [p62_chain_stock]
+ROWS=2
+ROW process_def_key=bpm_dd89305990e84272 | form_key=p62_chain_stock | active=false | 
+ROW process_def_key=bpm_dd89305990e84272 | form_key=p62_chain_stock | active=true | 
+SQL> SELECT id, action_key, action_type, status, current_version, form_id, config_json FROM sw_form_txn_action WHERE form_id = ?
+PARAMS> [7ade3974-a966-4bb0-8ec8-e60c6ba59444]
+ROWS=1
+ROW id=962a43e0-3718-48bd-b4a1-b3146caf0737 | action_key=chain_reserve | action_type=RESERVE | status=PUBLISHED | current_version=2 | form_id=7ade3974-a966-4bb0-8ec8-e60c6ba59444 | config_json={"keyFields": null, "balanceField": "qty_available", "quantityScale": null, "reservedField": "qty_reserved", "expiresInSeconds": "600", "nonNegativeAvailable": null} | 
+SQL> SELECT action_id, version_no, form_version, config_json FROM sw_form_txn_action_version WHERE action_id = ? ORDER BY version_no
+PARAMS> [962a43e0-3718-48bd-b4a1-b3146caf0737]
+ROWS=2
+ROW action_id=962a43e0-3718-48bd-b4a1-b3146caf0737 | version_no=1 | form_version=2 | config_json={"keyFields": null, "balanceField": "qty_available", "quantityScale": null, "reservedField": "qty_reserved", "expiresInSeconds": "600", "nonNegativeAvailable": null} | 
+ROW action_id=962a43e0-3718-48bd-b4a1-b3146caf0737 | version_no=2 | form_version=2 | config_json={"keyFields": null, "balanceField": "qty_available", "quantityScale": null, "reservedField": "qty_reserved", "expiresInSeconds": "600", "nonNegativeAvailable": null} | 
+
+=== C. 业务记录（动态宽表实际行） ===
+SQL> SELECT id, material, qty_available, qty_reserved FROM sw_form_ttcimzo156 WHERE id = ?
+PARAMS> [ca355421-e268-4ee1-92d1-30739706a17a]
+ROWS=1
+ROW id=ca355421-e268-4ee1-92d1-30739706a17a | material=CHAIN-R05-EXEC | qty_available=10.000000 | qty_reserved=2.000000 | 
+
+=== D. 流程实例与运行节点（sw_bpm_instance / ACT_HI_ACTINST / ACT_RU_VARIABLE） ===
+-- processInstanceId=cceb2f0c-be1d-11f1-ad13-d22d583c6bf6
+SQL> SELECT process_instance_id, process_def_key, business_key, status FROM sw_bpm_instance WHERE business_key = ?
+PARAMS> [ca355421-e268-4ee1-92d1-30739706a17a]
+ROWS=1
+ROW process_instance_id=cceb2f0c-be1d-11f1-ad13-d22d583c6bf6 | process_def_key=bpm_dd89305990e84272 | business_key=ca355421-e268-4ee1-92d1-30739706a17a | status=RUNNING | 
+SQL> SELECT PROC_INST_ID_, ACT_ID_, ACT_NAME_, ACT_TYPE_, START_TIME_, END_TIME_ FROM ACT_HI_ACTINST WHERE PROC_INST_ID_ = ? ORDER BY START_TIME_
+PARAMS> [cceb2f0c-be1d-11f1-ad13-d22d583c6bf6]
+ROWS=5
+ROW proc_inst_id_=cceb2f0c-be1d-11f1-ad13-d22d583c6bf6 | act_id_=start | act_name_=Start | act_type_=startEvent | start_time_=2026-10-02 12:57:42.659 | end_time_=2026-10-02 12:57:42.662 | 
+ROW proc_inst_id_=cceb2f0c-be1d-11f1-ad13-d22d583c6bf6 | act_id_=e1 | act_name_=null | act_type_=sequenceFlow | start_time_=2026-10-02 12:57:42.663 | end_time_=2026-10-02 12:57:42.663 | 
+ROW proc_inst_id_=cceb2f0c-be1d-11f1-ad13-d22d583c6bf6 | act_id_=act-node-1 | act_name_=库存预占 | act_type_=serviceTask | start_time_=2026-10-02 12:57:42.725 | end_time_=2026-10-02 12:57:42.799 | 
+ROW proc_inst_id_=cceb2f0c-be1d-11f1-ad13-d22d583c6bf6 | act_id_=e2 | act_name_=null | act_type_=sequenceFlow | start_time_=2026-10-02 12:57:42.799 | end_time_=2026-10-02 12:57:42.799 | 
+ROW proc_inst_id_=cceb2f0c-be1d-11f1-ad13-d22d583c6bf6 | act_id_=end | act_name_=End | act_type_=endEvent | start_time_=2026-10-02 12:57:42.8 | end_time_=2026-10-02 12:57:42.801 | 
+SQL> SELECT NAME_, TEXT_, TYPE_ FROM ACT_RU_VARIABLE WHERE PROC_INST_ID_ = ? ORDER BY NAME_
+PARAMS> [cceb2f0c-be1d-11f1-ad13-d22d583c6bf6]
+ROWS=0
+
+=== E. 动作调用与库存效果（sw_form_txn_invocation / sw_form_txn_reservation / sw_form_txn_ledger） ===
+SQL> SELECT id, action_id, action_version, invocation_key, biz_record_id, status, result_json, duration_ms FROM sw_form_txn_invocation WHERE action_id = ?
+PARAMS> [962a43e0-3718-48bd-b4a1-b3146caf0737]
+ROWS=1
+ROW id=304f6c1c-28cd-4889-9e47-89e4c3933708 | action_id=962a43e0-3718-48bd-b4a1-b3146caf0737 | action_version=2 | invocation_key=NODE:cceb2f0c-be1d-11f1-ad13-d22d583c6bf6:act-node-1 | biz_record_id=ca355421-e268-4ee1-92d1-30739706a17a | status=SUCCEEDED | result_json={"quantity": 2, "balanceAfter": 10.000000, "reservationId": "d2fe7915-2e83-4e7b-918d-934659051312", "reservedAfter": 2.000000} | duration_ms=20 | 
+SQL> SELECT id, action_id, action_version, record_id, quantity, status, reserve_invocation_id FROM sw_form_txn_reservation WHERE action_id = ?
+PARAMS> [962a43e0-3718-48bd-b4a1-b3146caf0737]
+ROWS=1
+ROW id=d2fe7915-2e83-4e7b-918d-934659051312 | action_id=962a43e0-3718-48bd-b4a1-b3146caf0737 | action_version=2 | record_id=ca355421-e268-4ee1-92d1-30739706a17a | quantity=2.000000 | status=ACTIVE | reserve_invocation_id=304f6c1c-28cd-4889-9e47-89e4c3933708 | 
+SQL> SELECT id, action_id, action_version, invocation_id, entry_type, record_id, quantity, balance_after, reserved_after FROM sw_form_txn_ledger WHERE action_id = ?
+PARAMS> [962a43e0-3718-48bd-b4a1-b3146caf0737]
+ROWS=1
+ROW id=7a4f2d21-0c87-4355-bac3-080acd74b207 | action_id=962a43e0-3718-48bd-b4a1-b3146caf0737 | action_version=2 | invocation_id=304f6c1c-28cd-4889-9e47-89e4c3933708 | entry_type=RESERVE | record_id=ca355421-e268-4ee1-92d1-30739706a17a | quantity=2.000000 | balance_after=10.000000 | reserved_after=2.000000 | 
+SQL> SELECT id, material, qty_available, qty_reserved, version FROM sw_form_ttcimzo156 WHERE id = ?
+PARAMS> [ca355421-e268-4ee1-92d1-30739706a17a]
+ROWS=1
+ROW id=ca355421-e268-4ee1-92d1-30739706a17a | material=CHAIN-R05-EXEC | qty_available=10.000000 | qty_reserved=2.000000 | version=1 | 
+
+# 正向关联：def v2 → binding(formKey=p62_chain_stock) → action 962a43e0-3718-48bd-b4a1-b3146caf0737 v2(冻结) → record ca355421-e268-4ee1-92d1-30739706a17a → instance cceb2f0c-be1d-11f1-ad13-d22d583c6bf6 → node act-node-1 → invocation NODE:cceb2f0c-be1d-11f1-ad13-d22d583c6bf6:act-node-1 → 实际库存数量 2
+# 反向排除：以上各环均为同一 tenant=0 同一 formKey=p62_chain_stock 同一 actionId=962a43e0-3718-48bd-b4a1-b3146caf0737 同一 recordId=ca355421-e268-4ee1-92d1-30739706a17a 的实际行；无 API/SQL 替填

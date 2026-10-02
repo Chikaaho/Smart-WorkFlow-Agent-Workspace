@@ -1,0 +1,24 @@
+runId=p62exec03r05-12t30
+recordedAt=2026-10-02 12:29:17.868
+entry=HTTP real Tomcat port=60799
+javaVersion=21.0.11
+osName=Mac OS X
+osArch=aarch64
+cores=8
+heapMaxMiB=2048
+jvmInputArgs=-jar /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-bootstrap/target/surefire/surefirebooter-20261002122846709_3.jar /usr/local/projects/Smart-WorkFlow/Smart-WorkFlow-aPaaS-server/sw-bootstrap/target/surefire 2026-10-02T12-28-45_122-jvmRun1 surefire-20261002122846709_1tmp surefire_0-20261002122846709_2tmp
+envMAVEN_OPTS= -Xmx2g
+buildCommit=28d57b9a7ccb664960015d5a446f4c498bf29ca9
+pgVersion=PostgreSQL 17.5 on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.6), 64-bit
+pgPort=60774
+hikariMaxPool(stale-key,ineffective)=null
+druidMaxActive(actual)=64
+dispatcherPollMillis=100
+dispatcherBatchSize=50
+dispatcherStaleSeconds=null
+flowableAsyncCorePool=8
+debugAuth=enabled(dev profile, loopback) perTenantBearer
+identity=debug token test_<uid> -> UserDetailsProvider 正式回查
+fixture tenant=0 userId=91999 formKey=p62_budget_t0 actionId=da8d6f04-396a-4169-b52d-7476b5733190 processKey=bpm_70a4004320ac4f39 objects=1000 hotspotId=e0fa2de0-d464-4665-8d8e-af066bda3dff
+fixture tenant=100 userId=92999 formKey=p62_budget_t100 actionId=b8758bca-c782-48b0-bc37-49b3e4f3ab0a processKey=bpm_df92220b8e3f4ada objects=1000 hotspotId=68b24a61-b79d-4b0e-81c4-644ff7edc976
+budgetContract=realtime P99<=300ms entry->commit; light acceptance P99<=2s entry->persistent-acceptance; client-observed loopback latency is declared upper bound of server entry->commit
