@@ -69,7 +69,7 @@
 
 ## 证据清单与哈希
 
-- 本轮证据根：`product/p62-lowcode-transaction-bpm-tiering/receipts/evidence/tiered-execution-03/p62exec03r05/`，哈希清单 `evidence-sha256.txt` **32/32 匹配**（`shasum -a 256 -c` 实测）。
+- 本轮证据根：`product/p62-lowcode-transaction-bpm-tiering/receipts/evidence/tiered-execution-03/p62exec03r05/`，清单范围=本轮证据文件（不含回执本体，回执为 workspace 跟踪交付物，其哈希以证据内 `g7b/receipt05-identity-and-counts.txt` 记录为准）；`evidence-sha256.txt` **32/32 匹配**（`shasum -a 256 -c` 实测）。
 - 上轮 r04 证据保持未动（`p62exec03r04/` 91/91 匹配复算通过）；本轮不重跑已锁定项（G1、Web 四门、共享热点压力主体、停用冻结/旧 handler、UI/1280 布局）。
 
 ## 逐项自检
