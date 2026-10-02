@@ -1,6 +1,6 @@
 # P62 资源隔离与多租户保障 · 探索附件（原始读回明细）
 
-执行（Executor），2026-10-02；主回执 `p62-resource-isolation-readiness-20261002.md`（§号对应本文条目）。只读探索；`R=Smart-WorkFlow-aPaaS-server`，`P=R/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process`，`Y=R/sw-bootstrap/src/main/resources`。来源：两个只读探索子代理（A/B 节；C/D 节）+ 主执行亲核（A3/A4/env-frozen/配置键清单）。
+执行（Executor），2026-10-02；主回执 `p62-resource-isolation-readiness-20261002.md`（订正版02，按 `…/receipts/planning-review-resource-isolation-readiness-01.md` 订正1—5 落实；§号对应本文条目）。只读探索；`R=Smart-WorkFlow-aPaaS-server`，`P=R/sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process`，`Y=R/sw-bootstrap/src/main/resources`。来源：两个只读探索子代理（A/B 节；C/D 节）+ 主执行亲核（A3/A4/env-frozen/配置键清单）。原版表述见 git 历史 Workspace `6f44ca6`。
 
 ## A. 资源图证据（Q1）
 
@@ -13,6 +13,7 @@
 | A3 | Flowable 异步 | `flowable.async-executor-activate:false`、`database-schema-update:true`；全仓无其他 asyncExecutor/jobExecutor 配置或 configurer（唯一 configurer=A5） | `Y/application.yml:99-101`；`BpmEngineAutoConfiguration.java:155-173` | 配置键存在 |
 | A3 | TXN_ACTION 异步 | `task.setAsynchronous(true)` | `P/…/translator/TxnActionNodeTranslator.java:81` | 静 |
 | A3 | Harness 激活 | `props.put("flowable.async-executor-activate","true")`、`async.executor.core-pool-size=8`、`max-pool-size=8`、`async-job-lock-time-in-millis=60000`（r04/r05 测量与 E2E 全部经此装配） | `sw-bootstrap/src/test/java/com/sw/ck/bootstrap/p62/P62BudgetMeasurementPgTest.java:175-178`；`P62DefToInventoryChainPgTest.java:106` | 验（证据运行时） |
+| A3 | 启用风险层级（复核01 订正4） | 配置 OFF+动作节点异步+测量显式 ON 形成**启用风险**；未证明现有生产服务已失效。核验须在获授权隔离环境进行（有效配置与消费者可用性），能力启用前提供明确检查与拒绝语义；不以停止现服务方式核实 | planning-review-resource-isolation-readiness-01.md §必须订正4 | 复核限定 |
 | A4 | Druid 默认 | dynamic-datasource+Druid（非 Hikari）：`initial-size:5,min-idle:5,max-active:20,max-wait:60000`；prod 覆盖 `max-active:5,initial-size:2,min-idle:1` | `Y/application.yml:41-45`；`Y/application-prod.yml:21-24` | 配置键存在 |
 | A4 | 测量生效值 | env-frozen：`druidMaxActive(actual)=64`、`hikariMaxPool(stale-key,ineffective)=null`、`dispatcherPollMillis=100`、`dispatcherBatchSize=50`、`flowableAsyncCorePool=8`、heapMaxMiB=2048、cores=8、pgVersion=PostgreSQL 17.5（zonky）；Harness 设 `druid.initial-size=10,min-idle=10,max-active=64,max-wait=10000` 并注明"旧键 hikari.maximum-pool-size 无效——maxActive=5 导致 16 并发连接饥饿（10s 超时）"；失败轮 env-frozen：druid5 轮 formalSamples=2578/TIMEOUT=16/FAIL、poolstarve 轮（池32）9726/TIMEOUT=31/FAIL | `product/p62-lowcode-transaction-bpm-tiering/receipts/evidence/tiered-execution-03/p62exec03r04/g1b/env-frozen.txt`、`g1/env-frozen.txt`、`g1-failed-r04-druid5/{env-frozen.txt,light-process-acceptance-report.txt}`、`g1-failed-r04-poolstarve/…`；`P62BudgetMeasurementPgTest.java:162-168,212-214` | 验 |
 | A5 | 引擎绑定 | 引擎显式绑定应用 DataSource+应用 PlatformTransactionManager（单一提交边界，G3a）；生产代码无 `@DS` | `BpmEngineAutoConfiguration.java:142-173` | 静 |
@@ -27,8 +28,8 @@
 |---|---|---|---|---|
 | B1 | 列清单 | sw_bpm_command 基线列：command_key/command_type/channel(默认NORMAL)/status(默认PENDING)/payload/result/failure_reason/retry_count/next_retry_at/claimed_at/finished_at/initiator_id+tenant_id（V0.1.0:2400-2417）；V0.1.2 增 logical_command_id/payload_fingerprint/tier/completion_point/**deadline_at**/overdue_at；V0.1.3 批次表 batch(+item: status/invocation_id/error_code/attempt_count) | `V0.1.0__baseline_seed.sql:2400-2417`；`V0.1.2__tiered_command_semantics.sql:6-16`；`V0.1.3__batch_command.sql:6,29` | 验 |
 | B1 | 截止语义 | deadline_at 1-300s（默认30s）受理冻结；到期且无效果行→EXPIRED（expireDue 每轮 LIMIT 200）；PROCESSING 超期只记 overdue_at 不判失败 | `PersistentBpmCommandQueue.java:39-41,314-378` | 静 |
-| B2 | r04 报告 | accepted=62100、validPairs=22666、succeededPairs=22666、incomplete=39434、pairP50=541325ms、outcomes={ACCEPTED=62100}——仅计数无状态分布 | `…/p62exec03r04/g1b/light-process-acceptance-pairs.txt:1`、`light-process-acceptance-report.txt:1` | 验 |
-| B2 | 瓶颈推断 | 受理 62100/300s≈207/s；消费=单车道 poll500ms×20 串行→≤~40/s，8min≈19-23k 与 22,666 吻合；EXPIRED 收敛限 200/60s（8min≤1600）→多数未完成仍 PENDING | `CommandDispatcher.java:50-57,100-113`；`TieredCommandReconcileJob.java:60` | 推 |
+| B2 | r04 报告 | accepted=62100、validPairs=22666、succeededPairs=22666、incomplete=39434、pairP50=541325ms、outcomes={ACCEPTED=62100}——仅计数无状态分布；pairP50 为限定行时差口径，不能单独归为纯排队等待 | `…/p62exec03r04/g1b/light-process-acceptance-pairs.txt:1`、`light-process-acceptance-report.txt:1`；复核01 §订正1 | 验 |
+| B2 | 归因撤回（复核01 订正1） | 原"默认配置 ~40/s→多数未完成仍 PENDING"推断**撤回**：该轮 env-frozen 实际 dispatcherPollMillis=100/batch=50/druidMaxActive=64，默认配置估算不适用本次运行；批量/间隔不等于实测消费吞吐。未完成构成与瓶颈归因=**未知**，待获授权受控轮 `GROUP BY status,channel,tenant_id`；pairs.txt 只证明 accepted/succeeded/incomplete 计数与限定行时差/可见探针，不证明全部未完成是命令队列等待 | planning-review-resource-isolation-readiness-01.md §必须订正1；本表 §A4 env-frozen | 撤回/待核实 |
 | B3 | 无反压 | 全仓 queueDepth/backpressure/backlog/reject-by-depth 0 命中；enqueue 无条件 save | `PersistentBpmCommandQueue.java:52-69`；grep 0 命中 | 验（未找到） |
 | B3 | 限制接缝 | enqueue 内 `commandService.save`（:64）之前抛错→仅回滚本次受理（MANDATORY 同调用方事务），已提交受理行不受影响；唯一键 uk+`FlowStartPortImpl.java:73` findByKey 去重 | `PersistentBpmCommandQueue.java:52-64` | 静 |
 | B3 | 同步等待 | P0 有界等待默认 5000ms/轮询 100ms | `CommandSyncWaiter.java:31-35` | 静 |
@@ -43,7 +44,7 @@
 | C2 | 租户语义 | 领取/回收/对账跨租户（TenantLineSuspension）；信封 tenant_id 承载+消费前身份回查；NodeFunctionService=tenant 0 全局+本租户 | `PersistentBpmCommandQueue.java:111-116`；`CommandDispatcher.java:209-226`；`NodeFunctionService.java:291-297` | 静 |
 | C2 | 批量 | BATCH_INVOKE 受理与调用方同事务、逐项异步独立事务，租户随信封还原 | `TxnBatchServiceImpl.java:39,139` | 静 |
 | C3 | 共享清单 | 单租户突发共享：2 线程 dispatcher、同一 Druid 池（prod max5）、同一 sw_bpm_command 行竞争、同一 act_ru_job、同一 Boot @Async 池、同一 Quartz 池、同一 Tomcat 池；OA 读（BpmTodoController:99、menus）与命令消费同池；grep semaphore/bulkhead/rate-limit/quota 0 命中 | 见 A 节各行；grep 0 命中 | 静 |
-| C3 | OA 实测 | r05：64 并发 50% 热点窗口内 OA 业务待办读 tenant0 1,272/tenant100 1,273 请求零失败，p99=559.0/552.3ms，todoTotal=1 | `…/p62exec03r05/g2b/oa-business-summary.txt` | 验（OBSERVATION-ONLY） |
+| C3 | OA 实测（复核01 订正3 区分窗口） | r05 **summary 窗口**：tenant0 1,272/tenant100 1,273 请求零失败、p99=559.0/552.3ms、todoTotal=1——该窗口**含正式压力段前请求**（OA 起点 12:31:29 vs 压力正式起点 12:31:59）；**正式压力窗口锁定 1,128/1,131（复核07）**；summary 值不转录为正式压力窗口 P99。有限观测不证明单租户突发/保留容量/不饥饿合同成立 | `…/p62exec03r05/g2b/oa-business-summary.txt`；复核01 §订正3；复核07 | 验（观测）+复核限定 |
 | C4 | 缺失项 | 每租户配额、公平调度、NORMAL 内优先级、准入限流、租户级并发上限：业务代码与 yml 均 0 命中；唯一独立池=`sw.external-datasource.pool`（外部数据源只读仓库） | grep 0 命中；`application.yml:169-179` | 静（不存在） |
 
 ## D. 指标与入口证据（Q4）
@@ -65,7 +66,7 @@
 | # | 事项 | 事实 | 位置 | 定性 |
 |---|---|---|---|---|
 | E1 | 环境不变式 | M1 8核/8GiB（hw.memsize=8589934592，r04 `g7b/env-memory-facts.txt`）/macOS/JDK 21.0.11/Maven 3.8.6（`MAVEN_OPTS=-Xmx2g`）；测量=zonky 内嵌 PG 17.5（env-frozen pgVersion），本地另有 Homebrew PG 16.15；Redis 7.2.5；heapMaxMiB=2048（env-frozen） | r04 env-frozen 各件；`g7b/env-memory-facts.txt` | 验 |
-| E1 | 已测档位 | r04 合规 16 并发（两租户各8、热点10%、各1000对象、300s）：实时 formalSamples=76,785 p99=112.637083ms≤300ms 零拒绝零超时；轻流程受理 62,100 p99=147.877333ms≤2000ms。r04/r05 压力 64 并发（两租户各32、各10k 对象、50% 热点、300s）：r04 72,232/legal 42,767/rejected 29,465(40.79%) p99=562.4ms；r05 63,984/rejected 24,649(38.52%) p99=696.3ms；OA 业务读零失败（§C3）。恢复：独立进程 SIGKILL 后 100 条 46.478s 零重复效果（r03 G2a）。全部 OBSERVATION-ONLY，非生产 SLA；300ms/2s 预算未调低 | `…/p62exec03r04/g1/*report.txt`、`g2b/stress-boundary-report.txt`、`…/p62exec03r05/g2b/*`；回执04/05 §G1a/G2b | 验 |
+| E1 | 证据分层（复核01 订正2） | **阶段通过值（复核07 保留，探索不重开）**=固定合规负载实时 76,785 p99=112.637083ms≤300ms 零拒绝零超时、轻流程持久受理 62,100 p99=147.877333ms≤2000ms（r04 合规 16 并发、两租户各8、热点10%、各1000对象、300s）。**OBSERVATION-ONLY（非生产 SLA）**=压力 64 并发（两租户各32、各10k 对象、50% 热点）：r04 72,232/rejected 29,465(40.79%) p99=562.4ms、r05 63,984/rejected 24,649(38.52%) p99=696.3ms、OA 画像（§C3）、恢复 100 条 46.478s 零重复（Harness 测量，r03 G2a）。300ms/2s 预算未调低；高负载画像不证明生产 SLA | `…/p62exec03r04/g1/*report.txt`、`g2b/stress-boundary-report.txt`、`…/p62exec03r05/g2b/*`；复核01 §订正2 | 验+复核限定 |
 | E2 | 未知项 | ①39,434 终态分布（测量库随进程销毁不可再读；需新受控轮一条 `SELECT status,count(*) … GROUP BY status,channel,tenant_id`）②8 分钟外长时排干行为③prod Druid max-active=5 下整链真实吞吐④`async-executor-activate:false` 生产语义（当前生产/UAT 未启用分级负载；轻流程异步消费在默认配置下无执行器）⑤多小时稳定性⑥Tomcat/@Scheduled/Quartz 默认值运行核验、`sw.job.pool-size` 接线 | 本表与 A3/A4 | 待核实 |
 
 ## F. 兼容与回退证据（Q6）

@@ -1,24 +1,28 @@
-# P62 资源隔离与多租户保障 · 限定探索（回执）
+# P62 资源隔离与多租户保障 · 限定探索（回执·订正版02）
 
-执行（Executor），2026-10-02；入口 `search_task/p62-resource-isolation-readiness-20261002.md`。只读：未改代码/迁移、未构建/测试/压测/部署、未起停服务。定性：〔验〕既有证据实际值／〔静〕静态读码／〔推〕推断／〔核〕待运行核验。传播已先行完成（Workspace `0d4c7ad`、Server `677d551`；逐字段回读见 P62 receipts/`terminal-sync-tiered-execution-unified-command-01-final-confirmation-appendix.md`）。**全部 path:line 证据在附件 `p62-resource-isolation-readiness-20261002-details.md`（下称附件§号）（正文实测 6.4KB，超出 5KB 目标：六问逐项事实按任务结构保留于正文，全部原始 path:line 读回在附件）。**
+执行（Executor），2026-10-02；入口 `search_task/p62-resource-isolation-readiness-20261002.md`。只读：未改代码、未构建/测试/压测/部署。**按规划复核01订正**（P62 receipts/`planning-review-resource-isolation-readiness-01.md`）；原版见 git 历史（`6f44ca6`）。全部 path:line 证据与逐条定性（验/静/核）在附件 `p62-resource-isolation-readiness-20261002-details.md`（下称附件§号）。
 
 ## 结论
 
-六问均可回答。真实接缝=**单进程、单 Druid 池、单 PG 库全共享；现有"隔离"只有车道级**（P0 领取优先+有界等待），无租户配额/公平/准入反压。r04/r05 基线的资源合同是 Harness 显式覆写（Druid maxActive=64、异步执行器 ON×8、dispatcher 100ms×50），与默认配置（Druid 20/prod **5**、执行器 **OFF**、500ms×20）差异巨大；默认配置下轻流程异步节点无人消费〔静+核〕。积压可在 sw_bpm_command 单表按 status/retry/deadline SQL 区分（deadline_at/EXPIRED 已存在），但无查询端点与业务指标（Actuator 仅 health、主代码 0 Meter）。产品决策归 Planner。
+六问经复核01 采信为规划输入（不证明资源保障已实现或 A07 通过）。接缝=单进程、共享 Druid 池与 PG 库；P0 独立领取车道而非完整资源隔离；缺租户配额/公平/上限。测量运行合同=Harness 覆写（Druid 64、执行器 ON×8、dispatcher 100ms×50，env-frozen）；默认配置（Druid 20/prod 5、执行器 OFF）为配置事实，运行生效与整链可用性待隔离环境核验。积压可按 sw_bpm_command 单表 status/retry/deadline SQL 区分（deadline_at/EXPIRED 在）；39,434 无状态分布、归因未知。产品决策归 Planner。
 
 ## 六问要点
 
-- **Q1 资源图**：受理 enqueue=MANDATORY 同事务；消费=dispatcher 自有 2 线程池（NORMAL 500ms×20/P0 100ms×5，代码默认）单线程逐条 dispatchOne，领取=条件 UPDATE 无 FOR UPDATE、跨租户扫描〔静；§A1-A2〕。`async-executor-activate` 默认 false 而 TXN_ACTION 节点异步→**默认配置 act_ru_job 无人消费**，r04/r05 轻流程证据全来自 Harness 激活（ON、8 线程、锁60s）〔静+核；§A3〕。连接池=**Druid 非 Hikari**（yml 20/prod **5**，测量运行实际 **64**；池=5 曾连接饥饿）〔验+静；§A4〕；引擎与业务同一 DataSource/事务管理器〔§A5〕；@Async/@Scheduled/Quartz 均默认池、`sw.job.pool-size` 未接线〔推/静；§A6〕；锁=命令唯一键/宽表父行 FOR UPDATE+JVM 锁/REQUIRES_NEW 拒绝记录占第二连接〔§A7〕。
-- **Q2 积压**：单表 SQL 可区分 等待/失败待重试/执行中/疑似卡死(stale 60s)/FAILED/EXPIRED，**deadline_at(默认30s 受理冻结)与 EXPIRED 已存在**〔静；§B1〕；39,434=报告无状态分布、pairP50≈541s 即排队等待、单车道 ~40/s vs 受理 207/s（8min≈22,666 吻合）→推断多数仍 PENDING〔验+推；§B2〕；不丢已受理对象的限制接缝=enqueue 内 save 之前（抛错仅回滚本次受理），现无任何队列深度/反压逻辑〔静；§B3〕。
-- **Q3 覆盖**：P0=专用权限+领取优先+消费前权限复查+5s 有界等待，**无线程/连接/表隔离**；NORMAL=全局 FIFO〔静；§C1〕；租户仅信封承载+消费前身份回查，配额/并发上限/公平调度不存在〔静；§C2〕；单租户突发与 OA 读共享 Tomcat+Druid 池、无舱壁（r05 实测 64 并发 50% 热点下 OA 业务读零失败 p99≈559ms，OBSERVATION-ONLY）〔验；§C3〕；可调既有键=`sw.bpm.command.*` 11 键+Druid 池（prod 5 最紧、影响全模块），缺=租户配额/公平/优先级/准入/审计；独立线程≠DB/CPU 隔离（唯一独立池=外部数据源池）〔静；§C4〕。
-- **Q4 指标与入口**：Actuator 仅 health、主代码 0 Meter=无业务指标〔静；§D1〕；真实入口=命令单条 GET（仅受理人本人）、批量 GET txn-batch/{batchKey}（Web TxnBatchConsole 菜单9105）、监控 analytics=实例维度，**无积压统计/列表端点**〔静；§D2〕；关联链 trace.record_id→FLOW_START:{recordId}→命令行(tenant/channel/tier/时间戳/deadline_at)→effect→invocation(action_version、duration_ms)→目标行可串，缺口=目标表时刻/stale 回收时间戳/恢复专用字段；最小缺口（复用现有列）=积压聚合端点、命令列表端点、Micrometer 五段计量、恢复字段〔静；§D3-D4〕。
-- **Q5 负载合同**：环境不变式 8核/8GiB/JDK21.0.11/heap2048MiB/单进程/zonky PG17.5〔验〕；已支撑（OBSERVATION-ONLY、不调低已过预算）=16 并发热点10% 实时 p99=112.6ms≤300ms、受理 p99=147.9ms≤2s、64 并发 50% 热点拒绝 38.5-40.8% 且 p99 562-696ms、OA 零失败、恢复 100 条 46.478s 零重复，吞吐依赖 Harness 覆写合同〔验；§E1〕；未知待小型探索=8 分钟外排干、39,434 终态分布、prod 池5 真实吞吐、async OFF 生产语义、多小时稳定性〔§E2〕。
-- **Q6 兼容回退**：在途冻结先例=动作版本/停用结算/payload_fingerprint(2426+旧行回推)/deadline_at 均受理时点冻结〔验；§F1〕；默认关闭=`sw.bpm.txn-batch.enabled` false+`sw.bpm.enabled` 门控+G5a 消费者隔离先例，0.1.3 不含分级能力〔静+验；§F2〕；锁定边界=P4/P0 双通道契约、旧二进制 CommandTypeEnum.of 抛错、REQUIRES_NEW 仅拒绝/审计、BATCH_INVOKE 逐项独立事务+幂等重放、设备 UNKNOWN 禁自动重发+HMAC 守卫+`iot:command:verify` 人工核实、回退=只停新受理保留结果向前修复不降级重放〔验+静；§F3〕；方案利弊（决策归 Planner）=A 调既有键（零代码但无公平且 prod 池5 先饥饿）/B enqueue 前计量+准入拒绝（可审计不丢已受理、需新错误码/端点/默认关）/C 扩 P0 式车道（线程级不解决 DB 共享）〔§F4〕。
+- **Q1**：受理 enqueue=MANDATORY 同事务；消费=dispatcher 2 线程池（代码默认 500ms×20/P0 100ms×5；运行实际 100ms×50，env-frozen），领取=条件 UPDATE 无 FOR UPDATE、跨租户扫描；连接池=**Druid 非 Hikari**（yml 20/prod 5、运行实际 64、池=5 曾连接饥饿（失败轮））；引擎与业务同一 DataSource/事务管理器；执行器 OFF+节点异步+测量显式 ON=**启用风险**，未证明现有服务失效。〔静+验+核；§A1-A7〕
+- **Q2**：单表 SQL 可区分 等待/失败待重试/执行中/疑似卡死(stale 60s)/FAILED/EXPIRED，deadline_at(默认30s 受理冻结)与 EXPIRED 已存在〔静〕；62,100/22,666/39,434=报告仅计数，**未完成构成与瓶颈归因未知**（pairP50 为限定行时差口径非纯排队；默认配置估算不适用该轮），待受控轮 GROUP BY〔验〕；准入接缝=enqueue 内 save 之前（不丢已受理）；另须覆盖重复回查/竞争/整笔受理事务（复核01 边界）〔静〕。〔§B1-B3〕
+- **Q3**：P0=专用权限+领取优先+5s 有界等待=独立领取车道，无线程/连接/表隔离；NORMAL=全局 FIFO；配额/公平/上限不存在〔静〕；OA 读 summary 窗口 1,272/1,273 零失败，但含压力段前请求（正式窗口 1,128/1,131=复核07；552.3/559.0 为 summary 值非其 P99），不证明保留容量合同〔验〕。共享瓶颈=Tomcat/Druid/命令表行/act_ru_job/@Async/Quartz 全共享，独立线程≠DB/CPU 隔离〔静〕。〔§C1-C4〕
+- **Q4**：Actuator 仅 health、主代码 0 Meter=无业务指标；命令单条 GET（仅受理人本人）+批量 txn-batch/{batchKey}+实例维度监控；无积压统计/列表端点；关联链 record_id→FLOW_START:{recordId}→命令行→effect→invocation→目标行可串〔静〕。最小缺口=积压聚合、运维列表、分段计量、恢复字段；复核01 边界=固定权限/租户隔离/状态口径/恢复耗时/目标可见点，防高基数标签泄露。〔§D1-D4〕
+- **Q5**：**阶段通过值（复核07 保留）**=合规负载实时 p99=112.637083ms≤300ms（76,785）、轻流程受理 p99=147.877333ms≤2s（62,100）；高负载/压力/OA 画像=OBSERVATION-ONLY 非生产 SLA〔验〕。硬件/负载身份与 300ms/2s 预算沿用；新策略须冻结实际配置并验证共享瓶颈，不以调大池或提高拒绝率替代；待运行=prod 池5 可用性、执行器 OFF 消费可用性、长时排干、39,434 分布、多小时稳定性〔核〕。〔§E1-E2〕
+- **Q6**：在途冻结先例=动作版本/停用结算/payload_fingerprint(2426+旧行回推)/deadline_at 受理时点冻结，**资源策略不得改在途业务语义**〔验〕；默认关闭=`sw.bpm.txn-batch.enabled` false+`sw.bpm.enabled` 门控+G5a 先例，0.1.3 不含分级能力〔静+验〕；必锁=P4 权限/双通道、C1 同事务、批量逐项事务、设备 UNKNOWN 禁盲重发、旧二进制枚举退出、REQUIRES_NEW 仅拒绝/审计；方案 A 调键/B 准入拒绝/C 扩车道利弊详附件。〔§F1-F4〕
 
 ## 未知与最小补核
 
-①39,434 状态分布一条 SQL（新受控轮）；②async OFF 生产语义；③Tomcat/@Scheduled/Quartz 默认值运行核验；④`sw.job.pool-size` 接线；⑤prod Druid=5 下命令链可用性（风险登记）；⑥旧探索"六唯一索引"口径未逐条复核（本轮静态确认 4 个命名唯一键）。
+①39,434 状态分布 SQL（受控轮）②执行器 OFF 消费可用性③Tomcat/调度/Quartz 默认值④`sw.job.pool-size` 接线⑤prod 池5 整链可用性⑥长时排干/多小时稳定性。索引：定位 4 个命名唯一键，旧"六唯一索引"未逐条核实，不能宣布其余不存在。
+
+## 提交身份
+
+探索原批次 Workspace `6f44ca6`/Server `08b0917` 远端读回一致；传播批次见提交附录；本订正批次身份由其提交与远端读回承载。
 
 ## 受影响信息入口实际值
 
-传播批次已同步 knowledge 两入口/Server 功能清单/memory/todo/requirement-pool/decisions 注记：两阶段 COMPLETED（规划已确认，2026-10-02）、passed 路径、唯一下一动作。本探索回传后当前唯一下一动作=**Planner 读取本回执并制定资源保障阶段方向（R06/R10、A06/A07/A12）**（本批次对下一动作字段机械二次同步）。功能 45、清单 46/22/22、ADV64、问题 57、P62 PLANNING 未核销、0.1.3 Owner已验收不变。
+复核01 后唯一下一动作=Planner 依据复核01及探索回执制定 R06/R10 资源保障阶段方向。功能 45、清单 46/22/22、ADV64、问题 57、P62 PLANNING、0.1.3 不变。
