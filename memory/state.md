@@ -6,7 +6,7 @@
 
 - P62，XL，PLANNING：低代码事务能力与 BPM 分级执行架构；新增配套信息治理，覆盖 memory/knowledge/README/需求与功能清单等全部受影响入口。
 - 主方向 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-lowcode-transaction-bpm-tiering.md`；首事务阶段业务与同步方向均归档passed/，COMPLETED（规划已确认）。
-- 终态同步回执 `receipts/terminal-sync-tiered-execution-unified-command-01.md` 已提交；唯一下一动作：Planner复核该同步回执（最终复核通过后写规划已确认并归档同步方向）。阶段方向已归档passed/。
+- 唯一下一动作：Executor按 `search_task/p62-resource-isolation-readiness-20261002.md` 传播最终确认并完成资源隔离/多租户保障限定探索，回传同名search_fallback。
 - 治理方向已归档passed/；G01—G06及三级提示三项均已核销。不另开治理补证。
 
 ## 已确认与待验收
@@ -21,4 +21,4 @@
 - 0.1.2 的1586/0/0/0、Web1301+3、V102及2026-09-28部署仅作对应时点事实；不得覆盖0.1.3环境回执，也不将各任务测试数字相加。
 - V012-CODE-001 既有 READY；外部通知五渠道、腾讯 IoT 实网验证及企业微信仍按原延期边界；小程序冻结。
 
-- 复核07：G3b1异载荷2426与同载荷成功、G3b2双命令夹具归因及受影响回归通过；本阶段PASSED，业务方向已归档passed/。仅余终态同步，不增加功能数，不核销P62。
+- 分级执行阶段终态最终复核01通过，COMPLETED（规划已确认，2026-10-02）；业务与同步方向均在passed/。后续R06/R10资源保障限定探索已下发，不增加功能数、不核销P62。
