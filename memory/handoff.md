@@ -1,13 +1,13 @@
 # 当前交接摘要
 
-2026-10-03。P62整体PLANNING，未核销；治理PASSED；首事务/分级两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（复核03未通过；执行回执04已提交待复核，2026-10-03）。原预算/画像保持。唯一下一动作：Planner 复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/resource-assurance-04.md`（死锁修复42环归因/单源窗口短轮/目标审批提交点配对与占用对账收敛/非空租户隔离矩阵/隔离夹具启动配方/宿主前台实证+正式窗口）；执行侧余项=正式窗口结果补注与超预算尾延迟治理、RA03b四视口可见浏览器取证（配方 evidence/resource-assurance-04/ra03b-browser/）。。
+2026-10-04。P62整体PLANNING，未核销；治理PASSED；首事务/分级两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（2026-10-04复核04未通过）。原预算/画像保持。唯一下一动作：Planner 复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/resource-assurance-05.md`（领取4313ms✓/自动收敛74.3s✓/审批655零SKIP✓/额度拒绝1311→4✓/隔离与全局授权矩阵✓；剩余=实时810.6/OA读1303.6/批拒绝2101.8 尾差异+四视口UI+2h+EXPIRED分类）；执行侧按提示03继续可独立项。。
 
-裁决：`product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-resource-assurance-03.md`。剩余ID：RA01b身份；RA02a1死锁、RA02a2统计/性能；RA02b1目标/账、RA02b2公平；RA03a2租户、RA03b可见UI/夹具；RA05a宿主限制、RA06b门禁/Git/传播。原7项拆为9子项，RA04b本场景核销，提示01历史。
+本轮复核resource-assurance-04.md及116制品，原始复算见P62 receipts/planning-readback-resource-assurance-04.txt；裁决planning-review-resource-assurance-04.md，三级提示03替代02。旧9子项删除已修RA02a1，剩8项，不能停在等Planner。
 
-进展锁定：实际管理/查看授权及非法拒绝审计；20项跨版本冻结、减配和旧NULL行；500批整笔占500/重放/异载荷2426/回收0及窄上限拒绝/竞争。原配置/四视口渲染/100项优雅恢复/255与29日志各依旧时点；后续修改触及只复验受影响项。
+本轮锁定借用/总量回退阻塞修复、正式样本无死锁/500、单源窗口/CSV、非空viewer隔离、dev启动、cbf模块255。旧配置/渲染/100优雅恢复/减配旧行/批次子集沿旧快照；后续改变相关路径仅有限复验。
 
-新窗口须加30s预热，原统计错误；轻P99 7426.1、保护审批HTTP50019，真实40P01失败。冲突环94489→94490→94497→94594→94489已归档，可继续定位修复。审批最大领取33.278s；命令open0、账751及标称目标链1761须核实际责任与完成点。38/38制品哈希匹配不等通过。
+正式60+600已完成且失败；600s宿主限制撤销。保护轻1311拒绝，审批494SKIP；真实审批领取39132ms，轻39506ms。3810目标行版本/数量无变化且早于调用，须核目标键/预期效果；790仅显式对账清零，正常自动释放及120s未证；200EXPIRED需归因。下一步先补合法任务供给与效果关联，再修回收/公平，稳定后正式画像/互换/连续2h，不变合同。
 
-SSO Tag mismatch发生dev内存H2一次启动，不自动证明缺Owner秘密；已有隔离环境/验证资产授权，先核配置契约或新自有UI夹具，不清既有库/关认证。600s限制仍无原结果，原生前台句柄/连续采集适配可核实；不后台/sleep/拼窗/放宽RG08。独立工作仍可继续。
+UI夹具已可用，继续四视口可见登录/非空交互/网络，不索随机新密钥。权限只剩普通租户管理员与全局manage授予边界；viewer隔离无需整套重跑。身份、最终门禁、远端SHA与knowledge/Server覆盖矩阵仍缺，原全量测试失败不可用模块绿覆盖。
 
-最终快照/最新门禁/远端及knowledge/session-handoff/Server实际字段覆盖仍待执行回读。功能45、清单46/22/22、ADV64、问题57、P状态/正式基线和0.1.3 Owner裁决不变；不发布/部署/停既有服务，不进入阶段三。
+功能45、清单46/22/22、ADV64、问题57、其他P和0.1.3 Owner裁决不变；不发布/部署/停既有服务、不归档资源方向。Executor按原授权knowledge-first同步复核04/提示03并回传实际值；Planner不读取工程或knowledge。
