@@ -37,3 +37,18 @@
 ## 3. 传播
 
 knowledge/current-status.md、session-handoff.md、memory 五摘要、todo 两份、Server 功能清单.md 唯一下一动作=Planner 复核 resource-assurance-05.md；memory 单文件<5000B、总量<20000B。
+
+## 4. 补充收敛批次（2026-10-04，同提示03继续轮）
+
+诊断与修复追加（Server 候选链续）：`ef33ea3`（尾尖隔离实验：审批种子600供给不触发 + EXPIRED 分类装置）+ 门禁复跑批。
+
+| 项 | 结果 |
+|---|---|
+| 尾尖归因（RA02a2） | 供给候选排除（ra02-isolation-exp：种子600不触发仍尾尖）；安全点排除（raw-gc-safepoint 703点 Reaching max=24.9ms）；PG checkpoint 排除（info级日志窗口内=0）；实锤=G1 分配回收时刻与慢请求时刻一一对应（01:30:41/01:31:31/01:32:05-10/01:33:03），暂停3—60ms+并发阶段CPU抢占，属分配风暴型尾延迟（堆2GiB=G1默认，堆=合同冻结维度）——**回传可复算事实供Planner裁决GC器/堆参是否调整**，按「不可无限无变化重试」停止迭代。原始事件=ra02-stall-diag/raw-gc-safepoint.log.gz |
+| EXPIRED 分类装置（RA02b1） | occupancy-responsibility.txt 新增 [3b] EXPIRED 段（expired/charged_unreleased/逐对象清单）；本轮窗口零新增 EXPIRED（open=0）；200旧对象随旧库销毁已登记，待正式run补分类 |
+| RA03b 四视口可见浏览器 | 关闭：dev隔离夹具（仓库契约密钥+自生成注入项，H2内存18080）+ vite dev(15173)。真实登录（验证码视觉读取1234，admin/admin123）→ /workspace；资源策略台真实交互『创建版本』→ 策略行 v1 草稿全字段入表（网络同对象）；『启用』→ 启用检查未通过弹窗原文（dev默认画像 pool5/asyncOFF/batchOFF 的 RG04 无效启用明确拒绝，三条违反全文）；资源积压与配额页（计数勾稽与事实一致）；四视口截图 1920×1080/1280×720/1366×768/1024×768 + backlog 1920。取证后夹具进程已停止（端口无监听回读000）。证据=ra03b-browser/（index.md 全链+9份附件） |
+| 互换轮（RA02a2/b2） | p62ra05-swap-01：领取4164ms✓、自动收敛20.1s✓、审批/light/burst合法达标、实时628.9/OA读1037.9 差异保留 |
+| 全工程门禁复跑（RA06b） | gate2（最终候选）：见 gate/gate2-counts.txt（compile/test 退出码与全工程计数） |
+| 2h 连续运行（RA05a） | 按提示03§4保持待尾差异裁决（不为凑附件反复2h）；600s长窗已两轮实证 |
+
+**本轮后剩余**：①实时/OA读/批拒绝 p99 尾差异（GC器/堆参裁决待Planner）；②EXPIRED 旧对象分类（待正式run库内）；③2h 连续运行（待①收敛）。
