@@ -67,7 +67,7 @@
 | `memory/state.md`、`memory/handoff.md`、`memory/README.md` | P62 状态/下一动作 | 复核03 待 Planner | 本轮编辑（授权摘要同步） | 2026-10-03 | 字段比对 |
 | `todo/p62-lowcode-transaction-bpm-tiering.md`、`todo/requirement-pool.md` | 当前排期/下一动作 | 同上 | 本轮编辑 | 2026-10-03 | 字段比对 |
 | 方向/ADR003 | ready/ 保持 | 未通过不归档 | 未改动 | — | 文件清单 |
-| Server/Web Git | develop 远端 SHA | Server `c5ffd17`（回读一致）；Web `28a2805`（无改动） | `git ls-remote` | 2026-10-03 | 远端回读 |
+| Server/Web Git | develop 远端 SHA | Server `cf8a777`（含实现 `84e7b9c`/`c5ffd17` 与测试取证 `802a604`/`f466267`；回读一致）；Web `28a2805`（本轮无改动） | `git ls-remote` | 2026-10-03 | 远端回读 |
 
 ## 7. 自检（提示 §7 清单）
 
@@ -82,3 +82,9 @@
 ## 8. 合法终态
 
 `EXECUTION_SUBMITTED`（自验未通过部分如实保留；功能/阶段 VERIFYING，P62 整体 PLANNING）。Planner 复核 03 后：若接受 RA05a 限制报告与 RA03b 阻断，建议按真实外部条件裁决并调整 RG08 口径；否则需先解除 UI 环境阻断并放行长窗口。
+
+## 9. 提交与远程回读（提交后关联）
+
+- Workspace 分支 `develop-sw`：回执与传播批次 `a047354`，远端回读 `a04735491edc…`。
+- Server 分支 `develop`：实现批次 `84e7b9c`（受理加速/日志降级/批次同键异载荷拒绝）、`802a604`（取证资产）、`f466267`（报告口径修正）、回撤实验 `c5ffd17`、焦点同步 `cf8a777`；远端回读 `cf8a777236db…`。
+- 证据清单 `receipts/evidence/resource-assurance-03/SHA256SUMS.txt`（38 条，排除自身，`shasum -c` 38/38 OK）。
