@@ -2,13 +2,15 @@
 
 ## 当前规划（2026-10-03）
 
-P62整体PLANNING，未核销；治理PASSED；首事务/分级两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（复核02未通过、回执03已提交待复核，2026-10-03）。原预算/画像保持，已锁定部分证据，RG全集尚未通过。回执03已提交（`product/p62-lowcode-transaction-bpm-tiering/receipts/resource-assurance-03.md`，证据根 `receipts/evidence/resource-assurance-03/`）：RA01b/RA03a/RA04b/RA06b 缺口按项补证完成；RA02b 配对/批次按项会计/120s 收敛成立但受保护 OA 领取等待未达上界；RA02a 实测时效仍全面超限并有并发死锁中止（须修复后重测）；RA05a 为真实工具限制的有限报告；RA03b 因 dev 后端启动被 SSO 配置解密阻断未取得新 UI 证据。唯一下一动作：Planner 读取回执03 与证据根复核裁决（是否接受 RA05a 限制报告/RA03b 阻断并按真实外部条件调整 RG08 口径）。
+P62整体PLANNING，未核销；治理PASSED；首事务/分级两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（复核03未通过；执行回执04已提交待复核，2026-10-03）。原预算/画像保持。唯一下一动作：Planner 复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/resource-assurance-04.md`（死锁修复42环归因/单源窗口短轮/目标审批提交点配对与占用对账收敛/非空租户隔离矩阵/隔离夹具启动配方/宿主前台实证+正式窗口）；执行侧余项=正式窗口结果补注与超预算尾延迟治理、RA03b四视口可见浏览器取证（配方 evidence/resource-assurance-04/ra03b-browser/）。。
 
-裁决：`product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-resource-assurance-02.md`。主方向与ADR003保持；资源方向只承载合同/授权，不是并行剩余待办。RA01a配置取值、RA03-render四视口渲染、RA04a100项优雅重建恢复明细、RA06a255/29成功日志及66制品匹配锁定；父项不据此全核销。
+裁决：`product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-resource-assurance-03.md`。新增锁定管理/view授权及非法策略独立审计、20项冻结/减配/旧NULL行兼容实际场景、500项按项/重放/零残留/窄额度竞争子集；不由此称最终RG通过，改动触及时有限复验。复核02配置/渲染/100项优雅恢复/旧门禁与封装按时点保持。
 
-新短轮P99：实时895、轻受理2538.8、OA读2104.8、审批2594.7ms；拒绝普通2361/批次3523.4ms。报告批次0错误；命令open0但占用366须解释。长窗口/网络/权限数值/兼容及最终快照证据未齐，不确认CPU饱和主因或全部可执行工作耗尽。
+原统计含预热30s漏最后30s；正确发起窗口实时P99 1037、轻7426.1、OA读1755.2、审批合法2218/全3899.9ms，轻2/审批19次HTTP500；普通REJECTED5029.5/批1432ms。保护审批领取33.278s；open0但账751与目标链口径待核。真实40P01冲突环已在原流，短轮BUILD FAILURE。38制品全部哈希匹配。
 
-Planner已统一当前入口；Executor先knowledge核实最新裁决，再覆盖current-status/session-handoff、Server清单及受影响摘要/README，回传实际值/时点，传播尚待独立回读。
+长命令600s硬限仍缺原返回；UI失败为新dev内存H2的SSO密钥/密文错配，隔离夹具替代未穷尽；不改RG08、不授后台例外。真实任务原生前台句柄可核实，先修短轮缺陷再正式长窗。
+
+Planner统一当前摘要/方向/todo；Executor先knowledge核实复核03/提示02再覆盖current-status/session-handoff/Server等，回传实际字段/时点/原结果。传播尚待独立回读。
 
 ## 锁定结果
 
