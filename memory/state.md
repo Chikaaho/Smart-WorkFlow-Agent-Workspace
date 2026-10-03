@@ -1,16 +1,16 @@
 # 当前状态摘要
 
-## 当前规划（2026-10-03）
+## 当前规划（2026-10-04）
 
-P62整体PLANNING，未核销；治理PASSED；首事务/分级两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（复核03未通过；执行回执04已提交待复核，2026-10-03）。原预算/画像保持。唯一下一动作：Planner 复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/resource-assurance-04.md`（死锁修复42环归因/单源窗口短轮/目标审批提交点配对与占用对账收敛/非空租户隔离矩阵/隔离夹具启动配方/宿主前台实证+正式窗口）；执行侧余项=正式窗口结果补注与超预算尾延迟治理、RA03b四视口可见浏览器取证（配方 evidence/resource-assurance-04/ra03b-browser/）。。
+P62整体PLANNING，未核销；治理PASSED；首事务/分级两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（2026-10-04复核04未通过）。原预算/画像保持。唯一下一动作：Planner 复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/resource-assurance-05.md`（领取4313ms✓/自动收敛74.3s✓/审批655零SKIP✓/额度拒绝1311→4✓/隔离与全局授权矩阵✓；剩余=实时810.6/OA读1303.6/批拒绝2101.8 尾差异+四视口UI+2h+EXPIRED分类）；执行侧按提示03继续可独立项。。
 
-裁决：`product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-resource-assurance-03.md`。新增锁定管理/view授权及非法策略独立审计、20项冻结/减配/旧NULL行兼容实际场景、500项按项/重放/零残留/窄额度竞争子集；不由此称最终RG通过，改动触及时有限复验。复核02配置/渲染/100项优雅恢复/旧门禁与封装按时点保持。
+裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-resource-assurance-04.md。116/116制品哈希匹配；真实60+600窗口完成但失败，撤销600s宿主硬限。锁定RA02a1借用/总量回退阻塞修复及本轮无死锁/HTTP500；单源窗口/CSV修正、非空viewer隔离、dev夹具启动与cbf模块255原流各锁其边界。
 
-原统计含预热30s漏最后30s；正确发起窗口实时P99 1037、轻7426.1、OA读1755.2、审批合法2218/全3899.9ms，轻2/审批19次HTTP500；普通REJECTED5029.5/批1432ms。保护审批领取33.278s；open0但账751与目标链口径待核。真实40P01冲突环已在原流，短轮BUILD FAILURE。38制品全部哈希匹配。
+正式保护轻流程1311拒绝；审批100受理+494SKIP不满足持续合法负载。实时P99 769.8/OA读1090.5/审批1556/突发拒绝1192.3/批拒绝4101.9ms。真正审批领取最大39132ms；39506ms属轻流程。3810目标读回version/数量均0且更新时间早于调用，效果配对未证；790显式对账后0不等正常自动释放，200EXPIRED须逐项核实。2h/双方保障/互换及正式四视口未闭合。
 
-长命令600s硬限仍缺原返回；UI失败为新dev内存H2的SSO密钥/密文错配，隔离夹具替代未穷尽；不改RG08、不授后台例外。真实任务原生前台句柄可核实，先修短轮缺陷再正式长窗。
+剩余8项：RA01b身份、RA02a2负载/时效、RA02b1效果/自动释放、RA02b2公平、RA03a2全局授权边界、RA03b可见UI、RA05a持续画像、RA06b门禁/远端/传播。全量门禁失败1739/12/13/9为执行汇总，不能由255替代；既有失败须按整个资源阶段核影响。global manage授予边界待证，不强制新权限名。
 
-Planner统一当前摘要/方向/todo；Executor先knowledge核实复核03/提示02再覆盖current-status/session-handoff/Server等，回传实际字段/时点/原结果。传播尚待独立回读。
+Planner已统一可写入口；Executor先knowledge核实复核04/提示03，再覆盖current-status/session-handoff/Server等并回传字段原文/位置/时点。未进入阶段三。
 
 ## 锁定结果
 
