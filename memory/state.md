@@ -1,14 +1,14 @@
 # 当前状态摘要
 
-同步点：2026-09-30，首事务阶段终态最终复核通过，COMPLETED（规划已确认）；裁决 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-local-transaction-actions-01-completed.md`。Executor最终确认传播附录已回读knowledge两入口及Server功能清单，裁决文字传播完成；提交身份补记已提供远端回读：workspace a7cf531、Server ca8cb87、Web19e1c47；传播批次提交身份已补齐。
+历史同步点：2026-09-30，首事务阶段终态最终复核通过，COMPLETED（规划已确认）；裁决 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-local-transaction-actions-01-completed.md`。Executor最终确认传播附录已回读knowledge两入口及Server功能清单，裁决文字传播完成；提交身份补记已提供远端回读：workspace a7cf531、Server ca8cb87、Web19e1c47；传播批次提交身份已补齐。
 
 ## 当前规划
 
-- 2026-10-02资源探索已复核：六问可支撑后续方向；默认500ms×20归因与测量100ms×50错配，39434未完成状态/瓶颈待核实。复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-resource-isolation-readiness-01.md`；下一动作为制定资源保障方向，未授权实现。
+- 2026-10-02资源探索已复核：六问可支撑后续方向；订正版02已撤回错误归因并压缩至4966B；39434状态/瓶颈待核实，RI-M1原始回读及双文件哈希通过，探索交付缺口0。复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-resource-isolation-readiness-03-passed.md`；资源阶段READY，按新方向授权实施RG01—RG08。
 
-- P62，XL，PLANNING：低代码事务能力与 BPM 分级执行架构；新增配套信息治理，覆盖 memory/knowledge/README/需求与功能清单等全部受影响入口。
+- P62整体XL/PLANNING，资源保障阶段READY；ADR003已采纳：低代码事务能力与 BPM 分级执行架构；新增配套信息治理，覆盖 memory/knowledge/README/需求与功能清单等全部受影响入口。
 - 主方向 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-lowcode-transaction-bpm-tiering.md`；首事务阶段业务与同步方向均归档passed/，COMPLETED（规划已确认）。
-- 唯一下一动作：Planner依据资源探索复核01制定资源保障阶段方向（探索已复核，见 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-resource-isolation-readiness-01.md`）。
+- 资源保障阶段 VERIFYING（2026-10-03，执行回执01已提交：Server 7a28b70+395515e、Web 28a2805；RG01/02/04/05/07 自验通过，RG03 结果层通过+时效层差异回传，RG06/RG08 正式验收待安排）。唯一下一动作：Planner 复核执行回执01（`product/p62-lowcode-transaction-bpm-tiering/receipts/resource-assurance-01.md`，2026-10-03）并裁决 RG03 时效差异（实时 P99 976—1112ms vs 300ms、OA读/审批 ~2—2.7s vs 1s，按方向§3回传；调整预算/调整突发画像/授权实现级强化三择一）。裁决前 RG08 正式窗口无判定基线，RG06 正式浏览器验收与正式窗口一并安排。
 - 治理方向已归档passed/；G01—G06及三级提示三项均已核销。不另开治理补证。
 
 ## 已确认与待验收
