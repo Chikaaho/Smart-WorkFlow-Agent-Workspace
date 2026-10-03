@@ -3,12 +3,12 @@
 - 登记日期：2026-09-30
 - 角色：Planner
 - 任务等级：XL（核心架构、跨模块契约、数据一致性与持续演进）
-- 状态：PLANNING（整体）；治理PASSED；首事务与分级执行两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（规划复核01未通过）。
+- 状态：PLANNING（整体）；治理PASSED；首事务与分级执行两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（规划复核02未通过、回执03已提交待复核）。
 - 排期优先级：Owner 于 2026-09-30 启动本轮规划；事务型数据能力为本需求内部优先建设项。
 - Owner 依据：本会话明确“根据评审方案列为正式需求”。
 - 评审输入：[原始方案索引](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/README.md)、[首轮架构评审方案](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/01-architecture-review-20260930.md)、[CTO 指导稿原文](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/02-cto-guidance-20260930.md)。两份原文纳入 knowledge 供追溯；本文件为正式需求范围与验收口径。
 - 原始交付文件：~/Downloads/平台业务架构指导方案-OA-MES-WMS-IoT-CTO版-20260930.md。
-- 本轮边界：信息治理已通过；首事务T01—T07与分级执行U01—U08及终态同步均已完成；资源探索已复核，新阶段方向已下发。资源阶段VERIFYING，按原方向及复核01的RA01—RA06继续修正/补证；版本发布/部署未授权，计数与P核销状态不变。
+- 本轮边界：信息治理已通过；首事务T01—T07与分级执行U01—U08及终态同步均已完成；资源探索已复核，新阶段方向已下发。资源阶段VERIFYING，按一级补充提示01继续8个剩余原子项；版本发布/部署未授权，计数与P核销状态不变。
 
 ## 1. 产品目标与 Owner 已确认条件
 
@@ -144,13 +144,13 @@ C1 类关键数据只能通过受控动作写入，表单保存、导入、批�
 - BAO 架构优化：已有规划摘要记载引擎与业务共享提交边界；此为复用线索而非本次运行验证，不能把未核实能力写成确定缺失或无条件重建。
 - MES/WMS 为低代码平台能力的代表性验证场景，本项不自动扩大为完整 MES/WMS 产品套件、所有业务模板或所有现场拓扑交付。
 
-Owner 当前排期（2026-10-03）：P62整体PLANNING，未核销；治理PASSED；首事务与分级执行/统一命令两阶段均COMPLETED（规划已确认）；资源保障阶段VERIFYING（规划复核01未通过，2026-10-03）。原预算及负载画像保持，RG01—RG08尚无完整规划通过项。唯一下一动作：Executor按 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-resource-assurance.md` 与复核01的RA01—RA06修正测量/实现，独立完成权限及可见浏览器取证，准备就绪后按原合同正式验证，追加 `resource-assurance-02.md`。 0.1.3=COMPLETED（Owner已验收）。
+Owner 当前排期（2026-10-03；规划复核更新）：P62整体PLANNING，未核销；治理PASSED；首事务/分级两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（复核02未通过、回执03已提交待复核，2026-10-03）。原预算/画像保持，已锁定部分证据，RG全集尚未通过。回执03已提交（`product/p62-lowcode-transaction-bpm-tiering/receipts/resource-assurance-03.md`，证据根 `receipts/evidence/resource-assurance-03/`）：RA01b/RA03a/RA04b/RA06b 缺口按项补证完成；RA02b 配对/批次按项会计/120s 收敛成立但受保护 OA 领取等待未达上界；RA02a 实测时效仍全面超限并有并发死锁中止（须修复后重测）；RA05a 为真实工具限制的有限报告；RA03b 因 dev 后端启动被 SSO 配置解密阻断未取得新 UI 证据。唯一下一动作：Planner 读取回执03 与证据根复核裁决（是否接受 RA05a 限制报告/RA03b 阻断并按真实外部条件调整 RG08 口径）。 0.1.3=COMPLETED（Owner已验收）。
 
 ## 6. 登记口径
 
 本文件吸收评审结论形成正式需求。CTO 原稿中的“同库必然同事务”“内部异步不需要 Outbox”“独立资源即不受共享瓶颈影响”等绝对表述不作为验收规则，以本文件对应的事务边界、可靠传播与负载条件为准。
 
-本项整体PLANNING；首事务T01—T07、分级U01—U08及各自终态同步均COMPLETED（规划已确认）；P62不核销。资源保障阶段VERIFYING，复核01未通过，原预算/画像不变，Executor按RA01—RA06继续；其余未批准范围后续规划。
+本项整体PLANNING；首事务T01—T07、分级U01—U08及各自终态同步均COMPLETED（规划已确认）；P62不核销。资源保障阶段VERIFYING，复核02未通过，原预算/画像不变，Executor按一级补充提示01继续8原子项；其余未批准范围后续规划。
 
 ## 7. 本轮配套信息治理（Owner 2026-09-30）
 
