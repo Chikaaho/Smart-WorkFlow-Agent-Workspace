@@ -2,11 +2,13 @@
 
 ## 当前规划（2026-10-03）
 
-P62整体PLANNING，未核销；治理PASSED；首事务与分级执行/统一命令两阶段均COMPLETED（规划已确认）；资源保障阶段VERIFYING（规划复核01未通过，2026-10-03）。原预算及负载画像保持，RG01—RG08尚无完整规划通过项。唯一下一动作：Executor按 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-resource-assurance.md` 与复核01的RA01—RA06修正测量/实现，独立完成权限及可见浏览器取证，准备就绪后按原合同正式验证，追加 `resource-assurance-02.md`。
+P62整体PLANNING，未核销；治理PASSED；首事务/分级两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（复核02未通过、回执03已提交待复核，2026-10-03）。原预算/画像保持，已锁定部分证据，RG全集尚未通过。回执03已提交（`product/p62-lowcode-transaction-bpm-tiering/receipts/resource-assurance-03.md`，证据根 `receipts/evidence/resource-assurance-03/`）：RA01b/RA03a/RA04b/RA06b 缺口按项补证完成；RA02b 配对/批次按项会计/120s 收敛成立但受保护 OA 领取等待未达上界；RA02a 实测时效仍全面超限并有并发死锁中止（须修复后重测）；RA05a 为真实工具限制的有限报告；RA03b 因 dev 后端启动被 SSO 配置解密阻断未取得新 UI 证据。唯一下一动作：Planner 读取回执03 与证据根复核裁决（是否接受 RA05a 限制报告/RA03b 阻断并按真实外部条件调整 RG08 口径）。
 
-裁决：`product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-resource-assurance-01.md`；主方向：`product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-lowcode-transaction-bpm-tiering.md`；ADR003已采纳。短轮20/90s、有效配置及正式长窗口证据不足；实时、OA、互换轻流程与突发拒绝P99超限。UI可独立推进。35制品哈希匹配不等于合同通过。
+裁决：`product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-resource-assurance-02.md`。主方向与ADR003保持；资源方向只承载合同/授权，不是并行剩余待办。RA01a配置取值、RA03-render四视口渲染、RA04a100项优雅重建恢复明细、RA06a255/29成功日志及66制品匹配锁定；父项不据此全核销。
 
-Planner已统一允许范围内当前入口；Executor下一批先核实knowledge/current-status、session-handoff及Server功能清单，传播本裁决与下一动作并交覆盖矩阵，完整权威传播尚待回读。
+新短轮P99：实时895、轻受理2538.8、OA读2104.8、审批2594.7ms；拒绝普通2361/批次3523.4ms。报告批次0错误；命令open0但占用366须解释。长窗口/网络/权限数值/兼容及最终快照证据未齐，不确认CPU饱和主因或全部可执行工作耗尽。
+
+Planner已统一当前入口；Executor先knowledge核实最新裁决，再覆盖current-status/session-handoff、Server清单及受影响摘要/README，回传实际值/时点，传播尚待独立回读。
 
 ## 锁定结果
 

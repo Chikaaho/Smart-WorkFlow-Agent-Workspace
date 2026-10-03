@@ -4,7 +4,7 @@
 - Owner 本轮指令：开始制定 P62，并纳入 memory、knowledge、README、需求清单、功能清单等过期信息治理。
 - 本文为整体阶段方向；首事务阶段COMPLETED（规划已确认），后续阶段继续规划，整体P62尚未通过。
 - 正式需求基准：`todo/p62-lowcode-transaction-bpm-tiering.md` R01—R10、A01—A12，全部保留；本方向补充 G01—G06 信息治理验收。
-- **当前唯一下一动作**：Executor按 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-resource-assurance.md` 与复核01的RA01—RA06修正测量/实现，独立完成权限及可见浏览器取证，准备就绪后按原合同正式验证，追加 `resource-assurance-02.md`。
+- **当前唯一下一动作**：Executor按唯一当前入口 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-resource-assurance-01.md` 继续8项原子缺口，先修短轮超限并补独立证据，按原合同/真实工具限制采集，追加resource-assurance-03.md。
 
 ## 1. 目标与范围
 
@@ -50,10 +50,10 @@
 
 ## 6. 状态与授权
 
-P62整体PLANNING，未核销；治理PASSED；首事务与分级执行/统一命令两阶段均COMPLETED（规划已确认）；资源保障阶段VERIFYING（规划复核01未通过，2026-10-03）。原预算及负载画像保持，RG01—RG08尚无完整规划通过项。唯一下一动作：Executor按 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-resource-assurance.md` 与复核01的RA01—RA06修正测量/实现，独立完成权限及可见浏览器取证，准备就绪后按原合同正式验证，追加 `resource-assurance-02.md`。 裁决见 `../receipts/planning-review-resource-assurance-01.md`。
+P62整体PLANNING，未核销；治理PASSED；首事务/分级两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（复核02未通过，2026-10-03）。原预算/画像保持，已锁定部分证据，RG全集尚未通过。唯一下一动作：Executor按唯一当前入口 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-resource-assurance-01.md` 继续8项原子缺口，先修短轮超限并补独立证据，按原合同/真实工具限制采集，追加resource-assurance-03.md。 裁决见 `../receipts/planning-review-resource-assurance-02.md`。
 
-信息治理 G01—G06 的审查结论见 `../receipts/planning-review-information-governance-05-passed.md`；治理方向归档至 `../passed/direction-p62-information-governance.md`。阶段方向与 ADR-P62-001 的范围和兼容边界保持，分级执行已完成；资源保障阶段VERIFYING，实施入口为本目录direction-p62-resource-assurance.md；设备/部署扩展后续独立规划。
+信息治理 G01—G06 的审查结论见 `../receipts/planning-review-information-governance-05-passed.md`；治理方向归档至 `../passed/direction-p62-information-governance.md`。阶段方向与 ADR-P62-001 的范围和兼容边界保持，分级执行已完成；资源保障阶段VERIFYING，合同为本目录direction-p62-resource-assurance.md，当前执行入口为receipts/下一级补充提示01；设备/部署扩展后续独立规划。
 
 功能数45、清单46/22/22（90）、ADV64、原54问题分类31/3/5/15及总记录57不变；不核销P62或其他P编号，不晋级正式测试基线。发布、部署、破坏性操作不在本方向授权内。
 
-分级执行业务与同步方向均已归档passed/，COMPLETED（规划已确认）；ADR002已采纳。资源探索复核03通过；资源阶段VERIFYING，规划复核01未通过，下一回执02。
+分级执行业务与同步方向均已归档passed/，COMPLETED（规划已确认）；ADR002已采纳。资源探索复核03通过；资源阶段VERIFYING，规划复核02未通过，下一回执03。

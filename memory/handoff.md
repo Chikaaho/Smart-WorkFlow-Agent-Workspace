@@ -1,11 +1,13 @@
 # 当前交接摘要
 
-2026-10-03。P62整体PLANNING，未核销；治理PASSED；首事务与分级执行/统一命令两阶段均COMPLETED（规划已确认）；资源保障阶段VERIFYING（规划复核01未通过，2026-10-03）。原预算及负载画像保持，RG01—RG08尚无完整规划通过项。唯一下一动作：Executor按 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-resource-assurance.md` 与复核01的RA01—RA06修正测量/实现，独立完成权限及可见浏览器取证，准备就绪后按原合同正式验证，追加 `resource-assurance-02.md`。
+2026-10-03。P62整体PLANNING，未核销；治理PASSED；首事务/分级两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（复核02未通过、回执03已提交待复核，2026-10-03）。原预算/画像保持，已锁定部分证据，RG全集尚未通过。回执03已提交（`product/p62-lowcode-transaction-bpm-tiering/receipts/resource-assurance-03.md`，证据根 `receipts/evidence/resource-assurance-03/`）：RA01b/RA03a/RA04b/RA06b 缺口按项补证完成；RA02b 配对/批次按项会计/120s 收敛成立但受保护 OA 领取等待未达上界；RA02a 实测时效仍全面超限并有并发死锁中止（须修复后重测）；RA05a 为真实工具限制的有限报告；RA03b 因 dev 后端启动被 SSO 配置解密阻断未取得新 UI 证据。唯一下一动作：Planner 读取回执03 与证据根复核裁决（是否接受 RA05a 限制报告/RA03b 阻断并按真实外部条件调整 RG08 口径）。
 
-复核记录：`product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-resource-assurance-01.md`。RA01配置/快照身份；RA02时效与目标/公平/额度证据；RA03权限与四视口UI；RA04恢复、减配及兼容对象；RA05正式600s与2h窗口/真实工具限制；RA06门禁、Git回读及封装。以该记录为唯一剩余账本，本阶段首次规划未通过，未触发第二次复验提示升级。
+裁决：`product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-resource-assurance-02.md`；原合同不变。一级提示替代复核01父级待办：RA01b最终身份/画像；RA02a时效与统计、RA02b目标/公平/账；RA03a权限原始行为、RA03b可见交互/网络/非空明细；RA04b减配跨版本旧行；RA05a真实限制与连续采集；RA06b命令/Git/覆盖传播。
 
-短轮复算：实时976.2/1111.5ms，轻受理1971.4/2270.8ms，OA读2054.8/1955.9ms，审批受理2728.4/2290.7ms。gate画像500ms/20非合同100ms/50；env的池0/调度null是取证偏差待核实，不据此断言运行池为0。35制品哈希匹配；.gz实际纯CSV与清单自含空哈希需新索引修正。20/90s不作正式60/600s；UI不依赖预算裁决；授权内实现强化无需再批准。
+锁定：五env池64/100ms批50/异步8；四视口页面渲染；恢复100唯一目标，中断前92完成+8在途，末次100完成且每项调用1，优雅重建1009ms；process255与migration29均BUILD SUCCESS；66/66哈希匹配、short六样本真gzip。仅剩余项补证，代码/身份失效时有限复验。
 
-资源探索已复核、交付缺口0；旧补证提示仅历史。首事务/分级既有验收锁定，2426载荷拒绝与FLOW_START键边界保持。单进程/共享PG的新合同不由旧U08容量推定；新策略默认关闭。
+短轮实时895、轻受理2538.8、OA读2104.8、审批2594.7、拒绝2361/3523.4ms均超限；批次报告0错误。open0与占用366不等于全部目标收敛。网络仅指/tmp未归档；权限/减配仍主要bool，快照/远端/coverage缺原始值。CPU主因尚未成立。
 
-Planner已统一memory/product/todo；Executor下一授权批次先核实knowledge及Server清单再机械传播，交覆盖矩阵。功能45、清单46/22/22、ADV64、问题57不变；0.1.3 Owner已验收。无发布/部署/停既有服务授权。历史身份和计数查原回执；memory为摘要，不另立权威。
+无后台例外/sleep授权；允许合同内Harness适配，分段只采集/读回，同run负载须连续；不能重启负载拼2h。真实限制有原结果才裁决，独立工作继续。下一回执03，不进入阶段三。
+
+P62整体未核销；事务/分级COMPLETED、探索缺口0保持。功能45、清单46/22/22、ADV64、问题57，0.1.3 Owner已验收；无发布/部署/停既有服务授权。knowledge及Server传播待Executor完整覆盖回读，memory不是第二权威。
