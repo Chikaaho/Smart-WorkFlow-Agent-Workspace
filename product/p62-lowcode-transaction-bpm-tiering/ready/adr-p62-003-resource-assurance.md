@@ -1,6 +1,6 @@
 # ADR-P62-003：资源保障与多租户公平
 
-日期2026-10-02；Planner；已采纳。实施范围与验收单值见同目录direction-p62-resource-assurance.md，阶段READY。
+日期2026-10-02；Planner；已采纳。实施范围与验收单值见同目录direction-p62-resource-assurance.md，下发时阶段READY；当前VERIFYING（2026-10-03规划复核01未通过，原决策/预算保持）。
 
 ## 事实与决策
 

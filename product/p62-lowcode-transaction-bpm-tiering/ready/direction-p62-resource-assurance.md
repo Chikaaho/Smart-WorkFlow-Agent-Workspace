@@ -1,8 +1,10 @@
 # P62 资源保障与多租户公平 · 阶段方向
 
-日期2026-10-02；Planner；XL子阶段；**阶段READY，P62整体PLANNING**。Owner本轮“直接开始”承接已核销探索的下一动作，现下发正式阶段方向，Executor可直接进入授权范围实施，无需再次等待规划批准。
+日期2026-10-02；Planner；XL子阶段；**下发时阶段READY；当前VERIFYING（2026-10-03复核01未通过），P62整体PLANNING**。Owner本轮“直接开始”承接已核销探索的下一动作，现下发正式阶段方向，Executor可直接进入授权范围实施，无需再次等待规划批准。
 
 唯一执行入口：本文件；决策依据ADR-P62-003。首事务与分级执行/统一命令阶段COMPLETED保持；资源探索复核03与RI-M1通过，不再补探索收尾。事实输入为search_fallback/p62-resource-isolation-readiness-20261002.md及-details.md、规划复核01—03、ADR001/002与两阶段归档方向；原始测量身份/窗口沿各自回执，不推定当前生产运行值。
+
+当前裁决：`../receipts/planning-review-resource-assurance-01.md`。原预算、负载画像及ADR003保持。当前唯一下一动作：Executor按 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-resource-assurance.md` 与复核01的RA01—RA06修正测量/实现，独立完成权限及可见浏览器取证，准备就绪后按原合同正式验证，追加 `resource-assurance-02.md`。 剩余账本仅复核01的RA01—RA06；真实限制须原始证据，授权内独立工作继续。
 
 ## 1. 目标、范围及交付边界
 
@@ -93,7 +95,7 @@ RG01—RG08全部满足才可判本阶段PASSED。源码扫描、线程池名称
 
 Executor从本方向与ADR003制定内部实施计划，连续实施RG01—RG08；允许修改Server资源准入/调度/异步接缝/受控动作及必要权限、追加迁移、计量/查询接口，Web现有流程运维入口策略及明细界面、相关验证资产和受影响文档。实现选择、内部Step与具体测试方案由Executor负责；范围外缺陷登记，不顺带实现。
 
-授权同步knowledge/current-status.md及session-handoff、Server功能清单、memory/todo当前索引和相关能力/README/交接：资源阶段READY，启动后IN_PROGRESS，业务回执提交时VERIFYING；P62整体PLANNING、首事务/分级阶段COMPLETED、探索缺口0保持。唯一下一动作=Executor实施本方向RG01—RG08并交回执。文档先knowledge核事实，当前入口覆盖矩阵逐字段回读；README仍区分0.1.3已发布与新能力未发布/默认关闭。允许包含本轮Planner规划文件的授权普通文档批次，但不得裹挟无关改动。
+授权同步knowledge/current-status.md及session-handoff、Server功能清单、memory/todo当前索引和相关能力/README/交接：历史阶段路径为READY→IN_PROGRESS→VERIFYING，当前单值VERIFYING（2026-10-03复核01未通过）；P62整体PLANNING、首事务/分级阶段COMPLETED、探索缺口0保持。当前唯一下一动作=Executor按本方向及复核01的RA01—RA06修正/补证并追加resource-assurance-02.md；先knowledge核实并传播2026-10-03规划裁决，交当前入口覆盖矩阵。文档先knowledge核事实，当前入口覆盖矩阵逐字段回读；README仍区分0.1.3已发布与新能力未发布/默认关闭。允许包含本轮Planner规划文件的授权普通文档批次，但不得裹挟无关改动。
 
 功能45、清单46/22/22（90）、ADV64、问题57、其他P状态与既有正式基线保持；本阶段不增功能数、不核销P62。普通提交推送按system §0.8.1，前置报告仓库/分支/远端/范围/领先落后/未跟踪，回读远端；不授权发布分支合并、tag/Release、部署、强推或历史改写。
 

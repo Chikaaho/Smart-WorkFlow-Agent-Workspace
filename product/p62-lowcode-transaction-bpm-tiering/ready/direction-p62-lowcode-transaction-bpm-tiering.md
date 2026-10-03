@@ -4,7 +4,7 @@
 - Owner 本轮指令：开始制定 P62，并纳入 memory、knowledge、README、需求清单、功能清单等过期信息治理。
 - 本文为整体阶段方向；首事务阶段COMPLETED（规划已确认），后续阶段继续规划，整体P62尚未通过。
 - 正式需求基准：`todo/p62-lowcode-transaction-bpm-tiering.md` R01—R10、A01—A12，全部保留；本方向补充 G01—G06 信息治理验收。
-- **当前唯一下一动作**：Executor按 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-resource-assurance.md` 实施RG01—RG08并提交resource-assurance-01回执。
+- **当前唯一下一动作**：Executor按 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-resource-assurance.md` 与复核01的RA01—RA06修正测量/实现，独立完成权限及可见浏览器取证，准备就绪后按原合同正式验证，追加 `resource-assurance-02.md`。
 
 ## 1. 目标与范围
 
@@ -37,7 +37,7 @@
 ## 4. 关键决策与待核实事项
 
 - 已确定：普通 OA 默认可靠异步；数据保护不随 BPM 等级降低；事务型数据能力内部优先；信息治理与 P62 一并跟踪。
-- 已形成 `adr-p62-001-transaction-foundation.md` 与 `../passed/direction-p62-local-transaction-actions.md`：独立受控本地动作、显式C1分类、动作版本身份、意图表优先及非破坏数据演进。分级执行及设备待核实的限定范围已由ADR-P62-002定案；资源保障已由ADR003与direction-p62-resource-assurance.md定案并READY。
+- 已形成 `adr-p62-001-transaction-foundation.md` 与 `../passed/direction-p62-local-transaction-actions.md`：独立受控本地动作、显式C1分类、动作版本身份、意图表优先及非破坏数据演进。分级执行及设备待核实的限定范围已由ADR-P62-002定案；资源保障已由ADR003与direction-p62-resource-assurance.md定案；当前阶段VERIFYING。
 - ADR 必须给出选定方向、现状证据、约束、兼容与回滚影响；本轮不把数据库队列、Outbox 或独立引擎写成未经核实的既成实现。
 - 当前分级阶段已在阶段方向固定本地拓扑/硬件、负载热点、窗口、失败拒绝、完成点和恢复预算；单进程资源保障的准入、公平、时效合同已由资源阶段方向固定；真实设备完成预算及扩展拓扑仍待后续阶段。
 - 实时动作 P99 ≤300ms 等值沿用正式需求的初始预算身份；当前分级阶段生产轻流程持久受理已固定P99≤2s，并绑定阶段方向测量条件。不得把初始预算声明为现有 SLA。
@@ -50,10 +50,10 @@
 
 ## 6. 状态与授权
 
-P62整体PLANNING；治理PASSED；首事务与分级执行/统一命令两阶段均COMPLETED（规划已确认）；P62未核销；资源保障阶段READY。唯一下一动作：Executor按 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-resource-assurance.md` 实施RG01—RG08并提交resource-assurance-01回执。
+P62整体PLANNING，未核销；治理PASSED；首事务与分级执行/统一命令两阶段均COMPLETED（规划已确认）；资源保障阶段VERIFYING（规划复核01未通过，2026-10-03）。原预算及负载画像保持，RG01—RG08尚无完整规划通过项。唯一下一动作：Executor按 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-resource-assurance.md` 与复核01的RA01—RA06修正测量/实现，独立完成权限及可见浏览器取证，准备就绪后按原合同正式验证，追加 `resource-assurance-02.md`。 裁决见 `../receipts/planning-review-resource-assurance-01.md`。
 
-信息治理 G01—G06 的审查结论见 `../receipts/planning-review-information-governance-05-passed.md`；治理方向归档至 `../passed/direction-p62-information-governance.md`。阶段方向与 ADR-P62-001 的范围和兼容边界保持，分级执行已完成；资源保障阶段READY，实施入口为本目录direction-p62-resource-assurance.md；设备/部署扩展后续独立规划。
+信息治理 G01—G06 的审查结论见 `../receipts/planning-review-information-governance-05-passed.md`；治理方向归档至 `../passed/direction-p62-information-governance.md`。阶段方向与 ADR-P62-001 的范围和兼容边界保持，分级执行已完成；资源保障阶段VERIFYING，实施入口为本目录direction-p62-resource-assurance.md；设备/部署扩展后续独立规划。
 
 功能数45、清单46/22/22（90）、ADV64、原54问题分类31/3/5/15及总记录57不变；不核销P62或其他P编号，不晋级正式测试基线。发布、部署、破坏性操作不在本方向授权内。
 
-分级执行业务方向及终态同步方向均已归档 `../passed/`，COMPLETED（规划已确认）；ADR002已采纳。资源探索已复核，见 `../receipts/planning-review-resource-isolation-readiness-03-passed.md`；资源阶段READY，下一步Executor实施RG01—RG08。
+分级执行业务与同步方向均已归档passed/，COMPLETED（规划已确认）；ADR002已采纳。资源探索复核03通过；资源阶段VERIFYING，规划复核01未通过，下一回执02。
