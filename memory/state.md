@@ -1,16 +1,12 @@
 # 当前状态摘要
 
-## 当前规划（2026-10-04）
+## 当前规划（2026-10-05）
 
-P62整体PLANNING，未核销；治理PASSED；首事务/分级两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（2026-10-04复核05未通过）。原预算/画像保持。唯一下一动作：Planner 复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/resource-assurance-06.md`并裁决持续高水位尾延迟方向（GC/堆参数或合同口径；已回传 GC三点对照+2h 12窗复算可复算差异与已试替代）。。
+P62整体PLANNING，未核销；治理PASSED；首事务/分级两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（2026-10-05复核06尚未通过；Executor已按提示05完成6项有界补证并提交回执07）。已撤回RA05a/RG08长时门禁，长稳能力未验证；原正确性、额度与时效数值保持。唯一下一动作：Planner复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/resource-assurance-07.md`（证据根 evidence/resource-assurance-07/，2026-10-05）并裁决持续尾延迟方向。
 
-裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-resource-assurance-05.md。160/160制品哈希匹配。关闭RA03a2专用manage授予/撤销矩阵；正式ea17局部锁定审批595零SKIP、light2860零拒绝、正常自动清账74.318s及目标ID配对修正；旧死锁/配置/恢复/减配/会计锁定沿对应快照。
+裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-resource-assurance-06.md（提示05为唯一执行入口）。186/186哈希匹配；正式/互换四类入口与保护OA领取1263/3033ms局部锁定。互换批拒绝P99=1029.7ms超1s（回执07复算成立，2/120样本）；2h保护light/approval拒绝5617/818全部归入w3—w9劣化段；回执06"全窗仅2"系转录错误，已在回执07纠正。
 
-正式真正差异：OA读1180=1176OK+4HTTP500（task not found）；回执“轻流程4额度拒绝”错误。P99实时810.6/OA读1303.6/批拒绝2101.8ms超限。真正审批claim3696ms；4313是light。CSV表头28/approval30列，完成时间在多出的末两列，须标准化而非判未完成。最新2065538诊断已有75EXPIRED且审批claim6107ms；与正式画像/源差异须核。
-
-GC原流最大pause58.331ms，只支持候选；已明确允许自建隔离环境有限GC器/参数/初始堆对照，Xmx2GiB及原JDK/硬件/池/线程/负载保持，无需等批准。既有UI创建/请求/四尺寸图是局部进展，空命令表、审计字段空白/窄屏交互及响应索引未闭合。互换仅120s，双方基础/正式互换/2h仍缺。
-
-剩7项：RA01b身份、RA02a2正确性/时效、RA02b1效果/过期、RA02b2公平、RA03b非空UI、RA05a持续画像、RA06b门禁/远端/传播。gate2汇总1741/12/13/11未通过，必须按资源阶段核归因，不能用模块255覆盖。Executor按原授权knowledge-first传播复核05/提示04并交字段原文/位置/时点；未进入阶段三。
+提示05六项（RA01b身份/RA02a2拒绝异常/RA02b1效果口径/RA02b2公平目标链/RA03b同会话UI/RA06b门禁远端）已由回执07逐项交付：每run身份映射更正+最终候选适用性；规范副本4+2落盘断言0失败；效果账提交口径纠正+75EXPIRED分判；kind×tenant重算吻合锁定值、目标链零缺行；RA03b Web两处修复+无debugauth同会话链闭合（Web四门全绿）；RA06b门禁原件61/0、255/0、9/9+双仓远端一致。本轮无长任务，2h仅离线分类。RA05a撤回不计失败；历史证据保持，长稳未验证。
 
 ## 锁定结果
 
