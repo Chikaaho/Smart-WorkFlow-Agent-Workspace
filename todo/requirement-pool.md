@@ -9,7 +9,7 @@
 
 ## Owner 优先级覆盖
 
-Owner 当前排期（2026-10-05规划复核）：P62整体PLANNING，未核销；治理PASSED；首事务/分级两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（2026-10-05复核06，尚未通过）。已撤回RA05a/RG08长时门禁，长稳能力未验证；原正确性、额度与时效数值保持。唯一下一动作：Planner复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/resource-assurance-07.md`（2026-10-05，Executor已按唯一入口提示05完成6项有界补证，证据根 evidence/resource-assurance-07/）并裁决持续尾延迟方向。0.1.3=COMPLETED（Owner已验收）。
+Owner 当前排期（2026-10-05复核07）：P62整体PLANNING，未核销；治理PASSED；首事务/分级COMPLETED；资源VERIFYING（2026-10-05复核07尚未通过）。Executor已按唯一入口提示06完成4项有界补证并提交回执08（证据根 evidence/resource-assurance-08/）。时效按8GB设备资源/实现问题分判；长时门禁撤回。唯一下一动作=Planner复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/resource-assurance-08.md`。0.1.3 Owner验收保持。
 
 **2026-09-23 历史排期**：活动主任务为 **`v0.1.1-bugfix`（XL 长周期缺陷修复与版本发布列车，`IN_PROGRESS`，非业务功能计数、不核销 P 编号）**——主方向 `product/v0.1.1-bugfix/ready/direction-v0.1.1-bugfix.md`（READY，开放收件），当前文档同步唯一入口 `product/v0.1.1-bugfix/ready/direction-current-state-sync-20260923.md`（执行侧已提交回执 `product/v0.1.1-bugfix/receipts/current-state-sync-20260923-01.md`，待 Planner 复核）。缺陷账本按行复算 25 = **23 已提交候选 + 1 处理中（V011-BUG-021，失效入口待具体复现输入）+ 1 Owner 复开（V011-BUG-024，Shift+滚轮专项未关闭）**，未处置合计 2，候选全部待 Owner/Planner 独立验收。下一动作=执行侧同步回执待 Planner 复核，随后等待候选独立验收并继续开放收件；得 Owner 明确确认收件结束前不得合并 main、创建 `0.1.1` tag/Release 或部署。功能数 45、清单 ✅46/🟦22/⬜22、ADV64、P 状态与正式验证基线（Server 1423/0/0/0、Web 1217+3、Flyway V93）本轮零变化；0.1.0 发布身份锁定，不得重复发布。**本文件 P 编号状态与计数不因本轮同步改变**（另记：两仓 `0.1.1-bugfix` 本地 HEAD 之后有 2 个 Server 与 16 个 Web 提交未登记于账本或任何单缺陷回执、未推送，只作事实记录，登记或分离待 Planner 裁决，见 `knowledge/features/v0.1.1-bugfix.md` §3.1）。
 
@@ -155,7 +155,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 | P59 | CH-aPaaS 项目说明、仓库与 main 分支整理及自动发版；三个示例仅记录 | Owner 2026-09-04；[统一需求](ch-apaas-project-update.md) | ✅ **已核销/完成**（**COMPLETED，规划已确认，2026-09-05**；功能级PASSED为2026-09-04审查07；非新增业务功能，功能数41、90明细与基线不变）；主方向及终态同步方向均归档 `passed/` |
 | P60 | 成熟OA `0.1.0`路线（组织权限、表单、流程设计与审批、流程运营、工作台、SSO、通知）；当前交付迭代`0.0.3` | Owner 2026-09-08；优先级P0；[归档方向](../product/v0.1.0-oa-completion/passed/direction-v0.1.0-oa-completion.md) | `COMPLETED（规划已确认，2026-09-15）`；整体14/14；Workspace退出0.1.0判断；Server/Web `0.1.0`已发布；版本统筹项完成核销但不增加业务功能计数；R8五渠道及三Provider真实链=Owner延期/未验证 |
 | P61 | 全系统用户可见错误码与提示语人性化治理 | Owner 2026-09-14/20；优先级P1；L；[归档方向](../product/p61-user-facing-message-humanization/passed/direction-p61-user-facing-message-humanization-scope-correction-20260920.md) | ✅ `COMPLETED（规划已确认，2026-09-20）`、已核销；不增加业务功能数 |
-| P62 | 低代码事务能力与 BPM 分级执行架构（OA / MES / WMS / IoT） | Owner 2026-09-30；XL；[正式需求](p62-lowcode-transaction-bpm-tiering.md)；[CTO 评审输入](p62-architecture-review-source-20260930.md) | PLANNING（整体）；资源VERIFYING（复核06）；撤回长时门禁，持续保障未验证；Executor按[补充提示05](../product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-resource-assurance-05.md)完成6项有界补证，回执07 |
+| P62 | 低代码事务能力与 BPM 分级执行架构（OA / MES / WMS / IoT） | Owner 2026-09-30；XL；[正式需求](p62-lowcode-transaction-bpm-tiering.md)；[CTO 评审输入](p62-architecture-review-source-20260930.md) | P62整体PLANNING，未核销；治理PASSED；首事务/分级COMPLETED；资源VERIFYING（2026-10-05复核07尚未通过）。[补充提示06](../product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-resource-assurance-06.md)，余4项，回执08 |
 
 管理员P0治理插单（2026-09-15）：[连续执行与可见浏览器验收门禁](admin-machine-gate-continuous-visible-browser.md)已`COMPLETED（规划确认）`，本地提交`8e87899`，治理测试sh 70/70、PowerShell 49/49。该任务不并入P60业务计数；远程发布仍需Owner另行授权。
 

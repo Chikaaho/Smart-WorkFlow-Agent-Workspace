@@ -2,11 +2,11 @@
 
 ## 当前规划（2026-10-05）
 
-P62整体PLANNING，未核销；治理PASSED；首事务/分级两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（2026-10-05复核06尚未通过；Executor已按提示05完成6项有界补证并提交回执07）。已撤回RA05a/RG08长时门禁，长稳能力未验证；原正确性、额度与时效数值保持。唯一下一动作：Planner复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/resource-assurance-07.md`（证据根 evidence/resource-assurance-07/，2026-10-05）并裁决持续尾延迟方向。
+P62整体PLANNING，未核销；治理PASSED；首事务/分级COMPLETED；资源VERIFYING（2026-10-05复核07尚未通过）。Executor已按唯一入口 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-resource-assurance-06.md` 完成4项有界补证并提交回执08（证据根 evidence/resource-assurance-08/）。
 
-裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-resource-assurance-06.md（提示05为唯一执行入口）。186/186哈希匹配；正式/互换四类入口与保护OA领取1263/3033ms局部锁定。互换批拒绝P99=1029.7ms超1s（回执07复算成立，2/120样本）；2h保护light/approval拒绝5617/818全部归入w3—w9劣化段；回执06"全窗仅2"系转录错误，已在回执07纠正。
+裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-resource-assurance-07.md。已关闭身份文字、6份CSV转换、非空UI行为及夹具9例证据。8GB本机互换系统负载明显较高（load中位5.01/11.67），缺历史内存/swap记录，超限不直接判代码缺陷——回执08维持归因不足判定（实现层无异常信号：池等待0/堆≤865/2048）。回执08交付：RA02b1提交观测下界426/3165ms+动作事务边界保守上界≤5000+完成性零缺行+版本因果纠正（ea17dde在2065538之前，75EXPIRED=供给不触发装置设计）；RA02b2 maxItemWaitMs失效口径（batch_item.update_time无写入方）+项级真实时间∈[38.3,40.0]s暖机段+窗内批项零样本+形态×等待矩阵；RA06b surefire原件61/0、255/0+Web四门原件+diff/远端原文+覆盖矩阵；三处转录纠正（w11/w12非零、convergence宽口径分组vs occupancy真占用账、4313ms属light非审批）。长稳未验证，不重跑长任务，不做非必要哈希。
 
-提示05六项（RA01b身份/RA02a2拒绝异常/RA02b1效果口径/RA02b2公平目标链/RA03b同会话UI/RA06b门禁远端）已由回执07逐项交付：每run身份映射更正+最终候选适用性；规范副本4+2落盘断言0失败；效果账提交口径纠正+75EXPIRED分判；kind×tenant重算吻合锁定值、目标链零缺行；RA03b Web两处修复+无debugauth同会话链闭合（Web四门全绿）；RA06b门禁原件61/0、255/0、9/9+双仓远端一致。本轮无长任务，2h仅离线分类。RA05a撤回不计失败；历史证据保持，长稳未验证。
+唯一下一动作：Planner复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/resource-assurance-08.md` 并裁决尾延迟归因方向与批项预算起点。本轮knowledge-first传播已完成并回读，未进入阶段三。
 
 ## 锁定结果
 
