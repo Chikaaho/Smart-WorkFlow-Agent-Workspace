@@ -84,7 +84,7 @@ git-log-timeline.txt 原件（回执07 记载有误，以本节为准）：`ea17
 1. **engine/process 计数原件**：本轮 `-q` 静默日志无摘要（不据此判失败）——补既有 Surefire 报告原件：engine 18 个 txt 汇总 **61/0/0/0**、process 63 个 txt 汇总 **255/0/0/0**（目录 engine-surefire/、process-surefire/）；本轮命令退出码=0（engine `mvn -q -pl sw-biz/sw-bpm/sw-bpm-engine test`、process 同构）。夹具 9/9 原流已由复核07认可（Tests run:9 BUILD SUCCESS），不重跑。
 2. **Web 四门原件**：同一提交 `8ad2fdd` 工作树复跑存档（原件收集，非新验证）：typecheck exit=0、lint exit=0、test **1321 passed+3 skipped** exit=0、build exit=0（web-typecheck/lint/test/build.txt 四件）。
 3. **最终候选影响原件**：三段 diff patch（diff-d800f90-aebed6a.patch 125 行=仅 V104 夹具迁移、diff-aebed6a-ac9ff6d.patch 77 行=仅测试装置、diff-ac9ff6d-910e03b.patch 97 行=仅 BpmResourceOpsService 视图键）——回执07§1.2 的正文分析由此可读复核。
-4. **远端回读原文**：ls-remote-server.txt（`4f11e194…` develop）、ls-remote-web.txt（`8ad2fdd1…` develop）——与回执07批次提交后回读一致。
+4. **远端回读原文**：ls-remote-server.txt（`4f11e194…` develop）、ls-remote-web.txt（`8ad2fdd1…` develop）——与回执07批次提交后回读一致。**本回执批次提交后回读**：Server 功能清单焦点批次 `49650359825b0b3dbbe55dbeee3e52cba64f1e27` 已推送（origin/develop 回读一致；零代码改动，文档同步）；Web 本轮零改动（`8ad2fdd1…` 保持）；工作区批次 `78af6dc88b865cf57531537d487a2e3cd7f6aad8` 已推送（develop-sw 回读一致）。
 5. 版本时序原件：git-log-timeline.txt（ea17dde 00:47 → ef33ea3 01:21 → 2065538 01:29）。
 
 ## 5. 逐字段同步覆盖矩阵（本批次实际覆盖，回执07§8 文字错误在此纠正）
