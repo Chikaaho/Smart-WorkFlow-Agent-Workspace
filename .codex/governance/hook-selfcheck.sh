@@ -50,7 +50,7 @@ posix_present=false
 [ -n "$posix_block" ] && [ "$posix_block" != "null" ] && posix_present=true
 
 entry_files='[]'
-for entry in zcode-role-bind.py zcode-stop-gate.py zcode_gate_common.py session-observation.py validate-terminal.sh terminal-contract.json; do
+for entry in zcode-role-bind.py zcode-stop-gate.py zcode_gate_common.py session-observation.py validate-terminal.sh validate-execution.py terminal-contract.json; do
   path="$root_dir/.codex/governance/$entry"
   if [ -f "$path" ]; then
     bytes=$(wc -c < "$path" | tr -d ' ')
@@ -92,7 +92,7 @@ bound_sessions=0
 [ -d "$runtime/sessions" ] && bound_sessions=$(ls "$runtime/sessions" 2>/dev/null | grep -c '\.role\.json$' || printf 0)
 
 live=false
-if [ "$drift" = "false" ] && [ "$declaration_present" = "true" ] && [ -n "$interpreter" ] && [ "$audit_record_count" -gt 0 -o "$invocation_count" -gt 0 ]; then
+if [ "$drift" = "false" ] && [ "$declaration_present" = "true" ] && [ -n "$interpreter" ] && [ "$audit_record_count" -gt 0 -o "$invocation_count" -gt 0 ] && [ -f "$root_dir/.codex/governance/validate-execution.py" ]; then
   live=true
 fi
 
@@ -100,6 +100,7 @@ printf '%s' "{\"status\":\"$(if [ "$live" = "true" ]; then printf live; else pri
 printf ',"declaration":{"present":%s,"path":".codex/governance/zcode-hooks-declaration.json"}' "$declaration_present"
 printf ',"platform_block_posix":{"present":%s}' "$posix_present"
 printf ',"entry_files":%s' "$entry_files"
+printf ',"execution_lifecycle":{"component_present":%s,"host_observation_source":"hook_payload","prelaunch_interception":false}' "$(if [ -f "$root_dir/.codex/governance/validate-execution.py" ]; then printf true; else printf false; fi)"
 printf ',"interpreter":"%s"' "$interpreter"
 printf ',"effective_scope":"user","user_config":"%s","drift":%s' "$user_config" "$drift"
 printf ',"audit":{"records":%s,"tail":%s}' "$audit_record_count" "$audit_tail"

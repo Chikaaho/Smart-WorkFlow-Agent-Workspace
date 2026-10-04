@@ -97,14 +97,15 @@ function Get-TerminalExtraction {
 function Invoke-TerminalValidator {
     param(
         [Parameter(Mandatory = $true)] [string] $ValidatorPath,
-        [Parameter(Mandatory = $true)] [string] $TerminalJson
+        [Parameter(Mandatory = $true)] [string] $TerminalJson,
+        [switch] $ExecutionContext
     )
 
     $errorWriter = [System.IO.StringWriter]::new()
     $originalError = [Console]::Error
     try {
         [Console]::SetError($errorWriter)
-        $null = & $ValidatorPath -InputJson $TerminalJson
+        $null = & $ValidatorPath -InputJson $TerminalJson -ExecutionContext:$ExecutionContext
         $exitCode = $LASTEXITCODE
     } finally {
         [Console]::SetError($originalError)
@@ -362,7 +363,8 @@ if ($context.available) {
 # 门禁适用范围：本回合有真实工具动作、自定清单仍有未完成项，或模型以上下文为由收尾
 # （第三条即便没有任何工具动作也必须裁决——压缩是宿主职责，不是停止理由）。
 $contextClaim = Test-ContextExhaustionClaim -Text $message
-$gated = ($toolCallCount -ge 1) -or ($observation.available -and $observation.open -gt 0) -or $contextClaim
+$lifecycleKnown = $null -ne (Get-GateJsonProperty $payload 'background_tasks') -or $null -ne (Get-GateJsonProperty (Get-GateJsonProperty $payload 'execution_observations') 'execution_tasks')
+$gated = ($toolCallCount -ge 1) -or ($observation.available -and $observation.open -gt 0) -or $contextClaim -or $lifecycleKnown
 if (-not $gated) {
     Write-GateDecision -Decision 'pass' -ReasonCode 'NO_EXECUTION_ACTIVITY' -TodoOpen $todoOpen -ObservationError $observationError -Gated 0 -ContextPercent $contextPercent -ContextExceeded $contextExceeded
     exit 0
@@ -386,6 +388,13 @@ $findings = [System.Collections.Generic.List[string]]::new()
 $actions = [System.Collections.Generic.List[string]]::new()
 $contractAccepted = $false
 
+$lifecycleValidation = Invoke-TerminalValidator -ValidatorPath (Join-Path $root '.codex/governance/validate-terminal.ps1') -TerminalJson ($payload | ConvertTo-Json -Depth 40 -Compress) -ExecutionContext
+if ($lifecycleValidation.exitCode -ne 0) {
+    $reasonCode = 'EXECUTION_LIFECYCLE_REJECTED'
+    $findings.Add((@($lifecycleValidation.diagnostics) -join '；'))
+    $actions.Add('核对自身任务身份，按既定策略取消、清理并保存已有结果与退出状态；继续独立工作，不延时等待，不停止用户既有服务。')
+}
+
 if (-not $extraction.ok) {
     if ([string]::IsNullOrWhiteSpace($reasonCode)) { $reasonCode = $extraction.code }
     $findings.Add($extraction.message)
@@ -400,10 +409,21 @@ if (-not $extraction.ok) {
         $terminalState = Get-GateJsonText $terminalPayload 'state'
         $validatorPath = Join-Path $root '.codex/governance/validate-terminal.ps1'
         $validation = Invoke-TerminalValidator -ValidatorPath $validatorPath -TerminalJson $extraction.payload
+        if ($validation.exitCode -eq 0) {
+            $lifecycleContext = @{ terminal_payload = $terminalPayload }
+            foreach ($field in @('background_tasks', 'execution_observations')) {
+                if ($null -ne $payload.PSObject.Properties[$field]) { $lifecycleContext[$field] = $payload.$field }
+            }
+            $validation = Invoke-TerminalValidator -ValidatorPath $validatorPath -TerminalJson ($lifecycleContext | ConvertTo-Json -Depth 40 -Compress) -ExecutionContext
+        }
         if ($validation.exitCode -ne 0) {
             if ([string]::IsNullOrWhiteSpace($reasonCode)) { $reasonCode = 'CONTRACT_REJECTED' }
             $findings.Add('终态契约未通过公共 Validator：' + (@($validation.diagnostics) -join '；'))
-            $actions.Add('按诊断逐项修正终态字段后重新提交；仍有授权内可执行项时先完成动作，不得提前结束。')
+            if ((@($validation.diagnostics) -join ';') -match 'execution:') {
+                $actions.Add('核对自身任务身份，按既定策略取消、清理并保存已有结果与退出状态；继续独立工作，不延时等待，不停止用户既有服务。')
+            } else {
+                $actions.Add('按诊断逐项修正终态字段后重新提交；仍有授权内可执行项时先完成动作，不得提前结束。')
+            }
         } else {
             $contractAccepted = $true
         }

@@ -3,7 +3,8 @@ param(
     [Parameter(ValueFromPipeline = $true)]
     [AllowNull()]
     [AllowEmptyString()]
-    [string] $InputJson
+    [string] $InputJson,
+    [switch] $ExecutionContext
 )
 
 begin {
@@ -90,6 +91,34 @@ $payloadText = if ($pipelineChunks.Count -gt 0) {
 } else {
     $stdinReader = [System.IO.StreamReader]::new([Console]::OpenStandardInput(), [System.Text.UTF8Encoding]::new($false), $true)
     $stdinReader.ReadToEnd()
+}
+
+# Same lifecycle Validator and terminal-contract.json on POSIX and Windows.
+$python = if ($env:AGENT_CODING_ENGINE_PYTHON) { $env:AGENT_CODING_ENGINE_PYTHON } else { (Get-Command python3, python -ErrorAction SilentlyContinue | Select-Object -First 1 | ForEach-Object { $_.Source }) }
+if ([string]::IsNullOrWhiteSpace($python)) {
+    [Console]::Error.WriteLine('execution: validator unavailable: Python 3 not found')
+    exit 1
+}
+$executionValidator = Join-Path $PSScriptRoot 'validate-execution.py'
+function Invoke-ExecutionComponent {
+    param([switch] $ContextMode)
+    $previousPreference = $ErrorActionPreference
+    $ErrorActionPreference = 'Continue'
+    try {
+        $arguments = @($executionValidator)
+        if ($ContextMode) { $arguments += '--execution-context' }
+        $componentOutput = $payloadText | & $python @arguments 2>&1 | Out-String
+        $componentExit = $LASTEXITCODE
+    } finally {
+        $ErrorActionPreference = $previousPreference
+    }
+    if (-not [string]::IsNullOrWhiteSpace($componentOutput)) {
+        [Console]::Error.WriteLine($componentOutput.Trim())
+    }
+    return $componentExit
+}
+if ($ExecutionContext) {
+    exit (Invoke-ExecutionComponent -ContextMode)
 }
 
 try {
@@ -619,5 +648,5 @@ if ($diagnostics.Count -gt 0) {
     exit 1
 }
 
-exit 0
+exit (Invoke-ExecutionComponent)
 }

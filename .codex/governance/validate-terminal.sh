@@ -10,6 +10,17 @@ resolve_jq() {
 root_dir=$(CDPATH= cd -- "$(dirname "$0")/../.." && pwd)
 contract="$root_dir/.codex/governance/terminal-contract.json"
 payload=$(cat)
+# Lifecycle component uses the same contract on both platforms; unavailable => closed.
+execution_validator="$root_dir/.codex/governance/validate-execution.py"
+python_bin="${AGENT_CODING_ENGINE_PYTHON:-$(command -v python3 || true)}"
+if [ -z "$python_bin" ]; then
+  printf '%s\n' 'execution: validator unavailable: Python 3 not found' >&2
+  exit 1
+fi
+if [ "${1:-}" = "--execution-context" ]; then
+  printf '%s' "$payload" | "$python_bin" "$execution_validator" --execution-context
+  exit $?
+fi
 jq_bin=$(resolve_jq || true)
 if [ -z "$jq_bin" ]; then
   # Validator 无法证明契约成立时必须拒绝，而不是放行。
@@ -178,3 +189,5 @@ if [ -n "$diagnostics" ]; then
   printf '%s\n' "$diagnostics" | sed 's/^/terminal: /' >&2
   exit 1
 fi
+
+printf '%s' "$payload" | "$python_bin" "$execution_validator"

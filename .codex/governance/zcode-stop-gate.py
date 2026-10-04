@@ -85,10 +85,10 @@ def get_terminal_extraction(message: str, marker_prefix: str):
     return {"ok": True, "code": "", "payload": payload_text.strip(), "message": ""}
 
 
-def invoke_terminal_validator(validator_path: Path, terminal_json: str):
+def invoke_terminal_validator(validator_path: Path, terminal_json: str, execution_context=False):
     try:
         completed = subprocess.run(
-            ["sh", str(validator_path)],
+            ["sh", str(validator_path)] + (["--execution-context"] if execution_context else []),
             input=terminal_json.encode("utf-8"),
             capture_output=True,
             timeout=30,
@@ -319,7 +319,7 @@ def main() -> int:
         # 门禁适用范围：本回合有真实工具动作、自定清单仍有未完成项，或模型以上下文为由收尾
         # （第三条即便没有任何工具动作也必须裁决——压缩是宿主职责，不是停止理由）。
         context_claim = test_context_exhaustion_claim(message)
-        gated = tool_call_count >= 1 or (observation["available"] and observation["open"] > 0) or context_claim
+        gated = tool_call_count >= 1 or (observation["available"] and observation["open"] > 0) or context_claim or bool(payload.get("background_tasks") or (payload.get("execution_observations", {}).get("execution_tasks") if isinstance(payload.get("execution_observations"), dict) else None))
 
         def write_gate_decision(
             decision,
@@ -374,6 +374,13 @@ def main() -> int:
         actions = []
         contract_accepted = False
 
+        lifecycle_validation = invoke_terminal_validator(
+            root_path / '.codex/governance/validate-terminal.sh', json.dumps(payload), execution_context=True)
+        if lifecycle_validation['exit_code'] != 0:
+            reason_code = 'EXECUTION_LIFECYCLE_REJECTED'
+            findings.extend(lifecycle_validation['diagnostics'])
+            actions.append('核对自身任务身份，按既定策略取消、清理并保存已有结果与退出状态；继续独立工作，不延时等待，不停止用户既有服务。')
+
         if not extraction["ok"]:
             if not reason_code:
                 reason_code = extraction["code"]
@@ -393,11 +400,18 @@ def main() -> int:
                 terminal_state = terminal_payload.get("state") if isinstance(terminal_payload.get("state"), str) else ""
                 validator_path = root_path / ".codex" / "governance" / "validate-terminal.sh"
                 validation = invoke_terminal_validator(validator_path, extraction["payload"])
+                if validation["exit_code"] == 0:
+                    lifecycle_context = dict(payload)
+                    lifecycle_context['terminal_payload'] = terminal_payload
+                    validation = invoke_terminal_validator(validator_path, json.dumps(lifecycle_context), execution_context=True)
                 if validation["exit_code"] != 0:
                     if not reason_code:
                         reason_code = "CONTRACT_REJECTED"
                     findings.append("终态契约未通过公共 Validator：" + "；".join(validation["diagnostics"]))
-                    actions.append("按诊断逐项修正终态字段后重新提交；仍有授权内可执行项时先完成动作，不得提前结束。")
+                    if any('execution:' in detail for detail in validation['diagnostics']):
+                        actions.append('核对自身任务身份，按既定策略取消、清理并保存已有结果与退出状态；继续独立工作，不延时等待，不停止用户既有服务。')
+                    else:
+                        actions.append("按诊断逐项修正终态字段后重新提交；仍有授权内可执行项时先完成动作，不得提前结束。")
                 else:
                     contract_accepted = True
 

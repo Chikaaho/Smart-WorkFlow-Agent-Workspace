@@ -103,6 +103,7 @@ $files = @(
     (Test-FileReport -Root $root -Relative '.codex/governance/zcode-gate-common.ps1' -Name 'zcode-gate-common.ps1'),
     (Test-FileReport -Root $root -Relative '.codex/governance/session-observation.py' -Name 'session-observation.py'),
     (Test-FileReport -Root $root -Relative '.codex/governance/validate-terminal.ps1' -Name 'validate-terminal.ps1'),
+    (Test-FileReport -Root $root -Relative '.codex/governance/validate-execution.py' -Name 'validate-execution.py'),
     (Test-FileReport -Root $root -Relative '.codex/governance/terminal-contract.json' -Name 'terminal-contract.json')
 )
 
@@ -206,6 +207,12 @@ $report = [ordered] @{
     posix_jq         = [ordered] @{
         available = $null -ne (Get-Command jq -ErrorAction SilentlyContinue)
         note      = 'POSIX/Codex 宿主入口在缺少 jq 时 fail closed；ZCode 入口不依赖 jq'
+    }
+    execution_lifecycle = [ordered] @{
+        component_present = Test-Path (Join-Path $root '.codex/governance/validate-execution.py') -PathType Leaf
+        python_available = $null -ne (Get-Command python3, python -ErrorAction SilentlyContinue | Select-Object -First 1)
+        host_observation_source = 'hook_payload'
+        prelaunch_interception = $false
     }
     live             = ($declaration.present -and $declaration.hooks_enabled -and -not $declaration.drift -and $audit.records -gt 0 -and $recentHostFailures -eq 0 -and -not $entryFailures.present)
 }

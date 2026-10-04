@@ -9,6 +9,8 @@ param(
     [string] $ThreadId,
     [int] $ContractRevision = 0,
     [string] $ContractFile,
+    [string] $ObservationFile,
+    [string] $BackgroundTasksFile,
     [string] $SupervisorUrl
 )
 
@@ -52,6 +54,14 @@ if ($Action -eq 'Start') {
     if (-not [string]::IsNullOrWhiteSpace($ContractFile)) {
         $event.terminal_payload = Get-Content -LiteralPath $ContractFile -Raw | ConvertFrom-Json
     }
+}
+
+# Actual Harness lifecycle snapshots, using the existing terminal contract fields.
+if (-not [string]::IsNullOrWhiteSpace($ObservationFile)) {
+    $event.execution_observations = Get-Content -LiteralPath $ObservationFile -Raw | ConvertFrom-Json
+}
+if (-not [string]::IsNullOrWhiteSpace($BackgroundTasksFile)) {
+    $event.background_tasks = Get-Content -LiteralPath $BackgroundTasksFile -Raw | ConvertFrom-Json
 }
 
 $temp = Join-Path ([System.IO.Path]::GetTempPath()) ("ace-task-event-{0}.json" -f [guid]::NewGuid().ToString('N'))
