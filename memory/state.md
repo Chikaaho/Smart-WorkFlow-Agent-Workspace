@@ -2,15 +2,15 @@
 
 ## 当前规划（2026-10-04）
 
-P62整体PLANNING，未核销；治理PASSED；首事务/分级两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（2026-10-04复核04未通过）。原预算/画像保持。唯一下一动作：Planner 复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/resource-assurance-05.md`（领取4313ms✓/自动收敛74.3s✓/审批655零SKIP✓/额度拒绝1311→4✓/隔离与全局授权矩阵✓；剩余=实时810.6/OA读1303.6/批拒绝2101.8 尾差异+四视口UI+2h+EXPIRED分类）；执行侧按提示03继续可独立项。。
+P62整体PLANNING，未核销；治理PASSED；首事务/分级两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（2026-10-04复核05未通过）。原预算/画像保持。唯一下一动作：Planner 复核 `product/p62-lowcode-transaction-bpm-tiering/receipts/resource-assurance-06.md`并裁决持续高水位尾延迟方向（GC/堆参数或合同口径；已回传 GC三点对照+2h 12窗复算可复算差异与已试替代）。。
 
-裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-resource-assurance-04.md。116/116制品哈希匹配；真实60+600窗口完成但失败，撤销600s宿主硬限。锁定RA02a1借用/总量回退阻塞修复及本轮无死锁/HTTP500；单源窗口/CSV修正、非空viewer隔离、dev夹具启动与cbf模块255原流各锁其边界。
+裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-resource-assurance-05.md。160/160制品哈希匹配。关闭RA03a2专用manage授予/撤销矩阵；正式ea17局部锁定审批595零SKIP、light2860零拒绝、正常自动清账74.318s及目标ID配对修正；旧死锁/配置/恢复/减配/会计锁定沿对应快照。
 
-正式保护轻流程1311拒绝；审批100受理+494SKIP不满足持续合法负载。实时P99 769.8/OA读1090.5/审批1556/突发拒绝1192.3/批拒绝4101.9ms。真正审批领取最大39132ms；39506ms属轻流程。3810目标读回version/数量均0且更新时间早于调用，效果配对未证；790显式对账后0不等正常自动释放，200EXPIRED须逐项核实。2h/双方保障/互换及正式四视口未闭合。
+正式真正差异：OA读1180=1176OK+4HTTP500（task not found）；回执“轻流程4额度拒绝”错误。P99实时810.6/OA读1303.6/批拒绝2101.8ms超限。真正审批claim3696ms；4313是light。CSV表头28/approval30列，完成时间在多出的末两列，须标准化而非判未完成。最新2065538诊断已有75EXPIRED且审批claim6107ms；与正式画像/源差异须核。
 
-剩余8项：RA01b身份、RA02a2负载/时效、RA02b1效果/自动释放、RA02b2公平、RA03a2全局授权边界、RA03b可见UI、RA05a持续画像、RA06b门禁/远端/传播。全量门禁失败1739/12/13/9为执行汇总，不能由255替代；既有失败须按整个资源阶段核影响。global manage授予边界待证，不强制新权限名。
+GC原流最大pause58.331ms，只支持候选；已明确允许自建隔离环境有限GC器/参数/初始堆对照，Xmx2GiB及原JDK/硬件/池/线程/负载保持，无需等批准。既有UI创建/请求/四尺寸图是局部进展，空命令表、审计字段空白/窄屏交互及响应索引未闭合。互换仅120s，双方基础/正式互换/2h仍缺。
 
-Planner已统一可写入口；Executor先knowledge核实复核04/提示03，再覆盖current-status/session-handoff/Server等并回传字段原文/位置/时点。未进入阶段三。
+剩7项：RA01b身份、RA02a2正确性/时效、RA02b1效果/过期、RA02b2公平、RA03b非空UI、RA05a持续画像、RA06b门禁/远端/传播。gate2汇总1741/12/13/11未通过，必须按资源阶段核归因，不能用模块255覆盖。Executor按原授权knowledge-first传播复核05/提示04并交字段原文/位置/时点；未进入阶段三。
 
 ## 锁定结果
 
