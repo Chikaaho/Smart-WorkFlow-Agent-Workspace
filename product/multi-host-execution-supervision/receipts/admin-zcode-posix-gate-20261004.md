@@ -55,3 +55,20 @@
 ## 5. Git
 
 独立批次提交于 `develop-sw`（仅治理文件，不含 p62 业务回执与子模块指针），推送后回读远端 SHA 见提交记录。
+
+## 6. 追加修复：子仓库会话的 hook 几何（2026-10-04 深夜，安装当日实测）
+
+**现象**：安装后宿主首次真实派发即成功（工作区根会话注入【执行门禁】状态行，`门禁=已上膛`），但一个项目根为子仓库 `Smart-WorkFlow-aPaaS-server` 的会话报 `hooks_prompt_block`：python 找不到 `…/Smart-WorkFlow-aPaaS-server/.codex/governance/zcode-role-bind.py`。
+
+**原因**：用户级 hook 全机生效，`${ZCODE_PROJECT_DIR}` 按当前会话项目根展开——子仓库是独立 git 仓库，入口文件不在其中。Windows 声明用 `if exist` 守卫实现"非受治理工作区自动无操作"，POSIX 首版声明漏掉了该守卫。
+
+**修复**：`platforms.posix` 两条入口改为 `process` 型直启 `/bin/sh -c` 守卫脚本——从 `${ZCODE_PROJECT_DIR}`（缺省回退 `PWD`）向上最多 16 级定位仓库内入口，找到才 `exec python3` 运行，找不到静默退出（exit 0）。守卫脚本刻意用 `${ZCODE_PROJECT_DIR:-$PWD}` 默认值语法：无论宿主做不做字符串内插，都能从宿主注入的环境变量取值。载荷 `cwd` 由入口自身向上解析 engine root，因此**子仓库会话仍落到工作区根治理**（门禁不缺位）。
+
+**验证**（契约测试 31/31，终态回归 70/70；本机重装备份 `config.json.bak-20261004212754`）：
+
+| 场景 | 结果 |
+|---|---|
+| 子仓库几何（本次报错场景，`ZCODE_PROJECT_DIR=子仓库`、载荷 `cwd=子仓库`） | 角色绑定成功，状态行 `会话角色=executor \| 门禁=已上膛`（engine root 解析到工作区根） |
+| 同几何 Stop 门禁（33 工具调用、无终态行） | `block`，诊断与 `next_action` 正常 |
+| 无关工作区（`ZCODE_PROJECT_DIR=$HOME`） | exit 0、stdout/stderr 全空，静默无操作 |
+| 新增契约测试 | 守卫脚本在无入口目录无操作；向上定位后 exec 到入口 |

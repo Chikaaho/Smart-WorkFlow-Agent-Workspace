@@ -393,11 +393,43 @@ class InstallerDriftTests(unittest.TestCase):
         declaration = json.loads((GOV / "zcode-hooks-declaration.json").read_text(encoding="utf-8-sig"))
         hooks = declaration["platforms"]["posix"]["hooks"]
         self.assertTrue(hooks["enabled"])
-        self.assertTrue(hooks["events"]["UserPromptSubmit"][0]["hooks"][0]["enabled"])
-        self.assertTrue(hooks["events"]["Stop"][0]["hooks"][0]["enabled"])
-        self.assertEqual("python3", hooks["events"]["Stop"][0]["hooks"][0]["command"])
-        self.assertIn("zcode-stop-gate.py", hooks["events"]["Stop"][0]["hooks"][0]["args"][0])
-        self.assertIn("zcode-role-bind.py", hooks["events"]["UserPromptSubmit"][0]["hooks"][0]["args"][0])
+        for event, entry_name in (("UserPromptSubmit", "zcode-role-bind.py"), ("Stop", "zcode-stop-gate.py")):
+            hook = hooks["events"][event][0]["hooks"][0]
+            self.assertTrue(hook["enabled"], event)
+            self.assertEqual("/bin/sh", hook["command"], event)
+            self.assertEqual("-c", hook["args"][0], event)
+            self.assertIn(entry_name, hook["args"][1], event)
+            self.assertIn("exec python3", hook["args"][1], event)
+
+    def posix_guard_script(self, event: str) -> str:
+        declaration = json.loads((GOV / "zcode-hooks-declaration.json").read_text(encoding="utf-8-sig"))
+        return declaration["platforms"]["posix"]["hooks"]["events"][event][0]["hooks"][0]["args"][1]
+
+    def run_guard(self, script: str, project_dir: str, payload: bytes = b"{}"):
+        env = dict(os.environ)
+        env["ZCODE_PROJECT_DIR"] = project_dir
+        return subprocess.run(["sh", "-c", script], input=payload, capture_output=True, timeout=30, env=env)
+
+    def test_guard_noops_outside_governed_workspace(self) -> None:
+        with tempfile.TemporaryDirectory() as outside:
+            for event in ("UserPromptSubmit", "Stop"):
+                completed = self.run_guard(self.posix_guard_script(event), outside)
+                self.assertEqual(0, completed.returncode, event)
+                self.assertEqual(b"", completed.stdout.strip(), event)
+                self.assertEqual(b"", completed.stderr.strip(), event)
+
+    def test_guard_walks_up_and_execs_repo_entry(self) -> None:
+        with tempfile.TemporaryDirectory() as base:
+            root = Path(base)
+            governance = root / ".codex" / "governance"
+            governance.mkdir(parents=True)
+            stub = governance / "zcode-role-bind.py"
+            stub.write_text("import sys; sys.stdout.write('STUB-OK')\n", encoding="utf-8")
+            nested = root / "nested" / "deep"
+            nested.mkdir(parents=True)
+            completed = self.run_guard(self.posix_guard_script("UserPromptSubmit"), str(nested))
+            self.assertEqual(0, completed.returncode)
+            self.assertEqual(b"STUB-OK", completed.stdout.strip())
 
 
 if __name__ == "__main__":
