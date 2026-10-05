@@ -1,6 +1,6 @@
 # 近期有效决策摘要
 
-> 同步点：2026-10-05（P62功能验收）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）与对应回执。
+> 同步点：2026-10-06（P62终态确认）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）与对应回执。
 
 - 当前状态与历史物理分离；当前值只见 `knowledge/current-status.md`，历史见 `knowledge/history/`。终态机器契约单一源 `.codex/governance/terminal-contract.json`，校验入口 `.codex/governance/validate-terminal.sh`。
 - Planner 以 `memory/` 最小摘要恢复；冲突时按 knowledge 权威修正，不反向裁决。
@@ -11,4 +11,4 @@
 
 - 资源功能闭环子阶段COMPLETED（规划已确认，2026-10-05）；终审见product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-resource-functional-closure-01-completed.md；性能Owner延期。
 
-- P62功能验收PASSED保持；终态复核01的TS01/TS02已补齐并提交terminal-sync-final-delivery-02.md（TS01登记§3/§4完整字段一致、TS02三源90行逐ID对照全一致），状态COMPLETED（待规划终态复核）、功能46。性能延期未验证、策略默认关闭；唯一下一动作=Planner复核terminal-sync-final-delivery-02.md。
+- P62当前批准功能范围COMPLETED（规划已确认，2026-10-06）；功能与终态验收缺口均为0。正式功能46（45+1）、清单✅46/🟦22/⬜22=90、ADV64、问题57；P62批准功能交付已核销。性能Owner延期未验证、新资源策略默认关闭。最终裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md。无业务待办；执行侧仅按该裁决“最终确认传播”同步确认措辞、归档路径并提交本批文档，完成后等待Owner下一目标。

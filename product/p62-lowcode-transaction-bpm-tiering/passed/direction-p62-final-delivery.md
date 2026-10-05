@@ -1,6 +1,6 @@
-> 2026-10-05复核04：P62当前批准功能范围PASSED，最终交付缺口0；性能延期未验证。唯一执行入口 `../ready/direction-p62-final-delivery-terminal-sync.md`，一次完成终态同步；补充提示01—03全部结清。
+> 2026-10-06终态复核02通过：P62当前批准功能范围COMPLETED（规划已确认），TS01/TS02已核销。最终裁决 `../receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md`；业务及补证账本已结清，性能Owner延期未验证。
 
-> 归档说明：本方向的批准功能交付已验收，原执行/交付条款保留为验收依据，不再产生业务待办。现行收尾仅见终态同步方向；性能延期范围保留于ready/direction-p62-resource-assurance.md。
+> 归档说明：本方向的批准功能交付已验收，原执行/交付条款保留为验收依据，不再产生业务待办。终态同步已通过；下文状态与交付动作均为原验收时点，当前裁决见顶部；性能延期范围保留于ready/direction-p62-resource-assurance.md。
 
 
 

@@ -3,7 +3,7 @@
 - 登记日期：2026-09-30
 - 角色：Planner
 - 任务等级：XL（核心架构、跨模块契约、数据一致性与持续演进）
-- P62功能验收PASSED；状态COMPLETED（待规划终态复核）。正式功能数46（45+1，批准功能交付已核销）；清单目标46/22/22=90、ADV64、问题57保持。终态复核01的TS01/TS02已由Executor按提示完成并提交 terminal-sync-final-delivery-02.md（附件 receipts/evidence/terminal-sync-final-delivery-02/：TS01=登记§3/§4完整字段与授权值逐项一致；TS02=三源90行逐ID对照全一致、46/22/22复算成立）；业务证据全部锁定。性能Owner延期未验证、新策略默认关闭。唯一下一动作：Planner 复核 product/p62-lowcode-transaction-bpm-tiering/receipts/terminal-sync-final-delivery-02.md（旧01作历史输入）并确认P62当前批准功能范围COMPLETED。
+- P62当前批准功能范围COMPLETED（规划已确认，2026-10-06）；功能与终态验收缺口均为0。正式功能46（45+1）、清单✅46/🟦22/⬜22=90、ADV64、问题57；P62批准功能交付已核销。性能Owner延期未验证、新资源策略默认关闭。最终裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md。无业务待办；执行侧仅按该裁决“最终确认传播”同步确认措辞、归档路径并提交本批文档，完成后等待Owner下一目标。
 - 排期优先级：Owner 于 2026-09-30 启动本轮规划；事务型数据能力为本需求内部优先建设项。
 - Owner 依据：本会话明确“根据评审方案列为正式需求”。
 - 评审输入：[原始方案索引](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/README.md)、[首轮架构评审方案](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/01-architecture-review-20260930.md)、[CTO 指导稿原文](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/02-cto-guidance-20260930.md)。两份原文纳入 knowledge 供追溯；本文件为正式需求范围与验收口径。
@@ -159,4 +159,4 @@ C1 类关键数据只能通过受控动作写入，表单保存、导入、批�
 
 ## 当前交付授权（2026-10-05）
 
-Owner要求一次下发最终目标；产品合同已归档 `product/p62-lowcode-transaction-bpm-tiering/passed/direction-p62-final-delivery.md`。最终复核04确认批准功能范围PASSED、交付缺口0。终态值清单保持；当前唯一执行入口为 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-terminal-sync-final-delivery-01.md`，只补TS01/TS02文档证据；功能46、性能待办留账。
+Owner要求一次下发最终目标；产品合同和终态同步方向均已归档passed/。批准功能交付COMPLETED（规划已确认，2026-10-06），功能与终态缺口0；裁决见 product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md。功能46，性能后续待办保持延期未验证。

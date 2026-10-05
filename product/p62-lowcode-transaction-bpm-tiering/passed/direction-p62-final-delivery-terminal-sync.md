@@ -1,3 +1,7 @@
+> 2026-10-06终态复核02通过：P62当前批准功能范围COMPLETED（规划已确认），TS01/TS02已核销。最终裁决 `../receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md`；业务及补证账本已结清，性能Owner延期未验证。
+
+> 归档说明：以下保留原终态授权值与执行时点。待复核状态及旧下一动作已由顶部终审裁决取代，不再产生同步或补证任务。最终确认传播按终审记录执行。
+
 > 2026-10-06终态复核01：本清单授权值保持；唯一剩余执行账本为 `../receipts/planning-execution-prompt-terminal-sync-final-delivery-01.md`，仅补TS01/TS02，一次提交terminal-sync-final-delivery-02.md。下文原01交付路由为首次下发时点，不再重复全套同步。
 
 > 2026-10-06执行轮02：TS01/TS02已按提示01完成并提交 `../receipts/terminal-sync-final-delivery-02.md`（附件 `../receipts/evidence/terminal-sync-final-delivery-02/`：TS01=登记§3/§4完整字段与授权值逐项一致；TS02=三源90行逐ID对照全一致、46/22/22复算成立）；P62=COMPLETED（待规划终态复核）保持，唯一下一动作=Planner 复核 `../receipts/terminal-sync-final-delivery-02.md`（旧01作历史输入）。

@@ -1,15 +1,15 @@
-> 2026-10-05复核04：P62当前批准功能范围PASSED，最终交付缺口0；性能延期未验证。唯一执行入口 `../ready/direction-p62-final-delivery-terminal-sync.md`，一次完成终态同步；补充提示01—03全部结清。
+> 2026-10-06终态复核02通过：P62当前批准功能范围COMPLETED（规划已确认），TS01/TS02已核销。最终裁决 `../receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md`；业务及补证账本已结清，性能Owner延期未验证。
 
-> 归档说明：本方向的批准功能交付已验收，原执行/交付条款保留为验收依据，不再产生业务待办。现行收尾仅见终态同步方向；性能延期范围保留于ready/direction-p62-resource-assurance.md。
+> 归档说明：本方向的批准功能交付已验收，原执行/交付条款保留为验收依据，不再产生业务待办。终态同步已通过；下文状态与交付动作均为原验收时点，当前裁决见顶部；性能延期范围保留于ready/direction-p62-resource-assurance.md。
 
 # P62 低代码事务能力与 BPM 分级执行架构 · 规划方向
 
 > 2026-10-05终审：资源功能闭环COMPLETED（规划已确认）；性能Owner延期，原性能数值只作后续目标，不继续追测。
 - 日期：2026-09-30；Planner；XL；功能状态 **PASSED（当前批准功能范围）**。
 - Owner 本轮指令：开始制定 P62，并纳入 memory、knowledge、README、需求清单、功能清单等过期信息治理。
-- 本文保留总体目标与历史阶段设计；产品合同为 `direction-p62-final-delivery.md`，当前执行账本为 `../ready/direction-p62-final-delivery-terminal-sync.md`，当前批准功能范围已通过，性能仍延期未验证。
+- 本文保留总体目标与历史阶段设计；产品合同为 `direction-p62-final-delivery.md`，当前执行账本为 `../passed/direction-p62-final-delivery-terminal-sync.md`，当前批准功能范围已通过，性能仍延期未验证。
 - 正式需求基准：`todo/p62-lowcode-transaction-bpm-tiering.md` R01—R10、A01—A12，全部保留；本方向补充 G01—G06 信息治理验收。
-P62当前批准功能范围PASSED（规划复核04，2026-10-05）；最终交付缺口0，FD01—FD05全部锁定。性能Owner延期未验证、新策略默认关闭；首事务/分级/资源功能COMPLETED、治理PASSED保持。当前功能数45、清单46/22/22=90、ADV64、问题57；终态同步授权功能数45+1=46，P62批准功能交付核销、性能待办留账。唯一下一动作：Executor按 product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-final-delivery-terminal-sync.md 一次完成同步，提交terminal-sync-final-delivery-01.md；尚未确认COMPLETED。
+P62当前批准功能范围PASSED（规划复核04，2026-10-05）；最终交付缺口0，FD01—FD05全部锁定。性能Owner延期未验证、新策略默认关闭；首事务/分级/资源功能COMPLETED、治理PASSED保持。当前功能数45、清单46/22/22=90、ADV64、问题57；终态同步授权功能数45+1=46，P62批准功能交付核销、性能待办留账。唯一下一动作：Executor按 product/p62-lowcode-transaction-bpm-tiering/passed/direction-p62-final-delivery-terminal-sync.md 一次完成同步，提交terminal-sync-final-delivery-01.md；尚未确认COMPLETED。
 
 ## 1. 目标与范围
 

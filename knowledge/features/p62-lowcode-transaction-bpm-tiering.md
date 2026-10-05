@@ -13,7 +13,7 @@
 | 功能名称 | 低代码事务能力与 BPM 分级执行架构（OA / MES / WMS / IoT） |
 | 功能目标 | 在单应用/单 PostgreSQL、数据库持久命令队列及既有设备接缝上，使低代码用户能配置、发布并运行实时事务动作、生产轻流程、标准人工审批和后台批量；业务从表单发起到受控数据变化、流程处理、设备命令及结果回查保持正确身份、数据约束、租户权限、冻结版本和可恢复语义；运维能够定位积压、失败、台账差异和外部未知结果。分级语义：OA 可靠异步、MES 及时执行、WMS 数据一致性与 IoT 命令回执统一但可分级 |
 | 创建日期 | 2026-09-30（Owner 纳入规划并要求一次下发最终目标）；2026-10-05 功能级验收 `PASSED`（规划最终复核04） |
-| 当前状态 | **COMPLETED（待规划终态复核）**（终态同步回执01经复核01后 TS01/TS02 已补齐并提交 `terminal-sync-final-delivery-02.md`（TS01 登记 §3/§4 完整字段与授权值一致、TS02 三源 90 行逐 ID 对照全一致）；功能级 `PASSED` 依据 `planning-review-final-delivery-04-passed.md`；"规划已确认 COMPLETED"由后续 Planner 复核终态同步回执作出） |
+| 当前状态 | **COMPLETED（规划已确认，2026-10-06）**（功能级 `PASSED` 依据 `planning-review-final-delivery-04-passed.md`；终审裁决 `planning-final-review-terminal-sync-final-delivery-02-completed.md`——TS01/TS02 双双通过核销、终态同步方向归档 `passed/`） |
 | 等级 / 优先级 | XL / P0 |
 | 涉及模块 | Server `sw-biz-form`（事务动作：sw_form_txn_action/invocation/reservation/ledger）、`sw-biz-bpm`（持久命令队列 sw_bpm_command/effect、分级执行、轻流程与标准审批、资源保障）、`sw-basic-iot`（设备命令与受控回执）；Web 表单设计器/事务动作台/流程设计器/待办审批/资源运维台 |
 
@@ -25,9 +25,10 @@
 |---|---|
 | 主方向（已归档 `passed/`） | `product/p62-lowcode-transaction-bpm-tiering/passed/direction-p62-lowcode-transaction-bpm-tiering.md` |
 | 最终交付方向（已归档 `passed/`） | `product/p62-lowcode-transaction-bpm-tiering/passed/direction-p62-final-delivery.md` |
-| 终态同步方向（留 `ready/`，Planner 终审通过后归档） | `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-final-delivery-terminal-sync.md` |
+| 终态同步方向（Planner 终审通过后已归档 `passed/`） | `product/p62-lowcode-transaction-bpm-tiering/passed/direction-p62-final-delivery-terminal-sync.md` |
 | 功能级验收 | `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-final-delivery-04-passed.md`（**PASSED**，2026-10-05） |
 | 终态同步回执 | `product/p62-lowcode-transaction-bpm-tiering/receipts/terminal-sync-final-delivery-02.md`（01 经复核01 后补 TS01/TS02，作历史输入） |
+| 终审裁决（COMPLETED 规划已确认） | `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md`（2026-10-06；终态同步方向归档 `passed/direction-p62-final-delivery-terminal-sync.md`） |
 | 子阶段归档 | 首事务 `passed/direction-p62-local-transaction-actions.md`（COMPLETED）；分级执行 `passed/direction-p62-tiered-execution-unified-command.md`（COMPLETED）；资源功能闭环 `passed/direction-p62-resource-functional-closure.md`（COMPLETED）；信息治理 `passed/direction-p62-information-governance.md`（G01—G06 PASSED） |
 | 完整资源性能合同 | `ready/direction-p62-resource-assurance.md`（仅保留 Owner 延期性能合同，非当前执行任务） |
 
