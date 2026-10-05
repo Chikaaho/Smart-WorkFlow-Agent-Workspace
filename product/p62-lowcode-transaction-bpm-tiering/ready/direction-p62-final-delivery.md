@@ -1,6 +1,7 @@
-> 2026-10-05复核02：P62 VERIFYING；FD01/FD02/FD04已通过。唯一当前执行账本为 `../receipts/planning-execution-prompt-final-delivery-02.md`，仅补FD03a/b、FD05a/b，一次提交final-delivery-03。
+> 2026-10-05复核03：业务相关缺口已关闭；P62整体VERIFYING，仅余FD05a完整字段回读。唯一执行入口 `../receipts/planning-execution-prompt-final-delivery-03.md`，一次提交final-delivery-04.md。
 
-> 2026-10-05执行轮03：FD03a/b与FD05a/b已一次完成并提交 `../receipts/final-delivery-03.md`（证据 `../receipts/evidence/final-delivery-03/`）；P62保持VERIFYING未核销，唯一下一动作=Planner 依据提示02复核 `../receipts/final-delivery-03.md`。
+> 2026-10-05执行轮04：FD05a已按提示03完成（三源文件必要当前字段完整附件 `../receipts/evidence/final-delivery-04/fd05a-current-fields.txt`）并提交 `../receipts/final-delivery-04.md`；P62保持VERIFYING未核销，唯一下一动作=Planner 依据提示03复核 `../receipts/final-delivery-04.md`。
+
 
 # P62 最终交付方向
 
@@ -11,7 +12,7 @@ Owner 本轮指令：“你是规划，继续p62任务，不要拆多步了，�
 
 一次完成 P62 当前批准范围内的全部功能交付与整体验收材料：在现有单应用/单 PostgreSQL、数据库持久命令队列及既有设备接缝上，低代码用户能配置、发布并运行实时事务动作、生产轻流程、标准人工审批和后台批量；业务从表单发起到受控数据变化、流程处理、设备命令及结果回查保持正确身份、数据约束、租户权限、冻结版本和可恢复语义；运维能够定位积压、失败、台账差异和外部未知结果。
 
-本文件为产品合同，当前执行账本见复核02补充提示；统一承接原总体方向的剩余功能、整体覆盖核对、必要修复、验证、信息同步和普通批次提交推送。执行方自主制定内部实施计划，连续完成授权内工作，不以“探索完成”“一个模块完成”或“等待下一阶段下发”为提交终点。内部核实用于落实已批准产品合同，不授权另定产品方向。
+本文件为产品合同，当前执行账本见复核03补充提示；统一承接原总体方向的剩余功能、整体覆盖核对、必要修复、验证、信息同步和普通批次提交推送。执行方自主制定内部实施计划，连续完成授权内工作，不以“探索完成”“一个模块完成”或“等待下一阶段下发”为提交终点。内部核实用于落实已批准产品合同，不授权另定产品方向。
 
 正式需求仍是 todo/p62-lowcode-transaction-bpm-tiering.md 的 R01—R10/A01—A12；ADR001—003继续约束事务、命令、兼容与资源机制。历史阶段方向和回执保留；完整资源方向只承载延期性能合同，不是并行执行任务。旧提案、已结清补证提示和子阶段终态任务不再产生新待办。
 
@@ -24,7 +25,7 @@ Owner 本轮指令：“你是规划，继续p62任务，不要拆多步了，�
 
 以上路径均相对 product/p62-lowcode-transaction-bpm-tiering/。原始证据通过对应回执定位。已通过原子直接引用，不为汇总再次取证；仅在实现改变、新增反证或证据适用性无法确认时补受影响验证，并说明原因。旧探索中的“缺失”是当时快照，不据其重建已经交付的能力。
 
-当前事实：治理 PASSED；首事务、分级执行、资源功能闭环 COMPLETED。整体此前PLANNING→READY→IN_PROGRESS；当前VERIFYING，复核02已关闭FD01/FD02/FD04，剩余FD03a/b及FD05a/b，P62仍未核销。
+当前事实：治理 PASSED；首事务、分级执行、资源功能闭环 COMPLETED。整体此前PLANNING→READY→IN_PROGRESS；当前VERIFYING，复核03已关闭全部业务相关缺口，仅余FD05a完整字段回读，P62仍未核销。
 
 ## 一次交付的验收集合
 

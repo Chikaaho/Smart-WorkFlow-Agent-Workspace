@@ -1,9 +1,9 @@
-> 2026-10-05复核02：P62 VERIFYING；FD01/FD02/FD04已通过。唯一当前执行账本为 `../receipts/planning-execution-prompt-final-delivery-02.md`，仅补FD03a/b、FD05a/b，一次提交final-delivery-03。
+> 2026-10-05复核03：业务相关缺口已关闭；P62整体VERIFYING，仅余FD05a完整字段回读。唯一执行入口 `../receipts/planning-execution-prompt-final-delivery-03.md`，一次提交final-delivery-04.md。
 
 # ADR-P62-003：资源保障与多租户公平
 
 > 2026-10-05终审：资源功能闭环COMPLETED（规划已确认）；性能Owner延期，原性能数值只作后续目标，不继续追测。
-P62整体VERIFYING；复核02剩余FD03a/b与FD05a/b已由Executor一次完成并提交 receipts/final-delivery-03.md（FD03a 同一浏览器会话两条整链——成功链：表单提交→预占→审批通过→授权用户手工确认→回查；拒绝链：提交→预占→驳回→手工释放→回查；同库同对象SQL原始回读、截图、访问日志摘录、对象索引与旧→新ID映射齐备；FD03b 撤回"自动结算"表述：定向日志显示confirm/release为测试主线程另起事务、真实触发主体=授权用户在事务动作页手工结算；FD05a 入口实际字段原文与核验时点入回执；FD05b 计数与分类更正：定向61/0/0/0=form8+process25+bootstrap28（守门12+PG16），Web 2生产+1测试，Server 9生产+11测试）。首事务/分级/资源功能闭环COMPLETED、治理PASSED锁定；性能延期未验证、新策略默认关闭；功能45/清单46/22/22（90）、ADV64、问题57与正式基线不变。唯一下一动作：Planner 依据 product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-final-delivery-02.md 复核 receipts/final-delivery-03.md。
+P62整体VERIFYING；复核03已关闭FD03a同对象浏览器整链、FD03b触发事实及FD05b计数分类；FD01/02/04继续锁定。唯一剩余FD05a：三份权威入口的必要字段原文被截断，待完整回读。首事务/分级/资源功能闭环COMPLETED、治理PASSED；性能延期未验证、新策略默认关闭。功能45、清单46/22/22=90、ADV64、问题57与正式基线保持。FD05a已由Executor按提示03完成（三源文件必要当前字段完整附件 receipts/evidence/final-delivery-04/fd05a-current-fields.txt）；已提交 receipts/final-delivery-04.md。唯一下一动作：Planner 依据 product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-final-delivery-03.md 复核 receipts/final-delivery-04.md。
 
 ## 事实与决策
 
