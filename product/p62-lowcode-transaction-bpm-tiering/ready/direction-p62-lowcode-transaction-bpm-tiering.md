@@ -1,11 +1,13 @@
+> 2026-10-05复核01：P62 VERIFYING，未通过整体验收。唯一当前执行账本：`../receipts/planning-execution-prompt-final-delivery-01.md`；全部剩余项一次交final-delivery-02，性能延期保持。
+
 # P62 低代码事务能力与 BPM 分级执行架构 · 规划方向
 
 > 2026-10-05终审：资源功能闭环COMPLETED（规划已确认）；性能Owner延期，原性能数值只作后续目标，不继续追测。
-- 日期：2026-09-30；Planner；XL；功能状态 **READY**。
+- 日期：2026-09-30；Planner；XL；功能状态 **VERIFYING**。
 - Owner 本轮指令：开始制定 P62，并纳入 memory、knowledge、README、需求清单、功能清单等过期信息治理。
 - 本文保留总体目标与历史阶段设计；当前唯一执行入口为 `direction-p62-final-delivery.md`，整体P62尚未通过。
 - 正式需求基准：`todo/p62-lowcode-transaction-bpm-tiering.md` R01—R10、A01—A12，全部保留；本方向补充 G01—G06 信息治理验收。
-P62整体READY，最终交付方向已下发；首事务/分级/资源功能闭环COMPLETED，治理PASSED。性能Owner延期、未验证，新策略默认关闭。唯一下一动作：Executor按 product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-final-delivery.md 连续完成剩余功能与整体验收交付。
+P62整体VERIFYING；最终交付补充提示01的FD01—FD05已由Executor一次完成并提交 receipts/final-delivery-02.md（设计器缺边为产品缺陷，已Web UI修复并UI全程保存/校验/发布/发起成功、四视口与受影响交互回归；Optional四方法按既有合同参数化非null修复并移除守门豁免、无白名单登记；浏览器链以新隔离库同对象原始回读，链C成功/链D拒绝；身份/清理/远端当前核查与入口同步落盘）。首事务/分级/资源功能闭环COMPLETED、治理PASSED锁定；性能Owner延期、未验证，新策略默认关闭；功能45/清单46/22/22（90）、ADV64、问题57与正式基线不变。唯一下一动作：Planner 依据 product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-final-delivery-01.md 复核 receipts/final-delivery-02.md。
 
 ## 1. 目标与范围
 

@@ -3,7 +3,7 @@
 - 登记日期：2026-09-30
 - 角色：Planner
 - 任务等级：XL（核心架构、跨模块契约、数据一致性与持续演进）
-- P62整体IN_PROGRESS→交付VERIFYING：最终交付已按 ready/direction-p62-final-delivery.md 一次完成并提交 receipts/final-delivery-01.md（2026-10-05；R01—R10/A01—A12 覆盖矩阵、同对象贯穿链真实PG测试2/0/0/0、可见浏览器链验收、全量门禁1758/0/0/27与9组门健漂移机械修复、生产代码零改动）；首事务/分级/资源功能闭环COMPLETED，治理PASSED。性能Owner延期、未验证，新策略默认关闭。唯一下一动作：Planner对final-delivery-01独立整体验收并给出最终裁决与唯一终态值清单。
+- P62整体VERIFYING；最终交付补充提示01的FD01—FD05已由Executor一次完成并提交 receipts/final-delivery-02.md（设计器缺边为产品缺陷，已Web UI修复并UI全程保存/校验/发布/发起成功、四视口与受影响交互回归；Optional四方法按既有合同参数化非null修复并移除守门豁免、无白名单登记；浏览器链以新隔离库同对象原始回读，链C成功/链D拒绝；身份/清理/远端当前核查与入口同步落盘）。首事务/分级/资源功能闭环COMPLETED、治理PASSED锁定；性能Owner延期、未验证，新策略默认关闭；功能45/清单46/22/22（90）、ADV64、问题57与正式基线不变。唯一下一动作：Planner 依据 product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-final-delivery-01.md 复核 receipts/final-delivery-02.md。
 - 排期优先级：Owner 于 2026-09-30 启动本轮规划；事务型数据能力为本需求内部优先建设项。
 - Owner 依据：本会话明确“根据评审方案列为正式需求”。
 - 评审输入：[原始方案索引](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/README.md)、[首轮架构评审方案](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/01-architecture-review-20260930.md)、[CTO 指导稿原文](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/02-cto-guidance-20260930.md)。两份原文纳入 knowledge 供追溯；本文件为正式需求范围与验收口径。
@@ -159,4 +159,4 @@ C1 类关键数据只能通过受控动作写入，表单保存、导入、批�
 
 ## 当前交付授权（2026-10-05）
 
-Owner要求一次下发最终目标，统一执行入口为 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-final-delivery.md`。覆盖当前批准范围全部剩余功能、R01—R10/A01—A12整体对照、必要修复、验证与交付；性能延期及既有部署/厂商边界保持。P62 READY、未核销，执行接手IN_PROGRESS，交付VERIFYING，最终由Planner独立裁决。
+Owner要求一次下发最终目标，统一执行入口为 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-final-delivery.md`。覆盖当前批准范围全部剩余功能、R01—R10/A01—A12整体对照、必要修复、验证与交付；性能延期及既有部署/厂商边界保持。P62当前VERIFYING、未核销；复核01退回FD01—FD05，按 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-final-delivery-01.md` 一次完成修复补证，提交02后由Planner独立裁决。

@@ -1,6 +1,6 @@
 # 功能摘要
 
-> P62整体IN_PROGRESS→交付VERIFYING：final-delivery-01已提交（2026-10-05），待Planner独立整体验收；首事务/分级/资源功能闭环COMPLETED锁定，性能延期未验证、策略默认关闭。
+> P62整体VERIFYING；最终交付补充提示01的FD01—FD05已由Executor一次完成并提交 receipts/final-delivery-02.md（设计器缺边为产品缺陷，已Web UI修复并UI全程保存/校验/发布/发起成功、四视口与受影响交互回归；Optional四方法按既有合同参数化非null修复并移除守门豁免、无白名单登记；浏览器链以新隔离库同对象原始回读，链C成功/链D拒绝；身份/清理/远端当前核查与入口同步落盘）。首事务/分级/资源功能闭环COMPLETED、治理PASSED锁定；性能Owner延期、未验证，新策略默认关闭；功能45/清单46/22/22（90）、ADV64、问题57与正式基线不变。唯一下一动作：Planner 依据 product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-final-delivery-01.md 复核 receipts/final-delivery-02.md。
 > 功能数45沿用；IG2a 补证后口径：45 行=45 唯一 ID=45 唯一登记路径全部存在（#1 由 bpm-single-node-approval 承载登记、#23 已按 D107 更正当前状态并落盘），状态依据完整句见回执03附件；清单46/22/22（90）与映射索引双向一致、ADV64已行级复算；本轮零核销。以下既有功能按各裁决时点引用。
 
 - `backend-architecture-optimization`（XL）：**`COMPLETED（规划已确认，2026-09-26）`**；Phase 1—6C 与 Final 均已完成（Final 8/8：双仓 About 与根 POM canonical URL 收口）；基线 1570/0/0/0（BAO历史时点）；10 项候选去向=BAO-01 `DEFERRED` + BAO-02 `PARTIAL` + 8 项 `COMPLETED`。
