@@ -81,7 +81,11 @@
 
 ## 三仓提交与远端回读
 
-<!-- COMMIT-FILL -->
+推送前状态：三仓与远端同步 0/0；本轮无产品代码改动，仅文档/入口同步与回执（宿主配置 `.zcode/config.json` 不入批次）。远程均 origin（GitHub Chikaaho/*）。
+
+- **Server `develop`**（origin/develop）：`9f12e69` docs(p62) 功能清单焦点同步（L49 至提示02/回执03 口径）。推送后 ls-remote 回读 `9f12e690c90addca6487dbc317d4df1779e09bce`，工作树 clean。
+- **Web `develop`**（origin/develop）：本轮无改动（保持 `e71deff`）。
+- **Workspace `develop-sw`**（origin/develop-sw）：`2160454` docs(p62) 回执03 + Planner 复核02/提示02 原件（按提示授权归入文档批次）+ FD05a 全部入口（memory×4、todo×2、ready×4、knowledge×2）+ Server 仓 gitlink 指针。推送后 ls-remote 回读 `21604545cc48bf6a7d856a9ccb9090ce99085c2b`；`evidence/final-delivery-03/` 原件按 `.gitignore` 制品规则留在磁盘本地可读路径（与首轮/二轮同形）。
 
 ## 保持锁定（不变项）
 
