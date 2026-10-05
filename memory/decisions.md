@@ -9,4 +9,4 @@
 - P61：旧数值 `code` 保持兼容，以可选且全局唯一的 `errorKey` 消歧；公共 `msg` 不承载原始诊断；启用 `zh-CN/en-US` 且防枚举。
 - **BAO（backend-architecture-optimization）已整体 `COMPLETED（规划已确认，2026-09-26）`**，Phase 1—6C 与 Final 的逐阶段裁决细节不再在 memory 展开，权威记录见 `knowledge/decisions.md`、`knowledge/current-status.md` 历史区与 `product/backend-architecture-optimization/`；10 项候选去向=BAO-01 `DEFERRED` + BAO-02 `PARTIAL` + 8 项 `COMPLETED`。仍有效的关键边界：动态宽表 SQL 唯一受控入口 `DynamicTableSql`（fail closed）；引擎与业务写入共享同一提交边界、流程发起与业务实例同事务；生产 IoT 无 provider 503 fail closed、缺凭据启动失败；`${revision}` 双版本机制（0.1.2值为历史；0.1.3执行回执报告开发 `0.1.3-SNAPSHOT`/正式 `0.1.3`，当前值待执行核验）与生产入口 `scripts/build-prod.sh` 制品门禁继续生效；PG 为生产权威，不证明腾讯真实云送达。
 
-- P62资源功能闭环子阶段：功能验收PASSED（复核11）；Owner性能延期——完整容量/时效未验证、转P62性能待办、不认定硬件根因；子阶段终态同步已交付（product/p62-lowcode-transaction-bpm-tiering/receipts/terminal-sync-resource-functional-closure-01.md，2026-10-05），COMPLETED待Planner终审确认；P62整体PLANNING未核销；新策略默认关闭。
+- 资源功能闭环子阶段COMPLETED（规划已确认，2026-10-05）；终审见product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-resource-functional-closure-01-completed.md；性能Owner延期。

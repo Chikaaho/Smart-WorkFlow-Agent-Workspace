@@ -3,12 +3,11 @@
 - 登记日期：2026-09-30
 - 角色：Planner
 - 任务等级：XL（核心架构、跨模块契约、数据一致性与持续演进）
-- P62整体PLANNING；治理PASSED；首事务/分级COMPLETED；资源功能闭环子阶段COMPLETED（待规划终态复核，功能验收PASSED见2026-10-05复核11）；完整容量/时效保障未验证、Owner延期，无当前性能执行任务。唯一下一动作：Planner复核product/p62-lowcode-transaction-bpm-tiering/receipts/terminal-sync-resource-functional-closure-01.md并确认子阶段COMPLETED。
+- P62整体IN_PROGRESS→交付VERIFYING：最终交付已按 ready/direction-p62-final-delivery.md 一次完成并提交 receipts/final-delivery-01.md（2026-10-05；R01—R10/A01—A12 覆盖矩阵、同对象贯穿链真实PG测试2/0/0/0、可见浏览器链验收、全量门禁1758/0/0/27与9组门健漂移机械修复、生产代码零改动）；首事务/分级/资源功能闭环COMPLETED，治理PASSED。性能Owner延期、未验证，新策略默认关闭。唯一下一动作：Planner对final-delivery-01独立整体验收并给出最终裁决与唯一终态值清单。
 - 排期优先级：Owner 于 2026-09-30 启动本轮规划；事务型数据能力为本需求内部优先建设项。
 - Owner 依据：本会话明确“根据评审方案列为正式需求”。
 - 评审输入：[原始方案索引](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/README.md)、[首轮架构评审方案](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/01-architecture-review-20260930.md)、[CTO 指导稿原文](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/02-cto-guidance-20260930.md)。两份原文纳入 knowledge 供追溯；本文件为正式需求范围与验收口径。
 - 原始交付文件：~/Downloads/平台业务架构指导方案-OA-MES-WMS-IoT-CTO版-20260930.md。
-P62整体PLANNING；治理PASSED；首事务/分级COMPLETED；资源功能闭环子阶段COMPLETED（待规划终态复核，功能验收PASSED见2026-10-05复核11）；完整容量/时效保障未验证、Owner延期，无当前性能执行任务。唯一下一动作：Planner复核product/p62-lowcode-transaction-bpm-tiering/receipts/terminal-sync-resource-functional-closure-01.md并确认子阶段COMPLETED。
 
 ## 1. 产品目标与 Owner 已确认条件
 
@@ -157,3 +156,7 @@ C1 类关键数据只能通过受控动作写入，表单保存、导入、批�
 ## 性能后续待办（Owner 2026-10-05裁决）
 
 性能后续再说，开发机负载高，不再继续追测。范围为目标环境容量、突发拒绝时效、OA/批项等待及持续公平；原目标与历史超限保留，不记已通过、不认定已确诊实现缺陷。实际启用需求、目标设备/拓扑与负载明确后再规划有限、可观测验证。当前不追加压测、历史归因、扩容或长任务；功能正确性缺陷不归延期。该待办属于P62既有范围，不新增P编号或问题计数。
+
+## 当前交付授权（2026-10-05）
+
+Owner要求一次下发最终目标，统一执行入口为 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-final-delivery.md`。覆盖当前批准范围全部剩余功能、R01—R10/A01—A12整体对照、必要修复、验证与交付；性能延期及既有部署/厂商边界保持。P62 READY、未核销，执行接手IN_PROGRESS，交付VERIFYING，最终由Planner独立裁决。

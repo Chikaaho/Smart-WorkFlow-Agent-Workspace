@@ -1,6 +1,6 @@
 # P62资源功能闭环 · 已通过方向
 
-2026-10-05；Planner；PASSED，依据../receipts/planning-review-resource-assurance-11-passed.md及Owner“性能后续再说”裁决。
+2026-10-05；Planner；COMPLETED（规划已确认），依据../receipts/planning-review-resource-assurance-11-passed.md及Owner“性能后续再说”裁决。
 
 目标：在已验证环境中完成策略配置→任务提交→额度受理/明确拒绝→执行→持久结果→授权查询，保留防重复、租户隔离、额度一致性、兼容与有限恢复。
 
@@ -8,4 +8,4 @@
 
 容量及全负载时效由Owner延期，原性能目标保留但不承诺达标；新策略默认关闭，未授权发布部署或服务起停。P62整体PLANNING，不新增功能数、不核销P编号。
 
-终态同步入口：../ready/direction-terminal-sync-resource-functional-closure.md。同步复核后才确认该子阶段COMPLETED。
+终态同步入口：direction-terminal-sync-resource-functional-closure.md。终态同步已通过，裁决见../receipts/planning-final-review-terminal-sync-resource-functional-closure-01-completed.md。

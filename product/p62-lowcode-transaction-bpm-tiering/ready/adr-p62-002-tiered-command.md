@@ -1,6 +1,6 @@
 # ADR-P62-002：分级执行与统一命令
 
-日期：2026-09-30；Planner决策；状态：已采纳。该阶段业务与同步均COMPLETED并归档passed/；实施合同见 `../passed/direction-p62-tiered-execution-unified-command.md`。当前资源阶段入口为同目录 `direction-p62-resource-assurance.md`。
+日期：2026-09-30；Planner决策；状态：已采纳。该阶段业务与同步均COMPLETED并归档passed/；实施合同见 `../passed/direction-p62-tiered-execution-unified-command.md`。当前执行入口为同目录 `direction-p62-final-delivery.md`；资源完整性能合同延期。
 事实输入：限定探索主回执及A/B/C附表；Server ca8cb87、Web19e1c47结构快照，非本阶段行为验证。首阶段已交付动作能力，BPM动作调用节点/命令fence/未知结果接线及性能资产仍缺。
 
 | 决策 | 选定方向与理由 | 兼容/后果 |

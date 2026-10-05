@@ -1,6 +1,6 @@
 # P62资源保障阶段收口方案
 
-2026-10-05；Planner；Owner要求“你给方案”。本文件保留原提案内容；Owner随后明确性能后续处理，现已落实为复核11及资源功能闭环PASSED。当前执行入口为direction-terminal-sync-resource-functional-closure.md；下文待裁决措辞仅属提案时点。
+2026-10-05；Planner；Owner要求“你给方案”。本文件保留原提案内容；Owner随后明确性能后续处理，现已落实为复核11及资源功能闭环PASSED。该同步已终审完成并归档../passed/direction-terminal-sync-resource-functional-closure.md；下文待裁决措辞仅属提案时点。
 
 ## 推荐决定
 
