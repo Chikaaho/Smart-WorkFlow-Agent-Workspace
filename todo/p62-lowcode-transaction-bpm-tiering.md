@@ -3,7 +3,7 @@
 - 登记日期：2026-09-30
 - 角色：Planner
 - 任务等级：XL（核心架构、跨模块契约、数据一致性与持续演进）
-- P62整体VERIFYING；复核03已关闭FD03a同对象浏览器整链、FD03b触发事实及FD05b计数分类；FD01/02/04继续锁定。唯一剩余FD05a：三份权威入口的必要字段原文被截断，待完整回读。首事务/分级/资源功能闭环COMPLETED、治理PASSED；性能延期未验证、新策略默认关闭。功能45、清单46/22/22=90、ADV64、问题57与正式基线保持。FD05a已由Executor按提示03完成（三源文件必要当前字段完整附件 receipts/evidence/final-delivery-04/fd05a-current-fields.txt）；已提交 receipts/final-delivery-04.md。唯一下一动作：Planner 依据 product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-final-delivery-03.md 复核 receipts/final-delivery-04.md。
+- P62当前批准功能范围PASSED（规划复核04，2026-10-05）；最终交付缺口0，FD01—FD05全部锁定。性能Owner延期未验证、新策略默认关闭；首事务/分级/资源功能COMPLETED、治理PASSED保持。当前功能数45、清单46/22/22=90、ADV64、问题57；终态同步授权功能数45+1=46，P62批准功能交付核销、性能待办留账。终态同步已由Executor按方向一次完成并提交 product/p62-lowcode-transaction-bpm-tiering/receipts/terminal-sync-final-delivery-01.md：P62=COMPLETED（待规划终态复核）；第46个正式功能登记 knowledge/features/p62-lowcode-transaction-bpm-tiering.md，功能数46（45+1）、清单90行✅46/🟦22/⬜22零行变化、ADV64/问题57；验证集合 Server1757/0/0/27、定向61/0/0/0单列、Web147文件+1跳过/1323+3不互加；迁移0.1.4、新策略默认关闭、性能Owner延期未验证留账。唯一下一动作：Planner 复核 product/p62-lowcode-transaction-bpm-tiering/receipts/terminal-sync-final-delivery-01.md 并确认P62当前批准功能范围COMPLETED。
 - 排期优先级：Owner 于 2026-09-30 启动本轮规划；事务型数据能力为本需求内部优先建设项。
 - Owner 依据：本会话明确“根据评审方案列为正式需求”。
 - 评审输入：[原始方案索引](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/README.md)、[首轮架构评审方案](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/01-architecture-review-20260930.md)、[CTO 指导稿原文](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/02-cto-guidance-20260930.md)。两份原文纳入 knowledge 供追溯；本文件为正式需求范围与验收口径。
@@ -159,4 +159,4 @@ C1 类关键数据只能通过受控动作写入，表单保存、导入、批�
 
 ## 当前交付授权（2026-10-05）
 
-Owner要求一次下发最终目标，统一执行入口为 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-final-delivery.md`。覆盖当前批准范围全部剩余功能、R01—R10/A01—A12整体对照、必要修复、验证与交付；性能延期及既有部署/厂商边界保持。P62当前VERIFYING、未核销；复核03已锁定业务证据；按 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-final-delivery-03.md` 一次补齐唯一剩余FD05a文档回读，提交04后由Planner独立裁决。
+Owner要求一次下发最终目标；产品合同已归档 `product/p62-lowcode-transaction-bpm-tiering/passed/direction-p62-final-delivery.md`。最终复核04确认批准功能范围PASSED、交付缺口0。唯一当前执行入口为 `product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-final-delivery-terminal-sync.md`，一次完成登记与同步；功能数目标46、90行状态保持、性能待办留账。

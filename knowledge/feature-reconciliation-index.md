@@ -11,7 +11,7 @@
 - P：物理 57 行、唯一 56 编号（P48 总表/明细双入口同值；P13 已核销移除、P23 零引用备案）
 - I：索引 54 条、区间 I1—I55 缺 I27（I27 缺行证据待定位，见 §5；I14 已满足/关闭 2026-09-08）
 - product 审计目录：55（总 57 − governance − knowledge-full-reconciliation）
-- 正式功能数：**45**（`p53-global-ui-component-layout` 为第 45 个，功能级 `PASSED（2026-09-21）`、`COMPLETED（规划已确认，2026-09-21）`，44＋1 不另建 P 编号，登记路径 45/45 存在；历史点：p21-iot-device-access 为第 44 个（2026-09-08，43＋1），v0.0.2-oa 为第 43 个，P4 OA 本轮子集为第 42 个，P58 为第 41 个）
+- 正式功能数：**46**（`p62-lowcode-transaction-bpm-tiering` 为第 46 个，功能级 `PASSED（规划最终复核04，2026-10-05）`、终态同步后 `COMPLETED（待规划终态复核）`，45＋1 不另建 P 编号，登记路径 46/46 存在，登记 `knowledge/features/p62-lowcode-transaction-bpm-tiering.md`；P62 与 90 明细零行状态升降；历史点：p53-global-ui-component-layout 为第 45 个（2026-09-21，44＋1），p21-iot-device-access 为第 44 个（2026-09-08，43＋1），v0.0.2-oa 为第 43 个，P4 OA 本轮子集为第 42 个，P58 为第 41 个）
 - P59：Owner 2026-09-04 新增统一交付编号（不在审计 56 唯一编号集合内），非新增业务功能、不映射清单明细，**已核销**（功能级 PASSED，见 `knowledge/features/p59-ch-apaas-project-update.md`）；上列审计计数保持原值
 
 ## 1. 90 项清单明细 ↔ 交付/P 编号 双向映射

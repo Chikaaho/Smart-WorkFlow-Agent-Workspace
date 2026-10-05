@@ -1,6 +1,6 @@
 # 近期有效决策摘要
 
-> 同步点：2026-09-30（P62规划启动）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）与对应回执。
+> 同步点：2026-10-05（P62功能验收）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）与对应回执。
 
 - 当前状态与历史物理分离；当前值只见 `knowledge/current-status.md`，历史见 `knowledge/history/`。终态机器契约单一源 `.codex/governance/terminal-contract.json`，校验入口 `.codex/governance/validate-terminal.sh`。
 - Planner 以 `memory/` 最小摘要恢复；冲突时按 knowledge 权威修正，不反向裁决。
@@ -10,3 +10,5 @@
 - **BAO（backend-architecture-optimization）已整体 `COMPLETED（规划已确认，2026-09-26）`**，Phase 1—6C 与 Final 的逐阶段裁决细节不再在 memory 展开，权威记录见 `knowledge/decisions.md`、`knowledge/current-status.md` 历史区与 `product/backend-architecture-optimization/`；10 项候选去向=BAO-01 `DEFERRED` + BAO-02 `PARTIAL` + 8 项 `COMPLETED`。仍有效的关键边界：动态宽表 SQL 唯一受控入口 `DynamicTableSql`（fail closed）；引擎与业务写入共享同一提交边界、流程发起与业务实例同事务；生产 IoT 无 provider 503 fail closed、缺凭据启动失败；`${revision}` 双版本机制（0.1.2值为历史；0.1.3执行回执报告开发 `0.1.3-SNAPSHOT`/正式 `0.1.3`，当前值待执行核验）与生产入口 `scripts/build-prod.sh` 制品门禁继续生效；PG 为生产权威，不证明腾讯真实云送达。
 
 - 资源功能闭环子阶段COMPLETED（规划已确认，2026-10-05）；终审见product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-resource-functional-closure-01-completed.md；性能Owner延期。
+
+- P62当前批准功能范围PASSED（最终复核04）→终态同步已提交（terminal-sync-final-delivery-01），COMPLETED（待规划终态复核）；第46个正式功能登记 knowledge/features/p62-lowcode-transaction-bpm-tiering.md，功能数46（45+1），90行状态不变。性能仍延期未验证、策略默认关闭；唯一清单见product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-final-delivery-terminal-sync.md。

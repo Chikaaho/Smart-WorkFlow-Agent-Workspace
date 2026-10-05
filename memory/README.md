@@ -2,10 +2,10 @@
 
 memory为规划最小摘要；knowledge/current-status.md为持久权威，product保存裁决与证据。
 
-- P62整体VERIFYING；复核03已关闭FD03a同对象浏览器整链、FD03b触发事实及FD05b计数分类；FD01/02/04继续锁定。唯一剩余FD05a：三份权威入口的必要字段原文被截断，待完整回读。首事务/分级/资源功能闭环COMPLETED、治理PASSED；性能延期未验证、新策略默认关闭。功能45、清单46/22/22=90、ADV64、问题57与正式基线保持。FD05a已由Executor按提示03完成（三源文件必要当前字段完整附件 receipts/evidence/final-delivery-04/fd05a-current-fields.txt）；已提交 receipts/final-delivery-04.md。唯一下一动作：Planner 依据 product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-final-delivery-03.md 复核 receipts/final-delivery-04.md。
-裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-final-delivery-03.md；已复核执行回执03。
+- P62当前批准功能范围PASSED（规划复核04，2026-10-05）；最终交付缺口0，FD01—FD05全部锁定。性能Owner延期未验证、新策略默认关闭；首事务/分级/资源功能COMPLETED、治理PASSED保持。当前功能数45、清单46/22/22=90、ADV64、问题57；终态同步授权功能数45+1=46，P62批准功能交付核销、性能待办留账。终态同步已由Executor按方向一次完成并提交 product/p62-lowcode-transaction-bpm-tiering/receipts/terminal-sync-final-delivery-01.md：P62=COMPLETED（待规划终态复核）；第46个正式功能登记 knowledge/features/p62-lowcode-transaction-bpm-tiering.md，功能数46（45+1）、清单90行✅46/🟦22/⬜22零行变化、ADV64/问题57；验证集合 Server1757/0/0/27、定向61/0/0/0单列、Web147文件+1跳过/1323+3不互加；迁移0.1.4、新策略默认关闭、性能Owner延期未验证留账。唯一下一动作：Planner 复核 product/p62-lowcode-transaction-bpm-tiering/receipts/terminal-sync-final-delivery-01.md 并确认P62当前批准功能范围COMPLETED。
+裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-final-delivery-04-passed.md；已复核执行回执04。
 - 阅读state→handoff→features→constraints，按需decisions/issues/architecture。旧事务/分级与探索裁决保持。
 - 0.1.3 COMPLETED（Owner已验收，2026-09-30），依据product/v0.1.3-release/receipts/owner-accepted-20260930.md；Git/部署沿原时点。
-业务证据全部锁定；整体验收仅待FD05a文档回读，不重开业务验证。
+整体验收PASSED，当前仅终态同步；业务验证不重开，延期性能留账。
 
 Owner性能延期决定保持；本子阶段已完成，无当前性能执行任务。

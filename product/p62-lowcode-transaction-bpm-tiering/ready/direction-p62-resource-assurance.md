@@ -1,11 +1,11 @@
-> 2026-10-05复核03：业务相关缺口已关闭；P62整体VERIFYING，仅余FD05a完整字段回读。唯一执行入口 `../receipts/planning-execution-prompt-final-delivery-03.md`，一次提交final-delivery-04.md。
+> 2026-10-05复核04：P62当前批准功能范围PASSED，最终交付缺口0；性能延期未验证。唯一执行入口 `../ready/direction-p62-final-delivery-terminal-sync.md`，一次完成终态同步；补充提示01—03全部结清。
 
-> 2026-10-05当前路由：资源功能闭环已COMPLETED；本文只保留Owner延期的完整性能合同，不恢复执行。当前合同见 `direction-p62-final-delivery.md`，执行账本见 `../receipts/planning-execution-prompt-final-delivery-03.md`。
+> 2026-10-05当前路由：资源功能闭环已COMPLETED；本文只保留Owner延期的完整性能合同，不恢复执行。当前合同见 `../passed/direction-p62-final-delivery.md`，执行账本见 `../ready/direction-p62-final-delivery-terminal-sync.md`。
 
 # P62 资源保障与多租户公平 · 阶段方向
 
 > 2026-10-05终审：资源功能闭环COMPLETED（规划已确认）；性能Owner延期，原性能数值只作后续目标，不继续追测。
-P62整体VERIFYING；复核03已关闭FD03a同对象浏览器整链、FD03b触发事实及FD05b计数分类；FD01/02/04继续锁定。唯一剩余FD05a：三份权威入口的必要字段原文被截断，待完整回读。首事务/分级/资源功能闭环COMPLETED、治理PASSED；性能延期未验证、新策略默认关闭。功能45、清单46/22/22=90、ADV64、问题57与正式基线保持。FD05a已由Executor按提示03完成（三源文件必要当前字段完整附件 receipts/evidence/final-delivery-04/fd05a-current-fields.txt）；已提交 receipts/final-delivery-04.md。唯一下一动作：Planner 依据 product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-final-delivery-03.md 复核 receipts/final-delivery-04.md。
+P62当前批准功能范围PASSED（规划复核04，2026-10-05）；最终交付缺口0，FD01—FD05全部锁定。性能Owner延期未验证、新策略默认关闭；首事务/分级/资源功能COMPLETED、治理PASSED保持。当前功能数45、清单46/22/22=90、ADV64、问题57；终态同步授权功能数45+1=46，P62批准功能交付核销、性能待办留账。终态同步已由Executor按方向一次完成并提交 product/p62-lowcode-transaction-bpm-tiering/receipts/terminal-sync-final-delivery-01.md：P62=COMPLETED（待规划终态复核）；第46个正式功能登记 knowledge/features/p62-lowcode-transaction-bpm-tiering.md，功能数46（45+1）、清单90行✅46/🟦22/⬜22零行变化、ADV64/问题57；验证集合 Server1757/0/0/27、定向61/0/0/0单列、Web147文件+1跳过/1323+3不互加；迁移0.1.4、新策略默认关闭、性能Owner延期未验证留账。唯一下一动作：Planner 复核 product/p62-lowcode-transaction-bpm-tiering/receipts/terminal-sync-final-delivery-01.md 并确认P62当前批准功能范围COMPLETED。
 
 
 
@@ -104,7 +104,7 @@ RG01—RG07在本次有限验证边界内全部满足才可判本阶段PASSED；
 
 Executor从本方向与ADR003制定内部实施计划，仅推进最新提示的RG01—RG07剩余缺口；允许修改Server资源准入/调度/异步接缝/受控动作及必要权限、追加迁移、计量/查询接口，Web现有流程运维入口策略及明细界面、相关验证资产和受影响文档。实现选择、内部Step与具体测试方案由Executor负责；范围外缺陷登记，不顺带实现。
 
-本次同步范围与唯一终态值见 `direction-terminal-sync-resource-functional-closure.md`；Owner已决定性能延期，停止本机性能补证。
+资源子阶段同步已归档 `../passed/direction-terminal-sync-resource-functional-closure.md`；当前整体收尾见 `direction-p62-final-delivery-terminal-sync.md`；Owner已决定性能延期，停止本机性能补证。
 
 功能45、清单46/22/22（90）、ADV64、问题57、其他P状态与既有正式基线保持；本阶段不增功能数、不核销P62。普通提交推送按system §0.8.1，前置报告仓库/分支/远端/范围/领先落后/未跟踪，回读远端；不授权发布分支合并、tag/Release、部署、强推或历史改写。
 
