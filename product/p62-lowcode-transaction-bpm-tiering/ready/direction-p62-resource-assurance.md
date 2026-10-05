@@ -1,11 +1,11 @@
-> 2026-10-05复核04：P62当前批准功能范围PASSED，最终交付缺口0；性能延期未验证。唯一执行入口 `../ready/direction-p62-final-delivery-terminal-sync.md`，一次完成终态同步；补充提示01—03全部结清。
+> 2026-10-05复核04：P62当前批准功能范围PASSED，最终交付缺口0；性能延期未验证。唯一执行入口 `../receipts/planning-execution-prompt-terminal-sync-final-delivery-01.md`，一次补齐TS01/TS02终态文档证据；补充提示01—03全部结清。
 
-> 2026-10-05当前路由：资源功能闭环已COMPLETED；本文只保留Owner延期的完整性能合同，不恢复执行。当前合同见 `../passed/direction-p62-final-delivery.md`，执行账本见 `../ready/direction-p62-final-delivery-terminal-sync.md`。
+> 2026-10-05当前路由：资源功能闭环已COMPLETED；本文只保留Owner延期的完整性能合同，不恢复执行。当前合同见 `../passed/direction-p62-final-delivery.md`，执行账本见 `../receipts/planning-execution-prompt-terminal-sync-final-delivery-01.md`。
 
 # P62 资源保障与多租户公平 · 阶段方向
 
 > 2026-10-05终审：资源功能闭环COMPLETED（规划已确认）；性能Owner延期，原性能数值只作后续目标，不继续追测。
-P62当前批准功能范围PASSED（规划复核04，2026-10-05）；最终交付缺口0，FD01—FD05全部锁定。性能Owner延期未验证、新策略默认关闭；首事务/分级/资源功能COMPLETED、治理PASSED保持。当前功能数45、清单46/22/22=90、ADV64、问题57；终态同步授权功能数45+1=46，P62批准功能交付核销、性能待办留账。终态同步已由Executor按方向一次完成并提交 product/p62-lowcode-transaction-bpm-tiering/receipts/terminal-sync-final-delivery-01.md：P62=COMPLETED（待规划终态复核）；第46个正式功能登记 knowledge/features/p62-lowcode-transaction-bpm-tiering.md，功能数46（45+1）、清单90行✅46/🟦22/⬜22零行变化、ADV64/问题57；验证集合 Server1757/0/0/27、定向61/0/0/0单列、Web147文件+1跳过/1323+3不互加；迁移0.1.4、新策略默认关闭、性能Owner延期未验证留账。唯一下一动作：Planner 复核 product/p62-lowcode-transaction-bpm-tiering/receipts/terminal-sync-final-delivery-01.md 并确认P62当前批准功能范围COMPLETED。
+P62功能验收PASSED；状态COMPLETED（待规划终态复核）。正式功能数46（45+1，批准功能交付已核销）；清单目标46/22/22=90、ADV64、问题57保持。终态复核01的TS01/TS02已由Executor按提示完成并提交 terminal-sync-final-delivery-02.md（附件 receipts/evidence/terminal-sync-final-delivery-02/：TS01=登记§3/§4完整字段与授权值逐项一致；TS02=三源90行逐ID对照全一致、46/22/22复算成立）；业务证据全部锁定。性能Owner延期未验证、新策略默认关闭。唯一下一动作：Planner 复核 product/p62-lowcode-transaction-bpm-tiering/receipts/terminal-sync-final-delivery-02.md（旧01作历史输入）并确认P62当前批准功能范围COMPLETED。
 
 
 

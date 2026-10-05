@@ -1,7 +1,7 @@
 # 功能摘要
 
-> P62 功能级 PASSED（规划复核04，2026-10-05，缺口0）；终态同步已提交（terminal-sync-final-delivery-01），P62=COMPLETED（待规划终态复核）。性能Owner延期未验证、新策略默认关闭；首事务/分级/资源功能COMPLETED、治理PASSED保持。功能数46（45+1，第46项登记 knowledge/features/p62-lowcode-transaction-bpm-tiering.md）、清单46/22/22=90零行变化、ADV64、问题57；验证集合 Server1757/0/0/27、定向61/0/0/0单列、Web147文件+1跳过/1323+3不互加；迁移0.1.4。唯一下一动作：Planner 复核 receipts/terminal-sync-final-delivery-01.md 并确认P62当前批准功能范围COMPLETED。
-> 功能46与清单46/22/22（90）的行级登记与映射沿信息治理裁决锁定（功能数与清单完成行为不同口径）；以下既有功能按各裁决时点引用。
+> P62功能验收PASSED；状态COMPLETED（待规划终态复核）。正式功能数46（45+1，批准功能交付已核销）；清单目标46/22/22=90、ADV64、问题57保持。终态复核01的TS01/TS02已由Executor按提示完成并提交 terminal-sync-final-delivery-02.md（附件 receipts/evidence/terminal-sync-final-delivery-02/：TS01=登记§3/§4完整字段与授权值逐项一致；TS02=三源90行逐ID对照全一致、46/22/22复算成立）；业务证据全部锁定。性能Owner延期未验证、新策略默认关闭。唯一下一动作：Planner 复核 product/p62-lowcode-transaction-bpm-tiering/receipts/terminal-sync-final-delivery-02.md（旧01作历史输入）并确认P62当前批准功能范围COMPLETED。
+> 正式功能46与清单完成行46是不同口径；当前三源90行状态零变化待TS02实读。以下既有功能按各裁决时点引用。
 
 - `p62-lowcode-transaction-bpm-tiering`（P62，XL）：**PASSED（最终复核04）→COMPLETED（待规划终态复核）**；正式验证集合与边界见登记文件；性能Owner延期未验证留账（todo §性能后续待办）。
 - `backend-architecture-optimization`（XL）：**`COMPLETED（规划已确认，2026-09-26）`**；Phase 1—6C 与 Final 均已完成（Final 8/8）；基线 1570/0/0/0（BAO历史时点）；10 项候选=BAO-01 `DEFERRED`+BAO-02 `PARTIAL`+8 项 `COMPLETED`。

@@ -1,6 +1,10 @@
+> 2026-10-06终态复核01：本清单授权值保持；唯一剩余执行账本为 `../receipts/planning-execution-prompt-terminal-sync-final-delivery-01.md`，仅补TS01/TS02，一次提交terminal-sync-final-delivery-02.md。下文原01交付路由为首次下发时点，不再重复全套同步。
+
+> 2026-10-06执行轮02：TS01/TS02已按提示01完成并提交 `../receipts/terminal-sync-final-delivery-02.md`（附件 `../receipts/evidence/terminal-sync-final-delivery-02/`：TS01=登记§3/§4完整字段与授权值逐项一致；TS02=三源90行逐ID对照全一致、46/22/22复算成立）；P62=COMPLETED（待规划终态复核）保持，唯一下一动作=Planner 复核 `../receipts/terminal-sync-final-delivery-02.md`（旧01作历史输入）。
+
 # P62 最终交付 · 终态同步方向
 
-2026-10-05；Planner → Executor；XL收尾。唯一依据：../receipts/planning-review-final-delivery-04-passed.md。当前功能验收PASSED，最终交付缺口0。本文件是唯一当前执行入口，补充提示01—03均已结清。
+2026-10-05；Planner → Executor；XL收尾。唯一依据：../receipts/planning-review-final-delivery-04-passed.md。当前功能验收PASSED，最终交付缺口0。本文件承载唯一终态值，当前剩余执行入口见顶部；业务补充提示01—03均已结清。
 
 一次完成最终登记、当前入口同步、证据回读与授权普通文档提交推送；提交../receipts/terminal-sync-final-delivery-01.md。此次是已通过功能的职责交接，不新增业务阶段或验证任务。
 
