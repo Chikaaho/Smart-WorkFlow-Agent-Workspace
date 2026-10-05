@@ -3,12 +3,12 @@
 - 登记日期：2026-09-30
 - 角色：Planner
 - 任务等级：XL（核心架构、跨模块契约、数据一致性与持续演进）
-- 状态：PLANNING（整体）；治理PASSED；首事务与分级执行两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（规划复核08尚未通过；提示07六项补证已由回执07交付待复核）。
+- 状态：PLANNING（整体）；治理PASSED；首事务与分级执行两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（规划复核09尚未通过；提示08六项补证已由回执07交付待复核）。
 - 排期优先级：Owner 于 2026-09-30 启动本轮规划；事务型数据能力为本需求内部优先建设项。
 - Owner 依据：本会话明确“根据评审方案列为正式需求”。
 - 评审输入：[原始方案索引](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/README.md)、[首轮架构评审方案](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/01-architecture-review-20260930.md)、[CTO 指导稿原文](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/02-cto-guidance-20260930.md)。两份原文纳入 knowledge 供追溯；本文件为正式需求范围与验收口径。
 - 原始交付文件：~/Downloads/平台业务架构指导方案-OA-MES-WMS-IoT-CTO版-20260930.md。
-P62整体PLANNING；治理PASSED；首事务/分级COMPLETED；资源VERIFYING（2026-10-05复核08尚未通过）。Executor按唯一入口 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-resource-assurance-07.md` 完成3项有界补证，下一回执resource-assurance-09.md。RA02a2未验证边界保留。
+P62整体PLANNING；治理PASSED；首事务/分级COMPLETED；资源VERIFYING（2026-10-05复核09尚未通过）。Executor按唯一入口 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-resource-assurance-08.md` 完成RA06b当前信息同步，下一回执resource-assurance-10.md。RA02a2未验证边界保留。
 
 ## 1. 产品目标与 Owner 已确认条件
 
@@ -144,13 +144,13 @@ C1 类关键数据只能通过受控动作写入，表单保存、导入、批�
 - BAO 架构优化：已有规划摘要记载引擎与业务共享提交边界；此为复用线索而非本次运行验证，不能把未核实能力写成确定缺失或无条件重建。
 - MES/WMS 为低代码平台能力的代表性验证场景，本项不自动扩大为完整 MES/WMS 产品套件、所有业务模板或所有现场拓扑交付。
 
-Owner 当前排期（2026-10-05复核08）：P62整体PLANNING；治理PASSED；首事务/分级COMPLETED；资源VERIFYING（2026-10-05复核08尚未通过）。Executor按唯一入口 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-resource-assurance-07.md` 完成3项有界补证，下一回执resource-assurance-09.md。RA02a2时效未证实，归因不再重复补证；长时门禁撤回。0.1.3 Owner验收保持。
+Owner 当前排期（2026-10-05复核09）：P62整体PLANNING；治理PASSED；首事务/分级COMPLETED；资源VERIFYING（2026-10-05复核09）。Executor按唯一入口 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-resource-assurance-08.md` 完成RA06b当前信息同步，下一回执resource-assurance-10.md。旧时效边界未验证，长时门禁撤回。0.1.3 Owner验收保持。
 
 ## 6. 登记口径
 
 本文件吸收评审结论形成正式需求。CTO 原稿中的“同库必然同事务”“内部异步不需要 Outbox”“独立资源即不受共享瓶颈影响”等绝对表述不作为验收规则，以本文件对应的事务边界、可靠传播与负载条件为准。
 
-P62整体PLANNING；治理PASSED；首事务/分级COMPLETED；资源VERIFYING（2026-10-05复核08尚未通过）。Executor按唯一入口 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-resource-assurance-07.md` 完成3项有界补证，下一回执resource-assurance-09.md。RA02a2未验证边界保留。
+P62整体PLANNING；治理PASSED；首事务/分级COMPLETED；资源VERIFYING（2026-10-05复核09尚未通过）。Executor按唯一入口 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-resource-assurance-08.md` 完成RA06b当前信息同步，下一回执resource-assurance-10.md。RA02a2未验证边界保留。
 
 ## 7. 本轮配套信息治理（Owner 2026-09-30）
 

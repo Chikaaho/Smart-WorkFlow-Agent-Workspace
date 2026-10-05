@@ -9,5 +9,5 @@
 - P61：旧数值 `code` 保持兼容，以可选且全局唯一的 `errorKey` 消歧；公共 `msg` 不承载原始诊断；启用 `zh-CN/en-US` 且防枚举。
 - **BAO（backend-architecture-optimization）已整体 `COMPLETED（规划已确认，2026-09-26）`**，Phase 1—6C 与 Final 的逐阶段裁决细节不再在 memory 展开，权威记录见 `knowledge/decisions.md`、`knowledge/current-status.md` 历史区与 `product/backend-architecture-optimization/`；10 项候选去向=BAO-01 `DEFERRED` + BAO-02 `PARTIAL` + 8 项 `COMPLETED`。仍有效的关键边界：动态宽表 SQL 唯一受控入口 `DynamicTableSql`（fail closed）；引擎与业务写入共享同一提交边界、流程发起与业务实例同事务；生产 IoT 无 provider 503 fail closed、缺凭据启动失败；`${revision}` 双版本机制（0.1.2值为历史；0.1.3执行回执报告开发 `0.1.3-SNAPSHOT`/正式 `0.1.3`，当前值待执行核验）与生产入口 `scripts/build-prod.sh` 制品门禁继续生效；PG 为生产权威，不证明腾讯真实云送达。
 
-- P62整体PLANNING；治理PASSED；首事务/分级COMPLETED；资源VERIFYING（2026-10-05复核08尚未通过）。提示07余3项，回执09；RA02a2归因工作收敛但时效未证实，不重复补证。
-- P62整体PLANNING；治理PASSED；首事务/分级COMPLETED；资源VERIFYING（2026-10-05复核08尚未通过）。提示07余3项，回执09；RA02a2归因工作收敛但时效未证实，不重复补证。
+- P62整体PLANNING；治理PASSED；首事务/分级COMPLETED；资源VERIFYING（2026-10-05复核09）。6例/25批项有限样本已锁；提示08仅RA06b同步，回执10；旧时效边界未验证。
+- P62整体PLANNING；治理PASSED；首事务/分级COMPLETED；资源VERIFYING（2026-10-05复核09）。6例/25批项有限样本已锁；提示08仅RA06b同步，回执10；旧时效边界未验证。

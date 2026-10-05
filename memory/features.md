@@ -1,6 +1,6 @@
 # 功能摘要
 
-> P62整体PLANNING，未核销；治理PASSED；首事务/分级COMPLETED；资源VERIFYING（2026-10-05复核07尚未通过）。提示07三项已由回执09交付（提交可见上界/批项等待口径/覆盖收尾）；RA02a2退出可执行账本标"时效未证实、归因不足"；8GB资源限制与实现问题分判，长稳未验证。
+> P62整体PLANNING；首事务/分级COMPLETED；资源VERIFYING（2026-10-05复核09）。6例/25批项有限样本已锁，提示08仅RA06b当前信息同步，下一回执10；旧时效/持续负载边界未验证。
 > 功能数45沿用；IG2a 补证后口径：45 行=45 唯一 ID=45 唯一登记路径全部存在（#1 由 bpm-single-node-approval 承载登记、#23 已按 D107 更正当前状态并落盘），状态依据完整句见回执03附件；清单46/22/22（90）与映射索引双向一致、ADV64已行级复算；本轮零核销。以下既有功能按各裁决时点引用。
 
 - `backend-architecture-optimization`（XL）：**`COMPLETED（规划已确认，2026-09-26）`**；Phase 1—6C 与 Final 均已完成（Final 8/8：双仓 About 与根 POM canonical URL 收口）；基线 1570/0/0/0（BAO历史时点）；10 项候选去向=BAO-01 `DEFERRED` + BAO-02 `PARTIAL` + 8 项 `COMPLETED`。
@@ -16,5 +16,5 @@
 - 三方 SSO 真实接入（`dingtalk-sso`，L，既有 I5 补验、非新增功能计数/增量 0）：功能级 **`PASSED（2026-09-29，审查07）`**、接入功能状态 `COMPLETED（待规划确认）`；主方向归档 `product/dingtalk-sso/passed/`。钉钉/飞书真实授权链与企业矩阵验收通过（G3b 企业归属约束、个人模式显式、错配拒绝）；验收集合 Server 本任务模块 319/0/0/0＋Boot 4/0/0/0、Web 1301+3。企业微信 Owner 延期未验证；P31 未核销。
 - `sso-admin-config` **COMPLETED（规划已确认，2026-09-29）**。钉钉/飞书准入、后台配置、PC/H5、R1轮换均完成；S1限定范围检查保留局限。Server dff266add04a59e0859547f11b647772b20f8e6a；Web519a8176e33232a94ab4f1a035042fd2a86793d4；本任务模块351/0/0/0、bootstrap173/0/0/0、Web四连及1301+3。功能数45/增量0、清单46/22/22、ADV64不变；P31开放（企业微信延期）。本功能无剩余执行动作；裁决 `product/sso-admin-config/receipts/planning-final-review-terminal-sync-01-completed.md`。
 
-- P62整体PLANNING；治理PASSED；首事务/分级COMPLETED；资源VERIFYING（2026-10-05复核08尚未通过）。提示07余3项，回执09；RA02a2归因工作收敛但时效未证实，不重复补证。
+- P62整体PLANNING；治理PASSED；首事务/分级COMPLETED；资源VERIFYING（2026-10-05复核09）。6例/25批项有限样本已锁；提示08仅RA06b同步，回执10；旧时效边界未验证。
 - v0.1.3-release：COMPLETED（Owner已验收，2026-09-30），Owner插单直接发版；本轮只同步状态。发布/部署身份及测试数字保留原回执时点，不新增业务功能数。
