@@ -1,15 +1,16 @@
 # 当前状态摘要
 
-P62整体PLANNING；治理PASSED；首事务/分级COMPLETED；资源VERIFYING（2026-10-05复核09）。Executor按唯一入口 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-resource-assurance-08.md` 完成RA06b当前信息同步，下一回执resource-assurance-10.md。
+P62整体PLANNING；治理PASSED；首事务/分级COMPLETED；资源功能闭环子阶段COMPLETED（待规划终态复核，功能验收PASSED见2026-10-05复核11）；完整容量/时效保障未验证、Owner延期，无当前性能执行任务。唯一下一动作：Planner复核product/p62-lowcode-transaction-bpm-tiering/receipts/terminal-sync-resource-functional-closure-01.md并确认子阶段COMPLETED。
 
-裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-resource-assurance-09.md。回执09有限行为已锁定：6例独立可见max81ms、25批项含排队max1014ms，2测试通过；不重证旧窗口/持续负载。仅剩RA06b，回执09传播声明与memory实际旧焦点不符。RA02a2时效未证实、归因不足及旧提交/批项保障边界保留，退出反复补证；不判8GB资源限制为代码缺陷。
+裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-resource-assurance-11-passed.md。功能闭环已通过；性能后续再验，当前停止开发机性能补证，不认定硬件根因。
 
-权威传播待实际字段回读，未进入阶段三。无长任务/非必要哈希；同步通过不等于阶段PASSED。
+终态同步回执 terminal-sync-resource-functional-closure-01.md 已提交（2026-10-05）；子阶段COMPLETED待Planner终审确认，P62整体PLANNING未核销。
 
 ## 锁定结果
 
 - 治理PASSED：planning-review-information-governance-05-passed.md；资源探索复核03通过、交付缺口0，均见P62 receipts/。
 - 首事务COMPLETED（2026-09-30）、分级执行COMPLETED（2026-10-02）；业务与同步方向均在P62 passed/，最终裁决见对应planning-final-review-terminal-sync-*.md。历史提交身份/性能数只引用原回执，不扩展为资源保障。
+- 资源功能闭环子阶段COMPLETED（待规划终态复核，2026-10-05回执01待终审）；功能验收PASSED见复核11；性能Owner延期，无当前性能执行任务；正式验证基线变更集合=空集合。
 - sso-admin-config COMPLETED（2026-09-29）；P31仍开放、企业微信延期。
 - backend-architecture-optimization、v0.1.1-bugfix、v0.1.2-bugfix、v0.1.2-release已有COMPLETED裁决；0.1.3-release COMPLETED（Owner已验收，2026-09-30）。范围与发布/部署事实仍按原裁决和回执。
 

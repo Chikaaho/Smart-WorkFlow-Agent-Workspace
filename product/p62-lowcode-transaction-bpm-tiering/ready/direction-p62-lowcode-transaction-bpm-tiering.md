@@ -1,10 +1,11 @@
 # P62 低代码事务能力与 BPM 分级执行架构 · 规划方向
 
+> 2026-10-05生效：Owner明确性能后续处理；本文件性能数值仅作后续目标。功能闭环已单独PASSED；终态同步已由Executor完成（回执01，2026-10-05），当前唯一下一动作=Planner复核回执01并确认子阶段COMPLETED；不得继续按历史性能条款追测。
 - 日期：2026-09-30；Planner；XL；功能状态 **PLANNING**。
 - Owner 本轮指令：开始制定 P62，并纳入 memory、knowledge、README、需求清单、功能清单等过期信息治理。
 - 本文为整体阶段方向；首事务阶段COMPLETED（规划已确认），后续阶段继续规划，整体P62尚未通过。
 - 正式需求基准：`todo/p62-lowcode-transaction-bpm-tiering.md` R01—R10、A01—A12，全部保留；本方向补充 G01—G06 信息治理验收。
-- **当前唯一下一动作**：Executor按唯一入口 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-resource-assurance-08.md` 完成RA06b当前信息同步；优先核既有证据，仅验证受影响断言；下一回执resource-assurance-10.md。
+P62整体PLANNING；治理PASSED；首事务/分级COMPLETED；资源功能闭环子阶段COMPLETED（待规划终态复核，功能验收PASSED见2026-10-05复核11）；完整容量/时效保障未验证、Owner延期，无当前性能执行任务。终态同步已由Executor交付（回执01，2026-10-05）；唯一下一动作：Planner复核product/p62-lowcode-transaction-bpm-tiering/receipts/terminal-sync-resource-functional-closure-01.md并确认子阶段COMPLETED。 裁决见 `../receipts/planning-review-resource-assurance-11-passed.md`。
 
 ## 1. 目标与范围
 
@@ -37,7 +38,7 @@
 ## 4. 关键决策与待核实事项
 
 - 已确定：普通 OA 默认可靠异步；数据保护不随 BPM 等级降低；事务型数据能力内部优先；信息治理与 P62 一并跟踪。
-- 已形成 `adr-p62-001-transaction-foundation.md` 与 `../passed/direction-p62-local-transaction-actions.md`：独立受控本地动作、显式C1分类、动作版本身份、意图表优先及非破坏数据演进。分级执行及设备待核实的限定范围已由ADR-P62-002定案；资源保障已由ADR003与direction-p62-resource-assurance.md定案；当前阶段VERIFYING。
+- 已形成 `adr-p62-001-transaction-foundation.md` 与 `../passed/direction-p62-local-transaction-actions.md`：独立受控本地动作、显式C1分类、动作版本身份、意图表优先及非破坏数据演进。分级执行及设备待核实的限定范围已由ADR-P62-002定案；资源保障已由ADR003与direction-p62-resource-assurance.md定案；资源功能闭环PASSED，终态同步已交付待终审，性能Owner延期。
 - ADR 必须给出选定方向、现状证据、约束、兼容与回滚影响；本轮不把数据库队列、Outbox 或独立引擎写成未经核实的既成实现。
 - 当前分级阶段已在阶段方向固定本地拓扑/硬件、负载热点、窗口、失败拒绝、完成点和恢复预算；单进程资源保障的准入、公平、时效合同已由资源阶段方向固定；真实设备完成预算及扩展拓扑仍待后续阶段。
 - 实时动作 P99 ≤300ms 等值沿用正式需求的初始预算身份；当前分级阶段生产轻流程持久受理已固定P99≤2s，并绑定阶段方向测量条件。不得把初始预算声明为现有 SLA。
@@ -50,10 +51,10 @@
 
 ## 6. 状态与授权
 
-P62整体PLANNING，未核销；治理PASSED；首事务/分级两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（2026-10-05复核09，尚未通过）。已撤回RA05a/RG08长时门禁，长稳能力未验证；原正确性、额度与时效数值保持。唯一下一动作：Executor按唯一入口 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-resource-assurance-08.md` 完成RA06b当前信息同步；优先核既有证据，仅验证受影响断言；下一回执resource-assurance-10.md。裁决见 `../receipts/planning-review-resource-assurance-09.md`。
+P62整体PLANNING；治理PASSED；首事务/分级COMPLETED；资源功能闭环子阶段COMPLETED（待规划终态复核，功能验收PASSED见2026-10-05复核11）；完整容量/时效保障未验证、Owner延期，无当前性能执行任务。终态同步已由Executor交付（回执01，2026-10-05）；唯一下一动作：Planner复核product/p62-lowcode-transaction-bpm-tiering/receipts/terminal-sync-resource-functional-closure-01.md并确认子阶段COMPLETED。 裁决见 `../receipts/planning-review-resource-assurance-11-passed.md`。
 
-信息治理 G01—G06 的审查结论见 `../receipts/planning-review-information-governance-05-passed.md`；治理方向归档至 `../passed/direction-p62-information-governance.md`。阶段方向与 ADR-P62-001 的范围和兼容边界保持，分级执行已完成；资源保障阶段VERIFYING，合同为本目录direction-p62-resource-assurance.md，当前执行入口为receipts/下补充提示08；设备/部署扩展后续独立规划。
+信息治理 G01—G06 的审查结论见 `../receipts/planning-review-information-governance-05-passed.md`；治理方向归档至 `../passed/direction-p62-information-governance.md`。阶段方向与 ADR-P62-001 的范围和兼容边界保持，分级执行已完成；资源功能闭环PASSED，性能Owner延期，合同为本目录direction-p62-resource-assurance.md，当前裁决见receipts/planning-review-resource-assurance-11-passed.md，终态同步已交付（回执01）；设备/部署扩展后续独立规划。
 
 功能数45、清单46/22/22（90）、ADV64、原54问题分类31/3/5/15及总记录57不变；不核销P62或其他P编号，不晋级正式测试基线。发布、部署、破坏性操作不在本方向授权内。
 
-分级执行业务与同步方向均已归档passed/，COMPLETED（规划已确认）；ADR002已采纳。资源探索复核03通过；资源阶段VERIFYING，规划复核09尚未通过，下一回执10。
+分级执行业务与同步方向均已归档passed/，COMPLETED（规划已确认）；ADR002已采纳。资源探索复核03通过；资源功能闭环PASSED（复核11），性能Owner延期，终态同步已交付待Planner终审。

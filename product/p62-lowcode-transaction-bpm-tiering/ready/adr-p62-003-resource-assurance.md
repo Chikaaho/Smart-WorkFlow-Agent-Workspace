@@ -1,6 +1,7 @@
 # ADR-P62-003：资源保障与多租户公平
 
-日期2026-10-02；Planner；已采纳。实施范围与验收单值见同目录direction-p62-resource-assurance.md，下发时阶段READY；当前VERIFYING（2026-10-05规划复核09尚未通过，正确性/额度/时效预算保持）。
+> 2026-10-05生效：Owner明确性能后续处理；本文件性能数值仅作后续目标。功能闭环已单独PASSED；终态同步已由Executor完成（回执01，2026-10-05），当前唯一下一动作=Planner复核receipts/terminal-sync-resource-functional-closure-01.md并确认子阶段COMPLETED；不得继续按历史性能条款追测。
+P62整体PLANNING；治理PASSED；首事务/分级COMPLETED；资源功能闭环子阶段COMPLETED（待规划终态复核，功能验收PASSED见2026-10-05复核11）；完整容量/时效保障未验证、Owner延期。原方向合同保留；性能延期按Owner最新裁决执行。
 
 ## 事实与决策
 
@@ -22,6 +23,6 @@
 
 本阶段只对方向中的单进程/单PG画像和代表业务作保障验收；新增数字为设计预算而非实测SLA。300ms/2s原预算保持。新策略、运维权限及必要追加字段/迁移可实施；不升级JDK、不引入Broker、不部署、不停止用户现有服务。P4权限/双通道、C1同事务、节点效果防重、批量逐项事务及设备UNKNOWN边界保持。
 
-ADR001/002继续有效。资源阶段通过仍不核销整体P62；整体A01—A12覆盖与正式拓扑、设备完成预算另行复核。产品合同为direction-p62-resource-assurance.md，当前唯一执行入口为../receipts/planning-execution-prompt-resource-assurance-08.md，旧探索和身份补证仅作事实指针。
+ADR001/002继续有效。资源阶段通过仍不核销整体P62；整体A01—A12覆盖与正式拓扑、设备完成预算另行复核。产品合同为direction-p62-resource-assurance.md，当前裁决入口为../receipts/planning-review-resource-assurance-11-passed.md，旧探索和身份补证仅作事实指针。
 
 2026-10-05修订：Owner指出禁止长任务，撤回本阶段RA05a/RG08耐久性门禁及新补证的固定长窗口/大样本凑数要求。以既有证据和短时有界验证收敛剩余断言，不启动或拼接长任务；持续负载能力未验证。规划错误不计执行失败；其余决策保持，见复核07。
