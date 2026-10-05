@@ -121,7 +121,7 @@
 
 - **Server `develop`**（origin/develop）：`090fe83` fix(p62) FD02 全部 20 文件（生产 10 + 测试/守门 10，范围与分类见 FD02/FD05）；`3bc7ffe` docs(p62) `功能清单.md` L49 焦点同步。推送后 ls-remote 回读 `3bc7ffefa37982359b17afcac1e57753e120926d`，工作树 clean（原文追加于 `fd04-current-object-checks.txt`）。
 - **Web `develop`**（origin/develop）：`e71deff` fix(p62) FD01 三文件（adapter+spec+Designer；pre-commit eslint --fix/prettier 自动格式化后复跑 `pnpm typecheck` 干净）。推送后 ls-remote 回读 `e71deffd746b4585d0f49cc5a0b7d545c5cdd7e7`，工作树 clean。
-- **Workspace `develop-sw`**（origin/develop-sw）：本批=本回执 + Planner 复核01/补充提示01 两原件（按提示授权归入文档批次）+ FD05 全部入口文件（memory×4、todo×2、ready×4、knowledge×2）+ Server/Web 仓 gitlink 指针。`evidence/final-delivery-02/` 全部原件按工作区 `.gitignore` 证据制品规则（`*.log`/receipts 下 `*.txt`/`*.png`，与首轮 evidence 目录同形不入库）保留于磁盘本地可读取路径。推送与回读见追加同步提交。
+- **Workspace `develop-sw`**（origin/develop-sw）：本批=本回执 + Planner 复核01/补充提示01 两原件（按提示授权归入文档批次）+ FD05 全部入口文件（memory×4、todo×2、ready×4、knowledge×2）+ Server/Web 仓 gitlink 指针。`evidence/final-delivery-02/` 全部原件按工作区 `.gitignore` 证据制品规则（`*.log`/receipts 下 `*.txt`/`*.png`，与首轮 evidence 目录同形不入库）保留于磁盘本地可读取路径。推送与回读原文见 `evidence/final-delivery-02/fd04-current-object-checks.txt` 追加段（本回执批次即 `774bf9c`，推送后 ls-remote 回读一致）。
 
 ## 保持锁定与计数（不变项）
 
