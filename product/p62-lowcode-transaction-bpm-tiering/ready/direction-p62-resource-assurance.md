@@ -1,10 +1,10 @@
 # P62 资源保障与多租户公平 · 阶段方向
 
-日期2026-10-02；Planner；XL子阶段；**下发时阶段READY；当前VERIFYING（2026-10-05复核07尚未通过），P62整体PLANNING**。Owner本轮“直接开始”承接已核销探索的下一动作，现下发正式阶段方向，Executor可直接进入授权范围实施，无需再次等待规划批准。
+日期2026-10-02；Planner；XL子阶段；**下发时阶段READY；当前VERIFYING（2026-10-05复核08尚未通过），P62整体PLANNING**。Owner本轮“直接开始”承接已核销探索的下一动作，现下发正式阶段方向，Executor可直接进入授权范围实施，无需再次等待规划批准。
 
-当前唯一执行入口：`../receipts/planning-execution-prompt-resource-assurance-06.md`；本文件保留合同/授权；决策依据ADR-P62-003。首事务与分级执行/统一命令阶段COMPLETED保持；资源探索复核03与RI-M1通过，不再补探索收尾。事实输入为search_fallback/p62-resource-isolation-readiness-20261002.md及-details.md、规划复核01—03、ADR001/002与两阶段归档方向；原始测量身份/窗口沿各自回执，不推定当前生产运行值。
+当前唯一执行入口：`../receipts/planning-execution-prompt-resource-assurance-07.md`；本文件保留合同/授权；决策依据ADR-P62-003。首事务与分级执行/统一命令阶段COMPLETED保持；资源探索复核03与RI-M1通过，不再补探索收尾。事实输入为search_fallback/p62-resource-isolation-readiness-20261002.md及-details.md、规划复核01—03、ADR001/002与两阶段归档方向；原始测量身份/窗口沿各自回执，不推定当前生产运行值。
 
-当前裁决：`../receipts/planning-review-resource-assurance-07.md`。Executor按唯一入口 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-resource-assurance-06.md` 完成4项有界补证；优先核既有证据，仅验证受影响断言；下一回执resource-assurance-08.md。 提示01—04仅作历史。
+当前裁决：`../receipts/planning-review-resource-assurance-08.md`。Executor按唯一入口 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-resource-assurance-07.md` 完成3项有界补证；优先核既有证据，仅验证受影响断言；下一回执resource-assurance-09.md。 提示01—04仅作历史。
 
 ## 2026-10-05规划纠错
 
@@ -72,7 +72,7 @@
 
 新增策略开启时，50单位/s及持久工作量额度就是公开准入边界；不能将原U08闭环并发产生的无限到达率当作本画像内负载，也不能宣称新策略已在原到达率下通过。原U08证据及300ms/2s限定结论保留；策略关闭的旧入口兼容按实际受影响范围复核，开启后的时效由本节固定到达率保障合同独立判定。批次一次需要足额500单位时，额度不足必须整笔拒绝，不能先占少量名额再偷偷补收剩余项。
 
-2026-10-04复核05澄清：GC器不属于已冻结的指定算法。允许仅在自建隔离环境进行有限单变量GC器/参数/初始堆对照，Xmx固定2GiB、原JDK/硬件/池/异步线程/调度画像及负载不变，每run冻结并回读实际值和完整代价；不改验收预算，不授权上线。既有对照结果优先复用，后续仅按补充提示06作必要短时补证。
+2026-10-04复核05澄清：GC器不属于已冻结的指定算法。允许仅在自建隔离环境进行有限单变量GC器/参数/初始堆对照，Xmx固定2GiB、原JDK/硬件/池/异步线程/调度画像及负载不变，每run冻结并回读实际值和完整代价；不改验收预算，不授权上线。既有对照结果优先复用，后续仅按补充提示07作必要短时补证。
 
 ## 4. 阶段验收集合
 
@@ -101,7 +101,7 @@ RG01—RG07在本次有限验证边界内全部满足才可判本阶段PASSED；
 
 Executor从本方向与ADR003制定内部实施计划，仅推进最新提示的RG01—RG07剩余缺口；允许修改Server资源准入/调度/异步接缝/受控动作及必要权限、追加迁移、计量/查询接口，Web现有流程运维入口策略及明细界面、相关验证资产和受影响文档。实现选择、内部Step与具体测试方案由Executor负责；范围外缺陷登记，不顺带实现。
 
-授权同步knowledge/current-status.md及session-handoff、Server功能清单、memory/todo当前索引和相关能力/README/交接。P62整体PLANNING，未核销；治理PASSED；首事务/分级两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（2026-10-05复核07，尚未通过）。已撤回RA05a/RG08长时门禁，长稳能力未验证；原正确性、额度与时效数值保持。唯一下一动作=Executor按唯一入口 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-resource-assurance-06.md` 完成4项有界补证；优先核既有证据，仅验证受影响断言；下一回执resource-assurance-08.md。先knowledge核事实并传播复核07/提示06，交逐字段原文、位置、时点覆盖矩阵；README区分0.1.3已发布与本阶段能力未发布/默认关闭。允许包含本轮Planner规划文件的授权普通文档批次，不裹挟无关改动。
+授权同步knowledge/current-status.md及session-handoff、Server功能清单、memory/todo当前索引和相关能力/README/交接。P62整体PLANNING，未核销；治理PASSED；首事务/分级两阶段COMPLETED（规划已确认）；资源保障阶段VERIFYING（2026-10-05复核08，尚未通过）。已撤回RA05a/RG08长时门禁，长稳能力未验证；原正确性、额度与时效数值保持。唯一下一动作=Executor按唯一入口 `product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-resource-assurance-07.md` 完成3项有界补证；优先核既有证据，仅验证受影响断言；下一回执resource-assurance-09.md。先knowledge核事实并传播复核07/提示07，交逐字段原文、位置、时点覆盖矩阵；README区分0.1.3已发布与本阶段能力未发布/默认关闭。允许包含本轮Planner规划文件的授权普通文档批次，不裹挟无关改动。
 
 功能45、清单46/22/22（90）、ADV64、问题57、其他P状态与既有正式基线保持；本阶段不增功能数、不核销P62。普通提交推送按system §0.8.1，前置报告仓库/分支/远端/范围/领先落后/未跟踪，回读远端；不授权发布分支合并、tag/Release、部署、强推或历史改写。
 
@@ -110,3 +110,5 @@ Executor从本方向与ADR003制定内部实施计划，仅推进最新提示的
 阶段PASSED后Planner另下发唯一终态同步清单，复核后才确认阶段COMPLETED。整体P62后续仍需A01—A12覆盖清单与尚未批准设备/拓扑边界的独立裁决；本阶段不自行宣布整体完成。
 
 2026-10-05复核07设备口径：Owner确认本机8GB。延迟超限区分资源能力限制、实现缺陷与归因不足；现有背景负载差异不足定位内存/swap根因，不直接判代码失败。目标提交允许以提交后可见结果构成的保守上界证明，无需精确WAL时点。不得例行追加产物哈希。
+
+2026-10-05复核08明确：批项领取等待自持久受理起算，包含命令排队；未测提交ε不是上界。RA02a2归因工作收敛，时效仍未证实，不进入重复补证账本、不计通过；本阶段尚不能PASSED。具体剩余见提示07。
