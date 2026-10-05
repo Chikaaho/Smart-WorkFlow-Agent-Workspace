@@ -26,7 +26,11 @@
 
 ## 文档提交情况
 
-<!-- COMMIT-FILL -->
+推送前状态：三仓与远端同步 0/0；本轮仅文档变更（宿主配置 `.zcode/config.json` 不入批次）。远程均 origin（GitHub Chikaaho/*）。
+
+- **Server `develop`**（origin/develop）：`a447711` docs(p62) 功能清单焦点同步（复核03/FD05a 口径 + 当前唯一字段句 + PLANNING 时点修正）。推送后 ls-remote 回读 `a44771138a05e58b02a28a41b8aa8a4e667c8ea5`；工作树 clean。
+- **Web `develop`**（origin/develop）：本轮无改动（保持 `e71deff`）。
+- **Workspace `develop-sw`**（origin/develop-sw）：`d5d34b7` docs(p62) 回执04 + Planner 复核03/提示03 原件（按提示授权归入文档批次）+ 全部受影响当前入口 + Server 仓 gitlink 指针。推送后 ls-remote 回读 `d5d34b735a9c97d83815d5a7aeec31408460d834`；`receipts/evidence/final-delivery-04/fd05a-current-fields.txt` 按 `.gitignore` 证据制品规则保留于磁盘本地可读取路径（与前三轮同形）。
 
 ## 提交自检（提示03）
 
