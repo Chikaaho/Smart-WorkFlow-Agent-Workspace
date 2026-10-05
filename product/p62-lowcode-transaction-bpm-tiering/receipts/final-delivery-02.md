@@ -113,6 +113,7 @@
 ## 执行身份与生命周期
 
 - 会话角色=Executor（执行门禁），git 提交身份 Chikaaho；浏览器身份=admin（仓库 dev/test 契约值，非秘密）；URL=http://localhost:5173（vite 代理 127.0.0.1:8080），headless=false 可见浏览器；视口 1920×1080 主链 + 1280×720/1366×768/1024×768。
+- 网络索引：`evidence/final-delivery-02/network-index-02.txt`（来源=本机一次性验证后端 PID 18431 自身 AccessLoggingFilter 日志原件摘录，17:32—17:45 会话时段：总请求 121，119×200；非 200 仅 2 条 `GET /api/system/role/page 400`（17:34:26/17:37:53，审批人配置期探索性参数被拒，随后 approver-candidates 200 完成配置，主链无影响，如实登记））。
 - 后台任务全部有稳定身份并完成退出：定向验证五轮（r1—r5，红轮保留）、后端 local（exec_129bbc6f，EXIT 记录）、vite（exec_364fc071）、Web 四门（exec_0cbfe2fe exit0）、全仓门禁（exec_bc7bdaa1）——无 sleep 空转、无延时轮询、无未控长任务；一次性库均 drop 并回读 0。
 
 ## Git 批次与远端回读
