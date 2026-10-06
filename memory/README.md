@@ -1,6 +1,6 @@
 # memory 使用说明
 
-P63（L）实现完成（2026-10-06，完成回执01已提交：`product/p63-mes-workflow-foundations/receipts/completion-p63-mes-workflow-foundations-01.md`，A01—A10矩阵+偏差声明+门禁终值，证据 evidence/browser-01/；Server develop 72b5aef…edf5646、Web develop 5b0988a…9ce09b6 均已推送）。执行入口：`product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations.md`。待Planner功能验收，未裁决终态、不核销、功能计数基线46不变。
+P63（L）VERIFYING：完成回执01复核未通过，A01—A10无整项通过；局部界面保留，关键行为待G01—G10修复/补证。唯一执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-01.md`；下一回执02。功能46、清单46/22/22、ADV64不变；不进入终态同步。
 
 memory为规划最小摘要；knowledge/current-status.md为持久权威，product保存裁决与证据。
 
@@ -8,6 +8,6 @@ memory为规划最小摘要；knowledge/current-status.md为持久权威，produ
 终态复核02已通过；TS01/TS02全部核销，功能验收沿最终复核04锁定。
 - 阅读state→handoff→features→constraints，按需decisions/issues/architecture。旧事务/分级与探索裁决保持。
 - 0.1.3 COMPLETED（Owner已验收，2026-09-30），依据product/v0.1.3-release/receipts/owner-accepted-20260930.md；Git/部署沿原时点。
-功能与终态验收均已完成；延期性能保留待办。
+P62功能与终态验收已完成；P63仍VERIFYING。
 
 Owner性能延期决定保持；P62批准功能交付已完成，无当前性能执行任务。

@@ -9,7 +9,7 @@
 
 ## Owner 优先级覆盖
 
-**2026-10-06 当前规划**：P63 MES前置能力，L / READY。探索复核完成，[正式方向](../product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations.md)已下发：表格/多选部门人员驱动审批、成功结束后一次性IoT预约，普通手工并行及存量流程兼容为A09/A10硬验收项。唯一下一动作是Executor实现并提交正式完成回执；功能尚未验收，既有功能46、清单46/22/22、ADV64、问题57为起始基线。
+**2026-10-06 当前规划**：P63 MES前置能力，L / VERIFYING。完成回执01复核未通过，A01—A10无整项通过；[审查01](../product/p63-mes-workflow-foundations/receipts/planning-review-completion-01.md)。唯一执行入口：[补充提示01](../product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-01.md)，修复/补齐G01—G10后提交回执02；普通手工并行、首次双轮、预约时间/状态真实性及受控下发为重点。功能46、清单46/22/22、ADV64维持，问题57为历史基线，不进入终态同步。
 
 P62当前批准功能范围COMPLETED（规划已确认，2026-10-06）；功能与终态验收缺口均为0。正式功能46（45+1）、清单✅46/🟦22/⬜22=90、ADV64、问题57；P62批准功能交付已核销。性能Owner延期未验证、新资源策略默认关闭。最终裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md。P62无剩余业务验收项；本次探索已确认knowledge登记的最终确认传播；不外推发布或全入口实时状态。Owner新目标为P63 MES前置能力，当前排期见本节顶部。
 
@@ -158,7 +158,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 | P60 | 成熟OA `0.1.0`路线（组织权限、表单、流程设计与审批、流程运营、工作台、SSO、通知）；当前交付迭代`0.0.3` | Owner 2026-09-08；优先级P0；[归档方向](../product/v0.1.0-oa-completion/passed/direction-v0.1.0-oa-completion.md) | `COMPLETED（规划已确认，2026-09-15）`；整体14/14；Workspace退出0.1.0判断；Server/Web `0.1.0`已发布；版本统筹项完成核销但不增加业务功能计数；R8五渠道及三Provider真实链=Owner延期/未验证 |
 | P61 | 全系统用户可见错误码与提示语人性化治理 | Owner 2026-09-14/20；优先级P1；L；[归档方向](../product/p61-user-facing-message-humanization/passed/direction-p61-user-facing-message-humanization-scope-correction-20260920.md) | ✅ `COMPLETED（规划已确认，2026-09-20）`、已核销；不增加业务功能数 |
 | P62 | 低代码事务能力与 BPM 分级执行架构（OA / MES / WMS / IoT） | Owner 2026-09-30；XL；[正式需求](p62-lowcode-transaction-bpm-tiering.md)；[CTO 评审输入](p62-architecture-review-source-20260930.md) | P62当前批准功能范围COMPLETED（规划已确认，2026-10-06）；功能与终态验收缺口均为0。正式功能46（45+1）、清单✅46/🟦22/⬜22=90、ADV64、问题57；P62批准功能交付已核销。性能Owner延期未验证、新资源策略默认关闭。最终裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md。P62无剩余业务验收项；本次探索已确认knowledge登记的最终确认传播；不外推发布或全入口实时状态。Owner新目标为P63 MES前置能力，当前排期见本节顶部。 |
-| P63 | MES前置能力：动态并行审批与一次性预约IoT下发 | Owner 2026-10-06；L；[需求定义](p63-mes-workflow-foundations.md)；关联P60 I4/P21/P62 | **READY**；探索已复核，[正式方向](../product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations.md)已下发；含普通手工并行兼容，待实现与功能验收；不改变既有完成数及其他P状态。 |
+| P63 | MES前置能力：动态并行审批与一次性预约IoT下发 | Owner 2026-10-06；L；[需求定义](p63-mes-workflow-foundations.md)；关联P60 I4/P21/P62 | **VERIFYING**；完成回执01未通过，按[补充提示01](../product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-01.md)收敛G01—G10；无整项验收通过，未核销、不增加完成数。 |
 
 管理员P0治理插单（2026-09-15）：[连续执行与可见浏览器验收门禁](admin-machine-gate-continuous-visible-browser.md)已`COMPLETED（规划确认）`，本地提交`8e87899`，治理测试sh 70/70、PowerShell 49/49。该任务不并入P60业务计数；远程发布仍需Owner另行授权。
 

@@ -1,6 +1,6 @@
 # P63：MES 前置能力——动态并行审批与一次性预约 IoT 下发
 
-2026-10-06；角色：Planner；来源：Owner 本轮需求。等级：L（跨表单、流程、组织、IoT、调度与权限边界；探索若发现核心架构演进再升级）。状态：READY。探索已复核，唯一正式方向：`product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations.md`。
+2026-10-06；角色：Planner；来源：Owner 本轮需求。等级：L（跨表单、流程、组织、IoT、调度与权限边界；探索若发现核心架构演进再升级）。状态：VERIFYING；回执01复核未通过，按补充提示01修复补证。正式产品合同：`product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations.md`。
 
 ## 1. 目标与场景依据
 
@@ -36,8 +36,8 @@
 
 本轮交付两项公共基础能力及最小关联链，并保留普通手工并行。完整MES、温度Agent、周期预约、真实机房动作、部署及P62延期性能不在本轮范围。
 
-唯一执行入口：`product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations.md`；完成回执为 `product/p63-mes-workflow-foundations/receipts/completion-p63-mes-workflow-foundations-01.md`。探索任务已结清，当前按正式方向实现，不再等待同一探索。
+唯一当前执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-01.md`；裁决为 `product/p63-mes-workflow-foundations/receipts/planning-review-completion-01.md`。下一完成回执02；原回执01留作历史。普通并行接受新增式实现，必须补足真实多分支与旧实例兼容；首次进入双轮、预约回写后的状态证据等按G01—G10处理。
 
-2026-10-06执行方更新：实现与验证已完成，完成回执01已提交（A01—A10矩阵、偏差声明含手工并行网关新增式交付、门禁终值 iot 63/0/0/0、bootstrap 253/0/0/27、Web四门全绿）；下一动作=Planner功能验收。
+2026-10-06回执01为历史自验提交；本轮Planner已复核为未通过。回执声明的门禁数字待原始输出支持，不能登记为已验基线；原“等待Planner”动作已结束，当前执行G01—G10。
 
-P63关联既有P60 I4/P21/P62；当前READY，不是PASSED或COMPLETED。功能46、清单46/22/22、ADV64、问题57为起始基线，其他P状态不随登记变化。
+P63关联既有P60 I4/P21/P62；当前VERIFYING，A01—A10无整项通过，不是PASSED或COMPLETED。功能46、清单46/22/22、ADV64、问题57为起始基线，其他P状态不随登记变化。

@@ -1,6 +1,6 @@
 # 功能摘要
 
-P63（L）实现完成（2026-10-06，完成回执01已提交：`product/p63-mes-workflow-foundations/receipts/completion-p63-mes-workflow-foundations-01.md`，A01—A10矩阵+偏差声明+门禁终值，证据 evidence/browser-01/；Server develop 72b5aef…edf5646、Web develop 5b0988a…9ce09b6 均已推送）。执行入口：`product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations.md`。待Planner功能验收，未裁决终态、不核销、功能计数基线46不变。
+P63（L）VERIFYING：完成回执01复核未通过，A01—A10无整项通过；局部界面保留，关键行为待G01—G10修复/补证。唯一执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-01.md`；下一回执02。功能46、清单46/22/22、ADV64不变；不进入终态同步。
 
 > P62当前批准功能范围COMPLETED（规划已确认，2026-10-06）；功能与终态验收缺口均为0。正式功能46（45+1）、清单✅46/🟦22/⬜22=90、ADV64、问题57；P62批准功能交付已核销。性能Owner延期未验证、新资源策略默认关闭。最终裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md。P62无剩余业务验收项；本次探索回执确认knowledge登记已传播为规划确认完成；不外推发布或全入口实时状态。当前新目标为P63 MES前置能力，见本页规划入口。
 > 正式功能46与清单完成行46是不同口径；三源90行经TS02复核，ID及状态零变化。以下既有功能按各裁决时点引用。

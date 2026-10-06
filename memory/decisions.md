@@ -1,8 +1,8 @@
 # 近期有效决策摘要
 
-P63（L）实现完成（2026-10-06，完成回执01已提交：`product/p63-mes-workflow-foundations/receipts/completion-p63-mes-workflow-foundations-01.md`，A01—A10矩阵+偏差声明+门禁终值，证据 evidence/browser-01/；Server develop 72b5aef…edf5646、Web develop 5b0988a…9ce09b6 均已推送）。执行入口：`product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations.md`。待Planner功能验收，未裁决终态、不核销、功能计数基线46不变。
+P63（L）VERIFYING：完成回执01复核未通过，A01—A10无整项通过；局部界面保留，关键行为待G01—G10修复/补证。唯一执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-01.md`；下一回执02。功能46、清单46/22/22、ADV64不变；不进入终态同步。
 
-> 同步点：2026-10-06（P63方向下发）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）与对应回执。
+> 同步点：2026-10-06（P63功能复核01）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）与对应回执。
 
 - 当前状态与历史物理分离；当前值只见 `knowledge/current-status.md`，历史见 `knowledge/history/`。终态机器契约单一源 `.codex/governance/terminal-contract.json`，校验入口 `.codex/governance/validate-terminal.sh`。
 - Planner 以 `memory/` 最小摘要恢复；冲突时按 knowledge 权威修正，不反向裁决。
