@@ -1,6 +1,6 @@
 # 近期有效决策摘要
 
-P63（L）READY，2026-10-06探索复核完成。唯一执行入口：`product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations.md`。范围：表格/多选人员部门驱动审批、一次性IoT预约；普通手工并行和旧流程兼容为硬验收项A09/A10。待Executor实现并提交回执，未功能验收。
+P63（L）实现完成（2026-10-06，完成回执01已提交：`product/p63-mes-workflow-foundations/receipts/completion-p63-mes-workflow-foundations-01.md`，A01—A10矩阵+偏差声明+门禁终值，证据 evidence/browser-01/；Server develop 72b5aef…edf5646、Web develop 5b0988a…9ce09b6 均已推送）。执行入口：`product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations.md`。待Planner功能验收，未裁决终态、不核销、功能计数基线46不变。
 
 > 同步点：2026-10-06（P63方向下发）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）与对应回执。
 
