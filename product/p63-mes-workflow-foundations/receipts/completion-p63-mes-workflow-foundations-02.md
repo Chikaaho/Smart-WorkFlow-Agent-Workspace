@@ -112,9 +112,12 @@
 
 本轮收尾实跑 `MAVEN_OPTS="-Xmx2g" mvn -B -o test`（结果追加于本回执提交前的 §4.1 补记；原始日志 `/tmp/p63-full-suite.log`）。
 
-### 4.1 全仓结果补记（提交前回填）
+### 4.1 全仓结果补记（2026-10-07 02:43 回填）
 
-（占位：全仓跑完后回填计数与退出码。）
+- 全仓实跑（31 模块 + bootstrap）：30 模块 SUCCESS（含 engine/iot/process），Bootstrap FAILURE——257 例中 1 例失败：`P62UpgradeGatePgTest.upgradeConsumesLegacyTypesKeepsHistory`（"命令未被领取"，准入截止类断言；全仓运行期间本机同时承载任务后端/vite/受控对端高负载）。
+- 隔离复跑 `P62UpgradeGatePgTest`：**2/0/0/0 通过**（日志 /tmp/p62-upgrade-rerun.log）。
+- bootstrap 模块全量复跑：**BUILD SUCCESS exit 0，257/0/0/27**（日志 /tmp/p63-bootstrap-module.log，surefire 汇总在案）——同代码同机负载可控环境下全绿，判定全仓单失败为负载偶发、非本轮改动确定性回归；两次原始日志均留存。
+- 结论：适用门禁=受影响模块（engine 76/0、iot 63/0、process 263/0）+ bootstrap 257/0/0/27 + Web 四门，全部通过；全仓首轮的 1 例负载偶发如实登记不掩盖。
 
 ## 5. 清理与生命周期
 
