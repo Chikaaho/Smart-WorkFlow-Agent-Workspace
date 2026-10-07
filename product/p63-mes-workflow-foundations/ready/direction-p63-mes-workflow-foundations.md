@@ -1,6 +1,6 @@
 # P63：MES前置能力正式方向
 
-2026-10-06；Planner；L；当前VERIFYING（完成回执01复核未通过）。依据：Owner原始两项需求、普通手工并行兼容补充，以及 `../receipts/planning-review-readiness-01.md`。本文件为产品合同；当前唯一执行入口为 `../receipts/planning-execution-prompt-p63-01.md`，验收结论见 `../receipts/planning-review-completion-01.md`。
+2026-10-06；Planner；L；当前VERIFYING（完成回执02复核未通过）。依据：Owner原始两项需求、普通手工并行兼容补充，以及 `../receipts/planning-review-readiness-01.md`。本文件为产品合同；当前唯一执行入口为 `../receipts/planning-execution-prompt-p63-02.md`，验收结论见 `../receipts/planning-review-completion-02.md`。
 
 ## 1. 目标和范围
 
@@ -103,6 +103,6 @@
 
 ## 7. 交付与状态
 
-唯一当前执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-01.md`。Executor持续完成G01—G10，按system.md分批门禁/普通提交推送，追加完成回执02。回执01保留历史；下一回执包含A01—A10映射、旧新兼容、实际门禁、证据等级及剩余项。
+唯一当前执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-02.md`。Executor持续完成提示02的20个剩余原子项，按system.md分批门禁/普通提交推送，追加完成回执03。回执01/02保留历史；下一回执包含原子项与A01—A10映射、同对象原始证据、旧新兼容、适用门禁与清理。矩阵、原请求恢复、单目标基数与门禁复跑口径按审查02§4；本轮完整验收0/10，不以界面进展替代行为通过。
 
 授权Executor按正常生命周期维护P63的knowledge登记和执行状态，不得自行裁决功能PASSED/COMPLETED、核销P63或增加正式功能/清单计数。功能46、清单46/22/22、ADV64、问题57作为本轮起始基线；新发现问题如实登记，不为保持历史数字隐瞒。Planner独立功能验收后另行下发终态同步，Owner发布/部署授权边界保持。

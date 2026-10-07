@@ -1,6 +1,6 @@
 # memory 使用说明
 
-P63（L）VERIFYING：完成回执01复核未通过，A01—A10无整项通过；局部界面保留，关键行为待G01—G10修复/补证。唯一执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-01.md`；下一回执02。功能46、清单46/22/22、ADV64不变；不进入终态同步。
+P63（L）VERIFYING（2026-10-07复核02）：完整验收0/10；已保留姓名/部门呈现、A多身份办理/并行图、预约和命令界面事实，剩余20原子项。优先核租户1外发来源、E正确ID回执、冻结后重启与原用户恢复；其余矩阵/取消/窄屏/兼容/门禁/清理待补。唯一执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-02.md`；审查02，下一回执03。功能46、清单46/22/22、ADV64不变；不进入终态同步。
 
 memory为规划最小摘要；knowledge/current-status.md为持久权威，product保存裁决与证据。
 
