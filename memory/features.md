@@ -1,6 +1,6 @@
 # 功能摘要
 
-P63（L）VERIFYING（2026-10-07复核04）：7/20核销、剩余13；新增G01b保存重开回显，A02通过、整项1/10。24格引擎来源结果已证，设计器入口仍待核。迟到审批窗内补发违反合同；N3软删错目标，关键原件仅/tmp、恢复/UNKNOWN/UI结果/最终候选待补。唯一入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-04.md`；审查04，回执05。功能46、清单46/22/22、ADV64保持；不进入终态同步。
+P63（L）VERIFYING（2026-10-07复核05）：10/20核销、剩余10；新增恢复G05b、真实取消竞争G06b、UNKNOWN核实G07b，A02/A05/A07通过（3/10）。迟到审批零发/N3软删/桌面SUCCESS已证；字段选择器、功能权威/权限、round/汇聚值、窗后实际入口、窄屏结果、旧条件/立即MQTT、最终绑定待补。唯一入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-05.md`；审查05，回执06。功能46、清单46/22/22、ADV64保持；不进入阶段三。
 
 > P62当前批准功能范围COMPLETED（规划已确认，2026-10-06）；功能与终态验收缺口均为0。正式功能46（45+1）、清单✅46/🟦22/⬜22=90、ADV64、问题57；P62批准功能交付已核销。性能Owner延期未验证、新资源策略默认关闭。最终裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md。P62无剩余业务验收项；本次探索回执确认knowledge登记已传播为规划确认完成；不外推发布或全入口实时状态。当前新目标为P63 MES前置能力，见本页规划入口。
 > 正式功能46与清单完成行46是不同口径；三源90行经TS02复核，ID及状态零变化。以下既有功能按各裁决时点引用。
