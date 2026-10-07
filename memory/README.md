@@ -1,6 +1,6 @@
 # memory 使用说明
 
-P63（L）VERIFYING（2026-10-07复核05）：10/20核销、剩余10；新增恢复G05b、真实取消竞争G06b、UNKNOWN核实G07b，A02/A05/A07通过（3/10）。迟到审批零发/N3软删/桌面SUCCESS已证；字段选择器、功能权威/权限、round/汇聚值、窗后实际入口、窄屏结果、旧条件/立即MQTT、最终绑定待补。唯一入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-05.md`；审查05，回执06。功能46、清单46/22/22、ADV64保持；不进入阶段三。
+P63（L）VERIFYING（2026-10-08复核06）：14/20核销、剩余6，A02/A05/A07/A09通过（4/10）。新增动态轮次、窗后拒发、旧条件与立即MQTT；直接配置、权限/功能类型、新BLOCK保存值、日期来源索引、窄屏完整详情、最终门禁与收尾待补。bootstrap284/2/0/27失败，旧失败归属未证。唯一入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-06.md`；审查06，回执07。功能46、清单46/22/22、ADV64保持，不进入阶段三。
 
 memory为规划最小摘要；knowledge/current-status.md为持久权威，product保存裁决与证据。
 

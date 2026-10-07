@@ -1,6 +1,6 @@
 # P63：MES 前置能力——动态并行审批与一次性预约 IoT 下发
 
-2026-10-06；角色：Planner；来源：Owner 本轮需求。等级：L（跨表单、流程、组织、IoT、调度与权限边界；探索若发现核心架构演进再升级）。状态：VERIFYING；回执05复核核销10/20、A02/A05/A07通过，按补充提示05收敛剩余10项。正式产品合同：`product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations.md`。
+2026-10-06；角色：Planner；来源：Owner 本轮需求。等级：L（跨表单、流程、组织、IoT、调度与权限边界；探索若发现核心架构演进再升级）。状态：VERIFYING；回执06复核核销14/20、A02/A05/A07/A09通过，按补充提示06收敛剩余6项。正式产品合同：`product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations.md`。
 
 ## 1. 目标与场景依据
 
@@ -36,8 +36,8 @@
 
 本轮交付两项公共基础能力及最小关联链，并保留普通手工并行。完整MES、温度Agent、周期预约、真实机房动作、部署及P62延期性能不在本轮范围。
 
-唯一当前执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-05.md`；裁决为 `product/p63-mes-workflow-foundations/receipts/planning-review-completion-05.md`。下一回执06，回执01—05历史，提示05替代04。10/20核销、剩余10，新增EXPIRED恢复/真实PG取消竞争/预约UNKNOWN核实，A02/A05/A07通过（3/10）。迟到批准零发、真实软删/撤权、桌面SUCCESS及窄屏多值事实锁定。
+唯一当前执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-06.md`；裁决为`product/p63-mes-workflow-foundations/receipts/planning-review-completion-06.md`。下一回执07，回执01—06历史保留，提示06替代05。14/20核销、剩余6；新增动态轮次/窗后拒发/旧条件/立即MQTT，A02/A05/A07/A09通过（4/10）。已通过子断言见审查06，只引用。
 
-剩余是字段选择器/直接部门、功能权威/权限、动态round与汇聚实际值、窗后真正入口、headed发起和身份关联、窄屏滚动结果、旧条件兼容、立即MQTT外发及最终候选/权威/新清理。审查05§4已明确原范围内功能重核fail closed、旧条件完整后端和隔离有限MQTT验证路线；不改全局立即IoT契约，不再等待新授权。既有节选可认实际值，不要求无条件全仓重跑；sleep/延迟轮询/hash禁止。轻微表头可后续优化。
+剩余直接配置及保存值、同租配置/来源权限与功能类型、新默认BLOCK回读、日期来源及成功链索引、窄屏完整姓名/结果详情、最终门禁/knowledge/自有收尾与视觉原件。bootstrap284/2/0/27实际失败，Phase4旧候选同败尚无原件，不免门禁、不混入性能延期；先恢复结果/辨影响，不自然时窗重试或全仓复做。日期图/DB缺值未预判产品缺陷；旧库不恢复，无需新发已成功动作。实施仍在原授权接缝，不增全局模型/立即契约。
 
-P63关联既有P60 I4/P21/P62；当前VERIFYING，A02/A05/A07通过、完整验收3/10，整体尚未PASSED或COMPLETED。功能46、清单46/22/22、ADV64、问题57为起始基线，其他P状态不随登记变化。
+P63关联既有P60 I4/P21/P62；当前VERIFYING，A02/A05/A07/A09通过、完整验收4/10，整体尚未PASSED或COMPLETED。功能46、清单46/22/22、ADV64、问题57为起始基线，其他P状态不随登记变化。

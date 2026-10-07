@@ -1,6 +1,6 @@
 # P63：MES前置能力正式方向
 
-2026-10-06；Planner；L；当前VERIFYING（复核05原子10/20、A02/A05/A07通过，整体未通过）。依据：Owner原始两项需求、普通手工并行兼容补充，以及 `../receipts/planning-review-readiness-01.md`。本文件为产品合同；当前唯一执行入口为 `../receipts/planning-execution-prompt-p63-05.md`，验收结论见 `../receipts/planning-review-completion-05.md`。
+2026-10-06；Planner；L；当前VERIFYING（复核06原子14/20、A02/A05/A07/A09通过，整体未通过）。依据：Owner原始两项需求、普通手工并行兼容补充，以及 `../receipts/planning-review-readiness-01.md`。本文件为产品合同；当前唯一执行入口为 `../receipts/planning-execution-prompt-p63-06.md`，验收结论见 `../receipts/planning-review-completion-06.md`。
 
 ## 1. 目标和范围
 
@@ -103,6 +103,6 @@
 
 ## 7. 交付与状态
 
-唯一当前执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-05.md`。Executor完成剩余10项，按system.md适用门禁/普通提交推送，追加回执06。回执01—05保留历史；新增G05b/G06b/G07b核销，累计10/20，A02/A05/A07通过（3/10）。迟到审批零发、N3实际目标失效、桌面SUCCESS及多值部分锁定；字段配置/权限与功能有效性、动态实际断言、窗后入口、窄屏结果、旧条件/立即MQTT与最终适用仍待补。审查05§4明确P63预约接缝接入既有已发布功能权威并fail closed、旧条件完整后端及隔离MQTT有限验证在原授权内；旧立即契约不改。当前整体VERIFYING，不进入阶段三。
+唯一当前执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-06.md`。Executor完成六项残余断言，按system.md适用门禁/普通提交推送，追加回执07。回执01—06历史保留；新增G04a/G06a/G09a/G10a核销，累计14/20，A02/A05/A07/A09通过（4/10）。剩余直接配置、配置权限/功能类型、新默认BLOCK保存值、日期来源与身份索引、窄屏完整详情、实际门禁失败归属/最终绑定与收尾。已有选择器、阈值/异常/同人投票、字段/多身份部分事实和窗后拒发锁定。bootstrap全量284/2/0/27失败，P63全绿不替代门禁处置；旧失败归属尚未由原件证实。当前整体VERIFYING，不进入阶段三。
 
 授权Executor按正常生命周期维护P63的knowledge登记和执行状态，不得自行裁决功能PASSED/COMPLETED、核销P63或增加正式功能/清单计数。功能46、清单46/22/22、ADV64、问题57作为本轮起始基线；新发现问题如实登记，不为保持历史数字隐瞒。Planner独立功能验收后另行下发终态同步，Owner发布/部署授权边界保持。
