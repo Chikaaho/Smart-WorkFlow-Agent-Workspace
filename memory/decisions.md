@@ -1,8 +1,8 @@
 # 近期有效决策摘要
 
-P63（L）VERIFYING（2026-10-07复核02）：完整验收0/10；已保留姓名/部门呈现、A多身份办理/并行图、预约和命令界面事实，剩余20原子项。优先核租户1外发来源、E正确ID回执、冻结后重启与原用户恢复；其余矩阵/取消/窄屏/兼容/门禁/清理待补。唯一执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-02.md`；审查02，下一回执03。功能46、清单46/22/22、ADV64不变；不进入终态同步。
+P63（L）VERIFYING（2026-10-07复核03）：6/20核销、剩余14；A02通过，整项1/10。F受控SUCCESS/跨重启、PG意图4场景、租户1来源、职责分支及清理锁定。EXPIRED原命令重排为COMPLETED违反旧终态约束；恢复/准入、矩阵/权限/竞态/UNKNOWN/浏览器/兼容/最终门禁待补。唯一执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-03.md`；审查03，回执04。功能46、清单46/22/22、ADV64保持；不进入终态同步。
 
-> 同步点：2026-10-07（P63功能复核02）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）与对应回执。
+> 同步点：2026-10-07（P63功能复核03）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）与对应回执。
 
 - 当前状态与历史物理分离；当前值只见 `knowledge/current-status.md`，历史见 `knowledge/history/`。终态机器契约单一源 `.codex/governance/terminal-contract.json`，校验入口 `.codex/governance/validate-terminal.sh`。
 - Planner 以 `memory/` 最小摘要恢复；冲突时按 knowledge 权威修正，不反向裁决。
