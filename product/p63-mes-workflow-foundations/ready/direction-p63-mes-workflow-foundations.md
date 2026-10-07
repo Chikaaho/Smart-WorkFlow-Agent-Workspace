@@ -1,6 +1,6 @@
 # P63：MES前置能力正式方向
 
-2026-10-06；Planner；L；当前VERIFYING（复核03原子6/20、A02通过，整体未通过）。依据：Owner原始两项需求、普通手工并行兼容补充，以及 `../receipts/planning-review-readiness-01.md`。本文件为产品合同；当前唯一执行入口为 `../receipts/planning-execution-prompt-p63-03.md`，验收结论见 `../receipts/planning-review-completion-03.md`。
+2026-10-06；Planner；L；当前VERIFYING（复核04原子7/20、A02通过，整体未通过）。依据：Owner原始两项需求、普通手工并行兼容补充，以及 `../receipts/planning-review-readiness-01.md`。本文件为产品合同；当前唯一执行入口为 `../receipts/planning-execution-prompt-p63-04.md`，验收结论见 `../receipts/planning-review-completion-04.md`。
 
 ## 1. 目标和范围
 
@@ -103,6 +103,6 @@
 
 ## 7. 交付与状态
 
-唯一当前执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-03.md`。Executor持续完成提示03的14个剩余原子项，按system.md分批适用门禁/普通提交推送，追加完成回执04。回执01—03保留历史；G02a/G03b/G05a/G06c/G07a/G10c核销锁定，A02通过、完整验收1/10。矩阵/权限/旧任务和竞争/预约UNKNOWN/浏览器/兼容/最终门禁仅补未证断言；EXPIRED恢复及准入边界按审查03§4限定，保留旧命令终态/审计，恢复尝试有明确关联身份；需扩大底层契约先提交影响事实裁决。当前整体仍VERIFYING。
+唯一当前执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-04.md`。Executor完成提示04的13个剩余原子项，按system.md适用门禁/普通提交推送，追加完成回执05。回执01—04保留历史；新增G01b核销，累计7/20，A02通过、完整验收1/10。24格引擎来源、普通旧任务拒办、跨发布审批及窄屏基本可读部分锁定。关键原件先搬入product；审批完成时已到点即过期不补发，迟到窗口仅适用此前合法未来预约；修正N3错目标，补真正未证配置/权限/轮次/竞态/UNKNOWN/UI结果/兼容/最终候选。恢复保留旧EXPIRED终态和关联尝试，最终行为待原件核验。需扩大授权范围先提交影响裁决，当前整体VERIFYING。
 
 授权Executor按正常生命周期维护P63的knowledge登记和执行状态，不得自行裁决功能PASSED/COMPLETED、核销P63或增加正式功能/清单计数。功能46、清单46/22/22、ADV64、问题57作为本轮起始基线；新发现问题如实登记，不为保持历史数字隐瞒。Planner独立功能验收后另行下发终态同步，Owner发布/部署授权边界保持。

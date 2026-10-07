@@ -1,6 +1,6 @@
 # memory 使用说明
 
-P63（L）VERIFYING（2026-10-07复核03）：6/20核销、剩余14；A02通过，整项1/10。F受控SUCCESS/跨重启、PG意图4场景、租户1来源、职责分支及清理锁定。EXPIRED原命令重排为COMPLETED违反旧终态约束；恢复/准入、矩阵/权限/竞态/UNKNOWN/浏览器/兼容/最终门禁待补。唯一执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-03.md`；审查03，回执04。功能46、清单46/22/22、ADV64保持；不进入终态同步。
+P63（L）VERIFYING（2026-10-07复核04）：7/20核销、剩余13；新增G01b保存重开回显，A02通过、整项1/10。24格引擎来源结果已证，设计器入口仍待核。迟到审批窗内补发违反合同；N3软删错目标，关键原件仅/tmp、恢复/UNKNOWN/UI结果/最终候选待补。唯一入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-04.md`；审查04，回执05。功能46、清单46/22/22、ADV64保持；不进入终态同步。
 
 memory为规划最小摘要；knowledge/current-status.md为持久权威，product保存裁决与证据。
 

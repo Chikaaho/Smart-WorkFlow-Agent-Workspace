@@ -1,6 +1,6 @@
 # P63：MES 前置能力——动态并行审批与一次性预约 IoT 下发
 
-2026-10-06；角色：Planner；来源：Owner 本轮需求。等级：L（跨表单、流程、组织、IoT、调度与权限边界；探索若发现核心架构演进再升级）。状态：VERIFYING；回执03复核核销6/20、A02通过，按补充提示03收敛剩余14项。正式产品合同：`product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations.md`。
+2026-10-06；角色：Planner；来源：Owner 本轮需求。等级：L（跨表单、流程、组织、IoT、调度与权限边界；探索若发现核心架构演进再升级）。状态：VERIFYING；回执04复核核销7/20、A02通过，按补充提示04收敛剩余13项。正式产品合同：`product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations.md`。
 
 ## 1. 目标与场景依据
 
@@ -36,8 +36,8 @@
 
 本轮交付两项公共基础能力及最小关联链，并保留普通手工并行。完整MES、温度Agent、周期预约、真实机房动作、部署及P62延期性能不在本轮范围。
 
-唯一当前执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-03.md`；裁决为 `product/p63-mes-workflow-foundations/receipts/planning-review-completion-03.md`。下一完成回执04；回执01—03保留历史，提示03替代02。6/20原子核销，剩余14；A02通过、完整验收1/10。已锁定职责分支、租户1来源消歧、PG意图四场景、F真实受控SUCCESS/跨重启和清理；页面取消/八组合保存/旧v1合并等部分事实保留，不重做。
+唯一当前执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-04.md`；裁决为 `product/p63-mes-workflow-foundations/receipts/planning-review-completion-04.md`。下一完成回执05；回执01—04保留历史，提示04替代03。7/20核销、剩余13，新增保存后重开回显，A02通过、完整验收1/10。24格引擎来源、普通旧task拒办、跨发布审批和窄屏基本可读事实锁定，设计器配置/同对象结果仍待核。
 
-EXPIRED同一旧命令被重排为COMPLETED不符合提示02，按审查03§4保护旧终态/审计并关联恢复尝试，核准入截止后先消费后对账的边界。矩阵16格仅PASS无actual、旧任务拒办/并发/UNKNOWN缺行为；process263/264、lint失败行/exit0及最终候选适用性未勾稽，先核原件再补最小门禁。窄屏取消卡正文可读，完整对象/参与人/结果操作仍待核。轻微表单显示可后续优化；实际单目标不新增多设备。
+审批完成时已到点一律过期零发，回执04窗内catch-up违反合同；N3软删非预约目标，不证明实际软删拒绝。关键round/并发/EXPIRED恢复/UNKNOWN原件仅引用/tmp，先搬入product；恢复图缺反馈和终态、UI链对象不一致，需准确关联与缺失结果。最终门禁仅节选，补候选适用/失败原件/knowledge实值和新清理；含sleep采集与非必要hash不得继续。只修真实差异、不重验已证矩阵、不无条件重跑全仓。轻微表单显示可后续优化；实际单目标不新增多设备。
 
 P63关联既有P60 I4/P21/P62；当前VERIFYING，A02通过、完整验收1/10，整体尚未PASSED或COMPLETED。功能46、清单46/22/22、ADV64、问题57为起始基线，其他P状态不随登记变化。
