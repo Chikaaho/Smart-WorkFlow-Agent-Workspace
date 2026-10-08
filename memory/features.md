@@ -1,8 +1,8 @@
 # 功能摘要
 
-P64（XL）=READY（Owner已授权完整实施，待Executor实际启动）。唯一下一动作=Executor按`product/p64-mes-advanced-orchestration/ready/authorization-p64-implementation-20261008.md`领取阶段I数据到动作，覆盖A01—A04及相关A11/A12；实际启动后登记IN_PROGRESS。READY传播/G1—G4已关闭；根Server gitlink78495dc按Owner裁量保留。功能47、清单46/22/22=90、ADV64、P63及VB保持；P62性能延期/策略关闭。
+P64（XL）=IN_PROGRESS（Owner实施授权成立，Executor已实际启动阶段Ⅰ数据到动作，2026-10-08）。唯一下一动作=Executor连续推进阶段Ⅰ实施（探索→ADR→实现→验证→阶段回执`product/p64-mes-advanced-orchestration/receipts/phase-1-completion-receipt-01.md`供规划独立验收）。实施授权`product/p64-mes-advanced-orchestration/ready/authorization-p64-implementation-20261008.md`为当前执行入口；两仓feature/p64-mes-advanced-orchestration已检出（Server b7283c8/Web 7af86f2，均0/0）；READY传播/G1—G4已关闭；根Server gitlink78495dc按Owner裁量保留脏项。功能47、清单46/22/22=90、ADV64、P63及VB保持；P62性能延期/策略关闭。
 
-- `p64-mes-advanced-orchestration`（P64，XL）：**READY（实施已授权，待执行启动）**；R01—R12/A01—A12、PD01—PD06/三阶段就绪，当前阶段I数据到动作；工程尚未由本会话启动。
+- `p64-mes-advanced-orchestration`（P64，XL）：**IN_PROGRESS（阶段Ⅰ数据到动作，2026-10-08 已实际启动）**；R01—R12/A01—A12、PD01—PD06/三阶段就绪，当前阶段Ⅰ覆盖A01—A04及相关A11/A12；工程实施由 Executor 在两仓 feature 分支连续推进。
 - `p63-mes-workflow-foundations`（P63，L/P0）：**COMPLETED（规划已确认，2026-10-08）**；表单驱动动态并行审批+一次性 IoT 预约下发、手工并行兼容；VB01—VB04 见登记与 `state.md`；范围外=完整 MES/分管领导组织模型/周期预约/厂商实网/部署。
 - `p62-lowcode-transaction-bpm-tiering`（P62，XL）：**COMPLETED（规划已确认，2026-10-06）**；性能 Owner 延期未验证留账（`todo/p62-lowcode-transaction-bpm-tiering.md` §性能后续待办）；新资源策略默认关闭。
 - `backend-architecture-optimization`（XL）：**COMPLETED（规划已确认，2026-09-26）**；Phase1—6C 与 Final 完成；10 候选=BAO-01 `DEFERRED`+BAO-02 `PARTIAL`+8 `COMPLETED`；基线 1570/0/0/0（历史时点）。

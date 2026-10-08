@@ -1,6 +1,6 @@
-# 功能追踪：P64 MES高级流程编排与业务闭环（READY）
+# 功能追踪：P64 MES高级流程编排与业务闭环（IN_PROGRESS·阶段Ⅰ）
 
-> 工作区统一知识库 — **规划登记条目（READY：产品合同与方案就绪，业务实现未授权）**。
+> 工作区统一知识库 — **实施登记条目（IN_PROGRESS：Owner 实施授权成立，Executor 已实际启动阶段Ⅰ数据到动作）**。
 > **本条目不计入正式功能数（当前 47 不变）、不核销任何 P 编号或 90 行明细、不改变 ADV64 与其他计数**；只有 Planner 下发正式方向、Executor 完成交付并经 Planner 验收后，才可能作为新的正式功能登记与计数。
 > 可信度标记：CONFIRMED / REPORTED / ASSUMED / SUPERSEDED
 
@@ -14,7 +14,7 @@
 | 功能名称 | MES高级流程编排与业务闭环 |
 | 等级 / 优先级 | XL（核心架构、跨流程运行模型、组织身份、多版本兼容） |
 | 创建日期 | 2026-10-08（Owner 需求与高级流程摘要 → 规划登记） |
-| 当前状态 | **READY**（2026-10-08 方案复核02：产品合同与方案就绪；业务实现未授权，未创建实现 Step、无运行验证结果） |
+| 当前状态 | **IN_PROGRESS（阶段Ⅰ数据到动作）**（2026-10-08 Owner 实施授权成立，授权 `product/p64-mes-advanced-orchestration/ready/authorization-p64-implementation-20261008.md`；Executor 已实际启动：两仓检出 feature 分支；实现 Step、验证与 ADR 由 Executor 自主制定） |
 | 计数归属 | 不晋级：正式功能 47、清单 90 行 ✅46/🟦22/⬜22、ADV64、问题 57 均保持；本登记不作为第 48 个功能 |
 
 ## 2. 输入、方向与当前入口
@@ -29,7 +29,8 @@
 | 探索任务（已完成·历史） | `search_task/p64-mes-advanced-orchestration-readiness-20261008.md`（已标作历史） |
 | 探索回执（历史输入） | `search_fallback/p64-mes-advanced-orchestration-readiness-20261008.md`＋`…-attachments.md`（逐题证据、R 矩阵、真值表、影响/资产/入口清单）＋`…-p63-propagation-readback.md`（P63 传播回读） |
 | READY 传播回执与复核 | 传播回执 `receipts/ready-state-propagation-01.md`/`-02.md`；规划复核01（G1—G4）→ 规划复核02 `receipts/planning-review-ready-state-propagation-02.md` **四项差异全部核销关闭**（G3 经 Owner 认可保留 Server gitlink `78495dc`）；裁决传播回执 `receipts/ready-state-propagation-03.md` |
-| 代码分支 | 实施目标分支＝两仓 `feature/p64-mes-advanced-orchestration`（已推送 origin：Server `c79db713`、Web `2b0c660`）；本机检出＝两仓 `develop`（实施获授权后切换）；2026-10-08 回读 Server develop 领先 feature 0/3、Web 0/1（均为文档提交，非业务实现）；工作区 HEAD 内 Server gitlink=`78495dc…` 经 Owner 认可保留（复核02 G3），与检出前进的脏差异如实保留、不回拨 |
+| 实施授权（当前入口） | `product/p64-mes-advanced-orchestration/ready/authorization-p64-implementation-20261008.md`（2026-10-08 Owner"开始实施"；覆盖完整 P64 三阶段，当前阶段Ⅰ=A01—A04及相关A11/A12） |
+| 代码分支 | 实施分支＝两仓 `feature/p64-mes-advanced-orchestration`，**本机已检出**（2026-10-08 Executor 实测）：Server feature=`b7283c8`（自创建点 c79db71 快进至 develop，本地=origin 0/0）、Web feature=`7af86f2`（自 2b0c660 快进，0/0），两仓工作树干净；工作区 `develop-sw`=`39b68aa2`（传播终审03+实施授权文档批次已推送 0/0；HEAD 内 Server gitlink=`78495dc…` 经 Owner 认可保留（复核02 G3），与检出的脏差异如实保留、不回拨） |
 | 规划侧路由 | `todo/p64-mes-advanced-orchestration.md`、`todo/requirement-pool.md`（2026-10-08 当前规划）、`memory/state.md`、`memory/handoff.md` |
 
 ## 3. 现状探索要点（2026-10-08，只读静态＋既有回执核对）

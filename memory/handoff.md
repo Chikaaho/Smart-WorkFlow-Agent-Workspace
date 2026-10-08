@@ -5,7 +5,7 @@ P64 MES高级流程编排与业务闭环（XL）。
 ## 2. 功能目标
 节点表单、类型变量、只读Trigger/可靠动作、岗位委托、主子流程隔离回写；MES/招商/安信三场景。
 ## 3. 当前状态
-READY（2026-10-08）：Owner已明确“开始实施”，完整P64实施授权成立，待Executor实际启动阶段I；A01—A12尚未开始业务验收。
+IN_PROGRESS（2026-10-08）：Owner实施授权成立，Executor已实际启动阶段I数据到动作；A01—A12业务验收未开始，阶段I覆盖A01—A04及相关A11/A12。
 ## 4. 本轮做了什么
 已形成PD01—PD06/三阶段并关闭READY传播。本轮记录Owner完整实施授权，写ready/authorization-p64-implementation-20261008.md，当前从阶段I数据到动作开始。
 ## 5. Executor内部Step
@@ -17,13 +17,13 @@ Planner仅修改product/memory/todo；授权Executor实施两仓业务、必要�
 ## 8. 关键决策
 任务级表单、类型变量、独立BPM判断边界、独立发布实例编排、组织岗位委托、稳定行共享权限/回写。阶段I数据到动作（A01—A04）；II人员与父子协作（A05—A07）；III三场景与整体交付（A08—A12）。各阶段承担受影响A11/A12，工程ADR/内部实施由Executor确定。
 ## 9. 当前系统
-功能47、清单46/22/22=90、ADV64及其他P保持；P63已COMPLETED，P62性能延期/策略关闭。传播03截止点Server develop b7283c8/feature关系0/4、根C2′ d8ed945b；Web未变快照develop7af86f24/关系0/1。根Server gitlink78495dc保留；目标机hook生效未由本轮证明。
+功能47、清单46/22/22=90、ADV64及其他P保持；P63已COMPLETED，P62性能延期/策略关闭。Executor启动实测：两仓feature/p64-mes-advanced-orchestration已检出并快进至develop最新（Server b7283c8/Web 7af86f2，均0/0）；工作区develop-sw=39b68aa2。根Server gitlink78495dc保留脏项；目标机hook生效未由本轮证明。
 ## 10. 未完成
-P64全部实现、三场景运行及整体验收；实施已授权，当前待Executor实际启动阶段I。实际启动状态按knowledge-first同步，不新增READY传播回执。
+P64全部实现、三场景运行及整体验收；阶段I实施进行中（IN_PROGRESS），由Executor连续推进。实际启动状态已按knowledge-first同步，不新增READY传播回执。
 ## 11. 风险
 错误轮次、重复派发、脚本越权、行泄露/错写、回写与推进脱节、迟到结果、岗位歧义/循环、超限及存量回归，按A01—A12实证。
 ## 12. 唯一下一动作
-Executor按product/p64-mes-advanced-orchestration/ready/authorization-p64-implementation-20261008.md领取并启动阶段I数据到动作，自主计划/实现/验证/ADR，实际启动后登记IN_PROGRESS。
+Executor连续推进阶段I数据到动作实施（探索→ADR→实现→验证），完成后提交product/p64-mes-advanced-orchestration/receipts/phase-1-completion-receipt-01.md供规划独立验收。
 ## 13. 完成标准
 阶段I真实配置到可靠动作闭环满足A01—A04及相关A11/A12，提交phase-1-completion-receipt-01.md，Planner独立阶段验收；整体完成须A01—A12全部通过。
 ## 14. 必读
