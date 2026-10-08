@@ -98,14 +98,14 @@ function Invoke-TerminalValidator {
     param(
         [Parameter(Mandatory = $true)] [string] $ValidatorPath,
         [Parameter(Mandatory = $true)] [string] $TerminalJson,
-        [switch] $ExecutionContext
+        [Alias('ExecutionContext')] [switch] $ExecutionContextMode
     )
 
     $errorWriter = [System.IO.StringWriter]::new()
     $originalError = [Console]::Error
     try {
         [Console]::SetError($errorWriter)
-        $null = & $ValidatorPath -InputJson $TerminalJson -ExecutionContext:$ExecutionContext
+        $null = & $ValidatorPath -InputJson $TerminalJson -ExecutionContext:$ExecutionContextMode
         $exitCode = $LASTEXITCODE
     } finally {
         [Console]::SetError($originalError)

@@ -4,7 +4,7 @@ param(
     [AllowNull()]
     [AllowEmptyString()]
     [string] $InputJson,
-    [switch] $ExecutionContext
+    [Alias('ExecutionContext')] [switch] $ExecutionContextMode
 )
 
 begin {
@@ -117,7 +117,7 @@ function Invoke-ExecutionComponent {
     }
     return $componentExit
 }
-if ($ExecutionContext) {
+if ($ExecutionContextMode) {
     exit (Invoke-ExecutionComponent -ContextMode)
 }
 
