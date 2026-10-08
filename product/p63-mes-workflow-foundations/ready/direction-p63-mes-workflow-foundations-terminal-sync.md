@@ -1,8 +1,8 @@
-> 2026-10-08执行轮：Executor 已按本方向一次完成终态同步并提交 `../receipts/terminal-sync-p63-mes-workflow-foundations-01.md`（附件 `../receipts/evidence/terminal-sync-01/`，2026-10-08）；P63=**COMPLETED（待规划终态复核）**、正式功能 47、清单 90 行零升降、VB01—VB04 逐位置落值；覆盖矩阵含 knowledge/current-status、session-handoff、功能登记、映射索引、known-issues、architecture、memory 五件、todo 两件、Server 功能清单焦点行；本轮对象/实例/数据库与环境沿方向固定，无业务/门禁/发布动作。**唯一下一动作=Planner 复核该回执与附件并确认 P63 整体 COMPLETED**；复核通过后本方向归档 `passed/`。
+> 2026-10-08规划终态复核01：回执01剩TS01—TS03三项文档差异，整体待规划确认。当前唯一执行入口`../receipts/planning-execution-prompt-p63-terminal-sync-01.md`；下一回执02，提交后Planner复核02。下文为阶段三唯一值合同，原执行动作由该提示收敛，业务验收和47授权值保持。
 
 # P63 MES前置能力：阶段三终态同步方向
 
-2026-10-08；Planner→Executor；L收尾。唯一依据`../receipts/planning-review-completion-10-passed.md`。功能验收PASSED，20/20、A01—A10通过，业务缺口0。**本文件为唯一当前执行入口**，全部业务补充提示已结清。一次完成当前信息同步并提交`../receipts/terminal-sync-p63-mes-workflow-foundations-01.md`；证据`../receipts/evidence/terminal-sync-01/`。不新增业务实现或验证阶段。
+2026-10-08；Planner→Executor；L收尾。唯一依据`../receipts/planning-review-completion-10-passed.md`。功能验收PASSED，20/20、A01—A10通过，业务缺口0。**本文件保留唯一终态值合同，当前执行入口见顶部提示**，全部业务补充提示已结清。首轮同步回执`../receipts/terminal-sync-p63-mes-workflow-foundations-01.md`与证据`../receipts/evidence/terminal-sync-01/`已提交；本轮仅按顶部提示追加回执02。不新增业务实现或验证阶段。
 
 ## 1. 唯一终态值清单
 
@@ -21,8 +21,8 @@
 | 版本/部署 | 原产品版本、tag、Release、部署事实不变；本任务无发布/部署；迁移0.1.5/0.1.6不是产品发布版本 |
 | P62及资源策略 | P62批准功能范围COMPLETED（规划已确认）；性能Owner延期未验证，新资源策略默认关闭；无性能执行任务 |
 | 活动业务功能 | 无；P63业务验收已结清，当前任务=P63阶段三文档同步/复核 |
-| 当前执行下一动作 | Executor按本方向完成终态同步，提交terminal-sync-p63-mes-workflow-foundations-01.md |
-| 提交回执后唯一下一动作 | Planner复核terminal-sync-p63-mes-workflow-foundations-01.md，确认P63整体COMPLETED |
+| 当前执行下一动作 | Executor按../receipts/planning-execution-prompt-p63-terminal-sync-01.md补TS01—TS03，提交terminal-sync-p63-mes-workflow-foundations-02.md |
+| 提交回执后唯一下一动作 | Planner复核terminal-sync-p63-mes-workflow-foundations-02.md，再判断P63整体COMPLETED |
 | 主方向位置 | passed/direction-p63-mes-workflow-foundations.md（Planner已归档） |
 | 终态方向位置 | ready/direction-p63-mes-workflow-foundations-terminal-sync.md（Planner终态复核通过后归档passed） |
 | 记忆体量 | 每文件<5000字节，全部memory/*.md合计<20000字节，报告前后实际字节数 |
@@ -54,7 +54,7 @@ Executor先更新knowledge/current-status.md、knowledge/session-handoff.md、�
 
 ## 4. 提交与复核条件
 
-提交terminal-sync-p63-mes-workflow-foundations-01.md，附件evidence/terminal-sync-01/；包含完整覆盖矩阵、47唯一登记计数/P63位置、90行零变化/计数、VB01—VB04逐位置真实值、活动功能/下一动作/目录与延期边界、memory压缩前后字节及保留/移出范围。Planner按角色规则独立全文复核后确认COMPLETED并归档终态方向；Executor不得先写“规划已确认”。
+首轮回执01/附件terminal-sync-01的验收覆盖要求如下；剩余差异追加回执02/terminal-sync-02，执行动作以顶部提示为准。覆盖要求包含完整覆盖矩阵、47唯一登记计数/P63位置、90行零变化/计数、VB01—VB04逐位置真实值、活动功能/下一动作/目录与延期边界、memory压缩前后字节及保留/移出范围。Planner按角色规则独立全文复核后确认COMPLETED并归档终态方向；Executor不得先写“规划已确认”。
 
 按system.md§0.8.1完成内聚文档批次检查、普通提交/既有跟踪分支普通推送、实际远端回读；先说明每仓实际远程/分支/领先落后/未跟踪，精确暂存本批文档，排除无关治理/changed-files及根gitlink指针，不自动更新指针或.gitmodules。回执Git事实设明确截止点，报告自身提交用稳定表述，避免循环回填。
 

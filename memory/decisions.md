@@ -1,6 +1,6 @@
 # 近期有效决策摘要
 
-P63（L）**COMPLETED（待规划终态复核，2026-10-08 阶段三同步）**；功能级 PASSED=审查10。正式功能47（46+P63）；清单46/22/22=90 零升降、ADV64、问题57。回执 `terminal-sync-p63-mes-workflow-foundations-01.md` 待 Planner 复核；下一动作=确认 P63 整体 COMPLETED。
+P63（L）COMPLETED（待规划终态复核，2026-10-08终态复核01）；功能PASSED：20/20、A01—A10通过，业务缺口0。终态剩3项：TS01正式登记计数证据、TS02两处原行截断、TS03验收候选与文档HEAD混称。唯一执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-terminal-sync-01.md`；下一`terminal-sync-p63-mes-workflow-foundations-02.md`。功能47、清单46/22/22=90/ADV64保持；VB01—VB04锁定；P62性能Owner延期未验证、新资源策略关闭。
 
 > 同步点：2026-10-08（P63 阶段三同步）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）、`knowledge/current-status.md` 与对应回执。
 

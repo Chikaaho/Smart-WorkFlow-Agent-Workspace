@@ -34,12 +34,8 @@
 
 ## 4. 范围与下一动作
 
-本轮交付两项公共基础能力及最小关联链，并保留普通手工并行。完整MES、温度Agent、周期预约、真实机房动作、部署及P62延期性能不在本轮范围。
+功能级PASSED（审查10：20/20、A01—A10通过，业务缺口0）锁定；阶段三回执01已由Planner复核，终态未通过。状态COMPLETED（待规划终态复核），正式功能47、清单46/22/22=90、ADV64/P26/其他P保持，不提前写整体规划已确认。
 
-功能级验收 PASSED（`product/p63-mes-workflow-foundations/receipts/planning-review-completion-10-passed.md`，20/20、A01—A10 全部通过（10/10）、业务缺口0）；阶段三终态同步已完成并提交 `product/p63-mes-workflow-foundations/receipts/terminal-sync-p63-mes-workflow-foundations-01.md`（附件 `receipts/evidence/terminal-sync-01/`）。业务补充提示 01—09 全部结清，仅历史引用。
+唯一当前执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-terminal-sync-01.md`；审查`product/p63-mes-workflow-foundations/receipts/planning-review-terminal-sync-p63-mes-workflow-foundations-01.md`。剩TS01登记计数证据、TS02关键回读截断、TS03候选与文档HEAD分层；下一回执`terminal-sync-p63-mes-workflow-foundations-02.md`，提交后Planner复核02。终态方向仍ready，主合同passed；原执行动作结清，仅保留合同。
 
-**唯一下一动作 = Planner 复核 `terminal-sync-p63-mes-workflow-foundations-01.md` 并确认 P63 整体 COMPLETED**；终态方向 `product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations-terminal-sync.md` 经复核通过后归档 `passed/`。
-
-计数与验证：正式功能 **47**（46+P63 整体1，P63 为第47个登记）；清单 ✅46/🟦22/⬜22=90 零行升降、ADV64、问题57（起始历史基线）、其他 P/明细状态不变。正式验证集合 VB01—VB04：Web `2b0c660` 四门 exit0（1365+3 测试/79 warning）；Server iot 63/0、engine 76/0、process 266/0；20 原子行为基线；追加迁移 V0.1.5/V0.1.6/R__p63（链终点 0.1.6）。本轮仅文档同步，不重跑业务/门禁，不进入发布部署。
-
-P62 批准功能范围 COMPLETED（规划已确认，2026-10-06；46 为 P62 验收时点值，当前项目总数统一 47）；性能 Owner 延期未验证、新资源策略关闭；完整 MES、分管领导组织模型、厂商实网和部署边界保持。
+VB01—VB04、90行、业务门禁锁定；Web1365+3/79w四exit0、Serveriot63/engine76/process266及验收候选19d1da2保持；Server文档HEAD692b73c与候选分列。本轮只文档差异补证与路由传播，不跑业务验证、不发布部署。P62性能Owner延期未验证、新资源策略关闭，完整MES/分管领导组织模型/周期预约/厂商实网/部署范围保持。问题57是起始历史口径，保留REG和新事实。
