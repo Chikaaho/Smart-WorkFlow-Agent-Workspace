@@ -61,7 +61,7 @@
 - Web 35dd944：typecheck exit=0、lint **0 errors/76 warnings** exit=0、vitest **1364 passed + 3 skipped**（151 文件 +1 skipped）、build ✓ **exit=0（3.22s）**（`raw/web-gates-final-original.md`）。
 
 ### 6.3 远端读回 / knowledge / 自身收尾
-- 远端读回（2026-10-08 11:11:28）：Server develop = `dfa25801d8888870fe11039ff3e5046044b1f8be`（本地=远端）；Web develop = `35dd94439f103a2e92054a3efe6f0cd656b2f1cc`（本地=远端）；Workspace develop-sw = `0000bcdda6b582e989cfc71dcd0c65bf7cbc10ba`（本地=远端，本回执提交）。
+- 远端读回（2026-10-08 11:11:28 Server/Web；11:14:44 Workspace）：Server develop = `dfa25801d8888870fe11039ff3e5046044b1f8be`（本地=远端）；Web develop = `35dd94439f103a2e92054a3efe6f0cd656b2f1cc`（本地=远端）；Workspace develop-sw = 回执07 提交 `0000bcd`（本回执+acceptance-07+knowledge）及其补记提交，均推送成功、本地=远端。
 - knowledge 逐入口原值：`knowledge/current-status.md` 顶部段=VERIFYING、14/20、剩余 6、A02/A05/A07/A09 通过、唯一入口=审查06/提示06、下一动作=Planner 复核回执07。
 - 自身收尾原结果（`raw/cleanup-readback-original.md`）：后端 8080/对端 9777、9778/Vite 5173/broker 18830 全部按精确 PID 关闭、六端口 listeners=0、残留进程 0；`sw_p63_accept4` dropdb EXIT=0 且 `psql -lqt` sw_p63 计数 0；`/tmp/p63*` 无匹配；92238ad worktree 已移除（`worktree list` 仅主树）；**~/.m2 先被基点安装污染、已重装当前候选恢复（REINSTALL_EXIT=0，11:09:11）**；IAB 单标签保留（dev server 已停）。
 
