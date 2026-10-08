@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-P64（XL）=READY，合同/方案就绪，实现未授权。传播01复核未通过；唯一Executor动作：`product/p64-mes-advanced-orchestration/receipts/planning-review-ready-state-propagation-01.md`的G1—G4修正/补证，回执追加传播02，再交Planner复核。方案见P64 ready/solution。P63已COMPLETED、VB锁定；功能47、清单46/22/22=90、ADV64保持；P62性能延期未验证/新策略关闭。
+P64（XL）=READY，合同/方案就绪，实现未授权。传播02的G1/G2/G4通过，G3经Owner认可保留Server gitlink78495dc关闭。唯一Executor动作：`product/p64-mes-advanced-orchestration/receipts/planning-review-ready-state-propagation-02.md`§3传播本次裁决及当前路由，回读后等待Owner实施指令。P63已COMPLETED、VB锁定；功能47、清单46/22/22=90、ADV64保持；P62性能延期未验证/新策略关闭。
 
 正式验证集合 VB01—VB04（互不相加）：VB01 Web `2b0c660` 四门 exit0（typecheck 静默；lint 0e/79w；vitest 151+1 文件、1365+3 测试；build 1.96s）。VB02 Server iot 63/0、engine 76/0、process 266/0 exit0（`19d1da2` 仅授权修复，不扩推整仓）。VB03 20原子/A01—A10 行为基线（审查03—10）；外部资产隔离 3/0 与截止内 FLOW 恢复 1/0 单列。VB04 追加迁移 `V0.1.5__p63_dynamic_branch_semantics`/`V0.1.6__p63_iot_command_reservation`/`R__p63_iot_reservation_menu`，链终点 0.1.6。bootstrap 全量 286/3/0/27 exit1 保留（Phase4 既有失败，截止内受控恢复等强度替代接受，登记 REG-P63-Phase4CrashTest）；全部收敛≠全部成功。
 
@@ -17,4 +17,4 @@ P64（XL）=READY，合同/方案就绪，实现未授权。传播01复核未通
 
 ## 设备恢复
 
-传播01报告目标机两代码仓检出develop，远端feature/p64-mes-advanced-orchestration存在；Server本轮文档提交78495dc、根批次A8e9d0ac，批次B及提交后分支关系待补证。fb0e93e属历史交接SHA，回执报告已不可达；目标机hook实际生效未由本轮证明。旧设备交接仅按时点参考，当前G1—G4见顶部审查指针。
+传播02固定截止点：Server develop8c62503/feature差距0/3，Web develop7af86f24/差距0/1，根C2为0da7aa36，各本地远端0/0；批次B为3abdd29a。Owner认可根Server gitlink78495dc，检出前进产生的根gitlink脏项保留。后续Git变化另行核实；fb0e93e为不可达历史SHA，目标机hook实际生效仍未由本轮证明。

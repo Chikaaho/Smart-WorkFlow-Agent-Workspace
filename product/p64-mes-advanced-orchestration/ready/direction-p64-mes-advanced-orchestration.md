@@ -2,7 +2,7 @@
 
 2026-10-08；Planner；XL；**READY（现状探索已复核，产品合同已收敛；业务实现尚未授权）**。
 
-Owner要求：参考“MES申请分类”前半段，继续完善MES能力，先确定任务方向。产品输入为Owner补充的[高级流程摘要](../inputs/owner-bpm-advanced-summary-20261008.md)及[岗位委托补充](../inputs/owner-position-delegation-20261008.md)，以最新补充的通用岗位委托要求为准。本文确定目标、范围和验收边界。[探索规划复核01](../receipts/planning-review-readiness-01.md)接受现状探索；[架构方案](solution-p64-mes-advanced-orchestration.md)明确六项选择及三阶段边界。[方案复核02](../receipts/planning-solution-review-02.md)§5为传播授权来源；传播01已提交，当前差异与下一动作见[传播规划复核01](../receipts/planning-review-ready-state-propagation-01.md)。本方向是唯一业务目标入口，实现步骤、接口、存储结构和测试设计由Executor负责。
+Owner要求：参考“MES申请分类”前半段，继续完善MES能力，先确定任务方向。产品输入为Owner补充的[高级流程摘要](../inputs/owner-bpm-advanced-summary-20261008.md)及[岗位委托补充](../inputs/owner-position-delegation-20261008.md)，以最新补充的通用岗位委托要求为准。本文确定目标、范围和验收边界。[探索规划复核01](../receipts/planning-review-readiness-01.md)接受现状探索；[架构方案](solution-p64-mes-advanced-orchestration.md)明确六项选择及三阶段边界。[方案复核02](../receipts/planning-solution-review-02.md)§5为传播授权来源；传播02差异已核销，裁决及当前收尾见[传播规划复核02](../receipts/planning-review-ready-state-propagation-02.md)。本方向是唯一业务目标入口，实现步骤、接口、存储结构和测试设计由Executor负责。
 
 ## 1. 产品目标
 
@@ -148,7 +148,7 @@ XL阶段目标按产品能力划界：先形成可用的节点数据/变量/判�
 
 P64为READY（规划合同就绪、业务实现未授权）；不晋级功能数或核销既有P编号/清单。当前正式功能47、原90行46/22/22、ADV64和既有验证集合保持。关联ADV-M11-F01-04可复用子流程、ADV-M11-F02-02规则矩阵与P2/P4/P26能力子集，登记关联不等于这些总项已完成。
 
-下一动作：传播01已提交，按[传播规划复核01](../receipts/planning-review-ready-state-propagation-01.md)核销G1—G4，追加传播02后交Planner复核，再等待Owner实施指令。方案复核02§5保留传播授权来源，原探索已完成。P63业务和验证集合继续锁定。后续获得实施授权时以本文为唯一业务目标入口，按XL阶段边界交付。
+下一动作：传播02的G1—G4已由[传播规划复核02](../receipts/planning-review-ready-state-propagation-02.md)全部核销，Executor按其§3机械传播本次裁决及路由、追加传播03回读后等待Owner实施指令。Owner认可保留Server根gitlink78495dc。方案复核02§5保留原授权来源；P63业务/验证集合锁定。获实施授权后以本文为完整业务目标，按XL阶段边界交付。
 
 探索及未来验证遵守system.md：有限输入/输出/完成条件，不做非必要hash、不空转等待、不启动不可控后台任务、不擅停用户服务；正式UI证据来自可见可交互会话。规划阶段不编译、测试、迁移、访问数据库或控制设备。
 

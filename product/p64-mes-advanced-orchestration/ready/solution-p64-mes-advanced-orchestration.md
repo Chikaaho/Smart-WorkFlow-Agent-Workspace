@@ -86,4 +86,4 @@
 
 两代码仓分支已推送并建立`origin/feature/p64-mes-advanced-orchestration`跟踪；设备恢复见[设备交接](../../governance/device-handoff-20261008.md)。后续工程改动在对应feature分支进行；Executor启动时核实分支、起点变化、工作树和跟踪状态。只纳入本批授权文件，既有治理、gitlink及未跟踪项保留。commit采用规范格式和简短中文主题。
 
-当前Executor授权仍限READY文档传播；传播01复核剩G1—G4，按[传播规划复核01](../receipts/planning-review-ready-state-propagation-01.md)修正/补证，追加传播02后交Planner复核。原方案复核02§5为授权来源。传播01报告目标机两仓实际检出develop，远端feature存在；上表为分支创建时点，最新提交/分支关系待补证核实。实施仍在目标feature分支且等待Owner指令，业务目标沿主方向。
+传播02差异全部核销，当前按[传播规划复核02](../receipts/planning-review-ready-state-propagation-02.md)§3传播本次裁决及路由、追加传播03回读后等待实施指令。Owner认可保留Server根gitlink78495dc。传播02截止点两仓检出develop（Server8c62503/Web7af86f24），feature与develop差距分别0/3、0/1；上表为创建时点，后续变化按新回读核实。实施仍在目标feature分支，业务目标沿主方向。

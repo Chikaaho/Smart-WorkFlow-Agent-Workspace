@@ -25,4 +25,4 @@ P64=READY，A01—A12业务验收未开始。正式完成功能仍47，清单46/
 
 本轮[方案](../product/p64-mes-advanced-orchestration/ready/solution-p64-mes-advanced-orchestration.md)明确PD01—PD06与三阶段能力交付；[方案复核02](../product/p64-mes-advanced-orchestration/receipts/planning-solution-review-02.md)承接当前传播授权。
 
-唯一已授权下一动作：按[传播规划复核01](../product/p64-mes-advanced-orchestration/receipts/planning-review-ready-state-propagation-01.md)核销G1—G4，追加传播02后交Planner复核，再等待Owner实施指令。传播01报告本机两仓检出develop，远端feature存在；目标实施分支为feature/p64-mes-advanced-orchestration。当前Git关系待最新补证，XL阶段通过不代整体完成。
+唯一已授权下一动作：传播02的G1—G4已核销，按[传播规划复核02](../product/p64-mes-advanced-orchestration/receipts/planning-review-ready-state-propagation-02.md)§3传播裁决/路由，追加传播03回读后等待实施指令。Owner认可保留Server根gitlink78495dc。截止点两仓检出develop，目标实施分支feature/p64-mes-advanced-orchestration；XL阶段通过不代整体完成。
