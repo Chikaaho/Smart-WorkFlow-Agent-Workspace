@@ -1,6 +1,6 @@
 # P63：MES 前置能力——动态并行审批与一次性预约 IoT 下发
 
-2026-10-06；角色：Planner；来源：Owner 本轮需求。等级：L（跨表单、流程、组织、IoT、调度与权限边界；探索若发现核心架构演进再升级）。状态：VERIFYING；回执09复核核销19/20、A01—A09通过，按补充提示09收敛剩余1项。正式产品合同：`product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations.md`。
+2026-10-06；角色：Planner；来源：Owner 本轮需求。等级：L（跨表单、流程、组织、IoT、调度与权限边界；探索若发现核心架构演进再升级）。状态：PASSED；回执10复核20/20、A01—A10通过，整体完成待阶段三终态复核。正式产品合同：`product/p63-mes-workflow-foundations/passed/direction-p63-mes-workflow-foundations.md`。
 
 ## 1. 目标与场景依据
 
@@ -30,14 +30,14 @@
 - 新动态定义按人员ID或部门ID去重，表格重复对象保留来源行；同负责人不同部门仍独立审批。新轮次重新解析，同轮冻结；旧定义及实例继续原语义。
 - 预约限成功完成，时间与时区冻结；审批晚于预约时刻记过期。已创建预约允许迟到默认60秒、可配置1—3600秒；它是业务有效期，不是SLA。待触发可取消，未知结果不自动重发。
 
-原登记中的待裁决默认项由正式方向覆盖。完整产品合同、范围、风险及A01—A10验收见 `product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations.md`；实现步骤与测试设计由Executor制定。
+原登记中的待裁决默认项由正式方向覆盖。完整产品合同、范围、风险及A01—A10验收见 `product/p63-mes-workflow-foundations/passed/direction-p63-mes-workflow-foundations.md`；实现步骤与测试设计由Executor制定。
 
 ## 4. 范围与下一动作
 
 本轮交付两项公共基础能力及最小关联链，并保留普通手工并行。完整MES、温度Agent、周期预约、真实机房动作、部署及P62延期性能不在本轮范围。
 
-唯一当前执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-09.md`；裁决`product/p63-mes-workflow-foundations/receipts/planning-review-completion-09.md`。下一回执10，回执01—09历史保留。19/20核销、剩G10b；A01—A09通过（9/10）。动态直接人员/部门真实保存、knowledge完整当前值及本轮Git/视觉/收尾锁定。
+唯一当前执行入口：`product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations-terminal-sync.md`；最终裁决`product/p63-mes-workflow-foundations/receipts/planning-review-completion-10-passed.md`。下一终态同步回执01。20/20、A01—A10全部通过（10/10），业务缺口0；业务补充提示全部结清，仅历史引用。
 
-只缺最终Web2b0c660受影响门禁原输出；先恢复已运行工具结果，确丢失才最小充分有界工程门禁，不用35dd944旧快照或手写摘要代替。不重做UI、DB、审批/预约/设备链、Server/Phase4或全仓。Phase4受控恢复替代及合同解释锁定，不改截止/共享恢复。08空库残留已由09当前真实销毁回读替代，不追猜历史。
+功能验收PASSED，整体完成待Planner复核终态同步。当前功能46；阶段三授权P63登记为第47项，清单46/22/22=90、ADV64/其他P和明细状态保持。最终Web1365+3、79warning、四exit0；Server受影响模块与行为锁定。不重跑业务/门禁，不进入发布部署。
 
-P63关联既有P60 I4/P21/P62；VERIFYING、完整验收9/10，整体未PASSED或COMPLETED。功能46、清单46/22/22、ADV64、问题57起始基线保持，新发现如实登记，其他P不变。
+P62批准功能完成，性能Owner延期未验证、新资源策略关闭；完整MES、分管领导组织模型、厂商实网和部署边界保持。终态方向列唯一状态/计数/验证集合及完整当前入口同步范围；Executor先knowledge后摘要，回执后Planner独立确认COMPLETED。

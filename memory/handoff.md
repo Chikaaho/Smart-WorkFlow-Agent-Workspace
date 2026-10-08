@@ -1,11 +1,11 @@
-# P63功能复核09交接
+# P63功能验收PASSED交接
 
-2026-10-08；Planner；P63 L VERIFYING，19/20核销、剩G10b；A01—A09通过9/10，未进入阶段三。新增G01a：动态真实直接人员/部门选择、UI保存及FIXED数组稳定ID读回通过，19项与审查03—09子断言锁定。
+2026-10-08；Planner；复核10：20/20、A01—A10全部通过，业务缺口0；整体COMPLETED尚待阶段三同步回执独立复核。主合同归档product/p63-mes-workflow-foundations/passed/direction-p63-mes-workflow-foundations.md；所有业务提示结清，已证业务/工程结果锁定。
 
-本轮对象def2108058719690006529/v1DRAFT/node_1，USER[1,90002]、DEPT[1,90001]，两PNG实际可见。人员图保存中，由后续真实PUT200/保存行组合核销，不重截。逗号串2310拒绝及数组data[]校验通过。Web2b0c660最小UI与构建修复；Server19d1da2未改。knowledge完整第3行和字段已证，REG沿审查08合同裁决；两仓实际分支develop，正文develop-sw为转录。新PNG持久化、自身收尾通过；08空库残留撤旧广泛结论，以09实际drop8/9及计数0为当前事实，不追猜历史原因。
+最后G10b已补实际原输出：Web2b0c660最终干净树四门exit0，151文件+1跳过、1365测试+3跳过，数组化spec16为子集，lint0error/79warning，build1.96s。旧无原流1364/76不采用。Server19d1da2仅授权修复，iot63/engine76/process266原结果适用。真实配置/多身份/持久预约/受控回执及窄屏等沿审查03—10，不新发动作或重验。
 
-唯一残余G10b/A10：最终Web门禁只有文字摘要(typecheck0/lint76w/vitest1364+3/build0/spec16)，无工具原输出/真实命令时点exit。不能用35dd944旧结果替代新2b0c660。先恢复已跑原流，真丢失才最小充分有界Web工程门禁；真实计数不猜、不强求旧数；typecheck可静默但需真实调用exit。无需UI/DB/业务矩阵/Server/Phase4/全量复跑。
+阶段三唯一入口product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations-terminal-sync.md；下一receipts/terminal-sync-p63-mes-workflow-foundations-01.md。Executor先knowledge后全部受影响摘要/清单/README/工程文档，给逐文件字段原值与时点、47唯一功能登记/P63唯一新增、90行零状态变化、VB01—VB04集合一致、memory每文件<5000/总<20000及前后字节。Planner不读knowledge/代码，不执行工程验证。
 
-唯一入口product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-09.md；审查planning-review-completion-09.md；下一completion-p63-mes-workflow-foundations-10.md。Executor仅机械同步knowledge VERIFYING/19/20/剩1/A01—A09/审查09/提示09/回执10并给原值，Planner维护8摘要、不读knowledge/实现、不运行工程验证。
+当前正式功能46未晋级；唯一终态授权47=46+P63整体1，清单46/22/22=90、ADV64保持，其他P/明细不核销。同步后状态COMPLETED（待规划终态复核），不得先写规划已确认；回执后唯一下步Planner复核。历史P62功能46标时点，当前项目总数统一授权47；当前索引不能保留旧提示/VERIFYING为活动入口。
 
-功能46、清单46/22/22、ADV64、问题57历史基线保持，新缺陷如实登记。P62批准范围完成、性能Owner延期、新资源策略关闭。Phase4截止内PG恢复1/0替代锁定，原全量失败保留；全部收敛不要求全部成功，无效果且执行权终止可EXPIRED，进行中/部分效果依权威结果，不改共享截止/恢复。无发布部署，禁止sleep/延迟轮询、例行hash及不可观测后台。
+Phase4原失败保留，截止内PG恢复1/0等强度替代已接受，无效果且执行权终止可EXPIRED、进行中/部分效果依权威结果；全部收敛不要求全部成功，不改共享截止/恢复。P62批准功能范围完成、性能Owner延期未验证、新资源策略关闭，无发布部署。终态任务仅文档，不启动服务/DB/浏览器/测试构建/性能，不做hash或空等。问题57是起始历史，不删除新登记；08空库差异已由09当前清理替代不追猜。
