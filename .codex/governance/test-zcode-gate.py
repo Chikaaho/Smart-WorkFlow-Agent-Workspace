@@ -94,6 +94,10 @@ class RoleDeclarationPatternTests(unittest.TestCase):
             "作为管理员检查",
             "以执行的身份开始",
             "授权执行以下批次",
+            "执行，领取任务",
+            "管理员，看一下这个会话",
+            "规划：复核回执",
+            "执行",
         ):
             self.assertEqual("declared", role_bind_module.get_declared_role(prompt)["reason"], prompt)
 

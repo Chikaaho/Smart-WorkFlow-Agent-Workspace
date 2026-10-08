@@ -28,6 +28,8 @@ ROLE_PATTERNS = [
     ("declarative_subject", r"(?:你|本会话|当前会话|本任务|本次|这次)\s*(?:现在)?\s*(?:是|为|＝|=)\s*(?P<role>规划|执行|管理员)"),
     ("declarative_as", r"作为\s*(?P<role>规划|执行|管理员)"),
     ("declarative_in_role", r"以\s*(?P<role>规划|执行|管理员)\s*(?:的)?\s*(?:身份|角色)"),
+    # 提示词以角色词开头并紧跟标点或结尾（如“执行，领取任务”）：模型据此开工，门禁同样认。
+    ("leading_role_call", r"^\s*(?P<role>规划|执行|管理员)\s*(?:[，,、：:。！!]|$)"),
 ]
 
 ROLE_ALIASES = {"规划": "planner", "执行": "executor", "管理员": "admin"}
