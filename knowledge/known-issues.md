@@ -37,6 +37,8 @@
 
 > **2026-10-08 P63 阶段三同步轮：不新增、不关闭 I 问题（集合维持 57 条，I1—I58 缺 I27，不增删）；登记本阶段接受的边界与既有失败归属**：① P63 执行期确证并修复的缺陷（配置保存入口 `PUT /workflow/defs/{id}/graph` 缺 `@PreAuthorize`、多值 FIXED 内联逗号串被 2310 拒绝等）已随候选提交（Server `19d1da2`、Web `2b0c660`），不登记为开放 I 编号；② `Phase4PgStartWindowCrashTest.scheduledFlowWindowCrashRecoversToExactlyOnce` 既有失败=装置时序（自连接 `pg_terminate_backend` 使注入标记丢失→await 静默耗满 30s）+ 审查03§49 守准入截止，按审查08 由截止内受控恢复等强度替代（`P63FlowAdmissionRecoveryPgTest` 1/0/0/0）接受，登记 REG-P63-Phase4CrashTest（原件 `product/p63-mes-workflow-foundations/receipts/evidence/acceptance-08/raw/g10b-phase4-mechanism-original.md`）；③ bootstrap 全量 286/3/0/27 exit1 如实保留，不写「全量通过」；两外部受控资产（broker 18830 / 对端 9778）缺失按环境依赖隔离 3/0/0/0；④ P62 性能仍 Owner 延期/未验证、新资源策略默认关闭、厂商实网边界保持；版本边界另记：P63 迁移链终点 0.1.6，迁移版本不冒充产品发布版本，产品版本/tag/Release/部署事实不变。以上均为规划审查10 通过口径，不降低租户隔离、失败关闭或预约/命令正确性目标。
 
+> **2026-10-08 P64 READY 传播收尾轮：不新增、不关闭 I 问题（产品 I 集合 57 条不增删）；登记工作区治理基础设施缺陷（非产品缺陷，不占 I 编号，归属管理员）**：Windows/ZCode Stop 门禁在本机无法裁决任何终态——`.codex/governance/validate-terminal.ps1:138` 与 `test-terminal-contract.ps1:180` 以 `Get-Content -Raw`（Windows PowerShell 5.1 默认按系统 ANSI/GBK 解码）读取**无 BOM 的 UTF-8** 契约文件 `terminal-contract.json`，中文段落字节被误读破坏 JSON 结构，`ConvertFrom-Json` 报「传入的对象无效，应为":"或"}"」于字符 14541；同文件加 `-Encoding UTF8` 实测 `LOAD_OK`（4 状态齐全），Node 按 UTF-8 解析同一文件通过，证明文件本体合法、仅 PS 读取编码缺陷；Python/POSIX 入口显式 UTF-8 不受影响。影响：本机机器终态裁决不可用（fail-closed，符合 §0.8 禁止静默放行），模型终态仅能按契约状态表离线校验。修复归属 Admin 写域（`.codex/governance/` 执行角色不越权修改）：两处 `Get-Content` 补 `-Encoding UTF8`（或为契约文件加 BOM），修后经 `hook-selfcheck`/`test-terminal-contract` 复核。诊断时点 2026-10-08 21:2x—21:5x（P64 READY 传播轮 4 次门禁 fail-closed 复现），设备交接后 Windows 路径首次实跑暴露；与交接记录「目标机安装与实际派发应在目标机回读」的待办一致。
+
 ---
 
 ## 问题索引
