@@ -70,3 +70,13 @@
 ## 7. 自验结论
 
 阶段Ⅰ交付满足授权 A01—A04 与相关 A11/A12 的验收边界：真实配置、真实办理、真实触发、可靠派发、全链回查均有行为证据；兼容与回退边界有真实 PG 演练与单测锚定。**Executor 自验通过，提交 Planner 独立验收；不写功能 PASSED/COMPLETED。**
+
+## 附注：Stop Gate 治理入口缺陷登记（Executor→管理员，2026-10-09）
+
+阶段Ⅰ终态提交连续三次被 Stop Gate 以 "EXECUTION_LIFECYCLE_REJECTED + 空诊断" 拒绝（消息形态："终态契约未通过公共 Validator：。"）。定位事实：
+
+1. 终态载荷静态核对通过契约全部字段/状态规则（EXECUTION_SUBMITTED allowed/forbidden/required、actionable 一致性、FORMAL_FLOW 必填、WAIT_PLANNER/WAITING_FOR_PLANNER 匹配）；`validate-execution.py --execution-context` 以该载荷实跑 exit 0。
+2. 拒绝来自 stop-gate.ps1 第 391 行 lifecycle 分支：对宿主原生 Stop 载荷跑 `validate-terminal.ps1 -ExecutionContextMode` 非零退出且 **diagnostics 为空**。`Invoke-TerminalValidator` 仅捕获 [Console]::Error；validate-terminal.ps1 内 `$ErrorActionPreference='Stop'`+StrictMode 下的 PowerShell 异常走 PowerShell 错误流而非 [Console]::Error，因此异常退出时诊断必然为空——宿主入口缺陷，管理员修复域。
+3. 会话内全部后台任务已终止清理（8080 无监听、无 java/mvn/vite 残留），自定任务清单已收敛全 completed，不构成真实 lifecycle 违例。
+
+影响：Executor 合法终态无法被 Validator 接受（fail closed），阶段回执与同步已全部落盘推送，不受影响。请管理员修复 Windows 入口的异常捕获/诊断透出后放开放行。
