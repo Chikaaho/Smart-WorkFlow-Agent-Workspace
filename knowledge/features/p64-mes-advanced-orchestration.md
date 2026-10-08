@@ -28,8 +28,8 @@
 | Owner 岗位委托补充 | `product/p64-mes-advanced-orchestration/inputs/owner-position-delegation-20261008.md`（后台「源岗位→受托岗位」通用委托，按受托岗位任职解析办理人） |
 | 探索任务（已完成·历史） | `search_task/p64-mes-advanced-orchestration-readiness-20261008.md`（已标作历史） |
 | 探索回执（历史输入） | `search_fallback/p64-mes-advanced-orchestration-readiness-20261008.md`＋`…-attachments.md`（逐题证据、R 矩阵、真值表、影响/资产/入口清单）＋`…-p63-propagation-readback.md`（P63 传播回读） |
-| READY 传播回执与复核 | 传播回执 `receipts/ready-state-propagation-01.md`；规划复核01 `receipts/planning-review-ready-state-propagation-01.md` **未通过（G1—G4）**＝唯一当前执行入口；修正补证回执 `receipts/ready-state-propagation-02.md`（G3 gitlink 偏差待 Owner 裁量） |
-| 代码分支 | 实施目标分支＝两仓 `feature/p64-mes-advanced-orchestration`（已推送 origin：Server `c79db713`、Web `2b0c660`）；本机检出＝两仓 `develop`（交接后既有状态，实施获授权后切换）；2026-10-08 21:4x `rev-list` 回读 Server develop 领先 feature 0/3、Web 0/1（均为文档提交，非业务实现） |
+| READY 传播回执与复核 | 传播回执 `receipts/ready-state-propagation-01.md`/`-02.md`；规划复核01（G1—G4）→ 规划复核02 `receipts/planning-review-ready-state-propagation-02.md` **四项差异全部核销关闭**（G3 经 Owner 认可保留 Server gitlink `78495dc`）；裁决传播回执 `receipts/ready-state-propagation-03.md` |
+| 代码分支 | 实施目标分支＝两仓 `feature/p64-mes-advanced-orchestration`（已推送 origin：Server `c79db713`、Web `2b0c660`）；本机检出＝两仓 `develop`（实施获授权后切换）；2026-10-08 回读 Server develop 领先 feature 0/3、Web 0/1（均为文档提交，非业务实现）；工作区 HEAD 内 Server gitlink=`78495dc…` 经 Owner 认可保留（复核02 G3），与检出前进的脏差异如实保留、不回拨 |
 | 规划侧路由 | `todo/p64-mes-advanced-orchestration.md`、`todo/requirement-pool.md`（2026-10-08 当前规划）、`memory/state.md`、`memory/handoff.md` |
 
 ## 3. 现状探索要点（2026-10-08，只读静态＋既有回执核对）
