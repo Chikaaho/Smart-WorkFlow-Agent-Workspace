@@ -1,9 +1,10 @@
 # 近期有效决策摘要
 
-P63（L）COMPLETED（规划已确认，2026-10-08终态最终复核02）：20/20、A01—A10及TS01—TS03全部核销，业务与终态验收剩余0。正式功能47（46+P63整体1），清单46/22/22=90、ADV64/其他P明细保持，VB01—VB04锁定；主/终态方向均passed。裁决`product/p63-mes-workflow-foundations/receipts/planning-final-review-terminal-sync-p63-mes-workflow-foundations-02-completed.md`；唯一后续机械动作=执行层按裁决§4传播新确认措辞/归档路径，完成后等待Owner下一目标。P62性能Owner延期未验证、新资源策略关闭。
+P64（XL）MES高级流程编排与业务闭环=PLANNING（2026-10-08，方向已登记，未授权实现）。唯一执行入口`search_task/p64-mes-advanced-orchestration-readiness-20261008.md`：核实P63确认措辞传播后完成P64现状探索；回执由Planner收敛READY，方向/源摘要见`product/p64-mes-advanced-orchestration/`。P63已COMPLETED（规划已确认），20/20、A01—A10、TS01—TS03核销，VB锁定。正式功能47、清单46/22/22=90、ADV64及其他P明细保持；P62性能Owner延期未验证、新资源策略关闭。
 
-> 同步点：2026-10-08（P63 阶段三同步）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）、`knowledge/current-status.md` 与对应回执。
+> 同步点：2026-10-08（P64方向登记）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）、`knowledge/current-status.md` 与对应回执。
 
+- P64：业务主链以多流程编排；主表/节点表/变量各司其职，JS只判断、动作受控执行；后台源岗位→受托岗位委托映射，经组织任职解析实际办理人、同轮冻结；分组子流程隔离回写、四等待策略及迟到结果冻结。以Owner摘要/岗位委托补充与P64方向为输入，探索后收敛契约。
 - 当前状态与历史物理分离；当前值只见 `knowledge/current-status.md`（历轮 P63/P62 长条目已迁 `knowledge/history/current-status-through-2026-10-08-p63-stage3-before.md`）；终态机器契约单一源 `.codex/governance/terminal-contract.json`。
 - Planner 以 `memory/` 最小摘要恢复；冲突时按 knowledge 权威修正，不反向裁决。
 - P62 批准功能范围 COMPLETED（规划已确认，2026-10-06）；性能 Owner 延期未验证、新资源策略默认关闭；46 为 P62 验收时点值，当前项目总数47。
