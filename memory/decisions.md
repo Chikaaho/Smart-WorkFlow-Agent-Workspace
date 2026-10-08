@@ -1,8 +1,8 @@
 # 近期有效决策摘要
 
-P64（XL）=READY，合同/方案就绪，实现未授权。传播02的G1/G2/G4通过，G3经Owner认可保留Server gitlink78495dc关闭。唯一Executor动作：`product/p64-mes-advanced-orchestration/receipts/planning-review-ready-state-propagation-02.md`§3传播本次裁决及当前路由，回读后等待Owner实施指令。P63已COMPLETED、VB锁定；功能47、清单46/22/22=90、ADV64保持；P62性能延期未验证/新策略关闭。
+P64（XL）=READY（Owner已授权完整实施，待Executor实际启动）。唯一下一动作=Executor按`product/p64-mes-advanced-orchestration/ready/authorization-p64-implementation-20261008.md`领取阶段I数据到动作，覆盖A01—A04及相关A11/A12；实际启动后登记IN_PROGRESS。READY传播/G1—G4已关闭；根Server gitlink78495dc按Owner裁量保留。功能47、清单46/22/22=90、ADV64、P63及VB保持；P62性能延期/策略关闭。
 
-> 同步点：2026-10-08（P64探索复核/READY）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）、`knowledge/current-status.md` 与对应回执。
+> 同步点：2026-10-08（Owner授权P64实施）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）、`knowledge/current-status.md` 与对应回执。
 
 - P64：业务主链以多流程编排；主表/节点表/变量各司其职，JS只判断、动作受控执行；后台源岗位→受托岗位委托映射，经组织任职解析实际办理人、同轮冻结；分组子流程隔离回写、四等待策略及迟到结果冻结。变量有效轮次/缺值、S2八组合、数量账业务结果、规模护栏与存量兼容已收敛，详见方向。
 - 当前状态与历史物理分离；当前值只见 `knowledge/current-status.md`（历轮 P63/P62 长条目已迁 `knowledge/history/current-status-through-2026-10-08-p63-stage3-before.md`）；终态机器契约单一源 `.codex/governance/terminal-contract.json`。
