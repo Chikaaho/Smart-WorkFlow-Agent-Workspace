@@ -1,11 +1,32 @@
-# P63终态复核01交接
+# P63功能交接摘要
 
-2026-10-08；Planner；功能PASSED锁定（20/20、A01—A10全部通过）；终态01未通过（TS01—TS03），三项已由本轮按提示01关闭并提交回执02，整体待Planner复核02确认。机械状态COMPLETED（待规划终态复核）、正式功能47不回退；主合同passed，终态方向仍ready。
-
-唯一当前执行入口`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-terminal-sync-01.md`；下一terminal-sync-p63-mes-workflow-foundations-02.md；提交后Planner复核02。三项已按提示01关闭：TS01=47唯一登记工具实计（分类/旧46零变化/P63一次）、TS02=known-issues L38与Server清单L52整行到行尾回读、TS03=候选19d1da2与文档HEAD692b73c分层（混称0）；证据`receipts/evidence/terminal-sync-02/`，只补文档未重验业务；审查见`planning-review-terminal-sync-p63-mes-workflow-foundations-01.md`。
-
-已核：90行三源附件逐ID与ig2锁定基准一致，零缺失/新增/重复/差异，46/22/22=90；VB01—VB04三方一致，Web1365+3/79w四exit0，Serveriot63/engine76/process266分列，资产3/0、截止内恢复1/0单列；历史全量286/3/0/27 exit1保留。memory19313→16154，单件最大2920达标。本轮路由变化后再核字节。
-
-功能47=46+P63整体1；P63 R01—R06授权核销，原90明细/新增里程碑集合空，ADV64/P26/其他P保持。P6246为历史时点，当前47；问题57是起始历史口径，保留REG及新事实。P62性能Owner延期未验证，新资源策略默认关闭；无发布部署或新业务执行任务。
-
-验收候选Server19d1da2/Web2b0c660；Server文档子提交692b73c，根本轮开始HEAD bfe365c（develop-sw，跟踪0/0）。候选不冒称当前HEAD，当前Git以实际回读时点；文档修改不使业务快照失效。Executor先knowledge后摘要，证据差分新附件terminal-sync-02。禁止hash、sleep空等、服务/DB/浏览器/测试构建/性能/发布部署。
+## 1. 功能名称
+P63 MES前置能力：动态并行审批与一次性预约IoT下发（L）。
+## 2. 功能目标
+真实表单选择人员/部门和时间→动态并行审批→成功完成→预约到点下发→受控结果回查；保留手工并行及存量语义。
+## 3. 最终状态
+COMPLETED（规划已确认，2026-10-08）。裁决product/p63-mes-workflow-foundations/receipts/planning-final-review-terminal-sync-p63-mes-workflow-foundations-02-completed.md。
+## 4. 本轮做了什么
+复核终态回执02，TS01—TS03全部核销；归档终态方向，更新规划当前摘要/todo。
+## 5. Executor内部Step汇总
+已完成实现/补证/终态同步及三项文档差异；不作逐Step重新验收。
+## 6. 实际修改范围
+交付涉及Server表单/审批解析/轮次/终态意图/IoT预约/迁移及Web设计配置/填报/详情；本轮仅规划文档。根gitlink和无关治理不更新。
+## 7. 测试和验收结果
+20原子/A01—A10全部通过；终态差异3/3通过。VB01—VB04锁定：Web1365+3、151+1、79warning、四exit0；Serveriot63/engine76/process266分列，资产3/0及FLOW恢复1/0单列；迁移链0.1.6。历史全量286/3/0/27 exit1保留。
+## 8. 关键设计决策
+新来源按人员/部门身份独立职责，同轮冻结/新轮重算、旧v1不迁移；预约成功后一次性、时区显式、窗口内认领与外发、取消竞争；UNKNOWN不自动重发，全部收敛不要求全部成功。
+## 9. 当前系统状态
+正式功能47；清单46/22/22=90零升降、ADV64；P63 R01—R06核销，其他P/明细不变。两方向passed。验收Server19d1da2/Web2b0c660；回执截止Server文档1f5f470，二者分层。P62批准范围完成，新资源策略关闭。
+## 10. 还有什么没做
+新产生的确认措辞与归档路径待执行层机械传播；不冒称已落knowledge/工程文档。P62性能Owner延期未验证；完整MES/分管领导模型/周期预约/厂商实网/部署不在本次范围。
+## 11. 已知问题和风险
+REG-P63-Phase4CrashTest按截止内恢复等强度替代接受；历史失败留账。问题57为起始历史口径；P26及其他开放项不核销。
+## 12. 下一轮要做什么
+唯一授权入口=本最终裁决§4；仅传播确认措辞，结束后等待Owner下一目标，无活动业务任务。
+## 13. 下一轮达到什么结果
+受影响当前入口指向规划已确认COMPLETED/归档passed；计数/基线不变，实际文档回读及普通Git远端回读。无新增业务验收回执要求。
+## 14. 开始前必读
+Planner：system.md/roles/planner.md、memory及最终裁决；Executor另读其角色、knowledge/current-status.md/session-handoff.md/P63登记与相关工程文档。
+## 15. 新会话启动提示词
+“你是执行，读取P63终态最终复核02§4，仅传播确认措辞和归档路径并回读；业务已完成，不重跑测试/设备/性能/发布。”规划会话恢复本摘要及裁决后等待Owner新目标。

@@ -1,6 +1,6 @@
 # memory 使用说明
 
-P63（L）COMPLETED（待规划终态复核，2026-10-08终态复核01）；功能PASSED：20/20、A01—A10通过，业务缺口0。终态三项差异（TS01登记计数/TS02原行截断/TS03候选与文档HEAD分层）已按唯一执行入口 `product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-terminal-sync-01.md` 关闭并提交 `product/p63-mes-workflow-foundations/receipts/terminal-sync-p63-mes-workflow-foundations-02.md`（附件 `receipts/evidence/terminal-sync-02/`）。功能47、清单46/22/22=90/ADV64保持；VB01—VB04锁定；P62性能Owner延期未验证、新资源策略关闭。
+P63（L）COMPLETED（规划已确认，2026-10-08终态最终复核02）：20/20、A01—A10及TS01—TS03全部核销，业务与终态验收剩余0。正式功能47（46+P63整体1），清单46/22/22=90、ADV64/其他P明细保持，VB01—VB04锁定；主/终态方向均passed。裁决`product/p63-mes-workflow-foundations/receipts/planning-final-review-terminal-sync-p63-mes-workflow-foundations-02-completed.md`；唯一后续机械动作=执行层按裁决§4传播新确认措辞/归档路径，完成后等待Owner下一目标。P62性能Owner延期未验证、新资源策略关闭。
 
 memory 为规划最小摘要；`knowledge/current-status.md` 为持久权威（历轮 P63/P62 长条目已迁 `knowledge/history/current-status-through-2026-10-08-p63-stage3-before.md`），`product/` 保存裁决与证据。
 

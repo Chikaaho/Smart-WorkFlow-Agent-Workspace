@@ -1,6 +1,8 @@
+> 2026-10-08整体COMPLETED（规划已确认），最终裁决`../receipts/planning-final-review-terminal-sync-p63-mes-workflow-foundations-02-completed.md`。下文产品合同与功能验收时点保留；当前唯一机械传播动作见最终裁决§4，完成后等待Owner下一目标。
+
 # P63：MES前置能力正式方向
 
-2026-10-06；Planner；L；功能验收PASSED（2026-10-08复核10；20/20、A01—A10通过）。依据：Owner原始两项需求、普通手工并行兼容补充，以及 `../receipts/planning-review-readiness-01.md`。本文件为产品合同；当前唯一执行入口为 `../ready/direction-p63-mes-workflow-foundations-terminal-sync.md`，验收结论见 `../receipts/planning-review-completion-10-passed.md`。
+2026-10-06；Planner；L；功能验收PASSED（2026-10-08复核10；20/20、A01—A10通过）。依据：Owner原始两项需求、普通手工并行兼容补充，以及 `../receipts/planning-review-readiness-01.md`。本文件为已归档产品合同；阶段三归档合同为 `direction-p63-mes-workflow-foundations-terminal-sync.md`，验收结论见 `../receipts/planning-review-completion-10-passed.md`。
 
 ## 1. 目标和范围
 
@@ -101,8 +103,8 @@
 
 主要风险为手工并行回归、去重变化减少/增加职责、新轮次污染历史、成功完成与预约意图脱节、取消/触发竞争及过期控制动作外发。若确认必须重大引擎重构/跨版本持续迁移，升级XL并提交影响事实由Planner重新限定方向；局部实现困难不构成自行放宽A09或改变Owner目标的理由。
 
-## 7. 交付与状态
+## 7. 功能验收时点记录（整体终态见顶部最终裁决）
 
-2026-10-08：功能验收PASSED，20/20核销、A01—A10全部通过，业务验收剩余0；本合同归档passed。历史补充提示01—09结清。唯一当前任务为阶段三终态同步，入口`../ready/direction-p63-mes-workflow-foundations-terminal-sync.md`；下一回执`../receipts/terminal-sync-p63-mes-workflow-foundations-01.md`，整体完成待Planner终态复核。
+2026-10-08：功能验收PASSED，20/20核销、A01—A10全部通过，业务验收剩余0；本合同归档passed。历史补充提示01—09结清。该功能验收时点的任务为阶段三终态同步，入口`direction-p63-mes-workflow-foundations-terminal-sync.md`；下一回执`../receipts/terminal-sync-p63-mes-workflow-foundations-01.md`，整体完成待Planner终态复核。
 
 验收时点正式功能46、清单46/22/22、ADV64保持；阶段三唯一值授权P63登记为第47项，清单90行及其他P/明细不变。执行层只能机械同步该清单，不自行写规划已确认COMPLETED。P62性能Owner延期未验证、新资源策略关闭，Owner发布/部署边界保持。

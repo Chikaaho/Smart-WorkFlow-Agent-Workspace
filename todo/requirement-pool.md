@@ -9,7 +9,7 @@
 
 ## Owner 优先级覆盖
 
-**2026-10-08 当前规划**：P63 MES前置能力，L / COMPLETED（待规划终态复核）。功能PASSED（20/20、A01—A10通过、业务缺口0）锁定；[终态复核01](../product/p63-mes-workflow-foundations/receipts/planning-review-terminal-sync-p63-mes-workflow-foundations-01.md)未通过，剩TS01登记计数证据/TS02原行截断/TS03候选与文档HEAD分层。唯一入口：[终态差异提示01](../product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-terminal-sync-01.md)；下一终态回执02，提交后Planner复核02。正式功能47、清单46/22/22=90、ADV64保持，整体尚未确认完成。
+**2026-10-08 当前规划**：P63 MES前置能力整体 **COMPLETED（规划已确认）**，[终态最终复核02](../product/p63-mes-workflow-foundations/receipts/planning-final-review-terminal-sync-p63-mes-workflow-foundations-02-completed.md)通过：20/20、A01—A10及TS01—TS03全部核销，业务/终态验收缺口0。正式功能47（46+P63整体1）、清单46/22/22=90/ADV64保持；主/终态方向均passed。唯一后续机械动作=Executor按该裁决§4传播新确认措辞及归档路径，结束后等待Owner下一目标；无活动业务或性能任务。
 
 P62当前批准功能范围COMPLETED（规划已确认，2026-10-06）；功能与终态验收缺口均为0。正式功能46（45+1；**46为P62验收时点值，当前项目总数统一47**）、清单✅46/🟦22/⬜22=90、ADV64、问题57；P62批准功能交付已核销。性能Owner延期未验证、新资源策略默认关闭。最终裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md。P62无剩余业务验收项；本次探索已确认knowledge登记的最终确认传播；不外推发布或全入口实时状态。Owner新目标为P63 MES前置能力，当前排期见本节顶部。
 
@@ -158,7 +158,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 | P60 | 成熟OA `0.1.0`路线（组织权限、表单、流程设计与审批、流程运营、工作台、SSO、通知）；当前交付迭代`0.0.3` | Owner 2026-09-08；优先级P0；[归档方向](../product/v0.1.0-oa-completion/passed/direction-v0.1.0-oa-completion.md) | `COMPLETED（规划已确认，2026-09-15）`；整体14/14；Workspace退出0.1.0判断；Server/Web `0.1.0`已发布；版本统筹项完成核销但不增加业务功能计数；R8五渠道及三Provider真实链=Owner延期/未验证 |
 | P61 | 全系统用户可见错误码与提示语人性化治理 | Owner 2026-09-14/20；优先级P1；L；[归档方向](../product/p61-user-facing-message-humanization/passed/direction-p61-user-facing-message-humanization-scope-correction-20260920.md) | ✅ `COMPLETED（规划已确认，2026-09-20）`、已核销；不增加业务功能数 |
 | P62 | 低代码事务能力与 BPM 分级执行架构（OA / MES / WMS / IoT） | Owner 2026-09-30；XL；[正式需求](p62-lowcode-transaction-bpm-tiering.md)；[CTO 评审输入](p62-architecture-review-source-20260930.md) | P62当前批准功能范围COMPLETED（规划已确认，2026-10-06）；功能与终态验收缺口均为0。正式功能46（45+1；**46为P62验收时点值，当前项目总数统一47**）、清单✅46/🟦22/⬜22=90、ADV64、问题57；P62批准功能交付已核销。性能Owner延期未验证、新资源策略默认关闭。最终裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md。P62无剩余业务验收项；本次探索已确认knowledge登记的最终确认传播；不外推发布或全入口实时状态。Owner新目标为P63 MES前置能力，当前排期见本节顶部。 |
-| P63 | MES前置能力：动态并行审批与一次性预约IoT下发 | Owner 2026-10-06；L；[需求定义](p63-mes-workflow-foundations.md)；关联P60 I4/P21/P62 | COMPLETED（待规划终态复核）；业务20/20、A01—A10通过锁定；终态01剩3差异，见[唯一提示](../product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-terminal-sync-01.md)；下一终态回执02；正式功能47、90行46/22/22零升降保持。 |
+| P63 | MES前置能力：动态并行审批与一次性预约IoT下发 | Owner 2026-10-06；L；[需求定义](p63-mes-workflow-foundations.md)；关联P60 I4/P21/P62 | **COMPLETED（规划已确认，2026-10-08）**；R01—R06批准交付核销，20/20、A01—A10、TS01—TS03全部通过；[最终裁决](../product/p63-mes-workflow-foundations/receipts/planning-final-review-terminal-sync-p63-mes-workflow-foundations-02-completed.md)；正式功能47、清单46/22/22零升降；仅余新确认措辞机械传播。 |
 
 管理员P0治理插单（2026-09-15）：[连续执行与可见浏览器验收门禁](admin-machine-gate-continuous-visible-browser.md)已`COMPLETED（规划确认）`，本地提交`8e87899`，治理测试sh 70/70、PowerShell 49/49。该任务不并入P60业务计数；远程发布仍需Owner另行授权。
 

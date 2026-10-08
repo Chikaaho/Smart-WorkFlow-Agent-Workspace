@@ -1,6 +1,6 @@
 # P63：MES 前置能力——动态并行审批与一次性预约 IoT 下发
 
-2026-10-06；角色：Planner；来源：Owner 本轮需求。等级：L（跨表单、流程、组织、IoT、调度与权限边界；探索若发现核心架构演进再升级）。状态：**COMPLETED（待规划终态复核，2026-10-08 阶段三同步）**；功能级 PASSED=规划审查10（20/20、A01—A10 通过（10/10）、业务缺口0）。正式产品合同：`product/p63-mes-workflow-foundations/passed/direction-p63-mes-workflow-foundations.md`。
+2026-10-06；角色：Planner；来源：Owner 本轮需求。等级：L（跨表单、流程、组织、IoT、调度与权限边界；探索若发现核心架构演进再升级）。状态：**COMPLETED（规划已确认，2026-10-08）**；功能级 PASSED=规划审查10（20/20、A01—A10 通过（10/10）、业务缺口0）。正式产品合同：`product/p63-mes-workflow-foundations/passed/direction-p63-mes-workflow-foundations.md`。
 
 ## 1. 目标与场景依据
 
@@ -32,10 +32,10 @@
 
 原登记中的待裁决默认项由正式方向覆盖。完整产品合同、范围、风险及A01—A10验收见 `product/p63-mes-workflow-foundations/passed/direction-p63-mes-workflow-foundations.md`；实现步骤与测试设计由Executor制定。
 
-## 4. 范围与下一动作
+## 4. 最终状态与交接
 
-功能级PASSED（审查10：20/20、A01—A10通过，业务缺口0）锁定；阶段三回执01已由Planner复核，终态未通过。状态COMPLETED（待规划终态复核），正式功能47、清单46/22/22=90、ADV64/P26/其他P保持，不提前写整体规划已确认。
+P63本次批准R01—R06交付COMPLETED（规划已确认，2026-10-08）。功能20/20、A01—A10通过，终态TS01—TS03全部核销；业务与终态验收剩余0。[最终裁决](../product/p63-mes-workflow-foundations/receipts/planning-final-review-terminal-sync-p63-mes-workflow-foundations-02-completed.md)。主方向/终态方向均passed，业务与终态差异提示均结清。
 
-唯一当前执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-terminal-sync-01.md`；审查`product/p63-mes-workflow-foundations/receipts/planning-review-terminal-sync-p63-mes-workflow-foundations-01.md`。剩TS01登记计数证据、TS02关键回读截断、TS03候选与文档HEAD分层；下一回执`terminal-sync-p63-mes-workflow-foundations-02.md`，提交后Planner复核02。终态方向仍ready，主合同passed；原执行动作结清，仅保留合同。
+正式功能47=46+P63整体1；清单46/22/22=90、ADV64/P26/其他P明细保持，新增里程碑/原90行核销集合空。VB01—VB04锁定不重验；验收Server19d1da2/Web2b0c660，Server文档提交按回执截止1f5f470分列。
 
-VB01—VB04、90行、业务门禁锁定；Web1365+3/79w四exit0、Serveriot63/engine76/process266及验收候选19d1da2保持；Server文档HEAD692b73c与候选分列。本轮只文档差异补证与路由传播，不跑业务验证、不发布部署。P62性能Owner延期未验证、新资源策略关闭，完整MES/分管领导组织模型/周期预约/厂商实网/部署范围保持。问题57是起始历史口径，保留REG和新事实。
+唯一后续机械动作：Executor按最终裁决§4传播新确认措辞和passed路径，完成后等待Owner下一目标；不冒称已传播至knowledge/工程文档，不再要求第三轮相同验收回执。P62性能Owner延期未验证、新资源策略关闭；完整MES、分管领导模型、周期预约、厂商实网/真实机房、部署范围保持。
