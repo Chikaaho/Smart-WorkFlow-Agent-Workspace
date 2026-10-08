@@ -135,7 +135,7 @@ if (-not $trimmedPayload.StartsWith('{') -or $payload -isnot [pscustomobject]) {
 }
 
 try {
-    $contract = Get-Content -LiteralPath $contractPath -Raw | ConvertFrom-Json
+    $contract = Get-Content -LiteralPath $contractPath -Raw -Encoding UTF8 | ConvertFrom-Json
 } catch {
     [Console]::Error.WriteLine("terminal: contract: cannot load $contractPath")
     exit 2
