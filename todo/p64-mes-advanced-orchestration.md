@@ -23,4 +23,6 @@ P64=READY，A01—A12业务验收未开始。正式完成功能仍47，清单46/
 
 [规划复核01](../product/p64-mes-advanced-orchestration/receipts/planning-review-readiness-01.md)接受探索（7项缺失/5项部分具备），将变量/表单提交、四等待策略、岗位多任职及4跳委托、八组合真值表、数量账实际结果、有限规模、升级/回退边界收敛进方向。
 
-唯一已授权下一动作：按规划复核01§5机械传播READY及当前路由，字段回读写`product/p64-mes-advanced-orchestration/receipts/ready-state-propagation-01.md`；完成后等待Owner实施指令。原探索已完成；后续实施获授权时以正式方向为完整目标入口，XL阶段通过不代整体完成。
+本轮[方案](../product/p64-mes-advanced-orchestration/ready/solution-p64-mes-advanced-orchestration.md)明确PD01—PD06与三阶段能力交付；[方案复核02](../product/p64-mes-advanced-orchestration/receipts/planning-solution-review-02.md)承接当前传播授权。
+
+唯一已授权下一动作：按方案复核02§5机械传播READY/方案/分支及当前路由，字段回读写`product/p64-mes-advanced-orchestration/receipts/ready-state-propagation-01.md`；完成后交Planner复核，再等待Owner实施指令。Server/Web已从develop创建`feature/p64-mes-advanced-orchestration`；commit采用规范格式和简短中文主题。原探索已完成；后续实施获授权时以正式方向为完整目标入口，XL阶段通过不代整体完成。

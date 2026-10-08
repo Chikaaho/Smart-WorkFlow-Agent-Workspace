@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-P64（XL）MES高级流程编排与业务闭环=READY（2026-10-08，探索已复核，产品合同就绪，业务实现未授权）。唯一下一动作：`product/p64-mes-advanced-orchestration/receipts/planning-review-readiness-01.md`§5机械传播READY，完成后等待Owner实施指令；主方向见同目录`ready/`。P63已COMPLETED（规划已确认），六入口确认传播已核销，20/20、A01—A10、TS01—TS03及VB锁定。正式功能47、清单46/22/22=90、ADV64及其他P明细保持；P62性能Owner延期未验证、新资源策略关闭。
+P64（XL）MES高级流程编排与业务闭环=READY（2026-10-08，合同/方案就绪，实现未授权）。方案：`product/p64-mes-advanced-orchestration/ready/solution-p64-mes-advanced-orchestration.md`。唯一Executor动作：`product/p64-mes-advanced-orchestration/receipts/planning-solution-review-02.md`§5传播READY/方案/分支，回读后Planner复核再等待实施指令。P63已COMPLETED、业务及VB锁定；正式功能47、清单46/22/22=90、ADV64保持。P62性能延期未验证/新策略关闭。
 
 正式验证集合 VB01—VB04（互不相加）：VB01 Web `2b0c660` 四门 exit0（typecheck 静默；lint 0e/79w；vitest 151+1 文件、1365+3 测试；build 1.96s）。VB02 Server iot 63/0、engine 76/0、process 266/0 exit0（`19d1da2` 仅授权修复，不扩推整仓）。VB03 20原子/A01—A10 行为基线（审查03—10）；外部资产隔离 3/0 与截止内 FLOW 恢复 1/0 单列。VB04 追加迁移 `V0.1.5__p63_dynamic_branch_semantics`/`V0.1.6__p63_iot_command_reservation`/`R__p63_iot_reservation_menu`，链终点 0.1.6。bootstrap 全量 286/3/0/27 exit1 保留（Phase4 既有失败，截止内受控恢复等强度替代接受，登记 REG-P63-Phase4CrashTest）；全部收敛≠全部成功。
 

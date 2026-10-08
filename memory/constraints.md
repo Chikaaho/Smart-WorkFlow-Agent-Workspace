@@ -8,3 +8,5 @@
 - 历史任务知识库全量整理（knowledge-full-reconciliation）专属方向 §7（不自动约束P62）：不实施新业务功能、不修改权限/认证/迁移、不重跑全量业务测试、不自动创建 P 编号、不提交/推送 Git。
 - Smart-WorkFlow 的本机真实 PostgreSQL 验证参数统一从 Git 工作区外的 `~/.config/smart-workflow/pg.env` 读取，并由 `~/.zshenv` 自动加载。新会话先检查 `PG_HOST`、`PG_PORT`、`PG_USERNAME`、`PG_PASSWORD` 是否存在；变量齐全时不得再次向 Owner 索要连接值。
 - 数据库连接值属于本机秘密：仓库文件、方向、回执、证据、命令文本和日志只允许引用变量名，不得写入或回显变量值。只有变量确实缺失或文件不可读且已完成本机检查时，才能报告环境输入缺失；不得把秘密复制进 Git 工作区。
+
+- Owner 2026-10-08：Server/Web从develop建立`feature/xxx`任务分支；工作区规划文档在现有分支维护。commit保持Angular/Conventional Commits格式，中文短主题，只说明核心改动，正文仅在必要时补充。
