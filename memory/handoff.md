@@ -1,13 +1,11 @@
-# P63功能复核06交接
+# P63功能复核07交接
 
-2026-10-08；Planner；P63 L VERIFYING，14/20核销、剩余6；A02/A05/A07/A09通过4/10。整体未PASSED，不进入阶段三。
+2026-10-08；Planner；P63 L VERIFYING，15/20核销、剩余5；A02/A05/A06/A07/A09通过5/10，不进入阶段三。新增G08b：375系统管理员/已完成及设备完整结果可读。15已核销原子、L01—L05及审查07§2子断言锁定。
 
-新核销G04a动态实际round/快照、G06a真实窗后认领/发送零发、G09a完整生产条件路径/冻结等值、G10a立即Broker实际接收/迁移Git。其余10项及L01—L05锁定。字段选择器、模型缺失/撤销/latest/跨租指定用户、票数/幂等/异常策略、当前headed发起与多身份请求、375状态SUCCESS/完整实例值均部分锁定，边界见审查06。
+新部分锁定：功能未知/双向类型错配PG3/0，A06完整通过；APPROVAL两弹窗和稳定用户/部门ID；DATE/datetime发布/记录10:25→预约02:25Z与DISPATCHED/同命令SUCCESS/审计/受控回执；模块与Web四exit原值；两外部资产缺失的隔离3/0；Phase4旧候选同败及安装件恢复真实原件。无需再发成功动作或重复全量/对照。
 
-剩余稳定ID：G01a直接人员/部门+配置读回；G03a同租配置/来源权与未知不匹配功能类型；G04b新节点默认BLOCK保存值；G08a日期可见填报/发布绑定/记录与预约关联，成功链请求索引纠正；G08b完整可区分姓名/处理结果与设备结果详情；G10b真实全量失败归属/候选exit与读回/knowledge原值/自有收尾/视觉原件保留。
+剩余G01a：CONSENSUS/动态直接配置及真正UI保存（人员/部门组件加入失败以API补不算完成）；G03a：真正普通无配置权调用者，设备processAccess开关不替代；G04b：真正新默认BLOCK入视口→合法来源→UI保存（当前图没策略值，API先注入不证默认）；G08a：正确成功datetime画面/提交关联，现图是旧失败日期2026-10-09；G10b：Phase4整体兼容影响分类、Git/knowledge/收尾原输出与持久视觉。
 
-bootstrap实际284/2/0/27 BUILD FAILURE，P63八类31例全绿；P62Compat有隔离2/0原行，Phase4旧候选同败仅声明，不能免A10或混入Owner延期性能。Web真实76warnings/1364+3/build1.88s、typecheck exit0，其余最终绑定待补。不重试自然时窗，不为文档重复业务。
+286/3/0/27 BUILD FAILURE exit1、资产恢复隔离3/0 exit0；iot63/engine76/process266 exit0，Web1364+3/76warnings/build3.22s四exit0。92238ad在P63前几轮，只证明早于本轮，不证明早于整个P63；该对照任务已完成，不再次运行233秒/24分钟自然等待，用既有引入前资料或受控入口辨因，REG-P63-Phase4CrashTest登记影响待核，不并入性能延期。cleanup原件仍整理表，knowledge仍顶段自述，PNG仍本地未持久登记。
 
-日期字段包列field_plan，但填写图无日期且DB附件无记录/预约行，未预判产品缺陷。现有peer收令真实；自动callback HTTP200/ID取整不证APPLIED，精确APPLIED由受控重放+DB证明。旧库sw_p63_accept3已声明销毁，不恢复；先恢复会话原件，确失明示并即时当前回读，不能伪造历史清理。
-
-唯一入口：product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-06.md；审查planning-review-completion-06.md；下一completion-p63-mes-workflow-foundations-07.md。Executor仅同步knowledge上述VERIFYING/14/20/剩6/4项通过/当前入口并给逐位置原值。Planner同步8个当前摘要，不读knowledge/代码或运行工程验证。功能46、清单46/22/22、ADV64不变；57历史问题基线不压新缺陷。P62批准范围COMPLETED、性能Owner延期、新策略关闭；无发布部署。
+唯一入口：product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-07.md；审查planning-review-completion-07.md；下一completion-p63-mes-workflow-foundations-08.md。Executor仅同步knowledge VERIFYING/15/20/剩5/5项通过/入口并给位置原值；Planner同步8摘要，不读knowledge/实现、不运行工程验证。功能46、清单46/22/22、ADV64保持；问题57历史基线。旧库sw_p63_accept4已销毁不恢复；先恢复原件，丢失明示+即时当前精确回读，不伪造旧清理。P62批准范围完成、性能Owner延期、新策略关闭；无发布部署。

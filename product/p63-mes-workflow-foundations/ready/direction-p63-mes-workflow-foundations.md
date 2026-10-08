@@ -1,6 +1,6 @@
 # P63：MES前置能力正式方向
 
-2026-10-06；Planner；L；当前VERIFYING（复核06原子14/20、A02/A05/A07/A09通过，整体未通过）。依据：Owner原始两项需求、普通手工并行兼容补充，以及 `../receipts/planning-review-readiness-01.md`。本文件为产品合同；当前唯一执行入口为 `../receipts/planning-execution-prompt-p63-06.md`，验收结论见 `../receipts/planning-review-completion-06.md`。
+2026-10-06；Planner；L；当前VERIFYING（复核07原子15/20、A02/A05/A06/A07/A09通过，整体未通过）。依据：Owner原始两项需求、普通手工并行兼容补充，以及 `../receipts/planning-review-readiness-01.md`。本文件为产品合同；当前唯一执行入口为 `../receipts/planning-execution-prompt-p63-07.md`，验收结论见 `../receipts/planning-review-completion-07.md`。
 
 ## 1. 目标和范围
 
@@ -103,6 +103,6 @@
 
 ## 7. 交付与状态
 
-唯一当前执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-06.md`。Executor完成六项残余断言，按system.md适用门禁/普通提交推送，追加回执07。回执01—06历史保留；新增G04a/G06a/G09a/G10a核销，累计14/20，A02/A05/A07/A09通过（4/10）。剩余直接配置、配置权限/功能类型、新默认BLOCK保存值、日期来源与身份索引、窄屏完整详情、实际门禁失败归属/最终绑定与收尾。已有选择器、阈值/异常/同人投票、字段/多身份部分事实和窗后拒发锁定。bootstrap全量284/2/0/27失败，P63全绿不替代门禁处置；旧失败归属尚未由原件证实。当前整体VERIFYING，不进入阶段三。
+唯一当前执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-07.md`。Executor完成五项残余，追加回执08；回执01—07历史保留。新增G08b核销，累计15/20，A02/A05/A06/A07/A09通过（5/10）。功能类型、时间持久化/下发链、模块/Web原值、隔离复验及Phase4旧候选对照已证；剩余UI直配/新默认真实保存、调用者配置权限、正确成功日期填报图、整体兼容影响分类与原值/视觉保存。92238ad同败只证早于本轮，不豁免整体P63门禁；不再重跑自然时窗/全量，按审查07§4有限辨因。当前整体VERIFYING，不进入阶段三。
 
 授权Executor按正常生命周期维护P63的knowledge登记和执行状态，不得自行裁决功能PASSED/COMPLETED、核销P63或增加正式功能/清单计数。功能46、清单46/22/22、ADV64、问题57作为本轮起始基线；新发现问题如实登记，不为保持历史数字隐瞒。Planner独立功能验收后另行下发终态同步，Owner发布/部署授权边界保持。
