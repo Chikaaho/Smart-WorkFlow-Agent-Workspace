@@ -8,3 +8,5 @@ memory 为规划最小摘要；`knowledge/current-status.md` 为持久权威（�
 - 阅读 state→handoff→features→constraints，按需 decisions/issues/architecture。
 - 0.1.3 COMPLETED（Owner 已验收，2026-09-30）；产品版本/tag/Release/部署事实不变。
 - 当前规划目标=P64（READY/方案就绪/文档传播），无已授权业务实现或性能执行任务。
+
+- 换设备恢复：`product/governance/device-handoff-20261008.md`，包含三仓分支、ZCode平台安装及本地剩余对象分类。

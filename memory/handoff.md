@@ -17,7 +17,7 @@ product/memory/todo规划文档；两代码仓仅授权分支准备。根仓deve
 ## 8. 关键决策
 任务级表单、类型变量、独立BPM判断边界、独立发布实例编排、组织岗位委托、稳定行共享权限/回写。阶段I数据到动作（A01—A04）；II人员与父子协作（A05—A07）；III三场景与整体交付（A08—A12）。各阶段承担受影响A11/A12，工程ADR/内部实施由Executor确定。
 ## 9. 当前系统
-功能47、清单46/22/22=90、ADV64和其他P保持；P63已COMPLETED、两方向passed；P62性能Owner延期未验证、新策略关闭。Server分支起点c79db713/Web2b0c660，均从develop创建，两分支本地无跟踪；根规划起点b7d8206。
+功能47、清单46/22/22=90、ADV64和其他P保持；P63已COMPLETED、两方向passed；P62性能Owner延期未验证、新策略关闭。Server分支起点c79db713/Web2b0c660，均从develop创建，两分支已推送origin同名跟踪；设备恢复见product/governance/device-handoff-20261008.md。
 ## 10. 未完成
 READY持久入口传播与回读；P64全部实现、三场景运行及整体验收。
 ## 11. 风险

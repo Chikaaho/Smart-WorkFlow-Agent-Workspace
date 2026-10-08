@@ -84,6 +84,6 @@
 | Server | feature/p64-mes-advanced-orchestration | develop=c79db713；创建时与origin/develop一致、工作树干净。 |
 | Web | feature/p64-mes-advanced-orchestration | develop=2b0c660；创建时与origin/develop一致、工作树干净。 |
 
-两代码仓分支已本地创建，尚无远端跟踪。后续工程改动在对应feature分支进行；Executor启动时核实分支、起点变化、工作树和跟踪状态。只纳入本批授权文件，既有治理、gitlink及未跟踪项保留。commit采用规范格式和简短中文主题。
+两代码仓分支已推送并建立`origin/feature/p64-mes-advanced-orchestration`跟踪；设备恢复见[设备交接](../../governance/device-handoff-20261008.md)。后续工程改动在对应feature分支进行；Executor启动时核实分支、起点变化、工作树和跟踪状态。只纳入本批授权文件，既有治理、gitlink及未跟踪项保留。commit采用规范格式和简短中文主题。
 
 当前Executor授权仍限READY文档传播，[方案复核02](../receipts/planning-solution-review-02.md)§5补充了本方案与分支信息的传播要求。完成回读后由Planner复核当前入口一致性，业务实施等待Owner指令。本文与主方向共同供规划/未来实施读取，唯一业务目标仍为主方向。
