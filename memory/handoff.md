@@ -19,7 +19,7 @@ Planner仅修改product/memory/todo；授权Executor实施两仓业务、必要�
 ## 9. 当前系统
 功能47、清单46/22/22=90、ADV64及其他P保持；P63已COMPLETED，P62性能延期/策略关闭。Executor启动实测：两仓feature/p64-mes-advanced-orchestration已检出并快进至develop最新（Server b7283c8/Web 7af86f2，均0/0）；工作区develop-sw=39b68aa2。根Server gitlink78495dc保留脏项；目标机hook生效未由本轮证明。
 ## 10. 未完成
-P64全部实现、三场景运行及整体验收；阶段I实施进行中（IN_PROGRESS），由Executor连续推进。实际启动状态已按knowledge-first同步，不新增READY传播回执。
+P64阶段Ⅰ（数据到动作，A01—A04及相关A11/A12）实现与自验已完成：阶段回执`product/p64-mes-advanced-orchestration/receipts/phase-1-completion-receipt-01.md`+ADR-P64-001已提交待规划独立验收。两仓feature分支Server 880c145/Web 1198635均推送0/0。交付=节点表单/BPM变量/Trigger判断/可靠动作闭环+V0.1.7迁移+真实浏览器全链验证。
 ## 11. 风险
 错误轮次、重复派发、脚本越权、行泄露/错写、回写与推进脱节、迟到结果、岗位歧义/循环、超限及存量回归，按A01—A12实证。
 ## 12. 唯一下一动作
