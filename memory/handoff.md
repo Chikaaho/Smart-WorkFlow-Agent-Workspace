@@ -3,30 +3,30 @@
 ## 1. 功能名称
 P64 MES高级流程编排与业务闭环（XL）。
 ## 2. 功能目标
-节点审批表单＋BPM变量＋判断JS/配置动作＋动态参与者/岗位委托＋主子流程隔离回写/汇聚；MES与两证券场景验证公共能力。
+节点业务表单、类型变量、只读判断JS/可靠动作、岗位委托与主子流程隔离回写；MES/招商/安信三场景。
 ## 3. 当前状态
-PLANNING（2026-10-08）：方向已登记，待现状探索后Planner收敛READY；未授权业务实现。
+READY（2026-10-08）：探索完成、合同就绪；业务实现未授权，A01—A12未开始验收。
 ## 4. 本轮做了什么
-读取归档Owner摘要及岗位委托补充，确定R01—R12/A01—A12、三场景与XL阶段边界；登记P64、写探索任务并更新规划路由。
+全文复核P64探索及两附件，核销P63六入口确认传播；收敛取值、等待回写、岗位多任职/4跳委托、S2真值表、数量账结果、有限规模与升级回退，写规划复核01。
 ## 5. Executor内部Step汇总
-P64未实施，无Step或新测试结果，本轮仅Planner文档。
+执行侧静态探索及历史证据核对，未新增工程运行。7项缺失/5项部分具备不代表完成率。
 ## 6. 实际修改范围
-product/P64方向与inputs、search_task/P64探索、todo/P64及池/P63路由、memory摘要。不改业务、治理或gitlink。
+Planner只改product方向/复核、memory及todo；治理、两仓业务及gitlink既有改动保持。
 ## 7. 测试和验收结果
-本轮文档/链接/字节/路由校验。P63已COMPLETED（规划已确认），20/20、A01—A10和TS01—TS03核销，VB01—VB04锁定；Web1365+3/151+1/79w、Serveriot63/engine76/process266分列，历史bootstrap286/3/0/27 exit1保留。不重跑业务。
+本轮仅文档内容/链接/路由/字节验证，无P64测试基线。P63业务20/20、A01—A10及TS01—TS03锁定；VB01—VB04见state，不重验。历史bootstrap286/3/0/27 exit1保留，REG-P63-Phase4CrashTest不核销。
 ## 8. 关键设计决策
-JS判断/受控动作分离；主表/节点表/变量区分；后台源岗位→受托岗位，经组织任职解析人员、同轮冻结；子流程稳定行映射、服务端隔离、回写/汇聚一致；四等待策略与迟到结果快照明确，旧版本不重算。
+任务级已发布业务表单；变量只读有效完成轮次，缺值按配置；Trigger判断与动作分离；源岗位→受托岗位→全部有效人员，节点决定办理方式、同轮冻结；子流程冻结稳定行/等待集合，回写提交后推进；数量账加单据证明确实结算，旧实例原义至结束。参数详见正式方向，不等于容量验证。
 ## 9. 当前系统状态
-正式功能47、清单46/22/22=90、ADV64及其他P明细保持，P64仅PLANNING。P63两方向passed；验收Server19d1da2/Web2b0c660与文档HEAD分层。P62范围COMPLETED，性能Owner延期未验证/资源策略关闭。
+正式功能47、清单46/22/22=90、ADV64及其他P明细保持。P63两方向passed；验收Server19d1da2/Web2b0c660，Server传播文档c79db713分列。根探索截止2206229已供应远端事实。P62批准范围COMPLETED，性能Owner延期未验证/资源策略关闭。
 ## 10. 还有什么没做
-P64现状接缝、取值/有效完成/库存结果/规模限制/委托链/兼容窗口待探索，三场景未实现或验收。P63确认传播待实际回读，沿原裁决§4收尾。
+P64全部实现及三场景运行验收；本轮新READY措辞尚待Executor传播至持久当前入口。P63原确认传播已经核销，不是待办。
 ## 11. 已知问题和风险
-混读轮次、重复启动、脚本越权、数据泄露/错行写回、汇聚先于回写、迟到改写下游、岗位歧义/循环委托、业务循环及存量回归；P63历史REG留账。
+错误轮次/重复启动/脚本越权/错行泄露/回写与推进脱节/迟到结果/岗位歧义与循环/业务规模超限/存量回归，依A01—A12实证。
 ## 12. 下一轮要做什么
-唯一入口search_task/p64-mes-advanced-orchestration-readiness-20261008.md：核实/按原授权收尾P63确认传播，再完成P64有限探索，不实现业务；新目标替代旧等待选题。
+唯一已授权入口：product/p64-mes-advanced-orchestration/receipts/planning-review-readiness-01.md§5，仅机械READY文档传播；完成后等待Owner实施指令。
 ## 13. 下一轮达到什么结果
-search_fallback/p64-mes-advanced-orchestration-readiness-20261008.md回答8组问题/R矩阵、影响/兼容/未决项及字段回读，Planner收敛READY；阶段不代整体完成。
+持久当前入口READY、当前路由及裁决指针一致，实际字段/定位/提交/远端事实写ready-state-propagation-01.md；不增加基线、数量或业务授权。
 ## 14. 开始前必读
-Planner：system/roles/planner、memory、product/p64-mes-advanced-orchestration/ready/direction-p64-mes-advanced-orchestration.md与inputs/回执；Executor另读角色、knowledge当前入口和工程宪法。P63最终裁决见product/p63-mes-workflow-foundations/receipts/planning-final-review-terminal-sync-p63-mes-workflow-foundations-02-completed.md§4。
+Planner：system/roles/planner、memory、P64正式方向与规划复核01；Executor另读角色、knowledge当前入口，业务实施获授权后再按工程宪法进入两仓。
 ## 15. 新会话启动提示词
-“你是执行，读取search_task/p64-mes-advanced-orchestration-readiness-20261008.md，完成已有P63确认传播与P64现状探索，回传指定search_fallback；P64业务实现尚未授权。”Planner恢复P64方向和回执后收敛合同。
+“你是执行，按P64 planning-review-readiness-01.md§5完成READY文档传播并回读，随后等待Owner实施指令；原探索任务已完成，P64实现未授权。”Planner读取该传播回读核当前入口一致性。

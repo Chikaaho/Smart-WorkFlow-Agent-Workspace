@@ -1,8 +1,8 @@
 # 功能摘要
 
-P64（XL）MES高级流程编排与业务闭环=PLANNING（2026-10-08，方向已登记，未授权实现）。唯一执行入口`search_task/p64-mes-advanced-orchestration-readiness-20261008.md`：核实P63确认措辞传播后完成P64现状探索；回执由Planner收敛READY，方向/源摘要见`product/p64-mes-advanced-orchestration/`。P63已COMPLETED（规划已确认），20/20、A01—A10、TS01—TS03核销，VB锁定。正式功能47、清单46/22/22=90、ADV64及其他P明细保持；P62性能Owner延期未验证、新资源策略关闭。
+P64（XL）MES高级流程编排与业务闭环=READY（2026-10-08，探索已复核，产品合同就绪，业务实现未授权）。唯一下一动作：`product/p64-mes-advanced-orchestration/receipts/planning-review-readiness-01.md`§5机械传播READY，完成后等待Owner实施指令；主方向见同目录`ready/`。P63已COMPLETED（规划已确认），六入口确认传播已核销，20/20、A01—A10、TS01—TS03及VB锁定。正式功能47、清单46/22/22=90、ADV64及其他P明细保持；P62性能Owner延期未验证、新资源策略关闭。
 
-- `p64-mes-advanced-orchestration`（P64，XL）：**PLANNING**；节点表单/变量/判断动作/动态参与者/岗位委托/主子流程，MES与两证券场景；入口见handoff，仅探索未实现。
+- `p64-mes-advanced-orchestration`（P64，XL）：**READY**；R01—R12/A01—A12合同收敛，MES与两证券场景；探索7缺失/5部分，仅文档传播待办，实施未授权。
 - `p63-mes-workflow-foundations`（P63，L/P0）：**COMPLETED（规划已确认，2026-10-08）**；表单驱动动态并行审批+一次性 IoT 预约下发、手工并行兼容；VB01—VB04 见登记与 `state.md`；范围外=完整 MES/分管领导组织模型/周期预约/厂商实网/部署。
 - `p62-lowcode-transaction-bpm-tiering`（P62，XL）：**COMPLETED（规划已确认，2026-10-06）**；性能 Owner 延期未验证留账（`todo/p62-lowcode-transaction-bpm-tiering.md` §性能后续待办）；新资源策略默认关闭。
 - `backend-architecture-optimization`（XL）：**COMPLETED（规划已确认，2026-09-26）**；Phase1—6C 与 Final 完成；10 候选=BAO-01 `DEFERRED`+BAO-02 `PARTIAL`+8 `COMPLETED`；基线 1570/0/0/0（历史时点）。

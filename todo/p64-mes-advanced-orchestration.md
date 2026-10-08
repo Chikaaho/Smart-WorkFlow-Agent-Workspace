@@ -1,6 +1,6 @@
 # P64：MES高级流程编排与业务闭环
 
-2026-10-08；来源：Owner“继续完善MES，先定方向”及补充高级流程摘要；XL；PLANNING。方向已登记，现状探索后收敛READY，当前未授权业务实现。
+2026-10-08；来源：Owner“继续完善MES，先定方向”及补充高级流程摘要；XL；READY。探索已复核、产品合同已收敛，当前未授权业务实现。
 
 ## 目标与范围
 
@@ -19,6 +19,8 @@
 
 ## 当前状态与入口
 
-P64=PLANNING，正式完成功能仍47，清单46/22/22=90、ADV64保持。P63=COMPLETED（规划已确认）；其确认措辞传播待事实回读，仍按原最终裁决§4收尾。
+P64=READY，A01—A12业务验收未开始。正式完成功能仍47，清单46/22/22=90、ADV64保持。P63=COMPLETED（规划已确认）；本次探索供应的六入口确认传播已核销，业务验收继续锁定。
 
-唯一当前执行入口：[受控探索](../search_task/p64-mes-advanced-orchestration-readiness-20261008.md)。预期回执`search_fallback/p64-mes-advanced-orchestration-readiness-20261008.md`。探索核实现状与影响，Planner再收敛正式实施方向；没有业务完成或实现授权结论。
+[规划复核01](../product/p64-mes-advanced-orchestration/receipts/planning-review-readiness-01.md)接受探索（7项缺失/5项部分具备），将变量/表单提交、四等待策略、岗位多任职及4跳委托、八组合真值表、数量账实际结果、有限规模、升级/回退边界收敛进方向。
+
+唯一已授权下一动作：按规划复核01§5机械传播READY及当前路由，字段回读写`product/p64-mes-advanced-orchestration/receipts/ready-state-propagation-01.md`；完成后等待Owner实施指令。原探索已完成；后续实施获授权时以正式方向为完整目标入口，XL阶段通过不代整体完成。
