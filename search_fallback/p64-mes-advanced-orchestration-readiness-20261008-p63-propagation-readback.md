@@ -27,6 +27,13 @@
 - 未纳入范围（明确不适用）：`README.md`（无 P63 当前段落）、`knowledge/history/**`（历史快照按时点保留）、`memory/*` 与 `todo/*`（Planner 已更新，执行侧不改）、Web 仓（无对应当前入口，`product/` 为空）。
 - 观察到但本轮不动（非 P63、超出授权范围）：`knowledge/features/agent-tool-configuration-frontend.md:88` 与 `knowledge/features/v0.1.0-oa-completion.md:71` 仍含「待规划终态复核」字样，分别属其他已完成功能的历史指针与 I1 历史条目，非 P63 当前状态；如需清理应由 Planner 授权后处理（已在本回读留账，不静默忽略）。
 
-## 4 Git 事实（固定截止点，不回填本批自身 SHA）
+## 4 Git 事实与提交推送回读
 
-本批开始前实测：workspace `develop-sw` 与 `origin/develop-sw` 0/0（起点 `c08c37f`）；Server `develop`＝`origin/develop` 0/0（`1f5f470`）；Web `develop`＝`origin/develop` 0/0（`2b0c660`）。验收候选与 VB01—VB04 不被本轮文档改动触及（Server `19d1da2`／Web `2b0c660` 业务候选不变；Server 文档 HEAD 由本批新提交推进，见提交后回读补记）。本批提交后按 `system.md` §0.8.1 精确提交、普通推送并回读远端分支 SHA；自身提交值在提交后补记中报告，不在本文件内循环回填。
+- 本批开始前实测：workspace `develop-sw` 与 `origin/develop-sw` 0/0（起点 `c08c37f`）；Server `develop`＝`origin/develop` 0/0（`1f5f470`）；Web `develop`＝`origin/develop` 0/0（`2b0c660`）。
+- 本批提交与推送（精确暂存，仅本批文档）：
+  - workspace 提交 `bf1e1cc0dcb0d3da818d43b00a8080d5ec53c001`（9 文件：探索回执＋两附件＋P63 传播 5 处＋P64 登记）→ 推送 `origin/develop-sw`；`git ls-remote` 回读远端＝`bf1e1cc…`，本地＝远端（0/0）。
+  - Server 提交 `c79db713aad5a50af8303f09e74b894f5cb075dc`（仅 `功能清单.md` 焦点行）→ 推送 `origin/develop`；`git ls-remote` 回读远端＝`c79db71…`，本地＝远端（0/0）。
+  - 未纳入本批（保持不动，无本批改动）：`.codex/governance/*` 与 `.zcode/config.json`（既有工作树修改）、`Smart-WorkFlow-aPaaS-server`／`Smart-WorkFlow-aPaaS-Web` gitlink 与 `changed-files/`（既有未跟踪项）。
+- 验收候选与 VB01—VB04 不被本轮文档改动触及：Server 业务候选 `19d1da2`／Web `2b0c660` 不变；Server 文档 HEAD 由 `1f5f470` 推进至 `c79db71`（文档子提交，不改写业务候选）。Web 仓本轮零改动。
+- 本文件自身的提交（传播回读补记）按 system.md §4.5 约定不在文件内回填自身 SHA，其提交值与远端回读在最终交接中报告。
+
