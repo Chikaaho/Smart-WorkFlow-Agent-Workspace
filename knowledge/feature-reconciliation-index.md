@@ -11,7 +11,7 @@
 - P：物理 57 行、唯一 56 编号（P48 总表/明细双入口同值；P13 已核销移除、P23 零引用备案）
 - I：索引 54 条、区间 I1—I55 缺 I27（I27 缺行证据待定位，见 §5；I14 已满足/关闭 2026-09-08）
 - product 审计目录：55（总 57 − governance − knowledge-full-reconciliation）
-- 正式功能数：**47**（`p63-mes-workflow-foundations` 为第 47 个，功能级 `PASSED（规划审查10，2026-10-08）`，阶段三终态同步后 `COMPLETED（待规划终态复核）`，46＋1 不另建 P 编号，登记 `knowledge/features/p63-mes-workflow-foundations.md`；P63 与 90 明细零行状态升降，本次新增里程碑 ID 集合=空、核销原 90 行明细 ID 集合=空；历史点：`p62-lowcode-transaction-bpm-tiering` 为第 46 个（功能级 PASSED 规划最终复核04、2026-10-06 `COMPLETED（规划已确认）`；46 为 P62 验收时点值，当前项目总数统一 47），p53-global-ui-component-layout 为第 45 个（2026-09-21，44＋1），p21-iot-device-access 为第 44 个（2026-09-08，43＋1），v0.0.2-oa 为第 43 个，P4 OA 本轮子集为第 42 个，P58 为第 41 个）
+- 正式功能数：**47**（`p63-mes-workflow-foundations` 为第 47 个，功能级 `PASSED（规划审查10，2026-10-08）`，`COMPLETED（规划已确认，2026-10-08）`，46＋1 不另建 P 编号，登记 `knowledge/features/p63-mes-workflow-foundations.md`；P63 与 90 明细零行状态升降，本次新增里程碑 ID 集合=空、核销原 90 行明细 ID 集合=空；历史点：`p62-lowcode-transaction-bpm-tiering` 为第 46 个（功能级 PASSED 规划最终复核04、2026-10-06 `COMPLETED（规划已确认）`；46 为 P62 验收时点值，当前项目总数统一 47），p53-global-ui-component-layout 为第 45 个（2026-09-21，44＋1），p21-iot-device-access 为第 44 个（2026-09-08，43＋1），v0.0.2-oa 为第 43 个，P4 OA 本轮子集为第 42 个，P58 为第 41 个）
 - P59：Owner 2026-09-04 新增统一交付编号（不在审计 56 唯一编号集合内），非新增业务功能、不映射清单明细，**已核销**（功能级 PASSED，见 `knowledge/features/p59-ch-apaas-project-update.md`）；上列审计计数保持原值
 
 ## 1. 90 项清单明细 ↔ 交付/P 编号 双向映射

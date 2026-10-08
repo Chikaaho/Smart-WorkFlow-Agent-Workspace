@@ -254,9 +254,9 @@ locales/         — 国际化（zh-CN）
 
 ### 7.3 当前焦点
 
-Walking Skeleton 四环已全部闭合 ✅。正式业务功能已确认 **47 个**（P63 为第 47 个，2026-10-08 阶段三终态同步后 `COMPLETED（待规划终态复核）`）：早期批处理（system-mgmt-crud、bpm-task-center、storage-multi-provider、job-scheduler、kb-verification 等）直至 P52—P63 系列均已闭环（P62 为第 46 个，2026-10-06 规划已确认 COMPLETED）；完整清单见 `knowledge/current-status.md` 与 `knowledge/feature-reconciliation-index.md`。
+Walking Skeleton 四环已全部闭合 ✅。正式业务功能已确认 **47 个**（P63 为第 47 个，2026-10-08 `COMPLETED（规划已确认，2026-10-08）`）：早期批处理（system-mgmt-crud、bpm-task-center、storage-multi-provider、job-scheduler、kb-verification 等）直至 P52—P63 系列均已闭环（P62 为第 46 个，2026-10-06 规划已确认 COMPLETED）；完整清单见 `knowledge/current-status.md` 与 `knowledge/feature-reconciliation-index.md`。
 
-当前无活动业务功能；`knowledge-full-reconciliation`（知识库全量整理，非业务功能）**COMPLETED（已确认，2026-09-04）**；P59（ch-apaas-project-update，项目说明与仓库地址统一交付）**COMPLETED（规划已确认，2026-09-05）**；P60（成熟目标 `0.1.0`，登记目录 `v0.1.0-oa-completion`）**COMPLETED（规划已确认，2026-09-15）**；P61（用户可见错误码与提示语人性化）**COMPLETED（规划已确认，2026-09-20）**；P53（全局 UI 与组件布局优化）**COMPLETED（规划已确认，2026-09-21）**；P63（MES 前置能力：动态并行审批与一次性预约 IoT 下发）功能级 `PASSED（2026-10-08）`、同步后 `COMPLETED（待规划终态复核）`。当前状态权威见 `knowledge/current-status.md`。
+当前无活动业务功能；`knowledge-full-reconciliation`（知识库全量整理，非业务功能）**COMPLETED（已确认，2026-09-04）**；P59（ch-apaas-project-update，项目说明与仓库地址统一交付）**COMPLETED（规划已确认，2026-09-05）**；P60（成熟目标 `0.1.0`，登记目录 `v0.1.0-oa-completion`）**COMPLETED（规划已确认，2026-09-15）**；P61（用户可见错误码与提示语人性化）**COMPLETED（规划已确认，2026-09-20）**；P53（全局 UI 与组件布局优化）**COMPLETED（规划已确认，2026-09-21）**；P63（MES 前置能力：动态并行审批与一次性预约 IoT 下发）`COMPLETED（规划已确认，2026-10-08）`；P64（MES 高级流程编排与业务闭环，XL）＝PLANNING（仅现状探索、实现未授权，不晋级功能数）。当前状态权威见 `knowledge/current-status.md`。
 
 工作区自身的元架构（规划层/执行层三方角色边界、规划层内部探索模型/规划模型分工、`product/`+`todo/`+`knowledge/` 的原始记忆/压缩记忆分层）已固化为 `system.md` §0.3/§0.4/§11.2、`roles/planner.md` §4（规划写入范围）/§8（记忆分层）与 `shared-constraints.md` §9 的硬约束，本文件只覆盖 CH-aPaaS **产品系统**架构，不重复记录工作区元架构。
 

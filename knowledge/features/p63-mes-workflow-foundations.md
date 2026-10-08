@@ -13,7 +13,7 @@
 | 功能名称 | MES前置能力：动态并行审批与一次性预约IoT下发 |
 | 功能目标 | 用户从真实表单配置人员/部门及预约时间，完成动态并行审批；流程成功结束后产生一次性 IoT 预约，到点下发并回查结果；普通手工并行与旧流程继续正常使用 |
 | 创建日期 | 2026-10-06（Owner 需求 → 探索复核 → 正式方向下发）；2026-10-08 功能级验收 `PASSED`（规划审查10） |
-| 当前状态 | **COMPLETED（待规划终态复核）**（功能级 `PASSED` 依据 `planning-review-completion-10-passed.md`：20/20 核销、A01—A10 通过（10/10）、业务缺口0；终态同步回执 01 经 Planner **复核01 未通过**（TS01—TS03 三项精确差异），已按唯一执行入口 `planning-execution-prompt-p63-terminal-sync-01.md` 修正并提交回执 02，整体完成待 Planner 复核02 确认） |
+| 当前状态 | **COMPLETED（规划已确认，2026-10-08）**（功能级 `PASSED` 依据 `planning-review-completion-10-passed.md`：20/20 核销、A01—A10 通过（10/10）、业务缺口0；终态同步回执 01 经 Planner **复核01 未通过**（TS01—TS03 三项精确差异），已按唯一执行入口 `planning-execution-prompt-p63-terminal-sync-01.md` 修正并提交回执 02；终态最终复核02 `planning-final-review-terminal-sync-p63-mes-workflow-foundations-02-completed.md` 裁决 TS01—TS03 全部核销、P63 本次批准功能整体 COMPLETED（规划已确认，2026-10-08）；确认措辞与 passed 指针沿该裁决§4 由执行侧传播，实际回读见 `search_fallback/p64-mes-advanced-orchestration-readiness-20261008-p63-propagation-readback.md`） |
 | 等级 / 优先级 | L / P0 |
 | 涉及模块 | Server `sw-biz-form`（多选存储/datetime/子表列/实例读 Facade）、`sw-bpm`（FORM_FIELD 参与人策略、动态并行 v2 轮次、手工并行网关、终态预约意图）、`sw-basic-iot`（预约意图/到点调度/取消/查询/受控回执）；Web 表单设计器-填报-渲染、流程设计器参与人与动态并行面板、任务/流程详情预约卡、iot-reservation 适配接缝 |
 | 计数归属 | 正式功能数 47（46+P63 整体 1）；清单 90 行 ✅46/🟦22/⬜22 零行状态升降；P63 本次批准 R01—R06 交付已核销 |
@@ -25,10 +25,10 @@
 | 项 | 路径 |
 |---|---|
 | 主方向（已归档 `passed/`） | `product/p63-mes-workflow-foundations/passed/direction-p63-mes-workflow-foundations.md`（产品合同与 A01—A10 验收合同） |
-| 终态同步方向（`ready/`，Planner 终态复核通过后归档 `passed/`） | `product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations-terminal-sync.md` |
+| 终态同步方向（已归档 `passed/`） | `product/p63-mes-workflow-foundations/passed/direction-p63-mes-workflow-foundations-terminal-sync.md` |
 | 功能级验收（PASSED） | `product/p63-mes-workflow-foundations/receipts/planning-review-completion-10-passed.md`（2026-10-08：20/20 核销、A01—A10 全部通过、业务缺口0） |
 | 终态同步回执 | `product/p63-mes-workflow-foundations/receipts/terminal-sync-p63-mes-workflow-foundations-02.md`（附件 `receipts/evidence/terminal-sync-02/`；回执 01 经复核01 未通过，仅作历史输入） |
-| 终态复核与补充提示 | `receipts/planning-review-terminal-sync-p63-mes-workflow-foundations-01.md`（未通过，剩 TS01—TS03）；唯一执行入口 `receipts/planning-execution-prompt-p63-terminal-sync-01.md` |
+| 终态复核与补充提示 | 终态最终复核02 `receipts/planning-final-review-terminal-sync-p63-mes-workflow-foundations-02-completed.md`（**通过**：TS01—TS03 全部核销、COMPLETED（规划已确认，2026-10-08））；首轮复核 `receipts/planning-review-terminal-sync-p63-mes-workflow-foundations-01.md`（未通过，剩 TS01—TS03）、唯一执行入口 `receipts/planning-execution-prompt-p63-terminal-sync-01.md` 均只作历史 |
 | 候选与 Git 事实（分层） | 验收候选（业务候选，≠当前文档 HEAD）Server `19d1da2165dd0d9a5671ab9a088941b15e52a851`、Web `2b0c660fb1b1d4f612ada472c38e964a481937a5`；当前 Git 事实（2026-10-08 实测）：Server develop 文档 HEAD `692b73c748cc420b2aafef8a593a4d8e65ab1b50`（本地=远端；业务候选不变）、Web develop = 验收候选、workspace `develop-sw` 批次 `c5d493d`＋补记 `bfe365c`＋Planner 复核轮 `6f02b49`（本轮修订批次与回读见 `receipts/evidence/terminal-sync-02/git-readback-02.md`） |
 | 执行回执链（历史，逐轮追加保留） | `receipts/completion-p63-mes-workflow-foundations-01.md`—`-10.md`；审查 `planning-review-completion-03.md`—`-10-passed.md`；补充提示 01—09 均已结清、只作历史 |
 | 探索回执（历史时点） | `search_fallback/p63-mes-workflow-foundations-readiness-20261006.md` + 附件；规划复核 `receipts/planning-review-readiness-01.md` |
