@@ -1,6 +1,6 @@
 # P63：MES前置能力正式方向
 
-2026-10-06；Planner；L；当前VERIFYING（复核08原子18/20、A02/A03/A04/A05/A06/A07/A08/A09通过，整体未通过）。依据：Owner原始两项需求、普通手工并行兼容补充，以及 `../receipts/planning-review-readiness-01.md`。本文件为产品合同；当前唯一执行入口为 `../receipts/planning-execution-prompt-p63-08.md`，验收结论见 `../receipts/planning-review-completion-08.md`。
+2026-10-06；Planner；L；当前VERIFYING（复核09原子19/20、A01—A09通过，整体未通过）。依据：Owner原始两项需求、普通手工并行兼容补充，以及 `../receipts/planning-review-readiness-01.md`。本文件为产品合同；当前唯一执行入口为 `../receipts/planning-execution-prompt-p63-09.md`，验收结论见 `../receipts/planning-review-completion-09.md`。
 
 ## 1. 目标和范围
 
@@ -103,6 +103,6 @@
 
 ## 7. 交付与状态
 
-唯一当前执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-08.md`。Executor完成两项残余，追加回执09；回执01—08历史保留。新增G03a/G04b/G08a核销，累计18/20，A02/A03/A04/A05/A06/A07/A08/A09通过（8/10）。会签直配、动态字段默认保存、权限拒绝、正确datetime、受控PG恢复、Git/PNG/自身收尾锁定。仅余动态直接人员/部门入口及knowledge完整当前值回读。Phase4按审查08§3接受截止内恢复替代；无效果且执行权终止可过期，全部收敛不要求全部成功，不放开截止后执行，不重复自然时窗/全量。整体VERIFYING，不进入阶段三。
+唯一当前执行入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-09.md`。Executor只补最终Web门禁原结果，追加回执10；回执01—09历史保留。新增G01a核销，累计19/20，A01—A09通过（9/10）。动态直接人员/部门真实UI保存与稳定ID、knowledge完整回读、Git/视觉/当前收尾通过；剩余G10b仅最新Web2b0c660门禁缺实际工具输出，先恢复已跑原流，真丢失才适用有界工程验证，不重做业务。Phase4合同裁决及截止内恢复替代锁定，不重复自然时窗/全量。整体VERIFYING，不进入阶段三。
 
 授权Executor按正常生命周期维护P63的knowledge登记和执行状态，不得自行裁决功能PASSED/COMPLETED、核销P63或增加正式功能/清单计数。功能46、清单46/22/22、ADV64、问题57作为本轮起始基线；新发现问题如实登记，不为保持历史数字隐瞒。Planner独立功能验收后另行下发终态同步，Owner发布/部署授权边界保持。

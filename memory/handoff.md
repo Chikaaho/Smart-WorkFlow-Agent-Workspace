@@ -1,13 +1,11 @@
-# P63功能复核08交接
+# P63功能复核09交接
 
-2026-10-08；Planner；P63 L VERIFYING，18/20核销、剩2，A02/A03/A04/A05/A06/A07/A08/A09通过8/10，未进入阶段三。G03a/G04b/G08a新增核销，18项与审查08§2子断言锁定。
+2026-10-08；Planner；P63 L VERIFYING，19/20核销、剩G10b；A01—A09通过9/10，未进入阶段三。新增G01a：动态真实直接人员/部门选择、UI保存及FIXED数组稳定ID读回通过，19项与审查03—09子断言锁定。
 
-已证：同租ordinary四写入口403、admin保存有效；Server19d1da2最小授权修复，process266/0/0/0 exit0。会签直接人员/部门稳定ID；动态主字段DEPT+两默认BLOCK实际可见并UI保存。正确日期2026-10-08 10:25:00新填报/记录b1f4cfff与旧已锁定预约2108014686821277697/SUCCESS命令2108020838149775362同值组合，不重发。13PNG已Git持久化，Git两仓读回与本轮自身清理通过。
+本轮对象def2108058719690006529/v1DRAFT/node_1，USER[1,90002]、DEPT[1,90001]，两PNG实际可见。人员图保存中，由后续真实PUT200/保存行组合核销，不重截。逗号串2310拒绝及数组data[]校验通过。Web2b0c660最小UI与构建修复；Server19d1da2未改。knowledge完整第3行和字段已证，REG沿审查08合同裁决；两仓实际分支develop，正文develop-sw为转录。新PNG持久化、自身收尾通过；08空库残留撤旧广泛结论，以09实际drop8/9及计数0为当前事实，不追猜历史原因。
 
-剩余G01a：动态FORM_FIELD不是直接人员/部门入口，仅补两种真实直接选择保存读回；APPROVAL/CONSENSUS/24格不重复。G10b仅knowledge当前字段完整实际回读，旧cut150截掉路径/下一动作/候选值，改为定点抽取，不重测业务。
+唯一残余G10b/A10：最终Web门禁只有文字摘要(typecheck0/lint76w/vitest1364+3/build0/spec16)，无工具原输出/真实命令时点exit。不能用35dd944旧结果替代新2b0c660。先恢复已跑原流，真丢失才最小充分有界Web工程门禁；真实计数不猜、不强求旧数；typecheck可静默但需真实调用exit。无需UI/DB/业务矩阵/Server/Phase4/全量复跑。
 
-Phase4：原1/1失败保留，独立连接注入截止内恢复1/0、1引擎/业务实例、COMPLETED与重放幂等通过，接受等强度替代。P62“全部收敛”不要求全部成功；无效果且执行权终止可EXPIRED，进行中/部分效果待权威结果，不能因曾尝试越过截止。装置时序导致本例过截止归属已判明，不再跑原自然等待/全量、不改共享截止/重排合同；REG落解释，不并入性能延期。Web35dd944与iot63/engine76沿锁定快照。
+唯一入口product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-09.md；审查planning-review-completion-09.md；下一completion-p63-mes-workflow-foundations-10.md。Executor仅机械同步knowledge VERIFYING/19/20/剩1/A01—A09/审查09/提示09/回执10并给原值，Planner维护8摘要、不读knowledge/实现、不运行工程验证。
 
-唯一入口product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-08.md；审查planning-review-completion-08.md；下一completion-p63-mes-workflow-foundations-09.md。Executor仅同步knowledge VERIFYING/18/20/剩2/八标准/入口及REG并给完整原值；Planner维护8摘要，不读knowledge/实现，不运行工程验证。
-
-功能46、清单46/22/22、ADV64、问题57历史基线保持；新缺陷如实登记。P62批准范围完成，性能Owner延期，新资源策略关闭；无发布部署。旧库不恢复，新对象映射有界，禁止sleep/延迟轮询与新增例行hash。
+功能46、清单46/22/22、ADV64、问题57历史基线保持，新缺陷如实登记。P62批准范围完成、性能Owner延期、新资源策略关闭。Phase4截止内PG恢复1/0替代锁定，原全量失败保留；全部收敛不要求全部成功，无效果且执行权终止可EXPIRED，进行中/部分效果依权威结果，不改共享截止/恢复。无发布部署，禁止sleep/延迟轮询、例行hash及不可观测后台。

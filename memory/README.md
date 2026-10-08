@@ -1,6 +1,6 @@
 # memory 使用说明
 
-P63（L）VERIFYING（2026-10-08复核08）：18/20核销、剩2，A02/A03/A04/A05/A06/A07/A08/A09通过（8/10）。新增权限拒绝、默认保存、正确datetime；截止内PG恢复与Git/视觉/收尾已证。剩余动态直接人员/部门配置、knowledge完整当前值回读。唯一入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-08.md`；审查08，回执09。功能46、清单46/22/22、ADV64保持，不进入阶段三。
+P63（L）VERIFYING（2026-10-08复核09）：19/20核销、剩1（G10b），A01—A09通过（9/10）。动态直接人员/部门UI保存与稳定ID、knowledge完整回读已过；只缺最新Web2b0c660门禁原输出，旧快照不可代替。唯一入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-09.md`；审查09，回执10。功能46、清单46/22/22、ADV64保持，不进入阶段三。
 
 memory为规划最小摘要；knowledge/current-status.md为持久权威，product保存裁决与证据。
 
