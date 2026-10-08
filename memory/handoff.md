@@ -1,8 +1,8 @@
 # P63终态复核01交接
 
-2026-10-08；Planner；功能PASSED锁定（20/20、A01—A10全部通过）；终态01未通过，整体尚未规划确认。机械状态COMPLETED（待规划终态复核）、正式功能47不回退；主合同passed，终态方向仍ready。
+2026-10-08；Planner；功能PASSED锁定（20/20、A01—A10全部通过）；终态01未通过（TS01—TS03），三项已由本轮按提示01关闭并提交回执02，整体待Planner复核02确认。机械状态COMPLETED（待规划终态复核）、正式功能47不回退；主合同passed，终态方向仍ready。
 
-唯一当前执行入口`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-terminal-sync-01.md`；下一terminal-sync-p63-mes-workflow-foundations-02.md；提交后Planner复核02。剩TS01登记计数（目录56/55和末4路径不足）、TS02known-issues L38/Server清单L52截断、TS03Server业务候选19d1da2与文档HEAD692b73c混称本地=远端。只补文档，不重验业务；完整条件见审查`planning-review-terminal-sync-p63-mes-workflow-foundations-01.md`。
+唯一当前执行入口`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-terminal-sync-01.md`；下一terminal-sync-p63-mes-workflow-foundations-02.md；提交后Planner复核02。三项已按提示01关闭：TS01=47唯一登记工具实计（分类/旧46零变化/P63一次）、TS02=known-issues L38与Server清单L52整行到行尾回读、TS03=候选19d1da2与文档HEAD692b73c分层（混称0）；证据`receipts/evidence/terminal-sync-02/`，只补文档未重验业务；审查见`planning-review-terminal-sync-p63-mes-workflow-foundations-01.md`。
 
 已核：90行三源附件逐ID与ig2锁定基准一致，零缺失/新增/重复/差异，46/22/22=90；VB01—VB04三方一致，Web1365+3/79w四exit0，Serveriot63/engine76/process266分列，资产3/0、截止内恢复1/0单列；历史全量286/3/0/27 exit1保留。memory19313→16154，单件最大2920达标。本轮路由变化后再核字节。
 
