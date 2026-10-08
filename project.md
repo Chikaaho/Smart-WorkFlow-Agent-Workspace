@@ -24,10 +24,11 @@
 - **必要工程约束**：后端 `mvn` 命令一律带 `MAVEN_OPTS="-Xmx2g"`；前端 `pnpm`/`npm` 命令一律带 `NODE_OPTIONS="--max-old-space-size=2048"`；前后端编译互斥（`knowledge/shared-constraints.md` §9）；动态宽表裸 SQL 红线等共享约束见 `knowledge/shared-constraints.md`。
 - **启动方式**：后端 `sw-bootstrap` 按 `dev`（H2 内存）/`local`（PostgreSQL）profile 启动；前端 `pnpm dev`（直连后端）或 `pnpm dev:mock`（MSW 拦截）。
 - **验证入口**：后端 `mvn test` 与 `mvn install`；前端 `pnpm typecheck && pnpm lint && pnpm test && pnpm build`；终态由 `.codex/governance/validate-terminal.*` 校验。
+- **证据与 Git 分离**：工作区的任务与回执文档继续跟踪；原始验证日志、完整命令输出、截图、采样及其他证据附件只在本机留存，不提交到 Git。回执写结论和验证摘要，不嵌入原始附件；不得用 `git add -f` 绕过忽略规则。
 
 ## 4. 实例数据与生命周期
 
-- **实例数据初始化位置**：`memory/`（压缩记忆）、`knowledge/`（完整知识库，含 `current-status.md`/`features/`/`known-issues.md`/`evidence/`）、`product/`（需求方向与回执）、`todo/`（暂不修复清单 + 需求池）、`search_task/`、`search_fallback/`（探索通道）。
+- **实例数据初始化位置**：`memory/`（压缩记忆）、`knowledge/`（完整知识库，含 `current-status.md`/`features/`/`known-issues.md`；原始证据仅本地留存）、`product/`（需求方向、任务与回执）、`todo/`（暂不修复清单 + 需求池）、`search_task/`、`search_fallback/`（探索通道）。
 - **实例生命周期边界**：本分支为 CH-aPaaS 示例实例，`develop-sw` 承载当前实例全部状态与历史；制定是否长期维护或作为迁移快照的决策权归 Owner。
 
 ## 5. 关联 Engine

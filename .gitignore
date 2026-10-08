@@ -22,10 +22,13 @@ node_modules/
 *.rdb
 *.pid
 
-# 原始运行日志、命令原始输出与测试产物：体量大且非交付物，本地保留、不入库
-# 仍正常入库：执行任务、方向与 prompt、回执、结构化证据（json/jsonl/md/mjs/ps1）
-# 截图（png）默认忽略；确需入库的原始输出与截图请用 git add -f 显式加入
+# 工作区 Git 跟踪任务与回执文档；原始证据附件和运行日志仅本地留存
+# product、tickets 与 knowledge 下的证据附件均不入库，禁止用 git add -f 绕过
+product/**/evidence/
+tickets/**/evidence/
+knowledge/evidence/
 *.log
+*.log.gz
 *.stdout
 *.stderr
 *.out
