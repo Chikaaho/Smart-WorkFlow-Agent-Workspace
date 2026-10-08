@@ -1,25 +1,16 @@
 # 当前状态摘要
 
-P63（L）PASSED（2026-10-08复核10）：20/20核销，A01—A10通过（10/10），业务缺口0；整体完成待阶段三复核。Web2b0c660四门exit0、1365+3/79w，Server19d1da2受影响结果锁定。唯一入口：`product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations-terminal-sync.md`；下一terminal-sync-p63-mes-workflow-foundations-01.md。当前功能46；终态授权47=46+1，清单46/22/22/ADV64保持。
+P63（L）**COMPLETED（待规划终态复核，2026-10-08 阶段三同步）**；功能级 PASSED=规划审查10：20/20 核销、A01—A10 通过（10/10）、业务缺口0。正式功能 **47**（46+P63 整体1；第47项登记 `knowledge/features/p63-mes-workflow-foundations.md`）；清单 ✅46/🟦22/⬜22=90 零行升降、ADV64、问题57（起始历史基线）。回执 `product/p63-mes-workflow-foundations/receipts/terminal-sync-p63-mes-workflow-foundations-01.md`（附件 `evidence/terminal-sync-01/`）已提交；**唯一下一动作=Planner 复核并确认 P63 整体 COMPLETED**。本轮仅文档同步：无服务/DB/浏览器/测试/构建/发布动作。
 
-P62当前批准功能范围COMPLETED（规划已确认，2026-10-06）；功能与终态验收缺口均为0。正式功能46（45+1）、清单✅46/🟦22/⬜22=90、ADV64、问题57；P62批准功能交付已核销。性能Owner延期未验证、新资源策略默认关闭。最终裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md。P62无剩余业务验收项；本次探索回执确认knowledge登记已传播为规划确认完成；不外推发布或全入口实时状态。当前新目标为P63 MES前置能力，见本页规划入口。
-
-终态复核02已通过；TS01/TS02全部核销，功能验收沿最终复核04锁定。
-
-P62功能与终态验收已完成；P63功能PASSED，终态待复核。
-
-复核02锁定：Server1757/0/0/27、定向61/0/0/0（bootstrap28含PG16）、Web1323通过+3跳过；终态权威入口已登记本集合；新登记字段经TS01复核一致。回执03同对象浏览器成功/拒绝链已核销锁定。
+正式验证集合 VB01—VB04（互不相加）：VB01 Web `2b0c660` 四门 exit0（typecheck 静默；lint 0e/79w；vitest 151+1 文件、1365+3 测试；build 1.96s）。VB02 Server iot 63/0、engine 76/0、process 266/0 exit0（`19d1da2` 仅授权修复，不扩推整仓）。VB03 20原子/A01—A10 行为基线（审查03—10）；外部资产隔离 3/0 与截止内 FLOW 恢复 1/0 单列。VB04 追加迁移 `V0.1.5__p63_dynamic_branch_semantics`/`V0.1.6__p63_iot_command_reservation`/`R__p63_iot_reservation_menu`，链终点 0.1.6。bootstrap 全量 286/3/0/27 exit1 保留（Phase4 既有失败，截止内受控恢复等强度替代接受，登记 REG-P63-Phase4CrashTest）；全部收敛≠全部成功。
 
 ## 锁定结果
 
-- 治理PASSED：planning-review-information-governance-05-passed.md；资源探索复核03通过、交付缺口0，均见P62 receipts/。
-- 首事务COMPLETED（2026-09-30）、分级执行COMPLETED（2026-10-02）；业务与同步方向均在P62 passed/，最终裁决见对应planning-final-review-terminal-sync-*.md。历史提交身份/性能数只引用原回执，不扩展为资源保障。
-- 资源功能闭环子阶段COMPLETED（规划已确认，2026-10-05）；终审见product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-resource-functional-closure-01-completed.md；性能Owner延期。
-- sso-admin-config COMPLETED（2026-09-29）；P31仍开放、企业微信延期。
-- backend-architecture-optimization、v0.1.1-bugfix、v0.1.2-bugfix、v0.1.2-release已有COMPLETED裁决；0.1.3-release COMPLETED（Owner已验收，2026-09-30）。范围与发布/部署事实仍按原裁决和回执。
+- P62 批准功能范围 COMPLETED（规划已确认，2026-10-06）；P62 验收时点功能46为历史时点，当前项目总数统一47。性能 Owner 延期未验证、新资源策略默认关闭；裁决 `planning-final-review-terminal-sync-final-delivery-02-completed.md`。
+- 信息治理 PASSED（2026-09-30）；首事务 COMPLETED（2026-09-30）、分级执行 COMPLETED（2026-10-02）、资源功能闭环 COMPLETED（2026-10-05）；业务与同步方向均在 P62 `passed/`。
+- `sso-admin-config` COMPLETED（2026-09-29）；P31 开放、企业微信延期。0.1.3-release COMPLETED（Owner 已验收，2026-09-30）；UAT 运行 0.1.3 种子基线 v0.1.0、仅支持全新建库。
+- backend-architecture-optimization、v0.1.1-bugfix、v0.1.2-bugfix、v0.1.2-release 已有 COMPLETED 裁决。
 
 ## 基线与边界
 
-功能46；清单目标46/22/22=90；ADV64；问题总记录57不变。IG2a历史45项与新增P62登记基础锁定；三源90行经TS02独立复算，ID及状态零变化，其他P不变。
-
-V012-CODE-001仍READY；通知五渠道、腾讯IoT实网及企业微信原延期边界保持，小程序冻结。0.1.2测试/迁移/部署数字仅属2026-09-28历史；不能覆盖0.1.3或合计各任务测试数。资源新策略默认关闭，未授权发布、部署或停止用户既有服务。
+功能47；清单 46/22/22=90；ADV64；问题总记录57。P63 与 90 行零升降；新增里程碑 ID 集合=空；P26 及其他 P/明细状态不变。V012-CODE-001 仍 READY；通知五渠道、腾讯 IoT 实网、企业微信延期边界保持，小程序冻结。0.1.2/0.1.3 测试与迁移数字属各时点历史；迁移版本不冒充产品发布版本。资源新策略默认关闭；未授权发布、部署或停止用户既有服务。完整 MES、分管领导组织模型、周期预约、厂商实网不在 P63 验收内。

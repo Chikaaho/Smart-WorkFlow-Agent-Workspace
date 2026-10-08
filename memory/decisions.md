@@ -1,16 +1,15 @@
 # 近期有效决策摘要
 
-P63（L）PASSED（2026-10-08复核10）：20/20核销，A01—A10通过（10/10），业务缺口0；整体完成待阶段三复核。Web2b0c660四门exit0、1365+3/79w，Server19d1da2受影响结果锁定。唯一入口：`product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations-terminal-sync.md`；下一terminal-sync-p63-mes-workflow-foundations-01.md。当前功能46；终态授权47=46+1，清单46/22/22/ADV64保持。
+P63（L）**COMPLETED（待规划终态复核，2026-10-08 阶段三同步）**；功能级 PASSED=审查10。正式功能47（46+P63）；清单46/22/22=90 零升降、ADV64、问题57。回执 `terminal-sync-p63-mes-workflow-foundations-01.md` 待 Planner 复核；下一动作=确认 P63 整体 COMPLETED。
 
-> 同步点：2026-10-08（P63功能复核10）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）与对应回执。
+> 同步点：2026-10-08（P63 阶段三同步）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）、`knowledge/current-status.md` 与对应回执。
 
-- 当前状态与历史物理分离；当前值只见 `knowledge/current-status.md`，历史见 `knowledge/history/`。终态机器契约单一源 `.codex/governance/terminal-contract.json`，校验入口 `.codex/governance/validate-terminal.sh`。
+- 当前状态与历史物理分离；当前值只见 `knowledge/current-status.md`（历轮 P63/P62 长条目已迁 `knowledge/history/current-status-through-2026-10-08-p63-stage3-before.md`）；终态机器契约单一源 `.codex/governance/terminal-contract.json`。
 - Planner 以 `memory/` 最小摘要恢复；冲突时按 knowledge 权威修正，不反向裁决。
-- P60（P0/XL）成熟 OA `0.1.0` 路线已完成整体终态；更广平台能力按 `ADV-M11`—`ADV-M18` 独立立项（8 模块/64 明细）。第三方 SSO 与外部通知只有取得真实 Provider 行为证据才可写为验证通过。
-- P60 I3—I6 关键裁决：I3 沿用 P57 节点能力与 `ProcessGraph` 契约，`bpmn-js` 移出生产依赖与构建产物（P47 纳入不核销）；I4 外部联调用受控真实 HTTP 对端证明签名/重试/去重/失败恢复，不绑定厂商；I5 三 Provider 真实链 **延期免验/未验证**（该边界已被 2026-09-29 更新：钉钉/飞书经 `direction-three-provider-sso-20260928` 真实链验收 `PASSED`（审查07），企业微信仍 Owner 延期）；I6 通知投递以持久化为权威、失败不回滚已合法审批，五渠道固定 **Owner 延期/未验证**（P37/P38/P39 不核销）。
-- P61：旧数值 `code` 保持兼容，以可选且全局唯一的 `errorKey` 消歧；公共 `msg` 不承载原始诊断；启用 `zh-CN/en-US` 且防枚举。
-- **BAO（backend-architecture-optimization）已整体 `COMPLETED（规划已确认，2026-09-26）`**，Phase 1—6C 与 Final 的逐阶段裁决细节不再在 memory 展开，权威记录见 `knowledge/decisions.md`、`knowledge/current-status.md` 历史区与 `product/backend-architecture-optimization/`；10 项候选去向=BAO-01 `DEFERRED` + BAO-02 `PARTIAL` + 8 项 `COMPLETED`。仍有效的关键边界：动态宽表 SQL 唯一受控入口 `DynamicTableSql`（fail closed）；引擎与业务写入共享同一提交边界、流程发起与业务实例同事务；生产 IoT 无 provider 503 fail closed、缺凭据启动失败；`${revision}` 双版本机制（0.1.2值为历史；0.1.3执行回执报告开发 `0.1.3-SNAPSHOT`/正式 `0.1.3`，当前值待执行核验）与生产入口 `scripts/build-prod.sh` 制品门禁继续生效；PG 为生产权威，不证明腾讯真实云送达。
-
-- 资源功能闭环子阶段COMPLETED（规划已确认，2026-10-05）；终审见product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-resource-functional-closure-01-completed.md；性能Owner延期。
-
-- P62当前批准功能范围COMPLETED（规划已确认，2026-10-06）；功能与终态验收缺口均为0。正式功能46（45+1）、清单✅46/🟦22/⬜22=90、ADV64、问题57；P62批准功能交付已核销。性能Owner延期未验证、新资源策略默认关闭。最终裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md。P62无剩余业务验收项；本次探索回执确认knowledge登记已传播为规划确认完成；不外推发布或全入口实时状态。当前新目标为P63 MES前置能力，见本页规划入口。
+- P62 批准功能范围 COMPLETED（规划已确认，2026-10-06）；性能 Owner 延期未验证、新资源策略默认关闭；46 为 P62 验收时点值，当前项目总数47。
+- P63 关键边界：普通手工并行兼容=Owner 硬边界（分支/汇聚语义由原图决定、旧图保存不丢合法未知配置、不自动转换）；预约=成功完成后一次性、显式时区（歧义/不存在拒绝）、到期/过期不补发、窗口 1—3600s 默认 60、取消与认领竞争单结果生效；v1 动态语义不迁移；UNKNOWN 禁自动重发+受控人工核实；**全部收敛≠全部成功**（无效果且执行权终止可 EXPIRED、进行中/部分效果依权威结果）。
+- P60 I3—I6 关键裁决保持：I3 沿用 P57 节点能力与 `ProcessGraph` 契约、`bpmn-js` 移出生产依赖；I4 外部联调用受控真实 HTTP 对端；I5 三 Provider 真实链钉钉/飞书 PASSED（审查07）、企业微信 Owner 延期；I6 通知投递以持久化为权威、失败不回滚已合法审批，五渠道 Owner 延期/未验证（P37/P38/P39 不核销）。
+- P61：旧数值 `code` 保持兼容，以可选且全局唯一 `errorKey` 消歧；公共 `msg` 不承载原始诊断；启用 `zh-CN/en-US` 且防枚举。
+- BAO 已整体 COMPLETED（规划已确认，2026-09-26）；关键边界：动态宽表 SQL 唯一受控入口 `DynamicTableSql`（fail closed）；引擎与业务写入共享同一提交边界、流程发起与业务实例同事务；生产 IoT provider 缺省时设备控制按既有异常体系 503 fail closed、缺凭据启动失败；`${revision}` 双版本机制与 `scripts/build-prod.sh` 制品门禁继续生效；PG 为生产权威，不证明腾讯真实云送达。
+- 资源功能闭环子阶段 COMPLETED（规划已确认，2026-10-05）；终审 `planning-final-review-terminal-sync-resource-functional-closure-01-completed.md`。
+- 0.1.3 COMPLETED（Owner 已验收，2026-09-30）；UAT 运行 0.1.3 种子基线 v0.1.0；发布/部署身份保留原时点。

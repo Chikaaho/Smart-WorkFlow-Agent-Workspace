@@ -1,6 +1,6 @@
 # P63：MES 前置能力——动态并行审批与一次性预约 IoT 下发
 
-2026-10-06；角色：Planner；来源：Owner 本轮需求。等级：L（跨表单、流程、组织、IoT、调度与权限边界；探索若发现核心架构演进再升级）。状态：PASSED；回执10复核20/20、A01—A10通过，整体完成待阶段三终态复核。正式产品合同：`product/p63-mes-workflow-foundations/passed/direction-p63-mes-workflow-foundations.md`。
+2026-10-06；角色：Planner；来源：Owner 本轮需求。等级：L（跨表单、流程、组织、IoT、调度与权限边界；探索若发现核心架构演进再升级）。状态：**COMPLETED（待规划终态复核，2026-10-08 阶段三同步）**；功能级 PASSED=规划审查10（20/20、A01—A10 通过（10/10）、业务缺口0）。正式产品合同：`product/p63-mes-workflow-foundations/passed/direction-p63-mes-workflow-foundations.md`。
 
 ## 1. 目标与场景依据
 
@@ -36,8 +36,10 @@
 
 本轮交付两项公共基础能力及最小关联链，并保留普通手工并行。完整MES、温度Agent、周期预约、真实机房动作、部署及P62延期性能不在本轮范围。
 
-唯一当前执行入口：`product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations-terminal-sync.md`；最终裁决`product/p63-mes-workflow-foundations/receipts/planning-review-completion-10-passed.md`。下一终态同步回执01。20/20、A01—A10全部通过（10/10），业务缺口0；业务补充提示全部结清，仅历史引用。
+功能级验收 PASSED（`product/p63-mes-workflow-foundations/receipts/planning-review-completion-10-passed.md`，20/20、A01—A10 全部通过（10/10）、业务缺口0）；阶段三终态同步已完成并提交 `product/p63-mes-workflow-foundations/receipts/terminal-sync-p63-mes-workflow-foundations-01.md`（附件 `receipts/evidence/terminal-sync-01/`）。业务补充提示 01—09 全部结清，仅历史引用。
 
-功能验收PASSED，整体完成待Planner复核终态同步。当前功能46；阶段三授权P63登记为第47项，清单46/22/22=90、ADV64/其他P和明细状态保持。最终Web1365+3、79warning、四exit0；Server受影响模块与行为锁定。不重跑业务/门禁，不进入发布部署。
+**唯一下一动作 = Planner 复核 `terminal-sync-p63-mes-workflow-foundations-01.md` 并确认 P63 整体 COMPLETED**；终态方向 `product/p63-mes-workflow-foundations/ready/direction-p63-mes-workflow-foundations-terminal-sync.md` 经复核通过后归档 `passed/`。
 
-P62批准功能完成，性能Owner延期未验证、新资源策略关闭；完整MES、分管领导组织模型、厂商实网和部署边界保持。终态方向列唯一状态/计数/验证集合及完整当前入口同步范围；Executor先knowledge后摘要，回执后Planner独立确认COMPLETED。
+计数与验证：正式功能 **47**（46+P63 整体1，P63 为第47个登记）；清单 ✅46/🟦22/⬜22=90 零行升降、ADV64、问题57（起始历史基线）、其他 P/明细状态不变。正式验证集合 VB01—VB04：Web `2b0c660` 四门 exit0（1365+3 测试/79 warning）；Server iot 63/0、engine 76/0、process 266/0；20 原子行为基线；追加迁移 V0.1.5/V0.1.6/R__p63（链终点 0.1.6）。本轮仅文档同步，不重跑业务/门禁，不进入发布部署。
+
+P62 批准功能范围 COMPLETED（规划已确认，2026-10-06；46 为 P62 验收时点值，当前项目总数统一 47）；性能 Owner 延期未验证、新资源策略关闭；完整 MES、分管领导组织模型、厂商实网和部署边界保持。
