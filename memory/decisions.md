@@ -1,6 +1,6 @@
 # 近期有效决策摘要
 
-P64（XL）MES高级流程编排与业务闭环=READY（2026-10-08，合同/方案就绪，实现未授权）。方案：`product/p64-mes-advanced-orchestration/ready/solution-p64-mes-advanced-orchestration.md`。唯一Executor动作：`product/p64-mes-advanced-orchestration/receipts/planning-solution-review-02.md`§5传播READY/方案/分支，回读后Planner复核再等待实施指令。P63已COMPLETED、业务及VB锁定；正式功能47、清单46/22/22=90、ADV64保持。P62性能延期未验证/新策略关闭。
+P64（XL）=READY，合同/方案就绪，实现未授权。传播01复核未通过；唯一Executor动作：`product/p64-mes-advanced-orchestration/receipts/planning-review-ready-state-propagation-01.md`的G1—G4修正/补证，回执追加传播02，再交Planner复核。方案见P64 ready/solution。P63已COMPLETED、VB锁定；功能47、清单46/22/22=90、ADV64保持；P62性能延期未验证/新策略关闭。
 
 > 同步点：2026-10-08（P64探索复核/READY）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）、`knowledge/current-status.md` 与对应回执。
 
