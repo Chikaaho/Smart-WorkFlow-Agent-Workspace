@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-P63（L）VERIFYING（2026-10-08复核07）：15/20核销、剩余5，A02/A05/A06/A07/A09通过（5/10）。新增窄屏完整结果；功能类型、日期持久化/下发链与失败原件已补。剩余真实UI直接配置/新默认保存、调用者权限、正确成功日期图、整体兼容归属及原值。唯一入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-07.md`；审查07，回执08。功能46、清单46/22/22、ADV64保持，不进入阶段三。
+P63（L）VERIFYING（2026-10-08复核08）：18/20核销、剩2，A02/A03/A04/A05/A06/A07/A08/A09通过（8/10）。新增权限拒绝、默认保存、正确datetime；截止内PG恢复与Git/视觉/收尾已证。剩余动态直接人员/部门配置、knowledge完整当前值回读。唯一入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-08.md`；审查08，回执09。功能46、清单46/22/22、ADV64保持，不进入阶段三。
 
 P62当前批准功能范围COMPLETED（规划已确认，2026-10-06）；功能与终态验收缺口均为0。正式功能46（45+1）、清单✅46/🟦22/⬜22=90、ADV64、问题57；P62批准功能交付已核销。性能Owner延期未验证、新资源策略默认关闭。最终裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md。P62无剩余业务验收项；本次探索回执确认knowledge登记已传播为规划确认完成；不外推发布或全入口实时状态。当前新目标为P63 MES前置能力，见本页规划入口。
 

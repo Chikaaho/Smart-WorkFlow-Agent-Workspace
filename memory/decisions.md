@@ -1,8 +1,8 @@
 # 近期有效决策摘要
 
-P63（L）VERIFYING（2026-10-08复核07）：15/20核销、剩余5，A02/A05/A06/A07/A09通过（5/10）。新增窄屏完整结果；功能类型、日期持久化/下发链与失败原件已补。剩余真实UI直接配置/新默认保存、调用者权限、正确成功日期图、整体兼容归属及原值。唯一入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-07.md`；审查07，回执08。功能46、清单46/22/22、ADV64保持，不进入阶段三。
+P63（L）VERIFYING（2026-10-08复核08）：18/20核销、剩2，A02/A03/A04/A05/A06/A07/A08/A09通过（8/10）。新增权限拒绝、默认保存、正确datetime；截止内PG恢复与Git/视觉/收尾已证。剩余动态直接人员/部门配置、knowledge完整当前值回读。唯一入口：`product/p63-mes-workflow-foundations/receipts/planning-execution-prompt-p63-08.md`；审查08，回执09。功能46、清单46/22/22、ADV64保持，不进入阶段三。
 
-> 同步点：2026-10-08（P63功能复核07）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）与对应回执。
+> 同步点：2026-10-08（P63功能复核08）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）与对应回执。
 
 - 当前状态与历史物理分离；当前值只见 `knowledge/current-status.md`，历史见 `knowledge/history/`。终态机器契约单一源 `.codex/governance/terminal-contract.json`，校验入口 `.codex/governance/validate-terminal.sh`。
 - Planner 以 `memory/` 最小摘要恢复；冲突时按 knowledge 权威修正，不反向裁决。
