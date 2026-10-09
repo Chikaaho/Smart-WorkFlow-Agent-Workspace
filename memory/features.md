@@ -1,8 +1,8 @@
 # 功能摘要
 
-P64=IN_PROGRESS；阶段ⅠVERIFYING（回执06 已提交，待规划复审06）。唯一下一动作=Planner 独立复审回执06 与 phase1-06 九项证据包；原实施授权有效。本轮修复=04b 任务绑定版本发布冻结（首草稿前后再发布不漂移）、06b 二段失败可诊断+受控恢复（X5 收敛，不再 500）、04a 乐观锁冲突禁止同事务重放（X7 双激活根因）、07a 已启用 P64 关闭后收敛；02a/02b/05a/06a 原证已落 product；08a 覆盖/退出/Git 收尾完成。Server 578ef6b/Web 53eec1e 远端回读一致；主库 0 RUNNING 全终态。功能47、46/22/22=90、ADV64、问题57、P63/VB锁定、P62延期、gitlink78495dc保持；Admin已结案。
+P64=IN_PROGRESS；阶段ⅠVERIFYING（2026-10-09回执07提交待规划复审07）。提示05六原子项已收敛：04a汇聚收尾（真实列补查I6/I7 node_end恰1/单分支/4任务全终态/实例APPROVED，上轮失败SQL原件保留）、05a来源权限（主体=调用方租户+实例自身绑定；最小增补5case拒绝且零读取，类12/0、process347/0）、08a-L退出流两级证据（8196/27476/13147不存在、8080/8081/5174零监听、30实例全终态0RUNNING、命令0在途、意图18×STARTING全解析STARTED unresolved=0）、08a-W Web四门真实exit0（vitest1376+3）+恢复入口断言（canRetryActionRefStatus+组件级retryActionRef 3case）、08a-D ADR §4正文与修订04对齐（修订05）、08a-C逐入口字段级回读（含P64登记与reconciliation零提及核验）。本轮Git截止Server HEAD d47b4e1（含代码 effca33）/Web 21074af（feature分支，推送后远端回读一致，见回执07收尾）；原实施授权有效；功能47、46/22/22=90、ADV64、问题57、P63/VB锁定、P62延期/策略OFF、gitlink78495dc保持。唯一下一动作=Planner独立复审回执07与phase1-07六包。Hook两宿主事项由Admin续办（todo/admin-zcode-codex-hook-failures-20261009.md），独立于业务裁决。
 
-- `p64-mes-advanced-orchestration`（P64，XL）：**IN_PROGRESS；阶段ⅠVERIFYING**；回执06 已提交待复审（04b/06b/04a 修复与 07a 关闭边界、02a/02b/05a/06a 原证、08a 收尾）；阶段Ⅱ/Ⅲ未验收。
+- `p64-mes-advanced-orchestration`（P64，XL）：IN_PROGRESS·阶段ⅠVERIFYING；提示05六原子项收敛、回执07待规划复审07；阶段Ⅱ/Ⅲ未验收。
 - `p63-mes-workflow-foundations`（P63，L/P0）：**COMPLETED（规划已确认，2026-10-08）**；表单驱动动态并行审批+一次性 IoT 预约下发、手工并行兼容；VB01—VB04 见登记与 `state.md`；范围外=完整 MES/分管领导组织模型/周期预约/厂商实网/部署。
 - `p62-lowcode-transaction-bpm-tiering`（P62，XL）：**COMPLETED（规划已确认，2026-10-06）**；性能 Owner 延期未验证留账（`todo/p62-lowcode-transaction-bpm-tiering.md` §性能后续待办）；新资源策略默认关闭。
 - `backend-architecture-optimization`（XL）：**COMPLETED（规划已确认，2026-09-26）**；Phase1—6C 与 Final 完成；10 候选=BAO-01 `DEFERRED`+BAO-02 `PARTIAL`+8 `COMPLETED`；基线 1570/0/0/0（历史时点）。

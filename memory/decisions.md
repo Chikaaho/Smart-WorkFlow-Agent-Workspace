@@ -1,8 +1,8 @@
 # 近期有效决策摘要
 
-P64=IN_PROGRESS；阶段ⅠVERIFYING（回执06 已提交，待规划复审06）。唯一下一动作=Planner 独立复审回执06 与 phase1-06 九项证据包；原实施授权有效。本轮修复=04b 任务绑定版本发布冻结（首草稿前后再发布不漂移）、06b 二段失败可诊断+受控恢复（X5 收敛，不再 500）、04a 乐观锁冲突禁止同事务重放（X7 双激活根因）、07a 已启用 P64 关闭后收敛；02a/02b/05a/06a 原证已落 product；08a 覆盖/退出/Git 收尾完成。Server 578ef6b/Web 53eec1e 远端回读一致；主库 0 RUNNING 全终态。功能47、46/22/22=90、ADV64、问题57、P63/VB锁定、P62延期、gitlink78495dc保持；Admin已结案。
+P64=IN_PROGRESS；阶段ⅠVERIFYING（2026-10-09回执07提交待规划复审07）。提示05六原子项已收敛：04a汇聚收尾（真实列补查I6/I7 node_end恰1/单分支/4任务全终态/实例APPROVED，上轮失败SQL原件保留）、05a来源权限（主体=调用方租户+实例自身绑定；最小增补5case拒绝且零读取，类12/0、process347/0）、08a-L退出流两级证据（8196/27476/13147不存在、8080/8081/5174零监听、30实例全终态0RUNNING、命令0在途、意图18×STARTING全解析STARTED unresolved=0）、08a-W Web四门真实exit0（vitest1376+3）+恢复入口断言（canRetryActionRefStatus+组件级retryActionRef 3case）、08a-D ADR §4正文与修订04对齐（修订05）、08a-C逐入口字段级回读（含P64登记与reconciliation零提及核验）。本轮Git截止Server HEAD d47b4e1（含代码 effca33）/Web 21074af（feature分支，推送后远端回读一致，见回执07收尾）；原实施授权有效；功能47、46/22/22=90、ADV64、问题57、P63/VB锁定、P62延期/策略OFF、gitlink78495dc保持。唯一下一动作=Planner独立复审回执07与phase1-07六包。Hook两宿主事项由Admin续办（todo/admin-zcode-codex-hook-failures-20261009.md），独立于业务裁决。
 
-> 同步点：2026-10-09（P64阶段Ⅰ回执06，提示04九项修复/补证）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）、`knowledge/current-status.md` 与对应回执。
+> 同步点：2026-10-09（Executor按提示05收敛六原子项，回执07）；权威详情：knowledge/current-status.md与对应回执。
 
 - P64：业务主链以多流程编排；主表/节点表/变量各司其职，JS只判断、动作受控执行；后台源岗位→受托岗位委托映射，经组织任职解析实际办理人、同轮冻结；分组子流程隔离回写、四等待策略及迟到结果冻结。变量有效轮次/缺值、S2八组合、数量账业务结果、规模护栏与存量兼容已收敛，详见方向。
 - 当前状态与历史物理分离；当前值只见 `knowledge/current-status.md`（历轮 P63/P62 长条目已迁 `knowledge/history/current-status-through-2026-10-08-p63-stage3-before.md`）；终态机器契约单一源 `.codex/governance/terminal-contract.json`。

@@ -1,32 +1,23 @@
-# P64规划交接摘要
+# P64交接摘要
 
-## 1. 功能名称
-P64 MES高级流程编排与业务闭环（XL）。
-## 2. 功能目标
-节点表单、变量/判断/可靠动作、岗位委托、主子流程隔离回写与三场景。
-## 3. 当前状态
-IN_PROGRESS；阶段ⅠVERIFYING。回执06 已提交（提示04 九项剩余修复/补证），待规划独立复审；原完整实施授权有效。
-## 4. 本轮做了什么
-Executor按提示04完成九项：04b 版本漂移修复（发布冻结图写节点表单版本，消费方按绑定版本；真实序列 v6 发布→表单 v5/v6 再发布→首草稿前后均绑 v4；同对象故障→转办换键恢复）；06b 二段失败修复（ActionRefRecoveryService 受控恢复：ORCH FAILED 复用/EXPIRED 与 COMPLETED+FLOW_START FAILED 按当前绑定登记 :R{n}，原行不改写；终态失败/零目标标记意图；端点权限+Web入口；X5 真实收敛且不再 500）；04a X7 竞态修复（乐观锁冲突禁止同事务重放，任务仍在抛原始异常整事务回滚，任务消失转 2305；I6/I7 并发会签单激活复验，命令 retry_count=1 显示冲突真实发生）；07a 已启用 P64 关闭后收敛（v7 triggers=[]：在役 I6 冻结触发 MATCHED 且 v7 后仍办至 APPROVED；I7 零新触发零新意图）；02a/02b/05a/06a 原证提取落 product（XML/工具原输出）；08a 覆盖/退出/Git 收尾。
-## 5. 内部Step事实
-engine 100/0、process 342/0、Web 四门 exit0（lint 0e/3w、vitest 1371+3、build ✓3.58s）；Server 578ef6b/Web 53eec1e 推送后远端回读一致；自身 8080 精确终止（进程树 taskkill+PID/端口零监听原件）。阶段Ⅱ/Ⅲ及整体未通过。
-## 6. 实际范围
-两仓新增修复提交（Server 15 文件、Web 1 文件）；主库新增 I6/I7 与两个目标子流程（全终态）与 X5 恢复新代/新实例；产品面=p64_r5n2 v5/v6、流程 v6/v7 追加版本。
-## 7. 锁定结果
-01a/01b/03a/03b/03c/07b 与 768 写链、权限、真实 0.1.6 在役升级等既有子事实保持；新锁定=04b 无漂移序列、06b X5 收敛、04a 单激活并发、07a OFF 边界、五目标映射/空超限/幂等恢复逐用例。
-## 8. 修复前反证处置
-04b 漂移、06b 500 死路与 X7 双激活均在本授权内修复并复验（非观察项转范围外）；X6 不同窗口结论不变（不替代 X5）；X7 cancel_reason 记账误解已在 P1-04a 包更正。
-## 9. 当前项目
-功能47、46/22/22=90、ADV64、问题57、P63COMPLETED/VB锁定；P62性能延期、新策略OFF；Admin已结案。Server 578ef6b/Web 53eec1e 远端回读一致 0/0；主库全终态（0 RUNNING、30 实例）；根 gitlink78495dc 保持。回执06 主批次 SHA=`e185105c`（develop-sw，推送后远端回读一致；本条为 SHA 记录批次，不回填自身）。
-## 10. 未完成
-九项已全部提交回执06；残余=Planner 独立复审（含两条观察项：同用户同任务 FAILED 后同键异载荷 2426 → 恢复须换键（转办）或经 EXPIRED 恢复代，属既有契约；动态分支 cancel_reason=SUPERSEDED_BY_ROUND 仅双冻结路径出现，修复后不再触发）。
-## 11. 生命周期
-8080 本轮自身服务：java 进程树 taskkill 终止，8080/8081/5174 零监听（PID/退出/端口原件在 phase1-06/P1-08a）；PG/Redis 用户容器未动。
-## 12. 唯一下一动作
-Planner 独立复审回执06 与 phase1-06 九项证据包（阶段Ⅰ VERIFYING）。
-## 13. 完成标准
-见提示04 §4 全部为是；回执06 §7 自检全 是。
-## 14. 必读
-Planner：system/roles/planner、memory、复审05/提示04/回执06 九项包。Executor另读project/角色/knowledge/工程宪法。
-## 15. 新会话提示
-“你是执行。P64 回执06 已提交待复审；如复审要求增量，先读复审06 与 phase1-06 各包，保持绑定版本冻结/受控恢复/乐观锁语义，不重开已过子事实；收尾自身任务、回读Git、保留gitlink78495dc。”
+2026-10-09；Executor。P64 MES高级流程编排（XL）IN_PROGRESS，阶段ⅠVERIFYING；阶段Ⅱ/Ⅲ和整体未通过。完整实施授权持续。
+
+本轮按提示05（依据复审06）完成六原子项并提交回执07（`product/p64-mes-advanced-orchestration/receipts/phase-1-completion-receipt-07.md`，证据树 `receipts/evidence/phase1-07/` 六包+MANIFEST）：
+
+- **04a 汇聚收尾**：上轮失败SQL原件保留（列名误用不称成功）；以真实列 `proc_inst_id_/act_id_` 只读补查同 I6(`9360cee4`)/I7(`75af1262`)：node_end 恰1、动态分支各恰1行（无SUPERSEDED）、4任务全COMPLETED、实例双APPROVED；e_23/node_3单激活沿用已采信对照件。
+- **05a 来源权限**：主体=调用方租户、来源绑定=实例自身（formKey/businessKey、processInstanceId+nodeKey+round）；既有名单case工具提取（行号原件），最小增补5case——未知来源/NODE_FORM缺键拒绝且零读取、MAIN_FORM恰一次按调用租户+实例绑定读取、NODE_FORM限定本实例、SYSTEM白名单外排除；类XML 12/0、process全模块347/0；零生产代码改动。
+- **08a-L 退出流两级证据**：上轮taskkill 8196原流（08a-1/2）补落product；当前读回8196/27476/13147均不存在、java.exe全列表0、8080/8081/5174零监听、30实例全终态0RUNNING、命令0 PENDING/PROCESSING、意图18×STARTING（设计持久态）全解析STARTED且unresolved=0、act_ru_task=0、PG/Redis Up 28h未动。
+- **08a-W Web四门+恢复入口**：后继快照（53eec1e+本轮4文件）四门真实EXIT=0——lint 0e/3w、typecheck静默、vitest 1376+3（恰+1文件+5测试）、build 3.50s；入口断言=纯函数canRetryActionRefStatus（FAILED/INTENT_SUBMITTED/STARTING=true）模板编译级引用+组件级3case真实retryActionRef API行为（成功透出后端消息+重载/失败可诊断/在途互斥）。
+- **08a-D ADR一致性**：§4消费项正文与修订04②对齐（新增修订05）；`收敛需 ORCH 级重跑` §4正文0残留（仅存修订03历史头与修订05引用），§1/§6无冲突，历史原件不改写。
+- **08a-C knowledge-first覆盖**：逐入口字段级回读=current-status/session-handoff/P64功能登记/architecture/reconciliation索引P64零提及核验/Server功能清单/memory×5/todo×2/三ready路由（复审06/提示05，规划收尾批次一并固定）。
+
+观察项边界保持：2426同键异载荷不偷改历史请求；SUPERSEDED_BY_ROUND为历史记账。Hook两宿主事项由Admin续办（`todo/admin-zcode-codex-hook-failures-20261009.md`），独立于业务裁决。
+
+## 9. Git 收尾（2026-10-09 回执07）
+
+- Server HEAD=`d47b4e1`（代码 `effca33`＝05a来源权限测试增补 + 功能清单焦点行文档）；Web 同分支=`21074af`（08a-W恢复入口断言）。
+- 工作区 `develop-sw` 本批次（回执07+phase1-07证据索引+knowledge/memory/todo/ready同步）SHA=见下；推送后远端 ls-remote 回读一致（原输出在回执07 §Git）。
+- **工作区回执07主批次 SHA：`__BATCH_SHA__`**（第二段提交回填）。
+- 根 Server gitlink `78495dc` 保持；47、46/22/22=90、ADV64、问题57、其他P、P63 COMPLETED/VB、P62延期/新策略OFF不变。
+
+下会话先读 system/角色/memory、复审06/提示05与回执07，再推进授权内工作；唯一业务下一动作=Planner独立复审回执07。
