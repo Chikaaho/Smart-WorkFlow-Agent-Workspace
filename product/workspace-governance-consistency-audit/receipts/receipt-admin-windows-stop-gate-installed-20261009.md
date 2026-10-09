@@ -1,5 +1,9 @@
 # Windows Stop Gate正式安装与验证回执
 
+当前验收状态（2026-10-09）：Owner明确裁决“先按全部通过,后面有问题会再报”，本次治理修复**全部通过、已结案**。当前口径见[Owner通过与结案记录](receipt-owner-windows-stop-gate-acceptance-20261009.md)；后续按新问题反馈处理。
+
+## 安装验证记录（结案前历史）
+
 2026-10-09；Admin。任务入口：[管理员待办](../../../todo/admin-windows-stop-gate-diagnostics-20261009.md)。在Owner开启完全访问后，于Workspace `65a6f8e18243ff3f9ae7986eafa3dff449d96e22` 核对工作树与候选规划复核，`git apply --check`通过后应用原9文件补丁。原补丁SHA256：`23a37c52c45a88a020f8e6dc7a5a69e7c2c0493fc7e6879db511dd04f9ef5965`。
 
 **正式治理修复已安装，适用机器检查全部通过，用户级声明回读一致。真实ZCode会话派发验收仍待补，治理事项保持开放。**

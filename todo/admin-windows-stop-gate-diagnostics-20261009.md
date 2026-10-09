@@ -1,8 +1,8 @@
-# Windows Stop Gate修复：正式安装已验证，待真实宿主派发验收
+# Windows Stop Gate修复：全部通过，已结案
 
-当前状态（2026-10-09）：Owner开启完全访问后，Admin已应用原9文件补丁。正式契约49/49、诊断14/14、Stop Gate接线38/38及正式进程链5/5通过；用户级Stop声明指向新launcher，安装器Check回读drift=false，默认解释器实际探测可用。当前输入：[正式安装回执](../product/workspace-governance-consistency-audit/receipts/receipt-admin-windows-stop-gate-installed-20261009.md)，原[候选回执](../product/workspace-governance-consistency-audit/receipts/receipt-admin-windows-stop-gate-repair-candidate-20261009.md)与[候选规划复核](../product/workspace-governance-consistency-audit/receipts/planning-review-admin-windows-stop-gate-repair-candidate-20261009.md)保留历史证据。
+当前状态（2026-10-09）：Owner明确裁决“先按全部通过,后面有问题会再报”，本次治理修复全部通过、已结案。当前入口：[Owner通过与结案记录](../product/workspace-governance-consistency-audit/receipts/receipt-owner-windows-stop-gate-acceptance-20261009.md)。正式9文件修复已安装并推送1906fd19；契约49/49、诊断14/14、Stop Gate接线38/38及正式进程链5/5通过，用户级声明drift=false，默认解释器实际探测可用。
 
-正式进程链已回读正常通过的三阶段Validator审计及规则/能力故障拒绝；真实ZCode应用派发尚无安装后记录。下一动作：真实受治理会话自然触发Stop后核宿主结果、同session三阶段审计及结束投影。历史失败台账保留，selfcheck的live=false如实记录。治理事项保持开放，Git批次结果沿正式安装回执收尾；P64按[二级提示](../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase1-02.md)独立继续，本条不增加业务计数。
+下一动作：无本事项待执行动作，后续有问题由Owner反馈，再按具体问题处理。实测结果、派发取证边界及历史失败台账保存在[正式安装回执](../product/workspace-governance-consistency-audit/receipts/receipt-admin-windows-stop-gate-installed-20261009.md)；真实宿主派发补证不再作为本次结案前置。P64按原规划独立继续，本条不增加业务计数。
 
 ## 前期诊断与交接（历史）
 
