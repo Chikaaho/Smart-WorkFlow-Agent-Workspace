@@ -27,3 +27,12 @@
 3. **根因链**：存根静默 9009 → `componentOutput` 为空 → 无 `[Console]::Error.WriteLine` → stop-gate 判 exitCode≠0 → `EXECUTION_LIFECYCLE_REJECTED` 且诊断必然为空。终态载荷本身静态核对契约全部字段，且 `validate-execution.py --execution-context` 以真实解释器直跑 exit 0——缺陷在 validate-terminal.ps1 的 python 解析层，不在载荷与生命周期事实；会话内后台任务已全部清理（8080 无监听、无 java/mvn/vite 残留、隔离库已 DROP）。
 4. **边界**：与既有 PS5.1 无 BOM 编码缺陷登记（提交 3fcb2078，管理员域）为两处独立入口缺陷。修复方向建议（裁量归管理员）：python 解析后以探测命令验证可执行性，不可用时写入明确诊断（如 "validator unavailable: python3 resolves to WindowsApps stub"）后保持 fail closed；或按 `AGENT_CODING_ENGINE_PYTHON` 约定部署真实 Python 并设该环境变量。
 5. **修复路径已实测（2026-10-09 回执02 轮补充）**：以 `AGENT_CODING_ENGINE_PYTHON=C:\Users\<user>\AppData\Local\Programs\Python\Python312\python.exe`（真实 Python 3.12.10）调用 `validate-terminal.ps1`，同一终态载荷 **VALIDATOR_EXIT=0（两次）**；未固定时同载荷间歇复现 9009 空诊断。注意宿主进程环境为启动时快照，`setx` 对当次会话内的门禁进程不生效，需管理员在宿主启动层或入口探测层落地。
+
+## Executor 追加实测（2026-10-09，回执03 轮；决定性对照）
+
+同一份终态载荷（EXECUTION_SUBMITTED 与 BLOCKED 两版）在两条解释器解析路径下的结果：
+
+- 宿主环境直接跑 `powershell -NoProfile -NonInteractive -File .codex/governance/validate-terminal.ps1 < payload.json` → **exit 49、stdout/stderr 均空**（`validate-terminal.ps1` 第 97 行 `Get-Command python3, python` 命中 WindowsApps 应用执行别名存根，python 组件未执行），门禁因此报“终态契约未通过公共 Validator：”且诊断为空。
+- 同一载荷加 `AGENT_CODING_ENGINE_PYTHON=C:/Users/hjxch/AppData/Local/Programs/Python/Python312/python.exe` 重跑 → **exit 0**（载荷本身合法，BLOCKED 版另需 `browser_status` 非 OPERABLE，已按契约改为 NOT_APPLICABLE 后 exit 0）。
+
+结论：当前宿主进程环境块缺少 `AGENT_CODING_ENGINE_PYTHON`（用户级 setx 只对新进程树生效），公共 Validator 无法执行 → 任何终态都会被判 CONTRACT_REJECTED。解除条件：宿主重启/新进程树继承该变量，或管理员在 `validate-terminal.ps1` 的 python 解析链上加入真实解释器候选（如 `%LOCALAPPDATA%\Programs\Python\Python312\python.exe` 或 `.cache/codex-runtimes/...`）。本工作区业务侧交付与三仓推送不受影响（见 `product/p64-mes-advanced-orchestration/receipts/phase-1-completion-receipt-03.md`）。
