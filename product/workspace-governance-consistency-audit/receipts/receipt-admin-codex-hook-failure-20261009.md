@@ -39,4 +39,4 @@
 
 真实工作区`hooks/list`已识别Windows编码命令，enabled=true、无配置错误；新定义hash为`sha256:18ecf395895e2e65f1060e65172f62ae890a40481f80dfdb640ee439f553cb91`，`trustStatus=modified`。依据[Admin职责](../../../roles/admin.md)“工作区hook的宿主信任评审由Owner在宿主界面完成，管理员不代持信任”，未覆写真实用户`trusted_hash`。**剩余的宿主动作是信任当前精确声明；源文件修复与隔离真实派发已完成，不把modified状态写成原工作区已恢复生效。** 本回合不重复索取实施确认。
 
-Git精确范围与远端回读在提交后补记；排除并行业务文档、gitlink、原始日志和临时证据。
+Git主批次为`f2ce56a2f6b7aec9722858fbbd46868f6b00c8dd`，提交主题`fix(governance): 修复Codex Windows Stop接线并验证同线程续行`。工作区仓库remote=`origin`（`https://github.com/Chikaaho/Smart-WorkFlow-Agent-Workspace.git`），branch=`develop-sw`；操作前HEAD=`fecc0cc2`，领先/落后0/0。精确12文件：8个Codex入口/治理/测试文件、`system.md`、本独立回执、双线回执HK-C补全和本事件待办。推送`fecc0cc2..f2ce56a2`成功；`git ls-remote origin refs/heads/develop-sw`回读同一完整SHA。未纳入并行业务文档、gitlink、原始日志或临时证据。本段为主批次推送后的文档补记，代码和验证口径保持一致。
