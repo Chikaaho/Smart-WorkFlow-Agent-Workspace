@@ -7,6 +7,8 @@
 > 修订02（2026-10-09，复审03 + 二级提示02）：①§3 执行空间与并发按实际 worker 进程池重写（`-Xmx128m` 真实堆上限、握手自报 134,217,728、全局/租户并发上限、**等候数量硬上限**（0=立即繁忙）、shutdown 回收自身进程），取代"无 128MiB 护栏 / 调用方线程内联评估"的早前记录；②§3 新增 BPM 变量回退端口 `BpmVariableReadPort`（引擎动态并行"流程变量"来源在缺省时读取业务变量快照同一口径）；③§1 节点表单 definition 以结构化对象返回（契约形状，非 JSON 字符串），绑定版本快照缺失为可诊断拒绝、不静默回退最新；④§4/§6 动作意图持久 status=STARTING、展示/重试门槛按持久事实解析为 STARTED，回退前置收敛核查已实跑（见回执04）。
 >
 > 修订03（2026-10-09，复审04 + 三级提示03 收敛实测）：§4 消费项修正持久状态语义笔误——意图受理回填为 `target_record_id/持久 STARTING`（`OrchActionStartCommandHandler:75` 实测原输出），此前"回填 STARTED"表述与持久行冲突；并按三级收敛实测补记两点边界：办理事务故障（意图登记撞键）整事务回滚零半提交、FAILED→同载荷重置→EXPIRED→`:R1` 恢复代数链实测收敛；二段 FLOW_START 载荷在受理时固化当时绑定 defKey，受理后绑定修复不改变既有载荷，FLOW_START 终态失败窗口的收敛需 ORCH 级重跑（当前 retryActionRef 仅覆盖 ORCH-FAILED 形态，原样记录为观察项，不改判为已恢复）。
+>
+> 修订04（2026-10-09，复审05 产品反证 + 提示04 收敛实测）：①**任务绑定版本冻结改口径**——发布时把各节点 `config.nodeForm` 的当前已发布表单版本冻结进**冻结图**（`formVersion`；`BpmProcessDefServiceImpl#freezeNodeFormVersions`），`NodeFormDataService.resolveBinding`/`saveDraft`/`submitFinal` 与 `BpmNodeFormController`/`TaskActionService` 一律按**绑定版本**校验与落行：任务创建读取即已绑定，首次草稿前后与表单再发布都不漂移；冻结图无记录的历史图回退当前发布（旧无绑定兼容），绑定版本快照缺失保持可诊断拒绝（取代"首行落库才绑定/按最新校验"）。②**二段恢复语义落地**——`ActionRefRecoveryService`：ORCH FAILED 复用同键；ORCH EXPIRED 与 ORCH COMPLETED+FLOW_START FAILED/EXPIRED 窗口**按当前有效绑定登记新的 `FLOW_START:{recordId}:R{n}` 恢复代**（载荷=原受理输入+当前绑定指针；原 EXPIRED/FAILED 行与载荷一律保留不改写；无有效绑定→零目标安全处置）；`FlowStartCommandHandler.onFinalFailure` 与零目标处置路径把意图标记 FAILED+原因（不再永久 STARTING 冒正常）；恢复端点权限 `workflow:instance:view`，不再 500。③**重复延续缺陷修复（X7 双激活）**——`BpmTaskFacadeImpl.completeWithOptimisticRetry`：乐观锁冲突时**禁止同事务重放已执行副作用**——任务已消失=幂等竞争转 2305；任务仍存在=抛原始冲突使整事务回滚、由命令层新事务受控重试；租约交接重叠语义（G4b）保持不变。
 
 ## 1. 节点业务表单（PD04 → A01）
 

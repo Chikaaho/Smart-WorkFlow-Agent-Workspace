@@ -1,8 +1,8 @@
 # 近期有效决策摘要
 
-P64=IN_PROGRESS；阶段ⅠVERIFYING（回执05 已提交，待规划独立复审）。13 项剩余断言已收敛；ADR-P64-001 修订03 修正 §4 持久 STARTING 笔误并记录边界：办理事务故障整事务回滚零半提交、FAILED→EXPIRED→`:R1` 恢复代数实测收敛、FLOW_START 载荷受理时固化绑定 defKey（终态失败窗口收敛需 ORCH 级重跑，retryActionRef 仅覆盖 ORCH-FAILED 形态，原样记录为观察项）。唯一下一动作=Planner 独立复审回执05。两仓零新提交（Server b1f9832/Web 058e90f 远端回读一致 0/0）。功能 47、46/22/22=90、ADV64/P63/VB/P62 延期、根 gitlink 78495dc 保持。
+P64=IN_PROGRESS；阶段ⅠVERIFYING（回执06 已提交，待规划复审06）。唯一下一动作=Planner 独立复审回执06 与 phase1-06 九项证据包；原实施授权有效。本轮修复=04b 任务绑定版本发布冻结（首草稿前后再发布不漂移）、06b 二段失败可诊断+受控恢复（X5 收敛，不再 500）、04a 乐观锁冲突禁止同事务重放（X7 双激活根因）、07a 已启用 P64 关闭后收敛；02a/02b/05a/06a 原证已落 product；08a 覆盖/退出/Git 收尾完成。Server 578ef6b/Web 53eec1e 远端回读一致；主库 0 RUNNING 全终态。功能47、46/22/22=90、ADV64、问题57、P63/VB锁定、P62延期、gitlink78495dc保持；Admin已结案。
 
-> 同步点：2026-10-09（P64阶段Ⅰ三级提示03 收敛，回执05）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）、`knowledge/current-status.md` 与对应回执。
+> 同步点：2026-10-09（P64阶段Ⅰ回执06，提示04九项修复/补证）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）、`knowledge/current-status.md` 与对应回执。
 
 - P64：业务主链以多流程编排；主表/节点表/变量各司其职，JS只判断、动作受控执行；后台源岗位→受托岗位委托映射，经组织任职解析实际办理人、同轮冻结；分组子流程隔离回写、四等待策略及迟到结果冻结。变量有效轮次/缺值、S2八组合、数量账业务结果、规模护栏与存量兼容已收敛，详见方向。
 - 当前状态与历史物理分离；当前值只见 `knowledge/current-status.md`（历轮 P63/P62 长条目已迁 `knowledge/history/current-status-through-2026-10-08-p63-stage3-before.md`）；终态机器契约单一源 `.codex/governance/terminal-contract.json`。

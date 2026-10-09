@@ -1,8 +1,8 @@
 # 功能摘要
 
-P64=IN_PROGRESS；阶段ⅠVERIFYING（回执05 已提交，待规划独立复审）。三级提示03 的 13 项剩余断言已收敛（证据树 `product/p64-mes-advanced-orchestration/receipts/evidence/phase1-05/`）。唯一下一动作=Planner 独立复审回执05。两仓零新提交：Server b1f9832/Web 058e90f（远端回读一致 0/0）。功能 47、46/22/22=90、ADV64/P63/VB/P62 延期、根 gitlink 78495dc 保持。
+P64=IN_PROGRESS；阶段ⅠVERIFYING（回执06 已提交，待规划复审06）。唯一下一动作=Planner 独立复审回执06 与 phase1-06 九项证据包；原实施授权有效。本轮修复=04b 任务绑定版本发布冻结（首草稿前后再发布不漂移）、06b 二段失败可诊断+受控恢复（X5 收敛，不再 500）、04a 乐观锁冲突禁止同事务重放（X7 双激活根因）、07a 已启用 P64 关闭后收敛；02a/02b/05a/06a 原证已落 product；08a 覆盖/退出/Git 收尾完成。Server 578ef6b/Web 53eec1e 远端回读一致；主库 0 RUNNING 全终态。功能47、46/22/22=90、ADV64、问题57、P63/VB锁定、P62延期、gitlink78495dc保持；Admin已结案。
 
-- `p64-mes-advanced-orchestration`（P64，XL）：**IN_PROGRESS；阶段ⅠVERIFYING**；回执05 已提交（13 项剩余断言收敛+观察项记录），待规划复审；阶段Ⅱ/Ⅲ未验收。
+- `p64-mes-advanced-orchestration`（P64，XL）：**IN_PROGRESS；阶段ⅠVERIFYING**；回执06 已提交待复审（04b/06b/04a 修复与 07a 关闭边界、02a/02b/05a/06a 原证、08a 收尾）；阶段Ⅱ/Ⅲ未验收。
 - `p63-mes-workflow-foundations`（P63，L/P0）：**COMPLETED（规划已确认，2026-10-08）**；表单驱动动态并行审批+一次性 IoT 预约下发、手工并行兼容；VB01—VB04 见登记与 `state.md`；范围外=完整 MES/分管领导组织模型/周期预约/厂商实网/部署。
 - `p62-lowcode-transaction-bpm-tiering`（P62，XL）：**COMPLETED（规划已确认，2026-10-06）**；性能 Owner 延期未验证留账（`todo/p62-lowcode-transaction-bpm-tiering.md` §性能后续待办）；新资源策略默认关闭。
 - `backend-architecture-optimization`（XL）：**COMPLETED（规划已确认，2026-09-26）**；Phase1—6C 与 Final 完成；10 候选=BAO-01 `DEFERRED`+BAO-02 `PARTIAL`+8 `COMPLETED`；基线 1570/0/0/0（历史时点）。

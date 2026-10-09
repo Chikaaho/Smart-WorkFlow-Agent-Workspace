@@ -10,7 +10,7 @@
 
 优先做数据产生到可靠动作的完整链，因为没有任务数据、类型变量和可靠触发，后续选人、子流程及MES只能形成页面演示。第二个能力边界解决跨人员、跨流程的数据协作，第三个边界再证明三场景实际业务结果。
 
-当前P64=IN_PROGRESS；阶段Ⅰ复审04仍未通过，按[三级执行提示03](../receipts/planning-execution-prompt-p64-phase1-03.md)完成13项剩余断言；完整[实施授权](authorization-p64-implementation-20261008.md)有效，整体A01—A12尚未通过。现状输入来自[已复核探索](../../../search_fallback/p64-mes-advanced-orchestration-readiness-20261008.md)及[事实附件](../../../search_fallback/p64-mes-advanced-orchestration-readiness-20261008-attachments.md)；7项缺失/5项部分具备表示接缝现状，不作为完成率。
+当前P64=IN_PROGRESS；阶段Ⅰ复审05仍未通过，按[收敛提示04](../receipts/planning-execution-prompt-p64-phase1-04.md)完成9项剩余断言；完整[实施授权](authorization-p64-implementation-20261008.md)有效，整体A01—A12尚未通过。现状输入来自[已复核探索](../../../search_fallback/p64-mes-advanced-orchestration-readiness-20261008.md)及[事实附件](../../../search_fallback/p64-mes-advanced-orchestration-readiness-20261008-attachments.md)；7项缺失/5项部分具备表示接缝现状，不作为完成率。
 
 ## 2. 六项架构决策
 
@@ -86,4 +86,4 @@
 
 两代码仓分支已推送并建立`origin/feature/p64-mes-advanced-orchestration`跟踪；设备恢复见[设备交接](../../governance/device-handoff-20261008.md)。后续工程改动在对应feature分支进行；Executor启动时核实分支、起点变化、工作树和跟踪状态。只纳入本批授权文件，既有治理、gitlink及未跟踪项保留。commit采用规范格式和简短中文主题。
 
-READY传播已由[传播规划终审03](../receipts/planning-final-review-ready-state-propagation-03.md)确认收口，Owner已指令开始实施；当前Executor按[三级执行提示03](../receipts/planning-execution-prompt-p64-phase1-03.md)完成13项剩余断言（[复审04](../receipts/planning-review-phase-1-04.md)）；实施授权保持。Owner认可保留Server根gitlink78495dc。传播03截止点Server develop b7283c8/feature关系0/4，根C2′ d8ed945b；Web未变快照develop7af86f24/关系0/1。上表为创建时点，后续变化按新回读核实。在目标feature分支按主方向及三阶段边界推进，实际启动状态由Executor按授权同步。
+READY传播已由[传播规划终审03](../receipts/planning-final-review-ready-state-propagation-03.md)确认收口，Owner已指令开始实施；当前Executor按[收敛提示04](../receipts/planning-execution-prompt-p64-phase1-04.md)完成9项剩余断言（[复审05](../receipts/planning-review-phase-1-05.md)）；实施授权保持。Owner认可保留Server根gitlink78495dc。传播03截止点Server develop b7283c8/feature关系0/4，根C2′ d8ed945b；Web未变快照develop7af86f24/关系0/1。上表为创建时点，后续变化按新回读核实。在目标feature分支按主方向及三阶段边界推进，实际启动状态由Executor按授权同步。

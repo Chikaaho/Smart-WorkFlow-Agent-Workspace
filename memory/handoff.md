@@ -5,28 +5,28 @@ P64 MES高级流程编排与业务闭环（XL）。
 ## 2. 功能目标
 节点表单、变量/判断/可靠动作、岗位委托、主子流程隔离回写与三场景。
 ## 3. 当前状态
-IN_PROGRESS；阶段ⅠVERIFYING。回执05 已提交（三级提示03 的 13 项剩余断言收敛），待规划独立复审；原完整实施授权有效。
+IN_PROGRESS；阶段ⅠVERIFYING。回执06 已提交（提示04 九项剩余修复/补证），待规划独立复审；原完整实施授权有效。
 ## 4. 本轮做了什么
-Executor 按三级提示03 完成 13 项：转录纠正（lint5/Controller7/净增勾稽）、768 请求级写链与动作回查、worker 逐用例原件抽取、handler1 403×2+任务级读写拒绝、RETURN 新轮隔离、绑定冻结跨再发布、办理事务故障零半提交（校验/撞键两形态+EXPIRED:R1 恢复）、三来源实值快照与剩余语义逐用例、五目标映射落值原查询、二段 FLOW_START 故障与窗口内恢复、干净 0.1.6 在役升级重做（新库 p64_upgrade_rerun）、ADR 修订03、三仓 Git 回读与验证服务精确收尾。
+Executor按提示04完成九项：04b 版本漂移修复（发布冻结图写节点表单版本，消费方按绑定版本；真实序列 v6 发布→表单 v5/v6 再发布→首草稿前后均绑 v4；同对象故障→转办换键恢复）；06b 二段失败修复（ActionRefRecoveryService 受控恢复：ORCH FAILED 复用/EXPIRED 与 COMPLETED+FLOW_START FAILED 按当前绑定登记 :R{n}，原行不改写；终态失败/零目标标记意图；端点权限+Web入口；X5 真实收敛且不再 500）；04a X7 竞态修复（乐观锁冲突禁止同事务重放，任务仍在抛原始异常整事务回滚，任务消失转 2305；I6/I7 并发会签单激活复验，命令 retry_count=1 显示冲突真实发生）；07a 已启用 P64 关闭后收敛（v7 triggers=[]：在役 I6 冻结触发 MATCHED 且 v7 后仍办至 APPROVED；I7 零新触发零新意图）；02a/02b/05a/06a 原证提取落 product（XML/工具原输出）；08a 覆盖/退出/Git 收尾。
 ## 5. 内部Step事实
-12 个 ID 独立证据包（phase1-05/），每包 ID→原文件:位置→实际结果→边界；执行自验不代规划通过；阶段通过不替代整体 A01—A12。
+engine 100/0、process 342/0、Web 四门 exit0（lint 0e/3w、vitest 1371+3、build ✓3.58s）；Server 578ef6b/Web 53eec1e 推送后远端回读一致；自身 8080 精确终止（进程树 taskkill+PID/端口零监听原件）。阶段Ⅱ/Ⅲ及整体未通过。
 ## 6. 实际范围
-本轮两仓零新提交（纯验证与证据收敛）；工作区改动=ADR/回执05/证据树/knowledge/memory/todo。源码与运行关联记录于各证据包。
-## 7. 已锁定证据
-engine98/0、process330/0、Web四门exit0（lint 0e5w 纠正）、v3链、五目标启动——沿回执04保留。本轮新增：round2 快照只含新轮、冻结 v3 跨 v4 发布、撞键整事务回滚+EXPIRED:R1 恢复、三来源快照、GROUPED 仅 owner、FLOW_START FAILED 零幻影实例、干净 0.1.6 基线（13迁移/三表NONE/在役RUNNING）→0.1.7 恰一条→同实例 APPROVED 零写入。
-## 8. 观察项（原样记录，待规划裁量）
-FLOW_START 载荷受理时固化绑定 defKey：受理后绑行修复不改变既有载荷，FLOW_START 终态失败窗口收敛需 ORCH 级重跑，retryActionRef 仅覆盖 ORCH-FAILED 形态（retry 端点对该窗口 500）；X7 node_3 双分支竞态（一 CANCELED 一 START）自愈。
+两仓新增修复提交（Server 15 文件、Web 1 文件）；主库新增 I6/I7 与两个目标子流程（全终态）与 X5 恢复新代/新实例；产品面=p64_r5n2 v5/v6、流程 v6/v7 追加版本。
+## 7. 锁定结果
+01a/01b/03a/03b/03c/07b 与 768 写链、权限、真实 0.1.6 在役升级等既有子事实保持；新锁定=04b 无漂移序列、06b X5 收敛、04a 单激活并发、07a OFF 边界、五目标映射/空超限/幂等恢复逐用例。
+## 8. 修复前反证处置
+04b 漂移、06b 500 死路与 X7 双激活均在本授权内修复并复验（非观察项转范围外）；X6 不同窗口结论不变（不替代 X5）；X7 cancel_reason 记账误解已在 P1-04a 包更正。
 ## 9. 当前项目
-功能47、46/22/22=90、ADV64、问题57、P63COMPLETED/VB锁定；P62性能延期、新策略OFF。Server b1f9832/Web 058e90f 远端回读一致 0/0、工作树干净；根 Server gitlink78495dc保留。主库终态：26实例全终态（TERMINATED×2/APPROVED×14/REJECTED×10）、运行任务0。回执05 主批次 SHA=4844caf9（develop-sw，推送后远端回读一致；本条为 SHA 记录批次，不回填自身）。
+功能47、46/22/22=90、ADV64、问题57、P63COMPLETED/VB锁定；P62性能延期、新策略OFF；Admin已结案。Server 578ef6b/Web 53eec1e 远端回读一致 0/0；主库全终态（0 RUNNING、30 实例）；根 gitlink78495dc 保持。
 ## 10. 未完成
-阶段Ⅱ/Ⅲ、整体A01—A12/终态同步；已过子事实（03a/07b、v3链、五目标启动）不重复。
-## 11. 生命周期与风险
-8080/5174（上轮保留）与 8081（本轮演练）均已进程树终止+端口零监听读回；PG 容器为用户既有设施未动。升级演练库 p64_upgrade_rerun 保留（含本轮对象），旧 p64_upgrade_run 错误基线保留仅作历史。
+九项已全部提交回执06；残余=Planner 独立复审（含两条观察项：同用户同任务 FAILED 后同键异载荷 2426 → 恢复须换键（转办）或经 EXPIRED 恢复代，属既有契约；动态分支 cancel_reason=SUPERSEDED_BY_ROUND 仅双冻结路径出现，修复后不再触发）。
+## 11. 生命周期
+8080 本轮自身服务：java 进程树 taskkill 终止，8080/8081/5174 零监听（PID/退出/端口原件在 phase1-06/P1-08a）；PG/Redis 用户容器未动。
 ## 12. 唯一下一动作
-Planner 独立复审回执05（product/p64-mes-advanced-orchestration/receipts/phase-1-completion-receipt-05.md）。
+Planner 独立复审回执06 与 phase1-06 九项证据包（阶段Ⅰ VERIFYING）。
 ## 13. 完成标准
-每项独立证据包有正向/必要反向实际结果；真实阻塞按契约；观察项不折算为通过。
+见提示04 §4 全部为是；回执06 §7 自检全 是。
 ## 14. 必读
-Planner：system/roles/planner、memory、回执05+phase1-05 证据索引、复审04/三级提示03 对照。
+Planner：system/roles/planner、memory、复审05/提示04/回执06 九项包。Executor另读project/角色/knowledge/工程宪法。
 ## 15. 新会话提示
-"你是规划。独立复审 P64 阶段Ⅰ回执05 与 phase1-05 证据树，对照三级提示03 的 13 项逐项裁决；观察项（FLOW_START 恢复窗口形态）单独裁量；通过则下发阶段Ⅱ方向或终态值清单。"
+“你是执行。P64 回执06 已提交待复审；如复审要求增量，先读复审06 与 phase1-06 各包，保持绑定版本冻结/受控恢复/乐观锁语义，不重开已过子事实；收尾自身任务、回读Git、保留gitlink78495dc。”

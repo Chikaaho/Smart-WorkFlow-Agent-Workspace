@@ -1,3 +1,3 @@
 # 当前状态摘要
 
-P64=IN_PROGRESS；阶段ⅠVERIFYING（回执05 已提交，待规划独立复审）。三级提示03 的 13 项剩余断言已收敛（证据树 `product/p64-mes-advanced-orchestration/receipts/evidence/phase1-05/`，12 个 ID 独立包）：768 写链请求级捕获、worker 逐用例原件、handler1 403、RETURN 新轮隔离、绑定冻结+事务故障零半提交、三来源实值快照、五目标映射落值、二段 FLOW_START 故障、干净 0.1.6 在役升级重做、ADR 修订03、验证服务精确收尾（三端口零监听、主库 26 实例全终态运行任务 0）。观察项：FLOW_START 载荷受理时固化绑定 defKey，终态失败窗口收敛需 ORCH 级重跑（retryActionRef 仅覆盖 ORCH-FAILED 形态）。唯一下一动作=Planner 独立复审回执05。两仓零新提交：Server b1f9832/Web 058e90f（远端回读一致 0/0，工作树干净）。功能 47、46/22/22=90、ADV64/P63/VB/P62 延期、根 gitlink 78495dc 保持。
+P64=IN_PROGRESS；阶段ⅠVERIFYING（回执06 已提交，待规划复审06）。唯一下一动作=Planner 独立复审回执06 与 phase1-06 九项证据包；原实施授权有效。本轮修复=04b 任务绑定版本发布冻结（首草稿前后再发布不漂移）、06b 二段失败可诊断+受控恢复（X5 收敛，不再 500）、04a 乐观锁冲突禁止同事务重放（X7 双激活根因）、07a 已启用 P64 关闭后收敛；02a/02b/05a/06a 原证已落 product；08a 覆盖/退出/Git 收尾完成。Server 578ef6b/Web 53eec1e 远端回读一致；主库 0 RUNNING 全终态。功能47、46/22/22=90、ADV64、问题57、P63/VB锁定、P62延期、gitlink78495dc保持；Admin已结案。
