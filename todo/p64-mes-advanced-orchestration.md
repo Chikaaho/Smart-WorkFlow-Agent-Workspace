@@ -19,10 +19,10 @@
 
 ## 当前状态与入口
 
-P64=IN_PROGRESS；阶段ⅠVERIFYING（2026-10-09 按一级提示01 收敛，[回执03](../product/p64-mes-advanced-orchestration/receipts/phase-1-completion-receipt-03.md) 已提交待复审），整体A01—A12未通过。正式完成功能仍47，清单46/22/22=90、ADV64保持。P63=COMPLETED（规划已确认）；本次探索供应的六入口确认传播已核销，业务验收继续锁定。
+P64=IN_PROGRESS；阶段ⅠVERIFYING（复审03 接收部分进度未通过；**回执04 已提交待规划复审**）。正式完成功能仍47，清单46/22/22=90、ADV64保持。P63=COMPLETED（规划已确认）；本次探索供应的六入口确认传播已核销，业务验收继续锁定。
 
-[规划复核01](../product/p64-mes-advanced-orchestration/receipts/planning-review-readiness-01.md)接受探索（7项缺失/5项部分具备），将变量/表单提交、四等待策略、岗位多任职及4跳委托、八组合真值表、数量账实际结果、有限规模、升级/回退边界收敛进方向。
+本轮[回执04](../product/p64-mes-advanced-orchestration/receipts/phase-1-completion-receipt-04.md)按[二级执行提示02](../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase1-02.md)（替代一级提示01）闭合复审03 的 15 项剩余内容：修复5处真实缺陷（发起页 USER(multiple) 占位键、节点表单 definition 契约形状、nodeFormData 随同意丢失、动态并行 VARIABLE 来源端口回退、node_3 语义配置）、跑通 v3 三节点真实链（APPROVED）与三种动作类型5项派发、768 视口与逐请求网络索引、0.1.6→0.1.7 隔离升级续办与 ADR §6 回退收敛核查；engine98/0、process330/0、Web四门exit0。证据树 [evidence/phase1-04](../product/p64-mes-advanced-orchestration/receipts/evidence/phase1-04/index.md)。
 
-本轮[方案](../product/p64-mes-advanced-orchestration/ready/solution-p64-mes-advanced-orchestration.md)明确PD01—PD06与三阶段能力交付；[方案复核02](../product/p64-mes-advanced-orchestration/receipts/planning-solution-review-02.md)承接当前传播授权。
+唯一下一动作：Planner 独立复审回执04（阶段Ⅰ VERIFYING）；复审加严时按回执04 各项"边界"补最小面（当前标注：P1-05a 新轮反例、P1-06a 空超限真实例）。Server `b1f9832`/Web `058e90f`（feature 分支 0/0 回读一致）；根 Server gitlink `78495dc` 保留。阶段通过不代整体完成。
 
-唯一下一动作：Planner 独立复审[回执03](../product/p64-mes-advanced-orchestration/receipts/phase-1-completion-receipt-03.md)（阶段Ⅰ=VERIFYING）。回执03 已闭合：P1-02a/02b（worker 进程 128MiB 隔离+全局限额+有限排队）、P1-04b（任务级绑定版本冻结+零半提交）、P1-06b（STARTING 语义/持久事实展示/重试门槛/入队失败零残留）、P1-03a（三来源变量+节点表单绑定+动作目标按业务名，保存→校验0错→发布→DB 回读一致）；未闭合（下一执行动作）：三类节点实际办理与 SINGLE/GROUPED 真实启动（先修表单渲染层 `USER(multiple)`/`DEPT` 占位）、768 视口证据、handler1 实办与直达设计器拒绝、0.1.6 升级续办与 ADR 回退核查 SQL、请求级网络索引与逐入口覆盖矩阵。Git：Server `e1dfa42`、Web `83844e4`（feature/p64-mes-advanced-orchestration，均推送 0/0）。READY传播/G1—G4关闭，根Server gitlink78495dc保留。阶段通过不代整体完成。
+

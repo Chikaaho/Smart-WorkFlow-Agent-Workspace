@@ -1,8 +1,8 @@
 # 功能摘要
 
-P64=IN_PROGRESS；阶段ⅠVERIFYING（复审02仍未通过）。唯一下一动作=Executor按`product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase1-01.md`关闭15个剩余子项，追加回执03；完整实施授权有效。回执02报告Server29e2c684/Webae00d141，Git完整回读待补；engine88/0、PG1/0及Web1370+3输出有限锁定，不晋级正式基线。功能47、清单46/22/22=90、ADV64/P63/VB/P62延期保持，根Server gitlink78495dc保留。Admin诊断核实完成，治理修复未实施。
+P64=IN_PROGRESS；阶段ⅠVERIFYING（复审03部分进度未通过）。唯一下一动作=Executor按`product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase1-02.md`收敛15项剩余内容，追加回执04；实施授权有效，已过子事实锁定。执行摘要报告Server e1dfa42/Web83844e4，Git回读待补。功能47、46/22/22=90、ADV64/P63/VB/P62延期及根gitlink78495dc保持。Admin候选已验证，安装/真实派发/Git未完成。
 
-- `p64-mes-advanced-orchestration`（P64，XL）：**IN_PROGRESS；阶段ⅠVERIFYING**；复审02仍未通过，一级提示15子项待收敛。部分工程输出/运行结果有限锁定；阶段Ⅱ/Ⅲ未验收。
+- `p64-mes-advanced-orchestration`（P64，XL）：**IN_PROGRESS；阶段ⅠVERIFYING**；复审03部分进度未通过，二级提示15项剩余内容待收敛；阶段Ⅱ/Ⅲ未验收。
 - `p63-mes-workflow-foundations`（P63，L/P0）：**COMPLETED（规划已确认，2026-10-08）**；表单驱动动态并行审批+一次性 IoT 预约下发、手工并行兼容；VB01—VB04 见登记与 `state.md`；范围外=完整 MES/分管领导组织模型/周期预约/厂商实网/部署。
 - `p62-lowcode-transaction-bpm-tiering`（P62，XL）：**COMPLETED（规划已确认，2026-10-06）**；性能 Owner 延期未验证留账（`todo/p62-lowcode-transaction-bpm-tiering.md` §性能后续待办）；新资源策略默认关闭。
 - `backend-architecture-optimization`（XL）：**COMPLETED（规划已确认，2026-09-26）**；Phase1—6C 与 Final 完成；10 候选=BAO-01 `DEFERRED`+BAO-02 `PARTIAL`+8 `COMPLETED`；基线 1570/0/0/0（历史时点）。
