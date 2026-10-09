@@ -17,7 +17,8 @@
 
 - Server HEAD=`d47b4e1`（代码 `effca33`＝05a来源权限测试增补 + 功能清单焦点行文档）；Web 同分支=`21074af`（08a-W恢复入口断言）。
 - 工作区 `develop-sw` 本批次（回执07+phase1-07证据索引+knowledge/memory/todo/ready同步）SHA=见下；推送后远端 ls-remote 回读一致（原输出在回执07 §Git）。
-- **工作区回执07主批次 SHA：`__BATCH_SHA__`**（第二段提交回填）。
+- **工作区回执07主批次 SHA：`2d6f0f33`**（回执07+phase1-07 六包 index+knowledge/memory/todo/ready 同步+提示05/复审06 归档；本段为第二段提交回填）。
+- 推送后远端回读：Server `d47b4e1`（origin 同 SHA，87afbe9..d47b4e1）、Web `21074af`（origin 同 SHA，53eec1e..21074af）、两仓工作树干净；工作区第二段提交后推送并复核本地=origin。
 - 根 Server gitlink `78495dc` 保持；47、46/22/22=90、ADV64、问题57、其他P、P63 COMPLETED/VB、P62延期/新策略OFF不变。
 
 下会话先读 system/角色/memory、复审06/提示05与回执07，再推进授权内工作；唯一业务下一动作=Planner独立复审回执07。
