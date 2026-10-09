@@ -43,7 +43,13 @@
 
 ### Git
 
-本回执与`zcode-stop-launcher.ps1`修复、任务入口待办随本批次提交推送`origin/develop-sw`；操作前HEAD与跟踪分支领先/落后0/0；精确排除并行的P64业务文档、`memory/`状态文件与Codex侧管理员会话在途改动；提交与远端SHA回读在最终答复报告。
+本回执与`zcode-stop-launcher.ps1`修复、任务入口待办随本批次提交推送`origin/develop-sw`；操作前HEAD与跟踪分支领先/落后0/0（前次HEAD `772146c2`）。本批次提交`bce10e457a588d55d0fc96ce893bac9ffdb1e788`，推送结果`772146c2..bce10e45 develop-sw -> develop-sw`，远端回读`git ls-remote origin refs/heads/develop-sw`=同一SHA；回读存档`evidence/hook-failures-20261009-2150/git-closeout-hk-z.json`。精确排除并行的P64业务文档、`memory/`状态文件、Server/Web gitlink与Codex侧管理员会话在途改动（当时含`.codex/hooks.json`、`codex-stop-adapter.ps1`、`test-codex-stop-adapter.py`等）。
+
+## 剩余动作
+
+1. 本回合结束的自然Stop派发为修复后launcher回执的首次真实宿主触达：下一回合读取`invocations.log`（预期`launcher-invoked`+`invoked`+`payload-read`三行，session=`sess_5ca9dce0`，admin角色静默通过）并回补本回执；若未出现`launcher-invoked`则落回“脚本未执行”类别，与本事件5次失败同型。
+2. HK-C节由Codex侧管理员会话（`thread 01a11df3`）补全根因、修改与真实派发验证；完成后本回执为完整双线记录。
+3. 若宿主再次出现同型派发失败（两日窗口内已5次），以新增的launcher回执三分归因；空展开候选机制需宿主侧遥测（展开后argv/子进程退出码）方可最终证实，属宿主能力边界。
 
 ## HK-C：Codex 项目Stop（由 Codex 侧管理员会话核查，本节待其补全）
 
