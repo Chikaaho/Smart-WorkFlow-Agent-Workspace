@@ -17,7 +17,7 @@ engine98/0、process330/0、Web四门exit0（lint 0e5w 纠正）、v3链、五�
 ## 8. 观察项（原样记录，待规划裁量）
 FLOW_START 载荷受理时固化绑定 defKey：受理后绑行修复不改变既有载荷，FLOW_START 终态失败窗口收敛需 ORCH 级重跑，retryActionRef 仅覆盖 ORCH-FAILED 形态（retry 端点对该窗口 500）；X7 node_3 双分支竞态（一 CANCELED 一 START）自愈。
 ## 9. 当前项目
-功能47、46/22/22=90、ADV64、问题57、P63COMPLETED/VB锁定；P62性能延期、新策略OFF。Server b1f9832/Web 058e90f 远端回读一致 0/0、工作树干净；根 Server gitlink78495dc保留。主库终态：26实例全终态（TERMINATED×2/APPROVED×14/REJECTED×10）、运行任务0。
+功能47、46/22/22=90、ADV64、问题57、P63COMPLETED/VB锁定；P62性能延期、新策略OFF。Server b1f9832/Web 058e90f 远端回读一致 0/0、工作树干净；根 Server gitlink78495dc保留。主库终态：26实例全终态（TERMINATED×2/APPROVED×14/REJECTED×10）、运行任务0。回执05 主批次 SHA=4844caf9（develop-sw，推送后远端回读一致；本条为 SHA 记录批次，不回填自身）。
 ## 10. 未完成
 阶段Ⅱ/Ⅲ、整体A01—A12/终态同步；已过子事实（03a/07b、v3链、五目标启动）不重复。
 ## 11. 生命周期与风险
