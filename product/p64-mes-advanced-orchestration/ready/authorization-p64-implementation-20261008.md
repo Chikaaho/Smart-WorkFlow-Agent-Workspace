@@ -6,8 +6,8 @@
 
 ## 1. 当前状态与唯一动作
 
-- 当前P64=IN_PROGRESS；阶段Ⅰ验收VERIFYING（2026-10-09规划复审03仍未通过，二级提示修正/补证）。实施启动事实来自执行回执，本规划会话未运行工程。
-- 唯一下一动作：Executor按[二级执行提示](../receipts/planning-execution-prompt-p64-phase1-02.md)关闭15个剩余子项，在既有feature分支连续完成授权内工作，追加阶段回执04（依据[复审03](../receipts/planning-review-phase-1-03.md)）；原完整实施授权有效。
+- 当前P64=IN_PROGRESS；阶段Ⅰ验收VERIFYING（2026-10-09规划复审04仍未通过，三级提示收敛13项剩余断言）。实施启动事实来自执行回执，本规划会话未运行工程。
+- 唯一下一动作：Executor按[三级执行提示03](../receipts/planning-execution-prompt-p64-phase1-03.md)完成13项剩余断言，在既有feature分支连续完成授权内工作，追加阶段回执05（依据[复审04](../receipts/planning-review-phase-1-04.md)）；原完整实施授权有效。
 - READY传播及G1—G4已关闭，[传播终审03](../receipts/planning-final-review-ready-state-propagation-03.md)保留其时点裁决，不作为当前等待实施授权入口。
 - 此次实施授权覆盖既定完整P64，不为内部步骤或已授权后续阶段重复索要实施许可；各阶段仍提交行为回执，由Planner独立验收，阶段通过不替代整体A01—A12通过。
 
@@ -45,11 +45,11 @@ Executor获得以下明确状态同步写入授权：knowledge/current-status、
 
 启动状态同步与实施连续进行，不单独开启READY传播补证轮次。未启动不得声称工程已运行；启动后移除“实施未授权/等待Owner实施指令”的当前待办。历史回执保持原时点。
 
-当前阶段I修正执行回执追加到`product/p64-mes-advanced-orchestration/receipts/phase-1-completion-receipt-04.md`，展示验收项→对象及行为→实际结果→原始证据位置与层级，同时报告实际修改、ADR、命令/门禁输出、兼容边界及Git结果；具体测试设计由Executor制定。仍有授权内可执行项继续推进，真实阻塞按现有终态契约提供工具结果与解除条件。
+当前阶段I修正执行回执追加到`product/p64-mes-advanced-orchestration/receipts/phase-1-completion-receipt-05.md`，展示验收项→对象及行为→实际结果→原始证据位置与层级，同时报告实际修改、ADR、命令/门禁输出、兼容边界及Git结果；具体测试设计由Executor制定。仍有授权内可执行项继续推进，真实阻塞按现有终态契约提供工具结果与解除条件。
 
 Executor不能自行写功能PASSED/COMPLETED、核销P/明细、晋级正式基线或移动方向至passed；后续整体通过与终态同步由Planner裁决。此授权在本会话已经成立，不需要再次确认。
 
 ## 5. 执行会话启动提示
 
-> 你是执行。Owner已授权开始P64完整范围实施。读取本实施授权、主方向和方案，核实实际Git与工程约束，在Server/Web现有feature/p64-mes-advanced-orchestration分支按二级执行提示收敛阶段I的15项剩余内容；自主制定实施、验证及ADR，连续完成A01—A04及相关A11/A12，按本文knowledge-first同步实际启动状态。保留根Server gitlink78495dc，不重开READY传播，不重复索要既有实施授权。阶段回执提交Planner独立验收。
+> 你是执行。Owner已授权开始P64完整范围实施。读取本实施授权、主方向和方案，核实实际Git与工程约束，在Server/Web现有feature/p64-mes-advanced-orchestration分支按三级执行提示03只收敛阶段I的13项剩余断言；自主制定实施、验证及ADR，连续完成A01—A04及相关A11/A12，按本文knowledge-first同步实际启动状态。保留根Server gitlink78495dc，不重开READY传播，不重复索要既有实施授权。阶段回执提交Planner独立验收。
 

@@ -3,33 +3,30 @@
 ## 1. 功能名称
 P64 MES高级流程编排与业务闭环（XL）。
 ## 2. 功能目标
-节点表单、变量/只读判断/可靠动作、岗位委托、主子流程隔离回写与三场景。
+节点表单、变量/判断/可靠动作、岗位委托、主子流程隔离回写与三场景。
 ## 3. 当前状态
-IN_PROGRESS；阶段ⅠVERIFYING（复审04待做，回执04已提交）。完整实施授权有效，整体A01—A12未通过。
+IN_PROGRESS；阶段ⅠVERIFYING。回执05 已提交（三级提示03 的 13 项剩余断言收敛），待规划独立复审；原完整实施授权有效。
 ## 4. 本轮做了什么
-按二级提示02完成复审03的15项剩余内容并追加回执04：修复5处真实缺陷（USER多选占位键、节点表单definition契约、nodeFormData丢失、动态并行VARIABLE来源端口回退、node_3语义配置），跑v3三节点真实链与三种动作类型派发、768视口与网络索引、0.1.6升级续办与回退收敛核查、全部门禁与三仓提交回读。
-## 5. Executor内部Step
-全部剩余项按回执04逐项给结果与边界；自验通过待规划复审。剩余最小面（如需复审加严）：P1-05a新轮反例、P1-06a空超限真实例。
-## 6. 修改范围
-Server(engine/process/api+bootstrap yml)、Web(ProcessDesigner/TaskDetail/locales+测试)、工作区(product/memory/todo/knowledge)。治理脚本与 gitlink78495dc 未动。
-## 7. 测试与验收
-engine98/0、process330/0、Web四门exit0（typecheck静默/lint0e4w/vitest1371+3/build3.53s）；隔离库真实运行结果与0.1.6→0.1.7升级续办见证据树 evidence/phase1-04。
-## 8. 关键决策
-动态并行"流程变量"来源经 BpmVariableReadPort 回退业务变量快照（同一冻结图+当前轮次口径）；绑定版本快照缺失改为可诊断拒绝（不静默回退最新）；判断脚本执行空间=专职worker进程(-Xmx128m)+全局/租户并发与等候数量硬上限（0=立即繁忙）。
-## 9. 当前系统
-功能47、清单46/22/22=90、ADV64、问题57、P63COMPLETED；Server b1f9832/Web 058e90f（feature分支，0/0回读一致）；根Server gitlink78495dc保留（工作区批次 `db7fd2cd` 0/0 回读一致；gitlink 脏差异按 G3 如实保留）。
+Executor 按三级提示03 完成 13 项：转录纠正（lint5/Controller7/净增勾稽）、768 请求级写链与动作回查、worker 逐用例原件抽取、handler1 403×2+任务级读写拒绝、RETURN 新轮隔离、绑定冻结跨再发布、办理事务故障零半提交（校验/撞键两形态+EXPIRED:R1 恢复）、三来源实值快照与剩余语义逐用例、五目标映射落值原查询、二段 FLOW_START 故障与窗口内恢复、干净 0.1.6 在役升级重做（新库 p64_upgrade_rerun）、ADR 修订03、三仓 Git 回读与验证服务精确收尾。
+## 5. 内部Step事实
+12 个 ID 独立证据包（phase1-05/），每包 ID→原文件:位置→实际结果→边界；执行自验不代规划通过；阶段通过不替代整体 A01—A12。
+## 6. 实际范围
+本轮两仓零新提交（纯验证与证据收敛）；工作区改动=ADR/回执05/证据树/knowledge/memory/todo。源码与运行关联记录于各证据包。
+## 7. 已锁定证据
+engine98/0、process330/0、Web四门exit0（lint 0e5w 纠正）、v3链、五目标启动——沿回执04保留。本轮新增：round2 快照只含新轮、冻结 v3 跨 v4 发布、撞键整事务回滚+EXPIRED:R1 恢复、三来源快照、GROUPED 仅 owner、FLOW_START FAILED 零幻影实例、干净 0.1.6 基线（13迁移/三表NONE/在役RUNNING）→0.1.7 恰一条→同实例 APPROVED 零写入。
+## 8. 观察项（原样记录，待规划裁量）
+FLOW_START 载荷受理时固化绑定 defKey：受理后绑行修复不改变既有载荷，FLOW_START 终态失败窗口收敛需 ORCH 级重跑，retryActionRef 仅覆盖 ORCH-FAILED 形态（retry 端点对该窗口 500）；X7 node_3 双分支竞态（一 CANCELED 一 START）自愈。
+## 9. 当前项目
+功能47、46/22/22=90、ADV64、问题57、P63COMPLETED/VB锁定；P62性能延期、新策略OFF。Server b1f9832/Web 058e90f 远端回读一致 0/0、工作树干净；根 Server gitlink78495dc保留。主库终态：26实例全终态（TERMINATED×2/APPROVED×14/REJECTED×10）、运行任务0。
 ## 10. 未完成
-15 稳定子项按回执04逐项闭合或标注边界（剩余最小面：P1-05a 新轮反例、P1-06a 空超限真实例）。阶段Ⅱ/Ⅲ及整体 A01—A12 未通过。
-## 11. 风险
-v1/v2 失败实例已按授权干预收敛但保留原事实；动态并行 VARIABLE 来源依赖 BpmVariableReadPort 装配（未接线时按空集合+emptyStrategy 处置）；旧 v1/v2 冻结图仍缺 semanticVersion=2（不再重启，仅历史对象）。
+阶段Ⅱ/Ⅲ、整体A01—A12/终态同步；已过子事实（03a/07b、v3链、五目标启动）不重复。
+## 11. 生命周期与风险
+8080/5174（上轮保留）与 8081（本轮演练）均已进程树终止+端口零监听读回；PG 容器为用户既有设施未动。升级演练库 p64_upgrade_rerun 保留（含本轮对象），旧 p64_upgrade_run 错误基线保留仅作历史。
 ## 12. 唯一下一动作
-Planner 独立复审回执04（阶段Ⅰ VERIFYING）；复审若加严，按回执04 各项边界补最小面。无需重新授权。
+Planner 独立复审回执05（product/p64-mes-advanced-orchestration/receipts/phase-1-completion-receipt-05.md）。
 ## 13. 完成标准
-剩余断言有正确对象/层级实际结果，原输出和失败保留；受影响工程门禁/自身生命周期结束；ADR、knowledge-first当前入口与Git回读一致。已锁定子事实不重复；最终整体A01—A12/终态同步完成才关闭P64。
+每项独立证据包有正向/必要反向实际结果；真实阻塞按契约；观察项不折算为通过。
 ## 14. 必读
-Planner读system/roles/planner、memory、复审03/二级提示/回执03和Admin候选复核；Executor另读project/角色/knowledge/工程宪法。续跑对象/环境以evidence/phase1-03/index.md为线索，先核自身服务/库身份；不擅停用户服务。
-## 15. 启动提示
-“你是执行，按P64 planning-execution-prompt-p64-phase1-02.md完成15项剩余内容，先修USER/DEPT、字段映射/Trigger授权等阻断点后继续，原实施授权有效，回执04交规划；不以可执行缺陷等待验收，不改功能计数/正式基线，保留根gitlink78495dc。”
-
-## 16. 运行环境（本轮保留）
-后端 8080（prod，PG=p64_phase1_r3）与前端 5174 为本轮验证服务，未停止、供规划复核；升级演练库 p64_upgrade_run 与主库并存。
+Planner：system/roles/planner、memory、回执05+phase1-05 证据索引、复审04/三级提示03 对照。
+## 15. 新会话提示
+"你是规划。独立复审 P64 阶段Ⅰ回执05 与 phase1-05 证据树，对照三级提示03 的 13 项逐项裁决；观察项（FLOW_START 恢复窗口形态）单独裁量；通过则下发阶段Ⅱ方向或终态值清单。"
