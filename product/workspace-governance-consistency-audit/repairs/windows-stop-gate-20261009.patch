@@ -1,0 +1,579 @@
+--- /dev/null
++++ b/.codex/governance/windows-validator-runtime.ps1
+@@ -0,0 +1,92 @@
++﻿# Windows native execution mechanics. Terminal rules remain in the public contract/Validator.
++function ConvertTo-NativeArgument {
++    param([AllowEmptyString()] [string] $Value)
++    # CommandLineToArgvW quoting, including quotes and trailing backslashes.
++    return '"' + [regex]::Replace([regex]::Replace($Value, '(\\*)"', '$1$1\"'), '(\\+)$', '$1$1') + '"'
++}
++
++function Invoke-GovernanceProcess {
++    param([string] $Executable, [string[]] $Arguments, [AllowEmptyString()] [string] $InputText = '', [int] $TimeoutMs = 5000)
++    $result = @{ exitCode = 1; stdout = ''; stderr = ''; failure = ''; exception_type = '' }
++    $process = $null
++    try {
++        $start = [System.Diagnostics.ProcessStartInfo]::new()
++        $start.FileName = $Executable
++        $start.Arguments = (@($Arguments | ForEach-Object { ConvertTo-NativeArgument $_ }) -join ' ')
++        $start.UseShellExecute = $false
++        $start.CreateNoWindow = $true
++        $start.RedirectStandardInput = $true
++        $start.RedirectStandardOutput = $true
++        $start.RedirectStandardError = $true
++        $start.StandardOutputEncoding = [System.Text.UTF8Encoding]::new($false)
++        $start.StandardErrorEncoding = [System.Text.UTF8Encoding]::new($false)
++        $start.EnvironmentVariables['PYTHONIOENCODING'] = 'utf-8'
++        $start.EnvironmentVariables['PYTHONUTF8'] = '1'
++        $process = [System.Diagnostics.Process]::Start($start)
++        $stdout = $process.StandardOutput.ReadToEndAsync()
++        $stderr = $process.StandardError.ReadToEndAsync()
++        $watch = [System.Diagnostics.Stopwatch]::StartNew()
++        # Write bytes explicitly: Windows PowerShell's default pipeline encoding is ASCII.
++        $bytes = [System.Text.UTF8Encoding]::new($false).GetBytes($InputText)
++        $write = $process.StandardInput.BaseStream.WriteAsync($bytes, 0, $bytes.Length)
++        if (-not $write.Wait($TimeoutMs)) { throw [System.TimeoutException]::new() }
++        $process.StandardInput.Close()
++        $remaining = [Math]::Max(1, $TimeoutMs - [int]$watch.ElapsedMilliseconds)
++        if (-not $process.WaitForExit($remaining)) { throw [System.TimeoutException]::new() }
++        $result.exitCode = $process.ExitCode
++        $result.stdout = $stdout.GetAwaiter().GetResult()
++        $result.stderr = $stderr.GetAwaiter().GetResult()
++    } catch {
++        $result.exception_type = $_.Exception.GetType().Name
++        $result.failure = if ($_.Exception -is [System.TimeoutException]) { 'TIMEOUT' } else { 'PROCESS_ERROR' }
++        # Only this exact child is ours; never clean user services by name/port.
++        if ($null -ne $process -and -not $process.HasExited) { $process.Kill(); $process.WaitForExit() }
++    } finally {
++        if ($null -ne $process) { $process.Dispose() }
++    }
++    return $result
++}
++
++function Get-ValidatorInterpreterIdentity {
++    param([string] $Path)
++    if ([string]::IsNullOrWhiteSpace($Path)) { return '' }
++    return [regex]::Replace($Path, '(?i)([/\\]Users[/\\])[^/\\]+', '$1<user>')
++}
++
++function Resolve-ValidatorPython {
++    param([string] $Root, [string] $Explicit = '')
++    $candidates = [System.Collections.Generic.List[string]]::new()
++    $override = if ($Explicit) { $Explicit } else { $env:AGENT_CODING_ENGINE_PYTHON }
++    if ($override) { $candidates.Add($override) }
++    else {
++        $cached = Join-Path $Root '.codex/governance/runtime/zcode/reader.json'
++        try { $record = Get-Content -LiteralPath $cached -Raw -ErrorAction Stop | ConvertFrom-Json; if ($record.python) { $candidates.Add([string]$record.python) } } catch { }
++        if ($env:USERPROFILE) {
++            $candidates.Add((Join-Path $env:USERPROFILE '.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe'))
++            $installed = Join-Path $env:USERPROFILE 'AppData/Local/Programs/Python'
++            if (Test-Path -LiteralPath $installed) {
++                foreach ($directory in @(Get-ChildItem -LiteralPath $installed -Directory -Filter 'Python3*' -ErrorAction SilentlyContinue | Sort-Object Name -Descending | Select-Object -First 10)) {
++                    $candidates.Add((Join-Path $directory.FullName 'python.exe'))
++                }
++            }
++        }
++        foreach ($name in @('python3', 'python')) {
++            foreach ($command in @(Get-Command $name -CommandType Application -ErrorAction SilentlyContinue)) { $candidates.Add($command.Source) }
++        }
++    }
++    $seen = @{}
++    $failures = [System.Collections.Generic.List[string]]::new()
++    foreach ($candidate in $candidates) {
++        if ($seen.ContainsKey($candidate)) { continue }; $seen[$candidate] = $true
++        $identity = Get-ValidatorInterpreterIdentity $candidate
++        if ($candidate -match '[/\\]WindowsApps[/\\]') { $failures.Add("$identity`: WINDOWSAPPS_ALIAS"); continue }
++        if (-not (Test-Path -LiteralPath $candidate -PathType Leaf)) { $failures.Add("$identity`: MISSING"); continue }
++        $probe = Invoke-GovernanceProcess -Executable $candidate -Arguments @('-c', 'import json,sys; assert sys.version_info >= (3,10); print("ACE_PYTHON_OK")')
++        if ($probe.exitCode -eq 0 -and -not $probe.failure -and $probe.stdout.Trim() -eq 'ACE_PYTHON_OK') {
++            return @{ available = $true; path = $candidate; identity = $identity; diagnostics = @($failures.ToArray()) }
++        }
++        $failures.Add("$identity`: probe exit=$($probe.exitCode), failure=$($probe.failure), exception=$($probe.exception_type)")
++    }
++    if ($failures.Count -eq 0) { $failures.Add('Python 3.10+ not found') }
++    return @{ available = $false; path = ''; identity = ''; diagnostics = @($failures.ToArray()) }
++}
+--- a/.codex/governance/validate-terminal.ps1
++++ b/.codex/governance/validate-terminal.ps1
+@@ -1,16 +1,22 @@
+-[CmdletBinding()]
++﻿[CmdletBinding()]
+ param(
+     [Parameter(ValueFromPipeline = $true)]
+     [AllowNull()]
+     [AllowEmptyString()]
+     [string] $InputJson,
+-    [Alias('ExecutionContext')] [switch] $ExecutionContextMode
++    [Alias('ExecutionContext')] [switch] $ExecutionContextMode,
++    [string] $PythonExecutable = ''
+ )
+ 
+ begin {
+     $ErrorActionPreference = 'Stop'
+     Set-StrictMode -Version Latest
+     $pipelineChunks = [System.Collections.Generic.List[string]]::new()
++    . (Join-Path $PSScriptRoot 'windows-validator-runtime.ps1')
++    trap {
++        [Console]::Error.WriteLine('terminal: validator exception: ' + $_.Exception.GetType().Name)
++        exit 1
++    }
+ }
+ 
+ process {
+@@ -94,28 +100,28 @@
+ }
+ 
+ # Same lifecycle Validator and terminal-contract.json on POSIX and Windows.
+-$python = if ($env:AGENT_CODING_ENGINE_PYTHON) { $env:AGENT_CODING_ENGINE_PYTHON } else { (Get-Command python3, python -ErrorAction SilentlyContinue | Select-Object -First 1 | ForEach-Object { $_.Source }) }
+-if ([string]::IsNullOrWhiteSpace($python)) {
+-    [Console]::Error.WriteLine('execution: validator unavailable: Python 3 not found')
++$resolution = Resolve-ValidatorPython -Root $rootDir -Explicit $PythonExecutable
++if (-not $resolution.available) {
++    [Console]::Error.WriteLine('execution: validator unavailable: ' + ($resolution.diagnostics -join '; '))
+     exit 1
+ }
++$python = $resolution.path
+ $executionValidator = Join-Path $PSScriptRoot 'validate-execution.py'
+ function Invoke-ExecutionComponent {
+     param([switch] $ContextMode)
+-    $previousPreference = $ErrorActionPreference
+-    $ErrorActionPreference = 'Continue'
+-    try {
+-        $arguments = @($executionValidator)
+-        if ($ContextMode) { $arguments += '--execution-context' }
+-        $componentOutput = $payloadText | & $python @arguments 2>&1 | Out-String
+-        $componentExit = $LASTEXITCODE
+-    } finally {
+-        $ErrorActionPreference = $previousPreference
+-    }
+-    if (-not [string]::IsNullOrWhiteSpace($componentOutput)) {
+-        [Console]::Error.WriteLine($componentOutput.Trim())
+-    }
+-    return $componentExit
++    $arguments = @($executionValidator)
++    if ($ContextMode) { $arguments += '--execution-context' }
++    $result = Invoke-GovernanceProcess -Executable $python -Arguments $arguments -InputText $payloadText
++    $output = ($result.stderr + $result.stdout).Trim()
++    if ($output) { [Console]::Error.WriteLine($output) }
++    if ($result.failure) {
++        [Console]::Error.WriteLine("execution: validator component failure=$($result.failure), exception=$($result.exception_type), interpreter=$($resolution.identity)")
++        return 1
++    }
++    if ($result.exitCode -ne 0 -and -not $output) {
++        [Console]::Error.WriteLine("execution: validator component exited $($result.exitCode) with no diagnostic output; interpreter=$($resolution.identity)")
++    }
++    return $result.exitCode
+ }
+ if ($ExecutionContextMode) {
+     exit (Invoke-ExecutionComponent -ContextMode)
+@@ -142,8 +148,8 @@
+ }
+ 
+ $diagnostics = [System.Collections.Generic.List[string]]::new()
+-$payloadNames = @($payload.PSObject.Properties.Name)
+-$contractNames = @($contract.properties.PSObject.Properties.Name)
++$payloadNames = @($payload.PSObject.Properties | ForEach-Object { $_.Name })
++$contractNames = @(($contract.properties.PSObject.Properties | ForEach-Object { $_.Name }))
+ 
+ foreach ($name in @($contract.required)) {
+     if (-not (Test-Property -InputObject $payload -Name $name)) {
+@@ -247,8 +253,8 @@
+     if ($payload.memory_compression -isnot [pscustomobject]) {
+         Add-Diagnostic $diagnostics 'memory_compression: expected object'
+     } else {
+-        $memoryNames = @($payload.memory_compression.PSObject.Properties.Name)
+-        $allowedMemoryNames = @($contract.properties.memory_compression.properties.PSObject.Properties.Name)
++        $memoryNames = @(($payload.memory_compression.PSObject.Properties | ForEach-Object { $_.Name }))
++        $allowedMemoryNames = @(($contract.properties.memory_compression.properties.PSObject.Properties | ForEach-Object { $_.Name }))
+         foreach ($name in $memoryNames) {
+             if ($name -notin $allowedMemoryNames) {
+                 Add-Diagnostic $diagnostics "memory_compression.$name`: unknown field"
+@@ -282,7 +288,7 @@
+                 Add-Diagnostic $diagnostics 'work_items: items must be objects'
+                 continue
+             }
+-            foreach ($name in @($item.PSObject.Properties.Name)) {
++            foreach ($name in @(($item.PSObject.Properties | ForEach-Object { $_.Name }))) {
+                 if ($name -notin @('id', 'status', 'authorized', 'dependency_satisfied', 'actionable', 'next_action')) {
+                     Add-Diagnostic $diagnostics "work_items.$name`: unknown field"
+                 }
+@@ -351,7 +357,7 @@
+                 Add-Diagnostic $diagnostics "progress_basis.$name`: items must be non-blank strings"
+             }
+         }
+-        foreach ($name in @($payload.progress_basis.PSObject.Properties.Name)) {
++        foreach ($name in @(($payload.progress_basis.PSObject.Properties | ForEach-Object { $_.Name }))) {
+             if ($name -notin @('files_changed', 'tool_actions', 'new_evidence', 'closed_work_items')) {
+                 Add-Diagnostic $diagnostics "progress_basis.$name`: unknown field"
+             }
+@@ -376,7 +382,7 @@
+                 Add-Diagnostic $diagnostics 'tool_results: items must be objects'
+                 continue
+             }
+-            foreach ($name in @($result.PSObject.Properties.Name)) {
++            foreach ($name in @(($result.PSObject.Properties | ForEach-Object { $_.Name }))) {
+                 if ($name -notin @('tool', 'outcome', 'detail')) {
+                     Add-Diagnostic $diagnostics "tool_results.$name`: unknown field"
+                 }
+@@ -415,7 +421,7 @@
+     if ($payload.browser_evidence -isnot [pscustomobject]) {
+         Add-Diagnostic $diagnostics 'browser_evidence: expected object'
+     } else {
+-        foreach ($name in @($payload.browser_evidence.PSObject.Properties.Name)) {
++        foreach ($name in @(($payload.browser_evidence.PSObject.Properties | ForEach-Object { $_.Name }))) {
+             if ($name -notin @('tier', 'headless', 'artifacts', 'url', 'viewport', 'identity', 'object', 'network_index')) {
+                 Add-Diagnostic $diagnostics "browser_evidence.$name`: unknown field"
+             }
+@@ -481,7 +487,7 @@
+         Add-Diagnostic $diagnostics 'confirmation: expected object'
+     } else {
+         $confirmation = $payload.confirmation
+-        foreach ($name in @($confirmation.PSObject.Properties.Name)) {
++        foreach ($name in @(($confirmation.PSObject.Properties | ForEach-Object { $_.Name }))) {
+             if ($name -notin @('category', 'input_source', 'action')) {
+                 Add-Diagnostic $diagnostics "confirmation.$name`: unknown field"
+             }
+--- a/.codex/governance/stop-gate.ps1
++++ b/.codex/governance/stop-gate.ps1
+@@ -63,6 +63,7 @@
+ # 不显式指定会让回注的中文 reason 变成乱码。
+ [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
+ . (Join-Path $PSScriptRoot 'zcode-gate-common.ps1')
++. (Join-Path $PSScriptRoot 'windows-validator-runtime.ps1')
+ 
+ # 低于该占用率时，“上下文已满”只能是无工具证据的自我估计，必须拒绝并回注宿主实测值。
+ $contextClaimThresholdPercent = 85
+@@ -103,15 +104,30 @@
+ 
+     $errorWriter = [System.IO.StringWriter]::new()
+     $originalError = [Console]::Error
++    $exitCode = 1
++    $exceptionType = ''
++    $resolution = Resolve-ValidatorPython -Root (Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $ValidatorPath)))
+     try {
+         [Console]::SetError($errorWriter)
+-        $null = & $ValidatorPath -InputJson $TerminalJson -ExecutionContext:$ExecutionContextMode
+-        $exitCode = $LASTEXITCODE
++        if ($resolution.available) {
++            $global:LASTEXITCODE = 1
++            $stream = @(& $ValidatorPath -InputJson $TerminalJson -ExecutionContext:$ExecutionContextMode -PythonExecutable $resolution.path 2>&1)
++            $exitCode = $global:LASTEXITCODE
++            foreach ($record in $stream) { $errorWriter.WriteLine([string]$record) }
++        } else {
++            $errorWriter.WriteLine('execution: validator unavailable: ' + ($resolution.diagnostics -join '; '))
++        }
++    } catch {
++        $exitCode = 1
++        $exceptionType = $_.Exception.GetType().Name
++        $errorWriter.WriteLine('terminal: validator exception: ' + $exceptionType)
+     } finally {
+         [Console]::SetError($originalError)
+     }
+     $diagnostics = @($errorWriter.ToString() -split "`r?`n" | Where-Object { -not [string]::IsNullOrWhiteSpace($_) })
+-    return @{ exitCode = $exitCode; diagnostics = $diagnostics }
++    if ($exitCode -ne 0 -and $diagnostics.Count -eq 0) { $diagnostics = @("terminal: validator exited $exitCode with no diagnostic output") }
++    return @{ exitCode = $exitCode; diagnostics = $diagnostics; interpreter = $resolution.identity; exception_type = $exceptionType }
++
+ }
+ 
+ 
+@@ -240,6 +256,7 @@
+ $auditPath = ''
+ $sessionKey = 'unknown-session'
+ $toolCallCount = 0
++$validatorAudit = [System.Collections.Generic.List[object]]::new()
+ 
+ # 载荷读取必须在 trap 生效前自行兜底：stdin 管道异常（宿主写入中断/管道损坏）会从这里
+ # 抛出，历史上直接导致整脚本 rc=1、宿主记 hook.run.failed、回合静默漏放。按宪法
+@@ -296,6 +313,14 @@
+     }
+     [Console]::Error.WriteLine("执行会话不能结束：停止门禁执行异常，无法裁决（$detail）。下一步动作：继续执行授权内工作项；若该异常重复出现，运行 .codex/governance/hook-selfcheck.ps1 并把诊断交给管理员。")
+     exit 2
++}
++
++function Add-ValidatorAudit {
++    param([string] $Phase, [object] $Result)
++    $codes = @($Result.diagnostics | ForEach-Object {
++        if ($_ -match '^(terminal|execution): ([A-Za-z0-9_.]+)') { $Matches[1] + ':' + $Matches[2] } else { 'validator:diagnostic' }
++    } | Select-Object -Unique -First 20)
++    $validatorAudit.Add([ordered] @{ phase = $Phase; exit_code = $Result.exitCode; interpreter = $Result.interpreter; exception_type = $Result.exception_type; diagnostic_codes = $codes })
+ }
+ 
+ function Write-GateDecision {
+@@ -330,6 +355,7 @@
+             context_percent   = $ContextPercent
+             context_exceeded  = $ContextExceeded
+             escalation        = $Escalation
++            validator_results = @($validatorAudit.ToArray())
+         })
+     }
+     if ($Decision -eq 'block') {
+@@ -389,10 +415,16 @@
+ $contractAccepted = $false
+ 
+ $lifecycleValidation = Invoke-TerminalValidator -ValidatorPath (Join-Path $root '.codex/governance/validate-terminal.ps1') -TerminalJson ($payload | ConvertTo-Json -Depth 40 -Compress) -ExecutionContext
++Add-ValidatorAudit -Phase 'HOST_LIFECYCLE' -Result $lifecycleValidation
+ if ($lifecycleValidation.exitCode -ne 0) {
+-    $reasonCode = 'EXECUTION_LIFECYCLE_REJECTED'
++    $validatorUnavailable = (@($lifecycleValidation.diagnostics) -join ' ') -match 'validator unavailable|validator exception|component failure|with no diagnostic output'
++    $reasonCode = if ($validatorUnavailable) { 'VALIDATOR_UNAVAILABLE' } else { 'EXECUTION_LIFECYCLE_REJECTED' }
+     $findings.Add((@($lifecycleValidation.diagnostics) -join '；'))
++    if ($validatorUnavailable) {
++        $actions.Add('修复解释器发现或入口执行能力并复验；保留当前结果，继续独立工作，不按入口故障宣称任务完成。')
++    } else {
+     $actions.Add('核对自身任务身份，按既定策略取消、清理并保存已有结果与退出状态；继续独立工作，不延时等待，不停止用户既有服务。')
++    }
+ }
+ 
+ if (-not $extraction.ok) {
+@@ -409,12 +441,14 @@
+         $terminalState = Get-GateJsonText $terminalPayload 'state'
+         $validatorPath = Join-Path $root '.codex/governance/validate-terminal.ps1'
+         $validation = Invoke-TerminalValidator -ValidatorPath $validatorPath -TerminalJson $extraction.payload
++        Add-ValidatorAudit -Phase 'TERMINAL' -Result $validation
+         if ($validation.exitCode -eq 0) {
+             $lifecycleContext = @{ terminal_payload = $terminalPayload }
+             foreach ($field in @('background_tasks', 'execution_observations')) {
+                 if ($null -ne $payload.PSObject.Properties[$field]) { $lifecycleContext[$field] = $payload.$field }
+             }
+             $validation = Invoke-TerminalValidator -ValidatorPath $validatorPath -TerminalJson ($lifecycleContext | ConvertTo-Json -Depth 40 -Compress) -ExecutionContext
++            Add-ValidatorAudit -Phase 'TERMINAL_LIFECYCLE' -Result $validation
+         }
+         if ($validation.exitCode -ne 0) {
+             if ([string]::IsNullOrWhiteSpace($reasonCode)) { $reasonCode = 'CONTRACT_REJECTED' }
+--- a/.codex/governance/hook-selfcheck.ps1
++++ b/.codex/governance/hook-selfcheck.ps1
+@@ -14,6 +14,7 @@
+ Set-StrictMode -Version Latest
+ [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
+ . (Join-Path $PSScriptRoot 'zcode-gate-common.ps1')
++. (Join-Path $PSScriptRoot 'windows-validator-runtime.ps1')
+ 
+ function Test-FileReport {
+     param(
+@@ -66,7 +67,7 @@
+                     $arguments = Get-GateJsonProperty $hook 'args'
+                     $joined = "$command " + (@($arguments) -join ' ')
+                     # 合法入口两种形态：command 型 .cmd 包装器，或 process 型直连 governance 内 .ps1。
+-                    if ($joined -notmatch 'zcode-stop-gate\.cmd|zcode-role-bind\.cmd|governance[/\\](stop-gate|session-role)\.ps1') { $commandsOk = $false }
++                    if ($joined -notmatch 'zcode-stop-gate\.cmd|zcode-role-bind\.cmd|governance[/\\](stop-gate|session-role|zcode-stop-launcher)\.ps1') { $commandsOk = $false }
+                 }
+             }
+         }
+@@ -98,6 +99,8 @@
+ }
+ 
+ $files = @(
++    (Test-FileReport -Root $root -Relative '.codex/governance/windows-validator-runtime.ps1' -Name 'windows-validator-runtime.ps1'),
++    (Test-FileReport -Root $root -Relative '.codex/governance/zcode-stop-launcher.ps1' -Name 'zcode-stop-launcher.ps1'),
+     (Test-FileReport -Root $root -Relative '.codex/governance/stop-gate.ps1' -Name 'stop-gate.ps1'),
+     (Test-FileReport -Root $root -Relative '.codex/governance/session-role.ps1' -Name 'session-role.ps1'),
+     (Test-FileReport -Root $root -Relative '.codex/governance/zcode-gate-common.ps1' -Name 'zcode-gate-common.ps1'),
+@@ -193,6 +196,7 @@
+     $entryFailures.lines = @(Get-Content -LiteralPath $entryLogPath | Where-Object { -not [string]::IsNullOrWhiteSpace($_) } | Select-Object -Last 5 | ForEach-Object { [string] $_ })
+ }
+ 
++$pythonResolution = Resolve-ValidatorPython -Root $root
+ $report = [ordered] @{
+     schema           = 'agent-coding-engine.zcode-hook-selfcheck.v1'
+     engine_root      = $root
+@@ -210,11 +214,13 @@
+     }
+     execution_lifecycle = [ordered] @{
+         component_present = Test-Path (Join-Path $root '.codex/governance/validate-execution.py') -PathType Leaf
+-        python_available = $null -ne (Get-Command python3, python -ErrorAction SilentlyContinue | Select-Object -First 1)
++        python_available = $pythonResolution.available
++        interpreter = $pythonResolution.identity
++        interpreter_diagnostics = $pythonResolution.diagnostics
+         host_observation_source = 'hook_payload'
+         prelaunch_interception = $false
+     }
+-    live             = ($declaration.present -and $declaration.hooks_enabled -and -not $declaration.drift -and $audit.records -gt 0 -and $recentHostFailures -eq 0 -and -not $entryFailures.present)
++    live             = ($pythonResolution.available -and $declaration.present -and $declaration.hooks_enabled -and -not $declaration.drift -and $audit.records -gt 0 -and $recentHostFailures -eq 0 -and -not $entryFailures.present)
+ }
+ Write-Output ($report | ConvertTo-Json -Depth 8)
+ exit 0
+--- /dev/null
++++ b/.codex/governance/zcode-stop-launcher.ps1
+@@ -0,0 +1,42 @@
++﻿# Process/argv host entry with replayable stdin, one retry and fail-closed projection.
++[CmdletBinding()]
++param([string] $GateScript = '', [string] $RuntimeRoot = '')
++$ErrorActionPreference = 'Stop'
++[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
++function Write-LauncherBlock {
++    param([string] $Code)
++    [Console]::WriteLine((@{ decision = 'block'; reason = "执行会话不能结束：Stop 入口无法裁决（$Code）。下一步动作：运行 hook-selfcheck 并修复入口；保留当前工作，禁止按此故障宣称完成。" } | ConvertTo-Json -Compress))
++}
++try {
++    . (Join-Path $PSScriptRoot 'windows-validator-runtime.ps1')
++    $reader = [System.IO.StreamReader]::new([Console]::OpenStandardInput(), [System.Text.UTF8Encoding]::new($false), $true)
++    try {
++        $pending = $reader.ReadToEndAsync()
++        if (-not $pending.Wait(15000)) { throw [System.TimeoutException]::new() }
++        $payload = $pending.Result
++    } finally { $reader.Dispose() }
++    if (-not $GateScript) { $GateScript = Join-Path $PSScriptRoot 'stop-gate.ps1' }
++    if (-not $RuntimeRoot) { $RuntimeRoot = Join-Path $PSScriptRoot 'runtime/zcode' }
++    $powerShell = Join-Path $env:SystemRoot 'System32/WindowsPowerShell/v1.0/powershell.exe'
++    $arguments = @('-NoLogo','-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',$GateScript,'-RuntimeRoot',$RuntimeRoot)
++    for ($attempt = 1; $attempt -le 2; $attempt++) {
++        $result = Invoke-GovernanceProcess -Executable $powerShell -Arguments $arguments -InputText $payload -TimeoutMs 30000
++        $valid = $false
++        if ($result.exitCode -eq 0 -and -not $result.failure) {
++            if ([string]::IsNullOrWhiteSpace($result.stdout) -and [string]::IsNullOrWhiteSpace($result.stderr)) { exit 0 }
++            try {
++                $decision = $result.stdout | ConvertFrom-Json
++                $valid = $decision.decision -eq 'block' -and -not [string]::IsNullOrWhiteSpace($decision.reason)
++            } catch { }
++        }
++        if ($valid) { [Console]::Write($result.stdout); exit 0 }
++        # No raw stdout/stderr or payload in the failure ledger.
++        try {
++            [void][System.IO.Directory]::CreateDirectory($RuntimeRoot)
++            $entry = @{ ts = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ'); event = 'Stop'; attempt = $attempt; exit_code = $result.exitCode; failure = $result.failure; exception_type = $result.exception_type }
++            [System.IO.File]::AppendAllText((Join-Path $RuntimeRoot 'entry-failures.log'), ($entry | ConvertTo-Json -Compress) + [Environment]::NewLine, [System.Text.UTF8Encoding]::new($false))
++        } catch { }
++    }
++    Write-LauncherBlock 'ENTRY_FAILED_TWICE'
++} catch { Write-LauncherBlock ('ENTRY_EXCEPTION:' + $_.Exception.GetType().Name) }
++exit 0
+--- a/.codex/governance/zcode-hooks-declaration.json
++++ b/.codex/governance/zcode-hooks-declaration.json
+@@ -1,6 +1,6 @@
+ {
+   "schema": "agent-coding-engine.zcode-hook-declaration.v1",
+-  "note": "受治理工作区在 ZCode 中的 hook 声明（仓库唯一来源），按宿主平台分派：Windows 机器安装顶层 hooks 块（install-zcode-hooks.ps1），POSIX（macOS/Linux）机器安装 platforms.posix.hooks 块（install-zcode-hooks.sh）。生效位置都是用户级 ~/.zcode/cli/config.json：工作区级声明会被宿主工作区信任层反复失效（实测批准后仍回到待信任并静默禁用，且宿主设置界面的 hooks.saveHooks 会用空状态覆写机器级配置，2026-09-26 macOS 实测），因此生效位置固定在用户级且必须带 hooks.enabled=true（配置文件型 hook 默认禁用）。命令只固定宿主入口并按 ${ZCODE_PROJECT_DIR} 定位仓库内实现，非受治理工作区自动无操作。规则与实现全部在 .codex/governance/，改规则不需要改本声明。Windows：Stop 事件必须保持 process/argv 型（绝对路径 powershell.exe）：2026-09-19 实测本机宿主对 command 型 Stop 派发不可靠（六次回合结束仅一次到达门禁，且失败完全静默无 hook.run.failed），而 process 型在同类多工具长回合曾稳定到达；UserPromptSubmit 的 command 型实测一直稳定，保留。POSIX：两条事件都用 process/argv 型直启 python3（stdin 载荷、无 shell、不依赖 PATH 里的 jq；macOS 实测 /usr/bin/python3 在 launchd 最窄 PATH 下可解析）；入口为 zcode-role-bind.py 与 zcode-stop-gate.py，与 Windows 入口调用同一公共 Validator。各入口的 dispatch 回执（runtime/zcode/invocations.log）用于持续度量派发是否发生。",
++  "note": "受治理工作区在 ZCode 中的 hook 声明（仓库唯一来源），按宿主平台分派：Windows 机器安装顶层 hooks 块（install-zcode-hooks.ps1），POSIX（macOS/Linux）机器安装 platforms.posix.hooks 块（install-zcode-hooks.sh）。生效位置都是用户级 ~/.zcode/cli/config.json：工作区级声明会被宿主工作区信任层反复失效（实测批准后仍回到待信任并静默禁用，且宿主设置界面的 hooks.saveHooks 会用空状态覆写机器级配置，2026-09-26 macOS 实测），因此生效位置固定在用户级且必须带 hooks.enabled=true（配置文件型 hook 默认禁用）。命令只固定宿主入口并按 ${ZCODE_PROJECT_DIR} 定位仓库内实现，非受治理工作区自动无操作。规则与实现全部在 .codex/governance/，改规则不需要改本声明。Windows：Stop 事件必须保持 process/argv 型（绝对路径 powershell.exe）：2026-09-19 实测本机宿主对 command 型 Stop 派发不可靠（六次回合结束仅一次到达门禁，且失败完全静默无 hook.run.failed），而 process 型在同类多工具长回合曾稳定到达；Windows Stop 保持 process/argv 型直启 zcode-stop-launcher.ps1，入口先保存 stdin、捕获双流、一次重试并投影 fail-closed，再由 stop-gate.ps1 调用同一公共 Validator；UserPromptSubmit 的 command 型实测一直稳定，保留。POSIX：两条事件都用 process/argv 型直启 python3（stdin 载荷、无 shell、不依赖 PATH 里的 jq；macOS 实测 /usr/bin/python3 在 launchd 最窄 PATH 下可解析）；入口为 zcode-role-bind.py 与 zcode-stop-gate.py，与 Windows 入口调用同一公共 Validator。各入口的 dispatch 回执（runtime/zcode/invocations.log）用于持续度量派发是否发生。",
+   "hooks": {
+     "enabled": true,
+     "events": {
+@@ -29,7 +29,7 @@
+                 "-ExecutionPolicy",
+                 "Bypass",
+                 "-File",
+-                "${ZCODE_PROJECT_DIR}/.codex/governance/stop-gate.ps1"
++                "${ZCODE_PROJECT_DIR}/.codex/governance/zcode-stop-launcher.ps1"
+               ],
+               "enabled": true,
+               "statusMessage": "校验执行终态"
+--- /dev/null
++++ b/.codex/governance/test-windows-validator-diagnostics.ps1
+@@ -0,0 +1,86 @@
++﻿# Focused adapter diagnostics tests; no host messages or production runtime writes.
++[CmdletBinding()]
++param()
++$ErrorActionPreference = 'Stop'
++Set-StrictMode -Version Latest
++[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
++. (Join-Path $PSScriptRoot 'windows-validator-runtime.ps1')
++$tokens=$null; $errors=$null
++$ast=[System.Management.Automation.Language.Parser]::ParseFile((Join-Path $PSScriptRoot 'stop-gate.ps1'),[ref]$tokens,[ref]$errors)
++foreach($name in @('Invoke-TerminalValidator','Add-ValidatorAudit')) {
++    $function=$ast.Find({param($node) $node -is [System.Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -eq $name},$true)
++    Invoke-Expression $function.Extent.Text
++}
++$work=Join-Path ([System.IO.Path]::GetTempPath()) ('ace-validator-diagnostics-' + [guid]::NewGuid().ToString('N'))
++[void][System.IO.Directory]::CreateDirectory($work)
++$passed=0; $failed=0
++function Assert-Diagnostic {
++    param([string] $Name,[bool] $Condition)
++    if($Condition){$script:passed++;Write-Output "PASS $Name"}else{$script:failed++;Write-Output "FAIL $Name"}
++}
++try {
++    $fixtures=@{
++        console="[Console]::Error.WriteLine('terminal: controlled error'); exit 7"
++        powershell="Write-Error 'controlled PowerShell error' -ErrorAction Continue; exit 7"
++        exception="throw 'controlled exception containing private input'"
++        silent='exit 9009'
++        no_exit='return'
++    }
++    foreach($name in $fixtures.Keys) {
++        $fixture=Join-Path $work "$name.ps1"
++        $header="param([string] `$InputJson,[Alias('ExecutionContext')][switch] `$ContextMode,[string] `$PythonExecutable)`n"
++        [System.IO.File]::WriteAllText($fixture,$header+$fixtures[$name],[System.Text.UTF8Encoding]::new($true))
++        $result=Invoke-TerminalValidator -ValidatorPath $fixture -TerminalJson '{}'
++        Assert-Diagnostic $name ($result.exitCode -ne 0 -and @($result.diagnostics).Count -gt 0)
++        if($name -eq 'silent'){Assert-Diagnostic 'silent-exit-code' ($result.exitCode -eq 9009 -and ($result.diagnostics -join ' ') -match '9009')}
++        if($name -eq 'exception'){Assert-Diagnostic 'exception-redacted' ($result.exception_type -eq 'RuntimeException' -and ($result.diagnostics -join ' ') -notmatch 'private input')}
++    }
++    $validatorAudit=[System.Collections.Generic.List[object]]::new()
++    $synthetic=@{exitCode=7;diagnostics=@('terminal: tool_results: private-input-123');interpreter='<user>/python.exe';exception_type=''}
++    Add-ValidatorAudit -Phase 'TERMINAL' -Result $synthetic
++    $audit=$validatorAudit.ToArray() | ConvertTo-Json -Depth 8 -Compress
++    Assert-Diagnostic 'audit-redacted' ($audit -notmatch 'private-input-123' -and $audit -match 'terminal:tool_results' -and $audit -match 'exit_code')
++    $identity=Get-ValidatorInterpreterIdentity 'C:\Users\someone\AppData\Local\Programs\Python\python.exe'
++    Assert-Diagnostic 'interpreter-redacted' ($identity -notmatch 'someone' -and $identity -match '<user>')
++    $powerShell=Join-Path $env:SystemRoot 'System32/WindowsPowerShell/v1.0/powershell.exe'
++    $launcher=Join-Path $PSScriptRoot 'zcode-stop-launcher.ps1'
++    $payload='{"last_assistant_message":"中文载荷"}'
++    $bodies=@{
++        pass='exit 0'
++        block="Write-Output '{`"decision`":`"block`",`"reason`":`"controlled block`"}'; exit 0"
++        contaminated="Write-Output 'unexpected banner'; exit 0"
++        failure='exit 9009'
++    }
++    foreach($name in $bodies.Keys){
++        $fixture=Join-Path $work "launcher-$name.ps1"
++        [System.IO.File]::WriteAllText($fixture,$bodies[$name],[System.Text.UTF8Encoding]::new($true))
++        $arguments=@('-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',$launcher,'-GateScript',$fixture,'-RuntimeRoot',(Join-Path $work "runtime-$name"))
++        $result=Invoke-GovernanceProcess -Executable $powerShell -Arguments $arguments -InputText $payload -TimeoutMs 12000
++        $valid=$result.exitCode -eq 0 -and -not $result.failure
++        if($name -eq 'pass'){$valid=$valid -and -not $result.stdout -and -not $result.stderr}
++        else{try{$output=$result.stdout | ConvertFrom-Json;$valid=$valid -and $output.decision -eq 'block' -and $result.stdout -notmatch 'unexpected banner'}catch{$valid=$false}}
++        Assert-Diagnostic "launcher-$name" $valid
++    }
++    $counter=Join-Path $work 'retry-payload.txt'
++    $fixture=Join-Path $work 'launcher-retry.ps1'
++    $body=@'
++$reader=[System.IO.StreamReader]::new([Console]::OpenStandardInput(),[System.Text.UTF8Encoding]::new($false),$true)
++$body=$reader.ReadToEnd();$reader.Dispose()
++$path=Join-Path $PSScriptRoot 'retry-payload.txt'
++if(-not(Test-Path -LiteralPath $path)){[System.IO.File]::WriteAllText($path,$body,[System.Text.UTF8Encoding]::new($false));exit 9}
++if([System.IO.File]::ReadAllText($path) -ne $body){exit 8}
++Write-Output '{"decision":"block","reason":"same payload on retry"}'
++exit 0
++'@
++    [System.IO.File]::WriteAllText($fixture,$body,[System.Text.UTF8Encoding]::new($true))
++    $result=Invoke-GovernanceProcess -Executable $powerShell -Arguments @('-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',$launcher,'-GateScript',$fixture,'-RuntimeRoot',(Join-Path $work 'runtime-retry')) -InputText $payload -TimeoutMs 12000
++    Assert-Diagnostic 'launcher-retry' ($result.exitCode -eq 0 -and $result.stdout -match 'same payload on retry' -and [System.IO.File]::ReadAllText($counter) -eq $payload)
++} finally {
++    $resolved=[System.IO.Path]::GetFullPath($work)
++    $temporary=[System.IO.Path]::GetFullPath([System.IO.Path]::GetTempPath())
++    if(-not $resolved.StartsWith($temporary,[System.StringComparison]::OrdinalIgnoreCase)){throw 'cleanup path outside own temp workspace'}
++    Remove-Item -LiteralPath $resolved -Recurse -Force
++}
++Write-Output "windows-validator-diagnostics cases=$($passed+$failed) passed=$passed failed=$failed"
++if($failed){exit 1}
++exit 0
+--- a/system.md
++++ b/system.md
+@@ -90,7 +90,7 @@
+ 
+ Stop Hook 的终态规则只来自 `.codex/governance/terminal-contract.json` 与公共 Validator；宿主接入入口是 POSIX/Codex 的 `.codex/governance/stop-gate.sh`、Windows/ZCode 的 `.codex/governance/stop-gate.ps1` 与 POSIX/ZCode 的 `.codex/governance/zcode-stop-gate.py`，三者调用同一公共 Validator；`.claude/`、`.codex/`、`.zcode/` 只负责根定位与宿主声明。入口只允许做四件事：规范化宿主载荷、绑定会话身份、调用同一公共 Validator、把裁决投影为宿主支持的结束决定，并写入脱敏审计；不得复制或另建终态规则。入口缺少裁决所需能力时（例如 POSIX 入口找不到 jq）必须 fail closed 并报告无法裁决，禁止静默放行。受治理执行必须由启动入口可信绑定 `task`、规范化 workspace、稳定 thread/session、`active_role` 和单调 contract revision；普通模型回合结束只产生 `TURN_ENDED`，任务能否终止由宿主外 `.codex/governance/execution-supervisor.py` 调用同一公共 Validator 后唯一裁决。Host Adapter 只报告事件、核对精确目标、投递 Supervisor 已批准且带幂等键的回注并回读结果；无法证明线程身份时必须 fail closed，不得按当前键盘焦点猜测。原生 Codex 由 `.codex/hooks/codex-stop-adapter.sh` 绑定角色并投影宿主支持的 `decision`/`reason`；ZCode 优先使用结构化 app-server session ID、事件和发送回读，GUI 降级只有在可稳定识别线程时才允许。未显式绑定角色时不启用 Executor 门禁；已声明受治理身份但缺少稳定 task/thread/revision 时拒绝自动投递。门禁拒绝提前结束后必须自动回注精确 `next_action`，禁止把用户点击“继续”作为恢复链路。Supervisor 采用原子持久租约、单调 revision、事件去重、暂停/取消与崩溃恢复；重复进展指纹依次要求原子动作、切换路径和重规划，仍有授权内可执行项时不得终止。对 `BLOCKED`，Supervisor 必须比对 Harness `execution_observations` 中的实际工具结果、浏览器状态和进展指纹；缺失或不一致均不得放行。门禁判断不得按模型名称分支，只使用任务身份、状态、授权、依赖、工具结果和进展证据。
+ 
+-ZCode 会话以用户提示词中的显式角色声明作为执行门禁绑定点：`session-role.ps1`（Windows）与 `zcode-role-bind.py`（POSIX）在 `UserPromptSubmit` 时归一化该声明并记录会话角色；角色未绑定时，允许从宿主持久化的**首个用户提示词**回填同一条声明（仅限 hook 尚未生效或首次派发失败的会话），除此之外不得从任务内容、目录或历史推断角色，未绑定执行角色的会话不启用执行门禁。ZCode hook 声明的**仓库唯一来源**是 `.codex/governance/zcode-hooks-declaration.json`，由 `.codex/governance/install-zcode-hooks.ps1`（Windows 块）与 `.codex/governance/install-zcode-hooks.sh`（POSIX 块）按平台同步到机器级用户配置 `~/.zcode/cli/config.json`：工作区级声明（`.zcode/config.json`）受宿主工作区信任层约束，实测在声明未变的情况下批准后仍会回到待信任并被静默禁用，且宿主设置界面的保存会用自身（可能为空）的 hook 状态覆写机器级配置（2026-09-26 macOS 实测），因此不作为生效位置，漂移以安装器 `-Check` 与 hook-selfcheck 为准；用户级声明不受该层约束，命令用 `${ZCODE_PROJECT_DIR}` 定位仓库内入口，非受治理工作区自动无操作。安装器支持漂移检查（`-Check`，漂移时以非零退出），`hook-selfcheck.ps1` / `hook-selfcheck.sh` 必须报告 `drift`、`effective_scope` 与实际生效状态；角色绑定入口每次提示词向对话注入一行门禁状态（会话角色、是否上膛、上次拦截原因、自定清单未完成数与宿主实测上下文占用），使 Owner 与模型都能直接看到门禁是否在运行，不依赖事后翻日志。声明只固定宿主入口，不承载规则，改规则不需要改声明。宿主入口必须走宿主自身稳定的 command 通道并自带兜底：Windows 宿主的 `.codex/hooks/` cmd 入口负责调用 PowerShell 门禁，POSIX 宿主以 process 型 argv 直启解释器运行 `.codex/governance/` 下的 Python 入口（不依赖 shell 与 PATH 里的 jq）；捕获其输出使异常路径不会污染宿主可见的 stdout，失败重试一次，两次失败时写入入口失败台账并输出 fail-closed 结论；宿主派发失败（hook 未执行）等价于门禁缺失，必须由 `hook-selfcheck.ps1` / `hook-selfcheck.sh` 的宿主失败台账暴露。ZCode 原生 Stop 载荷不提供 `background_tasks`、`progress_guard` 与 `execution_observations`；入口不得假造这些观察，已知后台任务或声明的非即时执行缺少生命周期观察时按 §0.8.3 拒绝。原生能力范围内，该入口使用宿主可观察事实（回合工具调用数、`stop_hook_active`、宿主持久化的自定任务清单、宿主实测的上下文占用与超限标记）与公共 Validator 裁决。模型对自身资源状态的估计不构成证据：自定任务清单是它自己的可执行承诺，清单未收敛到无未完成项时不得提交终态；上下文压缩是宿主职责——接近上限时宿主自动压缩，provider 报告溢出时宿主自动 compact 并重试请求，模型没有读取剩余配额的通道，因此不得以自估或实测的上下文占用为由收尾。Stop Gate 必须拒绝任何以上下文为由的停止并回注宿主实测数值；只有携带真实工具证据、经 Validator 接受的 `BLOCKED` 才可因资源原因终止。ZCode 每个回合最多接受三次自动续行，超出上限的未完成工作必须在后续用户回合继续，不得据此改写完成口径或宣称任务终止。
++ZCode 会话以用户提示词中的显式角色声明作为执行门禁绑定点：`session-role.ps1`（Windows）与 `zcode-role-bind.py`（POSIX）在 `UserPromptSubmit` 时归一化该声明并记录会话角色；角色未绑定时，允许从宿主持久化的**首个用户提示词**回填同一条声明（仅限 hook 尚未生效或首次派发失败的会话），除此之外不得从任务内容、目录或历史推断角色，未绑定执行角色的会话不启用执行门禁。ZCode hook 声明的**仓库唯一来源**是 `.codex/governance/zcode-hooks-declaration.json`，由 `.codex/governance/install-zcode-hooks.ps1`（Windows 块）与 `.codex/governance/install-zcode-hooks.sh`（POSIX 块）按平台同步到机器级用户配置 `~/.zcode/cli/config.json`：工作区级声明（`.zcode/config.json`）受宿主工作区信任层约束，实测在声明未变的情况下批准后仍会回到待信任并被静默禁用，且宿主设置界面的保存会用自身（可能为空）的 hook 状态覆写机器级配置（2026-09-26 macOS 实测），因此不作为生效位置，漂移以安装器 `-Check` 与 hook-selfcheck 为准；用户级声明不受该层约束，命令用 `${ZCODE_PROJECT_DIR}` 定位仓库内入口，非受治理工作区自动无操作。安装器支持漂移检查（`-Check`，漂移时以非零退出），`hook-selfcheck.ps1` / `hook-selfcheck.sh` 必须报告 `drift`、`effective_scope` 与实际生效状态；角色绑定入口每次提示词向对话注入一行门禁状态（会话角色、是否上膛、上次拦截原因、自定清单未完成数与宿主实测上下文占用），使 Owner 与模型都能直接看到门禁是否在运行，不依赖事后翻日志。声明只固定宿主入口，不承载规则，改规则不需要改声明。宿主入口必须走经实测稳定的进程启动通道并自带兜底：Windows Stop 保持 process/argv 型直启 `.codex/governance/zcode-stop-launcher.ps1`，保存同一份 stdin、捕获双流并调用 PowerShell 门禁；`.codex/hooks/` cmd 入口保留为兼容路径，POSIX 宿主以 process 型 argv 直启解释器运行 `.codex/governance/` 下的 Python 入口（不依赖 shell 与 PATH 里的 jq）；捕获其输出使异常路径不会污染宿主可见的 stdout，失败重试一次，两次失败时写入入口失败台账并输出 fail-closed 结论；宿主派发失败（hook 未执行）等价于门禁缺失，必须由 `hook-selfcheck.ps1` / `hook-selfcheck.sh` 的宿主失败台账暴露。ZCode 原生 Stop 载荷不提供 `background_tasks`、`progress_guard` 与 `execution_observations`；入口不得假造这些观察，已知后台任务或声明的非即时执行缺少生命周期观察时按 §0.8.3 拒绝。原生能力范围内，该入口使用宿主可观察事实（回合工具调用数、`stop_hook_active`、宿主持久化的自定任务清单、宿主实测的上下文占用与超限标记）与公共 Validator 裁决。模型对自身资源状态的估计不构成证据：自定任务清单是它自己的可执行承诺，清单未收敛到无未完成项时不得提交终态；上下文压缩是宿主职责——接近上限时宿主自动压缩，provider 报告溢出时宿主自动 compact 并重试请求，模型没有读取剩余配额的通道，因此不得以自估或实测的上下文占用为由收尾。Stop Gate 必须拒绝任何以上下文为由的停止并回注宿主实测数值；只有携带真实工具证据、经 Validator 接受的 `BLOCKED` 才可因资源原因终止。ZCode 每个回合最多接受三次自动续行，超出上限的未完成工作必须在后续用户回合继续，不得据此改写完成口径或宣称任务终止。
+ 
+ 已授权工作项内、输入值由 dev/test 配置或既有测试契约确定、不是秘密，且动作不触发破坏性、远程发布或授权外状态变化时，该动作是**可继续动作**：Stop Gate 与 Supervisor 必须判定为可继续，并通过自动回注要求 Executor 直接完成，不得产生新的用户确认节点，也不得包装成 `BLOCKED`。只有真实凭据与秘密、MFA、真实人机验证、破坏性操作、远程发布或授权外动作允许进入用户确认/输入路径；此类阻塞必须用 `confirmation` 声明输入来源与类别，并绑定真实工具结果。
+ 
+--- a/roles/admin.md
++++ b/roles/admin.md
+@@ -29,7 +29,7 @@
+ - 读写 `roles/`（角色定义文件，见本文 §4）
+ - 读写架构文档：`memory/architecture.md`、`knowledge/architecture.md`
+ - 读写各 coding 仓库的宪法和工程配置，包括 `AGENTS.md`、`docs/governance/engineering-constitution.md`、构建、工具链、CI 与运行时配置文件
+-- 读写 **Governance Implementation**：`.claude/hooks/`、`.codex/hooks/`、`.codex/governance/` 下的公共终态契约、公共 Validator、宿主外 Supervisor、Host Adapter、宿主 Stop Gate 入口（`stop-gate.sh` / `stop-gate.ps1` / `zcode-stop-gate.py`）、会话角色绑定入口（`session-role.ps1` / `zcode-role-bind.py`）、宿主观察读取器、声明安装器（`install-zcode-hooks.ps1` / `install-zcode-hooks.sh` 与 `zcode-hooks-declaration.json`）、门禁自检（`hook-selfcheck.ps1` / `hook-selfcheck.sh`）与治理契约测试；并维护宿主 hook 声明（仓库来源 + 机器级生效副本）。宿主入口只绑定会话身份、规范化宿主载荷、调用同一公共 Validator、投影宿主支持的结束决定并写脱敏审计，不自行裁决终态；工作区 hook 的宿主信任评审由 Owner 在宿主界面完成，管理员不代持信任
++- 读写 **Governance Implementation**：`.claude/hooks/`、`.codex/hooks/`、`.codex/governance/` 下的公共终态契约、公共 Validator、宿主外 Supervisor、Host Adapter、宿主 Stop Gate 入口（`stop-gate.sh` / `stop-gate.ps1` / `zcode-stop-gate.py`）、Windows process/argv 重试入口 `zcode-stop-launcher.ps1` 与解释器/有界进程辅助 `windows-validator-runtime.ps1`、会话角色绑定入口（`session-role.ps1` / `zcode-role-bind.py`）、宿主观察读取器、声明安装器（`install-zcode-hooks.ps1` / `install-zcode-hooks.sh` 与 `zcode-hooks-declaration.json`）、门禁自检（`hook-selfcheck.ps1` / `hook-selfcheck.sh`）与治理契约测试；并维护宿主 hook 声明（仓库来源 + 机器级生效副本）。宿主入口只绑定会话身份、规范化宿主载荷、调用同一公共 Validator、投影宿主支持的结束决定并写脱敏审计，不自行裁决终态；工作区 hook 的宿主信任评审由 Owner 在宿主界面完成，管理员不代持信任
+ - 维护宿主门禁可观察性：`.codex/governance/hook-selfcheck.ps1` 报告声明、入口、观察读取器、信任状态与审计台账；门禁是否实际运行以审计台账为准，不以文件存在代替
+ - 维护 S/M/L/XL 分级契约及其文档、机器终态、Validator 与治理契约测试的一致性
+ - 仅为治理信息结构迁移而重排 `knowledge/current-status.md` 及其 `knowledge/history/` 归档：允许移动历史段落和建立映射，但不得改变任何业务状态值、功能数、P/I 编号、测试基线或验收结论
+@@ -59,7 +59,7 @@
+ | 角色定义 | `roles/planner.md`、`roles/executor.md`、`roles/admin.md` | 三个角色的完整定义（2026-08-22 自 system.md 拆分） |
+ | 架构文档 | `memory/architecture.md`、`knowledge/architecture.md` | 架构文档（memory 为摘要口径，knowledge 为权威口径） |
+ | coding 仓库工程配置 | 项目说明声明的各 coding 仓库 `AGENTS.md`、各仓 `docs/governance/engineering-constitution.md`、构建/工具链/CI/运行时配置文件 | 工程宪法与配置 |
+-| Governance Implementation | `.claude/hooks/`、`.codex/hooks/`、`.codex/governance/`（含 ZCode cmd 入口 `zcode-stop-gate.cmd`/`zcode-role-bind.cmd`、`stop-gate.ps1`、`session-role.ps1`、`zcode-gate-common.ps1`、POSIX/ZCode 入口 `zcode-stop-gate.py`/`zcode-role-bind.py`/`zcode_gate_common.py`、`session-observation.py`、`hook-selfcheck.ps1`/`hook-selfcheck.sh` 与对应契约测试） | 分级感知的单一机器契约、公共 Validator、治理契约测试与薄 Harness 适配；cmd 入口只做兜底（捕获输出、重试、fail-closed 与入口失败台账），不得承载终态规则；不得承载业务逻辑 |
++| Governance Implementation | `.claude/hooks/`、`.codex/hooks/`、`.codex/governance/`（含 ZCode cmd 入口 `zcode-stop-gate.cmd`/`zcode-role-bind.cmd`、`stop-gate.ps1`、`session-role.ps1`、`zcode-gate-common.ps1`、POSIX/ZCode 入口 `zcode-stop-gate.py`/`zcode-role-bind.py`/`zcode_gate_common.py`、`session-observation.py`、`hook-selfcheck.ps1`/`hook-selfcheck.sh` 与对应契约测试） | 分级感知的单一机器契约、公共 Validator、治理契约测试与薄 Harness 适配；Windows process/argv 重试入口与兼容 cmd 入口只做兜底（保留同一份载荷、捕获输出、重试、fail-closed 与入口失败台账），不得承载终态规则；不得承载业务逻辑 |
+ | 宿主 hook 声明 | 仓库来源 `.codex/governance/zcode-hooks-declaration.json`（Windows 顶层块 + `platforms.posix` 块）；分别经 `.codex/governance/install-zcode-hooks.ps1` / `install-zcode-hooks.sh` 同步到用户级 `~/.zcode/cli/config.json` | 只固定宿主入口与事件；规则仍在 `.codex/governance/`；工作区级声明会被宿主信任层反复失效且设置界面保存会覆写机器级配置，故生效位置固定在用户级，安装器支持 `-Check` 漂移检查；改规则不改声明 |
+ | 治理状态结构 | `knowledge/current-status.md`、`knowledge/history/` | 仅可做当前/历史物理分离和引用迁移，不得改业务值或作状态裁决 |
+ | 配套同步 | 引用 system.md 章节号的知识索引/目录注释（如 `knowledge/model-registry.md` 的权威路径索引） | 只同步路径与职责，不复制治理正文 |

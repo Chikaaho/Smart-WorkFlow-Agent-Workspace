@@ -1,4 +1,11 @@
-# Windows Stop Gate空诊断：修复候选已验证、正式安装待完成
+# Windows Stop Gate修复：正式安装已验证，待真实宿主派发验收
+
+当前状态（2026-10-09）：Owner开启完全访问后，Admin已应用原9文件补丁。正式契约49/49、诊断14/14、Stop Gate接线38/38及正式进程链5/5通过；用户级Stop声明指向新launcher，安装器Check回读drift=false，默认解释器实际探测可用。当前输入：[正式安装回执](../product/workspace-governance-consistency-audit/receipts/receipt-admin-windows-stop-gate-installed-20261009.md)，原[候选回执](../product/workspace-governance-consistency-audit/receipts/receipt-admin-windows-stop-gate-repair-candidate-20261009.md)与[候选规划复核](../product/workspace-governance-consistency-audit/receipts/planning-review-admin-windows-stop-gate-repair-candidate-20261009.md)保留历史证据。
+
+正式进程链已回读正常通过的三阶段Validator审计及规则/能力故障拒绝；真实ZCode应用派发尚无安装后记录。下一动作：真实受治理会话自然触发Stop后核宿主结果、同session三阶段审计及结束投影。历史失败台账保留，selfcheck的live=false如实记录。治理事项保持开放，Git批次结果沿正式安装回执收尾；P64按[二级提示](../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase1-02.md)独立继续，本条不增加业务计数。
+
+## 前期诊断与交接（历史）
+
 
 当前状态（2026-10-09）：Admin诊断核实已完成；9文件修复候选已生成可应用补丁，公共契约49/49、新增诊断/重试14/14、组件聚焦9项及原生argv形状链路8项通过，`git apply --check`通过。正式治理目录、用户级声明和Git元数据当前处于会话写权限范围外，尚未安装/同步/提交/推送；治理修复事项保持未关闭。当前管理员入口为[修复候选回执](../product/workspace-governance-consistency-audit/receipts/receipt-admin-windows-stop-gate-repair-candidate-20261009.md)与[修复补丁](../product/workspace-governance-consistency-audit/repairs/windows-stop-gate-20261009.patch)；[原诊断回执](../product/workspace-governance-consistency-audit/receipts/receipt-admin-windows-stop-gate-diagnostics-20261009.md)与[规划复核](../product/workspace-governance-consistency-audit/receipts/planning-review-admin-windows-stop-gate-diagnostics-20261009.md)保留核实边界。
 

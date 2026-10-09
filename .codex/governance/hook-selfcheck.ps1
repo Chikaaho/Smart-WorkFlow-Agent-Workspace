@@ -14,6 +14,7 @@ $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
 . (Join-Path $PSScriptRoot 'zcode-gate-common.ps1')
+. (Join-Path $PSScriptRoot 'windows-validator-runtime.ps1')
 
 function Test-FileReport {
     param(
@@ -66,7 +67,7 @@ if (Test-Path -LiteralPath $declarationPath -PathType Leaf) {
                     $arguments = Get-GateJsonProperty $hook 'args'
                     $joined = "$command " + (@($arguments) -join ' ')
                     # 合法入口两种形态：command 型 .cmd 包装器，或 process 型直连 governance 内 .ps1。
-                    if ($joined -notmatch 'zcode-stop-gate\.cmd|zcode-role-bind\.cmd|governance[/\\](stop-gate|session-role)\.ps1') { $commandsOk = $false }
+                    if ($joined -notmatch 'zcode-stop-gate\.cmd|zcode-role-bind\.cmd|governance[/\\](stop-gate|session-role|zcode-stop-launcher)\.ps1') { $commandsOk = $false }
                 }
             }
         }
@@ -98,6 +99,8 @@ if (Test-Path -LiteralPath $installer -PathType Leaf) {
 }
 
 $files = @(
+    (Test-FileReport -Root $root -Relative '.codex/governance/windows-validator-runtime.ps1' -Name 'windows-validator-runtime.ps1'),
+    (Test-FileReport -Root $root -Relative '.codex/governance/zcode-stop-launcher.ps1' -Name 'zcode-stop-launcher.ps1'),
     (Test-FileReport -Root $root -Relative '.codex/governance/stop-gate.ps1' -Name 'stop-gate.ps1'),
     (Test-FileReport -Root $root -Relative '.codex/governance/session-role.ps1' -Name 'session-role.ps1'),
     (Test-FileReport -Root $root -Relative '.codex/governance/zcode-gate-common.ps1' -Name 'zcode-gate-common.ps1'),
@@ -193,6 +196,7 @@ if (Test-Path -LiteralPath $entryLogPath -PathType Leaf) {
     $entryFailures.lines = @(Get-Content -LiteralPath $entryLogPath | Where-Object { -not [string]::IsNullOrWhiteSpace($_) } | Select-Object -Last 5 | ForEach-Object { [string] $_ })
 }
 
+$pythonResolution = Resolve-ValidatorPython -Root $root
 $report = [ordered] @{
     schema           = 'agent-coding-engine.zcode-hook-selfcheck.v1'
     engine_root      = $root
@@ -210,11 +214,13 @@ $report = [ordered] @{
     }
     execution_lifecycle = [ordered] @{
         component_present = Test-Path (Join-Path $root '.codex/governance/validate-execution.py') -PathType Leaf
-        python_available = $null -ne (Get-Command python3, python -ErrorAction SilentlyContinue | Select-Object -First 1)
+        python_available = $pythonResolution.available
+        interpreter = $pythonResolution.identity
+        interpreter_diagnostics = $pythonResolution.diagnostics
         host_observation_source = 'hook_payload'
         prelaunch_interception = $false
     }
-    live             = ($declaration.present -and $declaration.hooks_enabled -and -not $declaration.drift -and $audit.records -gt 0 -and $recentHostFailures -eq 0 -and -not $entryFailures.present)
+    live             = ($pythonResolution.available -and $declaration.present -and $declaration.hooks_enabled -and -not $declaration.drift -and $audit.records -gt 0 -and $recentHostFailures -eq 0 -and -not $entryFailures.present)
 }
 Write-Output ($report | ConvertTo-Json -Depth 8)
 exit 0

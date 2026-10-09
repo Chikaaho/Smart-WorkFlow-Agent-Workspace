@@ -63,6 +63,7 @@ Set-StrictMode -Version Latest
 # 不显式指定会让回注的中文 reason 变成乱码。
 [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
 . (Join-Path $PSScriptRoot 'zcode-gate-common.ps1')
+. (Join-Path $PSScriptRoot 'windows-validator-runtime.ps1')
 
 # 低于该占用率时，“上下文已满”只能是无工具证据的自我估计，必须拒绝并回注宿主实测值。
 $contextClaimThresholdPercent = 85
@@ -103,15 +104,30 @@ function Invoke-TerminalValidator {
 
     $errorWriter = [System.IO.StringWriter]::new()
     $originalError = [Console]::Error
+    $exitCode = 1
+    $exceptionType = ''
+    $resolution = Resolve-ValidatorPython -Root (Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $ValidatorPath)))
     try {
         [Console]::SetError($errorWriter)
-        $null = & $ValidatorPath -InputJson $TerminalJson -ExecutionContext:$ExecutionContextMode
-        $exitCode = $LASTEXITCODE
+        if ($resolution.available) {
+            $global:LASTEXITCODE = 1
+            $stream = @(& $ValidatorPath -InputJson $TerminalJson -ExecutionContext:$ExecutionContextMode -PythonExecutable $resolution.path 2>&1)
+            $exitCode = $global:LASTEXITCODE
+            foreach ($record in $stream) { $errorWriter.WriteLine([string]$record) }
+        } else {
+            $errorWriter.WriteLine('execution: validator unavailable: ' + ($resolution.diagnostics -join '; '))
+        }
+    } catch {
+        $exitCode = 1
+        $exceptionType = $_.Exception.GetType().Name
+        $errorWriter.WriteLine('terminal: validator exception: ' + $exceptionType)
     } finally {
         [Console]::SetError($originalError)
     }
     $diagnostics = @($errorWriter.ToString() -split "`r?`n" | Where-Object { -not [string]::IsNullOrWhiteSpace($_) })
-    return @{ exitCode = $exitCode; diagnostics = $diagnostics }
+    if ($exitCode -ne 0 -and $diagnostics.Count -eq 0) { $diagnostics = @("terminal: validator exited $exitCode with no diagnostic output") }
+    return @{ exitCode = $exitCode; diagnostics = $diagnostics; interpreter = $resolution.identity; exception_type = $exceptionType }
+
 }
 
 
@@ -240,6 +256,7 @@ function New-ReasonText {
 $auditPath = ''
 $sessionKey = 'unknown-session'
 $toolCallCount = 0
+$validatorAudit = [System.Collections.Generic.List[object]]::new()
 
 # 载荷读取必须在 trap 生效前自行兜底：stdin 管道异常（宿主写入中断/管道损坏）会从这里
 # 抛出，历史上直接导致整脚本 rc=1、宿主记 hook.run.failed、回合静默漏放。按宪法
@@ -298,6 +315,14 @@ trap {
     exit 2
 }
 
+function Add-ValidatorAudit {
+    param([string] $Phase, [object] $Result)
+    $codes = @($Result.diagnostics | ForEach-Object {
+        if ($_ -match '^(terminal|execution): ([A-Za-z0-9_.]+)') { $Matches[1] + ':' + $Matches[2] } else { 'validator:diagnostic' }
+    } | Select-Object -Unique -First 20)
+    $validatorAudit.Add([ordered] @{ phase = $Phase; exit_code = $Result.exitCode; interpreter = $Result.interpreter; exception_type = $Result.exception_type; diagnostic_codes = $codes })
+}
+
 function Write-GateDecision {
     param(
         [Parameter(Mandatory = $true)] [string] $Decision,
@@ -330,6 +355,7 @@ function Write-GateDecision {
             context_percent   = $ContextPercent
             context_exceeded  = $ContextExceeded
             escalation        = $Escalation
+            validator_results = @($validatorAudit.ToArray())
         })
     }
     if ($Decision -eq 'block') {
@@ -389,10 +415,16 @@ $actions = [System.Collections.Generic.List[string]]::new()
 $contractAccepted = $false
 
 $lifecycleValidation = Invoke-TerminalValidator -ValidatorPath (Join-Path $root '.codex/governance/validate-terminal.ps1') -TerminalJson ($payload | ConvertTo-Json -Depth 40 -Compress) -ExecutionContext
+Add-ValidatorAudit -Phase 'HOST_LIFECYCLE' -Result $lifecycleValidation
 if ($lifecycleValidation.exitCode -ne 0) {
-    $reasonCode = 'EXECUTION_LIFECYCLE_REJECTED'
+    $validatorUnavailable = (@($lifecycleValidation.diagnostics) -join ' ') -match 'validator unavailable|validator exception|component failure|with no diagnostic output'
+    $reasonCode = if ($validatorUnavailable) { 'VALIDATOR_UNAVAILABLE' } else { 'EXECUTION_LIFECYCLE_REJECTED' }
     $findings.Add((@($lifecycleValidation.diagnostics) -join '；'))
+    if ($validatorUnavailable) {
+        $actions.Add('修复解释器发现或入口执行能力并复验；保留当前结果，继续独立工作，不按入口故障宣称任务完成。')
+    } else {
     $actions.Add('核对自身任务身份，按既定策略取消、清理并保存已有结果与退出状态；继续独立工作，不延时等待，不停止用户既有服务。')
+    }
 }
 
 if (-not $extraction.ok) {
@@ -409,12 +441,14 @@ if (-not $extraction.ok) {
         $terminalState = Get-GateJsonText $terminalPayload 'state'
         $validatorPath = Join-Path $root '.codex/governance/validate-terminal.ps1'
         $validation = Invoke-TerminalValidator -ValidatorPath $validatorPath -TerminalJson $extraction.payload
+        Add-ValidatorAudit -Phase 'TERMINAL' -Result $validation
         if ($validation.exitCode -eq 0) {
             $lifecycleContext = @{ terminal_payload = $terminalPayload }
             foreach ($field in @('background_tasks', 'execution_observations')) {
                 if ($null -ne $payload.PSObject.Properties[$field]) { $lifecycleContext[$field] = $payload.$field }
             }
             $validation = Invoke-TerminalValidator -ValidatorPath $validatorPath -TerminalJson ($lifecycleContext | ConvertTo-Json -Depth 40 -Compress) -ExecutionContext
+            Add-ValidatorAudit -Phase 'TERMINAL_LIFECYCLE' -Result $validation
         }
         if ($validation.exitCode -ne 0) {
             if ([string]::IsNullOrWhiteSpace($reasonCode)) { $reasonCode = 'CONTRACT_REJECTED' }
