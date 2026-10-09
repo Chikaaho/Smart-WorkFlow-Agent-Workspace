@@ -17,7 +17,7 @@ engine 100/0、process 342/0、Web 四门 exit0（lint 0e/3w、vitest 1371+3、b
 ## 8. 修复前反证处置
 04b 漂移、06b 500 死路与 X7 双激活均在本授权内修复并复验（非观察项转范围外）；X6 不同窗口结论不变（不替代 X5）；X7 cancel_reason 记账误解已在 P1-04a 包更正。
 ## 9. 当前项目
-功能47、46/22/22=90、ADV64、问题57、P63COMPLETED/VB锁定；P62性能延期、新策略OFF；Admin已结案。Server 578ef6b/Web 53eec1e 远端回读一致 0/0；主库全终态（0 RUNNING、30 实例）；根 gitlink78495dc 保持。
+功能47、46/22/22=90、ADV64、问题57、P63COMPLETED/VB锁定；P62性能延期、新策略OFF；Admin已结案。Server 578ef6b/Web 53eec1e 远端回读一致 0/0；主库全终态（0 RUNNING、30 实例）；根 gitlink78495dc 保持。回执06 主批次 SHA=`e185105c`（develop-sw，推送后远端回读一致；本条为 SHA 记录批次，不回填自身）。
 ## 10. 未完成
 九项已全部提交回执06；残余=Planner 独立复审（含两条观察项：同用户同任务 FAILED 后同键异载荷 2426 → 恢复须换键（转办）或经 EXPIRED 恢复代，属既有契约；动态分支 cancel_reason=SUPERSEDED_BY_ROUND 仅双冻结路径出现，修复后不再触发）。
 ## 11. 生命周期
