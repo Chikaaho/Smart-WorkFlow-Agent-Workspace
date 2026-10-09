@@ -6,8 +6,8 @@
 
 ## 1. 当前状态与唯一动作
 
-- P64当前登记READY（实施已授权，待Executor实际启动）；本规划会话未执行工程或向其他会话发送任务。Executor领取并实际启动后，授权登记IN_PROGRESS（阶段I实施）。
-- 唯一下一动作：Executor读取本文、主方向和方案，核实当前工作区与两代码仓状态，在既有feature/p64-mes-advanced-orchestration分支启动阶段I，自主制定实施/验证/ADR并连续完成授权内工作。
+- 当前P64=IN_PROGRESS；阶段Ⅰ验收VERIFYING（2026-10-09规划审查01待修正/补证）。实施启动事实来自执行回执，本规划会话未运行工程。
+- 唯一下一动作：Executor按[阶段Ⅰ审查01](../receipts/planning-review-phase-1-01.md)收敛P1-01—P1-08修正/补证，在既有feature分支连续完成授权内工作，追加阶段回执02；原完整实施授权有效。
 - READY传播及G1—G4已关闭，[传播终审03](../receipts/planning-final-review-ready-state-propagation-03.md)保留其时点裁决，不作为当前等待实施授权入口。
 - 此次实施授权覆盖既定完整P64，不为内部步骤或已授权后续阶段重复索要实施许可；各阶段仍提交行为回执，由Planner独立验收，阶段通过不替代整体A01—A12通过。
 

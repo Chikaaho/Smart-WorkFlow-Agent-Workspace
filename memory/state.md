@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-P64（XL）=IN_PROGRESS·阶段Ⅰ已完成实现与自验（阶段回执`product/p64-mes-advanced-orchestration/receipts/phase-1-completion-receipt-01.md`已提交，待规划独立验收；不写功能PASSED/COMPLETED）。两仓feature分支：Server 880c145、Web 1198635（均推送0/0）；工作区develop-sw同步见knowledge。阶段Ⅰ交付：A01—A04节点表单/BPM变量/Trigger判断/可靠动作闭环+V0.1.7迁移（PG 0.1.6非空基线追加演练通过）+真实浏览器全链验证（配置→发起→办理→触发MATCHED→派发STARTED→回查）。功能47、清单46/22/22=90、ADV64、P63及VB保持；P62性能延期/策略关闭。唯一下一动作=Planner独立验收阶段Ⅰ回执。
+P64=IN_PROGRESS；阶段ⅠVERIFYING（规划审查01暂不通过，P1-01—P1-08待修正/补证）。唯一下一动作=Executor按`product/p64-mes-advanced-orchestration/receipts/planning-review-phase-1-01.md`收敛缺口，追加阶段回执02。完整实施授权有效；Server880c145/Web1198635仅为回执01报告快照，新增工程基线未获规划确认。功能47、清单46/22/22=90、ADV64、P63/VB及P62延期保持；根Server gitlink78495dc保留。
 
 正式验证集合 VB01—VB04（互不相加）：VB01 Web `2b0c660` 四门 exit0（typecheck 静默；lint 0e/79w；vitest 151+1 文件、1365+3 测试；build 1.96s）。VB02 Server iot 63/0、engine 76/0、process 266/0 exit0（`19d1da2` 仅授权修复，不扩推整仓）。VB03 20原子/A01—A10 行为基线（审查03—10）；外部资产隔离 3/0 与截止内 FLOW 恢复 1/0 单列。VB04 追加迁移 `V0.1.5__p63_dynamic_branch_semantics`/`V0.1.6__p63_iot_command_reservation`/`R__p63_iot_reservation_menu`，链终点 0.1.6。bootstrap 全量 286/3/0/27 exit1 保留（Phase4 既有失败，截止内受控恢复等强度替代接受，登记 REG-P63-Phase4CrashTest）；全部收敛≠全部成功。
 

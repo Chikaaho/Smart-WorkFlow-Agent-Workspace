@@ -3,30 +3,30 @@
 ## 1. 功能名称
 P64 MES高级流程编排与业务闭环（XL）。
 ## 2. 功能目标
-节点表单、类型变量、只读Trigger/可靠动作、岗位委托、主子流程隔离回写；MES/招商/安信三场景。
+节点表单、类型变量、只读Trigger/可靠动作、岗位委托、主子流程隔离回写及三场景闭环。
 ## 3. 当前状态
-IN_PROGRESS（2026-10-08）：Owner实施授权成立，Executor已实际启动阶段I数据到动作；A01—A12业务验收未开始，阶段I覆盖A01—A04及相关A11/A12。
+IN_PROGRESS；阶段ⅠVERIFYING（2026-10-09规划审查01暂不通过），完整实施授权保持；整体A01—A12未通过。
 ## 4. 本轮做了什么
-已形成PD01—PD06/三阶段并关闭READY传播。本轮记录Owner完整实施授权，写ready/authorization-p64-implementation-20261008.md，当前从阶段I数据到动作开始。
+读取阶段回执01、ADR-P64-001及7张截图，对照主方向/实施授权审查。形成receipts/planning-review-phase-1-01.md，剩P1-01—P1-08。
 ## 5. Executor内部Step
-Executor此前完成裁决传播；本轮仅由Planner下发实施入口，尚未在本会话运行工程或向其他会话派发。
+执行侧自验完成并提交；Planner仅确认部分页面观察，不认可阶段整体通过。
 ## 6. 修改范围
-Planner仅修改product/memory/todo；授权Executor实施两仓业务、必要验证和实际启动状态同步。根Server gitlink78495dc保留；规划文档Git由Executor精确收尾，Planner未操作Git。
-## 7. 验证结果
-传播03四入口实际路由、Owner裁量及新增Git结果核对通过；无新增工程基线，P63业务/VB及REG-P63-Phase4CrashTest保持。
+Executor报告两仓表单/变量/Trigger/动作/V0.1.7及Web相关实现。Planner仅改product/memory/todo，未读代码/knowledge或运行工程。
+## 7. 测试与验收
+截图支持节点表单显示/填写、主流程已通过/关联流程进行中、MATCHED/STARTED页面回查；权限/事务/可靠恢复/资源等尚无完整可回读行为包。工程计数与PG演练为执行声明，待原始输出核验；新增正式基线保持未确认。P63业务/VB继续锁定。
 ## 8. 关键决策
-任务级表单、类型变量、独立BPM判断边界、独立发布实例编排、组织岗位委托、稳定行共享权限/回写。阶段I数据到动作（A01—A04）；II人员与父子协作（A05—A07）；III三场景与整体交付（A08—A12）。各阶段承担受影响A11/A12，工程ADR/内部实施由Executor确定。
+沿PD01—PD06/三阶段。ADR脚本process/engine位置、动作链和回退责任与回执冲突，须按真实实现及门禁定唯一事实。
 ## 9. 当前系统
-功能47、清单46/22/22=90、ADV64及其他P保持；P63已COMPLETED，P62性能延期/策略关闭。Executor启动实测：两仓feature/p64-mes-advanced-orchestration已检出并快进至develop最新（Server b7283c8/Web 7af86f2，均0/0）；工作区develop-sw=39b68aa2。根Server gitlink78495dc保留脏项；目标机hook生效未由本轮证明。
+功能47、清单46/22/22=90、ADV64、问题57、其他P保持；P63COMPLETED，P62性能延期/策略关闭。回执01报告Server feature880c145/Web feature1198635、推送0/0；实际Git/环境及权威状态由Executor补回读，启动时b7283c8/7af86f2仅历史。根Server gitlink78495dc保留；目标机hook及Stop Gate问题未由Planner确认。
 ## 10. 未完成
-P64阶段Ⅰ（数据到动作，A01—A04及相关A11/A12）实现与自验已完成：阶段回执`product/p64-mes-advanced-orchestration/receipts/phase-1-completion-receipt-01.md`+ADR-P64-001已提交待规划独立验收。两仓feature分支Server 880c145/Web 1198635均推送0/0。交付=节点表单/BPM变量/Trigger判断/可靠动作闭环+V0.1.7迁移+真实浏览器全链验证。
+P1-01证据/计数，02资源护栏，03业务配置/多角色，04节点表单/轮次/权限，05变量/事件/匹配，06可靠动作，07旧实例/关闭/回退，08ADR/状态一致性；阶段Ⅱ/Ⅲ及整体交付。
 ## 11. 风险
-错误轮次、重复派发、脚本越权、行泄露/错写、回写与推进脱节、迟到结果、岗位歧义/循环、超限及存量回归，按A01—A12实证。
+128MiB/并发排队未实证；JSON导入不替普通配置；只用admin不证明权限；旧代码无handler不能证明存量收敛。Stop Gate异常交管理员核实，不绕过或据此自动通过业务。
 ## 12. 唯一下一动作
-Executor连续推进阶段I数据到动作实施（探索→ADR→实现→验证），完成后提交product/p64-mes-advanced-orchestration/receipts/phase-1-completion-receipt-01.md供规划独立验收。
+Executor按阶段Ⅰ审查01在原实施授权内修正/补证，追加phase-1-completion-receipt-02.md；先收敛阶段Ⅰ，不重开READY传播或重复申请实施授权。
 ## 13. 完成标准
-阶段I真实配置到可靠动作闭环满足A01—A04及相关A11/A12，提交phase-1-completion-receipt-01.md，Planner独立阶段验收；整体完成须A01—A12全部通过。
+P1-01—P1-08逐项可回读核销，有限锁定观察不重做；真实实现变化运行受影响门禁。Planner再独立阶段验收，整体仍须A01—A12全部通过及后续终态同步。
 ## 14. 必读
-Planner：system/roles/planner、memory、P64实施授权/主方向/方案。Executor另读角色、project、knowledge当前入口及两仓工程宪法；READY传播终审03为已关闭历史。
+Planner：system/roles/planner、memory、阶段Ⅰ审查01/回执01/ADR及主方向/授权。Executor另读角色/project/knowledge与两仓工程宪法，先核实现有证据再修正。
 ## 15. 启动提示
-“你是执行，Owner已授权开始P64完整实施；按ready/authorization-p64-implementation-20261008.md从阶段I数据到动作启动，自主实施/验证/ADR，按授权同步实际启动状态，回执交Planner。”目标分支feature/p64-mes-advanced-orchestration；先核实Git，根Server gitlink78495dc保留。
+“你是执行，按P64 planning-review-phase-1-01.md完成P1-01—P1-08修正/补证，已有完整实施授权有效，回执02交Planner；不重跑已锁定无变化项，根Server gitlink78495dc保留。”治理缺陷由管理员处理，业务补证可独立推进。

@@ -1,8 +1,8 @@
 # 功能摘要
 
-P64（XL）=IN_PROGRESS·阶段Ⅰ已完成实现与自验（回执+ADR已提交待规划独立验收）。唯一下一动作=Planner独立验收阶段Ⅰ回执`product/p64-mes-advanced-orchestration/receipts/phase-1-completion-receipt-01.md`。两仓feature分支：Server 880c145/Web 1198635（均推送0/0）；READY传播/G1—G4已关闭；根Server gitlink78495dc按Owner裁量保留脏项。功能47、清单46/22/22=90、ADV64、P63及VB保持；P62性能延期/策略关闭。
+P64=IN_PROGRESS；阶段ⅠVERIFYING（规划审查01暂不通过，P1-01—P1-08待修正/补证）。唯一下一动作=Executor按`product/p64-mes-advanced-orchestration/receipts/planning-review-phase-1-01.md`收敛缺口，追加阶段回执02。完整实施授权有效；Server880c145/Web1198635仅为回执01报告快照，新增工程基线未获规划确认。功能47、清单46/22/22=90、ADV64、P63/VB及P62延期保持；根Server gitlink78495dc保留。
 
-- `p64-mes-advanced-orchestration`（P64，XL）：**IN_PROGRESS·阶段Ⅰ已完成实现与自验，待规划独立验收**；阶段回执`receipts/phase-1-completion-receipt-01.md`+ADR-P64-001；两仓feature Server 880c145/Web 1198635；A01—A04闭环+V0.1.7迁移+浏览器全链验证；阶段Ⅱ（A05—A07）/阶段Ⅲ（A08—A12）未开始。
+- `p64-mes-advanced-orchestration`（P64，XL）：**IN_PROGRESS；阶段ⅠVERIFYING**；审查01剩P1-01—P1-08。7截图的有限页面观察保留，资源/配置/权限/变量/动作/兼容行为及ADR待补；阶段Ⅱ/Ⅲ未验收。
 - `p63-mes-workflow-foundations`（P63，L/P0）：**COMPLETED（规划已确认，2026-10-08）**；表单驱动动态并行审批+一次性 IoT 预约下发、手工并行兼容；VB01—VB04 见登记与 `state.md`；范围外=完整 MES/分管领导组织模型/周期预约/厂商实网/部署。
 - `p62-lowcode-transaction-bpm-tiering`（P62，XL）：**COMPLETED（规划已确认，2026-10-06）**；性能 Owner 延期未验证留账（`todo/p62-lowcode-transaction-bpm-tiering.md` §性能后续待办）；新资源策略默认关闭。
 - `backend-architecture-optimization`（XL）：**COMPLETED（规划已确认，2026-09-26）**；Phase1—6C 与 Final 完成；10 候选=BAO-01 `DEFERRED`+BAO-02 `PARTIAL`+8 `COMPLETED`；基线 1570/0/0/0（历史时点）。

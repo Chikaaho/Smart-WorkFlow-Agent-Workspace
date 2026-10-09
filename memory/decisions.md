@@ -1,8 +1,8 @@
 # 近期有效决策摘要
 
-P64（XL）=IN_PROGRESS·阶段Ⅰ已完成实现与自验（回执+ADR已提交待规划独立验收）。唯一下一动作=Planner独立验收阶段Ⅰ回执`product/p64-mes-advanced-orchestration/receipts/phase-1-completion-receipt-01.md`。两仓feature分支：Server 880c145/Web 1198635（均推送0/0）；READY传播/G1—G4已关闭；根Server gitlink78495dc按Owner裁量保留脏项。功能47、清单46/22/22=90、ADV64、P63及VB保持；P62性能延期/策略关闭。
+P64=IN_PROGRESS；阶段ⅠVERIFYING（规划审查01暂不通过，P1-01—P1-08待修正/补证）。唯一下一动作=Executor按`product/p64-mes-advanced-orchestration/receipts/planning-review-phase-1-01.md`收敛缺口，追加阶段回执02。完整实施授权有效；Server880c145/Web1198635仅为回执01报告快照，新增工程基线未获规划确认。功能47、清单46/22/22=90、ADV64、P63/VB及P62延期保持；根Server gitlink78495dc保留。
 
-> 同步点：2026-10-08（Owner授权P64实施；Executor实际启动阶段Ⅰ）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）、`knowledge/current-status.md` 与对应回执。
+> 同步点：2026-10-09（P64阶段Ⅰ规划审查01，待修正/补证）；权威详情：`knowledge/decisions.md`（D1—D48 历史档案）、`knowledge/current-status.md` 与对应回执。
 
 - P64：业务主链以多流程编排；主表/节点表/变量各司其职，JS只判断、动作受控执行；后台源岗位→受托岗位委托映射，经组织任职解析实际办理人、同轮冻结；分组子流程隔离回写、四等待策略及迟到结果冻结。变量有效轮次/缺值、S2八组合、数量账业务结果、规模护栏与存量兼容已收敛，详见方向。
 - 当前状态与历史物理分离；当前值只见 `knowledge/current-status.md`（历轮 P63/P62 长条目已迁 `knowledge/history/current-status-through-2026-10-08-p63-stage3-before.md`）；终态机器契约单一源 `.codex/governance/terminal-contract.json`。
