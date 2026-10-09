@@ -1,5 +1,15 @@
 # Windows Stop Gate诊断回执规划复核
 
+## 当前Owner裁决（2026-10-09，Admin代记）
+
+Owner明确指令：“先按全部通过,后面有问题会再报”。依据`system.md` §0.0，本次Windows Stop Gate治理修复按**全部通过、已结案**记录；正式修复已安装并推送，详见[正式安装回执](receipt-admin-windows-stop-gate-installed-20261009.md)与[Owner通过与结案记录](receipt-owner-windows-stop-gate-acceptance-20261009.md)。真实宿主派发补证不再作为本次结案前置，后续按具体新问题续办。
+
+Owner补充说明：此前确认请求被拒绝，是因为无人值守；Agent发起确认时无人查看或应答，等待超时后系统自动拒绝。此处明确记录Owner说明的确认链路原因；Stop Gate与公共Validator的历史实测仍按原证据保留。
+
+## 原规划复核（历史）
+
+以下保留Planner在正式修复安装前的复核结论与取证边界；其中“尚未实施”“不能关闭”和“下一管理员动作”描述当时状态，当前结案口径以上述Owner裁决为准。
+
 2026-10-09；Planner。读取[Admin回执](receipt-admin-windows-stop-gate-diagnostics-20261009.md)、本机product证据中三份correct-replay、gate-replay、silent-component-reject、capture-ps-write-error/ps-throw、lifecycle-observation-reject、invalid-terminal-reject、selfcheck及host-hook-events；未读治理实现、宿主日志或运行治理命令。
 
 **核实任务已完成，诊断结论可采信；治理修复尚未实施，不能关闭修复事项。** Admin回执末尾明确“尚未修改治理入口、机器配置或原会话状态”。不裁决P64业务通过，不增加功能/P/问题计数。
