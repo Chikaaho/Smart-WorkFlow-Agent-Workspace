@@ -9,7 +9,10 @@ resolve_jq() {
 }
 
 root_dir=$(CDPATH= cd -- "$(dirname "$0")/../.." && pwd)
-contract="$root_dir/.codex/governance/terminal-contract.json"
+# Native Windows jq opens ASCII relative paths reliably even when the root
+# contains Unicode. Only this short-lived gate's working directory changes.
+cd "$root_dir"
+contract=".codex/governance/terminal-contract.json"
 validator="$root_dir/.codex/governance/validate-terminal.sh"
 supervisor="$root_dir/.codex/governance/supervisor-reinject.sh"
 input=$(cat)
@@ -34,7 +37,7 @@ if [ -n "${AGENT_CODING_ENGINE_TASK_ID:-}" ] || [ -n "${AGENT_CODING_ENGINE_THRE
 fi
 
 # Known running/completed background tasks must satisfy the shared lifecycle gate.
-if ! lifecycle_diagnostic=$(printf '%s' "$input" | sh "$validator" --execution-context 2>&1); then
+if ! lifecycle_diagnostic=$(printf '%s' "$input" | AGENT_CODING_ENGINE_VALIDATOR_PHASE=HOST_LIFECYCLE sh "$validator" --execution-context 2>&1); then
   "$jq_bin" -cn --arg reason "$lifecycle_diagnostic" --arg next_action '核对自身任务身份；按既定策略取消、清理并保存已有结果与退出状态；继续独立工作，不延时等待，不停止用户服务。' --argjson attempt 0 --argjson max_attempts 3 '{reason:$reason,next_action:$next_action,attempt:$attempt,max_attempts:$max_attempts}' | sh "$supervisor"
   exit 0
 fi
@@ -53,11 +56,11 @@ terminal_json=$(printf '%s' "$input" | "$jq_bin" -j '.last_assistant_message // 
   }' 2>&1)
 extract_status=$?
 if [ "$extract_status" -eq 0 ]; then
-  diagnostic=$(printf '%s' "$terminal_json" | sh "$validator" 2>&1)
+  diagnostic=$(printf '%s' "$terminal_json" | AGENT_CODING_ENGINE_VALIDATOR_PHASE=TERMINAL sh "$validator" 2>&1)
   validate_status=$?
   if [ "$validate_status" -eq 0 ]; then
     lifecycle_context=$(printf '%s' "$input" | "$jq_bin" -c --argjson terminal "$terminal_json" '. + {terminal_payload:$terminal}')
-    diagnostic=$(printf '%s' "$lifecycle_context" | sh "$validator" --execution-context 2>&1)
+    diagnostic=$(printf '%s' "$lifecycle_context" | AGENT_CODING_ENGINE_VALIDATOR_PHASE=TERMINAL_LIFECYCLE sh "$validator" --execution-context 2>&1)
     validate_status=$?
   fi
 else

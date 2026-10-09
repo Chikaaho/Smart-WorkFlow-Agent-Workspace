@@ -9,6 +9,7 @@ resolve_jq() {
 }
 
 root_dir=$(CDPATH= cd -- "$(dirname "$0")/../.." && pwd)
+cd "$root_dir"
 input=$(cat)
 jq_bin=$(resolve_jq || true)
 if [ -z "$jq_bin" ]; then
@@ -30,7 +31,7 @@ if [ -z "$task_id" ] || [ -z "$thread_id" ] || ! printf '%s' "$revision" | grep 
   exit 0
 fi
 
-marker=$("$jq_bin" -r '.marker + " "' "$root_dir/.codex/governance/terminal-contract.json")
+marker=$("$jq_bin" -r '.marker + " "' '.codex/governance/terminal-contract.json')
 terminal_json=$(printf '%s' "$input" | "$jq_bin" -j '.last_assistant_message // ""' 2>/dev/null | awk -v marker="$marker" '
   BEGIN { count = 0; marker_line = 0 }
   index($0, marker) == 1 { count++; marker_line = NR; payload = substr($0, length(marker) + 1) }

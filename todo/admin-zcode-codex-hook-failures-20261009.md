@@ -1,5 +1,7 @@
 # ZCode与Codex Hook故障续办
 
+当前HK-C状态（2026-10-09）：Owner最新分工为本会话只处理Codex。Codex Windows接线已修复，入口回归与本机app-server真实隔离派发/同线程自动续行通过；真实工作区新声明的信任状态仍为`modified`，生效边界见[Codex修复回执](../product/workspace-governance-consistency-audit/receipts/receipt-admin-codex-hook-failure-20261009.md)。下文保留初始双线交接；ZCode沿另一会话回执独立办理。
+
 2026-10-09；Planner交接，执行角色Admin。状态：待管理员分别核查。Owner本轮明确要求管理员任务继续，分别检查ZCode和Codex；授权核实、修复对应治理接线、配置与诊断，按既有规则验证和精确Git收尾。业务实现由Executor独立推进。
 
 ## 输入与事实边界

@@ -1,6 +1,6 @@
 # ZCode与Codex Hook故障核查回执
 
-2026-10-09；Admin。任务入口：[续办说明](../../../todo/admin-zcode-codex-hook-failures-20261009.md)。Owner指示“分别检查ZCode和Codex，先检查zcode情况”。本任务由两个管理员会话并行承担：ZCode侧会话`sess_5ca9dce0`（本回执HK-Z部分，已完成）与Codex侧会话`thread 01a11df3`（HK-C部分，该会话2026-10-09T15:12:19Z自述“我只处理Codex……ZCode留给另一会话处理”，本节保留其补全位置）。两宿主分别核查，不作共同根因推定。
+2026-10-09；Admin。任务入口：[续办说明](../../../todo/admin-zcode-codex-hook-failures-20261009.md)。Owner指示“分别检查ZCode和Codex，先检查zcode情况”，随后分工为本Codex会话只处理Codex。两个管理员会话分别记录：ZCode侧会话`sess_5ca9dce0`（本回执HK-Z部分）与Codex侧会话`thread 01a11df3`（下方HK-C及[独立修复回执](receipt-admin-codex-hook-failure-20261009.md)，修复与真实隔离派发验证已完成，原工作区宿主信任状态仍为modified）。两宿主分别核查，不作共同根因推定。
 
 ## HK-Z：ZCode UserPromptSubmit / Stop
 
@@ -48,12 +48,12 @@
 ## 剩余动作
 
 1. 本回合结束的自然Stop派发为修复后launcher回执的首次真实宿主触达：下一回合读取`invocations.log`（预期`launcher-invoked`+`invoked`+`payload-read`三行，session=`sess_5ca9dce0`，admin角色静默通过）并回补本回执；若未出现`launcher-invoked`则落回“脚本未执行”类别，与本事件5次失败同型。
-2. HK-C节由Codex侧管理员会话（`thread 01a11df3`）补全根因、修改与真实派发验证；完成后本回执为完整双线记录。
+2. HK-C修复与本机app-server真实隔离派发验证已完成，见下节；真实工作区新声明仍为`modified`，保留Owner宿主信任评审这一生效边界。
 3. 若宿主再次出现同型派发失败（两日窗口内已5次），以新增的launcher回执三分归因；空展开候选机制需宿主侧遥测（展开后argv/子进程退出码）方可最终证实，属宿主能力边界。
 
-## HK-C：Codex 项目Stop（由 Codex 侧管理员会话核查，本节待其补全）
+## HK-C：Codex项目Stop（修复与真实隔离派发验证已完成）
 
-本会话仅记录外部可核实事实，不作根因裁决；根因、修改与真实派发验证以Codex侧管理员会话（`thread 01a11df3`）的结论为准。
+Codex侧Admin已按Owner最新“只检查Codex、直接处理完”的指令完成独立核查与修复，详见[Codex修复回执](receipt-admin-codex-hook-failure-20261009.md)。本机Codex 0.159.2 app-server用原POSIX声明精确复现`hook exited with code 1`；新增Windows编码引导和薄适配后，真实Stop正常完成，缺终态时在同thread、同turn自动续行并在合法终态后放行。正常路径三阶段Validator均exit0。新声明已被真实工作区识别，但`trustStatus=modified`，未代持Owner信任。下列截图及早期定位保留为历史记录。
 
 - Owner原图[codex-stop-exit-1.png](evidence/hook-failures-20261009-2150/codex-stop-exit-1.png)：钩子统计“运行次数1/已阻止0/未成功1”，运行记录“未成功 Stop **项目**”，错误“hook exited with code 1”——项目级Stop，退出码1。
 - 项目声明`.codex/hooks.json`（505字节，最后修改9月11日）：唯一Stop hook为`type: "command"`，命令为POSIX shell语法（`${CODEX_PROJECT_DIR:-...}`、`while [ ]`、`$(dirname ...)`、`sh .../.codex/hooks/codex-stop-adapter.sh`）。
