@@ -17,7 +17,7 @@ engine98/0、process330/0、Web四门exit0（typecheck静默/lint0e4w/vitest1371
 ## 8. 关键决策
 动态并行"流程变量"来源经 BpmVariableReadPort 回退业务变量快照（同一冻结图+当前轮次口径）；绑定版本快照缺失改为可诊断拒绝（不静默回退最新）；判断脚本执行空间=专职worker进程(-Xmx128m)+全局/租户并发与等候数量硬上限（0=立即繁忙）。
 ## 9. 当前系统
-功能47、清单46/22/22=90、ADV64、问题57、P63COMPLETED；Server b1f9832/Web 058e90f（feature分支，0/0回读一致）；根Server gitlink78495dc保留。
+功能47、清单46/22/22=90、ADV64、问题57、P63COMPLETED；Server b1f9832/Web 058e90f（feature分支，0/0回读一致）；根Server gitlink78495dc保留（工作区批次 `db7fd2cd` 0/0 回读一致；gitlink 脏差异按 G3 如实保留）。
 ## 10. 未完成
 15 稳定子项按回执04逐项闭合或标注边界（剩余最小面：P1-05a 新轮反例、P1-06a 空超限真实例）。阶段Ⅱ/Ⅲ及整体 A01—A12 未通过。
 ## 11. 风险
@@ -30,3 +30,6 @@ Planner 独立复审回执04（阶段Ⅰ VERIFYING）；复审若加严，按回
 Planner读system/roles/planner、memory、复审03/二级提示/回执03和Admin候选复核；Executor另读project/角色/knowledge/工程宪法。续跑对象/环境以evidence/phase1-03/index.md为线索，先核自身服务/库身份；不擅停用户服务。
 ## 15. 启动提示
 “你是执行，按P64 planning-execution-prompt-p64-phase1-02.md完成15项剩余内容，先修USER/DEPT、字段映射/Trigger授权等阻断点后继续，原实施授权有效，回执04交规划；不以可执行缺陷等待验收，不改功能计数/正式基线，保留根gitlink78495dc。”
+
+## 16. 运行环境（本轮保留）
+后端 8080（prod，PG=p64_phase1_r3）与前端 5174 为本轮验证服务，未停止、供规划复核；升级演练库 p64_upgrade_run 与主库并存。
