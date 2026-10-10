@@ -32,4 +32,4 @@
 
 ## Git
 
-本批次含本回执、最小JSON、[规划复核](planning-review-zcode-codex-hook-failures-20261010.md)与[续办任务](../../../todo/admin-zcode-codex-hook-failures-20261009.md)当前补充段，按`system.md` §0.8.1向`origin/develop-sw`普通提交推送；精确排除并行业务文档、gitlink与原始日志。提交与远端SHA回读见下方补记。
+本批次含本回执、最小JSON、[规划复核](planning-review-zcode-codex-hook-failures-20261010.md)与[续办任务](../../../todo/admin-zcode-codex-hook-failures-20261009.md)当前补充段，按`system.md` §0.8.1向`origin/develop-sw`普通提交推送；精确排除并行业务文档、gitlink与原始日志。本批次提交`539adcc2c2d5bb34876f1d703ab2a96b2a67801c`，推送结果`2ba37f03..539adcc2 develop-sw -> develop-sw`，远端回读`git ls-remote origin refs/heads/develop-sw`=同一完整SHA（回读存档`evidence/hook-failures-20261009-2150/git-closeout-hk-z-readback.json`）。本段为批次推送后的文档补记，代码与证据口径不变。
