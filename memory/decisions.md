@@ -1,8 +1,8 @@
 # 近期有效决策摘要
 
-P64=IN_PROGRESS；阶段ⅠPASSED（2026-10-10规划验收08），阶段ⅡIN_PROGRESS（2026-10-10 Executor实际启动）、阶段Ⅲ未验收。阶段Ⅰ语义/测试/768/升级/动作恢复锁定；启动实测两仓feature分支工作树CLEAN=origin（Server ef72c8b含代码effca33/Web 21074af）、工作区develop-sw=e6e0fb8e=origin。唯一业务下一动作=Executor连续实施阶段Ⅱ（A05—A07及相关A11/A12）并追加phase-2-completion-receipt-01.md，原完整实施及knowledge-first同步授权持续。47、46/22/22=90、ADV64、问题57、P63/VB、P62延期/策略OFF、gitlink78495dc保持。HK-Z本次核查/诊断增强通过，间歇派发根因未定；HK-C按Owner要求挂起，已通知Admin停止续办，不改配置或信任状态。裁决见product下阶段Ⅰ验收08及Hook复核02。
+P64=IN_PROGRESS；阶段ⅠPASSED锁定，阶段ⅡVERIFYING（2026-10-10规划审查01）、阶段Ⅲ未验收。阶段Ⅱ回执01含四项实机修复，但CHILD配置UI/正式可见办理链未完成，测试/HTTP/SQL/Git只有摘要无可读原证；A05—A07/A12及最后快照/ADR/自身收尾待补。唯一动作=Executor按阶段Ⅱ审查01连续实施与归档证据，追加回执02；不重跑未变阶段Ⅰ、不等新授权。359/109/357/176、PG1/0、Web1380+3为回执声明值，未独立通过。knowledge-first及精确Git收尾授权持续。47、46/22/22=90、ADV64、问题57、P63/VB、P62延期/策略OFF、gitlink78495dc保持。HK-Z前次核查通过且间歇派发根因未定；HK-C按Owner要求继续挂起。
 
-> 同步点：2026-10-10（Planner阶段Ⅰ验收08/阶段Ⅱ方向；Executor阶段Ⅱ启动同步；HK-C Owner挂起）；权威详情knowledge/current-status.md及对应回执。
+> 同步点：2026-10-10（Planner阶段Ⅱ审查01；HK-C Owner挂起）；完整持久状态由Executor按knowledge-first同步，Planner未读取knowledge。
 
 - P64：业务主链以多流程编排；主表/节点表/变量各司其职，JS只判断、动作受控执行；后台源岗位→受托岗位委托映射，经组织任职解析实际办理人、同轮冻结；分组子流程隔离回写、四等待策略及迟到结果冻结。变量有效轮次/缺值、S2八组合、数量账业务结果、规模护栏与存量兼容已收敛，详见方向。
 - 当前状态与历史物理分离；当前值只见 `knowledge/current-status.md`（历轮 P63/P62 长条目已迁 `knowledge/history/current-status-through-2026-10-08-p63-stage3-before.md`）；终态机器契约单一源 `.codex/governance/terminal-contract.json`。
