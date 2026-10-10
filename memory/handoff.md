@@ -19,7 +19,7 @@ Executor按planning-execution-prompt-p64-phase1-06.md只补两项原证，追加
 ## Git 收尾（回执08，Executor）
 
 - Server HEAD=`ef72c8b`（含代码 `effca33`＝05a测试增补 + 两次功能清单焦点行文档 d47b4e1/ef72c8b），origin 同 SHA；Web HEAD=`21074af`，origin 同 SHA，两仓工作树 CLEAN（原输出在 phase1-08/P1-08a-C/raw）。
-- **工作区回执08主批次 SHA：`__BATCH_SHA__`**（第二段提交回填）；根 Server gitlink `78495dc` 保持。
+- **工作区回执08主批次 SHA：`d57d2633`**（17 文件：回执08+phase1-08 两包 index+knowledge/memory/todo/ready 同步+复审07/提示06 归档；本段为第二段提交回填）；推送后 origin=同 SHA（8da874bd..d57d2633，原输出在 phase1-08/P1-08a-C/raw §[5]）；根 Server gitlink `78495dc` 保持。
 
 ## 治理验收与剩余
 HK-C：原POSIX声明在真实本机app-server精确failed/exit1；修复后合法completed，缺marker同thread同turn blocked→completed自动续行，三阶段exit0；18组件/70公共契约通过。隔离CODEX_HOME/本机HTTP fixture层级明确。2026-10-10 Admin单次当前hooks/list回读仍modified、配置错误0（hash18ecf395…，receipts/codex-hook-acceptance-readback-20261010.json），实现验证通过、真实生效待Owner宿主信任；Admin不代改trusted_hash。无需重复18/70；信任后Admin核一次当前声明/自然派发。两个临时目录删除被自动审批拒绝保留，无活验证宿主，不写成物理清理全完成。
