@@ -101,7 +101,7 @@
 
 - 后端：`mvn -pl sw-bootstrap spring-boot:run -o`（会话内多轮受控启停：缺陷修复后各重启一次；每轮以端口/健康探测有界等待）。前端：dev server（5173，代理 /api→8080）。IAB 可见会话：登录/交互/截图（见 P2-02）。脚本：有界轮询（≤60s/步），无不可控后台任务。
 - 业务对象终态：RUNNING 父实例=0（历史链全部终态化或废弃）；批次终态回读（SETTLED/BLOCKED/CANCELLED 语义）；委托关系 1 条 DISABLED；验证用户/岗位/部门保留（供复核）。
-- 清理：旧后端进程树与旧 dev 会话已按 PID 精确停止；验证库与 `logs/` 本机留存（不删除取证数据，不提交 Git）；**收尾时点状态**：后端 8080 与前端 5173 进程为验证会话自身任务，按 P2-07c 要求登记（如规划复核需继续实机，可保持；否则按同一 PID 方式停止）。
+- 清理（已执行，原输出 `raw/live/self-task-cleanup.txt`）：验证服务按 PID 精确停止——后端 8080（PID 15164，`mvn -pl sw-bootstrap spring-boot:run -o`）与前端 dev 5173（PID 28004，vite）停止后端口监听 **8080=0 / 5173=0**；IAB 会话标签保留（ZCode 应用内）；验证库 `smart_workflow_p64p2c` 与 `logs/` 本机留存（不删除取证数据、不提交 Git）；未触碰 Owner/用户服务与根 gitlink。
 
 ## 7. 限制与边界（如实）
 
@@ -112,5 +112,5 @@
 
 ## 8. Git 与终态
 
-- 三仓固定截止与提交：Server `da11534`→`86ae3fe`→`8b5bb10`、Web `fbfb44a`、工作区（本批次：ADR-002+证据树+回执02，SHA 以提交后回读为准）；均推送后远端回读一致。根 Server gitlink `78495dc` 保持不修改。
+- 三仓固定截止与提交：Server `da11534`→`86ae3fe`→`8b5bb10`、Web `fbfb44a`、工作区 `cbf439a7`（本批次：ADR-002+回执02+knowledge/memory 同步；证据树按 `.gitignore`（`product/**/evidence/`）仅本机留存，与阶段Ⅰ证据树同口径，规划侧直接读取工作树）；均推送后远端回读一致。根 Server gitlink `78495dc` 保持不修改。
 - Executor terminal：`EXECUTION_SUBMITTED`（自验通过，待规划独立验收）；不写功能 PASSED/COMPLETED、不核销 P 或计数、整体 P64 保持 IN_PROGRESS。
