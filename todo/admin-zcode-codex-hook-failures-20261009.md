@@ -1,6 +1,12 @@
 # ZCode与Codex Hook故障续办
 
-## 2026-10-10当前裁决：ZCode核查通过，Codex挂起
+## 2026-10-10 20:48 HK-C 当前补充：声明已信任
+
+Owner 在 Codex Admin 本会话最新回复“已授权”后，恢复一次只读核实。真实工作区 `hooks/list` 当前为 `trusted`、`enabled=true`、配置错误 0；声明 hash 与修复版本一致，宿主信任待办解除，原 `modified` 与挂起记录保留为历史。详见[授权后恢复核实回执](../product/workspace-governance-consistency-audit/receipts/receipt-admin-codex-hook-authorized-resume-20261010.md)。
+
+现有入口/Validator 审计仅有昨晚记录，尚无今日可归属的自然派发证据；不据此宣称当前原桌面线程重新验证。既有实现和真实隔离宿主派发验证通过结论保留。本轮一次核实已完成，不再催办信任、重复轮询或人为新建补证任务；后续按自然事件或 Owner 新指令核查。HK-Z 原验收口径不变。
+
+## 2026-10-10历史裁决：ZCode核查通过，Codex挂起
 
 依据[复核02](../product/workspace-governance-consistency-audit/receipts/planning-review-zcode-codex-hook-followup-02-20261010.md)及Owner最新“验收，codex的hook先挂起”：HK-C挂起，已通知原Admin停止信任催办、派发补证、重复读取及继续修复，仅收尾自身在途任务；等待Owner明确恢复。原实现/真实隔离派发通过与原工作区modified未可信生效边界保留。挂起事项不包含停用/删除配置或改trusted_hash，不作为P64业务依赖。
 
