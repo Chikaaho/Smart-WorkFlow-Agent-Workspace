@@ -14,7 +14,7 @@
 | 功能名称 | MES高级流程编排与业务闭环 |
 | 等级 / 优先级 | XL（核心架构、跨流程运行模型、组织身份、多版本兼容） |
 | 创建日期 | 2026-10-08（Owner 需求与高级流程摘要 → 规划登记） |
-| 当前状态 | **VERIFYING（阶段Ⅱ回执02 提交待规划独立验收，2026-10-10）**——审查01 八项差异账本已按[回执02](../../product/p64-mes-advanced-orchestration/receipts/phase-2-completion-receipt-02.md)（证据树 phase2-02）逐项处置：CHILD 可视化配置经可见会话发布 v2、实机 N=2 派发/ALL 单次结算/等待推进、行级逐行回写与集合外拒绝、冲突→有权恢复→BLOCKED 重结算、委托启停切换、修复⑤⑥⑦、ADR-002 与三仓 Git 原输出封装；限制如实登记（登录后页面视觉原件受宿主截图面限制、聚合会签为单测原断言）；Executor 不写功能 PASSED/COMPLETED、不核销 P。原首次审查01未通过描述见下段历史
+| 当前状态 | **VERIFYING（阶段Ⅱ回执03 提交待规划独立验收，2026-10-10）**——[复审02](../../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-2-02.md)九行原子差异已按[一级提示01](../../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase2-01.md)逐项处置并提交[回执03](../../product/p64-mes-advanced-orchestration/receipts/phase-2-completion-receipt-03.md)（证据树 phase2-03，62 件 62/62 OK）：设计器 CHILD 原流（编辑→保存 PUT 200→发布 POST 200→冻结 v3，草稿/冻结语义一致）、SETTLED 链对象原流（单次推进恰 1、父 APPROVED）、父行正确查询与授权 200/403×2 实机、委托净链（候选组/直派/冻结逐对象）与聚合实机链（去重恰生成丁+丙、实例 APPROVED、来源/轮次可追溯）、全新库 17 迁移至 0.1.9 原证+锚 30/0（含**缺陷⑧**：FlywayFullChainPostgresTest 基线计数 14→17 修复，Server `4319bb4`）、门禁带退出码/身份、逐 case XML+方法边界摘录、自身收尾 RUNNING=0/端口零监听。限制（如实）：登录后页面像素视觉原件未取得（正式 A11 视觉未通过，通道错误归档）；候选任务详情「无权查看该任务」为真实页面状态留规划裁决；四策略/安全负例=UNIT 层。原回执02 轮描述见下段历史
 | 计数归属 | 不晋级：正式功能 47、清单 90 行 ✅46/🟦22/⬜22、ADV64、问题 57 均保持；本登记不作为第 48 个功能 |
 
 ## 2. 输入、方向与当前入口
@@ -23,7 +23,7 @@
 |---|---|
 | 产品方向（READY） | `product/p64-mes-advanced-orchestration/ready/direction-p64-mes-advanced-orchestration.md`（R01—R12、A01—A12、三场景 S1—S3、XL 阶段边界） |
 | 架构方案（READY） | `product/p64-mes-advanced-orchestration/ready/solution-p64-mes-advanced-orchestration.md`（PD01—PD06、用户路径、三阶段能力交付；阶段I=A01—A04、II=A05—A07、III=A08—A12） |
-| 当前规划复核 | [阶段Ⅰ规划验收08 PASSED](../../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-1-08-passed.md)（2026-10-10，关闭 05a/08a-C 两项并确认阶段合同通过；复审01—07/提示01—06 全部追溯化）；前序 `planning-solution-review-02.md`（§5 传播授权）与 READY 传播已收口 |
+| 当前规划复核 | [复审02](../../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-2-02.md)（2026-10-10，锁定已核子事实、九行原子差异账本）→ [一级提示01](../../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase2-01.md)（唯一执行入口，已执行完毕）→ [回执03](../../product/p64-mes-advanced-orchestration/receipts/phase-2-completion-receipt-03.md)（已提交待独立验收）；更早轮次全部追溯化 |
 | Owner 产品输入 | `product/p64-mes-advanced-orchestration/inputs/owner-bpm-advanced-summary-20261008.md`（BPM 变量/节点审批表单/Trigger 判断与配置化动作/多流程编排/两证券案例/主子流程与等待策略） |
 | Owner 岗位委托补充 | `product/p64-mes-advanced-orchestration/inputs/owner-position-delegation-20261008.md`（后台「源岗位→受托岗位」通用委托，按受托岗位任职解析办理人） |
 | 探索任务（已完成·历史） | `search_task/p64-mes-advanced-orchestration-readiness-20261008.md`（已标作历史） |

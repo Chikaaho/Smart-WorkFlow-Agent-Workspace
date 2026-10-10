@@ -10,7 +10,7 @@
 
 优先做数据产生到可靠动作的完整链，因为没有任务数据、类型变量和可靠触发，后续选人、子流程及MES只能形成页面演示。第二个能力边界解决跨人员、跨流程的数据协作，第三个边界再证明三场景实际业务结果。
 
-当前P64=IN_PROGRESS；阶段Ⅰ由[验收08](../receipts/planning-review-phase-1-08-passed.md)确认PASSED，当前按[阶段Ⅱ审查01](../receipts/planning-review-phase-2-01.md)差异及[阶段Ⅱ方向](direction-p64-phase2-personnel-parent-child.md)继续实施与补证；完整[实施授权](authorization-p64-implementation-20261008.md)有效，整体A01—A12尚未通过。现状输入来自[已复核探索](../../../search_fallback/p64-mes-advanced-orchestration-readiness-20261008.md)及[事实附件](../../../search_fallback/p64-mes-advanced-orchestration-readiness-20261008-attachments.md)；7项缺失/5项部分具备表示接缝现状，不作为完成率。
+当前P64=IN_PROGRESS；阶段Ⅰ由[验收08](../receipts/planning-review-phase-1-08-passed.md)确认PASSED，当前按[阶段Ⅱ复审02](../receipts/planning-review-phase-2-02.md)差异及[阶段Ⅱ方向](direction-p64-phase2-personnel-parent-child.md)继续实施与补证；完整[实施授权](authorization-p64-implementation-20261008.md)有效，整体A01—A12尚未通过。现状输入来自[已复核探索](../../../search_fallback/p64-mes-advanced-orchestration-readiness-20261008.md)及[事实附件](../../../search_fallback/p64-mes-advanced-orchestration-readiness-20261008-attachments.md)；7项缺失/5项部分具备表示接缝现状，不作为完成率。
 
 ## 2. 六项架构决策
 
