@@ -9,6 +9,7 @@ resolve_jq() {
 }
 
 root_dir=$(CDPATH= cd -- "$(dirname "$0")/../.." && pwd)
+cd "$root_dir"
 input=$(cat)
 jq_bin=$(resolve_jq || true)
 if [ -z "$jq_bin" ]; then
@@ -30,7 +31,7 @@ if [ -z "$task_id" ] || [ -z "$thread_id" ] || ! printf '%s' "$revision" | grep 
   exit 0
 fi
 
-marker=$("$jq_bin" -r '.marker + " "' "$root_dir/.codex/governance/terminal-contract.json")
+marker=$("$jq_bin" -r '.marker + " "' '.codex/governance/terminal-contract.json')
 terminal_json=$(printf '%s' "$input" | "$jq_bin" -j '.last_assistant_message // ""' 2>/dev/null | awk -v marker="$marker" '
   BEGIN { count = 0; marker_line = 0 }
   index($0, marker) == 1 { count++; marker_line = NR; payload = substr($0, length(marker) + 1) }
@@ -56,13 +57,19 @@ event=$("$jq_bin" -cn \
   --argjson revision "$revision" \
   --argjson terminal_payload "$terminal_json" \
   --argjson observations "$observations" \
-  '{schema:"agent-coding-engine.supervisor-event.v1",event_type:"TURN_ENDED",event_id:$event_id,task_id:$task_id,host:$host,workspace:$workspace,thread_id:$thread_id,active_role:"executor",contract_revision:$revision,terminal_payload:$terminal_payload,execution_observations:$observations}')
+  --argjson background_tasks "$(printf '%s' "$input" | "$jq_bin" -c ' .background_tasks // []')" \
+  '{schema:"agent-coding-engine.supervisor-event.v1",event_type:"TURN_ENDED",event_id:$event_id,task_id:$task_id,host:$host,workspace:$workspace,thread_id:$thread_id,active_role:"executor",contract_revision:$revision,terminal_payload:$terminal_payload,execution_observations:$observations,background_tasks:$background_tasks}')
 
 supervisor_url=${AGENT_CODING_ENGINE_SUPERVISOR_URL:-}
+python_bin=${AGENT_CODING_ENGINE_PYTHON:-$(command -v python3 || true)}
+if [ -z "$python_bin" ]; then
+  printf '%s\n' '{"decision":"block","reason":"Supervisor 无法裁决：Python 3 不可用。"}'
+  exit 0
+fi
 if [ -n "$supervisor_url" ]; then
-  result=$(printf '%s' "$event" | powershell.exe -NoProfile -File "$root_dir/.codex/governance/supervisor.ps1" event --url "$supervisor_url")
+  result=$(printf '%s' "$event" | "$python_bin" "$root_dir/.codex/governance/execution-supervisor.py" event --url "$supervisor_url")
 else
-  result=$(printf '%s' "$event" | powershell.exe -NoProfile -File "$root_dir/.codex/governance/supervisor.ps1" event)
+  result=$(printf '%s' "$event" | "$python_bin" "$root_dir/.codex/governance/execution-supervisor.py" event)
 fi
 
 printf '%s' "$result" | "$jq_bin" -c '

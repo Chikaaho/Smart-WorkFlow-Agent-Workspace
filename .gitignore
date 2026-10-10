@@ -9,13 +9,36 @@ Thumbs.db
 node_modules/
 dist/
 target/
+coverage/
+*.class
+*.jar
+*.war
+*.tsbuildinfo
+*.rdb
+*.pid
 *.log
+*.log.gz
+*.stdout
+*.stderr
+*.out
+*.raw
 .idea/
 .vscode/
+
+# 任务、方向与回执继续跟踪；原始验证附件仅本机留存
+product/**/evidence/
+tickets/**/evidence/
+knowledge/evidence/*
+!knowledge/evidence/README.md
+product/**/receipts/**/*.zip
+product/**/receipts/**/*.txt
+*.png
 
 # 示例实例的代码仓（由 develop-sw 示例分支的项目说明声明；Engine 默认分支不跟踪）
 Smart-WorkFlow-Server/
 Smart-WorkFlow-Web/
+Smart-WorkFlow-aPaaS-server/
+Smart-WorkFlow-aPaaS-Web/
 # 宿主外执行监督器与宿主门禁的本地运行态
 .codex/governance/runtime/
 .codex/governance/__pycache__/

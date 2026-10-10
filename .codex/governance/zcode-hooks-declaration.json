@@ -1,6 +1,6 @@
 {
   "schema": "agent-coding-engine.zcode-hook-declaration.v1",
-  "note": "受治理工作区在 ZCode 中的 hook 声明（仓库唯一来源）。由 .codex/governance/install-zcode-hooks.ps1 同步到用户级 ~/.zcode/cli/config.json：工作区级声明会被宿主工作区信任层反复失效（实测批准后仍回到待信任并静默禁用），因此生效位置固定在用户级。命令只固定宿主入口并按 ${ZCODE_PROJECT_DIR} 定位仓库内实现，非受治理工作区自动无操作。规则与实现全部在 .codex/governance/，改规则不需要改本声明。Stop 事件必须保持 process/argv 型（绝对路径 powershell.exe）：2026-09-19 实测本机宿主对 command 型 Stop 派发不可靠（六次回合结束仅一次到达门禁，且失败完全静默无 hook.run.failed），而 process 型在同类多工具长回合曾稳定到达；UserPromptSubmit 的 command 型实测一直稳定，保留。stop-gate.ps1 的 dispatch 回执（runtime/zcode/invocations.log）用于持续度量派发是否发生。",
+  "note": "受治理工作区在 ZCode 中的 hook 声明（仓库唯一来源），按宿主平台分派：Windows 机器安装顶层 hooks 块（install-zcode-hooks.ps1），POSIX（macOS/Linux）机器安装 platforms.posix.hooks 块（install-zcode-hooks.sh）。生效位置都是用户级 ~/.zcode/cli/config.json：工作区级声明会被宿主工作区信任层反复失效（实测批准后仍回到待信任并静默禁用，且宿主设置界面的 hooks.saveHooks 会用空状态覆写机器级配置，2026-09-26 macOS 实测），因此生效位置固定在用户级且必须带 hooks.enabled=true（配置文件型 hook 默认禁用）。命令只固定宿主入口并按 ${ZCODE_PROJECT_DIR} 定位仓库内实现，非受治理工作区自动无操作。规则与实现全部在 .codex/governance/，改规则不需要改本声明。Windows：Stop 事件必须保持 process/argv 型（绝对路径 powershell.exe）：2026-09-19 实测本机宿主对 command 型 Stop 派发不可靠（六次回合结束仅一次到达门禁，且失败完全静默无 hook.run.failed），而 process 型在同类多工具长回合曾稳定到达；Windows Stop 保持 process/argv 型直启 zcode-stop-launcher.ps1，入口先保存 stdin、捕获双流、一次重试并投影 fail-closed，再由 stop-gate.ps1 调用同一公共 Validator；UserPromptSubmit 的 command 型实测一直稳定，保留。POSIX：两条事件都用 process/argv 型直启 python3（stdin 载荷、无 shell、不依赖 PATH 里的 jq；macOS 实测 /usr/bin/python3 在 launchd 最窄 PATH 下可解析）；入口为 zcode-role-bind.py 与 zcode-stop-gate.py，与 Windows 入口调用同一公共 Validator。各入口的 dispatch 回执（runtime/zcode/invocations.log）用于持续度量派发是否发生。",
   "hooks": {
     "enabled": true,
     "events": {
@@ -29,7 +29,7 @@
                 "-ExecutionPolicy",
                 "Bypass",
                 "-File",
-                "${ZCODE_PROJECT_DIR}/.codex/governance/stop-gate.ps1"
+                "${ZCODE_PROJECT_DIR}/.codex/governance/zcode-stop-launcher.ps1"
               ],
               "enabled": true,
               "statusMessage": "校验执行终态"
@@ -37,6 +37,48 @@
           ]
         }
       ]
+    }
+  },
+  "platforms": {
+    "posix": {
+      "note": "macOS/Linux 宿主入口。2026-10-04 取证：macOS 宿主自 2026-09-18 起零 hook 派发（Windows 专属声明在本机不可安装也不可运行）。process 型 argv 直启 /bin/sh 执行守卫脚本：从 ${ZCODE_PROJECT_DIR}（缺省回退 PWD）向上最多 16 级定位仓库内入口，找到才 exec python3 运行——用户级声明全机生效，非受治理工作区（无入口文件）必须静默无操作，否则宿主在其它工作区会对每次提示词报文件不存在的 hook 错误（2026-10-04 实测 Smart-WorkFlow-aPaaS-server 子仓库会话）；子仓库会话的载荷 cwd 由入口自身向上解析 engine root，仍落到工作区根治理。python3 由宿主 PATH 解析（macOS launchd 最窄 PATH 下 /usr/bin/python3 可用且带 sqlite3）。",
+      "hooks": {
+        "enabled": true,
+        "events": {
+          "UserPromptSubmit": [
+            {
+              "hooks": [
+                {
+                  "type": "process",
+                  "command": "/bin/sh",
+                  "args": [
+                    "-c",
+                    "d=\"${ZCODE_PROJECT_DIR:-$PWD}\"; i=0; while [ \"$i\" -lt 16 ]; do [ -f \"$d/.codex/governance/zcode-role-bind.py\" ] && exec python3 \"$d/.codex/governance/zcode-role-bind.py\"; p=$(dirname \"$d\"); [ \"$p\" = \"$d\" ] && break; d=\"$p\"; i=$((i+1)); done"
+                  ],
+                  "enabled": true,
+                  "statusMessage": "绑定会话角色"
+                }
+              ]
+            }
+          ],
+          "Stop": [
+            {
+              "hooks": [
+                {
+                  "type": "process",
+                  "command": "/bin/sh",
+                  "args": [
+                    "-c",
+                    "d=\"${ZCODE_PROJECT_DIR:-$PWD}\"; i=0; while [ \"$i\" -lt 16 ]; do [ -f \"$d/.codex/governance/zcode-stop-gate.py\" ] && exec python3 \"$d/.codex/governance/zcode-stop-gate.py\"; p=$(dirname \"$d\"); [ \"$p\" = \"$d\" ] && break; d=\"$p\"; i=$((i+1)); done"
+                  ],
+                  "enabled": true,
+                  "statusMessage": "校验执行终态"
+                }
+              ]
+            }
+          ]
+        }
+      }
     }
   }
 }

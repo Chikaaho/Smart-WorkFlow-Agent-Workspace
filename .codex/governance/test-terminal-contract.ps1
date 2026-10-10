@@ -177,7 +177,7 @@ Invoke-ValidatorCase confirmation_mfa_ok pass $confirmationMfaOk
 Invoke-ValidatorCase confirmation_remote_ok pass $confirmationRemoteOk
 Invoke-ValidatorCase confirmation_in_execution fail $confirmationInExecution 'confirmation: forbidden for state EXECUTION_SUBMITTED'
 
-$contract = Get-Content -LiteralPath $contractPath -Raw | ConvertFrom-Json
+$contract = Get-Content -LiteralPath $contractPath -Raw -Encoding UTF8 | ConvertFrom-Json
 $propertyNames = @($contract.properties.PSObject.Properties.Name | Sort-Object)
 $partitionFailures = @()
 foreach ($stateProperty in $contract.states.PSObject.Properties) {

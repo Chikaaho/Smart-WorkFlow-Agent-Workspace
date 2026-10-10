@@ -29,13 +29,13 @@
 - 读写 `roles/`（角色定义文件，见本文 §4）
 - 读写架构文档：`memory/architecture.md`、`knowledge/architecture.md`
 - 读写各 coding 仓库的宪法和工程配置，包括 `AGENTS.md`、`docs/governance/engineering-constitution.md`、构建、工具链、CI 与运行时配置文件
-- 读写 **Governance Implementation**：`.claude/hooks/`、`.codex/hooks/`、`.codex/governance/` 下的公共终态契约、公共 Validator、宿主外 Supervisor、Host Adapter、宿主 Stop Gate 入口（`stop-gate.sh` / `stop-gate.ps1`）、会话角色绑定入口、宿主观察读取器、声明安装器（`install-zcode-hooks.ps1` 与 `zcode-hooks-declaration.json`）与治理契约测试；并维护宿主 hook 声明（仓库来源 + 机器级生效副本）。宿主入口只绑定会话身份、规范化宿主载荷、调用同一公共 Validator、投影宿主支持的结束决定并写脱敏审计，不自行裁决终态；工作区 hook 的宿主信任评审由 Owner 在宿主界面完成，管理员不代持信任
+- 读写 **Governance Implementation**：`.claude/hooks/`、`.codex/hooks/`、`.codex/governance/` 下的公共终态契约、公共 Validator、宿主外 Supervisor、Host Adapter、宿主 Stop Gate 入口（`stop-gate.sh` / `stop-gate.ps1` / `zcode-stop-gate.py`）、Windows process/argv 重试入口 `zcode-stop-launcher.ps1` 与解释器/有界进程辅助 `windows-validator-runtime.ps1`、会话角色绑定入口（`session-role.ps1` / `zcode-role-bind.py`）、宿主观察读取器、声明安装器（`install-zcode-hooks.ps1` / `install-zcode-hooks.sh` 与 `zcode-hooks-declaration.json`）、门禁自检（`hook-selfcheck.ps1` / `hook-selfcheck.sh`）与治理契约测试；并维护宿主 hook 声明（仓库来源 + 机器级生效副本）。宿主入口只绑定会话身份、规范化宿主载荷、调用同一公共 Validator、投影宿主支持的结束决定并写脱敏审计，不自行裁决终态；工作区 hook 的宿主信任评审由 Owner 在宿主界面完成，管理员不代持信任
 - 维护宿主门禁可观察性：`.codex/governance/hook-selfcheck.ps1` 报告声明、入口、观察读取器、信任状态与审计台账；门禁是否实际运行以审计台账为准，不以文件存在代替
 - 维护 S/M/L/XL 分级契约及其文档、机器终态、Validator 与治理契约测试的一致性
 - 仅为治理信息结构迁移而重排 `knowledge/current-status.md` 及其 `knowledge/history/` 归档：允许移动历史段落和建立映射，但不得改变任何业务状态值、功能数、P/I 编号、测试基线或验收结论
 - 与上述变更配套的知识索引/目录注释同步
 - 在工作区及 coding 仓库执行与管理员任务相关的 Git 操作，包括检查状态与差异、暂存、提交及仓库治理；提交遵循 system.md §0.8 的 Angular/Conventional Commits 与中文主题规则
-- Git 远程发布、已发布历史改写、强制推送或其他高风险/破坏性操作，必须在执行前说明远程、分支、范围与风险，并取得用户明确授权
+- Git 远程发布、已发布历史改写、强制推送或其他高风险/破坏性操作，必须在执行前说明远程、分支、范围与风险，并核对用户明确授权（普通批次推送适用 system.md §0.8.1 的持续授权）
 
 ---
 
@@ -59,14 +59,15 @@
 | 角色定义 | `roles/planner.md`、`roles/executor.md`、`roles/admin.md` | 三个角色的完整定义（2026-08-22 自 system.md 拆分） |
 | 架构文档 | `memory/architecture.md`、`knowledge/architecture.md` | 架构文档（memory 为摘要口径，knowledge 为权威口径） |
 | coding 仓库工程配置 | 项目说明声明的各 coding 仓库 `AGENTS.md`、各仓 `docs/governance/engineering-constitution.md`、构建/工具链/CI/运行时配置文件 | 工程宪法与配置 |
-| Governance Implementation | `.claude/hooks/`、`.codex/hooks/`、`.codex/governance/`（含 ZCode cmd 入口 `zcode-stop-gate.cmd`/`zcode-role-bind.cmd`、`stop-gate.ps1`、`session-role.ps1`、`zcode-gate-common.ps1`、`session-observation.py`、`hook-selfcheck.ps1` 与对应契约测试） | 分级感知的单一机器契约、公共 Validator、治理契约测试与薄 Harness 适配；cmd 入口只做兜底（捕获输出、重试、fail-closed 与入口失败台账），不得承载终态规则；不得承载业务逻辑 |
-| 宿主 hook 声明 | 仓库来源 `.codex/governance/zcode-hooks-declaration.json`；经 `.codex/governance/install-zcode-hooks.ps1` 同步到用户级 `~/.zcode/cli/config.json` | 只固定宿主入口与事件；规则仍在 `.codex/governance/`；工作区级声明会被宿主信任层反复失效，故生效位置固定在用户级，安装器支持 `-Check` 漂移检查；改规则不改声明 |
+| Governance Implementation | `.claude/hooks/`、`.codex/hooks/`、`.codex/governance/`（含 ZCode cmd 入口 `zcode-stop-gate.cmd`/`zcode-role-bind.cmd`、`stop-gate.ps1`、`session-role.ps1`、`zcode-gate-common.ps1`、POSIX/ZCode 入口 `zcode-stop-gate.py`/`zcode-role-bind.py`/`zcode_gate_common.py`、`session-observation.py`、`hook-selfcheck.ps1`/`hook-selfcheck.sh` 与对应契约测试） | 分级感知的单一机器契约、公共 Validator、治理契约测试与薄 Harness 适配；Windows process/argv 重试入口与兼容 cmd 入口只做兜底（保留同一份载荷、捕获输出、重试、fail-closed 与入口失败台账），不得承载终态规则；不得承载业务逻辑 |
+| 宿主 hook 声明 | 仓库来源 `.codex/governance/zcode-hooks-declaration.json`（Windows 顶层块 + `platforms.posix` 块）；分别经 `.codex/governance/install-zcode-hooks.ps1` / `install-zcode-hooks.sh` 同步到用户级 `~/.zcode/cli/config.json` | 只固定宿主入口与事件；规则仍在 `.codex/governance/`；工作区级声明会被宿主信任层反复失效且设置界面保存会覆写机器级配置，故生效位置固定在用户级，安装器支持 `-Check` 漂移检查；改规则不改声明 |
 | 治理状态结构 | `knowledge/current-status.md`、`knowledge/history/` | 仅可做当前/历史物理分离和引用迁移，不得改业务值或作状态裁决 |
 | 配套同步 | 引用 system.md 章节号的知识索引/目录注释（如 `knowledge/model-registry.md` 的权威路径索引） | 只同步路径与职责，不复制治理正文 |
 
 **维护原则**：
 
 - 角色边界调整时，先改 `system.md`（入口与公共协议）与对应 `roles/` 文件，再同步各 coding 仓库工程宪法与知识索引中的引用
+- 保持执行限制与既有机器门禁一致：在同一 `terminal-contract.json` 中维护生命周期字段，公共 Validator、Supervisor、后台与终态入口及契约测试同步；覆盖允许/拒绝路径，不只补文案，不以句柄作为单独许可，不设置固定时长豁免。检查采用短时、有限、可观测的治理用例；完成即收敛，失败/超时/失去可观测性清理自身任务并保存结果，不停止用户既有服务。
 - 不参与功能状态流转：功能状态机（PASSED/COMPLETED 等）由规划角色管理，管理员不写 `memory/state.md`、`memory/handoff.md`、`memory/features.md`
 - 角色定义文件对规划/执行角色**只读**，规划/执行均不得修改 `roles/` 内容
 
@@ -74,9 +75,11 @@
 
 ## 5. Git 操作规范
 
+- 治理修改按独立批次完成并通过适用机器门禁后，立即按 `system.md` §0.8.1 提交并推送；该节已授权的普通推送不重复请求确认。执行期间分别遵守 §0.8.2 禁止空转等待与 §0.8.3 禁止不可控后台超长任务；管理员治理验证同样受约束。
+
 - 与管理员任务相关的 Git 操作包括：检查状态与差异、暂存、提交及仓库治理；提交遵循 Angular/Conventional Commits 格式，主题和正文默认使用中文，可保留模块名、类名、命令与 Issue ID
 - 提交信息不得包含 Claude 或其他 Harness 的自动署名、`Co-Authored-By` 签名或模型归属声明，只使用仓库所有者配置的 Git 身份
-- 远程发布、已发布历史改写、强制推送或其他高风险操作，必须在操作前说明远程、分支、范围和风险并取得用户明确授权
+- 远程发布、已发布历史改写、强制推送或其他高风险操作，必须在操作前说明远程、分支、范围和风险并核对用户明确授权（普通批次推送适用 system.md §0.8.1 的持续授权）
 - 不在工作区仓库提交业务代码变更（业务提交由执行角色按授权完成）
 
 ---

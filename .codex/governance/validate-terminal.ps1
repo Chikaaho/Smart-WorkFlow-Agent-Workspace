@@ -1,15 +1,22 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [Parameter(ValueFromPipeline = $true)]
     [AllowNull()]
     [AllowEmptyString()]
-    [string] $InputJson
+    [string] $InputJson,
+    [Alias('ExecutionContext')] [switch] $ExecutionContextMode,
+    [string] $PythonExecutable = ''
 )
 
 begin {
     $ErrorActionPreference = 'Stop'
     Set-StrictMode -Version Latest
     $pipelineChunks = [System.Collections.Generic.List[string]]::new()
+    . (Join-Path $PSScriptRoot 'windows-validator-runtime.ps1')
+    trap {
+        [Console]::Error.WriteLine('terminal: validator exception: ' + $_.Exception.GetType().Name)
+        exit 1
+    }
 }
 
 process {
@@ -92,6 +99,34 @@ $payloadText = if ($pipelineChunks.Count -gt 0) {
     $stdinReader.ReadToEnd()
 }
 
+# Same lifecycle Validator and terminal-contract.json on POSIX and Windows.
+$resolution = Resolve-ValidatorPython -Root $rootDir -Explicit $PythonExecutable
+if (-not $resolution.available) {
+    [Console]::Error.WriteLine('execution: validator unavailable: ' + ($resolution.diagnostics -join '; '))
+    exit 1
+}
+$python = $resolution.path
+$executionValidator = Join-Path $PSScriptRoot 'validate-execution.py'
+function Invoke-ExecutionComponent {
+    param([switch] $ContextMode)
+    $arguments = @($executionValidator)
+    if ($ContextMode) { $arguments += '--execution-context' }
+    $result = Invoke-GovernanceProcess -Executable $python -Arguments $arguments -InputText $payloadText
+    $output = ($result.stderr + $result.stdout).Trim()
+    if ($output) { [Console]::Error.WriteLine($output) }
+    if ($result.failure) {
+        [Console]::Error.WriteLine("execution: validator component failure=$($result.failure), exception=$($result.exception_type), interpreter=$($resolution.identity)")
+        return 1
+    }
+    if ($result.exitCode -ne 0 -and -not $output) {
+        [Console]::Error.WriteLine("execution: validator component exited $($result.exitCode) with no diagnostic output; interpreter=$($resolution.identity)")
+    }
+    return $result.exitCode
+}
+if ($ExecutionContextMode) {
+    exit (Invoke-ExecutionComponent -ContextMode)
+}
+
 try {
     $trimmedPayload = $payloadText.Trim()
     $payload = $payloadText | ConvertFrom-Json
@@ -106,15 +141,15 @@ if (-not $trimmedPayload.StartsWith('{') -or $payload -isnot [pscustomobject]) {
 }
 
 try {
-    $contract = Get-Content -LiteralPath $contractPath -Raw | ConvertFrom-Json
+    $contract = Get-Content -LiteralPath $contractPath -Raw -Encoding UTF8 | ConvertFrom-Json
 } catch {
     [Console]::Error.WriteLine("terminal: contract: cannot load $contractPath")
     exit 2
 }
 
 $diagnostics = [System.Collections.Generic.List[string]]::new()
-$payloadNames = @($payload.PSObject.Properties.Name)
-$contractNames = @($contract.properties.PSObject.Properties.Name)
+$payloadNames = @($payload.PSObject.Properties | ForEach-Object { $_.Name })
+$contractNames = @(($contract.properties.PSObject.Properties | ForEach-Object { $_.Name }))
 
 foreach ($name in @($contract.required)) {
     if (-not (Test-Property -InputObject $payload -Name $name)) {
@@ -218,8 +253,8 @@ if (Test-Property $payload 'memory_compression') {
     if ($payload.memory_compression -isnot [pscustomobject]) {
         Add-Diagnostic $diagnostics 'memory_compression: expected object'
     } else {
-        $memoryNames = @($payload.memory_compression.PSObject.Properties.Name)
-        $allowedMemoryNames = @($contract.properties.memory_compression.properties.PSObject.Properties.Name)
+        $memoryNames = @(($payload.memory_compression.PSObject.Properties | ForEach-Object { $_.Name }))
+        $allowedMemoryNames = @(($contract.properties.memory_compression.properties.PSObject.Properties | ForEach-Object { $_.Name }))
         foreach ($name in $memoryNames) {
             if ($name -notin $allowedMemoryNames) {
                 Add-Diagnostic $diagnostics "memory_compression.$name`: unknown field"
@@ -253,7 +288,7 @@ if (Test-Property $payload 'work_items') {
                 Add-Diagnostic $diagnostics 'work_items: items must be objects'
                 continue
             }
-            foreach ($name in @($item.PSObject.Properties.Name)) {
+            foreach ($name in @(($item.PSObject.Properties | ForEach-Object { $_.Name }))) {
                 if ($name -notin @('id', 'status', 'authorized', 'dependency_satisfied', 'actionable', 'next_action')) {
                     Add-Diagnostic $diagnostics "work_items.$name`: unknown field"
                 }
@@ -322,7 +357,7 @@ if (Test-Property $payload 'progress_basis') {
                 Add-Diagnostic $diagnostics "progress_basis.$name`: items must be non-blank strings"
             }
         }
-        foreach ($name in @($payload.progress_basis.PSObject.Properties.Name)) {
+        foreach ($name in @(($payload.progress_basis.PSObject.Properties | ForEach-Object { $_.Name }))) {
             if ($name -notin @('files_changed', 'tool_actions', 'new_evidence', 'closed_work_items')) {
                 Add-Diagnostic $diagnostics "progress_basis.$name`: unknown field"
             }
@@ -347,7 +382,7 @@ if (Test-Property $payload 'tool_results') {
                 Add-Diagnostic $diagnostics 'tool_results: items must be objects'
                 continue
             }
-            foreach ($name in @($result.PSObject.Properties.Name)) {
+            foreach ($name in @(($result.PSObject.Properties | ForEach-Object { $_.Name }))) {
                 if ($name -notin @('tool', 'outcome', 'detail')) {
                     Add-Diagnostic $diagnostics "tool_results.$name`: unknown field"
                 }
@@ -386,7 +421,7 @@ if (Test-Property $payload 'browser_evidence') {
     if ($payload.browser_evidence -isnot [pscustomobject]) {
         Add-Diagnostic $diagnostics 'browser_evidence: expected object'
     } else {
-        foreach ($name in @($payload.browser_evidence.PSObject.Properties.Name)) {
+        foreach ($name in @(($payload.browser_evidence.PSObject.Properties | ForEach-Object { $_.Name }))) {
             if ($name -notin @('tier', 'headless', 'artifacts', 'url', 'viewport', 'identity', 'object', 'network_index')) {
                 Add-Diagnostic $diagnostics "browser_evidence.$name`: unknown field"
             }
@@ -452,7 +487,7 @@ if (Test-Property $payload 'confirmation') {
         Add-Diagnostic $diagnostics 'confirmation: expected object'
     } else {
         $confirmation = $payload.confirmation
-        foreach ($name in @($confirmation.PSObject.Properties.Name)) {
+        foreach ($name in @(($confirmation.PSObject.Properties | ForEach-Object { $_.Name }))) {
             if ($name -notin @('category', 'input_source', 'action')) {
                 Add-Diagnostic $diagnostics "confirmation.$name`: unknown field"
             }
@@ -619,5 +654,5 @@ if ($diagnostics.Count -gt 0) {
     exit 1
 }
 
-exit 0
+exit (Invoke-ExecutionComponent)
 }

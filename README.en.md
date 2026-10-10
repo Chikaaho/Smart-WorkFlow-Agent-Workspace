@@ -79,7 +79,7 @@ The following is a minimal interaction skeleton for L/XL tasks. `create planning
 | 4.2 | `change execute` | `The review passed. Read the synchronization task and begin.` | Reads the terminal synchronization task and updates state, history, and related knowledge |
 | 5 | `change planning` | `Read the receipt and perform acceptance.` | Independently reviews the terminal synchronization result; passes or returns it |
 | 6.1 | `change execute` | `The review returned the task. Read the review record and fix it.` | Reads the latest review and fixes synchronization gaps; then returns to step 5, repeating as needed |
-| 6.2 | `change execute` | `The review passed. Push the code.` | Before publication, reports the remote, branch, file scope, and risk, then pushes within the current authorization boundary |
+| 6.2 (optional publication) | `change execute` | `The review passed. Execute the explicitly authorized publication scope.` | Checks the remote, branch, exact scope, and risk; publishes within authorization and synchronizes affected current entry points again |
 
 ```text
 create planning → create execute → change planning (implementation acceptance)
@@ -88,8 +88,10 @@ create planning → create execute → change planning (implementation acceptanc
                                                    ↓
                                            change planning (synchronization acceptance)
                                                    ├─ returned → change execute (fix) → back to synchronization acceptance (loop B)
-                                                   └─ passed → change execute (push)
+                                                   └─ passed → complete; if publication is authorized, change execute (publish and synchronize)
 ```
+
+Ordinary commits and pushes to existing tracking branches follow each verified change batch under [`system.md` §0.8.1](system.md). Terminal synchronization covers every affected current entry point and receives independent Planner review. Publication-branch merges, tags/Releases, deployments, and history rewriting require their specific authorization.
 
 Users normally only need to describe the requirement in the first step and can use the single-line prompts in the table afterward. They do not need to paste the task, receipt, or review record repeatedly; each role should locate and read the current authoritative files. An Agent asks for the minimum necessary identifier only when multiple candidate tasks or records exist and cannot be resolved reliably.
 
@@ -107,6 +109,12 @@ cp project.example.md project.md
 ```
 
 Coding repositories may live inside the Engine root or in other locations resolvable from the project description. One Engine workspace represents one project instance. Use separate workspaces for different projects so their knowledge, memory, directions, receipts, and backlogs remain isolated.
+
+### Hook Installation and Self-check
+
+ZCode declarations come from [`.codex/governance/zcode-hooks-declaration.json`](.codex/governance/zcode-hooks-declaration.json). Admin uses [`install-zcode-hooks.ps1`](.codex/governance/install-zcode-hooks.ps1) on Windows or [`install-zcode-hooks.sh`](.codex/governance/install-zcode-hooks.sh) on macOS/Linux to synchronize user-level configuration. The installer's `-Check` and the corresponding `hook-selfcheck.ps1` / `hook-selfcheck.sh` report drift, observation capabilities, and actual audit activity.
+
+The Codex Windows entry uses `commandWindows` in [`.codex/hooks.json`](.codex/hooks.json) to bootstrap a thin adapter. Hosts share the terminal Validator and execution lifecycle component; missing capabilities cause the gate to fail closed. The Owner manages workspace Hook trust in the host UI. See [`host-adapter-contract.md`](.codex/governance/host-adapter-contract.md) for integration and observation limits.
 
 ### ZCode Trial Plan Handoff Example
 

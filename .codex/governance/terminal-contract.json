@@ -79,6 +79,183 @@
       }
     },
     "formal_browser_acceptance": {"type": "boolean"},
+    "execution_tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "work_item_id",
+          "input",
+          "expected_output",
+          "completion_condition",
+          "handle",
+          "cancel_action",
+          "cleanup_action",
+          "status",
+          "execution_mode",
+          "validation_scope",
+          "wait_strategy",
+          "failure_policy",
+          "work_limit",
+          "timeout_seconds",
+          "progress_timeout_seconds",
+          "started_at",
+          "deadline_at",
+          "last_progress_at",
+          "cleanup_complete",
+          "exit_code",
+          "result_paths",
+          "progress"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "work_item_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "input": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expected_output": {
+            "type": "string",
+            "minLength": 1
+          },
+          "completion_condition": {
+            "type": "string",
+            "minLength": 1
+          },
+          "handle": {
+            "type": "string",
+            "minLength": 1
+          },
+          "cancel_action": {
+            "type": "string",
+            "minLength": 1
+          },
+          "cleanup_action": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PREPARED",
+              "RUNNING",
+              "SUCCEEDED",
+              "FAILED",
+              "TIMED_OUT",
+              "CANCELLED"
+            ]
+          },
+          "execution_mode": {
+            "type": "string",
+            "enum": [
+              "FOREGROUND",
+              "MANAGED_BACKGROUND"
+            ]
+          },
+          "validation_scope": {
+            "type": "string",
+            "const": "MINIMAL_SUFFICIENT"
+          },
+          "wait_strategy": {
+            "type": "string",
+            "enum": [
+              "RESULT",
+              "EVENT"
+            ]
+          },
+          "failure_policy": {
+            "type": "string",
+            "const": "CANCEL_AND_SAVE"
+          },
+          "work_limit": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "timeout_seconds": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "progress_timeout_seconds": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "started_at": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "deadline_at": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "last_progress_at": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "cleanup_complete": {
+            "type": "boolean"
+          },
+          "exit_code": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "result_paths": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "progress": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "sequence",
+              "processed_units",
+              "phase",
+              "result_count",
+              "error"
+            ],
+            "properties": {
+              "sequence": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "processed_units": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "phase": {
+                "type": "string",
+                "enum": [
+                  "PREPARED",
+                  "PROCESSING",
+                  "FINALIZING",
+                  "FINISHED",
+                  "ERROR"
+                ]
+              },
+              "result_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "error": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
     "confirmation": {
       "type": "object",
       "additionalProperties": false,
@@ -93,7 +270,7 @@
   "states": {
     "TASK_COMPLETED": {
       "required": [],
-      "allowed": ["schema", "role", "state", "task_level", "evidence"],
+      "allowed": ["schema", "role", "state", "task_level", "evidence", "execution_tasks"],
       "forbidden": ["receipt", "feature_status", "memory_compression", "block_type", "attempted", "release_condition", "work_items", "remaining_actionable_count", "independent_work_exhausted", "next_action", "next_action_type", "progress_fingerprint", "progress_basis", "stop_reason", "tool_results", "browser_status", "browser_evidence", "formal_browser_acceptance", "confirmation"],
       "allowedTaskLevels": ["S", "M"],
       "allowedFeatureStatus": [],
@@ -101,7 +278,7 @@
     },
     "EXECUTION_SUBMITTED": {
       "required": ["receipt", "feature_status", "work_items", "remaining_actionable_count", "independent_work_exhausted", "next_action", "next_action_type", "progress_fingerprint", "progress_basis", "stop_reason", "tool_results", "browser_status"],
-      "allowed": ["schema", "role", "state", "task_level", "receipt", "evidence", "feature_status", "work_items", "remaining_actionable_count", "independent_work_exhausted", "next_action", "next_action_type", "progress_fingerprint", "progress_basis", "stop_reason", "tool_results", "browser_status", "browser_evidence", "formal_browser_acceptance"],
+      "allowed": ["schema", "role", "state", "task_level", "receipt", "evidence", "feature_status", "work_items", "remaining_actionable_count", "independent_work_exhausted", "next_action", "next_action_type", "progress_fingerprint", "progress_basis", "stop_reason", "tool_results", "browser_status", "browser_evidence", "formal_browser_acceptance", "execution_tasks"],
       "forbidden": ["memory_compression", "block_type", "attempted", "release_condition", "confirmation"],
       "allowedTaskLevels": ["L", "XL"],
       "allowedFeatureStatus": ["IN_PROGRESS", "VERIFYING"],
@@ -109,7 +286,7 @@
     },
     "TERMINAL_SYNC_SUBMITTED": {
       "required": ["receipt", "feature_status", "memory_compression", "work_items", "remaining_actionable_count", "independent_work_exhausted", "next_action", "next_action_type", "progress_fingerprint", "progress_basis", "stop_reason", "tool_results", "browser_status"],
-      "allowed": ["schema", "role", "state", "task_level", "receipt", "evidence", "feature_status", "memory_compression", "work_items", "remaining_actionable_count", "independent_work_exhausted", "next_action", "next_action_type", "progress_fingerprint", "progress_basis", "stop_reason", "tool_results", "browser_status", "browser_evidence", "formal_browser_acceptance"],
+      "allowed": ["schema", "role", "state", "task_level", "receipt", "evidence", "feature_status", "memory_compression", "work_items", "remaining_actionable_count", "independent_work_exhausted", "next_action", "next_action_type", "progress_fingerprint", "progress_basis", "stop_reason", "tool_results", "browser_status", "browser_evidence", "formal_browser_acceptance", "execution_tasks"],
       "forbidden": ["block_type", "attempted", "release_condition", "confirmation"],
       "allowedTaskLevels": ["L", "XL"],
       "allowedFeatureStatus": ["COMPLETED"],
@@ -117,7 +294,7 @@
     },
     "BLOCKED": {
       "required": ["block_type", "attempted", "release_condition", "work_items", "remaining_actionable_count", "independent_work_exhausted", "next_action", "next_action_type", "progress_fingerprint", "progress_basis", "stop_reason", "tool_results", "browser_status"],
-      "allowed": ["schema", "role", "state", "task_level", "receipt", "evidence", "block_type", "attempted", "release_condition", "work_items", "remaining_actionable_count", "independent_work_exhausted", "next_action", "next_action_type", "progress_fingerprint", "progress_basis", "stop_reason", "tool_results", "browser_status", "confirmation"],
+      "allowed": ["schema", "role", "state", "task_level", "receipt", "evidence", "block_type", "attempted", "release_condition", "work_items", "remaining_actionable_count", "independent_work_exhausted", "next_action", "next_action_type", "progress_fingerprint", "progress_basis", "stop_reason", "tool_results", "browser_status", "confirmation", "execution_tasks"],
       "forbidden": ["feature_status", "memory_compression", "browser_evidence", "formal_browser_acceptance"],
       "allowedTaskLevels": ["S", "M", "L", "XL"],
       "allowedFeatureStatus": [],
@@ -125,6 +302,7 @@
     }
   },
   "behavioralRules": {
+    "executionLifecycle": {"activeStatuses": ["PREPARED", "RUNNING"], "finalStatuses": ["SUCCEEDED", "FAILED", "TIMED_OUT", "CANCELLED"], "immutableFields": ["id", "work_item_id", "input", "expected_output", "completion_condition", "handle", "execution_mode", "validation_scope", "wait_strategy", "failure_policy", "work_limit", "timeout_seconds", "progress_timeout_seconds", "started_at", "deadline_at", "cancel_action", "cleanup_action"], "requiresHostObservation": true, "terminalRequiresCleanupAndExit": true, "unchangedObservationIsNotProgress": true, "noDurationExemption": true, "splitTasksShareWorkItemBudget": true},
     "actionableItem": "status is PENDING or IN_PROGRESS, authorized is true, dependency_satisfied is true, and actionable is true",
     "submissionStatesRequireZeroActionable": true,
     "blockedRequiresIndependentWorkExhausted": true,
@@ -140,9 +318,10 @@
     "secretConfirmationRequiresMatchingToolResult": true
   },
   "hookInput": {
+    "background_tasks": {"optional": true, "description": "宿主已知任务清单；仅宿主确认为 owner=USER 的既有服务排除，代理任务必须关联真实 execution_tasks 观察。"},
     "execution_observations": {
       "optional": true,
-      "properties": ["browser_status", "browser_evidence", "tool_results", "progress_fingerprint"]
+      "properties": ["browser_status", "browser_evidence", "tool_results", "progress_fingerprint", "execution_tasks"]
     },
     "progress_guard": {
       "optional": true,

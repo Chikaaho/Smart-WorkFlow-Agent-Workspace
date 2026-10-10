@@ -18,7 +18,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
-import threading
+import importlib.util
 from contextlib import contextmanager
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -77,21 +77,13 @@ class FileLock:
 
     def __enter__(self) -> "FileLock":
         self.path.parent.mkdir(parents=True, exist_ok=True)
-        for _ in range(200):
-            try:
-                self.fd = os.open(str(self.path), os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
-                os.write(self.fd, f"{os.getpid()}\n".encode("ascii"))
-                return self
-            except FileExistsError:
-                try:
-                    age = datetime.now().timestamp() - self.path.stat().st_mtime
-                    if age > 120:
-                        self.path.unlink(missing_ok=True)
-                        continue
-                except OSError:
-                    pass
-                threading.Event().wait(0.025)
-        raise TimeoutError(f"supervisor lock timeout: {self.path}")
+        try:
+            self.fd = os.open(str(self.path), os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
+            os.write(self.fd, f"{os.getpid()}\n".encode("ascii"))
+            return self
+        except FileExistsError as exc:
+            # No idle retry or deleting another process's lock by guessed age.
+            raise TimeoutError(f"supervisor lock busy: {self.path}") from exc
 
     def __exit__(self, exc_type: Any, exc: Any, tb: Any) -> None:
         if self.fd is not None:
@@ -162,6 +154,18 @@ class Store:
 class TerminalValidator:
     def __init__(self, root: Path):
         self.root = root
+
+    def execution(self, event: Dict[str, Any], previous=None, terminal=False) -> Tuple[bool, str]:
+        try:
+            path = self.root / '.codex/governance/validate-execution.py'
+            spec = importlib.util.spec_from_file_location('execution_validator', path)
+            component = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(component)
+            contract = json.loads(path.with_name('terminal-contract.json').read_text(encoding='utf-8'))
+            errors = component.validate_context(event, contract, terminal=terminal, previous=previous)
+            return not errors, '; '.join(errors)
+        except (OSError, ValueError, KeyError, TypeError, ImportError) as exc:
+            return False, f'execution validator unavailable: {type(exc).__name__}'
 
     def validate(self, payload: Dict[str, Any]) -> Tuple[bool, str]:
         raw = canonical_json(payload)
@@ -343,7 +347,12 @@ class Supervisor:
                 return state["processed"][key]
 
             event_type = event["event_type"]
+            lifecycle_valid, lifecycle_diagnostic = self.validator.execution(
+                event, previous=state.get('execution_tasks', []) if state else [], terminal=event_type == 'TURN_ENDED')
+            observed_tasks = (event.get('execution_observations') or {}).get('execution_tasks', []) if isinstance(event.get('execution_observations'), dict) else []
             if event_type == "TASK_STARTED":
+                if not lifecycle_valid:
+                    return self._base_decision(event, 'refuse', 'EXECUTION_LIFECYCLE_REJECTED', lifecycle_diagnostic)
                 if state and state.get("status") not in {"CANCELLED", "TERMINATED", "BLOCKED"}:
                     if not self._identity_matches(state, event):
                         decision = self._base_decision(event, "refuse", "IDENTITY_CONFLICT", "task identity is already bound to another host/workspace/thread")
@@ -359,6 +368,14 @@ class Supervisor:
                 return decision
             elif not self._identity_matches(state, event):
                 decision = self._base_decision(event, "refuse", "WRONG_TARGET", "host/workspace/thread does not match the bound execution thread")
+            elif event_type in {'TURN_ENDED', 'HEARTBEAT'} and not lifecycle_valid and state['status'] not in {'PAUSED', 'CANCELLED'}:
+                action = '核对自身任务身份，按 CANCEL_AND_SAVE 策略取消、清理并保存已有结果及退出状态；推进独立工作，不延时等待，不停止用户既有服务。'
+                violation = lifecycle_diagnostic
+                if state.get('lifecycle_violation') == violation:
+                    decision = self._base_decision(event, 'refuse', 'EXECUTION_CLEANUP_REQUIRED', lifecycle_diagnostic, next_action=action)
+                else:
+                    state['lifecycle_violation'] = violation
+                    decision = self._reinjection(state, event, 'EXECUTION_LIFECYCLE_REJECTED', lifecycle_diagnostic, action)
             elif event_type == "USER_PAUSED":
                 state["status"] = "PAUSED"
                 decision = self._base_decision(event, "paused", "USER_PAUSED", "automatic reinjection is paused")
@@ -370,7 +387,7 @@ class Supervisor:
                     decision = self._reinjection(state, event, "USER_RESUMED", "task resumed by user", state["last_next_action"])
             elif event_type == "USER_CANCELLED":
                 state["status"] = "CANCELLED"
-                decision = self._base_decision(event, "cancelled", "USER_CANCELLED", "task lease cancelled and automatic reinjection disabled")
+                decision = self._base_decision(event, "cancelled", "USER_CANCELLED", "task lease cancelled and automatic reinjection disabled; own tool cleanup still requires final observation", next_action="按既定取消接口清理自身任务并保存结果及退出状态，不停止用户既有服务。")
             elif event_type == "HEARTBEAT":
                 decision = self._base_decision(event, "allow", "HEARTBEAT_ACCEPTED", "task lease heartbeat recorded")
             elif state["status"] == "PAUSED":
@@ -417,6 +434,11 @@ class Supervisor:
                         decision = self._reinjection(state, event, "NON_TERMINAL_STATE", "contract does not declare an allowed terminal state", next_action)
 
             if state is not None:
+                if lifecycle_valid and self._identity_matches(state, event) and decision['decision'] != 'refuse' and event_type in {'TASK_STARTED', 'HEARTBEAT', 'TURN_ENDED'}:
+                    retained = {t['id']: t for t in state.get('execution_tasks', [])}
+                    retained.update({t['id']: t for t in observed_tasks})
+                    state['execution_tasks'] = list(retained.values())
+                    state.pop('lifecycle_violation', None)
                 state["last_event_at"] = utc_now()
                 processed = state.setdefault("processed", {})
                 processed[key] = decision
@@ -447,6 +469,7 @@ class Supervisor:
             "last_decision": state.get("last_decision"),
             "reinject_count": state.get("reinject_count", 0),
             "last_event_at": state["last_event_at"],
+            "cleanup_pending_task_ids": [t["id"] for t in state.get("execution_tasks", []) if t["status"] in {"PREPARED", "RUNNING"}],
         }
 
 

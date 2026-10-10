@@ -72,6 +72,12 @@ Planner 的信息不足以做出 L/XL 方向决策时，必须写入 `search_tas
 
 会话内 Sub Agent 继承当前角色边界，不构成角色切换。
 
+### 0.4.2 当前信息同步责任
+
+L/XL 终态同步以及已授权发布、版本切换、提交推送导致当前事实变化后的收尾，必须覆盖受影响的全部当前入口。Executor 负责核实事实、先更新 knowledge 权威状态，再按明确授权同步摘要与交接，提交可回读的覆盖清单；Planner 负责确定唯一状态口径、授权同步范围并独立复核覆盖完整性。具体职责见 `roles/executor.md` §4.5 与 `roles/planner.md` §7.3。
+
+同步完成以当前入口之间无未解决矛盾为准；只在回执解释旧内容过时，不构成同步完成。历史回执和归档保留原始事实与时点，当前入口不得继续把历史快照作为现状。发布事实、开发版本、功能验收和部署状态必须分别表述；后续发布或 Git 变化会使受影响的旧同步结论失效，必须重新核实与同步。规则不扩大角色写权限或发布授权，不要求无关 S/M 任务全量同步。
+
 ### 0.7 沟通语言
 
 对用户的自然语言输出默认使用中文。代码、路径、命令、状态词与技术标识保持其原文；用户可对单次任务明确指定其他语言。
@@ -82,15 +88,38 @@ Planner 的信息不足以做出 L/XL 方向决策时，必须写入 `search_tas
 
 Executor 终态的唯一机器契约是 `.codex/governance/terminal-contract.json`。公共 Validator 和 Hook 只读取该契约；文档不得另建终态 schema。S/M 与 L/XL 使用契约中各自允许的终态和字段组合。L/XL 的提交、同步和 `BLOCKED` 终态还必须携带同一份行为上下文：`work_items`、`remaining_actionable_count`、`independent_work_exhausted`、`next_action`、`next_action_type`、`progress_fingerprint`、`progress_basis`、`stop_reason`、`tool_results` 和 `browser_status`。Validator 按“已授权、依赖满足且状态为 `PENDING/IN_PROGRESS` 的 actionable 项”计算剩余动作；仍有此类动作时不得提交中间终态。`progress_basis` 必须记录文件变化、工具动作、新证据或关闭工作项中的至少一项。`BLOCKED` 必须有真实工具结果、已尝试路径、解除条件和独立工作已穷尽证据；可操作浏览器会话不能被包装成外部阻塞。
 
-Stop Hook 的终态规则只来自 `.codex/governance/terminal-contract.json` 与公共 Validator；宿主接入入口是 POSIX/Codex 的 `.codex/governance/stop-gate.sh` 与 Windows/ZCode 的 `.codex/governance/stop-gate.ps1`，`.claude/`、`.codex/`、`.zcode/` 只负责根定位与宿主声明。入口只允许做四件事：规范化宿主载荷、绑定会话身份、调用同一公共 Validator、把裁决投影为宿主支持的结束决定，并写入脱敏审计；不得复制或另建终态规则。入口缺少裁决所需能力时（例如 POSIX 入口找不到 jq）必须 fail closed 并报告无法裁决，禁止静默放行。受治理执行必须由启动入口可信绑定 `task`、规范化 workspace、稳定 thread/session、`active_role` 和单调 contract revision；普通模型回合结束只产生 `TURN_ENDED`，任务能否终止由宿主外 `.codex/governance/execution-supervisor.py` 调用同一公共 Validator 后唯一裁决。Host Adapter 只报告事件、核对精确目标、投递 Supervisor 已批准且带幂等键的回注并回读结果；无法证明线程身份时必须 fail closed，不得按当前键盘焦点猜测。原生 Codex 由 `.codex/hooks/codex-stop-adapter.sh` 绑定角色并投影宿主支持的 `decision`/`reason`；ZCode 优先使用结构化 app-server session ID、事件和发送回读，GUI 降级只有在可稳定识别线程时才允许。未显式绑定角色时不启用 Executor 门禁；已声明受治理身份但缺少稳定 task/thread/revision 时拒绝自动投递。门禁拒绝提前结束后必须自动回注精确 `next_action`，禁止把用户点击“继续”作为恢复链路。Supervisor 采用原子持久租约、单调 revision、事件去重、暂停/取消与崩溃恢复；重复进展指纹依次要求原子动作、切换路径和重规划，仍有授权内可执行项时不得终止。对 `BLOCKED`，Supervisor 必须比对 Harness `execution_observations` 中的实际工具结果、浏览器状态和进展指纹；缺失或不一致均不得放行。门禁判断不得按模型名称分支，只使用任务身份、状态、授权、依赖、工具结果和进展证据。
+Stop Hook 的终态规则只来自 `.codex/governance/terminal-contract.json` 与公共 Validator；宿主接入入口是 POSIX/Codex 的 `.codex/governance/stop-gate.sh`、Windows/ZCode 的 `.codex/governance/stop-gate.ps1` 与 POSIX/ZCode 的 `.codex/governance/zcode-stop-gate.py`，三者调用同一公共 Validator；`.claude/`、`.codex/`、`.zcode/` 只负责根定位与宿主声明。入口只允许做四件事：规范化宿主载荷、绑定会话身份、调用同一公共 Validator、把裁决投影为宿主支持的结束决定，并写入脱敏审计；不得复制或另建终态规则。入口缺少裁决所需能力时（例如 POSIX 入口找不到 jq）必须 fail closed 并报告无法裁决，禁止静默放行。受治理执行必须由启动入口可信绑定 `task`、规范化 workspace、稳定 thread/session、`active_role` 和单调 contract revision；普通模型回合结束只产生 `TURN_ENDED`，任务能否终止由宿主外 `.codex/governance/execution-supervisor.py` 调用同一公共 Validator 后唯一裁决。Host Adapter 只报告事件、核对精确目标、投递 Supervisor 已批准且带幂等键的回注并回读结果；无法证明线程身份时必须 fail closed，不得按当前键盘焦点猜测。原生 Codex 由 `.codex/hooks/codex-stop-adapter.sh` 绑定角色并投影宿主支持的 `decision`/`reason`；ZCode 优先使用结构化 app-server session ID、事件和发送回读，GUI 降级只有在可稳定识别线程时才允许。未显式绑定角色时不启用 Executor 门禁；已声明受治理身份但缺少稳定 task/thread/revision 时拒绝自动投递。门禁拒绝提前结束后必须自动回注精确 `next_action`，禁止把用户点击“继续”作为恢复链路。Supervisor 采用原子持久租约、单调 revision、事件去重、暂停/取消与崩溃恢复；重复进展指纹依次要求原子动作、切换路径和重规划，仍有授权内可执行项时不得终止。对 `BLOCKED`，Supervisor 必须比对 Harness `execution_observations` 中的实际工具结果、浏览器状态和进展指纹；缺失或不一致均不得放行。门禁判断不得按模型名称分支，只使用任务身份、状态、授权、依赖、工具结果和进展证据。
 
-ZCode 会话以用户提示词中的显式角色声明作为执行门禁绑定点：`.codex/governance/session-role.ps1` 在 `UserPromptSubmit` 时归一化该声明并记录会话角色；角色未绑定时，允许从宿主持久化的**首个用户提示词**回填同一条声明（仅限 hook 尚未生效或首次派发失败的会话），除此之外不得从任务内容、目录或历史推断角色，未绑定执行角色的会话不启用执行门禁。ZCode hook 声明的**仓库唯一来源**是 `.codex/governance/zcode-hooks-declaration.json`，由 `.codex/governance/install-zcode-hooks.ps1` 同步到机器级用户配置 `~/.zcode/cli/config.json`：工作区级声明（`.zcode/config.json`）受宿主工作区信任层约束，实测在声明未变的情况下批准后仍会回到待信任并被静默禁用，因此不作为生效位置；用户级声明不受该层约束，命令用 `${ZCODE_PROJECT_DIR}` 定位仓库内入口，非受治理工作区自动无操作。安装器支持漂移检查（`-Check`，漂移时以非零退出），`hook-selfcheck.ps1` 必须报告 `drift`、`effective_scope` 与实际生效状态；`session-role.ps1` 每次提示词向对话注入一行门禁状态（会话角色、是否上膛、上次拦截原因、自定清单未完成数与宿主实测上下文占用），使 Owner 与模型都能直接看到门禁是否在运行，不依赖事后翻日志。声明只固定宿主入口，不承载规则，改规则不需要改声明。宿主入口必须走宿主自身稳定的 command 通道并自带兜底：`.codex/hooks/` 的 cmd 入口负责调用 PowerShell 门禁，捕获其输出使异常路径不会污染宿主可见的 stdout，失败重试一次，两次失败时写入入口失败台账并输出 fail-closed 结论；宿主派发失败（hook 未执行）等价于门禁缺失，必须由 `.codex/governance/hook-selfcheck.ps1` 的宿主失败台账暴露。ZCode Stop 载荷不提供 `background_tasks`、`progress_guard` 与 `execution_observations`，该入口只使用宿主可观察事实（回合工具调用数、`stop_hook_active`、宿主持久化的自定任务清单、宿主实测的上下文占用与超限标记）与公共 Validator 裁决。模型对自身资源状态的估计不构成证据：自定任务清单是它自己的可执行承诺，清单未收敛到无未完成项时不得提交终态；上下文压缩是宿主职责——接近上限时宿主自动压缩，provider 报告溢出时宿主自动 compact 并重试请求，模型没有读取剩余配额的通道，因此不得以自估或实测的上下文占用为由收尾。Stop Gate 必须拒绝任何以上下文为由的停止并回注宿主实测数值；只有携带真实工具证据、经 Validator 接受的 `BLOCKED` 才可因资源原因终止。ZCode 每个回合最多接受三次自动续行，超出上限的未完成工作必须在后续用户回合继续，不得据此改写完成口径或宣称任务终止。
+ZCode 会话以用户提示词中的显式角色声明作为执行门禁绑定点：`session-role.ps1`（Windows）与 `zcode-role-bind.py`（POSIX）在 `UserPromptSubmit` 时归一化该声明并记录会话角色；角色未绑定时，允许从宿主持久化的**首个用户提示词**回填同一条声明（仅限 hook 尚未生效或首次派发失败的会话），除此之外不得从任务内容、目录或历史推断角色，未绑定执行角色的会话不启用执行门禁。ZCode hook 声明的**仓库唯一来源**是 `.codex/governance/zcode-hooks-declaration.json`，由 `.codex/governance/install-zcode-hooks.ps1`（Windows 块）与 `.codex/governance/install-zcode-hooks.sh`（POSIX 块）按平台同步到机器级用户配置 `~/.zcode/cli/config.json`：工作区级声明（`.zcode/config.json`）受宿主工作区信任层约束，实测在声明未变的情况下批准后仍会回到待信任并被静默禁用，且宿主设置界面的保存会用自身（可能为空）的 hook 状态覆写机器级配置（2026-09-26 macOS 实测），因此不作为生效位置，漂移以安装器 `-Check` 与 hook-selfcheck 为准；用户级声明不受该层约束，命令用 `${ZCODE_PROJECT_DIR}` 定位仓库内入口，非受治理工作区自动无操作。安装器支持漂移检查（`-Check`，漂移时以非零退出），`hook-selfcheck.ps1` / `hook-selfcheck.sh` 必须报告 `drift`、`effective_scope` 与实际生效状态；角色绑定入口每次提示词向对话注入一行门禁状态（会话角色、是否上膛、上次拦截原因、自定清单未完成数与宿主实测上下文占用），使 Owner 与模型都能直接看到门禁是否在运行，不依赖事后翻日志。声明只固定宿主入口，不承载规则，改规则不需要改声明。宿主入口必须走经实测稳定的进程启动通道并自带兜底：Windows Stop 保持 process/argv 型直启 `.codex/governance/zcode-stop-launcher.ps1`，保存同一份 stdin、捕获双流并调用 PowerShell 门禁；`.codex/hooks/` cmd 入口保留为兼容路径，POSIX 宿主以 process 型 argv 直启解释器运行 `.codex/governance/` 下的 Python 入口（不依赖 shell 与 PATH 里的 jq）；捕获其输出使异常路径不会污染宿主可见的 stdout，失败重试一次，两次失败时写入入口失败台账并输出 fail-closed 结论；宿主派发失败（hook 未执行）等价于门禁缺失，必须由 `hook-selfcheck.ps1` / `hook-selfcheck.sh` 的宿主失败台账暴露。ZCode 原生 Stop 载荷不提供 `background_tasks`、`progress_guard` 与 `execution_observations`；入口不得假造这些观察，已知后台任务或声明的非即时执行缺少生命周期观察时按 §0.8.3 拒绝。原生能力范围内，该入口使用宿主可观察事实（回合工具调用数、`stop_hook_active`、宿主持久化的自定任务清单、宿主实测的上下文占用与超限标记）与公共 Validator 裁决。模型对自身资源状态的估计不构成证据：自定任务清单是它自己的可执行承诺，清单未收敛到无未完成项时不得提交终态；上下文压缩是宿主职责——接近上限时宿主自动压缩，provider 报告溢出时宿主自动 compact 并重试请求，模型没有读取剩余配额的通道，因此不得以自估或实测的上下文占用为由收尾。Stop Gate 必须拒绝任何以上下文为由的停止并回注宿主实测数值；只有携带真实工具证据、经 Validator 接受的 `BLOCKED` 才可因资源原因终止。ZCode 每个回合最多接受三次自动续行，超出上限的未完成工作必须在后续用户回合继续，不得据此改写完成口径或宣称任务终止。
+
+原生 Codex 的 Windows 声明使用 `commandWindows`，其 `EncodedCommand` 与 `.codex/hooks/codex-stop-bootstrap.ps1` 源文保持一致，防止宿主所选 shell 提前展开变量。引导入口向上定位工作区，将同一份 UTF-8 stdin 交给 `.codex/hooks/codex-stop-adapter.ps1`；该薄适配探测真实 shell、jq 和 Python 后调用既有 `.codex/hooks/codex-stop-adapter.sh`，沿用同一公共 Validator 和 Supervisor，不定义 Windows 专用终态规则。入口失败返回非空 `block/reason`；进程有界且只清理自身精确进程树。Codex 入口与三阶段 Validator 的脱敏审计位于 `.codex/governance/runtime/codex/`。角色仍需显式绑定；工作区 Hook 定义改变后的宿主信任评审沿管理员角色边界办理。
 
 已授权工作项内、输入值由 dev/test 配置或既有测试契约确定、不是秘密，且动作不触发破坏性、远程发布或授权外状态变化时，该动作是**可继续动作**：Stop Gate 与 Supervisor 必须判定为可继续，并通过自动回注要求 Executor 直接完成，不得产生新的用户确认节点，也不得包装成 `BLOCKED`。只有真实凭据与秘密、MFA、真实人机验证、破坏性操作、远程发布或授权外动作允许进入用户确认/输入路径；此类阻塞必须用 `confirmation` 声明输入来源与类别，并绑定真实工具结果。
 
 正式流程浏览器验收的证据必须来自用户可见、可交互的会话：终态声明 `headless=false`，保存可回读视觉制品、URL、视口、身份、对象和网络索引，并在 `browser_evidence` 与 `formal_browser_acceptance` 上保持同层一致。后台或 headless 浏览器结果不能作为正式流程通过依据；它们只允许以 `ISOLATED_REGRESSION` 或 `COMPONENT_TEST` 层级用于不承担正式通过结论的隔离回归或组件测试，且必须声明该层级，不得升级为正式浏览器证据。
 
 获授权执行 Git 提交的角色，提交信息遵循 Angular/Conventional Commits 格式，主题默认使用中文，不含 Harness 自动署名或模型归属。远程发布、历史改写、强制推送或破坏性操作前，必须说明远程、分支、精确范围与风险，并取得用户对该动作的明确授权。
+
+### 0.8.1 修改批次完成后的提交与推送
+
+Owner 授权范围内，每个独立、内聚且可验证的修改批次全部完成，并通过该批次适用的机器门禁后，必须立即提交并推送本次修改；大迭代按内部 Step 或阶段形成小批次，不得积累到整个迭代结束才合成一个大 commit。门禁失败先修复，修复后重新验证；不得跳过门禁或把未完成内容包装成已通过批次。
+
+本规则构成授权任务范围内普通提交与向既有跟踪分支普通推送的持续授权，无需逐批重复确认。操作前说明仓库、远程、分支、精确提交范围、领先/落后和未跟踪状态；只暂存本批次文件，排除无关改动、日志和构建产物。推送后回读远端分支 SHA，报告提交与验证结果。无跟踪分支、范围不明或推送失败时保留本地成果，报告具体缺口并继续独立工作，不自行扩大推送范围。
+
+该授权不包含合并到发布分支、创建 tag/Release、部署、历史改写或强制推送。批次提交推送不等于功能验收或任务终止；仍有授权内可执行项时继续推进。角色的写入范围保持不变，各角色 Git 收尾遵循本节。
+
+### 0.8.2 禁止空转等待（独立硬约束）
+
+严禁使用 `sleep`（含误写 `slepp`）、`Start-Sleep`、`time.sleep`、定时器、延时轮询或同类机制空转等待；不得换语言、工具或拆分拼接任务绕过。不得反复读取未变化状态制造进展。原生事件或有界结果接口仅用于已合规的具体任务，绑定完成条件、超时和取消策略；存在独立授权工作时优先推进，达到完成条件即收敛。
+
+### 0.8.3 禁止不可控后台超长任务与执行生命周期（独立硬约束）
+
+1. 严禁代理启动不可控后台超长执行、压测、采集或等待任务，包括 `nohup`、进程脱离、后台挂起及其等价方式。工具支持后台、真实计算、原生句柄或前台提交后被宿主转入后台，均不构成许可；不得拆分拼接绕过。没有统一的固定时长豁免，短于某个时限也不自动合规。
+2. 所有执行先明确输入、预期输出和完成条件。不能立即返回结果的任务还必须具备稳定任务身份、授权工作项、最小充分的有界工作量、可持续观测的实际进展、受控生命周期、任务特定超时与取消/清理机制、可保存结果及最终退出状态。句柄只是其中一项必要信息，任一必要能力缺失即拒绝启动；宿主转后台后仍须保持这些能力。
+3. 有效进展只能是实际处理量、阶段变化、增量结果或明确错误；“已启动”“进程还活着”“等待时间增加”、重复指纹和未变化状态不算进展。超时、失败或失去可观测性时，按预先明确策略取消并清理自身任务，保存已有结果、退出状态和清理结果；不无限等待、重试或遗留孤儿进程。能力缺失时如实报告，优先完成独立工作。
+4. Planner 不得下发与本节冲突的方向、探索或验收要求（例如连续运行 2h 后再等结果）。Executor 发现冲突立即指出，改用最小充分、有界、可观测的等强度验证；无法满足原标准时报告限制并由 Planner 修正口径，不自行降低验收结论或后台运行。Admin 负责保持宪法、三角色与已有机器门禁一致。
+5. 机器约束扩展既有 `.codex/governance/terminal-contract.json` 的 `execution_tasks` 和 Harness 观察，不另建生命周期或终态契约。公共 Validator 的生命周期组件统一检查计划、真实观察、工作量、进展变化、时限、清理及退出；Supervisor 在启动/运行事件和回合结束接入同一检查，Stop Gate 不得因任务有句柄放行或回注“继续等待”。已知后台任务缺少观察时 fail closed；宿主无法提供观察不得冒称已验证合规。终态必须证明代理任务已结束并完成清理，不能留下活任务再宣称完成或阻塞。
+6. 以上仅限制代理启动的执行与验证任务，不授权停止、取消或改造用户既有服务。清理必须核对自身任务身份，不按端口、进程名或当前焦点批量杀进程。
 
 ### 0.9 角色定义文件
 

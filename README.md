@@ -79,7 +79,7 @@ Executor 承担大量读码、实现、测试和修复。候选执行模型以 `
 | 4.2 | `change execute` | `审核通过，阅读同步任务并开始执行。` | 读取终态同步任务，完成状态、历史和相关知识同步 |
 | 5 | `change planning` | `阅读回执验收。` | 独立审查终态同步结果，给出通过或退回结论 |
 | 6.1 | `change execute` | `审核退回，读取审查记录修复。` | 读取最新审查记录，修复同步缺口；随后回到步骤 5，可多轮循环 |
-| 6.2 | `change execute` | `审核通过，推送代码。` | 在发布前回显远程、分支、文件范围和风险，并按当前授权边界完成推送 |
+| 6.2（可选发布） | `change execute` | `审核通过，执行已明确授权的发布范围。` | 核对远程、分支、精确范围和风险，执行授权发布并重新同步受影响当前入口 |
 
 ```text
 create planning → create execute → change planning（实现验收）
@@ -88,8 +88,10 @@ create planning → create execute → change planning（实现验收）
                                                    ↓
                                            change planning（同步验收）
                                                    ├─ 退回 → change execute（修复）→ 回到同步验收（循环 B）
-                                                   └─ 通过 → change execute（推送）
+                                                   └─ 通过 → 完成；有发布授权时 change execute（发布与同步）
 ```
+
+普通提交与向既有跟踪分支的推送按 [`system.md` §0.8.1](system.md) 随已验证修改批次完成；终态同步覆盖受影响的全部当前入口，由 Planner 独立复核。发布分支合并、tag/Release、部署与历史改写按各自明确授权办理。
 
 用户通常只需说明第一步的需求，后续用表中的一句话即可，不必重复粘贴任务、回执或审查记录；各角色应自行定位并读取当前有效文件。存在多个候选任务或记录且无法可靠判断时，Agent 才请求必要的最小标识。
 
@@ -107,6 +109,12 @@ cp project.example.md project.md
 ```
 
 代码仓库可以位于 Engine 根目录内，也可以使用项目说明中可定位的其他目录。一个 Engine 工作区对应一个项目实例；不同项目使用独立工作区，从而隔离知识、记忆、方向、回执和待办。
+
+### Hook 安装与自检
+
+ZCode 的声明源为 [`.codex/governance/zcode-hooks-declaration.json`](.codex/governance/zcode-hooks-declaration.json)。管理员在 Windows 使用 [`install-zcode-hooks.ps1`](.codex/governance/install-zcode-hooks.ps1)，在 macOS/Linux 使用 [`install-zcode-hooks.sh`](.codex/governance/install-zcode-hooks.sh)，同步到用户级配置；安装器的 `-Check` 与对应 `hook-selfcheck.ps1` / `hook-selfcheck.sh` 用于核实漂移、观察能力和实际运行台账。
+
+Codex Windows 入口由 [`.codex/hooks.json`](.codex/hooks.json) 的 `commandWindows` 引导到薄适配层。各宿主共用终态 Validator 和执行生命周期组件；能力缺失时门禁拒绝裁决。工作区 Hook 信任由 Owner 在宿主界面管理。接入方式与观察限制见 [`host-adapter-contract.md`](.codex/governance/host-adapter-contract.md)。
 
 ### ZCode 体验套餐接手示例
 

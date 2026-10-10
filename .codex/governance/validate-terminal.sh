@@ -8,8 +8,34 @@ resolve_jq() {
   return 1
 }
 root_dir=$(CDPATH= cd -- "$(dirname "$0")/../.." && pwd)
-contract="$root_dir/.codex/governance/terminal-contract.json"
+cd "$root_dir"
+contract=".codex/governance/terminal-contract.json"
 payload=$(cat)
+# Lifecycle component uses the same contract on both platforms; unavailable => closed.
+execution_validator="$root_dir/.codex/governance/validate-execution.py"
+python_bin="${AGENT_CODING_ENGINE_PYTHON:-$(command -v python3 || true)}"
+# Optional transport audit. It records results, never changes the public decision.
+record_validator_result() {
+  if [ -n "${AGENT_CODING_ENGINE_VALIDATOR_AUDIT:-}" ] && [ -n "$python_bin" ]; then
+    "$python_bin" -c 'import datetime,json,os,re,sys
+try:
+ path,phase,code,interpreter=sys.argv[1:]
+ os.makedirs(os.path.dirname(path),exist_ok=True)
+ interpreter=re.sub(r"(?i)([/\\]Users[/\\])[^/\\]+",r"\1<user>",interpreter)
+ with open(path,"a",encoding="utf-8") as stream:
+  stream.write(json.dumps({"ts":datetime.datetime.now(datetime.timezone.utc).isoformat(),"event":"Validator","session":os.environ.get("AGENT_CODING_ENGINE_AUDIT_SESSION",""),"phase":phase,"exit_code":int(code),"interpreter":interpreter})+"\n")
+except Exception: pass' "$AGENT_CODING_ENGINE_VALIDATOR_AUDIT" "${AGENT_CODING_ENGINE_VALIDATOR_PHASE:-unspecified}" "$1" "$python_bin" 2>/dev/null || true
+  fi
+}
+trap 'validator_status=$?; record_validator_result "$validator_status"' 0
+if [ -z "$python_bin" ]; then
+  printf '%s\n' 'execution: validator unavailable: Python 3 not found' >&2
+  exit 1
+fi
+if [ "${1:-}" = "--execution-context" ]; then
+  printf '%s' "$payload" | "$python_bin" -X utf8 "$execution_validator" --execution-context
+  exit $?
+fi
 jq_bin=$(resolve_jq || true)
 if [ -z "$jq_bin" ]; then
   # Validator 无法证明契约成立时必须拒绝，而不是放行。
@@ -178,3 +204,5 @@ if [ -n "$diagnostics" ]; then
   printf '%s\n' "$diagnostics" | sed 's/^/terminal: /' >&2
   exit 1
 fi
+
+printf '%s' "$payload" | "$python_bin" -X utf8 "$execution_validator"
