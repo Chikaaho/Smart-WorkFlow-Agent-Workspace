@@ -1,11 +1,11 @@
 # P64：MES高级流程编排与业务闭环
 
-2026-10-10；XL。P64=IN_PROGRESS·阶段ⅠVERIFYING；原完整实施授权有效。
+2026-10-10；XL。P64=IN_PROGRESS；阶段ⅠPASSED、阶段ⅡIN_PROGRESS（2026-10-10 Executor实际启动）、阶段Ⅲ未验收；原完整实施授权有效。
 
 目标R01—R12/A01—A12见[主方向](../product/p64-mes-advanced-orchestration/ready/direction-p64-mes-advanced-orchestration.md)、[方案](../product/p64-mes-advanced-orchestration/ready/solution-p64-mes-advanced-orchestration.md)及[实施授权](../product/p64-mes-advanced-orchestration/ready/authorization-p64-implementation-20261008.md)。
 
-[复审07](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-1-07.md)核销04a汇聚、08a-L生命周期、08a-W新Web和08a-D ADR，接收08a-C入口覆盖。唯一业务下一动作=Executor按[提示06](../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase1-06.md)提取05a五新增case安排/关键断言，以及08a-C新三仓Git固定截止原件，追加回执08。已跑12/0与process347、engine100沿用、Web1376+3及四门exit0锁定；封装补证不重跑业务。
+[验收08](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-1-08-passed.md)关闭05a完整安排/断言原文及08a-C三仓固定截止原证，阶段Ⅰ通过。Executor已读取[阶段Ⅱ方向](../product/p64-mes-advanced-orchestration/ready/direction-p64-phase2-personnel-parent-child.md)并完成knowledge-first启动同步（knowledge权威层/memory五入口/todo/Server清单焦点/实际受影响architecture），阶段Ⅱ（A05—A07及相关A11/A12）实施中，完成后追加phase-2-completion-receipt-01.md供规划独立验收。阶段Ⅰ已过行为锁定，实施改变时仅复验受影响项；旧提示只作追溯。
 
-Server d47b4e1（代码effca33）/Web21074af/根2d6f0f33是报告值、远端待原输出。47、46/22/22=90、ADV64、问题57、P63/VB与READY传播锁定，P62延期/策略OFF、gitlink78495dc保持；阶段Ⅱ/Ⅲ与整体未通过。
+启动实测（2026-10-10）：Server ef72c8b（代码effca33）/Web21074af两仓feature分支工作树CLEAN=origin；工作区develop-sw=e6e0fb8e=origin；根Server gitlink78495dc保留。47、46/22/22=90、ADV64、问题57、P63/VB与READY传播锁定，P62延期/策略OFF保持；阶段Ⅱ/Ⅲ及整体未验收，不核销P64或晋级正式基线。
 
-Hook事项独立见[双宿主复核](../product/workspace-governance-consistency-audit/receipts/planning-review-zcode-codex-hook-failures-20261010.md)：Codex实现验收通过、原工作区modified待Owner信任；ZCode自然Stop/拒绝续行原件待补。前次Owner结案记录保持。
+Hook事项独立见[复核02](../product/workspace-governance-consistency-audit/receipts/planning-review-zcode-codex-hook-followup-02-20261010.md)：ZCode本次核查/诊断增强通过，间歇派发根因未定；Codex Hook事项按Owner要求挂起，已通知Admin停止续办，保留原通过与modified生效边界。前次Owner结案记录保持，Hook挂起不作为P64依赖。

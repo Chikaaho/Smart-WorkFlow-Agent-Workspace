@@ -1,6 +1,6 @@
 # P64：高级流程编排方案
 
-2026-10-08；Planner；XL；产品与架构方案。目标和正式通过条件以[主方向](direction-p64-mes-advanced-orchestration.md) R01—R12/A01—A12为准，本文说明能力如何组成业务闭环及选择理由。Owner已授权开始完整P64实施，当前从阶段I启动；实现结构、接口、迁移和验证设计由Executor确定。
+2026-10-08；Planner；XL；产品与架构方案。目标和正式通过条件以[主方向](direction-p64-mes-advanced-orchestration.md) R01—R12/A01—A12为准，本文说明能力如何组成业务闭环及选择理由。Owner已授权开始完整P64实施，阶段Ⅰ已通过，当前进入阶段Ⅱ；实现结构、接口、迁移和验证设计由Executor确定。
 
 ## 1. 方案结论
 
@@ -10,7 +10,7 @@
 
 优先做数据产生到可靠动作的完整链，因为没有任务数据、类型变量和可靠触发，后续选人、子流程及MES只能形成页面演示。第二个能力边界解决跨人员、跨流程的数据协作，第三个边界再证明三场景实际业务结果。
 
-当前P64=IN_PROGRESS；阶段Ⅰ复审07仍未通过，按[收敛提示06](../receipts/planning-execution-prompt-p64-phase1-06.md)完成2项剩余原证；完整[实施授权](authorization-p64-implementation-20261008.md)有效，整体A01—A12尚未通过。现状输入来自[已复核探索](../../../search_fallback/p64-mes-advanced-orchestration-readiness-20261008.md)及[事实附件](../../../search_fallback/p64-mes-advanced-orchestration-readiness-20261008-attachments.md)；7项缺失/5项部分具备表示接缝现状，不作为完成率。
+当前P64=IN_PROGRESS；阶段Ⅰ由[验收08](../receipts/planning-review-phase-1-08-passed.md)确认PASSED，当前按[阶段Ⅱ方向](direction-p64-phase2-personnel-parent-child.md)继续人员与父子协作；完整[实施授权](authorization-p64-implementation-20261008.md)有效，整体A01—A12尚未通过。现状输入来自[已复核探索](../../../search_fallback/p64-mes-advanced-orchestration-readiness-20261008.md)及[事实附件](../../../search_fallback/p64-mes-advanced-orchestration-readiness-20261008-attachments.md)；7项缺失/5项部分具备表示接缝现状，不作为完成率。
 
 ## 2. 六项架构决策
 
@@ -66,7 +66,7 @@
 | II 人员与父子协作 | 后台岗位委托生效，上一轮表单聚合生成准确下一会签；单/N子流程隔离、准确回写、四等待策略及取消/退回/迟到处置形成真实闭环。 | A05—A07及相关A11/A12；阶段I已过项锁定，发生实现变化只重新核实受影响项。 |
 | III 场景与整体交付 | MES正常/异常主链、招商集合规则/组织例外/聚合会签、安信四行三子流程完整运行，配置资产可复用，多角色可回查真实业务效果。 | A08—A12并复核A01—A07覆盖完整；全部通过后才进入整体PASSED及独立终态同步。 |
 
-三阶段属于已获Owner实施授权的完整P64目标。当前从阶段I实际启动，Executor在授权范围内自主连续推进，各阶段由Planner独立验收；阶段回执不代表整体完成，不为内部步骤或已授权后续阶段重复索要许可。
+三阶段属于已获Owner实施授权的完整P64目标。阶段Ⅰ已通过，当前阶段ⅡREADY，Executor在授权范围内自主连续推进，各阶段由Planner独立验收；阶段回执不代表整体完成，不为内部步骤或已授权后续阶段重复索要许可。
 
 ## 6. 三场景的闭环终点
 
@@ -86,4 +86,4 @@
 
 两代码仓分支已推送并建立`origin/feature/p64-mes-advanced-orchestration`跟踪；设备恢复见[设备交接](../../governance/device-handoff-20261008.md)。后续工程改动在对应feature分支进行；Executor启动时核实分支、起点变化、工作树和跟踪状态。只纳入本批授权文件，既有治理、gitlink及未跟踪项保留。commit采用规范格式和简短中文主题。
 
-READY传播已由[传播规划终审03](../receipts/planning-final-review-ready-state-propagation-03.md)确认收口，Owner已指令开始实施；当前Executor按[收敛提示06](../receipts/planning-execution-prompt-p64-phase1-06.md)完成2项剩余原证（[复审07](../receipts/planning-review-phase-1-07.md)）；实施授权保持。Owner认可保留Server根gitlink78495dc。传播03截止点Server develop b7283c8/feature关系0/4，根C2′ d8ed945b；Web未变快照develop7af86f24/关系0/1。上表为创建时点，后续变化按新回读核实。在目标feature分支按主方向及三阶段边界推进，实际启动状态由Executor按授权同步。
+READY传播已由[传播规划终审03](../receipts/planning-final-review-ready-state-propagation-03.md)确认收口，Owner已指令开始实施；当前Executor按[阶段Ⅱ方向](direction-p64-phase2-personnel-parent-child.md)实施人员与父子协作（阶段Ⅰ[验收08](../receipts/planning-review-phase-1-08-passed.md)通过）；实施授权保持。Owner认可保留Server根gitlink78495dc。传播03截止点Server develop b7283c8/feature关系0/4，根C2′ d8ed945b；Web未变快照develop7af86f24/关系0/1。上表为创建时点，后续变化按新回读核实。在目标feature分支按主方向及三阶段边界推进，实际启动状态由Executor按授权同步。

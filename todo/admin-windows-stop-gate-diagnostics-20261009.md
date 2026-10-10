@@ -2,7 +2,7 @@
 
 当前状态（2026-10-09）：Owner明确裁决“先按全部通过,后面有问题会再报”，本次治理修复全部通过、已结案。当前入口：[Owner通过与结案记录](../product/workspace-governance-consistency-audit/receipts/receipt-owner-windows-stop-gate-acceptance-20261009.md)。正式9文件修复已安装并推送1906fd19；契约49/49、诊断14/14、Stop Gate接线38/38及正式进程链5/5通过，用户级声明drift=false，默认解释器实际探测可用。
 
-下一动作：无本事项待执行动作，后续有问题由Owner反馈，再按具体问题处理。实测结果、派发取证边界及历史失败台账保存在[正式安装回执](../product/workspace-governance-consistency-audit/receipts/receipt-admin-windows-stop-gate-installed-20261009.md)；真实宿主派发补证不再作为本次结案前置。P64按原规划独立继续，本条不增加业务计数。
+本次历史结案保持；2026-10-09 Owner反馈约21:50 ZCode/Codex新Hook失败另见[续办任务](admin-zcode-codex-hook-failures-20261009.md)。2026-10-10[复核02](../product/workspace-governance-consistency-audit/receipts/planning-review-zcode-codex-hook-followup-02-20261010.md)确认ZCode本次核查/诊断增强通过，间歇派发根因未定；Codex Hook事项按Owner要求挂起，原Admin已获停止续办通知。本条历史实测与派发取证边界保留，不增加业务计数。
 
 ## 前期诊断与交接（历史）
 

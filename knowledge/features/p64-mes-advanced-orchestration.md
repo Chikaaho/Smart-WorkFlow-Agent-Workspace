@@ -1,6 +1,6 @@
-# 功能追踪：P64 MES高级流程编排与业务闭环（IN_PROGRESS·阶段Ⅰ）
+# 功能追踪：P64 MES高级流程编排与业务闭环（IN_PROGRESS·阶段Ⅱ）
 
-> 工作区统一知识库 — **实施登记条目（IN_PROGRESS：Owner 实施授权成立，Executor 已实际启动阶段Ⅰ数据到动作）**。
+> 工作区统一知识库 — **实施登记条目（IN_PROGRESS：阶段Ⅰ已由规划验收08 判定 PASSED（2026-10-10）；Executor 已按阶段Ⅱ方向实际启动阶段Ⅱ人员与父子协作）**。
 > **本条目不计入正式功能数（当前 47 不变）、不核销任何 P 编号或 90 行明细、不改变 ADV64 与其他计数**；只有 Planner 下发正式方向、Executor 完成交付并经 Planner 验收后，才可能作为新的正式功能登记与计数。
 > 可信度标记：CONFIRMED / REPORTED / ASSUMED / SUPERSEDED
 
@@ -14,7 +14,7 @@
 | 功能名称 | MES高级流程编排与业务闭环 |
 | 等级 / 优先级 | XL（核心架构、跨流程运行模型、组织身份、多版本兼容） |
 | 创建日期 | 2026-10-08（Owner 需求与高级流程摘要 → 规划登记） |
-| 当前状态 | **IN_PROGRESS（阶段Ⅰ数据到动作）**（2026-10-08 Owner 实施授权成立，授权 `product/p64-mes-advanced-orchestration/ready/authorization-p64-implementation-20261008.md`；实现 Step、验证与 ADR 由 Executor 自主制定。2026-10-10 进展：阶段Ⅰ经复审01—07/提示02—06 收敛——复审07 核销 04a/08a-L/08a-W/08a-D 后，**回执08 提交待规划独立复审**（提示06 两项原证=05a 断言原提取/08a-C 新 Git 截止）——[回执08](../../product/p64-mes-advanced-orchestration/receipts/phase-1-completion-receipt-08.md)、[复审07](../../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-1-07.md)、[提示06](../../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase1-06.md)；阶段Ⅰ=VERIFYING，验收边界 A01—A04 及相关 A11/A12） |
+| 当前状态 | **IN_PROGRESS（阶段Ⅱ人员与父子协作，实际启动 2026-10-10）**——阶段Ⅰ"数据到动作"（A01—A04 及相关 A11/A12）经[规划验收08](../../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-1-08-passed.md) **PASSED**（2026-10-10；05a 断言原提取与共享 XML 12/0、08a-C 三仓 Git 固定截止原证、哈希差异独立复算可解释）；Executor 读取[阶段Ⅱ方向](../../product/p64-mes-advanced-orchestration/ready/direction-p64-phase2-personnel-parent-child.md)（A05 父子流程与四等待策略/A06 隔离与稳定行回写/A07 岗位委托与聚合会签及相关 A11/A12）并完成 knowledge-first 启动同步后进入实施；预期回执 `receipts/phase-2-completion-receipt-01.md` 供规划独立验收；阶段Ⅲ及整体 A01—A12 未验收，不核销 P64、不晋级基线 |
 | 计数归属 | 不晋级：正式功能 47、清单 90 行 ✅46/🟦22/⬜22、ADV64、问题 57 均保持；本登记不作为第 48 个功能 |
 
 ## 2. 输入、方向与当前入口
@@ -23,15 +23,15 @@
 |---|---|
 | 产品方向（READY） | `product/p64-mes-advanced-orchestration/ready/direction-p64-mes-advanced-orchestration.md`（R01—R12、A01—A12、三场景 S1—S3、XL 阶段边界） |
 | 架构方案（READY） | `product/p64-mes-advanced-orchestration/ready/solution-p64-mes-advanced-orchestration.md`（PD01—PD06、用户路径、三阶段能力交付；阶段I=A01—A04、II=A05—A07、III=A08—A12） |
-| 当前规划复核 | `product/p64-mes-advanced-orchestration/receipts/planning-solution-review-02.md`（§5 唯一 Executor 动作=READY 文档传播；前序复核 `planning-review-readiness-01.md`） |
+| 当前规划复核 | [阶段Ⅰ规划验收08 PASSED](../../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-1-08-passed.md)（2026-10-10，关闭 05a/08a-C 两项并确认阶段合同通过；复审01—07/提示01—06 全部追溯化）；前序 `planning-solution-review-02.md`（§5 传播授权）与 READY 传播已收口 |
 | Owner 产品输入 | `product/p64-mes-advanced-orchestration/inputs/owner-bpm-advanced-summary-20261008.md`（BPM 变量/节点审批表单/Trigger 判断与配置化动作/多流程编排/两证券案例/主子流程与等待策略） |
 | Owner 岗位委托补充 | `product/p64-mes-advanced-orchestration/inputs/owner-position-delegation-20261008.md`（后台「源岗位→受托岗位」通用委托，按受托岗位任职解析办理人） |
 | 探索任务（已完成·历史） | `search_task/p64-mes-advanced-orchestration-readiness-20261008.md`（已标作历史） |
 | 探索回执（历史输入） | `search_fallback/p64-mes-advanced-orchestration-readiness-20261008.md`＋`…-attachments.md`（逐题证据、R 矩阵、真值表、影响/资产/入口清单）＋`…-p63-propagation-readback.md`（P63 传播回读） |
 | READY 传播回执与复核 | 传播回执 `receipts/ready-state-propagation-01.md`/`-02.md`；规划复核01（G1—G4）→ 规划复核02 `receipts/planning-review-ready-state-propagation-02.md` **四项差异全部核销关闭**（G3 经 Owner 认可保留 Server gitlink `78495dc`）；裁决传播回执 `receipts/ready-state-propagation-03.md` |
-| 实施授权（当前入口） | `product/p64-mes-advanced-orchestration/ready/authorization-p64-implementation-20261008.md`（2026-10-08 Owner"开始实施"；覆盖完整 P64 三阶段，当前阶段Ⅰ=A01—A04及相关A11/A12） |
-| 代码分支 | 实施分支＝两仓 `feature/p64-mes-advanced-orchestration`，**本机已检出**。时点值①（2026-10-08 实测）：Server=`b7283c8`、Web=`7af86f2`（快进检出，0/0）；工作区 `develop-sw`=`39b68aa2`。时点值②（2026-10-09 回执07 提交）：Server HEAD=`d47b4e1`（含代码 `effca33`）、Web=`21074af`。时点值③（2026-10-10 回执08 提交）：Server HEAD=`ef72c8b`（含代码 `effca33`＋功能清单焦点行文档）、Web=`21074af`（本轮零改动）；两时点均 origin 同 SHA（原输出 phase1-08/P1-08a-C/raw）。HEAD 内 Server gitlink=`78495dc…` 经 Owner 认可保留（复核02 G3） |
-| 规划侧路由 | `todo/p64-mes-advanced-orchestration.md`、`todo/requirement-pool.md`（2026-10-10 当前规划=复审07/提示06/回执08）、`memory/state.md`、`memory/handoff.md`、`knowledge/current-status.md`（顶部条目） |
+| 实施授权（当前入口） | `product/p64-mes-advanced-orchestration/ready/authorization-p64-implementation-20261008.md`（2026-10-08 Owner"开始实施"；覆盖完整 P64 三阶段，当前阶段Ⅱ=A05—A07及相关A11/A12；阶段Ⅱ方向 `ready/direction-p64-phase2-personnel-parent-child.md` 为唯一业务交付入口） |
+| 代码分支 | 实施分支＝两仓 `feature/p64-mes-advanced-orchestration`，**本机已检出**。时点值①（2026-10-08 实测）：Server=`b7283c8`、Web=`7af86f2`（快进检出，0/0）；工作区 `develop-sw`=`39b68aa2`。时点值②（2026-10-09 回执07 提交）：Server HEAD=`d47b4e1`（含代码 `effca33`）、Web=`21074af`。时点值③（2026-10-10 回执08 提交/阶段Ⅱ启动实测）：Server HEAD=`ef72c8b`（含代码 `effca33`＋功能清单焦点行文档）、Web=`21074af`（本轮零改动）、工作区 `develop-sw`=`e6e0fb8e`；各时点均 origin 同 SHA（原输出 phase1-08/P1-08a-C/raw；启动实测见 knowledge/current-status.md 顶部条目）。HEAD 内 Server gitlink=`78495dc…` 经 Owner 认可保留（复核02 G3） |
+| 规划侧路由 | `todo/p64-mes-advanced-orchestration.md`、`todo/requirement-pool.md`（2026-10-10 当前=阶段Ⅰ验收08通过/阶段Ⅱ Executor 实施中）、`memory/state.md`、`memory/handoff.md`、`knowledge/current-status.md`（顶部条目） |
 
 ## 3. 现状探索要点（2026-10-08，只读静态＋既有回执核对）
 

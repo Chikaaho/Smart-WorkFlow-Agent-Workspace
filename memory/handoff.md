@@ -1,30 +1,29 @@
 # P64与Hook验收交接
 
-2026-10-10；Planner。P64 XL=IN_PROGRESS·阶段ⅠVERIFYING，完整实施授权持续；阶段Ⅱ/Ⅲ及整体未通过。
+2026-10-10；Planner规划裁决+Executor阶段Ⅱ启动同步。P64 XL=IN_PROGRESS；阶段ⅠPASSED（2026-10-10验收08）、阶段ⅡIN_PROGRESS（Executor实际启动）、阶段Ⅲ及整体未验收。Owner原完整实施授权持续，Planner未运行工程/Git，未读取coding/knowledge。
 
-## 本轮验收
-业务回执07六包及双宿主管理员两份回执已独立复审。25条附件SHA256全匹配。业务裁决：product/p64-mes-advanced-orchestration/receipts/planning-review-phase-1-07.md；治理裁决：product/workspace-governance-consistency-audit/receipts/planning-review-zcode-codex-hook-failures-20261010.md。
+## 当前裁决与下一动作
 
-04a关闭：同I6/I7各node_end/e_23/node_3=1、单APPROVE分支、各4任务全COMPLETED、实例APPROVED；旧SQL失败保留。08a-L关闭：30实例全终态、零在途命令、18持久STARTING全解析STARTED/unresolved=0、act_ru_task=0，自身PID不存在/三端口零监听；tasklist中文乱码与压缩退出提取层级如实保留。08a-W关闭：后继Web四门exit0，153文件通过+1跳过、1376测试通过+3跳过，lint0e3w/build3.50s；组件mock替代不称真实HTTP/正式视觉。08a-D关闭：ADR正文恢复语义已一致。
+业务裁决：product/p64-mes-advanced-orchestration/receipts/planning-review-phase-1-08-passed.md。回执08最后05a五case完整方法安排/关键断言与共享XML12/0对应，来源权限、租户/实例/节点/轮次读取及零交互闭合；08a-C三仓Git原证闭合。原提示06及更早只作追溯，阶段Ⅰ不再补证。
 
-## 业务剩余与唯一下一动作
-05a新增五case XML实际通过、process347/0通过，但安全提取只带方法名/DisplayName，未带索引所称verifyNoInteractions/never/verifyNoMoreInteractions及读取安排断言。08a-C权威入口覆盖已接收，三ready旧当前下一动作由Planner本轮纠正；新Server d47b4e1/Web21074af/根2d6f0f33远端一致仍只有摘要声明，无新Git原输出。
+唯一业务动作：Executor已读ready/direction-p64-phase2-personnel-parent-child.md、主方向/方案/实施授权并完成knowledge-first启动同步（阶段Ⅱ记IN_PROGRESS），正在连续实施A05—A07及相关A11/A12。主子流程单/N发起、隔离回写/四等待策略/取消退回迟到、岗位委托和同轮人员冻结按主合同；实现、ADR及最小充分验证由Executor决定。预期phase-2-completion-receipt-01.md。阶段Ⅰ已过项锁定，仅新实现影响或反证时复验受影响项。
 
-Executor按planning-execution-prompt-p64-phase1-06.md只补两项原证，追加phase-1-completion-receipt-08.md。按真实方法边界提取，已有XML/日志引用即可；Git优先提旧原流，无则有限一次新截止回读。不改测试/业务、不重做已过矩阵；真实变化再仅按影响复验。knowledge-first同步最新路由/状态，精确本批次文档Git收尾授权持续。
+启动实测（2026-10-10 Executor）：两仓feature/p64-mes-advanced-orchestration工作树CLEAN、本地=origin（Server ef72c8b含代码effca33/Web 21074af）；工作区develop-sw=e6e0fb8e=origin；根Server gitlink78495dc保留不修改。
 
-## 回执08执行结果（2026-10-10；Executor）
+Executor按已授权knowledge-first同步current-status/session-handoff/P64登记及实际受影响architecture/reconciliation/Server清单，复核memory五入口/todo/product路线并精确文档Git收尾；不另开传播循环。Planner更新可写摘要/路由，不声称knowledge已更新或本轮已提交。
 
-两原子项完成：**05a** 按`05a-assert-extract-by-method-boundary.txt`（花括号配平真实边界：五新增case行211-222/224-235/237-256/258-281/283-294全方法体带assert/verify原文；既有名单case仅摘断言行187；文件最后提交=effca33、工作树CLEAN=当前快照逐字节一致；与已保存XML逐case对应12 testcase/0 failure全命中）；**08a-C** 新Git截止原输出（`08a-C-git-cutoff.txt`：Server HEAD=origin、Web 21074af=origin、工作区与并行治理提交、根gitlink 78495dc实记录）。零测试/业务改动，已过矩阵未重跑。回执 `product/p64-mes-advanced-orchestration/receipts/phase-1-completion-receipt-08.md`，证据树 `receipts/evidence/phase1-08/`。
+## 证据与截止
 
-## Git 收尾（回执08，Executor）
+evidence/phase1-08四清单项中三项当前匹配；Git附件生成清单后追加§[5]。独立复算原前4686字节SHA256等清单76e171a22be3c53e1d82e7d7b5e2fd4fe92cd3e8ef227a88d96a93c7db4a3b5d；当前整文件6149a6ece5bcb7f66e88e292d9a916831ddabead22f9325ab40ad6def1560d91，仅追加差异可解释。原件不改、不重跑已过矩阵。
 
-- Server HEAD=`ef72c8b`（含代码 `effca33`＝05a测试增补 + 两次功能清单焦点行文档 d47b4e1/ef72c8b），origin 同 SHA；Web HEAD=`21074af`，origin 同 SHA，两仓工作树 CLEAN（原输出在 phase1-08/P1-08a-C/raw）。
-- **工作区回执08主批次 SHA：`d57d2633`**（17 文件：回执08+phase1-08 两包 index+knowledge/memory/todo/ready 同步+复审07/提示06 归档；本段为第二段提交回填）；推送后 origin=同 SHA（8da874bd..d57d2633，原输出在 phase1-08/P1-08a-C/raw §[5]）；根 Server gitlink `78495dc` 保持。
+回执固定截止Server ef72c8be5542bc6b7d560bc95436acdb58a00ac0（代码effca33，后继仅清单文档）、Web21074afd94b07dfe09d1b2312869b2d5af4803d9各CLEAN/远端一致；根主批次d57d2633ba1f2267ec9b76576bb057436b9434cc与origin一致，不作为实时HEAD。根Server gitlink78495dccf9a19c973eaeb2c29b84ff58b8faec69保留；代码仓feature/p64-mes-advanced-orchestration，根develop-sw，启动实测由Executor核实。
 
-## 治理验收与剩余
-HK-C：原POSIX声明在真实本机app-server精确failed/exit1；修复后合法completed，缺marker同thread同turn blocked→completed自动续行，三阶段exit0；18组件/70公共契约通过。隔离CODEX_HOME/本机HTTP fixture层级明确。2026-10-10 Admin单次当前hooks/list回读仍modified、配置错误0（hash18ecf395…，receipts/codex-hook-acceptance-readback-20261010.json），实现验证通过、真实生效待Owner宿主信任；Admin不代改trusted_hash。无需重复18/70；信任后Admin核一次当前声明/自然派发。两个临时目录删除被自动审批拒绝保留，无活验证宿主，不写成物理清理全完成。
-HK-Z：21:41:49.777本地289ms失败关联明确；首语句前无审计仅定位不可观察入口，不能据此唯一裁决非治理缺陷。空项目根展开为测量候选，不推定共同根因。诊断增强/受控回归接收，修复后sess_5ca9dce0自然Stop与真实Executor拒绝续行原件未回补，live=false保留历史失败。下一动作先提已有真实记录，不重跑49/14/38、不造长任务或手动继续替自动续行。
+锁定阶段验证：engine100/0、process347/0/0/0、Web153文件通过+1跳过/1376测试通过+3跳过、四门exit0/lint0e3w。768正式可见浏览器链、正确0.1.6非空在役升级/回退、X5恢复/汇聚与生命周期清理、ADR保持；不晋级整体正式基线。
 
-## 保持值与下会话
-47、46/22/22=90、ADV64、问题57、其他P、P63COMPLETED/VB、P62性能延期/新策略OFF、根Server gitlink78495dc保持。新Git为报告截止待原件，不当实时HEAD。此前阶段Ⅰ已过02a/02b/04b/06a/06b/07a、768写链/权限、正确0.1.6在役升级/回退、READY传播锁定。Planner不读coding/knowledge、不运行工程/Git。
-下会话读system/roles/planner、memory、复审07/提示06与新回执，再分别核业务/治理；未获Owner明确例外不因“全部执行完”自动裁决PASSED或COMPLETED。
+## Hook独立裁决
+
+product/workspace-governance-consistency-audit/receipts/planning-review-zcode-codex-hook-followup-02-20261010.md：HK-Z本次核查/首语句诊断增强及派发验证通过、续办关闭。修复后真实Admin/Executor自然Stop三段回执齐全、三阶段exit0，历史同session拒绝后无用户输入自动续行证明未改规则。只新增首语句回执、未改裁决，受控回归+修复后正向+历史真实负向为等强度证据，不人为制造新拒绝。间歇派发根因未定，空根候选、遥测缺失及历史失败/live=false保留。
+
+HK-C按Owner最新“codex的hook先挂起”暂停续办；已通知原Admin停止信任催办/派发补证/重复回读及修复，待Owner明确恢复。原实现/真实隔离验证通过；原工作区modified/配置错误0、未可信生效及两临时目录清理被拒边界保留。未停用/删除配置或改trusted_hash；不作为P64依赖，不继续派发恢复任务。
+
+47、46/22/22=90、ADV64、问题57、其他P/明细、P63COMPLETED/VB、P62性能Owner延期/新策略OFF不变。主方向留ready，不核销P64、不改整体COMPLETED、不合并/tag/部署。下会话读system/roles/planner、memory、验收08/阶段Ⅱ方向及Hook复核02恢复。

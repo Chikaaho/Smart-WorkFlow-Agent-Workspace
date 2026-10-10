@@ -1,12 +1,14 @@
 # ZCode与Codex Hook故障续办
 
-## 2026-10-10验收后的当前剩余
+## 2026-10-10当前裁决：ZCode核查通过，Codex挂起
 
-依据[双宿主规划复核](../product/workspace-governance-consistency-audit/receipts/planning-review-zcode-codex-hook-failures-20261010.md)：HK-C实现及真实隔离派发验收通过；原工作区最新原件仍modified，需Owner在宿主界面信任精确当前声明（回执hash18ecf395…），Admin不代改trusted_hash。先有限一次读取当前hooks-list确认是否已经变更，信任后仅补原工作区自然派发，勿重跑18/70。
+依据[复核02](../product/workspace-governance-consistency-audit/receipts/planning-review-zcode-codex-hook-followup-02-20261010.md)及Owner最新“验收，codex的hook先挂起”：HK-C挂起，已通知原Admin停止信任催办、派发补证、重复读取及继续修复，仅收尾自身在途任务；等待Owner明确恢复。原实现/真实隔离派发通过与原工作区modified未可信生效边界保留。挂起事项不包含停用/删除配置或改trusted_hash，不作为P64业务依赖。
 
-HK-Z定位和诊断增强接收；只读提取修复后sess_5ca9dce0自然Stop的launcher-invoked/门禁/宿主结果关联，以及已有真实Executor合法拒绝同session自动续行记录；不可安全取得时说明能力边界，不新增长任务或手动继续替代自动回注，不重跑49/14/38。空项目根展开仍是候选机制；无审计只能定位入口不可观察，不能唯一判定所有治理实现/配置因果均被排除。
+HK-Z本次核查与诊断增强验收通过、续办关闭。修复后真实Admin/Executor自然Stop三段关联齐全，三阶段exit0；历史同session拒绝后无用户输入自动续行，结合未变裁决路径及已过受控回归构成充分组合。无需人为制造修复后新拒绝。间歇派发根因未定，空项目根候选、遥测缺失与历史失败/live=false保留；Owner以后报告同型故障再进入具体核查。
 
-两线追加新补证回执，保留历史，不以统一“全部恢复”覆盖生效/原件缺口。精确当前治理Git原输出可沿既有普通收尾授权提取。以下为原交接与前次执行口径。
+当前无HK-Z补证待办，HK-C按Owner挂起。精确治理文档Git收尾沿既有普通授权，不重开验证。以下为原交接与前次执行口径，仅作追溯。
+
+## 原交接与前次执行口径（历史）
 
 当前HK-C状态（2026-10-09）：Owner最新分工为本会话只处理Codex。Codex Windows接线已修复，入口回归与本机app-server真实隔离派发/同线程自动续行通过；真实工作区新声明的信任状态仍为`modified`，生效边界见[Codex修复回执](../product/workspace-governance-consistency-audit/receipts/receipt-admin-codex-hook-failure-20261009.md)。下文保留初始双线交接；ZCode沿另一会话回执独立办理。
 
