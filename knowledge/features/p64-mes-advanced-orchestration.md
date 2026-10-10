@@ -14,7 +14,7 @@
 | 功能名称 | MES高级流程编排与业务闭环 |
 | 等级 / 优先级 | XL（核心架构、跨流程运行模型、组织身份、多版本兼容） |
 | 创建日期 | 2026-10-08（Owner 需求与高级流程摘要 → 规划登记） |
-| 当前状态 | **VERIFYING（阶段Ⅱ人员与父子协作，首次审查01未通过 2026-10-10）**——阶段Ⅰ"数据到动作"（A01—A04 及相关 A11/A12）经[规划验收08](../../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-1-08-passed.md) **PASSED**（2026-10-10）；阶段Ⅱ[回执01](../../product/p64-mes-advanced-orchestration/receipts/phase-2-completion-receipt-01.md) 经[审查01](../../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-2-01.md) 判**未通过/VERIFYING**（P2-01—P2-07c 八项差异=唯一剩余账本：CHILD 可视化配置与正式 UI 链、A05/A06/A07/A12 实机原证、命令/断言/测试报告与 ADR 封装、三仓 Git 原输出与 knowledge 逐入口覆盖、验证任务自身收尾；非外部阻塞）；Executor 按审查01 差异账本继续实施/补证并追加 `receipts/phase-2-completion-receipt-02.md` 供规划独立验收；阶段Ⅲ及整体 A01—A12 未验收，不核销 P64、不晋级基线 |
+| 当前状态 | **VERIFYING（阶段Ⅱ回执02 提交待规划独立验收，2026-10-10）**——审查01 八项差异账本已按[回执02](../../product/p64-mes-advanced-orchestration/receipts/phase-2-completion-receipt-02.md)（证据树 phase2-02）逐项处置：CHILD 可视化配置经可见会话发布 v2、实机 N=2 派发/ALL 单次结算/等待推进、行级逐行回写与集合外拒绝、冲突→有权恢复→BLOCKED 重结算、委托启停切换、修复⑤⑥⑦、ADR-002 与三仓 Git 原输出封装；限制如实登记（登录后页面视觉原件受宿主截图面限制、聚合会签为单测原断言）；Executor 不写功能 PASSED/COMPLETED、不核销 P。原首次审查01未通过描述见下段历史
 | 计数归属 | 不晋级：正式功能 47、清单 90 行 ✅46/🟦22/⬜22、ADV64、问题 57 均保持；本登记不作为第 48 个功能 |
 
 ## 2. 输入、方向与当前入口
