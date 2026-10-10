@@ -1,0 +1,60 @@
+{
+  "observed_at": "2026-10-10T08:05:00+08:00",
+  "scope": "zcode_hk_z_readback_read_only",
+  "workspace": "E:\\code\\Smart-WorkFlow-Agent-Workspace",
+  "method": "read_only_ledger_extraction",
+  "tests_rerun": false,
+  "history_deleted": false,
+  "sessions_touched": false,
+  "processes_started": 0,
+  "fix_commit": "bce10e457a588d55d0fc96ce893bac9ffdb1e788",
+  "natural_dispatches_post_fix": [
+    {
+      "at_utc": "2026-10-09T15:23:58Z",
+      "session": "sess_5ca9dce0-97dc-43de-8d5c-f3d9c1ce784f",
+      "role": "admin",
+      "receipts": ["launcher-invoked", "invoked", "payload-read"],
+      "payload_bytes": 7100,
+      "gate_projection": "silent_pass_role_not_executor",
+      "host_turn_completed_utc": "2026-10-09T15:23:59.477Z",
+      "host_failures_after_utc": 0
+    },
+    {
+      "at_utc": "2026-10-09T16:13:45Z",
+      "session": "sess_ebe8d1f2-9887-4935-b335-2721b3e96f42",
+      "role": "executor",
+      "receipts": ["launcher-invoked", "invoked", "payload-read"],
+      "payload_bytes": 18830,
+      "gate_projection": "pass_TERMINAL_ACCEPTED",
+      "validator_phases_exit0": 3,
+      "tool_call_count": 115,
+      "context_percent": 21,
+      "host_turn_completed_utc": "2026-10-09T16:13:47.269Z",
+      "host_failures_in_day_file": 0
+    }
+  ],
+  "executor_rejection_continuation_extract": [
+    {
+      "session": "sess_ebe8d1f2-9887-4935-b335-2721b3e96f42",
+      "block_utc": "2026-10-09T12:24:00Z",
+      "reason_code": "CONTRACT_REJECTED",
+      "diagnostic_codes": ["terminal:browser_evidence.object"],
+      "continuation_dispatch_utc": "2026-10-09T12:24:15Z",
+      "continuation_flag": true,
+      "user_input_between": false,
+      "final": "pass TERMINAL_ACCEPTED",
+      "phase": "pre_fix_original_session"
+    },
+    {
+      "session": "sess_78dc7a83-329f-4864-90b1-a4c4c1ddc038",
+      "blocks_utc": ["2026-10-09T04:58:16Z", "2026-10-09T05:04:42Z", "2026-10-09T05:05:35Z"],
+      "reason_code": "EXECUTION_LIFECYCLE_REJECTED",
+      "continuation_flag": true,
+      "tool_call_counts": [449, 468, 469],
+      "phase": "pre_fix_original_session"
+    }
+  ],
+  "post_fix_rejection_readback": "not_yet_observed",
+  "host_telemetry_boundary": "process-hook exit code/stderr unavailable; empty ZCODE_PROJECT_DIR expansion remains candidate mechanism",
+  "selfcheck_live": false
+}
