@@ -1,10 +1,10 @@
 # ZCode与Codex Hook故障续办
 
-## 2026-10-10 20:48 HK-C 当前补充：声明已信任
+## 2026-10-10 HK-C当前结论：授权核实通过，信任待办关闭
 
 Owner 在 Codex Admin 本会话最新回复“已授权”后，恢复一次只读核实。真实工作区 `hooks/list` 当前为 `trusted`、`enabled=true`、配置错误 0；声明 hash 与修复版本一致，宿主信任待办解除，原 `modified` 与挂起记录保留为历史。详见[授权后恢复核实回执](../product/workspace-governance-consistency-audit/receipts/receipt-admin-codex-hook-authorized-resume-20261010.md)。
 
-现有入口/Validator 审计仅有昨晚记录，尚无今日可归属的自然派发证据；不据此宣称当前原桌面线程重新验证。既有实现和真实隔离宿主派发验证通过结论保留。本轮一次核实已完成，不再催办信任、重复轮询或人为新建补证任务；后续按自然事件或 Owner 新指令核查。HK-Z 原验收口径不变。
+现有入口/Validator 审计仅有昨晚记录，尚无今日可归属的自然派发证据；不据此宣称当前原桌面线程重新验证。既有实现和真实隔离宿主派发验证通过结论保留。本轮一次核实已完成，不再催办信任、重复轮询或人为新建补证任务；Owner已确认Codex验证；[规划复核](../product/workspace-governance-consistency-audit/receipts/planning-review-codex-hook-authorized-resume-20261010.md)通过本次核实。无需新Admin续办，后续按Owner具体新故障或新指令核查。HK-Z原验收口径不变。
 
 ## 2026-10-10历史裁决：ZCode核查通过，Codex挂起
 
@@ -12,7 +12,7 @@ Owner 在 Codex Admin 本会话最新回复“已授权”后，恢复一次只�
 
 HK-Z本次核查与诊断增强验收通过、续办关闭。修复后真实Admin/Executor自然Stop三段关联齐全，三阶段exit0；历史同session拒绝后无用户输入自动续行，结合未变裁决路径及已过受控回归构成充分组合。无需人为制造修复后新拒绝。间歇派发根因未定，空项目根候选、遥测缺失与历史失败/live=false保留；Owner以后报告同型故障再进入具体核查。
 
-当前无HK-Z补证待办，HK-C按Owner挂起。精确治理文档Git收尾沿既有普通授权，不重开验证。以下为原交接与前次执行口径，仅作追溯。
+该历史裁决时点无HK-Z补证待办，HK-C当时按Owner挂起；已由顶部授权核实后的当前结论更新。精确治理文档Git收尾沿既有普通授权，不重开验证。以下为原交接与前次执行口径，仅作追溯。
 
 ## 原交接与前次执行口径（历史）
 

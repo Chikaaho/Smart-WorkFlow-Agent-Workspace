@@ -1,6 +1,6 @@
 # P64阶段Ⅱ：人员与父子协作
 
-2026-10-10；Planner；XL既有阶段范围。阶段Ⅰ已[验收PASSED](../receipts/planning-review-phase-1-08-passed.md)；P64整体IN_PROGRESS，阶段ⅡVERIFYING。依据[主方向](direction-p64-mes-advanced-orchestration.md)R05—R08/§3.3—3.5、[方案](solution-p64-mes-advanced-orchestration.md)及[完整实施授权](authorization-p64-implementation-20261008.md)，本方向定义当前阶段交付合同；[复审02](../receipts/planning-review-phase-2-02.md)核销部分子事实；[一级提示01](../receipts/planning-execution-prompt-p64-phase2-01.md)是唯一当前剩余执行入口，Executor已按其收敛并提交[回执03](../receipts/phase-2-completion-receipt-03.md)（证据树 phase2-03，待规划独立验收），产品合同仍以主方向为准。
+2026-10-10；Planner；XL既有阶段范围。阶段Ⅰ已[验收PASSED](../receipts/planning-review-phase-1-08-passed.md)；P64整体IN_PROGRESS，阶段ⅡVERIFYING。依据[主方向](direction-p64-mes-advanced-orchestration.md)R05—R08/§3.3—3.5、[方案](solution-p64-mes-advanced-orchestration.md)及[完整实施授权](authorization-p64-implementation-20261008.md)，本方向定义阶段合同；[复审03](../receipts/planning-review-phase-2-03.md)核销多数原流并保留目标断言缺口；[二级提示02](../receipts/planning-execution-prompt-p64-phase2-02.md)是唯一当前执行入口，替代提示01；[回执04](../receipts/phase-2-completion-receipt-04.md)已提交待规划独立验收（证据树 phase2-04）。回执03保留历史事实，产品合同仍以主方向为准。
 
 ## 目标与正式通过条件
 
@@ -24,8 +24,8 @@
 
 在Server/Web既有feature/p64-mes-advanced-orchestration连续实施，启动时核实工作树/分支/远端，以新原件固定截止；根Server gitlink78495dc保留。普通精确批次提交推送授权持续，发布/合并/tag/部署须专项授权。
 
-同时按既有knowledge-first同步范围落本轮唯一状态：P64 IN_PROGRESS、阶段ⅠPASSED、阶段ⅡVERIFYING（复审02，一级提示01收敛）；阶段Ⅲ未验收。当前功能47、46/22/22=90、ADV64、问题57、其他P、P63/VB、P62延期/新策略OFF不变；实际受影响当前入口逐字段/值/时点回读，不用“均同步”替覆盖证据。
+同时按既有knowledge-first同步范围落本轮唯一状态：P64 IN_PROGRESS、阶段ⅠPASSED、阶段ⅡVERIFYING（复审03，二级提示02收敛）；阶段Ⅲ未验收。当前功能47、46/22/22=90、ADV64、问题57、其他P、P63/VB、P62延期/新策略OFF不变；实际受影响当前入口逐字段/值/时点回读，不用“均同步”替覆盖证据。
 
-阶段Ⅱ完成后追加`receipts/phase-2-completion-receipt-03.md`，按A05—A07/相关A11—A12提交真实行为/对象/结果/原件与层级、修改/ADR/实际门禁/Git/自身收尾；授权内仍可执行则继续，真实外部阻塞按原契约报告。阶段通过由Planner独立裁决，不自写功能PASSED/COMPLETED或核销计数。
+阶段Ⅱ剩余断言闭合后追加`receipts/phase-2-completion-receipt-04.md`，按A05—A07/相关A11—A12提交真实行为/对象/结果/原件与层级、修改/ADR/实际门禁/Git/自身收尾；授权内仍可执行则继续，真实外部阻塞按原契约报告。阶段通过由Planner独立裁决，不自写功能PASSED/COMPLETED或核销计数。
 
-新会话提示：“你是执行。阶段Ⅰ锁定，阶段Ⅱ复审02未通过；读取一级提示01/复审02及本方向，先取已有原流，补业务UI与对象关联、父行正确查询/权限、委托时点与真实聚合、方法断言和正确升级/最后快照/当前覆盖/自身收尾，锁定子事实不重验。追加回执03，Codex Hook继续挂起；既有授权有效。”
+新会话提示：“你是执行。阶段Ⅰ和阶段Ⅱ已核子事实锁定；读二级提示02/复审03及本方向，先补候选合法领取/办理路径，再取剩余策略、同角色隔离、冻结/岗位策略与受影响兼容护栏的目标证据；共享可见业务主链和正式视觉，真实能力限制如实保留。knowledge-first实际覆盖与精确批次Git收尾，追加回执04。Codex授权核实已通过、当前trusted，无需启动新治理任务；既有授权有效。”

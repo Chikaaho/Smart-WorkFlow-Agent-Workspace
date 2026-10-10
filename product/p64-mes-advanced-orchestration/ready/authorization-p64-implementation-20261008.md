@@ -7,7 +7,7 @@
 ## 1. 当前状态与唯一动作
 
 - 当前P64=IN_PROGRESS；阶段ⅠPASSED（2026-10-10[规划验收08](../receipts/planning-review-phase-1-08-passed.md)），阶段ⅡVERIFYING、阶段Ⅲ未验收。本规划会话未运行工程。
-- 唯一下一动作：Executor按[一级提示01](../receipts/planning-execution-prompt-p64-phase2-01.md)（依据[复审02](../receipts/planning-review-phase-2-02.md)）的剩余账本与[阶段Ⅱ方向](direction-p64-phase2-personnel-parent-child.md)在既有feature分支实施人员与父子协作，追加阶段Ⅱ回执03；原完整实施授权有效，阶段Ⅰ提示不再是当前待办。
+- 唯一下一动作：Executor按[二级提示02](../receipts/planning-execution-prompt-p64-phase2-02.md)（依据[复审03](../receipts/planning-review-phase-2-03.md)）的剩余账本与[阶段Ⅱ方向](direction-p64-phase2-personnel-parent-child.md)继续实施/补证，追加回执04；原完整实施授权有效，提示01仅作追溯。
 - READY传播及G1—G4已关闭，[传播终审03](../receipts/planning-final-review-ready-state-propagation-03.md)保留其时点裁决，不作为当前等待实施授权入口。
 - 此次实施授权覆盖既定完整P64，不为内部步骤或已授权后续阶段重复索要实施许可；各阶段仍提交行为回执，由Planner独立验收，阶段通过不替代整体A01—A12通过。
 
@@ -41,7 +41,7 @@
 
 ## 4. 当前事实同步授权与交付回执
 
-Executor获得以下明确状态同步写入授权：knowledge/current-status、session-handoff、P64登记、实际含P64当前字段的architecture/feature-reconciliation-index，Server功能清单焦点，以及memory五入口（README/state/handoff/features/decisions）与todo/requirement-pool、todo/P64索引及实际受影响product当前路由。按knowledge-first，同步阶段ⅠPASSED、整体IN_PROGRESS、阶段ⅡVERIFYING（复审02，一级提示01收敛）、阶段Ⅲ未验收、本文及阶段Ⅱ指针、实测Git/环境与唯一下一动作；不回填整体终态或晋级基线。
+Executor获得以下明确状态同步写入授权：knowledge/current-status、session-handoff、P64登记、实际含P64当前字段的architecture/feature-reconciliation-index，Server功能清单焦点，以及memory五入口（README/state/handoff/features/decisions）与todo/requirement-pool、todo/P64索引及实际受影响product当前路由。按knowledge-first，同步阶段ⅠPASSED、整体IN_PROGRESS、阶段ⅡVERIFYING（复审03，二级提示02收敛）、阶段Ⅲ未验收、本文及阶段Ⅱ指针、实测Git/环境与唯一下一动作；不回填整体终态或晋级基线。
 
 启动状态同步与实施连续进行，不单独开启READY传播补证轮次。未启动不得声称工程已运行；启动后移除“实施未授权/等待Owner实施指令”的当前待办。历史回执保持原时点。
 
