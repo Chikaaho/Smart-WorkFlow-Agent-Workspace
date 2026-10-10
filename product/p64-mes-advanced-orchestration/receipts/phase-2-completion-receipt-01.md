@@ -74,3 +74,28 @@ Web 侧：`contracts/p64.ts` 扩展、`api/p64.ts` 批次端点、`system/api/po
 - Server `2d07b8d`、Web `e9088d0` 均已推送且 `git rev-parse HEAD origin/...` 回读一致（原输出见本轮会话；本回执提交随工作区批次，见同步回执条目）。
 - 根 Server gitlink `78495dc` 保持不修改；两仓工作树 CLEAN。
 - Executor terminal：`EXECUTION_SUBMITTED`（自验通过，待规划独立验收）；不写功能 PASSED/COMPLETED、不核销 P 或计数。
+
+## 7. 补证（2026-10-10 同会话续办）：实机链路与四项实机缺陷修复
+
+阶段Ⅱ方向要求「实际实现变化涉及范围重新核验」；本会话续办完成**真实环境全链运行**并修复 4 项实机缺陷（均为单测/编译不可见）：
+
+1. **等待端口双实现注入歧义**：`ChildOrchestrationService` 与 `SubflowWaitPortImpl` 同时实现 `SubflowWaitPort` → 办理命令在到达等待节点时 `NoUniqueBeanDefinitionException` 回滚。修复：编排服务不再实现端口，仅保留单适配器（`1014d8b`）。
+2. **脚本 worker 类路径覆盖**：Windows 命令行上限/fat-jar 场景下 `java.class.path` 超长或不可复用于子进程 → worker 启动握手失败、触发器落 FAILED。修复：`sw.bpm.script.worker-classpath` / `SW_BPM_SCRIPT_WORKER_CLASSPATH` 显式覆盖（缺省原语义，`1014d8b`）。
+3. **等待节点监听解析**：执行监听 delegation expression 在部分引擎配置下 bean 解析失败（`Unknown property ${subflowWaitListener}`）。修复：改 `flowable:class` 类委托 + 静态桥接转发 Spring 单例（含测试断言同步）。
+4. **批次项与子实例关联回填**：ORCH 消费链异步回填 `target_record_id`，子完成事件先到达时按记录反查不到批次项（批次滞留 WAITING）。修复：按（租户，target_record_id=子实例 businessKey）反查动作意图 → 经 action_ref_id 反查批次项并回填（`492c616`）。
+
+**真实环境全链结果**（专用全新建库 `smart_workflow_p64p2`，Flyway 17 迁移至 0.1.9；真实 HTTP + PostgreSQL；证据 `logs/p64p2-run-result.json`，网络索引=后端访问日志逐请求）：
+
+| 步骤 | 对象 | 实际结果 |
+|---|---|---|
+| 表单/流程配置（真实 HTTP） | 父表单（title+hosts[host_name,owner,feedback]）/子表单（summary+result_table[src_row_id,feedback]）/子流程 bpm_3a1671bafc154a20/父流程 bpm_0acddab8b21048f7（node_ops→SUBFLOW_WAIT→node_review） | 发布成功；CHILD 动作 START_GROUPED(owner)+ALL+回写校验通过 |
+| 父发起+node_ops 办理 | 父实例 e3dab0b8…/记录 7051dd92… | 命令 COMPLETED；触发器 MATCHED（脚本 worker 实跑） |
+| 派发冻结 | 批次 `CHILD:TRG:e3dab0b8…:act_child` | expectedCount=1（张三组两行归并），ALL，深度0，item DISPATCHED |
+| 子实例创建+办理 | 子实例 e765100c…/任务 e7653729… | 子记录/实例/任务真实创建；子办理 COMPLETED |
+| 结算+回写 | 批次/批次项 | **批次 SETTLED（settledAt 14:00:33）、item WRITTEN、writebackJson {"main":{"title":"反馈完成-张三"}}** |
+| 等待节点推进 | 父图 wait_children | 复核任务 e7e5b1d2… 生成（未提前推进） |
+| 父完成 | 父实例/父记录 | **父 APPROVED；父记录 title=反馈完成-张三（回写值回读）** |
+
+**浏览器可见会话边界（如实）**：IAB 可见会话已建立并完成真实登录（admin→/workspace，dom_cua 输入/点击真实生效）；**截图通道持续 `surface preparation timed out`（真实工具结果，多会话内重复），视觉原件未取得**；深层办理链未走 UI 表单控件（运行时行为已由真实 HTTP/DB 证明）。正式 A11 的「视觉原件 + UI 办理链」仍为剩余可执行项（环境浏览器表面能力限制），未冒充通过。
+
+**新增门禁复验**：修复后 `SubflowWaitNodeTranslatorTest`/`ChildOrchestrationServiceTest`/`ChildTriggerExecutionServiceChildDispatchTest` 全绿；受影响模块编译与既有测试保持通过。Git：Server 追加 `1014d8b`、`492c616`（推送后远端回读一致）。
