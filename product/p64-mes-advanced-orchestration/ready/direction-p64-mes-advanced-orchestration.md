@@ -1,8 +1,8 @@
 # P64：MES高级流程编排与业务闭环
 
-2026-10-08；Planner；XL；**IN_PROGRESS（阶段Ⅰ回执06复审仍未通过，提示05收敛6项）**。
+2026-10-08；Planner；XL；**IN_PROGRESS（阶段Ⅰ回执07复审仍未通过，提示06收敛2项原证）**。
 
-Owner要求：参考“MES申请分类”前半段，继续完善MES能力，先确定任务方向。产品输入为Owner补充的[高级流程摘要](../inputs/owner-bpm-advanced-summary-20261008.md)及[岗位委托补充](../inputs/owner-position-delegation-20261008.md)，以最新补充的通用岗位委托要求为准。本文确定目标、范围和验收边界。[探索规划复核01](../receipts/planning-review-readiness-01.md)接受现状探索；[架构方案](solution-p64-mes-advanced-orchestration.md)明确六项选择及三阶段边界。[方案复核02](../receipts/planning-solution-review-02.md)§5为传播授权来源；READY传播已收口，最终确认见[传播规划终审03](../receipts/planning-final-review-ready-state-propagation-03.md)。Owner完整实施授权保持，Executor已提交阶段Ⅰ回执；当前按[收敛提示05](../receipts/planning-execution-prompt-p64-phase1-05.md)完成6项剩余断言（[复审06](../receipts/planning-review-phase-1-06.md)）。本方向是唯一业务目标入口，实现步骤、接口、存储结构和测试设计由Executor负责。
+Owner要求：参考“MES申请分类”前半段，继续完善MES能力，先确定任务方向。产品输入为Owner补充的[高级流程摘要](../inputs/owner-bpm-advanced-summary-20261008.md)及[岗位委托补充](../inputs/owner-position-delegation-20261008.md)，以最新补充的通用岗位委托要求为准。本文确定目标、范围和验收边界。[探索规划复核01](../receipts/planning-review-readiness-01.md)接受现状探索；[架构方案](solution-p64-mes-advanced-orchestration.md)明确六项选择及三阶段边界。[方案复核02](../receipts/planning-solution-review-02.md)§5为传播授权来源；READY传播已收口，最终确认见[传播规划终审03](../receipts/planning-final-review-ready-state-propagation-03.md)。Owner完整实施授权保持，Executor已提交阶段Ⅰ回执；当前按[收敛提示06](../receipts/planning-execution-prompt-p64-phase1-06.md)完成2项剩余原证（[复审07](../receipts/planning-review-phase-1-07.md)）。本方向是唯一业务目标入口，实现步骤、接口、存储结构和测试设计由Executor负责。
 
 ## 1. 产品目标
 
@@ -128,7 +128,7 @@ P63已发布的部门负责人语义继续原义；新岗位来源/委托规则�
 | A11 | 用户可见浏览器完成配置与多角色运行，桌面和常见窄屏可用；业务单据、父子实例、任务、轮次、变量和动作结果之间可回查。 |
 | A12 | 存量发布定义和真实运行实例保持原义；P63手工/动态并行、来源去重和预约语义不漂移；新增持久数据可升级且启停/回退边界明确，受影响工程门禁通过。 |
 
-这是收敛后的方向级验收合同，阶段Ⅰ复审06接收六组及部分子事实未通过、待提示05收敛6项剩余断言；整体A01—A12尚未通过。Executor自行制定实现和最小充分验证，回执标明行为层级、对象、结果、证据路径；规划独立验收只核实际交付与证据，不以源码存在或自述通过。
+这是收敛后的方向级验收合同，阶段Ⅰ复审07接收多数补证仍未通过、待提示06收敛2项剩余原证；整体A01—A12尚未通过。Executor自行制定实现和最小充分验证，回执标明行为层级、对象、结果、证据路径；规划独立验收只核实际交付与证据，不以源码存在或自述通过。
 
 ## 6. 范围、风险与阶段边界
 
@@ -146,9 +146,9 @@ XL阶段目标按产品能力划界：先形成可用的节点数据/变量/判�
 
 ## 7. 登记与当前下一动作
 
-P64为IN_PROGRESS；阶段Ⅰ验收VERIFYING（复审06仍未通过），不晋级功能数或核销既有P编号/清单。当前正式功能47、原90行46/22/22、ADV64和既有验证集合保持。关联ADV-M11-F01-04可复用子流程、ADV-M11-F02-02规则矩阵与P2/P4/P26能力子集，登记关联不等于这些总项已完成。
+P64为IN_PROGRESS；阶段Ⅰ验收VERIFYING（复审07仍未通过），不晋级功能数或核销既有P编号/清单。当前正式功能47、原90行46/22/22、ADV64和既有验证集合保持。关联ADV-M11-F01-04可复用子流程、ADV-M11-F02-02规则矩阵与P2/P4/P26能力子集，登记关联不等于这些总项已完成。
 
-下一动作：Executor按[收敛提示05](../receipts/planning-execution-prompt-p64-phase1-05.md)完成6项剩余断言，追加phase-1-completion-receipt-07.md供Planner独立复核；裁决见[复审06](../receipts/planning-review-phase-1-06.md)。完整实施授权保持，已过子事实锁定。本文验收合同不变；READY传播/G1—G4关闭，P63业务/VB锁定，根Server gitlink78495dc保留。
+下一动作：Executor按[收敛提示06](../receipts/planning-execution-prompt-p64-phase1-06.md)完成2项剩余原证，追加phase-1-completion-receipt-08.md供Planner独立复核；裁决见[复审07](../receipts/planning-review-phase-1-07.md)。完整实施授权保持，已过子事实锁定。本文验收合同不变；READY传播/G1—G4关闭，P63业务/VB锁定，根Server gitlink78495dc保留。
 
 探索及未来验证遵守system.md：有限输入/输出/完成条件，不做非必要hash、不空转等待、不启动不可控后台任务、不擅停用户服务；正式UI证据来自可见可交互会话。规划阶段不编译、测试、迁移、访问数据库或控制设备。
 

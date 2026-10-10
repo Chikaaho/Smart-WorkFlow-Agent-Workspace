@@ -1,24 +1,30 @@
-# P64交接摘要
+# P64与Hook验收交接
 
-2026-10-09；Executor。P64 MES高级流程编排（XL）IN_PROGRESS，阶段ⅠVERIFYING；阶段Ⅱ/Ⅲ和整体未通过。完整实施授权持续。
+2026-10-10；Planner。P64 XL=IN_PROGRESS·阶段ⅠVERIFYING，完整实施授权持续；阶段Ⅱ/Ⅲ及整体未通过。
 
-本轮按提示05（依据复审06）完成六原子项并提交回执07（`product/p64-mes-advanced-orchestration/receipts/phase-1-completion-receipt-07.md`，证据树 `receipts/evidence/phase1-07/` 六包+MANIFEST）：
+## 本轮验收
+业务回执07六包及双宿主管理员两份回执已独立复审。25条附件SHA256全匹配。业务裁决：product/p64-mes-advanced-orchestration/receipts/planning-review-phase-1-07.md；治理裁决：product/workspace-governance-consistency-audit/receipts/planning-review-zcode-codex-hook-failures-20261010.md。
 
-- **04a 汇聚收尾**：上轮失败SQL原件保留（列名误用不称成功）；以真实列 `proc_inst_id_/act_id_` 只读补查同 I6(`9360cee4`)/I7(`75af1262`)：node_end 恰1、动态分支各恰1行（无SUPERSEDED）、4任务全COMPLETED、实例双APPROVED；e_23/node_3单激活沿用已采信对照件。
-- **05a 来源权限**：主体=调用方租户、来源绑定=实例自身（formKey/businessKey、processInstanceId+nodeKey+round）；既有名单case工具提取（行号原件），最小增补5case——未知来源/NODE_FORM缺键拒绝且零读取、MAIN_FORM恰一次按调用租户+实例绑定读取、NODE_FORM限定本实例、SYSTEM白名单外排除；类XML 12/0、process全模块347/0；零生产代码改动。
-- **08a-L 退出流两级证据**：上轮taskkill 8196原流（08a-1/2）补落product；当前读回8196/27476/13147均不存在、java.exe全列表0、8080/8081/5174零监听、30实例全终态0RUNNING、命令0 PENDING/PROCESSING、意图18×STARTING（设计持久态）全解析STARTED且unresolved=0、act_ru_task=0、PG/Redis Up 28h未动。
-- **08a-W Web四门+恢复入口**：后继快照（53eec1e+本轮4文件）四门真实EXIT=0——lint 0e/3w、typecheck静默、vitest 1376+3（恰+1文件+5测试）、build 3.50s；入口断言=纯函数canRetryActionRefStatus（FAILED/INTENT_SUBMITTED/STARTING=true）模板编译级引用+组件级3case真实retryActionRef API行为（成功透出后端消息+重载/失败可诊断/在途互斥）。
-- **08a-D ADR一致性**：§4消费项正文与修订04②对齐（新增修订05）；`收敛需 ORCH 级重跑` §4正文0残留（仅存修订03历史头与修订05引用），§1/§6无冲突，历史原件不改写。
-- **08a-C knowledge-first覆盖**：逐入口字段级回读=current-status/session-handoff/P64功能登记/architecture/reconciliation索引P64零提及核验/Server功能清单/memory×5/todo×2/三ready路由（复审06/提示05，规划收尾批次一并固定）。
+04a关闭：同I6/I7各node_end/e_23/node_3=1、单APPROVE分支、各4任务全COMPLETED、实例APPROVED；旧SQL失败保留。08a-L关闭：30实例全终态、零在途命令、18持久STARTING全解析STARTED/unresolved=0、act_ru_task=0，自身PID不存在/三端口零监听；tasklist中文乱码与压缩退出提取层级如实保留。08a-W关闭：后继Web四门exit0，153文件通过+1跳过、1376测试通过+3跳过，lint0e3w/build3.50s；组件mock替代不称真实HTTP/正式视觉。08a-D关闭：ADR正文恢复语义已一致。
 
-观察项边界保持：2426同键异载荷不偷改历史请求；SUPERSEDED_BY_ROUND为历史记账。Hook两宿主事项由Admin续办（`todo/admin-zcode-codex-hook-failures-20261009.md`），独立于业务裁决。
+## 业务剩余与唯一下一动作
+05a新增五case XML实际通过、process347/0通过，但安全提取只带方法名/DisplayName，未带索引所称verifyNoInteractions/never/verifyNoMoreInteractions及读取安排断言。08a-C权威入口覆盖已接收，三ready旧当前下一动作由Planner本轮纠正；新Server d47b4e1/Web21074af/根2d6f0f33远端一致仍只有摘要声明，无新Git原输出。
 
-## 9. Git 收尾（2026-10-09 回执07）
+Executor按planning-execution-prompt-p64-phase1-06.md只补两项原证，追加phase-1-completion-receipt-08.md。按真实方法边界提取，已有XML/日志引用即可；Git优先提旧原流，无则有限一次新截止回读。不改测试/业务、不重做已过矩阵；真实变化再仅按影响复验。knowledge-first同步最新路由/状态，精确本批次文档Git收尾授权持续。
 
-- Server HEAD=`d47b4e1`（代码 `effca33`＝05a来源权限测试增补 + 功能清单焦点行文档）；Web 同分支=`21074af`（08a-W恢复入口断言）。
-- 工作区 `develop-sw` 本批次（回执07+phase1-07证据索引+knowledge/memory/todo/ready同步）SHA=见下；推送后远端 ls-remote 回读一致（原输出在回执07 §Git）。
-- **工作区回执07主批次 SHA：`2d6f0f33`**（回执07+phase1-07 六包 index+knowledge/memory/todo/ready 同步+提示05/复审06 归档；本段为第二段提交回填）。
-- 推送后远端回读：Server `d47b4e1`（origin 同 SHA，87afbe9..d47b4e1）、Web `21074af`（origin 同 SHA，53eec1e..21074af）、两仓工作树干净；工作区第二段提交后推送并复核本地=origin。
-- 根 Server gitlink `78495dc` 保持；47、46/22/22=90、ADV64、问题57、其他P、P63 COMPLETED/VB、P62延期/新策略OFF不变。
+## 回执08执行结果（2026-10-10；Executor）
 
-下会话先读 system/角色/memory、复审06/提示05与回执07，再推进授权内工作；唯一业务下一动作=Planner独立复审回执07。
+两原子项完成：**05a** 按`05a-assert-extract-by-method-boundary.txt`（花括号配平真实边界：五新增case行211-222/224-235/237-256/258-281/283-294全方法体带assert/verify原文；既有名单case仅摘断言行187；文件最后提交=effca33、工作树CLEAN=当前快照逐字节一致；与已保存XML逐case对应12 testcase/0 failure全命中）；**08a-C** 新Git截止原输出（`08a-C-git-cutoff.txt`：Server HEAD=origin、Web 21074af=origin、工作区与并行治理提交、根gitlink 78495dc实记录）。零测试/业务改动，已过矩阵未重跑。回执 `product/p64-mes-advanced-orchestration/receipts/phase-1-completion-receipt-08.md`，证据树 `receipts/evidence/phase1-08/`。
+
+## Git 收尾（回执08，Executor）
+
+- Server HEAD=`ef72c8b`（含代码 `effca33`＝05a测试增补 + 两次功能清单焦点行文档 d47b4e1/ef72c8b），origin 同 SHA；Web HEAD=`21074af`，origin 同 SHA，两仓工作树 CLEAN（原输出在 phase1-08/P1-08a-C/raw）。
+- **工作区回执08主批次 SHA：`__BATCH_SHA__`**（第二段提交回填）；根 Server gitlink `78495dc` 保持。
+
+## 治理验收与剩余
+HK-C：原POSIX声明在真实本机app-server精确failed/exit1；修复后合法completed，缺marker同thread同turn blocked→completed自动续行，三阶段exit0；18组件/70公共契约通过。隔离CODEX_HOME/本机HTTP fixture层级明确。2026-10-10 Admin单次当前hooks/list回读仍modified、配置错误0（hash18ecf395…，receipts/codex-hook-acceptance-readback-20261010.json），实现验证通过、真实生效待Owner宿主信任；Admin不代改trusted_hash。无需重复18/70；信任后Admin核一次当前声明/自然派发。两个临时目录删除被自动审批拒绝保留，无活验证宿主，不写成物理清理全完成。
+HK-Z：21:41:49.777本地289ms失败关联明确；首语句前无审计仅定位不可观察入口，不能据此唯一裁决非治理缺陷。空项目根展开为测量候选，不推定共同根因。诊断增强/受控回归接收，修复后sess_5ca9dce0自然Stop与真实Executor拒绝续行原件未回补，live=false保留历史失败。下一动作先提已有真实记录，不重跑49/14/38、不造长任务或手动继续替自动续行。
+
+## 保持值与下会话
+47、46/22/22=90、ADV64、问题57、其他P、P63COMPLETED/VB、P62性能延期/新策略OFF、根Server gitlink78495dc保持。新Git为报告截止待原件，不当实时HEAD。此前阶段Ⅰ已过02a/02b/04b/06a/06b/07a、768写链/权限、正确0.1.6在役升级/回退、READY传播锁定。Planner不读coding/knowledge、不运行工程/Git。
+下会话读system/roles/planner、memory、复审07/提示06与新回执，再分别核业务/治理；未获Owner明确例外不因“全部执行完”自动裁决PASSED或COMPLETED。
