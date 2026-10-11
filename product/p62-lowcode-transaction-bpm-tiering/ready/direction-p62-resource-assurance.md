@@ -1,4 +1,4 @@
-> 2026-10-11当前排期：P64阶段Ⅱ验收09已PASSED，Owner新机性能恢复条件满足；[恢复安排](direction-p62-performance-resume-20261011.md)为当前入口，[新机就绪探索](../../../search_task/p62-performance-new-machine-readiness-20261011.md)已完成（2026-10-11，回执 [../../../search_fallback/p62-performance-new-machine-readiness-20261011.md](../../../search_fallback/p62-performance-new-machine-readiness-20261011.md)），唯一下一动作=Planner读取探索回执固定有限性能方向，正式性能验证未启动未验证/策略OFF。下文2026-10-05/06延期与收尾措辞保留历史时点，原性能合同保持。
+> 2026-10-11当前排期：P64阶段Ⅱ验收09已PASSED，Owner新机性能恢复条件满足；[恢复安排](direction-p62-performance-resume-20261011.md)为当前入口，[新机就绪探索](../../../search_task/p62-performance-new-machine-readiness-20261011.md)已完成（2026-10-11，回执 [../../../search_fallback/p62-performance-new-machine-readiness-20261011.md](../../../search_fallback/p62-performance-new-machine-readiness-20261011.md)），唯一下一动作=Executor按[新机有限性能方向](direction-p62-performance-bounded-20261011.md)完成装置处置及三画像验证，提交首轮回执，正式性能验证未启动未验证/策略OFF。下文2026-10-05/06延期与收尾措辞保留历史时点，原性能合同保持。
 
 > 2026-10-06终态复核02通过：P62当前批准功能范围COMPLETED（规划已确认），TS01/TS02已核销。最终裁决 `../receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md`；业务及补证账本已结清，性能Owner延期未验证。
 

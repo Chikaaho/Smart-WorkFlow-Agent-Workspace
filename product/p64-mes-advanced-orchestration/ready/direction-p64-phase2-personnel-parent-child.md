@@ -26,6 +26,6 @@
 
 同时按既有knowledge-first同步范围落本轮唯一状态：P64 IN_PROGRESS、阶段ⅠPASSED、阶段ⅡPASSED（验收09）；阶段Ⅲ未验收。当前功能47、46/22/22=90、ADV64、问题57、其他P、P63/VB、P62性能就绪探索已完成（2026-10-11）/正式验证未启动未验证/新策略OFF不变；实际受影响当前入口逐字段/值/时点回读，不用“均同步”替覆盖证据。
 
-阶段Ⅱ由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)确认PASSED，补证账本0；提示07及更早仅作历史。下一动作：Planner读取[P62新机就绪探索回执](../../../search_fallback/p62-performance-new-machine-readiness-20261011.md)并固定有限性能方向（负载/预算/验证边界）；探索已完成（2026-10-11，Executor只读执行并伴随knowledge-first传播及精确普通文档Git），正式性能验证未启动未验证，P64阶段Ⅲ排队。
+阶段Ⅱ由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)确认PASSED，补证账本0；提示07及更早仅作历史。下一动作：Executor按[新机有限性能方向](../../p62-lowcode-transaction-bpm-tiering/ready/direction-p62-performance-bounded-20261011.md)完成装置处置及三画像验证，提交首轮回执；探索已完成（2026-10-11，Executor只读执行并伴随knowledge-first传播及精确普通文档Git），正式性能验证未启动未验证，P64阶段Ⅲ排队。
 
-新会话提示：“你是执行。读阶段Ⅱ验收09和P62新机就绪探索，knowledge-first传播已确定阶段状态，有限只读探索并回传；尚不启动压测，不重跑已过业务。”
+新会话提示：“你是执行。读取P62新机有限性能方向，完成授权范围验证并提交首轮回执。”

@@ -1,15 +1,17 @@
-# P64阶段Ⅱ通过与P62性能恢复交接
+# P62有限性能方向交接
 
-2026-10-11；Planner。[回执09](../product/p64-mes-advanced-orchestration/receipts/phase-2-completion-receipt-09.md)及两包已独立验收，[裁决09](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-2-09-passed.md)确认阶段ⅡPASSED；P64整体IN_PROGRESS，ⅠPASSED、Ⅲ排队未验收。主方向留ready，提示07及更早收尾账本关闭。
+2026-10-11；Executor。P64 IN_PROGRESS；Ⅰ/ⅡPASSED（阶段Ⅱ验收09），Ⅲ排队，整体收尾未进入。P62批准功能COMPLETED、策略默认OFF；新机有限性能验证执行完成，回执[performance-bounded-20261011-01](../product/p62-lowcode-transaction-bpm-tiering/receipts/performance-bounded-20261011-01.md)已提交，Planner逐NP验收未开始；不写性能PASSED。
 
-本轮补齐实际@Transactional(REQUIRED)+签名原文，与相同源SHA/已过锁SQL和竞争关联；完整字段按实际句交叉回读，必要状态、P62条件、v5/v4、指针授权及下一动作可读。7文件、6/6哈希。COUNT26/0、本人/权限反向、委托、process384/77/exit0、Nested27/锚56、竞争sum1000/1允1拒、清理/SQL0/0/0锁定，不重跑业务。
+唯一下一动作：Planner读回执原件逐NP判定（方向§6）；重点裁决 P2-am 受保护审批领取 5039ms（超5s预算39ms）与突发拒绝不对称（P1 32.7%/P2 3.3%）两点。
 
-Owner条件已满足且探索已执行。唯一下一动作：Planner读取[就绪探索回执](../search_fallback/p62-performance-new-machine-readiness-20261011.md)并固定有限性能方向（负载/预算/验证边界）。探索已完成（2026-10-11，回执同名落search_fallback，全程只读）；正式性能验证未启动未验证。P62批准功能COMPLETED/默认策略OFF；P64阶段Ⅲ保留排队，完整授权持续。
+47、清单46/22/22=90、ADV64、问题57、P63COMPLETED/VB及正式基线保持。Codex已验证/trusted，无Admin续办；ZCode间歇根因未定。
 
-探索文档收尾按既有授权knowledge-first传播阶段ⅡPASSED及新下一动作已完成（2026-10-11，覆盖实际受影响当前入口，见search_fallback回执§覆盖矩阵与§Git）；精确普通文档Git同批收尾。Planner只修许可目录，不能把本裁决写出当knowledge/Git已完成。
+此前P64阶段Ⅱ由裁决09通过；P62新机只读探索完成。本轮读取原资源合同、回执09及复核10/11，固定有限性能方向；未启动工程或负载。装置SQL/索引/收敛与占用口径/回调监听器影响先处理，逐请求完整原件、持久结果及退出清理作为验收依据。
 
-09档案Server3524de4（业务3341de5）/Web4333145/根718a7ace均与origin同值；根Server7fffef9/Web4333145已认可保留，常规指针调整自行核实决定并报告。当前47/90/ADV64/问题57、P63/VB及正式基线保持。验证定义v5当前/v4历史；Codex已验证，无Admin续办。
+本轮3阶段：合同与证据核对完成；方向下发完成；执行回执已提交（2026-10-11，双轮披露，-am权威轮三画像全过）。P64共3业务阶段：Ⅰ数据到动作完成、Ⅱ人员与父子协作完成、Ⅲ场景与整体交付未开始；整体收尾未进入。Ⅲ剩MES/招商/安信三场景、多角色体验与兼容及整体验收。
 
-新Executor提示（已执行）：`你是执行。读system/Executor、阶段Ⅱ裁决09及P62新机就绪探索；先传播已确定状态并完成有限只读探索，返回search_fallback。无需业务重验或新的实施确认，尚不启动压测。` 新Planner：读memory→裁决09→[新机探索结果](../search_fallback/p62-performance-new-machine-readiness-20261011.md)；据事实固定有限性能方向。
+常规决定：沿原预算采用新机三画像30s有限观察，既有功能验收锁定；独立结果不外推旧窗口或长稳。Git时点见state；本批规划文件未由Planner提交，Executor按既有授权一并同步和普通Git收尾。
 
-Owner10-11要求进度汇报展示P64全部阶段及剩余工作；[总进度表](../todo/p64-mes-advanced-orchestration.md)为入口。3个业务阶段已过2个，Ⅲ及整体收尾未完成；P62性能单列，不混入P64阶段数。
+执行启动：你是执行。先读system.md、roles/executor.md及工程宪法，再按product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-performance-bounded-20261011.md完成装置处置、有限验证及knowledge-first同步，提交performance-bounded-20261011-01.md。具体实施与测试设计由执行负责。
+
+Planner下次：读memory与该方向、首轮回执及原始行为证据，逐NP01—NP06验收。尚无本轮性能通过结论；通过后另下发终态同步，不改变功能计数。

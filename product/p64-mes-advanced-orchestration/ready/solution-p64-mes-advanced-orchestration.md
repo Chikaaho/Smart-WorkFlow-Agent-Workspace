@@ -10,7 +10,7 @@
 
 优先做数据产生到可靠动作的完整链，因为没有任务数据、类型变量和可靠触发，后续选人、子流程及MES只能形成页面演示。第二个能力边界解决跨人员、跨流程的数据协作，第三个边界再证明三场景实际业务结果。
 
-当前P64=IN_PROGRESS；Ⅰ/ⅡPASSED（[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)），阶段Ⅱ账本0、Ⅲ排队未验收；完整[实施授权](authorization-p64-implementation-20261008.md)持续。唯一下一动作：Planner读取[P62新机就绪探索回执](../../../search_fallback/p62-performance-new-machine-readiness-20261011.md)并固定有限性能方向（负载/预算/验证边界）；探索已完成（2026-10-11，Executor只读执行并伴随knowledge-first传播及精确普通文档Git），正式性能验证未启动未验证，P64阶段Ⅲ排队。
+当前P64=IN_PROGRESS；Ⅰ/ⅡPASSED（[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)），阶段Ⅱ账本0、Ⅲ排队未验收；完整[实施授权](authorization-p64-implementation-20261008.md)持续。唯一下一动作：Executor按[新机有限性能方向](../../p62-lowcode-transaction-bpm-tiering/ready/direction-p62-performance-bounded-20261011.md)完成装置处置及三画像验证，提交首轮回执；探索已完成（2026-10-11，Executor只读执行并伴随knowledge-first传播及精确普通文档Git），正式性能验证未启动未验证，P64阶段Ⅲ排队。
 
 ## 2. 六项架构决策
 
