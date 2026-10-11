@@ -166,3 +166,5 @@ Owner要求一次下发最终目标；产品合同和终态同步方向均已归
 ## 性能恢复排期（Owner 2026-10-11）
 
 P64提示05剩余经Planner验收通过后，恢复P62性能验证。Owner已更换更高性能电脑；先做[新机就绪探索](../search_task/p62-performance-new-machine-readiness-20261011.md)，核实硬件/部署/构件与负载边界，再固定有限可观测验证。覆盖目标环境容量、突发拒绝时效、生产与OA推进、批项等待及多租户公平。前置验收及新机就绪探索均已完成；当前有限性能VERIFYING，第三轮已审查、待后续裁量，有限性能三轮未通过、VERIFYING；既有功能COMPLETED保持，P64阶段Ⅲ保留排队。详见[恢复安排](../product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-performance-resume-20261011.md)。
+
+2026-10-12第三轮[补充审查01](../product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-03-addendum-01.md)已采信迁移/process回归、P3测试完成与00:46远端回读；G5生命周期/同步剩余、G2/G3保持，整体VERIFYING。

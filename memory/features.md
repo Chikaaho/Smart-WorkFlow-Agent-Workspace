@@ -1,6 +1,6 @@
 # 功能摘要
 
-2026-10-12；Planner。P62批准功能COMPLETED；有限性能第三轮未通过、VERIFYING。G1到达覆盖/G4闭环已关闭；G2提交观测可复算性、G3互换保护推进、G5必要收尾未关闭。P64 IN_PROGRESS，Ⅰ/ⅡPASSED、Ⅲ排队，整体收尾未进入；策略OFF。
+2026-10-12；Planner。P62批准功能COMPLETED；有限性能第三轮未通过、VERIFYING。G1到达覆盖/G4闭环已关闭；G2提交观测可复算性、G3互换保护推进、G5生命周期及同步剩余未关闭。P64 IN_PROGRESS，Ⅰ/ⅡPASSED、Ⅲ排队，整体收尾未进入；策略OFF。
 
 唯一下一动作：Owner按[第三轮审查](../product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-03.md)裁决原预算内公平调度修复及G2/G5剩余。累计审查3轮，本次授权已完成，不自动第四轮。
 
@@ -19,3 +19,5 @@
 - 非业务计数（均 COMPLETED）：v0.1.1-bugfix（Owner 范围关闭，2026-09-24）、v0.1.2-bugfix（Owner 范围关闭，2026-09-28）、v0.1.2-release（规划已确认，2026-09-28）、knowledge-full-reconciliation（2026-09-04）、P59（规划已确认，2026-09-05）、0.1.0 P53/P61 演示发布（2026-09-21）。
 - 更早阶段（均 COMPLETED，见 `knowledge/features/` 与 `knowledge/history/`）：p21 第44、v0.0.2-oa 第43、p4 第42、p58—p45、minimal-closure 等；V012-CODE-001 仍 READY。
 
+
+第三轮补充01：迁移/process回归原件、P3测试完成及00:46远端回读已采信；G5剩余为生命周期及当前同步，G2/G3不变。详见[补充审查](../product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-03-addendum-01.md)。

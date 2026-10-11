@@ -1,6 +1,6 @@
 # 近期有效决策摘要
 
-2026-10-12；Planner。P62批准功能COMPLETED；有限性能第三轮未通过、VERIFYING。G1到达覆盖/G4闭环已关闭；G2提交观测可复算性、G3互换保护推进、G5必要收尾未关闭。P64 IN_PROGRESS，Ⅰ/ⅡPASSED、Ⅲ排队，整体收尾未进入；策略OFF。
+2026-10-12；Planner。P62批准功能COMPLETED；有限性能第三轮未通过、VERIFYING。G1到达覆盖/G4闭环已关闭；G2提交观测可复算性、G3互换保护推进、G5生命周期及同步剩余未关闭。P64 IN_PROGRESS，Ⅰ/ⅡPASSED、Ⅲ排队，整体收尾未进入；策略OFF。
 
 唯一下一动作：Owner按[第三轮审查](../product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-03.md)裁决原预算内公平调度修复及G2/G5剩余。累计审查3轮，本次授权已完成，不自动第四轮。
 
@@ -18,3 +18,5 @@
 - 0.1.3 COMPLETED（Owner 已验收，2026-09-30）；UAT 运行 0.1.3 种子基线 v0.1.0；发布/部署身份保留原时点。
 - 2026-10-12：Owner授权的一轮续办已完成审查03，累计3轮。G1/G4关闭；G2/G3/G5保留真实剩余，建议原预算内兑现执行层公平。提交后观测原件不可用汇总或250ms配置推定；完整画像尚未通过。
 
+
+第三轮补充01：迁移/process回归原件、P3测试完成及00:46远端回读已采信；G5剩余为生命周期及当前同步，G2/G3不变。详见[补充审查](../product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-03-addendum-01.md)。

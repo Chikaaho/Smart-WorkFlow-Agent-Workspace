@@ -72,3 +72,5 @@ Executor获明确授权knowledge-first同步受影响当前入口：knowledge/cu
 普通授权文档及实现Git按system.md §0.8.1收尾，包含本轮及上一轮授权规划文档；不把Planner写文档视为knowledge/Git已同步。工程分支遵守Owner从develop建立feature/xxx约定，Executor先核当前变更归属、采用隔离任务分支并确保测量源包含需验证的P64变化，不擅自重置现有检出；常规已验证已推送指针自行核实决定并报告。无发布、部署、强推或启用生产策略授权。
 
 本轮总3阶段：合同核对完成、方向下发完成、验收进行中（第三轮审查已完成，G1/G4关闭、G2/G3/G5待后续裁量）；已完成2/进行中1/未开始0。唯一下一动作：Owner按第三轮审查裁决剩余项，不自动第四轮。P64Ⅰ/ⅡPASSED、Ⅲ排队，整体收尾未进入。
+
+2026-10-12第三轮[补充审查01](../receipts/planning-review-performance-bounded-03-addendum-01.md)已采信迁移/process回归、P3测试完成与00:46远端回读；G5生命周期/同步剩余、G2/G3保持，整体VERIFYING。

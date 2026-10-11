@@ -1,3 +1,5 @@
+> 后续证据核销见[补充审查01](planning-review-performance-bounded-03-addendum-01.md)：迁移、回归、P3测试完成及00:46远端回读已证，整体仍VERIFYING。以下保留首次审查时点。
+
 # P62有限性能第三轮审查：未通过，返回具体取舍
 
 2026-10-12；Planner。按Owner“那就搞”授权的续办提示02审查[回执03](performance-bounded-20261011-03.md)。已读取三个r3运行的24份HTTP样本、3146条pairing、环境、到达、统计、回调、资源及PG控制输出，查阅尝试说明与既有G5原件；未读取代码、knowledge或执行工程/Git。独立结果见[复算03](planning-recompute-performance-bounded-03.json)。
