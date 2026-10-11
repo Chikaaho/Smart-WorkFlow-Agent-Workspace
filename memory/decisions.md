@@ -1,8 +1,8 @@
 # 近期有效决策摘要
 
-P64=IN_PROGRESS；阶段ⅠPASSED锁定、阶段ⅡVERIFYING（2026-10-10复审03）、阶段Ⅲ未验收。唯一当前执行入口：product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase2-02.md；Executor已提交回执04待Planner独立验收。回执04已核：候选领取最小修复（claimTask+端点+UI；张三200/李四403/乙2305/乙办理FAILED）、真实Chrome可见主链（实填办理+真实冲突→有权恢复→SETTLED2/2→父APPROVED、桌面/768像素、索引180行、回查面板实值）、COUNT/NONE/取消终态断言、交叉读取200=平台角色域语义（留规划）与列表出口0串号、清理前冻结快照、4跳/跨租户/循环、根链1000/硬8/派发上限、回退边界实测、门禁修复5类；engine114/0+process379/0+system363/0+锚56/0+Web四门exit0（1385+3）；RUNNING=0/端口零监听。47、46/22/22=90、ADV64、问题57、P63/VB、P62延期/新策略OFF、gitlink78495dc保持。HK-Z核查通过/间歇根因未定；HK-C授权后一次核实通过、当前trusted，Owner已确认Codex验证；原自然Stop无新增可归属原件，不催办或重启治理。
+P64 IN_PROGRESS；ⅠPASSED锁定、ⅡVERIFYING（2026-10-11复审04）、Ⅲ未验收。唯一执行入口：[三级提示03](../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase2-03.md)，追加回执05。[回执04复审](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-2-04.md)锁定领取/真实提交主链/冲突恢复、NONE/取消/稳定行/冻结及部分护栏；剩余7项为对象隔离、页面可读/768、部门与链长、根实例计数、受影响旧在役、权威覆盖及原流封装。门禁聚合/自身结束未独立闭合，不晋级基线。47、46/22/22=90、ADV64、问题57、P63/VB、P62延期/新策略OFF、gitlink保持。Codex授权核实通过、trusted，Owner确认验证，信任待办关闭，无新Admin续办；ZCode前次核查通过、间歇根因未定。
 
-> 同步点：2026-10-10（Planner阶段Ⅱ复审03/二级提示02；Codex授权核实通过且当前trusted）；Executor按knowledge-first覆盖实际当前入口。
+> 同步点：2026-10-11（Planner阶段Ⅱ复审04/三级提示03）；Planner已修许可摘要，Executor按knowledge-first补权威实际覆盖与新批次Git。
 
 - P64：业务主链以多流程编排；主表/节点表/变量各司其职，JS只判断、动作受控执行；后台源岗位→受托岗位委托映射，经组织任职解析实际办理人、同轮冻结；分组子流程隔离回写、四等待策略及迟到结果冻结。变量有效轮次/缺值、S2八组合、数量账业务结果、规模护栏与存量兼容已收敛，详见方向。
 - 当前状态与历史物理分离；当前值只见 `knowledge/current-status.md`（历轮 P63/P62 长条目已迁 `knowledge/history/current-status-through-2026-10-08-p63-stage3-before.md`）；终态机器契约单一源 `.codex/governance/terminal-contract.json`。

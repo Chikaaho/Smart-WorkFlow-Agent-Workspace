@@ -1,8 +1,8 @@
 # 功能摘要
 
-P64=IN_PROGRESS；阶段ⅠPASSED锁定、阶段ⅡVERIFYING（2026-10-10复审03）、阶段Ⅲ未验收。唯一当前执行入口：product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase2-02.md；Executor已提交回执04待Planner独立验收。回执04已核：候选领取最小修复（claimTask+端点+UI；张三200/李四403/乙2305/乙办理FAILED）、真实Chrome可见主链（实填办理+真实冲突→有权恢复→SETTLED2/2→父APPROVED、桌面/768像素、索引180行、回查面板实值）、COUNT/NONE/取消终态断言、交叉读取200=平台角色域语义（留规划）与列表出口0串号、清理前冻结快照、4跳/跨租户/循环、根链1000/硬8/派发上限、回退边界实测、门禁修复5类；engine114/0+process379/0+system363/0+锚56/0+Web四门exit0（1385+3）；RUNNING=0/端口零监听。47、46/22/22=90、ADV64、问题57、P63/VB、P62延期/新策略OFF、gitlink78495dc保持。HK-Z核查通过/间歇根因未定；HK-C授权后一次核实通过、当前trusted，Owner已确认Codex验证；原自然Stop无新增可归属原件，不催办或重启治理。
+P64 IN_PROGRESS；ⅠPASSED锁定、ⅡVERIFYING（2026-10-11复审04）、Ⅲ未验收。唯一执行入口：[三级提示03](../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase2-03.md)，追加回执05。[回执04复审](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-2-04.md)锁定领取/真实提交主链/冲突恢复、NONE/取消/稳定行/冻结及部分护栏；剩余7项为对象隔离、页面可读/768、部门与链长、根实例计数、受影响旧在役、权威覆盖及原流封装。门禁聚合/自身结束未独立闭合，不晋级基线。47、46/22/22=90、ADV64、问题57、P63/VB、P62延期/新策略OFF、gitlink保持。Codex授权核实通过、trusted，Owner确认验证，信任待办关闭，无新Admin续办；ZCode前次核查通过、间歇根因未定。
 
-- `p64-mes-advanced-orchestration`（P64，XL）：IN_PROGRESS；ⅠPASSED、ⅡVERIFYING（复审03/提示02→回执04）、Ⅲ及整体未验收。
+- `p64-mes-advanced-orchestration`（P64，XL）：IN_PROGRESS；ⅠPASSED、ⅡVERIFYING（复审04/提示03→回执05）、Ⅲ及整体未验收。
 - `p63-mes-workflow-foundations`（P63，L/P0）：**COMPLETED（规划已确认，2026-10-08）**；表单驱动动态并行审批+一次性 IoT 预约下发、手工并行兼容；VB01—VB04 见登记与 `state.md`；范围外=完整 MES/分管领导组织模型/周期预约/厂商实网/部署。
 - `p62-lowcode-transaction-bpm-tiering`（P62，XL）：**COMPLETED（规划已确认，2026-10-06）**；性能 Owner 延期未验证留账（`todo/p62-lowcode-transaction-bpm-tiering.md` §性能后续待办）；新资源策略默认关闭。
 - `backend-architecture-optimization`（XL）：**COMPLETED（规划已确认，2026-09-26）**；Phase1—6C 与 Final 完成；10 候选=BAO-01 `DEFERRED`+BAO-02 `PARTIAL`+8 `COMPLETED`；基线 1570/0/0/0（历史时点）。
