@@ -1,10 +1,10 @@
 # P64：MES高级流程编排与业务闭环
 
-> 当前路由（2026-10-12）：[第三轮审查](../../p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-03.md)已完成，有限性能VERIFYING；G1/G4关闭，G2/G3/G5剩余待Owner裁量。提示02本次授权已执行，不自动第四轮。
+> 当前路由（2026-10-12）：P62性能已搁置；Executor按[阶段Ⅲ执行入口](direction-p64-phase3-scenarios-delivery.md)继续P64完整交付。Ⅰ/ⅡPASSED，Ⅲ待执行，整体IN_PROGRESS。
 
 2026-10-08；Planner；XL；**IN_PROGRESS（阶段ⅠPASSED；阶段ⅡPASSED，2026-10-11）**。
 
-Owner要求：参考“MES申请分类”前半段，继续完善MES能力，先确定任务方向。产品输入为Owner补充的[高级流程摘要](../inputs/owner-bpm-advanced-summary-20261008.md)及[岗位委托补充](../inputs/owner-position-delegation-20261008.md)，以最新补充的通用岗位委托要求为准。本文确定目标、范围和验收边界。[探索规划复核01](../receipts/planning-review-readiness-01.md)接受现状探索；[架构方案](solution-p64-mes-advanced-orchestration.md)明确六项选择及三阶段边界。[方案复核02](../receipts/planning-solution-review-02.md)§5为传播授权来源；READY传播已收口，最终确认见[传播规划终审03](../receipts/planning-final-review-ready-state-propagation-03.md)。Owner完整实施授权保持，阶段Ⅰ已由[规划验收08](../receipts/planning-review-phase-1-08-passed.md)确认通过；阶段Ⅱ由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)确认通过；当前先恢复P62性能准备。本方向是唯一业务目标入口，实现步骤、接口、存储结构和测试设计由Executor负责。
+Owner要求：参考“MES申请分类”前半段，继续完善MES能力，先确定任务方向。产品输入为Owner补充的[高级流程摘要](../inputs/owner-bpm-advanced-summary-20261008.md)及[岗位委托补充](../inputs/owner-position-delegation-20261008.md)，以最新补充的通用岗位委托要求为准。本文确定目标、范围和验收边界。[探索规划复核01](../receipts/planning-review-readiness-01.md)接受现状探索；[架构方案](solution-p64-mes-advanced-orchestration.md)明确六项选择及三阶段边界。[方案复核02](../receipts/planning-solution-review-02.md)§5为传播授权来源；READY传播已收口，最终确认见[传播规划终审03](../receipts/planning-final-review-ready-state-propagation-03.md)。Owner完整实施授权保持，阶段Ⅰ已由[规划验收08](../receipts/planning-review-phase-1-08-passed.md)确认通过；阶段Ⅱ由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)确认通过；当前继续P64阶段Ⅲ。本方向是唯一业务目标入口，实现步骤、接口、存储结构和测试设计由Executor负责。
 
 ## 1. 产品目标
 
@@ -144,13 +144,13 @@ XL阶段目标按产品能力划界：先形成可用的节点数据/变量/判�
 
 主要风险：读取未完成或错误轮次数据，重复事件启动多个流程，脚本越权，子流程泄露父表全量数据，按行序号误写，结果回写和Barrier推进脱节，ANY/NONE迟到结果改写下游事实，岗位解析歧义、循环委托或委托变更污染已生成任务，递归或异常循环失控，以及新引擎语义破坏存量。
 
-当前明确边界：建设MES业务编排样板及公共平台能力；完整生产排程/MRP、全套ERP/WMS、真实厂商网络/工厂部署、硬实时和物理恰一次不属于本轮完成口径。Owner10-11授权阶段Ⅱ通过后恢复P62性能准备；当前有限性能VERIFYING，第三轮后待裁量，新资源策略默认关闭。周期发起主机回收、周期预约、任意即席子流程和全部复杂组织模型继续独立候选；S3可由有权用户手工发起，周期调度另行选题。
+当前明确边界：建设MES业务编排样板及公共平台能力；完整生产排程/MRP、全套ERP/WMS、真实厂商网络/工厂部署、硬实时和物理恰一次不属于本轮完成口径。Owner10-11授权阶段Ⅱ通过后恢复P62性能准备；当前有限性能VERIFYING，已按Owner10-12裁决搁置，新资源策略默认关闭。周期发起主机回收、周期预约、任意即席子流程和全部复杂组织模型继续独立候选；S3可由有权用户手工发起，周期调度另行选题。
 
 ## 7. 登记与当前下一动作
 
 P64为IN_PROGRESS；阶段ⅠPASSED（2026-10-10验收08），阶段ⅡPASSED、阶段Ⅲ未验收，不晋级功能数或核销既有P编号/清单。当前正式功能47、原90行46/22/22、ADV64和既有验证集合保持。关联ADV-M11-F01-04可复用子流程、ADV-M11-F02-02规则矩阵与P2/P4/P26能力子集，登记关联不等于这些总项已完成。
 
-下一动作：Owner按[第三轮审查](../../p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-03.md)裁决G2/G3/G5剩余；G1/G4已关闭，不自动第四轮；探索已完成（2026-10-11，Executor只读执行并伴随knowledge-first传播阶段ⅡPASSED及精确普通文档Git），有限性能三轮未通过、VERIFYING，P64阶段Ⅲ排队。
+下一动作：Executor按[阶段Ⅲ执行入口](direction-p64-phase3-scenarios-delivery.md)完成场景与整体交付；探索已完成（2026-10-11，Executor只读执行并伴随knowledge-first传播阶段ⅡPASSED及精确普通文档Git），有限性能三轮未通过、VERIFYING，P64阶段Ⅲ待执行。
 
 探索及未来验证遵守system.md：有限输入/输出/完成条件，不做非必要hash、不空转等待、不启动不可控后台任务、不擅停用户服务；正式UI证据来自可见可交互会话。规划阶段不编译、测试、迁移、访问数据库或控制设备。
 

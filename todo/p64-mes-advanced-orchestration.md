@@ -1,6 +1,6 @@
 # P64总进度：MES高级流程编排与业务闭环
 
-> 当前路由（2026-10-12，Owner 裁决后）：P62 有限性能搁置为已知延期问题（[第三轮审查](../product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-03.md)及补充01保持；不安排第四轮）；当前方向=P64 阶段Ⅲ接续，完整实施授权持续。
+> 当前路由（2026-10-12）：P62性能已搁置；Executor按[阶段Ⅲ入口](../product/p64-mes-advanced-orchestration/ready/direction-p64-phase3-scenarios-delivery.md)继续P64，回执phase-3-completion-receipt-01.md。
 
 2026-10-11；Planner。P64整体IN_PROGRESS。完整范围为3个业务阶段，再完成整体终态收尾；已验收通过2个业务阶段，剩阶段Ⅲ及整体收尾。阶段数2/3不表示工时或总工作量完成67%。
 
