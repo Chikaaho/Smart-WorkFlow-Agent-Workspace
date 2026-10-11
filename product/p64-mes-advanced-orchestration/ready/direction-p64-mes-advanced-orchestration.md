@@ -1,8 +1,8 @@
 # P64：MES高级流程编排与业务闭环
 
-2026-10-08；Planner；XL；**IN_PROGRESS（阶段ⅠPASSED；阶段ⅡVERIFYING，2026-10-11）**。
+2026-10-08；Planner；XL；**IN_PROGRESS（阶段ⅠPASSED；阶段ⅡPASSED，2026-10-11）**。
 
-Owner要求：参考“MES申请分类”前半段，继续完善MES能力，先确定任务方向。产品输入为Owner补充的[高级流程摘要](../inputs/owner-bpm-advanced-summary-20261008.md)及[岗位委托补充](../inputs/owner-position-delegation-20261008.md)，以最新补充的通用岗位委托要求为准。本文确定目标、范围和验收边界。[探索规划复核01](../receipts/planning-review-readiness-01.md)接受现状探索；[架构方案](solution-p64-mes-advanced-orchestration.md)明确六项选择及三阶段边界。[方案复核02](../receipts/planning-solution-review-02.md)§5为传播授权来源；READY传播已收口，最终确认见[传播规划终审03](../receipts/planning-final-review-ready-state-propagation-03.md)。Owner完整实施授权保持，阶段Ⅰ已由[规划验收08](../receipts/planning-review-phase-1-08-passed.md)确认通过；当前按[阶段Ⅱ方向](direction-p64-phase2-personnel-parent-child.md)继续人员与父子协作。本方向是唯一业务目标入口，实现步骤、接口、存储结构和测试设计由Executor负责。
+Owner要求：参考“MES申请分类”前半段，继续完善MES能力，先确定任务方向。产品输入为Owner补充的[高级流程摘要](../inputs/owner-bpm-advanced-summary-20261008.md)及[岗位委托补充](../inputs/owner-position-delegation-20261008.md)，以最新补充的通用岗位委托要求为准。本文确定目标、范围和验收边界。[探索规划复核01](../receipts/planning-review-readiness-01.md)接受现状探索；[架构方案](solution-p64-mes-advanced-orchestration.md)明确六项选择及三阶段边界。[方案复核02](../receipts/planning-solution-review-02.md)§5为传播授权来源；READY传播已收口，最终确认见[传播规划终审03](../receipts/planning-final-review-ready-state-propagation-03.md)。Owner完整实施授权保持，阶段Ⅰ已由[规划验收08](../receipts/planning-review-phase-1-08-passed.md)确认通过；阶段Ⅱ由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)确认通过；当前先恢复P62性能准备。本方向是唯一业务目标入口，实现步骤、接口、存储结构和测试设计由Executor负责。
 
 ## 1. 产品目标
 
@@ -128,7 +128,7 @@ P63已发布的部门负责人语义继续原义；新岗位来源/委托规则�
 | A11 | 用户可见浏览器完成配置与多角色运行，桌面和常见窄屏可用；业务单据、父子实例、任务、轮次、变量和动作结果之间可回查。 |
 | A12 | 存量发布定义和真实运行实例保持原义；P63手工/动态并行、来源去重和预约语义不漂移；新增持久数据可升级且启停/回退边界明确，受影响工程门禁通过。 |
 
-这是收敛后的方向级验收合同，阶段Ⅰ已由验收08确认通过、阶段Ⅱ复审05仍VERIFYING；整体A01—A12尚未通过。Executor自行制定实现和最小充分验证，回执标明行为层级、对象、结果、证据路径；规划独立验收只核实际交付与证据，不以源码存在或自述通过。
+这是收敛后的方向级验收合同，阶段Ⅰ已由验收08确认通过、阶段Ⅱ验收09已PASSED；整体A01—A12尚未通过。Executor自行制定实现和最小充分验证，回执标明行为层级、对象、结果、证据路径；规划独立验收只核实际交付与证据，不以源码存在或自述通过。
 
 ## 6. 范围、风险与阶段边界
 
@@ -142,14 +142,16 @@ XL阶段目标按产品能力划界：先形成可用的节点数据/变量/判�
 
 主要风险：读取未完成或错误轮次数据，重复事件启动多个流程，脚本越权，子流程泄露父表全量数据，按行序号误写，结果回写和Barrier推进脱节，ANY/NONE迟到结果改写下游事实，岗位解析歧义、循环委托或委托变更污染已生成任务，递归或异常循环失控，以及新引擎语义破坏存量。
 
-当前明确边界：建设MES业务编排样板及公共平台能力；完整生产排程/MRP、全套ERP/WMS、真实厂商网络/工厂部署、硬实时和物理恰一次不属于本轮完成口径。P62性能保持Owner延期未验证，新资源策略默认关闭。周期发起主机回收、周期预约、任意即席子流程和全部复杂组织模型继续独立候选；S3可由有权用户手工发起，周期调度另行选题。
+当前明确边界：建设MES业务编排样板及公共平台能力；完整生产排程/MRP、全套ERP/WMS、真实厂商网络/工厂部署、硬实时和物理恰一次不属于本轮完成口径。Owner10-11授权阶段Ⅱ通过后恢复P62性能准备；当前未启动未验证，新资源策略默认关闭。周期发起主机回收、周期预约、任意即席子流程和全部复杂组织模型继续独立候选；S3可由有权用户手工发起，周期调度另行选题。
 
 ## 7. 登记与当前下一动作
 
-P64为IN_PROGRESS；阶段ⅠPASSED（2026-10-10验收08），阶段ⅡVERIFYING、阶段Ⅲ未验收，不晋级功能数或核销既有P编号/清单。当前正式功能47、原90行46/22/22、ADV64和既有验证集合保持。关联ADV-M11-F01-04可复用子流程、ADV-M11-F02-02规则矩阵与P2/P4/P26能力子集，登记关联不等于这些总项已完成。
+P64为IN_PROGRESS；阶段ⅠPASSED（2026-10-10验收08），阶段ⅡPASSED、阶段Ⅲ未验收，不晋级功能数或核销既有P编号/清单。当前正式功能47、原90行46/22/22、ADV64和既有验证集合保持。关联ADV-M11-F01-04可复用子流程、ADV-M11-F02-02规则矩阵与P2/P4/P26能力子集，登记关联不等于这些总项已完成。
 
-下一动作：Executor按[提示04](../receipts/planning-execution-prompt-p64-phase2-04.md)（[复审05](../receipts/planning-review-phase-2-05.md)）及[阶段Ⅱ方向](direction-p64-phase2-personnel-parent-child.md)收敛最新7项，追加回执06。已过布局/表格/对象清理及既有明确子事实锁定，只核受影响行为和最小原证；knowledge-first实际覆盖与新Git另核。完整授权/合同保持，阶段Ⅰ不重开；READY传播/G1—G4关闭，P63/VB和gitlink锁定。Codex已验证，无新Admin续办。
+下一动作：Planner读取[P62新机就绪探索回执](../../../search_fallback/p62-performance-new-machine-readiness-20261011.md)并固定有限性能方向（负载/预算/验证边界）；探索已完成（2026-10-11，Executor只读执行并伴随knowledge-first传播阶段ⅡPASSED及精确普通文档Git），正式性能验证未启动未验证，P64阶段Ⅲ排队。
 
 探索及未来验证遵守system.md：有限输入/输出/完成条件，不做非必要hash、不空转等待、不启动不可控后台任务、不擅停用户服务；正式UI证据来自可见可交互会话。规划阶段不编译、测试、迁移、访问数据库或控制设备。
+
+Planner按[阶段Ⅱ过程复盘](../receipts/planning-process-review-phase2-20261011.md)采用最小充分验收：不默认要求每轮新建全附件哈希清单；确需核产物身份或完整性时说明具体对象和疑点。首轮一次列齐必要缺口，已过未变项沿用；原件已足够的转录问题直接更正，同类两次未收敛先换方法。产品行为及必要工程门禁保持。
 
 代码仓Server/Web已各自由develop创建`feature/p64-mes-advanced-orchestration`；工作区在`develop-sw`维护规划文档。后续实施在对应feature分支推进，启动时复核实际Git状态。commit采用规范格式和简短中文主题。

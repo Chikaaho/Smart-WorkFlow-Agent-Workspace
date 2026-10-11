@@ -1,6 +1,6 @@
 # P64阶段Ⅱ：人员与父子协作
 
-2026-10-11；Planner；XL既有阶段范围。阶段Ⅰ已[验收PASSED](../receipts/planning-review-phase-1-08-passed.md)；P64整体IN_PROGRESS，阶段ⅡVERIFYING。依据[主方向](direction-p64-mes-advanced-orchestration.md)R05—R08/§3.3—3.5、[方案](solution-p64-mes-advanced-orchestration.md)及[完整实施授权](authorization-p64-implementation-20261008.md)，本方向定义阶段合同；[复审05](../receipts/planning-review-phase-2-05.md)已独立复核[回执05](../receipts/phase-2-completion-receipt-05.md)，锁定已过表格/768、对象清理及既有子事实，保留最新7项精确剩余。[提示04](../receipts/planning-execution-prompt-p64-phase2-04.md)是唯一当前执行入口，追加回执06；旧提示/回执仅追溯，产品合同仍以主方向为准。
+2026-10-11；Planner；XL既有阶段范围。Ⅰ/ⅡPASSED、整体IN_PROGRESS、Ⅲ排队未验收。[主方向](direction-p64-mes-advanced-orchestration.md)/[方案](solution-p64-mes-advanced-orchestration.md)/[实施授权](authorization-p64-implementation-20261008.md)有效。[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)闭合回执09最后T/S两项，提示07转历史。
 
 ## 目标与正式通过条件
 
@@ -18,14 +18,14 @@
 
 ## 边界、证据与推进
 
-本阶段不裁决S1—S3整体、P64整体或生产部署。三场景完整业务效果属于阶段ⅢA08—A12；完整ERP/WMS/排程、周期调度、厂商实网、工厂部署与P62延期性能保持原边界。必要可复用配置可在授权内实现，不以单次种子演示替通用能力。
+本阶段不裁决S1—S3整体、P64整体或生产部署。三场景完整业务效果属于阶段ⅢA08—A12；完整ERP/WMS/排程、周期调度、厂商实网、工厂部署保持原边界；P62性能另按Owner10-11阶段Ⅱ通过后恢复安排推进。必要可复用配置可在授权内实现，不以单次种子演示替通用能力。
 
 阶段Ⅰ已过语义/测试/768/升级/动作恢复锁定，只有实际实现变化或新增反证涉及范围才重新核验，并说明失效依据。有限输入/输出/完成条件、稳定任务身份、任务特定超时/观测/自身清理符合system；不空转等待、不启动不可控后台任务、不停Owner已有服务。不读写秘密到回执。
 
-在Server/Web既有feature/p64-mes-advanced-orchestration连续实施，启动时核实工作树/分支/远端，以新原件固定截止；根Server gitlink78495dc保留。普通精确批次提交推送授权持续，发布/合并/tag/部署须专项授权。
+在Server/Web既有feature/p64-mes-advanced-orchestration连续实施，启动时核实工作树/分支/远端，以新原件固定截止；两gitlink旧许可与07实际索引冲突，来源已核，Owner已认可保留两值，同类常规Git指针调整自行核实决定并报告。普通精确批次提交推送授权持续，发布/合并/tag/部署须专项授权。
 
-同时按既有knowledge-first同步范围落本轮唯一状态：P64 IN_PROGRESS、阶段ⅠPASSED、阶段ⅡVERIFYING（复审05，提示04收敛）；阶段Ⅲ未验收。当前功能47、46/22/22=90、ADV64、问题57、其他P、P63/VB、P62延期/新策略OFF不变；实际受影响当前入口逐字段/值/时点回读，不用“均同步”替覆盖证据。
+同时按既有knowledge-first同步范围落本轮唯一状态：P64 IN_PROGRESS、阶段ⅠPASSED、阶段ⅡPASSED（验收09）；阶段Ⅲ未验收。当前功能47、46/22/22=90、ADV64、问题57、其他P、P63/VB、P62性能就绪探索已完成（2026-10-11）/正式验证未启动未验证/新策略OFF不变；实际受影响当前入口逐字段/值/时点回读，不用“均同步”替覆盖证据。
 
-阶段Ⅱ7项剩余闭合后追加`receipts/phase-2-completion-receipt-06.md`，逐项独立证据包，提交真实行为/对象/结果/原件与层级、修改/ADR/实际门禁/权威覆盖/新Git/自身收尾；授权内仍可执行则继续，真实外部阻塞按既有契约报告。阶段通过由Planner独立裁决，不自写功能PASSED/COMPLETED或核销计数。
+阶段Ⅱ由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)确认PASSED，补证账本0；提示07及更早仅作历史。下一动作：Planner读取[P62新机就绪探索回执](../../../search_fallback/p62-performance-new-machine-readiness-20261011.md)并固定有限性能方向（负载/预算/验证边界）；探索已完成（2026-10-11，Executor只读执行并伴随knowledge-first传播及精确普通文档Git），正式性能验证未启动未验证，P64阶段Ⅲ排队。
 
-新会话提示：“你是执行。读system/Executor/目标工程宪法及提示04/复审05、本方向；阶段Ⅰ和阶段Ⅱ明确已过子项锁定。收敛系统派发对象的普通办理者权限、已恢复诊断当前展示、链长原断言/根占用、阶段Ⅱ在役关闭、权威实际回读及封装最新7项；先取原证，必要目标最小补验、受影响验证、自身精确收尾、knowledge-first覆盖、新Git后追加回执06。Codex已验证、无Admin续办；原完整授权持续。”
+新会话提示：“你是执行。读阶段Ⅱ验收09和P62新机就绪探索，knowledge-first传播已确定阶段状态，有限只读探索并回传；尚不启动压测，不重跑已过业务。”

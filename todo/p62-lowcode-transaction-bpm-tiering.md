@@ -3,7 +3,7 @@
 - 登记日期：2026-09-30
 - 角色：Planner
 - 任务等级：XL（核心架构、跨模块契约、数据一致性与持续演进）
-- P62当前批准功能范围COMPLETED（规划已确认，2026-10-06）；功能与终态验收缺口均为0。正式功能46（45+1）、清单✅46/🟦22/⬜22=90、ADV64、问题57；P62批准功能交付已核销。性能Owner延期未验证、新资源策略默认关闭。最终裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md。无业务待办；执行侧仅按该裁决“最终确认传播”同步确认措辞、归档路径并提交本批文档，完成后等待Owner下一目标。
+- P62批准功能范围COMPLETED（规划已确认，2026-10-06），功能与终态缺口0；46是P62验收时点值，当前项目47，清单46/22/22=90、ADV64、问题57保持。Owner2026-10-11授权的新机性能恢复条件已由P64阶段Ⅱ验收09满足：[新机就绪探索](../search_task/p62-performance-new-machine-readiness-20261011.md)已完成（2026-10-11，回执 [search_fallback/p62-performance-new-machine-readiness-20261011.md](../search_fallback/p62-performance-new-machine-readiness-20261011.md)），正式性能验证未启动未验证；新资源策略默认OFF。唯一下一动作=Planner读取探索回执并固定有限性能方向。执行入口见[条件恢复安排](../product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-performance-resume-20261011.md)。
 - 排期优先级：Owner 于 2026-09-30 启动本轮规划；事务型数据能力为本需求内部优先建设项。
 - Owner 依据：本会话明确“根据评审方案列为正式需求”。
 - 评审输入：[原始方案索引](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/README.md)、[首轮架构评审方案](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/01-architecture-review-20260930.md)、[CTO 指导稿原文](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/02-cto-guidance-20260930.md)。两份原文纳入 knowledge 供追溯；本文件为正式需求范围与验收口径。
@@ -153,10 +153,14 @@ C1 类关键数据只能通过受控动作写入，表单保存、导入、批�
 
 同步 memory、knowledge、根与工程 README、需求池、功能清单、功能映射和当前交接入口；历史回执保留时点。配套方向：`product/p62-lowcode-transaction-bpm-tiering/passed/direction-p62-information-governance.md`，G01—G06 为治理验收标准。治理是 P62 的前置及贯穿交付要求，不另增功能数、不代替既有发布验收、不核销其他 P 编号。
 
-## 性能后续待办（Owner 2026-10-05裁决）
+## 历史性能延期（Owner 2026-10-05裁决）
 
 性能后续再说，开发机负载高，不再继续追测。范围为目标环境容量、突发拒绝时效、OA/批项等待及持续公平；原目标与历史超限保留，不记已通过、不认定已确诊实现缺陷。实际启用需求、目标设备/拓扑与负载明确后再规划有限、可观测验证。当前不追加压测、历史归因、扩容或长任务；功能正确性缺陷不归延期。该待办属于P62既有范围，不新增P编号或问题计数。
 
 ## 当前交付授权（2026-10-05）
 
-Owner要求一次下发最终目标；产品合同和终态同步方向均已归档passed/。批准功能交付COMPLETED（规划已确认，2026-10-06），功能与终态缺口0；裁决见 product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md。功能46，性能后续待办保持延期未验证。
+Owner要求一次下发最终目标；产品合同和终态同步方向均已归档passed/。批准功能交付COMPLETED（规划已确认，2026-10-06），功能与终态缺口0；裁决见 product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md。功能46为该时点值；当前性能排期由2026-10-11条件恢复安排覆盖，仍未验证。
+
+## 性能恢复排期（Owner 2026-10-11）
+
+P64提示05剩余经Planner验收通过后，恢复P62性能验证。Owner已更换更高性能电脑；先做[新机就绪探索](../search_task/p62-performance-new-machine-readiness-20261011.md)，核实硬件/部署/构件与负载边界，再固定有限可观测验证。覆盖目标环境容量、突发拒绝时效、生产与OA推进、批项等待及多租户公平。当前仍待前置验收，性能未启动、未验证；既有功能COMPLETED保持，P64阶段Ⅲ保留排队。详见[恢复安排](../product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-performance-resume-20261011.md)。
