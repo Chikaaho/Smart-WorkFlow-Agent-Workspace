@@ -1,6 +1,6 @@
 # P62新机有限性能验证方向
 
-> 当前路由（2026-10-12）：[第三轮审查](../receipts/planning-review-performance-bounded-03.md)已完成，有限性能VERIFYING；G1/G4关闭，G2/G3/G5剩余待Owner裁量。提示02本次授权已执行，不自动第四轮。
+> 当前路由（2026-10-12，Owner 裁决后）：P62 有限性能搁置为已知延期问题（不安排第四轮；未来方向=带权参数配置、后台可配置每租户优先级，见 [todo P62 §性能已知延期](../../../todo/p62-lowcode-transaction-bpm-tiering.md)）；项目方向转 P64 阶段Ⅲ接续。
 
 2026-10-11；Planner；P62既有XL范围的性能恢复。Owner已授权恢复及继续规划验收；依据新机就绪探索、资源合同§3、复核10/11及回执09。本文定义本轮合同，续办提示02已完成审查，当前结论见[第三轮审查](../receipts/planning-review-performance-bounded-03.md)，优先于旧文档的延期、等待探索和默认长窗口表述。既有功能COMPLETED；新机有限性能三轮未通过、VERIFYING。最新裁决见[第三轮审查](../receipts/planning-review-performance-bounded-03.md)；同项两轮未过后Owner明确“那就搞”，已授权[续办提示02](../receipts/planning-execution-prompt-performance-bounded-02.md)；提示01保留追溯，累计轮数不清零。
 
@@ -71,6 +71,8 @@ Executor获明确授权knowledge-first同步受影响当前入口：knowledge/cu
 
 普通授权文档及实现Git按system.md §0.8.1收尾，包含本轮及上一轮授权规划文档；不把Planner写文档视为knowledge/Git已同步。工程分支遵守Owner从develop建立feature/xxx约定，Executor先核当前变更归属、采用隔离任务分支并确保测量源包含需验证的P64变化，不擅自重置现有检出；常规已验证已推送指针自行核实决定并报告。无发布、部署、强推或启用生产策略授权。
 
-本轮总3阶段：合同核对完成、方向下发完成、验收进行中（第三轮审查已完成，G1/G4关闭、G2/G3/G5待后续裁量）；已完成2/进行中1/未开始0。唯一下一动作：Owner按第三轮审查裁决剩余项，不自动第四轮。P64Ⅰ/ⅡPASSED、Ⅲ排队，整体收尾未进入。
+本轮总3阶段：合同核对完成、方向下发完成、验收进行中（第三轮审查及补充01完成，Owner 已裁决搁置）；已完成2/进行中1/未开始0。唯一下一动作：P64 阶段Ⅲ接续（P62 有限性能搁置为已知延期，不安排第四轮）。P64Ⅰ/ⅡPASSED、Ⅲ接续，整体收尾未进入。
 
-2026-10-12第三轮[补充审查01](../receipts/planning-review-performance-bounded-03-addendum-01.md)已采信迁移/process回归、P3测试完成与00:46远端回读；G5生命周期/同步剩余、G2/G3保持，整体VERIFYING。
+2026-10-12第三轮[补充审查01](../receipts/planning-review-performance-bounded-03-addendum-01.md)已采信迁移/process回归、P3测试完成与00:46远端回读；补充01同步已关闭，G5仅剩历史生命周期证据缺失、G2/G3保持，整体VERIFYING。
+
+2026-10-12 Owner 裁决：P62 有限性能搁置为已知延期问题（不安排第四轮；未来方向=带权参数配置、后台可配置每租户优先级，见 [todo P62 §性能已知延期](../../../todo/p62-lowcode-transaction-bpm-tiering.md)）；方向转 P64 阶段Ⅲ接续。

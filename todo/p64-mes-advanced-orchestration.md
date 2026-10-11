@@ -1,6 +1,6 @@
 # P64总进度：MES高级流程编排与业务闭环
 
-> 当前路由（2026-10-12）：[第三轮审查](../product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-03.md)已完成，有限性能VERIFYING；G1/G4关闭，G2/G3/G5剩余待Owner裁量。提示02本次授权已执行，不自动第四轮。
+> 当前路由（2026-10-12，Owner 裁决后）：P62 有限性能搁置为已知延期问题（[第三轮审查](../product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-03.md)及补充01保持；不安排第四轮）；当前方向=P64 阶段Ⅲ接续，完整实施授权持续。
 
 2026-10-11；Planner。P64整体IN_PROGRESS。完整范围为3个业务阶段，再完成整体终态收尾；已验收通过2个业务阶段，剩阶段Ⅲ及整体收尾。阶段数2/3不表示工时或总工作量完成67%。
 
@@ -27,7 +27,7 @@
 
 ## 当前顺序
 
-按Owner已定排期，先恢复[P62新机性能准备](../product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-performance-resume-20261011.md)：[就绪探索](../search_task/p62-performance-new-machine-readiness-20261011.md)已完成（2026-10-11，回执 [search_fallback/p62-performance-new-machine-readiness-20261011.md](../search_fallback/p62-performance-new-machine-readiness-20261011.md)）→唯一下一动作=Owner按[第三轮审查](../product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-03.md)裁决G2/G3/G5剩余；G1/G4已关闭，不自动第四轮。P64阶段Ⅲ随后继续，完整[实施授权](../product/p64-mes-advanced-orchestration/ready/authorization-p64-implementation-20261008.md)保持。P62为独立任务，不计入P64的3个阶段。
+按Owner已定排期，先恢复[P62新机性能准备](../product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-performance-resume-20261011.md)：[就绪探索](../search_task/p62-performance-new-machine-readiness-20261011.md)已完成（2026-10-11，回执 [search_fallback/p62-performance-new-machine-readiness-20261011.md](../search_fallback/p62-performance-new-machine-readiness-20261011.md)）→P62 有限性能已由 Owner 搁置为已知延期问题（2026-10-12，不安排第四轮；未来方向=带权参数配置、后台可配置每租户优先级，见 [P62 todo §性能已知延期](p62-lowcode-transaction-bpm-tiering.md)）；**当前唯一下一动作=P64 阶段Ⅲ接续**，完整[实施授权](../product/p64-mes-advanced-orchestration/ready/authorization-p64-implementation-20261008.md)保持。P62为独立任务，不计入P64的3个阶段。
 
 阶段Ⅱ新裁决的knowledge-first传播和精确普通文档Git已随2026-10-11探索收尾完成（见search_fallback回执§覆盖矩阵与§Git）。47/90/ADV64/57、P63/VB及正式基线保持；根指针7fffef9/4333145已认可，常规调整自主核实决定。Codex无Admin续办。
 

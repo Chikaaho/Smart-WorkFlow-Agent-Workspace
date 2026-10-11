@@ -1,11 +1,11 @@
 # P62 低代码事务能力与 BPM 分级执行架构
 
-> 当前路由（2026-10-12）：[第三轮审查](../product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-03.md)已完成，有限性能VERIFYING；G1/G4关闭，G2/G3/G5剩余待Owner裁量。提示02本次授权已执行，不自动第四轮。
+> 当前路由（2026-10-12，Owner 裁决后）：P62 有限性能搁置为已知延期问题（[第三轮审查](../product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-03.md)及补充01/对账更正保持；不安排第四轮；未来方向=带权参数配置、后台可配置每租户优先级，见 §性能已知延期）。项目方向转 P64 阶段Ⅲ接续。
 
 - 登记日期：2026-09-30
 - 角色：Planner
 - 任务等级：XL（核心架构、跨模块契约、数据一致性与持续演进）
-- P62批准功能COMPLETED；有限性能第三轮审查未通过、VERIFYING。G1/G4关闭；G2提交观测、G3互换保护推进、G5必要收尾仍未关闭。唯一下一动作=Owner按第三轮审查裁决；47、46/22/22=90、ADV64、问题57保持，P64Ⅰ/ⅡPASSED、Ⅲ排队，策略OFF。
+- P62批准功能COMPLETED；有限性能三轮未通过、VERIFYING，已由 Owner 搁置为已知延期问题（2026-10-12，不安排第四轮；未来方向=带权参数配置、后台可配置每租户优先级）。已关闭=G1/G4、迁移/process回归、P3测试完成、回调/租户归属、G5大部分；随搁置保留=G2提交观测、G3互换保护推进、G5历史生命周期证据缺失。47、46/22/22=90、ADV64、问题57保持，P64Ⅰ/ⅡPASSED、Ⅲ接续，策略OFF。
 - 排期优先级：Owner 于 2026-09-30 启动本轮规划；事务型数据能力为本需求内部优先建设项。
 - Owner 依据：本会话明确“根据评审方案列为正式需求”。
 - 评审输入：[原始方案索引](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/README.md)、[首轮架构评审方案](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/01-architecture-review-20260930.md)、[CTO 指导稿原文](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/02-cto-guidance-20260930.md)。两份原文纳入 knowledge 供追溯；本文件为正式需求范围与验收口径。
@@ -167,4 +167,15 @@ Owner要求一次下发最终目标；产品合同和终态同步方向均已归
 
 P64提示05剩余经Planner验收通过后，恢复P62性能验证。Owner已更换更高性能电脑；先做[新机就绪探索](../search_task/p62-performance-new-machine-readiness-20261011.md)，核实硬件/部署/构件与负载边界，再固定有限可观测验证。覆盖目标环境容量、突发拒绝时效、生产与OA推进、批项等待及多租户公平。前置验收及新机就绪探索均已完成；当前有限性能VERIFYING，第三轮已审查、待后续裁量，有限性能三轮未通过、VERIFYING；既有功能COMPLETED保持，P64阶段Ⅲ保留排队。详见[恢复安排](../product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-performance-resume-20261011.md)。
 
-2026-10-12第三轮[补充审查01](../product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-03-addendum-01.md)已采信迁移/process回归、P3测试完成与00:46远端回读；G5生命周期/同步剩余、G2/G3保持，整体VERIFYING。
+2026-10-12第三轮[补充审查01](../product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-03-addendum-01.md)已采信迁移/process回归、P3测试完成与00:46远端回读；补充01同步已关闭，G5仅剩历史生命周期证据缺失、G2/G3保持，整体VERIFYING。
+
+## 性能已知延期（Owner 2026-10-12 裁决）
+
+Owner 裁决原文口径：“先放着吧，改变方向……写到todo里作为已知延期问题，这个不好取舍，甚至具体到后面需要作为带权参数配置，要可以在后台配置每个租户的优先级。”
+
+- **搁置**：P62 有限性能验证不再安排第四轮；保持 VERIFYING 留账（不核销、不晋级正式基线、不新增 P 编号或问题计数）。
+- **唯一真实超限**：两租户互换画像（保护租户 tenant100）审批受理→领取实测 6.8s 超 5s 预算（三轮实测+独立复核确认）；根因=执行层 FIFO 无租户公平（领取级已有按租户公平切片）。
+- **未来实现方向（Owner 指定）**：不按自动公平语义推进；改为**带权参数配置**——后台可配置每个租户的优先级。
+- **恢复条件**：Owner 明确指令后按带权优先级方案定方向，并复验受影响画像。
+- **已关闭子项**：G1 到达覆盖、G4 闭环、迁移检查、process 回归、P3 测试完成、回调/租户归属、G5 大部分（余历史生命周期证据缺失）。
+- **随搁置保留**：G2 提交观测可复算性、G3 互换保护推进、G5 历史生命周期证据口径。
