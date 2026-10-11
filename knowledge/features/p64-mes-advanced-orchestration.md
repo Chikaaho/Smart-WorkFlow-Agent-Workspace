@@ -23,7 +23,7 @@
 |---|---|
 | 产品方向（READY） | `product/p64-mes-advanced-orchestration/ready/direction-p64-mes-advanced-orchestration.md`（R01—R12、A01—A12、三场景 S1—S3、XL 阶段边界） |
 | 架构方案（READY） | `product/p64-mes-advanced-orchestration/ready/solution-p64-mes-advanced-orchestration.md`（PD01—PD06、用户路径、三阶段能力交付；阶段I=A01—A04、II=A05—A07、III=A08—A12） |
-| 当前规划复核 | [复审05](../../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-2-05.md)（2026-10-11，7项精确剩余账本）→ [提示04](../../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase2-04.md)（唯一执行入口，已执行完毕）→ [回执06](../../product/p64-mes-advanced-orchestration/receipts/phase-2-completion-receipt-06.md)（已提交待独立验收）；更早轮次（复审03/提示03/回执05、复审04 之前）全部追溯化 |
+| 当前规划复核 | [复审06](../../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-2-06.md)（2026-10-11，5个父ID精确剩余裁决）→ [提示05](../../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase2-05.md)（唯一执行入口，替代提示04）→ [回执07](../../product/p64-mes-advanced-orchestration/receipts/phase-2-completion-receipt-07.md)（已提交待独立验收，证据树 phase2-07）；更早轮次（复审05/提示04/回执06、复审04/提示03/回执05 及之前）全部追溯化 |
 | Owner 产品输入 | `product/p64-mes-advanced-orchestration/inputs/owner-bpm-advanced-summary-20261008.md`（BPM 变量/节点审批表单/Trigger 判断与配置化动作/多流程编排/两证券案例/主子流程与等待策略） |
 | Owner 岗位委托补充 | `product/p64-mes-advanced-orchestration/inputs/owner-position-delegation-20261008.md`（后台「源岗位→受托岗位」通用委托，按受托岗位任职解析办理人） |
 | 探索任务（已完成·历史） | `search_task/p64-mes-advanced-orchestration-readiness-20261008.md`（已标作历史） |
