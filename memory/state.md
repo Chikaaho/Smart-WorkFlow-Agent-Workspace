@@ -1,15 +1,15 @@
 # 当前状态摘要
 
-2026-10-11；Planner独立[复审04](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-2-04.md)完成。P64 IN_PROGRESS；阶段ⅠPASSED（验收08）锁定，ⅡVERIFYING、Ⅲ未验收。唯一下一动作：Executor按[三级提示03](../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase2-03.md)补7个剩余原子项，追加回执05。原完整实施/knowledge-first同步/普通精确提交推送授权持续，主方向留ready。
+2026-10-11；Planner[复审05](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-2-05.md)完成。P64 IN_PROGRESS；ⅠPASSED（验收08）锁定、ⅡVERIFYING、Ⅲ未验收。唯一下一动作：Executor按[提示04](../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase2-04.md)补最新7项后追加回执06。原完整实施/knowledge-first/普通精确Git授权持续，主方向留ready。
 
-回执03已核子事实继续锁定：CHILD保存发布及冻结版本一致、ALL2/2单次推进/父APPROVED、父行终值、基础聚合、17迁移与追加升级、当轮门禁/62哈希/自身收尾。完整边界见复审03，不外推整阶段。
+既有锁定：回执03/04明确的保存发布、ALL单次推进/父完成/父行/聚合、迁移、候选领取/办理、真实多角色主链及API冲突恢复、NONE/取消/稳定行/冻结、部分岗位及护栏。范围沿各复审，不外推整阶段。
 
-回执04本轮锁定：候选领取/办理和非候选/后到拒绝；真实Chrome提交主链、CONFLICT→有权API恢复、SETTLED2/2及父完成；NONE/取消、排序/重复/旧轮次断言；清理前冻结A/B/C；循环/跨租户、硬8/单次上限的明确断言；专门Flyway配置下回退验证观察。62/62哈希匹配、8份XML外层47/0/0/0；Web四门exit0、153+1文件/1385+3用例。三模块114/379/363和锚56仍为Executor声明，待聚合原件。实际父实例2e65f119-c4c5-11f1-aad4-00ff9e2a8dfb；非候选为HTTP200/业务code403，不写HTTP403。
+回执05新实证：表格明细可读、768基本7字段及节点/批次面板像素；58/58哈希，3XML40/0；Web四门exit0、153+1/1385+3、build3.08s；正确父2e65f119→batch2108953698084405249 SETTLED2/2→两项WRITTEN；5个实例最终discard HTTP200+SQL ru_task/ru_exec/RUNNING=0。三模块Reactor/exit0可读，114/382/365、锚56/Nested27待报告关联；链长/根计数目标XML已跑，安排断言原件待补，不晋级正式基线。
 
-剩余：P2-04a权限快照及真实数据出口隔离；02b-V来源明细[object Object]/768可访问/回写像素；05b-A部门优先及4合法/5拒绝；06a-C根链自动实例计数；06b受影响旧在役/入口关闭/回退边界；07b权威覆盖；07b-G门禁/生命周期/映射封装。已过项不重复验收。
+剩余：P2-04a普通办理者读取/办理系统派发自己的子记录并隔离别人；P2-02b-V-C已恢复却仍显示当前CONFLICT待处置；P2-05b-A已跑目标方法原断言；P2-06a-C实例计数原断言及同根不同batch占用；P2-06b阶段Ⅱ在役关闭后接缝；P2-07b权威实际行/Server功能清单；P2-07b-G报告/fixture/生命周期/身份封装。已过布局和对象清理不重验；手工自建SELF正向不外推系统派发对象。
 
-当前正式功能47；46/22/22=90、ADV64、问题57、其他P/明细不变。P63COMPLETED/VB锁定；P62批准范围COMPLETED，性能延期未验证、新策略OFF；正式基线不晋级。
+当前功能47；46/22/22=90、ADV64、问题57、其他P/明细不变。P63COMPLETED/VB锁定；P62批准范围COMPLETED、性能延期未验证、新策略OFF。
 
-回执04档案截止：Server d773f1d26c8d272ce7326e7259c54533766d8a3c、Web115f9c0bec311603ffe3bc80c7d122f3275c2592与远端一致，均feature/p64-mes-advanced-orchestration；根develop-sw后批次a5e5f15463cbb8ef08692cc727feb8d5bd8382e7。根索引Server78495dccf9a19c973eaeb2c29b84ff58b8faec69/Web7af86f24bcf33fb068bfe749598fe26e11009572固定。不是本轮新提交或发布/部署证明。
+回执05归档截止：Server51ea1cef04d00a69fe27e8e3d9f674bd432fe739、Web5d058b9a4621073566e59c0b5d15b1e59d4fb921（两仓feature/p64-mes-advanced-orchestration）、根develop-sw aa310731bccd1f77cfbb91718f314dc1ece718e4均等远端。根gitlink Server78495dccf9a19c973eaeb2c29b84ff58b8faec69/Web7af86f24bcf33fb068bfe749598fe26e11009572固定。不是本轮规划新文档提交或发布/部署证明。
 
-HK-C授权一次核实通过、2026-10-10 20:48 enabled/trusted/配置错误0，Owner确认验证、信任待办关闭；原自然Stop无新增原件，无新Admin续办。HK-Z前次核查通过、间歇根因未定。Hook独立。
+Codex授权核实已通过、Owner确认验证、trusted且信任待办关闭；原自然Stop无新增原件，无新Admin续办。ZCode前次核查通过、间歇根因未定。Hook独立。

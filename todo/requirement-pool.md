@@ -9,7 +9,7 @@
 
 ## Owner 优先级覆盖
 
-**2026-10-11 当前规划**：P64 IN_PROGRESS；ⅠPASSED锁定、Ⅱ[复审04](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-2-04.md)仍VERIFYING、Ⅲ未验收。唯一执行入口=[三级提示03](../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase2-03.md)，Executor补7项后追加回执05。领取/真实提交主链/冲突恢复、NONE/取消/稳定行/冻结及部分护栏已核锁定；对象隔离、页面可读/768、部门链长、根实例计数、受影响旧在役、权威覆盖及门禁/生命周期原流仍待闭合。47/90/ADV64/问题57、P63/VB、P62延期/策略OFF、gitlink保持。HK-C授权验证通过、trusted且信任待办关闭，无新Admin续办；HK-Z前次核查通过、间歇根因未定。
+**2026-10-11 当前规划**：P64 IN_PROGRESS；ⅠPASSED锁定、Ⅱ[复审05](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-2-05.md)仍VERIFYING、Ⅲ未验收。唯一执行入口=[提示04](../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase2-04.md)，Executor补最新7项后追加回执06。回执05表格/768布局、SQL对象清理及58哈希等已核；分配对象权限、已恢复诊断、链长原断言/根占用、阶段Ⅱ在役关闭、实际覆盖/封装待收口。47/90/ADV64/问题57、P63/VB、P62延期/策略OFF、gitlink保持。Codex已验证、trusted且信任待办关闭，无新Admin续办；ZCode前次核查通过、间歇根因未定。
 
 P62当前批准功能范围COMPLETED（规划已确认，2026-10-06）；功能与终态验收缺口均为0。正式功能46（45+1；**46为P62验收时点值，当前项目总数统一47**）、清单✅46/🟦22/⬜22=90、ADV64、问题57；P62批准功能交付已核销。性能Owner延期未验证、新资源策略默认关闭。最终裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md。P62无剩余业务验收项；本次探索已确认knowledge登记的最终确认传播；不外推发布或全入口实时状态。历史后续目标P63已完成；当前Owner目标为P64，排期见本节顶部。
 
@@ -159,7 +159,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 | P61 | 全系统用户可见错误码与提示语人性化治理 | Owner 2026-09-14/20；优先级P1；L；[归档方向](../product/p61-user-facing-message-humanization/passed/direction-p61-user-facing-message-humanization-scope-correction-20260920.md) | ✅ `COMPLETED（规划已确认，2026-09-20）`、已核销；不增加业务功能数 |
 | P62 | 低代码事务能力与 BPM 分级执行架构（OA / MES / WMS / IoT） | Owner 2026-09-30；XL；[正式需求](p62-lowcode-transaction-bpm-tiering.md)；[CTO 评审输入](p62-architecture-review-source-20260930.md) | P62当前批准功能范围COMPLETED（规划已确认，2026-10-06）；功能与终态验收缺口均为0。正式功能46（45+1；**46为P62验收时点值，当前项目总数统一47**）、清单✅46/🟦22/⬜22=90、ADV64、问题57；P62批准功能交付已核销。性能Owner延期未验证、新资源策略默认关闭。最终裁决：product/p62-lowcode-transaction-bpm-tiering/receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md。P62无剩余业务验收项；本次探索已确认knowledge登记的最终确认传播；不外推发布或全入口实时状态。历史后续目标P63已完成；当前Owner目标为P64，排期见本节顶部。 |
 | P63 | MES前置能力：动态并行审批与一次性预约IoT下发 | Owner 2026-10-06；L；[需求定义](p63-mes-workflow-foundations.md)；关联P60 I4/P21/P62 | **COMPLETED（规划已确认，2026-10-08）**；R01—R06批准交付核销，20/20、A01—A10、TS01—TS03全部通过；[最终裁决](../product/p63-mes-workflow-foundations/receipts/planning-final-review-terminal-sync-p63-mes-workflow-foundations-02-completed.md)；正式功能47、清单46/22/22零升降；六入口确认措辞传播已核销，业务验收锁定。 |
-| P64 | MES高级流程编排与业务闭环 | Owner 2026-10-08；XL；[需求索引](p64-mes-advanced-orchestration.md)；[产品方向](../product/p64-mes-advanced-orchestration/ready/direction-p64-mes-advanced-orchestration.md) | **IN_PROGRESS；ⅠPASSED（验收08）、ⅡVERIFYING（复审04/三级提示03→回执05）、Ⅲ未验收**；R01—R12/A01—A12保持；已过子项锁定，7项剩余见提示03；READY传播关闭，[完整实施授权](../product/p64-mes-advanced-orchestration/ready/authorization-p64-implementation-20261008.md)持续；不晋级功能数/核销既有P或明细。 |
+| P64 | MES高级流程编排与业务闭环 | Owner 2026-10-08；XL；[需求索引](p64-mes-advanced-orchestration.md)；[产品方向](../product/p64-mes-advanced-orchestration/ready/direction-p64-mes-advanced-orchestration.md) | **IN_PROGRESS；ⅠPASSED（验收08）、ⅡVERIFYING（复审05/提示04→回执06）、Ⅲ未验收**；R01—R12/A01—A12保持；已过子项锁定，最新7项见提示04；READY传播关闭，[完整实施授权](../product/p64-mes-advanced-orchestration/ready/authorization-p64-implementation-20261008.md)持续；不晋级功能数/核销既有P或明细。 |
 
 管理员P0治理插单（2026-09-15）：[连续执行与可见浏览器验收门禁](admin-machine-gate-continuous-visible-browser.md)已`COMPLETED（规划确认）`，本地提交`8e87899`，治理测试sh 70/70、PowerShell 49/49。该任务不并入P60业务计数；远程发布仍需Owner另行授权。
 

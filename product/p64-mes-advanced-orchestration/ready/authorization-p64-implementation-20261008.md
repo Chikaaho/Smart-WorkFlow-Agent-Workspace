@@ -7,7 +7,7 @@
 ## 1. 当前状态与唯一动作
 
 - 当前P64=IN_PROGRESS；阶段ⅠPASSED（2026-10-10[规划验收08](../receipts/planning-review-phase-1-08-passed.md)），阶段ⅡVERIFYING、阶段Ⅲ未验收。本规划会话未运行工程。
-- 唯一下一动作：Executor按[三级提示03](../receipts/planning-execution-prompt-p64-phase2-03.md)（依据[复审04](../receipts/planning-review-phase-2-04.md)）7项剩余账本与[阶段Ⅱ方向](direction-p64-phase2-personnel-parent-child.md)继续实施/补证，追加回执05；原完整实施授权有效，旧提示仅作追溯。
+- 唯一下一动作：Executor按[提示04](../receipts/planning-execution-prompt-p64-phase2-04.md)（依据[复审05](../receipts/planning-review-phase-2-05.md)）最新7项精确剩余及[阶段Ⅱ方向](direction-p64-phase2-personnel-parent-child.md)继续实施/补证，追加回执06；原完整实施授权有效，旧提示仅追溯。已过表格/768及对象清理不重演，原断言/封装先取既有原证。
 - READY传播及G1—G4已关闭，[传播终审03](../receipts/planning-final-review-ready-state-propagation-03.md)保留其时点裁决，不作为当前等待实施授权入口。
 - 此次实施授权覆盖既定完整P64，不为内部步骤或已授权后续阶段重复索要实施许可；各阶段仍提交行为回执，由Planner独立验收，阶段通过不替代整体A01—A12通过。
 
@@ -41,14 +41,14 @@
 
 ## 4. 当前事实同步授权与交付回执
 
-Executor获得以下明确状态同步写入授权：knowledge/current-status、session-handoff、P64登记、实际含P64当前字段的architecture/feature-reconciliation-index，Server功能清单焦点，以及memory五入口（README/state/handoff/features/decisions）与todo/requirement-pool、todo/P64索引及实际受影响product当前路由。按knowledge-first，同步阶段ⅠPASSED、整体IN_PROGRESS、阶段ⅡVERIFYING（复审04，三级提示03收敛）、阶段Ⅲ未验收、本文及阶段Ⅱ指针、实测Git/环境与唯一下一动作；不回填整体终态或晋级基线。
+Executor获得以下明确状态同步写入授权：knowledge/current-status、session-handoff、P64登记、实际含P64当前字段的architecture/feature-reconciliation-index，Server功能清单焦点，以及memory五入口（README/state/handoff/features/decisions）与todo/requirement-pool、todo/P64索引及实际受影响product当前路由。按knowledge-first，同步阶段ⅠPASSED、整体IN_PROGRESS、阶段ⅡVERIFYING（复审05，提示04收敛）、阶段Ⅲ未验收、本文及阶段Ⅱ指针、实测Git/环境与唯一下一动作；不回填整体终态或晋级基线。
 
 启动状态同步与实施连续进行，不单独开启READY传播补证轮次。未启动不得声称工程已运行；启动后移除“实施未授权/等待Owner实施指令”的当前待办。历史回执保持原时点。
 
-当前阶段Ⅱ执行回执追加到`product/p64-mes-advanced-orchestration/receipts/phase-2-completion-receipt-05.md`；7项各给独立证据包，展示目标→对象及行为→实际结果→原件位置与层级，同时报告实际修改、ADR、命令/门禁输出、兼容边界、权威覆盖及新Git结果。阶段Ⅰ验收08及阶段Ⅱ明确已过子项保留；封装不重跑业务，实际实现变化按影响复验。授权内尚可执行就继续，真实阻塞按既有终态契约报告。
+当前阶段Ⅱ执行回执追加到`product/p64-mes-advanced-orchestration/receipts/phase-2-completion-receipt-06.md`；7项各给独立证据包，展示目标→对象及行为→实际结果→原件位置与层级，同时报告实际修改、ADR、命令/门禁输出、兼容边界、权威覆盖及新Git结果。阶段Ⅰ验收08及阶段Ⅱ明确已过子项保留；封装不重跑业务，实际实现变化按影响复验。授权内尚可执行就继续，真实阻塞按既有终态契约报告。
 
 Executor不能自行写功能PASSED/COMPLETED、核销P/明细、晋级正式基线或移动方向至passed；后续整体通过与终态同步由Planner裁决。此授权在本会话已经成立，不需要再次确认。
 
 ## 5. 执行会话启动提示
 
-> 你是执行。Owner已授权P64完整实施。读system/Executor/目标工程宪法、本实施授权、主方向/方案及阶段Ⅱ提示03/复审04。在既有feature/p64-mes-advanced-orchestration分支收敛7项剩余，逐项证据包、受影响验证、自身精确收尾、knowledge-first实际覆盖及普通精确Git后追加回执05。阶段Ⅰ及阶段Ⅱ明确已过子项锁定，根gitlink保持；Codex授权验证通过，无新Admin续办；不重复索要既有授权。
+> 你是执行。Owner已授权P64完整实施。读system/Executor/目标工程宪法、本实施授权、主方向/方案及阶段Ⅱ提示04/复审05。在既有feature/p64-mes-advanced-orchestration分支收敛7项剩余，逐项证据包、受影响验证、自身精确收尾、knowledge-first实际覆盖及普通精确Git后追加回执06。阶段Ⅰ及阶段Ⅱ明确已过子项锁定，根gitlink保持；Codex授权验证通过，无新Admin续办；不重复索要既有授权。
