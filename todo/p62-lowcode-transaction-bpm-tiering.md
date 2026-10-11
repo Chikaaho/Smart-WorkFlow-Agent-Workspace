@@ -3,7 +3,7 @@
 - 登记日期：2026-09-30
 - 角色：Planner
 - 任务等级：XL（核心架构、跨模块契约、数据一致性与持续演进）
-- P62批准功能范围COMPLETED（规划已确认，2026-10-06），功能与终态缺口0；46是P62验收时点值，当前项目47，清单46/22/22=90、ADV64、问题57保持。Owner2026-10-11授权的新机性能恢复条件已由P64阶段Ⅱ验收09满足：[新机就绪探索](../search_task/p62-performance-new-machine-readiness-20261011.md)已完成（2026-10-11，回执 [search_fallback/p62-performance-new-machine-readiness-20261011.md](../search_fallback/p62-performance-new-machine-readiness-20261011.md)）；有限性能验证已执行两轮（首轮[回执01](../product/p62-lowcode-transaction-bpm-tiering/receipts/performance-bounded-20261011-01.md)首审未过；二轮按[补充提示01](../product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-performance-bounded-01.md)执行完毕，[回执02](../product/p62-lowcode-transaction-bpm-tiering/receipts/performance-bounded-20261011-02.md)已提交：G1/G4/G5成立、G2受保护5s P99预算P2未达9149ms、G3返回规划，**Planner第二轮验收未开始，不写性能PASSED**）；新资源策略默认OFF。唯一下一动作=Planner第二轮验收G1—G5（裁决点见回执02§4）。执行入口见[条件恢复安排](../product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-performance-resume-20261011.md)。
+- P62批准功能COMPLETED；有限性能第二轮未通过、VERIFYING（待Owner）。G4及堆2048MiB子项关闭，G1剩余/G2/G3/G5未关闭；唯一下一动作=Owner按[二轮审查](../product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-02.md)裁决剩余项续办，当前不自动启动第三轮。47、清单46/22/22=90、ADV64、问题57保持；P64Ⅰ/ⅡPASSED、Ⅲ排队，策略OFF。
 - 排期优先级：Owner 于 2026-09-30 启动本轮规划；事务型数据能力为本需求内部优先建设项。
 - Owner 依据：本会话明确“根据评审方案列为正式需求”。
 - 评审输入：[原始方案索引](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/README.md)、[首轮架构评审方案](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/01-architecture-review-20260930.md)、[CTO 指导稿原文](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/02-cto-guidance-20260930.md)。两份原文纳入 knowledge 供追溯；本文件为正式需求范围与验收口径。
@@ -163,4 +163,4 @@ Owner要求一次下发最终目标；产品合同和终态同步方向均已归
 
 ## 性能恢复排期（Owner 2026-10-11）
 
-P64提示05剩余经Planner验收通过后，恢复P62性能验证。Owner已更换更高性能电脑；先做[新机就绪探索](../search_task/p62-performance-new-machine-readiness-20261011.md)，核实硬件/部署/构件与负载边界，再固定有限可观测验证。覆盖目标环境容量、突发拒绝时效、生产与OA推进、批项等待及多租户公平。前置验收及新机就绪探索均已完成；当前有限性能VERIFYING，待Executor处理首审缺口，有限性能首审未通过、VERIFYING；既有功能COMPLETED保持，P64阶段Ⅲ保留排队。详见[恢复安排](../product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-performance-resume-20261011.md)。
+P64提示05剩余经Planner验收通过后，恢复P62性能验证。Owner已更换更高性能电脑；先做[新机就绪探索](../search_task/p62-performance-new-machine-readiness-20261011.md)，核实硬件/部署/构件与负载边界，再固定有限可观测验证。覆盖目标环境容量、突发拒绝时效、生产与OA推进、批项等待及多租户公平。前置验收及新机就绪探索均已完成；当前有限性能VERIFYING，待Owner裁决二轮剩余项，有限性能二轮未通过、VERIFYING；既有功能COMPLETED保持，P64阶段Ⅲ保留排队。详见[恢复安排](../product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-performance-resume-20261011.md)。

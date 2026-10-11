@@ -1,3 +1,5 @@
+> 当前路由（2026-10-11）：本提示对应二轮验收已完成，见[二轮审查](planning-review-performance-bounded-02.md)。同项达到两轮上限；本文仅供追溯，未经Owner明确裁决不自动开启第三轮。
+
 # P62有限性能补充提示01
 
 2026-10-11；Planner下发，Executor执行。依据[首轮审查](planning-review-performance-bounded-01.md)、[主方向](../ready/direction-p62-performance-bounded-20261011.md)和[执行回执01](performance-bounded-20261011-01.md)。本提示替代主方向末尾“提交首轮回执”的动作，成为唯一当前执行待办；主方向预算、范围及生命周期继续有效。旧原件保留。

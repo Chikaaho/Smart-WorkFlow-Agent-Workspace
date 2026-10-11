@@ -1,0 +1,528 @@
+[
+  {
+    "run": "p62-bounded-20261011-r2-p1-fixed-burst",
+    "http": [
+      {
+        "file": "burst-batch-samples.csv.gz",
+        "n": 6,
+        "p99": 978.0,
+        "max": 978.0,
+        "reject_p99": 978.0,
+        "outcomes": {
+          "REJECTED:BIZ 2428: 提交速率超出每租户工作单位上限，请按适用速率重试": 6
+        }
+      },
+      {
+        "file": "burst-load-samples.csv.gz",
+        "n": 2898,
+        "p99": 149.1,
+        "max": 336.5,
+        "reject_p99": 184.8,
+        "outcomes": {
+          "ACCEPTED": 504,
+          "REJECTED:BIZ 2427: 受理额度已满：持久工作量超出适用上限，请稍后重试或降低提交速率": 593,
+          "REJECTED:BIZ 2428: 提交速率超出每租户工作单位上限，请按适用速率重试": 48,
+          "SUCCEEDED": 1753
+        }
+      },
+      {
+        "file": "oa-approval-samples.csv.gz",
+        "n": 30,
+        "p99": 141.8,
+        "max": 141.8,
+        "reject_p99": null,
+        "outcomes": {
+          "ACCEPTED": 30
+        }
+      },
+      {
+        "file": "oa-read-samples.csv.gz",
+        "n": 59,
+        "p99": 298.4,
+        "max": 298.4,
+        "reject_p99": null,
+        "outcomes": {
+          "OK": 59
+        }
+      },
+      {
+        "file": "protected-light-samples.csv.gz",
+        "n": 145,
+        "p99": 142.7,
+        "max": 236.3,
+        "reject_p99": null,
+        "outcomes": {
+          "ACCEPTED": 145
+        }
+      },
+      {
+        "file": "protected-realtime-samples.csv.gz",
+        "n": 149,
+        "p99": 116.2,
+        "max": 132.8,
+        "reject_p99": null,
+        "outcomes": {
+          "SUCCEEDED": 149
+        }
+      },
+      {
+        "file": "protected-small-batch-samples.csv.gz",
+        "n": 30,
+        "p99": 184.9,
+        "max": 184.9,
+        "reject_p99": null,
+        "outcomes": {
+          "ACCEPTED": 30
+        }
+      }
+    ],
+    "pairing_rows": 1035,
+    "batch500": [
+      {
+        "kind": "batch",
+        "tenant": "100",
+        "key": "B-p62-bounded-20261011-r2-p1-fixed-burst-100-873fd646-e881-4d20-aeb7-3e0f3227b610",
+        "outcome": "ACCEPTED",
+        "command_key": "BATCH:B-p62-bounded-20261011-r2-p1-fixed-burst-100-873fd646-e881-4d20-aeb7-3e0f3227b610",
+        "command_status": "COMPLETED",
+        "command_create": "2026-10-11 22:20:57.323232",
+        "claimed_at": "2026-10-11 22:21:42.146996",
+        "finished_at": "2026-10-11 22:21:42.723267",
+        "resource_class": "BULK",
+        "resource_segment": "SHARED",
+        "resource_units": "500",
+        "resource_released_at": "-",
+        "claim_wait_ms": "44823",
+        "accept_to_finished_ms": "45400",
+        "instance_id": "batchStatus=COMPLETED items=500 succeeded=500 failed=0 pending=0 maxItemAcceptToSettleMs=45368.489000",
+        "instance_status": "-",
+        "invocation_id": "-",
+        "invocation_status": "-",
+        "invocation_duration_ms": "-",
+        "target_record_id": "-",
+        "target_invocation_create": "-",
+        "target_invocation_update": "-",
+        "target_record_update_time": "-",
+        "target_record_version": "-",
+        "target_record_qty_reserved": "-",
+        "approval_task_end": "-",
+        "approval_instance_end": "-"
+      }
+    ],
+    "approval_slowest": {
+      "kind": "approval",
+      "tenant": "0",
+      "key": "ea74cc16-c57e-11f1-bc84-00ff9e2a8dfb",
+      "outcome": "ACCEPTED",
+      "command_key": "TASK_APPROVE:ea74cc16-c57e-11f1-bc84-00ff9e2a8dfb:91999",
+      "command_status": "COMPLETED",
+      "command_create": "2026-10-11 22:20:57.028368",
+      "claimed_at": "2026-10-11 22:21:00.182957",
+      "finished_at": "2026-10-11 22:21:00.741166",
+      "resource_class": "OA",
+      "resource_segment": "SHARED",
+      "resource_units": "1",
+      "resource_released_at": "-",
+      "claim_wait_ms": "3154",
+      "accept_to_finished_ms": "3713",
+      "instance_id": "-",
+      "instance_status": "-",
+      "invocation_id": "-",
+      "invocation_status": "-",
+      "invocation_duration_ms": "-",
+      "target_record_id": "-",
+      "target_invocation_create": "-",
+      "target_invocation_update": "-",
+      "target_record_update_time": "-",
+      "target_record_version": "-",
+      "target_record_qty_reserved": "-",
+      "approval_task_end": "-",
+      "approval_instance_end": "-"
+    },
+    "light_succeeded_released": [
+      947,
+      947
+    ],
+    "nonterminal_batches": [],
+    "pg_shutdown": true,
+    "rowtime_diagnostics_not_commit_bounds": [
+      {
+        "kind": "light",
+        "tenant": "0",
+        "n": 145,
+        "p99": 1094.279052734375,
+        "max": 1095.8271484375
+      },
+      {
+        "kind": "light",
+        "tenant": "100",
+        "n": 506,
+        "p99": 6415.7548828125,
+        "max": 6632.26806640625
+      },
+      {
+        "kind": "approval",
+        "tenant": "0",
+        "n": 30,
+        "p99": 873.9599609375,
+        "max": 873.9599609375
+      },
+      {
+        "kind": "approval",
+        "tenant": "100",
+        "n": 0,
+        "p99": null,
+        "max": null
+      }
+    ]
+  },
+  {
+    "run": "p62-bounded-20261011-r2-p2-fixed-burst-swap",
+    "http": [
+      {
+        "file": "burst-batch-samples.csv.gz",
+        "n": 6,
+        "p99": 776.9,
+        "max": 776.9,
+        "reject_p99": 776.9,
+        "outcomes": {
+          "REJECTED:BIZ 2428: 提交速率超出每租户工作单位上限，请按适用速率重试": 6
+        }
+      },
+      {
+        "file": "burst-load-samples.csv.gz",
+        "n": 2791,
+        "p99": 141.8,
+        "max": 227.8,
+        "reject_p99": 145.7,
+        "outcomes": {
+          "ACCEPTED": 978,
+          "REJECTED:BIZ 2427: 受理额度已满：持久工作量超出适用上限，请稍后重试或降低提交速率": 114,
+          "SUCCEEDED": 1699
+        }
+      },
+      {
+        "file": "oa-approval-samples.csv.gz",
+        "n": 30,
+        "p99": 135.8,
+        "max": 135.8,
+        "reject_p99": null,
+        "outcomes": {
+          "ACCEPTED": 30
+        }
+      },
+      {
+        "file": "oa-read-samples.csv.gz",
+        "n": 60,
+        "p99": 297.2,
+        "max": 297.2,
+        "reject_p99": null,
+        "outcomes": {
+          "OK": 60
+        }
+      },
+      {
+        "file": "protected-light-samples.csv.gz",
+        "n": 150,
+        "p99": 167.0,
+        "max": 171.3,
+        "reject_p99": null,
+        "outcomes": {
+          "ACCEPTED": 150
+        }
+      },
+      {
+        "file": "protected-realtime-samples.csv.gz",
+        "n": 148,
+        "p99": 127.3,
+        "max": 138.2,
+        "reject_p99": null,
+        "outcomes": {
+          "SUCCEEDED": 148
+        }
+      },
+      {
+        "file": "protected-small-batch-samples.csv.gz",
+        "n": 30,
+        "p99": 140.4,
+        "max": 140.4,
+        "reject_p99": null,
+        "outcomes": {
+          "ACCEPTED": 30
+        }
+      }
+    ],
+    "pairing_rows": 1493,
+    "batch500": [
+      {
+        "kind": "batch",
+        "tenant": "0",
+        "key": "B-p62-bounded-20261011-r2-p2-fixed-burst-swap-0-fa2179fe-70fd-47ab-b7c9-499cd24f4734",
+        "outcome": "ACCEPTED",
+        "command_key": "BATCH:B-p62-bounded-20261011-r2-p2-fixed-burst-swap-0-fa2179fe-70fd-47ab-b7c9-499cd24f4734",
+        "command_status": "COMPLETED",
+        "command_create": "2026-10-11 22:24:19.64433",
+        "claimed_at": "2026-10-11 22:24:47.886974",
+        "finished_at": "2026-10-11 22:24:48.843669",
+        "resource_class": "BULK",
+        "resource_segment": "SHARED",
+        "resource_units": "500",
+        "resource_released_at": "-",
+        "claim_wait_ms": "28242",
+        "accept_to_finished_ms": "29199",
+        "instance_id": "batchStatus=COMPLETED items=500 succeeded=500 failed=0 pending=0 maxItemAcceptToSettleMs=29158.797000",
+        "instance_status": "-",
+        "invocation_id": "-",
+        "invocation_status": "-",
+        "invocation_duration_ms": "-",
+        "target_record_id": "-",
+        "target_invocation_create": "-",
+        "target_invocation_update": "-",
+        "target_record_update_time": "-",
+        "target_record_version": "-",
+        "target_record_qty_reserved": "-",
+        "approval_task_end": "-",
+        "approval_instance_end": "-"
+      }
+    ],
+    "approval_slowest": {
+      "kind": "approval",
+      "tenant": "100",
+      "key": "6b529a7e-c57f-11f1-9cda-00ff9e2a8dfb",
+      "outcome": "ACCEPTED",
+      "command_key": "TASK_APPROVE:6b529a7e-c57f-11f1-9cda-00ff9e2a8dfb:92999",
+      "command_status": "COMPLETED",
+      "command_create": "2026-10-11 22:24:44.699433",
+      "claimed_at": "2026-10-11 22:24:53.253797",
+      "finished_at": "2026-10-11 22:24:53.745493",
+      "resource_class": "OA",
+      "resource_segment": "SHARED",
+      "resource_units": "1",
+      "resource_released_at": "-",
+      "claim_wait_ms": "8554",
+      "accept_to_finished_ms": "9046",
+      "instance_id": "-",
+      "instance_status": "-",
+      "invocation_id": "-",
+      "invocation_status": "-",
+      "invocation_duration_ms": "-",
+      "target_record_id": "-",
+      "target_invocation_create": "-",
+      "target_invocation_update": "-",
+      "target_record_update_time": "-",
+      "target_record_version": "-",
+      "target_record_qty_reserved": "-",
+      "approval_task_end": "-",
+      "approval_instance_end": "-"
+    },
+    "light_succeeded_released": [
+      1405,
+      1405
+    ],
+    "nonterminal_batches": [],
+    "pg_shutdown": true,
+    "rowtime_diagnostics_not_commit_bounds": [
+      {
+        "kind": "light",
+        "tenant": "0",
+        "n": 981,
+        "p99": 14382.820068359375,
+        "max": 14462.472900390625
+      },
+      {
+        "kind": "light",
+        "tenant": "100",
+        "n": 149,
+        "p99": 9128.77392578125,
+        "max": 9136.7490234375
+      },
+      {
+        "kind": "approval",
+        "tenant": "0",
+        "n": 0,
+        "p99": null,
+        "max": null
+      },
+      {
+        "kind": "approval",
+        "tenant": "100",
+        "n": 30,
+        "p99": 8986.56689453125,
+        "max": 8986.56689453125
+      }
+    ]
+  },
+  {
+    "run": "p62-bounded-20261011-r2-p3-both-protected",
+    "http": [
+      {
+        "file": "oa-approval-samples.csv.gz",
+        "n": 30,
+        "p99": 39.1,
+        "max": 39.1,
+        "reject_p99": null,
+        "outcomes": {
+          "ACCEPTED": 30
+        }
+      },
+      {
+        "file": "oa-read-samples.csv.gz",
+        "n": 60,
+        "p99": 130.2,
+        "max": 130.2,
+        "reject_p99": null,
+        "outcomes": {
+          "OK": 60
+        }
+      },
+      {
+        "file": "protected-light-samples.csv.gz",
+        "n": 149,
+        "p99": 62.9,
+        "max": 65.7,
+        "reject_p99": null,
+        "outcomes": {
+          "ACCEPTED": 149
+        }
+      },
+      {
+        "file": "protected-realtime-samples.csv.gz",
+        "n": 149,
+        "p99": 46.0,
+        "max": 47.2,
+        "reject_p99": null,
+        "outcomes": {
+          "SUCCEEDED": 149
+        }
+      },
+      {
+        "file": "protected-small-batch-samples.csv.gz",
+        "n": 30,
+        "p99": 47.0,
+        "max": 47.0,
+        "reject_p99": null,
+        "outcomes": {
+          "ACCEPTED": 30
+        }
+      },
+      {
+        "file": "second-light-samples.csv.gz",
+        "n": 149,
+        "p99": 57.0,
+        "max": 68.8,
+        "reject_p99": null,
+        "outcomes": {
+          "ACCEPTED": 149
+        }
+      },
+      {
+        "file": "second-oa-approval-samples.csv.gz",
+        "n": 30,
+        "p99": 38.6,
+        "max": 38.6,
+        "reject_p99": null,
+        "outcomes": {
+          "ACCEPTED": 30
+        }
+      },
+      {
+        "file": "second-oa-read-samples.csv.gz",
+        "n": 60,
+        "p99": 127.3,
+        "max": 127.3,
+        "reject_p99": null,
+        "outcomes": {
+          "OK": 60
+        }
+      },
+      {
+        "file": "second-realtime-samples.csv.gz",
+        "n": 149,
+        "p99": 38.7,
+        "max": 44.5,
+        "reject_p99": null,
+        "outcomes": {
+          "SUCCEEDED": 149
+        }
+      },
+      {
+        "file": "second-small-batch-samples.csv.gz",
+        "n": 30,
+        "p99": 44.0,
+        "max": 44.0,
+        "reject_p99": null,
+        "outcomes": {
+          "ACCEPTED": 30
+        }
+      }
+    ],
+    "pairing_rows": 557,
+    "batch500": [],
+    "approval_slowest": {
+      "kind": "approval",
+      "tenant": "0",
+      "key": "19acb23a-c580-11f1-b3e4-00ff9e2a8dfb",
+      "outcome": "ACCEPTED",
+      "command_key": "TASK_APPROVE:19acb23a-c580-11f1-b3e4-00ff9e2a8dfb:91999",
+      "command_status": "COMPLETED",
+      "command_create": "2026-10-11 22:29:24.617392",
+      "claimed_at": "2026-10-11 22:29:25.560211",
+      "finished_at": "2026-10-11 22:29:25.863587",
+      "resource_class": "OA",
+      "resource_segment": "SHARED",
+      "resource_units": "1",
+      "resource_released_at": "-",
+      "claim_wait_ms": "943",
+      "accept_to_finished_ms": "1246",
+      "instance_id": "-",
+      "instance_status": "-",
+      "invocation_id": "-",
+      "invocation_status": "-",
+      "invocation_duration_ms": "-",
+      "target_record_id": "-",
+      "target_invocation_create": "-",
+      "target_invocation_update": "-",
+      "target_record_update_time": "-",
+      "target_record_version": "-",
+      "target_record_qty_reserved": "-",
+      "approval_task_end": "-",
+      "approval_instance_end": "-"
+    },
+    "light_succeeded_released": [
+      397,
+      397
+    ],
+    "nonterminal_batches": [],
+    "pg_shutdown": true,
+    "rowtime_diagnostics_not_commit_bounds": [
+      {
+        "kind": "light",
+        "tenant": "0",
+        "n": 149,
+        "p99": 357.337158203125,
+        "max": 375.303955078125
+      },
+      {
+        "kind": "light",
+        "tenant": "100",
+        "n": 149,
+        "p99": 343.44189453125,
+        "max": 357.31396484375
+      },
+      {
+        "kind": "approval",
+        "tenant": "0",
+        "n": 30,
+        "p99": 229.784912109375,
+        "max": 229.784912109375
+      },
+      {
+        "kind": "approval",
+        "tenant": "100",
+        "n": 30,
+        "p99": 196.18310546875,
+        "max": 196.18310546875
+      }
+    ]
+  }
+]

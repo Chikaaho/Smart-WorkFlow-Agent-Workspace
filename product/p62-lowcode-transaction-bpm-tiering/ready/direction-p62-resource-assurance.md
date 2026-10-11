@@ -1,4 +1,4 @@
-> 2026-10-11当前排期：新机有限性能首审未通过，状态VERIFYING；唯一下一动作=Executor按[补充提示01](../receipts/planning-execution-prompt-performance-bounded-01.md)处理G1—G5并提交回执02。P62批准功能COMPLETED、策略默认OFF；P64Ⅰ/ⅡPASSED、Ⅲ排队。下文历史时点及原合同保留。
+> 2026-10-11当前排期：新机有限性能二轮未通过，状态VERIFYING；唯一下一动作=Owner按[二轮审查](../receipts/planning-review-performance-bounded-02.md)裁决剩余项续办，当前不自动启动第三轮。P62批准功能COMPLETED、策略默认OFF；P64Ⅰ/ⅡPASSED、Ⅲ排队。下文历史时点及原合同保留。
 
 > 2026-10-06终态复核02通过：P62当前批准功能范围COMPLETED（规划已确认），TS01/TS02已核销。最终裁决 `../receipts/planning-final-review-terminal-sync-final-delivery-02-completed.md`；业务及补证账本已结清，性能Owner延期未验证。
 

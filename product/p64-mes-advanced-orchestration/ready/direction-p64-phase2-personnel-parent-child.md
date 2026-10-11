@@ -24,8 +24,8 @@
 
 在Server/Web既有feature/p64-mes-advanced-orchestration连续实施，启动时核实工作树/分支/远端，以新原件固定截止；两gitlink旧许可与07实际索引冲突，来源已核，Owner已认可保留两值，同类常规Git指针调整自行核实决定并报告。普通精确批次提交推送授权持续，发布/合并/tag/部署须专项授权。
 
-同时按既有knowledge-first同步范围落本轮唯一状态：P64 IN_PROGRESS、阶段ⅠPASSED、阶段ⅡPASSED（验收09）；阶段Ⅲ未验收。当前功能47、46/22/22=90、ADV64、问题57、其他P、P63/VB、P62性能就绪探索已完成（2026-10-11）/有限性能首审未通过、VERIFYING/新策略OFF不变；实际受影响当前入口逐字段/值/时点回读，不用“均同步”替覆盖证据。
+同时按既有knowledge-first同步范围落本轮唯一状态：P64 IN_PROGRESS、阶段ⅠPASSED、阶段ⅡPASSED（验收09）；阶段Ⅲ未验收。当前功能47、46/22/22=90、ADV64、问题57、其他P、P63/VB、P62性能就绪探索已完成（2026-10-11）/有限性能二轮未通过、VERIFYING/新策略OFF不变；实际受影响当前入口逐字段/值/时点回读，不用“均同步”替覆盖证据。
 
-阶段Ⅱ由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)确认PASSED，补证账本0；提示07及更早仅作历史。下一动作：Executor按[补充提示01](../../p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-performance-bounded-01.md)处理G1—G5并提交回执02；探索已完成（2026-10-11，Executor只读执行并伴随knowledge-first传播及精确普通文档Git），有限性能首审未通过、VERIFYING，P64阶段Ⅲ排队。
+阶段Ⅱ由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)确认PASSED，补证账本0；提示07及更早仅作历史。下一动作：Owner按[二轮审查](../../p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-02.md)裁决剩余项续办，当前不自动启动第三轮；探索已完成（2026-10-11，Executor只读执行并伴随knowledge-first传播及精确普通文档Git），有限性能二轮未通过、VERIFYING，P64阶段Ⅲ排队。
 
-新会话提示：“你是执行。读取P62有限性能补充提示01，处理G1—G5并提交回执02。”
+新会话提示：“你是执行。读取P62有限性能二轮审查及Owner后续明确裁决，按最新授权行动。”

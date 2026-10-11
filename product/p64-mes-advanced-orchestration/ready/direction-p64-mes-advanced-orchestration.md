@@ -148,7 +148,7 @@ XL阶段目标按产品能力划界：先形成可用的节点数据/变量/判�
 
 P64为IN_PROGRESS；阶段ⅠPASSED（2026-10-10验收08），阶段ⅡPASSED、阶段Ⅲ未验收，不晋级功能数或核销既有P编号/清单。当前正式功能47、原90行46/22/22、ADV64和既有验证集合保持。关联ADV-M11-F01-04可复用子流程、ADV-M11-F02-02规则矩阵与P2/P4/P26能力子集，登记关联不等于这些总项已完成。
 
-下一动作：Executor按[补充提示01](../../p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-performance-bounded-01.md)处理G1—G5并提交回执02；探索已完成（2026-10-11，Executor只读执行并伴随knowledge-first传播阶段ⅡPASSED及精确普通文档Git），有限性能首审未通过、VERIFYING，P64阶段Ⅲ排队。
+下一动作：Owner按[二轮审查](../../p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-02.md)裁决剩余项续办，当前不自动启动第三轮；探索已完成（2026-10-11，Executor只读执行并伴随knowledge-first传播阶段ⅡPASSED及精确普通文档Git），有限性能二轮未通过、VERIFYING，P64阶段Ⅲ排队。
 
 探索及未来验证遵守system.md：有限输入/输出/完成条件，不做非必要hash、不空转等待、不启动不可控后台任务、不擅停用户服务；正式UI证据来自可见可交互会话。规划阶段不编译、测试、迁移、访问数据库或控制设备。
 
