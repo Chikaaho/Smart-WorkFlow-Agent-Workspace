@@ -1,6 +1,8 @@
 # P62新机有限性能验证方向
 
-2026-10-11；Planner；P62既有XL范围的性能恢复。Owner已授权恢复及继续规划验收；依据新机就绪探索、资源合同§3、复核10/11及回执09。本文定义本轮合同，当前执行待办见授权续办提示02，优先于旧文档的延期、等待探索和默认长窗口表述。既有功能COMPLETED；新机有限性能二轮未通过、VERIFYING。最新裁决见[二轮审查](../receipts/planning-review-performance-bounded-02.md)；同项两轮未过后Owner明确“那就搞”，已授权[续办提示02](../receipts/planning-execution-prompt-performance-bounded-02.md)；提示01保留追溯，累计轮数不清零。
+> 当前路由（2026-10-12）：[第三轮审查](../receipts/planning-review-performance-bounded-03.md)已完成，有限性能VERIFYING；G1/G4关闭，G2/G3/G5剩余待Owner裁量。提示02本次授权已执行，不自动第四轮。
+
+2026-10-11；Planner；P62既有XL范围的性能恢复。Owner已授权恢复及继续规划验收；依据新机就绪探索、资源合同§3、复核10/11及回执09。本文定义本轮合同，续办提示02已完成审查，当前结论见[第三轮审查](../receipts/planning-review-performance-bounded-03.md)，优先于旧文档的延期、等待探索和默认长窗口表述。既有功能COMPLETED；新机有限性能三轮未通过、VERIFYING。最新裁决见[第三轮审查](../receipts/planning-review-performance-bounded-03.md)；同项两轮未过后Owner明确“那就搞”，已授权[续办提示02](../receipts/planning-execution-prompt-performance-bounded-02.md)；提示01保留追溯，累计轮数不清零。
 
 ## 1. 目标与范围
 
@@ -69,4 +71,4 @@ Executor获明确授权knowledge-first同步受影响当前入口：knowledge/cu
 
 普通授权文档及实现Git按system.md §0.8.1收尾，包含本轮及上一轮授权规划文档；不把Planner写文档视为knowledge/Git已同步。工程分支遵守Owner从develop建立feature/xxx约定，Executor先核当前变更归属、采用隔离任务分支并确保测量源包含需验证的P64变化，不擅自重置现有检出；常规已验证已推送指针自行核实决定并报告。无发布、部署、强推或启用生产策略授权。
 
-本轮三阶段：合同与证据核对已完成；方向（含续办提示02）下发已完成；三轮回执验收进行中（回执03已提交：G1到达覆盖+G5收尾关闭、G2重造后P1/P3过/P2互换画像7783ms未达、G3 workers=8后返回取舍；已审2轮+本轮待审）。唯一下一动作：Planner第三轮验收G1剩余/G2/G3/G5（回执03§4取舍裁决）。P64三业务阶段已过2个，Ⅲ排队，整体收尾未进入。
+本轮总3阶段：合同核对完成、方向下发完成、验收进行中（第三轮审查已完成，G1/G4关闭、G2/G3/G5待后续裁量）；已完成2/进行中1/未开始0。唯一下一动作：Owner按第三轮审查裁决剩余项，不自动第四轮。P64Ⅰ/ⅡPASSED、Ⅲ排队，整体收尾未进入。

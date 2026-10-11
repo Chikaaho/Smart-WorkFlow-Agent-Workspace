@@ -1,0 +1,581 @@
+{
+  "p62-bounded-20261011-r3-p1-fixed-burst": {
+    "http": {
+      "burst-batch-samples.csv.gz": {
+        "n": 7,
+        "p99": 759.4,
+        "max": 759.4,
+        "outcomes": {
+          "REJECTED:BIZ 2428: 提交速率超出每租户工作单位上限，请按适用速率重试": 7
+        }
+      },
+      "burst-load-samples.csv.gz": {
+        "n": 3077,
+        "p99": 275.4,
+        "max": 412.9,
+        "outcomes": {
+          "SUCCEEDED": 1876,
+          "ACCEPTED": 578,
+          "REJECTED:BIZ 2428: 提交速率超出每租户工作单位上限，请按适用速率重试": 337,
+          "REJECTED:BIZ 2427: 受理额度已满：持久工作量超出适用上限，请稍后重试或降低提交速率": 286
+        }
+      },
+      "oa-approval-samples.csv.gz": {
+        "n": 31,
+        "p99": 160.8,
+        "max": 160.8,
+        "outcomes": {
+          "ACCEPTED": 31
+        }
+      },
+      "oa-read-samples.csv.gz": {
+        "n": 61,
+        "p99": 401.3,
+        "max": 401.3,
+        "outcomes": {
+          "OK": 61
+        }
+      },
+      "protected-light-samples.csv.gz": {
+        "n": 151,
+        "p99": 350.8,
+        "max": 377.5,
+        "outcomes": {
+          "ACCEPTED": 151
+        }
+      },
+      "protected-realtime-samples.csv.gz": {
+        "n": 151,
+        "p99": 140.0,
+        "max": 154.0,
+        "outcomes": {
+          "SUCCEEDED": 151
+        }
+      },
+      "protected-small-batch-samples.csv.gz": {
+        "n": 31,
+        "p99": 378.0,
+        "max": 378.0,
+        "outcomes": {
+          "ACCEPTED": 31
+        }
+      }
+    },
+    "window": [
+      1791733899340,
+      1791733929340
+    ],
+    "worstApproval": {
+      "kind": "approval",
+      "tenant": "0",
+      "key": "93900076-c58b-11f1-a981-00ff9e2a8dfb",
+      "outcome": "ACCEPTED",
+      "command_key": "TASK_APPROVE:93900076-c58b-11f1-a981-00ff9e2a8dfb:91999",
+      "command_status": "COMPLETED",
+      "command_create": "2026-10-11 23:51:31.480697",
+      "claimed_at": "2026-10-11 23:51:34.002887",
+      "finished_at": "2026-10-11 23:51:34.493332",
+      "resource_class": "OA",
+      "resource_segment": "SHARED",
+      "resource_units": "1",
+      "resource_released_at": "-",
+      "claim_wait_ms": "2522",
+      "accept_to_finished_ms": "3013",
+      "instance_id": "-",
+      "instance_status": "-",
+      "invocation_id": "-",
+      "invocation_status": "-",
+      "invocation_duration_ms": "-",
+      "target_record_id": "-",
+      "target_invocation_create": "-",
+      "target_invocation_update": "-",
+      "target_record_update_time": "-",
+      "target_record_version": "-",
+      "target_record_qty_reserved": "-",
+      "approval_task_end": "-",
+      "approval_instance_end": "-",
+      "null": [
+        "2026-10-11 23:51:34.299",
+        "2026-10-11 23:51:34.309"
+      ]
+    },
+    "overlappingApprovalHTTP": [
+      {
+        "ts_end": "2026-10-11 23:51:31.632",
+        "ts_start": "2026-10-11 23:51:30.337",
+        "latency_ms": "1294.8",
+        "outcome": "ACCEPTED"
+      },
+      {
+        "ts_end": "2026-10-11 23:51:31.719",
+        "ts_start": "2026-10-11 23:51:31.333",
+        "latency_ms": "385.1",
+        "outcome": "ACCEPTED"
+      }
+    ],
+    "conservativeClaimLowerBoundMs": 2283.886962890625,
+    "pairingRows": 1181,
+    "kinds": {
+      "light": 1090,
+      "approval": 41,
+      "batch": 50
+    },
+    "batchExample": {
+      "kind": "batch",
+      "tenant": "0",
+      "key": "SB-p62-bounded-20261011-r3-p1-fixed-burst-0-5cfe9b39-1edd-4bdf-b380-7c6aa5e362b9",
+      "outcome": "ACCEPTED",
+      "command_key": "BATCH:SB-p62-bounded-20261011-r3-p1-fixed-burst-0-5cfe9b39-1edd-4bdf-b380-7c6aa5e362b9",
+      "command_status": "COMPLETED",
+      "command_create": "2026-10-11 23:51:30.065226",
+      "claimed_at": "2026-10-11 23:51:31.345719",
+      "finished_at": "2026-10-11 23:51:33.883661",
+      "resource_class": "BULK",
+      "resource_segment": "SHARED",
+      "resource_units": "5",
+      "resource_released_at": "-",
+      "claim_wait_ms": "1280",
+      "accept_to_finished_ms": "3818",
+      "instance_id": "batchStatus=COMPLETED items=5 succeeded=5 failed=0 pending=0 maxItemAcceptToSettleMs=3673.498000",
+      "instance_status": "-",
+      "invocation_id": "-",
+      "invocation_status": "-",
+      "invocation_duration_ms": "-",
+      "target_record_id": "-",
+      "target_invocation_create": "-",
+      "target_invocation_update": "-",
+      "target_record_update_time": "-",
+      "target_record_version": "-",
+      "target_record_qty_reserved": "-",
+      "approval_task_end": "-",
+      "approval_instance_end": "-"
+    },
+    "headers": [
+      "kind",
+      "tenant",
+      "key",
+      "outcome",
+      "command_key",
+      "command_status",
+      "command_create",
+      "claimed_at",
+      "finished_at",
+      "resource_class",
+      "resource_segment",
+      "resource_units",
+      "resource_released_at",
+      "claim_wait_ms",
+      "accept_to_finished_ms",
+      "instance_id",
+      "instance_status",
+      "invocation_id",
+      "invocation_status",
+      "invocation_duration_ms",
+      "target_record_id",
+      "target_invocation_create",
+      "target_invocation_update",
+      "target_record_update_time",
+      "target_record_version",
+      "target_record_qty_reserved",
+      "approval_task_end",
+      "approval_instance_end"
+    ],
+    "convergence": "convergence: openBefore=0 openAfter=0 autoConvergeMs=14077 convergeMillis=14077 counterTotal=0 factTotal=0 window=warmup10s+formal30s shortVerify=true runId=p62-bounded-20261011-r3-p1-fixed-burst",
+    "formalBatchBounds": {
+      "n": 30,
+      "maxMs": 4342.663,
+      "allCompleted": true
+    },
+    "claimLowerBoundCaveat": "基于同机HTTP/PG记录时钟及命令创建发生在其请求内；HTTP无对象键，仅用所有覆盖创建时刻的审批请求最晚响应形成保守推断，不作为精确逐请求时延。",
+    "actualBurstUnitsPerSecond": 219.23333333333332
+  },
+  "p62-bounded-20261011-r3-p2-fixed-burst-swap": {
+    "http": {
+      "burst-batch-samples.csv.gz": {
+        "n": 7,
+        "p99": 587.7,
+        "max": 587.7,
+        "outcomes": {
+          "REJECTED:BIZ 2428: 提交速率超出每租户工作单位上限，请按适用速率重试": 7
+        }
+      },
+      "burst-load-samples.csv.gz": {
+        "n": 3077,
+        "p99": 251.8,
+        "max": 491.0,
+        "outcomes": {
+          "SUCCEEDED": 1875,
+          "ACCEPTED": 809,
+          "REJECTED:BIZ 2428: 提交速率超出每租户工作单位上限，请按适用速率重试": 327,
+          "REJECTED:BIZ 1614: 实时动作并发已达上限，请稍后重试（适用额度见响应提示）": 1,
+          "REJECTED:BIZ 2427: 受理额度已满：持久工作量超出适用上限，请稍后重试或降低提交速率": 65
+        }
+      },
+      "oa-approval-samples.csv.gz": {
+        "n": 29,
+        "p99": 142.7,
+        "max": 142.7,
+        "outcomes": {
+          "ACCEPTED": 29
+        }
+      },
+      "oa-read-samples.csv.gz": {
+        "n": 61,
+        "p99": 329.5,
+        "max": 329.5,
+        "outcomes": {
+          "OK": 61
+        }
+      },
+      "protected-light-samples.csv.gz": {
+        "n": 151,
+        "p99": 283.0,
+        "max": 381.5,
+        "outcomes": {
+          "ACCEPTED": 151
+        }
+      },
+      "protected-realtime-samples.csv.gz": {
+        "n": 151,
+        "p99": 150.9,
+        "max": 171.8,
+        "outcomes": {
+          "SUCCEEDED": 151
+        }
+      },
+      "protected-small-batch-samples.csv.gz": {
+        "n": 30,
+        "p99": 201.3,
+        "max": 201.3,
+        "outcomes": {
+          "ACCEPTED": 30
+        }
+      }
+    },
+    "window": [
+      1791734509648,
+      1791734539648
+    ],
+    "worstApproval": {
+      "kind": "approval",
+      "tenant": "100",
+      "key": "05de6ea2-c58d-11f1-9200-00ff9e2a8dfb",
+      "outcome": "ACCEPTED",
+      "command_key": "TASK_APPROVE:05de6ea2-c58d-11f1-9200-00ff9e2a8dfb:92999",
+      "command_status": "COMPLETED",
+      "command_create": "2026-10-12 00:02:06.709433",
+      "claimed_at": "2026-10-12 00:02:13.529064",
+      "finished_at": "2026-10-12 00:02:13.845522",
+      "resource_class": "OA",
+      "resource_segment": "SHARED",
+      "resource_units": "1",
+      "resource_released_at": "-",
+      "claim_wait_ms": "6820",
+      "accept_to_finished_ms": "7136",
+      "instance_id": "-",
+      "instance_status": "-",
+      "invocation_id": "-",
+      "invocation_status": "-",
+      "invocation_duration_ms": "-",
+      "target_record_id": "-",
+      "target_invocation_create": "-",
+      "target_invocation_update": "-",
+      "target_record_update_time": "-",
+      "target_record_version": "-",
+      "target_record_qty_reserved": "-",
+      "approval_task_end": "-",
+      "approval_instance_end": "-",
+      "null": [
+        "2026-10-12 00:02:13.773",
+        "2026-10-12 00:02:13.783"
+      ]
+    },
+    "overlappingApprovalHTTP": [
+      {
+        "ts_end": "2026-10-12 00:02:06.746",
+        "ts_start": "2026-10-12 00:02:06.649",
+        "latency_ms": "96.9",
+        "outcome": "ACCEPTED"
+      }
+    ],
+    "conservativeClaimLowerBoundMs": 6783.06396484375,
+    "pairingRows": 1405,
+    "kinds": {
+      "light": 1314,
+      "approval": 41,
+      "batch": 50
+    },
+    "batchExample": {
+      "kind": "batch",
+      "tenant": "100",
+      "key": "SB-p62-bounded-20261011-r3-p2-fixed-burst-swap-100-b0709923-81e9-4fea-830b-704d3c25c89f",
+      "outcome": "ACCEPTED",
+      "command_key": "BATCH:SB-p62-bounded-20261011-r3-p2-fixed-burst-swap-100-b0709923-81e9-4fea-830b-704d3c25c89f",
+      "command_status": "COMPLETED",
+      "command_create": "2026-10-12 00:01:40.678632",
+      "claimed_at": "2026-10-12 00:01:41.926846",
+      "finished_at": "2026-10-12 00:01:44.827433",
+      "resource_class": "BULK",
+      "resource_segment": "SHARED",
+      "resource_units": "5",
+      "resource_released_at": "-",
+      "claim_wait_ms": "1248",
+      "accept_to_finished_ms": "4149",
+      "instance_id": "batchStatus=COMPLETED items=5 succeeded=5 failed=0 pending=0 maxItemAcceptToSettleMs=3822.012000",
+      "instance_status": "-",
+      "invocation_id": "-",
+      "invocation_status": "-",
+      "invocation_duration_ms": "-",
+      "target_record_id": "-",
+      "target_invocation_create": "-",
+      "target_invocation_update": "-",
+      "target_record_update_time": "-",
+      "target_record_version": "-",
+      "target_record_qty_reserved": "-",
+      "approval_task_end": "-",
+      "approval_instance_end": "-"
+    },
+    "headers": [
+      "kind",
+      "tenant",
+      "key",
+      "outcome",
+      "command_key",
+      "command_status",
+      "command_create",
+      "claimed_at",
+      "finished_at",
+      "resource_class",
+      "resource_segment",
+      "resource_units",
+      "resource_released_at",
+      "claim_wait_ms",
+      "accept_to_finished_ms",
+      "instance_id",
+      "instance_status",
+      "invocation_id",
+      "invocation_status",
+      "invocation_duration_ms",
+      "target_record_id",
+      "target_invocation_create",
+      "target_invocation_update",
+      "target_record_update_time",
+      "target_record_version",
+      "target_record_qty_reserved",
+      "approval_task_end",
+      "approval_instance_end"
+    ],
+    "convergence": "convergence: openBefore=8 openAfter=0 autoConvergeMs=14109 convergeMillis=14109 counterTotal=0 factTotal=0 window=warmup10s+formal30s shortVerify=true runId=p62-bounded-20261011-r3-p2-fixed-burst-swap",
+    "formalBatchBounds": {
+      "n": 30,
+      "maxMs": 25868.197,
+      "allCompleted": true
+    },
+    "claimLowerBoundCaveat": "基于同机HTTP/PG记录时钟及命令创建发生在其请求内；HTTP无对象键，仅用所有覆盖创建时刻的审批请求最晚响应形成保守推断，不作为精确逐请求时延。",
+    "actualBurstUnitsPerSecond": 219.23333333333332
+  },
+  "p62-bounded-20261011-r3-p3-both-protected": {
+    "http": {
+      "oa-approval-samples.csv.gz": {
+        "n": 30,
+        "p99": 52.4,
+        "max": 52.4,
+        "outcomes": {
+          "ACCEPTED": 30
+        }
+      },
+      "oa-read-samples.csv.gz": {
+        "n": 60,
+        "p99": 134.0,
+        "max": 134.0,
+        "outcomes": {
+          "OK": 60
+        }
+      },
+      "protected-light-samples.csv.gz": {
+        "n": 149,
+        "p99": 62.1,
+        "max": 62.6,
+        "outcomes": {
+          "ACCEPTED": 149
+        }
+      },
+      "protected-realtime-samples.csv.gz": {
+        "n": 150,
+        "p99": 43.7,
+        "max": 50.4,
+        "outcomes": {
+          "SUCCEEDED": 150
+        }
+      },
+      "protected-small-batch-samples.csv.gz": {
+        "n": 29,
+        "p99": 48.8,
+        "max": 48.8,
+        "outcomes": {
+          "ACCEPTED": 29
+        }
+      },
+      "second-light-samples.csv.gz": {
+        "n": 149,
+        "p99": 57.3,
+        "max": 65.9,
+        "outcomes": {
+          "ACCEPTED": 149
+        }
+      },
+      "second-oa-approval-samples.csv.gz": {
+        "n": 30,
+        "p99": 51.5,
+        "max": 51.5,
+        "outcomes": {
+          "ACCEPTED": 30
+        }
+      },
+      "second-oa-read-samples.csv.gz": {
+        "n": 60,
+        "p99": 127.5,
+        "max": 127.5,
+        "outcomes": {
+          "OK": 60
+        }
+      },
+      "second-realtime-samples.csv.gz": {
+        "n": 150,
+        "p99": 44.0,
+        "max": 48.8,
+        "outcomes": {
+          "SUCCEEDED": 150
+        }
+      },
+      "second-small-batch-samples.csv.gz": {
+        "n": 30,
+        "p99": 56.2,
+        "max": 56.2,
+        "outcomes": {
+          "ACCEPTED": 30
+        }
+      }
+    },
+    "window": [
+      1791734765847,
+      1791734795847
+    ],
+    "worstApproval": {
+      "kind": "approval",
+      "tenant": "0",
+      "key": "97ece00a-c58d-11f1-b4f1-00ff9e2a8dfb",
+      "outcome": "ACCEPTED",
+      "command_key": "TASK_APPROVE:97ece00a-c58d-11f1-b4f1-00ff9e2a8dfb:91999",
+      "command_status": "COMPLETED",
+      "command_create": "2026-10-12 00:05:56.955408",
+      "claimed_at": "2026-10-12 00:05:57.231642",
+      "finished_at": "2026-10-12 00:05:57.535107",
+      "resource_class": "OA",
+      "resource_segment": "SHARED",
+      "resource_units": "1",
+      "resource_released_at": "-",
+      "claim_wait_ms": "276",
+      "accept_to_finished_ms": "580",
+      "instance_id": "-",
+      "instance_status": "-",
+      "invocation_id": "-",
+      "invocation_status": "-",
+      "invocation_duration_ms": "-",
+      "target_record_id": "-",
+      "target_invocation_create": "-",
+      "target_invocation_update": "-",
+      "target_record_update_time": "-",
+      "target_record_version": "-",
+      "target_record_qty_reserved": "-",
+      "approval_task_end": "-",
+      "approval_instance_end": "-",
+      "null": [
+        "2026-10-12 00:05:57.338",
+        "2026-10-12 00:05:57.382"
+      ]
+    },
+    "overlappingApprovalHTTP": [
+      {
+        "ts_end": "2026-10-12 00:05:56.975",
+        "ts_start": "2026-10-12 00:05:56.840",
+        "latency_ms": "134.4",
+        "outcome": "ACCEPTED"
+      }
+    ],
+    "conservativeClaimLowerBoundMs": 256.64208984375,
+    "pairingRows": 560,
+    "kinds": {
+      "light": 400,
+      "approval": 80,
+      "batch": 80
+    },
+    "batchExample": {
+      "kind": "batch",
+      "tenant": "0",
+      "key": "SB-p62-bounded-20261011-r3-p3-both-protected-0-221676a7-ab99-43d0-a2af-9713c6d26f7a",
+      "outcome": "ACCEPTED",
+      "command_key": "BATCH:SB-p62-bounded-20261011-r3-p3-both-protected-0-221676a7-ab99-43d0-a2af-9713c6d26f7a",
+      "command_status": "COMPLETED",
+      "command_create": "2026-10-12 00:05:56.354732",
+      "claimed_at": "2026-10-12 00:05:56.515763",
+      "finished_at": "2026-10-12 00:05:57.111131",
+      "resource_class": "BULK",
+      "resource_segment": "SHARED",
+      "resource_units": "5",
+      "resource_released_at": "-",
+      "claim_wait_ms": "161",
+      "accept_to_finished_ms": "757",
+      "instance_id": "batchStatus=COMPLETED items=5 succeeded=5 failed=0 pending=0 maxItemAcceptToSettleMs=686.614000",
+      "instance_status": "-",
+      "invocation_id": "-",
+      "invocation_status": "-",
+      "invocation_duration_ms": "-",
+      "target_record_id": "-",
+      "target_invocation_create": "-",
+      "target_invocation_update": "-",
+      "target_record_update_time": "-",
+      "target_record_version": "-",
+      "target_record_qty_reserved": "-",
+      "approval_task_end": "-",
+      "approval_instance_end": "-"
+    },
+    "headers": [
+      "kind",
+      "tenant",
+      "key",
+      "outcome",
+      "command_key",
+      "command_status",
+      "command_create",
+      "claimed_at",
+      "finished_at",
+      "resource_class",
+      "resource_segment",
+      "resource_units",
+      "resource_released_at",
+      "claim_wait_ms",
+      "accept_to_finished_ms",
+      "instance_id",
+      "instance_status",
+      "invocation_id",
+      "invocation_status",
+      "invocation_duration_ms",
+      "target_record_id",
+      "target_invocation_create",
+      "target_invocation_update",
+      "target_record_update_time",
+      "target_record_version",
+      "target_record_qty_reserved",
+      "approval_task_end",
+      "approval_instance_end"
+    ],
+    "convergence": "convergence: openBefore=0 openAfter=0 autoConvergeMs=10064 convergeMillis=10064 counterTotal=0 factTotal=0 window=warmup10s+formal30s shortVerify=true runId=p62-bounded-20261011-r3-p3-both-protected",
+    "formalBatchBounds": {
+      "n": 60,
+      "maxMs": 632.867,
+      "allCompleted": true
+    },
+    "claimLowerBoundCaveat": "基于同机HTTP/PG记录时钟及命令创建发生在其请求内；HTTP无对象键，仅用所有覆盖创建时刻的审批请求最晚响应形成保守推断，不作为精确逐请求时延。"
+  }
+}

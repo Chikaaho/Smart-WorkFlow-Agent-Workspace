@@ -1,5 +1,7 @@
 # P64阶段Ⅱ：人员与父子协作
 
+> 当前路由（2026-10-12）：[第三轮审查](../../p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-03.md)已完成，有限性能VERIFYING；G1/G4关闭，G2/G3/G5剩余待Owner裁量。提示02本次授权已执行，不自动第四轮。
+
 2026-10-11；Planner；XL既有阶段范围。Ⅰ/ⅡPASSED、整体IN_PROGRESS、Ⅲ排队未验收。[主方向](direction-p64-mes-advanced-orchestration.md)/[方案](solution-p64-mes-advanced-orchestration.md)/[实施授权](authorization-p64-implementation-20261008.md)有效。[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)闭合回执09最后T/S两项，提示07转历史。
 
 ## 目标与正式通过条件
@@ -24,8 +26,8 @@
 
 在Server/Web既有feature/p64-mes-advanced-orchestration连续实施，启动时核实工作树/分支/远端，以新原件固定截止；两gitlink旧许可与07实际索引冲突，来源已核，Owner已认可保留两值，同类常规Git指针调整自行核实决定并报告。普通精确批次提交推送授权持续，发布/合并/tag/部署须专项授权。
 
-同时按既有knowledge-first同步范围落本轮唯一状态：P64 IN_PROGRESS、阶段ⅠPASSED、阶段ⅡPASSED（验收09）；阶段Ⅲ未验收。当前功能47、46/22/22=90、ADV64、问题57、其他P、P63/VB、P62性能就绪探索已完成（2026-10-11）/有限性能二轮未通过、VERIFYING/新策略OFF不变；实际受影响当前入口逐字段/值/时点回读，不用“均同步”替覆盖证据。
+同时按既有knowledge-first同步范围落本轮唯一状态：P64 IN_PROGRESS、阶段ⅠPASSED、阶段ⅡPASSED（验收09）；阶段Ⅲ未验收。当前功能47、46/22/22=90、ADV64、问题57、其他P、P63/VB、P62性能就绪探索已完成（2026-10-11）/有限性能三轮未通过、VERIFYING/新策略OFF不变；实际受影响当前入口逐字段/值/时点回读，不用“均同步”替覆盖证据。
 
-阶段Ⅱ由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)确认PASSED，补证账本0；提示07及更早仅作历史。下一动作：Owner按[二轮审查](../../p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-02.md)裁决剩余项续办，当前不自动启动第三轮；探索已完成（2026-10-11，Executor只读执行并伴随knowledge-first传播及精确普通文档Git），有限性能二轮未通过、VERIFYING，P64阶段Ⅲ排队。
+阶段Ⅱ由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)确认PASSED，补证账本0；提示07及更早仅作历史。下一动作：Owner按[第三轮审查](../../p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-03.md)裁决G2/G3/G5剩余；G1/G4已关闭，不自动第四轮；探索已完成（2026-10-11，Executor只读执行并伴随knowledge-first传播及精确普通文档Git），有限性能三轮未通过、VERIFYING，P64阶段Ⅲ排队。
 
-新会话提示：“你是执行。读取P62有限性能二轮审查及Owner后续明确裁决，按最新授权行动。”
+新会话提示：“你是执行。先读取P62第三轮审查及Owner后续裁量，旧提示02不再触发新一轮。”

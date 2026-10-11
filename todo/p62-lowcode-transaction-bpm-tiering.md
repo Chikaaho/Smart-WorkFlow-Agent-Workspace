@@ -1,9 +1,11 @@
 # P62 低代码事务能力与 BPM 分级执行架构
 
+> 当前路由（2026-10-12）：[第三轮审查](../product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-03.md)已完成，有限性能VERIFYING；G1/G4关闭，G2/G3/G5剩余待Owner裁量。提示02本次授权已执行，不自动第四轮。
+
 - 登记日期：2026-09-30
 - 角色：Planner
 - 任务等级：XL（核心架构、跨模块契约、数据一致性与持续演进）
-- P62批准功能COMPLETED；有限性能第三轮已执行（Owner授权续办提示02），回执03已提交：G1到达覆盖+G5收尾**关闭**、G2观测语义重造（独立轮询保守上界+V0.1.11 settled_at逐项实测）后P1/P3过/**P2互换画像7783ms未达**、G3 workers=8后P1/P3关闭/P2返回具体取舍（回执03§4三选：执行层公平/容量再扩/接受边界）；唯一下一动作=Planner第三轮验收。47、清单46/22/22=90、ADV64、问题57保持；P64Ⅰ/ⅡPASSED、Ⅲ排队，策略OFF。
+- P62批准功能COMPLETED；有限性能第三轮审查未通过、VERIFYING。G1/G4关闭；G2提交观测、G3互换保护推进、G5必要收尾仍未关闭。唯一下一动作=Owner按第三轮审查裁决；47、46/22/22=90、ADV64、问题57保持，P64Ⅰ/ⅡPASSED、Ⅲ排队，策略OFF。
 - 排期优先级：Owner 于 2026-09-30 启动本轮规划；事务型数据能力为本需求内部优先建设项。
 - Owner 依据：本会话明确“根据评审方案列为正式需求”。
 - 评审输入：[原始方案索引](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/README.md)、[首轮架构评审方案](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/01-architecture-review-20260930.md)、[CTO 指导稿原文](../knowledge/architecture-proposals/p62-lowcode-transaction-bpm-tiering/02-cto-guidance-20260930.md)。两份原文纳入 knowledge 供追溯；本文件为正式需求范围与验收口径。
@@ -163,4 +165,4 @@ Owner要求一次下发最终目标；产品合同和终态同步方向均已归
 
 ## 性能恢复排期（Owner 2026-10-11）
 
-P64提示05剩余经Planner验收通过后，恢复P62性能验证。Owner已更换更高性能电脑；先做[新机就绪探索](../search_task/p62-performance-new-machine-readiness-20261011.md)，核实硬件/部署/构件与负载边界，再固定有限可观测验证。覆盖目标环境容量、突发拒绝时效、生产与OA推进、批项等待及多租户公平。前置验收及新机就绪探索均已完成；当前有限性能VERIFYING，Owner已授权执行剩余项，有限性能二轮未通过、VERIFYING；既有功能COMPLETED保持，P64阶段Ⅲ保留排队。详见[恢复安排](../product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-performance-resume-20261011.md)。
+P64提示05剩余经Planner验收通过后，恢复P62性能验证。Owner已更换更高性能电脑；先做[新机就绪探索](../search_task/p62-performance-new-machine-readiness-20261011.md)，核实硬件/部署/构件与负载边界，再固定有限可观测验证。覆盖目标环境容量、突发拒绝时效、生产与OA推进、批项等待及多租户公平。前置验收及新机就绪探索均已完成；当前有限性能VERIFYING，第三轮已审查、待后续裁量，有限性能三轮未通过、VERIFYING；既有功能COMPLETED保持，P64阶段Ⅲ保留排队。详见[恢复安排](../product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-performance-resume-20261011.md)。
