@@ -1,4 +1,4 @@
-> 当前路由（2026-10-11）：本提示对应二轮验收已完成，见[二轮审查](planning-review-performance-bounded-02.md)。同项达到两轮上限；本文仅供追溯，未经Owner明确裁决不自动开启第三轮。
+> 当前路由（2026-10-11）：本提示对应二轮审查已完成，Owner随后明确授权继续。当前执行待办为[授权续办提示02](planning-execution-prompt-performance-bounded-02.md)；本文仅供追溯，同项累计轮数不重置。
 
 # P62有限性能补充提示01
 

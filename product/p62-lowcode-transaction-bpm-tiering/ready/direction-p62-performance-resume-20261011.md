@@ -4,9 +4,9 @@
 
 ## 触发与顺序
 
-前置条件为P64[提示05](../../p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase2-05.md)的剩余项经Planner验收通过（阶段ⅡPASSED），提交或自验通过不等于触发。该条件已由[P64阶段Ⅱ验收09](../../p64-mes-advanced-orchestration/receipts/planning-review-phase-2-09-passed.md)满足。新机就绪探索已完成（2026-10-11，回执 [../../../search_fallback/p62-performance-new-machine-readiness-20261011.md](../../../search_fallback/p62-performance-new-machine-readiness-20261011.md)）；有限性能二轮未通过、VERIFYING，唯一下一动作=Owner按[二轮审查](../receipts/planning-review-performance-bounded-02.md)裁决剩余项续办，当前不自动启动第三轮。
+前置条件为P64[提示05](../../p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase2-05.md)的剩余项经Planner验收通过（阶段ⅡPASSED），提交或自验通过不等于触发。该条件已由[P64阶段Ⅱ验收09](../../p64-mes-advanced-orchestration/receipts/planning-review-phase-2-09-passed.md)满足。新机就绪探索已完成（2026-10-11，回执 [../../../search_fallback/p62-performance-new-machine-readiness-20261011.md](../../../search_fallback/p62-performance-new-machine-readiness-20261011.md)）；有限性能二轮未通过、VERIFYING，唯一下一动作=Executor按Owner已授权的[续办提示02](../receipts/planning-execution-prompt-performance-bounded-02.md)处理G1剩余/G2/G3/G5并提交回执03。
 
-当前下一主任务恢复P62性能准备：先按[新机就绪探索](../../../search_task/p62-performance-new-machine-readiness-20261011.md)核实机器、拓扑、当前构件和既有验证资产，本轮负载、预算及有限验证边界已由[正式方向](direction-p62-performance-bounded-20261011.md)固定，Executor据此继续。恢复授权已由Owner给定，不重复索要普通实施许可。P64阶段Ⅲ保留排队，不核销或取消。
+新机性能准备已完成：已按[新机就绪探索](../../../search_task/p62-performance-new-machine-readiness-20261011.md)核实机器、拓扑、当前构件和既有验证资产，本轮负载、预算及有限验证边界已由[正式方向](direction-p62-performance-bounded-20261011.md)固定，Executor按授权续办提示02继续。恢复授权已由Owner给定，不重复索要普通实施许可。P64阶段Ⅲ保留排队，不核销或取消。
 
 ## 目标和范围
 
@@ -18,4 +18,4 @@
 
 ## 交付与同步
 
-探索仅返回必要事实、既有目标与尚缺规划输入；不启动负载或修改业务。正式验证按[已下发方向](direction-p62-performance-bounded-20261011.md)执行，提交真实行为回执，Planner独立验收。Executor沿既有knowledge-first责任更新受影响当前权威与摘要，精确普通Git授权持续；本次探索文档收尾同时传播P64阶段Ⅱ验收09裁决：Ⅰ/ⅡPASSED、P64 IN_PROGRESS、Ⅲ排队未验收；当前唯一下一动作=Owner按[二轮审查](../receipts/planning-review-performance-bounded-02.md)裁决剩余项续办，当前不自动启动第三轮。覆盖既有授权的knowledge当前入口、实际受影响reconciliation/Server清单与许可memory/todo/product，保留字段原文/定位/时点；本轮及此前相关未提交规划文档按既有精确普通Git授权收尾，不另开传播循环。探索及其文档传播已由2026-10-11探索回执确认完成；有限性能二轮未通过、VERIFYING。
+探索仅返回必要事实、既有目标与尚缺规划输入；不启动负载或修改业务。正式验证按[已下发方向](direction-p62-performance-bounded-20261011.md)执行，提交真实行为回执，Planner独立验收。Executor沿既有knowledge-first责任更新受影响当前权威与摘要，精确普通Git授权持续；本次探索文档收尾同时传播P64阶段Ⅱ验收09裁决：Ⅰ/ⅡPASSED、P64 IN_PROGRESS、Ⅲ排队未验收；当前唯一下一动作=Executor按Owner已授权的[续办提示02](../receipts/planning-execution-prompt-performance-bounded-02.md)处理G1剩余/G2/G3/G5并提交回执03。覆盖既有授权的knowledge当前入口、实际受影响reconciliation/Server清单与许可memory/todo/product，保留字段原文/定位/时点；本轮及此前相关未提交规划文档按既有精确普通Git授权收尾，不另开传播循环。探索及其文档传播已由2026-10-11探索回执确认完成；有限性能二轮未通过、VERIFYING。
