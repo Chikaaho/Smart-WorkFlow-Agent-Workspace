@@ -1,13 +1,15 @@
 # 当前状态摘要
 
-2026-10-11；Executor。P64 IN_PROGRESS；Ⅰ/ⅡPASSED（阶段Ⅱ验收09），Ⅲ排队，整体收尾未进入。P62批准功能COMPLETED、策略默认OFF；新机有限性能验证执行完成，回执[performance-bounded-20261011-01](../product/p62-lowcode-transaction-bpm-tiering/receipts/performance-bounded-20261011-01.md)已提交，Planner逐NP验收未开始；不写性能PASSED。
+2026-10-11；Executor。P64 IN_PROGRESS；Ⅰ/ⅡPASSED，Ⅲ排队，整体收尾未进入。P62已批准功能COMPLETED、策略默认OFF；有限性能首审未过（VERIFYING），二轮已按[补充提示01](../product/p62-lowcode-transaction-bpm-tiering/receipts/planning-execution-prompt-performance-bounded-01.md)执行完毕，回执[performance-bounded-20261011-02](../product/p62-lowcode-transaction-bpm-tiering/receipts/performance-bounded-20261011-02.md)已提交：G1成立（有效堆2048MiB+逐秒到达勾稽）、G4成立（两半接缝修复+隔离验证7/7+process 385/0×2）、G5成立、G2计量修正后受保护5s P99预算P1/P3过/**P2未达9149ms**、G3真实差异返回规划；不写性能PASSED。
 
-唯一下一动作：Planner读回执原件逐NP判定（方向§6）；重点裁决 P2-am 受保护审批领取 5039ms（超5s预算39ms）与突发拒绝不对称（P1 32.7%/P2 3.3%）两点。
+唯一下一动作：Planner第二轮验收G1—G5（裁决点=P2受保护提交可见/审批领取超界的容量处理、burst是否适用5s口径、batchClaimWait 27488ms接近上界）。
 
-47、清单46/22/22=90、ADV64、问题57、P63COMPLETED/VB及正式基线保持。Codex已验证/trusted，无Admin续办；ZCode间歇根因未定。
+47、清单46/22/22=90、ADV64、问题57、P63/VB及正式基线保持。Codex已验证/trusted，无Admin续办；ZCode间歇根因未定。
 
-本轮固定：装置六项处置完成（maxItemAcceptToSettleMs前向修复/V0.1.10 invocation_key索引+六锚点滚动/occupancy released_at口径/openapi监听器租户挂起/Windows cmd日志前缀适配/RA01b身份参数显式传参）；三画像-am权威轮全过（受保护预算P99、批量项领取≤30s、自动收敛≤120s、配额无突破、零DB超时/OOM、独立复算一致）；**装置教训=-pl sw-bootstrap跑画像必须-am**（首轮stale快照二进制已披露）。Server任务分支feature/p62-perf-bounded-20261011=351c93e已推送；证据本地product/**/evidence/不入Git。
+[首审记录](../product/p62-lowcode-transaction-bpm-tiering/receipts/planning-review-performance-bounded-01.md)：G1实际堆4032MiB非2GiB、到达覆盖；G2目标提交上界及批项领取证据；G3 P2审批create→claim5039ms需核持久受理起点；G4 P1已受理500项中175成功/325待处理、命令EXPIRED但批次PROCESSING；G5必要验证/应用退出/当前同步Git事实。五项均首轮未过。
 
-阶段Ⅱ账本0，提示05—07历史；既有已过业务锁定，不重跑。当前验证定义v5、v4历史。旧09 Git仅档案；探索回执时点Server及根指针c0cbe60、根批次A920bb5db、Web4333145。最终HEAD未核，不沿用历史指针为现状。
+[二轮执行记录](../product/p62-lowcode-transaction-bpm-tiering/receipts/performance-bounded-20261011-02.md)：P1 尝试3 PASSED（attempt1 计量缺陷/attempt2 领取孤儿两轮装置修复全披露）、P2 采集 FAIL（受保护提交可见 P99 9149ms/审批 9005ms 超 5s；受理级预算全过）、P3 PASSED；G4 实测大批次合法完成、expired=0；G3 起点核查=受理与命令 create 差 5ms，容量排队为真实根因，返回规划。
 
-本轮规划已落许可入口；knowledge及本批Git待Executor按方向同步，不声称已完成。规划流程3阶段：合同核对完成、方向下发完成、执行回执验收未开始。
+保留当前样本HTTP与拒绝时效结果，P1普通拒绝P99纠正为275.7ms；不因拒绝率不对称打回。轻流程实际成功+释放及PG结束已证。30s是本轮有限验收窗，长稳未验证。P64阶段Ⅱ账本0、v5当前/v4历史保持。
+
+源身份：二轮P1 尝试3=ae7ece4dd1d03761（Server 9e2b07f 已推送）、P2/P3 同指纹；本轮已按授权knowledge-first传播并收尾Git（远端回读见回执02）。流程3阶段：合同核对完成、方向下发完成、验收进行中（2/1/0）。
