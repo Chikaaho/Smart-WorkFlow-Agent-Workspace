@@ -7,6 +7,7 @@
 | 会话角色门禁、公共协议、业务三阶段状态机 | `system.md` §0.2、§3、§5 | `AGENTS.md`、两端 `AGENTS.md`、两端工程宪法 |
 | Planner 权限、验收与记忆职责 | `roles/planner.md` | `system.md` §0.1/§0.9、工程宪法入口 |
 | Executor 权限、证据与执行纪律 | `roles/executor.md` | `system.md` §0.1/§0.9、工程宪法入口 |
+| 验收与证据七条硬约束、行为满足即可 | `system.md` §3.6（2026-10-11 Owner 定） | `roles/planner.md` §5.1/§7.1、`roles/executor.md` §4.1/§4.3/§4.4、`roles/admin.md` §4、执行补充提示模板 |
 | Admin 权限与 Governance Implementation | `roles/admin.md` §2—§4 | `system.md` §0.8、Harness 入口 |
 | 当前业务状态、计数、基线、活动项、唯一下一动作 | `knowledge/current-status.md` | `memory/*.md` 最小摘要、交接与方向仅带同步点引用 |
 | 历史状态 | `knowledge/history/` | 当前状态仅链接索引，不复制历史正文 |
