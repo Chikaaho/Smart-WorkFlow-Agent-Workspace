@@ -1,5 +1,7 @@
 # P64阶段Ⅲ既有工单关闭与数量核实
 
+> 本只读任务已完成，结果已由[裁决04](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-3-04.md)审查；当前执行入口为[数量差异关闭收尾](../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase3-03.md)。以下保留下发时点要求。
+
 2026-10-12；本会话角色：规划，委派角色：执行。承接Owner“修复，以业务导向为要求”的授权与[验收03](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-3-03.md)。
 
 目标：用既有对象的实际结果确定最后两个关闭事实。UI、领料补办、成品入库、受控设备反馈及此前通过项锁定。

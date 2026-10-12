@@ -1,6 +1,6 @@
 # P64总进度：MES高级流程编排与业务闭环
 
-> 当前路由（2026-10-12，关闭核实完成）：[核实结果](../search_fallback/p64-phase3-close-readback-20261012.md)已回传——341/342均APPROVED真实关闭（零待办、子单全结算、门槛先于主单）；342=计划10=报废3（有据：终检NG+报废登记数量原因）+其余7无台账去向（报工未申报产出、无齐套校验）；报废/整改记录行不携带办理提交值。唯一下一动作：Planner读取核实结果裁决关闭与数量口径。P64整体IN_PROGRESS，Ⅰ/ⅡPASSED、ⅢVERIFYING；总3阶段，完成2/进行中1/未开始0；整体终态同步未进入，P62性能延期/OFF保持。
+> 当前路由（2026-10-12，回执04提交）：数量差异关闭收尾完成——代表性报废场景 WO-2026-344（主流程v6）：差异未说明主单不关闭且补正任务自动出现；交代齐备（实际0+报废3+剩余7未生产+原因）后 APPROVED，数量与原因经实例 node-form-data 按工单查回，库存 0/0 未虚增；引擎缺口（异步终态不结算）以对账结算钩子修复（Server `4681634`，单测3/0）。唯一下一动作：Planner按[提示03](../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase3-03.md)验收[回执04](../product/p64-mes-advanced-orchestration/receipts/phase-3-completion-receipt-04.md)。P64整体IN_PROGRESS、Ⅰ/ⅡPASSED、ⅢVERIFYING；总3阶段，完成2/进行中1/未开始0；整体终态同步未进入，P62性能延期/OFF保持。
 
 2026-10-11；Planner。P64整体IN_PROGRESS。完整范围为3个业务阶段，再完成整体终态收尾；已验收通过2个业务阶段，剩阶段Ⅲ及整体收尾。阶段数2/3不表示工时或总工作量完成67%。
 
@@ -8,7 +8,7 @@
 |---|---|---|
 | Ⅰ 数据到动作 | 节点业务表单、类型变量、只读判断、单个/集合/分组可靠动作与恢复 | 已验收通过，2026-10-10 |
 | Ⅱ 人员与父子协作 | 岗位委托、聚合选人、单/N子流程、行级隔离与回写、ALL/ANY/COUNT/NONE及异常生命周期 | 已验收通过，2026-10-11；补证账本0 |
-| Ⅲ 场景与整体交付 | MES、招商、安信三场景完整业务结果；多角色可用界面、可复用配置、兼容及整体覆盖验收 | 验收03主体通过；关闭事实待核实，已过项锁定 |
+| Ⅲ 场景与整体交付 | MES、招商、安信三场景完整业务结果；多角色可用界面、可复用配置、兼容及整体覆盖验收 | 验收03主体通过；数量差异关闭收尾，已过项锁定 |
 | 整体终态收尾 | 整体通过后同步权威状态、功能/清单、当前交接与文档归档，完成独立收尾复核 | 未进入，依赖阶段Ⅲ及整体验收通过 |
 
 验收依据：[阶段Ⅰ验收08](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-1-08-passed.md)、[阶段Ⅱ验收09](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-2-09-passed.md)。完整合同：[主方向](../product/p64-mes-advanced-orchestration/ready/direction-p64-mes-advanced-orchestration.md)、[三阶段方案](../product/p64-mes-advanced-orchestration/ready/solution-p64-mes-advanced-orchestration.md)。整体终态收尾为交付流程，不新增第四个业务阶段。
@@ -17,14 +17,14 @@
 
 | 剩余块 | 完成终点 |
 |---|---|
-| 既有工单关闭与数量核实 | 341/342最终实例状态；342工单10与报废3、成品0之间的业务数量解释。以现存记录只读回传，已过行为锁定。 |
+| 数量差异关闭说明 | 关闭时交代实际量、剩余计划去向及原因并可查回；完成一条代表性验证，历史342保留事实。 |
 | 整体终态收尾 | 整体PASSED后下发唯一终态值清单，Executor同步、Planner复核，才确认COMPLETED。 |
 
-最新依据：[阶段Ⅲ验收03](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-3-03.md)。UI、领料补办、入库、设备反馈、S2/S3已通过的部分不重复执行。
+最新依据：[关闭核实裁决04](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-3-04.md)。UI、领料补办、入库、设备反馈、S2/S3已通过的部分不重复执行。
 
 ## 当前顺序
 
-按Owner已定排期，先恢复[P62新机性能准备](../product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-performance-resume-20261011.md)：[就绪探索](../search_task/p62-performance-new-machine-readiness-20261011.md)已完成（2026-10-11，回执 [search_fallback/p62-performance-new-machine-readiness-20261011.md](../search_fallback/p62-performance-new-machine-readiness-20261011.md)）→P62 有限性能已由 Owner 搁置为已知延期问题（2026-10-12，不安排第四轮；未来方向=带权参数配置、后台可配置每租户优先级，见 [P62 todo §性能已知延期](p62-lowcode-transaction-bpm-tiering.md)）；**当前唯一下一动作=Planner读取search_fallback/p64-phase3-close-readback-20261012.md（已回传，2026-10-12 21:54）裁决341/342关闭与342数量口径**，完整[实施授权](../product/p64-mes-advanced-orchestration/ready/authorization-p64-implementation-20261008.md)保持。P62为独立任务，不计入P64的3个阶段。
+按Owner已定排期，先恢复[P62新机性能准备](../product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-performance-resume-20261011.md)：[就绪探索](../search_task/p62-performance-new-machine-readiness-20261011.md)已完成（2026-10-11，回执 [search_fallback/p62-performance-new-machine-readiness-20261011.md](../search_fallback/p62-performance-new-machine-readiness-20261011.md)）→P62 有限性能已由 Owner 搁置为已知延期问题（2026-10-12，不安排第四轮；未来方向=带权参数配置、后台可配置每租户优先级，见 [P62 todo §性能已知延期](p62-lowcode-transaction-bpm-tiering.md)）；**当前唯一下一动作=Planner按提示03验收回执04（phase-3-completion-receipt-04.md）。P62为独立任务，不计入P64的3个阶段。
 
 阶段Ⅱ新裁决的knowledge-first传播和精确普通文档Git已随2026-10-11探索收尾完成（见search_fallback回执§覆盖矩阵与§Git）。47/90/ADV64/57、P63/VB及正式基线保持；根指针7fffef9/4333145已认可，常规调整自主核实决定。Codex无Admin续办。
 

@@ -1,6 +1,6 @@
 # P64实施授权与当前交付入口
 
-> 当前路由（2026-10-12，关闭核实完成）：[核实结果](../../../search_fallback/p64-phase3-close-readback-20261012.md)已回传——341/342均APPROVED真实关闭（零待办、子单全结算、门槛先于主单）；342=计划10=报废3（有据：终检NG+报废登记数量原因）+其余7无台账去向（报工未申报产出、无齐套校验）；报废/整改记录行不携带办理提交值。唯一下一动作：Planner读取核实结果裁决关闭与数量口径。P64整体IN_PROGRESS，Ⅰ/ⅡPASSED、ⅢVERIFYING；总3阶段，完成2/进行中1/未开始0；整体终态同步未进入，P62性能延期/OFF保持。
+> 当前路由（2026-10-12，回执04提交）：数量差异关闭收尾完成——代表性报废场景 WO-2026-344（主流程v6）：差异未说明主单不关闭且补正任务自动出现；交代齐备（实际0+报废3+剩余7未生产+原因）后 APPROVED，数量与原因经实例 node-form-data 按工单查回，库存 0/0 未虚增；引擎缺口（异步终态不结算）以对账结算钩子修复（Server `4681634`，单测3/0）。唯一下一动作：Planner按[提示03](../receipts/planning-execution-prompt-p64-phase3-03.md)验收[回执04](../receipts/phase-3-completion-receipt-04.md)。P64整体IN_PROGRESS、Ⅰ/ⅡPASSED、ⅢVERIFYING；总3阶段，完成2/进行中1/未开始0；整体终态同步未进入，P62性能延期/OFF保持。
 
 2026-10-08；本会话角色：规划，实施角色：执行；XL。Owner在READY传播终审后明确指令：**“开始实施”**。
 
@@ -9,7 +9,7 @@
 ## 1. 当前状态与唯一动作
 
 - 当前P64=IN_PROGRESS；阶段ⅠPASSED（2026-10-10[规划验收08](../receipts/planning-review-phase-1-08-passed.md)），阶段ⅡPASSED（2026-10-11[验收09](../receipts/planning-review-phase-2-09-passed.md)）、阶段Ⅲ未验收。本规划会话未运行工程。
-- 唯一下一动作：Planner读取search_fallback/p64-phase3-close-readback-20261012.md（已回传，2026-10-12 21:54）裁决341/342关闭与342数量口径。
+- 唯一下一动作：Planner按提示03验收回执04（phase-3-completion-receipt-04.md）。
 - READY传播及G1—G4已关闭，[传播终审03](../receipts/planning-final-review-ready-state-propagation-03.md)保留其时点裁决，不作为当前等待实施授权入口。
 - 此次实施授权覆盖既定完整P64，不为内部步骤或已授权后续阶段重复索要实施许可；各阶段仍提交行为回执，由Planner独立验收，阶段通过不替代整体A01—A12通过。
 
@@ -47,14 +47,14 @@ Executor获得以下明确状态同步写入授权：knowledge/current-status、
 
 启动状态同步与实施连续进行，不单独开启READY传播补证轮次。未启动不得声称工程已运行；启动后移除“实施未授权/等待Owner实施指令”的当前待办。历史回执保持原时点。
 
-阶段Ⅱ回执09已由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)独立验收通过；阶段Ⅱ补证账本清零，不再追加阶段Ⅱ补证回执。P62新机就绪探索已于2026-10-11由Executor只读完成（回执 `search_fallback/p62-performance-new-machine-readiness-20261011.md`），唯一下一动作：Executor只读核实341/342既有工单的最终关闭状态及342报废数量去向，回传search_fallback/p64-phase3-close-readback-20261012.md供Planner裁决。
+阶段Ⅱ回执09已由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)独立验收通过；阶段Ⅱ补证账本清零，不再追加阶段Ⅱ补证回执。P62新机就绪探索已于2026-10-11由Executor只读完成（回执 `search_fallback/p62-performance-new-machine-readiness-20261011.md`），唯一下一动作：Planner按提示03验收回执04（phase-3-completion-receipt-04.md）。
 
 Executor不能自行写功能PASSED/COMPLETED、核销P/明细、晋级正式基线或移动方向至passed；后续整体通过与终态同步由Planner裁决。此授权在本会话已经成立，不需要再次确认。
 
 ## 5. 执行会话启动提示
 
-> 你是执行。读取system、执行角色与search_task/p64-phase3-close-readback-20261012.md，只读核实既有工单关闭与数量结果。
+> 你是执行。读取system、执行角色与P64的planning-execution-prompt-p64-phase3-03.md，完成数量差异关闭收尾。
 
 ## Owner后续排期（2026-10-11）
 
-阶段Ⅱ已由验收09确认PASSED，Owner恢复条件满足；P62新机就绪探索已完成，唯一下一动作：Planner读取search_fallback/p64-phase3-close-readback-20261012.md（已回传，2026-10-12 21:54）裁决341/342关闭与342数量口径。
+阶段Ⅱ已由验收09确认PASSED，Owner恢复条件满足；P62新机就绪探索已完成，唯一下一动作：Planner按提示03验收回执04（phase-3-completion-receipt-04.md）。

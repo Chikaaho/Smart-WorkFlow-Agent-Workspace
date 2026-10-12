@@ -1,12 +1,12 @@
 # 功能摘要
 
-2026-10-12；Planner已完成[阶段Ⅲ验收03](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-3-03.md)：UI、领料补办、成品入库、受控设备反馈通过并锁定；仅工单关闭与报废数量去向待核实。P64整体IN_PROGRESS，Ⅰ/ⅡPASSED、ⅢVERIFYING，整体终态同步未进入。P62批准功能COMPLETED；有限性能VERIFYING且Owner已搁置，G2/G3/G5留账、策略OFF。
+2026-10-12；Planner已完成[关闭核实裁决04](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-3-04.md)：341/342真实关闭通过；UI、领料补办、入库、设备反馈及此前结果锁定。仅剩计划与实际数量差异关闭说明，P64整体IN_PROGRESS、Ⅰ/ⅡPASSED、ⅢVERIFYING。P62批准功能COMPLETED，有限性能VERIFYING已搁置，G2/G3/G5留账、策略OFF。
 
-唯一下一动作：Planner读取[核实结果](../search_fallback/p64-phase3-close-readback-20261012.md)（Executor只读已回传，2026-10-12 21:54）裁决341/342关闭与342数量口径。
+唯一下一动作：Planner按[提示03](../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase3-03.md)验收[回执04](../product/p64-mes-advanced-orchestration/receipts/phase-3-completion-receipt-04.md)。
 
-功能47、清单46/22/22=90、ADV64、问题57、P63/VB及正式基线保持。P64总3业务阶段：Ⅰ数据到动作完成、Ⅱ人员与父子协作完成、Ⅲ场景与整体交付进行中（关闭事实待核实）；已完成2/进行中1/未开始0。
+功能47、清单46/22/22=90、ADV64、问题57、P63/VB及正式基线保持。P64总3业务阶段：Ⅰ数据到动作完成、Ⅱ人员与父子协作完成、Ⅲ场景与整体交付进行中（数量差异关闭收尾）；已完成2/进行中1/未开始0。
 
-- `p64-mes-advanced-orchestration`（P64，XL）：IN_PROGRESS；Ⅰ/ⅡPASSED（阶段Ⅱ验收09）、Ⅲ验收03主体通过、工单关闭事实VERIFYING，整体未验收。
+- `p64-mes-advanced-orchestration`（P64，XL）：IN_PROGRESS；Ⅰ/ⅡPASSED（阶段Ⅱ验收09）、Ⅲ关闭已通过、数量差异关闭说明VERIFYING，整体未验收。
 - `p63-mes-workflow-foundations`（P63，L/P0）：**COMPLETED（规划已确认，2026-10-08）**；表单驱动动态并行审批+一次性 IoT 预约下发、手工并行兼容；VB01—VB04 见登记与 `state.md`；范围外=完整 MES/分管领导组织模型/周期预约/厂商实网/部署。
 - `p62-lowcode-transaction-bpm-tiering`（P62，XL）：**COMPLETED（规划已确认，2026-10-06）**；性能就绪探索已完成（2026-10-11，回执 `search_fallback/p62-performance-new-machine-readiness-20261011.md`）/有限性能三轮未过/VERIFYING、已由 Owner 搁置为已知延期问题（2026-10-12；未来方向=带权参数配置、后台可配置每租户优先级；`todo/p62-lowcode-transaction-bpm-tiering.md` §性能已知延期）；新资源策略默认关闭。
 - `backend-architecture-optimization`（XL）：**COMPLETED（规划已确认，2026-09-26）**；Phase1—6C 与 Final 完成；10 候选=BAO-01 `DEFERRED`+BAO-02 `PARTIAL`+8 `COMPLETED`；基线 1570/0/0/0（历史时点）。
