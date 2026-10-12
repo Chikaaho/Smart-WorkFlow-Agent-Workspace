@@ -1,6 +1,6 @@
 # P64：高级流程编排方案
 
-> 当前路由（2026-10-12）：P62性能已搁置；阶段Ⅲ已执行完毕：[回执01](../receipts/phase-3-completion-receipt-01.md)已提交（2026-10-12）待规划独立验收。Ⅰ/ⅡPASSED，Ⅲ待验收，整体IN_PROGRESS。
+> 当前路由（2026-10-12）：阶段Ⅲ[审查01](../receipts/planning-review-phase-3-01.md)未通过；Executor按[补充提示01](../receipts/planning-execution-prompt-p64-phase3-01.md)修复与补证并提交回执02。P64整体IN_PROGRESS，Ⅰ/ⅡPASSED，Ⅲ进行中（2/1/0），整体终态同步未进入；P62性能已搁置。
 
 2026-10-08；Planner；XL；产品与架构方案。目标和正式通过条件以[主方向](direction-p64-mes-advanced-orchestration.md) R01—R12/A01—A12为准，本文说明能力如何组成业务闭环及选择理由。Owner已授权开始完整P64实施，阶段Ⅰ已通过，阶段Ⅱ已通过；实现结构、接口、迁移和验证设计由Executor确定。
 
@@ -12,7 +12,7 @@
 
 优先做数据产生到可靠动作的完整链，因为没有任务数据、类型变量和可靠触发，后续选人、子流程及MES只能形成页面演示。第二个能力边界解决跨人员、跨流程的数据协作，第三个边界再证明三场景实际业务结果。
 
-当前P64=IN_PROGRESS；Ⅰ/ⅡPASSED（[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)），阶段Ⅱ账本0、Ⅲ待执行未验收；完整[实施授权](authorization-p64-implementation-20261008.md)持续。唯一下一动作：Executor按[阶段Ⅲ执行入口](direction-p64-phase3-scenarios-delivery.md)完成场景与整体交付；探索已完成（2026-10-11，Executor只读执行并伴随knowledge-first传播及精确普通文档Git），有限性能三轮未通过、VERIFYING，P64阶段Ⅲ待执行。
+当前P64=IN_PROGRESS；Ⅰ/ⅡPASSED（[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)），阶段Ⅱ账本0、Ⅲ首轮未过待修复与复验；完整[实施授权](authorization-p64-implementation-20261008.md)持续。唯一下一动作：Executor按[阶段Ⅲ补充提示01](../receipts/planning-execution-prompt-p64-phase3-01.md)完成剩余修复与补证，提交回执02供Planner复验。
 
 ## 2. 六项架构决策
 

@@ -1,6 +1,6 @@
 # P64：MES高级流程编排与业务闭环
 
-> 当前路由（2026-10-12）：P62性能已搁置；阶段Ⅲ已执行完毕：[回执01](../receipts/phase-3-completion-receipt-01.md)已提交（2026-10-12）待规划独立验收。Ⅰ/ⅡPASSED，Ⅲ待验收，整体IN_PROGRESS。
+> 当前路由（2026-10-12 二轮）：阶段Ⅲ二轮修复与复验完成，[回执02](../receipts/phase-3-completion-receipt-02.md)已提交待 Planner 复验（六项依据[审查01](../receipts/planning-review-phase-3-01.md)与[补充提示01](../receipts/planning-execution-prompt-p64-phase3-01.md)逐项关闭，证据 `receipts/evidence/phase3-02/`）。P64整体IN_PROGRESS，Ⅰ/ⅡPASSED，Ⅲ进行中（2/1/0），整体终态同步未进入；P62性能已搁置。
 
 2026-10-08；Planner；XL；**IN_PROGRESS（阶段ⅠPASSED；阶段ⅡPASSED，2026-10-11）**。
 
@@ -150,7 +150,7 @@ XL阶段目标按产品能力划界：先形成可用的节点数据/变量/判�
 
 P64为IN_PROGRESS；阶段ⅠPASSED（2026-10-10验收08），阶段ⅡPASSED、阶段Ⅲ未验收，不晋级功能数或核销既有P编号/清单。当前正式功能47、原90行46/22/22、ADV64和既有验证集合保持。关联ADV-M11-F01-04可复用子流程、ADV-M11-F02-02规则矩阵与P2/P4/P26能力子集，登记关联不等于这些总项已完成。
 
-下一动作：Executor按[阶段Ⅲ执行入口](direction-p64-phase3-scenarios-delivery.md)完成场景与整体交付；探索已完成（2026-10-11，Executor只读执行并伴随knowledge-first传播阶段ⅡPASSED及精确普通文档Git），有限性能三轮未通过、VERIFYING，P64阶段Ⅲ待执行。
+下一动作：Executor按[阶段Ⅲ补充提示01](../receipts/planning-execution-prompt-p64-phase3-01.md)完成剩余修复与补证，提交回执02供Planner复验。
 
 探索及未来验证遵守system.md：有限输入/输出/完成条件，不做非必要hash、不空转等待、不启动不可控后台任务、不擅停用户服务；正式UI证据来自可见可交互会话。规划阶段不编译、测试、迁移、访问数据库或控制设备。
 

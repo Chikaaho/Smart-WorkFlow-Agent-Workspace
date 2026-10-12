@@ -1,0 +1,98 @@
+# P64 阶段Ⅲ回执02：二轮修复与复验（按补充提示01逐项关闭）
+
+2026-10-12；Executor；入口=**补充提示01**（`receipts/planning-execution-prompt-p64-phase3-01.md`），唯一裁决依据=**规划审查01**（`receipts/planning-review-phase-3-01.md`）剩余项表。本轮先保全一轮原件与本机真实输出，再实施最小充分验证；六项 P3-01-UI/S1/S2/S3/COMPAT/CLOSE 逐项按关闭标准交付。证据树 `receipts/evidence/phase3-02/`（90 文件，INDEX.md 导航）；原始证据本机留存按 .gitignore 不入 Git。
+
+## 0. 总进度
+
+P64 整体 **IN_PROGRESS**；阶段Ⅰ/Ⅱ PASSED 锁定不变；阶段Ⅲ二轮**修复与复验完成**（本轮不写通过裁决），唯一下一动作=**Planner 复验回执02与 phase3-02 证据包**。功能 47、清单 46/22/22=90、ADV64、问题 57 不变；P62 批准功能 COMPLETED、有限性能 VERIFYING/Owner 已搁置、资源策略 OFF；无整体 PASSED/COMPLETED、不核销 P、不晋级基线。
+
+## 1. 保全清单（先保全、再修复）
+
+- 一轮原件：`/tmp` 全部 JSON（s1/s2/s3）、交接文件、种子 SQL 原件 → `evidence/phase3-02/originals/`
+- 服务端日志原件抽取：S3 越权 403/逐行回写/遮蔽 1507（11:35—11:42）、深度护栏阻断（12:48:06 原文）→ `s3/s3-log-extract.txt`、`s1/depth-guard-log.txt`
+- 运行库权威状态导出（实例/批次/条目/台账/预约/调用/触发/任务/表单/快照/委托）→ 各场景子目录
+- 未重跑完整 P64、未改动历史回执/附件；`grep` 全程证实两处旧「替换」说法不复用于本轮
+
+## 2. P3-01-UI（候选展示修复+合法办理人数据可用+可见发起/办理/结果查询）
+
+**修复两项前端缺陷（Web 提交），经可见浏览器（ZCode 内置，headless=false）以张三（9003）实证：**
+
+1. **候选展示修复**：`UserControl` 候选数据源由 `pageUsers`（需 `system:user:list` 管理权限，业务账号 403→空下拉）改为既有登录即可调用的 `/system/user/options`（最小字段 id/姓名、租户内启用过滤）。实证：张三发起页人员下拉显示 14 人候选（`ui/zhangsan-launch-candidate-dropdown-1440.png`），TABLE 行内 owner 下拉同样显示，值以**姓名**回显（张三/李四/王五），业务用户不手填内部 ID。
+2. **合法办理人数据可用**：新增 `FormRecordAccessPort`（form-api 端口，**Optional 契约**；实现：实例发起人 / 实例任务办理人（运行+历史）/ 参与人快照成员 → 记录级参与访问；仅该行、不放大表单级数据范围）。张三任务详情「数据表单」由「表单记录加载失败或已不存在」变为**正常可读**（工单号=AX-2026-004/负责人=张三/处理结果来源行），并在 UI 完成办理提交（`ui/zhangsan-task-detail-data-readable-1440.png`）：任务 15:48:39 完成、节点表单落库（host-01/正常/已完成巡检）、逐行回写主表 host-01（ver1）。
+3. **可见全链**：发起（填单+提交成功提示+「我发起的」出现 安信安装工单 c343b44e 进行中）→ 办理（上述）→ **结果查询**：同场景链 05889d92 全链**已通过**，详情含流转记录、触发与动作（trg_dispatch MATCHED+3×act_group 关联实例）、桌面 1440 与窄屏 768 制品（`ui/zhangsan-result-query-approved-{1440,768}.png`，窄屏单列完整可用）。
+4. **权限边界（不扩大其他行）**：张三对李四任务办理 **403「无权处理该任务」**；张三读非其参与/发起的记录 **1507 遮蔽**（S3 旧链李四子记录复验，`ui_chain2` 记录）；修复端口经全仓架构守门（ApiOptionalContractGate）复验无越界面。
+5. 如实登记：本环境 access token 为内存态、静默续期受 Cookie path 影响，整页导航后需重新登录（带 redirect 直达）——属既有环境行为，非本轮回归；浏览器全程经 SPA 内导航或带 redirect 登录完成。
+
+## 3. P3-01-S1（七链业务结果+数量账+轮数/深度分离+设备样板关联）
+
+- **七条业务链**（`s1/main-seven-*`）：WO-2026-201 正常 + 首检 NG:PROCESS/MATERIAL/EQUIPMENT + 首检NG后终检 REWORK/SCRAP/CONCESSION，七条全 APPROVED；业务键↔WO 号映射、七链分支判定原行（sw_bpm_trigger_exec）、29 条节点表单提交（含办理人与中文备注）、六链整改子批（各 1 轮，exp=1 SETTLED）与子条目 WRITTEN 回写齐全——**复检轮次按同一业务链逐条可见**。
+- **数量账**（`s1/txn-*`）：45 行 RESERVE/CONFIRM/RELEASE/ADJUST 台账（余额/预占逐行递进）；47 条幂等调用（同 invocationKey 重复提交回查同一 reservationId）；**预约≠领料**（6 条 ACTIVE 预约未结算、余额不动）；**批准≠入库**（仅入库节点产生 IN:WO-2026-201 落 50）；**部分失败/并发/恢复**：8 并发同一行锁串行、6 成功恰好封顶 30 且 CONC:5/6 以 1604「可用数量不足」拒绝、**成功行不重复**；释放后额度可复用（RELEASE→再预约）。
+- **轮数与深度护栏分离实证**（审查指正核心项）：新建四轮展开验证流程（`bpm_32afce074b614668`），每轮首检 NG 均由**主实例（parent_depth=0）**派发整改复检（同根同阶段模板 `bpm_ba51e2e6b9954a8f`）：轮1—3 成功（`act_round1/2/3` 全 dep=0、累计=3，三子实例 APPROVED），**轮4 被 `REWORK_LOOP_OVER_LIMIT(2454)` 阻断**：“业务根链 a2c30f3a… 自动发起实例数 3 + 本批 1 超过循环上限 3，已阻止自动派发并挂起等待有权用户处置”（服务端日志+trigger_exec 原文 `s1/round-guard-*`）；全程深度≤1。**深度护栏**保留原证：12:48:06「父子嵌套深度 3 达到上限 3，已阻止派发」（`s1/depth-guard-log.txt`）。默认 3=本轮实跑；硬上限 10 为 `resolveReworkLoopLimit` 钳制（代码+既有单测覆盖，不在实跑中构造第 11 轮）。
+- **设备样板关联**（生产对象↔受控设备命令↔实际反馈，`s1/equip-sample-association.txt`）：产品 CNC-MILL 物模型 PUBLISHED → 设备 CNC-MILL-01 PUBLISHED+流程接入=1 → 以 **approvalBizId=WO-NG-EQP 工单记录**下发检修命令（QUEUED/延迟生效语义）→ 受控对端经真实回写端点回 **SUCCESS+反馈文本** → 按 approvalBizId 回查关联 2 条。属入队+回执层级，如实验证（未涉 broker 级外发，未冒称机房效果）。
+- 过程性事实如实登记：演示脚本曾以同名匹配误办 12:48 停靠遗留链的一个整改任务，随即受控清理（该链复检补办 PASS 后继续停靠）；轮数护栏链全程无此问题。往返脚本留存 `~/sw-p64p3/`（不入 Git）。
+
+## 4. P3-01-S2（八组合原结果+选岗委托+有效轮次聚合四人会签）
+
+- **八组合**（`s2/eight-*`）：B1/B2/B3/B4 八例与 UNMATCHED×2 **零派发**原行（“判断结果未命中任何分支…未产生动作: 脚本返回 null”）；组数/分支与同对象批次数一致；两个 HALT 案例为设计内不派发，非缺陷。
+- **选岗/委托**：`sys_post_delegate` 100(分管领导岗)→101(部门负责人岗) ORG/ENABLED 配置原行 + 委托门候选组（共享任务 1addb167 甲乙丙可见）。**有效轮次聚合**：node_cosign 的 NODE_FORM_AGGREGATE 从 node_duty **本轮**有效提交 handlers 并集去重=甲乙丙丁。
+- **四人会签原结果**（一轮链 0a66e9a6 保全）：4 个多实例子任务（各持独立 taskId）、4 条会签票、4 条完成历史。**发现并修复一处记账缺陷**：`ParticipantSnapshotRecorder.settle` 原按“节点已由…处理”把仍存活的会签兄弟任务误标 INVALIDATED（快照与任务/会签票矛盾）；修复为**失效面按运行时任务存活收窄**（引擎门面未装配时回退旧语义，兼容历史测试）。
+- **修复后重跑**（新链 aba963ab，APPROVED，`s2/fix-*`）：node_duty 3×HANDLED；**node_cosign 4×HANDLED**（四人逐一实办、快照与票/任务一致）；node_gate 共享任务维持原语义（1 HANDLED+3 INVALIDATED）；本轮新增单测 2 用例覆盖存活/消失两分支。
+- 关联标注：规则实例 def=bpm_75c5a004411a4ea5，聚合主链 def=bpm_9b6bcb6866aa4c0e（zs_form 当前启用绑定），不同实例输出不合并叙述。
+
+## 5. P3-01-S3（0157b793 四行三组/越权/回写/ALL 一次复核）
+
+- 原件保全（未重跑全链）：实例 0157b793 APPROVED；**四行三组**（9003 组 2 行/9004 1 行/9005 1 行，`group-items.txt` 含 source_rows_json 与逐行 writebackJson/writeback_source）；**父表 4 行 feedback 精确回写**（host-01=已完成巡检、host-02=已更换风扇、host-03=已重装系统、host-04=已更换磁盘阵列，ver=1）。
+- **越权拒绝**原始日志：11:41:23 `403 无权处理该任务`（张三对李四任务）；**遮蔽** 11:42:04 `1507 记录不存在或已删除`（张三读李四子记录）；**排序稳定行回写**：回写按 **rowId 键控**、源行版本随行、与列表排序无关。
+- **1/2 未推进、齐后一次复核**：复核任务在全部 3 个子批次 WRITTEN 之后才创建（起点 11:41:31，晚于末条回写 11:41:31.608）；复核计数=1（APPROVED 后不再出现）。以上均为一轮原件时间线，不造历史证据。
+
+## 6. P3-01-COMPAT（工程输出保全+P63 兼容核实+适用检查通过）
+
+- **当前工程真实输出**：首轮全仓 `mvn -B test` 实跑记录 11 失败清单（`compat/fulltest-run1-failures.txt` 及各自报告原件）。**P63LegacyConditionPathPgTest 本轮实跑 2/0 通过**（`compat/p63-legacy-condition-pass.txt`）——原回执“engine 全量未跑/预存在”的口径由实跑结果取代。
+- **修复的兼容漂移（机械同步+契约合规，均给出前后原件）**：① ErrorCodeCatalogTest：阶段Ⅲ新增 2454 常量后目录 §2 计数与测试期望未同步 → 同步 178→179、173→174（catalog 行已在案）；② Phase4PgMigrationBehaviourTest：迁移链尾期望 0.1.7 未随阶段Ⅱ链尾 V0.1.9 更新 → 机械同步 0.1.9（V0.1.8/V0.1.9 为阶段Ⅱ既有迁移，本轮**零新迁移**）；③ BilingualMessageContractTest：补 `bpm.rework_loop_over_limit` zh-CN/en-US 文案；④ ApiOptionalContractGateTest：新端口改为 Optional 契约返回；`DeptQueryFacade#searchActiveDepts` 命中部级“8 个零调用删除项”账本禁令 → 回退部门侧扩展（实际表单无 DEPT 选择器字段，需求不涉及）。
+- **受影响回归**：修复验证轮 28/0 BUILD SUCCESS（ErrorCodeCatalog/Bilingual/ApiOptional/Phase4 迁移/P63Legacy/快照结算 2 用例 + 旧回收凭）；全仓复跑结论见 §8 门禁。
+- **P45 隔离装置按适用性实跑**：提供装置声明的环境输入（隔离 Redis 6381、V1/V2 私钥、用户口令、摘要密钥）+ 反应堆构建 → **3/0 通过**（`compat/p45-isolated/`，证据文件仅计数与布尔、无敏感明文）；原“Context 失败=环境受限”归因更正为**装置输入未提供**（先前单模块离线运行另叠加本地仓库旧件缺类问题）。
+- **存量办理影响核查**：本轮等待节点装配/提交先落库/快照结算变更对既有路径的回归经 process 模块定向（ProcessStartService/ChildOrchestrationService/TaskActionService/快照）与全仓复跑覆盖，无新增失败。
+- **遗留失败（非本轮引入，如实归因）**：Phase4PgStartWindowCrashTest（装置时序，P63 轮已登记既有失败）；P63ImmediateMqttBrokerPgTest / P63ReservationUnknownPgTest（**外部受控 broker 18830 资产缺失**——P63 轮次的任务自有进程资产，当前不在位；真实失败输出见 `compat/p63-*`）。按审查“环境归因需真实失败输出与核实结论”处理，不虚报通过。
+
+## 7. P3-01-CLOSE（任务生命周期与配置资产）
+
+- 本机代理进程精确归属并**受控结束**（§9 收尾回读）；用户既有服务（6379 Redis、用户 Chrome 等）全程未动。
+- 配置资产可恢复：表单/流程/TxnAction/绑定/委托/设备-产品物模型均在运行库且具导出件（`originals/` 种子与状态快照）；本轮全部资产即经 API 建/复用（含四轮验证流程、产品物模型、委托绑定切换），可重复重建；佐证：流程目录 12 个可发起项在业务用户界面完整可见可发起。
+- knowledge-first 同步与 Git 见 §10；阶段Ⅲ当前入口=补充提示01，本回执提交后转 Planner 复验。
+
+## 8. 工程门禁（本轮实跑）
+
+- 定向修复验证：`28/0 BUILD SUCCESS`（六类修复+P63Legacy+P45；证据 `compat/fix-verify-run2-pass.txt`）
+- 全仓 `mvn -B test` 复跑（修复后 run3，总耗时 27:45，日志 143,995 行）：**32/32 模块完整走完 reactor；14 个含测试模块合计 345 个测试类、`Tests run 2006 / Failures 3 / Errors 0 / Skipped 27`**（日志模块汇总与磁盘 `target/surefire-reports` 两口径一致，见 `compat/fulltest-run3-summary.txt` 与 `compat/fulltest-run3-tail.txt`）；`BUILD FAILURE` 仅由 Bootstrap 模块 3 项既有失败触发（surefire 默认 fail-fast，不掩其他模块）。修复前 run1 的 11 项失败（ErrorCodeCatalogTest×2、Phase4PgMigrationBehaviourTest×3、ApiOptionalContractGateTest×2、BilingualMessageContractTest×1、快照结算等）在 run3 全部转绿；**run3 遗留 3 项 = run1 的同 3 项，属既有环境/资产归因、非本轮引入**：①`P63ImmediateMqttBrokerPgTest.setUp` “受控 broker 已就绪（任务启动）=false”——外部受控 broker 18830 资产不在位；②`P63ReservationUnknownPgTest.reservationUnknownChain` “60000ms 内命令未到 SENT: last=FAILED”——同因（均为 P63 轮任务自有进程资产）；③`Phase4PgStartWindowCrashTest.java:149` `expected 1L but was 0L`——run1 同项同断言，连外部既有证据库 `jdbc:postgresql://8.166.112.85:3897/sw_p4_evidence`（PostgreSQL 14.24），与本轮修复面无关。跳过 27 项=P62 参数门条件跳过（历史登记）。
+- 迁移链：尾 V0.1.9 不变（本轮零新迁移）；启动实测 Flyway 校验通过（服务新构建正常启动）。
+- Web 门禁（Web 仓唯一改动 `src/modules/form/api/i2-choices.ts`：`loadUserChoices` 改调既有端点 `/system/user/options`，`loadDeptChoices` 保持原 `listDeptTree` 不变）：`vue-tsc -b --noEmit` rc=0；全仓 `eslint .` 0 error / 3 warning（既有 `vue/require-default-prop`，与本改动无关）；相关 vitest 3 文件 16 用例全过（UserControl/DeptControl/user-dept-display）；证据 `web/web-gate-run.txt`。
+
+## 9. 代理任务收尾（受控结束与退出回读）
+
+- 结束对象（均属本代理验证资产，逐一核实归属后于 2026-10-12 16:27:59 受控结束）：Server（`-cp target/extracted` 模式，PID 31516，端口 8080）及其脚本 worker 子 JVM（PID 33082，`com.sw.ck.bpm.engine.script.ScriptWorkerMain`）；Web vite dev（PID 35741，端口 5173，`--strictPort`）；隔离 Redis 6381（PID 6198，P45 装置专用）。
+- 结束方式与退出回读：Server/vite 以 SIGTERM 结束，worker 子 JVM 随主进程退出；Redis 6381 以 `redis-cli -p 6381 shutdown nosave`（rc=0）结束；全部经 kqueue `NOTE_EXIT` 原生有界等待回读退出（server=EXITED，worker/vite/redis=已退出）。回读：目标 PID 全部消失（ps 空集）；端口 8080/5173/6381 均无监听；**用户既有服务未动**——用户 Redis 6379（PID 23917）存活、Chrome 存活。
+- 全仓复跑 maven（后台任务 handle `exec_c139443c-9104-4eb4-a94a-3a41964f1b66`，PID 38802）于 16:20:47 自行退出（BUILD FAILURE 终态，输出留存）；vite/Server 两个宿主后台任务同步以 143 结算；本轮无遗留活任务、无孤儿进程。
+- 证据：`close/agent-process-shutdown.txt`（含脱敏后的启动命令行；密钥/摘要口令以 `[REDACTED]` 处理，不回显）。
+
+## 10. knowledge 同步与 Git
+
+- knowledge-first：current-status.md 顶部、session-handoff、P64 功能登记、memory 五入口、todo/P64 与需求池、product 五文档路由——同步为本轮实际结果（二轮修复与复验完成待 Planner 复验）。
+- Git（普通内聚批次，system.md §0.8.1 既有授权；三仓分别提交推送，非 Planner 操作）：
+  - Server `feature/p64-mes-advanced-orchestration`：`9e80155`（会签快照结算收窄/合法办理人记录读取端口/双语文案/目录计数 179/迁移锚 0.1.9/功能清单焦点行），推送后 `git ls-remote` 回读一致；
+  - Web 同分支：`9fbf2c7`（`i2-choices.ts` 用户候选端点），推送后 `git ls-remote` 回读一致；
+  - 工作区 `develop-sw`：本批次（回执02、补充提示01与审查01读取件、knowledge 两入口、memory 五入口、todo 两件、product 路由、子仓指针）随本回执提交推送；主批次 SHA 与三仓远端回读另见交接摘要补记提交。
+- 未涉生产升级、发布分支合并、tag/Release、部署或强推。
+
+## 11. 限制与风险（如实）
+
+- 浏览器环境：access token 内存态+续期 Cookie path 与部署前缀不一致 → 整页导航需重新登录（带 redirect 直达）；本轮所有深页取证经该路径完成，属环境行为。
+- UI 演示链两条如实并存：05889d92（已通过，结果查询取证链）；c343b44e（张三 UI 发起与办理原件所在链，因脚本补办李四/王五时来源行读取失误被引擎以“必需回写缺失”正确拒绝后受控终止）——不造替代、不隐藏失败。
+- 设备关联为入队+受控对端回执层级；MQTT broker 级外发未涉（与 P63 外部资产状态一致）。
+- Phase4PgStartWindowCrashTest 时序敏感，复跑可能不稳定（既有登记）。
+
+## 12. 自验结论
+
+补充提示01 所列六项关闭标准逐项达成，且每项均给出对象/环境/版本、行为与边界、原始输出位置；无新增未归因失败。按角色边界，不写阶段Ⅲ通过/整体终态，提交 `phase-3-completion-receipt-02.md` 供 Planner 独立复验（二轮上限内）。
+
+Executor 终态（唯一终态行）：
+ENGINE_TERMINAL {"schema":"agent-coding-engine.executor-terminal.v2","role":"executor","state":"EXECUTION_SUBMITTED","task_level":"XL","receipt":"product/p64-mes-advanced-orchestration/receipts/phase-3-completion-receipt-02.md","evidence":["product/p64-mes-advanced-orchestration/receipts/evidence/phase3-02/INDEX.md","product/p64-mes-advanced-orchestration/receipts/evidence/phase3-02/compat/fulltest-run3-summary.txt","product/p64-mes-advanced-orchestration/receipts/evidence/phase3-02/web/web-gate-run.txt","product/p64-mes-advanced-orchestration/receipts/evidence/phase3-02/close/agent-process-shutdown.txt"],"feature_status":"IN_PROGRESS","work_items":[{"id":"P3-01-UI","status":"COMPLETED","authorized":true,"dependency_satisfied":true,"actionable":false,"next_action":"待Planner复验"},{"id":"P3-01-S1","status":"COMPLETED","authorized":true,"dependency_satisfied":true,"actionable":false,"next_action":"待Planner复验"},{"id":"P3-01-S2","status":"COMPLETED","authorized":true,"dependency_satisfied":true,"actionable":false,"next_action":"待Planner复验"},{"id":"P3-01-S3","status":"COMPLETED","authorized":true,"dependency_satisfied":true,"actionable":false,"next_action":"待Planner复验"},{"id":"P3-01-COMPAT","status":"COMPLETED","authorized":true,"dependency_satisfied":true,"actionable":false,"next_action":"待Planner复验"},{"id":"P3-01-CLOSE","status":"COMPLETED","authorized":true,"dependency_satisfied":true,"actionable":false,"next_action":"待Planner复验"}],"remaining_actionable_count":0,"independent_work_exhausted":true,"next_action":"Planner 按补充提示01与审查01逐项复验回执02与 evidence/phase3-02 证据包","next_action_type":"WAIT_PLANNER","progress_fingerprint":"p64-phase3-round2-fix-verify-20261012","progress_basis":{"files_changed":["Smart-WorkFlow-aPaaS-server: ParticipantSnapshotRecorderImpl.java、FormDataQueryService.java、FormRecordAccessPort.java(新)、FormRecordAccessPortImpl.java(新)、ParticipantSnapshotRecorderSettlePreciseTest.java(新)、messages_zh_CN/en_US.properties、error-code-catalog.md、ErrorCodeCatalogTest.java、Phase4PgMigrationBehaviourTest.java、功能清单.md","Smart-WorkFlow-aPaaS-Web: src/modules/form/api/i2-choices.ts","工作区: product/p64-mes-advanced-orchestration/receipts/phase-3-completion-receipt-02.md、knowledge 两入口、memory 五入口、todo 两件、product/ready 五路由"],"tool_actions":["mvn 定向修复验证 28/0 BUILD SUCCESS","mvn 全仓复跑 345类/2006用例/3失败均既有归因","mvn 进程 kqueue 原生有界等待退出","Web 门禁 vue-tsc/eslint/vitest 全过","git 三仓提交推送并远端回读","受控结束 Server/vite/worker/redis6381 并回读退出","证据日志秘密脱敏"],"new_evidence":["product/p64-mes-advanced-orchestration/receipts/evidence/phase3-02/compat/fulltest-run3-summary.txt","product/p64-mes-advanced-orchestration/receipts/evidence/phase3-02/compat/fulltest-run3-tail.txt","product/p64-mes-advanced-orchestration/receipts/evidence/phase3-02/web/web-gate-run.txt","product/p64-mes-advanced-orchestration/receipts/evidence/phase3-02/close/agent-process-shutdown.txt"],"closed_work_items":["P3-01-UI","P3-01-S1","P3-01-S2","P3-01-S3","P3-01-COMPAT","P3-01-CLOSE"]},"stop_reason":"WAITING_FOR_PLANNER","tool_results":[{"tool":"mvn-fix-verify","outcome":"SUCCEEDED","detail":"定向修复验证 28/0 BUILD SUCCESS（compat/fix-verify-run2-pass.txt）"},{"tool":"mvn-fulltest-run3","outcome":"FAILED","detail":"全仓复跑 BUILD FAILURE：345 类/2006 用例/3 失败，全部既有归因（P63 MQTT 外部资产×2、Phase4PgStartWindowCrash 时序，run1 同项）"},{"tool":"web-gate","outcome":"SUCCEEDED","detail":"vue-tsc rc=0；eslint 0 error/3 既有 warning；vitest 3 文件 16 用例全过"},{"tool":"git-three-repos","outcome":"SUCCEEDED","detail":"Server 9e80155 / Web 9fbf2c7 推送后 git ls-remote 回读一致；工作区本批次推送随交接补记"},{"tool":"process-cleanup","outcome":"SUCCEEDED","detail":"31516/33082/35741/6198 受控结束并回读退出，端口 8080/5173/6381 无监听；用户 Redis 6379 与 Chrome 未动"}],"browser_status":"OPERABLE","browser_evidence":{"tier":"FORMAL_FLOW","headless":false,"artifacts":["product/p64-mes-advanced-orchestration/receipts/evidence/phase3-02/ui/zhangsan-launch-candidate-dropdown-1440.png","product/p64-mes-advanced-orchestration/receipts/evidence/phase3-02/ui/zhangsan-launch-form-filled-1440.png","product/p64-mes-advanced-orchestration/receipts/evidence/phase3-02/ui/zhangsan-task-detail-data-readable-1440.png","product/p64-mes-advanced-orchestration/receipts/evidence/phase3-02/ui/zhangsan-result-query-approved-1440.png","product/p64-mes-advanced-orchestration/receipts/evidence/phase3-02/ui/zhangsan-result-query-approved-768.png"],"url":"http://localhost:5173","viewport":"1440x900 与 768 窄屏","identity":"业务用户张三（发起/办理/结果查询）等","object":"发起→办理→结果查询可见全链；负向 403/1507 隔离"},"formal_browser_acceptance":true,"execution_tasks":[{"id":"exec_c139443c","work_item_id":"P3-01-COMPAT","input":"全仓 mvn -B test 复跑（修复后）","expected_output":"原始输出与逐模块/逐类 Tests run 汇总","completion_condition":"maven 进程退出且日志含 BUILD 终态","handle":"exec_c139443c-9104-4eb4-a94a-3a41964f1b66 (pid 38802)","cancel_action":"kill 38802","cleanup_action":"日志留存 /tmp/p64p3_fulltest3.txt 与证据副本；确认无孤儿进程","status":"FAILED","execution_mode":"MANAGED_BACKGROUND","validation_scope":"MINIMAL_SUFFICIENT","wait_strategy":"EVENT","failure_policy":"CANCEL_AND_SAVE","work_limit":1,"timeout_seconds":3600,"progress_timeout_seconds":900,"started_at":1791791582000,"deadline_at":1791795182000,"last_progress_at":1791793247000,"cleanup_complete":true,"exit_code":null,"result_paths":["/tmp/p64p3_fulltest3.txt","product/p64-mes-advanced-orchestration/receipts/evidence/phase3-02/compat/fulltest-run3-summary.txt"],"progress":{"sequence":2,"processed_units":2006,"phase":"FINISHED","result_count":2006,"error":"BUILD FAILURE：3 项既有归因失败（非本轮引入）"}},{"id":"exec_c1c6594b","work_item_id":"P3-01-UI","input":"Web vite dev 服务（--port 5173 --strictPort）供可见浏览器取证","expected_output":"页面可交互与截图证据","completion_condition":"受控结束并回读退出","handle":"exec_c1c6594b-ecd7-4b78-a64a-8ff0d12ffc62 (pid 35741)","cancel_action":"kill -TERM 35741","cleanup_action":"回读端口 5173 无监听","status":"CANCELLED","execution_mode":"MANAGED_BACKGROUND","validation_scope":"MINIMAL_SUFFICIENT","wait_strategy":"EVENT","failure_policy":"CANCEL_AND_SAVE","work_limit":1,"timeout_seconds":28800,"progress_timeout_seconds":1800,"started_at":1791789873000,"deadline_at":1791818673000,"last_progress_at":1791793679000,"cleanup_complete":true,"exit_code":143,"result_paths":["product/p64-mes-advanced-orchestration/receipts/evidence/phase3-02/ui/"],"progress":{"sequence":1,"processed_units":0,"phase":"FINISHED","result_count":5,"error":""}},{"id":"exec_d5fe5a77","work_item_id":"P3-01-UI","input":"新构建 Server（-cp extracted，含本轮修复）于 8080 供探针与浏览器存取","expected_output":"接口可用与业务链运行","completion_condition":"受控结束并回读退出","handle":"exec_d5fe5a77-03a2-44f1-9009-39ad8c9893f3 (pid 31516)","cancel_action":"kill -TERM 31516","cleanup_action":"worker 子 JVM 33082 随之退出；回读端口 8080 无监听","status":"CANCELLED","execution_mode":"MANAGED_BACKGROUND","validation_scope":"MINIMAL_SUFFICIENT","wait_strategy":"EVENT","failure_policy":"CANCEL_AND_SAVE","work_limit":1,"timeout_seconds":28800,"progress_timeout_seconds":1800,"started_at":1791788965000,"deadline_at":1791817765000,"last_progress_at":1791793679000,"cleanup_complete":true,"exit_code":143,"result_paths":["/tmp/p64p3_fulltest3.txt"],"progress":{"sequence":1,"processed_units":0,"phase":"FINISHED","result_count":0,"error":""}}]}

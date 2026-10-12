@@ -1,10 +1,10 @@
 # 近期有效决策摘要
 
-2026-10-12；Planner。P64 IN_PROGRESS，Ⅰ/ⅡPASSED，Ⅲ已执行完毕（回执01 2026-10-12 提交）待规划独立验收，整体终态收尾未进入。P62批准功能COMPLETED；有限性能VERIFYING且Owner已搁置，G2/G3/G5历史剩余留账，不安排第四轮；未来后台带权租户优先级另行规划，策略OFF。
+2026-10-12；Planner（Executor 二轮同步）。P64整体IN_PROGRESS，Ⅰ/ⅡPASSED；阶段Ⅲ二轮修复与复验完成、[回执02](../product/p64-mes-advanced-orchestration/receipts/phase-3-completion-receipt-02.md)已提交待Planner复验（依据[审查01](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-3-01.md)与[补充提示01](../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase3-01.md)，证据 `receipts/evidence/phase3-02/`）。整体终态收尾未进入。P62批准功能COMPLETED；有限性能VERIFYING且Owner已搁置，G2/G3/G5历史剩余留账，不安排第四轮，未来后台带权租户优先级另行规划，策略OFF。
 
-唯一下一动作：Executor按[阶段Ⅲ入口](../product/p64-mes-advanced-orchestration/ready/direction-p64-phase3-scenarios-delivery.md)完成P64场景与整体交付，提交phase-3-completion-receipt-01.md。
+唯一下一动作：Planner 按补充提示01复验回执02与 phase3-02 证据包（二轮上限内，未过先自查再交 Owner）。
 
-功能47、清单46/22/22=90、ADV64、问题57、P63/VB及正式基线保持。P64总3阶段：Ⅰ数据到动作完成、Ⅱ人员与父子协作完成、Ⅲ场景与整体交付未开始（2/0/1）；Executor实际启动后为2/1/0。
+功能47、清单46/22/22=90、ADV64、问题57、P63/VB及正式基线保持。P64总3业务阶段：Ⅰ数据到动作完成、Ⅱ人员与父子协作完成、Ⅲ场景与整体交付进行中（修复与复验）；已完成2/进行中1/未开始0。
 
 - P64：业务主链以多流程编排；主表/节点表/变量各司其职，JS只判断、动作受控执行；后台源岗位→受托岗位委托映射，经组织任职解析实际办理人、同轮冻结；分组子流程隔离回写、四等待策略及迟到结果冻结。变量有效轮次/缺值、S2八组合、数量账业务结果、规模护栏与存量兼容已收敛，详见方向。
 - 当前状态与历史物理分离；当前值只见 `knowledge/current-status.md`（历轮 P63/P62 长条目已迁 `knowledge/history/current-status-through-2026-10-08-p63-stage3-before.md`）；终态机器契约单一源 `.codex/governance/terminal-contract.json`。
