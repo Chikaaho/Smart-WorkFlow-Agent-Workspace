@@ -1,6 +1,6 @@
 # P64实施授权与当前交付入口
 
-> 当前路由（2026-10-12，终态同步已执行）：P64功能验收PASSED（审查05）、**COMPLETED（待规划终态复核）**、正式功能第48个（=47+P64整体1）；阶段Ⅰ/Ⅱ/ⅢPASSED（3/0/0）；P64批准范围核销；90行✅46/🟦22/⬜22与ADV64本次零升降、问题57保持；正式验证集合={P64-VB01—VB04}（值见[终态同步回执](../receipts/terminal-sync-p64-01.md)）；活动业务功能无；无发布/合并/tag/Release/部署。唯一下一动作：Planner复核[terminal-sync-p64-01](../receipts/terminal-sync-p64-01.md)及全部当前入口后确认COMPLETED。P62性能延期/OFF保持。
+> 当前路由（2026-10-12，终态同步已执行）：P64功能验收PASSED（审查05）、**COMPLETED（待规划终态复核）**、正式功能第48个（=47+P64整体1）；阶段Ⅰ/Ⅱ/ⅢPASSED（3/0/0）；P64批准范围核销；90行✅46/🟦22/⬜22与ADV64本次零升降、问题57保持；正式验证集合={P64-VB01—VB04}（值见[终态同步回执](../receipts/terminal-sync-p64-01.md)）；活动业务功能无；无发布/合并/tag/Release/部署。唯一下一动作：Planner关闭TS-GIT并确认P64终态（根批次核实结果已回传search_fallback/p64-terminal-root-readback-20261013.md）。P62性能延期/OFF保持。
 
 2026-10-08；本会话角色：规划，实施角色：执行；XL。Owner在READY传播终审后明确指令：**“开始实施”**。
 
@@ -8,8 +8,8 @@
 
 ## 1. 当前状态与唯一动作
 
-- 当前P64=PASSED；阶段ⅠPASSED（2026-10-10[规划验收08](../receipts/planning-review-phase-1-08-passed.md)），阶段ⅡPASSED（2026-10-11[验收09](../receipts/planning-review-phase-2-09-passed.md)）、阶段ⅢPASSED。本规划会话未运行工程。
-- 唯一下一动作：Executor按整体终态同步方向提交terminal-sync-p64-01.md。
+- 当前P64=COMPLETED（待规划终态复核）；阶段ⅠPASSED（2026-10-10[规划验收08](../receipts/planning-review-phase-1-08-passed.md)），阶段ⅡPASSED（2026-10-11[验收09](../receipts/planning-review-phase-2-09-passed.md)）、阶段ⅢPASSED。本规划会话未运行工程。
+- 唯一下一动作：Planner关闭TS-GIT并确认P64终态（根批次核实结果已回传search_fallback/p64-terminal-root-readback-20261013.md）。
 - READY传播及G1—G4已关闭，[传播终审03](../receipts/planning-final-review-ready-state-propagation-03.md)保留其时点裁决，不作为当前等待实施授权入口。
 - 此次实施授权覆盖既定完整P64，不为内部步骤或已授权后续阶段重复索要实施许可；各阶段仍提交行为回执，由Planner独立验收，阶段通过不替代整体A01—A12通过。
 
@@ -39,22 +39,22 @@
 - 正式浏览器证据遵循system的可见可交互要求；执行任务必须有限、有完成条件及可控生命周期。不空转等待，不启动不可控后台任务，不擅停用户既有服务。
 - 独立内聚批次适用门禁通过后，按system.md提交推送既有跟踪分支并远端回读；先收尾本轮及上一轮未提交的授权规划文档，只纳入本批相关文档和经核实的子仓指针，保留无关变更、日志和运行产物。发布分支合并、tag/Release及部署仍须专项授权。
 
-正式功能47、清单46/22/22=90、ADV64、问题57、其他P/明细以及P63业务/VB继续保持；P62性能就绪探索已解锁/有限性能三轮未通过、VERIFYING、新资源策略默认关闭。阶段I开始不晋级功能数、核销P或刷新正式通过基线。
+正式功能48、清单46/22/22=90、ADV64、问题57、其他P/明细以及P63业务/VB继续保持；P62性能就绪探索已解锁/有限性能三轮未通过、VERIFYING、新资源策略默认关闭。阶段I开始不晋级功能数、核销P或刷新正式通过基线。
 
 ## 4. 当前事实同步授权与交付回执
 
-Executor获得以下明确状态同步写入授权：knowledge/current-status、session-handoff、P64登记、实际含P64当前字段的architecture/feature-reconciliation-index，Server功能清单焦点，以及memory五入口（README/state/handoff/features/decisions）与todo/requirement-pool、todo/P64索引及实际受影响product当前路由。按knowledge-first，同步阶段ⅠPASSED、整体IN_PROGRESS、阶段ⅡPASSED（验收09）、阶段ⅢPASSED、本文及阶段Ⅱ指针、实测Git/环境与唯一下一动作；不回填整体终态或晋级基线。
+Executor获得以下明确状态同步写入授权：knowledge/current-status、session-handoff、P64登记、实际含P64当前字段的architecture/feature-reconciliation-index，Server功能清单焦点，以及memory五入口（README/state/handoff/features/decisions）与todo/requirement-pool、todo/P64索引及实际受影响product当前路由。按knowledge-first，同步阶段ⅠPASSED、整体COMPLETED（待规划终态复核）、阶段ⅡPASSED（验收09）、阶段ⅢPASSED、本文及阶段Ⅱ指针、实测Git/环境与唯一下一动作；终态登记与基线按整体终态同步方向已获授权值执行。
 
 启动状态同步与实施连续进行，不单独开启READY传播补证轮次。未启动不得声称工程已运行；启动后移除“实施未授权/等待Owner实施指令”的当前待办。历史回执保持原时点。
 
-阶段Ⅱ回执09已由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)独立验收通过；阶段Ⅱ补证账本清零，不再追加阶段Ⅱ补证回执。P62新机就绪探索已于2026-10-11由Executor只读完成（回执 `search_fallback/p62-performance-new-machine-readiness-20261011.md`），唯一下一动作：Executor按整体终态同步方向提交terminal-sync-p64-01.md。
+阶段Ⅱ回执09已由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)独立验收通过；阶段Ⅱ补证账本清零，不再追加阶段Ⅱ补证回执。P62新机就绪探索已于2026-10-11由Executor只读完成（回执 `search_fallback/p62-performance-new-machine-readiness-20261011.md`），唯一下一动作：Planner关闭TS-GIT并确认P64终态（根批次核实结果已回传search_fallback/p64-terminal-root-readback-20261013.md）。
 
-Executor不能自行写功能PASSED/COMPLETED、核销P/明细、晋级正式基线或移动方向至passed；后续整体通过与终态同步由Planner裁决。此授权在本会话已经成立，不需要再次确认。
+Executor按Planner终态清单机械同步COMPLETED（待规划终态复核）、48与P64核销；不得自行写规划已确认或移动方向至passed。此授权在本会话已经成立，不需要再次确认。
 
 ## 5. 执行会话启动提示
 
-> 你是执行。读取system、执行角色及P64整体终态同步方向，提交terminal-sync-p64-01.md。
+> 你是执行。读取system、执行角色及search_task/p64-terminal-root-readback-20261013.md，完成根批次收尾核实（已完成，结果见search_fallback/p64-terminal-root-readback-20261013.md）。
 
 ## Owner后续排期（2026-10-11）
 
-阶段Ⅱ已由验收09确认PASSED，Owner恢复条件满足；P62新机就绪探索已完成，唯一下一动作：Executor按整体终态同步方向提交terminal-sync-p64-01.md。
+阶段Ⅱ已由验收09确认PASSED，Owner恢复条件满足；P62新机就绪探索已完成，唯一下一动作：Planner关闭TS-GIT并确认P64终态（根批次核实结果已回传search_fallback/p64-terminal-root-readback-20261013.md）。

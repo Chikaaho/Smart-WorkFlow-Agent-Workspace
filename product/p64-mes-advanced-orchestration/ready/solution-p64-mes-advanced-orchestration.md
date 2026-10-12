@@ -1,6 +1,6 @@
 # P64：高级流程编排方案
 
-> 当前路由（2026-10-12，终态同步已执行）：P64功能验收PASSED（审查05）、**COMPLETED（待规划终态复核）**、正式功能第48个（=47+P64整体1）；阶段Ⅰ/Ⅱ/ⅢPASSED（3/0/0）；P64批准范围核销；90行✅46/🟦22/⬜22与ADV64本次零升降、问题57保持；正式验证集合={P64-VB01—VB04}（值见[终态同步回执](../receipts/terminal-sync-p64-01.md)）；活动业务功能无；无发布/合并/tag/Release/部署。唯一下一动作：Planner复核[terminal-sync-p64-01](../receipts/terminal-sync-p64-01.md)及全部当前入口后确认COMPLETED。P62性能延期/OFF保持。
+> 当前路由（2026-10-12，终态同步已执行）：P64功能验收PASSED（审查05）、**COMPLETED（待规划终态复核）**、正式功能第48个（=47+P64整体1）；阶段Ⅰ/Ⅱ/ⅢPASSED（3/0/0）；P64批准范围核销；90行✅46/🟦22/⬜22与ADV64本次零升降、问题57保持；正式验证集合={P64-VB01—VB04}（值见[终态同步回执](../receipts/terminal-sync-p64-01.md)）；活动业务功能无；无发布/合并/tag/Release/部署。唯一下一动作：Planner关闭TS-GIT并确认P64终态（根批次核实结果已回传search_fallback/p64-terminal-root-readback-20261013.md）。P62性能延期/OFF保持。
 
 2026-10-08；Planner；XL；产品与架构方案。目标和正式通过条件以[主方向](../passed/direction-p64-mes-advanced-orchestration.md) R01—R12/A01—A12为准，本文说明能力如何组成业务闭环及选择理由。Owner已授权开始完整P64实施，阶段Ⅰ已通过，阶段Ⅱ已通过；实现结构、接口、迁移和验证设计由Executor确定。
 
@@ -12,7 +12,7 @@
 
 优先做数据产生到可靠动作的完整链，因为没有任务数据、类型变量和可靠触发，后续选人、子流程及MES只能形成页面演示。第二个能力边界解决跨人员、跨流程的数据协作，第三个边界再证明三场景实际业务结果。
 
-当前P64=PASSED；Ⅰ/ⅡPASSED（[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)），阶段Ⅱ账本0、ⅢPASSED，整体终态同步待执行；完整[实施授权](authorization-p64-implementation-20261008.md)持续。唯一下一动作：Executor按整体终态同步方向提交terminal-sync-p64-01.md。
+当前P64=COMPLETED（待规划终态复核）；Ⅰ/ⅡPASSED（[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)），阶段Ⅱ账本0、ⅢPASSED，整体终态同步已执行、根批次已核实回传（待Planner关闭TS-GIT并确认终态）；完整[实施授权](authorization-p64-implementation-20261008.md)持续。唯一下一动作：Planner关闭TS-GIT并确认P64终态（根批次核实结果已回传search_fallback/p64-terminal-root-readback-20261013.md）。
 
 ## 2. 六项架构决策
 
@@ -88,4 +88,4 @@
 
 两代码仓分支已推送并建立`origin/feature/p64-mes-advanced-orchestration`跟踪；设备恢复见[设备交接](../../governance/device-handoff-20261008.md)。后续工程改动在对应feature分支进行；Executor启动时核实分支、起点变化、工作树和跟踪状态。只纳入本批授权文件，既有治理、gitlink及未跟踪项保留。commit采用规范格式和简短中文主题。
 
-READY传播已由[传播规划终审03](../receipts/planning-final-review-ready-state-propagation-03.md)确认收口，Owner已指令开始实施；阶段Ⅱ已由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)确认通过；当前按阶段Ⅲ入口继续场景与整体交付（阶段Ⅰ[验收08](../receipts/planning-review-phase-1-08-passed.md)通过）；实施授权保持。传播时点Owner认可保留Server根gitlink78495dc；复审08已登记其与最新索引的冲突，来源9b9ed673已证，Owner已认可保留两值，同类常规Git指针调整自行决定并报告。传播03截止点Server develop b7283c8/feature关系0/4，根C2′ d8ed945b；Web未变快照develop7af86f24/关系0/1。上表为创建时点，后续变化按新回读核实。在目标feature分支按主方向及三阶段边界推进，实际启动状态由Executor按授权同步。
+READY传播已由[传播规划终审03](../receipts/planning-final-review-ready-state-propagation-03.md)确认收口，Owner已指令开始实施；阶段Ⅱ已由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)确认通过；当前业务全部通过、终态复核仅余根批次收尾（阶段Ⅰ[验收08](../receipts/planning-review-phase-1-08-passed.md)通过）；实施授权保持。传播时点Owner认可保留Server根gitlink78495dc；复审08已登记其与最新索引的冲突，来源9b9ed673已证，Owner已认可保留两值，同类常规Git指针调整自行决定并报告。传播03截止点Server develop b7283c8/feature关系0/4，根C2′ d8ed945b；Web未变快照develop7af86f24/关系0/1。上表为创建时点，后续变化按新回读核实。在目标feature分支按主方向及三阶段边界推进，实际启动状态由Executor按授权同步。

@@ -1,8 +1,8 @@
 # P64阶段Ⅱ：人员与父子协作
 
-> 当前路由（2026-10-12，终态同步已执行）：P64功能验收PASSED（审查05）、**COMPLETED（待规划终态复核）**、正式功能第48个（=47+P64整体1）；阶段Ⅰ/Ⅱ/ⅢPASSED（3/0/0）；P64批准范围核销；90行✅46/🟦22/⬜22与ADV64本次零升降、问题57保持；正式验证集合={P64-VB01—VB04}（值见[终态同步回执](../receipts/terminal-sync-p64-01.md)）；活动业务功能无；无发布/合并/tag/Release/部署。唯一下一动作：Planner复核[terminal-sync-p64-01](../receipts/terminal-sync-p64-01.md)及全部当前入口后确认COMPLETED。P62性能延期/OFF保持。
+> 当前路由（2026-10-12，终态同步已执行）：P64功能验收PASSED（审查05）、**COMPLETED（待规划终态复核）**、正式功能第48个（=47+P64整体1）；阶段Ⅰ/Ⅱ/ⅢPASSED（3/0/0）；P64批准范围核销；90行✅46/🟦22/⬜22与ADV64本次零升降、问题57保持；正式验证集合={P64-VB01—VB04}（值见[终态同步回执](../receipts/terminal-sync-p64-01.md)）；活动业务功能无；无发布/合并/tag/Release/部署。唯一下一动作：Planner关闭TS-GIT并确认P64终态（根批次核实结果已回传search_fallback/p64-terminal-root-readback-20261013.md）。P62性能延期/OFF保持。
 
-2026-10-11；Planner；XL既有阶段范围。Ⅰ/Ⅱ/ⅢPASSED、整体业务验收PASSED、终态同步待执行。[主方向](../passed/direction-p64-mes-advanced-orchestration.md)/[方案](solution-p64-mes-advanced-orchestration.md)/[实施授权](authorization-p64-implementation-20261008.md)有效。[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)闭合回执09最后T/S两项，提示07转历史。
+2026-10-11；Planner；XL既有阶段范围。Ⅰ/Ⅱ/ⅢPASSED、整体业务验收PASSED、终态同步已执行、根批次已核实回传（待Planner关闭TS-GIT并确认终态）。[主方向](../passed/direction-p64-mes-advanced-orchestration.md)/[方案](solution-p64-mes-advanced-orchestration.md)/[实施授权](authorization-p64-implementation-20261008.md)有效。[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)闭合回执09最后T/S两项，提示07转历史。
 
 ## 目标与正式通过条件
 
@@ -26,8 +26,8 @@
 
 在Server/Web既有feature/p64-mes-advanced-orchestration连续实施，启动时核实工作树/分支/远端，以新原件固定截止；两gitlink旧许可与07实际索引冲突，来源已核，Owner已认可保留两值，同类常规Git指针调整自行核实决定并报告。普通精确批次提交推送授权持续，发布/合并/tag/部署须专项授权。
 
-同时按既有knowledge-first同步范围落本轮唯一状态：P64 PASSED、阶段ⅠPASSED、阶段ⅡPASSED（验收09）；阶段ⅢPASSED。当前功能47、46/22/22=90、ADV64、问题57、其他P、P63/VB、P62性能就绪探索已完成（2026-10-11）/有限性能三轮未通过、VERIFYING/新策略OFF不变；实际受影响当前入口逐字段/值/时点回读，不用“均同步”替覆盖证据。
+同时按既有knowledge-first同步范围落本轮唯一状态：P64 PASSED、阶段ⅠPASSED、阶段ⅡPASSED（验收09）；阶段ⅢPASSED。当前功能48、46/22/22=90、ADV64、问题57、其他P、P63/VB、P62性能就绪探索已完成（2026-10-11）/有限性能三轮未通过、VERIFYING/新策略OFF不变；实际受影响当前入口逐字段/值/时点回读，不用“均同步”替覆盖证据。
 
-阶段Ⅱ由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)确认PASSED，补证账本0；提示07及更早仅作历史。唯一下一动作：Executor按整体终态同步方向提交terminal-sync-p64-01.md。
+阶段Ⅱ由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)确认PASSED，补证账本0；提示07及更早仅作历史。唯一下一动作：Planner关闭TS-GIT并确认P64终态（根批次核实结果已回传search_fallback/p64-terminal-root-readback-20261013.md）。
 
-新会话提示：“你是执行。读取P64整体终态同步方向，完成授权状态同步并提交terminal-sync-p64-01.md。”
+新会话提示：“你是执行。读取search_task/p64-terminal-root-readback-20261013.md，完成根批次收尾核实。”
