@@ -1,6 +1,6 @@
 # 需求池（Requirement Pool）
 
-> 当前路由（2026-10-12 二轮）：阶段Ⅲ二轮修复与复验完成，[回执02](../product/p64-mes-advanced-orchestration/receipts/phase-3-completion-receipt-02.md)已提交待 Planner 复验（审查01六项逐项关闭，证据 `receipts/evidence/phase3-02/`）。P64整体IN_PROGRESS，Ⅰ/ⅡPASSED，Ⅲ进行中（2/1/0），整体终态同步未进入；P62性能已搁置。
+> 当前路由（2026-10-12）：Owner已授权按业务导向继续修复；Executor按[阶段Ⅲ业务闭环修复](../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase3-02.md)完成UI/MES剩余并提交回执03。P64整体IN_PROGRESS，Ⅰ/ⅡPASSED，Ⅲ进行中（2/1/0）；整体终态同步未进入，P62性能已搁置。
 
 > 与 `product/`、`knowledge/` 平级的工作区目录，规划层维护（2026-08-16 新建；D83 回执回收后修订）。
 > 收录**已开发但未满足**的功能（清单 🟦 行、known-issues 待修复项、已落地模块的缺口）以及未开发候选。
@@ -11,7 +11,7 @@
 
 ## Owner 优先级覆盖
 
-**2026-10-11 当前规划**：P64 IN_PROGRESS；Ⅰ/ⅡPASSED（[阶段Ⅱ验收09](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-2-09-passed.md)）、Ⅲ二轮修复与复验完成、回执02待 Planner 复验。阶段Ⅱ补证账本0。Owner 已裁决（2026-10-12）：P62 有限性能搁置为已知延期问题（不安排第四轮；未来方向=带权参数配置、后台可配置每租户优先级）；唯一下一动作=Planner 复验回执02与 phase3-02 证据包；探索已完成（2026-10-11，Executor只读执行），有限性能三轮未通过已搁置（VERIFYING 留账）/策略OFF。47/90/ADV64/57、P63/VB保持，两指针已认可，常规调整自主核实决定。Codex无Admin续办。
+**2026-10-11 当前规划**：P64 IN_PROGRESS；Ⅰ/ⅡPASSED（[阶段Ⅱ验收09](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-2-09-passed.md)）、Ⅲ按Owner授权继续业务闭环修复。阶段Ⅱ补证账本0。Owner 已裁决（2026-10-12）：P62 有限性能搁置为已知延期问题（不安排第四轮；未来方向=带权参数配置、后台可配置每租户优先级）；唯一下一动作=Executor按业务闭环修复入口完成UI/MES修复并提交回执03；探索已完成（2026-10-11，Executor只读执行），有限性能三轮未通过已搁置（VERIFYING 留账）/策略OFF。47/90/ADV64/57、P63/VB保持，两指针已认可，常规调整自主核实决定。Codex无Admin续办。
 
 P62批准功能COMPLETED；有限性能VERIFYING，Owner已于2026-10-12搁置，G2/G3/G5历史剩余留账、新策略OFF。当前P64阶段Ⅲ二轮已交付待 Planner 复验；功能47、清单46/22/22=90、ADV64、问题57及正式基线保持。
 
@@ -161,7 +161,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 | P61 | 全系统用户可见错误码与提示语人性化治理 | Owner 2026-09-14/20；优先级P1；L；[归档方向](../product/p61-user-facing-message-humanization/passed/direction-p61-user-facing-message-humanization-scope-correction-20260920.md) | ✅ `COMPLETED（规划已确认，2026-09-20）`、已核销；不增加业务功能数 |
 | P62 | 低代码事务能力与BPM分级执行架构 | Owner2026-09-30；XL；[正式需求](p62-lowcode-transaction-bpm-tiering.md) | 批准功能COMPLETED；P64阶段Ⅱ已通过，新机就绪探索已完成（2026-10-11，回执 [search_fallback/p62-performance-new-machine-readiness-20261011.md](../search_fallback/p62-performance-new-machine-readiness-20261011.md)）；有限性能三轮未通过、VERIFYING，已由 Owner 搁置为已知延期问题（2026-10-12，未来方向=带权参数配置、后台可配置每租户优先级；见 [P62 §性能已知延期](p62-lowcode-transaction-bpm-tiering.md)）、策略OFF。[恢复安排](../product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-performance-resume-20261011.md)。不新增编号或计数。 |
 | P63 | MES前置能力：动态并行审批与一次性预约IoT下发 | Owner 2026-10-06；L；[需求定义](p63-mes-workflow-foundations.md)；关联P60 I4/P21/P62 | **COMPLETED（规划已确认，2026-10-08）**；R01—R06批准交付核销，20/20、A01—A10、TS01—TS03全部通过；[最终裁决](../product/p63-mes-workflow-foundations/receipts/planning-final-review-terminal-sync-p63-mes-workflow-foundations-02-completed.md)；正式功能47、清单46/22/22零升降；六入口确认措辞传播已核销，业务验收锁定。 |
-| P64 | MES高级流程编排与业务闭环 | Owner2026-10-08；XL；[需求索引](p64-mes-advanced-orchestration.md)；[产品方向](../product/p64-mes-advanced-orchestration/ready/direction-p64-mes-advanced-orchestration.md) | **IN_PROGRESS；Ⅰ/ⅡPASSED（阶段Ⅱ验收09）、Ⅲ二轮修复与复验完成、回执02待 Planner 复验**；阶段Ⅱ账本0，P62新机就绪探索已完成，唯一下一动作=Planner 复验回执02与 phase3-02 证据包（P62 有限性能已由 Owner 搁置为已知延期、不安排第四轮）；[完整实施授权](../product/p64-mes-advanced-orchestration/ready/authorization-p64-implementation-20261008.md)持续。不晋级功能数或核销P/明细。 |
+| P64 | MES高级流程编排与业务闭环 | Owner2026-10-08；XL；[需求索引](p64-mes-advanced-orchestration.md)；[产品方向](../product/p64-mes-advanced-orchestration/ready/direction-p64-mes-advanced-orchestration.md) | **IN_PROGRESS；Ⅰ/ⅡPASSED（阶段Ⅱ验收09）、Ⅲ按Owner授权继续业务闭环修复**；阶段Ⅱ账本0，P62新机就绪探索已完成，唯一下一动作=Executor按业务闭环修复入口完成UI/MES修复并提交回执03（P62 有限性能已由 Owner 搁置为已知延期、不安排第四轮）；[完整实施授权](../product/p64-mes-advanced-orchestration/ready/authorization-p64-implementation-20261008.md)持续。不晋级功能数或核销P/明细。 |
 
 管理员P0治理插单（2026-09-15）：[连续执行与可见浏览器验收门禁](admin-machine-gate-continuous-visible-browser.md)已`COMPLETED（规划确认）`，本地提交`8e87899`，治理测试sh 70/70、PowerShell 49/49。该任务不并入P60业务计数；远程发布仍需Owner另行授权。
 

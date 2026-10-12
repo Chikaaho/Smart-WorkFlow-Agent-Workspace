@@ -1,10 +1,10 @@
 # 近期有效决策摘要
 
-2026-10-12；Planner（Executor 二轮同步）。P64整体IN_PROGRESS，Ⅰ/ⅡPASSED；阶段Ⅲ二轮修复与复验完成、[回执02](../product/p64-mes-advanced-orchestration/receipts/phase-3-completion-receipt-02.md)已提交待Planner复验（依据[审查01](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-3-01.md)与[补充提示01](../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase3-01.md)，证据 `receipts/evidence/phase3-02/`）。整体终态收尾未进入。P62批准功能COMPLETED；有限性能VERIFYING且Owner已搁置，G2/G3/G5历史剩余留账，不安排第四轮，未来后台带权租户优先级另行规划，策略OFF。
+2026-10-12；Planner。Owner已授权按业务导向继续修复，当前入口为[阶段Ⅲ业务闭环修复](../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase3-02.md)。P64整体IN_PROGRESS，Ⅰ/ⅡPASSED，Ⅲ业务闭环修复完成（回执03已提交，唯一下一动作=Planner按提示02验收回执03与phase3-03证据包）。S2、S3及既有未受影响通过项锁定；整体终态收尾未进入。P62批准功能COMPLETED；有限性能VERIFYING且Owner已搁置，G2/G3/G5留账、不安排第四轮，未来带权租户优先级另行规划，策略OFF。
 
-唯一下一动作：Planner 按补充提示01复验回执02与 phase3-02 证据包（二轮上限内，未过先自查再交 Owner）。
+唯一下一动作：Executor按[阶段Ⅲ修复入口](../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase3-02.md)完成UI/MES业务闭环修复，提交phase-3-completion-receipt-03.md供Planner验收。
 
-功能47、清单46/22/22=90、ADV64、问题57、P63/VB及正式基线保持。P64总3业务阶段：Ⅰ数据到动作完成、Ⅱ人员与父子协作完成、Ⅲ场景与整体交付进行中（修复与复验）；已完成2/进行中1/未开始0。
+功能47、清单46/22/22=90、ADV64、问题57、P63/VB及正式基线保持。P64总3业务阶段：Ⅰ数据到动作完成、Ⅱ人员与父子协作完成、Ⅲ场景与整体交付进行中（业务闭环修复）；已完成2/进行中1/未开始0。
 
 - P64：业务主链以多流程编排；主表/节点表/变量各司其职，JS只判断、动作受控执行；后台源岗位→受托岗位委托映射，经组织任职解析实际办理人、同轮冻结；分组子流程隔离回写、四等待策略及迟到结果冻结。变量有效轮次/缺值、S2八组合、数量账业务结果、规模护栏与存量兼容已收敛，详见方向。
 - 当前状态与历史物理分离；当前值只见 `knowledge/current-status.md`（历轮 P63/P62 长条目已迁 `knowledge/history/current-status-through-2026-10-08-p63-stage3-before.md`）；终态机器契约单一源 `.codex/governance/terminal-contract.json`。

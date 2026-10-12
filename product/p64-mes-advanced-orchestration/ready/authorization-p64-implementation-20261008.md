@@ -1,15 +1,15 @@
 # P64实施授权与当前交付入口
 
-> 当前路由（2026-10-12 二轮）：P62性能已搁置；阶段Ⅲ二轮修复与复验完成：[回执02](../receipts/phase-3-completion-receipt-02.md)已提交（2026-10-12）待 Planner 复验（审查01六项逐项关闭，证据 `receipts/evidence/phase3-02/`；回执01为历史）。Ⅰ/ⅡPASSED，Ⅲ进行中，整体IN_PROGRESS。
+> 当前路由（2026-10-12）：Owner已授权按业务导向继续修复；Executor已按[阶段Ⅲ业务闭环修复](../receipts/planning-execution-prompt-p64-phase3-02.md)完成UI/MES剩余并提交[回执03](../receipts/phase-3-completion-receipt-03.md)（2026-10-12），待Planner验收。P64整体IN_PROGRESS，Ⅰ/ⅡPASSED，Ⅲ进行中（2/1/0）；整体终态同步未进入，P62性能已搁置。
 
 2026-10-08；本会话角色：规划，实施角色：执行；XL。Owner在READY传播终审后明确指令：**“开始实施”**。
 
-**授权P64正式主方向完整范围的业务实现与必要验证，按既有三阶段能力边界交付；阶段Ⅰ已通过，阶段Ⅱ“人员与父子协作”已通过（验收09），当前P62新机性能就绪探索已完成、唯一下一动作=Executor按[阶段Ⅲ执行入口](direction-p64-phase3-scenarios-delivery.md)完成场景与整体交付。** [主方向](direction-p64-mes-advanced-orchestration.md)仍是唯一业务目标和验收合同，[方案](solution-p64-mes-advanced-orchestration.md)提供产品/架构取向；本文记录实施授权、当前阶段与状态同步范围，不代替Executor的工程计划或测试设计。
+**Owner已授权P64正式主方向完整范围的业务实现与必要验证，按既有三阶段能力边界交付。** 阶段Ⅰ/Ⅱ已通过；Owner已明确授权阶段ⅢUI/S1继续修复，以业务导向为要求。[主方向](direction-p64-mes-advanced-orchestration.md)仍是唯一业务目标和验收合同，[方案](solution-p64-mes-advanced-orchestration.md)提供产品/架构取向；本文记录实施授权、当前阶段与状态同步范围，不代替Executor的工程计划或测试设计。
 
 ## 1. 当前状态与唯一动作
 
 - 当前P64=IN_PROGRESS；阶段ⅠPASSED（2026-10-10[规划验收08](../receipts/planning-review-phase-1-08-passed.md)），阶段ⅡPASSED（2026-10-11[验收09](../receipts/planning-review-phase-2-09-passed.md)）、阶段Ⅲ未验收。本规划会话未运行工程。
-- 唯一下一动作：Executor按[阶段Ⅲ执行入口](direction-p64-phase3-scenarios-delivery.md)完成场景与整体交付；探索已完成（2026-10-11，Executor只读执行并伴随knowledge-first传播阶段ⅡPASSED及精确普通文档Git），有限性能三轮未通过、VERIFYING，P64阶段Ⅲ待执行。
+- 唯一下一动作：Planner按[阶段Ⅲ业务闭环修复](../receipts/planning-execution-prompt-p64-phase3-02.md)独立验收[回执03](../receipts/phase-3-completion-receipt-03.md)与 evidence/phase3-03 证据包。
 - READY传播及G1—G4已关闭，[传播终审03](../receipts/planning-final-review-ready-state-propagation-03.md)保留其时点裁决，不作为当前等待实施授权入口。
 - 此次实施授权覆盖既定完整P64，不为内部步骤或已授权后续阶段重复索要实施许可；各阶段仍提交行为回执，由Planner独立验收，阶段通过不替代整体A01—A12通过。
 
@@ -47,7 +47,7 @@ Executor获得以下明确状态同步写入授权：knowledge/current-status、
 
 启动状态同步与实施连续进行，不单独开启READY传播补证轮次。未启动不得声称工程已运行；启动后移除“实施未授权/等待Owner实施指令”的当前待办。历史回执保持原时点。
 
-阶段Ⅱ回执09已由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)独立验收通过；阶段Ⅱ补证账本清零，不再追加阶段Ⅱ补证回执。P62新机就绪探索已于2026-10-11由Executor只读完成（回执 `search_fallback/p62-performance-new-machine-readiness-20261011.md`），唯一下一动作=Executor按[阶段Ⅲ执行入口](direction-p64-phase3-scenarios-delivery.md)完成场景与整体交付。
+阶段Ⅱ回执09已由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)独立验收通过；阶段Ⅱ补证账本清零，不再追加阶段Ⅱ补证回执。P62新机就绪探索已于2026-10-11由Executor只读完成（回执 `search_fallback/p62-performance-new-machine-readiness-20261011.md`），唯一下一动作：Planner按[阶段Ⅲ业务闭环修复](../receipts/planning-execution-prompt-p64-phase3-02.md)独立验收[回执03](../receipts/phase-3-completion-receipt-03.md)与 evidence/phase3-03 证据包。
 
 Executor不能自行写功能PASSED/COMPLETED、核销P/明细、晋级正式基线或移动方向至passed；后续整体通过与终态同步由Planner裁决。此授权在本会话已经成立，不需要再次确认。
 
@@ -57,4 +57,4 @@ Executor不能自行写功能PASSED/COMPLETED、核销P/明细、晋级正式基
 
 ## Owner后续排期（2026-10-11）
 
-阶段Ⅱ已由验收09确认PASSED，Owner恢复条件满足；P62新机就绪探索已完成，唯一下一动作=Executor按[阶段Ⅲ执行入口](direction-p64-phase3-scenarios-delivery.md)完成场景与整体交付。P64阶段Ⅲ接续，完整授权持续，有限性能三轮未通过、VERIFYING。
+阶段Ⅱ已由验收09确认PASSED，Owner恢复条件满足；P62新机就绪探索已完成，唯一下一动作：Planner按[阶段Ⅲ业务闭环修复](../receipts/planning-execution-prompt-p64-phase3-02.md)独立验收[回执03](../receipts/phase-3-completion-receipt-03.md)与 evidence/phase3-03 证据包。
