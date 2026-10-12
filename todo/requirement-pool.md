@@ -1,6 +1,6 @@
 # 需求池（Requirement Pool）
 
-> 当前路由（2026-10-12）：P62性能已搁置；Executor按[阶段Ⅲ入口](../product/p64-mes-advanced-orchestration/ready/direction-p64-phase3-scenarios-delivery.md)继续P64，回执phase-3-completion-receipt-01.md。
+> 当前路由（2026-10-12）：P62性能已搁置；Executor按[阶段Ⅲ入口](../product/p64-mes-advanced-orchestration/ready/direction-p64-phase3-scenarios-delivery.md)继续P64，回执phase-3-completion-receipt-01.md已提交（2026-10-12）待规划独立验收。
 
 > 与 `product/`、`knowledge/` 平级的工作区目录，规划层维护（2026-08-16 新建；D83 回执回收后修订）。
 > 收录**已开发但未满足**的功能（清单 🟦 行、known-issues 待修复项、已落地模块的缺口）以及未开发候选。
@@ -11,7 +11,7 @@
 
 ## Owner 优先级覆盖
 
-**2026-10-11 当前规划**：P64 IN_PROGRESS；Ⅰ/ⅡPASSED（[阶段Ⅱ验收09](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-2-09-passed.md)）、Ⅲ待执行未验收。阶段Ⅱ补证账本0。Owner 已裁决（2026-10-12）：P62 有限性能搁置为已知延期问题（不安排第四轮；未来方向=带权参数配置、后台可配置每租户优先级）；唯一下一动作=P64 阶段Ⅲ接续；探索已完成（2026-10-11，Executor只读执行），有限性能三轮未通过已搁置（VERIFYING 留账）/策略OFF。47/90/ADV64/57、P63/VB保持，两指针已认可，常规调整自主核实决定。Codex无Admin续办。
+**2026-10-11 当前规划**：P64 IN_PROGRESS；Ⅰ/ⅡPASSED（[阶段Ⅱ验收09](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-2-09-passed.md)）、Ⅲ已执行完毕（回执01 2026-10-12 提交）待规划独立验收。阶段Ⅱ补证账本0。Owner 已裁决（2026-10-12）：P62 有限性能搁置为已知延期问题（不安排第四轮；未来方向=带权参数配置、后台可配置每租户优先级）；唯一下一动作=P64 阶段Ⅲ接续；探索已完成（2026-10-11，Executor只读执行），有限性能三轮未通过已搁置（VERIFYING 留账）/策略OFF。47/90/ADV64/57、P63/VB保持，两指针已认可，常规调整自主核实决定。Codex无Admin续办。
 
 P62批准功能范围COMPLETED（规划已确认，2026-10-06）；当前项目47、清单46/22/22=90、ADV64、问题57保持。P64阶段Ⅱ已通过，P62新机性能准备已解锁；就绪探索已完成（回执 [search_fallback/p62-performance-new-machine-readiness-20261011.md](../search_fallback/p62-performance-new-machine-readiness-20261011.md)）；有限性能第三轮审查已完成，G1/G4关闭、G2/G3/G5仍有剩余，VERIFYING，待Owner裁量、新策略OFF。执行[恢复安排](../product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-performance-resume-20261011.md)，P64阶段Ⅲ待执行。
 

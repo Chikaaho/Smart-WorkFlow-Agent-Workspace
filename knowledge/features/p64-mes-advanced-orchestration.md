@@ -1,6 +1,6 @@
-# 功能追踪：P64 MES高级流程编排与业务闭环（IN_PROGRESS·阶段Ⅱ PASSED·阶段Ⅲ排队未验收）
+# 功能追踪：P64 MES高级流程编排与业务闭环（IN_PROGRESS·阶段Ⅱ PASSED·阶段Ⅲ执行后待验收）
 
-> 工作区统一知识库 — **实施登记条目（IN_PROGRESS：阶段Ⅰ已由规划验收08 判定 PASSED（2026-10-10）；阶段Ⅱ已由[规划验收09](../../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-2-09-passed.md)判定 PASSED（2026-10-11）；阶段Ⅲ排队未验收，完整实施授权持续）**。
+> 工作区统一知识库 — **实施登记条目（IN_PROGRESS：阶段Ⅰ已由规划验收08 判定 PASSED（2026-10-10）；阶段Ⅱ已由[规划验收09](../../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-2-09-passed.md)判定 PASSED（2026-10-11）；阶段Ⅲ已由 Executor 执行完毕：[回执01](../../product/p64-mes-advanced-orchestration/receipts/phase-3-completion-receipt-01.md) 已提交（2026-10-12，自验通过待规划独立验收；A08—A12 交付+A01—A07 覆盖核对+门禁 process 388/0/0 等），完整实施授权持续）**。
 > **本条目不计入正式功能数（当前 47 不变）、不核销任何 P 编号或 90 行明细、不改变 ADV64 与其他计数**；只有 Planner 下发正式方向、Executor 完成交付并经 Planner 验收后，才可能作为新的正式功能登记与计数。
 > 可信度标记：CONFIRMED / REPORTED / ASSUMED / SUPERSEDED
 
