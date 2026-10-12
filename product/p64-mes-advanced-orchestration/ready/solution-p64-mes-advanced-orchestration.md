@@ -1,6 +1,6 @@
 # P64：高级流程编排方案
 
-> 当前路由（2026-10-12，终态同步已执行）：P64功能验收PASSED（审查05）、**COMPLETED（待规划终态复核）**、正式功能第48个（=47+P64整体1）；阶段Ⅰ/Ⅱ/ⅢPASSED（3/0/0）；P64批准范围核销；90行✅46/🟦22/⬜22与ADV64本次零升降、问题57保持；正式验证集合={P64-VB01—VB04}（值见[终态同步回执](../receipts/terminal-sync-p64-01.md)）；活动业务功能无；无发布/合并/tag/Release/部署。唯一下一动作：Planner关闭TS-GIT并确认P64终态（根批次核实结果已回传search_fallback/p64-terminal-root-readback-20261013.md）。P62性能延期/OFF保持。
+> 当前路由（2026-10-13，终态最终复核通过）：P64功能验收PASSED（审查05）、**COMPLETED（规划已确认，2026-10-13）**、正式功能第48个（=47+P64整体1）；阶段Ⅰ/Ⅱ/ⅢPASSED（3/0/0）；P64批准范围核销；90行✅46/🟦22/⬜22与ADV64本次零升降、问题57保持；正式验证集合={P64-VB01—VB04}（值见[终态同步回执](../receipts/terminal-sync-p64-01.md)）；活动业务功能无；无发布/合并/tag/Release/部署。唯一下一动作：无，等待Owner下一目标（终审02机械传播已完成，P64终态已收口）。P62性能延期/OFF保持。
 
 2026-10-08；Planner；XL；产品与架构方案。目标和正式通过条件以[主方向](../passed/direction-p64-mes-advanced-orchestration.md) R01—R12/A01—A12为准，本文说明能力如何组成业务闭环及选择理由。Owner已授权开始完整P64实施，阶段Ⅰ已通过，阶段Ⅱ已通过；实现结构、接口、迁移和验证设计由Executor确定。
 
@@ -12,7 +12,7 @@
 
 优先做数据产生到可靠动作的完整链，因为没有任务数据、类型变量和可靠触发，后续选人、子流程及MES只能形成页面演示。第二个能力边界解决跨人员、跨流程的数据协作，第三个边界再证明三场景实际业务结果。
 
-当前P64=COMPLETED（待规划终态复核）；Ⅰ/ⅡPASSED（[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)），阶段Ⅱ账本0、ⅢPASSED，整体终态同步已执行、根批次已核实回传（待Planner关闭TS-GIT并确认终态）；完整[实施授权](authorization-p64-implementation-20261008.md)持续。唯一下一动作：Planner关闭TS-GIT并确认P64终态（根批次核实结果已回传search_fallback/p64-terminal-root-readback-20261013.md）。
+当前P64=COMPLETED（规划已确认，2026-10-13）；Ⅰ/ⅡPASSED（[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)），阶段Ⅱ账本0、ⅢPASSED，整体终态同步已执行、终态最终复核02已通过；完整[实施授权](authorization-p64-implementation-20261008.md)持续。唯一下一动作：无，等待Owner下一目标（终审02机械传播已完成，P64终态已收口）。
 
 ## 2. 六项架构决策
 

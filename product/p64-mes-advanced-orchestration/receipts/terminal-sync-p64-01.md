@@ -1,6 +1,6 @@
 # P64整体终态同步回执01
 
-2026-10-12；Executor。依据[整体业务验收05](planning-review-phase-3-05-passed.md)（PASSED，唯一裁决）与[整体终态同步方向](../ready/direction-p64-terminal-sync.md)（唯一值清单）机械同步；本任务只做状态、登记、文档与既有普通 Git 收尾，无业务重跑、无新实现、无发布/合并/tag/Release/部署。核实时间：2026-10-12 23:5x（本机）。
+2026-10-12；Executor。依据[整体业务验收05](planning-review-phase-3-05-passed.md)（PASSED，唯一裁决）与[整体终态同步方向](../passed/direction-p64-terminal-sync.md)（唯一值清单）机械同步；本任务只做状态、登记、文档与既有普通 Git 收尾，无业务重跑、无新实现、无发布/合并/tag/Release/部署。核实时间：2026-10-12 23:5x（本机）。
 
 ## 1. 唯一终态值落位
 

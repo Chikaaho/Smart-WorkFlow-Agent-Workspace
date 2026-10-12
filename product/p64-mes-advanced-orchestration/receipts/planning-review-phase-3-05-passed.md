@@ -33,4 +33,4 @@
 
 ## 状态与唯一下一动作
 
-主方向归档passed。立即下发[整体终态同步](../ready/direction-p64-terminal-sync.md)，Executor按唯一终态值清单机械同步，Planner复核后确认COMPLETED。当前计数47与正式基线保持，目标48及P64核销仅在授权同步中写入；P62性能延期/OFF、P63历史基线、产品发布部署边界保持。
+主方向归档passed。立即下发[整体终态同步](../passed/direction-p64-terminal-sync.md)，Executor按唯一终态值清单机械同步，Planner复核后确认COMPLETED。当前计数47与正式基线保持，目标48及P64核销仅在授权同步中写入；P62性能延期/OFF、P63历史基线、产品发布部署边界保持。

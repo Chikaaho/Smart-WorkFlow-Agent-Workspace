@@ -1,6 +1,6 @@
 # P64阶段Ⅲ：场景与整体交付
 
-> 当前路由（2026-10-12，终态同步已执行）：P64功能验收PASSED（审查05）、**COMPLETED（待规划终态复核）**、正式功能第48个（=47+P64整体1）；阶段Ⅰ/Ⅱ/ⅢPASSED（3/0/0）；P64批准范围核销；90行✅46/🟦22/⬜22与ADV64本次零升降、问题57保持；正式验证集合={P64-VB01—VB04}（值见[终态同步回执](../receipts/terminal-sync-p64-01.md)）；活动业务功能无；无发布/合并/tag/Release/部署。唯一下一动作：Planner关闭TS-GIT并确认P64终态（根批次核实结果已回传search_fallback/p64-terminal-root-readback-20261013.md）。P62性能延期/OFF保持。
+> 当前路由（2026-10-13，终态最终复核通过）：P64功能验收PASSED（审查05）、**COMPLETED（规划已确认，2026-10-13）**、正式功能第48个（=47+P64整体1）；阶段Ⅰ/Ⅱ/ⅢPASSED（3/0/0）；P64批准范围核销；90行✅46/🟦22/⬜22与ADV64本次零升降、问题57保持；正式验证集合={P64-VB01—VB04}（值见[终态同步回执](../receipts/terminal-sync-p64-01.md)）；活动业务功能无；无发布/合并/tag/Release/部署。唯一下一动作：无，等待Owner下一目标（终审02机械传播已完成，P64终态已收口）。P62性能延期/OFF保持。
 
 2026-10-12；Planner下发，Executor实施；XL。承接Owner既有[完整实施授权](authorization-p64-implementation-20261008.md)及本次转回P64阶段Ⅲ的交接。P62有限性能按[todo延期裁决](../../../todo/p62-lowcode-transaction-bpm-tiering.md)搁置；其G2/G3/G5历史剩余和带权参数、后台每租户优先级方向独立留账。本文是当前阶段执行入口，[主方向](../passed/direction-p64-mes-advanced-orchestration.md)R01—R12/A01—A12及[方案](solution-p64-mes-advanced-orchestration.md)继续定义产品合同。
 
@@ -41,6 +41,6 @@ MES数量账沿主方向S1：多行领料逐行预约→有权仓库确认→实
 
 明确授权Executor在实施/提交中knowledge-first更新current-status、session-handoff、P64登记及实际受影响architecture/reconciliation、根README/Server焦点，再同步memory五入口、todo需求池/P62/P64、product当前路由。保持P62既有功能COMPLETED、有限性能VERIFYING且已搁置；P64 PASSED、Ⅰ/ⅡPASSED、ⅢPASSED；正式功能48、清单46/22/22=90、ADV64、问题57、P63/VB及正式基线不变。仅按真实进度改变阶段Ⅲ执行事实，P64整体PASSED由验收05确认；COMPLETED、计数与核销仅按整体终态同步方向的唯一值授权传播。
 
-唯一下一动作：Planner关闭TS-GIT并确认P64终态（根批次核实结果已回传search_fallback/p64-terminal-root-readback-20261013.md）。此入口承接完整实施授权，不是新的待批准提案。全部A01—A12通过后，Planner另行下发整体终态同步清单；阶段Ⅲ业务交付与整体终态同步不混为一个已完成结论。
+唯一下一动作：无，等待Owner下一目标（终审02机械传播已完成，P64终态已收口）。此入口承接完整实施授权，不是新的待批准提案。全部A01—A12通过后，Planner另行下发整体终态同步清单；阶段Ⅲ业务交付与整体终态同步不混为一个已完成结论。
 
 P64总3业务阶段：Ⅰ数据到动作、Ⅱ人员与父子协作、Ⅲ场景与整体交付均已完成；已完成3/进行中0/未开始0，整体终态同步另行收尾。

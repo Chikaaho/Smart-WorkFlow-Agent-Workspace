@@ -1,6 +1,7 @@
+> 2026-10-13终态最终复核02通过：P64 COMPLETED（规划已确认），TS-GIT关闭。本方向已归档，以下保留同步时点授权值；当前裁决见[终审02](../receipts/planning-final-review-terminal-sync-p64-02-completed.md)。
+
 # P64整体终态同步方向
 
-> 2026-10-13终态复核01：登记与基线通过，唯一剩余根批次回读，按[收尾核实](../../../search_task/p64-terminal-root-readback-20261013.md)执行；以下保留同步授权清单。
 
 2026-10-12；Planner→Executor。唯一裁决依据：[整体业务验收05](../receipts/planning-review-phase-3-05-passed.md)。业务已PASSED；本文只授权状态、登记、文档与既有普通Git收尾，无业务重跑或新实现。
 

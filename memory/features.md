@@ -1,12 +1,12 @@
 # 功能摘要
 
-2026-10-12；[整体业务验收05](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-3-05-passed.md)确认P64 PASSED。Ⅰ数据到动作、Ⅱ人员与父子协作、Ⅲ场景与整体交付全部完成；总3阶段：完成3/进行中0/未开始0。业务缺口0；整体终态同步已执行（[terminal-sync-p64-01](../product/p64-mes-advanced-orchestration/receipts/terminal-sync-p64-01.md)，2026-10-12），**COMPLETED（待规划终态复核）**。P62批准功能COMPLETED、有限性能VERIFYING/Owner延期、策略OFF保持。
+2026-10-13；[终态最终复核02](../product/p64-mes-advanced-orchestration/receipts/planning-final-review-terminal-sync-p64-02-completed.md)确认P64 **COMPLETED（规划已确认）**、批准范围核销。Ⅰ数据到动作、Ⅱ人员与父子协作、Ⅲ场景与整体交付均完成；总3业务阶段完成3/进行中0/未开始0。业务与终态验收剩余0；主方向与终态方向均归档passed。P62批准功能COMPLETED、有限性能VERIFYING/Owner延期、策略OFF保持。
 
-唯一下一动作：Planner关闭TS-GIT并确认P64终态（根批次核实结果已回传search_fallback/p64-terminal-root-readback-20261013.md）。
+唯一下一动作：无，等待Owner下一目标（终审02机械传播已完成，P64终态已收口）。
 
 当前已完成登记48（=47+P64整体1，同一登记ID复用不重复计数）；清单46/22/22=90、ADV64、问题57保持。正式P64验证集合及各项实际结果以终态方向为准，P63历史基线保持。
 
-- `p64-mes-advanced-orchestration`（P64，XL）：**COMPLETED（待规划终态复核）**、**第48个正式功能**；功能验收PASSED（整体业务验收05）、3阶段PASSED；终态同步回执terminal-sync-p64-01待Planner复核；范围边界=受控HTTP层级/异步对账观察非性能或物理承诺。
+- `p64-mes-advanced-orchestration`（P64，XL）：**COMPLETED（规划已确认，2026-10-13）**、**第48个正式功能**；功能验收PASSED（整体业务验收05）、3阶段PASSED；终态最终复核02已通过；范围边界=受控HTTP层级/异步对账观察非性能或物理承诺。
 - `p63-mes-workflow-foundations`（P63，L/P0）：**COMPLETED（规划已确认，2026-10-08）**；表单驱动动态并行审批+一次性 IoT 预约下发、手工并行兼容；VB01—VB04 见登记与 `state.md`；范围外=完整 MES/分管领导组织模型/周期预约/厂商实网/部署。
 - `p62-lowcode-transaction-bpm-tiering`（P62，XL）：**COMPLETED（规划已确认，2026-10-06）**；性能就绪探索已完成（2026-10-11，回执 `search_fallback/p62-performance-new-machine-readiness-20261011.md`）/有限性能三轮未过/VERIFYING、已由 Owner 搁置为已知延期问题（2026-10-12；未来方向=带权参数配置、后台可配置每租户优先级；`todo/p62-lowcode-transaction-bpm-tiering.md` §性能已知延期）；新资源策略默认关闭。
 - `backend-architecture-optimization`（XL）：**COMPLETED（规划已确认，2026-09-26）**；Phase1—6C 与 Final 完成；10 候选=BAO-01 `DEFERRED`+BAO-02 `PARTIAL`+8 `COMPLETED`；基线 1570/0/0/0（历史时点）。
