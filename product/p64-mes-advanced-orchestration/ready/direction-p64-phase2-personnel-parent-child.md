@@ -1,6 +1,6 @@
 # P64阶段Ⅱ：人员与父子协作
 
-> 当前路由（2026-10-12）：Owner已授权按业务导向继续修复；Executor已按[阶段Ⅲ业务闭环修复](../receipts/planning-execution-prompt-p64-phase3-02.md)完成UI/MES剩余并提交[回执03](../receipts/phase-3-completion-receipt-03.md)（2026-10-12），待Planner验收。P64整体IN_PROGRESS，Ⅰ/ⅡPASSED，Ⅲ进行中（2/1/0）；整体终态同步未进入，P62性能已搁置。
+> 当前路由（2026-10-12，关闭核实完成）：[核实结果](../../../search_fallback/p64-phase3-close-readback-20261012.md)已回传——341/342均APPROVED真实关闭（零待办、子单全结算、门槛先于主单）；342=计划10=报废3（有据：终检NG+报废登记数量原因）+其余7无台账去向（报工未申报产出、无齐套校验）；报废/整改记录行不携带办理提交值。唯一下一动作：Planner读取核实结果裁决关闭与数量口径。P64整体IN_PROGRESS，Ⅰ/ⅡPASSED、ⅢVERIFYING；总3阶段，完成2/进行中1/未开始0；整体终态同步未进入，P62性能延期/OFF保持。
 
 2026-10-11；Planner；XL既有阶段范围。Ⅰ/ⅡPASSED、整体IN_PROGRESS、Ⅲ待执行未验收。[主方向](direction-p64-mes-advanced-orchestration.md)/[方案](solution-p64-mes-advanced-orchestration.md)/[实施授权](authorization-p64-implementation-20261008.md)有效。[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)闭合回执09最后T/S两项，提示07转历史。
 
@@ -28,6 +28,6 @@
 
 同时按既有knowledge-first同步范围落本轮唯一状态：P64 IN_PROGRESS、阶段ⅠPASSED、阶段ⅡPASSED（验收09）；阶段Ⅲ未验收。当前功能47、46/22/22=90、ADV64、问题57、其他P、P63/VB、P62性能就绪探索已完成（2026-10-11）/有限性能三轮未通过、VERIFYING/新策略OFF不变；实际受影响当前入口逐字段/值/时点回读，不用“均同步”替覆盖证据。
 
-阶段Ⅱ由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)确认PASSED，补证账本0；提示07及更早仅作历史。唯一下一动作：Planner按[阶段Ⅲ业务闭环修复](../receipts/planning-execution-prompt-p64-phase3-02.md)独立验收[回执03](../receipts/phase-3-completion-receipt-03.md)与 evidence/phase3-03 证据包。
+阶段Ⅱ由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)确认PASSED，补证账本0；提示07及更早仅作历史。唯一下一动作：Planner读取search_fallback/p64-phase3-close-readback-20261012.md（已回传，2026-10-12 21:54）裁决341/342关闭与342数量口径。
 
-新会话提示：“你是执行。读取P64阶段Ⅲ业务闭环修复入口，按Owner授权完成修复并提交回执03。”
+新会话提示：“你是执行。读取search_task/p64-phase3-close-readback-20261012.md，只读核实既有工单关闭与数量结果。”

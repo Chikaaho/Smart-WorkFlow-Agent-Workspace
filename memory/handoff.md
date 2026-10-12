@@ -1,17 +1,13 @@
 # P64阶段Ⅲ业务闭环修复交接
 
-2026-10-12；Planner。Owner已授权按业务导向继续修复，当前入口为[阶段Ⅲ业务闭环修复](../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase3-02.md)。P64整体IN_PROGRESS，Ⅰ/ⅡPASSED，Ⅲ业务闭环修复完成（回执03已提交，唯一下一动作=Planner按提示02验收回执03与phase3-03证据包）。S2、S3及既有未受影响通过项锁定；整体终态收尾未进入。P62批准功能COMPLETED；有限性能VERIFYING且Owner已搁置，G2/G3/G5留账、不安排第四轮，未来带权租户优先级另行规划，策略OFF。
+2026-10-12；Planner已完成[阶段Ⅲ验收03](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-3-03.md)：UI、领料补办、成品入库、受控设备反馈通过并锁定；仅工单关闭与报废数量去向待核实。P64整体IN_PROGRESS，Ⅰ/ⅡPASSED、ⅢVERIFYING，整体终态同步未进入。P62批准功能COMPLETED；有限性能VERIFYING且Owner已搁置，G2/G3/G5留账、策略OFF。
 
-唯一下一动作：Executor按[阶段Ⅲ修复入口](../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase3-02.md)完成UI/MES业务闭环修复，提交phase-3-completion-receipt-03.md供Planner验收。
+唯一下一动作：Planner读取[核实结果](../search_fallback/p64-phase3-close-readback-20261012.md)（Executor只读已回传，2026-10-12 21:54）裁决341/342关闭与342数量口径。
 
-功能47、清单46/22/22=90、ADV64、问题57、P63/VB及正式基线保持。P64总3业务阶段：Ⅰ数据到动作完成、Ⅱ人员与父子协作完成、Ⅲ场景与整体交付进行中（业务闭环修复）；已完成2/进行中1/未开始0。
+功能47、清单46/22/22=90、ADV64、问题57、P63/VB及正式基线保持。P64总3业务阶段：Ⅰ数据到动作完成、Ⅱ人员与父子协作完成、Ⅲ场景与整体交付进行中（关闭事实待核实）；已完成2/进行中1/未开始0。
 
-Owner当前要求：修复，以业务导向为要求。已将继续修复授权与完成标准落入planning-execution-prompt-p64-phase3-02.md；原审查保留历史记录，当前无需再等同一授权。
+Owner要求以业务导向修复，当前验收已锁定UI办理/隔离、领料失败补办、成品实际入库、受控HTTP设备反馈及此前S2/S3与阶段Ⅰ/Ⅱ结果。
 
-本次目标：办理人能识别授权业务行、填写提交，发起人能查看结果；MES正常/异常处置后的数量去向正确，多行失败补办不重复结算；设备处理与工单及反馈关联可查。先核真实行为，修实际影响，采用代表性场景验证公共路径；可复用的已有结果直接沿用。
+剩余：341/342运行原录最后仍RUNNING；342计划/工单qty=10，回执报废3、成品0，需既有报工/处置事实解释关闭与余量。未认定卡死或数量丢失，仅下发最小只读核实，不重建场景、不重跑全量。核实已于2026-10-12 21:54回传（[结果](../search_fallback/p64-phase3-close-readback-20261012.md)）：两实例均APPROVED真实关闭（零待办、子单全结算）；342=报废3有据（终检NG+报废登记数量与原因，但记录行不携带提交值，任务数据层留存）+其余7无台账去向（报工未申报产出、无齐套校验）。Planner直接裁决。
 
-已通过：阶段Ⅰ/Ⅱ、招商八组合及会签修复、安信原链四行回写/ALL、三轮护栏、候选展示、合法读取等未受影响子项。业务验收以结果为准，文字/附件差异就地整理；只复验受修复影响的边界和必要工程检查。
-
-下一执行回执03。Planner收到后按当前业务标准验收，整体通过后另下发终态同步。常规决定：以代表性业务链和已有结果组合验收，共用路径不机械重跑全部异常链。
-
-Planner本轮维护许可文档，未读代码/knowledge、未运行工程或Git。Executor沿既有授权完成knowledge-first同步和本批精确普通Git收尾。新会话读取system/角色、业务闭环修复入口及所需既有结果。
+常规决定：已知展示问题与摘要计数就地纠正，不重开业务通过项。完整对照及结果位置见验收03。Planner未读代码/knowledge、未运行工程/DB/Git；Executor沿既有knowledge-first与普通文档Git授权传播本次路由。整体通过后另下发终态同步。

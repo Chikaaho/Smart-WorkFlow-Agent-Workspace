@@ -1,6 +1,6 @@
 # P64：MES高级流程编排与业务闭环
 
-> 当前路由（2026-10-12）：Owner已授权按业务导向继续修复；Executor已按[阶段Ⅲ业务闭环修复](../receipts/planning-execution-prompt-p64-phase3-02.md)完成UI/MES剩余并提交[回执03](../receipts/phase-3-completion-receipt-03.md)（2026-10-12），待Planner验收。P64整体IN_PROGRESS，Ⅰ/ⅡPASSED，Ⅲ进行中（2/1/0）；整体终态同步未进入，P62性能已搁置。
+> 当前路由（2026-10-12，关闭核实完成）：[核实结果](../../../search_fallback/p64-phase3-close-readback-20261012.md)已回传——341/342均APPROVED真实关闭（零待办、子单全结算、门槛先于主单）；342=计划10=报废3（有据：终检NG+报废登记数量原因）+其余7无台账去向（报工未申报产出、无齐套校验）；报废/整改记录行不携带办理提交值。唯一下一动作：Planner读取核实结果裁决关闭与数量口径。P64整体IN_PROGRESS，Ⅰ/ⅡPASSED、ⅢVERIFYING；总3阶段，完成2/进行中1/未开始0；整体终态同步未进入，P62性能延期/OFF保持。
 
 2026-10-08；Planner；XL；**IN_PROGRESS（阶段ⅠPASSED；阶段ⅡPASSED，2026-10-11）**。
 
@@ -150,7 +150,7 @@ XL阶段目标按产品能力划界：先形成可用的节点数据/变量/判�
 
 P64为IN_PROGRESS；阶段ⅠPASSED（2026-10-10验收08），阶段ⅡPASSED、阶段Ⅲ未验收，不晋级功能数或核销既有P编号/清单。当前正式功能47、原90行46/22/22、ADV64和既有验证集合保持。关联ADV-M11-F01-04可复用子流程、ADV-M11-F02-02规则矩阵与P2/P4/P26能力子集，登记关联不等于这些总项已完成。
 
-唯一下一动作：Planner按[阶段Ⅲ业务闭环修复](../receipts/planning-execution-prompt-p64-phase3-02.md)独立验收[回执03](../receipts/phase-3-completion-receipt-03.md)与 evidence/phase3-03 证据包。
+唯一下一动作：Planner读取search_fallback/p64-phase3-close-readback-20261012.md（已回传，2026-10-12 21:54）裁决341/342关闭与342数量口径。
 
 探索及未来验证遵守system.md：有限输入/输出/完成条件，不做非必要hash、不空转等待、不启动不可控后台任务、不擅停用户服务；正式UI证据来自可见可交互会话。规划阶段不编译、测试、迁移、访问数据库或控制设备。
 
