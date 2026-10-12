@@ -68,4 +68,4 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .codex/governance/hook-selfc
 
 ## 5. 下一会话
 
-Planner恢复时先读system.md、roles/planner.md、memory/README→state→handoff，再读[P64主方向](../p64-mes-advanced-orchestration/ready/direction-p64-mes-advanced-orchestration.md)、[方案](../p64-mes-advanced-orchestration/ready/solution-p64-mes-advanced-orchestration.md)及方案复核02。Executor读取同一当前入口，按§5先机械传播READY并回读。实施获授权后在对应feature分支继续；commit使用规范格式和简短中文主题。
+Planner恢复时先读system.md、roles/planner.md、memory/README→state→handoff，再读[P64主方向](../p64-mes-advanced-orchestration/passed/direction-p64-mes-advanced-orchestration.md)、[方案](../p64-mes-advanced-orchestration/ready/solution-p64-mes-advanced-orchestration.md)及方案复核02。Executor读取同一当前入口，按§5先机械传播READY并回读。实施获授权后在对应feature分支继续；commit使用规范格式和简短中文主题。

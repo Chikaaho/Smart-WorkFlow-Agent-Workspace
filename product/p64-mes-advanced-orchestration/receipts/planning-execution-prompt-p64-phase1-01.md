@@ -4,7 +4,7 @@
 
 ## 1. 权威输入与诊断
 
-必读：[复审02](planning-review-phase-1-02.md)、[主方向](../ready/direction-p64-mes-advanced-orchestration.md)§3/A01—A04/A11—A12、[实施授权](../ready/authorization-p64-implementation-20261008.md)、[回执02](phase-1-completion-receipt-02.md)、[证据索引](evidence/phase1-02/index.md)、修订ADR。治理事实只引用[Admin复核](../../workspace-governance-consistency-audit/receipts/planning-review-admin-windows-stop-gate-diagnostics-20261009.md)，不自行修复管理员入口。
+必读：[复审02](planning-review-phase-1-02.md)、[主方向](../passed/direction-p64-mes-advanced-orchestration.md)§3/A01—A04/A11—A12、[实施授权](../ready/authorization-p64-implementation-20261008.md)、[回执02](phase-1-completion-receipt-02.md)、[证据索引](evidence/phase1-02/index.md)、修订ADR。治理事实只引用[Admin复核](../../workspace-governance-consistency-audit/receipts/planning-review-admin-windows-stop-gate-diagnostics-20261009.md)，不自行修复管理员入口。
 
 诊断先行：P1-02为实际资源隔离/限流缺陷；P1-03为截图主张错配及窄屏可用性待证明；新增计数26为转录/集合勾稽错误；P1-04/05/06/07为行为覆盖不足；P1-01/08为证据封装/当前入口覆盖不足。社区版选项不支持是选型事实，不能自行删除128MiB或租户/全局限额标准。正常静默测试输出可采信其退出/计数，不要求伪造逐用例打印；需从真实JUnit结果或已有行为输出补可定位覆盖。
 

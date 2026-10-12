@@ -1,6 +1,6 @@
 # P64阶段Ⅱ完成回执02：人员与父子协作（自验通过，待规划独立验收）
 
-2026-10-10；Executor；XL。依据[阶段Ⅱ方向](../ready/direction-p64-phase2-personnel-parent-child.md)、[主方向](../ready/direction-p64-mes-advanced-orchestration.md)、[方案](../ready/solution-p64-mes-advanced-orchestration.md)、[完整实施授权](../ready/authorization-p64-implementation-20261008.md)与[审查01](planning-review-phase-2-01.md)（唯一差异账本）。阶段Ⅰ由[验收08](planning-review-phase-1-08-passed.md)锁定 PASSED；本回执**不写功能 PASSED/COMPLETED、不核销 P 或计数**。证据树 [phase2-02](evidence/phase2-02/INDEX.md)（32 件，`MANIFEST.sha256` 工具生成并 `sha256sum -c` 回读全 OK）。
+2026-10-10；Executor；XL。依据[阶段Ⅱ方向](../ready/direction-p64-phase2-personnel-parent-child.md)、[主方向](../passed/direction-p64-mes-advanced-orchestration.md)、[方案](../ready/solution-p64-mes-advanced-orchestration.md)、[完整实施授权](../ready/authorization-p64-implementation-20261008.md)与[审查01](planning-review-phase-2-01.md)（唯一差异账本）。阶段Ⅰ由[验收08](planning-review-phase-1-08-passed.md)锁定 PASSED；本回执**不写功能 PASSED/COMPLETED、不核销 P 或计数**。证据树 [phase2-02](evidence/phase2-02/INDEX.md)（32 件，`MANIFEST.sha256` 工具生成并 `sha256sum -c` 回读全 OK）。
 
 ## 0. 自验结论
 

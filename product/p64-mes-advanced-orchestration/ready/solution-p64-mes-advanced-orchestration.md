@@ -1,8 +1,8 @@
 # P64：高级流程编排方案
 
-> 当前路由（2026-10-12，回执04提交）：数量差异关闭收尾完成——代表性报废场景 WO-2026-344（主流程v6）：差异未说明主单不关闭且补正任务自动出现；交代齐备（实际0+报废3+剩余7未生产+原因）后 APPROVED，数量与原因经实例 node-form-data 按工单查回，库存 0/0 未虚增；引擎缺口（异步终态不结算）以对账结算钩子修复（Server `4681634`，单测3/0）。唯一下一动作：Planner按[提示03](../receipts/planning-execution-prompt-p64-phase3-03.md)验收[回执04](../receipts/phase-3-completion-receipt-04.md)。P64整体IN_PROGRESS、Ⅰ/ⅡPASSED、ⅢVERIFYING；总3阶段，完成2/进行中1/未开始0；整体终态同步未进入，P62性能延期/OFF保持。
+> 当前路由（2026-10-12，终态同步已执行）：P64功能验收PASSED（审查05）、**COMPLETED（待规划终态复核）**、正式功能第48个（=47+P64整体1）；阶段Ⅰ/Ⅱ/ⅢPASSED（3/0/0）；P64批准范围核销；90行✅46/🟦22/⬜22与ADV64本次零升降、问题57保持；正式验证集合={P64-VB01—VB04}（值见[终态同步回执](../receipts/terminal-sync-p64-01.md)）；活动业务功能无；无发布/合并/tag/Release/部署。唯一下一动作：Planner复核[terminal-sync-p64-01](../receipts/terminal-sync-p64-01.md)及全部当前入口后确认COMPLETED。P62性能延期/OFF保持。
 
-2026-10-08；Planner；XL；产品与架构方案。目标和正式通过条件以[主方向](direction-p64-mes-advanced-orchestration.md) R01—R12/A01—A12为准，本文说明能力如何组成业务闭环及选择理由。Owner已授权开始完整P64实施，阶段Ⅰ已通过，阶段Ⅱ已通过；实现结构、接口、迁移和验证设计由Executor确定。
+2026-10-08；Planner；XL；产品与架构方案。目标和正式通过条件以[主方向](../passed/direction-p64-mes-advanced-orchestration.md) R01—R12/A01—A12为准，本文说明能力如何组成业务闭环及选择理由。Owner已授权开始完整P64实施，阶段Ⅰ已通过，阶段Ⅱ已通过；实现结构、接口、迁移和验证设计由Executor确定。
 
 ## 1. 方案结论
 
@@ -12,7 +12,7 @@
 
 优先做数据产生到可靠动作的完整链，因为没有任务数据、类型变量和可靠触发，后续选人、子流程及MES只能形成页面演示。第二个能力边界解决跨人员、跨流程的数据协作，第三个边界再证明三场景实际业务结果。
 
-当前P64=IN_PROGRESS；Ⅰ/ⅡPASSED（[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)），阶段Ⅱ账本0、Ⅲ验收03主体通过、数量差异关闭收尾；完整[实施授权](authorization-p64-implementation-20261008.md)持续。唯一下一动作：Planner按提示03验收回执04（phase-3-completion-receipt-04.md）。
+当前P64=PASSED；Ⅰ/ⅡPASSED（[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)），阶段Ⅱ账本0、ⅢPASSED，整体终态同步待执行；完整[实施授权](authorization-p64-implementation-20261008.md)持续。唯一下一动作：Executor按整体终态同步方向提交terminal-sync-p64-01.md。
 
 ## 2. 六项架构决策
 

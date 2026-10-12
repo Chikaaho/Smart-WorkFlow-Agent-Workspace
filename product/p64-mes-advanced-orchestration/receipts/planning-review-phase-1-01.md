@@ -1,6 +1,6 @@
 # P64阶段Ⅰ规划审查01：数据到动作
 
-2026-10-09；Planner。输入：[阶段回执01](phase-1-completion-receipt-01.md)、[ADR-P64-001](../ready/adr-p64-001-phase1-data-to-action.md)、[主方向](../ready/direction-p64-mes-advanced-orchestration.md)、[实施授权](../ready/authorization-p64-implementation-20261008.md)、当前memory及todo；已逐张查看本机product证据目录内7张截图。
+2026-10-09；Planner。输入：[阶段回执01](phase-1-completion-receipt-01.md)、[ADR-P64-001](../ready/adr-p64-001-phase1-data-to-action.md)、[主方向](../passed/direction-p64-mes-advanced-orchestration.md)、[实施授权](../ready/authorization-p64-implementation-20261008.md)、当前memory及todo；已逐张查看本机product证据目录内7张截图。
 
 **裁决：阶段Ⅰ暂不通过，阶段验收VERIFYING、待修正/补证；P64功能保持IN_PROGRESS。** Executor自验不等于Planner通过。本次是首次阶段Ⅰ审查，按P1-01—P1-08差异收敛，不生成重复失败升级提示。唯一下一动作是Executor在既有完整实施授权内完成剩余修正/补证，追加阶段回执02；不重新申请实施授权，不把阶段Ⅰ或整体登记PASSED/COMPLETED。
 

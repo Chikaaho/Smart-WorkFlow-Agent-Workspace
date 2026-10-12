@@ -1,6 +1,6 @@
 # P64阶段Ⅱ完成回执01：人员与父子协作（自验通过，待规划独立验收）
 
-2026-10-10；Executor；XL。依据[阶段Ⅱ方向](../ready/direction-p64-phase2-personnel-parent-child.md)、[主方向](../ready/direction-p64-mes-advanced-orchestration.md)、[方案](../ready/solution-p64-mes-advanced-orchestration.md)与[完整实施授权](../ready/authorization-p64-implementation-20261008.md)。阶段Ⅰ已由[验收08](planning-review-phase-1-08-passed.md)确认 PASSED；本回执报告阶段Ⅱ实施、验证与剩余项，**不写功能 PASSED/COMPLETED、不核销 P 或计数**。
+2026-10-10；Executor；XL。依据[阶段Ⅱ方向](../ready/direction-p64-phase2-personnel-parent-child.md)、[主方向](../passed/direction-p64-mes-advanced-orchestration.md)、[方案](../ready/solution-p64-mes-advanced-orchestration.md)与[完整实施授权](../ready/authorization-p64-implementation-20261008.md)。阶段Ⅰ已由[验收08](planning-review-phase-1-08-passed.md)确认 PASSED；本回执报告阶段Ⅱ实施、验证与剩余项，**不写功能 PASSED/COMPLETED、不核销 P 或计数**。
 
 ## 0. 自验结论与剩余项
 

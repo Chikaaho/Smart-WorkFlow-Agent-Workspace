@@ -2,7 +2,7 @@
 
 2026-10-08；Planner。Owner本轮指令：恢复P64并开始规划；代码仓从develop建立feature分支；commit信息精简。
 
-**结论：P64保持READY，方案已形成，业务实现及A01—A12验收尚未开始。** [主方向](../ready/direction-p64-mes-advanced-orchestration.md)继续作为唯一业务目标，[方案](../ready/solution-p64-mes-advanced-orchestration.md)说明架构取向、用户路径及三阶段能力交付。原探索复核01和历史验收事实保留；当前下一动作由本文§5承接复核01§5。
+**结论：P64保持READY，方案已形成，业务实现及A01—A12验收尚未开始。** [主方向](../passed/direction-p64-mes-advanced-orchestration.md)继续作为唯一业务目标，[方案](../ready/solution-p64-mes-advanced-orchestration.md)说明架构取向、用户路径及三阶段能力交付。原探索复核01和历史验收事实保留；当前下一动作由本文§5承接复核01§5。
 
 ## 1. 上下文恢复
 

@@ -1,12 +1,12 @@
 # 功能摘要
 
-2026-10-12；Planner已完成[关闭核实裁决04](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-3-04.md)：341/342真实关闭通过；UI、领料补办、入库、设备反馈及此前结果锁定。仅剩计划与实际数量差异关闭说明，P64整体IN_PROGRESS、Ⅰ/ⅡPASSED、ⅢVERIFYING。P62批准功能COMPLETED，有限性能VERIFYING已搁置，G2/G3/G5留账、策略OFF。
+2026-10-12；[整体业务验收05](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-3-05-passed.md)确认P64 PASSED。Ⅰ数据到动作、Ⅱ人员与父子协作、Ⅲ场景与整体交付全部完成；总3阶段：完成3/进行中0/未开始0。业务缺口0；整体终态同步已执行（[terminal-sync-p64-01](../product/p64-mes-advanced-orchestration/receipts/terminal-sync-p64-01.md)，2026-10-12），**COMPLETED（待规划终态复核）**。P62批准功能COMPLETED、有限性能VERIFYING/Owner延期、策略OFF保持。
 
-唯一下一动作：Planner按[提示03](../product/p64-mes-advanced-orchestration/receipts/planning-execution-prompt-p64-phase3-03.md)验收[回执04](../product/p64-mes-advanced-orchestration/receipts/phase-3-completion-receipt-04.md)。
+唯一下一动作：Planner复核[terminal-sync-p64-01](../product/p64-mes-advanced-orchestration/receipts/terminal-sync-p64-01.md)及全部当前入口后确认COMPLETED。
 
-功能47、清单46/22/22=90、ADV64、问题57、P63/VB及正式基线保持。P64总3业务阶段：Ⅰ数据到动作完成、Ⅱ人员与父子协作完成、Ⅲ场景与整体交付进行中（数量差异关闭收尾）；已完成2/进行中1/未开始0。
+当前已完成登记48（=47+P64整体1，同一登记ID复用不重复计数）；清单46/22/22=90、ADV64、问题57保持。正式P64验证集合及各项实际结果以终态方向为准，P63历史基线保持。
 
-- `p64-mes-advanced-orchestration`（P64，XL）：IN_PROGRESS；Ⅰ/ⅡPASSED（阶段Ⅱ验收09）、Ⅲ关闭已通过、数量差异关闭说明VERIFYING，整体未验收。
+- `p64-mes-advanced-orchestration`（P64，XL）：**COMPLETED（待规划终态复核）**、**第48个正式功能**；功能验收PASSED（整体业务验收05）、3阶段PASSED；终态同步回执terminal-sync-p64-01待Planner复核；范围边界=受控HTTP层级/异步对账观察非性能或物理承诺。
 - `p63-mes-workflow-foundations`（P63，L/P0）：**COMPLETED（规划已确认，2026-10-08）**；表单驱动动态并行审批+一次性 IoT 预约下发、手工并行兼容；VB01—VB04 见登记与 `state.md`；范围外=完整 MES/分管领导组织模型/周期预约/厂商实网/部署。
 - `p62-lowcode-transaction-bpm-tiering`（P62，XL）：**COMPLETED（规划已确认，2026-10-06）**；性能就绪探索已完成（2026-10-11，回执 `search_fallback/p62-performance-new-machine-readiness-20261011.md`）/有限性能三轮未过/VERIFYING、已由 Owner 搁置为已知延期问题（2026-10-12；未来方向=带权参数配置、后台可配置每租户优先级；`todo/p62-lowcode-transaction-bpm-tiering.md` §性能已知延期）；新资源策略默认关闭。
 - `backend-architecture-optimization`（XL）：**COMPLETED（规划已确认，2026-09-26）**；Phase1—6C 与 Final 完成；10 候选=BAO-01 `DEFERRED`+BAO-02 `PARTIAL`+8 `COMPLETED`；基线 1570/0/0/0（历史时点）。

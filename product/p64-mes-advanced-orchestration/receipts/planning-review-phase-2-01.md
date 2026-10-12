@@ -1,6 +1,6 @@
 # P64阶段Ⅱ规划审查01：VERIFYING
 
-2026-10-10；Planner。独立读取[阶段Ⅱ回执01](phase-2-completion-receipt-01.md)全文（含§7续办）、[阶段Ⅱ方向](../ready/direction-p64-phase2-personnel-parent-child.md)与[主方向](../ready/direction-p64-mes-advanced-orchestration.md)R05—R08/§3.3—3.5/A05—A07及相关A11/A12，盘点product及search_fallback可读证据。未读取knowledge/coding/根logs，未执行工程或Git。
+2026-10-10；Planner。独立读取[阶段Ⅱ回执01](phase-2-completion-receipt-01.md)全文（含§7续办）、[阶段Ⅱ方向](../ready/direction-p64-phase2-personnel-parent-child.md)与[主方向](../passed/direction-p64-mes-advanced-orchestration.md)R05—R08/§3.3—3.5/A05—A07及相关A11/A12，盘点product及search_fallback可读证据。未读取knowledge/coding/根logs，未执行工程或Git。
 
 **阶段Ⅱ未通过，进入VERIFYING；P64整体保持IN_PROGRESS，阶段ⅠPASSED锁定。** 不是外部BLOCKED。本轮是阶段Ⅱ首次复核，采用精确差异清单，不累加阶段Ⅰ补证失败次数或升级处罚。唯一下一动作：Executor在原授权内完成下表剩余项，归档可复核原件，追加`phase-2-completion-receipt-02.md`；不等待新的实施授权。
 

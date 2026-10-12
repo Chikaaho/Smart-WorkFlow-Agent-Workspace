@@ -1,6 +1,6 @@
 # P64阶段Ⅰ规划复审02
 
-2026-10-09；Planner。输入：[执行回执02](phase-1-completion-receipt-02.md)、[证据索引](evidence/phase1-02/index.md)、[审查01](planning-review-phase-1-01.md)、[主方向](../ready/direction-p64-mes-advanced-orchestration.md)、修订ADR及[Admin回执](../../workspace-governance-consistency-audit/receipts/receipt-admin-windows-stop-gate-diagnostics-20261009.md)。实际读取本机product下日志、7份Surefire摘要、6份SQL制品及全部10张PNG；未读取代码/knowledge，未运行工程或治理命令。
+2026-10-09；Planner。输入：[执行回执02](phase-1-completion-receipt-02.md)、[证据索引](evidence/phase1-02/index.md)、[审查01](planning-review-phase-1-01.md)、[主方向](../passed/direction-p64-mes-advanced-orchestration.md)、修订ADR及[Admin回执](../../workspace-governance-consistency-audit/receipts/receipt-admin-windows-stop-gate-diagnostics-20261009.md)。实际读取本机product下日志、7份Surefire摘要、6份SQL制品及全部10张PNG；未读取代码/knowledge，未运行工程或治理命令。
 
 **裁决：阶段Ⅰ仍为VERIFYING，暂不通过；P64保持IN_PROGRESS。** 新材料证明部分工程结果和运行行为，不能支持“P1-01—P1-08全部收敛”。功能47、清单46/22/22=90、ADV64、问题57、P63/VB及P62延期均保持；不晋级正式基线、不核销P。原实施授权有效。
 

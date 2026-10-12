@@ -25,7 +25,7 @@
 
 ## 3. 规划裁决与READY合同
 
-以下已写入[正式方向](../ready/direction-p64-mes-advanced-orchestration.md)，替代探索前的待决口径：
+以下已写入[正式方向](../passed/direction-p64-mes-advanced-orchestration.md)，替代探索前的待决口径：
 
 - 节点业务表单覆盖APPROVAL/CONSENSUS/DYNAMIC_PARALLEL；任务/轮次独立实例绑定已发布版本，合法最终提交才能成为后续输入。变量三类来源、类型、必填/可空、有效轮次、聚合规则和读取快照明确。
 - Trigger区分任务提交、节点本轮完成、流程合法完成。BPM判断上下文只读，配置动作走可靠意图及受控身份；失败/未匹配/超限可恢复和诊断。NG质量结果与审批拒绝分开。

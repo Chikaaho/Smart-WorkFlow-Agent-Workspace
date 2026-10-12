@@ -1,6 +1,6 @@
 # P64 阶段Ⅰ 完成回执03
 
-2026-10-09；Executor。输入：[一级执行补充提示01](planning-execution-prompt-p64-phase1-01.md)、[规划复审02](planning-review-phase-1-02.md)、[主方向](../ready/direction-p64-mes-advanced-orchestration.md)、[实施授权](../ready/authorization-p64-implementation-20261008.md)、[回执02](phase-1-completion-receipt-02.md)、[证据索引 phase1-03](evidence/phase1-03/index.md)。本回执按一级提示的 15 个原子子项逐项给出“制品位置→实际结果→边界”，并显式列出未闭合项与下一动作。
+2026-10-09；Executor。输入：[一级执行补充提示01](planning-execution-prompt-p64-phase1-01.md)、[规划复审02](planning-review-phase-1-02.md)、[主方向](../passed/direction-p64-mes-advanced-orchestration.md)、[实施授权](../ready/authorization-p64-implementation-20261008.md)、[回执02](phase-1-completion-receipt-02.md)、[证据索引 phase1-03](evidence/phase1-03/index.md)。本回执按一级提示的 15 个原子子项逐项给出“制品位置→实际结果→边界”，并显式列出未闭合项与下一动作。
 
 **状态声明：P64 保持 IN_PROGRESS、阶段Ⅰ VERIFYING。** 本回执不写功能 PASSED/COMPLETED；实现自验不等于规划裁决。
 

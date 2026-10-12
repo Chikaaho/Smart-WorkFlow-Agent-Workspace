@@ -1,10 +1,10 @@
 # P64：MES高级流程编排与业务闭环
 
-> 当前路由（2026-10-12，回执04提交）：数量差异关闭收尾完成——代表性报废场景 WO-2026-344（主流程v6）：差异未说明主单不关闭且补正任务自动出现；交代齐备（实际0+报废3+剩余7未生产+原因）后 APPROVED，数量与原因经实例 node-form-data 按工单查回，库存 0/0 未虚增；引擎缺口（异步终态不结算）以对账结算钩子修复（Server `4681634`，单测3/0）。唯一下一动作：Planner按[提示03](../receipts/planning-execution-prompt-p64-phase3-03.md)验收[回执04](../receipts/phase-3-completion-receipt-04.md)。P64整体IN_PROGRESS、Ⅰ/ⅡPASSED、ⅢVERIFYING；总3阶段，完成2/进行中1/未开始0；整体终态同步未进入，P62性能延期/OFF保持。
+> 当前路由（2026-10-12，终态同步已执行）：P64功能验收PASSED（审查05）、**COMPLETED（待规划终态复核）**、正式功能第48个（=47+P64整体1）；阶段Ⅰ/Ⅱ/ⅢPASSED（3/0/0）；P64批准范围核销；90行✅46/🟦22/⬜22与ADV64本次零升降、问题57保持；正式验证集合={P64-VB01—VB04}（值见[终态同步回执](../receipts/terminal-sync-p64-01.md)）；活动业务功能无；无发布/合并/tag/Release/部署。唯一下一动作：Planner复核[terminal-sync-p64-01](../receipts/terminal-sync-p64-01.md)及全部当前入口后确认COMPLETED。P62性能延期/OFF保持。
 
-2026-10-08；Planner；XL；**IN_PROGRESS（阶段ⅠPASSED；阶段ⅡPASSED，2026-10-11）**。
+2026-10-08；Planner；XL；**PASSED（整体业务验收05，2026-10-12）**。
 
-Owner要求：参考“MES申请分类”前半段，继续完善MES能力，先确定任务方向。产品输入为Owner补充的[高级流程摘要](../inputs/owner-bpm-advanced-summary-20261008.md)及[岗位委托补充](../inputs/owner-position-delegation-20261008.md)，以最新补充的通用岗位委托要求为准。本文确定目标、范围和验收边界。[探索规划复核01](../receipts/planning-review-readiness-01.md)接受现状探索；[架构方案](solution-p64-mes-advanced-orchestration.md)明确六项选择及三阶段边界。[方案复核02](../receipts/planning-solution-review-02.md)§5为传播授权来源；READY传播已收口，最终确认见[传播规划终审03](../receipts/planning-final-review-ready-state-propagation-03.md)。Owner完整实施授权保持，阶段Ⅰ已由[规划验收08](../receipts/planning-review-phase-1-08-passed.md)确认通过；阶段Ⅱ由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)确认通过；当前继续P64阶段Ⅲ。本方向是唯一业务目标入口，实现步骤、接口、存储结构和测试设计由Executor负责。
+Owner要求：参考“MES申请分类”前半段，继续完善MES能力，先确定任务方向。产品输入为Owner补充的[高级流程摘要](../inputs/owner-bpm-advanced-summary-20261008.md)及[岗位委托补充](../inputs/owner-position-delegation-20261008.md)，以最新补充的通用岗位委托要求为准。本文确定目标、范围和验收边界。[探索规划复核01](../receipts/planning-review-readiness-01.md)接受现状探索；[架构方案](../ready/solution-p64-mes-advanced-orchestration.md)明确六项选择及三阶段边界。[方案复核02](../receipts/planning-solution-review-02.md)§5为传播授权来源；READY传播已收口，最终确认见[传播规划终审03](../receipts/planning-final-review-ready-state-propagation-03.md)。Owner完整实施授权保持，阶段Ⅰ已由[规划验收08](../receipts/planning-review-phase-1-08-passed.md)确认通过；阶段Ⅱ由[阶段Ⅱ验收09](../receipts/planning-review-phase-2-09-passed.md)确认通过；当前继续P64阶段Ⅲ。本方向是唯一业务目标入口，实现步骤、接口、存储结构和测试设计由Executor负责。
 
 ## 1. 产品目标
 
@@ -130,7 +130,7 @@ P63已发布的部门负责人语义继续原义；新岗位来源/委托规则�
 | A11 | 用户可见浏览器完成配置与多角色运行，桌面和常见窄屏可用；业务单据、父子实例、任务、轮次、变量和动作结果之间可回查。 |
 | A12 | 存量发布定义和真实运行实例保持原义；P63手工/动态并行、来源去重和预约语义不漂移；新增持久数据可升级且启停/回退边界明确，受影响工程门禁通过。 |
 
-这是收敛后的方向级验收合同，阶段Ⅰ已由验收08确认通过、阶段Ⅱ验收09已PASSED；整体A01—A12尚未通过。Executor自行制定实现和最小充分验证，回执标明行为层级、对象、结果、证据路径；规划独立验收只核实际交付与证据，不以源码存在或自述通过。
+这是收敛后的方向级验收合同，阶段Ⅰ已由验收08确认通过、阶段Ⅱ验收09已PASSED；整体A01—A12已由验收05通过。Executor自行制定实现和最小充分验证，回执标明行为层级、对象、结果、证据路径；规划独立验收只核实际交付与证据，不以源码存在或自述通过。
 
 ## 6. 范围、风险与阶段边界
 
@@ -148,9 +148,9 @@ XL阶段目标按产品能力划界：先形成可用的节点数据/变量/判�
 
 ## 7. 登记与当前下一动作
 
-P64为IN_PROGRESS；阶段ⅠPASSED（2026-10-10验收08），阶段ⅡPASSED、阶段Ⅲ未验收，不晋级功能数或核销既有P编号/清单。当前正式功能47、原90行46/22/22、ADV64和既有验证集合保持。关联ADV-M11-F01-04可复用子流程、ADV-M11-F02-02规则矩阵与P2/P4/P26能力子集，登记关联不等于这些总项已完成。
+P64功能验收PASSED；阶段Ⅰ/Ⅱ/ⅢPASSED。功能计数与P64核销按终态同步唯一清单传播。当前正式功能47、原90行46/22/22、ADV64和既有验证集合保持。关联ADV-M11-F01-04可复用子流程、ADV-M11-F02-02规则矩阵与P2/P4/P26能力子集，登记关联不等于这些总项已完成。
 
-唯一下一动作：Planner按提示03验收回执04（phase-3-completion-receipt-04.md）。
+唯一下一动作：Executor按整体终态同步方向提交terminal-sync-p64-01.md。
 
 探索及未来验证遵守system.md：有限输入/输出/完成条件，不做非必要hash、不空转等待、不启动不可控后台任务、不擅停用户服务；正式UI证据来自可见可交互会话。规划阶段不编译、测试、迁移、访问数据库或控制设备。
 
