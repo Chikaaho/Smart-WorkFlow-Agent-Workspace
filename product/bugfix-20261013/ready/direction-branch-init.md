@@ -1,6 +1,6 @@
 # 修复分支初始化与状态登记方向
 
-2026-10-13｜Planner｜本准备范围READY；整体方向READY，发布版本0.1.5。
+2026-10-13｜Planner｜两仓建分支项已通过，根文档收尾VERIFYING；当前入口见 ../receipts/planning-review-branch-init-01.md。以下保留本批原始执行约定。
 
 依据：Owner本会话从develop建修复分支的明确指令、主方向、开发声明及 receipts/owner-release-policy-20261013.md；分支事实沿用就绪审查01。替代已完成的 search_task/bugfix-20261013-readiness.md 成为唯一当前执行入口。本文件限定交付结果，由Executor自行选择实施方法。
 

@@ -9,4 +9,10 @@
 
 条目状态使用：待澄清、待执行、执行中、待验收、已通过、Owner 延期。执行自验只进入待验收；新反证或相关变更可重开受影响项。延期须保留 Owner 决定及未验证范围。每批验收锁定已过项与证据引用。
 
-唯一当前执行入口：ready/direction-branch-init.md（探索已审查，先建立分支）；整体方向：ready/direction.md；开发声明：ready/development-declaration.md。
+## 运行与修复循环（Owner 2026-10-13 指令）
+
+- **点验环境**：本机运行一套 Server（8080，local profile=远程 PG `sw_apaas_local`，凭据经环境变量注入不落盘）+ Web（5173，vite 代理 8080）；启动前已核实无其他实例（8080/5173 零监听，无需 kill）。日志 `/tmp/bugfix-20261013/`（server.log / web.log / build.log）。
+- **修复循环**：Owner 反馈问题 → 本台账登记编号（BF20261013-NNN）→ Executor 在两仓 `codex/bugfix-20261013` 修复 → 修复完成即重启 Server（`mvn -pl sw-bootstrap -am package -DskipTests` 后 `java -jar`，Web vite 热更一般无需重启）→ 台账记实际结果与编号对应批次 → 该修复批次提交推送两仓 `codex/bugfix-20261013`，供 Owner 上位点验。
+- 编号与批次一一对应记录于上表"执行证据"列与各仓提交信息；发布集合冻结前所有修复累积在修复分支。
+
+当前执行收尾入口：receipts/planning-review-branch-init-01.md R-GIT-01（回执 branch-init-close-01.md，2026-10-13 完成）；整体方向：ready/direction.md；开发声明：ready/development-declaration.md。
