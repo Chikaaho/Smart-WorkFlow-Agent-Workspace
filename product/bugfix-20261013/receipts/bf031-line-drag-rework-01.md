@@ -26,15 +26,22 @@
 - 重建入口统一为 `rebuildEdge`（moveNode / setEdgeWaypoints / setEdgeEndpoint / normalizeGraph 共用）：输入**无拐点**时存回无拐点——默认路由继续随节点位置重算，不会因移动节点被钉在旧几何上（否则默认路由会「越移越歪」）。
 - 验证：无拐点边移动节点后 `waypoints=[]`、路径按新位置重算（用例）；实景中 END 移到端口同 x 即得到直线 `M 420 205 L 420 275`。
 
+## ⑤自审回归修复：连线命中检测改按真实渲染折线
+
+- 自审本批改动时发现：`hitTestEdgeAtPoint`（组件库点击添加 / 拖放落点判定）按「源-拐点-目标」计算距离，而**节点移动会把自动路由内点物化成拐点**——命中检测此前是「碰巧」正确的；④去掉物化后必须改为按**真实渲染折线**（`edge.path`）判定。
+- 现在：新增导出 `parsePathPoints`（设计器 path 解析同源，`ProcessDesigner` 本地解析函数删除改为复用），命中检测按渲染折线取最近段；`path` 缺失时回退旧口径。
+- 语义修正（P62 用例同步修订）：自动路由折线的中段可正常命中；**节点盒内**与**源-目标直连虚位**（视觉上没有连线）不再误命中——此前把节点插到节点盒内的误判被消除。
+- 验证：用例新增 1 例（折线首段 (420,220) 命中 / 直连虚位 (470,213) 不命中），P62 原用例改断「可见连线上命中、节点盒内不命中」；实景冒烟：选中出 1 个 `510,240:ns-resize` 手柄、悬停光标一致、空白取消选中、路径不变且无脏标记（零写入）。
+
 ## 影响面
 
-- `src/adapters/process-graph/index.ts`：`EDGE_MAX_SEGMENTS` 3→5、新增 `EDGE_JOG_SPAN`、`EdgeSegmentHandle.straight`、`EdgeSegmentDragContext`、`straightDragPoints`、`alignedJogPoints`、`rebuildEdge`；`edgeSegmentHandles` 支持直线合成手柄；`moveEdgeSegment` 改为端口几何外向夹取。
-- `ProcessDesigner.vue`：`edgeHandleAt`（命中最近可拖段）、`edgeDragContext`（端口外向）、拖动中 2→6 点下标切换。
+- `src/adapters/process-graph/index.ts`：`EDGE_MAX_SEGMENTS` 3→5、新增 `EDGE_JOG_SPAN`、`EdgeSegmentHandle.straight`、`EdgeSegmentDragContext`、`straightDragPoints`、`alignedJogPoints`、`rebuildEdge`、`parsePathPoints`；`edgeSegmentHandles` 支持直线合成手柄；`moveEdgeSegment` 改为端口几何外向夹取；`hitTestEdgeAtPoint` 改按真实渲染折线。
+- `ProcessDesigner.vue`：`edgeHandleAt`（命中最近可拖段）、`edgeDragContext`（端口外向）、拖动中 2→6 点下标切换、path 解析复用适配器 `parsePathPoints`。
 - 数据面：无迁移、无服务端改动；全库 process def `graph_json` 的 waypoints 仍为空。
 
 ## 验证
 
-- Web 四门：lint 0 错 3 警（既有）、typecheck 0、vitest **1492** 通过 3 跳过（新增 6 例）、build ✓。
+- Web 四门：lint 0 错 3 警（既有）、typecheck 0、vitest **1493** 通过 3 跳过（新增 7 例）、build ✓。
 - 实景（应用内浏览器，本机 5173，1280×720，管理员会话）：直线合成手柄与方向光标 / 拖动生成折返 / 越到另一侧 / 端口对齐保留形状 / 错位态向上拖回 / 正常态双向拖 / 基线还原，逐项核对，全程 `.el-message`=0。
 - **数据说明**：本批验证的节点移动与拖线均在草稿态，结束时经应用内「未保存离开确认 → 退出」丢弃并重进设计器；两条边回到已保存路径、无脏标记，服务端 `graph_json` 未变（waypoints 空、节点坐标原值、审批节点 subflow 配置在）。
 
