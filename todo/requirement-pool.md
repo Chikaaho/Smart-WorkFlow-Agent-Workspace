@@ -1,12 +1,10 @@
 # 需求池（Requirement Pool）
 
-## 当前验收：应用中心与表单分类统一（2026-10-15）
+## 当前验收：应用中心与表单分类统一（2026-10-16）
 
-2026-10-15：应用中心与表单分类统一，L/**VERIFYING**（首轮验收）。执行回执execution-01已读；审查 `product/application-center-form-classification/receipts/planning-review-01-verifying.md`。待补：G1审批结果闭环/分页隔离；G2直链及非超管权限；G3存量运行实例与停用后连续性；G4恢复实际结果。既有配置与测试优先复用原件。
+2026-10-16：应用中心与表单分类统一，L/**VERIFYING**。G1/G3/G4及G2普通接口通过锁定；G2剩余入口已由执行核实收口（execution-03，无新增旁路、零生产代码变更）。Owner明确权限是必须处理的基础核心问题；使用体验按正常产品验收流程迭代。
 
-总4阶段：现状探索、方向定稿完成；实施与验收进行中（待补充）；终态同步未开始，2/1/1。唯一下一动作：Executor按 `product/application-center-form-classification/receipts/planning-execution-prompt-application-center-01.md` 补充并提交execution-02。48/90/ADV64/57与P62性能延期/OFF保持；knowledge状态同步由执行按审查授权回传。
-
-后台应用管理创建一级应用、二级目录及表单，表单内设计表单和流程；用户端应用中心查看目录、表单和数据列表。当前不分配P编号、不新增正式功能数，主方向保持ready。
+总4阶段：现状探索、方向定稿完成；实施与验收进行中（G2权限收尾——执行侧完成）；终态同步未开始（2/1/1）。唯一下一动作：Planner复核 `product/application-center-form-classification/receipts/execution-03.md`。原等待Owner裁决已解除；本次依Owner明确指令续办，同项轮数不重置。48/90/ADV64/57与P62延期/OFF保持。
 
 > 上轮终态记录（2026-10-15，bugfix-20261013 / 0.1.5 发布列车）：**COMPLETED（规划已确认）**——修复发布列车，非业务功能计数，功能登记 48 不变；BF001—053 共 53 项 Owner 关闭，R015-01/R015-02 规划 PASSED；总5阶段 5/0/0；90行✅46/🟦22/⬜22、ADV64、问题57 保持、不新增/不核销 P 编号；正式验证集合 {BF015-VB01—VB04}（值见 `product/bugfix-20261013/receipts/planning-review-release-015-01-passed.md`）；应用/部署 0.1.5（每支持方言一个 `V0.1.5__baseline_seed.sql`）；活动业务功能无、无 tag/Release（UAT 经运维手册直接部署）。该终态时点下一动作已由顶部应用中心规划接替。P62 性能延期/OFF 保持。
 

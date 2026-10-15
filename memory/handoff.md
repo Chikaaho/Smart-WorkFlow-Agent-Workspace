@@ -1,10 +1,10 @@
-# 应用中心验收交接与0.1.5完成基线
+# 应用中心权限收尾交接
 
-2026-10-15：应用中心与表单分类统一，L/**VERIFYING**（首轮验收）。执行回执execution-01已读；审查 `product/application-center-form-classification/receipts/planning-review-01-verifying.md`。待补：G1审批结果闭环/分页隔离；G2直链及非超管权限；G3存量运行实例与停用后连续性；G4恢复实际结果。既有配置与测试优先复用原件。
+2026-10-16：应用中心与表单分类统一，L/**VERIFYING**。G1/G3/G4及G2普通接口通过锁定；G2剩余入口已由执行核实收口（无新增旁路、零生产代码变更）。Owner明确权限是必须处理的基础核心问题；使用体验按正常产品验收流程迭代。
 
-总4阶段：现状探索、方向定稿完成；实施与验收进行中（待补充）；终态同步未开始，2/1/1。唯一下一动作：Executor按 `product/application-center-form-classification/receipts/planning-execution-prompt-application-center-01.md` 补充并提交execution-02。48/90/ADV64/57与P62性能延期/OFF保持；knowledge状态同步由执行按审查授权回传。
+总4阶段：现状探索、方向定稿完成；实施与验收进行中（G2权限收尾——执行侧完成）；终态同步未开始（2/1/1）。唯一下一动作：Planner复核 `product/application-center-form-classification/receipts/execution-03.md`。48/90/ADV64/57与P62延期/OFF保持。
 
-业务结构保持：后台应用管理→一级应用→二级目录/表单→表单及流程设计；用户端应用中心→目录/表单→真实数据列表。主方向保留ready；尚不进入终态同步。首轮G1—G4为缺行为结果，未据实认定产品缺陷；第二轮仍不过先自查再升级，不自动第三轮。只补缺口，不重跑整套配置或全仓验证，不操作UAT。规划未提交推送本轮审查文档。
+G2收口结果（execution-03）：导入/导出已走公共守卫（范围外/空集/停用整批回滚零落库、导出拒绝无文件；SELF导出仅本人行）；模板仅披露字段结构按既有权限；ext查询为独立租户隔离外部数据面（停用即拒、跨租户不可见）；recordOwnerUserId 仅服务端ORCH_ACTION_START命令链可达、HTTP不透传，普通请求无法伪造豁免。验证=FormG2EntryConsistencyTest 7/0/0/0 + form-biz模块209/0/0/0（202+7零回归）；Server 68fe73f=origin推送回读一致。
 
 ## 上轮已完成基线（0.1.5）
 
