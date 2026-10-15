@@ -1,12 +1,10 @@
-# 应用中心规划交接与0.1.5完成基线
+# 应用中心验收交接与0.1.5完成基线
 
-2026-10-15：**应用中心与表单分类统一**，L / **READY**。方向：`product/application-center-form-classification/ready/direction-application-center.md`；探索已读，定稿记录：`product/application-center-form-classification/receipts/planning-readiness-review-01.md`。
+2026-10-15：应用中心与表单分类统一，L/**VERIFYING**（首轮验收）。执行回执execution-01已读；审查 `product/application-center-form-classification/receipts/planning-review-01-verifying.md`。待补：G1审批结果闭环/分页隔离；G2直链及非超管权限；G3存量运行实例与停用后连续性；G4恢复实际结果。既有配置与测试优先复用原件。
 
-后台应用管理：应用为一级分类，进入应用管理二级目录和表单，在表单内设计表单及流程。用户端应用中心：进入应用查看目录/表单，点击表单进入受权限约束的数据列表。表单有唯一应用归属，可直接位于应用内或归入一个目录。
+总4阶段：现状探索、方向定稿完成；实施与验收进行中（待补充）；终态同步未开始，2/1/1。唯一下一动作：Executor按 `product/application-center-form-classification/receipts/planning-execution-prompt-application-center-01.md` 补充并提交execution-02。48/90/ADV64/57与P62性能延期/OFF保持；knowledge状态同步由执行按审查授权回传。
 
-总4阶段：现状探索完成、方向定稿完成、实施与验收进行中、终态同步未开始；已完成2/进行中1/未开始1。执行已承接（2026-10-15，两仓 feature/application-center：Server d7d376f、Web 3687d04）。唯一下一动作：执行角色推进实现与验证并提交正式回执。尚无本轮实现或行为验收结果；48/90/ADV64/57与P62性能延期/OFF保持。
-
-常规裁决：复用全租户/指定用户可见范围；新建默认指定创建者，指定空集不可见；数据查询叠加既有行权限；目录继承应用范围。迁移冲突逐对象处理，应用停用/收窄保留旧待办和历史的既有合法访问。执行探索回执为 `search_fallback/application-center-form-classification-readiness-20261015.md`，仅有只读代码/文档/本地Git事实，未查库或验证。知识旧状态残留已纠正并回传（receipts/execution-intake-01.md）；实施进行中。
+业务结构保持：后台应用管理→一级应用→二级目录/表单→表单及流程设计；用户端应用中心→目录/表单→真实数据列表。主方向保留ready；尚不进入终态同步。首轮G1—G4为缺行为结果，未据实认定产品缺陷；第二轮仍不过先自查再升级，不自动第三轮。只补缺口，不重跑整套配置或全仓验证，不操作UAT。规划未提交推送本轮审查文档。
 
 ## 上轮已完成基线（0.1.5）
 

@@ -1,6 +1,6 @@
 # 功能追踪：应用中心与表单分类统一（应用中心与应用管理）
 
-> 工作区统一知识库 — 单功能追踪；当前状态 **IN_PROGRESS（执行承接，2026-10-15）**。
+> 工作区统一知识库 — 单功能追踪；当前状态 **VERIFYING（首轮验收未过，补充执行回执 execution-02 已交，2026-10-15）**。
 > 可信度标记：CONFIRMED / REPORTED / ASSUMED / SUPERSEDED
 
 ---
@@ -13,7 +13,7 @@
 | 功能名称 | 应用中心与表单分类统一（应用中心与应用管理） |
 | 功能目标 | 后台应用管理（应用=表单一级分类，应用内二级目录与表单，表单内提供表单设计/流程设计入口）；用户端应用中心（可见应用→目录/表单导航，表单进入受权限约束的数据列表）；复用既有授权并保持存量兼容 |
 | 创建日期 | 2026-10-15（Owner 需求 → Planner 定稿 READY → 执行承接） |
-| 当前状态 | **IN_PROGRESS（2026-10-15 实施与自验完成，回执已提交，待规划验收）**：总4阶段（现状探索、方向定稿、实施与验收、终态同步）= **2/1/1**；两仓开发分支 `feature/application-center`（Server `72822bc`、Web `74d4be3`，推送回读一致）；实施实现、验证证据与限制见执行回执 |
+| 当前状态 | **VERIFYING（2026-10-15 首轮验收未过 → 补充执行回执 execution-02 已交，待规划复验）**：总4阶段（现状探索、方向定稿、实施与验收、终态同步）= **2/1/1**；两仓开发分支 `feature/application-center`；首轮回执 `execution-01.md`、补充回执 `execution-02.md`（G1—G4 与原件交接见其 §） |
 | 等级 / 优先级 | L |
 | 涉及模块 | Server（应用/目录归属、授权与迁移兼容，实施中）；Web（后台应用管理、用户端应用中心、表单数据列表） |
 | 方向与回执 | `product/application-center-form-classification/ready/direction-application-center.md`；承接与覆盖回执 `product/application-center-form-classification/receipts/execution-intake-01.md`；执行回执 `product/application-center-form-classification/receipts/execution-01.md`（含 AC01—AC07 逐项对照与证据位置） |

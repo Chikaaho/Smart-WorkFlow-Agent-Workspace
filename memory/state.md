@@ -1,13 +1,11 @@
 # 当前状态摘要
 
-2026-10-15：**应用中心与表单分类统一**，L / **READY**。方向：`product/application-center-form-classification/ready/direction-application-center.md`；探索已读，定稿记录：`product/application-center-form-classification/receipts/planning-readiness-review-01.md`。
+2026-10-15：应用中心与表单分类统一，L/**VERIFYING**（首轮验收）。执行回执execution-01已读；审查 `product/application-center-form-classification/receipts/planning-review-01-verifying.md`。待补：G1审批结果闭环/分页隔离；G2直链及非超管权限；G3存量运行实例与停用后连续性；G4恢复实际结果。既有配置与测试优先复用原件。
 
-后台应用管理：应用为一级分类，进入应用管理二级目录和表单，在表单内设计表单及流程。用户端应用中心：进入应用查看目录/表单，点击表单进入受权限约束的数据列表。表单有唯一应用归属，可直接位于应用内或归入一个目录。
+总4阶段：现状探索、方向定稿完成；实施与验收进行中（待补充）；终态同步未开始，2/1/1。唯一下一动作：Executor按 `product/application-center-form-classification/receipts/planning-execution-prompt-application-center-01.md` 补充并提交execution-02。48/90/ADV64/57与P62性能延期/OFF保持；knowledge状态同步由执行按审查授权回传。
 
-总4阶段：现状探索完成、方向定稿完成、实施与验收进行中、终态同步未开始；已完成2/进行中1/未开始1。执行已承接（2026-10-15，两仓 feature/application-center：Server d7d376f、Web 3687d04）。唯一下一动作：执行角色推进实现与验证并提交正式回执。尚无本轮实现或行为验收结果；48/90/ADV64/57与P62性能延期/OFF保持。
+本次执行报告Server72822bc、Web74d4be3、根58c04195已推送（回执时点，未独立Git核查）。报告Server2072/3/0/27 BUILD FAILURE、Web1549通过/3跳过；非规划确认新基线。原件多在/tmp与coding target，本角色未读，需按提示交接相关原件；本地V94旧库不强行升级，UAT分布未知不阻塞隔离兼容验证。
 
 上轮 bugfix-20261013 COMPLETED（规划已确认）；BF001—053 Owner关闭，R015-01/02通过；总5阶段5/0/0。应用/部署0.1.5、开发默认0.1.5-SNAPSHOT。功能48、清单46/22/22=90、ADV64/问题57保持。证据与验证边界见 handoff；Server 2051/3/0/27 BUILD FAILURE 的3项既有失败保留，不称全仓全绿。
 
 P64/P63 COMPLETED保持；P62批准功能COMPLETED，有限性能VERIFYING/Owner延期、策略OFF。最新终态裁决：`product/bugfix-20261013/receipts/planning-review-terminal-sync-015-close-01-passed.md`。持久权威为 `knowledge/current-status.md`。
-
-knowledge旧状态残留（0.1.5旧复核表述、P64登记旧实施态）已按最新裁决机械纠正并回传覆盖结果（product/application-center-form-classification/receipts/execution-intake-01.md）。实际存量数量、迁移结果和远端实时Git状态尚未核实。
