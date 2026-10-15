@@ -92,7 +92,7 @@
 
 - Web（`feature/application-center`）：`3687d04` → **`74d4be3`**（24 文件，+新增页面/契约/测试），`git push origin feature/application-center` 后远端回读一致（HEAD=origin/HEAD=`74d4be3`）。
 - Server（`feature/application-center`）：`d7d376f` → **`72822bc`**（49 文件：迁移双份 4、后端实现与错误码/i18n/catalog、测试 3 新增+13 同步），`git push origin feature/application-center` 后远端回读一致（HEAD=origin/HEAD=`72822bc`）
-- 根工作区：本回执与 knowledge 顶部条目同步（根工作区 `develop-sw` 本批次（执行回执 + knowledge 三入口 + 两仓 gitlink 更新）提交并普通推送，提交后回读见本节末）。
+- 根工作区：本回执与 knowledge 顶部条目同步（根工作区 `develop-sw`：`987977af` → **`58c04195`**（执行回执 + knowledge 三入口 + 两仓 gitlink），`git push origin develop-sw` 后远端回读一致（HEAD=origin/develop-sw=`58c04195`））。
 
 ## 8. 验收标准逐项对照（AC01—AC07）
 
