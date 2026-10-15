@@ -149,10 +149,10 @@ SPECIFIED 命中用户的中心可见「报销应用」「全员应用」、空�
 | 仓 | 分支 | 提交 | 说明 |
 |---|---|---|---|
 | Smart-WorkFlow-aPaaS-server | `feature/application-center` | `ed54e10` | 应用范围闸门实现 + 三处接入 + 守卫测试 + G3/G4 验证（不含 Web 变更） |
-| Smart-WorkFlow | `develop-sw` | `8981922c` | 本回执、本轮原件索引、knowledge 三入口 VERIFYING 同步、两仓 gitlink |
+| Smart-WorkFlow | `develop-sw` | `8981922c`（回执补记 `5e1e988a`） | 本回执、本轮原件索引、knowledge 三入口 VERIFYING 同步、两仓 gitlink；补记含 Git 回读与环境清理结果 |
 | Smart-WorkFlow-aPaaS-Web | — | 无变更 | 本轮零 Web 变更 |
 
-推送后回读：Server `ed54e10` = `origin/feature/application-center`，根 `8981922c` = `origin/develop-sw`（均一致）；Web 仓无变更。
+推送后回读：Server `ed54e10` = `origin/feature/application-center`（一致）；根 `8981922c` → 补记 `5e1e988a` 均与 `origin/develop-sw` 一致；Web 仓无变更、工作树干净。
 
 ---
 
