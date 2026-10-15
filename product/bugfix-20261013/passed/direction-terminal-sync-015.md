@@ -2,7 +2,9 @@
 
 2026-10-15｜Planner｜READY。唯一输入裁决：../receipts/planning-review-release-015-01-passed.md。业务与发布验收已通过，仅同步当前信息、文档及授权Git收尾，不运行迁移、重新部署或重复测试。
 
-## 唯一终态值清单
+> 最终复核（2026-10-15）：PASSED，COMPLETED（规划已确认），5/0/0。TS-GIT-01已通过实际远端回读关闭，见[终态最终复核](../receipts/planning-review-terminal-sync-015-close-01-passed.md)。下一动作：等待Owner选择下一目标。下表保留原授权目标及执行时点。
+
+## 原授权终态目标值清单
 
 | 字段 | 唯一目标值 |
 |---|---|
