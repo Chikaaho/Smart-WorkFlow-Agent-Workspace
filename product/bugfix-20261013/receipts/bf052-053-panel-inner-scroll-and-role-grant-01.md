@@ -46,3 +46,11 @@
 ## 四、状态
 
 **已按 Owner「默认通过」口径核销**（BF052/BF053 记「已通过」）。若你点验时发现不合意：①面板内滚动的触发高度（现为列高）②菜单与角色授权的组合方式（现 role 1 + role 2 双绑定）③核销后的任何一条历史项，回一句我按反馈重开对应项。
+
+## 收尾（Owner 2026-10-15「结束，两个服务停止」）
+
+- 按 Owner 指令停止本循环的两个点验服务，**按精确 pid 核对身份后**发送 SIGTERM（非按端口/进程名批量清理）：
+  - Server：`java -jar sw-bootstrap/target/bootstrap.jar`（pid 54863，本批 13:12 重启实例）；
+  - Web：`npm run dev`（pid 95132）+ `node …/Smart-WorkFlow-aPaaS-Web/node_modules/.bin/../vite/bin/vite.js`（pid 95160）。
+- 停止后回读：4 秒内三个 pid 全部退出、无残留进程；`http://localhost:8080/api/actuator/health` 与 `http://localhost:5173/` 均无响应（连接失败），工作区相关进程为 0。
+- **下次点验前需按台账「运行与修复循环」同节配方重启**（Server：`mvn -pl sw-bootstrap -am package -DskipTests` 后 `java -jar sw-bootstrap/target/bootstrap.jar`，凭据经 `/tmp/bugfix-20261013/local-env.sh` 注入、日志 `/tmp/bugfix-20261013/server.log`；Web：`npm run dev`）。库中已落地的迁移（含本批 role 1 授权）不受影响。
