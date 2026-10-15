@@ -16,7 +16,8 @@
   │  HTTPS（80/443）
   v
 nginx（反向代理 + TLS 终止 + 前端静态托管）
-  │  /sw          → 前端静态构建（/opt/smart-workflow/web）
+  │  /            → 前端静态构建（/opt/smart-workflow/web；0.1.5 起挂载域名根路径）
+  │  /sw、/sw/*   → 301 重定向到根路径（保留子路径，旧入口兼容）
   │  /sw-server/  → 后端 API（反代到 127.0.0.1:8080）
   v
 CH-aPaaS 后端（Java 21 / Spring Boot，:8080，bootstrap.jar）
@@ -25,7 +26,7 @@ CH-aPaaS 后端（Java 21 / Spring Boot，:8080，bootstrap.jar）
 ```
 
 - 后端为模块化单体（`sw-bootstrap` 为唯一启动入口），生产使用 **PostgreSQL** 数据源。
-- 前端为 Vue3 构建后的纯静态资源，由 nginx 直接托管，运行时经 `/sw-server/` 调用后端。
+- 前端为 Vue3 构建后的纯静态资源，由 nginx 直接托管（0.1.5 起挂载在域名根路径 `/`），运行时经 `/sw-server/` 调用后端。
 - 时区：`+08:00`（日志、数据库时间均为 CST）。
 
 ---
@@ -71,11 +72,13 @@ CH-aPaaS 后端（Java 21 / Spring Boot，:8080，bootstrap.jar）
 
 | 用途 | 位置 / 端口 |
 |---|---|
-| 前端管理端 | nginx 转发 `/sw` → 前端静态目录 `/opt/smart-workflow/web` |
+| 前端管理端 | nginx 根路径 `/` → 前端静态目录 `/opt/smart-workflow/web`（0.1.5 起；访问域名即进入系统/登录页） |
+| 旧前端入口 | `/sw`、`/sw/…` → `301` 到根路径（保留子路径，例如 `/sw/workflow/catalog` → `/workflow/catalog`）；`/sw-server/` 为独立前缀，不受该重定向影响 |
 | 后端 API | nginx 转发 `/sw-server/` → `127.0.0.1:8080` |
 | 后端本机自检（非对外） | `http://127.0.0.1:8080` |
 
 - 对外统一走 nginx（80/443，TLS 由 nginx 终止）。
+- 根路径由前端 SPA 兜底（`try_files $uri $uri/ /index.html`）：深路由直达与刷新正常；`/sw-server/`、上传下载与认证回调等按前缀路由保留，不被前端兜底覆盖。
 - 域名与 TLS 证书属于对外环境标识，**本手册不披露**，相关配置以 nginx 服务器本地记录为准。
 
 ---
@@ -143,8 +146,10 @@ tail -f /var/log/nginx/default.error.log
 curl -sS -o /dev/null -w "HTTP %{http_code}\n" http://127.0.0.1:8080/api/actuator/health
 
 # 经 nginx 反代校验前端与 API（本机回环 + Host，域名以占位符代替）
-curl -sS -o /dev/null -w "HTTP %{http_code}\n" -H "Host: <对外域名>" http://127.0.0.1:80/sw/
+curl -sS -o /dev/null -w "HTTP %{http_code}\n" -H "Host: <对外域名>" http://127.0.0.1:80/
 curl -sS -o /dev/null -w "HTTP %{http_code}\n" -H "Host: <对外域名>" http://127.0.0.1:80/sw-server/api/actuator/health
+# 旧前端入口应为 301（0.1.5 起）
+curl -sS -o /dev/null -w "HTTP %{http_code} → %{redirect_url}\n" -H "Host: <对外域名>" http://127.0.0.1:80/sw/
 ```
 
 > 后端 context-path 为 `/api`：`curl 127.0.0.1:8080/api/actuator/health` 应返回 `{"status":"UP"}`；未启用则该地址 404 属正常。
@@ -236,8 +241,8 @@ STOP_TIMEOUT=30 ./stop.sh
    chown -R root:root /opt/smart-workflow/web
    nginx -t && nginx -s reload
    ```
-3. 验证 nginx `/sw/`（§6.3）与 `index.html`/`assets/` 正常。
-4. 回滚：`rm -rf /opt/smart-workflow/web && mv /opt/smart-workflow/web.bak /opt/smart-workflow/web`。
+3. 验证 nginx 根路径 `/`（§6.3；0.1.5 起前端挂根路径）与 `index.html`/`assets/` 正常；旧 `/sw/…` 应为 301 到根路径。
+4. 回滚：`rm -rf /opt/smart-workflow/web && mv /opt/smart-workflow/web.bak /opt/smart-workflow/web`（建议备份目录带时间戳，与 §9.1 发布窗口备份一致）。
 
 ### 8.3 数据库变更（Schema 迁移）
 
@@ -245,6 +250,12 @@ STOP_TIMEOUT=30 ./stop.sh
   - 升级前**必须备份数据库**（§9.1）。
   - Flyway 迁移随应用启动自动执行；**先备份、后启动**。
   - 一旦启动后发现迁移异常，立即停服并评估回滚，避免半迁移状态。
+- **0.1.5 起的主迁移形态**：每个支持方言只有一条 versioned 迁移 `V0.1.5__baseline_seed.sql`（全量种子）+ `R__` 可重复迁移；开发新增迁移用 `V<yyyyMMddHHmmss>__<需求>.sql`，启动时按版本自动应用，不会重放旧链或重复执行种子。
+- **在役库的存量衔接**（不删除审计记录）：仓库 `sw-bootstrap/src/main/resources/db/upgrade/0.1.5/` 提供两个一次性脚本，**不在** Flyway 扫描路径内，需按当前库版本二选一在停服窗口手工执行（脚本单事务、恰好一次；重复执行会在无守卫语句处显式失败）：
+  - `transition-history-to-0.1.5.postgresql.sql`：库已应用旧链全部版本（如 0.1.10）——把 versioned 历史替换为单条 0.1.5 种子记录，业务数据与 `R__` 记录不动；
+  - `upgrade-to-0.1.5-from-0.1.1.postgresql.sql`：库停在旧链 0.1.1（0.1.3 发布态）——增量 DDL + 同一历史衔接。
+  - 执行顺序：备份（§9.1）→ 停服 → 执行脚本 → 启动 → 核对日志 `Successfully validated …`、无 versioned 重放、`R__` 按需单次执行。
+- 衔接前建议先核对库内 `V0.1.0`/`V0.1.1` 的 checksum 与仓库档案一致，再执行脚本。
 
 ---
 
@@ -266,6 +277,7 @@ ls -lh /data/backup
 
 - 建议每日定时备份（cron），异地或对象存储留存。
 - 同时可备份 `server.env` 与 `uploads/`（业务上传文件）。
+- **发布窗口的整体备份与恢复入口**（0.1.5 发布所用的模式，可沿用）：数据库 dump（如上，命名建议带 `_pre<版本>` 后缀）+ 后端包 `bootstrap.jar.bak`/`.bak2`（§8.1 轮换）+ 前端目录 `/opt/smart-workflow/web.bak-<时间戳>` + nginx 配置 `/etc/nginx/conf.d/*.conf.bak-<时间戳>`（改动前复制）。恢复：`./stop.sh` → 回填 jar / `web.bak-*` / nginx 配置（`nginx -t && nginx -s reload`）→ 按需 `pg_restore` → `./start.sh`；发布与恢复的完整实测记录见工作区 `product/bugfix-20261013/receipts/uat-015-01.md`。
 
 ### 9.2 磁盘与日志清理
 

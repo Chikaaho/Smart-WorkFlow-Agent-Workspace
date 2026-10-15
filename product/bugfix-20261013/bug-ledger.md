@@ -4,14 +4,24 @@
 
 本轮收件结束，历史反馈、修订与证据保留。后续新需求归入下一批；本轮发布阻塞按关联项处理。关闭依据：receipts/owner-fix-close-20261015.md。
 
+## 终态（0.1.5，终态同步 2026-10-15）
+
+- 功能状态：**bugfix-20261013 COMPLETED（规划验收通过，终态同步待复核）**；依据 `receipts/planning-review-release-015-01-passed.md`。
+- 阶段：总5阶段 **5/0/0**（范围与发布约定、建分支、持续修复、版本收敛与合并、UAT 发布收尾完成）。
+- 版本与迁移：应用/部署 **0.1.5**（Server 开发默认 0.1.5-SNAPSHOT、正式构建 `-Drevision=0.1.5`）；每个支持方言一个 `V0.1.5__baseline_seed.sql`，repeatable 边界按发布结果；库存量衔接为**受控、备份后的历史衔接**（备份与恢复入口见 `receipts/uat-015-01.md`，审计记录保留）。
+- 计数：功能登记 **48**（本列车新增0）、清单 **46/22/22=90**、ADV64/问题57 保持；不新增/不核销 P 编号。
+- 验证基线：**BF015-VB01—VB04**（Server 本次 351 类 2051/3/0/27 BUILD FAILURE，3 项既有环境/时序失败保留、bootstrap 子集 290 不重复相加；Web `b069620` 1534 通过；双方言种子直接内容一致与升级通道/回滚边界；UAT 0.1.5 可见验收）。
+- Git（回执时点值）：Server `8c25932`、Web `b069620` 已进入各自修复分支/develop/main 并推送；未建 tag/Release。
+- 唯一下一动作：Planner 复核 `receipts/terminal-sync-015-01.md`。
+
 ## 本次发布补充（Owner 2026-10-15）
 
-以下2项纳入0.1.5发布阶段，不改动原53项修复的关闭结论。执行与验收入口：ready/direction-release-015.md。
+以下2项纳入0.1.5发布阶段，不改动原53项修复的关闭结论。执行与验收入口：passed/direction-release-015.md。
 
 | ID | 要求 | 状态 |
 |---|---|---|
-| R015-01 | 登录页展示“粤ICP备2026093622号-1”，点击跳转https://beian.miit.gov.cn/ | 待执行 |
-| R015-02 | 系统前端发布到目标域名根路径，原根路径内容停止对外访问；备份原站点及配置，验证路由、资源与API兼容 | 待执行 |
+| R015-01 | 登录页展示“粤ICP备2026093622号-1”，点击跳转https://beian.miit.gov.cn/ | 已通过（规划验收，2026-10-15） |
+| R015-02 | 系统前端发布到目标域名根路径，原根路径内容停止对外访问；备份原站点及配置，验证路由、资源与API兼容 | 已通过（规划验收，2026-10-15） |
 
 ## 已关闭修复项
 
@@ -92,4 +102,4 @@
 - **修复循环**：Owner 反馈问题 → 本台账登记编号（BF20261013-NNN）→ Executor 在两仓 `codex/bugfix-20261013` 修复 → 修复完成即重启 Server（`mvn -pl sw-bootstrap -am package -DskipTests` 后 `java -jar`，Web vite 热更一般无需重启）→ 台账记实际结果与编号对应批次 → 该修复批次提交推送两仓 `codex/bugfix-20261013`，供 Owner 上位点验。
 - 编号与批次一一对应记录于上表"执行证据"列与各仓提交信息；发布集合冻结前所有修复累积在修复分支。
 
-唯一当前执行入口：ready/direction-release-015.md；开发声明：ready/development-declaration.md。下方修复循环仅保留历史操作记录。
+唯一当前执行入口：ready/direction-terminal-sync-015.md；发布验收见receipts/planning-review-release-015-01-passed.md；开发声明：ready/development-declaration.md。

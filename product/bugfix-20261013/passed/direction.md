@@ -1,6 +1,6 @@
 # 持续缺陷修复与 UAT 交付方向
 
-2026-10-13｜Planner｜L 级跟踪任务｜状态：IN_PROGRESS（2026-10-15 Owner关闭53项修复，进入0.1.5版本交付）。
+2026-10-13｜Planner｜L 级跟踪任务｜状态：PASSED（2026-10-15规划验收通过，终态同步待复核）。
 
 ## 目标与范围
 
@@ -29,7 +29,7 @@ Owner于2026-10-15追加R015-01（登录页备案号及工信部链接）、R015
 
 ## 开发声明
 
-本轮应用与发布版本为0.1.5；当前develop全部版本化主迁移及本轮新增迁移在进main前收敛为每方言一个 `V0.1.5__baseline_seed.sql`。开发新增文件采用 `V<yyyymmddhhmmss>__<功能需求>.sql`。完整约束见 development-declaration.md，裁决来源见 ../receipts/owner-release-policy-20261013.md。执行方落实适用工程文档、迁移和发布入口；UAT存量兼容仍须用实际结果验证。
+本轮应用与发布版本为0.1.5；当前develop全部版本化主迁移及本轮新增迁移在进main前收敛为每方言一个 `V0.1.5__baseline_seed.sql`。开发新增文件采用 `V<yyyymmddhhmmss>__<功能需求>.sql`。完整约束见 ../ready/development-declaration.md，裁决来源见 ../receipts/owner-release-policy-20261013.md。执行方落实适用工程文档、迁移和发布入口；UAT存量兼容仍须用实际结果验证。
 
 ## 验收边界与首次证据约定
 
@@ -46,11 +46,13 @@ Owner于2026-10-15追加R015-01（登录页备案号及工信部链接）、R015
 
 ## 总体阶段与下一动作
 
-总 5 阶段；已完成 3、进行中 1、未开始 1：
+总 5 阶段；已完成 4、进行中 1、未开始 0：
 1. 范围与发布约定：已完成（Owner直接裁决，开发声明已确定）。
 2. 修复分支建立：已完成（Planner审查01通过；根文档收尾另列）。
 3. 持续修复：已完成（Owner范围关闭53项，保留原始证据）。
-4. 版本种子收敛、develop/main 合并：进行中（后续方向已下发）。
-5. UAT 发布与当前状态收尾：未开始。
+4. 版本种子收敛、develop/main 合并：已完成（规划验收通过）。
+5. UAT 发布与当前状态收尾：进行中（部署及业务验证通过，剩终态同步）。
 
-唯一当前执行入口：direction-release-015.md。执行方完成0.1.5收敛、验证、依次合并及依赖满足后的UAT发布；Planner读取结果并复核。
+唯一当前执行入口：../ready/direction-terminal-sync-015.md。发布验收已通过，执行方完成终态同步后由Planner复核。
+
+当前裁决：发布目标PASSED；原执行要求保留追溯，唯一当前动作见 ../ready/direction-terminal-sync-015.md。总阶段4/1/0，终态同步前不称整体COMPLETED。
