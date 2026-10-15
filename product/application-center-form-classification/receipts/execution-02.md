@@ -140,6 +140,7 @@ SPECIFIED 命中用户的中心可见「报销应用」「全员应用」、空�
    旧代码切回路径由既有 P64 回退边界观察覆盖（旧迁移集对在役库 validate 必须失败，本轮复跑通过）；恢复路径为升级前备份 + 全库恢复（G4 实测）。
 5. **超管在用户端不短路应用范围**（沿用首轮语义，已在 G2 C2/H 实测体现）。
 6. 未执行：发布分支合并、tag/Release、部署、UAT 变更；未改 V94 旧库；未输出凭据；未做产物哈希。
+7. 环境清理（本轮精确对象）：修复前对照实例（8081）与其工作树已停止/移除；本轮自建的 dev 实例（8080，H2 内存库）与 vite（5173）已停止；g4 演练库与备份文件在演练内删除；未停止或改动用户既有服务。
 
 ---
 
@@ -147,11 +148,11 @@ SPECIFIED 命中用户的中心可见「报销应用」「全员应用」、空�
 
 | 仓 | 分支 | 提交 | 说明 |
 |---|---|---|---|
-| Smart-WorkFlow-aPaaS-server | `feature/application-center` | SERVER_SHA_02 | 应用范围闸门实现 + 三处接入 + 守卫测试 + G3/G4 验证（不含 Web 变更） |
-| Smart-WorkFlow | `develop-sw` | ROOT_SHA_02 | 本回执、本轮原件索引、knowledge 三入口 VERIFYING 同步、两仓 gitlink |
+| Smart-WorkFlow-aPaaS-server | `feature/application-center` | `ed54e10` | 应用范围闸门实现 + 三处接入 + 守卫测试 + G3/G4 验证（不含 Web 变更） |
+| Smart-WorkFlow | `develop-sw` | `8981922c` | 本回执、本轮原件索引、knowledge 三入口 VERIFYING 同步、两仓 gitlink |
 | Smart-WorkFlow-aPaaS-Web | — | 无变更 | 本轮零 Web 变更 |
 
-推送后回读：两仓 HEAD 与 origin 一致（见 §6 补记）。
+推送后回读：Server `ed54e10` = `origin/feature/application-center`，根 `8981922c` = `origin/develop-sw`（均一致）；Web 仓无变更。
 
 ---
 
