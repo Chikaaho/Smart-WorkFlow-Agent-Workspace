@@ -17,4 +17,8 @@
 
 ## Owner默认交付流程（2026-10-16）
 
-后续固定：①新需求评估→②执行并从develop拉新分支→③验收与信息同步→④开发分支→develop→main（develop内按发布要求压缩种子/版本收敛）→⑤发版，版本必须用户确认→⑥再次同步信息→⑦结束。只有Owner明确“不发版”，才在③结束；版本未给不等于不发版。已确认版本不重复询问，本轮0.1.6已确认。第三步业务功能完成不等于默认交付结束；维持风险分级与角色边界。完整裁决：`product/delivery-lifecycle/ready/direction-owner-delivery-lifecycle.md`。
+后续固定：①新需求评估→②执行并从develop拉新分支→③验收与信息同步→④开发分支→develop→main（develop内按发布要求压缩种子/版本收敛）→⑤发版，版本必须用户确认→⑥再次同步信息→⑦结束。只有Owner明确“不发版”，才在③结束；版本未给不等于不发版。已确认版本不重复询问，0.1.6为上轮已确认版本，本轮0.1.7已由Owner确认。第三步业务功能完成不等于默认交付结束；维持风险分级与角色边界。完整裁决：`product/delivery-lifecycle/ready/direction-owner-delivery-lifecycle.md`。
+
+## 0.1.7 Bug修复（Owner 2026-10-16）
+
+唯一清单 `product/0.1.7-bugfix/1.0.7bug.md`，发布版本0.1.7已确认。Owner与Executor直接反复修复/复测：Executor修复自验后填“是”，Owner填回归结果；修复验收由Owner完成。Owner宣布修复结束后，规划办理信息同步与发版确认，Executor承接合并、发布及发布后同步。细则见 `product/0.1.7-bugfix/ready/direction-bugfix-017.md`。
