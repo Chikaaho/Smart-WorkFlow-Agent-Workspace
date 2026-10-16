@@ -261,7 +261,7 @@ BUILD_EXIT=0
 |---|---|---|---|---|
 | Server | `main` = `develop` | `f6e1d2b`（= 发布提交 `e115857` + README/功能清单同步） | `git ls-remote origin develop main` 一致（均 `f6e1d2b`） | 干净；`feature/release-016-ci-fix` 已推送（`e115857`，发布前态） |
 | Web | `main` = `develop` | `55c3d39`（= 发布提交 `f91e8bf` + README 同步） | 一致（均 `55c3d39`） | 干净；feature 分支已推送（`f91e8bf`） |
-| 根（develop-sw） | `develop-sw` | 本批提交（见下"Git 回读"） | 推送后 `git ls-remote` 一致 | 仅本地 evidence（gitignored）与既有 `changed-files/` 未跟踪遗留（非本批产物） |
+| 根（develop-sw） | `develop-sw` | `a34f172a`（本批：回执 + 覆盖矩阵 + 当前入口同步 + 两仓 gitlink） | 推送后 `git ls-remote origin develop-sw` 回读一致 | 仅本地 evidence（gitignored）与既有 `changed-files/` 未跟踪遗留（非本批产物） |
 
 说明：语义 tag `0.1.6` 与发布制品对应**发布提交** `e115857`／`f91e8bf`；其后的文档同步提交（`f6e1d2b`／`55c3d39`）按既有通道同样触发 main CI（产生 `build-<sha>` 自动 Release），不影响 0.1.6 发布身份。
 
