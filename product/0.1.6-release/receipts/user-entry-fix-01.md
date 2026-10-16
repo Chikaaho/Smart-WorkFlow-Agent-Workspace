@@ -110,3 +110,16 @@ pnpm build     → exit 0（built in 2.77s）
 
 - 自验：四项复验条件 3 项在最终交付环境实测通过、1 项（普通用户）在隔离环境实测通过并登记 UAT 缺口；前端四门禁全绿；两仓未受影响；发布事实未改动。
 - 唯一下一动作：Owner/Planner 复核本回执与原型实现结果（UAT 已部署候选，可直接用中文界面从 /workspace 点击复验），并裁定是否需要新正式版本以纳入交付。
+
+## 8. 设计修正轮（Owner 第二次退回，2026-10-16 14:10）
+
+Owner 复核原型实现后指出两点：①应用中心不要侧边栏；②应用内侧边栏要全白底纹。已在同一分支修正并复验：
+
+| 项 | 改动 | 复验（本地隔离环境 + UAT 实测） |
+|---|---|---|
+| 应用中心页面不渲染全局深色侧栏（顶栏全宽） | `src/layouts/BasicLayout.vue`：`/form/app-center*` 与 `/form/app-form/` 与 /portal、设计器同类，不渲染侧栏 | 列表页与应用内页 `basic-layout__aside` 计数=0；**工作台回归仍=1**（其余页面侧栏不变） |
+| 应用内目录/表单侧栏全白底纹 | `src/modules/form/views/AppCenterDetail.vue`：`.app-tree` 背景 `#ffffff` | 计算样式 `rgb(255, 255, 255)`（本地与 UAT 一致） |
+
+- 提交：`e5aa357`（远端回读 `e5aa3575bd18ba81b0f749b4ca5d60e34e89a393`）；门禁 typecheck 0／lint 0 error（3 既有 warning）／test 1563 通过+3 跳过／build 0。
+- 候选与部署身份更新：zip sha256 `7963ade0768b08376677040205597d7d4cc7d0307ce802a687d8010cfa1dc3ce`；线上 `index.html` `858ffc22e7f341db1a183661b2d0fbc6ea166342c8765b6abb23849130af5ee5`，入口资源 `assets/index-BMLiWa_O.js`；本次替换前一候选（未新增备份），0.1.6 回滚入口仍为 `web.bak-entryfix-20261016_1352`；服务端与域名侧 index.html 哈希一致、健康 200、后端/库/标签制品未动。
+- 证据：`evidence/user-entry-fix/local-07-app-inner-no-global-sidebar-white-tree.png`、`uat-05-app-center-no-global-sidebar.png`、`uat-06-app-inner-white-tree-no-sidebar.png`（`uat-deploy.log` 含本轮上传/替换/reload 回读）。
