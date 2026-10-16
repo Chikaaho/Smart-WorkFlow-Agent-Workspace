@@ -256,6 +256,15 @@ STOP_TIMEOUT=30 ./stop.sh
   - `upgrade-to-0.1.5-from-0.1.1.postgresql.sql`：库停在旧链 0.1.1（0.1.3 发布态）——增量 DDL + 同一历史衔接。
   - 执行顺序：备份（§9.1）→ 停服 → 执行脚本 → 启动 → 核对日志 `Successfully validated …`、无 versioned 重放、`R__` 按需单次执行。
 - 衔接前建议先核对库内 `V0.1.0`/`V0.1.1` 的 checksum 与仓库档案一致，再执行脚本。
+- **0.1.6 起的主迁移形态**：每支持方言仍只有一条 versioned 迁移 `V0.1.6__baseline_seed.sql`
+  （= 0.1.5 种子与应用中心增量逐字节拼接，仅新增段头）+ `R__` 可重复迁移（10 支/方言，checksum 未变）；
+  开发新增迁移继续用 `V<yyyyMMddHHmmss>__<需求>.sql`。
+- **在役库衔接（0.1.6）**：仓库 `sw-bootstrap/src/main/resources/db/upgrade/0.1.6/` 提供两个一次性脚本
+  （**不在** Flyway 扫描路径内；单事务、恰好一次，重复执行显式失败）。按现场 `flyway_schema_history` 判定：
+  - `transition-history-to-0.1.6.<方言>.sql`：结构已达 0.1.6 终态（已应用应用中心增量，如开发库）——仅收敛历史记录；
+  - `upgrade-to-0.1.6-from-0.1.5.<方言>.sql`：已衔接 0.1.5、未应用应用中心增量（versioned 终点=单条 `V0.1.5`）——增量 DDL + 同一历史衔接。
+  - 顺序：备份（§9.1）→ 停服 → 执行脚本 → 替换服务端 jar 与前端静态（§8.1/§8.2）→ 启动 →
+    核对日志 `Successfully validated …`、零 versioned 重放、DB versioned 终点=单条 0.1.6（checksum `-1768731444`）。
 
 ---
 

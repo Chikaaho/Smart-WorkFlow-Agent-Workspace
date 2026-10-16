@@ -47,6 +47,8 @@
 
 历史失败诊断保留（不新建基线、不重复测试）：bootstrap 全量 **286/3/0/27 exit1**（Phase4 `Phase4PgStartWindowCrashTest` 既有失败=装置时序 + 审查03§49 守准入截止，按审查08 由截止内受控恢复替代接受）；两外部受控资产（broker 18830 / 对端 9778）缺失已隔离 3/0。**全部收敛不等于全部成功**；无效果且执行权终止可 EXPIRED、进行中/部分效果依权威结果；不写「bootstrap 全量通过」。
 
+> 当前状态指针（2026-10-16，0.1.6 发布轮）：两项测试的隔离设施已改由测试源承载（不再依赖仓外资产），且 `P63ReservationUnknownPgTest` 的旧归因已更正（主因=默认构建未装配 loopback provider）；见 `knowledge/known-issues.md` 顶部 2026-10-16 条目与 `product/0.1.6-release/receipts/release-016-02.md`。上述历史口径保留原时点。
+
 ---
 
 ## 4. 边界与留账

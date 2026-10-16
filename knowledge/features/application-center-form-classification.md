@@ -32,5 +32,5 @@
 
 - 唯一终态值清单见 `ready/direction-terminal-sync.md`；同步回执 `receipts/terminal-sync-01.md`（覆盖矩阵、逐字段目标/实际值、memory 压缩字节、Git 回读）。
 - 正式验证集合 AC-VB01—AC-VB04（Server form-biz 209/0/0/0 含 G2 一致性 7 项子集；Web `74d4be3` 四检沿用；H2/PG/承接迁移链；本地 dev 可见浏览器历史证据），定义与边界以终态方向为准，不与旧全仓失败相加；execution-03 服务层入口验证归 AC-VB01，不冒称浏览器新增结果。
-- 发布/部署：本功能未发布、未部署；0.1.5 与开发默认 0.1.5-SNAPSHOT 保持；无 tag/Release；技术验收通过（规划 PASSED）与 Owner 正常产品体验验收分开表述，不写 Owner 已体验通过。
+- 发布/部署：**已随 0.1.6 发布并部署到 UAT（2026-10-16）**——annotated tag 与公开 Release `0.1.6`（Server 资产 `bootstrap-0.1.6.jar`、Web 资产 `sw-web-dist-0.1.6.zip`）；UAT 由 0.1.5 就地升级（DB versioned 终点单条 0.1.6、零 versioned 重放、健康 200）并完成可见最小业务链（应用中心承接应用 → 表单数据列表 → 发起 → 审批 → Approved）；回执 `product/0.1.6-release/receipts/release-016-02.md`。技术验收通过（规划 PASSED）与 Owner 正常产品体验验收分开表述，不写 Owner 已体验通过。此前的"本功能未发布、未部署；0.1.5 保持、无 tag/Release"为终态同步时点的历史口径（见本文件历史行与终态回执）。
 - 功能不因同步文件存在自动成为最终 COMPLETED 确认；唯一下一动作=Planner 复核 `terminal-sync-01.md`。

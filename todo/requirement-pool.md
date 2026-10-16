@@ -2,9 +2,9 @@
 
 ## 当前发布：0.1.6-release
 
-2026-10-16｜L/IN_PROGRESS，新增业务功能0。总5阶段：①②③完成；④发布阻塞修复已落地（后端受控测试设施＋前端adapters接缝）、续发与发布待完成；⑤发布后同步待完成。按 `product/0.1.6-release/ready/direction-release-016-unblock.md`（Owner已批准下发，替代旧"等待裁决"路由；release-016-01为本轮前态、未受影响项不重跑）续发：验证通过→修复分支→develop→main→两仓CI发布（版本0.1.6）→成对语义tag→UAT交付（先核库形态选S1/S2脚本）→发布后同步；回执release-016-02.md。版本无需再确认；不跳过失败测试、不放宽边界规则。后端失败主因已更正（默认构建无loopback provider装配为主要因果、资产缺失为并因）。正式功能49、46/22/22=90、ADV64/57、P62延期/OFF保持。
+2026-10-16｜**发布完成（L，待 Planner 终审）**。总5阶段：①②③④⑤执行完毕。两仓 `feature/release-016-ci-fix`→develop→main 推送回读（Server `e115857`、Web `f91e8bf`）；CI 发布成功（Server sw-bootstrap 256/0/0/34、全仓汇总 2046/0/0/34、制品 version 0.1.6；Web 四检通过）；成对语义 tag/Release `0.1.6`；UAT 0.1.5→0.1.6 就地升级（S1 脚本）＋部署，DB 终点单条 0.1.6、零 versioned 重放、健康 200、可见最小业务链（应用中心→数据列表→发起→审批→Approved）。回执 `product/0.1.6-release/receipts/release-016-02.md`。正式功能49、46/22/22=90、ADV64/57、P62延期/OFF保持；发布/部署版本 0.1.6。**唯一下一动作：Planner 复核 release-016-02 与发布/部署事实并下发唯一终态清单（终审）**。
 
-本轮同时关闭既有待办 `todo/frontend-eslint-module-boundaries.md` 所指事项的处置：模块清单已由治理提交修正，暴露的 32 项跨模块违规按 `src/adapters/*` 接缝整改（不改配置、不放宽规则）。
+本轮同时关闭既有待办 `todo/frontend-eslint-module-boundaries.md` 所指事项的处置：模块清单已由治理提交修正，暴露的 32 项跨模块违规按 `src/adapters/*` 接缝整改（不改配置、不放宽规则；边界探针实测非法仍被检出）。
 
 
 应用中心已COMPLETED（规划已确认，2026-10-16），4阶段4/0/0；正式第49个功能，AC-VB01—04保持；主方向与终态方向均在passed。最终裁决：`product/application-center-form-classification/receipts/planning-final-review-terminal-sync-01-completed.md`。
