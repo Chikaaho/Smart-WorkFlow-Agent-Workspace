@@ -6,7 +6,7 @@
 
 本批为**机械同步**：按唯一终态值清单落实状态、归档、当前入口与授权内 Git 收尾；不重新实现、不重跑业务或发布验收、不发版、不重跑迁移、不计算产物哈希。
 
-结论：唯一终态值逐字段落实（§2）；覆盖矩阵 23 项按实际文件回读（§3）；归档完成（§4）；memory 18,745 B → **18,426 B**、单文件最大 3,960 B（§5）；三仓 Git 回读一致、本批普通推送成功（§6）；文档提交触发的 CI 结果与在途任务按受控生命周期记录（§6.3）。
+结论：唯一终态值逐字段落实（§2）；覆盖矩阵 23 项按实际文件回读（§3）；归档完成（§4）；memory 18,745 B → **18,426 B**、单文件最大 3,960 B（§5）；三仓 Git 回读一致、本批普通推送成功（§6）；文档提交触发的 CI 结果与在途任务按受控生命周期记录——上一批两项 success，本批 Server 文档提交的自动构建 run `38865882855` **失败于既有负载时序族测试（2 项，`P63ReservationBoundaryPgTest`）**，范围与发布制品无关、已如实登记，不影响 0.1.6 正式发布身份（§6.3）。
 
 进度：总 5 阶段 **5/0/0**（develop 合入、种子版本收敛、main 合入、0.1.6 正式发布及用户验收、最终同步）。
 
@@ -104,15 +104,18 @@
 
 Web 此后无新的 main 推送（最新 main run 即 `38863968213`）。
 
-### 6.3 本批触发的 CI 任务（受控生命周期）
+### 6.3 本批触发的 CI 任务（受控生命周期，最终结果）
 
-- Server 文档提交 `04a8e1a` 触发 `Build & Release (main)` run **`38865882855`**（创建 07:13:46Z，headSha `04a8e1a`）。
-- 任务身份/输入/完成条件：main 推送 → 全仓构建与测试 → 自动 `build-04a8e1a…` Release（历史语义）。取消策略：不做本地取消（远程 CI 任务，失败不阻塞本批文档事实）；清理：无本地进程。结果记录方式：单次有界回读，结果见 §6.4 补记或如实记为在途。
-- 失败若与发布制品无关将明确范围；不将文档提交的 CI 结果冒称发布验收，也不重复启动验证。
+- Server 文档提交 `04a8e1a` 触发 `Build & Release (main)` run **`38865882855`**（创建 07:13:46Z、完成 07:28:05Z，headSha `04a8e1a`）→ **failure**（completed）。任务身份/输入/完成条件：main 推送 → 全仓构建与测试 → 自动 `build-04a8e1a…` Release（历史语义）；取消/清理：远程 CI 任务，无本地进程需清理；观察方式：有界 `gh run watch`（首次因网络 EOF 中断，单次重试取得完成态）。
+- **失败范围（如实）**：`sw-bootstrap` 模块 `Tests run: 256, Failures: 2, Errors: 0, Skipped: 34`，BUILD FAILURE；两项失败同属 `com.sw.ck.bootstrap.p63.P63ReservationBoundaryPgTest`（该类 11 例耗时 80.78 s）——`concurrentCancelVsClaimHasExactlyOneWinner:487`（认领胜→调度侧状态，期望 `DISPATCHING/DISPATCHED`，实得 `EXPIRED`）与 `softDeleteActualTargetFailsAtDue:312`（期望 `PENDING`，实得 `EXPIRED`）。两者均属"2 秒级预约窗口/装置时序"族的时序敏感断言（该族已在 `knowledge/known-issues.md` 登记为既有负载时序特征，未改断言、未弱化）；本批仅改 `功能清单.md` 一行文档，未触任何 Java/测试代码；同一代码基在约 2.5 小时前的文档提交（`f6e1d2b`，run `38852912065`）中该模块为 **256/0/0/34** 通过，属**间歇性时序失败**，非本批引入的回归。
+- **影响范围**：该 run 失败使其自动 `build-04a8e1a…` Release 未创建（CI fail-closed）；**不影响 0.1.6 正式发布身份**——语义 tag/Release/正式资产仍取自 Server `e115857`（run `38849696705`）与 Web `e5aa357`（run `38862870660`），本批未改 tag/Release/资产、未部署。不重复启动验证；失败与发布制品无关，已如实登记，不称"全部成功"。
 
-### 6.4 提交后补记
+### 6.4 提交后补记（本批提交推送后回读）
 
-（本文件提交推送后回读补记，见本回执文末补记段。）
+- 根仓库：本批提交 `2140e2c0`（`docs(release): 0.1.6 发布终态同步——唯一值落实、方向归档与当前入口回读`），推送后回读 `origin/develop-sw` = `2140e2c0`、`develop-sw` 与远端 0/0；工作树仅剩 `changed-files/`（2026-10-06 既有未跟踪遗留，非本批）。根 gitlink：`Smart-WorkFlow-aPaaS-server` → `04a8e1a`（本批更新）、`Smart-WorkFlow-aPaaS-Web` → `a60a819`（未变）。
+- Server：`develop` = `main` = `origin/develop` = `origin/main` = `04a8e1a`，工作树干净（本批推送 `f6e1d2b..04a8e1a`）。
+- Web：`main` = `develop` = `origin/main` = `origin/develop` = `a60a819`，工作树干净（本批未改、未推送、未触发新 CI）。
+- 本补记段所在提交的回读值在提交后报告，不在文件内预填自身 SHA（`roles/executor.md` §4.5 第 5 条）。
 
 ## 7. 未完成项、限知与需 Planner 裁量项
 
@@ -120,7 +123,8 @@ Web 此后无新的 main 推送（最新 main run 即 `38863968213`）。
 2. **Planner 所属方向正文的时点表述**：`product/delivery-lifecycle/ready/direction-owner-delivery-lifecycle.md` §本轮应用仍写"继续执行 0.1.6 发布方向"（该发布现已完成并终态同步）；`system.md` §3.0 亦保留对 `ready/direction-release-016.md` 的规则引用（该文件已归档 `passed/`）。两者均为 Planner/Admin 所属文件，Executor 未改写，列此供裁量。
 3. **既有无关项**：`knowledge/features/p4-oa-personal-center-dual-dispatch.md`（2026-09-07）"阶段三终态同步回执待 Planner 复核确认"为历史遗留表述，与本批事实无关，未纳入本批修改范围。
 4. **限知（如实保留，不新增关闭条件）**：UAT 仅有超管身份，普通用户权限对照在隔离环境通过；应用中心表头/每行数量为本机个人偏好（不落服务端）。
-5. **非本批动作**：不发版、不改 tag/Release、不部署、不重跑迁移与业务验收、不计算产物哈希。
+5. **本批观察到的间歇性 CI 失败**：run `38865882855`（文档提交 `04a8e1a`）在 `P63ReservationBoundaryPgTest` 的 2 秒级预约窗口时序断言上失败 2 项（同族已在 `knowledge/known-issues.md` 登记；同代码基此前一轮为 256/0/0/34 通过）。该族可在未来发布构建中偶发失败，是否加固由 Planner/Admin 裁量；本批不重跑、不弱化断言、不属发布验收结论。
+6. **非本批动作**：不发版、不改 tag/Release、不部署、不重跑迁移与业务验收、不计算产物哈希。
 
 ## 8. 自验与终态
 
