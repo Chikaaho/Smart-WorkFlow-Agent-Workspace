@@ -1,6 +1,16 @@
 # 当前项目状态
 
-> **2026-10-16 0.1.6 发布终态同步：已执行，待 Planner 终态最终确认（L，发布任务，新增业务功能 0）——总 5 阶段 5/0/0（develop 合入、种子版本收敛、main 合入、0.1.6 正式发布及用户验收、最终同步）**——Executor 按 `product/0.1.6-release/ready/direction-release-016-terminal-sync.md`（唯一终态值清单；依据发布验收 PASSED `receipts/planning-review-release-016-03-passed.md`）机械同步，回执 `product/0.1.6-release/receipts/terminal-sync-01.md`。**发布任务＝COMPLETED（待 Planner 终态确认）**；**应用中心＝COMPLETED（规划已确认，2026-10-16）**、Owner 入口与布局验收 PASSED。
+> **2026-10-16 0.1.6 发布终态最终确认：COMPLETED（规划已确认，2026-10-16）——总 5 阶段 5/0/0（develop 合入、种子版本收敛、main 合入、0.1.6 正式发布及用户验收、最终同步）；本轮交付结束，无剩余发布动作，等待新需求（L，发布任务，新增业务功能 0）**——Planner 最终裁决 `product/0.1.6-release/receipts/planning-final-review-terminal-sync-01-completed.md`（已全文复核 `terminal-sync-01.md` 覆盖矩阵 23 项、memory 五件、需求池及方向实际位置）；Executor 按该裁决的机械传播授权完成 knowledge/交接/CHANGELOG/Server 功能清单等受影响入口同步，不重复验收、不再发版。
+>
+> **正式与部署版本**：两端均 **0.1.6**——Web 发布来源 `e5aa357`（Owner 授权同版本覆盖）、Server 来源 `e115857`；Server 开发默认 `0.1.6-SNAPSHOT`、Web 包版本 `0.1.6`；运行前端已是正式制品，UAT 后端与库未变。覆盖发布与部署时点事实见下条历史条目及 `release-016-02.md`/`release-016-03.md`。
+>
+> **验证集合 R016-VB01—04**：01＝`release-016-01` 双方言种子/存量升级；02＝`release-016-02` 后端设施及 CI **2046/0/0/34**（本地 304/3/0/27 与分类保留，不称本地全绿）；03＝`user-entry-fix-01` 最终 Web **1563 通过/3 跳过**、typecheck 0、lint 0 错误 3 警告、build 0 及 `release-016-03` CI `38862870660` 成功；04＝`release-016-02` 部署审批链及 `release-016-03` 正式覆盖与用户端入口验证。普通用户权限隔离环境通过；UAT 仅管理员范围如实保留，不新增关闭条件。
+>
+> **归档与限知**：五份方向（主发布、unblock、user-entry-fix、acceptance-republish、terminal-sync）全部归档 `product/0.1.6-release/passed/`。后续 Server 文档提交 CI `38865882855` 有 2 项既有预约窗口时序失败（`P63ReservationBoundaryPgTest`），与正式制品及本发布结论无关，已登记稳定性待办 `todo/p63-reservation-test-timing-stability.md`（不重跑、不重开、不称全部 CI 成功）。
+>
+> **应用中心 COMPLETED（规划已确认，2026-10-16）**、Owner 入口与布局验收 PASSED；活动业务功能＝无；功能 49、清单 46/22/22=90、ADV64/问题 57、P 编号与里程碑保持，P62 性能延期/OFF 保持。**唯一下一动作＝无（本轮交付结束，等待 Owner 新需求）**。
+>
+> 【历史条目，2026-10-16 被上条终态最终确认条目覆盖其"当前值"部分；终态同步执行与回读事实保留作时点追溯】> **2026-10-16 0.1.6 发布终态同步：已执行，待 Planner 终态最终确认（L，发布任务，新增业务功能 0）——总 5 阶段 5/0/0（develop 合入、种子版本收敛、main 合入、0.1.6 正式发布及用户验收、最终同步）**——Executor 按 `product/0.1.6-release/ready/direction-release-016-terminal-sync.md`（唯一终态值清单；依据发布验收 PASSED `receipts/planning-review-release-016-03-passed.md`）机械同步，回执 `product/0.1.6-release/receipts/terminal-sync-01.md`。**发布任务＝COMPLETED（待 Planner 终态确认）**；**应用中心＝COMPLETED（规划已确认，2026-10-16）**、Owner 入口与布局验收 PASSED。
 >
 > **正式与部署版本**：两端均 **0.1.6**——Web 正式来源 `e5aa357`（同版本覆盖后）、Server 来源 `e115857`；Server 开发默认 `0.1.6-SNAPSHOT`、Web 包版本 `0.1.6`；运行前端已是正式制品，UAT 后端与库未变。覆盖发布时点事实见下条历史条目与 `release-016-03.md`。
 >

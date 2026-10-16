@@ -34,9 +34,8 @@
 
 ## 本轮应用
 
-应用中心已完成第三步的验收和信息同步。Owner已确认本次版本0.1.6，继续执行 `product/0.1.6-release/ready/direction-release-016.md`，不重复询问版本、不重跑已完成验收。该发布方向负责develop→种子→main→发布→再次同步，实际完成后结束交付。
+0.1.6已完成用户验收、同版本覆盖发布、部署及终态同步，2026-10-16规划最终确认COMPLETED。裁决见product/0.1.6-release/receipts/planning-final-review-terminal-sync-01-completed.md；发布方向均归档product/0.1.6-release/passed/。本轮交付结束，后续需求继续按system.md§3.0七步流程执行。
 
-本文件记录产品交付裁决，已写入规划恢复入口；未修改system.md、角色文件或机器门禁，不声称宿主已自动强制执行七阶段。
 
 ## Admin治理补充请求：同步覆盖可执行发布配置（2026-10-16）
 
