@@ -1,6 +1,14 @@
 # 功能摘要
 
-- **application-center-form-classification（L）**：应用中心与表单分类统一；功能验收 PASSED（2026-10-16 规划审查03）、**COMPLETED（规划功能验收通过，终态同步待复核）**、**第49个正式功能**（=旧48+本功能1，无P编号）；4阶段 4/0/0；终态回执 `receipts/terminal-sync-01.md`；正式验证集合AC-VB01—04见终态方向；未发布部署。
+## 当前发布：0.1.6-release
+
+2026-10-16｜L/READY（发布任务，新增业务功能0）。Owner指定顺序：两仓feature/application-center→develop→压缩0.1.6种子→main→发版。方向：`product/0.1.6-release/ready/direction-release-016.md`。
+
+总5阶段：合入develop、种子压缩与版本收敛、合入main、0.1.6发版、当前信息同步与终审，发布前摘要为均未开始（0/0/5），实际在途状态待回传。唯一下一动作：Executor核实实际三仓发布输入并合入develop，依赖满足后连续推进；最终回执release-016-01。正式功能49、清单46/22/22=90、ADV64/57、P62延期/OFF保持。发布前最近核实版本为0.1.5，0.1.6实际发布/部署结果待回传；后续实际发布与部署分别回读。
+
+## 已完成功能与历史基线
+
+- **application-center-form-classification（L）**：应用中心与表单分类统一；功能验收 PASSED（2026-10-16 规划审查03）、**COMPLETED（规划已确认，2026-10-16）**、**第49个正式功能**（=旧48+本功能1，无P编号）；4阶段 4/0/0；终态回执 `receipts/terminal-sync-01.md`；正式验证集合AC-VB01—04见终态方向；未发布部署。
 - `p64-mes-advanced-orchestration`（P64，XL）：**COMPLETED（规划已确认，2026-10-13）**、第48个正式功能；三阶段PASSED（3/0/0）；终审02；范围边界=受控HTTP层级/异步对账观察非性能或物理承诺。
 - `p63-mes-workflow-foundations`（P63，L/P0）：**COMPLETED（规划已确认，2026-10-08）**；动态并行审批+一次性IoT预约下发；R01—R06核销、20/20、A01—A10、TS01—03通过。
 - `p62-lowcode-transaction-bpm-tiering`（P62，XL）：批准功能 **COMPLETED（规划已确认，2026-10-06）**；有限性能三轮未过/VERIFYING、Owner搁置为已知延期（2026-10-12；未来方向=带权参数配置、后台可配置每租户优先级）；新资源策略默认OFF；见 `todo/p62-lowcode-transaction-bpm-tiering.md` §性能已知延期。
@@ -8,3 +16,5 @@
 - `backend-architecture-optimization`（XL）：**COMPLETED（规划已确认，2026-09-26）**；BAO-01 DEFERRED+BAO-02 PARTIAL+8 COMPLETED。
 - `v0.1.0-oa-completion`（P60，XL/P0）：**COMPLETED（规划已确认，2026-09-15）**，整体14/14。
 - 更早（均COMPLETED，详见 `knowledge/features/`）：p53（第45个）、p21（第44个）、v0.0.2-oa（第43个）、p58—p45、sso-admin-config、p61、p59、minimal-closure等；I6五渠道与WECOM=Owner延期/未验证（P2待办）。
+
+2026-10-16恢复核对：治理七步规则已纳入system.md§3.0；0.1.6保留原五阶段和已确认版本。发布目录本次尚无执行回执，以上0/0/5为发布前摘要，实际在途进度待执行侧回传；只读请求 `search_task/release-016-progress-readback-20261016.md` 不阻断原发布流程。既有唯一实施入口仍为direction-release-016.md。

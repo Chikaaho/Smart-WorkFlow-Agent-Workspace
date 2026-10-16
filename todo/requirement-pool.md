@@ -1,10 +1,12 @@
 # 需求池（Requirement Pool）
 
-## 当前收尾：应用中心与表单分类统一（2026-10-16）
+## 当前发布：0.1.6-release
 
-2026-10-16：应用中心与表单分类统一，L｜功能验收 PASSED（规划审查03 `planning-review-03-passed.md`）、**COMPLETED（规划功能验收通过，终态同步待复核）**。终态同步回执 `product/application-center-form-classification/receipts/terminal-sync-01.md` 已提交；正式功能 **49**（=旧48+本功能1）；90项46/22/22=90、ADV64/57、P62延期/OFF保持；不新增/不核销P。
+2026-10-16｜L/IN_PROGRESS（发布任务，新增业务功能0；执行侧在途，**两仓发版真实阻塞**）。Owner指定顺序：两仓feature/application-center→develop→压缩0.1.6种子→main→发版。方向：`product/0.1.6-release/ready/direction-release-016.md`。
 
-总4阶段：**4/0/0**（最后一阶段待Planner复核确认）。唯一下一动作：Planner复核 terminal-sync-01。主方向已归档passed，终态方向ready待复核后归档。本功能未发布未部署；核心业务链可进入Owner正常产品验收，使用体验意见按后续迭代处理。
+实际进度（本次已核实）：①合入develop②种子/版本收敛③合入main 完成（两仓 develop→main 推送回读：Server `e1aa67d`、Web `3faaabd`；双方言 V0.1.6 单一种子+0.1.6 升级通道，checksum h2 `-1890939561`/pg `-1768731444`；版本收敛 0.1.6/0.1.6-SNAPSHOT；定向迁移测试全绿、模块 301/4/0/27、等价性双方言 IDENTICAL）。④**发版真实阻塞**：Server CI `38842087326` 失败（两项外部受控资产缺失既有失败→无 Release/制品）；Web CI `38841988314` 失败（lint 32 errors＝治理配置恢复边界覆盖暴露既有跨模块违规）；语义 tag `0.1.6` 未创建；UAT 未交付未变更（只读核验 0.1.5、DB 终点单条 0.1.5=S1）。⑤同步已落。唯一下一动作：Planner/Owner 裁决解除路径（Server：条件跳过两项／按 0.1.5 先例记录在案构建／提供 CI 资产；Web：Admin/Owner 整改边界违规或裁决口径）→重推 main、两仓 CI 发布、成对语义 tag、UAT 交付（S1 脚本）。回执 `product/0.1.6-release/receipts/release-016-01.md`；正式功能49、46/22/22=90、ADV64/57、P62延期/OFF保持；0.1.6 未发布未部署。
+
+应用中心已COMPLETED（规划已确认，2026-10-16），4阶段4/0/0；正式第49个功能，AC-VB01—04保持；主方向与终态方向均在passed。最终裁决：`product/application-center-form-classification/receipts/planning-final-review-terminal-sync-01-completed.md`。
 
 > 上轮终态记录（2026-10-15，bugfix-20261013 / 0.1.5 发布列车）：**COMPLETED（规划已确认）**——修复发布列车，非业务功能计数，功能登记 48 不变；BF001—053 共 53 项 Owner 关闭，R015-01/R015-02 规划 PASSED；总5阶段 5/0/0；90行✅46/🟦22/⬜22、ADV64、问题57 保持、不新增/不核销 P 编号；正式验证集合 {BF015-VB01—VB04}（值见 `product/bugfix-20261013/receipts/planning-review-release-015-01-passed.md`）；应用/部署 0.1.5（每支持方言一个 `V0.1.5__baseline_seed.sql`）；活动业务功能无、无 tag/Release（UAT 经运维手册直接部署）。该终态时点下一动作已由顶部应用中心规划接替。P62 性能延期/OFF 保持。
 

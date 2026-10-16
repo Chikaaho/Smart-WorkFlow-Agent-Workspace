@@ -1,10 +1,12 @@
 # 应用中心终态同步方向
 
-2026-10-16｜Planner｜READY
+2026-10-16｜Planner｜PASSED（终态最终复核01）
 
 依据receipts/planning-review-03-passed.md。本任务仅同步验收后的当前状态、归档与授权内Git收尾；不重新实现、测试、迁移或部署。
 
-## 唯一终态目标值
+> 当前结论：COMPLETED（规划已确认），4/0/0；见receipts/planning-final-review-terminal-sync-01-completed.md。以下清单保留原同步目标与当时下一动作，现接续0.1.6-release。
+
+## 原授权终态目标值
 
 | 字段 | 唯一目标值 |
 |---|---|
