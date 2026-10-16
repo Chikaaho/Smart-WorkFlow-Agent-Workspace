@@ -1,10 +1,10 @@
 # 需求池（Requirement Pool）
 
-## 当前验收：应用中心与表单分类统一（2026-10-16）
+## 当前收尾：应用中心与表单分类统一（2026-10-16）
 
-2026-10-16：应用中心与表单分类统一，L/**VERIFYING**。G1/G3/G4及G2普通接口通过锁定；G2剩余入口已由执行核实收口（execution-03，无新增旁路、零生产代码变更）。Owner明确权限是必须处理的基础核心问题；使用体验按正常产品验收流程迭代。
+2026-10-16：应用中心与表单分类统一，L｜功能验收 PASSED（规划审查03 `planning-review-03-passed.md`）、**COMPLETED（规划功能验收通过，终态同步待复核）**。终态同步回执 `product/application-center-form-classification/receipts/terminal-sync-01.md` 已提交；正式功能 **49**（=旧48+本功能1）；90项46/22/22=90、ADV64/57、P62延期/OFF保持；不新增/不核销P。
 
-总4阶段：现状探索、方向定稿完成；实施与验收进行中（G2权限收尾——执行侧完成）；终态同步未开始（2/1/1）。唯一下一动作：Planner复核 `product/application-center-form-classification/receipts/execution-03.md`。原等待Owner裁决已解除；本次依Owner明确指令续办，同项轮数不重置。48/90/ADV64/57与P62延期/OFF保持。
+总4阶段：**4/0/0**（最后一阶段待Planner复核确认）。唯一下一动作：Planner复核 terminal-sync-01。主方向已归档passed，终态方向ready待复核后归档。本功能未发布未部署；核心业务链可进入Owner正常产品验收，使用体验意见按后续迭代处理。
 
 > 上轮终态记录（2026-10-15，bugfix-20261013 / 0.1.5 发布列车）：**COMPLETED（规划已确认）**——修复发布列车，非业务功能计数，功能登记 48 不变；BF001—053 共 53 项 Owner 关闭，R015-01/R015-02 规划 PASSED；总5阶段 5/0/0；90行✅46/🟦22/⬜22、ADV64、问题57 保持、不新增/不核销 P 编号；正式验证集合 {BF015-VB01—VB04}（值见 `product/bugfix-20261013/receipts/planning-review-release-015-01-passed.md`）；应用/部署 0.1.5（每支持方言一个 `V0.1.5__baseline_seed.sql`）；活动业务功能无、无 tag/Release（UAT 经运维手册直接部署）。该终态时点下一动作已由顶部应用中心规划接替。P62 性能延期/OFF 保持。
 
@@ -19,7 +19,7 @@
 
 ## Owner 优先级覆盖
 
-**2026-10-13 当前规划**：P64 COMPLETED（规划已确认）；Ⅰ/ⅡPASSED（[阶段Ⅱ验收09](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-2-09-passed.md)）、ⅢPASSED，整体终态同步已执行、终态最终复核02已通过。阶段Ⅱ补证账本0。Owner 已裁决（2026-10-12）：P62 有限性能搁置为已知延期问题（不安排第四轮；未来方向=带权参数配置、后台可配置每租户优先级）；唯一下一动作：无，等待Owner下一目标（终审02机械传播已完成，P64终态已收口）。48/90/ADV64/57、P63/VB保持，两指针已认可，常规调整自主核实决定。Codex无Admin续办。
+**2026-10-13 时点排期（历史，已被顶部 2026-10-16 终态条目接替）**：P64 COMPLETED（规划已确认）；Ⅰ/ⅡPASSED（[阶段Ⅱ验收09](../product/p64-mes-advanced-orchestration/receipts/planning-review-phase-2-09-passed.md)）、ⅢPASSED，整体终态同步已执行、终态最终复核02已通过。阶段Ⅱ补证账本0。Owner 已裁决（2026-10-12）：P62 有限性能搁置为已知延期问题（不安排第四轮；未来方向=带权参数配置、后台可配置每租户优先级）；该时点下一动作：无，等待Owner下一目标（终审02机械传播已完成，P64终态已收口）。该时点48/90/ADV64/57、P63/VB保持，两指针已认可，常规调整自主核实决定。Codex无Admin续办。
 
 P62批准功能COMPLETED；有限性能VERIFYING，Owner已于2026-10-12搁置，G2/G3/G5历史剩余留账、新策略OFF。当前P64整体业务验收PASSED，终态同步已执行、终态最终复核02已通过；功能48、清单46/22/22=90、ADV64、问题57及正式基线保持。
 
