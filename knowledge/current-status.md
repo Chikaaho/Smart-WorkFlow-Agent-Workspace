@@ -1,6 +1,16 @@
 # 当前项目状态
 
-> **2026-10-16 0.1.6 验收修复同版本覆盖发布：已完成，待 Planner 终审（L，同版本覆盖发布，新增业务功能 0）——④同版本覆盖发布已执行、⑤最终同步终审待完成**——Owner 明确授权“还是 0.1.6，修复时验收过程中发现的异常，版本号覆盖”（方向 `product/0.1.6-release/ready/direction-release-016-acceptance-republish.md`；前置规划验收通过 `receipts/planning-review-user-entry-fix-01-passed.md`，验收对象 Web `e5aa357`）。**集成**：Web `feature/application-center-user-entry`（`c3cd686` 顶栏入口＋`f9798cd` 原型化应用中心＋`e5aa357` 去全局侧栏/白底目录栏）→ develop → main 普通推送，回读 develop＝main＝`e5aa357`；版本保持 0.1.6，无 0.1.7。
+> **2026-10-16 0.1.6 发布终态同步：已执行，待 Planner 终态最终确认（L，发布任务，新增业务功能 0）——总 5 阶段 5/0/0（develop 合入、种子版本收敛、main 合入、0.1.6 正式发布及用户验收、最终同步）**——Executor 按 `product/0.1.6-release/ready/direction-release-016-terminal-sync.md`（唯一终态值清单；依据发布验收 PASSED `receipts/planning-review-release-016-03-passed.md`）机械同步，回执 `product/0.1.6-release/receipts/terminal-sync-01.md`。**发布任务＝COMPLETED（待 Planner 终态确认）**；**应用中心＝COMPLETED（规划已确认，2026-10-16）**、Owner 入口与布局验收 PASSED。
+>
+> **正式与部署版本**：两端均 **0.1.6**——Web 正式来源 `e5aa357`（同版本覆盖后）、Server 来源 `e115857`；Server 开发默认 `0.1.6-SNAPSHOT`、Web 包版本 `0.1.6`；运行前端已是正式制品，UAT 后端与库未变。覆盖发布时点事实见下条历史条目与 `release-016-03.md`。
+>
+> **验证集合 R016-VB01—04**：01＝`release-016-01` 双方言种子/存量升级结果；02＝`release-016-02` 后端设施及 CI **2046/0/0/34**（本地 304/3/0/27 与分类保留，不称本地全绿）；03＝`user-entry-fix-01` 最终 Web **1563 通过/3 跳过**、typecheck 0、lint 0 错误 3 警告、build 0 及 `release-016-03` CI `38862870660` 成功；04＝`release-016-02` 部署审批链及 `release-016-03` 正式覆盖与用户端入口验证。普通用户权限隔离环境通过；UAT 仅管理员范围如实保留，不新增关闭条件。
+>
+> **归档与同步**：主发布、unblock、user-entry-fix、acceptance-republish 四个方向已移入 `product/0.1.6-release/passed/`；本终态方向按 `system.md` §5 留在 `ready/` 待 Planner 终审归档。knowledge/current-status、session-handoff、应用中心档案、memory 五件、需求池、CHANGELOG、两仓 README/功能清单已按同一事实回读（覆盖矩阵见 `terminal-sync-01.md`）。**活动业务功能＝无**；功能 49、清单 46/22/22=90、ADV64/问题 57、P 编号与里程碑保持，P62 性能延期/OFF 保持。
+>
+> **唯一下一动作＝Planner 复核 `product/0.1.6-release/receipts/terminal-sync-01.md` 并完成终态最终确认**；确认后本发布任务无剩余发布动作，等待新需求。限知（如实保留）：UAT 仅超管身份，普通用户对照在隔离环境通过。
+>
+> 【历史条目，2026-10-16 被上条 0.1.6 发布终态同步条目覆盖其"当前值"部分；覆盖发布、入口复验与恢复点事实保留作时点追溯】> **2026-10-16 0.1.6 验收修复同版本覆盖发布：已完成，待 Planner 终审（L，同版本覆盖发布，新增业务功能 0）——④同版本覆盖发布已执行、⑤最终同步终审待完成**——Owner 明确授权“还是 0.1.6，修复时验收过程中发现的异常，版本号覆盖”（方向 `product/0.1.6-release/ready/direction-release-016-acceptance-republish.md`；前置规划验收通过 `receipts/planning-review-user-entry-fix-01-passed.md`，验收对象 Web `e5aa357`）。**集成**：Web `feature/application-center-user-entry`（`c3cd686` 顶栏入口＋`f9798cd` 原型化应用中心＋`e5aa357` 去全局侧栏/白底目录栏）→ develop → main 普通推送，回读 develop＝main＝`e5aa357`；版本保持 0.1.6，无 0.1.7。
 >
 > **覆盖（Web 仓）**：annotated tag `0.1.6` 旧 `6b09d66d…`→`f91e8bf` 覆盖为新 `dc91b36c…`→`e5aa357`（force 更新，远端回读一致）；同名 Release `CH-aPaaS Web 0.1.6` 说明更新，正式资产 `sw-web-dist-0.1.6.zip` 同名替换为本次 CI 制品（1,335,126 B，sha256 `21687e55092926bd800a910ce801379d9ca84b5ccb285a907489ada95efad5f2`）；旧标签对象/Release 元数据/旧资产与恢复步骤保存在 `product/0.1.6-release/receipts/evidence/republish-016/`（`RECOVERY.md`）。**Server 保持既有 0.1.6 身份与制品**（tag `10ce7194…`→`e115857`、Release 与 `bootstrap-0.1.6.jar` 未动；前端修复不重建后端）。
 >

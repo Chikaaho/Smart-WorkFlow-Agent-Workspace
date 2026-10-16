@@ -2,11 +2,9 @@
 
 ## 当前发布：0.1.6-release
 
-2026-10-16｜L/VERIFYING（同版本覆盖发布已执行，待 Planner 终审）；用户端修复Owner验收PASSED保持。Owner 授权「还是 0.1.6，版本号覆盖」，方向 `product/0.1.6-release/ready/direction-release-016-acceptance-republish.md`；回执 `product/0.1.6-release/receipts/release-016-03.md`。
+2026-10-16｜L/VERIFYING，终态同步已执行、待Planner最终确认。两端正式及部署版本均0.1.6：Web正式来源e5aa357（同版本覆盖）、Server e115857；发布验收PASSED（planning-review-release-016-03-passed.md），最新执行回执terminal-sync-01。验证集合R016-VB01—04；主发布/unblock/user-entry-fix/acceptance-republish已归档passed/。
 
-执行结果：Web 修复（`c3cd686`＋`f9798cd`＋`e5aa357`）经 feature→develop→main 集成（回读 develop＝main＝`e5aa357`）；tag `0.1.6` 旧 `f91e8bf` 覆盖为新 `e5aa357`、同名 Release 资产替换为本次 CI 制品（sha256 `21687e55…`），恢复点 `receipts/evidence/republish-016/`；CI run `38862870660` success；UAT 前端收敛到该正式制品（线上 `index.html` `858ffc22…`、健康 200、备份 `web.bak-entryfix-20261016_1352` 可回滚）；Server 0.1.6 身份与制品未动。总5阶段：前三项历史完成；④同版本修复覆盖发布已完成；⑤最终同步终审未完成。
-
-唯一下一动作：Planner 复核 release-016-03 并完成最终同步终审（不要求 Owner 重复验收同一未变成果）；待办候选（不新增 P 编号）：UAT 受限测试身份授权、应用中心个人视图服务端持久化（表头/每行数量现为本机偏好）。功能49、46/22/22=90、ADV64/57、P62延期/OFF保持。
+总5阶段5/0/0：develop、种子版本、main、发布及用户验收、最终同步均完成。唯一下一动作：Planner复核product/0.1.6-release/receipts/terminal-sync-01.md完成终态最终确认；确认后无剩余发布动作，等待新需求。不再发版或重跑验收。功能49、46/22/22=90、ADV64/57、P62延期/OFF保持；活动业务功能无；普通用户权限隔离环境通过，UAT管理员范围如实保留。
 
 
 应用中心已COMPLETED（规划已确认，2026-10-16），4阶段4/0/0；正式第49个功能，AC-VB01—04保持；主方向与终态方向均在passed。最终裁决：`product/application-center-form-classification/receipts/planning-final-review-terminal-sync-01-completed.md`。
