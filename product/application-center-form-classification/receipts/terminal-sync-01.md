@@ -108,8 +108,9 @@
 
 ## 7. 补记（提交推送后回读）
 
-- 根批次提交：`<root-batch-sha>`（commit 后补记实际值）。
-- 回读：`git ls-remote origin develop-sw` 回读值与本地 HEAD 一致（补记）。
+- 根批次提交：`6fc7727c`（`docs(application-center): 终态同步回执 terminal-sync-01、唯一值49落实与 memory 压缩`；16 文件变更，含 gitlink Server `68fe73f`→`fd8b940`、主方向 `ready`→`passed` 归档、终态方向与 Planner 审查/裁决文档入库）。
+- 回读：`git ls-remote origin develop-sw` = `6fc7727c0d4e25cf875a5b5e4cff919c68539002`，与本地 HEAD 一致。
+- 结论：根与 Server 两批均推送回读一致；Web 本任务零变更（`74d4be3` = origin）。
 
 ## 8. 验证集合引用（AC-VB01—AC-VB04，来自终态方向，不重跑）
 
