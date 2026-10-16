@@ -2,9 +2,10 @@
 
 ## 当前发布：0.1.6-release
 
-2026-10-16｜L/IN_PROGRESS（发布任务，新增业务功能0；执行侧在途，**两仓发版真实阻塞**）。Owner指定顺序：两仓feature/application-center→develop→压缩0.1.6种子→main→发版。方向：`product/0.1.6-release/ready/direction-release-016.md`。
+2026-10-16｜L/IN_PROGRESS，新增业务功能0。总5阶段：①②③完成；④发布阻塞修复已落地（后端受控测试设施＋前端adapters接缝）、续发与发布待完成；⑤发布后同步待完成。按 `product/0.1.6-release/ready/direction-release-016-unblock.md`（Owner已批准下发，替代旧"等待裁决"路由；release-016-01为本轮前态、未受影响项不重跑）续发：验证通过→修复分支→develop→main→两仓CI发布（版本0.1.6）→成对语义tag→UAT交付（先核库形态选S1/S2脚本）→发布后同步；回执release-016-02.md。版本无需再确认；不跳过失败测试、不放宽边界规则。后端失败主因已更正（默认构建无loopback provider装配为主要因果、资产缺失为并因）。正式功能49、46/22/22=90、ADV64/57、P62延期/OFF保持。
 
-实际进度（本次已核实）：①合入develop②种子/版本收敛③合入main 完成（两仓 develop→main 推送回读：Server `e1aa67d`、Web `3faaabd`；双方言 V0.1.6 单一种子+0.1.6 升级通道，checksum h2 `-1890939561`/pg `-1768731444`；版本收敛 0.1.6/0.1.6-SNAPSHOT；定向迁移测试全绿、模块 301/4/0/27、等价性双方言 IDENTICAL）。④**发版真实阻塞**：Server CI `38842087326` 失败（两项外部受控资产缺失既有失败→无 Release/制品）；Web CI `38841988314` 失败（lint 32 errors＝治理配置恢复边界覆盖暴露既有跨模块违规）；语义 tag `0.1.6` 未创建；UAT 未交付未变更（只读核验 0.1.5、DB 终点单条 0.1.5=S1）。⑤同步已落。唯一下一动作：Planner/Owner 裁决解除路径（Server：条件跳过两项／按 0.1.5 先例记录在案构建／提供 CI 资产；Web：Admin/Owner 整改边界违规或裁决口径）→重推 main、两仓 CI 发布、成对语义 tag、UAT 交付（S1 脚本）。回执 `product/0.1.6-release/receipts/release-016-01.md`；正式功能49、46/22/22=90、ADV64/57、P62延期/OFF保持；0.1.6 未发布未部署。
+本轮同时关闭既有待办 `todo/frontend-eslint-module-boundaries.md` 所指事项的处置：模块清单已由治理提交修正，暴露的 32 项跨模块违规按 `src/adapters/*` 接缝整改（不改配置、不放宽规则）。
+
 
 应用中心已COMPLETED（规划已确认，2026-10-16），4阶段4/0/0；正式第49个功能，AC-VB01—04保持；主方向与终态方向均在passed。最终裁决：`product/application-center-form-classification/receipts/planning-final-review-terminal-sync-01-completed.md`。
 
