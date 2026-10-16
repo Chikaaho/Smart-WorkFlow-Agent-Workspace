@@ -5,7 +5,7 @@
 - 入口方向：`product/0.1.6-release/ready/direction-release-016-unblock.md`（Owner 已批准下发；主方向 `direction-release-016.md` 持续有效）
 - 前态回执：`product/0.1.6-release/receipts/release-016-01.md`（①—③完成、④两仓阻塞、⑤同步已落；本回执**更正**其对后端失败主因的归因，见 §2）
 - 证据目录（本机留存，gitignored）：`product/0.1.6-release/receipts/evidence/ci-fix/`
-- 总阶段（本发布任务 5 阶段）：完成 **3**（①②③）／进行中 **2**（④发版：阻塞已修复、续发与发布执行中；⑤发布后终审同步）／未开始 **0**
+- 总阶段（本发布任务 5 阶段）：完成 **5**（①合入develop②种子压缩与版本收敛③合入main④0.1.6发版〔含 CI 发布、成对 tag/Release 与 UAT 交付〕⑤当前信息同步）／进行中 **0**／未开始 **0**；提交待 **Planner 验收（VERIFYING）**，执行侧不预填最终 COMPLETED
 
 ## 1. 本轮做了什么（一句话）
 
