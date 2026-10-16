@@ -45,6 +45,7 @@
 3. **登录全链（经 5173 代理）**：`GET /api/auth/challenge` → `200`（返回验证码图、公钥、`keyVersion=v1`）→ 用该公钥 RSA-OAEP(SHA-256) 加密口令 → `POST /api/auth/login` → `200 code=0 msg=success` 且返回 token。即 Owner 可直接用浏览器登录。
 4. **前端可用**：`GET /` → `200`（SPA 外壳），`GET /src/main.ts` → `200`（vite 模块图正常转译，依赖齐备）。
 5. **库内种子现状（供 Owner 判断起点）**：`sys_user=1`（admin，系统管理员，tenant 0）、`sys_role=2`、`sys_dept=1`、`sys_menu=137`；**业务内容为空**（`sw_form_def=0`、`sw_form_app=0`、`sw_form_app_dir=0`、`sw_bpm_process_def=0`）——`local` 非 dev/test profile，骨架流程部署与绑定按设计跳过。
+6. **可见浏览器就绪实测（非正式验收，仅环境就绪）**：可见会话打开 `http://localhost:5173/` → 路由到 `/login?redirect=/`（登录页完整渲染：账号/密码/验证码、SSO 三段入口）→ 以 `admin` / `admin123` / 验证码 `1234` 真实登录 → 落 `http://localhost:5173/workspace`，工作台渲染正常（顶栏 工作台/我的门户/流程中心/应用中心、侧栏 工作台/待办任务/已办任务/我的草稿、"晚上好，系统管理员"、四项统计卡与 0 待办）。视口 1280×720，身份=系统管理员。截图本机留存 `C:\Users\hjxch\AppData\Local\Temp\sw-017\smoke-workspace-1280x720.png`（不入库）。本轮未主张正式流程验收，故不构成 `browser_evidence` 层级证据。
 
 ## 5. 状态与下一步
 
