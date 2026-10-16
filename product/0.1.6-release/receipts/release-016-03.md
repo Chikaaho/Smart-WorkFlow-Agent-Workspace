@@ -47,6 +47,8 @@ run 38862870660（workflow: Build & Release (main)，headSha e5aa357…）→ co
 ```
 - 正式产物身份回读：包版本 **0.1.6**、来源提交 `e5aa357`、分支 main；解包核对 `dist/index.html` sha256 `858ffc22…`、入口资源 `assets/index-BMLiWa_O.js`、419 个资源文件，与已验收候选构建内容一致。
 - 原始输出：`evidence/republish-016/ci-web-watch.log`（watch 退出 0）；已知 3 条既有 lint warning 不阻塞。
+- 发布后文档同步提交 `a60a819`（Web README 当前发布行补记覆盖来源）同线推送 develop＝main，按既有通道再次触发 main CI（run `38863968213`，属 `build-<sha>` 历史语义，**不影响 0.1.6 语义标签/Release/资产**；提交时该 run 仍在进行中，未等待）。
+- 工作区根仓指针：Web gitlink 对齐交付线 `a60a819`（根仓 `69efdc02` 推送回读一致）；发布提交本身仍为 `e5aa357`（语义 tag 目标，见 §3）。
 
 ## 5. 实际部署来源与最小入口验证（UAT）
 
@@ -89,5 +91,5 @@ run 38862870660（workflow: Build & Release (main)，headSha e5aa357…）→ co
 
 ## 8. 自验与唯一下一动作
 
-- 自验：覆盖操作与远端回读一致（标签目标=main 头=`e5aa357`，资产摘要=CI 制品）；正式制品版本 0.1.6、来源 `e5aa357`；UAT 部署来源=正式制品且入口点击链通过；Server 与库未动；memory 单文件 <5KB、总量 <20KB（实测 19,9xx B）。
+- 自验：覆盖操作与远端回读一致（标签目标=`e5aa357`，资产摘要=CI 制品 `21687e55…`）；正式制品版本 0.1.6、来源 `e5aa357`；UAT 部署来源=正式制品且入口点击链通过；Server 与库未动；memory 单文件 <5KB、总量 <20KB（实测 **18,590 B**，单文件最大 3,990 B）。
 - 唯一下一动作：Planner 复核本回执（覆盖结果、两端来源、部署与恢复点）并完成最终同步终审；不要求 Owner 重复验收同一未变成果。
