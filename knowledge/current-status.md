@@ -1,6 +1,16 @@
 # 当前项目状态
 
-> **2026-10-16 0.1.6 用户端应用中心入口修复：已实现并交付候选，待 Owner 复验与版本裁定（L，交付修复，新增业务功能 0）**——Owner 用户验收不通过（/workspace 顶栏无「应用中心」）后，Executor 按 `product/0.1.6-release/ready/direction-release-016-user-entry-fix.md` 完成：**根因**=用户端主导航默认派生清单缺项（非权限、非浏览器缓存、非部署版本——服务端不下发顶栏投影，门户分支只派生工作台/我的门户/流程中心）；**修复**（Web `feature/application-center-user-entry`，从 develop `55c3d39` 新建）`c3cd686` 顶栏常驻「应用中心」（与工作台/我的门户/流程中心同级，服务端投影下发时补齐并按目标去重，选中态覆盖应用内容与数据列表深链）＋ `f9798cd` 按 Owner 原型补应用中心列表页（搜索应用、每行应用数量设置）与应用内页（左侧目录/表单导航＋右侧内联数据列表＋表头设置＋分页）；远端回读 `f9798cd7510a429104167f69034cf84933b23823`。
+> **2026-10-16 0.1.6 验收修复同版本覆盖发布：已完成，待 Planner 终审（L，同版本覆盖发布，新增业务功能 0）——④同版本覆盖发布已执行、⑤最终同步终审待完成**——Owner 明确授权“还是 0.1.6，修复时验收过程中发现的异常，版本号覆盖”（方向 `product/0.1.6-release/ready/direction-release-016-acceptance-republish.md`；前置规划验收通过 `receipts/planning-review-user-entry-fix-01-passed.md`，验收对象 Web `e5aa357`）。**集成**：Web `feature/application-center-user-entry`（`c3cd686` 顶栏入口＋`f9798cd` 原型化应用中心＋`e5aa357` 去全局侧栏/白底目录栏）→ develop → main 普通推送，回读 develop＝main＝`e5aa357`；版本保持 0.1.6，无 0.1.7。
+>
+> **覆盖（Web 仓）**：annotated tag `0.1.6` 旧 `6b09d66d…`→`f91e8bf` 覆盖为新 `dc91b36c…`→`e5aa357`（force 更新，远端回读一致）；同名 Release `CH-aPaaS Web 0.1.6` 说明更新，正式资产 `sw-web-dist-0.1.6.zip` 同名替换为本次 CI 制品（1,335,126 B，sha256 `21687e55092926bd800a910ce801379d9ca84b5ccb285a907489ada95efad5f2`）；旧标签对象/Release 元数据/旧资产与恢复步骤保存在 `product/0.1.6-release/receipts/evidence/republish-016/`（`RECOVERY.md`）。**Server 保持既有 0.1.6 身份与制品**（tag `10ce7194…`→`e115857`、Release 与 `bootstrap-0.1.6.jar` 未动；前端修复不重建后端）。
+>
+> **CI 与制品身份**：run `38862870660`（`Build & Release (main)`，headSha `e5aa357`）**success**；自动 Release `build-e5aa357…` 制品 `dist-e5aa357….zip`，工作流采用版本 = 0.1.6；解包核对 `dist/index.html` sha256 `858ffc22…`、入口 `assets/index-BMLiWa_O.js`、419 资源，与已验收候选构建内容一致。
+>
+> **部署与入口复验**：UAT 前端由修复候选**收敛到该正式制品**（服务端资产回读 `21687e55…`；线上 `index.html` `858ffc22…`；`nginx -t`/reload OK；健康 200、域名 200）；可恢复备份 `web.bak-entryfix-20261016_1352`（覆盖前 0.1.6 制品内容）保留；后端与库未变（jar 仍含 `sw-common-0.1.6`、库内 versioned 终点单条 0.1.6）。可见浏览器从 `/workspace` 点击复验：顶栏 工作台/我的门户/流程中心/应用中心 → 应用中心列表（无全局侧栏、搜索与每行数量可用）→ 应用「测试」目录/表单（未命名表单、请假申请；目录栏全白底纹）＋真实记录 M-001，顶栏选中态保持；截图 `evidence/republish-016/uat-01-official-016-app-inner.png`。
+>
+> 回执 `product/0.1.6-release/receipts/release-016-03.md`；CHANGELOG/Web README/功能清单等当前入口已同步。功能 49、46/22/22=90、ADV64/57、P62 延期/OFF 保持。**唯一下一动作＝Planner 复核 release-016-03 并完成最终同步终审**（不要求 Owner 重复验收同一未变成果）；限知：UAT 仅超管身份，普通用户对照需授权建受限账号（隔离环境已通过）。
+>
+> 【历史条目，2026-10-16 被上条同版本覆盖发布条目覆盖其"当前值"部分；入口修复与设计修正过程保留作时点追溯】> **2026-10-16 0.1.6 用户端应用中心入口修复：已实现并交付候选，待 Owner 复验与版本裁定（L，交付修复，新增业务功能 0）**——Owner 用户验收不通过（/workspace 顶栏无「应用中心」）后，Executor 按 `product/0.1.6-release/ready/direction-release-016-user-entry-fix.md` 完成：**根因**=用户端主导航默认派生清单缺项（非权限、非浏览器缓存、非部署版本——服务端不下发顶栏投影，门户分支只派生工作台/我的门户/流程中心）；**修复**（Web `feature/application-center-user-entry`，从 develop `55c3d39` 新建）`c3cd686` 顶栏常驻「应用中心」（与工作台/我的门户/流程中心同级，服务端投影下发时补齐并按目标去重，选中态覆盖应用内容与数据列表深链）＋ `f9798cd` 按 Owner 原型补应用中心列表页（搜索应用、每行应用数量设置）与应用内页（左侧目录/表单导航＋右侧内联数据列表＋表头设置＋分页）；远端回读 `f9798cd7510a429104167f69034cf84933b23823`。
 >
 > **复验（四项条件）**：本地隔离环境（隔离 PG 库 `sw_entry_fix`，Flyway 终点单条 0.1.6；新建应用/目录/表单/记录＋临时普通用户 `entryvisitor`，数据范围=仅本人、无 `form:app:manage`）实测——顶栏点击进入与刷新保持、应用→目录/表单→数据列表与既有数据一致、普通用户入口可用且范围外应用深链被拒（「应用不存在或不可见」）、数据仅本人可见；**最终交付环境 chikaho.cn 实测**——中文顶栏 工作台/我的门户/流程中心/应用中心、点击进入应用中心、应用「测试」目录/表单导航＋真实记录（未命名表单 M-001；请假申请 回家，886）、`?formKey=` 刷新保持、返回应用中心；证据 `product/0.1.6-release/receipts/evidence/user-entry-fix/`（local-01…07、uat-01…06）。前端四门禁：typecheck 0／lint 0 error（3 既有 warning）／test 1563 通过+3 跳过／build 0。
 >

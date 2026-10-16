@@ -81,3 +81,7 @@ Owner已批准两侧CI修复并要求下发，下一动作统一按 `direction-r
 ## Owner验收退回（2026-10-16）
 
 0.1.6已发布部署，用户端主导航缺应用中心，整体交付未通过。当前唯一动作以direction-release-016-user-entry-fix.md为准；修复入口与用户端连续导航，原发布和无关已过结果保留。
+
+## 最新Owner发布裁决（2026-10-16）
+
+修复验收已通过，Owner明确继续0.1.6并覆盖版本。当前执行以direction-release-016-acceptance-republish.md为准；此前本次发布不得覆盖或等待新版本确认的限制已被该明确授权取代。

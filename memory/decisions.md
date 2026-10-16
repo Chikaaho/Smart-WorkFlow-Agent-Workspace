@@ -6,13 +6,9 @@
 
 ## 当前发布：0.1.6-release
 
-2026-10-16｜L/VERIFYING（用户端交付验收重开）。0.1.6已发布并部署（发布事实保留）；Owner验收不通过：/workspace顶栏无应用中心。根因=用户端主导航默认派生缺项（非权限/缓存/版本）。Web `feature/application-center-user-entry`（develop新建）`c3cd686` 顶栏常驻应用中心＋`f9798cd` 原型页（列表搜索/每行数量、应用内目录树＋内联数据列表）＋`e5aa357` 去全局侧栏/白底目录栏；回读 `e5aa357…`；门禁 0／0e3w／1563+3／0。
+2026-10-16｜L/IN_PROGRESS；用户端修复Owner验收PASSED保持。Owner明确本次验收异常仍用0.1.6，授权覆盖该版本标签/Release及受影响制品，无需新版本确认。方向：product/0.1.6-release/ready/direction-release-016-acceptance-republish.md。
 
-复验：隔离库 sw_entry_fix＋临时普通用户（仅本人、无后台管理权限）四项；UAT chikaho.cn 中文顶栏四项、点击进入、目录/表单＋真实记录、刷新保持、无全局侧栏且目录栏白底；UAT 前端=修复候选（`858ffc22…`，备份 `web.bak-entryfix-20261016_1352` 可回滚），后端仍 0.1.6、库/健康未变、标签制品未动。
-
-唯一下一动作：Owner/Planner 复核 `product/0.1.6-release/receipts/user-entry-fix-01.md` 并裁定是否需新正式版本；UAT 普通身份对照需授权。功能49、46/22/22、ADV64/57、P62延期/OFF保持。
-
-本轮决策：入口属前端主导航职责（不以后台菜单/侧栏替代、不要求后台表单管理权限）；修复走普通分支推送、不覆盖已公开 0.1.6 标签制品；UAT 前端以可恢复通道部署候选并保留回滚；新版本由 Owner 裁定。
+唯一下一动作：Executor保留旧0.1.6发布恢复点，将已验收Web e5aa357修复经develop→main集成，CI通过后更新0.1.6正式标签/Release/制品及既有部署，knowledge-first同步后提交release-016-03.md。仅覆盖本次0.1.6所需对象，不强推develop/main；无变化Server保持0.1.6。最近已知运行=后端0.1.6＋前端修复候选，正式覆盖尚待执行回执。总5阶段：前三项历史完成；④同版本修复覆盖发布进行中；⑤最终同步终审未完成。功能49、46/22/22=90、ADV64/57、P62延期/OFF保持。
 
 
 ## 已完成功能与历史基线

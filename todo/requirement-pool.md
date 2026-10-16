@@ -2,13 +2,11 @@
 
 ## 当前发布：0.1.6-release
 
-2026-10-16｜L/VERIFYING（用户端交付验收重开）。0.1.6已发布并部署（release-016-02，发布事实保留）；Owner验收不通过：/workspace顶栏无应用中心。根因=用户端主导航默认派生缺项（非权限/缓存/版本）；Web `feature/application-center-user-entry`（develop新建）`c3cd686` 顶栏常驻应用中心 + `f9798cd` 按原型补列表搜索/每行数量与应用内目录表单导航+内联数据列表；回读 `f9798cd…`；门禁 0／0e3w／1563+3／0。
+2026-10-16｜L/VERIFYING（同版本覆盖发布已执行，待 Planner 终审）；用户端修复Owner验收PASSED保持。Owner 授权「还是 0.1.6，版本号覆盖」，方向 `product/0.1.6-release/ready/direction-release-016-acceptance-republish.md`；回执 `product/0.1.6-release/receipts/release-016-03.md`。
 
-复验：本地隔离库 sw_entry_fix + 临时普通用户（仅本人、无后台管理权限）四项实测；UAT chikaho.cn 中文顶栏四项、点击进入、应用「测试」目录/表单+真实记录、`?formKey=` 刷新保持。UAT 前端=修复候选（`index.html` `8853312f…`，备份 `web.bak-entryfix-20261016_1352` 可回滚）；后端仍 0.1.6 正式制品，库/健康未变，0.1.6 标签制品未动。
+执行结果：Web 修复（`c3cd686`＋`f9798cd`＋`e5aa357`）经 feature→develop→main 集成（回读 develop＝main＝`e5aa357`）；tag `0.1.6` 旧 `f91e8bf` 覆盖为新 `e5aa357`、同名 Release 资产替换为本次 CI 制品（sha256 `21687e55…`），恢复点 `receipts/evidence/republish-016/`；CI run `38862870660` success；UAT 前端收敛到该正式制品（线上 `index.html` `858ffc22…`、健康 200、备份 `web.bak-entryfix-20261016_1352` 可回滚）；Server 0.1.6 身份与制品未动。总5阶段：前三项历史完成；④同版本修复覆盖发布已完成；⑤最终同步终审未完成。
 
-总5阶段：①②③完成；④发布事实保留、用户端交付验收重开；⑤终审未完成。唯一下一动作：Owner/Planner 复核 `product/0.1.6-release/receipts/user-entry-fix-01.md` 与原型实现（UAT 可直接点击复验）并裁定是否需新正式版本；UAT 普通身份对照需授权建受限账号。功能49、46/22/22=90、ADV64/57、P62延期/OFF保持。
-
-待办候选（不新增 P 编号）：①新正式版本裁定（0.1.6 正式制品不含本轮前端修复，是否出 0.1.7 由 Owner 确认）；②UAT 受限测试身份授权（该环境仅超管身份，普通用户口径已在隔离环境验证）；③应用中心个人视图服务端持久化（表头设置/每行数量现为本机偏好）——均待 Owner/Planner 决定是否投入。
+唯一下一动作：Planner 复核 release-016-03 并完成最终同步终审（不要求 Owner 重复验收同一未变成果）；待办候选（不新增 P 编号）：UAT 受限测试身份授权、应用中心个人视图服务端持久化（表头/每行数量现为本机偏好）。功能49、46/22/22=90、ADV64/57、P62延期/OFF保持。
 
 
 应用中心已COMPLETED（规划已确认，2026-10-16），4阶段4/0/0；正式第49个功能，AC-VB01—04保持；主方向与终态方向均在passed。最终裁决：`product/application-center-form-classification/receipts/planning-final-review-terminal-sync-01-completed.md`。

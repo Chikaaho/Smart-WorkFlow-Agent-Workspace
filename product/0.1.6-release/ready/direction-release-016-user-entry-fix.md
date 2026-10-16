@@ -30,3 +30,11 @@ Executor核实当前前端顶栏、路由布局、菜单权限及部署版本，
 提交product/0.1.6-release/receipts/user-entry-fix-01.md，说明根因、改动、上述四项实际结果、构建与部署来源、剩余动作。原release-016-02.md保留历史原文；先更新knowledge权威状态，再按已授权范围同步memory/todo/应用中心当前档及交接：0.1.6已发布部署，用户验收失败，入口修复待完成。撤销“仅剩Planner终审”的当前路由。memory每文件<5KB、总量<20KB。
 
 唯一下一动作：Executor复现/workspace缺失入口，定位并修复用户端主导航与到应用中心的完整路径，提交候选验证结果；后续版本确认仅在实际需要新正式版本时处理。
+
+## 当前裁决
+
+Owner于2026-10-16明确验收通过，见receipts/planning-review-user-entry-fix-01-passed.md。入口与设计修复已通过；后续按该审查记录同步并完成修复集成和正式发布，版本待确认。
+
+## 最新Owner发布裁决（2026-10-16）
+
+修复验收已通过，Owner明确继续0.1.6并覆盖版本。当前执行以direction-release-016-acceptance-republish.md为准；此前本次发布不得覆盖或等待新版本确认的限制已被该明确授权取代。
