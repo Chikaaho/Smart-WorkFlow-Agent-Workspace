@@ -1,6 +1,12 @@
 # 当前项目状态
 
-> **2026-10-16 0.1.6 发布与部署：已完成（L，发布任务，新增业务功能 0）——5 阶段 ①②③④⑤ 全部执行完毕，待 Planner 终审**——Executor 按 `product/0.1.6-release/ready/direction-release-016-unblock.md`（主方向 `direction-release-016.md`）完成两侧阻塞修复、续发、发版与环境交付；回执 `product/0.1.6-release/receipts/release-016-02.md`（U016-A—D 与原 R016-01—06 口径）。
+> **2026-10-16 0.1.6 用户端应用中心入口修复：已实现并交付候选，待 Owner 复验与版本裁定（L，交付修复，新增业务功能 0）**——Owner 用户验收不通过（/workspace 顶栏无「应用中心」）后，Executor 按 `product/0.1.6-release/ready/direction-release-016-user-entry-fix.md` 完成：**根因**=用户端主导航默认派生清单缺项（非权限、非浏览器缓存、非部署版本——服务端不下发顶栏投影，门户分支只派生工作台/我的门户/流程中心）；**修复**（Web `feature/application-center-user-entry`，从 develop `55c3d39` 新建）`c3cd686` 顶栏常驻「应用中心」（与工作台/我的门户/流程中心同级，服务端投影下发时补齐并按目标去重，选中态覆盖应用内容与数据列表深链）＋ `f9798cd` 按 Owner 原型补应用中心列表页（搜索应用、每行应用数量设置）与应用内页（左侧目录/表单导航＋右侧内联数据列表＋表头设置＋分页）；远端回读 `f9798cd7510a429104167f69034cf84933b23823`。
+>
+> **复验（四项条件）**：本地隔离环境（隔离 PG 库 `sw_entry_fix`，Flyway 终点单条 0.1.6；新建应用/目录/表单/记录＋临时普通用户 `entryvisitor`，数据范围=仅本人、无 `form:app:manage`）实测——顶栏点击进入与刷新保持、应用→目录/表单→数据列表与既有数据一致、普通用户入口可用且范围外应用深链被拒（「应用不存在或不可见」）、数据仅本人可见；**最终交付环境 chikaho.cn 实测**——中文顶栏 工作台/我的门户/流程中心/应用中心、点击进入应用中心、应用「测试」目录/表单导航＋真实记录（未命名表单 M-001；请假申请 回家，886）、`?formKey=` 刷新保持、返回应用中心；证据 `product/0.1.6-release/receipts/evidence/user-entry-fix/`（local-01…06、uat-01…04）。前端四门禁：typecheck 0／lint 0 error（3 既有 warning）／test 1563 通过+3 跳过／build 0。
+>
+> **部署与版本**：UAT 前端已按运维手册 §8.2 可恢复通道替换为修复候选（zip sha256 `d8f1c591…`，线上 `index.html` `8853312f…`，备份 `web.bak-entryfix-20261016_1352` 即 0.1.6 制品内容，可一键回滚）；后端 `bootstrap.jar` 仍含 `sw-common-0.1.6`、库内 versioned 终点单条 0.1.6、健康 200、0.1.6 tag/Release/制品未覆盖未移动；当前 UAT 事实＝后端 0.1.6 正式制品＋前端交付修复候选（身份分列）。是否新正式版本（如 0.1.7）以纳入正式制品**待 Owner 确认**。回执 `product/0.1.6-release/receipts/user-entry-fix-01.md`。总 5 阶段：①②③完成；④发布事实保留、用户端交付验收按本轮结果重开；⑤终审未完成。功能 49、46/22/22=90、ADV64/57、P62 延期/OFF 保持。**唯一下一动作＝Owner/Planner 复核 user-entry-fix-01 与原型实现（UAT 可直接点击复验）并裁定版本**；UAT 普通身份对照需授权建受限测试账号（该环境仅有超管身份，未以管理员视角冒充）。
+>
+> 【历史条目，2026-10-16 被上条用户端入口修复条目覆盖其"当前值"部分；发布/部署事实保留作时点追溯】> **2026-10-16 0.1.6 发布与部署：已完成（L，发布任务，新增业务功能 0）——5 阶段 ①②③④⑤ 全部执行完毕，待 Planner 终审**——Executor 按 `product/0.1.6-release/ready/direction-release-016-unblock.md`（主方向 `direction-release-016.md`）完成两侧阻塞修复、续发、发版与环境交付；回执 `product/0.1.6-release/receipts/release-016-02.md`（U016-A—D 与原 R016-01—06 口径）。
 >
 > **修复与集成（U016-A/B/C）**：Server `feature/release-016-ci-fix`→develop→main 推送回读 **`e115857`**；Web 同路径回读 **`f91e8bf`**。后端两项门禁测试改由**测试源承载的受控设施**（`P63ControlledMqttBroker`／`P63ControlledDevicePeer`／`P63LoopbackPeerTransport`，协议就绪探测＋接收记录＋有界清理，缺设施显式失败），并更正旧归因（默认/发布构建未装配 loopback provider 是主因、外部资产缺失为并因）；前端 32 项跨模块违规经 **7 个 `src/adapters/*` 接缝**整改（未改 ESLint 配置、未放宽规则，边界探针实测"非法仍被检出、合法可用"）。
 >

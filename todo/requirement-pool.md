@@ -2,9 +2,13 @@
 
 ## 当前发布：0.1.6-release
 
-2026-10-16｜**发布完成（L，待 Planner 终审）**。总5阶段：①②③④⑤执行完毕。两仓 `feature/release-016-ci-fix`→develop→main 推送回读（Server `e115857`、Web `f91e8bf`）；CI 发布成功（Server sw-bootstrap 256/0/0/34、全仓汇总 2046/0/0/34、制品 version 0.1.6；Web 四检通过）；成对语义 tag/Release `0.1.6`；UAT 0.1.5→0.1.6 就地升级（S1 脚本）＋部署，DB 终点单条 0.1.6、零 versioned 重放、健康 200、可见最小业务链（应用中心→数据列表→发起→审批→Approved）。回执 `product/0.1.6-release/receipts/release-016-02.md`。正式功能49、46/22/22=90、ADV64/57、P62延期/OFF保持；发布/部署版本 0.1.6。**唯一下一动作：Planner 复核 release-016-02 与发布/部署事实并下发唯一终态清单（终审）**。
+2026-10-16｜L/VERIFYING（用户端交付验收重开）。0.1.6已发布并部署（release-016-02，发布事实保留）；Owner验收不通过：/workspace顶栏无应用中心。根因=用户端主导航默认派生缺项（非权限/缓存/版本）；Web `feature/application-center-user-entry`（develop新建）`c3cd686` 顶栏常驻应用中心 + `f9798cd` 按原型补列表搜索/每行数量与应用内目录表单导航+内联数据列表；回读 `f9798cd…`；门禁 0／0e3w／1563+3／0。
 
-本轮同时关闭既有待办 `todo/frontend-eslint-module-boundaries.md` 所指事项的处置：模块清单已由治理提交修正，暴露的 32 项跨模块违规按 `src/adapters/*` 接缝整改（不改配置、不放宽规则；边界探针实测非法仍被检出）。
+复验：本地隔离库 sw_entry_fix + 临时普通用户（仅本人、无后台管理权限）四项实测；UAT chikaho.cn 中文顶栏四项、点击进入、应用「测试」目录/表单+真实记录、`?formKey=` 刷新保持。UAT 前端=修复候选（`index.html` `8853312f…`，备份 `web.bak-entryfix-20261016_1352` 可回滚）；后端仍 0.1.6 正式制品，库/健康未变，0.1.6 标签制品未动。
+
+总5阶段：①②③完成；④发布事实保留、用户端交付验收重开；⑤终审未完成。唯一下一动作：Owner/Planner 复核 `product/0.1.6-release/receipts/user-entry-fix-01.md` 与原型实现（UAT 可直接点击复验）并裁定是否需新正式版本；UAT 普通身份对照需授权建受限账号。功能49、46/22/22=90、ADV64/57、P62延期/OFF保持。
+
+待办候选（不新增 P 编号）：①新正式版本裁定（0.1.6 正式制品不含本轮前端修复，是否出 0.1.7 由 Owner 确认）；②UAT 受限测试身份授权（该环境仅超管身份，普通用户口径已在隔离环境验证）；③应用中心个人视图服务端持久化（表头设置/每行数量现为本机偏好）——均待 Owner/Planner 决定是否投入。
 
 
 应用中心已COMPLETED（规划已确认，2026-10-16），4阶段4/0/0；正式第49个功能，AC-VB01—04保持；主方向与终态方向均在passed。最终裁决：`product/application-center-form-classification/receipts/planning-final-review-terminal-sync-01-completed.md`。
