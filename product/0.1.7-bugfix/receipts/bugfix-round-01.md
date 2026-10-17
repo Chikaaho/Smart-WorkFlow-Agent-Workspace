@@ -524,3 +524,20 @@ Owner 提交补充批 22–26（全局返回/表头设置/按钮位/顶部噪音
 - 口径备注：带「新建」等第三按钮的页面（角色/字典数据/工具管理等）动作组 3 个按钮均分 3 格（每只约 1 格）；仅查询/重置的页面严格 1.5 格。
 - 进度：0.1.7 回归批次台账 #42 已交付；进行中 0、未开始 0（#43 按钮文案瘦身随后单独批次交付）。
 - Git：Web（本轮提交）、workspace（台账 #42 + 本增补）。
+
+
+---
+
+# 增补 27：#43 按钮文案瘦身（全站 ≤4 字）
+
+- Owner 反馈（截图：「新建内部工具」在 73px 按钮里溢出/截断）：本轮临时插入治理对象——按钮文本一律瘦身到 4 字以内。
+- 盘点口径：脚本扫描全部 `.vue` 的 `<el-button>` 与原生 `<button>`（含嵌套与三元表达式），把 `t('key')` 解析成 zh 文案，列出可见文案 > 4 字的按钮；再用 52 个菜单路由做浏览器全站扫描复核。
+- 实现（Web）：
+  - 直接改 i18n 值（21 处，zh/en 同步）：`component.addRow` 添加行、`agent.viewExecution` 查看详情、`form.restoreDraft` 恢复、`form.addCondition` 加条件、`form.backToList` 返回、`form.relatedProcessNumberSetting`→编号设置、`form.publishNewVersion` 发布、`form.backToMyDrafts` 返回、`txnAction.c1Protection`→数据保护、`notify.batchResultGoInbox`→去收件箱、`system.backToDictTypeList` 返回、`system.newSubDept` 新建、`system.manageDictItems`→字典项、`workspace.manageFavorites`→常用事项、`workflow.batchDisapprove`→不通过、`workflow.backTo*`（3 处）返回、`workflow.openMessageRecords`→消息记录、`workflow.viewDiagram`→流程图、`workflow.themeRuleAction`→编号设置、`view.errorGoBack` 返回、`view.errorBackToWorkspace` 工作台、`auth.signingIn` 登录中。
+  - 「标题与按钮共用同一键」的 8 个按钮改为 `t('common.create')`（对话框标题保留长文案）：新建内部/外部工具、新建大模型配置、新建字典项/字典类型、新建用户组、新建 Topic、新建卡片类型（共 8 个页面 14 个按钮位，含空态按钮）。
+  - 字面量按钮文案：`TxnBatchConsole` 受理批量调用→受理；`ApprovalFormList` 新建审批意见表单→新建（2 处）。
+  - 保留判定：数据驱动按钮（流程名「1测试11」、应用卡片「灾备演练1 个表单」）不属于文案；「+新建应用」的「+」是装饰符，文案本身 4 字达标。
+- 自验（浏览器，可见会话 1280×720，admin）：52 个菜单路由逐页扫描可见按钮文案——修复前命中 28 组，修复后仅剩上述数据驱动文本；`/agent/tool` 实测 新建/查询/重置 三按钮 73px 宽、scrollWidth 71 < width（无溢出，截图 `C:/Users/hjxch/AppData/Local/Temp/sw-017/b43-buttons-tool.png`）。扫描明细与前后对照：`C:/Users/hjxch/AppData/Local/Temp/sw-017/b43-network-index.json`。
+- 自动化：全量 vitest **1607 通过 / 3 skipped**（`FormDesigner.spec` 的编号设置入口断言、`UserGroupList.spec` 的新建按钮定位与无权限断言随口径更新）；`vue-tsc -b --noEmit` 零错误；eslint 零错误（3 条预存 warning）。
+- 进度：0.1.7 回归批次台账 #43 已交付；进行中 0、未开始 0。
+- Git：Web（本轮提交）、workspace（台账 #43 + 本增补）。
