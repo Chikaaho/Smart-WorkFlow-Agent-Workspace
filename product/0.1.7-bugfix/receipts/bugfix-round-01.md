@@ -201,3 +201,13 @@ Owner 提交补充批 22–26（全局返回/表头设置/按钮位/顶部噪音
 - 终态方案（釜底抽薪）：表格内不再增加任何列——`el-table` 外包 `.afd__table-shell`（relative），≡（内联 SVG 三横线 14px）以 `position:absolute` 悬浮于表格卡片右上角（top 11px / right 8px / z-10），即 Owner 截图红框位；操作列还原 140 宽居中，视觉完全分离且无列缝。
 - 自验：vue-tsc 零错误、`AppFormData.spec` 6/6、eslint 0 errors；浏览器实测——表头仅三列（单行文本/创建时间/操作），≡ 独立悬浮无任何圆点；抽屉（显示列/查询字段）从悬浮钮正常拉起。期间一次模板闭合标签误伤（ListActionsColumn 开标签被误删致整页白屏）已在提交前修复并复验。
 - Git：Web `bugfix/0.1.7` 本轮提交；workspace 回执本增补。
+
+---
+
+# 增补 08：#29 数据详情/填写画布与设计器画布同宽
+
+- 需求：数据详情页（FormRender 查看/填写）字段画布不再通栏铺满，与表单设计器画布宽度一致、两边留白、随视口同等比例放大。
+- 实现：实测设计器画布=视口−658px 侧板（1280 视口下 622px）。`FormRender.vue` `.form-render-page__sheet` 增加 `max-width: min(100%, max(622px, calc(100vw - 658px)))` + `margin: 0 auto`——任意视口下与设计器画布同宽同比例，窄屏回落铺满（622px 下限保底）。
+- 自验：vue-tsc 零错误、`FormRender.spec` 12/12；浏览器实测 1280 视口——sheet=622px、左右留白各 329px 居中（截图留存本地）。
+- 台账事故与恢复：#28 的登记/回填曾因 shell 工作目录漂移误写他处丢失，本轮以绝对路径补录 28（已回填是）+29，并即时提交（workspace 4815ec6e）；已复核台账现含 29 行且 28=是。
+- Git：Web `bugfix/0.1.7` 本轮提交；workspace 台账+回执本增补。
