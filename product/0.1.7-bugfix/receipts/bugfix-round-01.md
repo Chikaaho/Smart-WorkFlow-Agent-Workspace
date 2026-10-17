@@ -121,3 +121,43 @@ Owner 回归：台账 1–18「回归结果」全部 Y；同批提交新 bug 19/
 - Web `bugfix/0.1.7`：本轮提交（见仓库提交记录），前置 `61e71a5`（回归01c）。
 - Server `bugfix/0.1.7`：本轮提交（FormDef 软删 + Bpm 禁删）。
 - workspace `develop-sw`：台账 19/20/21 回填 + 本增补。
+
+---
+
+# 增补 03：回归02通过（19/20/21 由 Owner 复测）+ 新增 22–26 修复（全局布局降噪轮）
+
+Owner 提交补充批 22–26（全局返回/表头设置/按钮位/顶部噪音/留白密度）。本轮全部前端改动（无服务端变更），逐项修复并完成执行侧自验。
+
+## 1. 修复对照
+
+| 序号 | 位置 | 内容 |
+| :--: | :--- | :--- |
+| 22 | Web `AppFormData.vue`、`AppCenterDetail.vue` | 右上角「返回应用中心」全部移除：深链数据列表页改左上角圆角返回箭头（`form-data-back`）；应用内页头部只留左上角圆角箭头（`app-detail-back` 保留 testid）。全局核查无其他右上角返回残留 |
+| 23 | Web `AppFormData.vue`、`ListActionsColumn.vue` | 「表头设置」从工具栏按钮改为表头最右端固定 ≡ 小图标（操作列表头可选插槽）；点击拉起右侧抽屉（el-drawer 320px）：字段按当前顺序排列，每行右侧「显示」勾选框 + ≡ 拖拽手柄（仅手柄可发起拖拽），勾选/拖拽即时生效并持久化本机偏好；至少保留一列约束保留。原 ↑↓ 对话框整体下线 |
+| 24 | Web `AppFormData.vue` | 「新增/填写」更名「新增」（locale `createRecord`），从工具栏移入筛选栏动作区、位于「查询」左侧 |
+| 25 | Web `StandardListTemplate.vue`、`AppWorkspace.vue`、`AppCenter.vue`、`ProcessDefList.vue` | 搜索/筛选栏成为列表页最顶部元素：`StandardListTemplate` 把 `toolbar-actions` 槽全局并入筛选栏动作区（22 个使用页一次性生效，独立工具栏行取消）；应用工作台侧栏头只留返回箭头（应用名/图标/停用标去除）；应用中心、流程定义列表的 h1 标题+副标题去除；工具栏「共 N 条记录」（AppFormData/AppFormDetail）去除，总数只保留右下分页 |
+| 26 | Web `tokens.css`、`StandardListTemplate.vue`、`ListToolbar.vue`、`ProcessDefList.vue` | 全局留白收紧：`--sw-card-padding` 24px→12px 16px、`--sw-section-gap` 20px→10px、表格行高 50→44px（表头 40→38px）、列表画布内边距 20/24→12/16、工具栏间距 16→10px；参考 Owner 提供的密集型系统截图「适当留白」 |
+
+## 2. 验证记录（执行侧自验，2026-10-17）
+
+- 门禁：`vue-tsc --noEmit` 零错误；全量 vitest **1561/1561 通过**（含本轮新/改用例）。
+- 存量债收敛（HEAD 上已失败、非本轮引入，一并修复）：`AppManageList.spec` 3 条对齐网格卡片契约；`AppWorkspace.spec` 2 条（错误类名/侧栏头契约）；`TodoList.spec`+`ProcessedList.spec` 各 1 条「工具栏按钮跳转」随 #8/#9 契约移除；`MyInstances.spec` 拆为「有表单绑定直达数据表单页 / 无绑定回落弹窗」两条；`notify-template-route-guard.evidence.spec` 去除已不存在的工具栏标题断言。
+- 浏览器实测（1280×720，截图本地留存不入库）：
+  - 数据列表页：筛选栏在页面最顶部，动作区顺序=新增/查询/重置；侧栏头仅返回箭头；无「共 2 条记录」顶部残留；操作表头右端 ≡ 图标在位。
+  - 表头设置抽屉：标题「表头设置」，行=文字/创建时间（含「显示」勾选+≡ 手柄）；取消「创建时间」显示→表列即时消失；手柄拖拽换序→抽屉行序与表列序同步翻转；localStorage `sw:app-form-columns:{formKey}` 写入 `{"order":["create_time","field_1"],"hidden":[]}`；验后已还原默认偏好。
+  - #22 双面：`/form/app-center/:appId` 与 `/form/app-form/:formKey` 左上角均为圆角箭头，「返回应用中心」文案全局无残留。
+  - #26 截图对比：筛选卡、表格卡、分页间距明显收紧，无独立工具栏行。
+- 数据说明：验后已清除本机列偏好键（Owner 侧保持默认顺序）；其余数据未触碰。
+
+## 3. 已知边界与说明
+
+- `toolbar-actions` 槽名保留（页面代码零改动），仅渲染位置并入筛选栏；后续新增列表页默认即达「搜索栏置顶」。
+- 「无筛选字段的表单」筛选栏左侧为空、动作按钮贴右——与参考系统行为一致。
+- 列偏好仍为本机个人偏好（localStorage），不落服务端（与既有口径一致）。
+- 通知中心/流程定义列表等自有布局页面的内距按同密度口径手动收敛；若 Owner 回归发现个别页面密度不一致，按原序号返回修复。
+
+## 4. Git 事实
+
+- Web `bugfix/0.1.7`：本轮提交（见仓库提交记录），前置 `7c65c1f`（回归02）。
+- Server：无变更（本轮纯前端）。
+- workspace `develop-sw`：台账 22–26 登记+回填、本增补。
