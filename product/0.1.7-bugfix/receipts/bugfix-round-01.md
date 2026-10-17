@@ -81,3 +81,43 @@
 - 三仓起点：workspace `develop-sw@92ce0cd9`、Server `develop@eca43b7`、Web `develop@a60a819`（本轮修复在 Server/Web 新建 `bugfix/0.1.7` 分支提交，后续按链 开发分支→develop→main 走）。
 - 常驻本地服务：后端 8080（local profile，PG `sw_017_bugfix`，Flyway 至 0.1.7）、前端 5173（vite 代理 /api）。登录 `admin/admin123`，验证码固定 `1234`。
 - 台账回填批次与回执：workspace `develop-sw` 提交推送（见提交记录）。
+
+---
+
+# 增补 02：回归01通过（1–18 全 Y）+ 新增 19/20/21 修复
+
+Owner 回归：台账 1–18「回归结果」全部 Y；同批提交新 bug 19/20/21。本轮（2026-10-17）三项修复并完成执行侧自验。
+
+## 1. 修复对照
+
+| 序号 | 位置 | 内容 |
+| :--: | :--- | :--- |
+| 19 | Web `FormRender.vue` | 提交按钮 `form.launch`（发起流程）→ `common.submit`（提交）；`form.launch` 键两语言移除（仅此一处使用，`catalog.launch` 流程目录语义不动） |
+| 20 | Web `TaskDetail.vue` | 根因：`goBack`/`navigateAfterAction` push 不存在的命名路由 `TodoList` → 静默 reject，返回点击无效。改为「返回上一页」：`history.state.back` 存在即 `router.back()`，直达打开无历史时兜底回 `workspace-todo`；审批结束（通过/驳回及转办/委托/沟通/加签/补签完成）统一走该语义 |
+| 21（流程禁删） | Server `BpmProcessDefController/Service/Impl` + Web `ProcessDefList.vue`、`RelatedProcessesPanel.vue`、`api/index.ts`、`adapters/process-catalog.ts` | 删除流程定义能力整体移除（DELETE `/workflow/defs/{id}` 端点、`deleteDef` 服务方法、前端删除入口与 API/接缝函数）；流程草稿（我的草稿 `BpmDraftController`）不在禁删范围 |
+| 21（表单软删） | Server `FormDefServiceImpl.deleteDraft` + Web `FormDefList.vue` | 表单删除解除「仅 DRAFT」限制：任何状态可软删（`@TableLogic` deleteById，物理表/快照/数据保留 deleted=1），审计记录 DELETE；表单管理列表新增「删除」动作（确认弹窗） |
+| 遗留债收敛 | Web `ThemeRuleDialog.vue` | `visible` watch 补 `immediate: true`——异步组件晚于 visible=true 挂载时首次打开不加载编号规则（HEAD 上既有失败用例暴露的真实缺陷，非仅测试问题） |
+| 遗留债收敛 | Web `TaskDetail.spec.ts` | 同步 #18 后契约：移除已不存在的 `isFinishedTask`/`headerTagLabel` 断言；新增「有历史→router.back」「无历史→兜底 workspace-todo」两用例 |
+
+## 2. 验证记录（执行侧自验，2026-10-17）
+
+- 前端门禁：`vue-tsc --noEmit` 零错误；`FormRender.spec`（12）+`TaskDetail.spec`（20）+`ProcessDefList.spec`（7）+`RelatedProcessesPanel.spec`（5）共 44 用例全绿（含上述新增/改写用例）。
+- 后端门禁：`mvn -q -DskipTests package` BUILD SUCCESS；受影响测试 `FormI2ClosureIntegrationTest`(8，含改写「已发布表单可软删+DELETE 审计」)+`FormDefinitionServiceTest`(17)+`FormDefinitionControllerAuthorizationTest`(7)+`FormDataDeleteServiceTest`(7)=39/39 绿。
+- 浏览器实测（本机 1280×720，证据本地留存不入库）：
+  - #19：填写页顶栏=返回/保存草稿/**提交**，无「发起流程」。
+  - #20：待办行点击进详情→左上返回箭头回 `/workspace/todo`（修复前点击无效）；待办列表对 20261017-002 快捷「通过」→确认弹窗→审批完成后停留上一页且列表刷新（该待办消失）。
+  - #21：流程定义列表行操作仅剩 设计/查看流程图/流程编号设置（无删除）；表单管理「已发布」行 更多 菜单含 删除；新建临时表单「临时软删验证」→删除→列表即消失，只读 SQL 复核 `sw_form_def` 该行 `deleted=1` 保留。
+- 服务：8080 以 `sw-bootstrap/target/bootstrap.jar`（13:50 构建，含本轮后端改动）local profile 重启 `Started StarterApplication`，`/api/auth/captcha` 401（可达）；5173 vite 200。
+
+## 3. 已知边界与说明
+
+- 自验动作动了的 Owner 测试数据：待办 20261017-002 被执行「通过」（审批回归验证）；临时表单「临时软删验证」已软删（deleted=1 保留）。其余未触碰。
+- 表单管理左侧分类树计数在列表页内删除后不即时刷新（来源 app-center 接口，重进页面即正确）——计数展示瑕疵，未在本轮扩散修改。
+- 流程定义禁删后，`workflow:def:delete` 权限标识随之失去服务端挂载点（前端入口与后端端点均已移除）；如需在权限体系保留占位请 Owner 裁量。
+- dev:mock `handlers.ts` 仍保留 DELETE /api/workflow/defs/:id 假实现（仅 mock 模式，无真实链路），与已记录的 mock 种子未同步同批，不单独处理。
+
+## 4. Git 事实
+
+- Web `bugfix/0.1.7`：本轮提交（见仓库提交记录），前置 `61e71a5`（回归01c）。
+- Server `bugfix/0.1.7`：本轮提交（FormDef 软删 + Bpm 禁删）。
+- workspace `develop-sw`：台账 19/20/21 回填 + 本增补。
