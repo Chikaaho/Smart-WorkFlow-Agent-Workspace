@@ -314,3 +314,15 @@ Owner 提交补充批 22–26（全局返回/表头设置/按钮位/顶部噪音
 - 测试：新增 `src/layouts/BasicLayout.spec.ts`（4 条）——`/form/app-manage` 无侧栏且内容区在、`/form/app-manage/:appId` 仍不渲染通用侧栏、`/workflow/defs` 侧栏照常渲染、`/portal` 维持既有不渲染口径。全量 vitest **1583 通过 / 3 skipped**；vue-tsc 零错误；eslint 零错误。
 - 浏览器自验（本地 5173 + 真实后端）：`/form/app-manage` 无 `.basic-layout__aside`，内容区 1280×656@y64 全宽，搜索框 x=24、应用网格 x=24 宽 1232，顶栏「应用管理」选中态保持。截图本地留存。
 - Git：Web（本轮提交）、workspace（台账 #33 + 本增补）。
+
+---
+
+# 增补 17：#34 应用内左侧栏——头部应用身份 + 左下角新建占满
+
+- Owner 反馈（应用详情工作台截图，两处红线框）：①左下角「新建」要占满（原按钮内容宽，右侧留空）；②左上角放 icon 和应用名称，名称只展示 5 个字、超长省略号。背景：#25 全局降噪时我把侧栏头部的应用名/图标当噪音去掉了，本轮按 Owner 口径补回（保留返回箭头）。
+- 实现（`src/modules/form/views/AppWorkspace.vue`，应用专属侧栏）：
+  - 头部：返回箭头 + `AppIcon`（13px，取 `content.app.icon/color`，不额外请求）+ 应用名称；名称 `max-width: 6em`（＝5 个全角字 + 1 个省略号位）、`overflow: hidden; white-space: nowrap; text-overflow: ellipsis`——刚 5 字不截断，超长稳定呈现「5 字 + …」；`title` 保留完整名称供悬浮查看。
+  - 左下角：`.app-ws__side-foot :deep(.el-dropdown) { display: block; width: 100% }` —— el-dropdown 包裹层默认行内收缩，按钮自身 `width: 100%` 因此无从生效；包裹层撑满后按钮落到整栏宽（240 栏宽 − 左右 12 内距 = 216）。
+- 测试：`AppWorkspace.spec`（#25 旧断言改为 #34 口径）——侧栏头含返回箭头 + 名称（文本与 title）+ 三项同排；底部「新建」入口在侧栏脚、包裹层与按钮结构齐备。全量 vitest **1584 通过 / 3 skipped**；vue-tsc 零错误；eslint 零错误。
+- 浏览器自验（本地 5173 + 真实后端，应用「灾备演练」）：头部渲染为 返回箭头 + 橙色应用图标 + 「灾备演练」（宽 56px，未触发截断）；底部「新建」按钮 216×32、x=12，与侧栏内距对齐；截断用**页面内探针**验证（仅临时改 span 文本为 10 字「灾备演练测试超长名称」，clientWidth 84 / scrollWidth 140 → 省略号生效，渲染为「灾备演练测…」），探针后已 reload 还原，未改数据库与接口数据；截图本地留存。
+- Git：Web（本轮提交）、workspace（台账 #34 + 本增补）。
