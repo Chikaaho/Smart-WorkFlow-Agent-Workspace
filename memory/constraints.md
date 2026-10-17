@@ -21,4 +21,4 @@
 
 ## 0.1.7 Bug修复（Owner 2026-10-16）
 
-唯一清单 `product/0.1.7-bugfix/1.0.7bug.md`，发布版本0.1.7已确认。Owner与Executor直接反复修复/复测：Executor修复自验后填“是”，Owner填回归结果；修复验收由Owner完成。Owner宣布修复结束后，规划办理信息同步与发版确认，Executor承接合并、发布及发布后同步。细则见 `product/0.1.7-bugfix/ready/direction-bugfix-017.md`。
+唯一清单 `product/0.1.7-bugfix/0.1.7bug.md`，发布版本0.1.7已确认。Owner与Executor直接反复修复/复测：Executor修复自验后填“是”，Owner填回归结果；修复验收由Owner完成。Owner宣布修复结束后，规划办理信息同步与发版确认，Executor承接合并、发布及发布后同步。细则见 `product/0.1.7-bugfix/ready/direction-bugfix-017.md`。

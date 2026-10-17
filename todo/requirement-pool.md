@@ -173,6 +173,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 | P62 | 低代码事务能力与BPM分级执行架构 | Owner2026-09-30；XL；[正式需求](p62-lowcode-transaction-bpm-tiering.md) | 批准功能COMPLETED；P64阶段Ⅱ已通过，新机就绪探索已完成（2026-10-11，回执 [search_fallback/p62-performance-new-machine-readiness-20261011.md](../search_fallback/p62-performance-new-machine-readiness-20261011.md)）；有限性能三轮未通过、VERIFYING，已由 Owner 搁置为已知延期问题（2026-10-12，未来方向=带权参数配置、后台可配置每租户优先级；见 [P62 §性能已知延期](p62-lowcode-transaction-bpm-tiering.md)）、策略OFF。[恢复安排](../product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-performance-resume-20261011.md)。不新增编号或计数。 |
 | P63 | MES前置能力：动态并行审批与一次性预约IoT下发 | Owner 2026-10-06；L；[需求定义](p63-mes-workflow-foundations.md)；关联P60 I4/P21/P62 | **COMPLETED（规划已确认，2026-10-08）**；R01—R06批准交付核销，20/20、A01—A10、TS01—TS03全部通过；[最终裁决](../product/p63-mes-workflow-foundations/receipts/planning-final-review-terminal-sync-p63-mes-workflow-foundations-02-completed.md)；正式功能48、清单46/22/22零升降；六入口确认措辞传播已核销，业务验收锁定。 |
 | P64 | MES高级流程编排与业务闭环 | Owner2026-10-08；XL；[需求索引](p64-mes-advanced-orchestration.md) | **COMPLETED（规划已确认，2026-10-13）**，批准范围已核销；正式功能48；三阶段完成3/进行中0/未开始0，业务与终态验收剩余0；终态最终复核02。 |
+| P65 | 表单自定义 JavaScript 事件与开放 API：加载完成、提交前后事件；主表/明细表数据与控件属性、流程/组织数据及辅助函数；与现有流程 JS 面板共用一套 UI | Owner 2026-10-18；[需求定义](p65-form-javascript-events-api.md) | 待做、待排期；至少L级评估；优先级及版本待定 |
 
 管理员P0治理插单（2026-09-15）：[连续执行与可见浏览器验收门禁](admin-machine-gate-continuous-visible-browser.md)已`COMPLETED（规划确认）`，本地提交`8e87899`，治理测试sh 70/70、PowerShell 49/49。该任务不并入P60业务计数；远程发布仍需Owner另行授权。
 

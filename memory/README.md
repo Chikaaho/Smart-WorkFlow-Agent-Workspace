@@ -2,9 +2,11 @@
 
 ## 当前任务：0.1.7-bugfix
 
-2026-10-16｜L级方向READY：`product/0.1.7-bugfix/ready/direction-bugfix-017.md`。发布版本0.1.7已确认；唯一清单 `product/0.1.7-bugfix/1.0.7bug.md`（相对工作区根目录）。Owner与Executor直接修复/复测往返：Executor自验后填“是”，Owner填回归通过或不通过及原因，持续至Owner宣布修复结束。修复验收由Owner完成，规划参与信息同步与发版确认。当前尚无执行结果回传。
+2026-10-18｜Owner已宣布修复结束。清单43项全部已修复，42项Y、第25项仍N（有增补15修复记录）；42/43已保存为Y。以Owner整体结束裁决进入收尾，保留原表差异。记录：product/0.1.7-bugfix/receipts/planning-close-017.md。版本0.1.7已确认。
 
-总7阶段1/1/5：流程/输入/版本确认完成；Executor修复与Owner复测进行中；结束后同步与发版确认、合并、发布、发布后同步、结束未开始。规划下一参与节点：收到修复结束后的同步交接，办理同步及发版确认；执行侧读取该文件与Owner继续修复。Bug列车本身不新增功能计数或核销P。
+总7阶段2/1/4：流程版本确认、修复复测完成；信息同步与发版确认进行中；合并、发布、发布后同步、结束未开始。下一动作：Executor按search_task/release-017-close-readiness.md核实三仓Git、权威状态和发布准备，规划据回传给出同步值。方向：product/0.1.7-bugfix/ready/direction-release-handoff-017.md。
+
+Owner要求清单退出跟踪及清除Git历史，保留本地文件，当前与历史更名路径纳入范围核实；尚未执行取消跟踪、历史重写或强推。列车不新增业务功能数或核销P；P65为独立待排期需求。
 
 ## 上轮发布归档摘要：0.1.6-release
 
