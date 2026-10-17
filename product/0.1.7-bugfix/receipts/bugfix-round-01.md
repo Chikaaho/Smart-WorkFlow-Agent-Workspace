@@ -499,3 +499,28 @@ Owner 提交补充批 22–26（全局返回/表头设置/按钮位/顶部噪音
 - 环境清理：本轮启动的前端 dev server 与本地后端在验证完成后均已停止（后端 `stop.sh`），浏览器保留流程中心标签页。
 - 进度：0.1.7 回归批次台账 41 项，均已交付（#41 第③项按 Owner 复审重做）；进行中 0、未开始 0；等待 Owner 对 #37—#41 的回归结论。
 - Git：Web（本轮提交）、workspace（台账 #41 更新 + 本增补）。
+
+
+---
+
+# 增补 26：#42 全局搜索 bar 12 格栅格
+
+- Owner 需求：每个 bar 每行按 12 格均分，最多 4 个搜索组件；日期/输入/选项宽度一律相同，每个 3 格（字段名 1 格 + 控件 2 格）；bar 最右放查询/重置按钮，每个 1.5 格；字段多可换行，按钮默认靠右、文字居中。
+- 实现（Web）：
+  - 新增 `src/components/page-layout/ListFilterItem.vue`：字段块内部 1:2 栅格（名称 1 格、控件 2 格），控件宽度由栅格决定（`:deep(.el-input/.el-select/.el-date-editor/.el-input-number) { width: 100% }`），标签超长省略并带 title 提示。
+  - `ListFilterBar.vue` 重写为 12 格栅格：字段块 `grid-column: span 3`（每行最多 4 块自动换行）；按钮组钉在行尾 `grid-column: 10 / span 3`（3 格），组内按钮 flex 等分——只有查询/重置时每只 1.5 格，含「新建」等第三按钮时三只各 1 格；按钮文字由 el-button 居中。新增 `layout="inline"` 保留行内排布（批量操作条），新增 `.list-filter-bar__span-full` 供整行内容（页签等）。
+  - `StandardListTemplate.vue` 增加 `filterLayout` 透传；`index.ts` 导出 `ListFilterItem`。
+  - 迁移 24 个使用 `#filter` 的页面：21 页按脚本迁移（每个控件包 `ListFilterItem`、删除写死宽度、字段名取原 placeholder 文案、输入类 placeholder→「请输入」、选择类→「全部」、日期范围保留开始/结束占位）；FormData（动态字段整体包块）、MyInstances（删除 P64 定制栅格与 42px 高度覆盖，统一口径）、ToolList（页签包 `span-full` 整行）、InstanceMonitor 与 TemplateCenter（查询/重置从 `#filter` 移入 `#filter-actions`）、BatchApproval（`filter-layout="inline"`）。
+  - i18n：新增 `common.keyword`（关键词/Keyword）、`system.dictType`（字典类型/Dict type），zh-CN 与 en-US 同步。
+- 自验（浏览器，可见会话 1280×720，admin，前后端真实链路）：
+  - `/system/role`（3 字段）：`grid-template-columns` 为 12 条等宽轨道（70.66px）；字段块 236px（3 格）、名称 76px（1 格）、控件 152px（2 格）三者完全相等；按钮组 x=1012、宽 236px（列 10—12），右边缘 1248 = 栅格右边缘。
+  - `/system/dict-data`（4 字段）：4 块占满首行，按钮组自动换行到第 2 行行尾（右缘 1248）。
+  - `/workflow/monitor`（7 字段）：首行 4 块（x=268/516/764/1012）、次行 3 块 + 按钮组（x=1012）；查询 114px / 重置 114px = 各 1.5 格，文字居中（justify-content: center）；7 个标签均无截断。
+  - `/workflow/my-instances`：原定制布局移除后 3 块等宽 239px、按钮各 116px 靠右（legacy `.my-instances-field` 数量 0）。
+  - `/agent/tool`：页签整行 980px，字段 3 格与按钮组同行。
+  - 证据：截图 `C:/Users/hjxch/AppData/Local/Temp/sw-017/b42-searchbar-monitor.png`；网络索引（含 5 个页面的逐项测量与请求状态）`C:/Users/hjxch/AppData/Local/Temp/sw-017/b42-network-index.json`。
+- 自动化：全量 vitest **1607 通过 / 3 skipped**（新增 `page-layout.spec` 3 条：默认 grid 布局、inline 布局、ListFilterItem 名称+控件；`UserGroupList.spec` 改为按字段块定位输入框）；`vue-tsc -b --noEmit` **零错误**；eslint 零错误（3 条预存 warning）。
+- 顺带修复（本轮类型门禁暴露的既存错误，均在 #37/#38 引入的文件里）：`FieldListPanel.vue` el-table 行参数改为 `row as FieldRow`（3 处）并把 `subFields` 收窄到 TABLE 分支；`theme-rule.spec.ts` 补 `import type { ThemeElement }`；`ApprovalFormList.vue` 补 `useI18n` 与 `t`（本轮新增字段名使用 t()）。
+- 口径备注：带「新建」等第三按钮的页面（角色/字典数据/工具管理等）动作组 3 个按钮均分 3 格（每只约 1 格）；仅查询/重置的页面严格 1.5 格。
+- 进度：0.1.7 回归批次台账 #42 已交付；进行中 0、未开始 0（#43 按钮文案瘦身随后单独批次交付）。
+- Git：Web（本轮提交）、workspace（台账 #42 + 本增补）。
