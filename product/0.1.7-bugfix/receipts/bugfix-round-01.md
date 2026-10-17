@@ -211,3 +211,16 @@ Owner 提交补充批 22–26（全局返回/表头设置/按钮位/顶部噪音
 - 自验：vue-tsc 零错误、`FormRender.spec` 12/12；浏览器实测 1280 视口——sheet=622px、左右留白各 329px 居中（截图留存本地）。
 - 台账事故与恢复：#28 的登记/回填曾因 shell 工作目录漂移误写他处丢失，本轮以绝对路径补录 28（已回填是）+29，并即时提交（workspace 4815ec6e）；已复核台账现含 29 行且 28=是。
 - Git：Web `bugfix/0.1.7` 本轮提交；workspace 台账+回执本增补。
+
+---
+
+# 增补 09：#30 详情权限与页面统一（单一控制面）
+
+- 需求：统一所有表单详情/流程详情——无权限提示；参与人只读详情；审批人展示审批动作；有流程展示流程相关信息。
+- 架构（遵循 Owner「数据详情必须单一控制面，不得多处复制」directive）：
+  - 后端：`BpmMyInstanceController` 新增 `GET /workflow/my/instances/relations?formKey=&businessKey=`——APPROVER（存在指派给当前用户的活动任务，附 pendingTaskId）/ PARTICIPANT（发起人或历史任务经办人）/ NONE。NONE 不回传实例任何信息（fail-closed 不泄露存在性）；数据可见性仍由 form:data:query 行权限独立把关。
+  - 控制面唯一：`workflow/composables/use-task-approval.ts` = 通过/驳回唯一链路（确认→受理→轮询→消息）。TaskDetail 的 handleApprove/handleReject 重构为委托该控制面（注入意见表单/节点表单预检、actionPayload 负载、完成后导航），runAction 仅保留 return 等扩展动作。
+  - 统一详情页=FormRender：查看态加载关系（经 `adapters/instance-relation` 接缝消费同一控制面，form 模块零复制）；PARTICIPANT → 流程信息条（流程/状态/发起人/当前节点，状态映射真实 InstanceStatusEnum：RUNNING/APPROVED/REJECTED/WITHDRAWN/DISCARDED）；APPROVER → 信息条+内联审批动作卡（意见默认备注，通过/驳回经唯一控制面，完成自动刷新关系降级为参与人）；NONE/无流程 → 纯只读数据详情。数据记录查询被行权限拒绝时沿用既有错误提示（后端文案即「无权」口径）。
+- 自验：vue-tsc 零错误；全量 vitest **1563/1563**（含新增 2 条关系用例：参与人信息条/审批人动作卡）；后端 `mvn -DskipTests package` BUILD SUCCESS 并重启；浏览器三关系实测——APPROVER（form_mvb3uqg4+625a045e 运行中：信息条+驳回/通过）、PARTICIPANT（同表单 b4d2534d 已通过：仅信息条，状态「已通过」）、NONE（form_mvb9kf9w 无实例：纯详情）；内联审批与任务详情共用同一控制面（TaskDetail.spec 37/37 委托后行为不变）。未实际消费 Owner 的待办 20261016-001（避免动数据，链路与 TaskDetail 同源）。
+- 边界：数据行权限拒绝的无权限提示沿用记录加载错误告警（后端权威文案）；MyInstances/待办列表的既有入口不变（详情统一收敛到 FormRender 查看态）。
+- Git：Server `bugfix/0.1.7` 本轮提交（relations 端点）；Web `bugfix/0.1.7` 本轮提交；workspace 台账+回执本增补。
