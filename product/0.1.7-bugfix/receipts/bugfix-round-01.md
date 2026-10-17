@@ -303,3 +303,14 @@ Owner 提交补充批 22–26（全局返回/表头设置/按钮位/顶部噪音
 - 浏览器自验（本地 5173 + 真实后端）：关联流程工作区——筛选栏为页首（y=140，无标题/描述/计数），查询 x=1011 w=88、新建流程 x=1111 w=82（同组右对齐，组右缘距卡片右边 24px），工具条「流程编号设置」x=884 y=78，与草稿历史/预览/保存/发布新版本同排；流程中心 / 应用管理 / 流程分析 / 流程交接 / 工作台 / 会话历史 / 账号绑定 逐页 DOM 核验：噪音选择器全空，首个内容元素为筛选栏/列表/表单本体。截图本地留存。
 - 边界：①流程定义列表（管理端）四张统计卡属已验收设计元素（P53 设计节点04），非文本噪音，本轮未动——若 Owner 认为需与筛选栏对调再行调整；②未纳入本轮：不可达页面（P64 控制台页与 system 列表页未挂路由）、弹窗内小标题/说明（草稿历史弹窗副标题、字段清单说明等）、移动端页面、控制台页内分区标题（命令明细/拒绝审计等）。
 - Git：Web（本轮提交）、workspace（台账 #25 补记 + 本增补）。
+
+---
+
+# 增补 16：#33 应用管理页去掉无意义侧边栏
+
+- Owner 反馈：应用管理（/form/app-manage）左侧侧栏只挂着「应用管理」自身一个条目，没有意义 → 去掉。
+- 根因（口径）：应用管理分区在菜单树里是**单页分区**——`sys_menu` 9130 `FormAppManage / form/app-manage`，parent_id=0、无子菜单；而根布局 `BasicLayout` 渲染的深色侧栏是「当前分区的菜单树」，该页因此恒渲染一个指向自身的条目。既有豁免清单（/portal、/form/designer、/form/app-center、/form/app-form/、/form/app-manage/:appId 等）恰好把这个精确路径漏在外面。
+- 实现：`src/layouts/BasicLayout.vue` 的 `showAside` 增加精确路径判断 `route.path !== '/form/app-manage'`——应用管理列表页顶栏全宽、不渲染深色侧栏；同分区应用详情深链（`/form/app-manage/:appId`、`/form/app-manage/:appId/form/:formId`）继续走应用专属侧栏（#4 口径不变）。注释同步更新，不改动菜单数据与其它分区。
+- 测试：新增 `src/layouts/BasicLayout.spec.ts`（4 条）——`/form/app-manage` 无侧栏且内容区在、`/form/app-manage/:appId` 仍不渲染通用侧栏、`/workflow/defs` 侧栏照常渲染、`/portal` 维持既有不渲染口径。全量 vitest **1583 通过 / 3 skipped**；vue-tsc 零错误；eslint 零错误。
+- 浏览器自验（本地 5173 + 真实后端）：`/form/app-manage` 无 `.basic-layout__aside`，内容区 1280×656@y64 全宽，搜索框 x=24、应用网格 x=24 宽 1232，顶栏「应用管理」选中态保持。截图本地留存。
+- Git：Web（本轮提交）、workspace（台账 #33 + 本增补）。
