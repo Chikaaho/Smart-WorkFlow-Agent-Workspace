@@ -193,3 +193,15 @@ Web 仓 `grep -rn '1\.0\.7bug'`（ts/vue/md/json，排除 node_modules）＝0 �
 - 推进前状态（供追溯）：Server `bugfix/0.1.7`＝`2d776ef`、develop＝`eca43b7`、origin/main＝`04a8e1a3`；Web `bugfix/0.1.7`＝`fe1712b`、develop＝main＝`a60a819`。
 - 未做（待授权/待决策）：历史改写与强推（需 Owner 对精确范围授权）；0.1.7 语义 tag/Release（本机无 `gh` CLI，待确认通道）；UAT 部署（待 CI 制品就绪）。
 - 附带发现（如实记录）：0.1.7 修复轮新增 `V0.1.7__bugfix017` 与两支 `R__` 后，`I6G7UpgradeDrillH2Test`／`I6G7bOldBaselineUpgradePostgresTest`（断言 11 条＝V0.1.6＋10 R__）、`P64AppendMigrationUpgradePostgresTest`／`P64RollbackBoundaryPostgresTest`／`Phase4PgMigrationBehaviourTest`（断言终点 0.1.6）、`P62NonEmptyUpgradePgTest`（终点 0.1.6／单条 0.1.6 记录）与三个 `ApplicationCenter*` 升级演练测试的断言仍绑定旧链——按断言值与链实际内容（14 条）判断为修复轮遗留的既存红；本次收敛批次已一并按 0.1.7 口径更新，更新后实跑全绿（见上表）。
+
+## §7 CI 发布事实与门禁拦截（Server）
+
+| 项 | 实测 |
+|---|---|
+| Web CI（run `39067698896`，head `4e89249`） | **success**（241 s，全部步骤含 `Typecheck, lint, test and build` 与 `Create GitHub Release`）；Release `build-4e892497cd017cc902d3c4ebb36ac181fccd489a`，标题 `CH-aPaaS-Web 0.1.7 build 4e892497…`，资产 `dist-4e892497….zip` 1,347,131 B |
+| Server CI（run `39067678981`，head `7bb2564`） | **failure**：步骤 5（Maven effective version＝`0.1.7-SNAPSHOT`）通过，步骤 6 `Production build`（`mvn -B clean test`）在 120 s 处退出 1（同仓库历史成功运行约 950—964 s，故为早失败）；`Locate executable JAR`／`Create GitHub Release` 均 skipped，未产出制品 |
+| 定位方式 | 本机无 `gh` CLI 且 GitHub 日志接口需管理员权限（`HTTP 403`）；改用公开 API 读取运行/步骤时间戳与 check-run 注解（仅 `Process completed with exit code 1`），随后**本地复现**：`mvn -B -o clean test` 全量运行停在模块 22/32 `sw-biz-form-biz`，4 个测试类红 |
+| 根因（修复轮遗留，非本次收敛引入） | ①`FormG2EntryConsistencyTest`／`FormAppAccessGuardTest`／`FormAppServiceTest` 的测试上下文在 `fab3d5e`（0.1.7 #1）后需要 `FormAppScopeMatcher` bean 但未定义（`UnsatisfiedDependencyException`）；②`DynamicTableSqlGateTest.g1` 报告 `FormAppManageController`／`FormAppScopeMatcher` 直接调用 `JdbcTemplate`，违反模块 G1「dynamic 包之外不得直接调用 JdbcTemplate」；③两个测试的 H2 夹具仍是 `sw_form_app_user`，而 #1 生产口径已改为 `sw_form_app_scope`（`Table "SW_FORM_APP_SCOPE" not found`）。修复轮收尾验证用的是 `-DskipTests` 打包，未覆盖这些用例 |
+| 处置（Server `ab5a372`，已推送 develop） | 新增 `com.sw.ck.form.dynamic.FixedTableSql`——固定系统表只读 SQL 的唯一出口（表名/列名固定字面量、参数绑定、显式 `deleted = 0`、只读），`FormAppScopeMatcher`／`FormAppManageController` 改经受控入口（未放宽 G1）；三个测试补 `FormAppScopeMatcher` bean，两个测试夹具迁至 `sw_form_app_scope`（USER 维度） |
+| 处置验证 | 4 个受影响类实跑 **31/0/0/0**（`DynamicTableSqlGateTest` 7、`FormAppAccessGuardTest` 7、`FormAppServiceTest` 10、`FormG2EntryConsistencyTest` 7） |
+| 仓库历史参照 | 同仓 CI 并非恒绿：run 19（`04a8e1a3`，纯文档）失败于 859 s（已知 `P63ReservationBoundaryPgTest` 时序族），run 16（`e1aa67d5` 版本收敛）失败于 952 s、由 run 17 补齐受控设施后转绿——本次 Server 早失败与之不同，已定位到上述测试门禁 |

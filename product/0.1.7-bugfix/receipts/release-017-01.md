@@ -12,11 +12,11 @@
 | S2 | 修复分支→develop 快进合入（Server/Web） | 完成 |
 | S3 | 版本收敛（Server `pom`/CI/脚本、Web `package.json`）→ 0.1.7 | 完成 |
 | S4 | 种子收敛与 0.1.7 升级通道（Server，双方言） | 完成 |
-| S5 | develop→main 合入推送与 CI 发布 | 进行中（Server 首轮 CI 红→修复→重跑） |
-| S6 | 0.1.7 语义 tag/Release | 未开始（通道待定，见 §5） |
-| S7 | UAT 部署（0.1.6→0.1.7）与发布后同步 | 未开始 |
+| S5 | develop→main 合入推送与 CI 发布 | 完成（Web run `39067698896` success；Server run `23` success，制品与 Release 已核实） |
+| S6 | 0.1.7 语义 tag（含 Release 资产） | tag 完成（两仓 annotated `0.1.7`）；语义 Release 资产待通道（见 §5） |
+| S7 | UAT 部署（0.1.6→0.1.7）与发布后同步 | 部署完成并核验；发布后同步已落事实入口（§8），计数类唯一值待规划复核 |
 
-总阶段 7（流程版本确认、修复复测、信息同步与发版确认、合并、发布、发布后同步、结束）：已完成 2（版本确认、修复复测）＋本轮 3 个执行批次（合并、版本收敛、种子收敛）；进行中 1（发布）；未开始 3（语义 tag/Release、UAT 部署、发布后同步）。
+总阶段 7（流程版本确认、修复复测、信息同步与发版确认、合并、发布、发布后同步、结束）：完成 4（流程版本确认、修复复测、合并、发布）；进行中 2（信息同步与发版确认——待规划唯一同步值清单；发布后同步——事实入口已同步，待复核）；未开始 1（结束）。
 
 ## 2. 实际修改与提交（按仓）
 
@@ -60,12 +60,12 @@
 
 ## 5. 未完成内容与风险
 
-- Server CI 需在修复后重跑（`ab5a372` → main），制品 `bootstrap-0.1.7.jar` 与 `build-<sha>` Release 待产出。
-- 0.1.7 语义 tag/Release（对齐 0.1.6 的「成对语义 tag/Release」惯例）通道待定：本机无 `gh`；如需与 0.1.6 同形态的语义 Release 资产，请给出通道或授权（自动化通道已产出 `build-<sha>` Release 与版本化资产名）。
-- UAT 部署未执行（属高风险动作，按手册 §8 在取得发布授权后窗口内执行；现网仍 0.1.6）。
-- 历史清理（清单退出跟踪＋历史改写＋强推）未执行：需 Owner 对精确范围授权（范围与恢复方案见 `search_fallback/release-017-close-readiness.md` §Q2）。
-- 演示种子 `R__0.1.7_org_demo_seed.sql`（租户 9001/9002、28 用户）随产品迁移自动装载，是否随 0.1.7 正式发布请规划/Owner 确认。
-- 边界如实保留：含 TABLE 字段表单「发布新版本」被拒、节点字段三态运行期未消费等 9 项（清单见明细附表 §4）；第 25 项原表 N、增补 15 与 Owner 整体收口分别记录，不重开。
+- 0.1.7 语义 **Release 资产**（对齐 0.1.6 的「成对语义 Release」形态）未创建：本机无 `gh` CLI、无令牌通道（Actions 日志下载亦需管理员权限）；已创建两仓 annotated tag `0.1.7`（Server `5af1329`、Web `4e89249`），自动化通道已产出 `build-<sha>` Release 与版本化资产名（`bootstrap-0.1.7.jar`）。如需与 0.1.6 同形态的语义 Release，请给出通道或授权（可复用已有 tag）。
+- **历史清理未执行**：Bug 清单退出跟踪＋历史改写＋强推需 Owner 对精确范围授权（受影响引用仅根仓 `develop-sw`；重写范围 `679a0e6f^..054bc3b9`＝35 提交，恢复方案与验证方式见 `search_fallback/release-017-close-readiness.md` §Q2）。注意：授权后重写范围已随本轮新增提交扩大（根仓现有 `1a39b2a4` 等批次）。
+- **发布后同步的计数类唯一值待规划复核**：本列车不新增业务功能数、不核销 P，故正式功能 49／清单 46/22/22=90／ADV64/问题 57／P62 延期·OFF 均按原值保留（未猜测）；功能状态、P 核销与终态口径以规划唯一值清单为准。
+- **本机工具缺口（如实记录）**：无 `gh` CLI；浏览器 IAB **截图面三次超时**（`browser screenshot surface preparation timed out after 3000ms`，含重开标签页后重试），因此**未取得视觉制品、不主张正式视觉验收**；可见会话核验以页面内实测值（DOM/计算样式/按钮文案）为证据。
+- 演示种子 `R__0.1.7_org_demo_seed.sql`（租户 9001/9002、28 用户）已随 UAT 启动自动装载；如需移除按 `db/upgrade/0.1.7/README.md` 口径处理。另记命名空间风险：种子 id 段与既有测试夹具曾撞号（已在发布前修复 `P62NodeLevelGuaranteePgTest`），若重做种子建议改用独立号段。
+- 边界如实保留：含 TABLE 字段表单「发布新版本」被拒、节点字段三态运行期未消费等 9 项（清单见 `search_fallback/release-017-close-readiness-details.md` §4）；第 25 项原表 N、增补 15 与 Owner 整体收口分别记录，不重开。
 
 ## 6. Git 与远端回读
 
@@ -77,6 +77,32 @@
 
 所有推送均以 `git ls-remote` 回读一致；未强推、未改写历史、未创建/移动任何 tag。
 
-## 7. 自验结论
+## 7. 发布与部署事实（2026-10-18）
 
-S1—S4 执行侧自验通过（证据见 §3）；S5 发布进行中（Server 修复已推送 develop，待合入 main 并重跑 CI）；S6/S7 未开始。功能状态、计数、P 编号与终态同步唯一值待规划下发后机械落实。
+- **CI 发布**：Web run `39067698896` success → Release `build-4e892497…`（标题 `CH-aPaaS-Web 0.1.7 build 4e892497…`，资产 `dist-4e892497….zip` 1,347,131 B）；Server run `23` success（952 s）→ tag/Release `build-5af1329…`，资产 `bootstrap.jar` 218,033,508 B sha256 `309e9e1ea33665aaa5cf020f7c9af71b7090d73bc63952f446b107303c325826`（label `bootstrap-0.1.7.jar`），制品内 `build.version=0.1.7`。
+- **语义 tag**：两仓 annotated tag `0.1.7`（Server 指向 `5af1329`、Web 指向 `4e89249`），推送回读一致；发布前核实两仓均无 0.1.7 标签，未覆盖/移动任何既有 tag/Release。
+- **UAT 部署（0.1.6→0.1.7 就地升级）**：备份（DB `smart_workflow_20261018_0655_pre017.dump` 517,569 B；jar `bootstrap.jar.bak` 217,870,418 B＋`.bak2`；前端 `web.bak-20261018_0655`）→ 停服（PID 2222600 已停、8080 零监听）→ 执行 `upgrade-to-0.1.7-from-0.1.6.postgresql.sql`（输出：`UPDATE 1`／`UPDATE 1`／`CREATE TABLE`／`CREATE INDEX`／`INSERT 0 0`＋历史衔接 `DELETE 1`／`INSERT 0 1`／`COMMIT`）→ 换包（sha256 与 Release 制品一致）＋部署前端（430 assets、入口 `assets/index--8dPEzSu.js`）→ 显式加载 `server.env`（`SPRING_PROFILES_ACTIVE=prod`）后启动。
+- **部署核验**：健康 `/api/actuator/health` → `{"status":"UP"}`；`Started StarterApplication in 168.305 seconds`；启动段 **ERROR 0**；Flyway `Successfully validated 14 migrations` → `Current version of schema "public": 0.1.7` → 应用 2 支 `R__`（`0.1.7 catalog menu first`、`0.1.7 org demo seed`）→ 零 versioned 重放；DB versioned 终点＝单条 `0.1.7`（checksum `2016046975`、success=t）；经域名 `https://chikaho.cn/`（HTTPS）root 200、入口资源 200、`/sw-server/api/actuator/health` 200。
+- **可见会话核验（demo 租户管理员 `demo_a_hq_1`，1280×900 视口，非 headless）**：登录成功进入工作台（用户「张伟」，顶栏 工作台/我的门户/流程中心/应用中心）；`/workflow/catalog` 侧栏首项＝**流程中心**、`.catalog-list` 计算样式 `background-color: rgb(255,255,255)`／`background-image: none`／`border-style: none`；`/workflow/my-instances` `.list-filter-bar` 存在、3 个筛选字段宽度均 **239 px**（等宽）、按钮文案 `查询`／`重置`／`＋ 新建`（**无 >4 字**）；`/form/app-center` 正常渲染。**截图面工具三次超时，未取得视觉制品——本项不作为正式视觉验收主张**，仅作为可见会话内的页面实测证据。
+
+## 8. 发布后同步覆盖矩阵（事实类）
+
+| 入口 | 受影响 | 目标值/处理 | 回读证据 |
+|---|---|---|---|
+| 根 `knowledge/current-status.md` | 是 | 新增 0.1.7 发布与部署当前条目；0.1.6 条目降为历史 | 顶部条目含版本、提交、制品、DB 终点、部署与下一动作 |
+| 根 `CHANGELOG.md` | 是 | 新增 `## 0.1.7` 段（版本事实/收敛/UAT 实测/边界） | 段落位于 0.1.6 之上 |
+| 根 `docs/ops/production-ops.md` §8.3 | 是 | 新增 0.1.7 主迁移形态、`db/upgrade/0.1.7/` 两脚本选择与 checksum、演示种子说明 | 段落紧随 0.1.6 段 |
+| 根 `memory/README.md`、`state.md`、`handoff.md`、`features.md` | 是 | 当前任务块更新为 0.1.7 已发布并部署＋7 阶段 4/2/1＋三项未决 | 四件同步替换（结构校验通过） |
+| 根 `memory/constraints.md` | 否 | 0.1.7 列车约束未变（版本确认/交付链），保持原值 | 无需改动 |
+| Server `README.md`（2 处） | 是 | 当前发布版本 0.1.6→**0.1.7**（含收敛与升级通道指向） | 提交 `8996692` |
+| Server `功能清单.md` 焦点行 | 是 | 新增 0.1.7 焦点行（发布事实＋计数保持＋下一动作），0.1.6 焦点行降为历史 | 提交 `8996692` |
+| Web `README.md`（2 处） | 是 | 当前发布版本 0.1.6→**0.1.7** | 提交 `7d6e4ad` |
+| Server 版本来源（`pom.xml`／CI 断言／脚本） | 是 | 已收敛 `0.1.7-SNAPSHOT`（本批次 `700559e`） | `check-version-identity.sh` 三模式 PASS |
+| Server 迁移目录与 `db/upgrade/` | 是 | `V0.1.7__baseline_seed.sql`＋`db/upgrade/0.1.7/`（本批次 `7bb2564`） | 链测试与 UAT 实跑 |
+| Web `package.json` | 是 | 已收敛 `0.1.7`（本批次 `4e89249`） | CI Release 标题/资产名回读 |
+| `todo/requirement-pool.md` | 否 | P65 已登记待排期，无本次变更 | — |
+| 两仓 `docs/governance/engineering-constitution.md`、`project.md`、`system.md`、`roles/` | 否 | 本次无模块/治理变更 | — |
+
+## 9. 自验结论
+
+S1—S7 执行侧自验通过（证据见 §3／§7）：探索核实、合并、版本与种子收敛、CI 发布、语义 tag、UAT 部署与可见会话核验均已完成；发布后同步的事实类入口已按 §8 落实，计数类唯一值与终态口径待规划下发后机械复核。未主张功能 `PASSED/COMPLETED`、未核销 P 编号、未改写历史。仍存三项待决：规划唯一同步值清单与复核、历史改写授权、语义 Release 资产通道。

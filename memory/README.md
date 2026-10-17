@@ -2,11 +2,11 @@
 
 ## 当前任务：0.1.7-bugfix
 
-2026-10-18｜Owner已宣布修复结束。清单43项全部已修复，42项Y、第25项仍N（有增补15修复记录）；42/43已保存为Y。以Owner整体结束裁决进入收尾，保留原表差异。记录：product/0.1.7-bugfix/receipts/planning-close-017.md。版本0.1.7已确认。
+2026-10-18｜0.1.7 已发布并部署（Owner 已确认版本；修复列车 43 项经 Owner 整体收口）。执行链：开发分支→develop→main 合入 → 版本/种子收敛（双方言单一 V0.1.7__baseline_seed.sql + db/upgrade/0.1.7 通道）→ 两仓 CI 发布（Web run 39067698896 success、Server run 23 success）→ 0.1.7 语义 tag → UAT 由 0.1.6 就地升级（S1 脚本；DB versioned 终点单条 0.1.7、R__ 应用 2 支、启动 ERROR 0、健康 200）。回执：product/0.1.7-bugfix/receipts/release-017-01.md。
 
-总7阶段2/1/4：流程版本确认、修复复测完成；信息同步与发版确认进行中；合并、发布、发布后同步、结束未开始。下一动作：Executor按search_task/release-017-close-readiness.md核实三仓Git、权威状态和发布准备，规划据回传给出同步值。方向：product/0.1.7-bugfix/ready/direction-release-handoff-017.md。
+总7阶段4/2/1：流程版本确认、修复复测、合并、发布完成；信息同步与发版确认（待规划唯一同步值清单）、发布后同步进行中；结束未开始。计数保持：正式功能 49、清单 46/22/22=90、ADV64/问题57、P62 延期/OFF；本列车不新增功能数、不核销 P；P65 独立待排期。
 
-Owner要求清单退出跟踪及清除Git历史，保留本地文件，当前与历史更名路径纳入范围核实；尚未执行取消跟踪、历史重写或强推。列车不新增业务功能数或核销P；P65为独立待排期需求。
+未决三项：①规划唯一同步值清单与复核；②Bug 清单退出跟踪与历史改写需 Owner 对精确范围授权（范围/恢复方案见 search_fallback/release-017-close-readiness.md）；③0.1.7 语义 Release 资产需 gh/令牌通道（本机无 gh；自动化通道已产出 build-<sha> Release 与 bootstrap-0.1.7.jar 资产）。
 
 ## 上轮发布归档摘要：0.1.6-release
 
