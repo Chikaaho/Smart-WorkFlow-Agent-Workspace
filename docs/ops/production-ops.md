@@ -265,6 +265,18 @@ STOP_TIMEOUT=30 ./stop.sh
   - `upgrade-to-0.1.6-from-0.1.5.<方言>.sql`：已衔接 0.1.5、未应用应用中心增量（versioned 终点=单条 `V0.1.5`）——增量 DDL + 同一历史衔接。
   - 顺序：备份（§9.1）→ 停服 → 执行脚本 → 替换服务端 jar 与前端静态（§8.1/§8.2）→ 启动 →
     核对日志 `Successfully validated …`、零 versioned 重放、DB versioned 终点=单条 0.1.6（checksum `-1768731444`）。
+- **0.1.7 起的主迁移形态**：每支持方言仍只有一条 versioned 迁移 `V0.1.7__baseline_seed.sql`
+  （= 0.1.6 种子与 0.1.7 菜单/应用范围增量逐字节拼接，仅新增段头）+ `R__` 可重复迁移（12 支/方言）；
+  开发新增迁移继续用 `V<yyyyMMddHHmmss>__<需求>.sql`。
+- **在役库衔接（0.1.7）**：仓库 `sw-bootstrap/src/main/resources/db/upgrade/0.1.7/` 提供两个一次性脚本
+  （**不在** Flyway 扫描路径内；单事务、恰好一次，重复执行显式失败）。按现场 `flyway_schema_history` 判定：
+  - `transition-history-to-0.1.7.<方言>.sql`：结构已达 0.1.7 终态（已应用 0.1.7 期增量，如开发库）——仅收敛历史记录；
+  - `upgrade-to-0.1.7-from-0.1.6.<方言>.sql`：已衔接 0.1.6、未应用 0.1.7 期增量（versioned 终点=单条 `V0.1.6`，**UAT 0.1.6 形态**）——增量 DDL + 同一历史衔接。
+  - 顺序：备份（§9.1）→ 停服 → 执行脚本 → 替换服务端 jar 与前端静态（§8.1/§8.2）→ 启动 →
+    核对日志 `Successfully validated …`、零 versioned 重放、DB versioned 终点=单条 0.1.7（checksum h2 `-1195786777`／postgresql `2016046975`）。
+  - 更早形态（0.1.5 及以前）先按 `db/upgrade/0.1.6/README.md` 到达 0.1.6 衔接态，再套用上表；≤0.1.2 旧链仍不支持原地升级。
+  - 注意：0.1.7 主链含演示种子 `R__0.1.7_org_demo_seed.sql`（租户 9001/9002、28 个演示用户），随启动自动装载；
+    如需在其它环境移除，删迁移文件并清理 9001/9002 租户数据即可（详见 `db/upgrade/0.1.7/README.md` 与回执）。
 
 ---
 
