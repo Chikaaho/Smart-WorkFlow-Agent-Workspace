@@ -383,3 +383,47 @@ Owner 提交补充批 22–26（全局返回/表头设置/按钮位/顶部噪音
   6. 时间格式的语言前缀（中文(中国)/英语(美国) 等本地化时段写法）。
 - 环境与数据：为让新文法在浏览器里真实可用，重建并重启了本地后端（`bootstrap.jar`，local profile，23:17 `Started StarterApplication`）；验证用的流程定义「123」编号规则已**还原为验证前值** `{YYYYMMDD}-{SEQ:3}{YYYYMMDD}`（psql 读回确认），未改动其它数据；网络索引（登录 / 列表 / 弹窗读规则 / 正例与两条反例 / 旧文法 / 保存 / 还原共 12 条请求与状态码）本地留存：`C:/Users/hjxch/AppData/Local/Temp/sw-017/b37-network-index.json`；未新建流程实例（编号物化口径由后端单测覆盖）。
 - Git：Web（本轮提交）、Server（本轮提交）、workspace（台账 #37 + 本增补）。
+
+---
+
+# 增补 21：#38 字段清单覆盖子表（明细表）字段 + 可编辑口径（发布过的字段只能改长度/名称/描述）
+
+- Owner 反馈（参考产品「数据模型」页截图）：字段清单也参考目标系统，不止包含主表单，还包含明细表这些表格子表单的字段，但不需要删除和停用，发布过的字段就只能改长度名称和描述了。
+- 实现（`FieldListPanel.vue` 新增，字段清单内容整体重做）：
+  - **表范围**：顶部「主表 / 各子表」范围切换——主表列出非 TABLE 字段，每个 TABLE 字段（子表）自成一个范围并列出其 `subFields`；TABLE 自身不出现在主表行里（它就是一张表）。
+  - **表名口径**：主表 = `formKey`，子表 = `formKey.子表字段编码`（与参考产品「表名：…」同位的表身份提示）。
+  - **列集**：序号 / 字段名 / 字段编码 / 控件类型 / 数据类型 / 字段长度 / 必填 / 描述。参考产品里的「索引」「状态（已生效/停用）」与操作列（停用·删除）**一律不做**——即 Owner 的「不需要删除和停用」；原清单的「约束 / 状态」派生列与「宽度」列随参考口径移除（宽度属画布布局，仍在右侧属性面板维护）。
+  - **可编辑项只有三项**：字段名（label）/ 字段长度（length）/ 描述（description），其余（字段编码、控件类型、数据类型、必填）为只读事实——即「发布过的字段只能改长度、名称和描述」。字段长度仅字符串族（TEXT / RICH_TEXT / DICT / DATASOURCE，即存储族 VARCHAR/TEXT）可改，其余类型显示「—」（`supportsFieldLength`，与 `getFieldTypeStorage` 同表）。
+  - **单一数据源**：行里的字段就是画布持有的字段对象（主字段或子表子字段）引用，编辑经 `applyFieldPatch` 写回并由宿主 `patchListedField` 应用，脏标记/保存状态机原样复用；主表字段与子表子字段同样可改。
+- 契约与适配（跨前端契约 + 服务端 DTO 同步）：
+  - `BaseField` / `TableSubField` 新增 `description?: string`；`FieldPatch` 新增 `description`；`parseDefinition` 主字段与子表子字段都透传 `description`（缺省不携带，历史定义零影响）。
+  - 服务端 `FormDefinitionSchema.FieldDef` 新增 `description`（注释写明：纯元数据，不参与发布校验、不产生动态列 DDL、不进入提交载荷，仅随 definition JSON 原样存取）。
+- 测试：新增 `FieldListPanel.spec`（6 条：主表/子表分组与表名、无删除停用、名称/描述补丁回抛、只读事实与长度适用范围、搜索过滤、空表提示）。全量 vitest **1602 通过 / 3 skipped**；vue-tsc 零错误；eslint 零错误；后端 `mvn -o -pl sw-bootstrap -am package -DskipTests` BUILD SUCCESS。
+- 浏览器自验（本地 5173 + 真实后端；自验用表单为本次专门创建、带子表的已发布表单）：
+  - 主表范围：`表名：fl_check_…`，「报销金额（单行文本/VARCHAR/200）」「申请日期（日期/DATETIME/—）」，无删除/停用列；
+  - 子表范围：`表名：fl_check_….items`，「费用项目（单行文本/VARCHAR/80）」「数量（数字/NUMERIC/—）」；
+  - 编辑 4 处（主表 名称 金额→报销金额、长度 100→200、描述 含税金额（元）；子表 名称 费用项→费用项目、长度 50→80、描述 明细费用项）→ 保存状态变「未保存」→「保存」后 Toast「草稿已保存」；
+  - **落库回读**（psql，服务端纯元数据透传）：`{"name":"amount",…,"label":"报销金额","length":200,…,"description":"含税金额（元）"}` 与 `subFields[0]{"label":"费用项目","length":80,"description":"明细费用项"}` 完全一致；
+  - 刷新页面后清单回显与保存前一致（往返一致）。截图本地留存。
+- 边界（供 Owner 裁量）：
+  1. 「添加字段 / 添加表」不在本清单（我们的字段来自画布组件库，参考产品的添加字段入口对应组件库，未重复提供）；
+  2. 子表字段的「控件类型」不可在本清单切换（属类型变更，与「发布过的字段只能改长度/名称/描述」一致）；草稿态如需换类型仍回画布/属性面板；
+  3. **既有服务端边界（非本轮引入）**：`publishNewVersion` 对含 TABLE 字段的表单直接拒绝（「新版本暂不支持新增或变更 TABLE 字段」），所以带子表的已发布表单目前只能保存定义、不能发布新版本；纯主表表单的名称/长度/描述改动可正常走「发布新版本」。若 Owner 需要子表也能发新版本，请作为独立项排期；
+  4. 描述为字段元数据，填报态暂未展示（本轮未纳入渲染）。
+- 环境与数据：验证前新建自验表单（含子表）并在验证后**软删**，环境回到原 3 张表单；为让服务端 DTO 变更生效已重建 `bootstrap.jar`（01:22）并重启本地后端（01:23 `Started StarterApplication`）。首次重建时目标 jar 被运行中的进程占用导致构建失败（`spring-boot:repackage` 报错），已先停进程再重建，流程已在本回执留痕。
+- Git：Web（本轮提交）、Server（本轮提交）、workspace（台账 #38 + 本增补）。
+
+---
+
+# 增补 22：#39 字段清单入口上收为居中页签（去掉左上角「设置」）
+
+- Owner 反馈（我方设计器截图，红框标在「设置」与「表单设计」之间的空白）：把现在的入口放到表单设计的左边，三个选项一起居中，tab 名「字段清单」，去掉原来左上角的「设置」。
+- 实现（`FormDesigner.vue` + `workbench.ts` + 新 `FieldListPanel.vue`）：
+  - 页签从「表单设计 / 流程设计」两页签改为 **字段清单 / 表单设计 / 流程设计** 三页签（字段清单在表单设计左侧），沿用既有居中页签组（`designer__tabs` 在 56px 工具条内绝对居中，`left:50% + translateX(-50%)`）——三个选项整组居中。
+  - 删除左上角「设置」下拉（`el-dropdown` + `designer__settings` 相关样式）与其命令处理：该下拉唯一入口就是字段清单，现已上收为页签，不再保留。
+  - 字段清单弹窗（1040px `fields-dialog`）整体移除：弹窗模板、`fieldsDialogVisible`、`fieldSearch`/`filteredFields`/`storageTypeOf`/`constraintOf` 与弹窗专用样式（含全局 `el-dialog.fields-dialog` 段 1.8KB）一并清理；内容改由 `FieldListPanel` 在页签内以整宽面板承载（原「导出字段」真实下载能力保留在该面板工具栏）。
+  - 深链：`parseWorkbenchTab` 支持 `fields`，`/form/designer/:id?tab=fields` 可直达字段清单工作区。
+- 测试：`FormDesigner.spec` 新增 2 条（三页签顺序且同处 `.designer__tabs` 居中页签组、无「设置」按钮、默认落表单设计；点字段清单页签后画布卸载、清单渲染），`workbench.spec` 补 `parseWorkbenchTab('fields')`。全量 vitest **1602 通过 / 3 skipped**；vue-tsc 零错误；eslint 零错误。
+- 浏览器自验（本地 5173 + 真实后端）：页签渲染为「字段清单 / 表单设计 / 流程设计」，页签组中心 x=640 与视口中心 640（1280×720）一致；左上角无「设置」按钮（仅「返回表单列表」+ 保存状态 + 面包屑）；点「字段清单」后整宽清单面板出现、画布卸载。截图本地留存。
+- 与 #38 的关系：两条为同一轮交付（#39 决定入口形态，#38 决定清单内容），同一提交内完成，互相依赖。
+- Git：Web（本轮提交）、Server（本轮提交）、workspace（台账 #39 + 本增补）。
