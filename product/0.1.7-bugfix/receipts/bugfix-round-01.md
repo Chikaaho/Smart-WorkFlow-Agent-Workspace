@@ -326,3 +326,17 @@ Owner 提交补充批 22–26（全局返回/表头设置/按钮位/顶部噪音
 - 测试：`AppWorkspace.spec`（#25 旧断言改为 #34 口径）——侧栏头含返回箭头 + 名称（文本与 title）+ 三项同排；底部「新建」入口在侧栏脚、包裹层与按钮结构齐备。全量 vitest **1584 通过 / 3 skipped**；vue-tsc 零错误；eslint 零错误。
 - 浏览器自验（本地 5173 + 真实后端，应用「灾备演练」）：头部渲染为 返回箭头 + 橙色应用图标 + 「灾备演练」（宽 56px，未触发截断）；底部「新建」按钮 216×32、x=12，与侧栏内距对齐；截断用**页面内探针**验证（仅临时改 span 文本为 10 字「灾备演练测试超长名称」，clientWidth 84 / scrollWidth 140 → 省略号生效，渲染为「灾备演练测…」），探针后已 reload 还原，未改数据库与接口数据；截图本地留存。
 - Git：Web（本轮提交）、workspace（台账 #34 + 本增补）。
+
+---
+
+# 增补 18：#35 应用目录可展开收起 + 右侧未选择态大图标占位
+
+- Owner 反馈（应用详情工作台截图，两处红框）：①点击目录要能展开/收起（原目录行不可点，子表单一律铺开）；②进入后未选择任何目录/表单时，右侧用大 icon +「暂无内容」提示语占位（原为一行的「请从左侧选择目录或表单」）。
+- 实现（`src/modules/form/views/AppWorkspace.vue`）：
+  - 目录展开态：组件内 `collapsedDirIds`（默认全部展开，仅视图态不落库）；目录行加 `role="button"` / `tabindex` / `aria-expanded`，点击与回车/空格均可切换；行首 `CaretRight` 指示（展开旋转 90°、收起朝右，150ms 过渡），行 hover 变色提示可点；⋯ 菜单沿用既有 `@click.stop`，点菜单不会收起目录；目录内表单以 `<template v-if="isDirExpanded(dir.id)">` 包住。
+  - 右侧占位：两态统一改为 `el-empty`（`image-size=120` 大图标）——空应用仍用原文案；未选择态主文案换为 `common.noContent`（暂无内容）+ 次级引导「请从左侧选择目录或表单」，样式 `.app-ws__placeholder(+-title/-hint)` 居中撑满；原 `.app-ws__empty` 文本态样式删除（无消费点）。
+- i18n：新增 `common.noContent`（zh 暂无内容 / en No content），双语同步。
+- 测试：`AppWorkspace.spec` +2 条（目录点击收起/展开 + ⋯ 菜单不改展开态 + aria-expanded；未选择态占位含「暂无内容」「请从左侧选择目录或表单」与 `.el-empty__image` 大图标）。全量 vitest **1586 通过 / 3 skipped**；vue-tsc 零错误；eslint 零错误。
+- 浏览器自验（本地 5173 + 真实后端，应用「灾备演练」）：目录行 `aria-expanded` true→false→true，目录内表单数 1→0→1，caret 收起态类名同步；右侧占位文案「暂无内容」「请从左侧选择目录或表单」、图形 120×131。截图本地留存。
+- 说明：本轮验证期间本地登录态过期，按回执 01 记录的本地开发口径（admin/admin123、验证码 1234）在登录页重新登录后继续，未改任何数据。
+- Git：Web（本轮提交）、workspace（台账 #35 + 本增补）。
