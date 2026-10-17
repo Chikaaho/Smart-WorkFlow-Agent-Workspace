@@ -472,3 +472,30 @@ Owner 提交补充批 22–26（全局返回/表头设置/按钮位/顶部噪音
   然后重启后端——Flyway 会因 `R__0.1.7_org_demo_seed.sql` 校验和变化重跑该迁移，按新口径（admin 角色授权集 ∪ 前台 7 页）重新授权，不再包含未自动授权的菜单。租户/组织/用户数据本身已是最终形态，无需重做。
 - 口径备注：本种子是**演示数据**（租户 code `demo-org-*`、用户名 `demo_*` 前缀），落在产品迁移目录以便 Owner 环境自动装载；如需在其它环境移除，删掉该迁移文件并清理 9001/9002 租户数据即可，不影响既有 tenant-0/default 数据。
 - Git：Web（本轮提交）、Server（本轮提交）、workspace（台账 #41 + 本增补）。
+
+
+---
+
+# 增补 25：#41 复审撤回画布底纹 → 流程集合区纯白背景；种子授权清理闭环
+
+- Owner 反馈（流程中心截图）：我要的是普通的纯白背景，不是网格画布，改一下，不通过。——第③项按 Owner 口径重做。
+- 实现（`src/modules/workflow/views/ProcessCatalog.vue`）：`.catalog-list` 移除首版 #41 加入的全部画布装饰（两条 linear-gradient 组成的 24px `#eef2f8` 网格 + `background-size: 24px 24px`、`dashed #c6cce0` 边框、12px 圆角、16px 内边距），改为普通纯白背景并回到 120px 最小高度：
+  ```css
+  .catalog-list {
+    min-height: 120px;
+    background: #fff;
+  }
+  ```
+- 自验（本地 5173 + 真实后端，用户可见会话，headless=false，1280×720，身份 admin/系统管理员）：
+  - `document.querySelector('.catalog-list')` 计算样式实测：`background-image: none`、`background-color: rgb(255, 255, 255)`、`border-style: none`、`border-width: 0px`、`border-radius: 0px`、`padding: 0px`、`min-height: 120px`——网格底纹与虚线圆角框均已不可见，即普通纯白背景。
+  - 回归第①②项：侧栏菜单首项仍为「流程中心」（菜单 320 sort=5）；分类面板 `top rect y=92` 与搜索工具栏 `y=92` 同高（240px / 732px 分栏不变），粘性行为不变。
+  - 截图（可见会话）：`C:/Users/hjxch/AppData/Local/Temp/sw-017/b41r-catalog-plain.png`；网络索引（登录 + 打开流程中心共 10 条请求，全部 200，含 `/api/auth/challenge`、`/api/auth/login`、`/api/system/auth/me`、`/api/system/auth/menus`、`/api/workflow/catalog/items`、`/api/workflow/catalog/categories`、`/api/workflow/catalog/category-counts`、`/api/workflow/favorites*`）：`C:/Users/hjxch/AppData/Local/Temp/sw-017/b41r-network-index.json`。
+- 自动化检查：`eslint src/modules/workflow/views/ProcessCatalog.vue` 零错误；受影响视图 `vitest run src/modules/workflow/views` 20 文件 133 通过；全量 `vitest run` **1604 通过 / 3 skipped**（与既有基线一致，无新增失败）。
+- 上轮遗留清理闭环（Docker 恢复后，dev 库 `sw_017_bugfix`，Owner 的 postgres 容器未由我方启停）：
+  - `delete from sys_role_menu where role_id in (9501,9502,9503,9504);` → `DELETE 290`；
+  - 重启本地后端（项目 `start.sh`，local profile）→ Flyway 日志：`Migrating schema "public" with repeatable migration "0.1.7 org demo seed"` → `Successfully applied 1 migration` → `Started StarterApplication in 29.686 seconds`；
+  - 重授实测：9501/9503=80 条、9502/9504=8 条，`menu_id in (209,210,211)` 命中 **0**；9502 授权集逐行核对＝父菜单 5（流程管理）+ 流程中心 320（sort=5）/待办 20/已办 21/我发起的 24/我的草稿 25/我的已办 26/抄送我的 321，共 8 条；
+  - 种子数据不变：租户 2、组织节点 14、用户 28（psql 计数），无需重做。
+- 环境清理：本轮启动的前端 dev server 与本地后端在验证完成后均已停止（后端 `stop.sh`），浏览器保留流程中心标签页。
+- 进度：0.1.7 回归批次台账 41 项，均已交付（#41 第③项按 Owner 复审重做）；进行中 0、未开始 0；等待 Owner 对 #37—#41 的回归结论。
+- Git：Web（本轮提交）、workspace（台账 #41 更新 + 本增补）。
