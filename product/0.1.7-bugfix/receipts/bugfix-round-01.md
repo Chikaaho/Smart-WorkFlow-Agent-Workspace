@@ -446,3 +446,29 @@ Owner 提交补充批 22–26（全局返回/表头设置/按钮位/顶部噪音
 - 工具留痕：本轮 IAB 出现「文档级导航被页面取消（ERR_ABORTED）」与旧标签页停在已删表单的两个工具侧问题；通过新开受控标签页完成验证，旧标签页未恢复（页面本身即已删除表单的停留态）。交互仍以页面脚本触发元素 click() + Playwright fill 输入，链路与副作用均为真实接口。
 - 未纳入本轮（供 Owner 裁量）：其它页面仍存在的说明性文案——组件属性面板扩展区空态说明「当前版本暂无可配置的扩展属性」（#36 引入）、流程编号弹窗内各要素的说明行（#37 引入，如「受控表达式：只读下列变量，不执行脚本」「该规则为必填配置…」）。若按同一口径收，请指示，一轮内可清。
 - Git：Web（本轮提交）、workspace（台账 #40 + 本增补）。
+
+---
+
+# 增补 24：#41 流程中心版式三项（侧栏置顶 / 分类面板平行 / 集合区画布底纹）+ 组织架构演示种子
+
+- Owner 反馈（流程中心截图，三处红框/箭头）：①流程中心在左侧侧边栏的位置需要置顶；②分类画布要和右侧搜索 bar 平行；③右下方的流程集合也要有画布底纹。另附需求④：整理一份组织架构数据作为种子，两个租户，结构中「总公司 →（分公司1 / 分公司2 → 部门1、部门2 → 团队1 / 分公司3）」，每个节点 2-4 个用户；管理员密码改 AdminP@ssw0rd，普通用户密码 123456。
+- ① 侧栏置顶（数据口径，非前端排序）：新增可重复迁移 `sw-bootstrap/src/main/resources/db/migration/{postgresql,h2}/R__0.1.7_catalog_menu_first.sql`，把「流程中心」（菜单 320 ProcessCatalog）的 `sort` 由 24 改为 5。前台侧栏渲染口径（`AppSidebar` catalogSlim → 门户区「流程管理」父菜单 5 的子项，按 sort 升序）：原顺序 待办10 / 已办20 / 我发起的21 / 我的草稿22 / 我的已办23 / 流程中心24 / 抄送我的25 → 现「流程中心」置顶。浏览器实测侧栏首项为「流程中心」。
+- ② 分类面板与搜索卡平行（前端）：`ProcessCatalog.vue` 里 `.catalog-tree` 的粘性偏移原为 `top: 76px`（按后台外壳高度估的值）；门户区内容区从顶部开始，粘性锚点因此把分类面板整体下压 48px（实测面板 y=140，而搜索卡片 y=92）。改为 `top: 12px`：静止时两者同高（实测 y 均为 92，宽 240 vs 732 分栏不变），滚动时面板贴内容区顶部。
+- ③ 流程集合区加画布底纹（前端）：`.catalog-list` 改为「画布式容器」——底纹与流程设计器画布同源（24px 网格、`#eef2f8` 线，用两条 linear-gradient 实现），外框用画布的虚线圆角框（`dashed #c6cce0`、半径 12px、白底）；分组带与条目仍在纹理之上，悬停高亮不变。
+- ④ 组织架构演示种子（可重复迁移，双方言）：`R__0.1.7_org_demo_seed.sql`（PG/H2 同构，全部 `INSERT … SELECT … WHERE NOT EXISTS` 幂等）：
+  - 租户：9001 `demo-org-a`「演示集团A」、9002 `demo-org-b`「演示集团B」（status=0 启用）。
+  - 组织（每租户 7 节点）：总公司（根）├ 分公司1 ├ 分公司2 ├ 部门1 / └ 部门2 └ 团队1 ├ 分公司3 —— 与 Owner 给的结构逐字对齐；部门带 code（`demo-a-hq` 等）与负责人（该节点第 1 个用户）。
+  - 用户：`demo_{a|b}_{hq|br1|br2|br3|dept1|dept2|team1}_{1|2}`，每节点 2 人（共 14 人/租户、28 人）。
+  - 角色与授权：每租户 `demo_admin`（租户管理员，数据范围 ALL；授权集＝既有 admin 角色 `role_id=2` 的产品授权集 ∪ 前台 7 页）与 `demo_user`（普通用户，数据范围 SELF；仅前台 7 页 + 所在分组）。
+  - 密码：BCrypt cost=10（与系统 `PasswordEncoder` 同参）——租户管理员与既有 `admin` 账号为 `AdminP@ssw0rd`，其余演示用户 `123456`。
+  - 既有 `admin`（sys_user.id=1）密码按 Owner 要求更新为 `AdminP@ssw0rd`；该更新只在本地 dev 库执行（未写入迁移，避免把生产管理员口令固化进产品迁移）；如需在其它环境同步：`UPDATE sys_user SET password='$2a$10$sj2aFVKYCMigtP4Lf31Y7O.UPgp5nKY3Xh6E2v4/FsU9ldYxzi95.' WHERE username='admin' AND deleted=0;`。
+- 测试与修正：`FlywayFullChainH2Test` **17/17**、`FlywayFullChainPostgresTest` **12/12**（含新种子的全链应用；PG 用嵌入式 PG，安全不触碰既有库）。同时修正两个测试里**陈旧**的计数断言：迁移链现为 14 条（V0.1.6 基线 + V0.1.7 + 12 个 R__），终点 versioned 版本为 0.1.7（原先写 11 条 / 终点 0.1.6，自 V0.1.7 加入后即未同步）；`repeatableCount` 期望 10 → 12。Web 全量 vitest **1604 通过 / 3 skipped**、vue-tsc 零错误、eslint 零错误。
+- 自验（浏览器 + 真实后端）：侧栏首项「流程中心」；分类面板 y=92 与搜索卡 y=92 同高；集合区 computed background-image 为 24px 网格、border 为 dashed #c6cce0、radius 12px；截图本地留存。
+- 自验（种子，本地 PG + 真实后端）：psql 核对——租户 9001/9002 各 7 个组织节点、每节点恰 2 个用户、树父子关系与 Owner 结构一致；登录链路（RSA + 验证码 1234）实测 `admin/AdminP@ssw0rd`、`demo_a_hq_1/AdminP@ssw0rd`、`demo_a_br2_1/123456`、`demo_b_team1_2/123456` 全部成功；权限口径实测普通用户 `GET /workflow/tasks/todo` 200、`POST /system/user/page` 403，租户管理员 `POST /system/user/page` 200 且只看到本租户 14 人（租户隔离成立）。
+- 遗留（环境侧，非代码）：本轮收尾阶段 Docker 守护进程停止，Owner 的 postgres 容器随之不可用（dev 库暂时连不上），因此**首版种子在 dev 库留下的角色菜单授权行（含 209/210/211 大模型管理菜单）尚未清理**。Docker 恢复后按顺序执行：
+  ```sql
+  delete from sys_role_menu where role_id in (9501, 9502, 9503, 9504);
+  ```
+  然后重启后端——Flyway 会因 `R__0.1.7_org_demo_seed.sql` 校验和变化重跑该迁移，按新口径（admin 角色授权集 ∪ 前台 7 页）重新授权，不再包含未自动授权的菜单。租户/组织/用户数据本身已是最终形态，无需重做。
+- 口径备注：本种子是**演示数据**（租户 code `demo-org-*`、用户名 `demo_*` 前缀），落在产品迁移目录以便 Owner 环境自动装载；如需在其它环境移除，删掉该迁移文件并清理 9001/9002 租户数据即可，不影响既有 tenant-0/default 数据。
+- Git：Web（本轮提交）、Server（本轮提交）、workspace（台账 #41 + 本增补）。
