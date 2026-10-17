@@ -426,4 +426,5 @@ Owner 提交补充批 22–26（全局返回/表头设置/按钮位/顶部噪音
 - 测试：`FormDesigner.spec` 新增 2 条（三页签顺序且同处 `.designer__tabs` 居中页签组、无「设置」按钮、默认落表单设计；点字段清单页签后画布卸载、清单渲染），`workbench.spec` 补 `parseWorkbenchTab('fields')`。全量 vitest **1602 通过 / 3 skipped**；vue-tsc 零错误；eslint 零错误。
 - 浏览器自验（本地 5173 + 真实后端）：页签渲染为「字段清单 / 表单设计 / 流程设计」，页签组中心 x=640 与视口中心 640（1280×720）一致；左上角无「设置」按钮（仅「返回表单列表」+ 保存状态 + 面包屑）；点「字段清单」后整宽清单面板出现、画布卸载。截图本地留存。
 - 与 #38 的关系：两条为同一轮交付（#39 决定入口形态，#38 决定清单内容），同一提交内完成，互相依赖。
+- 验证工具口径（留痕）：本轮 IAB 的鼠标点击未送达页面（locator click 无异常但 Vue handler 未触发，登录页与设计器页签均复现），按逃生舱口径改用**页面脚本触发元素 click()**；文本输入仍走 Playwright fill（真实 input 事件）；登录、保存、回读链路与副作用均为真实接口与真实落库（psql 回读确认）。网络索引（登录 / 建表单 / 发配置 / 发布 / 打开设计器 / 保存 / 刷新回显 / 清理共 11 条请求与状态码）本地留存：`C:/Users/hjxch/AppData/Local/Temp/sw-017/b3839-network-index.json`；截图 `b38-field-list-main.png`、`b38-field-list-subtable.png` 本地留存。
 - Git：Web（本轮提交）、Server（本轮提交）、workspace（台账 #39 + 本增补）。
