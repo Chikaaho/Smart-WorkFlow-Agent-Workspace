@@ -224,3 +224,21 @@ Owner 提交补充批 22–26（全局返回/表头设置/按钮位/顶部噪音
 - 自验：vue-tsc 零错误；全量 vitest **1563/1563**（含新增 2 条关系用例：参与人信息条/审批人动作卡）；后端 `mvn -DskipTests package` BUILD SUCCESS 并重启；浏览器三关系实测——APPROVER（form_mvb3uqg4+625a045e 运行中：信息条+驳回/通过）、PARTICIPANT（同表单 b4d2534d 已通过：仅信息条，状态「已通过」）、NONE（form_mvb9kf9w 无实例：纯详情）；内联审批与任务详情共用同一控制面（TaskDetail.spec 37/37 委托后行为不变）。未实际消费 Owner 的待办 20261016-001（避免动数据，链路与 TaskDetail 同源）。
 - 边界：数据行权限拒绝的无权限提示沿用记录加载错误告警（后端权威文案）；MyInstances/待办列表的既有入口不变（详情统一收敛到 FormRender 查看态）。
 - Git：Server `bugfix/0.1.7` 本轮提交（relations 端点）；Web `bugfix/0.1.7` 本轮提交；workspace 台账+回执本增补。
+
+---
+
+# 增补 10：#30 回归不通过重做——流程信息=表单外挂组件（单一控制面）+ 单一权限链
+
+- Owner 回归不通过三点：① 顶部「流程信息/流程/状态/发起人」信息条是无效信息，删除；② 页签应只叫「详情」；③ 表单画布必须止于最后一个组件，下方紧贴新开流程信息区，且与任务详情「图三」同一控制面。
+- Owner 业务规则（本轮回执固化）：表单可独立存在；流程必须依赖表单，流程信息只作为有流程的表单详情下的**外挂组件**渲染；两者共用一套权限控制——先判有无权限，再判是否参与人，再判是否审批人，再按当前节点控制字段显隐等属性；无流程时第一步（表单数据权限）通过即可查看。
+- 实现（单一控制面，零复制）：
+  - Web 新组件 `workflow/components/InstanceFlowPanel.vue`：流转记录/流程图/审批详情列表三页签 + 意见详情弹窗 + 进度右栏，全部由传入的真实审批历史派生；TaskDetail 删除原内联实现改为消费本组件（`InstanceFlowPanel.spec` 4 条覆盖派生/懒加载/缺图提示）。
+  - form 模块经新接缝 `adapters/instance-flow.ts`（defineAsyncComponent 动态 import）消费同一组件；表单详情不再自建流程视图。
+  - 后端 `GET /workflow/my/instances/relations` 补齐 `approvalHistory`（与「我发起的」详情共用同一 `buildApprovalHistory` 装配方法，含动作/结果/意见/参与人快照名）与 `instance.currentNodeKeys`；NONE 仍 fail-closed 不回传。
+  - 表单详情（FormRender）：删除顶部信息条与其 i18n 词条；`.form-render-page__sheet` 取消 `flex:1/min-height` 改为内容高度（画布止于最后一个组件）；外挂面板与动作卡同宽（622px@1280）居中，画布纵向 gap 8px 紧贴；查看态页签标题统一为「详情」（`window.document.title`，复用 `common.detail`）。
+  - 权限链顺序落地：`loadRecord` 返回是否通过第一关（表单数据读取）；仅通过后才查 relations（403 → 「无权限查看该数据」，1507 保持后端文案）；关系 NONE 或无实例 → 不渲染任何流程信息。
+  - 流转记录四列改 `110px minmax(90px,1fr) 100px minmax(120px,1.8fr)`：窄容器（622px）下事件/结果列不再被压成省略号（实测 24px → 233px）。
+- 自验：vue-tsc 零错误；全量 vitest **1569/1569**（新增 InstanceFlowPanel 4 条 + FormRender 权限顺序/无流程 2 条；TaskDetail 22/22）；后端 `BpmMyInstanceControllerTest` **8/8**（新增 3 条：审批人返回外挂流程信息/无关系 fail-closed/无实例不查任何流程数据）；后端重打包（17:43 fat jar）并重启。
+- 浏览器实测（系统管理员）：① Owner 原例 323232/33743480（已通过，参与人）——无信息条、画布止于多行文本、面板紧贴（gap=8px，宽 622=画布宽）三页签+真实流转行「10-17 02:18 审批 系统管理员 已同意 · 123332123」；② APPROVER（form_mvb3uqg4/625a045e）——面板+驳回/通过动作卡，流程图页签懒加载出图（pg-svg）；③ NONE（新建无流程记录 form_mvb9kf9w/f7fed0b6）——纯表单详情、无面板无动作卡；④ 任务详情（待办 20261016-001 进 TaskDetail）——同一组件渲染三页签、流程图出图、动作区完整；四例页签标题均为「详情」/「任务详情」。
+- 边界与数据：为验证 NONE 新建了一条无流程数据（form 323 / 记录 f7fed0b6，内容「回归06-无流程」，仅开发库）。节点字段三态（设计器配置）运行期仍未消费——「按当前节点控制字段」当前落在节点业务表单链路（TaskDetail nodeForm）与审批人动作上；若需在业务记录字段上按节点显隐/可编辑（涉及记录写路径），按原序号反馈再评估，本轮不虚构行为。
+- Git：Server/Web/workspace 三仓本轮提交（见各仓 log）。
