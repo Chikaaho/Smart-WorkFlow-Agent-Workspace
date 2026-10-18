@@ -1,5 +1,7 @@
 # 第41项返修首轮复核后的补充方向
 
+最新裁决：`../receipts/planning-review-reopen-041-02.md`。G1/G3及G2普通租户部分通过，正式与实际后端已为0.1.7（c6a7c06）；余admin人工登录后复验及收尾。下文执行前快照以该裁决更新，已过项不重跑。
+
 Owner执行中追加四项结束同步，见同目录 `direction-close-maintenance-017.md`：P62提交处置、version.json、knowledge轮转、已合并分支清理。原修复/同版本覆盖继续，整轮结束前一并交接核实。
 
 2026-10-18｜规划→执行。唯一缺口清单及完成标准：../receipts/planning-review-reopen-041-01.md 的G1—G3；沿用原方向，不新增无关验收门槛。

@@ -14,6 +14,8 @@
 
 未整分支盲合；`feature/p62-perf-bounded-20261011`（tip `7c30597`）保留。
 
+**规划裁决（复核02，2026-10-18）**：9 项继续延期（`6335f7f`、`f2af26b`、`1105361`、`fe549dc`、`b13b952`、`351c93e`、`9e2b07f`、`120bdbc`、`318b8a0`；claimDue 越过准入截止的改变不符合已通过合同，其余随性能实验保留、策略 OFF）；历史焦点文档 6 项（`4338c3f`、`83d582b`、`7caafb1`、`bc0bd03`、`a32cc76`、`7c30597`）不合入、留分支历史追溯；`08ed4c4` 行为核实完成＝**真实生产路径缺口确认**（UAT 轮转日志与制品 CI 成功 run 日志均实证同栈失败；详见 `../../search_fallback/p62-openapi-callback-product-gap.md`），是否重落地待规划决定。P62 处置本次部分闭环。
+
 ## 2. 版本声明收敛
 
 - 文件：工作区根 `version.json`（"单一机器可读源；变更须走新回执"——本回执即该回执）。
@@ -22,7 +24,7 @@
 
 ## 3. 权威状态轮转
 
-- `knowledge/current-status.md`：**252,299 B → 4,348 B**。轮转前全量快照原样归档 `knowledge/history/current-status-through-2026-10-18-reopen-041-followup-before.md`（252,299 B，未删改）；当前文件保留：本轮 G1—G3 当前条目＋轮转说明＋归档指针。第41项返修、同版本覆盖与本收尾四项均在当前条目/回执中，未丢失。session-handoff/memory/需求池随本轮同步（memory 四件合计 11.5KB<20KB、每件<5KB）。
+- `knowledge/current-status.md`：**252,299 B → 4,348 B**。轮转前全量快照原样归档 `knowledge/history/current-status-through-2026-10-18-reopen-041-followup-before.md`（252,299 B，未删改）；当前文件保留：本轮 G1—G3 当前条目＋轮转说明＋归档指针。第41项返修、同版本覆盖与本收尾四项均在当前条目/回执中，未丢失。session-handoff/memory/需求池随本轮同步。**口径更正（复核02）**：memory 上限按全部 8 件统计，执行侧当时仅统计四件不足以证明总量；规划已在复核时直接压缩，现 8 件合计 **19,681 B**（每件<5KB）达标，无需为此重跑业务测试。
 
 ## 4. 已合并分支清理（精确集合与恢复记录）
 
@@ -36,6 +38,6 @@ Web 删除 10（tip 恢复记录）：`0.1.1-bugfix`→281892e、`0.1.2-bugfix`�
 
 ## 5. 未解决项
 
-1. P62 提交去向为执行方建议，待规划裁决（尤其 `08ed4c4` 是否定性为 main 真实缺口并摘取重落地）；裁决前分支保留。
+1. P62 提交去向：规划已裁决（9 延期/6 不合入）；`08ed4c4` 行为核实完成＝**真实生产路径缺口**（证据见 `../../search_fallback/p62-openapi-callback-product-gap.md`），是否重落地待规划二次裁决；裁决前分支保留。
 2. `fix/super-tenant-visibility` 清理待第41项规划复核通过后另轮执行。
-3. f58e3ae 文档提交触发的 Server main CI run 结束状态以 Actions 页为准。
+3. f58e3ae（纯文档）main CI run `39117957733` **failure**＝`P63ReservationBoundaryPgTest.concurrentCancelVsClaimHasExactlyOneWinner:487`（时序族实例，已追加 `todo/p63-reservation-test-timing-stability.md`）；同代码基 c6a7c06 制品 run `39115050365` success。纯文档 CI 与已发布制品 CI 严格区分，制品绑定（c6a7c06·b016b5cc）不受影响。

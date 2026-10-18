@@ -15,7 +15,7 @@
 | tag `0.1.7` | 5af1329（标签对象 b6a69bd3） | **c6a7c06**（新标签对象 065e1b7；force-with-lease 绑定操作前远端值） |
 | Release `CH-aPaaS Server 0.1.7` 资产 | `bootstrap-0.1.7.jar` 218,033,508 B sha256 `309e9e1e…`（CI build-5af1329 产物） | **`bootstrap-0.1.7.jar` 218,033,795 B sha256 `b016b5cc…`**（CI run 39115050365 = build-c6a7c06 产物） |
 | UAT `/opt/smart-workflow/server/bootstrap.jar` | a4f641d4…（0.1.7-SNAPSHOT e2fe50f 修复构建） | **b016b5cc…**（与 Release 资产同一 CI 制品；`build.version=0.1.7`） |
-| CI（main） | run 39111840667（e2fe50f）failure＝P62UpgradeGatePgTest 领取竞态 | **run 39115050365（c6a7c06）success**；后续文档提交 f58e3ae 另触发 run，结果以 Actions 页为准（纯文档，不影响制品绑定） |
+| CI（main） | run 39111840667（e2fe50f）failure＝P62UpgradeGatePgTest 领取竞态 | **run 39115050365（c6a7c06）success**；后续文档提交 f58e3ae 触发 run 39117957733 **failure**＝`P63ReservationBoundaryPgTest.concurrentCancelVsClaimHasExactlyOneWinner:487`（时序族实例；纯文档 CI，与制品 run 严格区分，制品绑定不受影响） |
 | 前端 / DB | 0.1.7 / 0.1.7 | 不变（`4e89249` / 终点 0.1.7，无新迁移） |
 
 ## 3. 行为结果（本轮动作与验证）
@@ -40,4 +40,4 @@
 
 1. **admin 半边合规验收**：待 Owner 在已停留的 `chikaho.cn/login` 人工完成验证码登录；随后执行方补验 admin 用户/部门页（29/15）与视觉证据。在此之前第 41 项保持 VERIFYING，不判整项验收通过。
 2. **规划复核 `reopen-041-04`**（含本轮 G1 修复口径、覆盖后身份与 G2 剩余路径），及上轮遗留的可选裁定项（前端用户/部门列表是否补"租户"列、跨租户写是否需二次确认）。
-3. f58e3ae（纯文档）触发的 main CI run 结束状态以 Actions 页为准。
+3. f58e3ae（纯文档）触发的 main CI run 39117957733 failure＝`P63ReservationBoundaryPgTest` 时序族实例（同代码基 c6a7c06 制品 run success）；与制品 CI 区分记录，制品绑定不变。

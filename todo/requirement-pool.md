@@ -2,9 +2,13 @@
 
 ## 当前发布：0.1.7-bugfix
 
-本轮结束同步追加四项已完成（回执 `product/0.1.7-bugfix/receipts/close-maintenance-017-01.md`）：version.json对齐0.1.7（无代码消费者）、knowledge状态轮转（252,299→4,348 B，快照归档history/）、已合并分支清理（Server 8＋Web 10，tip恢复记录在回执；super-tenant与P62分支按方向保留）；P62遗留提交16项逐类事实已回传（`search_fallback/close-maintenance-017-facts.md`），去向建议待规划裁决（裁决前分支保留）。
+2026-10-18规划复核02：第41项VERIFYING，列车IN_PROGRESS。G1唯一超管保护通过（角色保留编码更新限制＋非0租户约束，14/0+14/0）；G3正式覆盖发布通过。正式＝实际后端0.1.7（c6a7c06，CI39115050365成功），前端0.1.7（4e89249）、DB0.1.7。G2普通租户14用户/7部门截图通过；admin半边待Owner人工验证码登录后补验29用户/15部门，不重跑已过项。
 
-2026-10-18｜0.1.7-bugfix **IN_PROGRESS（第41项返修VERIFYING）**。G1唯一超管边界已核实并修复（c6a7c06：角色更新拒绝保留编码改名＋身份装载超级租户约束，测试14/0+14/0）；G3同版本覆盖已执行：tag 0.1.7重指c6a7c06（lease保护）、Release资产换CI制品b016b5cc（原资产309e9e1e已仓库外备份）、CI run 39115050365 success、UAT部署同一CI制品（build.version=0.1.7、健康UP、ERROR 0）。G2合规验收路径：已登录授权会话（demo_a_hq_1）终态复验14条/本租户树＋视觉制品两件；admin半边待Owner在已停留的chikaho.cn/login完成验证码登录后补验29/15。正式后端0.1.7＝实际部署0.1.7（c6a7c06·b016b5cc），前端0.1.7（4e89249）、DB0.1.7不变。回执receipts/reopen-041-04.md；复核receipts/planning-review-reopen-041-01.md。功能49、46/22/22=90、ADV64/问题57、P核销空、P62延期/OFF、P65待排期不变。
+收尾部分完成：version.json=0.1.7；knowledge当前状态252299→4348B并完整归档；远程分支Server8/Web10已清理，super-tenant等第41项通过再删。P62：9项实验/迁移/装置延期，6项历史文档不合入（规划裁决）；08ed4c4回调缺口核实为真实生产/CI路径缺陷（UAT与制品CI实证），重落地待规划裁决，分支保留。收尾四项部分完成。
+
+下一动作：P62核实已回传（search_fallback/p62-openapi-callback-product-gap.md）待规划裁决；Owner登录后补admin用户/部门页29/15。裁决product/0.1.7-bugfix/receipts/planning-review-reopen-041-02.md；证据reopen-041-04、close-maintenance-017-01及search_fallback/close-maintenance-017-facts.md。
+
+返修7阶段：完成3（范围确认、必要合并、正式修复发布）；进行中3（修复复测、验收信息同步、发布后同步与收尾）；未开始1（结束）。功能49、46/22/22=90、ADV64/问题57、P核销空、P62性能延期/OFF、P65待排期保持。Bug清单仅本地留存，历史清理不重做。
 
 > 上一轮终态记录（2026-10-16，0.1.6-release）：**COMPLETED（规划已确认）**。用户验收、发布复核与终态同步均通过，最终裁决 `product/0.1.6-release/receipts/planning-final-review-terminal-sync-01-completed.md`；两端正式及部署版本 0.1.6（Web 发布来源 `e5aa357` 同版本覆盖、Server `e115857`）；验证集合 R016-VB01—04，五份方向归档 `passed/`；总 5 阶段 5/0/0，无剩余发布动作。后续 Server 文档 CI `38865882855` 的 2 项已知时序失败不影响正式制品，稳定性另列待办。
 
