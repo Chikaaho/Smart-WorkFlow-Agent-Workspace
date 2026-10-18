@@ -5,7 +5,7 @@
 ## 1. 修复对象与提交
 
 - 追加缺陷（L 级，后台租户隔离）：{@code @Async @TransactionalEventListener(AFTER_COMMIT)} 回调监听器在无请求线程身份时因租户行拦截器 fail-closed 抛错，导致提交后加速投递完全失效（生产 UAT 与制品 CI 日志均已实证，见核实回执）。
-- 修复提交：`00e0a73`（分支 `fix/openapi-callback-tenant-017` → `develop` → `main` 三支同点；CI run 39125380917 = __CI__）。
+- 修复提交：`00e0a73`（分支 `fix/openapi-callback-tenant-017` → `develop` → `main` 三支同点；CI run 39125380917 = **success**（全量测试＋prod 打包＋制品门禁；原占位文字按验收记录消解后本次一并更正）。
 - 变更摘要（2 产品文件＋2 测试文件，+525/−7；不含装置/迁移/无关项）：
   1. `OpenApiCallbackListener.onEvent` 入口按事件携带的权威租户还原系统执行身份（对齐 `BpmNotifyListener` 既有范式：set→try→finally clear），使租户行过滤保持生效而不再 fail-closed；事件缺失租户身份时拒绝处理（warn 日志，不查库不投递），不回退为全局查询。
   2. `OpenApiCallbackDeliveryService.record` 投递记录租户显式取事件租户（归属不依赖任何线程兜底填充）。

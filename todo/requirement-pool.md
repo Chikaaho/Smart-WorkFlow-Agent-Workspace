@@ -2,13 +2,13 @@
 
 ## 当前发布：0.1.7-bugfix
 
-2026-10-18规划裁决：列车IN_PROGRESS，第41项VERIFYING。G1/G3及普通租户14用户/7部门通过；admin页面仍待Owner人工登录后复验29/15。当前正式与实际后端0.1.7（00e0a73·d8b390c1，第二次同版本覆盖后），前端0.1.7（4e89249），DB0.1.7。
+2026-10-18规划验收：openapi追加修复PASSED，列车IN_PROGRESS，第41项PASSED（Owner复测通过）。旧代码3例红，修复后PG异步/双租户/去重3/0，模块14/0；正式与实际后端0.1.7（00e0a73·d8b390c1，CI39125380917），前端0.1.7（4e89249），DB0.1.7。裁决product/0.1.7-bugfix/receipts/planning-review-openapi-callback-017-01-passed.md。
 
-P62的16提交去向已定：08ed4c4真实异步回调缺陷独立修复，9项性能相关延期，6项历史文档不合入，原分支保留。UAT及制品CI日志证实异步监听缺租户上下文失败；修复后双租户正确性已经真实PG e2e实测（3/0）；修复已随第二次同版本覆盖发布（回执openapi-callback-017-01待验收）。版本声明、知识轮转、Server8/Web10远程分支清理已通过；super-tenant分支等第41项通过再删。
+第41项G1/G3及普通租户14用户/7部门通过，Owner已确认admin密码与租户权限异常验证通过，剩余人工登录依赖解除。P62去向落实：1项产品修复已通过并发布，9项性能相关延期，6项历史文档不合入，原分支保留。版本声明、知识轮转、Server8/Web10远程分支清理通过。
 
-唯一下一动作：规划验收openapi-callback-017-01（00e0a73随0.1.7第二次同版本覆盖发布：资产/UAT=d8b390c1、CI39125380917绿）；人工登录就绪后并行补admin页面。最新裁决receipts/planning-review-close-maintenance-017-02.md；原通过项见planning-review-reopen-041-02.md。文档CI39117957733为已登记P63时序失败，与c6a7c06成功制品CI分列。
+下一动作：收尾同步已执行（回执receipts/final-sync-callback-017-01.md；两任务分支已清理回读 tips=00e0a73/f58e3ae，P62原分支保留），待规划复核收尾回执；Owner通过记录见receipts/owner-acceptance-reopen-041-passed.md。回调主方向在passed，同步方向在ready。
 
-新增修复后7阶段：完成5（范围评估、实现与复测、合并、新修复发布、发布后同步）；进行中1（验收同步：回执已交付待规划验收）；未开始1（整轮结束）。功能49、46/22/22=90、ADV64/问题57、P核销空、P62性能延期/OFF、P65待排期不变。Bug清单仅本地留存。
+总7阶段：完成4（范围评估、实现复测、合并、新修复发布）；进行中2（验收信息同步、发布后同步及收尾）；未开始1（结束）。功能49、46/22/22=90、ADV64/问题57、P核销空、P62性能延期/OFF、P65待排期保持。Bug清单仅本地留存；历史文档CI时序失败按既有待办跟踪。
 
 > 上一轮终态记录（2026-10-16，0.1.6-release）：**COMPLETED（规划已确认）**。用户验收、发布复核与终态同步均通过，最终裁决 `product/0.1.6-release/receipts/planning-final-review-terminal-sync-01-completed.md`；两端正式及部署版本 0.1.6（Web 发布来源 `e5aa357` 同版本覆盖、Server `e115857`）；验证集合 R016-VB01—04，五份方向归档 `passed/`；总 5 阶段 5/0/0，无剩余发布动作。后续 Server 文档 CI `38865882855` 的 2 项已知时序失败不影响正式制品，稳定性另列待办。
 
@@ -566,7 +566,7 @@ P58已于2026-09-04功能级 **PASSED**（规划验收08）＋阶段三终态同
 | P26 | M01-F01-05 负责人设置 | 原D83“无leader列”为历史事实；2026-10-06 P63探索确认单值leader_id及负责人解析已交付，见P63回执Q1/Q4 | 保留原未核销状态；本轮仅更正现状，不据静态探索核销 |
 | P27 | M01-F02-05 人员批量导入导出 | 全仓无 excel/POI/Workbook 引用 | 未排期 |
 | P28 | M01-F04-01 用户组管理 | 全仓 grep 零命中 | ✅ **已核销**（2026-08-19，user-group-membership D117 PASSED + 阶段三 COMPLETED） |
-| P29 | M01-F05-01 租户/公司管理 | 有 sys_tenant 表+seed+TenantLineHandler 列级隔离，但无实体/Controller/管理页（"维护"未实现） | 未排期 |
+| P29 | M01-F05-01 租户管理与超级管理员租户归属展示 | 已有租户能力，补齐管理入口；超级管理员在用户、部门等跨租户管理页可见所属租户并按租户筛选，操作目标归属明确。Owner 2026-10-18补充；[需求定义](p29-tenant-management.md)，实现现状立项时核实 | 待做、未排期；至少L级；版本待定 |
 | P30 | M02-F05-01 资源管理 | 鉴权执行机制有，但 API 资源注册表+鉴权策略配置无实体/端点/页面 | 未排期 |
 | P31 | M02-F06-02 单点登录 | 钉钉/飞书接入已PASSED；后台配置/B端准入已COMPLETED（规划确认，2026-09-29） | 企业微信延期，开放未核销；裁决 `product/sso-admin-config/receipts/planning-final-review-terminal-sync-01-completed.md` |
 | P32 | M03-F04-02 表单数据导入导出 | 全仓库零代码 | ✅ **已核销**（2026-08-29，form-data-import-export 功能级 PASSED + 阶段三终态同步 COMPLETED；M03-F04-02 升✅、清单 ✅32/🟦25/⬜33、功能数 36、基线 947/0/0/0（agent346）、110f/1057t/3skipped、Flyway H2 V43/PG V43——历史终态；当前正式基线经 minimal-closure-first-acceptance 审计更新为 955/1060/V44，功能数 36、清单 ✅32/🟦25/⬜33 不变） |

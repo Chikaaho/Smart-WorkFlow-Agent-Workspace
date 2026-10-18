@@ -1,5 +1,7 @@
 # 0.1.7收尾：openapi异步回调租户上下文修复
 
+2026-10-18规划PASSED，见../receipts/planning-review-openapi-callback-017-01-passed.md；后续同步见../ready/direction-final-sync-callback-017.md。
+
 2026-10-18｜规划→执行。承接Owner本轮P62提交取舍要求及规划处置裁决，按L级处理（后台租户隔离）。作为当前修复列车追加缺陷，不新计业务功能、不核销P62性能延期。
 
 ## 目标与范围
