@@ -1,14 +1,14 @@
 # memory 使用说明
 
-## 当前任务：0.1.7返修最终收尾
+## 当前状态：0.1.7-bugfix COMPLETED
 
-2026-10-18规划验收：openapi追加修复PASSED，列车IN_PROGRESS，第41项PASSED（Owner复测通过）。旧代码3例红，修复后PG异步/双租户/去重3/0，模块14/0；正式与实际后端0.1.7（00e0a73·d8b390c1，CI39125380917），前端0.1.7（4e89249），DB0.1.7。裁决product/0.1.7-bugfix/receipts/planning-review-openapi-callback-017-01-passed.md。
+2026-10-18规划最终确认本轮完成。第41项由Owner复测通过，openapi异步回调修复通过并发布；最终裁决product/0.1.7-bugfix/receipts/planning-final-review-017-repair-completed.md。终态同步证据final-sync-callback-017-01.md，全部方向已归档passed。
 
-第41项G1/G3及普通租户14用户/7部门通过，Owner已确认admin密码与租户权限异常验证通过，剩余人工登录依赖解除。P62去向落实：1项产品修复已通过并发布，9项性能相关延期，6项历史文档不合入，原分支保留。版本声明、知识轮转、Server8/Web10远程分支清理通过。
+正式与实际后端0.1.7（00e0a73·d8b390c1），前端0.1.7（4e89249），DB0.1.7；Server开发0.1.7-SNAPSHOT，Web开发0.1.7。修复远程分支openapi/super-tenant均已删除并回读，恢复tip见同步回执；既有Server8/Web10清理结果保持。P62原分支保留，1项产品修复交付、9项延期、6项历史文档不合入。
 
-下一动作：收尾同步已执行（回执receipts/final-sync-callback-017-01.md；两任务分支已清理回读 tips=00e0a73/f58e3ae，P62原分支保留），待规划复核收尾回执；Owner通过记录见receipts/owner-acceptance-reopen-041-passed.md。回调主方向在passed，同步方向在ready。
+总7阶段7/0/0：范围评估、实现复测、验收信息同步、合并、发布、发布后同步、结束全部完成。功能49、46/22/22=90、ADV64/问题57、P核销空、P62性能延期/OFF保持。版本声明与知识轮转完成，Bug清单仅本地留存，历史清理不重做。
 
-总7阶段：完成4（范围评估、实现复测、合并、新修复发布）；进行中2（验收信息同步、发布后同步及收尾）；未开始1（结束）。功能49、46/22/22=90、ADV64/问题57、P核销空、P62性能延期/OFF、P65待排期保持；P29补充租户管理及超管归属展示，见todo/p29-tenant-management.md，待排期。Bug清单仅本地留存；历史文档CI时序失败按既有待办跟踪。
+活动交付无；下一动作等待Owner安排需求。P29租户管理及超管归属展示（todo/p29-tenant-management.md）、P65表单JS均待排期。最终裁决供Executor机械传播knowledge终态，不重新开启发布或验收；历史CI时序问题沿既有待办跟踪。
 
 ## 上轮发布归档摘要：0.1.6-release
 
