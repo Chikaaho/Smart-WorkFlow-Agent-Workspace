@@ -21,6 +21,6 @@
 
 ## 0.1.7 Bug修复（Owner 2026-10-16）
 
-唯一清单 `product/0.1.7-bugfix/0.1.7bug.md`，发布版本0.1.7已确认。Owner与Executor直接反复修复/复测：Executor修复自验后填“是”，Owner填回归结果；修复验收由Owner完成。Owner宣布修复结束后，规划办理信息同步与发版确认，Executor承接合并、发布及发布后同步。细则见 `product/0.1.7-bugfix/ready/direction-bugfix-017.md`。
+唯一清单 `product/0.1.7-bugfix/0.1.7bug.md`，发布版本0.1.7已确认。Owner与Executor直接反复修复/复测：Executor修复自验后填“是”，Owner填回归结果；修复验收由Owner完成。Owner宣布修复结束后，规划办理信息同步与发版确认，Executor承接合并、发布及发布后同步。细则见 `product/0.1.7-bugfix/passed/direction-bugfix-017.md`。
 
 清单自 2026-10-18 起仅本地留存：已退出 Git 跟踪并加入 `.gitignore`（历史已按 Owner 精确授权在根仓 `develop-sw` 重写，其他克隆需按新 SHA 重新对齐）。不得用 `git add -f`、新建受跟踪副本或其他方式把清单正文带回仓库。语义 Release 经既有 git 凭据通道创建：不索要明文 token，不在日志、文档或回执中回显凭据值。
