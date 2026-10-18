@@ -10,7 +10,7 @@ CH-aPaaS 是面向企业协作场景的低代码 PaaS 与 AI Agent 平台。项�
 
 ## 当前发布
 
-当前正式版本 **0.1.7**（2026-10-18 发布，并在 UAT 由 0.1.6 就地升级部署；0.1.7 为 Bug 修复列车 43 项，不新增业务功能数）。两仓公开 Release：[`CH-aPaaS Server 0.1.7`](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server/releases/tag/0.1.7)（资产 `bootstrap-0.1.7.jar`；**2026-10-18 经 Owner 授权同版本覆盖**，改绑第 41 项返修最终提交 Server `c6a7c06`、资产 sha256 `b016b5cc…`，原 `5af1329`·`309e9e1e…` 历史保留于发布说明）与 [`CH-aPaaS Web 0.1.7`](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web/releases/tag/0.1.7)（资产 `sw-web-dist-0.1.7.zip`）；发布源提交 Web `4e89249`，开发默认版本 Server `0.1.7-SNAPSHOT`、Web `0.1.7`。发布说明与历史版本见 [`CHANGELOG.md`](CHANGELOG.md)，发布、升级与回滚材料见 [`docs/ops/production-ops.md`](docs/ops/production-ops.md) §8/§9，回执见 [`product/0.1.7-bugfix/receipts/`](product/0.1.7-bugfix/receipts/)。
+当前正式版本 **0.1.7**（2026-10-18 发布，并在 UAT 由 0.1.6 就地升级部署；0.1.7 为 Bug 修复列车 43 项，不新增业务功能数）。两仓公开 Release：[`CH-aPaaS Server 0.1.7`](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server/releases/tag/0.1.7)（资产 `bootstrap-0.1.7.jar`；**2026-10-18 经 Owner 授权同版本覆盖（两次）**，最终改绑 openapi 回调租户上下文修复提交 Server `00e0a73`、资产 sha256 `d8b390c1…`；此前 `c6a7c06`·`b016b5cc…` 与更早 `5af1329`·`309e9e1e…` 身份均保留于发布说明）与 [`CH-aPaaS Web 0.1.7`](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web/releases/tag/0.1.7)（资产 `sw-web-dist-0.1.7.zip`）；发布源提交 Web `4e89249`，开发默认版本 Server `0.1.7-SNAPSHOT`、Web `0.1.7`。发布说明与历史版本见 [`CHANGELOG.md`](CHANGELOG.md)，发布、升级与回滚材料见 [`docs/ops/production-ops.md`](docs/ops/production-ops.md) §8/§9，回执见 [`product/0.1.7-bugfix/receipts/`](product/0.1.7-bugfix/receipts/)。
 
 ## 项目能力
 
