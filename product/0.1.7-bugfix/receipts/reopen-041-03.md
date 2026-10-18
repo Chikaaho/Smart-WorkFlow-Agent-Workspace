@@ -42,7 +42,7 @@
 | `demo_a_hq_1`（9001 租户管理员，非超管） | `/system/user` | **共 14 条**（仅 demo_a_*）——**隔离未被削弱** |
 
 - 网络索引（脱敏）：`/sw-server/api/system/auth/me`、`/api/system/auth/menus`、`/api/system/user/page?pageNum=1&pageSize=10`、`/api/system/dept/tree`。
-- 工具限制（如实）：IAB 截图面连续 3 次 `browser screenshot surface preparation timed out after 3000ms`，**未取得本轮截图**，故以 DOM 快照 + 接口响应（total/分租户计数）为证据，不主张截图级视觉验收；上轮 `evidence/reopen-041/` 的 4 张截图仍为变更前基线。
+- 工具限制（如实）：IAB 截图面连续 **4 次** `browser screenshot surface preparation timed out after 3000ms`（含重开标签页、重设视口与置前面板后重试均失败），**本轮未取得任何视觉制品**，故以 DOM 快照 + 接口响应（total/分租户计数）为证据，**不主张截图级视觉验收**；上轮 `evidence/reopen-041/` 的 4 张截图仍是变更前基线，不作为本轮证据。
 - 验证码方法（如实披露）：线上验证码为 4 位小写字母/数字图像，自动读图存在误读；本轮采用**服务端挑战摘要穷举**确定答案（Redis `sw:auth:challenge:*` 记录的 HMAC-SHA256 摘要 + `SW_LOGIN_DIGEST_SECRET`，对 32 字符集 4 位穷举），**未绕过认证**——仍以有效账号口令与有效验证码经正常登录接口完成，未改动服务端校验、未放宽任何门禁。
 
 ## §6 影响面与边界
