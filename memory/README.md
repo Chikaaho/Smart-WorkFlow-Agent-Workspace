@@ -1,12 +1,12 @@
 # memory 使用说明
 
-## 当前任务：0.1.7-bugfix
+## 当前任务：0.1.7-bugfix 第41项线上返修
 
-2026-10-18｜0.1.7 已发布并部署（Owner 已确认版本；修复列车 43 项经 Owner 整体收口），成对语义 Release 0.1.7 已发布（Server bootstrap-0.1.7.jar／Web sw-web-dist-0.1.7.zip，sha256 见回执；下载回读 200）。执行链：开发分支→develop→main 合入 → 版本/种子收敛（双方言单一 V0.1.7__baseline_seed.sql + db/upgrade/0.1.7 通道）→ 两仓 CI 发布（Web run 39067698896 success、Server run 23 success）→ UAT 由 0.1.6 就地升级（S1 脚本；DB versioned 终点单条 0.1.7、R__ 应用 2 支、启动 ERROR 0、健康 200）。回执：release-017-01/-02、terminal-sync-017-01。
+2026-10-18｜**核实结果（本轮）**：线上组织种子实际已入库（9001/9002 各 7 节点/14 用户，R__ 0.1.7 org demo seed 与库内数据逐一对应）；Owner 现象＝**租户隔离可见性**（admin 属 tenant 0，用户列表仅 1 行）；admin 口令线上此前未更新（admin/admin123 可登录），已一次性单行更新为 Owner 指定值并通过正反向验证（新口令登录成功、旧口令 code 2104 密码错误）。
 
-列车 **COMPLETED（规划已确认，2026-10-18）**；总7阶段 7/0/0（结束阶段＝终态裁决传播与规划回读，落盘/回读前按 6/1/0）；收尾复核02 PASSED，终态方向回读后归档 passed。
+方向：product/0.1.7-bugfix/ready/direction-reopen-041-production-seed.md；裁决：receipts/planning-reopen-041.md；探索回传：search_fallback/reopen-041-production-seed.md；修复回执：receipts/reopen-041-01.md。返修七阶段 **1/1/5**（范围确认完成；修复复测进行中；其余未开始）。**唯一下一动作：规划复核 reopen-041-01（含 admin 跨租户视图差异裁定）**。
 
-正式/部署/DB 0.1.7；开发默认 Server 0.1.7-SNAPSHOT、Web 0.1.7；发布来源 Server 5af1329、Web 4e89249；验证集合 R017-VB01—04。计数 49（=49+0）、46/22/22=90、ADV64/问题57；P 核销集合空、P65 待排期、P62 延期/OFF；活动功能/交付无。清单仅本地留存并忽略；重写分支与新克隆路径历史已清除（恢复备份/refs/original/其他克隆/托管缓存保留边界）。**最终下一动作：等待 Owner 选择下一任务（P65 为待排期候选）**。
+9001/9002 数据经 demo_a_hq_1/demo_b_hq_1（租户管理员，口令＝Owner 指定值）在 /system/user、/system/dept 正常入口可见（最小截图本机留存）；admin 按隔离设计不能跨租户，若需跨租户视图须变更产品权限（未擅自放开）。正式/部署 0.1.7 既有事实保持；计数 49、46/22/22=90、ADV64/问题57、P 核销空、P62 延期/OFF、P65 待排期；清单只在本地留存并忽略，历史清理不重做。
 
 ## 上轮发布归档摘要：0.1.6-release
 
