@@ -56,8 +56,8 @@
 
 ## §4 三仓引用与 gitlink（区分文档 HEAD 与发布源提交）
 
-- 工作区（本仓）：`develop-sw` = 本批终态同步提交（推送后回读，见 §7 补记）；`main` = `51732b1e`（未变）；gitlink：Server、Web 见下（本批随子仓文档提交更新）。
-- Server：文档 HEAD `develop`=`main` = 本批功能清单文档提交；**发布源提交 `5af1329`**（tag `0.1.7` = annotated `b6a69bd` → `5af1329`），本轮不改动发布源。
+- 工作区（本仓）：`develop-sw` = `e8b54c86b9409095c9cc6a970778cdbba0147b89`（本批终态同步提交，推送后 `git ls-remote` 回读一致）；`main` = `51732b1e`（未变）；gitlink：Server = `591da29c18a207623d4fb31db466ae47a3c7a58c`、Web = `264cca32ab95fc8fc5f18d9a1c0668a93250bfb8`（与两子仓 HEAD 一致）。
+- Server：文档 HEAD `develop`=`main` = `591da29c18a207623d4fb31db466ae47a3c7a58c`（功能清单终态同步）；**发布源提交 `5af1329`**（tag `0.1.7` = annotated `b6a69bd` → `5af1329`），本轮不改动发布源。
 - Web：文档 HEAD `develop`=`main` = `264cca3`（本轮无 Web 改动）；**发布源提交 `4e89249`**（tag `0.1.7` = annotated `c9e5cda` → `4e89249`）。
 - 文档提交与发布源分离：语义 Release 资产绑定发布源提交的 CI 制品，文档提交不改变已发布制品身份。
 
@@ -65,7 +65,7 @@
 
 - Web 文档提交 `264cca3`：run `39098367264` **success** → 自动 Release `build-264cca32…`（`latest` 指针移至该 build Release，与 0.1.6 轮同现象）；语义 Release `0.1.7` 及其资产未受影响、未被覆盖。
 - Server 文档提交 `bcc87c3`：run `39098217671` 回执时仍 in_progress；更早文档提交 `8996692` 的 run `39078620834` **failure**，失败类为既有 **P63 预约窗口时序族**（`P63ReservationBoundaryPgTest`），已登记 `todo/p63-reservation-test-timing-stability.md`，不影响正式制品（发布制品来自 run `39075822129`/`5af1329` success）。
-- 本轮新增 Server 功能清单文档提交将触发新的 main 构建（观察中）；对当前制品与语义 Release 无影响。
+- 本轮 Server 功能清单文档提交 `591da29` 触发 run `39099000058`（回执时 in_progress）；文档提交 `bcc87c3` 的 run `39098217671` 同时 in_progress；两运行对当前制品与语义 Release 无影响，结果以 GitHub Actions 页面为准。
 
 ## §6 归档指向核实
 
@@ -76,4 +76,4 @@
 - 仅传播裁决与核对当前入口：未新增业务验收、未重跑业务测试、未重新发布/部署、未改动 tag/Release、未再执行历史清理。
 - 受影响当前入口无旧下一动作（终态条目统一为"等待 Owner 选择下一任务（P65 为待排期候选）"）；历史回执与历史条目保留原时点。
 - memory 满足每短文件 <5 KB、总量 <20 KB；P65 及其它并行改动保留；未重新纳入本地 Bug 清单正文（清单仍仅本地留存且被忽略）。
-- 推送后回读：根仓 `develop-sw` 与两子仓 `develop`/`main` 以 `git ls-remote` 为准（本批文档提交 SHA 记于提交说明与 §4）。
+- 推送后回读（`git ls-remote`）：根仓 `develop-sw`=`e8b54c86b9409095c9cc6a970778cdbba0147b89`、`main`=`51732b1ec411da4053a30116ac5fe8c6b014d492`；Server `develop`=`main`=`591da29c18a207623d4fb31db466ae47a3c7a58c`；Web `develop`=`main`=`264cca32ab95fc8fc5f18d9a1c0668a93250bfb8`。
