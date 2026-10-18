@@ -2,11 +2,17 @@
 
 ## 当前任务：0.1.7-bugfix 第41项线上返修
 
-2026-10-18｜**核实结果**：线上组织种子已入库（9001/9002 各 7 节点/14 用户，与 R__ 种子对应）；admin 口令线上此前未更新，已一次性单行更新为 Owner 指定值（新口令成功/旧口令 code 2104）。**Owner 澄清 tenant 0＝超级租户（＝系统超管，仅一个用户）应见全部数据；已按原始设计恢复超管旁路**（CommonTenantLineHandler 接入既有 isSuperAdmin；一处生产改动），UAT 已换包部署。
+2026-10-18｜返修复核补充（G1—G3）：VERIFYING，列车IN_PROGRESS。G1唯一超管边界已核实并修复（c6a7c06）：真实缺口＝角色更新可把已绑定普通角色改名为code=superadmin（角色编码查重为租户内），现update同等拒绝保留编码、身份装载叠加超级租户0约束；测试14/0+14/0；线上superadmin角色与绑定均唯一（admin@0，tenant 0仅1用户）。
 
-方向：ready/direction-reopen-041-production-seed.md；裁决：receipts/planning-reopen-041.md；回传：search_fallback/reopen-041-production-seed.md；回执：receipts/reopen-041-01/02/03.md。分支 fix/super-tenant-visibility→develop→main（e2fe50f）；全量 13 模块 1800/0/0/0、制品门禁 PASS（0.1.7-SNAPSHOT 修复构建，无新版本）。**唯一下一动作：规划复核 reopen-041-01/02/03（含超管跨租户验收口径）**。
+G2改用已登录授权会话：demo_a_hq_1在终态构建复验用户14条/部门树仅本租户，视觉制品已取得（evidence/reopen-041/两件）；admin半边待Owner在已停留的chikaho.cn/login完成验证码登录后补验29/15；服务端摘要穷举方法已停用不留存。G3同版本覆盖已执行：原资产309e9e1e仓库外备份＋运行包a4f641d4记录、tag 0.1.7 lease重指c6a7c06（065e1b7）、Release资产换CI制品b016b5cc（说明保留原历史事实）、CI run 39115050365 success（自动发布build-c6a7c06）、UAT部署同一制品（build.version=0.1.7、UP、ERROR 0、179.196s）。e2fe50f的run 39111840667 failure＝P62UpgradeGatePgTest领取竞态（同提交本地绿，todo/p62-upgrade-gate-test-claim-race.md）。
 
-线上验证：admin 用户 **29 条**/部门树 **15 节点**；demo_a_hq_1 仍 **14 条**（隔离未削弱）；截图面工具超时如实披露。计数 49、46/22/22=90、ADV64/问题57、P 核销空、P62 延期/OFF、P65 待排期；清单只在本地留存并忽略。
+版本身份：正式＝实际后端0.1.7（c6a7c06·b016b5cc）、前端0.1.7（4e89249）、DB0.1.7（无新迁移）。回执receipts/reopen-041-04.md。
+
+唯一下一动作：Owner完成admin验证码登录→执行方补验admin用户/部门页→规划复核reopen-041-04。七阶段3/3/1保持（修复复测余admin半边待Owner）。
+
+收尾四项已完成（receipts/close-maintenance-017-01.md）：version.json→0.1.7、current-status轮转252KB→4.3KB（快照归档history/）、分支清理Server8+Web10（tip记录在回执，super-tenant与P62分支保留）、P62分支16提交分类事实已回传待规划裁决。
+
+功能49、46/22/22=90、ADV64/问题57、P核销空、P62延期/OFF保持；P65待排期。其它已过项锁定；清单仅本地留存，历史清理不重做。
 
 ## 上轮发布归档摘要：0.1.6-release
 
