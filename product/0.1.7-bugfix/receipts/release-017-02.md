@@ -27,7 +27,7 @@
 - Server：[`CH-aPaaS Server 0.1.7`](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server/releases/tag/0.1.7)（Release id `416233017`，tag `0.1.7` → 提交 `5af1329`，非 draft/prerelease，`make_latest=true`，published `2026-10-18T04:34:51Z`）；资产 `bootstrap-0.1.7.jar` 218,033,508 B，GitHub digest `sha256:309e9e1ea33665aaa5cf020f7c9af71b7090d73bc63952f446b107303c325826`，state=uploaded，下载 URL 回读 HTTP 200。制品身份：`scripts/check-prod-artifact.sh` PASS（负向 0 违规；`build.profile=prod`、`build.version=0.1.7`）。
 - Web：[`CH-aPaaS Web 0.1.7`](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web/releases/tag/0.1.7)（Release id `416235312`，tag `0.1.7` → 提交 `4e89249`，published `2026-10-18T04:41:18Z`）；资产 `sw-web-dist-0.1.7.zip` 1,347,131 B，digest `sha256:493dbaacd593c82e362fd1a3c2aecebc40ff455b388c09a24d618a67b6a214ad`，下载 URL 回读 HTTP 200。
 - 资产来源与等价性：两资产即对应 `build-<sha>` Release 的同一次 CI 构建产物（下载后本地 sha256 与 GitHub digest 逐位一致），语义 Release 仅做版本化命名（对齐 0.1.6 形态）；未覆盖/移动任何既有 tag 或既有 Release 资产。
-- `latest` 指向：核验时两仓 `releases/latest` 均为 `0.1.7`。后续文档提交若再触发 CI 自动 Release，`latest` 可能后移（与 0.1.6 轮同现象，属既有通道行为）。
+- `latest` 指向：核验时两仓 `releases/latest` 均为 `0.1.7`（两仓文档提交推送后复核仍为 `0.1.7`）。后续文档提交若再触发 CI 自动 Release，`latest` 可能后移（与 0.1.6 轮同现象，属既有通道行为）。
 
 ## §3 清单历史清理（Owner 2026-10-18 精确授权，本轮完成）
 
@@ -62,7 +62,7 @@
 
 ## §5 三仓最新引用与 gitlink
 
-- 工作区（本仓）：`develop-sw` = 本批提交（§6 推送后回读）；`main` = `51732b1e`（未变）；gitlink：Server = `bcc87c3`、Web = `264cca3`（本批同步更新）。
+- 工作区（本仓）：`develop-sw` = `1f3215880406672a9206151438f1ca71c346208c`（主批次提交；推送后 `git ls-remote` 回读一致）；`main` = `51732b1e`（未变）；gitlink：Server = `bcc87c3`、Web = `264cca3`（本批同步更新）。
 - Server：`develop` = `main` = `bcc87c3fffe625025ea63b2bea63b23890017d59`；tag `0.1.7` = `b6a69bd3`（annotated）→ `5af1329`。
 - Web：`develop` = `main` = `264cca32ab95fc8fc5f18d9a1c0668a93250bfb8`；tag `0.1.7` = `c9e5cda1`（annotated）→ `4e89249`。
 
