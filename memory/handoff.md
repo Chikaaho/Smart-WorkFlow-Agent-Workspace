@@ -2,11 +2,11 @@
 
 ## 当前任务：0.1.7-bugfix
 
-2026-10-18｜0.1.7 已发布并部署（Owner 已确认版本；修复列车 43 项经 Owner 整体收口）。执行链：开发分支→develop→main 合入 → 版本/种子收敛（双方言单一 V0.1.7__baseline_seed.sql + db/upgrade/0.1.7 通道）→ 两仓 CI 发布（Web run 39067698896 success、Server run 23 success）→ 0.1.7 语义 tag → UAT 由 0.1.6 就地升级（S1 脚本；DB versioned 终点单条 0.1.7、R__ 应用 2 支、启动 ERROR 0、健康 200）。回执：product/0.1.7-bugfix/receipts/release-017-01.md。
+2026-10-18｜0.1.7 已发布并部署（Owner 已确认版本；修复列车 43 项经 Owner 整体收口），成对语义 Release 0.1.7 已发布（Server bootstrap-0.1.7.jar／Web sw-web-dist-0.1.7.zip，sha256 见回执；下载回读 200）。执行链：开发分支→develop→main 合入 → 版本/种子收敛（双方言单一 V0.1.7__baseline_seed.sql + db/upgrade/0.1.7 通道）→ 两仓 CI 发布（Web run 39067698896 success、Server run 23 success）→ UAT 由 0.1.6 就地升级（S1 脚本；DB versioned 终点单条 0.1.7、R__ 应用 2 支、启动 ERROR 0、健康 200）。回执：release-017-01.md；收尾：release-017-02.md。
 
-总7阶段4/2/1：流程版本确认、修复复测、合并、发布完成；信息同步与发版确认（待规划唯一同步值清单）、发布后同步进行中；结束未开始。计数保持：正式功能 49、清单 46/22/22=90、ADV64/问题57、P62 延期/OFF；本列车不新增功能数、不核销 P；P65 独立待排期。
+总7阶段：执行侧 6 项完成（流程版本确认、修复复测、合并、发布完善〔语义 Release〕、信息同步、发布后同步），结束未开始，整体 IN_PROGRESS 待规划终态复核。
 
-未决三项：①规划唯一同步值清单与复核；②Bug 清单退出跟踪与历史改写需 Owner 对精确范围授权（范围/恢复方案见 search_fallback/release-017-close-readiness.md）；③0.1.7 语义 Release 资产需 gh/令牌通道（本机无 gh；自动化通道已产出 build-<sha> Release 与 bootstrap-0.1.7.jar 资产）。
+规划复核：planning-review-release-017-01.md。清单历史清理已执行（Owner 2026-10-18 精确授权）：develop-sw 自 2cddb580 起 39 提交重写移除两条清单路径，重写后远端 86a8b58e（全新克隆复核路径历史 0 提交）；清单仅本地留存并忽略；main／两子仓／tag 未变，其他克隆需重新对齐。唯一下一动作：规划复核收尾回执 release-017-02.md 并确认最终终态；执行侧无待办。计数49、46/22/22=90、ADV64/问题57、P62延期/OFF保持；P65待排期。
 
 ## 上轮发布归档摘要：0.1.6-release
 

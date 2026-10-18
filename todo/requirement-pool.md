@@ -1,10 +1,10 @@
 # 需求池（Requirement Pool）
 
-## 当前发布：0.1.6-release
+## 当前发布：0.1.7-bugfix
 
-2026-10-16｜0.1.6-release COMPLETED（规划已确认）。用户验收、发布复核与终态同步均通过，最终裁决：product/0.1.6-release/receipts/planning-final-review-terminal-sync-01-completed.md。两端正式及部署版本0.1.6：Web发布来源e5aa357（同版本覆盖）、Server e115857；验证集合R016-VB01—04，五份方向均归档passed/。
+2026-10-18｜0.1.7-bugfix **IN_PROGRESS**（发布收尾执行侧完成，待规划最终终态复核）。0.1.7 为 Bug 修复列车（43 项经 Owner 整体收口，`product/0.1.7-bugfix/receipts/planning-close-017.md`；不新增业务功能数、不核销 P 编号）。正式制品与部署 **0.1.7**（Server 发布源 `5af1329`、Web `4e89249`；开发默认 Server `0.1.7-SNAPSHOT`、Web `0.1.7`）；两仓公开 Release `0.1.7` 已发布（Server 资产 `bootstrap-0.1.7.jar`、Web 资产 `sw-web-dist-0.1.7.zip`）；UAT 由 0.1.6 就地升级（DB versioned 终点单条 0.1.7、`R__` 应用 2 支、健康 200、启动 ERROR 0）。总 7 阶段：执行侧 6 项完成（流程版本确认、修复复测、合并、发布完善、信息同步、发布后同步），结束未开始。计数：功能 49、清单 46/22/22=90、ADV64/问题 57 保持；本次核销 P 集合为空，P62 有限性能延期/策略 OFF，P65 待排期。回执 `release-017-01.md`、收尾 `release-017-02.md`；规划复核 `planning-review-release-017-01.md`。**唯一下一动作＝规划复核收尾回执并确认最终终态**（执行侧无待办）。
 
-总5阶段5/0/0：develop、种子版本、main、发布及用户验收、最终同步均完成。无剩余发布动作，等待新需求。功能49、46/22/22=90、ADV64/57、P62延期/OFF保持，活动业务功能无。普通用户权限隔离环境通过，UAT管理员范围保留。后续Server文档CI38865882855有2项已知时序失败，不影响正式制品，稳定性加固另列待办。最终裁决向knowledge等入口的机械传播已授权，不重复验收。
+> 上一轮终态记录（2026-10-16，0.1.6-release）：**COMPLETED（规划已确认）**。用户验收、发布复核与终态同步均通过，最终裁决 `product/0.1.6-release/receipts/planning-final-review-terminal-sync-01-completed.md`；两端正式及部署版本 0.1.6（Web 发布来源 `e5aa357` 同版本覆盖、Server `e115857`）；验证集合 R016-VB01—04，五份方向归档 `passed/`；总 5 阶段 5/0/0，无剩余发布动作。后续 Server 文档 CI `38865882855` 的 2 项已知时序失败不影响正式制品，稳定性另列待办。
 
 
 应用中心已COMPLETED（规划已确认，2026-10-16），4阶段4/0/0；正式第49个功能，AC-VB01—04保持；主方向与终态方向均在passed。最终裁决：`product/application-center-form-classification/receipts/planning-final-review-terminal-sync-01-completed.md`。

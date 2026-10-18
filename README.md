@@ -8,6 +8,10 @@ CH-aPaaS 是面向企业协作场景的低代码 PaaS 与 AI Agent 平台。项�
 
 本仓库是项目的规划与知识中心；后端服务和前端应用分别位于独立仓库。项目使用者可从这里了解整体能力，开发者可沿仓库导航进入对应工程。
 
+## 当前发布
+
+当前正式版本 **0.1.7**（2026-10-18 发布，并在 UAT 由 0.1.6 就地升级部署；0.1.7 为 Bug 修复列车 43 项，不新增业务功能数）。两仓公开 Release：[`CH-aPaaS Server 0.1.7`](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server/releases/tag/0.1.7)（资产 `bootstrap-0.1.7.jar`）与 [`CH-aPaaS Web 0.1.7`](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web/releases/tag/0.1.7)（资产 `sw-web-dist-0.1.7.zip`）；发布源提交 Server `5af1329`、Web `4e89249`，开发默认版本 Server `0.1.7-SNAPSHOT`、Web `0.1.7`。发布说明与历史版本见 [`CHANGELOG.md`](CHANGELOG.md)，发布、升级与回滚材料见 [`docs/ops/production-ops.md`](docs/ops/production-ops.md) §8/§9，回执见 [`product/0.1.7-bugfix/receipts/`](product/0.1.7-bugfix/receipts/)。
+
 ## 项目能力
 
 - 低代码表单：设计、发布、填写和查询业务表单，支持子表与表单引用。
@@ -96,6 +100,7 @@ git clone git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-Web.git Smart-WorkFlow-aP
 | 工作区治理入口 | [`system.md`](system.md) |
 | 整体架构 | [`knowledge/architecture.md`](knowledge/architecture.md) |
 | 当前项目状态 | [`knowledge/current-status.md`](knowledge/current-status.md) |
+| 发布说明与历史版本 | [`CHANGELOG.md`](CHANGELOG.md) |
 | 需求方向与交付回执 | [`product/`](product/) |
 | 后端工程规范 | [`Smart-WorkFlow-aPaaS-server/docs/governance/engineering-constitution.md`](Smart-WorkFlow-aPaaS-server/docs/governance/engineering-constitution.md) |
 | 前端工程规范 | [`Smart-WorkFlow-aPaaS-Web/docs/governance/engineering-constitution.md`](Smart-WorkFlow-aPaaS-Web/docs/governance/engineering-constitution.md) |
