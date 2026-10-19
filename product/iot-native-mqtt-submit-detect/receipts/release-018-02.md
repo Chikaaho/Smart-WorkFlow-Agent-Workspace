@@ -50,7 +50,7 @@
 
 ## §4 操作后再次回读与残留检索
 
-- 子仓文档提交（`790fe88`/`2e55cf1`）按既有通道再次触发 main CI 并生成新的 `build-<sha>` Release；`releases/latest` 一度后移（Web 实测为 `build-2e55cf1…`），**已用 `gh release edit 0.1.8 --latest` 回置**，回读两仓 latest=0.1.8。
+- 子仓文档提交（`790fe88`/`2e55cf1`）按既有通道再次触发 main CI 并生成新的 `build-<sha>` Release；`releases/latest` 一度后移（Web 实测为 `build-2e55cf1…`），**已用 `gh release edit 0.1.8 --latest` 回置**，回读两仓 latest=0.1.8。**补充事实**：Web 文档 CI（run `39216306086`）success；Server 文档 CI（run `39216284660`）**failure**＝`P62CompatRollbackPgTest` 2/1/0（5.2 s）——该提交仅改 `README.md`/`功能清单.md`（`git diff --stat 50a42c8..790fe88` 仅这两文件），与 CI 已成功通过的发布提交 `50a42c8` 代码逐字一致，故判定为 CI 环境/抖动；未生成 `build-790fe88` Release，server `latest` 保持 0.1.8。该失败类（P62 兼容回滚 PG 用例）建议纳入 CI 稳定性跟踪（与既有 `todo/p63-reservation-test-timing-stability.md`、`todo/p62-upgrade-gate-test-claim-race.md` 同类，未新建待办文件）。
 - 旧现状表述检索（`0.1.7`／"当前发布"）：`knowledge/current-status.md`、`session-handoff.md`、`CHANGELOG.md`、根/子仓 README、`todo/requirement-pool.md` 中的 0.1.7 命中均为**历史条目/归档摘要**（带日期与时点事实），不作为当前值；当前发布口径唯一为 0.1.8。
 - memory 体积：目录合计 **18,089 B**（<20 KB）；五件 1,637/2,021/1,502/1,989/4,311 B（均 <5 KB）。
 
