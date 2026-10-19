@@ -22,4 +22,4 @@
 
 ## 进度
 
-- 总 7 阶段（§3.0）：1 评估完成；2 执行完成（`receipts/bf20261019-script-worker-01.md`）；3 验收同步完成；4 develop→main 完成（`a92f7f4`）；5 发版完成——**0.1.9** 成对 tag/Release＋同版本覆盖（`receipts/release-019-01.md`、`receipts/republish-019-01.md`）；6 发布后同步完成——UAT 部署、流程 v5、端到端复验全部通过；7 结束待规划确认。未落地项：Server 版本化资产 `bootstrap-0.1.9.jar` 上传重试中（同次 CI 产物可由 `build-a92f7f4…` Release 取得）。
+- 总 7 阶段（§3.0）：1 评估完成；2 执行完成（`receipts/bf20261019-script-worker-01.md`）；3 验收同步完成；4 develop→main 完成（`a92f7f4`）；5 发版完成——**0.1.9** 成对 tag/Release＋同版本覆盖（`receipts/release-019-01.md`、`receipts/republish-019-01.md`）；6 发布后同步完成——UAT 部署、流程 v5、端到端复验全部通过；7 结束待规划确认。Server 版本化资产 `bootstrap-0.1.9.jar` 已发布（218,048,244 B，GitHub 摘要 sha256 `9e4b5629…`）。

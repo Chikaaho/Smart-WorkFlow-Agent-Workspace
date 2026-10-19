@@ -24,7 +24,7 @@
       "rollback": "docs/ops/production-ops.md §8.1/§8.2（bootstrap.jar.bak-20261019_232116-0.1.8 等备份链与 web.bak-* 目录）",
       "configChanges": "0.1.9 新增可配置项（均有缺省，不配也能启动）：sw.bpm.script.timeout-ms(5000)、sw.bpm.script.worker-startup-timeout-ms(30000)、sw.bpm.script.warmup-timeout-ms(30000)。慢宿主必须把后两项同向调大——UAT（2 vCPU/1.6G）已按 100000/120000 配置；运维注意：start.sh 自身不加载 server.env，启动前须 `set -a; . ./server.env; set +a`",
       "dbMigrations": "无新增（终点保持 V0.1.7）",
-      "manifest": "GitHub Release 0.1.9 资产 digest（Server 覆盖后制品 bootstrap.jar sha256 9e4b5629a1c6fea10fbaf708e9b4e0e7adcd4348ba7bf484135039328086da1b、218,048,244 B，UAT 运行包同一 sha；覆盖前为 d32a82c75062b2d49170ab2c5043514c2c34aec9e587603cdca7485472853d5f、218,047,647 B，历史保留于 Release 说明；Web sw-web-dist-0.1.9.zip sha256 bee21c4e51901c2bb247e12ce05008e50b889ef178f8c71611b8e27a64da5798、1,346,615 B）。Server 版本化资产 bootstrap-0.1.9.jar 上传未落地（大文件上传 408 超时，重试中），可从 build-a92f7f41d0e3bb09201ebd8cf7c36b0f1055a3d1 Release 的 bootstrap.jar 取同一次 CI 产物"
+      "manifest": "GitHub Release 0.1.9 资产 digest（Server 覆盖后制品 bootstrap.jar sha256 9e4b5629a1c6fea10fbaf708e9b4e0e7adcd4348ba7bf484135039328086da1b、218,048,244 B，UAT 运行包同一 sha；覆盖前为 d32a82c75062b2d49170ab2c5043514c2c34aec9e587603cdca7485472853d5f、218,047,647 B，历史保留于 Release 说明；Web sw-web-dist-0.1.9.zip sha256 bee21c4e51901c2bb247e12ce05008e50b889ef178f8c71611b8e27a64da5798、1,346,615 B）。Server 版本化资产 bootstrap-0.1.9.jar 已发布（218,048,244 B，GitHub 资产摘要 sha256 9e4b5629a1c6fea10fbaf708e9b4e0e7adcd4348ba7bf484135039328086da1b，与 CI 制品及 UAT 运行包一致）"
     }
   },
   "rules": {

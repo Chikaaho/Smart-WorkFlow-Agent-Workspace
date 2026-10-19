@@ -45,6 +45,6 @@
 
 ## 4. 未完成项与如实披露
 
-- **版本化资产 `bootstrap-0.1.9.jar` 未落地**：`gh release create` 携带资产会在上传 408 时回滚删除 Release，已改为「先建 Release，再单独 `gh release upload`」；218 MB 上传在本机上行链路上多次 408 超时，重试进行中。同一次 CI 产物可在 `build-96ab6d0b…` Release（资产名 `bootstrap.jar`）取得，UAT 运行包与二者 sha256 一致（`d32a82c7…`）。
+- **版本化资产**：首次发布制品（`d32a82c7…`）的版本化资产未落地；覆盖轮制品（`9e4b5629…`）的 `bootstrap-0.1.9.jar` **已发布**（218,048,244 B，GitHub 资产摘要一致，见 `receipts/republish-019-01.md`）。历史事实：`gh release create` 携带资产会在上传 408 时回滚删除 Release，故改为「先建 Release，再单独 `gh release upload`」；经本机代理上传多次 408 超时，改直连后完成。
 - **UAT 端到端复验未通过，原因已定位为独立缺陷 BF20261019-04**（预热预算硬编码 5s），详见 `bf20261019-script-worker-02.md`；修复已上 develop（`8f6020e`），发布需 Owner 确认版本。
 - CI attempt1 失败为既有 `P63ReservationBoundaryPgTest` 时序族（登记在案，未改断言），attempt2 全绿后发布；本回执不主张「本地全量全绿」。
