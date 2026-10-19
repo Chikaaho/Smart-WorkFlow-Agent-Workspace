@@ -281,35 +281,40 @@ set -a && . ./server.env && set +a && ./start.sh
 
 ### 8.4 判断脚本 worker 部署要求（fat jar 必读）
 
-流程判断脚本（触发器 / 动作映射脚本）由宿主在**独立 worker JVM**（`-Xmx128m` 配额）内执行，
-启动命令为 `java -Xms32m -Xmx128m -cp ${java.class.path} com.sw.ck.bpm.engine.script.ScriptWorkerMain`。
-默认取宿主自身的 `java.class.path`；`java -jar bootstrap.jar`（当前 UAT 形态）下该值就是 fat jar 本身，
-而应用类位于 `BOOT-INF/classes|lib` 内部，worker 会以
-`Could not find or load main class com.sw.ck.bpm.engine.script.ScriptWorkerMain` 启动失败，
-表现为触发器执行记录 `FAILED`（错误文案：`判断 worker 进程启动失败: worker 启动握手失败（无就绪应答）`）。
+流程判断脚本（触发器 / 动作映射脚本）由宿主在**独立 worker JVM**（`-Xmx128m` 配额）内执行。
+worker 拉起计划由宿主按运行形态自动解析（`WorkerLaunchPlan`，2026-10-19 修复，Server 分支
+`fix/bpm-script-worker-launch`，**生效以部署含该修复的构建为准**）：
 
-fat jar 形态必须展开一次类路径并显式下发（变量或系统属性二选一，属性优先）：
+- **fat jar 形态（`java -jar bootstrap.jar`）**：自动经 `java -cp bootstrap.jar
+  -Dloader.main=…ScriptWorkerMain org.springframework.boot.loader.launch.PropertiesLauncher`
+  在归档内拉起，`BOOT-INF/classes`+`BOOT-INF/lib/*` 自动并入类路径，**无需手工解包**。
+- **exploded / IDE / 测试形态**：沿用 `java.class.path` 原语义。
+- **显式覆盖（仍可用，优先级最高）**：系统属性 `sw.bpm.script.worker-classpath` 或环境变量
+  `SW_BPM_SCRIPT_WORKER_CLASSPATH`。**0.1.8 及更早制品**在 fat jar 下 worker 必然启动失败
+  （`Could not find or load main class …ScriptWorkerMain`），升级前只能解包后用该变量下发
+  （`mkdir -p app && cd app && unzip -q -o ../bootstrap.jar 'BOOT-INF/classes/*' 'BOOT-INF/lib/*'`
+  后把 `app/BOOT-INF/classes:app/BOOT-INF/lib/*` 赋给变量；替换 jar 后需重新展开）。
 
-```bash
-cd /opt/smart-workflow/server
-mkdir -p app && cd app
-unzip -q -o ../bootstrap.jar 'BOOT-INF/classes/*' 'BOOT-INF/lib/*'   # 约 211 MB
-# server.env 追加（随 §6.4 的启动方式生效）
-export SW_BPM_SCRIPT_WORKER_CLASSPATH="/opt/smart-workflow/server/app/BOOT-INF/classes:/opt/smart-workflow/server/app/BOOT-INF/lib/*"
-```
+**启动与超时预算（2026-10-19 起可配置）**：worker 在 JVM 启动后先完成 GraalJS 预热（进程内共享
+Polyglot `Engine`）再发就绪握手，首个真实判断不再支付冷启动（本机 fat jar 实测首判 57–88ms；
+修复前慢宿主首判超固定 5s 预算、worker 被销毁后每次执行都冷启动）。相关配置：
 
-替换 `bootstrap.jar`（§8.1）后需重新展开 `app/`，否则 worker 仍加载旧版本类。
+| 配置 | 默认 | 说明 |
+|---|---|---|
+| `sw.bpm.script.timeout-ms` | 5000 | 单次判断执行超时（触发器/映射脚本/预览共用） |
+| `sw.bpm.script.worker-startup-timeout-ms` | 30000 | worker 启动握手上限（含 JVM 冷启动 + GraalJS 预热；慢宿主可上调） |
 
-**2026-10-19 UAT 实测限制（脚本仍不可用，部署侧须先解决）**：展开类路径后 worker 能启动（约 4–10 s 冷启动），
-但 worker 内**首次**脚本求值在本机超过固定预算 5 s（`BpmScriptEvaluatePort.DEFAULT_TIMEOUT_MS`），
-执行记录报 `判断脚本超出执行资源限制（…判断执行超时（wall clock 5000ms 到期，worker 进程已强制销毁））`；
-以最小脚本 `return 1;` 复测同样超时，即耗时来自 GraalJS 引擎/上下文初始化（宿主为解释执行模式、内存与 swap 压力偏高），
-非脚本自身复杂度。超时后 worker 被销毁、池内无可用热进程，因此在本机条件下**每次执行都会命中冷启动超时**。
-要在演示中展示判断脚本能力，需先满足其一：换用性能余量充足的主机；或由开发侧放宽/配置该 5 s 预算（属代码变更，走发布链）。
+**脚本 `#` 语法糖语义（写脚本必读）**：`#函数(参数)` 的**裸标识符参数按"名字字符串"处理**
+（自动加引号，为 `#获取流程变量(变量名)` 设计）；要传**运行时值**必须写成表达式，
+如 `#获取分管领导("" + d)`、`#设置流程变量('k', arr.slice(0))`（真实排障两连：
+裸 `d`/`out` 会被当成字面量 `"d"`/`"out"`）。
 
-**顺带观测**：本机 `/etc/environment` 级 `_JAVA_OPTIONS=-Xmx512m …` 会覆盖 worker 的 `-Xmx128m`，
-启动日志自报 `maxHeapBytes=518979584`（≈495 MB）却仍打印「宿主确认 -Xmx128m 生效」——
-沙箱堆配额在该环境实际未生效，日志确认口径不可作为配额生效证据。
+**诊断**：worker 启动日志行含 `codeSource=` 与 `launch: source=fat-jar|exploded|override`；
+握手失败区分「进程提前退出（exitCode=…，原因见宿主 stderr）」与「无就绪应答（真超时）」。
+触发器执行回查：`GET /workflow/instances/{id}/trigger-execs`；只读预览：`POST /workflow/triggers/preview`。
+
+**历史观测（保留）**：`/etc/environment` 级 `_JAVA_OPTIONS=-Xmx512m …` 会覆盖 worker 的 `-Xmx128m`，
+沙箱堆配额在该类环境实际未生效，`maxHeapBytes` 握手值是配额生效的唯一可信证据。
 
 ---
 
