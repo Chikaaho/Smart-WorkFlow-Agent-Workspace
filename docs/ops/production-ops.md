@@ -163,13 +163,14 @@ cd /opt/smart-workflow/server
 STOP_TIMEOUT=30 ./stop.sh
 
 # 启动（nohup 后台，PID 写入 server.pid；启动失败 2s 内自检并提示日志）
-./start.sh
+# 2026-10-19 实测：start.sh 自身不加载 server.env，必须先显式加载，否则 PG 报 SCRAM 无口令并退出
+set -a && . ./server.env && set +a && ./start.sh
 
-# 重启 = 先 stop 后 start
-./stop.sh && ./start.sh
+# 重启 = 先 stop 后 start（同样需先加载 server.env）
+./stop.sh && set -a && . ./server.env && set +a && ./start.sh
 ```
 
-> **重要**：后端由 `start.sh` 用 `nohup` 手工托管（PID 文件），**未注册为 systemd 服务**。服务器重启后必须手动 `./start.sh` 拉起（§10 建议补自启）。
+> **重要**：后端由 `start.sh` 用 `nohup` 手工托管（PID 文件），**未注册为 systemd 服务**。服务器重启后必须手动加载 `server.env` 后 `./start.sh` 拉起（§10 建议补自启；建议后续把 `server.env` 加载写进 `start.sh`，本次未改脚本）。
 
 ### 6.5 前端静态（由 nginx 直接托管，无“启停”）
 
@@ -201,6 +202,8 @@ STOP_TIMEOUT=30 ./stop.sh
 ## 8. 发布 / 升级流程
 
 > 变更发布会触及生产运行实例，属高风险动作。**执行发布前应取得 Owner 明确授权**，遵循“备份 → 停服 → 替换 → 启动 → 冒烟验证 →（异常）回滚”。
+>
+> **0.1.8 正式制品获取（2026-10-19）**：两仓公开 Release —— [`CH-aPaaS Server 0.1.8`](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server/releases/tag/0.1.8)（资产 `bootstrap-0.1.8.jar` 218,042,791 B sha256 `5c0e66bd…`）与 [`CH-aPaaS Web 0.1.8`](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web/releases/tag/0.1.8)（资产 `sw-web-dist-0.1.8.zip` 1,346,615 B sha256 `f62f1a8f…`），两者即对应 `build-<sha>` CI 制品（仅版本化命名）。**0.1.8 无 DB 变更**（沿用 0.1.7 终点，无需 §8.3 衔接脚本）；UAT 已按本手册 §8.1/§8.2 由 0.1.7 就地升级部署（启动 175.8s、启动段 ERROR 0、健康 200、`build.version=0.1.8`）。
 
 ### 8.1 后端升级（替换 bootstrap.jar）
 
@@ -221,7 +224,7 @@ STOP_TIMEOUT=30 ./stop.sh
    cd /opt/smart-workflow/server
    ./stop.sh
    # 确认当前 jar 为新包（发布热点时刻，勿把 .bak 当作活动包）
-   ./start.sh
+   set -a && . ./server.env && set +a && ./start.sh   # 2026-10-19 实测：必须先加载 server.env
    ```
 5. **冒烟验证**（§6.3）：后端本机自检正常、日志无 ERROR 堆栈、经 nginx `/sw-server/` 的接口可用。
 6. **异常回滚**：停服后将 `bootstrap.jar.bak` 改回 `bootstrap.jar` 再启动：

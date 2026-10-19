@@ -1,16 +1,15 @@
 # memory 使用说明
 
-## 当前状态：0.1.7-bugfix COMPLETED
+## 当前状态：0.1.8 COMPLETED（Owner 2026-10-19 验收通过并确认版本号）
 
-2026-10-18规划最终确认本轮完成。第41项由Owner复测通过，openapi异步回调修复通过并发布；最终裁决product/0.1.7-bugfix/receipts/planning-final-review-017-repair-completed.md。终态同步证据final-sync-callback-017-01.md，全部方向已归档passed。
+回执：发布 `product/iot-native-mqtt-submit-detect/receipts/release-018-01.md`、发布后同步 `release-018-02.md`、实现 `implementation-01.md`（含 UAT 旧制品重走复验 §9）。
 
-正式与实际后端0.1.7（00e0a73·d8b390c1），前端0.1.7（4e89249），DB0.1.7；Server开发0.1.7-SNAPSHOT，Web开发0.1.7。修复远程分支openapi/super-tenant均已删除并回读，恢复tip见同步回执；既有Server8/Web10清理结果保持。P62原分支保留，1项产品修复交付、9项延期、6项历史文档不合入。
+发布内容（修复批次，不新增业务功能数）：①原生 MQTT 设备控制通道（自建 MQTT 设备按流程驱动控制、预约到点真实发布、通道缺失 fail closed）；②提交后实例探测改用户态端点；③提交成功单文案。
 
-总7阶段7/0/0：范围评估、实现复测、验收信息同步、合并、发布、发布后同步、结束全部完成。功能49、46/22/22=90、ADV64/问题57、P核销空、P62性能延期/OFF保持。版本声明与知识轮转完成，Bug清单仅本地留存，历史清理不重做。
+事实：后端 0.1.8（`50a42c8`·`5c0e66bd…`）、前端 0.1.8（`d94232b`·`f62f1a8f…`）、DB 0.1.7（无迁移）；开发默认 Server `0.1.8-SNAPSHOT`/Web `0.1.8`；两仓 tag/Release `0.1.8`（latest）；任务分支已删并回读；UAT 就地升级（ERROR 0、健康 200、`build.version=0.1.8`）。发布后复验：单文案（真实 UI 提交）、用户态计数 200、预约到点 MQTT 真实下发（SENT）。计数保持（49、46/22/22=90、ADV64/问题 57、P 核销空、P62 延期/OFF）。
 
-活动交付无；下一动作等待Owner安排需求。P29租户管理及超管归属展示（todo/p29-tenant-management.md）、P65表单JS均待排期。最终裁决供Executor机械传播knowledge终态，不重新开启发布或验收；历史CI时序问题沿既有待办跟踪。
+活动交付无；下一动作＝等待 Owner 安排需求（P65/P29 待排期）。运维注意：UAT 启动后端前必须加载 `server.env`；持续观察：预约 `2112002084486819842`（due 2026-10-20 20:00 CST）。
 
-## 上轮发布归档摘要：0.1.6-release
+## 上轮发布归档摘要：0.1.7-bugfix
 
-2026-10-16规划确认COMPLETED，5阶段5/0/0。终审：`product/0.1.6-release/receipts/planning-final-review-terminal-sync-01-completed.md`。正式/部署0.1.6，Web e5aa357、Server e115857，验证R016-VB01—04，五方向passed。历史计数49、46/22/22=90、ADV64/57；P62延期/OFF。普通用户隔离通过，UAT管理员范围保留。该轮已结束。
-
+2026-10-18 规划最终确认 COMPLETED（7/0/0）：0.1.7 修复列车 43 项＋第 41 项返修＋openapi 回调修复；后端 `00e0a73`·`d8b390c1`（两次同版本覆盖）、前端 `4e89249`、DB 0.1.7。证据见 `product/0.1.7-bugfix/receipts/`。

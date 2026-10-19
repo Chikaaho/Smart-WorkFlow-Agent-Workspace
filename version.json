@@ -1,34 +1,34 @@
 {
   "$schema": "CH-aPaaS 版本权威（单一机器可读源；变更须走新回执）",
   "product": "CH-aPaaS",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "iteration": "0.0.7",
-  "registeredAt": "2026-10-18",
-  "registeredBy": "0.1.7 发布与第41项返修同版本覆盖（Owner 2026-10-18 授权「版本号不变，覆盖」；发布回执 product/0.1.7-bugfix/receipts/release-017-01.md、release-017-02.md；覆盖与复核回执 reopen-041-04.md、close-maintenance-017-01.md、openapi-callback-017-01.md、final-sync-callback-017-01.md）。0.1.4—0.1.6 期间本文件未随发布轮转（收尾方向 direction-close-maintenance-017.md §2 登记后对齐）",
+  "registeredAt": "2026-10-19",
+  "registeredBy": "0.1.8 发布（Owner 2026-10-19 明确确认版本号；发布回执 product/iot-native-mqtt-submit-detect/receipts/release-018-01.md、发布后同步回执 release-018-02.md）。0.1.7 条目（含两次同版本覆盖）保留于历史回执与 CHANGELOG",
   "projections": {
     "serverRepo": {
       "path": "Smart-WorkFlow-aPaaS-server",
-      "mavenVersion": "0.1.7（正式构建 -Drevision=0.1.7；开发默认 0.1.7-SNAPSHOT）",
+      "mavenVersion": "0.1.8（正式构建 -Drevision=0.1.8；开发默认 0.1.8-SNAPSHOT）",
       "flywayEndpoint": { "h2": "V0.1.7", "postgresql": "V0.1.7" },
-      "flywaySeed": "V0.1.7__baseline_seed.sql（＝0.1.6 基线＋0.1.7 增量逐字节拼接，仅新增段头；+ R__ 可重复迁移；存量库走 db/upgrade/0.1.7/ 二选一）"
+      "flywaySeed": "V0.1.7__baseline_seed.sql（0.1.8 无新增迁移，终点保持 V0.1.7；+ R__ 可重复迁移不变）"
     },
     "webRepo": {
       "path": "Smart-WorkFlow-aPaaS-Web",
-      "packageVersion": "0.1.7"
+      "packageVersion": "0.1.8"
     },
     "workspace": {
       "path": "Smart-WorkFlow-Agent-Workspace",
       "changelog": "CHANGELOG.md",
-      "releaseNotes": "GitHub Release 0.1.7（Server 00e0a73·d8b390c1、Web 4e89249）＋ product/0.1.7-bugfix/receipts/",
-      "upgrade": "docs/ops/production-ops.md §8/§9（含 db/upgrade/0.1.7/ 通道）",
-      "rollback": "docs/ops/production-ops.md §8.1/§8.2（bootstrap.jar.bak 链与 web 备份目录）",
-      "configChanges": "0.1.7 无新增必改配置（R__ 演示种子随启动装载，见 db/upgrade/0.1.7/README.md）",
-      "dbMigrations": "sw-bootstrap/src/main/resources/db/migration/{h2,postgresql}/V0.1.7__baseline_seed.sql（终点单条 0.1.7）",
-      "manifest": "GitHub Release 0.1.7 资产 digest（Server sha256 d8b390c1…、Web sha256 493dbaac…）"
+      "releaseNotes": "GitHub Release 0.1.8（Server 50a42c8·5c0e66bd…、Web d94232b·f62f1a8f…）＋ product/iot-native-mqtt-submit-detect/receipts/",
+      "upgrade": "docs/ops/production-ops.md §8/§9（0.1.8 无 DB 变更，沿用 0.1.7 终点）",
+      "rollback": "docs/ops/production-ops.md §8.1/§8.2（bootstrap.jar.bak/.bak2/.bak3 链与 web.bak-* 目录）",
+      "configChanges": "0.1.8 无新增必改配置；运维注意：start.sh 自身不加载 server.env，启动前须 `set -a; . ./server.env; set +a`（2026-10-19 实测未加载时 PG 报 SCRAM 无口令、应用退出）",
+      "dbMigrations": "无新增（终点保持 V0.1.7）",
+      "manifest": "GitHub Release 0.1.8 资产 digest（Server sha256 5c0e66bdf2693ee1908cb69097c38ed4ca16e67024f16b3d146ef232d9a53fc4、218,042,791 B；Web sha256 f62f1a8f2bf825e860951bb50433ecc828cdfa4f6a2fef07dd1ba1bc7b8d6167、1,346,615 B）"
     }
   },
   "rules": {
     "candidateFreeze": "候选固定后只允许通过新回执审查的变更进入；代码/迁移/依赖/配置漂移使受影响证据失效并重固定候选",
-    "tagAndRelease": "0.1.7 标签/Release 已发布且 Latest（Server tag→c6a7c06，2026-10-18 Owner 授权同版本覆盖，原 5af1329 历史保留于发布说明；Web tag→4e89249）；实际部署 UAT 后端运行同一 CI 制品（build.version=0.1.7）"
+    "tagAndRelease": "0.1.8 标签/Release 已发布且 Latest（Server tag→50a42c8、Web tag→d94232b，均为 annotated tag）；实际部署 UAT 后端运行同一 CI 制品（build.version=0.1.8）"
   }
 }

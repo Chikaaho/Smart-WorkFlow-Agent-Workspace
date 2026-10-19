@@ -1,6 +1,10 @@
 # 需求池（Requirement Pool）
 
-## 最近完成：0.1.7-bugfix
+## 最近完成：0.1.8（2026-10-19）
+
+Owner 2026-10-19 验收通过并明确版本号；执行侧走完七步（合并→发布→UAT 就地升级→发布后同步）。内容：原生 MQTT 设备控制通道、提交后实例探测用户态端点、提交成功单文案；DB 无新增迁移。正式/部署后端 0.1.8（`50a42c8`·`5c0e66bd…`）、前端 0.1.8（`d94232b`·`f62f1a8f…`）；两仓 annotated tag `0.1.8`、公开 Release 与 `latest`=0.1.8；任务分支 `fix/iot-native-mqtt-submit-detect`、`fix/submit-detect-copy` 已删除并回读。发布后复验：提交成功单文案、用户态计数 200、预约到点原生 MQTT 真实下发（命令 SENT）。回执 `product/iot-native-mqtt-submit-detect/receipts/release-018-01.md`、`release-018-02.md`。
+
+## 上一完成：0.1.7-bugfix
 
 2026-10-18规划最终确认本轮完成。第41项由Owner复测通过，openapi异步回调修复通过并发布；最终裁决product/0.1.7-bugfix/receipts/planning-final-review-017-repair-completed.md。终态同步证据final-sync-callback-017-01.md，全部方向已归档passed。
 
