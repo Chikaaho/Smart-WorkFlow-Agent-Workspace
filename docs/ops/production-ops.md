@@ -194,7 +194,7 @@ set -a && . ./server.env && set +a && ./start.sh
 
 - `server.env` 属**高敏感**：不提交到任何 Git 仓库、不随文档外发、备份时加密或严格限制读取权限。
 - 密钥轮换：修改 `SW_CIPHER_KEY` 会使已加密数据无法解密，**非必要不更改**；确需轮换须先规划数据迁移。
-- 修改 `server.env` 后必须 `./stop.sh && ./start.sh` 重启才生效。
+- 修改 `server.env` 后须重新加载环境再重启：`set -a && . ./server.env && set +a && ./stop.sh && ./start.sh`（在 `/opt/smart-workflow/server` 执行）。
 - `.bak` / `.bak2` 为历史 jar 备份，可留作回滚；磁盘紧张时按 §9.2 清理。
 
 ---
@@ -217,19 +217,16 @@ set -a && . ./server.env && set +a && ./start.sh
 3. **上传新包**（本机执行，用 `scp_personal`）：
    ```bash
    ~/ssh/ssh/scp_personal.sh ./新构建/bootstrap.jar /opt/smart-workflow/server/bootstrap.jar.new
-   # 登录后：mv bootstrap.jar.new bootstrap.jar
    ```
 4. **停服 → 替换 → 启动**：
    ```bash
    cd /opt/smart-workflow/server
-   ./stop.sh
-   # 确认当前 jar 为新包（发布热点时刻，勿把 .bak 当作活动包）
-   set -a && . ./server.env && set +a && ./start.sh   # 2026-10-19 实测：必须先加载 server.env
+   set -a && . ./server.env && set +a && ./stop.sh && mv bootstrap.jar.new bootstrap.jar && ./start.sh
    ```
 5. **冒烟验证**（§6.3）：后端本机自检正常、日志无 ERROR 堆栈、经 nginx `/sw-server/` 的接口可用。
 6. **异常回滚**：停服后将 `bootstrap.jar.bak` 改回 `bootstrap.jar` 再启动：
    ```bash
-   ./stop.sh && mv bootstrap.jar.bak bootstrap.jar && ./start.sh
+   set -a && . ./server.env && set +a && ./stop.sh && mv bootstrap.jar.bak bootstrap.jar && ./start.sh
    ```
 
 ### 8.2 前端升级（替换静态构建）

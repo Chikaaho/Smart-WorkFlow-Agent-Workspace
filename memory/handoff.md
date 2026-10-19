@@ -10,6 +10,8 @@
 
 活动交付无；下一动作＝等待 Owner 安排需求（P65/P29 待排期）。运维注意：UAT 启动后端前必须加载 `server.env`；持续观察：预约 `2112002084486819842`（due 2026-10-20 20:00 CST）。
 
+使用与验证待办：`todo/uat-drill-usability.md`（预约时间、参与部门选择，待核实/排期）；`todo/p62-upgrade-gate-test-claim-race.md` 已补兼容回滚用例失败待定位。运维重启、升级与回滚步骤已补齐 `server.env` 加载。
+
 ## 上轮发布归档摘要：0.1.7-bugfix
 
 2026-10-18 规划最终确认 COMPLETED（7/0/0）：0.1.7 修复列车 43 项＋第 41 项返修＋openapi 回调修复；后端 `00e0a73`·`d8b390c1`（两次同版本覆盖）、前端 `4e89249`、DB 0.1.7。证据见 `product/0.1.7-bugfix/receipts/`。
