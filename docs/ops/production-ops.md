@@ -303,6 +303,16 @@ Polyglot `Engine`）再发就绪握手，首个真实判断不再支付冷启动
 |---|---|---|
 | `sw.bpm.script.timeout-ms` | 5000 | 单次判断执行超时（触发器/映射脚本/预览共用） |
 | `sw.bpm.script.worker-startup-timeout-ms` | 30000 | worker 启动握手上限（含 JVM 冷启动 + GraalJS 预热；慢宿主可上调） |
+| `sw.bpm.script.warmup-timeout-ms` | 30000 | worker **预热预算**（宿主下发给 worker；握手等待自动取 `max(启动上限, 预热预算+20s)`）。慢宿主必须与上一项同向调大，例如 2 vCPU/1.6G 主机建议 `warmup=100000`、`startup=120000` |
+
+**UAT 实测（2026-10-19，2 vCPU/1.6G 主机）**：自动拉起已生效（日志 `launch: source=fat-jar`，
+旧的手工解包＋`SW_BPM_SCRIPT_WORKER_CLASSPATH` 绕行已从 UAT 移除），但 **0.1.9 制品在该主机上
+预热必然失败**——预热求值被固定 5s 预算掐断（触发器执行记录：`worker 启动握手失败: worker 预热失败（TIMEOUT）:
+脚本执行超时被强制中断: Context execution was cancelled.`，宿主 26.8s 后判定启动失败）。实测排除堆因素：
+`_JAVA_OPTIONS` 覆盖（`maxHeapBytes=518979584`）与 `env -u _JAVA_OPTIONS`（真实 128m）两种形态同样失败；
+预热被中断后同进程求值 `return 1;` 仅需 0.8–1.0s，即该主机 GraalJS 首次语言初始化约 6s 以上、
+JVM＋归档装载约 16s。**修复（BF20261019-04，develop `8f6020e`）**：预热预算独立配置（上表第三项）
+＋握手等待联动；**生效以部署含该修复的构建为准**，并按上表建议值把两项预算同时调大。
 
 **脚本 `#` 语法糖语义（写脚本必读）**：`#函数(参数)` 的**裸标识符参数按"名字字符串"处理**
 （自动加引号，为 `#获取流程变量(变量名)` 设计）；要传**运行时值**必须写成表达式，

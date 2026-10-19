@@ -1,34 +1,34 @@
 {
   "$schema": "CH-aPaaS 版本权威（单一机器可读源；变更须走新回执）",
   "product": "CH-aPaaS",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "iteration": "0.0.7",
   "registeredAt": "2026-10-19",
-  "registeredBy": "0.1.8 发布（Owner 2026-10-19 明确确认版本号；发布回执 product/iot-native-mqtt-submit-detect/receipts/release-018-01.md、发布后同步回执 release-018-02.md）。0.1.7 条目（含两次同版本覆盖）保留于历史回执与 CHANGELOG",
+  "registeredBy": "0.1.9 发布（Owner 2026-10-19 明确确认版本号并授权完整发布链；发布回执 product/bugfix-20261019/receipts/release-019-01.md、UAT 复验与 BF20261019-04 回执 receipts/bf20261019-script-worker-02.md）。0.1.8 及更早条目保留于历史回执与 CHANGELOG",
   "projections": {
     "serverRepo": {
       "path": "Smart-WorkFlow-aPaaS-server",
-      "mavenVersion": "0.1.8（正式构建 -Drevision=0.1.8；开发默认 0.1.8-SNAPSHOT）",
+      "mavenVersion": "0.1.9（正式构建 -Drevision=0.1.9；开发默认 0.1.9-SNAPSHOT）",
       "flywayEndpoint": { "h2": "V0.1.7", "postgresql": "V0.1.7" },
-      "flywaySeed": "V0.1.7__baseline_seed.sql（0.1.8 无新增迁移，终点保持 V0.1.7；+ R__ 可重复迁移不变）"
+      "flywaySeed": "V0.1.7__baseline_seed.sql（0.1.9 无新增迁移，终点保持 V0.1.7；+ R__ 可重复迁移不变）"
     },
     "webRepo": {
       "path": "Smart-WorkFlow-aPaaS-Web",
-      "packageVersion": "0.1.8"
+      "packageVersion": "0.1.9"
     },
     "workspace": {
       "path": "Smart-WorkFlow-Agent-Workspace",
       "changelog": "CHANGELOG.md",
-      "releaseNotes": "GitHub Release 0.1.8（Server 50a42c8·5c0e66bd…、Web d94232b·f62f1a8f…）＋ product/iot-native-mqtt-submit-detect/receipts/",
-      "upgrade": "docs/ops/production-ops.md §8/§9（0.1.8 无 DB 变更，沿用 0.1.7 终点）",
-      "rollback": "docs/ops/production-ops.md §8.1/§8.2（bootstrap.jar.bak/.bak2/.bak3 链与 web.bak-* 目录）",
-      "configChanges": "0.1.8 无新增必改配置；运维注意：start.sh 自身不加载 server.env，启动前须 `set -a; . ./server.env; set +a`（2026-10-19 实测未加载时 PG 报 SCRAM 无口令、应用退出）",
+      "releaseNotes": "GitHub Release 0.1.9（Server 96ab6d0·d32a82c7…、Web 3c43a3c·bee21c4e…）＋ product/bugfix-20261019/receipts/",
+      "upgrade": "docs/ops/production-ops.md §8/§9（0.1.9 无 DB 变更，沿用 0.1.7 终点）；脚本 worker 部署要求与预算配置见 §8.4",
+      "rollback": "docs/ops/production-ops.md §8.1/§8.2（bootstrap.jar.bak-20261019_232116-0.1.8 等备份链与 web.bak-* 目录）",
+      "configChanges": "0.1.9 新增可配置项（均有缺省，不配也能启动）：sw.bpm.script.timeout-ms(5000)、sw.bpm.script.worker-startup-timeout-ms(30000)、sw.bpm.script.warmup-timeout-ms(30000，含 BF20261019-04 修复的构建支持)。慢宿主必须把后两项同向调大（UAT 2 vCPU/1.6G 建议 100000/120000）；运维注意：start.sh 自身不加载 server.env，启动前须 `set -a; . ./server.env; set +a`",
       "dbMigrations": "无新增（终点保持 V0.1.7）",
-      "manifest": "GitHub Release 0.1.8 资产 digest（Server sha256 5c0e66bdf2693ee1908cb69097c38ed4ca16e67024f16b3d146ef232d9a53fc4、218,042,791 B；Web sha256 f62f1a8f2bf825e860951bb50433ecc828cdfa4f6a2fef07dd1ba1bc7b8d6167、1,346,615 B）"
+      "manifest": "GitHub Release 0.1.9 资产 digest（Server 制品 bootstrap.jar sha256 d32a82c75062b2d49170ab2c5043514c2c34aec9e587603cdca7485472853d5f、218,047,647 B，UAT 运行包同一 sha；Web sw-web-dist-0.1.9.zip sha256 bee21c4e51901c2bb247e12ce05008e50b889ef178f8c71611b8e27a64da5798、1,346,615 B）。Server 版本化资产 bootstrap-0.1.9.jar 上传未落地（大文件上传 408 超时，重试中），可从 build-96ab6d0b09d322b5a6e09c7873852e6ec9da9d7b Release 的 bootstrap.jar 取同一次 CI 产物"
     }
   },
   "rules": {
     "candidateFreeze": "候选固定后只允许通过新回执审查的变更进入；代码/迁移/依赖/配置漂移使受影响证据失效并重固定候选",
-    "tagAndRelease": "0.1.8 标签/Release 已发布且 Latest（Server tag→50a42c8、Web tag→d94232b，均为 annotated tag）；实际部署 UAT 后端运行同一 CI 制品（build.version=0.1.8）"
+    "tagAndRelease": "0.1.9 标签/Release 已发布（Server tag→96ab6d0、Web tag→3c43a3c，均为 annotated tag）；实际部署 UAT 后端运行同一 CI 制品（build.version=0.1.9）。后续 BF20261019-04 修复（develop 8f6020e）未进入 0.1.9 身份，其发布版本待 Owner 确认"
   }
 }
