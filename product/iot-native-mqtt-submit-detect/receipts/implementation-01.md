@@ -67,7 +67,7 @@
 ## 6. 与方向的偏差 / 未覆盖项
 
 1. `OnlineConfirmControlUtil`（在线确认语义，要求腾讯在线态查询）未改：其生产调用点为 0（仅测试装配），不在本次缺陷路径；如需 MQTT 在线确认语义可后续单独立项。
-2. UAT 实机验证未做：UAT 现运行 0.1.7 制品，本批次需发布后才能在 UAT 复验（包含 2026-10-20 20:00 那条待发预约——按现制品预期仍失败）。
+2. UAT 复验分两段：**旧制品基线已完成**（2026-10-19 Owner 指示重走，见 §9——流程主链通过、旧构建标记与设备腿 fail closed 现场复现）；**修复生效复验待发布**（含 2026-10-20 20:00 那条待发预约——发布前按现制品预期仍失败）。
 3. `sw_iot_command`（A6 立即通道）与 `sw_iot_device_command`（延迟/预约通道）双命令表格局未动（超出本次缺陷范围）。
 4. 前端 `submitForm` 后仍保留 5s×10 轮询上限（未改语义，仅换端点）。
 
@@ -89,3 +89,16 @@
 | A 回归：A6 立即通道与腾讯 provider 路径不变 | `P63ImmediateMqttBrokerPgTest` 2/0/0；`DeferredControlUtilTest` provider 用例保持 |
 | B：提交成功只显示「提交成功」 | `FormRender.spec.ts` 新用例（`data-sub-title` 未渲染 + 旧文案零命中） |
 | C：普通用户提交后判定正确 | 后端边界（无监控权限注解）+ 用户态口径（发起人强制）；前端 adapter 单测断言 URL/参数 |
+
+## 9. Owner 指示的 UAT 重走复验（2026-10-19，现网 0.1.7 旧制品基线）
+
+- 指令：Owner「重新走一下流程验证」。环境 https://chikaho.cn（现网仍为已发布 0.1.7 制品，本批次修复未部署）。
+- 方式：真实挑战 + 验证码（人工识读）+ RSA-OAEP(SHA-256) 登录；各用户以自身会话发起动作（同前端同端点）；浏览器用于 UI 抽查与截图。演示口令为组织种子默认值（`R__0.1.7_org_demo_seed.sql` 注释），无旁路、无权限变更、无配置修改。
+- 流程主链重走（租户 9001「灾备演练审批」，两单）：
+  - **20261019-004**（记录 `3df297c6…`，实例 `2112037885849415681`）：12:27:26 提交 → 6 票会签（李强/陈静/韩磊 → 赵磊/周涛 → 王芳；**陈静为浏览器 UI 实点**并留弹层/已办截图）→ **APPROVED**；流转记录 6 条 APPROVE；抄送 node_4 → 张伟 **SUCCESS**（12:40:57）；通知 `COPY_CREATED/IN_APP SUCCESS`（模板 2111853879350571009）、`PROCESS_APPROVED SUCCESS`。
+  - **20261019-005**（记录 `734bacb0…`，实例 `2112042045407801346`）：12:43:58 提交 → 6 票 → **APPROVED**；抄送 SUCCESS（12:47:57）。
+- 旧制品标记（证明修复未部署）：`GET /sw-server/api/workflow/my/instances/count?...`（合法会话）→ **400**（落 `/my/instances/{id}` 类型校验）；演示用户 `GET /workflow/instances` → **403**（提交弹窗误导文案根因）。
+- 设备腿现网现场复现（fail closed，与本批次修复目标一致）：预约 `2112043049368989698`（due 2026-10-19 13:05 CST）→ 13:05:07 **DISPATCHED**，命令 `2112047371200802817` **FAILED**，`last_error=发送通道未装配：无设备控制 provider（IoT 未启用或 provider-mode 非 tencent）`。
+- 口径更正（复验发现）：`field_drill_time` 入参按 **Asia/Shanghai 本地墙钟**解释（另一单以 04:50 拟表达 12:50 被当作 8 小时前 → 窗口外 EXPIRED 未下发）；返回读值才以 UTC 表达。
+- 本批次修复链路复跑（新鲜）：`mvn -o -pl sw-bootstrap -am -Dtest=IotNativeMqttDeferredDispatchPgTest test` → **exit 0，2/0**（真 Broker 实收 payload；连接停用零外发）。
+- 本机证据（未入库，工作区外 `sw-uat-reverify-20261019/`）：EVIDENCE-NOTE.md、3 张浏览器截图（陈静审批弹层/已办、张伟抄送列表）、登录与审批脚本、`mvn-native-mqtt-e2e.log`。
