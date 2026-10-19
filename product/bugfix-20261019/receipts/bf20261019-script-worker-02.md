@@ -47,6 +47,7 @@ UAT 主机：2 vCPU / 1.6 GB 内存（Java 常驻 RSS 574 MB、swap 已用 545 M
 测试（本机，`mvn -pl sw-biz/sw-bpm/sw-bpm-engine -am -Dtest=… test`）：
 
 - `ScriptWorkerMainTest` 2/0/0/0、`BpmScriptRunnerTest` 13/0/0/0、`WorkerLaunchPlanTest` 5/0/0/0、`ScriptWorkerPoolTest` 9/0/0/0（真实 worker 进程拉起，验证新增启动参数不破坏隔离池）。
+- **真实 JVM 探针**（本机直接跑 `ScriptWorkerMain`，`-Dsw.bpm.script.warmup-timeout-ms=12345`）：就绪行自报 `{"id":"__ready__","ready":true,"warmUpTimeoutMs":12345,"maxHeapBytes":536870912}`，紧随其后的求值 `return 1;` 3ms OK——预热预算从属性到 worker 自报的链路在真实进程内成立。
 
 UAT 侧配套配置（待发布后执行，不改代码）：`SW_BPM_SCRIPT_WORKER_STARTUP_TIMEOUT_MS=120000`（宿主握手等待）＋ `SW_BPM_SCRIPT_WARMUP_TIMEOUT_MS=100000`（worker 预热预算），以覆盖该主机「JVM 启动约 16 s ＋ 预热约 6 s」的冷启动成本；预热完成后常驻 worker 复用共享 `Engine`，单次判断仍在 1 s 内。
 
