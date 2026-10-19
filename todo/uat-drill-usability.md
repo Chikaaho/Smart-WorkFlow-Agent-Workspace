@@ -1,6 +1,6 @@
 # 灾备演练表单使用问题（待排期）
 
-2026-10-19｜Owner 授权将实际使用问题同步到待办；状态为待核实、待排期。
+2026-10-19｜Owner 授权将实际使用问题同步到待办；已纳入 README 首例协作联调，相关现象待当前配置下核实；承接记录 `product/readme-first-example-acceptance/receipts/execution-intake-01.md`。
 
 ## 预约时间选择
 

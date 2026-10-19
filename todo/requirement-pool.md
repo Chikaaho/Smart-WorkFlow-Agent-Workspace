@@ -1,5 +1,7 @@
 # 需求池（Requirement Pool）
 
+当前活动任务（2026-10-19）：README 首例“多部门灾备演练”协作联调 IN_PROGRESS，Owner 与 Executor 配合实际操作、修复和测试，直到 Owner 验收通过。承接记录 `product/readme-first-example-acceptance/receipts/execution-intake-01.md`。总 4 阶段：基线承接已完成、实际操作与缺陷修复进行中、完整流程验收及结果同步未开始（1/1/2）。当前软件发布沿用 0.1.8；下一动作是开始或继续页面操作，承接对应问题。
+
 ## 最近完成：0.1.8（2026-10-19）
 
 Owner 2026-10-19 验收通过并明确版本号；执行侧走完七步（合并→发布→UAT 就地升级→发布后同步）。内容：原生 MQTT 设备控制通道、提交后实例探测用户态端点、提交成功单文案；DB 无新增迁移。正式/部署后端 0.1.8（`50a42c8`·`5c0e66bd…`）、前端 0.1.8（`d94232b`·`f62f1a8f…`）；两仓 annotated tag `0.1.8`、公开 Release 与 `latest`=0.1.8；任务分支 `fix/iot-native-mqtt-submit-detect`、`fix/submit-detect-copy` 已删除并回读。发布后复验：提交成功单文案、用户态计数 200、预约到点原生 MQTT 真实下发（命令 SENT）。回执 `product/iot-native-mqtt-submit-detect/receipts/release-018-01.md`、`release-018-02.md`。

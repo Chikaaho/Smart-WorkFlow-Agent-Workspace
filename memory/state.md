@@ -1,5 +1,9 @@
 # 当前状态摘要
 
+## 当前任务：README 首例灾备演练协作联调 IN_PROGRESS
+
+承接：`product/readme-first-example-acceptance/receipts/execution-intake-01.md`。总 4 阶段：基线承接完成、实际操作与修复进行中、完整流程验收及结果同步未开始（1/1/2）。软件发布基线保持 0.1.8；本轮通过由 Owner 确认。
+
 ## 当前状态：0.1.8 COMPLETED（Owner 2026-10-19 验收通过并确认版本号）
 
 回执：发布 `product/iot-native-mqtt-submit-detect/receipts/release-018-01.md`、发布后同步 `release-018-02.md`、实现 `implementation-01.md`（含 UAT 旧制品重走复验 §9）。
@@ -10,7 +14,7 @@
 
 七阶段 7/0/0 全部完成。发布后复验：提交成功单文案、用户态计数 200、预约到点原生 MQTT 真实下发（命令 SENT）。计数保持：功能 49、46/22/22=90、ADV64/问题 57、P 核销空、P62 延期/OFF。
 
-活动交付无；下一动作＝等待 Owner 安排需求（P65/P29 待排期）。运维注意：UAT 启动后端前必须加载 `server.env`。持续观察：预约 `2112002084486819842`（due 2026-10-20 20:00 CST）。
+当前活动任务：README 首例灾备演练协作联调 IN_PROGRESS；Owner 实际操作并验收，Executor 处理遇到的 bug、测试和复验。下一动作：开始或继续页面操作并承接对应问题。运维注意：UAT 启动后端前必须加载 `server.env`。持续观察：预约 `2112002084486819842`（due 2026-10-20 20:00 CST）。
 
 ## 上轮发布归档摘要：0.1.7-bugfix
 
