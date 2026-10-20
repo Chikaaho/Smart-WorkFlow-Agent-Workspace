@@ -4,7 +4,7 @@
   "version": "0.1.9",
   "iteration": "0.0.7",
   "registeredAt": "2026-10-19",
-  "registeredBy": "0.1.9 发布（Owner 2026-10-19 明确确认版本号并授权完整发布链；含 Owner 授权的『0.1.9版本号覆盖』一次——BF20261019-04 worker 预热预算修复）。发布回执 product/bugfix-20261019/receipts/release-019-01.md、覆盖回执 receipts/republish-019-01.md、UAT 复验与缺陷定位 receipts/bf20261019-script-worker-02.md。0.1.8 及更早条目保留于历史回执与 CHANGELOG",
+  "registeredBy": "0.1.9 发布（Owner 2026-10-19 明确确认版本号并授权完整发布链；含 Owner 授权的『0.1.9版本号覆盖』多次——Server 三次（BF20261019-04、BF20261020-01/02、BF20261020-03）、Web 两次（BF20261020-01/02、BF20261020-04））。发布回执 product/bugfix-20261019/receipts/release-019-01.md、覆盖回执 receipts/republish-019-01.md、UAT 复验与缺陷定位 receipts/bf20261019-script-worker-02.md。0.1.8 及更早条目保留于历史回执与 CHANGELOG",
   "projections": {
     "serverRepo": {
       "path": "Smart-WorkFlow-aPaaS-server",
@@ -19,16 +19,16 @@
     "workspace": {
       "path": "Smart-WorkFlow-Agent-Workspace",
       "changelog": "CHANGELOG.md",
-      "releaseNotes": "GitHub Release 0.1.9（Server 第三次覆盖后 `49b818e`·`09b001f6…`、Web 覆盖后 `14a11e2`·`9a9439be…`）＋ product/bugfix-20261019/receipts/",
+      "releaseNotes": "GitHub Release 0.1.9（Server 第三次覆盖后 `49b818e`·`09b001f6…`、Web 第四次覆盖后 `1e67c20`·`1a845572…`）＋ product/bugfix-20261019/receipts/",
       "upgrade": "docs/ops/production-ops.md §8/§9（0.1.9 无 DB 变更，沿用 0.1.7 终点）；脚本 worker 部署要求与预算配置见 §8.4",
       "rollback": "docs/ops/production-ops.md §8.1/§8.2（bootstrap.jar.bak-20261019_232116-0.1.8 等备份链与 web.bak-* 目录）",
       "configChanges": "0.1.9 新增可配置项（均有缺省，不配也能启动）：sw.bpm.script.timeout-ms(5000)、sw.bpm.script.worker-startup-timeout-ms(30000)、sw.bpm.script.warmup-timeout-ms(30000)。慢宿主必须把后两项同向调大——UAT（2 vCPU/1.6G）已按 100000/120000 配置；运维注意：start.sh 自身不加载 server.env，启动前须 `set -a; . ./server.env; set +a`",
       "dbMigrations": "无新增（终点保持 V0.1.7）",
-      "manifest": "GitHub Release 0.1.9 资产 digest（Server 第三次覆盖后制品 bootstrap.jar sha256 09b001f6412480130ba052d40e10865b91cc9350d7d46e4ba00f3d56b1917ca0、218,059,003 B，UAT 运行包同一 sha；第二次覆盖 7db992b5861d6c2a3508a91d4c2fee717e64f82f2096caee69e25048c787abf4、218,058,073 B，首次覆盖 9e4b5629a1c6fea10fbaf708e9b4e0e7adcd4348ba7bf484135039328086da1b、218,048,244 B，首次发布 d32a82c7…、218,047,647 B，历史保留于 Release 说明；Web sw-web-dist-0.1.9.zip sha256 9a9439be99da78c0f201bfcc02c753bfc68c1adb9fd09a7427f59f26c8b34d37、1,346,966 B）。Server 版本化资产 bootstrap-0.1.9.jar 已发布（218,059,003 B，GitHub 资产摘要 sha256 09b001f6…）"
+      "manifest": "GitHub Release 0.1.9 资产 digest（Server 第三次覆盖后制品 bootstrap.jar sha256 09b001f6412480130ba052d40e10865b91cc9350d7d46e4ba00f3d56b1917ca0、218,059,003 B，UAT 运行包同一 sha；第二次覆盖 7db992b5861d6c2a3508a91d4c2fee717e64f82f2096caee69e25048c787abf4、218,058,073 B，首次覆盖 9e4b5629a1c6fea10fbaf708e9b4e0e7adcd4348ba7bf484135039328086da1b、218,048,244 B，首次发布 d32a82c7…、218,047,647 B，历史保留于 Release 说明；Web sw-web-dist-0.1.9.zip sha256 1a845572b4c56c52edd55efecbca887b8c1f0bd9e6abfd82021b3308d2d3fc1e、1,345,346 B）。Server 版本化资产 bootstrap-0.1.9.jar 已发布（218,059,003 B，GitHub 资产摘要 sha256 09b001f6…）"
     }
   },
   "rules": {
     "candidateFreeze": "候选固定后只允许通过新回执审查的变更进入；代码/迁移/依赖/配置漂移使受影响证据失效并重固定候选",
-    "tagAndRelease": "0.1.9 标签/Release 已发布（Server tag→49b818e（第三次覆盖后；历次 96ab6d0→a92f7f4→a0fc2d7）、Web tag→14a11e2（覆盖后；原 3c43a3c），均为 annotated tag）；实际部署 UAT 后端运行同一 CI 制品（build.version=0.1.9，sha256 与 UAT 运行包一致）；UAT 端到端复验通过（实例 20261020-014）"
+    "tagAndRelease": "0.1.9 标签/Release 已发布（Server tag→49b818e（第三次覆盖后；历次 96ab6d0→a92f7f4→a0fc2d7）、Web tag→1e67c20（第四次覆盖后；历次 3c43a3c→14a11e2），均为 annotated tag）；实际部署 UAT 后端运行同一 CI 制品（build.version=0.1.9，sha256 与 UAT 运行包一致）；UAT 端到端复验通过（实例 20261020-014；2026-10-20 第四次覆盖后 UAT 部署 Web index-lUaIKWst.js 并完成详情/选择项/改名可见验收）"
   }
 }
