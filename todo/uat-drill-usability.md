@@ -2,6 +2,8 @@
 
 2026-10-19｜Owner 授权将实际使用问题同步到待办；已纳入 README 首例协作联调，相关现象待当前配置下核实；承接记录 `product/readme-first-example-acceptance/receipts/execution-intake-01.md`。
 
+> **2026-10-21 状态**：README 首例业务验收已 PASSED（`product/readme-first-example-acceptance/receipts/planning-review-20261021-passed.md`）。下列两项在本轮回执中无专项复验记录，保留待办、不核销；本轮通过不自动关闭它们。持续观察项预约 `2112002084486819842` 已过点：2026-10-20 20:00:06 在 0.1.9 下认领并入队（命令 `2112514190181191681`），因 20:03:14 第五次覆盖部署重启致发送中断，命令终态 FAILED、预约滞留 DISPATCHING，无设备外发回执（详见 `search_fallback/readme-first-example-closeout-facts-019.md` §5）。历史卡单 20261019-009/013、20261020-016 处置边界不变。
+
 ## 预约时间选择
 
 现场复验中，日期时间面板键入未来时间后被回滚，只能取“此刻”，导致审批结束时预约已过期；成功下发样例通过 API 提交未来时间完成验证。

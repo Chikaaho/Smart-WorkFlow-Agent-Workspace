@@ -1,6 +1,6 @@
 # 需求池（Requirement Pool）
 
-当前活动任务（2026-10-19）：README 首例“多部门灾备演练”协作联调 IN_PROGRESS，Owner 与 Executor 配合实际操作、修复和测试，直到 Owner 验收通过。承接记录 `product/readme-first-example-acceptance/receipts/execution-intake-01.md`。总 4 阶段：基线承接已完成、实际操作与缺陷修复进行中、完整流程验收及结果同步未开始（1/1/2）。当前软件发布沿用 0.1.8；下一动作是开始或继续页面操作，承接对应问题。
+当前活动任务（2026-10-21）：README 首例“多部门灾备演练”业务验收已 PASSED，功能 COMPLETED 落盘；0.1.9 已发布并部署 UAT。终态与发布后同步已交回（回执 `product/readme-first-example-acceptance/receipts/terminal-sync-019-01.md`），唯一下一动作＝Planner 复核并确认七阶段结束。总 7 阶段：4 已完成、2 进行中（待规划复核）、1 未开始。
 
 ## 下一步任务：全量 UI 文案与三档说明治理（2026-10-20）
 

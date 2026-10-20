@@ -1,21 +1,29 @@
 # 当前状态摘要
 
-## 当前任务：README 首例灾备演练协作联调 IN_PROGRESS
+## 当前任务：README 首例验收通过，交付收尾进行中
 
-承接：`product/readme-first-example-acceptance/receipts/execution-intake-01.md`。总 4 阶段：基线承接完成、实际操作与修复进行中、完整流程验收及结果同步未开始（1/1/2）。软件发布基线保持 0.1.8；本轮通过由 Owner 确认。
+2026-10-21，Owner 确认「验收结束，开始后续阶段」。Planner 已依据 Owner 实操结论和执行回执裁决 PASSED；业务通过，整个交付尚待最终同步复核。
 
-## 当前状态：0.1.8 COMPLETED（Owner 2026-10-19 验收通过并确认版本号）
+- 主方向：`product/readme-first-example-acceptance/passed/direction-readme-first-example-acceptance.md`。
+- 规划审查：同目录 `receipts/planning-review-20261021-passed.md`。
+- 当前执行方向：同目录 `ready/direction-terminal-sync-019.md`。
+- 事实核实：`search_task/readme-first-example-closeout-facts-019.md`，结果回传同名 `search_fallback/` 文件。
+- 行为与发布原始回执：`product/bugfix-20261019/receipts/`；最新为 `bf20261020-07.md`。
 
-回执：发布 `product/iot-native-mqtt-submit-detect/receipts/release-018-01.md`、发布后同步 `release-018-02.md`、实现 `implementation-01.md`（含 UAT 旧制品重走复验 §9）。
+总 7 阶段：①评估、②执行修复、④开发分支→develop→main、⑤发版已完成；③验收与信息同步、⑥发布后再次同步进行中（同步已交回，待规划复核）；⑦结束未开始（4/2/1）。
 
-内容（修复批次，不新增业务功能数）：①原生 MQTT 设备控制通道（自建 MQTT 设备按流程驱动控制、预约到点真实发布、通道缺失 fail closed）；②提交后实例探测改用户态端点 `GET /workflow/my/instances/count`；③提交成功单文案。
+当前唯一下一动作：Planner 复核最终同步回执 `product/readme-first-example-acceptance/receipts/terminal-sync-019-01.md`，确认第 3、6 阶段并确认第 7 阶段结束。
 
-事实：正式与实际后端 0.1.8（`50a42c8`·`5c0e66bd…`）、前端 0.1.8（`d94232b`·`f62f1a8f…`）、DB 0.1.7（无迁移）；开发默认 Server `0.1.8-SNAPSHOT`、Web `0.1.8`；两仓 annotated tag `0.1.8`→main、Release latest=0.1.8；任务分支（`e6f78bc`/`efdeb79`）已删除并回读；CI：Web `39208232197` success、Server `39208198955` attempt1 时序族抖动（同提交本地 11/0）→attempt2 success；UAT 由 0.1.7 就地升级（启动 175.771s、ERROR 0、健康 200、`build.version=0.1.8`）。
+## 发布与验收依据
 
-七阶段 7/0/0 全部完成。发布后复验：提交成功单文案、用户态计数 200、预约到点原生 MQTT 真实下发（命令 SENT）。计数保持：功能 49、46/22/22=90、ADV64/问题 57、P 核销空、P62 延期/OFF。
+本轮已确认并发布 0.1.9。发布源 Server `74716dd`、Web `e967e24`；收尾已回读（2026-10-21）：tag `0.1.9` 分别指向两发布源，Release 资产（218,061,187 B jar／1,351,539 B zip）在位，CI build Release（build-74716dd、build-e967e24）持 Latest 且均为 0.1.9 构建；UAT 健康 200、入口 `index-DDQRXD9F.js`、运行包 218,061,187 B；DB 版本化终点 V0.1.7，`R__bf20261020_form_data_admin_grants` 已应用；开发默认 Server `0.1.9-SNAPSHOT`、Web `0.1.9`。
 
-当前活动任务：README 首例灾备演练协作联调 IN_PROGRESS；Owner 实际操作并验收，Executor 处理遇到的 bug、测试和复验。下一动作：开始或继续页面操作并承接对应问题。运维注意：UAT 启动后端前必须加载 `server.env`。持续观察：预约 `2112002084486819842`（due 2026-10-20 20:00 CST）。
+已读证据：实例 20261020-017 动态审批与会签 APPROVED、抄送 SUCCESS；详情和审批区统一、表单数据准入与结束态只读通过 UAT 验证。Web 最新 1621 passed/3 skipped，聚焦 26/26；Server 第五轮全量 2141 tests、0 failures、0 errors、27 skipped，生产制品门禁 PASS。MQTT 原生下发依据为 0.1.8 发布回执中实例 20261019-008 的 SENT，保留历史时点，Broker 确认与设备执行回执分列。
 
-## 上轮发布归档摘要：0.1.7-bugfix
+本轮为修复，计数保持 49、46/22/22=90、ADV64/问题57；新增 P 核销与正式基线更新为空，已按权威状态核实一致。
 
-2026-10-18 规划最终确认 COMPLETED（7/0/0）：0.1.7 Bug 修复列车 43 项＋第 41 项线上返修＋openapi 回调租户上下文修复；正式/部署后端 0.1.7（`00e0a73`·`d8b390c1`，两次同版本覆盖）、前端 `4e89249`、DB 0.1.7；修复分支均已删除，P62 原分支保留。证据见 `product/0.1.7-bugfix/receipts/`。
+## 收尾边界
+
+历史卡单 20261019-009/013、20261020-016 保留；无本轮数据清理授权。预约 2112002084486819842 已回读：2026-10-20 20:00:06 在 0.1.9 下认领入队，20:03:14 覆盖部署重启致发送中断，命令 FAILED、预约滞留 DISPATCHING，无设备外发回执。时间/部门选择两项无专项复验记录，保留待办；旧文档不单独触发重验。P62 性能仍延期、默认 OFF；既有 CI 时序问题沿原待办跟踪。
+
+0.1.8 与 0.1.7 为历史发布，回执分别在 `product/iot-native-mqtt-submit-detect/receipts/`、`product/0.1.7-bugfix/receipts/`。

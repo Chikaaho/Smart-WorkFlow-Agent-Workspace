@@ -1,6 +1,6 @@
 # 会话交接（session-handoff）— 当前压缩版
 
-当前活动任务（2026-10-19）：README 首例“多部门灾备演练”协作联调 IN_PROGRESS，Owner 与 Executor 配合实际操作、修复和测试，直到 Owner 验收通过。承接记录 `product/readme-first-example-acceptance/receipts/execution-intake-01.md`。总 4 阶段：基线承接已完成、实际操作与缺陷修复进行中、完整流程验收及结果同步未开始（1/1/2）。当前软件发布为 **0.1.9**（2026-10-19 发布并部署 UAT；判断脚本 worker 修复在列）；**UAT 当前运行 0.1.9 第七次覆盖后的正式制品（Web `index-DDQRXD9F.js`；Server `74716dd`）**；下一动作＝规划确认整轮结束与 Owner 对第七轮修复的业务验收。
+当前活动任务（2026-10-21）：README 首例“多部门灾备演练”业务验收 PASSED（`product/readme-first-example-acceptance/receipts/planning-review-20261021-passed.md`），功能 COMPLETED 已落盘（功能 49 不变、本轮新增 0、P 核销空、正式基线更新集合为空）。当前软件发布为 **0.1.9**；**UAT 当前运行 0.1.9 第七次覆盖后的正式制品（Web `index-DDQRXD9F.js`；Server `74716dd`）**。终态与发布后同步已执行并交回：回执 `product/readme-first-example-acceptance/receipts/terminal-sync-019-01.md`；当前唯一下一动作＝Planner 复核该回执，确认第 3、6 阶段并确认第 7 阶段结束。总 7 阶段：4 已完成、2 进行中（待规划复核）、1 未开始。收尾回读结论（tag/Release/资产/UAT/迁移/分支清理/预约 2112002084486819842 到点结果）见 `knowledge/current-status.md` 顶部 2026-10-21 条目与 `search_fallback/readme-first-example-closeout-facts-019.md`。
 
 使用与验证待办（2026-10-19）：灾备演练的预约时间选择、参与部门选择见 `todo/uat-drill-usability.md`（待核实/排期）；兼容回滚 PG 测试失败见 `todo/p62-upgrade-gate-test-claim-race.md`（待定位）。重启、升级及回滚按运维手册加载 `server.env` 后执行。**发布与验收结论：0.1.9 已发布并部署 UAT，并完成七次同版本覆盖（Server 四次、Web 五次）；UAT 端到端复验通过。**
 

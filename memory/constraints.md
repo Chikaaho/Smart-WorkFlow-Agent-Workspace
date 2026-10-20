@@ -1,6 +1,6 @@
 # 必要硬约束摘要
 
-> 截至/同步点：2026-10-19（0.1.8 发布）；权威来源：`system.md`、`roles/*.md` 与当前已下发产品方向。
+> 2026-10-21 更新；权威来源：`system.md`、`roles/*.md` 与当前产品方向。
 
 - 必须先由用户显式声明且只认领一个角色；角色边界贯穿会话。
 - Planner 不读 knowledge/业务代码；Executor 不作规划裁决；Admin 不碰业务实现与业务状态裁决。
@@ -13,13 +13,13 @@
 - Owner 默认交付流程（2026-10-16）：①评估→②执行（自 develop 拉分支）→③验收与信息同步→④分支→develop→main（发布要求：种子/版本收敛）→⑤发版（版本必须用户确认）→⑥再次同步→⑦结束。只有 Owner 明确"不发版"才在③结束；已确认版本不重复询问。完整裁决：`product/delivery-lifecycle/ready/direction-owner-delivery-lifecycle.md`。
 - 清单（0.1.7bug.md）自 2026-10-18 起仅本地留存（退出跟踪并忽略，历史已重写）；不得 `git add -f` 或新建受跟踪副本带回正文。语义 Release 经既有 git 凭据通道：不索要明文 token、不回显凭据值。
 
-## 0.1.8 发布（Owner 2026-10-19）
+## 本轮验收与运维约束
 
-版本号由 Owner 明确确认；回执 `product/iot-native-mqtt-submit-detect/receipts/release-018-01.md`、`release-018-02.md`。
+README 首例于 2026-10-21 规划验收 PASSED。0.1.9 已确认并发布，见 `product/bugfix-20261019/receipts/`；当前收尾方向为 `product/readme-first-example-acceptance/ready/direction-terminal-sync-019.md`。下列运维注意源自既有现场记录，2026-10-21 收尾核实仍适用。
 
 - **UAT 启动硬边界**：`/opt/smart-workflow/server/start.sh` 自身不加载 `server.env`；必须 `cd /opt/smart-workflow/server && set -a && . ./server.env && set +a && ./start.sh`，否则 Druid 报 `SCRAM-based authentication, but no password was provided` 并退出（已记运维手册 §6.4/§8.1；未改脚本，建议后续加固）。
 - **UAT 设备腿口径**：演示连接 `uat-mosquitto`（MQTT，127.0.0.1:1883，用户 `ch-paas`）单条下行主题 `sw/drill/{deviceKey}/cmd`（设备 `drill-room-a`，其 `connection_id` 于 2026-10-19 补为 `2111833803582910465`）；判定下发成功的现网证据＝预约 DISPATCHED＋命令 SENT＋`MQTT:<topic>:<msgId>`＋Broker 日志同秒客户端连接（Broker 不记 payload、订阅需认证，故 UAT 不取原文载荷；受控 Broker 的 payload 原件由 `IotNativeMqttDeferredDispatchPgTest` 提供）。
 - **预约口径**：`field_drill_time` 按 Asia/Shanghai 本地墙钟解释；预约登记时到点已过 → 记录保留为 EXPIRED、不补发（`late_window` 只用于调度延迟）。
 - **CI 时序族**：`P63ReservationBoundaryPgTest` 仍会抖动（2026-10-19 主提交 attempt1 11/2、纯文档提交 `823190e` 11/1；同提交本地 11/0），沿 `todo/p63-reservation-test-timing-stability.md` 跟踪，重跑即可；如实记录、不作为回退依据。
 - **登录挑战链**：验证码为 PNG 位图、人工识读（禁摘要穷举）；挑战一次性消费、TTL 5 分钟；access token 15 分钟——批量复验注意时效。
-- **UI 选择器限制**：Element Plus datetime 面板内键入被回滚、只能取「此刻」（2026-10-19 实测）；需要未来到点的验证实例走 API 提交。
+- **历史使用问题**：2026-10-19 的未来时间选择和参与部门选择记录见 `todo/uat-drill-usability.md`；本轮业务已通过，收尾根据已有现场结果修正待办状态，不将旧现象继续当作当前结论。

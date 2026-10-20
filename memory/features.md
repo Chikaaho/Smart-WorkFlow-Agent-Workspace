@@ -1,23 +1,18 @@
 # 功能摘要
 
-## 当前任务：README 首例灾备演练协作联调 IN_PROGRESS
+## README 首例灾备演练
 
-承接：`product/readme-first-example-acceptance/receipts/execution-intake-01.md`。总 4 阶段：基线承接完成、实际操作与修复进行中、完整流程验收及结果同步未开始（1/1/2）。软件发布基线保持 0.1.8；本轮通过由 Owner 确认。
+2026-10-21，Owner 确认验收结束，Planner 依据 Owner 实操与执行回执裁决 PASSED。功能终态 COMPLETED 按同步方向落盘，当前交付仍待最终同步复核。
 
-## 当前状态：0.1.8 COMPLETED（Owner 2026-10-19 验收通过并确认版本号）
+方向与证据：
 
-回执：发布 `product/iot-native-mqtt-submit-detect/receipts/release-018-01.md`、发布后同步 `release-018-02.md`、实现 `implementation-01.md`（含 UAT 旧制品重走复验 §9）。
+- 主方向：`product/readme-first-example-acceptance/passed/direction-readme-first-example-acceptance.md`。
+- 规划审查：同目录 `receipts/planning-review-20261021-passed.md`。
+- 当前执行方向：同目录 `ready/direction-terminal-sync-019.md`。
+- 修复及发布：`product/bugfix-20261019/receipts/`，最新 `bf20261020-07.md`；本轮已发布 0.1.9。
 
-发布内容（修复批次，不新增业务功能数）：①**原生 MQTT 设备控制通道**——自建 MQTT 连接（`conn_type=MQTT`）设备可按流程驱动控制（预约/延迟语义），按承载连接解析下行主题（`{deviceKey}` 替换、QoS 配置或默认 1）并真实发布、以 Broker 确认判定成功，通道缺失 fail closed；②提交后实例探测改用户态端点 `GET /workflow/my/instances/count`；③提交成功提示收敛为「提交成功」。
+总 7 阶段：评估、执行、合并、发布已完成；验收同步、发布后同步进行中（已交回，待规划复核）；结束未开始（4/2/1）。下一动作：Planner 复核 `receipts/terminal-sync-019-01.md`。
 
-事实：后端 0.1.8（`50a42c8`·`5c0e66bd…`）、前端 0.1.8（`d94232b`·`f62f1a8f…`）、DB 0.1.7（无迁移）；两仓 annotated tag/Release `0.1.8`（latest）；UAT 就地升级（启动 175.771s、ERROR 0、健康 200）。发布后复验：提交成功单文案（真实 UI 提交）、用户态计数 200（旧构建 400/403）、预约到点原生 MQTT 真实下发（`sw/drill/drill-room-a/cmd`，命令 SENT）。
+本轮新增业务功能 0。目标计数保持功能 49、46/22/22=90、ADV64/问题57；新增 P 核销及正式基线更新集合为空，2026-10-21 已按当前权威状态核实一致。P62 功能完成，有限性能延期、默认 OFF。
 
-计数保持：功能 49、46/22/22=90、ADV64/问题 57、P 核销空、P62 延期/OFF。当前活动任务：README 首例灾备演练协作联调 IN_PROGRESS；Owner 实际操作并验收，Executor 处理遇到的 bug、测试和复验。下一动作：开始或继续页面操作并承接对应问题。
-
-## 上轮发布归档摘要：0.1.7-bugfix
-
-2026-10-18 规划最终确认 COMPLETED（7/0/0）：0.1.7 Bug 修复列车 43 项＋第 41 项线上返修＋openapi 回调租户上下文修复；后端 `00e0a73`·`d8b390c1`（两次同版本覆盖）、前端 `4e89249`、DB 0.1.7。证据见 `product/0.1.7-bugfix/receipts/`。
-
-## 历史状态索引
-
-正式功能 49；清单 46/22/22=90、ADV64/问题 57；P62 批准功能完成、有限性能延期、策略 OFF。0.1.3/0.1.5/0.1.6/0.1.7/0.1.8 发布事实见 `CHANGELOG.md` 与 `knowledge/current-status.md`。
+发布源、行为结果与历史问题见 `state.md`，交接见 `handoff.md`。0.1.8、0.1.7 为历史发布，原始回执分别在 `product/iot-native-mqtt-submit-detect/receipts/`、`product/0.1.7-bugfix/receipts/`。

@@ -16,6 +16,8 @@
 >
 > 状态更新（2026-10-19）：BF20261019-01/02/03 已随 **0.1.9** 发布并部署 UAT；UAT 复验新增 **BF20261019-04**（worker 预热预算硬编码 5s，慢宿主必失败），修复后经 Owner 授权「0.1.9 版本号覆盖」发布并完成 UAT 端到端复验（回执 `receipts/release-019-01.md`、`receipts/bf20261019-script-worker-02.md`、`receipts/republish-019-01.md`）。
 
+> 状态更新（2026-10-21，收尾）：本轮全部缺陷（BF20261019-01—04、BF20261020-01—08）已随 **0.1.9**（含七次同版本覆盖：Server 四次、Web 五次）发布并部署 UAT；业务验收经规划裁决 PASSED（`product/readme-first-example-acceptance/receipts/planning-review-20261021-passed.md`）。下文按轮次记录的「发布待 Owner 确认」均为当时时点事实，后续覆盖轮已解除；进度段旧表述以本条为准。发布源 Server `74716dd`、Web `e967e24`。
+
 | ID | 缺陷 | 根因 | 修复 | 状态 |
 |---|---|---|---|---|
 | BF20261019-01 | fat jar 部署下判断 worker 无法启动（`Could not find or load main class …ScriptWorkerMain`），触发器/节点脚本全链不可用；UAT 只能靠运维手工解包 211MB + `SW_BPM_SCRIPT_WORKER_CLASSPATH` 环境变量绕过 | `ScriptWorkerPool.Worker.spawn` 用宿主 `java.class.path` 作 worker `-cp`；Spring Boot fat jar 下该属性只有 `bootstrap.jar` 一个条目，`ScriptWorkerMain` 在 `BOOT-INF/classes` 内对 `-cp` 不可见 | `WorkerLaunchPlan` 按宿主运行形态解析拉起计划：fat jar 形态经 `-cp bootstrap.jar -Dloader.main=… PropertiesLauncher` 在归档内拉起（PropertiesLauncher 将 `BOOT-INF/classes`+`BOOT-INF/lib/*` 并入类路径，无需解包；前置校验 launcher 类存在，缺失给出可诊断错误）；exploded/测试形态语义不变；显式覆盖仍最高优先。真实制品排障追加两处修复：嵌套 URL 尾斜杠、组合协议前缀（`jar:nested:`）循环剥离 | **已修复（本地 fat jar 实证：`launch: source=fat-jar`，worker 正常执行）** |
