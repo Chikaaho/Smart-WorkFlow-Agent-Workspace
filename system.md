@@ -84,9 +84,9 @@ L/XL 终态同步以及已授权发布、版本切换、提交推送导致当前
 
 ### 0.5 工作区 Skill 前置依赖
 
-任何机器首次拉取本仓库后，以及每次开始新任务时，所有角色都必须先完成依赖检查，再开展任务工作。确认会话角色后，在工作区根目录运行 `python3 .codex/governance/ensure-skills.py`；Windows 可用 `py -3 .codex/governance/ensure-skills.py`。入口检查 `humanizer-zh`（来源仓库名 `humanizer-zh-cn`）与 `no-negative-echo`，已有可用安装则复用，缺失则从仓库声明的来源安装。安装或读取失败时如实报告并修复，不得略过前置依赖继续任务。
+任何机器首次拉取本仓库后，以及每次开始新任务时，所有角色都必须先完成依赖检查，再开展任务工作。确认会话角色后，在工作区根目录运行 `python3 governance/skills/ensure-skills.py`；Windows 可用 `py -3 governance/skills/ensure-skills.py`。入口检查 `humanizer-zh`（来源仓库名 `humanizer-zh-cn`）与 `no-negative-echo`，已有可用安装则复用，缺失则从仓库声明的来源安装。安装或读取失败时如实报告并修复，不得略过前置依赖继续任务。
 
-安装来源由 `.codex/governance/required-skills.json` 声明，检查与使用说明见 `.codex/governance/skill-prerequisites.md`。路径按当前机器定位，不绑定个人用户名或本机绝对路径，不重复安装同一技能，不计算非必要产物哈希。本节依赖准备属于所有角色的启动操作，不扩大业务读写、工程执行或发布权限；角色门禁仍先执行。
+安装来源由 `governance/skills/required-skills.json` 声明，检查与使用说明见 `governance/skills/README.md`。路径按当前机器定位，不绑定个人用户名或本机绝对路径，不重复安装同一技能，不计算非必要产物哈希。本节适用于所有接入该工作区的 Harness，均通过 `system.md` 使用同一份声明和检查器；新增 Harness 时将其指令入口路由到本文件。本节依赖准备属于所有角色的启动操作，不扩大业务读写、工程执行或发布权限；角色门禁仍先执行。
 
 检查通过后读取输出路径中的两份 `SKILL.md`；同一会话已完整读取且未变化的规范可复用。中文进度、最终回复与交付正文按 `humanizer-zh` 嵌入模式审校，保留事实、原意和不确定性，通常只展示终稿。所有任务交付前用 `no-negative-echo` 检查标题、文件名、正文、注释、提交与交接，围绕用户接受的目标和实际结果表达，保留必要风险、限制和审计事实；工具或 Hook 改过内容后，回读并检查受影响部分。
 
