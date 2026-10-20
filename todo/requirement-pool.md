@@ -2,6 +2,10 @@
 
 当前活动任务（2026-10-19）：README 首例“多部门灾备演练”协作联调 IN_PROGRESS，Owner 与 Executor 配合实际操作、修复和测试，直到 Owner 验收通过。承接记录 `product/readme-first-example-acceptance/receipts/execution-intake-01.md`。总 4 阶段：基线承接已完成、实际操作与缺陷修复进行中、完整流程验收及结果同步未开始（1/1/2）。当前软件发布沿用 0.1.8；下一动作是开始或继续页面操作，承接对应问题。
 
+## 下一步任务：全量 UI 文案与三档说明治理（2026-10-20）
+
+Owner 已要求整理为前端长期规范与下一步执行任务。长期规则：前端工程宪法 §6.5；[正式方向与执行 Prompt](../product/ui-copy-governance/ready/direction-ui-copy-governance.md)。L 级，READY，排在当前 README 首例协作联调之后。说明按三档处置：必要说明进入功能右上角小问号悬浮；可选说明抽出到操作手册；名称已表达清楚或无用户价值的重复说明直接删除。即时校验、风险与结果反馈保留。执行范围为前端全部可见文案及隐藏状态，语义不确定项保留并列出；当前仅完成规范与任务登记，UI 审计与修复未开始。总 7 阶段：评估已完成，执行、验收同步、合并、发版、发布后同步及结束未开始（1/0/6）。不新增业务功能或 P 编号，执行与验收不重开已完成的 P61。
+
 ## 最近完成：0.1.8（2026-10-19）
 
 Owner 2026-10-19 验收通过并明确版本号；执行侧走完七步（合并→发布→UAT 就地升级→发布后同步）。内容：原生 MQTT 设备控制通道、提交后实例探测用户态端点、提交成功单文案；DB 无新增迁移。正式/部署后端 0.1.8（`50a42c8`·`5c0e66bd…`）、前端 0.1.8（`d94232b`·`f62f1a8f…`）；两仓 annotated tag `0.1.8`、公开 Release 与 `latest`=0.1.8；任务分支 `fix/iot-native-mqtt-submit-detect`、`fix/submit-detect-copy` 已删除并回读。发布后复验：提交成功单文案、用户态计数 200、预约到点原生 MQTT 真实下发（命令 SENT）。回执 `product/iot-native-mqtt-submit-detect/receipts/release-018-01.md`、`release-018-02.md`。
