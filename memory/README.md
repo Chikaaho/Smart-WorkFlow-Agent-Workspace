@@ -1,9 +1,9 @@
-# memory 使用说明
+# memory 索引
 
-2026-10-21：README 首例灾备演练及 0.1.9 交付 COMPLETED。七阶段：评估、执行、验收同步、合并、发布、发布后同步、结束全部完成（7/0/0）。
+2026-10-21：**0.1.10-bugfix / PLANNING**（版本 0.1.10 已确认）；**0.1.9 交付 COMPLETED（README 首例灾备演练，7/0/0）**。SYNC-01 IN_PROGRESS，待规划复核 `product/0.1.10-bugfix/receipts/baseline-sync-0110-01.md` 后关闭。
 
-最终裁决：`product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md`。主方向与同步方向均在 `product/readme-first-example-acceptance/passed/`；第 2 轮回执 `receipts/terminal-sync-019-02.md` 的四项收尾缺口已关闭。
+恢复顺序：state → handoff → features → constraints；按需 decisions/issues/architecture。knowledge 为权威，冲突时以其为准。
 
-阅读顺序：state → handoff → features → constraints。knowledge 为权威状态，最终裁决由 Executor 按授权机械传播并提交规划记录，不重开验收。
+方向：`product/0.1.10-bugfix/ready/direction-bugfix-0110.md`；基线同步：`ready/direction-baseline-sync-0110.md`；事项：`items.md`。
 
-当前无活动交付任务。下一动作：等待 Owner 启动下一任务；UI 文案治理已排队 READY，尚未启动。
+0.1.10 总 7 阶段 0/1/6：需求评估进行中，执行建分支、验收同步、合并、发布、发布后同步及复核、结束未开始。下一动作：规划复核同步回执并关闭 SYNC-01，随后承接 Owner 的 0.1.10 事项。

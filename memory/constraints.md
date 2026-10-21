@@ -13,9 +13,9 @@
 - Owner 默认交付流程（2026-10-16）：①评估→②执行（自 develop 拉分支）→③验收与信息同步→④分支→develop→main（发布要求：种子/版本收敛）→⑤发版（版本必须用户确认）→⑥再次同步→⑦结束。只有 Owner 明确"不发版"才在③结束；已确认版本不重复询问。完整裁决：`product/delivery-lifecycle/ready/direction-owner-delivery-lifecycle.md`。
 - 清单（0.1.7bug.md）自 2026-10-18 起仅本地留存（退出跟踪并忽略，历史已重写）；不得 `git add -f` 或新建受跟踪副本带回正文。语义 Release 经既有 git 凭据通道：不索要明文 token、不回显凭据值。
 
-## 本轮验收与运维约束
+## 当前交付与运维约束（2026-10-21）
 
-README 首例于 2026-10-21 完成业务与终态复核，交付 COMPLETED（7/0/0）。0.1.9 已确认并发布，见 `product/bugfix-20261019/receipts/`；最终裁决为 `product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md`，主方向与同步方向均已归档 passed。下列运维注意源自既有现场记录，2026-10-21 收尾核实仍适用。
+**0.1.10-bugfix PLANNING**（版本已确认，总 7 阶段 0/1/6）；**0.1.9 交付 COMPLETED（README 首例灾备演练，7/0/0）**，终审 `product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md`。基线：根 `f2beb3be`、Server `2d6b8f1`、Web `2ac1a71`；正式发布 0.1.9（Server `74716dd`、Web `e967e24`），UAT 为回执时点 0.1.9（未实时复验）；开发 Server `0.1.9-SNAPSHOT`、Web `0.1.9`；DB V0.1.7。0.1.10 版本收敛留待发布阶段，不提前改版本来源。SYNC-01 IN_PROGRESS，待规划复核 `product/0.1.10-bugfix/receipts/baseline-sync-0110-01.md`。下列运维注意源自既有现场记录，2026-10-21 收尾核实仍适用。
 
 - **UAT 启动硬边界**：`/opt/smart-workflow/server/start.sh` 自身不加载 `server.env`；必须 `cd /opt/smart-workflow/server && set -a && . ./server.env && set +a && ./start.sh`，否则 Druid 报 `SCRAM-based authentication, but no password was provided` 并退出（已记运维手册 §6.4/§8.1；未改脚本，建议后续加固）。
 - **UAT 设备腿口径**：演示连接 `uat-mosquitto`（MQTT，127.0.0.1:1883，用户 `ch-paas`）单条下行主题 `sw/drill/{deviceKey}/cmd`（设备 `drill-room-a`，其 `connection_id` 于 2026-10-19 补为 `2111833803582910465`）；判定下发成功的现网证据＝预约 DISPATCHED＋命令 SENT＋`MQTT:<topic>:<msgId>`＋Broker 日志同秒客户端连接（Broker 不记 payload、订阅需认证，故 UAT 不取原文载荷；受控 Broker 的 payload 原件由 `IotNativeMqttDeferredDispatchPgTest` 提供）。

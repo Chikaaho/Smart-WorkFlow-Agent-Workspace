@@ -1,6 +1,6 @@
 # 需求池（Requirement Pool）
 
-当前活动任务无（2026-10-21）：README 首例与 0.1.9 交付 COMPLETED，最终裁决 `product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md`。评估、执行、验收同步、合并、发布、发布后同步、结束全部完成（7/0/0）；TS019-G1—G4 已关闭。下一动作等待 Owner 启动下一任务，UI 文案治理保持 READY；预约恢复及时间/部门选择继续待评估。最终裁决的知识传播与归档提交由 Executor 沿已有授权办理。
+当前活动交付：**0.1.10-bugfix · PLANNING（2026-10-21）**，版本 0.1.10 已确认；方向 `product/0.1.10-bugfix/ready/direction-bugfix-0110.md`，事项 `items.md`，基线同步 `direction-baseline-sync-0110.md`。**0.1.9 交付 COMPLETED**（README 首例灾备演练，7/0/0；终审 `product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md`）。SYNC-01 IN_PROGRESS，待规划复核 `product/0.1.10-bugfix/receipts/baseline-sync-0110-01.md` 后关闭。0.1.10 总 7 阶段 0/1/6；下一动作＝规划复核同步回执，随后承接 Owner 的 0.1.10 事项。UI 文案治理保持 READY；预约恢复及时间/部门选择继续待评估。
 
 ## 下一步任务：全量 UI 文案与三档说明治理（2026-10-20）
 

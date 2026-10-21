@@ -1,9 +1,7 @@
 # 功能摘要
 
-README 首例灾备演练与 0.1.9 交付：COMPLETED（Planner 2026-10-21 第 2 轮终态复核通过）。七阶段：评估、执行、验收同步、合并、发布、发布后同步、结束全部完成（7/0/0）。
+**0.1.10-bugfix：PLANNING（2026-10-21）**，版本 0.1.10 已确认；方向 `product/0.1.10-bugfix/ready/direction-bugfix-0110.md`，事项 `items.md`。总 7 阶段 0/1/6，需求评估进行中。计数保持 49、46/22/22=90、ADV64/问题57；本轮开轮不新增功能数、不核销 P。
 
-最终裁决：`product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md`；第 2 轮回执同任务 `receipts/terminal-sync-019-02.md`。主方向与同步方向均在 passed，四项收尾缺口已关闭。
+**0.1.9：COMPLETED（2026-10-21 终审）**。README 首例灾备演练，7/0/0；终审 `product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md`。正式发布 0.1.9（Server `74716dd`、Web `e967e24`），UAT 回执时点 0.1.9；开发 Server `0.1.9-SNAPSHOT`、Web `0.1.9`；DB V0.1.7。P62 性能延期/OFF。
 
-计数保持 49、46/22/22=90、ADV64/问题57；新增业务功能 0，新增 P 核销、里程碑/明细变更及正式验证基线更新为空。P62 功能完成，有限性能延期/OFF。
-
-当前无活动业务或交付任务；等待 Owner 启动下一任务。已排队 UI 文案治理 READY，尚未启动。发布与分支事实见 state，遗留问题见 `todo/uat-drill-usability.md`；最终裁决由 Executor 机械传播并办理记录提交。
+历史索引（非当前）：0.1.8 原生 MQTT 通道与用户态实例探测；0.1.7 Bug 修复列车；0.1.6 应用中心与表单分类统一（正式功能第 49 个）；0.1.5/0.1.3/0.1.0 见各自回执与 CHANGELOG。P29 租户管理、P65 表单 JS 待排期，不自动纳入本轮。
