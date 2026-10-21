@@ -1,8 +1,12 @@
 # 近期有效决策摘要
 
-## 0.1.10 发布与收口（2026-10-21）
+## P65高级JS面板补充（2026-10-21）
 
-Owner 确认版本 0.1.10 并宣布修复结束；修复批次不新增业务功能数。候选 22 Web/6 Server 提交经 develop、版本收敛、main CI 后发布；两仓 annotated tag/release 与 UAT 部署均完成。Server 首次 CI 暴露的 I5 SSO 测试夹具口令不一致已修复（`8a2aa56`），最终两仓 CI success。发布/部署/开发版本分列：正式与 UAT 0.1.10、开发 Server `0.1.10-SNAPSHOT`、Web `0.1.10`；DB versioned 终点 `V0.1.7`。应用导入导出仍缺 L 方向，保持待决，不进入本次候选。
+Owner要求表单高级JS面板用于数据处理和组件控制，并明确加载完成及提交前/后三类钩子。合并入既有P65，详情 `todo/p65-form-javascript-events-api.md`；提交钩子与校验/请求/保存成功的精确关系在立项时确定。待规划、待排期，版本与优先级待定，本次仅补充候选。
+
+## 0.1.10 发布、收口与终态（2026-10-21）
+
+Owner 确认版本 0.1.10 并宣布修复结束；修复批次不新增业务功能数。候选 22 Web/6 Server 提交经 develop、版本收敛、main CI 后发布；两仓 annotated tag/release 与 UAT 部署均完成。Server 首次 CI 暴露的 I5 SSO 测试夹具口令不一致已修复（`8a2aa56`），最终两仓 CI success。发布/部署/开发版本分列：正式与 UAT 0.1.10、开发 Server `0.1.10-SNAPSHOT`、Web `0.1.10`；DB versioned 终点 `V0.1.7`。BF0110-01—08 PASSED；Owner已明确将应用导入导出转需求池，待规划/待排期，详情 `todo/application-bundle-import-export.md`。规划终审后最终裁决传播已完成并回读，整体 COMPLETED 7/0/0，当前无活动交付，下一动作由 Owner 选择。
 
 ## Owner默认交付流程（2026-10-16）
 

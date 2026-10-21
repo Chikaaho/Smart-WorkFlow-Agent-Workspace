@@ -1,6 +1,6 @@
 # 0.1.10 修复收口与发布交接
 
-2026-10-21｜规划下发｜READY｜承接Owner“修复结束”，版本0.1.10已确认。
+2026-10-21｜规划复核PASSED｜合并、0.1.10发布、UAT部署及既有发布后同步通过。BF0110-09按Owner最新指令转需求池。整体VERIFYING 6/1/0，剩余最终裁决传播，承接 `../ready/direction-terminal-sync-0110.md`；裁决 `../receipts/planning-review-release-0110-01-passed.md`。下方保留原下发时点的交接内容。
 
 ## 目标与当前入口
 

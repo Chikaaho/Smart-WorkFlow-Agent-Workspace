@@ -1,14 +1,18 @@
 # 需求池（Requirement Pool）
 
-当前活动交付：**0.1.10-bugfix · VERIFYING（发布完成，待规划终审）**。版本0.1.10已发布并部署UAT：Server `8a2aa56`（`bootstrap-0.1.10.jar` 218,065,590 B sha256 `b447fa09…`）、Web `e03a886`（`sw-web-dist-0.1.10.zip` 1,360,081 B sha256 `a9d6a508…`）；UAT健康UP、`build.version=0.1.10`、Web `index-qOqx_U4O.js`、启动ERROR 0；DB两条0.1.10 repeatable已应用，versioned终点`V0.1.7`。总7阶段6/1/0：只有规划终审进行中。下一动作＝Planner复核 `product/0.1.10-bugfix/receipts/closeout-0110-01.md`、`release-0110-01.md`、`final-sync-0110-01.md` 并下发终审值。0.1.9交付COMPLETED 7/0/0；应用导入导出仍缺L方向，保持待决。UI文案治理保持READY，预约恢复及时间/部门选择保持既有待办，不自动纳入本轮。
+当前活动交付：**无**。**0.1.10-bugfix COMPLETED（7/0/0）**：评估、执行、验收同步、合并、发布、发布后同步、结束均完成。正式发布与UAT部署0.1.10，开发Server0.1.10-SNAPSHOT、Web0.1.10，DB versioned终点V0.1.7；发布源Server8a2aa56、Webe03a886。BF0110-01—08 PASSED；Owner已将应用导入导出转入需求池待排期。终态下一动作＝等待Owner选择下一任务。UI文案治理保持READY，其他既有待办保持。
+
+## 待排期：应用导入导出（2026-10-21）
+
+Owner明确要求加入需求池。状态：待规划、待排期；目标版本待定；至少L级。目标是应用整体导入导出，涵盖完整表单定义、关联流程及审批意见表单，目标缺少审批意见表单时按包内容新增并关联。导出范围、冲突处理、权限与租户隔离、运行数据和附件边界在立项时确定。详情：[应用导入导出](application-bundle-import-export.md)；来源BF0110-09。本次候选登记不新增正式功能数、90项清单明细或P核销，P32表单数据Excel导入导出的已完成状态保持。
 
 ## 下一步任务：全量 UI 文案与三档说明治理（2026-10-20）
 
 Owner 已要求整理为前端长期规范与下一步执行任务。长期规则：前端工程宪法 §6.5；[正式方向与执行 Prompt](../product/ui-copy-governance/ready/direction-ui-copy-governance.md)。L 级，READY，前置 README 首例交付已完成，待 Owner 启动。说明按三档处置：必要说明进入功能右上角小问号悬浮；可选说明抽出到操作手册；名称已表达清楚或无用户价值的重复说明直接删除。即时校验、风险与结果反馈保留。执行范围为前端全部可见文案及隐藏状态，语义不确定项保留并列出；当前仅完成规范与任务登记，UI 审计与修复未开始。总 7 阶段：评估已完成，执行、验收同步、合并、发版、发布后同步及结束未开始（1/0/6）。不新增业务功能或 P 编号，执行与验收不重开已完成的 P61。
 
-## 最近完成：0.1.10（2026-10-21 发布并部署）
+## 最近完成：0.1.10（2026-10-21 发布、部署并完成终态）
 
-修复批次，不新增业务功能数。Web 22提交/Server 6提交经 develop、版本收敛、main CI 后发布；两仓 annotated tag `0.1.10`、公开 Release 与 UAT 部署完成。Server 首次 CI 暴露 I5 SSO 测试夹具口令不一致，修复 `8a2aa56` 后两仓 CI success。正式/部署 0.1.10，开发 Server `0.1.10-SNAPSHOT`、Web `0.1.10`；DB versioned 终点 `V0.1.7`。回执 `product/0.1.10-bugfix/receipts/release-0110-01.md`、`final-sync-0110-01.md`。
+修复批次，不新增业务功能数。Web 22提交/Server 6提交经 develop、版本收敛、main CI 后发布；两仓 annotated tag `0.1.10`、公开 Release 与 UAT 部署完成。Server 首次 CI 暴露 I5 SSO 测试夹具口令不一致，修复 `8a2aa56` 后两仓 CI success。正式/部署 0.1.10，开发 Server `0.1.10-SNAPSHOT`、Web `0.1.10`；DB versioned 终点 `V0.1.7`。规划终审 BF0110-01—08 PASSED，终态传播回执 `product/0.1.10-bugfix/receipts/terminal-sync-0110-01.md`，整体 COMPLETED 7/0/0。
 
 ## 历史完成：README 首例验收与 0.1.9（2026-10-21）
 
@@ -199,7 +203,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 | P62 | 低代码事务能力与BPM分级执行架构 | Owner2026-09-30；XL；[正式需求](p62-lowcode-transaction-bpm-tiering.md) | 批准功能COMPLETED；P64阶段Ⅱ已通过，新机就绪探索已完成（2026-10-11，回执 [search_fallback/p62-performance-new-machine-readiness-20261011.md](../search_fallback/p62-performance-new-machine-readiness-20261011.md)）；有限性能三轮未通过、VERIFYING，已由 Owner 搁置为已知延期问题（2026-10-12，未来方向=带权参数配置、后台可配置每租户优先级；见 [P62 §性能已知延期](p62-lowcode-transaction-bpm-tiering.md)）、策略OFF。[恢复安排](../product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-performance-resume-20261011.md)。不新增编号或计数。 |
 | P63 | MES前置能力：动态并行审批与一次性预约IoT下发 | Owner 2026-10-06；L；[需求定义](p63-mes-workflow-foundations.md)；关联P60 I4/P21/P62 | **COMPLETED（规划已确认，2026-10-08）**；R01—R06批准交付核销，20/20、A01—A10、TS01—TS03全部通过；[最终裁决](../product/p63-mes-workflow-foundations/receipts/planning-final-review-terminal-sync-p63-mes-workflow-foundations-02-completed.md)；正式功能48、清单46/22/22零升降；六入口确认措辞传播已核销，业务验收锁定。 |
 | P64 | MES高级流程编排与业务闭环 | Owner2026-10-08；XL；[需求索引](p64-mes-advanced-orchestration.md) | **COMPLETED（规划已确认，2026-10-13）**，批准范围已核销；正式功能48；三阶段完成3/进行中0/未开始0，业务与终态验收剩余0；终态最终复核02。 |
-| P65 | 表单自定义 JavaScript 事件与开放 API：加载完成、提交前后事件；主表/明细表数据与控件属性、流程/组织数据及辅助函数；与现有流程 JS 面板共用一套 UI | Owner 2026-10-18；[需求定义](p65-form-javascript-events-api.md) | 待做、待排期；至少L级评估；优先级及版本待定 |
+| P65 | 表单高级JS面板，用于数据处理和组件控制；钩子涵盖表单加载完成、提交前、提交后，提交钩子的精确时点待设计；主表/明细表数据与控件属性、流程/组织数据及辅助函数；与流程JS面板共用UI | Owner 2026-10-18、2026-10-21补充；[需求定义](p65-form-javascript-events-api.md) | 待规划、待排期；至少L级；优先级及版本待定 |
 
 管理员P0治理插单（2026-09-15）：[连续执行与可见浏览器验收门禁](admin-machine-gate-continuous-visible-browser.md)已`COMPLETED（规划确认）`，本地提交`8e87899`，治理测试sh 70/70、PowerShell 49/49。该任务不并入P60业务计数；远程发布仍需Owner另行授权。
 
@@ -726,5 +730,3 @@ P45已完成规划功能级验收与阶段三终态复核，正式状态为 **`C
 ### 2026-09-29 后台SSO当前验收安排
 
 后台SSO配置与B端准入COMPLETED（规划已确认，2026-09-29）；R1轮换完成，无剩余动作。企业微信延期，P31开放。裁决 `product/sso-admin-config/receipts/planning-final-review-terminal-sync-01-completed.md`。
-
-

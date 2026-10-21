@@ -1,27 +1,11 @@
-# 当前交接：0.1.10 发布完成
+# 当前交接：0.1.10 终态完成
 
-2026-10-21｜0.1.10-bugfix VERIFYING（发布完成，待规划终审）；0.1.9 交付 COMPLETED 7/0/0。
+2026-10-21｜0.1.10-bugfix COMPLETED（7/0/0）。BF0110-01—08 PASSED，修复、合并、发布及同步复核通过；最终裁决传播已落盘、提交推送并回读。当前活动交付无。
 
-## 已做
+已做：knowledge与memory全部当前入口改为终态；主方向与发布交接归档passed/；需求池登记应用导入导出；终态回执 `product/0.1.10-bugfix/receipts/terminal-sync-0110-01.md`。发布源Server8a2aa56/Webe03a886，开发Server0.1.10-SNAPSHOT/Web0.1.10；UAT 0.1.10，DB versioned V0.1.7；计数49、46/22/22=90、ADV64/问题57。
 
-- 修复候选 Web 22 提交／Server 6 提交合入 develop，版本收敛 0.1.10，develop→main 推送。
-- Server CI 首次失败的 I5 SSO 测试夹具口令不一致已修复（`8a2aa56`）；最终 CI 两仓 success。
-- 两仓 annotated tag `0.1.10` 与公开 Release 已发布，资产与 CI 制品同源。
-- UAT 由 0.1.9 就地升级：备份 DB/jar/web，替换后健康 UP、ERROR 0、`build.version=0.1.10`、Web `index-qOqx_U4O.js`；DB 两条 0.1.10 repeatable 已应用。
-- 收口、发布、发布后同步回执已落盘；根 README/CHANGELOG/version.json、Server/Web README、功能清单、knowledge/memory/todo 已同步。
+未做/保持：应用导入导出待规划/待排期、版本待定；UI文案治理READY；预约恢复、时间/部门选择、P62性能延期/OFF、P29/P65保持既有边界。
 
-## 尚未做
+下一动作＝等待Owner选择下一任务；终态方向由规划复核后归档passed/。新会话先声明角色，读取system.md及角色，运行依赖检查并读两份SKILL.md，再读memory与knowledge。
 
-- Planner 对三份回执与终审值清单的复核。
-
-## 下一动作
-
-Planner 复核 `product/0.1.10-bugfix/receipts/closeout-0110-01.md`、`release-0110-01.md`、`final-sync-0110-01.md`，确认终态与整轮结束。
-
-## 边界
-
-0.1.9 已过业务与 UAT 结果保持锁定，不重跑。应用导入导出仍缺 L 方向，保持待决，不进入 0.1.10 候选。P29/P65 待排期，P62 性能延期/OFF。
-
-## 新会话启动
-
-先声明角色并读取 system.md、角色定义，按 §0.5 运行 `py -3 governance/skills/ensure-skills.py` 并读取两份 SKILL.md，再读 memory 索引；执行另读 `knowledge/current-status.md` 与发布回执。
+P65候选补充：Owner要求表单高级JS面板进行数据处理和组件控制，加载完成/提交前/后三类钩子已合并至 todo/p65-form-javascript-events-api.md，精确时点待立项设计，保持待规划/待排期。
