@@ -1,6 +1,6 @@
 # 需求池（Requirement Pool）
 
-当前活动交付：**0.1.10-bugfix · PLANNING（2026-10-21）**，版本 0.1.10 已确认；方向 `product/0.1.10-bugfix/ready/direction-bugfix-0110.md`，事项 `items.md`，基线同步 `direction-baseline-sync-0110.md`。**0.1.9 交付 COMPLETED**（README 首例灾备演练，7/0/0；终审 `product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md`）。SYNC-01 IN_PROGRESS，待规划复核 `product/0.1.10-bugfix/receipts/baseline-sync-0110-01.md` 后关闭。0.1.10 总 7 阶段 0/1/6；下一动作＝规划复核同步回执，随后承接 Owner 的 0.1.10 事项。UI 文案治理保持 READY；预约恢复及时间/部门选择继续待评估。
+当前活动交付：**0.1.10-bugfix · PLANNING（2026-10-21）**，版本 0.1.10 已确认；方向 `product/0.1.10-bugfix/ready/direction-bugfix-0110.md`，事项 `items.md`，基线同步 `product/0.1.10-bugfix/passed/direction-baseline-sync-0110.md`。**0.1.9 交付 COMPLETED**（README 首例灾备演练，7/0/0；终审 `product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md`）。SYNC-01 CLOSED，裁决 `product/0.1.10-bugfix/receipts/planning-review-baseline-sync-0110-01-passed.md`。0.1.10 总 7 阶段 0/1/6；下一动作＝执行机械传播本次关闭裁决并提交推送，随后接收和评估Owner的0.1.10事项。UI 文案治理保持 READY；预约恢复及时间/部门选择继续待评估。
 
 ## 下一步任务：全量 UI 文案与三档说明治理（2026-10-20）
 
@@ -8,7 +8,7 @@ Owner 已要求整理为前端长期规范与下一步执行任务。长期规�
 
 ## 最近完成：README 首例验收与 0.1.9（2026-10-21）
 
-第 2 轮同步复核通过，七阶段全部完成（7/0/0）。Server 发布源 `74716dd`、Web `e967e24`；后续文档提交与 develop/main 分别为 `2d6b8f1`、`2ac1a71`。计数 49、46/22/22=90、ADV64/问题57，P 核销及正式基线更新为空。最终裁决见上方链接；当前活动交付无。
+第 2 轮同步复核通过，七阶段全部完成（7/0/0）。Server 发布源 `74716dd`、Web `e967e24`；后续文档提交与 develop/main 分别为 `2d6b8f1`、`2ac1a71`。计数 49、46/22/22=90、ADV64/问题57，P 核销及正式基线更新为空。最终裁决见上方链接；该终审时点活动交付为空，当前已由顶部0.1.10规划承接。
 
 ## 历史完成：0.1.8（2026-10-19）
 
@@ -722,3 +722,4 @@ P45已完成规划功能级验收与阶段三终态复核，正式状态为 **`C
 ### 2026-09-29 后台SSO当前验收安排
 
 后台SSO配置与B端准入COMPLETED（规划已确认，2026-09-29）；R1轮换完成，无剩余动作。企业微信延期，P31开放。裁决 `product/sso-admin-config/receipts/planning-final-review-terminal-sync-01-completed.md`。
+

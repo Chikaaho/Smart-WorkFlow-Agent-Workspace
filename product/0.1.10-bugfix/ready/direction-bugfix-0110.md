@@ -8,11 +8,11 @@ Owner 已确认本轮版本为 **0.1.10**，持续提供 UI 调整、小功能�
 
 整体跟踪不改变单项风险分级：S/M 由执行角色按快路径实现、自验并报告；触及权限、数据模型、跨仓契约或其他升级门的事项，补齐对应 L/XL 方向与验收边界后进入实现。规划负责目标、范围和适用验收，执行负责工程实现；不自动引入未排期需求。
 
-## 已知基线与同步缺口
+## 当前基线与同步结论
 
-执行核查回执 `search_fallback/bugfix-0110-baseline-and-sync-audit.md` 已读取：0.1.9 发布后同步及规划终审完成，终审为 `product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md`（2026-10-21 09:35）。本机根仓落后远端27提交，Server/Web分别落后24/21提交，当前须先保留本轮未提交改动并对齐远端基线。
+0.1.9终审 `product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md` 已直接读取；既有交付COMPLETED 7/0/0。执行完成三仓基线对齐及终审传播，同步提交3c1a2a22已推送回读，Server2d6b8f1、Web2ac1a71。
 
-SYNC-01 剩余范围是检出对齐及终审向 knowledge 的机械传播：远端 `knowledge/current-status.md`、`knowledge/session-handoff.md` 仍保留终审前4/2/1待复核状态。具体收尾方向见 `direction-baseline-sync-0110.md`，审查结论见 `../receipts/planning-review-baseline-and-sync-audit-01.md`。
+SYNC-01已规划复核关闭，裁决 `../receipts/planning-review-baseline-sync-0110-01-passed.md`；同步方向归档 `../passed/direction-baseline-sync-0110.md`。执行下一动作是将本次关闭裁决机械传播至权威入口并完成规划批次提交推送，随后承接Owner事项。
 
 核查时点正式版本0.1.9；Server开发0.1.9-SNAPSHOT、Web开发0.1.9；部署版本0.1.9为已有回执时点结果，UAT实时状态尚未复验。计数49、46/22/22=90、ADV64/问题57、P核销空，P62延期/OFF。0.1.10开轮不改变上述计数。
 
@@ -31,7 +31,7 @@ SYNC-01 剩余范围是检出对齐及终审向 knowledge 的机械传播：远�
 ## 整体进度
 
 总 7 阶段：已完成 0，进行中 1，未开始 6。
-1. 需求评估：进行中（基线事实及SYNC-01原因已核实，待检出对齐、终审传播及接收首项）。
+1. 需求评估：进行中（基线同步复核通过，待关闭裁决传播及接收首项）。
 2. 执行并建分支：未开始。
 3. 验收与信息同步：未开始。
 4. 开发分支→develop→main：未开始。
