@@ -1,6 +1,6 @@
 # 需求池（Requirement Pool）
 
-当前活动任务（2026-10-21）：README 首例“多部门灾备演练”业务验收已 PASSED，功能 COMPLETED 落盘；0.1.9 已发布并部署 UAT。终态与发布后同步已交回（回执 `product/readme-first-example-acceptance/receipts/terminal-sync-019-01.md`），唯一下一动作＝Planner 复核并确认七阶段结束。总 7 阶段：4 已完成、2 进行中（待规划复核）、1 未开始。
+当前活动任务（2026-10-21）：README 首例业务 PASSED、功能 COMPLETED；0.1.9 已发布。终态同步第 1 轮复核尚未通过，执行按 `product/readme-first-example-acceptance/receipts/planning-execution-prompt-terminal-sync-019-02.md` 补齐开发基线、当前入口与最终回读。总 7 阶段：评估、执行、合并、发布已完成；验收同步、发布后同步进行中；结束未开始（4/2/1）。预约重启恢复与终态一致性登记在 `todo/uat-drill-usability.md`，待独立评估。
 
 ## 下一步任务：全量 UI 文案与三档说明治理（2026-10-20）
 

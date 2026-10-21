@@ -2,7 +2,7 @@
 
 2026-10-19｜Owner 授权将实际使用问题同步到待办；已纳入 README 首例协作联调，相关现象待当前配置下核实；承接记录 `product/readme-first-example-acceptance/receipts/execution-intake-01.md`。
 
-> **2026-10-21 状态**：README 首例业务验收已 PASSED（`product/readme-first-example-acceptance/receipts/planning-review-20261021-passed.md`）。下列两项在本轮回执中无专项复验记录，保留待办、不核销；本轮通过不自动关闭它们。持续观察项预约 `2112002084486819842` 已过点：2026-10-20 20:00:06 在 0.1.9 下认领并入队（命令 `2112514190181191681`），因 20:03:14 第五次覆盖部署重启致发送中断，命令终态 FAILED、预约滞留 DISPATCHING，无设备外发回执（详见 `search_fallback/readme-first-example-closeout-facts-019.md` §5）。历史卡单 20261019-009/013、20261020-016 处置边界不变。
+> **2026-10-21 状态**：README 首例业务验收已 PASSED（`product/readme-first-example-acceptance/receipts/planning-review-20261021-passed.md`）。下列两项在本轮回执中无专项复验记录，保留待办、不核销；本轮通过不自动关闭它们。持续观察项预约 `2112002084486819842` 已过点：2026-10-20 20:00:06 在 0.1.9 下认领并入队（命令 `2112514190181191681`），20:03:14 进程重启后发送恢复失败（与第五次覆盖部署的关联为时间线推断），命令终态 FAILED、预约滞留 DISPATCHING，无设备外发回执（详见 `search_fallback/readme-first-example-closeout-facts-019.md` §5）。历史卡单 20261019-009/013、20261020-016 处置边界不变。
 
 ## 预约时间选择
 
@@ -23,3 +23,11 @@
 完成条件：使用该演示表单的普通用户可以完成配置要求的部门选择，提交值与审批参与对象一致，选项范围符合租户和数据权限。
 
 依据：本地 `/Users/chikan/sw-uat-reverify-20261019/EVIDENCE-NOTE.md` §2（2026-10-19 实测）；流程 `bpm_26316e0198d3484b`，租户 9001。
+
+## 重启后的预约发送恢复与终态一致性（待评估）
+
+2026-10-21 收尾核实：预约 `2112002084486819842`、命令 `2112514190181191681` 在 0.1.9 下到点认领后，经历 20:03:14 进程重启；20:08:15 回收滞留发送时出现「命令状态不允许发送: SENDING」，最终命令 FAILED、预约仍 DISPATCHING 且 command_id 空，无发送或设备执行回执。重启与第五次覆盖部署的关联属于时间线推断，故障机制尚待定位。
+
+来源：`search_fallback/readme-first-example-closeout-facts-019.md §5、§7`，规划收尾复核 `product/readme-first-example-acceptance/receipts/planning-review-terminal-sync-019-01.md`。
+
+下一动作：后续按独立缺陷评估重启后的发送恢复、重试窗口及预约/命令终态衔接，确定修复范围。完成口径：在受控场景中验证重启后恢复或失败收敛符合约定，预约与命令结果一致，不遗留无法解释的中间态。本条为待评估问题，尚无暂不修复裁决；本轮收尾只登记，不重发现场命令或修改历史数据。
