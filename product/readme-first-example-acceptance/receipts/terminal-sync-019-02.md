@@ -31,7 +31,7 @@
 
 - 子仓：Server main/develop=`2d6b8f1`；Web main/develop=`2ac1a71`；工作树干净、无未跟踪文件。
 - CI（文档提交触发，实际回读）：Server run `39460955739` success（17m27s）；Web run `39460972065` success（5m2s）。两者各生成 `build-2d6b8f13…`／`build-2ac1a71…` Release 并持 Latest，标题均为 0.1.9 构建；版本化 Release `CH-aPaaS Server 0.1.9`／`CH-aPaaS Web 0.1.9` 与资产未变，tag 未动。Latest 指向的是收尾文档提交的构建，不影响已验收发布源语义。
-- 根仓：本回执、规划复核与补充入口、Planner 台账/摘要修正、根 README 的 Latest 口径一并提交到 `develop-sw` 并推送；提交后回读远端引用与三仓最终状态，结果见本回执提交记录与最终交回说明。根 gitlink 保持 `74716dd`／`e967e24`（发布源，未因文档提交改变）。
+- 根仓：本回执、规划复核与补充入口、Planner 台账/摘要修正、根 README 的 Latest 口径一并提交到 `develop-sw` 并推送（`ecdecb38`→`976d11c2`）；提交后回读远端引用与三仓最终状态。根 gitlink 同步到两仓已推送的当前 main（Server `2d6b8f1`、Web `2ac1a71`），发布源仍以 tag/Release 记录的 `74716dd`／`e967e24` 为准。
 - 三仓最终状态：main/develop 均与远端一致；根 `develop-sw` 与 `origin/develop-sw` 一致；无遗留未提交或未跟踪文件。
 
 ## 保持项与边界
