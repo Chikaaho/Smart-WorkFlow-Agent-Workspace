@@ -1,12 +1,16 @@
 # 需求池（Requirement Pool）
 
-当前活动交付：**0.1.10-bugfix · VERIFYING**（Owner已宣布修复结束，版本0.1.10已确认）。总7阶段2/1/4：需求评估和修复阶段收口已完成（Owner指令）；验收与信息同步进行中；合并、发布、发布后同步及复核、结束未开始，工程结果待核实。当前承接 `product/0.1.10-bugfix/ready/direction-release-handoff-0110.md`；下一动作＝执行按收口方向核实最终修复集合、应用导入导出后续状态及发布候选，回传规划验收后承接合并发布。0.1.9交付COMPLETED 7/0/0，SYNC-01规划已关闭；本轮最终事实待执行核实。UI文案治理保持READY，预约恢复及时间/部门选择保持既有待办，不自动纳入本轮。
+当前活动交付：**0.1.10-bugfix · VERIFYING（发布完成，待规划终审）**。版本0.1.10已发布并部署UAT：Server `8a2aa56`（`bootstrap-0.1.10.jar` 218,065,590 B sha256 `b447fa09…`）、Web `e03a886`（`sw-web-dist-0.1.10.zip` 1,360,081 B sha256 `a9d6a508…`）；UAT健康UP、`build.version=0.1.10`、Web `index-qOqx_U4O.js`、启动ERROR 0；DB两条0.1.10 repeatable已应用，versioned终点`V0.1.7`。总7阶段6/1/0：只有规划终审进行中。下一动作＝Planner复核 `product/0.1.10-bugfix/receipts/closeout-0110-01.md`、`release-0110-01.md`、`final-sync-0110-01.md` 并下发终审值。0.1.9交付COMPLETED 7/0/0；应用导入导出仍缺L方向，保持待决。UI文案治理保持READY，预约恢复及时间/部门选择保持既有待办，不自动纳入本轮。
 
 ## 下一步任务：全量 UI 文案与三档说明治理（2026-10-20）
 
 Owner 已要求整理为前端长期规范与下一步执行任务。长期规则：前端工程宪法 §6.5；[正式方向与执行 Prompt](../product/ui-copy-governance/ready/direction-ui-copy-governance.md)。L 级，READY，前置 README 首例交付已完成，待 Owner 启动。说明按三档处置：必要说明进入功能右上角小问号悬浮；可选说明抽出到操作手册；名称已表达清楚或无用户价值的重复说明直接删除。即时校验、风险与结果反馈保留。执行范围为前端全部可见文案及隐藏状态，语义不确定项保留并列出；当前仅完成规范与任务登记，UI 审计与修复未开始。总 7 阶段：评估已完成，执行、验收同步、合并、发版、发布后同步及结束未开始（1/0/6）。不新增业务功能或 P 编号，执行与验收不重开已完成的 P61。
 
-## 最近完成：README 首例验收与 0.1.9（2026-10-21）
+## 最近完成：0.1.10（2026-10-21 发布并部署）
+
+修复批次，不新增业务功能数。Web 22提交/Server 6提交经 develop、版本收敛、main CI 后发布；两仓 annotated tag `0.1.10`、公开 Release 与 UAT 部署完成。Server 首次 CI 暴露 I5 SSO 测试夹具口令不一致，修复 `8a2aa56` 后两仓 CI success。正式/部署 0.1.10，开发 Server `0.1.10-SNAPSHOT`、Web `0.1.10`；DB versioned 终点 `V0.1.7`。回执 `product/0.1.10-bugfix/receipts/release-0110-01.md`、`final-sync-0110-01.md`。
+
+## 历史完成：README 首例验收与 0.1.9（2026-10-21）
 
 第 2 轮同步复核通过，七阶段全部完成（7/0/0）。Server 发布源 `74716dd`、Web `e967e24`；后续文档提交与 develop/main 分别为 `2d6b8f1`、`2ac1a71`。计数 49、46/22/22=90、ADV64/问题57，P 核销及正式基线更新为空。最终裁决见上方链接；该终审时点活动交付为空，当前已由顶部0.1.10规划承接。
 

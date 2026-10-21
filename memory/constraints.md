@@ -15,7 +15,7 @@
 
 ## 当前交付与运维约束（2026-10-21）
 
-**0.1.10-bugfix VERIFYING**：Owner已宣布修复结束，版本0.1.10已确认，七阶段2/1/4。按 `product/0.1.10-bugfix/ready/direction-release-handoff-0110.md` 核实最终修复集合与候选、应用导入导出后续结果，完成适用验收后连续合并发布及同步。0.1.9既有交付COMPLETED，UAT只保留回执时点事实；当前Git/版本重新核实。SYNC-01规划已关闭，关闭裁决传播事实随收口核实。下列既有运维约束保留。
+**0.1.10-bugfix VERIFYING（发布完成，待规划终审）**：版本 0.1.10 已发布并部署 UAT；正式/部署 0.1.10（Server `8a2aa56`·`b447fa09…`、Web `e03a886`·`a9d6a508…`），开发 Server `0.1.10-SNAPSHOT`、Web `0.1.10`，DB versioned 终点 `V0.1.7`。0.1.9 既有交付 COMPLETED；应用导入导出仍缺 L 方向，保持待决。下列既有运维约束保留。
 
 - **UAT 启动硬边界**：`/opt/smart-workflow/server/start.sh` 自身不加载 `server.env`；必须 `cd /opt/smart-workflow/server && set -a && . ./server.env && set +a && ./start.sh`，否则 Druid 报 `SCRAM-based authentication, but no password was provided` 并退出（已记运维手册 §6.4/§8.1；未改脚本，建议后续加固）。
 - **UAT 设备腿口径**：演示连接 `uat-mosquitto`（MQTT，127.0.0.1:1883，用户 `ch-paas`）单条下行主题 `sw/drill/{deviceKey}/cmd`（设备 `drill-room-a`，其 `connection_id` 于 2026-10-19 补为 `2111833803582910465`）；判定下发成功的现网证据＝预约 DISPATCHED＋命令 SENT＋`MQTT:<topic>:<msgId>`＋Broker 日志同秒客户端连接（Broker 不记 payload、订阅需认证，故 UAT 不取原文载荷；受控 Broker 的 payload 原件由 `IotNativeMqttDeferredDispatchPgTest` 提供）。

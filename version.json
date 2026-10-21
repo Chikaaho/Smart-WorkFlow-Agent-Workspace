@@ -1,34 +1,37 @@
 {
   "$schema": "CH-aPaaS 版本权威（单一机器可读源；变更须走新回执）",
   "product": "CH-aPaaS",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "iteration": "0.0.7",
-  "registeredAt": "2026-10-19",
-  "registeredBy": "0.1.9 发布（Owner 2026-10-19 明确确认版本号并授权完整发布链；含 Owner 授权的『0.1.9版本号覆盖』多次——Server 四次（BF20261019-04、BF20261020-01/02、BF20261020-03、BF20261020-05/06）、Web 五次（BF20261020-01/02、BF20261020-04、BF20261020-05、BF20261020-07、BF20261020-08））。发布回执 product/bugfix-20261019/receipts/release-019-01.md、覆盖回执 receipts/republish-019-01.md、业务验收回执 receipts/bf20261020-04.md、receipts/bf20261020-05.md、receipts/bf20261020-06.md、receipts/bf20261020-07.md。0.1.8 及更早条目保留于历史回执与 CHANGELOG",
+  "registeredAt": "2026-10-21",
+  "registeredBy": "0.1.10 发布（Owner 已确认版本；修复批次，不新增业务功能数）。发布回执 product/0.1.10-bugfix/receipts/release-0110-01.md、收口 closeout-0110-01.md、发布后同步 final-sync-0110-01.md。",
   "projections": {
     "serverRepo": {
       "path": "Smart-WorkFlow-aPaaS-server",
-      "mavenVersion": "0.1.9（正式构建 -Drevision=0.1.9；开发默认 0.1.9-SNAPSHOT）",
-      "flywayEndpoint": { "h2": "V0.1.7", "postgresql": "V0.1.7" },
-      "flywaySeed": "V0.1.7__baseline_seed.sql（0.1.9 Flyway 终点保持 V0.1.7；第五次覆盖新增可重复迁移 R__bf20261020_form_data_admin_grants.sql）"
+      "mavenVersion": "0.1.10（正式构建 -Drevision=0.1.10；开发默认 0.1.10-SNAPSHOT）",
+      "flywayEndpoint": {
+        "h2": "V0.1.7",
+        "postgresql": "V0.1.7"
+      },
+      "flywaySeed": "V0.1.7__baseline_seed.sql（0.1.10 新增可重复迁移 R__0.1.10_admin_password.sql；更新 R__application_center_menu.sql；版本化终点保持 V0.1.7）"
     },
     "webRepo": {
       "path": "Smart-WorkFlow-aPaaS-Web",
-      "packageVersion": "0.1.9"
+      "packageVersion": "0.1.10"
     },
     "workspace": {
       "path": "Smart-WorkFlow-Agent-Workspace",
       "changelog": "CHANGELOG.md",
-      "releaseNotes": "GitHub Release 0.1.9（Server 第五次覆盖后 `74716dd`·`d416a979…`、Web 第七次覆盖后 `e967e24`·`55978768…`）＋ product/bugfix-20261019/receipts/",
-      "upgrade": "docs/ops/production-ops.md §8/§9（Flyway 终点 V0.1.7；第五次覆盖新增 form:data 管理员授权可重复迁移）；脚本 worker 部署要求与预算配置见 §8.4",
-      "rollback": "docs/ops/production-ops.md §8.1/§8.2（bootstrap.jar.bak-20261020_195953-0.1.9-fifth 等备份链与 web.bak-20261020_201730、web.bak-20261020_220049、web.bak-20261020_233504 等备份目录）",
-      "configChanges": "0.1.9 新增可配置项（均有缺省，不配也能启动）：sw.bpm.script.timeout-ms(5000)、sw.bpm.script.worker-startup-timeout-ms(30000)、sw.bpm.script.warmup-timeout-ms(30000)。慢宿主必须把后两项同向调大——UAT（2 vCPU/1.6G）已按 100000/120000 配置；运维注意：start.sh 自身不加载 server.env，启动前须 `set -a; . ./server.env; set +a`",
-      "dbMigrations": "第五次覆盖新增可重复迁移 R__bf20261020_form_data_admin_grants.sql（H2/PostgreSQL）：向 admin/demo_admin 角色授予 form:data 七项动作权限；Flyway 终点保持 V0.1.7",
-      "manifest": "GitHub Release 0.1.9 资产 digest（Server 第五次覆盖后 bootstrap-0.1.9.jar sha256 d416a979977cb6eb0743ef2d9f1b854ae12958d45de3931ee295858706aa1499、218,061,187 B；Web 第七次覆盖后 sw-web-dist-0.1.9.zip sha256 55978768bc3126c45142eadd2a8344d4e274f995ac1e2bc08c38380a90176cb6、1,351,539 B，入口 assets/index-DDQRXD9F.js sha256 27b07bb01f210fed880baf59bad4d97ee1220bd241112ac063263d7ef3ee8aaf）。历史覆盖制品保留于 Release 说明与 CHANGELOG"
+      "releaseNotes": "GitHub Release 0.1.10（Server 8a2aa56·b447fa09…；Web e03a886·a9d6a508…）＋ product/0.1.10-bugfix/receipts/",
+      "upgrade": "docs/ops/production-ops.md §8/§9（Flyway 终点 V0.1.7；R__0.1.10_admin_password 与更新后的 R__application_center_menu 随启动自动应用）",
+      "rollback": "docs/ops/production-ops.md §8.1/§8.2（bootstrap.jar.bak-20261021_pre0110、web.bak-20261021_pre0110、DB dump smart_workflow_20261021_2215_pre0110.dump）",
+      "configChanges": "无新增必配项；沿用 0.1.9 脚本 worker 预算配置（UAT 120000/100000）",
+      "dbMigrations": "0.1.10 新增 R__0.1.10_admin_password.sql（H2/PostgreSQL，默认超管种子口令 AdminP@ssw0rd）；R__application_center_menu.sql 追加应用管理顶级归位与排序 15；Flyway 终点保持 V0.1.7",
+      "manifest": "GitHub Release 0.1.10 资产 digest：Server bootstrap-0.1.10.jar sha256 b447fa09f6a6146e22a0adb01616a76fab47b348574b28dcacfe5d7a8be86f57（218,065,590 B）；Web sw-web-dist-0.1.10.zip sha256 a9d6a5088f406ede626e84a0a8ccbfb657dddfeee71b37f5dba3b2ec4386cd6c（1,360,081 B，入口 assets/index-qOqx_U4O.js）"
     }
   },
   "rules": {
     "candidateFreeze": "候选固定后只允许通过新回执审查的变更进入；代码/迁移/依赖/配置漂移使受影响证据失效并重固定候选",
-    "tagAndRelease": "0.1.9 标签/Release 已发布（Server tag→74716dd（第五次覆盖后；历次 96ab6d0→a92f7f4→a0fc2d7→49b818e）、Web tag→e967e24（第七次覆盖后；历次 3c43a3c→14a11e2→1e67c20→b6b2fbd→f3af536），均为 annotated tag）；实际部署 UAT 后端运行同一 CI 制品（build.version=0.1.9，sha256 d416a979…）；UAT 端到端可见验收通过（2026-10-20 第七次覆盖后 UAT 部署 Web assets/index-DDQRXD9F.js；审批意见表单并入审批区、按钮自适应、流程图下表格贴边、已结束流程无催办且完全只读）"
+    "tagAndRelease": "0.1.10 标签/Release 已发布（Server tag→8a2aa56、Web tag→e03a886；均为 annotated tag）；UAT 已部署同一 CI 制品：Server build.version=0.1.10、健康 UP、启动 ERROR 0；Web index-qOqx_U4O.js；DB 两条 0.1.10 repeatable 已应用，versioned 终点 V0.1.7"
   }
 }

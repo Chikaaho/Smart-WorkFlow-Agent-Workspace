@@ -1,28 +1,27 @@
-# 当前交接：0.1.10 修复收口
+# 当前交接：0.1.10 发布完成
 
-2026-10-21｜0.1.10-bugfix VERIFYING（总7阶段2/1/4）；0.1.9 交付 COMPLETED 7/0/0。
+2026-10-21｜0.1.10-bugfix VERIFYING（发布完成，待规划终审）；0.1.9 交付 COMPLETED 7/0/0。
 
 ## 已做
 
-Owner已宣布“修复结束”。记录 `product/0.1.10-bugfix/receipts/owner-close-0110.md`；当前承接 `product/0.1.10-bugfix/ready/direction-release-handoff-0110.md`，事实核查 `search_task/release-readiness-0110.md`。
-
-三仓对齐：根同步提交 `3c1a2a22` 已推送回读，Server `2d6b8f1`、Web `2ac1a71`；0.1.9 终审结论传播至 knowledge 当前状态与交接；memory、todo 需求池、0.1.10 方向/事项与同步回执落盘；SYNC-01规划复核通过并关闭，方向归档passed；裁决 `product/0.1.10-bugfix/receipts/planning-review-baseline-sync-0110-01-passed.md`。
+- 修复候选 Web 22 提交／Server 6 提交合入 develop，版本收敛 0.1.10，develop→main 推送。
+- Server CI 首次失败的 I5 SSO 测试夹具口令不一致已修复（`8a2aa56`）；最终 CI 两仓 success。
+- 两仓 annotated tag `0.1.10` 与公开 Release 已发布，资产与 CI 制品同源。
+- UAT 由 0.1.9 就地升级：备份 DB/jar/web，替换后健康 UP、ERROR 0、`build.version=0.1.10`、Web `index-qOqx_U4O.js`；DB 两条 0.1.10 repeatable 已应用。
+- 收口、发布、发布后同步回执已落盘；根 README/CHANGELOG/version.json、Server/Web README、功能清单、knowledge/memory/todo 已同步。
 
 ## 尚未做
 
-本轮最终修复汇总、应用导入导出既有阻塞的后续结果、候选提交与适用验收尚待核实；合并、0.1.10发布、发布后同步及结束尚未确认完成。
+- Planner 对三份回执与终审值清单的复核。
 
 ## 下一动作
 
-执行按收口方向核实最终修复集合、应用导入导出后续状态及发布候选，回传规划验收后承接合并发布。既有发布、计数及验证结论保持。
+Planner 复核 `product/0.1.10-bugfix/receipts/closeout-0110-01.md`、`release-0110-01.md`、`final-sync-0110-01.md`，确认终态与整轮结束。
 
 ## 边界
 
-0.1.9 业务与 UAT 结果保持锁定，不重跑；版本收敛留待 0.1.10 发布阶段。保留事项：预约失败/滞留、UAT 时间与部门选择待办、历史卡单、P62 延期/OFF、P29/P65 待排期。
+0.1.9 已过业务与 UAT 结果保持锁定，不重跑。应用导入导出仍缺 L 方向，保持待决，不进入 0.1.10 候选。P29/P65 待排期，P62 性能延期/OFF。
 
 ## 新会话启动
 
-先声明角色并读取system.md、角色定义，按§0.5运行 `py -3 governance/skills/ensure-skills.py`（其他平台用python3）并读取两份SKILL.md，再读memory索引；执行另读 `knowledge/current-status.md` 与本方向。本机humanizer-zh/no-negative-echo已检查READY并完整读取，记录 `product/0.1.10-bugfix/receipts/skill-dependencies-0110-01.md`。
-
-
-
+先声明角色并读取 system.md、角色定义，按 §0.5 运行 `py -3 governance/skills/ensure-skills.py` 并读取两份 SKILL.md，再读 memory 索引；执行另读 `knowledge/current-status.md` 与发布回执。

@@ -8,7 +8,7 @@
 
 Owner 2026-10-21 宣布“修复结束”，随后指令“提交并推送，结束”。本轮实际修复集合已全部落在两仓 `bugfix/0.1.10`，工作树干净，远程同名分支已推送回读。发布候选为 Web 22 提交、Server 6 提交；不含应用级导入导出（仍待 L 方向）。
 
-总 7 阶段：已完成 2（需求评估、修复阶段收口），进行中 1（验收与信息同步），未开始 4（合并、发布、发布后同步、结束）。
+总 7 阶段：本回执记录收口时点（已完成 2／进行中 1／未开始 4）；截至发布后同步实际为已完成 6（评估、执行、验收同步、合并、发布、发布后同步）／进行中 1（规划终审）／未开始 0，发布与部署事实见 `release-0110-01.md`。
 
 ## 2. 实际修复集合
 
@@ -27,6 +27,7 @@ Owner 2026-10-21 宣布“修复结束”，随后指令“提交并推送，结
 
 - Web：`vue-tsc -b --noEmit` 通过；改动文件 ESLint 无 error；全量 Vitest **179 文件 / 1653 通过 / 3 跳过**（最终候选 `302fce1`）。
 - Server：本轮角色分页 `RoleDataScopeTest` 通过；会签 COUNT/RATIO、流程定义创建人/发布人、迁移链相关测试随提交落地。最终以 main CI 全量测试与生产制品门禁为发布结论。
+- Server main CI 首次 run `39611743232`：`sw-bootstrap` 265 用例中仅 `I5SsoBindingSessionBootTest` 2 个错误。根因是本轮 `330b30b` 把测试提交口令改为 `AdminP@ssw0rd`，但该测试自建夹具哈希仍对应 `admin123`，登录返回 200 无 accessToken 后空指针。已恢复夹具口令一致（`8a2aa56`），本地 `I5SsoBindingSessionBootTest` 5/5 通过；新 run `39616993514` 中该测试已 **5/5 通过**，等待全量结束与生产制品门禁。
 - 浏览器：实际可交互会话验证了登录密码切换、角色配置弹窗（租户角色过滤）、流程设计器画布/页签/版本弹窗、应用中心与管理端应用列表/应用内页、IoT 连接列表与分页、数据列表新增页及返回路径。
 - 已过且未变的 0.1.9 业务项未重开；历史证据按原回执引用。
 
@@ -42,7 +43,7 @@ Owner 2026-10-21 宣布“修复结束”，随后指令“提交并推送，结
 | Server | `bugfix/0.1.10` | `e4e2205` | 领先 6、落后 0 | 干净 |
 | 根 | `develop-sw` | `371c1dbf` | 本地/远程一致 | 规划文档待提交 |
 
-合并计划：任务分支→develop，版本收敛 0.1.10，develop→main，main CI 成功后创建 0.1.10 tag/Release 并部署 UAT。版本源收敛项：Server `pom.xml`、`.github/workflows/build-release.yml`、`scripts/check-version-identity.sh`、`scripts/build-prod.sh` 注释；Web `package.json`；根 `version.json`/README/CHANGELOG 在发布后同步。
+合并执行：Web 任务分支→develop 快进 `302fce1`，包版本收敛 `28c2ecf`，develop→main `e03a886`，CI run `39611689870` success；Server 任务分支→develop 快进 `e4e2205`，版本收敛 `654b176`，develop→main `08f995a`，CI run `39611743232` 进行中。版本源收敛项：Server `pom.xml`、`.github/workflows/build-release.yml`、`scripts/check-version-identity.sh`、`scripts/build-prod.sh` 注释；Web `package.json`；根 `version.json`/README/CHANGELOG 在发布后同步。
 
 ## 6. 与方向对照
 
