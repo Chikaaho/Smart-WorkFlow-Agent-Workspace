@@ -64,4 +64,9 @@
 - 待 Planner 复核本回执、关闭 SYNC-01 并将本方向归档 `passed/`。
 - 0.1.10 继续接收 Owner 事项；执行建分支、验收、合并、发布及发布后同步按主方向推进；版本来源收敛在发布阶段办理。
 - 未重跑 0.1.9 已锁定业务/UAT 验证；未发布、未部署、未改业务数据。
-- 本回执所在提交的 SHA 以推送后远端回读为准，不在文件内预填自身提交。
+
+## 7. 推送后回读（2026-10-21）
+
+- 本同步批次提交：`3c1a2a22`（docs(0.1.10): 基线对齐与 0.1.9 终审传播——knowledge/memory/todo 同步，SYNC-01 待复核）。
+- `origin/develop-sw` 回读：`3c1a2a2284e41dfaa6019a1df6cfcbce18fb6ec1`，与本地 HEAD 一致。
+- Server main/develop=`2d6b8f1`；Web main/develop=`2ac1a71`；三仓工作树干净。
