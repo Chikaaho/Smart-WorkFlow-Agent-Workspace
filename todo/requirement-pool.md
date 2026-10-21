@@ -1,6 +1,6 @@
 # 需求池（Requirement Pool）
 
-当前活动交付：**0.1.10-bugfix · PLANNING（2026-10-21）**，版本 0.1.10 已确认；方向 `product/0.1.10-bugfix/ready/direction-bugfix-0110.md`，事项 `items.md`，基线同步 `product/0.1.10-bugfix/passed/direction-baseline-sync-0110.md`。**0.1.9 交付 COMPLETED**（README 首例灾备演练，7/0/0；终审 `product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md`）。SYNC-01 CLOSED，裁决 `product/0.1.10-bugfix/receipts/planning-review-baseline-sync-0110-01-passed.md`。0.1.10 总 7 阶段 0/1/6；下一动作＝执行机械传播本次关闭裁决并提交推送，随后接收和评估Owner的0.1.10事项。UI 文案治理保持 READY；预约恢复及时间/部门选择继续待评估。
+当前活动交付：**0.1.10-bugfix · VERIFYING**（Owner已宣布修复结束，版本0.1.10已确认）。总7阶段2/1/4：需求评估和修复阶段收口已完成（Owner指令）；验收与信息同步进行中；合并、发布、发布后同步及复核、结束未开始，工程结果待核实。当前承接 `product/0.1.10-bugfix/ready/direction-release-handoff-0110.md`；下一动作＝执行按收口方向核实最终修复集合、应用导入导出后续状态及发布候选，回传规划验收后承接合并发布。0.1.9交付COMPLETED 7/0/0，SYNC-01规划已关闭；本轮最终事实待执行核实。UI文案治理保持READY，预约恢复及时间/部门选择保持既有待办，不自动纳入本轮。
 
 ## 下一步任务：全量 UI 文案与三档说明治理（2026-10-20）
 
@@ -722,4 +722,5 @@ P45已完成规划功能级验收与阶段三终态复核，正式状态为 **`C
 ### 2026-09-29 后台SSO当前验收安排
 
 后台SSO配置与B端准入COMPLETED（规划已确认，2026-09-29）；R1轮换完成，无剩余动作。企业微信延期，P31开放。裁决 `product/sso-admin-config/receipts/planning-final-review-terminal-sync-01-completed.md`。
+
 
