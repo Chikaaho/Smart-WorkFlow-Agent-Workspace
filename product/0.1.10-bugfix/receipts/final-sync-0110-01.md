@@ -76,5 +76,5 @@
 ## 6. 提交与推送回读
 
 - 子仓文档提交：Web `2df670b`（main=develop）；Server `85e1ab7`（main=develop）；均已推送回读。
-- 根同步批次：提交后回读见本条追补；tag `0.1.10` 均指向发布源，不随文档提交移动。
+- 根同步批次：`1483e829d36a9c402780b346c9b410a8178ad06f` 已推送；`origin/develop-sw` 回读一致。根 gitlink 指向 Web `2df670b`、Server `85e1ab7`。tag `0.1.10` 均指向发布源（Server `8a2aa56`、Web `e03a886`），不随文档提交移动。
 - 唯一下一动作：Planner 复核本回执、`release-0110-01.md` 与 `closeout-0110-01.md`，下发终审值与整轮结束裁决。
