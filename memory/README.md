@@ -1,11 +1,9 @@
 # memory 使用说明
 
-2026-10-21：README 首例灾备演练业务验收 PASSED，交付收尾进行中。
+2026-10-21：README 首例灾备演练及 0.1.9 交付 COMPLETED。七阶段：评估、执行、验收同步、合并、发布、发布后同步、结束全部完成（7/0/0）。
 
-阅读顺序：`state.md` → `handoff.md` → `features.md` → `constraints.md`。权威状态仍为 `knowledge/current-status.md`，由 Executor 核实和维护。
+最终裁决：`product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md`。主方向与同步方向均在 `product/readme-first-example-acceptance/passed/`；第 2 轮回执 `receipts/terminal-sync-019-02.md` 的四项收尾缺口已关闭。
 
-当前入口：`product/readme-first-example-acceptance/receipts/planning-execution-prompt-terminal-sync-019-02.md`；审查记录：同目录 `receipts/planning-review-20261021-passed.md`；主方向已归档至 `passed/`。
+阅读顺序：state → handoff → features → constraints。knowledge 为权威状态，最终裁决由 Executor 按授权机械传播并提交规划记录，不重开验收。
 
-总 7 阶段：评估、执行、合并、发布已完成；验收同步、发布后同步进行中（第 1 轮复核需补收尾）；结束未开始（4/2/1）。本轮版本已确认并发布 0.1.9；收尾回读完成，tag/Release/UAT 与发布源一致。
-
-下一动作：Executor 按当前入口补齐收尾，提交 `terminal-sync-019-02.md`。具体发布源、验证结果、计数及限制见 `state.md`；交接要求见 `handoff.md`。
+当前无活动交付任务。下一动作：等待 Owner 启动下一任务；UI 文案治理已排队 READY，尚未启动。

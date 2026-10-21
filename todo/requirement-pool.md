@@ -1,12 +1,16 @@
 # 需求池（Requirement Pool）
 
-当前活动任务（2026-10-21）：README 首例业务 PASSED、功能 COMPLETED；0.1.9 已发布。终态同步第 1 轮复核尚未通过，执行按 `product/readme-first-example-acceptance/receipts/planning-execution-prompt-terminal-sync-019-02.md` 补齐开发基线、当前入口与最终回读。总 7 阶段：评估、执行、合并、发布已完成；验收同步、发布后同步进行中；结束未开始（4/2/1）。预约重启恢复与终态一致性登记在 `todo/uat-drill-usability.md`，待独立评估。
+当前活动任务无（2026-10-21）：README 首例与 0.1.9 交付 COMPLETED，最终裁决 `product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md`。评估、执行、验收同步、合并、发布、发布后同步、结束全部完成（7/0/0）；TS019-G1—G4 已关闭。下一动作等待 Owner 启动下一任务，UI 文案治理保持 READY；预约恢复及时间/部门选择继续待评估。最终裁决的知识传播与归档提交由 Executor 沿已有授权办理。
 
 ## 下一步任务：全量 UI 文案与三档说明治理（2026-10-20）
 
-Owner 已要求整理为前端长期规范与下一步执行任务。长期规则：前端工程宪法 §6.5；[正式方向与执行 Prompt](../product/ui-copy-governance/ready/direction-ui-copy-governance.md)。L 级，READY，排在当前 README 首例协作联调之后。说明按三档处置：必要说明进入功能右上角小问号悬浮；可选说明抽出到操作手册；名称已表达清楚或无用户价值的重复说明直接删除。即时校验、风险与结果反馈保留。执行范围为前端全部可见文案及隐藏状态，语义不确定项保留并列出；当前仅完成规范与任务登记，UI 审计与修复未开始。总 7 阶段：评估已完成，执行、验收同步、合并、发版、发布后同步及结束未开始（1/0/6）。不新增业务功能或 P 编号，执行与验收不重开已完成的 P61。
+Owner 已要求整理为前端长期规范与下一步执行任务。长期规则：前端工程宪法 §6.5；[正式方向与执行 Prompt](../product/ui-copy-governance/ready/direction-ui-copy-governance.md)。L 级，READY，前置 README 首例交付已完成，待 Owner 启动。说明按三档处置：必要说明进入功能右上角小问号悬浮；可选说明抽出到操作手册；名称已表达清楚或无用户价值的重复说明直接删除。即时校验、风险与结果反馈保留。执行范围为前端全部可见文案及隐藏状态，语义不确定项保留并列出；当前仅完成规范与任务登记，UI 审计与修复未开始。总 7 阶段：评估已完成，执行、验收同步、合并、发版、发布后同步及结束未开始（1/0/6）。不新增业务功能或 P 编号，执行与验收不重开已完成的 P61。
 
-## 最近完成：0.1.8（2026-10-19）
+## 最近完成：README 首例验收与 0.1.9（2026-10-21）
+
+第 2 轮同步复核通过，七阶段全部完成（7/0/0）。Server 发布源 `74716dd`、Web `e967e24`；后续文档提交与 develop/main 分别为 `2d6b8f1`、`2ac1a71`。计数 49、46/22/22=90、ADV64/问题57，P 核销及正式基线更新为空。最终裁决见上方链接；当前活动交付无。
+
+## 历史完成：0.1.8（2026-10-19）
 
 Owner 2026-10-19 验收通过并明确版本号；执行侧走完七步（合并→发布→UAT 就地升级→发布后同步）。内容：原生 MQTT 设备控制通道、提交后实例探测用户态端点、提交成功单文案；DB 无新增迁移。正式/部署后端 0.1.8（`50a42c8`·`5c0e66bd…`）、前端 0.1.8（`d94232b`·`f62f1a8f…`）；两仓 annotated tag `0.1.8`、公开 Release 与 `latest`=0.1.8；任务分支 `fix/iot-native-mqtt-submit-detect`、`fix/submit-detect-copy` 已删除并回读。发布后复验：提交成功单文案、用户态计数 200、预约到点原生 MQTT 真实下发（命令 SENT）。回执 `product/iot-native-mqtt-submit-detect/receipts/release-018-01.md`、`release-018-02.md`。
 

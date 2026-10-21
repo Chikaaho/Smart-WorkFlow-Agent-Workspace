@@ -65,6 +65,6 @@ Executor 在本目录 `receipts/` 追加结果，直接引用已有可读原文�
 
 Owner 确认「验收结束，开始后续阶段」。Planner 结合实际修复、UAT 和发布回执裁决 PASSED；审查记录为 `receipts/planning-review-20261021-passed.md`。本轮已确认版本为 0.1.9，合并、发布和 UAT 部署已完成，当前事实由 Executor 在收尾时回读。
 
-当前总 7 阶段：评估、执行、合并、发布已完成；验收同步、发布后同步进行中；结束未开始（4/2/1）。上表保留初始进度，其后变化以本节和最新回执为准。
+验收交接时总 7 阶段为 4/2/1；第 2 轮同步复核后已全部完成（7/0/0）。上表保留初始进度，最终状态以最终复核裁决为准。
 
-当前唯一下一动作：Executor 按 `ready/direction-terminal-sync-019.md` 完成终态与发布后同步，提交回执供 Planner 复核。规划文档沿工作区现有分支维护，提交推送由 Executor 在授权范围内办理。
+最终裁决：`receipts/planning-final-review-terminal-sync-019-completed.md`。终态同步方向已归档 `passed/direction-terminal-sync-019.md`。当前无活动交付任务，下一动作等待 Owner 启动下一任务；规划记录的最终裁决传播与普通提交推送由 Executor 沿既有授权办理。

@@ -1,18 +1,9 @@
 # 功能摘要
 
-## README 首例灾备演练
+README 首例灾备演练与 0.1.9 交付：COMPLETED（Planner 2026-10-21 第 2 轮终态复核通过）。七阶段：评估、执行、验收同步、合并、发布、发布后同步、结束全部完成（7/0/0）。
 
-2026-10-21，Owner 确认验收结束，Planner 依据 Owner 实操与执行回执裁决 PASSED。功能终态 COMPLETED 按同步方向落盘，当前交付仍待收尾缺口关闭与第 2 轮复核。
+最终裁决：`product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md`；第 2 轮回执同任务 `receipts/terminal-sync-019-02.md`。主方向与同步方向均在 passed，四项收尾缺口已关闭。
 
-方向与证据：
+计数保持 49、46/22/22=90、ADV64/问题57；新增业务功能 0，新增 P 核销、里程碑/明细变更及正式验证基线更新为空。P62 功能完成，有限性能延期/OFF。
 
-- 主方向：`product/readme-first-example-acceptance/passed/direction-readme-first-example-acceptance.md`。
-- 规划审查：同目录 `receipts/planning-review-20261021-passed.md`。
-- 当前执行入口：同目录 `receipts/planning-execution-prompt-terminal-sync-019-02.md`。
-- 修复及发布：`product/bugfix-20261019/receipts/`，最新 `bf20261020-07.md`；本轮已发布 0.1.9。
-
-总 7 阶段：评估、执行、合并、发布已完成；验收同步、发布后同步进行中（第 1 轮复核需补收尾）；结束未开始（4/2/1）。下一动作：Executor 按当前入口补齐收尾，提交 `terminal-sync-019-02.md`。
-
-本轮新增业务功能 0。目标计数保持功能 49、46/22/22=90、ADV64/问题57；新增 P 核销及正式基线更新集合为空，2026-10-21 已按当前权威状态核实一致。P62 功能完成，有限性能延期、默认 OFF。
-
-发布源、行为结果与历史问题见 `state.md`，交接见 `handoff.md`。0.1.8、0.1.7 为历史发布，原始回执分别在 `product/iot-native-mqtt-submit-detect/receipts/`、`product/0.1.7-bugfix/receipts/`。
+当前无活动业务或交付任务；等待 Owner 启动下一任务。已排队 UI 文案治理 READY，尚未启动。发布与分支事实见 state，遗留问题见 `todo/uat-drill-usability.md`；最终裁决由 Executor 机械传播并办理记录提交。

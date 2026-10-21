@@ -15,7 +15,7 @@
 
 ## 本轮验收与运维约束
 
-README 首例于 2026-10-21 规划验收 PASSED。0.1.9 已确认并发布，见 `product/bugfix-20261019/receipts/`；当前收尾方向为 `product/readme-first-example-acceptance/ready/direction-terminal-sync-019.md`。下列运维注意源自既有现场记录，2026-10-21 收尾核实仍适用。
+README 首例于 2026-10-21 完成业务与终态复核，交付 COMPLETED（7/0/0）。0.1.9 已确认并发布，见 `product/bugfix-20261019/receipts/`；最终裁决为 `product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md`，主方向与同步方向均已归档 passed。下列运维注意源自既有现场记录，2026-10-21 收尾核实仍适用。
 
 - **UAT 启动硬边界**：`/opt/smart-workflow/server/start.sh` 自身不加载 `server.env`；必须 `cd /opt/smart-workflow/server && set -a && . ./server.env && set +a && ./start.sh`，否则 Druid 报 `SCRAM-based authentication, but no password was provided` 并退出（已记运维手册 §6.4/§8.1；未改脚本，建议后续加固）。
 - **UAT 设备腿口径**：演示连接 `uat-mosquitto`（MQTT，127.0.0.1:1883，用户 `ch-paas`）单条下行主题 `sw/drill/{deviceKey}/cmd`（设备 `drill-room-a`，其 `connection_id` 于 2026-10-19 补为 `2111833803582910465`）；判定下发成功的现网证据＝预约 DISPATCHED＋命令 SENT＋`MQTT:<topic>:<msgId>`＋Broker 日志同秒客户端连接（Broker 不记 payload、订阅需认证，故 UAT 不取原文载荷；受控 Broker 的 payload 原件由 `IotNativeMqttDeferredDispatchPgTest` 提供）。
