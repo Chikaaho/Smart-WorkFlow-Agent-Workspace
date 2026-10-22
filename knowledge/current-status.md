@@ -8,7 +8,7 @@
 
 **开发基线**：两仓 develop 均含 0.1.10 内容（Server `85e1ab7`、Web `2df670b`）；开发默认版本 Server `0.1.10-SNAPSHOT`、Web `0.1.10`，待 0.2.0 合入 main 前再收敛到目标版本。任务分支：Server `codex/0.2.0-tenant-form-flow`、Web `codex/0.2.0-ui-tenant-form-flow`、根仓 `codex/0.2.0-delivery`。
 
-**唯一下一动作**：T020 继续——补齐停用后会话与认领收敛、真实库及可见浏览器行为链、租户页 1920×1080 像素对照；随后按 F020、J020、W020 推进，最后 U020 全局视觉与文案覆盖、整版链路验收。
+**唯一下一动作**：按 Owner 2026-10-22 指示先做 UI——取管理端 1920×1080 可见截图，对照 Figma `458:12660` 量筛选栏、表格、分页与弹窗几何并修差异，再铺开其余页面；功能侧停用收敛与真实库行为链随后补。回执 `product/0.2.0/receipts/u020-shell-01.md`。
 
 > **2026-10-22 T020 首批（自验通过，待规划验收）**：服务端租户列表/创建（含首任管理员与根部门）/改名/启停接口与 Web 租户页已提交，回执 `product/0.2.0/receipts/t020-tenant-management-01.md`。用户名唯一索引已按 Owner 裁决改为 `(tenant_id, username, deleted)`（`V0.1.8__tenant_username_unique.sql`），登录支持可选租户编码，重名且未提供编码时 fail closed；迁移链契约测试同步到 0.1.8 / 16 条并复跑通过。
 
