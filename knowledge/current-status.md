@@ -8,7 +8,7 @@
 
 **开发基线**：两仓 develop 均含 0.1.10 内容（Server `85e1ab7`、Web `2df670b`）；开发默认版本 Server `0.1.10-SNAPSHOT`、Web `0.1.10`，待 0.2.0 合入 main 前再收敛到目标版本。任务分支：Server `codex/0.2.0-tenant-form-flow`、Web `codex/0.2.0-ui-tenant-form-flow`、根仓 `codex/0.2.0-delivery`。
 
-**唯一下一动作**：继续 U020，核实租户页表头生效样式和截图条件，再对齐管理端顶栏、菜单、分页及独立弹窗，随后铺开其余页面；功能侧停用收敛与真实库行为链随后补。最新实施记录 `product/0.2.0/receipts/u020-tenant-layout-02.md`。Web `ca674de` 已推送回读；筛选栏、标题、表格卡片、卡片内分页及新增/编辑弹窗几何已实测，Web 四连通过（1661 passed / 3 skipped）。像素比较整页 94.7014%、内容区 96.6245%，**A03 未通过，页面仍在实施中**。原始图、diff、几何与日志留存本机 `C:/Users/hjxch/.codex/evidence-020/tenant-ui/`。本轮根仓续接路径为 `C:/Users/hjxch/.codex/worktrees/020-continuation/Smart-WorkFlow-Agent-Workspace`；原 `develop-sw` 工作树的 0.1.10 在途文档保持原状。
+**唯一下一动作**：继续 U020 应用网格、图标/颜色选择及其余页面适配，随后补齐 T020 目标租户、稳定管理员关联、停用认领和真实库行为链。最新实施记录 `product/0.2.0/receipts/u020-theme-navigation-03.md`：主题偏好与管理端导航已实现，表头覆盖问题已修正；本轮 Web 四连通过（1669 passed / 3 skipped）。用户可见 Mock 浏览器验证了主题预览/取消/非法输入/应用/刷新及手册入口。原生 PNG 比较整页 98.5141%、内容区 99.2636%，关键区域尚有差异，**A03 整体未通过**。原图、diff、几何和完整日志留存本机 `C:/Users/hjxch/.codex/evidence-020/continuation/`。根仓续接路径 `C:/Users/hjxch/.codex/worktrees/020-continuation/Smart-WorkFlow-Agent-Workspace`；原 `develop-sw` 的 0.1.10 在途文档保持原状。
 
 > **2026-10-22 T020 首批（自验通过，待规划验收）**：服务端租户列表/创建（含首任管理员与根部门）/改名/启停接口与 Web 租户页已提交，回执 `product/0.2.0/receipts/t020-tenant-management-01.md`。用户名唯一索引已按 Owner 裁决改为 `(tenant_id, username, deleted)`（`V0.1.8__tenant_username_unique.sql`），登录支持可选租户编码，重名且未提供编码时 fail closed；迁移链契约测试同步到 0.1.8 / 16 条并复跑通过。
 
