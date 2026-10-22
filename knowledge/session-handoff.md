@@ -4,9 +4,9 @@
 
 唯一完整现状见 `knowledge/current-status.md`。执行角色承接 `product/0.2.0/ready/` 的 XL 方向；七阶段为 1 已完成（需求评估）、1 进行中（分支实施）、5 未开始（验收同步、合并、发布、发布后同步、结束）。当前发布仍为 0.1.10；0.2.0 尚未验收、合并或发布。
 
-续接根仓 `codex/0.2.0-delivery` 位于 `C:/Users/hjxch/.codex/worktrees/020-continuation/Smart-WorkFlow-Agent-Workspace`。实际代码位于原工作区两子仓，Server `codex/0.2.0-tenant-form-flow` / `9f24775`，Web `codex/0.2.0-ui-tenant-form-flow` / `dd29316`，均已推送。根仓原 develop-sw 的 0.1.10 在途文档不混入。
+续接根仓 `codex/0.2.0-delivery` 位于 `C:/Users/hjxch/.codex/worktrees/020-continuation/Smart-WorkFlow-Agent-Workspace`。实际代码位于原工作区两子仓，Server `codex/0.2.0-tenant-form-flow` / `a69b0a4`，Web `codex/0.2.0-ui-tenant-form-flow` / `436e3b2`，均已推送。根仓原 develop-sw 的 0.1.10 在途文档不混入。
 
-最新实施回执 `product/0.2.0/receipts/t020-iot-admission-07.md`，共用脚本 UI 见 `u020-script-workspace-05.md`。用户/部门目标租户、归属与关联隔离已有真实链证据；缓存会话准入已完成红绿自验和真实浏览器拒绝/恢复；BPM 队列租户行锁认领及 H2/PG 原命令恢复已实施，扩大回归 135 通过；已认领消费者当前租约及身份恢复已补齐；IoT 预约/发送/补偿准入和真实 MQTT 停用/恢复/过期链已通过；下一动作是 IoT 流程触发、通知、回调、时限和启停审计；继续 F020/J020/W020 和全局 U020。A03 未通过，功能数/P/正式基线保持既有授权值。任务自有 Java/PG/Redis 已清理；用户 Redis 服务未动。
+最新实施回执 `product/0.2.0/receipts/t020-background-admission-audit-08.md`，共用脚本 UI 见 `u020-script-workspace-05.md`。用户/部门目标租户、归属与关联隔离已有真实链证据；缓存会话准入已完成红绿自验和真实浏览器拒绝/恢复；BPM 队列租户行锁认领及 H2/PG 原命令恢复已实施；已认领消费者当前租约及身份恢复已补齐；IoT 预约/发送/补偿准入和真实 MQTT 停用/恢复/过期链已通过。IoT 触发、通知、OpenAPI 回调与 BPM 时限现均在初始消费和恢复认领处检查租户有效性；手工启停必填原因，手工启停与自然过期写入持久审计。下一动作进入 F020，再继续 J020/W020 和全局 U020。A03/A04 未通过，功能数/P/正式基线保持既有授权值。任务自有 Java/PG/Redis 已清理；用户 Redis 服务未动。
 
 以下保留 0.1.9 及更早时点的交接历史，不代表当前任务和版本。
 
