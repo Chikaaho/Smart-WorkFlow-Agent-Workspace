@@ -1,5 +1,15 @@
 # 会话交接（session-handoff）— 当前压缩版
 
+## 当前续接：0.2.0（2026-10-22）
+
+唯一完整现状见 `knowledge/current-status.md`。执行角色承接 `product/0.2.0/ready/` 的 XL 方向；七阶段为 1 已完成（需求评估）、1 进行中（分支实施）、5 未开始（验收同步、合并、发布、发布后同步、结束）。当前发布仍为 0.1.10；0.2.0 尚未验收、合并或发布。
+
+续接根仓 `codex/0.2.0-delivery` 位于 `C:/Users/hjxch/.codex/worktrees/020-continuation/Smart-WorkFlow-Agent-Workspace`。实际代码位于原工作区两子仓，Server `codex/0.2.0-tenant-form-flow` / `9704047`，Web `codex/0.2.0-ui-tenant-form-flow` / `27b1916`，均已推送。根仓原 develop-sw 的 0.1.10 在途文档不混入。
+
+最新实施回执 `product/0.2.0/receipts/t020-tenant-identity-02.md`，共用脚本 UI 见 `u020-script-workspace-05.md`。下一动作是 DR03 用户/部门目标租户、归属与关联隔离，以及停用后的会话与后台认领；继续 F020/J020/W020 和全局 U020。A03 未通过，功能数/P/正式基线保持既有授权值。任务自有 Java/PG/Redis 已清理；用户 Redis 服务未动。
+
+以下保留 0.1.9 及更早时点的交接历史，不代表当前任务和版本。
+
 当前活动任务（2026-10-21）：README 首例“多部门灾备演练”业务验收 PASSED（`product/readme-first-example-acceptance/receipts/planning-review-20261021-passed.md`），功能 COMPLETED 已落盘（功能 49 不变、本轮新增 0、P 核销空、正式基线更新集合为空）。当前软件发布为 **0.1.9**；**UAT 当前运行 0.1.9 第七次覆盖后的正式制品（Web `index-DDQRXD9F.js`；Server `74716dd`）**。终态与发布后同步已执行并交回：回执 `product/readme-first-example-acceptance/receipts/terminal-sync-019-01.md`；当前唯一下一动作＝Planner 复核该回执，确认第 3、6 阶段并确认第 7 阶段结束。总 7 阶段：4 已完成、2 进行中（待规划复核）、1 未开始。收尾回读结论（tag/Release/资产/UAT/迁移/分支清理/预约 2112002084486819842 到点结果）见 `knowledge/current-status.md` 顶部 2026-10-21 条目与 `search_fallback/readme-first-example-closeout-facts-019.md`。
 
 使用与验证待办（2026-10-19）：灾备演练的预约时间选择、参与部门选择见 `todo/uat-drill-usability.md`（待核实/排期）；兼容回滚 PG 测试失败见 `todo/p62-upgrade-gate-test-claim-race.md`（待定位）。重启、升级及回滚按运维手册加载 `server.env` 后执行。**发布与验收结论：0.1.9 已发布并部署 UAT，并完成七次同版本覆盖（Server 四次、Web 五次）；UAT 端到端复验通过。**
