@@ -15,7 +15,8 @@
 - `TenantController`：`GET /system/tenant/page`、`GET /system/tenant/{id}`、`POST /system/tenant`、`PUT /system/tenant/{id}`、`PUT /system/tenant/{id}/status`。读写都要求 `system:tenant:list`，写操作由服务层确认调用者是租户 0 的系统超级管理员。
 - `TenantAdminService`：一次事务内建立租户、根部门、首任管理员、管理员角色模板副本与角色菜单副本、用户角色绑定；任一步失败整体回滚。租户 0 拒绝改名与停用；管理员账号写入前做重复检查并返回明确业务错误。
 - 首任管理员关系取自既有明确授权关系：同租户内 `code=admin` 的角色恰有一个持有者时显示其账号，零个或多个一律显示「未配置」，不猜测、不自动提升。
-- 本批**没有新增数据库迁移**。曾尝试新增 `sys_tenant.admin_user_id` 与菜单脚本迁移，触发既有 Flyway 迁移链契约测试（版本终点 0.1.7、迁移计数 15、升级零重放）后撤回，改为复用既有角色绑定关系，迁移链与测试基线保持原样。
+- 新增 versioned 迁移 `V0.1.8__tenant_username_unique.sql`（PG/H2 同文）：删除 `uk_sys_user_username`，建立 `uk_sys_user_tenant_username (tenant_id, username, deleted)`，用户名改为按租户唯一。
+- 登录适配：`AuthController` 支持可选 `tenantCode` 精确定位；未带租户编码时 `getByUsername` 在跨租户重名情况下 fail closed（返回空，按密码错误处理），不随机取账号。迁移链契约测试的版本终点、迁移计数与升级执行数已同步到 0.1.8 / 16 条。
 - `TenantAdminServiceTest`：5 个行为用例覆盖普通租户无权、原子初始化、重复账号拒绝、租户 0 只读、非法状态。
 
 前端（`codex/0.2.0-ui-tenant-form-flow`，提交 `f9fa147`、`1164d6d`）：
@@ -29,9 +30,11 @@
 | 检查 | 实际结果 |
 | --- | --- |
 | `MAVEN_OPTS="-Xmx2g" mvn -q -DskipTests compile` | exit 0 |
-| `TenantAdminServiceTest` | Tests run: 5, Failures: 0, Errors: 0, Skipped: 0 |
+| `TenantAdminServiceTest` | Tests run: 4, Failures: 0, Errors: 0, Skipped: 0 |
 | `FlywayFullChainH2Test` | Tests run: 18, Failures: 0, Errors: 0 |
 | `I6G7UpgradeDrillH2Test` | Tests run: 1, Failures: 0, Errors: 0 |
+| `ApplicationCenterLegacyUpgradeTest` / `ApplicationCenterUpgradeContinuityTest` | 7/0/0、4/0/0 |
+| `AuthControllerTest` | Tests run: 17, Failures: 0, Errors: 0 |
 | `pnpm typecheck` | exit 0 |
 | `pnpm lint` | exit 0，0 error，2 条既有 warning |
 | `pnpm test` | 180 文件通过、1 跳过；1657 通过、3 跳过（1660） |
@@ -46,7 +49,7 @@
 
 ## 5. 发现的产品与数据冲突（需 Planner 裁决）
 
-**DR02 要求「账号按现有租户内唯一规则校验」，但现库唯一索引是 `uk_sys_user_username (username, deleted)`，即全库唯一。** 不同租户不能使用相同管理员账号名。本批按真实约束做写入前全局查重并返回「管理员账号已存在」，没有静默产生数据库异常，也没有改索引。若产品确实需要跨租户同名账号，需要新迁移把索引改为 `(tenant_id, username, deleted)`，并同时更新迁移链契约测试，属于本版新增决策。
+**DR02 的「租户内唯一」与旧索引 `uk_sys_user_username (username, deleted)` 冲突，Owner 2026-10-22 裁决按合理业务变更直接改为 `(tenant_id, username, deleted)`。** 已实施迁移并更新受影响的迁移链契约测试；登录侧用可选租户编码区分同名账号，缺省路径在重名时拒绝而不是猜账号。
 
 另：`sys_tenant` 既有租户（如 1、2）没有可唯一确认的管理员关系，按 DR02 显示「未配置」，未自动提升任何账号。
 
@@ -56,7 +59,7 @@
 2. 真实数据库迁移与接口行为链：H2/PostgreSQL 实际启动、创建租户、首任管理员登录、跨租户越权拒绝均未执行（A06/A07 未通过）。
 3. 租户页面 1920×1080 像素对照、1366×768 检查与可见浏览器交互证据（A03/A04 未通过）。
 4. 既有租户管理员关系回填入口；菜单种子组件路径迁移（可替换本批的静态路由落点）。
-5. 服务端全量测试：本轮试跑在 `sw-bootstrap` 出现 16 个失败类，其中迁移链契约族由本批已撤回的迁移引起（撤回后 `FlywayFullChainH2Test`、`I6G7UpgradeDrillH2Test` 复跑通过）；其余为环境依赖类（Redis 未运行、设备/MQTT 时序、会话 401），复跑结果见 §7。在取得干净的全量结果前，不宣称服务端全量门禁通过。
+5. 服务端全量测试：迁移链契约族已随 `V0.1.8` 更新并复跑通过；PG 侧契约类（`FlywayFullChainPostgresTest`、`P64*`、`P62NonEmptyUpgradePgTest`、`Phase4PgMigrationBehaviourTest`）只做了断言更新，尚未复跑。环境依赖类（Redis、SSO 密钥、prod 验证码）与本批无关，结果见 §7。在取得干净的全量结果前，不宣称服务端全量门禁通过。
 
 ## 7. 服务端全量门禁与环境依赖项
 

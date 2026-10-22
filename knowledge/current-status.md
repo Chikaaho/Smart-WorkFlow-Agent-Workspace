@@ -10,7 +10,7 @@
 
 **唯一下一动作**：T020 继续——补齐停用后会话与认领收敛、真实库及可见浏览器行为链、租户页 1920×1080 像素对照；随后按 F020、J020、W020 推进，最后 U020 全局视觉与文案覆盖、整版链路验收。
 
-> **2026-10-22 T020 首批（自验通过，待规划验收）**：服务端租户列表/创建（含首任管理员与根部门）/改名/启停接口与 Web 租户页已提交——Server `cb4cddd`、Web `f9fa147`，回执 `product/0.2.0/receipts/t020-tenant-management-01.md`。发现真实冲突：`uk_sys_user_username` 为 `(username, deleted)` 全库唯一，DR02 要求的「租户内唯一」当前不成立；本批按真实约束做写入前全局查重并显式拒绝，未改索引，待 Planner 裁决是否改为 `(tenant_id, username, deleted)`。
+> **2026-10-22 T020 首批（自验通过，待规划验收）**：服务端租户列表/创建（含首任管理员与根部门）/改名/启停接口与 Web 租户页已提交，回执 `product/0.2.0/receipts/t020-tenant-management-01.md`。用户名唯一索引已按 Owner 裁决改为 `(tenant_id, username, deleted)`（`V0.1.8__tenant_username_unique.sql`），登录支持可选租户编码，重名且未提供编码时 fail closed；迁移链契约测试同步到 0.1.8 / 16 条并复跑通过。
 
 以下为 0.1.9 时点（2026-10-21）的当前状态记录，仅作历史追溯，不代表当前版本：
 
