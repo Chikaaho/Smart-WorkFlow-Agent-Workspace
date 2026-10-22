@@ -1,9 +1,7 @@
 # memory 使用说明
 
-2026-10-21：README 首例灾备演练及 0.1.9 交付 COMPLETED。七阶段：评估、执行、验收同步、合并、发布、发布后同步、结束全部完成（7/0/0）。
+2026-10-22：0.2.0 规划已完成，正式方向 READY，待执行承接。五项目标：UI 与文案、P29 租户管理、P2 表单配置/校验、P65 表单事件/函数、P4 流程能力。Owner 明确页面开发须像素级还原，视觉标准为硬门槛。
 
-最终裁决：`product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md`。主方向与同步方向均在 `product/readme-first-example-acceptance/passed/`；第 2 轮回执 `receipts/terminal-sync-019-02.md` 的四项收尾缺口已关闭。
+总 7 阶段：已完成 1（评估）、进行中 0、未开始 6。下一动作：执行会话读取 `product/0.2.0/ready/execution-prompt-020.md`，从核实后的 develop 建分支实施。目标版本 0.2.0 已由 Owner 指定。
 
-阅读顺序：state → handoff → features → constraints。knowledge 为权威状态，最终裁决由 Executor 按授权机械传播并提交规划记录，不重开验收。
-
-当前无活动交付任务。下一动作：等待 Owner 启动下一任务；UI 文案治理已排队 READY，尚未启动。
+阅读顺序：state → handoff → features → constraints。正式方向 `product/0.2.0/ready/direction-020.md`，同目录含决策、验收、视觉标准及 258 节点索引。knowledge 为权威状态；0.1.10 发布记录已确认，本地当前入口尚有同步缺口，UAT/CI 结果仅见 Release 正文。

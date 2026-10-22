@@ -1,23 +1,21 @@
 # 当前状态摘要
 
-## README 首例与 0.1.9 交付 COMPLETED
+## 0.2.0 READY
 
-2026-10-21，Owner 确认验收结束。Planner 第 2 轮终态复核通过，TS019-G1—G4 全部关闭。总 7 阶段：评估、执行修复、验收同步、合并、发布、发布后同步、结束全部完成（7/0/0）。
+2026-10-22，Owner 确定 UI 与文案、P29 租户管理、P65 表单 JavaScript、P2 表单配置/校验、P4 流程能力，并要求页面像素级还原。规划已完成，正式方向 `product/0.2.0/ready/direction-020.md` READY。总 7 阶段：已完成 1「评估」；进行中 0；未开始 6「分支实施、验收同步、合并、发布、发布后同步、结束」。
 
-最终裁决：`product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md`；执行结果：同任务 `receipts/terminal-sync-019-02.md`；主方向和同步方向均已归档 passed。当前无活动业务或交付任务，下一动作等待 Owner 启动下一任务，UI 文案治理保持 READY。
+唯一下一动作：Executor 按同目录 `execution-prompt-020.md` 进入实施。关键决策在 `decision-records-020.md`，行为证据在 `acceptance-020.md`，像素标准在 `visual-acceptance-020.md`，设计覆盖在 `design-node-index-020.md`。目标版本 0.2.0 已指定，不重复询问。
 
-## 事实与验证
+## 规划决定与证据
 
-正式与 UAT 版本 0.1.9；发布源 Server `74716dd`、Web `e967e24`。收尾分支 develop/main：Server `2d6b8f1`、Web `2ac1a71`。根仓执行侧收尾基线 `976d11c2` 与 origin/develop-sw 一致；最终规划裁决与摘要另按 Owner 授权提交，其引用以根仓实际提交记录为准。
+已完整读取探索正文和矩阵，来源 `search_fallback/0.2.0-baseline-ui-readiness-20261022.md` 及同名 `-matrix.md`。Figma 文件 `mbEKPcZv9pcchmElQanR5E`，核心页 258 画框、规范页 25 组件族；执行方已实读 31 节点及 5 张临时截图，尚无正式视觉/业务验收。
 
-文档 CI Server `39460955739`、Web `39460972065` 均成功；Latest 为 build-2d6b8f1/build-2ac1a71，均为 0.1.9 构建。tag/语义 Release 仍对应已验收发布源。UAT 入口 `index-DDQRXD9F.js`，Server jar 218,061,187 B；开发默认 Server `0.1.9-SNAPSHOT`、Web `0.1.9`；DB 版本化终点 V0.1.7，表单数据授权 R__ 已应用。
+UI 与文案一个任务。租户和首任管理员原子创建，超管创建先明确目标租户；停用阻断新准入和未开始认领，已执行原动作有界收敛。表单三事件与字段脚本兼容，流程监听和触发器用同一版本化模型；前/后加签与串行/并行分开。P2 配置入口、长度/正则/提示、子表弹窗，P4 暂存/节点策略/缺失入口纳入。无独立稿的入口复用规范页和同类界面补齐。
 
-功能 49、46/22/22=90、ADV64/问题57；本轮新增业务功能 0，P 核销、里程碑/明细变更及正式验证基线更新集合均为空。
+像素硬标准：关键几何偏差≤1px，稳定色 RGB 每通道差≤3；同条件原图按通道差>8计差异像素，整页/内容区一致率≥99%，关键区域≥98%；有完整图和 diff，动态排除最小化，不用大背景或遮罩掩盖差异。桌面1920×1080，另验证1366×768与既有移动375×812可用性。
 
-动态审批与会签实例 20261020-017 APPROVED、抄送 SUCCESS；详情及权限修复有 UAT 结果。Web 最新 1621 passed/3 skipped、聚焦 26/26；Server 2141 tests、0 failures、0 errors、27 skipped。模块边界 81/81（9 模块）通过。MQTT SENT 的既有依据来自 0.1.8 时点实例 20261019-008，不冒称 0.1.9 新采集或设备执行回执。
+## 版本基线与保留事项
 
-## 保留事项
+Owner 确认 0.1.10 已交付。探索时远端 main/develop Server `85e1ab784`、Web `2df670b50`，tag 分别 `8a2aa56`/`e03a886`；本机 main 为 `2d6b8f1`/`2ac1a71`。knowledge、根版本/变更记录仍 0.1.9，完整交付回执缺失，UAT/CI/测试计数仅见 Release 正文。执行方核实最新事实并同步，不造历史回执、不用旧结果冒充。
 
-预约 2112002084486819842：命令 FAILED、预约滞留 DISPATCHING；恢复与终态衔接待独立评估，重启与覆盖部署关联为时间线推断。未来时间/普通用户部门选择仍保留待办。历史卡单 20261019-009/013、20261020-016 保留。P62 性能延期、默认 OFF；CI 时序问题沿原待办。
-
-最终裁决传播至 knowledge 与归档提交由 Executor 沿已有授权办理；该动作不重新打开本轮验收。原始行为/发布回执在 `product/bugfix-20261019/receipts/`，0.1.8 历史在 `product/iot-native-mqtt-submit-detect/receipts/`。
+本轮未实现、未验收、未发布，不预增功能数或核销 P。README首例与0.1.9历史COMPLETED，原裁决 `product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md`；该时点49、46/22/22=90、ADV64/问题57。P62性能延期/OFF、预约使用/重启恢复及CI时序问题保留各自待办。根仓既有治理删除等在途修改保持归属，不混入本版。

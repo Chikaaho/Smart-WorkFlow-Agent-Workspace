@@ -1,14 +1,16 @@
 # 需求池（Requirement Pool）
 
-当前活动任务无（2026-10-21）：README 首例与 0.1.9 交付 COMPLETED，最终裁决 `product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md`。评估、执行、验收同步、合并、发布、发布后同步、结束全部完成（7/0/0）；TS019-G1—G4 已关闭。下一动作等待 Owner 启动下一任务，UI 文案治理保持 READY；预约恢复及时间/部门选择继续待评估。最终裁决的知识传播与归档提交由 Executor 沿已有授权办理。
+当前活动任务：0.2.0 全局 UI 与关联功能完善（2026-10-22，READY，待执行承接）。Owner 已确定五项目标：UI 与文案、P29 租户管理、P65 表单 JavaScript、P2 表单能力完善、P4 流程能力完善；[正式方向](../product/0.2.0/ready/direction-020.md)及[执行入口](../product/0.2.0/ready/execution-prompt-020.md)。像素级还原为页面开发硬标准。总 7 阶段：已完成 1（评估）、进行中 0、未开始 6（分支实施、验收同步、合并、发布、发布后同步、结束）。
 
-## 下一步任务：全量 UI 文案与三档说明治理（2026-10-20）
+Owner 确认 0.1.10 已交付；按其指示只读核对远端 main，Web `2df670b50`、Server `85e1ab784` 已有 0.1.10 版本同步。本机 main 与原摘要停在 0.1.9，新版探索确认 tag/Release 存在、knowledge 仍 0.1.9，部署/CI 结果仅见 Release 正文，见 [提交核对](../product/0.2.0/receipts/planning-main-history-20261022.md)。下文待办保留登记时点。已选 P2/P4 的真实差异矩阵已取得，承接 P60 I2/I3/I4 已过能力；新增契约与范围见正式方向，当前不核销编号。
 
-Owner 已要求整理为前端长期规范与下一步执行任务。长期规则：前端工程宪法 §6.5；[正式方向与执行 Prompt](../product/ui-copy-governance/ready/direction-ui-copy-governance.md)。L 级，READY，前置 README 首例交付已完成，待 Owner 启动。说明按三档处置：必要说明进入功能右上角小问号悬浮；可选说明抽出到操作手册；名称已表达清楚或无用户价值的重复说明直接删除。即时校验、风险与结果反馈保留。执行范围为前端全部可见文案及隐藏状态，语义不确定项保留并列出；当前仅完成规范与任务登记，UI 审计与修复未开始。总 7 阶段：评估已完成，执行、验收同步、合并、发版、发布后同步及结束未开始（1/0/6）。不新增业务功能或 P 编号，执行与验收不重开已完成的 P61。
+## 0.2.0 UI 与文案目标（文案原登记 2026-10-20）
 
-## 最近完成：README 首例验收与 0.1.9（2026-10-21）
+Owner 已要求整理为前端长期规范与下一步执行任务。长期规则：前端工程宪法 §6.5；[文案专项标准](../product/ui-copy-governance/ready/direction-ui-copy-governance.md)。文案专项按原 L 级边界，由 0.2.0 XL 的 UI 与文案目标统一实施与验收，当前整体 READY，按已审阅的 0.1.10 基线承接实施。说明按三档处置：必要说明进入功能右上角小问号悬浮；可选说明抽出到操作手册；名称已表达清楚或无用户价值的重复说明直接删除。即时校验、风险与结果反馈保留。执行范围为前端全部可见文案及隐藏状态，语义不确定项保留并列出；本地已有规范与任务登记；0.1.10 main 可见局部文案优化，探索已确认全量审计及三档治理尚未交付，纳入本版实施。总 7 阶段：评估已完成，其余分支实施、验收同步、合并、发布、发布后同步、结束未开始（1/0/6）。不新增业务功能或 P 编号，执行与验收不重开已完成的 P61。
 
-第 2 轮同步复核通过，七阶段全部完成（7/0/0）。Server 发布源 `74716dd`、Web `e967e24`；后续文档提交与 develop/main 分别为 `2d6b8f1`、`2ac1a71`。计数 49、46/22/22=90、ADV64/问题57，P 核销及正式基线更新为空。最终裁决见上方链接；当前活动交付无。
+## 历史完成：README 首例验收与 0.1.9（2026-10-21）
+
+第 2 轮同步复核通过，七阶段全部完成（7/0/0）。Server 发布源 `74716dd`、Web `e967e24`；后续文档提交与 develop/main 分别为 `2d6b8f1`、`2ac1a71`。计数 49、46/22/22=90、ADV64/问题57，P 核销及正式基线更新为空。最终裁决 `product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md`；本段保留该次交付事实。
 
 ## 历史完成：0.1.8（2026-10-19）
 
@@ -136,6 +138,10 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 
 成熟OA路线方向：[v0.1.0 OA全功能收口（已归档）](../product/v0.1.0-oa-completion/passed/direction-v0.1.0-oa-completion.md)。[P60终态最终复核01](../product/v0.1.0-oa-completion/receipts/planning-final-review-terminal-sync-v0.1.0-oa-completion-01-passed.md)确认`COMPLETED（规划已确认）`；R8五渠道继续由[P2待办](i6-external-notification-channels-real-verification.md)跟踪。P53已`COMPLETED（规划已确认，2026-09-21）`并核销，[阶段三方向](../product/p53-global-ui-component-layout/passed/direction-p53-global-ui-component-layout-terminal-sync.md)已归档；正式业务功能数45。
 
+## 0.2.0 已选 P2/P4 的现状核实口径（2026-10-22）
+
+P60 I2 已于 2026-09-10 COMPLETED，已通过方向包含子表/关联、公式、受控外部数据、列表配置与生命周期；I3 已于 2026-09-12 COMPLETED，已通过方向包含转办、委托、加签/补签、撤回等；I4 覆盖流程运营。以下早期缺口表保留登记来源，不能作为当前零实现结论。0.2.0 已纳入 P2/P4 的新 UI 适配与真实缺口完善，执行探索逐项对照已过范围、当前实现和 Figma，正式范围和验收已由 `product/0.2.0/ready/direction-020.md` 确定；P 编号当前仍开放。
+
 ## 一、已开发且未满足（D83 回执确认：90/90 清单一致，缺口逐行核实，此为全量索引）
 
 ### A. 高风险/紧迫（建议优先排期）
@@ -195,7 +201,7 @@ Owner 已将“最小业务闭环”定义为已完成的基础能力。用户�
 | P62 | 低代码事务能力与BPM分级执行架构 | Owner2026-09-30；XL；[正式需求](p62-lowcode-transaction-bpm-tiering.md) | 批准功能COMPLETED；P64阶段Ⅱ已通过，新机就绪探索已完成（2026-10-11，回执 [search_fallback/p62-performance-new-machine-readiness-20261011.md](../search_fallback/p62-performance-new-machine-readiness-20261011.md)）；有限性能三轮未通过、VERIFYING，已由 Owner 搁置为已知延期问题（2026-10-12，未来方向=带权参数配置、后台可配置每租户优先级；见 [P62 §性能已知延期](p62-lowcode-transaction-bpm-tiering.md)）、策略OFF。[恢复安排](../product/p62-lowcode-transaction-bpm-tiering/ready/direction-p62-performance-resume-20261011.md)。不新增编号或计数。 |
 | P63 | MES前置能力：动态并行审批与一次性预约IoT下发 | Owner 2026-10-06；L；[需求定义](p63-mes-workflow-foundations.md)；关联P60 I4/P21/P62 | **COMPLETED（规划已确认，2026-10-08）**；R01—R06批准交付核销，20/20、A01—A10、TS01—TS03全部通过；[最终裁决](../product/p63-mes-workflow-foundations/receipts/planning-final-review-terminal-sync-p63-mes-workflow-foundations-02-completed.md)；正式功能48、清单46/22/22零升降；六入口确认措辞传播已核销，业务验收锁定。 |
 | P64 | MES高级流程编排与业务闭环 | Owner2026-10-08；XL；[需求索引](p64-mes-advanced-orchestration.md) | **COMPLETED（规划已确认，2026-10-13）**，批准范围已核销；正式功能48；三阶段完成3/进行中0/未开始0，业务与终态验收剩余0；终态最终复核02。 |
-| P65 | 表单自定义 JavaScript 事件与开放 API：加载完成、提交前后事件；主表/明细表数据与控件属性、流程/组织数据及辅助函数；与现有流程 JS 面板共用一套 UI | Owner 2026-10-18；[需求定义](p65-form-javascript-events-api.md) | 待做、待排期；至少L级评估；优先级及版本待定 |
+| P65 | 表单自定义 JavaScript 事件与开放 API：加载完成、提交前后事件；主表/明细表数据与控件属性、流程/组织数据及辅助函数；与现有流程 JS 面板共用一套 UI | Owner 2026-10-18；[需求定义](p65-form-javascript-events-api.md) | 已纳入0.2.0正式方向；READY；事件/API/监听器契约已确定 |
 
 管理员P0治理插单（2026-09-15）：[连续执行与可见浏览器验收门禁](admin-machine-gate-continuous-visible-browser.md)已`COMPLETED（规划确认）`，本地提交`8e87899`，治理测试sh 70/70、PowerShell 49/49。该任务不并入P60业务计数；远程发布仍需Owner另行授权。
 
@@ -582,7 +588,7 @@ P58已于2026-09-04功能级 **PASSED**（规划验收08）＋阶段三终态同
 | P26 | M01-F01-05 负责人设置 | 原D83“无leader列”为历史事实；2026-10-06 P63探索确认单值leader_id及负责人解析已交付，见P63回执Q1/Q4 | 保留原未核销状态；本轮仅更正现状，不据静态探索核销 |
 | P27 | M01-F02-05 人员批量导入导出 | 全仓无 excel/POI/Workbook 引用 | 未排期 |
 | P28 | M01-F04-01 用户组管理 | 全仓 grep 零命中 | ✅ **已核销**（2026-08-19，user-group-membership D117 PASSED + 阶段三 COMPLETED） |
-| P29 | M01-F05-01 租户管理与超级管理员租户归属展示 | 已有租户能力，补齐管理入口；超级管理员在用户、部门等跨租户管理页可见所属租户并按租户筛选，操作目标归属明确。Owner 2026-10-18补充；[需求定义](p29-tenant-management.md)，实现现状立项时核实 | 待做、未排期；至少L级；版本待定 |
+| P29 | M01-F05-01 租户管理与超级管理员租户归属展示 | 已有租户能力，补齐管理入口；超级管理员在用户、部门等跨租户管理页可见所属租户并按租户筛选，操作目标归属明确。Owner 2026-10-18补充；[需求定义](p29-tenant-management.md)，实现现状立项时核实 | 已纳入0.2.0正式方向；READY；租户初始化/启停/目标归属契约已确定 |
 | P30 | M02-F05-01 资源管理 | 鉴权执行机制有，但 API 资源注册表+鉴权策略配置无实体/端点/页面 | 未排期 |
 | P31 | M02-F06-02 单点登录 | 钉钉/飞书接入已PASSED；后台配置/B端准入已COMPLETED（规划确认，2026-09-29） | 企业微信延期，开放未核销；裁决 `product/sso-admin-config/receipts/planning-final-review-terminal-sync-01-completed.md` |
 | P32 | M03-F04-02 表单数据导入导出 | 全仓库零代码 | ✅ **已核销**（2026-08-29，form-data-import-export 功能级 PASSED + 阶段三终态同步 COMPLETED；M03-F04-02 升✅、清单 ✅32/🟦25/⬜33、功能数 36、基线 947/0/0/0（agent346）、110f/1057t/3skipped、Flyway H2 V43/PG V43——历史终态；当前正式基线经 minimal-closure-first-acceptance 审计更新为 955/1060/V44，功能数 36、清单 ✅32/🟦25/⬜33 不变） |

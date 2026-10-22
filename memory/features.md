@@ -1,9 +1,7 @@
 # 功能摘要
 
-README 首例灾备演练与 0.1.9 交付：COMPLETED（Planner 2026-10-21 第 2 轮终态复核通过）。七阶段：评估、执行、验收同步、合并、发布、发布后同步、结束全部完成（7/0/0）。
+0.2.0：2026-10-22 正式方向 READY。已选 UI 与文案、P29、P65、P2、P4，功能与 Figma 页面一并交付，像素级还原为硬门槛。七阶段1/0/6：评估完成，其余分支实施、验收同步、合并、发布、发布后同步、结束未开始。
 
-最终裁决：`product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md`；第 2 轮回执同任务 `receipts/terminal-sync-019-02.md`。主方向与同步方向均在 passed，四项收尾缺口已关闭。
+当前入口 `product/0.2.0/ready/direction-020.md`，执行入口同目录 `execution-prompt-020.md`；决策和验收已写入同目录，不再等待 Planner 制定方向。P60 I2/I3/I4 已过能力继续承接，本轮补真实缺口；P2/P4/P29/P65 状态和功能数按最终覆盖裁决，当前不核销、不预增正式功能或验证基线。
 
-计数保持 49、46/22/22=90、ADV64/问题57；新增业务功能 0，新增 P 核销、里程碑/明细变更及正式验证基线更新为空。P62 功能完成，有限性能延期/OFF。
-
-当前无活动业务或交付任务；等待 Owner 启动下一任务。已排队 UI 文案治理 READY，尚未启动。发布与分支事实见 state，遗留问题见 `todo/uat-drill-usability.md`；最终裁决由 Executor 机械传播并办理记录提交。
+基线：Owner 确认0.1.10交付，远端main Server `85e1ab784`、Web `2df670b50`。发布记录存在、knowledge仍0.1.9，UAT/CI结果仅见Release正文。历史README首例与0.1.9 COMPLETED，裁决 `product/readme-first-example-acceptance/receipts/planning-final-review-terminal-sync-019-completed.md`；该轮49、46/22/22=90、ADV64/问题57。P62有限性能延期/OFF。

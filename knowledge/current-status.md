@@ -1,6 +1,18 @@
 # 当前项目状态
 
-当前活动任务（2026-10-21）：README 首例“多部门灾备演练”业务验收已 PASSED（Owner 实操验收结论＋规划裁决 `product/readme-first-example-acceptance/receipts/planning-review-20261021-passed.md`），功能状态按终态值清单落盘 **COMPLETED**（已完成功能数保持 49，本轮新增 0、不核销 P、正式验证基线更新集合为空）。当前软件发布为 **0.1.9**；**UAT 当前运行 0.1.9 第七次覆盖后的正式制品（Web `index-DDQRXD9F.js`；Server `74716dd`）**。终态与发布后同步已执行，回执 `product/readme-first-example-acceptance/receipts/terminal-sync-019-01.md`；当前唯一下一动作＝Planner 复核该回执，确认第 3、6 阶段并确认第 7 阶段结束。总 7 阶段：评估、执行、合并、发布已完成；验收同步、发布后同步进行中（同步已交回，待规划复核）；结束未开始（4/2/1）。
+当前活动任务（2026-10-22）：**0.2.0「全局 UI 与关联功能完善」**（XL）已由 Planner 下发 READY（`product/0.2.0/ready/direction-020.md` 及决策记录、验收清单、视觉标准、设计节点索引），Executor 已核实基线并建任务分支。总 7 阶段：已完成 1「需求评估」；进行中 1「分支实施」；未开始 5「验收同步、合并、发布、发布后同步、结束」。
+
+**当前软件发布为 0.1.10**（2026-10-21 发布并部署）。成对 tag：Server `0.1.10`→`8a2aa56`、Web `0.1.10`→`e03a886`；两仓 `main` 与 `develop` 同点：Server `85e1ab7`、Web `2df670b`。版本化资产：Server `bootstrap-0.1.10.jar` 218,065,590 B、Web `sw-web-dist-0.1.10.zip` 1,360,081 B。CI：Server run `39616993514`、Web run `39611689870` 均 success（0.1.10 构建）。UAT 由 0.1.9 就地升级：Server `build.version=0.1.10`、健康 UP、启动 181.914s、启动段 ERROR 0，Web 入口 `assets/index-qOqx_U4O.js`；DB versioned 终点保持 `V0.1.7`，新增可重复迁移 `R__0.1.10_admin_password.sql`、`R__application_center_menu.sql`。
+
+**事实边界**：以上 CI、UAT 与测试计数（Web Release 正文记录 179 文件 / 1653 通过 / 3 跳过）只来自两仓 0.1.10 Release 正文；工作区没有对应的 0.1.10 交付回执（`product/0.1.10-bugfix/receipts/` 不存在），本轮不补造历史原文。0.1.9 的发布、UAT 与验收结论保留在下方历史记录及原回执中。
+
+**开发基线**：两仓 develop 均含 0.1.10 内容（Server `85e1ab7`、Web `2df670b`）；开发默认版本 Server `0.1.10-SNAPSHOT`、Web `0.1.10`，待 0.2.0 合入 main 前再收敛到目标版本。任务分支：Server `codex/0.2.0-tenant-form-flow`、Web `codex/0.2.0-ui-tenant-form-flow`、根仓 `codex/0.2.0-delivery`。
+
+**唯一下一动作**：Executor 按 `product/0.2.0/ready/` 的五份文件推进主功能，先 T020 租户管理，再 F020、J020、W020，最后 U020 全局视觉与文案覆盖、整版链路验收。
+
+以下为 0.1.9 时点（2026-10-21）的当前状态记录，仅作历史追溯，不代表当前版本：
+
+README 首例“多部门灾备演练”业务验收已 PASSED（Owner 实操验收结论＋规划裁决 `product/readme-first-example-acceptance/receipts/planning-review-20261021-passed.md`），功能状态按终态值清单落盘 **COMPLETED**（已完成功能数保持 49，本轮新增 0、不核销 P、正式验证基线更新集合为空）。0.1.9 时点 UAT 运行第七次覆盖后的正式制品（Web `index-DDQRXD9F.js`；Server `74716dd`）。终态与发布后同步已执行，回执 `product/readme-first-example-acceptance/receipts/terminal-sync-019-01.md`。
 
 > **2026-10-21 第 1 轮复核补充（TS019-G1—G4）**：两仓 `develop` 原为 main 祖先，已快进并普通推送——Server `3234369`→`2d6b8f1`、Web `1e67c20`→`2ac1a71`，main=develop 回读一致；0.1.9 修复与后续文档提交均进入开发基线，tag `0.1.9` 与语义 Release 未动。两子仓 README 当前版本段、Server 功能清单当前焦点由 0.1.8 更新为 0.1.9（发布源、资产、迁移、开发默认版本与收尾状态），历史段落保留。模块边界检查 `node .codex/governance/test-web-module-boundaries.mjs` 结果 81/81 通过；共享组件 `src/components/business-detail/` 不在 `src/modules` 清单内，模块间禁止规则不适用于该路径，全局危险 API 与 axios 规则仍覆盖。文档提交触发 CI：Server run `39460955739` success（17m27s）、Web run `39460972065` success（5m2s），各自生成 `build-2d6b8f1…`／`build-2ac1a71…` Release 并持 Latest（均标注 0.1.9 构建）；版本化 Release `0.1.9` 资产未变（218,061,187 B／1,351,539 B）。回执 `product/readme-first-example-acceptance/receipts/terminal-sync-019-02.md`。
 

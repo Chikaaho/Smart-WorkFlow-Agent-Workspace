@@ -1,5 +1,13 @@
 # CH-aPaaS 发布说明 / Release Notes
 
+## 0.1.10（2026-10-21 发布并部署 UAT；修复批次，不新增业务功能数）
+
+- **发布事实**：Server tag `0.1.10`→`8a2aa56`（main/develop `85e1ab7`），资产 `bootstrap-0.1.10.jar` 218,065,590 B sha256 `b447fa09…`，CI run `39616993514` success，`build.version=0.1.10`；Web tag `0.1.10`→`e03a886`（main/develop `2df670b`），资产 `sw-web-dist-0.1.10.zip` 1,360,081 B sha256 `a9d6a508…`，CI run `39611689870` success，Vitest 179 文件 / 1653 通过 / 3 跳过。
+- **内容**：Server 超管种子口令收敛、应用管理菜单顶级归位、流程定义创建人/版本发布人回填、会签按人数结算与完成判定、角色分页按租户过滤；Web 登录密码可见、流程设计器节点图标/会签人数与比例/页签与版本快照、表单工作台对齐、按租户配置角色、共享列表/分页/侧栏/操作列/详情弹窗、IoT 列表统一，用户端与管理端应用中心/应用列表/内容区统一。
+- **迁移**：versioned 终点保持 `V0.1.7`；新增 `R__0.1.10_admin_password.sql`（默认超管种子口令）并更新 `R__application_center_menu.sql`。
+- **UAT**：由 0.1.9 就地升级（备份 DB `smart_workflow_20261021_2215_pre0110.dump`、后端 `bootstrap.jar.bak-20261021_pre0110`、前端 `web.bak-20261021_pre0110`）；Server `build.version=0.1.10`、健康 UP、启动 181.914s、启动段 ERROR 0；Web 入口 `assets/index-qOqx_U4O.js`。
+- **来源限制**：以上内容取自两仓 `0.1.10` Release 正文与公开资产；工作区没有对应的 0.1.10 交付回执（`product/0.1.10-bugfix/receipts/` 不存在），本条目不补造历史证据，也不把该批次结果并入 0.2.0 的验证基线。
+
 ## 0.1.9（2026-10-19 发布并 UAT 由 0.1.8 就地升级部署；**同版本覆盖七次**——Server 四次（BF20261019-04、BF20261020-01/02、BF20261020-03、BF20261020-05/06）、Web 五次（BF20261020-01/02、BF20261020-04、BF20261020-05、BF20261020-07、BF20261020-08），Owner 授权「0.1.9版本号覆盖」与「本轮尚未结束，所有提交都是覆盖 0.1.9」；UAT 端到端复验通过）
 
 - **版本发布事实**：0.1.9 修复批次（**不新增业务功能数**）沿 任务分支→develop→main 合入（Server 任务分支 `fix/bpm-script-worker-launch`（tip `6d7f951`）→ develop merge `8f9f4be` → 版本收敛 `ed5277b` → main `96ab6d0`；Web 无功能变化，包版本收敛 `3953f3e` → main `3c43a3c`）。main 推送触发既有 CI：Server run `39270156052` attempt1 **failure**＝既有 `P63ReservationBoundaryPgTest` 预约窗口时序族 → attempt2 **success**（制品 `bootstrap.jar` **218,047,647 B sha256 `d32a82c7…`**，`build.version=0.1.9`）；Web run `39270322491` **success**（制品 `sw-web-dist-0.1.9.zip` 1,346,615 B sha256 `bee21c4e…`）。**成对 annotated tag `0.1.9`**（Server→`96ab6d0`、Web→`3c43a3c`）与公开 Release [`CH-aPaaS Server 0.1.9`](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server/releases/tag/0.1.9)（latest）／[`CH-aPaaS Web 0.1.9`](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web/releases/tag/0.1.9)（资产 `sw-web-dist-0.1.9.zip`）。回执 `product/bugfix-20261019/receipts/release-019-01.md`。
