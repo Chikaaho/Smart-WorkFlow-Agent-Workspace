@@ -8,7 +8,9 @@
 
 **开发基线**：两仓 develop 均含 0.1.10 内容（Server `85e1ab7`、Web `2df670b`）；开发默认版本 Server `0.1.10-SNAPSHOT`、Web `0.1.10`，待 0.2.0 合入 main 前再收敛到目标版本。任务分支：Server `codex/0.2.0-tenant-form-flow`、Web `codex/0.2.0-ui-tenant-form-flow`、根仓 `codex/0.2.0-delivery`。
 
-**唯一下一动作**：Executor 按 `product/0.2.0/ready/` 的五份文件推进主功能，先 T020 租户管理，再 F020、J020、W020，最后 U020 全局视觉与文案覆盖、整版链路验收。
+**唯一下一动作**：T020 继续——补齐停用后会话与认领收敛、真实库及可见浏览器行为链、租户页 1920×1080 像素对照；随后按 F020、J020、W020 推进，最后 U020 全局视觉与文案覆盖、整版链路验收。
+
+> **2026-10-22 T020 首批（自验通过，待规划验收）**：服务端租户列表/创建（含首任管理员与根部门）/改名/启停接口与 Web 租户页已提交——Server `cb4cddd`、Web `f9fa147`，回执 `product/0.2.0/receipts/t020-tenant-management-01.md`。发现真实冲突：`uk_sys_user_username` 为 `(username, deleted)` 全库唯一，DR02 要求的「租户内唯一」当前不成立；本批按真实约束做写入前全局查重并显式拒绝，未改索引，待 Planner 裁决是否改为 `(tenant_id, username, deleted)`。
 
 以下为 0.1.9 时点（2026-10-21）的当前状态记录，仅作历史追溯，不代表当前版本：
 
