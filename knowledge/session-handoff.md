@@ -4,9 +4,9 @@
 
 唯一完整现状见 `knowledge/current-status.md`。执行角色承接 `product/0.2.0/ready/` 的 XL 方向；七阶段为 1 已完成（需求评估）、1 进行中（分支实施）、5 未开始（验收同步、合并、发布、发布后同步、结束）。当前发布仍为 0.1.10；0.2.0 尚未验收、合并或发布。
 
-续接根仓 `codex/0.2.0-delivery` 位于 `C:/Users/hjxch/.codex/worktrees/020-continuation/Smart-WorkFlow-Agent-Workspace`。实际代码位于原工作区两子仓，Server `codex/0.2.0-tenant-form-flow` / `9704047`，Web `codex/0.2.0-ui-tenant-form-flow` / `27b1916`，均已推送。根仓原 develop-sw 的 0.1.10 在途文档不混入。
+续接根仓 `codex/0.2.0-delivery` 位于 `C:/Users/hjxch/.codex/worktrees/020-continuation/Smart-WorkFlow-Agent-Workspace`。实际代码位于原工作区两子仓，Server `codex/0.2.0-tenant-form-flow` / `e2b3911`，Web `codex/0.2.0-ui-tenant-form-flow` / `dd29316`，均已推送。根仓原 develop-sw 的 0.1.10 在途文档不混入。
 
-最新实施回执 `product/0.2.0/receipts/t020-tenant-identity-02.md`，共用脚本 UI 见 `u020-script-workspace-05.md`。下一动作是 DR03 用户/部门目标租户、归属与关联隔离，以及停用后的会话与后台认领；继续 F020/J020/W020 和全局 U020。A03 未通过，功能数/P/正式基线保持既有授权值。任务自有 Java/PG/Redis 已清理；用户 Redis 服务未动。
+最新实施回执 `product/0.2.0/receipts/t020-management-target-03.md`，共用脚本 UI 见 `u020-script-workspace-05.md`。用户/部门目标租户、归属与关联隔离已有真实链证据；下一动作是修复已取得红基线的缓存会话准入，再处理后台认领和启停审计；继续 F020/J020/W020 和全局 U020。A03 未通过，功能数/P/正式基线保持既有授权值。任务自有 Java/PG/Redis 已清理；用户 Redis 服务未动。
 
 以下保留 0.1.9 及更早时点的交接历史，不代表当前任务和版本。
 
