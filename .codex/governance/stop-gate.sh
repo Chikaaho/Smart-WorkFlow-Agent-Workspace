@@ -159,6 +159,10 @@ if [ "$validate_status" -eq 0 ]; then
   exit 0
 fi
 
+# The rejected payload's next_action is only a claim to reconcile. It must not
+# become an instruction to wait when the Validator has rejected that terminal.
+next_action="先处理公共 Validator 的拒绝原因并继续授权内可执行工作；核对原声明的下一动作：$next_action"
+
 "$jq_bin" -cn \
   --arg reason "执行会话不能结束：$diagnostic" \
   --arg next_action "$next_action" \

@@ -1,5 +1,5 @@
 """Bounded native Windows transport regression; does not impersonate app dispatch."""
-import base64, json, os, subprocess, sys
+import base64, json, os, subprocess, sys, tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -53,6 +53,47 @@ def main():
         else: assert not result['stdout'].strip(),(name,result)
         results.append({'case':name,**result})
         print('PASS '+name,file=sys.stderr,flush=True)
+    with tempfile.TemporaryDirectory(prefix='codex-native-role-') as directory:
+        transcript = Path(directory)/'rollout.jsonl'
+        submitted = {
+            'schema':terminal['schema'], 'role':'executor', 'state':'EXECUTION_SUBMITTED', 'task_level':'XL',
+            'receipt':'product/demo/receipts/form-config.md', 'evidence':['governance-regression:0'],
+            'feature_status':'IN_PROGRESS',
+            'work_items':[{'id':'form-config','status':'COMPLETED','authorized':True,
+                           'dependency_satisfied':True,'actionable':False,'next_action':'Planner 验收'}],
+            'remaining_actionable_count':0, 'independent_work_exhausted':False,
+            'next_action':'Planner 验收；随后继续表单事件与函数', 'next_action_type':'WAIT_PLANNER',
+            'progress_fingerprint':'native-intermediate-report',
+            'progress_basis':{'files_changed':[],'tool_actions':['verify'],'new_evidence':[],'closed_work_items':['form-config']},
+            'stop_reason':'WAITING_FOR_PLANNER','tool_results':[],'browser_status':'OPERABLE',
+        }
+        for name,prompt,message,identity,reason in [
+            ('native-executor-missing-marker','你是执行，继续任务','还有动作','native-role','执行会话不能结束'),
+            ('native-executor-valid','你是执行，继续任务',marker+' '+json.dumps(terminal),'native-role',None),
+            ('native-planner','你是规划，恢复上下文','待规划验收','native-role',None),
+            ('native-admin','你是管理员，检查 hook','检查完成','native-role',None),
+            ('native-foreign-session','你是执行，继续任务','还有动作','other-role','ROLE_SESSION_MISMATCH'),
+            ('native-intermediate-report','你是执行，继续任务',marker+' '+json.dumps(submitted),'native-role','independent_work_exhausted'),
+            ('native-unreadable-transcript','你是执行，继续任务','还有动作','native-role','ROLE_OBSERVATION_UNAVAILABLE'),
+        ]:
+            records=[{'type':'session_meta','payload':{'id':identity,'cwd':str(ROOT)}},
+                     {'type':'response_item','payload':{'type':'message','role':'user',
+                      'content':[{'type':'input_text','text':prompt}]}}]
+            transcript.write_text('\n'.join(json.dumps(r,ensure_ascii=False) for r in records)+'\n',encoding='utf-8')
+            payload={'session_id':'native-role','cwd':str(ROOT),'transcript_path':str(transcript),
+                     'hook_event_name':'Stop','last_assistant_message':message}
+            if name=='native-unreadable-transcript': transcript.unlink()
+            result=run([PS,'-NoLogo','-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',str(HOOK)],payload,env=clean)
+            assert result['exit']==0 and not result['stderr'],(name,result)
+            if reason:
+                decision=json.loads(result['stdout'])
+                assert decision['decision']=='block' and reason in decision['reason'],(name,result)
+                if name=='native-intermediate-report':
+                    assert '先处理公共 Validator 的拒绝原因' in decision['reason'],(name,result)
+                    assert '原子动作：Planner' not in decision['reason'],(name,result)
+            else: assert not result['stdout'].strip(),(name,result)
+            results.append({'case':name,**result})
+            print('PASS '+name,file=sys.stderr,flush=True)
     for name,cwd in [('root',ROOT),('nested',ROOT/'.codex/governance'),('subrepository',ROOT/'Smart-WorkFlow-aPaaS-server')]:
         result=run(f'"{CMD}" /D /S /C "{declaration["commandWindows"]}"', {'active_role':'executor','last_assistant_message':marker+' '+json.dumps(terminal,ensure_ascii=False)},cwd=cwd,env=clean)
         assert result['exit']==0 and not result['stdout'].strip() and not result['stderr'],(name,result)

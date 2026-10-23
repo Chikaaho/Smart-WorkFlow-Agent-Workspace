@@ -71,11 +71,29 @@ try {
         $hash = [System.Security.Cryptography.SHA256]::Create()
         try { $record.session = ([BitConverter]::ToString($hash.ComputeHash([System.Text.Encoding]::UTF8.GetBytes([string]$payload.session_id)))).Replace('-', '').Substring(0,16).ToLowerInvariant() } finally { $hash.Dispose() }
     }
-    # Preserve Codex's existing explicit binding boundary; never query ZCode state.
+    # Bind only this native session's explicit user declaration. Native Stop
+    # does not carry the custom active_role field used by component fixtures.
     $role = if ($payload.PSObject.Properties['active_role']) { [string]$payload.active_role } else { '' }
     if (-not $role) { $role = $env:AGENT_CODING_ENGINE_ACTIVE_ROLE }
+    $record.role_source = if ($role) { 'explicit_binding' } else { 'unbound' }
+    if (-not $role -and $payload.PSObject.Properties['transcript_path'] -and $payload.transcript_path) {
+        $rolePython = Resolve-ValidatorPython -Root $root
+        if (-not $rolePython.available) { Block-Adapter 'PYTHON_UNAVAILABLE' }
+        $bindingResult = Invoke-GovernanceProcess -Executable $rolePython.path -Arguments @('-X', 'utf8', (Join-Path $root '.codex/governance/codex-session-role.py'), '--workspace', $root) -InputText $InputJson -TimeoutMs 10000
+        if ($bindingResult.failure) { Block-Adapter 'ROLE_OBSERVATION_UNAVAILABLE' }
+        $binding = $bindingResult.stdout | ConvertFrom-Json
+        if ($bindingResult.exitCode -ne 0) {
+            if ($binding.error -match '^ROLE_[A-Z_]+$') { Block-Adapter $binding.error }
+            Block-Adapter 'ROLE_OBSERVATION_UNAVAILABLE'
+        }
+        $role = [string]$binding.active_role
+        $record.role_source = [string]$binding.source
+        $payload | Add-Member -NotePropertyName active_role -NotePropertyValue $role -Force
+        $InputJson = $payload | ConvertTo-Json -Compress -Depth 100
+    }
+    $record.active_role = $role
     if ($role -ne 'executor') {
-        $record.decision = 'pass'; $record.reason_code = 'ROLE_NOT_EXECUTOR'; Write-AdapterAudit
+        $record.decision = 'pass'; $record.reason_code = if ($role) { 'ROLE_NOT_EXECUTOR' } else { 'ROLE_UNBOUND' }; Write-AdapterAudit
         exit 0
     }
     $shells = @()

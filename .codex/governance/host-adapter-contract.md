@@ -23,6 +23,14 @@ Supervisor 返回 `agent-coding-engine.supervisor-decision.v1`。只有 `decisio
 
 本次接入沿用现有机器契约与 Validator，不改变运行态任务、revision 或宿主声明。Validator 能拒绝已声明的可执行剩余项，不能发现被漏报的阶段、核实用户版本确认或独立证明发布完成；S/M 轻量终态也没有完整交付阶段校验。以上由方向、执行账本及适用复核落实，不宣称宿主自动强制七阶段。
 
+## 原生 Codex 角色观察
+
+原生 Stop 的标准载荷不提供自定义 `active_role`。启动入口已绑定角色时沿用该绑定；否则 Windows/POSIX 适配器调用 `codex-session-role.py`，从宿主提供的 `transcript_path` 读取本会话用户的明确角色声明。读取前核对 `session_id` 与 transcript 的 `session_meta.id`，并核对宿主 cwd、transcript cwd 与工作区；只沿用同一会话最近一次明确声明，不按终态中的 `role`、助手文本、工作区说明或其他会话推断。身份不匹配、观察不可读或声明歧义时返回非空 block 原因。
+
+解析器只规范化角色与身份；Executor 的终态仍由既有公共 Validator 裁决。Windows 审计增加 `active_role` 与 `role_source`，区分 `ROLE_UNBOUND` 与 `ROLE_NOT_EXECUTOR`，不保存提示词或 transcript 正文。没有 transcript 或启动绑定的兼容载荷保留未绑定语义，不能以该兼容路径的通过证明真实执行会话已校验。工作树必须具备同批适配器和解析器；文件修复与宿主实际派发分开核实。
+
+公共 Validator 拒绝终态后的回注先要求处理拒绝原因并继续授权内可执行工作；被拒载荷的 `next_action` 只作为待核对的原声明，不能直接成为等待指令。
+
 ## 执行生命周期接入
 
 生命周期 schema 与可判定字段唯一来源为 `terminal-contract.json` 的 `properties.execution_tasks` 和 `behavioralRules.executionLifecycle`；`validate-execution.py` 是同一公共 Validator 的组件，POSIX/Windows Validator 与 Supervisor 共用。不得另建并行契约。
