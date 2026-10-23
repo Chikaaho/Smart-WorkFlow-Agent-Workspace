@@ -27,7 +27,7 @@ Web附件下载与图片预览改走统一登录态请求及服务端记录校�
 
 headless=false的可见IAB会话，W020审批人1/2113516345554395137/租户0，主视口1920×1080/DPR1/zoom1。通过真实演练表单的「添加行」填写主服务器/2/陈曦、备份服务器/1/王海，正常提交得到成功弹窗；记录71402560-9385-465e-9d34-d7656b52b320、任务d6d5e1fc-cef0-11f1-9f26-00ff9e2a8dfb保持待审。
 
-从「我发起的」打开该演练，点击具名「下载 演练方案.pdf」，浏览器实际生成1页61534B PDF，pypdf回读标题内容通过。375×812的`/m/workflow`打开同一任务并再次实际下载，global scrollWidth375；1366×768详情保持附件入口且global scrollWidth1366。截图`screens/u020-drill-detail-1920-19.png`、`u020-drill-mobile-download-375-19.png`、`u020-drill-detail-1366-19.png`均已保存与目检；索引`attachment-ui-evidence-19.json`，网络`backend-19b.log`。提交请求关联web-439925cb-16f5-411f-8508-e8d89a2b38f5，桌面下载web-913a8633-c3b4-4eca-aef8-f7ab565c6729。
+从「我发起的」打开该演练，点击具名「下载 演练方案.pdf」，浏览器实际生成1页61534B PDF，pypdf回读标题内容通过。375×812的`/m/workflow`打开同一任务并再次实际下载，global scrollWidth375；1366×768详情保持附件入口且global scrollWidth1366。1920与375截图`screens/u020-drill-detail-1920-19.png`、`u020-drill-mobile-download-375-19.png`已保存并目检；1366的DOM入口与宽度已回读，但`u020-drill-detail-1366-19.png`目检仍有加载遮罩，仅保留现场，不作为稳定视觉通过，待后续新包补图；索引`attachment-ui-evidence-19.json`，网络`backend-19b.log`。提交请求关联web-439925cb-16f5-411f-8508-e8d89a2b38f5，桌面下载web-913a8633-c3b4-4eca-aef8-f7ab565c6729。
 
 单独ISOLATED_REGRESSION实请求6项通过：关联文件200/PDF；借005编号读取未关联文件、错误表单、无关身份及其他文件键均拒绝，保留既有HTTP200+body.code403契约；匿名HTTP401。详见`drill-fixture-19/attachment-postcheck-19.json`，不改写成HTTP403。记录回读证明实际两行与文件名元数据均已持久化，`record-readback-19.json`。图片预览仅有组件覆盖，本轮没有实际图片浏览器通过结论。
 
