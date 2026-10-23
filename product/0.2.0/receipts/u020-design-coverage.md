@@ -2,7 +2,7 @@
 
 2026-10-22｜Executor｜实施中。由正式设计索引的 258 行逐项生成；本表记录承接位置和缺口，不把文件存在当作行为通过。每行保留独立设计状态名称，同组只共享实现入口，不自动共享验收结论。
 
-证据 02/03 分别指 `u020-tenant-layout-02.md` / `u020-theme-navigation-03.md`；04 指 `u020-app-grid-appearance-04.md`；05 指 `u020-script-workspace-05.md`；06 指 `u020-layout-1920-06.md`；07 指 `u020-a03-a04-gap-07.md`，08 指 `u020-w020-implementation-08.md`，09 指 `w020-approval-draft-sign-09.md`，10 指 `u020-my-instances-layout-10.md`，11 指 `u020-header-responsive-11.md`，12 指 `u020-sidebar-personal-navigation-12.md`，13 指 `u020-sidebar-native-icons-13.md`，14 指 `u020-copy-accessibility-14.md`（配置帮助/状态文案与手册聚焦行为），15 指 `u020-snapshot-resource-copy-15.md`（快照、资源和批量帮助、手册可见查阅），16 指 `u020-designer-palette-16.md`（设计器工具栏、组件库原生图标与1366中英文工具条），17 指 `u020-resource-runtime-copy-17.md`（资源动态说明与真实HTTP/可见统计），18 指 `u020-detail-shell-18.md`（全屏共享详情、流转页签、移动局部滚动及正常提交005待审），19 指 `u020-attachment-access-19.md`（实际演练提交、受控附件下载与移动读取），20 指 `u020-readonly-controls-20.md`（32px只读控件、实际日期保存与移动业务回看），21 指 `u020-designer-settings-21.md`（三类主页签与设置菜单），23 指 `u020-process-designer-23.md`（流程设计器几何、编号与预览），其中 A03 数值为非同态数据的定位口径，明确不通过。Mock 仅为 ISOLATED_REGRESSION，不承担正式权限、持久化或全局视觉验收。流程设计器默认/蓝/青/自定义选中节点已取得可见截图，完整同态视觉仍待验证。
+证据 02/03 分别指 `u020-tenant-layout-02.md` / `u020-theme-navigation-03.md`；04 指 `u020-app-grid-appearance-04.md`；05 指 `u020-script-workspace-05.md`；06 指 `u020-layout-1920-06.md`；07 指 `u020-a03-a04-gap-07.md`，08 指 `u020-w020-implementation-08.md`，09 指 `w020-approval-draft-sign-09.md`，10 指 `u020-my-instances-layout-10.md`，11 指 `u020-header-responsive-11.md`，12 指 `u020-sidebar-personal-navigation-12.md`，13 指 `u020-sidebar-native-icons-13.md`，14 指 `u020-copy-accessibility-14.md`（配置帮助/状态文案与手册聚焦行为），15 指 `u020-snapshot-resource-copy-15.md`（快照、资源和批量帮助、手册可见查阅），16 指 `u020-designer-palette-16.md`（设计器工具栏、组件库原生图标与1366中英文工具条），17 指 `u020-resource-runtime-copy-17.md`（资源动态说明与真实HTTP/可见统计），18 指 `u020-detail-shell-18.md`（全屏共享详情、流转页签、移动局部滚动及正常提交005待审），19 指 `u020-attachment-access-19.md`（实际演练提交、受控附件下载与移动读取），20 指 `u020-readonly-controls-20.md`（32px只读控件、实际日期保存与移动业务回看），21 指 `u020-designer-settings-21.md`（三类主页签与设置菜单），23 指 `u020-process-designer-23.md`（流程设计器几何、编号与预览），24 指 `u020-wide-shell-24.md`（宽桌面主导航与租户页），其中 A03 数值为非同态数据的定位口径，明确不通过。Mock 仅为 ISOLATED_REGRESSION，不承担正式权限、持久化或全局视觉验收。流程设计器默认/蓝/青/自定义选中节点已取得可见截图，完整同态视觉仍待验证。
 
 ## 实现入口
 
@@ -57,7 +57,7 @@
 | 3:2 | 01 工作台 | G01 | 已实施；1920×1080 结构对照与 1366×768 可用性已留存，数据空态差异待整体验收 | 06 |
 | 4:2 | 02 我发起的 | G02 | 本人已结束列表、补签入口及1366可达已验证；筛选几何与42/45px行距已对齐，同态像素待补 | 09/10 |
 | 5:2 | 03 数据详情 | G03 | 32px只读控件/116px子表及实际日期保存、1920/1366/375下载已验证；源富文本使后部仍差10px；整页81.5639%诊断未通过，历史及渲染差异待对齐 | 06、18、19、20 |
-| 6:2 | 04 管理后台 | G04 | 待适配/验证 | 待补 |
+| 6:2 | 04 管理后台 | G04 | 1920宽桌面移除多余折叠入口，品牌236/主导航起点268/侧栏236与设计对齐；真实租户数据条数和记录不同，A03未通过 | 24 |
 | 7:2 | 05 企业门户 | G05 | 已实施；1920×1080 与 375×812 可见对照，真实空数据待整体验收 | 06 |
 | 32:2 | 06 登录页 | G06 | 已实施；1920×1080 与 375×812 可见对照已留存，认证真实链待整体验收 | 06 |
 | 42:2 | 07 表单设计器 | G07 | 三个主页签居中，权限与事件收进设置菜单；48px工具条/252-1332-336三栏、19组件入口及原生SVG已可见；1920×1080与1366×768可见复验通过；整页90.8944%非同态诊断未通过，富文本及完整字段状态仍待处理 | 06、16、21 |
