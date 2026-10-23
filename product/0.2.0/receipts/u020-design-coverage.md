@@ -2,7 +2,7 @@
 
 2026-10-22｜Executor｜实施中。由正式设计索引的 258 行逐项生成；本表记录承接位置和缺口，不把文件存在当作行为通过。每行保留独立设计状态名称，同组只共享实现入口，不自动共享验收结论。
 
-证据 02/03 分别指 `u020-tenant-layout-02.md` / `u020-theme-navigation-03.md`；04 指 `u020-app-grid-appearance-04.md`；05 指 `u020-script-workspace-05.md`；06 指 `u020-layout-1920-06.md`；07 指 `u020-a03-a04-gap-07.md`，08 指 `u020-w020-implementation-08.md`，09 指 `w020-approval-draft-sign-09.md`，10 指 `u020-my-instances-layout-10.md`，其中 A03 数值为非同态数据的定位口径，明确不通过。Mock 仅为 ISOLATED_REGRESSION，不承担正式权限、持久化或全局视觉验收。流程设计器默认/蓝/青/自定义选中节点已取得可见截图，完整同态视觉仍待验证。
+证据 02/03 分别指 `u020-tenant-layout-02.md` / `u020-theme-navigation-03.md`；04 指 `u020-app-grid-appearance-04.md`；05 指 `u020-script-workspace-05.md`；06 指 `u020-layout-1920-06.md`；07 指 `u020-a03-a04-gap-07.md`，08 指 `u020-w020-implementation-08.md`，09 指 `w020-approval-draft-sign-09.md`，10 指 `u020-my-instances-layout-10.md`，11 指 `u020-header-responsive-11.md`，其中 A03 数值为非同态数据的定位口径，明确不通过。Mock 仅为 ISOLATED_REGRESSION，不承担正式权限、持久化或全局视觉验收。流程设计器默认/蓝/青/自定义选中节点已取得可见截图，完整同态视觉仍待验证。
 
 ## 实现入口
 
