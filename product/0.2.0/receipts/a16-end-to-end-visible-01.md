@@ -30,7 +30,7 @@
 - 实例详情与审批轨迹：`screens/a16-instance-detail-1920.png`。
 - 流程状态原文：`a16-instance-api.json`；表单记录原文：`a16-form-data-api.json`；暂存行：`a16-opinion-draft-db.txt`；终态改写拒绝：`ended-task-draft-reject.json`；跨租户拒绝：`cross-tenant-explicit-grant.json`。
 - 服务端运行原文：`backend.log`；打包门禁：`backend-package.log`、`backend-package-status.txt`。
-- 最终代码：Server `0e0d16d`、Web `2293e50`；均以普通推送进入 0.2.0 任务分支。
+- 最终代码：Server `0e0d16d`、Web `13c21b0`；均以普通推送进入 0.2.0 任务分支。
 
 ## 结果与边界
 
