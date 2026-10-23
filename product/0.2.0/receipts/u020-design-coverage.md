@@ -2,7 +2,7 @@
 
 2026-10-22｜Executor｜实施中。由正式设计索引的 258 行逐项生成；本表记录承接位置和缺口，不把文件存在当作行为通过。每行保留独立设计状态名称，同组只共享实现入口，不自动共享验收结论。
 
-证据 02/03 分别指 `u020-tenant-layout-02.md` / `u020-theme-navigation-03.md`；04 指 `u020-app-grid-appearance-04.md`；05 指 `u020-script-workspace-05.md`。Mock 仅为 ISOLATED_REGRESSION，不承担正式权限、持久化或全局视觉验收。蓝/青/自定义的流程稿仍须在目标设计器实测，不能由主题设置窗口代替。
+证据 02/03 分别指 `u020-tenant-layout-02.md` / `u020-theme-navigation-03.md`；04 指 `u020-app-grid-appearance-04.md`；05 指 `u020-script-workspace-05.md`；06 指 `u020-layout-1920-06.md`；07 指 `u020-a03-a04-gap-07.md`，其中 A03 数值为非同态数据的定位口径，明确不通过。Mock 仅为 ISOLATED_REGRESSION，不承担正式权限、持久化或全局视觉验收。蓝/青/自定义的流程稿仍须在目标设计器实测，不能由主题设置窗口代替。
 
 ## 实现入口
 
