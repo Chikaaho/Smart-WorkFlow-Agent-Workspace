@@ -1,10 +1,14 @@
 # 近期有效决策摘要
 
+## 0.2.0 当前安排（2026-10-24）
+
+Owner要求前后端两个执行会话并行；前端先完善统一主题，默认蓝色，保留明确用户偏好，恢复默认为蓝色。前端负责Figma/可见联调及根共享状态收尾，后端按文字产品契约实施。当前入口 product/0.2.0/ready/direction-parallel-020.md。七阶段1/1/5，局部中间验收不核销P或晋级正式基线；历史发布记录按各自时点理解。
+
 ## Owner默认交付流程（2026-10-16）
 
 后续固定：①新需求评估→②执行并从develop拉新分支→③验收与信息同步→④开发分支→develop→main（develop内按发布要求压缩种子/版本收敛）→⑤发版，版本必须用户确认→⑥再次同步信息→⑦结束。只有Owner明确“不发版”，才在③结束；版本未给不等于不发版。已确认版本不重复询问，本轮0.1.6已确认。第三步业务功能完成不等于默认交付结束；维持风险分级与角色边界。完整裁决：`product/delivery-lifecycle/ready/direction-owner-delivery-lifecycle.md`。
 
-## 当前发布：0.1.6-release
+## 历史发布：0.1.6-release
 
 2026-10-16｜0.1.6-release COMPLETED（规划已确认）。用户验收、发布复核与终态同步均通过，最终裁决：product/0.1.6-release/receipts/planning-final-review-terminal-sync-01-completed.md。两端正式及部署版本0.1.6：Web发布来源e5aa357（同版本覆盖）、Server e115857；验证集合R016-VB01—04，五份方向均归档passed/。
 

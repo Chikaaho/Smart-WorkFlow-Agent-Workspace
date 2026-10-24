@@ -2,6 +2,8 @@
 
 > 2026-10-21 更新；权威来源：`system.md`、`roles/*.md` 与当前产品方向。
 
+2026-10-24本轮补充：0.2.0前后端并行，前端主题优先/默认蓝色，具体授权见product/0.2.0/ready/direction-parallel-020.md。重型任务仍按各工程宪法互斥；根状态与Git由前端负责人单写。本文件以下运维及历史交付按原时点承接。
+
 - 必须先由用户显式声明且只认领一个角色；角色边界贯穿会话。
 - Planner 不读 knowledge/业务代码；Executor 不作规划裁决；Admin 不碰业务实现与业务状态裁决。
 - 当前状态单一源为 `knowledge/current-status.md`；终态机器契约与 Validator 分别为 `.codex/governance/terminal-contract.json`、`.codex/governance/validate-terminal.sh`。
