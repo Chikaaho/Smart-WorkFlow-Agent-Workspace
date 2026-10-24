@@ -17,6 +17,12 @@ Supervisor 返回 `agent-coding-engine.supervisor-decision.v1`。只有 `decisio
 
 幂等键由 host、规范化 workspace、thread、task、contract revision 和 event identity 共同计算。相同事件重放只返回原决定，不产生第二次回注。
 
+## 需求交付与终态边界
+
+需求交付规则统一见 `system.md` §3.0。既有 `work_items`、授权/依赖和剩余动作校验承接 L/XL 发布链；回执提交或功能 `COMPLETED` 不表示整体交付结束。Host Adapter 不新增阶段裁决、版本推断或确认节点。
+
+本次接入沿用现有机器契约与 Validator，不改变运行态任务、revision 或宿主声明。Validator 能拒绝已声明的可执行剩余项，不能发现被漏报的阶段、核实用户版本确认或独立证明发布完成；S/M 轻量终态也没有完整交付阶段校验。以上由方向、执行账本及适用复核落实，不宣称宿主自动强制七阶段。
+
 ## 执行生命周期接入
 
 生命周期 schema 与可判定字段唯一来源为 `terminal-contract.json` 的 `properties.execution_tasks` 和 `behavioralRules.executionLifecycle`；`validate-execution.py` 是同一公共 Validator 的组件，POSIX/Windows Validator 与 Supervisor 共用。不得另建并行契约。
