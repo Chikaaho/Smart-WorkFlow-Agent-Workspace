@@ -2,6 +2,8 @@
 
 2026-10-24｜Planner下发｜Executor承接｜XL｜READY
 
+当前验收结论：本次后端批次PASSED，BE020-G1/G2均关闭，消费快照6995f88，见 [后端批次验收通过](../receipts/planning-review-backend-020-03-passed.md)。此前补充均已执行并保留历史；本侧当前无G1/G2补充动作。前端继续消费契约、真实联调及整版剩余验收，整体保持IN_PROGRESS。
+
 执行。负责0.2.0 Server剩余实现、契约交接与服务端行为证据。先读system.md、roles/executor.md，完成技能前置，再读project.md及Server工程宪法。复用现有 codex/0.2.0-tenant-form-flow 成果；1b1f5f7是中间UI验收使用的后端快照，开始时核实实际HEAD、在途修改和已推送状态，不从旧develop重做。
 
 本任务可完全依赖文字开工，无需访问Figma。UI主题和布局由前端负责；默认蓝色的Owner补充不要求服务端新增主题存储或改变身份契约。本文件与 direction-parallel-020.md 为你的当前入口，完整产品边界另见 direction-020.md、decision-records-020.md 和 acceptance-020.md。主交付仍为0.2.0，前后端是同一目标的并行归属。
