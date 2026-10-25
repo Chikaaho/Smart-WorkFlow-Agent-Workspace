@@ -29,7 +29,7 @@
 
 ## 边界与剩余
 
-- 服务端查询/提交侧的按用户字段裁剪（FieldPermissionService 查询路径）未验证；本次修复只保证渲染层一致，服务端仍是权威防线（口径已写入代码注释）。
+- **服务端权威侧（本批次代码级核实）**：`FormDataQueryService` 列表/详情/附件三路径均按 `viewDeniedFields` 投影剔除＋受控字段筛选拒绝（I2 注记），`FieldPermissionServiceTest` 6 例覆盖（角色命中、超管短路、编辑闸门 FIELD_EDIT_DENIED、子表键、viewDenied 汇总、动作权限）。「服务端是唯一权威、前端隐藏只是 UX」契约成立；**运行态双身份 HTTP 探测**（t100nobody 需先获授 form:data 查询权——需建角色/授权/绑定）并入下一环境批次。
 - 受控数据源真实配置仍未做（dev 无已登记数据源，`workflow/external-datasource/page` 报 no resource）。
 - A11—A16 真实链、A03 像素对照整批、富文本与定义级通知配置（Planner 裁决中）未动。
 
