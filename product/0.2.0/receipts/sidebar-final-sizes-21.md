@@ -24,6 +24,7 @@
 8. **前台底部两尺寸**（sidebar-21-portal-bottom-1366.png / -1920.png / sidebar-21-portal-collapsed-1920.png）：深底 rgb(17,27,59)＋"收起" rgb(126,137,161)，1366 y=720/h=46、1920 同构；收起窄列图标/首字可见、底部居中"→"深底上对比清晰、无裁切。
 9. **键盘代表操作**（真实键）：聚焦顶栏末位（租户100管理员）后真实 Tab 一次进入侧栏首个入口（"租"，is-active）；聚焦目录按钮 Enter 打开浮层 ✓；Esc 关闭浮层且回焦原入口 ✓。offsetParent 对 fixed 元素恒 null 曾致首测误报，改 getBoundingClientRect 复验为过。
 10. **门禁**：全量四连 exit=0——typecheck 0、eslint 0/0、vitest 211 文件 1848 通过/3 跳过、build 3.78s（/tmp/web-fourgate-21.log）。计数与 8/9 原始日志 1848/3 一致。
+11. **网络索引**：sidebar-21-network-index.json——自实际会话标签页 performance API 提取（/system/tenant、navType=navigate、205 资源、6 条 /api 请求），佐证真实后端链路。
 
 ## 未验证边界（如实）
 
