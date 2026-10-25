@@ -25,7 +25,7 @@
   - t100admin（9001）：「2」照常渲染。截图 `a09-field-view-admin-visible-1920.png`。
   - 证据目录 `C:/Users/hjxch/.codex/evidence-020/real-joint/`；登录身份经页面右上角用户菜单与 DOM 快照确认。
 - **A10 真实链（后端日志 /tmp/sw-backend-dev.log）**：17:10:50–17:17:17 四次配置保存（含字段权限配置）；17:17:18 真实发布 `form_mvnlsifw`：物理主表 `sw_form_zu5ouezo54`＋子表 `sw_form_table_m3lkbvtghk`（TABLE 字段 field_3）version=2；17:19:22 真实提交成功 `recordId=f040d72e-5c4e-4217-9e0d-d24c55c2d075`（submitter=9001）。校验正则（DR04）违规输入在填写页被内联校验拦截（客户端阻断，无服务端请求记录），修正后提交成功。
-- **服务端测试日志澄清**：上轮遗留 exit=1 日志（122 例 2 失败 1 错误）经重跑定位为修复完成前的陈旧产物；当前 `sw-basic-notify-biz` 模块（-am）**BUILD SUCCESS exit=0**，服务端已推送 HEAD `fa51395` 干净。
+- **服务端测试日志结论（批次 08 复核推翻本批初判）**：上轮 exit=1 日志（122 例 2 失败 1 错误）**并非"修复完成前的陈旧产物"**——真因是 I6G1a/b/c 三个 boot 用例共用文件库 `target/i6-restart-db`（模拟重启恢复），跨次运行的尝试流水残留导致重跑计数错位（expected 1 but was 2）；17:32 的 BUILD SUCCESS 系该次文件库状态恰好匹配。清除文件后隔离重跑复绿（见回执 09）。与批次 02 记录的"全量偶发失败、隔离复跑 3/3 过"同现象。
 
 ## 边界与剩余
 
