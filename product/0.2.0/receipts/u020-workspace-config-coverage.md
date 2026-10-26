@@ -7,11 +7,12 @@
 - 实际入口：首页「配置工作台」→ `/workspace/config`；首页 `/workspace` 读取同一布局。
 - 复用能力：`/system/workspace/layout` 个人布局、`/form/workspace/analytics/{sources,fields,aggregate,rows}` 受控数据、既有待办/目录/发起/效能接口。
 - 功能证据：`C:/Users/hjxch/.codex/evidence-020/real-joint/ws-config-e2e-66.json`（加载/预览/添加/撤销/保存/刷新回读）、`ws-page-final-66.json`（首页/配置页真实数据）、`ws-chain-positive.json`、`ws-chain-permission.json`。
-- 视觉层级：`ws-home-final-66.png`、`ws-config-final-66.png` 为 headless 截图，仅作 ISOLATED_REGRESSION；正式可见会话/像素未通过。
+- 视觉层级：`ws-home-final-66.png`、`ws-config-final-66.png` 及本批 `ws-fix-66-*.png` 均为 headless 截图，仅作 ISOLATED_REGRESSION；正式可见会话/像素未通过。
+- 2026-10-26 审查差异修复：`ws-fix-66-final.json` 实测三栏 224/1360/336、导航 64、工具栏 56、工作区 y120、属性首组 62/控件 32、图表 viewBox 与容器 1:1（轴文字 12px）；`ws-fix-66.json`/`ws-fix-66-chart.json`/`ws-fix-66-undo.json` 覆盖快捷发起候选/已选、预览、保存、刷新、首页、撤销；回执 `workspace-config-diff-fix-02.md`。
 
 | 节点 | 状态 | 实际结果 |
 | --- | --- | --- |
-| 273:1600 | 65 工作台配置 | 全屏三栏/12 列画布/组件库/属性面板/预览/保存/重置；功能证据 `ws-config-e2e-66.json`、`ws-page-final-66.json`；同态像素待验 |
+| 273:1600 | 65 工作台配置 | 全屏三栏 224/1360/336、导航 64/工具栏 56/工作区 y120、12 列画布/组件库/属性面板/预览/保存/重置；功能证据 `ws-config-e2e-66.json`、`ws-page-final-66.json`，几何/字体证据 `ws-fix-66-final.json`；同态像素待验 |
 | 645:28365 | 工作台配置 · 柱状图 | 全屏配置 + 对应图型真实聚合渲染（非同名静态柱图）；功能证据 `ws-chart` 单测与 `ws-page-final-66.json`；同态像素待验 |
 | 645:28403 | 工作台配置 · 折线图 | 全屏配置 + 对应图型真实聚合渲染（非同名静态柱图）；功能证据 `ws-chart` 单测与 `ws-page-final-66.json`；同态像素待验 |
 | 645:28441 | 工作台配置 · 饼图 | 全屏配置 + 对应图型真实聚合渲染（非同名静态柱图）；功能证据 `ws-chart` 单测与 `ws-page-final-66.json`；同态像素待验 |
@@ -35,7 +36,7 @@
 | 654:36512 | 工作台配置 · 列表第2页 | 列表列头/排序/分页/自动滚动/筛选配置已接入真实 rows/aggregate；功能证据 `ws-config-e2e-66.json`；同态像素待验 |
 | 654:36851 | 工作台配置 · 移除指标卡 | 全屏配置框架/组件库/画布/属性面板/保存回读；功能证据 `ws-config-e2e-66.json`；同态像素待验 |
 | 657:33458 | 工作台配置 · 选择图表类型 | 全屏配置 + 对应图型真实聚合渲染（非同名静态柱图）；功能证据 `ws-chart` 单测与 `ws-page-final-66.json`；同态像素待验 |
-| 659:33459 | 工作台配置 · 快捷发起 | 系统卡真实待办/目录/发起/效能数据；功能证据 `ws-page-final-66.json`；同态像素待验 |
+| 659:33459 | 工作台配置 · 快捷发起 | 候选与已选严格区分；属性区勾选、预览、保存、刷新、首页同源、撤销；未选空态与已选可发起证据 `ws-fix-66.json`、`ws-fix-66-chart.json`、`ws-fix-66-undo.json`；同态像素待验 |
 | 659:34075 | 工作台配置 · 业务动态 | 系统卡真实待办/目录/发起/效能数据；功能证据 `ws-page-final-66.json`；同态像素待验 |
 | 659:34715 | 工作台配置 · 流程效能 | 系统卡真实待办/目录/发起/效能数据；功能证据 `ws-page-final-66.json`；同态像素待验 |
 | 675:34380 | 工作台图表样式 · 柱状图 | 数据/样式页签、多指标/左右轴/单位/颜色/图例/标签/网格/堆叠已接入；功能证据 `ws-config-e2e-66.json`；同态像素待验 |
