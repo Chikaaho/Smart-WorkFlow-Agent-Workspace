@@ -50,7 +50,7 @@
 2. **表单 trace 幂等键超长**：`sw_form_trace.submit_idempotency_key` 上限 128，子流程表单提交沿用长命令键失败。改为 commandKey SHA-256 68 字符（`OrchActionStartCommandHandler.formIdempotencyKey`）。
 3. **系统派发发起人错位**：调度线程上下文用户 1（租户 0）被写成子流程发起人，`requireActiveInitiator` 在租户 100 拒绝。现在 `submitOnBehalfOf` 以记录归属人/源实例发起人为提交人；自动发起系统操作人仅在目标租户内有效时使用，否则回退源发起人（`ProcessStartService`）。
 4. **等待节点结束未同步实例状态**：父流程经等待节点结束无任务完成事件，`sw_bpm_instance` 停留 RUNNING。唤醒后按引擎活跃节点核对，已结束则收敛 APPROVED（`ChildOrchestrationService.syncParentStatusIfEnded`）。
-5. **全量类型检查残留**：本批对 `field-scripts`/`form-events` 的字段联合类型、`RichTextControl` execCommand 参数、`rich-text` DOM 泛型、`FormPreview.spec`/`InstanceFlowPanel`/`ProcessSettings` 的类型与格式问题做了收敛，使干净 `vue-tsc -b` 通过。
+5. **全量类型检查残留**：本批对 `field-scripts`/`form-events` 的字段联合类型、`RichTextControl` execCommand 参数、`rich-text` DOM 泛型、`FormPreview.spec`/`InstanceFlowPanel`/`ProcessSettings` 的类型与格式问题做了收敛，使干净 `vue-tsc -b` 通过。类型收敛中唯一的行为值修正：流程设置监听草稿的非法 `unmatchedDisposition:'KEEP'` 改为 `IGNORE`（无分支监听不产生未匹配阻断）。
 
 ## 七、机器验证
 
