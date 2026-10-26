@@ -1,6 +1,6 @@
 # 需求池（Requirement Pool）
 
-> 2026-10-26：0.2.0 IN_PROGRESS（1/1/5）。Owner已要求先把本版现场及仓外证据迁回E盘，入口 product/0.2.0/ready/direction-workspace-return-020.md；实际迁回未完成，C盘来源仅读取与保全，完成后连续执行任务03。下文状态及候选为旧检出历史快照。
+> 2026-10-26：0.2.0 IN_PROGRESS（1/1/5）。迁回前置已由执行完成：E根承接 codex/0.2.0-delivery，证据在 E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/，C盘源工作树退役；任务03在该分支连续执行。下文状态及候选为旧检出历史快照。
 
 ## 本检出历史状态（2026-10-21）
 
