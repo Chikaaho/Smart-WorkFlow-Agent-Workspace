@@ -1,10 +1,12 @@
 # 近期有效决策摘要
 
-## 0.2.0 当前安排（2026-10-24）
+## 0.2.0 当前安排（2026-10-25）
 
-Owner授权续办的两处后端余项均已核销，本批PASSED，快照6995f88；当前裁决product/0.2.0/receipts/planning-review-backend-020-03-passed.md。历史轮数保持，前端继续契约对接和整版验收；本批通过不改变正式统计。
+Owner授权续办的两处后端余项均已核销，本批PASSED，快照6995f88；裁决product/0.2.0/receipts/planning-review-backend-020-03-passed.md。历史轮数保持，统一执行继续契约与整版验收；本批通过不改正式统计。
 
-Owner要求前后端两个执行会话并行；前端先完善统一主题，默认蓝色，保留明确用户偏好，恢复默认为蓝色。前端负责Figma/可见联调及根共享状态收尾，后端按文字产品契约实施。当前入口 product/0.2.0/ready/direction-parallel-020.md。七阶段1/1/5，局部中间验收不核销P或晋级正式基线；历史发布记录按各自时点理解。
+统一执行无需MCP，离线包已通过；盘点182=108待验/63复用/8部分/3富文本未实现，无整页无承接。最新审查planning-review-unified-020-01.md；富文本/通知/节点高级由ready/direction-ui-semantics-020.md明确，原新引擎节点边界保持。默认蓝、七阶段1/1/5及正式统计不变。
+
+最新读取receipts/planning-receipt-read-unified-020-53.md：意见USER/附件/催办、配置弹窗、旧新版本脚本运行与合法子流程等待回写按证据范围采信。授权集成沿DR06复用受控HTTP，按ready/direction-authorized-integration-020.md补最小映射/端口；其他原缺口继续，正式像素未过。Owner2026-10-26规定三角色自身产物提交推送，规划按问题性质验收；22可读性/29多人跨租户/G1G2与统计不变。
 
 ## Owner默认交付流程（2026-10-16）
 
@@ -12,10 +14,7 @@ Owner要求前后端两个执行会话并行；前端先完善统一主题，默
 
 ## 历史发布：0.1.6-release
 
-2026-10-16｜0.1.6-release COMPLETED（规划已确认）。用户验收、发布复核与终态同步均通过，最终裁决：product/0.1.6-release/receipts/planning-final-review-terminal-sync-01-completed.md。两端正式及部署版本0.1.6：Web发布来源e5aa357（同版本覆盖）、Server e115857；验证集合R016-VB01—04，五份方向均归档passed/。
-
-总5阶段5/0/0：develop、种子版本、main、发布及用户验收、最终同步均完成。无剩余发布动作，等待新需求。功能49、46/22/22=90、ADV64/57、P62延期/OFF保持，活动业务功能无。普通用户权限隔离环境通过，UAT管理员范围保留。后续Server文档CI38865882855有2项已知时序失败，不影响正式制品，稳定性加固另列待办。最终裁决向knowledge等入口的机械传播已授权，不重复验收。
-
+2026-10-16 COMPLETED，五阶段5/0/0，Webe5aa357/Servere115857，验证R016-VB01—04。最终裁决product/0.1.6-release/receipts/planning-final-review-terminal-sync-01-completed.md，方向均passed。后续文档CI的已知时序失败另跟踪，不影响正式制品；本轮不重验历史发布。
 
 ## 已完成功能与历史基线
 
