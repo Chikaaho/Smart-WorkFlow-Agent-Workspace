@@ -20,6 +20,17 @@ if [ -z "$jq_bin" ]; then
 fi
 active_role=$(printf '%s' "$input" | "$jq_bin" -r '.active_role // ""' 2>/dev/null || printf '%s' '')
 
+if [ -z "$active_role" ] && [ -z "${AGENT_CODING_ENGINE_ACTIVE_ROLE:-}" ] &&
+   [ -n "$(printf '%s' "$input" | "$jq_bin" -r '.transcript_path // ""')" ]; then
+  python_bin="${AGENT_CODING_ENGINE_PYTHON:-$(command -v python3 || true)}"
+  if [ -z "$python_bin" ] || ! binding=$(printf '%s' "$input" | "$python_bin" -X utf8 "$root_dir/.codex/governance/codex-session-role.py" --workspace "$root_dir" 2>/dev/null); then
+    printf '%s\n' '{"decision":"block","reason":"Codex Stop Gate cannot bind the session role (ROLE_OBSERVATION_UNAVAILABLE). Repair the native transcript identity/role observation before submitting a terminal result."}'
+    exit 0
+  fi
+  active_role=$(printf '%s' "$binding" | "$jq_bin" -r '.active_role')
+  input=$(printf '%s' "$input" | "$jq_bin" --arg role "$active_role" '. + {active_role:$role}')
+fi
+
 if [ -z "$active_role" ] && [ -n "${AGENT_CODING_ENGINE_ACTIVE_ROLE:-}" ]; then
   input=$(printf '%s' "$input" | "$jq_bin" --arg role "$AGENT_CODING_ENGINE_ACTIVE_ROLE" '. + {active_role:$role}')
 fi
