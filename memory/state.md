@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-> 2026-10-26：0.2.0 IN_PROGRESS（1/1/5）。迁回与任务03同一次连续执行；首读 product/0.2.0/ready/direction-workspace-return-020.md，迁回后直接进业务剩余，记同一回执。迁回尚未执行；下文0.1.10为历史快照。
+> 2026-10-26：0.2.0 IN_PROGRESS（1/1/5）。迁回前置已由执行完成：E根承接 codex/0.2.0-delivery（批次 a19fcbd1/2fcfc986），证据迁至 E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/，C源工作树退役；任务03直接业务剩余。下文0.1.10为历史快照。
 
 ## 0.1.10历史状态（2026-10-22）
 

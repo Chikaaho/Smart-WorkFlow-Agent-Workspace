@@ -1,6 +1,6 @@
 # 会话恢复与历史交接
 
-> 2026-10-26：迁回与任务03已并为同一次连续执行，入口 product/0.2.0/ready/direction-workspace-return-020.md；迁回完成直接进业务剩余，结果记同一回执。实际迁回尚未执行，整版IN_PROGRESS（1/1/5）。下文0.1.10为历史交接。
+> 2026-10-26：迁回前置已完成（E根承接 codex/0.2.0-delivery、证据迁E、C源退役），任务03直接业务剩余、记同一回执。整版IN_PROGRESS（1/1/5）。下文0.1.10为历史交接。
 
 恢复核查 search_fallback/recovery-worktree-state-020.md（21:41）确认E根develop-sw、C根0.2.0分支共享公共Git目录；文档在C、代码在E。执行保全两处成果，将根现场接续到E根、证据迁至仓外E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/，修正knowledge/gitlink并安全退役本次C源；随后直接进入任务03，迁回情况记同一份业务回执，原已过业务锁定。
 

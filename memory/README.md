@@ -2,16 +2,11 @@
 
 ## 当前任务恢复入口（2026-10-26）
 
-Owner要求迁回与任务03同一次执行。首先读取本检出 [迁回说明](../product/0.2.0/ready/direction-workspace-return-020.md)，由Executor统一到E根后直接进入业务剩余，结果写任务03同一份回执。目标根 `E:/code/Smart-WorkFlow-Agent-Workspace`、证据仓外 `E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/`；迁回尚未执行。
+0.2.0 现场已迁回本仓库：根工作树 `E:/code/Smart-WorkFlow-Agent-Workspace` 已承接 `codex/0.2.0-delivery` 分支（迁回批次 `a19fcbd1`、`2fcfc986`），0.2.0 的方向、回执与任务03在该分支 `product/0.2.0/` 下读取；本版仓外证据在 `E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/`。C 盘 `020-continuation` 源工作树与 `evidence-020` 已退役。develop-sw 检出保留 0.1.10 历史快照，下方记录不代表 0.2.0 当前状态。
 
-迁回前，0.2.0原回执及任务03来源在 `C:/Users/hjxch/.codex/worktrees/020-continuation/Smart-WorkFlow-Agent-Workspace`，用于读取与保全；迁回后使用E根同一相对路径。下方0.1.10为历史快照。
-
-- 当前任务：0.2.0 IN_PROGRESS；总7阶段，评估完成、实施进行中，验收同步/合并/发布/发布后同步/结束未开始（1/1/5）。
-- 指定回执：[workspace-config-diff-fix-02.md](C:/Users/hjxch/.codex/worktrees/020-continuation/Smart-WorkFlow-Agent-Workspace/product/0.2.0/receipts/workspace-config-diff-fix-02.md)。执行入口为同目录 planning-execution-prompt-unified-020-03.md。
-- 本次读取与指针诊断：[planning-recovery-workspace-config-020-02.md](C:/Users/hjxch/.codex/worktrees/020-continuation/Smart-WorkFlow-Agent-Workspace/product/0.2.0/receipts/planning-recovery-workspace-config-020-02.md)。本批仅按证据范围采信，整版及正式像素仍待验；侧栏独立参考已交付。
-- 工作树关系已由 [探索回执](../search_fallback/recovery-worktree-state-020.md) 核实（2026-10-26 21:41）：E根 develop-sw@05613119，C根 codex/0.2.0-delivery@fb70893b，共享Git公共目录；cb9b863f回执已进入0.2.0分支。Web34a5541/Serverf530d33e实际在E盘子仓；远端只核到既有push时点。
-- 位置原因见源工作树 receipts/u020-tenant-layout-02.md：10月22日E根有0.1.10在途改动、分支切换被拒后，执行改在C盘工作树续接。后续方向沿用此位置，形成文档/knowledge在C、代码在E的分离。迁回前置现已明确授权，路由读通不等于现场迁回完成。
-- 迁回同时修复根gitlink、knowledge旧入口/提交/侧栏依赖与当前路径；保全旧收尾及在途成果。迁回结果记任务03同一回执，不设独立验收停点，完成直接进入业务剩余。
+- 当前任务：0.2.0 IN_PROGRESS；总7阶段 1/1/5；唯一执行入口为 0.2.0 分支 `product/0.2.0/receipts/planning-execution-prompt-unified-020-03.md`，迁回前置已完成，直接业务剩余。
+- 迁回依据：0.2.0 分支 `product/0.2.0/ready/direction-workspace-return-020.md` 与 `search_fallback/recovery-worktree-state-020.md`（21:41 探索事实）。
+- 位置成因：10月22日E根有0.1.10在途改动、分支切换被拒，执行改在C盘工作树续接；2026-10-26 经 Owner 授权统一迁回E盘，文档/代码/证据重新同点。
 
 ## 本检出历史索引（0.1.10）
 
