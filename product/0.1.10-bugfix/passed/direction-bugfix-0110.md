@@ -1,6 +1,6 @@
 # 0.1.10 优化与修复方向
 
-2026-10-21｜规划验收PASSED｜BF0110-01—08及发布同步复核通过；BF0110-09已按Owner指令转入需求池。整体VERIFYING 6/1/0，最终裁决传播承接 `../ready/direction-terminal-sync-0110.md`，裁决见 `../receipts/planning-review-release-0110-01-passed.md`。下方保留原方向及各时点依据。
+2026-10-22｜最终确认COMPLETED 7/0/0｜BF0110-01—08及发布同步复核通过；BF0110-09已按Owner指令转入需求池。最终传播方向 `direction-terminal-sync-0110.md` 已归档passed，最终裁决 `../receipts/planning-final-review-terminal-sync-0110-completed.md`。下方保留原方向及各历史时点依据。
 
 ## 目标与范围
 

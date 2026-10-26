@@ -1,6 +1,10 @@
 # 需求池（Requirement Pool）
 
-当前活动交付：**无**。**0.1.10-bugfix COMPLETED（7/0/0）**：评估、执行、验收同步、合并、发布、发布后同步、结束均完成。正式发布与UAT部署0.1.10，开发Server0.1.10-SNAPSHOT、Web0.1.10，DB versioned终点V0.1.7；发布源Server8a2aa56、Webe03a886。BF0110-01—08 PASSED；Owner已将应用导入导出转入需求池待排期。终态下一动作＝等待Owner选择下一任务。UI文案治理保持READY，其他既有待办保持。
+> 2026-10-26：0.2.0 IN_PROGRESS（1/1/5）。Owner已要求先把本版现场及仓外证据迁回E盘，入口 product/0.2.0/ready/direction-workspace-return-020.md；实际迁回未完成，C盘来源仅读取与保全，完成后连续执行任务03。下文状态及候选为旧检出历史快照。
+
+## 本检出历史状态（2026-10-21）
+
+当前活动交付：**无**。**0.1.10-bugfix COMPLETED（7/0/0）**：评估、执行、验收同步、合并、发布、发布后同步、结束均完成。正式发布与UAT部署0.1.10，开发Server0.1.10-SNAPSHOT、Web0.1.10，DB versioned终点V0.1.7；发布源Server8a2aa56、Webe03a886。BF0110-01—08 PASSED；Owner已将应用导入导出转入需求池待排期。最终审查 `product/0.1.10-bugfix/receipts/planning-final-review-terminal-sync-0110-completed.md`，四份方向已归档passed；终态下一动作＝等待Owner选择下一任务。UI文案治理保持READY，其他既有待办保持。
 
 ## 待排期：应用导入导出（2026-10-21）
 
@@ -730,3 +734,4 @@ P45已完成规划功能级验收与阶段三终态复核，正式状态为 **`C
 ### 2026-09-29 后台SSO当前验收安排
 
 后台SSO配置与B端准入COMPLETED（规划已确认，2026-09-29）；R1轮换完成，无剩余动作。企业微信延期，P31开放。裁决 `product/sso-admin-config/receipts/planning-final-review-terminal-sync-01-completed.md`。
+

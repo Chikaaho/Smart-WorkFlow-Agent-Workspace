@@ -1,6 +1,6 @@
 # 0.1.10 最终裁决传播
 
-2026-10-21｜Planner下发｜READY。依据 `../receipts/planning-review-release-0110-01-passed.md`，BF0110-01—08验收通过，发布及既有同步复核通过；Owner明确将应用导入导出转入需求池。
+2026-10-22｜Planner复核PASSED｜最终裁决传播通过，整体COMPLETED 7/0/0。最终审查 `../receipts/planning-final-review-terminal-sync-0110-completed.md`；执行证据 `../receipts/terminal-sync-0110-01.md`。本方向已归档passed，下方保留2026-10-21下发时点的目标清单和执行授权。
 
 ## 目标与唯一值
 
