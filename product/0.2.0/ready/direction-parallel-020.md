@@ -1,14 +1,20 @@
 # 0.2.0 前后端并行方向与共享边界
 
+2026-10-26当前入口：[新执行任务03](../receipts/planning-execution-prompt-unified-020-03.md)。Owner已终止旧执行；本文件原契约按已确认范围和历史时点承接，当前工作台设计以direction-workspace-config-020-r2.md为准，不并行恢复旧派发。
+
 2026-10-24｜Planner｜XL｜READY｜同一主交付 IN_PROGRESS
+
+2026-10-25 当前已由direction-unified-020.md接替。离线图片包已验收通过，后续一个根入口Executor统一承接Web/Server、真实联调与根收尾，启动见execution-prompt-020-unified.md。本文件以下并行分工仅保留历史，实际读写授权及下一动作以统一方向为准。
 
 ## 目标与入口
 
 在0.2.0既有分支成果上，前端完成统一主题、设计还原和真实交互，后端补齐服务端产品契约与运行证据，最后汇合为同一版本。Owner 明确由两个执行会话分别承担前后端，后端会话不具备Figma读取能力。
 
-本文件承接 direction-020.md、decision-records-020.md、acceptance-020.md 和 visual-acceptance-020.md；作为当前并行协调入口。两侧分别读取 execution-prompt-020-frontend.md 与 execution-prompt-020-backend.md。原 execution-prompt-020.md 仅保留入口导航，不再指派单个会话跨仓连续实施。产品目标与A01—A17保持，仅本文件的主题裁决和并行责任按Owner新指令生效。
+本文件记录2026-10-24承接direction-020.md、decision-records-020.md、acceptance-020.md及visual-acceptance-020.md时的并行分工。两侧Prompt保留历史交接；2026-10-25起当前协调及授权统一见direction-unified-020.md，执行入口execution-prompt-020.md已更新为统一路由。产品目标与A01—A17保持。
 
 中间审查：../receipts/planning-interim-review-020-20261024.md。主方向保留ready，整体IN_PROGRESS；阶段回执和局部通过不替代整版验收。
+
+前端当前局部审查：../receipts/planning-review-frontend-020-01.md（2026-10-25）。Web消费快照8b564c5，主题本地行为与U020-26配色通过，设计器/表单/流程交互按隔离或组件层级采信；真实联合链及整版视觉仍未通过。实际lint为0错误/1警告，按原文处理。
 
 后端本批PASSED：../receipts/planning-review-backend-020-03-passed.md。消费快照6995f88，G1授权写拒绝/零变更与G2部分失败恢复余项均已核销；原结果按层级锁定。前端继续运行查询formKey+fieldKey对接及联合验收，PROCESS_COMPLETED说明按现有审批通过后的成功完成事件表达；整体IN_PROGRESS，三节点语义等规划/协作项分别保留。
 
@@ -47,4 +53,4 @@
 
 中间验收已锁定的行为按影响承接；全局主题会使相应颜色快照失效，只复验受影响区域及消费者。同一正式验收项最多两轮，历史自验/诊断不是正式审查轮次；未能判断的整版项继续保留，不把两轮规则变成自动通过。
 
-唯一下一动作：前端从主题和默认蓝色开始，后端从既有实现/回执的服务端剩余缺口及契约交接开始；各自进入对应执行入口。整体总7阶段：已完成1需求评估，进行中1分支实施，未开始5验收同步、合并、发布、发布后同步、结束。0.2.0已确认，不重复询问版本。功能数、P和正式基线保持旧授权值，最终清单由Planner另发。
+当前下一动作由direction-unified-020.md承接：统一Executor先核实页面实现状态，再继续两仓真实契约、同对象联合链及视觉/文案和1条lint格式警告，不重开G1/G2。整体总7阶段：已完成1需求评估，进行中1分支实施，未开始5验收同步、合并、发布、发布后同步、结束。0.2.0已确认，功能数/P/正式基线保持旧授权值，最终清单由Planner另发。

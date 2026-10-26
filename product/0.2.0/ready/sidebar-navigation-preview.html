@@ -1,0 +1,143 @@
+<div id="sw-sidebar-proposal" aria-label="多级侧栏交互示意">
+  <div class="sw-window">
+    <header class="sw-header"><strong>CH-aPaaS · 管理端</strong><span class="sw-module">系统管理</span><span class="sw-other">表单管理</span><span class="sw-other">流程管理</span></header>
+    <div class="sw-body">
+      <aside class="sw-sidebar" aria-label="系统管理侧栏">
+        <nav class="sw-navigation" aria-label="系统管理页面"><ul class="sw-tree"></ul></nav>
+        <footer class="sw-footer"><button type="button" class="sw-toggle cursor-interaction" aria-label="收起侧栏"><i data-lucide="arrow-left" aria-hidden="true"></i><span>收起</span></button></footer>
+      </aside>
+      <main class="sw-content"><div class="sw-breadcrumb">系统管理 / 字典管理 / 字典类型</div><h2 class="sw-page-title">字典类型</h2><div class="sw-page"><div class="sw-table-header"><span>名称</span><span>状态</span><span>操作</span></div><div class="sw-empty">暂无数据</div></div></main>
+    </div>
+    <div class="sw-flyout" hidden aria-label="目录子菜单"><div class="sw-flyout-title"></div><nav aria-label="目录中的页面"><ul class="sw-flyout-tree"></ul></nav></div>
+    <span class="sw-announcement" aria-live="polite"></span>
+  </div>
+</div>
+<style>
+#sw-sidebar-proposal {font:14px/1.5 "Segoe UI","Microsoft YaHei",sans-serif;--sw-brand:#2563eb;--sw-ink:light-dark(#24334b,#e0e7f4);--sw-secondary:light-dark(#64748b,#abb9cf);--sw-surface:light-dark(#ffffff,#182235);--sw-canvas:light-dark(#f4f6fb,#111827);--sw-line:light-dark(#e6ebf2,#344159);--sw-active:light-dark(#eaf0ff,#233c69);--sw-hover:light-dark(#f3f6fb,#263247);color:var(--sw-ink)}
+#sw-sidebar-proposal * {box-sizing:border-box}
+#sw-sidebar-proposal [hidden] {display:none!important}
+#sw-sidebar-proposal .sw-window {position:relative;background:var(--sw-canvas);border:1px solid var(--sw-line);border-radius:8px}
+#sw-sidebar-proposal .sw-header {min-height:56px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:12px 20px;background:#111b39;color:#fff;border-radius:8px 8px 0 0}
+#sw-sidebar-proposal .sw-header strong {font-size:14px;font-weight:600}
+#sw-sidebar-proposal .sw-module {background:#203b78;padding:6px 18px;border-radius:5px}
+#sw-sidebar-proposal .sw-other {font-size:13px;color:#e2e8f0}
+#sw-sidebar-proposal .sw-body {display:flex;min-height:672px}
+#sw-sidebar-proposal .sw-sidebar {width:236px;flex-shrink:0;background:var(--sw-surface);border-right:1px solid var(--sw-line);display:flex;flex-direction:column;border-radius:0 0 0 8px}
+#sw-sidebar-proposal .sw-navigation {flex:1;padding:12px 8px}
+#sw-sidebar-proposal ul {list-style:none;padding:0;margin:0}
+#sw-sidebar-proposal .sw-row {position:relative;display:flex;align-items:center;gap:10px;width:100%;min-height:40px;margin:2px 0;padding:8px 12px;border:0;background:transparent;color:var(--sw-ink);border-radius:6px;text-decoration:none;text-align:left;font:inherit}
+#sw-sidebar-proposal .sw-row:hover {background:var(--sw-hover)}
+#sw-sidebar-proposal .sw-icon {width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--sw-secondary);font-size:15px;font-weight:500}
+#sw-sidebar-proposal .sw-icon svg {width:18px;height:18px}
+#sw-sidebar-proposal .sw-label {flex:1;min-width:0}
+#sw-sidebar-proposal .sw-chevron {width:16px;height:16px;flex-shrink:0;color:var(--sw-secondary)}
+#sw-sidebar-proposal .sw-directory {font-weight:500}
+#sw-sidebar-proposal .sw-child .sw-row {padding-left:48px}
+#sw-sidebar-proposal .sw-row.sw-selected {background:var(--sw-active);color:var(--sw-brand)}
+#sw-sidebar-proposal .sw-row.sw-selected:before {content:"";position:absolute;left:0;top:12px;bottom:12px;width:3px;border-radius:3px;background:var(--sw-brand)}
+#sw-sidebar-proposal .sw-row.sw-ancestor,#sw-sidebar-proposal .sw-row.sw-ancestor .sw-icon,#sw-sidebar-proposal .sw-row.sw-selected .sw-icon {color:var(--sw-brand)}
+#sw-sidebar-proposal .sw-footer {padding:4px 8px;border-top:1px solid var(--sw-line);min-height:48px}
+#sw-sidebar-proposal .sw-toggle {display:flex;align-items:center;gap:10px;min-height:40px;width:100%;padding:8px 12px;border:0;border-radius:6px;color:var(--sw-ink);background:transparent;font:inherit;text-align:left}
+#sw-sidebar-proposal .sw-toggle:hover {background:var(--sw-hover)}
+#sw-sidebar-proposal .sw-toggle svg {width:24px;height:18px}
+#sw-sidebar-proposal .sw-content {min-width:0;flex:1;padding:24px}
+#sw-sidebar-proposal .sw-breadcrumb {font-size:12px;color:var(--sw-secondary);overflow-wrap:anywhere}
+#sw-sidebar-proposal .sw-page-title {font-size:18px;font-weight:500;margin:18px 0}
+#sw-sidebar-proposal .sw-page {background:var(--sw-surface);border:1px solid var(--sw-line);border-radius:8px}
+#sw-sidebar-proposal .sw-table-header {display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--sw-line);color:var(--sw-secondary)}
+#sw-sidebar-proposal .sw-empty {padding:48px 16px;text-align:center;color:var(--sw-secondary)}
+#sw-sidebar-proposal .sw-collapsed .sw-sidebar {width:64px}
+#sw-sidebar-proposal .sw-collapsed .sw-row {justify-content:center;padding:8px 0;gap:0}
+#sw-sidebar-proposal .sw-collapsed .sw-row>.sw-label {display:none}
+#sw-sidebar-proposal .sw-collapsed .sw-directory>.sw-chevron {position:absolute;width:10px;height:10px;right:1px;bottom:7px}
+#sw-sidebar-proposal .sw-collapsed .sw-row.sw-ancestor {background:var(--sw-active)}
+#sw-sidebar-proposal .sw-collapsed .sw-toggle {justify-content:center;padding:8px 0}
+#sw-sidebar-proposal .sw-collapsed .sw-toggle span {display:none}
+#sw-sidebar-proposal .sw-flyout {position:absolute;z-index:10;left:72px;top:280px;width:min(256px,calc(100% - 80px));background:var(--sw-surface);border:1px solid var(--sw-line);border-radius:8px;padding:8px;box-shadow:0 8px 28px #00000018}
+#sw-sidebar-proposal .sw-flyout-title {padding:8px 12px 12px;font-weight:500;border-bottom:1px solid var(--sw-line);margin-bottom:6px}
+#sw-sidebar-proposal .sw-flyout .sw-row {justify-content:flex-start;padding:8px 12px}
+#sw-sidebar-proposal .sw-flyout .sw-label {display:block}
+#sw-sidebar-proposal .sw-announcement {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+@media(max-width:600px) {#sw-sidebar-proposal .sw-other {display:none}#sw-sidebar-proposal .sw-header {gap:12px;padding:12px}#sw-sidebar-proposal .sw-header strong {font-size:12px}#sw-sidebar-proposal .sw-module {font-size:12px;padding:4px 8px}#sw-sidebar-proposal .sw-content {padding:12px}#sw-sidebar-proposal .sw-sidebar {width:216px}#sw-sidebar-proposal .sw-body:not(.sw-collapsed) .sw-content {display:none}}
+@media(pointer:coarse) {#sw-sidebar-proposal .sw-row,#sw-sidebar-proposal .sw-toggle {min-height:44px}}
+</style>
+<script>
+(() => {
+  const root = document.getElementById('sw-sidebar-proposal');
+  const body = root.querySelector('.sw-body');
+  const tree = root.querySelector('.sw-tree');
+  const flyout = root.querySelector('.sw-flyout');
+  const flyTree = root.querySelector('.sw-flyout-tree');
+  const toggle = root.querySelector('.sw-toggle');
+  const nodes = [
+    {id:'tenant',name:'租户管理',icon:null},
+    {id:'user',name:'用户管理',icon:'user-round'},
+    {id:'department',name:'部门管理',icon:'network'},
+    {id:'role',name:'角色管理',icon:'shield-check'},
+    {id:'menu',name:'菜单管理',icon:'layout-grid'},
+    {id:'position',name:'岗位管理',icon:'briefcase-business'},
+    {id:'dictionary',name:'字典管理',icon:null,children:[{id:'dict-type',name:'字典类型'},{id:'dict-data',name:'字典数据管理'}]},
+    {id:'sso',name:'SSO 配置管理',icon:'key-round'},
+    {id:'file',name:'文件管理',icon:'folder'},
+    {id:'api',name:'开放接口',icon:'plug'},
+    {id:'schedule',name:'定时任务',icon:'clock-3'}
+  ];
+  const state = {collapsed:false,open:true,selected:'dict-type',popup:false};
+  let directoryTrigger = null;
+  const labelById = id => nodes.flatMap(n => [n,...(n.children||[])]).find(n => n.id===id);
+  const icon = node => node.icon ? '<i data-lucide="'+node.icon+'" aria-hidden="true"></i>' : Array.from(node.name)[0];
+  function leaf(node, child=false) {
+    const li=document.createElement('li');
+    if(child) li.className='sw-child';
+    const link=document.createElement('a');
+    link.href='#'+node.id;
+    link.className='sw-row cursor-interaction'+(state.selected===node.id?' sw-selected':'');
+    if(state.selected===node.id) link.setAttribute('aria-current','page');
+    link.setAttribute('aria-label',node.name);
+    if(!child && state.collapsed) {link.dataset.tooltip=node.name;link.dataset.tooltipPlacement='right';}
+    link.innerHTML=(!child?'<span class="sw-icon">'+icon(node)+'</span>':'')+'<span class="sw-label">'+node.name+'</span>';
+    link.addEventListener('click',e=>{e.preventDefault();state.selected=node.id;state.popup=false;if(child)state.open=true;render();root.querySelector('.sw-announcement').textContent='已打开'+node.name;});
+    li.append(link);return li;
+  }
+  function render() {
+    body.classList.toggle('sw-collapsed',state.collapsed);
+    tree.replaceChildren();
+    for(const node of nodes) {
+      if(!node.children) {tree.append(leaf(node));continue;}
+      const li=document.createElement('li');
+      const btn=document.createElement('button');btn.type='button';directoryTrigger=btn;
+      const isAncestor=node.children.some(n=>n.id===state.selected);
+      btn.className='sw-row sw-directory cursor-interaction'+(isAncestor?' sw-ancestor':'');
+      btn.setAttribute('aria-label',node.name+'，目录');
+      btn.setAttribute('aria-expanded',String(state.collapsed?state.popup:state.open));
+      if(state.collapsed) {btn.dataset.tooltip=node.name+'，打开子菜单';btn.dataset.tooltipPlacement='right';}
+      btn.innerHTML='<span class="sw-icon">'+icon(node)+'</span><span class="sw-label">'+node.name+'</span><i class="sw-chevron" data-lucide="'+(!state.collapsed&&state.open?'chevron-down':'chevron-right')+'" aria-hidden="true"></i>';
+      btn.addEventListener('click',e=>{e.stopPropagation();if(state.collapsed)state.popup=!state.popup;else state.open=!state.open;render();if(state.popup)flyTree.querySelector('a')?.focus();else directoryTrigger.focus();});
+      li.append(btn);
+      if(!state.collapsed&&state.open) {const ul=document.createElement('ul');node.children.forEach(n=>ul.append(leaf(n,true)));li.append(ul);}
+      tree.append(li);
+    }
+    toggle.setAttribute('aria-label',state.collapsed?'展开侧栏':'收起侧栏');
+    toggle.setAttribute('aria-expanded',String(!state.collapsed));
+    toggle.dataset.tooltip=state.collapsed?'展开侧栏':'收起侧栏';
+    toggle.innerHTML='<i data-lucide="'+(state.collapsed?'arrow-right':'arrow-left')+'" aria-hidden="true"></i><span>收起</span>';
+    flyout.hidden=!state.popup||!state.collapsed;
+    flyTree.replaceChildren();
+    if(!flyout.hidden) {
+      root.querySelector('.sw-flyout-title').textContent='字典管理';
+      nodes.find(n=>n.id==='dictionary').children.forEach(n=>flyTree.append(leaf(n,true)));
+      const outer=root.querySelector('.sw-window').getBoundingClientRect();
+      const anchor=directoryTrigger.getBoundingClientRect();
+      flyout.style.top=Math.max(64,Math.min(anchor.top-outer.top,outer.height-flyout.offsetHeight-16))+'px';
+    }
+    const selected=labelById(state.selected);
+    root.querySelector('.sw-page-title').textContent=selected.name;
+    root.querySelector('.sw-breadcrumb').textContent='系统管理 / '+(state.selected.startsWith('dict-')?'字典管理 / ':'')+selected.name;
+    if(globalThis.lucide)lucide.createIcons({attrs:{width:18,height:18}});
+  }
+  toggle.addEventListener('click',()=>{state.collapsed=!state.collapsed;state.popup=false;render();});
+  document.addEventListener('click',e=>{if(state.popup&&!flyout.contains(e.target)&&!directoryTrigger.contains(e.target)){state.popup=false;render();}});
+  root.addEventListener('keydown',e=>{if(e.key==='Escape'&&state.popup){state.popup=false;render();directoryTrigger.focus();}});
+  render();
+})();
+</script>

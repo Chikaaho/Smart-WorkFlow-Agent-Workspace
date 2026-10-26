@@ -1,5 +1,9 @@
 # 0.2.0 后端执行任务与产品行为交接
 
+2026-10-26当前入口：[新执行任务03](../receipts/planning-execution-prompt-unified-020-03.md)。Owner已终止旧执行；本文件原契约按已确认范围和历史时点承接，当前工作台设计以direction-workspace-config-020-r2.md为准，不并行恢复旧派发。
+
+2026-10-25：本文件保留为原后端产品契约交接，当前统一启动入口为execution-prompt-020-unified.md，授权与下一动作以direction-unified-020.md为准；下文单侧写入分工不再作为当前统一会话限制，G1/G2关闭结论保持。
+
 2026-10-24｜Planner下发｜Executor承接｜XL｜READY
 
 当前验收结论：本次后端批次PASSED，BE020-G1/G2均关闭，消费快照6995f88，见 [后端批次验收通过](../receipts/planning-review-backend-020-03-passed.md)。此前补充均已执行并保留历史；本侧当前无G1/G2补充动作。前端继续消费契约、真实联调及整版剩余验收，整体保持IN_PROGRESS。

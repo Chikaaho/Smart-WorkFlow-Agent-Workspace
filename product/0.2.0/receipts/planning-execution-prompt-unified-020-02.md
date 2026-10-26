@@ -1,5 +1,7 @@
 # 0.2.0 前后端完整剩余任务连续执行
 
+2026-10-26 Owner已终止本入口对应的旧执行任务。本文件仅作历史；当前唯一新执行入口为planning-execution-prompt-unified-020-03.md，最新工作台配置/图表设计见../ready/direction-workspace-config-020-r2.md。以下记录保留原时点，不作为当前续办待办。
+
 2026-10-26最新批次53读取planning-receipt-read-unified-020-53.md：意见USER/附件/催办、工作台配置真实保存取消重置、A12旧草稿与新版本脚本运行、合法子流程等待回写按证据层级采信，扣除下表对应旧缺口，不重建或全链重跑。Webea9a61a/Server4063f8e沿回执；根5e5625b8已回读。Server90/0与build4.39s原流已读，Web1899/3按终态。授权集成探索已回传，最小映射/端口按../ready/direction-authorized-integration-020.md明确，在原DR06范围内继续，不再等待产品许可。角色岗位/有权目录与原矩阵真缺项继续；截图实际失败仅限制正式PNG/diff，新侧栏独立参考由规划准备。下表保留原覆盖边界，状态以最新读取的扣除结果为准。
 
 2026-10-26｜Planner｜Owner要求“放一起……让execute执行个大的，不能闲置”

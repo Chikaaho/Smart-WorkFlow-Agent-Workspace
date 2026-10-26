@@ -1,6 +1,12 @@
 # 0.2.0 前端执行任务
 
+2026-10-26当前入口：[新执行任务03](../receipts/planning-execution-prompt-unified-020-03.md)。Owner已终止旧执行；本文件原契约按已确认范围和历史时点承接，当前工作台设计以direction-workspace-config-020-r2.md为准，不并行恢复旧派发。
+
+2026-10-25：本文件保留为原前端交接，当前统一启动入口为execution-prompt-020-unified.md，授权与下一动作以direction-unified-020.md为准；下文单侧写入分工不再作为当前统一会话限制。
+
 2026-10-24｜Planner下发｜Executor承接｜XL｜READY
+
+2026-10-25当前审查：../receipts/planning-review-frontend-020-01.md。主题本地行为、U020-26配色、多分支会签夹具及表单/流程隔离交互已按各自层级通过，U020-26余项0；下文首次失败段保留为历史，不再要求该项补证。Web消费快照8b564c5，后端6995f88；下一动作转为真实契约对接、同对象联合链、剩余视觉/文案及最新lint原文的1条格式警告处理。不得把mock结果升级为真实授权/持久化或整版通过。
 
 执行。承接本文件和 direction-parallel-020.md，在现有Web任务分支继续0.2.0前端实现、Figma还原和可见联调。先读system.md、roles/executor.md，完成技能前置，再读project.md与Web工程宪法。使用既有 codex/0.2.0-ui-tenant-form-flow 成果；2b93e53是本次审查快照，开始时自行核实现有HEAD及在途修改，不从旧develop重做。原工作树 vite.config.ts 的在途修改保留其归属。
 
