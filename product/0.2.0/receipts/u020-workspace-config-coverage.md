@@ -8,7 +8,7 @@
 - 复用能力：`/system/workspace/layout` 个人布局、`/form/workspace/analytics/{sources,fields,aggregate,rows}` 受控数据、既有待办/目录/发起/效能接口。
 - 功能证据：`C:/Users/hjxch/.codex/evidence-020/real-joint/ws-config-e2e-66.json`（加载/预览/添加/撤销/保存/刷新回读）、`ws-page-final-66.json`（首页/配置页真实数据）、`ws-chain-positive.json`、`ws-chain-permission.json`。
 - 视觉层级：`ws-home-final-66.png`、`ws-config-final-66.png` 及本批 `ws-fix-66-*.png` 均为 headless 截图，仅作 ISOLATED_REGRESSION；正式可见会话/像素未通过。
-- 2026-10-26 审查差异修复：`ws-fix-66-final.json` 实测三栏 224/1360/336、导航 64、工具栏 56、工作区 y120、属性首组 62/控件 32、图表 viewBox 与容器 1:1（轴文字 12px）；`ws-fix-66.json`/`ws-fix-66-chart.json`/`ws-fix-66-undo.json` 覆盖快捷发起候选/已选、预览、保存、刷新、首页、撤销；回执 `workspace-config-diff-fix-02.md`。
+- 2026-10-26 审查差异修复：`ws-fix-66-final.json` 实测三栏 224/1360/336、导航 64、工具栏 56、工作区 y120、属性首组 62/控件 32、图表 viewBox 与容器 1:1（轴文字 12px）；`ws-fix-66.json`/`ws-fix-66-chart.json`/`ws-fix-66-undo.json` 覆盖快捷发起候选/已选、预览、保存、刷新、首页、撤销；旧 `stats` 卡显示真实 21/42/24/1（`ws-fix-66-legacy-stats.png`）；回执 `workspace-config-diff-fix-02.md`。
 
 | 节点 | 状态 | 实际结果 |
 | --- | --- | --- |
