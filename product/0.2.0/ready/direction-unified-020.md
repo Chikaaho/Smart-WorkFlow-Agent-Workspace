@@ -1,5 +1,7 @@
 # 0.2.0 前后端统一执行方向
 
+2026-10-26当前视觉输入：全量蓝色PNG为 E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/design-blue-20261026/（index.html / index.json）；核心331、规范102个顶层对象。相同节点以此包及direction-blue-primary-020.md为准；下文旧包保留未变几何、配置语义和资源，旧PNG颜色不覆盖当前参考。
+
 2026-10-26当前入口：[新执行任务03](../receipts/planning-execution-prompt-unified-020-03.md)。Owner已终止旧执行；本文件原契约按已确认范围和历史时点承接，当前工作台设计以direction-workspace-config-020-r2.md为准，不并行恢复旧派发。
 
 最新44—52范围见../receipts/planning-receipt-read-unified-020-44-52.md，Web204ebd3/Server862fc95沿交接。多个旧实现缺口已补，但本批仅组件/契约等验证，无新真实运行链/PNG；49脚本对比查看不替代原A12版本运行。唯一总续办仍../receipts/planning-execution-prompt-unified-020-02.md，扣除实现继续真实消费及原剩余；授权集成边界有受控探索，整版IN_PROGRESS。
@@ -30,7 +32,7 @@ Owner已要求先迁回E盘，前置方向为 E:/code/Smart-WorkFlow-Agent-Works
 
 ## 离线图像的实际使用
 
-包目录C:/Users/hjxch/.codex/evidence-020/design-offline-20261025/，入口index.html/index.md、metadata/index.json，压缩包为同级design-offline-20261025.zip。337张设计图、336属性文件、223资源；图片ID可关联页面/组件。properties/field-map.md说明父相对坐标等字段；metadata/theme-tokens.md、theme-coverage.json和component-state-map.json说明令牌、主题和变体。实例内部规格从其组件规范补齐。
+包目录E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/design-offline-20261025/，入口index.html/index.md、metadata/index.json，压缩包为同级design-offline-20261025.zip。337张设计图、336属性文件、223资源；图片ID可关联页面/组件。properties/field-map.md说明父相对坐标等字段；metadata/theme-tokens.md、theme-coverage.json和component-state-map.json说明令牌、主题和变体。实例内部规格从其组件规范补齐。
 
 每批UI改动先实际打开本地原图及相关属性，确认对应状态和主题；改完查看稳定运行截图并计算reference/runtime/diff，不能只读清单或凭记忆开发。设计中的“默认”是原紫模式，产品无偏好默认是蓝模式；有8个独立蓝稿优先使用。其他250节点依据同一原稿的结构和明确设计令牌生成另存、可回读的蓝色参考，保存原图、变量绑定/映射及派生方法，仅变更已确定主题属性；不能从运行图取色、移动内容或反造基准。无法确定映射时该像素项保持未验证，可先对照相同紫主题，继续其他独立工作，不冒称蓝色通过。
 

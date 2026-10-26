@@ -1,20 +1,22 @@
 # 0.2.0 新执行任务：最新工作台配置与整版剩余收敛
 
+2026-10-26当前视觉输入：全量蓝色PNG为 E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/design-blue-20261026/（index.html / index.json）；核心331、规范102个顶层对象。相同节点以此包及direction-blue-primary-020.md为准；下文旧包保留未变几何、配置语义和资源，旧PNG颜色不覆盖当前参考。
+
 2026-10-26｜Planner｜Owner已终止上一执行任务，要求新任务方案；本次细节更新后重新读取
 
 ## 唯一入口与本次目标
 
-### 前置：统一迁回E盘后继续本任务
+### 当前现场与蓝色设计输入
 
-Owner于2026-10-26明确要求“继续任务，补一个前置处理把东西挪回来”。先完整读取并完成 [迁回方向](E:/code/Smart-WorkFlow-Agent-Workspace/product/0.2.0/ready/direction-workspace-return-020.md)。本任务03仍为唯一业务入口，迁回前C盘工作树用于读取与保全，迁回后根仓、状态、本文及双方代码统一在 `E:/code/Smart-WorkFlow-Agent-Workspace` 接续0.2.0已有分支；本版仓外证据迁至 `E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/`，当前输入路径随实际迁回更新。
+迁回前置已完成：根仓、回执和双方代码统一在E:/code/Smart-WorkFlow-Agent-Workspace，0.2.0证据位于E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/，C源工作树与evidence-020已退役。迁回方向direction-workspace-return-020.md保留执行事实，本任务03继续业务剩余，不再以迁回或等待规划阅读作为停点。
 
-迁回和本任务为同一次连续执行：完成迁回必要检查与普通批次提交后直接进入业务剩余，迁回结果记入任务03同一份回执，不单独派发、交回验收或等待规划阅读。已核实事实见E盘search_fallback/recovery-worktree-state-020.md；本批workspace-config-diff-fix-02.md的局部采信见planning-recovery-workspace-config-020-02.md，三栏/字号、上下文入口、快捷发起保存撤销与旧stats渲染不重新列作未修；正式像素及实际未覆盖语义继续待验。下方证据的C盘路径是迁回前来源，执行按方向更新当前入口，历史事实保留。
+Owner最新明确全局统一蓝色主色。必须消费../ready/direction-blue-primary-020.md及design-blue-20261026/index.html、index.json：当前Figma核心331/规范102顶层对象已统一蓝色，当前同ID PNG优先于历史包。默认#2563EB，内置紫色预设退出并迁移其旧偏好为蓝色；保留青色/自定义能力及任意自定义HEX，图表/状态色独立。主题面板改为默认蓝/青色/自定义三项。只复验受影响主题路径与消费者，未受影响后端和已过业务继续锁定。设计写回不等于运行主题实现或正式像素通过。
 
 ### 2026-10-26 侧栏设计写回与最新回执后的继续范围
 
-侧栏最新独立参考已写回Figma，见 planning-figma-sidebar-sync-020-02.md（承接01）；最新独立分类增量 C:/Users/hjxch/.codex/evidence-020/design-sidebar-20261026-categories/index.html（13图＋节点/几何索引），同节点覆盖前包；其他侧栏沿design-sidebar-20261026包。按已确认方向承接236/64侧栏、底部48开关、首字兜底和256单浮层；本次规划输入已就绪，不能继续列等待侧栏参考。独立流程分类9处原节点已更新，名称左对齐/数量靠右/底部开关/收起首字与提示；保持筛选语义，不能仅查共享组件即认覆盖。相同节点用此时点，r2包保留工作台配置66状态。核心页实测330 FRAME＋1 COMPONENT_SET共331顶层对象；此前323为r2采集时点。
+侧栏最新独立参考已写回Figma，见 planning-figma-sidebar-sync-020-02.md（承接01）；最新独立分类增量 E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/design-sidebar-20261026-categories/index.html（13图＋节点/几何索引），结构沿这两份侧栏包；当前同节点PNG统一以design-blue-20261026为准。按已确认方向承接236/64侧栏、底部48开关、首字兜底和256单浮层；本次规划输入已就绪，不能继续列等待侧栏参考。独立流程分类9处原节点已更新，名称左对齐/数量靠右/底部开关/收起首字与提示；保持筛选语义，不能仅查共享组件即认覆盖。相同节点视觉以最新蓝色包为准，r2包保留工作台配置66状态语义及未变几何。核心页实测330 FRAME＋1 COMPONENT_SET共331顶层对象；此前323为r2采集时点。
 
-最新修复读取见planning-recovery-workspace-config-020-02.md，消费workspace-config-diff-fix-02.md；前轮统计/权限见planning-receipt-read-workspace-config-020-01.md。本提示仍是唯一入口，先完成迁回前置，再按以下矩阵承接。21:41探索核实根fb70893b、Web34a5541/Serverf530d33e；启动时核实其后新增成果，不用旧2511efe3快照代替当前现场。已有真实统计28/22/4、字段1501/SELF1对4/跨租户1500、基础添加撤销保存刷新及TABLE发布详情按审查范围锁定；不重新全跑53业务。
+最新修复读取见planning-recovery-workspace-config-020-02.md，消费workspace-config-diff-fix-02.md；前轮统计/权限见planning-receipt-read-workspace-config-020-01.md。本提示仍是唯一入口，迁回前置已完成，在E盘按以下矩阵承接。21:41探索核实根fb70893b、Web34a5541/Serverf530d33e；启动时核实其后新增成果，不用旧2511efe3快照代替当前现场。已有真实统计28/22/4、字段1501/SELF1对4/跨租户1500、基础添加撤销保存刷新及TABLE发布详情按审查范围锁定；不重新全跑53业务。
 
 | 项 | 性质与最新事实 | 完成条件与最小充分结果 |
 | --- | --- | --- |
@@ -28,13 +30,13 @@ Owner于2026-10-26明确要求“继续任务，补一个前置处理把东西�
 
 你是执行。作为新的统一Executor承接同一0.2.0交付，完成最新工作台配置/图表能力、工作台与门户还原，以及原版其余真实剩余项。此文为唯一当前执行入口，替代planning-execution-prompt-unified-020-02.md；不恢复旧执行会话、不把旧提示与本提示并列成两份待办。用户已确认版本0.2.0。具体实施计划、文件、批次及验证安排由你在授权目标内确定。
 
-先读取system.md、roles/executor.md并完成技能前置，再按项目说明和两仓工程宪法核实工作树、HEAD、已有改动、原自有进程及验证资源。先按迁回方向将根codex/0.2.0-delivery接续到E:/code/Smart-WorkFlow-Agent-Workspace；Web/Server沿E盘既有codex/0.2.0-ui-tenant-form-flow、codex/0.2.0-tenant-form-flow承接。C:/Users/hjxch/.codex/worktrees/020-continuation/Smart-WorkFlow-Agent-Workspace为此次待保全和退役的源工作树。旧业务消费与根规划提交仅作交接时点，不能代替启动时核实。不要从旧develop重建并覆盖已有成果；保护vite.config.ts及他人修改。先区分旧任务自有服务和用户既有PG/Redis等设施，不凭端口或进程名批量清理。
+先读取system.md、roles/executor.md并完成技能前置，再按项目说明和两仓工程宪法核实工作树、HEAD、已有改动、原自有进程及验证资源。在已迁回的E:/code/Smart-WorkFlow-Agent-Workspace沿根codex/0.2.0-delivery继续；Web/Server沿E盘既有codex/0.2.0-ui-tenant-form-flow、codex/0.2.0-tenant-form-flow承接。C:/Users/hjxch/.codex/worktrees/020-continuation/Smart-WorkFlow-Agent-Workspace已退役，不再作为当前执行入口。旧业务消费与根规划提交仅作交接时点，不能代替启动时核实。不要从旧develop重建并覆盖已有成果；保护vite.config.ts及他人修改。先区分旧任务自有服务和用户既有PG/Redis等设施，不凭端口或进程名批量清理。
 
 ## 必须消费的输入
 
 - 主方向direction-020.md、decision-records-020.md、acceptance-020.md A01—A17及visual-acceptance-020.md，均在../ready/。
 - 本次最新产品明细../ready/direction-workspace-config-020-r2.md；设计读取记录planning-ui-design-update-020-r2.md；节点索引../ready/design-node-index-020.md。
-- 离线增量包C:/Users/hjxch/.codex/evidence-020/design-offline-20261026-workspace-r2/，先打开index.html/index.md，实际查看PNG和对应属性。包含66张工作台配置相关状态，加工作台与门户2张，共68图；核心页在r2采集时为323个顶层设计对象。其余原稿与资源沿C:/Users/hjxch/.codex/evidence-020/design-offline-20261025/，按节点与采集时点选择，不用旧包覆盖本次已更新同ID。
+- 离线增量包E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/design-offline-20261026-workspace-r2/，先打开index.html/index.md，实际查看PNG和对应属性。包含66张工作台配置相关状态，加工作台与门户2张，共68图；核心页在r2采集时为323个顶层设计对象。其余原稿与资源沿E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/design-offline-20261025/，按节点与采集时点选择，不用旧包覆盖本次已更新同ID。
 - 最新业务读取planning-receipt-read-unified-020-53.md及real-consumption-53.md；22—52记录只按被引用的有效范围承接。授权集成按../ready/direction-authorized-integration-020.md，其他UI/业务语义沿direction-ui-completion-020.md、direction-ui-semantics-020.md和direction-sidebar-navigation-020.md，但工作台配置部分以本次r2为准。
 
 无需MCP即可执行。目录页、原图、XML和语义字体配色JSON均可直接读取；不要只看缩略图或文档摘要就声称看过设计。
@@ -45,7 +47,7 @@ Owner于2026-10-26明确要求“继续任务，补一个前置处理把东西�
 | --- | --- |
 | 最新工作台配置，优先 | 将273:1600承接为全屏三栏配置，完成组件库、12列画布、属性面板、拖动/宽高/移除/撤销、草稿预览、保存与重置；首页入口按最新3:2。保持用户明确自定义和旧配置兼容，旧居中弹窗不作为新稿验收目标 |
 | 数据与图表真实链，优先 | 指标卡/12图型/数据列表及4类系统卡片，关联有权表单与字段，筛选、统计、分组、多指标、左右轴、单位、图型呈现、列头/排序/分页/滚动和独立样式按r2实际消费；服务端记录/字段权限先于汇总，配置不能扩大授权。复用平台能力，补必要跨仓契约，不交付静态演示数据 |
-| 工作台/企业门户与整版UI | 按最新3:2、7:2及现有全量索引继续真实页面还原；默认蓝及显式偏好保持，当前331个顶层设计对象按实际消费者与状态登记。25组件族沿原基准，新增状态逐项承接，不能只做这68图后删除其余原缺口 |
+| 工作台/企业门户与整版UI | 按最新3:2、7:2及现有全量索引继续真实页面还原；全局蓝色主色及偏好兼容按direction-blue-primary-020.md，当前331个顶层设计对象按实际消费者与状态登记。25组件族沿原基准，新增状态逐项承接，不能只做这68图后删除其余原缺口 |
 | DR06函数与授权集成 | 根据已回传探索和已明确产品边界接通表单授权映射、宿主与受控HTTP真实调用，完成有权正向与必要拒绝。角色/岗位关联、有权目录集合及原尚缺函数继续核已有结果；不再以“等待产品/无凭据”停住可实施项 |
 | 原业务消费者与隔离 | 富文本实际格式/导出文件/保存历史、TABLE保存发布填写、冻结快照真实消费者、意见USER暂存与字段/资源边界、A06—A10及旧矩阵尚缺项按原标准扣除既有有效证据后继续。原通知/监听/版本/多人/A16等只补真正未覆盖和本次修改影响，避免全量重跑 |
 | 回执、当前事实和后续交付 | 每批按实际影响验证，先更新knowledge权威，再按授权同步摘要/当前入口；必要图表/配置兼容迁移、模块治理引用同时保持有效。维护唯一剩余账本与最新覆盖矩阵，普通提交推送并核实远端。全版验收与终态清单仍由Planner独立裁决 |
@@ -56,7 +58,7 @@ Owner于2026-10-26明确要求“继续任务，补一个前置处理把东西�
 
 批次53意见USER正向/历史、附件真实文件与拒绝、催办受理/站内消息、旧草稿与新版本脚本运行隔离、合法子流程等待回写，以及工作台原保存/取消/恢复默认按规划读取记录的对象和证据层级采信。命令键长度、系统发起人、等待终态同步修复及类型收敛保留。Server聚焦90/0有原流；Web1899通过/3跳过沿执行声明，build4.39s原流可读，不把声明升级成重新核实的全工程基线。
 
-22侧栏可读性、29多人/跨租户、G1G2、主题及其他无影响已过局部锁定。设计更新使273:1600及受影响页面/状态需要新界面结果，不抹掉既有业务通过；不能因65个新画框就重做全部原业务。非法人员原中间PENDING与回执最终FAILED按读取记录保留时点差异，不为报告格式单独重跑整链。
+22侧栏可读性、29多人/跨租户、G1G2及其他无影响已过局部锁定；主题仅复验本次蓝色主色变更及偏好迁移影响。设计更新使273:1600及受影响页面/状态需要新界面结果，不抹掉既有业务通过；不能因65个新画框就重做全部原业务。非法人员原中间PENDING与回执最终FAILED按读取记录保留时点差异，不为报告格式单独重跑整链。
 
 ## 证据、连续推进与停点
 
