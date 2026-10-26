@@ -1,9 +1,7 @@
 # memory 索引
 
-2026-10-26｜Planner。管理员仅为先前Hook修复的一次授权，已切回规划。0.2.0 IN_PROGRESS，整体七阶段1/1/5。
+2026-10-26｜Planner｜0.2.0 IN_PROGRESS。管理员仅为先前Hook修复的一次授权，已结束。整体七阶段1/1/5。
 
-Owner已终止旧执行，当前准备新的执行任务。唯一入口product/0.2.0/receipts/planning-execution-prompt-unified-020-03.md，旧02仅历史。最新设计读取planning-ui-design-update-020-r2.md；产品明细ready/direction-workspace-config-020-r2.md。
+最新业务审查product/0.2.0/receipts/planning-receipt-read-workspace-config-020-01.md，消费workspace-config-analytics-01.md。真实统计/权限与基础配置保存回读分项采信；新UI及整版未过。继续唯一入口planning-execution-prompt-unified-020-03.md新增矩阵，先修三栏/图表字号、配置导航/首页入口、快捷发起两端结果差异。旧02仅历史。
 
-细节更新后核心323画框，工作台配置66状态；本地design-offline-20261026-workspace-r2包68图（配置66+工作台/门户2）及属性、离线索引。新稿全屏三栏、12图型/多指标/坐标轴/样式，不能沿旧弹窗判通过。
-
-业务结果最新仍planning-receipt-read-unified-020-53.md，已采信局部锁定。新执行优先新工作台与真实数据权限链，承接授权集成/其余原缺口。正式统计不变，未启动实现/新会话。恢复state→handoff→features→constraints。
+设计核心323画框/配置66状态，r2离线包68图；主方向ready/direction-workspace-config-020-r2.md。正式可见像素仍未验，新侧栏独立参考仍由规划准备。恢复state→handoff→features→constraints；正式计数不变。
