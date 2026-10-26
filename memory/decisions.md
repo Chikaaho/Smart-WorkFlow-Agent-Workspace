@@ -2,7 +2,7 @@
 
 ## 0.2.0 当前安排（2026-10-26）
 
-当前规划，管理员一次Hook授权已结束。任务03已产生workspace-config-analytics-01回执，最新审查planning-receipt-read-workspace-config-020-01.md分项采信统计/权限/基础配置/TABLE详情，整版未过。沿03优先修配置几何/图表字号、导航/首页入口、快捷发起消费者差异，其余原范围持续推进；不按固定轮数停止。
+当前规划，管理员一次Hook授权已结束。Owner已要求先按E根product/0.2.0/ready/direction-workspace-return-020.md迁回E盘，再直接继续任务03。本批几何/字号、导航入口、快捷发起保存撤销与旧stats局部采信见planning-recovery-workspace-config-020-02.md；原统计/权限/TABLE锁定，整版未过。
 
 工作台r2采集323个顶层对象/配置66状态；侧栏写回后330画框＋1组件集，r2包68图；旧258为历史计数自行消解。默认蓝与显式图表颜色保持，正式运行视觉未过；侧栏参考已补齐独立分类9处，最新增量13图，见planning-figma-sidebar-sync-020-02.md。Web原流1936/3，Server65/0沿执行声明；53/G1G2等局部锁定。七阶段1/1/5与正式统计不变。
 

@@ -22,7 +22,7 @@ Owner明确图片导出完成后盘点未改页面，并把前后端合并为一
 
 ## 唯一入口与既有成果
 
-当前规划工作区C:/Users/hjxch/.codex/worktrees/020-continuation/Smart-WorkFlow-Agent-Workspace，根分支codex/0.2.0-delivery；普通编码工作树沿既有E:/code/Smart-WorkFlow-Agent-Workspace/下两仓，由执行方按project.md、Git元数据及实际目录核实后使用。不得用E盘旧memory替代当前规划。
+Owner已要求先迁回E盘，前置方向为 E:/code/Smart-WorkFlow-Agent-Workspace/product/0.2.0/ready/direction-workspace-return-020.md。目标根为E:/code/Smart-WorkFlow-Agent-Workspace，接续现有codex/0.2.0-delivery及E盘两个coding工作树；C:/Users/hjxch/.codex/worktrees/020-continuation/Smart-WorkFlow-Agent-Workspace是待保全/退役的源，迁回尚未完成。前置完成后按任务03连续推进；迁回期间区分源分支事实与E盘旧检出快照，不能覆盖在途成果。证据按方向迁至E盘仓外并更新当前引用。
 
 承接Web codex/0.2.0-ui-tenant-form-flow最新审查消费快照b450ef8、Server codex/0.2.0-tenant-form-flow消费659a49c；原8b564c5/6995f88为历史审查点。上述均为回执时点，开始核实当前HEAD、远端和在途修改，沿原任务分支续做，不重置、不从旧develop重做。保护vite.config.ts及根仓既有改动。统一任务不等于现在合并发布分支，七阶段依赖不变。
 

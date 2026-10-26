@@ -1,7 +1,9 @@
 # 功能摘要
 
+2026-10-26：迁回并入任务03同一次执行，先读 E:/code/Smart-WorkFlow-Agent-Workspace/product/0.2.0/ready/direction-workspace-return-020.md，迁回后直接进业务剩余、记同一回执；尚未迁回。本批修复局部采信见planning-recovery-workspace-config-020-02.md，正式像素及整版未过。
+
 0.2.0 IN_PROGRESS，总7阶段：需求评估完成；分支实施进行中；验收同步、合并、0.2.0发布、发布后同步、结束未开始（1/1/5）。
 
-最新planning-receipt-read-workspace-config-020-01.md：真实统计/字段记录租户隔离、基础配置保存回读、TABLE发布详情局部采信；新UI及整版未过。唯一任务03继续，优先修配置几何/图表字号、导航/首页入口、快捷发起两端差异；其余原矩阵按有效证据扣除。侧栏更新后330画框＋1组件集/配置66状态、r2离线68图，25原组件族保持。
+planning-recovery-workspace-config-020-02.md采信本批几何/字号、导航入口、快捷发起保存撤销及旧stats渲染；原统计/权限/基础配置/TABLE局部锁定。任务03先迁回，再承接其余原矩阵；正式像素及整版未过。设计330 FRAME＋1组件集/配置66状态/r2包68图，25原族保持。
 
-Web475814c/Serverf530d33e沿回执；Web1936/3及build4.37s原流，Server65/0声明。53/G1G2/22/29/主题等无影响结果锁定。侧栏独立参考已写回，见planning-figma-sidebar-sync-020-02.md及最新categories增量13图；正式运行像素仍待验；正式统计/P62不变。当前规划，管理员一次授权已结束。
+21:41探索核实Web34a5541/Serverf530d33e；Web1939/3及build4.48s沿本批回执，Server65/0沿前轮声明。53/G1G2/22/29/主题锁定；侧栏02及categories13图已交付。正式统计/P62不变，当前规划，管理员一次授权已结束。
