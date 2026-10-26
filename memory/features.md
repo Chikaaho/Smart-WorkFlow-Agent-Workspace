@@ -1,6 +1,6 @@
 # 功能摘要
 
-2026-10-26：迁回并入任务03同一次执行，先读 E:/code/Smart-WorkFlow-Agent-Workspace/product/0.2.0/ready/direction-workspace-return-020.md，迁回后直接进业务剩余、记同一回执；尚未迁回。本批修复局部采信见planning-recovery-workspace-config-020-02.md，正式像素及整版未过。
+2026-10-26：迁回并入任务03同一次执行，前置已完成（根/证据/状态统一E盘，源工作树退役），按direction-workspace-return-020.md直接进业务剩余、记同一回执。本批修复局部采信见planning-recovery-workspace-config-020-02.md，正式像素及整版未过。
 
 0.2.0 IN_PROGRESS，总7阶段：需求评估完成；分支实施进行中；验收同步、合并、0.2.0发布、发布后同步、结束未开始（1/1/5）。
 

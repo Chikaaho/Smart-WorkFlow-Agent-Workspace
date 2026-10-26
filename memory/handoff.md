@@ -1,6 +1,6 @@
 # 0.2.0 工作台配置回执交接
 
-2026-10-26最新交接：迁回与任务03同一次连续执行；先读 E:/code/Smart-WorkFlow-Agent-Workspace/product/0.2.0/ready/direction-workspace-return-020.md。保全并统一E根/证据/状态/gitlink后直接进业务剩余，迁回记任务03同一份回执；尚未实际迁回。本批局部采信按planning-recovery-workspace-config-020-02.md，旧差异不重新列未修。
+2026-10-26最新交接：迁回前置已由执行完成——根/回执/状态统一在 `E:/code/Smart-WorkFlow-Agent-Workspace`（codex/0.2.0-delivery），证据在 `E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/`，源C盘工作树与evidence-020已退役，gitlink已记录Web34a5541/Serverf530d33e；直接继续任务03业务剩余，迁回记任务03同一份回执。本批局部采信按planning-recovery-workspace-config-020-02.md，旧差异不重新列未修。
 
 2026-10-26｜Planner｜本批局部采信，整版继续
 

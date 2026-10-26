@@ -1,6 +1,6 @@
 # 需求池（Requirement Pool）
 
-当前活动任务：0.2.0 全局 UI 与关联功能完善（2026-10-22，READY，待执行承接）。Owner 已确定五项目标：UI 与文案、P29 租户管理、P65 表单 JavaScript、P2 表单能力完善、P4 流程能力完善；[正式方向](../product/0.2.0/ready/direction-020.md)及[执行入口](../product/0.2.0/ready/execution-prompt-020.md)。像素级还原为页面开发硬标准。总 7 阶段：已完成 1（评估）、进行中 0、未开始 6（分支实施、验收同步、合并、发布、发布后同步、结束）。
+当前活动任务：0.2.0 全局 UI 与关联功能完善（2026-10-22 下发，IN_PROGRESS；现场已迁回 E 盘根仓，唯一执行入口为 [任务03](../product/0.2.0/receipts/planning-execution-prompt-unified-020-03.md)）。Owner 已确定五项目标：UI 与文案、P29 租户管理、P65 表单 JavaScript、P2 表单能力完善、P4 流程能力完善；[正式方向](../product/0.2.0/ready/direction-020.md)。像素级还原为页面开发硬标准。总 7 阶段：已完成 1（评估）、进行中 1（分支实施）、未开始 5（验收同步、合并、发布、发布后同步、结束）。
 
 Owner 确认 0.1.10 已交付；按其指示只读核对远端 main，Web `2df670b50`、Server `85e1ab784` 已有 0.1.10 版本同步。本机 main 与原摘要停在 0.1.9，新版探索确认 tag/Release 存在、knowledge 仍 0.1.9，部署/CI 结果仅见 Release 正文，见 [提交核对](../product/0.2.0/receipts/planning-main-history-20261022.md)。下文待办保留登记时点。已选 P2/P4 的真实差异矩阵已取得，承接 P60 I2/I3/I4 已过能力；新增契约与范围见正式方向，当前不核销编号。
 

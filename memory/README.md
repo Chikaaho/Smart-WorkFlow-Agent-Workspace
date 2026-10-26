@@ -1,6 +1,6 @@
 # memory 索引
 
-2026-10-26：迁回与任务03同一次连续执行。先读 E:/code/Smart-WorkFlow-Agent-Workspace/product/0.2.0/ready/direction-workspace-return-020.md，保全源成果并统一到E根后直接进业务剩余，结果记任务03同一回执；迁回尚未执行。任务03已纳入本批修复局部采信。
+2026-10-26：迁回与任务03同一次连续执行，前置已完成：根与全部回执统一在 `E:/code/Smart-WorkFlow-Agent-Workspace`（codex/0.2.0-delivery），本版仓外证据在 `E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/`，源C盘工作树与 evidence-020 已退役。方向 `product/0.2.0/ready/direction-workspace-return-020.md`，结果记任务03同一回执；直接继续业务剩余。任务03已纳入本批修复局部采信。
 
 2026-10-26｜Planner｜0.2.0 IN_PROGRESS。管理员仅为先前Hook修复的一次授权，已结束。整体七阶段1/1/5。
 

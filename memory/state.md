@@ -1,14 +1,14 @@
 # 当前状态摘要
 
-2026-10-26最新动作：按 E:/code/Smart-WorkFlow-Agent-Workspace/product/0.2.0/ready/direction-workspace-return-020.md 将迁回并入任务03同一次执行，统一E盘后直接进业务剩余、记同一回执；尚未迁回。本批几何/导航/保存撤销/旧stats局部采信，正式像素仍待验。
+2026-10-26最新动作：迁回前置已完成——根codex/0.2.0-delivery接续在 `E:/code/Smart-WorkFlow-Agent-Workspace`，本版证据迁至 `E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/`，根gitlink已记录Web34a5541/Serverf530d33e，C盘源工作树与evidence-020退役；按方向direction-workspace-return-020.md直接继续任务03业务剩余并记同一回执。本批几何/导航/保存撤销/旧stats局部采信，正式像素仍待验。
 
 2026-10-26｜Planner｜0.2.0 IN_PROGRESS，版本已确认。管理员一次Hook修复授权已结束。总7阶段：需求评估完成；分支实施进行中；验收同步、合并、0.2.0发布、发布后同步、结束未开始（1/1/5）。
 
 ## 当前输入与下一动作
 
-最新读取planning-recovery-workspace-config-020-02.md，消费workspace-config-diff-fix-02；唯一业务入口任务03已加入迁回前置及本批局部采信，先迁回后继续。
+最新读取planning-recovery-workspace-config-020-02.md，消费workspace-config-diff-fix-02；唯一业务入口任务03的迁回前置已由执行完成，继续其真实剩余。
 
-21:41探索核实E根develop-sw@05613119、C根codex/0.2.0-delivery@fb70893b共享Git公共目录；Web34a5541/Serverf530d33e在E子仓，C根gitlink仍旧值，knowledge顶部旧任务/提交/侧栏依赖待按迁回方向修正。源与目标未提交/未跟踪成果须保全；回执E根search_fallback/recovery-worktree-state-020.md，远端只到所列push时点。
+21:41探索核实E根develop-sw@05613119、C根codex/0.2.0-delivery@fb70893b共享Git公共目录；迁回按该回执与direction-workspace-return-020.md执行：0.1.10收尾批次4eaa3883落develop-sw，源工作树未提交修改保全为b7fbc36c、未跟踪产物为a19fcbd1，证据8737文件字节一致迁E。
 
 本批Web224文件/1939测试通过，1文件/3测试跳过、四连exit0/build4.48s沿执行回执，未独立重跑；Server65/0沿前轮声明。统计28/22/4、字段1501/SELF1对4/跨租户1500、基础配置及TABLE详情按前轮已采信范围锁定，导出与DR06边界见前审查。
 
