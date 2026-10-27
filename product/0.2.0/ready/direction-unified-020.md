@@ -4,7 +4,7 @@
 
 2026-10-27当前唯一入口：[执行任务03](../receipts/planning-execution-prompt-unified-020-03.md)，已按Owner“逐步收口、缩小执行自由度”要求原位重写。规划自检见[提示自检与收口](../receipts/planning-prompt-self-audit-020-20261027.md)。本次替代03此前执行待办，不另建任务04；具体行为、完成条件、证据复用与停止边界以03第4/7节为准，不把下文原范围描述重新派成全量待做。
 
-最新执行成果读取81，见../receipts/planning-receipt-read-unified-020-81.md：属性逻辑类型和独立纯文本多行/富文本入口及已证保存展示链关闭；新增确定差异仅是字段清单field_1控件类型误显示“单行文本”，按03限定该列修复，不重跑已证链。其他原未采行为继续，19/5/1仍是旧代表覆盖，不作通过数。九个旧整页同样残差仍由规划处理基准，原门槛/未过/A17依赖保持，移动不验。现行system.md已明确明显缺陷可持续第三轮及后续，规划每次须具体诊断并实质收窄，不因轮次自动转等待Owner。
+最新读取82—83，见../receipts/planning-receipt-read-unified-020-82-83.md：字段清单多行标签差异关闭；权限树正向保存重开恢复、脚本预览实际运行、七类控件填写草稿回读与关联空/非空选择局部锁定。本次无新增确定实现缺陷。剩余只补同端点无权边界、节点保存发布、编辑器应用保存重开与原图表/目录/应用/不同视觉状态等真正缺结果；53新旧版本运行已证，不能整条重开。03账本revision2承接1，CONTINUE，六条具体断言RESOLVED不等于六个完整功能通过。旧九整页通过0，原门槛/未过/A17依赖及移动排除保持。
 
 当前侧栏产品行为以direction-sidebar-navigation-020.md为准：展开菜单树、收起最外层入口、目录右侧浮层与纯分组标题区分；底部固定箭头、图标/首字及顶栏稳定承接。旧侧栏反馈由此细化，其他原任务继续。
 
@@ -22,7 +22,7 @@ Owner明确图片导出完成后盘点未改页面，并把前后端合并为一
 
 迁回前置已完成，见../receipts/workspace-return-category-56.md。当前根为E:/code/Smart-WorkFlow-Agent-Workspace，证据为E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/，旧C源与旧证据已退役。沿现有根分支codex/0.2.0-delivery和E盘两个coding工作树继续任务03，不重复迁回。
 
-承接Web codex/0.2.0-ui-tenant-form-flow、Server codex/0.2.0-tenant-form-flow和根codex/0.2.0-delivery。81最新声明Web 7c714a4fe3b34abfccab1227404d5172df6e16b3、根06f945f5cf5c3d53a4b6a92ca3df787cdf1e6732均推送同SHA回读；Server无本批新核验，79遗漏早已消解。后续按实际HEAD/远端与在途接续，精确纳入本批规划产物，保护vite.config.ts等成果。
+承接Web codex/0.2.0-ui-tenant-form-flow、Server codex/0.2.0-tenant-form-flow和根codex/0.2.0-delivery。最新Web保持82的5000ff113fe53cf7f348356f87d0c8f90e651996，根83为4f9d06f8f22918a95b197e32bfd54715a8bc2082，按执行同SHA推送回读；Server无本批新核验，83无源码变更，复用82适用工程结果。后续按实际HEAD/远端与在途接续，精确纳入本批规划产物，保护vite.config.ts等成果。
 
 锁定planning-review-backend-020-03-passed.md的G1/G2、planning-review-frontend-020-01.md的主题/U020-26局部，以及21/23/24和其他实际已通过结果。已有Form242、Engine177、Process467及Web1839通过/3跳过按原时点/层级使用，不累计成新基线。只因实际变更或新增反证复验影响项；旧报告更正不触发业务重跑。
 
