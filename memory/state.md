@@ -18,5 +18,5 @@ DR06按54/55invoke正负向/幂等冻结版本、统计28/22/4与字段记录租
 
 ## 执行86补记
 
-2026-10-27｜Executor｜任务03 revision4 四图型正向语义已补证并局部锁定：散点 amount/completed 四点 (3,2)(5,4)(8,6)(12,10) 真实 X/Y；雷达 演练A—D 四真实轴、amount/completed 两系列多边形；热力 name×category 12 格、值 0/3/5/8/12 与五档颜色；组合 amount 柱 + completed 折线。均一次保存并按 `metadata.dataConfig` 回读，重载保持，测试后 `custom=false`。修复散点误用未参与绘制的指标图例/按点轮换色，以及热力四字 Y 维度名被裁切。证据 `families-78/charts/4sem/`，回执 `a03-four-charts-86.md`。Web `f45cc26a8a23be28ac38a3779968a615c7d8427e` 已推送回读；四门禁227文件/1953测试过、1/3跳过，build 5.33s。85 已证轴/颜色/列表/保存撤销/1366 未重跑。目录/应用卡、九整页、A05—A16、A17 仍待规划/Owner。
+2026-10-27｜Executor｜任务03 revision4 四图型正向语义已补证并局部锁定：散点 amount/completed 四点 (3,2)(5,4)(8,6)(12,10) 真实 X/Y；雷达 演练A—D 四真实轴、amount/completed 两系列多边形；热力 name×category 12 格、值 0/3/5/8/12 与五档颜色；组合 amount 柱 + completed 折线。均一次保存并按 `metadata.dataConfig` 回读，重载保持，测试后 `custom=false`。修复散点误用未参与绘制的指标图例/按点轮换色，以及热力四字 Y 维度名被裁切。证据 `families-78/charts/4sem/`，回执 `a03-four-charts-86.md`。Web `f45cc26a8a23be28ac38a3779968a615c7d8427e` 已推送回读；根 `efa160cfba54ab03dc63a6a1a8fdb5929050f94b` 已推送回读（补记提交后以最新根HEAD为准）。四门禁227文件/1953测试过、1/3跳过，build 5.33s。85 已证轴/颜色/列表/保存撤销/1366 未重跑。目录/应用卡、九整页、A05—A16、A17 仍待规划/Owner。
 

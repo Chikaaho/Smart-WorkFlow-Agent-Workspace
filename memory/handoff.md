@@ -14,5 +14,5 @@ Web25380f2cbc8fe799d8211573e9ddcb8fb01c00da据85同SHA回读；根最新67c60c24
 
 ## 执行86交接
 
-revision4 四图型正向语义已完成：散点四点真实 X/Y、雷达四轴双系列、热力 name×category 12 格值与五档颜色、组合 amount 柱+completed 折线；均保存回读并重载。修复散点图例/颜色语义与热力 Y 维度名裁切。证据 `families-78/charts/4sem/`，回执 `a03-four-charts-86.md`。Web `f45cc26a8a23be28ac38a3779968a615c7d8427e` 已推送回读；四门禁227文件/1953测试过、1/3跳过，build 5.33s。85 已证范围未重跑。剩余仍为目录/应用卡场景、九整页基准、A05—A16 裁决与 A17 发布依赖；本批不自行宣称整版完成。
+revision4 四图型正向语义已完成：散点四点真实 X/Y、雷达四轴双系列、热力 name×category 12 格值与五档颜色、组合 amount 柱+completed 折线；均保存回读并重载。修复散点图例/颜色语义与热力 Y 维度名裁切。证据 `families-78/charts/4sem/`，回执 `a03-four-charts-86.md`。Web `f45cc26a8a23be28ac38a3779968a615c7d8427e` 已推送回读；根 `efa160cfba54ab03dc63a6a1a8fdb5929050f94b` 已推送回读（补记提交后以最新根HEAD为准）。四门禁227文件/1953测试过、1/3跳过，build 5.33s。85 已证范围未重跑。剩余仍为目录/应用卡场景、九整页基准、A05—A16 裁决与 A17 发布依赖；本批不自行宣称整版完成。
 

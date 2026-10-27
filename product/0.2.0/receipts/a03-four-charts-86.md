@@ -76,3 +76,10 @@
 
 - Web `codex/0.2.0-ui-tenant-form-flow`：`f45cc26a8a23be28ac38a3779968a615c7d8427e`，已推送并 `ls-remote` 回读同 SHA；`vite.config.ts` 在途未纳入。
 - 根 `codex/0.2.0-delivery`：本回执与记忆更新随后精确提交，回读见补记。
+
+## Git 回读补记
+
+- 根提交 `efa160cfba54ab03dc63a6a1a8fdb5929050f94b`，推送 `67c60c24..efa160cf`；`git ls-remote origin refs/heads/codex/0.2.0-delivery` 回读同 SHA。
+- 根内 Web gitlink 为 `f45cc26a8a23be28ac38a3779968a615c7d8427e`，与 Web 远端回读一致；`vite.config.ts` 在途未纳入，根状态中的 `m Smart-WorkFlow-aPaaS-Web` 是该受保护改动，不表示 gitlink 未更新。
+- 本补记提交后根 SHA 以补记提交为准，不回写历史提交。
+
