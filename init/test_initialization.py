@@ -18,6 +18,11 @@ import check
 HERE = Path(__file__).resolve().parent
 
 
+def next_minor(version):
+    major, minor, _ = map(int, version.split('.'))
+    return f'{major}.{minor + 1}.0'
+
+
 class InitializationTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
@@ -42,11 +47,12 @@ class InitializationTests(unittest.TestCase):
         self.identity.start()
         self.addCleanup(self.identity.stop)
         self.git('init', '-q')
+        self.base_version = check.manifest(self.root)['version']
         # This is an isolated component fixture, never installed or recorded as
         # a real Harness. Production profiles must use actual host observations.
         adapter = self.root/'init/adapters/fixture.py'
         adapter.write_text('import json,sys\nprint(json.dumps({"case":sys.argv[1],"observed":True}))\n')
-        self.profile = {'version': '1.0.0', 'harnesses': [{
+        self.profile = {'version': self.base_version, 'harnesses': [{
             'id': 'codex', 'strategy': 'adapted', 'environment_assessment': 'isolated component fixture',
             'adapters': ['init/adapters/fixture.py'],
             'checks': [{'kind': kind, 'argv': [sys.executable, 'init/adapters/fixture.py', kind],
@@ -82,7 +88,7 @@ class InitializationTests(unittest.TestCase):
         result = self.complete()
         self.assertEqual(result['status'], 'READY')
         state = check.load(check.state_file(self.root))
-        self.assertEqual(state['version'], '1.0.0')
+        self.assertEqual(state['version'], self.base_version)
         self.assertTrue(state['initialized'])
         self.assertTrue(state['harnesses']['codex']['specialized'])
         self.assertFalse(state['harnesses']['codex']['demo_direct_use'])
@@ -94,11 +100,12 @@ class InitializationTests(unittest.TestCase):
     def test_update_version_mismatch_requires_administrator(self):
         self.complete()
         update = check.manifest(self.root)
-        update['version'] = '1.1.0'
+        candidate = next_minor(self.base_version)
+        update['version'] = candidate
         admin.save(self.root/'init/update.json', update)
         result = check.status(self.root, 'codex')
         self.assertEqual(result['status'], 'UPDATE_REQUIRED')
-        self.assertEqual((result['version'], result['required_version']), ('1.0.0', '1.1.0'))
+        self.assertEqual((result['version'], result['required_version']), (self.base_version, candidate))
 
     def test_result_ahead_of_checkout_is_also_mismatch(self):
         self.complete()
@@ -147,15 +154,16 @@ class InitializationTests(unittest.TestCase):
     def test_failed_update_keeps_old_result_version(self):
         self.complete()
         update = check.manifest(self.root)
-        update['version'] = '1.1.0'
+        candidate = next_minor(self.base_version)
+        update['version'] = candidate
         admin.save(self.root/'init/update.json', update)
         broken = copy.deepcopy(self.profile)
-        broken['version'] = '1.1.0'
+        broken['version'] = candidate
         broken['harnesses'][0]['checks'][0]['expect_json'] = {'observed': False}
         with self.assertRaises(ValueError):
             self.complete(broken)
         self.assertEqual(check.status(self.root)['status'], 'UPDATE_REQUIRED')
-        self.assertEqual(check.load(check.state_file(self.root))['version'], '1.0.0')
+        self.assertEqual(check.load(check.state_file(self.root))['version'], self.base_version)
 
     def test_missing_dispatch_and_unregistered_harness_rejected(self):
         broken = copy.deepcopy(self.profile)
@@ -169,6 +177,7 @@ class InitializationTests(unittest.TestCase):
 
     def test_template_paths_do_not_count_as_installed(self):
         profile = check.load(HERE/'local-profile.example.json')
+        profile['version'] = self.base_version
         with self.assertRaisesRegex(ValueError, 'missing'):
             self.complete(profile)
 
@@ -206,7 +215,7 @@ class InitializationTests(unittest.TestCase):
         self.git('add', 'init/feature.py')
         self.assertFalse(admin.version_change(self.root))
         update = check.manifest(self.root)
-        update['version'] = '1.1.0'
+        update['version'] = next_minor(self.base_version)
         admin.save(self.root/'init/update.json', update)
         self.assertFalse(admin.version_change(self.root))
         self.git('add', 'init/update.json')
@@ -233,8 +242,8 @@ class InitializationTests(unittest.TestCase):
                                       'bump', '--part', 'minor', '--summary', 'new shared capability']):
             with contextlib.redirect_stdout(io.StringIO()):
                 self.assertEqual(admin.main(), 0)
-        self.assertEqual(check.manifest(self.root)['version'], '1.1.0')
-        self.assertEqual(check.load(check.state_file(self.root))['version'], '1.0.0')
+        self.assertEqual(check.manifest(self.root)['version'], next_minor(self.base_version))
+        self.assertEqual(check.load(check.state_file(self.root))['version'], self.base_version)
 
     def test_administrator_write_role_is_required(self):
         with patch.object(sys, 'argv', ['admin.py', '--root', str(self.root), 'begin']):

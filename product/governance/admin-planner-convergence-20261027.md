@@ -11,6 +11,7 @@
 ## 机制与边界
 
 - `.codex/governance/planner-convergence.py`读取当前提示的最小交接账本，比较原缺口、目标/允许动作/禁止动作及参数；仅换措辞、增号、重写同文件或换关联worktree均不能清零。
+- `PLANNER_ACTION`现与执行缺口同等级校验：必须有具体对象、有限目标与允许动作、可判定完成条件；拒绝“其他控件状态”“1366”“帮助和联合链”“由规划处理”等概括尾项。该负例来自一次连续85轮验收，局部动作已具体化但正文仍留概括待办，执行完成明确清单后仍无法判断开放范围。
 - 稳定原ID、对象/断言、失败历史、已过项持续继承。已过重开有具体反证/影响，非执行状态保留最后收口范围，防止中间状态重置。
 - Codex原Stop适配器增加planner分支，Windows/POSIX调用同一校验；管理员、普通规划问答及只读旧提示不要求业务补附件。派发后宣告结束不能与CONTINUE账本矛盾。
 - 修复分发缺口：原`.codex/governance/`整体忽略，当前worktree缺文件。只将本次组件及必要共用依赖纳入Git，runtime和其余本机治理资产继续忽略。角色观察器承接已发布e6d72786的worktree绑定修复及28项回归，并补“切换管理员/切换为规划”显式声明。
@@ -19,7 +20,7 @@
 
 ## 验证
 
-`py -3 -X utf8 .codex/governance/test-planner-convergence.py`：25项通过，覆盖具体诊断、实际收紧、第三轮允许、已过保护、状态绕过、小异常影响、口头提前结束、改名/关联worktree继承、只读旧提示、大回执不过度拦截，以及真实Windows/POSIX Stop适配器。
+`py -3 -X utf8 .codex/governance/test-planner-convergence.py`：26项通过，覆盖具体诊断、实际收紧、第三轮允许、已过保护、状态绕过、小异常影响、口头提前结束、`PLANNER_ACTION`概括尾项拒绝、改名/关联worktree继承、只读旧提示、大回执不过度拦截，以及真实Windows/POSIX Stop适配器。
 
 `py -3 -X utf8 .codex/governance/test-codex-session-role.py`：28项通过，覆盖当前会话人类声明、管理员授权、问答回复、worktree切换、身份/仓库不匹配拒绝等。未运行任何业务测试、构建、数据库或部署。
 

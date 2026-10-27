@@ -97,6 +97,30 @@ class ConvergenceTests(unittest.TestCase):
         del bridge['items'][0]['scope']
         self.rejected(bridge, '保留最后收口范围', self.document)
 
+    def test_planner_action_rejects_vague_tail_and_requires_bounded_completion(self):
+        doc = copy.deepcopy(self.document)
+        item = doc['items'][0]
+        item.update(status='PLANNER_ACTION', failed_rounds=0,
+                    subject='其他控件状态、1366、帮助和联合链',
+                    criterion='完成其余未覆盖范围',
+                    next_action='由规划处理')
+        item.pop('diagnosis')
+        item['scope']['targets'] = ['其他控件状态', '1366', '帮助和联合链']
+        self.rejected(doc, '笼统尾项|范围标签')
+
+        item.update(subject='1366 工作台配置弹窗关闭后的焦点返回',
+                    criterion='已有证据能证明焦点返回时关闭该项，否则形成具体缺口',
+                    next_action='读取已有1366保存截图与焦点结果，形成逐项裁决或具体Owner待决')
+        item['scope']['targets'] = ['1366工作台配置弹窗关闭后的焦点返回']
+        item['scope']['allowed_actions'] = ['读取既有1366证据', '形成逐项规划裁决']
+        item['scope']['forbidden_actions'] = ['让Executor重跑1366', '以未覆盖范围代替具体结论']
+        item['acceptance'] = ['已给出逐项裁决：证据充分则关闭，存在反证则列出原对象、实际结果和预期']
+        del item['scope']['constraints']
+        self.validate(doc)
+
+        item.pop('acceptance')
+        self.rejected(doc, '完成条件')
+
     def test_retry_adds_measurable_constraint(self):
         doc = self.retry()
         doc['items'][0]['scope'] = copy.deepcopy(self.document['items'][0]['scope'])
