@@ -1,0 +1,112 @@
+{
+  "schema": "agent-coding-engine.harness-list.v1",
+  "harnesses": [
+    {
+      "id": "codex",
+      "name": "Codex CLI / Desktop",
+      "commands": [
+        "codex"
+      ],
+      "project_usage": "used",
+      "maintenance": {
+        "status": "adapter_and_component_checks",
+        "references": [
+          "product/governance/admin-planner-convergence-20261027.md"
+        ],
+        "last_maintained": "2026-10-27"
+      },
+      "demo_paths": [
+        ".codex/hooks.json",
+        ".codex/hooks/codex-stop-adapter.ps1",
+        ".codex/hooks/codex-stop-adapter.sh",
+        ".codex/governance/codex-session-role.py",
+        ".codex/governance/planner-convergence.py"
+      ],
+      "reuse": "verify_then_reuse",
+      "specialization": [
+        "操作系统和解释器路径",
+        "CLI与Desktop实际事件及载荷字段",
+        "稳定会话/角色来源与worktree绑定",
+        "宿主信任、重载和真实派发"
+      ],
+      "notes": "已有组件验证不等于任何新机器或当前Desktop会话均可直接使用；缺少角色/转录字段必须适配。"
+    },
+    {
+      "id": "zcode",
+      "name": "ZCode",
+      "commands": [
+        "zcode"
+      ],
+      "project_usage": "used",
+      "maintenance": {
+        "status": "historically_maintained",
+        "references": [
+          "system.md"
+        ],
+        "last_maintained": null
+      },
+      "demo_paths": [
+        ".codex/hooks/zcode-role-bind.cmd",
+        ".codex/hooks/zcode-stop-gate.cmd"
+      ],
+      "reuse": "adapt_required",
+      "specialization": [
+        "Windows process/argv与POSIX入口",
+        "用户级配置、工作区信任与配置漂移",
+        "UserPromptSubmit/Stop载荷",
+        "本地声明中可能缺失的公共实现依赖"
+      ],
+      "notes": "包装器只是参考，不能把文件存在或历史维护记录当作新机安装完成；管理员按当前宿主重新适配与验证。"
+    },
+    {
+      "id": "claude-code",
+      "name": "Claude Code",
+      "commands": [
+        "claude"
+      ],
+      "project_usage": "configured",
+      "maintenance": {
+        "status": "entry_reference_only",
+        "references": [
+          "CLAUDE.md"
+        ],
+        "last_maintained": null
+      },
+      "demo_paths": [
+        ".claude/settings.json",
+        ".claude/hooks/stop-execution-completeness.sh"
+      ],
+      "reuse": "adapt_required",
+      "specialization": [
+        "实际Hook事件、载荷与结束决定协议",
+        "显式角色和稳定任务身份",
+        "公共Validator是否已随本机适配交付"
+      ],
+      "notes": "仓库有入口配置；不据此声称真实使用、自动派发或全部角色已验证。"
+    },
+    {
+      "id": "custom",
+      "name": "其他 / 自定义Harness",
+      "commands": [],
+      "project_usage": "known_only",
+      "maintenance": {
+        "status": "not_adapted",
+        "references": [
+          "init/demos/README.md"
+        ],
+        "last_maintained": null
+      },
+      "demo_paths": [
+        "init/demos/README.md"
+      ],
+      "reuse": "design_adapter",
+      "specialization": [
+        "先确认指令入口与实际事件能力",
+        "实现载荷规范化、角色绑定、公共校验调用与宿主结果投影",
+        "验证真实派发和失败路径"
+      ],
+      "notes": "有具体Harness时先登记独立ID、维护记录及适配结论；不把custom当作全部宿主已支持。"
+    }
+  ],
+  "reviewed_at": "2026-10-27"
+}

@@ -24,6 +24,7 @@
 
 ## 2. 允许执行的操作
 
+- 按system.md §0.0.1在角色任务前运行只读init/check.py，可读init/README.md、update.json、harness-list.json及本机result指针；未就绪提醒管理员，不自行安装/更新，不读取初始化实现代码。此例外不开放工程命令。
 - 阅读 `memory/` 中的压缩记忆文件
 - 阅读 `search_fallback/` 中的探索结果
 - 阅读并维护 `todo/`，先核对现有条目再新增、移除或去重
@@ -59,7 +60,7 @@
 **角色铁律**：
 
 - **规划代理只规划、不执行。** 不修改业务代码，不代替执行代理修 bug、补测试、调配置。
-- **规划代理依据执行证据验收**：读权限仅限 `system.md` / `roles/planner.md` / `memory/` / `search_fallback/` / `product/` / `todo/`；验收时同样不读取 coding 仓库代码或 `knowledge/`。写权限仅限 `memory/` / `search_task/` / `product/` / `todo/`（见本文 §4），不执行编译、测试、构建、迁移、部署等状态变更命令。
+- **规划代理依据执行证据验收**：读权限仅限 `system.md` / `roles/planner.md` / `memory/` / `search_fallback/` / `product/` / `todo/`及上述init指引/状态；只读初始化检查是system.md明确允许的启动例外；验收时同样不读取 coding 仓库代码或 `knowledge/`。写权限仅限 `memory/` / `search_task/` / `product/` / `todo/`（见本文 §4），不执行编译、测试、构建、迁移、部署等状态变更命令。
 
 **代码读取边界（硬约束）**：规划在方向制定、探索和验收中均不得读取源码、测试代码、完整代码 diff、`node_modules/` 或 `knowledge/`，也不得要求将代码复制到回执以绕过边界。需要实现或权威状态事实时通过 §6 委派执行方核实，读取结论和行为证据；证据阅读、理解和裁决由规划自己完成。
 
@@ -346,7 +347,7 @@ memory/
 
 ### 10.1 规划角色启动时必须优先读取
 
-规划角色新会话开始时，必须按顺序读取：
+规划角色新会话开始时，先按system.md §0.0.1执行只读初始化/版本检查，READY后再按顺序读取：
 
 ```
 1. system.md                           — 本文件（角色入口与公共协议）

@@ -3,7 +3,7 @@
 > 本文件是 coding 项目工作区根目录（`.`）的唯一行为宪法入口。
 > 它只承载 Owner 裁量、角色门禁、公共安全边界、任务分级与流程路由；角色细则位于 `roles/`，工程细则位于项目说明声明的 coding 仓库工程宪法。
 >
-> **核心原则：先确认唯一会话角色，再按风险匹配流程。治理成本必须与任务风险相称。**
+> **核心原则：先检查本机初始化与全局版本，再确认唯一会话角色，按风险匹配流程。治理成本必须与任务风险相称。**
 
 ---
 
@@ -14,6 +14,21 @@
 本工作区的用户是项目 **Owner**，对项目目标、优先级、范围、治理规则、角色授权、验收口径与发布决定拥有最终自由裁量权。Owner 可以通过明确指令新增、修改、暂停或废止现行规则，也可以对具体事项作例外裁决；发生冲突时，以 Owner 最新、明确且可唯一理解的指令为准。
 
 Owner 的自由裁量权仅属于用户本人，不自动转授给模型、Harness、会话角色或 Sub Agent。涉及远程发布、破坏性操作、权限或安全边界降级等动作，除非 Owner 对该具体动作作出明确授权，否则原确认门禁继续有效。
+
+### 0.0.1 本机初始化与全局版本（所有角色前置）
+
+Owner于2026-10-27要求：任何角色、任何Harness开始或续办任务时，读取本文件后先运行只读`python3 init/check.py --harness <实际Harness ID>`；Windows可用`py -3`。该操作在角色门禁之前允许执行，不授予任何会话角色，也不允许普通角色安装或改写环境。指引为`init/README.md`，已知种类/项目使用/维护与复用条件在`init/harness-list.json`。
+
+`init/update.json`是仓库要求的全局初始化版本；`init/result.json`是本机状态指针，版本与验证结果以它指向的Git公共目录本机结果为准。result/profile不入Git，不继承别的机器或另一Harness的完成状态；关联worktree可共享已验证的本机状态。检查只读、不联网、不自动安装，不把文件存在当初始化完成。
+
+- READY且实际Harness已验证、版本匹配：再进入§0.2角色门禁及原授权任务。
+- 未初始化、该Harness未初始化、结果损坏或缺Python/Git：明确提醒切换管理员，按init指引适配、验证、更新result；普通角色暂停业务操作。
+- UPDATE_REQUIRED：报告本机与update版本，提醒管理员更新适配并复验后更新result，不能只改数字。
+- 已明确声明管理员的会话在未就绪时可继续初始化/更新治理维护，不循环要求重新声明；未声明角色时只提示需管理员初始化，不能自行认领管理员。
+
+Hook在init中作为参考与公共行为要求，管理员结合本机平台、环境及Harness判断能否直接用、是否需要特殊化，再选择复用、适配或重写；真实角色、允许/拒绝和实际派发等检查通过后才写初始化完成。无真实能力不得假报已支持，不由通用脚本覆盖所有宿主配置。公共契约/Validator保持同源，不另立终态规则。
+
+新增或改变全局治理、Hook、Skill来源、初始化机制或可复用Harness能力时，管理员在同一批次递增init/update.json的独立SemVer，并更新受影响Harness维护记录；提交前运行`python3 init/admin.py check-version`核验暂存版本。只改变业务功能/回执不递增该全局版本。仓库要求版本升级不自动晋级本机result；本机实际适配/验证后由管理员更新。具体步骤、demo和字段只维护在init指引，不复制到各宿主入口。
 
 ### 0.1 三种会话角色
 
@@ -36,7 +51,7 @@ Owner 的自由裁量权仅属于用户本人，不自动转授给模型、Harne
 
 **角色边界速查**：
 
-- **规划**：只读 `system.md`、`roles/planner.md`、`memory/`、`search_fallback/`、`product/`、`todo/`；只写 `memory/`、`search_task/`、`product/`、`todo/`；不读取 coding 仓库代码或 `knowledge/`，不执行工程命令。验收只读取执行证据，判断行为是否符合预期，细则见 `roles/planner.md` §7。
+- **规划**：只读 `system.md`、`roles/planner.md`、init指引/版本/Harness清单/本机状态指针、`memory/`、`search_fallback/`、`product/`、`todo/`；只写 `memory/`、`search_task/`、`product/`、`todo/`；不读取 coding 仓库代码或 `knowledge/`，不执行工程命令。验收只读取执行证据，判断行为是否符合预期，细则见 `roles/planner.md` §7。
 - **执行**：可读全部目录；可写授权范围内的代码、验证资产、`knowledge/`、`search_fallback/` 与按等级要求的回执；只有明确状态同步授权时才写 `memory/` 和 `todo/requirement-pool.md`。
 - **管理员**：可读全部非代码内容；可写宪法、角色定义、架构文档、工程配置与 Governance Implementation；不读写业务/测试实现，不运行业务编译、测试、迁移或部署，不裁决业务状态。
 
@@ -84,9 +99,9 @@ L/XL 终态同步以及已授权发布、版本切换、提交推送导致当前
 
 ### 0.5 工作区 Skill 前置依赖
 
-任何机器首次拉取本仓库后，以及每次开始新任务时，所有角色都必须先完成依赖检查，再开展任务工作。确认会话角色后，在工作区根目录运行 `python3 governance/skills/ensure-skills.py`；Windows 可用 `py -3 governance/skills/ensure-skills.py`。入口检查 `humanizer-zh`（来源仓库名 `humanizer-zh-cn`）与 `no-negative-echo`，已有可用安装则复用，缺失则从仓库声明的来源安装。安装或读取失败时如实报告并修复，不得略过前置依赖继续任务。
+Skill准备纳入§0.0.1及init/README.md。管理员按指引运行`python3 init/admin.py --role admin skills`（Windows可用py -3），内部复用governance/skills/ensure-skills.py；缺少时才按原来源安装，已有可用安装不重复下载。安装来源唯一在governance/skills/required-skills.json，行为与兼容旧命令见同目录README.md。
 
-安装来源由 `governance/skills/required-skills.json` 声明，检查与使用说明见 `governance/skills/README.md`。路径按当前机器定位，不绑定个人用户名或本机绝对路径，不重复安装同一技能，不计算非必要产物哈希。本节适用于所有接入该工作区的 Harness，均通过 `system.md` 使用同一份声明和检查器；新增 Harness 时将其指令入口路由到本文件。本节依赖准备属于所有角色的启动操作，不扩大业务读写、工程执行或发布权限；角色门禁仍先执行。
+普通角色通过只读init/check.py核验本机状态、版本和Skill可读性；未就绪先提醒管理员，不自行安装。READY输出包含两份Skill路径。本节和初始化只开放前置检查/管理员治理，不扩大业务权限，不跳过角色声明；任何Harness都从system.md消费同一规则。
 
 检查通过后读取输出路径中的两份 `SKILL.md`；同一会话已完整读取且未变化的规范可复用。中文进度、最终回复与交付正文按 `humanizer-zh` 嵌入模式审校，保留事实、原意和不确定性，通常只展示终稿。所有任务交付前用 `no-negative-echo` 检查标题、文件名、正文、注释、提交与交接，围绕用户接受的目标和实际结果表达，保留必要风险、限制和审计事实；工具或 Hook 改过内容后，回读并检查受影响部分。
 
