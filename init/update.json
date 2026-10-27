@@ -1,0 +1,10 @@
+{
+  "schema": "agent-coding-engine.init-update.v1",
+  "version": "1.0.0",
+  "updated_at": "2026-10-27",
+  "summary": "按本机环境与Harness适配Hook，统一Skill准备、本机初始化状态和版本检查",
+  "harness_list": "init/harness-list.json",
+  "skill_manifest": "governance/skills/required-skills.json",
+  "required_checks": ["startup_gate", "role_binding", "allow", "reject", "dispatch"],
+  "versioned_paths": ["init/", "governance/skills/", ".codex/hooks/", ".codex/hooks.json", ".codex/governance/", ".claude/hooks/", ".claude/settings.json", "system.md", "roles/"]
+}

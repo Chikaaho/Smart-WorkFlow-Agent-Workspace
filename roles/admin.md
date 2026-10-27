@@ -30,6 +30,7 @@
 - 读写架构文档：`memory/architecture.md`、`knowledge/architecture.md`
 - 读写各 coding 仓库的宪法和工程配置，包括 `AGENTS.md`、`docs/governance/engineering-constitution.md`、构建、工具链、CI 与运行时配置文件
 - 读写 **Governance Implementation**：`.claude/hooks/`、`.codex/hooks/`、`.codex/governance/` 下的公共终态契约、公共 Validator、宿主外 Supervisor、Host Adapter、宿主 Stop Gate 入口（`stop-gate.sh` / `stop-gate.ps1` / `zcode-stop-gate.py`）、Windows process/argv 重试入口 `zcode-stop-launcher.ps1` 与解释器/有界进程辅助 `windows-validator-runtime.ps1`、会话角色绑定入口（`session-role.ps1` / `zcode-role-bind.py`）、宿主观察读取器、声明安装器（`install-zcode-hooks.ps1` / `install-zcode-hooks.sh` 与 `zcode-hooks-declaration.json`）、门禁自检（`hook-selfcheck.ps1` / `hook-selfcheck.sh`）与治理契约测试；并维护宿主 hook 声明（仓库来源 + 机器级生效副本）。宿主入口只绑定会话身份、规范化宿主载荷、调用同一公共 Validator、投影宿主支持的结束决定并写脱敏审计，不自行裁决终态；工作区 hook 的宿主信任评审由 Owner 在宿主界面完成，管理员不代持信任
+- 维护 init 统一指引、update 全局版本、Harness list、只读检查器、治理验证与本机 result/profile；按实际环境适配 Hook，不将 demo 视为通用安装包。全局能力变更同批递增 update，实际验证后才更新本机 result；未初始化时可继续本项治理维护。
 - 读写跨 Harness 的运行环境前置依赖：`governance/skills/` 下的来源声明、检查与安装入口、使用说明及对应治理测试；宿主目录只保留必要适配或兼容入口
 - 维护宿主门禁可观察性：`.codex/governance/hook-selfcheck.ps1` 报告声明、入口、观察读取器、信任状态与审计台账；门禁是否实际运行以审计台账为准，不以文件存在代替
 - 维护 S/M/L/XL 分级契约及其文档、机器终态、Validator 与治理契约测试的一致性
@@ -56,6 +57,7 @@
 
 | 类别 | 文件 | 说明 |
 |------|------|------|
+| 初始化与适配 | `init/`、本机 result/profile 及指向的 Git 公共目录初始化记录 | 全角色只读前置、管理员适配/验证/升级，状态不入 Git；全局版本与业务版本独立 |
 | 系统宪法 | `system.md` | 角色入口 + 公共协议（唯一行为宪法入口） |
 | 角色定义 | `roles/planner.md`、`roles/executor.md`、`roles/admin.md` | 三个角色的完整定义（2026-08-22 自 system.md 拆分） |
 | 架构文档 | `memory/architecture.md`、`knowledge/architecture.md` | 架构文档（memory 为摘要口径，knowledge 为权威口径） |
@@ -69,7 +71,7 @@
 
 - 默认需求交付流程只维护在 `system.md` §3.0；角色、说明和宿主文档仅引用。调整时检查既有工作项/依赖门禁的适配，不另建终态 schema 或阶段确认，不重置已授权在途发布。
 
-- 落实 `system.md` §3.6 的七条硬约束，治理任务同样遵守补充消息处理后自动续行、授权内可回滚且不涉及外部系统的常规事项自行决定并在交接记一行、进度固定报告总阶段数与三类状态。维护验收规则时同步修改冲突的角色条款和提示模板，统一为规划第一层验收按问题性质处置：明确缺陷继续组织修复，仅剩不能消解的证据/文字小问题提交用户确认；不设置固定轮数的停止条件。原始证据按既有本地留存规则完整保存，回执只跟踪摘要与位置；文档变更不另建机器终态字段。
+- 落实 `system.md` §3.6 的七条硬约束，治理任务同样遵守补充消息处理后自动续行、授权内可回滚且不涉及外部系统的常规事项自行决定并在交接记一行、进度固定报告总阶段数与三类状态。维护验收规则时同步修改冲突的角色条款和提示模板：明显业务、使用或 UI 还原缺陷可继续第三轮及后续修复；每次派发必须给具体位置、实际/预期、差异依据、限定范围与完成条件，并逐轮实际收窄自由度。仅已有证据证明不影响业务、使用和 UI 还原度的小异常，才可登记理由后提前结束相应修复；影响不明不得降格。原始证据按既有本地留存规则完整保存，回执只跟踪摘要与位置；文档变更不另建机器终态字段。
 - 角色边界调整时，先改 `system.md`（入口与公共协议）与对应 `roles/` 文件，再同步各 coding 仓库工程宪法与知识索引中的引用
 - 保持执行限制与既有机器门禁一致：在同一 `terminal-contract.json` 中维护生命周期字段，公共 Validator、Supervisor、后台与终态入口及契约测试同步；覆盖允许/拒绝路径，不只补文案，不以句柄作为单独许可，不设置固定时长豁免。检查采用短时、有限、可观测的治理用例；完成即收敛，失败/超时/失去可观测性清理自身任务并保存结果，不停止用户既有服务。
 - 不参与功能状态流转：功能状态机（PASSED/COMPLETED 等）由规划角色管理，管理员不写 `memory/state.md`、`memory/handoff.md`、`memory/features.md`

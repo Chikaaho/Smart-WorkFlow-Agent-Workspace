@@ -21,6 +21,16 @@ git branch --show-current
 
 Smart-WorkFlow/OA 的产品状态入口是 [`develop-sw/knowledge/current-status.md`](https://github.com/Chikaaho/Smart-WorkFlow-Knowledge/blob/develop-sw/knowledge/current-status.md)；`main/knowledge/current-status.md` 只负责通用 Engine 当前实例的状态。
 
+## 启动前检查
+
+新机器先由管理员按 [`init/README.md`](init/README.md) 完成本机适配并更新本机 result。之后任何角色、任何 Harness 在角色任务前都先运行只读检查：
+
+```bash
+python3 init/check.py --harness <实际Harness ID>
+```
+
+Windows 使用 `py -3`。`init/update.json` 是仓库全局版本；`init/result.json` 只指向本机实际验证结果，不入 Git。未初始化、Harness 未验证或版本不匹配时，普通角色提醒管理员，不继续业务工作。
+
 ## 它解决什么问题
 
 Agent Coding Engine 把长期 coding 项目中容易散落的角色权限、任务分级、需求方向、代码探索、执行证据、项目知识和终态同步组织成一个可持续运行的工作区。流程按风险选择：局部小改直接执行，跟踪型功能进入完整闭环。
@@ -135,6 +145,7 @@ Owner 已使用 ZCode 提供的体验套餐验证过一种最轻量的接入方�
 
 | 路径 | 作用 | 主要维护者 |
 | --- | --- | --- |
+| `init/` | 本机初始化、全局版本、Harness 清单、适配参考与本机状态指针 | Admin |
 | `project.md` | 当前项目的唯一说明入口：身份、仓库目录、工程规则、启动与验证方式 | 项目接入时配置 |
 | `system.md` | 工作区唯一行为宪法：角色入口、协作协议、状态与安全边界 | Admin |
 | `roles/` | Planner、Executor、Admin 的完整角色定义 | Admin |

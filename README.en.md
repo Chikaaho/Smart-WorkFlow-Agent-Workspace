@@ -21,6 +21,16 @@ git branch --show-current
 
 The product-state entry point for Smart-WorkFlow/OA is [`develop-sw/knowledge/current-status.md`](https://github.com/Chikaaho/Smart-WorkFlow-Knowledge/blob/develop-sw/knowledge/current-status.md). `main/knowledge/current-status.md` only describes the current generic Engine instance.
 
+## Startup Check
+
+On a new machine, an Admin first follows [`init/README.md`](init/README.md) to adapt and verify the local Harness, then updates the machine result. Before any role task, every role and Harness runs the read-only check:
+
+```bash
+python3 init/check.py --harness <actual-harness-id>
+```
+
+Use `py -3` on Windows. `init/update.json` is the repository-wide initialization version; `init/result.json` points only to verified machine-local state and is not committed. If the machine is not initialized, the Harness is not verified, or the versions differ, ordinary roles ask the Admin and do not continue business work.
+
 ## What It Solves
 
 Agent Coding Engine organizes role permissions, task levels, requirement direction, code exploration, execution evidence, project knowledge, and terminal-state synchronization that would otherwise become scattered across a long-running coding project. The workflow is selected by risk: small local changes are executed directly, while tracked features enter the complete lifecycle.
@@ -135,6 +145,7 @@ This trial shows that project context and task state are stored in the workspace
 
 | Path | Purpose | Primary Maintainer |
 | --- | --- | --- |
+| `init/` | Machine initialization, global version, Harness inventory, adaptation references, and local state pointer | Admin |
 | `project.md` | Single description entry point for the current project: identity, repository directories, engineering rules, startup, and verification | Configured during project onboarding |
 | `system.md` | Single workspace behavioral constitution: role entry, collaboration protocol, state, and safety boundaries | Admin |
 | `roles/` | Complete definitions for Planner, Executor, and Admin | Admin |

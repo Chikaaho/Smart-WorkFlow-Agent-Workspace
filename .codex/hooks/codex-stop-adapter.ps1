@@ -92,6 +92,22 @@ try {
         $InputJson = $payload | ConvertTo-Json -Compress -Depth 100
     }
     $record.active_role = $role
+    if ($role -eq 'planner') {
+        $plannerPython = Resolve-ValidatorPython -Root $root
+        if (-not $plannerPython.available) { Block-Adapter 'PYTHON_UNAVAILABLE' }
+        $result = Invoke-GovernanceProcess -Executable $plannerPython.path -Arguments @('-X', 'utf8', (Join-Path $root '.codex/governance/planner-convergence.py'), '--workspace', $root) -InputText $InputJson -TimeoutMs 15000
+        if ($result.failure) { Block-Adapter 'PLANNER_VALIDATOR_UNAVAILABLE' }
+        try { $decision = $result.stdout | ConvertFrom-Json } catch { Block-Adapter 'PLANNER_OUTPUT_INVALID' }
+        if ($decision.ok -ne $true) {
+            if (-not $decision.reason) { Block-Adapter 'PLANNER_OUTPUT_INVALID' }
+            $record.decision = 'block'; $record.reason_code = 'PLANNER_CONVERGENCE_REJECTED'; Write-AdapterAudit
+            [Console]::WriteLine((@{ decision = 'block'; reason = [string]$decision.reason } | ConvertTo-Json -Compress))
+            exit 0
+        }
+        if ($result.exitCode -ne 0) { Block-Adapter 'PLANNER_PROCESS_FAILED' }
+        $record.decision = 'pass'; $record.reason_code = 'PLANNER_CONVERGENCE_ACCEPTED'; Write-AdapterAudit
+        exit 0
+    }
     if ($role -ne 'executor') {
         $record.decision = 'pass'; $record.reason_code = if ($role) { 'ROLE_NOT_EXECUTOR' } else { 'ROLE_UNBOUND' }; Write-AdapterAudit
         exit 0

@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "harnesses": [
+    {
+      "id": "codex",
+      "strategy": "adapted",
+      "environment_assessment": "管理员填写本机系统、解释器、实际事件/载荷、角色绑定和安装位置；这是模板，不能据此写初始化完成。",
+      "adapters": ["init/adapters/local-codex-adapter.py"],
+      "checks": [
+        {"kind": "startup_gate", "argv": ["python", "init/adapters/local-codex-check.py", "--case", "startup_gate"], "expect_json": {"startup_gate_verified": true}},
+        {"kind": "role_binding", "argv": ["python", "init/adapters/local-codex-check.py", "--case", "role_binding"], "expect_json": {"actual_role_binding_verified": true}},
+        {"kind": "allow", "argv": ["python", "init/adapters/local-codex-check.py", "--case", "allow"], "expect_json": {"valid_result_allowed": true}},
+        {"kind": "reject", "argv": ["python", "init/adapters/local-codex-check.py", "--case", "reject"], "expect_json": {"invalid_result_rejected": true}},
+        {"kind": "dispatch", "argv": ["python", "init/adapters/local-codex-check.py", "--case", "dispatch"], "expect_json": {"actual_host_dispatch_verified": true}}
+      ]
+    }
+  ]
+}
