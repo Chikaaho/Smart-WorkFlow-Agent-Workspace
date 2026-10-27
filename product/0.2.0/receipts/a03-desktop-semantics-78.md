@@ -80,3 +80,9 @@
 - 3:2 完成率标签与待办字段语义按真实数据修正；整页 97.893%/排除 38.960% 仍未过。
 - 6:2 工具栏/表头/胶囊/文字色对齐，定义标识与分类空关联、更新人缺省均如实呈现；整页因真实 8 行 vs 3 示例行为 79.298%，静态骨架已无成片结构差。
 - 下一步：25 族真实不同状态（按行 9 有消费者结果/8 部分/8 残余）、1366 受影响页面的实际交互可达、剩余字体栅格与真实数据差异留账；A17 合并/发布/同步继续依赖整版验收。0.2.0 IN_PROGRESS（1/1/5）。
+
+## 六、Git 提交与推送回读
+
+- Web：https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web.git，分支 codex/0.2.0-ui-tenant-form-flow，提交 b275273（04b56f4..b275273，5 文件）；`vite.config.ts` 在途未纳入。`git ls-remote` 回读 `b27527379e782ab626ea5a770538d1dd925c257e`，与本地 HEAD 一致。
+- 根：https://github.com/Chikaaho/Smart-WorkFlow-Agent-Workspace.git，分支 codex/0.2.0-delivery，提交 36968f04（ef544b25..36968f04，本回执+规划文档+memory+Web gitlink）；`git ls-remote` 回读 `36968f0418bd2304ad3ba8a8bc5790c92cb39965`，与本地 HEAD 一致。
+- 未执行合并、tag/Release、部署或强制推送；A17 仍等整版验收授权。
