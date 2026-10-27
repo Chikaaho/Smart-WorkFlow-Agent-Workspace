@@ -2,19 +2,15 @@
 
 2026-10-26当前视觉输入：全量蓝色PNG为 E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/design-blue-20261026/（index.html / index.json）；核心331、规范102个顶层对象。相同节点以此包及direction-blue-primary-020.md为准；下文旧包保留未变几何、配置语义和资源，旧PNG颜色不覆盖当前参考。
 
-2026-10-26当前入口：[新执行任务03](../receipts/planning-execution-prompt-unified-020-03.md)。Owner已终止旧执行；本文件原契约按已确认范围和历史时点承接，当前工作台设计以direction-workspace-config-020-r2.md为准，不并行恢复旧派发。
+2026-10-27当前唯一入口：[执行任务03](../receipts/planning-execution-prompt-unified-020-03.md)。Owner要求原五项目标全部连续执行，并加强反复未收敛事项的约束。任务03已整理为一份当前剩余矩阵，原矩阵的实际视觉差异（97大几何已于69锁定）；首采只作诊断，实际修复后核对最后快照，仍有授权内可执行项时继续。实现方案和内聚批次由Executor决定，正式验收与发布依赖保留。
 
-最新44—52范围见../receipts/planning-receipt-read-unified-020-44-52.md，Web204ebd3/Server862fc95沿交接。多个旧实现缺口已补，但本批仅组件/契约等验证，无新真实运行链/PNG；49脚本对比查看不替代原A12版本运行。唯一总续办仍../receipts/planning-execution-prompt-unified-020-02.md，扣除实现继续真实消费及原剩余；授权集成边界有受控探索，整版IN_PROGRESS。
-
-2026-10-26 Owner要求全部放一起连续执行。唯一当前总续办为../receipts/planning-execution-prompt-unified-020-02.md，取代统一提示01；侧栏提示02和门户/工作台反馈作为范围明细，由总任务一并承接。覆盖原五目标全部剩余实现/真实链/UI文案/适用门禁/授权内同步Git，不在小批次回执后等待规划阅读。最新消费Webf0a72a1/Servera8fff47沿回执，下文旧消费值仅历史，执行核实当前HEAD；正式验收与发布真实依赖仍保留，整版IN_PROGRESS。
+最新读取../receipts/planning-receipt-read-unified-020-71-77.md，桌面选择窄差/面板/门户/背景/管理列表已证局部锁定，25族承接登记不等于全族视觉通过。Owner明确本次不验移动，375不再作为待修/采样或交付阻塞；1920/1366桌面及原其他范围继续。唯一剩余矩阵仍任务03，旧回执按其时点追溯。
 
 当前侧栏产品行为以direction-sidebar-navigation-020.md为准：展开菜单树、收起最外层入口、目录右侧浮层与纯分组标题区分；底部固定箭头、图标/首字及顶栏稳定承接。旧侧栏反馈由此细化，其他原任务继续。
 
-2026-10-25｜Planner｜XL｜IN_PROGRESS｜离线设计输入
+2026-10-27｜Planner｜XL｜IN_PROGRESS｜离线设计输入
 
-最新读取16见../receipts/planning-receipt-read-unified-020-16.md，Web691833c/Servera8fff47。底部条/图标首字已有结果，收起裁切/残留箭头与原尺寸视觉继续；Owner要求以direction-sidebar-navigation-020.md为准，其他已过结果保持，整版IN_PROGRESS。
-
-当前审查见../receipts/planning-review-unified-020-01.md，当前剩余入口../receipts/planning-execution-prompt-unified-020-01.md。页面现状核实已交付，原182状态为108已实现待验/63复用/8部分/3未实现；会签/目录收起及弹窗等实现已有局部结果。富文本、50:88通知和352:8058节点高级的等待规划语义由direction-ui-semantics-020.md明确，取代下文相应待决描述；三种新引擎节点仍保持原边界。Web消费快照b450ef8、Server659a49c，整版IN_PROGRESS。
+历史盘点和早期审查保留在原回执，不将原182状态或早期提交快照作为最新完成数。富文本、50:88通知和352:8058节点高级的产品语义由direction-ui-semantics-020.md明确；三种独立新引擎节点保持原边界，其他独立工作继续。
 
 ## 目标与授权
 
@@ -24,9 +20,9 @@ Owner明确图片导出完成后盘点未改页面，并把前后端合并为一
 
 ## 唯一入口与既有成果
 
-Owner已要求先迁回E盘，前置方向为 E:/code/Smart-WorkFlow-Agent-Workspace/product/0.2.0/ready/direction-workspace-return-020.md。目标根为E:/code/Smart-WorkFlow-Agent-Workspace，接续现有codex/0.2.0-delivery及E盘两个coding工作树；C:/Users/hjxch/.codex/worktrees/020-continuation/Smart-WorkFlow-Agent-Workspace是待保全/退役的源，迁回尚未完成。前置完成后按任务03连续推进；迁回期间区分源分支事实与E盘旧检出快照，不能覆盖在途成果。证据按方向迁至E盘仓外并更新当前引用。
+迁回前置已完成，见../receipts/workspace-return-category-56.md。当前根为E:/code/Smart-WorkFlow-Agent-Workspace，证据为E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/，旧C源与旧证据已退役。沿现有根分支codex/0.2.0-delivery和E盘两个coding工作树继续任务03，不重复迁回。
 
-承接Web codex/0.2.0-ui-tenant-form-flow最新审查消费快照b450ef8、Server codex/0.2.0-tenant-form-flow消费659a49c；原8b564c5/6995f88为历史审查点。上述均为回执时点，开始核实当前HEAD、远端和在途修改，沿原任务分支续做，不重置、不从旧develop重做。保护vite.config.ts及根仓既有改动。统一任务不等于现在合并发布分支，七阶段依赖不变。
+承接Web codex/0.2.0-ui-tenant-form-flow、Server codex/0.2.0-tenant-form-flow。最新批次已有Web实现变更，但未回传新的提交/推送SHA；旧Web bdc46ec/Server b57e9d31仅其历史时点，根当前SHA亦未核实。Executor接手核实当前HEAD、远端和在途修改，保护vite.config.ts及其他成果，不从旧develop重做。七阶段依赖不变。
 
 锁定planning-review-backend-020-03-passed.md的G1/G2、planning-review-frontend-020-01.md的主题/U020-26局部，以及21/23/24和其他实际已通过结果。已有Form242、Engine177、Process467及Web1839通过/3跳过按原时点/层级使用，不累计成新基线。只因实际变更或新增反证复验影响项；旧报告更正不触发业务重跑。
 
@@ -34,11 +30,13 @@ Owner已要求先迁回E盘，前置方向为 E:/code/Smart-WorkFlow-Agent-Works
 
 包目录E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/design-offline-20261025/，入口index.html/index.md、metadata/index.json，压缩包为同级design-offline-20261025.zip。337张设计图、336属性文件、223资源；图片ID可关联页面/组件。properties/field-map.md说明父相对坐标等字段；metadata/theme-tokens.md、theme-coverage.json和component-state-map.json说明令牌、主题和变体。实例内部规格从其组件规范补齐。
 
-每批UI改动先实际打开本地原图及相关属性，确认对应状态和主题；改完查看稳定运行截图并计算reference/runtime/diff，不能只读清单或凭记忆开发。设计中的“默认”是原紫模式，产品无偏好默认是蓝模式；有8个独立蓝稿优先使用。其他250节点依据同一原稿的结构和明确设计令牌生成另存、可回读的蓝色参考，保存原图、变量绑定/映射及派生方法，仅变更已确定主题属性；不能从运行图取色、移动内容或反造基准。无法确定映射时该像素项保持未验证，可先对照相同紫主题，继续其他独立工作，不冒称蓝色通过。
+每批UI改动先实际打开当前同节点原图及相关属性，确认状态和主题；改完查看稳定运行截图与reference/runtime/diff，不能只读清单或凭记忆开发。全量蓝色参考已在本文件首段目录交付，按任务03使用原生页面和core-variants状态图，不再等待或另行派生同节点蓝稿。旧离线包继续提供未变几何、语义和资源；无法消解的具体冲突保留未验证范围，其他独立工作继续，不能从运行图移动内容、取色或反造基准。
 
-主桌面1920×1080/DPR1/zoom1，同主题/同数据/同状态/同滚动；主容器/字体几何≤1px，稳定RGB各通道≤3。任一RGB通道差>8算差异像素，整页及内容一致率≥99%，各关键区域≥98%，动态最小排除总面积≤1%。不缩图、模糊或遮罩文字绕过差异。1366×768检查桌面可用性，375×812承接既有移动业务。大图用其真实尺寸，3个溢出symbol按metadata/image-validation.json实际边界/原点，不拉伸。
+主桌面1920×1080/DPR1/zoom1，同主题/同数据/同状态/同滚动；主容器/字体几何≤1px，稳定RGB各通道≤3。任一RGB通道差>8算差异像素，整页及内容一致率≥99%，各关键区域≥98%，动态最小排除总面积≤1%。不缩图、模糊或遮罩文字绕过差异。1366×768检查桌面可用性；Owner于2026-10-27明确本次不验移动，375及其他移动验证/修复退出本次验收和交付阻塞集合，既有业务规则保持。大图用其真实尺寸，3个溢出symbol按metadata/image-validation.json实际边界/原点，不拉伸。
 
 ## 当前剩余交付
+
+以下列原交付范围，具体已过局部从任务03及其引用证据扣除，不将历史范围描述重新计为未实现。
 
 1. **页面现状与全局UI**：页面盘点已完成，见ui-implementation-inventory-01.md，原182状态为108已实现待验/63复用/8部分/3未实现；按最新审查承接整改，不重复盘点。继续258状态及25组件族的实际视觉/交互差距，页面、弹窗、菜单、脚本、监听、字段/高级和主题状态有承接。已有快照/附件/主题及新增会签/目录收起/弹窗等实现不退回未实现；审批代理页和弹窗稳定表面按对应视觉文案确认。
 2. **T020/F020**：承接租户原子创建、目标租户/租户0只读和隔离/准入结果，只补界面和联合链实际缺口。完成表单权限/默认列表/受控数据源保存、发布、回读及运行一致；设计预览按当前授权，运行查询按已发布表单携带formKey+fieldKey并与字段绑定/查看权一致。管理路径与request baseURL按实际契约适配，不因旧“去/api”摘要机械改坏路径。子表和文本/正则/Unicode校验沿DR04及已有服务端结果；真实跨端提交/导入只补受影响项。

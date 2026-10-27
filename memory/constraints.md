@@ -1,13 +1,14 @@
 # 必要硬约束
 
-2026-10-26｜权威system.md、roles/及当前方向。
+2026-10-27｜权威system.md、roles/及当前方向。
 
-- 当前Planner；管理员一次Hook修复授权已结束。不读写业务/测试源码、knowledge，不运行业务工程命令；通过product/search_fallback验收，仅维护memory/search_task/product/todo及提交自身产物。
+- 当前Planner；管理员一次Hook修复授权已结束。不读写业务/测试源码、knowledge，不运行工程/Git命令；通过product/search_fallback验收，仅维护memory/search_task/product/todo。规划产物由Executor按既有根收尾授权纳入提交。
 - 根E:/code/Smart-WorkFlow-Agent-Workspace；证据E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/。迁回已完成，旧C退役；唯一任务03，保护双方成果，不从旧develop重建。knowledge及业务gitlink由Executor维护。
 - 蓝色政策见direction-blue-primary-020.md：默认蓝#2563EB，内置紫色预设迁蓝，保留青色/自定义与独立图表/状态色。当前Figma及design-blue-20261026覆盖同ID旧PNG。
 - 状态单一源knowledge/current-status.md；终态契约.codex/governance/terminal-contract.json。正式49、46/22/22=90、ADV64/问题57、P62延期/OFF保持，未独立验收不晋级。
-- 各角色任务内自产物完成适用检查后普通提交推送并核实远端；Conventional Commits中文短主题，精确stage自有文件。代码分支由Executor沿项目宪法接续，Planner只维护根规划分支。
+- Git收尾由获授权Executor执行，适用检查后普通提交推送并回读；Conventional Commits中文短主题，精确纳入本批文件并保护他人成果。分支沿现有任务接续，Planner只维护规划文档。
 - 七阶段连续授权，版本0.2.0已确认；合并发布依赖整版验收，不重复问版本，不据批次收尾宣称全部结束。
+- 当前03：Owner明确本次不验移动，375及其他移动验证/修复退出本次验收与交付阻塞，历史观察不列新待办。1920主视口、1366桌面、原业务/25族继续；已证局部锁定，原门槛不加码，不以移动问题冻结独立工作。
 - 规划按问题性质判断，明确缺陷持续修复；文字可消解自纠，仅证据/文字小问题交Owner。无影响已过项锁定，不默认全量重跑、整包哈希或重复封装。
 - 正式视觉1920×1080/DPR1/zoom1，原生参考，整页/内容99%、关键98%、几何≤1px、RGB各通道≤3、动态排除≤1%。headless仅ISOLATED_REGRESSION，设计导出不等于运行通过。
 - PG参数从仓外~/.config/smart-workflow/pg.env及既有加载通道取，先查变量存在，秘密不入Git/日志/命令正文、不回显。验证码人工识读/一次消费、禁穷举。
