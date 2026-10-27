@@ -14,5 +14,5 @@ Web5000ff113fe53cf7f348356f87d0c8f90e651996，根97a46b0a8e7bf601505e0fb4ec183a0
 
 ## 执行85交接
 
-批次85已收口图表格架：12图型、列表6页、左右轴/单位、HEX透明度、保存失败/成功、撤销、重置草稿、自动滚动、1366均已实际验证；修复自动滚动定时器、颜色透明度入口、轴上限三个缺口。证据 `E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/families-78/charts/`，回执 `product/0.2.0/receipts/a03-chart-complete-85.md`。Web已推送 `25380f2cbc8fe799d8211573e9ddcb8fb01c00da` 并回读；根回执提交随后补记。剩余可执行行为已穷尽；目录浮层/非空应用卡仍缺合法场景，轴上限仅自动/100、热力渐变无alpha为诚实边界。移动不验，正式计数与A17依赖不变，等待Planner裁决后续。
+批次85已收口图表格架：12图型、列表6页、左右轴/单位、HEX透明度、保存失败/成功、撤销、重置草稿、自动滚动、1366均已实际验证；修复自动滚动定时器、颜色透明度入口、轴上限三个缺口。证据 `E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/families-78/charts/`，回执 `product/0.2.0/receipts/a03-chart-complete-85.md`。Web已推送 `25380f2cbc8fe799d8211573e9ddcb8fb01c00da` 并回读；根 `b0e34bf627c5b2dc156d00a3e0a1aeea75cfffe9` 已推送回读，补记提交后以最新根HEAD为准。剩余可执行行为已穷尽；目录浮层/非空应用卡仍缺合法场景，轴上限仅自动/100、热力渐变无alpha为诚实边界。移动不验，正式计数与A17依赖不变，等待Planner裁决后续。
 

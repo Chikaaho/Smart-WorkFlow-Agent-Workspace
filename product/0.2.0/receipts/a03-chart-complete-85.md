@@ -81,3 +81,10 @@
 - 根 `codex/0.2.0-delivery`：本回执及规划产物随后精确提交，提交与回读见回执补记。
 
 本次完成不等于整版交付结束；正式49、清单46/22/22=90、ADV64/问题57、P62延期/OFF、旧9整页通过0及A17依赖均保持。
+
+## Git 回读补记
+
+- 根提交 `b0e34bf627c5b2dc156d00a3e0a1aeea75cfffe9`，推送 `3a298776..b0e34bf6`；`git ls-remote origin refs/heads/codex/0.2.0-delivery` 回读同 SHA。
+- 根内 Web gitlink 为 `25380f2cbc8fe799d8211573e9ddcb8fb01c00da`，与 Web 远端回读一致；`vite.config.ts` 在途仍未纳入，根状态保留 `m Smart-WorkFlow-aPaaS-Web` 属该受保护改动，不表示 gitlink 未更新。
+- 本补记提交后根 SHA 以该补记提交为准，并在状态摘要更新；不回写历史提交。
+
