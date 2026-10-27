@@ -20,7 +20,9 @@ import time
 SCHEMA = 'agent-coding-engine.planner-handoff.v1'
 FENCE = re.compile(r'^```planner-convergence\s*\n(.*?)^```\s*$', re.M | re.S)
 PROMPT = re.compile(r'planning-execution-prompt[^/\\]*\.md$')
-GENERIC = re.compile(r'^(?:不通过|未通过|继续(?:处理|修复|优化|完善|执行)?|自行(?:处理|修复)|按(?:原)?要求(?:处理|修复)?|其余(?:状态|问题)继续)[。！!\s]*$')
+GENERIC = re.compile(r'^(?:不通过|未通过|继续(?:处理|修复|优化|完善|执行)?|自行(?:处理|修复)|按(?:原)?要求(?:处理|修复)?|其余(?:状态|问题)继续|由(?:规划|Planner)(?:自己)?(?:处理|裁决|核对|确认))[。！!\s]*$')
+OPEN_TAIL = re.compile(r'(?:其他|其余|剩余|后续|未覆盖|未裁决|未确认|待定)')
+EXACT_BROAD_TARGET = re.compile(r'^(?:1366(?:桌面)?|目录|字体|帮助|手册|联合链|业务覆盖|控件状态)$')
 STATUSES = {'REWORK', 'RESOLVED', 'MINOR', 'PLANNER_ACTION'}
 
 
@@ -36,6 +38,14 @@ def require(ok, message):
 def text(value, label):
     require(isinstance(value, str) and bool(value.strip()) and not GENERIC.fullmatch(value.strip()), label)
     return value.strip()
+
+
+def bounded_text(value, label):
+    value = text(value, label)
+    require(not OPEN_TAIL.search(value), label + ': 不得用“其他状态/其余范围/未覆盖”等笼统尾项代替具体对象')
+    for token in re.split(r'[、，,；;/\\]+', value):
+        require(not EXACT_BROAD_TARGET.fullmatch(token), label + ': 不得只写“1366/目录/字体/帮助/联合链”等范围标签')
+    return value
 
 
 def canonical(value):
@@ -176,7 +186,26 @@ def validate(document, previous, root, feature):
                 require(not any(old.get('impact', {}).get(k) is True for k in ('business', 'usability', 'ui_fidelity')),
                         origin + ': 旧证据仍有实际影响，不能仅改标小异常')
         elif status == 'PLANNER_ACTION':
-            text(item.get('next_action'), origin + ': 规划待处理必须写具体动作')
+            bounded_text(item.get('subject'), origin + ': 规划待处理对象必须具体')
+            bounded_text(item.get('next_action'), origin + ': 规划待处理必须写具体动作')
+            scope = item.get('scope')
+            require(isinstance(scope, dict), origin + ': 规划待处理同样必须有明确范围')
+            for field in ('targets', 'allowed_actions'):
+                values = strings(scope.get(field), origin + ': 缺有限' + field)
+                for value in values:
+                    bounded_text(value, origin + ': ' + field + '不能是概括性尾项')
+            strings(scope.get('forbidden_actions'), origin + ': 禁止范围需为数组', allow_empty=True)
+            constraints = scope.get('constraints')
+            if constraints is not None:
+                require(isinstance(constraints, dict), origin + ': constraints须为对象')
+                for prop, value in constraints.items():
+                    text(prop, origin + ': 约束名为空')
+                    require(value is not None and value != '', origin + ': 约束值为空')
+                    if isinstance(value, str):
+                        text(value, origin + ': 参数值不能是空泛动作')
+            for value in item.get('acceptance') or []:
+                bounded_text(value, origin + ': 规划待处理必须写可判定完成条件')
+            strings(item.get('acceptance'), origin + ': 规划待处理必须写具体完成条件')
         if document['decision'] == 'FINISH':
             require(status in ('RESOLVED', 'MINOR'), origin + ': 仍有实质缺口，规划不能提前结束')
     require(set(old_items) <= seen, '不得从账本删除未过或已过项；用原origin_id记录实际结论')

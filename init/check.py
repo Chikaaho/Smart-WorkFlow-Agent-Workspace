@@ -47,7 +47,8 @@ def common_dir(root):
     env = {k: v for k, v in os.environ.items() if not k.startswith('GIT_')}
     result = subprocess.run(['git', '--no-optional-locks', '-C', str(root), 'rev-parse',
                              '--path-format=absolute', '--git-common-dir'], env=env,
-                            capture_output=True, text=True, timeout=5, check=True)
+                            capture_output=True, text=True, encoding='utf-8', errors='replace',
+                            timeout=5, check=True)
     return Path(result.stdout.strip()).resolve()
 
 

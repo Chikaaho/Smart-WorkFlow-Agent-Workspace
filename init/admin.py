@@ -186,16 +186,19 @@ def complete(root, profile_path):
 def version_change(root):
     update = check.manifest(root)
     names = subprocess.run(['git', 'diff', '--cached', '--name-only'], cwd=root,
-                           capture_output=True, text=True, timeout=5, check=True).stdout.splitlines()
+                           capture_output=True, text=True, encoding='utf-8', errors='replace',
+                           timeout=5, check=True).stdout.splitlines()
     if not any(any(n == p or n.startswith(p) for p in update['versioned_paths']) for n in names):
         return True
     staged = subprocess.run(['git', 'show', ':init/update.json'], cwd=root,
-                            capture_output=True, text=True, timeout=5, check=True)
+                            capture_output=True, text=True, encoding='utf-8', errors='strict',
+                            timeout=5, check=True)
     staged_update = json.loads(staged.stdout)
     proposed = staged_update.get('version')
     if staged_update.get('schema') != 'agent-coding-engine.init-update.v1' or not isinstance(proposed, str) or not check.SEMVER.fullmatch(proposed):
         return False
-    old = subprocess.run(['git', 'show', 'HEAD:init/update.json'], cwd=root, capture_output=True, text=True, timeout=5)
+    old = subprocess.run(['git', 'show', 'HEAD:init/update.json'], cwd=root,
+                         capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=5)
     if old.returncode:
         return True  # Initial introduction, not an upgrade from a past version.
     current = json.loads(old.stdout)['version']

@@ -9,8 +9,21 @@
 - 连续失败两轮起须记录Planner自己的口径/方法自检。明显缺陷可以继续第三轮及更多修复，不因轮次自动停止。
 - 原origin_id、对象/断言与失败历史持续继承，原项不得消失。已过重开必须指向具体反证、实现变化或快照失效。新缺陷另列原断言与证据，不得用新ID替代同对象同断言。
 - FINISH只允许全部RESOLVED，或剩余仅MINOR且业务/使用/UI还原度三项影响明确均为false并有证据与理由。影响未知/任一为true、仍有REWORK或PLANNER_ACTION均不能提前结束。FINISH仅是规划本轮修复结论，不替代正式PASSED或七阶段交付。
+- `PLANNER_ACTION`同样属于开放项，必须有具体对象、有限目标、允许动作和可判定完成条件。不得只写“由规划处理”；不得用“其他控件状态”“1366其余操作”“帮助和联合链”“其余未覆盖”等概括性标签代替原子对象，也不得把执行提示正文中的模糊尾项留给执行方自行理解。
 
 机器检查字段、集合继承与参数变化，不能证明自然语言诊断、影响判断或实际证据为真；Planner仍须读原件独立判断。不能用增加无关禁止项凑收紧，也不能以该账本要求执行补业务附件。真实源稿/字体/数据冲突先由Planner明确比较对象与修复边界，明显缺陷持续处理，真正产品/授权外决定交Owner。
+
+## 负例：85轮仍留下“其他状态”尾项
+
+2026-10-27，0.2.0任务03在第85轮已把散点、雷达、热力、组合四图写成具体执行动作，但同一执行入口仍保留“其他控件状态、1366、帮助和联合链”等开放尾项，并写“目录、字体及已有业务覆盖由规划处理”。表面上看执行范围只有四处，实际执行完成后仍无法知道自己是否遗漏了其他未通过项，只能继续往返；到86轮才确认这些并不是执行整改，而是Planner尚未裁决的P1—P4。
+
+这个案例的失败点：
+
+- 把多个不同对象压缩成“其他状态/其余覆盖”的列表尾巴，没有原ID、具体位置、实际结果、预期结果和完成条件；
+- 用“由规划处理”给未拆分范围兜底，却没有把每项登记为独立`PLANNER_ACTION`；
+- 执行方只能从自然语言猜测开放集合，导致明确清单完成后仍不知道为何不能通过。
+
+正确收口是二选一：从当前执行入口删除该项并写明不进本轮的授权依据；或为每个待决对象建立独立`PLANNER_ACTION`，至少写清具体对象、原依据、有限目标、允许的规划动作、禁止动作和可判定完成条件。不能用“其他/其余/未覆盖/1366/帮助/联合链”等组名充当原子项，也不能要求执行方重扫这些概括范围。
 
 ## 同文档账本
 
@@ -53,7 +66,7 @@
 
 第二次派发可移除不涉及的“侧栏底栏”，或在保留原限制的基础上增加有依据的具体参数。连续失败两轮起REWORK增加`planner_self_audit`，明确检查了什么及结论。不能仅递增revision/failed_rounds。
 
-RESOLVED仍保留origin_id/subject/criterion/failed_rounds/evidence及最近scope；其他非REWORK状态也保留最近scope，防止通过中间状态重置执行范围。重开时加`invalidation`对象，kind取COUNTEREVIDENCE、IMPLEMENTATION_CHANGED或SNAPSHOT_INVALID，并给reason/evidence。MINOR增加`reason`和`impact:{"business":false,"usability":false,"ui_fidelity":false}`，三项必须有证据支持。PLANNER_ACTION增加具体`next_action`，保持CONTINUE，不用该状态提前结束。
+RESOLVED仍保留origin_id/subject/criterion/failed_rounds/evidence及最近scope；其他非REWORK状态也保留最近scope，防止通过中间状态重置执行范围。重开时加`invalidation`对象，kind取COUNTEREVIDENCE、IMPLEMENTATION_CHANGED或SNAPSHOT_INVALID，并给reason/evidence。MINOR增加`reason`和`impact:{"business":false,"usability":false,"ui_fidelity":false}`，三项必须有证据支持。PLANNER_ACTION增加具体`next_action`、有限`scope.targets`/`allowed_actions`和`acceptance`，保持CONTINUE；不能用笼统范围尾项或“由规划处理”占位，也不用该状态提前结束。
 
 ## 状态、发现与运行
 
