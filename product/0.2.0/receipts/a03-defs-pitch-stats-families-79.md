@@ -78,3 +78,9 @@
 ## 七、结论
 
 6:2 节距与列位关闭，定义统计以真实计数承接，设计器深链崩溃修复；25 族中与设计器/详情/弹窗/脚本/设置/主题/收起/选择器相关的真实状态已取得，ApplicationCard 因无真实应用数据保留残余。整页像素未过（6:2 79.153%、7:2 98.638%、3:2 97.893%），排除口径仍不合规，不以分数宣称通过。A17 合并/发布/同步继续依赖整版验收。
+
+## 八、Git 提交与推送回读（补记）
+
+- Web：https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web.git，分支 codex/0.2.0-ui-tenant-form-flow，提交 c322225（b275273..c322225，8 文件）；`git ls-remote` 回读 `c32222513da739c52253df0d37310d4c5b3f82c1`，与本地 HEAD 一致。
+- 根：https://github.com/Chikaaho/Smart-WorkFlow-Agent-Workspace.git，分支 codex/0.2.0-delivery，提交 a0f9bd9f（829decfd..a0f9bd9f，本回执+Web gitlink）；`git ls-remote` 回读 `a0f9bd9f0a6c48d2ef2a95934ea65f2ee56409ec`，与本地 HEAD 一致。
+- 79 回执初版漏记该节，本次按实际提交补记；未执行合并、tag/Release、部署或强制推送。

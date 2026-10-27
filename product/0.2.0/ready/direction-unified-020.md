@@ -4,7 +4,7 @@
 
 2026-10-27当前唯一入口：[执行任务03](../receipts/planning-execution-prompt-unified-020-03.md)。Owner要求原五项目标全部连续执行，并加强反复未收敛事项的约束。任务03已整理为一份当前剩余矩阵，原矩阵的实际视觉差异（97大几何已于69锁定）；首采只作诊断，实际修复后核对最后快照，仍有授权内可执行项时继续。实现方案和内聚批次由Executor决定，正式验收与发布依赖保留。
 
-最新读取../receipts/planning-receipt-read-unified-020-71-77.md，桌面选择窄差/面板/门户/背景/管理列表已证局部锁定，25族承接登记不等于全族视觉通过。Owner明确本次不验移动，375不再作为待修/采样或交付阻塞；1920/1366桌面及原其他范围继续。唯一剩余矩阵仍任务03，旧回执按其时点追溯。
+最新读取../receipts/planning-receipt-read-unified-020-79.md：6行节距/四定义统计旧缺口关闭，设计器冷启动修复采信；原8视觉未采族中7个补到代表运行图，当前继续设计对照/真实状态与适用场景，不能按旧9/8/8或图存在判整族通过。唯一入口03，移动本次不验；不能同态的字体/真实数据问题单列，不反复刷分。
 
 当前侧栏产品行为以direction-sidebar-navigation-020.md为准：展开菜单树、收起最外层入口、目录右侧浮层与纯分组标题区分；底部固定箭头、图标/首字及顶栏稳定承接。旧侧栏反馈由此细化，其他原任务继续。
 
@@ -22,7 +22,7 @@ Owner明确图片导出完成后盘点未改页面，并把前后端合并为一
 
 迁回前置已完成，见../receipts/workspace-return-category-56.md。当前根为E:/code/Smart-WorkFlow-Agent-Workspace，证据为E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/，旧C源与旧证据已退役。沿现有根分支codex/0.2.0-delivery和E盘两个coding工作树继续任务03，不重复迁回。
 
-承接Web codex/0.2.0-ui-tenant-form-flow、Server codex/0.2.0-tenant-form-flow。最新批次已有Web实现变更，但未回传新的提交/推送SHA；旧Web bdc46ec/Server b57e9d31仅其历史时点，根当前SHA亦未核实。Executor接手核实当前HEAD、远端和在途修改，保护vite.config.ts及其他成果，不从旧develop重做。七阶段依赖不变。
+承接Web codex/0.2.0-ui-tenant-form-flow、Server codex/0.2.0-tenant-form-flow和根codex/0.2.0-delivery。最后已回读声明仍78的Web b27527379e782ab626ea5a770538d1dd925c257e、根36968f0418bd2304ad3ba8a8bc5790c92cb39965；79新增实现未给新提交/推送SHA，不由旧SHA推断本批已收尾。Executor按实际HEAD/远端及在途接续，保护vite.config.ts等成果，精确纳入本批产物。
 
 锁定planning-review-backend-020-03-passed.md的G1/G2、planning-review-frontend-020-01.md的主题/U020-26局部，以及21/23/24和其他实际已通过结果。已有Form242、Engine177、Process467及Web1839通过/3跳过按原时点/层级使用，不累计成新基线。只因实际变更或新增反证复验影响项；旧报告更正不触发业务重跑。
 
