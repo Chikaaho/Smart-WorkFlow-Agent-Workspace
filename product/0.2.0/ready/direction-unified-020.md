@@ -4,7 +4,7 @@
 
 2026-10-27当前唯一入口：[执行任务03](../receipts/planning-execution-prompt-unified-020-03.md)，已按Owner“逐步收口、缩小执行自由度”要求原位重写。规划自检见[提示自检与收口](../receipts/planning-prompt-self-audit-020-20261027.md)。本次替代03此前执行待办，不另建任务04；具体行为、完成条件、证据复用与停止边界以03第4/7节为准，不把下文原范围描述重新派成全量待做。
 
-最新读取84，见../receipts/planning-receipt-read-unified-020-84.md：同端点无权拒绝且权限保持、脚本应用保存重开/清理、节点审批源与字段权限保存发布三项缺结果关闭；单指标柱图真实记录数1局部锁定。下一执行重点是原其他图型、第二指标右轴/单位、HEX透明度、列表分页滚动及重置/保存失败等不同语义；目录和非空应用缺合法场景转规划处理，不重复空态/403、不自增权。03机器revision3承接2，CONTINUE，其他原视觉/1366/帮助联合链与历史保持，原整页标准/A17依赖不变，移动不验。新版入口先只读init/check.py核本机/Harness与版本，READY再续办角色；本机codex 1.0.0已READY。
+最新读取85，见../receipts/planning-receipt-read-unified-020-85.md：双轴单位、系列HEX透明度、列表滚动、保存撤销重置及1366充分，直接锁定。图型仍有四个原语义正向未证：散点数值X/Y、雷达多维、热力双维度、组合柱线；只按03限定这四个适配输入，不重做12图型/66状态，不接受已穷尽全部动作。目录/应用合法场景、九整页基准字体及A05/A06—A16已有覆盖先由Planner裁决，未明确真缺口前不重扫业务。03机器revision4承接3，CONTINUE，原标准/失败历史/A17依赖及移动排除保持。init只读检查codex 1.0.0 READY。
 
 当前侧栏产品行为以direction-sidebar-navigation-020.md为准：展开菜单树、收起最外层入口、目录右侧浮层与纯分组标题区分；底部固定箭头、图标/首字及顶栏稳定承接。旧侧栏反馈由此细化，其他原任务继续。
 
@@ -22,7 +22,7 @@ Owner明确图片导出完成后盘点未改页面，并把前后端合并为一
 
 迁回前置已完成，见../receipts/workspace-return-category-56.md。当前根为E:/code/Smart-WorkFlow-Agent-Workspace，证据为E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/，旧C源与旧证据已退役。沿现有根分支codex/0.2.0-delivery和E盘两个coding工作树继续任务03，不重复迁回。
 
-承接Web codex/0.2.0-ui-tenant-form-flow、Server codex/0.2.0-tenant-form-flow和根codex/0.2.0-delivery。最新Web保持82的5000ff113fe53cf7f348356f87d0c8f90e651996，根84为97a46b0a8e7bf601505e0fb4ec183a0bb1c170d8，按执行同SHA推送回读；Server无本批新核验，84无源码变更，复用82适用工程结果。后续按实际HEAD/远端与在途接续，精确纳入本批规划产物，保护vite.config.ts等成果。
+承接Web codex/0.2.0-ui-tenant-form-flow、Server codex/0.2.0-tenant-form-flow和根codex/0.2.0-delivery。Web85为25380f2cbc8fe799d8211573e9ddcb8fb01c00da；最新根67c60c248df100e83316cfa4bddeab4b2cbd06a4及同SHA回读按Owner本条交接记录，85回执b0e34bf6保留较早时点；Planner未独立核Git，Server无新核验。85四门禁227文件/1951测试通过，1/3跳过，build4.26s。后续按实际HEAD/远端与在途接续，精确纳入本批规划产物，保护vite.config.ts等成果。
 
 锁定planning-review-backend-020-03-passed.md的G1/G2、planning-review-frontend-020-01.md的主题/U020-26局部，以及21/23/24和其他实际已通过结果。已有Form242、Engine177、Process467及Web1839通过/3跳过按原时点/层级使用，不累计成新基线。只因实际变更或新增反证复验影响项；旧报告更正不触发业务重跑。
 
