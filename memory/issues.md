@@ -22,4 +22,4 @@ P1限定710:43009/710:44122目录；P2限定258:104/272:717非空应用，当前
 - I5 三Provider：钉钉/飞书PASSED（审查07，2026-09-29）；WECOM保持 `Owner 延期 / 未验证`，启用时重入真实链验证。
 - 其他未核销边界：P2/P4/P34/P35/P37/P38/P39/P47保持现状；多宿主Supervisor真实ZCode闭环仍开放。
 - `sso-admin-config` **COMPLETED（规划已确认，2026-09-29）**；P31开放（企业微信延期）；裁决 `product/sso-admin-config/receipts/planning-final-review-terminal-sync-01-completed.md`。
-- 2026-10-27 批次87 新增待裁决（非代码缺陷，均为口径/数据/契约缺口）：①3:2 待办截止标签——前端 `dueChip` 读 `dueText`，待办接口 DTO 无该字段、dev `sw_bpm_task_deadline` 0 行；②7:2 环比行——`analyticsSummary` 无上期值；③7:2 智能助手卡——岗位权限隐藏（代码按可达路由过滤）；④6:2 操作列版本入口在设计器历史版本预览，不新增列表入口；⑤P3/101:2 灾备演练申请同构表单/输入框 32/Element 工具条/子表样式未实施；⑥Q1 全量文案覆盖清单、Q2 定义闸门实际拒绝输出、Q3 前端未知受理结果查询、Q4 授权代理非 Mock 持久链仍缺实际结果（详见 search_fallback/0.2.0-acceptance-four-facts-86.md）。
+- 2026-10-27 批次87 新增待裁决（非代码缺陷，均为口径/数据/契约缺口）：①3:2 待办截止标签——前端 `dueChip` 读 `dueText`，待办接口 DTO 无该字段、dev `sw_bpm_task_deadline` 0 行；②7:2 环比行——`analyticsSummary` 无上期值；③7:2 智能助手卡——岗位权限隐藏（代码按可达路由过滤）；④6:2 操作列版本入口在设计器历史版本预览，不新增列表入口；⑤P3/101:2 已建同构表单并完成输入框 32/Element 工具条/子表列头与加一行，页面框架与页头底部文案差登记；⑥Q1 全量文案覆盖清单、Q2 定义闸门实际拒绝输出、Q3 前端未知受理结果查询、Q4 授权代理非 Mock 持久链仍缺实际结果（详见 search_fallback/0.2.0-acceptance-four-facts-86.md）。
