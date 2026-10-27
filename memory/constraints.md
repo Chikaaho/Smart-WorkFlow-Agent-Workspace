@@ -2,6 +2,7 @@
 
 2026-10-27｜权威system.md、roles/及当前方向。
 
+- 所有角色续办先按system运行只读init/check.py --harness实际ID，READY再进入原角色；普通角色不安装/更新环境。当前codex本机/要求1.0.0 READY。
 - 当前Planner；管理员一次Hook修复授权已结束。不读写业务/测试源码、knowledge，不运行工程/Git命令；通过product/search_fallback验收，仅维护memory/search_task/product/todo。规划产物由Executor按既有根收尾授权纳入提交。
 - 根E:/code/Smart-WorkFlow-Agent-Workspace；证据E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/。迁回已完成，旧C退役；唯一任务03，保护双方成果，不从旧develop重建。knowledge及业务gitlink由Executor维护。
 - 蓝色政策见direction-blue-primary-020.md：默认蓝#2563EB，内置紫色预设迁蓝，保留青色/自定义与独立图表/状态色。当前Figma及design-blue-20261026覆盖同ID旧PNG。
