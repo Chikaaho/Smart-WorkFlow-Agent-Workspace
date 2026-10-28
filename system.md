@@ -288,7 +288,7 @@ XL 遵循 L 的角色与证据边界，并额外要求：
 
 只有已有证据证明不影响业务、实际使用和UI还原度的小异常，才允许规划登记理由后提前结束相应验收修复；有任一实际影响或影响不明的项不能降格为小异常。该许可不将不满足标准的项伪标通过，不跳过七阶段的合并、发布与信息同步。纯报告文字问题直接由规划消解，不新增执行补写轮次。
 
-规划下发/修订执行提示时，须按`product/governance/supplemental-execution-prompt-template.md`维护同文档的最小机器交接账本。Codex Stop接入`.codex/governance/planner-convergence.py`校验具体诊断、稳定缺口继承、收紧范围、已过锁定与小异常影响；规则与字段见`product/governance/planner-convergence.md`。这是规划委派门禁，不是业务附件齐全度验收，也不另建Executor终态契约；执行实现方法仍由Executor决定。门禁不能替代规划读取原始行为证据或证明业务语义正确。
+规划下发/修订执行提示时，须按`product/governance/supplemental-execution-prompt-template.md`维护同文档的最小机器交接账本。Codex Stop接入`.codex/governance/planner-convergence.py`校验具体诊断、稳定缺口继承、收紧范围、已过锁定与小异常影响；规则与字段见`product/governance/planner-convergence.md`。这是规划委派门禁，不是业务附件齐全度验收，也不另建Executor终态契约；执行实现方法仍由Executor决定。门禁不能替代规划读取原始行为证据或证明业务语义正确。 Owner于2026-10-28明确：每轮一份审查记录配一份执行提示，历史按结论/证据位置压缩，不逐轮复制原文；机器通过history_summary继承原项。未执行的只读核实项凭真实回传可按同一原断言转入首次窄范围整改，后续再次派发仍须实际收紧；字段及边界沿上述治理文档。
 
 进度以当前任务或功能的完整阶段划分为口径，列全各阶段名称及状态；总阶段数应与已完成、进行中、未开始的计数一致。阻塞或待验收项注明在进行中，不把回执轮次当阶段，不用当前阶段进度替代总进度。
 

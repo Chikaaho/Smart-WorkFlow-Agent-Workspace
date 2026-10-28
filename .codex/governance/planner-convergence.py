@@ -8,6 +8,8 @@ worktree/session does not reset an acceptance item. No business code is read.
 from __future__ import annotations
 
 import argparse
+import copy
+from collections import Counter
 import importlib.util
 import json
 import os
@@ -85,6 +87,8 @@ def read_document(path):
 def is_dispatch(path):
     if path.suffix != '.md':
         return False
+    if path.parent.name == 'governance' and path.parent.parent.name == 'product':
+        return False  # Shared schemas/examples are not a feature dispatch.
     if PROMPT.search(path.name):
         return True
     # Do not turn unrelated large evidence/receipts into a formatting gate.
@@ -106,8 +110,24 @@ def validate(document, previous, root, feature):
     receipt = relative_file(root, document.get('source_receipt'))
     require(receipt.relative_to(root).parts[:2] == ('product', feature), '执行回执必须属于同一feature')
     items = document.get('items')
-    require(isinstance(items, list) and 0 < len(items) <= 500 and all(isinstance(i, dict) for i in items), 'items须为有限缺口集合')
+    require(isinstance(items, list) and len(items) <= 500 and all(isinstance(i, dict) for i in items), 'items须为有限缺口集合')
     old_items = {i['origin_id']: i for i in previous['items']} if previous else {}
+    carried = set()
+    summary = document.get('history_summary')
+    if summary is not None:
+        require(isinstance(summary, dict) and previous is not None, '历史摘要必须接续已接纳账本')
+        require(summary.get('revision') == old_revision, '历史摘要revision必须指向上一已接纳版本')
+        review = relative_file(root, summary.get('review'))
+        require(review.relative_to(root).parts[:2] == ('product', feature), '历史摘要审查记录须属于同一feature')
+        carried = set(old_items) - {i.get('origin_id') for i in items}
+        require(type(summary.get('retained_count')) is int and summary['retained_count'] == len(carried),
+                '历史摘要继承项数不符')
+        counts = dict(Counter(old_items[k]['status'] for k in carried))
+        reported = summary.get('status_counts')
+        require(isinstance(reported, dict) and all(type(n) is int for n in reported.values()) and reported == counts,
+                '历史摘要状态计数不符，不能隐去开放项')
+        items = items + [copy.deepcopy(old_items[k]) for k in old_items if k in carried]
+    require(0 < len(items) <= 500, 'items须为有限缺口集合')
     old_keys = {(i['subject'], i['criterion']): i['origin_id'] for i in old_items.values()}
     seen = set()
     seen_keys = set()
@@ -163,8 +183,32 @@ def validate(document, previous, root, feature):
                 require(value is not None and value != '', origin + ': 约束值为空')
                 if isinstance(value, str):
                     text(value, origin + ': 参数值不能是继续优化等空泛动作')
-            if old and old.get('scope'):
+            if old and old.get('scope') and origin not in carried:
                 old_scope = old['scope']
+                resolution = item.get('planning_resolution')
+                phase_change = old['status'] == 'PLANNER_ACTION' and resolution is not None
+                if phase_change:
+                    require(old['failed_rounds'] == 0 and not old.get('diagnosis'),
+                            origin + ': 已执行项不能借规划状态转换重置收口范围')
+                    require(isinstance(resolution, dict) and resolution.get('kind') == 'FACTS_VERIFIED',
+                            origin + ': 核实转整改须声明FACTS_VERIFIED')
+                    text(resolution.get('reason'), origin + ': 缺核实后转整改的具体原因')
+                    require(resolution.get('prior_scope') == old_scope, origin + ': 须保留原只读范围供核对')
+                    for pointer in strings(resolution.get('evidence'), origin + ': 缺核实回传'):
+                        relative_file(root, pointer)
+                    require(set(scope['targets']) <= set(old_scope['targets']), origin + ': 核实转整改不得扩大原对象')
+                    require(set(old_scope['forbidden_actions']) <= set(scope['forbidden_actions']),
+                            origin + ': 核实转整改不能撤回已有禁止范围')
+                    superseded = strings(resolution.get('superseded_constraints', []),
+                                         origin + ': 被替代的规划阶段约束须为数组', allow_empty=True)
+                    require(superseded <= old_scope.get('constraints', {}).keys(), origin + ': 未知的阶段约束')
+                    require(superseded <= {'当前动作', 'planning_phase', 'phase'},
+                            origin + ': 只能替代规划核实阶段约束，不能放松业务参数')
+                    for prop, value in old_scope.get('constraints', {}).items():
+                        if prop not in superseded:
+                            require(constraints.get(prop) == value, origin + ': 核实转整改不能放松未声明约束')
+                    require(document['decision'] != 'FINISH', origin + ': 仍有实质缺口，规划不能提前结束')
+                    continue
                 tighter = False
                 for field in ('targets', 'allowed_actions'):
                     current, prior = set(scope[field]), set(old_scope[field])
@@ -209,6 +253,7 @@ def validate(document, previous, root, feature):
         if document['decision'] == 'FINISH':
             require(status in ('RESOLVED', 'MINOR'), origin + ': 仍有实质缺口，规划不能提前结束')
     require(set(old_items) <= seen, '不得从账本删除未过或已过项；用原origin_id记录实际结论')
+    return {**document, 'items': items}
 
 
 def common_directory(root):
@@ -239,12 +284,13 @@ def accept(root, path):
         state_path = directory / (feature + '.json')
         state = json.loads(state_path.read_text(encoding='utf-8')) if state_path.exists() else {'history': []}
         history = state['history']
-        previous = history[-1]['document'] if history else None
-        if previous and document == previous:
+        previous = history[-1].get('effective_document', history[-1]['document']) if history else None
+        if history and document == history[-1]['document']:
             return  # Same accepted Stop event is idempotent, not another round.
-        validate(document, previous, root, feature)
+        effective = validate(document, previous, root, feature)
         require(len(history) < 500, '历史达到上限，管理员归档后接续，禁止清零重建')
-        history.append({'path': path.relative_to(root).as_posix(), 'document': document})
+        history.append({'path': path.relative_to(root).as_posix(), 'document': document,
+                        'effective_document': effective})
         temporary = state_path.with_suffix('.tmp')
         temporary.write_text(canonical(state), encoding='utf-8')
         temporary.replace(state_path)

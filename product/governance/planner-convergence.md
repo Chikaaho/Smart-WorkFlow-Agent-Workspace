@@ -7,7 +7,7 @@
 - REWORK必须有原对象、原断言、原证据、具体位置、实际值、预期值、原因/有依据的假设、限定动作和完成断言；“不通过，继续优化”不能代替诊断。
 - 同项再次派发，目标/允许动作只能收窄，已有禁止动作和参数约束须保留；至少有一处真正收窄或增加具体限制。仅改文字、换文件编号不能通过。工程实现方法仍由Executor选择。
 - 连续失败两轮起须记录Planner自己的口径/方法自检。明显缺陷可以继续第三轮及更多修复，不因轮次自动停止。
-- 原origin_id、对象/断言与失败历史持续继承，原项不得消失。已过重开必须指向具体反证、实现变化或快照失效。新缺陷另列原断言与证据，不得用新ID替代同对象同断言。
+- 原origin_id、对象/断言与失败历史持续继承；当前提示可用history_summary承接未变化历史，机器保留有效原项，不要求正文复制全部原文。已过重开必须指向具体反证、实现变化或快照失效。新缺陷另列原断言与证据，不得用新ID替代同对象同断言。
 - FINISH只允许全部RESOLVED，或剩余仅MINOR且业务/使用/UI还原度三项影响明确均为false并有证据与理由。影响未知/任一为true、仍有REWORK或PLANNER_ACTION均不能提前结束。FINISH仅是规划本轮修复结论，不替代正式PASSED或七阶段交付。
 - `PLANNER_ACTION`同样属于开放项，必须有具体对象、有限目标、允许动作和可判定完成条件。不得只写“由规划处理”；不得用“其他控件状态”“1366其余操作”“帮助和联合链”“其余未覆盖”等概括性标签代替原子对象，也不得把执行提示正文中的模糊尾项留给执行方自行理解。
 
@@ -77,3 +77,19 @@ Stop使用共享角色观察器，只接受当前会话的显式人类角色声�
 审计位于`.codex/governance/runtime/planner/audit.jsonl`和Codex适配器原审计。新规划组件及两个必要共用依赖纳入Git，runtime保持忽略；原Executor本机治理目录不在本次整体迁移范围。此变更已接入Codex声明的现有Stop路径，未把未验证的ZCode/Claude接入声称为已启用；宿主信任/重载由实际宿主控制，管理员不代用户批准信任。
 
 手动同强度检查：`py -3 -X utf8 .codex/governance/planner-convergence.py --workspace <根> --document product/<feature>/receipts/<提示>.md`。此命令成功会记录接纳的revision，不是只读预览。治理回归：`py -3 -X utf8 .codex/governance/test-planner-convergence.py`，只用临时治理仓，不启动业务设施。
+
+## 历史摘要与核实转整改（Owner 2026-10-28授权）
+
+每轮仍交一份审查记录和一份执行提示。审查压缩为已过结论、未过原因、未验收具体对象及依据位置；提示包含原ID、当前原因、限定动作、通过条件。文字和机器历史不需要逐轮原文复制。
+
+提示仍含一个账本。只写本轮变化项时，增加：
+
+```json
+"history_summary": {"revision": 2, "review": "product/<feature>/receipts/<review>.md", "retained_count": 486, "status_counts": {"RESOLVED": 21, "PLANNER_ACTION": 465}}
+```
+
+revision必须等于上一已接纳版本；review须为同feature的真实审查记录；数量必须准确匹配本次未显式列出的原项。机器从已接纳状态继承原项的完整ID/状态/失败次数/scope，再校验FINISH和下一轮；摘要不删除未过项、不允许已过无依据重开。首次登记不能用摘要创建未知历史。
+
+尚未执行过的PLANNER_ACTION（failed_rounds=0且没有旧diagnosis）核实后可转入首次REWORK，原subject/criterion/targets不扩大。新增planning_resolution：kind=FACTS_VERIFIED、reason、真实回传evidence数组、完整prior_scope、superseded_constraints数组。原禁止动作保留；只有当前动作/planning_phase/phase这三种核实阶段约束可明确替代，业务参数仍继承。已经执行过的项不能借规划状态绕道放宽；首次整改后的每次再次派发继续执行原收紧规则。
+
+归档历史保留在机器状态中，当前正文按结论和证据指针承接。摘要不能替代规划实际审阅，也不裁决业务通过。

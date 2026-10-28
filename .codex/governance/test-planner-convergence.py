@@ -66,6 +66,113 @@ class ConvergenceTests(unittest.TestCase):
     def test_initial_concrete_dispatch(self):
         self.validate()
 
+    def test_shared_governance_examples_are_not_feature_dispatches(self):
+        docs = self.root / 'product/governance'
+        docs.mkdir()
+        path = docs / 'planner-convergence.md'
+        path.write_text('# 执行补充提示模板\n```planner-convergence\n{}\n```\n', encoding='utf-8')
+        self.assertFalse(gate.is_dispatch(path))
+
+    def summarized(self, old, items=None):
+        (self.receipts / 'review.md').write_text('Passed and open assertions retained by original ID.', encoding='utf-8')
+        doc = copy.deepcopy(old)
+        doc.update(revision=old['revision'] + 1, previous_revision=old['revision'])
+        doc['items'] = items or []
+        retained = [i for i in old['items'] if i['origin_id'] not in {x['origin_id'] for x in doc['items']}]
+        from collections import Counter
+        doc['history_summary'] = {'revision': old['revision'], 'review': 'product/demo/receipts/review.md',
+                                  'retained_count': len(retained),
+                                  'status_counts': dict(Counter(x['status'] for x in retained))}
+        return doc
+
+    def test_summary_preserves_full_open_item_and_blocks_finish(self):
+        doc = self.summarized(self.document)
+        effective = gate.validate(doc, self.document, self.root, 'demo')
+        self.assertEqual(effective['items'], self.document['items'])
+        self.assertEqual(doc['items'], [])
+        doc['decision'] = 'FINISH'
+        self.rejected(doc, '不能提前结束', self.document)
+
+    def test_summary_rejects_wrong_revision_counts_and_unreferenced_omissions(self):
+        for key, value, reason in [('revision', 0, 'revision'), ('retained_count', 0, '项数'),
+                                    ('status_counts', {'RESOLVED': 1}, '状态计数')]:
+            doc = self.summarized(self.document)
+            doc['history_summary'][key] = value
+            self.rejected(doc, reason, self.document)
+        doc = self.summarized(self.document)
+        del doc['history_summary']
+        self.rejected(doc, '有限缺口', self.document)
+
+    def test_summary_keeps_resolved_lock_and_scope_for_future_reopen(self):
+        old = copy.deepcopy(self.document)
+        old['items'][0]['status'] = 'RESOLVED'
+        effective = gate.validate(self.summarized(old), old, self.root, 'demo')
+        doc = self.retry()
+        doc.update(revision=3, previous_revision=2)
+        self.rejected(doc, '不得重开', effective)
+
+    def test_summary_accept_is_idempotent_and_next_revision_uses_effective_history(self):
+        subprocess.run(['git', 'init', '-q', str(self.root)], check=True, timeout=5)
+        path = self.receipts / 'planning-execution-prompt-01.md'
+        def write(doc):
+            path.write_text('```planner-convergence\n' + json.dumps(doc) + '\n```\n', encoding='utf-8')
+        write(self.document)
+        gate.accept(self.root, path)
+        compact = self.summarized(self.document)
+        write(compact)
+        gate.accept(self.root, path)
+        gate.accept(self.root, path)
+        state = json.loads((self.root / '.git/planner-convergence/demo.json').read_text(encoding='utf-8'))
+        self.assertEqual(len(state['history']), 2)
+        self.assertEqual(state['history'][-1]['effective_document']['items'], self.document['items'])
+        retry = self.retry()
+        retry.update(revision=3, previous_revision=2)
+        write(retry)
+        gate.accept(self.root, path)
+
+    def facts_transition(self):
+        old = copy.deepcopy(self.document)
+        item = old['items'][0]
+        item.update(status='PLANNER_ACTION', failed_rounds=0, next_action='核实侧栏已有实际宽度结果')
+        item.pop('diagnosis')
+        item['scope']['allowed_actions'] = ['核实既有宽度结果']
+        item['scope']['constraints']['当前动作'] = '只读核实'
+        doc = copy.deepcopy(self.document)
+        doc.update(revision=2, previous_revision=1)
+        current = doc['items'][0]
+        current['scope'] = copy.deepcopy(item['scope'])
+        current['scope']['allowed_actions'] = ['adjust width']
+        current['scope']['constraints']['当前动作'] = '修已核实的宽度差'
+        current['planning_resolution'] = {'kind': 'FACTS_VERIFIED', 'reason': 'Existing receipt confirms width240px.',
+            'evidence': ['product/demo/receipts/executor.md'], 'prior_scope': copy.deepcopy(item['scope']),
+            'superseded_constraints': ['当前动作']}
+        return old, doc
+
+    def test_verified_planning_fact_can_enter_first_narrow_rework(self):
+        old, doc = self.facts_transition()
+        self.validate(doc, old)
+        retry = copy.deepcopy(doc)
+        retry.update(revision=3, previous_revision=2)
+        self.rejected(retry, '未实际收紧', doc)
+
+    def test_fact_transition_requires_real_receipt_same_object_and_safety_limits(self):
+        old, baseline = self.facts_transition()
+        changes = [
+            (lambda d: d['items'][0].pop('planning_resolution'), '不得扩大'),
+            (lambda d: d['items'][0]['planning_resolution'].update(evidence=['product/demo/receipts/missing.md']), '不存在'),
+            (lambda d: d['items'][0]['scope']['targets'].append('another page'), '不得扩大原对象'),
+            (lambda d: d['items'][0]['scope'].update(forbidden_actions=[]), '撤回已有禁止'),
+            (lambda d: d['items'][0]['planning_resolution'].update(superseded_constraints=['expanded_width']), '业务参数')]
+        for mutate, reason in changes:
+            doc = copy.deepcopy(baseline)
+            mutate(doc)
+            self.rejected(doc, reason, old)
+
+    def test_fact_transition_cannot_reset_prior_execution_via_planner_state(self):
+        old, doc = self.facts_transition()
+        old['items'][0]['failed_rounds'] = 1
+        self.rejected(doc, '不能借规划状态', old)
+
     def test_third_and_later_rounds_allowed_when_tightened(self):
         old = self.retry()
         doc = copy.deepcopy(old)
