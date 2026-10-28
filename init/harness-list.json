@@ -40,11 +40,12 @@
       ],
       "project_usage": "used",
       "maintenance": {
-        "status": "historically_maintained",
+        "status": "adapter_and_component_checks",
         "references": [
-          "system.md"
+          "init/adapters/local-init-check.py",
+          "init/local-profile.example.json"
         ],
-        "last_maintained": null
+        "last_maintained": "2026-10-28"
       },
       "demo_paths": [
         ".codex/hooks/zcode-role-bind.cmd",
@@ -57,7 +58,7 @@
         "UserPromptSubmit/Stop载荷",
         "本地声明中可能缺失的公共实现依赖"
       ],
-      "notes": "包装器只是参考，不能把文件存在或历史维护记录当作新机安装完成；管理员按当前宿主重新适配与验证。"
+      "notes": "本机GUI宿主实测：用户级声明生效（drift=false），运行时审计含真实Stop门禁派发与角色绑定；验证脚本init/adapters/local-init-check.py覆盖startup_gate/role_binding/allow/reject/dispatch五类。"
     },
     {
       "id": "claude-code",
