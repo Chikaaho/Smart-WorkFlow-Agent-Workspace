@@ -150,9 +150,9 @@
 
 ## 七、Git 与证据位置
 
-- Web：`beadad9` → 本轮提交（提交信息见推送回读）；分支 `codex/0.2.0-ui-tenant-form-flow`。
-- Server：`32874851` → 本轮提交；分支 `codex/0.2.0-tenant-form-flow`。
-- 根仓：`af12d7cc` → 本轮回执/knowledge 提交；分支 `codex/0.2.0-delivery`。
+- Web：`beadad9..dab70a8`，提交 `dab70a8`（fix(0.2.0): 登录标题层宽/分类名称与ID透传/个人菜单主次层）；分支 `codex/0.2.0-ui-tenant-form-flow`，远端回读一致。
+- Server：`32874851..a51eca19`，提交 `a51eca19`（fix(bpm): 分类与事项ID字符串序列化保持雪花精度）；分支 `codex/0.2.0-tenant-form-flow`，远端回读一致。
+- 根仓：本回执与 knowledge 同步提交在 `codex/0.2.0-delivery` 上推送（回执不含自身提交 SHA，按提交后回读关联）。
 - 证据根：`E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/real-joint/`
   - 本轮截图：`u020-08-*.png`（100 张）
   - 采集数据：`u020-08-verify.json`、`u020-08-sweep{,B,C,E,F,G,H,I,J,K}.json`
