@@ -93,3 +93,9 @@ revision必须等于上一已接纳版本；review须为同feature的真实审�
 尚未执行过的PLANNER_ACTION（failed_rounds=0且没有旧diagnosis）核实后可转入首次REWORK，原subject/criterion/targets不扩大。新增planning_resolution：kind=FACTS_VERIFIED、reason、真实回传evidence数组、完整prior_scope、superseded_constraints数组。原禁止动作保留；只有当前动作/planning_phase/phase这三种核实阶段约束可明确替代，业务参数仍继承。已经执行过的项不能借规划状态绕道放宽；首次整改后的每次再次派发继续执行原收紧规则。
 
 归档历史保留在机器状态中，当前正文按结论和证据指针承接。摘要不能替代规划实际审阅，也不裁决业务通过。
+
+## Owner明确批准的单项动作更正
+
+仅当Owner明确批准具体动作且管理员将许可登记在`.codex/governance/planner-scope-amendments.json`时，原已登记PLANNER_ACTION可在绑定的一个上一revision转入REWORK。提示填写`owner_scope_amendment`许可ID，不能自行填写授权正文代替管理员登记。管理员按原feature/origin_id/subject/criterion/完整prior_scope及base_revision绑定；许可只列精确allowed_actions与必须增加的保护参数/禁令。
+
+原targets不能扩大、全部旧禁令/约束须保留、失败历史接续+1、已有诊断/连续失败自检与完成条件继续生效。许可不适用于RESOLVED重开、不允许FINISH；后续轮次恢复正常严格收紧，同ID不能跨revision再用来扩动作。缺登记、过期、换项、放宽保护或撤销旧限制均拒绝。此次Owner许可与精确接续值见[日期宽度治理记录](admin-date-width-scope-20261029.md)。

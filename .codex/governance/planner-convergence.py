@@ -20,6 +20,7 @@ import sys
 import time
 
 SCHEMA = 'agent-coding-engine.planner-handoff.v1'
+AMENDMENTS_SCHEMA = 'agent-coding-engine.planner-scope-amendments.v1'
 FENCE = re.compile(r'^```planner-convergence\s*\n(.*?)^```\s*$', re.M | re.S)
 PROMPT = re.compile(r'planning-execution-prompt[^/\\]*\.md$')
 GENERIC = re.compile(r'^(?:不通过|未通过|继续(?:处理|修复|优化|完善|执行)?|自行(?:处理|修复)|按(?:原)?要求(?:处理|修复)?|其余(?:状态|问题)继续|由(?:规划|Planner)(?:自己)?(?:处理|裁决|核对|确认))[。！!\s]*$')
@@ -99,6 +100,55 @@ def is_dispatch(path):
                 re.search(r'执行(?:提示|任务)|补充提示|续办(?:任务|提示)|派发', heading))
 
 
+def validate_owner_amendment(document, item, old, root, feature, old_revision):
+    """Apply an Admin-recorded, one-revision Owner scope correction.
+
+    The prompt supplies only an opaque ID. Authority, the previous scope and
+    the exact new action limits come from the tracked governance registry,
+    never from a Planner-writable receipt or an inline authorization claim.
+    """
+    origin = item['origin_id']
+    amendment_id = text(item.get('owner_scope_amendment'), origin + ': 缺Owner单项许可ID')
+    path = root / '.codex/governance/planner-scope-amendments.json'
+    require(path.is_file() and path.stat().st_size <= 128 * 1024, origin + ': 缺管理员登记的Owner单项许可')
+    try:
+        registry = json.loads(path.read_text(encoding='utf-8-sig'))
+    except (OSError, ValueError):
+        raise Rejected(origin + ': Owner单项许可登记损坏') from None
+    require(isinstance(registry, dict) and registry.get('schema') == AMENDMENTS_SCHEMA,
+            origin + ': Owner单项许可登记版本错误')
+    grants = registry.get('grants')
+    require(isinstance(grants, list) and all(isinstance(g, dict) for g in grants), origin + ': Owner许可集合错误')
+    matches = [g for g in grants if g.get('id') == amendment_id]
+    require(len(matches) == 1 and matches[0].get('status') == 'ACTIVE', origin + ': Owner单项许可未知/重复/未生效')
+    grant = matches[0]
+    require(grant.get('feature') == feature and grant.get('origin_id') == origin,
+            origin + ': Owner许可不属于本feature/原项')
+    require(grant.get('base_revision') == old_revision, origin + ': Owner单项许可不能跨revision复用')
+    require(old['status'] == 'PLANNER_ACTION' and item['status'] == 'REWORK',
+            origin + ': Owner动作更正只承接原规划项，不重开已过项')
+    require(grant.get('subject') == old['subject'] and grant.get('criterion') == old['criterion'],
+            origin + ': Owner许可不能更换原对象/断言')
+    require(grant.get('prior_scope') == old['scope'], origin + ': Owner许可的原scope已失效')
+    require(item['failed_rounds'] == old['failed_rounds'] + 1, origin + ': Owner许可须接续原失败次数')
+    text(grant.get('owner_authorization'), origin + ': 管理员登记缺Owner原授权')
+    relative_file(root, grant.get('record'))
+    scope, prior = item['scope'], old['scope']
+    require(set(scope['targets']) <= set(prior['targets']), origin + ': Owner单项许可不得扩大对象')
+    allowed = strings(grant.get('allowed_actions'), origin + ': Owner许可缺精确动作')
+    require(set(scope['allowed_actions']) <= allowed, origin + ': 超出Owner明确许可的单项动作')
+    require(set(prior['forbidden_actions']) <= set(scope['forbidden_actions']), origin + ': Owner许可不能撤回旧禁令')
+    for prop, value in prior.get('constraints', {}).items():
+        require(scope['constraints'].get(prop) == value, origin + ': Owner许可不能放松旧参数')
+    required = grant.get('required_constraints')
+    require(isinstance(required, dict) and required, origin + ': Owner许可缺单项保护参数')
+    for prop, value in required.items():
+        require(scope['constraints'].get(prop) == value, origin + ': 未落实Owner单项保护参数')
+    forbidden = strings(grant.get('required_forbidden_actions'), origin + ': Owner许可缺单项禁令')
+    require(forbidden <= set(scope['forbidden_actions']), origin + ': 未落实Owner单项禁令')
+    require(document['decision'] != 'FINISH', origin + ': Owner许可不允许提前结束')
+
+
 def validate(document, previous, root, feature):
     require(document.get('feature') == feature, 'feature必须与product目录一致，不能换任务名重置历史')
     revision = document.get('revision')
@@ -145,6 +195,11 @@ def validate(document, previous, root, feature):
             require((old['subject'], old['criterion']) == key, origin + ': 原对象/验收断言不可随轮次改写')
         status = item.get('status')
         require(status in STATUSES, origin + ': status错误')
+        amendment = item.get('owner_scope_amendment')
+        new_amendment = amendment is not None and (not old or amendment != old.get('owner_scope_amendment'))
+        if new_amendment:
+            require(old is not None and status == 'REWORK' and origin not in carried,
+                    origin + ': Owner许可仅用于显式原项的REWORK动作更正')
         if old and old.get('scope') and status != 'REWORK':
             require(item.get('scope') == old['scope'], origin + ': 状态转换须保留最后收口范围，不能绕道重置')
         rounds = item.get('failed_rounds')
@@ -185,6 +240,9 @@ def validate(document, previous, root, feature):
                     text(value, origin + ': 参数值不能是继续优化等空泛动作')
             if old and old.get('scope') and origin not in carried:
                 old_scope = old['scope']
+                if new_amendment:
+                    validate_owner_amendment(document, item, old, root, feature, old_revision)
+                    continue
                 resolution = item.get('planning_resolution')
                 phase_change = old['status'] == 'PLANNER_ACTION' and resolution is not None
                 if phase_change:

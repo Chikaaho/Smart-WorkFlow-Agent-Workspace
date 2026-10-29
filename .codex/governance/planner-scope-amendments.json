@@ -1,0 +1,51 @@
+{
+  "schema": "agent-coding-engine.planner-scope-amendments.v1",
+  "grants": [
+    {
+      "id": "owner-20261029-u020-date-width",
+      "status": "ACTIVE",
+      "feature": "0.2.0",
+      "origin_id": "P3/101:2",
+      "base_revision": 20,
+      "subject": "101:2 27 用户端 · 发起流程",
+      "criterion": "对此原参考对象按A02/A03/A04作适用性及已有结果裁决，不等同代码待修",
+      "prior_scope": {
+        "targets": [
+          "填写页上述各点"
+        ],
+        "allowed_actions": [
+          "新建对照表单",
+          "改输入框高度",
+          "工具栏改用Element下拉",
+          "子表列头与加行样式"
+        ],
+        "forbidden_actions": [
+          "降低99%/98%/1%等原量化标准",
+          "手工画大矩形或遮罩非文字元素",
+          "删除授权代理/更多/编号设置/租户标识等合法功能刷分",
+          "改动八项业务断言和85/86已锁定行为",
+          "重跑与本项无关的业务链",
+          "改动vite.config.ts或他人成果",
+          "验证或修复移动端"
+        ],
+        "constraints": {
+          "富文本安全": "不放宽现有安全限制，不新增图片/表格能力",
+          "表单": "只增不改历史表单",
+          "文字口径": "文字项按visual-acceptance-020.md第7节判定；非文字像素≥99%、内容区≥99%、关键区≥98%"
+        }
+      },
+      "owner_authorization": "Owner在本会话直接答复：授权临时管理员处理此限制，完成后恢复规划。所答问题明确仅原流程填写日期铺满既有半列、32px高、已过框架/业务不动。",
+      "record": "product/governance/admin-date-width-scope-20261029.md",
+      "allowed_actions": [
+        "仅使原正确process填写页日期控件铺满既有半列，保持32px高。"
+      ],
+      "required_constraints": {
+        "Owner日期宽度许可": "仅使原正确process填写页日期控件铺满既有半列，保持32px高。",
+        "Owner已过保护": "日期外框与其所属半列实际宽度差≤1px，高32px；不硬编码598/692；日期类型/时区/值、冻结定义、1440容器/48页头/64底栏、设计器/只读日期均保持。"
+      },
+      "required_forbidden_actions": [
+        "禁止修改日期类型/时区/值、冻结定义、1440容器/48页头/64底栏或设计器/只读日期；仅填满原process日期控件所在半列。"
+      ]
+    }
+  ]
+}

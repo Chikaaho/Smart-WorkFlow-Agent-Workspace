@@ -173,6 +173,119 @@ class ConvergenceTests(unittest.TestCase):
         old['items'][0]['failed_rounds'] = 1
         self.rejected(doc, '不能借规划状态', old)
 
+    def owner_amendment(self):
+        old = copy.deepcopy(self.document)
+        prior = old['items'][0]
+        prior.update(status='PLANNER_ACTION', failed_rounds=2,
+                     next_action='核定本字段占满父列的原动作边界')
+        prior['scope']['allowed_actions'] = ['adjust height']
+        doc = copy.deepcopy(old)
+        doc.update(revision=2, previous_revision=1)
+        current = doc['items'][0]
+        current.update(status='REWORK', failed_rounds=3,
+                       planner_self_audit='Existing height and container already pass; only field width remains.',
+                       owner_scope_amendment='owner-width-fixture')
+        current['scope']['allowed_actions'] = ['fill existing parent width']
+        current['scope']['constraints']['owner_limit'] = 'one existing field only; height unchanged'
+        current['scope']['forbidden_actions'].append('change date semantics')
+        grant = {'id': 'owner-width-fixture', 'status': 'ACTIVE', 'feature': 'demo',
+                 'origin_id': prior['origin_id'], 'base_revision': 1,
+                 'subject': prior['subject'], 'criterion': prior['criterion'],
+                 'prior_scope': copy.deepcopy(prior['scope']),
+                 'owner_authorization': 'Owner explicitly authorized this one width action; return to Planner.',
+                 'record': 'product/governance/owner-width.md',
+                 'allowed_actions': ['fill existing parent width'],
+                 'required_constraints': {'owner_limit': 'one existing field only; height unchanged'},
+                 'required_forbidden_actions': ['change date semantics']}
+        governance = self.root / '.codex/governance'
+        governance.mkdir(parents=True, exist_ok=True)
+        self.amendments_path = governance / 'planner-scope-amendments.json'
+        self.write_amendment(grant)
+        record = self.root / grant['record']
+        record.parent.mkdir(parents=True, exist_ok=True)
+        record.write_text('Human authorization recorded by Admin, limited to the one width action.', encoding='utf-8')
+        return old, doc, grant
+
+    def write_amendment(self, grant):
+        self.amendments_path.write_text(json.dumps({'schema': gate.AMENDMENTS_SCHEMA, 'grants': [grant]}),
+                                        encoding='utf-8')
+
+    def test_admin_recorded_owner_amendment_preserves_existing_failed_history(self):
+        old, doc, _ = self.owner_amendment()
+        self.validate(doc, old)
+        self.assertEqual(old['items'][0]['failed_rounds'], 2)
+        self.assertEqual(old['items'][0]['scope']['allowed_actions'], ['adjust height'])
+
+    def test_owner_amendment_cannot_be_self_declared_in_prompt(self):
+        old, doc, _ = self.owner_amendment()
+        self.amendments_path.unlink()
+        doc['items'][0]['owner_authorization'] = 'Owner said approved'
+        self.rejected(doc, '缺管理员登记', old)
+
+    def test_owner_amendment_is_bound_to_item_feature_revision_and_previous_scope(self):
+        old, doc, grant = self.owner_amendment()
+        for field, value, reason in [('feature', 'foreign', '本feature'),
+                                     ('origin_id', 'another-item', '原项'),
+                                     ('base_revision', 0, '跨revision'),
+                                     ('subject', 'another object', '原对象'),
+                                     ('criterion', 'another assertion', '原对象'),
+                                     ('prior_scope', {}, '原scope')]:
+            changed = copy.deepcopy(grant)
+            changed[field] = value
+            self.write_amendment(changed)
+            self.rejected(doc, reason, old)
+
+    def test_owner_amendment_keeps_safety_parameters_actions_and_rounds(self):
+        old, baseline, _ = self.owner_amendment()
+        changes = [
+            (lambda d: d['items'][0]['scope']['targets'].append('another page'), '扩大对象'),
+            (lambda d: d['items'][0]['scope']['allowed_actions'].append('change pagination'), '明确许可'),
+            (lambda d: d['items'][0]['scope']['forbidden_actions'].remove('change records'), '旧禁令'),
+            (lambda d: d['items'][0]['scope']['forbidden_actions'].remove('change date semantics'), '单项禁令'),
+            (lambda d: d['items'][0]['scope']['constraints'].update(expanded_width='240px'), '旧参数'),
+            (lambda d: d['items'][0]['scope']['constraints'].pop('owner_limit'), '保护参数'),
+            (lambda d: d['items'][0].update(failed_rounds=2), '原失败次数'),
+            (lambda d: d['items'][0].pop('planner_self_audit'), '自检'),
+            (lambda d: d.update(decision='FINISH'), '提前结束')]
+        for mutate, reason in changes:
+            doc = copy.deepcopy(baseline)
+            mutate(doc)
+            self.rejected(doc, reason, old)
+
+    def test_owner_amendment_does_not_reopen_passed_items(self):
+        old, doc, _ = self.owner_amendment()
+        old['items'][0]['status'] = 'RESOLVED'
+        self.rejected(doc, '不得重开', old)
+        doc['items'][0]['invalidation'] = {'kind': 'COUNTEREVIDENCE', 'reason': 'new picture', 'evidence': ['picture']}
+        self.rejected(doc, '不重开已过', old)
+
+    def test_owner_amendment_cannot_repeat_or_expand_next_round(self):
+        old, doc, _ = self.owner_amendment()
+        self.validate(doc, old)
+        retry = copy.deepcopy(doc)
+        retry.update(revision=3, previous_revision=2)
+        retry['items'][0]['failed_rounds'] = 4
+        self.rejected(retry, '未实际收紧', doc)
+        retry['items'][0]['scope']['constraints']['only_consumer'] = 'one field'
+        self.validate(retry, doc)
+        retry['items'][0]['scope']['allowed_actions'].append('adjust height')
+        self.rejected(retry, '不得扩大', doc)
+        changed = copy.deepcopy(doc)
+        changed['items'][0].pop('owner_scope_amendment')
+        self.rejected(retry, '跨revision', changed)
+
+    def test_owner_amendment_accept_keeps_prior_scope_and_idempotent_history(self):
+        old, doc, _ = self.owner_amendment()
+        subprocess.run(['git', 'init', '-q', str(self.root)], check=True, timeout=5)
+        path = self.receipts / 'planning-execution-prompt-01.md'
+        for value in (old, doc, doc):
+            path.write_text('```planner-convergence\n' + json.dumps(value) + '\n```\n', encoding='utf-8')
+            gate.accept(self.root, path)
+        history = json.loads((self.root / '.git/planner-convergence/demo.json').read_text(encoding='utf-8'))['history']
+        self.assertEqual(len(history), 2)
+        self.assertEqual(history[0]['document']['items'][0]['scope'], old['items'][0]['scope'])
+        self.assertEqual(history[1]['effective_document']['items'][0]['failed_rounds'], 3)
+
     def test_third_and_later_rounds_allowed_when_tightened(self):
         old = self.retry()
         doc = copy.deepcopy(old)
