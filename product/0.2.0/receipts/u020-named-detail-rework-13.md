@@ -4,8 +4,8 @@
 
 ## 一、身份与证据
 
-- 会话/视口：t100admin@i5-tenant-100（G14/G17/G18/G19/G36/G37）、admin@tenant-0（G24/G25/G26/G27/G29/G30/G31）；1920×1080/DPR1，Chromium headless，DOM `getBoundingClientRect` + computed style 实测。
-- 证据：`E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/real-joint/u020-13-geometry.json`（13 组 verdict 覆盖 15 节点）与 `u020-13-*.png`；采集脚本 `tools/u020-13-capture.cjs`（末轮全量复跑）。
+- 会话/视口：t100admin@i5-tenant-100（G14/G17/G18/G19/G36/G37）、admin@tenant-0（G24/G25/G26/G27/G29/G30/G31）；1920×1080/DPR1，Chromium **可见交互会话（headless:false）**，DOM `getBoundingClientRect` + computed style 实测（首轮排查用 headless 同口径，末轮验收数据以可见会话复跑为准，结果一致）。
+- 证据：`E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/real-joint/u020-13-geometry.json`（13 组 verdict 覆盖 15 节点）与 `u020-13-*.png`；网络索引 `u020-13-network.json`（可见会话全程 3599 请求/531 去重 URL，后端 8080 + vite 5175 真实联调流量）；采集脚本 `tools/u020-13-capture.cjs`（末轮全量复跑）。
 - 后端本机 dev 8080（bootstrap-dev.jar + SW_DEV_DB_* + 四外部密钥一次性 dev 值，不入库不回显）；前端 vite 5175。真实数据：富文本与子表探针（5f2b5468，G36/G37）、A11 表单事件探测（1fe2ed4e，G14 冻结载体）、灾备演练申请-87（G17 入口）、系统管理真实数据。
 
 ## 二、15节点逐项实测（末轮）
