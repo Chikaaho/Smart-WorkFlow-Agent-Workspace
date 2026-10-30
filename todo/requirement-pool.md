@@ -1,12 +1,12 @@
 # 需求池（Requirement Pool）
 
-当前活动任务：0.2.0 全局UI与关联功能完善（已发布交付，终态待复核）；唯一入口[提示36](../product/0.2.0/receipts/planning-execution-prompt-unified-020-36.md)，执行回执[u020-36-release-delivery](../product/0.2.0/receipts/u020-36-release-delivery.md)，阶段3裁决[审查35](../product/0.2.0/receipts/planning-review-unified-020-35-result.md)。现行五项：UI与文案像素还原、租户管理、表单能力、表单脚本、流程能力——业务/UI验收通过，500＝500 RESOLVED、余差0、修复FINISH（revision54）保持。 发布事实（2026-10-31，均可回读）：Web main f5ec5a1（tag 0.2.0，CI 41092067995 success，Release 资产 sw-web-dist-0.2.0.zip 6,153,509 B）；Server main 39dcedb7（tag 0.2.0，CI 41097671140 success，Release 资产 bootstrap-0.2.0.jar 218,547,155 B sha256 524cbf2f…，build.version=0.2.0 实测）；UAT 8.166.112.85 按 §8/§9 交付（备份 pre0200、DB 衔接单条 0.2.0、4 支新 R__ 单次应用、启动 172.021s、ERROR 0、health UP、web 指纹一致）；本机 dev 环境同步交付（smart_workflow_dev 衔接、bootstrap-dev.jar health UP）。 门禁：27 基线失败定性为 0.2.0 开发漂移并按精确原因修复（错误码目录 200/195、双语+11、迁移链断言 0.2.0 化、受控入口对齐等），本地全量 clean test 403 类/2338 测试 0 失败 0 错误；种子压缩双方言逐字节等价独立复核。 总7阶段：评估、实施提交、验收同步、合并develop/main、发布0.2.0、发布后同步已完成（6/0/1），结束待 Planner 复核 A17 终态裁决；未核销P、未晋级基线、未宣称整版 PASSED。遗留上报：根 main 与 develop-sw 治理分叉需显式对账裁决（本轮未合并 root main）；域名根路由为 10-16 起既有状态未改。
+当前活动任务：0.2.0 全局UI与关联功能完善（已发布，整版VERIFYING）；唯一入口[提示37](../product/0.2.0/receipts/planning-execution-prompt-unified-020-37.md)，配套[审查36](../product/0.2.0/receipts/planning-review-unified-020-36-result.md)、[发布回执36](../product/0.2.0/receipts/u020-36-release-delivery.md)。五项目标业务/UI通过，500＝500 RESOLVED、余差0、修复FINISH/revision55。两仓CI/Release/制品及服务器内0.2.0升级通过，原A17仅现行根路径交付结果、最终分支版本及对应同步待收尾；Owner已明确现用根路径。总7阶段：评估、实施提交、验收同步、两业务仓合并、发布0.2.0完成；发布后同步/交付事实复核进行中；结束未开始（5/1/1）。 正式49、46/22/22＝90、ADV64/问题57、P62延期/OFF及既有P/正式基线保持；根main治理分叉独立留账。
 
 Owner 确认 0.1.10 已交付；按其指示只读核对远端 main，Web `2df670b50`、Server `85e1ab784` 已有 0.1.10 版本同步。本机 main 与原摘要停在 0.1.9，新版探索确认 tag/Release 存在、knowledge 仍 0.1.9，部署/CI 结果仅见 Release 正文，见 [提交核对](../product/0.2.0/receipts/planning-main-history-20261022.md)。下文待办保留登记时点。已选 P2/P4 的真实差异矩阵已取得，承接 P60 I2/I3/I4 已过能力；新增契约与范围见正式方向，当前不核销编号。
 
 ## 0.2.0 UI 与文案目标（文案原登记 2026-10-20）
 
-Owner 已要求整理为前端长期规范与下一步执行任务。长期规则：前端工程宪法 §6.5；[文案专项标准](../product/ui-copy-governance/ready/direction-ui-copy-governance.md)。文案专项按原 L 级边界，由 0.2.0 XL 的 UI 与文案目标统一实施与验收，原登记时为READY；当前随0.2.0进入VERIFYING，实施已提交。说明按三档处置：必要说明进入功能右上角小问号悬浮；可选说明抽出到操作手册；名称已表达清楚或无用户价值的重复说明直接删除。即时校验、风险与结果反馈保留。执行范围为前端全部可见文案及隐藏状态，语义不确定项保留并列出；本地已有规范与任务登记；0.1.10 main 可见局部文案优化，探索已确认全量审计及三档治理尚未交付，纳入本版实施。总7阶段按上方当前0.2.0的3/0/4口径；原1/0/6为登记时点。不新增业务功能或 P 编号，执行与验收不重开已完成的 P61。
+Owner 已要求整理为前端长期规范与下一步执行任务。长期规则：前端工程宪法 §6.5；[文案专项标准](../product/ui-copy-governance/ready/direction-ui-copy-governance.md)。文案专项按原 L 级边界，由 0.2.0 XL 的 UI 与文案目标统一实施与验收，原登记时为READY；当前随0.2.0进入VERIFYING，实施已提交。说明按三档处置：必要说明进入功能右上角小问号悬浮；可选说明抽出到操作手册；名称已表达清楚或无用户价值的重复说明直接删除。即时校验、风险与结果反馈保留。执行范围为前端全部可见文案及隐藏状态，语义不确定项保留并列出；本地已有规范与任务登记；0.1.10 main 可见局部文案优化，探索已确认全量审计及三档治理尚未交付，纳入本版实施。总7阶段按上方当前0.2.0的5/1/1口径；原1/0/6为登记时点。不新增业务功能或 P 编号，执行与验收不重开已完成的 P61。
 
 ## 历史完成：README 首例验收与 0.1.9（2026-10-21）
 

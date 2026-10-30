@@ -56,7 +56,7 @@
 
 每批 UI 完成时先做本标准的设计对照并修复差异，再提交该批回执；功能可用与像素还原同时通过才算对应页面完成。受影响公共组件变化后，只重验覆盖矩阵命中的消费者；已通过且未变化的页面沿用证据。
 
-首轮证据规则保持。当前从[执行提示36](../receipts/planning-execution-prompt-unified-020-36.md)和[审查35](../receipts/planning-review-unified-020-35-result.md)读取。审查35确认阶段3验收同步完成；原五项目标业务/UI通过，500＝500 RESOLVED、余差0、修复FINISH（revision54）。下一动作按提示36进入阶段4候选核实与合并，继而发布0.2.0、发布后同步及结束。整版含A17仍VERIFYING，未发布、未COMPLETED。 局部通过不外推整版通过，原标准及已过锁定保持。
+首轮证据规则保持。当前从[执行提示37](../receipts/planning-execution-prompt-unified-020-37.md)和[审查36](../receipts/planning-review-unified-020-36-result.md)读取。审查36确认业务/UI及原500项保持通过，0.2.0已发布、服务器内升级通过，修复FINISH（revision55）；整版VERIFYING，仅原A17现行根路径交付结果、最终分支版本及对应同步待收尾，按提示37执行。 局部通过不外推整版通过，原标准及已过锁定保持。
 
 ## 7. 文字项判定与真实数据（Owner 2026-10-27批准；2026-10-28补充数据口径）
 

@@ -1,25 +1,27 @@
 # 0.2.0 当前规划交接
 
-2026-10-31｜Executor｜0.2.0 已发布并交付（tag 0.2.0/语义 Release/CI 制品/UAT 部署核实完成，见 product/0.2.0/receipts/u020-36-release-delivery.md）；500＝500 RESOLVED 保持，未核销P、未晋级基线、未宣称整版 PASSED；整版终态待 Planner 复核裁决。
+2026-10-31｜Planner｜READY1.3.3。五项目标业务/UI通过，500＝500 RESOLVED、余差0、修复FINISH（revision55接续54）。Web/Server 0.2.0已发布，服务器内升级通过；整版VERIFYING，A17两条交付事实及发布后同步待收尾，尚未COMPLETED。
 
-当前回执：product/0.2.0/receipts/u020-36-release-delivery.md；阶段3裁决：product/0.2.0/receipts/planning-review-unified-020-35-result.md；唯一执行入口：product/0.2.0/receipts/planning-execution-prompt-unified-020-36.md。
+最新回执：product/0.2.0/receipts/u020-36-release-delivery.md；当前裁决：product/0.2.0/receipts/planning-review-unified-020-36-result.md；唯一执行入口：product/0.2.0/receipts/planning-execution-prompt-unified-020-37.md。事实通道：search_task/u020-release-final-readback-20261031.md → 同名search_fallback。
 
-固定T020租户管理、F020表单能力、J020表单脚本、W020流程能力、U020整版UI/文案；Owner按真实数据。原500项及A05—A16/85/86锁定，只有具体新反证、相关实现变化或实际快照失效才按原ID复验受影响项，不恢复全站重扫。移动不验，1366仅实际受影响。
+固定T020租户管理、F020表单能力、J020表单脚本、W020流程能力、U020整版UI/文案，Owner按真实数据。原500项、A05—A16/85/86锁定；仅具体新反证、相关实现变化或实际快照失效才按原ID复验受影响项，移动不验、1366仅实际受影响。
 
-本轮已读回执35并交叉复核当前memory/ready/todo：阶段3同步通过。旧Server失败的候选门禁影响未被回执35证明，限定移交阶段4核定，不当新UI缺陷、不默认豁免。当前交付仍VERIFYING；本次规划裁决随下一授权批次先同步knowledge，再更新受影响入口，无需再等一轮纯文字同步回执。
+本轮已全文复核回执36并核当前memory/product/todo：门禁、种子、制品发布、服务器内升级结果通过；发布后摘要有旧3/0/4、未发布、失败待判残留，Planner已直接纠正，不要求业务补文字。
 
-唯一下一动作：Planner 按发布交付事实复核 A17 终态并裁决结束；Executor 侧无授权内剩余动作。遗留上报：根 main 与 develop-sw 治理分叉需显式对账裁决（本轮未合并 root main，0.1.10 先例根 main 不在发布路径）。
+回执36已核：Web main/tag f5ec5a1、CI41092067995成功、sw-web-dist-0.2.0.zip 6153509字节；Server最终main/tag39dcedb7、CI41097671140成功、bootstrap-0.2.0.jar 218547155字节/build.version=0.2.0。本地全量403类/2338测试0失败0错误，旧门禁失败已精确修复，不再记为待判。正式基线不随本次工程结果晋级。
 
-回执35核实时点：根codex/0.2.0-delivery/e000cff6，Web codex/0.2.0-ui-tenant-form-flow/7863e8b，Server codex/0.2.0-tenant-form-flow/22138197，各与origin一致。根文档与两gitlink在途；Web仅vite.config.ts既有本地改动，Server干净。e000cff6不是回执35自身提交；后续提交/发布事实由Executor最新回读替换。
+UAT已备份DB/jar/web，DB versioned单条0.2.0、4支新R__单次应用、启动172.021s/ERROR0/health UP、Web index-DMDsHDv8.js与CI一致；本机dev health UP。以上为服务器内交付结果，当前根路径的用户入口结果只作A17最小只读核实。
 
-沿提示34：Web typecheck/lint通过、1990 passed/3 skipped（230文件）、build4.28s；Server沿2213819编译/受影响测试。旧notify/agent/bpm/bootstrap/form G1失败保留，候选实际阻断关系待阶段4核定，不宣称全绿、不晋级正式基线。
+Owner本轮明确现用根路径，历史/sw已撤；当前入口和API路径以Owner安排及生效配置为准，不将旧路由记录当现状或派发恢复路由任务。
 
-正式49、46/22/22＝90、ADV64/问题57、P62延期/OFF，既有P核销和正式验证基线保持；本批不是新功能登记，500不是功能数，不整P核销。主方向含A17保留ready，整版终态待发布交付事实裁决。
+唯一下一动作：Executor按提示37只核当前根路径加载0.2.0制品及现行API可达结果、两业务仓最终main/tag/develop/远端/开发版本与Server最终修复回纳事实；按真实差异完成原授权回纳及knowledge-first受影响入口同步。两条满足后Planner核A17终态，不重复发布、版本确认、UI验收或全量测试。
 
-末四项Q08/Q56/Q74/Q11已于审查34通过（原运行r120/r121），最后成功消费者是FormRender r121，不拿设计器通用探针198重开172结论。历史500原ID/失败史/scope继承，不复制原文或新增附件门槛。
+正式49、46/22/22＝90、ADV64/问题57、P62延期/OFF，既有P核销和正式验证基线保持；500不是功能数，不新增登记或整P核销。整版方向含尚待关闭A17，保留ready。
 
-Q40及Q70/Q71管理员单项授权已完成并恢复Planner；治理b1fb9250远端一致，46治理回归、16许可边界及十项初始化通过。Planner不读源码/测试/knowledge、不操作业务UI、不跑工程/Git、不改治理。保护vite.config.ts/他人成果、PG/Redis/用户服务、冻结数据、权限和秘密。
+根任务分支/develop-sw合并提交bfa1e07a；根main治理分叉未对账，不冒称已合并，不在业务会话修改治理契约。该治理事项独立留账，本轮只收尾原A17两条。Web vite.config.ts既有本地改动及无关在途保留。Server首指失败后tag重指、scratch误启动写入、临时误传按回执36边界留档，不安排再改tag/覆盖Release或盲目清理数据。
 
-常规决定：按system.md §3.0持续授权进入第4—7阶段，不重问版本/许可；当前整版方向仍含A17，保留ready。Executor按自身角色规范读取knowledge/工程规范并实施；Planner下次只核当次交付事实、受影响覆盖和最终A17。
+末四原项Q08/Q56/Q74/Q11于审查34通过，真实FormRender成功消费者为r121；历史500原ID/失败史/scope继承。Q40/Q70/Q71管理员单项授权已完成恢复Planner，READY1.3.3；本轮无新管理员授权。
 
-总7阶段：评估、实施提交、验收同步已完成；合并develop/main、发布0.2.0、发布后同步、结束未开始（3/0/4）。阶段4方向已下发，实际开始由执行回执更新；0.2.0已确认。
+常规决定：复用已通过发布/工程结果，直接修正允许范围摘要；实际Git、配置及knowledge事实经探索通道取得，Planner不读源码/测试/knowledge、不操作业务UI、不跑工程/Git、不改治理。保护vite.config.ts/他人成果、PG/Redis/用户服务、冻结数据和秘密。Executor按提示37完成两个限定对象后回执，Planner直接核终态。
+
+总7阶段：评估、实施提交、验收同步、两业务仓合并、发布0.2.0完成；发布后同步/交付事实复核进行中；结束未开始（5/1/1）。

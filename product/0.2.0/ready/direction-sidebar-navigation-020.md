@@ -1,5 +1,7 @@
 # 多级侧栏的层级与折叠交互
 
+2026-10-31当前状态：五目标业务/UI通过，0.2.0已发布、服务器内升级通过；整版VERIFYING，仅原A17两条收尾。当前裁决[审查36](../receipts/planning-review-unified-020-36-result.md)，唯一待办[提示37](../receipts/planning-execution-prompt-unified-020-37.md)。下文保留产品边界和原登记背景，已完成的实施动作不重新派发。
+
 2026-10-26当前视觉输入：全量蓝色PNG为 E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/design-blue-20261026/（index.html / index.json）；核心331、规范102个顶层对象。相同节点以此包及direction-blue-primary-020.md为准；下文旧包保留未变几何、配置语义和资源，旧PNG颜色不覆盖当前参考。
 
 2026-10-25｜Planner｜0.2.0 U020-VIS / A03 / A04 补充方向
@@ -63,4 +65,4 @@ Owner指出展开态层级混乱，收起态目录与页面入口难以辨别。
 - https://ant.design/components/menu/
 - https://www.carbondesignsystem.com/building-blocks/core/components/ui-shell-left-panel/accessibility
 
-整体7阶段：评估完成1；分支实施进行中1；验收同步、合并、0.2.0发布、发布后同步、结束未开始5。
+总7阶段：评估、实施提交、验收同步、两业务仓合并、发布0.2.0完成；发布后同步/交付事实复核进行中；结束未开始（5/1/1）。

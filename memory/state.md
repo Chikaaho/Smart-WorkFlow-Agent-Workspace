@@ -1,9 +1,19 @@
 # 当前状态摘要
 
-2026-10-31｜Executor｜0.2.0 已发布并交付（tag/Release/制品/UAT 部署核实完成）。提示36执行回执：product/0.2.0/receipts/u020-36-release-delivery.md；唯一执行入口：planning-execution-prompt-unified-020-36.md。整版终态待 Planner 按发布交付事实复核裁决；未宣称整版 PASSED/COMPLETED。
+2026-10-31｜Planner｜READY1.3.3。五项目标业务/UI通过，500＝500 RESOLVED、余差0、修复FINISH（revision55接续54）。Web/Server 0.2.0已发布，服务器内升级通过；整版VERIFYING，A17两条交付事实及发布后同步待收尾，尚未COMPLETED。
 
-发布事实（均可回读）：Web main f5ec5a1（tag 0.2.0，CI 41092067995 success，Release「CH-aPaaS Web 0.2.0」资产 sw-web-dist-0.2.0.zip 6,153,509 B）；Server main 39dcedb7（tag 0.2.0，CI 41097671140 success，Release「CH-aPaaS Server 0.2.0」资产 bootstrap-0.2.0.jar 218,547,155 B sha256 524cbf2f…，build.version=0.2.0 实测）；首指 fbacde47 的 CI 41091926626 failure（iot 测试跨类执行顺序族）未产出任何 Release/制品，tag 重指无覆盖物。UAT 8.166.112.85 按 §8.1/8.2/8.3/9.1 交付：备份 pre0200 dump/jar 轮换/web.bak-20261031_0218，DB 衔接单条 0.2.0，4 支新 R__ 单次应用，启动 172.021s、ERROR 0、health UP、web 指纹 index-DMDsHDv8.js==CI 制品；域名根路由自 10-16 起指向同机 agent 服务（既有状态，未改）。
+最新回执：product/0.2.0/receipts/u020-36-release-delivery.md；当前裁决：product/0.2.0/receipts/planning-review-unified-020-36-result.md；唯一执行入口：product/0.2.0/receipts/planning-execution-prompt-unified-020-37.md。事实通道：search_task/u020-release-final-readback-20261031.md → 同名search_fallback。
 
-门禁与修复：27 基线失败全部定性为 0.2.0 开发漂移并按精确原因修复（错误码目录 200/195、双语文案+11、迁移链断言 0.2.0 化、受控入口对齐 FormTraceMapper、agent DDL 补列、P62 排除 devseed、bpm 改经 action_ref）；全量门禁终验本地 403 类/2338 测试 0 失败 0 错误；Server/CI 同口径通过。种子压缩：V0.2.0 单一基线（双方言逐字节等价独立复核）+ 18 R__ + db/upgrade/0.2.0 升级通道。
+回执36已核：Web main/tag f5ec5a1、CI41092067995成功、sw-web-dist-0.2.0.zip 6153509字节；Server最终main/tag39dcedb7、CI41097671140成功、bootstrap-0.2.0.jar 218547155字节/build.version=0.2.0。本地全量403类/2338测试0失败0错误，旧门禁失败已精确修复，不再记为待判。正式基线不随本次工程结果晋级。
 
-总7阶段：评估、实施提交、验收同步、合并develop/main、发布0.2.0、发布后同步已完成（6/0/1），结束待 Planner 复核 A17 终态裁决。正式49、46/22/22＝90、ADV64/问题57、P62延期/OFF 保持；500 RESOLVED 保持，未核销P、未晋级基线。遗留上报：根 main 与 develop-sw 治理分叉（main 72 独有治理提交、terminal-contract.json 双向新增冲突）需显式治理对账裁决，本轮未合并 root main；vite.config.ts 既有本地改动仍保留未提交。
+UAT已备份DB/jar/web，DB versioned单条0.2.0、4支新R__单次应用、启动172.021s/ERROR0/health UP、Web index-DMDsHDv8.js与CI一致；本机dev health UP。以上为服务器内交付结果，当前根路径的用户入口结果只作A17最小只读核实。
+
+Owner本轮明确现用根路径，历史/sw已撤；当前入口和API路径以Owner安排及生效配置为准，不将旧路由记录当现状或派发恢复路由任务。
+
+唯一下一动作：Executor按提示37只核当前根路径加载0.2.0制品及现行API可达结果、两业务仓最终main/tag/develop/远端/开发版本与Server最终修复回纳事实；按真实差异完成原授权回纳及knowledge-first受影响入口同步。两条满足后Planner核A17终态，不重复发布、版本确认、UI验收或全量测试。
+
+正式49、46/22/22＝90、ADV64/问题57、P62延期/OFF，既有P核销和正式验证基线保持；500不是功能数，不新增登记或整P核销。整版方向含尚待关闭A17，保留ready。
+
+根任务分支/develop-sw合并提交bfa1e07a；根main治理分叉未对账，不冒称已合并，不在业务会话修改治理契约。该治理事项独立留账，本轮只收尾原A17两条。Web vite.config.ts既有本地改动及无关在途保留。Server首指失败后tag重指、scratch误启动写入、临时误传按回执36边界留档，不安排再改tag/覆盖Release或盲目清理数据。
+
+总7阶段：评估、实施提交、验收同步、两业务仓合并、发布0.2.0完成；发布后同步/交付事实复核进行中；结束未开始（5/1/1）。

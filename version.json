@@ -10,8 +10,8 @@
     "status": "RELEASED",
     "direction": "product/0.2.0/ready/direction-020.md",
     "branches": {
-      "server": "codex/0.2.0-tenant-form-flow（tip befd32eb；发布 main 39dcedb7）",
-      "web": "codex/0.2.0-ui-tenant-form-flow（tip eadd20b；发布 main f5ec5a1）",
+      "server": "codex/0.2.0-tenant-form-flow（tip befd32eb，已回纳 develop c25f5ea5；发布 main 39dcedb7）",
+      "web": "codex/0.2.0-ui-tenant-form-flow（tip eadd20b，已回纳 develop 3c1cfe2；发布 main f5ec5a1）",
       "workspace": "codex/0.2.0-delivery（develop-sw 已同步 bfa1e07a；root main 治理对账留待裁决）"
     },
     "developmentVersion": {
@@ -41,7 +41,8 @@
       "rollback": "docs/ops/production-ops.md §8.1/§8.2/§9.1（备份 DB smart_workflow_20261031_0215_pre0200.dump、bootstrap.jar.bak（0.1.10）/​.bak2、web.bak-20261031_0218）",
       "configChanges": "0.2.0 无新增必配项；R__0.2.0_form_integration 幂等补齐 sw_agent_tool_external（升级通道存量库自足）",
       "dbMigrations": "V0.2.0__baseline_seed.sql（单条 versioned 收敛基线）；新增 R__0.2.0_approval_opinion_draft / R__0.2.0_ext_datasource_grant / R__0.2.0_form_integration（存量库自足）/ R__u020_user_group_menu 随启动单次应用",
-      "manifest": "GitHub Release 0.2.0 资产：Server bootstrap-0.2.0.jar 218,547,155 B sha256 524cbf2fab94b66e825aa4a019f3709d965a2b7dd7fc55ba112fd1e7dddf92dd（CI run 41097671140，build.version=0.2.0 实测）；Web sw-web-dist-0.2.0.zip 6,153,509 B sha256 5d80c964e7142c99（CI run 41092067995，入口 assets/index-DMDsHDv8.js，UAT 部署后指纹一致）"
+      "manifest": "GitHub Release 0.2.0 资产：Server bootstrap-0.2.0.jar 218,547,155 B sha256 524cbf2fab94b66e825aa4a019f3709d965a2b7dd7fc55ba112fd1e7dddf92dd（CI run 41097671140，build.version=0.2.0 实测）；Web sw-web-dist-0.2.0.zip 6,153,509 B sha256 5d80c964e7142c99（CI run 41092067995，入口 assets/index-DMDsHDv8.js，UAT 部署后指纹一致）",
+      "deployment": "UAT 8.166.112.85 已按 §8.1/8.2/8.3/9.1 就地升级：DB 历史衔接单条 0.2.0（checksum 一致）、4 支新 R__ 随启动单次应用、启动 172.021s、日志 ERROR 0、/api/actuator/health {\"status\":\"UP\"}、web 指纹 index-DMDsHDv8.js 与 CI 制品一致。现行用户根路径＝域名 HTTPS（chikaho.cn）根路径，自 2026-10-15 R015-02 起挂载 /opt/smart-workflow/web：2026-10-31 实测根页面 200 且加载 assets/index-DMDsHDv8.js（本次 0.2.0 制品），前端构建产物 API 基址 sw-server/api → nginx /sw-server/ → 127.0.0.1:8080，/sw-server/api/actuator/health 200 {\"status\":\"UP\"}。同机 8.166.112.85:80 IP vhost（→5173）与 /rs、/events 等 reasonix 路径为共存服务（不属工作流入口，未改）。"
     }
   },
   "rules": {
