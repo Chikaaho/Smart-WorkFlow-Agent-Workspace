@@ -197,3 +197,18 @@ README 首例“多部门灾备演练”业务验收已 PASSED（Owner 实操验
 **2026-10-31 执行提示38：Server 最后发布修复回纳核实（A17 单一剩余项通过）**：按 `planning-execution-prompt-unified-020-38.md`（revision56）。最后 IoT 顺序修复＝提交 `731c689c`（CommandQueueServiceTest 实体元数据显式初始化）：`merge-base --is-ancestor` 证实其对 origin/develop（tip c25f5ea5，同回执37）与 origin/main（发布 39dcedb7 链）均成立，内容等价核（origin/develop 文件含 initTableInfo）一致；所在远端分支 main/develop/任务分支。`39dcedb7` 合并提交本身不在 develop 上属既定拓扑（main=develop+合并提交，与 0.1.10 同型），不构成缺失。结论回传 `search_fallback/u020-final-published-fix-return-20261031.md`；零工程改动、零测试、零数据/tag 变动。A17 全部对象满足；未核销P、未晋级基线；终态待 Planner 裁决。
 
 **2026-10-31 执行提示39：0.2.0 终态裁决落盘（COMPLETED，7/0/0）**：按 `product/0.2.0/ready/direction-terminal-sync-020.md`（revision57，依据审查38全部通过裁决 `planning-review-unified-020-38-passed.md`）。唯一终态值：0.2.0 五目标 T020/F020/J020/W020/U020 及 A01—A17 全部 PASSED；500＝500 RESOLVED、REWORK/PLANNER_ACTION/MINOR 0；完成功能数 49、清单 46/22/22＝90、ADV64/问题57；既有 P 核销值不变，P2/P4/P29/P65 仅本版适用范围 PASSED 不整 P 核销，P62 有限性能延期/OFF 保持；正式验证基线新增/晋级集合 []（既有基线全保留）；正式/部署版本 Web 与 Server 0.2.0（UAT/本机 dev 交付沿回执36/37，未重新部署）；开发版本 Server 0.2.0-SNAPSHOT、Web 0.2.0；发布/分支：Web main/tag f5ec5a1、develop 3c1cfe2，Server main/tag 39dcedb7、develop c25f5ea5，最后修复 731c689c 双分支包含，CI 41092067995/41097671140 成功。主方向及标准/既有启动入口 21 文件归档 `product/0.2.0/passed/`、UI 文案专项归档 `product/ui-copy-governance/passed/`，ready 仅保留提示39终态同步方向（Planner 复核传播后自行归档，Executor 不移动）。memory 8 份 17,946 B（每份<5000、总量<20000，压缩前 18,776 B）。活动功能：无；等待 Owner 安排下一目标。根 main 治理分叉独立留账不在本次范围。七阶段 7/0/0 完成；0.2.0 COMPLETED。
+
+
+## 2026-10-31 0.2.0 分支收尾（Owner授权直接处理）
+
+Workspace已在develop-sw；原codex/0.2.0-delivery的b32adc84已在远端develop-sw，旧本地develop-sw仅落后，已安全快进。最终归档/终态摘要及两业务仓develop指针已提交推送（文档批d3def1c1）；本次事实记录提交由Git回读关联，不循环预填自身SHA。
+
+| 仓库 | 当前分支与目标 | 本轮开发分支清理 |
+|---|---|---|
+| Workspace | develop-sw，本地/远端已同步 | codex/0.2.0-delivery本地、origin均已删除 |
+| Web | develop=3c1cfe2，main=f5ec5a1；开发源eadd20b为两目标祖先，代码树相同 | codex/0.2.0-ui-tenant-form-flow本地、origin均已删除 |
+| Server | develop=c25f5ea5，main=39dcedb7；开发源befd32eb为两目标祖先，代码树相同 | codex/0.2.0-tenant-form-flow本地、origin均已删除 |
+
+删除前核实合入，远端删除绑定原tip防并发变化，删除后分别回读本地refs和origin实际refs确认不存在。Web vite.config.ts切分支前后逐字节一致，仍未提交；旧临时文件、另三份search_task及其他版本/他人分支保持。无代码、测试、服务、数据、发布或tag变化；根main治理分叉保持独立留账。0.2.0 COMPLETED/7-0-0及正式49、46/22/22、ADV64/57、P62延期/OFF不变。本次Owner临时授权本会话直接处理Git收尾已完成，恢复规划边界，无后续执行任务。
+
+最终未提交检查：补纳三份被已入库历史回执引用的原始任务文件search_task/0.2.0-acceptance-four-facts-86.md、unified-020-planner-open-ledger-22.md、unified-020-state-facts-18.md；三份均已有对应已跟踪结论，不作为新待办。vite.config.ts的allowedHosts开发域名设置和.tmp-a03-schema.json为有意保留本地项，未提交。
