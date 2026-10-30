@@ -294,6 +294,69 @@ class ConvergenceTests(unittest.TestCase):
         doc['items'][0]['scope']['allowed_actions'] = ['adjust width']
         self.validate(doc, old)
 
+    def owner_rework_amendment(self):
+        old, doc, grant = self.owner_amendment()
+        old['items'][0]['status'] = 'REWORK'
+        old['items'][0]['scope']['constraints']['action_boundary'] = 'frontend only'
+        grant.update(prior_status='REWORK', prior_failed_rounds=2,
+                     prior_scope=copy.deepcopy(old['items'][0]['scope']),
+                     constraint_replacements={'action_boundary': {
+                         'from': 'frontend only', 'to': 'existing list contract only'}})
+        doc['items'][0]['scope']['constraints']['action_boundary'] = 'existing list contract only'
+        self.write_amendment(grant)
+        return old, doc, grant
+
+    def test_owner_rework_correction_keeps_identity_history_and_unmodified_limits(self):
+        old, doc, _ = self.owner_rework_amendment()
+        effective = gate.validate(doc, old, self.root, 'demo')
+        self.assertEqual(effective['items'][0]['failed_rounds'], 3)
+        self.assertEqual(old['items'][0]['scope']['constraints']['action_boundary'], 'frontend only')
+        self.assertEqual(effective['items'][0]['scope']['constraints']['expanded_width'], '236px')
+
+    def test_owner_rework_requires_explicit_status_and_failed_history_binding(self):
+        old, doc, baseline = self.owner_rework_amendment()
+        for key, value, reason in [('prior_status', 'PLANNER_ACTION', '不重开已过'),
+                                   ('prior_failed_rounds', 1, '绑定原失败次数'),
+                                   ('base_revision', 0, '跨revision')]:
+            grant = copy.deepcopy(baseline)
+            grant[key] = value
+            self.write_amendment(grant)
+            self.rejected(doc, reason, old)
+
+    def test_owner_rework_cannot_change_unregistered_parameters_or_safety_limits(self):
+        old, baseline, _ = self.owner_rework_amendment()
+        for mutate, reason in [
+            (lambda d: d['items'][0]['scope']['constraints'].update(expanded_width='240px'), '旧参数'),
+            (lambda d: d['items'][0]['scope']['constraints'].update(action_boundary='all endpoints'), '旧参数'),
+            (lambda d: d['items'][0]['scope']['targets'].append('another consumer'), '扩大对象'),
+            (lambda d: d['items'][0]['scope']['forbidden_actions'].remove('change records'), '旧禁令'),
+            (lambda d: d['items'][0]['scope']['allowed_actions'].append('another action'), '明确许可')]:
+            doc = copy.deepcopy(baseline)
+            mutate(doc)
+            self.rejected(doc, reason, old)
+
+    def test_owner_rework_replacement_must_match_previous_value(self):
+        old, doc, baseline = self.owner_rework_amendment()
+        for replacement in [
+            {'action_boundary': {'from': 'stale', 'to': 'existing list contract only'}},
+            {'unknown': {'from': 'frontend only', 'to': 'existing list contract only'}},
+            {'action_boundary': {'from': 'frontend only', 'to': ''}}]:
+            grant = copy.deepcopy(baseline)
+            grant['constraint_replacements'] = replacement
+            self.write_amendment(grant)
+            self.rejected(doc, '精确绑定', old)
+
+    def test_owner_rework_correction_is_not_reusable_or_a_finish_bypass(self):
+        old, doc, _ = self.owner_rework_amendment()
+        self.validate(doc, old)
+        retry = copy.deepcopy(doc)
+        retry.update(revision=3, previous_revision=2)
+        self.rejected(retry, '未实际收紧', doc)
+        retry['items'][0]['scope']['constraints']['only_consumer'] = 'one field'
+        self.validate(retry, doc)
+        doc['decision'] = 'FINISH'
+        self.rejected(doc, '提前结束', old)
+
     def test_generic_rejection_or_missing_diagnosis_rejected(self):
         for value in (None, {}, {'location': '继续修复'}):
             doc = copy.deepcopy(self.document)

@@ -125,8 +125,14 @@ def validate_owner_amendment(document, item, old, root, feature, old_revision):
     require(grant.get('feature') == feature and grant.get('origin_id') == origin,
             origin + ': Owner许可不属于本feature/原项')
     require(grant.get('base_revision') == old_revision, origin + ': Owner单项许可不能跨revision复用')
-    require(old['status'] == 'PLANNER_ACTION' and item['status'] == 'REWORK',
+    prior_status = grant.get('prior_status', 'PLANNER_ACTION')
+    require(prior_status in ('PLANNER_ACTION', 'REWORK') and
+            old['status'] == prior_status and item['status'] == 'REWORK',
             origin + ': Owner动作更正只承接原规划项，不重开已过项')
+    if prior_status == 'REWORK':
+        require(type(grant.get('prior_failed_rounds')) is int and
+                grant['prior_failed_rounds'] == old['failed_rounds'],
+                origin + ': Owner整改更正须绑定原失败次数')
     require(grant.get('subject') == old['subject'] and grant.get('criterion') == old['criterion'],
             origin + ': Owner许可不能更换原对象/断言')
     require(grant.get('prior_scope') == old['scope'], origin + ': Owner许可的原scope已失效')
@@ -138,8 +144,18 @@ def validate_owner_amendment(document, item, old, root, feature, old_revision):
     allowed = strings(grant.get('allowed_actions'), origin + ': Owner许可缺精确动作')
     require(set(scope['allowed_actions']) <= allowed, origin + ': 超出Owner明确许可的单项动作')
     require(set(prior['forbidden_actions']) <= set(scope['forbidden_actions']), origin + ': Owner许可不能撤回旧禁令')
+    replacements = grant.get('constraint_replacements', {})
+    require(isinstance(replacements, dict), origin + ': Owner约束更正登记错误')
+    require(not replacements or prior_status == 'REWORK',
+            origin + ': 原规划项许可不能替换旧参数')
+    for prop, change in replacements.items():
+        require(prop in prior.get('constraints', {}) and isinstance(change, dict) and
+                set(change) == {'from', 'to'} and change['from'] == prior['constraints'][prop] and
+                change['to'] is not None and change['to'] != '' and change['to'] != change['from'],
+                origin + ': Owner约束更正须精确绑定旧值和新值')
     for prop, value in prior.get('constraints', {}).items():
-        require(scope['constraints'].get(prop) == value, origin + ': Owner许可不能放松旧参数')
+        expected = replacements[prop]['to'] if prop in replacements else value
+        require(scope['constraints'].get(prop) == expected, origin + ': Owner许可不能放松旧参数')
     required = grant.get('required_constraints')
     require(isinstance(required, dict) and required, origin + ': Owner许可缺单项保护参数')
     for prop, value in required.items():

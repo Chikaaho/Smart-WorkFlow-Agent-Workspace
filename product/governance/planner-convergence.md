@@ -99,3 +99,9 @@ revision必须等于上一已接纳版本；review须为同feature的真实审�
 仅当Owner明确批准具体动作且管理员将许可登记在`.codex/governance/planner-scope-amendments.json`时，原已登记PLANNER_ACTION可在绑定的一个上一revision转入REWORK。提示填写`owner_scope_amendment`许可ID，不能自行填写授权正文代替管理员登记。管理员按原feature/origin_id/subject/criterion/完整prior_scope及base_revision绑定；许可只列精确allowed_actions与必须增加的保护参数/禁令。
 
 原targets不能扩大、全部旧禁令/约束须保留、失败历史接续+1、已有诊断/连续失败自检与完成条件继续生效。许可不适用于RESOLVED重开、不允许FINISH；后续轮次恢复正常严格收紧，同ID不能跨revision再用来扩动作。缺登记、过期、换项、放宽保护或撤销旧限制均拒绝。此次Owner许可与精确接续值见[日期宽度治理记录](admin-date-width-scope-20261029.md)。
+
+## Q40既有整改的Owner单项更正（2026-10-30）
+
+Owner明确授权临时管理员仅更正Q40应用列表契约范围，完成后恢复规划，见[授权与登记](admin-q40-list-scope-20261030.md)。已有许可默认仍只适用于PLANNER_ACTION转REWORK。对于管理员明确登记的原REWORK，必须额外绑定prior_status=REWORK、prior_failed_rounds及完整旧scope；下一派发保留同一原ID/对象/断言，失败史接续+1。不能重开RESOLVED或提前FINISH。
+
+原约束若含规划误设的动作边界，仅允许管理员按本次Owner具体授权在constraint_replacements登记每个键的准确from/to；未登记的原参数和全部旧禁令保留。Planner只能引用许可ID，不能在提示自造替换授权。仍绑定一个base_revision，不扩大targets，allowed_actions不得超许可集合，后续回合恢复正常收紧。Q40许可只允许现有应用列表补真实归属/有权租户过滤，不授权其他接口、路由、表、迁移或权限变更。
