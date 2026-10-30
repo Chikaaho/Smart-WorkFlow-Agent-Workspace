@@ -1,17 +1,13 @@
-# 必要硬约束
+# 规划硬约束
 
-2026-10-27｜权威system.md、roles/及当前方向。
+Planner不读源码/测试/knowledge、不操作业务UI、不跑工程/Git、不改治理；保护vite.config.ts/他人成果、用户PG/Redis/服务及秘密。 当前READY1.3.3；Q40及Q70/Q71临时管理员授权均已完成并恢复规划，单项更正已接续，不派生其他治理权限。
 
-- 所有角色续办先按system运行只读init/check.py --harness实际ID，READY再进入原角色；普通角色不安装/更新环境。当前codex本机/要求1.0.0 READY。
-- 当前Planner；管理员一次Hook修复授权已结束。不读写业务/测试源码、knowledge，不运行工程/Git命令；通过product/search_fallback验收，仅维护memory/search_task/product/todo。规划产物由Executor按既有根收尾授权纳入提交。
-- 根E:/code/Smart-WorkFlow-Agent-Workspace；证据E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/。迁回已完成，旧C退役；唯一任务03，保护双方成果，不从旧develop重建。knowledge及业务gitlink由Executor维护。
-- 蓝色政策见direction-blue-primary-020.md：默认蓝#2563EB，内置紫色预设迁蓝，保留青色/自定义与独立图表/状态色。当前Figma及design-blue-20261026覆盖同ID旧PNG。
-- 状态单一源knowledge/current-status.md；终态契约.codex/governance/terminal-contract.json。正式49、46/22/22=90、ADV64/问题57、P62延期/OFF保持，未独立验收不晋级。
-- Git收尾由获授权Executor执行，适用检查后普通提交推送并回读；Conventional Commits中文短主题，精确纳入本批文件并保护他人成果。分支沿现有任务接续，Planner只维护规划文档。
-- 七阶段连续授权，版本0.2.0已确认；合并发布依赖整版验收，不重复问版本，不据批次收尾宣称全部结束。
-- 当前03：Owner明确本次不验移动，375及其他移动验证/修复退出本次验收与交付阻塞，历史观察不列新待办。1920主视口、1366桌面、原业务/25族继续；已证局部锁定，原门槛不加码，不以移动问题冻结独立工作。
-- 03第4节限定剩余行为，已有证据扣除，不重扫全站。旧九整页相同数据/字体/背景残差按第6节立即转Planner，暂停重复送验，原标准/未过保持。现行规则允许明显缺陷第三轮及后续，须规划自检、具体诊断并实际收窄，不能因轮次停工或换提示清零；真实产品/授权外决定交Owner。无影响已过项不重跑，不整包哈希或重复封装。
-- 正式视觉1920×1080/DPR1/zoom1，原生参考，整页/内容99%、关键98%、几何≤1px、RGB各通道≤3、动态排除≤1%。headless仅ISOLATED_REGRESSION，设计导出不等于运行通过。
-- PG参数从仓外~/.config/smart-workflow/pg.env及既有加载通道取，先查变量存在，秘密不入Git/日志/命令正文、不回显。验证码人工识读/一次消费、禁穷举。
-- 有界可观测验证，禁止不可控后台任务、空转等待；仅清理精确自有任务，保护用户设施。0.1.7bug.md仅本地忽略，不强制加入或复制正文；发布沿既有凭据，不索取明文token。
-- 历史运维：UAT启动须加载server.env；预约Asia/Shanghai、到期EXPIRED不补发。设备送达证明分层，不以dev H2或受控Broker外推生产。P63时序抖动沿todo/p63-reservation-test-timing-stability.md。
+收敛记忆：达到限定条件就关闭，不能数完又重开。14命名证据被15末轮复用，当前JSON at=2026-10-29T02:54:07.642Z，以新实值判定，旧回执保留时点；不为文件命名/计数/SHA占位开补写。PNG与Range口径分开，同字水平差8px已核销，不比较纵向基线；SVG含边框比1.002不当节点放大，G37首项12透明不误报14选中回退，成功末轮图优先err。只按实绘边框判色，±1直接采信。
+
+Owner直接确认“是，按真实数据验收”。C1/C2/C3示例条数/柱高/权限与G20密度条件关闭，不再求确认。合法附加字段/成员可自然增高/内滚，子表2/3行均合法；缺类型/规则是真实空态，缺坐标仅查看层派生不改冻结版本/编边。99/98仅同态可比固定区域适用，不适用整图不作失败/通过，不扩大遮罩或整片免验。
+
+正式视觉1920×1080/DPR1/zoom1；适用整页/内容99%、关键98%、几何/基线≤1px、RGB≤3；文字第7节保持，墨迹底边不是基线，null行高不推容器。
+
+总7阶段：评估、实施提交、验收同步已完成；合并develop/main、发布0.2.0、发布后同步、结束未开始（3/0/4）。阶段4方向已下发，实际开始由执行回执更新；0.2.0已确认。
+
+回执34自报Web typecheck/lint通过、1990 passed/3 skipped（230文件）、build4.28s；Server本轮零改动沿2213819。全量Server旧notify/agent/bpm/bootstrap/form G1失败沿已知事实保留，不宣称后端全绿、不将局部通过晋级正式基线。Web8文件变更与vite.config.ts从stash原样恢复/仅既有本地改动的事实采信执行摘要，不由Planner读源码/Git核实。原始证据在Evidence，取证未提交/保存/发布或创建业务数据。

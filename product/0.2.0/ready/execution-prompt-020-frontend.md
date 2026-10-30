@@ -1,6 +1,6 @@
-# 0.2.0 前端执行任务
+# 0.2.0 前端历史契约
 
-2026-10-26当前入口：[新执行任务03](../receipts/planning-execution-prompt-unified-020-03.md)。Owner已终止旧执行；本文件原契约按已确认范围和历史时点承接，当前工作台设计以direction-workspace-config-020-r2.md为准，不并行恢复旧派发。
+2026-10-26当前入口：[当前执行提示36](../receipts/planning-execution-prompt-unified-020-36.md)。Owner已终止旧执行；本文件原契约按已确认范围和历史时点承接，当前工作台设计以direction-workspace-config-020-r2.md为准，不并行恢复旧派发。
 
 2026-10-25：本文件保留为原前端交接，当前统一启动入口为execution-prompt-020-unified.md，授权与下一动作以direction-unified-020.md为准；下文单侧写入分工不再作为当前统一会话限制。
 

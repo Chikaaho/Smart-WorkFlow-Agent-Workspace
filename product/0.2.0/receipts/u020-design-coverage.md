@@ -1,5 +1,30 @@
 # U020 设计承接工作清单
 
+2026-10-27规划当前指针：本表保留原258状态实施快照；后续65个工作台新增状态、8个侧栏新增状态和当前蓝包26原生快照变体按[再次核查](planning-audit-unified-020-86-recheck.md)及任务03 revision6承接。下文旧“待适配/验证”不直接等于当前代码待修，后续已证结果不清零；当前逐对象裁决尚未完成。
+
+## 规划当前裁决：81—84已证行为的节点承接
+
+2026-10-27。现有承接表本来已有入口与结果索引；当前缺口是后续裁决没有完整回填，不能把原258和新增参考对象当作从零重验。以下12个节点只继承已锁定的具体行为，正式视觉单列待验，未新增业务通过数。各原回执及原始图位于当前E盘证据根。
+
+| 原节点 | 已锁定行为 | 现有原始回执 |
+| --- | --- | --- |
+| 401:8751 | 属性面板显示逻辑类型“文本”，清单存储类型保留VARCHAR，契约未变 | a03-logical-type-multiline-81.md §1 |
+| 401:8653 | 多行TEXT与RICH_TEXT独立入口；TEXT multiline保存发布、三行草稿回读、只读换行和编辑恢复 | a03-logical-type-multiline-81.md §2 |
+| 49:2 | 同一字段清单区分单行/多行/富文本，重载一致，存储类型保留原义 | a03-fieldlist-permtree-script-82.md §1 |
+| 474:16421 | 普通测试角色勾选保存/重开/恢复；无权身份同端点查询与修改403，原权限未改变 | a03-fieldlist-permtree-script-82.md §2；a03-negative-node-script-chart-84.md §1 |
+| 376:7330 | 下拉选择A，草稿真实回读a | a03-controls-matrix-83.md §2 |
+| 376:7373 | 多选X/Y，草稿真实回读[x,y] | a03-controls-matrix-83.md §2 |
+| 376:7404 | 关联弹窗空态与真实1条目标选中，草稿回读原目标ID | a03-controls-matrix-83.md §2 |
+| 376:7421 | 开关交互为开，草稿回读true | a03-controls-matrix-83.md §2 |
+| 376:7444 | 附件实际上传，草稿保留返回的storageKey/name；本条不外推全部上传变体 | a03-controls-matrix-83.md §2 |
+| 376:7517 | 日期输入2026-10-27，草稿回读一致 | a03-controls-matrix-83.md §2 |
+| 376:7526 | 数字输入42，草稿回读数值42 | a03-controls-matrix-83.md §2 |
+| 570:26677 | 选择已授权审批人9001并保存发布，participant回读FIXED_USER及原ID；同一节点字段权限editable=false发布回读 | a03-negative-node-script-chart-84.md §3 |
+
+脚本预览成功（82）与应用保存/重载/恢复（84）也分别继承其已证断言，不能相互替代。80提出的逻辑类型/多行缺口已由81/82关闭；82/83提出的权限负向和节点保存缺口已由84关闭；84提出的图表缺口由85/86关闭，见工作台覆盖表的当前裁决。上述已证行为与正式像素之间不互相代替。
+
+以下为原258/规范族历史登记；其中“待适配/验证”先扣除这些后续结果，不能直接作为当前执行待办。当前完整剩余视觉尚未全部裁决，本表不作“只剩这些”的保证。
+
 2026-10-22｜Executor｜实施中。由正式设计索引的 258 行逐项生成；本表记录承接位置和缺口，不把文件存在当作行为通过。每行保留独立设计状态名称，同组只共享实现入口，不自动共享验收结论。
 
 证据 02/03 分别指 `u020-tenant-layout-02.md` / `u020-theme-navigation-03.md`；04 指 `u020-app-grid-appearance-04.md`；05 指 `u020-script-workspace-05.md`；06 指 `u020-layout-1920-06.md`；07 指 `u020-a03-a04-gap-07.md`，08 指 `u020-w020-implementation-08.md`，09 指 `w020-approval-draft-sign-09.md`，10 指 `u020-my-instances-layout-10.md`，11 指 `u020-header-responsive-11.md`，12 指 `u020-sidebar-personal-navigation-12.md`，13 指 `u020-sidebar-native-icons-13.md`，14 指 `u020-copy-accessibility-14.md`（配置帮助/状态文案与手册聚焦行为），15 指 `u020-snapshot-resource-copy-15.md`（快照、资源和批量帮助、手册可见查阅），16 指 `u020-designer-palette-16.md`（设计器工具栏、组件库原生图标与1366中英文工具条），17 指 `u020-resource-runtime-copy-17.md`（资源动态说明与真实HTTP/可见统计），18 指 `u020-detail-shell-18.md`（全屏共享详情、流转页签、移动局部滚动及正常提交005待审），19 指 `u020-attachment-access-19.md`（实际演练提交、受控附件下载与移动读取），20 指 `u020-readonly-controls-20.md`（32px只读控件、实际日期保存与移动业务回看），21 指 `u020-designer-settings-21.md`（三类主页签与设置菜单），23 指 `u020-process-designer-23.md`（流程设计器几何、编号与预览），24 指 `u020-wide-shell-24.md`（宽桌面主导航与租户页），其中 A03 数值为非同态数据的定位口径，明确不通过。前端新增证据见 `frontend/fe020-theme-blue-01.md`、`frontend/fe020-process-designer-selected-02.md` 和 `frontend/fe020-forms-flow-settings-03.md`。Mock 仅为 ISOLATED_REGRESSION，不承担正式权限、持久化或全局视觉验收。

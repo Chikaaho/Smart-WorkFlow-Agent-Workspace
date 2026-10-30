@@ -2,17 +2,17 @@
 
 2026-10-26当前视觉输入：全量蓝色PNG为 E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/design-blue-20261026/（index.html / index.json）；核心331、规范102个顶层对象。相同节点以此包及direction-blue-primary-020.md为准；下文旧包保留未变几何、配置语义和资源，旧PNG颜色不覆盖当前参考。
 
-2026-10-24｜Planner｜XL｜IN_PROGRESS｜目标版本 0.2.0
+2026-10-27｜Planner｜XL｜VERIFYING｜目标版本 0.2.0
 
-2026-10-26 Owner已终止旧执行并要求新任务方案，随后细节更新后已重新读取。唯一当前入口为[新执行任务03](../receipts/planning-execution-prompt-unified-020-03.md)，最新工作台明细见[工作台配置与图表增量](direction-workspace-config-020-r2.md)。本地r2增量包68图配合原全量包使用，无需MCP。默认蓝色保持，整版七阶段1/1/5，既有局部结果按证据范围承接。
+2026-10-30｜Planner｜0.2.0 VERIFYING。最新业务回执u020-34-four-exact.md；当前审查product/0.2.0/receipts/planning-review-unified-020-35-result.md；唯一执行入口product/0.2.0/receipts/planning-execution-prompt-unified-020-36.md，revision54接续53，收口校验通过。500＝500 RESOLVED/余差0，业务/UI验收通过，交付未结束。 审查35确认阶段3验收同步完成；原五项目标业务/UI通过，500＝500 RESOLVED、余差0、修复FINISH（revision54）。下一动作按提示36进入阶段4候选核实与合并，继而发布0.2.0、发布后同步及结束。整版含A17仍VERIFYING，未发布、未COMPLETED。
 
 ## 1. 目标与权威入口
 
 按 Owner 确认的 Figma 新稿完善 CH-aPaaS 全局界面，同时交付租户管理、表单事件脚本、表单配置与校验、流程操作的实际缺口。用户能通过界面配置并使用这些能力，页面、权限、持久化、流程结果与版本解释一致。
 
-本文件是本版正式需求方向。产品行为以 [关键决策](decision-records-020.md) 为准，首轮验收与证据以 [验收清单](acceptance-020.md) 为准；三份文件共同下发。执行入口为 [执行 Prompt](execution-prompt-020.md)。范围草案保留为来源指针。UI 与文案是同一任务，原文案方向的三档规则与 AC01—AC05 作为专项标准。
+本文件是本版正式需求方向。产品行为以 [关键决策](decision-records-020.md) 为准，首轮验收与证据以 [验收清单](acceptance-020.md) 为准；三份文件共同下发。执行入口为 [当前执行提示36](../receipts/planning-execution-prompt-unified-020-36.md)。范围草案保留为来源指针。UI 与文案是同一任务，原文案方向的三档规则与 AC01—AC05 作为专项标准。
 
-本次版本已由 Owner 指定为 **0.2.0**，执行、发布及受影响配置使用该版本，无需再次请求版本确认。规划已下发，业务正在实施，整版功能验收和发布尚未完成。
+本次版本已由 Owner 指定为 **0.2.0**，执行、发布及受影响配置使用该版本，无需再次请求版本确认。本版业务/UI行为验收及阶段3信息同步已通过；按提示36进入阶段4，合并发布仍满足既有工程门禁。
 
 ## 2. 已确认基线
 
@@ -86,4 +86,3 @@ U020 贯穿各功能，同一套公共组件和脚本面板随关联功能使用
 
 七阶段按 `system.md` §3.0 连续推进。功能和信息同步通过后，承接 develop/main 合并、种子及真实版本来源收敛、已确认 0.2.0 的正常发布、既有环境交付及发布后同步。保留相应工作项和真实依赖，不以功能完成替代整版结束，不另加逐阶段确认。
 
-当前总7阶段：评估完成；实施进行中；验收同步、合并、发布、发布后同步、结束未开始（1/1/5）。唯一入口direction-unified-020.md及receipts/planning-execution-prompt-unified-020-03.md，最新读取85。轴单位/系列HEX透明度/列表滚动/保存撤销重置/1366锁定，只余散点X/Y、雷达多维、热力双维度、组合柱线四图适配输入正向未证，不整批返工。原目录/应用/基准字体及A05/A06—A16已有覆盖归规划，先裁决不重跑。机器revision4接续3，原标准/历史与A17依赖保持，移动不验；init codex 1.0.0 READY。

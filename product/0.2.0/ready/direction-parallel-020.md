@@ -1,6 +1,6 @@
 # 0.2.0 前后端并行方向与共享边界
 
-2026-10-26当前入口：[新执行任务03](../receipts/planning-execution-prompt-unified-020-03.md)。Owner已终止旧执行；本文件原契约按已确认范围和历史时点承接，当前工作台设计以direction-workspace-config-020-r2.md为准，不并行恢复旧派发。
+2026-10-26当前入口：[当前执行提示36](../receipts/planning-execution-prompt-unified-020-36.md)。Owner已终止旧执行；本文件原契约按已确认范围和历史时点承接，当前工作台设计以direction-workspace-config-020-r2.md为准，不并行恢复旧派发。
 
 2026-10-24｜Planner｜XL｜READY｜同一主交付 IN_PROGRESS
 
