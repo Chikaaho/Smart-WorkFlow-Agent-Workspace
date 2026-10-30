@@ -205,6 +205,8 @@ set -a && . ./server.env && set +a && ./start.sh
 >
 > **0.1.8 正式制品获取（2026-10-19）**：两仓公开 Release —— [`CH-aPaaS Server 0.1.8`](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server/releases/tag/0.1.8)（资产 `bootstrap-0.1.8.jar` 218,042,791 B sha256 `5c0e66bd…`）与 [`CH-aPaaS Web 0.1.8`](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web/releases/tag/0.1.8)（资产 `sw-web-dist-0.1.8.zip` 1,346,615 B sha256 `f62f1a8f…`），两者即对应 `build-<sha>` CI 制品（仅版本化命名）。**0.1.8 无 DB 变更**（沿用 0.1.7 终点，无需 §8.3 衔接脚本）；UAT 已按本手册 §8.1/§8.2 由 0.1.7 就地升级部署（启动 175.8s、启动段 ERROR 0、健康 200、`build.version=0.1.8`）。
 
+> **0.1.10 正式制品获取（2026-10-21）**：两仓公开 Release —— [`CH-aPaaS Server 0.1.10`](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server/releases/tag/0.1.10)（资产 `bootstrap-0.1.10.jar` 218,065,590 B sha256 `b447fa09…`）与 [`CH-aPaaS Web 0.1.10`](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web/releases/tag/0.1.10)（资产 `sw-web-dist-0.1.10.zip` 1,360,081 B sha256 `a9d6a508…`），两者即对应 `build-8a2aa56…`／`build-e03a886…` CI 制品（仅版本化命名）。**0.1.10 DB 变更**：新增可重复迁移 `R__0.1.10_admin_password.sql`（默认超管种子口令 AdminP@ssw0rd），更新 `R__application_center_menu.sql`（应用管理顶级归位与排序 15）；versioned 终点保持 `V0.1.7`，随启动自动应用，无需手工衔接脚本。UAT 已按 §8.1/§8.2 由 0.1.9 就地升级部署（备份 `bootstrap.jar.bak-20261021_pre0110`、`web.bak-20261021_pre0110`、DB dump `smart_workflow_20261021_2215_pre0110.dump`；启动 181.914s、健康 UP、启动段 ERROR 0、`build.version=0.1.10`、Web `index-qOqx_U4O.js`）。
+
 ### 8.1 后端升级（替换 bootstrap.jar）
 
 1. **登录**：`~/ssh/ssh/ssh_personal.sh`
