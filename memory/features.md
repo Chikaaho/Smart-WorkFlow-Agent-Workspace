@@ -1,13 +1,15 @@
 # 功能摘要
 
-2026-10-31｜Planner｜READY1.3.3。五项目标业务/UI通过，500＝500 RESOLVED、余差0、修复FINISH（revision55接续54）。Web/Server 0.2.0已发布，服务器内升级通过；整版VERIFYING，A17两条交付事实及发布后同步待收尾，尚未COMPLETED。
+2026-10-31｜Planner｜READY1.3.3。0.2.0五目标及A01—A17全部验收PASSED；500＝500 RESOLVED、余差0、修复FINISH（revision57接续56）。0.2.0已发布并交付，当前仅裁决落盘；终态目标COMPLETED，尚不冒称knowledge已写本次新裁决。
 
-最新回执：product/0.2.0/receipts/u020-36-release-delivery.md；当前裁决：product/0.2.0/receipts/planning-review-unified-020-36-result.md；唯一执行入口：product/0.2.0/receipts/planning-execution-prompt-unified-020-37.md。事实通道：search_task/u020-release-final-readback-20261031.md → 同名search_fallback。
+最新回执：product/0.2.0/receipts/u020-38-fix-return.md；最终裁决：product/0.2.0/receipts/planning-review-unified-020-38-passed.md；唯一后续/执行提示39：product/0.2.0/ready/direction-terminal-sync-020.md。
 
-固定T020租户管理、F020表单能力、J020表单脚本、W020流程能力、U020整版UI/文案，Owner按真实数据。原500项、A05—A16/85/86锁定；仅具体新反证、相关实现变化或实际快照失效才按原ID复验受影响项，移动不验、1366仅实际受影响。
+固定T020租户管理、F020表单能力、J020表单脚本、W020流程能力、U020整版UI/文案本版范围全部通过。Owner按真实数据；原500项及A05—A16/85/86锁定，仅实际反证/实现影响/快照失效才原ID处理受影响项；移动不验、1366仅实际受影响。
 
-正式49、46/22/22＝90、ADV64/问题57、P62延期/OFF，既有P核销和正式验证基线保持；500不是功能数，不新增登记或整P核销。整版方向含尚待关闭A17，保留ready。
+正式49、46/22/22＝90、ADV64/问题57、P62延期/OFF及既有P核销/正式验证基线保持；本批不是新功能登记，不整P核销。本次正式验证基线新增/晋级集合=[]，不是清空已有基线。
 
-唯一下一动作：Executor按提示37只核当前根路径加载0.2.0制品及现行API可达结果、两业务仓最终main/tag/develop/远端/开发版本与Server最终修复回纳事实；按真实差异完成原授权回纳及knowledge-first受影响入口同步。两条满足后Planner核A17终态，不重复发布、版本确认、UI验收或全量测试。
+0.2.0主方向/标准/既有启动入口21个文件已归档product/0.2.0/passed/，UI文案专项1份归档product/ui-copy-governance/passed/；ready仅保留提示39终态同步方向。
 
-总7阶段：评估、实施提交、验收同步、两业务仓合并、发布0.2.0完成；发布后同步/交付事实复核进行中；结束未开始（5/1/1）。
+唯一下一动作：Executor按提示39给定单值先knowledge、后受影响摘要/版本/交接，机械写入COMPLETED、活动交付无、下一动作等待Owner安排、七阶段7/0/0并提交推送。验收已关闭，不派实现/测试/部署/探索；Planner后续只核状态传播并归档同步方向，不重复业务验收。
+
+总7阶段：评估、实施提交、验收同步、两业务仓合并、发布0.2.0、发布后事实同步完成；结束阶段裁决落盘进行中，未开始0（6/1/0）。落盘目标七阶段7/0/0。

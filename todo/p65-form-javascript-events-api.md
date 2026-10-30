@@ -1,7 +1,9 @@
 # P65 表单自定义 JavaScript 事件与开放 API
 
+2026-10-31当前状态：0.2.0本版适用范围已由Planner审查38验收PASSED并发布；原正式P核销值保持，下面登记描述不作为本版未过清单。终态落盘仅按product/0.2.0/ready/direction-terminal-sync-020.md执行。
+
 日期：2026-10-18。来源：Owner 两次需求描述及动作设置、JavaScript 编辑器参考截图。
-状态：2026-10-22 已纳入 0.2.0 规划，与 Figma 对应编辑面板和功能入口一并交付；至少 L 级，当前 READY。由 `product/0.2.0/ready/direction-020.md` 统筹，事件、函数、异步/异常、版本与监听器契约已由同目录 `decision-records-020.md` DR05—DR07 确定；当前不改变正式功能数或验证基线。
+原登记状态（历史）：2026-10-22 已纳入 0.2.0 规划，与 Figma 对应编辑面板和功能入口一并交付；至少 L 级，当前 READY。由 `product/0.2.0/passed/direction-020.md` 统筹，事件、函数、异步/异常、版本与监听器契约已由同目录 `decision-records-020.md` DR05—DR07 确定；当前不改变正式功能数或验证基线。
 
 ## 产品目标
 
