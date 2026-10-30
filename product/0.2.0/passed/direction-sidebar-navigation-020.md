@@ -1,6 +1,6 @@
 # 多级侧栏的层级与折叠交互
 
-2026-10-31｜Planner｜本方向已PASSED并归档；五项目标、500项和A17全部通过，验收剩余0。最终裁决[审查38](../receipts/planning-review-unified-020-38-passed.md)；唯一后续为[提示39终态裁决落盘](../ready/direction-terminal-sync-020.md)。下文保留产品边界和既有实施背景，已通过行为不再派发整改。
+2026-10-31｜Planner｜本方向已PASSED并归档；五项目标、500项和A17全部通过，验收剩余0。最终裁决[审查38](../receipts/planning-review-unified-020-38-passed.md)；终态同步[提示39](direction-terminal-sync-020.md)已完成，最终复核[COMPLETED](../receipts/planning-final-review-terminal-sync-020-completed.md)；无后续任务。下文保留产品边界和既有实施背景，已通过行为不再派发整改。
 
 2026-10-26当前视觉输入：全量蓝色PNG为 E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/design-blue-20261026/（index.html / index.json）；核心331、规范102个顶层对象。相同节点以此包及direction-blue-primary-020.md为准；下文旧包保留未变几何、配置语义和资源，旧PNG颜色不覆盖当前参考。
 
@@ -65,4 +65,4 @@ Owner指出展开态层级混乱，收起态目录与页面入口难以辨别。
 - https://ant.design/components/menu/
 - https://www.carbondesignsystem.com/building-blocks/core/components/ui-shell-left-panel/accessibility
 
-总7阶段：评估、实施提交、验收同步、两业务仓合并、发布0.2.0、发布后事实同步完成；结束阶段裁决落盘进行中，未开始0（6/1/0）。
+总7阶段：评估、实施提交、验收同步、两业务仓合并、发布0.2.0、发布后同步、结束全部完成；已完成7、进行中0、未开始0（7/0/0）。

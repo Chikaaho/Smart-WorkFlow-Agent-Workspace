@@ -1,8 +1,8 @@
 # 0.2.0 前端历史契约
 
-2026-10-31｜Planner｜本方向已PASSED并归档；五项目标、500项和A17全部通过，验收剩余0。最终裁决[审查38](../receipts/planning-review-unified-020-38-passed.md)；唯一后续为[提示39终态裁决落盘](../ready/direction-terminal-sync-020.md)。下文保留产品边界和既有实施背景，已通过行为不再派发整改。
+2026-10-31｜Planner｜本方向已PASSED并归档；五项目标、500项和A17全部通过，验收剩余0。最终裁决[审查38](../receipts/planning-review-unified-020-38-passed.md)；终态同步[提示39](direction-terminal-sync-020.md)已完成，最终复核[COMPLETED](../receipts/planning-final-review-terminal-sync-020-completed.md)；无后续任务。下文保留产品边界和既有实施背景，已通过行为不再派发整改。
 
-2026-10-26当前入口：[当前执行提示39](../ready/direction-terminal-sync-020.md)。Owner已终止旧执行；本文件原契约按已确认范围和历史时点承接，当前工作台设计以direction-workspace-config-020-r2.md为准，不并行恢复旧派发。
+2026-10-26当前入口：[已完成提示39](direction-terminal-sync-020.md)。Owner已终止旧执行；本文件原契约按已确认范围和历史时点承接，当前工作台设计以direction-workspace-config-020-r2.md为准，不并行恢复旧派发。
 
 2026-10-25：本文件保留为原前端交接，当前统一启动入口为execution-prompt-020-unified.md，授权与下一动作以direction-unified-020.md为准；下文单侧写入分工不再作为当前统一会话限制。
 
@@ -47,4 +47,4 @@
 
 维护根共享状态时先核实knowledge再投影memory，状态保持IN_PROGRESS及1/1/5，不核销P、不写整版PASSED/COMPLETED；状态矛盾先核事实。根仓普通Git、双方已提交并回读的gitlink及本次规划文档由你单写收尾；后端回执写完并明确可收件后再纳入，不与对方并发操作根索引。遵守project/工程宪法的重型任务互斥与自有服务生命周期；先并行独立工作，再协调受影响联调。
 
-Frontend结果通过且Backend结果通过后，Planner裁决整版功能与终态清单，再承接合并、0.2.0发布和发布后同步。总7阶段：评估、实施提交、验收同步、两业务仓合并、发布0.2.0、发布后事实同步完成；结束阶段裁决落盘进行中，未开始0（6/1/0）。你的回执须保留这些真实依赖，不把单侧自验当作整版结束。
+Frontend结果通过且Backend结果通过后，Planner裁决整版功能与终态清单，再承接合并、0.2.0发布和发布后同步。总7阶段：评估、实施提交、验收同步、两业务仓合并、发布0.2.0、发布后同步、结束全部完成；已完成7、进行中0、未开始0（7/0/0）。你的回执须保留这些真实依赖，不把单侧自验当作整版结束。

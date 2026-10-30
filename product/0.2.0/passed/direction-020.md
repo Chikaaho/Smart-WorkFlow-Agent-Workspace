@@ -4,13 +4,13 @@
 
 2026-10-27原登记：XL/VERIFYING/目标版本0.2.0；当前功能验收PASSED，终态落盘按提示39。
 
-2026-10-31｜Planner｜本方向已PASSED并归档；五项目标、500项和A17全部通过，验收剩余0。最终裁决[审查38](../receipts/planning-review-unified-020-38-passed.md)；唯一后续为[提示39终态裁决落盘](../ready/direction-terminal-sync-020.md)。下文保留产品边界和既有实施背景，已通过行为不再派发整改。
+2026-10-31｜Planner｜本方向已PASSED并归档；五项目标、500项和A17全部通过，验收剩余0。最终裁决[审查38](../receipts/planning-review-unified-020-38-passed.md)；终态同步[提示39](direction-terminal-sync-020.md)已完成，最终复核[COMPLETED](../receipts/planning-final-review-terminal-sync-020-completed.md)；无后续任务。下文保留产品边界和既有实施背景，已通过行为不再派发整改。
 
 ## 1. 目标与权威入口
 
 按 Owner 确认的 Figma 新稿完善 CH-aPaaS 全局界面，同时交付租户管理、表单事件脚本、表单配置与校验、流程操作的实际缺口。用户能通过界面配置并使用这些能力，页面、权限、持久化、流程结果与版本解释一致。
 
-本文件是本版正式需求方向。产品行为以 [关键决策](decision-records-020.md) 为准，首轮验收与证据以 [验收清单](acceptance-020.md) 为准；三份文件共同下发。执行入口为 [当前执行提示39](../ready/direction-terminal-sync-020.md)。范围草案保留为来源指针。UI 与文案是同一任务，原文案方向的三档规则与 AC01—AC05 作为专项标准。
+本文件是本版正式需求方向。产品行为以 [关键决策](decision-records-020.md) 为准，首轮验收与证据以 [验收清单](acceptance-020.md) 为准；三份文件共同下发。执行入口为 [已完成提示39](direction-terminal-sync-020.md)。范围草案保留为来源指针。UI 与文案是同一任务，原文案方向的三档规则与 AC01—AC05 作为专项标准。
 
 本次版本已由 Owner 指定为 **0.2.0**，执行、发布及受影响配置使用该版本，无需再次请求版本确认。本版业务/UI及阶段3通过，0.2.0已发布、服务器内升级通过；最终裁决机械落盘按提示39执行。
 

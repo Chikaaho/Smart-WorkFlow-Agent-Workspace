@@ -1,6 +1,6 @@
 # 0.2.0 像素级 UI 验收标准
 
-2026-10-31｜Planner｜本方向已PASSED并归档；五项目标、500项和A17全部通过，验收剩余0。最终裁决[审查38](../receipts/planning-review-unified-020-38-passed.md)；唯一后续为[提示39终态裁决落盘](../ready/direction-terminal-sync-020.md)。下文保留产品边界和既有实施背景，已通过行为不再派发整改。
+2026-10-31｜Planner｜本方向已PASSED并归档；五项目标、500项和A17全部通过，验收剩余0。最终裁决[审查38](../receipts/planning-review-unified-020-38-passed.md)；终态同步[提示39](direction-terminal-sync-020.md)已完成，最终复核[COMPLETED](../receipts/planning-final-review-terminal-sync-020-completed.md)；无后续任务。下文保留产品边界和既有实施背景，已通过行为不再派发整改。
 
 2026-10-26当前视觉输入：全量蓝色PNG为 E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/design-blue-20261026/（index.html / index.json）；核心331、规范102个顶层对象。相同节点以此包及direction-blue-primary-020.md为准；下文旧包保留未变几何、配置语义和资源，旧PNG颜色不覆盖当前参考。
 
@@ -58,7 +58,7 @@
 
 每批 UI 完成时先做本标准的设计对照并修复差异，再提交该批回执；功能可用与像素还原同时通过才算对应页面完成。受影响公共组件变化后，只重验覆盖矩阵命中的消费者；已通过且未变化的页面沿用证据。
 
-首轮证据规则保持。当前从[执行提示39](../ready/direction-terminal-sync-020.md)和[审查38](../receipts/planning-review-unified-020-38-passed.md)读取。审查38确认根页面/资产/API和Web回纳通过；五目标业务/UI及500项保持通过，0.2.0已发布、修复FINISH（revision57）；功能验收PASSED（终态落盘目标COMPLETED），A17最后发布修复回纳事实已通过，验收剩余0，按提示39执行。 局部通过不外推整版通过，原标准及已过锁定保持。
+首轮证据规则保持。当前从[执行提示39](direction-terminal-sync-020.md)和[审查38](../receipts/planning-review-unified-020-38-passed.md)读取。审查38确认根页面/资产/API和Web回纳通过；五目标业务/UI及500项保持通过，0.2.0已发布、修复FINISH（revision57）；功能验收PASSED（终态已COMPLETED），A17最后发布修复回纳事实已通过，验收剩余0，按提示39执行。 局部通过不外推整版通过，原标准及已过锁定保持。
 
 ## 7. 文字项判定与真实数据（Owner 2026-10-27批准；2026-10-28补充数据口径）
 

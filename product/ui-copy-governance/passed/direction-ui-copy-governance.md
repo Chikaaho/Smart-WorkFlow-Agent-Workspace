@@ -6,7 +6,7 @@
 
 本方向的全量文案审计、三档说明规则及 AC01—AC05 由 [0.2.0 全局 UI 与关联功能完善](../../0.2.0/passed/direction-020.md) 的「UI 与文案」目标统一承接。文案与新 UI 共用一次实施、验收和版本交付；本文件提供文案专项标准。0.2.0 UI与文案范围已于审查38最终验收PASSED，本专项随主方向归档，不新增功能登记。
 
-2026-10-31当前裁决：本专项AC01—AC05随0.2.0 U020范围PASSED，已过结果锁定；最终裁决[审查38](../../0.2.0/receipts/planning-review-unified-020-38-passed.md)，唯一后续[提示39裁决落盘](../../0.2.0/ready/direction-terminal-sync-020.md)。历史审阅结果按原证据保留，不恢复整改。
+2026-10-31当前裁决：本专项AC01—AC05随0.2.0 U020范围PASSED，已过结果锁定；最终裁决[审查38](../../0.2.0/receipts/planning-review-unified-020-38-passed.md)，同步方向[提示39](../../0.2.0/passed/direction-terminal-sync-020.md)已完成，0.2.0为COMPLETED。历史审阅结果按原证据保留，不恢复整改。
 
 ## 目标与项目承接
 

@@ -1,6 +1,6 @@
 # 0.2.0 Figma 设计节点索引
 
-2026-10-31｜Planner｜本方向已PASSED并归档；五项目标、500项和A17全部通过，验收剩余0。最终裁决[审查38](../receipts/planning-review-unified-020-38-passed.md)；唯一后续为[提示39终态裁决落盘](../ready/direction-terminal-sync-020.md)。下文保留产品边界和既有实施背景，已通过行为不再派发整改。
+2026-10-31｜Planner｜本方向已PASSED并归档；五项目标、500项和A17全部通过，验收剩余0。最终裁决[审查38](../receipts/planning-review-unified-020-38-passed.md)；终态同步[提示39](direction-terminal-sync-020.md)已完成，最终复核[COMPLETED](../receipts/planning-final-review-terminal-sync-020-completed.md)；无后续任务。下文保留产品边界和既有实施背景，已通过行为不再派发整改。
 
 2026-10-26当前视觉输入：全量蓝色PNG为 E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/design-blue-20261026/（index.html / index.json）；核心331、规范102个顶层对象。相同节点以此包及direction-blue-primary-020.md为准；下文旧包保留未变几何、配置语义和资源，旧PNG颜色不覆盖当前参考。
 
@@ -10,7 +10,7 @@
 
 侧栏当前增量见../receipts/planning-figma-sidebar-sync-020-02.md（承接01），规范对照713:44149；核心新增710:42626、710:43009、710:43363、710:43652、710:44122、712:43454，均1920×1080；本次再新增726:45273、726:45573，97:2等9个独立分类画框已原位更新。最新design-sidebar-20261026-categories包13图优先覆盖相同节点/规范，其他侧栏沿design-sidebar-20261026包；原33个页面侧栏和272:1296保留栏也已更新。
 
-最新工作台方向见direction-workspace-config-020-r2.md，唯一新执行入口为../ready/direction-terminal-sync-020.md。离线增量包E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/design-offline-20261026-workspace-r2/包含66张工作台配置状态及工作台/门户2图，旧全量包承接其余画框与原资源；同ID冲突以本次更新后输入为准。规范页25组件族的功能/几何基准承接；本次全页更新蓝色主色与变量绑定，侧栏组件另有结构更新。
+最新工作台方向见direction-workspace-config-020-r2.md，唯一新执行入口为direction-terminal-sync-020.md。离线增量包E:/code/Smart-WorkFlow-Agent-Evidence/0.2.0/design-offline-20261026-workspace-r2/包含66张工作台配置状态及工作台/门户2图，旧全量包承接其余画框与原资源；同ID冲突以本次更新后输入为准。规范页25组件族的功能/几何基准承接；本次全页更新蓝色主色与变量绑定，侧栏组件另有结构更新。
 
 规范页为 `258:2`，含 25 个组件族。Owner 入口 `332:6543` 是 `5:2`「03 数据详情」内的正文，实际对照同时覆盖父画框。执行方将以下索引关联到实际组件、URL、业务状态、视觉及交互证据；等价引用、无独立可达状态和设计展示资产注明实际用途，不重复计作业务页面或功能。
 
