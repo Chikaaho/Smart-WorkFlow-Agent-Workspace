@@ -1,8 +1,8 @@
 # 当前未关闭事项
 
-2026-10-30｜Planner｜READY1.3.3。审查35确认阶段3验收同步完成；五项目标业务/UI通过，500＝500 RESOLVED、余差0、修复FINISH，revision54接续53。整版0.2.0含A17仍VERIFYING，未发布、未结束。
+2026-10-31｜Executor｜0.2.0 已发布并交付（tag 0.2.0/语义 Release/CI 制品/UAT 部署核实完成，见 product/0.2.0/receipts/u020-36-release-delivery.md）；500＝500 RESOLVED 保持，未核销P、未晋级基线、未宣称整版 PASSED；整版终态待 Planner 复核裁决。
 
-当前回执：product/0.2.0/receipts/u020-35-stage3-sync.md；裁决：product/0.2.0/receipts/planning-review-unified-020-35-result.md；唯一执行入口：product/0.2.0/receipts/planning-execution-prompt-unified-020-36.md。
+当前回执：product/0.2.0/receipts/u020-36-release-delivery.md；阶段3裁决：product/0.2.0/receipts/planning-review-unified-020-35-result.md；唯一执行入口：product/0.2.0/receipts/planning-execution-prompt-unified-020-36.md。
 
 原500项没有未关业务/UI余差。当前仅原A17合并、发布和发布后同步工作。
 
@@ -13,3 +13,5 @@
 正式49、46/22/22＝90、ADV64/问题57、P62延期/OFF，既有P核销和正式验证基线保持；本批不是新功能登记，500不是功能数，不整P核销。主方向含A17保留ready，整版终态待发布交付事实裁决。
 
 总7阶段：评估、实施提交、验收同步已完成；合并develop/main、发布0.2.0、发布后同步、结束未开始（3/0/4）。阶段4方向已下发，实际开始由执行回执更新；0.2.0已确认。
+
+2026-10-31 发布后遗留（如实保留）：①根 main 与 develop-sw 治理线双向分叉（main 72 独有治理提交、.codex/governance/terminal-contract.json 双方各自新增、system.md 七阶段规则在 main），合并需显式治理对账裁决，本轮按风险上报中止合并；②工作流应用公网域名根路由自 2026-10-16 起由同机 agent 服务（5173/38784）承载（chikaho.cn.conf 先于 0.1.10 部署的既有状态），0.2.0 UAT 交付按 §8 完成于服务器本机层面（health UP、指纹一致），未改公网路由。

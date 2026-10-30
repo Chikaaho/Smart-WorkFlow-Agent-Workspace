@@ -1,5 +1,15 @@
 # CH-aPaaS 发布说明 / Release Notes
 
+## 0.2.0（2026-10-31 发布并交付 UAT；五项目标交付批次）
+
+- **发布事实**：沿 任务分支→develop→main 合入（Web 任务分支 tip `eadd20b` → develop `3c1cfe2` → main `f5ec5a1`；Server 任务分支 tip `befd32eb` → develop `a1674f30` → main `fbacde47` → 门禁与存量库对账修复后 `39dcedb7`）。main 推送触发既有 CI：Server run `41097671140` **success**（制品 sha256 `524cbf2f…`，`build.version=0.2.0`；首指 `fbacde47` 的 run `41091926626` failure＝iot 测试跨类执行顺序族，该次未产出 Release/制品，tag 重指无覆盖物）；Web run `41092067995` **success**（`dist` 6,153,509 B，入口 `assets/index-DMDsHDv8.js`，Vitest 1990 通过/3 跳过，230 文件）。**成对 annotated tag `0.2.0`** 与语义 Release「CH-aPaaS Server 0.2.0」／「CH-aPaaS Web 0.2.0」（资产 `bootstrap-0.2.0.jar`／`sw-web-dist-0.2.0.zip`）。
+- **发版收敛**：versioned 链收敛为单一条 `V0.2.0__baseline_seed.sql`（0.1.7 基线 + 0.1.8/0.1.9/0.1.10 租户增量按版本序逐字节拼接，仅加段头注释；双方言拼接等价 sha256 独立复核），主链 18 支 R__ 保留；独立升级通道 `db/upgrade/0.2.0/`（历史衔接与 0.1.7 存量升级脚本，README 给出六类入口状态判定）。版本收敛至 `0.2.0-SNAPSHOT`/`0.2.0`（pom revision 单一来源 + CI 断言 + 脚本注释同步）。
+- **功能内容**：T020 租户管理、F020 表单能力、J020 表单脚本、W020 流程能力（含动态并行 820 配置窗、触发器只读 1100 弹窗）、U020 整版 UI 与文案（500 原项修复 FINISH，500 RESOLVED、余差 0）；应用/流程定义列表租户归属下发与超管过滤。
+- **门禁与修复**：既有 27 项基线失败定性为 0.2.0 开发漂移并按精确原因修复——错误码目录 §2 200 常量/195 唯一数值码（+10 form.integration_*、+1 bpm.notification_config_invalid）、双语文案两语言各 +11、迁移链断言 0.2.0 化（19=V0.2.0+18 R__）、FormIntegrationService 改经 FormTraceMapper 受控入口、agent 测试夹具补 effect_scope、P62 测试排除 devseed、bpm 恢复测试改经 action_ref 回查命令键、iot 命令队列测试显式初始化实体元数据（消除跨类执行顺序依赖）。全量 `clean test` 终验本地 403 类/2338 测试 0 失败 0 错误。
+- **UAT 交付**：按 §8.1/8.2/8.3/9.1 由 0.1.10 就地升级（备份 DB `smart_workflow_20261031_0215_pre0200.dump`、`bootstrap.jar.bak`（0.1.10）、`web.bak-20261031_0218`；发布前磁盘 100% 已按 §9.2 清理历史 jar 备份与陈旧日志）；`upgrade-to-0.2.0-from-0.1.7.postgresql.sql` 历史衔接（单事务，versioned 终点单条 0.2.0 checksum `1897854550`）、4 支新 R__ 随启动单次应用；启动 172.021s、日志 ERROR 0、`/api/actuator/health` UP、web 指纹与 CI 制品一致。域名根路由自 2026-10-16 起由同机 agent 服务承载（既有状态，本轮未改）。
+- **边界**：不新增业务功能数、不核销 P 编号；正式功能 49、清单 46/22/22=90、ADV64/问题57、P62 延期/OFF 保持；根 main 与 develop-sw 治理分叉的对账留待显式裁决（本轮 root main 未合并，沿 0.1.10 先例根 main 不在发布路径）。
+
+
 ## 0.1.10（2026-10-21 发布并部署 UAT；修复批次，不新增业务功能数）
 
 - **版本发布事实**：0.1.10 沿 任务分支→develop→main 合入（Server 任务分支 `bugfix/0.1.10` tip `e4e2205` → develop `e4e2205` → 版本收敛 `654b176` → main `08f995a` → 测试夹具修复 `8a2aa56`；Web 任务分支 tip `302fce1` → develop `302fce1` → 包版本收敛 `28c2ecf` → main `e03a886`）。main 推送触发既有 CI：Server run `39616993514` **success**（制品 `bootstrap.jar` 218,065,590 B sha256 `b447fa09f6a6146e22a0adb01616a76fab47b348574b28dcacfe5d7a8be86f57`，`build.version=0.1.10`）；Web run `39611689870` **success**（`dist-e03a886….zip` 1,360,081 B sha256 `a9d6a5088f406ede626e84a0a8ccbfb657dddfeee71b37f5dba3b2ec4386cd6c`，入口 `assets/index-qOqx_U4O.js`，Vitest 179 文件 / 1653 通过 / 3 跳过）。**成对 annotated tag `0.1.10`**（Server→`8a2aa56`、Web→`e03a886`）与公开 Release [`CH-aPaaS Server 0.1.10`](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server/releases/tag/0.1.10)（资产 `bootstrap-0.1.10.jar`）／[`CH-aPaaS Web 0.1.10`](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web/releases/tag/0.1.10)（资产 `sw-web-dist-0.1.10.zip`）；两仓语义 Release 为 `0.1.10`。

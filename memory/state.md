@@ -1,17 +1,9 @@
 # 当前状态摘要
 
-2026-10-30｜Planner｜READY1.3.3。审查35确认阶段3验收同步完成；五项目标业务/UI通过，500＝500 RESOLVED、余差0、修复FINISH，revision54接续53。整版0.2.0含A17仍VERIFYING，未发布、未结束。
+2026-10-31｜Executor｜0.2.0 已发布并交付（tag/Release/制品/UAT 部署核实完成）。提示36执行回执：product/0.2.0/receipts/u020-36-release-delivery.md；唯一执行入口：planning-execution-prompt-unified-020-36.md。整版终态待 Planner 按发布交付事实复核裁决；未宣称整版 PASSED/COMPLETED。
 
-当前回执：product/0.2.0/receipts/u020-35-stage3-sync.md；裁决：product/0.2.0/receipts/planning-review-unified-020-35-result.md；唯一执行入口：product/0.2.0/receipts/planning-execution-prompt-unified-020-36.md。
+发布事实（均可回读）：Web main f5ec5a1（tag 0.2.0，CI 41092067995 success，Release「CH-aPaaS Web 0.2.0」资产 sw-web-dist-0.2.0.zip 6,153,509 B）；Server main 39dcedb7（tag 0.2.0，CI 41097671140 success，Release「CH-aPaaS Server 0.2.0」资产 bootstrap-0.2.0.jar 218,547,155 B sha256 524cbf2f…，build.version=0.2.0 实测）；首指 fbacde47 的 CI 41091926626 failure（iot 测试跨类执行顺序族）未产出任何 Release/制品，tag 重指无覆盖物。UAT 8.166.112.85 按 §8.1/8.2/8.3/9.1 交付：备份 pre0200 dump/jar 轮换/web.bak-20261031_0218，DB 衔接单条 0.2.0，4 支新 R__ 单次应用，启动 172.021s、ERROR 0、health UP、web 指纹 index-DMDsHDv8.js==CI 制品；域名根路由自 10-16 起指向同机 agent 服务（既有状态，未改）。
 
-固定T020租户管理、F020表单能力、J020表单脚本、W020流程能力、U020整版UI/文案；Owner按真实数据。原500项及A05—A16/85/86锁定，只有具体新反证、相关实现变化或实际快照失效才按原ID复验受影响项，不恢复全站重扫。移动不验，1366仅实际受影响。
+门禁与修复：27 基线失败全部定性为 0.2.0 开发漂移并按精确原因修复（错误码目录 200/195、双语文案+11、迁移链断言 0.2.0 化、受控入口对齐 FormTraceMapper、agent DDL 补列、P62 排除 devseed、bpm 改经 action_ref）；全量门禁终验本地 403 类/2338 测试 0 失败 0 错误；Server/CI 同口径通过。种子压缩：V0.2.0 单一基线（双方言逐字节等价独立复核）+ 18 R__ + db/upgrade/0.2.0 升级通道。
 
-唯一下一动作：Executor按提示36核实阶段4候选门禁及当前Git事实，收尾本版授权文档/gitlink，正常开发分支→develop→main，再连续发布0.2.0、发布后knowledge-first同步和结束。沿既有持续授权，不重复确认版本或逐阶段许可。旧Server失败是否阻断候选尚未确认，须按实际生效门禁判定后才能执行受其约束的合并/发布，不另开UI验收。
-
-正式49、46/22/22＝90、ADV64/问题57、P62延期/OFF，既有P核销和正式验证基线保持；本批不是新功能登记，500不是功能数，不整P核销。主方向含A17保留ready，整版终态待发布交付事实裁决。
-
-回执35核实时点：根codex/0.2.0-delivery/e000cff6，Web codex/0.2.0-ui-tenant-form-flow/7863e8b，Server codex/0.2.0-tenant-form-flow/22138197，各与origin一致。根文档与两gitlink在途；Web仅vite.config.ts既有本地改动，Server干净。e000cff6不是回执35自身提交；后续提交/发布事实由Executor最新回读替换。
-
-沿提示34：Web typecheck/lint通过、1990 passed/3 skipped（230文件）、build4.28s；Server沿2213819编译/受影响测试。旧notify/agent/bpm/bootstrap/form G1失败保留，候选实际阻断关系待阶段4核定，不宣称全绿、不晋级正式基线。
-
-总7阶段：评估、实施提交、验收同步已完成；合并develop/main、发布0.2.0、发布后同步、结束未开始（3/0/4）。阶段4方向已下发，实际开始由执行回执更新；0.2.0已确认。
+总7阶段：评估、实施提交、验收同步、合并develop/main、发布0.2.0、发布后同步已完成（6/0/1），结束待 Planner 复核 A17 终态裁决。正式49、46/22/22＝90、ADV64/问题57、P62延期/OFF 保持；500 RESOLVED 保持，未核销P、未晋级基线。遗留上报：根 main 与 develop-sw 治理分叉（main 72 独有治理提交、terminal-contract.json 双向新增冲突）需显式治理对账裁决，本轮未合并 root main；vite.config.ts 既有本地改动仍保留未提交。

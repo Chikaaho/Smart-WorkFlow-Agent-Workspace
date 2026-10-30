@@ -10,7 +10,8 @@ CH-aPaaS 是面向企业协作场景的低代码 PaaS 与 AI Agent 平台。项�
 
 ## 当前发布
 
-当前正式版本 **0.1.10**（2026-10-21 发布并部署 UAT；修复批次，不新增业务功能数）。两仓公开 Release：[`CH-aPaaS Server 0.1.10`](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server/releases/tag/0.1.10)（发布源提交 **`8a2aa56`**，版本化资产 `bootstrap-0.1.10.jar` **218,065,590 B sha256 `b447fa09…`**）与 [`CH-aPaaS Web 0.1.10`](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web/releases/tag/0.1.10)（发布源提交 **`e03a886`**，资产 `sw-web-dist-0.1.10.zip` **1,360,081 B sha256 `a9d6a508…`**）；两仓语义 Release 为 `0.1.10`。内容：登录密码可见切换、流程设计器节点图标/会签人数与比例/页签与版本快照、表单工作台对齐、按租户配置角色、共享列表/分页/侧栏/操作列/详情弹窗、IoT 列表统一、用户端与管理端应用中心/应用列表/内容区统一。DB：versioned 终点保持 `V0.1.7`；新增 `R__0.1.10_admin_password.sql`（默认超管种子口令 AdminP@ssw0rd），更新 `R__application_center_menu.sql`（应用管理顶级归位）。开发默认 Server `0.1.10-SNAPSHOT`、Web `0.1.10`。UAT 已部署同一 CI 制品：Server `build.version=0.1.10`、健康 UP、启动 181.914s、启动段 ERROR 0；Web 入口 `assets/index-qOqx_U4O.js`；两条 0.1.10 repeatable 已应用。发布说明与历史版本见 [`CHANGELOG.md`](CHANGELOG.md)，发布、升级与回滚材料见 [`docs/ops/production-ops.md`](docs/ops/production-ops.md) §8/§9，回执见 [`product/0.1.10-bugfix/receipts/`](product/0.1.10-bugfix/receipts/)。
+当前正式版本 **0.2.0**（2026-10-31 发布并交付 UAT）。两仓 tag 与发布 main：Server `0.2.0`→`39dcedb7`（CI run 41097671140 success，`bootstrap-0.2.0.jar` 218,547,155 B sha256 `524cbf2f…`，`build.version=0.2.0`）、Web `0.2.0`→`f5ec5a1`（CI run 41092067995 success，`sw-web-dist-0.2.0.zip` 6,153,509 B，入口 `assets/index-DMDsHDv8.js`）。DB versioned 终点收敛为单一条 `V0.2.0__baseline_seed.sql`（0.1.7 基线 + 0.1.8/0.1.9/0.1.10 增量逐字节收敛）+ 18 支 R__；存量库衔接见 `db/upgrade/0.2.0/README.md`。UAT 由 0.1.10 就地升级：启动 172.021s、ERROR 0、health UP、web 指纹与 CI 制品一致。交付范围与门禁明细见 [`CHANGELOG.md`](CHANGELOG.md) 0.2.0 条目与 [`product/0.2.0/receipts/u020-36-release-delivery.md`](product/0.2.0/receipts/u020-36-release-delivery.md)。
+
 
 ## 项目能力
 

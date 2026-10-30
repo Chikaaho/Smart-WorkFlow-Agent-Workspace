@@ -1,8 +1,8 @@
 # 功能摘要
 
-2026-10-30｜Planner｜READY1.3.3。审查35确认阶段3验收同步完成；五项目标业务/UI通过，500＝500 RESOLVED、余差0、修复FINISH，revision54接续53。整版0.2.0含A17仍VERIFYING，未发布、未结束。
+2026-10-31｜Executor｜0.2.0 已发布并交付（tag 0.2.0/语义 Release/CI 制品/UAT 部署核实完成，见 product/0.2.0/receipts/u020-36-release-delivery.md）；500＝500 RESOLVED 保持，未核销P、未晋级基线、未宣称整版 PASSED；整版终态待 Planner 复核裁决。
 
-当前回执：product/0.2.0/receipts/u020-35-stage3-sync.md；裁决：product/0.2.0/receipts/planning-review-unified-020-35-result.md；唯一执行入口：product/0.2.0/receipts/planning-execution-prompt-unified-020-36.md。
+当前回执：product/0.2.0/receipts/u020-36-release-delivery.md；阶段3裁决：product/0.2.0/receipts/planning-review-unified-020-35-result.md；唯一执行入口：product/0.2.0/receipts/planning-execution-prompt-unified-020-36.md。
 
 固定T020租户管理、F020表单能力、J020表单脚本、W020流程能力、U020整版UI/文案；Owner按真实数据。原500项及A05—A16/85/86锁定，只有具体新反证、相关实现变化或实际快照失效才按原ID复验受影响项，不恢复全站重扫。移动不验，1366仅实际受影响。
 

@@ -1,44 +1,52 @@
 {
   "$schema": "CH-aPaaS 版本权威（单一机器可读源；变更须走新回执）",
   "product": "CH-aPaaS",
-  "version": "0.1.10",
-  "iteration": "0.0.8",
-  "registeredAt": "2026-10-21",
-  "registeredBy": "0.1.10 发布（Owner 确认交付）。工作区来源为两仓 0.1.10 Release 正文与公开资产；本地 0.1.10 交付回执缺失，未补造原文。0.1.9 及更早条目保留于 CHANGELOG 与历史回执",
+  "version": "0.2.0",
+  "iteration": "0.0.9",
+  "registeredAt": "2026-10-31",
+  "registeredBy": "0.2.0 发布（五项目标业务/UI验收通过后按提示36完成合并、tag/Release/制品发布与既有环境交付）。执行回执 product/0.2.0/receipts/u020-36-release-delivery.md",
   "development": {
     "targetVersion": "0.2.0",
-    "status": "IN_PROGRESS",
+    "status": "RELEASED",
     "direction": "product/0.2.0/ready/direction-020.md",
     "branches": {
-      "server": "codex/0.2.0-tenant-form-flow",
-      "web": "codex/0.2.0-ui-tenant-form-flow",
-      "workspace": "codex/0.2.0-delivery"
+      "server": "codex/0.2.0-tenant-form-flow（tip befd32eb；发布 main 39dcedb7）",
+      "web": "codex/0.2.0-ui-tenant-form-flow（tip eadd20b；发布 main f5ec5a1）",
+      "workspace": "codex/0.2.0-delivery（develop-sw 已同步 bfa1e07a；root main 治理对账留待裁决）"
     },
-    "developmentVersion": { "server": "0.1.10-SNAPSHOT", "web": "0.1.10" }
+    "developmentVersion": {
+      "server": "0.2.0-SNAPSHOT",
+      "web": "0.2.0"
+    }
   },
   "projections": {
     "serverRepo": {
       "path": "Smart-WorkFlow-aPaaS-server",
-      "mavenVersion": "0.1.10（正式构建 -Drevision=0.1.10；开发默认 0.1.10-SNAPSHOT）",
-      "flywayEndpoint": { "h2": "V0.1.7", "postgresql": "V0.1.7" },
-      "flywaySeed": "V0.1.7__baseline_seed.sql（0.1.10 保持 versioned 终点 V0.1.7；新增 R__0.1.10_admin_password.sql 并更新 R__application_center_menu.sql）"
+      "mavenVersion": "0.2.0（正式构建 -Drevision=0.2.0；开发默认 0.2.0-SNAPSHOT）",
+      "flywayEndpoint": {
+        "h2": "V0.2.0",
+        "postgresql": "V0.2.0"
+      },
+      "flywaySeed": "V0.2.0__baseline_seed.sql（0.1.7 基线 + 0.1.8/0.1.9/0.1.10 增量逐字节收敛，双方言 sha256 独立复核）+ 18 支 R__；存量衔接 db/upgrade/0.2.0/（transition-history / upgrade-from-0.1.7）"
     },
-    "webRepo": { "path": "Smart-WorkFlow-aPaaS-Web", "packageVersion": "0.1.10" },
+    "webRepo": {
+      "path": "Smart-WorkFlow-aPaaS-Web",
+      "packageVersion": "0.2.0"
+    },
     "workspace": {
       "path": "Smart-WorkFlow-Agent-Workspace",
       "changelog": "CHANGELOG.md",
-      "releaseNotes": "GitHub Release 0.1.10（Server `8a2aa56`、Web `e03a886`）",
-      "upgrade": "docs/ops/production-ops.md §8/§9（0.1.10 由 0.1.9 就地升级；versioned 终点 V0.1.7；两条可重复迁移幂等应用）",
-      "rollback": "docs/ops/production-ops.md §8.1/§8.2（备份 DB smart_workflow_20261021_2215_pre0110.dump、bootstrap.jar.bak-20261021_pre0110、web.bak-20261021_pre0110）",
-      "configChanges": "0.1.10 无新增配置项；0.1.9 的 sw.bpm.script.timeout-ms／worker-startup-timeout-ms／warmup-timeout-ms 保留缺省值，慢宿主需同向调大",
-      "dbMigrations": "R__0.1.10_admin_password.sql（默认超管种子口令）与更新后的 R__application_center_menu.sql（应用管理顶级归位）；versioned 终点保持 V0.1.7",
-      "manifest": "GitHub Release 0.1.10 资产：Server bootstrap-0.1.10.jar 218,065,590 B sha256 b447fa09f6a6146e22a0adb01616a76fab47b348574b28dcacfe5d7a8be86f57；Web sw-web-dist-0.1.10.zip 1,360,081 B sha256 a9d6a5088f406ede626e84a0a8ccbfb657dddfeee71b37f5dba3b2ec4386cd6c（入口 assets/index-qOqx_U4O.js）"
+      "releaseNotes": "GitHub Release 0.2.0（Server 39dcedb7·bootstrap-0.2.0.jar；Web f5ec5a1·sw-web-dist-0.2.0.zip）",
+      "upgrade": "docs/ops/production-ops.md §8/§9（UAT 由 0.1.10 就地升级：db/upgrade/0.2.0/upgrade-to-0.2.0-from-0.1.7.postgresql.sql 历史衔接 + 4 支新 R__ 随启动单次应用；versioned 终点单条 0.2.0 checksum 1897854550）",
+      "rollback": "docs/ops/production-ops.md §8.1/§8.2/§9.1（备份 DB smart_workflow_20261031_0215_pre0200.dump、bootstrap.jar.bak（0.1.10）/​.bak2、web.bak-20261031_0218）",
+      "configChanges": "0.2.0 无新增必配项；R__0.2.0_form_integration 幂等补齐 sw_agent_tool_external（升级通道存量库自足）",
+      "dbMigrations": "V0.2.0__baseline_seed.sql（单条 versioned 收敛基线）；新增 R__0.2.0_approval_opinion_draft / R__0.2.0_ext_datasource_grant / R__0.2.0_form_integration（存量库自足）/ R__u020_user_group_menu 随启动单次应用",
+      "manifest": "GitHub Release 0.2.0 资产：Server bootstrap-0.2.0.jar 218,547,155 B sha256 524cbf2fab94b66e825aa4a019f3709d965a2b7dd7fc55ba112fd1e7dddf92dd（CI run 41097671140，build.version=0.2.0 实测）；Web sw-web-dist-0.2.0.zip 6,153,509 B sha256 5d80c964e7142c99（CI run 41092067995，入口 assets/index-DMDsHDv8.js，UAT 部署后指纹一致）"
     }
   },
   "rules": {
     "candidateFreeze": "候选固定后只允许通过新回执审查的变更进入；代码/迁移/依赖/配置漂移使受影响证据失效并重固定候选",
-    "tagAndRelease": "0.1.10 成对 annotated tag/Release 已发布：Server tag→8a2aa56、Web tag→e03a886；资产见 manifest。0.2.0 的 tag/Release 必须在用户已确认版本 0.2.0 下，完成第四至第六步后按既有通道创建，不覆盖 0.1.10 及更早发布",
-    "deployment": "0.1.10 UAT 部署结果仅来自两仓 Release 正文（Server 健康 UP、启动 181.914s、ERROR 0；Web index-qOqx_U4O.js）。工作区没有 0.1.10 交付回执，未在当地复核该批次"
+    "tagAndRelease": "0.2.0 成对 annotated tag/Release 已发布：Server tag→39dcedb7、Web tag→f5ec5a1；资产见 manifest。Server tag 首指 fbacde47 的 CI run 41091926626 failure（iot 测试跨类执行顺序族），该次未产出 Release/制品，修复后 tag 重指 39dcedb7 重发布（run 41097671140 success），无既有发布被覆盖；0.1.10 及更早发布未动",
+    "deployment": "UAT 8.166.112.85 已按 §8.1/8.2/8.3/9.1 就地升级：DB 历史衔接单条 0.2.0（checksum 一致）、4 支新 R__ 随启动单次应用、启动 172.021s、日志 ERROR 0、/api/actuator/health {\"status\":\"UP\"}、web 指纹 index-DMDsHDv8.js 与 CI 制品一致。域名根路由自 2026-10-16 起由同机 agent 服务承载（先于 0.1.10 的既有状态，本轮未改）。本机 dev 环境（smart_workflow_dev）同步完成 0.2.0 衔接与启动核实"
   }
 }
-
