@@ -1,23 +1,21 @@
 # 当前状态摘要
 
-2026-10-31｜Planner｜READY1.3.3。0.2.0正式确认COMPLETED；五目标及A01—A17全部PASSED，500＝500 RESOLVED、余差0，修复FINISH（revision58接续57）。已发布并交付，终态同步复核完成；无活动交付，等待Owner安排下一目标。
+2026-10-31｜Planner｜`READY 1.3.3`。
 
-最新回执：product/0.2.0/receipts/u020-39-terminal-sync.md；最终裁决：product/0.2.0/receipts/planning-final-review-terminal-sync-020-completed.md；已执行同步方向：product/0.2.0/passed/direction-terminal-sync-020.md。
+## 活动交付
 
-最后IoT修复提交731c689c在origin/main和origin/develop c25f5ea5的祖先检查均通过，develop初始化效果存在；39dcedb7为main合并提交，不要求其本身进入develop。回执38核实零工程改动/零测试/零数据或tag变动，2a80da51为当时根提交且远端一致；终态批次远端一致据回执39，不拿该旧值冒充最终HEAD。
+0.2.1 缺陷修复列车已立项，状态 `READY`，版本 0.2.1 已由 Owner 确认。唯一方向为 `product/0.2.1-bugfix/ready/direction-bugfix-021.md`，唯一缺陷台账为 `product/0.2.1-bugfix/items.md`。
 
-正式/部署Web与Server均0.2.0；Web main/tag f5ec5a1、develop3c1cfe2、开发0.2.0、CI41092067995成功；Server main/tag39dcedb7、developc25f5ea5、开发0.2.0-SNAPSHOT、CI41097671140成功/build.version=0.2.0。
+当前事实：台账尚无缺陷；Server/Web 的 `codex/0.2.1-bugfix` 尚未由 Executor 回执确认；本地双端服务尚未启动。下一动作是完成分支初始化、本地服务启动和健康回读，然后等待 Owner 下达首个缺陷。
 
-回执36/37已核UAT/本机dev升级健康、DB单条0.2.0及新R__单次应用、CI制品与安装jar/Web资产一致。现行域名Host根页与index-DMDsHDv8.js资产200，实际API health200/UP；为服务器本机域名Host通路，不冒称新增外网浏览器流程。本地403类/2338测试0失败0错误，已锁定。
+修复阶段采用稳定编号 `B021-NNN`：Executor 修复并自验，Owner 逐项验收；未通过沿原编号继续。Owner 明确宣布“全部结束”后冻结范围，进入状态同步、develop/main 合并、0.2.1 发布和发布后同步。
 
-0.2.0主方向/标准/既有启动入口21个文件已归档product/0.2.0/passed/，UI文案专项1份归档product/ui-copy-governance/passed/；终态同步方向也已归档passed，ready无待执行方向。
+## 已完成基线
 
-正式49、46/22/22＝90、ADV64/问题57、P62延期/OFF及既有P核销/正式验证基线保持；本批不是新功能登记，不整P核销。本次正式验证基线新增/晋级集合=[]，不是清空已有基线。
+0.2.0 已完成七阶段交付并发布，五项目标、A01—A17 和原 500 项均已关闭，终态 `COMPLETED`。最终裁决：`product/0.2.0/receipts/planning-final-review-terminal-sync-020-completed.md`。历史业务验收保持锁定，仅相关实现变化、新反证或快照失效时复验受影响项。
 
-唯一下一动作：等待Owner安排下一目标。0.2.0实施、验收、发布、终态同步全部结束，无后续执行提示。
+0.2.1 缺陷修复默认不新增正式业务功能数、不核销 P 编号；最终状态值在 Owner 收口后按实际结果单独下发。
 
-根main/develop-sw治理分叉独立留账，未完成对账，本版不改治理；vite.config.ts及其余既有在途保护。发布中tag重指、scratch误启动写入、临时误传按回执36留档，不派重复发布、tag变动或数据清理。
+## 进度
 
-总7阶段：评估、实施提交、验收同步、两业务仓合并、发布0.2.0、发布后同步、结束全部完成；已完成7、进行中0、未开始0（7/0/0）。
-
-2026-10-31分支收尾：Owner授权本会话直接处理，已完成并恢复规划。Workspace当前develop-sw，Web/Server当前develop；三条0.2.0开发分支均已完整合入各自目标并删除本地/origin引用，真实refs回读确认。归档文档及两业务仓develop指针已推送；vite.config.ts内容原样保留未提交，其余旧在途及其他分支保持。0.2.0 COMPLETED/7-0-0不变，无后续任务。
+总 7 阶段：已完成 1，进行中 1，未开始 5。当前进行中阶段为“执行并建分支”，包含本地服务准备和后续逐项修复。
