@@ -106,16 +106,16 @@
 ## 9. Git 提交与回读
 
 - 工作区 `develop-sw`：第 3 阶段同步 `2f540efe`（已推送回读）；本发布后同步批次随后提交并推送，`git ls-remote` 回读一致（文件不预填自身 SHA）。
-- Server：`develop df725ea7`、`main 32b2e1aa`，远端同点；发布源 `5c33eab3`；tag `0.2.1`（annotated `90b5ce16`）→`5c33eab3`；修复分支已删除并回读为空；发布后文档提交触发 CI `41613030060`（`32b2e1aa`，同步时 in progress；仅文档，不影响 tag 发布源）。
+- Server：`develop df725ea7`、`main 32b2e1aa`，远端同点；发布源 `5c33eab3`；tag `0.2.1`（annotated `90b5ce16`）→`5c33eab3`；修复分支已删除并回读为空。发布后文档提交触发 CI `41613030060`（`32b2e1aa`）：attempt 1 failure＝`P62CompatRollbackPgTest.legacyConsumerIsolationAndCoordinatedUpgrade`（既有 P62 领取竞态族，见 `todo/p62-upgrade-gate-test-claim-race.md`；同代码发布轮 `41608817497` 该测试 2/0/0），attempt 2 已重跑，同步时仍在进行；仅文档轮，不影响 tag 发布源与 0.2.1 制品身份。
 - Web：`develop fd3e323`、`main edbe121`，远端同点；发布源 `07568b57`；tag `0.2.1`（`88b3c050`）→`07568b57`；修复分支已删除并回读为空；文档 CI `41609984268` success，`build-edbe121…` Release 已生成且语义 `0.2.1` 恢复 latest。
-- 两仓 `main`/`develop` 树一致；`releases/latest` 两仓均为 `0.2.1`。
+- 两仓 `main`/`develop` 树一致；同步时 `releases/latest` 两仓均为 `0.2.1`（Web 文档轮的 build Release 已让位；Server 文档轮 attempt 2 仍在进行，若成功生成 `build-32b2e1aa…` Release 可能接替 latest 徽标，不改变 0.2.1 语义 Release 与制品身份）。
 
 ## 10. 如实披露
 
 - Server 首轮 main CI `41606793216` failure：4 个失败测试类未同步新增 `R__0.2.1`（期望 19 条=1+18；衔接新增期望 6 支），失败轮未产出 Release/制品；修复 `c9e604ce` 后 `41608817497` success，无既有发布被覆盖。
 - UAT 发布窗口磁盘 100%（0.2.0 发布时同样清理过）；本轮按 §9.2 清理历史备份与日志后完成升级，未停止或改动用户既有服务；部署后可用 669M，后续发布前需复核水位。
 - 两仓 README 与 Server 功能清单的 0.2.0 发布后同步漏项在本轮第 6 阶段一并修正为 0.2.1。
-- 发布后文档提交使两仓 `main` 前进到 `32b2e1aa`/`edbe121`，tag 与制品仍绑定发布源 `5c33eab3`/`07568b57`；Server 文档 CI 的最终结果以提交后回读为准，不影响已发布制品身份。
+- 发布后文档提交使两仓 `main` 前进到 `32b2e1aa`/`edbe121`，tag 与制品仍绑定发布源 `5c33eab3`/`07568b57`。Server 文档 CI 首轮失败为既有 P62 领取竞态族（同代码发布轮该测试通过，见 `todo/p62-upgrade-gate-test-claim-race.md`），已重跑 attempt 2；同步时仍在进行，不影响已发布制品身份。
 
 ## 11. 自验结论
 
