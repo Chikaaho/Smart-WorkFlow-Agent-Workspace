@@ -30,6 +30,7 @@
 | B021-020 | 管理端顶栏「超管 · 0」徽标无意义（Owner 截图，2026-11-03） | 顶栏不再出现「超管 · N」/「租户 · N」 | Web `AppTopbar.vue` + locales；Owner 截图×1 | 待验收 | 待验收 | 根因=顶栏暴露内部租户数字 id，无信息量。修复=删 span 与样式、删 nav.superTenant/nav.tenant 键（2611def）；门禁 typecheck0/lint0/1992 通过 3 跳过/build 4.23s；实机顶栏确认无徽标；回执 B021-020-01 |
 | B021-021 | 首页（应用中心）进的应用目录树出现 编辑/新建表单/删除 管理菜单（Owner 截图，2026-11-03） | 用户端应用内页无任何管理动作；管理端工作台照常 | Web `AppTreeNav.vue`/`AppWorkspace.vue`/spec；Owner 截图×1 | 待验收 | 待验收 | 根因=管理端与用户端共用 AppTreeNav，菜单只按 hasPerm(form:app:manage) 显隐，admin 两端权限同真。修复=新增 manageable prop（缺省 false），canManage=manageable&&hasPerm，仅 AppWorkspace 显式开启（1e2ab65）；门禁 typecheck0/lint0/1994 通过 3 跳过/build 4.55s；实机用户端触发点 0/右键无菜单、管理端触发点 2 回归正常；回执 B021-021-01 |
 | B021-022 | 流程设计页签仍渲染关联流程列表（Owner 重申一个表单只有 0/1 个流程，不要列表；截图 2026-11-03） | 任一路径进入流程设计页签：有流程直达画布、无流程空态画布承接，不再出现列表 | Web `FormDesigner.vue`/spec；Owner 截图×1 | 待验收 | 待验收 | 根因=单流程直达只在页签点击路径生效，直链/刷新/前进后退落 ?tab=processes 时列表照常渲染（同页签两形态）。修复=直达条件 total<1 改留 0 个；activeTab watcher 统一补跳；loadForm 完成钩子补跳初始页签（d57ccf9）；门禁 typecheck0/lint0/1996 通过 3 跳过/build 5.48s；实机点击与直链均直达画布、无列表文案；回执 B021-022-01 |
+| B021-023 | 流程画布连线不默认对准节点中心（Owner 截图 START→END 线偏右；2026-11-03） | 连线默认出入节点（胶囊）缘中点；事件节点图标/标签居中 | Web `ProcessDesigner.vue`；Owner 截图×1 | 待验收 | 待验收 | 根因=事件胶囊 CSS 覆盖 `x:16px;y:3px` 为 0.1.7 旧画布宽 160 的居中遗留（现宽 230），胶囊左偏 35px 而锚点/图标/标签按 230 盒中心布局。修复=CSS 改 x:51/y:0 对齐模板几何，图标 translate 59、标签 x106/y27 随动（Web 本次提交）；门禁 typecheck0/lint0/1996 通过 3 跳过/build 4.25s；实机胶囊中心=连线 x=582 对中；回执 B021-023-01 |
 
 状态值：
 
