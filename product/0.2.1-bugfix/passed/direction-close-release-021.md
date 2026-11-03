@@ -1,5 +1,7 @@
 # 0.2.1 收口同步、合并与发布方向
 
+2026-11-03｜Planner 终态复核：本方向已执行并归档，0.2.1 `COMPLETED`，七阶段 7/0/0。裁决见 [终态复核](../receipts/planning-final-review-021-completed.md)。下文保留为执行依据，不作为新任务。
+
 日期：2026-11-03。下发角色：规划；承接角色：执行（Executor）。状态：`READY`。
 
 依据：Owner 2026-11-03 宣布修复结束，冻结裁决见 `product/0.2.1-bugfix/receipts/planning-owner-close-021.md`。本方向承接原方向 `direction-bugfix-021.md` 的"Owner 宣布结束后的交付链"，覆盖七阶段第 3—7 阶段。版本 0.2.1 已由 Owner 确认，不再询问；合并、tag/Release 和既有通道发布按 `system.md` §3.0 持续授权连续推进。

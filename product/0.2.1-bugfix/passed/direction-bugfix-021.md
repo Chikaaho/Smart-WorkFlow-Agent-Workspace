@@ -1,5 +1,7 @@
 # 0.2.1 缺陷修复方向
 
+2026-11-03｜Planner 终态复核：本方向已执行并归档，0.2.1 `COMPLETED`，七阶段 7/0/0。裁决见 [终态复核](../receipts/planning-final-review-021-completed.md)。下文保留为执行依据，不作为新任务。
+
 日期：2026-10-31。下发角色：规划；承接角色：执行（Executor）。状态：`READY`。
 
 ## 目标与等级

@@ -10,7 +10,8 @@
 
 ## 3. 当前状态
 
-`PASSED`（待规划终态复核），0.2.1 已发布并部署 UAT。总 7 阶段：已完成 6，进行中 0，未开始 1（结束）。
+`COMPLETED`（规划 2026-11-03 终态复核，`receipts/planning-final-review-021-completed.md`），0.2.1 已发布并部署 UAT。总 7 阶段：已完成 7，进行中 0，未开始 0。
+
 
 ## 4. 已完成内容
 
@@ -18,7 +19,7 @@
 
 ## 5. 实际工程结果
 
-29 项修复的提交与回执见 `product/0.2.1-bugfix/items.md` 备注和 `receipts/`。合并链：Server `6e83cd66`→develop `c9e604ce`→main `5c33eab3`；Web `dbb2074`→develop `9785158`→main `07568b57`。发布：Server CI `41608817497` success、`bootstrap-0.2.1.jar` 218,553,737 B、`build.version=0.2.1`；Web CI `41606814041` success、`sw-web-dist-0.2.1.zip` 6,165,915 B。UAT 部署：启动 176.986s、ERROR 0、health UP。
+29 项修复的提交与回执见 `product/0.2.1-bugfix/items.md` 备注和 `receipts/`。发布源：Server `5c33eab3`、Web `07568b57`；当前 main `32b2e1aa`/`edbe121`，develop 与 main 树一致。发布：Server CI `41608817497` success、`bootstrap-0.2.1.jar` 218,553,737 B、`build.version=0.2.1`；Web CI `41606814041` success、`sw-web-dist-0.2.1.zip` 6,165,915 B。UAT 部署：启动 176.986s、ERROR 0、health UP。
 
 ## 6. 验收规则
 
@@ -30,7 +31,8 @@ Owner 通过项全部锁定，第 3—6 阶段不重做业务或 UI 验收；只
 
 ## 8. 未完成内容
 
-第 7 阶段：规划复核两份同步回执与发布事实、归档方向、确认 `COMPLETED`。
+无本版业务剩余；终态传播已完成（`receipts/final-propagation-021-01.md`）。
+
 
 ## 9. 已知风险
 
@@ -38,11 +40,13 @@ Owner 通过项全部锁定，第 3—6 阶段不重做业务或 UI 验收；只
 
 ## 10. 唯一下一动作
 
-Planner 复核 `close-sync-021-01.md`、`release-sync-021-01.md` 与发布/部署事实，归档方向并确认 `COMPLETED`；执行侧完成后等待 Owner 安排下一目标。
+等待 Owner 安排下一目标。
+
 
 ## 11. 下一轮完成标准
 
-规划确认 `COMPLETED` 并归档方向；若复核要求补证，执行侧按回执继续。
+已完成：knowledge 与各入口均为 `COMPLETED`、7/0/0；Server 文档 CI attempt 2 success，两仓 `releases/latest` 已恢复/保持 0.2.1。
+
 
 ## 12. 必须读取
 

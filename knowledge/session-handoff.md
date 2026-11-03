@@ -1,12 +1,10 @@
 # 会话交接（session-handoff）— 当前压缩版
 
-## 当前续接：0.2.1 缺陷修复列车（2026-11-03，已发布并部署，待规划终态复核）
+## 当前续接：无活动交付（2026-11-03，0.2.1 已 COMPLETED）
 
-0.2.1 为 L 级缺陷修复列车；台账 B021-001～029 共 29 项 Owner 全部通过并冻结（根仓 `eb5fffb9`）。两仓 `fix/0.2.1-bugfix`→`develop`→`main` 已合入并推送（Server 发布源 `5c33eab3`、Web `07568b57`），annotated tag `0.2.1` 与语义 Release 已发布，UAT 已由 0.2.0 就地升级至 0.2.1（health UP、ERROR 0、Web 入口 `index-Bl0JsMZw`）。回执：`close-sync-021-01.md`、`release-sync-021-01.md`。
+0.2.1 缺陷修复列车 `COMPLETED`（规划终态复核 `product/0.2.1-bugfix/receipts/planning-final-review-021-completed.md`），七阶段 7/0/0；两份方向归档 `product/0.2.1-bugfix/passed/`。台账 B021-001～029 共 29 项 Owner 全部通过并冻结（根仓 `eb5fffb9`）。正式/部署版本 Server、Web 0.2.1（发布源 `5c33eab3`/`07568b57`）；开发版本 Server `0.2.1-SNAPSHOT`、Web `0.2.1`。回执：`close-sync-021-01.md`、`release-sync-021-01.md`、`final-propagation-021-01.md`。
 
-总 7 阶段：已完成 6（需求评估；执行与逐项修复；验收与信息同步；合入 develop/main；发布 0.2.1；发布后同步），进行中 0，未开始 1（第 7 阶段结束）。唯一下一动作：规划复核两份同步回执与发布事实，归档方向并确认 `COMPLETED`；之后执行侧等待 Owner 安排下一目标。计数保持：功能 49、清单 46/22/22＝90、ADV64/问题 57、P 编号不变、正式基线新增 []。
-
-保护：Web `vite.config.ts` 在途改动未提交；不清库、不改迁移历史、不传播秘密；只停止本轮自有且身份明确的进程。
+唯一下一动作：等待 Owner 安排下一目标。Server 文档 CI `41613030060` attempt 2 已 success；两仓 `releases/latest` 为语义 Release `0.2.1`。
 
 以下保留 0.2.0 及更早时点的交接历史，不代表当前任务和版本。
 
