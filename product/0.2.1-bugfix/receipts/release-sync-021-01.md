@@ -36,7 +36,7 @@
 | `releases/latest` | 0.2.1 | 0.2.1 |
 
 - 迁移：新增 `R__0.2.1_workspace_stat_metric_cards.sql`（h2/postgresql 各 26 行，四张独立指标卡种子，`WHERE NOT EXISTS` 幂等）；versioned 终点保持单条 `V0.2.0__baseline_seed.sql`；R__ 总数 18→19。
-- Server 失败轮补记：`41606793216`（`654e7dda`）的 4 个失败类为 `FlywayFullChainH2Test`、`FlywayFullChainPostgresTest`、`I6G7UpgradeDrillH2Test`、`I6G7bOldBaselineUpgradePostgresTest`（期望 19 条=1+18）、`ApplicationCenterLegacyUpgradeTest`（衔接新增期望 6 支）；修复提交 `c9e604ce` 更新为 20=1+19 与衔接新增 7 支，受影响 5 类本地 41/0 通过后重推。
+- Server 失败轮补记：`41606793216`（`654e7dda`）的 4 个失败测试类为 `FlywayFullChainH2Test`、`FlywayFullChainPostgresTest`、`I6G7UpgradeDrillH2Test`（期望 19 条=1+18）与 `ApplicationCenterLegacyUpgradeTest`（衔接新增期望 6 支）；修复提交 `c9e604ce` 同步更新上述断言为 20=1+19 / 衔接新增 7 支，并按同口径更新 `I6G7bOldBaselineUpgradePostgresTest`；受影响 5 类本地 41/0 通过后重推。
 - Web 文档同步触发的 CI `41609984268` **success**（`edbe121`），自动生成 `build-edbe121…` Release；已将语义 Release `0.2.1` 恢复为 `latest`（`make_latest=true`）。
 
 ## 4. UAT 部署事实（8.166.112.85，既有通道）
@@ -112,7 +112,7 @@
 
 ## 10. 如实披露
 
-- Server 首轮 main CI `41606793216` failure：4 个迁移链断言测试类未同步新增 `R__0.2.1`（期望 19 条=1+18；衔接新增期望 6 支），失败轮未产出 Release/制品；修复 `c9e604ce` 后 `41608817497` success，无既有发布被覆盖。
+- Server 首轮 main CI `41606793216` failure：4 个失败测试类未同步新增 `R__0.2.1`（期望 19 条=1+18；衔接新增期望 6 支），失败轮未产出 Release/制品；修复 `c9e604ce` 后 `41608817497` success，无既有发布被覆盖。
 - UAT 发布窗口磁盘 100%（0.2.0 发布时同样清理过）；本轮按 §9.2 清理历史备份与日志后完成升级，未停止或改动用户既有服务；部署后可用 669M，后续发布前需复核水位。
 - 两仓 README 与 Server 功能清单的 0.2.0 发布后同步漏项在本轮第 6 阶段一并修正为 0.2.1。
 - 发布后文档提交使两仓 `main` 前进到 `32b2e1aa`/`edbe121`，tag 与制品仍绑定发布源 `5c33eab3`/`07568b57`；Server 文档 CI 的最终结果以提交后回读为准，不影响已发布制品身份。
