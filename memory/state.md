@@ -4,9 +4,11 @@
 
 ## 活动交付
 
-无活动功能。0.2.1 缺陷修复列车 `COMPLETED`（规划终态复核 `product/0.2.1-bugfix/receipts/planning-final-review-021-completed.md`），七阶段 7/0/0；两份方向已归档 `product/0.2.1-bugfix/passed/`。
+0.2.2（Owner 已确认版本号），`PLANNING`。两个 L 级功能先后推进：F1 Agent AI 供应商管理（一张表；OpenAI Chat、OpenAI Responses、Anthropic 三种格式；兼容任意供应商；单例＋模板装配）先做，F2 应用导入导出（表单、流程、审批意见表单整包；同 key 时作为新应用导入并重新生成 key）随后。范围草稿 `product/0.2.2/ready/direction-022-scope-draft.md`。
 
-终态传播已完成（`product/0.2.1-bugfix/receipts/final-propagation-021-01.md`）；knowledge 与各入口均为 `COMPLETED`、7/0/0。唯一下一动作：等待 Owner 安排下一目标。
+唯一下一动作：Executor 执行探索 `search_task/v030-agent-provider-and-app-bundle-seams.md`，回执写到 `search_fallback/` 同名文件；规划据此写 F1 正式方向。
+
+0.2.1 已 `COMPLETED`（`product/0.2.1-bugfix/receipts/planning-final-review-021-completed.md`）。
 
 ## 已完成基线
 
@@ -16,4 +18,4 @@
 
 ## 进度
 
-0.2.1 总 7 阶段：已完成 7，进行中 0，未开始 0。
+0.2.2 总 7 阶段：已完成 0，进行中 1（需求评估：等待探索），未开始 6（执行、验收与同步、合并、发布、发布后同步、结束）。
