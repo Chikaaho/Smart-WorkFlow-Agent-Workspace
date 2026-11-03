@@ -49,9 +49,10 @@
           "init/local-profile.example.json",
           "product/governance/admin-date-width-scope-20261029.md",
           "product/governance/admin-q40-list-scope-20261030.md",
-          "product/governance/admin-q70-q71-text-scope-20261030.md"
+          "product/governance/admin-q70-q71-text-scope-20261030.md",
+          "product/governance/admin-zcode-stop-fallback-20261103.md"
         ],
-        "last_maintained": "2026-10-30"
+        "last_maintained": "2026-11-03"
       },
       "demo_paths": [
         ".codex/hooks/zcode-role-bind.cmd",
@@ -64,7 +65,7 @@
         "UserPromptSubmit/Stop载荷",
         "本地声明中可能缺失的公共实现依赖"
       ],
-      "notes": "本机GUI宿主实测：用户级声明生效（drift=false），运行时审计含真实Stop门禁派发与角色绑定；验证脚本init/adapters/local-init-check.py覆盖startup_gate/role_binding/allow/reject/dispatch五类。"
+      "notes": "本机GUI宿主实测：用户级声明生效（drift=false），运行时审计含真实Stop门禁派发与角色绑定；Windows Stop 入口已加非受治理工作区守卫与 -Fallback 兜底（同回合按 session+turnId+消息指纹去重），验证脚本init/adapters/local-init-check.py覆盖startup_gate/role_binding/allow/reject/dispatch五类；宿主 Stop 子进程启动早期死亡仍属 ZCode 侧缺陷，兜底只增加一次派发机会。"
     },
     {
       "id": "claude-code",
