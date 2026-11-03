@@ -43,7 +43,7 @@
 
 - 发布前：磁盘 100%（`/api/actuator/health` 因磁盘空间健康指标返回 DOWN）；按 §9.2 清理历史 jar 备份（`.bak`/`.bak2`/pre0110）、轮转日志（`server.log-2026*` 581M→gzip 7.8M）、npm 缓存、旧 `/tmp` 制品与旧 `web.bak-*`；清理后可用 941M，health 恢复 UP。未停止或改动用户既有服务（reasonix 等）。
 - 数据库备份：`/data/backup/smart_workflow_20261103_1658_pre021.dump` 646K，`pg_restore -l` 1239 TOC 项可读。
-- 后端：`cp bootstrap.jar bootstrap.jar.bak`（0.2.0，sha256 `524cbf2f…`）→ 上传并校验 `bootstrap-0.2.1.jar`（server 端 sha256 `188b476a…` 与语义 Release 一致）→ 停服（PID 3025006）→ 替换 → 启动（PID 3152438）；`Started StarterApplication in 176.986 seconds`、启动段 ERROR **0**、`/api/actuator/health` `{"status":"UP"}`、`build.version=0.2.1`、Flyway 应用 `0.2.1 workspace stat metric cards`（success）、`sys_workspace_card_type` 9411—9414 四行实际存在。
+- 后端：`cp bootstrap.jar bootstrap.jar.bak`（0.2.0，sha256 `524cbf2f…`）→ 上传并校验 `bootstrap-0.2.1.jar`（server 端 sha256 `188b476a…` 与语义 Release 一致）→ 停服（PID 3025006）→ 替换 → 启动（PID 3152438）；`Started StarterApplication in 176.986 seconds`、启动段 ERROR **0**、`/api/actuator/health` `{"status":"UP"}`、`build.version=0.2.1`、Flyway 应用 `0.2.1 workspace stat metric cards`（success，checksum `-1097573900`；versioned `0.2.0` checksum `1897854550` 不变）、`sys_workspace_card_type` 9411—9414 四行实际存在。
 - 前端：备份 `web.bak-20261103_1702`（0.2.0）→ 部署 0.2.1 构建；`index.html` 与发布 zip 逐字节一致（sha256 `4df424347a8b6ab0e7c0a094f34d531b8e98832266731645fa3e8c4771a9dc0d`），入口 `assets/index-Bl0JsMZw.js`；根路径 `/`、`/login`、`/workspace` 200；入口及引用资产 200；`/sw-server/api/actuator/health` UP。
 - 部署后磁盘：669M 可用（jar 209M + 备份 209M 保留；DB dump 646K）。
 
