@@ -6,7 +6,9 @@
 
 0.2.2（Owner 已确认版本号），`PLANNING`。F1 Agent 完善（XL：供应商+模型+graph 统一管理、graph+RAG、改用 LangChain4j、OpenAI Chat/Responses/Anthropic 三格式、单例＋模板装配）先做；F2 应用导入导出（L，同 key 作为新应用导入并重新生成 key）随后。范围草稿 `product/0.2.2/ready/direction-022-scope-draft.md`。第一轮探索已回（`search_fallback/v030-agent-provider-and-app-bundle-seams.md`：现为 Spring AI 1.0.4、无供应商维度、无单例）。真实验证用 Command Code，密钥不落文件。
 
-唯一下一动作：Executor 执行第二轮探索 `search_task/v022-agent-graph-rag-and-bundle-defs.md`；规划据此写 F1 正式方向与决策记录。
+F1 正式方向 `product/0.2.2/ready/direction-022-f1-agent.md`（XL 三阶段：模型接入基座 → graph 完善 → RAG），决策记录 `product/0.2.2/decision-records-022.md`。两轮探索回执均已读。
+
+唯一下一动作：Executor 建立两仓 `feature/0.2.2-agent`，开始 F1 阶段 1（先验证 LangChain4j 依赖兼容）。
 
 0.2.1 已 `COMPLETED`（`product/0.2.1-bugfix/receipts/planning-final-review-021-completed.md`）。
 
@@ -18,4 +20,4 @@
 
 ## 进度
 
-0.2.2 总 7 阶段：已完成 0，进行中 1（需求评估：等待探索），未开始 6（执行、验收与同步、合并、发布、发布后同步、结束）。
+0.2.2 总 7 阶段：已完成 0，进行中 1（需求评估：F1 已下发，F2 待写），未开始 6（执行、验收与同步、合并、发布、发布后同步、结束）。
