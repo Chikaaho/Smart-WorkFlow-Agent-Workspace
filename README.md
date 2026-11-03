@@ -10,7 +10,7 @@ CH-aPaaS 是面向企业协作场景的低代码 PaaS 与 AI Agent 平台。项�
 
 ## 当前发布
 
-当前正式版本 **0.2.0**（2026-10-31 发布并交付 UAT）。两仓 tag 与发布 main：Server `0.2.0`→`39dcedb7`（CI run 41097671140 success，`bootstrap-0.2.0.jar` 218,547,155 B sha256 `524cbf2f…`，`build.version=0.2.0`）、Web `0.2.0`→`f5ec5a1`（CI run 41092067995 success，`sw-web-dist-0.2.0.zip` 6,153,509 B，入口 `assets/index-DMDsHDv8.js`）。DB versioned 终点收敛为单一条 `V0.2.0__baseline_seed.sql`（0.1.7 基线 + 0.1.8/0.1.9/0.1.10 增量逐字节收敛）+ 18 支 R__；存量库衔接见 `db/upgrade/0.2.0/README.md`。UAT 由 0.1.10 就地升级：启动 172.021s、ERROR 0、health UP、web 指纹与 CI 制品一致。交付范围与门禁明细见 [`CHANGELOG.md`](CHANGELOG.md) 0.2.0 条目与 [`product/0.2.0/receipts/u020-36-release-delivery.md`](product/0.2.0/receipts/u020-36-release-delivery.md)。
+当前正式版本 **0.2.1**（2026-11-03 发布并交付 UAT）。两仓 tag 与发布 main：Server `0.2.1`→`5c33eab3`（CI run 41608817497 success，`bootstrap-0.2.1.jar` 218,553,737 B sha256 `188b476a…`，`build.version=0.2.1` 实测）、Web `0.2.1`→`07568b57`（CI run 41606814041 success，`sw-web-dist-0.2.1.zip` 6,165,915 B，入口 `assets/index-Bl0JsMZw.js`）。DB versioned 终点保持 `V0.2.0__baseline_seed.sql`，新增 `R__0.2.1_workspace_stat_metric_cards.sql`。UAT 由 0.2.0 就地升级：启动 176.986s、ERROR 0、health UP、web 指纹与 CI 制品一致。交付范围见 [`CHANGELOG.md`](CHANGELOG.md) 0.2.1 条目与 [`product/0.2.1-bugfix/receipts/release-sync-021-01.md`](product/0.2.1-bugfix/receipts/release-sync-021-01.md)。
 
 
 ## 项目能力

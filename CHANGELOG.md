@@ -1,5 +1,13 @@
 # CH-aPaaS 发布说明 / Release Notes
 
+## 0.2.1（2026-11-03 发布并交付 UAT；缺陷修复批次 B021-001～029）
+
+- **发布事实**：两仓 `fix/0.2.1-bugfix`→`develop`→`main` 合入（Server 修复 tip `6e83cd66` → develop `c9e604ce` → main `5c33eab3`；Web tip `dbb2074` → develop `9785158` → main `07568b57`）。main 推送触发既有 CI：Server 首轮 run `41606793216` **failure**（4 个迁移链断言未同步新增 `R__0.2.1`，未产出 Release/制品）→ 修复 `c9e604ce` 后 run `41608817497` **success**（CI 全量 2337 tests / 0 failures / 0 errors / 34 skipped（14 模块汇总）；制品 `bootstrap-0.2.1.jar` 218,553,737 B sha256 `188b476a1ff516a4756ae9e9e5da5944170612d68eac23807d950e50be955860`，`build.version=0.2.1` 实测）；Web run `41606814041` **success**（229 文件通过/1 跳过（230），1996 通过/3 跳过（1999），build 3.64s）。成对 annotated tag `0.2.1` 与语义 Release「CH-aPaaS Server 0.2.1」/「CH-aPaaS Web 0.2.1」（资产 `bootstrap-0.2.1.jar` / `sw-web-dist-0.2.1.zip`），两仓 `releases/latest`=0.2.1。
+- **版本与迁移**：Server 开发默认 `0.2.1-SNAPSHOT`（pom revision＋CI 断言＋脚本注释，pom/develop/release 三模式 PASS）；Web 包版本 `0.2.1`。DB versioned 终点保持单条 `V0.2.0__baseline_seed.sql`；新增 `R__0.2.1_workspace_stat_metric_cards.sql`（h2/postgresql 各 26 行，四张独立指标卡种子，`WHERE NOT EXISTS` 幂等），R__ 18→19。
+- **修复内容**：Server——B021-007 独立统计指标卡类型种子、B021-016 登录按企业名称解析与 SSO 免填企业反查、B021-027 审批人候选按部门+子孙过滤；Web——工作台指标卡/侧栏/加载遮罩、文本输入合并、必填红星、流程页签直达画布、节点居中/工具栏/图标、操作列与筛选栏、部门列宽、空态、弹窗页脚、顶栏徽标、应用中心管理菜单门禁、登录企业名称与 SSO 品牌图标、审批人弹窗限高与组织树收起等 29 项。
+- **UAT 交付**：按 §8.1/8.2/8.3/9.1 由 0.2.0 就地升级（DB 备份 `smart_workflow_20261103_1658_pre021.dump`；发布前磁盘 100%，按 §9.2 清理历史 jar 备份/轮转日志/npm 缓存/旧前端备份后约 0.7G 可用）；后端备份 `bootstrap.jar.bak`（0.2.0）→替换→启动 176.986s、ERROR 0、health UP、`build.version=0.2.1`、`R__0.2.1_workspace_stat_metric_cards` 应用；前端备份 `web.bak-20261103_1702` 后部署，入口 `assets/index-Bl0JsMZw.js` 与发布 zip 一致，根路径 200、API health UP。
+- **边界**：缺陷修复批次不新增业务功能数、不核销 P 编号；正式功能 49、清单 46/22/22=90、ADV64/问题57、P62 延期/OFF 保持；正式基线新增 []。回执 `product/0.2.1-bugfix/receipts/release-sync-021-01.md`。
+
 ## 0.2.0（2026-10-31 发布并交付 UAT；五项目标交付批次）
 
 - **发布事实**：沿 任务分支→develop→main 合入（Web 任务分支 tip `eadd20b` → develop `3c1cfe2` → main `f5ec5a1`；Server 任务分支 tip `befd32eb` → develop `a1674f30` → main `fbacde47` → 门禁与存量库对账修复后 `39dcedb7`）。main 推送触发既有 CI：Server run `41097671140` **success**（制品 sha256 `524cbf2f…`，`build.version=0.2.0`；首指 `fbacde47` 的 run `41091926626` failure＝iot 测试跨类执行顺序族，该次未产出 Release/制品，tag 重指无覆盖物）；Web run `41092067995` **success**（`dist` 6,153,509 B，入口 `assets/index-DMDsHDv8.js`，Vitest 1990 通过/3 跳过，230 文件）。**成对 annotated tag `0.2.0`** 与语义 Release「CH-aPaaS Server 0.2.0」／「CH-aPaaS Web 0.2.0」（资产 `bootstrap-0.2.0.jar`／`sw-web-dist-0.2.0.zip`）。

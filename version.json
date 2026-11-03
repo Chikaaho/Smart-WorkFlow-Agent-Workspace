@@ -1,53 +1,54 @@
 {
   "$schema": "CH-aPaaS 版本权威（单一机器可读源；变更须走新回执）",
   "product": "CH-aPaaS",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "iteration": "0.0.9",
-  "registeredAt": "2026-10-31",
-  "registeredBy": "0.2.0 发布（五项目标业务/UI验收通过后按提示36完成合并、tag/Release/制品发布与既有环境交付）。执行回执 product/0.2.0/receipts/u020-36-release-delivery.md",
+  "registeredAt": "2026-11-03",
+  "registeredBy": "0.2.1 发布（29 项缺陷修复全部 Owner 验收通过后完成合并、tag/Release/制品发布与既有环境交付）。执行回执 product/0.2.1-bugfix/receipts/release-sync-021-01.md",
   "development": {
-    "targetVersion": "0.2.0",
-    "status": "COMPLETED",
-    "direction": "product/0.2.0/ready/direction-020.md",
+    "targetVersion": "0.2.1",
+    "status": "PASSED",
+    "statusNote": "发布与发布后同步完成；等待规划终态复核后归档方向并确认 COMPLETED",
+    "direction": "product/0.2.1-bugfix/ready/direction-close-release-021.md",
     "branches": {
-      "server": "codex/0.2.0-tenant-form-flow（tip befd32eb，已回纳 develop c25f5ea5；发布 main 39dcedb7）",
-      "web": "codex/0.2.0-ui-tenant-form-flow（tip eadd20b，已回纳 develop 3c1cfe2；发布 main f5ec5a1）",
-      "workspace": "codex/0.2.0-delivery（develop-sw 已同步 bfa1e07a；root main 治理对账留待裁决）"
+      "server": "fix/0.2.1-bugfix（tip 6e83cd66，已回纳 develop c9e604ce；发布 main 5c33eab3）",
+      "web": "fix/0.2.1-bugfix（tip dbb2074，已回纳 develop 9785158；发布 main 07568b57）",
+      "workspace": "develop-sw（发布后同步批次随后提交）"
     },
     "developmentVersion": {
-      "server": "0.2.0-SNAPSHOT",
-      "web": "0.2.0"
+      "server": "0.2.1-SNAPSHOT",
+      "web": "0.2.1"
     }
   },
   "projections": {
     "serverRepo": {
       "path": "Smart-WorkFlow-aPaaS-server",
-      "mavenVersion": "0.2.0（正式构建 -Drevision=0.2.0；开发默认 0.2.0-SNAPSHOT）",
+      "mavenVersion": "0.2.1（正式构建 -Drevision=0.2.1；开发默认 0.2.1-SNAPSHOT）",
       "flywayEndpoint": {
         "h2": "V0.2.0",
         "postgresql": "V0.2.0"
       },
-      "flywaySeed": "V0.2.0__baseline_seed.sql（0.1.7 基线 + 0.1.8/0.1.9/0.1.10 增量逐字节收敛，双方言 sha256 独立复核）+ 18 支 R__；存量衔接 db/upgrade/0.2.0/（transition-history / upgrade-from-0.1.7）"
+      "flywaySeed": "V0.2.0__baseline_seed.sql（0.1.7 基线 + 0.1.8/0.1.9/0.1.10 增量逐字节收敛）+ 19 支 R__（0.2.1 新增 R__0.2.1_workspace_stat_metric_cards.sql 双方言，四张独立指标卡种子）"
     },
     "webRepo": {
       "path": "Smart-WorkFlow-aPaaS-Web",
-      "packageVersion": "0.2.0"
+      "packageVersion": "0.2.1"
     },
     "workspace": {
       "path": "Smart-WorkFlow-Agent-Workspace",
       "changelog": "CHANGELOG.md",
-      "releaseNotes": "GitHub Release 0.2.0（Server 39dcedb7·bootstrap-0.2.0.jar；Web f5ec5a1·sw-web-dist-0.2.0.zip）",
-      "upgrade": "docs/ops/production-ops.md §8/§9（UAT 由 0.1.10 就地升级：db/upgrade/0.2.0/upgrade-to-0.2.0-from-0.1.7.postgresql.sql 历史衔接 + 4 支新 R__ 随启动单次应用；versioned 终点单条 0.2.0 checksum 1897854550）",
-      "rollback": "docs/ops/production-ops.md §8.1/§8.2/§9.1（备份 DB smart_workflow_20261031_0215_pre0200.dump、bootstrap.jar.bak（0.1.10）/​.bak2、web.bak-20261031_0218）",
-      "configChanges": "0.2.0 无新增必配项；R__0.2.0_form_integration 幂等补齐 sw_agent_tool_external（升级通道存量库自足）",
-      "dbMigrations": "V0.2.0__baseline_seed.sql（单条 versioned 收敛基线）；新增 R__0.2.0_approval_opinion_draft / R__0.2.0_ext_datasource_grant / R__0.2.0_form_integration（存量库自足）/ R__u020_user_group_menu 随启动单次应用",
-      "manifest": "GitHub Release 0.2.0 资产：Server bootstrap-0.2.0.jar 218,547,155 B sha256 524cbf2fab94b66e825aa4a019f3709d965a2b7dd7fc55ba112fd1e7dddf92dd（CI run 41097671140，build.version=0.2.0 实测）；Web sw-web-dist-0.2.0.zip 6,153,509 B sha256 5d80c964e7142c99（CI run 41092067995，入口 assets/index-DMDsHDv8.js，UAT 部署后指纹一致）",
-      "deployment": "UAT 8.166.112.85 已按 §8.1/8.2/8.3/9.1 就地升级：DB 历史衔接单条 0.2.0（checksum 一致）、4 支新 R__ 随启动单次应用、启动 172.021s、日志 ERROR 0、/api/actuator/health {\"status\":\"UP\"}、web 指纹 index-DMDsHDv8.js 与 CI 制品一致。现行用户根路径＝域名 HTTPS（chikaho.cn）根路径，自 2026-10-15 R015-02 起挂载 /opt/smart-workflow/web：2026-10-31 实测根页面 200 且加载 assets/index-DMDsHDv8.js（本次 0.2.0 制品），前端构建产物 API 基址 sw-server/api → nginx /sw-server/ → 127.0.0.1:8080，/sw-server/api/actuator/health 200 {\"status\":\"UP\"}。同机 8.166.112.85:80 IP vhost（→5173）与 /rs、/events 等 reasonix 路径为共存服务（不属工作流入口，未改）。"
+      "releaseNotes": "GitHub Release 0.2.1（Server 5c33eab3·bootstrap-0.2.1.jar；Web 07568b57·sw-web-dist-0.2.1.zip）",
+      "upgrade": "docs/ops/production-ops.md §8/§9（UAT 由 0.2.0 就地升级：DB 备份 smart_workflow_20261103_1658_pre021.dump + 新增 R__0.2.1_workspace_stat_metric_cards 随启动单次应用；versioned 终点保持单条 0.2.0）",
+      "rollback": "docs/ops/production-ops.md §8.1/§8.2/§9.1（bootstrap.jar.bak（0.2.0）、web.bak-20261103_1702、DB dump smart_workflow_20261103_1658_pre021.dump）",
+      "configChanges": "0.2.1 无新增必配项；R__0.2.1_workspace_stat_metric_cards 幂等补齐四张独立统计指标卡类型（id 9411—9414）",
+      "dbMigrations": "V0.2.0__baseline_seed.sql（versioned 终点不变）；新增 R__0.2.1_workspace_stat_metric_cards.sql（h2/postgresql）随启动单次应用",
+      "manifest": "GitHub Release 0.2.1 资产：Server bootstrap-0.2.1.jar 218,553,737 B sha256 188b476a1ff516a4756ae9e9e5da5944170612d68eac23807d950e50be955860（CI run 41608817497，build.version=0.2.1 实测）；Web sw-web-dist-0.2.1.zip 6,165,915 B sha256 7558f0d7…（CI run 41606814041，入口 assets/index-Bl0JsMZw.js，UAT 部署后逐字节一致）",
+      "deployment": "UAT 8.166.112.85 已按 §8.1/8.2/8.3/9.1 由 0.2.0 就地升级：发布前磁盘 100% 按 §9.2 清理；DB 备份 smart_workflow_20261103_1658_pre021.dump；后端备份 bootstrap.jar.bak（0.2.0）→替换→启动 176.986s、启动段 ERROR 0、/api/actuator/health UP、build.version=0.2.1、Flyway 应用 R__0.2.1_workspace_stat_metric_cards；前端备份 web.bak-20261103_1702→部署→入口 assets/index-Bl0JsMZw.js 与发布 zip 逐字节一致，根路径/资产/`/sw-server/api/actuator/health` 200/UP。域名根路由与同机 reasonix 共存服务未改。"
     }
   },
   "rules": {
     "candidateFreeze": "候选固定后只允许通过新回执审查的变更进入；代码/迁移/依赖/配置漂移使受影响证据失效并重固定候选",
-    "tagAndRelease": "0.2.0 成对 annotated tag/Release 已发布：Server tag→39dcedb7、Web tag→f5ec5a1；资产见 manifest。Server tag 首指 fbacde47 的 CI run 41091926626 failure（iot 测试跨类执行顺序族），该次未产出 Release/制品，修复后 tag 重指 39dcedb7 重发布（run 41097671140 success），无既有发布被覆盖；0.1.10 及更早发布未动",
-    "deployment": "UAT 8.166.112.85 已按 §8.1/8.2/8.3/9.1 就地升级：DB 历史衔接单条 0.2.0（checksum 一致）、4 支新 R__ 随启动单次应用、启动 172.021s、日志 ERROR 0、/api/actuator/health {\"status\":\"UP\"}、web 指纹 index-DMDsHDv8.js 与 CI 制品一致。域名根路由自 2026-10-16 起由同机 agent 服务承载（先于 0.1.10 的既有状态，本轮未改）。本机 dev 环境（smart_workflow_dev）同步完成 0.2.0 衔接与启动核实"
+    "tagAndRelease": "0.2.1 成对 annotated tag/Release 已发布：Server tag→5c33eab3、Web tag→07568b57；资产见 manifest。Server 首轮 main 提交 654e7dda 的 CI run 41606793216 failure（4 个迁移链断言未同步 R__0.2.1），该次未产出 Release/制品；修复提交 c9e604ce 后 run 41608817497 success，无既有发布被覆盖。0.2.0 及更早发布未动",
+    "deployment": "UAT 8.166.112.85 已由 0.2.0 就地升级至 0.2.1：DB 备份 + R__0.2.1 随启动单次应用；启动 176.986s、ERROR 0、health UP、web 指纹与 CI 制品一致"
   }
 }
