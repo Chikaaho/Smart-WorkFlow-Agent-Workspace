@@ -1,14 +1,14 @@
 # 会话交接（session-handoff）— 当前压缩版
 
-## 当前续接：0.2.0（2026-10-22）
+## 当前续接：0.2.1 缺陷修复列车（2026-11-03，第 3 阶段同步完成）
 
-唯一完整现状见 `knowledge/current-status.md`。执行角色承接 `product/0.2.0/ready/` 的 XL 方向；七阶段为 1 已完成（需求评估）、1 进行中（分支实施）、5 未开始（验收同步、合并、发布、发布后同步、结束）。当前发布仍为 0.1.10；0.2.0 尚未验收、合并或发布。
+唯一完整现状见 `knowledge/current-status.md`。0.2.1 为 L 级缺陷修复列车，版本已由 Owner 确认；台账 B021-001～029 共 29 项 Owner 全部通过并冻结（根仓 `eb5fffb9`），收口记录 `product/0.2.1-bugfix/receipts/planning-owner-close-021.md`，收口方向 `product/0.2.1-bugfix/ready/direction-close-release-021.md`，第 3 阶段同步回执 `product/0.2.1-bugfix/receipts/close-sync-021-01.md`。
 
-续接根仓 `codex/0.2.0-delivery` 位于 `C:/Users/hjxch/.codex/worktrees/020-continuation/Smart-WorkFlow-Agent-Workspace`。实际代码位于原工作区两子仓，Server `codex/0.2.0-tenant-form-flow` / `dc7b937`，Web `codex/0.2.0-ui-tenant-form-flow` / `bdef38b`，均已推送。根仓原 develop-sw 的 0.1.10 在途文档不混入。
+总 7 阶段：已完成 3（需求评估；执行与逐项修复；验收与信息同步），进行中 0，未开始 4（合入 develop/main、发布 0.2.1、发布后同步、结束）。唯一下一动作：Executor 将两仓 `fix/0.2.1-bugfix` 合入 `develop`（版本收敛 0.2.1 与发布配置），验证后合入 `main`，沿既有通道发布 0.2.1（tag/CI/制品/部署分别回读），随后提交 `release-sync-021-01.md`。计数保持：功能 49、清单 46/22/22＝90、ADV64/问题 57、P 编号不变、正式基线新增 []。
 
-最新实施回执 `product/0.2.0/receipts/f020-form-config-01.md`，共用脚本 UI 见 `u020-script-workspace-05.md`。T020 的租户边界、缓存会话、后台持久认领、IoT 预约/传输、IoT 触发、通知、OpenAPI 回调和 BPM 时限准入已接通，手工启停与自然过期写入持久审计。F020 首批提供字段/动作权限、子表编辑校验、管理员默认列表、受控数据源连接管理，以及 Unicode 最小/最大长度、线性时间正则和提示；服务端查询、新增、更新、删除、导入/导出使用同一权限和校验。下一动作进入 J020 表单事件与函数，再继续 W020 和 U020。A03/A04 未通过，A08/A09/A10 待 Planner 验收；功能数/P/正式基线保持既有授权值。任务自有 Java/PG/Redis 已清理；用户 Redis 服务未动。
+保护：Web `vite.config.ts` 在途改动不提交；不清库、不改迁移历史、不传播秘密；只停止本轮自有且身份明确的进程。
 
-以下保留 0.1.9 及更早时点的交接历史，不代表当前任务和版本。
+以下保留 0.2.0 及更早时点的交接历史，不代表当前任务和版本。
 
 当前活动任务（2026-10-21）：README 首例“多部门灾备演练”业务验收 PASSED（`product/readme-first-example-acceptance/receipts/planning-review-20261021-passed.md`），功能 COMPLETED 已落盘（功能 49 不变、本轮新增 0、P 核销空、正式基线更新集合为空）。当前软件发布为 **0.1.9**；**UAT 当前运行 0.1.9 第七次覆盖后的正式制品（Web `index-DDQRXD9F.js`；Server `74716dd`）**。终态与发布后同步已执行并交回：回执 `product/readme-first-example-acceptance/receipts/terminal-sync-019-01.md`；当前唯一下一动作＝Planner 复核该回执，确认第 3、6 阶段并确认第 7 阶段结束。总 7 阶段：4 已完成、2 进行中（待规划复核）、1 未开始。收尾回读结论（tag/Release/资产/UAT/迁移/分支清理/预约 2112002084486819842 到点结果）见 `knowledge/current-status.md` 顶部 2026-10-21 条目与 `search_fallback/readme-first-example-closeout-facts-019.md`。
 
