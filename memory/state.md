@@ -4,9 +4,9 @@
 
 ## 活动交付
 
-0.2.2（Owner 已确认版本号），`PLANNING`。两个 L 级功能先后推进：F1 Agent AI 供应商管理（一张表；OpenAI Chat、OpenAI Responses、Anthropic 三种格式；兼容任意供应商；单例＋模板装配）先做，F2 应用导入导出（表单、流程、审批意见表单整包；同 key 时作为新应用导入并重新生成 key）随后。范围草稿 `product/0.2.2/ready/direction-022-scope-draft.md`。
+0.2.2（Owner 已确认版本号），`PLANNING`。F1 Agent 完善（XL：供应商+模型+graph 统一管理、graph+RAG、改用 LangChain4j、OpenAI Chat/Responses/Anthropic 三格式、单例＋模板装配）先做；F2 应用导入导出（L，同 key 作为新应用导入并重新生成 key）随后。范围草稿 `product/0.2.2/ready/direction-022-scope-draft.md`。第一轮探索已回（`search_fallback/v030-agent-provider-and-app-bundle-seams.md`：现为 Spring AI 1.0.4、无供应商维度、无单例）。真实验证用 Command Code，密钥不落文件。
 
-唯一下一动作：Executor 执行探索 `search_task/v030-agent-provider-and-app-bundle-seams.md`，回执写到 `search_fallback/` 同名文件；规划据此写 F1 正式方向。
+唯一下一动作：Executor 执行第二轮探索 `search_task/v022-agent-graph-rag-and-bundle-defs.md`；规划据此写 F1 正式方向与决策记录。
 
 0.2.1 已 `COMPLETED`（`product/0.2.1-bugfix/receipts/planning-final-review-021-completed.md`）。
 

@@ -2,8 +2,8 @@
 
 2026-11-03｜Planner｜本机初始化 `READY 1.3.3`，Codex 与 ZCode 均已验证。
 
-当前活动交付：0.2.2（F1 Agent AI 供应商管理 → F2 应用导入导出），需求评估中，范围草稿 `product/0.2.2/ready/direction-022-scope-draft.md`。0.2.1 缺陷修复列车已 `COMPLETED` 并发布（七阶段 7/0/0）；0.2.0 已完成并发布（Server `39dcedb7` / Web `f5ec5a1`），历史验收锁定。
+当前活动交付：0.2.2（F1 Agent 完善 XL → F2 应用导入导出 L），需求评估中，范围草稿 `product/0.2.2/ready/direction-022-scope-draft.md`。0.2.1 缺陷修复列车已 `COMPLETED` 并发布（七阶段 7/0/0）；0.2.0 已完成并发布（Server `39dcedb7` / Web `f5ec5a1`），历史验收锁定。
 
-唯一下一动作：Executor 执行探索 `search_task/v030-agent-provider-and-app-bundle-seams.md`。
+唯一下一动作：Executor 执行探索 `search_task/v022-agent-graph-rag-and-bundle-defs.md`。
 
 阅读顺序：`state.md` → `handoff.md` → `features.md`，其余按需。
