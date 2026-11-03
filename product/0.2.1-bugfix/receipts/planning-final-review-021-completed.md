@@ -28,3 +28,9 @@
 ## 后续
 
 当前入口仍写 `PASSED（待规划复核）`。Executor 按 `product/0.2.1-bugfix/ready/direction-final-propagation-021.md` 把 `COMPLETED` 传播到 knowledge 及受影响入口，并回读上面的 CI 与 latest 结果。传播完成后无活动交付，等待 Owner 安排下一目标。
+
+## 终态传播复核（2026-11-03）
+
+`final-propagation-021-01.md`（根仓 `6ea8dc59`、`25fea2ff`）复核通过：knowledge、`version.json`、memory 四份与 Server 功能清单均为 `COMPLETED`、7/0/0、无活动交付，当前段无旧状态残留；memory 13,179 B。Server 文档 CI `41613030060` attempt 2 成功，两仓 `releases/latest` 已回读为语义 Release `0.2.1`。传播方向已归档 `passed/`，`ready/` 清空。
+
+Server 传播提交 `22cf6c36` 的文档 CI `41631061977` 在回执时仍在运行，只含文档，不影响 0.2.1 tag 与制品；成功后若生成 build Release 接替 latest，属 GitHub 徽标显示，不重开本交付。0.2.1 交付结束，等待 Owner 安排下一目标。
