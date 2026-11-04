@@ -44,3 +44,9 @@
 28. G4-C 登录链 · GET /auth/challenge + POST /auth/login · demo_c_hq_1（同名重建临时库 smart_workflow_f2_g4，Flyway 25 迁移 → v0.2.6）· 200 token · 会话；server_g4_r2.log
 29. G4-C 预检 · POST /form/app/manage/bundle/preview · demo_c_hq_1 · 200：dict_lead_source 同编码复用 / dict_cust_level 缺失新建 / 数据源·查询·角色·分类（销售管理×2）命中 / 仅 FIXED_USER 置空 · **f2-g4-preview.png**
 30. G4-C 确认导入 · POST /form/app/manage/bundle/confirm · demo_c_hq_1 · 200 报告：顶部「字典 新建 1 · 复用 1」+ 字典区（缺失新建 dict_cust_level 客户等级·2 项 / 同编码复用 dict_lead_source）同框 · **f2-g4-report.png**；DB sw_form_app_import_record 1f609bde report_json 四字段与 f2-import-report-sample-v2.json 完全一致（appId 2d0d689a）
+
+## 第 5 轮（0.2.2 第 3 阶段整版回归冒烟，2026-11-05）
+
+31. 冒烟登录 · GET /auth/challenge + POST /auth/login · admin（默认租户，本地库 smart_workflow_f1v4b Flyway 0.2.5→v0.2.6）· 200 token · 会话；server_f1v4b_close.log（本机）
+32. 冒烟 F1 · graph 单步调试执行（rag-openrouter-graph v2：单步→继续）· admin · 已完成 trace 4：知识检索成功（3 段文档+相似度）→LLM 调用成功（235/66 token、33.86s）→真实输出；快照版本 v2 · close-022-f1-graph-execution.png
+33. 冒烟 F2 · GET /form/app/manage/bundle/{id}/export + POST preview + POST confirm · admin · 导出 837B 包→预检（同名后缀提示+USER 置空）→导入成功报告（「1 表单 · 字典 新建 0 · 复用 0」双口径）· close-022-f2-import-preview.png、close-022-f2-import-report.png
