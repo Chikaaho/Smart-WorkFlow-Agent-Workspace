@@ -10,7 +10,9 @@ F1 正式方向 `product/0.2.2/ready/direction-022-f1-agent.md`（XL 三阶段�
 
 F1 阶段 1 **已通过**（第 3 次审查 `product/0.2.2/receipts/planning-review-f1-stage1-03.md`，账本 revision 3 FINISH；Server `12001c4f` / Web `df2200e`）。带入阶段 2：供应商停用的模型在列表与 LLM 节点中需显示为不可用；`RecoveryDrillPostgresTest` 本机跳过，合并阶段 CI 需跑通。
 
-唯一下一动作：Executor 按方向文件阶段 2（graph 完善）执行，并带上审查第 3 次“带入阶段 2 的事项”，回执 `f1-stage2-1.md`。
+F1 阶段 2 第 1 次审查 `VERIFYING`（`product/0.2.2/receipts/planning-review-f1-stage2-01.md`，账本 revision 4）：快照、真实工具调用、超时、两级选择、供应商停用显示通过锁定；剩 G1 执行详情 LLM 节点输入输出为空与 Invalid Date、G2 工作台 6 入口证据、G3 调试快照版本证据。Owner 已让真实 Key 密文保留在本地验证库 `smart_workflow_f1v4b`。
+
+唯一下一动作：Executor 按 `product/0.2.2/receipts/planning-execution-prompt-f1-stage2-01.md` 处理，回执 `f1-stage2-2.md`。
 
 0.2.1 已 `COMPLETED`（`product/0.2.1-bugfix/receipts/planning-final-review-021-completed.md`）。
 
@@ -22,4 +24,4 @@ F1 阶段 1 **已通过**（第 3 次审查 `product/0.2.2/receipts/planning-rev
 
 ## 进度
 
-0.2.2 总 7 阶段：已完成 0，进行中 2（需求评估：F2 待写；执行：F1 阶段 1 已过，阶段 2 待执行），未开始 5（验收与同步、合并、发布、发布后同步、结束）。
+0.2.2 总 7 阶段：已完成 0，进行中 2（需求评估：F2 待写；执行：F1 阶段 1 已过，阶段 2 验收中），未开始 5（验收与同步、合并、发布、发布后同步、结束）。
