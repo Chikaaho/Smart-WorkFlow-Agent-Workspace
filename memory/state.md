@@ -10,9 +10,9 @@ F1 正式方向 `product/0.2.2/ready/direction-022-f1-agent.md`（XL 三阶段�
 
 F1 阶段 1 **已通过**（第 3 次审查 `product/0.2.2/receipts/planning-review-f1-stage1-03.md`，账本 revision 3 FINISH；Server `12001c4f` / Web `df2200e`）。带入阶段 2：供应商停用的模型在列表与 LLM 节点中需显示为不可用；`RecoveryDrillPostgresTest` 本机跳过，合并阶段 CI 需跑通。
 
-F1 阶段 2 第 2 次审查 `VERIFYING`（`product/0.2.2/receipts/planning-review-f1-stage2-02.md`，账本 revision 5）：快照、真实工具调用、超时、两级选择、供应商停用显示、节点卡片、工作台入口、调试快照版本均通过锁定；剩新发现的 G4 总 Token 被拼接成字符串（728+104 显示 728104）。Owner 已让真实 Key 密文保留在本地验证库 `smart_workflow_f1v4b`。
+F1 阶段 2 **已通过**（第 3 次审查 `product/0.2.2/receipts/planning-review-f1-stage2-03.md`，账本 revision 6 FINISH；Server `6aa674d9` / Web `10c5f50`）。Owner 已让真实 Key 密文保留在本地验证库 `smart_workflow_f1v4b`。带入阶段 3：Embedding 来源核实、本地与 UAT pgvector 核实（UAT 只报告）、知识库占位页换真实页、新数值字段按数值处理。
 
-唯一下一动作：Executor 按 `product/0.2.2/receipts/planning-execution-prompt-f1-stage2-02.md` 处理，回执 `f1-stage2-3.md`。
+唯一下一动作：Executor 按方向文件阶段 3（RAG）执行，并带上第 3 次审查“带入阶段 3 的事项”，回执 `f1-stage3-1.md`。
 
 0.2.1 已 `COMPLETED`（`product/0.2.1-bugfix/receipts/planning-final-review-021-completed.md`）。
 
@@ -24,4 +24,4 @@ F1 阶段 2 第 2 次审查 `VERIFYING`（`product/0.2.2/receipts/planning-revie
 
 ## 进度
 
-0.2.2 总 7 阶段：已完成 0，进行中 2（需求评估：F2 待写；执行：F1 阶段 1 已过，阶段 2 验收中），未开始 5（验收与同步、合并、发布、发布后同步、结束）。
+0.2.2 总 7 阶段：已完成 0，进行中 2（需求评估：F2 待写；执行：F1 阶段 1、2 已过，阶段 3 待执行），未开始 5（验收与同步、合并、发布、发布后同步、结束）。
