@@ -30,7 +30,7 @@ F1、F2 已通过验收项全部锁定；整版回归不重做各项断言，只
 
 ## 8. 未完成内容
 
-**前置依赖：7 例 sw-bootstrap 门禁失败的处置（规划裁决：本版修/延期/口径改法——与第 4 阶段「种子压缩」要求联动）。** 之后：第 4 阶段合并（bundle→develop→版本收敛 0.2.2/发布配置→main；CI 实跑 `ApplicationCenterRecoveryDrillPostgresTest`）、第 5 阶段发布与 UAT（pgvector 先装后升级）、第 6 阶段发布后同步（`receipts/release-sync-022-01.md`）。
+**前置依赖：7 例 sw-bootstrap 门禁失败——规划已裁定本版修（`planning-review-close-022-01.md`）：只改 4 个测试类，终点断言取类路径上最新的版本化迁移，全工程 `mvn test` exit=0。** 之后：第 4 阶段合并（bundle→develop→版本收敛 0.2.2/发布配置→main；CI 实跑 `ApplicationCenterRecoveryDrillPostgresTest`）、第 5 阶段发布与 UAT（pgvector 先装后升级）、第 6 阶段发布后同步（`receipts/release-sync-022-01.md`）。
 
 ## 9. 已知风险
 
@@ -38,7 +38,7 @@ CI build-release.yml 断言 develop 默认版本 `0.2.1-SNAPSHOT`，版本收敛
 
 ## 10. 唯一下一动作
 
-Executor 按方向连续推进第 4—6 阶段；第 7 阶段规划复核归档后 `COMPLETED`。
+Executor 按 `product/0.2.2/receipts/planning-execution-prompt-close-022-01.md` 修测并全量重跑（回执 `close-sync-022-02.md`），随后连续推进第 4—6 阶段；第 7 阶段规划复核归档后 `COMPLETED`。
 
 ## 11. 下一轮完成标准
 
