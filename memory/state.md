@@ -8,7 +8,9 @@
 
 F1 正式方向 `product/0.2.2/ready/direction-022-f1-agent.md`（XL 三阶段：模型接入基座 → graph 完善 → RAG），决策记录 `product/0.2.2/decision-records-022.md`。两轮探索回执均已读。
 
-唯一下一动作：Executor 建立两仓 `feature/0.2.2-agent`，开始 F1 阶段 1（先验证 LangChain4j 依赖兼容）。
+F1 阶段 1 首轮审查 `VERIFYING`（`product/0.2.2/receipts/planning-review-f1-stage1-01.md`）：三格式连通、三 LLM 节点 graph、错密钥、热生效四项锁定；旧数据迁移、前端两级管理、门禁、启用校验、轮换覆盖、Spring AI 移除六项缺证据。
+
+唯一下一动作：Executor 按 `product/0.2.2/receipts/planning-execution-prompt-f1-stage1-01.md` 补齐，回执 `f1-stage1-3.md`。
 
 0.2.1 已 `COMPLETED`（`product/0.2.1-bugfix/receipts/planning-final-review-021-completed.md`）。
 
@@ -20,4 +22,4 @@ F1 正式方向 `product/0.2.2/ready/direction-022-f1-agent.md`（XL 三阶段�
 
 ## 进度
 
-0.2.2 总 7 阶段：已完成 0，进行中 1（需求评估：F1 已下发，F2 待写），未开始 6（执行、验收与同步、合并、发布、发布后同步、结束）。
+0.2.2 总 7 阶段：已完成 0，进行中 2（需求评估：F2 待写；执行：F1 阶段 1 验收中），未开始 5（验收与同步、合并、发布、发布后同步、结束）。
