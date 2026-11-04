@@ -31,3 +31,10 @@
 21. G2-C 确认导入 · POST /form/app/manage/bundle/confirm · demo_c_hq_1 · 200 报告（1 字典新建+1 契约落库+仅 FIXED_USER 置空） · f2-g2-import-report.png；g2_report.json（sw_form_app_import_record）
 22. G2-C 零补配发布 · POST /form/def/{id}/publish ×3（线索/客户档案/商机）· demo_c_hq_1 · 200 全 PUBLISHED v2（发布日志 Datasource bindings validated）· DB sw_form_def；server_g2.log
 23. G2-C 字典下拉 · 新建记录页渲染 + GET 字典项（dict_lead_source → 目标预置项）· demo_c_hq_1 · 下拉展开=广告投放/自然流入（目标租户项，非包内展会/转介绍） · f2-g2-dict-dropdown.png
+
+## 第 3 轮（F2-G4，2026-11-05）
+
+24. G4-C 登录链 · GET /auth/challenge + POST /auth/login · demo_c_hq_1（目标库 smart_workflow_f2_g4，Flyway 25 迁移 → v0.2.6）· 200 token（UI 登录，验证码固定 1234）· 会话；server_g4.log
+25. G4-C 预检 · POST /form/app/manage/bundle/preview · demo_c_hq_1 · 200：dict_lead_source 同编码复用 / dict_cust_level 缺失新建 / 数据源·角色·分类（销售管理×2 流程）命中 / 仅 FIXED_USER 置空 · DOM 快照（会话记录）；页面截图未产出（IAB 渲染面故障，见 f2-03 回执如实报告）
+26. G4-C 确认导入 · POST /form/app/manage/bundle/confirm · demo_c_hq_1 · 200 报告：createdDictTypes=[dict_cust_level/客户等级/2 项]、reusedDictTypes=[dict_lead_source]、matchedCategories=[销售管理]×1（两流程命中去重后单条）、clearedRefs=[FIXED_USER] · f2-import-report-sample-v2.json；DB sw_form_app_import_record 4a6e9f66 report_json 与下载文件逐字段零差异；appId 0723d403
+27. G4-C 下载报告 · 页面「下载报告」Blob（URL.createObjectURL 页内拦截取原文）· demo_c_hq_1 · 与页面报告展示内容一致（字典区：新建 dict_cust_level 客户等级·2 项 / 复用 dict_lead_source 线索来源） · f2-import-report-sample-v2.json（3012B）

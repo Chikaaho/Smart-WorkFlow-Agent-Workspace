@@ -1,0 +1,129 @@
+{
+  "packageName": "CRM 客户管理",
+  "importedAt": "2026-11-05T00:56:07.369780",
+  "operatorName": "demo_c_hq_1",
+  "appId": "0723d403-7461-4496-9e03-b424556f8e70",
+  "appName": "CRM 客户管理",
+  "createdDirs": [
+    {
+      "oldId": "397648c0-0f60-4264-b450-1c09f8444e00",
+      "newId": "bcd5b004-34b2-4ea9-9a7c-f81b8cdd1299",
+      "name": "客户目录"
+    },
+    {
+      "oldId": "65e6cef5-72f4-4eac-bdfc-06dadd28f155",
+      "newId": "ec28ed97-59b2-4fa8-83af-22604fa32f16",
+      "name": "商机目录"
+    }
+  ],
+  "createdForms": [
+    {
+      "oldKey": "lead_form",
+      "newKey": "lead_form",
+      "oldId": "8b6056d2-2de4-409d-b9b9-cd392ea06553",
+      "newId": "6d4edfd7-6423-43d0-9491-4ab0c0753d2d",
+      "name": "线索"
+    },
+    {
+      "oldKey": "opp_form",
+      "newKey": "opp_form",
+      "oldId": "00375019-1c4e-4b7c-8c52-2e6c1a1738c9",
+      "newId": "8ab178e8-2c22-416c-a7ff-00ff52d1ce90",
+      "name": "商机"
+    },
+    {
+      "oldKey": "cust_form",
+      "newKey": "cust_form",
+      "oldId": "83312116-53ce-4a45-928c-351fc37e5950",
+      "newId": "63992628-7b1b-4be9-bfd8-9b00551d8f3f",
+      "name": "客户档案"
+    }
+  ],
+  "createdOpinionForms": [
+    {
+      "oldKey": "op_form",
+      "newKey": "op_form",
+      "oldId": "95a4b21f-f50e-406c-bbf7-4f200ab14b0c",
+      "newId": "569efdb1-2338-4662-a014-08f4264e4435",
+      "name": "审批意见"
+    }
+  ],
+  "createdProcesses": [
+    {
+      "name": "线索审批流程",
+      "oldProcessKey": "bpm_cea793f493414d1f",
+      "newProcessKey": "bpm_a1750bed904a455e",
+      "newDefId": "2118024503752769537",
+      "formKey": "lead_form"
+    },
+    {
+      "name": "商机审批流程",
+      "oldProcessKey": "bpm_5288edf839ca49e2",
+      "newProcessKey": "bpm_7f7fe2e5266c4c61",
+      "newDefId": "2118024503752769538",
+      "formKey": "opp_form"
+    }
+  ],
+  "createdTxnActions": [
+    {
+      "formKey": "lead_form",
+      "actionKey": "reserve_stock",
+      "name": "预占库存",
+      "newActionId": "1f152017-b8bf-4727-835f-327154905fec"
+    }
+  ],
+  "createdExtQueries": [
+    {
+      "formKey": "lead_form",
+      "oldQueryKey": "crm_city_list",
+      "newQueryKey": "crm_city_list",
+      "queryVersion": 1,
+      "datasourceName": "crm_shared_pg",
+      "datasourceId": "980201"
+    }
+  ],
+  "createdDictTypes": [
+    {
+      "code": "dict_cust_level",
+      "name": "客户等级",
+      "itemCount": 2
+    }
+  ],
+  "reusedDictTypes": [
+    {
+      "value": "dict_lead_source",
+      "name": "线索来源"
+    }
+  ],
+  "matchedDatasources": [
+    {
+      "value": "crm_shared_pg",
+      "name": "crm_shared_pg",
+      "id": "980201"
+    }
+  ],
+  "matchedRoles": [
+    {
+      "value": "demo_admin",
+      "name": "demo_admin"
+    }
+  ],
+  "matchedPosts": [],
+  "matchedCategories": [
+    {
+      "value": "销售管理",
+      "name": "销售管理",
+      "id": "980301"
+    }
+  ],
+  "regeneratedFormKeys": [],
+  "regeneratedQueryKeys": [],
+  "finalAppName": "CRM 客户管理",
+  "clearedRefs": [
+    {
+      "kind": "FIXED_USER",
+      "originalValue": "91103",
+      "location": "流程 线索审批流程 · 节点 初审 · 参与人（指定用户）"
+    }
+  ]
+}
