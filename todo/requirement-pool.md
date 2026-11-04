@@ -6,7 +6,7 @@ Owner 确认 0.1.10 已交付；按其指示只读核对远端 main，Web `2df67
 
 ## 0.2.2 当前活动（2026-11-03）
 
-0.2.2 进行中：F1 Agent 完善（XL，`product/0.2.2/ready/direction-022-f1-agent.md`）→ F2 应用导入导出（L，详情 `todo/application-bundle-import-export.md`，F1 验收后立项）。按决策 D022-08 不进本版的 Agent 候选：graph 异步执行、流式输出、执行取消、人工节点、子图节点、Gemini 等其他 API 格式、多模态，待后续排期。
+0.2.2 进行中：F1 Agent 完善（XL，`product/0.2.2/ready/direction-022-f1-agent.md`）→ F2 应用导入导出（L，详情 `todo/application-bundle-import-export.md`，F1 验收后立项）。按决策 D022-08 不进本版的 Agent 候选：graph 异步执行、流式输出、执行取消、人工节点、子图节点、Gemini 等其他 API 格式、多模态，待后续排期。F1 已三阶段通过（2026-11-04）。验收时另记一个候选：知识库向量列不带维度，所以没法建 pgvector 近似索引（HNSW/IVFFlat），数据量变大后要按模型维度分列或分区建索引（`product/0.2.2/receipts/planning-review-f1-stage3-02.md`）。
 
 ## 0.2.0 UI 与文案目标（文案原登记 2026-10-20）
 

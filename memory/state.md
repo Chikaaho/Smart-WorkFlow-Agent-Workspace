@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-2026-11-03｜Planner｜`READY 1.3.3`。
+2026-11-04｜Planner｜`READY 1.3.3`。
 
 ## 活动交付
 
@@ -10,11 +10,13 @@ F1 正式方向 `product/0.2.2/ready/direction-022-f1-agent.md`（XL 三阶段�
 
 F1 阶段 1 **已通过**（第 3 次审查 `product/0.2.2/receipts/planning-review-f1-stage1-03.md`，账本 revision 3 FINISH；Server `12001c4f` / Web `df2200e`）。带入阶段 2：供应商停用的模型在列表与 LLM 节点中需显示为不可用；`RecoveryDrillPostgresTest` 本机跳过，合并阶段 CI 需跑通。
 
-F1 阶段 2 **已通过**（第 3 次审查 `product/0.2.2/receipts/planning-review-f1-stage2-03.md`，账本 revision 6 FINISH；Server `6aa674d9` / Web `10c5f50`）。Owner 已让真实 Key 密文保留在本地验证库 `smart_workflow_f1v4b`。F1 阶段 3 第 1 次审查 `VERIFYING`（`product/0.2.2/receipts/planning-review-f1-stage3-01.md`，账本 revision 7）：租户隔离、删除、检索节点轨迹、门禁通过锁定；剩 G1 真实 Embedding 多文档检索与 RAG、G2 PDF/Word 页面上传、G3 pgvector 维度并存与“先升级后装扩展”部署顺序、G4 空状态文案。Owner 决定 D022-09：真实 Embedding 用 OpenRouter（Key Owner 交执行），UAT pgvector 发布部署时安装。
+F1 阶段 2 **已通过**（第 3 次审查 `product/0.2.2/receipts/planning-review-f1-stage2-03.md`，账本 revision 6 FINISH；Server `6aa674d9` / Web `10c5f50`）。Owner 已让真实 Key 密文（Command Code、OpenRouter）保留在本地验证库 `smart_workflow_f1v4b`；UAT 由 Owner 在页面自行录入，不从本地库迁移。
 
-发布阶段待办：UAT 部署前装 pgvector 并按 G3 顺序升级、回读；`RecoveryDrillPostgresTest` CI 跑通。
+F1 阶段 3 **已通过**（第 2 次审查 `product/0.2.2/receipts/planning-review-f1-stage3-02.md`，账本 revision 8 FINISH；Server `897983e0` / Web `c83a479`）。D022-09：真实 Embedding 用 OpenRouter `openai/text-embedding-3-small`。**F1 三阶段全部完成**，等 F2 完成后一起进入整版验收（按三阶段锁定项回归）。
 
-唯一下一动作：Executor 按 `product/0.2.2/receipts/planning-execution-prompt-f1-stage3-01.md` 处理，回执 `f1-stage3-2.md`。
+后续阶段待办：合并阶段 `ApplicationCenterRecoveryDrillPostgresTest` CI 跑通；发布阶段 UAT 先装 pgvector 再升级（顺序反了就装完后重启），按 `f1-stage3-2.md` 第三节的 SQL 回读，装不了由 Owner 决定是否延期 RAG。
+
+唯一下一动作：规划写 F2 应用导入导出方向（依据 `todo/application-bundle-import-export.md`、探索 `search_fallback/v022-agent-graph-rag-and-bundle-defs.md`），等 Owner 开口。
 
 0.2.1 已 `COMPLETED`（`product/0.2.1-bugfix/receipts/planning-final-review-021-completed.md`）。
 
@@ -26,4 +28,4 @@ F1 阶段 2 **已通过**（第 3 次审查 `product/0.2.2/receipts/planning-rev
 
 ## 进度
 
-0.2.2 总 7 阶段：已完成 0，进行中 2（需求评估：F2 待写；执行：F1 阶段 1、2 已过，阶段 3 验收中），未开始 5（验收与同步、合并、发布、发布后同步、结束）。
+0.2.2 总 7 阶段：已完成 0，进行中 2（需求评估：F2 待写；执行：F1 三阶段已过，F2 待立项），未开始 5（验收与同步、合并、发布、发布后同步、结束）。
