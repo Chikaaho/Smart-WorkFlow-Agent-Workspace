@@ -8,9 +8,9 @@
 
 F1 正式方向 `product/0.2.2/ready/direction-022-f1-agent.md`（XL 三阶段：模型接入基座 → graph 完善 → RAG），决策记录 `product/0.2.2/decision-records-022.md`。两轮探索回执均已读。
 
-F1 阶段 1 首轮审查 `VERIFYING`（`product/0.2.2/receipts/planning-review-f1-stage1-01.md`）：三格式连通、三 LLM 节点 graph、错密钥、热生效四项锁定；旧数据迁移、前端两级管理、门禁、启用校验、轮换覆盖、Spring AI 移除六项缺证据。
+F1 阶段 1 第 2 次审查仍 `VERIFYING`（`product/0.2.2/receipts/planning-review-f1-stage1-02.md`）：G1 旧数据迁移、G4 启用校验、G5 轮换、G6 Spring AI 移除通过锁定；剩 G2（鉴权失败弹窗标题误显“网络不可达”）、G3（sw-bootstrap 迁移测试未跑）。
 
-唯一下一动作：Executor 按 `product/0.2.2/receipts/planning-execution-prompt-f1-stage1-01.md` 补齐，回执 `f1-stage1-3.md`。
+唯一下一动作：Executor 按 `product/0.2.2/receipts/planning-execution-prompt-f1-stage1-02.md` 处理，回执 `f1-stage1-4.md`。
 
 0.2.1 已 `COMPLETED`（`product/0.2.1-bugfix/receipts/planning-final-review-021-completed.md`）。
 
