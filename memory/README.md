@@ -4,6 +4,6 @@
 
 当前活动交付：0.2.2（F1 Agent 完善 XL → F2 应用导入导出 L），需求评估中，范围草稿 `product/0.2.2/ready/direction-022-scope-draft.md`。0.2.1 缺陷修复列车已 `COMPLETED` 并发布（七阶段 7/0/0）；0.2.0 已完成并发布（Server `39dcedb7` / Web `f5ec5a1`），历史验收锁定。
 
-唯一下一动作：F1 三阶段已全部通过；Executor 按 `product/0.2.2/ready/direction-022-f2-app-bundle.md` 实施 F2 应用导入导出，回执 `f2-1.md`。
+唯一下一动作：F1 三阶段已全部通过；F2 第 1 次审查 VERIFYING，Executor 按 `product/0.2.2/receipts/planning-execution-prompt-f2-01.md` 补三项，回执 `f2-02.md`。
 
 阅读顺序：`state.md` → `handoff.md` → `features.md`，其余按需。
