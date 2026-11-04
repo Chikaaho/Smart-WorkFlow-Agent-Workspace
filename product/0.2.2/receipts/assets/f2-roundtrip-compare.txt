@@ -1,0 +1,21 @@
+F2 断言⑨ 往返一致对比（本机重跑工件）
+original=crm_bundle.json
+roundtrip=bundle_b2_fresh.json
+
+[EXPECTED] packageName value | original='CRM 客户管理' roundtrip='CRM 客户管理-导入2' | D022-11 应用重名自动后缀
+[EXPECTED] app.name value | original='CRM 客户管理' roundtrip='CRM 客户管理-导入2' | D022-11 应用重名自动后缀
+[EXPECTED] dictTypes len | original=2 roundtrip=0 | D022-13 编码被占用 OCCUPIED 不建（报告留痕）
+[EXPECTED] dictTypes[name:客户等级] only-in-original | original='+' roundtrip='-' | OCCUPIED 不建的字典类型
+[EXPECTED] dictTypes[name:线索来源] only-in-original | original='+' roundtrip='-' | OCCUPIED 不建的字典类型
+[EXPECTED] forms[客户档案].configDefinition.fields[name:level].dictType value | original='dict_cust_level' roundtrip=None | D022-13 DICT 字段级置空
+[EXPECTED] forms[线索].configDefinition.fields[name:city].dsBinding.queryKey value | original='crm_city_list' roundtrip=None | D022-13 数据源未命中绑定置空
+[EXPECTED] forms[线索].configDefinition.fields[name:city].dsBinding.version value | original=1 roundtrip=None | D022-13 数据源未命中绑定置空
+[EXPECTED] forms[线索].configDefinition.fields[name:source].dictType value | original='dict_lead_source' roundtrip=None | D022-13 DICT 字段级置空
+[EXPECTED] forms[线索].extQueries len | original=1 roundtrip=0 | D022-13 契约不落库（datasource_id NOT NULL）
+[EXPECTED] forms[线索].extQueries[item] only-in-original | original='+' roundtrip='-' | D022-13 契约不落库（datasource_id NOT NULL）
+[EXPECTED] processes[商机审批流程].categoryName value | original='销售管理' roundtrip=None | D022-13 流程分类未命中置空（目标环境无同名分类）
+[EXPECTED] processes[线索审批流程].categoryName value | original='销售管理' roundtrip=None | D022-13 流程分类未命中置空（目标环境无同名分类）
+[EXPECTED] processes[线索审批流程].graphJson.elements[id:node_approve1].config.nodeForm.formVersion value | original=None roundtrip=1 | 导出侧 enrichment：B 导出补 formVersion（第 1 轮同款设计内差异）
+[EXPECTED] processes[线索审批流程].graphJson.elements[id:node_approve1].config.participant.value value | original=['91103'] roundtrip=None | D022-13 指定用户置空（报告留痕）
+
+total_diffs=15 expected=15 unexpected=0

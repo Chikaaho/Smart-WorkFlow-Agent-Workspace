@@ -1,0 +1,123 @@
+{
+  "bundleFormatVersion" : 1,
+  "systemVersion" : "DEV",
+  "exportedAt" : "2026-11-04T23:41:43.352302400",
+  "packageName" : "CRM 客户管理",
+  "app" : {
+    "name" : "CRM 客户管理",
+    "icon" : "Briefcase",
+    "color" : "#409EFF",
+    "sortNo" : 1,
+    "visibleScopeType" : "ALL",
+    "status" : "ENABLED",
+    "scopes" : [ ]
+  },
+  "dirs" : [ {
+    "id" : "397648c0-0f60-4264-b450-1c09f8444e00",
+    "name" : "客户目录",
+    "sortNo" : 1
+  }, {
+    "id" : "65e6cef5-72f4-4eac-bdfc-06dadd28f155",
+    "name" : "商机目录",
+    "sortNo" : 2
+  } ],
+  "forms" : [ {
+    "id" : "8b6056d2-2de4-409d-b9b9-cd392ea06553",
+    "dirId" : "397648c0-0f60-4264-b450-1c09f8444e00",
+    "formKey" : "lead_form",
+    "name" : "线索",
+    "configDefinition" : "{\"title\": \"线索\", \"fields\": [{\"name\": \"name\", \"type\": \"TEXT\", \"label\": \"线索名称\", \"length\": 100, \"required\": true}, {\"name\": \"opp\", \"type\": \"REFERENCE\", \"label\": \"关联商机\", \"targetFormId\": \"opp_form\"}, {\"name\": \"source\", \"type\": \"DICT\", \"label\": \"线索来源\", \"dictType\": \"dict_lead_source\", \"renderAs\": \"select\"}, {\"name\": \"city\", \"type\": \"DATASOURCE\", \"label\": \"城市\", \"dsBinding\": {\"version\": 1, \"queryKey\": \"crm_city_list\", \"valueField\": \"v\", \"displayField\": \"display\"}}, {\"name\": \"product\", \"type\": \"TEXT\", \"label\": \"产品\", \"length\": 50}, {\"name\": \"qty\", \"type\": \"NUMBER\", \"label\": \"数量\"}, {\"name\": \"qty_reserved\", \"type\": \"NUMBER\", \"label\": \"已预占数量\"}]}",
+    "extQueries" : [ {
+      "datasourceName" : "crm_shared_pg",
+      "queryKey" : "crm_city_list",
+      "queryVersion" : 1,
+      "sqlText" : "SELECT * FROM (VALUES ('SH','上海'),('BJ','北京')) AS t(v, display)",
+      "outputFields" : "[{\"name\":\"v\",\"type\":\"STRING\"},{\"name\":\"display\",\"type\":\"STRING\"}]",
+      "enabled" : 1
+    } ],
+    "txnActions" : [ {
+      "id" : "32e48916-bd25-43d0-9419-0a597bc30065",
+      "actionKey" : "reserve_stock",
+      "name" : "预占库存",
+      "actionType" : "RESERVE",
+      "configJson" : "{\"keyFields\": [\"product\"], \"balanceField\": \"qty\", \"quantityScale\": 0, \"reservedField\": \"qty_reserved\", \"expiresInSeconds\": \"3600\", \"nonNegativeAvailable\": true}",
+      "description" : "F2 验收"
+    } ]
+  }, {
+    "id" : "00375019-1c4e-4b7c-8c52-2e6c1a1738c9",
+    "dirId" : "65e6cef5-72f4-4eac-bdfc-06dadd28f155",
+    "formKey" : "opp_form",
+    "name" : "商机",
+    "configDefinition" : "{\"title\": \"商机\", \"fields\": [{\"name\": \"title\", \"type\": \"TEXT\", \"label\": \"商机名称\", \"length\": 100, \"required\": true}, {\"name\": \"items\", \"type\": \"TABLE\", \"label\": \"明细\", \"subFields\": [{\"name\": \"product\", \"type\": \"TEXT\", \"label\": \"产品\", \"length\": 50}, {\"name\": \"qty\", \"type\": \"NUMBER\", \"label\": \"数量\"}]}]}",
+    "extQueries" : [ ],
+    "txnActions" : [ ]
+  }, {
+    "id" : "83312116-53ce-4a45-928c-351fc37e5950",
+    "dirId" : "397648c0-0f60-4264-b450-1c09f8444e00",
+    "formKey" : "cust_form",
+    "name" : "客户档案",
+    "configDefinition" : "{\"title\": \"客户档案\", \"fields\": [{\"name\": \"cname\", \"type\": \"TEXT\", \"label\": \"客户名称\", \"length\": 100, \"required\": true}, {\"name\": \"level\", \"type\": \"DICT\", \"label\": \"客户等级\", \"dictType\": \"dict_cust_level\", \"renderAs\": \"select\"}, {\"name\": \"signedAt\", \"type\": \"DATE\", \"label\": \"签约日期\"}]}",
+    "extQueries" : [ ],
+    "txnActions" : [ ]
+  } ],
+  "opinionForms" : [ {
+    "id" : "95a4b21f-f50e-406c-bbf7-4f200ab14b0c",
+    "formKey" : "op_form",
+    "name" : "审批意见",
+    "configDefinition" : "{\"title\": \"审批意见\", \"fields\": [{\"name\": \"op_text\", \"type\": \"TEXT\", \"label\": \"意见\", \"length\": 200, \"required\": true}]}"
+  } ],
+  "processes" : [ {
+    "processKey" : "bpm_cea793f493414d1f",
+    "name" : "线索审批流程",
+    "formKey" : "lead_form",
+    "themeRule" : "{YYYYMMDD}-{SEQ:3}",
+    "iotAccessEnabled" : false,
+    "categoryName" : "销售管理",
+    "graphJson" : "{\"processKey\":\"bpm_cea793f493414d1f\",\"name\":\"线索审批流程\",\"formKey\":\"lead_form\",\"version\":1,\"elements\":[{\"id\":\"node_start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{},\"style\":{\"x\":300,\"y\":60},\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"node_approve1\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"初审\",\"participant\":{\"strategy\":\"FIXED_USER\",\"value\":[\"91103\"]},\"nodeForm\":{\"formKey\":\"op_form\"},\"opinionForm\":{\"formId\":\"95a4b21f-f50e-406c-bbf7-4f200ab14b0c\",\"version\":1,\"fields\":[]}},\"style\":{\"x\":300,\"y\":170},\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"node_approve2\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"source\":null,\"target\":null,\"config\":{\"name\":\"复核\",\"participant\":{\"strategy\":\"ROLE\",\"value\":[\"demo_admin\"]}},\"style\":{\"x\":300,\"y\":280},\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"node_end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{},\"style\":{\"x\":300,\"y\":390},\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"e1\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_start\",\"target\":\"node_approve1\",\"config\":{},\"style\":{},\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"e2\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_approve1\",\"target\":\"node_approve2\",\"config\":{},\"style\":{},\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"e3\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_approve2\",\"target\":\"node_end\",\"config\":{},\"style\":{},\"x\":null,\"y\":null,\"waypoints\":null}],\"contractVersion\":2,\"canvas\":{\"zoom\":1},\"variables\":[],\"triggers\":[],\"notification\":{\"initiator\":true,\"approvers\":true,\"otherRecipientIds\":[],\"channels\":[\"IN_APP\"]}}"
+  }, {
+    "processKey" : "bpm_5288edf839ca49e2",
+    "name" : "商机审批流程",
+    "formKey" : "opp_form",
+    "themeRule" : "{YYYYMMDD}-{SEQ:3}",
+    "iotAccessEnabled" : false,
+    "categoryName" : "销售管理",
+    "graphJson" : "{\"processKey\":\"bpm_5288edf839ca49e2\",\"name\":\"商机审批流程\",\"formKey\":\"opp_form\",\"version\":1,\"elements\":[{\"id\":\"node_start\",\"kind\":\"node\",\"type\":\"START\",\"source\":null,\"target\":null,\"config\":{},\"style\":{\"x\":300,\"y\":60},\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"node_gate\",\"kind\":\"node\",\"type\":\"CONDITION\",\"source\":null,\"target\":null,\"config\":{\"name\":\"金额判断\"},\"style\":{\"x\":300,\"y\":170},\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"node_txn\",\"kind\":\"node\",\"type\":\"TXN_ACTION\",\"source\":null,\"target\":null,\"config\":{\"name\":\"预占库存\",\"actionId\":\"32e48916-bd25-43d0-9419-0a597bc30065\",\"recordIdSource\":\"instanceBusinessKey\"},\"style\":{\"x\":300,\"y\":290},\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"node_end\",\"kind\":\"node\",\"type\":\"END\",\"source\":null,\"target\":null,\"config\":{},\"style\":{\"x\":300,\"y\":400},\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"e1\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_start\",\"target\":\"node_gate\",\"config\":{},\"style\":{},\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"e2\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_gate\",\"target\":\"node_txn\",\"config\":{\"condition\":{\"expression\":\"form.title != ''\"},\"priority\":1},\"style\":{},\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"e3\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_txn\",\"target\":\"node_end\",\"config\":{},\"style\":{},\"x\":null,\"y\":null,\"waypoints\":null},{\"id\":\"e4\",\"kind\":\"edge\",\"type\":null,\"source\":\"node_gate\",\"target\":\"node_end\",\"config\":{\"default\":true},\"style\":{},\"x\":null,\"y\":null,\"waypoints\":null}],\"contractVersion\":2,\"canvas\":{\"zoom\":1},\"variables\":[],\"triggers\":[],\"notification\":{\"initiator\":true,\"approvers\":true,\"otherRecipientIds\":[],\"channels\":[\"IN_APP\"]}}"
+  } ],
+  "dictTypes" : [ {
+    "code" : "dict_lead_source",
+    "name" : "线索来源",
+    "status" : 0,
+    "description" : "F2 验收",
+    "items" : [ {
+      "label" : "展会",
+      "dictValue" : "EXPO",
+      "sort" : 1,
+      "status" : 0,
+      "isDefault" : 0
+    }, {
+      "label" : "转介绍",
+      "dictValue" : "REFERRAL",
+      "sort" : 2,
+      "status" : 0,
+      "isDefault" : 0
+    } ]
+  }, {
+    "code" : "dict_cust_level",
+    "name" : "客户等级",
+    "status" : 0,
+    "description" : "F2 验收",
+    "items" : [ {
+      "label" : "A级",
+      "dictValue" : "A",
+      "sort" : 1,
+      "status" : 0,
+      "isDefault" : 0
+    }, {
+      "label" : "B级",
+      "dictValue" : "B",
+      "sort" : 2,
+      "status" : 0,
+      "isDefault" : 0
+    } ]
+  } ]
+}

@@ -1,0 +1,882 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Smart-WorkFlow                                                     [pom]
+[INFO] Smart-WorkFlow :: Common                                           [jar]
+[INFO] Smart-WorkFlow :: Security                                         [jar]
+[INFO] Smart-WorkFlow :: Basic :: Storage :: API                          [jar]
+[INFO] Smart-WorkFlow :: Basic :: Storage :: Biz                          [jar]
+[INFO] Smart-WorkFlow :: Basic :: Notify :: API                           [jar]
+[INFO] Smart-WorkFlow :: Basic :: Notify :: Biz                           [jar]
+[INFO] Smart-WorkFlow :: Basic :: Job :: API                              [jar]
+[INFO] Smart-WorkFlow :: Basic :: Job :: Biz                              [jar]
+[INFO] Smart-WorkFlow :: Basic                                            [pom]
+[INFO] Smart-WorkFlow :: Basic :: IoT :: API                              [jar]
+[INFO] Smart-WorkFlow :: Basic :: IoT                                     [jar]
+[INFO] Smart-WorkFlow :: Basic :: Knowledge                               [jar]
+[INFO] Smart-WorkFlow :: Basic :: Agent                                   [jar]
+[INFO] Smart-WorkFlow :: Biz :: System :: API                             [jar]
+[INFO] Smart-WorkFlow :: Biz :: System :: Biz                             [jar]
+[INFO] Smart-WorkFlow :: Biz :: Form :: API                               [jar]
+[INFO] Smart-WorkFlow :: Biz :: Form :: Biz                               [jar]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: API                                [jar]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: Engine                             [jar]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: Process                            [jar]
+[INFO] Smart-WorkFlow :: Biz :: OpenAPI :: API                            [jar]
+[INFO] Smart-WorkFlow :: Biz :: OpenAPI :: Biz                            [jar]
+[INFO] Smart-WorkFlow :: Bootstrap                                        [jar]
+[INFO] 
+[INFO] ----------------------< com.sw.ck:smart-workflow >----------------------
+[INFO] Building Smart-WorkFlow 0.2.1-SNAPSHOT                            [1/24]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ smart-workflow ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ smart-workflow ---
+[INFO] Generating flattened POM of project com.sw.ck:smart-workflow:pom:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] ------------------------< com.sw.ck:sw-common >-------------------------
+[INFO] Building Smart-WorkFlow :: Common 0.2.1-SNAPSHOT                  [2/24]
+[INFO]   from sw-framework\sw-common\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-common ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-common ---
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-common ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-common:jar:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-common ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-common ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-framework\sw-common\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-common ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-common ---
+[INFO] 
+[INFO] -----------------------< com.sw.ck:sw-security >------------------------
+[INFO] Building Smart-WorkFlow :: Security 0.2.1-SNAPSHOT                [3/24]
+[INFO]   from sw-framework\sw-security\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-security ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-security ---
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-security ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-security:jar:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-security ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-security ---
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-security ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-security ---
+[INFO] 
+[INFO] -------------------< com.sw.ck:sw-basic-storage-api >-------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Storage :: API 0.2.1-SNAPSHOT [4/24]
+[INFO]   from sw-basic\sw-basic-storage\sw-basic-storage-api\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic-storage-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-basic-storage-api ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-storage\sw-basic-storage-api\src\main\resources
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-basic-storage-api ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic-storage-api:jar:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-basic-storage-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-basic-storage-api ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-storage\sw-basic-storage-api\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-basic-storage-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-basic-storage-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] -------------------< com.sw.ck:sw-basic-storage-biz >-------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Storage :: Biz 0.2.1-SNAPSHOT [5/24]
+[INFO]   from sw-basic\sw-basic-storage\sw-basic-storage-biz\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic-storage-biz ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-basic-storage-biz ---
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-basic-storage-biz ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic-storage-biz:jar:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-basic-storage-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-basic-storage-biz ---
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-basic-storage-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-basic-storage-biz ---
+[INFO] 
+[INFO] -------------------< com.sw.ck:sw-basic-notify-api >--------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Notify :: API 0.2.1-SNAPSHOT  [6/24]
+[INFO]   from sw-basic\sw-basic-notify\sw-basic-notify-api\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic-notify-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-basic-notify-api ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-notify\sw-basic-notify-api\src\main\resources
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-basic-notify-api ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic-notify-api:jar:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-basic-notify-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-basic-notify-api ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-notify\sw-basic-notify-api\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-basic-notify-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-basic-notify-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] -------------------< com.sw.ck:sw-basic-notify-biz >--------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Notify :: Biz 0.2.1-SNAPSHOT  [7/24]
+[INFO]   from sw-basic\sw-basic-notify\sw-basic-notify-biz\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic-notify-biz ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-basic-notify-biz ---
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-basic-notify-biz ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic-notify-biz:jar:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-basic-notify-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-basic-notify-biz ---
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-basic-notify-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-basic-notify-biz ---
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-basic-job-api >---------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Job :: API 0.2.1-SNAPSHOT     [8/24]
+[INFO]   from sw-basic\sw-basic-job\sw-basic-job-api\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic-job-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-basic-job-api ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-job\sw-basic-job-api\src\main\resources
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-basic-job-api ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic-job-api:jar:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-basic-job-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-basic-job-api ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-job\sw-basic-job-api\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-basic-job-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-basic-job-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-basic-job-biz >---------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Job :: Biz 0.2.1-SNAPSHOT     [9/24]
+[INFO]   from sw-basic\sw-basic-job\sw-basic-job-biz\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic-job-biz ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-basic-job-biz ---
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-basic-job-biz ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic-job-biz:jar:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-basic-job-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-basic-job-biz ---
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-basic-job-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-basic-job-biz ---
+[INFO] 
+[INFO] -------------------------< com.sw.ck:sw-basic >-------------------------
+[INFO] Building Smart-WorkFlow :: Basic 0.2.1-SNAPSHOT                  [10/24]
+[INFO]   from sw-basic\pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-basic ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic:pom:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-basic-iot-api >---------------------
+[INFO] Building Smart-WorkFlow :: Basic :: IoT :: API 0.2.1-SNAPSHOT    [11/24]
+[INFO]   from sw-basic\sw-basic-iot-api\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic-iot-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-basic-iot-api ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-iot-api\src\main\resources
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-basic-iot-api ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic-iot-api:jar:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-basic-iot-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-basic-iot-api ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-iot-api\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-basic-iot-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-basic-iot-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] -----------------------< com.sw.ck:sw-basic-iot >-----------------------
+[INFO] Building Smart-WorkFlow :: Basic :: IoT 0.2.1-SNAPSHOT           [12/24]
+[INFO]   from sw-basic\sw-basic-iot\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic-iot ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-basic-iot ---
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-basic-iot ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic-iot:jar:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-basic-iot ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- build-helper:3.6.1:add-test-source (add-dev-source-root-for-tests) @ sw-basic-iot ---
+[INFO] Test Source directory: E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-iot\src\dev\java added.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-basic-iot ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-iot\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-basic-iot ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-basic-iot ---
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-basic-knowledge >--------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Knowledge 0.2.1-SNAPSHOT     [13/24]
+[INFO]   from sw-basic\sw-basic-knowledge\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic-knowledge ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-basic-knowledge ---
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-basic-knowledge ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic-knowledge:jar:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-basic-knowledge ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-basic-knowledge ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-basic\sw-basic-knowledge\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-basic-knowledge ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-basic-knowledge ---
+[INFO] 
+[INFO] ----------------------< com.sw.ck:sw-basic-agent >----------------------
+[INFO] Building Smart-WorkFlow :: Basic :: Agent 0.2.1-SNAPSHOT         [14/24]
+[INFO]   from sw-basic\sw-basic-agent\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-basic-agent ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-basic-agent ---
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-basic-agent ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-basic-agent:jar:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-basic-agent ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-basic-agent ---
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-basic-agent ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-basic-agent ---
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-biz-system-api >---------------------
+[INFO] Building Smart-WorkFlow :: Biz :: System :: API 0.2.1-SNAPSHOT   [15/24]
+[INFO]   from sw-biz\sw-biz-system\sw-biz-system-api\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-biz-system-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-biz-system-api ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-biz\sw-biz-system\sw-biz-system-api\src\main\resources
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-biz-system-api ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-biz-system-api:jar:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-biz-system-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-biz-system-api ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-biz\sw-biz-system\sw-biz-system-api\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-biz-system-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-biz-system-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-biz-system-biz >---------------------
+[INFO] Building Smart-WorkFlow :: Biz :: System :: Biz 0.2.1-SNAPSHOT   [16/24]
+[INFO]   from sw-biz\sw-biz-system\sw-biz-system-biz\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-biz-system-biz ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-biz-system-biz ---
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-biz-system-biz ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-biz-system-biz:jar:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-biz-system-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-biz-system-biz ---
+[INFO] Copying 9 resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-biz-system-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-biz-system-biz ---
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-biz-form-api >----------------------
+[INFO] Building Smart-WorkFlow :: Biz :: Form :: API 0.2.1-SNAPSHOT     [17/24]
+[INFO]   from sw-biz\sw-biz-form\sw-biz-form-api\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-biz-form-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-biz-form-api ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-biz\sw-biz-form\sw-biz-form-api\src\main\resources
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-biz-form-api ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-biz-form-api:jar:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-biz-form-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-biz-form-api ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-biz\sw-biz-form\sw-biz-form-api\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-biz-form-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-biz-form-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] ---------------------< com.sw.ck:sw-biz-form-biz >----------------------
+[INFO] Building Smart-WorkFlow :: Biz :: Form :: Biz 0.2.1-SNAPSHOT     [18/24]
+[INFO]   from sw-biz\sw-biz-form\sw-biz-form-biz\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-biz-form-biz ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-biz-form-biz ---
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-biz-form-biz ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-biz-form-biz:jar:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-biz-form-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-biz-form-biz ---
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-biz-form-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-biz-form-biz ---
+[INFO] 
+[INFO] ------------------------< com.sw.ck:sw-bpm-api >------------------------
+[INFO] Building Smart-WorkFlow :: Biz :: BPM :: API 0.2.1-SNAPSHOT      [19/24]
+[INFO]   from sw-biz\sw-bpm\sw-bpm-api\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-bpm-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-bpm-api ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-biz\sw-bpm\sw-bpm-api\src\main\resources
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-bpm-api ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-bpm-api:jar:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-bpm-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-bpm-api ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-biz\sw-bpm\sw-bpm-api\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-bpm-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-bpm-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] ----------------------< com.sw.ck:sw-bpm-engine >-----------------------
+[INFO] Building Smart-WorkFlow :: Biz :: BPM :: Engine 0.2.1-SNAPSHOT   [20/24]
+[INFO]   from sw-biz\sw-bpm\sw-bpm-engine\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-bpm-engine ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-bpm-engine ---
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-bpm-engine ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-bpm-engine:jar:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-bpm-engine ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-bpm-engine ---
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-bpm-engine ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-bpm-engine ---
+[INFO] 
+[INFO] ----------------------< com.sw.ck:sw-bpm-process >----------------------
+[INFO] Building Smart-WorkFlow :: Biz :: BPM :: Process 0.2.1-SNAPSHOT  [21/24]
+[INFO]   from sw-biz\sw-bpm\sw-bpm-process\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-bpm-process ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-bpm-process ---
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-bpm-process ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-bpm-process:jar:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-bpm-process ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-bpm-process ---
+[INFO] Copying 33 resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-bpm-process ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-bpm-process ---
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-biz-openapi-api >--------------------
+[INFO] Building Smart-WorkFlow :: Biz :: OpenAPI :: API 0.2.1-SNAPSHOT  [22/24]
+[INFO]   from sw-biz\sw-biz-openapi\sw-biz-openapi-api\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-biz-openapi-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-biz-openapi-api ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-biz\sw-biz-openapi\sw-biz-openapi-api\src\main\resources
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-biz-openapi-api ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-biz-openapi-api:jar:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-biz-openapi-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-biz-openapi-api ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-biz\sw-biz-openapi\sw-biz-openapi-api\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-biz-openapi-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-biz-openapi-api ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --------------------< com.sw.ck:sw-biz-openapi-biz >--------------------
+[INFO] Building Smart-WorkFlow :: Biz :: OpenAPI :: Biz 0.2.1-SNAPSHOT  [23/24]
+[INFO]   from sw-biz\sw-biz-openapi\sw-biz-openapi-biz\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-biz-openapi-biz ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-biz-openapi-biz ---
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-biz-openapi-biz ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-biz-openapi-biz:jar:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-biz-openapi-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-biz-openapi-biz ---
+[INFO] skip non existing resourceDirectory E:\code\Smart-WorkFlow-Agent-Workspace\Smart-WorkFlow-aPaaS-server\sw-biz\sw-biz-openapi\sw-biz-openapi-biz\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-biz-openapi-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-biz-openapi-biz ---
+[INFO] 
+[INFO] -----------------------< com.sw.ck:sw-bootstrap >-----------------------
+[INFO] Building Smart-WorkFlow :: Bootstrap 0.2.1-SNAPSHOT              [24/24]
+[INFO]   from sw-bootstrap\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-dependency-convergence) @ sw-bootstrap ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ sw-bootstrap ---
+[INFO] Copying 123 resources
+[INFO] 
+[INFO] --- flatten:1.6.0:flatten (flatten) @ sw-bootstrap ---
+[INFO] Generating flattened POM of project com.sw.ck:sw-bootstrap:jar:0.2.1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sw-bootstrap ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ sw-bootstrap ---
+[INFO] Copying 23 resources
+[INFO] Copying 10 resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sw-bootstrap ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ sw-bootstrap ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.sw.ck.bootstrap.FlywayFullChainH2Test
+23:53:28.589 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:h2:mem:flyway_full_chain (H2 2.3)
+23:53:28.773 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Schema history table "PUBLIC"."flyway_schema_history" does not exist yet
+23:53:28.778 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 25 migrations (execution time 00:00.148s)
+23:53:28.792 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Creating Schema History table "PUBLIC"."flyway_schema_history" ...
+23:53:28.841 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Current version of schema "PUBLIC": << Empty Schema >>
+23:53:28.933 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "0.2.0 - baseline seed"
+23:53:29.277 [main] INFO org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor -- +---+
+| 1 |
++---+
+| 1 |
++---+
+
+23:53:29.380 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "0.2.2 - f1 agent provider model"
+23:53:29.390 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "0.2.3 - f1 stage2 graph snapshot"
+23:53:29.401 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "0.2.4 - f1 stage2 execution node detail"
+23:53:29.415 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "0.2.5 - f1 stage3 knowledge rag"
+23:53:29.421 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "0.2.6 - f2 app bundle"
+23:53:29.429 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "0.1.10 admin password"
+23:53:29.436 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "0.1.7 catalog menu first"
+23:53:29.447 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "0.1.7 org demo seed"
+23:53:29.489 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "0.2.0 approval opinion draft"
+23:53:29.494 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "0.2.0 ext datasource grant"
+23:53:29.499 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "0.2.0 form integration"
+23:53:29.507 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "0.2.1 workspace stat metric cards"
+23:53:29.515 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "application center menu"
+23:53:29.525 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "bf20261013 catalog admin menu"
+23:53:29.531 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "bf20261020 form data admin grants"
+23:53:29.536 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "i6 notify menu reconciliation"
+23:53:29.543 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "p62 form txn action menu"
+23:53:29.549 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "p62 iot command verify menu"
+23:53:29.554 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "p62 resource ops menu"
+23:53:29.560 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "p62 txn batch menu"
+23:53:29.564 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "p63 iot reservation menu"
+23:53:29.569 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "p64 approval form menu"
+23:53:29.576 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "p64 position delegate menu"
+23:53:29.580 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "u020 user group menu"
+23:53:29.587 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Successfully applied 25 migrations to schema "PUBLIC", now at version v0.2.6 (execution time 00:00.515s)
+23:53:29.939 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 25 migrations (execution time 00:00.063s)
+23:53:30.039 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:h2:mem:flyway_baseline_checksum (H2 2.3)
+23:53:30.102 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Schema history table "PUBLIC"."flyway_schema_history" does not exist yet
+23:53:30.102 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 25 migrations (execution time 00:00.062s)
+23:53:30.103 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Creating Schema History table "PUBLIC"."flyway_schema_history" ...
+23:53:30.106 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Current version of schema "PUBLIC": << Empty Schema >>
+23:53:30.165 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "0.2.0 - baseline seed"
+23:53:30.253 [main] INFO org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor -- +---+
+| 1 |
++---+
+| 1 |
++---+
+
+23:53:30.286 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "0.2.2 - f1 agent provider model"
+23:53:30.291 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "0.2.3 - f1 stage2 graph snapshot"
+23:53:30.299 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "0.2.4 - f1 stage2 execution node detail"
+23:53:30.306 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "0.2.5 - f1 stage3 knowledge rag"
+23:53:30.310 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" to version "0.2.6 - f2 app bundle"
+23:53:30.314 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "0.1.10 admin password"
+23:53:30.317 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "0.1.7 catalog menu first"
+23:53:30.329 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "0.1.7 org demo seed"
+23:53:30.338 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "0.2.0 approval opinion draft"
+23:53:30.341 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "0.2.0 ext datasource grant"
+23:53:30.344 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "0.2.0 form integration"
+23:53:30.350 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "0.2.1 workspace stat metric cards"
+23:53:30.354 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "application center menu"
+23:53:30.360 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "bf20261013 catalog admin menu"
+23:53:30.363 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "bf20261020 form data admin grants"
+23:53:30.367 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "i6 notify menu reconciliation"
+23:53:30.371 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "p62 form txn action menu"
+23:53:30.374 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "p62 iot command verify menu"
+23:53:30.378 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "p62 resource ops menu"
+23:53:30.382 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "p62 txn batch menu"
+23:53:30.387 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "p63 iot reservation menu"
+23:53:30.390 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "p64 approval form menu"
+23:53:30.394 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "p64 position delegate menu"
+23:53:30.398 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "PUBLIC" with repeatable migration "u020 user group menu"
+23:53:30.399 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Successfully applied 25 migrations to schema "PUBLIC", now at version v0.2.6 (execution time 00:00.140s)
+23:53:30.421 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:h2:mem:flyway_baseline_checksum (H2 2.3)
+[S3-production] H2 baseline menu=(218,batch-send,notify/views/NotifyBatchSend,notify:batch:send), button=(219,notify:batch:send), ordinaryRole=(id=2,code=admin,built_in=false) boundMenu=219, queryExit=0
+23:53:30.576 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 25 migrations (execution time 00:00.058s)
+23:53:30.577 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Current version of schema "PUBLIC": 0.2.6
+23:53:30.577 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Schema "PUBLIC" is up to date. No migration necessary.
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.017 s -- in com.sw.ck.bootstrap.FlywayFullChainH2Test
+[INFO] Running com.sw.ck.bootstrap.FlywayFullChainPostgresTest
+23:53:30.722 [main] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- Detected a Windows x86_64 system
+23:53:30.728 [main] INFO io.zonky.test.db.postgres.embedded.DefaultPostgresBinaryResolver -- Detected distribution: 'Unknown'
+23:53:30.733 [main] INFO io.zonky.test.db.postgres.embedded.DefaultPostgresBinaryResolver -- System specific postgres binaries found: 'postgres-windows-x86_64.txz'
+23:53:30.814 [main] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- Postgres binaries at C:\Users\hjxch\AppData\Local\Temp\embedded-pg\PG-b0e04f3b1360d64f4864e04c12984930
+23:53:31.071 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- The files belonging to this database system will be owned by user "hjxch".
+23:53:31.071 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- This user must also own the server process.
+23:53:31.071 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 
+23:53:31.072 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- The database cluster will be initialized with locale "Chinese (Simplified)_China.936".
+23:53:31.072 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- initdb: could not find suitable text search configuration for locale "Chinese (Simplified)_China.936"
+23:53:31.072 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- The default text search configuration will be set to "simple".
+23:53:31.072 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 
+23:53:31.072 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- Data page checksums are disabled.
+23:53:31.072 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 
+23:53:31.072 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- fixing permissions on existing directory C:/Users/hjxch/AppData/Local/Temp/epg12884859790928514886 ... ok
+23:53:31.081 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- creating subdirectories ... ok
+23:53:31.081 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- selecting dynamic shared memory implementation ... windows
+23:53:31.200 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- selecting default "max_connections" ... 100
+23:53:31.301 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- selecting default "shared_buffers" ... 128MB
+23:53:31.309 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- selecting default time zone ... Asia/Singapore
+23:53:31.315 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- creating configuration files ... ok
+23:53:31.925 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- running bootstrap script ... ok
+23:53:33.363 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- performing post-bootstrap initialization ... ok
+23:53:33.845 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- syncing data to disk ... ok
+23:53:33.845 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 
+23:53:33.845 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- Success. You can now start the database server using:
+23:53:33.845 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 
+23:53:33.845 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres --     ^"C^:^\Users^\hjxch^\AppData^\Local^\Temp^\embedded^-pg^\PG^-b0e04f3b1360d64f4864e04c12984930^\bin^\pg^_ctl^" -D ^"C^:^\Users^\hjxch^\AppData^\Local^\Temp^\epg12884859790928514886^" -l logfile start
+23:53:33.845 [initdb:pid(27668)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 
+23:53:33.853 [main] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- b2b0e383-b21a-4af2-90cc-eb8d33f89a09 initdb completed in 00:00:03.029
+23:53:33.896 [main] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- b2b0e383-b21a-4af2-90cc-eb8d33f89a09 postmaster started as Process[pid=24716, exitValue="not exited"] on port 50603.  Waiting up to PT10S for server startup to finish.
+23:53:34.285 [postgres:pid(24716)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- waiting for server to start....2026-11-04 23:53:34.285 +08 [29808] ��־:  �������� PostgreSQL 17.5 on x86_64-windows, compiled by msvc-19.43.34808, 64-bit
+23:53:34.292 [postgres:pid(24716)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-11-04 23:53:34.292 +08 [29808] ��־:  ���ڼ���IPv4��ַ"127.0.0.1"���˿� 50603
+23:53:34.292 [postgres:pid(24716)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-11-04 23:53:34.293 +08 [29808] ��־:  ���ڼ���IPv6��ַ"::1"���˿� 50603
+23:53:34.531 [postgres:pid(24716)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-11-04 23:53:34.531 +08 [29184] ��־:  ���ݿ��ϴιر�ʱ��Ϊ 2026-11-04 23:53:33 +08
+23:53:34.621 [postgres:pid(24716)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-11-04 23:53:34.621 +08 [33932] ��������:  ���ݿ�ϵͳ������
+23:53:34.657 [postgres:pid(24716)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-11-04 23:53:34.657 +08 [29808] ��־:  ���ݿ�ϵͳ׼����������
+23:53:34.682 [postgres:pid(24716)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres --  done
+23:53:34.682 [postgres:pid(24716)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- server started
+23:53:34.994 [main] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- b2b0e383-b21a-4af2-90cc-eb8d33f89a09 postmaster startup finished in 00:00:01.134
+23:53:35.152 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:postgresql://localhost:50603/postgres?user=postgres (PostgreSQL 17.5)
+23:53:35.312 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Schema history table "public"."flyway_schema_history" does not exist yet
+23:53:35.314 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 25 migrations (execution time 00:00.147s)
+23:53:35.324 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Creating Schema History table "public"."flyway_schema_history" ...
+23:53:35.497 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Current version of schema "public": << Empty Schema >>
+23:53:35.583 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "0.2.0 - baseline seed"
+23:53:36.244 [main] WARN org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor -- DB: 关系 "sw_bpm_process_def" 的列 "iot_access_enabled" 已经存在，跳过 (SQL State: 42701 - Error Code: 0)
+23:53:36.588 [main] WARN org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor -- DB: 关系 "sw_bpm_process_def" 的列 "theme_rule" 已经存在，跳过 (SQL State: 42701 - Error Code: 0)
+23:53:36.589 [main] WARN org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor -- DB: 关系 "sw_bpm_instance" 的列 "theme" 已经存在，跳过 (SQL State: 42701 - Error Code: 0)
+23:53:36.589 [main] WARN org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor -- DB: 关系 "sw_bpm_theme_seq" 已经存在, 跳过 (SQL State: 42P07 - Error Code: 0)
+23:53:36.882 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "0.2.2 - f1 agent provider model"
+23:53:36.915 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "0.2.3 - f1 stage2 graph snapshot"
+23:53:36.957 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "0.2.4 - f1 stage2 execution node detail"
+23:53:36.964 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "0.2.5 - f1 stage3 knowledge rag"
+23:53:37.006 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "0.2.6 - f2 app bundle"
+23:53:37.033 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "0.1.10 admin password"
+23:53:37.040 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "0.1.7 catalog menu first"
+23:53:37.054 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "0.1.7 org demo seed"
+23:53:37.088 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "0.2.0 approval opinion draft"
+23:53:37.103 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "0.2.0 ext datasource grant"
+23:53:37.118 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "0.2.0 form integration"
+23:53:37.119 [main] WARN org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor -- DB: 关系 "sw_agent_tool_external" 已经存在, 跳过 (SQL State: 42P07 - Error Code: 0)
+23:53:37.119 [main] WARN org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor -- DB: 关系 "idx_sw_agent_tool_external_tenant_deleted" 已经存在, 跳过 (SQL State: 42P07 - Error Code: 0)
+23:53:37.126 [main] WARN org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor -- DB: 关系 "sw_form_integration_invocation" 的列 "request_hash" 已经存在，跳过 (SQL State: 42701 - Error Code: 0)
+23:53:37.138 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "0.2.1 workspace stat metric cards"
+23:53:37.150 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "application center menu"
+23:53:37.160 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "bf20261013 catalog admin menu"
+23:53:37.170 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "bf20261020 form data admin grants"
+23:53:37.177 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "i6 notify menu reconciliation"
+23:53:37.182 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "p62 form txn action menu"
+23:53:37.189 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "p62 iot command verify menu"
+23:53:37.196 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "p62 resource ops menu"
+23:53:37.203 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "p62 txn batch menu"
+23:53:37.208 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "p63 iot reservation menu"
+23:53:37.213 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "p64 approval form menu"
+23:53:37.218 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "p64 position delegate menu"
+23:53:37.225 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "u020 user group menu"
+23:53:37.230 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Successfully applied 25 migrations to schema "public", now at version v0.2.6 (execution time 00:01.473s)
+23:53:37.492 [postgres:pid(24716)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-11-04 23:53:37.493 +08 [36416] 错误:  重复键违反唯一约束"uk_sys_user_tenant_username"
+23:53:37.492 [postgres:pid(24716)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-11-04 23:53:37.493 +08 [36416] 详细信息:  键值"(tenant_id, username, deleted)=(0, pg_sem_h1, 1)" 已经存在
+23:53:37.492 [postgres:pid(24716)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-11-04 23:53:37.493 +08 [36416] 语句:  INSERT INTO sys_user (id, username, password, deleted, tenant_id) VALUES (900042, 'pg_sem_h1', 'x', 1, 0)
+23:53:37.655 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:postgresql://localhost:50603/postgres?user=postgres (PostgreSQL 17.5)
+23:53:37.724 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 25 migrations (execution time 00:00.062s)
+23:53:38.765 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:postgresql://localhost:50603/postgres?user=postgres (PostgreSQL 17.5)
+23:53:39.117 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:postgresql://localhost:50603/postgres?user=postgres (PostgreSQL 17.5)
+23:53:40.768 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:postgresql://localhost:50603/baseline_checksum_tampered?user=postgres (PostgreSQL 17.5)
+23:53:40.835 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Schema history table "public"."flyway_schema_history" does not exist yet
+23:53:40.835 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 25 migrations (execution time 00:00.060s)
+23:53:40.840 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Creating Schema History table "public"."flyway_schema_history" ...
+23:53:40.987 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Current version of schema "public": << Empty Schema >>
+23:53:41.042 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "0.2.0 - baseline seed"
+23:53:41.680 [main] WARN org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor -- DB: 关系 "sw_bpm_process_def" 的列 "iot_access_enabled" 已经存在，跳过 (SQL State: 42701 - Error Code: 0)
+23:53:42.025 [main] WARN org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor -- DB: 关系 "sw_bpm_process_def" 的列 "theme_rule" 已经存在，跳过 (SQL State: 42701 - Error Code: 0)
+23:53:42.026 [main] WARN org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor -- DB: 关系 "sw_bpm_instance" 的列 "theme" 已经存在，跳过 (SQL State: 42701 - Error Code: 0)
+23:53:42.026 [main] WARN org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor -- DB: 关系 "sw_bpm_theme_seq" 已经存在, 跳过 (SQL State: 42P07 - Error Code: 0)
+23:53:42.276 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "0.2.2 - f1 agent provider model"
+23:53:42.316 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "0.2.3 - f1 stage2 graph snapshot"
+23:53:42.363 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "0.2.4 - f1 stage2 execution node detail"
+23:53:42.371 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "0.2.5 - f1 stage3 knowledge rag"
+23:53:42.419 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "0.2.6 - f2 app bundle"
+23:53:42.441 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "0.1.10 admin password"
+23:53:42.449 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "0.1.7 catalog menu first"
+23:53:42.463 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "0.1.7 org demo seed"
+23:53:42.494 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "0.2.0 approval opinion draft"
+23:53:42.515 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "0.2.0 ext datasource grant"
+23:53:42.536 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "0.2.0 form integration"
+23:53:42.537 [main] WARN org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor -- DB: 关系 "sw_agent_tool_external" 已经存在, 跳过 (SQL State: 42P07 - Error Code: 0)
+23:53:42.538 [main] WARN org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor -- DB: 关系 "idx_sw_agent_tool_external_tenant_deleted" 已经存在, 跳过 (SQL State: 42P07 - Error Code: 0)
+23:53:42.554 [main] WARN org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor -- DB: 关系 "sw_form_integration_invocation" 的列 "request_hash" 已经存在，跳过 (SQL State: 42701 - Error Code: 0)
+23:53:42.567 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "0.2.1 workspace stat metric cards"
+23:53:42.580 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "application center menu"
+23:53:42.588 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "bf20261013 catalog admin menu"
+23:53:42.594 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "bf20261020 form data admin grants"
+23:53:42.600 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "i6 notify menu reconciliation"
+23:53:42.608 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "p62 form txn action menu"
+23:53:42.615 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "p62 iot command verify menu"
+23:53:42.620 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "p62 resource ops menu"
+23:53:42.626 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "p62 txn batch menu"
+23:53:42.630 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "p63 iot reservation menu"
+23:53:42.639 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "p64 approval form menu"
+23:53:42.645 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "p64 position delegate menu"
+23:53:42.650 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" with repeatable migration "u020 user group menu"
+23:53:42.656 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Successfully applied 25 migrations to schema "public", now at version v0.2.6 (execution time 00:01.432s)
+23:53:42.959 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:postgresql://localhost:50603/baseline_checksum_tampered?user=postgres (PostgreSQL 17.5)
+[S3-production] P62 txn menu=(9100,form:action:view,form/views/TxnActionList), buttons=(9101/9102/9103 manage/publish/invoke), ordinaryRoleBound=4, queryExit=0
+23:53:44.407 [postgres:pid(24716)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-11-04 23:53:44.407 +08 [39896] 错误:  重复键违反唯一约束"uk_sys_user_tenant_username"
+23:53:44.408 [postgres:pid(24716)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-11-04 23:53:44.407 +08 [39896] 详细信息:  键值"(tenant_id, username, deleted)=(0, pg_sem_u2, 0)" 已经存在
+23:53:44.408 [postgres:pid(24716)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-11-04 23:53:44.407 +08 [39896] 语句:  INSERT INTO sys_user (id, username, password, deleted, tenant_id) VALUES (900022, 'pg_sem_u2', 'x', 0, 0)
+23:53:44.569 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:postgresql://localhost:50603/postgres?user=postgres (PostgreSQL 17.5)
+23:53:44.640 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 25 migrations (execution time 00:00.065s)
+23:53:44.788 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Current version of schema "public": 0.2.6
+23:53:44.789 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Schema "public" is up to date. No migration necessary.
+23:53:44.958 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:postgresql://localhost:50603/postgres?user=postgres (PostgreSQL 17.5)
+[S3-production] PostgreSQL baseline menu=(218,batch-send,notify/views/NotifyBatchSend,notify:batch:send), button=(219,notify:batch:send), ordinaryRole=(id=2,code=admin,built_in=false) boundMenu=219, queryExit=0
+23:53:45.379 [postgres:pid(24716)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-11-04 23:53:45.379 +08 [29808] ��־:  ���յ����� (fast) ֹͣ����
+23:53:45.380 [postgres:pid(24716)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-11-04 23:53:45.380 +08 [29808] ��־:  �ж��κμ�������
+23:53:45.387 [postgres:pid(24716)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-11-04 23:53:45.387 +08 [29808] ��־:  ��̨�������� "logical replication launcher" (PID 27448) ���˳�, �˳����� 1
+23:53:45.389 [postgres:pid(24716)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-11-04 23:53:45.389 +08 [33996] ��־:  ���ڹر�
+23:53:45.390 [postgres:pid(24716)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-11-04 23:53:45.390 +08 [33996] ��־:  checkpoint starting: shutdown immediate
+23:53:45.502 [postgres:pid(24716)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-11-04 23:53:45.502 +08 [33996] ��־:  checkpoint complete: wrote 1820 buffers (11.1%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.072 s, sync=0.001 s, total=0.113 s; sync files=0, longest=0.000 s, average=0.000 s; distance=13397 kB, estimate=13397 kB; lsn=0/2287808, redo lsn=0/2287808
+23:53:45.527 [postgres:pid(24716)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- 2026-11-04 23:53:45.527 +08 [29808] ��־:  ���ݿ�ϵͳ�ѹر�
+23:53:45.604 [pg_ctl:pid(10584)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- waiting for server to shut down.... done
+23:53:45.604 [pg_ctl:pid(10584)] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- server stopped
+23:53:45.609 [main] INFO io.zonky.test.db.postgres.embedded.EmbeddedPostgres -- b2b0e383-b21a-4af2-90cc-eb8d33f89a09 shut down postmaster in 00:00:00.281
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.77 s -- in com.sw.ck.bootstrap.FlywayFullChainPostgresTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 33, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Smart-WorkFlow 0.2.1-SNAPSHOT:
+[INFO] 
+[INFO] Smart-WorkFlow ..................................... SUCCESS [  0.344 s]
+[INFO] Smart-WorkFlow :: Common ........................... SUCCESS [  1.094 s]
+[INFO] Smart-WorkFlow :: Security ......................... SUCCESS [  0.264 s]
+[INFO] Smart-WorkFlow :: Basic :: Storage :: API .......... SUCCESS [  0.139 s]
+[INFO] Smart-WorkFlow :: Basic :: Storage :: Biz .......... SUCCESS [  0.305 s]
+[INFO] Smart-WorkFlow :: Basic :: Notify :: API ........... SUCCESS [  0.135 s]
+[INFO] Smart-WorkFlow :: Basic :: Notify :: Biz ........... SUCCESS [  0.264 s]
+[INFO] Smart-WorkFlow :: Basic :: Job :: API .............. SUCCESS [  0.117 s]
+[INFO] Smart-WorkFlow :: Basic :: Job :: Biz .............. SUCCESS [  0.211 s]
+[INFO] Smart-WorkFlow :: Basic ............................ SUCCESS [  0.006 s]
+[INFO] Smart-WorkFlow :: Basic :: IoT :: API .............. SUCCESS [  0.019 s]
+[INFO] Smart-WorkFlow :: Basic :: IoT ..................... SUCCESS [  0.418 s]
+[INFO] Smart-WorkFlow :: Basic :: Knowledge ............... SUCCESS [  0.481 s]
+[INFO] Smart-WorkFlow :: Basic :: Agent ................... SUCCESS [  0.356 s]
+[INFO] Smart-WorkFlow :: Biz :: System :: API ............. SUCCESS [  0.122 s]
+[INFO] Smart-WorkFlow :: Biz :: System :: Biz ............. SUCCESS [  0.308 s]
+[INFO] Smart-WorkFlow :: Biz :: Form :: API ............... SUCCESS [  0.114 s]
+[INFO] Smart-WorkFlow :: Biz :: Form :: Biz ............... SUCCESS [  0.299 s]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: API ................ SUCCESS [  0.132 s]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: Engine ............. SUCCESS [  0.441 s]
+[INFO] Smart-WorkFlow :: Biz :: BPM :: Process ............ SUCCESS [  0.427 s]
+[INFO] Smart-WorkFlow :: Biz :: OpenAPI :: API ............ SUCCESS [  0.109 s]
+[INFO] Smart-WorkFlow :: Biz :: OpenAPI :: Biz ............ SUCCESS [  0.217 s]
+[INFO] Smart-WorkFlow :: Bootstrap ........................ SUCCESS [ 21.905 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  28.600 s
+[INFO] Finished at: 2026-11-04T23:53:47+08:00
+[INFO] ------------------------------------------------------------------------
