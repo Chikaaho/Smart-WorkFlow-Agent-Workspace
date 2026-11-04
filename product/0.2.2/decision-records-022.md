@@ -11,6 +11,7 @@
 | D022-05 | 已有的分组多密钥轮换（groupKey、429 锁定与冷却）保留，并覆盖图执行与调试路径 | 运行时 | 现只在编排入口生效；不得因迁移丢失该能力 |
 | D022-06 | graph 发布生成不可变版本快照，执行与调试绑定快照版本 | graph | 现发布覆盖同一行，历史执行无法回放 |
 | D022-07 | RAG 向量存储使用 PostgreSQL pgvector，按租户隔离；H2 环境用可替换的内存实现，只用于测试 | RAG | UAT 数据库能否安装 pgvector 扩展，需在发布前核实；装不了时交 Owner 决定，不得静默降级 |
+| D022-09 | 真实 Embedding 验证使用 OpenRouter（OpenAI 兼容 `/embeddings`），选便宜模型；UAT pgvector 在发布阶段部署时安装 | RAG 验证、发布 | 2026-11-04 Owner 指定。Command Code 无 Embeddings 接口（`f1-stage3-1.md` 三）；Key 由 Owner 交执行会话，只存本地库密文。OpenRouter 不可用时报告规划，不自行换供应商 |
 | D022-08 | 本版不做：graph 异步执行、流式输出、执行取消、人工节点、子图节点、Gemini 等其他格式、多模态 | 范围 | 控制 XL 体量；登记到需求池 |
 
 修改上述决策需 Owner 同意或规划基于新事实另立记录，不在执行中自行改变。
