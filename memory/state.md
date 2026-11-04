@@ -18,11 +18,11 @@ F1 阶段 3 **已通过**（第 2 次审查 `product/0.2.2/receipts/planning-rev
 
 F2 应用导入导出正式方向已下发：`product/0.2.2/ready/direction-022-f2-app-bundle.md`（L，决策 D022-10～15）。Owner 2026-11-04 定：跨环境只带定义；外部引用按编码匹配、匹配不上置空并列入报告；审批意见表单 key 冲突逐个提示用户改名（默认随机值，可手改）；导入后全部草稿。分支 `feature/0.2.2-bundle` 从 `feature/0.2.2-agent` 当前提交拉出。
 
-F2 第 2 次审查 `VERIFYING`（`product/0.2.2/receipts/planning-review-f2-02.md`，账本 revision 10；Server `feature/0.2.2-bundle` @ `ba5ee84c` / Web `741f2bc`）。G1～G3 锁定：冲突行内提示；跨环境主路径在独立目标库实测（字典复用与新建、数据源与分类按名称命中、零补配发布）；样例与日志入库。剩 F2-G4：导入报告缺新建字典类型清单、命中分类重复。
+F2 第 2 次审查 `VERIFYING`（`product/0.2.2/receipts/planning-review-f2-02.md`，账本 revision 10；Server `feature/0.2.2-bundle` @ `ba5ee84c` / Web `741f2bc`）。G1～G3 锁定：冲突行内提示；跨环境主路径在独立目标库实测（字典复用与新建、数据源与分类按名称命中、零补配发布）；样例与日志入库。F2 第 3 次审查 `VERIFYING`（`planning-review-f2-03.md`，revision 11；Server `d61dceca` / Web `fd8edf5`）：G4 报告数据锁定（新建字典清单、分类去重、下载文件与 DB 一致）；剩页面侧——顶部“N 字典”只计复用数需改口径，页面报告与预检截图缺失（应用内浏览器截图故障，可改用系统浏览器）。顶部计数是规划上轮漏项，已写自检。
 
 整版验收与同步待办：F1、F2 按锁定项回归；操作手册补应用导入导出说明（含“同名数据源需先给相关用户授权”）。
 
-唯一下一动作：Executor 按 `product/0.2.2/receipts/planning-execution-prompt-f2-02.md` 修 F2-G4，回执 `f2-03.md`。
+唯一下一动作：Executor 按 `product/0.2.2/receipts/planning-execution-prompt-f2-03.md` 改顶部字典计数并补两张截图，回执 `f2-04.md`。
 
 0.2.1 已 `COMPLETED`（`product/0.2.1-bugfix/receipts/planning-final-review-021-completed.md`）。
 
