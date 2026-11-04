@@ -18,9 +18,11 @@ F1 阶段 3 **已通过**（第 2 次审查 `product/0.2.2/receipts/planning-rev
 
 F2 应用导入导出正式方向已下发：`product/0.2.2/ready/direction-022-f2-app-bundle.md`（L，决策 D022-10～15）。Owner 2026-11-04 定：跨环境只带定义；外部引用按编码匹配、匹配不上置空并列入报告；审批意见表单 key 冲突逐个提示用户改名（默认随机值，可手改）；导入后全部草稿。分支 `feature/0.2.2-bundle` 从 `feature/0.2.2-agent` 当前提交拉出。
 
-F2 第 1 次审查 `VERIFYING`（`product/0.2.2/receipts/planning-review-f2-01.md`，账本 revision 9；Server `feature/0.2.2-bundle` @ `3f2066cf` / Web `d4d320e`）：九条断言的主链路锁定；剩 G1 意见表单冲突拒绝无页面提示、G2 跨环境主路径（字典复用/新建、数据源按名称命中）未走到、G3 导出包与报告样例及测试日志未入 assets。
+F2 第 2 次审查 `VERIFYING`（`product/0.2.2/receipts/planning-review-f2-02.md`，账本 revision 10；Server `feature/0.2.2-bundle` @ `ba5ee84c` / Web `741f2bc`）。G1～G3 锁定：冲突行内提示；跨环境主路径在独立目标库实测（字典复用与新建、数据源与分类按名称命中、零补配发布）；样例与日志入库。剩 F2-G4：导入报告缺新建字典类型清单、命中分类重复。
 
-唯一下一动作：Executor 按 `product/0.2.2/receipts/planning-execution-prompt-f2-01.md` 处理，回执 `f2-02.md`。
+整版验收与同步待办：F1、F2 按锁定项回归；操作手册补应用导入导出说明（含“同名数据源需先给相关用户授权”）。
+
+唯一下一动作：Executor 按 `product/0.2.2/receipts/planning-execution-prompt-f2-02.md` 修 F2-G4，回执 `f2-03.md`。
 
 0.2.1 已 `COMPLETED`（`product/0.2.1-bugfix/receipts/planning-final-review-021-completed.md`）。
 
@@ -32,4 +34,4 @@ F2 第 1 次审查 `VERIFYING`（`product/0.2.2/receipts/planning-review-f2-01.m
 
 ## 进度
 
-0.2.2 总 7 阶段：已完成 1（需求评估：F1、F2 方向均已下发），进行中 1（执行：F1 三阶段已过，F2 验收中），未开始 5（验收与同步、合并、发布、发布后同步、结束）。
+0.2.2 总 7 阶段：已完成 1（需求评估），进行中 1（执行：F1 已过，F2 剩报告一项），未开始 5（验收与同步、合并、发布、发布后同步、结束）。
