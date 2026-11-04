@@ -1,5 +1,7 @@
 # 0.2.2 范围草稿
 
+2026-11-05｜Planner：已通过并归档，F1 见 `../receipts/planning-review-f1-stage3-02.md`，F2 见 `../receipts/planning-review-f2-04.md`；后续阶段见 `../ready/direction-022-close-release.md`。下文保留为执行依据，不作为新任务。
+
 日期：2026-11-03。角色：规划。状态：`PLANNING`。F1 正式方向 `direction-022-f1-agent.md`（三阶段已通过）；F2 正式方向 `direction-022-f2-app-bundle.md`（2026-11-04 下发，决策 D022-10～15）。
 
 ## Owner 已定事项（2026-11-03）
