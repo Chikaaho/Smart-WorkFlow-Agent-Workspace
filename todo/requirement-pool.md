@@ -4,9 +4,9 @@
 
 Owner 确认 0.1.10 已交付；按其指示只读核对远端 main，Web `2df670b50`、Server `85e1ab784` 已有 0.1.10 版本同步。本机 main 与原摘要停在 0.1.9，新版探索确认 tag/Release 存在、knowledge 仍 0.1.9，部署/CI 结果仅见 Release 正文，见 [提交核对](../product/0.2.0/receipts/planning-main-history-20261022.md)。下文待办保留登记时点。已选 P2/P4 的真实差异矩阵已取得，承接 P60 I2/I3/I4 已过能力；新增契约与范围见正式方向，当前不核销编号。
 
-## 0.2.2 当前活动（2026-11-03）
+## 0.2.2 当前活动（2026-11-03；2026-11-05 更新：第 3 阶段完成）
 
-0.2.2 第 3 阶段（F1、F2 均已通过，整版方向 `product/0.2.2/ready/direction-022-close-release.md`）：F1 Agent 完善（XL，`product/0.2.2/passed/direction-022-f1-agent.md`）→ F2 应用导入导出（L，详情 `todo/application-bundle-import-export.md`，2026-11-04 已立项，方向 `product/0.2.2/passed/direction-022-f2-app-bundle.md`）。按决策 D022-08 不进本版的 Agent 候选：graph 异步执行、流式输出、执行取消、人工节点、子图节点、Gemini 等其他 API 格式、多模态，待后续排期。F1 已三阶段通过（2026-11-04）。验收时另记一个候选：知识库向量列不带维度，所以没法建 pgvector 近似索引（HNSW/IVFFlat），数据量变大后要按模型维度分列或分区建索引（`product/0.2.2/receipts/planning-review-f1-stage3-02.md`）。F2 验收另记两个候选（`product/0.2.2/receipts/planning-review-f2-01.md`）：应用导入预检补字段长度和必填校验，避免格式错误的包在确认时才报 500；排查其他页面下拉菜单里的 `v-perm` 是否同样不生效。
+0.2.2 第 3 阶段已完成（2026-11-05，回执 `product/0.2.2/receipts/close-sync-022-01.md`）：F1、F2 均通过，整版方向 `product/0.2.2/ready/direction-022-close-release.md`（revision 13 FINISH）；整版回归门禁（Server 全工程+Web 四项）与 f1v4b 冒烟（Flyway 0.2.5→v0.2.6、F1 graph 真实执行+快照 v2、F2 导出→导入→报告正常）完成，功能级 `PASSED`、功能数 49→50（D022-16 整版登记，`knowledge/features/0.2.2-integrated-release.md`）。主方向已归档：F1 `product/0.2.2/passed/direction-022-f1-agent.md`、F2 `product/0.2.2/passed/direction-022-f2-app-bundle.md`；F2 详情 `todo/application-bundle-import-export.md`（2026-11-04 已立项）。按决策 D022-08 不进本版的 Agent 候选：graph 异步执行、流式输出、执行取消、人工节点、子图节点、Gemini 等其他 API 格式、多模态，待后续排期。验收时另记候选：知识库向量列不带维度，没法建 pgvector 近似索引（HNSW/IVFFlat），数据量变大后要按模型维度分列或分区建索引（`product/0.2.2/receipts/planning-review-f1-stage3-02.md`）；应用导入预检补字段长度和必填校验，避免格式错误的包在确认时才报 500；排查其他页面下拉菜单里的 `v-perm` 是否同样不生效（F2 两候选见 `product/0.2.2/receipts/planning-review-f2-01.md`）。剩余阶段：合并→发布 0.2.2→发布后同步→结束。
 
 ## 0.2.0 UI 与文案目标（文案原登记 2026-10-20）
 
