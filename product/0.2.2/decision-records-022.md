@@ -1,6 +1,6 @@
 # 0.2.2 决策记录
 
-日期：2026-11-03。记录角色：规划。适用：F1 Agent 完善（XL）。依据：Owner 当日指令，探索回执 `search_fallback/v030-agent-provider-and-app-bundle-seams.md`、`search_fallback/v022-agent-graph-rag-and-bundle-defs.md`。
+日期：2026-11-03。记录角色：规划。适用：F1 Agent 完善（XL）；F2 应用导入导出（L）见文末分节。依据：Owner 当日指令，探索回执 `search_fallback/v030-agent-provider-and-app-bundle-seams.md`、`search_fallback/v022-agent-graph-rag-and-bundle-defs.md`。
 
 | 编号 | 决策 | 适用范围 | 理由与约束 |
 |---|---|---|---|
@@ -13,5 +13,18 @@
 | D022-07 | RAG 向量存储使用 PostgreSQL pgvector，按租户隔离；H2 环境用可替换的内存实现，只用于测试 | RAG | UAT 数据库能否安装 pgvector 扩展，需在发布前核实；装不了时交 Owner 决定，不得静默降级 |
 | D022-09 | 真实 Embedding 验证使用 OpenRouter（OpenAI 兼容 `/embeddings`），选便宜模型；UAT pgvector 在发布阶段部署时安装 | RAG 验证、发布 | 2026-11-04 Owner 指定。Command Code 无 Embeddings 接口（`f1-stage3-1.md` 三）；Key 由 Owner 交执行会话，只存本地库密文。OpenRouter 不可用时报告规划，不自行换供应商 |
 | D022-08 | 本版不做：graph 异步执行、流式输出、执行取消、人工节点、子图节点、Gemini 等其他格式、多模态 | 范围 | 控制 XL 体量；登记到需求池 |
+
+## F2 应用导入导出（2026-11-04）
+
+依据：Owner 当日回答、`todo/application-bundle-import-export.md`、探索附录 `search_fallback/v030-agent-provider-and-app-bundle-seams-appendix.md` B8～B13 与 `search_fallback/v022-agent-graph-rag-and-bundle-defs-appendix.md` F15～F17。
+
+| 编号 | 决策 | 适用范围 | 理由与约束 |
+|---|---|---|---|
+| D022-10 | 用途是跨环境、跨租户迁移应用；导出包只含定义，不含业务记录、子表数据和附件文件 | F2 范围 | Owner 指定。导入目标固定为操作人当前所在租户 |
+| D022-11 | 一个导出包对应一个应用，导入时一律新建应用，从不覆盖已有对象。应用重名时自动加后缀；业务表单 `form_key` 冲突时自动重新生成；包内引用（表单之间、流程与表单、流程与意见表单、流程与交易动作）全部按新 id、新 key 改写 | 冲突与重映射 | Owner 已定“同 key 作为新应用导入并重新生成 key” |
+| D022-12 | 审批意见表单 `form_key` 与目标租户冲突时，导入前逐个提示用户。每个冲突项默认给出一个随机的新 key，用户可以直接采用，也可以手动改；新 key 校验唯一后才能确认导入 | 审批意见表单 | Owner 指定。目标租户没有该 key 的，直接新建并关联 |
+| D022-13 | 外部引用按编码匹配：角色、岗位按编码；字典类型随包导出，目标租户已有同编码的就复用，没有就新建；外部数据源不带连接信息，按名称匹配；指定的用户、部门 id 置空；流程分类按名称匹配。匹配不上的引用置空，并在导入报告里逐条列出（对象、位置、原值） | 外部引用 | Owner 指定。字典编码的唯一约束不含租户，如果编码已被其他租户占用、无法新建，同样计入报告，不报错中断 |
+| D022-14 | 导入后表单和流程全部为草稿，由管理员逐个发布；物理表在发布时按现有规则生成 | 导入状态 | Owner 指定 |
+| D022-15 | 导入分两步：先上传预检，返回包信息、冲突清单和外部引用匹配结果；用户处理完意见表单冲突后再确认导入。确认导入在一个事务内完成，任何一步失败都整体回滚，不留下部分数据 | 导入流程 | 由 D022-12 推出；失败恢复采用整体回滚，不做断点续导 |
 
 修改上述决策需 Owner 同意或规划基于新事实另立记录，不在执行中自行改变。

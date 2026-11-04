@@ -16,7 +16,9 @@ F1 阶段 3 **已通过**（第 2 次审查 `product/0.2.2/receipts/planning-rev
 
 后续阶段待办：合并阶段 `ApplicationCenterRecoveryDrillPostgresTest` CI 跑通；发布阶段 UAT 先装 pgvector 再升级（顺序反了就装完后重启），按 `f1-stage3-2.md` 第三节的 SQL 回读，装不了由 Owner 决定是否延期 RAG。
 
-唯一下一动作：规划写 F2 应用导入导出方向（依据 `todo/application-bundle-import-export.md`、探索 `search_fallback/v022-agent-graph-rag-and-bundle-defs.md`），等 Owner 开口。
+F2 应用导入导出正式方向已下发：`product/0.2.2/ready/direction-022-f2-app-bundle.md`（L，决策 D022-10～15）。Owner 2026-11-04 定：跨环境只带定义；外部引用按编码匹配、匹配不上置空并列入报告；审批意见表单 key 冲突逐个提示用户改名（默认随机值，可手改）；导入后全部草稿。分支 `feature/0.2.2-bundle` 从 `feature/0.2.2-agent` 当前提交拉出。
+
+唯一下一动作：Executor 按 F2 方向建分支、列引用位置清单并实施，回执 `product/0.2.2/receipts/f2-1.md`。
 
 0.2.1 已 `COMPLETED`（`product/0.2.1-bugfix/receipts/planning-final-review-021-completed.md`）。
 
@@ -28,4 +30,4 @@ F1 阶段 3 **已通过**（第 2 次审查 `product/0.2.2/receipts/planning-rev
 
 ## 进度
 
-0.2.2 总 7 阶段：已完成 0，进行中 2（需求评估：F2 待写；执行：F1 三阶段已过，F2 待立项），未开始 5（验收与同步、合并、发布、发布后同步、结束）。
+0.2.2 总 7 阶段：已完成 1（需求评估：F1、F2 方向均已下发），进行中 1（执行：F1 三阶段已过，F2 待开始），未开始 5（验收与同步、合并、发布、发布后同步、结束）。

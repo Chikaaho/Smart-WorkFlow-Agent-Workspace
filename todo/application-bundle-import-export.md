@@ -1,6 +1,6 @@
 # 应用导入导出
 
-状态：待规划、待排期；目标版本待定；至少L级。Owner于2026-10-21明确要求加入需求池。来源：0.1.10修复清单BF0110-09及 `product/0.1.10-bugfix/receipts/app-bundle-io-blocked-01.md`。
+状态：已立项，纳入 0.2.2 作为 F2（L），正式方向 `product/0.2.2/ready/direction-022-f2-app-bundle.md`，下文“立项前须确定的边界”已由决策 D022-10～15 回答（2026-11-04）。Owner于2026-10-21明确要求加入需求池。来源：0.1.10修复清单BF0110-09及 `product/0.1.10-bugfix/receipts/app-bundle-io-blocked-01.md`。
 
 ## 需求目标
 
