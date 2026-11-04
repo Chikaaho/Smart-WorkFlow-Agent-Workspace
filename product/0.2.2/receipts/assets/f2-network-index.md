@@ -38,3 +38,9 @@
 25. G4-C 预检 · POST /form/app/manage/bundle/preview · demo_c_hq_1 · 200：dict_lead_source 同编码复用 / dict_cust_level 缺失新建 / 数据源·角色·分类（销售管理×2 流程）命中 / 仅 FIXED_USER 置空 · DOM 快照（会话记录）；页面截图未产出（IAB 渲染面故障，见 f2-03 回执如实报告）
 26. G4-C 确认导入 · POST /form/app/manage/bundle/confirm · demo_c_hq_1 · 200 报告：createdDictTypes=[dict_cust_level/客户等级/2 项]、reusedDictTypes=[dict_lead_source]、matchedCategories=[销售管理]×1（两流程命中去重后单条）、clearedRefs=[FIXED_USER] · f2-import-report-sample-v2.json；DB sw_form_app_import_record 4a6e9f66 report_json 与下载文件逐字段零差异；appId 0723d403
 27. G4-C 下载报告 · 页面「下载报告」Blob（URL.createObjectURL 页内拦截取原文）· demo_c_hq_1 · 与页面报告展示内容一致（字典区：新建 dict_cust_level 客户等级·2 项 / 复用 dict_lead_source 线索来源） · f2-import-report-sample-v2.json（3012B）
+
+## 第 4 轮（F2-G4 返工：汇总行口径 + 截图，2026-11-05）
+
+28. G4-C 登录链 · GET /auth/challenge + POST /auth/login · demo_c_hq_1（同名重建临时库 smart_workflow_f2_g4，Flyway 25 迁移 → v0.2.6）· 200 token · 会话；server_g4_r2.log
+29. G4-C 预检 · POST /form/app/manage/bundle/preview · demo_c_hq_1 · 200：dict_lead_source 同编码复用 / dict_cust_level 缺失新建 / 数据源·查询·角色·分类（销售管理×2）命中 / 仅 FIXED_USER 置空 · **f2-g4-preview.png**
+30. G4-C 确认导入 · POST /form/app/manage/bundle/confirm · demo_c_hq_1 · 200 报告：顶部「字典 新建 1 · 复用 1」+ 字典区（缺失新建 dict_cust_level 客户等级·2 项 / 同编码复用 dict_lead_source）同框 · **f2-g4-report.png**；DB sw_form_app_import_record 1f609bde report_json 四字段与 f2-import-report-sample-v2.json 完全一致（appId 2d0d689a）
