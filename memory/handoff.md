@@ -6,47 +6,50 @@
 
 ## 2. 功能目标
 
-F1、F2 验收通过后，完成整版回归、操作说明与状态同步，随后合并、发布 0.2.2、发布后同步。
+F1、F2 验收通过后，完成整版回归、操作说明与状态同步，随后合并、发布 0.2.2、发布后同步。当前目标已全部执行完毕，待规划第 7 阶段终态复核。
 
 ## 3. 当前状态
 
-功能级 `PASSED`（第 3 阶段同步完成，2026-11-05，回执 `product/0.2.2/receipts/close-sync-022-01.md`）。总 7 阶段：已完成 3，未开始 4（合并、发布、发布后同步、结束）。方向 `product/0.2.2/ready/direction-022-close-release.md`（revision 13，FINISH）。
+功能级 `PASSED`；第 4—6 阶段已完成（2026-11-05）。总 7 阶段：已完成 6，未开始 1（结束/规划复核）。方向 `product/0.2.2/ready/direction-022-close-release.md`（revision 13，FINISH）。
 
 ## 4. 已完成内容
 
-门禁：Web 四项绿（日志 `receipts/assets/close-022-gates-web.log`）；Server 全工程 compile 绿、test exit=1——**7 例 sw-bootstrap 测试侧确定性失败（回归上报，待规划处置）**：P62NonEmptyUpgradePgTest×3＋P64×2 断言写死基线终点 0.2.0（F1/F2 追加 0.2.2～0.2.6 迁移后过期）、F1ProviderModelMigrationPostgresTest×2 PG boolean 列按 int 读取（自 F1 起 PG 上从未绿、0.2.1 后无 CI 全量未暴露）；其余模块同轮全绿；产品迁移链经 f1v4b 0.2.5→v0.2.6 冒烟证明正常（日志 `receipts/assets/close-022-gates-server.log`）。冒烟：F1 已发布 graph 执行真实输出+快照 v2；F2 导出→导入预检→确认→报告正常（截图 `receipts/assets/close-022-*.png`）。操作说明：Web 仓 `docs/user-guide/operation-manual.md` 增「应用导入导出」节。同步：knowledge 权威状态/功能注册/索引（49→50）、memory、requirement-pool 均更新。
+- 第 3 阶段：整版回归（Web 四项绿；Server 7 例测试侧失败经 C022-G1 修复后全绿）、f1v4b 冒烟、操作说明、knowledge/memory 同步；回执 `close-sync-022-01/02/03.md`。
+- 第 4 阶段：C022-G2 菜单断言返工（升级前 id 全保留/无重复/总数=升级前+动态新增，`d3138a03`）；Server feature→develop `2b9482e1`→main `0bf4c938`，Web `a2f8859`→develop `c9f09f4`→main `3bcd7c2`；CI 四跑全绿（三次成功跑 2351/0/0/33，drill 1/1 Skipped 0、P62 gate 2/2）；feature 分支双仓删除。回执 `close-sync-022-04.md`。
+- 第 5 阶段：两仓 tag `0.2.2`＋语义 Release（Server 资产 `bootstrap-0.2.2.jar` 220,778,675 B sha256 `c13eccd8…`；Web `sw-web-dist-0.2.2.zip` 6,191,084 B sha256 `aa8d5832…`；`build-<sha>` 保留）；UAT 清理 69,881 文件/3.58 GB、health 恢复 UP；DB clean dump 661,324 B/178 表并恢复演练；pgvector 0.8.7 先启用；UAT 升级后启动 173.794s、ERROR 0、health UP、Flyway v0.2.6、`embedding` vector、页面 200（入口 `assets/index-D6vkuidr.js`）。回执 `release-sync-022-01.md`。
+- 第 6 阶段：knowledge（current-status/feature/handoff）、memory 四件、两仓 README、`docs/ops/production-ops.md` 0.2.2 记录已同步。
 
 ## 5. 实际工程结果
 
-回归起点：Server `feature/0.2.2-bundle` @ `d61dceca`、Web @ `c8a2eb1`。迁移终点 V0.2.6（f1v4b 实测）。功能数 50、清单 46/22/22＝90、ADV64/问题57、P 编号不核销、基线新增 []。
+正式/部署/DB 版本均 0.2.2；开发版本 Server `0.2.2-SNAPSHOT`、Web `0.2.2`；迁移终点 V0.2.6（UAT 与 f1v4b 实测）。功能数 50、清单 46/22/22＝90、ADV64/问题57、P 编号不核销、基线新增 []。UAT 换包后磁盘可用 2.2G。
 
 ## 6. 验收规则
 
-F1、F2 已通过验收项全部锁定；整版回归不重做各项断言，只确认合并前同一提交上功能合跑正常。
+F1、F2 已通过验收项全部锁定；第 3 阶段断言不重验；第 4—6 阶段以回执事实与回读为准。
 
 ## 7. 当前系统基线
 
-0.2.1 已发布并部署 UAT（正式/部署版本 0.2.1；开发版本 Server `0.2.1-SNAPSHOT`、Web `0.2.1`）。0.2.2 未合并未发布；本地 `smart_workflow_f1v4b` 已升 v0.2.6（保留不清库）。
+UAT 运行 0.2.2（后端 `build.version=0.2.2`、前端 `index-D6vkuidr.js`），health UP，pgvector 0.8.7；本地 `smart_workflow_f1v4b` 保留不清库（v0.2.6）。任一 Key 未进入文件/提交/回执/日志。
 
 ## 8. 未完成内容
 
-**前置依赖：7 例 sw-bootstrap 门禁失败——规划已裁定本版修（`planning-review-close-022-01.md`）：只改 4 个测试类，终点断言取类路径上最新的版本化迁移，全工程 `mvn test` exit=0。** 之后：第 4 阶段合并（bundle→develop→版本收敛 0.2.2/发布配置→main；CI 实跑 `ApplicationCenterRecoveryDrillPostgresTest`）、第 5 阶段发布与 UAT（pgvector 先装后升级）、第 6 阶段发布后同步（`receipts/release-sync-022-01.md`）。
+第 7 阶段：Planner 复核 `close-sync-022-04.md`、`release-sync-022-01.md` 并做终态复核；通过后 0.2.2 `COMPLETED` 与方向归档。
 
 ## 9. 已知风险
 
-CI build-release.yml 断言 develop 默认版本 `0.2.1-SNAPSHOT`，版本收敛须同步改；UAT 系统盘历史满水位（发布前复核）；`vite.config.ts` 在途改动不得入提交；密钥不入文件/回执/截图，UAT 模型 Key 由 Owner 页面录入。
+UAT 剩余磁盘 2.2G（reasonix 近期会话仍在增长，需持续观察）；Owner 尚未录入供应商 Key，F1 的 Chat/Embedding 实际调用在页面配置前不可用；通知 Boot 测试族与 `P62CompatRollbackPgTest` 为已登记抖动（同提交 rerun 通过）。
 
 ## 10. 唯一下一动作
 
-Executor 按 `product/0.2.2/receipts/planning-execution-prompt-close-022-03.md` 修恢复演练菜单断言，随后连续推进第 4—6 阶段（UAT 清理已获 Owner 授权）；第 7 阶段规划复核归档后 `COMPLETED`。
+Planner 复核两份回执并执行第 7 阶段终态复核。
 
 ## 11. 下一轮完成标准
 
-两仓 main 携 0.2.2、tag/Release/CI/制品/部署版本回读一致、UAT health UP 且 Flyway 终点 V0.2.6、发布后同步回执覆盖完整，规划复核通过。
+两份回执事实一致、覆盖矩阵完整、UAT 回读无变化，规划终态复核通过。
 
 ## 12. 必须读取
 
-`system.md`、`roles/executor.md`、方向 `ready/direction-022-close-release.md`、`decision-records-022.md`、两份同步回执、两端工程宪法。
+`system.md`、`roles/executor.md`、方向 `ready/direction-022-close-release.md`、`decision-records-022.md`、两份本轮回执、两端工程宪法。
 
 ## 13. 常规决定
 

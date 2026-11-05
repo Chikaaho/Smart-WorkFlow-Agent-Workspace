@@ -1,10 +1,10 @@
 # 会话交接（session-handoff）— 当前压缩版
 
-## 当前续接：无活动交付（2026-11-03，0.2.1 已 COMPLETED）
+## 当前续接：0.2.2 整版交付第 6 阶段完成（2026-11-05，待规划第 7 阶段复核）
 
-0.2.1 缺陷修复列车 `COMPLETED`（规划终态复核 `product/0.2.1-bugfix/receipts/planning-final-review-021-completed.md`），七阶段 7/0/0；两份方向归档 `product/0.2.1-bugfix/passed/`。台账 B021-001～029 共 29 项 Owner 全部通过并冻结（根仓 `eb5fffb9`）。正式/部署版本 Server、Web 0.2.1（发布源 `5c33eab3`/`07568b57`）；开发版本 Server `0.2.1-SNAPSHOT`、Web `0.2.1`。回执：`close-sync-021-01.md`、`release-sync-021-01.md`、`final-propagation-021-01.md`。
+0.2.2（F1 Agent 完善＋F2 应用导入导出，D022-16 第 50 个正式功能）已完成合并→发布→发布后同步：Server develop `2b9482e1`／main `0bf4c938`（annotated tag `0.2.2`，语义 Release 资产 `bootstrap-0.2.2.jar` 220,778,675 B sha256 `c13eccd8…`，CI run `41967257752` a2 success）；Web develop `c9f09f4`／main `3bcd7c2`（tag `0.2.2`，`sw-web-dist-0.2.2.zip` 6,191,084 B sha256 `aa8d5832…`，run `41967357375` success）；feature 分支双仓已删除，`build-<sha>` 产物保留。正式/部署版本 0.2.2；开发版本 Server `0.2.2-SNAPSHOT`、Web `0.2.2`；DB 迁移终点 `V0.2.6`。UAT 已由 0.2.1 就地升级（启动 173.794s、启动段 ERROR 0、health UP、Flyway v0.2.6、pgvector 0.8.7 + `sw_knowledge_chunk.embedding` vector、HTTPS 页面 200，入口 `assets/index-D6vkuidr.js`）；磁盘按 Owner 授权清理 69,881 文件/3.58 GB，清理后可用 2.6G、换包后 2.2G。Owner 需在 `/agent/model` 页面自行录入 Chat/LLM 与 Embedding 供应商 Key（Executor 未迁移、未代录）。
 
-唯一下一动作：等待 Owner 安排下一目标。Server 文档 CI `41613030060` attempt 2 已 success；两仓 `releases/latest` 为语义 Release `0.2.1`。
+唯一下一动作：Planner 复核 `product/0.2.2/receipts/close-sync-022-04.md` 与 `release-sync-022-01.md`，执行第 7 阶段终态复核（通过后 0.2.2 `COMPLETED`）。
 
 以下保留 0.2.0 及更早时点的交接历史，不代表当前任务和版本。
 
