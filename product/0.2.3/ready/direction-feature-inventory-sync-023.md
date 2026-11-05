@@ -1,5 +1,7 @@
 # 0.2.3 已交付功能清单同步
 
+当前路由：本文件的唯一值和写入授权已纳入 `product/0.2.3/ready/direction-023-agent-execution-lifecycle.md` §3，作为实施前置动作，不再独立派发或等待单独审批。历史正文保留授权依据；计数已复核通过，剩余当前描述/Git收尾沿新方向连续完成。
+
 2026-11-05｜Planner｜READY。裁决：product/0.2.3/receipts/planning-review-inventory-023-02-passed.md。承接Owner更新已做功能清单要求，属于0.2.3需求评估中的文档状态纠正，不新增业务功能或发布链。
 
 ## 目标与唯一值

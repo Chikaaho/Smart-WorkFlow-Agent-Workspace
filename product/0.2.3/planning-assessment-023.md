@@ -1,12 +1,14 @@
 # 0.2.3 排期评估
 
+当前路由（2026-11-05）：评估已完成，正式方向 `product/0.2.3/ready/direction-023-agent-execution-lifecycle.md` 为唯一执行入口。清单同步残留与Git收尾归入其前置动作，既有探索结论复用。七阶段1/1/5：评估完成、实施已派发（无实现完成回执）、其余五阶段未开始。以下为前期评估记录，其中旧下一动作不再执行。
+
 2026-11-05｜Planner｜PLANNING。Owner 已指定安排 0.2.3；本轮完成需求池评估和首轮探索下发，正式实施方向待事实回传后形成。
 
 ## 基线与依据
 
 0.2.2 已 COMPLETED，七阶段 7/0/0，正式功能 50，清单 46/22/22＝90，ADV64/问题57，P 核销及正式基线保持。依据 memory/state.md、product/0.2.2/receipts/planning-final-review-022-completed.md、product/0.2.2/decision-records-022.md。这些是上一交付的已核实快照，本轮工程起点由执行探索复核。
 
-需求池的历史缺口不能直接当作当前实现状态：P29/P65 本版范围已随 0.2.0 交付；P18/P19 和 P15 与 0.2.2 已交付能力有重叠；P2/P4 等保留编号不代表功能从零开始。此轮不核销任何 P 编号。
+需求池的历史缺口不能直接当作当前实现状态：P29/P65 本版范围已随 0.2.0 交付；P18/P19 和 P15 与 0.2.2 已交付能力有重叠；P2/P4 等保留编号不代表功能从零开始。后续清单对账已核销P2/P4/P9/P15/P19/P29/P34/P47/P65；当前M59/18/13、ADV1/7/56、功能50，正式基线不变。
 
 ## 排期
 
@@ -35,8 +37,8 @@ P9 图节点多 Key 与 D022-05 已交付范围需对账，P20 SSE 与本轮流�
 
 首轮执行入口 `search_task/v023-agent-execution-lifecycle-assessment.md` 已完成，回执 `search_fallback/v023-agent-execution-lifecycle-assessment.md` 已复核。审查见 `receipts/planning-review-assessment-023-01.md`。
 
-Owner补充要求更新功能清单。清单对账已裁决通过，见 `receipts/planning-review-inventory-023-02-passed.md`。授权M59/18/13、ADV1/7/56及9项P核销，功能50保持；Executor 已完成落盘，待 Planner 复核。当前唯一下一动作：Planner 复核 `receipts/feature-inventory-sync-023-01.md`；同步方向继续留在 `ready/`。先核对90正式明细、64高级明细和全部P，再由规划裁决唯一值并授权同步；之后继续正式业务方向。此对账不新增业务功能、不另走发布链。
-本轮规划交付完成条件：候选与限制已整理、探索问题及边界已落盘、memory 与需求池当前入口一致。下一动作由执行角色完成只读探索；规划依据回执下发正式主方向和一次列全的行为验收标准。
+Owner补充要求更新功能清单。清单对账已裁决通过，见 `receipts/planning-review-inventory-023-02-passed.md`。授权M59/18/13、ADV1/7/56及9项P核销，功能50保持；Executor 已完成落盘，待 Planner 复核。回执计数与核销值已复核，当前唯一下一动作：执行 `search_task/v023-inventory-sync-coverage-check.md`，核实权威侧当前描述与Git收尾；同步方向保留ready。覆盖复核后继续正式业务方向。此对账不新增业务功能、不另走发布链。
+本轮规划交付完成条件：候选与限制已整理、探索问题及边界已落盘、memory 与需求池当前入口一致。业务现状探索已完成；当前仅收口同步覆盖和Git事实，之后规划下发正式主方向和一次列全的行为验收标准。
 
 ## 七阶段进度
 

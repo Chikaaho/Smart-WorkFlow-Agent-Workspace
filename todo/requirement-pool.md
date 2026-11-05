@@ -1,8 +1,12 @@
 # 需求池（Requirement Pool）
 
-## 当前排期：0.2.3（2026-11-05）
+## 当前执行入口：0.2.3（2026-11-05）
 
-Owner 已要求安排 0.2.3，当前 PLANNING。主功能候选为 Agent graph 异步执行、流式输出和执行取消（XL），先核实生命周期与兼容边界，再下发正式方向。评估见 `product/0.2.3/planning-assessment-023.md`；首轮探索已回传并复核，见 `product/0.2.3/receipts/planning-review-assessment-023-01.md`。Owner要求更新已做功能清单；清单对账已裁决通过（`product/0.2.3/receipts/planning-review-inventory-023-02-passed.md`），已按裁决落盘 M59/18/13、ADV1/7/56，并核销 P2/P4/P9/P15/P19/P29/P34/P47/P65；P35保持部分。唯一下一动作：Planner 复核 `product/0.2.3/receipts/feature-inventory-sync-023-01.md`。
+正式方向已下发：`product/0.2.3/ready/direction-023-agent-execution-lifecycle.md`，这是唯一执行入口。Agent graph异步、流式、取消及恢复为主功能；清单描述和Git收尾纳入实施方案前置动作，旧search/同步入口不再单独派发。总7阶段1/1/5：评估完成，实施已派发（尚无实现完成回执），验收同步、合并、发布、发布后同步、结束未开始。已确认M59/18/13、ADV1/7/56和9项P核销保持。
+
+### 前期评估记录（以下路由已由上述正式方向接替）
+
+Owner 已要求安排 0.2.3，当前 PLANNING。主功能候选为 Agent graph 异步执行、流式输出和执行取消（XL），先核实生命周期与兼容边界，再下发正式方向。评估见 `product/0.2.3/planning-assessment-023.md`；首轮探索已回传并复核，见 `product/0.2.3/receipts/planning-review-assessment-023-01.md`。Owner要求更新已做功能清单；清单对账已裁决通过（`product/0.2.3/receipts/planning-review-inventory-023-02-passed.md`），已按裁决落盘 M59/18/13、ADV1/7/56，并核销 P2/P4/P9/P15/P19/P29/P34/P47/P65；P35保持部分。同步回执的计数与核销值已复核；唯一下一动作：执行 `search_task/v023-inventory-sync-coverage-check.md` 核对当前描述覆盖和Git收尾，见 `product/0.2.3/receipts/planning-review-inventory-sync-023-01.md`。
 
 后续队列：应用导入预检校验、v-perm 有效性核实、测试抖动隔离、pgvector 近似索引；人工节点/子图/其他 API 格式/多模态继续候选。若核实存在服务端越权，优先改排。P29/P65 已随 0.2.0 交付本版范围，不重复排期；P18/P19/P15 等历史条目须与 0.2.2 对账。P62 性能和真实外部渠道保留 Owner 延期。
 

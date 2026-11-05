@@ -2,7 +2,7 @@
 
 2026-11-05｜Planner｜`READY 1.3.4`。
 
-- 0.2.3：`PLANNING`，七阶段 0/1/6；Agent 执行生命周期主功能候选，正在需求评估。清单对账已裁决通过，授权M59/18/13、ADV1/7/56与9项P核销，已落盘，待 Planner 复核；唯一下一动作见 `product/0.2.3/ready/direction-feature-inventory-sync-023.md`。未实施或增加功能计数。
+- 0.2.3：方向`READY`，七阶段1/1/5；评估完成，实施已派发（无实现完成回执）。唯一入口 `product/0.2.3/ready/direction-023-agent-execution-lifecycle.md`。清单M59/18/13、ADV1/7/56及9项P核销已确认，残留同步并入前置动作；功能50保持。
 
 - 0.2.0：`COMPLETED`，七阶段已结束并发布；五项目标、A01—A17 和原 500 项保持关闭。
 - 0.2.1 缺陷修复列车：`COMPLETED`（规划 2026-11-03 终态复核），七阶段 7/0/0；29 项 Owner 通过，已发布并部署 UAT。
