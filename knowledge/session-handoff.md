@@ -1,14 +1,22 @@
 # 会话交接（session-handoff）— 当前压缩版
 
-## 当前续接：0.2.3 Agent 执行生命周期实施（2026-11-05）
+## 当前续接：0.2.3 验收同步完成（2026-11-06，第 ③ 阶段）
+
+0.2.3 实施验收已 PASSED（A01—A08，规划复核 04 `product/0.2.3/receipts/planning-review-lifecycle-023-04-passed.md`）；EXT-023-01 真实供应商增量已实测闭合（2026-11-06 01:21，executionId `2118393347398721538`，SUCCESS、4300ms、首 delta sequence=2、5 条增量、afterSequence 续传有序无重复）；第 ③ 阶段验收同步完成：`knowledge/features/0.2.3-agent-execution-lifecycle.md`（生命周期接口/状态机/取消恢复/三协议流式/两Key轮换/已接受限制）+ 本文件 + current-status。候选：Server `feature/023-agent-execution-lifecycle` @ `30370877`、Web @ `3ae42cb4`（均本地=远端）。
+
+清单固定值保持：正式功能50；M59/18/13；ADV1/7/56；实际P63；已核销P2/P4/P9/P15/P19/P29/P34/P47/P65；P20不核销；P35部分；问题57；正式/部署/DB 0.2.2；正式 Flyway 终点 V0.2.6，V0.2.7 为本功能候选迁移（隔离库已实测 applied）。七阶段 **3/1/3**：评估、实施、验收同步完成；feature→develop→main、发布 0.2.3、发布后同步、结束未开始。
+
+唯一下一动作：第 ④ 阶段——先在 develop 当前 HEAD 只对 `sw-basic-notify-biz` 复测 I6G1a/b/c 三例（develop 同败→与本分支无关、记录后继续合并；仅 feature 败→先修复），然后两仓 feature→develop→main 依次合并推送并回读远端。Web `vite.config.ts` 为用户在途改动，不纳入任何提交；隔离环境（`smart_workflow_lc023_01`、`.lc023-mock/`、`.runtime-lc023/`）按 Owner 2026-11-06 裁定保留。
+
+以下从 0.2.2 起均为历史时点记录，不覆盖上述当前值。
+
+## 历史续接：0.2.3 Agent 执行生命周期实施（2026-11-05）
 
 0.2.3 XL 正式方向 `product/0.2.3/ready/direction-023-agent-execution-lifecycle.md` 的 A01—A08 已完成实施，整体自验回执为 `product/0.2.3/receipts/execution-submitted-023-04.md`。七阶段保持 1/1/5：评估完成；实施阶段已提交业务自验、等待 Planner 独立验收；验收同步、feature→develop→main、发布 0.2.3、发布后同步、结束仍保留真实依赖。范围包括 graph 异步受理、持久回查、三格式真实增量、事件续传、取消/超时/恢复、权限与同步/调试兼容，以及现有 Web 执行入口。
 
 清单固定值保持：正式功能50；M59/18/13；ADV1/7/56；实际P63，P13/P23空洞、P48重复只计一次；已核销P2/P4/P9/P15/P19/P29/P34/P47/P65；P20不核销；P35部分；P22开放；P62功能COMPLETED且有限性能延期/OFF；问题57；正式基线变更[]；正式/部署/DB 0.2.2；正式 Flyway 终点 V0.2.6，V0.2.7 仅为本功能分支候选迁移。工作区回执提交 `8acc58a7f5b75dffbfac68d4fc1c11bd47c262d6` 已推送回读；Server 提交 `7d6f8a0a`、`631afa13`、`a4c2ae18` 与 Web 提交 `646dc80a` 均已推送对应功能分支。
 
 唯一下一动作：Planner 独立验收方向、代码和 01—04 回执，决定是否进入阶段 ③。真实供应商增量成功链因本机运行后端未加载本分支 API/V0.2.7 而未取得；Server 全量 reactor 最后一次有一个既有工具编排偶发断言失败，该测试类独立复验通过。Web `vite.config.ts` 为用户在途改动，不纳入任何提交。
-
-以下从 0.2.2 起均为历史时点记录，不覆盖上述当前值。
 
 ## 当前续接：无活动交付（2026-11-05，0.2.2 已 COMPLETED）
 
