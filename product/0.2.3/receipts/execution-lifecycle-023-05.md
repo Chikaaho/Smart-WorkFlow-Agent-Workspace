@@ -104,19 +104,21 @@ Owner 授权后精确停止已核实的 Vite PID 9600；8080 Java、`smart_workf
 
 最终联合聚焦门禁：`.runtime-lc023/lifecycle-final-focused-test.log`，8 tests，0 failures/errors/skipped，`BUILD SUCCESS`。
 
-### LC023-03：headed 登录诊断
+### LC023-03：headed 登录与执行闭环
 
 使用官方 `browser-use:control-browser` 的 IAB，`headless=false`、1440×900，候选 URL `http://127.0.0.1:15173/login?redirect=/agent/graph-designer/2118307199955574786`：
 
-- 原“服务暂时不可用”根因是候选 Server 未存活，Web 代理目标 18080 连接失败；重新构建 `a4e73177` 候选并用固定 dev 配置启动后，`/api/actuator/health` 返回 200，登录提交不再返回服务不可用。
-- 首次按旧基线口令 `admin123` 提交，页面明确返回“密码错误”。检查当前可执行 PostgreSQL 迁移后确认 `R__0.1.10_admin_password.sql` 会把默认超管口令收敛为 `AdminP@ssw0rd`；改用该固定 dev 种子口令再次提交仍返回“密码错误”。这说明隔离库 `smart_workflow_lc023_01` 的管理员散列与当前迁移声明不一致，问题不在 Web 登录请求或候选服务可用性。
-- 本轮没有改写隔离库用户密码，也没有读取真实凭据。由于无法建立登录态，页面提交→增量→完成/取消→刷新回查未能形成，不能标为 UI 通过。
-- 浏览器执行对象为图 `2118307199955574786`；未提交截图，符合日志/截图不入 Git 的要求。
+- 原“服务暂时不可用”根因是候选 Server 未存活，Web 代理目标 18080 连接失败；重新构建当前候选并用固定 dev 配置启动后，`/api/actuator/health` 返回 200，登录提交不再返回服务不可用。
+- 隔离库 `smart_workflow_lc023_01` 是任务自有测试库。按正式迁移 `R__0.1.10_admin_password.sql` 写回固定 dev 管理员 BCrypt 散列，更新 1 行并核对 tenant_id=0、admin、is_admin=1、status=0、散列长度 60；原始输出为 `.runtime-lc023/isolation-admin-reset.log`。未触碰 `smart_workflow_f1v4b`，未读取真实秘密。
+- 数据库中的固定租户名为 `默认租户`。使用 `默认租户` / `admin` / 固定 dev 口令 / 验证码 `1234` 登录成功，页面显示“系统管理员”并进入图 `2118307199955574786`（`lc023-start-end`，v1）。
+- 在可见“执行测试”区域输入 `headed-lc023-final` 并触发“运行”；页面显示终态 `SUCCESS`、“执行成功”、输出 `headed-lc023-final`、耗时 53ms。START→END 图执行很快，UI 可见观察到受理后的终态与输出，没有供应商节点，故不伪称观察到供应商 token 增量。
+- 点击页面提供的“查看详情”导航到 `/404`，暴露一个 Web 详情路由缺口；该缺口不影响执行成功，但详情按钮当前不可用。随后用已核实的图 URL 重进，登录态仍有效，图页面正常恢复；执行结果卡片不在重进后恢复，因此持久回查仍由既有真实 HTTP/API 记录证明，不能宣称 UI 已持久展示历史记录。
+- 未提交日志或截图；浏览器视觉证据仅记录上述可见文本。
 
 ## 精确剩余依赖
 
 唯一外部依赖为真实供应商密钥：三格式真实 HTTP 对端、部分输出失败、429、续传和禁止重放均已完成；对真实供应商的增量调用因任务明确禁止读取密钥，记为 `REQUIRES_SECRET`。
 
-另有两项未通过，但不是外部秘密：隔离库固定管理员输入与迁移声明不一致，导致 headed UI 链无法继续；Server 全量门禁的三个 Notify 既有失败仍按第 75 行分列。本轮已完成授权内 Agent 生命周期和协议缺口，不修改用户库、不扩修 Notify。
+非秘密遗留分列：Web“查看详情”当前导航到 `/404`，且重进图设计器后不恢复刚才的执行结果卡片；Server 全量门禁的三个 Notify 既有失败仍按第 75 行分列。隔离身份、headed 登录与页面执行成功链已完成；未修改用户库，不扩修 Notify。
 
 整体七阶段保持 1/1/5：评估完成；实施进行中；验收同步、feature→develop→main、发布 0.2.3、发布后同步、结束未开始。
