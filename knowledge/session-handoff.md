@@ -1,5 +1,13 @@
 # 会话交接（session-handoff）— 当前压缩版
 
+## 当前续接：0.2.3 功能清单同步待 Planner 复核（2026-11-05）
+
+0.2.3 `PLANNING`，七阶段 0/1/6。功能清单同步已按裁决落盘：正式功能50；M59/18/13；ADV1/7/56；实际P63，P13/P23空洞、P48重复只计一次；本轮核销P2/P4/P9/P15/P19/P29/P34/P47/P65；P35部分；P22开放但流程专用能力已过；P62功能COMPLETED且有限性能延期/OFF；问题57；正式基线变更[]；正式/部署/DB 0.2.2；Flyway V0.2.6。
+
+唯一下一动作：Planner 复核 `product/0.2.3/receipts/feature-inventory-sync-023-01.md`，再形成0.2.3正式业务方向。同步方向保持 `product/0.2.3/ready/direction-feature-inventory-sync-023.md`。
+
+以下从 0.2.2 起均为历史时点记录，不覆盖上述当前值。
+
 ## 当前续接：无活动交付（2026-11-05，0.2.2 已 COMPLETED）
 
 0.2.2（F1 Agent 完善＋F2 应用导入导出，D022-16 第 50 个正式功能）**`COMPLETED`**（规划 2026-11-05 终态复核 `product/0.2.2/receipts/planning-final-review-022-completed.md`），七阶段 **7/0/0**；整版方向归档 `product/0.2.2/passed/`。正式/部署版本 Server、Web 0.2.2（Server tag `0.2.2`→`0bf4c938`、语义 Release 资产 `bootstrap-0.2.2.jar` 220,778,675 B sha256 `c13eccd8…`；Web tag→`3bcd7c2`、`sw-web-dist-0.2.2.zip` 6,191,084 B sha256 `aa8d5832…`）；当前分支头 Server `main`=`develop`=`3c4942f0`、Web `main`=`develop`=`9dd7e7b`（tag 指向发布提交，两者区分记录）；开发版本 Server `0.2.2-SNAPSHOT`、Web `0.2.2`；DB 迁移终点 `V0.2.6`。UAT 已由 0.2.1 就地升级（启动 173.794s、启动段 ERROR 0、health UP、Flyway v0.2.6、pgvector 0.8.7 + `sw_knowledge_chunk.embedding` vector、HTTPS 页面 200，入口 `assets/index-D6vkuidr.js`）；磁盘清理后可用 2.6G、换包后 2.2G。终态传播回执 `product/0.2.2/receipts/final-propagation-022-01.md`。
