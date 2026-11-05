@@ -1,55 +1,55 @@
 {
   "$schema": "CH-aPaaS 版本权威（单一机器可读源；变更须走新回执）",
   "product": "CH-aPaaS",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "iteration": "0.0.9",
-  "registeredAt": "2026-11-03",
-  "registeredBy": "0.2.1 发布（29 项缺陷修复全部 Owner 验收通过后完成合并、tag/Release/制品发布与既有环境交付）。执行回执 product/0.2.1-bugfix/receipts/release-sync-021-01.md",
+  "registeredAt": "2026-11-05",
+  "registeredBy": "0.2.2 发布（F1 Agent 完善＋F2 应用导入导出，D022-16 第 50 个正式功能；合并、tag/Release/制品发布与 UAT 升级完成后规划终态复核 COMPLETED）。执行回执 product/0.2.2/receipts/final-propagation-022-01.md",
   "development": {
-    "targetVersion": "0.2.1",
+    "targetVersion": "0.2.2",
     "status": "COMPLETED",
-    "statusNote": "规划 2026-11-03 终态复核 COMPLETED；七阶段 7/0/0；无活动交付",
-    "direction": "product/0.2.1-bugfix/passed/direction-close-release-021.md",
-        "finalReview": "product/0.2.1-bugfix/receipts/planning-final-review-021-completed.md",
+    "statusNote": "规划 2026-11-05 终态复核 COMPLETED；七阶段 7/0/0；无活动交付",
+    "direction": "product/0.2.2/passed/direction-022-close-release.md",
+    "finalReview": "product/0.2.2/receipts/planning-final-review-022-completed.md",
     "branches": {
-      "server": "fix/0.2.1-bugfix（tip 6e83cd66，已回纳 develop c9e604ce；发布 main 5c33eab3）",
-      "web": "fix/0.2.1-bugfix（tip dbb2074，已回纳 develop 9785158；发布 main 07568b57）",
+      "server": "main = develop = 3c4942f0（发布 tag 0.2.2→0bf4c938）",
+      "web": "main = develop = 9dd7e7b（发布 tag 0.2.2→3bcd7c2）",
       "workspace": "develop-sw（终态传播批次已提交并回读）"
     },
     "developmentVersion": {
-      "server": "0.2.1-SNAPSHOT",
-      "web": "0.2.1"
+      "server": "0.2.2-SNAPSHOT",
+      "web": "0.2.2"
     }
   },
   "projections": {
     "serverRepo": {
       "path": "Smart-WorkFlow-aPaaS-server",
-      "mavenVersion": "0.2.1（正式构建 -Drevision=0.2.1；开发默认 0.2.1-SNAPSHOT）",
+      "mavenVersion": "0.2.2（正式构建 -Drevision=0.2.2；开发默认 0.2.2-SNAPSHOT）",
       "flywayEndpoint": {
-        "h2": "V0.2.0",
-        "postgresql": "V0.2.0"
+        "h2": "V0.2.6",
+        "postgresql": "V0.2.6"
       },
-      "flywaySeed": "V0.2.0__baseline_seed.sql（0.1.7 基线 + 0.1.8/0.1.9/0.1.10 增量逐字节收敛）+ 19 支 R__（0.2.1 新增 R__0.2.1_workspace_stat_metric_cards.sql 双方言，四张独立指标卡种子）"
+      "flywaySeed": "V0.2.0__baseline_seed.sql 基线 + 版本化 V0.2.2～V0.2.6（f1 供应商模型/graph 快照/执行节点明细/知识 RAG、f2 应用整包）+ 19 支 R__ 双方言"
     },
     "webRepo": {
       "path": "Smart-WorkFlow-aPaaS-Web",
-      "packageVersion": "0.2.1"
+      "packageVersion": "0.2.2"
     },
     "workspace": {
       "path": "Smart-WorkFlow-Agent-Workspace",
       "changelog": "CHANGELOG.md",
-      "releaseNotes": "GitHub Release 0.2.1（Server 5c33eab3·bootstrap-0.2.1.jar；Web 07568b57·sw-web-dist-0.2.1.zip）",
-      "upgrade": "docs/ops/production-ops.md §8/§9（UAT 由 0.2.0 就地升级：DB 备份 smart_workflow_20261103_1658_pre021.dump + 新增 R__0.2.1_workspace_stat_metric_cards 随启动单次应用；versioned 终点保持单条 0.2.0）",
-      "rollback": "docs/ops/production-ops.md §8.1/§8.2/§9.1（bootstrap.jar.bak（0.2.0）、web.bak-20261103_1702、DB dump smart_workflow_20261103_1658_pre021.dump）",
-      "configChanges": "0.2.1 无新增必配项；R__0.2.1_workspace_stat_metric_cards 幂等补齐四张独立统计指标卡类型（id 9411—9414）",
-      "dbMigrations": "V0.2.0__baseline_seed.sql（versioned 终点不变）；新增 R__0.2.1_workspace_stat_metric_cards.sql（h2/postgresql）随启动单次应用",
-      "manifest": "GitHub Release 0.2.1 资产：Server bootstrap-0.2.1.jar 218,553,737 B sha256 188b476a1ff516a4756ae9e9e5da5944170612d68eac23807d950e50be955860（CI run 41608817497，build.version=0.2.1 实测）；Web sw-web-dist-0.2.1.zip 6,165,915 B sha256 7558f0d7…（CI run 41606814041，入口 assets/index-Bl0JsMZw.js，UAT 部署后逐字节一致）",
-      "deployment": "UAT 8.166.112.85 已按 §8.1/8.2/8.3/9.1 由 0.2.0 就地升级：发布前磁盘 100% 按 §9.2 清理；DB 备份 smart_workflow_20261103_1658_pre021.dump；后端备份 bootstrap.jar.bak（0.2.0）→替换→启动 176.986s、启动段 ERROR 0、/api/actuator/health UP、build.version=0.2.1、Flyway 应用 R__0.2.1_workspace_stat_metric_cards；前端备份 web.bak-20261103_1702→部署→入口 assets/index-Bl0JsMZw.js 与发布 zip 逐字节一致，根路径/资产/`/sw-server/api/actuator/health` 200/UP。域名根路由与同机 reasonix 共存服务未改。"
+      "releaseNotes": "GitHub Release 0.2.2（Server 0bf4c938·bootstrap-0.2.2.jar；Web 3bcd7c2·sw-web-dist-0.2.2.zip）",
+      "upgrade": "docs/ops/production-ops.md §8/§9（UAT 由 0.2.1 就地升级：DB clean dump smart_workflow_20261105_pre022_clean.dump + 先 CREATE EXTENSION vector 0.8.7；Flyway 应用 6 支迁移至 v0.2.6）",
+      "rollback": "docs/ops/production-ops.md §8.1/§8.2/§9.1（bootstrap.jar.bak（0.2.1）、web.bak-20261105_pre022、DB clean dump）",
+      "configChanges": "F1 供应商/模型与 Embedding 供应商由 Owner 在 /agent/model 页面配置并录入 Key；知识库向量列要求目标库 pgvector（UAT 0.8.7 已启用）；无其他新增必配项",
+      "dbMigrations": "V0.2.0__baseline_seed.sql + V0.2.2～V0.2.6（h2/postgresql 双方言）+ 19 支 R__；UAT applied 6 migrations → v0.2.6",
+      "manifest": "GitHub Release 0.2.2 资产：Server bootstrap-0.2.2.jar 220,778,675 B sha256 c13eccd8c8aadcc672f93d337343bd83b4eba7496284c4e7e0b2fac8a73bf0da（CI run 41967257752 a2，build.version=0.2.2 实测）；Web sw-web-dist-0.2.2.zip 6,191,084 B sha256 aa8d5832291acef5e31fd4e533a598f10a7470af055738c82ec0ad296e420033（run 41967357375，入口 assets/index-D6vkuidr.js，UAT 部署后一致）",
+      "deployment": "UAT 8.166.112.85 已按 §8.1/8.2/8.3/9.1 由 0.2.1 就地升级：清理旧会话 69,881 文件/3.58 GB（可用 0→2.6G）；DB clean dump 178 表并在 scratch 库恢复演练；先启用 vector 0.8.7；后端备份 bootstrap.jar.bak（0.2.1）→替换→启动 173.794s、启动段 ERROR 0、health UP（本机与 nginx）、Flyway v0.2.6、embedding vector 列；前端备份 web.bak-20261105_pre022→部署→入口 assets/index-D6vkuidr.js，HTTPS 根 200、/sw-server/api/actuator/health UP；换包后可用 2.2G。"
     }
   },
   "rules": {
     "candidateFreeze": "候选固定后只允许通过新回执审查的变更进入；代码/迁移/依赖/配置漂移使受影响证据失效并重固定候选",
-    "tagAndRelease": "0.2.1 成对 annotated tag/Release 已发布：Server tag→5c33eab3、Web tag→07568b57；资产见 manifest。Server 首轮 main 提交 654e7dda 的 CI run 41606793216 failure（4 个迁移链断言未同步 R__0.2.1），该次未产出 Release/制品；修复提交 c9e604ce 后 run 41608817497 success，无既有发布被覆盖。0.2.0 及更早发布未动",
-    "deployment": "UAT 8.166.112.85 已由 0.2.0 就地升级至 0.2.1：DB 备份 + R__0.2.1 随启动单次应用；启动 176.986s、ERROR 0、health UP、web 指纹与 CI 制品一致"
+    "tagAndRelease": "0.2.2 成对 annotated tag/Release 已发布：Server tag→0bf4c938、Web tag→3bcd7c2；资产见 manifest；两仓语义 Release 已恢复 latest，build-<sha> 自动产物全部保留，未删除/覆盖既有发布。",
+    "deployment": "UAT 8.166.112.85 已由 0.2.1 就地升级至 0.2.2：pgvector 0.8.7 先启用；启动 173.794s、ERROR 0、health UP、Flyway v0.2.6、web 指纹与 CI 制品一致；Owner 在页面录入供应商 Key，未迁移/未代录。"
   }
 }

@@ -10,7 +10,7 @@ CH-aPaaS 是面向企业协作场景的低代码 PaaS 与 AI Agent 平台。项�
 
 ## 当前发布
 
-当前正式版本 **0.2.1**（2026-11-03 发布并交付 UAT）。两仓 tag 与发布 main：Server `0.2.1`→`5c33eab3`（CI run 41608817497 success，`bootstrap-0.2.1.jar` 218,553,737 B sha256 `188b476a…`，`build.version=0.2.1` 实测）、Web `0.2.1`→`07568b57`（CI run 41606814041 success，`sw-web-dist-0.2.1.zip` 6,165,915 B，入口 `assets/index-Bl0JsMZw.js`）。DB versioned 终点保持 `V0.2.0__baseline_seed.sql`，新增 `R__0.2.1_workspace_stat_metric_cards.sql`。UAT 由 0.2.0 就地升级：启动 176.986s、ERROR 0、health UP、web 指纹与 CI 制品一致。交付范围见 [`CHANGELOG.md`](CHANGELOG.md) 0.2.1 条目与 [`product/0.2.1-bugfix/receipts/release-sync-021-01.md`](product/0.2.1-bugfix/receipts/release-sync-021-01.md)。
+当前正式版本 **0.2.2**（2026-11-05 发布并交付 UAT；F1 Agent 完善＋F2 应用导入导出，D022-16 第 50 个正式业务功能）。两仓 tag 与发布 main：Server `0.2.2`→`0bf4c938`（CI run 41967257752 a2 success，`bootstrap-0.2.2.jar` 220,778,675 B sha256 `c13eccd8…`，`build.version=0.2.2` 实测）、Web `0.2.2`→`3bcd7c2`（CI run 41967357375 success，`sw-web-dist-0.2.2.zip` 6,191,084 B sha256 `aa8d5832…`，入口 `assets/index-D6vkuidr.js`）。发布后 README 回读提交已推 main 并合回 develop，当前 Server `main`=`develop`=`3c4942f0`、Web `main`=`develop`=`9dd7e7b`（tag 仍指向发布提交）。DB 迁移形态：`V0.2.0__baseline_seed.sql` 基线 + `V0.2.2`～`V0.2.6` + 19 支 R__，终点 `V0.2.6`。UAT 由 0.2.1 就地升级：启动 173.794s、启动段 ERROR 0、health UP、Flyway v0.2.6、pgvector 0.8.7。交付范围见 [`CHANGELOG.md`](CHANGELOG.md) 0.2.2 条目与 [`product/0.2.2/receipts/final-propagation-022-01.md`](product/0.2.2/receipts/final-propagation-022-01.md)。
 
 
 ## 项目能力

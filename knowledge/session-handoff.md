@@ -1,10 +1,10 @@
 # 会话交接（session-handoff）— 当前压缩版
 
-## 当前续接：0.2.2 整版交付第 6 阶段完成（2026-11-05，待规划第 7 阶段复核）
+## 当前续接：无活动交付（2026-11-05，0.2.2 已 COMPLETED）
 
-0.2.2（F1 Agent 完善＋F2 应用导入导出，D022-16 第 50 个正式功能）已完成合并→发布→发布后同步：Server annotated tag `0.2.2`→`0bf4c938`（语义 Release 资产 `bootstrap-0.2.2.jar` 220,778,675 B sha256 `c13eccd8…`，发布源 main `0bf4c938`，CI run `41967257752` a2 success）；Web tag `0.2.2`→`3bcd7c2`（`sw-web-dist-0.2.2.zip` 6,191,084 B sha256 `aa8d5832…`，run `41967357375` success）；发布后 README 回读提交已推 main 并 fast-forward 回并 develop——**当前分支头 Server `main`=`develop`=`3c4942f0`、Web `main`=`develop`=`9dd7e7b`**（tag 仍指向发布提交 `0bf4c938`／`3bcd7c2`，两者区分记录）；feature 分支双仓已删除，`build-<sha>` 产物保留。正式/部署版本 0.2.2；开发版本 Server `0.2.2-SNAPSHOT`、Web `0.2.2`；DB 迁移终点 `V0.2.6`。UAT 已由 0.2.1 就地升级（启动 173.794s、启动段 ERROR 0、health UP、Flyway v0.2.6、pgvector 0.8.7 + `sw_knowledge_chunk.embedding` vector、HTTPS 页面 200，入口 `assets/index-D6vkuidr.js`）；磁盘按 Owner 授权清理 69,881 文件/3.58 GB，清理后可用 2.6G、换包后 2.2G。Owner 已在 `/agent/model` 页面添加 CommandCode（OpenAI Chat）与 Openrouter（API 格式 Anthropic）供应商；Embedding 需要 OpenAI Chat 格式端点，若 OpenRouter 仍为 Anthropic 格式则不支持 `/embeddings`，待 Owner 核对。
+0.2.2（F1 Agent 完善＋F2 应用导入导出，D022-16 第 50 个正式功能）**`COMPLETED`**（规划 2026-11-05 终态复核 `product/0.2.2/receipts/planning-final-review-022-completed.md`），七阶段 **7/0/0**；整版方向归档 `product/0.2.2/passed/`。正式/部署版本 Server、Web 0.2.2（Server tag `0.2.2`→`0bf4c938`、语义 Release 资产 `bootstrap-0.2.2.jar` 220,778,675 B sha256 `c13eccd8…`；Web tag→`3bcd7c2`、`sw-web-dist-0.2.2.zip` 6,191,084 B sha256 `aa8d5832…`）；当前分支头 Server `main`=`develop`=`3c4942f0`、Web `main`=`develop`=`9dd7e7b`（tag 指向发布提交，两者区分记录）；开发版本 Server `0.2.2-SNAPSHOT`、Web `0.2.2`；DB 迁移终点 `V0.2.6`。UAT 已由 0.2.1 就地升级（启动 173.794s、启动段 ERROR 0、health UP、Flyway v0.2.6、pgvector 0.8.7 + `sw_knowledge_chunk.embedding` vector、HTTPS 页面 200，入口 `assets/index-D6vkuidr.js`）；磁盘清理后可用 2.6G、换包后 2.2G。终态传播回执 `product/0.2.2/receipts/final-propagation-022-01.md`。
 
-唯一下一动作：Planner 复核 `product/0.2.2/receipts/close-sync-022-04.md`、`release-sync-022-01.md`、`release-sync-022-02.md`，执行第 7 阶段终态复核（通过后 0.2.2 `COMPLETED`）。
+唯一下一动作：等待 Owner 安排下一目标。Owner 待核对（不阻塞交付）：UAT `/agent/model` 的 Openrouter 供应商当前为 Anthropic 格式，Embedding 需 OpenAI Chat 格式（`https://openrouter.ai/api/v1`）；并在「模型」页挂载 Chat 与 Embedding 模型。
 
 以下保留 0.2.0 及更早时点的交接历史，不代表当前任务和版本。
 
