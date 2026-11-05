@@ -32,9 +32,16 @@
 - **Web 合并**（merge worktree 进行，用户在途 `vite.config.ts` 未读改未暂存）：`feature/023-agent-execution-lifecycle`（`3ae42cb4`）→ develop 合并 `53684bb` + 版本收敛 `20f3f27`（package.json 0.2.2→**0.2.3**）→ main 合并 `47106e8`。develop 远端回读 `20f3f274a59a80ad270f6db49b04f4a39695140b`，main 远端回读 `47106e8ee1db92e4a51dd8fb8fee2a4f84bddd2e`。
 - 两仓 develop/main 推送均触发 CI（结果见 ⑤ 节制品与 run 记录）。
 
-## ⑤ 发布 0.2.3（未开始）
+## ⑤ 发布 0.2.3（完成时七阶段计数 **5/1/2**）
 
-（待填：版本收敛、tag/Release、CI、部署与 health、EXT-023-01 结果写入发布说明）
+- **CI 实跑（main 推送触发既有 build-release workflow）**：Server run `42075329494`（@ `9b86ff0d`）attempt 1 failure——`AgentOrchestrationServiceImplTest`（既有工具编排偶发，receipt 05 已登记同族）＋`AgentGraphExecutionLifecycleControlledTaskTest` 5 例中 1 例（并发受控任务测试在 CI 负载下 5s await 界抖动；同代码 feature run `42050128557` 曾 success）——**同提交 rerun（attempt 2）success**；develop run `42075156949` 同因 attempt 1 failure → rerun success。Web run `42075343895`（@ `47106e8`）success、develop run `42075275948` success。
+- **版本一致性**：Server CI 断言 0.2.3-SNAPSHOT 通过（workflow 解析→断言→-Drevision=0.2.3 贯穿测试/打包/制品门禁）；制品标记 `build.version=0.2.3` 实测；Web 包版本 0.2.3（`sw-web-dist-0.2.3.zip`）。
+- **成对 annotated tag `0.2.3`**：Server→`9b86ff0d`（tag 对象 `4648da3d`，`rev-parse 0.2.3^{commit}` 回读一致）、Web→`47106e8`（tag 对象 `97d5e374`）。
+- **语义 Release（latest 已回读）**：「CH-aPaaS Server 0.2.3」（id 435535394）资产 `bootstrap-0.2.3.jar` 220,811,858 B sha256 `ababcba649b991b381df9b68a2bec074b24664794b57d7a71bfebdbc146f9b29`（与 build-9b86ff0d CI 产物同源下载后核验一致，`build.version=0.2.3` 实测；发布说明含 EXT-023-01 实测结果与已接受限制）；「CH-aPaaS Web 0.2.3」（id 435518991）资产 `sw-web-dist-0.2.3.zip` 6,191,844 B sha256 `ad9a966fd8cd151cfc74481d02b2ff97c1d5153bc30e13f2954c799595fbe236`，入口 `assets/index-BPeKW0PB.js`。两仓 `releases/latest` 回读均为语义 `0.2.3`；既有 `build-<sha>` Release 全部保留未删未覆盖。
+- **UAT 就地升级（0.2.2 → 0.2.3，既有通道）**：升级前备份——`bootstrap.jar.bak-0.2.2`（220,778,675 B）与 `web.bak-0.2.3-pre.tar.gz`（6,116,687 B）；上传后远端 sha256 与本地一致；`stop.sh` 停 0.2.2（PID 3208758）→ 换 jar（`build.version=0.2.3` 实测）→ 替换 web 静态 → 启动。
+  - **如实记录一次启动失败**：首次 `start.sh` 未装载 `server.env`（PG SCRAM「no password was provided」→ druid create error → Application run failed，02:03:18），按运维手册 §6.4/§8.1 既有教训 `. ./server.env` 后重启成功（02:10:31 启动）；停服窗口约 02:03–02:14（约 11 分钟）。
+  - **启动与迁移**：`Started StarterApplication in 181.01 seconds`（新 PID 3228289）；启动段 ERROR 0；Flyway **Migrating to version "0.2.7 - agent execution lifecycle"，Successfully applied 1 migration → now at v0.2.7**（DB 实测）。
+  - **health 回读**：本机 `/api/actuator/health` = `{"status":"UP"}`；经 nginx `/sw-server/api/actuator/health` = `{"status":"UP"}`；HTTPS 根 200 且入口 `index-BPeKW0PB.js` 与发布 zip 一致。磁盘可用 1.6G（92% 已用）。
 
 ## ⑥ 发布后同步（未开始）
 
