@@ -25,9 +25,12 @@
 - 固定值不动：正式功能 **50**；M **59/18/13=90**；ADV **1/7/56=64**；实际 P **63**；问题 **57**；**P20 不核销**；已核销 P2/P4/P9/P15/P19/P29/P34/P47/P65 不变；P35 部分完成。
 - Workspace 2285f045 已推送；本批（EXT+③ 证据与 knowledge）提交后推送并回读远端。
 
-## ④ feature→develop→main（进行中）
+## ④ feature→develop→main（完成时七阶段计数 **4/1/2**）
 
-（待填：Notify 三项 develop 复测、双仓合并提交号、远端回读）
+- **Notify 三项（I6G1a/b/c）复测**：在 Server develop 当前 HEAD `2d81f3fe`（先 git fetch 回读）以独立 worktree 只对 `sw-basic/sw-basic-notify/sw-basic-notify-biz` 运行同三例（`-Dtest='I6G1aNotifyFailureBootTest,I6G1bRecoveryBootTest,I6G1cRecoveryExhaustedBootTest'`）：**develop 3/3 通过**（1/1/1，0 失败 0 错误，exit 0，日志 `.runtime-lc023/lc023-develop-notify-test.log`）。同命令在 feature HEAD `30370877` 复测：**feature 亦 3/3 通过**（`.runtime-lc023/lc023-feature-notify-test.log`）；且 feature 分支 CI run `42050128557`（@ `30370877`）**success**。结论：receipt 05 全量门禁中的三例失败为既有 Redis 依赖 Boot 用例偶发族（0.2.2 CI 有同款 attempt 失败→rerun 通过先例），非本分支回归，按提示 04 继续合并。
+- **Server 合并**（普通合并 --no-ff，无强推）：`feature/023-agent-execution-lifecycle`（`30370877`）→ develop 合并 `383dcd31` + 版本收敛 `a5e5ec67`（pom `<revision>`/workflow 断言/build-prod.sh/check-version-identity.sh 全部 0.2.2→**0.2.3**-SNAPSHOT；`check-version-identity.sh develop` PASS：32/32 反应堆项目解析为 0.2.3-SNAPSHOT）→ main 合并 `9b86ff0d`。develop 推送远端回读 `a5e5ec67cb34e1082e668fdfe33bb8b949ffced8`，main 推送远端回读 `9b86ff0d0c0874ad6e04dca211f5cac12ca4d4ce`。
+- **Web 合并**（merge worktree 进行，用户在途 `vite.config.ts` 未读改未暂存）：`feature/023-agent-execution-lifecycle`（`3ae42cb4`）→ develop 合并 `53684bb` + 版本收敛 `20f3f27`（package.json 0.2.2→**0.2.3**）→ main 合并 `47106e8`。develop 远端回读 `20f3f274a59a80ad270f6db49b04f4a39695140b`，main 远端回读 `47106e8ee1db92e4a51dd8fb8fee2a4f84bddd2e`。
+- 两仓 develop/main 推送均触发 CI（结果见 ⑤ 节制品与 run 记录）。
 
 ## ⑤ 发布 0.2.3（未开始）
 
