@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-2026-11-05｜Planner｜0.2.2 第 3 阶段：冒烟、操作说明、同步、4 个测试类修复已锁定；剩 CI 两例测试和分支/发布/UAT 事实。
+2026-11-05｜Planner｜0.2.2 第 3 阶段：剩恢复演练菜单断言一处，改完连续推进第 4—6 阶段。
 
 ## 活动交付
 
@@ -16,7 +16,12 @@
 - Executor 在合并前已推送 Server main（`6b045da5`、`1679f877`）并有 run 产出带 0.2.2 版本的 Release jar，需回传两仓分支、tag、Release 事实，已有 Release 不删不覆盖。
 - UAT 已装 pgvector 0.8.7（`--force-breaks`），磁盘已清理，DB 已备份；**UAT health 当前 DOWN（仍 0.2.1）**，首要复查。
 
-唯一下一动作：Executor 按 `product/0.2.2/receipts/planning-execution-prompt-close-022-02.md`：UAT health 复查 → 分支/发布事实 → 修两例测试，回执 `close-sync-022-03.md` 后停下，等规划定合并顺序与 Release 处理。
+规划审查 `product/0.2.2/receipts/planning-review-close-022-03.md`（revision 16 CONTINUE）：
+- C022-G3 P62 竞态锁定（停后台调度器＋有界认领，CI run 41960372793 2/2）；C022-G2 恢复演练其余修复保留，菜单断言须补回“升级前 id 全保留＋总数=升级前+新增”。
+- 事实：两仓 main 已含 0.2.2 代码（提前推送，不回退）；无语义 tag/Release `0.2.2`；`build-<sha>` 自动产物（Server 6、Web 1）保留。CI 已改为 feature/develop/main 均跑测试、仅 main 产 Release（目前只在 feature）。
+- UAT：磁盘 0M 致 health DOWN（仍 0.2.1）；**Owner 2026-11-05 授权删除 `/data/reasonix/.reasonix-sessions` 较早会话、腾出至少 3G**，程序/配置/近期会话不动。pgvector 0.8.7 已装，DB 已备份。
+
+唯一下一动作：Executor 按 `product/0.2.2/receipts/planning-execution-prompt-close-022-03.md` 修菜单断言 → 合并 → 发布（含 UAT 清理与升级）→ 发布后同步，回执 `close-sync-022-04.md`、`release-sync-022-01.md`。
 
 ## 剩余阶段（门禁修好后连续推进）
 
@@ -28,4 +33,4 @@
 
 ## 进度
 
-0.2.2 总 7 阶段：已完成 2（需求评估、执行），进行中 1（验收与同步：剩 CI 两例测试与事实核实），未开始 4（合并、发布、发布后同步、结束）。
+0.2.2 总 7 阶段：已完成 2（需求评估、执行），进行中 1（验收与同步：剩恢复演练菜单断言），未开始 4（合并、发布、发布后同步、结束）。

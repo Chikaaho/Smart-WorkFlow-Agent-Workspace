@@ -732,3 +732,5 @@ P45已完成规划功能级验收与阶段三终态复核，正式状态为 **`C
 ### 2026-09-29 后台SSO当前验收安排
 
 后台SSO配置与B端准入COMPLETED（规划已确认，2026-09-29）；R1轮换完成，无剩余动作。企业微信延期，P31开放。裁决 `product/sso-admin-config/receipts/planning-final-review-terminal-sync-01-completed.md`。
+
+测试稳定性候选（2026-11-05，`product/0.2.2/receipts/planning-review-close-022-03.md`）：`AgentToolConfigServiceImplTest.orchestration_runWithInternalTool_shouldBindAndClearToolsSymmetrically` 在 CI run 41955576315 第 1 次失败、重跑通过，按 P62 时序族同口径排期隔离，不进 0.2.2。
