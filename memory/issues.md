@@ -1,11 +1,22 @@
 # 当前未关闭事项
 
-2026-11-03｜Executor。
+2026-11-05｜Planner。
 
-0.2.1 缺陷台账无未关闭项：B021-001～029 共 29 项 Owner 验收全部通过，台账已冻结（根仓 `eb5fffb9`）；范围冻结后新增问题进入后续版本，不回填本台账。
+0.2.2 已 `COMPLETED`，没有阻塞项。下面是不阻塞的观察项：
 
-运维观察：UAT 系统盘 20G 在 0.2.0/0.2.1 两次发布窗口均达 100%，本轮按 `docs/ops/production-ops.md` §9.2 清理后约 0.7G 可用；后续发布前需复核水位并评估扩容/日志轮转加固。
+- **UAT 磁盘**
+  - 0.2.2 发布前磁盘满（可用 0），health DOWN。经 Owner 授权清理了 2026-10-28 及以前的 reasonix 旧会话（3.58 GB）。
+  - 换包后可用 2.2G。reasonix 会话仍在增长，下次发布前先复核水位，并评估扩容或会话轮转。
+- **UAT 供应商（Owner 侧）**
+  - Openrouter 现在是 Anthropic 格式（`https://openrouter.ai/api`），Embedding（D022-09）需要 OpenAI Chat 格式的 `https://openrouter.ai/api/v1` 和 `openai/text-embedding-3-small`。
+  - 模型页也要挂上 Chat 和 Embedding 模型。
+- **CI 测试抖动（同提交重跑通过，已登记）**
+  - `P62CompatRollbackPgTest` 领取竞态；
+  - I6G1a/b/c 通知 Boot；
+  - `AgentToolConfigServiceImplTest`。
 
-持续保护：不得覆盖用户已有改动，尤其是已记录的 `vite.config.ts` 在途内容；不清库、不重置数据、不读取或传播秘密；只停止本轮由 Executor 启动且身份明确的进程。
-
-0.2.0 无遗留业务验收项。P62 有限性能与外部通知真实链等历史延期保持原状态，不自动并入 0.2.1。
+持续保护：
+- 不覆盖 Web `vite.config.ts` 的在途改动；
+- 不清库，也不清理 `smart_workflow_f1v4b`；
+- 不读取或传播秘密；
+- 不动 Owner 的 reasonix、frp、ngrok。

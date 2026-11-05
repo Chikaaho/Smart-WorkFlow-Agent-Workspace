@@ -1,6 +1,6 @@
 # 0.2.2 整版验收、同步、合并与发布方向
 
-日期：2026-11-05。下发角色：规划；承接角色：执行（Executor）。状态：`READY`。
+日期：2026-11-05。下发角色：规划；承接角色：执行（Executor）。状态：`PASSED`（2026-11-05 规划终态复核后归档，见 `receipts/planning-final-review-022-completed.md`）。
 
 依据：
 - F1 三阶段通过：`receipts/planning-review-f1-stage1-03.md`、`planning-review-f1-stage2-03.md`、`planning-review-f1-stage3-02.md`；

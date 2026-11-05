@@ -1,9 +1,11 @@
 # memory 索引
 
-2026-11-03｜Planner｜本机初始化 `READY 1.3.3`，Codex 与 ZCode 均已验证。
+2026-11-05｜Planner｜本机初始化 `READY 1.3.3`，Codex 与 ZCode 均已验证。
 
-当前活动交付：0.2.2（F1 Agent 完善 XL、F2 应用导入导出 L，均已 `PASSED`），第 4—6 阶段已完成——两仓合并并把 main 合回 develop（Server `main`=`develop`=`3c4942f0`、Web `main`=`develop`=`9dd7e7b`；tag `0.2.2` 指向 `0bf4c938`/`3bcd7c2`）、语义 Release、UAT 就地升级（v0.2.6、pgvector 0.8.7、health UP）；主方向已归档 `product/0.2.2/passed/`。0.2.1 缺陷修复列车已 `COMPLETED` 并发布（七阶段 7/0/0）；0.2.0 已完成并发布（Server `39dcedb7` / Web `f5ec5a1`），历史验收锁定。
+当前没有活动中的交付。
+- 0.2.2 整版（F1 Agent 完善、F2 应用导入导出，第 50 个正式功能）已 `COMPLETED`（七阶段 7/0/0，`product/0.2.2/receipts/planning-final-review-022-completed.md`），已发布并部署到 UAT（v0.2.6、pgvector 0.8.7、health UP）。
+- 0.2.1、0.2.0 已 `COMPLETED` 并发布，历史验收已锁定。
 
-唯一下一动作：Planner 复核 `product/0.2.2/receipts/close-sync-022-04.md`、`release-sync-022-01.md`、`release-sync-022-02.md` 并执行第 7 阶段终态复核（通过后 0.2.2 `COMPLETED`）。
+唯一下一动作：Executor 执行 `product/0.2.2/ready/direction-final-propagation-022.md` 终态传播；规划读回执后，等 Owner 安排下一个目标。
 
 阅读顺序：`state.md` → `handoff.md` → `features.md`，其余按需。
