@@ -112,13 +112,15 @@ Owner 授权后精确停止已核实的 Vite PID 9600；8080 Java、`smart_workf
 - 隔离库 `smart_workflow_lc023_01` 是任务自有测试库。按正式迁移 `R__0.1.10_admin_password.sql` 写回固定 dev 管理员 BCrypt 散列，更新 1 行并核对 tenant_id=0、admin、is_admin=1、status=0、散列长度 60；原始输出为 `.runtime-lc023/isolation-admin-reset.log`。未触碰 `smart_workflow_f1v4b`，未读取真实秘密。
 - 数据库中的固定租户名为 `默认租户`。使用 `默认租户` / `admin` / 固定 dev 口令 / 验证码 `1234` 登录成功，页面显示“系统管理员”并进入图 `2118307199955574786`（`lc023-start-end`，v1）。
 - 在可见“执行测试”区域输入 `headed-lc023-final` 并触发“运行”；页面显示终态 `SUCCESS`、“执行成功”、输出 `headed-lc023-final`、耗时 53ms。START→END 图执行很快，UI 可见观察到受理后的终态与输出，没有供应商节点，故不伪称观察到供应商 token 增量。
-- 点击页面提供的“查看详情”导航到 `/404`，暴露一个 Web 详情路由缺口；该缺口不影响执行成功，但详情按钮当前不可用。随后用已核实的图 URL 重进，登录态仍有效，图页面正常恢复；执行结果卡片不在重进后恢复，因此持久回查仍由既有真实 HTTP/API 记录证明，不能宣称 UI 已持久展示历史记录。
+- 首轮“查看详情”因详情页只调用旧同步执行端点而导航到 `/404`，刷新后结果卡片也无法承担持久回查。Web 提交 `2e630c0d03e9855f8bf48181a329a4db587a934f` 修复详情加载契约：优先读取生命周期持久化端点并关联图定义，旧同步执行详情作为兼容回退；新增聚焦测试覆盖同 executionId 的持久回显。
+- 修复后再次 headed 提交 `headed-lc023-refresh-fixed`：页面显示 `SUCCESS`、输出同输入、耗时 57ms；点击“查看详情”进入 `/agent/executions/detail/2118330421849624578`，可见 executionId `2118330421849624578`、图名、快照 v2、成功、57ms、输入与输出。刷新该详情 URL 后，同一 executionId、状态、输入、输出和耗时仍完整回显，LC023-03 刷新/重进回查闭环通过。
+- Web 受影响门禁均在 2G Node 限制下且未与 Maven 并行：`ExecutionDetail.spec.ts` 30 tests 全通过；typecheck 通过；两份受影响文件 focused eslint 通过。原始输出分别为 `.runtime-lc023/web-execution-detail-test.log`、`web-execution-detail-typecheck.log`、`web-execution-detail-lint.log`。
 - 未提交日志或截图；浏览器视觉证据仅记录上述可见文本。
 
 ## 精确剩余依赖
 
 唯一外部依赖为真实供应商密钥：三格式真实 HTTP 对端、部分输出失败、429、续传和禁止重放均已完成；对真实供应商的增量调用因任务明确禁止读取密钥，记为 `REQUIRES_SECRET`。
 
-非秘密遗留分列：Web“查看详情”当前导航到 `/404`，且重进图设计器后不恢复刚才的执行结果卡片；Server 全量门禁的三个 Notify 既有失败仍按第 75 行分列。隔离身份、headed 登录与页面执行成功链已完成；未修改用户库，不扩修 Notify。
+非秘密遗留仅分列 Server 全量门禁的三个 Notify 既有失败，仍按第 75 行记录。隔离身份、headed 登录、页面执行、详情导航及刷新后持久回显链已完成；未修改用户库，不扩修 Notify。
 
 整体七阶段保持 1/1/5：评估完成；实施进行中；验收同步、feature→develop→main、发布 0.2.3、发布后同步、结束未开始。
