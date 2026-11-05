@@ -8,7 +8,7 @@
 
 - 唯一终态值：功能数 50、清单 46/22/22＝90、ADV64/问题57、P 编号不变、基线新增 []、迁移终点 V0.2.6（UAT 与 f1v4b 均实测回读）。
 - C022-G2 返工：`ApplicationCenterRecoveryDrillPostgresTest` 菜单断言三条同时校验（升级前 id 全保留／无重复／总数=升级前+动态新增），提交 `d3138a03`，CI run `41963780445` a2 drill 1/1 Skipped 0。
-- 合并：Server `d3138a03`→develop `2b9482e1`→main `0bf4c938`；Web `a2f8859`→develop `c9f09f4`→main `3bcd7c2`；普通合并无强推，`vite.config.ts` 在途改动未入提交；feature 双仓已删（tips Server `d3138a03`/`897983e0`、Web `a2f8859`/`c83a4790`）。
+- 合并：Server `d3138a03`→develop `2b9482e1`→main `0bf4c938`；Web `a2f8859`→develop `c9f09f4`→main `3bcd7c2`；普通合并无强推，`vite.config.ts` 在途改动未入提交；feature 双仓已删（tips Server `d3138a03`/`897983e0`、Web `a2f8859`/`c83a4790`）。**发布后分支同步（C022-S1）**：README 回读提交（Server `3c4942f0`、Web `9dd7e7b`）已推 main 并 fast-forward 回并 develop；`ls-remote` 回读 Server `main`=`develop`=`3c4942f0`、Web `main`=`develop`=`9dd7e7b`；tag `0.2.2` 仍指向 `0bf4c938`/`3bcd7c2`（对象 `dc5eedd6`/`98d0ce5f`）。
 - CI：Server feature `41963780445` a2、develop `41967210334`、main `41967257752` a2 全 success（三次成功跑 2351/0/0/33，drill 1/1 Skipped 0、P62 gate 2/2）；Web develop `41967320400`、main `41967357375` success。a1 失败均为已登记抖动（`P62CompatRollbackPgTest` 领取竞态；I6G1a/b/c 通知 Boot），同提交 rerun 过。
 - 发布：两仓 annotated tag `0.2.2`（Server→`0bf4c938`、Web→`3bcd7c2`）＋语义 Release；Server 资产 `bootstrap-0.2.2.jar` 220,778,675 B sha256 `c13eccd8…`，Web `sw-web-dist-0.2.2.zip` 6,191,084 B sha256 `aa8d5832…`；`build-<sha>` 产物保留。
 - UAT：Owner 授权清理旧会话 69,881 文件/3.58 GB（≤2026-10-28），可用 0→2.6G，health 恢复 UP；DB 备份新建 clean dump 661,324 B/178 表并做 scratch 库恢复演练；先 `CREATE EXTENSION vector`（0.8.7）再升级。升级后启动 173.794s、ERROR 0、health UP、Flyway v0.2.6、`embedding`=`vector`、HTTPS 页面 200（入口 `assets/index-D6vkuidr.js`）；换包后可用 2.2G。
@@ -16,14 +16,14 @@
 
 ## 唯一终态值
 
-功能 50（D022-16）、清单 46/22/22＝90、ADV64/问题57、P 编号不核销、基线新增 []、迁移终点 V0.2.6；正式/部署/DB 版本均 0.2.2；开发版本 Server `0.2.2-SNAPSHOT`、Web `0.2.2`。
+功能 50（D022-16）、清单 46/22/22＝90、ADV64/问题57、P 编号不核销、基线新增 []、迁移终点 V0.2.6；正式/部署/DB 版本均 0.2.2；当前分支头 Server `main`=`develop`=`3c4942f0`、Web `main`=`develop`=`9dd7e7b`（tag 指向 `0bf4c938`/`3bcd7c2` 不变）；开发版本 Server `0.2.2-SNAPSHOT`、Web `0.2.2`。
 
 ## 唯一下一动作
 
-规划审查 `product/0.2.2/receipts/planning-review-release-022-01.md`（revision 17 CONTINUE）：README 发布回读提交 Server `3c4942f0`、Web `9dd7e7b0` 在打 tag 后直推 main，当前入口仍写 main `0bf4c938`/`3bcd7c2`，develop 是否包含未回读。Executor 按 `product/0.2.2/receipts/planning-execution-prompt-release-022-01.md` 把 main 普通合并回 develop、回读、更新 knowledge→memory/todo，回执 `release-sync-022-02.md`；规划随后第 7 阶段终态复核。
+规划审查 `product/0.2.2/receipts/planning-review-release-022-01.md`（revision 17 CONTINUE）的 C022-S1 已完成：两仓 main fast-forward 合并回 develop、`ls-remote` 回读、knowledge→memory/todo 已同步，回执 `release-sync-022-02.md`。唯一下一动作＝Planner 复核三份回执并执行第 7 阶段终态复核。
 
-Owner 待办：UAT `/agent/model` 录入 Chat/LLM 与 Embedding（OpenRouter `openai/text-embedding-3-small`）供应商 Key，不阻塞交付结束。
+Owner 待办：已在 UAT `/agent/model` 添加 CommandCode（OpenAI Chat）与 Openrouter（页面显示 Anthro pic 格式）供应商；Embedding 需要 OpenAI Chat 格式端点，若 OpenRouter 保持 Anthropic 格式则 `/embeddings` 不可用，待 Owner 核对（不阻塞交付结束）。
 
 ## 进度
 
-0.2.2 总 7 阶段：已完成 5（需求评估、执行、验收与同步、合并、发布），进行中 1（发布后同步：剩分支同步），未开始 1（结束）。
+0.2.2 总 7 阶段：已完成 6（需求评估、执行、验收与同步、合并、发布、发布后同步含分支同步），未开始 1（结束）。
