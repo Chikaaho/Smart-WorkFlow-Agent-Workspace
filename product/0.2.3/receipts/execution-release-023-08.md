@@ -43,9 +43,13 @@
   - **启动与迁移**：`Started StarterApplication in 181.01 seconds`（新 PID 3228289）；启动段 ERROR 0；Flyway **Migrating to version "0.2.7 - agent execution lifecycle"，Successfully applied 1 migration → now at v0.2.7**（DB 实测）。
   - **health 回读**：本机 `/api/actuator/health` = `{"status":"UP"}`；经 nginx `/sw-server/api/actuator/health` = `{"status":"UP"}`；HTTPS 根 200 且入口 `index-BPeKW0PB.js` 与发布 zip 一致。磁盘可用 1.6G（92% 已用）。
 
-## ⑥ 发布后同步（未开始）
+## ⑥ 发布后同步（完成时七阶段计数 **6/0/1**）
 
-（待填：knowledge 版本事实、tag、来源 commit、部署结果）
+- **knowledge（先权威后摘要）**：`current-status.md` 头段改为 0.2.3 已发布并交付 UAT（七阶段 6/0/1，正式/部署 0.2.3、Flyway v0.2.7、health UP、EXT-023-01 闭合、发布链与 CI/run/资产事实），原 ③ 段移入历史；`session-handoff.md` 当前续接同步改写（旧段移入历史）；`features/0.2.3-agent-execution-lifecycle.md` 状态行补发布事实（tag/部署/Flyway）。
+- **版本权威**：`version.json` 重写为 0.2.3（development/projections/rules 三段：分支链、0.2.3-SNAPSHOT/0.2.3、Flyway 终点 V0.2.7 双方言、manifest 资产大小与 sha256、UAT 部署与 server.env 教训、回滚备份）。
+- **根文档**：`README.md` 当前发布段改 0.2.3；`CHANGELOG.md` 新增 0.2.3 条目（发布事实/功能内容/版本迁移/UAT 交付/回执指针）；`docs/ops/production-ops.md` §8 新增 0.2.3 正式制品与 UAT 升级记录（含 server.env 硬前置复验与一次启动失败如实记录）。
+- **两仓 README 回读提交**（0.2.2 先例：推 main→文档 CI→fast-forward 回 develop）：Server `c0f03926`（main 远端回读一致，develop 已回并 `c0f03926`）；Web `949fdb5`（main 远端回读一致，develop 已回并 `949fdb5`）；两仓 README 文档 CI 于提交时点在跑，终态在 ⑦ 节回读。临时 merge worktree 已按注册移除，保留 `.lc023-mock/lc023-server-wt`（EXT-023-01 隔离 worktree，Owner 裁定保留）。
+- **Workspace 提交链**：`1fc7424c`（EXT+③）→ `1e2a5f0a`（④）→ `41b3d78f`（⑤）→ `af56ab7d`（⑥），均推送并远端回读一致。
 
 ## ⑦ 结束（未开始）
 
