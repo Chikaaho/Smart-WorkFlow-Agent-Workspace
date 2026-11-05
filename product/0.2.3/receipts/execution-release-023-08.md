@@ -51,6 +51,28 @@
 - **两仓 README 回读提交**（0.2.2 先例：推 main→文档 CI→fast-forward 回 develop）：Server `c0f03926`（main 远端回读一致，develop 已回并 `c0f03926`）；Web `949fdb5`（main 远端回读一致，develop 已回并 `949fdb5`）；两仓 README 文档 CI 于提交时点在跑，终态在 ⑦ 节回读。临时 merge worktree 已按注册移除，保留 `.lc023-mock/lc023-server-wt`（EXT-023-01 隔离 worktree，Owner 裁定保留）。
 - **Workspace 提交链**：`1fc7424c`（EXT+③）→ `1e2a5f0a`（④）→ `41b3d78f`（⑤）→ `af56ab7d`（⑥），均推送并远端回读一致。
 
-## ⑦ 结束（未开始）
+## ⑦ 结束（完成时七阶段计数 **7/0/0**）
 
-（待填：保留环境清单、不泄露核对结果）
+### 保留环境清单（Owner 2026-11-06 裁定：保留不删，留待后续使用）
+
+| 项 | 位置 | 状态 |
+|---|---|---|
+| 隔离库 | PostgreSQL（Docker `postgres` 容器，127.0.0.1:5432）数据库 `smart_workflow_lc023_01` | Flyway v0.2.7；含 Owner 授权复制的凭据**密文**（provider `verify-real-cc` id 2117852938029363202 / model `verify-real-m` id 2117852938692063234）、`lc023-real-stream` 图（2118380954316759042，v2）、mock 对端配置（lc023-mock-provider 等）与全部隔离执行记录 |
+| 隔离 worktree | `E:\code\Smart-WorkFlow-Agent-Workspace\.lc023-mock\lc023-server-wt`（Server 仓 linked worktree，detached @ `30370877`） | 含本机打包 `bootstrap.jar`（220,812,073 B）与 `application-local.yml`（指向 lc023_01；启动前置：`--server.port=18081 --spring.profiles.active=local` + 环境变量 `SW_CIPHER_KEY`，取仓库 local 默认值） |
+| 运行记录 | `E:\code\Smart-WorkFlow-Agent-Workspace\.runtime-lc023\` | 含 `lc023-mock-archive/`（mock-sse-server.mjs、lc023-api.mjs、lc023-continue.mjs 等脚本与 mock 记录）、`lc023-real-retest-result.json`（EXT-023-01 原始结果，无密钥）、`lc023-real-retest.mjs`、本轮 CI 等待/health 脚本、Release 说明草稿与各日志（`*.log` 均未入库） |
+| 任务自有服务进程 | — | **0 个**：隔离候选 18081 已按精确 PID 35536 停止（无监听）；18090/15173/15174 无监听；无孤儿进程 |
+| 用户既有服务（未触碰） | 8080（PID 10620，`smart_workflow_f1v4b` 库）、5173（PID 9600） | 全程未停止、未替换、未暂存其任何内容 |
+| Git 保留物 | Workspace `develop-sw`（`420d5e23`+收尾提交）；Server main=`0a13124e`、develop=`92bbe021`（含测试竞态收口修复链 `5220d28c`/`c9af9a3a`/`92bbe021`/`0a13124e`）、tag `0.2.3`→`9b86ff0d`、feature 分支保留；Web main=develop=`949fdb5`、tag `0.2.3`→`47106e8`、feature 分支保留 | feature 分支未删除（提示 04 未授权删除）；Web `vite.config.ts` 用户在途改动保持未暂存 |
+
+### 不泄露核对（本任务全程）
+
+- **路径核对**：`git log --all` 与 `git ls-files` 核对——Workspace、Server、Web 三仓均**无** `.lc023-mock`、`.runtime-lc023`、`.tmp-a03-schema.json` 被暂存或提交（Workspace `.gitignore` 已加 `/.lc023-mock/`、`/.runtime-lc023/`、`/.tmp-a03-schema.json` 三条规则，`git check-ignore -v` 回读命中；只加规则、未删任何内容）。三仓工作树当前均无这三个路径的未跟踪残留（`.runtime-lc023`/`.lc023-mock` 按裁定保留于本机磁盘、不入库）。
+- **密钥模式扫描**：对三仓跟踪内容 `git grep` 扫描 `sk-…`/`Bearer <token>` 模式——命中项均为非密钥（任务 ID `sk-detail-approver-gaps-38`、Web CSS 类名 `sk-graph-page__*`、mock 测试假 key）；无明文 API Key、无凭据密文、无 Authorization 头进入 Git、回执、聊天或日志存档。EXT-023-01 全程凭据仅以密文存在于隔离库，唯一传输路径为两库间二进制 COPY 管道（上轮），本轮未再导出。
+- **如实登记的既有观察（非本任务引入、超出本轮授权，留规划/Owner 处置）**：Server 仓跟踪有 2,116 个 `logs/` 下 P64 时期 Chrome profile 缓存文件（历史提交 `e2fe50f7` 引入；本轮 `sk-` 扫描在其二进制缓存中有偶然模式命中，非凭据）。
+- **生命周期受控任务测试 CI 抖动的收口（本任务交付物内的测试侧修复，两步）**：`AgentGraphExecutionLifecycleControlledTaskTest` 在 CI 上先后 6 次 attempt 失败（release run `42075329494` a1、develop 文档 run `42082877176` a1+a2、修复尝试 develop `5220d28c` a1；本地多次运行、feature CI 与各同提交 rerun 均过）。**根因（经 CI 作业日志 `actions/jobs/127450346012/logs` 定位）**：失败断言在 line 79 `cancel(12L)` 返回 CANCELLED 而非 CANCEL_REQUESTED——cancel() 内 `requestRunningCancellation` 会中断运行线程，运行线程可在该中断后、cancel 最终回读前并发完成 `finish(CANCELLED)`（测试 finish 桩将状态置为 CANCELLED），两个合法交错使该断言成为真竞态（0.011s 即失败，与时敏界无关；终态竞争只产生一个合法终态，正是方向 A04 的语义）。**修复**：①`5220d28c`（develop）/`c9af9a3a`（main 合并）先放宽时敏界 5s→30s——CI 复跑仍同点失败，证明与时敏无关（留作健壮性改进）；②根因修复 `92bbe021`（develop，远端回读一致）→ main 合并 `0a13124e`（远端回读一致）：断言改为 `isIn("CANCEL_REQUESTED", "CANCELLED")` 两个合法返回态并留注释，副作用精确 1 次、finish(CANCELLED) 恰一次、worker 退出等严格行为断言全部保留；本地 8 连跑全绿。**两步修复均仅涉测试代码，已发布制品（tag `0.2.3`→`9b86ff0d` 的 `bootstrap-0.2.3.jar`、UAT 运行包）不受影响、无需重发**。
+- **CI 终态回读**：发布链——Server run `42075329494`（main，a2 success）/`42075156949`（develop，a2 success）；Web run `42075343895`/`42075275948` success。文档回读——Web `949fdb5`：develop run `42083011445` success、main run `42082983521` success；Server `c0f03926`：main run `42082847300` **success**、develop run `42082877176` a1+a2 失败（上述竞态）。**根因修复后**：develop `92bbe021` run **success**；main `0a13124e` run `42088556441` **attempt 4 success**（a1 败于既有 `AgentToolConfigServiceImplTest` 偶发、a2 败于既有 I6G1a/b/c 通知 Boot 族、a3 败于 H2 `BadSqlGrammar` 跨测试污染族——三次均非生命周期测试，该测试修复后全部 attempt 通过；a4 全绿）。
+
+### 收尾
+
+- 0.2.3 七阶段 **7/0/0**：需求评估、执行、验收同步、feature→develop→main、发布 0.2.3、发布后同步、结束全部完成。正式/部署版本 Server、Web **0.2.3**（tag `0.2.3`：Server `9b86ff0d`、Web `47106e8`），Flyway 终点 **V0.2.7**，UAT health UP。
+- 本回执为 0.2.3 交付的执行终态记录；功能状态、计数与 P 编号未超出规划唯一授权值（功能 50；M 59/18/13=90；ADV 1/7/56=64；P63；问题 57；P20 不核销；已核销 P2/P4/P9/P15/P19/P29/P34/P47/P65；P35 部分完成）。

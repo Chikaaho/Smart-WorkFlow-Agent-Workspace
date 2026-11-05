@@ -1,14 +1,16 @@
 # 会话交接（session-handoff）— 当前压缩版
 
-## 当前续接：0.2.3 已发布并交付 UAT（2026-11-06，第 ⑥ 阶段发布后同步）
+## 当前续接：0.2.3 执行侧七阶段收尾完成（2026-11-06）
 
-0.2.3 七阶段 6/0/1：**正式/部署版本 Server、Web 均 0.2.3**（tag `0.2.3`：Server `9b86ff0d`、Web `47106e8`；UAT 部署 0.2.3、Flyway v0.2.7、health UP）。发布链：feature→develop（版本收敛 0.2.3-SNAPSHOT/0.2.3）→main；CI Server attempt 1 既有抖动族→rerun success、Web success；语义 Release 两仓 latest=0.2.3（Server 资产 220,811,858 B sha256 `ababcba6…` 含 EXT-023-01 实测结果说明；Web 资产 6,191,844 B sha256 `ad9a966f…`，入口 `index-BPeKW0PB.js`）。**EXT-023-01 已闭合**（真实供应商流式实测 SUCCESS：executionId `2118393347398721538`，首 delta sequence=2、5 条增量、afterSequence 续传有序无重复）。UAT 首启未装载 `server.env` 失败一次（§6.4 既有教训），补装载后 181.01s 启动、ERROR 0、health UP。回执 `product/0.2.3/receipts/execution-release-023-08.md`（按 ③—⑦ 分节）。
+0.2.3 执行侧七阶段 **7/0/0**：正式/部署版本 Server、Web 均 **0.2.3**（tag `0.2.3`：Server `9b86ff0d`、Web `47106e8`；UAT 已部署、Flyway **v0.2.7**、health UP）；语义 Release 两仓 latest=0.2.3。发布后测试稳定性收口：生命周期受控任务 cancel 终态竞争断言竞态已根因修复（`92bbe021`/main `0a13124e`，CI develop success、main attempt 4 success）；两仓 README 回读（Server `c0f03926`、Web `949fdb5`）CI success。当前分支头：Server main=`0a13124e`/develop=`92bbe021`、Web main=develop=`949fdb5`。**EXT-023-01 已闭合**。执行回执 `product/0.2.3/receipts/execution-release-023-08.md`（③—⑦ 分节＋保留环境清单＋不泄露核对）。清单固定值保持：正式功能50；M59/18/13；ADV1/7/56；实际P63；已核销P2/P4/P9/P15/P19/P29/P34/P47/P65；P20不核销；P35部分；问题57；验证基线变更[]。
 
-清单固定值保持：正式功能50；M59/18/13；ADV1/7/56；实际P63；已核销P2/P4/P9/P15/P19/P29/P34/P47/P65；P20不核销；P35部分；问题57；验证基线变更[]。
-
-唯一下一动作：第 ⑦ 阶段收尾——保留环境清单（`smart_workflow_lc023_01`、`.lc023-mock/`、`.runtime-lc023/`、任务自有服务进程）与不泄露核对结果写入回执；用户 8080/`smart_workflow_f1v4b`、5173、Web `vite.config.ts` 在途改动不动。
+唯一下一动作：无本次授权内剩余动作；0.2.3 整版功能状态宣告与终态复核待规划。隔离环境（`smart_workflow_lc023_01`、`.lc023-mock/lc023-server-wt`、`.runtime-lc023/`）按 Owner 2026-11-06 裁定保留；任务自有服务 0 个；用户 8080/`smart_workflow_f1v4b`、5173、Web `vite.config.ts` 在途改动不动。
 
 以下从 0.2.2 起均为历史时点记录，不覆盖上述当前值。
+
+## 历史续接：0.2.3 已发布并交付 UAT（2026-11-06，第 ⑥ 阶段发布后同步）
+
+0.2.3 七阶段 6/0/1：正式/部署版本 Server、Web 均 0.2.3（tag `0.2.3`：Server `9b86ff0d`、Web `47106e8`；UAT 部署 0.2.3、Flyway v0.2.7、health UP）。发布链：feature→develop（版本收敛 0.2.3-SNAPSHOT/0.2.3）→main；CI Server attempt 1 既有抖动族→rerun success、Web success；语义 Release 两仓 latest=0.2.3（Server 资产 220,811,858 B sha256 `ababcba6…` 含 EXT-023-01 实测结果说明；Web 资产 6,191,844 B sha256 `ad9a966f…`，入口 `index-BPeKW0PB.js`）。EXT-023-01 已闭合（真实供应商流式实测 SUCCESS：executionId `2118393347398721538`，首 delta sequence=2、5 条增量、afterSequence 续传有序无重复）。UAT 首启未装载 `server.env` 失败一次（§6.4 既有教训），补装载后 181.01s 启动、ERROR 0、health UP。回执 `product/0.2.3/receipts/execution-release-023-08.md`（按 ③—⑦ 分节）。
 
 ## 历史续接：0.2.3 验收同步完成（2026-11-06，第 ③ 阶段）
 
