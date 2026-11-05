@@ -1,33 +1,21 @@
-# 0.2.3 交接
+# 交接
 
-2026-11-05｜Planner｜本机READY 1.3.4。
+2026-11-06｜Planner｜本机READY 1.3.4。
 
-## 最新实施复核
+## 当前
 
-执行回执01—04已读：两仓已提交实现，编译/测试有摘要，但运行服务未加载本分支API，页面返回资源不存在，真实供应商流式未验证。尚不具备功能通过条件。审查 `product/0.2.3/receipts/planning-review-lifecycle-023-01.md`；当前继续执行提示 `product/0.2.3/receipts/planning-execution-prompt-lifecycle-023-01.md`，只补原A01—A08运行与兼容证据，不新增search。整体七阶段仍1/1/5。
+0.2.3 COMPLETED，七阶段7/0/0。终态复核 `product/0.2.3/receipts/planning-final-review-023-completed.md`；方向归档 `product/0.2.3/passed/`。无在途执行任务，等待Owner指定下一版本；新版本先从 `todo/requirement-pool.md` 顶部“0.2.3后续候选”与原后续队列选题。
 
-## 唯一执行入口
+## 基线
 
-`product/0.2.3/ready/direction-023-agent-execution-lifecycle.md`，XL、READY。目标：graph异步受理、持久回查、流式进度/输出、取消与恢复，以及受影响同步接口/调试兼容。Executor制定实施方案并连续推进，不再等待独立探索或清单同步验收。
+功能50；M59/18/13=90；ADV1/7/56=64；实际P63；问题57；P20未核销。正式/部署0.2.3、Flyway V0.2.7；tag Server`9b86ff0d`/Web`47106e8`。
 
-旧清单同步方向的固定值继续有效；其剩余当前描述和Git收尾并入新方向前置动作。`search_task/v023-inventory-sync-coverage-check.md`不再独立派发。清单收尾不阻塞独立工程动作。
+## 保留与保护
 
-## 当前基线
+Owner定保留本机隔离环境（`smart_workflow_lc023_01`含凭据密文、`.lc023-mock/lc023-server-wt`、`.runtime-lc023`），已gitignore，只要求不泄露。继续保护Web vite.config.ts在途改动、`smart_workflow_f1v4b`、用户8080/5173服务和秘密。
 
-正式功能50；M59/18/13=90；ADV1/7/56=64；实际P63；本轮已核销P2/P4/P9/P15/P19/P29/P34/P47/P65。P35部分，问题57、正式基线不变。计数已由同步回执01确认，当前描述覆盖和Git事实随前置动作收尾。
+## 0.2.3过程（历史）
 
-0.2.2已COMPLETED、7/0/0，正式/部署/DB0.2.2，FlywayV0.2.6。P62有限性能延期/OFF，历史已过项保持锁定。
+评估→清单对账（3个search，含1个应并入前置而误开的已作废）→主方向A01—A08→实施复核01—04（LC023-03取消展示第3轮收口）→执行提示04连续③—⑦→终审COMPLETED。教训见 `memory/state.md`。
 
-## 整体进度
-
-0.2.3总7阶段：已完成1（评估），进行中1（实施：方向下发，尚无实现完成回执），未开始5（验收同步、合并、发布0.2.3、发布后同步、结束）。前置文档完成不代表业务实施完成。
-
-## 验收与范围
-
-新方向固定A01—A08与一次性证据要求；先核心状态/权限/取消/恢复，再流式/Web/兼容集成，两段验收锁定已过项。剩余问题沿原断言收口，纯报告问题规划直接处理，缺少决策事实才定向探索。不纳入独立助手、聊天窗口、人工节点/子图、多模态；不自动核销P20。
-
-## 保护与启动
-
-保护Web vite.config.ts、smart_workflow_f1v4b、用户服务和秘密。遵守本机检查、工程宪法、受控生命周期及Git授权。Planner未提交或推送本轮新文档。
-
-新会话提示：你是执行。读取 `product/0.2.3/ready/direction-023-agent-execution-lifecycle.md`，制定实施方案，把清单残留及Git收尾作为前置动作，连续实现0.2.3主功能；按整版七阶段汇报，不把局部收尾当整版完成。
+Planner未提交或推送本轮规划文档。

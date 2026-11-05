@@ -1,8 +1,11 @@
 # 功能摘要
 
-2026-11-05｜Planner｜`READY 1.3.4`。
+2026-11-06｜Planner｜`READY 1.3.4`。
 
-- 0.2.3：方向`READY`，七阶段1/1/5；评估完成，实施已派发（无实现完成回执）。唯一入口 `product/0.2.3/ready/direction-023-agent-execution-lifecycle.md`。清单M59/18/13、ADV1/7/56及9项P核销已确认，残留同步并入前置动作；功能50保持。
+- 0.2.3：`COMPLETED`（规划 2026-11-06 终态复核 `product/0.2.3/receipts/planning-final-review-023-completed.md`），七阶段 7/0/0。
+  - 内容：Agent graph 异步受理、三协议流式、afterSequence 续传、取消、重启恢复、两Key轮换；真实供应商实测通过。
+  - 作为既有 Agent graph 增强，功能数保持 50；P20 不核销。清单 M59/18/13、ADV1/7/56、9 项 P 核销确认。
+  - 发布：tag `0.2.3` 指向 `9b86ff0d` / `47106e8`，UAT 已升级（v0.2.7）。方向归档 `product/0.2.3/passed/`。
 
 - 0.2.0：`COMPLETED`，七阶段已结束并发布；五项目标、A01—A17 和原 500 项保持关闭。
 - 0.2.1 缺陷修复列车：`COMPLETED`（规划 2026-11-03 终态复核），七阶段 7/0/0；29 项 Owner 通过，已发布并部署 UAT。

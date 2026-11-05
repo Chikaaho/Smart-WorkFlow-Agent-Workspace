@@ -1,8 +1,15 @@
 # 需求池（Requirement Pool）
 
-## 当前执行入口：0.2.3（2026-11-05）
+## 当前：无在途交付（0.2.3 COMPLETED，2026-11-06）
 
-正式方向已下发：`product/0.2.3/ready/direction-023-agent-execution-lifecycle.md`，这是唯一执行入口。Agent graph异步、流式、取消及恢复为主功能；清单描述和Git收尾纳入实施方案前置动作，旧search/同步入口不再单独派发。总7阶段1/1/5：评估完成，实施已派发（尚无实现完成回执），验收同步、合并、发布、发布后同步、结束未开始。已确认M59/18/13、ADV1/7/56和9项P核销保持。
+0.2.3 七阶段7/0/0，终态复核 `product/0.2.3/receipts/planning-final-review-023-completed.md`，方向归档 `product/0.2.3/passed/`。Agent graph异步、流式、续传、取消、恢复、两Key轮换已发布（tag 0.2.3，UAT v0.2.7），真实供应商实测通过。功能50、M59/18/13、ADV1/7/56、P63、问题57；P20未核销。等待Owner指定下一版本。
+
+### 0.2.3 后续候选（观察区，未排期）
+
+- CI偶发失败族：AgentToolConfigServiceImplTest、AgentOrchestrationServiceImplTest、Notify I6G1a/b/c（Redis Boot）、H2 BadSqlGrammar跨测试污染；发布链多次rerun（并入原“测试抖动隔离”候选）。
+- Server仓 `logs/` 跟踪2116个P64时期Chrome profile缓存（提交e2fe50f7），仓库卫生。
+- UAT磁盘余1.6G（92%），下次发布前处理。
+- Agent逐节点进度事件（0.2.3已接受限制）；P20独立评估。
 
 ### 前期评估记录（以下路由已由上述正式方向接替）
 
