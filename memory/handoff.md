@@ -41,7 +41,7 @@ UAT 剩余磁盘 2.2G（reasonix 近期会话仍在增长，需持续观察）�
 
 ## 10. 唯一下一动作
 
-Planner 复核两份回执并执行第 7 阶段终态复核。
+Executor 按 `product/0.2.2/receipts/planning-execution-prompt-release-022-01.md` 把两仓 main（含 README 回读提交 Server `3c4942f0`、Web `9dd7e7b0`）普通合并回 develop 并同步提交号，回执 `release-sync-022-02.md`；之后 Planner 第 7 阶段终态复核。
 
 ## 11. 下一轮完成标准
 

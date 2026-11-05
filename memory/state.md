@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-2026-11-05｜Executor｜0.2.2 第 4—6 阶段完成（合并/发布/UAT 升级），待 Planner 第 7 阶段复核。
+2026-11-05｜Planner｜0.2.2 合并、发布、UAT 升级已复核锁定；剩发布后分支同步一处，补完后第 7 阶段终态复核。
 
 ## 活动交付
 
@@ -20,8 +20,10 @@
 
 ## 唯一下一动作
 
-Planner 复核 `close-sync-022-04.md`、`release-sync-022-01.md` 并执行第 7 阶段终态复核（通过后 0.2.2 `COMPLETED`）。
+规划审查 `product/0.2.2/receipts/planning-review-release-022-01.md`（revision 17 CONTINUE）：README 发布回读提交 Server `3c4942f0`、Web `9dd7e7b0` 在打 tag 后直推 main，当前入口仍写 main `0bf4c938`/`3bcd7c2`，develop 是否包含未回读。Executor 按 `product/0.2.2/receipts/planning-execution-prompt-release-022-01.md` 把 main 普通合并回 develop、回读、更新 knowledge→memory/todo，回执 `release-sync-022-02.md`；规划随后第 7 阶段终态复核。
+
+Owner 待办：UAT `/agent/model` 录入 Chat/LLM 与 Embedding（OpenRouter `openai/text-embedding-3-small`）供应商 Key，不阻塞交付结束。
 
 ## 进度
 
-0.2.2 总 7 阶段：已完成 6（需求评估、执行、验收与同步、合并、发布、发布后同步），未开始 1（结束）。
+0.2.2 总 7 阶段：已完成 5（需求评估、执行、验收与同步、合并、发布），进行中 1（发布后同步：剩分支同步），未开始 1（结束）。
