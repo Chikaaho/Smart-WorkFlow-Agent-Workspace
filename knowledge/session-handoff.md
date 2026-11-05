@@ -1,14 +1,22 @@
 # 会话交接（session-handoff）— 当前压缩版
 
-## 当前续接：0.2.3 验收同步完成（2026-11-06，第 ③ 阶段）
+## 当前续接：0.2.3 已发布并交付 UAT（2026-11-06，第 ⑥ 阶段发布后同步）
+
+0.2.3 七阶段 6/0/1：**正式/部署版本 Server、Web 均 0.2.3**（tag `0.2.3`：Server `9b86ff0d`、Web `47106e8`；UAT 部署 0.2.3、Flyway v0.2.7、health UP）。发布链：feature→develop（版本收敛 0.2.3-SNAPSHOT/0.2.3）→main；CI Server attempt 1 既有抖动族→rerun success、Web success；语义 Release 两仓 latest=0.2.3（Server 资产 220,811,858 B sha256 `ababcba6…` 含 EXT-023-01 实测结果说明；Web 资产 6,191,844 B sha256 `ad9a966f…`，入口 `index-BPeKW0PB.js`）。**EXT-023-01 已闭合**（真实供应商流式实测 SUCCESS：executionId `2118393347398721538`，首 delta sequence=2、5 条增量、afterSequence 续传有序无重复）。UAT 首启未装载 `server.env` 失败一次（§6.4 既有教训），补装载后 181.01s 启动、ERROR 0、health UP。回执 `product/0.2.3/receipts/execution-release-023-08.md`（按 ③—⑦ 分节）。
+
+清单固定值保持：正式功能50；M59/18/13；ADV1/7/56；实际P63；已核销P2/P4/P9/P15/P19/P29/P34/P47/P65；P20不核销；P35部分；问题57；验证基线变更[]。
+
+唯一下一动作：第 ⑦ 阶段收尾——保留环境清单（`smart_workflow_lc023_01`、`.lc023-mock/`、`.runtime-lc023/`、任务自有服务进程）与不泄露核对结果写入回执；用户 8080/`smart_workflow_f1v4b`、5173、Web `vite.config.ts` 在途改动不动。
+
+以下从 0.2.2 起均为历史时点记录，不覆盖上述当前值。
+
+## 历史续接：0.2.3 验收同步完成（2026-11-06，第 ③ 阶段）
 
 0.2.3 实施验收已 PASSED（A01—A08，规划复核 04 `product/0.2.3/receipts/planning-review-lifecycle-023-04-passed.md`）；EXT-023-01 真实供应商增量已实测闭合（2026-11-06 01:21，executionId `2118393347398721538`，SUCCESS、4300ms、首 delta sequence=2、5 条增量、afterSequence 续传有序无重复）；第 ③ 阶段验收同步完成：`knowledge/features/0.2.3-agent-execution-lifecycle.md`（生命周期接口/状态机/取消恢复/三协议流式/两Key轮换/已接受限制）+ 本文件 + current-status。候选：Server `feature/023-agent-execution-lifecycle` @ `30370877`、Web @ `3ae42cb4`（均本地=远端）。
 
 清单固定值保持：正式功能50；M59/18/13；ADV1/7/56；实际P63；已核销P2/P4/P9/P15/P19/P29/P34/P47/P65；P20不核销；P35部分；问题57；正式/部署/DB 0.2.2；正式 Flyway 终点 V0.2.6，V0.2.7 为本功能候选迁移（隔离库已实测 applied）。七阶段 **3/1/3**：评估、实施、验收同步完成；feature→develop→main、发布 0.2.3、发布后同步、结束未开始。
 
-唯一下一动作：第 ④ 阶段——先在 develop 当前 HEAD 只对 `sw-basic-notify-biz` 复测 I6G1a/b/c 三例（develop 同败→与本分支无关、记录后继续合并；仅 feature 败→先修复），然后两仓 feature→develop→main 依次合并推送并回读远端。Web `vite.config.ts` 为用户在途改动，不纳入任何提交；隔离环境（`smart_workflow_lc023_01`、`.lc023-mock/`、`.runtime-lc023/`）按 Owner 2026-11-06 裁定保留。
-
-以下从 0.2.2 起均为历史时点记录，不覆盖上述当前值。
+唯一下一动作（当时）：第 ④ 阶段——先在 develop 当前 HEAD 只对 `sw-basic-notify-biz` 复测 I6G1a/b/c 三例（develop 同败→与本分支无关、记录后继续合并；仅 feature 败→先修复），然后两仓 feature→develop→main 依次合并推送并回读远端。Web `vite.config.ts` 为用户在途改动，不纳入任何提交；隔离环境（`smart_workflow_lc023_01`、`.lc023-mock/`、`.runtime-lc023/`）按 Owner 2026-11-06 裁定保留。
 
 ## 历史续接：0.2.3 Agent 执行生命周期实施（2026-11-05）
 
