@@ -1,0 +1,79 @@
+[{"t":"read1","text":"输出：增量-01 增量-02 增量-03 增量-04 增量-05 增量-06 增量-07 增量-08 增量-09 增量-10 增量-11 增量-12 增量-13 增量-14 增量-15 增量-16"}]
+{"t":"terminal","tagText":"v1","alertText":"执行成功\n\n输出：增量-01 增量-02 增量-03 增量-04 增量-05 增量-06 增量-07 增量-08 增量-09 增量-10 增量-11 增量-12 增量-13 增量-14 增量-15 增量-16\n耗时 6969ms\n查看详情"}
+{
+ "run": "headed-lc023-increment-06",
+ "reads": [
+  {
+   "i": 0,
+   "at": "15:17:26.340",
+   "text": "(no output element yet)"
+  },
+  {
+   "i": 1,
+   "at": "15:17:26.963",
+   "text": "(no output element yet)"
+  },
+  {
+   "i": 2,
+   "at": "15:17:27.589",
+   "text": "输出：增量-01"
+  },
+  {
+   "i": 3,
+   "at": "15:17:28.219",
+   "text": "输出：增量-01 增量-02 增量-03"
+  },
+  {
+   "i": 4,
+   "at": "15:17:28.842",
+   "text": "输出：增量-01 增量-02 增量-03"
+  },
+  {
+   "i": 5,
+   "at": "15:17:29.458",
+   "text": "输出：增量-01 增量-02 增量-03 增量-04 增量-05"
+  },
+  {
+   "i": 6,
+   "at": "15:17:30.091",
+   "text": "输出：增量-01 增量-02 增量-03 增量-04 增量-05 增量-06 增量-07 增量-08"
+  },
+  {
+   "i": 7,
+   "at": "15:17:30.717",
+   "text": "输出：增量-01 增量-02 增量-03 增量-04 增量-05 增量-06 增量-07 增量-08"
+  }
+ ]
+}
+{"run":"headed-lc023-increment-06","terminalTag":"v1","alert":"执行成功 |  | 输出：增量-01 增量-02 增量-03 增量-04 增量-05 增量-06 增量-07 增量-08 增量-09 增量-10 增量-11 增量-12 增量-13 增量-14 增量-15 增量-16 | 耗时 6999ms | 查看详情"}
+{
+ "run": "headed-lc023-break-06",
+ "reads": [
+  {
+   "i": 0,
+   "at": "15:18:26.843",
+   "text": "(none)"
+  },
+  {
+   "i": 1,
+   "at": "15:18:27.565",
+   "text": "(none)"
+  },
+  {
+   "i": 2,
+   "at": "15:18:28.302",
+   "text": "输出：增量-01 增量-02"
+  }
+ ],
+ "terminalTag": "FAILED",
+ "alert": "执行失败 |  | 输出：增量-01 增量-02 增量-03 增量-04 增量-05 | 耗时 2156ms | 查看详情"
+}
+{"step":"break-detail-url","url":"http://127.0.0.1:15174/agent/executions/detail/2118362310924886018"}
+{"run":"headed-lc023-cancel-06","terminalTag":"CANCELLED","alert":"执行失败 |  | 输出：增量-01 增量-02 增量-03 增量-04 增量-05 增量-06 | 耗时 1691ms | 查看详情"}
+{"step":"cancel-detail-url","url":"http://127.0.0.1:15174/agent/executions/detail/2118362815424159746"}
+{
+ "step": "cancel-detail-reload",
+ "before": "  - generic: \"#2118362815424159746\"\n  - generic: lc023-llm-stream\n  - generic: 快照版本：v2\n  - generic: CANCELLED\n  - generic: 输入内容\n  - generic: headed-lc023-cancel-06\n  - generic: 错误信息\n  - generic: 执行已取消\n  - generic: 时间信息\n  - generic: \"创建时间:\"\n  - generic: \"更新时间:\"",
+ "after": ""
+}
+{"step":"cancel-detail-reload-settled","main":"  - generic: \"#2118362815424159746\"\n  - generic: lc023-llm-stream\n  - generic: 快照版本：v2\n  - generic: CANCELLED\n  - generic: 输入内容\n  - generic: headed-lc023-cancel-06\n  - generic: 输出内容\n  - generic: 错误信息\n  - generic: 执行已取消"}
