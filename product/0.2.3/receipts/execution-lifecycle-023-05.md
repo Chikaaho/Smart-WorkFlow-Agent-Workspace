@@ -77,11 +77,46 @@ Owner 授权后精确停止已核实的 Vite PID 9600；8080 Java、`smart_workf
 - Web typecheck、lint、test、build 四连全部通过；原文为 `.runtime-lc023/web-*.log`。用户 `vite.config.ts` 在途修改始终未暂存。
 - 两仓候选分支均与各自远端一致；Server 最新远端为 `1cc4ad0e38889ce489e28c6249f0278057f59279`，Web 为 `646dc80aed8cba16029296efa48ec65e75eda9b3`。
 
+## 续办结果（Server `335d34d6`）
+
+### LC023-01：可控任务与副作用次数
+
+新增 `AgentGraphExecutionLifecycleControlledTaskTest`，使用有界 latch 和虚拟线程夹具，不启动常驻服务：
+
+- 排队取消：`QUEUED → CANCELLED`，外部执行调用 0 次，终态事件 1 次。
+- 运行取消竞争：执行进入后发起取消，外部副作用精确 1 次，`finish(CANCELLED)` 精确 1 次，线程在 5 秒界内退出。
+- 重启恢复：启动时先把不确定的 `RUNNING/CANCEL_REQUESTED` 批量标为 `INTERRUPTED/SERVICE_RESTART`，只重新派发 `QUEUED`；夹具中的队列任务执行 1 次，未重放不确定运行任务。
+- 原始输出：`.runtime-lc023/lifecycle-controlled-task-test.log`。3 tests，0 failures/errors/skipped，`BUILD SUCCESS`。
+- 提交与远端回读：`335d34d6db150f8f59723cfd917e9489e482543a`。
+
+### LC023-02：三协议真实 HTTP 增量与失败语义
+
+扩充 `AgentChatModelAssemblerStreamingTest`，以 JDK `HttpServer` 建立三个真实 HTTP/SSE 对端：
+
+- `OPENAI_CHAT`：收到 `chat-`、`ok` 两个 delta，最终文本 `chat-ok`，HTTP 调用 1 次。
+- `OPENAI_RESPONSES`：收到 `response.output_text.delta`，最终文本 `responses-ok`，HTTP 调用 1 次。
+- `ANTHROPIC`：收到 Messages 事件序列及 `text_delta`，最终文本 `anthropic-ok`，HTTP 调用 1 次。
+- 部分输出失败：首个可见 delta=`visible` 后注入损坏事件，客户端报告错误且请求调用仍为 1 次，没有重放。
+- 429：流式对端返回 429，客户端报告错误，请求调用 1 次。
+- `afterSequence` 续传继续引用本回执第 57 行的真实 API 结果：sequence 1/2，`afterSequence=1` 仅返回 sequence 2。
+- 原始输出：`.runtime-lc023/streaming-http-protocol-test.log`。5 tests，0 failures/errors/skipped，`BUILD SUCCESS`。
+- 提交与远端回读：`a4e73177a93bab1076730f6689a60af6808bf3e5`；随后生命周期提交包含该提交。
+
+最终联合聚焦门禁：`.runtime-lc023/lifecycle-final-focused-test.log`，8 tests，0 failures/errors/skipped，`BUILD SUCCESS`。
+
+### LC023-03：headed 登录诊断
+
+使用官方 `browser-use:control-browser` 的 IAB，`headless=false`、1440×900，候选 URL `http://127.0.0.1:15173/login?redirect=/agent/graph-designer/2118307199955574786`：
+
+- 原“服务暂时不可用”根因是候选 Server 未存活，Web 代理目标 18080 连接失败；重新构建 `a4e73177` 候选并用固定 dev 配置启动后，`/api/actuator/health` 返回 200，登录提交不再返回服务不可用。
+- 首次按旧基线口令 `admin123` 提交，页面明确返回“密码错误”。检查当前可执行 PostgreSQL 迁移后确认 `R__0.1.10_admin_password.sql` 会把默认超管口令收敛为 `AdminP@ssw0rd`；改用该固定 dev 种子口令再次提交仍返回“密码错误”。这说明隔离库 `smart_workflow_lc023_01` 的管理员散列与当前迁移声明不一致，问题不在 Web 登录请求或候选服务可用性。
+- 本轮没有改写隔离库用户密码，也没有读取真实凭据。由于无法建立登录态，页面提交→增量→完成/取消→刷新回查未能形成，不能标为 UI 通过。
+- 浏览器执行对象为图 `2118307199955574786`；未提交截图，符合日志/截图不入 Git 的要求。
+
 ## 精确剩余依赖
 
-1. LC023-01 尚缺可控长任务的排队取消、运行取消竞争、服务重启恢复和副作用精确次数的真实 API 对端结果。
-2. LC023-02 三格式装配/兼容与既有 429 精确调用次数聚焦测试通过，原文 `.runtime-lc023/lifecycle-protocol-focused-test.log`；尚缺三格式流式对端的部分输出错误次数。真实供应商增量依赖既有授权配置在隔离候选中可用，且不能读取或复制秘密，记为 `REQUIRES_SECRET`。
-3. LC023-03 已使用非秘密 dev 固定输入实际提交登录；候选页面返回服务暂不可用。尚缺解除该候选登录服务错误后完成 headed 提交→增量→取消或完成→刷新回查。
-4. Server 全量门禁仍有三项 Notify 失败；本轮只保存并分列，不把无关失败顺手扩成修复范围。
+唯一外部依赖为真实供应商密钥：三格式真实 HTTP 对端、部分输出失败、429、续传和禁止重放均已完成；对真实供应商的增量调用因任务明确禁止读取密钥，记为 `REQUIRES_SECRET`。
+
+另有两项未通过，但不是外部秘密：隔离库固定管理员输入与迁移声明不一致，导致 headed UI 链无法继续；Server 全量门禁的三个 Notify 既有失败仍按第 75 行分列。本轮已完成授权内 Agent 生命周期和协议缺口，不修改用户库、不扩修 Notify。
 
 整体七阶段保持 1/1/5：评估完成；实施进行中；验收同步、feature→develop→main、发布 0.2.3、发布后同步、结束未开始。
