@@ -6,12 +6,9 @@
 - 规划终态复核：`product/0.2.2/receipts/planning-final-review-022-completed.md`。
 - 方向全部归档到 `product/0.2.2/passed/`。
 
-## 2. 在途收尾
+## 2. 收尾
 
-终态传播：`product/0.2.2/ready/direction-final-propagation-022.md`。
-- 承接：Executor。
-- 范围：只把 `COMPLETED` 写进 knowledge 和受影响的入口，回读两仓 `releases/latest`。memory 已由规划改写。
-- 回执：`final-propagation-022-01.md`。规划读回执后把这份方向归档。
+终态传播已完成，回执 `product/0.2.2/receipts/final-propagation-022-01.md`：knowledge、`version.json`、根 README、CHANGELOG 都写成了 `COMPLETED`，两仓 `releases/latest` 都是 `0.2.2`。方向已归档。唯一下一动作：等 Owner 安排下一个目标。
 
 ## 3. 当前基线
 
