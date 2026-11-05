@@ -38,7 +38,7 @@ CI build-release.yml 断言 develop 默认版本 `0.2.1-SNAPSHOT`，版本收敛
 
 ## 10. 唯一下一动作
 
-Executor 按 `product/0.2.2/receipts/planning-execution-prompt-close-022-01.md` 修测并全量重跑（回执 `close-sync-022-02.md`），随后连续推进第 4—6 阶段；第 7 阶段规划复核归档后 `COMPLETED`。
+Executor 按 `product/0.2.2/receipts/planning-execution-prompt-close-022-02.md` 复查 UAT health、回传分支/发布事实、修两例 CI 测试（回执 `close-sync-022-03.md`），等规划定合并顺序后推进第 4—6 阶段；第 7 阶段规划复核归档后 `COMPLETED`。
 
 ## 11. 下一轮完成标准
 
