@@ -6,7 +6,7 @@
 
 0.2.3 XL正式方向READY：`product/0.2.3/ready/direction-023-agent-execution-lifecycle.md`。唯一下一动作：Executor据此制定实施方案，处理清单同步前置动作并连续实施graph异步、流式、取消及恢复。
 
-原覆盖search不再独立派发；清单同步残留和Git收尾不阻塞主线。现有信息已足够实施。
+原覆盖search不再独立派发；清单同步残留和Git收尾不阻塞主线。现有信息已足够实施。最新执行回执01—04已复核：实现有提交，但候选服务/API未运行验通，真实供应商增量缺失；不作功能通过。当前按 `product/0.2.3/receipts/planning-execution-prompt-lifecycle-023-01.md` 继续原任务验证，原方向保持，不新增search。
 
 ## 基线
 
