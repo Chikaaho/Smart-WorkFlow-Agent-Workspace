@@ -1,8 +1,8 @@
 # 需求池（Requirement Pool）
 
-## 当前执行入口：0.2.4（2026-11-06）
+## 当前：无在途交付（0.2.4 COMPLETED，2026-11-06）
 
-Owner指定README示例二（校园大门流量异常研判）、示例三（MES温度研判）的搭建验证、补缺与修复。功能PASSED（`product/0.2.4/receipts/planning-review-024-03-passed.md`），Owner确认版本0.2.4、第51个正式功能。已发布 0.2.4 并交付 UAT（Server tag `41511bd4`/Web `f4acc3d`，语义 Release latest=0.2.4，UAT Flyway v0.2.9、health UP）。执行侧七阶段 6/0/1；下一动作 Planner 终态复核 0.2.4。原始场景见 `todo/ch-apaas-project-update.md` §3.2/§3.3。
+0.2.4 七阶段7/0/0，终态复核 `product/0.2.4/receipts/planning-final-review-024-completed.md`，方向归档 `product/0.2.4/passed/`。README示例二、三落地，第51个正式功能；tag 0.2.4（Server `41511bd4`/Web `f4acc3d`），UAT Flyway v0.2.9、health UP。功能51、M59/18/13、ADV1/7/56、P63、问题57；P20未核销。等待Owner指定下一版本。原始场景见 `todo/ch-apaas-project-update.md` §3.2/§3.3。
 
 ## 历史：0.2.3 COMPLETED（2026-11-06）
 
@@ -11,8 +11,7 @@ Owner指定README示例二（校园大门流量异常研判）、示例三（MES
 ### 0.2.3 后续候选（观察区，未排期）
 
 - CI偶发失败族：AgentToolConfigServiceImplTest、AgentOrchestrationServiceImplTest、Notify I6G1a/b/c（Redis Boot）、H2 BadSqlGrammar跨测试污染；发布链多次rerun（并入原“测试抖动隔离”候选）。
-- Server仓 `logs/` 跟踪2116个P64时期Chrome profile缓存（提交e2fe50f7），仓库卫生——**已并入0.2.4前置动作**（取消跟踪+ignore，历史改写需Owner授权）。
-- UAT磁盘余1.6G（92%），下次发布前处理。
+- UAT磁盘：0.2.4升级后余1.3G（94%），升级前已清理会话文件0.64G；下次发布前需扩容或继续清理。
 - Agent逐节点进度事件（0.2.3已接受限制）；P20独立评估。
 - 知识库写入权限粒度：0.2.4中业务角色上传知识样本需授予`agent:model:manage`（连带可管模型），宜拆分知识库读写权限（审查024-02登记，未排期）。
 - 短信、电话通知渠道：Owner 2026-11-06 告知暂未采购；README示例二的短信/电话提醒在0.2.4由邮件+站内信承接，采购后再接入。
