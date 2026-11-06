@@ -1,15 +1,20 @@
 # 需求池（Requirement Pool）
 
-## 当前：无在途交付（0.2.3 COMPLETED，2026-11-06）
+## 当前执行入口：0.2.4（2026-11-06）
 
-0.2.3 七阶段7/0/0，终态复核 `product/0.2.3/receipts/planning-final-review-023-completed.md`，方向归档 `product/0.2.3/passed/`。Agent graph异步、流式、续传、取消、恢复、两Key轮换已发布（tag 0.2.3，UAT v0.2.7），真实供应商实测通过。功能50、M59/18/13、ADV1/7/56、P63、问题57；P20未核销。等待Owner指定下一版本。
+Owner指定README示例二（校园大门流量异常研判）、示例三（MES温度研判）的搭建验证、补缺与修复。唯一入口 `product/0.2.4/ready/direction-024-readme-examples-2-3.md`（XL、READY），总7阶段1/1/5：评估完成、实施已派发，其余未开始。原始场景见 `todo/ch-apaas-project-update.md` §3.2/§3.3。
+
+## 历史：0.2.3 COMPLETED（2026-11-06）
+
+0.2.3 七阶段7/0/0，Owner确认功能数保持50，终态复核 `product/0.2.3/receipts/planning-final-review-023-completed.md`，方向归档 `product/0.2.3/passed/`。Agent graph异步、流式、续传、取消、恢复、两Key轮换已发布（tag 0.2.3，UAT v0.2.7），真实供应商实测通过。功能50、M59/18/13、ADV1/7/56、P63、问题57；P20未核销。等待Owner指定下一版本。
 
 ### 0.2.3 后续候选（观察区，未排期）
 
 - CI偶发失败族：AgentToolConfigServiceImplTest、AgentOrchestrationServiceImplTest、Notify I6G1a/b/c（Redis Boot）、H2 BadSqlGrammar跨测试污染；发布链多次rerun（并入原“测试抖动隔离”候选）。
-- Server仓 `logs/` 跟踪2116个P64时期Chrome profile缓存（提交e2fe50f7），仓库卫生。
+- Server仓 `logs/` 跟踪2116个P64时期Chrome profile缓存（提交e2fe50f7），仓库卫生——**已并入0.2.4前置动作**（取消跟踪+ignore，历史改写需Owner授权）。
 - UAT磁盘余1.6G（92%），下次发布前处理。
 - Agent逐节点进度事件（0.2.3已接受限制）；P20独立评估。
+- 短信、电话通知渠道：Owner 2026-11-06 告知暂未采购；README示例二的短信/电话提醒在0.2.4由邮件+站内信承接，采购后再接入。
 
 ### 前期评估记录（以下路由已由上述正式方向接替）
 
