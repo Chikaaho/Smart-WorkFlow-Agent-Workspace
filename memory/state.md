@@ -4,7 +4,7 @@
 
 ## 当前任务
 
-0.2.4（README 示例二/三，第51个正式功能）功能 **PASSED**，七阶段 **3/1/3**；交付版本 0.2.4，当前正式/部署仍 0.2.3（UAT Flyway v0.2.7、health UP）。主方向归档 `product/0.2.4/passed/`，当前入口 `product/0.2.4/ready/direction-terminal-sync-024.md`。能力与证据见 `knowledge/features/0.2.4-readme-examples-2-3.md` 与 `product/0.2.4/receipts/`。固定值：功能51、M59/18/13、ADV1/7/56、P63、问题57、验证基线[]。唯一下一动作：**第④阶段 feature→develop→main**（Server 全量门禁、Web 四连、版本收敛 0.2.4），随后发布/部署/发布后同步。
+0.2.4（第51个正式功能）功能 PASSED，执行侧七阶段 **6/0/1**，已发布并交付 UAT。正式/部署 Server、Web 均 **0.2.4**（Server tag `41511bd4`、Web `f4acc3d`；语义 Release latest=0.2.4；CI `42198270905`/`42195066830` success）。UAT Flyway **v0.2.9**、health UP、`build.version=0.2.4`。固定值：功能51、M59/18/13、ADV1/7/56、P63、问题57、验证基线[]。唯一下一动作：**Planner 终态复核 0.2.4**。
 
 0.2.3 COMPLETED，七阶段7/0/0；终态复核 `product/0.2.3/receipts/planning-final-review-023-completed.md`，Owner确认功能数保持50。
 

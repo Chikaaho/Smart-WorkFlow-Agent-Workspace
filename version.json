@@ -1,55 +1,55 @@
 {
   "$schema": "CH-aPaaS 版本权威（单一机器可读源；变更须走新回执）",
   "product": "CH-aPaaS",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "iteration": "0.1.0",
   "registeredAt": "2026-11-06",
-  "registeredBy": "0.2.3 发布（Agent 执行生命周期 A01—A08；合并、tag/Release/制品发布与 UAT 升级完成，发布后同步回执 product/0.2.3/receipts/execution-release-023-08.md）",
+  "registeredBy": "0.2.4 发布（README 示例二/三落地，第 51 个正式功能；合并、tag/Release/制品发布与 UAT 升级完成，发布后同步回执 product/0.2.4/receipts/execution-release-024-02.md）",
   "development": {
-    "targetVersion": "0.2.3",
+    "targetVersion": "0.2.4",
     "status": "PUBLISHED",
-    "statusNote": "实施验收 PASSED（A01—A08，规划复核 04）；七阶段 6/0/1（仅第 7 阶段收尾回执）",
-    "direction": "product/0.2.3/ready/direction-023-agent-execution-lifecycle.md",
-    "finalReview": "product/0.2.3/receipts/planning-review-lifecycle-023-04-passed.md",
+    "statusNote": "功能 PASSED（规划审查 03）；执行侧七阶段 6/0/1（发布后同步完成，待规划终态复核）",
+    "direction": "product/0.2.4/passed/direction-024-readme-examples-2-3.md",
+    "finalReview": "product/0.2.4/receipts/planning-review-024-03-passed.md",
     "branches": {
-      "server": "feature 30370877 → develop 383dcd31+a5e5ec67 → main 9b86ff0d（tag 0.2.3）",
-      "web": "feature 3ae42cb4 → develop 53684bb+20f3f27 → main 47106e8（tag 0.2.3）",
-      "workspace": "develop-sw（发布后同步批次已提交并回读）"
+      "server": "feature 8b65ae53 → develop c99bdcf7+a012fada+71c2adc3 → main 41511bd4（tag 0.2.4）",
+      "web": "feature 5d531ce → develop 6622fc5+5184c5d → main f4acc3d（tag 0.2.4）",
+      "workspace": "develop-sw（阶段③与发布后同步批次已提交并回读）"
     },
     "developmentVersion": {
-      "server": "0.2.3-SNAPSHOT",
-      "web": "0.2.3"
+      "server": "0.2.4-SNAPSHOT",
+      "web": "0.2.4"
     }
   },
   "projections": {
     "serverRepo": {
       "path": "Smart-WorkFlow-aPaaS-server",
-      "mavenVersion": "0.2.3（正式构建 -Drevision=0.2.3；开发默认 0.2.3-SNAPSHOT）",
+      "mavenVersion": "0.2.4（正式构建 -Drevision=0.2.4；开发默认 0.2.4-SNAPSHOT）",
       "flywayEndpoint": {
-        "h2": "V0.2.7",
-        "postgresql": "V0.2.7"
+        "h2": "V0.2.9",
+        "postgresql": "V0.2.9"
       },
-      "flywaySeed": "V0.2.0__baseline_seed.sql 基线 + 版本化 V0.2.2～V0.2.7（f1 供应商模型/graph 快照/执行节点明细/知识 RAG、f2 应用整包、0.2.7 agent execution lifecycle）+ 19 支 R__ 双方言"
+      "flywaySeed": "V0.2.0__baseline_seed.sql 基线 + 版本化 V0.2.2～V0.2.9（f1 供应商模型/graph 快照/执行节点明细/知识 RAG、f2 应用整包、0.2.7 agent execution lifecycle、0.2.8 IoT-Agent 桥、0.2.9 失败升级配置与渠道凭据密文）+ 19 支 R__ 双方言"
     },
     "webRepo": {
       "path": "Smart-WorkFlow-aPaaS-Web",
-      "packageVersion": "0.2.3"
+      "packageVersion": "0.2.4"
     },
     "workspace": {
       "path": "Smart-WorkFlow-Agent-Workspace",
       "changelog": "CHANGELOG.md",
-      "releaseNotes": "GitHub Release 0.2.3（Server 9b86ff0d·bootstrap-0.2.3.jar，发布说明含 EXT-023-01 实测结果；Web 47106e8·sw-web-dist-0.2.3.zip）",
-      "upgrade": "docs/ops/production-ops.md §8/§9（UAT 由 0.2.2 就地升级；启动须先 `. ./server.env` 再 start.sh——§6.4 既有教训）",
-      "rollback": "docs/ops/production-ops.md §8.1/§8.2/§9.1（bootstrap.jar.bak-0.2.2（0.2.2）、web.bak-0.2.3-pre.tar.gz；DB 仅新增 V0.2.7 版本化迁移，无破坏性变更）",
-      "configChanges": "无新增必配项；server.env 装载为启动硬前置（PG_USERNAME/PG_PASSWORD/SW_CIPHER_KEY 等）",
-      "dbMigrations": "V0.2.0__baseline_seed.sql + V0.2.2～V0.2.7（h2/postgresql 双方言）+ 19 支 R__；UAT applied 1 migration → v0.2.7",
-      "manifest": "GitHub Release 0.2.3 资产：Server bootstrap-0.2.3.jar 220,811,858 B sha256 ababcba649b991b381df9b68a2bec074b24664794b57d7a71bfebdbc146f9b29（CI run 42075329494 a2 success，build.version=0.2.3 实测）；Web sw-web-dist-0.2.3.zip 6,191,844 B sha256 ad9a966fd8cd151cfc74481d02b2ff97c1d5153bc30e13f2954c799595fbe236（run 42075343895 success，入口 assets/index-BPeKW0PB.js）",
-      "deployment": "UAT 已按既有通道由 0.2.2 就地升级至 0.2.3（2026-11-06）：备份 bootstrap.jar.bak-0.2.2/web.bak-0.2.3-pre.tar.gz；stop.sh 停 0.2.2（PID 3208758）→换包（build.version=0.2.3）→替换 web 静态→首次 start.sh 未装载 server.env 失败（PG SCRAM no password，停服约 11 分钟，§6.4 既有教训）→`. ./server.env` 后启动 181.01s（PID 3228289）、启动段 ERROR 0、Flyway applied 1 migration → v0.2.7、本机与 nginx /sw-server/api/actuator/health 均 UP、HTTPS 根入口 index-BPeKW0PB.js；磁盘可用 1.6G。"
+      "releaseNotes": "GitHub Release 0.2.4（Server 41511bd4·bootstrap-0.2.4.jar；Web f4acc3d·sw-web-dist-0.2.4.zip）",
+      "upgrade": "docs/ops/production-ops.md §8/§9（UAT 由 0.2.3 就地升级；启动前必须 `. ./server.env` 再 start.sh）",
+      "rollback": "docs/ops/production-ops.md §8.1/§8.2/§9.1（bootstrap.jar.bak-0.2.3、web.bak-0.2.4-pre；DB 仅新增 V0.2.8/V0.2.9，无破坏性变更）",
+      "configChanges": "无新增必配项；UAT 仓外无 sw.notify.channels.* 键位（前缀修正不会意外启用渠道）；server.env 装载为启动硬前置",
+      "dbMigrations": "V0.2.0__baseline_seed.sql + V0.2.2～V0.2.9（h2/postgresql 双方言）+ 19 支 R__；UAT applied 2 migrations → v0.2.9",
+      "manifest": "GitHub Release 0.2.4 资产：Server bootstrap-0.2.4.jar 220,856,383 B sha256 1c73a5ee06be756ef96feb3654ec27d7f5dacf2f103ab6aa4609f77a5d25f545（CI run 42198270905 success，build.version=0.2.4 实测）；Web sw-web-dist-0.2.4.zip 6,194,537 B sha256 b40cf483c4537af24b0223c00bed4720b7c99ab26de638a82b612ae74a53ff61（run 42195066830 success，入口 assets/index-egL2MRAT.js）",
+      "deployment": "UAT 已按既有通道由 0.2.3 就地升级至 0.2.4（2026-11-06）：备份 bootstrap.jar.bak-0.2.3/web.bak-0.2.4-pre/DB smart_workflow_20261106_pre024.dump；stop.sh 停 0.2.3 → 换包 → start.sh（需先 `. ./server.env`）启动 176.906s（PID 3251012）、启动段 ERROR 0、Flyway applied 2 migrations → v0.2.9、本机与 nginx /sw-server/api/actuator/health 均 UP、HTTPS 根 200（入口 index-egL2MRAT.js）、build.version=0.2.4；发布前清理旧 reasonix 会话 10,649 文件/0.64 GB，磁盘可用 1.3G。"
     }
   },
   "rules": {
     "candidateFreeze": "候选固定后只允许通过新回执审查的变更进入；代码/迁移/依赖/配置漂移使受影响证据失效并重固定候选",
-    "tagAndRelease": "0.2.3 成对 annotated tag/Release 已发布：Server tag→9b86ff0d、Web tag→47106e8；资产见 manifest；两仓语义 Release 已为 latest，build-<sha> 自动产物全部保留，未删除/覆盖既有发布。",
-    "deployment": "UAT 已由 0.2.2 就地升级至 0.2.3：Flyway v0.2.7；启动 181.01s、ERROR 0、health UP（本机与 nginx）；web 指纹与 CI 制品一致；server.env 必须在 start.sh 前装载。"
+    "tagAndRelease": "0.2.4 成对 annotated tag/Release 已发布：Server tag→41511bd4、Web tag→f4acc3d；资产见 manifest；两仓语义 Release 已为 latest，build-<sha> 自动产物全部保留，未删除/覆盖既有发布。",
+    "deployment": "UAT 已由 0.2.3 就地升级至 0.2.4：Flyway v0.2.9；启动 176.906s、ERROR 0、health UP（本机与 nginx）；web 指纹与 CI 制品一致；server.env 必须在 start.sh 前装载。"
   }
 }

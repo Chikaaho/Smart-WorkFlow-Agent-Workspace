@@ -2,7 +2,9 @@
 
 2026-11-06｜Planner｜本机READY 1.3.4。
 
-## 当前（0.2.4 阶段③完成）
+## 当前（0.2.4 已发布并交付 UAT）
+
+0.2.4 功能 PASSED，执行侧七阶段 6/0/1；Server/Web 均 0.2.4（tag `41511bd4`/`f4acc3d`，语义 Release latest，UAT Flyway v0.2.9、health UP、build.version=0.2.4）。固定值功能51。唯一下一动作：Planner 终态复核 0.2.4。
 
 0.2.4 功能 PASSED，七阶段 3/1/3；版本 0.2.4（第51个正式功能），当前正式/部署仍 0.2.3（UAT v0.2.7、health UP）。当前入口 `product/0.2.4/ready/direction-terminal-sync-024.md`；下一动作第④阶段两仓 feature→develop→main（Server 全量门禁、Web 四连、版本收敛 0.2.4），随后发布/部署/发布后同步。
 

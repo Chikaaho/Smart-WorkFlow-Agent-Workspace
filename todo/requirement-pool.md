@@ -2,7 +2,7 @@
 
 ## 当前执行入口：0.2.4（2026-11-06）
 
-Owner指定README示例二（校园大门流量异常研判）、示例三（MES温度研判）的搭建验证、补缺与修复。功能PASSED（`product/0.2.4/receipts/planning-review-024-03-passed.md`），Owner确认版本0.2.4、第51个正式功能。当前入口 `product/0.2.4/ready/direction-terminal-sync-024.md`（③同步→⑥发布后同步），总7阶段3/1/3（③已完成）；下一动作第④阶段两仓 feature→develop→main，随后发布 0.2.4 并部署 UAT。原始场景见 `todo/ch-apaas-project-update.md` §3.2/§3.3。
+Owner指定README示例二（校园大门流量异常研判）、示例三（MES温度研判）的搭建验证、补缺与修复。功能PASSED（`product/0.2.4/receipts/planning-review-024-03-passed.md`），Owner确认版本0.2.4、第51个正式功能。已发布 0.2.4 并交付 UAT（Server tag `41511bd4`/Web `f4acc3d`，语义 Release latest=0.2.4，UAT Flyway v0.2.9、health UP）。执行侧七阶段 6/0/1；下一动作 Planner 终态复核 0.2.4。原始场景见 `todo/ch-apaas-project-update.md` §3.2/§3.3。
 
 ## 历史：0.2.3 COMPLETED（2026-11-06）
 

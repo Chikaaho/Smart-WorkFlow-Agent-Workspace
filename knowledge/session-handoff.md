@@ -1,6 +1,12 @@
 # 会话交接（session-handoff）— 当前压缩版
 
-## 当前续接：0.2.4 阶段③验收同步完成（2026-11-06）
+## 当前续接：0.2.4 已发布并交付 UAT（2026-11-06，第⑥阶段）
+
+0.2.4（第 **51** 个正式功能）功能 PASSED，执行侧七阶段 **6/0/1**。正式/部署 Server、Web 均 **0.2.4**：tag Server `41511bd4`/Web `f4acc3d`；语义 Release latest=0.2.4（jar 220,856,383 B sha256 `1c73a5ee…`；web zip 6,194,537 B sha256 `b40cf483…`，入口 `assets/index-egL2MRAT.js`）。合并：Server feature `8b65ae53`→develop `c99bdcf7`→版本 `a012fada`→测试 `71c2adc3`→main `41511bd4`（CI `42198270905` success）；Web `5d531ce`→`6622fc5`→`5184c5d`→`f4acc3d`（CI `42195066830` success）。UAT 由 0.2.3 就地升级：DB dump `smart_workflow_20261106_pre024.dump`、jar/web 备份；启动 176.906s（PID 3251012）、ERROR 0、Flyway **v0.2.9**、health UP（本机与 nginx）、HTTPS 200、`build.version=0.2.4`。固定值：功能51；M59/18/13；ADV1/7/56；P63；问题57；验证基线[]。唯一下一动作：**Planner 终态复核 0.2.4**。
+
+以下为历史时点记录，不覆盖上述当前值。
+
+## 历史续接：0.2.4 阶段③验收同步完成（2026-11-06）
 
 0.2.4（README 示例二/三，第 **51** 个正式功能）功能 **PASSED**，七阶段 **3/1/3**。当前入口 `product/0.2.4/ready/direction-terminal-sync-024.md`；主方向归档 `product/0.2.4/passed/`。交付版本 **0.2.4**，当前正式/部署仍 **0.2.3**（UAT Flyway v0.2.7、health UP）；尚未合并/发布。能力：IoT 规则→Agent 图（含 RECENT_SERIES）、失败即升级（级别+双渠道、幂等）、Agent 内部工具、渠道凭据密文、规则页参数/编辑、外部工具 GET 入参修复；迁移 V0.2.8/V0.2.9。真实链路：OpenRouter `:online`（执行 `2118617696818970626`）、真实 LLM、163 SMTP；示例一最小链实例 `4d79de03-d9bb-11f1-aaaf-00ff9e2a8dfb` APPROVED、命令 `2118620919168516097` SENT。固定值：功能51；M59/18/13；ADV1/7/56；P63；问题57；验证基线[]。唯一下一动作：**第④阶段 feature→develop→main**。
 
