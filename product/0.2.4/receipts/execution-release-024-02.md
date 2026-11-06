@@ -66,6 +66,14 @@
 | `docs/ops/production-ops.md` | §8 新增 0.2.4 制品与 UAT 升级记录（键位核对/磁盘清理/server.env 前置/启动与 Flyway/健康） | 回读一致 |
 | `version.json` | 重写为 0.2.4（分支链、0.2.4-SNAPSHOT/0.2.4、Flyway 终点 0.2.9 双方言、manifest sha256、UAT 部署与回滚备份） | JSON 可解析，version=0.2.4 |
 
+## 发布后补记（README 回读提交与 CI 测试修复）
+
+- README 回读提交：Server `4669a412`（main=develop）、Web `10c34cb`（main=develop，CI 两分支 run `42213049445`/`42213041638` **success**）。
+- Server docs 提交在 develop 触发 CI run `42212991421` 失败：`AgentOrchestrationServiceImplTest.run_withToolCalls_shouldPersistToolCallLog` 报 `Values of types "SMALLINT" and "BOOLEAN" are not comparable`；同一提交 main run `42212981752` 通过，属测试 DDL 与 V0.2.3 生产列类型不一致的时序触发。
+- 修复 `3e287692`（仅测试）：`sw_agent_tool_internal`/`sw_agent_tool_external` 测试 DDL 的 `enabled` 对齐 V0.2.3 的 `BOOLEAN`；Agent 模块全量 **351 tests 0 失败**（`gates-agent-postfix.log`）。已推 develop/main，main=develop=`3e287692`。
+- 修复后 main CI run `42216097891` **success**；develop run `42216087469` 首轮命中既有 I6G1a/b/c 时序偶发族（恢复调度与断言竞态，非本修复引入），已 rerun，待最终回读。
+- 该测试修复不改变 0.2.4 制品与 tag；已发布制品仍为 Server `bootstrap-0.2.4.jar` sha256 `1c73a5ee…`、Web `sw-web-dist-0.2.4.zip` sha256 `b40cf483…`。
+
 ## 终态与下一动作
 
 - 正式功能 **51**；M **✅59/🟦18/⬜13=90**；ADV **✅1/🟦7/⬜56=64**；实际 P **63**，已核销集合不变，P35 部分、P20 未核销；问题 **57**；验证基线变更 **[]**。
