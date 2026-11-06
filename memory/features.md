@@ -2,6 +2,8 @@
 
 2026-11-06｜Planner｜`READY 1.3.4`。
 
+- 0.2.4：功能 `PASSED`（规划 2026-11-06，`product/0.2.4/receipts/planning-review-024-03-passed.md`），七阶段 3/1/3。README 示例二、三搭建验证与补能力；Owner 确认版本 0.2.4、登记为**第 51 个正式功能**（阶段③同步生效）。P 编号不核销。能力见 `knowledge/features/0.2.4-readme-examples-2-3.md`。
+
 - 0.2.3：`COMPLETED`（规划 2026-11-06 终态复核 `product/0.2.3/receipts/planning-final-review-023-completed.md`），七阶段 7/0/0。
   - 内容：Agent graph 异步受理、三协议流式、afterSequence 续传、取消、重启恢复、两Key轮换；真实供应商实测通过。
   - 作为既有 Agent graph 增强，功能数保持 50；P20 不核销。清单 M59/18/13、ADV1/7/56、9 项 P 核销确认。

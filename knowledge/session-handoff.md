@@ -1,6 +1,12 @@
 # 会话交接（session-handoff）— 当前压缩版
 
-## 当前续接：0.2.3 执行侧七阶段收尾完成（2026-11-06）
+## 当前续接：0.2.4 阶段③验收同步完成（2026-11-06）
+
+0.2.4（README 示例二/三，第 **51** 个正式功能）功能 **PASSED**，七阶段 **3/1/3**。当前入口 `product/0.2.4/ready/direction-terminal-sync-024.md`；主方向归档 `product/0.2.4/passed/`。交付版本 **0.2.4**，当前正式/部署仍 **0.2.3**（UAT Flyway v0.2.7、health UP）；尚未合并/发布。能力：IoT 规则→Agent 图（含 RECENT_SERIES）、失败即升级（级别+双渠道、幂等）、Agent 内部工具、渠道凭据密文、规则页参数/编辑、外部工具 GET 入参修复；迁移 V0.2.8/V0.2.9。真实链路：OpenRouter `:online`（执行 `2118617696818970626`）、真实 LLM、163 SMTP；示例一最小链实例 `4d79de03-d9bb-11f1-aaaf-00ff9e2a8dfb` APPROVED、命令 `2118620919168516097` SENT。固定值：功能51；M59/18/13；ADV1/7/56；P63；问题57；验证基线[]。唯一下一动作：**第④阶段 feature→develop→main**。
+
+以下为历史时点记录，不覆盖上述当前值。
+
+## 历史续接：0.2.3 执行侧七阶段收尾完成（2026-11-06）
 
 0.2.3 执行侧七阶段 **7/0/0**：正式/部署版本 Server、Web 均 **0.2.3**（tag `0.2.3`：Server `9b86ff0d`、Web `47106e8`；UAT 已部署、Flyway **v0.2.7**、health UP）；语义 Release 两仓 latest=0.2.3。发布后测试稳定性收口：生命周期受控任务 cancel 终态竞争断言竞态已根因修复（`92bbe021`/main `0a13124e`，CI develop success、main attempt 4 success）；两仓 README 回读（Server `c0f03926`、Web `949fdb5`）CI success。当前分支头：Server main=`0a13124e`/develop=`92bbe021`、Web main=develop=`949fdb5`。**EXT-023-01 已闭合**。执行回执 `product/0.2.3/receipts/execution-release-023-08.md`（③—⑦ 分节＋保留环境清单＋不泄露核对）。清单固定值保持：正式功能50；M59/18/13；ADV1/7/56；实际P63；已核销P2/P4/P9/P15/P19/P29/P34/P47/P65；P20不核销；P35部分；问题57；验证基线变更[]。
 

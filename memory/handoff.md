@@ -2,11 +2,13 @@
 
 2026-11-06｜Planner｜本机READY 1.3.4。
 
-## 当前（0.2.4）
+## 当前（0.2.4 阶段③完成）
 
-方向 `product/0.2.4/ready/direction-024-readme-examples-2-3.md`，XL、VERIFYING，七阶段1/1/5。回执01—04已收；补充轮完成 X-02②最小链、REAL-01 OpenRouter 联网搜索、N-01 来源核实，另修复 GET 外部工具入参 `8b65ae53`。待 Planner 验收 `execution-024-04.md`；隔离环境库smart_workflow_024_01、后端18090、前端15175、`.runtime-lc024/`。
+0.2.4 功能 PASSED，七阶段 3/1/3；版本 0.2.4（第51个正式功能），当前正式/部署仍 0.2.3（UAT v0.2.7、health UP）。当前入口 `product/0.2.4/ready/direction-terminal-sync-024.md`；下一动作第④阶段两仓 feature→develop→main（Server 全量门禁、Web 四连、版本收敛 0.2.4），随后发布/部署/发布后同步。
 
-规划收到04后：只判未过ID，已过锁定，第3轮先审口径，不开search。Owner已定：不改写历史，大模型Key不入库；SMTP凭据按模型Key同口径密文入库保留、不提交；真实链路REAL-01/02/03并入本轮。常规决定：截图本机留存、菜单缺失与冷却抑制按已登记边界处理。
+功能 `PASSED`（审查03），七阶段2/1/4，主方向已归档 `passed/`（规划已暂存git mv，待Executor随同步批提交）。Owner确认版本0.2.4、功能数51。新会话提示：你是执行。读取 `product/0.2.4/ready/direction-terminal-sync-024.md`，按唯一终态值清单完成③同步，连续推进④合并、⑤发布0.2.4并部署UAT、⑥发布后同步，回执terminal-sync-024-01与execution-release-024-02。
+
+规划收到后：按roles/planner.md §7.2九项与§7.3复核，通过则COMPLETED并归档同步方向。Owner已定：不改写历史；Key/授权码不入Git。常规决定：截图本机留存、菜单缺失与冷却抑制按已登记边界处理。
 
 ## 0.2.3（历史）
 
