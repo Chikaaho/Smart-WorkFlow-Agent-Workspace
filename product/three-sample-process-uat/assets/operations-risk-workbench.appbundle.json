@@ -1,0 +1,95 @@
+{
+  "bundleFormatVersion": 1,
+  "systemVersion": "0.2.4",
+  "exportedAt": "2026-11-06T14:25:39Z",
+  "packageName": "运营与风险管理工作台_应用配置包",
+  "app": {
+    "name": "运营与风险管理工作台",
+    "icon": "Operation",
+    "color": "#2563EB",
+    "sortNo": 0,
+    "visibleScopeType": "ALL",
+    "status": "ENABLED",
+    "scopes": []
+  },
+  "dirs": [
+    {
+      "id": "src_dir_drill",
+      "name": "应急演练与保障",
+      "sortNo": 10
+    },
+    {
+      "id": "src_dir_campus",
+      "name": "校园安全事件",
+      "sortNo": 20
+    },
+    {
+      "id": "src_dir_mes",
+      "name": "生产运行异常",
+      "sortNo": 30
+    }
+  ],
+  "forms": [
+    {
+      "id": "src_form_drill_plan",
+      "dirId": "src_dir_drill",
+      "formKey": "ops_drill_plan",
+      "name": "跨部门灾备演练计划",
+      "logicalTableName": "ops_drill_plan",
+      "description": "记录演练范围、参与部门、时间窗口、业务影响与恢复目标，供分公司初审、部门并行审批及总公司会签。",
+      "configDefinition": "{\"schemaVersion\":1,\"title\":\"跨部门灾备演练计划\",\"description\":\"用于评估演练影响并协调各参与部门的审批计划。\",\"fields\":[{\"name\":\"drillName\",\"label\":\"演练名称\",\"type\":\"TEXT\",\"required\":true,\"length\":120,\"colSpan\":24},{\"name\":\"branchName\",\"label\":\"分公司\",\"type\":\"TEXT\",\"required\":true,\"length\":100,\"colSpan\":12},{\"name\":\"initiatingDepartment\",\"label\":\"发起部门\",\"type\":\"DEPT\",\"required\":true,\"colSpan\":12},{\"name\":\"initiator\",\"label\":\"演练负责人\",\"type\":\"USER\",\"required\":true,\"colSpan\":12},{\"name\":\"drillCategory\",\"label\":\"演练类型\",\"type\":\"MULTISELECT\",\"required\":true,\"source\":\"custom\",\"options\":[{\"key\":\"power\",\"value\":\"供电切换\"},{\"key\":\"network\",\"value\":\"网络切换\"},{\"key\":\"database\",\"value\":\"数据库恢复\"},{\"key\":\"full_site\",\"value\":\"机房级演练\"}],\"colSpan\":12},{\"name\":\"severity\",\"label\":\"风险等级\",\"type\":\"MULTISELECT\",\"required\":true,\"source\":\"custom\",\"options\":[{\"key\":\"low\",\"value\":\"低\"},{\"key\":\"medium\",\"value\":\"中\"},{\"key\":\"high\",\"value\":\"高\"}],\"colSpan\":12},{\"name\":\"participatingDepartments\",\"label\":\"参与部门\",\"type\":\"DEPT\",\"required\":true,\"multiple\":true,\"colSpan\":24},{\"name\":\"targetSites\",\"label\":\"目标机房与系统\",\"type\":\"TEXT\",\"required\":true,\"multiline\":true,\"length\":2000,\"colSpan\":24},{\"name\":\"plannedStart\",\"label\":\"计划开始时间\",\"type\":\"DATE\",\"required\":true,\"format\":\"datetime\",\"colSpan\":12},{\"name\":\"plannedEnd\",\"label\":\"计划结束时间\",\"type\":\"DATE\",\"required\":true,\"format\":\"datetime\",\"colSpan\":12},{\"name\":\"maintenanceWindowMinutes\",\"label\":\"预计维护窗口（分钟）\",\"type\":\"NUMBER\",\"required\":true,\"defaultValue\":120,\"colSpan\":8},{\"name\":\"recoveryTargetMinutes\",\"label\":\"恢复目标 RTO（分钟）\",\"type\":\"NUMBER\",\"required\":true,\"defaultValue\":30,\"colSpan\":8},{\"name\":\"dataLossTargetMinutes\",\"label\":\"数据恢复点 RPO（分钟）\",\"type\":\"NUMBER\",\"required\":true,\"defaultValue\":5,\"colSpan\":8},{\"name\":\"businessImpact\",\"label\":\"业务影响评估\",\"type\":\"TEXT\",\"required\":true,\"multiline\":true,\"length\":3000,\"colSpan\":24},{\"name\":\"rollbackPlan\",\"label\":\"回退与恢复方案\",\"type\":\"TEXT\",\"required\":true,\"multiline\":true,\"length\":3000,\"colSpan\":24},{\"name\":\"successCriteria\",\"label\":\"演练成功标准\",\"type\":\"TEXT\",\"required\":true,\"multiline\":true,\"length\":2000,\"colSpan\":24},{\"name\":\"stakeholderNotes\",\"label\":\"相关方补充说明\",\"type\":\"TEXT\",\"required\":false,\"multiline\":true,\"length\":2000,\"colSpan\":24}]}",
+      "visibilityScope": null
+    },
+    {
+      "id": "src_form_campus_gate",
+      "dirId": "src_dir_campus",
+      "formKey": "campus_gate_incident",
+      "name": "校园出入口异常事件记录",
+      "logicalTableName": "campus_gate_incident",
+      "description": "汇总闸机流量、校内活动、公开活动检索和处置判断，形成可追溯的分级处置记录。",
+      "configDefinition": "{\"schemaVersion\":1,\"title\":\"校园出入口异常事件记录\",\"description\":\"记录事件事实和判级依据，支持 P1 关注处置与 P0 应急升级。\",\"fields\":[{\"name\":\"campusName\",\"label\":\"校区\",\"type\":\"TEXT\",\"required\":true,\"length\":100,\"colSpan\":12},{\"name\":\"gateCode\",\"label\":\"出入口编号\",\"type\":\"TEXT\",\"required\":true,\"length\":80,\"colSpan\":12},{\"name\":\"eventAt\",\"label\":\"异常发生时间\",\"type\":\"DATE\",\"required\":true,\"format\":\"datetime\",\"colSpan\":12},{\"name\":\"observationWindowMinutes\",\"label\":\"统计窗口（分钟）\",\"type\":\"NUMBER\",\"required\":true,\"defaultValue\":15,\"colSpan\":12},{\"name\":\"inboundObserved\",\"label\":\"窗口内入校人数\",\"type\":\"NUMBER\",\"required\":true,\"colSpan\":6},{\"name\":\"inboundBaseline\",\"label\":\"入校常态基线\",\"type\":\"NUMBER\",\"required\":true,\"colSpan\":6},{\"name\":\"outboundObserved\",\"label\":\"窗口内离校人数\",\"type\":\"NUMBER\",\"required\":true,\"colSpan\":6},{\"name\":\"outboundBaseline\",\"label\":\"离校常态基线\",\"type\":\"NUMBER\",\"required\":true,\"colSpan\":6},{\"name\":\"weatherAndSiteContext\",\"label\":\"天气与现场情况\",\"type\":\"TEXT\",\"required\":false,\"multiline\":true,\"length\":1200,\"colSpan\":24},{\"name\":\"internalEventReferences\",\"label\":\"校内活动与近期流程检索摘要\",\"type\":\"TEXT\",\"required\":false,\"multiline\":true,\"length\":2400,\"colSpan\":24},{\"name\":\"publicEventSummary\",\"label\":\"公开活动与特殊日期检索摘要\",\"type\":\"TEXT\",\"required\":false,\"multiline\":true,\"length\":2400,\"colSpan\":24},{\"name\":\"activityAssessment\",\"label\":\"活动关联结论（SPECIAL / UNEXPLAINED）\",\"type\":\"TEXT\",\"required\":true,\"length\":32,\"colSpan\":12},{\"name\":\"assessmentRationale\",\"label\":\"判定依据与不确定项\",\"type\":\"TEXT\",\"required\":true,\"multiline\":true,\"length\":2400,\"colSpan\":24},{\"name\":\"recommendedPriority\",\"label\":\"建议处置级别（P1 / P0）\",\"type\":\"TEXT\",\"required\":true,\"length\":16,\"colSpan\":12},{\"name\":\"assignedOwner\",\"label\":\"处置负责人\",\"type\":\"USER\",\"required\":true,\"colSpan\":12},{\"name\":\"responseDueAt\",\"label\":\"首次响应时限\",\"type\":\"DATE\",\"required\":true,\"format\":\"datetime\",\"colSpan\":12},{\"name\":\"resolutionSummary\",\"label\":\"现场处置与结案摘要\",\"type\":\"TEXT\",\"required\":false,\"multiline\":true,\"length\":2400,\"colSpan\":24},{\"name\":\"evidenceFiles\",\"label\":\"现场证据\",\"type\":\"ATTACHMENT\",\"required\":false,\"colSpan\":24}]}",
+      "visibilityScope": null
+    },
+    {
+      "id": "src_form_mes_temperature",
+      "dirId": "src_dir_mes",
+      "formKey": "mes_temperature_review",
+      "name": "MES 设备温度偏离研判记录",
+      "logicalTableName": "mes_temperature_review",
+      "description": "记录设备温度序列、工艺背景、阈值与升温速率，区分快速异常、正常加料波动和紧急停机级别。",
+      "configDefinition": "{\"schemaVersion\":1,\"title\":\"MES 设备温度偏离研判记录\",\"description\":\"阈值和速率参数随记录显式留痕；本表单不直接向设备下发控制命令。\",\"fields\":[{\"name\":\"facility\",\"label\":\"厂区\",\"type\":\"TEXT\",\"required\":true,\"length\":100,\"colSpan\":12},{\"name\":\"productionLine\",\"label\":\"生产线\",\"type\":\"TEXT\",\"required\":true,\"length\":100,\"colSpan\":12},{\"name\":\"equipmentCode\",\"label\":\"设备编号\",\"type\":\"TEXT\",\"required\":true,\"length\":100,\"colSpan\":12},{\"name\":\"batchNumber\",\"label\":\"生产批次\",\"type\":\"TEXT\",\"required\":false,\"length\":100,\"colSpan\":12},{\"name\":\"readingAt\",\"label\":\"测温时间\",\"type\":\"DATE\",\"required\":true,\"format\":\"datetime\",\"colSpan\":12},{\"name\":\"currentTemperature\",\"label\":\"当前温度（℃）\",\"type\":\"NUMBER\",\"required\":true,\"colSpan\":12},{\"name\":\"normalBaseline\",\"label\":\"常温参考（℃）\",\"type\":\"NUMBER\",\"required\":true,\"defaultValue\":75,\"colSpan\":6},{\"name\":\"alertThreshold\",\"label\":\"告警阈值（℃）\",\"type\":\"NUMBER\",\"required\":true,\"defaultValue\":80,\"colSpan\":6},{\"name\":\"stopThreshold\",\"label\":\"停机阈值（℃）\",\"type\":\"NUMBER\",\"required\":true,\"defaultValue\":85,\"colSpan\":6},{\"name\":\"riseRatePerMinute\",\"label\":\"升温速率（℃/分钟）\",\"type\":\"NUMBER\",\"required\":true,\"colSpan\":6},{\"name\":\"rapidRiseThreshold\",\"label\":\"快速升温判定值（℃/分钟）\",\"type\":\"NUMBER\",\"required\":true,\"defaultValue\":2.0,\"colSpan\":12},{\"name\":\"assessmentWindowMinutes\",\"label\":\"研判窗口（分钟）\",\"type\":\"NUMBER\",\"required\":true,\"defaultValue\":5,\"colSpan\":12},{\"name\":\"materialAdditionInProgress\",\"label\":\"是否处于人工加料阶段\",\"type\":\"BOOL\",\"required\":true,\"defaultValue\":false,\"colSpan\":12},{\"name\":\"calibrationStatus\",\"label\":\"传感器校准状态\",\"type\":\"TEXT\",\"required\":false,\"length\":80,\"colSpan\":12},{\"name\":\"temperatureSequenceSummary\",\"label\":\"温度序列与数据质量说明\",\"type\":\"TEXT\",\"required\":true,\"multiline\":true,\"length\":2400,\"colSpan\":24},{\"name\":\"agentKnowledgeEvidence\",\"label\":\"知识样本命中与研判依据\",\"type\":\"TEXT\",\"required\":false,\"multiline\":true,\"length\":2400,\"colSpan\":24},{\"name\":\"assessmentConclusion\",\"label\":\"研判结论（NORMAL / RAPID_RISE / EMERGENCY）\",\"type\":\"TEXT\",\"required\":true,\"length\":32,\"colSpan\":12},{\"name\":\"recommendedAction\",\"label\":\"建议处置与安全措施\",\"type\":\"TEXT\",\"required\":true,\"multiline\":true,\"length\":2400,\"colSpan\":24},{\"name\":\"responsibleOwner\",\"label\":\"当班负责人\",\"type\":\"USER\",\"required\":true,\"colSpan\":12},{\"name\":\"reviewNotes\",\"label\":\"复核与交接记录\",\"type\":\"TEXT\",\"required\":false,\"multiline\":true,\"length\":1800,\"colSpan\":24}]}",
+      "visibilityScope": null
+    }
+  ],
+  "opinionForms": [],
+  "processes": [
+    {
+      "processKey": "ops_drill_approval",
+      "name": "跨部门灾备演练计划审批",
+      "formKey": "ops_drill_plan",
+      "themeRule": null,
+      "iotAccessEnabled": false,
+      "iotDeviceActionJson": null,
+      "graphJson": "{\"processKey\":\"ops_drill_approval\",\"name\":\"跨部门灾备演练计划审批\",\"formKey\":\"ops_drill_plan\",\"version\":1,\"elements\":[{\"id\":\"start\",\"kind\":\"node\",\"type\":\"START\",\"config\":{\"name\":\"提交演练计划\"},\"x\":80,\"y\":180},{\"id\":\"branch_review\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"config\":{\"name\":\"分公司科技部风险审核\",\"approvalMode\":\"ALL\",\"participant\":{\"strategy\":\"ROLE\",\"value\":[\"biz_ops\"]}},\"x\":260,\"y\":180},{\"id\":\"dept_parallel\",\"kind\":\"node\",\"type\":\"DYNAMIC_PARALLEL\",\"config\":{\"name\":\"参与部门分管领导并行审批\",\"mode\":\"ALL\",\"maxBranches\":30,\"emptyStrategy\":\"BLOCK\",\"invalidStrategy\":\"SKIP\",\"semanticVersion\":2,\"source\":{\"type\":\"FORM_FIELD\",\"value\":\"participatingDepartments\",\"objectType\":\"DEPT\",\"scope\":\"MAIN\"}},\"x\":460,\"y\":180},{\"id\":\"hq_signoff\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"config\":{\"name\":\"总公司科技部会签\",\"approvalMode\":\"ALL\",\"participant\":{\"strategy\":\"ROLE\",\"value\":[\"biz_ops\"]}},\"x\":680,\"y\":180},{\"id\":\"copy_stakeholders\",\"kind\":\"node\",\"type\":\"COPY\",\"config\":{\"name\":\"知会演练相关负责人\",\"participant\":{\"strategy\":\"ROLE\",\"value\":[\"biz_ops\"]},\"failureStrategy\":\"CONTINUE\"},\"x\":880,\"y\":180},{\"id\":\"end\",\"kind\":\"node\",\"type\":\"END\",\"config\":{\"name\":\"审批完成，等待演练窗口\"},\"x\":1080,\"y\":180},{\"id\":\"e_start_review\",\"kind\":\"edge\",\"source\":\"start\",\"target\":\"branch_review\"},{\"id\":\"e_review_departments\",\"kind\":\"edge\",\"source\":\"branch_review\",\"target\":\"dept_parallel\"},{\"id\":\"e_departments_hq\",\"kind\":\"edge\",\"source\":\"dept_parallel\",\"target\":\"hq_signoff\"},{\"id\":\"e_hq_copy\",\"kind\":\"edge\",\"source\":\"hq_signoff\",\"target\":\"copy_stakeholders\"},{\"id\":\"e_copy_end\",\"kind\":\"edge\",\"source\":\"copy_stakeholders\",\"target\":\"end\"}]}"
+    },
+    {
+      "processKey": "campus_gate_incident_response",
+      "name": "校园出入口异常事件分级处置",
+      "formKey": "campus_gate_incident",
+      "themeRule": null,
+      "iotAccessEnabled": false,
+      "iotDeviceActionJson": null,
+      "graphJson": "{\"processKey\":\"campus_gate_incident_response\",\"name\":\"校园出入口异常事件分级处置\",\"formKey\":\"campus_gate_incident\",\"version\":1,\"elements\":[{\"id\":\"start\",\"kind\":\"node\",\"type\":\"START\",\"config\":{\"name\":\"登记流量异常\"},\"x\":80,\"y\":240},{\"id\":\"triage\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"config\":{\"name\":\"安保值班负责人复核事件事实\",\"approvalMode\":\"ALL\",\"participant\":{\"strategy\":\"ROLE\",\"value\":[\"biz_ops\"]}},\"x\":250,\"y\":240},{\"id\":\"assessment\",\"kind\":\"node\",\"type\":\"CONDITION\",\"config\":{\"name\":\"核对活动关联与处置级别\"},\"x\":400,\"y\":240},{\"id\":\"p1_review\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"config\":{\"name\":\"P1 活动相关记录与跟踪处置\",\"approvalMode\":\"ALL\",\"participant\":{\"strategy\":\"ROLE\",\"value\":[\"biz_ops\"]}},\"x\":620,\"y\":120},{\"id\":\"p0_review\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"config\":{\"name\":\"P0 无法解释事件应急响应\",\"approvalMode\":\"ALL\",\"participant\":{\"strategy\":\"ROLE\",\"value\":[\"biz_ops\"]}},\"x\":620,\"y\":360},{\"id\":\"p0_owner_copy\",\"kind\":\"node\",\"type\":\"COPY\",\"config\":{\"name\":\"知会校园应急负责人\",\"participant\":{\"strategy\":\"ROLE\",\"value\":[\"biz_ops\"]},\"failureStrategy\":\"CONTINUE\"},\"x\":800,\"y\":360},{\"id\":\"end\",\"kind\":\"node\",\"type\":\"END\",\"config\":{\"name\":\"处置记录归档\"},\"x\":1040,\"y\":240},{\"id\":\"e_start_triage\",\"kind\":\"edge\",\"source\":\"start\",\"target\":\"triage\"},{\"id\":\"e_triage_assessment\",\"kind\":\"edge\",\"source\":\"triage\",\"target\":\"assessment\"},{\"id\":\"e_assessment_p1\",\"kind\":\"edge\",\"source\":\"assessment\",\"target\":\"p1_review\",\"config\":{\"branchId\":\"special-event-p1\",\"priority\":1,\"condition\":{\"expression\":\"form.activityAssessment == \\\"SPECIAL\\\"\"}}},{\"id\":\"e_assessment_p0\",\"kind\":\"edge\",\"source\":\"assessment\",\"target\":\"p0_review\",\"config\":{\"branchId\":\"unexplained-p0\",\"default\":true,\"priority\":99}},{\"id\":\"e_p1_end\",\"kind\":\"edge\",\"source\":\"p1_review\",\"target\":\"end\"},{\"id\":\"e_p0_copy\",\"kind\":\"edge\",\"source\":\"p0_review\",\"target\":\"p0_owner_copy\"},{\"id\":\"e_copy_end\",\"kind\":\"edge\",\"source\":\"p0_owner_copy\",\"target\":\"end\"}]}"
+    },
+    {
+      "processKey": "mes_temperature_exception",
+      "name": "MES 设备温度偏离研判与安全处置",
+      "formKey": "mes_temperature_review",
+      "themeRule": null,
+      "iotAccessEnabled": false,
+      "iotDeviceActionJson": null,
+      "graphJson": "{\"processKey\":\"mes_temperature_exception\",\"name\":\"MES 设备温度偏离研判与安全处置\",\"formKey\":\"mes_temperature_review\",\"version\":1,\"elements\":[{\"id\":\"start\",\"kind\":\"node\",\"type\":\"START\",\"config\":{\"name\":\"接收温度偏离记录\"},\"x\":80,\"y\":300},{\"id\":\"assessment\",\"kind\":\"node\",\"type\":\"CONDITION\",\"config\":{\"name\":\"按停机阈值与升温速率分级\"},\"x\":340,\"y\":300},{\"id\":\"emergency_review\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"config\":{\"name\":\"停机阈值触发后的安全处置复核\",\"approvalMode\":\"ALL\",\"participant\":{\"strategy\":\"ROLE\",\"value\":[\"biz_ops\"]}},\"x\":600,\"y\":110},{\"id\":\"rapid_review\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"config\":{\"name\":\"快速升温异常工单处置\",\"approvalMode\":\"ALL\",\"participant\":{\"strategy\":\"ROLE\",\"value\":[\"biz_ops\"]}},\"x\":600,\"y\":300},{\"id\":\"normal_review\",\"kind\":\"node\",\"type\":\"APPROVAL\",\"config\":{\"name\":\"正常工艺波动记录复核\",\"approvalMode\":\"ALL\",\"participant\":{\"strategy\":\"ROLE\",\"value\":[\"biz_ops\"]}},\"x\":600,\"y\":490},{\"id\":\"end\",\"kind\":\"node\",\"type\":\"END\",\"config\":{\"name\":\"处置结果归档\"},\"x\":1020,\"y\":300},{\"id\":\"e_start_assessment\",\"kind\":\"edge\",\"source\":\"start\",\"target\":\"assessment\"},{\"id\":\"e_assessment_emergency\",\"kind\":\"edge\",\"source\":\"assessment\",\"target\":\"emergency_review\",\"config\":{\"branchId\":\"stop-threshold\",\"priority\":1,\"condition\":{\"expression\":\"form.currentTemperature >= form.stopThreshold\"}}},{\"id\":\"e_assessment_rapid\",\"kind\":\"edge\",\"source\":\"assessment\",\"target\":\"rapid_review\",\"config\":{\"branchId\":\"rapid-rise\",\"priority\":2,\"condition\":{\"expression\":\"form.currentTemperature > form.alertThreshold && form.currentTemperature < form.stopThreshold && form.riseRatePerMinute >= form.rapidRiseThreshold\"}}},{\"id\":\"e_assessment_normal\",\"kind\":\"edge\",\"source\":\"assessment\",\"target\":\"normal_review\",\"config\":{\"branchId\":\"slow-rise-or-normal\",\"default\":true,\"priority\":99}},{\"id\":\"e_emergency_end\",\"kind\":\"edge\",\"source\":\"emergency_review\",\"target\":\"end\"},{\"id\":\"e_rapid_end\",\"kind\":\"edge\",\"source\":\"rapid_review\",\"target\":\"end\"},{\"id\":\"e_normal_end\",\"kind\":\"edge\",\"source\":\"normal_review\",\"target\":\"end\"}]}"
+    }
+  ],
+  "dictTypes": []
+}
