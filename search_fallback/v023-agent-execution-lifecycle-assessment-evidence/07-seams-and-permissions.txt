@@ -1,0 +1,107 @@
+# 可复用接缝与权限现状证据（2026-11-05）
+
+## BPM 持久命令队列（claim/租约/重试/恢复）
+ * 流程业务命令消息边界（可替换投递/消费抽象）。
+ * <p>
+ * 默认实现 {@link PersistentBpmCommandQueue} 基于 {@code sw_bpm_command} 持久化表。
+ * 未来接入外部 MQ 时替换本接口实现，命令入口与结果查询契约保持稳定。
+ * 接口语义覆盖：投递（enqueue，与调用方事务同事务持久化）、消费领取（claim，原子、
+ * 可重复领取竞争安全）、消费确认（complete/fail）、重试退避（nack + nextRetryAt）、
+ * 恢复（reclaimStale，消费中断/重启后命令可重新定位）。
+ * </p>
+ */
+public interface BpmCommandQueue {
+
+    /**
+     * 投递命令（受理）。必须在调用方业务事务内执行：本方法只落受理记录，
+     * 接收成功即受理事实已持久化。
+     *
+     * @return 受理标识
+     * @throws org.springframework.dao.DuplicateKeyException 同一 command_key 重复受理时
+     */
+    Long enqueue(CommandEnvelope envelope);
+
+    /**
+16: * 恢复（reclaimStale，消费中断/重启后命令可重新定位）。
+41:    List<CommandEnvelope> claimDue(List<CommandChannelEnum> channels, int limit);
+49:    void complete(Long commandId, String claimToken, String resultJson);
+57:    void reject(Long commandId, String claimToken, String reason);
+67:    boolean failAndScheduleRetry(Long commandId, String claimToken, String reason,
+76:    int reclaimStale(LocalDateTime staleBefore);
+
+## CommandDispatcher 恢复与重试
+21:import java.util.concurrent.ScheduledExecutorService;
+29: * 调度经自有 {@link ScheduledExecutorService} 驱动（不依赖 @EnableScheduling，
+62:    @Value("${sw.bpm.command.max-retries:5}")
+65:    @Value("${sw.bpm.command.backoff-millis:1000}")
+66:    private long backoffMillis;
+68:    @Value("${sw.bpm.command.stale-seconds:60}")
+71:    private ScheduledExecutorService scheduler;
+73:    @Value("${sw.bpm.command.dispatch-workers:3}")
+114:        // 等待超合同上界（普通OA≤5s）。执行并发默认 3（sw.bpm.command.dispatch-workers），
+163:        commandQueue.reclaimStale(LocalDateTime.now().minusSeconds(staleSeconds));
+193:                    "无命令处理器: " + envelope.getCommandType(), maxRetries, backoffMillis);
+235:                    envelope.getClaimToken(), reason, maxRetries, backoffMillis);
+
+## Quartz 单节点 Job
+
+## 通知投递恢复
+package com.sw.ck.notify.service;
+
+/** 投递恢复与重试服务（I6）：服务重启或瞬时故障后从持久状态恢复未完成投递。 */
+public interface NotifyDeliveryRecoveryService {
+
+    /** 扫描到期未完成投递并按退避重试；返回本轮恢复条数。 */
+    int recoverDue();
+}
+
+## 执行详情/节点无数据范围过滤；列表有
+267:        // 等效条件在 selectExecutionPage 内实现（create_by VARCHAR 兼容比较）
+268:        DataScopeFilter scope = DataScopeFilter.resolve(loginContextProvider, deptScopeProvider);
+269:        IPage<AgentGraphExecution> page = executionMapper.selectExecutionPage(
+275:    public AgentGraphExecutionDetailDTO getExecution(Long executionId) {
+276:        return toDetailDTO(requireExecution(executionId));
+282:        requireExecution(executionId);
+291:    private AgentGraphExecution requireExecution(Long executionId) {
+
+## 调试会话列表/详情仅租户 + 权限，无 create_by 归属校验
+150:        AgentGraphDebugSession session = requireSession(sessionId);
+165:        AgentGraphDebugSession session = requireSession(sessionId);
+273:        AgentGraphDebugSession session = requireSession(sessionId);
+420:        AgentGraphDebugSession session = requireSession(sessionId);
+454:        AgentGraphDebugSession session = requireSession(sessionId);
+469:        requireSession(sessionId);
+484:    public PageResult<AgentGraphDebugSessionDTO> pageSessions(PageParam pageParam, Long graphDefId) {
+488:        IPage<AgentGraphDebugSession> page = sessionMapper.selectPage(
+509:    private AgentGraphDebugSession requireSession(Long sessionId) {
+
+## 乐观锁拦截器已装配
+6:import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
+89:            interceptor.addInnerInterceptor(tenantLineInnerInterceptor);
+93:            interceptor.addInnerInterceptor(dataPermissionInterceptor);
+95:        interceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
+96:        interceptor.addInnerInterceptor(new PaginationInnerInterceptor());
+
+## 长事务/连接池：execute 全程 @Transactional；无 Hikari 显式配置
+143:    @Transactional(rollbackFor = Exception.class)
+217:            String output = future.get(timeoutSeconds, java.util.concurrent.TimeUnit.SECONDS);
+未发现显式 Hikari 配置（使用默认值）
+
+## 知识上传同步处理（无异步任务/无取消）
+72:    public KnowledgeDocumentDTO upload(Long kbId, MultipartFile file) {
+101:        doc.setStatus(KnowledgeDocument.STATUS_PENDING);
+108:            updateStatus(doc, KnowledgeDocument.STATUS_PROCESSING, null, 0);
+127:                List<float[]> vectors = embeddingClient.embed(base.getEmbeddingModelId(), texts);
+135:            updateStatus(doc, KnowledgeDocument.STATUS_READY, null, chunks.size());
+145:            updateStatus(doc, KnowledgeDocument.STATUS_FAILED, truncate(message, 500), 0);
+
+## RAG 检索（阻塞；topK/threshold；租户显式）
+39:    public List<KnowledgeHitDTO> retrieve(Long kbId, String query, Integer topK,
+55:        List<float[]> vectors = embeddingClient.embed(base.getEmbeddingModelId(), List.of(query.trim()));
+59:        return vectorStore.search(kbId, vectors.get(0), limit, threshold).stream()
+13: * 所有 SQL 显式带 tenant_id；检索按 cosine 距离升序取前 topK。
+52:                        + "WHERE id = ? AND tenant_id = ? AND deleted = 0",
+59:        jdbcTemplate.update("DELETE FROM sw_knowledge_chunk WHERE tenant_id = ? AND kb_id = ? AND document_id = ?",
+66:        jdbcTemplate.update("DELETE FROM sw_knowledge_chunk WHERE tenant_id = ? AND kb_id = ?", tenantId, kbId);
+79:                        + "WHERE c.tenant_id = ? AND c.kb_id = ? AND c.deleted = 0 AND c.embedding IS NOT NULL "
+80:                        + "ORDER BY c.embedding <=> CAST(? AS vector) LIMIT ?",

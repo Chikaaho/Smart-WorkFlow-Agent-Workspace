@@ -1,0 +1,113 @@
+# 流式/中断/依赖证据（2026-11-05）
+
+## 服务端主代码流式检索
+SseEmitter => 0 命中
+text/event-stream => 0 命中
+Flux< => 0 命中
+StreamingChatModel => 0 命中
+StreamingChatResponseHandler => 0 命中
+WebSocket => 0 命中
+ResponseBodyEmitter => 0 命中
+StreamingResponseBody => 0 命中
+TEXT_EVENT_STREAM => 0 命中
+说明：以上为主代码（排除 src/test）命中数；全部 0。
+
+## 依赖版本
+22:        <spring-ai.version>1.0.4</spring-ai.version>
+35:        <langgraph4j.version>1.5.14</langgraph4j.version>
+57:        <pgvector.version>0.1.6</pgvector.version>
+112:        <langchain4j.version>1.23.0</langchain4j.version>
+113:        <jackson.version>2.22.4</jackson.version>
+122:                <version>${jackson.version}</version>
+139:                <version>${spring-ai.version}</version>
+202:                <version>${langgraph4j.version}</version>
+207:                <version>${langchain4j.version}</version>
+212:                <version>${langchain4j.version}</version>
+217:                <version>${langchain4j.version}</version>
+290:                <version>${pgvector.version}</version>
+
+## agent 模块依赖
+74:            <groupId>org.bsc.langgraph4j</groupId>
+75:            <artifactId>langgraph4j-core</artifactId>
+78:            <groupId>dev.langchain4j</groupId>
+79:            <artifactId>langchain4j</artifactId>
+82:            <groupId>dev.langchain4j</groupId>
+83:            <artifactId>langchain4j-open-ai</artifactId>
+86:            <groupId>dev.langchain4j</groupId>
+87:            <artifactId>langchain4j-anthropic</artifactId>
+
+## 装配器：三种格式 + timeout/retry
+5:import dev.langchain4j.model.anthropic.AnthropicChatModel;
+6:import dev.langchain4j.model.chat.ChatModel;
+7:import dev.langchain4j.model.openai.OpenAiChatModel;
+8:import dev.langchain4j.model.openai.OpenAiResponsesChatModel;
+16: * LangChain4j {@link ChatModel}。
+18: *   <li>{@code OPENAI_CHAT} → {@link OpenAiChatModel}（Chat Completions，baseUrl 可换任意兼容网关）；</li>
+19: *   <li>{@code OPENAI_RESPONSES} → {@link OpenAiResponsesChatModel}（Responses，experimental）；</li>
+20: *   <li>{@code ANTHROPIC} → {@link AnthropicChatModel}（Messages）。</li>
+28: * timeoutSeconds 经各 builder 的 {@code timeout(Duration)} 生效；retryCount 经
+29: * {@code maxRetries}（attempts = retryCount + 1）生效（OpenAi Responses 模板暂无
+33:public class AgentChatModelAssembler {
+36:    public static final Set<String> SUPPORTED_FORMATS = Set.of("OPENAI_CHAT", "OPENAI_RESPONSES", "ANTHROPIC");
+42:    private static final int ANTHROPIC_DEFAULT_MAX_TOKENS = 1024;
+44:    public ChatModel assemble(AgentProvider provider, AgentModel model, String plainApiKey) {
+46:        if (format == null || !SUPPORTED_FORMATS.contains(format)) {
+50:            case "OPENAI_CHAT" -> assembleOpenAiChat(provider, model, plainApiKey);
+51:            case "OPENAI_RESPONSES" -> assembleOpenAiResponses(provider, model, plainApiKey);
+52:            case "ANTHROPIC" -> assembleAnthropic(provider, model, plainApiKey);
+57:    private ChatModel assembleOpenAiChat(AgentProvider provider, AgentModel model, String plainApiKey) {
+58:        OpenAiChatModel.OpenAiChatModelBuilder builder = OpenAiChatModel.builder()
+62:                .timeout(timeout(model))
+63:                .maxRetries(attempts(model));
+80:    private ChatModel assembleOpenAiResponses(AgentProvider provider, AgentModel model, String plainApiKey) {
+81:        OpenAiResponsesChatModel.Builder builder = OpenAiResponsesChatModel.builder()
+97:    private ChatModel assembleAnthropic(AgentProvider provider, AgentModel model, String plainApiKey) {
+98:        AnthropicChatModel.AnthropicChatModelBuilder builder = AnthropicChatModel.builder()
+103:                .maxTokens(model.getMaxTokens() != null ? model.getMaxTokens() : ANTHROPIC_DEFAULT_MAX_TOKENS)
+104:                .timeout(timeout(model))
+105:                .maxRetries(attempts(model));
+115:    private Duration timeout(AgentModel model) {
+122:    /** maxRetries = max(0, retryCount)（LC4j 语义为“失败后重试次数”，retryCount=2 → 最多 3 次尝试） */
+
+## 运行时单例/429 轮换
+18:import java.util.concurrent.ConcurrentHashMap;
+29: *   <li><b>多 Key 轮换（D022-05）</b>：{@link #lock} 限流锁定、{@link #nextCandidate}
+55:    private record CachedEntry(String revisionKey, dev.langchain4j.model.chat.ChatModel chatModel) {
+59:    private record CachedEmbeddingEntry(String revisionKey,
+70:    private final Map<Long, CachedEntry> cache = new ConcurrentHashMap<>();
+73:    private final Map<Long, CachedEmbeddingEntry> embeddingCache = new ConcurrentHashMap<>();
+84:     * 执行前可用性校验（存在 + 模型/供应商均启用）：与 {@link #acquire(Long)} 同语义，
+88:        acquire(modelId);
+98:    public ModelInstance acquire(Long modelId) {
+118:        String revisionKey = revisionKey(model, provider);
+120:                cached != null && cached.revisionKey().equals(revisionKey)
+122:                        : buildAndCache(provider, model, revisionKey)).chatModel();
+138:        String revisionKey = revisionKey(model, provider);
+140:                (id, cached) -> cached != null && cached.revisionKey().equals(revisionKey)
+142:                        : buildEmbeddingAndCache(provider, model, revisionKey)).embeddingModel();
+195:    private CachedEntry buildAndCache(AgentProvider provider, AgentModel model, String revisionKey) {
+201:            return new CachedEntry(revisionKey, assembler.assemble(provider, model, plainApiKey));
+209:                                                        String revisionKey) {
+215:            return new CachedEmbeddingEntry(revisionKey,
+223:    private String revisionKey(AgentModel model, AgentProvider provider) {
+229:    public void lock(Long modelId, int cooldownSeconds) {
+233:                        .set(AgentModel::getLockedUntil, LocalDateTime.now().plusSeconds(cooldownSeconds)));
+240:    public AgentModel nextCandidate(String groupKey, Set<Long> excludeIds, LocalDateTime now) {
+255:    public int cooldownSeconds(AgentModel model) {
+265:    public static boolean isRateLimited(Throwable t) {
+282:    public dev.langchain4j.model.chat.response.ChatResponse chatWithRotation(
+284:        return chatWithRotation(modelId, messages, null);
+294:    public dev.langchain4j.model.chat.response.ChatResponse chatWithRotation(
+300:            ModelInstance instance = acquire(current);
+310:                if (!isRateLimited(e) || instance.model().getGroupKey() == null) {
+313:                lock(current, cooldownSeconds(instance.model()));
+314:                AgentModel next = nextCandidate(instance.model().getGroupKey(), tried, LocalDateTime.now());
+
+## 外部工具超时（内部工具无超时）
+56:    private static final Set<String> SUPPORTED_HTTP_METHODS = Set.of("GET", "POST", "PUT");
+156:            String result = invokeInternal(bean, method, config.getName(), args);
+171:        if (!SUPPORTED_HTTP_METHODS.contains(httpMethodName)) {
+179:        requestFactory.setConnectTimeout(Duration.ofSeconds(timeoutSeconds));
+180:        requestFactory.setReadTimeout(Duration.ofSeconds(timeoutSeconds));
+205:    private String invokeInternal(Object bean, Method method, String toolName, String jsonArgs) {
+207:            return (String) method.invoke(bean, jsonArgs);

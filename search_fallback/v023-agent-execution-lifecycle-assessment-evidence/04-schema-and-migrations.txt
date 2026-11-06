@@ -1,0 +1,214 @@
+# 数据与迁移证据（2026-11-05）
+
+## 迁移清单（PG；H2 同名镜像存在）
+V0.2.0__baseline_seed.sql
+V0.2.2__f1_agent_provider_model.sql
+V0.2.3__f1_stage2_graph_snapshot.sql
+V0.2.4__f1_stage2_execution_node_detail.sql
+V0.2.5__f1_stage3_knowledge_rag.sql
+V0.2.6__f2_app_bundle.sql
+
+## 执行表 DDL 与状态枚举
+CREATE TABLE sw_agent_graph_execution (
+    id                BIGINT      NOT NULL PRIMARY KEY,
+    graph_def_id      BIGINT      NOT NULL,
+    graph_def_version INT         NOT NULL,
+    status            VARCHAR(20) NOT NULL,
+    input             TEXT,
+    result_text       TEXT,
+    error_category    VARCHAR(50),
+    error_message     TEXT,
+    latency_ms        BIGINT,
+    create_time       TIMESTAMP   NOT NULL,
+    create_by         VARCHAR(64),
+    update_time       TIMESTAMP,
+    update_by         VARCHAR(64),
+    deleted           SMALLINT    NOT NULL DEFAULT 0,
+    tenant_id         BIGINT      NOT NULL DEFAULT 0,
+    version           BIGINT      NOT NULL DEFAULT 0
+);
+
+CREATE INDEX idx_sw_agent_gexec_graph ON sw_agent_graph_execution (graph_def_id, deleted);
+CREATE INDEX idx_sw_agent_gexec_time  ON sw_agent_graph_execution (tenant_id, create_time, deleted);
+
+COMMENT ON TABLE sw_agent_graph_execution IS 'M07 Agent 图执行记录（Step12 执行历史）';
+COMMENT ON COLUMN sw_agent_graph_execution.graph_def_id IS '图定义 id（sw_agent_graph_def）';
+COMMENT ON COLUMN sw_agent_graph_execution.graph_def_version IS '执行时图定义版本快照';
+COMMENT ON COLUMN sw_agent_graph_execution.status IS '执行状态：RUNNING/SUCCESS/FAILED';
+COMMENT ON COLUMN sw_agent_graph_execution.input IS '执行入参文本';
+COMMENT ON COLUMN sw_agent_graph_execution.result_text IS '最终输出（成功时）';
+COMMENT ON COLUMN sw_agent_graph_execution.error_category IS '错误分类（解释器携带，非文本匹配）';
+COMMENT ON COLUMN sw_agent_graph_execution.error_message IS '失败原因摘要（不含明文 API Key）';
+COMMENT ON COLUMN sw_agent_graph_execution.latency_ms IS '整次执行耗时（毫秒）';
+
+-- ======== V28（来源: sw-bootstrap，副本 1 处已去重） ========
+-- ===================================================================
+
+## 快照 + 图级超时 + 工具轨迹（V0.2.3）
+-- ===================================================================
+-- Smart-WorkFlow :: V0.2.3 F1 阶段 2：graph 发布快照 + 图级执行超时 + 节点工具轨迹
+-- D022-06：发布生成不可变版本快照，执行/调试绑定快照版本；版本列表可查。
+-- 同时为阶段 2 的图级超时与 LLM 节点工具循环预留列。
+-- ===================================================================
+
+CREATE TABLE sw_agent_graph_snapshot (
+    id            BIGINT       NOT NULL PRIMARY KEY,
+    graph_def_id  BIGINT       NOT NULL,
+    def_version   INT          NOT NULL,
+    graph_key     VARCHAR(100),
+    name          VARCHAR(200),
+    graph_json    TEXT         NOT NULL,
+    create_time   TIMESTAMP,
+    create_by     VARCHAR(64),
+    update_time   TIMESTAMP,
+    update_by     VARCHAR(64),
+    deleted       SMALLINT     NOT NULL DEFAULT 0,
+    tenant_id     BIGINT       NOT NULL DEFAULT 0,
+    version       BIGINT       NOT NULL DEFAULT 0
+);
+
+CREATE UNIQUE INDEX uk_sw_agent_graph_snapshot_ver
+    ON sw_agent_graph_snapshot (tenant_id, graph_def_id, def_version);
+CREATE INDEX idx_sw_agent_graph_snapshot_def
+    ON sw_agent_graph_snapshot (graph_def_id, deleted);
+
+COMMENT ON TABLE  sw_agent_graph_snapshot IS 'F1 阶段 2 图发布快照（不可变，执行/调试按版本绑定）';
+COMMENT ON COLUMN sw_agent_graph_snapshot.graph_def_id IS '图定义 id（sw_agent_graph_def）';
+COMMENT ON COLUMN sw_agent_graph_snapshot.def_version IS '发布版本号（与 sw_agent_graph_def.def_version 对齐）';
+COMMENT ON COLUMN sw_agent_graph_snapshot.graph_json IS '该版本的完整 ProcessGraph JSON 快照';
+
+-- 回填：已发布定义按当前 def_version 生成一条快照。
+-- 升级前更早版本的内容未被保存，无法重建；从本次升级起每次发布都会新增快照。
+INSERT INTO sw_agent_graph_snapshot (id, graph_def_id, def_version, graph_key, name, graph_json,
+                                     create_time, create_by, update_time, update_by,
+                                     deleted, tenant_id, version)
+SELECT -id, id, def_version, graph_key, name, graph_json,
+       update_time, update_by, update_time, update_by, 0, tenant_id, 0
+FROM sw_agent_graph_def
+WHERE status = 'PUBLISHED' AND deleted = 0 AND graph_json IS NOT NULL;
+
+-- 图级执行超时（秒），默认 300 秒；执行服务在超时后把执行记录置为 FAILED 并返回超时错误
+ALTER TABLE sw_agent_graph_def ADD COLUMN execution_timeout_seconds INT NOT NULL DEFAULT 300;
+COMMENT ON COLUMN sw_agent_graph_def.execution_timeout_seconds IS '图级执行超时（秒，默认 300）';
+
+-- LLM 节点工具调用轨迹（JSON 数组：tool/arguments/result）
+ALTER TABLE sw_agent_graph_execution_node ADD COLUMN tool_calls TEXT;
+COMMENT ON COLUMN sw_agent_graph_execution_node.tool_calls IS 'LLM 节点工具调用轨迹（JSON 数组，非工具节点为 NULL）';
+
+-- 工具白名单 enabled 与实体/查询语义统一为 BOOLEAN（原 SMALLINT 在 PG 上无法与
+-- Boolean 参数比较/写入，阶段 2 LLM 节点挂工具依赖该列）
+ALTER TABLE sw_agent_tool_internal ALTER COLUMN enabled DROP DEFAULT;
+ALTER TABLE sw_agent_tool_internal ALTER COLUMN enabled TYPE BOOLEAN USING enabled <> 0;
+ALTER TABLE sw_agent_tool_internal ALTER COLUMN enabled SET DEFAULT TRUE;
+
+ALTER TABLE sw_agent_tool_external ALTER COLUMN enabled DROP DEFAULT;
+ALTER TABLE sw_agent_tool_external ALTER COLUMN enabled TYPE BOOLEAN USING enabled <> 0;
+ALTER TABLE sw_agent_tool_external ALTER COLUMN enabled SET DEFAULT TRUE;
+
+## 供应商/模型两级表 + 多Key字段（V0.2.2）
+CREATE TABLE sw_agent_provider (
+    id              BIGINT NOT NULL PRIMARY KEY,
+    name            VARCHAR(100) NOT NULL,
+    api_format      VARCHAR(30) NOT NULL,
+    base_url        VARCHAR(500) NOT NULL,
+    api_key_cipher  TEXT,
+    enabled         BOOLEAN NOT NULL DEFAULT TRUE,
+    remark          VARCHAR(500),
+    create_time     TIMESTAMP,
+    create_by       VARCHAR(64),
+    update_time     TIMESTAMP,
+    update_by       VARCHAR(64),
+    deleted         SMALLINT NOT NULL DEFAULT 0,
+    tenant_id       BIGINT NOT NULL DEFAULT 0,
+    version         BIGINT NOT NULL DEFAULT 0
+);
+
+CREATE UNIQUE INDEX uk_sw_agent_provider_name ON sw_agent_provider (tenant_id, name);
+CREATE INDEX idx_sw_agent_provider_tenant_deleted ON sw_agent_provider (tenant_id, deleted);
+
+COMMENT ON TABLE sw_agent_provider IS 'F1 供应商：一种 API 格式 + 地址 + 密钥';
+COMMENT ON COLUMN sw_agent_provider.api_format IS 'API 格式：OPENAI_CHAT / OPENAI_RESPONSES / ANTHROPIC';
+COMMENT ON COLUMN sw_agent_provider.api_key_cipher IS 'API Key 密文（AesGcmCipher），不回传明文';
+
+CREATE TABLE sw_agent_model (
+    id              BIGINT NOT NULL PRIMARY KEY,
+    provider_id     BIGINT NOT NULL,
+    name            VARCHAR(100) NOT NULL,
+    model_name      VARCHAR(200) NOT NULL,
+    capabilities    VARCHAR(100) NOT NULL DEFAULT 'CHAT',
+    temperature     DECIMAL(4,2),
+    max_tokens      INT,
+    top_p           DECIMAL(4,2),
+    timeout_seconds INT NOT NULL DEFAULT 30,
+    retry_count     INT NOT NULL DEFAULT 0,
+    enabled         BOOLEAN NOT NULL DEFAULT TRUE,
+    group_key       VARCHAR(100),
+    sort            INT NOT NULL DEFAULT 0,
+    locked_until    TIMESTAMP,
+    quota_cooldown_seconds INT NOT NULL DEFAULT 60,
+    remark          VARCHAR(500),
+    create_time     TIMESTAMP,
+    create_by       VARCHAR(64),
+    update_time     TIMESTAMP,
+    update_by       VARCHAR(64),
+    deleted         SMALLINT NOT NULL DEFAULT 0,
+    tenant_id       BIGINT NOT NULL DEFAULT 0,
+    version         BIGINT NOT NULL DEFAULT 0
+);
+
+CREATE UNIQUE INDEX uk_sw_agent_model_tenant_name ON sw_agent_model (tenant_id, name);
+CREATE INDEX idx_sw_agent_model_td ON sw_agent_model (tenant_id, deleted);
+CREATE INDEX idx_sw_agent_model_provider ON sw_agent_model (tenant_id, provider_id);
+CREATE INDEX idx_sw_agent_model_grp ON sw_agent_model (tenant_id, group_key, sort);
+
+COMMENT ON TABLE sw_agent_model IS 'F1 模型：挂在供应商下，含采样/超时/重试与多Key轮换字段';
+COMMENT ON COLUMN sw_agent_model.capabilities IS '能力：CHAT / EMBEDDING（逗号分隔，预留）';
+COMMENT ON COLUMN sw_agent_model.group_key IS '多Key轮询候选分组标识，null=独立配置不参与轮换';
+
+
+## 调试会话/节点表（baseline 检索）
+1816:CREATE TABLE sw_agent_graph_debug_session (
+1817-    id                BIGINT      NOT NULL PRIMARY KEY,
+1818-    graph_def_id      BIGINT      NOT NULL,
+1819-    graph_def_version INT         NOT NULL,
+1820-    graph_json        TEXT,
+1821-    status            VARCHAR(20) NOT NULL,
+1822-    input             TEXT,
+1823-    breakpoints       TEXT,
+1824-    state_json        TEXT,
+1825-    result_text       TEXT,
+1826-    error_category    VARCHAR(50),
+1827-    error_message     TEXT,
+1828-    latency_ms        BIGINT,
+1829-    expires_at        TIMESTAMP,
+1830-    input_tokens      BIGINT,
+1831-    output_tokens     BIGINT,
+1832-    create_time       TIMESTAMP   NOT NULL,
+1833-    create_by         VARCHAR(64),
+1834-    update_time       TIMESTAMP,
+--
+1844:CREATE TABLE sw_agent_graph_debug_node (
+1845-    id                BIGINT       NOT NULL PRIMARY KEY,
+1846-    debug_session_id  BIGINT       NOT NULL,
+1847-    node_seq          INT          NOT NULL,
+1848-    branch_id         VARCHAR(64)  NOT NULL,
+1849-    node_id           VARCHAR(100) NOT NULL,
+1850-    node_type         VARCHAR(20)  NOT NULL,
+1851-    node_latency_ms   BIGINT,
+1852-    variable_snapshot TEXT,
+1853-    input_tokens      BIGINT,
+1854-    output_tokens     BIGINT,
+1855-    create_time       TIMESTAMP    NOT NULL,
+1856-    create_by         VARCHAR(64),
+1857-    update_time       TIMESTAMP,
+1858-    update_by         VARCHAR(64),
+1859-    deleted           SMALLINT     NOT NULL DEFAULT 0,
+1860-    tenant_id         BIGINT       NOT NULL DEFAULT 0,
+1861-    version           BIGINT       NOT NULL DEFAULT 0
+1862-);
+
+## 会话/消息/工具日志表名
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/entity/AgentMessage.java:22:@TableName("sw_agent_message")
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/entity/AgentToolCallLog.java:17:@TableName("sw_agent_tool_call_log")
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/entity/AgentSession.java:23:@TableName("sw_agent_session")
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/entity/AgentGraphDebugNode.java:20:@TableName("sw_agent_graph_debug_node")

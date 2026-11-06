@@ -1,0 +1,116 @@
+# 代码定位（路径:行号，2026-11-05 工作树）
+
+## graph 正式执行入口/实现
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/controller/AgentGraphDefController.java:112:    @PostMapping("/{id}/execute")
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/controller/AgentGraphDefController.java:114:    public R<AgentGraphExecuteRespDTO> execute(@PathVariable Long id,
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphExecutionServiceImpl.java:86:    private static final String STATUS_RUNNING = "RUNNING";
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphExecutionServiceImpl.java:89:    private static final String STATUS_SUCCESS = "SUCCESS";
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphExecutionServiceImpl.java:92:    private static final String STATUS_FAILED = "FAILED";
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphExecutionServiceImpl.java:95:    private static final int DEFAULT_EXECUTION_TIMEOUT_SECONDS = 300;
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphExecutionServiceImpl.java:99:            java.util.concurrent.Executors.newVirtualThreadPerTaskExecutor();
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphExecutionServiceImpl.java:143:    @Transactional(rollbackFor = Exception.class)
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphExecutionServiceImpl.java:144:    public AgentGraphExecuteRespDTO execute(Long graphDefId, String input) {
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphExecutionServiceImpl.java:169:        exec.setStatus(STATUS_RUNNING);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphExecutionServiceImpl.java:171:        executionMapper.insert(exec);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphExecutionServiceImpl.java:200:                ? DEFAULT_EXECUTION_TIMEOUT_SECONDS : entity.getExecutionTimeoutSeconds();
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphExecutionServiceImpl.java:217:            String output = future.get(timeoutSeconds, java.util.concurrent.TimeUnit.SECONDS);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphExecutionServiceImpl.java:222:            future.cancel(true);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphExecutionServiceImpl.java:238:            future.cancel(true);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphExecutionServiceImpl.java:250:        exec.setStatus(resp.isSuccess() ? STATUS_SUCCESS : STATUS_FAILED);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphExecutionServiceImpl.java:255:        executionMapper.updateById(exec);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphExecutionServiceImpl.java:258:        persistNodeTraces(exec.getId(), traces);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphExecutionServiceImpl.java:309:    private void persistNodeTraces(Long executionId,
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphExecutionServiceImpl.java:366:            executionMapper.updateById(execUpdate);
+
+## 解释器主循环/取消检查/工具循环
+136:    /** LLM 节点 config 键：工具调用最大轮次（Integer，可选，缺省 {@value #DEFAULT_MAX_TOOL_ROUNDS}） */
+140:    public static final int DEFAULT_MAX_TOOL_ROUNDS = 5;
+201:    public static final String ERROR_CATEGORY_GRAPH_TIMEOUT = "GRAPH_TIMEOUT";
+291:    public String run(ProcessGraph graph, String input) {
+316:        while (!activePoints.isEmpty()) {
+343:                        String toolOutput = callToolNode(current, toolInput);
+347:                    case NODE_TYPE_KNOWLEDGE -> writeOutput(current, variables,
+348:                            retrieveKnowledge(knowledgeRetrievalService, current,
+468:            return executeChatWithTools(modelRuntimeService, toolCallbackFactory, tenantId,
+492:    static String retrieveKnowledge(KnowledgeRetrievalService service, GraphElement node,
+566:    static String executeChatWithTools(AgentModelRuntimeService runtime,
+593:        int maxRounds = configInt(node, CONFIG_KEY_MAX_TOOL_ROUNDS, DEFAULT_MAX_TOOL_ROUNDS);
+600:            ChatResponse response = runtime.chatWithRotation(modelConfigId, messages, specs);
+692:    private String callToolNode(GraphElement node, String text) {
+
+## 调试入口/状态机/停止
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/controller/AgentGraphDebugController.java:14:import org.springframework.web.bind.annotation.PostMapping;
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/controller/AgentGraphDebugController.java:41:    @PostMapping
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/controller/AgentGraphDebugController.java:43:    public R<AgentGraphDebugSessionDTO> create(@RequestBody AgentGraphDebugCreateReq req) {
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/controller/AgentGraphDebugController.java:58:    public R<AgentGraphDebugSessionDTO> detail(@PathVariable Long sessionId) {
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/controller/AgentGraphDebugController.java:70:    @PostMapping("/{sessionId}/step")
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/controller/AgentGraphDebugController.java:72:    public R<AgentGraphDebugSessionDTO> step(@PathVariable Long sessionId,
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/controller/AgentGraphDebugController.java:73:                                             @RequestParam(required = false) Long expectedVersion) {
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/controller/AgentGraphDebugController.java:74:        return R.ok(debugService.step(sessionId, expectedVersion));
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/controller/AgentGraphDebugController.java:78:    @PostMapping("/{sessionId}/continue")
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/controller/AgentGraphDebugController.java:80:    public R<AgentGraphDebugSessionDTO> continueToBreakpoint(@PathVariable Long sessionId) {
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/controller/AgentGraphDebugController.java:85:    @PostMapping("/{sessionId}/stop")
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/controller/AgentGraphDebugController.java:87:    public R<AgentGraphDebugSessionDTO> stop(@PathVariable Long sessionId) {
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/controller/AgentGraphDebugController.java:94:    public R<AgentGraphDebugSessionDTO> updateBreakpoints(@PathVariable Long sessionId,
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:54:    private static final String STATUS_PAUSED = "PAUSED";
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:55:    private static final String STATUS_COMPLETED = "COMPLETED";
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:56:    private static final String STATUS_FAILED = "FAILED";
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:57:    private static final String STATUS_STOPPED = "STOPPED";
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:58:    private static final String STATUS_EXPIRED = "EXPIRED";
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:60:    private static final int EXPIRE_MINUTES = 30;
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:132:        session.setStatus(STATUS_PAUSED);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:140:        session.setExpiresAt(LocalDateTime.now().plusMinutes(EXPIRE_MINUTES));
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:151:        expireIfNeeded(session);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:153:        if (STATUS_EXPIRED.equals(session.getStatus())) {
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:154:            // 已在 expireIfNeeded 中更新
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:164:    public AgentGraphDebugSessionDTO step(Long sessionId, Long expectedVersion) {
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:166:        expireIfNeeded(session);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:167:        if (session.getStatus() != null && !STATUS_PAUSED.equals(session.getStatus())) {
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:170:        if (expectedVersion != null && !expectedVersion.equals(session.getVersion())) {
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:201:            session.setStatus(STATUS_FAILED);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:212:            int updated = sessionMapper.updateById(session);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:226:            session.setStatus(STATUS_FAILED);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:233:            int updated = sessionMapper.updateById(session);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:251:            session.setStatus(STATUS_COMPLETED);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:256:            session.setStatus(STATUS_PAUSED);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:259:        int updated = sessionMapper.updateById(session);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:272:    public AgentGraphDebugSessionDTO continueUntilBreakpoint(Long sessionId) {
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:274:        expireIfNeeded(session);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:275:        if (!STATUS_PAUSED.equals(session.getStatus())) {
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:319:                session.setStatus(STATUS_FAILED);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:326:                sessionMapper.updateById(session);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:335:                session.setStatus(STATUS_FAILED);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:342:                sessionMapper.updateById(session);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:350:                session.setStatus(STATUS_COMPLETED);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:356:                sessionMapper.updateById(session);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:368:                session.setStatus(STATUS_PAUSED);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:369:                sessionMapper.updateById(session);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:381:                session.setStatus(STATUS_PAUSED);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:382:                sessionMapper.updateById(session);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:389:        if (refreshed != null && STATUS_PAUSED.equals(refreshed.getStatus())
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:398:                    sessionMapper.updateById(refreshed);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:406:        if (latest != null && STATUS_PAUSED.equals(latest.getStatus())) {
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:421:        expireIfNeeded(session);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:422:        if (session.getStatus() != null && !STATUS_PAUSED.equals(session.getStatus())) {
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:445:        sessionMapper.updateById(session);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:453:    public AgentGraphDebugSessionDTO stop(Long sessionId) {
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:455:        expireIfNeeded(session);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:456:        if (!STATUS_PAUSED.equals(session.getStatus())) {
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:459:        session.setStatus(STATUS_STOPPED);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:461:        sessionMapper.updateById(session);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentGraphDebugServiceImpl.java:492:            expireIfNeeded(s);
+
+## 会话对话入口
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/controller/AgentOrchestrationController.java:33:    @PostMapping("/run")
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/controller/AgentOrchestrationController.java:35:    public R<AgentOrchestrationRunRespDTO> run(@RequestBody @Validated AgentOrchestrationRunReqDTO req) {
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentOrchestrationServiceImpl.java:86:    public AgentOrchestrationRunRespDTO run(AgentOrchestrationRunReqDTO req) {
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentOrchestrationServiceImpl.java:112:                        sessionMapper.insert(session);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentOrchestrationServiceImpl.java:154:                            insertMessage(sessionId, ROLE_USER, req.getInput(), nextOrder);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentOrchestrationServiceImpl.java:155:                            insertMessage(sessionId, ROLE_ASSISTANT, outputText, nextOrder + 1,
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentOrchestrationServiceImpl.java:157:                            persistToolCallLogs(sessionId);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentOrchestrationServiceImpl.java:175:                    modelRuntimeService.lock(currentModelId, modelRuntimeService.cooldownSeconds(instance.model()));
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentOrchestrationServiceImpl.java:176:                    AgentModel next = modelRuntimeService.nextCandidate(
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentOrchestrationServiceImpl.java:212:    private void insertMessage(Long sessionId, String role, String content, int msgOrder) {
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentOrchestrationServiceImpl.java:213:        insertMessage(sessionId, role, content, msgOrder, null, null);
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentOrchestrationServiceImpl.java:216:    private void insertMessage(Long sessionId, String role, String content, int msgOrder,
+sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/service/impl/AgentOrchestrationServiceImpl.java:228:    private void persistToolCallLogs(Long sessionId) {

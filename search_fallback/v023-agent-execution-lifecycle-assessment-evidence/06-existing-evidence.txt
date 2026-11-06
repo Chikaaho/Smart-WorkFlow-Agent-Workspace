@@ -1,0 +1,135 @@
+# 既有证据摘录（2026-11-05 只读）
+
+## 决策 D022-05/06/08
+| D022-02 | 两级数据模型：供应商（名称、API 格式、地址、密钥、启停）下挂模型（模型名、能力 CHAT/EMBEDDING、默认参数、启停） | 新表，替代 `sw_agent_model_config` 的职责 | 参考 ZCode。API 格式枚举固定三种：`OPENAI_CHAT`、`OPENAI_RESPONSES`、`ANTHROPIC`。供应商不设白名单 |
+| D022-03 | 旧配置一次性迁移且不中断引用：每行旧配置迁为"供应商+模型"，graph_json、会话、执行记录中已有的 `agentModelConfigId` 继续能解析到迁移后的模型 | 数据迁移 | 不改写历史执行记录。旧 `ollama` 行迁为 `OPENAI_CHAT` 格式（Ollama 提供 OpenAI 兼容口），地址按兼容口修正；旧 `other` 行迁移后置为停用，等待重新配置 |
+| D022-04 | 模型实例按"模型 id + 配置修订号"单例复用，各格式由各自的装配模板构造；供应商或模型被修改、停用、删除后立即失效，下一次调用重建 | 运行时 | Owner 指定"后台单例+模板装配"。明文密钥只在装配时解密，不进入日志、响应或异常文本 |
+| D022-05 | 已有的分组多密钥轮换（groupKey、429 锁定与冷却）保留，并覆盖图执行与调试路径 | 运行时 | 现只在编排入口生效；不得因迁移丢失该能力 |
+| D022-06 | graph 发布生成不可变版本快照，执行与调试绑定快照版本 | graph | 现发布覆盖同一行，历史执行无法回放 |
+| D022-07 | RAG 向量存储使用 PostgreSQL pgvector，按租户隔离；H2 环境用可替换的内存实现，只用于测试 | RAG | UAT 数据库能否安装 pgvector 扩展，需在发布前核实；装不了时交 Owner 决定，不得静默降级 |
+| D022-09 | 真实 Embedding 验证使用 OpenRouter（OpenAI 兼容 `/embeddings`），选便宜模型；UAT pgvector 在发布阶段部署时安装 | RAG 验证、发布 | 2026-11-04 Owner 指定。Command Code 无 Embeddings 接口（`f1-stage3-1.md` 三）；Key 由 Owner 交执行会话，只存本地库密文。OpenRouter 不可用时报告规划，不自行换供应商 |
+| D022-08 | 本版不做：graph 异步执行、流式输出、执行取消、人工节点、子图节点、Gemini 等其他格式、多模态 | 范围 | 控制 XL 体量；登记到需求池 |
+
+
+## P9/P18/P19/P20 需求池
+| P9 | M07 图节点级多Key轮询 | state.md todo 池 | 低 | 待排期 |
+| P48 | M07-F03-02 工具与函数调用前端配置闭环 | D184 | 中 | ✅ **已核销**（D203 功能级最终验收 12/12 PASSED + 阶段三终态同步，2026-08-25；M07-F03-02 升✅、功能数 31、基线 827/338、100f/981t、V37） |
+| P14 | 数据权限遗留：部门档子查询未过滤 deleted；job 非分页入口未纳管；等效条件 SQL 对 PG 最终验证依赖联调 | D79 遗留§8 | 低 | 待排期 |
+| P24 | **V29 菜单 seed 未 seed sys_role_menu**——正式环境 job/storage 菜单仅超管可达 | I49（D84 已登记） | 中 | ✅ **已核销**（D97；admin-role-governance COMPLETED，I49已关闭） |
+| P25 | 登录状态校验在密码匹配之后（停用账号仍消耗 BCrypt，时序问题） | I50（D84 已登记） | 低 | 待排期 |
+
+### C. 待决策/待设计
+
+| # | 缺口 | 来源/编号 | 严重程度 | 状态 |
+|---|------|-----------|:---:|------|
+| P11 | 停用前已签发 access token 900s 窗口内仍有效（如需即时生效需 JWT 过滤器层单独排期） | D76 遗留 | 低 | 待决策 |
+| P12 | sw-bootstrap 无测试基建，永久迁移测试无法跑（需先决策加依赖） | D76 遗留 | 中 | ✅ **已核销**（2026-08-17 bpm-h2-v8-compat 已落地 junit-jupiter test 依赖 + 永久 `FlywayFullChainH2Test`，30 条全链迁移测试入库） |
+| P15 | 跨环境导入导出 | I16 | 中 | 待设计 |
+| P16 | 发布冻结不可逆——设计器层强校验未做（ColumnValidation 校验已部分存在） | I11 | 中 | 待设计 |
+| P17 | 前端多页签 | I4 | 低 | 待开发 |
+
+## 二、未开发候选（有底座或纯新增，按 handoff 候选池排序）
+
+| # | 候选 | 来源/编号 | 状态 |
+|---|------|-----------|------|
+| P18 | M07-F03-01 助手配置 | handoff 候选3 | 零代码，选型未定 |
+| P19 | M07-F03-03 知识库 RAG | I13 | 选型未定 |
+| P20 | M07-F04-01 对话窗口（SSE） | handoff 候选3 | 零代码 |
+
+## M07 明细索引（P18/P19/P20 仍 ⬜）
+| M07-F02-01 图设计器 | ✅ | agent-model-orchestration（第 15 个） | 已交付 |
+| M07-F02-02 节点 Prompt 配置 | ✅ | agent-graph-prompt-configuration（第 28 个）/ P6 | 已交付核销（D157 复验） |
+| M07-F02-03 图管理 | ✅ | agent-model-orchestration | 已交付 |
+| M07-F02-04 调试运行 | ✅ | agent-graph-execution-observability（第 27 个）+ agent-graph-step-debugging（第 30 个）/ P7 | 运行日志+单步调试双契，P7 已核销 |
+| M07-F03-01 助手配置 | ⬜ | P18 | 未开发候选 |
+| M07-F03-02 工具/函数调用 | ✅ | agent-tool-configuration-frontend（第 31 个）/ P48 | 已交付核销 |
+| M07-F03-03 知识库 RAG | ⬜ | P19 | 未开发候选 |
+| M07-F04-01 对话窗口 | ⬜ | P20 | 零代码 |
+| M07-F04-02 会话管理 | ✅ | agent-token-usage-observability（第 29 个）/ P8 | 已交付核销 |
+
+## D022-05 交付证据（F1S1-G5）
+52:## G5 多密钥轮换 ✅
+53-
+54-- 本地 429 桩（9998）：stub-key-1 → 429，stub-key-2 → 200 `ROTATION-OK`；p1/p2 同组 `verify-rot-group`（优先级 1/2，冷却 60s）
+55-- 图执行：execute `verify-rot-graph` → `success`，output=`ROTATION-OK`；m1 `locked_until=+60s`、m2 未锁
+56-- 调试：debug 会话 step → out=`ROTATION-OK`，m1 再次锁定——图执行与调试均完成轮换
+57-
+58-## G6 旧组件移除 ✅
+15:| F1S1-G5 轮换覆盖 | 本地 429 桩下，图执行和调试均切换到第二把密钥成功，第一把进入 60s 冷却 |
+
+## D022-06 交付证据（快照/版本列表/超时）
+### 1. D022-06 发布版本快照 ✅
+
+- 新增 `sw_agent_graph_snapshot`（V0.2.3，PG/H2），发布时固化该版本完整 `graph_json`；已发布存量图在迁移中按当前 `defVersion` 回填（更早历史内容无法重建）。
+- 执行与调试改为按 `graphDefId + defVersion` 读取快照，不再读取可被草稿编辑覆盖的 `graph_json`；缺失快照时按当前内容补写（存量兼容）。
+- 新增 `GET /agent/graph-defs/{id}/versions`（版本列表，不含 graph_json）与 `PUT /agent/graph-defs/{id}/settings`（图级设置）。
+- 前端：图列表“更多 → 发布版本”弹窗；“执行详情/调试页”显示“快照版本：vN”。
+
+### 2. LLM 节点两级选择 + 节点内工具循环 ✅
+
+- `GET /agent/models/enabled` 只返回“模型启用且供应商启用”的模型；模型列表 DTO 增加 `providerEnabled`。
+- 前端 LLM 面板改为“供应商 → 模型”两级选择（旧图无 providerId 时按已选模型回显归属），并可多选挂载工具。
+- 解释器 LLM 节点支持 `toolNames`：按启用工具构造规格随请求下发，模型请求工具时在节点内执行并回喂结果，直到最终文本或轮次上限（默认 5）；图执行与单步调试共用同一循环。
+- 执行轨迹节点新增 `tool_calls`（工具名/入参/输出），执行详情节点展开可见“工具调用”区块。
+- 带入事项：模型列表对“供应商停用”的模型显示“停用（供应商停用）”，且该模型不出现在 LLM 节点可选列表。
+
+### 3. 图级执行超时 ✅
+
+- `sw_agent_graph_def.execution_timeout_seconds`（默认 300 秒，V0.2.3），图设置弹窗可改（1–3600）。
+- 执行服务在虚拟线程中运行解释器并 `Future.get(timeout)`；超时取消工作线程后，主线程仍把执行记录从 RUNNING 收尾为 FAILED，错误分类 `GRAPH_TIMEOUT`，不留下半完成记录。
+
+### 4. Agent 统一工作台首页 ✅
+13:| 发布两次生成两个快照，第一版执行记录仍显示第一版 | 版本弹窗列出 v3、v2；数据库中同一 graph 有 v2、v3 两条快照；执行 `…986050` 绑定 v2，`…086145` 绑定 v3；工作台“快照版本”列对应一致 |
+28:| F1S2-G3 | 方向第 2 阶段第 1 步：调试记录显示快照版本 | 回执写了“调试页显示快照版本”，但只有执行详情的证据 | 一次单步调试后，调试记录或调试页显示所用快照版本 | 缺证据 |
+34:- 工作台“最近执行”的图名称取图的当前名称，所以 v2 的执行也显示为 `verify-tool-graph-v3`。版本列正确，判定以版本为准，接受；阶段 3 不要求改。
+
+## P19/RAG 交付证据
+13:| F1S3-G1 真实 Embedding | OpenRouter `openai/text-embedding-3-small`（1536 维）。4 份文档的知识库，阈值 0.2：问蓝鲸计划，blue-whale 0.758 排第一；问火星基地，mars-base 0.613 排第一；问北京天气，截图显示“没有命中分片”（最高 0.106）。最终提交上的真实 RAG 执行输出“蓝鲸计划的项目代号是蓝鲸七号。”，快照 v2，Token 213/42/255。V0.2.5 的后续改动已说明：改为按扩展存在与否条件建列，包含在 `37ee9bae`；本轮证据都在最终提交上重做 |
+14:| F1S3-G2 PDF 与 Word | 页面上传 `pdf-probe.pdf`、`word-probe.docx`，均“可检索”、分片 1；问白鹭计划，PDF 0.700 排第一；问海豚计划，Word 0.679 排第一，截图中命中正文就是文件里的专属事实 |
+15:| F1S3-G3 维度与部署顺序 | 同一向量列里同时存有 64 维和 1536 维两个知识库，两者都能检索。在干净的 PG 17 上实测：无扩展时升级成功、不建向量列，并给出 WARN；安装扩展、重启后自动补建向量列，写入后能计算 cosine。回执给出 UAT 部署顺序和回读 SQL |
+41:      "origin_id": "F1S3-G1",
+56:      "origin_id": "F1S3-G2",
+71:      "origin_id": "F1S3-G3",
+
+## F2 v-perm 观察（服务端 403，无越权证据）
+### 5. 迁移与权限
+
+- V0.2.6（PG/H2 双方言）：`sw_form_app_import_record`；应用导出（9132 FormAppExport）/导入（9133 FormAppImport）按钮权限菜单。
+- **V0.2.6/R__ 授权顺序 bug 及修复（自发现自修复）**：全新库上 V0.2.6 的随行授权（授给持有 9130 的角色）先于 R__ 执行时，R__ 的 9130 授权行（9330/9331）尚未插入而空转；R__ `application_center_menu.sql` 按「持有 9130 即补授 9132/9133」幂等对账修复。授权 id 按 MAX(id)+ROW_NUMBER 顺延，租户沿用被授角色的 role_menu 行。
+- 前端：`v-perm` 指令在 Element Plus teleport 弹层的 dropdown-item 上不生效（无权限用户仍可见导出项，`assets/f2-a-no-export-menu.png` 修复前存证），AppGrid 导出项改 `v-if="hasPerm('form:app:export')"` 硬门控；页面级与接口级仍由路由守卫/`@PreAuthorize` 权威拦截。
+
+## 二、验证环境造数（本机留存，不入 Git）
+
+### ⑧ 密钥与权限 ✅
+导出包全文扫描 password/passwd/pwd/jdbc:/connectionstring/secret/cipher = **0 命中**；无权限用户：页面 /form/app-manage 403（seed 修复后可达的查看角色不含 9130 权限入口不出现——工具条导入按钮 v-perm 隐藏、卡片菜单无导出项，`assets/f2-a-no-export-menu.png`）；接口 `GET .../{appId}/export` 与 `POST .../preview` 均 403 结构化拒绝。
+
+### ⑨ 往返一致 ✅
+二次导入应用（`24b29ac5`，导入后无人改动）整包导出 vs 原包结构化对比：**非预期差异 0 处**；8 处语义差异全部设计内——应用名后缀（D022-11）、DICT 字段 dictType 置空×2、dsBinding queryKey/version 置空、extQueries 1→0（契约不落库）、FIXED_USER 置空、dictTypes 2→0（OCCUPIED 不建）；key 全部按映射对齐后一致，`nodeForm.formKey`/`opinionForm.formId` 指向 B 新对象。
+
+## 五、如实报告（缺陷/偏差/环境事项）
+
+1. **V0.2.6/R__ 授权顺序 bug**（自发现自修复，见一.5）：存量库曾出现「菜单 9132/9133 无人持有」，SQL 补授权限行后恢复，后续由 R__ 幂等对账兜底。
+2. **DICT OCCUPIED 字段级置空修复**：首版实现仅记类型级 clearedRefs，字段 dictType 残留编码，与 D022-13「匹配不上的置空」不符；改为字段级置空+位置报告+测试断言，重打 jar 清 B 重导验证。
+3. **FormDesigner 预校验缺 BF20261013-009 豁免**：source=custom 的 DICT 字段被「未绑定字典类型」拦截导致发布无生效反馈；补 `field.source !== 'custom'` 条件与服务端一致，补两用例。
+4. **v-perm 在 EP 弹层失效**：指令在 teleport 渲染的 dropdown-item 上不执行；改 v-if 硬门控（前端仅 UX 显隐，权威鉴权在后端，已由⑧接口 403 证实）。
+5. **商机流程 TXN REJECTED 1611**：A 侧演示数据固有错配（动作绑定 lead 字段、商机记录无对应字段），非导入缺陷；如实留存 REJECTED 记录并以 lead 记录调用成功补证动作链路。
+6. **城市数据源加载失败**：B 侧数据源为假密文种子，查询失败属优雅降级，链路（契约→授权→重绑）已验证。
+--- planning-review-f2-01 ---
+| ⑤ 置空与匹配 | 指定用户 91103 在预检和报告中都列出；角色 demo_admin 命中并实际完成复核 |
+| ⑥ 二次导入 | 生成“CRM 客户管理-导入”，表单 key 重新生成，第一次导入的应用不受影响 |
+| ⑦ 失败回滚 | 故意构造超长 key 让确认导入失败，回读应用、表单、导入记录数量与导入前一致，没有孤儿目录 |
+| ⑧ 权限 | 无权限用户的卡片菜单里没有导出项，导出和预检接口返回 403；导出包里扫不到密码、连接串、密文字段 |
+| ⑨ 往返一致 | 再导出后与原包对比，8 处差异都在设计之内（应用名后缀、置空的引用、未建的字典和契约） |
+| 意见表单冲突的服务端校验 | 改成已存在的 key 时，服务端返回 `BUNDLE_OPINION_KEY_CONFLICT`，导入记录、应用、原表单都没有变化 |
+
+- **格式错误的包：** 超长 key 的包能通过预检，确认导入时直接报 500。数据没有残留，符合回滚要求；但用户只看到一个笼统的错误。预检阶段补字段长度和必填校验更好，登记到需求池，不在本版处理。
+- **商机流程的交易动作被拒绝（1611）：** 原因是 A 侧演示数据本身配错了（动作绑定的是线索的字段），导入只是如实复制，与导入功能无关。
+- **`v-perm` 在弹层菜单里不生效：** 本功能已改用 `v-if`。别的页面如果也在下拉菜单里用 `v-perm`，可能有同样的问题，登记到需求池，F2 不扩大范围去排查。
+
+```planner-convergence
+
+## 0.1.0 前端权限 fail-open 历史审计（已被 I5 收口，现为 fail-closed）
+17:4. **另有 6 类与流程租户无关的生产硬编码/默认值**（prod 固定验证码、JWT/Druid/MinIO 默认凭据、`/actuator/**` permit-all、前端 `v-perm` fail-open 等）。不得并入本轮流程租户修复，按 §5 矩阵分别归属。
+18:5. **Web 生产路径未发现固定租户、固定账号/角色/权限码、固定业务对象 ID 或密钥默认值**；前端身份与租户全部来自后端 `/system/auth/me`。唯一真实前端风险是 `isSessionPlaceholder()` 的 `v-perm` fail-open（仅 UX 显隐，服务端仍拦截）。
+139:- **前端 fail-open**：`src/foundation/permission/index.ts:35-42` `isSessionPlaceholder()` 在「非超管且 permissions/roles 皆空」时使 `isPermVisible` 恒真 → 所有 `v-perm` 元素显示。注释自述为 getInfo 未接入期的占位，但 getInfo 已接入真实 `/system/auth/me`，真实无权限用户会命中该分支。分类：**生产前端 fail-open（仅 UX 显隐，服务端权威仍拦截）**。
+159:| P6 | 前端 `v-perm` `isSessionPlaceholder` fail-open | 中 | 任意含 `v-perm` 页面 | UX 显隐 | 服务端仍拦截 → 非越权，仅暴露入口 | 前端 spec 未覆盖该分支 | 非超管 + 空权限用户登录 | 仅登记风险（I5 真身份装载后应复核） |

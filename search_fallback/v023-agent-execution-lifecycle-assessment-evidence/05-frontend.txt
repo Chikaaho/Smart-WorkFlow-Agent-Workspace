@@ -1,0 +1,137 @@
+# 前端证据（2026-11-05）
+
+## 请求层全局超时（所有请求默认 10s，execute 未覆盖）
+} from './failure-category'
+
+/**
+ * 业务层唯一 HTTP 入口。axios 只允许在本文件出现（ESLint 边界规则强制）。
+ */
+const client: AxiosInstance = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL ?? '/api',
+  timeout: 10_000,
+})
+
+// /auth/login、/auth/refresh、/auth/logout 自身的 401/未授权响应不走全局跳登录处理，
+
+## executeGraph 未传 timeout
+/** POST /agent/graph-defs/{id}/execute {input} → 执行已发布图（一次性返回最终结果） */
+export async function executeGraph(id: EntityId, input: string): Promise<AgentGraphExecuteResp> {
+  const req: AgentGraphExecuteReq = { input }
+  return request<AgentGraphExecuteResp>({
+    method: 'POST',
+    url: `/agent/graph-defs/${id}/execute`,
+    data: req,
+  })
+}
+
+## GraphDesigner 执行：一次请求等待最终结果
+
+async function handleExecute() {
+  const input = executeInput.value.trim()
+  if (!input) {
+    ElMessage.warning(t('agent.testTextRequired'))
+    return
+  }
+  executing.value = true
+  executeResult.value = null
+  try {
+    executeResult.value = await executeGraph(graphId.value, input)
+  } catch (err) {
+    executeResult.value = {
+      success: false,
+      errorMessage: err instanceof ApiError ? err.msg : t('agent.executionFailed'),
+      latencyMs: 0,
+    }
+  } finally {
+    executing.value = false
+  }
+}
+
+## ExecutionDetail 只在挂载时加载，无轮询
+  }
+}
+
+// ─── 挂载 ───
+onMounted(() => {
+  if (!executionId.value || !/^\d+$/.test(String(executionId.value))) {
+    error.value = t('agent.invalidExecutionId')
+  } else {
+    void loadDetail()
+  }
+})
+</script>
+
+
+## 前端流式检索（生产代码）
+EventSource => 3 命中（排除 spec）
+ReadableStream => 0 命中（排除 spec）
+text/event-stream => 0 命中（排除 spec）
+WebSocket => 0 命中（排除 spec）
+AbortController => 4 命中（排除 spec）
+
+## 权限指令（I5 fail-closed，display:none 仅 UX）
+import type { Directive } from 'vue'
+import type { DataScope } from '@/contracts/common'
+import { useUserStore } from '@/stores/user'
+
+/**
+ * 前端权限仅用于 UX 显隐，真实鉴权必须在后端校验。
+ * I5 收口：真实会话为空权限时默认隐藏受控入口（fail closed），
+ * 不再保留「placeholder 恒真」的 fail-open 回退。
+ */
+
+export function hasPerm(code: string): boolean {
+  const session = useUserStore()
+  return session.superAdmin || session.permissions.has(code)
+}
+
+export function hasRole(role: string): boolean {
+  const session = useUserStore()
+  return session.superAdmin || session.roles.has(role)
+}
+
+/**
+ * 数据权限非安全定性，仅供 UI 展示参考；本轮不实现任何 scope 过滤，恒真。
+ */
+export function checkDataScope(_scope: DataScope): boolean {
+  return true
+}
+
+export function usePermission() {
+  return { hasPerm, hasRole, checkDataScope }
+}
+
+export function isPermVisible(code: string): boolean {
+  return hasPerm(code)
+}
+
+export const permissionDirective: Directive<HTMLElement, string> = {
+  mounted(el, binding) {
+    el.style.display = isPermVisible(binding.value) ? '' : 'none'
+  },
+  updated(el, binding) {
+    el.style.display = isPermVisible(binding.value) ? '' : 'none'
+  },
+}
+
+## 调试页传 expectedVersion（step）；continue/stop 不传
+25:  stepDebugSession,
+26:  continueDebugSession,
+27:  stopDebugSession,
+243:    await stepDebugSession(sessionId.value, session.value.version)
+265:    await continueDebugSession(sessionId.value)
+281:    await stopDebugSession(sessionId.value)
+
+## vite.config.ts 在途改动
+diff --git a/vite.config.ts b/vite.config.ts
+index 17eadb9..b259df5 100644
+--- a/vite.config.ts
++++ b/vite.config.ts
+@@ -45,6 +45,7 @@ export default defineConfig(({ mode }) => {
+       },
+     },
+     server: {
++      allowedHosts: ['.chikaho.cn'],
+       proxy: {
+         '/api': {
+           target: env.VITE_PROXY_TARGET || 'http://localhost:8080',
