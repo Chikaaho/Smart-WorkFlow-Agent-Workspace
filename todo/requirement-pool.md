@@ -2,7 +2,7 @@
 
 ## 当前执行入口：0.2.4（2026-11-06）
 
-Owner指定README示例二（校园大门流量异常研判）、示例三（MES温度研判）的搭建验证、补缺与修复。唯一入口 `product/0.2.4/ready/direction-024-readme-examples-2-3.md`（XL、READY），总7阶段1/1/5：评估完成、实施已派发，其余未开始。原始场景见 `todo/ch-apaas-project-update.md` §3.2/§3.3。
+Owner指定README示例二（校园大门流量异常研判）、示例三（MES温度研判）的搭建验证、补缺与修复。唯一入口 `product/0.2.4/ready/direction-024-readme-examples-2-3.md`（XL、VERIFYING），总7阶段1/1/5：评估完成、实施进行中（审查024-02后剩3项），其余未开始。原始场景见 `todo/ch-apaas-project-update.md` §3.2/§3.3。
 
 ## 历史：0.2.3 COMPLETED（2026-11-06）
 
@@ -14,6 +14,7 @@ Owner指定README示例二（校园大门流量异常研判）、示例三（MES
 - Server仓 `logs/` 跟踪2116个P64时期Chrome profile缓存（提交e2fe50f7），仓库卫生——**已并入0.2.4前置动作**（取消跟踪+ignore，历史改写需Owner授权）。
 - UAT磁盘余1.6G（92%），下次发布前处理。
 - Agent逐节点进度事件（0.2.3已接受限制）；P20独立评估。
+- 知识库写入权限粒度：0.2.4中业务角色上传知识样本需授予`agent:model:manage`（连带可管模型），宜拆分知识库读写权限（审查024-02登记，未排期）。
 - 短信、电话通知渠道：Owner 2026-11-06 告知暂未采购；README示例二的短信/电话提醒在0.2.4由邮件+站内信承接，采购后再接入。
 
 ### 前期评估记录（以下路由已由上述正式方向接替）

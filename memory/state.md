@@ -4,7 +4,7 @@
 
 ## 当前任务
 
-0.2.4 XL `VERIFYING`：方向 `product/0.2.4/ready/direction-024-readme-examples-2-3.md`（README示例二校园大门流量异常、示例三MES温度研判）。执行回执024-01/02/03已收；规划审查 `receipts/planning-review-024-01.md` 锁定S2-01/02/05、S3-02、X-03及两场景正常支。Executor 已按补充提示完成：S2-03搜索失败显式承接、S2-04/S3-03失败支P0/异常工单+双渠道、S3-01页面参数生效与同租户拒绝、S3-04三类链截图、X-01业务角色headed、X-02门禁全绿与配置键位核实、REAL-02真实模型、REAL-03真实163 SMTP（凭据密文入库、未提交）。仍阻塞：REAL-01（库内Command Code无联网搜索能力，探测证据见回执）、X-02②示例一自有对象（无导出包且源库无IoT对象/迁移不可解析）。下一动作：Planner 验收 `receipts/execution-024-03.md`。Owner定（11-06）：e2fe50f7凭据文件为本地产物，不改写历史；SMTP凭据按模型Key同口径密文入库保留、不提交Git；真实链路REAL-01/02/03并入本轮。验收S2-01—05、S3-01—04、X-01—03固定；85℃确定性规则、研判失败即升级；通知只做邮件+站内信。版本暂按0.2.4。七阶段1/1/5。
+0.2.4 XL `VERIFYING`：方向 `product/0.2.4/ready/direction-024-readme-examples-2-3.md`（README示例二校园大门流量异常、示例三MES温度研判）。回执01—03已收；审查02（`receipts/planning-review-024-02.md`）后S2-01—05、S3-01—04、X-01、X-03、X-02①③、REAL-02/03全部锁定。补充轮（提示02）已完成：X-02② 隔离库重建最小链（实例4d79de03… APPROVED、抄送2118620259643572225 SUCCESS、预约2118620260075585537 DISPATCHED、命令2118620919168516097 SENT、broker收到drill/room/drill-room-1/down）；REAL-01 OpenRouter `mistralai/mistral-small-24b-instruct-2501:online`（执行2118617696818970626，真实查询词+5来源）；N-01 结论为受控对端脚本 extractFirstJson 失败（非平台模板）。外部工具 GET 入参修复 `8b65ae53`。唯一下一动作：Planner 验收 `receipts/execution-024-04.md`。⑤部署UAT前核对仓外 `sw.notify.channels.*` 键位（前缀修正后会生效）。Owner定（11-06）：e2fe50f7凭据文件为本地产物，不改写历史；SMTP凭据按模型Key同口径密文入库保留、不提交Git；真实链路REAL-01/02/03并入本轮。验收S2-01—05、S3-01—04、X-01—03固定；85℃确定性规则、研判失败即升级；通知只做邮件+站内信。版本暂按0.2.4。七阶段1/1/5。
 
 0.2.3 COMPLETED，七阶段7/0/0；终态复核 `product/0.2.3/receipts/planning-final-review-023-completed.md`，Owner确认功能数保持50。
 

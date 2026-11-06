@@ -4,9 +4,9 @@
 
 ## 当前（0.2.4）
 
-方向 `product/0.2.4/ready/direction-024-readme-examples-2-3.md`，XL、VERIFYING，七阶段1/1/5。执行回执 `execution-024-03.md` 已提交：隔离环境（库smart_workflow_024_01、后端18090、前端15175、`.runtime-lc024/`）完成 S2-03、S2-04/S3-03失败支、S3-01、S3-04、X-01、X-02①③、REAL-02/03。仍阻塞：REAL-01（Command Code 无联网搜索）、X-02②示例一自有对象（无导出包、源库无IoT对象且迁移不可解析）。
+方向 `product/0.2.4/ready/direction-024-readme-examples-2-3.md`，XL、VERIFYING，七阶段1/1/5。回执01—04已收；补充轮完成 X-02②最小链、REAL-01 OpenRouter 联网搜索、N-01 来源核实，另修复 GET 外部工具入参 `8b65ae53`。待 Planner 验收 `execution-024-04.md`；隔离环境库smart_workflow_024_01、后端18090、前端15175、`.runtime-lc024/`。
 
-规划收到03后：只判未过ID，已过锁定，第3轮先审口径，不开search。Owner已定：不改写历史，大模型Key不入库；SMTP凭据按模型Key同口径密文入库保留、不提交；真实链路REAL-01/02/03并入本轮。常规决定：截图本机留存、菜单缺失与冷却抑制按已登记边界处理。
+规划收到04后：只判未过ID，已过锁定，第3轮先审口径，不开search。Owner已定：不改写历史，大模型Key不入库；SMTP凭据按模型Key同口径密文入库保留、不提交；真实链路REAL-01/02/03并入本轮。常规决定：截图本机留存、菜单缺失与冷却抑制按已登记边界处理。
 
 ## 0.2.3（历史）
 
