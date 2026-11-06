@@ -1,8 +1,12 @@
 # 需求池（Requirement Pool）
 
-## 当前：无在途交付（0.2.4 COMPLETED，2026-11-06）
+## 当前：0.3.0 三示例流程已交付（2026-11-07，待 Planner 验收）
 
-0.2.4 七阶段7/0/0，终态复核 `product/0.2.4/receipts/planning-final-review-024-completed.md`，方向归档 `product/0.2.4/passed/`。README示例二、三落地，第51个正式功能；tag 0.2.4（Server `41511bd4`/Web `f4acc3d`），UAT Flyway v0.2.9、health UP。功能51、M59/18/13、ADV1/7/56、P63、问题57；P20未核销。等待Owner指定下一版本。原始场景见 `todo/ch-apaas-project-update.md` §3.2/§3.3。
+0.3.0 已发布并交付 UAT，执行侧6/0/1；总回执 `product/three-sample-process-uat/receipts/execution-final-01.md` 待 Planner 一次性验收。应用「运营与风险管理工作台」3 表单（25/20/23 字段）+3 流程（7/7/6 节点）+3 字典；本地 12 实例、UAT 5 实例实跑覆盖会签/动态并行/抄送/条件分级/预约 MQTT；修复四类缺陷（Server `79f00d3c`）。tag 0.3.0（Server `b4af4c3e`/Web `271d40c`），Release 436832133/436817268，UAT build.version=0.3.0、Flyway v0.2.9、health UP。功能51、M59/18/13、ADV1/7/56、P63、问题57；P20未核销。原始场景见 `todo/ch-apaas-project-update.md` §3.1—3.3。
+
+## 历史：0.2.4 COMPLETED（2026-11-06）
+
+0.2.4 七阶段7/0/0，终态复核 `product/0.2.4/receipts/planning-final-review-024-completed.md`，方向归档 `product/0.2.4/passed/`。README示例二、三落地，第51个正式功能；tag 0.2.4（Server `41511bd4`/Web `f4acc3d`），UAT Flyway v0.2.9、health UP。功能51、M59/18/13、ADV1/7/56、P63、问题57；P20未核销。
 
 ## 历史：0.2.3 COMPLETED（2026-11-06）
 

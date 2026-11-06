@@ -1,6 +1,12 @@
 # 会话交接（session-handoff）— 当前压缩版
 
-## 当前续接：0.2.4 已发布并交付 UAT（2026-11-06，第⑥阶段）
+## 当前续接：0.3.0 已发布并交付 UAT（2026-11-07，三示例流程）
+
+0.3.0 按 Owner 轻量流程完成：本地隔离实例（18091 / `smart_workflow_030`）配置并跑通三个业务示例流程 → 平台导出应用包 → 合入 develop/main → 发布 0.3.0 → UAT 导入、发布流程并实跑实例 → 一次总回执。执行侧七阶段 **6/0/1**（结束待 Planner 一次性验收 `product/three-sample-process-uat/receipts/execution-final-01.md`）。正式/部署 Server、Web 均 **0.3.0**：Server tag `0.3.0`→`b4af4c3e`（main=develop=`b4af4c3e`；CI `42265184368` success；Release `436832133`，jar 220,857,298 B sha256 `479c6c78…`）；Web tag `0.3.0`→`271d40c`（develop `a80414d`；CI `42264490453` success；Release `436817268`，zip 6,194,537 B sha256 `79a51b59…`，入口 `assets/index-egL2MRAT.js`）。本地全量 **2410/0/0/32**。UAT 由 0.2.4 就地升级：启动 **170.894s**、ERROR 0、Flyway **v0.2.9**（无新迁移）、health UP、`build.version=0.3.0`、磁盘 1.6G。交付：3 表单（25/20/23 字段）+3 流程（7/7/6 节点）+3 字典；UAT YJ-20261107-001（动态并行+会签+抄送+预约 DISPATCHED/命令 `2118776467725312002`）、XY-20261107-001/002（P1/P0）、MES-20261107-004/005（RAPID_RISE / >85 FLOW）。修复：审批人空值 NPE、应用包字典项丢弃、预约载荷二次编码、Agent 工具信封/业务键超长（Server `79f00d3c`）、CI 门禁 LF（`b4af4c3e`）。固定值：功能 51；M59/18/13；ADV1/7/56；P63；问题 57；验证基线[]。唯一下一动作：**Planner 验收总回执**。
+
+以下为历史时点记录，不覆盖上述当前值。
+
+## 历史续接：0.2.4 已发布并交付 UAT（2026-11-06，第⑥阶段）
 
 0.2.4（第 **51** 个正式功能）功能 PASSED，执行侧七阶段 **6/0/1**。正式/部署 Server、Web 均 **0.2.4**：tag Server `41511bd4`/Web `f4acc3d`；语义 Release latest=0.2.4（jar 220,856,383 B sha256 `1c73a5ee…`；web zip 6,194,537 B sha256 `b40cf483…`，入口 `assets/index-egL2MRAT.js`）。合并：Server feature `8b65ae53`→develop `c99bdcf7`→版本 `a012fada`→测试 `71c2adc3`→main `41511bd4`（CI `42198270905` success）；Web `5d531ce`→`6622fc5`→`5184c5d`→`f4acc3d`（CI `42195066830` success）。UAT 由 0.2.3 就地升级：DB dump `smart_workflow_20261106_pre024.dump`、jar/web 备份；启动 176.906s（PID 3251012）、ERROR 0、Flyway **v0.2.9**、health UP（本机与 nginx）、HTTPS 200、`build.version=0.2.4`。固定值：功能51；M59/18/13；ADV1/7/56；P63；问题57；验证基线[]。唯一下一动作：**Planner 终态复核 0.2.4**。
 
