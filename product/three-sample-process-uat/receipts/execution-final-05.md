@@ -160,3 +160,4 @@ H1—H5 全部完成，7 条 UAT 路径全部终态 `APPROVED`（A×3、B×3、C
 - 应用包仍不含独立 `APPROVAL_COMMENT` 意见表单定义（导出 `opinionForms` 为空）、触发器脚本、Agent 图与 IoT 规则，与 0.3.1 已知缺口一致；节点内意见字段冻结快照随流程携带，填写与展示可用。
 - UAT 根分区使用率约 98%（剩余约 522 MB），后续发布前需清理旧制品/日志。
 - 截图均在本机 `.runtime-030/uat-shots-032/`，未入 Git；实例数据保留，未删除。
+- 正式流程网络索引：`.runtime-030/uat-shots-032/network-index.json`（2026-11-08 采集，313 条请求/28 条 API：24×200、4×403；403 为 `/workflow/monitor/analytics/summary` 与 `/system/dept/tree` 无权限，部门字段按设计回退 `/system/dept/options`）。
