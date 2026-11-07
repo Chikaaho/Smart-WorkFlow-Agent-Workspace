@@ -1,10 +1,10 @@
 # 交接
 
-2026-11-08｜执行（Executor）｜返修 0.3.1 执行侧完成。
+2026-11-08｜Planner（审查04）｜0.3.1 返修不通过，下发 H1—H5。
 
 ## 当前
 
-三示例流程返修（目标 0.3.1）：**执行侧完成，待 Planner 验收**。方向 `product/three-sample-process-uat/ready/direction-approval-comment-rework-031.md`；回执 `product/three-sample-process-uat/receipts/execution-final-04.md`；登记 `knowledge/features/0.3.1-approval-driven-flow.md`。平台改动：意见→流程变量 + `nodeOpinions` 注入 + 会签聚合（Server `83045569`/`1fc035fc`/`1ce7b3bc`/`6a113431`；`de66f1d0` 版本收敛、`9ba59e97` 断言对齐）；main `452178d8`、tag `0.3.1`、Release `437557325`（bootstrap-0.3.1.jar 220,861,064 B sha256 `9379195e…`）、UAT `build.version=0.3.1` health UP；Web 无改动保持 0.3.0；0.3.0 tag 未动。UAT：17 意见表单 PUBLISHED、三图 A v9/B v9/C v11、触发器 2 条、角色修正（技术委员会 3 人、应急负责人王芳）；8 条意见驱动路径全部 APPROVED（A `YJ-20261107-004` 调整窗口/`003` 退回；B `XY-20261107-008` 误报/`011` P0 上报/`010` 督办；C `MES-20261107-009` 校准/`010` 维修/`011` 复产）。应用包 UAT 导出覆盖 `assets/`（`systemVersion=0.3.1`，66,734 B；缺意见表单定义/触发器脚本/Agent 图/IoT 规则与渠道凭据）。返修七阶段执行侧 **6/0/1**。唯一下一动作：**Planner 验收 0.3.1**。 上一交付 0.2.4 COMPLETED（7/0/0），方向归档 `product/0.2.4/passed/`。
+三示例流程返修（目标 0.3.1）：**规划审查04 **不通过**（`product/three-sample-process-uat/receipts/planning-review-04.md`）：流转机制 a—e 锁定；H1 详情/流转记录不显示结构化意见、H2 意见过简且未贴原文、H3 实例数据带版本号/验证口吻且 B P0 与 4.6% 偏离矛盾、C 阈值非 75/80/85、H4 `<p>` 标签/部门只显示“已选择”/单选折行/标签重复、H5 A 需补充缺截图。返修入口 `receipts/planning-execution-prompt-three-sample-03.md`，改代码发 0.3.2。**原执行侧：方向 `product/three-sample-process-uat/ready/direction-approval-comment-rework-031.md`；回执 `product/three-sample-process-uat/receipts/execution-final-04.md`；登记 `knowledge/features/0.3.1-approval-driven-flow.md`。平台改动：意见→流程变量 + `nodeOpinions` 注入 + 会签聚合（Server `83045569`/`1fc035fc`/`1ce7b3bc`/`6a113431`；`de66f1d0` 版本收敛、`9ba59e97` 断言对齐）；main `452178d8`、tag `0.3.1`、Release `437557325`（bootstrap-0.3.1.jar 220,861,064 B sha256 `9379195e…`）、UAT `build.version=0.3.1` health UP；Web 无改动保持 0.3.0；0.3.0 tag 未动。UAT：17 意见表单 PUBLISHED、三图 A v9/B v9/C v11、触发器 2 条、角色修正（技术委员会 3 人、应急负责人王芳）；8 条意见驱动路径全部 APPROVED（A `YJ-20261107-004` 调整窗口/`003` 退回；B `XY-20261107-008` 误报/`011` P0 上报/`010` 督办；C `MES-20261107-009` 校准/`010` 维修/`011` 复产）。应用包 UAT 导出覆盖 `assets/`（`systemVersion=0.3.1`，66,734 B；缺意见表单定义/触发器脚本/Agent 图/IoT 规则与渠道凭据）。返修七阶段**3/1/3**。唯一下一动作：**Executor 按执行提示03 返修 H1—H5**。 上一交付 0.2.4 COMPLETED（7/0/0），方向归档 `product/0.2.4/passed/`。
 
 ## 0.3.0（历史，终态同步后被 Owner 退回）
 
