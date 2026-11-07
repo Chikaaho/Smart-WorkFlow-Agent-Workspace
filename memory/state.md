@@ -4,7 +4,7 @@
 
 ## 当前任务
 
-三示例流程：返修 G1—G6 已交付（执行回执 `product/three-sample-process-uat/receipts/execution-final-02.md`），**返修版本号 0.3.0（Owner 已确认）同版本覆盖**：Server main `a0ac3a1a`（CI 42326868207 success）、Web main `420e0f9`（CI 42326879133 success），tag `0.3.0` 双仓重指，Release 资产替换为 CI 制品（Server jar sha256 `0ca4dcc3…`、Web zip `c3728e6d…`），UAT 运行包与 Release 资产同字节、build.version=0.3.0、health UP。G1—G6 全部实测（Agent 驱动 B 流程两场景+P0 通知、详情页 formData 回退、截图重截、知识库卡片真实数量、研判字段字典化、G6 NORMAL 取证）。规划审查02：G1—G6通过锁定；新增G7（Agent发起工单的表单字段大量为空、告警正文含英文编码，配置级不发版），入口 `product/three-sample-process-uat/receipts/planning-execution-prompt-three-sample-02.md`；**G7 已交付**（回执 `receipts/execution-final-03.md`：三规则映射补业务常量+两图提示词 formData 全字段映射，UAT 实例 XY-20261107-006/MES-20261107-008 全字段有值、零英文编码，未动代码/tag）；0.3.0 tag强制重指待Owner追认。整体七阶段4/0/3（评估/执行/合并/发版完成；规划验收、发布后同步终态确认、结束待规划）。方向 `product/three-sample-process-uat/ready/direction-three-sample-process-uat.md`；P60旧0.3.0绑定作废、发布顺延。
+三示例流程/0.3.0：规划审查03功能`PASSED`（G1—G7全过，`product/three-sample-process-uat/receipts/planning-review-03-passed.md`），主方向已归档 `product/three-sample-process-uat/passed/`。终态同步已落盘（`receipts/terminal-sync-030-01.md`；交付与配置快照见 `knowledge/features/0.3.0-three-sample-processes.md`，含应用包不含的 Agent 图 v7 与 IoT 规则映射）。发布：正式/部署0.3.0，Server main `a0ac3a1a`、Web main `420e0f9`，tag 0.3.0 同版本覆盖（Owner已追认，Release 说明含覆盖记录、latest=0.3.0），UAT build.version=0.3.0、Flyway v0.2.9、磁盘931M（96%）。Owner定不登记新功能，功能数保持51。整体七阶段**6/0/1**（评估/执行/验收与同步/合并/发版/发布后同步完成；终态复核、结束待规划）。唯一下一动作：**Planner 终态复核 0.3.0**。P60旧0.3.0绑定作废、发布顺延。
 
 上一交付：0.2.4 `COMPLETED`，七阶段7/0/0；终态复核 `product/0.2.4/receipts/planning-final-review-024-completed.md`，第51个正式功能。
 

@@ -1,8 +1,8 @@
 # 需求池（Requirement Pool）
 
-## 当前：0.3.0 三示例流程已交付（2026-11-07，待 Planner 验收）
+## 当前：0.3.0 三示例流程 PASSED（2026-11-07，终态同步完成，待 Planner 终态复核）
 
-0.3.0 已发布并交付 UAT，执行侧6/0/1；总回执 `product/three-sample-process-uat/receipts/execution-final-01.md` 待 Planner 一次性验收。应用「运营与风险管理工作台」3 表单（25/20/23 字段）+3 流程（7/7/6 节点）+3 字典；本地 12 实例、UAT 5 实例实跑覆盖会签/动态并行/抄送/条件分级/预约 MQTT；修复四类缺陷（Server `79f00d3c`）。tag 0.3.0（Server `b4af4c3e`/Web `271d40c`），Release 436832133/436817268，UAT build.version=0.3.0、Flyway v0.2.9、health UP。功能51、M59/18/13、ADV1/7/56、P63、问题57；P20未核销。原始场景见 `todo/ch-apaas-project-update.md` §3.1—3.3。
+0.3.0 功能 `PASSED`（规划审查03，G1—G7 全过；Owner 追认 tag 同版本覆盖，不登记新功能，功能数保持 51）。回执链：`product/three-sample-process-uat/receipts/execution-final-01/02/03.md`；交付与配置快照（Agent 图 v7、IoT 规则映射——应用包不含）见 `knowledge/features/0.3.0-three-sample-processes.md`。发布：正式/部署 0.3.0，Server main `a0ac3a1a`、Web main `420e0f9`（CI 双绿），tag `0.3.0` 覆盖重指（Release 说明含覆盖记录、latest=0.3.0），UAT build.version=0.3.0、Flyway v0.2.9、health UP。功能51、M59/18/13、ADV1/7/56、P63、问题57；P20未核销。唯一下一动作：Planner 终态复核 0.3.0。原始场景见 `todo/ch-apaas-project-update.md` §3.1—3.3（已在 0.3.0 落地）。
 
 ## 历史：0.2.4 COMPLETED（2026-11-06）
 

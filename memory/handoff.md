@@ -4,7 +4,7 @@
 
 ## 当前
 
-三示例流程返修 G1—G6 已交付：回执 `product/three-sample-process-uat/receipts/execution-final-02.md`；规划审查02通过G1—G6，G7（提示02）已交付并写 `execution-final-03.md`：三规则输入映射补业务常量+两图 P1/P0/告警提示词 formData 全字段映射（用户可见文字纯中文），UAT 实例 XY-20261107-006（执行 `2118916386716200961`）/MES-20261107-008（执行 `2118917467017916418`）formData 全字段有值、零英文编码，未发版未动 tag，0.3.0 tag重指待Owner追认。返修版本号 0.3.0（Owner 已确认）同版本覆盖：Server main `a0ac3a1a`（CI 42326868207 success）、Web main `420e0f9`（CI 42326879133 success），tag `0.3.0` 重指（Server tag 对象 `3f4406af`/Web `fbf5aa3`），Release 资产替换为 CI 制品（Server jar sha256 `0ca4dcc3…`、Web zip `c3728e6d…`，说明含覆盖记录），releases/latest=0.3.0；UAT 运行包与 Release 资产同字节、build.version=0.3.0、health UP、Flyway v0.2.9、磁盘 931M（96%）。代码改动：G2 详情/关系端点回传引擎 formData（Server `a05fb7f4`）+ Web fallbackRecord 回退（`c5eac9b`）；G4 知识库卡片真实数量（同 Web 提交）；G5 字典化、G1 通知 bizId、G7 表单填充为配置级（UAT/本地已同步）。上一交付 0.2.4 COMPLETED（7/0/0），终态复核 `product/0.2.4/receipts/planning-final-review-024-completed.md`；方向与同步方向均归档 `product/0.2.4/passed/`。新会话从 `memory/state.md` 与 `todo/requirement-pool.md` 观察区选题。
+三示例流程/0.3.0：规划审查03功能`PASSED`（G1—G7全过，`product/three-sample-process-uat/receipts/planning-review-03-passed.md`），主方向已归档 `product/three-sample-process-uat/passed/`。终态同步已落盘（`receipts/terminal-sync-030-01.md`；交付与配置快照见 `knowledge/features/0.3.0-three-sample-processes.md`，含应用包不含的 Agent 图 v7 与 IoT 规则映射）。发布：正式/部署0.3.0，Server main `a0ac3a1a`、Web main `420e0f9`，tag 0.3.0 同版本覆盖（Owner已追认，Release 说明含覆盖记录、latest=0.3.0），UAT build.version=0.3.0、Flyway v0.2.9、磁盘931M（96%）。Owner定不登记新功能，功能数保持51。整体七阶段**6/0/1**。唯一下一动作：**Planner 终态复核 0.3.0**。P60旧0.3.0绑定作废、发布顺延。 上一交付 0.2.4 COMPLETED（7/0/0），方向归档 `product/0.2.4/passed/`。
 
 ## 0.2.4（历史）
 

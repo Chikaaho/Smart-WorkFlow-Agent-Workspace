@@ -10,6 +10,7 @@
 - **版本与迁移**：Server 开发默认 `0.3.0-SNAPSHOT`（pom revision），正式构建 `-Drevision=0.3.0`；Web 包版本 `0.3.0`。DB 迁移形态不变：`V0.2.0__baseline_seed.sql` + `V0.2.2`～`V0.2.9` + 19 支 R__，终点仍为 `V0.2.9`（0.3.0 无新增迁移）。
 - **UAT 交付**：由 0.2.4 就地升级（备份 DB `smart_workflow_20261107_pre030.dump`、`bootstrap.jar.bak`、`web.bak`）；启动 **170.894s**（PID 3263327）、启动段 ERROR 0、Flyway **v0.2.9**、本机与 nginx health **UP**、HTTPS 根 200、`build.version=0.3.0`、磁盘可用 1.6G（92%）。测试遥测注入所用临时回环 1884 监听器已删除并恢复原 broker 配置。
 - **回执**：`product/three-sample-process-uat/receipts/execution-final-01.md`（含字段/节点表、本地与 UAT 实例、缺陷根因与测试、发布事实、已知限制）；功能知识 `knowledge/features/0.3.0-three-sample-processes.md`。
+- **同版本覆盖与返修（2026-11-07，Owner 追认）**：规划审查 01—03（G1—G7 全过，功能 `PASSED`）。返修：G1 B 流程 Agent 驱动两场景实测（P1/P0 自动建单+负责人站内信）；G2 程序化发起实例详情页 formData 回退（Server `a05fb7f4`、Web `c5eac9b`）；G3 截图 URL 纠正；G4 知识库卡片真实数量（Web `c5eac9b`）；G5 研判字段字典化（`activity_assessment`/`assessment_conclusion`，中文标签）；G6 NORMAL 研判取证；G7 工单 formData 全字段填充+用户可见文字纯中文（仅配置）。tag `0.3.0` 同版本覆盖重指：Server main `a0ac3a1a`（CI run `42326868207` success，`bootstrap-0.3.0.jar` 220,857,566 B sha256 `0ca4dcc3…`）、Web main `420e0f9`（CI run `42326879133` success，`sw-web-dist-0.3.0.zip` 6,194,561 B sha256 `c3728e6d…`），Release 说明保留覆盖记录，latest=0.3.0；UAT 运行包与 Release 资产同字节、`build.version=0.3.0`、启动 167.774s、health UP、磁盘 931M。门禁：Server 全量 2413/0/0/32、Web 四连全绿。回执 `receipts/execution-final-02.md`、`execution-final-03.md`、`terminal-sync-030-01.md`。
 
 ## 0.2.4（2026-11-06 发布并交付 UAT；README 示例二/三落地——IoT 规则启动 Agent 研判、失败升级与真实链路；第 51 个正式功能）
 
