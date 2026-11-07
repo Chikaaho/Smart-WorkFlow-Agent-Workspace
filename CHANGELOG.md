@@ -1,5 +1,15 @@
 # CH-aPaaS 发布说明 / Release Notes
 
+## 0.3.2（2026-11-08 发布并部署 UAT；意见展示与真实业务数据返修 H1—H5）
+
+- **背景**：规划审查 04 判定 0.3.1 不通过（意见展示与业务数据），流转机制 a—e 锁定不重做；执行提示 03 下发 H1—H5，改代码发 0.3.2。
+- **交付内容**：① 流转记录“事件/结果”列显示意见摘要（结论项 + 关键值，如“完备 · 现场总指挥：赵磊”“调整窗口 · 调整后的演练时间：2026-11-10 23:30”）；② 审批详情抽屉按冻结表单逐项显示中文标签/中文值（USER 显姓名、DATE 本地格式、多选“、”拼接），会签记录中每位会签人可查看自己的意见；③ 旧富文本 HTML 按格式渲染，不再显示 `<p>` 标签；④ 部门字段只读回显部门名称（部门树不可用时回退 `/system/dept/options`）；⑤ 意见填写页单选横排、USER 标签只显示一次；⑥ 发布后同版本覆盖：结构化意见已含数组字段时不再重复渲染旧检查项区块。
+- **代码**：Server `ApprovalHistoryItemDTO.opinionFields` + `BpmMyInstanceController.resolveOpinionFields`、`DeptController GET /system/dept/options`、版本收敛 0.3.2（`293432ce` → develop `4d606f60` → main `de8ec017`）；Web `InstanceFlowPanel` 摘要/抽屉/会签、`DeptControl`、`RichTextControl`/`rich-text`、`TaskDetail`（`babea9e`/`46a8285`/`09062a8` → develop `24a4272`/`121399f` → main `8339a08`/`3b0043f`）。
+- **验证**：Web `InstanceFlowPanel.spec` 9/9（含数组字段去重用例），main CI run `42418772661` success；UAT 用真实业务数据重建 7 条路径全部 APPROVED——A 调整窗口 `YJ-20261108-005`（DR-2026-Q4-HD-021）/需补充 `YJ-20261108-006`（DR-2026-Q4-HN-006）、B P0 `XY-20261108-012`/误报 `XY-20261108-013`/超时督办 `XY-20261108-014`、C 校准 `MES-20261108-013`/维修 `MES-20261108-014`；截图 `.runtime-030/uat-shots-032/`（40 张，本机留存）。
+- **发布事实**：Server tag `0.3.2`=`de8ec017`、Release `437820040`（`bootstrap-0.3.2.jar` 220,867,859 B sha256 `7d196cab…`）；Web tag `0.3.2`=`3b0043f`（原 `8339a08` 前移）、Release `437790115`（`sw-web-dist-0.3.2.zip` 6,195,004 B sha256 `e50188dc…`，同版本覆盖并保留覆盖记录）。UAT `build.version=0.3.2`、health UP、Flyway v0.2.9（无新迁移）、Web 入口 `assets/index-BV9G2zgH.js`、根 200。**0.3.0、0.3.1 的 tag/Release 未改动。**
+- **应用包**：UAT 导出覆盖 `product/three-sample-process-uat/assets/`（`systemVersion=0.3.2`，71,786 B；缺口同 0.3.1：独立意见表单定义、触发器脚本、Agent 图、IoT 规则与渠道凭据）。
+- **回执**：`product/three-sample-process-uat/receipts/execution-final-05.md`（H1—H5 做法与证据、意见原文、发布事实、七阶段 5/1/1）；登记 `knowledge/features/0.3.2-opinion-display.md`。
+
 ## 0.3.1（2026-11-08 发布并部署 UAT；审批意见、流程变量与脚本驱动流转返修）
 
 - **背景**：Owner 2026-11-07 审核退回 0.3.0（意见过简；未用审批意见、流程变量、脚本驱动分支与参与人），0.3.0 的 COMPLETED 撤回、功能回到执行阶段；0.3.0 发布事实（tag/Release/部署）不变不回滚。方向 `product/three-sample-process-uat/ready/direction-approval-comment-rework-031.md`。

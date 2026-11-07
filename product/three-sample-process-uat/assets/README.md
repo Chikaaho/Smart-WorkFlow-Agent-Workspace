@@ -1,6 +1,6 @@
 # 运营与风险管理工作台配置包
 
-文件：[operations-risk-workbench.appbundle.json](operations-risk-workbench.appbundle.json) 是平台应用整包导出（预览 → 确认导入两步）。当前版本来源：**UAT 环境 0.3.1 平台导出**（2026-11-08，`systemVersion=0.3.1`，66,734 B），覆盖了 0.3.0 时期的本地 seed 包。
+文件：[operations-risk-workbench.appbundle.json](operations-risk-workbench.appbundle.json) 是平台应用整包导出（预览 → 确认导入两步）。当前版本来源：**UAT 环境 0.3.2 平台导出**（2026-11-08，`systemVersion=0.3.2`，71,786 B），覆盖了 0.3.1 时期的导出。
 
 | 流程 | 业务表单字段数 | 节点数 | 意见表单绑定 | 配置重点 |
 |---|---:|---:|---:|---|
@@ -15,7 +15,7 @@
 - 导入后表单与流程均为草稿，需要在应用内逐项发布才会出现在流程中心；流程编号规则随包保留（`YJ-`／`XY-`／`MES-` + 日期 + 序号）。
 - 流程审批人按**角色编码**解析（`drill_reviewer`、`drill_tech_committee`、`drill_hq_signoff`、`campus_duty_officer`、`campus_emergency_lead`、`mes_emergency_lead`、`mes_shift_supervisor`、`mes_process_engineer`）。导入前目标租户须存在这些角色且**已有启用成员**（设计口径：技术委员会 3 人、应急负责人王芳），否则导入会把未匹配的角色编码置空并记入导入报告。
 - 灾备流程的设备动作（`deliveryMode=RESERVATION`）不随包携带目标设备：导入后需在流程定义处重新绑定本环境设备（本地验证环境设备 `drill-room-hq-a`）。
-- **包内不含**（0.3.1 平台导出的已知缺口，详见 `receipts/execution-final-04.md` §4）：
+- **包内不含**（0.3.2 平台导出的已知缺口，详见 `receipts/execution-final-05.md` §8）：
   - 独立 `APPROVAL_COMMENT` 意见表单定义（导出 `opinionForms` 为空；流程节点内的意见字段冻结快照已随流程携带，填写页与校验可用，但流转记录标签依赖表单元数据时需补建 17 张意见表单）；
   - 触发器脚本（B 值班超时 `tg_duty_overdue`、C 温度偏差 `tg_scene_sensor`，内容见回执 §2.3）；
   - Agent 图、IoT 产品/设备/规则；

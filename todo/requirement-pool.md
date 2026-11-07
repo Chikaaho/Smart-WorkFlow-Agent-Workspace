@@ -1,8 +1,12 @@
 # 需求池（Requirement Pool）
 
-## 当前：三示例流程返修（目标 0.3.1，执行侧完成，待 Planner 验收）
+## 当前：三示例流程返修（目标 0.3.2，执行侧完成，待 Planner 验收）
 
-0.3.1 `审查04 不通过（H1—H5 返修，改代码发 0.3.2）`：方向 `product/three-sample-process-uat/ready/direction-approval-comment-rework-031.md`；回执 `product/three-sample-process-uat/receipts/execution-final-04.md`；登记 `knowledge/features/0.3.1-approval-driven-flow.md`。内容：意见字段→流程变量（`opinion`/`opinion_<字段>`/`formData` 回写）、`nodeOpinions` 注入、会签聚合 `opinionAgg_*`；三图 CONDITION 分流 + EXPRESSION 参与人（现场处置人/指派维修人/现场总指挥）+ 触发器 2 条 + 「调整窗口」预约意见新时间。UAT 8 条意见驱动路径全 APPROVED（A `YJ-20261107-004/003`、B `XY-20261107-008/011/010`、C `MES-20261107-009/010/011`）。发布：Server tag `0.3.1`=`452178d8`、Release `437557325`、UAT build.version=0.3.1 health UP；Web 无改动保持 0.3.0；0.3.0 tag 未动。功能51（不登记新功能）、M59/18/13、ADV1/7/56、P63、问题57；P20未核销。应用包 UAT 导出覆盖 `assets/`（缺独立意见表单定义/触发器脚本/Agent 图/IoT 规则与渠道凭据，见 assets/README）。**下一动作：Executor 按 `product/three-sample-process-uat/receipts/planning-execution-prompt-three-sample-03.md` 返修 H1—H5**；0.3.0 遗留观察见 `todo/application-bundle-import-export.md`。原始场景见 `todo/ch-apaas-project-update.md` §3.1—3.3（已在 0.3.0 落地）。
+0.3.2 `审查04 不通过 → H1—H5 返修完成`：入口 `product/three-sample-process-uat/receipts/planning-execution-prompt-three-sample-03.md`；回执 `product/three-sample-process-uat/receipts/execution-final-05.md`；登记 `knowledge/features/0.3.2-opinion-display.md`。内容：流转记录意见摘要、审批详情抽屉逐项字段（姓名/本地时间）、会签人各自意见；旧 HTML 富文本、部门名称回读、单选横排、重复标签修复；发布后同版本覆盖修复意见详情数组字段重复。UAT 7 条真实业务路径全 APPROVED（A `YJ-20261108-005/006`、B `XY-20261108-012/013/014`、C `MES-20261108-013/014`）。发布：Server tag `0.3.2`=`de8ec017`、Release `437820040`；Web tag `0.3.2`=`3b0043f`、Release `437790115`（同版本覆盖）；UAT build.version=0.3.2 health UP。功能51（不登记新功能）、M59/18/13、ADV1/7/56、P63、问题57；P20未核销。应用包 UAT 导出覆盖 `assets/`（systemVersion=0.3.2，71,786 B；缺口见 assets/README）。**下一动作：Planner 验收 0.3.2（H1—H5 证据与意见质量）**；0.3.1 历史见下。
+
+### 历史：0.3.1 返修（2026-11-08，审查04 不通过后由 0.3.2 替代）
+
+0.3.1 发布 Server tag `0.3.1`=`452178d8`、Release `437557325`、UAT build.version=0.3.1；Web 保持 0.3.0；0.3.0 tag 未动。审查04 判定意见展示/业务数据不通过（H1—H5），流转机制 a—e 锁定。回执 `receipts/execution-final-04.md`。
 
 ### 历史：0.3.0 终态（2026-11-07，后被 Owner 退回）
 

@@ -1,6 +1,10 @@
 # 会话交接（session-handoff）— 当前压缩版
 
-## 当前续接：0.3.1 审批意见驱动返修执行侧完成（2026-11-08，待 Planner 验收）
+## 当前续接：0.3.2 意见展示与真实业务数据返修执行侧完成（2026-11-08，待 Planner 验收）
+
+按执行提示 03（依据审查 04）完成 H1—H5：流转记录意见摘要（结论项 + 关键值）、详情抽屉逐项字段（中文标签、人员姓名、本地时间）、会签人各自意见；修复旧富文本 HTML 显示、部门名称回读（`/system/dept/options` 回退）、单选横排、指派维修人标签重复；发布后追加一次 Web 同版本覆盖，消除意见详情数组字段重复渲染。代码：Server `ApprovalHistoryItemDTO.opinionFields` + 控制器 `resolveOpinionFields`（293432ce）、`DeptController /options`；Web `InstanceFlowPanel` 摘要/抽屉/会签、`DeptControl`、`RichTextControl`/`rich-text`、`TaskDetail` 横排（babea9e/46a8285/09062a8）。main：Server `de8ec017`、Web `3b0043f`；tag 0.3.2、Release 437820040（jar 220,867,859 B sha256 `7d196cab…`）/437790115（zip 6,195,004 B sha256 `e50188dc…`）；UAT `build.version=0.3.2`、Web 入口 `assets/index-BV9G2zgH.js`、health UP、Flyway v0.2.9。UAT 7 条真实业务路径全 APPROVED：A `YJ-20261108-005`（调整窗口 2026-11-10 23:30）/`006`（需补充）；B `XY-20261108-012`（P0 上报学校）/`013`（误报）/`014`（超时督办）；C `MES-20261108-013`（校准）/`014`（维修）。应用包 UAT 导出覆盖 `assets/`（systemVersion=0.3.2，71,786 B）。固定值：功能 51；M59/18/13；ADV1/7/56；P63；问题 57。执行侧七阶段 **5/1/1**。唯一下一动作：**Planner 验收 0.3.2（H1—H5 证据与意见质量）**。
+
+## 历史续接：0.3.1 审批意见驱动返修执行侧完成（2026-11-08，待 Planner 验收；已被 0.3.2 替代）
 
 Owner 2026-11-07 审核退回 0.3.0（意见过简；未用审批意见、流程变量、脚本驱动分支与参与人），`COMPLETED` 撤回、功能回到执行阶段；0.3.0 发布事实不回滚。返修方向 `product/three-sample-process-uat/ready/direction-approval-comment-rework-031.md`；回执 `product/three-sample-process-uat/receipts/execution-final-04.md`；登记 `knowledge/features/0.3.1-approval-driven-flow.md`。平台改动：意见→流程变量（`opinion`/`opinion_<字段>`/`formData` 回写）、`nodeOpinions` 注入、会签聚合 `opinionAgg_*`（Server `83045569`/`1fc035fc`/`1ce7b3bc`/`6a113431`；`de66f1d0` 版本收敛、`9ba59e97` 断言对齐；模块 520/0）；main `452178d8`、tag `0.3.1`、Release `437557325`（jar 220,861,064 B sha256 `9379195e…`）、UAT `build.version=0.3.1` health UP、Flyway v0.2.9（无新迁移）；Web 无改动保持 0.3.0；0.3.0 tag 未动。UAT 配置：17 意见表单 PUBLISHED、三图重建（A v9/B v9/C v11）、触发器 2 条、角色修正（技术委员会 3 人、应急负责人王芳）。UAT 8 条意见驱动路径全 APPROVED：A `YJ-20261107-004`（调整窗口，预约 due=2026-11-08 23:30）/`003`；B `XY-20261107-008`（误报）/`011`（P0 上报学校）/`010`（超时督办）；C `MES-20261107-009`（强制校准）/`010`（维修）/`011`（复产）。应用包 UAT 导出覆盖 `assets/`（systemVersion=0.3.1；缺独立意见表单定义/触发器脚本/Agent 图/IoT 规则与渠道凭据）。固定值：功能 51（不登记新功能）；M59/18/13；ADV1/7/56；P63；问题 57。执行侧七阶段 **6/0/1**。唯一下一动作：**Planner 验收 0.3.1**。
 

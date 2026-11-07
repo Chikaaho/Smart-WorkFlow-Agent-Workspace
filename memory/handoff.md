@@ -1,10 +1,14 @@
 # 交接
 
-2026-11-08｜Planner（审查04）｜0.3.1 返修不通过，下发 H1—H5。
+2026-11-08｜Executor（执行）｜0.3.2 执行侧完成，待 Planner 验收。
 
 ## 当前
 
-三示例流程返修（目标 0.3.1）：规划审查04 **不通过**（`product/three-sample-process-uat/receipts/planning-review-04.md`）：流转机制 a—e 锁定；H1 详情/流转记录不显示结构化意见、H2 意见过简且未贴原文、H3 实例数据带版本号/验证口吻且 B P0 与 4.6% 偏离矛盾、C 阈值非 75/80/85、H4 `<p>` 标签/部门只显示“已选择”/单选折行/标签重复、H5 A 需补充缺截图。返修入口 `receipts/planning-execution-prompt-three-sample-03.md`，改代码发 0.3.2。执行回执 `receipts/execution-final-04.md`（0.3.1 已发：Server tag `0.3.1`=`452178d8`、UAT build.version=0.3.1；Web 保持 0.3.0；0.3.0 tag 未动；交付登记 `knowledge/features/0.3.1-approval-driven-flow.md`）。返修七阶段**3/1/3**。唯一下一动作：**Executor 按执行提示03 返修 H1—H5**。 上一交付 0.2.4 COMPLETED（7/0/0），方向归档 `product/0.2.4/passed/`。
+三示例流程返修（0.3.2）已完成：按执行提示03 完成 H1—H5，UAT 7 条真实业务路径（A `YJ-20261108-005/006`、B `XY-20261108-012/013/014`、C `MES-20261108-013/014`）全 `APPROVED`；回执 `product/three-sample-process-uat/receipts/execution-final-05.md`，登记 `knowledge/features/0.3.2-opinion-display.md`，截图 `.runtime-030/uat-shots-032/`（40 张，本机留存）。发布：Server tag `0.3.2`=`de8ec017`、Release `437820040`；Web tag `0.3.2`=`3b0043f`、Release `437790115`（同版本覆盖去重）；UAT build.version=0.3.2、Web 入口 `assets/index-BV9G2zgH.js`、health UP；0.3.0/0.3.1 tag 未动。七阶段**5/1/1**。唯一下一动作：**Planner 验收 0.3.2（H1—H5 证据与意见质量）**。上一交付 0.2.4 COMPLETED（7/0/0），方向归档 `product/0.2.4/passed/`。
+
+## 0.3.1（历史，已被 0.3.2 替代）
+
+按审查04 返修的 0.3.1 已发布（Server `452178d8`、Web 保持 0.3.0），审查04 判定意见展示与业务数据不通过，转入 0.3.2 H1—H5。
 
 ## 0.3.0（历史，终态同步后被 Owner 退回）
 
