@@ -4,7 +4,7 @@
 
 ## 当前任务
 
-三示例流程：返修 G1—G6 已交付（执行回执 `product/three-sample-process-uat/receipts/execution-final-02.md`），**返修版本号 0.3.0（Owner 已确认）同版本覆盖**：Server main `a0ac3a1a`（CI 42326868207 success）、Web main `420e0f9`（CI 42326879133 success），tag `0.3.0` 双仓重指，Release 资产替换为 CI 制品（Server jar sha256 `0ca4dcc3…`、Web zip `c3728e6d…`），UAT 运行包与 Release 资产同字节、build.version=0.3.0、health UP。G1—G6 全部实测（Agent 驱动 B 流程两场景+P0 通知、详情页 formData 回退、截图重截、知识库卡片真实数量、研判字段字典化、G6 NORMAL 取证）。整体七阶段 4/1/2（合并/发版完成；发布后同步落盘；规划验收与结束待规划）。执行入口 `product/three-sample-process-uat/receipts/planning-execution-prompt-three-sample-01.md`。方向 `product/three-sample-process-uat/ready/direction-three-sample-process-uat.md`；P60旧0.3.0绑定作废、发布顺延。
+三示例流程：返修 G1—G6 已交付（执行回执 `product/three-sample-process-uat/receipts/execution-final-02.md`），**返修版本号 0.3.0（Owner 已确认）同版本覆盖**：Server main `a0ac3a1a`（CI 42326868207 success）、Web main `420e0f9`（CI 42326879133 success），tag `0.3.0` 双仓重指，Release 资产替换为 CI 制品（Server jar sha256 `0ca4dcc3…`、Web zip `c3728e6d…`），UAT 运行包与 Release 资产同字节、build.version=0.3.0、health UP。G1—G6 全部实测（Agent 驱动 B 流程两场景+P0 通知、详情页 formData 回退、截图重截、知识库卡片真实数量、研判字段字典化、G6 NORMAL 取证）。规划审查02：G1—G6通过锁定；新增G7（Agent发起工单的表单字段大量为空、告警正文含英文编码，配置级不发版），入口 `product/three-sample-process-uat/receipts/planning-execution-prompt-three-sample-02.md`；**G7 已交付**（回执 `receipts/execution-final-03.md`：三规则映射补业务常量+两图提示词 formData 全字段映射，UAT 实例 XY-20261107-006/MES-20261107-008 全字段有值、零英文编码，未动代码/tag）；0.3.0 tag强制重指待Owner追认。整体七阶段4/0/3（评估/执行/合并/发版完成；规划验收、发布后同步终态确认、结束待规划）。方向 `product/three-sample-process-uat/ready/direction-three-sample-process-uat.md`；P60旧0.3.0绑定作废、发布顺延。
 
 上一交付：0.2.4 `COMPLETED`，七阶段7/0/0；终态复核 `product/0.2.4/receipts/planning-final-review-024-completed.md`，第51个正式功能。
 
