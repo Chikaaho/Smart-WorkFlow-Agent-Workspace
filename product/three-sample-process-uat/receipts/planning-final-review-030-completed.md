@@ -25,3 +25,7 @@ knowledge、README、CHANGELOG、version.json 不在规划可读范围，按回�
 ## 遗留（已入需求池/观察区）
 
 应用包不含 Agent 图与 IoT 规则；导入清空固定参与人、丢弃未定义角色；UAT 磁盘 931M（96%）；短信电话渠道未采购。
+
+## Owner 退回（2026-11-07）
+
+Owner 审核后退回：审批意见过简，流程没有用审批意见、流程变量和脚本驱动分支与参与人。本复核的 `COMPLETED` 撤回，返修见 `ready/direction-approval-comment-rework-031.md`。

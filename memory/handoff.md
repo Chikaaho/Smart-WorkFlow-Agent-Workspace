@@ -4,7 +4,7 @@
 
 ## 当前
 
-三示例流程/0.3.0：`COMPLETED`，终态复核 `product/three-sample-process-uat/receipts/planning-final-review-030-completed.md`，方向与同步方向均归档 `passed/`。（交付与配置快照见 `knowledge/features/0.3.0-three-sample-processes.md`，含应用包不含的 Agent 图 v7 与 IoT 规则映射）。发布：正式/部署0.3.0，Server main `a0ac3a1a`、Web main `420e0f9`，tag 0.3.0 同版本覆盖（Owner已追认，Release 说明含覆盖记录、latest=0.3.0），UAT build.version=0.3.0、Flyway v0.2.9、磁盘931M（96%）。Owner定不登记新功能，功能数保持51。整体七阶段**7/0/0**。当前无在途交付，下一动作：等待 Owner 指定下一需求（候选见 `todo/requirement-pool.md`）。P60旧0.3.0绑定作废、发布顺延。 上一交付 0.2.4 COMPLETED（7/0/0），方向归档 `product/0.2.4/passed/`。
+三示例流程/0.3.0：**Owner 2026-11-07 审核退回**（意见过简；未用审批意见、流程变量、脚本驱动分支与参与人），`COMPLETED` 撤回，返修方向 `product/three-sample-process-uat/ready/direction-approval-comment-rework-031.md`，代码改动发 0.3.1、不动 0.3.0 tag。原终审 终态复核 `product/three-sample-process-uat/receipts/planning-final-review-030-completed.md`，方向与同步方向均归档 `passed/`。（交付与配置快照见 `knowledge/features/0.3.0-three-sample-processes.md`，含应用包不含的 Agent 图 v7 与 IoT 规则映射）。发布：正式/部署0.3.0，Server main `a0ac3a1a`、Web main `420e0f9`，tag 0.3.0 同版本覆盖（Owner已追认，Release 说明含覆盖记录、latest=0.3.0），UAT build.version=0.3.0、Flyway v0.2.9、磁盘931M（96%）。Owner定不登记新功能，功能数保持51。返修七阶段**1/0/6**。唯一下一动作：Executor 按返修方向执行。P60旧0.3.0绑定作废、发布顺延。 上一交付 0.2.4 COMPLETED（7/0/0），方向归档 `product/0.2.4/passed/`。
 
 ## 0.2.4（历史）
 

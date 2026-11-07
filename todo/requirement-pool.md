@@ -1,8 +1,8 @@
 # 需求池（Requirement Pool）
 
-## 当前：无在途交付；上一交付 0.3.0 三示例流程 COMPLETED（2026-11-07）
+## 当前：三示例流程返修（Owner 2026-11-07 退回，目标 0.3.1）
 
-0.3.0 `COMPLETED`（七阶段 7/0/0，终态复核 `product/three-sample-process-uat/receipts/planning-final-review-030-completed.md`，方向与同步方向均归档 `passed/`。G1—G7 全过；Owner 追认 tag 同版本覆盖，不登记新功能，功能数保持 51）。回执链：`product/three-sample-process-uat/receipts/execution-final-01/02/03.md`；交付与配置快照（Agent 图 v7、IoT 规则映射——应用包不含）见 `knowledge/features/0.3.0-three-sample-processes.md`。发布：正式/部署 0.3.0，Server main `a0ac3a1a`、Web main `420e0f9`（CI 双绿），tag `0.3.0` 覆盖重指（Release 说明含覆盖记录、latest=0.3.0），UAT build.version=0.3.0、Flyway v0.2.9、health UP。功能51、M59/18/13、ADV1/7/56、P63、问题57；P20未核销。下一动作：等待 Owner 指定下一需求；0.3.0 遗留观察见 `todo/application-bundle-import-export.md`。原始场景见 `todo/ch-apaas-project-update.md` §3.1—3.3（已在 0.3.0 落地）。
+0.3.0 `COMPLETED`（七阶段 7/0/0，终态复核 `product/three-sample-process-uat/receipts/planning-final-review-030-completed.md`，方向与同步方向均归档 `passed/`。G1—G7 全过；Owner 追认 tag 同版本覆盖，不登记新功能，功能数保持 51）。回执链：`product/three-sample-process-uat/receipts/execution-final-01/02/03.md`；交付与配置快照（Agent 图 v7、IoT 规则映射——应用包不含）见 `knowledge/features/0.3.0-three-sample-processes.md`。发布：正式/部署 0.3.0，Server main `a0ac3a1a`、Web main `420e0f9`（CI 双绿），tag `0.3.0` 覆盖重指（Release 说明含覆盖记录、latest=0.3.0），UAT build.version=0.3.0、Flyway v0.2.9、health UP。功能51、M59/18/13、ADV1/7/56、P63、问题57；P20未核销。返修：**Owner 2026-11-07 审核退回**（意见过简；未用审批意见、流程变量、脚本驱动分支与参与人），`COMPLETED` 撤回，返修方向 `product/three-sample-process-uat/ready/direction-approval-comment-rework-031.md`，代码改动发 0.3.1、不动 0.3.0 tag。下一动作：Executor 按返修方向执行；0.3.0 遗留观察见 `todo/application-bundle-import-export.md`。原始场景见 `todo/ch-apaas-project-update.md` §3.1—3.3（已在 0.3.0 落地）。
 
 ## 历史：0.2.4 COMPLETED（2026-11-06）
 
