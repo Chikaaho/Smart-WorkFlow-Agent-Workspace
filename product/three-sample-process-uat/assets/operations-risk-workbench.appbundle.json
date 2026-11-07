@@ -1,7 +1,7 @@
 {
   "bundleFormatVersion" : 1,
-  "systemVersion" : "DEV",
-  "exportedAt" : "2026-11-07T02:56:33.229354300",
+  "systemVersion" : "0.3.0",
+  "exportedAt" : "2026-11-07T10:06:17.900302900",
   "packageName" : "运营与风险管理工作台",
   "app" : {
     "name" : "运营与风险管理工作台",
@@ -42,7 +42,7 @@
     "name" : "校园出入口异常事件记录",
     "logicalTableName" : "campus_gate_incident",
     "description" : "汇总闸机流量、校内活动、公开活动检索和处置判断，形成可追溯的分级处置记录。",
-    "configDefinition" : "{\"title\": \"校园出入口异常事件记录\", \"fields\": [{\"name\": \"campusName\", \"type\": \"TEXT\", \"label\": \"校区名称\", \"length\": 80, \"colSpan\": 8, \"required\": true}, {\"name\": \"gateCode\", \"type\": \"DICT\", \"label\": \"异常出入口\", \"colSpan\": 8, \"dictType\": \"gate_zone\", \"required\": true}, {\"name\": \"eventAt\", \"type\": \"DATE\", \"label\": \"异常发生时间\", \"format\": \"datetime\", \"colSpan\": 8, \"required\": true}, {\"name\": \"reportedBy\", \"type\": \"USER\", \"label\": \"发现人（值班安保）\", \"colSpan\": 8, \"required\": true}, {\"name\": \"observationWindowMinutes\", \"type\": \"NUMBER\", \"label\": \"统计窗口（分钟）\", \"colSpan\": 8, \"required\": true, \"defaultValue\": 15}, {\"name\": \"inboundObserved\", \"type\": \"NUMBER\", \"label\": \"窗口内入校人数\", \"colSpan\": 8, \"required\": true}, {\"name\": \"inboundBaseline\", \"type\": \"NUMBER\", \"label\": \"入校常态基线（人次）\", \"colSpan\": 8, \"required\": true}, {\"name\": \"outboundObserved\", \"type\": \"NUMBER\", \"label\": \"窗口内离校人数\", \"colSpan\": 8, \"required\": true}, {\"name\": \"outboundBaseline\", \"type\": \"NUMBER\", \"label\": \"离校常态基线（人次）\", \"colSpan\": 8, \"required\": true}, {\"name\": \"deviationRate\", \"type\": \"NUMBER\", \"label\": \"综合偏离率（%）\", \"colSpan\": 8, \"required\": true}, {\"name\": \"weatherAndSiteContext\", \"type\": \"TEXT\", \"label\": \"天气与现场情况\", \"length\": 800, \"colSpan\": 12, \"required\": false}, {\"name\": \"internalEventReferences\", \"type\": \"TEXT\", \"label\": \"校内活动与近期流程检索摘要\", \"length\": 1500, \"colSpan\": 24, \"required\": false}, {\"name\": \"publicEventSummary\", \"type\": \"TEXT\", \"label\": \"公开活动与节假日检索摘要\", \"length\": 1500, \"colSpan\": 24, \"required\": false}, {\"name\": \"activityAssessment\", \"type\": \"TEXT\", \"label\": \"活动关联结论（SPECIAL / NO_EXPLANATION）\", \"length\": 32, \"colSpan\": 12, \"required\": true}, {\"name\": \"assessmentRationale\", \"type\": \"TEXT\", \"label\": \"判定依据与不确定项\", \"length\": 1500, \"colSpan\": 12, \"required\": true}, {\"name\": \"recommendedPriority\", \"type\": \"DICT\", \"label\": \"建议处置级别\", \"colSpan\": 8, \"dictType\": \"incident_priority\", \"required\": true}, {\"name\": \"assignedOwner\", \"type\": \"USER\", \"label\": \"处置负责人\", \"colSpan\": 8, \"required\": true}, {\"name\": \"responseDueAt\", \"type\": \"DATE\", \"label\": \"首次响应时限\", \"format\": \"datetime\", \"colSpan\": 8, \"required\": true}, {\"name\": \"gateCameraClips\", \"type\": \"ATTACHMENT\", \"label\": \"现场监控截图与证据\", \"colSpan\": 24, \"required\": false}, {\"name\": \"resolutionSummary\", \"type\": \"TEXT\", \"label\": \"现场处置与结案摘要\", \"length\": 1500, \"colSpan\": 24, \"required\": false}], \"description\": \"记录事件事实和判级依据，支持 P1 关注处置与 P0 应急升级。\", \"schemaVersion\": 1}",
+    "configDefinition" : "{\"title\": \"校园出入口异常事件记录\", \"fields\": [{\"name\": \"campusName\", \"type\": \"TEXT\", \"label\": \"校区名称\", \"length\": 80, \"colSpan\": 8, \"required\": true}, {\"name\": \"gateCode\", \"type\": \"DICT\", \"label\": \"异常出入口\", \"colSpan\": 8, \"dictType\": \"gate_zone\", \"required\": true}, {\"name\": \"eventAt\", \"type\": \"DATE\", \"label\": \"异常发生时间\", \"format\": \"datetime\", \"colSpan\": 8, \"required\": true}, {\"name\": \"reportedBy\", \"type\": \"USER\", \"label\": \"发现人（值班安保）\", \"colSpan\": 8, \"required\": true}, {\"name\": \"observationWindowMinutes\", \"type\": \"NUMBER\", \"label\": \"统计窗口（分钟）\", \"colSpan\": 8, \"required\": true, \"defaultValue\": 15}, {\"name\": \"inboundObserved\", \"type\": \"NUMBER\", \"label\": \"窗口内入校人数\", \"colSpan\": 8, \"required\": true}, {\"name\": \"inboundBaseline\", \"type\": \"NUMBER\", \"label\": \"入校常态基线（人次）\", \"colSpan\": 8, \"required\": true}, {\"name\": \"outboundObserved\", \"type\": \"NUMBER\", \"label\": \"窗口内离校人数\", \"colSpan\": 8, \"required\": true}, {\"name\": \"outboundBaseline\", \"type\": \"NUMBER\", \"label\": \"离校常态基线（人次）\", \"colSpan\": 8, \"required\": true}, {\"name\": \"deviationRate\", \"type\": \"NUMBER\", \"label\": \"综合偏离率（%）\", \"colSpan\": 8, \"required\": true}, {\"name\": \"weatherAndSiteContext\", \"type\": \"TEXT\", \"label\": \"天气与现场情况\", \"length\": 800, \"colSpan\": 12, \"required\": false}, {\"name\": \"internalEventReferences\", \"type\": \"TEXT\", \"label\": \"校内活动与近期流程检索摘要\", \"length\": 1500, \"colSpan\": 24, \"required\": false}, {\"name\": \"publicEventSummary\", \"type\": \"TEXT\", \"label\": \"公开活动与节假日检索摘要\", \"length\": 1500, \"colSpan\": 24, \"required\": false}, {\"name\": \"activityAssessment\", \"type\": \"DICT\", \"label\": \"活动关联结论\", \"colSpan\": 12, \"dictType\": \"activity_assessment\", \"required\": true}, {\"name\": \"assessmentRationale\", \"type\": \"TEXT\", \"label\": \"判定依据与不确定项\", \"length\": 1500, \"colSpan\": 12, \"required\": true}, {\"name\": \"recommendedPriority\", \"type\": \"DICT\", \"label\": \"建议处置级别\", \"colSpan\": 8, \"dictType\": \"incident_priority\", \"required\": true}, {\"name\": \"assignedOwner\", \"type\": \"USER\", \"label\": \"处置负责人\", \"colSpan\": 8, \"required\": true}, {\"name\": \"responseDueAt\", \"type\": \"DATE\", \"label\": \"首次响应时限\", \"format\": \"datetime\", \"colSpan\": 8, \"required\": true}, {\"name\": \"gateCameraClips\", \"type\": \"ATTACHMENT\", \"label\": \"现场监控截图与证据\", \"colSpan\": 24, \"required\": false}, {\"name\": \"resolutionSummary\", \"type\": \"TEXT\", \"label\": \"现场处置与结案摘要\", \"length\": 1500, \"colSpan\": 24, \"required\": false}], \"description\": \"记录事件事实和判级依据，支持 P1 关注处置与 P0 应急升级。\", \"schemaVersion\": 1}",
     "extQueries" : [ ],
     "txnActions" : [ ]
   }, {
@@ -52,7 +52,7 @@
     "name" : "MES 设备温度偏离研判记录",
     "logicalTableName" : "mes_temperature_review",
     "description" : "记录设备温度序列、工艺背景、阈值与升温速率，区分快速异常、正常加料波动和紧急停机级别。",
-    "configDefinition" : "{\"title\": \"MES 设备温度偏离研判记录\", \"fields\": [{\"name\": \"facility\", \"type\": \"TEXT\", \"label\": \"厂区\", \"length\": 60, \"colSpan\": 8, \"required\": true}, {\"name\": \"workshop\", \"type\": \"TEXT\", \"label\": \"车间\", \"length\": 60, \"colSpan\": 8, \"required\": true}, {\"name\": \"productionLine\", \"type\": \"TEXT\", \"label\": \"生产线\", \"length\": 60, \"colSpan\": 8, \"required\": true}, {\"name\": \"equipmentCode\", \"type\": \"TEXT\", \"label\": \"设备编号\", \"length\": 60, \"colSpan\": 8, \"required\": true}, {\"name\": \"batchNumber\", \"type\": \"TEXT\", \"label\": \"当前生产批次\", \"length\": 60, \"colSpan\": 8, \"required\": false}, {\"name\": \"readingAt\", \"type\": \"DATE\", \"label\": \"测温时间\", \"format\": \"datetime\", \"colSpan\": 8, \"required\": true}, {\"name\": \"currentTemperature\", \"type\": \"NUMBER\", \"label\": \"当前温度（℃）\", \"colSpan\": 8, \"required\": true}, {\"name\": \"normalTemperature\", \"type\": \"NUMBER\", \"label\": \"常温基线（℃）\", \"colSpan\": 8, \"required\": true, \"defaultValue\": 75}, {\"name\": \"alarmThreshold\", \"type\": \"NUMBER\", \"label\": \"告警阈值（℃）\", \"colSpan\": 8, \"required\": true, \"defaultValue\": 80}, {\"name\": \"stopThreshold\", \"type\": \"NUMBER\", \"label\": \"停机阈值（℃）\", \"colSpan\": 8, \"required\": true, \"defaultValue\": 85}, {\"name\": \"riseRatePerMinute\", \"type\": \"NUMBER\", \"label\": \"升温速率（℃/分钟）\", \"colSpan\": 8, \"required\": true}, {\"name\": \"rapidRiseThreshold\", \"type\": \"NUMBER\", \"label\": \"快速升温判定值（℃/分钟）\", \"colSpan\": 8, \"required\": true, \"defaultValue\": 1.5}, {\"name\": \"assessmentWindowMinutes\", \"type\": \"NUMBER\", \"label\": \"研判窗口（分钟）\", \"colSpan\": 8, \"required\": true, \"defaultValue\": 5}, {\"name\": \"temperatureSeriesSummary\", \"type\": \"TEXT\", \"label\": \"温度序列与数据质量说明\", \"length\": 1500, \"colSpan\": 24, \"required\": true}, {\"name\": \"materialAdditionInProgress\", \"type\": \"BOOL\", \"label\": \"是否处于人工加料阶段\", \"colSpan\": 8, \"required\": true}, {\"name\": \"materialName\", \"type\": \"TEXT\", \"label\": \"当班加料物料\", \"length\": 60, \"colSpan\": 8, \"required\": false}, {\"name\": \"calibrationStatus\", \"type\": \"TEXT\", \"label\": \"传感器校准状态\", \"length\": 60, \"colSpan\": 8, \"required\": false}, {\"name\": \"agentKnowledgeEvidence\", \"type\": \"TEXT\", \"label\": \"知识样本命中与研判依据\", \"length\": 1500, \"colSpan\": 24, \"required\": false}, {\"name\": \"assessmentConclusion\", \"type\": \"TEXT\", \"label\": \"研判结论（NORMAL / SLOW_RISE / RAPID_RISE / EMERGENCY）\", \"length\": 32, \"colSpan\": 8, \"required\": true}, {\"name\": \"recommendedAction\", \"type\": \"TEXT\", \"label\": \"建议处置与安全措施\", \"length\": 1500, \"colSpan\": 16, \"required\": true}, {\"name\": \"shiftLeader\", \"type\": \"USER\", \"label\": \"当班负责人\", \"colSpan\": 8, \"required\": true}, {\"name\": \"telemetrySnapshot\", \"type\": \"ATTACHMENT\", \"label\": \"温度曲线与遥测截图\", \"colSpan\": 16, \"required\": false}, {\"name\": \"reviewNotes\", \"type\": \"TEXT\", \"label\": \"复核与交接记录\", \"length\": 1000, \"colSpan\": 24, \"required\": false}], \"description\": \"阈值和速率参数随记录显式留痕；本表单不直接向设备下发控制命令。\", \"schemaVersion\": 1}",
+    "configDefinition" : "{\"title\": \"MES 设备温度偏离研判记录\", \"fields\": [{\"name\": \"facility\", \"type\": \"TEXT\", \"label\": \"厂区\", \"length\": 60, \"colSpan\": 8, \"required\": true}, {\"name\": \"workshop\", \"type\": \"TEXT\", \"label\": \"车间\", \"length\": 60, \"colSpan\": 8, \"required\": true}, {\"name\": \"productionLine\", \"type\": \"TEXT\", \"label\": \"生产线\", \"length\": 60, \"colSpan\": 8, \"required\": true}, {\"name\": \"equipmentCode\", \"type\": \"TEXT\", \"label\": \"设备编号\", \"length\": 60, \"colSpan\": 8, \"required\": true}, {\"name\": \"batchNumber\", \"type\": \"TEXT\", \"label\": \"当前生产批次\", \"length\": 60, \"colSpan\": 8, \"required\": false}, {\"name\": \"readingAt\", \"type\": \"DATE\", \"label\": \"测温时间\", \"format\": \"datetime\", \"colSpan\": 8, \"required\": true}, {\"name\": \"currentTemperature\", \"type\": \"NUMBER\", \"label\": \"当前温度（℃）\", \"colSpan\": 8, \"required\": true}, {\"name\": \"normalTemperature\", \"type\": \"NUMBER\", \"label\": \"常温基线（℃）\", \"colSpan\": 8, \"required\": true, \"defaultValue\": 75}, {\"name\": \"alarmThreshold\", \"type\": \"NUMBER\", \"label\": \"告警阈值（℃）\", \"colSpan\": 8, \"required\": true, \"defaultValue\": 80}, {\"name\": \"stopThreshold\", \"type\": \"NUMBER\", \"label\": \"停机阈值（℃）\", \"colSpan\": 8, \"required\": true, \"defaultValue\": 85}, {\"name\": \"riseRatePerMinute\", \"type\": \"NUMBER\", \"label\": \"升温速率（℃/分钟）\", \"colSpan\": 8, \"required\": true}, {\"name\": \"rapidRiseThreshold\", \"type\": \"NUMBER\", \"label\": \"快速升温判定值（℃/分钟）\", \"colSpan\": 8, \"required\": true, \"defaultValue\": 1.5}, {\"name\": \"assessmentWindowMinutes\", \"type\": \"NUMBER\", \"label\": \"研判窗口（分钟）\", \"colSpan\": 8, \"required\": true, \"defaultValue\": 5}, {\"name\": \"temperatureSeriesSummary\", \"type\": \"TEXT\", \"label\": \"温度序列与数据质量说明\", \"length\": 1500, \"colSpan\": 24, \"required\": true}, {\"name\": \"materialAdditionInProgress\", \"type\": \"BOOL\", \"label\": \"是否处于人工加料阶段\", \"colSpan\": 8, \"required\": true}, {\"name\": \"materialName\", \"type\": \"TEXT\", \"label\": \"当班加料物料\", \"length\": 60, \"colSpan\": 8, \"required\": false}, {\"name\": \"calibrationStatus\", \"type\": \"TEXT\", \"label\": \"传感器校准状态\", \"length\": 60, \"colSpan\": 8, \"required\": false}, {\"name\": \"agentKnowledgeEvidence\", \"type\": \"TEXT\", \"label\": \"知识样本命中与研判依据\", \"length\": 1500, \"colSpan\": 24, \"required\": false}, {\"name\": \"assessmentConclusion\", \"type\": \"DICT\", \"label\": \"研判结论\", \"colSpan\": 8, \"dictType\": \"assessment_conclusion\", \"required\": true}, {\"name\": \"recommendedAction\", \"type\": \"TEXT\", \"label\": \"建议处置与安全措施\", \"length\": 1500, \"colSpan\": 16, \"required\": true}, {\"name\": \"shiftLeader\", \"type\": \"USER\", \"label\": \"当班负责人\", \"colSpan\": 8, \"required\": true}, {\"name\": \"telemetrySnapshot\", \"type\": \"ATTACHMENT\", \"label\": \"温度曲线与遥测截图\", \"colSpan\": 16, \"required\": false}, {\"name\": \"reviewNotes\", \"type\": \"TEXT\", \"label\": \"复核与交接记录\", \"length\": 1000, \"colSpan\": 24, \"required\": false}], \"description\": \"阈值和速率参数随记录显式留痕；本表单不直接向设备下发控制命令。\", \"schemaVersion\": 1}",
     "extQueries" : [ ],
     "txnActions" : [ ]
   } ],
@@ -203,6 +203,60 @@
       "label" : "P2 一般",
       "dictValue" : "P2",
       "sort" : 2,
+      "status" : 0,
+      "isDefault" : 0
+    } ]
+  }, {
+    "code" : "activity_assessment",
+    "name" : "活动关联结论",
+    "status" : 0,
+    "description" : "校园出入口流量异常的活动关联研判结论口径。",
+    "items" : [ {
+      "label" : "与已知活动相关",
+      "dictValue" : "SPECIAL",
+      "sort" : 0,
+      "status" : 0,
+      "isDefault" : 0
+    }, {
+      "label" : "无合理解释",
+      "dictValue" : "NO_EXPLANATION",
+      "sort" : 1,
+      "status" : 0,
+      "isDefault" : 0
+    }, {
+      "label" : "暂无法判定",
+      "dictValue" : "UNDECIDED",
+      "sort" : 2,
+      "status" : 0,
+      "isDefault" : 0
+    } ]
+  }, {
+    "code" : "assessment_conclusion",
+    "name" : "温度研判结论",
+    "status" : 0,
+    "description" : "MES 设备温度偏离的研判结论口径。",
+    "items" : [ {
+      "label" : "正常波动",
+      "dictValue" : "NORMAL",
+      "sort" : 0,
+      "status" : 0,
+      "isDefault" : 0
+    }, {
+      "label" : "缓慢升温",
+      "dictValue" : "SLOW_RISE",
+      "sort" : 1,
+      "status" : 0,
+      "isDefault" : 0
+    }, {
+      "label" : "快速升温",
+      "dictValue" : "RAPID_RISE",
+      "sort" : 2,
+      "status" : 0,
+      "isDefault" : 0
+    }, {
+      "label" : "超过停机阈值",
+      "dictValue" : "EMERGENCY",
+      "sort" : 3,
       "status" : 0,
       "isDefault" : 0
     } ]

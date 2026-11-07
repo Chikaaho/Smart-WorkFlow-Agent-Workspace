@@ -4,7 +4,7 @@
 
 ## 当前
 
-0.3.0 三示例流程已交付（本地→UAT→发版），执行侧 6/0/1；总回执 `product/three-sample-process-uat/receipts/execution-final-01.md` 待 Planner 一次性验收。正式/部署 0.3.0（Server tag `b4af4c3e`/Web `271d40c`，Release 436832133/436817268），UAT `build.version=0.3.0`、Flyway v0.2.9、health UP。上一交付 0.2.4 COMPLETED（7/0/0），终态复核 `product/0.2.4/receipts/planning-final-review-024-completed.md`；方向与同步方向均归档 `product/0.2.4/passed/`。新会话从 `memory/state.md` 与 `todo/requirement-pool.md` 观察区选题。
+三示例流程返修 G1—G6 已交付：回执 `product/three-sample-process-uat/receipts/execution-final-02.md`，待规划验收。返修版本号 0.3.0（Owner 已确认）同版本覆盖：Server main `a0ac3a1a`（CI 42326868207 success）、Web main `420e0f9`（CI 42326879133 success），tag `0.3.0` 重指（Server tag 对象 `3f4406af`/Web `fbf5aa3`），Release 资产替换为 CI 制品（Server jar sha256 `0ca4dcc3…`、Web zip `c3728e6d…`，说明含覆盖记录），releases/latest=0.3.0；UAT 运行包与 Release 资产同字节、build.version=0.3.0、health UP、Flyway v0.2.9、磁盘 931M（96%）。代码改动：G2 详情/关系端点回传引擎 formData（Server `a05fb7f4`）+ Web fallbackRecord 回退（`c5eac9b`）；G4 知识库卡片真实数量（同 Web 提交）；G5 字典化与 G1 通知 bizId 为配置级（UAT/本地已同步，图 v5）。上一交付 0.2.4 COMPLETED（7/0/0），终态复核 `product/0.2.4/receipts/planning-final-review-024-completed.md`；方向与同步方向均归档 `product/0.2.4/passed/`。新会话从 `memory/state.md` 与 `todo/requirement-pool.md` 观察区选题。
 
 ## 0.2.4（历史）
 

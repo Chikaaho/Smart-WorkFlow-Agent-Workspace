@@ -4,7 +4,7 @@
 
 ## 当前任务
 
-0.3.0 三示例流程已交付：本地配置→UAT 导入实跑→补缺发版完成，执行侧七阶段6/0/1（结束待 Planner 一次性验收总回执 `product/three-sample-process-uat/receipts/execution-final-01.md`）。方向 `product/three-sample-process-uat/ready/direction-three-sample-process-uat.md`；P60旧0.3.0绑定作废、发布顺延。
+三示例流程：返修 G1—G6 已交付（执行回执 `product/three-sample-process-uat/receipts/execution-final-02.md`），**返修版本号 0.3.0（Owner 已确认）同版本覆盖**：Server main `a0ac3a1a`（CI 42326868207 success）、Web main `420e0f9`（CI 42326879133 success），tag `0.3.0` 双仓重指，Release 资产替换为 CI 制品（Server jar sha256 `0ca4dcc3…`、Web zip `c3728e6d…`），UAT 运行包与 Release 资产同字节、build.version=0.3.0、health UP。G1—G6 全部实测（Agent 驱动 B 流程两场景+P0 通知、详情页 formData 回退、截图重截、知识库卡片真实数量、研判字段字典化、G6 NORMAL 取证）。整体七阶段 4/1/2（合并/发版完成；发布后同步落盘；规划验收与结束待规划）。执行入口 `product/three-sample-process-uat/receipts/planning-execution-prompt-three-sample-01.md`。方向 `product/three-sample-process-uat/ready/direction-three-sample-process-uat.md`；P60旧0.3.0绑定作废、发布顺延。
 
 上一交付：0.2.4 `COMPLETED`，七阶段7/0/0；终态复核 `product/0.2.4/receipts/planning-final-review-024-completed.md`，第51个正式功能。
 
@@ -12,7 +12,7 @@
 
 功能51（0.3.0 不新增正式功能）；M59/18/13=90；ADV1/7/56=64；实际P63；问题57；正式基线变更[]。已核销P2/P4/P9/P15/P19/P29/P34/P47/P65，P35部分；P20未核销。
 
-正式/部署版本0.3.0，Flyway V0.2.9（无新迁移）；tag Server`b4af4c3e`/Web`271d40c`，语义Release latest=0.3.0（Server Release 436832133、Web 436817268）。本地全量2410/0/0/32；UAT启动170.894s、health UP、build.version=0.3.0、磁盘余1.6G（92%）。
+正式/部署版本0.3.0（返修覆盖后），Flyway V0.2.9（无新迁移）；tag `0.3.0` 指向 Server `a0ac3a1a`/Web `420e0f9`，语义Release latest=0.3.0（资产为返修 CI 制品，说明含覆盖记录）。本地全量2413/0/0/32（返修+2例）；UAT启动167.774s、health UP、build.version=0.3.0、磁盘余931M（96%）。
 
 Owner定：本机隔离环境（`smart_workflow_lc023_01`、`smart_workflow_024_01`、`smart_workflow_030`、`.lc023-mock`、`.runtime-lc023`、`.runtime-lc024`、`.runtime-030`）保留不删，含凭据密文，只要求不泄露，已gitignore。e2fe50f7历史凭据文件为本地产物，不改写历史。Key/授权码不入Git。
 
