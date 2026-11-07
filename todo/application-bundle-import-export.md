@@ -30,3 +30,10 @@
 - 应用包导出不含 Agent 图、IoT 规则/设备动作配置；B/C 类 Agent 驱动流程仅靠包无法在新环境复现，需手工重建。
 - 导入会清空 `FIXED_USER`/`DEPT_LEADER` 参与人、静默丢弃目标环境不存在的 ROLE/POST 编码；预检应列出并告警。
 - 设备动作 `deviceId` 为导出环境 ID，导入后需重绑。
+
+## 0.3.1 观察（2026-11-08，执行登记，未排期）
+
+来源：`product/three-sample-process-uat/receipts/execution-final-04.md` §4、`product/three-sample-process-uat/assets/README.md`。
+- 平台导出（`/form/app/manage/bundle/{appId}/export`，systemVersion=0.3.1）`opinionForms` 为空：17 张 APPROVAL_COMMENT 意见表单定义不随包；流程节点内的意见字段冻结快照已随流程携带（填写页/校验可用），但流转记录标签若依赖表单元数据需在目标环境补建。
+- 触发器脚本（B `tg_duty_overdue`、C `tg_scene_sensor`）不随包导出，导入后需按回执 §2.3 重建，否则超时督办与强制校准两条意见驱动关系失效。
+- 建议：应用包导出增加「意见表单定义 + 节点触发器脚本」段，或导入预检对缺失项显式告警（与 0.3.0 的 Agent 图/IoT 规则缺口同族）。

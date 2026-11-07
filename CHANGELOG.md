@@ -1,5 +1,14 @@
 # CH-aPaaS 发布说明 / Release Notes
 
+## 0.3.1（2026-11-08 发布并部署 UAT；审批意见、流程变量与脚本驱动流转返修）
+
+- **背景**：Owner 2026-11-07 审核退回 0.3.0（意见过简；未用审批意见、流程变量、脚本驱动分支与参与人），0.3.0 的 COMPLETED 撤回、功能回到执行阶段；0.3.0 发布事实（tag/Release/部署）不变不回滚。方向 `product/three-sample-process-uat/ready/direction-approval-comment-rework-031.md`。
+- **发布事实**：Server 分支 `feature/0.3.1-approval-driven-flow`（`83045569` 意见→变量+nodeOpinions 注入、`1fc035fc` 按节点过滤修正、`1ce7b3bc` @Autowired 修复、`aa0aa09e` 测试构造器补参、`6a113431` 会签聚合 opinionAgg_*）→ develop `de66f1d0`（版本收敛 0.3.1-SNAPSHOT）/`9ba59e97`（测试断言对齐）→ main `452178d8`；CI success；tag `0.3.1`=`452178d8`；Release id `437557325`（`bootstrap-0.3.1.jar` 220,861,064 B sha256 `9379195e…`）。**0.3.0 tag 未改动**（=`a0ac3a1a`）；Web 无改动（保持 0.3.0）。
+- **交付内容**：意见表单字段写入流程变量（`opinion`/`opinion_<字段>` 平铺/`formData` 回写，complete 事务内）；触发器注入 `nodeOpinions`（本节点意见快照）；会签按字段类型聚合 `opinionAgg_*`（RADIO/SELECT=选项序最大值、NUMBER=最大值、CHECKBOX=并集+_Count）；17 张 APPROVAL_COMMENT 意见表单；三图重建（A 27 节点/B 20 节点/C 24 节点，CONDITION 分流、DYNAMIC_PARALLEL 分管领导并行、COPY 知会）；触发器 2 条（`tg_duty_overdue`→responseOverdue、`tg_scene_sensor`→sensorSuspect）；参与人 EXPRESSION 取 opinion_fieldHandler/opinion_assignee/opinion_fieldCommander。
+- **验证**：`sw-bpm-process` 模块 520 通过/0 失败（TaskActionServiceOpinionVariableTest 4 例、TriggerExecutionServiceNodeOpinionsTest 3 例）；UAT 8 条意见驱动路径全部 APPROVED——A 调整窗口 `YJ-20261107-004`（预约 `2119088560647270401` due=2026-11-08 23:30:00）/退回 `003`、B 误报 `XY-20261107-008`/P0 上报学校 `011`/超时督办 `010`、C 强制校准 `MES-20261107-009`/维修 `010`/复产 `011`；截图本机留存 `.runtime-030/uat-shots-031/`（不入 Git）。
+- **UAT 交付**：0.3.1 运行包与 Release 资产同字节、`build.version=0.3.1`、health UP；配置同步（17 表单 PUBLISHED、三图 20:31 发布、触发器、角色修正）。应用包 UAT 导出覆盖 `product/three-sample-process-uat/assets/`（`systemVersion=0.3.1`，66,734 B；缺独立意见表单定义、触发器脚本、Agent 图、IoT 规则与渠道凭据）。
+- **回执**：`product/three-sample-process-uat/receipts/execution-final-04.md`（能力核对 a—e、表单/变量/脚本、驱动关系覆盖表、发布事实、七阶段 6/0/1）；登记 `knowledge/features/0.3.1-approval-driven-flow.md`。
+
 ## 0.3.0（2026-11-07 发布并交付 UAT；三个业务示例流程本地配置→UAT 导入验证→补缺修复）
 
 - **发布事实**：Server `feature/0.3.0-sample-processes` @ `79f00d3c` → develop `63c9bcf5`（合入）→ `18e89e0f`（版本收敛）→ main `7e379ebd`（合入）→ `b4af4c3e`（构建脚本/版本配置统一 LF，修复生产门禁）；远端 main=develop=`b4af4c3e`。Web develop `a80414d`（版本收敛 0.3.0）→ main `271d40c`。成对 annotated tag `0.3.0`（Server 对象 `3b350acc`→commit `b4af4c3e`；Web 对象 `a00ea285`→commit `271d40c`）。CI：Server run `42265184368` **success**（`bootstrap-0.3.0.jar` 220,857,298 B sha256 `479c6c78bc5e688d3ca82d9dc3d92391f744907ee8ab49f5a04462c8d0a1de6c`，`build.version=0.3.0` 实测）；Web run `42264490453` **success**（`sw-web-dist-0.3.0.zip` 6,194,537 B sha256 `79a51b5935abd72d66ba326ab19b736154220ecf9733f695daffab1ea7da79a7`，入口 `assets/index-egL2MRAT.js`）。语义 Release「CH-aPaaS Server 0.3.0」id `436832133`、「CH-aPaaS Web 0.3.0」id `436817268`，两仓 latest=0.3.0，`build-<sha>` 自动产物保留。

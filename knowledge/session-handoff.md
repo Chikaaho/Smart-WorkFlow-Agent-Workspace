@@ -1,6 +1,10 @@
 # 会话交接（session-handoff）— 当前压缩版
 
-## 当前续接：0.3.0 已发布并交付 UAT（2026-11-07，三示例流程）
+## 当前续接：0.3.1 审批意见驱动返修执行侧完成（2026-11-08，待 Planner 验收）
+
+Owner 2026-11-07 审核退回 0.3.0（意见过简；未用审批意见、流程变量、脚本驱动分支与参与人），`COMPLETED` 撤回、功能回到执行阶段；0.3.0 发布事实不回滚。返修方向 `product/three-sample-process-uat/ready/direction-approval-comment-rework-031.md`；回执 `product/three-sample-process-uat/receipts/execution-final-04.md`；登记 `knowledge/features/0.3.1-approval-driven-flow.md`。平台改动：意见→流程变量（`opinion`/`opinion_<字段>`/`formData` 回写）、`nodeOpinions` 注入、会签聚合 `opinionAgg_*`（Server `83045569`/`1fc035fc`/`1ce7b3bc`/`6a113431`；`de66f1d0` 版本收敛、`9ba59e97` 断言对齐；模块 520/0）；main `452178d8`、tag `0.3.1`、Release `437557325`（jar 220,861,064 B sha256 `9379195e…`）、UAT `build.version=0.3.1` health UP、Flyway v0.2.9（无新迁移）；Web 无改动保持 0.3.0；0.3.0 tag 未动。UAT 配置：17 意见表单 PUBLISHED、三图重建（A v9/B v9/C v11）、触发器 2 条、角色修正（技术委员会 3 人、应急负责人王芳）。UAT 8 条意见驱动路径全 APPROVED：A `YJ-20261107-004`（调整窗口，预约 due=2026-11-08 23:30）/`003`；B `XY-20261107-008`（误报）/`011`（P0 上报学校）/`010`（超时督办）；C `MES-20261107-009`（强制校准）/`010`（维修）/`011`（复产）。应用包 UAT 导出覆盖 `assets/`（systemVersion=0.3.1；缺独立意见表单定义/触发器脚本/Agent 图/IoT 规则与渠道凭据）。固定值：功能 51（不登记新功能）；M59/18/13；ADV1/7/56；P63；问题 57。执行侧七阶段 **6/0/1**。唯一下一动作：**Planner 验收 0.3.1**。
+
+## 历史续接：0.3.0 终态同步完成（2026-11-07，当日被 Owner 退回）
 
 0.3.0 按 Owner 轻量流程完成：本地隔离实例（18091 / `smart_workflow_030`）配置并跑通三个业务示例流程 → 平台导出应用包 → 合入 develop/main → 发布 0.3.0 → UAT 导入、发布流程并实跑实例 → 一次总回执。执行侧七阶段 **6/0/1**（结束待 Planner 一次性验收 `product/three-sample-process-uat/receipts/execution-final-01.md`）。正式/部署 Server、Web 均 **0.3.0**：Server tag `0.3.0`→`b4af4c3e`（main=develop=`b4af4c3e`；CI `42265184368` success；Release `436832133`，jar 220,857,298 B sha256 `479c6c78…`）；Web tag `0.3.0`→`271d40c`（develop `a80414d`；CI `42264490453` success；Release `436817268`，zip 6,194,537 B sha256 `79a51b59…`，入口 `assets/index-egL2MRAT.js`）。本地全量 **2410/0/0/32**。UAT 由 0.2.4 就地升级：启动 **170.894s**、ERROR 0、Flyway **v0.2.9**（无新迁移）、health UP、`build.version=0.3.0`、磁盘 1.6G。交付：3 表单（25/20/23 字段）+3 流程（7/7/6 节点）+3 字典；UAT YJ-20261107-001（动态并行+会签+抄送+预约 DISPATCHED/命令 `2118776467725312002`）、XY-20261107-001/002（P1/P0）、MES-20261107-004/005（RAPID_RISE / >85 FLOW）。修复：审批人空值 NPE、应用包字典项丢弃、预约载荷二次编码、Agent 工具信封/业务键超长（Server `79f00d3c`）、CI 门禁 LF（`b4af4c3e`）。固定值：功能 51；M59/18/13；ADV1/7/56；P63；问题 57；验证基线[]。唯一下一动作：**Planner 验收总回执**。
 

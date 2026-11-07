@@ -1,8 +1,12 @@
 # 需求池（Requirement Pool）
 
-## 当前：三示例流程返修（Owner 2026-11-07 退回，目标 0.3.1）
+## 当前：三示例流程返修（目标 0.3.1，执行侧完成，待 Planner 验收）
 
-0.3.0 `COMPLETED`（七阶段 7/0/0，终态复核 `product/three-sample-process-uat/receipts/planning-final-review-030-completed.md`，方向与同步方向均归档 `passed/`。G1—G7 全过；Owner 追认 tag 同版本覆盖，不登记新功能，功能数保持 51）。回执链：`product/three-sample-process-uat/receipts/execution-final-01/02/03.md`；交付与配置快照（Agent 图 v7、IoT 规则映射——应用包不含）见 `knowledge/features/0.3.0-three-sample-processes.md`。发布：正式/部署 0.3.0，Server main `a0ac3a1a`、Web main `420e0f9`（CI 双绿），tag `0.3.0` 覆盖重指（Release 说明含覆盖记录、latest=0.3.0），UAT build.version=0.3.0、Flyway v0.2.9、health UP。功能51、M59/18/13、ADV1/7/56、P63、问题57；P20未核销。返修：**Owner 2026-11-07 审核退回**（意见过简；未用审批意见、流程变量、脚本驱动分支与参与人），`COMPLETED` 撤回，返修方向 `product/three-sample-process-uat/ready/direction-approval-comment-rework-031.md`，代码改动发 0.3.1、不动 0.3.0 tag。下一动作：Executor 按返修方向执行；0.3.0 遗留观察见 `todo/application-bundle-import-export.md`。原始场景见 `todo/ch-apaas-project-update.md` §3.1—3.3（已在 0.3.0 落地）。
+0.3.1 `执行侧完成`：方向 `product/three-sample-process-uat/ready/direction-approval-comment-rework-031.md`；回执 `product/three-sample-process-uat/receipts/execution-final-04.md`；登记 `knowledge/features/0.3.1-approval-driven-flow.md`。内容：意见字段→流程变量（`opinion`/`opinion_<字段>`/`formData` 回写）、`nodeOpinions` 注入、会签聚合 `opinionAgg_*`；三图 CONDITION 分流 + EXPRESSION 参与人（现场处置人/指派维修人/现场总指挥）+ 触发器 2 条 + 「调整窗口」预约意见新时间。UAT 8 条意见驱动路径全 APPROVED（A `YJ-20261107-004/003`、B `XY-20261107-008/011/010`、C `MES-20261107-009/010/011`）。发布：Server tag `0.3.1`=`452178d8`、Release `437557325`、UAT build.version=0.3.1 health UP；Web 无改动保持 0.3.0；0.3.0 tag 未动。功能51（不登记新功能）、M59/18/13、ADV1/7/56、P63、问题57；P20未核销。应用包 UAT 导出覆盖 `assets/`（缺独立意见表单定义/触发器脚本/Agent 图/IoT 规则与渠道凭据，见 assets/README）。**下一动作：Planner 验收 0.3.1（方向 §2 驱动关系覆盖与 §3 意见质量）**；0.3.0 遗留观察见 `todo/application-bundle-import-export.md`。原始场景见 `todo/ch-apaas-project-update.md` §3.1—3.3（已在 0.3.0 落地）。
+
+### 历史：0.3.0 终态（2026-11-07，后被 Owner 退回）
+
+0.3.0 `COMPLETED`（七阶段 7/0/0，终态复核 `product/three-sample-process-uat/receipts/planning-final-review-030-completed.md`，方向与同步方向均归档 `passed/`。G1—G7 全过；Owner 追认 tag 同版本覆盖，不登记新功能，功能数保持 51）。回执链：`product/three-sample-process-uat/receipts/execution-final-01/02/03.md`；交付与配置快照（Agent 图 v7、IoT 规则映射——应用包不含）见 `knowledge/features/0.3.0-three-sample-processes.md`。发布：正式/部署 0.3.0，Server main `a0ac3a1a`、Web main `420e0f9`（CI 双绿），tag `0.3.0` 覆盖重指（Release 说明含覆盖记录、latest=0.3.0），UAT build.version=0.3.0、Flyway v0.2.9、health UP。当日 Owner 审核退回（意见过简；未用审批意见、流程变量、脚本驱动分支与参与人），`COMPLETED` 撤回，由 0.3.1 返修替代（发布事实不回滚）。
 
 ## 历史：0.2.4 COMPLETED（2026-11-06）
 

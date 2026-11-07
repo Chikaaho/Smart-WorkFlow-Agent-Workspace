@@ -15,6 +15,13 @@
   - I6G1a/b/c 通知 Boot；
   - `AgentToolConfigServiceImplTest`。
 
+
+## 0.3.1（2026-11-08）
+
+- **应用包导出缺口（不阻塞验收）**：UAT 0.3.1 导出 `opinionForms` 为空、触发器脚本/Agent 图/IoT 规则不随包；节点意见快照随流程携带。导入后需补建 17 张意见表单与 2 条触发器，否则超时督办/强制校准两条驱动关系失效。已登记 `todo/application-bundle-import-export.md`。
+- **UAT 角色配置**：0.3.0 时期 `drill_tech_committee` 仅 1 人、`campus_emergency_lead` 绑张伟，与设计不符；0.3.1 已修正（3 委员 / 王芳）。其它环境导入需按 assets/README 成员口径预置。
+- **本地隔离残留**：`smart_workflow_030` 若干旧图/迭代实例保持 RUNNING（Owner 口径保留不删），不参与 UAT 取证。
+
 持续保护：
 - 不覆盖 Web `vite.config.ts` 的在途改动；
 - 不清库，也不清理 `smart_workflow_f1v4b`；

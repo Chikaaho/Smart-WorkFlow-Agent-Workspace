@@ -1,35 +1,35 @@
 {
   "$schema": "CH-aPaaS 版本权威（单一机器可读源；变更须走新回执）",
   "product": "CH-aPaaS",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "iteration": "0.1.0",
-  "registeredAt": "2026-11-07",
-  "registeredBy": "0.3.0 发布（三个业务示例流程本地配置→UAT 导入验证→补缺修复；合并、tag/Release/制品发布与 UAT 升级完成，总回执 product/three-sample-process-uat/receipts/execution-final-01.md；0.3.0 同版本覆盖与 G1—G7 返修经 Owner 2026-11-07 追认，终态同步回执 product/three-sample-process-uat/receipts/terminal-sync-030-01.md）",
+  "registeredAt": "2026-11-08",
+  "registeredBy": "0.3.1 审批意见/流程变量/脚本驱动流转返修（Owner 2026-11-07 退回 0.3.0 后返修；代码改动发 0.3.1，0.3.0 tag 未动；回执 product/three-sample-process-uat/receipts/execution-final-04.md）",
   "development": {
-    "targetVersion": "0.3.0",
+    "targetVersion": "0.3.1",
     "status": "PUBLISHED",
-    "statusNote": "三示例流程已交付 UAT；执行侧七阶段 6/0/1（待 Planner 一次性验收总回执）",
-    "direction": "product/three-sample-process-uat/ready/direction-three-sample-process-uat.md",
-    "finalReview": "product/three-sample-process-uat/receipts/execution-final-01.md（待 Planner 验收）",
+    "statusNote": "0.3.1 已发布并部署 UAT；执行侧七阶段 6/0/1（验收与结束待 Planner）",
+    "direction": "product/three-sample-process-uat/ready/direction-approval-comment-rework-031.md",
+    "finalReview": "product/three-sample-process-uat/receipts/execution-final-04.md（执行回执，待 Planner 验收）",
     "branches": {
-      "server": "feature 79f00d3c → develop 63c9bcf5+18e89e0f → main 7e379ebd → LF 修复 b4af4c3e（tag 0.3.0；远端 main=develop=b4af4c3e）",
-      "web": "develop a80414d（版本收敛 0.3.0）→ main 271d40c（tag 0.3.0）",
-      "workspace": "develop-sw（总回执与同步批次提交后回读）"
+      "server": "feature/0.3.1-approval-driven-flow 83045569/1fc035fc/1ce7b3bc/aa0aa09e/6a113431 → develop de66f1d0/9ba59e97 → main 452178d8（tag 0.3.1=452178d8，CI success）",
+      "web": "无改动；保持 main 420e0f9（0.3.0）",
+      "workspace": "develop-sw（本回执照与同步批次提交后回读）"
     },
     "developmentVersion": {
-      "server": "0.3.0-SNAPSHOT",
+      "server": "0.3.1-SNAPSHOT",
       "web": "0.3.0"
     }
   },
   "projections": {
     "serverRepo": {
       "path": "Smart-WorkFlow-aPaaS-server",
-      "mavenVersion": "0.3.0（正式构建 -Drevision=0.3.0；开发默认 0.3.0-SNAPSHOT）",
+      "mavenVersion": "0.3.1（正式构建 -Drevision=0.3.1；开发默认 0.3.1-SNAPSHOT）",
       "flywayEndpoint": {
         "h2": "V0.2.9",
         "postgresql": "V0.2.9"
       },
-      "flywaySeed": "V0.2.0__baseline_seed.sql 基线 + 版本化 V0.2.2～V0.2.9（f1 供应商模型/graph 快照/执行节点明细/知识 RAG、f2 应用整包、0.2.7 agent execution lifecycle、0.2.8 IoT-Agent 桥、0.2.9 失败升级配置与渠道凭据密文）+ 19 支 R__ 双方言；0.3.0 无新增迁移"
+      "flywaySeed": "V0.2.0__baseline_seed.sql 基线 + 版本化 V0.2.2～V0.2.9 + 19 支 R__ 双方言；0.3.0/0.3.1 均无新增迁移"
     },
     "webRepo": {
       "path": "Smart-WorkFlow-aPaaS-Web",
@@ -38,18 +38,18 @@
     "workspace": {
       "path": "Smart-WorkFlow-Agent-Workspace",
       "changelog": "CHANGELOG.md",
-      "releaseNotes": "GitHub Release 0.3.0（Server b4af4c3e·bootstrap-0.3.0.jar；Web 271d40c·sw-web-dist-0.3.0.zip）",
-      "upgrade": "docs/ops/production-ops.md §8/§9（UAT 由 0.2.4 就地升级；启动前必须 `. ./server.env` 再 start.sh）",
-      "rollback": "docs/ops/production-ops.md §8.1/§8.2/§9.1（bootstrap.jar.bak-0.2.4、web.bak-0.3.0-pre.tar.gz；0.3.0 无 DB 迁移，回退仅需换回 0.2.4 包）",
-      "configChanges": "无新增必配项；UAT EMAIL 渠道系统级已装配（systemConfigured=true），租户级开关保持关闭；server.env 装载为启动硬前置",
-      "dbMigrations": "V0.2.0__baseline_seed.sql + V0.2.2～V0.2.9（h2/postgresql 双方言）+ 19 支 R__；UAT 保持 v0.2.9（0.3.0 无新增迁移）",
-      "manifest": "GitHub Release 0.3.0 资产：Server bootstrap-0.3.0.jar 220,857,298 B sha256 479c6c78bc5e688d3ca82d9dc3d92391f744907ee8ab49f5a04462c8d0a1de6c（CI run 42265184368 success，build.version=0.3.0 实测）；Web sw-web-dist-0.3.0.zip 6,194,537 B sha256 79a51b5935abd72d66ba326ab19b736154220ecf9733f695daffab1ea7da79a7（run 42264490453 success，入口 assets/index-egL2MRAT.js）",
-      "deployment": "UAT 已按既有通道由 0.2.4 就地升级至 0.3.0（2026-11-07）：备份 bootstrap.jar.bak-0.2.4/web.bak-0.3.0-pre.tar.gz/DB smart_workflow_20261107_0217_pre030.dump；启动 170.894s（PID 3263327）、启动段 ERROR 0、Flyway 保持 v0.2.9、本机与 nginx /sw-server/api/actuator/health 均 UP、HTTPS 根 200（入口 index-egL2MRAT.js）、build.version=0.3.0；磁盘可用 1.6G（92%）。"
+      "releaseNotes": "GitHub Release 0.3.1（Server 452178d8·bootstrap-0.3.1.jar 220,861,064 B sha256 9379195e…；Web 无 0.3.1 资产，保持 0.3.0 sw-web-dist-0.3.0.zip）",
+      "upgrade": "docs/ops/production-ops.md §8/§9（UAT 在 0.3.0 基础上升级 0.3.1 运行包；启动前必须 `. ./server.env` 再 start.sh）",
+      "rollback": "docs/ops/production-ops.md §8.1/§8.2/§9.1（0.3.1 无 DB 迁移，回退仅需换回 0.3.0 包；UAT DB 快照 pre031）",
+      "configChanges": "0.3.1 配置（随本轮 UAT 环境）：17 张 APPROVAL_COMMENT 意见表单、三图重建发布（A v9/B v9/C v11）、触发器 2 条（tg_duty_overdue/tg_scene_sensor）、角色成员修正（drill_tech_committee 3 人、campus_emergency_lead=王芳）；应用包导出不含意见表单定义与触发器脚本（见 assets/README）",
+      "dbMigrations": "无新增；UAT 保持 v0.2.9",
+      "manifest": "GitHub Release 0.3.1 资产：bootstrap-0.3.1.jar 220,861,064 B sha256 9379195e…（CI success，build.version=0.3.1 实测）",
+      "deployment": "UAT 已部署 0.3.1（2026-11-07）：运行包与 Release 资产同字节、build.version=0.3.1、health UP；配置同步后 17 表单 PUBLISHED、三图发布（20:31）；8 条意见驱动路径 UAT 实证（每流程 ≥2）"
     }
   },
   "rules": {
     "candidateFreeze": "候选固定后只允许通过新回执审查的变更进入；代码/迁移/依赖/配置漂移使受影响证据失效并重固定候选",
-    "tagAndRelease": "0.3.0 成对 annotated tag/Release 已发布：Server tag→b4af4c3e（对象 3b350acc）、Web tag→271d40c（对象 a00ea285）；资产见 manifest；两仓语义 Release 已为 latest，build-<sha> 自动产物全部保留，未删除/覆盖既有发布。",
-    "deployment": "UAT 已由 0.2.4 就地升级至 0.3.0：Flyway v0.2.9（无新增迁移）；启动 170.894s、ERROR 0、health UP（本机与 nginx）；web 指纹与 CI 制品一致；server.env 必须在 start.sh 前装载。"
+    "tagAndRelease": "0.3.1 已发布：Server tag 0.3.1=452178d8、Release 437557325；0.3.0 tag/Release 未改动（=a0ac3a1a，保留覆盖记录）；Web 无 0.3.1 发布，latest 仍为 0.3.0。",
+    "deployment": "UAT 已部署 0.3.1：Flyway 保持 v0.2.9（无新增迁移）、health UP、build.version=0.3.1；配置（意见表单/三图/触发器/角色）已同步。"
   }
 }
