@@ -6,10 +6,6 @@
 
 三示例流程返修（0.3.2）已完成：按执行提示03 完成 H1—H5，UAT 7 条真实业务路径（A `YJ-20261108-005/006`、B `XY-20261108-012/013/014`、C `MES-20261108-013/014`）全 `APPROVED`；回执 `product/three-sample-process-uat/receipts/execution-final-05.md`，登记 `knowledge/features/0.3.2-opinion-display.md`，截图 `.runtime-030/uat-shots-032/`（40 张，本机留存）。发布：Server tag `0.3.2`=`de8ec017`、Release `437820040`；Web tag `0.3.2`=`3b0043f`、Release `437790115`（同版本覆盖去重）；UAT build.version=0.3.2、Web 入口 `assets/index-BV9G2zgH.js`、health UP；0.3.0/0.3.1 tag 未动。七阶段**5/1/1**。七阶段4/1/2。规划审查05 功能 **`PASSED`**（`product/three-sample-process-uat/receipts/planning-review-05-passed.md`），返修方向已归档 `passed/`；终态同步方向 `ready/direction-terminal-sync-032.md`。唯一下一动作：**Owner 追认 Web 0.3.2 tag 同版本覆盖**，之后 Executor 终态同步。上一交付 0.2.4 COMPLETED（7/0/0），方向归档 `product/0.2.4/passed/`。
 
-## 0.3.1（历史，已被 0.3.2 替代）
-
-按审查04 返修的 0.3.1 已发布（Server `452178d8`、Web 保持 0.3.0），审查04 判定意见展示与业务数据不通过，转入 0.3.2 H1—H5。
-
 ## 0.3.0（历史，终态同步后被 Owner 退回）
 
 终审 COMPLETED 后同日被 Owner 退回（意见过简、未用意见/变量/脚本驱动），发布事实不回滚；详见 `knowledge/features/0.3.0-three-sample-processes.md`。
