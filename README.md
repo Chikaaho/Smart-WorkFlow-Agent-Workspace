@@ -10,7 +10,7 @@ CH-aPaaS 是面向企业协作场景的低代码 PaaS 与 AI Agent 平台。项�
 
 ## 当前发布
 
-当前正式版本 **0.3.6**（2026-11-08，Web 发布并部署 UAT；Server 未改动，仍为 **0.3.2**）。这一版处理指令参数中文化和 C1 数据一致性的返修（H8、H9）。
+当前正式版本 **0.3.6**（2026-11-08，Web 发布并部署 UAT；Server 未改动，仍为 **0.3.2**）。三示例流程返修（0.3.1—0.3.6）已通过规划审查 07（`PASSED`，H1—H9 锁定），终态同步完成，待 Planner 终态复核。这一版处理指令参数中文化和 C1 数据一致性的返修（H8、H9）。
 
 - 只读 JSON 参数（如「到点下发的设备指令」）按映射显示中文：键名（演练编号、动作、机房断电、火警告警、目标机房、回切时限（分钟））与枚举值（`switch`→切换）；无映射回退原键名/原值。映射在表单字段配置里维护，存储值与下发给设备的 MQTT 载荷（英文键）不变。
 - 「技术参数（JSON 原文）」折叠区只对管理员/设计者（`form:design:save`）可见，普通审批人看不到。
@@ -22,7 +22,7 @@ CH-aPaaS 是面向企业协作场景的低代码 PaaS 与 AI Agent 平台。项�
 - Server tag `0.3.2`→`de8ec017`；UAT `build.version=0.3.2`，health UP，Flyway v0.2.9。
 - 已发布的 tag（0.3.0/0.3.2/0.3.3/0.3.4/0.3.5）均未改动。
 
-功能数保持 **51**。回执见 [`product/three-sample-process-uat/receipts/execution-final-07.md`](product/three-sample-process-uat/receipts/execution-final-07.md)，交付登记见 [`knowledge/features/0.3.2-opinion-display.md`](knowledge/features/0.3.2-opinion-display.md)（含 0.3.3—0.3.6 返修）。
+功能数保持 **51**（不登记新功能）。规划审查见 [`planning-review-07-passed.md`](product/three-sample-process-uat/receipts/planning-review-07-passed.md)，终态同步回执见 [`terminal-sync-036-01.md`](product/three-sample-process-uat/receipts/terminal-sync-036-01.md)，执行回执见 [`execution-final-07.md`](product/three-sample-process-uat/receipts/execution-final-07.md)，交付登记见 [`knowledge/features/0.3.2-opinion-display.md`](knowledge/features/0.3.2-opinion-display.md)（含 0.3.1—0.3.6 全线最终交付登记）。
 
 ## 历史发布
 

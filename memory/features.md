@@ -1,22 +1,17 @@
 # 功能摘要
 
-2026-11-08｜Planner（审查07）｜三示例流程 0.3.6 功能验收通过，待终态同步；P66 多数据库兼容并行 READY。
+2026-11-08｜Executor（终态同步 0.3.6）｜三示例流程返修 0.3.1—0.3.6 `PASSED`（审查07），待 Planner 终态复核。
 
-- 0.3.6：**指令参数中文化与原文权限门禁（H8）+ C1/C2 一致数据重跑（H9）**。
-  - TEXT 字段新增 `jsonDisplay`（键名/取值中文映射）；只读 JSON 参数显中文（演练编号/动作/机房断电/火警告警/目标机房/回切时限（分钟）；switch→切换），无映射回退原键名；「JSON 原文」折叠区仅 `form:design:save` 可见；MQTT 载荷英文键不变。
-  - `ops_drill_plan` UAT 版本 3：标题「到点下发的设备指令」+ 映射；C1 `MES-20261108-015`（传感器漂移→仪表校准）、C2 `MES-20261108-016`（设备维修）重跑 APPROVED；A1 双视角（chenjing `YJ-20261108-008` foldable 0；admin `YJ-20261108-009` 可展开）。
-  - Web tag `0.3.6`=`c3f1d6e`（feature `8dd0220`），Release `438126185`；Server 维持 0.3.2；功能数保持 **51**。
-  - 详见 `knowledge/features/0.3.2-opinion-display.md`（0.3.6 节）、回执 `receipts/execution-final-07.md`。
+- 0.3.1—0.3.6：**三示例流程返修（`PASSED`，审查07；功能数保持 51，不登记新功能）**。
+  - 机制：审批意见写入流程变量（`opinion`/`opinion_<字段>`/`formData` 回写）、会签聚合 `opinionAgg_*`、触发器 `nodeOpinions` 注入；三流程意见驱动分支与处理人全部落地；意见展示（结构化字段、摘要每段“标签：值”、抽屉、会签弹窗）；只读 JSON 中文映射 `jsonDisplay` 与原文仅 `form:design:save` 可见。
+  - 最终证据：A1 `YJ-20261108-008/009`、A2 `YJ-20261108-006`、B1 `XY-20261108-015`、B2 `XY-20261108-013`、B3 `XY-20261108-014`、C1 `MES-20261108-015`、C2 `MES-20261108-016`。
+  - 发布：Web tag `0.3.6`=`c3f1d6e`（Release `438126185`）；Server 维持 `0.3.2`=`de8ec017`；UAT Web `index-CKdiXkhU.js`。
+  - 详见 `knowledge/features/0.3.2-opinion-display.md`（最终交付登记）、回执 `terminal-sync-036-01.md`。
 
-- 0.3.3—0.3.5：**流转记录摘要标签与数据一致性返修（H6、H7；审查06 已验收锁定）**。
-  - 意见摘要每段都是“标签：值”，数值带单位，备注显示为“审批意见：…”，长文本可悬浮看全文，1440 无横向滚动。
-  - JSON 参数按字段展示，原文折叠。
-  - UAT 新建实例重跑 A1 `YJ-20261108-008`、B1 `XY-20261108-015`，均 APPROVED。
-  - Web tag `0.3.3`/`0.3.4`/`0.3.5`=`d52f5aa`/`94827dd`/`cfccaa9`，Server 维持 0.3.2。
-  - 详见 `knowledge/features/0.3.2-opinion-display.md`（0.3.3—0.3.5 节）、回执 `receipts/execution-final-06.md`。
+- 0.3.3—0.3.5（历史，审查06 锁定）：H6 摘要“标签：值”、H7 JSON 字段化+原文折叠；A1 `YJ-20261108-008`、B1 `XY-20261108-015` 重跑 APPROVED；tags `d52f5aa`/`94827dd`/`cfccaa9`。
 
-- 0.3.2/0.3.1/0.3.0：0.3.2 意见展示返修（H1—H5 锁定，审查05 由 0.3.3—0.3.5 替代）；0.3.1 意见驱动流转机制锁定（审查04 由 0.3.2 替代）；0.3.0 初版被 Owner 退回后返修。详见 `knowledge/features/0.3.2-opinion-display.md`、`0.3.1-approval-driven-flow.md`、`0.3.0-three-sample-processes.md`。
+- 0.3.2/0.3.1/0.3.0：0.3.2 意见展示返修（H1—H5）；0.3.1 意见驱动流转机制（意见→变量→分支/参与人）；0.3.0 初版被 Owner 退回后返修。详见各功能文件。
 
-- 0.2.0—0.2.4：均 `COMPLETED`（七阶段 7/0/0，已发布并部署 UAT）。0.2.4=第 **51** 个正式功能（README 示例二/三，tag Server `41511bd4`/Web `f4acc3d`）；0.2.2=第 50 个（F1 Agent 完善+应用导入导出，D022-16）；0.2.3=Agent graph 增强（功能数保持 50，P20 不核销）；0.2.1=29 项缺陷列车。终态复核见各 `product/0.2.x/receipts/`，登记见 `knowledge/features/0.2.*.md`。
+- 0.2.0—0.2.4：均 `COMPLETED`（七阶段 7/0/0，已发布并部署 UAT）。0.2.4=第 **51** 个正式功能（README 示例二/三）；0.2.2=第 50 个；0.2.3=Agent graph 增强（功能数保持 50）；0.2.1=29 项缺陷列车。
 
 缺陷修复不增加正式业务功能数，不核销 P 编号。

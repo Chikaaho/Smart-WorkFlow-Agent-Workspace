@@ -1,31 +1,21 @@
 # 当前状态（current-status）
 
-**当前状态（2026-11-08，0.3.6 指令参数中文化与 C1 数据一致性返修——执行侧完成，待 Planner 验收）**
+**当前状态（2026-11-08，三示例流程返修 0.3.1—0.3.6——规划审查 07 通过 `PASSED`，终态同步完成，待 Planner 终态复核）**
 
-规划审查 06 锁定 H6、H7，下发两项返修（执行提示 05），本轮已完成：
+规划审查 07（`product/three-sample-process-uat/receipts/planning-review-07-passed.md`）判定 0.3.6 通过，H1—H9 全部锁定。本终态同步按 `product/three-sample-process-uat/ready/direction-terminal-sync-036.md` 的唯一终态值清单执行，未自行计算或改值。
 
-- **H8**：TEXT 字段新增「键名/取值中文映射」（契约键 `jsonDisplay`：keyLabels/valueLabels）。只读 JSON 参数按映射显示中文——键名（演练编号、动作、机房断电、火警告警、目标机房、回切时限（分钟））与枚举值（`switch`→切换），无映射回退原键名/原值；「技术参数（JSON 原文）」折叠区仅 `form:design:save`（管理员/设计者）可见，普通审批人不渲染。`ops_drill_plan` UAT 定义发布版本 3：字段标题「设备指令参数（JSON）」→「到点下发的设备指令」+ 中文映射。存储值与下发给设备的 MQTT 载荷（英文键）不变。
-- **H9**：C1、C2 都新建实例重跑（原记录不改）：`MES-20261108-015`（81.2℃/2.8，序列 77.6→81.2，实测 77.8 偏差 3.4>3 → 传感器漂移 → 仪表校准，路径「快速升温异常工单处置（仪表校准）」）、`MES-20261108-016`（82.0℃/2.4，序列 78.4→82.0，实测 82.3 偏差 0.3≤3 → 设备故障 → 设备维修，路径「快速升温异常工单处置（设备维修）」）；原 `MES-20261108-014` 核对发现同类矛盾一并重跑。两条均 APPROVED，四项（温度序列、升温速率、知识命中、结论）与阈值（75/80/85、判定值 1.5、窗口 5）全部一致。
-- A1 双视角证据：普通审批人 chenjing 视 `YJ-20261108-008` 指令参数区（全中文、`raw foldable: 0`）；管理员另需发起人身份，新建 `YJ-20261108-009`（admin，全链 9 节点 APPROVED），原文折叠区可见且可展开（英文键载荷原样）。
+- **功能状态**：三示例流程返修（0.3.1—0.3.6）**`PASSED`**；规划终态复核通过后为 `COMPLETED`。
+- **固定值**：已完成功能数 **51**（Owner 定不登记，不变）；清单 **M59/18/13=90**、**ADV1/7/56=64** 不变；P 编号本次不核销，实际 P **63**；问题 **57** 不变；正式验证基线新增集合 **[]**（正式基线不变）。
+- **交付内容登记**：`knowledge/features/0.3.2-opinion-display.md` 的「最终交付登记（0.3.1—0.3.6）」一节——审批意见写入流程变量（`opinion`、`opinion_<字段>`）、会签意见聚合 `opinionAgg_*`、触发器 `nodeOpinions` 注入；三流程意见驱动分支与处理人；意见展示；只读 JSON 中文映射 `jsonDisplay` 与原文权限门禁；UAT 最终证据实例。
+- **发布事实**：Web **0.3.6**（tag `0.3.6`=`c3f1d6e`，Release `438126185`）；Server **0.3.2**（tag `0.3.2`=`de8ec017`，Release `437820040`）；UAT `build.version=0.3.2`，Web 入口 `assets/index-CKdiXkhU.js`，Flyway V0.2.9，health UP。Web 0.3.2 tag 同版本覆盖已由 Owner 2026-11-08 追认（维持 `3b0043f`）。
+- **应用包**：维持 `systemVersion=0.3.2` 导出（71,786 B）；缺独立意见表单定义、触发器脚本、Agent 图、IoT 规则与渠道凭据，缺项与补建方法见功能文件与 `product/three-sample-process-uat/assets/README.md`。
+- **需求池观察区新增**：设计器映射编辑框只对 JSON 场景显示；演示实例按真实节奏分时审批（Owner 需要时再安排）；UAT 磁盘水位 96%。
+- **活动功能**：三示例流程无；并行 **P66 多数据库兼容**（XL，目标 0.4.0，`READY`，方向 `product/multi-database-compat/ready/direction-multi-database-compat.md`）。
+- **终态同步回执**：`product/three-sample-process-uat/receipts/terminal-sync-036-01.md`。
 
-回执：`product/three-sample-process-uat/receipts/execution-final-07.md`。
+执行侧七阶段 **6/0/1**：评估、执行、验收与同步、合并、发版、发布后同步已完成；结束待 Planner 终态复核 0.3.6。
 
-发布事实：
-
-- **Web 0.3.6**：feature `8dd0220`（分支 `feature/0.3.6-command-params-cn`）→ develop `0d71982` → main `c3f1d6e`；tag `0.3.6`=`c3f1d6e`，Release `438126185`，`sw-web-dist-0.3.6.zip` 6,197,059 B，sha256 `9470f0c1…`（CI run `42463025237`，build Release `438125351` 同字节）。
-- **Server** 未改动，仍为 tag `0.3.2`=`de8ec017`。
-- 已发布 tag（0.3.0、0.3.2、0.3.3、0.3.4、0.3.5）都没有改动。
-- UAT：Web 入口 `assets/index-CKdiXkhU.js`，根 200；`build.version=0.3.2`，health UP，Flyway v0.2.9。
-
-当前版本与固定值：
-
-- 开发版本：Server `0.3.2-SNAPSHOT`，Web `0.3.6`。
-- 应用包没有重新导出，`assets/` 仍为 `systemVersion=0.3.2`。
-- 固定值不变：功能 **51**、M59/18/13、ADV1/7/56、P63、问题 57。
-
-执行侧七阶段 **5/1/1**：评估、执行、合并、发版、发布后同步已完成；验收与同步等待 Planner；结束未开始。
-
-唯一下一动作：**Planner 验收 0.3.6（H8、H9 证据：`.runtime-030/uat-shots-036/`）**。
+唯一下一动作：**Planner 终态复核 0.3.6**；P66 线不受影响（Executor 阶段 A 只读核对）。
 
 **历史（2026-11-08，0.3.3—0.3.5 流转记录摘要标签与数据一致性返修——已由审查 06 验收，H6、H7 锁定）**
 

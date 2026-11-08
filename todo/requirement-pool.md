@@ -4,17 +4,18 @@
 
 Owner 2026-11-08 要求与三示例流程并行（system.md §4 已修订为不冲突即可并行）：迁移脚本与全部 SQL 种子适配 H2、PostgreSQL、MySQL 5.7、MySQL 8.0、Oracle 19c、达梦 DM8（必须项），人大金仓、SQL Server、MariaDB、openGauss（Owner 定全部要做）；终态登记第 52 个正式功能；本机 Docker 可随意使用。硬约束：PG 和 H2 已发布迁移的校验和不变，不碰 UAT 数据库。方向 `product/multi-database-compat/ready/direction-multi-database-compat.md`。唯一下一动作：**Executor 阶段 A 能力核对与方案（只读），回执 `receipts/execution-assess-01.md`**。
 
-## 当前：三示例流程返修（0.3.6 审查07 PASSED，待终态同步）
+## 当前：三示例流程返修（0.3.1—0.3.6，审查07 PASSED，终态同步完成，待 Planner 终态复核）
 
-0.3.6：按执行提示05（审查06：H6、H7 锁定）完成 H8、H9。入口 `product/three-sample-process-uat/receipts/planning-execution-prompt-three-sample-05.md`，回执 `product/three-sample-process-uat/receipts/execution-final-07.md`。
+0.3.1—0.3.6 全线交付：意见写入流程变量（`opinion`/`opinion_<字段>`）、会签聚合 `opinionAgg_*`、触发器 `nodeOpinions` 注入；三流程意见驱动分支与处理人；意见展示（摘要“标签：值”、抽屉、会签弹窗）；只读 JSON 中文映射 `jsonDisplay` 与原文权限门禁。交付登记 `knowledge/features/0.3.2-opinion-display.md`「最终交付登记（0.3.1—0.3.6）」。
 
-- **H8**：TEXT 字段契约键 `jsonDisplay`（键名/取值中文映射）；只读 JSON 参数显中文（演练编号/动作/机房断电/火警告警/目标机房/回切时限（分钟）；switch→切换），无映射回退原键名；「JSON 原文」折叠区仅 `form:design:save` 可见；MQTT 载荷英文键不变。`ops_drill_plan` UAT 版本 3：标题「到点下发的设备指令」+ 映射。上节候选「中文名字典」已实现。
-- **H9**：C1 `MES-20261108-015`（传感器漂移→仪表校准）、C2 `MES-20261108-016`（设备维修）一致数据重跑 APPROVED；原 014 同类矛盾一并重跑；A1 双视角另建 `YJ-20261108-009`（admin，9 节点 APPROVED）。
-- **发布**：Web tag `0.3.6`=`c3f1d6e`（feature `8dd0220` → develop `0d71982`，Release `438126185`）；Server 维持 0.3.2；已发布 tag（0.3.0—0.3.5）均未改动。
-- **固定值**：功能51、M59/18/13、ADV1/7/56、P63、问题57。
-- **新需求候选（观察）**：设计器映射编辑框对非 JSON 的 TEXT 字段也可见（配置无效果，收敛属新需求）。
+- **规划验收**：审查07（`receipts/planning-review-07-passed.md`）通过，H1—H9 锁定；终态同步按 `ready/direction-terminal-sync-036.md` 完成，回执 `receipts/terminal-sync-036-01.md`。
+- **固定值**：功能51（不登记新功能）、M59/18/13、ADV1/7/56、P63（本次不核销）、问题57、验证基线 []。
+- **发布**：Web tag `0.3.6`=`c3f1d6e`（Release `438126185`）；Server 维持 0.3.2（tag `de8ec017`，Release `437820040`）；UAT Web 入口 `index-CKdiXkhU.js`、build.version=0.3.2、Flyway V0.2.9。Web 0.3.2 tag 同版本覆盖 Owner 2026-11-08 追认（维持 `3b0043f`）。已发布 tag 0.3.0—0.3.5 均未改动。
+- **最终证据实例**：A1 `YJ-20261108-008/009`、A2 `YJ-20261108-006`、B1 `XY-20261108-015`、B2 `XY-20261108-013`、B3 `XY-20261108-014`、C1 `MES-20261108-015`、C2 `MES-20261108-016`。
+- **应用包**：维持 `systemVersion=0.3.2` 导出（71,786 B）；缺项与补建方法见功能文件与 `assets/README.md`。
+- **观察区新增**：设计器映射编辑框只对 JSON 场景显示；演示实例按真实节奏分时审批（Owner 需要时再安排）；UAT 磁盘水位 96%。
 
-规划审查07（`receipts/planning-review-07-passed.md`）通过，H1—H9 锁定；观察：C1/C2 同设备同测温时间、演示审批时间集中（不打回）。三示例流程线：审查07 **PASSED**（0.3.6，H1—H9 锁定），下一动作 **Executor 按 `product/three-sample-process-uat/ready/direction-terminal-sync-036.md` 终态同步**，回执 `terminal-sync-036-01.md`。
+三示例流程线：**PASSED**（0.3.1—0.3.6，H1—H9 锁定），唯一下一动作 **Planner 终态复核 0.3.6**；P66 线不受影响。
 
 ### 历史：0.3.3—0.3.5（2026-11-08，审查06 已验收锁定）
 

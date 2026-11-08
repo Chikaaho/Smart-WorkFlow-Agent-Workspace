@@ -1,39 +1,32 @@
 # 会话交接（session-handoff）— 当前压缩版
 
-## 当前续接：0.3.6 指令参数中文化与 C1 数据一致性返修，执行侧已完成（2026-11-08，待 Planner 验收）
+## 当前续接：三示例流程返修 0.3.1—0.3.6 终态同步完成（规划审查 07 `PASSED`，待 Planner 终态复核；2026-11-08）
 
-依据审查 06（H6、H7 锁定），执行提示 05 下发 H8、H9，本轮已完成。
+规划审查 07（`receipts/planning-review-07-passed.md`）判定 0.3.6 通过，H1—H9 全部锁定。终态同步按 `ready/direction-terminal-sync-036.md` 的唯一终态值清单执行（未自行改值），回执 `receipts/terminal-sync-036-01.md`；本同步方向待规划复核后归档 `passed/`。
 
-**H8：指令参数中文化与原文权限门禁（Web 0.3.6，feature `8dd0220`）**
+**唯一终态值**
 
-- TEXT 字段新增契约键 `jsonDisplay`（keyLabels/valueLabels），`parseDefinition` 透传、`FieldPatch` 收口；存储值与 MQTT 载荷（英文键）不变。
-- `TextControl.vue`：键名/取值按映射显示中文，无映射回退原键名/原值；「技术参数（JSON 原文）」折叠区仅 `hasPerm('form:design:save')` 渲染。
-- `TextConfig.vue` 设计器新增键名/取值中文映射编辑（每行「键=中文名」，非法行忽略，清空回写 undefined，切换字段重同步）。
-- UAT 数据侧：`ops_drill_plan` publish-version **版本 3**——标题「设备指令参数（JSON）」→「到点下发的设备指令」+ 六键中文映射 + switch=切换。
-- 测试：`TextControl.spec` 9/9、`TextConfig.spec` 6/6、form-designer 透传 1 项；全量 2054 通过；eslint/vue-tsc 干净。
+- 功能状态：三示例流程返修（0.3.1—0.3.6）**`PASSED`**；规划终态复核通过后为 `COMPLETED`。
+- 功能 **51** 不变（Owner 定不登记）；M59/18/13=90、ADV1/7/56=64 不变；P 不核销（实际 P63）；问题 57；正式验证基线变更 []。
+- 交付登记：`knowledge/features/0.3.2-opinion-display.md`「最终交付登记（0.3.1—0.3.6）」——意见→流程变量（`opinion`/`opinion_<字段>`）、会签聚合 `opinionAgg_*`、`nodeOpinions` 注入；三流程意见驱动分支与处理人；意见展示；`jsonDisplay` 中文映射与原文权限门禁；UAT 最终证据实例。
+- 最终证据实例：A1 `YJ-20261108-008/009`、A2 `YJ-20261108-006`、B1 `XY-20261108-015`、B2 `XY-20261108-013`、B3 `XY-20261108-014`、C1 `MES-20261108-015`、C2 `MES-20261108-016`。
 
-**H9：C1/C2 一致数据重跑（MES-20261108-015、MES-20261108-016，均 APPROVED）**
+**发布事实**
 
-- C1（B-20261108-05）：81.2℃/2.8，序列 77.6→81.2，知识命中「≥1.5 判快速升温；本次 2.8」；实测 77.8（偏差 3.4>3）→ 传感器漂移 → 仪表校准（李强，校准后 77.9）→ 快速升温异常工单处置（仪表校准）。
-- C2（B-20261108-06）：82.0℃/2.4，序列 78.4→82.0，知识命中一致；实测 82.3（偏差 0.3≤3）→ 设备故障 → 设备维修（更换 K 型热电偶，处理后 75.8）→ 快速升温异常工单处置（设备维修）。
-- 原 `MES-20261108-014` 核对发现同类矛盾，一并重跑；阈值 75/80/85、判定值 1.5、窗口 5 四处引用一致。
+- Web **0.3.6**：tag `0.3.6`=`c3f1d6e`，Release `438126185`，`sw-web-dist-0.3.6.zip` 6,197,059 B，sha256 `9470f0c1…`（CI run `42463025237`）。
+- Server **0.3.2**：tag `0.3.2`=`de8ec017`，Release `437820040`；未改动。
+- UAT：Web 入口 `assets/index-CKdiXkhU.js`，`build.version=0.3.2`，Flyway V0.2.9，health UP。
+- Web 0.3.2 tag 同版本覆盖已由 Owner 2026-11-08 追认（维持 `3b0043f`）；已发布 tag 0.3.0—0.3.5 均未改动。
 
-**发布与部署**
+**应用包**
 
-- Web：feature `8dd0220` → develop `0d71982` → main `c3f1d6e`；tag `0.3.6`=`c3f1d6e`；Release `438126185`，zip 6,197,059 B，sha256 `9470f0c1…`（CI run `42463025237`）。
-- Server 未改动，仍为 tag 0.3.2=`de8ec017`；已发布 tag（0.3.0—0.3.5）均未改动。
-- UAT：Web 入口 `assets/index-CKdiXkhU.js`；`build.version=0.3.2`，health UP。
+维持 `systemVersion=0.3.2` 导出（71,786 B）；缺独立意见表单定义（17 张）、触发器脚本（B `tg_duty_overdue`、C `tg_scene_sensor`）、Agent 图、IoT 产品/设备/规则与渠道凭据——补建方法见功能文件与 `assets/README.md`。
 
-**环境与证据**
+**并行与状态**
 
-- 证据：`.runtime-030/uat-shots-036/`——普通审批人 chenjing 视 `YJ-20261108-008`（全中文、无原文折叠区 `raw foldable: 0`）；管理员 admin 视新建 `YJ-20261108-009`（A1 全链 9 节点 APPROVED，原文可展开、英文键载荷原样）；C1/C2 表单区+流转记录+审批详情；`table-overflow.json` 全部无溢出；网络索引 ×2。
-- 回执：`product/three-sample-process-uat/receipts/execution-final-07.md`。
-
-**状态**
-
-- 固定值：功能 51；M59/18/13；ADV1/7/56；P63；问题 57。
-- 执行侧七阶段：**5/1/1**。
-- 唯一下一动作：**Planner 验收 0.3.6（H8、H9）**。
+- 并行 **P66 多数据库兼容**（XL，目标 0.4.0，READY）：`product/multi-database-compat/ready/direction-multi-database-compat.md`；下一动作 Executor 阶段 A 只读核对。
+- 执行侧七阶段 **6/0/1**。
+- 唯一下一动作：**Planner 终态复核 0.3.6**。
 
 ## 历史续接：0.3.3—0.3.5 流转记录摘要标签与数据一致性返修（2026-11-08；审查 06 已验收，H6、H7 锁定）
 
