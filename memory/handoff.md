@@ -1,6 +1,6 @@
 # 交接
 
-2026-11-08｜Planner（P66 审查 assess-01）｜P66 阶段 A 有条件通过，下一步 B0；三示例流程 COMPLETED。
+2026-11-08｜Planner（P66 审查 assess-02）｜P66 B0 通过，下一步 B1；三示例流程 COMPLETED。
 
 ## 当前
 
@@ -22,7 +22,7 @@
 
 H6（摘要每段带标签，含备注回退与审批时间）、H7（JSON 字段化+原文折叠；A1 `YJ-20261108-008`、B1 `XY-20261108-015` 重跑 APPROVED）；tags `d52f5aa`/`94827dd`/`cfccaa9`。
 
-并行任务 **P66 多数据库兼容**（XL，目标 0.4.0）：阶段 A 有条件通过（`product/multi-database-compat/receipts/planning-review-assess-01.md`），唯一下一动作 **Executor B0 补充盘点**，回执 `execution-assess-02.md`。
+并行任务 **P66 多数据库兼容**（XL，目标 0.4.0）：阶段 A 有条件通过，B0 补充盘点通过（`product/multi-database-compat/receipts/planning-review-assess-02.md`：LIKE 跨库区分大小写靠排序规则、`comment` 改名 `opinion_comment`、MySQL DYNAMIC 为支持前提等五项口径已裁决，H1—H6 并入 B1），唯一下一动作 **Executor B1 公共能力**，分支 `feature/0.4.0-multi-database`，回执 `execution-b1-01.md`。
 
 ## 0.3.2（历史，审查05 不通过，由 0.3.3—0.3.5 替代）
 
