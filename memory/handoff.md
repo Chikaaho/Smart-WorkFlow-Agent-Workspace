@@ -1,10 +1,10 @@
 # 交接
 
-2026-11-08｜Planner（审查05）｜0.3.2 PASSED，待 Owner 追认 tag 覆盖。
+2026-11-08｜Planner（审查05）｜0.3.2 审查05 不通过，H6、H7 返修。
 
 ## 当前
 
-三示例流程返修（0.3.2）已完成：按执行提示03 完成 H1—H5，UAT 7 条真实业务路径（A `YJ-20261108-005/006`、B `XY-20261108-012/013/014`、C `MES-20261108-013/014`）全 `APPROVED`；回执 `product/three-sample-process-uat/receipts/execution-final-05.md`，登记 `knowledge/features/0.3.2-opinion-display.md`，截图 `.runtime-030/uat-shots-032/`（40 张，本机留存）。发布：Server tag `0.3.2`=`de8ec017`、Release `437820040`；Web tag `0.3.2`=`3b0043f`、Release `437790115`（同版本覆盖去重）；UAT build.version=0.3.2、Web 入口 `assets/index-BV9G2zgH.js`、health UP；0.3.0/0.3.1 tag 未动。七阶段**5/1/1**。七阶段4/1/2。规划审查05 功能 **`PASSED`**（`product/three-sample-process-uat/receipts/planning-review-05-passed.md`），返修方向已归档 `passed/`；终态同步方向 `ready/direction-terminal-sync-032.md`。唯一下一动作：**Owner 追认 Web 0.3.2 tag 同版本覆盖**，之后 Executor 终态同步。上一交付 0.2.4 COMPLETED（7/0/0），方向归档 `product/0.2.4/passed/`。
+三示例流程返修（0.3.2）已完成：按执行提示03 完成 H1—H5，UAT 7 条真实业务路径（A `YJ-20261108-005/006`、B `XY-20261108-012/013/014`、C `MES-20261108-013/014`）全 `APPROVED`；回执 `product/three-sample-process-uat/receipts/execution-final-05.md`，登记 `knowledge/features/0.3.2-opinion-display.md`，截图 `.runtime-030/uat-shots-032/`（40 张，本机留存）。发布：Server tag `0.3.2`=`de8ec017`、Release `437820040`；Web tag `0.3.2`=`3b0043f`、Release `437790115`（同版本覆盖去重）；UAT build.version=0.3.2、Web 入口 `assets/index-BV9G2zgH.js`、health UP；0.3.0/0.3.1 tag 未动。七阶段**5/1/1**。七阶段3/1/3。规划审查05 **不通过**（`product/three-sample-process-uat/receipts/planning-review-05.md`）：H1—H5 锁定；Owner 指正 H6 流转记录摘要首段无标签（“已同意 · 是”）为主问题，另 H7 指令编号/日期不一致。入口 `receipts/planning-execution-prompt-three-sample-04.md`，改代码发 0.3.3，不再改任何已发布 tag。Web 0.3.2 tag 覆盖待 Owner 追认。唯一下一动作：**Executor 按执行提示04 返修 H6、H7**。上一交付 0.2.4 COMPLETED（7/0/0），方向归档 `product/0.2.4/passed/`。
 
 ## 0.3.0（历史，终态同步后被 Owner 退回）
 

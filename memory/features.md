@@ -1,8 +1,8 @@
 # 功能摘要
 
-2026-11-08｜Planner（审查05）｜0.3.2 PASSED。
+2026-11-08｜Planner（审查05）｜0.3.2 审查05 不通过，H6、H7 返修。
 
-- 0.3.2：**意见展示与真实业务数据返修（H1—H5，审查05 `PASSED`）**。流转记录意见摘要、审批详情抽屉逐项字段（姓名/本地时间）、会签人各自意见；旧 HTML 富文本、部门名称回读、单选横排、重复标签修复；发布后同版本覆盖修复意见详情数组字段重复。UAT 7 条真实路径全 APPROVED；发布 tag `0.3.2`（Server `de8ec017`/Web `3b0043f`），UAT build.version=0.3.2；功能数保持 **51**。详见 `knowledge/features/0.3.2-opinion-display.md`、回执 `receipts/execution-final-05.md`。
+- 0.3.2：**意见展示与真实业务数据返修（H1—H5 锁定；审查05 不通过，H6 摘要标签、H7 数据一致性返修，目标 0.3.3）**。流转记录意见摘要、审批详情抽屉逐项字段（姓名/本地时间）、会签人各自意见；旧 HTML 富文本、部门名称回读、单选横排、重复标签修复；发布后同版本覆盖修复意见详情数组字段重复。UAT 7 条真实路径全 APPROVED；发布 tag `0.3.2`（Server `de8ec017`/Web `3b0043f`），UAT build.version=0.3.2；功能数保持 **51**。详见 `knowledge/features/0.3.2-opinion-display.md`、回执 `receipts/execution-final-05.md`。
 
 - 0.3.1：意见→流程变量、条件分支/参与人/脚本/预约按意见流转（机制锁定）；审查04 因展示与数据不通过，由 0.3.2 返修替代。详见 `knowledge/features/0.3.1-approval-driven-flow.md`。
 

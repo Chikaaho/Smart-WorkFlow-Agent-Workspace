@@ -1,12 +1,12 @@
 # 当前状态摘要
 
-2026-11-08｜Planner（审查05）｜0.3.2 PASSED，待 Owner 追认 tag 覆盖。
+2026-11-08｜Planner（审查05）｜0.3.2 审查05 不通过，H6、H7 返修。
 
 ## 当前任务
 
-三示例流程返修（0.3.2）：按执行提示03（依据审查04）完成 H1—H5——流转记录意见摘要、审批详情抽屉逐项字段（人员姓名/本地时间）、会签人各自意见；旧 HTML 富文本按格式显示、部门名称回读、单选横排、指派维修人标签去重；发布后追加 Web 同版本覆盖，消除意见详情数组字段重复。UAT 用真实业务数据重建 7 条路径（A `YJ-20261108-005/006`、B `XY-20261108-012/013/014`、C `MES-20261108-013/014`）全部 `APPROVED`。回执 `product/three-sample-process-uat/receipts/execution-final-05.md`；登记 `knowledge/features/0.3.2-opinion-display.md`。发布：Server tag `0.3.2`=`de8ec017`、Release `437820040`（jar 220,867,859 B sha256 `7d196cab…`）；Web tag `0.3.2`=`3b0043f`、Release `437790115`（zip 6,195,004 B sha256 `e50188dc…`，同版本覆盖）；UAT build.version=0.3.2、Web 入口 `assets/index-BV9G2zgH.js`、health UP；0.3.0/0.3.1 tag 未动。七阶段**4/1/2**。规划审查05 功能 **`PASSED`**（`product/three-sample-process-uat/receipts/planning-review-05-passed.md`），返修方向已归档 `passed/`；终态同步方向 `ready/direction-terminal-sync-032.md`。唯一下一动作：**Owner 追认 Web 0.3.2 tag 同版本覆盖**，之后 Executor 终态同步。
+三示例流程返修（0.3.2）：按执行提示03（依据审查04）完成 H1—H5——流转记录意见摘要、审批详情抽屉逐项字段（人员姓名/本地时间）、会签人各自意见；旧 HTML 富文本按格式显示、部门名称回读、单选横排、指派维修人标签去重；发布后追加 Web 同版本覆盖，消除意见详情数组字段重复。UAT 用真实业务数据重建 7 条路径（A `YJ-20261108-005/006`、B `XY-20261108-012/013/014`、C `MES-20261108-013/014`）全部 `APPROVED`。回执 `product/three-sample-process-uat/receipts/execution-final-05.md`；登记 `knowledge/features/0.3.2-opinion-display.md`。发布：tag `0.3.2` Server `de8ec017`/Web `3b0043f`（Web 同版本覆盖）；UAT build.version=0.3.2、Web 入口 `assets/index-BV9G2zgH.js`、health UP；0.3.0/0.3.1 tag 未动。七阶段**3/1/3**。规划审查05 **不通过**（`product/three-sample-process-uat/receipts/planning-review-05.md`）：H1—H5 锁定；Owner 指正 H6 流转记录摘要首段无标签（“已同意 · 是”）为主问题，另 H7 指令编号/日期不一致。入口 `receipts/planning-execution-prompt-three-sample-04.md`，改代码发 0.3.3，不再改任何已发布 tag。Web 0.3.2 tag 覆盖待 Owner 追认。唯一下一动作：**Executor 按执行提示04 返修 H6、H7**。
 
-上一交付：0.2.4 `COMPLETED`，七阶段7/0/0；终态复核 `product/0.2.4/receipts/planning-final-review-024-completed.md`，第51个正式功能。
+上一交付：0.2.4 `COMPLETED`（7/0/0），第51个正式功能。
 
 ## 基线
 
