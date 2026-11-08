@@ -10,9 +10,7 @@
 - **发布**：Web 递增补丁 0.3.3 `d52f5aa` → 0.3.4 `94827dd` → 0.3.5 `cfccaa9`；Server 未改动。
 - **回执**：`product/three-sample-process-uat/receipts/execution-final-06.md`；证据 `.runtime-030/uat-shots-035/`。
 
-七阶段 **3/1/3**（审查06 不通过）。唯一下一动作：**Executor 按 `receipts/planning-execution-prompt-three-sample-05.md` 返修 H8、H9（需改代码则发 0.3.6），回执 `execution-final-07.md`**。Web 0.3.2 tag 覆盖待 Owner 追认。
-
-上一交付：0.2.4 `COMPLETED`（7/0/0），第51个正式功能。
+七阶段 **3/1/3**（审查06 不通过）。唯一下一动作：**Executor 按 `receipts/planning-execution-prompt-three-sample-05.md` 返修 H8、H9（需改代码则发 0.3.6），回执 `execution-final-07.md`**。Web 0.3.2 tag 覆盖已追认。
 
 ## 基线
 

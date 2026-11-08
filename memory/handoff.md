@@ -24,7 +24,7 @@
 - 已发布 tag 均未改动。
 - UAT Web 入口 `assets/index-DquMd1D-.js`，build.version=0.3.2，health UP。
 
-七阶段 **3/1/3**（审查06 不通过）。唯一下一动作：**Executor 按 `receipts/planning-execution-prompt-three-sample-05.md` 返修 H8、H9（需改代码则发 0.3.6），回执 `execution-final-07.md`**。Web 0.3.2 tag 覆盖待 Owner 追认。上一交付 0.2.4 COMPLETED（7/0/0），方向归档 `product/0.2.4/passed/`。
+七阶段 **3/1/3**（审查06 不通过）。唯一下一动作：**Executor 按 `receipts/planning-execution-prompt-three-sample-05.md` 返修 H8、H9（需改代码则发 0.3.6），回执 `execution-final-07.md`**。Web 0.3.2 tag 覆盖已由 Owner 2026-11-08 追认（维持 `3b0043f`，不回退）。上一交付 0.2.4 COMPLETED（7/0/0），方向归档 `product/0.2.4/passed/`。
 
 ## 0.3.2（历史，审查05 不通过，由 0.3.3—0.3.5 替代）
 
