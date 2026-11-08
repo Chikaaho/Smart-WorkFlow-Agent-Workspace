@@ -1,16 +1,20 @@
 # 需求池（Requirement Pool）
 
-## 当前：三示例流程返修（0.3.3—0.3.5 审查06 不通过；H8、H9 返修中）
+## 当前：三示例流程返修（0.3.6 H8、H9 已交付，待 Planner 验收）
 
-0.3.3—0.3.5：审查05 不通过后完成 H6、H7 返修。入口 `product/three-sample-process-uat/receipts/planning-execution-prompt-three-sample-04.md`，回执 `product/three-sample-process-uat/receipts/execution-final-06.md`。
+0.3.6：按执行提示05（审查06：H6、H7 锁定）完成 H8、H9。入口 `product/three-sample-process-uat/receipts/planning-execution-prompt-three-sample-05.md`，回执 `product/three-sample-process-uat/receipts/execution-final-07.md`。
 
-- **H6**：意见摘要每段都是“标签：值”。数值带单位，备注显示为“审批意见：…”，长文本悬停可看全文，1440 视口无横向滚动；会签弹窗用同一规则。
-- **H7**：JSON 参数按字段展示，原文折叠。UAT 新建实例重跑：A1 `YJ-20261108-008`（编号一致）、B1 `XY-20261108-015`（检索摘要为 11 月 8 日），均 APPROVED。
-- **发布**：Web tag `0.3.3`=`d52f5aa`、`0.3.4`=`94827dd`、`0.3.5`=`cfccaa9`（Release `438081379`）；Server 维持 0.3.2；已发布 tag 均未改动。
+- **H8**：TEXT 字段契约键 `jsonDisplay`（键名/取值中文映射）；只读 JSON 参数显中文（演练编号/动作/机房断电/火警告警/目标机房/回切时限（分钟）；switch→切换），无映射回退原键名；「JSON 原文」折叠区仅 `form:design:save` 可见；MQTT 载荷英文键不变。`ops_drill_plan` UAT 版本 3：标题「到点下发的设备指令」+ 映射。上节候选「中文名字典」已实现。
+- **H9**：C1 `MES-20261108-015`（传感器漂移→仪表校准）、C2 `MES-20261108-016`（设备维修）一致数据重跑 APPROVED；原 014 同类矛盾一并重跑；A1 双视角另建 `YJ-20261108-009`（admin，9 节点 APPROVED）。
+- **发布**：Web tag `0.3.6`=`c3f1d6e`（feature `8dd0220` → develop `0d71982`，Release `438126185`）；Server 维持 0.3.2；已发布 tag（0.3.0—0.3.5）均未改动。
 - **固定值**：功能51、M59/18/13、ADV1/7/56、P63、问题57。
-- **新需求候选（观察）**：指令参数 JSON 键名的中文名字典。
+- **新需求候选（观察）**：设计器映射编辑框对非 JSON 的 TEXT 字段也可见（配置无效果，收敛属新需求）。
 
-规划审查06（`receipts/planning-review-06.md`）：H6、H7 通过并锁定；不通过项 H8 业务用户可见指令参数为英文键/值且标题带“（JSON）”，H9 C1 `MES-20261108-013` 温度序列、知识命中与“快速升温”结论矛盾（审查05 规划漏看）。唯一下一动作：**Executor 按执行提示05 返修，需改代码发 0.3.6，回执 `execution-final-07.md`**。Web 0.3.2 tag 覆盖已由 Owner 2026-11-08 追认（维持 `3b0043f`，不回退）。
+唯一下一动作：**Planner 验收 0.3.6（H8、H9 证据 `.runtime-030/uat-shots-036/`）**。
+
+### 历史：0.3.3—0.3.5（2026-11-08，审查06 已验收锁定）
+
+审查05 不通过后完成 H6、H7 返修（意见摘要“标签：值”、JSON 字段化+原文折叠；A1 `YJ-20261108-008`、B1 `XY-20261108-015` 重跑 APPROVED）。入口 `receipts/planning-execution-prompt-three-sample-04.md`，回执 `receipts/execution-final-06.md`。Web tag `0.3.3`=`d52f5aa`、`0.3.4`=`94827dd`、`0.3.5`=`cfccaa9`；Server 维持 0.3.2。
 
 ### 历史：0.3.2 返修（2026-11-08，审查05 不通过后由 0.3.3—0.3.5 替代）
 

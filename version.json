@@ -1,19 +1,19 @@
 {
   "$schema": "CH-aPaaS 版本权威（单一机器可读源；变更须走新回执）",
   "product": "CH-aPaaS",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "iteration": "0.1.0",
   "registeredAt": "2026-11-08",
-  "registeredBy": "0.3.3—0.3.5 流转记录摘要标签与数据一致性返修（H6、H7；Web 0.3.3→0.3.4→0.3.5 递增补丁，Server 维持 0.3.2；回执 product/three-sample-process-uat/receipts/execution-final-06.md）",
+  "registeredBy": "0.3.6 指令参数中文化与 C1 数据一致性返修（H8、H9；Web 0.3.6，Server 维持 0.3.2；回执 product/three-sample-process-uat/receipts/execution-final-07.md）",
   "development": {
-    "targetVersion": "0.3.5",
+    "targetVersion": "0.3.6",
     "status": "PUBLISHED",
-    "statusNote": "Web 0.3.5 已发布并部署 UAT（Server 维持 0.3.2）；A1 YJ-20261108-008、B1 XY-20261108-015 新建实例重跑 APPROVED；执行侧七阶段 5/1/1（验收待 Planner，结束未开始）",
-    "direction": "product/three-sample-process-uat/receipts/planning-execution-prompt-three-sample-04.md",
-    "finalReview": "product/three-sample-process-uat/receipts/execution-final-06.md（执行回执，待 Planner 验收）",
+    "statusNote": "Web 0.3.6 已发布并部署 UAT（Server 维持 0.3.2）；H8 指令参数中文化与原文权限门禁、H9 C1/C2 一致数据重跑（MES-20261108-015/016 APPROVED）、A1x2 YJ-20261108-009 APPROVED；执行侧七阶段 5/1/1（验收待 Planner，结束未开始）",
+    "direction": "product/three-sample-process-uat/receipts/planning-execution-prompt-three-sample-05.md",
+    "finalReview": "product/three-sample-process-uat/receipts/execution-final-07.md（执行回执，待 Planner 验收）",
     "branches": {
       "server": "无改动：main de8ec017（tag 0.3.2=de8ec017）",
-      "web": "0.3.3 feature fa089f8/a8f8416 → develop 89f7e2d → main d52f5aa（tag 0.3.3）；0.3.4 feature 6c31a0d/b884bcc → develop 05c4635 → main 94827dd（tag 0.3.4）；0.3.5 feature cb8d555/2b18fdc → develop 236993d → main cfccaa9（tag 0.3.5=cfccaa9）",
+      "web": "0.3.3 feature fa089f8/a8f8416 → develop 89f7e2d → main d52f5aa（tag 0.3.3）；0.3.4 feature 6c31a0d/b884bcc → develop 05c4635 → main 94827dd（tag 0.3.4）；0.3.5 feature cb8d555/2b18fdc → develop 236993d → main cfccaa9（tag 0.3.5）；0.3.6 feature 8dd0220 → develop 0d71982 → main c3f1d6e（tag 0.3.6=c3f1d6e）",
       "workspace": "develop-sw（本回执与同步批次提交后回读）"
     },
     "developmentVersion": {
@@ -33,23 +33,23 @@
     },
     "webRepo": {
       "path": "Smart-WorkFlow-aPaaS-Web",
-      "packageVersion": "0.3.5"
+      "packageVersion": "0.3.6"
     },
     "workspace": {
       "path": "Smart-WorkFlow-Agent-Workspace",
       "changelog": "CHANGELOG.md",
-      "releaseNotes": "GitHub Release：Web 0.3.5（cfccaa9·sw-web-dist-0.3.5.zip 6,195,728 B sha256 4f0065c3…）、0.3.4（94827dd·6,195,935 B sha256 3048d3b6…）、0.3.3（d52f5aa·6,196,205 B sha256 195d9b60…）；Server 0.3.2（de8ec017·bootstrap-0.3.2.jar 220,867,859 B sha256 7d196cab…）",
-      "upgrade": "docs/ops/production-ops.md §9（0.3.3—0.3.5 仅替换 Web dist：web→web.old→web，nginx reload；Server 不重启）",
+      "releaseNotes": "GitHub Release：Web 0.3.6（c3f1d6e·sw-web-dist-0.3.6.zip 6,197,059 B sha256 9470f0c1…）、0.3.5（cfccaa9·6,195,728 B sha256 4f0065c3…）、0.3.4（94827dd·6,195,935 B sha256 3048d3b6…）、0.3.3（d52f5aa·6,196,205 B sha256 195d9b60…）；Server 0.3.2（de8ec017·bootstrap-0.3.2.jar 220,867,859 B sha256 7d196cab…）",
+      "upgrade": "docs/ops/production-ops.md §9（0.3.3—0.3.6 仅替换 Web dist：web→web.old→web，nginx reload；Server 不重启）",
       "rollback": "docs/ops/production-ops.md §9.1（Web 回退换回 web.old 或上一版 sw-web-dist 资产；无 DB 迁移）",
-      "configChanges": "无新增配置；沿用 0.3.1/0.3.2 的 17 张 APPROVAL_COMMENT 意见表单、三图（A v9/B v9/C v11）、触发器 2 条",
+      "configChanges": "无新增配置；沿用 0.3.1/0.3.2 的 17 张 APPROVAL_COMMENT 意见表单、三图（A v9/B v9/C v11）、触发器 2 条；UAT 数据侧 ops_drill_plan 发布版本 3（指令参数字段标题+中文映射）",
       "dbMigrations": "无新增；UAT 保持 v0.2.9",
-      "manifest": "GitHub Release 0.3.5 资产：sw-web-dist-0.3.5.zip 6,195,728 B sha256 4f0065c3…（与 build-cfccaa9 Release 438081124 同字节）；Server 资产仍为 Release 0.3.2 bootstrap-0.3.2.jar",
-      "deployment": "UAT 已部署 Web 0.3.5（2026-11-08）：入口 assets/index-DquMd1D-.js，https://chikaho.cn/ 200；Server build.version=0.3.2、health UP；A1 YJ-20261108-008、B1 XY-20261108-015 APPROVED"
+      "manifest": "GitHub Release 0.3.6 资产：sw-web-dist-0.3.6.zip 6,197,059 B sha256 9470f0c1…（与 build-c3f1d6e Release 438125351 同字节）；Server 资产仍为 Release 0.3.2 bootstrap-0.3.2.jar",
+      "deployment": "UAT 已部署 Web 0.3.6（2026-11-08）：入口 assets/index-CKdiXkhU.js，https://chikaho.cn/ 200；Server build.version=0.3.2、health UP；C1 MES-20261108-015、C2 MES-20261108-016、A1x2 YJ-20261108-009 APPROVED"
     }
   },
   "rules": {
     "candidateFreeze": "候选固定后只允许通过新回执审查的变更进入；代码/迁移/依赖/配置漂移使受影响证据失效并重固定候选",
-    "tagAndRelease": "Web 0.3.3（d52f5aa，Release 438053199）、0.3.4（94827dd，Release 438073010）、0.3.5（cfccaa9，Release 438081379）按递增补丁发布，未覆盖任何已发布 tag；Server 维持 tag 0.3.2=de8ec017、Release 437820040。0.3.0/0.3.1/0.3.2 tag 与 Release 未改动（0.3.2 Web 同版本覆盖待 Owner 追认）。",
-    "deployment": "UAT：Web 0.3.5（index-DquMd1D-.js）；Server 0.3.2（Flyway v0.2.9、health UP、build.version=0.3.2）。"
+    "tagAndRelease": "Web 0.3.3（d52f5aa，Release 438053199）、0.3.4（94827dd，Release 438073010）、0.3.5（cfccaa9，Release 438081379）、0.3.6（c3f1d6e，Release 438126185）按递增补丁发布，未覆盖任何已发布 tag；Server 维持 tag 0.3.2=de8ec017、Release 437820040。0.3.0/0.3.1/0.3.2 tag 与 Release 未改动（0.3.2 Web 同版本覆盖已经审查 06 追认）。",
+    "deployment": "UAT：Web 0.3.6（index-CKdiXkhU.js）；Server 0.3.2（Flyway v0.2.9、health UP、build.version=0.3.2）。"
   }
 }
