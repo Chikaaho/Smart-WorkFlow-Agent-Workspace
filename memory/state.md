@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-2026-11-08｜Planner（P66 审查 assess-02）｜P66 B0 通过，下一步 B1；三示例流程 COMPLETED。
+2026-11-08｜Planner（P66 审查 b1-01）｜P66 B1 有条件通过，下一步 B2；三示例流程 COMPLETED。
 
 ## 当前任务
 
@@ -11,7 +11,7 @@
 
 七阶段 **7/0/0**。三示例流程线结束（终态复核 `product/three-sample-process-uat/receipts/planning-final-review-036-completed.md`）。唯一下一动作见 P66。
 
-**P66 多数据库兼容**（XL，目标 0.4.0）：阶段 A 有条件通过，B0 补充盘点通过（`product/multi-database-compat/receipts/planning-review-assess-02.md`：LIKE 跨库区分大小写靠排序规则、`comment` 改名 `opinion_comment`、MySQL DYNAMIC 为支持前提等五项口径已裁决，H1—H6 并入 B1），唯一下一动作 **Executor B1 公共能力**，分支 `feature/0.4.0-multi-database`，回执 `execution-b1-01.md`。
+**P66 多数据库兼容**（XL，目标 0.4.0）：阶段 A 有条件通过，B0、B1 通过（B1 有条件，`product/multi-database-compat/receipts/planning-review-b1-01.md`：R1 启动检查须移到迁移前，修完才连实库；R2—R7 并入 B2），Server 分支 `feature/0.4.0-multi-database`@`46180dd8`，唯一下一动作 **Executor B2 单库适配**，回执 `execution-b2-01.md` 起编。
 
 ## 基线
 
