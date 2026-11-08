@@ -14,6 +14,8 @@
 
 七阶段 **5/1/1**。唯一下一动作：**Planner 验收 0.3.6（H8、H9）**。
 
+并行任务 **P66 多数据库兼容**（XL，目标 0.4.0，READY）：`product/multi-database-compat/ready/direction-multi-database-compat.md`；下一动作 Executor 阶段 A 能力核对（只读）。
+
 ## 基线
 
 功能51（0.3.0/0.3.1 均不新增正式功能）；M59/18/13=90；ADV1/7/56=64；实际P63；问题57；正式基线变更[]。已核销P2/P4/P9/P15/P19/P29/P34/P47/P65，P35部分；P20未核销。
@@ -21,8 +23,6 @@
 正式/部署版本：Web **0.3.6**（tag `0.3.6`=`c3f1d6e`，Release `438126185`），Server **0.3.2**（tag `0.3.2`=`de8ec017`，Release `437820040`）；Flyway V0.2.9（无新迁移）。UAT health UP、build.version=0.3.2、Web 入口 `assets/index-CKdiXkhU.js`、磁盘余约822M（96%）。
 
 Owner定：本机隔离环境（`smart_workflow_030`、`.runtime-030` 等清单见 handoff）保留不删，含凭据密文，只要求不泄露，已gitignore。Key/授权码不入Git。
-
-Owner侧供应商：OpenRouter（Embedding/搜索）、Command Code（LLM）、163 SMTP；Key由Owner录入，不进文档。
 
 ## 后续候选（需求池观察区）
 

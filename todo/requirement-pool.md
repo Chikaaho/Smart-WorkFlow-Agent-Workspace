@@ -1,5 +1,9 @@
 # 需求池（Requirement Pool）
 
+## 当前（并行）：P66 多数据库兼容（XL，目标 0.4.0，READY）
+
+Owner 2026-11-08 要求与三示例流程并行（system.md §4 的 Owner 例外）：迁移脚本与全部 SQL 种子适配 H2、PostgreSQL、MySQL 5.7、MySQL 8.0、Oracle 19c、达梦 DM8（必须项），人大金仓、SQL Server、MariaDB、openGauss 为扩展项。硬约束：PG 和 H2 已发布迁移的校验和不变，不碰 UAT 数据库。方向 `product/multi-database-compat/ready/direction-multi-database-compat.md`。唯一下一动作：**Executor 阶段 A 能力核对与方案（只读），回执 `receipts/execution-assess-01.md`**。
+
 ## 当前：三示例流程返修（0.3.6 H8、H9 已交付，待 Planner 验收）
 
 0.3.6：按执行提示05（审查06：H6、H7 锁定）完成 H8、H9。入口 `product/three-sample-process-uat/receipts/planning-execution-prompt-three-sample-05.md`，回执 `product/three-sample-process-uat/receipts/execution-final-07.md`。
