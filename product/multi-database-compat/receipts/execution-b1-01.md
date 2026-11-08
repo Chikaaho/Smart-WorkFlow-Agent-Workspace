@@ -8,9 +8,9 @@
 | 日期 | 2026-11-08 |
 | 执行角色 | Executor |
 | 分支 | Server `feature/0.4.0-multi-database`（从 `origin/develop` `4d606f60` 建） |
-| 提交 | `e4ab77ce feat(multi-db): B1 公共方言能力与迁移执行器`、`36ff3957 test(multi-db): 验证 opinion_comment 改名保留数据` |
-| 自验结论 | B1 核心能力已提交，受影响模块测试通过；全量门禁与真实数据库验证列为 B1-B |
-| 七阶段进度 | **1 / 1 / 5**（需求评估完成；执行进行中，B1 核心批次完成；验收与同步、合并、发版、发布后同步、结束未开始） |
+| 提交 | `e4ab77ce feat(multi-db): B1 公共方言能力与迁移执行器`、`36ff3957 test(multi-db): 验证 opinion_comment 改名保留数据`、`26d0e8a7 fix(multi-db): 智能体工具启用状态按整数绑定`、`3d75529d test(multi-db): 0.3.2 升级保留数据并稳定命令队列测试`、`46180dd8 chore(multi-db): 固化 10 库官方保留字清单` |
+| 自验结论 | B1 完成：全量 H2/PG reactor 2,445 个测试通过；0.4.0 迁移在 H2、PG 空库与 0.3.2 库升级各跑一次；官方保留字清单复核完成；真实数据库验证移交 B2 |
+| 七阶段进度 | **1 / 1 / 5**（需求评估完成；执行进行中，B1 完成、B2 待开始；验收与同步、合并、发版、发布后同步、结束未开始） |
 
 ## 1. 本批完成内容
 
@@ -18,7 +18,7 @@
 
 - 新增 `sw-common` 的 `DatabaseVendor`：H2、PostgreSQL、MySQL、MariaDB、Oracle、SQL Server、达梦、KingbaseES、openGauss 九种厂商；JDBC URL 前缀优先、产品名兜底，未知厂商 fail-fast，不再默认 H2。
 - 扩展表单 `VendorDialect` 到九种厂商，列类型、标识符引用与 `DatabaseVendor` 统一；动态宽表 BOOL/TEXT/大文本按方言映射。
-- 标识符引用：MySQL/MariaDB 反引号，SQL Server 方括号，其余双引号；为 `type` 等后续保留字命中预留统一入口。
+- 标识符引用：MySQL/MariaDB 反引号，SQL Server 方括号，其余双引号；为 `type` 等后续保留字命中预留统一入口。官方清单复核后 `type` 在 DM8/Kingbase/openGauss 均为非保留关键字，B2 在 DM8 实测确认；若仍需引用，由该入口生成，不改架构。
 
 ### 1.2 LIMIT 与行锁
 
@@ -38,6 +38,7 @@
   - `BpmProcessDefController`（cnt）
   - `ApprovalLifecycleServiceImpl`（max_round/branch_total/total）
 - `BpmResourceOpsService` 原私有 `lowerCaseKeys` 改为委托公共工具；视图输出仍统一小写键。
+- 智能体工具配置 `enabled` 列是 `SMALLINT`，Boolean 参数比较在 H2/PG 失败（H2 90110）；`AgentGraphDebugServiceImpl`、`AgentToolCallbackFactory`、`AgentGraphExecutionServiceImpl`、`AgentExternalCapabilityFacade`、`AgentToolConfigServiceImpl` 共 10 处改为 1/0 绑定，相关 agent 测试通过。
 
 ### 1.4 comment 列改名
 
@@ -74,6 +75,19 @@
 - 新增 `SwVendorMigrationRunnerTest`（H2 代理）：空库全链、重复启动零执行、已有业务表拒绝 baseline、锁占用拒绝并发，3/3 通过。
 - 新增 `SeedComparisonTest`：通过 `seed.base.url`/`seed.target.url` 连接两库，比较全部 `sys_*`/`sw_*` 表行数与 18 张关键表的排序关键列 SHA-256；`''` 与 NULL 归一化。未配置系统属性时跳过，B2 每库执行。
 
+### 1.9 保留字官方清单复核（H3）
+
+- 清单固化到 `scripts/db-compat/reserved-words/`：MySQL 5.7（235）、MySQL 8.0（262）、MariaDB 10.6（242）、Oracle 21c（110）、SQL Server 2019（185）、PostgreSQL（101）、H2（87）、DM8 系统保留字（265）、KingbaseES V8（117）、openGauss 5（94），来源与取值口径见 `SOURCES.md`。
+- `check-reserved-words.py` 改为读取上述清单，按完整标识符、大小写不敏感比对迁移 DDL 与 `@TableName`/`@TableField`，重跑 **760** 个标识符。
+- 结果：仅 `comment` 命中 Oracle 21c、DM8，已由 `R__0.4.0` 改名为 `opinion_comment`，脚本记为 `RENAMED`，退出码 0；没有其他未处理命中。
+- `type`：DM8 官方附录标为关键字（不带 `*`）而非系统保留字；KingbaseES V8、openGauss 5 标为“非保留”；MySQL/MariaDB/Oracle/SQL Server/PostgreSQL/H2 均非保留。B2 在 DM8 上实测 `sw_bpm_ext_datasource.type` 可作列名后再定。
+
+### 1.10 0.3.2 → V0.4.1 升级验证
+
+- 新增 `FlywayUpgradeFrom032Test`：把当前 H2/PG 迁移资源去掉 0.4.0 新增的 `V0.4.1`、`R__0.4.0` 后复制到临时目录，先迁移出 0.3.2 库（28 条，终点 V0.2.9），写入旧列 `comment='保留意见'` 的审批意见草稿，再用当前迁移集合升级。
+- 断言：升级只执行 2 条迁移（`V0.4.1`、`R__0.4.0`）；终点 V0.4.1；`comment` 列消失、`opinion_comment` 列出现且数据保留；`sw_knowledge_vector` 表创建；升级前后 28 条旧迁移的校验和逐条不变。H2、PostgreSQL 各 1 个用例，2/2 通过。
+- 新增 `ConcatPortabilityTest`：在 H2 与真实 PostgreSQL 执行 `CONCAT(CONCAT('%', ?), '%')` 与 `CONCAT('', CAST(? AS BIGINT))`，证明 15 处 CONCAT 改写与 2 处 CAST 消除在 PG 语义不变。
+
 ## 2. 验证结果
 
 ### 2.1 受影响模块
@@ -102,27 +116,49 @@
 | `TenantAdministrationDatabaseTest` | 30/30 |
 | `SwVendorMigrationRunnerTest` | 3/3 |
 | `MigrationSupportTest` | 1/1；comment→opinion_comment 保留“保留意见”数据，重复执行幂等 |
+| `FlywayUpgradeFrom032Test` | 2/2；H2、PG 各一次 0.3.2（28 条/V0.2.9）→V0.4.1 升级，数据保留、旧校验和不变 |
+| `ConcatPortabilityTest` | 2/2；H2、PG 实跑嵌套 CONCAT 与 `CONCAT('', bigint)` |
 
 ### 2.3 校验和
 
 - `db/migration/h2/` 与 `db/migration/postgresql/` 的既有 56 个 SQL 文件未修改；本批只新增 `V0.4.1` 与 `R__0.4.0` 两个文件（各两份）。
-- PG 全链 `validate()` 通过；UAT 的 `flyway_schema_history` 只读比对留到阶段 B 完成后执行。
+- PG / H2 全链 `validate()` 通过；`FlywayUpgradeFrom032Test` 逐条比对 0.3.2 库中 28 条旧迁移在升级前后的校验和，全部不变。
+- UAT 的 `flyway_schema_history` 只读比对留到 0.4.0 发布前执行。
 
-## 3. 未完成项（B1-B）
+### 2.4 全量门禁
 
-1. **全工程 H2 + PG 全量测试**：本批已跑受影响模块与迁移专项，尚未完成整个 reactor 的 `mvn test`；B1-B 跑完并记录最终计数。
-2. **0.3.2 库升级的数据保留**：H2 已有改名保留数据单测；PG 从 0.3.2 库（V0.2.9 终点）升级到 V0.4.1 并保留审批意见数据，需补一次真实升级测试。
-3. **真实数据库验证**：MySQL 5.7/8.0、MariaDB、Oracle 21c XE、达梦、Kingbase、openGauss、SQL Server 的迁移、启动检查、JSON 绑定、向量持久化、种子比对尚未执行。
-4. **MySQL 5.7 并发领取测试**：`ResourceRowLockProbe` 代码已就位，多线程不重复/不阻塞的真实测试待 B1-B。
-5. **保留字完整清单**：`scripts/db-compat/check-reserved-words.py` 已固化常用清单并重跑，命中 `comment`（已改名）与 `type`（DM8/Kingbase 候选，B2 实测后决定引用或改名）；完整官方清单与各库 `DatabaseMetaData.getSQLKeywords()` 对照留到 B2。
-6. **种子比对实际执行**：工具已就位，尚未用两个真实库跑差异报告。
+- `MAVEN_OPTS="-Xmx2g" mvn test` 全 reactor 通过：**2,445 个测试，0 失败，0 错误，33 跳过**，`BUILD SUCCESS`（commit `46180dd8` 之前的同一生产代码；`ConcatPortabilityTest` 为门禁后新增的测试文件，单独运行 2/2）。
+- 跳过项为依赖外部数据库/环境的用例（如 `SeedComparisonTest` 未配置 `seed.base.url`），B2 在对应真实库执行。
+- 门禁过程中修复了两处与本需求无关的测试时序噪声：重叠窗口测试串行化 `setVariable`，避免 Flowable 乐观锁；P62 兼容回退测试关闭后台调度器，避免抢领手工命令。
+
+## 3. B1 完成情况与 B2 交接
+
+### 3.1 已完成（对应规划审查 02 §4.8）
+
+| 要求 | 结果 |
+|---|---|
+| H2 / PG 全量测试通过 | 2,445 个测试，0 失败 / 0 错误 / 33 跳过 |
+| PG / H2 迁移校验和不变 | 既有 56 个 SQL 未改；0.3.2→V0.4.1 升级前后 28 条旧迁移校验和逐条相同 |
+| 0.4.0 迁移从空库跑一次 | `FlywayFullChainH2Test` 30/30、`FlywayFullChainPostgresTest` 13/13，终点 V0.4.1 |
+| 0.4.0 迁移从 0.3.2 库升级跑一次 | `FlywayUpgradeFrom032Test` H2 2/2 + PG 2/2，数据保留 |
+| 保留字官方清单重跑 | 760 个标识符，仅 `comment`（已改名），无其他未处理命中 |
+
+### 3.2 移交 B2
+
+1. **真实数据库验证**：MySQL 5.7/8.0、MariaDB 10.6、Oracle 21c XE、达梦 DM8、KingbaseES V8、openGauss 5、SQL Server 2019 的迁移、启动检查、JSON 绑定、向量持久化、种子比对尚未执行。
+2. **MySQL 5.7 并发领取**：`ResourceRowLockProbe` 代码已就位，需在真实 5.7（utf8mb4_bin）上做多线程不重复/不阻塞验证。
+3. **种子比对实际执行**：`SeedComparisonTest` 已就位，需两库连接参数后逐库跑差异报告。
+4. **`metadata_json` 非 PG 落地**：非 PG 方言脚本去掉库级默认值时，在实体层补 `'{}'` 默认，并在 H2、PG 和至少一个非 PG 库执行“不传该字段插入后回读”的测试。
+5. **其余 7 方言迁移脚本**：MySQL/MariaDB/Oracle/SQL Server/达梦/Kingbase/openGauss 的 DDL 与迁移链尚未编写；达梦/Kingbase/openGauss 走 `SwVendorMigrationRunner`。
+6. **`type` 与标识符引用**：B2 在 DM8 实测 `sw_bpm_ext_datasource.type`；若报错，走 `DatabaseVendor.wrapIdentifier` 统一入口或改列名。
+7. **UAT 升级演练**：0.3.2→0.4.0 就地改名、数据保留与 `flyway_schema_history` 只读比对，在 0.4.0 发布前执行。
 
 ## 4. 七阶段
 
 | 阶段 | 状态 |
 |---|---|
 | 1 新需求评估 | ✅ 完成 |
-| 2 执行（A→B0→B1→B2→C） | 进行中：A、B0 完成；B1 核心批次已提交，B1-B 继续 |
+| 2 执行（A→B0→B1→B2→C） | 进行中：A、B0、B1 完成；下一步 B2 单库适配 |
 | 3 验收与同步 | ⬜ 未开始 |
 | 4 合并 | ⬜ 未开始 |
 | 5 发版（0.4.0） | ⬜ 未开始 |
@@ -131,13 +167,13 @@
 
 已完成 **1**，进行中 **1**，未开始 **5**。
 
-下一步：继续 B1-B（全量门禁、0.3.2 升级数据保留、真实数据库验证、MySQL 5.7 并发、种子比对），完成后再进入 B2 单库适配。
+下一步：进入 B2 单库适配（按 §3.2 交接清单逐库推进），等待 Planner 审查本回执。
 
 ## 5. 分支与提交
 
 - 分支：`feature/0.4.0-multi-database`，从 `origin/develop` `4d606f60` 建。
-- 提交：`e4ab77ce`（核心能力）、`36ff3957`（改名数据测试）。
-- 远端回读：`git ls-remote origin refs/heads/feature/0.4.0-multi-database` = `36ff3957a1a25b98c386766acb143fc2a36ffe00`。
+- 提交：`e4ab77ce`（核心能力）、`36ff3957`（改名数据测试）、`26d0e8a7`（enabled 整数绑定修复）、`3d75529d`（0.3.2 升级验证与测试稳定性）、`46180dd8`（10 库官方保留字清单）。
+- 远端回读：`git ls-remote origin refs/heads/feature/0.4.0-multi-database` = `46180dd86946f1b3576fa73827e2aa9971218e79`。
 - 未合并到 develop/main，未创建 tag/Release，未发布。
 
 ## 6. 主要改动文件
@@ -149,5 +185,6 @@
 - `sw-bpm-engine`：`TxnActionNodeDelegate`。
 - `sw-basic-agent`：`AgentGraphExecutionMapper`。
 - `sw-basic-knowledge`：`PersistentKnowledgeVectorStore`。
-- `sw-bootstrap`：`FlywayConfiguration`、`DatabaseCompatibilityGuard`、`SwVendorMigrationRunner`、`MigrationSupport`、H2/PG `V0.4.1`/`R__0.4.0`、迁移与种子比对测试。
-- `scripts/db-compat/check-reserved-words.py`。
+- `sw-bootstrap`：`FlywayConfiguration`、`DatabaseCompatibilityGuard`、`SwVendorMigrationRunner`、`MigrationSupport`、H2/PG `V0.4.1`/`R__0.4.0`、迁移与种子比对测试、`FlywayUpgradeFrom032Test`、`ConcatPortabilityTest`。
+- `scripts/db-compat/check-reserved-words.py`、`scripts/db-compat/reserved-words/`（10 库官方清单 + `SOURCES.md`）。
+- 测试稳定性：`CommandOverlapRealEngineTest`（setVariable 串行）、`P62CompatRollbackPgTest`（关闭后台调度器）。
