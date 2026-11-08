@@ -1,8 +1,8 @@
 # 需求池（Requirement Pool）
 
-## 当前（并行）：P66 多数据库兼容（XL，目标 0.4.0，READY）
+## 当前：P66 多数据库兼容（XL，目标 0.4.0，阶段 A 有条件通过，B0 进行中）
 
-Owner 2026-11-08 要求与三示例流程并行（system.md §4 已修订为不冲突即可并行）：迁移脚本与全部 SQL 种子适配 H2、PostgreSQL、MySQL 5.7、MySQL 8.0、Oracle 19c、达梦 DM8（必须项），人大金仓、SQL Server、MariaDB、openGauss（Owner 定全部要做）；终态登记第 52 个正式功能；本机 Docker 可随意使用。硬约束：PG 和 H2 已发布迁移的校验和不变，不碰 UAT 数据库。方向 `product/multi-database-compat/ready/direction-multi-database-compat.md`。唯一下一动作：**Executor 阶段 A 能力核对与方案（只读），回执 `receipts/execution-assess-01.md`**。
+Owner 2026-11-08 要求与三示例流程并行（system.md §4 已修订为不冲突即可并行）：迁移脚本与全部 SQL 种子适配 H2、PostgreSQL、MySQL 5.7、MySQL 8.0、Oracle 19c、达梦 DM8（必须项），人大金仓、SQL Server、MariaDB、openGauss（Owner 定全部要做）；终态登记第 52 个正式功能；本机 Docker 可随意使用。硬约束：PG 和 H2 已发布迁移的校验和不变，不碰 UAT 数据库。方向 `product/multi-database-compat/ready/direction-multi-database-compat.md`。阶段 A（`receipts/execution-assess-01.md`）规划**有条件通过**（`receipts/planning-review-assess-01.md`）：方案 A 自有迁移 Runner、Oracle 以 21c XE 验收、MySQL 5.7 原子领取走方言分支、非 PG 向量须持久化、种子两层比对；达梦/金仓优先官方镜像，需注册时反馈 Owner。唯一下一动作：**Executor B0 补充盘点（注解/JdbcTemplate SQL 其余 PG 写法、Wrapper 原生片段、保留字与大小写、空字符串语义、长度边界），回执 `receipts/execution-assess-02.md`**。
 
 ## 历史：三示例流程返修 0.3.1—0.3.6 COMPLETED（2026-11-08，七阶段 7/0/0）
 

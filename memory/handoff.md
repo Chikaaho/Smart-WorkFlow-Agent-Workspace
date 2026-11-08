@@ -1,6 +1,6 @@
 # 交接
 
-2026-11-08｜Planner（终态复核 036）｜三示例流程返修 0.3.1—0.3.6 `COMPLETED`（7/0/0）；P66 多数据库兼容并行 READY。
+2026-11-08｜Planner（P66 审查 assess-01）｜P66 阶段 A 有条件通过，下一步 B0；三示例流程 COMPLETED。
 
 ## 当前
 
@@ -16,13 +16,13 @@
 
 **应用包**：维持 `systemVersion=0.3.2` 导出（71,786 B）；缺独立意见表单定义（17 张）、触发器脚本（B `tg_duty_overdue`、C `tg_scene_sensor`）、Agent 图、IoT 产品/设备/规则与渠道凭据——补建方法见功能文件与 `assets/README.md`。
 
-七阶段 **7/0/0**。三示例流程线结束（终态复核 `product/three-sample-process-uat/receipts/planning-final-review-036-completed.md`）。唯一下一动作：**P66 Executor 阶段 A 只读核对**。
+七阶段 **7/0/0**。三示例流程线结束（终态复核 `product/three-sample-process-uat/receipts/planning-final-review-036-completed.md`）。唯一下一动作见 P66。
 
 ## 0.3.3—0.3.5（历史，审查 06 已验收锁定）
 
 H6（摘要每段带标签，含备注回退与审批时间）、H7（JSON 字段化+原文折叠；A1 `YJ-20261108-008`、B1 `XY-20261108-015` 重跑 APPROVED）；tags `d52f5aa`/`94827dd`/`cfccaa9`。
 
-并行任务 **P66 多数据库兼容**（XL，目标 0.4.0，READY）：`product/multi-database-compat/ready/direction-multi-database-compat.md`；下一步阶段 A 只读核对。
+并行任务 **P66 多数据库兼容**（XL，目标 0.4.0）：阶段 A 有条件通过（`product/multi-database-compat/receipts/planning-review-assess-01.md`），唯一下一动作 **Executor B0 补充盘点**，回执 `execution-assess-02.md`。
 
 ## 0.3.2（历史，审查05 不通过，由 0.3.3—0.3.5 替代）
 
