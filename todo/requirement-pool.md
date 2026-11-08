@@ -8,7 +8,7 @@ Owner 2026-11-08 要求与三示例流程并行（system.md §4 已修订为不�
 
 0.3.1—0.3.6 全线交付：意见写入流程变量（`opinion`/`opinion_<字段>`）、会签聚合 `opinionAgg_*`、触发器 `nodeOpinions` 注入；三流程意见驱动分支与处理人；意见展示（摘要“标签：值”、抽屉、会签弹窗）；只读 JSON 中文映射 `jsonDisplay` 与原文权限门禁。交付登记 `knowledge/features/0.3.2-opinion-display.md`「最终交付登记（0.3.1—0.3.6）」。
 
-- **规划验收**：审查07（`receipts/planning-review-07-passed.md`）通过，H1—H9 锁定；终态同步按 `ready/direction-terminal-sync-036.md` 完成，回执 `receipts/terminal-sync-036-01.md`。
+- **规划验收**：审查07（`receipts/planning-review-07-passed.md`）通过，H1—H9 锁定；终态同步按 `passed/direction-terminal-sync-036.md` 完成，回执 `receipts/terminal-sync-036-01.md`。
 - **固定值**：功能51（不登记新功能）、M59/18/13、ADV1/7/56、P63（本次不核销）、问题57、验证基线 []。
 - **发布**：Web tag `0.3.6`=`c3f1d6e`（Release `438126185`）；Server 维持 0.3.2（tag `de8ec017`，Release `437820040`）；UAT Web 入口 `index-CKdiXkhU.js`、build.version=0.3.2、Flyway V0.2.9。Web 0.3.2 tag 同版本覆盖 Owner 2026-11-08 追认（维持 `3b0043f`）。已发布 tag 0.3.0—0.3.5 均未改动。
 - **最终证据实例**：A1 `YJ-20261108-008/009`、A2 `YJ-20261108-006`、B1 `XY-20261108-015`、B2 `XY-20261108-013`、B3 `XY-20261108-014`、C1 `MES-20261108-015`、C2 `MES-20261108-016`。

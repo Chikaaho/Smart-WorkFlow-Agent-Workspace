@@ -4,7 +4,7 @@
 
 ## 当前
 
-三示例流程返修（0.3.1—0.3.6）功能 **`COMPLETED`**（规划审查07 `product/three-sample-process-uat/receipts/planning-review-07-passed.md`，H1—H9 锁定），终态同步回执 `product/three-sample-process-uat/receipts/terminal-sync-036-01.md`；方向 `ready/direction-terminal-sync-036.md` 待规划复核后归档 `passed/`。规划终态复核已通过。
+三示例流程返修（0.3.1—0.3.6）功能 **`COMPLETED`**（规划审查07 `product/three-sample-process-uat/receipts/planning-review-07-passed.md`，H1—H9 锁定），终态同步回执 `product/three-sample-process-uat/receipts/terminal-sync-036-01.md`；方向 `passed/direction-terminal-sync-036.md` 待规划复核后归档 `passed/`。规划终态复核已通过。
 
 **交付登记** `knowledge/features/0.3.2-opinion-display.md`（最终交付登记 0.3.1—0.3.6）：
 - 平台机制：意见写入流程变量（`opinion`/`opinion_<字段>`/`formData` 回写）、会签聚合 `opinionAgg_*`、触发器 `nodeOpinions` 注入。
