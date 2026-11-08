@@ -1,6 +1,6 @@
 # 交接
 
-2026-11-08｜Executor（执行提示04）｜0.3.3—0.3.5 H6、H7 返修执行侧完成，待 Planner 验收。
+2026-11-08｜Planner（审查06）｜0.3.3—0.3.5 不通过：H6、H7 锁定，新增 H8（指令参数英文键）、H9（C1 数据矛盾），已下发执行提示05。
 
 ## 当前
 
@@ -24,7 +24,7 @@
 - 已发布 tag 均未改动。
 - UAT Web 入口 `assets/index-DquMd1D-.js`，build.version=0.3.2，health UP。
 
-七阶段 **5/1/1**。唯一下一动作：**Planner 验收 0.3.3—0.3.5**。Web 0.3.2 tag 覆盖待 Owner 追认。上一交付 0.2.4 COMPLETED（7/0/0），方向归档 `product/0.2.4/passed/`。
+七阶段 **3/1/3**（审查06 不通过）。唯一下一动作：**Executor 按 `receipts/planning-execution-prompt-three-sample-05.md` 返修 H8、H9（需改代码则发 0.3.6），回执 `execution-final-07.md`**。Web 0.3.2 tag 覆盖待 Owner 追认。上一交付 0.2.4 COMPLETED（7/0/0），方向归档 `product/0.2.4/passed/`。
 
 ## 0.3.2（历史，审查05 不通过，由 0.3.3—0.3.5 替代）
 
@@ -34,17 +34,12 @@ H1—H5 完成（UAT 7 条路径 `YJ-20261108-005/006`、`XY-20261108-012/013/01
 
 终审 COMPLETED 后同日被 Owner 退回（意见过简、未用意见/变量/脚本驱动），发布事实不回滚；详见 `knowledge/features/0.3.0-three-sample-processes.md`。
 
+## 0.2.4 / 0.2.3（历史）
 
-## 0.2.4（历史）
-
-COMPLETED（7/0/0），第51个正式功能；终态复核 `product/0.2.4/receipts/planning-final-review-024-completed.md`。
+0.2.3 COMPLETED（功能50，`product/0.2.3/receipts/`）；0.2.4 COMPLETED（7/0/0），第51个正式功能；终态复核 `product/0.2.4/receipts/planning-final-review-024-completed.md`。
 
 常规决定：截图本机留存不入Git；执行列表无菜单、冷却抑制、mes_judge_config不参与判定按已登记边界处理。
 
 ## 保留与保护
 
 Owner定保留本机隔离环境（`smart_workflow_lc023_01`、`smart_workflow_024_01`、`.lc023-mock/lc023-server-wt`、`.runtime-lc023`、`.runtime-lc024`），已gitignore，只要求不泄露。继续保护Web vite.config.ts在途改动、`smart_workflow_f1v4b`、用户8080/5173服务和秘密。
-
-## 0.2.3（历史）
-
-COMPLETED，7/0/0，功能保持50（Owner确认）。终态复核 `product/0.2.3/receipts/planning-final-review-023-completed.md`。

@@ -1,6 +1,6 @@
 # 需求池（Requirement Pool）
 
-## 当前：三示例流程返修（0.3.3—0.3.5，H6、H7 执行侧完成，待 Planner 验收）
+## 当前：三示例流程返修（0.3.3—0.3.5 审查06 不通过；H8、H9 返修中）
 
 0.3.3—0.3.5：审查05 不通过后完成 H6、H7 返修。入口 `product/three-sample-process-uat/receipts/planning-execution-prompt-three-sample-04.md`，回执 `product/three-sample-process-uat/receipts/execution-final-06.md`。
 
@@ -10,7 +10,7 @@
 - **固定值**：功能51、M59/18/13、ADV1/7/56、P63、问题57。
 - **新需求候选（观察）**：指令参数 JSON 键名的中文名字典。
 
-唯一下一动作：**Planner 验收 0.3.3—0.3.5**。Web 0.3.2 tag 覆盖待 Owner 追认。
+规划审查06（`receipts/planning-review-06.md`）：H6、H7 通过并锁定；不通过项 H8 业务用户可见指令参数为英文键/值且标题带“（JSON）”，H9 C1 `MES-20261108-013` 温度序列、知识命中与“快速升温”结论矛盾（审查05 规划漏看）。唯一下一动作：**Executor 按执行提示05 返修，需改代码发 0.3.6，回执 `execution-final-07.md`**。Web 0.3.2 tag 覆盖待 Owner 追认。
 
 ### 历史：0.3.2 返修（2026-11-08，审查05 不通过后由 0.3.3—0.3.5 替代）
 
