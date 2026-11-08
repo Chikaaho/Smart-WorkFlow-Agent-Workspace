@@ -71,3 +71,16 @@
   - 或 DM8 安装包，加上开发版或试用授权。
   - 放到本机目录后告诉 Executor 路径，Executor 负责记录 sha256，并按 `CASE_SENSITIVE=Y`、`LENGTH_IN_CHAR=1` 初始化。
 - **R5 的处理方式**：等 S1 结论出来再决定，现在不用决定。
+
+## 5. Owner 裁决（2026-11-09 追记）
+
+1. **DM8 先跳过实库验证。**
+   - Executor 照常编写 DM8 迁移脚本和种子，走 `SwVendorMigrationRunner`；目录、初始化参数说明、连接示例、`SeedComparisonTest` 运行命令都要准备好。
+   - Owner 自行在达梦上验证。有问题时，再单独开修复任务。
+   - DM8 的完成口径改为“脚本与种子就绪，并通过静态检查”。静态检查包括：保留字、标识符长度、语法上避开不支持的写法，以及 Runner 用 H2 代理跑通。
+   - 在 0.4.0 的发布说明里，DM8 标为“由 Owner 验证”。
+   - 人大金仓如果也卡在授权，按同样口径处理，届时 Planner 会先报告 Owner 确认。
+2. **R5 单独发 Server 补丁。**
+   - 方向：`product/server-033-agent-tool-enabled-hotfix/ready/direction-server-033-hotfix.md`。
+   - S1 的影响核实改由补丁任务第 1 步承接；P66 下一份回执不再回答 S1。
+   - P66 在 0.4.0 发布前合入包含 0.3.3 的 `develop`。
