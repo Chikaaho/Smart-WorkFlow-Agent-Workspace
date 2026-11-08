@@ -1,6 +1,6 @@
 # 交接
 
-2026-11-08｜Executor（执行提示05）｜H8、H9 完成并发布 0.3.6，回执 `execution-final-07.md`，待 Planner 验收。
+2026-11-08｜Planner（审查07）｜三示例流程 0.3.6 功能验收通过，待终态同步；P66 多数据库兼容并行 READY。
 
 ## 当前
 
@@ -20,7 +20,7 @@
 - 已发布 tag（0.3.0—0.3.5）均未改动。
 - UAT Web 入口 `assets/index-CKdiXkhU.js`，build.version=0.3.2，health UP。
 
-测试：`TextControl.spec` 9/9、`TextConfig.spec` 6/6、透传 1 项；全量 2054 通过。七阶段 **5/1/1**。唯一下一动作：**Planner 验收 0.3.6（H8、H9）**。上一交付 0.3.3—0.3.5 已由审查 06 验收锁定。
+测试：`TextControl.spec` 9/9、`TextConfig.spec` 6/6、透传 1 项；全量 2054 通过。七阶段 **4/2/1**。三示例流程线：审查07 **PASSED**（0.3.6，H1—H9 锁定），下一动作 **Executor 按 `product/three-sample-process-uat/ready/direction-terminal-sync-036.md` 终态同步**，回执 `terminal-sync-036-01.md`。上一交付 0.3.3—0.3.5 已由审查 06 验收锁定。
 
 ## 0.3.3—0.3.5（历史，审查 06 已验收锁定）
 

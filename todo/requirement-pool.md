@@ -4,7 +4,7 @@
 
 Owner 2026-11-08 要求与三示例流程并行（system.md §4 的 Owner 例外）：迁移脚本与全部 SQL 种子适配 H2、PostgreSQL、MySQL 5.7、MySQL 8.0、Oracle 19c、达梦 DM8（必须项），人大金仓、SQL Server、MariaDB、openGauss 为扩展项。硬约束：PG 和 H2 已发布迁移的校验和不变，不碰 UAT 数据库。方向 `product/multi-database-compat/ready/direction-multi-database-compat.md`。唯一下一动作：**Executor 阶段 A 能力核对与方案（只读），回执 `receipts/execution-assess-01.md`**。
 
-## 当前：三示例流程返修（0.3.6 H8、H9 已交付，待 Planner 验收）
+## 当前：三示例流程返修（0.3.6 审查07 PASSED，待终态同步）
 
 0.3.6：按执行提示05（审查06：H6、H7 锁定）完成 H8、H9。入口 `product/three-sample-process-uat/receipts/planning-execution-prompt-three-sample-05.md`，回执 `product/three-sample-process-uat/receipts/execution-final-07.md`。
 
@@ -14,7 +14,7 @@ Owner 2026-11-08 要求与三示例流程并行（system.md §4 的 Owner 例外
 - **固定值**：功能51、M59/18/13、ADV1/7/56、P63、问题57。
 - **新需求候选（观察）**：设计器映射编辑框对非 JSON 的 TEXT 字段也可见（配置无效果，收敛属新需求）。
 
-唯一下一动作：**Planner 验收 0.3.6（H8、H9 证据 `.runtime-030/uat-shots-036/`）**。
+规划审查07（`receipts/planning-review-07-passed.md`）通过，H1—H9 锁定；观察：C1/C2 同设备同测温时间、演示审批时间集中（不打回）。三示例流程线：审查07 **PASSED**（0.3.6，H1—H9 锁定），下一动作 **Executor 按 `product/three-sample-process-uat/ready/direction-terminal-sync-036.md` 终态同步**，回执 `terminal-sync-036-01.md`。
 
 ### 历史：0.3.3—0.3.5（2026-11-08，审查06 已验收锁定）
 

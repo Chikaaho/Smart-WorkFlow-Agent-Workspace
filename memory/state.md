@@ -1,18 +1,16 @@
 # 当前状态摘要
 
-2026-11-08｜Executor（执行提示05 回执 execution-final-07）｜H8（指令参数中文化）、H9（C1/C2 一致数据重跑）已完成并发布 0.3.6，待 Planner 验收。
+2026-11-08｜Planner（审查07）｜三示例流程 0.3.6 功能验收通过，待终态同步；P66 多数据库兼容并行 READY。
 
 ## 当前任务
 
 三示例流程返修（0.3.6）：按执行提示05（审查06：H6、H7 锁定）完成 H8、H9。
 
-- **H8**：TEXT 字段契约键 `jsonDisplay`（键名/取值中文映射），只读 JSON 参数显中文（演练编号/动作/机房断电/火警告警/目标机房/回切时限（分钟）；switch→切换），无映射回退原键名；「JSON 原文」折叠区仅 `form:design:save` 可见。`ops_drill_plan` UAT 版本 3：标题「到点下发的设备指令」+ 映射；MQTT 载荷英文键不变。
-- **H9**：C1 `MES-20261108-015`（81.2/2.8/77.6→81.2，实测 77.8 偏差 3.4>3 → 传感器漂移→仪表校准）、C2 `MES-20261108-016`（82.0/2.4/78.4→82.0，实测 82.3 → 设备维修）均 APPROVED；原 014 同类矛盾一并重跑。
-- **A1 双视角**：chenjing 视 `YJ-20261108-008` 无原文折叠区（foldable 0）；admin 新建 `YJ-20261108-009`（9 节点 APPROVED）原文可展开。
+- **H8/H9**：只读 JSON 中文映射 `jsonDisplay`+原文仅 `form:design:save` 可见；C1 `MES-20261108-015`、C2 `MES-20261108-016` 一致数据重跑；admin 证据实例 `YJ-20261108-009`。
 - **发布**：Web 0.3.6 = tag `c3f1d6e`（feature `8dd0220` → develop `0d71982`），Release `438126185`；Server 未改动。
 - **回执**：`product/three-sample-process-uat/receipts/execution-final-07.md`；证据 `.runtime-030/uat-shots-036/`。
 
-七阶段 **5/1/1**。唯一下一动作：**Planner 验收 0.3.6（H8、H9）**。
+七阶段 **4/2/1**。三示例流程线：审查07 **PASSED**（0.3.6，H1—H9 锁定），下一动作 **Executor 按 `product/three-sample-process-uat/ready/direction-terminal-sync-036.md` 终态同步**，回执 `terminal-sync-036-01.md`。
 
 并行任务 **P66 多数据库兼容**（XL，目标 0.4.0，READY）：`product/multi-database-compat/ready/direction-multi-database-compat.md`；下一动作 Executor 阶段 A 能力核对（只读）。
 
