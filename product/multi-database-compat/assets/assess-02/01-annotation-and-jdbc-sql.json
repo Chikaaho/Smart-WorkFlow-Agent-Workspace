@@ -1,0 +1,874 @@
+{
+ "annotations": [
+  {
+   "file": "sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/mapper/AgentGraphExecutionEventMapper.java",
+   "line": 10,
+   "kind": "Insert",
+   "sql": "\"\"\" INSERT INTO sw_agent_graph_execution_event (id, execution_id, sequence_no, event_type, node_id, payload, create_time, create_by, update_time, update_by, deleted, tenant_id, version) SELECT #{id}, #{executionId}, COALESCE(MAX(sequence_no), 0) + 1, #{eventType}, #{nodeId}, #{payload}, CURRENT_TIMESTAMP, #{createBy}, CURRENT_TIMESTAMP, #{createBy}, 0, #{tenantId}, 0 FROM sw_agent_graph_execution_event WHERE tenant_id = #{tenantId} AND execution_id = #{executionId} AND deleted = 0 \"\"\"",
+   "hits": []
+  },
+  {
+   "file": "sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/mapper/AgentGraphExecutionMapper.java",
+   "line": 32,
+   "kind": "Select",
+   "sql": "\"\"\" <script> SELECT * FROM sw_agent_graph_execution <where> deleted = 0 <if test=\"graphDefId != null\">AND graph_def_id = #{graphDefId}</if> <if test=\"scope.userId != null\">AND create_by = CAST(#{scope.userId} AS VARCHAR)</if> <if test=\"scope.deptIds != null and scope.deptIds.size() > 0\"> AND create_by IN (SELECT CAST(id AS VARCHAR) FROM sys_user WHERE dept_id IN <foreach collection=\"scope.deptIds\" item=\"did\" open=\"(\" separator=\",\" close=\")\">#{did}</foreach>) </if> <if test=\"scope.deptIds != null and scope.deptIds.isEmpty()\">AND 1 = 0</if> <if test=\"scope.alwaysFalse\">AND 1 = 0</if> </where> ORDER BY create_time DESC </script> \"\"\"",
+   "hits": [
+    "CAST"
+   ]
+  },
+  {
+   "file": "sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/mapper/AgentGraphExecutionRequestMapper.java",
+   "line": 10,
+   "kind": "Update",
+   "sql": "\"\"\" UPDATE sw_agent_graph_execution_request SET status = #{next}, update_time = CURRENT_TIMESTAMP, version = version + 1 WHERE id = #{id} AND status = #{expected} AND deleted = 0 \"\"\"",
+   "hits": []
+  },
+  {
+   "file": "sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/mapper/AgentGraphExecutionRequestMapper.java",
+   "line": 18,
+   "kind": "Update",
+   "sql": "\"\"\" UPDATE sw_agent_graph_execution_request SET status = 'CANCEL_REQUESTED', cancel_requested_at = CURRENT_TIMESTAMP, update_time = CURRENT_TIMESTAMP, version = version + 1 WHERE id = #{id} AND status = 'RUNNING' AND deleted = 0 \"\"\"",
+   "hits": []
+  },
+  {
+   "file": "sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/mapper/AgentGraphExecutionRequestMapper.java",
+   "line": 26,
+   "kind": "Update",
+   "sql": "\"\"\" UPDATE sw_agent_graph_execution_request SET status = 'CANCELLED', cancel_requested_at = COALESCE(cancel_requested_at, CURRENT_TIMESTAMP), finished_at = CURRENT_TIMESTAMP, update_time = CURRENT_TIMESTAMP, version = version + 1 WHERE id = #{id} AND status = 'QUEUED' AND deleted = 0 \"\"\"",
+   "hits": []
+  },
+  {
+   "file": "sw-basic/sw-basic-agent/src/main/java/com/sw/ck/agent/mapper/AgentGraphExecutionRequestMapper.java",
+   "line": 34,
+   "kind": "Update",
+   "sql": "\"\"\" UPDATE sw_agent_graph_execution_request SET status = #{terminal}, error_category = #{category}, error_message = #{message}, result_execution_id = #{resultId}, latency_ms = #{latencyMs}, finished_at = CURRENT_TIMESTAMP, update_time = CURRENT_TIMESTAMP, version = version + 1 WHERE id = #{id} AND status IN ('RUNNING', 'CANCEL_REQUESTED') AND deleted = 0 \"\"\"",
+   "hits": []
+  },
+  {
+   "file": "sw-basic/sw-basic-job/sw-basic-job-biz/src/main/java/com/sw/ck/job/mapper/JobInfoMapper.java",
+   "line": 28,
+   "kind": "Select",
+   "sql": "\"\"\" <script> SELECT * FROM sw_job_info <where> deleted = 0 <if test=\"jobName != null and jobName != ''\">AND job_name LIKE CONCAT('%', #{jobName}, '%')</if> <if test=\"jobType != null and jobType != ''\">AND job_type = #{jobType}</if> <if test=\"status != null and status != ''\">AND status = #{status}</if> <if test=\"scope.userId != null\">AND create_by = #{scope.userId}</if> <if test=\"scope.deptIds != null and scope.deptIds.size() > 0\"> AND create_by IN (SELECT id FROM sys_user WHERE dept_id IN <foreach collection=\"scope.deptIds\" item=\"did\" open=\"(\" separator=\",\" close=\")\">#{did}</foreach>) </if> <if test=\"scope.deptIds != null and scope.deptIds.isEmpty()\">AND 1 = 0</if> <if test=\"scope.alwaysFalse\">AND 1 = 0</if> </where> ORDER BY create_time DESC </script> \"\"\"",
+   "hits": [
+    "LIKE",
+    "CONCAT 3-arg"
+   ]
+  },
+  {
+   "file": "sw-basic/sw-basic-job/sw-basic-job-biz/src/main/java/com/sw/ck/job/mapper/JobLogMapper.java",
+   "line": 28,
+   "kind": "Select",
+   "sql": "\"\"\" <script> SELECT * FROM sw_job_log <where> deleted = 0 <if test=\"jobId != null\">AND job_id = #{jobId}</if> <if test=\"scope.userId != null\">AND create_by = #{scope.userId}</if> <if test=\"scope.deptIds != null and scope.deptIds.size() > 0\"> AND create_by IN (SELECT id FROM sys_user WHERE dept_id IN <foreach collection=\"scope.deptIds\" item=\"did\" open=\"(\" separator=\",\" close=\")\">#{did}</foreach>) </if> <if test=\"scope.deptIds != null and scope.deptIds.isEmpty()\">AND 1 = 0</if> <if test=\"scope.alwaysFalse\">AND 1 = 0</if> </where> ORDER BY create_time DESC </script> \"\"\"",
+   "hits": []
+  },
+  {
+   "file": "sw-basic/sw-basic-notify/sw-basic-notify-biz/src/main/java/com/sw/ck/notify/mapper/NotifyMessageMapper.java",
+   "line": 26,
+   "kind": "Select",
+   "sql": "\"SELECT id, create_time, create_by, update_time, update_by, deleted, tenant_id, version, \" + \"recipient_id, title, content, biz_type, biz_id, is_read, channel, delivery_status, \" + \"external_message_id, failure_reason, idempotency_key \" + \"FROM sw_notify_message \" + \"WHERE idempotency_key = #{idempotencyKey} AND deleted = 0 \" + \"ORDER BY id ASC LIMIT 1\"",
+   "hits": [
+    "LIMIT"
+   ]
+  },
+  {
+   "file": "sw-basic/sw-basic-notify/sw-basic-notify-biz/src/main/java/com/sw/ck/notify/mapper/NotifyMessageMapper.java",
+   "line": 42,
+   "kind": "Select",
+   "sql": "\"<script>\" + \"SELECT DISTINCT u.id FROM sys_user u \" + \"WHERE u.deleted = 0 AND u.status = 0 \" + \"AND u.tenant_id = #{tenantId} \" + \"AND u.dept_id IN \" + \"<foreach collection='deptIds' item='deptId' open='(' separator=',' close=')'>\" + \"#{deptId}\" + \"</foreach>\" + \"</script>\"",
+   "hits": []
+  },
+  {
+   "file": "sw-basic/sw-basic-notify/sw-basic-notify-biz/src/main/java/com/sw/ck/notify/mapper/NotifyMessageMapper.java",
+   "line": 58,
+   "kind": "Select",
+   "sql": "\"<script>\" + \"SELECT id FROM sys_dept \" + \"WHERE deleted = 0 AND status = 0 \" + \"AND tenant_id = #{tenantId} AND id IN \" + \"<foreach collection='deptIds' item='deptId' open='(' separator=',' close=')'>\" + \"#{deptId}\" + \"</foreach>\" + \"</script>\"",
+   "hits": []
+  },
+  {
+   "file": "sw-basic/sw-basic-notify/sw-basic-notify-biz/src/main/java/com/sw/ck/notify/mapper/NotifyMessageMapper.java",
+   "line": 76,
+   "kind": "Select",
+   "sql": "\"<script>\" + \"SELECT DISTINCT ur.user_id FROM sys_user_role ur \" + \"INNER JOIN sys_user u ON u.id = ur.user_id AND u.deleted = 0 AND u.status = 0 \" + \"INNER JOIN sys_role r ON r.id = ur.role_id AND r.deleted = 0 AND r.status = 1 \" + \"WHERE ur.deleted = 0 AND ur.tenant_id = #{tenantId} \" + \"AND u.tenant_id = #{tenantId} AND r.tenant_id = #{tenantId} \" + \"AND r.code IN \" + \"<foreach collection='roleCodes' item='code' open='(' separator=',' close=')'>\" + \"#{code}\" + \"</foreach>\" + \"</script>\"",
+   "hits": []
+  },
+  {
+   "file": "sw-basic/sw-basic-notify/sw-basic-notify-biz/src/main/java/com/sw/ck/notify/mapper/NotifyMessageMapper.java",
+   "line": 94,
+   "kind": "Select",
+   "sql": "\"<script>\" + \"SELECT code FROM sys_role \" + \"WHERE deleted = 0 AND status = 1 \" + \"AND tenant_id = #{tenantId} AND code IN \" + \"<foreach collection='roleCodes' item='code' open='(' separator=',' close=')'>\" + \"#{code}\" + \"</foreach>\" + \"</script>\"",
+   "hits": []
+  },
+  {
+   "file": "sw-basic/sw-basic-notify/sw-basic-notify-biz/src/main/java/com/sw/ck/notify/mapper/NotifyMessageMapper.java",
+   "line": 109,
+   "kind": "Select",
+   "sql": "\"<script>\" + \"SELECT id FROM sys_user \" + \"WHERE deleted = 0 AND status = 0 \" + \"AND tenant_id = #{tenantId} \" + \"AND id IN \" + \"<foreach collection='userIds' item='userId' open='(' separator=',' close=')'>\" + \"#{userId}\" + \"</foreach>\" + \"</script>\"",
+   "hits": []
+  },
+  {
+   "file": "sw-basic/sw-basic-storage/sw-basic-storage-biz/src/main/java/com/sw/ck/storage/mapper/StorageFileMapper.java",
+   "line": 28,
+   "kind": "Select",
+   "sql": "\"\"\" <script> SELECT * FROM sw_storage_file <where> deleted = 0 <if test=\"scope.userId != null\">AND create_by = #{scope.userId}</if> <if test=\"scope.deptIds != null and scope.deptIds.size() > 0\"> AND create_by IN (SELECT id FROM sys_user WHERE dept_id IN <foreach collection=\"scope.deptIds\" item=\"did\" open=\"(\" separator=\",\" close=\")\">#{did}</foreach>) </if> <if test=\"scope.deptIds != null and scope.deptIds.isEmpty()\">AND 1 = 0</if> <if test=\"scope.alwaysFalse\">AND 1 = 0</if> </where> ORDER BY create_time DESC </script> \"\"\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/mapper/FormAppScopeMapper.java",
+   "line": 22,
+   "kind": "Delete",
+   "sql": "\"DELETE FROM sw_form_app_scope WHERE app_id = #{appId}\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/mapper/FormAppUserMapper.java",
+   "line": 23,
+   "kind": "Delete",
+   "sql": "\"DELETE FROM sw_form_app_user WHERE app_id = #{appId}\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/NotifySubjectBindingMapper.java",
+   "line": 18,
+   "kind": "Select",
+   "sql": "\"SELECT * FROM sw_notify_subject_binding WHERE tenant_id = #{tenantId} \" + \"AND user_id = #{userId} AND provider = #{provider} \" + \"AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1\"",
+   "hits": [
+    "LIMIT"
+   ]
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SsoAuthStateMapper.java",
+   "line": 17,
+   "kind": "Select",
+   "sql": "\"SELECT * FROM sys_sso_auth_state WHERE state_value = #{stateValue} AND deleted = 0 LIMIT 1\"",
+   "hits": [
+    "LIMIT"
+   ]
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SsoUserBindingMapper.java",
+   "line": 21,
+   "kind": "Select",
+   "sql": "\"SELECT * FROM sys_sso_user_binding WHERE provider = #{provider} \" + \"AND tenant_id = #{tenantId} AND external_id = #{externalId} \" + \"AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1\"",
+   "hits": [
+    "LIMIT"
+   ]
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SsoUserBindingMapper.java",
+   "line": 29,
+   "kind": "Select",
+   "sql": "\"SELECT * FROM sys_sso_user_binding WHERE provider = #{provider} \" + \"AND tenant_id = #{tenantId} AND user_id = #{userId} \" + \"AND bind_status = 'ACTIVE' AND deleted = 0 LIMIT 1\"",
+   "hits": [
+    "LIMIT"
+   ]
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SsoUserBindingMapper.java",
+   "line": 44,
+   "kind": "Delete",
+   "sql": "\"DELETE FROM sys_sso_user_binding WHERE provider = #{provider} \" + \"AND tenant_id = #{tenantId} AND deleted = 0 AND bind_status = 'UNBOUND' \" + \"AND (external_digest = #{externalDigest} OR user_id = #{userId})\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysDeptMapper.java",
+   "line": 22,
+   "kind": "Select",
+   "sql": "\"SELECT d.id AS dept_id, d.parent_id AS parent_id, l.id AS leader_id FROM sys_dept d \" + \"LEFT JOIN sys_user l ON l.id = d.leader_id AND l.deleted = 0 AND l.status = 0 \" + \"AND l.tenant_id = d.tenant_id \" + \"WHERE d.deleted = 0 AND d.status = 0 AND d.tenant_id = #{tenantId}\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysDictTypeMapper.java",
+   "line": 25,
+   "kind": "Select",
+   "sql": "\"SELECT MIN(tenant_id) FROM sys_dict_type WHERE code = #{code} AND deleted = 0\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysRoleDeptMapper.java",
+   "line": 19,
+   "kind": "Delete",
+   "sql": "\"DELETE FROM sys_role_dept WHERE role_id = #{roleId}\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysRoleMenuMapper.java",
+   "line": 22,
+   "kind": "Delete",
+   "sql": "\"DELETE FROM sys_role_menu WHERE role_id = #{roleId}\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysTenantMapper.java",
+   "line": 17,
+   "kind": "Select",
+   "sql": "\"SELECT * FROM sys_tenant WHERE id = #{id} AND deleted = 0\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysTenantMapper.java",
+   "line": 21,
+   "kind": "Select",
+   "sql": "\"SELECT * FROM sys_tenant WHERE id = #{id} AND deleted = 0 FOR UPDATE\"",
+   "hits": [
+    "FOR UPDATE"
+   ]
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysUserGroupMapper.java",
+   "line": 28,
+   "kind": "Select",
+   "sql": "{\"<script>\", \"SELECT DISTINCT g.* FROM sys_user_group g WHERE g.deleted = 0 \", // 自定义 @Select 不经过 MP 租户模板，显式按当前租户过滤，避免跨租户组泄露 \"AND g.tenant_id = #{__tenantId__} \", // 超管看全部（含空成员组）；普通用户看自己创建的组，或成员命中数据范围的组。 // 空成员组若不可见，创建后无法在列表中找到并补充成员，属显示与数据不一致。 \"<choose>\", \" <when test='__superAdmin__'>AND 1 = 1</when>\", \" <otherwise>\", \" AND (g.create_by = #{__userId__} OR EXISTS (SELECT 1 FROM sys_user um WHERE um.deleted = 0 \", \" AND um.id IN (SELECT gm.user_id FROM sys_user_group_member gm WHERE gm.group_id = g.id AND gm.deleted = 0)\", \" AND um.tenant_id = g.tenant_id \", \" <choose>\", \" <when test='__scopeType__ == \\\"SELF\\\"'>AND um.create_by = #{__userId__}</when>\", \" <when test='__scopeType__ == \\\"DEPT\\\"'>AND um.dept_id = #{__deptId__}</when>\", \" <when test='__scopeType__ == \\\"DEPT_AND_CHILD\\\"'>AND um.dept_id IN (\", \" WITH RECURSIVE children(id) AS (\", \" SELECT id FROM sys_dept WHERE id = #{__deptId__} AND deleted = 0\", \" UNION ALL SELECT d.id FROM sys_dept d JOIN children c ON d.parent_id = c.id WHERE d.deleted = 0\", \" ) SELECT id FROM children)\", \" </when>\", \" <when test='__scopeType__ == \\\"CUSTOM\\\"'>\", \" <choose>\", \" <when test='__customDeptIds__ != null and __customDeptIds__.size() > 0'>AND um.dept_id IN\", \" <foreach collection='__customDeptIds__' item='d' open='(' separator=',' close=')'>#{d}</foreach>\", \" </when>\", \" <otherwise>AND 1 = 0</otherwise>\", \" </choose>\", \" </when>\", \" </choose>\", \" ))\", \" </otherwise>\", \"</choose>\", \"<if test='q != null and q.groupCode != null and q.groupCode != \\\"\\\"'> AND g.group_code LIKE CONCAT('%', #{q.groupCode}, '%') </if>\", \"<if test='q != null and q.groupName != null and q.groupName != \\\"\\\"'> AND g.group_name LIKE CONCAT('%', #{q.groupName}, '%') </if>\", \"<if test='q != null and q.status != null'> AND g.status = #{q.status} </if>\", \"</script>\"}",
+   "hits": [
+    "LIKE",
+    "CONCAT 3-arg"
+   ]
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysUserGroupMapper.java",
+   "line": 75,
+   "kind": "Select",
+   "sql": "{\"<script>\", \"SELECT DISTINCT u.id, u.username, u.real_name, u.dept_id, u.status \", \"FROM sys_user u WHERE u.deleted = 0 AND u.status = 0 \", // 自定义 @Select 不经过 MP 租户模板，显式按当前租户过滤，避免跨租户候选泄露 \"AND u.tenant_id = #{__tenantId__} \", \"AND (\" + \" <choose>\", \" <when test='__superAdmin__'>1 = 1</when>\", \" <otherwise>\", \" <choose>\", \" <when test='__scopeType__ == \\\"SELF\\\"'>u.create_by = #{__userId__}</when>\", \" <when test='__scopeType__ == \\\"DEPT\\\"'>u.dept_id = #{__deptId__}</when>\", \" <when test='__scopeType__ == \\\"DEPT_AND_CHILD\\\"'>u.dept_id IN (\", \" WITH RECURSIVE children(id) AS (\", \" SELECT id FROM sys_dept WHERE id = #{__deptId__} AND deleted = 0\", \" UNION ALL SELECT d.id FROM sys_dept d JOIN children c ON d.parent_id = c.id WHERE d.deleted = 0\", \" ) SELECT id FROM children)\", \" </when>\", \" <when test='__scopeType__ == \\\"CUSTOM\\\"'>\", \" <choose>\", \" <when test='__customDeptIds__ != null and __customDeptIds__.size() > 0'>u.dept_id IN\", \" <foreach collection='__customDeptIds__' item='d' open='(' separator=',' close=')'>#{d}</foreach>\", \" </when>\", \" <otherwise>1 = 0</otherwise>\", \" </choose>\", \" </when>\", \" <otherwise>1 = 0</otherwise>\", \" </choose>\", \" </otherwise>\", \" </choose>\", \" ) \", \"<if test='keyword != null and keyword != \\\"\\\"'> AND (u.username LIKE CONCAT('%', #{keyword}, '%') OR u.real_name LIKE CONCAT('%', #{keyword}, '%')) </if>\", \"</script>\"}",
+   "hits": [
+    "LIKE",
+    "CONCAT 3-arg"
+   ]
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysUserMapper.java",
+   "line": 27,
+   "kind": "Select",
+   "sql": "\"SELECT * FROM sys_user WHERE username = #{username} AND deleted = 0\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysUserMapper.java",
+   "line": 32,
+   "kind": "Select",
+   "sql": "\"SELECT * FROM sys_user WHERE username = #{username} AND deleted = 0 ORDER BY id\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysUserMapper.java",
+   "line": 38,
+   "kind": "Select",
+   "sql": "\"SELECT u.* FROM sys_user u JOIN sys_tenant t ON t.id = u.tenant_id \" + \"WHERE t.name = #{tenantName} AND u.username = #{username} \" + \"AND u.deleted = 0 AND t.deleted = 0 ORDER BY u.id\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysUserMapper.java",
+   "line": 46,
+   "kind": "Select",
+   "sql": "{\"<script>\", \"SELECT DISTINCT u.id FROM sys_user u WHERE u.deleted = 0 AND u.status = 0 \", \"AND u.tenant_id = #{tenantId} AND u.id IN \", \"<foreach collection='ids' item='id' open='(' separator=',' close=')'>#{id}</foreach>\", \"</script>\"}",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysUserMapper.java",
+   "line": 54,
+   "kind": "Select",
+   "sql": "{\"<script>\", \"SELECT DISTINCT ur.user_id FROM sys_user_role ur \", \"JOIN sys_user u ON u.id = ur.user_id AND u.deleted = 0 AND u.status = 0 \", \"JOIN sys_role r ON r.id = ur.role_id AND r.deleted = 0 AND r.status = 1 \", \"WHERE ur.deleted = 0 AND ur.tenant_id = #{tenantId} \", \"AND u.tenant_id = #{tenantId} AND r.tenant_id = #{tenantId} AND r.code IN \", \"<foreach collection='roleCodes' item='code' open='(' separator=',' close=')'>#{code}</foreach>\", \"</script>\"}",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysUserMapper.java",
+   "line": 67,
+   "kind": "Select",
+   "sql": "{\"<script>\", \"SELECT DISTINCT d.leader_id FROM sys_dept d \", \"JOIN sys_user u ON u.id = d.leader_id AND u.deleted = 0 AND u.status = 0 \", \"WHERE d.deleted = 0 AND d.status = 0 AND d.leader_id IS NOT NULL \", \"AND d.tenant_id = #{tenantId} AND u.tenant_id = #{tenantId} AND d.id IN \", \"<foreach collection='deptIds' item='id' open='(' separator=',' close=')'>#{id}</foreach>\", \"</script>\"}",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysUserMapper.java",
+   "line": 82,
+   "kind": "Select",
+   "sql": "{\"<script>\", \"SELECT d.id AS dept_id, d.leader_id AS leader_id FROM sys_dept d \", \"JOIN sys_user u ON u.id = d.leader_id AND u.deleted = 0 AND u.status = 0 \", \"WHERE d.deleted = 0 AND d.status = 0 AND d.leader_id IS NOT NULL \", \"AND d.tenant_id = #{tenantId} AND u.tenant_id = #{tenantId} AND d.id IN \", \"<foreach collection='deptIds' item='id' open='(' separator=',' close=')'>#{id}</foreach>\", \"</script>\"}",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysUserMapper.java",
+   "line": 94,
+   "kind": "Select",
+   "sql": "{\"<script>\", \"SELECT DISTINCT up.user_id FROM sys_user_post up \", \"JOIN sys_post p ON p.id = up.post_id AND p.deleted = 0 AND p.status = 1 \", \"JOIN sys_user u ON u.id = up.user_id AND u.deleted = 0 AND u.status = 0 \", \"WHERE up.deleted = 0 AND up.tenant_id = #{tenantId} \", \"AND p.tenant_id = #{tenantId} AND u.tenant_id = #{tenantId} AND p.code IN \", \"<foreach collection='postCodes' item='code' open='(' separator=',' close=')'>#{code}</foreach>\", \"</script>\"}",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysUserMapper.java",
+   "line": 107,
+   "kind": "Select",
+   "sql": "{\"SELECT DISTINCT up.user_id FROM sys_user_post up \", \"JOIN sys_post p ON p.id = up.post_id AND p.deleted = 0 AND p.status = 1 \", \"JOIN sys_user u ON u.id = up.user_id AND u.deleted = 0 AND u.status = 0 \", \"WHERE up.deleted = 0 AND up.tenant_id = #{tenantId} \", \"AND p.tenant_id = #{tenantId} AND u.tenant_id = #{tenantId} \", \"AND up.dept_id = #{deptId} AND p.code = #{postCode} \", \"AND EXISTS (SELECT 1 FROM sys_dept d WHERE d.id = #{deptId} \", \"AND d.deleted = 0 AND d.status = 0 AND d.tenant_id = #{tenantId})\"}",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysUserMapper.java",
+   "line": 130,
+   "kind": "Select",
+   "sql": "\"SELECT * FROM sys_user WHERE deleted = 0\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysUserMapper.java",
+   "line": 137,
+   "kind": "Select",
+   "sql": "{\"<script>\", \"SELECT DISTINCT u.* FROM sys_user u \", \"JOIN sys_user_role ur ON ur.user_id = u.id AND ur.deleted = 0 AND ur.role_id = #{roleId} \", \"WHERE u.deleted = 0 \", \"ORDER BY u.id\", \"</script>\"}",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysUserMapper.java",
+   "line": 146,
+   "kind": "Select",
+   "sql": "{\"<script>\", \"SELECT DISTINCT u.* FROM sys_user u WHERE u.deleted = 0 \", \"<if test='q != null and q.tenantId != null'> AND u.tenant_id = #{q.tenantId} </if>\", \"<if test='q != null and q.keyword != null and q.keyword != \\\"\\\"'> AND (u.username LIKE CONCAT('%', #{q.keyword}, '%') OR u.real_name LIKE CONCAT('%', #{q.keyword}, '%')) </if>\", \"<if test='q != null and q.status != null'> AND u.status = #{q.status} </if>\", \"<if test='q != null and q.deptId != null'> AND (u.dept_id = #{q.deptId} OR u.dept_id IN (WITH RECURSIVE children(id) AS (SELECT id FROM sys_dept WHERE id = #{q.deptId} AND deleted = 0 UNION ALL SELECT d.id FROM sys_dept d JOIN children c ON d.parent_id = c.id WHERE d.deleted = 0) SELECT id FROM children)) </if>\", \"<if test='q != null and q.postId != null'> AND EXISTS (SELECT 1 FROM sys_user_post up JOIN sys_post p ON p.id = up.post_id AND p.tenant_id = up.tenant_id WHERE up.user_id = u.id AND up.post_id = #{q.postId} AND up.deleted = 0 AND up.tenant_id = u.tenant_id AND p.deleted = 0 AND p.status = 1) </if>\", \"<if test='q != null and q.roleId != null'> AND EXISTS (SELECT 1 FROM sys_user_role ur JOIN sys_role r ON r.id = ur.role_id AND r.tenant_id = ur.tenant_id WHERE ur.user_id = u.id AND ur.role_id = #{q.roleId} AND ur.deleted = 0 AND ur.tenant_id = u.tenant_id AND r.deleted = 0 AND r.status = 1 AND r.code &lt;&gt; 'superadmin') </if>\", \"</script>\"}",
+   "hits": [
+    "LIKE",
+    "CONCAT 3-arg"
+   ]
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysUserPostMapper.java",
+   "line": 13,
+   "kind": "Delete",
+   "sql": "\"DELETE FROM sys_user_post WHERE user_id = #{userId} AND deleted = 1 AND tenant_id = #{tenantId}\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-system/sw-biz-system-biz/src/main/java/com/sw/ck/system/mapper/SysUserRoleMapper.java",
+   "line": 22,
+   "kind": "Delete",
+   "sql": "\"DELETE FROM sys_user_role WHERE user_id = #{userId} AND deleted = 1 AND tenant_id = #{tenantId}\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/mapper/ExternalDatasourceGrantMapper.java",
+   "line": 24,
+   "kind": "Select",
+   "sql": "\"SELECT id, tenant_id, create_time, create_by, update_time, update_by, deleted, version, \" + \"datasource_id, subject_type, subject_key \" + \"FROM sw_bpm_ext_datasource_grant WHERE datasource_id = #{datasourceId}\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/mapper/ExternalDatasourceGrantMapper.java",
+   "line": 30,
+   "kind": "Update",
+   "sql": "\"UPDATE sw_bpm_ext_datasource_grant SET deleted = 0, update_time = CURRENT_TIMESTAMP \" + \"WHERE id = #{id}\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/BpmCommandMapper.java",
+   "line": 19,
+   "kind": "Select",
+   "sql": "\"SELECT id, status, claim_token, tenant_id FROM sw_bpm_command WHERE id = #{id} FOR UPDATE\"",
+   "hits": [
+    "FOR UPDATE"
+   ]
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/BpmInstanceMapper.java",
+   "line": 29,
+   "kind": "Select",
+   "sql": "\"\"\" <script> SELECT COUNT(*) FROM sw_bpm_instance <where> deleted = 0 <if test=\"status != null and status != ''\">AND status = #{status}</if> <if test=\"processDefKey != null and processDefKey != ''\">AND process_def_key = #{processDefKey}</if> <if test=\"initiatorId != null\">AND initiator_id = #{initiatorId}</if> <if test=\"businessKey != null and businessKey != ''\">AND business_key = #{businessKey}</if> <if test=\"scope.userId != null\">AND initiator_id = #{scope.userId}</if> <if test=\"scope.deptIds != null and scope.deptIds.size() > 0\"> AND initiator_id IN (SELECT id FROM sys_user WHERE dept_id IN <foreach collection=\"scope.deptIds\" item=\"did\" open=\"(\" separator=\",\" close=\")\">#{did}</foreach>) </if> <if test=\"scope.deptIds != null and scope.deptIds.isEmpty()\">AND 1 = 0</if> <if test=\"scope.alwaysFalse\">AND 1 = 0</if> </where> </script> \"\"\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/BpmInstanceMapper.java",
+   "line": 61,
+   "kind": "Select",
+   "sql": "\"\"\" <script> SELECT * FROM sw_bpm_instance <where> deleted = 0 <if test=\"status != null and status != ''\">AND status = #{status}</if> <if test=\"processDefKey != null and processDefKey != ''\">AND process_def_key = #{processDefKey}</if> <if test=\"initiatorId != null\">AND initiator_id = #{initiatorId}</if> <if test=\"businessKey != null and businessKey != ''\">AND business_key = #{businessKey}</if> <if test=\"scope.userId != null\">AND initiator_id = #{scope.userId}</if> <if test=\"scope.deptIds != null and scope.deptIds.size() > 0\"> AND initiator_id IN (SELECT id FROM sys_user WHERE dept_id IN <foreach collection=\"scope.deptIds\" item=\"did\" open=\"(\" separator=\",\" close=\")\">#{did}</foreach>) </if> <if test=\"scope.deptIds != null and scope.deptIds.isEmpty()\">AND 1 = 0</if> <if test=\"scope.alwaysFalse\">AND 1 = 0</if> </where> ORDER BY create_time DESC LIMIT #{limit} OFFSET #{offset} </script> \"\"\"",
+   "hits": [
+    "LIMIT"
+   ]
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/BpmInstanceMapper.java",
+   "line": 100,
+   "kind": "Select",
+   "sql": "\"SELECT id FROM sw_bpm_instance WHERE process_instance_id = #{processInstanceId} \" + \"AND deleted = 0 FOR UPDATE\"",
+   "hits": [
+    "FOR UPDATE"
+   ]
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/BpmMonitorMapper.java",
+   "line": 23,
+   "kind": "Select",
+   "sql": "\"\"\" <script> SELECT COUNT(*) FROM sw_bpm_instance <where> deleted = 0 <if test=\"processDefKey != null and processDefKey != ''\">AND process_def_key = #{processDefKey}</if> <if test=\"processInstanceId != null and processInstanceId != ''\">AND process_instance_id = #{processInstanceId}</if> <if test=\"initiatorId != null\">AND initiator_id = #{initiatorId}</if> <if test=\"status != null and status != ''\">AND status = #{status}</if> <if test=\"timeFrom != null\">AND create_time &gt;= #{timeFrom}</if> <if test=\"timeTo != null\">AND create_time &lt;= #{timeTo}</if> <if test=\"instanceIds != null\"> <choose> <when test=\"instanceIds.size() > 0\"> AND process_instance_id IN <foreach collection=\"instanceIds\" item=\"iid\" open=\"(\" separator=\",\" close=\")\">#{iid}</foreach> </when> <otherwise>AND 1 = 0</otherwise> </choose> </if> <if test=\"scope.userId != null\">AND initiator_id = #{scope.userId}</if> <if test=\"scope.deptIds != null and scope.deptIds.size() > 0\"> AND initiator_id IN (SELECT id FROM sys_user WHERE dept_id IN <foreach collection=\"scope.deptIds\" item=\"did\" open=\"(\" separator=\",\" close=\")\">#{did}</foreach>) </if> <if test=\"scope.deptIds != null and scope.deptIds.isEmpty()\">AND 1 = 0</if> <if test=\"scope.alwaysFalse\">AND 1 = 0</if> </where> </script> \"\"\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/BpmMonitorMapper.java",
+   "line": 62,
+   "kind": "Select",
+   "sql": "\"\"\" <script> SELECT * FROM sw_bpm_instance <where> deleted = 0 <if test=\"processDefKey != null and processDefKey != ''\">AND process_def_key = #{processDefKey}</if> <if test=\"processInstanceId != null and processInstanceId != ''\">AND process_instance_id = #{processInstanceId}</if> <if test=\"initiatorId != null\">AND initiator_id = #{initiatorId}</if> <if test=\"status != null and status != ''\">AND status = #{status}</if> <if test=\"timeFrom != null\">AND create_time &gt;= #{timeFrom}</if> <if test=\"timeTo != null\">AND create_time &lt;= #{timeTo}</if> <if test=\"instanceIds != null\"> <choose> <when test=\"instanceIds.size() > 0\"> AND process_instance_id IN <foreach collection=\"instanceIds\" item=\"iid\" open=\"(\" separator=\",\" close=\")\">#{iid}</foreach> </when> <otherwise>AND 1 = 0</otherwise> </choose> </if> <if test=\"scope.userId != null\">AND initiator_id = #{scope.userId}</if> <if test=\"scope.deptIds != null and scope.deptIds.size() > 0\"> AND initiator_id IN (SELECT id FROM sys_user WHERE dept_id IN <foreach collection=\"scope.deptIds\" item=\"did\" open=\"(\" separator=\",\" close=\")\">#{did}</foreach>) </if> <if test=\"scope.deptIds != null and scope.deptIds.isEmpty()\">AND 1 = 0</if> <if test=\"scope.alwaysFalse\">AND 1 = 0</if> </where> ORDER BY create_time DESC LIMIT #{limit} OFFSET #{offset} </script> \"\"\"",
+   "hits": [
+    "LIMIT"
+   ]
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/BpmProcessFavoriteMapper.java",
+   "line": 20,
+   "kind": "Delete",
+   "sql": "\"DELETE FROM sw_bpm_process_favorite WHERE user_id = #{userId} AND process_key = #{processKey}\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/BpmResourceUsageMapper.java",
+   "line": 23,
+   "kind": "Update",
+   "sql": "\"UPDATE sw_bpm_resource_usage \" + \"SET outstanding = outstanding + #{units}, version = version + 1 \" + \"WHERE scope = #{scope} AND scope_key = #{scopeKey} AND segment = #{segment} \" + \"AND outstanding + #{units} <= #{cap}\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/BpmResourceUsageMapper.java",
+   "line": 34,
+   "kind": "Update",
+   "sql": "\"UPDATE sw_bpm_resource_usage \" + \"SET outstanding = CASE WHEN outstanding >= #{units} THEN outstanding - #{units} ELSE 0 END, \" + \"version = version + 1 \" + \"WHERE scope = #{scope} AND scope_key = #{scopeKey} AND segment = #{segment}\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/BpmResourceUsageMapper.java",
+   "line": 45,
+   "kind": "Update",
+   "sql": "\"UPDATE sw_bpm_resource_usage \" + \"SET outstanding = #{fact}, version = version + 1 \" + \"WHERE scope = #{scope} AND scope_key = #{scopeKey} AND segment = #{segment} \" + \"AND outstanding = #{expected}\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/BpmResourceUsageMapper.java",
+   "line": 61,
+   "kind": "Select",
+   "sql": "\"SELECT id FROM sw_bpm_resource_usage WHERE scope = #{scope} AND scope_key = #{scopeKey} \" + \"AND segment = #{segment} FOR UPDATE SKIP LOCKED\"",
+   "hits": [
+    "FOR UPDATE"
+   ]
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/BpmResourceUsageMapper.java",
+   "line": 68,
+   "kind": "Insert",
+   "sql": "\"INSERT INTO sw_bpm_resource_usage (id, tenant_id, scope, scope_key, segment, outstanding) \" + \"VALUES (#{id}, 0, #{scope}, #{scopeKey}, #{segment}, 0)\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/CopyRecordMapper.java",
+   "line": 28,
+   "kind": "Select",
+   "sql": "\"<script>\" + \"SELECT c.id, c.process_instance_id, c.node_key, c.task_id, c.recipient_id, \" + \" c.delivery_status, c.create_time, \" + \" i.form_key, i.process_def_key, i.business_key, i.initiator_id, i.status AS instance_status \" + \"FROM sw_bpm_copy_record c \" + \"LEFT JOIN sw_bpm_instance i ON i.process_instance_id = c.process_instance_id \" + \" AND i.tenant_id = c.tenant_id AND i.deleted = 0 \" + \"WHERE c.deleted = 0 AND c.tenant_id = #{tenantId} AND c.recipient_id = #{recipientId} \" + \" AND c.id IN (SELECT MIN(m.id) FROM sw_bpm_copy_record m \" + \" WHERE m.deleted = 0 AND m.tenant_id = #{tenantId} \" + \" AND m.recipient_id = #{recipientId} \" + \" GROUP BY m.process_instance_id, m.node_key, m.task_id, m.recipient_id) \" + \"<if test='processInstanceId != null and processInstanceId != \\\"\\\"'>\" + \" AND c.process_instance_id = #{processInstanceId} \" + \"</if>\" + \"<if test='timeFrom != null'> AND c.create_time &gt;= #{timeFrom} </if>\" + \"<if test='timeTo != null'> AND c.create_time &lt;= #{timeTo} </if>\" + \"<if test='keyword != null and keyword != \\\"\\\"'>\" + \" AND (i.form_key LIKE CONCAT('%', #{keyword}, '%') \" + \" OR i.business_key LIKE CONCAT('%', #{keyword}, '%') \" + \" OR i.process_def_key LIKE CONCAT('%', #{keyword}, '%') \" + \" OR c.process_instance_id LIKE CONCAT('%', #{keyword}, '%'))\" + \" </if>\" + \"ORDER BY c.create_time DESC, c.id DESC \" + \"LIMIT #{limit} OFFSET #{offset}\" + \"</script>\"",
+   "hits": [
+    "LIMIT",
+    "LIKE",
+    "CONCAT 3-arg"
+   ]
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/mapper/CopyRecordMapper.java",
+   "line": 65,
+   "kind": "Select",
+   "sql": "\"<script>\" + \"SELECT COUNT(*) FROM sw_bpm_copy_record c \" + \"LEFT JOIN sw_bpm_instance i ON i.process_instance_id = c.process_instance_id \" + \" AND i.tenant_id = c.tenant_id AND i.deleted = 0 \" + \"WHERE c.deleted = 0 AND c.tenant_id = #{tenantId} AND c.recipient_id = #{recipientId} \" + \" AND c.id IN (SELECT MIN(m.id) FROM sw_bpm_copy_record m \" + \" WHERE m.deleted = 0 AND m.tenant_id = #{tenantId} \" + \" AND m.recipient_id = #{recipientId} \" + \" GROUP BY m.process_instance_id, m.node_key, m.task_id, m.recipient_id) \" + \"<if test='processInstanceId != null and processInstanceId != \\\"\\\"'>\" + \" AND c.process_instance_id = #{processInstanceId} \" + \"</if>\" + \"<if test='timeFrom != null'> AND c.create_time &gt;= #{timeFrom} </if>\" + \"<if test='timeTo != null'> AND c.create_time &lt;= #{timeTo} </if>\" + \"<if test='keyword != null and keyword != \\\"\\\"'>\" + \" AND (i.form_key LIKE CONCAT('%', #{keyword}, '%') \" + \" OR i.business_key LIKE CONCAT('%', #{keyword}, '%') \" + \" OR i.process_def_key LIKE CONCAT('%', #{keyword}, '%') \" + \" OR c.process_instance_id LIKE CONCAT('%', #{keyword}, '%'))\" + \" </if>\" + \"</script>\"",
+   "hits": [
+    "LIKE",
+    "CONCAT 3-arg"
+   ]
+  },
+  {
+   "file": "sw-bootstrap/src/dev/java/com/sw/ck/bootstrap/verify/VerifyMapper.java",
+   "line": 22,
+   "kind": "Select",
+   "sql": "\"SELECT id, name, code, tenant_id FROM sys_tenant\"",
+   "hits": []
+  },
+  {
+   "file": "sw-bootstrap/src/dev/java/com/sw/ck/bootstrap/verify/VerifyMapper.java",
+   "line": 26,
+   "kind": "Select",
+   "sql": "\"SELECT id, name FROM verify_iot\"",
+   "hits": []
+  }
+ ],
+ "jdbc": [
+  {
+   "file": "sw-basic/sw-basic-knowledge/src/main/java/com/sw/ck/knowledge/vector/KnowledgeVectorColumnInitializer.java",
+   "line": 35,
+   "method": "queryForObject",
+   "arg": "\"SELECT COUNT(*) FROM information_schema.tables \" + \"WHERE table_schema = current_schema() AND table_name = 'sw_knowledge_chunk'\", Integer.class",
+   "hits": []
+  },
+  {
+   "file": "sw-basic/sw-basic-knowledge/src/main/java/com/sw/ck/knowledge/vector/KnowledgeVectorColumnInitializer.java",
+   "line": 42,
+   "method": "queryForObject",
+   "arg": "\"SELECT COUNT(*) FROM pg_extension WHERE extname = 'vector'\", Integer.class",
+   "hits": [
+    "pg_"
+   ]
+  },
+  {
+   "file": "sw-basic/sw-basic-knowledge/src/main/java/com/sw/ck/knowledge/vector/KnowledgeVectorColumnInitializer.java",
+   "line": 49,
+   "method": "queryForObject",
+   "arg": "\"SELECT COUNT(*) FROM information_schema.columns \" + \"WHERE table_schema = current_schema() AND table_name = 'sw_knowledge_chunk' \" + \"AND column_name = 'embedding'\", Integer.class",
+   "hits": []
+  },
+  {
+   "file": "sw-basic/sw-basic-knowledge/src/main/java/com/sw/ck/knowledge/vector/KnowledgeVectorColumnInitializer.java",
+   "line": 55,
+   "method": "execute",
+   "arg": "\"ALTER TABLE sw_knowledge_chunk ADD COLUMN embedding vector\"",
+   "hits": []
+  },
+  {
+   "file": "sw-basic/sw-basic-knowledge/src/main/java/com/sw/ck/knowledge/vector/PgKnowledgeVectorStore.java",
+   "line": 34,
+   "method": "queryForObject",
+   "arg": "\"SELECT COUNT(*) FROM information_schema.columns \" + \"WHERE table_name = 'sw_knowledge_chunk' AND column_name = 'embedding'\", Integer.class",
+   "hits": []
+  },
+  {
+   "file": "sw-basic/sw-basic-knowledge/src/main/java/com/sw/ck/knowledge/vector/PgKnowledgeVectorStore.java",
+   "line": 50,
+   "method": "update",
+   "arg": "\"UPDATE sw_knowledge_chunk SET embedding = CAST(? AS vector), update_time = CURRENT_TIMESTAMP \" + \"WHERE id = ? AND tenant_id = ? AND deleted = 0\", toVectorLiteral(embedding), chunkId, tenantId",
+   "hits": [
+    "CAST"
+   ]
+  },
+  {
+   "file": "sw-basic/sw-basic-knowledge/src/main/java/com/sw/ck/knowledge/vector/PgKnowledgeVectorStore.java",
+   "line": 59,
+   "method": "update",
+   "arg": "\"DELETE FROM sw_knowledge_chunk WHERE tenant_id = ? AND kb_id = ? AND document_id = ?\", tenantId, kbId, documentId",
+   "hits": []
+  },
+  {
+   "file": "sw-basic/sw-basic-knowledge/src/main/java/com/sw/ck/knowledge/vector/PgKnowledgeVectorStore.java",
+   "line": 66,
+   "method": "update",
+   "arg": "\"DELETE FROM sw_knowledge_chunk WHERE tenant_id = ? AND kb_id = ?\", tenantId, kbId",
+   "hits": []
+  },
+  {
+   "file": "sw-basic/sw-basic-knowledge/src/main/java/com/sw/ck/knowledge/vector/PgKnowledgeVectorStore.java",
+   "line": 74,
+   "method": "query",
+   "arg": "\"SELECT c.id, c.document_id, d.name, c.chunk_index, c.content, \" + \"1 - (c.embedding <=> CAST(? AS vector)) AS similarity \" + \"FROM sw_knowledge_chunk c \" + \"JOIN sw_knowledge_document d ON d.id = c.document_id AND d.deleted = 0 \" + \"WHERE c.tenant_id = ? AND c.kb_id = ? AND c.deleted = 0 AND c.embedding IS NOT NULL \" + \"ORDER BY c.embedding <=> CAST(? AS vector) LIMIT ?\", (rs, rowNum) -> new KnowledgeVectorHit( rs.getLong(\"id\"), rs.getLong(\"document_id\"), rs.getString(\"name\"), rs.getInt(\"chunk_",
+   "hits": [
+    "JSON ->",
+    "LIMIT",
+    "CAST"
+   ]
+  },
+  {
+   "file": "sw-basic/sw-basic-notify/sw-basic-notify-biz/src/dev/java/com/sw/ck/notify/controller/P58DebugNotifyController.java",
+   "line": 79,
+   "method": "queryForObject",
+   "arg": "\"SELECT COUNT(*) FROM \" + table + \" WHERE tenant_id = ?\", Long.class, tenantId",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/dynamic/DynamicTableManager.java",
+   "line": 75,
+   "method": "getDataSource",
+   "arg": "",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/dynamic/DynamicTableManager.java",
+   "line": 77,
+   "method": "getDataSource",
+   "arg": "",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/dynamic/DynamicTableManager.java",
+   "line": 266,
+   "method": "queryForObject",
+   "arg": "sql, Integer.class, tableName",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/dynamic/DynamicTableManager.java",
+   "line": 274,
+   "method": "queryForObject",
+   "arg": "sql, Integer.class, tableName, columnName",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/dynamic/DynamicTableSql.java",
+   "line": 209,
+   "method": "queryForList",
+   "arg": "sql, bound",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/dynamic/DynamicTableSql.java",
+   "line": 219,
+   "method": "queryForObject",
+   "arg": "sql, Long.class, bound",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/dynamic/DynamicTableSql.java",
+   "line": 229,
+   "method": "queryForObject",
+   "arg": "sql, Integer.class, bound",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/dynamic/DynamicTableSql.java",
+   "line": 239,
+   "method": "update",
+   "arg": "sql, bound",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/dynamic/DynamicTableSql.java",
+   "line": 261,
+   "method": "execute",
+   "arg": "sql",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/dynamic/DynamicTableSql.java",
+   "line": 455,
+   "method": "query",
+   "arg": "sql, ps -> { ps.setQueryTimeout(LOCK_QUERY_TIMEOUT_SECONDS); for (int i = 0; i < bound.length; i++) { StatementCreatorUtils.setParameterValue(ps, i + 1, SqlTypeValue.TYPE_UNKNOWN, bound[i]); } }, rs -> { List<Map<String, Object>> rows = new ArrayList<>(); while (rs.next()) { Map<String, Object> row = new LinkedHashMap<>(); row.put(\"id\", rs.getString(1)); rows.add(row); } return rows; }",
+   "hits": [
+    "JSON ->"
+   ]
+  },
+  {
+   "file": "sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/dynamic/FixedTableSql.java",
+   "line": 27,
+   "method": "queryForList",
+   "arg": "\"SELECT id AS \\\"id\\\", name AS \\\"name\\\" FROM sys_tenant \" + \"WHERE deleted = 0 ORDER BY id\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-biz-form/sw-biz-form-biz/src/main/java/com/sw/ck/form/dynamic/FixedTableSql.java",
+   "line": 34,
+   "method": "queryForList",
+   "arg": "\"SELECT post_id FROM sys_user_post WHERE user_id = ? AND deleted = 0\", Long.class, userId",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/delegate/TxnActionNodeDelegate.java",
+   "line": 161,
+   "method": "queryForList",
+   "arg": "\"SELECT id, error_code, error_msg FROM sw_form_txn_invocation\" + \" WHERE invocation_key = ? AND status = 'REJECTED'\" + \" ORDER BY create_time DESC LIMIT 1\", invocationKey",
+   "hits": [
+    "LIMIT"
+   ]
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/executor/SqlExecutor.java",
+   "line": 102,
+   "method": "setDataSource",
+   "arg": "pool",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/executor/SqlExecutor.java",
+   "line": 105,
+   "method": "setMaxRows",
+   "arg": "probeMaxRows(maxRows)",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/executor/SqlExecutor.java",
+   "line": 106,
+   "method": "setQueryTimeout",
+   "arg": "execConfig.getQueryTimeout()",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-engine/src/main/java/com/sw/ck/bpm/engine/executor/SqlExecutor.java",
+   "line": 189,
+   "method": "getDataSource",
+   "arg": "",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/controller/BpmProcessDefController.java",
+   "line": 281,
+   "method": "queryForList",
+   "arg": "\"SELECT id AS \\\"id\\\", name AS \\\"name\\\" FROM sys_tenant WHERE deleted = 0\"",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/ProcessThemeService.java",
+   "line": 300,
+   "method": "query",
+   "arg": "\"select next_val from sw_bpm_theme_seq where process_key = ? for update\", rs -> rs.next() ? rs.getLong(1) : null, processKey",
+   "hits": [
+    "JSON ->",
+    "FOR UPDATE"
+   ]
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/ProcessThemeService.java",
+   "line": 305,
+   "method": "update",
+   "arg": "\"insert into sw_bpm_theme_seq (process_key, next_val) values (?, 2)\", processKey",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/ProcessThemeService.java",
+   "line": 308,
+   "method": "update",
+   "arg": "\"update sw_bpm_theme_seq set next_val = ? where process_key = ?\", current + 1, processKey",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/ResourceFactView.java",
+   "line": 58,
+   "method": "query",
+   "arg": "\"SELECT resource_segment, tenant_id, SUM(resource_units) AS units FROM sw_bpm_command \" + \"WHERE resource_units IS NOT NULL AND resource_released_at IS NULL \" + \"AND status IN ('PENDING','PROCESSING') \" + \"AND (command_type IS NULL OR command_type <> 'BATCH_INVOKE') \" + \"GROUP BY resource_segment, tenant_id\", (org.springframework.jdbc.core.RowCallbackHandler) rs -> merge(rs, bySegment, byTenant)",
+   "hits": [
+    "JSON ->"
+   ]
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/ResourceFactView.java",
+   "line": 65,
+   "method": "query",
+   "arg": "\"SELECT resource_segment, tenant_id, COUNT(*) AS units FROM sw_bpm_command \" + \"WHERE resource_units IS NOT NULL AND resource_released_at IS NULL \" + \"AND status = 'COMPLETED' AND resource_class = 'PROD' \" + \"AND completion_point = '\" + TARGET_DONE + \"' \" + \"GROUP BY resource_segment, tenant_id\", (org.springframework.jdbc.core.RowCallbackHandler) rs -> merge(rs, bySegment, byTenant)",
+   "hits": [
+    "JSON ->"
+   ]
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/ResourceFactView.java",
+   "line": 72,
+   "method": "query",
+   "arg": "\"SELECT c.resource_segment AS segment, c.tenant_id AS tenant_id, \" + \"SUM(CASE WHEN i.status = 'PENDING' THEN 1 ELSE 0 END) AS units \" + \"FROM sw_bpm_command c \" + \"JOIN sw_bpm_command_batch b ON b.command_id = c.id \" + \"JOIN sw_bpm_command_batch_item i ON i.batch_id = b.id \" + \"WHERE c.resource_units IS NOT NULL AND c.resource_released_at IS NULL \" + \"AND c.status IN ('PENDING','PROCESSING') \" + \"GROUP BY c.resource_segment, c.tenant_id\", (org.springframework.jdbc.core.RowCallbackHandler) rs ->",
+   "hits": [
+    "JSON ->"
+   ]
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/ResourceFactView.java",
+   "line": 94,
+   "method": "queryForObject",
+   "arg": "\"SELECT COUNT(*) FROM act_ru_job j \" + \"JOIN act_ru_execution e ON e.proc_inst_id_ = j.process_instance_id_ \" + \"WHERE e.business_key_ = ?\", Long.class, recordId",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/ResourceFactView.java",
+   "line": 98,
+   "method": "queryForObject",
+   "arg": "\"SELECT COUNT(*) FROM act_ru_deadletter_job j \" + \"JOIN act_ru_execution e ON e.proc_inst_id_ = j.process_instance_id_ \" + \"WHERE e.business_key_ = ?\", Long.class, recordId",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/ResourceFactView.java",
+   "line": 107,
+   "method": "queryForObject",
+   "arg": "\"SELECT COUNT(*) FROM act_ru_job\", Long.class",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/ResourceFactView.java",
+   "line": 113,
+   "method": "queryForObject",
+   "arg": "\"SELECT COUNT(*) FROM act_ru_deadletter_job\", Long.class",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/ResourceReleaseService.java",
+   "line": 115,
+   "method": "queryForObject",
+   "arg": "\"SELECT COUNT(*) FROM sw_bpm_command_batch_item i \" + \"JOIN sw_bpm_command_batch b ON b.id = i.batch_id \" + \"WHERE b.command_id = ? AND i.status = 'PENDING'\", Long.class, batchCommandId",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/BpmResourceOpsService.java",
+   "line": 276,
+   "method": "queryForObject",
+   "arg": "\"SELECT COUNT(*) FROM sw_bpm_command_batch_item WHERE status = 'PENDING'\", Long.class",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/BpmResourceOpsService.java",
+   "line": 278,
+   "method": "queryForObject",
+   "arg": "\"SELECT COUNT(*) FROM sw_bpm_command_batch_item i \" + \"JOIN sw_bpm_command_batch b ON b.id = i.batch_id \" + \"WHERE i.status = 'PENDING' AND b.tenant_id = ?\", Long.class, tenantScope",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/BpmResourceOpsService.java",
+   "line": 321,
+   "method": "queryForObject",
+   "arg": "\"SELECT COUNT(*) FROM sw_bpm_command\" + where, Long.class, args.toArray()",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/BpmResourceOpsService.java",
+   "line": 326,
+   "method": "queryForList",
+   "arg": "\"SELECT id, command_key, command_type, channel, status, resource_class, resource_units, \" + \"resource_segment, policy_version, retry_count, tenant_id, initiator_id, \" + \"create_time, claimed_at, finished_at, deadline_at, overdue_at, \" + \"resource_released_at, failure_reason \" + \"FROM sw_bpm_command\" + where + \" ORDER BY create_time DESC LIMIT ? OFFSET ?\", rowsArgs.toArray()",
+   "hits": [
+    "LIMIT"
+   ]
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/BpmResourceOpsService.java",
+   "line": 339,
+   "method": "queryForList",
+   "arg": "\"SELECT id, command_key, command_type, channel, status, resource_class, resource_units, \" + \"resource_segment, policy_version, retry_count, tenant_id, initiator_id, payload, \" + \"result, failure_reason, create_time, claimed_at, finished_at, deadline_at, \" + \"overdue_at, resource_released_at \" + \"FROM sw_bpm_command WHERE id = ? AND deleted = 0\", commandId",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/BpmResourceOpsService.java",
+   "line": 355,
+   "method": "queryForList",
+   "arg": "\"SELECT command_id, logical_command_id, result_json, biz_ref, create_time \" + \"FROM sw_bpm_command_effect WHERE command_id = ?\", commandId",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/BpmResourceOpsService.java",
+   "line": 359,
+   "method": "queryForList",
+   "arg": "\"SELECT id, reject_scope, requested_units, reason_code, detail, create_time \" + \"FROM sw_bpm_resource_reject_log WHERE command_key = ? ORDER BY create_time DESC\", String.valueOf(command.get(\"command_key\"))",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/BpmResourceOpsService.java",
+   "line": 384,
+   "method": "queryForObject",
+   "arg": "\"SELECT COUNT(*) FROM sw_bpm_resource_reject_log\" + where, Long.class, args",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/BpmResourceOpsService.java",
+   "line": 389,
+   "method": "queryForList",
+   "arg": "\"SELECT id, tenant_id, policy_version, resource_class, reject_scope, requested_units, \" + \"reason_code, detail, command_key, create_time \" + \"FROM sw_bpm_resource_reject_log\" + where + \" ORDER BY create_time DESC LIMIT ? OFFSET ?\", pageArgs",
+   "hits": [
+    "LIMIT"
+   ]
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/BpmResourceOpsService.java",
+   "line": 446,
+   "method": "queryForList",
+   "arg": "sql",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/BpmResourceOpsService.java",
+   "line": 447,
+   "method": "queryForList",
+   "arg": "sql, arg",
+   "hits": []
+  },
+  {
+   "file": "sw-biz/sw-bpm/sw-bpm-process/src/main/java/com/sw/ck/bpm/process/service/impl/BpmUrgeServiceImpl.java",
+   "line": 305,
+   "method": "queryForList",
+   "arg": "\"SELECT id FROM sw_bpm_instance WHERE id = ? FOR UPDATE\", instanceRecordId",
+   "hits": [
+    "FOR UPDATE"
+   ]
+  },
+  {
+   "file": "sw-bootstrap/src/dev/java/com/sw/ck/bootstrap/verify/BpmVerificationRunner.java",
+   "line": 65,
+   "method": "update",
+   "arg": "\"DELETE FROM sw_bpm_ext_datasource WHERE name = ?\", \"verify-h2-self\"",
+   "hits": []
+  }
+ ]
+}

@@ -1,0 +1,5097 @@
+{
+ "sw_bpm_task_opinion_draft": {
+  "columns": {
+   "id": "BIGINT",
+   "tenant_id": "BIGINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "deleted": "SMALLINT",
+   "version": "BIGINT",
+   "task_id": "VARCHAR(64)",
+   "process_instance_id": "VARCHAR(64)",
+   "node_key": "VARCHAR(128)",
+   "round_no": "INTEGER",
+   "assignee_id": "BIGINT",
+   "opinion_form_id": "VARCHAR(64)",
+   "opinion_form_version": "VARCHAR(64)",
+   "comment": "VARCHAR(20000)",
+   "opinion_data": "TEXT"
+  },
+  "indexes": [
+   {
+    "name": "uk_bpm_opinion_draft_task_user",
+    "cols": [
+     "tenant_id",
+     "task_id",
+     "assignee_id"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_bpm_opinion_draft_instance",
+    "cols": [
+     "tenant_id",
+     "process_instance_id",
+     "assignee_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "R__0.2.0_approval_opinion_draft.sql"
+ },
+ "sw_bpm_ext_datasource_grant": {
+  "columns": {
+   "id": "BIGINT",
+   "tenant_id": "BIGINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "deleted": "SMALLINT",
+   "version": "BIGINT",
+   "datasource_id": "BIGINT",
+   "subject_type": "VARCHAR(16)",
+   "subject_key": "VARCHAR(64)"
+  },
+  "indexes": [
+   {
+    "name": "uk_bpm_ext_ds_grant",
+    "cols": [
+     "tenant_id",
+     "datasource_id",
+     "subject_type",
+     "subject_key"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_bpm_ext_ds_grant_subject",
+    "cols": [
+     "tenant_id",
+     "subject_type",
+     "subject_key"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "R__0.2.0_ext_datasource_grant.sql"
+ },
+ "sw_agent_tool_external": {
+  "columns": {
+   "id": "BIGINT",
+   "name": "VARCHAR(100)",
+   "description": "VARCHAR(500)",
+   "input_schema": "TEXT",
+   "url": "VARCHAR(500)",
+   "http_method": "VARCHAR(10)",
+   "timeout_seconds": "INT",
+   "enabled": "SMALLINT",
+   "remark": "VARCHAR(500)",
+   "create_time": "TIMESTAMP",
+   "create_by": "VARCHAR(64)",
+   "update_time": "TIMESTAMP",
+   "update_by": "VARCHAR(64)",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_agent_tool_external_tenant_deleted",
+    "cols": [
+     "tenant_id",
+     "deleted"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_agent_tool_external_tenant_deleted",
+    "cols": [
+     "tenant_id",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "R__0.2.0_form_integration.sql"
+ },
+ "sw_form_integration_invocation": {
+  "columns": {
+   "id": "varchar(36)",
+   "tenant_id": "bigint",
+   "deleted": "smallint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "version": "bigint",
+   "form_key": "varchar(128)",
+   "form_version": "integer",
+   "capability_id": "varchar(64)",
+   "phase": "varchar(32)",
+   "request_key": "varchar(128)",
+   "request_hash": "varchar(64)",
+   "subject_id": "bigint",
+   "status": "varchar(16)",
+   "result_json": "text",
+   "error_message": "varchar(500)",
+   "latency_ms": "bigint"
+  },
+  "indexes": [
+   {
+    "name": "uk_form_integration_invocation_identity",
+    "cols": [
+     "tenant_id",
+     "form_key",
+     "form_version",
+     "capability_id",
+     "phase",
+     "request_key",
+     "subject_id"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_form_integration_invocation_form",
+    "cols": [
+     "tenant_id",
+     "form_key",
+     "form_version"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "R__0.2.0_form_integration.sql"
+ },
+ "sys_tenant": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "name": "varchar(100)",
+   "code": "varchar(50)",
+   "status": "smallint",
+   "description": "text",
+   "contact_name": "varchar(50)",
+   "contact_phone": "varchar(20)",
+   "contact_email": "varchar(100)",
+   "expire_time": "timestamp",
+   "domain_name": "varchar(100)",
+   "admin_user_id": "BIGINT",
+   "creation_request_id": "VARCHAR(64)"
+  },
+  "indexes": [
+   {
+    "name": "uk_sys_tenant_code",
+    "cols": [
+     "code"
+    ],
+    "unique": true
+   },
+   {
+    "name": "uk_sys_tenant_code",
+    "cols": [
+     "code",
+     "deleted"
+    ],
+    "unique": true
+   },
+   {
+    "name": "uk_sys_tenant_creation_request",
+    "cols": [
+     "creation_request_id"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sys_dept": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "parent_id": "bigint",
+   "name": "varchar(100)",
+   "code": "varchar(50)",
+   "sort": "integer",
+   "status": "smallint",
+   "description": "text",
+   "leader_id": "bigint"
+  },
+  "indexes": [
+   {
+    "name": "idx_sys_dept_parent_id",
+    "cols": [
+     "parent_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sys_post": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "code": "varchar(50)",
+   "name": "varchar(100)",
+   "sort": "integer",
+   "status": "smallint",
+   "description": "text"
+  },
+  "indexes": [],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sys_user": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "username": "varchar(50)",
+   "password": "varchar(200)",
+   "real_name": "varchar(50)",
+   "email": "varchar(100)",
+   "phone": "varchar(20)",
+   "avatar": "varchar(200)",
+   "sex": "smallint",
+   "status": "smallint",
+   "dept_id": "bigint",
+   "last_login_time": "timestamp",
+   "last_login_ip": "varchar(50)",
+   "remark": "text",
+   "is_admin": "smallint"
+  },
+  "indexes": [
+   {
+    "name": "uk_sys_user_username",
+    "cols": [
+     "username"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sys_user_dept_id",
+    "cols": [
+     "dept_id"
+    ],
+    "unique": false
+   },
+   {
+    "name": "uk_sys_user_username",
+    "cols": [
+     "username",
+     "deleted"
+    ],
+    "unique": true
+   },
+   {
+    "name": "uk_sys_user_tenant_username",
+    "cols": [
+     "tenant_id",
+     "username",
+     "deleted"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sys_role": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "name": "varchar(100)",
+   "code": "varchar(50)",
+   "sort": "integer",
+   "status": "smallint",
+   "data_scope": "smallint",
+   "description": "text",
+   "is_builtin": "smallint",
+   "built_in": "boolean",
+   "remark": "varchar(255)"
+  },
+  "indexes": [
+   {
+    "name": "uk_sys_role_code",
+    "cols": [
+     "code"
+    ],
+    "unique": true
+   },
+   {
+    "name": "uk_sys_role_tenant_code",
+    "cols": [
+     "tenant_id",
+     "code"
+    ],
+    "unique": true
+   },
+   {
+    "name": "uk_sys_role_tenant_code",
+    "cols": [
+     "tenant_id",
+     "code",
+     "deleted"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sys_menu": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "parent_id": "bigint",
+   "name": "varchar(100)",
+   "menu_type": "smallint",
+   "path": "varchar(200)",
+   "component": "varchar(200)",
+   "permission": "varchar(100)",
+   "icon": "varchar(100)",
+   "sort": "integer",
+   "status": "smallint",
+   "visible": "smallint",
+   "keep_alive": "smallint",
+   "description": "text",
+   "title": "varchar(64)",
+   "hidden": "boolean"
+  },
+  "indexes": [
+   {
+    "name": "idx_sys_menu_parent_id",
+    "cols": [
+     "parent_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sys_user_role": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "user_id": "bigint",
+   "role_id": "bigint"
+  },
+  "indexes": [
+   {
+    "name": "uk_sys_user_role",
+    "cols": [
+     "user_id",
+     "role_id"
+    ],
+    "unique": true
+   },
+   {
+    "name": "uk_sys_user_role_tenant",
+    "cols": [
+     "tenant_id",
+     "user_id",
+     "role_id"
+    ],
+    "unique": true
+   },
+   {
+    "name": "uk_sys_user_role_tenant",
+    "cols": [
+     "tenant_id",
+     "user_id",
+     "role_id",
+     "deleted"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sys_role_menu": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "role_id": "bigint",
+   "menu_id": "bigint"
+  },
+  "indexes": [
+   {
+    "name": "uk_sys_role_menu",
+    "cols": [
+     "role_id",
+     "menu_id"
+    ],
+    "unique": true
+   },
+   {
+    "name": "uk_sys_role_menu_tenant",
+    "cols": [
+     "tenant_id",
+     "role_id",
+     "menu_id"
+    ],
+    "unique": true
+   },
+   {
+    "name": "uk_sys_role_menu_tenant",
+    "cols": [
+     "tenant_id",
+     "role_id",
+     "menu_id",
+     "deleted"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sys_dict_type": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "name": "varchar(100)",
+   "code": "varchar(50)",
+   "status": "smallint",
+   "description": "text"
+  },
+  "indexes": [
+   {
+    "name": "uk_sys_dict_type_code",
+    "cols": [
+     "code"
+    ],
+    "unique": true
+   },
+   {
+    "name": "uk_sys_dict_type_code",
+    "cols": [
+     "code",
+     "deleted"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sys_dict_data": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "dict_code": "varchar(50)",
+   "label": "varchar(100)",
+   "dict_value": "varchar(100)",
+   "sort": "integer",
+   "status": "smallint",
+   "is_default": "smallint",
+   "css_class": "varchar(50)",
+   "list_class": "varchar(50)",
+   "description": "text"
+  },
+  "indexes": [
+   {
+    "name": "idx_sys_dict_data_dict_code",
+    "cols": [
+     "dict_code"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_ext_datasource": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "name": "varchar(100)",
+   "type": "varchar(50)",
+   "jdbc_url": "varchar(500)",
+   "driver_class": "varchar(200)",
+   "username": "varchar(100)",
+   "password_cipher": "text",
+   "read_only": "smallint",
+   "enabled": "smallint"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_bpm_ext_ds_name",
+    "cols": [
+     "name"
+    ],
+    "unique": true
+   },
+   {
+    "name": "uk_sw_bpm_ext_ds_name",
+    "cols": [
+     "name",
+     "deleted"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_ext_sql_execution_audit": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "datasource_id": "bigint",
+   "datasource_name": "varchar(100)",
+   "sql_text": "text",
+   "row_count": "integer",
+   "execution_time_ms": "bigint",
+   "success": "smallint",
+   "error_message": "text",
+   "operator_id": "bigint",
+   "operator_name": "varchar(50)"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_bpm_ext_audit_ds_id",
+    "cols": [
+     "datasource_id"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_bpm_ext_audit_operator_id",
+    "cols": [
+     "operator_id"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_bpm_ext_audit_create_time",
+    "cols": [
+     "create_time"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_form_def": {
+  "columns": {
+   "id": "VARCHAR(36)",
+   "form_key": "VARCHAR(100)",
+   "name": "VARCHAR(200)",
+   "logical_table_name": "VARCHAR(100)",
+   "status": "VARCHAR(20)",
+   "physical_table_name": "VARCHAR(100)",
+   "form_version": "INT",
+   "description": "VARCHAR(500)",
+   "sub_table_mapping": "TEXT",
+   "tenant_id": "BIGINT",
+   "deleted": "SMALLINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "version": "BIGINT",
+   "visibility_scope": "TEXT",
+   "form_type": "VARCHAR(20)",
+   "app_id": "VARCHAR(36)",
+   "dir_id": "VARCHAR(36)"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_form_def_form_key",
+    "cols": [
+     "form_key",
+     "deleted"
+    ],
+    "unique": true
+   },
+   {
+    "name": "uk_sw_form_def_form_key",
+    "cols": [
+     "tenant_id",
+     "form_key",
+     "deleted"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_form_def_app",
+    "cols": [
+     "tenant_id",
+     "app_id",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_form_config": {
+  "columns": {
+   "id": "VARCHAR(36)",
+   "form_id": "VARCHAR(36)",
+   "definition": "JSONB",
+   "tenant_id": "BIGINT",
+   "deleted": "SMALLINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "version": "BIGINT",
+   "table_name": "VARCHAR(200)",
+   "parent_table": "VARCHAR(200)"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_form_cfg_tname",
+    "cols": [
+     "table_name"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_form_cfg_parent",
+    "cols": [
+     "parent_table"
+    ],
+    "unique": false
+   },
+   {
+    "name": "uk_sw_form_cfg_tname",
+    "cols": [
+     "table_name",
+     "deleted"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_form_snapshot": {
+  "columns": {
+   "id": "VARCHAR(36)",
+   "form_id": "VARCHAR(36)",
+   "form_version": "INT",
+   "definition": "JSONB",
+   "tenant_id": "BIGINT",
+   "deleted": "SMALLINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_form_trace": {
+  "columns": {
+   "id": "VARCHAR(36)",
+   "form_id": "VARCHAR(36)",
+   "record_id": "VARCHAR(36)",
+   "submit_user_id": "BIGINT",
+   "submit_ip": "VARCHAR(200)",
+   "submit_time": "TIMESTAMP",
+   "device_fingerprint": "VARCHAR(200)",
+   "user_agent": "VARCHAR(500)",
+   "tenant_id": "BIGINT",
+   "deleted": "SMALLINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "version": "BIGINT",
+   "submit_idempotency_key": "varchar(128)"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_form_trace_idem",
+    "cols": [
+     "tenant_id",
+     "submit_idempotency_key"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_form_binding": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "form_key": "varchar(200)",
+   "process_def_key": "varchar(200)",
+   "active": "boolean"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_bpm_binding_active",
+    "cols": [
+     "tenant_id",
+     "form_key"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_instance": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "process_instance_id": "varchar(64)",
+   "process_def_key": "varchar(200)",
+   "business_key": "varchar(36)",
+   "form_key": "varchar(200)",
+   "initiator_id": "bigint",
+   "status": "varchar(20)",
+   "def_version": "int",
+   "theme": "varchar(200)"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_bpm_inst_process_inst",
+    "cols": [
+     "process_instance_id"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_bpm_inst_business_key",
+    "cols": [
+     "business_key"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_bpm_inst_tenant_status",
+    "cols": [
+     "tenant_id",
+     "status"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_notify_message": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "recipient_id": "bigint",
+   "title": "varchar(200)",
+   "content": "text",
+   "biz_type": "varchar(30)",
+   "biz_id": "varchar(64)",
+   "is_read": "boolean",
+   "channel": "varchar(40)",
+   "delivery_status": "varchar(20)",
+   "external_message_id": "varchar(200)",
+   "failure_reason": "varchar(500)",
+   "idempotency_key": "varchar(200)",
+   "event_type": "varchar(40)",
+   "occurrence_no": "bigint",
+   "template_id": "bigint",
+   "template_version": "int",
+   "link_type": "varchar(32)",
+   "link_id": "varchar(64)",
+   "retry_count": "int",
+   "next_retry_time": "timestamp",
+   "failure_class": "varchar(40)",
+   "receipt_digest": "varchar(200)"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_notify_msg_recipient",
+    "cols": [
+     "tenant_id",
+     "recipient_id"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_notify_msg_delivery",
+    "cols": [
+     "tenant_id",
+     "delivery_status"
+    ],
+    "unique": false
+   },
+   {
+    "name": "uk_sw_notify_msg_idempotency",
+    "cols": [
+     "tenant_id",
+     "idempotency_key"
+    ],
+    "unique": true
+   },
+   {
+    "name": "uk_sw_notify_msg_identity",
+    "cols": [
+     "tenant_id",
+     "event_type",
+     "biz_id",
+     "occurrence_no",
+     "recipient_id",
+     "channel"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_notify_msg_retry",
+    "cols": [
+     "tenant_id",
+     "event_type",
+     "biz_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_process_def": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "process_key": "varchar(200)",
+   "name": "varchar(200)",
+   "form_key": "varchar(200)",
+   "def_version": "int",
+   "status": "varchar(20)",
+   "deployment_id": "varchar(64)",
+   "process_definition_id": "varchar(64)",
+   "graph_json": "text",
+   "category_id": "bigint",
+   "iot_access_enabled": "boolean",
+   "iot_device_action_json": "text",
+   "published_version": "int",
+   "source_template_id": "bigint",
+   "source_template_version": "int",
+   "theme_rule": "varchar(200)"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_bpm_proc_def_key",
+    "cols": [
+     "process_key"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_bpm_proc_def_form",
+    "cols": [
+     "form_key"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_storage_file": {
+  "columns": {
+   "id": "BIGINT",
+   "original_name": "VARCHAR(512)",
+   "storage_key": "VARCHAR(512)",
+   "storage_name": "VARCHAR(512)",
+   "file_size": "BIGINT",
+   "content_type": "VARCHAR(255)",
+   "file_ext": "VARCHAR(32)",
+   "provider_type": "VARCHAR(32)",
+   "bucket_name": "VARCHAR(255)",
+   "storage_url": "VARCHAR(1024)",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_storage_file_tenant_deleted",
+    "cols": [
+     "tenant_id",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_job_info": {
+  "columns": {
+   "id": "BIGINT",
+   "job_name": "VARCHAR(128)",
+   "job_group": "VARCHAR(128)",
+   "job_type": "VARCHAR(16)",
+   "cron_expression": "VARCHAR(128)",
+   "status": "VARCHAR(16)",
+   "concurrent": "SMALLINT",
+   "misfire_policy": "SMALLINT",
+   "description": "VARCHAR(512)",
+   "bean_name": "VARCHAR(256)",
+   "bean_params": "TEXT",
+   "flow_def_key": "VARCHAR(128)",
+   "form_data": "TEXT",
+   "last_fire_time": "TIMESTAMP",
+   "next_fire_time": "TIMESTAMP",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_job_info_tenant_deleted",
+    "cols": [
+     "tenant_id",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_job_log": {
+  "columns": {
+   "id": "BIGINT",
+   "job_id": "BIGINT",
+   "job_name": "VARCHAR(128)",
+   "job_group": "VARCHAR(128)",
+   "trigger_type": "VARCHAR(16)",
+   "job_params": "TEXT",
+   "exec_status": "VARCHAR(16)",
+   "start_time": "TIMESTAMP",
+   "end_time": "TIMESTAMP",
+   "duration": "BIGINT",
+   "result_msg": "TEXT",
+   "exception_stack": "TEXT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_job_log_job_id",
+    "cols": [
+     "job_id"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_job_log_tenant_deleted",
+    "cols": [
+     "tenant_id",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sys_refresh_token": {
+  "columns": {
+   "id": "BIGINT",
+   "user_id": "BIGINT",
+   "token_hash": "VARCHAR(128)",
+   "expires_at": "TIMESTAMP",
+   "revoked": "SMALLINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "idx_srt_user_tenant",
+    "cols": [
+     "user_id",
+     "tenant_id"
+    ],
+    "unique": false
+   },
+   {
+    "name": "uk_srt_token_hash",
+    "cols": [
+     "token_hash"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_agent_model_config": {
+  "columns": {
+   "id": "BIGINT",
+   "name": "VARCHAR(100)",
+   "protocol_type": "VARCHAR(32)",
+   "base_url": "VARCHAR(500)",
+   "model_name": "VARCHAR(100)",
+   "api_key_cipher": "TEXT",
+   "temperature": "DECIMAL(4,2)",
+   "max_tokens": "INT",
+   "top_p": "DECIMAL(4,2)",
+   "timeout_seconds": "INT",
+   "retry_count": "INT",
+   "enabled": "SMALLINT",
+   "remark": "VARCHAR(500)",
+   "create_time": "TIMESTAMP",
+   "create_by": "VARCHAR(64)",
+   "update_time": "TIMESTAMP",
+   "update_by": "VARCHAR(64)",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT",
+   "group_key": "VARCHAR(100)",
+   "sort": "INT",
+   "locked_until": "TIMESTAMP",
+   "quota_cooldown_seconds": "INT"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_agent_model_name",
+    "cols": [
+     "tenant_id",
+     "name"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_agent_model_tenant_deleted",
+    "cols": [
+     "tenant_id",
+     "deleted"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_agent_model_group",
+    "cols": [
+     "tenant_id",
+     "group_key",
+     "sort"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_agent_tool_internal": {
+  "columns": {
+   "id": "BIGINT",
+   "name": "VARCHAR(100)",
+   "description": "VARCHAR(500)",
+   "input_schema": "TEXT",
+   "bean_name": "VARCHAR(100)",
+   "method_name": "VARCHAR(100)",
+   "enabled": "SMALLINT",
+   "remark": "VARCHAR(500)",
+   "create_time": "TIMESTAMP",
+   "create_by": "VARCHAR(64)",
+   "update_time": "TIMESTAMP",
+   "update_by": "VARCHAR(64)",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_agent_tool_internal_tenant_deleted",
+    "cols": [
+     "tenant_id",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_agent_session": {
+  "columns": {
+   "id": "BIGINT",
+   "agent_model_config_id": "BIGINT",
+   "title": "VARCHAR(500)",
+   "status": "VARCHAR(20)",
+   "create_time": "TIMESTAMP",
+   "create_by": "VARCHAR(64)",
+   "update_time": "TIMESTAMP",
+   "update_by": "VARCHAR(64)",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_agent_session_user",
+    "cols": [
+     "tenant_id",
+     "create_by",
+     "deleted"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_agent_session_cfg",
+    "cols": [
+     "agent_model_config_id",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_agent_message": {
+  "columns": {
+   "id": "BIGINT",
+   "session_id": "BIGINT",
+   "role": "VARCHAR(20)",
+   "content": "TEXT",
+   "msg_order": "INT",
+   "create_time": "TIMESTAMP",
+   "create_by": "VARCHAR(64)",
+   "update_time": "TIMESTAMP",
+   "update_by": "VARCHAR(64)",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_agent_msg_session",
+    "cols": [
+     "session_id",
+     "msg_order",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_agent_tool_call_log": {
+  "columns": {
+   "id": "BIGINT",
+   "session_id": "BIGINT",
+   "tool_name": "VARCHAR(100)",
+   "tool_call_args": "TEXT",
+   "tool_call_result": "TEXT",
+   "latency_ms": "BIGINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "VARCHAR(64)",
+   "update_time": "TIMESTAMP",
+   "update_by": "VARCHAR(64)",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_agent_tcl_session",
+    "cols": [
+     "session_id",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_agent_graph_def": {
+  "columns": {
+   "id": "BIGINT",
+   "graph_key": "VARCHAR(100)",
+   "name": "VARCHAR(200)",
+   "def_version": "INT",
+   "status": "VARCHAR(20)",
+   "graph_json": "TEXT",
+   "create_time": "TIMESTAMP",
+   "create_by": "VARCHAR(64)",
+   "update_time": "TIMESTAMP",
+   "update_by": "VARCHAR(64)",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT",
+   "execution_timeout_seconds": "INT"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_agent_graph_key",
+    "cols": [
+     "tenant_id",
+     "graph_key"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_agent_graph_tenant_deleted",
+    "cols": [
+     "tenant_id",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_agent_graph_execution": {
+  "columns": {
+   "id": "BIGINT",
+   "graph_def_id": "BIGINT",
+   "graph_def_version": "INT",
+   "status": "VARCHAR(20)",
+   "input": "TEXT",
+   "result_text": "TEXT",
+   "error_category": "VARCHAR(50)",
+   "error_message": "TEXT",
+   "latency_ms": "BIGINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "VARCHAR(64)",
+   "update_time": "TIMESTAMP",
+   "update_by": "VARCHAR(64)",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_agent_gexec_graph",
+    "cols": [
+     "graph_def_id",
+     "deleted"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_agent_gexec_time",
+    "cols": [
+     "tenant_id",
+     "create_time",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_agent_graph_execution_node": {
+  "columns": {
+   "id": "BIGINT",
+   "execution_id": "BIGINT",
+   "node_seq": "INT",
+   "branch_id": "VARCHAR(64)",
+   "node_id": "VARCHAR(100)",
+   "node_type": "VARCHAR(20)",
+   "node_latency_ms": "BIGINT",
+   "variable_snapshot": "TEXT",
+   "create_time": "TIMESTAMP",
+   "create_by": "VARCHAR(64)",
+   "update_time": "TIMESTAMP",
+   "update_by": "VARCHAR(64)",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT",
+   "tool_calls": "TEXT",
+   "input_text": "TEXT",
+   "output_text": "TEXT",
+   "start_time": "TIMESTAMP",
+   "end_time": "TIMESTAMP",
+   "status": "VARCHAR(20)",
+   "error_message": "TEXT"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_agent_genode_exec",
+    "cols": [
+     "execution_id",
+     "node_seq",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sys_role_dept": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "role_id": "bigint",
+   "dept_id": "bigint"
+  },
+  "indexes": [
+   {
+    "name": "uk_sys_role_dept",
+    "cols": [
+     "role_id",
+     "dept_id"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sys_user_post": {
+  "columns": {
+   "id": "BIGINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT",
+   "user_id": "BIGINT",
+   "post_id": "BIGINT",
+   "dept_id": "bigint"
+  },
+  "indexes": [
+   {
+    "name": "uk_sys_user_post",
+    "cols": [
+     "tenant_id",
+     "user_id",
+     "post_id",
+     "deleted"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sys_user_post_user",
+    "cols": [
+     "tenant_id",
+     "user_id",
+     "deleted"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sys_user_post_post",
+    "cols": [
+     "tenant_id",
+     "post_id",
+     "deleted"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sys_user_post_dept",
+    "cols": [
+     "tenant_id",
+     "dept_id",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sys_user_group": {
+  "columns": {
+   "id": "BIGINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT",
+   "group_code": "VARCHAR(64)",
+   "group_name": "VARCHAR(64)",
+   "status": "SMALLINT",
+   "remark": "VARCHAR(255)"
+  },
+  "indexes": [
+   {
+    "name": "uk_sys_user_group_code",
+    "cols": [
+     "tenant_id",
+     "group_code",
+     "deleted"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sys_user_group_name",
+    "cols": [
+     "tenant_id",
+     "group_name",
+     "deleted"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sys_user_group_status",
+    "cols": [
+     "tenant_id",
+     "status",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sys_user_group_member": {
+  "columns": {
+   "id": "BIGINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT",
+   "group_id": "BIGINT",
+   "user_id": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "uk_sys_user_group_member",
+    "cols": [
+     "tenant_id",
+     "group_id",
+     "user_id",
+     "deleted"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sys_user_group_member_group",
+    "cols": [
+     "tenant_id",
+     "group_id",
+     "deleted"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sys_user_group_member_user",
+    "cols": [
+     "tenant_id",
+     "user_id",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_agent_graph_debug_session": {
+  "columns": {
+   "id": "BIGINT",
+   "graph_def_id": "BIGINT",
+   "graph_def_version": "INT",
+   "graph_json": "TEXT",
+   "status": "VARCHAR(20)",
+   "input": "TEXT",
+   "breakpoints": "TEXT",
+   "state_json": "TEXT",
+   "result_text": "TEXT",
+   "error_category": "VARCHAR(50)",
+   "error_message": "TEXT",
+   "latency_ms": "BIGINT",
+   "expires_at": "TIMESTAMP",
+   "input_tokens": "BIGINT",
+   "output_tokens": "BIGINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "VARCHAR(64)",
+   "update_time": "TIMESTAMP",
+   "update_by": "VARCHAR(64)",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "idx_gexec_debug_graph",
+    "cols": [
+     "graph_def_id",
+     "deleted"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_gexec_debug_expires",
+    "cols": [
+     "expires_at"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_agent_graph_debug_node": {
+  "columns": {
+   "id": "BIGINT",
+   "debug_session_id": "BIGINT",
+   "node_seq": "INT",
+   "branch_id": "VARCHAR(64)",
+   "node_id": "VARCHAR(100)",
+   "node_type": "VARCHAR(20)",
+   "node_latency_ms": "BIGINT",
+   "variable_snapshot": "TEXT",
+   "input_tokens": "BIGINT",
+   "output_tokens": "BIGINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "VARCHAR(64)",
+   "update_time": "TIMESTAMP",
+   "update_by": "VARCHAR(64)",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "idx_genode_debug",
+    "cols": [
+     "debug_session_id",
+     "node_seq",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_notify_template": {
+  "columns": {
+   "id": "BIGINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "VARCHAR(64)",
+   "update_time": "TIMESTAMP",
+   "update_by": "VARCHAR(64)",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT",
+   "template_code": "VARCHAR(100)",
+   "name": "VARCHAR(100)",
+   "title_template": "VARCHAR(200)",
+   "content_template": "TEXT",
+   "enabled": "SMALLINT",
+   "remark": "VARCHAR(500)",
+   "event_type": "varchar(40)",
+   "channel": "varchar(40)",
+   "variables_allowed": "varchar(1000)",
+   "jump_ref": "varchar(200)"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_notify_template_tenant_code",
+    "cols": [
+     "tenant_id",
+     "template_code",
+     "deleted"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_notify_template_tenant_deleted",
+    "cols": [
+     "tenant_id",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_iot_device": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "device_key": "varchar(64)",
+   "name": "varchar(200)",
+   "device_type": "varchar(50)",
+   "status": "varchar(20)",
+   "last_online_time": "timestamp",
+   "product_id": "VARCHAR(64)",
+   "device_name": "VARCHAR(128)",
+   "tencent_status": "VARCHAR(32)",
+   "connection_id": "bigint",
+   "product_ref_id": "bigint",
+   "manage_status": "varchar(20)",
+   "process_access_enabled": "smallint",
+   "last_report_time": "timestamp",
+   "last_command_time": "timestamp",
+   "labels": "varchar(500)",
+   "ext_json": "text"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_iot_device_key",
+    "cols": [
+     "tenant_id",
+     "device_key"
+    ],
+    "unique": false
+   },
+   {
+    "name": "uk_iot_device_product_device",
+    "cols": [
+     "product_id",
+     "device_name",
+     "tenant_id"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_iot_device_command": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "device_key": "varchar(64)",
+   "command_key": "varchar(64)",
+   "payload": "varchar(1000)",
+   "status": "varchar(20)",
+   "result": "varchar(1000)",
+   "approval_biz_id": "varchar(64)",
+   "product_id": "VARCHAR(64)",
+   "device_name": "VARCHAR(128)",
+   "command_type": "VARCHAR(32)",
+   "semantic_mode": "VARCHAR(32)",
+   "idempotent_key": "VARCHAR(128)",
+   "expiry_time": "TIMESTAMP",
+   "retry_count": "INT",
+   "last_error": "VARCHAR(512)",
+   "tencent_request_id": "VARCHAR(128)",
+   "client_token": "VARCHAR(128)",
+   "device_output": "TEXT"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_iot_cmd_device",
+    "cols": [
+     "tenant_id",
+     "device_key"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_iot_cmd_biz",
+    "cols": [
+     "tenant_id",
+     "approval_biz_id"
+    ],
+    "unique": false
+   },
+   {
+    "name": "uk_iot_command_idempotent",
+    "cols": [
+     "idempotent_key"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_iot_command_status_device",
+    "cols": [
+     "product_id",
+     "device_name",
+     "status"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_iot_command_expiry",
+    "cols": [
+     "expiry_time",
+     "status"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_participant_snapshot": {
+  "columns": {
+   "id": "bigint",
+   "create_by": "bigint",
+   "deleted": "smallint",
+   "process_instance_id": "varchar(64)",
+   "participant_id": "varchar(64)",
+   "invalid_reason": "varchar(500)",
+   "participant_name": "varchar(100)"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_bpm_participant_task",
+    "cols": [
+     "tenant_id",
+     "task_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_approval_action": {
+  "columns": {
+   "id": "bigint",
+   "create_by": "bigint",
+   "deleted": "smallint",
+   "process_instance_id": "varchar(64)",
+   "actor_id": "bigint",
+   "opinion_form_version": "varchar(64)",
+   "settlement_status": "varchar(20)",
+   "command_id": "bigint",
+   "target_user_id": "bigint",
+   "proxy_for_user_id": "bigint",
+   "round_no": "int",
+   "related_task_id": "varchar(64)",
+   "detail": "text",
+   "opinion_form_snapshot": "text"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_bpm_approval_task_actor",
+    "cols": [
+     "tenant_id",
+     "task_id",
+     "actor_id"
+    ],
+    "unique": true
+   },
+   {
+    "name": "uk_sw_bpm_approval_task_actor_action",
+    "cols": [
+     "tenant_id",
+     "task_id",
+     "actor_id",
+     "action"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_branch_trace": {
+  "columns": {
+   "id": "bigint",
+   "create_by": "bigint",
+   "deleted": "smallint",
+   "process_instance_id": "varchar(64)",
+   "condition_version": "varchar(64)"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_bpm_branch_trace_instance",
+    "cols": [
+     "tenant_id",
+     "process_instance_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_copy_record": {
+  "columns": {
+   "id": "bigint",
+   "create_by": "bigint",
+   "deleted": "smallint",
+   "process_instance_id": "varchar(64)",
+   "recipient_id": "varchar(64)"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_bpm_copy_instance",
+    "cols": [
+     "tenant_id",
+     "process_instance_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_command": {
+  "columns": {
+   "id": "bigint",
+   "create_by": "bigint",
+   "deleted": "smallint",
+   "command_key": "varchar(128)",
+   "channel": "varchar(16)",
+   "payload": "text",
+   "retry_count": "int",
+   "claimed_at": "timestamp",
+   "claim_token": "varchar(64)",
+   "logical_command_id": "varchar(200)",
+   "payload_fingerprint": "varchar(64)",
+   "tier": "varchar(30)",
+   "completion_point": "varchar(200)",
+   "deadline_at": "timestamp",
+   "overdue_at": "timestamp",
+   "resource_class": "varchar(10)",
+   "resource_units": "integer",
+   "resource_segment": "varchar(20)",
+   "policy_version": "integer",
+   "resource_released_at": "timestamp"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_bpm_command_key",
+    "cols": [
+     "tenant_id",
+     "command_key"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_bpm_command_dispatch",
+    "cols": [
+     "status",
+     "channel",
+     "next_retry_at"
+    ],
+    "unique": false
+   },
+   {
+    "name": "uk_sw_bpm_command_logical",
+    "cols": [
+     "tenant_id",
+     "logical_command_id"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_bpm_command_deadline",
+    "cols": [
+     "status",
+     "deadline_at"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_bpm_command_resource_open",
+    "cols": [
+     "resource_released_at",
+     "status"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_draft": {
+  "columns": {
+   "id": "bigint",
+   "create_by": "bigint",
+   "deleted": "smallint",
+   "title": "varchar(200)",
+   "process_def_key": "varchar(128)",
+   "status": "varchar(20)",
+   "result_record_id": "varchar(36)"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_bpm_draft_owner",
+    "cols": [
+     "tenant_id",
+     "create_by",
+     "form_key"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_category": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "name": "varchar(100)",
+   "sort_no": "int"
+  },
+  "indexes": [],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_urge_record": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "process_instance_id": "varchar(64)",
+   "initiator_id": "bigint",
+   "target_user_id": "bigint",
+   "result": "varchar(20)",
+   "detail": "varchar(500)",
+   "cooldown_key": "varchar(128)"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_bpm_urge_instance",
+    "cols": [
+     "process_instance_id"
+    ],
+    "unique": false
+   },
+   {
+    "name": "uk_sw_bpm_urge_cooldown",
+    "cols": [
+     "cooldown_key"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_notify_send_attempt": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "message_id": "bigint",
+   "attempt_no": "int",
+   "channel": "varchar(32)",
+   "status": "varchar(20)",
+   "failure_reason": "varchar(500)",
+   "external_message_id": "varchar(200)",
+   "failure_class": "varchar(40)",
+   "started_at": "timestamp",
+   "finished_at": "timestamp"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_notify_attempt_message",
+    "cols": [
+     "message_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sys_user_workspace": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "user_id": "bigint",
+   "layout_json": "text"
+  },
+  "indexes": [
+   {
+    "name": "uk_sys_user_workspace",
+    "cols": [
+     "tenant_id",
+     "user_id"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_iot_connection": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "code": "varchar(64)",
+   "name": "varchar(200)",
+   "conn_type": "varchar(20)",
+   "enabled": "smallint",
+   "health_status": "varchar(20)",
+   "last_check_time": "timestamp",
+   "last_check_result": "varchar(500)",
+   "host": "varchar(200)",
+   "port": "int",
+   "use_tls": "smallint",
+   "client_id_prefix": "varchar(64)",
+   "username": "varchar(128)",
+   "password_cipher": "varchar(512)",
+   "keepalive": "int",
+   "clean_session": "smallint",
+   "reconnect_min_sec": "int",
+   "reconnect_max_sec": "int",
+   "region": "varchar(64)",
+   "endpoint": "varchar(200)",
+   "secret_ref": "varchar(256)",
+   "ext_json": "text"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_iot_conn_code",
+    "cols": [
+     "tenant_id",
+     "code"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_iot_product": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "code": "varchar(64)",
+   "name": "varchar(200)",
+   "conn_id": "bigint",
+   "conn_type": "varchar(20)",
+   "model_status": "varchar(20)",
+   "published_model_id": "bigint",
+   "description": "varchar(500)"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_iot_product_code",
+    "cols": [
+     "tenant_id",
+     "code"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_iot_thing_model": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "product_id": "bigint",
+   "model_version": "int",
+   "status": "varchar(20)",
+   "content_json": "text",
+   "publish_time": "timestamp"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_iot_model_ver",
+    "cols": [
+     "tenant_id",
+     "product_id",
+     "model_version"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_iot_topic": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "conn_id": "bigint",
+   "product_id": "bigint",
+   "topic": "varchar(200)",
+   "direction": "varchar(10)",
+   "qos": "int",
+   "retain": "smallint",
+   "payload_type": "varchar(20)",
+   "mapping_json": "text",
+   "enabled": "smallint",
+   "remark": "varchar(500)"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_iot_topic",
+    "cols": [
+     "tenant_id",
+     "topic"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_iot_script": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "code": "varchar(64)",
+   "name": "varchar(200)",
+   "language": "varchar(10)",
+   "trigger_type": "varchar(20)",
+   "binding_json": "text",
+   "input_schema": "text",
+   "output_schema": "text",
+   "status": "varchar(20)",
+   "current_version": "int",
+   "published_version": "int",
+   "timeout_ms": "int"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_iot_script_code",
+    "cols": [
+     "tenant_id",
+     "code"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_iot_script_version": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "script_id": "bigint",
+   "script_version": "int",
+   "source_code": "text",
+   "status": "varchar(20)",
+   "publish_time": "timestamp"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_iot_script_ver",
+    "cols": [
+     "tenant_id",
+     "script_id",
+     "script_version"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_iot_script_exec": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "script_id": "bigint",
+   "script_version": "int",
+   "trigger_source": "varchar(20)",
+   "trigger_ref": "varchar(128)",
+   "device_ref": "varchar(128)",
+   "status": "varchar(20)",
+   "input_json": "text",
+   "output_json": "text",
+   "error": "varchar(1000)",
+   "duration_ms": "bigint",
+   "side_effect": "smallint",
+   "idempotent_key": "varchar(128)",
+   "correlation_id": "varchar(128)"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_iot_exec_script",
+    "cols": [
+     "tenant_id",
+     "script_id",
+     "create_time"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_iot_exec_correlation",
+    "cols": [
+     "tenant_id",
+     "correlation_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_iot_event_rule": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "code": "varchar(64)",
+   "name": "varchar(200)",
+   "device_id": "bigint",
+   "rule_type": "varchar(20)",
+   "condition_json": "text",
+   "debounce_ms": "bigint",
+   "cooldown_ms": "bigint",
+   "continuous_count": "int",
+   "script_id": "bigint",
+   "process_template_key": "varchar(128)",
+   "form_mapping_json": "text",
+   "process_enabled": "smallint",
+   "status": "varchar(20)",
+   "rule_version": "int",
+   "last_fired_time": "timestamp",
+   "agent_enabled": "smallint",
+   "agent_graph_key": "varchar(64)",
+   "agent_input_mapping_json": "text",
+   "agent_failure_template_key": "varchar(128)",
+   "agent_failure_config_json": "text"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_iot_rule_code",
+    "cols": [
+     "tenant_id",
+     "code"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_iot_rule_device",
+    "cols": [
+     "tenant_id",
+     "device_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_iot_message_log": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "conn_id": "bigint",
+   "device_id": "bigint",
+   "topic": "varchar(200)",
+   "direction": "varchar(10)",
+   "message_id": "varchar(128)",
+   "dedup_key": "varchar(128)",
+   "payload": "text",
+   "payload_type": "varchar(20)",
+   "parse_status": "varchar(20)",
+   "parse_error": "varchar(500)",
+   "qos": "int"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_iot_msg_dedup",
+    "cols": [
+     "tenant_id",
+     "dedup_key"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_iot_msg_topic",
+    "cols": [
+     "tenant_id",
+     "topic",
+     "create_time"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_iot_property_record": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "device_id": "bigint",
+   "property_id": "varchar(64)",
+   "value_json": "varchar(1000)",
+   "pre_value_json": "varchar(1000)",
+   "report_time": "timestamp"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_iot_prop_dev",
+    "cols": [
+     "tenant_id",
+     "device_id",
+     "property_id",
+     "report_time"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_iot_event_record": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "device_id": "bigint",
+   "event_id": "varchar(64)",
+   "payload": "text",
+   "occur_time": "timestamp",
+   "correlation_id": "varchar(128)"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_iot_event_dev",
+    "cols": [
+     "tenant_id",
+     "device_id",
+     "occur_time"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_iot_event_correlation",
+    "cols": [
+     "tenant_id",
+     "correlation_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_iot_process_trigger": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "rule_id": "bigint",
+   "script_id": "bigint",
+   "device_id": "bigint",
+   "idempotent_key": "varchar(128)",
+   "status": "varchar(20)",
+   "process_instance_id": "varchar(64)",
+   "form_snapshot": "text",
+   "error": "varchar(500)",
+   "trigger_time": "timestamp",
+   "process_template_key": "varchar(128)",
+   "trigger_source": "varchar(20)",
+   "configured_by": "bigint",
+   "retry_count": "int",
+   "next_retry_time": "timestamp",
+   "action_type": "varchar(16)",
+   "agent_graph_key": "varchar(64)",
+   "agent_execution_id": "bigint"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_iot_trigger_key",
+    "cols": [
+     "tenant_id",
+     "idempotent_key"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_iot_trigger_recovery",
+    "cols": [
+     "status",
+     "next_retry_time"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_iot_trigger_agent_exec",
+    "cols": [
+     "tenant_id",
+     "agent_execution_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_iot_command": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "device_id": "bigint",
+   "conn_id": "bigint",
+   "provider": "varchar(20)",
+   "capability_type": "varchar(20)",
+   "capability_id": "varchar(64)",
+   "params_json": "text",
+   "status": "varchar(20)",
+   "result_json": "text",
+   "error": "varchar(500)",
+   "idempotent_key": "varchar(128)",
+   "source_type": "varchar(20)",
+   "source_ref": "varchar(128)",
+   "flow_instance_id": "varchar(64)",
+   "flow_task_id": "varchar(64)",
+   "qos": "int",
+   "sent_time": "timestamp",
+   "reply_time": "timestamp",
+   "timeout_ms": "int",
+   "correlation_id": "varchar(128)"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_iot_cmd_dev",
+    "cols": [
+     "tenant_id",
+     "device_id",
+     "create_time"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_iot_cmd_flow",
+    "cols": [
+     "tenant_id",
+     "flow_instance_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_iot_audit_record": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "action": "varchar(64)",
+   "object_type": "varchar(64)",
+   "object_id": "varchar(128)",
+   "result": "varchar(32)",
+   "actor_id": "bigint",
+   "system_identity": "varchar(128)",
+   "action_time": "timestamp",
+   "correlation_id": "varchar(128)",
+   "detail": "varchar(1000)"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_iot_audit_lookup",
+    "cols": [
+     "tenant_id",
+     "action",
+     "object_type",
+     "object_id",
+     "action_time"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_iot_audit_correlation",
+    "cols": [
+     "tenant_id",
+     "correlation_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_form_list_config": {
+  "columns": {
+   "id": "VARCHAR(36)",
+   "form_id": "VARCHAR(36)",
+   "config_json": "TEXT",
+   "tenant_id": "BIGINT",
+   "deleted": "SMALLINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_form_ext_query": {
+  "columns": {
+   "id": "VARCHAR(36)",
+   "datasource_id": "BIGINT",
+   "query_key": "VARCHAR(64)",
+   "query_version": "INT",
+   "sql_text": "TEXT",
+   "output_fields": "TEXT",
+   "enabled": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "deleted": "SMALLINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_form_ext_query",
+    "cols": [
+     "tenant_id",
+     "query_key",
+     "query_version"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_form_lifecycle_audit": {
+  "columns": {
+   "id": "VARCHAR(36)",
+   "form_id": "VARCHAR(36)",
+   "action": "VARCHAR(20)",
+   "reason": "VARCHAR(500)",
+   "operator_id": "BIGINT",
+   "tenant_id": "BIGINT",
+   "deleted": "SMALLINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_process_def_version": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "def_id": "bigint",
+   "graph_version": "int",
+   "status": "varchar(20)",
+   "name": "varchar(200)",
+   "form_key": "varchar(200)",
+   "form_version": "varchar(64)",
+   "function_versions": "text",
+   "graph_json": "text",
+   "deployment_id": "varchar(64)",
+   "process_definition_id": "varchar(64)",
+   "published_by": "bigint",
+   "published_at": "timestamp"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_bpm_def_version",
+    "cols": [
+     "tenant_id",
+     "def_id",
+     "graph_version"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_bpm_def_version_status",
+    "cols": [
+     "tenant_id",
+     "def_id",
+     "status"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_authorize_rule": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "principal_id": "bigint",
+   "agent_id": "bigint",
+   "scope_type": "varchar(20)",
+   "process_def_key": "varchar(200)",
+   "node_key": "varchar(200)",
+   "business_key": "varchar(200)",
+   "condition_json": "text",
+   "start_at": "timestamp",
+   "end_at": "timestamp",
+   "status": "varchar(20)",
+   "detail": "varchar(500)"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_bpm_authorize_agent",
+    "cols": [
+     "tenant_id",
+     "agent_id",
+     "status"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_communication": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "process_instance_id": "varchar(64)",
+   "node_key": "varchar(200)",
+   "task_id": "varchar(64)",
+   "round_no": "int",
+   "initiator_id": "bigint",
+   "receiver_id": "bigint",
+   "message": "text",
+   "reply_message": "text",
+   "status": "varchar(20)",
+   "reply_time": "timestamp"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_bpm_comm_task",
+    "cols": [
+     "tenant_id",
+     "task_id"
+    ],
+    "unique": false
+   },
+   {
+    "name": "uk_sw_bpm_comm_instance_receiver",
+    "cols": [
+     "tenant_id",
+     "process_instance_id",
+     "task_id",
+     "receiver_id"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_sign_record": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "process_instance_id": "varchar(64)",
+   "node_key": "varchar(200)",
+   "task_id": "varchar(64)",
+   "sign_type": "varchar(20)",
+   "mode_type": "varchar(10)",
+   "operator_id": "bigint",
+   "participant_id": "bigint",
+   "seq_no": "int",
+   "sign_status": "varchar(20)",
+   "result_status": "varchar(20)",
+   "cancel_reason": "varchar(500)",
+   "original_task_id": "varchar(64)",
+   "original_status": "varchar(30)",
+   "detail": "text"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_bpm_sign_task",
+    "cols": [
+     "tenant_id",
+     "task_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_consensus_vote": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "process_instance_id": "varchar(64)",
+   "node_key": "varchar(200)",
+   "task_id": "varchar(64)",
+   "actor_id": "bigint",
+   "outcome": "varchar(20)"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_bpm_vote_task_actor",
+    "cols": [
+     "tenant_id",
+     "task_id",
+     "actor_id"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_bpm_vote_node",
+    "cols": [
+     "tenant_id",
+     "process_instance_id",
+     "node_key"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_task_deadline": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "process_instance_id": "varchar(64)",
+   "node_key": "varchar(200)",
+   "task_id": "varchar(64)",
+   "due_at": "timestamp",
+   "remind_fired": "smallint",
+   "escalation_fired": "smallint",
+   "auto_action": "varchar(20)",
+   "auto_action_config": "text",
+   "run_state": "varchar(20)",
+   "result_status": "varchar(20)",
+   "last_reason": "varchar(500)",
+   "handled_at": "timestamp"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_bpm_deadline_task",
+    "cols": [
+     "tenant_id",
+     "task_id"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_bpm_deadline_due",
+    "cols": [
+     "run_state",
+     "due_at"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_node_function": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "func_key": "varchar(128)",
+   "func_version": "int",
+   "func_type": "varchar(32)",
+   "impl_bean": "varchar(128)",
+   "config": "text",
+   "allowed_nodes": "text",
+   "timeout_ms": "bigint",
+   "failure_strategy": "varchar(20)",
+   "enabled": "smallint"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_bpm_node_func",
+    "cols": [
+     "tenant_id",
+     "func_key",
+     "func_version"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_node_function_audit": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "int",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "func_key": "varchar(128)",
+   "func_version": "int",
+   "func_type": "varchar(32)",
+   "process_instance_id": "varchar(64)",
+   "node_key": "varchar(128)",
+   "idempotent_key": "varchar(128)",
+   "actor_id": "bigint",
+   "outcome": "varchar(32)",
+   "error_code": "int",
+   "summary": "varchar(2000)",
+   "duration_ms": "bigint"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_bpm_fn_audit_instance",
+    "cols": [
+     "process_instance_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_dynamic_branch": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "int",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "process_instance_id": "varchar(64)",
+   "node_key": "varchar(128)",
+   "branch_index": "int",
+   "source_type": "varchar(32)",
+   "source_value": "varchar(512)",
+   "dept_ids": "varchar(512)",
+   "leader_id": "bigint",
+   "converge_mode": "varchar(16)",
+   "status": "varchar(20)",
+   "task_id": "varchar(64)",
+   "cancel_reason": "varchar(512)",
+   "semantic_version": "SMALLINT",
+   "object_type": "VARCHAR(16)",
+   "object_id": "VARCHAR(64)",
+   "round_no": "BIGINT",
+   "execution_id": "VARCHAR(64)",
+   "source_refs": "TEXT"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_bpm_dyn_branch_instance",
+    "cols": [
+     "process_instance_id",
+     "node_key"
+    ],
+    "unique": false
+   },
+   {
+    "name": "uk_sw_bpm_dyn_branch",
+    "cols": [
+     "tenant_id",
+     "process_instance_id",
+     "node_key",
+     "branch_index"
+    ],
+    "unique": true
+   },
+   {
+    "name": "uk_sw_bpm_dyn_branch",
+    "cols": [
+     "tenant_id",
+     "process_instance_id",
+     "node_key",
+     "round_no",
+     "branch_index"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_process_template": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "int",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "name": "varchar(200)",
+   "category": "varchar(100)",
+   "description": "varchar(500)",
+   "form_key": "varchar(200)",
+   "graph_json": "text",
+   "template_version": "int",
+   "status": "varchar(20)",
+   "scope_type": "varchar(20)",
+   "scope_dept_id": "bigint",
+   "source_def_id": "bigint",
+   "source_def_version": "int"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_bpm_tpl_category",
+    "cols": [
+     "category"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_bpm_tpl_scope",
+    "cols": [
+     "scope_type",
+     "scope_dept_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_instance_intervention": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "int",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "process_instance_id": "varchar(64)",
+   "action": "varchar(20)",
+   "operator_id": "bigint",
+   "reason": "varchar(500)",
+   "before_state": "varchar(20)",
+   "after_state": "varchar(20)",
+   "from_assignee": "bigint",
+   "to_assignee": "bigint",
+   "affected_tasks": "int",
+   "intervened_at": "timestamp"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_bpm_itv_instance",
+    "cols": [
+     "process_instance_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_handover": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "int",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "from_user_id": "bigint",
+   "to_user_id": "bigint",
+   "scope_def_keys": "varchar(1000)",
+   "include_proxy_rules": "boolean",
+   "status": "varchar(20)",
+   "total_items": "int",
+   "migrated_items": "int",
+   "failed_items": "int",
+   "operator_id": "bigint",
+   "executed_at": "timestamp"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_bpm_handover_users",
+    "cols": [
+     "from_user_id",
+     "to_user_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_handover_item": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "int",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "handover_id": "bigint",
+   "task_id": "varchar(64)",
+   "process_instance_id": "varchar(64)",
+   "item_type": "varchar(20)",
+   "before_assignee": "bigint",
+   "after_assignee": "bigint",
+   "result": "varchar(30)",
+   "fail_reason": "varchar(500)",
+   "rule_id": "bigint"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_bpm_handover_item",
+    "cols": [
+     "handover_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_openapi_app": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "int",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "app_id": "varchar(64)",
+   "app_name": "varchar(200)",
+   "secret_hash": "varchar(128)",
+   "scopes": "varchar(200)",
+   "status": "varchar(20)",
+   "act_as_user_id": "bigint",
+   "callback_url": "varchar(500)",
+   "callback_secret_hash": "varchar(128)"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_openapi_app",
+    "cols": [
+     "app_id"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_openapi_nonce": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "int",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "app_id": "varchar(64)",
+   "nonce": "varchar(128)",
+   "expire_at": "timestamp"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_openapi_nonce",
+    "cols": [
+     "app_id",
+     "nonce"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_openapi_idempotency": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "int",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "app_id": "varchar(64)",
+   "idem_key": "varchar(200)",
+   "result_ref": "varchar(64)"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_openapi_idem",
+    "cols": [
+     "app_id",
+     "idem_key"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_openapi_callback_log": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "int",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "app_id": "varchar(64)",
+   "event": "varchar(50)",
+   "biz_ref": "varchar(64)",
+   "url": "varchar(500)",
+   "attempt": "int",
+   "status": "varchar(20)",
+   "response_summary": "varchar(500)",
+   "delivered_at": "timestamp"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_openapi_cb_app",
+    "cols": [
+     "app_id",
+     "biz_ref",
+     "event"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sys_sso_provider_config": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "provider": "varchar(20)",
+   "enabled": "smallint",
+   "app_id": "varchar(200)",
+   "app_secret_enc": "varchar(1000)",
+   "extra_config": "text",
+   "redirect_path": "varchar(500)"
+  },
+  "indexes": [
+   {
+    "name": "uk_sys_sso_provider_config",
+    "cols": [
+     "tenant_id",
+     "provider",
+     "deleted"
+    ],
+    "unique": true
+   },
+   {
+    "name": "uk_sys_sso_provider_app",
+    "cols": [
+     "provider",
+     "app_id",
+     "deleted"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sys_sso_user_binding": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "provider": "varchar(20)",
+   "external_id": "varchar(200)",
+   "external_digest": "varchar(64)",
+   "user_id": "bigint",
+   "bind_status": "varchar(20)"
+  },
+  "indexes": [
+   {
+    "name": "idx_sys_sso_binding_user_all",
+    "cols": [
+     "user_id"
+    ],
+    "unique": false
+   },
+   {
+    "name": "uk_sys_sso_binding_external",
+    "cols": [
+     "provider",
+     "tenant_id",
+     "external_id",
+     "deleted"
+    ],
+    "unique": true
+   },
+   {
+    "name": "uk_sys_sso_binding_user",
+    "cols": [
+     "provider",
+     "tenant_id",
+     "user_id",
+     "deleted"
+    ],
+    "unique": true
+   },
+   {
+    "name": "uk_sys_sso_binding_digest_global",
+    "cols": [
+     "provider",
+     "external_digest",
+     "deleted"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sys_sso_auth_state": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "state_value": "varchar(128)",
+   "provider": "varchar(20)",
+   "nonce": "varchar(128)",
+   "redirect_path": "varchar(500)",
+   "consumed": "smallint",
+   "expire_at": "timestamp",
+   "config_digest": "varchar(128)"
+  },
+  "indexes": [
+   {
+    "name": "uk_sys_sso_state_value",
+    "cols": [
+     "state_value"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sys_sso_state_expire",
+    "cols": [
+     "expire_at"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sys_sso_audit_record": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "provider": "varchar(20)",
+   "event_type": "varchar(40)",
+   "result": "varchar(20)",
+   "actor_id": "bigint",
+   "local_user_id": "bigint",
+   "external_digest": "varchar(64)",
+   "detail": "varchar(1000)"
+  },
+  "indexes": [
+   {
+    "name": "idx_sys_sso_audit_query",
+    "cols": [
+     "tenant_id",
+     "provider",
+     "event_type",
+     "create_time"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_notify_template_version": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "template_id": "bigint",
+   "template_version": "int",
+   "event_type": "varchar(40)",
+   "channel": "varchar(40)",
+   "title_template": "varchar(200)",
+   "content_template": "text",
+   "variables_allowed": "varchar(1000)",
+   "jump_ref": "varchar(200)",
+   "status": "varchar(20)"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_notify_tpl_ver",
+    "cols": [
+     "tenant_id",
+     "template_id",
+     "template_version"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_notify_tpl_ver_template",
+    "cols": [
+     "template_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_notify_rule": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "rule_code": "varchar(100)",
+   "name": "varchar(100)",
+   "event_type": "varchar(40)",
+   "channel_priority": "varchar(200)",
+   "recipient_rule": "varchar(500)",
+   "required_flag": "smallint",
+   "failure_policy": "varchar(20)",
+   "enabled": "smallint",
+   "remark": "varchar(500)"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_notify_rule_code",
+    "cols": [
+     "tenant_id",
+     "rule_code",
+     "deleted"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_notify_rule_event",
+    "cols": [
+     "tenant_id",
+     "event_type"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_notify_subscription": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "user_id": "bigint",
+   "event_type": "varchar(40)",
+   "channel": "varchar(40)",
+   "enabled": "smallint"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_notify_sub",
+    "cols": [
+     "tenant_id",
+     "user_id",
+     "event_type",
+     "channel",
+     "deleted"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_notify_channel_config": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "channel": "varchar(40)",
+   "enabled": "smallint",
+   "sender_display": "varchar(200)",
+   "config_summary": "varchar(500)",
+   "config_cipher": "text"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_notify_channel",
+    "cols": [
+     "tenant_id",
+     "channel",
+     "deleted"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_notify_subject_binding": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "update_time": "timestamp",
+   "create_by": "bigint",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "user_id": "bigint",
+   "provider": "varchar(40)",
+   "subject_cipher": "varchar(500)",
+   "subject_digest": "varchar(128)",
+   "bind_status": "varchar(20)"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_notify_subject_binding",
+    "cols": [
+     "tenant_id",
+     "user_id",
+     "provider",
+     "deleted"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_notify_subject_provider",
+    "cols": [
+     "tenant_id",
+     "provider",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sys_workspace_card_type": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "type_code": "varchar(64)",
+   "display_name": "varchar(100)",
+   "renderer_key": "varchar(64)",
+   "metadata_json": "text",
+   "default_span": "smallint",
+   "default_order": "integer",
+   "status": "smallint"
+  },
+  "indexes": [
+   {
+    "name": "uk_sys_workspace_card_type",
+    "cols": [
+     "tenant_id",
+     "type_code",
+     "deleted"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_openapi_callback_task": {
+  "columns": {
+   "id": "bigint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "deleted": "smallint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "app_id": "varchar(64)",
+   "event": "varchar(50)",
+   "biz_ref": "varchar(64)",
+   "status": "varchar(20)",
+   "attempts": "int",
+   "next_retry_time": "timestamp",
+   "last_error": "varchar(500)",
+   "delivered_at": "timestamp"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_openapi_cb_task",
+    "cols": [
+     "tenant_id",
+     "app_id",
+     "event",
+     "biz_ref"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_openapi_cb_task_due",
+    "cols": [
+     "status",
+     "next_retry_time"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_process_favorite": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "update_time": "timestamp",
+   "deleted": "smallint",
+   "version": "bigint",
+   "tenant_id": "bigint",
+   "user_id": "bigint",
+   "process_key": "varchar(64)",
+   "process_name": "varchar(128)",
+   "create_by": "bigint",
+   "update_by": "bigint"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_bpm_process_favorite",
+    "cols": [
+     "tenant_id",
+     "user_id",
+     "process_key"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_bpm_process_favorite_user",
+    "cols": [
+     "tenant_id",
+     "user_id",
+     "update_time desc"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_theme_seq": {
+  "columns": {
+   "process_key": "varchar(64)",
+   "next_val": "bigint"
+  },
+  "indexes": [],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_form_txn_action": {
+  "columns": {
+   "id": "VARCHAR(36)",
+   "form_id": "VARCHAR(36)",
+   "action_key": "VARCHAR(100)",
+   "name": "VARCHAR(200)",
+   "action_type": "VARCHAR(20)",
+   "status": "VARCHAR(20)",
+   "current_version": "INT",
+   "config_json": "JSONB",
+   "description": "VARCHAR(500)",
+   "tenant_id": "BIGINT",
+   "deleted": "SMALLINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_form_txn_action_key",
+    "cols": [
+     "tenant_id",
+     "form_id",
+     "action_key"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_form_txn_action_version": {
+  "columns": {
+   "id": "VARCHAR(36)",
+   "action_id": "VARCHAR(36)",
+   "version_no": "INT",
+   "form_version": "INT",
+   "config_json": "JSONB",
+   "published_by": "BIGINT",
+   "published_at": "TIMESTAMP",
+   "tenant_id": "BIGINT",
+   "deleted": "SMALLINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_form_txn_action_ver",
+    "cols": [
+     "tenant_id",
+     "action_id",
+     "version_no"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_form_txn_invocation": {
+  "columns": {
+   "id": "VARCHAR(36)",
+   "action_id": "VARCHAR(36)",
+   "action_version": "INT",
+   "invocation_key": "VARCHAR(200)",
+   "request_hash": "VARCHAR(64)",
+   "biz_record_id": "VARCHAR(64)",
+   "status": "VARCHAR(20)",
+   "error_code": "INT",
+   "error_msg": "VARCHAR(500)",
+   "result_json": "JSONB",
+   "duration_ms": "BIGINT",
+   "tenant_id": "BIGINT",
+   "deleted": "SMALLINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_form_txn_inv_key",
+    "cols": [
+     "tenant_id",
+     "action_id",
+     "invocation_key"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_form_txn_inv_time",
+    "cols": [
+     "tenant_id",
+     "action_id",
+     "create_time"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_form_txn_reservation": {
+  "columns": {
+   "id": "VARCHAR(36)",
+   "action_id": "VARCHAR(36)",
+   "action_version": "INT",
+   "form_id": "VARCHAR(36)",
+   "record_id": "VARCHAR(64)",
+   "biz_keys_json": "JSONB",
+   "quantity": "DECIMAL(20,6)",
+   "status": "VARCHAR(20)",
+   "expires_at": "TIMESTAMP",
+   "reserve_invocation_id": "VARCHAR(36)",
+   "settle_invocation_id": "VARCHAR(36)",
+   "settled_at": "TIMESTAMP",
+   "tenant_id": "BIGINT",
+   "deleted": "SMALLINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_form_txn_res_expire",
+    "cols": [
+     "tenant_id",
+     "status",
+     "expires_at"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_form_txn_res_record",
+    "cols": [
+     "tenant_id",
+     "form_id",
+     "record_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_form_txn_ledger": {
+  "columns": {
+   "id": "VARCHAR(36)",
+   "action_id": "VARCHAR(36)",
+   "action_version": "INT",
+   "invocation_id": "VARCHAR(36)",
+   "reservation_id": "VARCHAR(36)",
+   "entry_type": "VARCHAR(20)",
+   "form_id": "VARCHAR(36)",
+   "record_id": "VARCHAR(64)",
+   "quantity": "DECIMAL(20,6)",
+   "balance_after": "DECIMAL(20,6)",
+   "reserved_after": "DECIMAL(20,6)",
+   "biz_keys_json": "JSONB",
+   "tenant_id": "BIGINT",
+   "deleted": "SMALLINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_form_txn_ledger_action",
+    "cols": [
+     "tenant_id",
+     "action_id",
+     "create_time"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_form_txn_ledger_res",
+    "cols": [
+     "tenant_id",
+     "reservation_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_form_c1_policy": {
+  "columns": {
+   "id": "VARCHAR(36)",
+   "form_id": "VARCHAR(36)",
+   "enabled": "SMALLINT",
+   "policy_json": "JSONB",
+   "applied_at": "TIMESTAMP",
+   "tenant_id": "BIGINT",
+   "deleted": "SMALLINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_form_c1_policy_form",
+    "cols": [
+     "tenant_id",
+     "form_id"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_command_effect": {
+  "columns": {
+   "command_id": "bigint",
+   "logical_command_id": "varchar(200)",
+   "claim_token": "varchar(64)",
+   "result_json": "text",
+   "biz_ref": "varchar(200)",
+   "tenant_id": "bigint",
+   "create_time": "timestamp"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_bpm_command_effect_logical",
+    "cols": [
+     "logical_command_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_command_batch": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "batch_key": "varchar(128)",
+   "action_id": "varchar(64)",
+   "action_version": "integer",
+   "status": "varchar(20)",
+   "total_count": "integer",
+   "succeeded_count": "integer",
+   "failed_count": "integer",
+   "command_id": "bigint",
+   "initiator_id": "bigint"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_bpm_command_batch_key",
+    "cols": [
+     "tenant_id",
+     "batch_key"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_bpm_command_batch_cmd",
+    "cols": [
+     "command_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_command_batch_item": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "batch_id": "bigint",
+   "item_key": "varchar(128)",
+   "record_id": "varchar(64)",
+   "quantity": "varchar(40)",
+   "status": "varchar(20)",
+   "invocation_id": "varchar(64)",
+   "error_code": "integer",
+   "error_msg": "varchar(500)",
+   "attempt_count": "integer"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_bpm_command_batch_item_key",
+    "cols": [
+     "batch_id",
+     "item_key"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_bpm_command_batch_item_status",
+    "cols": [
+     "batch_id",
+     "status"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_resource_policy": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "policy_version": "integer",
+   "status": "varchar(20)",
+   "enabled": "boolean",
+   "stop_acceptance": "boolean",
+   "global_max_outstanding": "integer",
+   "tenant_max_outstanding": "integer",
+   "prod_reserved": "integer",
+   "oa_reserved": "integer",
+   "shared_capacity": "integer",
+   "tenant_rate_per_sec": "integer",
+   "tenant_burst": "integer",
+   "realtime_global_concurrency": "integer",
+   "realtime_tenant_concurrency": "integer",
+   "batch_slice_items": "integer",
+   "batch_poll_claim_limit": "integer",
+   "remark": "varchar(500)"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_bpm_resource_policy_version",
+    "cols": [
+     "tenant_id",
+     "policy_version"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_bpm_resource_policy_status",
+    "cols": [
+     "status"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_resource_usage": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "scope": "varchar(16)",
+   "scope_key": "bigint",
+   "segment": "varchar(20)",
+   "outstanding": "bigint"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_bpm_resource_usage_scope",
+    "cols": [
+     "scope",
+     "scope_key",
+     "segment"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_resource_reject_log": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "policy_version": "integer",
+   "resource_class": "varchar(10)",
+   "reject_scope": "varchar(20)",
+   "requested_units": "integer",
+   "reason_code": "varchar(80)",
+   "detail": "varchar(500)",
+   "command_key": "varchar(200)"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_bpm_resource_reject_tenant_time",
+    "cols": [
+     "tenant_id",
+     "create_time"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_iot_command_reservation": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "int",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "process_instance_id": "varchar(64)",
+   "process_def_key": "varchar(128)",
+   "def_version": "int",
+   "form_key": "varchar(128)",
+   "record_id": "varchar(36)",
+   "device_key": "varchar(128)",
+   "product_id": "varchar(128)",
+   "device_name": "varchar(128)",
+   "command_key": "varchar(128)",
+   "command_type": "varchar(16)",
+   "payload": "text",
+   "due_at_utc": "timestamp",
+   "timezone_id": "varchar(64)",
+   "due_local_text": "varchar(64)",
+   "late_window_seconds": "int",
+   "status": "varchar(20)",
+   "command_id": "bigint",
+   "reject_reason": "varchar(512)",
+   "cancel_by": "bigint",
+   "cancel_reason": "varchar(512)",
+   "cancel_time": "timestamp"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_iot_reservation_status",
+    "cols": [
+     "status",
+     "due_at_utc"
+    ],
+    "unique": false
+   },
+   {
+    "name": "uk_sw_iot_reservation_instance",
+    "cols": [
+     "tenant_id",
+     "process_instance_id"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_task_form_data": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "int",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "process_instance_id": "varchar(64)",
+   "process_def_key": "varchar(128)",
+   "node_key": "varchar(200)",
+   "task_id": "varchar(64)",
+   "round_no": "bigint",
+   "form_key": "varchar(128)",
+   "form_version": "bigint",
+   "status": "varchar(16)",
+   "data_text": "text",
+   "submitted_by": "bigint",
+   "submit_time": "timestamp"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_bpm_task_form_data",
+    "cols": [
+     "tenant_id",
+     "task_id"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_bpm_task_form_data_instance",
+    "cols": [
+     "tenant_id",
+     "process_instance_id",
+     "node_key",
+     "round_no"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_trigger_exec": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "int",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "process_instance_id": "varchar(64)",
+   "process_def_key": "varchar(128)",
+   "def_version": "int",
+   "trigger_id": "varchar(64)",
+   "event_type": "varchar(32)",
+   "node_key": "varchar(200)",
+   "round_no": "bigint",
+   "exec_key": "varchar(200)",
+   "status": "varchar(20)",
+   "result_value": "varchar(512)",
+   "result_type": "varchar(16)",
+   "matched_branch_id": "varchar(64)",
+   "disposition": "varchar(32)",
+   "error_text": "text",
+   "snapshot_text": "text",
+   "duration_ms": "bigint"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_bpm_trigger_exec",
+    "cols": [
+     "tenant_id",
+     "exec_key"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_bpm_trigger_exec_instance",
+    "cols": [
+     "tenant_id",
+     "process_instance_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_action_ref": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "int",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "exec_id": "bigint",
+   "process_instance_id": "varchar(64)",
+   "trigger_id": "varchar(64)",
+   "action_id": "varchar(64)",
+   "action_type": "varchar(24)",
+   "item_key": "varchar(128)",
+   "item_summary": "text",
+   "payload_json": "text",
+   "command_key": "varchar(200)",
+   "command_id": "bigint",
+   "target_def_key": "varchar(128)",
+   "target_form_key": "varchar(128)",
+   "target_record_id": "varchar(64)",
+   "target_instance_id": "varchar(64)",
+   "status": "varchar(20)",
+   "error_text": "text"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_bpm_action_ref",
+    "cols": [
+     "tenant_id",
+     "command_key"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_bpm_action_ref_instance",
+    "cols": [
+     "tenant_id",
+     "process_instance_id"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_bpm_action_ref_exec",
+    "cols": [
+     "tenant_id",
+     "exec_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_child_batch": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "int",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "batch_key": "varchar(240)",
+   "parent_instance_id": "varchar(64)",
+   "parent_def_key": "varchar(128)",
+   "root_instance_id": "varchar(64)",
+   "parent_depth": "int",
+   "trigger_id": "varchar(64)",
+   "action_id": "varchar(64)",
+   "round_no": "bigint",
+   "wait_policy": "varchar(16)",
+   "wait_count": "int",
+   "expected_count": "int",
+   "source_record_id": "varchar(64)",
+   "source_record_version": "bigint",
+   "status": "varchar(20)",
+   "settled_count": "int",
+   "block_reason": "text",
+   "settled_at": "timestamp",
+   "config_json": "text"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_bpm_child_batch",
+    "cols": [
+     "tenant_id",
+     "batch_key"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_bpm_child_batch_parent",
+    "cols": [
+     "tenant_id",
+     "parent_instance_id"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_bpm_child_batch_root",
+    "cols": [
+     "tenant_id",
+     "root_instance_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_bpm_child_item": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "int",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "batch_id": "bigint",
+   "item_key": "varchar(128)",
+   "action_ref_id": "bigint",
+   "source_row_id": "varchar(64)",
+   "source_row_version": "bigint",
+   "source_rows_json": "text",
+   "source_summary": "text",
+   "target_def_key": "varchar(128)",
+   "target_form_key": "varchar(128)",
+   "target_record_id": "varchar(64)",
+   "target_instance_id": "varchar(64)",
+   "status": "varchar(20)",
+   "writeback_json": "text",
+   "writeback_time": "timestamp",
+   "writeback_source": "varchar(200)",
+   "error_text": "text"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_bpm_child_item",
+    "cols": [
+     "tenant_id",
+     "batch_id",
+     "item_key"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_bpm_child_item_target",
+    "cols": [
+     "tenant_id",
+     "target_record_id"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_bpm_child_item_batch",
+    "cols": [
+     "tenant_id",
+     "batch_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sys_post_delegate": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "int",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "source_post_id": "bigint",
+   "target_post_id": "bigint",
+   "scope_type": "varchar(16)",
+   "dept_id": "bigint",
+   "status": "varchar(16)",
+   "remark": "varchar(500)"
+  },
+  "indexes": [
+   {
+    "name": "idx_sys_post_delegate_source",
+    "cols": [
+     "tenant_id",
+     "source_post_id",
+     "status"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sys_post_delegate_dept",
+    "cols": [
+     "tenant_id",
+     "dept_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_form_app": {
+  "columns": {
+   "id": "VARCHAR(36)",
+   "tenant_id": "BIGINT",
+   "name": "VARCHAR(100)",
+   "icon": "VARCHAR(64)",
+   "color": "VARCHAR(32)",
+   "sort_no": "INT",
+   "visible_scope_type": "VARCHAR(20)",
+   "status": "VARCHAR(20)",
+   "source": "VARCHAR(20)",
+   "legacy_category_id": "BIGINT",
+   "deleted": "SMALLINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_form_app_tenant",
+    "cols": [
+     "tenant_id",
+     "deleted",
+     "sort_no"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_form_app_dir": {
+  "columns": {
+   "id": "VARCHAR(36)",
+   "tenant_id": "BIGINT",
+   "app_id": "VARCHAR(36)",
+   "name": "VARCHAR(100)",
+   "sort_no": "INT",
+   "deleted": "SMALLINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_form_app_dir_app",
+    "cols": [
+     "tenant_id",
+     "app_id",
+     "deleted",
+     "sort_no"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_form_app_user": {
+  "columns": {
+   "id": "VARCHAR(36)",
+   "tenant_id": "BIGINT",
+   "app_id": "VARCHAR(36)",
+   "user_id": "BIGINT",
+   "deleted": "SMALLINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_form_app_user",
+    "cols": [
+     "tenant_id",
+     "app_id",
+     "user_id"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_form_app_scope": {
+  "columns": {
+   "id": "VARCHAR(36)",
+   "tenant_id": "BIGINT",
+   "app_id": "VARCHAR(36)",
+   "scope_type": "VARCHAR(20)",
+   "scope_id": "VARCHAR(64)",
+   "deleted": "SMALLINT",
+   "create_time": "TIMESTAMP",
+   "create_by": "BIGINT",
+   "update_time": "TIMESTAMP",
+   "update_by": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_form_app_scope_app",
+    "cols": [
+     "tenant_id",
+     "app_id",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sys_tenant_status_audit": {
+  "columns": {
+   "id": "bigint",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "action": "varchar(20)",
+   "old_status": "smallint",
+   "new_status": "smallint",
+   "expire_time": "timestamp",
+   "reason": "varchar(500)",
+   "operator_id": "bigint",
+   "occurred_at": "timestamp",
+   "result": "varchar(200)"
+  },
+  "indexes": [
+   {
+    "name": "idx_sys_tenant_status_audit_tenant_time",
+    "cols": [
+     "tenant_id",
+     "occurred_at"
+    ],
+    "unique": false
+   },
+   {
+    "name": "uk_sys_tenant_status_audit_expiry",
+    "cols": [
+     "tenant_id",
+     "action",
+     "expire_time"
+    ],
+    "unique": true
+   }
+  ],
+  "file": "V0.2.0__baseline_seed.sql"
+ },
+ "sw_agent_provider": {
+  "columns": {
+   "id": "BIGINT",
+   "name": "VARCHAR(100)",
+   "api_format": "VARCHAR(30)",
+   "base_url": "VARCHAR(500)",
+   "api_key_cipher": "TEXT",
+   "enabled": "BOOLEAN",
+   "remark": "VARCHAR(500)",
+   "create_time": "TIMESTAMP",
+   "create_by": "VARCHAR(64)",
+   "update_time": "TIMESTAMP",
+   "update_by": "VARCHAR(64)",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_agent_provider_name",
+    "cols": [
+     "tenant_id",
+     "name"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_agent_provider_tenant_deleted",
+    "cols": [
+     "tenant_id",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.2__f1_agent_provider_model.sql"
+ },
+ "sw_agent_model": {
+  "columns": {
+   "id": "BIGINT",
+   "provider_id": "BIGINT",
+   "name": "VARCHAR(100)",
+   "model_name": "VARCHAR(200)",
+   "capabilities": "VARCHAR(100)",
+   "temperature": "DECIMAL(4,2)",
+   "max_tokens": "INT",
+   "top_p": "DECIMAL(4,2)",
+   "timeout_seconds": "INT",
+   "retry_count": "INT",
+   "enabled": "BOOLEAN",
+   "group_key": "VARCHAR(100)",
+   "sort": "INT",
+   "locked_until": "TIMESTAMP",
+   "quota_cooldown_seconds": "INT",
+   "remark": "VARCHAR(500)",
+   "create_time": "TIMESTAMP",
+   "create_by": "VARCHAR(64)",
+   "update_time": "TIMESTAMP",
+   "update_by": "VARCHAR(64)",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_agent_model_tenant_name",
+    "cols": [
+     "tenant_id",
+     "name"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_agent_model_td",
+    "cols": [
+     "tenant_id",
+     "deleted"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_agent_model_provider",
+    "cols": [
+     "tenant_id",
+     "provider_id"
+    ],
+    "unique": false
+   },
+   {
+    "name": "idx_sw_agent_model_grp",
+    "cols": [
+     "tenant_id",
+     "group_key",
+     "sort"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.2__f1_agent_provider_model.sql"
+ },
+ "sw_agent_graph_snapshot": {
+  "columns": {
+   "id": "BIGINT",
+   "graph_def_id": "BIGINT",
+   "def_version": "INT",
+   "graph_key": "VARCHAR(100)",
+   "name": "VARCHAR(200)",
+   "graph_json": "TEXT",
+   "create_time": "TIMESTAMP",
+   "create_by": "VARCHAR(64)",
+   "update_time": "TIMESTAMP",
+   "update_by": "VARCHAR(64)",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_agent_graph_snapshot_ver",
+    "cols": [
+     "tenant_id",
+     "graph_def_id",
+     "def_version"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_agent_graph_snapshot_def",
+    "cols": [
+     "graph_def_id",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.3__f1_stage2_graph_snapshot.sql"
+ },
+ "sw_knowledge_base": {
+  "columns": {
+   "id": "BIGINT",
+   "name": "VARCHAR(200)",
+   "description": "VARCHAR(500)",
+   "embedding_model_id": "BIGINT",
+   "chunk_size": "INT",
+   "chunk_overlap": "INT",
+   "create_time": "TIMESTAMP",
+   "create_by": "VARCHAR(64)",
+   "update_time": "TIMESTAMP",
+   "update_by": "VARCHAR(64)",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_knowledge_base_name",
+    "cols": [
+     "tenant_id",
+     "name"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_knowledge_base_tenant",
+    "cols": [
+     "tenant_id",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.5__f1_stage3_knowledge_rag.sql"
+ },
+ "sw_knowledge_document": {
+  "columns": {
+   "id": "BIGINT",
+   "kb_id": "BIGINT",
+   "name": "VARCHAR(255)",
+   "file_name": "VARCHAR(255)",
+   "file_type": "VARCHAR(100)",
+   "file_size": "BIGINT",
+   "status": "VARCHAR(20)",
+   "error_message": "TEXT",
+   "chunk_count": "INT",
+   "content": "TEXT",
+   "create_time": "TIMESTAMP",
+   "create_by": "VARCHAR(64)",
+   "update_time": "TIMESTAMP",
+   "update_by": "VARCHAR(64)",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_knowledge_doc_kb",
+    "cols": [
+     "tenant_id",
+     "kb_id",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.5__f1_stage3_knowledge_rag.sql"
+ },
+ "sw_knowledge_chunk": {
+  "columns": {
+   "id": "BIGINT",
+   "kb_id": "BIGINT",
+   "document_id": "BIGINT",
+   "chunk_index": "INT",
+   "content": "TEXT",
+   "create_time": "TIMESTAMP",
+   "create_by": "VARCHAR(64)",
+   "update_time": "TIMESTAMP",
+   "update_by": "VARCHAR(64)",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT",
+   "embedding": "vector"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_knowledge_chunk_kb",
+    "cols": [
+     "tenant_id",
+     "kb_id",
+     "document_id",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.5__f1_stage3_knowledge_rag.sql"
+ },
+ "sw_form_app_import_record": {
+  "columns": {
+   "id": "varchar(36)",
+   "create_time": "timestamp",
+   "create_by": "bigint",
+   "update_time": "timestamp",
+   "update_by": "bigint",
+   "deleted": "smallint",
+   "tenant_id": "bigint",
+   "version": "bigint",
+   "package_name": "varchar(200)",
+   "file_name": "varchar(255)",
+   "app_id": "varchar(36)",
+   "app_name": "varchar(200)",
+   "result": "varchar(20)",
+   "report_json": "text"
+  },
+  "indexes": [
+   {
+    "name": "idx_sw_form_app_import_record_tenant",
+    "cols": [
+     "tenant_id"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.6__f2_app_bundle.sql"
+ },
+ "sw_agent_graph_execution_request": {
+  "columns": {
+   "id": "BIGINT",
+   "graph_def_id": "BIGINT",
+   "graph_def_version": "INT",
+   "idempotency_key": "VARCHAR(100)",
+   "request_fingerprint": "VARCHAR(64)",
+   "status": "VARCHAR(32)",
+   "input": "TEXT",
+   "result_execution_id": "BIGINT",
+   "error_category": "VARCHAR(64)",
+   "error_message": "VARCHAR(1000)",
+   "latency_ms": "BIGINT",
+   "started_at": "TIMESTAMP",
+   "finished_at": "TIMESTAMP",
+   "cancel_requested_at": "TIMESTAMP",
+   "create_time": "TIMESTAMP",
+   "create_by": "VARCHAR(64)",
+   "update_time": "TIMESTAMP",
+   "update_by": "VARCHAR(64)",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_agent_exec_req_idem",
+    "cols": [
+     "tenant_id",
+     "create_by",
+     "idempotency_key"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_agent_exec_req_status",
+    "cols": [
+     "tenant_id",
+     "status",
+     "create_time"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.7__agent_execution_lifecycle.sql"
+ },
+ "sw_agent_graph_execution_event": {
+  "columns": {
+   "id": "BIGINT",
+   "execution_id": "BIGINT",
+   "sequence_no": "BIGINT",
+   "event_type": "VARCHAR(32)",
+   "node_id": "VARCHAR(100)",
+   "payload": "TEXT",
+   "create_time": "TIMESTAMP",
+   "create_by": "VARCHAR(64)",
+   "update_time": "TIMESTAMP",
+   "update_by": "VARCHAR(64)",
+   "deleted": "SMALLINT",
+   "tenant_id": "BIGINT",
+   "version": "BIGINT"
+  },
+  "indexes": [
+   {
+    "name": "uk_sw_agent_exec_event_seq",
+    "cols": [
+     "tenant_id",
+     "execution_id",
+     "sequence_no"
+    ],
+    "unique": true
+   },
+   {
+    "name": "idx_sw_agent_exec_event_replay",
+    "cols": [
+     "tenant_id",
+     "execution_id",
+     "sequence_no",
+     "deleted"
+    ],
+    "unique": false
+   }
+  ],
+  "file": "V0.2.7__agent_execution_lifecycle.sql"
+ }
+}
