@@ -1,6 +1,6 @@
 # 交接
 
-2026-11-08｜Planner（Owner 裁决）｜P66 DM8 由 Owner 自验；新增并行 Server 0.3.3 补丁；三示例流程 COMPLETED。
+2026-11-08｜Planner（P66 审查 b2-02）｜P66 B2 第二批有条件通过；Server 0.3.3 补丁待影响核实；三示例流程 COMPLETED。
 
 ## 当前
 
@@ -22,7 +22,7 @@
 
 H6（摘要每段带标签，含备注回退与审批时间）、H7（JSON 字段化+原文折叠；A1 `YJ-20261108-008`、B1 `XY-20261108-015` 重跑 APPROVED）；tags `d52f5aa`/`94827dd`/`cfccaa9`。
 
-并行任务 **P66 多数据库兼容**（XL，目标 0.4.0）：阶段 A 有条件通过，B2 第一批有条件通过（`product/multi-database-compat/receipts/planning-review-b2-01.md`；DM8 跳过实库由 Owner 自验），下一动作 Executor B2 第二批，回执 `execution-b2-02.md`。并行 **Server 0.3.3 补丁**（`product/server-033-agent-tool-enabled-hotfix/ready/`），下一动作 Executor 影响核实，回执 `execution-033-01.md`。
+并行任务 **P66 多数据库兼容**（XL，目标 0.4.0）：阶段 A 有条件通过，B2 第二批有条件通过（T1—T6 见 `product/multi-database-compat/receipts/planning-review-b2-02.md`；金仓待 Owner），下一动作 B2 第三批，回执 `execution-b2-03.md`。并行 **Server 0.3.3 补丁**（`product/server-033-agent-tool-enabled-hotfix/ready/`），下一动作 Executor 影响核实，回执 `execution-033-01.md`。
 
 ## 0.3.2（历史，审查05 不通过，由 0.3.3—0.3.5 替代）
 
