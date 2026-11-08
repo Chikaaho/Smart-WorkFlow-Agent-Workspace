@@ -1,10 +1,10 @@
 # 交接
 
-2026-11-08｜Executor（终态同步 0.3.6）｜三示例流程 0.3.1—0.3.6 PASSED，终态同步完成，待 Planner 终态复核；P66 并行 READY。
+2026-11-08｜Planner（终态复核 036）｜三示例流程返修 0.3.1—0.3.6 `COMPLETED`（7/0/0）；P66 多数据库兼容并行 READY。
 
 ## 当前
 
-三示例流程返修（0.3.1—0.3.6）功能 **`PASSED`**（规划审查07 `product/three-sample-process-uat/receipts/planning-review-07-passed.md`，H1—H9 锁定），终态同步回执 `product/three-sample-process-uat/receipts/terminal-sync-036-01.md`；方向 `ready/direction-terminal-sync-036.md` 待规划复核后归档 `passed/`。规划终态复核通过后为 `COMPLETED`。
+三示例流程返修（0.3.1—0.3.6）功能 **`COMPLETED`**（规划审查07 `product/three-sample-process-uat/receipts/planning-review-07-passed.md`，H1—H9 锁定），终态同步回执 `product/three-sample-process-uat/receipts/terminal-sync-036-01.md`；方向 `ready/direction-terminal-sync-036.md` 待规划复核后归档 `passed/`。规划终态复核已通过。
 
 **交付登记** `knowledge/features/0.3.2-opinion-display.md`（最终交付登记 0.3.1—0.3.6）：
 - 平台机制：意见写入流程变量（`opinion`/`opinion_<字段>`/`formData` 回写）、会签聚合 `opinionAgg_*`、触发器 `nodeOpinions` 注入。
@@ -16,7 +16,7 @@
 
 **应用包**：维持 `systemVersion=0.3.2` 导出（71,786 B）；缺独立意见表单定义（17 张）、触发器脚本（B `tg_duty_overdue`、C `tg_scene_sensor`）、Agent 图、IoT 产品/设备/规则与渠道凭据——补建方法见功能文件与 `assets/README.md`。
 
-七阶段 **6/0/1**：唯一下一动作 **Planner 终态复核 0.3.6**；P66 线不受影响。
+七阶段 **7/0/0**。三示例流程线结束（终态复核 `product/three-sample-process-uat/receipts/planning-final-review-036-completed.md`）。唯一下一动作：**P66 Executor 阶段 A 只读核对**。
 
 ## 0.3.3—0.3.5（历史，审查 06 已验收锁定）
 

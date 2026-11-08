@@ -4,7 +4,7 @@
 
 Owner 2026-11-08 要求与三示例流程并行（system.md §4 已修订为不冲突即可并行）：迁移脚本与全部 SQL 种子适配 H2、PostgreSQL、MySQL 5.7、MySQL 8.0、Oracle 19c、达梦 DM8（必须项），人大金仓、SQL Server、MariaDB、openGauss（Owner 定全部要做）；终态登记第 52 个正式功能；本机 Docker 可随意使用。硬约束：PG 和 H2 已发布迁移的校验和不变，不碰 UAT 数据库。方向 `product/multi-database-compat/ready/direction-multi-database-compat.md`。唯一下一动作：**Executor 阶段 A 能力核对与方案（只读），回执 `receipts/execution-assess-01.md`**。
 
-## 当前：三示例流程返修（0.3.1—0.3.6，审查07 PASSED，终态同步完成，待 Planner 终态复核）
+## 历史：三示例流程返修 0.3.1—0.3.6 COMPLETED（2026-11-08，七阶段 7/0/0）
 
 0.3.1—0.3.6 全线交付：意见写入流程变量（`opinion`/`opinion_<字段>`）、会签聚合 `opinionAgg_*`、触发器 `nodeOpinions` 注入；三流程意见驱动分支与处理人；意见展示（摘要“标签：值”、抽屉、会签弹窗）；只读 JSON 中文映射 `jsonDisplay` 与原文权限门禁。交付登记 `knowledge/features/0.3.2-opinion-display.md`「最终交付登记（0.3.1—0.3.6）」。
 
@@ -15,7 +15,7 @@ Owner 2026-11-08 要求与三示例流程并行（system.md §4 已修订为不�
 - **应用包**：维持 `systemVersion=0.3.2` 导出（71,786 B）；缺项与补建方法见功能文件与 `assets/README.md`。
 - **观察区新增**：设计器映射编辑框只对 JSON 场景显示；演示实例按真实节奏分时审批（Owner 需要时再安排）；UAT 磁盘水位 96%。
 
-三示例流程线：**PASSED**（0.3.1—0.3.6，H1—H9 锁定），唯一下一动作 **Planner 终态复核 0.3.6**；P66 线不受影响。
+终态复核 `product/three-sample-process-uat/receipts/planning-final-review-036-completed.md` 通过，三示例流程线结束；根 README、version.json 的“待终态复核”表述随 P66 发布后同步改为 COMPLETED。当前唯一下一动作见 P66 段。
 
 ### 历史：0.3.3—0.3.5（2026-11-08，审查06 已验收锁定）
 

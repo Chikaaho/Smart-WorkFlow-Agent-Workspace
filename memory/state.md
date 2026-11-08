@@ -1,15 +1,15 @@
 # 当前状态摘要
 
-2026-11-08｜Executor（终态同步 0.3.6）｜三示例流程 0.3.1—0.3.6 `PASSED`，终态同步完成，待 Planner 终态复核；P66 并行 READY。
+2026-11-08｜Planner（终态复核 036）｜三示例流程返修 0.3.1—0.3.6 `COMPLETED`（7/0/0）；P66 多数据库兼容并行 READY。
 
 ## 当前任务
 
-三示例流程返修（0.3.1—0.3.6）功能 **`PASSED`**（规划审查07 `product/three-sample-process-uat/receipts/planning-review-07-passed.md`，H1—H9 锁定）；终态同步按 `ready/direction-terminal-sync-036.md` 唯一值清单完成，回执 `receipts/terminal-sync-036-01.md`。规划终态复核通过后为 `COMPLETED`。
+三示例流程返修（0.3.1—0.3.6）功能 **`COMPLETED`**（规划审查07 `product/three-sample-process-uat/receipts/planning-review-07-passed.md`，H1—H9 锁定）；终态同步按 `ready/direction-terminal-sync-036.md` 唯一值清单完成，回执 `receipts/terminal-sync-036-01.md`。规划终态复核已通过。
 
 - **交付**：意见写入流程变量（`opinion`/`opinion_<字段>`/`formData` 回写）、会签聚合 `opinionAgg_*`、触发器 `nodeOpinions` 注入；三流程意见驱动分支与处理人（A 需补充/高风险加签/停机>240 加副总/调整窗口改预约/现场总指挥；B 误报/现场处置人/超时督办/上报范围；C 原因分类/指派维修人/偏差>3℃ 强制校准/停机复产）；意见展示（结构化字段、摘要“标签：值”、抽屉、会签弹窗）；只读 JSON 中文映射 `jsonDisplay` + 原文权限门禁。登记 `knowledge/features/0.3.2-opinion-display.md`。
 - **最终证据实例**：A1 `YJ-20261108-008/009`、A2 `YJ-20261108-006`、B1 `XY-20261108-015`、B2 `XY-20261108-013`、B3 `XY-20261108-014`、C1 `MES-20261108-015`、C2 `MES-20261108-016`。
 
-七阶段 **6/0/1**：结束待 **Planner 终态复核 0.3.6**。
+七阶段 **7/0/0**。三示例流程线结束（终态复核 `product/three-sample-process-uat/receipts/planning-final-review-036-completed.md`）。唯一下一动作：**P66 Executor 阶段 A 只读核对**。
 
 并行 **P66 多数据库兼容**（XL，目标 0.4.0，READY）：`product/multi-database-compat/ready/direction-multi-database-compat.md`；下一步 Executor 阶段 A 只读核对。
 
