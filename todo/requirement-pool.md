@@ -1,8 +1,8 @@
 # 需求池（Requirement Pool）
 
-## 当前：三示例流程返修（目标 0.3.2，执行侧完成，待 Planner 验收）
+## 当前：三示例流程返修（0.3.2，审查05 PASSED，待 Owner 追认 tag 覆盖）
 
-0.3.2 `审查04 不通过 → H1—H5 返修完成`：入口 `product/three-sample-process-uat/receipts/planning-execution-prompt-three-sample-03.md`；回执 `product/three-sample-process-uat/receipts/execution-final-05.md`；登记 `knowledge/features/0.3.2-opinion-display.md`。内容：流转记录意见摘要、审批详情抽屉逐项字段（姓名/本地时间）、会签人各自意见；旧 HTML 富文本、部门名称回读、单选横排、重复标签修复；发布后同版本覆盖修复意见详情数组字段重复。UAT 7 条真实业务路径全 APPROVED（A `YJ-20261108-005/006`、B `XY-20261108-012/013/014`、C `MES-20261108-013/014`）。发布：Server tag `0.3.2`=`de8ec017`、Release `437820040`；Web tag `0.3.2`=`3b0043f`、Release `437790115`（同版本覆盖）；UAT build.version=0.3.2 health UP。功能51（不登记新功能）、M59/18/13、ADV1/7/56、P63、问题57；P20未核销。应用包 UAT 导出覆盖 `assets/`（systemVersion=0.3.2，71,786 B；缺口见 assets/README）。**下一动作：Planner 验收 0.3.2（H1—H5 证据与意见质量）**；0.3.1 历史见下。
+0.3.2 `审查04 不通过 → H1—H5 返修完成`：入口 `product/three-sample-process-uat/receipts/planning-execution-prompt-three-sample-03.md`；回执 `product/three-sample-process-uat/receipts/execution-final-05.md`；登记 `knowledge/features/0.3.2-opinion-display.md`。内容：流转记录意见摘要、审批详情抽屉逐项字段（姓名/本地时间）、会签人各自意见；旧 HTML 富文本、部门名称回读、单选横排、重复标签修复；发布后同版本覆盖修复意见详情数组字段重复。UAT 7 条真实业务路径全 APPROVED（A `YJ-20261108-005/006`、B `XY-20261108-012/013/014`、C `MES-20261108-013/014`）。发布：Server tag `0.3.2`=`de8ec017`、Release `437820040`；Web tag `0.3.2`=`3b0043f`、Release `437790115`（同版本覆盖）；UAT build.version=0.3.2 health UP。功能51（不登记新功能）、M59/18/13、ADV1/7/56、P63、问题57；P20未核销。应用包 UAT 导出覆盖 `assets/`（systemVersion=0.3.2，71,786 B；缺口见 assets/README）。**规划审查05 功能 **`PASSED`**（`product/three-sample-process-uat/receipts/planning-review-05-passed.md`），返修方向已归档 `passed/`；终态同步方向 `ready/direction-terminal-sync-032.md`。唯一下一动作：**Owner 追认 Web 0.3.2 tag 同版本覆盖**，之后 Executor 终态同步。**；0.3.1 历史见下。
 
 ### 历史：0.3.1 返修（2026-11-08，审查04 不通过后由 0.3.2 替代）
 

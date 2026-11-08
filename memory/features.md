@@ -1,12 +1,12 @@
 # 功能摘要
 
-2026-11-08｜Executor（执行）｜0.3.2 执行侧完成，待 Planner 验收。
+2026-11-08｜Planner（审查05）｜0.3.2 PASSED。
 
-- 0.3.2：**意见展示与真实业务数据返修（H1—H5，执行侧完成）**。流转记录意见摘要、审批详情抽屉逐项字段（姓名/本地时间）、会签人各自意见；旧 HTML 富文本、部门名称回读、单选横排、重复标签修复；发布后同版本覆盖修复意见详情数组字段重复。UAT 7 条真实路径全 APPROVED；发布 tag `0.3.2`（Server `de8ec017`/Web `3b0043f`），UAT build.version=0.3.2；功能数保持 **51**。详见 `knowledge/features/0.3.2-opinion-display.md`、回执 `receipts/execution-final-05.md`。
+- 0.3.2：**意见展示与真实业务数据返修（H1—H5，审查05 `PASSED`）**。流转记录意见摘要、审批详情抽屉逐项字段（姓名/本地时间）、会签人各自意见；旧 HTML 富文本、部门名称回读、单选横排、重复标签修复；发布后同版本覆盖修复意见详情数组字段重复。UAT 7 条真实路径全 APPROVED；发布 tag `0.3.2`（Server `de8ec017`/Web `3b0043f`），UAT build.version=0.3.2；功能数保持 **51**。详见 `knowledge/features/0.3.2-opinion-display.md`、回执 `receipts/execution-final-05.md`。
 
-- 0.3.1：**审批意见/流程变量/脚本驱动流转（审查04 不通过，已由 0.3.2 返修替代；机制 a—e 锁定）**。意见字段写流程变量，条件分支/参与人/脚本/预约按意见流转；发布 tag `0.3.1`=`452178d8`，Web 保持 0.3.0；功能数保持 **51**。详见 `knowledge/features/0.3.1-approval-driven-flow.md`、回执 `receipts/execution-final-04.md`。
+- 0.3.1：意见→流程变量、条件分支/参与人/脚本/预约按意见流转（机制锁定）；审查04 因展示与数据不通过，由 0.3.2 返修替代。详见 `knowledge/features/0.3.1-approval-driven-flow.md`。
 
-- 0.3.0：三示例流程（**Owner 2026-11-07 审核退回后由 0.3.1 返修替代**；原 `COMPLETED`/七阶段 7/0/0 已撤回，发布事实不回滚）。应用「运营与风险管理工作台」3 表单 3 流程 6 字典，B/C 由 Agent 研判建单；tag `0.3.0` 覆盖重指 Server `a0ac3a1a`/Web `420e0f9`。详见 `knowledge/features/0.3.0-three-sample-processes.md`。
+- 0.3.0：三示例流程初版（3 表单 3 流程 6 字典，Agent 研判建单），Owner 退回后由 0.3.1/0.3.2 返修。详见 `knowledge/features/0.3.0-three-sample-processes.md`。
 
 - 0.2.4：`COMPLETED`（规划 2026-11-06 终态复核 `product/0.2.4/receipts/planning-final-review-024-completed.md`），七阶段 7/0/0，已发布并交付 UAT（第 **51** 个正式功能；P 编号不核销；tag Server `41511bd4`/Web `f4acc3d`，语义 Release latest=0.2.4，UAT Flyway v0.2.9、health UP、build.version=0.2.4）。README 示例二/三落地：IoT 规则启动 Agent 图、失败即升级（级别+双渠道）、Agent 内部工具、渠道凭据密文、规则页研判参数；真实 OpenRouter 搜索/LLM/163 SMTP。能力见 `knowledge/features/0.2.4-readme-examples-2-3.md`。
 
