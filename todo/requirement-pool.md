@@ -1,8 +1,24 @@
 # 需求池（Requirement Pool）
 
-## 当前：三示例流程返修（0.3.2 审查05 不通过，H6、H7 返修，目标 0.3.3）
+## 当前：三示例流程返修（0.3.3—0.3.5，H6、H7 执行侧完成，待 Planner 验收）
 
-0.3.2 `审查04 不通过 → H1—H5 返修完成`：入口 `product/three-sample-process-uat/receipts/planning-execution-prompt-three-sample-03.md`；回执 `product/three-sample-process-uat/receipts/execution-final-05.md`；登记 `knowledge/features/0.3.2-opinion-display.md`。内容：流转记录意见摘要、审批详情抽屉逐项字段（姓名/本地时间）、会签人各自意见；旧 HTML 富文本、部门名称回读、单选横排、重复标签修复；发布后同版本覆盖修复意见详情数组字段重复。UAT 7 条真实业务路径全 APPROVED（A `YJ-20261108-005/006`、B `XY-20261108-012/013/014`、C `MES-20261108-013/014`）。发布：Server tag `0.3.2`=`de8ec017`、Release `437820040`；Web tag `0.3.2`=`3b0043f`、Release `437790115`（同版本覆盖）；UAT build.version=0.3.2 health UP。功能51（不登记新功能）、M59/18/13、ADV1/7/56、P63、问题57；P20未核销。应用包 UAT 导出覆盖 `assets/`（systemVersion=0.3.2，71,786 B；缺口见 assets/README）。**规划审查05 **不通过**（`product/three-sample-process-uat/receipts/planning-review-05.md`）：H1—H5 锁定；Owner 指正 H6 流转记录摘要首段无标签（“已同意 · 是”）为主问题，另 H7 指令编号/日期不一致。入口 `receipts/planning-execution-prompt-three-sample-04.md`，改代码发 0.3.3，不再改任何已发布 tag。Web 0.3.2 tag 覆盖待 Owner 追认。唯一下一动作：**Executor 按执行提示04 返修 H6、H7**。**；0.3.1 历史见下。
+0.3.3—0.3.5：审查05 不通过后完成 H6、H7 返修。入口 `product/three-sample-process-uat/receipts/planning-execution-prompt-three-sample-04.md`，回执 `product/three-sample-process-uat/receipts/execution-final-06.md`。
+
+- **H6**：意见摘要每段都是“标签：值”。数值带单位，备注显示为“审批意见：…”，长文本悬停可看全文，1440 视口无横向滚动；会签弹窗用同一规则。
+- **H7**：JSON 参数按字段展示，原文折叠。UAT 新建实例重跑：A1 `YJ-20261108-008`（编号一致）、B1 `XY-20261108-015`（检索摘要为 11 月 8 日），均 APPROVED。
+- **发布**：Web tag `0.3.3`=`d52f5aa`、`0.3.4`=`94827dd`、`0.3.5`=`cfccaa9`（Release `438081379`）；Server 维持 0.3.2；已发布 tag 均未改动。
+- **固定值**：功能51、M59/18/13、ADV1/7/56、P63、问题57。
+- **新需求候选（观察）**：指令参数 JSON 键名的中文名字典。
+
+唯一下一动作：**Planner 验收 0.3.3—0.3.5**。Web 0.3.2 tag 覆盖待 Owner 追认。
+
+### 历史：0.3.2 返修（2026-11-08，审查05 不通过后由 0.3.3—0.3.5 替代）
+
+0.3.2 `审查04 不通过 → H1—H5 返修完成`：入口 `product/three-sample-process-uat/receipts/planning-execution-prompt-three-sample-03.md`；回执 `product/three-sample-process-uat/receipts/execution-final-05.md`；登记 `knowledge/features/0.3.2-opinion-display.md`。
+
+UAT 7 条真实业务路径全部 APPROVED。发布：Server tag `0.3.2`=`de8ec017`；Web tag `0.3.2`=`3b0043f`（同版本覆盖）。
+
+规划审查05 **不通过**（`product/three-sample-process-uat/receipts/planning-review-05.md`）：H6 摘要首段没有标签，H7 指令编号和日期不一致。
 
 ### 历史：0.3.1 返修（2026-11-08，审查04 不通过后由 0.3.2 替代）
 

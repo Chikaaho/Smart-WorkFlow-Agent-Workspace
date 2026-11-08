@@ -1,10 +1,34 @@
 # 交接
 
-2026-11-08｜Planner（审查05）｜0.3.2 审查05 不通过，H6、H7 返修。
+2026-11-08｜Executor（执行提示04）｜0.3.3—0.3.5 H6、H7 返修执行侧完成，待 Planner 验收。
 
 ## 当前
 
-三示例流程返修（0.3.2）已完成：按执行提示03 完成 H1—H5，UAT 7 条真实业务路径（A `YJ-20261108-005/006`、B `XY-20261108-012/013/014`、C `MES-20261108-013/014`）全 `APPROVED`；回执 `product/three-sample-process-uat/receipts/execution-final-05.md`，登记 `knowledge/features/0.3.2-opinion-display.md`，截图 `.runtime-030/uat-shots-032/`（40 张，本机留存）。发布：Server tag `0.3.2`=`de8ec017`、Release `437820040`；Web tag `0.3.2`=`3b0043f`、Release `437790115`（同版本覆盖去重）；UAT build.version=0.3.2、Web 入口 `assets/index-BV9G2zgH.js`、health UP；0.3.0/0.3.1 tag 未动。七阶段**5/1/1**。七阶段3/1/3。规划审查05 **不通过**（`product/three-sample-process-uat/receipts/planning-review-05.md`）：H1—H5 锁定；Owner 指正 H6 流转记录摘要首段无标签（“已同意 · 是”）为主问题，另 H7 指令编号/日期不一致。入口 `receipts/planning-execution-prompt-three-sample-04.md`，改代码发 0.3.3，不再改任何已发布 tag。Web 0.3.2 tag 覆盖待 Owner 追认。唯一下一动作：**Executor 按执行提示04 返修 H6、H7**。上一交付 0.2.4 COMPLETED（7/0/0），方向归档 `product/0.2.4/passed/`。
+三示例流程返修 0.3.3—0.3.5 已完成，依据执行提示04（审查05 判 0.3.2 不通过，H1—H5 锁定）。
+
+**H6**：意见摘要每段都是“标签：值”，覆盖流转记录、审批详情和会签弹窗。数值带单位，备注显示为“审批意见：…”，长文本悬停可看全文，1440 视口下没有横向滚动（实测 1383/1383、698/698）。
+
+**H7**：
+- JSON 参数改为按字段展示，原文折叠在“技术参数”里。
+- UAT 新建实例重跑：
+  - A1 `YJ-20261108-008`：编号 `DR-2026-Q4-HD-023`，与指令一致。
+  - B1 `XY-20261108-015`：检索摘要日期为 11 月 8 日。
+  - 两条均为 APPROVED。
+- `YJ-20261108-007` 意见表单错挂节点，已 discard。
+
+**回执与证据**：回执 `product/three-sample-process-uat/receipts/execution-final-06.md`；截图 `.runtime-030/uat-shots-035/`（本机留存）。
+
+**发布**：
+- Web 0.3.3 `d52f5aa` → 0.3.4 `94827dd` → 0.3.5 `cfccaa9`（Release `438081379`）。
+- Server 未改动，仍为 tag `0.3.2`=`de8ec017`。
+- 已发布 tag 均未改动。
+- UAT Web 入口 `assets/index-DquMd1D-.js`，build.version=0.3.2，health UP。
+
+七阶段 **5/1/1**。唯一下一动作：**Planner 验收 0.3.3—0.3.5**。Web 0.3.2 tag 覆盖待 Owner 追认。上一交付 0.2.4 COMPLETED（7/0/0），方向归档 `product/0.2.4/passed/`。
+
+## 0.3.2（历史，审查05 不通过，由 0.3.3—0.3.5 替代）
+
+H1—H5 完成（UAT 7 条路径 `YJ-20261108-005/006`、`XY-20261108-012/013/014`、`MES-20261108-013/014` 全 APPROVED），回执 `execution-final-05.md`，登记 `knowledge/features/0.3.2-opinion-display.md`；Server tag `0.3.2`=`de8ec017`、Web `3b0043f`（同版本覆盖）。
 
 ## 0.3.0（历史，终态同步后被 Owner 退回）
 

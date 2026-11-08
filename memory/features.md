@@ -1,8 +1,15 @@
 # 功能摘要
 
-2026-11-08｜Planner（审查05）｜0.3.2 审查05 不通过，H6、H7 返修。
+2026-11-08｜Executor（执行提示04）｜0.3.3—0.3.5 H6、H7 返修执行侧完成，待 Planner 验收。
 
-- 0.3.2：**意见展示与真实业务数据返修（H1—H5 锁定；审查05 不通过，H6 摘要标签、H7 数据一致性返修，目标 0.3.3）**。流转记录意见摘要、审批详情抽屉逐项字段（姓名/本地时间）、会签人各自意见；旧 HTML 富文本、部门名称回读、单选横排、重复标签修复；发布后同版本覆盖修复意见详情数组字段重复。UAT 7 条真实路径全 APPROVED；发布 tag `0.3.2`（Server `de8ec017`/Web `3b0043f`），UAT build.version=0.3.2；功能数保持 **51**。详见 `knowledge/features/0.3.2-opinion-display.md`、回执 `receipts/execution-final-05.md`。
+- 0.3.3—0.3.5：**流转记录摘要标签与数据一致性返修（H6、H7；执行侧完成，待 Planner 验收）**。
+  - 意见摘要每段都是“标签：值”，数值带单位，备注显示为“审批意见：…”，长文本可悬浮看全文，1440 无横向滚动。
+  - JSON 参数按字段展示，原文折叠。
+  - UAT 新建实例重跑 A1 `YJ-20261108-008`、B1 `XY-20261108-015`，均 APPROVED。
+  - Web tag `0.3.3`/`0.3.4`/`0.3.5`=`cfccaa9`，Server 维持 0.3.2；功能数保持 **51**。
+  - 详见 `knowledge/features/0.3.2-opinion-display.md`（0.3.3—0.3.5 节）、回执 `receipts/execution-final-06.md`。
+
+- 0.3.2：意见展示与真实业务数据返修（H1—H5 锁定）。审查05 因摘要首段没有标签、数据日期不一致判为不通过，由 0.3.3—0.3.5 返修替代。详见 `knowledge/features/0.3.2-opinion-display.md`、回执 `receipts/execution-final-05.md`。
 
 - 0.3.1：意见→流程变量、条件分支/参与人/脚本/预约按意见流转（机制锁定）；审查04 因展示与数据不通过，由 0.3.2 返修替代。详见 `knowledge/features/0.3.1-approval-driven-flow.md`。
 

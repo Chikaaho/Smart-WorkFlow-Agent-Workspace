@@ -10,10 +10,23 @@ CH-aPaaS 是面向企业协作场景的低代码 PaaS 与 AI Agent 平台。项�
 
 ## 当前发布
 
-当前正式版本 **0.3.2**（2026-11-08 发布并部署 UAT；意见展示与真实业务数据返修 H1—H5）。流转记录“事件/结果”列显示意见摘要（结论项 + 关键值），审批详情抽屉按冻结意见表单逐项显示中文标签与中文值（人员姓名、本地时间、多选“、”拼接），会签记录中每位会签人可查看自己的意见；旧富文本 HTML 按格式显示、部门字段只读回显部门名称、意见填写页单选横排与“指派维修人”标签去重；发布后同版本覆盖修复意见详情数组字段重复。UAT 用真实业务数据重建 7 条路径全部 APPROVED（A 调整窗口 `YJ-20261108-005`/需补充 `YJ-20261108-006`、B P0 `XY-20261108-012`/误报 `XY-20261108-013`/超时督办 `XY-20261108-014`、C 校准 `MES-20261108-013`/维修 `MES-20261108-014`）。发布：Server tag `0.3.2`→main `de8ec017`（`bootstrap-0.3.2.jar` 220,867,859 B sha256 `7d196cab…`），Web tag `0.3.2`→main `3b0043f`（`sw-web-dist-0.3.2.zip` 6,195,004 B sha256 `e50188dc…`，同版本覆盖）；UAT `build.version=0.3.2`、health UP、Flyway v0.2.9（无新增迁移）、Web 入口 `assets/index-BV9G2zgH.js`。功能数保持 **51**（不登记新功能），交付登记 [`knowledge/features/0.3.2-opinion-display.md`](knowledge/features/0.3.2-opinion-display.md)，回执 [`product/three-sample-process-uat/receipts/execution-final-05.md`](product/three-sample-process-uat/receipts/execution-final-05.md)；应用包 UAT 导出覆盖 [`product/three-sample-process-uat/assets/`](product/three-sample-process-uat/assets/)（不含独立意见表单定义、触发器脚本、Agent 图与 IoT 规则，见该目录 README）。
+当前正式版本 **0.3.5**（2026-11-08，Web 发布并部署 UAT；Server 未改动，仍为 **0.3.2**）。这一版处理流转记录摘要标签和数据一致性的返修（H6、H7，Web 依次发布 0.3.3、0.3.4、0.3.5）。
+
+- 流转记录、审批详情和会签弹窗中，意见摘要的每一段都显示为“标签：值”。数值带单位，是/否显示中文，没有意见表单的备注显示为“审批意见：…”。长文本会截断，鼠标悬停可查看全文；1440 视口下不出现横向滚动条。
+- 只读的 JSON 参数按字段展示，JSON 原文收在折叠的“技术参数”里。
+- UAT 新建实例重跑：A1 `YJ-20261108-008`（计划编号与指令编号均为 `DR-2026-Q4-HD-023`）、B1 `XY-20261108-015`（检索摘要日期与事件日期一致），均为 APPROVED。
+
+发布信息：
+
+- Web tag `0.3.5`→main `cfccaa9`，`sw-web-dist-0.3.5.zip` 6,195,728 B，sha256 `4f0065c3…`；UAT Web 入口 `assets/index-DquMd1D-.js`。
+- Server tag `0.3.2`→`de8ec017`；UAT `build.version=0.3.2`，health UP，Flyway v0.2.9。
+- 已发布的 tag 均未改动。
+
+功能数保持 **51**。回执见 [`product/three-sample-process-uat/receipts/execution-final-06.md`](product/three-sample-process-uat/receipts/execution-final-06.md)，交付登记见 [`knowledge/features/0.3.2-opinion-display.md`](knowledge/features/0.3.2-opinion-display.md)（含 0.3.3—0.3.5 返修）。
 
 ## 历史发布
 
+- **0.3.2**（2026-11-08）：意见展示与真实业务数据返修（H1—H5）。流转记录显示意见摘要，审批详情抽屉逐项显示中文标签与值，会签人可各自查看意见；富文本、部门名称、单选横排等显示缺陷已修复；UAT 7 条真实业务路径全部 APPROVED。Server tag `0.3.2`→`de8ec017`（`bootstrap-0.3.2.jar` 220,867,859 B，sha256 `7d196cab…`），Web tag `0.3.2`→`3b0043f`（同版本覆盖，待 Owner 追认）。回执见 [`execution-final-05.md`](product/three-sample-process-uat/receipts/execution-final-05.md)。应用包导出见 [`product/three-sample-process-uat/assets/`](product/three-sample-process-uat/assets/)（`systemVersion=0.3.2`）。
 - **0.2.4**（2026-11-06）：README 示例二/三落地（IoT 规则启动 Agent 研判、失败升级、Agent 内部工具、渠道凭据密文；第 51 个正式功能）。Server tag `0.2.4`→`41511bd4`（`bootstrap-0.2.4.jar` 220,856,383 B sha256 `1c73a5ee…`）、Web `0.2.4`→`f4acc3d`（`sw-web-dist-0.2.4.zip` 6,194,537 B sha256 `b40cf483…`，入口 `assets/index-egL2MRAT.js`）；UAT 启动 176.906s、Flyway v0.2.9。见 [`product/0.2.4/receipts/execution-release-024-02.md`](product/0.2.4/receipts/execution-release-024-02.md)。
 - **0.2.3**（2026-11-06）：Agent 执行生命周期（异步受理/持久回查/afterSequence 续传/取消与重启恢复/三协议流式/两 Key 轮换，现有能力增强）。Server tag `0.2.3`→`9b86ff0d`、Web `0.2.3`→`47106e8`；UAT Flyway v0.2.7。见 [`product/0.2.3/receipts/execution-release-023-08.md`](product/0.2.3/receipts/execution-release-023-08.md)。
 

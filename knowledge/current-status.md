@@ -1,6 +1,35 @@
 # 当前状态（current-status）
 
-**当前状态（2026-11-08，0.3.2 意见展示与真实业务数据返修——执行侧完成，待 Planner 验收）**：按执行提示 03（依据审查 04）完成 H1—H5：流转记录“事件/结果”列显示意见摘要（结论项 + 关键值），审批详情抽屉按意见表单逐项显示中文标签与中文值（人员显姓名、时间本地格式），会签节点每位会签人可查看各自意见；UAT 用真实业务数据重建 7 条路径（A×3/B×3/C×2）全部 `APPROVED`；应用包从 UAT 导出覆盖 `assets/`（`systemVersion=0.3.2`，71,786 B）；回执 `product/three-sample-process-uat/receipts/execution-final-05.md`。发布事实：**0.3.2**（Server tag `0.3.2`=`de8ec017`、Release `437820040`（`bootstrap-0.3.2.jar` 220,867,859 B sha256 `7d196cab…`）；Web tag `0.3.2`=`3b0043f`、Release `437790115`（`sw-web-dist-0.3.2.zip` 6,195,004 B sha256 `e50188dc…`，发布后同版本覆盖一次，修复意见详情数组字段重复显示）；0.3.0、0.3.1 的 tag 与 Release 未改动）。UAT 已部署 `build.version=0.3.2`、health UP，Web 入口 `assets/index-BV9G2zgH.js`、HTTPS 根 200。开发版本：Server `0.3.2-SNAPSHOT`、Web `0.3.2`；0.3.2 无 DB 迁移（Flyway 保持 v0.2.9）。固定值不变：功能 **51**、M59/18/13、ADV1/7/56、P63、问题 57。执行侧七阶段 **5/1/1**（评估/执行/合并/发版/发布后同步完成；验收与同步待 Planner；结束未开始）。唯一下一动作：**Planner 验收 0.3.2（H1—H5 证据、截图与意见质量）**。
+**当前状态（2026-11-08，0.3.3—0.3.5 流转记录摘要标签与数据一致性返修——执行侧完成，待 Planner 验收）**
+
+规划审查 05 判定 0.3.2 不通过。执行提示 04 下发两项返修，本轮已完成：
+
+- **H6**：流转记录、审批详情和会签弹窗中的意见摘要，每段都是“标签：值”。数值带单位，是/否显示中文，备注型意见显示为“审批意见：…”。长文本截断后可悬浮看全文；1440 视口下不出现横向滚动条。
+- **H7**：只读 JSON 参数按字段展示，原文放进折叠的“技术参数”。UAT 采用**新建实例重跑**：A1 `YJ-20261108-008`（计划编号与指令 drillCode 都是 `DR-2026-Q4-HD-023`，日期措辞已修正）、B1 `XY-20261108-015`（检索摘要为 11 月 8 日），均为 APPROVED。意见表单错挂到别的节点的 `YJ-20261108-007` 已 discard，数据保留。
+
+回执：`product/three-sample-process-uat/receipts/execution-final-06.md`。
+
+发布事实：
+
+- **Web 递增补丁发布**：
+  - 0.3.3：tag `d52f5aa`，Release `438053199`；
+  - 0.3.4：tag `94827dd`，Release `438073010`，补备注型意见标签；
+  - **0.3.5**：tag `cfccaa9`，Release `438081379`，`sw-web-dist-0.3.5.zip` 6,195,728 B，sha256 `4f0065c3…`，收窄列宽。
+- **Server** 未改动，仍为 tag `0.3.2`=`de8ec017`。
+- 已发布 tag（0.3.0、0.3.2、0.3.3、0.3.4）都没有改动。
+- UAT：Web 入口 `assets/index-DquMd1D-.js`，根 200；`build.version=0.3.2`，health UP，Flyway v0.2.9。
+
+当前版本与固定值：
+
+- 开发版本：Server `0.3.2-SNAPSHOT`，Web `0.3.5`。
+- 应用包没有重新导出，`assets/` 仍为 `systemVersion=0.3.2`。
+- 固定值不变：功能 **51**、M59/18/13、ADV1/7/56、P63、问题 57。
+
+执行侧七阶段 **5/1/1**：评估、执行、合并、发版、发布后同步已完成；验收与同步等待 Planner；结束未开始。
+
+唯一下一动作：**Planner 验收 0.3.3—0.3.5（H6、H7 证据：`.runtime-030/uat-shots-035/`）**。0.3.2 Web tag 同版本覆盖仍待 Owner 追认。
+
+**历史（2026-11-08，0.3.2 意见展示与真实业务数据返修——执行侧完成；规划审查 05 不通过，由 0.3.3—0.3.5 返修替代）**：按执行提示 03（依据审查 04）完成 H1—H5：流转记录“事件/结果”列显示意见摘要（结论项 + 关键值），审批详情抽屉按意见表单逐项显示中文标签与中文值（人员显姓名、时间本地格式），会签节点每位会签人可查看各自意见；UAT 用真实业务数据重建 7 条路径（A×3/B×3/C×2）全部 `APPROVED`；应用包从 UAT 导出覆盖 `assets/`（`systemVersion=0.3.2`，71,786 B）；回执 `product/three-sample-process-uat/receipts/execution-final-05.md`。发布事实：**0.3.2**（Server tag `0.3.2`=`de8ec017`、Release `437820040`（`bootstrap-0.3.2.jar` 220,867,859 B sha256 `7d196cab…`）；Web tag `0.3.2`=`3b0043f`、Release `437790115`（`sw-web-dist-0.3.2.zip` 6,195,004 B sha256 `e50188dc…`，发布后同版本覆盖一次，修复意见详情数组字段重复显示）；0.3.0、0.3.1 的 tag 与 Release 未改动）。UAT 已部署 `build.version=0.3.2`、health UP，Web 入口 `assets/index-BV9G2zgH.js`、HTTPS 根 200。开发版本：Server `0.3.2-SNAPSHOT`、Web `0.3.2`；0.3.2 无 DB 迁移（Flyway 保持 v0.2.9）。固定值不变：功能 **51**、M59/18/13、ADV1/7/56、P63、问题 57。执行侧七阶段 **5/1/1**（评估/执行/合并/发版/发布后同步完成；验收与同步待 Planner；结束未开始）。（当时下一动作 Planner 验收 0.3.2；审查 05 已判不通过，H6、H7 返修见上方当前状态。）
 
 **历史（2026-11-08，0.3.1 审批意见驱动返修——执行侧完成，待 Planner 验收；已被 0.3.2 返修替代）**：Owner 2026-11-07 审核退回 0.3.0（意见过简；未用审批意见、流程变量、脚本驱动分支与参与人），0.3.0 的 `COMPLETED` 撤回、功能回到执行阶段；0.3.0 发布事实（tag/Release/部署）不变不回滚。返修方向 `product/three-sample-process-uat/ready/direction-approval-comment-rework-031.md`；回执 `product/three-sample-process-uat/receipts/execution-final-04.md`；交付登记 `knowledge/features/0.3.1-approval-driven-flow.md`。发布事实：**0.3.1**（因需改代码而发版；Server tag `0.3.1`=`452178d8`、Release `437557325`（`bootstrap-0.3.1.jar` 220,861,064 B sha256 `9379195e…`）、UAT 已部署 `build.version=0.3.1`、health UP；**Web 无改动保持 0.3.0**；0.3.0 tag 未动）。开发版本：Server `0.3.1-SNAPSHOT`、Web `0.3.0`。UAT 配置：17 张 APPROVAL_COMMENT 表单 PUBLISHED、三图发布（A v9 / B v9 / C v11，2026-11-07 20:31）、触发器 2 条、角色修正（技术委员会 3 人、应急负责人王芳）。UAT 实证 8 条意见驱动路径全部 `APPROVED`（每流程 ≥2）：A 调整窗口 `YJ-20261107-004`（预约 `2119088560647270401` due=2026-11-08 23:30:00）、A 退回 `YJ-20261107-003`、B 误报 `XY-20261107-008`、B P0 上报学校 `XY-20261107-011`、B 超时督办 `XY-20261107-010`、C 强制校准 `MES-20261107-009`、C 设备维修 `MES-20261107-010`、C 停机复产 `MES-20261107-011`。固定值不变：功能 **51**（本版不登记新功能）、M59/18/13、ADV1/7/56、P63、问题 57。应用包已从 UAT 导出覆盖 `assets/`（`systemVersion=0.3.1`，66,734 B；缺独立意见表单定义、触发器脚本、Agent 图、IoT 规则与渠道凭据——见回执 §4 与 `assets/README.md`）。执行侧七阶段 **6/0/1**（评估/执行/合并/发版/发布后同步完成；验收裁决待 Planner，结束未开始）。
 

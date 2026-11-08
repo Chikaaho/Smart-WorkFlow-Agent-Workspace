@@ -1,8 +1,52 @@
 # 会话交接（session-handoff）— 当前压缩版
 
-## 当前续接：0.3.2 意见展示与真实业务数据返修执行侧完成（2026-11-08，待 Planner 验收）
+## 当前续接：0.3.3—0.3.5 流转记录摘要标签与数据一致性返修，执行侧已完成（2026-11-08，待 Planner 验收）
 
-按执行提示 03（依据审查 04）完成 H1—H5：流转记录意见摘要（结论项 + 关键值）、详情抽屉逐项字段（中文标签、人员姓名、本地时间）、会签人各自意见；修复旧富文本 HTML 显示、部门名称回读（`/system/dept/options` 回退）、单选横排、指派维修人标签重复；发布后追加一次 Web 同版本覆盖，消除意见详情数组字段重复渲染。代码：Server `ApprovalHistoryItemDTO.opinionFields` + 控制器 `resolveOpinionFields`（293432ce）、`DeptController /options`；Web `InstanceFlowPanel` 摘要/抽屉/会签、`DeptControl`、`RichTextControl`/`rich-text`、`TaskDetail` 横排（babea9e/46a8285/09062a8）。main：Server `de8ec017`、Web `3b0043f`；tag 0.3.2、Release 437820040（jar 220,867,859 B sha256 `7d196cab…`）/437790115（zip 6,195,004 B sha256 `e50188dc…`）；UAT `build.version=0.3.2`、Web 入口 `assets/index-BV9G2zgH.js`、health UP、Flyway v0.2.9。UAT 7 条真实业务路径全 APPROVED：A `YJ-20261108-005`（调整窗口 2026-11-10 23:30）/`006`（需补充）；B `XY-20261108-012`（P0 上报学校）/`013`（误报）/`014`（超时督办）；C `MES-20261108-013`（校准）/`014`（维修）。应用包 UAT 导出覆盖 `assets/`（systemVersion=0.3.2，71,786 B）。固定值：功能 51；M59/18/13；ADV1/7/56；P63；问题 57。执行侧七阶段 **5/1/1**。唯一下一动作：**Planner 验收 0.3.2（H1—H5 证据与意见质量）**。
+依据审查 05，执行提示 04 下发 H6、H7，本轮已完成。
+
+**H6：意见摘要**
+
+- 流转记录、审批详情和会签弹窗的意见摘要，每段都改为“标签：值”。
+- 数值从标签尾部取单位，例如“预计停机时长：300 分钟”；是/否显示为中文。
+- 没有表单字段的备注显示为“审批意见：…”。
+- 长文本截断，悬停可看全文。
+- 列宽按设计比例收窄后，1440 视口不再出现横向滚动条。实测 1383/1383、698/698。
+
+**H7：数据一致性**
+
+- 只读 JSON 参数按字段展示，原文折叠在“技术参数”里。
+- UAT 新建实例重跑：
+  - A1 `YJ-20261108-008`：编号 `DR-2026-Q4-HD-023`，与指令一致；“月末结息”已改为“对账批次重跑冲突”。
+  - B1 `XY-20261108-015`：检索摘要日期为 11 月 8 日。
+  - 两条实例均为 APPROVED。
+- `YJ-20261108-007` 的意见表单挂到了错误节点，已 discard，数据保留。
+- C1 沿用 `MES-20261108-013`，只重新截图。
+
+**代码（Web `InstanceFlowPanel.vue`、`TextControl.vue`）**
+
+- 测试：`InstanceFlowPanel.spec` 16/16，`TextControl.spec` 3/3。
+- Web 递增补丁发布：
+  - 0.3.3：`d52f5aa`，Release 438053199；
+  - 0.3.4：`94827dd`，Release 438073010；
+  - 0.3.5：`cfccaa9`，Release 438081379，zip 6,195,728 B，sha256 `4f0065c3…`。
+- Server 未改动，仍为 tag 0.3.2=`de8ec017`。
+- 已发布的 tag 均未改动。
+
+**环境与证据**
+
+- UAT：Web 入口 `assets/index-DquMd1D-.js`；`build.version=0.3.2`，health UP。
+- 证据：`.runtime-030/uat-shots-035/`，包括截图、`table-overflow.json`、`network-index.json`。
+- 回执：`product/three-sample-process-uat/receipts/execution-final-06.md`。
+
+**状态**
+
+- 固定值：功能 51；M59/18/13；ADV1/7/56；P63；问题 57。
+- 执行侧七阶段：**5/1/1**。
+- 唯一下一动作：**Planner 验收 0.3.3—0.3.5（H6、H7）**。0.3.2 Web tag 同版本覆盖仍待 Owner 追认。
+
+## 历史续接：0.3.2 意见展示与真实业务数据返修执行侧完成（2026-11-08；审查 05 不通过，由 0.3.3—0.3.5 替代）
+
+按执行提示 03（依据审查 04）完成 H1—H5：流转记录意见摘要（结论项 + 关键值）、详情抽屉逐项字段（中文标签、人员姓名、本地时间）、会签人各自意见；修复旧富文本 HTML 显示、部门名称回读（`/system/dept/options` 回退）、单选横排、指派维修人标签重复；发布后追加一次 Web 同版本覆盖，消除意见详情数组字段重复渲染。代码：Server `ApprovalHistoryItemDTO.opinionFields` + 控制器 `resolveOpinionFields`（293432ce）、`DeptController /options`；Web `InstanceFlowPanel` 摘要/抽屉/会签、`DeptControl`、`RichTextControl`/`rich-text`、`TaskDetail` 横排（babea9e/46a8285/09062a8）。main：Server `de8ec017`、Web `3b0043f`；tag 0.3.2、Release 437820040（jar 220,867,859 B sha256 `7d196cab…`）/437790115（zip 6,195,004 B sha256 `e50188dc…`）；UAT `build.version=0.3.2`、Web 入口 `assets/index-BV9G2zgH.js`、health UP、Flyway v0.2.9。UAT 7 条真实业务路径全 APPROVED：A `YJ-20261108-005`（调整窗口 2026-11-10 23:30）/`006`（需补充）；B `XY-20261108-012`（P0 上报学校）/`013`（误报）/`014`（超时督办）；C `MES-20261108-013`（校准）/`014`（维修）。应用包 UAT 导出覆盖 `assets/`（systemVersion=0.3.2，71,786 B）。固定值：功能 51；M59/18/13；ADV1/7/56；P63；问题 57。执行侧七阶段 **5/1/1**。（当时下一动作 Planner 验收 0.3.2；审查 05 已判不通过。）
 
 ## 历史续接：0.3.1 审批意见驱动返修执行侧完成（2026-11-08，待 Planner 验收；已被 0.3.2 替代）
 

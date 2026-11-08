@@ -1,37 +1,16 @@
 # 当前未关闭事项
 
-2026-11-05｜Planner。
+2026-11-08｜Executor（执行提示04）。
 
-0.2.2 已 `COMPLETED`，没有阻塞项。下面是不阻塞的观察项：
+无阻塞项。观察项：
 
-- **UAT 磁盘**
-  - 0.2.2 发布前磁盘满（可用 0），health DOWN。经 Owner 授权清理了 2026-10-28 及以前的 reasonix 旧会话（3.58 GB）。
-  - 换包后可用 2.2G。reasonix 会话仍在增长，下次发布前先复核水位，并评估扩容或会话轮转。
-- **UAT 供应商（Owner 侧）**
-  - Openrouter 现在是 Anthropic 格式（`https://openrouter.ai/api`），Embedding（D022-09）需要 OpenAI Chat 格式的 `https://openrouter.ai/api/v1` 和 `openai/text-embedding-3-small`。
-  - 模型页也要挂上 Chat 和 Embedding 模型。
-- **CI 测试抖动（同提交重跑通过，已登记）**
-  - `P62CompatRollbackPgTest` 领取竞态；
-  - I6G1a/b/c 通知 Boot；
-  - `AgentToolConfigServiceImplTest`。
+- **UAT 磁盘**：根分区约 96%（剩余 923M），已清理 0.2.x 旧 jar 备份与上传副本；reasonix 会话仍增长，发布前先复核水位。
+- **UAT 供应商（Owner 侧）**：Embedding 需 OpenAI 格式 `https://openrouter.ai/api/v1` + `openai/text-embedding-3-small`，模型页挂 Chat 与 Embedding。
+- **CI 抖动（重跑通过）**：`P62CompatRollbackPgTest`、I6G1a/b/c、`AgentToolConfigServiceImplTest`、`CommandOverlapRealEngineTest`（Flowable 乐观锁）。
+- **应用包缺口**：导出 `opinionForms` 为空，触发器/Agent 图/IoT 规则不随包；导入新环境需补建 17 张意见表单与 2 条触发器（`todo/application-bundle-import-export.md`）；角色成员按 assets/README 预置。
+- **0.3.3—0.3.5 教训**：0.3.3 漏备注型裸文本与 ISO 时间（0.3.4 修），0.3.4 表格最小宽度 1438px 溢出 1440 视口（0.3.5 修）——UAT 截图须同时测 scrollWidth/clientWidth。
+- **UAT 重跑顺序**：A 高影响路径引擎顺序 负责人→技术委员会→分管副总→参与部门并行→总公司→现场指挥；按回执叙事顺序会错挂意见表单（`YJ-20261108-007` 已 discard）。
+- **候选**：指令参数 JSON 键名无中文名字典；详情抽屉头部仍为 ISO 时间。
+- **残留**：`smart_workflow_030` 旧实例 RUNNING（保留不删）；0.3.1/0.3.2 旧实例均终态，未删数据。
 
-
-## 0.3.1（2026-11-08）
-
-- **应用包导出缺口（不阻塞验收）**：UAT 0.3.1 导出 `opinionForms` 为空、触发器脚本/Agent 图/IoT 规则不随包；节点意见快照随流程携带。导入后需补建 17 张意见表单与 2 条触发器，否则超时督办/强制校准两条驱动关系失效。已登记 `todo/application-bundle-import-export.md`。
-- **UAT 角色配置**：0.3.0 时期 `drill_tech_committee` 仅 1 人、`campus_emergency_lead` 绑张伟，与设计不符；0.3.1 已修正（3 委员 / 王芳）。其它环境导入需按 assets/README 成员口径预置。
-- **本地隔离残留**：`smart_workflow_030` 若干旧图/迭代实例保持 RUNNING（Owner 口径保留不删），不参与 UAT 取证。
-
-## 0.3.2（2026-11-08）
-
-- **`CommandOverlapRealEngineTest` 偶发（不阻塞）**：两车道并发触发 Flowable 乐观锁，本机与 CI 均可复现，与本版展示层改动无关；发布以 main CI 重跑成功为准。
-- **应用包缺口延续**：0.3.2 导出仍 `opinionForms` 为空，触发器/Agent 图/IoT 规则不随包；节点意见快照随流程携带。导入新环境仍需补建意见表单与触发器。
-- **UAT 磁盘**：根分区约 98%（剩余约 522 MB），下次发布前需清理旧制品/日志。
-- **详情页原始时间串**：抽屉头部与审批详情动作列仍显示后端 ISO 时间（`2026-11-08T…`），H1 要求的字段值时间已本地化；未纳入本版范围。
-- **0.3.1 旧实例**：均已终态，`discard` 返回 2400，未删除数据。
-
-持续保护：
-- 不覆盖 Web `vite.config.ts` 的在途改动；
-- 不清库，也不清理 `smart_workflow_f1v4b`；
-- 不读取或传播秘密；
-- 不动 Owner 的 reasonix、frp、ngrok。
+持续保护：不覆盖 Web `vite.config.ts` 在途改动；不清库（含 `smart_workflow_f1v4b`）；不读取或传播秘密；不动 Owner 的 reasonix、frp、ngrok。
