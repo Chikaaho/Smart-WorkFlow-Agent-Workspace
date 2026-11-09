@@ -11,7 +11,7 @@
 
 七阶段 **7/0/0**。三示例流程线结束（终态复核 `product/three-sample-process-uat/receipts/planning-final-review-036-completed.md`）。唯一下一动作见 P66。
 
-**P66 多数据库兼容**（XL，目标 0.4.0）：阶段 A 有条件通过，B2 第二批有条件通过（`product/multi-database-compat/receipts/planning-review-b2-02.md`，Server `7d301304`）：5 库通过待 T1/T2，DM8 先改 T3，金仓待 Owner；下一动作 B2 第三批，回执 `execution-b2-03.md`。并行 **Server 0.3.3 补丁**（`product/server-033-agent-tool-enabled-hotfix/ready/`），下一动作 Executor 影响核实，回执 `execution-033-01.md`。
+**P66 多数据库兼容**（XL，目标 0.4.0）：阶段 A 有条件通过，B2 第二批有条件通过（`product/multi-database-compat/receipts/planning-review-b2-02.md`，Server `7d301304`）：5 库通过待 T1/T2，DM8 先改 T3，金仓同 DM8 由 Owner 自验；收尾重排 README（三示例完成+截图，见方向阶段 D）；下一动作 B2 第三批，回执 `execution-b2-03.md`。并行 **Server 0.3.3 补丁**（`product/server-033-agent-tool-enabled-hotfix/ready/`），下一动作 Executor 影响核实，回执 `execution-033-01.md`。
 
 ## 基线
 
