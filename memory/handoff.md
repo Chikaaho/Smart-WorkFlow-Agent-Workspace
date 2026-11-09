@@ -1,6 +1,6 @@
 # 交接
 
-2026-11-09｜Planner（final-04 审查）｜README 下两图通过；远程分支清理交 Executor（final-04 §3），2 条未合入分支待 Owner；Z4 待 11-10 17:16 后。
+2026-11-09｜Planner（final-04 审查）｜README 下两图通过；远程分支清理交 Executor（final-04 §3），只留 main/develop/未完成分支；Z4 待 11-10 17:16 后。
 
 ## 当前
 
@@ -22,7 +22,7 @@ P66 多数据库兼容（XL）以 **Server 0.4.0** 发布，登记第 **52** 个
 三示例流程（0.3.1—0.3.6）保持 **`COMPLETED`**；Web **0.3.6**（tag `c3f1d6e`，Release
 `438126185`，入口 `assets/index-CKdiXkhU.js`）不变。应用包维持 `systemVersion=0.3.2`。
 
-**下一动作**：Executor 按 `product/multi-database-compat/receipts/planning-review-final-04.md` §3 清理已合入远程分支、Web develop 快进 main；2026-11-10 17:16 后在 `execution-final-05.md` §3 只读补 Z4（`server.log` 大小、`df -h /`、logrotate 实际轮转）。两项都记 `execution-final-05.md`。Owner 裁决 final-04 §4 两条未合入分支。随后 Planner 终态复核（第 52 功能、方向归 `passed/`、COMPLETED）。Web 缺陷见 `todo/web-ui-defects-20261109.md`。
+**下一动作**：Executor 按 `product/multi-database-compat/receipts/planning-review-final-04.md` §3 清理已合入远程分支、Web develop 快进 main；2026-11-10 17:16 后在 `execution-final-05.md` §3 只读补 Z4（`server.log` 大小、`df -h /`、logrotate 实际轮转）。两项都记 `execution-final-05.md`。Owner 已裁决（§6）：只留 main、develop 和未完成分支。随后 Planner 终态复核（第 52 功能、方向归 `passed/`、COMPLETED）。Web 缺陷见 `todo/web-ui-defects-20261109.md`。
 Owner 侧：DM8、KingbaseES 实库验证。
 
 ## 待办/风险

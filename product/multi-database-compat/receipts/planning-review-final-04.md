@@ -49,3 +49,13 @@ Planner 已用 `git branch -r --merged origin/main` 核对过（2026-11-09，fet
 - Executor：按 §3 清理分支、同步 Web develop；2026-11-10 17:16 以后补 Z4。都写在 `execution-final-05.md` 里。
 - Planner：Z4 和 §3 都完成后，做 P66 终态复核。
 - Owner：裁决 §4 这两条分支。
+
+## 6. Owner 裁决（2026-11-09）
+
+“合并过就删除了，没必要全部保留，保留一个 main、一个 develop 和未完成分支就行了。”
+
+1. §3 的 13 条已合入分支照清单删除，**其中包括 P66 自己的 `feature/0.4.0-multi-database`**。之前回执里写的“feature 分支保留”不再适用。
+2. §4 的两条未合入分支属于未完成分支，**保留**：Server `feature/p62-perf-bounded-20261011`、Web `feature/ui-figma-align-20261027`。
+3. 这条规则以后长期适用，已写入 `memory/decisions.md`：开发分支合并进 develop/main 后，远程和本地都删掉；各仓库只保留 `main`、`develop`（工作区仓库是 `develop-sw`）和未完成分支。Executor 在合并阶段收尾时执行。
+
+清理完成后的验收标准：Server 远程只剩 `main`、`develop`、`feature/p62-perf-bounded-20261011`；Web 远程只剩 `main`、`develop`、`feature/ui-figma-align-20261027`，并且 Web 的 `develop` 等于 `main`。
