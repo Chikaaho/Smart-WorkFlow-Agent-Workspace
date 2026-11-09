@@ -177,7 +177,11 @@ sample-c.png           C MES 异常研判
 ```
 
 **说明**：宿主 IAB 视口固定 1280×720、DPR 1，无法设置为方向要求的 1440×900/DPR 2；
-截图按实际视口留存，未拉伸伪造。链接与图片路径已本地检查；GitHub 渲染回读在推送后补。
+截图按实际视口留存，未拉伸伪造。`.gitignore` 已增加 `docs/assets/readme/*.png` 例外，8 张图已入 Git。
+
+GitHub 回读：8 张图片经 `github.com/.../raw/develop-sw/docs/assets/readme/*.png` 均 **200**；
+徽章 `img.shields.io` **200**；README 渲染包含徽章、图片、Mermaid `flowchart LR` 与九库矩阵，
+未发现破图或缺失章节（Mermaid 抓取时显示 GitHub 异步 “Loading”，属正常渲染过程）。
 
 ## 8. 证据与约束
 
