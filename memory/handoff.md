@@ -1,6 +1,6 @@
 # 交接
 
-2026-11-09｜Planner（final-03 Owner 裁决）｜选方案 A：README 下两图，Z4 后 P66 终态；W-a—W-d 留下个 Web 补丁（todo/web-ui-defects-20261109.md）。
+2026-11-09｜Executor（execution-final-05）｜README 已下掉 agent-graph/approval-detail（`6c8b53ac`，GitHub raw+渲染回读通过）；Z4 待 2026-11-10 17:16 后补；然后 Planner 终态复核。
 
 ## 当前
 
@@ -22,7 +22,7 @@ P66 多数据库兼容（XL）以 **Server 0.4.0** 发布，登记第 **52** 个
 三示例流程（0.3.1—0.3.6）保持 **`COMPLETED`**；Web **0.3.6**（tag `c3f1d6e`，Release
 `438126185`，入口 `assets/index-CKdiXkhU.js`）不变。应用包维持 `systemVersion=0.3.2`。
 
-**下一动作**：Executor 按 `product/multi-database-compat/receipts/planning-review-final-03.md` §7 在 `execution-final-05.md` 完成：README 下掉 `agent-graph.png`、`approval-detail.png` 引用并回读渲染；2026-11-10 17:16 后做 Z4。随后 Planner 终态复核（第 52 功能、方向归 `passed/`、COMPLETED）。Web 缺陷见 `todo/web-ui-defects-20261109.md`。
+**下一动作**：2026-11-10 17:16 后 Executor 在 `product/multi-database-compat/receipts/execution-final-05.md` §3 只读补 Z4（`server.log` 大小、`df -h /`、logrotate 是否按 `maxsize 100M`/`daily` 实际轮转）。README 两图已下掉（`6c8b53ac`，图片文件保留，raw+渲染回读通过，见同一回执 §1—§2）。随后 Planner 终态复核（第 52 功能、方向归 `passed/`、COMPLETED）。Web 缺陷见 `todo/web-ui-defects-20261109.md`。
 Owner 侧：DM8、KingbaseES 实库验证。
 
 ## 待办/风险
