@@ -56,3 +56,11 @@
 - Executor：做 Z6（§3）；2026-11-10 17:16 以后补做 Z4。都写在 `execution-final-05.md` 里。
 - Owner：决定 §4。
 - Planner：Z4 和 Z6 都完成后，做 P66 终态复核。
+
+## 7. Owner 裁决（2026-11-09）
+
+“两个代码的 main，工作区不需要合并 main，工作区的 main 是通用。”
+
+1. Z6 的范围就是 **Server、Web 两个代码仓的 `main` README**，按 §3 执行，不变。
+2. **工作区 `main` 是通用的治理底座，不合并 `develop-sw`，也不改默认分支**。§4 的 A、B、C 三个方案都不采用，工作区首页本来就不展示项目 README，这一项关闭。
+3. §5 的固定检查项改为：每次发布后同步，回读**两个代码仓 `main` 的 README**；工作区只看 `develop-sw`。`memory/decisions.md` 已按这个口径记录。

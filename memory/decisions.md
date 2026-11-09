@@ -2,7 +2,7 @@
 
 2026-11-09｜Planner（分支规则）。
 
-- Planner 2026-11-09：每次发布后同步审查都回读三仓 `main` 的 README，版本号与 tag/Release 不一致即不过审。
+- 2026-11-09：每次发布后同步审查都回读 Server、Web 两代码仓 `main` 的 README，版本与 tag/Release 不一致即不过审。工作区 `main` 是通用治理底座（Owner 定），不合并 `develop-sw`、不改默认分支；工作区只看 `develop-sw`。
 - Owner 2026-11-09 分支规则：开发分支合并进 develop/main 后即删除（远程和本地都删）；各仓库只保留 `main`、`develop`（工作区为 `develop-sw`）和未完成分支。Executor 在合并阶段收尾时执行，删前用 `merge-base --is-ancestor` 确认已合入，不强推、不碰 tag。
 
 - Owner于2026-10-29明确先按现行五项完成：U020 UI与文案、T020租户管理、F020表单能力、J020表单脚本、W020流程能力。回执38已证明最后修复包含，五项及A17全部PASSED，终态同步已复核COMPLETED，无活动交付；23两属性已核销；已过业务锁定，范围和机器账本不变。

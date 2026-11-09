@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-2026-11-09｜Planner（final-07）｜Owner 发现 Server/Web main README 仍写 0.2.4：新增 Z6 同步两仓 README（阻塞终态）；工作区默认分支 main 落后，待 Owner 定；Z4 待 11-10 17:16 后。
+2026-11-09｜Planner（final-07）｜Server/Web main README 仍写 0.2.4：新增 Z6 同步两代码仓 README（阻塞终态）；工作区 main 为通用底座，不合并；Z4 待 11-10 17:16 后。
 
 ## 当前任务
 
