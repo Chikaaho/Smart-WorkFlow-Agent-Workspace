@@ -17,6 +17,13 @@ P66 多数据库兼容以 **Server 0.4.0** 发布并部署 UAT，登记为第 **
   Oracle/DM NUMBER(1) 由驱动映射；未改迁移。
 - **UAT 运维**：生产默认日志由 DEBUG 调为 INFO（部署后 16 分钟 DEBUG 0 行）；logrotate
   `rotate/maxage 14`；`postgresql@14-main` drop-in `Restart=on-failure`/`RestartSec=5s`；未加磁盘告警。
+- **发布后同步（`product/multi-database-compat/receipts/execution-final-04.md`）**：Z2 本机演练完成——
+  0.3.2 jar 在 0.4.0 库上以 `FlywayValidateException: Detected applied migration not resolved locally:
+  0.4.0 rename bpm opinion comment` 退出 1，回滚说明已改为“停服 → 恢复
+  `smart_workflow_20261109_pre040.dump` → 换回 `bootstrap.jar.bak-pre040`”；Z3 develop 已普通快进到
+  `a4f6c278`，`origin/main=origin/develop`，tag `0.4.0` 未动，feature 分支保留；Z1 七张图已按
+  1440×900/DPR2 重拍并替换，`agent-graph.png` 因 Web 缺 Vue Flow 默认主题样式（节点只有文字、无卡片）
+  阻塞，需 Web 补丁；Z4 待 2026-11-10 17:16 后只读补做。
 - **固定值**：功能 **52**；M59/18/13=90；ADV1/7/56=64；实际 P63；问题 57；正式验证基线新增 []。
 - **待办**：Planner 终态复核 0.4.0；DM8/KingbaseES Owner 实库验证；`JavaSubprocessExecutor`
   子进程输出竞态登记 `todo/iot-subprocess-output-race.md`。

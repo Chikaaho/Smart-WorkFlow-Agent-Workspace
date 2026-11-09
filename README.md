@@ -8,7 +8,7 @@
 ![Frontend](https://img.shields.io/badge/frontend-Vue%203%20%7C%20Vite-42B883)
 ![Databases](https://img.shields.io/badge/databases-9-0EA5E9)
 
-![CH-aPaaS 工作台](docs/assets/readme/workspace.png)
+![CH-aPaaS 流程中心](docs/assets/readme/workspace.png)
 
 CH-aPaaS 以表单和流程为业务主线，把组织权限、通知、任务、文件、设备与智能编排组合在同一套工作流中。项目由三个仓库组成：本仓库负责规划、知识、治理与交付追溯，后端与前端分别独立开发、测试和发布。
 
@@ -34,9 +34,9 @@ CH-aPaaS 以表单和流程为业务主线，把组织权限、通知、任务�
 | --- | --- |
 | ![表单设计器](docs/assets/readme/form-designer.png) | ![流程设计器](docs/assets/readme/workflow-designer.png) |
 
-| 审批详情与流转记录 | 智能体图编排 |
+| 会签与审批记录 | 智能体图编排与节点属性 |
 | --- | --- |
-| ![审批详情](docs/assets/readme/approval-detail.png) | ![智能体图编排](docs/assets/readme/agent-graph.png) |
+| ![会签与审批记录](docs/assets/readme/approval-detail.png) | ![智能体图编排与节点属性](docs/assets/readme/agent-graph.png) |
 
 ## 三示例流程（已完成）
 
@@ -50,7 +50,7 @@ CH-aPaaS 以表单和流程为业务主线，把组织权限、通知、任务�
 
 | A · 应急演练 | B · 值班协同 | C · MES 异常研判 |
 | --- | --- | --- |
-| ![A 应急演练](docs/assets/readme/sample-a.png) | ![B 值班协同](docs/assets/readme/sample-b.png) | ![C MES 异常研判](docs/assets/readme/sample-c.png) |
+| ![A 会签意见记录](docs/assets/readme/sample-a.png) | ![B 误报上报与督办分支](docs/assets/readme/sample-b.png) | ![C MES 异常研判](docs/assets/readme/sample-c.png) |
 
 交付登记与完整验收链路见 [`knowledge/features/0.3.2-opinion-display.md`](knowledge/features/0.3.2-opinion-display.md) 与 [`product/three-sample-process-uat/`](product/three-sample-process-uat/)。
 

@@ -238,6 +238,21 @@ set -a && . ./server.env && set +a && ./start.sh
    set -a && . ./server.env && set +a && ./stop.sh && mv bootstrap.jar.bak bootstrap.jar && ./start.sh
    ```
 
+> **0.4.0 → 0.3.2 强制恢复 dump（2026-11-09 本机演练）**：0.4.0 已应用
+> `V0.4.0__knowledge_vector_persistence.sql` 与 `R__0.4.0_rename_bpm_opinion_comment.sql`
+>（把 `sw_bpm_task_opinion_draft.comment` 改名为 `opinion_comment`）。0.3.2 jar 的迁移链止于
+> `0.2.9`，在 0.4.0 库上启动会以
+> `FlywayValidateException: Detected applied migration not resolved locally: 0.4.0 rename bpm opinion comment`
+> 失败；即使绕过校验，旧实体仍映射 `comment` 列。因此回退**不是**只换 jar：
+>
+> 1. `./stop.sh`；
+> 2. `sudo -u postgres pg_restore -p 5433 --clean --if-exists -d smart_workflow /data/backup/smart_workflow_20261109_pre040.dump`
+>    （该 dump 为 0.4.0 迁移前状态，31 行迁移终点 `0.2.9`）；
+> 3. `mv bootstrap.jar.bak-pre040 bootstrap.jar`；
+> 4. `./start.sh`，按 §6.3 做健康与页面冒烟。
+>
+> `smart_workflow_20261109_pre040.dump` 不存在或未校验时不得回退，先补备份并由 Owner 裁决。
+
 ### 8.2 前端升级（替换静态构建）
 
 1. 本机构建前端（生产模式），或直接取已构建产物。
@@ -355,6 +370,7 @@ ls -lh /data/backup
 - 建议每日定时备份（cron），异地或对象存储留存。
 - 同时可备份 `server.env` 与 `uploads/`（业务上传文件）。
 - **发布窗口的整体备份与恢复入口**（0.1.5 发布所用的模式，可沿用）：数据库 dump（如上，命名建议带 `_pre<版本>` 后缀）+ 后端包 `bootstrap.jar.bak`/`.bak2`（§8.1 轮换）+ 前端目录 `/opt/smart-workflow/web.bak-<时间戳>` + nginx 配置 `/etc/nginx/conf.d/*.conf.bak-<时间戳>`（改动前复制）。恢复：`./stop.sh` → 回填 jar / `web.bak-*` / nginx 配置（`nginx -t && nginx -s reload`）→ 按需 `pg_restore` → `./start.sh`；发布与恢复的完整实测记录见工作区 `product/bugfix-20261013/receipts/uat-015-01.md`。
+- **0.4.0 回退专用**：回退 0.3.2 必须先停服并恢复 `smart_workflow_20261109_pre040.dump`（0.4.0 迁移前，31 行，max version `0.2.9`），再换回 `bootstrap.jar.bak-pre040`；不能只换 jar。0.3.2 jar 在 0.4.0 库上会因 Flyway 校验失败，实际表现与完整顺序见 §8.1。
 
 ### 9.2 磁盘与日志清理
 

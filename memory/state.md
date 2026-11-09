@@ -1,10 +1,10 @@
 # 当前状态摘要
 
-2026-11-09｜Planner（0.4.0 发布审查）｜发布通过；Z1—Z4 补做后终态复核；七阶段 5/1/1。
+2026-11-09｜Executor（0.4.0 发布后同步）｜Z2/Z3 完成；Z1 七图已替换、agent-graph 受 Web 缺陷阻塞；Z4 待时间窗。
 
 ## 当前任务
 
-P66 多数据库兼容（XL）以 **Server 0.4.0** 发布并部署 UAT，第 **52** 个正式功能已预登记，以终态复核为准。发布审查通过（`product/multi-database-compat/receipts/planning-review-final-02.md`）；下一动作 Executor 补 Z1 README 截图重拍、Z2 回退必须恢复 pre040 dump、Z3 develop 快进 main、Z4 11-10 17:16 后统计 24 小时日志量，回执 `execution-final-04.md`。
+P66 多数据库兼容（XL）以 **Server 0.4.0** 发布并部署 UAT，第 **52** 个正式功能已预登记，以终态复核为准。发布审查通过（`product/multi-database-compat/receipts/planning-review-final-02.md`）；发布后同步回执 `execution-final-04.md`：**Z2 完成**（本机 0.3.2 jar 在 0.4.0 库上 Flyway 校验失败，回滚改为必须恢复 pre040 dump），**Z3 完成**（develop 普通快进 `a4f6c278`，main=develop，tag 未动，feature 保留），**Z1 部分完成**（七张 1440×900/DPR2 图已替换；`agent-graph.png` 因 Web 缺 Vue Flow 默认主题样式阻塞，需 Web 补丁），**Z4 待 2026-11-10 17:16 后**。下一动作：Planner 裁决 Web 补丁/终态复核。
 
 - **发布**：tag `0.4.0`=`a4f6c278`，Release `438918154`，`bootstrap-0.4.0.jar`
   236,245,457 B sha256 `188be963…`；`build-<sha>` Release `438913661` 同字节。
