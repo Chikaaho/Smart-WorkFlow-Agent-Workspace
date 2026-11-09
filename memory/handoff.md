@@ -1,6 +1,6 @@
 # 交接
 
-2026-11-09｜Executor（execution-final-05）｜README 已下掉 agent-graph/approval-detail（`6c8b53ac`，GitHub raw+渲染回读通过）；Z4 待 2026-11-10 17:16 后补；然后 Planner 终态复核。
+2026-11-09｜Planner（final-04 审查）｜README 下两图通过；远程分支清理交 Executor（final-04 §3），2 条未合入分支待 Owner；Z4 待 11-10 17:16 后。
 
 ## 当前
 
@@ -22,23 +22,20 @@ P66 多数据库兼容（XL）以 **Server 0.4.0** 发布，登记第 **52** 个
 三示例流程（0.3.1—0.3.6）保持 **`COMPLETED`**；Web **0.3.6**（tag `c3f1d6e`，Release
 `438126185`，入口 `assets/index-CKdiXkhU.js`）不变。应用包维持 `systemVersion=0.3.2`。
 
-**下一动作**：2026-11-10 17:16 后 Executor 在 `product/multi-database-compat/receipts/execution-final-05.md` §3 只读补 Z4（`server.log` 大小、`df -h /`、logrotate 是否按 `maxsize 100M`/`daily` 实际轮转）。README 两图已下掉（`6c8b53ac`，图片文件保留，raw+渲染回读通过，见同一回执 §1—§2）。随后 Planner 终态复核（第 52 功能、方向归 `passed/`、COMPLETED）。Web 缺陷见 `todo/web-ui-defects-20261109.md`。
+**下一动作**：Executor 按 `product/multi-database-compat/receipts/planning-review-final-04.md` §3 清理已合入远程分支、Web develop 快进 main；2026-11-10 17:16 后在 `execution-final-05.md` §3 只读补 Z4（`server.log` 大小、`df -h /`、logrotate 实际轮转）。两项都记 `execution-final-05.md`。Owner 裁决 final-04 §4 两条未合入分支。随后 Planner 终态复核（第 52 功能、方向归 `passed/`、COMPLETED）。Web 缺陷见 `todo/web-ui-defects-20261109.md`。
 Owner 侧：DM8、KingbaseES 实库验证。
 
 ## 待办/风险
 
 - `JavaSubprocessExecutor` 子进程输出读取竞态（CI #125 两次失败、第 3 次通过）：
   `todo/iot-subprocess-output-race.md`；修复前 CI 偶发。
-- 0.3.3 已取消（UAT `enabled` 为 BOOLEAN，不受 `smallint = boolean` 影响）；
-  不能把 P66 `1/0` 绑定移植到 0.3.2。
+- 0.3.3 已取消，见 state 教训。
 - UAT 日志轮转配置已是 `maxsize 100M/rotate 14/compress`；`server.log` 当前仍含旧 DEBUG 历史内容，
   后续按日轮转。
-- Web 仍为 0.3.6；本版只发 Server。
 
 ## 更早历史
 
-0.3.0（终审后被 Owner 退回，发布事实不回滚，见 `knowledge/features/0.3.0-three-sample-processes.md`）；
-0.2.3/0.2.4 COMPLETED（0.2.4=第 51 个正式功能）。常规决定：截图本机留存不入 Git；
+0.3.0 退回见 `knowledge/features/0.3.0-three-sample-processes.md`。常规决定：过程证据截图不入 Git；
 执行列表无菜单、冷却抑制、`mes_judge_config` 不参与判定按已登记边界处理。
 
 ## 保留与保护

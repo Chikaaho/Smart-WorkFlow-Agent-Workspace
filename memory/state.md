@@ -1,10 +1,10 @@
 # 当前状态摘要
 
-2026-11-09｜Executor（execution-final-05）｜README 已下掉 agent-graph/approval-detail（`6c8b53ac`，GitHub raw+渲染回读通过）；Z4 待 2026-11-10 17:16 后补；然后 Planner 终态复核。
+2026-11-09｜Planner（final-04 审查）｜README 下两图通过；远程分支清理交 Executor（final-04 §3），2 条未合入分支待 Owner；Z4 待 11-10 17:16 后。
 
 ## 当前任务
 
-P66 多数据库兼容（XL）以 **Server 0.4.0** 发布并部署 UAT，第 **52** 个正式功能已预登记，以终态复核为准。发布审查通过（`product/multi-database-compat/receipts/planning-review-final-02.md`）；发布后同步回执 `execution-final-04.md`：**Z2 完成**（本机 0.3.2 jar 在 0.4.0 库上 Flyway 校验失败，回滚改为必须恢复 pre040 dump），**Z3 完成**（develop 普通快进 `a4f6c278`，main=develop，tag 未动，feature 保留），**Z1 部分完成**（七张 1440×900/DPR2 图已替换；`agent-graph.png` 因 Web 缺 Vue Flow 默认主题样式阻塞，需 Web 补丁），**Z4 待 2026-11-10 17:16 后**。规划审查 `planning-review-final-03.md` §7 Owner 裁决方案 A：README 下掉 agent-graph/approval-detail 两图，Z4 后 P66 终态；W-a—W-d 留到下一个 Web 补丁（`todo/web-ui-defects-20261109.md`），修完重拍；测试流程不隐藏，截图时不点开。**final-05（`execution-final-05.md`）**：README 两图引用已下掉（`6c8b53ac`，8 个图片文件保留，README 剩 6 张），GitHub raw 与渲染 HTML 回读通过；Z4 待 2026-11-10 17:16 后补记于同一回执 §3。
+P66 多数据库兼容（XL）以 **Server 0.4.0** 发布并部署 UAT，第 **52** 个正式功能已预登记，以终态复核为准。发布审查通过（`product/multi-database-compat/receipts/planning-review-final-02.md`）；发布后同步回执 `execution-final-04.md`：**Z2 完成**（本机 0.3.2 jar 在 0.4.0 库上 Flyway 校验失败，回滚改为必须恢复 pre040 dump），**Z3 完成**（develop 普通快进 `a4f6c278`，main=develop，tag 未动，feature 保留），Z1 七图已重拍。规划审查 `planning-review-final-03.md` §7 Owner 裁决方案 A：README 下掉 agent-graph/approval-detail 两图，Z4 后 P66 终态；W-a—W-d 留到下一个 Web 补丁（`todo/web-ui-defects-20261109.md`），修完重拍；测试流程不隐藏，截图时不点开。**final-05（`execution-final-05.md`）**：README 两图引用已下掉（`6c8b53ac`，8 个图片文件保留，README 剩 6 张），GitHub raw 与渲染 HTML 回读通过；`planning-review-final-04.md` 通过，并下发 §3 远程分支清理（Server 5 条、Web 8 条已合入分支，Web develop 快进 main）；Server `feature/p62-perf-bounded-20261011`、Web `feature/ui-figma-align-20261027` 未合入，待 Owner 裁决。Z4 待 2026-11-10 17:16 后。
 
 - **发布**：tag `0.4.0`=`a4f6c278`，Release `438918154`，`bootstrap-0.4.0.jar`
   236,245,457 B sha256 `188be963…`；`build-<sha>` Release `438913661` 同字节。
@@ -16,8 +16,6 @@ P66 多数据库兼容（XL）以 **Server 0.4.0** 发布并部署 UAT，第 **5
   main #127 success。
 - **UAT 运维**：生产默认日志 INFO（部署后 16 分钟 DEBUG 0）；logrotate rotate/maxage 14；
   PG `Restart=on-failure`/`RestartSec=5s`；未加磁盘告警。
-- **回执**：`product/multi-database-compat/receipts/execution-final-03.md`；功能登记
-  `knowledge/features/multi-database-compat.md`。
 
 三示例流程（0.3.1—0.3.6）保持 **`COMPLETED`**；Web 0.3.6（tag `c3f1d6e`，Release `438126185`）不变。
 
@@ -34,7 +32,7 @@ Owner 定：本机隔离环境（`smart_workflow_030`、`.runtime-030` 等清单
 
 ## 后续候选（需求池观察区）
 
-Planner 终态复核 0.4.0；DM8/KingbaseES Owner 实库验证；日志管理页面（按类动态调等级）；
+DM8/KingbaseES Owner 实库验证；日志管理页面（按类动态调等级）；
 `JavaSubprocessExecutor` 子进程输出竞态（`todo/iot-subprocess-output-race.md`）；CI 偶发失败族；
 知识库写权限粒度；短信电话渠道（未采购）；Agent 逐节点进度事件；P20。
 
