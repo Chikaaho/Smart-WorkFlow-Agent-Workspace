@@ -25,7 +25,7 @@
 |---|---:|---|
 | `/opt/smart-workflow/server/logs/server.log-20261109` | 509,126,371 B | 2026-11-08T00:00:56.775+08:00 → 2026-11-09T00:00:41.422+08:00 |
 | `/opt/smart-workflow/server/logs/server.log` | 287,711,195 B | 2026-11-09T00:00:43.207+08:00 → 2026-11-09T13:39:17.540+08:00 |
-| `/var/log/postgresql/postgresql-14-main.log` | 5,109 B | 仅近期尾部，已轮转 |
+| `/var/log/postgresql/postgresql-14-main.log` | 5,172 B | 仅近期尾部，已轮转 |
 
 当前 UAT 后端包 `bootstrap.jar` 的 mtime 为 2026-11-08 04:30，`build.version=0.3.2`。可读日志从 2026-11-08 00:00 开始，覆盖 0.3.2 运行期绝大部分时间；2026-11-08 之前的轮转日志已不存在。
 
