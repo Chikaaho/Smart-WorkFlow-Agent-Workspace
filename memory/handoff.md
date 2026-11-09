@@ -1,6 +1,6 @@
 # 交接
 
-2026-11-09｜Executor（0.4.0 发布后同步）｜Z2/Z3 完成；Z1 七图已替换、agent-graph 受 Web 缺陷阻塞；Z4 待时间窗。
+2026-11-09｜Planner（final-03 审查）｜Z2/Z3 通过、Z1 有条件；建议 Web 0.3.7 单独修 4 个缺陷，待 Owner 裁决；Z4 待时间窗。
 
 ## 当前
 
@@ -22,7 +22,7 @@ P66 多数据库兼容（XL）以 **Server 0.4.0** 发布，登记第 **52** 个
 三示例流程（0.3.1—0.3.6）保持 **`COMPLETED`**；Web **0.3.6**（tag `c3f1d6e`，Release
 `438126185`，入口 `assets/index-CKdiXkhU.js`）不变。应用包维持 `systemVersion=0.3.2`。
 
-**下一动作**：Planner 裁决 `agent-graph.png` 的 Web 补丁（缺 `@vue-flow/core/dist/theme-default.css`，节点只有文字无卡片；另任务详情流程面板 0 高度）与 P66 终态复核；Z4 待 2026-11-10 17:16 后只读补做。发布后同步回执 `execution-final-04.md`。
+**下一动作**：Owner 裁决 `product/multi-database-compat/receipts/planning-review-final-03.md` §5 方案 A/B（推荐 A：P66 先终态，Web 0.3.7 单独修 W-a—W-d 后重拍）；Z4 待 2026-11-10 17:16 后补做，回执 `execution-final-05.md`。发布后同步回执 `execution-final-04.md`。
 Owner 侧：DM8、KingbaseES 实库验证。
 
 ## 待办/风险
