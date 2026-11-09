@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-2026-11-09｜Executor（Z7）｜两代码仓 main README 重排为开源结构（徽章/截图/架构图/快速开始，实测启动通过）：Server main=develop=`7d0f2a2e`、Web `bed840d`；`--latest=false` 已进两仓工作流，0.4.0/0.3.6 已设回 Latest（Owner 授权）；Z4 待 11-10 17:16 后。
+2026-11-10｜Planner（final-09）｜Z7 通过（两仓 README 重排、Latest 回到 0.4.0/0.3.6）；根 README 11 个子仓相对链接在 GitHub 404，记 Z8 随 Z4 补；授权待 Owner 确认。
 
 ## 当前任务
 
