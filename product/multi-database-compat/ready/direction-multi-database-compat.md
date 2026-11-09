@@ -103,6 +103,24 @@ Oracle 11g 不在本次范围内。如果需要支持，Owner 另行提出。
 - 补一份部署文档，说明各数据库的建库参数（字符集、大小写、兼容模式）和配置示例；
 - 同步 knowledge、memory 和需求池。
 
+#### 合并前必修 X1：智能体工具 `enabled` 绑定（2026-11-09，阻塞合并）
+
+来源：`product/server-033-agent-tool-enabled-hotfix/receipts/planning-review-033-02.md` §3。
+- PG（含 UAT 升级路径）的 `sw_agent_tool_internal/external.enabled` 经 `V0.2.3` 已是 BOOLEAN；`26d0e8a7` 的 `1/0` 绑定会报 `boolean = integer`。
+- 要求：
+  1. 列出 10 种方言最终表结构中这两个字段的类型；
+  2. 恢复 Boolean 绑定，由驱动映射，个别方言做不到时在方言层处理，不在业务代码写死 `1/0`；不改迁移；
+  3. 补真实 PG 集成测试，覆盖 12 处查询；六库业务冒烟各加一条智能体工具启用过滤；
+  4. 全量 `mvn test`，在最终提交上重跑六库冒烟，与 V2 合并为一轮。
+
+#### UAT 运维附带项（Owner 2026-11-09，随 0.4.0 部署）
+
+0.3.3 已停止，原方向 §6 并入本版：
+1. 生产默认不输出 DEBUG，属于代码仓配置。各类日志等级不改，不能用 appender 阈值永久挡掉 DEBUG，以免影响后续日志管理页面动态打开某个类的 DEBUG。部署后回读：重启后 10 分钟内没有 DEBUG 行，并记录头 24 小时的日志量。
+2. logrotate 补 `maxsize 100M`、`rotate 14`、`compress`（只保留一种轮转方式），先把原配置备份到 `/root/uat-ops-040/` 再改，改完用 `logrotate -d` 演练。
+3. 给 `postgresql@14-main` 增加 drop-in `Restart=on-failure`、`RestartSec=5s`，执行 `daemon-reload` 后回读，不需要重启 PG。
+4. 不加告警；部署前根分区可用空间须 ≥ 3G。
+
 #### README 重排（Owner 2026-11-09，阶段 6 发布后同步时完成）
 
 **范围**：工作区根 `README.md`。Server 和 Web 仓库的 README 只需同步版本与链接。

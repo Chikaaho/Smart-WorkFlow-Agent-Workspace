@@ -1,6 +1,6 @@
 # Server 0.3.3 补丁：智能体工具 `enabled` 整数绑定
 
-日期：2026-11-09｜规划（Planner）｜等级：**M**（线上缺陷补丁，单仓 Server，无表结构变更）｜状态：`READY`｜不计入功能数
+日期：2026-11-09｜规划（Planner）｜等级：**M**（线上缺陷补丁，单仓 Server，无表结构变更）｜状态：`STOPPED`（2026-11-09 第 1 步触发停止条件：UAT 不受影响，建议取消，待 Owner 确认；`receipts/planning-review-033-02.md`）｜不计入功能数
 
 ## 0. Owner 裁决与来源
 

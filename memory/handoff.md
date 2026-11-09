@@ -1,6 +1,6 @@
 # 交接
 
-2026-11-09｜Planner（UAT 恢复通过）｜UAT 已恢复（磁盘 66%）；0.3.3 待复现；P66 待合并发版。
+2026-11-09｜Planner（0.3.3 停止）｜UAT 不受影响，建议取消 0.3.3；P66 先修 X1 再发版。
 
 ## 当前
 
@@ -22,11 +22,8 @@
 
 H6（摘要每段带标签，含备注回退与审批时间）、H7（JSON 字段化+原文折叠；A1 `YJ-20261108-008`、B1 `XY-20261108-015` 重跑 APPROVED）；tags `d52f5aa`/`94827dd`/`cfccaa9`。
 
-并行任务 **P66 多数据库兼容**（XL，目标 0.4.0）：阶段 A 有条件通过，实现验收通过，UAT 校验和 28/28 一致，待 0.3.3 后合并发版。UAT 已恢复（`product/uat-recovery-20261109/receipts/planning-review-uat-recovery-01.md`，W1 PM2 确认并入 0.3.3 回执）。**Server 0.3.3 补丁**下一动作：真实 PG 复现+10 处路径映射，回执 `execution-033-02.md`。
+并行任务 **P66 多数据库兼容**（XL，目标 0.4.0）：阶段 A 有条件通过，实现验收通过，UAT 校验和 28/28 一致，待 0.3.3 后合并发版。UAT 已恢复（`product/uat-recovery-20261109/receipts/planning-review-uat-recovery-01.md`，W1 PM2 确认并入 0.3.3 回执）。**0.3.3 停止**（UAT 不受影响，建议取消，`planning-review-033-02.md`）；P66 下一动作 X1 恢复 Boolean 绑定（见方向阶段 D）。
 
-## 0.3.2（历史，审查05 不通过，由 0.3.3—0.3.5 替代）
-
-H1—H5 完成（UAT 7 条路径全 APPROVED），回执 `execution-final-05.md`；Server tag `0.3.2`=`de8ec017`、Web `3b0043f`（同版本覆盖，已追认）。
 
 ## 更早历史
 

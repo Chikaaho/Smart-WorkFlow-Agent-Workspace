@@ -4,7 +4,7 @@
 
 无阻塞项。观察项：
 
-- **UAT 磁盘**：2026-11-09 写满致 PG 崩溃，清理后 66%（余 6.4G）；后端日志约 500MB/天，关默认 DEBUG/轮转/PG 自启随 0.3.3（方向 §6），不加告警；部署前须余 ≥3G。
+- **UAT 磁盘**：2026-11-09 写满致 PG 崩溃，清理后 66%（余 6.4G）；后端日志约 500MB/天，关默认 DEBUG/轮转/PG 自启随 0.4.0 部署，不加告警；部署前须余 ≥3G。
 - **UAT 供应商（Owner 侧）**：Embedding 需 OpenAI 格式 `https://openrouter.ai/api/v1` + `openai/text-embedding-3-small`，模型页挂 Chat 与 Embedding。
 - **CI 抖动（重跑通过）**：`P62CompatRollbackPgTest`、I6G1a/b/c、`AgentToolConfigServiceImplTest`、`CommandOverlapRealEngineTest`（Flowable 乐观锁）。
 - **应用包缺口**：导出 `opinionForms` 为空，触发器/Agent 图/IoT 规则不随包；导入新环境需补建（见 `todo/application-bundle-import-export.md`）。
