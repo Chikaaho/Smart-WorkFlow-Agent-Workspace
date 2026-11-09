@@ -35,7 +35,8 @@ Server 在 0.3.2（tag `0.3.2` = `de8ec017`）的基础上发布 **0.3.3**。0.3
    - 只替换后端：先备份原 jar 与配置，再替换，再重启。
    - 部署后核对：`build.version=0.3.3`，health 为 UP，`flyway_schema_history` 只读确认没有新增记录。
    - 用管理员账号在 UAT 上访问一遍智能体工具列表和启用过滤，确认没有报错。
-   - **磁盘水位目前约 96%，部署前先确认空间够用**。不够就停下报告，不得删除本次以外的文件。
+   - **部署前确认根分区可用空间 ≥ 3G**（2026-11-09 恢复后为 66%，余 6.4G）。不够就停下报告，不得删除本次以外的文件。
+   - 同一次部署完成 §6 的运维附带项。
 6. **发布后同步**：更新 `version.json`（Server 0.3.3）、`CHANGELOG.md`、根 `README.md` 当前发布段、`knowledge/current-status.md`、`memory/*`、`todo/requirement-pool.md`。
 
 ## 3. 与 P66 的并行关系（system.md §4 冲突判定）
@@ -52,8 +53,8 @@ Server 在 0.3.2（tag `0.3.2` = `de8ec017`）的基础上发布 **0.3.3**。0.3
 
 ## 4. 回执
 
-- 第 1 步（影响核实）：`receipts/execution-033-01.md`。不受影响时就在这里停下。
-- 第 2—6 步：`receipts/execution-033-02.md`。要包含发布事实（commit、tag、Release ID、sha256、UAT 部署回读）以及发布后同步覆盖矩阵。
+- 第 1 步（影响核实）：日志部分已在 `receipts/execution-033-01.md`（PARTIAL）；复现与 10 处路径映射写入 `receipts/execution-033-02.md`，覆盖第 1 步全部，并补 UAT 恢复审查 W1（PM2 整体移除后，确认没有其他进程因此停止：对比当前端口监听清单，若有留存则附删除前 `pm2 list`）。不受影响时就在这里停下。
+- 第 2—6 步及 §6：`receipts/execution-033-03.md`。要包含发布事实（commit、tag、Release ID、sha256、UAT 部署回读）以及发布后同步覆盖矩阵。
 
 ## 5. 约束
 
@@ -61,3 +62,18 @@ Server 在 0.3.2（tag `0.3.2` = `de8ec017`）的基础上发布 **0.3.3**。0.3
 - 不强推，不改写历史，不移动已发布的 tag。
 - 截图、凭据不入 Git。
 - 不碰 Web 子模块里未提交的改动，也不碰 Web `vite.config.ts` 的在途改动。
+
+## 6. 运维附带项（Owner 2026-11-09 裁决，随本补丁部署一起做）
+
+来源：`product/uat-recovery-20261109/receipts/planning-review-uat-recovery-01.md` §4 W2/§6。如果第 1 步结论是取消 0.3.3，本节整体并入 0.4.0 的 UAT 部署执行，由 Planner 写入 P66 方向。
+
+1. **默认不输出 DEBUG 日志**（属于代码仓配置改动，进本补丁）：
+   - 先只读查明 UAT 上 DEBUG 输出的来源（生产 profile 的 `logging.level.*`、logback/log4j 配置、MyBatis SQL 日志等），写入回执。
+   - 只把“默认输出 DEBUG”关掉，让生产默认只输出 INFO 及以上。**不逐个调整各类的日志等级**，也不新增按类配置。
+   - 不能用 appender 级别的阈值过滤器把 DEBUG 永久挡掉：后续日志管理页面要能对单个类动态打开 DEBUG，并让它真正输出。
+   - 不改业务代码；`mvn test` 照常全量通过。
+   - 部署后回读：重启后 10 分钟内的日志无 DEBUG 行；记录部署后第一个完整 24 小时的日志量，写进发布后同步（预期远低于此前的约 500MB/天）。
+2. **日志轮转**（UAT 运维）：先读现有 logrotate 配置（当前已按日轮转并压缩），在此基础上补 `maxsize 100M`、`rotate 14`、`compress`。如果后端用的是框架自带轮转，改为同样的口径即可，二者只保留一种。备份原配置到 `/root/uat-ops-033/`，再用 `logrotate -d` 演练。
+3. **PG 崩溃后自动拉起**：为 `postgresql@14-main` 增加 systemd drop-in（`Restart=on-failure`、`RestartSec=5s`），执行 `daemon-reload`，回读 `systemctl show -p Restart`。**不需要为此重启 PG。**
+4. **不做**：不加磁盘告警（Owner：系统不是一直在用，需要时再清理）。部署前“可用空间 ≥ 3G”的门槛保留。
+5. reasonix 的两处保留项（`/root/TODO-reasonix-openrouter.md`、`/root/.claude/projects/-data-reasonix-files*`）Owner 同意保留，不要处理。

@@ -6,7 +6,7 @@ Owner 2026-11-09 授权只读诊断、诊断后恢复，以及清理部署留下
 
 **执行完成（2026-11-09）**：根分区 100% → PG 14 checkpointer PANIC、崩溃恢复因无空间失败；清理 reasonix 运行内容（约 6.6G）与旧备份/旧日志/apt 缓存（约 0.6G）后，PG **14.24** 自动恢复 online（5433），`smart_workflow` 31 行历史、终点 **0.2.9**；后端 health **UP**、`build.version=0.3.2`；`https://chikaho.cn/` **200**，登录后三个实例 `YJ-20261108-008`、`XY-20261108-015`、`MES-20261108-015` 详情只读打开。根分区降至 **66%（6.4G 可用）**。reasonix 仅剩 `TODO-reasonix-openrouter.md` 与 `.claude/projects/-data-reasonix-files*` 两处非运行关联项，交 Owner 决定。回执 `product/uat-recovery-20261109/receipts/execution-uat-recovery-01.md`。0.3.3 日志部分见 `execution-033-01.md`（PARTIAL）；P66 比对见 `execution-final-02.md`（28/28 一致）。
 
-**规划通过（2026-11-09，`receipts/planning-review-uat-recovery-01.md`）**：停机约 3 小时 21 分钟，无数据丢失；方向归档 `passed/`。后续：W1 补确认 PM2 整体移除未影响其他进程（并入 `execution-033-02.md`）；W2 后端日志 INFO+轮转（100MB/14 天/1G）、PG `Restart=on-failure`、磁盘 80% 告警，待 Owner 授权后随下次部署执行；W3 两处 reasonix 保留项建议保留。
+**规划通过（2026-11-09，`receipts/planning-review-uat-recovery-01.md`）**：停机约 3 小时 21 分钟，无数据丢失；方向归档 `passed/`。后续：W1 补确认 PM2 整体移除未影响其他进程（并入 `execution-033-02.md`）；W2 Owner 裁决：默认不输出 DEBUG（各类等级不改）、logrotate 补 100M/14 份/压缩、PG `Restart=on-failure`、不加告警，写入 0.3.3 方向 §6 随部署执行（0.3.3 取消则并入 0.4.0）；W3 Owner 同意保留。
 
 ## 当前最高优先：Server 0.3.3 补丁（M，智能体工具 `enabled` 整数绑定，第 1 步日志部分完成，PARTIAL）
 
@@ -35,7 +35,8 @@ Owner 2026-11-08 要求与三示例流程并行（system.md §4 已修订为不�
 - **发布**：Web tag `0.3.6`=`c3f1d6e`（Release `438126185`）；Server 维持 0.3.2（tag `de8ec017`，Release `437820040`）；UAT Web 入口 `index-CKdiXkhU.js`、build.version=0.3.2、Flyway V0.2.9。Web 0.3.2 tag 同版本覆盖 Owner 2026-11-08 追认（维持 `3b0043f`）。已发布 tag 0.3.0—0.3.5 均未改动。
 - **最终证据实例**：A1 `YJ-20261108-008/009`、A2 `YJ-20261108-006`、B1 `XY-20261108-015`、B2 `XY-20261108-013`、B3 `XY-20261108-014`、C1 `MES-20261108-015`、C2 `MES-20261108-016`。
 - **应用包**：维持 `systemVersion=0.3.2` 导出（71,786 B）；缺项与补建方法见功能文件与 `assets/README.md`。
-- **观察区新增**：设计器映射编辑框只对 JSON 场景显示；演示实例按真实节奏分时审批（Owner 需要时再安排）；UAT 磁盘 66%（W2 待授权）。
+- **观察区新增**：设计器映射编辑框只对 JSON 场景显示；演示实例按真实节奏分时审批（Owner 需要时再安排）；UAT 磁盘 66%（W2 随 0.3.3）。
+- **日志管理页面（Owner 2026-11-09 提出，候选未排期）**：管理端按类查看并动态调整日志等级（Owner 提到 log4j 式的日志管理）。立项时先核实后端现用的日志框架，优先复用 Spring Boot `LoggingSystem` 或 actuator `loggers` 能力，需要权限控制，还要定清楚重启后是否保留调整；是否更换日志框架由 Owner 决定。
 
 终态复核 `product/three-sample-process-uat/receipts/planning-final-review-036-completed.md` 通过，三示例流程线结束；根 README、version.json 的“待终态复核”表述随 P66 发布后同步改为 COMPLETED。当前唯一下一动作见 P66 段。
 
