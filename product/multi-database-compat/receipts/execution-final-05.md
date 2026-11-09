@@ -3,11 +3,11 @@
 | 项目 | 内容 |
 |---|---|
 | 功能 | P66 多数据库兼容（XL，0.4.0） |
-| 依据 | `product/multi-database-compat/receipts/planning-review-final-03.md` §6/§7（Owner 裁决方案 A） |
+| 依据 | `product/multi-database-compat/receipts/planning-review-final-03.md` §6/§7（Owner 裁决方案 A）；`planning-review-final-04.md` §3/§6（远程分支清理，Owner 裁决） |
 | 日期 | 2026-11-09 |
 | 执行角色 | Executor |
-| 状态 | **第 1 项完成**（README 下掉 2 张图并回读渲染）；**Z4 待时间窗**（2026-11-10 17:16 之后） |
-| 结论 | README 界面预览保留 6 张，`agent-graph.png`、`approval-detail.png` 引用与图注已移除、图片文件保留在仓库；GitHub raw 与渲染 HTML 双回读通过。P66 在 Z4 补做后即可进入 Planner 终态复核 |
+| 状态 | **第 1 项完成**（README 下掉 2 张图并回读渲染）；**分支清理完成**（§4）；**Z4 待时间窗**（2026-11-10 17:16 之后） |
+| 结论 | README 界面预览保留 6 张，`agent-graph.png`、`approval-detail.png` 引用与图注已移除、图片文件保留在仓库；GitHub raw 与渲染 HTML 双回读通过。13 条已合入分支（Server 5、Web 8）远程与本地均已删除，Web `develop` 已普通快进到 `main`；两仓远程各剩 3 条分支，tag 前后逐行一致。P66 在 Z4 补做后即可进入 Planner 终态复核 |
 
 ## 1. README 下掉 `agent-graph.png` 与 `approval-detail.png`
 
@@ -59,9 +59,143 @@
 
 本节记录前不做任何日志/磁盘写操作。
 
-## 4. 下一步
+## 4. 远程分支清理（`planning-review-final-04.md` §3/§6）
+
+Owner 2026-11-09 裁决：已合入分支远程、本地都删，包括 P66 自己的 `feature/0.4.0-multi-database`，因此 `execution-final-04.md` §3 里写的“feature 分支保留”**不再适用**。每个仓库只保留 `main`、`develop` 和未完成分支。证据都留在本机目录
+`E:/code/Smart-WorkFlow-Agent-Evidence/p66-040/branch-cleanup/`，没有提交进 Git。
+
+### 4.1 删除前远程清单（`git fetch --prune` 之后，`git ls-remote --heads origin`）
+
+Server（8 条）：
+
+```text
+a4f6c27815548e6fd63be0d40e24796139f3f1fa  refs/heads/develop
+293432cee2fe23743e3471bad29c2a9aa7be1f63  refs/heads/feature/0.3.2-opinion-display
+19ae82f3f5028b2bc2765c374dc28490f0d52ed3  refs/heads/feature/0.4.0-multi-database
+30370877af8bd07d5f4309246c39f0539e069323  refs/heads/feature/023-agent-execution-lifecycle
+f0906a219afde455afe5b735b731f864f8cbdee2  refs/heads/feature/024-readme-examples-2-3
+7c305978be1b82cb25c4474ab674cab8803470c0  refs/heads/feature/p62-perf-bounded-20261011
+a05fb7f49957973936bae34e854b7394029354ce  refs/heads/fix/030-rework-g1-g6
+a4f6c27815548e6fd63be0d40e24796139f3f1fa  refs/heads/main
+```
+
+Web（11 条）：
+
+```text
+0d71982b60e25a69f2fa868463076f8a02bc70da  refs/heads/develop
+09062a8f93c35d3f6cb772953ab6fd9c31f2b36d  refs/heads/feature/0.3.2-opinion-display
+a8f8416e3f39d20e5d9659f4d9bec428568e05cc  refs/heads/feature/0.3.3-opinion-summary
+b884bccc3ebe5fdd1cd272fcb3986f0d72efec53  refs/heads/feature/0.3.4-opinion-label-fallback
+2b18fdc107ca76c19416827b9a285c85cc317509  refs/heads/feature/0.3.5-flow-table-fit
+8dd02203d1c73a6d78ca8702d540853c70e192c5  refs/heads/feature/0.3.6-command-params-cn
+3ae42cb4fed56a71df5839df831ccf90e74284fe  refs/heads/feature/023-agent-execution-lifecycle
+924ae7c65d8466531b93692ee115a7acfca056af  refs/heads/feature/024-readme-examples-2-3
+163340933a93d804fc6f038815972c3ba8cd6b81  refs/heads/feature/ui-figma-align-20261027
+c5eac9b679ed8609926dc79bba3011d422a03ab9  refs/heads/fix/030-rework-g1-g6
+c3f1d6e562bb706b0070e8e78eef52948f0e1c3f  refs/heads/main
+```
+
+核对结果：除去 `main`、`develop` 和 §4 的保留分支，两仓剩下的远程分支和 Planner 清单逐条一致，没有清单外的分支。
+
+### 4.2 删除前门禁：`git merge-base --is-ancestor <branch> origin/main`
+
+远程分支检查的是 fetch 后的跟踪引用，并先确认它的 SHA 与 ls-remote 读到的一致。同名本地分支单独检查。
+
+| 仓库 | 分支 | 远程 SHA | 远程祖先 | 本地 SHA | 本地祖先 |
+|---|---|---|:-:|---|:-:|
+| Server | `feature/0.3.2-opinion-display` | `293432ce` | TRUE | `1aa677d7` | TRUE |
+| Server | `feature/0.4.0-multi-database` | `19ae82f3` | TRUE | `19ae82f3` | TRUE |
+| Server | `feature/023-agent-execution-lifecycle` | `30370877` | TRUE | `30370877` | TRUE |
+| Server | `feature/024-readme-examples-2-3` | `f0906a21` | TRUE | `8b65ae53` | TRUE |
+| Server | `fix/030-rework-g1-g6` | `a05fb7f4` | TRUE | `a05fb7f4` | TRUE |
+| Web | `feature/0.3.2-opinion-display` | `09062a8f` | TRUE | `09062a8f` | TRUE |
+| Web | `feature/0.3.3-opinion-summary` | `a8f8416e` | TRUE | `a8f8416e` | TRUE |
+| Web | `feature/0.3.4-opinion-label-fallback` | `b884bccc` | TRUE | `b884bccc` | TRUE |
+| Web | `feature/0.3.5-flow-table-fit` | `2b18fdc1` | TRUE | `2b18fdc1` | TRUE |
+| Web | `feature/0.3.6-command-params-cn` | `8dd02203` | TRUE | `8dd02203` | TRUE |
+| Web | `feature/023-agent-execution-lifecycle` | `3ae42cb4` | TRUE | `3ae42cb4` | TRUE |
+| Web | `feature/024-readme-examples-2-3` | `924ae7c6` | TRUE | `5d531ce7` | TRUE |
+| Web | `fix/030-rework-g1-g6` | `c5eac9b6` | TRUE | `c5eac9b6` | TRUE |
+
+26 项全部 TRUE。两条本地 `feature/024-readme-examples-2-3` 原来分别领先远程 4 个、1 个提交，但这些提交也都是 `origin/main` 的祖先，说明已经通过别的路径合进了 main，删掉不会丢提交。保留分支：Server `feature/p62-perf-bounded-20261011` 领先 main 16 个提交，Web `feature/ui-figma-align-20261027` 领先 1 个，与 final-04 §4 一致。
+
+### 4.3 删除执行
+
+- **远程**：用 `git push origin --delete <branch>` 逐条删除，共 13 条（Server 5、Web 8），全部 `[deleted]`。没有强推，没碰 tag。删 Server 第 2 条时代理链路抖动，连续 4 次在 TLS 握手阶段失败（`SSL_connect: SSL_ERROR_SYSCALL`，请求没有到达 GitHub）；探测连通恢复后从这一条接着删，之后没有再失败。
+- **本地**：两仓都检出在 `main`（工作区未动），用 `git branch -d` 删掉 13 条同名本地分支，`-d` 会拒绝未合入的分支。下面是删除前的完整 SHA，需要时可以按 SHA 恢复：
+
+| 仓库 | 本地分支 | 删除前 SHA |
+|---|---|---|
+| Server | `feature/0.3.2-opinion-display` | `1aa677d70a02634058d80dd7f793b08f6a3e76c4` |
+| Server | `feature/0.4.0-multi-database` | `19ae82f3f5028b2bc2765c374dc28490f0d52ed3` |
+| Server | `feature/023-agent-execution-lifecycle` | `30370877af8bd07d5f4309246c39f0539e069323` |
+| Server | `feature/024-readme-examples-2-3` | `8b65ae53dda5e3e35d036a4c4fb6bb78b8f530f5` |
+| Server | `fix/030-rework-g1-g6` | `a05fb7f49957973936bae34e854b7394029354ce` |
+| Web | `feature/0.3.2-opinion-display` | `09062a8f93c35d3f6cb772953ab6fd9c31f2b36d` |
+| Web | `feature/0.3.3-opinion-summary` | `a8f8416e3f39d20e5d9659f4d9bec428568e05cc` |
+| Web | `feature/0.3.4-opinion-label-fallback` | `b884bccc3ebe5fdd1cd272fcb3986f0d72efec53` |
+| Web | `feature/0.3.5-flow-table-fit` | `2b18fdc107ca76c19416827b9a285c85cc317509` |
+| Web | `feature/0.3.6-command-params-cn` | `8dd02203d1c73a6d78ca8702d540853c70e192c5` |
+| Web | `feature/023-agent-execution-lifecycle` | `3ae42cb4fed56a71df5839df831ccf90e74284fe` |
+| Web | `feature/024-readme-examples-2-3` | `5d531ce7cf1c256be354e53603b49394df2781b0` |
+| Web | `fix/030-rework-g1-g6` | `c5eac9b679ed8609926dc79bba3011d422a03ab9` |
+
+- Web 子模块的 `vite.config.ts` 在途改动全程保持 ` M`，没有切换分支，也没有暂存。
+
+### 4.4 Web `develop` 快进到 `main`
+
+- 门禁：`origin/develop` 是 `origin/main` 的祖先（TRUE）。`develop..main` 有 3 个提交，正是 0.3.4、0.3.5、0.3.6 的 develop→main 合并；`main..develop` 为 0。
+- 普通推送：`git push origin c3f1d6e5…:refs/heads/develop`，结果 `0d71982..c3f1d6e`（快进，没有强推）。
+- 回读：`refs/heads/develop = refs/heads/main = c3f1d6e562bb706b0070e8e78eef52948f0e1c3f`。
+- 本机 `develop` 引用也已对齐：Web 为 `c3f1d6e5`；Server 原来落后 2 个提交，现为 `a4f6c278`。两边都检出在 `main`，工作区没有改动。
+
+### 4.5 删除后远程清单与 tag
+
+Server（3 条）：
+
+```text
+a4f6c27815548e6fd63be0d40e24796139f3f1fa  refs/heads/develop
+7c305978be1b82cb25c4474ab674cab8803470c0  refs/heads/feature/p62-perf-bounded-20261011
+a4f6c27815548e6fd63be0d40e24796139f3f1fa  refs/heads/main
+```
+
+Web（3 条）：
+
+```text
+c3f1d6e562bb706b0070e8e78eef52948f0e1c3f  refs/heads/develop
+163340933a93d804fc6f038815972c3ba8cd6b81  refs/heads/feature/ui-figma-align-20261027
+c3f1d6e562bb706b0070e8e78eef52948f0e1c3f  refs/heads/main
+```
+
+tag：`git ls-remote --tags origin` 删除前后逐行 `diff` 为空（Server 84 行，Web 90 行）。`0.4.0` 仍是 annotated tag 对象 `6093c4cc…`，指向 `a4f6c278`；Web `0.3.6` 仍为 `c3f1d6e5`。
+
+**对照 final-04 §6 验收标准：通过。** Server 远程只剩 `main`、`develop`、`feature/p62-perf-bounded-20261011`；Web 远程只剩 `main`、`develop`、`feature/ui-figma-align-20261027`，且 Web `develop` = `main`。
+
+### 4.6 清单外的本地分支（只读核对，未删）
+
+§3 授权删除的本地分支只包括 13 条同名分支。下面这些本地分支不在清单里，本轮**没有删除**，只做了只读核对，交 Planner 按长期规则裁决：
+
+| 仓库 | 本地分支 | 上游 | 已合入 `origin/main` | 领先 main |
+|---|---|---|:-:|---:|
+| Server | `0.1.1-bugfix` | 仅本地 | TRUE | 0 |
+| Server | `bugfix/0.1.7` | 远程已删 | TRUE | 0 |
+| Server | `feature/0.3.0-sample-processes` | 仅本地 | TRUE | 0 |
+| Server | `feature/0.3.1-approval-driven-flow` | 仅本地 | TRUE | 0 |
+| Server | `feature/p61-user-facing-message-humanization` | 远程已删 | TRUE | 0 |
+| Server | `feature/p64-mes-advanced-orchestration` | 远程已删 | TRUE | 0 |
+| Server | `fix/openapi-callback-tenant-017` | 远程已删 | TRUE | 0 |
+| Server | `fix/super-tenant-visibility` | 远程已删 | TRUE | 0 |
+| Web | `0.1.1-bugfix` | 仅本地 | TRUE | 0 |
+| Web | `bugfix/0.1.7` | 远程已删 | TRUE | 0 |
+| Web | `feature/p61-msg-scope-corrected` | 仅本地，**被工作树 `E:/code/p61-wt-web` 检出** | TRUE | 0 |
+| Web | `feature/p61-user-facing-message-humanization` | 远程已删 | TRUE | 0 |
+| Web | `feature/p64-mes-advanced-orchestration` | 远程已删 | TRUE | 0 |
+
+这 13 条都已合入 main，没有领先提交，用 `git branch -d` 删掉也不会丢提交。只有 `feature/p61-msg-scope-corrected` 不同：要删它，得先移除工作树 `E:/code/p61-wt-web`，而那个目录里可能还有没提交的文件，需要工作树的使用者确认。Server 本地还有 `feature/p62-perf-bounded-20261011`，属于未完成分支，按裁决保留。
+
+## 5. 下一步
 
 1. 2026-11-10 17:16 后：Executor 补做 Z4，回填本回执 §3。
-2. Z4 完成后：Planner 做 P66 终态复核（第 52 功能正式登记、方向归 `passed/`、COMPLETED）。
-3. Web 缺陷 W-a—W-d 已登记 `todo/web-ui-defects-20261109.md`，等下一个 Web 补丁方向
-   （Owner 已裁决现在不开 Web 0.3.7）；补丁发布后重拍智能体编排图、审批详情图并放回 README。
+2. Z4 完成后：Planner 做 P66 终态复核（正式登记第 52 个功能、方向归 `passed/`、COMPLETED）。§4 的分支清理已完成，不再阻塞终态复核。
+3. Web 缺陷 W-a—W-d 已登记在 `todo/web-ui-defects-20261109.md`，等下一个 Web 补丁方向（Owner 已裁决现在不开 Web 0.3.7）。补丁发布后，重拍智能体编排图和审批详情图，放回 README。
+4. Planner 裁决：§4.6 清单外的 13 条已合入本地分支，是否按长期规则一并删除。其中 `feature/p61-msg-scope-corrected` 要先确认工作树 `E:/code/p61-wt-web` 能否移除。

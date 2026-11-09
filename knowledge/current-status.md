@@ -21,13 +21,17 @@ P66 多数据库兼容以 **Server 0.4.0** 发布并部署 UAT，登记为第 **
   0.3.2 jar 在 0.4.0 库上以 `FlywayValidateException: Detected applied migration not resolved locally:
   0.4.0 rename bpm opinion comment` 退出 1，回滚说明已改为“停服 → 恢复
   `smart_workflow_20261109_pre040.dump` → 换回 `bootstrap.jar.bak-pre040`”；Z3 develop 已普通快进到
-  `a4f6c278`，`origin/main=origin/develop`，tag `0.4.0` 未动，feature 分支保留；Z1 七张图已按
+  `a4f6c278`，`origin/main=origin/develop`，tag `0.4.0` 未动，feature 分支保留（Owner 2026-11-09 改为删除，已执行，见下条）；Z1 七张图已按
   1440×900/DPR2 重拍并替换，`agent-graph.png` 因 Web 缺 Vue Flow 默认主题样式（节点只有文字、无卡片）
   阻塞，需 Web 补丁；Z4 待 2026-11-10 17:16 后只读补做。
 - **收尾补做（`product/multi-database-compat/receipts/execution-final-05.md`）**：Owner 裁决方案 A
   （`planning-review-final-03.md` §7），README 已下掉 `agent-graph.png`、`approval-detail.png` 引用
   （`6c8b53ac`，8 个图片文件保留，README 剩 6 张），GitHub raw 与渲染 HTML 回读通过；W-a—W-d 登记
   `todo/web-ui-defects-20261109.md` 留到下一个 Web 补丁；Z4 待 2026-11-10 17:16 后补。
+  分支清理（`planning-review-final-04.md` §3/§6，回执同上 §4）：13 条已合入分支（Server 5、Web 8，含
+  `feature/0.4.0-multi-database`）远程与同名本地均已删除；Web `develop` 快进到 `main`（`c3f1d6e5`）；
+  Server 远程剩 `main`/`develop`/`feature/p62-perf-bounded-20261011`，Web 远程剩
+  `main`/`develop`/`feature/ui-figma-align-20261027`；tag 前后逐行一致。
 - **固定值**：功能 **52**；M59/18/13=90；ADV1/7/56=64；实际 P63；问题 57；正式验证基线新增 []。
 - **待办**：Z4（2026-11-10 17:16 后）→ Planner 终态复核 0.4.0；DM8/KingbaseES Owner 实库验证；`JavaSubprocessExecutor`
   子进程输出竞态登记 `todo/iot-subprocess-output-race.md`。
