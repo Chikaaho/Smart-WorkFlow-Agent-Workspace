@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-2026-11-09｜Executor（Z6）｜两代码仓 main README 已同步：Server 0.4.0（main=develop=`7d009021`）、Web 0.3.6（`e181e25`），main CI success；CI 自动产物成两仓 Latest，待 Owner 定；Z4 待 11-10 17:16 后。
+2026-11-09｜Planner（final-08）｜Z6 版本同步通过；两代码仓 README 漏了开源重排与截图（Planner 方向写窄），新增 Z7 阻塞终态；Latest 修复待 Owner 授权；Z4 待 11-10 17:16 后。
 
 ## 当前任务
 

@@ -123,7 +123,7 @@ Oracle 11g 不在本次范围内。如果需要支持，Owner 另行提出。
 
 #### README 重排（Owner 2026-11-09，阶段 6 发布后同步时完成）
 
-**范围**：工作区根 `README.md`。Server 和 Web 仓库的 README 只需同步版本与链接。
+**范围**：工作区根 `README.md`、Server 仓 `README.md`、Web 仓 `README.md`，三份都按下面的编排和截图要求重排（Owner 2026-11-09 更正：原来写的“代码仓只同步版本与链接”收窄了 Owner 的要求，见 `receipts/planning-review-final-08.md` Z7）。
 
 **内容**：
 1. **三示例流程标记为完成。**
