@@ -1,6 +1,6 @@
 # 交接
 
-2026-11-09｜Planner（final-07）｜Server/Web main README 仍写 0.2.4：新增 Z6 同步两代码仓 README（阻塞终态）；工作区 main 为通用底座，不合并；Z4 待 11-10 17:16 后。
+2026-11-09｜Executor（Z6）｜两代码仓 main README 已同步：Server 0.4.0（main=develop=`7d009021`）、Web 0.3.6（`e181e25`），main CI success；CI 自动产物成两仓 Latest，待 Owner 定；Z4 待 11-10 17:16 后。
 
 ## 当前
 
@@ -22,7 +22,7 @@ P66 多数据库兼容（XL）以 **Server 0.4.0** 发布，登记第 **52** 个
 三示例流程（0.3.1—0.3.6）保持 **`COMPLETED`**；Web **0.3.6**（tag `c3f1d6e`，Release
 `438126185`，入口 `assets/index-CKdiXkhU.js`）不变。应用包维持 `systemVersion=0.3.2`。
 
-**下一动作**：Executor 按 `product/multi-database-compat/receipts/planning-review-final-07.md` §3 做 Z6（Server README→0.4.0、Web README→0.3.6，develop→main，不动 tag，Web 只提交 README）；2026-11-10 17:16 后在 `execution-final-05.md` §3 只读补 Z4（`server.log` 大小、`df -h /`、logrotate 实际轮转），然后 Planner 终态复核（第 52 功能、方向归 `passed/`、COMPLETED）。待 Owner：手动删残留目录 `E:/code/p61-wt-web`（312M，内容全在 main）。Server 2 个额外 worktree（`.lc023-mock/lc023-server-wt`、`E:/code/sw030-server`）属 0.2.3/0.3.0 隔离环境，按 Owner 裁决保留（`planning-review-final-06.md` §3）。Web 缺陷见 `todo/web-ui-defects-20261109.md`。
+**下一动作**：Z6 已完成（`execution-final-05.md` §6）；2026-11-10 17:16 后在同一回执 §3 只读补 Z4（`server.log` 大小、`df -h /`、logrotate 实际轮转），然后 Planner 终态复核（第 52 功能、方向归 `passed/`、COMPLETED）。待 Owner：两仓 Latest 被 CI 自动产物 `build-<sha>` 顶替，是否改回、工作流是否加 `--latest=false`（回执 §6.5）；可选手动删残留目录 `E:/code/p61-wt-web`（312M，内容全在 main）。Server 2 个额外 worktree（`.lc023-mock/lc023-server-wt`、`E:/code/sw030-server`）属 0.2.3/0.3.0 隔离环境，按 Owner 裁决保留（`planning-review-final-06.md` §3）。Web 缺陷见 `todo/web-ui-defects-20261109.md`。
 Owner 侧：DM8、KingbaseES 实库验证。
 
 ## 待办/风险

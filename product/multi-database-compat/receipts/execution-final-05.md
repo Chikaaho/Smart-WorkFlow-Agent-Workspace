@@ -3,11 +3,11 @@
 | 项目 | 内容 |
 |---|---|
 | 功能 | P66 多数据库兼容（XL，0.4.0） |
-| 依据 | `product/multi-database-compat/receipts/planning-review-final-03.md` §6/§7（Owner 裁决方案 A）；`planning-review-final-04.md` §3/§6（远程分支清理，Owner 裁决） |
+| 依据 | `product/multi-database-compat/receipts/planning-review-final-03.md` §6/§7（Owner 裁决方案 A）；`planning-review-final-04.md` §3/§6（远程分支清理，Owner 裁决）；`planning-review-final-05.md` §3（清单外本地分支）；`planning-review-final-06.md` §2/§3；`planning-review-final-07.md` §3/§7（Z6 两个代码仓 `main` README 同步） |
 | 日期 | 2026-11-09 |
 | 执行角色 | Executor |
-| 状态 | **第 1 项完成**（README 下掉 2 张图并回读渲染）；**分支清理完成**（§4）；**清单外本地分支清理完成**（§5）；**Z4 待时间窗**（2026-11-10 17:16 之后） |
-| 结论 | README 界面预览保留 6 张，`agent-graph.png`、`approval-detail.png` 引用与图注已移除、图片文件保留在仓库；GitHub raw 与渲染 HTML 双回读通过。13 条已合入分支（Server 5、Web 8）远程与本地均已删除，Web `develop` 已普通快进到 `main`；两仓远程各剩 3 条分支，tag 前后逐行一致。§4.6 清单外 13 条已合入本地分支也已按 final-05 §3 删除（`feature/p61-msg-scope-corrected` 的 git 工作树注册已移除，残留 312 MB 物理目录 `E:/code/p61-wt-web` 交 Owner 手动删除）。两仓本地各剩 `main`、`develop` 和未完成分支（Server `feature/p62-perf-bounded-20261011`）。P66 在 Z4 补做后即可进入 Planner 终态复核 |
+| 状态 | **第 1 项完成**（README 下掉 2 张图并回读渲染）；**分支清理完成**（§4）；**清单外本地分支清理完成**（§5）；**Z6 完成**（§6）；**Z4 待时间窗**（2026-11-10 17:16 之后） |
+| 结论 | README 界面预览保留 6 张，`agent-graph.png`、`approval-detail.png` 引用与图注已移除、图片文件保留在仓库；GitHub raw 与渲染 HTML 双回读通过。13 条已合入分支（Server 5、Web 8）远程与本地均已删除，Web `develop` 已普通快进到 `main`；两仓远程各剩 3 条分支，tag 前后逐行一致。§4.6 清单外 13 条已合入本地分支也已按 final-05 §3 删除（`feature/p61-msg-scope-corrected` 的 git 工作树注册已移除，残留 312 MB 物理目录 `E:/code/p61-wt-web` 交 Owner 手动删除）。两仓本地各剩 `main`、`develop` 和未完成分支（Server `feature/p62-perf-bounded-20261011`）。Z6：Server、Web 的 README 已同步到 0.4.0 / 0.3.6，按 develop → main → develop 普通合入（Server main = develop = `7d009021`，Web main = develop = `e181e25`），两仓 main CI 均 success，GitHub 首页渲染与 20 个链接回读通过；没有建 tag、移 tag 或改 Release，但 CI 自动建的 `build-<sha>` Release 成了两仓 Latest，交 Owner 裁决（§6.5）。P66 在 Z4 补做后即可进入 Planner 终态复核 |
 
 ## 1. README 下掉 `agent-graph.png` 与 `approval-detail.png`
 
@@ -254,10 +254,139 @@ Web（2 条；其未完成分支 `feature/ui-figma-align-20261027` 本来就只�
 
 两者内容都已合入 main；`.lc023-mock` 下的工作树有 1 个脏文件（其中可能含 Owner 要求保留的隔离环境内容），删除前需单独确认。
 
-## 6. 下一步
+## 6. Z6：两个代码仓 `main` 的 README 同步到当前版本（`planning-review-final-07.md` §3）
+
+Owner 发现 Server、Web 在 GitHub `main` 上的 README 还写着 0.2.4。本节把两仓 README 同步到当前版本（Server 0.4.0、Web 0.3.6），按 0.2.3 的先例走 develop → main → develop 对齐。没有建 tag、没有移动 tag、没有手动改 Release。改前的 README、GitHub 页面快照等证据留在本机 `E:/code/Smart-WorkFlow-Agent-Evidence/p66-040/z6/`，不进 Git。
+
+### 6.1 过期表述盘点（两仓 `main`，改前）
+
+搜索范围：两仓的 `README*`、Server 的 `功能清单.md`、两仓 `docs/` 下的说明文档。两仓都没有文档索引页。把 0.2.x 写成“当前”的地方集中在 3 个文件：
+
+| 仓库 | 文件与行 | 原表述 | 处理 |
+|---|---|---|---|
+| Server | `README.md` L16—18 | 「当前可体验」一节开头是一整段“当前发布版本为 **0.2.3**……” | 整篇替换 |
+| Server | `README.md` L60—64 | 「当前版本」一节写“当前正式发布版本为 **0.2.4**……此前 **0.2.3**……” | 整篇替换 |
+| Server | `README.md` L36—58 | 三个示例场景还写着“作为平台应用愿景呈现”“不属于 0.1.0 已交付范围” | 整篇替换，标“已完成” |
+| Server | `功能清单.md` L56 | 当前焦点写“0.2.2 整版交付合并发布中” | 前面插入 0.4.0 当前焦点行，原行加“历史焦点”前缀保留 |
+| Web | `README.md` L16—18 | 同 Server，“当前发布版本为 **0.2.3**……” | 整篇替换 |
+| Web | `README.md` L57—61 | “当前正式发布版本为 **0.2.4**……此前 **0.2.3**……” | 整篇替换 |
+| Web | `README.md` L33—55 | 三个示例场景同 Server | 整篇替换，标“已完成” |
+
+顺带修正：两仓「项目入口」里的 `../README.md`、`../Smart-WorkFlow-aPaaS-*/README.md`（Server L72、L75，Web L69、L72）是按工作区目录写的相对路径，在单独的代码仓里是死链，已改成 GitHub 绝对链接。
+
+排除项（不是“当前版本”的表述，未改）：
+
+- Server `docs/governance/error-code-catalog.md:217` 的“来源行当前版本冲突”：指数据行的版本号，与发布版本无关。
+- Server `功能清单.md` 里带日期的历史说明（L28—45、L197、L252—255、L377）：属于时点记录，原样保留。
+- 各数据库迁移目录、资产目录下的 README：没有“当前版本”表述。
+
+### 6.2 改动内容
+
+**Server**（`README.md` 整篇替换；`功能清单.md` 插入 1 行，并给原行加前缀）：
+
+- 页首写明当前正式版本 0.4.0、配套前端 Web 0.3.6，以及九种数据库。
+- 「当前版本：0.4.0」：tag `0.4.0`→`a4f6c278`（annotated）、Release「CH-aPaaS Server 0.4.0」`438918154`、`bootstrap-0.4.0.jar` 236,245,457 B 和完整 sha256、CI main run `42588179160`、Flyway V0.4.0 的两条新迁移、UAT `build.version=0.4.0`。
+- 升级 4 步：备份；换 jar 后自动迁移；`DatabaseCompatibilityGuard` 在迁移前检查库级前提；默认 INFO 日志。
+- 「回退到 0.3.2」：写明只换 jar 会因 Flyway 校验失败（`Detected applied migration not resolved locally`）无法启动，必须先停服、恢复 `smart_workflow_20261109_pre040.dump`，再换回 0.3.2 的 jar。`production-ops.md` 只在工作区仓库里，所以用绝对链接指向工作区 `develop-sw` 分支，引用 §8.1（后端升级）和 §9.1（数据备份）。
+- 「多数据库支持」：九库矩阵与工作区 README 逐行一致，DM8、KingbaseES 标“Owner 实库验证”，链接 `docs/deployment/multi-database.md`。
+- 「当前可体验」：注明适用于 0.4.0，补“审批意见驱动流转”“Agent 与知识”两条；渠道与 SSO 的真实凭据状态如实写明（邮件已用真实凭据发送成功，其余尚未验证）。
+- 三个示例场景标“已完成”，A/B/C 的链路与工作区 README 一致；B 写明告警目前走站内信和邮件，短信、电话渠道尚未接入。
+- 「版本历史」：0.4.0、0.3.2、0.3.1、0.3.0、0.2.4—0.2.0 各一行，原来 0.2.3、0.2.4 的两段长文压缩进表里。0.3.0 一行写明“Owner 2026-11-07 审核后退回”、退回原因，以及由 0.3.1—0.3.6 返修；0.3.0 的 tag、Release 和部署记录保持原样。
+- `功能清单.md`：新的当前焦点行写 0.4.0 的发布与部署事实（tag、Release、jar 大小、UAT、九库范围、三示例已完成、开发默认版本）；原来的 0.2.2 焦点行保留，加“历史焦点（2026-11-09 被上条覆盖）”前缀，便于按时点追溯。
+
+**Web**（`README.md` 整篇替换）：
+
+- 页首写明当前正式版本 0.3.6、搭配后端 Server 0.4.0（UAT 当前组合）。
+- 「当前版本：0.3.6」：tag `0.3.6`→`c3f1d6e`、Release「CH-aPaaS-Web 0.3.6」`438126185`（标题照 Release 页原样写，带连字符）、`sw-web-dist-0.3.6.zip` 6,197,059 B 和完整 sha256、CI main run `42463025237`、UAT 入口 `assets/index-CKdiXkhU.js`。
+- 「与后端的搭配」：Server 0.4.0 只改数据库适配，业务功能与 0.3.2 相同，所以 Web 不需要随版升级。
+- 「当前可体验」：注明适用于 0.3.6，补“审批意见展示”“Agent 与 IoT 配置”两条，“流程设计与运营”补上应用整包导出导入。写之前在 Web 源码里确认过对应页面都在：`src/modules/agent/views` 下有模型、供应商、图设计器、执行详情、工具、知识库页面，`AppManageList.vue` 有整包导入导出。
+- 三个示例场景标“已完成”，删掉“不属于 0.1.0 已交付范围”的旧说明。
+- 「版本历史」：0.3.6—0.2.0 各一行。两仓都没有 0.2.5；0.3.1 只发了后端，Web 没有打 tag；0.3.2 注明由 `8339a08` 前移；0.3.0 和 Server 一样写明被 Owner 退回。
+
+**事实来源**：tag→提交用 `git ls-remote --tags origin` 回读（annotated tag 取 `^{}` 解引用）；两个制品的 sha256 与 GitHub Release 资产页（`releases/expanded_assets/<tag>`）显示的摘要逐字一致；各版本内容按工作区 `CHANGELOG.md` 0.2.0—0.4.0 各节核对。
+
+### 6.3 提交前校验
+
+- Server 仓没有 git 钩子，CI 也不检查 Markdown。
+- Web 仓用 simple-git-hooks：pre-commit 跑 `lint-staged`（`*.md` 走 `prettier --write`，eslint 只管 ts/tsx/vue），commit-msg 跑 `commitlint`。用户的 Web 主检出有 `vite.config.ts` 在途改动，在那里提交时 lint-staged 会暂存、还原工作区，可能波及这处改动。所以提交改在临时工作树里做，带 `SKIP_SIMPLE_GIT_HOOKS=1`，钩子里的检查逐项手工执行：
+  - prettier 3.8.4（用主检出的 `node_modules/.bin/prettier`，读临时工作树的 `.prettierrc.json`、`.prettierignore`）：`--write` 之后 `--check` 通过；
+  - commitlint：在主检出目录运行，配置文件与临时工作树逐字节相同。第一版提交说明以 `README` 开头，被 `subject-case` 规则拦下（这条规则只检查以英文字母开头的 subject）；改成中文开头后，develop 和 main 两条说明都通过。
+- 改动范围：Server develop 提交只含 `README.md`、`功能清单.md`，Web 只含 `README.md`；两个合并提交相对 `main` 也只有这些文件。
+- Web 主检出全程只有 ` M vite.config.ts`：没有暂存、没有提交、没有切换分支。
+
+### 6.4 提交与合入
+
+用户的主检出占着 `main`，所以在临时工作树 `E:/code/_z6-wt/{server,Web}` 里操作：先在 develop 提交并推送；再 detach 到 `origin/main` 做 `--no-ff` 合并，普通推送到 `main`；最后把 `develop` 快进到合并提交并推送。全程普通推送，没有强推。
+
+| 仓库 | develop 提交 | main 合并提交（父提交） | 推送 | 远端回读 |
+|---|---|---|---|---|
+| Server | `3b4f1c92`「docs(readme): README 与功能清单同步到 0.4.0（多数据库矩阵、回退须先恢复 pre040 备份、版本历史）」 | `7d009021`（`a4f6c278` + `3b4f1c92`）「docs(readme): merge develop into main（README 与功能清单同步到 0.4.0）」 | develop `a4f6c278..3b4f1c92`；main `a4f6c278..7d009021`；develop `3b4f1c92..7d009021` | main = develop = `7d0090215d6ee7c5a0d9a70037e9576804e2eede` |
+| Web | `9e6ba33`「docs(readme): 同步 README 到 0.3.6（搭配 Server 0.4.0、版本历史）」 | `e181e25`（`c3f1d6e` + `9e6ba33`）「docs(readme): merge develop into main（同步 README 到 0.3.6）」 | develop `c3f1d6e..9e6ba33`；main `c3f1d6e..e181e25`；develop `9e6ba33..e181e25` | main = develop = `e181e25fce3b785a0e2aa8c205e4a9eed6de3201` |
+
+develop 提交的完整 SHA：Server `3b4f1c92138774fac6037bbb13aa24aec61f9e83`，Web `9e6ba3327c9daa4ce6ab1652543f39483e2e526c`。
+
+Server 推送 develop 对齐时，首次推送和紧接着的 2 次重试都在 TLS 握手阶段失败（`SSL_ERROR_SYSCALL`，请求没有到达 GitHub），第 3 次重试成功。
+
+**做法纠正**：本回执涉及的几轮执行中，早先有网络重试循环用了 `sleep` 间隔，违反 `system.md` §0.8.2（严禁 `sleep` 和延时轮询空转等待）。之后全部改成有次数上限的立即重试。等 CI 期间也没有空转：先做不依赖 CI 的工作（Web README、渲染回读、回执），做完再查结果。
+
+### 6.5 main CI、自动产物与 Latest
+
+| 仓库 | main run | 结果 | CI 自动建的产物 |
+|---|---|---|---|
+| Server | `42631428381`（Build & Release 第 130 次） | completed successfully | tag `build-7d0090215d6ee7c5a0d9a70037e9576804e2eede`；Release「CH-aPaaS-Server 0.4.0 build 7d009021…」，`bootstrap-0.4.0.jar` sha256 `c2c2ec3d9f135d3d1717b1125123339c34956ec85af4cec8eb5a7c8153df8d00` |
+| Web | `42633872862`（第 82 次） | completed successfully | tag `build-e181e25fce3b785a0e2aa8c205e4a9eed6de3201`；Release「CH-aPaaS-Web 0.3.6 build e181e25…」，`sw-web-dist-0.3.6.zip` sha256 `5ed2421df82c62e5c058b886bcd5424c1f274c3acd1f78fe90d9b73638358212` |
+
+回读方式：GitHub API 的匿名配额已经用完，本轮也没有用凭据管理器里的令牌。run 状态取自公开的 Actions 页面（`aria-label` 为 “completed successfully: Run 130/82 …”，页面上 run id 与运行序号相邻）。工作流最后一步才建 `build-<sha>` Release，所以这个 tag 出现，也说明整条流水线已经跑完。
+
+tag 和语义 Release 没有被动过：
+
+- 两仓 `git ls-remote --tags origin` 与 §4.5 清理后的基线逐行比对，只多出上表的 `build-<sha>` 一行（Server 84→85 行，Web 90→91 行）。`0.4.0` 仍是 annotated 对象 `6093c4cc`，指向 `a4f6c278`；`0.3.6` 仍是 `c3f1d6e`。
+- 语义 Release 的资产没变：`0.4.0` 的 `bootstrap-0.4.0.jar` 仍是 `188be963…`，`0.3.6` 的 `sw-web-dist-0.3.6.zip` 仍是 `9470f0c1…`。
+
+**需要 Owner 裁决：两仓的 Latest 被自动产物顶替了。** 工作流在 main 上执行 `gh release create "build-${GITHUB_SHA}"` 时没有带 `--latest=false`，新建的自动产物 Release 就成了 Latest：
+
+| 仓库 | 合入前的 Latest | 现在的 Latest |
+|---|---|---|
+| Server | `0.4.0`（语义版） | `build-7d0090215d6ee7c5a0d9a70037e9576804e2eede` |
+| Web | `0.3.6`（语义版） | `build-e181e25fce3b785a0e2aa8c205e4a9eed6de3201` |
+
+影响：从 Latest 下载，会拿到与正式版**同名但字节不同**的制品（自动产物是从 README 合并提交重新构建的，所以 sha256 不同）。UAT 部署的仍是正式版制品，不受影响；README 里写的也是正式版的 Release 链接和 sha256。final-07 不允许改 Release，所以本轮没有处理。可选做法：
+
+1. 在 GitHub 上把 `0.4.0`、`0.3.6` 重新设为 Latest（属于改 Release，需要授权）；
+2. 以后给工作流中建自动产物的 `gh release create` 加上 `--latest=false`，从根上避免（两仓 CI 改动，需要单独立项）；
+3. 维持现状。
+
+建议 1 和 2 一起做。
+
+### 6.6 GitHub 渲染与链接回读
+
+取两仓 GitHub 首页 HTML（本机留存 `render-server-home.html`、`render-web-home.html`）：
+
+| 检查项 | Server | Web |
+|---|---|---|
+| 默认分支 | `main` | `main` |
+| 首页对应的提交（`currentOid`） | `7d009021…` | `e181e25…` |
+| 通用新内容（“当前正式版本”“版本历史”“审核后退回”“三个示例场景（已完成）”） | 都在 | 都在 |
+| 各自的新内容 | “多数据库支持”“Owner 实库验证”、`pre040`、`production-ops.md`、`multi-database.md` 都在 | 0.3.6 当前版本、搭配 Server 0.4.0 都在 |
+| 旧的“当前发布版本为 0.2.3”长段 | 0 处 | 0 处 |
+| README 表格 | 4 个（当前版本、多数据库、版本历史、项目入口） | 3 个（当前版本、版本历史、项目入口） |
+
+页面里另有 1 个 `<table>` 是 GitHub 自己的文件列表，不计入。
+
+链接：从两仓 `origin/main` 的 README 中提取全部链接和图片（Server 11 个、Web 9 个，相对路径按 `blob/main` 解析）逐个请求，**全部 HTTP 200**，包括 logo、`docs/deployment/multi-database.md`、工程宪法，以及指向工作区 `develop-sw` 的 `production-ops.md`、`CHANGELOG.md`、`knowledge/features/0.3.2-opinion-display.md`。
+
+### 6.7 收尾
+
+- 临时工作树 `E:/code/_z6-wt/server`、`E:/code/_z6-wt/Web` 都是干净的，已用 `git worktree remove`（不带 `--force`）移除，空目录 `E:/code/_z6-wt` 已删。两仓 `worktree list` 只剩主检出，以及 Owner 保留的 2 个 Server 隔离环境工作树（§5.4）。
+- 用户的主检出没有动：两仓仍检出 `main`，本地 `main` 落后 `origin/main` 2 个提交（就是本节的 develop 提交和合并提交，只涉及 README 和 `功能清单.md`）；本地 `develop` 已在临时工作树里指到合并提交。Server 主检出有 8080 进程在用，Web 主检出有 `vite.config.ts` 在途改动，所以本轮不替使用者拉取，需要时在主检出执行 `git pull --ff-only` 即可。
+- 留给 Planner 的发现：工作区 README「快速开始」第 3 步写着“按 server README 配置数据源与 Redis 后启动”“按 web README 安装依赖并启动开发服务器”，但两仓 README 改前改后都没有启动步骤（开发者资料在各自的工程宪法里）。本轮按 final-07 只同步版本内容，没有扩写；是改工作区 README 的指引，还是给两仓 README 补启动小节，由 Planner 决定。
+
+## 7. 下一步
 
 1. 2026-11-10 17:16 后：Executor 补做 Z4，回填本回执 §3。
-2. Z4 完成后：Planner 做 P66 终态复核（正式登记第 52 个功能、方向归 `passed/`、COMPLETED）。§4、§5 的分支清理均已完成，不再阻塞终态复核。
-3. Web 缺陷 W-a—W-d 已登记在 `todo/web-ui-defects-20261109.md`，等下一个 Web 补丁方向（Owner 已裁决现在不开 Web 0.3.7）。补丁发布后，重拍智能体编排图和审批详情图，放回 README。
-4. Owner：手动删除已脱离 git 的残留目录 `E:/code/p61-wt-web`（312 MB，内容已全部在 main 里，无唯一文件）。
-5. Planner/Owner 裁决：§5.4 的两个 Server 额外 worktree（`.lc023-mock/lc023-server-wt`、`E:/code/sw030-server`）是否按长期规则处理；其中 `.lc023-mock` 有 1 个脏文件，且可能涉及 Owner 定保留的隔离环境，动前需单独确认。
+2. Z4 完成后：Planner 做 P66 终态复核（正式登记第 52 个功能、方向归 `passed/`、COMPLETED）。§4、§5 的分支清理和 §6 的 Z6 都已完成，不再阻塞终态复核。
+3. Owner 裁决：两仓 Latest 被 CI 自动产物顶替（§6.5）。是否把 `0.4.0`、`0.3.6` 重新设为 Latest，是否给工作流加 `--latest=false`。这件事不影响 UAT 和正式版制品；是否作为终态复核的前置条件，由 Planner 定。
+4. Planner：工作区 README「快速开始」指向两仓 README 的启动步骤，但两仓 README 没有这部分（§6.7）。
+5. Web 缺陷 W-a—W-d 已登记在 `todo/web-ui-defects-20261109.md`，等下一个 Web 补丁方向（Owner 已裁决现在不开 Web 0.3.7）。补丁发布后，重拍智能体编排图和审批详情图，放回 README。
+6. Owner（可选）：手动删除已脱离 git 的残留目录 `E:/code/p61-wt-web`（312 MB，内容已全部在 main 里，无唯一文件）；不删也不影响任何东西（`planning-review-final-06.md` §2）。
+7. §5.4 的两个 Server 额外 worktree 已裁决（`planning-review-final-06.md` §3）：两者属于 0.2.3/0.3.0 的隔离环境，按 Owner 既有裁决**保留**；detached HEAD 不占用分支，不受“合并即删”规则管辖；以后 Owner 撤掉隔离环境时，再连同 `.runtime-*` 和隔离库一起清理。

@@ -1,10 +1,10 @@
 # 当前状态摘要
 
-2026-11-09｜Planner（final-07）｜Server/Web main README 仍写 0.2.4：新增 Z6 同步两代码仓 README（阻塞终态）；工作区 main 为通用底座，不合并；Z4 待 11-10 17:16 后。
+2026-11-09｜Executor（Z6）｜两代码仓 main README 已同步：Server 0.4.0（main=develop=`7d009021`）、Web 0.3.6（`e181e25`），main CI success；CI 自动产物成两仓 Latest，待 Owner 定；Z4 待 11-10 17:16 后。
 
 ## 当前任务
 
-P66 多数据库兼容（XL）以 **Server 0.4.0** 发布并部署 UAT，第 **52** 个正式功能已预登记，以终态复核为准。审查链 `product/multi-database-compat/receipts/planning-review-final-02`—`05.md`：Z1 七图重拍、README 按 Owner 方案 A 下掉 agent-graph/approval-detail（剩 6 张）；Z2 回滚必须恢复 pre040 dump；Z3 develop=main=`a4f6c278`；W-a—W-d 留下个 Web 补丁（`todo/web-ui-defects-20261109.md`），测试流程不隐藏。分支清理通过：13 条已合入分支远程+本地已删，Server 远程剩 main/develop/`feature/p62-perf-bounded-20261011`，Web 剩 main/develop(=main `c3f1d6e5`)/`feature/ui-figma-align-20261027`，tag 未动。待办：Z4 待 2026-11-10 17:16 后；p61 残留目录、Server 2 个额外 worktree 待裁决（回执 §5）。
+P66 多数据库兼容（XL）以 **Server 0.4.0** 发布并部署 UAT，第 **52** 个正式功能已预登记，以终态复核为准。审查链 `product/multi-database-compat/receipts/planning-review-final-02`—`07.md`：Z1 七图重拍、README 按 Owner 方案 A 下掉 agent-graph/approval-detail（剩 6 张）；Z2 回滚必须恢复 pre040 dump；Z3 develop=main=`a4f6c278`；W-a—W-d 留下个 Web 补丁（`todo/web-ui-defects-20261109.md`），测试流程不隐藏。分支清理通过：13 条已合入分支远程+本地已删，Server 远程剩 main/develop/`feature/p62-perf-bounded-20261011`，Web 剩 main/develop/`feature/ui-figma-align-20261027`，tag 未动。待办：Z4 待 2026-11-10 17:16 后；Z6 已完成（`execution-final-05.md` §6）。
 
 - **发布**：tag `0.4.0`=`a4f6c278`，Release `438918154`，`bootstrap-0.4.0.jar`
   236,245,457 B sha256 `188be963…`；`build-<sha>` Release `438913661` 同字节。

@@ -34,8 +34,14 @@ P66 多数据库兼容以 **Server 0.4.0** 发布并部署 UAT，登记为第 **
   `main`/`develop`/`feature/ui-figma-align-20261027`；tag 前后逐行一致。清单外 13 条已合入本地分支也已按
   `planning-review-final-05.md` §3 删除（回执 §5）：两仓本地各剩 `main`/`develop`（Server 另有 p62）；
   p61 工作树注册已移除，残留目录 `E:/code/p61-wt-web` 交 Owner 手动删除。
+- **Z6 两仓 README 同步（`planning-review-final-07.md` §3，回执 `execution-final-05.md` §6）**：Server README
+  整篇替换为 0.4.0（升级说明、回退须先恢复 pre040 dump、九库矩阵、版本历史含 0.3.0 被 Owner 退回），
+  `功能清单.md` 当前焦点改为 0.4.0；Web README 整篇替换为 0.3.6（搭配 Server 0.4.0、版本历史）。
+  develop→main→develop 普通合入：Server main=develop=`7d009021`，Web main=develop=`e181e25`；main CI run
+  `42631428381`、`42633872862` success；GitHub 首页渲染与 20 个链接回读通过；tag 与语义 Release 未动。
+  CI 自动产物 `build-<sha>` 成了两仓 Latest（同名制品、字节不同），是否改回待 Owner 定。
 - **固定值**：功能 **52**；M59/18/13=90；ADV1/7/56=64；实际 P63；问题 57；正式验证基线新增 []。
-- **待办**：Z4（2026-11-10 17:16 后）→ Planner 终态复核 0.4.0；DM8/KingbaseES Owner 实库验证；`JavaSubprocessExecutor`
+- **待办**：Z4（2026-11-10 17:16 后）→ Planner 终态复核 0.4.0；两仓 Latest 是否改回待 Owner；DM8/KingbaseES Owner 实库验证；`JavaSubprocessExecutor`
   子进程输出竞态登记 `todo/iot-subprocess-output-race.md`。
 - **回执**：`product/multi-database-compat/receipts/execution-final-03.md`；功能登记
   `knowledge/features/multi-database-compat.md`。
