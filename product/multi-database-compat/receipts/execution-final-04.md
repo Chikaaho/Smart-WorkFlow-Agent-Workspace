@@ -33,6 +33,10 @@
 
 七张图均 ≤500KB；未出现 ISO 原文时间（会签/审批时间为 `11-08 13:23`，表单时间为 `2026-11-08 16:12:51` 这类格式化文本）。文件名保持不变，已覆盖 `docs/assets/readme/`；README 首图文案改为“流程中心”，并同步 A/B/审批图注。
 
+GitHub 回读：提交 `4cb2988b` 推送 `develop-sw` 后，八张
+`raw.githubusercontent.com/.../develop-sw/docs/assets/readme/*.png` 均 **200**；README 渲染回读包含
+“流程中心”首图、界面预览、A/B/C 三示例、Mermaid `flowchart LR` 与九库矩阵，未发现破图标记。
+
 ### 1.3 `agent-graph.png` 阻塞：Web 缺 Vue Flow 默认主题
 
 智能体编排设计器实际渲染为**只有节点标签、没有节点卡片**；本次已打开 LLM 节点属性面板，但画布仍不合格。DOM 实测（1440×900，DPR2）：
