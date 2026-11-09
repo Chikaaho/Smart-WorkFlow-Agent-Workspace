@@ -1,6 +1,29 @@
 # 当前状态（current-status）
 
-**当前状态（2026-11-08，三示例流程返修 0.3.1—0.3.6——规划审查 07 通过 `PASSED`，终态同步完成，待 Planner 终态复核）**
+**当前状态（2026-11-09，P66 多数据库兼容 0.4.0 已发布并部署 UAT，待 Planner 终态复核）**
+
+P66 多数据库兼容以 **Server 0.4.0** 发布并部署 UAT，登记为第 **52** 个正式功能；Web 维持 **0.3.6**。
+
+- **发布事实**：Server tag `0.4.0`=`a4f6c278`（annotated tag 对象 `6093c4cc…`），Release `438918154`，
+  `bootstrap-0.4.0.jar` 236,245,457 B sha256 `188be963…`；`build-<sha>` Release `438913661` 同字节。
+  Web tag `0.3.6`=`c3f1d6e`，Release `438126185`。已发布 tag 0.3.0—0.3.6 均未改动。
+- **UAT**：Server `build.version=0.4.0`、health UP、根 200、Flyway **v0.4.0**（33 行；新增
+  `V0.4.0__knowledge_vector_persistence.sql` 与 `R__0.4.0_rename_bpm_opinion_comment.sql`，旧 31 条校验和不变）；
+  Web 入口 `assets/index-CKdiXkhU.js`；管理员工具启用过滤 internal=3/external=1/disabled=0。
+- **验证**：全量 `mvn test` **2,481 / 0 failures / 0 errors / 45 skipped**；六库冒烟
+  （MySQL 5.7/8.0、MariaDB、Oracle、openGauss、SQL Server）在最终提交上通过；PG 真实测试覆盖
+  enabled 12 处查询；CI feature #123、develop #126、main #127 均 success。
+- **X1**：`26d0e8a7` 的 `1/0` 恢复为 Boolean；PG/H2 BOOLEAN、SQL Server BIT、MySQL/MariaDB SMALLINT、
+  Oracle/DM NUMBER(1) 由驱动映射；未改迁移。
+- **UAT 运维**：生产默认日志由 DEBUG 调为 INFO（部署后 16 分钟 DEBUG 0 行）；logrotate
+  `rotate/maxage 14`；`postgresql@14-main` drop-in `Restart=on-failure`/`RestartSec=5s`；未加磁盘告警。
+- **固定值**：功能 **52**；M59/18/13=90；ADV1/7/56=64；实际 P63；问题 57；正式验证基线新增 []。
+- **待办**：Planner 终态复核 0.4.0；DM8/KingbaseES Owner 实库验证；`JavaSubprocessExecutor`
+  子进程输出竞态登记 `todo/iot-subprocess-output-race.md`。
+- **回执**：`product/multi-database-compat/receipts/execution-final-03.md`；功能登记
+  `knowledge/features/multi-database-compat.md`。
+
+**历史（2026-11-08，三示例流程返修 0.3.1—0.3.6——规划审查 07 通过 `PASSED`，终态同步完成，待 Planner 终态复核）**
 
 规划审查 07（`product/three-sample-process-uat/receipts/planning-review-07-passed.md`）判定 0.3.6 通过，H1—H9 全部锁定。本终态同步按 `product/three-sample-process-uat/ready/direction-terminal-sync-036.md` 的唯一终态值清单执行，未自行计算或改值。
 

@@ -1,12 +1,12 @@
 # 当前未关闭事项
 
-2026-11-08｜Executor（执行提示05）。
+2026-11-09｜Executor（P66 0.4.0 发布）。
 
 无阻塞项。观察项：
 
-- **UAT 磁盘**：2026-11-09 写满致 PG 崩溃，清理后 66%（余 6.4G）；后端日志约 500MB/天，关默认 DEBUG/轮转/PG 自启随 0.4.0 部署，不加告警；部署前须余 ≥3G。
+- **UAT 磁盘**：0.4.0 部署后 67%（余 6.0G）；默认日志已改 INFO、logrotate rotate/maxage 14、PG `Restart=on-failure` 已配置；不加告警（Owner）；部署前仍须余 ≥3G。
 - **UAT 供应商（Owner 侧）**：Embedding 需 OpenAI 格式 `https://openrouter.ai/api/v1` + `openai/text-embedding-3-small`，模型页挂 Chat 与 Embedding。
-- **CI 抖动（重跑通过）**：`P62CompatRollbackPgTest`、I6G1a/b/c、`AgentToolConfigServiceImplTest`、`CommandOverlapRealEngineTest`（Flowable 乐观锁）。
+- **CI 抖动（重跑通过）**：`P62CompatRollbackPgTest`、I6G1a/b/c、`AgentToolConfigServiceImplTest`、`CommandOverlapRealEngineTest`（Flowable 乐观锁）；新增 `JavaSubprocessSandboxTest`（子进程输出竞态，见 `todo/iot-subprocess-output-race.md`）。
 - **应用包缺口**：导出 `opinionForms` 为空，触发器/Agent 图/IoT 规则不随包；导入新环境需补建（见 `todo/application-bundle-import-export.md`）。
 - **0.3.3—0.3.5 教训**：0.3.3 漏备注型裸文本与 ISO 时间（0.3.4 修），0.3.4 表格最小宽度 1438px 溢出 1440 视口（0.3.5 修）——UAT 截图须同时测 scrollWidth/clientWidth。
 - **UAT 重跑顺序**：A 高影响路径引擎顺序 负责人→技术委员会→分管副总→参与部门并行→总公司→现场指挥；按回执叙事顺序会错挂意见表单（`YJ-20261108-007` 已 discard）。

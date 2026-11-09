@@ -1,5 +1,16 @@
 # CH-aPaaS 发布说明 / Release Notes
 
+## 0.4.0（2026-11-09 Server 发布并部署 UAT；多数据库兼容，P66 第 52 个正式功能）
+
+- **背景**：P66 多数据库兼容（XL）。迁移脚本与全部 SQL 种子适配 H2、PostgreSQL、MySQL 5.7/8.0、MariaDB 10.6、Oracle 21c XE、SQL Server 2019+、openGauss 5.0；DM8、KingbaseES V8 由 Owner 实库验证。
+- **数据库矩阵**：MySQL 5.7/8.0、MariaDB、Oracle、openGauss、SQL Server 六库空库启动、30 条迁移、种子、中文/JSON/动态宽表/向量/主流程冒烟全部通过；PG 校验和与 UAT 28/28 一致。
+- **X1**：智能体工具 `sw_agent_tool_internal/external.enabled` 恢复 Boolean 绑定，PG/H2 为 BOOLEAN、SQL Server 为 BIT、MySQL/MariaDB 为 SMALLINT、Oracle/DM 为 NUMBER(1)，由驱动映射；新增真实 PG 测试覆盖 12 处查询，六库冒烟各加启用过滤查询。
+- **迁移**：新增 `V0.4.0__knowledge_vector_persistence.sql`、`R__0.4.0_rename_bpm_opinion_comment.sql`；0.3.2→0.4.0 自动应用 2 条，旧 31 条校验和不变。
+- **验证**：Server 全量 `mvn test` **2,481 / 0 failures / 0 errors / 45 skipped**；六库冒烟通过；CI main run `42588179160` success。
+- **发布事实**：Server tag `0.4.0`=`a4f6c278`，Release `438918154`，`bootstrap-0.4.0.jar` **236,245,457 B** sha256 `188be963…`；build Release `438913661` 同字节。Web 维持 `0.3.6`=`c3f1d6e`。
+- **UAT 部署**：Server `build.version=0.4.0`、health UP、Flyway v0.4.0（33 行）、根 200；管理员工具启用过滤 internal=3/external=1/disabled=0；生产默认 DEBUG 关闭（部署后 0 行）；logrotate `rotate/maxage 14`；PG `Restart=on-failure`/`RestartSec=5s`。
+- **回执**：`product/multi-database-compat/receipts/execution-final-03.md`。
+
 ## 0.3.6（2026-11-08 Web 发布并部署 UAT；指令参数中文化与 C1 数据一致性返修 H8、H9；Server 维持 0.3.2）
 
 - **背景**：规划审查 06 判定 0.3.3—0.3.5 不通过：H6、H7 锁定；新增 H8（指令参数英文键、JSON 原文对普通审批人可见）、H9（C1 数据前后矛盾）。执行提示 05 下发 H8、H9；在 `feature/0.3.6-command-params-cn` 开发；不得改动已发布 tag。

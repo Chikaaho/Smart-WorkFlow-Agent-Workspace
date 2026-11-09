@@ -1,126 +1,201 @@
 # CH-aPaaS
 
-> **示例分支定位**：本分支（`develop-sw`）是 **Agent Coding Engine** 的 CH-aPaaS **示例实例**。
-> 它演示一个完整 coding 项目如何使用 Engine 治理协议，并保留本项目全部历史状态、知识、记忆、方向、回执、待办及其追溯关系。
-> Engine 通用默认分支为 `main`（不含本实例任何业务事实）；本分支不从属、不反向修改 Engine 的通用定位。
+**企业智能流程与低代码 AI Agent 平台**
 
-CH-aPaaS 是面向企业协作场景的低代码 PaaS 与 AI Agent 平台。项目以表单和流程为业务主线，将组织权限、通知、任务、文件、设备与智能编排能力组合在同一套工作流中。
+![Version](https://img.shields.io/badge/version-0.4.0-2563EB)
+![License](https://img.shields.io/badge/license-internal%20demo-6B7280)
+![Backend](https://img.shields.io/badge/backend-Java%2021%20%7C%20Spring%20Boot%203.4-6DB33F)
+![Frontend](https://img.shields.io/badge/frontend-Vue%203%20%7C%20Vite-42B883)
+![Databases](https://img.shields.io/badge/databases-9-0EA5E9)
 
-本仓库是项目的规划与知识中心；后端服务和前端应用分别位于独立仓库。项目使用者可从这里了解整体能力，开发者可沿仓库导航进入对应工程。
+![CH-aPaaS 工作台](docs/assets/readme/workspace.png)
 
-## 当前发布
+CH-aPaaS 以表单和流程为业务主线，把组织权限、通知、任务、文件、设备与智能编排组合在同一套工作流中。项目由三个仓库组成：本仓库负责规划、知识、治理与交付追溯，后端与前端分别独立开发、测试和发布。
 
-当前正式版本 **0.3.6**（2026-11-08，Web 发布并部署 UAT；Server 未改动，仍为 **0.3.2**）。三示例流程返修（0.3.1—0.3.6）已通过规划审查 07（`PASSED`，H1—H9 锁定），终态同步完成，待 Planner 终态复核。这一版处理指令参数中文化和 C1 数据一致性的返修（H8、H9）。
+- 当前版本：**Server 0.4.0** · **Web 0.3.6**
+- 正式功能：**52** 个
+- 三示例流程：**已完成（MVP）**
+- 数据库：PostgreSQL / MySQL / MariaDB / Oracle / SQL Server / openGauss / DM8 / KingbaseES / H2
 
-- 只读 JSON 参数（如「到点下发的设备指令」）按映射显示中文：键名（演练编号、动作、机房断电、火警告警、目标机房、回切时限（分钟））与枚举值（`switch`→切换）；无映射回退原键名/原值。映射在表单字段配置里维护，存储值与下发给设备的 MQTT 载荷（英文键）不变。
-- 「技术参数（JSON 原文）」折叠区只对管理员/设计者（`form:design:save`）可见，普通审批人看不到。
-- C1、C2 新建实例重跑（原记录不改）：`MES-20261108-015`（传感器漂移→仪表校准）、`MES-20261108-016`（设备故障→设备维修），温度序列、升温速率、知识样本命中、研判结论四项一致且与阈值（75/80/85，判定值 1.5℃/分钟）一致，均 APPROVED；A1 双视角验证另建 `YJ-20261108-009`（admin 发起，全链 9 节点 APPROVED）。
+## 核心能力
 
-发布信息：
+| 能力 | 说明 |
+| --- | --- |
+| 低代码表单 | 设计、发布、填写、查询业务表单，支持子表、表单引用、动态宽表与版本化定义 |
+| 流程自动化 | BPMN 流程定义、发起、审批、会签、条件分支、流程变量与实例监控 |
+| 组织与权限 | 多租户、用户/部门/角色/菜单/字典、数据范围与功能权限 |
+| 通用业务服务 | 通知、文件存储、定时任务、OpenAPI、审计与幂等 |
+| AI Agent 与知识 | 模型/供应商管理、Prompt、图编排、工具调用、知识库与 RAG |
+| IoT 接入 | MQTT 设备连接、规则触发、设备指令与审批流程联动 |
 
-- Web tag `0.3.6`→main `c3f1d6e`，`sw-web-dist-0.3.6.zip` 6,197,059 B，sha256 `9470f0c1…`；UAT Web 入口 `assets/index-CKdiXkhU.js`。
-- Server tag `0.3.2`→`de8ec017`；UAT `build.version=0.3.2`，health UP，Flyway v0.2.9。
-- 已发布的 tag（0.3.0/0.3.2/0.3.3/0.3.4/0.3.5）均未改动。
+## 界面预览
 
-功能数保持 **51**（不登记新功能）。规划审查见 [`planning-review-07-passed.md`](product/three-sample-process-uat/receipts/planning-review-07-passed.md)，终态同步回执见 [`terminal-sync-036-01.md`](product/three-sample-process-uat/receipts/terminal-sync-036-01.md)，执行回执见 [`execution-final-07.md`](product/three-sample-process-uat/receipts/execution-final-07.md)，交付登记见 [`knowledge/features/0.3.2-opinion-display.md`](knowledge/features/0.3.2-opinion-display.md)（含 0.3.1—0.3.6 全线最终交付登记）。
+| 表单设计器 | 流程设计器 |
+| --- | --- |
+| ![表单设计器](docs/assets/readme/form-designer.png) | ![流程设计器](docs/assets/readme/workflow-designer.png) |
 
-## 历史发布
+| 审批详情与流转记录 | 智能体图编排 |
+| --- | --- |
+| ![审批详情](docs/assets/readme/approval-detail.png) | ![智能体图编排](docs/assets/readme/agent-graph.png) |
 
-- **0.3.3—0.3.5**（2026-11-08）：流转记录摘要标签与数据一致性返修（H6、H7）。意见摘要每段“标签：值”、备注型回退、审批时间标签、列宽收敛；A1 `YJ-20261108-008`、B1 `XY-20261108-015` 重跑 APPROVED。tag `0.3.3`=`d52f5aa`、`0.3.4`=`94827dd`、`0.3.5`=`cfccaa9`。回执见 [`execution-final-06.md`](product/three-sample-process-uat/receipts/execution-final-06.md)。
-- **0.3.2**（2026-11-08）：意见展示与真实业务数据返修（H1—H5）。流转记录显示意见摘要，审批详情抽屉逐项显示中文标签与值，会签人可各自查看意见；富文本、部门名称、单选横排等显示缺陷已修复；UAT 7 条真实业务路径全部 APPROVED。Server tag `0.3.2`→`de8ec017`（`bootstrap-0.3.2.jar` 220,867,859 B，sha256 `7d196cab…`），Web tag `0.3.2`→`3b0043f`（同版本覆盖，待 Owner 追认）。回执见 [`execution-final-05.md`](product/three-sample-process-uat/receipts/execution-final-05.md)。应用包导出见 [`product/three-sample-process-uat/assets/`](product/three-sample-process-uat/assets/)（`systemVersion=0.3.2`）。
-- **0.2.4**（2026-11-06）：README 示例二/三落地（IoT 规则启动 Agent 研判、失败升级、Agent 内部工具、渠道凭据密文；第 51 个正式功能）。Server tag `0.2.4`→`41511bd4`（`bootstrap-0.2.4.jar` 220,856,383 B sha256 `1c73a5ee…`）、Web `0.2.4`→`f4acc3d`（`sw-web-dist-0.2.4.zip` 6,194,537 B sha256 `b40cf483…`，入口 `assets/index-egL2MRAT.js`）；UAT 启动 176.906s、Flyway v0.2.9。见 [`product/0.2.4/receipts/execution-release-024-02.md`](product/0.2.4/receipts/execution-release-024-02.md)。
-- **0.2.3**（2026-11-06）：Agent 执行生命周期（异步受理/持久回查/afterSequence 续传/取消与重启恢复/三协议流式/两 Key 轮换，现有能力增强）。Server tag `0.2.3`→`9b86ff0d`、Web `0.2.3`→`47106e8`；UAT Flyway v0.2.7。见 [`product/0.2.3/receipts/execution-release-023-08.md`](product/0.2.3/receipts/execution-release-023-08.md)。
+## 三示例流程（已完成）
 
+三条示例流程已达到 MVP，覆盖“表单 → 流程 → 审批 → 业务动作 → Agent/IoT 联动”的完整链路：
 
-## 项目能力
-
-- 低代码表单：设计、发布、填写和查询业务表单，支持子表与表单引用。
-- 流程自动化：定义 BPMN 流程，发起申请，处理待办并查看流程实例。
-- 组织与权限：管理用户、部门、角色、菜单、字典和数据访问范围。
-- 通用业务服务：提供通知、文件存储和定时任务等平台能力。
-- AI Agent 与知识能力：支持会话、工具调用、图编排、Prompt 配置和知识库扩展。
-- IoT 接入：连接设备能力与审批流程，承载业务驱动的设备控制场景。
-
-## 三个仓库
-
-| 仓库 | 职责 | 开发入口 |
+| 示例 | 业务场景 | 关键链路 |
 | --- | --- | --- |
-| Smart-WorkFlow-Agent-Workspace（本仓库） | 项目规划、需求方向、回执、架构知识与工作区治理 | [`system.md`](system.md)、[`knowledge/`](knowledge/architecture.md) |
-| Smart-WorkFlow-aPaaS-server | Java 后端、数据库、认证授权、业务服务与 API | [`Smart-WorkFlow-aPaaS-server/README.md`](Smart-WorkFlow-aPaaS-server/README.md) |
-| Smart-WorkFlow-aPaaS-Web | Vue 前端、页面交互、前端架构与 API/Mock 开发模式 | [`Smart-WorkFlow-aPaaS-Web/README.md`](Smart-WorkFlow-aPaaS-Web/README.md) |
+| A · 应急演练 | 跨部门灾备演练计划审批 | 申请单位负责人 → 技术委员会会签 → 分管副总 → 参与部门并行 → 总公司会签 → 现场指挥 |
+| B · 值班协同 | 校园出入口异常事件分级处置 | 安保复核 → 事实核实分流 → 督办/上报/现场处置 → P0/P1 分支 |
+| C · MES 异常研判 | MES 设备温度偏离研判与安全处置 | 温度记录 → 班组长确认 → 原因分类 → 校准/维修/工艺调整 → 复产审批 |
 
-典型运行关系如下：
+| A · 应急演练 | B · 值班协同 | C · MES 异常研判 |
+| --- | --- | --- |
+| ![A 应急演练](docs/assets/readme/sample-a.png) | ![B 值班协同](docs/assets/readme/sample-b.png) | ![C MES 异常研判](docs/assets/readme/sample-c.png) |
+
+交付登记与完整验收链路见 [`knowledge/features/0.3.2-opinion-display.md`](knowledge/features/0.3.2-opinion-display.md) 与 [`product/three-sample-process-uat/`](product/three-sample-process-uat/)。
+
+## 架构
+
+```mermaid
+flowchart LR
+  U[浏览器 / 移动端] --> W[Vue 3 Web]
+  W -->|HTTP /api| S[Spring Boot Server]
+  S --> DB[(PostgreSQL / MySQL / MariaDB<br/>Oracle / SQL Server / openGauss<br/>DM8 / KingbaseES / H2)]
+  S --> R[(Redis)]
+  S --> F[Flowable BPMN]
+  S --> A[Agent / LLM / 知识库]
+  S --> M[MQTT / IoT 设备]
+  S --> N[通知 / 文件 / 定时任务]
+```
+
+## 多数据库支持（0.4.0）
+
+0.4.0 起，同一套迁移与 SQL 种子可在以下数据库上完成空库启动、迁移、种子和业务冒烟：
+
+| 数据库 | 版本 | 验证方式 | 建库前提（摘要） |
+| --- | --- | --- | --- |
+| H2 | 测试/开发模式 | 既有回归 | 保持现状 |
+| PostgreSQL | 14.24（UAT）/ 17.5+（CI） | 实测 | UTF8；UAT 迁移校验和为准 |
+| MySQL | 5.7 / 8.0 | 实测 | `utf8mb4` + `utf8mb4_bin`；`explicit_defaults_for_timestamp=ON` |
+| MariaDB | 10.6+ | 实测 | `utf8mb4_bin`；`explicit_defaults_for_timestamp=ON` |
+| Oracle | 21c XE | 实测 | `AL32UTF8`；空串=NULL 语义 |
+| SQL Server | 2019+ / 2022 | 实测 | `Chinese_PRC_CS_AS`；终态基线 |
+| openGauss | 5.0 | 实测 | `UTF8` + `DBCOMPATIBILITY 'PG'` |
+| DM8 | — | Owner 实库验证 | `CASE_SENSITIVE=Y`、`LENGTH_IN_CHAR=1` |
+| KingbaseES | V8 | Owner 实库验证 | `database_mode=pg`（参数名随版本） |
+
+完整建库参数、JDBC 示例、向量存储与 SQL Server 基线说明见
+[`docs/deployment/multi-database.md`](Smart-WorkFlow-aPaaS-server/docs/deployment/multi-database.md)。
+
+## 仓库结构
+
+| 仓库 | 职责 | 入口 |
+| --- | --- | --- |
+| `Smart-WorkFlow-Agent-Workspace`（本仓库） | 规划、方向、回执、知识、记忆与治理 | [`system.md`](system.md) · [`knowledge/`](knowledge/) |
+| `Smart-WorkFlow-aPaaS-server` | Java 后端、数据库、认证授权、业务服务与 API | [`README`](Smart-WorkFlow-aPaaS-server/README.md) · [工程宪法](Smart-WorkFlow-aPaaS-server/docs/governance/engineering-constitution.md) |
+| `Smart-WorkFlow-aPaaS-Web` | Vue 前端、页面交互、前端架构与 API/Mock | [`README`](Smart-WorkFlow-aPaaS-Web/README.md) · [工程宪法](Smart-WorkFlow-aPaaS-Web/docs/governance/engineering-constitution.md) |
+
+工作区主要目录：
+
+```text
+.
+├── system.md              # 治理宪法（角色/授权/流程/终态）
+├── roles/                 # Planner / Executor / Admin 细则
+├── product/               # 方向、回执、证据（按任务分目录）
+├── knowledge/             # 架构、当前状态、功能登记
+├── memory/                # 精简状态、交接、问题索引
+├── todo/                  # 需求池与待办
+├── docs/                  # 运维、部署与 UI 文档
+├── Smart-WorkFlow-aPaaS-server/
+└── Smart-WorkFlow-aPaaS-Web/
+```
+
+运行关系：
 
 ```text
 Smart-WorkFlow-aPaaS-Web (:5173)
-        |
-        | HTTP /api
-        v
+        │  HTTP /api
+        ▼
 Smart-WorkFlow-aPaaS-server (:8080/api)
-        |
-        +-- PostgreSQL 或 H2
-        +-- Redis
+        ├── PostgreSQL / MySQL / MariaDB / Oracle / SQL Server / openGauss / DM8 / KingbaseES / H2
+        └── Redis
 ```
 
 ## 快速开始
 
-先克隆工作区仓库并检出实例分支（本示例实例在 `develop-sw`，远端默认 `main` 为通用 Engine，不含本项目内容）：
+### 1. 克隆工作区
+
+本示例实例在 `develop-sw` 分支；远端默认 `main` 是通用 Engine 基线，不含本项目业务内容。
 
 ```bash
 git clone --branch develop-sw git@github.com:Chikaaho/Smart-WorkFlow-Agent-Workspace.git
-```
-
-```bash
 cd Smart-WorkFlow-Agent-Workspace
 ```
 
-再将后端与前端仓库克隆到工作区根目录；本地目录名与远端仓库同名，工作区各文档中的相对路径按该目录名解析：
+### 2. 克隆后端与前端
 
 ```bash
 git clone git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-server.git Smart-WorkFlow-aPaaS-server
-```
-
-```bash
 git clone git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-Web.git Smart-WorkFlow-aPaaS-Web
 ```
 
-进入对应工程后，先读仓库 README 了解产品定位，再按各仓工程宪法与工作区开发流程准备环境、启动服务并执行验证（命令导航见 [`knowledge/development-workflow.md`](knowledge/development-workflow.md)）：
+### 3. 启动与验证
 
-- 后端：[仓库 README](Smart-WorkFlow-aPaaS-server/README.md) · [工程宪法](Smart-WorkFlow-aPaaS-server/docs/governance/engineering-constitution.md)
-- 前端：[仓库 README](Smart-WorkFlow-aPaaS-Web/README.md) · [工程宪法](Smart-WorkFlow-aPaaS-Web/docs/governance/engineering-constitution.md)
+- 后端：JDK 21、Maven 3.9+；按 [`server README`](Smart-WorkFlow-aPaaS-server/README.md) 配置数据源与 Redis 后启动。
+- 前端：Node.js 20+、pnpm；按 [`web README`](Smart-WorkFlow-aPaaS-Web/README.md) 安装依赖并启动开发服务器。
+- 数据库建库前提与多库连接示例见 [`multi-database.md`](Smart-WorkFlow-aPaaS-server/docs/deployment/multi-database.md)。
+- 开发命令与环境准备见 [`knowledge/development-workflow.md`](knowledge/development-workflow.md)。
 
-## 与 Agent Coding Engine 的关系
+## 版本与发布
 
-- **Engine 来源**：本实例的治理协议（`system.md`、`roles/`、`.codex/governance/`、Harness 入口）来自 Agent Coding Engine `main` 默认分支。
-- **实例边界**：本分支的 `memory/`、`knowledge/`、`product/`、`todo/`、`search_task/`、`search_fallback/` 保存的是 **CH-aPaaS 当前实例**的状态、历史、回执与待办，不与其他项目共享。
-- **追溯**：历史回执（`product/*/receipts/`）、状态单一源（`knowledge/current-status.md`）、问题（`knowledge/known-issues.md`）与需求池（`todo/requirement-pool.md`）均在本分支完整保留，可继续追溯。
-- **Engine 通用化**：`main` 分支为空白 Engine（不含本实例内容），可作为新项目基线；本项目不把自身状态复制回 Engine 默认内容。
+当前正式版本：
 
-## 分级工作方式
+- **Server 0.4.0**：tag `0.4.0`=`a4f6c278`，Release `438918154`，
+  `bootstrap-0.4.0.jar` 236,245,457 B sha256 `188be963…`；
+  UAT `build.version=0.4.0`、health UP、Flyway `v0.4.0`。
+- **Web 0.3.6**：tag `0.3.6`=`c3f1d6e`，Release `438126185`，
+  `sw-web-dist-0.3.6.zip` 6,197,059 B sha256 `9470f0c1…`；
+  UAT 入口 `assets/index-CKdiXkhU.js`。
 
-本实例按任务风险选择流程，不再要求所有修改进入完整功能闭环：
+发布说明与历史版本见 [`CHANGELOG.md`](CHANGELOG.md)；0.4.0 执行回执见
+[`execution-final-03.md`](product/multi-database-compat/receipts/execution-final-03.md)。
+
+## 开发与治理
+
+本项目按任务风险分级：
 
 | 等级 | 典型任务 | 工作方式 |
 | --- | --- | --- |
-| S | 按钮、文案、局部 CSS、低风险修正 | Executor 直接修改并聚焦验证 |
-| M | 单模块小功能、局部接口或流程调整 | Executor 简版 Plan → Execute → Test |
-| L | 新模块、跨仓、重要流程、正式跟踪功能 | Planner 方向 → Executor 实现与证据 → Planner 验收与终态同步 |
+| S | 文案、局部 CSS、低风险修正 | Executor 直接修改并聚焦验证 |
+| M | 单模块小功能、局部接口/流程调整 | 简版 Plan → Execute → Test |
+| L | 新模块、跨仓、重要流程、正式功能 | Planner 方向 → Executor 实现与证据 → Planner 验收与终态同步 |
 | XL | 核心架构、多版本演进、重大迁移 | L 级闭环 + Decision Records + 分阶段验收 |
 
-### 需求交付入口
-
-默认交付流程、持续授权、版本确认和结束条件统一见 [`system.md` §3.0](system.md#30-默认需求交付生命周期owner-2026-10-16-确认)。上表描述分级实施与验证；L/XL 功能验收和终态同步只是整体交付中的子任务。
-
-用户在需求入口声明唯一会话角色，各角色读取当前有效方向、回执和同步任务后按授权连续推进。角色职责与切换遵循 [`system.md` §0](system.md#0-角色定位与入口)，补证与复核遵循 [`system.md` §3.6](system.md#36-验收与证据硬约束2026-10-11-owner-定)。
+- 交付生命周期、角色与授权：[`system.md`](system.md)
+- 角色细则：[`roles/`](roles/)
+- 后端工程规范：[`engineering-constitution.md`](Smart-WorkFlow-aPaaS-server/docs/governance/engineering-constitution.md)
+- 前端工程规范：[`engineering-constitution.md`](Smart-WorkFlow-aPaaS-Web/docs/governance/engineering-constitution.md)
 
 ## 文档导航
 
 | 主题 | 文档 |
 | --- | --- |
-| 工作区治理入口 | [`system.md`](system.md) |
+| 治理入口 | [`system.md`](system.md) |
 | 整体架构 | [`knowledge/architecture.md`](knowledge/architecture.md) |
-| 当前项目状态 | [`knowledge/current-status.md`](knowledge/current-status.md) |
-| 发布说明与历史版本 | [`CHANGELOG.md`](CHANGELOG.md) |
-| 需求方向与交付回执 | [`product/`](product/) |
-| 后端工程规范 | [`Smart-WorkFlow-aPaaS-server/docs/governance/engineering-constitution.md`](Smart-WorkFlow-aPaaS-server/docs/governance/engineering-constitution.md) |
-| 前端工程规范 | [`Smart-WorkFlow-aPaaS-Web/docs/governance/engineering-constitution.md`](Smart-WorkFlow-aPaaS-Web/docs/governance/engineering-constitution.md) |
+| 当前状态 | [`knowledge/current-status.md`](knowledge/current-status.md) |
+| 功能登记 | [`knowledge/features/`](knowledge/features/) |
+| 发布说明 | [`CHANGELOG.md`](CHANGELOG.md) |
+| 多数据库部署 | [`multi-database.md`](Smart-WorkFlow-aPaaS-server/docs/deployment/multi-database.md) |
+| 生产运维 | [`production-ops.md`](docs/ops/production-ops.md) |
+| 方向与回执 | [`product/`](product/) |
+| 需求池 | [`todo/requirement-pool.md`](todo/requirement-pool.md) |
+
+## 关于示例分支
+
+本仓库 `develop-sw` 是 **Agent Coding Engine** 的 CH-aPaaS 示例实例，保留本项目的完整状态、知识、记忆、方向、回执与追溯关系；Engine 通用默认分支为 `main`，不含本实例业务事实。`memory/`、`knowledge/`、`product/`、`todo/`、`search_task/`、`search_fallback/` 均为实例私有内容，不反向复制回 Engine 默认分支。
+
+## 许可证与致谢
+
+本仓库为 CH-aPaaS 示例实例，当前未附带开源许可证；对外使用、分发或再发布前请先与 Owner 确认。
+
+项目基于 Java 21 / Spring Boot、Vue 3 / Vite、Flowable、MyBatis-Plus、LangChain4j、Element Plus 等开源组件构建；数据库驱动与镜像遵循各自许可证。感谢所有上游项目与贡献者。

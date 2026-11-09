@@ -1,35 +1,36 @@
 {
   "$schema": "CH-aPaaS 版本权威（单一机器可读源；变更须走新回执）",
   "product": "CH-aPaaS",
-  "version": "0.3.6",
+  "version": "0.4.0",
+  "featureCount": 52,
   "iteration": "0.1.0",
-  "registeredAt": "2026-11-08",
-  "registeredBy": "三示例流程返修 0.3.1—0.3.6（规划审查07 PASSED；Web 0.3.6，Server 维持 0.3.2；执行回执 execution-final-07.md、终态同步回执 terminal-sync-036-01.md）",
+  "registeredAt": "2026-11-09",
+  "registeredBy": "P66 多数据库兼容 0.4.0（Server）与三示例流程 0.3.6（Web）；执行回执 product/multi-database-compat/receipts/execution-final-03.md",
   "development": {
-    "targetVersion": "0.3.6",
+    "targetVersion": "0.4.0",
     "status": "PUBLISHED",
-    "statusNote": "Web 0.3.6 已发布并部署 UAT（Server 维持 0.3.2）；三示例流程返修 0.3.1—0.3.6 经规划审查07 PASSED（H1—H9 锁定），终态同步完成，待 Planner 终态复核；功能数保持 51",
-    "direction": "product/three-sample-process-uat/receipts/planning-execution-prompt-three-sample-05.md",
-    "finalReview": "product/three-sample-process-uat/receipts/planning-review-07-passed.md（PASSED）；终态同步回执 product/three-sample-process-uat/receipts/terminal-sync-036-01.md",
+    "statusNote": "Server 0.4.0 已发布并部署 UAT；P66 多数据库兼容登记为第 52 个正式功能。待 Planner 终态复核",
+    "direction": "product/multi-database-compat/ready/direction-multi-database-compat.md",
+    "finalReview": "待 Planner 终态复核（execution-final-03.md）",
     "branches": {
-      "server": "无改动：main de8ec017（tag 0.3.2=de8ec017）",
-      "web": "0.3.3 feature fa089f8/a8f8416 → develop 89f7e2d → main d52f5aa（tag 0.3.3）；0.3.4 feature 6c31a0d/b884bcc → develop 05c4635 → main 94827dd（tag 0.3.4）；0.3.5 feature cb8d555/2b18fdc → develop 236993d → main cfccaa9（tag 0.3.5）；0.3.6 feature 8dd0220 → develop 0d71982 → main c3f1d6e（tag 0.3.6=c3f1d6e）",
-      "workspace": "develop-sw（本回执与同步批次提交后回读）"
+      "server": "feature/0.4.0-multi-database 19ae82f3 → develop 2c3bf850 → main a4f6c278（tag 0.4.0=a4f6c278）",
+      "web": "维持 0.3.6：feature 8dd0220 → develop 0d71982 → main c3f1d6e（tag 0.3.6=c3f1d6e）",
+      "workspace": "develop-sw（本同步批次提交后回读）"
     },
     "developmentVersion": {
-      "server": "0.3.2-SNAPSHOT",
+      "server": "0.4.0-SNAPSHOT",
       "web": "0.3.6"
     }
   },
   "projections": {
     "serverRepo": {
       "path": "Smart-WorkFlow-aPaaS-server",
-      "mavenVersion": "0.3.2（正式构建 -Drevision=0.3.2；开发默认 0.3.2-SNAPSHOT；0.3.3—0.3.5 无 Server 改动）",
+      "mavenVersion": "0.4.0（正式构建 -Drevision=0.4.0；开发默认 0.4.0-SNAPSHOT）",
       "flywayEndpoint": {
-        "h2": "V0.2.9",
-        "postgresql": "V0.2.9"
+        "h2": "V0.4.0",
+        "postgresql": "V0.4.0"
       },
-      "flywaySeed": "V0.2.0__baseline_seed.sql 基线 + 版本化 V0.2.2～V0.2.9 + 19 支 R__ 双方言；0.3.2—0.3.5 无新增迁移"
+      "flywaySeed": "V0.2.0 基线 + V0.2.2～V0.4.0 + 20 支 R__；0.4.0 新增 V0.4.0__knowledge_vector_persistence.sql 与 R__0.4.0_rename_bpm_opinion_comment.sql；旧迁移校验和与 UAT 28/28 一致"
     },
     "webRepo": {
       "path": "Smart-WorkFlow-aPaaS-Web",
@@ -38,18 +39,18 @@
     "workspace": {
       "path": "Smart-WorkFlow-Agent-Workspace",
       "changelog": "CHANGELOG.md",
-      "releaseNotes": "GitHub Release：Web 0.3.6（c3f1d6e·sw-web-dist-0.3.6.zip 6,197,059 B sha256 9470f0c1…）、0.3.5（cfccaa9·6,195,728 B sha256 4f0065c3…）、0.3.4（94827dd·6,195,935 B sha256 3048d3b6…）、0.3.3（d52f5aa·6,196,205 B sha256 195d9b60…）；Server 0.3.2（de8ec017·bootstrap-0.3.2.jar 220,867,859 B sha256 7d196cab…）",
-      "upgrade": "docs/ops/production-ops.md §9（0.3.3—0.3.6 仅替换 Web dist：web→web.old→web，nginx reload；Server 不重启）",
-      "rollback": "docs/ops/production-ops.md §9.1（Web 回退换回 web.old 或上一版 sw-web-dist 资产；无 DB 迁移）",
-      "configChanges": "无新增配置；沿用 0.3.1/0.3.2 的 17 张 APPROVAL_COMMENT 意见表单、三图（A v9/B v9/C v11）、触发器 2 条；UAT 数据侧 ops_drill_plan 发布版本 3（指令参数字段标题+中文映射）",
-      "dbMigrations": "无新增；UAT 保持 v0.2.9",
-      "manifest": "GitHub Release 0.3.6 资产：sw-web-dist-0.3.6.zip 6,197,059 B sha256 9470f0c1…（与 build-c3f1d6e Release 438125351 同字节）；Server 资产仍为 Release 0.3.2 bootstrap-0.3.2.jar",
-      "deployment": "UAT 已部署 Web 0.3.6（2026-11-08）：入口 assets/index-CKdiXkhU.js，https://chikaho.cn/ 200；Server build.version=0.3.2、health UP；C1 MES-20261108-015、C2 MES-20261108-016、A1x2 YJ-20261108-009 APPROVED"
+      "releaseNotes": "GitHub Release：Server 0.4.0（a4f6c278·bootstrap-0.4.0.jar 236,245,457 B sha256 188be963…、Release 438918154）、Web 0.3.6（c3f1d6e·sw-web-dist-0.3.6.zip 6,197,059 B sha256 9470f0c1…、Release 438126185）",
+      "upgrade": "docs/ops/production-ops.md §8/§9；0.3.2→0.4.0 新增 2 条迁移，先备份后启动；Server 只换 jar，Web 不变",
+      "rollback": "docs/ops/production-ops.md §8.1/§9.1；回退 bootstrap.jar.bak-pre040 + DB dump smart_workflow_20261109_pre040.dump（如需）",
+      "configChanges": "application-prod.yml 默认日志级别 com.sw.ck/org.springframework.jdbc 由 debug 调为 info；UAT logrotate rotate/maxage 14；postgresql@14-main drop-in Restart=on-failure/RestartSec=5s",
+      "dbMigrations": "V0.4.0 + R__0.4.0；UAT flyway_schema_history 33 行，max(version)=0.4.0",
+      "manifest": "GitHub Release 0.4.0 资产 bootstrap-0.4.0.jar 236,245,457 B sha256 188be963796af0583f2e59653cfc19cd482856e6fc4d0ecd22f102223b5e620b；build-<sha> Release 保留",
+      "deployment": "UAT 已部署 Server 0.4.0（2026-11-09）：build.version=0.4.0、health UP、https://chikaho.cn/ 200、Flyway v0.4.0；Web 维持 0.3.6（index-CKdiXkhU.js）"
     }
   },
   "rules": {
     "candidateFreeze": "候选固定后只允许通过新回执审查的变更进入；代码/迁移/依赖/配置漂移使受影响证据失效并重固定候选",
-    "tagAndRelease": "Web 0.3.3（d52f5aa，Release 438053199）、0.3.4（94827dd，Release 438073010）、0.3.5（cfccaa9，Release 438081379）、0.3.6（c3f1d6e，Release 438126185）按递增补丁发布，未覆盖任何已发布 tag；Server 维持 tag 0.3.2=de8ec017、Release 437820040。0.3.0/0.3.1/0.3.2 tag 与 Release 未改动（0.3.2 Web 同版本覆盖已经审查 06 追认）。",
-    "deployment": "UAT：Web 0.3.6（index-CKdiXkhU.js）；Server 0.3.2（Flyway v0.2.9、health UP、build.version=0.3.2）。"
+    "tagAndRelease": "Server 0.4.0（a4f6c278，annotated tag 0.4.0，Release 438918154，bootstrap-0.4.0.jar sha256 188be963…）；Web 维持 0.3.6（c3f1d6e，Release 438126185）。已发布 tag 0.3.0—0.3.6 均未改动。",
+    "deployment": "UAT：Server 0.4.0（build.version=0.4.0、Flyway v0.4.0、health UP）；Web 0.3.6。"
   }
 }

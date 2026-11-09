@@ -1,34 +1,48 @@
 # 交接
 
-2026-11-09｜Planner（0.3.3 取消）｜Owner 确认取消 0.3.3；P66 先修 X1 再发版。
+2026-11-09｜Executor（P66 0.4.0 发布）｜Server 0.4.0 已发布并部署 UAT；待 Planner 终态复核。
 
 ## 当前
 
-三示例流程返修（0.3.1—0.3.6）功能 **`COMPLETED`**（规划审查07 `product/three-sample-process-uat/receipts/planning-review-07-passed.md`，H1—H9 锁定），终态同步回执 `product/three-sample-process-uat/receipts/terminal-sync-036-01.md`；方向 `passed/direction-terminal-sync-036.md` 待规划复核后归档 `passed/`。规划终态复核已通过。
+P66 多数据库兼容（XL）以 **Server 0.4.0** 发布，登记第 **52** 个正式功能。
 
-**交付登记** `knowledge/features/0.3.2-opinion-display.md`（最终交付登记 0.3.1—0.3.6）：
-- 平台机制：意见写入流程变量（`opinion`/`opinion_<字段>`/`formData` 回写）、会签聚合 `opinionAgg_*`、触发器 `nodeOpinions` 注入。
-- 三流程意见驱动分支与处理人：A 需补充、高风险加签、停机>240 加副总、调整窗口改预约时间、现场总指挥；B 误报、现场处置人、超时督办、上报范围；C 原因分类、指派维修人、偏差>3℃ 强制校准、停机复产。
-- 意见展示：结构化字段、摘要每段“标签：值”、意见抽屉、会签弹窗；只读 JSON 中文映射 `jsonDisplay` 与原文权限门禁。
-- 证据实例：A1 `YJ-20261108-008/009`、A2 `YJ-20261108-006`、B1 `XY-20261108-015`、B2 `XY-20261108-013`、B3 `XY-20261108-014`、C1 `MES-20261108-015`、C2 `MES-20261108-016`。
+- **发布**：tag `0.4.0`=`a4f6c278`（annotated tag 对象 `6093c4cc…`），Release `438918154`，
+  `bootstrap-0.4.0.jar` 236,245,457 B sha256 `188be963…`；`build-<sha>` Release `438913661` 同字节。
+- **UAT**：Server build.version=0.4.0、health UP、根 200、Flyway v0.4.0（33 行）；新增
+  `V0.4.0__knowledge_vector_persistence.sql`、`R__0.4.0_rename_bpm_opinion_comment.sql`；
+  旧 31 条校验和不变；管理员工具启用过滤 internal=3/external=1/disabled=0。
+- **运维**：生产默认日志 INFO（部署后 16 分钟 DEBUG 0）；logrotate rotate/maxage 14；
+  `postgresql@14-main` drop-in `Restart=on-failure`/`RestartSec=5s`；未加磁盘告警。
+- **验证**：全量 `mvn test` 2,481 / 0 / 0 / 45 skipped；六库冒烟
+  （MySQL 5.7/8.0、MariaDB、Oracle、openGauss、SQL Server）通过；CI feature #123、
+  develop #126、main #127 success。
+- **回执**：`product/multi-database-compat/receipts/execution-final-03.md`；
+  **功能登记**：`knowledge/features/multi-database-compat.md`。
 
-**发布**：Web 0.3.6（tag `c3f1d6e`，Release `438126185`，zip 6,197,059 B sha256 `9470f0c1…`）；Server 0.3.2（tag `de8ec017`，Release `437820040`）；UAT `build.version=0.3.2`、Web 入口 `assets/index-CKdiXkhU.js`、Flyway V0.2.9、health UP；Web 0.3.2 tag 同版本覆盖 Owner 2026-11-08 追认（维持 `3b0043f`）。已发布 tag 0.3.0—0.3.5 均未改动。
+三示例流程（0.3.1—0.3.6）保持 **`COMPLETED`**；Web **0.3.6**（tag `c3f1d6e`，Release
+`438126185`，入口 `assets/index-CKdiXkhU.js`）不变。应用包维持 `systemVersion=0.3.2`。
 
-**应用包**：维持 `systemVersion=0.3.2` 导出（71,786 B）；缺独立意见表单定义（17 张）、触发器脚本（B `tg_duty_overdue`、C `tg_scene_sensor`）、Agent 图、IoT 产品/设备/规则与渠道凭据——补建方法见功能文件与 `assets/README.md`。
+**下一动作**：Planner 终态复核 0.4.0（回执、发布事实、UAT 回读、README/知识同步）。
+Owner 侧：DM8、KingbaseES 实库验证。
 
-七阶段 **7/0/0**。三示例流程线结束（终态复核 `product/three-sample-process-uat/receipts/planning-final-review-036-completed.md`）。唯一下一动作见 P66。
+## 待办/风险
 
-## 0.3.3—0.3.5（历史，审查 06 已验收锁定）
-
-H6（摘要每段带标签，含备注回退与审批时间）、H7（JSON 字段化+原文折叠；A1 `YJ-20261108-008`、B1 `XY-20261108-015` 重跑 APPROVED）；tags `d52f5aa`/`94827dd`/`cfccaa9`。
-
-并行任务 **P66 多数据库兼容**（XL，目标 0.4.0）：阶段 A 有条件通过，实现验收通过，UAT 校验和 28/28 一致，待 0.3.3 后合并发版。UAT 已恢复（`product/uat-recovery-20261109/receipts/planning-review-uat-recovery-01.md`，W1 PM2 确认并入 0.3.3 回执）。**0.3.3 已取消**（UAT 不受影响，`planning-review-033-02.md`）；P66 下一动作 X1 恢复 Boolean 绑定（见方向阶段 D）。
-
+- `JavaSubprocessExecutor` 子进程输出读取竞态（CI #125 两次失败、第 3 次通过）：
+  `todo/iot-subprocess-output-race.md`；修复前 CI 偶发。
+- 0.3.3 已取消（UAT `enabled` 为 BOOLEAN，不受 `smallint = boolean` 影响）；
+  不能把 P66 `1/0` 绑定移植到 0.3.2。
+- UAT 日志轮转配置已是 `maxsize 100M/rotate 14/compress`；`server.log` 当前仍含旧 DEBUG 历史内容，
+  后续按日轮转。
+- Web 仍为 0.3.6；本版只发 Server。
 
 ## 更早历史
 
-0.3.0（终审后被 Owner 退回，发布事实不回滚，详见 `knowledge/features/0.3.0-three-sample-processes.md`）；0.2.3/0.2.4 COMPLETED（0.2.4=第51个正式功能）。常规决定：截图本机留存不入Git；执行列表无菜单、冷却抑制、mes_judge_config不参与判定按已登记边界处理。
+0.3.0（终审后被 Owner 退回，发布事实不回滚，见 `knowledge/features/0.3.0-three-sample-processes.md`）；
+0.2.3/0.2.4 COMPLETED（0.2.4=第 51 个正式功能）。常规决定：截图本机留存不入 Git；
+执行列表无菜单、冷却抑制、`mes_judge_config` 不参与判定按已登记边界处理。
 
 ## 保留与保护
 
-Owner定保留本机隔离环境（含 `.runtime-*`、隔离库、凭据密文，已gitignore，只要求不泄露）。继续保护 Web vite.config.ts 在途改动、`smart_workflow_f1v4b`、用户8080/5173服务和秘密；Key/授权码不入Git。
+Owner 定保留本机隔离环境（含 `.runtime-*`、隔离库、凭据密文，已 gitignore，只要求不泄露）。
+继续保护 Web `vite.config.ts` 在途改动、`smart_workflow_f1v4b`、用户 8080/5173 服务和秘密；
+Key/授权码不入 Git。
