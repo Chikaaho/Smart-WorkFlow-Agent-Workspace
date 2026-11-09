@@ -1,10 +1,10 @@
 # 当前状态摘要
 
-2026-11-09｜Executor（P66 0.4.0 发布）｜Server 0.4.0 已发布并部署 UAT；Web 维持 0.3.6；待 Planner 终态复核。
+2026-11-09｜Planner（0.4.0 发布审查）｜发布通过；Z1—Z4 补做后终态复核；七阶段 5/1/1。
 
 ## 当前任务
 
-P66 多数据库兼容（XL）以 **Server 0.4.0** 发布并部署 UAT，登记为第 **52** 个正式功能。
+P66 多数据库兼容（XL）以 **Server 0.4.0** 发布并部署 UAT，第 **52** 个正式功能已预登记，以终态复核为准。发布审查通过（`product/multi-database-compat/receipts/planning-review-final-02.md`）；下一动作 Executor 补 Z1 README 截图重拍、Z2 回退必须恢复 pre040 dump、Z3 develop 快进 main、Z4 11-10 17:16 后统计 24 小时日志量，回执 `execution-final-04.md`。
 
 - **发布**：tag `0.4.0`=`a4f6c278`，Release `438918154`，`bootstrap-0.4.0.jar`
   236,245,457 B sha256 `188be963…`；`build-<sha>` Release `438913661` 同字节。

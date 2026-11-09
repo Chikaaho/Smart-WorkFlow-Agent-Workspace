@@ -1,6 +1,6 @@
 # 交接
 
-2026-11-09｜Executor（P66 0.4.0 发布）｜Server 0.4.0 已发布并部署 UAT；待 Planner 终态复核。
+2026-11-09｜Planner（0.4.0 发布审查）｜发布通过；Z1—Z4 补做后终态复核。
 
 ## 当前
 
@@ -22,7 +22,7 @@ P66 多数据库兼容（XL）以 **Server 0.4.0** 发布，登记第 **52** 个
 三示例流程（0.3.1—0.3.6）保持 **`COMPLETED`**；Web **0.3.6**（tag `c3f1d6e`，Release
 `438126185`，入口 `assets/index-CKdiXkhU.js`）不变。应用包维持 `systemVersion=0.3.2`。
 
-**下一动作**：Planner 终态复核 0.4.0（回执、发布事实、UAT 回读、README/知识同步）。
+**下一动作**：Executor 按 `product/multi-database-compat/receipts/planning-review-final-02.md` 补 Z1—Z4（回执 `execution-final-04.md`），之后 Planner 终态复核。
 Owner 侧：DM8、KingbaseES 实库验证。
 
 ## 待办/风险
