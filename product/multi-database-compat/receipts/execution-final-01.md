@@ -7,8 +7,8 @@
 | 日期 | 2026-11-09 |
 | 执行角色 | Executor |
 | 分支 | Server `feature/0.4.0-multi-database` |
-| 结论 | U1—U4 完成；六库表结构/迁移/种子/启动/业务矩阵通过；UAT 校验和比对因 UAT PostgreSQL 14 集群停止而阻塞；DM8/Kingbase 由 Owner 验证 |
-| 七阶段 | **1 / 1 / 5**（实现完成；最终回执待审查；UAT 只读比对与合并发版未完成） |
+| 结论 | U1—U4 完成；六库表结构/迁移/种子/启动/业务矩阵通过；UAT 校验和比对已完成（见 `execution-final-02.md`，28/28 一致、0 差异）；DM8/Kingbase 由 Owner 验证 |
+| 七阶段 | **1 / 1 / 5**（实现完成；最终回执待审查；合并发版未完成） |
 
 ## 1. 数据库矩阵（含 U1 表结构）
 
@@ -97,6 +97,11 @@ mvn -pl sw-bootstrap -am -Dtest=SqlServerSeedMigrationTest,SqlServerBootSmokeTes
 未执行任何写操作。解除条件：Owner 启动 UAT PostgreSQL 14（或提供只读副本/连接），
 Executor 再执行只读 `installed_rank/script/checksum` 对比，确认 0.4.0 仅新增
 `V0.4.0` 与 `R__0.4.0` 两条、旧迁移校验和全部一致。
+
+> **2026-11-09 更新（UAT 恢复后）**：UAT PG 14 已恢复运行；只读比对结果见
+> `execution-final-02.md`。`flyway_schema_history` 31 行、28 个唯一脚本的当前生效
+> 校验和与分支逐条一致（28/28，0 差异）；分支相对 UAT 仅新增 `V0.4.0` 与
+> `R__0.4.0`。本节阻塞解除。
 
 ## 6. 方言改动清单（汇总）
 
