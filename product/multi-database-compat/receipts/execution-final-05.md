@@ -3,11 +3,11 @@
 | 项目 | 内容 |
 |---|---|
 | 功能 | P66 多数据库兼容（XL，0.4.0） |
-| 依据 | `product/multi-database-compat/receipts/planning-review-final-03.md` §6/§7（Owner 裁决方案 A）；`planning-review-final-04.md` §3/§6（远程分支清理，Owner 裁决）；`planning-review-final-05.md` §3（清单外本地分支）；`planning-review-final-06.md` §2/§3；`planning-review-final-07.md` §3/§7（Z6 两个代码仓 `main` README 同步） |
+| 依据 | `product/multi-database-compat/receipts/planning-review-final-03.md` §6/§7（Owner 裁决方案 A）；`planning-review-final-04.md` §3/§6（远程分支清理，Owner 裁决）；`planning-review-final-05.md` §3（清单外本地分支）；`planning-review-final-06.md` §2/§3；`planning-review-final-07.md` §3/§7（Z6 两个代码仓 `main` README 同步）；`planning-review-final-08.md` §2/§3（Z7 两仓 README 重排与 Latest 修复，Owner 授权） |
 | 日期 | 2026-11-09 |
 | 执行角色 | Executor |
-| 状态 | **第 1 项完成**（README 下掉 2 张图并回读渲染）；**分支清理完成**（§4）；**清单外本地分支清理完成**（§5）；**Z6 完成**（§6）；**Z4 待时间窗**（2026-11-10 17:16 之后） |
-| 结论 | README 界面预览保留 6 张，`agent-graph.png`、`approval-detail.png` 引用与图注已移除、图片文件保留在仓库；GitHub raw 与渲染 HTML 双回读通过。13 条已合入分支（Server 5、Web 8）远程与本地均已删除，Web `develop` 已普通快进到 `main`；两仓远程各剩 3 条分支，tag 前后逐行一致。§4.6 清单外 13 条已合入本地分支也已按 final-05 §3 删除（`feature/p61-msg-scope-corrected` 的 git 工作树注册已移除，残留 312 MB 物理目录 `E:/code/p61-wt-web` 交 Owner 手动删除）。两仓本地各剩 `main`、`develop` 和未完成分支（Server `feature/p62-perf-bounded-20261011`）。Z6：Server、Web 的 README 已同步到 0.4.0 / 0.3.6，按 develop → main → develop 普通合入（Server main = develop = `7d009021`，Web main = develop = `e181e25`），两仓 main CI 均 success，GitHub 首页渲染与 20 个链接回读通过；没有建 tag、移 tag 或改 Release，但 CI 自动建的 `build-<sha>` Release 成了两仓 Latest，交 Owner 裁决（§6.5）。P66 在 Z4 补做后即可进入 Planner 终态复核 |
+| 状态 | **第 1 项完成**（README 下掉 2 张图并回读渲染）；**分支清理完成**（§4）；**清单外本地分支清理完成**（§5）；**Z6 完成**（§6）；**Z7 完成**（§7）；**Z4 待时间窗**（2026-11-10 17:16 之后） |
+| 结论 | README 界面预览保留 6 张，`agent-graph.png`、`approval-detail.png` 引用与图注已移除、图片文件保留在仓库；GitHub raw 与渲染 HTML 双回读通过。13 条已合入分支（Server 5、Web 8）远程与本地均已删除，Web `develop` 已普通快进到 `main`；两仓远程各剩 3 条分支，tag 前后逐行一致。§4.6 清单外 13 条已合入本地分支也已按 final-05 §3 删除（`feature/p61-msg-scope-corrected` 的 git 工作树注册已移除，残留 312 MB 物理目录 `E:/code/p61-wt-web` 交 Owner 手动删除）。两仓本地各剩 `main`、`develop` 和未完成分支（Server `feature/p62-perf-bounded-20261011`）。Z6：Server、Web 的 README 已同步到 0.4.0 / 0.3.6，按 develop → main → develop 普通合入（Server main = develop = `7d009021`，Web main = develop = `e181e25`），两仓 main CI 均 success，GitHub 首页渲染与 20 个链接回读通过；没有建 tag、移 tag 或改 Release，但 CI 自动建的 `build-<sha>` Release 成了两仓 Latest，交 Owner 裁决（§6.5）。Z7：两仓 README 重排为开源结构（徽章、截图、架构图、快速开始并实测启动与代理链路），工作流固定 `--latest=false`（Owner 授权），Server `0.4.0`、Web `0.3.6` 已用本机 git 凭据设回 Latest（Owner 授权），两仓 main = develop = Server `7d0f2a2e`、Web `bed840d`（§7）。P66 在 Z4 补做后即可进入 Planner 终态复核 |
 
 ## 1. README 下掉 `agent-graph.png` 与 `approval-detail.png`
 
@@ -381,12 +381,86 @@ tag 和语义 Release 没有被动过：
 - 用户的主检出没有动：两仓仍检出 `main`，本地 `main` 落后 `origin/main` 2 个提交（就是本节的 develop 提交和合并提交，只涉及 README 和 `功能清单.md`）；本地 `develop` 已在临时工作树里指到合并提交。Server 主检出有 8080 进程在用，Web 主检出有 `vite.config.ts` 在途改动，所以本轮不替使用者拉取，需要时在主检出执行 `git pull --ff-only` 即可。
 - 留给 Planner 的发现：工作区 README「快速开始」第 3 步写着“按 server README 配置数据源与 Redis 后启动”“按 web README 安装依赖并启动开发服务器”，但两仓 README 改前改后都没有启动步骤（开发者资料在各自的工程宪法里）。本轮按 final-07 只同步版本内容，没有扩写；是改工作区 README 的指引，还是给两仓 README 补启动小节，由 Planner 决定。
 
-## 7. 下一步
+## 7. Z7：两仓 README 重排为开源结构、快速开始实测、Latest 修复（`planning-review-final-08.md` §2/§3）
+
+Owner 指出两代码仓的 README 也要按开源结构重排并配截图（根因是方向把范围收窄到了工作区 README，Planner 已更正方向，Executor 无过错）。本节按 final-08 §2 的 Server 10 项、Web 7 项执行，并按 Owner 对 §3 的授权做了两件事：两仓 CI 的 `build-<sha>` 自动产物固定 `--latest=false`；把 Server `0.4.0`、Web `0.3.6` 重新设为 Latest。证据留本机 `E:/code/Smart-WorkFlow-Agent-Evidence/p66-040/z7/`（含 `run/` 的实测配置与日志），不进 Git。
+
+### 7.1 两仓 README 新结构
+
+- **Server**（整篇替换，10 项齐全）：徽章（版本 0.4.0、internal demo、Java 21、Spring Boot 3.4、九库）；首图 `workflow-designer.png`（注明配合 Web 0.3.6 界面）；核心特性 9 行表；三示例流程 A/B/C 配图各 2—3 句（后端链路侧重：A 定时任务下发 MQTT 指令、B Agent 研判与 P1/P0 分级告警、C 阈值研判与工单流转）；Mermaid 架构图（`sw-biz`/`sw-basic`/`sw-framework` 分层与 DB、Redis、模型供应商、MQTT、通知渠道，模块名取自工程宪法 §1）；多数据库矩阵沿用 Z6；快速开始（见 7.3）；仓库结构与文档导航；当前版本 0.4.0 表 + 升级/回退要点（保留 Z6 内容），版本历史压成 3 行（0.4.0 / 0.3.x / 0.2.x）链接 tags 与 CHANGELOG；许可证与致谢（未附带开源许可证口径与工作区一致）。
+- **Web**（整篇替换，7 项齐全）：徽章（版本 0.3.6、Vue 3、Vite 8、TypeScript、Element Plus——按 `package.json` 实际依赖）；首图 `workspace.png`；界面预览（表单/流程设计器两图）；核心特性 6 行表；Mermaid 架构图（views → modules → adapters 防腐层 → foundation，模块与 adapters 清单按 `src/` 实际目录核对）；快速开始（见 7.3）；与后端的搭配（保留 Z6）、仓库结构、版本与历史、许可证。
+
+### 7.2 截图
+
+- 用 P66 Z1 已通过的 6 张图**复制**进两仓 `docs/assets/readme/`（不跨仓引用）：Server 4 张（`workflow-designer` + `sample-a/b/c`），Web 6 张（`workspace`、`form-designer`、`workflow-designer` + `sample-a/b/c`）。两仓 `.gitignore` 都不拦 png，无需加例外。
+- 文件大小：222,563—360,822 B，全部 ≤500KB。
+- `agent-graph.png`、`approval-detail.png` 继续不放（final-03 §7 方案 A），Web 补丁修好后三份 README 一起补。
+
+### 7.3 快速开始：逐项照实际核对并本机实测
+
+实测环境：JDK 21.0.5、Maven 3.9.1、Node 22.14、pnpm 11.9、Docker 24；隔离资源（不碰用户的 8080/5173/5432/6379/1883 服务与 `smart_workflow_f1v4b`）：临时工作树 `E:/code/_z7-wt/{server,Web}`、容器 `z7-qs-pg`（`pgvector/pgvector:pg17`，127.0.0.1:55432）、`z7-qs-redis`（127.0.0.1:56379）、应用端口 18080、vite 端口 51873。
+
+**Server**（`MAVEN_OPTS=-Xmx2g mvn -DskipTests package` → `bootstrap.jar` 236,245,672 B，构建约 4 分钟）：
+
+- 前两次启动失败，暴露两处 README 必须写清的实际前提（都已写进文档）：
+  1. `sw.form.enabled` / `sw.bpm.enabled` 在 `application-prod.yml` 里显式开启，业务层自动装配依赖它们（工程宪法 §1：`sw.form.enabled` 非 true 时 fail-fast）；local profile 必须显式带上，否则 `BpmNodeRegistry` 缺 bean 启动失败。
+  2. `application-prod.yml` 排除了 Spring AI 的 `PgVectorStoreAutoConfiguration`（应用自管向量存储，Embedding 由 LangChain4j 按模型配置运行时装配），并给 `spring.ai.openai.api-key` 非空占位；local profile 同样需要这两条，否则 `PgVectorStoreAutoConfiguration` 找不到 `EmbeddingModel` 启动失败。
+- 第三次启动成功：Flyway 全链迁移（V0.2.0→V0.4.0 + 19 支 R__）→ Tomcat 18080 → `health` 返回 `{"status":"UP"}`，启动约 2.5 分钟；`GET /api/auth/challenge` 返回验证码挑战；隔离库 `sys_user` 有种子超管（tenant 0 / admin）。
+- 五个环境变量按 UAT 口径注入（`SW_LOGIN_RSA_PRIVATE_KEY`（本机生成的开发 RSA 密钥）、`SW_LOGIN_DIGEST_SECRET`、`SW_CIPHER_KEY`、`SW_SSO_CIPHER_KEY`、`JWT_SECRET`）；开发密钥本机生成，不写真实凭据、不入 Git、不进回执。README 给出 `openssl` 生成命令。
+- `sw.iot` 保持关闭，全程无对 1883 的 MQTT 连接。
+
+**Web**（`NODE_OPTIONS=--max-old-space-size=2048`）：`pnpm install` 9.9 秒（pnpm 缓存命中）；`pnpm build`（vue-tsc + vite）4.7 秒通过；dev 服务器以 `VITE_PROXY_TARGET=http://127.0.0.1:18080` 起在隔离端口 51873，页面 200，`/api/actuator/health` 经代理返回 UP，`/api/auth/challenge` 经代理返回验证码。实测纠正了 README 初稿的端口写法：`pnpm dev -- --port` 会把 `--` 当字面参数传给 vite，正确写法是 `pnpm dev --port 51873`。已提交的 `vite.config.ts`（origin/main 版本）确认代理键为 `VITE_PROXY_TARGET`；用户的在途改动未读取、未引用。
+
+**资源互斥口径**：`shared-constraints.md` §6 的前后端编译互斥按“重型编译/构建命令不同时跑”执行——我的 Maven 与 pnpm 全程串行且带 2G 上限；用户的 8080 java 与 5173 vite 是 Owner 常驻服务而非编译进程，未等待也未触碰。
+
+### 7.4 工作流 `--latest=false`（Owner 已授权）
+
+两仓 `.github/workflows/build-release.yml` 建自动产物的 `gh release create` 各加一行 `--latest=false`（改动在 `run: |` shell 块内，一行参数；`gh release delete/create` 其余逻辑未动）。
+
+### 7.5 提交与合入
+
+方式与 Z6 相同：临时工作树内 develop 提交 → detach 到 `origin/main` `--no-ff` 合并 → 普通推送 → develop 快进对齐。Web 提交带 `SKIP_SIMPLE_GIT_HOOKS=1`，等效检查（主检出 prettier 3.8.4 `--check`、commitlint）通过；首版提交说明以英文 `README` 开头再次被 `subject-case` 拦下，改为中文开头后通过。每仓 3 个 develop 提交 + 2 个 main 合并提交：
+
+| 仓库 | develop 提交（依序） | main 合并（依序） | 远端终态 |
+|---|---|---|---|
+| Server | `80c91bb1` README+截图、`c17723f1` CI 参数、`0d6224c1` 功能清单链接修复 | `88a0252b`（`7d009021`+`c17723f1`）、`7d0f2a2e`（`88a0252b`+`0d6224c1`） | main = develop = `7d0f2a2ec90ed3af1eef519a6ff59236898feb50` |
+| Web | `20ec998` README+截图、`aa1cffb` CI 参数、`00533e4` 功能清单链接修复 | `49305d0`（`e181e25`+`aa1cffb`）、`bed840d`（`49305d0`+`00533e4`） | main = develop = `bed840d0e834d89476cf6e9c87e64edf780a313a` |
+
+链接修复的原因：链接回读发现中文路径 `功能清单.md` 不带百分号编码会 404，改用 `%E5%8A%9F%E8%83%BD%E6%B8%85%E5%8D%95.md` 后 200；Web 原先指向工作区仓库 `Smart-WorkFlow-aPaaS-server/功能清单.md` 的路径不存在（工作区不跟踪嵌套仓库），改为指向 Server 仓库。两次合入各触发一轮 main CI，共两轮 `build-<sha>` 产物（均 `--latest=false`）。
+
+### 7.6 Latest 修复（Owner 已授权，本机 git 凭据）
+
+- 方式：`git credential fill` 取本机已存 GitHub 凭据（40 字符令牌，仅在内存变量中使用，未显示、未落盘、未写回执），对两个语义 Release 调 `PATCH /releases/{id}` `{"make_latest":"true"}`（Server `438918154`、Web `438126185`，均 HTTP 200）；未改资产、说明与 tag。
+- 回读：`releases/latest` 重定向 Server → `0.4.0`、Web → `0.3.6`。
+- CI 产物是否遵守 `--latest=false`、Latest 是否被再次顶替，见 §7.7。
+
+### 7.7 main CI、渲染与链接回读
+
+- **渲染**：两仓 GitHub 首页 `currentOid` 分别等于两个仓的最终合并提交；徽章（shields.io 引用 Server 10、Web 12）、Mermaid、README 图片引用、快速开始各小节锚点（`#1-克隆与构建` 等）与「快速开始」标题 id（`user-content-快速开始`）都在渲染 HTML 中确认。
+- **链接**：两仓 `origin/main` README 全部链接与图片逐个请求——Server 19 项、Web 19 项，除上述已修复的 2 处外全部 200（首次失败的 `workspace.png` 为偶发，重试 200）。
+- **CI 与 Latest**：四个合并提交各触发一轮 main CI。首轮中 Web 两轮失败在 `pnpm/action-setup@v4` 自装（`Something went wrong, self-installer exits with code 1`，发生在 checkout 之后的依赖安装前，与本次改动无关的基础设施抖动）；Server 第二轮失败在 `AgentModelManageServiceImplTest` 1 Error（已知 CI 抖动族，见 `todo/iot-subprocess-output-race.md` 与 0.2.3 同提交 rerun 先例）；Server 第一轮同代码 success。按 0.2.3 先例对三个失败 run 做 rerun-failed-jobs（API，HTTP 201），四个 run 终态全部 success：
+
+| 仓库 | run | 提交 | 终态 |
+|---|---|---|---|
+| Server | `42644899994` | `88a0252b` | success |
+| Server | `42645938797` | `7d0f2a2e`（rerun） | success |
+| Web | `42644984282` | `49305d0`（rerun） | success |
+| Web | `42645875693` | `bed840d`（rerun） | success |
+
+- 四个 `build-<sha>` tag/Release 全部建成（两仓各 2 个，均 `--latest=false`）；tag 总数 Server 84→87 行、Web 90→93 行（基线 + Z6 的 1 个 + Z7 的 2 个），语义 tag 与 Release 资产未动。
+- **Latest 在两轮新 build Release 建成后仍为 `0.4.0` / `0.3.6`**——`--latest=false` 在真实 CI 生效，§6.5 的问题从根上关闭。
+
+### 7.8 收尾
+
+- 隔离资源全部清理：两个容器已 `docker rm -f`；应用进程由 `timeout` 兜底自行退出，端口 18080/51873 已释放；临时工作树移除（Web 工作树含 node_modules，用 `--force` 移除，内容全部可由 pnpm 重建）；用户主检出未动（`vite.config.ts` 在途改动保持 ` M`）。
+- 工作区 README「快速开始」第 3 步已改为指向两仓 README 的 `#快速开始` 锚点（§8 第 1 条的渲染验证见工作区提交记录）。
+
+## 8. 下一步
 
 1. 2026-11-10 17:16 后：Executor 补做 Z4，回填本回执 §3。
-2. Z4 完成后：Planner 做 P66 终态复核（正式登记第 52 个功能、方向归 `passed/`、COMPLETED）。§4、§5 的分支清理和 §6 的 Z6 都已完成，不再阻塞终态复核。
-3. Owner 裁决：两仓 Latest 被 CI 自动产物顶替（§6.5）。是否把 `0.4.0`、`0.3.6` 重新设为 Latest，是否给工作流加 `--latest=false`。这件事不影响 UAT 和正式版制品；是否作为终态复核的前置条件，由 Planner 定。
-4. Planner：工作区 README「快速开始」指向两仓 README 的启动步骤，但两仓 README 没有这部分（§6.7）。
-5. Web 缺陷 W-a—W-d 已登记在 `todo/web-ui-defects-20261109.md`，等下一个 Web 补丁方向（Owner 已裁决现在不开 Web 0.3.7）。补丁发布后，重拍智能体编排图和审批详情图，放回 README。
+2. Z4 完成后：Planner 做 P66 终态复核（正式登记第 52 个功能、方向归 `passed/`、COMPLETED）。§4、§5 的分支清理、§6 的 Z6、§7 的 Z7 都已完成，不再阻塞终态复核。
+3. 已完成（Owner 2026-11-09 授权，§7.4/§7.6）：两仓工作流已加 `--latest=false`，Server `0.4.0`、Web `0.3.6` 已重新设为 Latest。Planner 终态复核时回读 Latest 与两轮 `build-<sha>` 产物确认未被顶替。
+4. 已完成（§7.1/§7.3）：两仓 README 已重排并新写快速开始；工作区 README「快速开始」第 3 步已指向两仓 `#快速开始` 锚点。
+5. Web 缺陷 W-a—W-d 已登记在 `todo/web-ui-defects-20261109.md`，等下一个 Web 补丁方向（Owner 已裁决现在不开 Web 0.3.7）。补丁发布后，重拍智能体编排图和审批详情图，三份 README 一起补图。
 6. Owner（可选）：手动删除已脱离 git 的残留目录 `E:/code/p61-wt-web`（312 MB，内容已全部在 main 里，无唯一文件）；不删也不影响任何东西（`planning-review-final-06.md` §2）。
 7. §5.4 的两个 Server 额外 worktree 已裁决（`planning-review-final-06.md` §3）：两者属于 0.2.3/0.3.0 的隔离环境，按 Owner 既有裁决**保留**；detached HEAD 不占用分支，不受“合并即删”规则管辖；以后 Owner 撤掉隔离环境时，再连同 `.runtime-*` 和隔离库一起清理。

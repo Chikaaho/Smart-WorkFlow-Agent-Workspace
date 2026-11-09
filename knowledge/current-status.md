@@ -40,8 +40,15 @@ P66 多数据库兼容以 **Server 0.4.0** 发布并部署 UAT，登记为第 **
   develop→main→develop 普通合入：Server main=develop=`7d009021`，Web main=develop=`e181e25`；main CI run
   `42631428381`、`42633872862` success；GitHub 首页渲染与 20 个链接回读通过；tag 与语义 Release 未动。
   CI 自动产物 `build-<sha>` 成了两仓 Latest（同名制品、字节不同），是否改回待 Owner 定。
+- **Z7 两仓 README 重排（`planning-review-final-08.md` §2/§3，回执 `execution-final-05.md` §7）**：两仓 README
+  重排为开源结构（徽章、六张截图复制进两仓 `docs/assets/readme/`、Mermaid 架构图、快速开始与文档导航）；
+  Server 快速开始经隔离端口 18080/隔离库（pgvector 镜像 + Redis 56379）实测：构建→Flyway 全链→health UP→
+  challenge 验证码→种子 admin；local profile 需带 `sw.form/bpm.enabled` 与 Spring AI exclude（文档已写明）。
+  Web install/build/dev 实测，dev 代理到隔离后端 health UP；工作区 README 快速开始改指两仓 `#快速开始` 锚点。
+  按 Owner 授权：两仓工作流 `gh release create` 加 `--latest=false`；0.4.0/0.3.6 经 PATCH `make_latest`
+  设回 Latest（本机 git 凭据，令牌未落盘）。终态 Server main=develop=`7d0f2a2e`、Web `bed840d`。
 - **固定值**：功能 **52**；M59/18/13=90；ADV1/7/56=64；实际 P63；问题 57；正式验证基线新增 []。
-- **待办**：Z4（2026-11-10 17:16 后）→ Planner 终态复核 0.4.0；两仓 Latest 是否改回待 Owner；DM8/KingbaseES Owner 实库验证；`JavaSubprocessExecutor`
+- **待办**：Z4（2026-11-10 17:16 后）→ Planner 终态复核 0.4.0；DM8/KingbaseES Owner 实库验证；`JavaSubprocessExecutor`
   子进程输出竞态登记 `todo/iot-subprocess-output-race.md`。
 - **回执**：`product/multi-database-compat/receipts/execution-final-03.md`；功能登记
   `knowledge/features/multi-database-compat.md`。

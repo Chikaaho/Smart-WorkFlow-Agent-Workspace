@@ -139,8 +139,8 @@ git clone git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-Web.git Smart-WorkFlow-aP
 
 ### 3. 启动与验证
 
-- 后端：JDK 21、Maven 3.9+；按 [`server README`](Smart-WorkFlow-aPaaS-server/README.md) 配置数据源与 Redis 后启动。
-- 前端：Node.js 20+、pnpm；按 [`web README`](Smart-WorkFlow-aPaaS-Web/README.md) 安装依赖并启动开发服务器。
+- 后端：JDK 21、Maven 3.9+、PostgreSQL 与 Redis；按 [`server README · 快速开始`](Smart-WorkFlow-aPaaS-server/README.md#快速开始) 构建并启动。
+- 前端：Node.js 20+、pnpm 9+；按 [`web README · 快速开始`](Smart-WorkFlow-aPaaS-Web/README.md#快速开始) 安装依赖并启动开发服务器。
 - 数据库建库前提与多库连接示例见 [`multi-database.md`](Smart-WorkFlow-aPaaS-server/docs/deployment/multi-database.md)。
 - 开发命令与环境准备见 [`knowledge/development-workflow.md`](knowledge/development-workflow.md)。
 
