@@ -1,6 +1,6 @@
 # 交接
 
-2026-11-09｜Planner（final-03 审查）｜Z2/Z3 通过、Z1 有条件；建议 Web 0.3.7 单独修 4 个缺陷，待 Owner 裁决；Z4 待时间窗。
+2026-11-09｜Planner（final-03 Owner 裁决）｜选方案 A：README 下两图，Z4 后 P66 终态；W-a—W-d 留下个 Web 补丁（todo/web-ui-defects-20261109.md）。
 
 ## 当前
 
@@ -22,7 +22,7 @@ P66 多数据库兼容（XL）以 **Server 0.4.0** 发布，登记第 **52** 个
 三示例流程（0.3.1—0.3.6）保持 **`COMPLETED`**；Web **0.3.6**（tag `c3f1d6e`，Release
 `438126185`，入口 `assets/index-CKdiXkhU.js`）不变。应用包维持 `systemVersion=0.3.2`。
 
-**下一动作**：Owner 裁决 `product/multi-database-compat/receipts/planning-review-final-03.md` §5 方案 A/B（推荐 A：P66 先终态，Web 0.3.7 单独修 W-a—W-d 后重拍）；Z4 待 2026-11-10 17:16 后补做，回执 `execution-final-05.md`。发布后同步回执 `execution-final-04.md`。
+**下一动作**：Executor 按 `product/multi-database-compat/receipts/planning-review-final-03.md` §7 在 `execution-final-05.md` 完成：README 下掉 `agent-graph.png`、`approval-detail.png` 引用并回读渲染；2026-11-10 17:16 后做 Z4。随后 Planner 终态复核（第 52 功能、方向归 `passed/`、COMPLETED）。Web 缺陷见 `todo/web-ui-defects-20261109.md`。
 Owner 侧：DM8、KingbaseES 实库验证。
 
 ## 待办/风险

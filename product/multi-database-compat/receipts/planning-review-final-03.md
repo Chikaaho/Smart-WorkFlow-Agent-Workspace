@@ -57,3 +57,11 @@ W-a、W-b 会直接影响使用：用户看不清智能体编排，审批人看�
 - Owner 裁决方案 A 或 B。
 - Z4：2026-11-10 17:16 以后补做，回执记为 `execution-final-05.md`。如果选 A，同一份回执里一并完成 README 下掉 2 张图并回读渲染。
 - 之后由 Planner 做 P66 终态复核；Web 0.3.7 的方向等 Owner 裁决后再写。
+
+## 7. Owner 裁决（2026-11-09）
+
+1. **选方案 A**：P66 先结束。README 下掉 `agent-graph.png` 和 `approval-detail.png`，界面预览保留 6 张。
+2. **Web 缺陷留到下一个补丁**：W-a 到 W-d 先登记到 `todo/web-ui-defects-20261109.md`，现在不开 Web 0.3.7，方向等下一个 Web 补丁时再写。
+3. **测试流程不处理**：流程中心里的 `0.1.5验收流程`、`流程版本1` 不停用、不隐藏；以后截图和演示时不点开这两个流程。`workspace.png` 维持“可用”。
+
+下一步：Executor 在 `execution-final-05.md` 里完成两件事：一是 README 下掉 2 张图（图片文件留在仓库里不删，只去掉引用和图注），并回读 GitHub 渲染；二是 2026-11-10 17:16 以后做 Z4。然后 Planner 做 P66 终态复核。
