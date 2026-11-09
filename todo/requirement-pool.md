@@ -1,14 +1,16 @@
 # 需求池（Requirement Pool）
 
-## 当前最高优先：UAT 恢复（M，执行完成，待规划复核）
+## 已结束：UAT 恢复（M，2026-11-09 规划通过）
 
-Owner 2026-11-09 授权只读诊断、诊断后恢复，以及清理部署留下的可再生文件和 reasonix 全部内容。PG 数据目录和 WAL 禁止触碰，禁止 `pg_resetwal`。目标：health UP，水位降到 85% 以下。恢复后顺带完成两项只读工作：0.3.3 日志统计、P66 UAT 校验和比对。方向 `product/uat-recovery-20261109/ready/direction-uat-recovery.md`，回执 `receipts/execution-uat-recovery-01.md`。不计功能数。
+Owner 2026-11-09 授权只读诊断、诊断后恢复，以及清理部署留下的可再生文件和 reasonix 全部内容。PG 数据目录和 WAL 禁止触碰，禁止 `pg_resetwal`。目标：health UP，水位降到 85% 以下。恢复后顺带完成两项只读工作：0.3.3 日志统计、P66 UAT 校验和比对。方向 `product/uat-recovery-20261109/passed/direction-uat-recovery.md`，回执 `receipts/execution-uat-recovery-01.md`。不计功能数。
 
 **执行完成（2026-11-09）**：根分区 100% → PG 14 checkpointer PANIC、崩溃恢复因无空间失败；清理 reasonix 运行内容（约 6.6G）与旧备份/旧日志/apt 缓存（约 0.6G）后，PG **14.24** 自动恢复 online（5433），`smart_workflow` 31 行历史、终点 **0.2.9**；后端 health **UP**、`build.version=0.3.2`；`https://chikaho.cn/` **200**，登录后三个实例 `YJ-20261108-008`、`XY-20261108-015`、`MES-20261108-015` 详情只读打开。根分区降至 **66%（6.4G 可用）**。reasonix 仅剩 `TODO-reasonix-openrouter.md` 与 `.claude/projects/-data-reasonix-files*` 两处非运行关联项，交 Owner 决定。回执 `product/uat-recovery-20261109/receipts/execution-uat-recovery-01.md`。0.3.3 日志部分见 `execution-033-01.md`（PARTIAL）；P66 比对见 `execution-final-02.md`（28/28 一致）。
 
-## 当前并行：Server 0.3.3 补丁（M，智能体工具 `enabled` 整数绑定，第 1 步日志部分完成，PARTIAL）
+**规划通过（2026-11-09，`receipts/planning-review-uat-recovery-01.md`）**：停机约 3 小时 21 分钟，无数据丢失；方向归档 `passed/`。后续：W1 补确认 PM2 整体移除未影响其他进程（并入 `execution-033-02.md`）；W2 后端日志 INFO+轮转（100MB/14 天/1G）、PG `Restart=on-failure`、磁盘 80% 告警，待 Owner 授权后随下次部署执行；W3 两处 reasonix 保留项建议保留。
 
-Owner 2026-11-09 裁决单独发补丁。方向 `product/server-033-agent-tool-enabled-hotfix/ready/direction-server-033-hotfix.md`：先只读核实 UAT 影响（不受影响则停报），再从 `main` 建 `hotfix/0.3.3-agent-tool-enabled`，只移植 P66 `26d0e8a7` 的绑定改动，无迁移变更，发 Server 0.3.3 并部署 UAT（先查磁盘 96%）。与 P66 同模块冲突：补丁先发，P66 发版前合入最新 develop。**第 1 步日志部分已完成（`receipts/execution-033-01.md`）**：可读后端日志 2026-11-08 00:00—2026-11-09 13:39 内 `smallint = boolean`/`operator does not exist`/`smallint`/`boolean` 均 0 次；24,698 条 ERROR 全部是 PG 停止导致的连接失败。该结果不足以判定 UAT 不受影响；下一步：**用 `de8ec017` 在真实 PG 复现、映射 10 处调用路径，补全后再由 Planner 裁决是否继续发版**。不计功能数。
+## 当前最高优先：Server 0.3.3 补丁（M，智能体工具 `enabled` 整数绑定，第 1 步日志部分完成，PARTIAL）
+
+Owner 2026-11-09 裁决单独发补丁。方向 `product/server-033-agent-tool-enabled-hotfix/ready/direction-server-033-hotfix.md`：先只读核实 UAT 影响（不受影响则停报），再从 `main` 建 `hotfix/0.3.3-agent-tool-enabled`，只移植 P66 `26d0e8a7` 的绑定改动，无迁移变更，发 Server 0.3.3 并部署 UAT（先查磁盘，须余 ≥3G）。与 P66 同模块冲突：补丁先发，P66 发版前合入最新 develop。**第 1 步日志部分已完成（`receipts/execution-033-01.md`）**：可读后端日志 2026-11-08 00:00—2026-11-09 13:39 内 `smallint = boolean`/`operator does not exist`/`smallint`/`boolean` 均 0 次；24,698 条 ERROR 全部是 PG 停止导致的连接失败。该结果不足以判定 UAT 不受影响；下一步：**用 `de8ec017` 在真实 PG 复现、映射 10 处调用路径，补全后再由 Planner 裁决是否继续发版**。规划认可 PARTIAL（`product/uat-recovery-20261109/receipts/planning-review-uat-recovery-01.md` §3）：回执 `execution-033-02.md` 覆盖第 1 步全部，第 2—6 步顺延 `execution-033-03.md`；复现成功且 UAT 路径可触发则继续发 0.3.3，否则建议 Owner 取消、随 0.4.0 发布。不计功能数。
 
 ## 当前：P66 多数据库兼容（XL，目标 0.4.0，阶段 A 有条件通过，B0、B1 通过，实现验收通过，UAT 校验和比对完成，待合并发版）
 
@@ -33,7 +35,7 @@ Owner 2026-11-08 要求与三示例流程并行（system.md §4 已修订为不�
 - **发布**：Web tag `0.3.6`=`c3f1d6e`（Release `438126185`）；Server 维持 0.3.2（tag `de8ec017`，Release `437820040`）；UAT Web 入口 `index-CKdiXkhU.js`、build.version=0.3.2、Flyway V0.2.9。Web 0.3.2 tag 同版本覆盖 Owner 2026-11-08 追认（维持 `3b0043f`）。已发布 tag 0.3.0—0.3.5 均未改动。
 - **最终证据实例**：A1 `YJ-20261108-008/009`、A2 `YJ-20261108-006`、B1 `XY-20261108-015`、B2 `XY-20261108-013`、B3 `XY-20261108-014`、C1 `MES-20261108-015`、C2 `MES-20261108-016`。
 - **应用包**：维持 `systemVersion=0.3.2` 导出（71,786 B）；缺项与补建方法见功能文件与 `assets/README.md`。
-- **观察区新增**：设计器映射编辑框只对 JSON 场景显示；演示实例按真实节奏分时审批（Owner 需要时再安排）；UAT 磁盘水位 96%。
+- **观察区新增**：设计器映射编辑框只对 JSON 场景显示；演示实例按真实节奏分时审批（Owner 需要时再安排）；UAT 磁盘 66%（W2 待授权）。
 
 终态复核 `product/three-sample-process-uat/receipts/planning-final-review-036-completed.md` 通过，三示例流程线结束；根 README、version.json 的“待终态复核”表述随 P66 发布后同步改为 COMPLETED。当前唯一下一动作见 P66 段。
 

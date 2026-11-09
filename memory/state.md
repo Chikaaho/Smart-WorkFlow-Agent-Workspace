@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-2026-11-08｜Planner（UAT 恢复下发）｜Owner 授权诊断+恢复+清理 reasonix；P66 等 UAT；三示例流程 COMPLETED。
+2026-11-09｜Planner（UAT 恢复通过）｜UAT 已恢复（磁盘 66%）；0.3.3 待复现；P66 待合并发版。
 
 ## 当前任务
 
@@ -11,19 +11,19 @@
 
 七阶段 **7/0/0**。三示例流程线结束（终态复核 `product/three-sample-process-uat/receipts/planning-final-review-036-completed.md`）。唯一下一动作见 P66。
 
-**P66 多数据库兼容**（XL，目标 0.4.0）：阶段 A 有条件通过，最终回执实现验收通过（`product/multi-database-compat/receipts/planning-review-final-01.md`，Server `bf62381f`，六库表结构/种子/冒烟 0 差异）；**阻塞：UAT PG 14 停止、health 503、磁盘 95.7%**，Owner 已授权诊断+恢复+清理 reasonix，方向 `product/uat-recovery-20261109/ready/direction-uat-recovery.md`（回执 `execution-uat-recovery-01.md`，目标水位<85%）；之后顺序：恢复 UAT → 0.3.3 补丁 → P66 UAT 只读比对 → 合并发版 0.4.0（CI+MySQL 5.7 冒烟）→ 发布后同步与 README 重排。并行 **Server 0.3.3 补丁**（`product/server-033-agent-tool-enabled-hotfix/ready/`），下一动作 Executor 影响核实，回执 `execution-033-01.md`。
+**P66 多数据库兼容**（XL，目标 0.4.0）：阶段 A 有条件通过，最终回执实现验收通过（`product/multi-database-compat/receipts/planning-review-final-01.md`，Server `bf62381f`，六库表结构/种子/冒烟 0 差异）；UAT 校验和 28/28 一致（`execution-final-02.md`）。**UAT 恢复已通过**（`product/uat-recovery-20261109/receipts/planning-review-uat-recovery-01.md`，磁盘满致 PG 崩溃，清 reasonix 后 66%）。顺序：0.3.3 补丁（日志 0 次 PARTIAL，下一动作真实 PG 复现+10 处路径映射，回执 `execution-033-02.md`）→ P66 合并发版 0.4.0（CI+MySQL 5.7 冒烟）→ 发布后同步与 README 重排。
 
 ## 基线
 
 功能51（不登记新功能）；M59/18/13=90；ADV1/7/56=64；实际P63；问题57；正式基线变更[]。已核销P2/P4/P9/P15/P19/P29/P34/P47/P65，P35部分；P20未核销。
 
-正式/部署版本：Web **0.3.6**（tag `0.3.6`=`c3f1d6e`，Release `438126185`），Server **0.3.2**（tag `0.3.2`=`de8ec017`，Release `437820040`）；Flyway V0.2.9。UAT health UP、build.version=0.3.2、Web 入口 `assets/index-CKdiXkhU.js`、磁盘余约822M（96%）。应用包维持 `systemVersion=0.3.2`。
+正式/部署版本：Web **0.3.6**（tag `0.3.6`=`c3f1d6e`，Release `438126185`），Server **0.3.2**（tag `0.3.2`=`de8ec017`，Release `437820040`）；Flyway V0.2.9。UAT health UP、build.version=0.3.2、Web 入口 `assets/index-CKdiXkhU.js`、磁盘 66%（余 6.4G，日志约 500MB/天）。应用包维持 `systemVersion=0.3.2`。
 
 Owner定：本机隔离环境（`smart_workflow_030`、`.runtime-030` 等清单见 handoff）保留不删，含凭据密文，只要求不泄露，已gitignore。Key/授权码不入Git。
 
 ## 后续候选（需求池观察区）
 
-设计器映射编辑框只对 JSON 场景显示；演示实例按真实节奏分时审批；UAT 磁盘 96%；CI偶发失败族（Notify I6G1、H2跨测试污染等）；知识库写权限粒度；短信电话渠道（未采购）；Agent逐节点进度事件；P20。
+设计器映射编辑框只对 JSON 场景显示；演示实例按真实节奏分时审批；UAT 日志轮转/PG 自启/磁盘告警（待 Owner 授权）；CI偶发失败族（Notify I6G1、H2跨测试污染等）；知识库写权限粒度；短信电话渠道（未采购）；Agent逐节点进度事件；P20。
 
 ## 教训
 
