@@ -6,8 +6,8 @@
 | 依据 | `product/multi-database-compat/receipts/planning-review-final-03.md` §6/§7（Owner 裁决方案 A）；`planning-review-final-04.md` §3/§6（远程分支清理，Owner 裁决） |
 | 日期 | 2026-11-09 |
 | 执行角色 | Executor |
-| 状态 | **第 1 项完成**（README 下掉 2 张图并回读渲染）；**分支清理完成**（§4）；**Z4 待时间窗**（2026-11-10 17:16 之后） |
-| 结论 | README 界面预览保留 6 张，`agent-graph.png`、`approval-detail.png` 引用与图注已移除、图片文件保留在仓库；GitHub raw 与渲染 HTML 双回读通过。13 条已合入分支（Server 5、Web 8）远程与本地均已删除，Web `develop` 已普通快进到 `main`；两仓远程各剩 3 条分支，tag 前后逐行一致。P66 在 Z4 补做后即可进入 Planner 终态复核 |
+| 状态 | **第 1 项完成**（README 下掉 2 张图并回读渲染）；**分支清理完成**（§4）；**清单外本地分支清理完成**（§5）；**Z4 待时间窗**（2026-11-10 17:16 之后） |
+| 结论 | README 界面预览保留 6 张，`agent-graph.png`、`approval-detail.png` 引用与图注已移除、图片文件保留在仓库；GitHub raw 与渲染 HTML 双回读通过。13 条已合入分支（Server 5、Web 8）远程与本地均已删除，Web `develop` 已普通快进到 `main`；两仓远程各剩 3 条分支，tag 前后逐行一致。§4.6 清单外 13 条已合入本地分支也已按 final-05 §3 删除（`feature/p61-msg-scope-corrected` 的 git 工作树注册已移除，残留 312 MB 物理目录 `E:/code/p61-wt-web` 交 Owner 手动删除）。两仓本地各剩 `main`、`develop` 和未完成分支（Server `feature/p62-perf-bounded-20261011`）。P66 在 Z4 补做后即可进入 Planner 终态复核 |
 
 ## 1. README 下掉 `agent-graph.png` 与 `approval-detail.png`
 
@@ -193,9 +193,71 @@ tag：`git ls-remote --tags origin` 删除前后逐行 `diff` 为空（Server 84
 
 这 13 条都已合入 main，没有领先提交，用 `git branch -d` 删掉也不会丢提交。只有 `feature/p61-msg-scope-corrected` 不同：要删它，得先移除工作树 `E:/code/p61-wt-web`，而那个目录里可能还有没提交的文件，需要工作树的使用者确认。Server 本地还有 `feature/p62-perf-bounded-20261011`，属于未完成分支，按裁决保留。
 
-## 5. 下一步
+## 5. 清单外本地分支清理（`planning-review-final-05.md` §3）
+
+final-05 §3 裁决：§4.6 的 13 条清单外本地分支按 Owner 长期规则删除，不再单独问 Owner。执行于 2026-11-09，证据留在本机 `E:/code/Smart-WorkFlow-Agent-Evidence/p66-040/branch-cleanup/`（`delete-local-2.log`、`local-branches-final.txt`）。
+
+### 5.1 12 条直接删除：全部成功
+
+删除前逐条重验：分支存在、`merge-base --is-ancestor origin/main` 为 TRUE、领先 `origin/main` 0 个提交；只用 `git branch -d`，**没有 `-D`，没有一条被拒绝**。删除前 SHA：
+
+| 仓库 | 本地分支 | 删除前 SHA |
+|---|---|---|
+| Server | `0.1.1-bugfix` | `7ff4743b3aff714f9058ede783d0b1af8eb8fd9f` |
+| Server | `bugfix/0.1.7` | `2d776effb1a58fac3c6c9bfac7f0ba20eedf4f2b` |
+| Server | `feature/0.3.0-sample-processes` | `79f00d3c45254f272766533da1109877c3507ee4` |
+| Server | `feature/0.3.1-approval-driven-flow` | `6a1134318512ccd75c0b28bdc3acc2f676ba5346` |
+| Server | `feature/p61-user-facing-message-humanization` | `6698b8cafd67c04708ad83224d5ee0339741576d` |
+| Server | `feature/p64-mes-advanced-orchestration` | `c0cbe60d9fae6e7a68819c5e5775efcee6201fa7` |
+| Server | `fix/openapi-callback-tenant-017` | `00e0a7390a9653777bc58144acef864b39a57f10` |
+| Server | `fix/super-tenant-visibility` | `f58e3aea2822879f70a49393d74759ec88b57c1b` |
+| Web | `0.1.1-bugfix` | `281892e43b67b466326b25fb83f2e471a5ca48fe` |
+| Web | `bugfix/0.1.7` | `fe1712bc8c53eb0d49d510b1336d9d998902fd6f` |
+| Web | `feature/p61-user-facing-message-humanization` | `29d90e8c8c911ffb668884eb700a0818fcf8fe93` |
+| Web | `feature/p64-mes-advanced-orchestration` | `4333145a76e1ec4926e559802d6e7295af72a403` |
+
+### 5.2 `feature/p61-msg-scope-corrected`：分支已删，工作树注册已移除，残留物理目录交 Owner
+
+- 只读检查：`git -C E:/code/p61-wt-web status --porcelain` 输出为**空**（无未提交、无未跟踪文件），HEAD `d110ed8b`，符合 §3.2 的"干净"分支，按第一条路径执行。
+- `git worktree remove E:/code/p61-wt-web`（未加 `--force`）：**git 侧已成功**——注册解除，`worktree list` 只剩主仓，主仓 `.git/worktrees/` 已清空；但物理目录没能删空，报 `error: failed to delete 'E:/code/p61-wt-web': Directory not empty`（rc=255）。残留 32,180 个文件，其中 31,717 个在被 gitignore 的 `node_modules` 下；最长路径 226 字符，没超过 Windows 260 限制，具体受阻原因未进一步定位。
+- 随后按流程 `git branch -d feature/p61-msg-scope-corrected`：成功（删除前 SHA `d110ed8b17161c8cfcd0036c69309d0ddb5e4dd7`，已合入 main、领先 0）；`git worktree prune` 已执行。
+- **残留**：`E:/code/p61-wt-web`（312 MB）已脱离 git（`.git` 文件已删，`status` 报 not a git repository），内容是来自 `d110ed8b` 的跟踪文件，加上可以重建的 `node_modules`；该提交已在 `origin/main` 中，目录里没有只此一份的内容。指令未授权文件系统级 `rm`，**本轮未删除该目录，交 Owner 手动删除**（直接资源管理器删除即可）。
+- 保护项核实：Owner 要求保护的 8080/5173 服务与该目录无关——8080 是 `java -jar sw-bootstrap/target/bootstrap.jar`（连 `smart_workflow_f1v4b`），5173 的 node 进程实际运行的是主仓 Web 的 vite（命令行端口 `--port 15174`）；全系统没有进程以 `p61-wt-web` 为工作目录。
+
+### 5.3 终态回读（`git branch -vv`）
+
+Server（3 条，符合 §3.3）：
+
+```text
+  develop                           a4f6c278 [origin/develop]
+  feature/p62-perf-bounded-20261011 7c305978 [origin/feature/p62-perf-bounded-20261011]
+* main                              a4f6c278 [origin/main]
+```
+
+Web（2 条；其未完成分支 `feature/ui-figma-align-20261027` 本来就只在远程）：
+
+```text
+  develop c3f1d6e [origin/develop]
+* main    c3f1d6e [origin/main]
+```
+
+两仓均检出 `main`、工作区无新改动（Web 仅原有 `vite.config.ts` 在途）；本轮只动本地引用，未做任何推送，远程与 tag 无变化。
+
+### 5.4 附带发现：Server 另有 2 个额外 worktree（只读核对，未动）
+
+`git worktree list` 显示 Server 还有两个额外工作树，均**不在本轮指令范围**，未做任何改动，交 Planner/Owner 按长期规则裁决：
+
+| 工作树 | HEAD（detached） | 对应已删分支 tip | 已合入 main | 脏文件 | 大小 |
+|---|---|---|:-:|---:|---:|
+| `.lc023-mock/lc023-server-wt` | `30370877` | `feature/023-agent-execution-lifecycle` | TRUE | 1 | 474 MB |
+| `E:/code/sw030-server` | `6a113431` | `feature/0.3.1-approval-driven-flow` | TRUE | 0 | 310 MB |
+
+两者内容都已合入 main；`.lc023-mock` 下的工作树有 1 个脏文件（其中可能含 Owner 要求保留的隔离环境内容），删除前需单独确认。
+
+## 6. 下一步
 
 1. 2026-11-10 17:16 后：Executor 补做 Z4，回填本回执 §3。
-2. Z4 完成后：Planner 做 P66 终态复核（正式登记第 52 个功能、方向归 `passed/`、COMPLETED）。§4 的分支清理已完成，不再阻塞终态复核。
+2. Z4 完成后：Planner 做 P66 终态复核（正式登记第 52 个功能、方向归 `passed/`、COMPLETED）。§4、§5 的分支清理均已完成，不再阻塞终态复核。
 3. Web 缺陷 W-a—W-d 已登记在 `todo/web-ui-defects-20261109.md`，等下一个 Web 补丁方向（Owner 已裁决现在不开 Web 0.3.7）。补丁发布后，重拍智能体编排图和审批详情图，放回 README。
-4. Planner 裁决：§4.6 清单外的 13 条已合入本地分支，是否按长期规则一并删除。其中 `feature/p61-msg-scope-corrected` 要先确认工作树 `E:/code/p61-wt-web` 能否移除。
+4. Owner：手动删除已脱离 git 的残留目录 `E:/code/p61-wt-web`（312 MB，内容已全部在 main 里，无唯一文件）。
+5. Planner/Owner 裁决：§5.4 的两个 Server 额外 worktree（`.lc023-mock/lc023-server-wt`、`E:/code/sw030-server`）是否按长期规则处理；其中 `.lc023-mock` 有 1 个脏文件，且可能涉及 Owner 定保留的隔离环境，动前需单独确认。

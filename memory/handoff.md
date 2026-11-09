@@ -1,6 +1,6 @@
 # 交接
 
-2026-11-09｜Planner（final-05 审查）｜分支清理通过（两仓远程各剩 main/develop/1 条未完成分支）；清单外已合入本地分支交 Executor 删除；Z4 待 11-10 17:16 后，然后终态复核。
+2026-11-09｜Executor（execution-final-05 §5）｜final-05 §3 清单外 13 条已合入本地分支已删；p61 工作树注册已移除（312M 残留目录 `E:/code/p61-wt-web` 交 Owner 手动删）；Z4 待 11-10 17:16 后，然后终态复核。
 
 ## 当前
 
@@ -22,7 +22,7 @@ P66 多数据库兼容（XL）以 **Server 0.4.0** 发布，登记第 **52** 个
 三示例流程（0.3.1—0.3.6）保持 **`COMPLETED`**；Web **0.3.6**（tag `c3f1d6e`，Release
 `438126185`，入口 `assets/index-CKdiXkhU.js`）不变。应用包维持 `systemVersion=0.3.2`。
 
-**下一动作**：Executor 按 `product/multi-database-compat/receipts/planning-review-final-05.md` §3 删除清单外已合入本地分支（12 条 `-d`；`feature/p61-msg-scope-corrected` 先查工作树 `E:/code/p61-wt-web`，干净才移除，有文件则交 Owner）；2026-11-10 17:16 后在 `execution-final-05.md` §3 只读补 Z4。随后 Planner 终态复核（第 52 功能、方向归 `passed/`、COMPLETED）。Web 缺陷见 `todo/web-ui-defects-20261109.md`。
+**下一动作**：2026-11-10 17:16 后 Executor 在 `execution-final-05.md` §3 只读补 Z4（`server.log` 大小、`df -h /`、logrotate 实际轮转），然后 Planner 终态复核（第 52 功能、方向归 `passed/`、COMPLETED）。待 Owner：手动删残留目录 `E:/code/p61-wt-web`（312M，内容全在 main）。待 Planner/Owner：Server 2 个额外 worktree（`.lc023-mock/lc023-server-wt`、`E:/code/sw030-server`，内容已合入 main，前者有 1 脏文件）是否按长期规则处理。Web 缺陷见 `todo/web-ui-defects-20261109.md`。
 Owner 侧：DM8、KingbaseES 实库验证。
 
 ## 待办/风险
