@@ -1,10 +1,10 @@
 # 当前状态摘要
 
-2026-11-09｜Executor（execution-final-05 §4）｜final-04 §3 分支清理完成：13 条已合入分支的远程和本地都已删除，Web develop 快进到 main，两仓远程各剩 3 条，tag 不变；Z4 待 11-10 17:16 后。
+2026-11-09｜Planner（final-05 审查）｜分支清理通过（两仓远程各剩 main/develop/1 条未完成分支）；清单外已合入本地分支交 Executor 删除；Z4 待 11-10 17:16 后，然后终态复核。
 
 ## 当前任务
 
-P66 多数据库兼容（XL）以 **Server 0.4.0** 发布并部署 UAT，第 **52** 个正式功能已预登记，以终态复核为准。发布审查通过（`product/multi-database-compat/receipts/planning-review-final-02.md`）；发布后同步回执 `execution-final-04.md`：**Z2 完成**（本机 0.3.2 jar 在 0.4.0 库上 Flyway 校验失败，回滚改为必须恢复 pre040 dump），**Z3 完成**（develop 普通快进 `a4f6c278`，main=develop，tag 未动，feature 保留（Owner 2026-11-09 改为删除，已执行）），Z1 七图已重拍。规划审查 `planning-review-final-03.md` §7 Owner 裁决方案 A：README 下掉 agent-graph/approval-detail 两图，Z4 后 P66 终态；W-a—W-d 留到下一个 Web 补丁（`todo/web-ui-defects-20261109.md`），修完重拍；测试流程不隐藏，截图时不点开。**final-05（`execution-final-05.md`）**：README 两图引用已下掉（`6c8b53ac`，8 个图片文件保留，README 剩 6 张），GitHub raw 与渲染 HTML 回读通过；`planning-review-final-04.md` 通过，并下发 §3 远程分支清理（Server 5 条、Web 8 条已合入分支，Web develop 快进 main）；Server `feature/p62-perf-bounded-20261011`、Web `feature/ui-figma-align-20261027` 未合入，Owner 定为保留（§6：只留 main、develop 和未完成分支）。**分支清理已完成（`execution-final-05.md` §4）**：13 条已合入分支（含 `feature/0.4.0-multi-database`）删除前门禁全部为 TRUE，远程分支和同名本地分支都已删除；Web `develop` 普通快进 `0d71982..c3f1d6e`；两仓远程各剩 3 条分支，tag 删除前后逐行一致；清单外 13 条已合入的本地分支未删，待 Planner 裁决（§4.6）。Z4 待 2026-11-10 17:16 后。
+P66 多数据库兼容（XL）以 **Server 0.4.0** 发布并部署 UAT，第 **52** 个正式功能已预登记，以终态复核为准。审查链 `product/multi-database-compat/receipts/planning-review-final-02`—`05.md`：Z1 七图重拍、README 按 Owner 方案 A 下掉 agent-graph/approval-detail（剩 6 张）；Z2 回滚必须恢复 pre040 dump；Z3 develop=main=`a4f6c278`；W-a—W-d 留下个 Web 补丁（`todo/web-ui-defects-20261109.md`），测试流程不隐藏。分支清理通过：13 条已合入分支远程+本地已删，Server 远程剩 main/develop/`feature/p62-perf-bounded-20261011`，Web 剩 main/develop(=main `c3f1d6e5`)/`feature/ui-figma-align-20261027`，tag 未动。待办：final-05 §3 清单外已合入本地分支删除；Z4 待 2026-11-10 17:16 后。
 
 - **发布**：tag `0.4.0`=`a4f6c278`，Release `438918154`，`bootstrap-0.4.0.jar`
   236,245,457 B sha256 `188be963…`；`build-<sha>` Release `438913661` 同字节。

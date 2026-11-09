@@ -1,6 +1,6 @@
 # 交接
 
-2026-11-09｜Executor（execution-final-05 §4）｜final-04 §3 分支清理完成：13 条已合入分支的远程和本地都已删除，Web develop 快进到 main，两仓远程各剩 3 条，tag 不变；Z4 待 11-10 17:16 后。
+2026-11-09｜Planner（final-05 审查）｜分支清理通过（两仓远程各剩 main/develop/1 条未完成分支）；清单外已合入本地分支交 Executor 删除；Z4 待 11-10 17:16 后，然后终态复核。
 
 ## 当前
 
@@ -22,7 +22,7 @@ P66 多数据库兼容（XL）以 **Server 0.4.0** 发布，登记第 **52** 个
 三示例流程（0.3.1—0.3.6）保持 **`COMPLETED`**；Web **0.3.6**（tag `c3f1d6e`，Release
 `438126185`，入口 `assets/index-CKdiXkhU.js`）不变。应用包维持 `systemVersion=0.3.2`。
 
-**下一动作**：2026-11-10 17:16 后，Executor 在 `execution-final-05.md` §3 只读补做 Z4（`server.log` 大小、`df -h /`、logrotate 实际轮转）。`planning-review-final-04.md` §3 的分支清理已完成（同一回执 §4）：13 条已合入分支的远程和本地都已删除；Web `develop` = `main` = `c3f1d6e5`；Server 远程剩 `main`、`develop`、`feature/p62-perf-bounded-20261011`，Web 远程剩 `main`、`develop`、`feature/ui-figma-align-20261027`；tag 不变。随后 Planner 做终态复核（第 52 功能、方向归 `passed/`、COMPLETED），并裁决 §4.6 清单外的 13 条已合入本地分支，其中 `feature/p61-msg-scope-corrected` 被工作树 `E:/code/p61-wt-web` 占用。Web 缺陷见 `todo/web-ui-defects-20261109.md`。
+**下一动作**：Executor 按 `product/multi-database-compat/receipts/planning-review-final-05.md` §3 删除清单外已合入本地分支（12 条 `-d`；`feature/p61-msg-scope-corrected` 先查工作树 `E:/code/p61-wt-web`，干净才移除，有文件则交 Owner）；2026-11-10 17:16 后在 `execution-final-05.md` §3 只读补 Z4。随后 Planner 终态复核（第 52 功能、方向归 `passed/`、COMPLETED）。Web 缺陷见 `todo/web-ui-defects-20261109.md`。
 Owner 侧：DM8、KingbaseES 实库验证。
 
 ## 待办/风险
