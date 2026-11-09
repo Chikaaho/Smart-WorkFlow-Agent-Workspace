@@ -34,9 +34,7 @@ CH-aPaaS 以表单和流程为业务主线，把组织权限、通知、任务�
 | --- | --- |
 | ![表单设计器](docs/assets/readme/form-designer.png) | ![流程设计器](docs/assets/readme/workflow-designer.png) |
 
-| 会签与审批记录 | 智能体图编排与节点属性 |
-| --- | --- |
-| ![会签与审批记录](docs/assets/readme/approval-detail.png) | ![智能体图编排与节点属性](docs/assets/readme/agent-graph.png) |
+智能体能力（模型管理、Prompt、图编排、工具调用、知识库与 RAG）见上表「核心能力」，界面截图待 Web 界面补丁后补充。
 
 ## 三示例流程（已完成）
 
