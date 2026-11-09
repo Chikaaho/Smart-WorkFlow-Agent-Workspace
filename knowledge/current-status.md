@@ -31,7 +31,9 @@ P66 多数据库兼容以 **Server 0.4.0** 发布并部署 UAT，登记为第 **
   分支清理（`planning-review-final-04.md` §3/§6，回执同上 §4）：13 条已合入分支（Server 5、Web 8，含
   `feature/0.4.0-multi-database`）远程与同名本地均已删除；Web `develop` 快进到 `main`（`c3f1d6e5`）；
   Server 远程剩 `main`/`develop`/`feature/p62-perf-bounded-20261011`，Web 远程剩
-  `main`/`develop`/`feature/ui-figma-align-20261027`；tag 前后逐行一致。
+  `main`/`develop`/`feature/ui-figma-align-20261027`；tag 前后逐行一致。清单外 13 条已合入本地分支也已按
+  `planning-review-final-05.md` §3 删除（回执 §5）：两仓本地各剩 `main`/`develop`（Server 另有 p62）；
+  p61 工作树注册已移除，残留目录 `E:/code/p61-wt-web` 交 Owner 手动删除。
 - **固定值**：功能 **52**；M59/18/13=90；ADV1/7/56=64；实际 P63；问题 57；正式验证基线新增 []。
 - **待办**：Z4（2026-11-10 17:16 后）→ Planner 终态复核 0.4.0；DM8/KingbaseES Owner 实库验证；`JavaSubprocessExecutor`
   子进程输出竞态登记 `todo/iot-subprocess-output-race.md`。
