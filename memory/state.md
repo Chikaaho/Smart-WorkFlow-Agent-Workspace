@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-2026-11-09｜Planner（0.3.3 停止）｜UAT 不受影响，建议取消 0.3.3；P66 先修 X1 再发版。
+2026-11-09｜Planner（0.3.3 取消）｜Owner 确认取消 0.3.3；P66 先修 X1 再发版。
 
 ## 当前任务
 
@@ -11,7 +11,7 @@
 
 七阶段 **7/0/0**。三示例流程线结束（终态复核 `product/three-sample-process-uat/receipts/planning-final-review-036-completed.md`）。唯一下一动作见 P66。
 
-**P66 多数据库兼容**（XL，目标 0.4.0）：阶段 A 有条件通过，最终回执实现验收通过（`product/multi-database-compat/receipts/planning-review-final-01.md`，Server `bf62381f`，六库表结构/种子/冒烟 0 差异）；UAT 校验和 28/28 一致（`execution-final-02.md`）。**UAT 恢复已通过**（`product/uat-recovery-20261109/receipts/planning-review-uat-recovery-01.md`，磁盘满致 PG 崩溃，清 reasonix 后 66%）。0.3.3 停止：UAT 列已是 BOOLEAN，不受影响，建议取消（`product/server-033-agent-tool-enabled-hotfix/receipts/planning-review-033-02.md`）。顺序：P66 X1（`1/0` 绑定在 PG 会报错，恢复 Boolean+真实 PG 测试）→ V2 六库冒烟 → V3 CI → 合并发版 0.4.0（含 UAT 运维附带项）→ 发布后同步与 README 重排。
+**P66 多数据库兼容**（XL，目标 0.4.0）：阶段 A 有条件通过，最终回执实现验收通过（`product/multi-database-compat/receipts/planning-review-final-01.md`，Server `bf62381f`，六库表结构/种子/冒烟 0 差异）；UAT 校验和 28/28 一致（`execution-final-02.md`）。**UAT 恢复已通过**（`product/uat-recovery-20261109/receipts/planning-review-uat-recovery-01.md`，磁盘满致 PG 崩溃，清 reasonix 后 66%）。0.3.3 已取消（Owner 确认）：UAT 列已是 BOOLEAN，不受影响（`product/server-033-agent-tool-enabled-hotfix/receipts/planning-review-033-02.md`）。顺序：P66 X1（`1/0` 绑定在 PG 会报错，恢复 Boolean+真实 PG 测试）→ V2 六库冒烟 → V3 CI → 合并发版 0.4.0（含 UAT 运维附带项）→ 发布后同步与 README 重排。
 
 ## 基线
 

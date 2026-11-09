@@ -1,6 +1,6 @@
 # 交接
 
-2026-11-09｜Planner（0.3.3 停止）｜UAT 不受影响，建议取消 0.3.3；P66 先修 X1 再发版。
+2026-11-09｜Planner（0.3.3 取消）｜Owner 确认取消 0.3.3；P66 先修 X1 再发版。
 
 ## 当前
 
@@ -22,7 +22,7 @@
 
 H6（摘要每段带标签，含备注回退与审批时间）、H7（JSON 字段化+原文折叠；A1 `YJ-20261108-008`、B1 `XY-20261108-015` 重跑 APPROVED）；tags `d52f5aa`/`94827dd`/`cfccaa9`。
 
-并行任务 **P66 多数据库兼容**（XL，目标 0.4.0）：阶段 A 有条件通过，实现验收通过，UAT 校验和 28/28 一致，待 0.3.3 后合并发版。UAT 已恢复（`product/uat-recovery-20261109/receipts/planning-review-uat-recovery-01.md`，W1 PM2 确认并入 0.3.3 回执）。**0.3.3 停止**（UAT 不受影响，建议取消，`planning-review-033-02.md`）；P66 下一动作 X1 恢复 Boolean 绑定（见方向阶段 D）。
+并行任务 **P66 多数据库兼容**（XL，目标 0.4.0）：阶段 A 有条件通过，实现验收通过，UAT 校验和 28/28 一致，待 0.3.3 后合并发版。UAT 已恢复（`product/uat-recovery-20261109/receipts/planning-review-uat-recovery-01.md`，W1 PM2 确认并入 0.3.3 回执）。**0.3.3 已取消**（UAT 不受影响，`planning-review-033-02.md`）；P66 下一动作 X1 恢复 Boolean 绑定（见方向阶段 D）。
 
 
 ## 更早历史

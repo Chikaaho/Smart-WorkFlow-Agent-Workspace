@@ -37,3 +37,7 @@ P66 分支 `26d0e8a7` 把 12 处绑定改成了 `1/0`。PG（含 UAT 升级路�
 
 - Owner 确认取消 0.3.3 → Planner 把方向归档到 `passed/`（标记 CANCELLED）。
 - P66 Executor：X1 → V2（最终提交上的六库冒烟）→ V3（远端 CI）→ 合并发布 0.4.0（含 0.3.3 方向 §6 的运维附带项）→ 发布后同步，并按方向重排 README。
+
+## 5. Owner 裁决（2026-11-09）
+
+确认取消 0.3.3。方向已归档到 `passed/`，标记为 `CANCELLED`；UAT 维持 Server 0.3.2；不建 hotfix 分支、不打 tag。
