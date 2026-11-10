@@ -32,7 +32,9 @@ CH-aPaaS 是一个可以自己搭建业务应用的低代码平台：把业务�
 | --- | --- |
 | ![表单设计器](docs/assets/readme/form-designer.png) | ![流程设计器](docs/assets/readme/workflow-designer.png) |
 
-智能体界面的截图将在后续版本补充。
+| 智能体编排 |
+| --- |
+| ![智能体编排](docs/assets/readme/agent-graph.png) |
 
 ## 三个示例流程
 
