@@ -310,6 +310,8 @@ P60 I2 已于 2026-09-10 COMPLETED，已通过方向包含子表/关联、公式
 | P63 | MES前置能力：动态并行审批与一次性预约IoT下发 | Owner 2026-10-06；L；[需求定义](p63-mes-workflow-foundations.md)；关联P60 I4/P21/P62 | **COMPLETED（规划已确认，2026-10-08）**；R01—R06批准交付核销，20/20、A01—A10、TS01—TS03全部通过；[最终裁决](../product/p63-mes-workflow-foundations/receipts/planning-final-review-terminal-sync-p63-mes-workflow-foundations-02-completed.md)；正式功能48、清单46/22/22零升降；六入口确认措辞传播已核销，业务验收锁定。 |
 | P64 | MES高级流程编排与业务闭环 | Owner2026-10-08；XL；[需求索引](p64-mes-advanced-orchestration.md) | **COMPLETED（规划已确认，2026-10-13）**，批准范围已核销；正式功能48；三阶段完成3/进行中0/未开始0，业务与终态验收剩余0；终态最终复核02。 |
 | P65 | 表单自定义 JavaScript 事件与开放 API：加载完成、提交前后事件；主表/明细表数据与控件属性、流程/组织数据及辅助函数；与现有流程 JS 面板共用一套 UI | Owner 2026-10-18；[需求定义](p65-form-javascript-events-api.md) | ✅ **已核销**（2026-11-05；0.2.0 事件/API/监听器范围已交付） |
+| P67 | Graph 作为执行器：在流程/表单中配置调用，入参→出参供业务使用 | Owner 2026-11-10；预估 L；[需求定义](p67-graph-as-executor.md)；关联 P57/P65 | 未排期 |
+| P68 | 外部开发的 Java 工具：模板下载、上传审核保存、类 MCP 入口供 Agent 调用、动态编译、沙箱或主 JVM 运行、结束销毁、快照与日志留 7 天 | Owner 2026-11-10；预估 XL（运行外部代码）；[需求定义](p68-external-java-tool-sandbox.md)；关联 P21 子进程执行器 | 未排期 |
 
 管理员P0治理插单（2026-09-15）：[连续执行与可见浏览器验收门禁](admin-machine-gate-continuous-visible-browser.md)已`COMPLETED（规划确认）`，本地提交`8e87899`，治理测试sh 70/70、PowerShell 49/49。该任务不并入P60业务计数；远程发布仍需Owner另行授权。
 
