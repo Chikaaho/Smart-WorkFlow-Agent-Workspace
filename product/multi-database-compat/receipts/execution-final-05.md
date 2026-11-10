@@ -493,7 +493,7 @@ final-09 §3 清点的 11 个指向子仓的相对链接全部改为指向代码
 - **链接**：三份 README 全部链接与图片逐个请求——Server 17 项、Web 17 项、根 32 项，全部 200（Server 首轮 3 个 GitHub URL 因 TLS 握手抖动读空，重试 200；与同 URL 在另两份中的 200 结果一致）。
 - **Latest**：`releases/latest` 跟随重定向后标题仍为「CH-aPaaS Server 0.4.0」「CH-aPaaS-Web 0.3.6」（final-10 §3 要求的合入后回读）。
 - **渲染**：两仓 GitHub 首页 `currentOid` 分别为 `0a4d28b5…`、`8c512f8…`（即本轮合并提交）；徽章（shields 引用 10/12）、Mermaid、"快速开始"标题都在渲染 HTML 中确认。
-- Z9 两次 main 推送又各触发一轮 CI（`build-<sha>`，均 `--latest=false`）；Latest 在 Z7 四轮与 Z9 两轮共六轮 build Release 后仍为语义版。
+- Z9 两次 main 推送又各触发一轮 CI（`build-<sha>`，均 `--latest=false`）；两轮终态 success（Server `0a4d28b5`、Web `8c512f8` 的 build tag 均已建成），Latest 在 Z7 四轮与 Z9 两轮共六轮 build Release 后仍为语义版。
 
 ## 10. 下一步
 
