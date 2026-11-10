@@ -1,10 +1,10 @@
 # 当前状态摘要
 
-2026-11-10｜Executor｜Server 0.4.1 + Web 0.3.8 已发布并部署 UAT，待 Planner 阶段 7 复核（6/0/1）。
+2026-11-10｜Planner｜0.4.1/0.3.8 COMPLETED 7/0/0；无活动任务。
 
 ## 当前任务
 
-**Server 0.4.1 + Web 0.3.8（L，PUBLISHED）**：完成 W-c 会签意见摘要/部门、W-a2 画布连线与可读性、W-b2 长表单复测、W-e 列表发起时间、三张 README 图。方向 `product/approval-record-patch/ready/direction-server-041-web-038.md`；回执 `execution-041-01.md`（阶段 2—3）、`execution-041-02.md`（阶段 4—6）。
+**Server 0.4.1 + Web 0.3.8（L，PUBLISHED）**：完成 W-c 会签意见摘要/部门、W-a2 画布连线与可读性、W-b2 长表单复测、W-e 列表发起时间、三张 README 图。方向 `product/approval-record-patch/passed/direction-server-041-web-038.md`；回执 `execution-041-01.md`（阶段 2—3）、`execution-041-02.md`（阶段 4—6）。
 
 - **发布**：Server tag `0.4.1`=`09549a49`（tag 对象 `addce449`，Release `440170555`，`bootstrap-0.4.1.jar` 236,251,001 B sha256 `fe6ad3ed…`）；Web tag `0.3.8`=`6e9b7313`（tag 对象 `4f1d380f`，Release `440173998`，`sw-web-dist-0.3.8.zip` 6,198,159 B sha256 `c61e0617…`）。Latest 0.4.1/0.3.8；既有 tag/Release 未动。
 - **合并/CI**：两仓 fix→develop→main 普通合入；Server develop `42789327773`、main `42789343743`，Web develop `42788699711`、main `42788760585` 均 success。Server 首次失败为工作流硬编码 `0.4.0-SNAPSHOT` 断言漏改，`99e7dad6` 修复 pom/脚本/工作流四处。已合入分支本地与远端已删。

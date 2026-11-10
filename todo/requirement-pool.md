@@ -4,11 +4,11 @@
 
 | 项 | 时间条件 | 内容 | 验收 |
 |---|---|---|---|
-| P66 Z4 **已完成（2026-11-10 17:17）** | 2026-11-10 17:16 以后 | 只读：UAT `server.log` 128K（daily 轮转 00:00:17，`server.log-20261110` 346M）、`df -h /` 66%（余 6.3G）、logrotate 配置实际生效；`version.json` 状态与 `knowledge/features/multi-database-compat.md` 已记 COMPLETED。见 `execution-final-05.md` §3 | Planner 回读；无异常，不另开运维任务 |
+| P66 Z4 **已完成（2026-11-10 17:17）** | 2026-11-10 17:16 以后 | 只读：UAT `server.log` 128K（daily 轮转 00:00:17，`server.log-20261110` 346M）、`df -h /` 66%（余 6.3G）、logrotate 配置实际生效；`version.json` 状态与 `knowledge/features/multi-database-compat.md` 已记 COMPLETED。见 `execution-final-05.md` §3 | **Planner 已回读通过**（`planning-review-041-02.md` §2）。观察：日志约 346M/天，`maxsize` 因每天只轮转一次不起作用，压缩后约 18M/天，暂不处理，见 P69 |
 
-## 已结束：Server 0.4.1 + Web 0.3.8（L，PUBLISHED 2026-11-10，七阶段 6/0/1）
+## 已结束：Server 0.4.1 + Web 0.3.8（L，COMPLETED 2026-11-10，七阶段 7/0/0）
 
-Owner 2026-11-10 裁决 W-c 发 Server 0.4.1 + Web 0.3.8，版本已确认。范围：W-c 任务详情审批历史带意见字段与部门；W-a2 画布连线左右接点与自动适配；W-b2 原路由长表单只读补测；W-e 实例列表发起时间格式；README 重拍 `agent-graph.png`、补 `approval-detail.png`、重拍 `sample-b.png`；第一步收尾 0.3.7（Server CI 回读、memory 压缩、CI 源还原检查、Z4）。先验收后合并。方向 `product/approval-record-patch/ready/direction-server-041-web-038.md`。**已完成（2026-11-10，`execution-041-02.md`）**：阶段 3 验收通过后完成 A1（连线标签 12.34px）；两仓 fix→develop→main，四项 CI success，已合入分支删除；Server tag `0.4.1`=`09549a49`（Release `440170555`，`bootstrap-0.4.1.jar` 236,251,001 B sha256 `fe6ad3ed…`）、Web tag `0.3.8`=`6e9b7313`（Release `440173998`，`sw-web-dist-0.3.8.zip` 6,198,159 B sha256 `c61e0617…`），均 Latest。UAT 部署 Server 0.4.1（health UP、Flyway 33 行/max 0.4.0）与 Web 0.3.8（`index-Cr8LY45m.js`）；复测 W-c/W-a2/W-b2/W-e 与 R1a/R1b/R3b 通过；三仓 README 三图与版本已同步回读。待 Planner 阶段 7 复核。
+Owner 2026-11-10 裁决 W-c 发 Server 0.4.1 + Web 0.3.8，版本已确认。范围：W-c 任务详情审批历史带意见字段与部门；W-a2 画布连线左右接点与自动适配；W-b2 原路由长表单只读补测；W-e 实例列表发起时间格式；README 重拍 `agent-graph.png`、补 `approval-detail.png`、重拍 `sample-b.png`；第一步收尾 0.3.7（Server CI 回读、memory 压缩、CI 源还原检查、Z4）。先验收后合并。方向 `product/approval-record-patch/passed/direction-server-041-web-038.md`。**已完成（2026-11-10，`execution-041-02.md`）**：阶段 3 验收通过后完成 A1（连线标签 12.34px）；两仓 fix→develop→main，四项 CI success，已合入分支删除；Server tag `0.4.1`=`09549a49`（Release `440170555`，`bootstrap-0.4.1.jar` 236,251,001 B sha256 `fe6ad3ed…`）、Web tag `0.3.8`=`6e9b7313`（Release `440173998`，`sw-web-dist-0.3.8.zip` 6,198,159 B sha256 `c61e0617…`），均 Latest。UAT 部署 Server 0.4.1（health UP、Flyway 33 行/max 0.4.0）与 Web 0.3.8（`index-Cr8LY45m.js`）；复测 W-c/W-a2/W-b2/W-e 与 R1a/R1b/R3b 通过；三仓 README 三图与版本已同步回读。**Planner 阶段 7 复核通过**（`receipts/planning-review-041-02.md`）；R3b 示例 b 图节点字小，Owner 定为保留作流程结构总览，图注下次改 README 时改。方向归 `passed/`。不计功能数。
 
 ## 已结束：Web 0.3.7 补丁（L，2026-11-10 部分通过，七阶段 7/0/0）
 
@@ -310,6 +310,7 @@ P60 I2 已于 2026-09-10 COMPLETED，已通过方向包含子表/关联、公式
 | P63 | MES前置能力：动态并行审批与一次性预约IoT下发 | Owner 2026-10-06；L；[需求定义](p63-mes-workflow-foundations.md)；关联P60 I4/P21/P62 | **COMPLETED（规划已确认，2026-10-08）**；R01—R06批准交付核销，20/20、A01—A10、TS01—TS03全部通过；[最终裁决](../product/p63-mes-workflow-foundations/receipts/planning-final-review-terminal-sync-p63-mes-workflow-foundations-02-completed.md)；正式功能48、清单46/22/22零升降；六入口确认措辞传播已核销，业务验收锁定。 |
 | P64 | MES高级流程编排与业务闭环 | Owner2026-10-08；XL；[需求索引](p64-mes-advanced-orchestration.md) | **COMPLETED（规划已确认，2026-10-13）**，批准范围已核销；正式功能48；三阶段完成3/进行中0/未开始0，业务与终态验收剩余0；终态最终复核02。 |
 | P65 | 表单自定义 JavaScript 事件与开放 API：加载完成、提交前后事件；主表/明细表数据与控件属性、流程/组织数据及辅助函数；与现有流程 JS 面板共用一套 UI | Owner 2026-10-18；[需求定义](p65-form-javascript-events-api.md) | ✅ **已核销**（2026-11-05；0.2.0 事件/API/监听器范围已交付） |
+| P69 | 演示环境 Server 日志量控制：约 346M/天，logrotate 改每小时执行或查清高频日志来源 | Planner 2026-11-10 Z4 观察；预估 S | 未排期，余量充足 |
 | P67 | Graph 作为执行器：在流程/表单中配置调用，入参→出参供业务使用 | Owner 2026-11-10；预估 L；[需求定义](p67-graph-as-executor.md)；关联 P57/P65 | 未排期 |
 | P68 | 外部开发的 Java 工具：模板下载、上传审核保存、类 MCP 入口供 Agent 调用、动态编译、沙箱或主 JVM 运行、结束销毁、快照与日志留 7 天 | Owner 2026-11-10；预估 XL（运行外部代码）；[需求定义](p68-external-java-tool-sandbox.md)；关联 P21 子进程执行器 | 未排期 |
 
