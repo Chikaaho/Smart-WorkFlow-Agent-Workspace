@@ -6,8 +6,8 @@
 | 依据 | `product/multi-database-compat/receipts/planning-review-final-03.md` §6/§7（Owner 裁决方案 A）；`planning-review-final-04.md` §3/§6（远程分支清理，Owner 裁决）；`planning-review-final-05.md` §3（清单外本地分支）；`planning-review-final-06.md` §2/§3；`planning-review-final-07.md` §3/§7（Z6 两个代码仓 `main` README 同步）；`planning-review-final-08.md` §2/§3（Z7 两仓 README 重排与 Latest 修复，Owner 授权）；`planning-review-final-09.md` §2/§3（Z8 根 README 死链，授权待 Owner 确认）；`planning-review-final-10.md` §2/§3（Z9 三份 README 文案重写） |
 | 日期 | 2026-11-09 / 2026-11-10 |
 | 执行角色 | Executor |
-| 状态 | **第 1 项完成**（README 下掉 2 张图并回读渲染）；**分支清理完成**（§4）；**清单外本地分支清理完成**（§5）；**Z6 完成**（§6）；**Z7 完成**（§7）；**Z8、Z9 完成**（§9）；**Z4 待时间窗**（2026-11-10 17:16 之后） |
-| 结论 | README 界面预览保留 6 张，`agent-graph.png`、`approval-detail.png` 引用与图注已移除、图片文件保留在仓库；GitHub raw 与渲染 HTML 双回读通过。13 条已合入分支（Server 5、Web 8）远程与本地均已删除，Web `develop` 已普通快进到 `main`；两仓远程各剩 3 条分支，tag 前后逐行一致。§4.6 清单外 13 条已合入本地分支也已按 final-05 §3 删除（`feature/p61-msg-scope-corrected` 的 git 工作树注册已移除，残留 312 MB 物理目录 `E:/code/p61-wt-web` 交 Owner 手动删除）。两仓本地各剩 `main`、`develop` 和未完成分支（Server `feature/p62-perf-bounded-20261011`）。Z6：Server、Web 的 README 已同步到 0.4.0 / 0.3.6，按 develop → main → develop 普通合入，main CI 均 success。Z7：两仓 README 重排为开源结构（徽章、截图、架构图、快速开始并实测启动与代理链路），工作流固定 `--latest=false`（Owner 授权），`0.4.0`/`0.3.6` 已用本机 git 凭据设回 Latest（Owner 授权，授权来源说明见 §9 引言）。Z8/Z9：三份 README 按 final-10 §2 面向新读者重写（Server 236→203 行、Web 154→131 行、根 199→169 行），禁用词 grep 全部为 0，根 README 11 个死链改绝对链接、全部链接 200；两仓终态 main = develop = Server `0a4d28b5`、Web `8c512f8`，Latest 经六轮 build Release 仍为语义版（§9）。P66 在 Z4 补做后即可进入 Planner 终态复核 |
+| 状态 | **第 1 项完成**（README 下掉 2 张图并回读渲染）；**分支清理完成**（§4）；**清单外本地分支清理完成**（§5）；**Z6 完成**（§6）；**Z7 完成**（§7）；**Z8、Z9 完成**（§9）；**Z4 完成**（§3，2026-11-10 17:17） |
+| 结论 | README 界面预览保留 6 张，`agent-graph.png`、`approval-detail.png` 引用与图注已移除、图片文件保留在仓库；GitHub raw 与渲染 HTML 双回读通过。13 条已合入分支（Server 5、Web 8）远程与本地均已删除，Web `develop` 已普通快进到 `main`；两仓远程各剩 3 条分支，tag 前后逐行一致。§4.6 清单外 13 条已合入本地分支也已按 final-05 §3 删除（`feature/p61-msg-scope-corrected` 的 git 工作树注册已移除，残留 312 MB 物理目录 `E:/code/p61-wt-web` 交 Owner 手动删除）。两仓本地各剩 `main`、`develop` 和未完成分支（Server `feature/p62-perf-bounded-20261011`）。Z6：Server、Web 的 README 已同步到 0.4.0 / 0.3.6，按 develop → main → develop 普通合入，main CI 均 success。Z7：两仓 README 重排为开源结构（徽章、截图、架构图、快速开始并实测启动与代理链路），工作流固定 `--latest=false`（Owner 授权），`0.4.0`/`0.3.6` 已用本机 git 凭据设回 Latest（Owner 授权，授权来源说明见 §9 引言）。Z8/Z9：三份 README 按 final-10 §2 面向新读者重写（Server 236→203 行、Web 154→131 行、根 199→169 行），禁用词 grep 全部为 0，根 README 11 个死链改绝对链接、全部链接 200；两仓终态 main = develop = Server `0a4d28b5`、Web `8c512f8`，Latest 经六轮 build Release 仍为语义版（§9）。Z4 已于 2026-11-10 17:17 完成（§3），P66 进入 Planner 终态复核 |
 
 ## 1. README 下掉 `agent-graph.png` 与 `approval-detail.png`
 
@@ -49,15 +49,38 @@
 - `agent-graph` / `approval-detail` 字样：**0**，无破图残留。
 - 「界面预览」「三示例流程（已完成）」「多数据库支持（0.4.0）」小节与新增文字说明均正常渲染。
 
-## 3. Z4 部署后 24 小时日志量（待时间窗）
+## 3. Z4 部署后 24 小时日志量（2026-11-10 17:17 补记，只读）
 
-时间窗 **2026-11-10 17:16 之后**才满足；本回执先占位，届时以只读方式补记并追加本节：
+观察窗口：2026-11-10 17:17—17:18（CST），UAT `8.166.112.85`，全程只读命令，未做任何日志/磁盘写操作。
 
-1. 当天 `server.log` 大小（及轮转产物）；
-2. `df -h /`（UAT 磁盘用量）；
-3. logrotate 是否已按 `maxsize 100M` 或 `daily` 实际轮转（`/var/lib/logrotate/status` 或状态文件佐证）。
+### 3.1 当天 `server.log` 大小与轮转产物
 
-本节记录前不做任何日志/磁盘写操作。
+| 文件 | 大小 | 修改时间 | 说明 |
+|---|---:|---|---|
+| `server.log` | 128K | 2026-11-10 17:17（末行 health 200 ACCESS） | 0.4.0 服务当前日志，仍在写入 |
+| `server.log-20261110` | 346M | 2026-11-10 00:00 | 按 daily 轮转的前一日日志（未压缩，`delaycompress` 待下次压缩） |
+| `server.log-20261109.gz` | 18M | 2026-11-09 00:00 | 再前一日归档（已压缩） |
+
+- 进程身份：`GET /api/actuator/health` 200，末行 `2026-11-10T17:17:46.252+08:00 … status=200`，与 0.4.0 服务一致。
+- 观察：`maxsize 100M` 为 logrotate 运行时判定，日间（00:00 至次日 00:00）日志可增长至 346M 后才在次日 0 点轮转；属 logrotate 常规语义（cron 每日一次），非故障。当前磁盘余量充足（§3.2），不单开运维任务。
+
+### 3.2 `df -h /`
+
+```text
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda3        20G   13G  6.3G  66% /
+```
+
+磁盘使用率 **66%**（余 6.3G），低于 85% 预警线；`/opt/smart-workflow` 下最大目录为 `server` 1011M、`web` 17M。
+
+### 3.3 logrotate 是否实际轮转
+
+- 配置 `/etc/logrotate.d/smart-workflow`：`daily`、`maxsize 100M`、`rotate 14`、`maxage 14`、`compress`、`delaycompress`、`copytruncate`、`dateext`、`su root root`。
+- 状态文件 `/var/lib/logrotate/status`：`"/opt/smart-workflow/server/logs/server.log" 2026-11-10-0:0:17`，证明 **2026-11-10 00:00:17 实际执行过轮转**；产物 `server.log-20261110` 346M、`server.log-20261109.gz` 18M 与之对应，保留数 3（<14）。
+
+### 3.4 结论
+
+日志轮转、磁盘与健康均正常，无异常需另开运维任务；**Z4 完成**，P66 可进入 Planner 终态复核。
 
 ## 4. 远程分支清理（`planning-review-final-04.md` §3/§6）
 

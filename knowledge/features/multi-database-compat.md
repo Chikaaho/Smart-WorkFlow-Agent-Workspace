@@ -10,6 +10,7 @@
 | 执行回执 | `product/multi-database-compat/receipts/execution-final-01.md`、`execution-final-02.md`、`execution-final-03.md` |
 | 发布 | tag `0.4.0`=`a4f6c278`，Release `438918154`，`bootstrap-0.4.0.jar` 236,245,457 B sha256 `188be963…` |
 | UAT | Server 0.4.0，build.version=0.4.0，health UP，Flyway v0.4.0 |
+| 状态 | **COMPLETED**（Z4 部署后 24h 只读观察完成：2026-11-10 17:17 `server.log` 128K、daily 轮转 00:00:17、磁盘 66%、health 200；`execution-final-05.md` §3） |
 
 ## 1. 交付内容
 
