@@ -116,7 +116,7 @@ Server 全量测试 2,482 / 0 failures / 0 errors / 45 skipped（CI 与本地一
 - 提交：Server `cffce87d`（develop）→ `e2beb027`（main）；Web `c5b1b87`（develop）→ `65594c0`（main）；根 `952ec5fa`（develop-sw）。
 - GitHub raw 三仓三图均 200 且字节一致（286,945 / 482,332 / 215,190 B）；远端 README 均含 1 处 `approval-detail.png` 引用与 0.4.1/0.3.8 版本行。
 - 禁用词（Owner/Planner/Executor/UAT/MVP/回执/门禁/终态/验收/返修/补丁/列车/口径/收敛/防腐/实例编号/sha256/Release id/已完成）三份 README 均 **0**；本地图片路径全部存在；外链 14 条（去重）均 200（两条 404 为提取时相邻链接拼接伪影，非实际链接）。
-- README 同步提交触发的 CI（仅文档）：Server develop `42800650508`、main `42800661326`，Web develop `42800707632`、main `42800724109`；写本回执时 in progress，结果由阶段 7 复核前回读（预期 success）。
+- README 同步提交触发的 CI（仅文档，结果均 **success**）：Server develop `42800650508`、main `42800661326`，Web develop `42800707632`、main `42800724109`；自动 `build-<sha>` 子发布未顶替 Latest，回读仍为 0.4.1 / 0.3.8。
 
 ## 7. 门禁汇总
 
@@ -129,6 +129,7 @@ Server 全量测试 2,482 / 0 failures / 0 errors / 45 skipped（CI 与本地一
 | Server CI（代码合并） | develop `42789327773`、main `42789343743` success |
 | Web CI（代码合并） | develop `42788699711`、main `42788760585` success |
 | 版本一致性 workflow 自检 | PASS（`check-version-identity workflow`） |
+| README 文档 CI | Server `42800650508`/`42800661326`、Web `42800707632`/`42800724109` 均 success |
 
 ## 8. 证据文件（`receipts/evidence/`，本地、不入 Git）
 
@@ -140,7 +141,7 @@ Server 全量测试 2,482 / 0 failures / 0 errors / 45 skipped（CI 与本地一
 2. **R3b 侧栏**：详情弹窗 100vw，图内截图无法同框侧栏；以入口图 + DOM 断言证明「我发起的」高亮一致，图为 85.4% 宽、上下不裁。
 3. **W-b2 高度**：UAT 表单 1218px（隔离环境 1128px），均 ≥1000px；面板 447/445px、页签可切换。
 4. **R1b 侧栏**：直接打开任务详情页时侧栏高亮为「待办任务」；R1b 未要求侧栏，证据以会签弹窗内容为准。
-5. **README CI**：写回执时四个文档 CI 仍在跑；不改变代码/制品与 tag，Latest 不会被子构建顶替（工作流 `--latest=false`）。
+5. **README CI**：四个文档 CI 均 success；不改变代码/制品与 tag，`build-<sha>` 子发布未顶替 Latest（工作流 `--latest=false`），回读 Latest 仍为 0.4.1/0.3.8。
 6. **本机隔离环境清理**：`18092`（Java，PID 4548）与 `5274`（Node，PID 43184）已按精确 PID 停止，端口无监听（`Get-Process` 两 PID 均不存在）；`smart_workflow_041` 数据库暂留至阶段 7 后清理，不影响本机其他库。
 
 ## 10. 下一步
