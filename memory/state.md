@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-2026-11-10｜Planner（final-09）｜Z7 通过（两仓 README 重排、Latest 回到 0.4.0/0.3.6）；根 README 11 个子仓相对链接在 GitHub 404，记 Z8 随 Z4 补；授权待 Owner 确认。
+2026-11-10｜Planner（final-10）｜Owner 打回三份 README 文案（内部用语、sha256/Release id、状态标签），记 Z9 按 final-10 §2 重写；Z8 死链、Z4 仍待补；授权待 Owner 确认。
 
 ## 当前任务
 
