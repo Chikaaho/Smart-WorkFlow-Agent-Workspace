@@ -1,7 +1,8 @@
 # Web 界面缺陷（2026-11-09 登记，等下一个 Web 补丁）
 
 来源：P66 发布后截图审查 `product/multi-database-compat/receipts/planning-review-final-03.md` §4。
-Owner 2026-11-09 裁决：P66 先结束；这几项**留到下一个 Web 补丁再修**，目前还没有排期。
+Owner 2026-11-09 裁决：P66 先结束；这几项留到下一个 Web 补丁再修。
+**2026-11-10 已排期**：Web 0.3.7 补丁，方向 `product/web-037-patch/ready/direction-web-037-patch.md`。
 
 | 编号 | 缺陷 | 位置/线索 | 影响 |
 |---|---|---|---|

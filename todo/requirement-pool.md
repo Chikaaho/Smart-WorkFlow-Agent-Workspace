@@ -6,6 +6,10 @@
 |---|---|---|---|
 | P66 Z4 | 2026-11-10 17:16 以后 | 只读：UAT `server.log` 大小与轮转产物、`df -h /`、logrotate 是否实际轮转；同轮把 `version.json` `development.statusNote` 与 `knowledge/features/multi-database-compat.md` 的“待 Planner 终态复核”改为 COMPLETED。写进 `product/multi-database-compat/receipts/execution-final-05.md` §3 | Planner 回读；有异常单独开运维任务，不重开 P66 |
 
+## 进行中：Web 0.3.7 补丁（L，2026-11-10 READY）
+
+Owner 2026-11-10 选定并确认版本 Web **0.3.7**，走完七阶段。范围：W-a—W-d 四个界面缺陷（`todo/web-ui-defects-20261109.md`）；重拍 `agent-graph.png`、`approval-detail.png`、`sample-b.png` 并补回三份 README，Server README“临届”改“临界”；Owner 补充：Server、Web 两仓加 MIT 许可证（`LICENSE` + README 许可证一节）。W-c 若必须改后端，停在该项报 Owner 确认是否发 Server 0.4.1。Server 只做文档合入，不发版。不计功能数。方向 `product/web-037-patch/ready/direction-web-037-patch.md`；回执 `receipts/execution-037-01.md`（实施与证据）、`execution-037-02.md`（合并发布同步）。七阶段 1/0/6（评估完成，实施未开始）。
+
 ## 已结束：UAT 恢复（M，2026-11-09 规划通过）
 
 Owner 2026-11-09 授权只读诊断、诊断后恢复，以及清理部署留下的可再生文件和 reasonix 全部内容。PG 数据目录和 WAL 禁止触碰，禁止 `pg_resetwal`。目标：health UP，水位降到 85% 以下。恢复后顺带完成两项只读工作：0.3.3 日志统计、P66 UAT 校验和比对。方向 `product/uat-recovery-20261109/passed/direction-uat-recovery.md`，回执 `receipts/execution-uat-recovery-01.md`。不计功能数。

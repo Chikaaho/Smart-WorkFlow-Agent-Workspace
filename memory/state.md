@@ -1,21 +1,21 @@
 # 当前状态摘要
 
-2026-11-10｜Planner（终态复核）｜P66 **COMPLETED**，第 52 个正式功能，七阶段 7/0/0；Z4 按 Owner 定置顶到点插入，不阻塞。
+2026-11-10｜Planner（下发 Web 0.3.7）｜活动任务 Web 0.3.7 补丁 READY；P66 **COMPLETED**（第 52 功能）；Z4 置顶到点插入。
 
 ## 当前任务
 
-无活动任务，等 Owner 选下一项。P66 多数据库兼容（XL）**COMPLETED**（`product/multi-database-compat/receipts/planning-final-review-p66-completed.md`，方向归 `passed/`），以 **Server 0.4.0** 发布并部署 UAT。审查链 final-02—11：Z1 七图重拍、README 按 Owner 方案 A 下掉 agent-graph/approval-detail（剩 6 张）；Z2 回滚必须恢复 pre040 dump；Z3 develop=main=`a4f6c278`；W-a—W-d 留下个 Web 补丁（`todo/web-ui-defects-20261109.md`），测试流程不隐藏。已合入分支按规则删除，两仓只剩 main/develop/未完成分支，tag 未动。Z6—Z9 已完成（`execution-final-05.md` §6/§7/§9）；Z4 见需求池置顶。
+**Web 0.3.7 补丁（L，READY）**：Owner 2026-11-10 选定、版本已确认；W-a—W-d、README 补图、两仓 MIT 许可证；方向 `product/web-037-patch/ready/direction-web-037-patch.md`，七阶段 1/0/6。
+
+P66 多数据库兼容（XL）**COMPLETED**（`product/multi-database-compat/receipts/planning-final-review-p66-completed.md`，方向归 `passed/`），以 **Server 0.4.0** 发布并部署 UAT。审查链 final-02—11：Z1 七图重拍、README 按 Owner 方案 A 下掉 agent-graph/approval-detail（剩 6 张）；Z2 回滚必须恢复 pre040 dump；Z3 develop=main=`a4f6c278`；W-a—W-d 留下个 Web 补丁（`todo/web-ui-defects-20261109.md`），测试流程不隐藏。已合入分支按规则删除，两仓只剩 main/develop/未完成分支，tag 未动。Z6—Z9 已完成（`execution-final-05.md` §6/§7/§9）；Z4 见需求池置顶。
 
 - **发布**：tag `0.4.0`=`a4f6c278`，Release `438918154`，`bootstrap-0.4.0.jar`
-  236,245,457 B sha256 `188be963…`；`build-<sha>` Release `438913661` 同字节。
+  236,245,457 B sha256 `188be963…`。
 - **UAT**：build.version=0.4.0、health UP、根 200、Flyway v0.4.0（33 行）；新增
   `V0.4.0__knowledge_vector_persistence.sql` 与 `R__0.4.0_rename_bpm_opinion_comment.sql`；
   旧 31 条校验和不变；管理员工具启用过滤 internal=3/external=1/disabled=0。
 - **X1**：智能体工具 `enabled` 恢复 Boolean 绑定；PG 真实测试覆盖 12 处查询；六库冒烟全部通过。
 - **验证**：全量 `mvn test` **2,481 / 0 / 0 / 45 skipped**；CI feature #123、develop #126、
   main #127 success。
-- **UAT 运维**：生产默认日志 INFO（部署后 16 分钟 DEBUG 0）；logrotate rotate/maxage 14；
-  PG `Restart=on-failure`/`RestartSec=5s`；未加磁盘告警。
 
 三示例流程（0.3.1—0.3.6）保持 **`COMPLETED`**；Web 0.3.6（tag `c3f1d6e`，Release `438126185`）不变。
 

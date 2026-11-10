@@ -1,18 +1,17 @@
 # 交接
 
-2026-11-10｜Planner（终态复核）｜P66 COMPLETED（第 52 功能，7/0/0）；Z4 置顶到点插入。
+2026-11-10｜Planner（下发 Web 0.3.7）｜活动任务 Web 0.3.7 补丁 READY；P66 COMPLETED。
 
 ## 当前
 
 P66 多数据库兼容（XL）**COMPLETED**，以 **Server 0.4.0** 发布，第 **52** 个正式功能。
 
 - **发布**：tag `0.4.0`=`a4f6c278`（annotated tag 对象 `6093c4cc…`），Release `438918154`，
-  `bootstrap-0.4.0.jar` 236,245,457 B sha256 `188be963…`；`build-<sha>` Release `438913661` 同字节。
+  `bootstrap-0.4.0.jar` 236,245,457 B sha256 `188be963…`。
 - **UAT**：Server build.version=0.4.0、health UP、根 200、Flyway v0.4.0（33 行）；新增
   `V0.4.0__knowledge_vector_persistence.sql`、`R__0.4.0_rename_bpm_opinion_comment.sql`；
   旧 31 条校验和不变；管理员工具启用过滤 internal=3/external=1/disabled=0。
-- **运维**：生产默认日志 INFO（部署后 16 分钟 DEBUG 0）；logrotate rotate/maxage 14；
-  `postgresql@14-main` drop-in `Restart=on-failure`/`RestartSec=5s`；未加磁盘告警。
+- **运维**：日志 INFO、logrotate 14 份、PG 自动拉起，见 issues.md。
 - **验证**：全量 `mvn test` 2,481 / 0 / 0 / 45 skipped；六库冒烟
   （MySQL 5.7/8.0、MariaDB、Oracle、openGauss、SQL Server）通过；CI feature #123、
   develop #126、main #127 success。
@@ -22,7 +21,7 @@ P66 多数据库兼容（XL）**COMPLETED**，以 **Server 0.4.0** 发布，第 
 三示例流程（0.3.1—0.3.6）保持 **`COMPLETED`**；Web **0.3.6**（tag `c3f1d6e`，Release
 `438126185`，入口 `assets/index-CKdiXkhU.js`）不变。应用包维持 `systemVersion=0.3.2`。
 
-**下一动作**：无活动任务，等 Owner 选下一项。终态复核 `receipts/planning-final-review-p66-completed.md`，方向已归 `passed/`。需求池置顶：17:16 后在当前任务里顺手只读补 Z4（`execution-final-05.md` §3），同轮改 version.json/knowledge 的“待终态复核”字样。已按 Owner 授权完成：两仓工作流 `gh release create` 加 `--latest=false`，Server `0.4.0`、Web `0.3.6` 经 PATCH 设回 Latest（授权来源：Owner 会话内对结构化提问的直接答复，见回执 §9 引言）。可选手动删残留目录 `E:/code/p61-wt-web`（312M，内容全在 main）。Server 2 个额外 worktree 属隔离环境，保留（final-06 §3）。Web 缺陷见 `todo/web-ui-defects-20261109.md`。
+**下一动作**：Executor 按 `product/web-037-patch/ready/direction-web-037-patch.md` 实施 Web 0.3.7（Owner 已确认版本；含两仓 MIT 许可证），交 `receipts/execution-037-01.md`。常规决定：许可证版权方取提交作者名 Chikaho。P66 终态复核 `receipts/planning-final-review-p66-completed.md`，方向已归 `passed/`。需求池置顶：17:16 后在当前任务里顺手只读补 Z4（`execution-final-05.md` §3），同轮改 version.json/knowledge 的“待终态复核”字样。已按 Owner 授权完成：两仓工作流 `gh release create` 加 `--latest=false`，Server `0.4.0`、Web `0.3.6` 经 PATCH 设回 Latest（授权来源：Owner 会话内对结构化提问的直接答复，见回执 §9 引言）。可选手动删残留目录 `E:/code/p61-wt-web`（312M，内容全在 main）。Server 2 个额外 worktree 属隔离环境，保留（final-06 §3）。Web 缺陷见 `todo/web-ui-defects-20261109.md`。
 Owner 侧：DM8、KingbaseES 实库验证。
 
 ## 待办/风险
