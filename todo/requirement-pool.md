@@ -6,6 +6,10 @@
 |---|---|---|---|
 | P66 Z4 **已完成（2026-11-10 17:17）** | 2026-11-10 17:16 以后 | 只读：UAT `server.log` 128K（daily 轮转 00:00:17，`server.log-20261110` 346M）、`df -h /` 66%（余 6.3G）、logrotate 配置实际生效；`version.json` 状态与 `knowledge/features/multi-database-compat.md` 已记 COMPLETED。见 `execution-final-05.md` §3 | **Planner 已回读通过**（`planning-review-041-02.md` §2）。观察：日志约 346M/天，`maxsize` 因每天只轮转一次不起作用，压缩后约 18M/天，暂不处理，见 P69 |
 
+## 进行中：1.0.0 版本（XL，评估中，七阶段 0/1/6）
+
+Owner 2026-11-10 定：P27 人员批量导入导出、P33 打印模板、P40 日志查询，加小尾巴（IoT 实例发起人显示 `0`、P69 日志量、示例 b 图注改「流程结构总览」、本机证据清理）一起做，做完两仓升 **1.0.0**（版本已确认）。阶段 1 评估：探索任务 `search_task/v100-release-train-assessment.md`，回执 `search_fallback/v100-release-train-assessment.md`；收到后出正式方向。
+
 ## 已结束：Server 0.4.1 + Web 0.3.8（L，COMPLETED 2026-11-10，七阶段 7/0/0）
 
 Owner 2026-11-10 裁决 W-c 发 Server 0.4.1 + Web 0.3.8，版本已确认。范围：W-c 任务详情审批历史带意见字段与部门；W-a2 画布连线左右接点与自动适配；W-b2 原路由长表单只读补测；W-e 实例列表发起时间格式；README 重拍 `agent-graph.png`、补 `approval-detail.png`、重拍 `sample-b.png`；第一步收尾 0.3.7（Server CI 回读、memory 压缩、CI 源还原检查、Z4）。先验收后合并。方向 `product/approval-record-patch/passed/direction-server-041-web-038.md`。**已完成（2026-11-10，`execution-041-02.md`）**：阶段 3 验收通过后完成 A1（连线标签 12.34px）；两仓 fix→develop→main，四项 CI success，已合入分支删除；Server tag `0.4.1`=`09549a49`（Release `440170555`，`bootstrap-0.4.1.jar` 236,251,001 B sha256 `fe6ad3ed…`）、Web tag `0.3.8`=`6e9b7313`（Release `440173998`，`sw-web-dist-0.3.8.zip` 6,198,159 B sha256 `c61e0617…`），均 Latest。UAT 部署 Server 0.4.1（health UP、Flyway 33 行/max 0.4.0）与 Web 0.3.8（`index-Cr8LY45m.js`）；复测 W-c/W-a2/W-b2/W-e 与 R1a/R1b/R3b 通过；三仓 README 三图与版本已同步回读。**Planner 阶段 7 复核通过**（`receipts/planning-review-041-02.md`）；R3b 示例 b 图节点字小，Owner 定为保留作流程结构总览，图注下次改 README 时改。方向归 `passed/`。不计功能数。
@@ -310,7 +314,7 @@ P60 I2 已于 2026-09-10 COMPLETED，已通过方向包含子表/关联、公式
 | P63 | MES前置能力：动态并行审批与一次性预约IoT下发 | Owner 2026-10-06；L；[需求定义](p63-mes-workflow-foundations.md)；关联P60 I4/P21/P62 | **COMPLETED（规划已确认，2026-10-08）**；R01—R06批准交付核销，20/20、A01—A10、TS01—TS03全部通过；[最终裁决](../product/p63-mes-workflow-foundations/receipts/planning-final-review-terminal-sync-p63-mes-workflow-foundations-02-completed.md)；正式功能48、清单46/22/22零升降；六入口确认措辞传播已核销，业务验收锁定。 |
 | P64 | MES高级流程编排与业务闭环 | Owner2026-10-08；XL；[需求索引](p64-mes-advanced-orchestration.md) | **COMPLETED（规划已确认，2026-10-13）**，批准范围已核销；正式功能48；三阶段完成3/进行中0/未开始0，业务与终态验收剩余0；终态最终复核02。 |
 | P65 | 表单自定义 JavaScript 事件与开放 API：加载完成、提交前后事件；主表/明细表数据与控件属性、流程/组织数据及辅助函数；与现有流程 JS 面板共用一套 UI | Owner 2026-10-18；[需求定义](p65-form-javascript-events-api.md) | ✅ **已核销**（2026-11-05；0.2.0 事件/API/监听器范围已交付） |
-| P69 | 演示环境 Server 日志量控制：约 346M/天，logrotate 改每小时执行或查清高频日志来源 | Planner 2026-11-10 Z4 观察；预估 S | 未排期，余量充足 |
+| P69 | 演示环境 Server 日志量控制：约 346M/天，logrotate 改每小时执行或查清高频日志来源 | Planner 2026-11-10 Z4 观察；预估 S | 纳入 1.0.0（评估中） |
 | P67 | Graph 作为执行器：在流程/表单中配置调用，入参→出参供业务使用 | Owner 2026-11-10；预估 L；[需求定义](p67-graph-as-executor.md)；关联 P57/P65 | 未排期 |
 | P68 | 外部开发的 Java 工具：模板下载、上传审核保存、类 MCP 入口供 Agent 调用、动态编译、沙箱或主 JVM 运行、结束销毁、快照与日志留 7 天 | Owner 2026-11-10；预估 XL（运行外部代码）；[需求定义](p68-external-java-tool-sandbox.md)；关联 P21 子进程执行器 | 未排期 |
 
@@ -697,20 +701,20 @@ P58已于2026-09-04功能级 **PASSED**（规划验收08）＋阶段三终态同
 | # | 功能行 | 现状/证据（D83 回执） | 状态 |
 |---|--------|----------------------|------|
 | P26 | M01-F01-05 负责人设置 | 原D83“无leader列”为历史事实；2026-10-06 P63探索确认单值leader_id及负责人解析已交付，见P63回执Q1/Q4 | 保留原未核销状态；本轮仅更正现状，不据静态探索核销 |
-| P27 | M01-F02-05 人员批量导入导出 | 全仓无 excel/POI/Workbook 引用 | 未排期 |
+| P27 | M01-F02-05 人员批量导入导出 | 全仓无 excel/POI/Workbook 引用 | 纳入 1.0.0（评估中） |
 | P28 | M01-F04-01 用户组管理 | 全仓 grep 零命中 | ✅ **已核销**（2026-08-19，user-group-membership D117 PASSED + 阶段三 COMPLETED） |
 | P29 | M01-F05-01 租户管理与超级管理员租户归属展示 | 已有租户能力，补齐管理入口；超级管理员在用户、部门等跨租户管理页可见所属租户并按租户筛选，操作目标归属明确。Owner 2026-10-18补充；[需求定义](p29-tenant-management.md)，实现现状立项时核实 | ✅ **已核销**（2026-11-05；0.2.0 租户初始化、启停与目标归属范围） |
 | P30 | M02-F05-01 资源管理 | 鉴权执行机制有，但 API 资源注册表+鉴权策略配置无实体/端点/页面 | 未排期 |
 | P31 | M02-F06-02 单点登录 | 钉钉/飞书接入已PASSED；后台配置/B端准入已COMPLETED（规划确认，2026-09-29） | 企业微信延期，开放未核销；裁决 `product/sso-admin-config/receipts/planning-final-review-terminal-sync-01-completed.md` |
 | P32 | M03-F04-02 表单数据导入导出 | 全仓库零代码 | ✅ **已核销**（2026-08-29，form-data-import-export 功能级 PASSED + 阶段三终态同步 COMPLETED；M03-F04-02 升✅、清单 ✅32/🟦25/⬜33、功能数 36、基线 947/0/0/0（agent346）、110f/1057t/3skipped、Flyway H2 V43/PG V43——历史终态；当前正式基线经 minimal-closure-first-acceptance 审计更新为 955/1060/V44，功能数 36、清单 ✅32/🟦25/⬜33 不变） |
-| P33 | M03-F06-01 打印模板 | 无 print/PDF/套打模板代码 | 未排期 |
+| P33 | M03-F06-01 打印模板 | 无 print/PDF/套打模板代码 | 纳入 1.0.0（评估中） |
 | P34 | M04-F01-03 会签规则 | P58已交付子集：ALL/ANY/RATIO 会签结算、独立意见、取消语义；剩余：原明细完整规则（含一票否决）覆盖待确认（B 方向 §3，见 feature-reconciliation-index） | ✅ **已核销**（2026-11-05；会签批准范围已交付） |
 | P35 | M04-F07-01 流程规则 | P58已交付子集：受控条件表达式、条件分支；剩余：超时处理、自动审批/自动通过规则（B 方向 §3） | 部分实现、开放未核销 |
 | P36 | M05-F02-01 消息模板 | 消息模板管理功能已完成（M05-F02-01 ✅，2026-08-26 阶段三终态同步） | ✅ **已核销**（2026-08-26，M05-F02-01 消息模板完成，独立核销；P3 剩余缺口不随此核销） |
 | P37 | M06-F01-01 通知渠道 | P58已交付子集：站内信、统一渠道 SPI 及已验收扩展接缝（隔离 Adapter 成功/失败/超时/幂等通过）；剩余：真实厂商渠道、配置开关及账号联调（B 方向 §3） | 部分实现、开放未核销；具体厂商渠道待排期 |
 | P38 | M06-F02-01 通知模板 | 已交付子集：可复用通用消息模板与变量渲染（P36 已核销，与 M05 同实现）；剩余：按渠道配置内容与变量；沿用 P38，不新编号（B 方向 §3） | 部分实现、开放未核销 |
 | P39 | M06-F03-01 通知规则 | P58已交付子集：内置审批事件、通知节点触发；剩余：用户可配置规则、订阅设置（B 方向 §3） | 部分实现、开放未核销 |
-| P40 | M10-F02-01 日志查询 | 无 oper_log/login_log 表与实体/控制器 | 未排期 |
+| P40 | M10-F02-01 日志查询 | 无 oper_log/login_log 表与实体/控制器 | 纳入 1.0.0（评估中） |
 | P41 | M10-F02-02 动态日志级别 | 无 loglevel 端点 | 未排期 |
 | P42 | M10-F05-01 系统参数 | 无 SysConfig/sys_config 表 | 未排期 |
 | P43 | M10-F07-01 备份恢复 | 零代码 | 未排期 |

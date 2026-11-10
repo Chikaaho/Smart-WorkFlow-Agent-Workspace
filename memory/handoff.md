@@ -1,6 +1,6 @@
 # 交接
 
-2026-11-10｜Planner｜0.4.1/0.3.8 COMPLETED；待 Owner 选下一项。
+2026-11-10｜Planner｜1.0.0 评估：search_task/v100-*。
 
 ## 当前
 
