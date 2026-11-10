@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-2026-11-10｜Planner｜1.0.0（P27/P33/P40+小尾巴）评估中，见需求池。
+2026-11-10｜Planner｜1.0.0 READY：product/v1.0.0-release/ready/。
 
 ## 当前任务
 
