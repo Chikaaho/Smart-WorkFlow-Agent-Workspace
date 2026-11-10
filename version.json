@@ -1,40 +1,40 @@
 {
   "$schema": "CH-aPaaS 版本权威（单一机器可读源；变更须走新回执）",
   "product": "CH-aPaaS",
-  "version": "0.4.1",
-  "featureCount": 52,
+  "version": "1.0.0",
+  "featureCount": 55,
   "iteration": "0.1.0",
-  "registeredAt": "2026-11-10",
-  "registeredBy": "Server 0.4.1 + Web 0.3.8 补丁；执行回执 product/approval-record-patch/receipts/execution-041-02.md",
+  "registeredAt": "2026-11-11",
+  "registeredBy": "1.0.0 发布列车（P27/P33/P40 三个正式功能，第 53—55 个）；阶段 2 实施完成，阶段 3 验收回执 product/v1.0.0-release/receipts/execution-100-01.md（分批）",
   "development": {
-    "targetVersion": "0.4.1",
-    "status": "PUBLISHED",
-    "statusNote": "Server 0.4.1 与 Web 0.3.8 已发布并部署 UAT：W-c 任务详情会签意见摘要/部门、W-a2 画布连线与 ≥12px 标签、W-e 列表时间、W-b2 长表单复测；P66 0.4.0 已 COMPLETED（Z4 观察完成）。待 Planner 阶段 7 复核",
-    "direction": "product/approval-record-patch/ready/direction-server-041-web-038.md",
-    "finalReview": "待 Planner 阶段 7 复核（execution-041-02.md）",
+    "targetVersion": "1.0.0",
+    "status": "IN_DEVELOPMENT",
+    "statusNote": "阶段 2 实施完成：两仓 feature/1.0.0 已推送（Server 2baf48ad+14057da5、Web e553753）；F1—F4 与 V1.0.0 迁移 9 方言落地；门禁 Server 2482 基线绿+F2 冒烟（固有 flake 双侧对照实证）、Web 四连全绿。待阶段 3 隔离环境证据与 Planner 验收（先验收后合并）",
+    "direction": "product/v1.0.0-release/ready/direction-v1.0.0.md",
+    "finalReview": "待 Planner 阶段 3 验收（execution-100-01.md 分批提交）",
     "branches": {
-      "server": "fix/0.4.1-approval-history f65bdeeb → develop 99e7dad6 → main 09549a49（tag 0.4.1=09549a49）；README 同步 main e2beb027",
-      "web": "fix/0.3.8-approval-record 1eeb716 → develop 46fdac1 → main 6e9b731（tag 0.3.8=6e9b731）；README 同步 main 65594c0",
+      "server": "feature/1.0.0（develop cffce87d 起）2baf48ad + 14057da5",
+      "web": "feature/1.0.0（develop c5b1b87 起）e553753",
       "workspace": "develop-sw（本同步批次提交后回读）"
     },
     "developmentVersion": {
-      "server": "0.4.1-SNAPSHOT",
-      "web": "0.3.8"
+      "server": "1.0.0-SNAPSHOT",
+      "web": "1.0.0"
     }
   },
   "projections": {
     "serverRepo": {
       "path": "Smart-WorkFlow-aPaaS-server",
-      "mavenVersion": "0.4.1（正式构建 -Drevision=0.4.1；开发默认 0.4.1-SNAPSHOT）",
+      "mavenVersion": "1.0.0（正式构建 -Drevision=1.0.0；开发默认 1.0.0-SNAPSHOT）",
       "flywayEndpoint": {
-        "h2": "V0.4.0",
-        "postgresql": "V0.4.0"
+        "h2": "V1.0.0",
+        "postgresql": "V1.0.0"
       },
-      "flywaySeed": "V0.2.0 基线 + V0.2.2～V0.4.0 + 20 支 R__；0.4.0 新增 V0.4.0__knowledge_vector_persistence.sql 与 R__0.4.0_rename_bpm_opinion_comment.sql；旧迁移校验和与 UAT 28/28 一致"
+      "flywaySeed": "V0.2.0 基线 + V0.2.2～V0.4.0/V1.0.0 + 20 支 R__（31 条）；1.0.0 新增 V1.0.0__audit_log_and_must_change_password.sql（sys_audit_log + must_change_password + 菜单 9115/430/431 种子），9 方言同名，SQL Server 首个真实增量"
     },
     "webRepo": {
       "path": "Smart-WorkFlow-aPaaS-Web",
-      "packageVersion": "0.3.8"
+      "packageVersion": "1.0.0"
     },
     "workspace": {
       "path": "Smart-WorkFlow-Agent-Workspace",

@@ -274,7 +274,7 @@ set -a && . ./server.env && set +a && ./start.sh
   - 升级前**必须备份数据库**（§9.1）。
   - Flyway 迁移随应用启动自动执行；**先备份、后启动**。
   - 一旦启动后发现迁移异常，立即停服并评估回滚，避免半迁移状态。
-- **0.1.5 起的主迁移形态**：每个支持方言只有一条 versioned 迁移 `V0.1.5__baseline_seed.sql`（全量种子）+ `R__` 可重复迁移；开发新增迁移用 `V<yyyyMMddHHmmss>__<需求>.sql`，启动时按版本自动应用，不会重放旧链或重复执行种子。
+- **0.1.5 起的主迁移形态**：每个支持方言只有一条 versioned 迁移 `V0.1.5__baseline_seed.sql`（全量种子）+ `R__` 可重复迁移；开发新增迁移用 `V<语义版本>__<需求>.sql`（如 `V1.0.0__audit_log_and_must_change_password.sql`，与 Flyway 目录内既有 `V0.2.x`/`V0.4.0` 同一命名法），启动时按版本自动应用，不会重放旧链或重复执行种子。
 - **在役库的存量衔接**（不删除审计记录）：仓库 `sw-bootstrap/src/main/resources/db/upgrade/0.1.5/` 提供两个一次性脚本，**不在** Flyway 扫描路径内，需按当前库版本二选一在停服窗口手工执行（脚本单事务、恰好一次；重复执行会在无守卫语句处显式失败）：
   - `transition-history-to-0.1.5.postgresql.sql`：库已应用旧链全部版本（如 0.1.10）——把 versioned 历史替换为单条 0.1.5 种子记录，业务数据与 `R__` 记录不动；
   - `upgrade-to-0.1.5-from-0.1.1.postgresql.sql`：库停在旧链 0.1.1（0.1.3 发布态）——增量 DDL + 同一历史衔接。
@@ -282,7 +282,7 @@ set -a && . ./server.env && set +a && ./start.sh
 - 衔接前建议先核对库内 `V0.1.0`/`V0.1.1` 的 checksum 与仓库档案一致，再执行脚本。
 - **0.1.6 起的主迁移形态**：每支持方言仍只有一条 versioned 迁移 `V0.1.6__baseline_seed.sql`
   （= 0.1.5 种子与应用中心增量逐字节拼接，仅新增段头）+ `R__` 可重复迁移（10 支/方言，checksum 未变）；
-  开发新增迁移继续用 `V<yyyyMMddHHmmss>__<需求>.sql`。
+  开发新增迁移继续用 `V<语义版本>__<需求>.sql`（与仓库迁移目录既有命名一致）。
 - **在役库衔接（0.1.6）**：仓库 `sw-bootstrap/src/main/resources/db/upgrade/0.1.6/` 提供两个一次性脚本
   （**不在** Flyway 扫描路径内；单事务、恰好一次，重复执行显式失败）。按现场 `flyway_schema_history` 判定：
   - `transition-history-to-0.1.6.<方言>.sql`：结构已达 0.1.6 终态（已应用应用中心增量，如开发库）——仅收敛历史记录；
@@ -291,7 +291,7 @@ set -a && . ./server.env && set +a && ./start.sh
     核对日志 `Successfully validated …`、零 versioned 重放、DB versioned 终点=单条 0.1.6（checksum `-1768731444`）。
 - **0.1.7 起的主迁移形态**：每支持方言仍只有一条 versioned 迁移 `V0.1.7__baseline_seed.sql`
   （= 0.1.6 种子与 0.1.7 菜单/应用范围增量逐字节拼接，仅新增段头）+ `R__` 可重复迁移（12 支/方言）；
-  开发新增迁移继续用 `V<yyyyMMddHHmmss>__<需求>.sql`。
+  开发新增迁移继续用 `V<语义版本>__<需求>.sql`（与仓库迁移目录既有命名一致）。
 - **在役库衔接（0.1.7）**：仓库 `sw-bootstrap/src/main/resources/db/upgrade/0.1.7/` 提供两个一次性脚本
   （**不在** Flyway 扫描路径内；单事务、恰好一次，重复执行显式失败）。按现场 `flyway_schema_history` 判定：
   - `transition-history-to-0.1.7.<方言>.sql`：结构已达 0.1.7 终态（已应用 0.1.7 期增量，如开发库）——仅收敛历史记录；
