@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-2026-11-10｜Executor（Z9）｜三份 README 按 final-10 §2 重写（禁用词 0），Z8 死链改绝对、全链接 200；两仓 main=develop=Server `0a4d28b5`、Web `8c512f8`；Latest 未变；Z4 待 17:16 后。
+2026-11-10｜Planner（final-11）｜Z8、Z9 通过（三份 README 读者视角通读、全链接 200）；两仓 main=develop=Server `0a4d28b5`、Web `8c512f8`；授权 Owner 已确认；只剩 Z4。
 
 ## 当前任务
 

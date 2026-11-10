@@ -13,6 +13,7 @@ Owner 2026-11-09 裁决：P66 先结束；这几项**留到下一个 Web 补丁�
 ## 修复后要补的事
 
 - 在 UAT 上重拍 `docs/assets/readme/agent-graph.png`（智能体编排，节点完整，打开属性面板）和 `approval-detail.png`（审批详情，换一个与 `sample-a.png` 不同的视角），放回 README。规格与 P66 Z1 一致：Playwright 1440×900、DPR 2，单张不超过 500KB。
+- 顺带把 Server README“临届停机线”改为“临界”（final-11 §1）。
 - 顺带可以修正 `sample-b.png`：顶部那行节点被裁掉，左侧菜单高亮在“待办任务”上。
 
 ## 不处理的项
