@@ -1,6 +1,6 @@
 # 交接
 
-2026-11-10｜Planner（final-10）｜Owner 打回三份 README 文案（内部用语、sha256/Release id、状态标签），记 Z9 按 final-10 §2 重写；Z8 死链、Z4 仍待补；授权待 Owner 确认。
+2026-11-10｜Executor（Z9）｜三份 README 重写（禁用词 0），Z8 死链修复；两仓 main=develop=Server `0a4d28b5`、Web `8c512f8`；Latest 未变；授权来源见回执 §9；Z4 待 17:16 后。
 
 ## 当前
 
@@ -22,7 +22,7 @@ P66 多数据库兼容（XL）以 **Server 0.4.0** 发布，登记第 **52** 个
 三示例流程（0.3.1—0.3.6）保持 **`COMPLETED`**；Web **0.3.6**（tag `c3f1d6e`，Release
 `438126185`，入口 `assets/index-CKdiXkhU.js`）不变。应用包维持 `systemVersion=0.3.2`。
 
-**下一动作**：2026-11-10 17:16 后 Executor 在 `execution-final-05.md` 补 Z4（只读：`server.log` 大小、`df -h /`、logrotate 实际轮转），同时修 Z8（`planning-review-final-09.md` §3：根 README 11 个子仓相对链接改为代码仓 main 的绝对链接，全链接 200），并做 Z9（final-10 §2：三份 README 改成读者能懂的文字），然后 Planner 终态复核（第 52 功能、方向归 `passed/`、COMPLETED）。已按 Owner 授权完成：两仓工作流 `gh release create` 加 `--latest=false`，Server `0.4.0`、Web `0.3.6` 经 PATCH 设回 Latest。可选手动删残留目录 `E:/code/p61-wt-web`（312M，内容全在 main）。Server 2 个额外 worktree 属隔离环境，保留（final-06 §3）。Web 缺陷见 `todo/web-ui-defects-20261109.md`。
+**下一动作**：Z6—Z9 已完成（`execution-final-05.md` §6/§7/§9）；2026-11-10 17:16 后 Executor 在同回执 §3 只读补 Z4（`server.log` 大小、`df -h /`、logrotate 实际轮转），然后 Planner 终态复核（第 52 功能、方向归 `passed/`、COMPLETED）。已按 Owner 授权完成：两仓工作流 `gh release create` 加 `--latest=false`，Server `0.4.0`、Web `0.3.6` 经 PATCH 设回 Latest（授权来源：Owner 会话内对结构化提问的直接答复，见回执 §9 引言）。可选手动删残留目录 `E:/code/p61-wt-web`（312M，内容全在 main）。Server 2 个额外 worktree 属隔离环境，保留（final-06 §3）。Web 缺陷见 `todo/web-ui-defects-20261109.md`。
 Owner 侧：DM8、KingbaseES 实库验证。
 
 ## 待办/风险

@@ -47,6 +47,13 @@ P66 多数据库兼容以 **Server 0.4.0** 发布并部署 UAT，登记为第 **
   Web install/build/dev 实测，dev 代理到隔离后端 health UP；工作区 README 快速开始改指两仓 `#快速开始` 锚点。
   按 Owner 授权：两仓工作流 `gh release create` 加 `--latest=false`；0.4.0/0.3.6 经 PATCH `make_latest`
   设回 Latest（本机 git 凭据，令牌未落盘）。终态 Server main=develop=`7d0f2a2e`、Web `bed840d`。
+- **Z9 三份 README 文案重写 + Z8 根 README 死链（`planning-review-final-09.md` §3、`planning-review-final-10.md`
+  §2/§3，回执 `execution-final-05.md` §9）**：按 final-10 §2 面向新读者重写三份 README（Server 236→203 行、
+  Web 154→131 行、根 199→169 行；删发布明细/历史表/内部用语，特性改"能做什么"口吻，多库表改
+  "已测试/未测试（欢迎反馈）"，快速开始命令保留），禁用词 grep 三份全 0；根 README 11 个子仓相对链接
+  （gitlink 404）改 GitHub 绝对链接，三份 README 全部链接 200。两仓 develop→main→develop 普通合入：
+  Server main=develop=`0a4d28b5`、Web `8c512f8`；Latest 经六轮 build Release 仍为 0.4.0/0.3.6。
+  final-09 §2 的授权来源（Owner 会话内对结构化提问的直接答复）已在回执 §9 引言说明。
 - **固定值**：功能 **52**；M59/18/13=90；ADV1/7/56=64；实际 P63；问题 57；正式验证基线新增 []。
 - **待办**：Z4（2026-11-10 17:16 后）→ Planner 终态复核 0.4.0；DM8/KingbaseES Owner 实库验证；`JavaSubprocessExecutor`
   子进程输出竞态登记 `todo/iot-subprocess-output-race.md`。

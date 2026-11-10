@@ -3,11 +3,11 @@
 | 项目 | 内容 |
 |---|---|
 | 功能 | P66 多数据库兼容（XL，0.4.0） |
-| 依据 | `product/multi-database-compat/receipts/planning-review-final-03.md` §6/§7（Owner 裁决方案 A）；`planning-review-final-04.md` §3/§6（远程分支清理，Owner 裁决）；`planning-review-final-05.md` §3（清单外本地分支）；`planning-review-final-06.md` §2/§3；`planning-review-final-07.md` §3/§7（Z6 两个代码仓 `main` README 同步）；`planning-review-final-08.md` §2/§3（Z7 两仓 README 重排与 Latest 修复，Owner 授权） |
-| 日期 | 2026-11-09 |
+| 依据 | `product/multi-database-compat/receipts/planning-review-final-03.md` §6/§7（Owner 裁决方案 A）；`planning-review-final-04.md` §3/§6（远程分支清理，Owner 裁决）；`planning-review-final-05.md` §3（清单外本地分支）；`planning-review-final-06.md` §2/§3；`planning-review-final-07.md` §3/§7（Z6 两个代码仓 `main` README 同步）；`planning-review-final-08.md` §2/§3（Z7 两仓 README 重排与 Latest 修复，Owner 授权）；`planning-review-final-09.md` §2/§3（Z8 根 README 死链，授权待 Owner 确认）；`planning-review-final-10.md` §2/§3（Z9 三份 README 文案重写） |
+| 日期 | 2026-11-09 / 2026-11-10 |
 | 执行角色 | Executor |
-| 状态 | **第 1 项完成**（README 下掉 2 张图并回读渲染）；**分支清理完成**（§4）；**清单外本地分支清理完成**（§5）；**Z6 完成**（§6）；**Z7 完成**（§7）；**Z4 待时间窗**（2026-11-10 17:16 之后） |
-| 结论 | README 界面预览保留 6 张，`agent-graph.png`、`approval-detail.png` 引用与图注已移除、图片文件保留在仓库；GitHub raw 与渲染 HTML 双回读通过。13 条已合入分支（Server 5、Web 8）远程与本地均已删除，Web `develop` 已普通快进到 `main`；两仓远程各剩 3 条分支，tag 前后逐行一致。§4.6 清单外 13 条已合入本地分支也已按 final-05 §3 删除（`feature/p61-msg-scope-corrected` 的 git 工作树注册已移除，残留 312 MB 物理目录 `E:/code/p61-wt-web` 交 Owner 手动删除）。两仓本地各剩 `main`、`develop` 和未完成分支（Server `feature/p62-perf-bounded-20261011`）。Z6：Server、Web 的 README 已同步到 0.4.0 / 0.3.6，按 develop → main → develop 普通合入（Server main = develop = `7d009021`，Web main = develop = `e181e25`），两仓 main CI 均 success，GitHub 首页渲染与 20 个链接回读通过；没有建 tag、移 tag 或改 Release，但 CI 自动建的 `build-<sha>` Release 成了两仓 Latest，交 Owner 裁决（§6.5）。Z7：两仓 README 重排为开源结构（徽章、截图、架构图、快速开始并实测启动与代理链路），工作流固定 `--latest=false`（Owner 授权），Server `0.4.0`、Web `0.3.6` 已用本机 git 凭据设回 Latest（Owner 授权），两仓 main = develop = Server `7d0f2a2e`、Web `bed840d`（§7）。P66 在 Z4 补做后即可进入 Planner 终态复核 |
+| 状态 | **第 1 项完成**（README 下掉 2 张图并回读渲染）；**分支清理完成**（§4）；**清单外本地分支清理完成**（§5）；**Z6 完成**（§6）；**Z7 完成**（§7）；**Z8、Z9 完成**（§9）；**Z4 待时间窗**（2026-11-10 17:16 之后） |
+| 结论 | README 界面预览保留 6 张，`agent-graph.png`、`approval-detail.png` 引用与图注已移除、图片文件保留在仓库；GitHub raw 与渲染 HTML 双回读通过。13 条已合入分支（Server 5、Web 8）远程与本地均已删除，Web `develop` 已普通快进到 `main`；两仓远程各剩 3 条分支，tag 前后逐行一致。§4.6 清单外 13 条已合入本地分支也已按 final-05 §3 删除（`feature/p61-msg-scope-corrected` 的 git 工作树注册已移除，残留 312 MB 物理目录 `E:/code/p61-wt-web` 交 Owner 手动删除）。两仓本地各剩 `main`、`develop` 和未完成分支（Server `feature/p62-perf-bounded-20261011`）。Z6：Server、Web 的 README 已同步到 0.4.0 / 0.3.6，按 develop → main → develop 普通合入，main CI 均 success。Z7：两仓 README 重排为开源结构（徽章、截图、架构图、快速开始并实测启动与代理链路），工作流固定 `--latest=false`（Owner 授权），`0.4.0`/`0.3.6` 已用本机 git 凭据设回 Latest（Owner 授权，授权来源说明见 §9 引言）。Z8/Z9：三份 README 按 final-10 §2 面向新读者重写（Server 236→203 行、Web 154→131 行、根 199→169 行），禁用词 grep 全部为 0，根 README 11 个死链改绝对链接、全部链接 200；两仓终态 main = develop = Server `0a4d28b5`、Web `8c512f8`，Latest 经六轮 build Release 仍为语义版（§9）。P66 在 Z4 补做后即可进入 Planner 终态复核 |
 
 ## 1. README 下掉 `agent-graph.png` 与 `approval-detail.png`
 
@@ -455,12 +455,52 @@ Owner 指出两代码仓的 README 也要按开源结构重排并配截图（根
 - 隔离资源全部清理：两个容器已 `docker rm -f`；应用进程由 `timeout` 兜底自行退出，端口 18080/51873 已释放；临时工作树移除（Web 工作树含 node_modules，用 `--force` 移除，内容全部可由 pnpm 重建）；用户主检出未动（`vite.config.ts` 在途改动保持 ` M`）。
 - 工作区 README「快速开始」第 3 步已改为指向两仓 README 的 `#快速开始` 锚点（§8 第 1 条的渲染验证见工作区提交记录）。
 
-## 8. 下一步
+## 9. Z9 三份 README 文案重写 + Z8 根 README 死链（`planning-review-final-09.md` §3、`planning-review-final-10.md` §2/§3）
+
+Owner 打回 Z7 的解释性文案（"很多看不懂的解释性文案"），final-10 §2 给出重写规则。本轮按规则重写三份 README 的文字；Z7 的结构、截图、快速开始命令、实测结论与 Latest 修复全部保留。final-09 §3 发现的根 README 11 个死链（两个代码仓在工作区里是 gitlink，相对路径在 GitHub 上 404）一并修复。Z7 的结构部分已由 final-09 §1 验收通过。
+
+**授权说明（回应 final-09 §2）**：final-08 §3 的两项授权（工作流加 `--latest=false`、把 `0.4.0`/`0.3.6` 重设为 Latest）是 Owner 在 Executor 会话里对结构化提问的直接答复（两项均选"授权"，第二项选择"用本机 git 凭据调 API"），非 Executor 自行推断；令牌只在内存变量中使用，未显示、未落盘。
+
+### 9.1 重写内容
+
+| 文件 | 行数（前→后） | 主要改动 |
+|---|---|---|
+| Server `README.md` | 236→203 | 删发布明细表（tag/Release id/字节数/sha256/CI run）与历史版本表，改为"版本与升级"两段加 Releases/CHANGELOG 链接；核心特性改为用户口吻的"能做什么"（如表单拖拽设计、审批意见可以决定流程走向）；三示例流程去掉状态标签与内部链接，A/B/C 各 2 句；多数据库表改为"数据库/版本/建库要求"，验证一列只写"已测试/未测试（欢迎反馈）"；快速开始命令与配置原样保留，删过程性括号；"回退旧版必须先恢复数据库备份"保留一句；许可证改"请先联系作者"；DM8/KingbaseES 改写"达梦/人大金仓" |
+| Web `README.md` | 154→131 | 同口径：删发布明细与历史表；特性改"能做什么"；架构图"防腐层"改"设计器适配层"，删 CSP 等实现词；快速开始保留实测命令；"与后端的搭配"压成一行（演示环境当前组合）；许可证改"请先联系作者" |
+| 工作区根 `README.md` | 199→169 | 同口径：删版本发布明细（sha256/js 入口/回执路径）只留 CHANGELOG 与 Releases 链接；"正式功能 52 个""已完成（MVP）"删除；三示例流程去状态标签，内部 knowledge/product 链接删除；治理一节压成一段话；开发分级表删除；"关于示例分支"改"关于分支"并去掉"回执"字样；许可证改"请先联系作者" |
+
+保留不动：徽章、截图（`agent-graph`、`approval-detail` 继续不放）、全部命令与配置示例、快速开始步骤、Mermaid 图、文档链接目标、两仓 `.github/workflows`。
+
+### 9.2 Z8：根 README 死链改绝对链接
+
+final-09 §3 清点的 11 个指向子仓的相对链接全部改为指向代码仓 `main` 的 GitHub 绝对链接（`multi-database.md` 3 处、两仓 README 与工程宪法 4 处、两仓 `README.md#快速开始` 2 处、工程宪法 2 处）。重写后根 README 的相对链接只剩本仓库自己的文件（`CHANGELOG.md`、`docs/`、`knowledge/`、`roles/`、`system.md`、`todo/`、`product/`、`docs/assets/readme/*`），逐个请求全部 200。
+
+### 9.3 提交
+
+| 仓库 | develop 提交 | main 合并提交 | 远端终态 |
+|---|---|---|---|
+| Server | `939e5397` | `0a4d28b5`（`7d0f2a2e`+`939e5397`） | main = develop = `0a4d28b523edae62315c4883673cc69dde0bae3f` |
+| Web | `7f5edc3` | `8c512f8`（`bed840d`+`7f5edc3`） | main = develop = `8c512f82291c52e5d9dc92c50288bbbcaf752c1d` |
+| 工作区 | `e09f75da`（develop-sw 直接提交，仅根 README） | — | develop-sw = `e09f75da3b2d…` |
+
+两仓只改 `README.md`；普通推送，不建 tag、不动 Release。Web 提交仍走主检出 prettier/commitlint 等效检查 + `SKIP_SIMPLE_GIT_HOOKS=1`。
+
+### 9.4 回读
+
+- **禁用词 grep（final-10 §2 第 1 条词表 + 同类词）**：对三份推送后的 raw README 执行
+  `grep -c -E 'Owner|Planner|Executor|UAT|MVP|回执|门禁|终态|验收|返修|补丁列车|口径|收敛|防腐层|实例编号|CI run|审核后退回'`
+  （含代码块在内）：Server **0**、Web **0**、根 **0**。
+- **链接**：三份 README 全部链接与图片逐个请求——Server 17 项、Web 17 项、根 32 项，全部 200（Server 首轮 3 个 GitHub URL 因 TLS 握手抖动读空，重试 200；与同 URL 在另两份中的 200 结果一致）。
+- **Latest**：`releases/latest` 跟随重定向后标题仍为「CH-aPaaS Server 0.4.0」「CH-aPaaS-Web 0.3.6」（final-10 §3 要求的合入后回读）。
+- **渲染**：两仓 GitHub 首页 `currentOid` 分别为 `0a4d28b5…`、`8c512f8…`（即本轮合并提交）；徽章（shields 引用 10/12）、Mermaid、"快速开始"标题都在渲染 HTML 中确认。
+- Z9 两次 main 推送又各触发一轮 CI（`build-<sha>`，均 `--latest=false`）；Latest 在 Z7 四轮与 Z9 两轮共六轮 build Release 后仍为语义版。
+
+## 10. 下一步
 
 1. 2026-11-10 17:16 后：Executor 补做 Z4，回填本回执 §3。
-2. Z4 完成后：Planner 做 P66 终态复核（正式登记第 52 个功能、方向归 `passed/`、COMPLETED）。§4、§5 的分支清理、§6 的 Z6、§7 的 Z7 都已完成，不再阻塞终态复核。
-3. 已完成（Owner 2026-11-09 授权，§7.4/§7.6）：两仓工作流已加 `--latest=false`，Server `0.4.0`、Web `0.3.6` 已重新设为 Latest。Planner 终态复核时回读 Latest 与两轮 `build-<sha>` 产物确认未被顶替。
-4. 已完成（§7.1/§7.3）：两仓 README 已重排并新写快速开始；工作区 README「快速开始」第 3 步已指向两仓 `#快速开始` 锚点。
+2. Z4 完成后：Planner 做 P66 终态复核（正式登记第 52 个功能、方向归 `passed/`、COMPLETED）。§4、§5 的分支清理、§6 的 Z6、§7 的 Z7、§9 的 Z8/Z9 都已完成，不再阻塞终态复核。
+3. 已完成（Owner 2026-11-09 会话内授权，§7.4/§7.6，授权来源说明见 §9 引言）：两仓工作流已加 `--latest=false`，Server `0.4.0`、Web `0.3.6` 已重新设为 Latest；截至 Z9 已经历六轮 `build-<sha>` 产物，Latest 未被顶替。
+4. 已完成（§9）：三份 README 已按 final-10 §2 重写，禁用词 grep 为 0；根 README 11 个死链改绝对链接，全部链接 200。
 5. Web 缺陷 W-a—W-d 已登记在 `todo/web-ui-defects-20261109.md`，等下一个 Web 补丁方向（Owner 已裁决现在不开 Web 0.3.7）。补丁发布后，重拍智能体编排图和审批详情图，三份 README 一起补图。
 6. Owner（可选）：手动删除已脱离 git 的残留目录 `E:/code/p61-wt-web`（312 MB，内容已全部在 main 里，无唯一文件）；不删也不影响任何东西（`planning-review-final-06.md` §2）。
 7. §5.4 的两个 Server 额外 worktree 已裁决（`planning-review-final-06.md` §3）：两者属于 0.2.3/0.3.0 的隔离环境，按 Owner 既有裁决**保留**；detached HEAD 不占用分支，不受“合并即删”规则管辖；以后 Owner 撤掉隔离环境时，再连同 `.runtime-*` 和隔离库一起清理。
