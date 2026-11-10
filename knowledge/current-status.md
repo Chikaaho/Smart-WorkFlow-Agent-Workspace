@@ -1,5 +1,17 @@
 # 当前状态（current-status）
 
+**当前状态（2026-11-10，Server 0.4.1 + Web 0.3.8 已发布并部署 UAT，待 Planner 阶段 7 复核）**
+
+Server **0.4.1** 与 Web **0.3.8** 发布并部署 UAT，完成 W-c 会签意见摘要/部门、W-a2 画布连线与可读性、W-b2 长表单复测、W-e 列表发起时间；补丁不登记新功能。
+
+- **发布事实**：Server tag `0.4.1`=`09549a49`（tag 对象 `addce449`，Release `440170555`，`bootstrap-0.4.1.jar` 236,251,001 B sha256 `fe6ad3ed…`）；Web tag `0.3.8`=`6e9b7313`（tag 对象 `4f1d380f`，Release `440173998`，`sw-web-dist-0.3.8.zip` 6,198,159 B sha256 `c61e0617…`）。Latest 分别为 0.4.1/0.3.8，既有 tag/Release 未动。
+- **合并与 CI**：两仓 fix 分支→develop→main 普通合入；Server develop `42789327773`、main `42789343743`，Web develop `42788699711`、main `42788760585` 均 success；已合入分支（Server `fix/0.4.1-approval-history`、Web `fix/0.3.8-approval-record`）本地与远端已删。首次 Server CI 失败为工作流硬编码 `0.4.0-SNAPSHOT` 断言未随版本收敛（`99e7dad6` 修复，含 pom/脚本/工作流四处）。
+- **UAT**：Server `build.version=0.4.1`、health UP（160s）、Flyway 仍 33 行/max 0.4.0（无新增迁移）；部署前备份 `smart_workflow_20261110_1746_pre041.dump`、`bootstrap.jar.bak-pre041`、`server.env.bak-pre041`。Web 入口 `assets/index-Cr8LY45m.js`，根/登录/健康 200，备份 `web.bak-20261110_1751_038pre`。
+- **复测**：W-c 任务详情 9 行历史，会签 3 行均带意见摘要与部门；R1b 会签弹窗 3 行（冯雪/杨帆/刘洋）部门与摘要完整。W-a2 7 节点/6 连线、左右接点 7/7、fit 0.617、节点与连线渲染 12.34px、占宽 0.909；A1 连线标签同口径。W-b2 `YJ-20261108-009` 表单 1218px、面板 447/445px、页签 3 项。W-e 列表 `2026-11-08 16:35`，无 `T`/微秒。R3b 从「我发起的」进入 `XY-20261108-015`，侧栏高亮一致；流程图 56% 时占宽 0.854、上下不裁（弹窗 100vw 不显示侧栏，入口图另存）。
+- **README**：三仓 `agent-graph.png`（R1a）、`approval-detail.png`（R1b）、`sample-b.png`（R3b）已更新并回读 200；三份 README 版本改为 Server 0.4.1 / Web 0.3.8，禁用词 0，链接 200。
+- **Z4**：P66 部署后 24h 观察完成（`server.log` daily 轮转、磁盘 66%、health 200），P66 `COMPLETED`，见 `execution-final-05.md` §3。
+- **回执**：`product/approval-record-patch/receipts/execution-041-01.md`（阶段 2—3）、`execution-041-02.md`（阶段 4—6）。
+
 **当前状态（2026-11-10，Web 0.3.7 界面缺陷补丁已发布并部署 UAT，待 Planner 验收）**
 
 Web 以 **0.3.7** 发布并部署 UAT，修复 P66 截图审查发现的界面缺陷；Server 维持 **0.4.0**（本次仅文档改动）。补丁不登记新功能、不核销 P 编号。

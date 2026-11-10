@@ -1,5 +1,18 @@
 # CH-aPaaS 发布说明 / Release Notes
 
+## 0.4.1 + 0.3.8（2026-11-10 Server 与 Web 发布；会签记录意见与部门、画布连线与列表时间）
+
+- **背景**：0.3.7 验收把 W-c（会签弹窗缺意见摘要/部门）、W-a2（画布连线与可读性）、W-b2（原场景补测）、W-e（列表发起时间）转入本方向；Owner 确认版本 Server **0.4.1**、Web **0.3.8**。
+- **W-c（Server 0.4.1）**：任务详情审批历史补 `opinionFields` 与 `assigneeDept`；新增共享 `ApprovalHistoryEnricher`，与「我发起的」实例详情同一解析口径（冻结意见表单快照、人员姓名、日期本地格式、多选顿号、主部门名）；`UserQueryFacade.getUserDeptIds`、`DeptQueryFacade.findActiveDeptNames` 批量只读查询；未改数据库迁移。真实 PG 测试覆盖会签行/普通行/无部门三场景。
+- **W-c（Web 0.3.8）**：会签记录弹窗「动作/意见」显示摘要（标签：值），「所属部门」显示实际部门名；数据由 Server 提供。
+- **W-a2**：画布节点连线改左右连接（源右侧、目标左侧），整图 fit 自动适配；节点与连线标签基础字号 20px，1440×900 下 fit 缩放 0.617 时渲染 ≥12px；节点类型样式不回退。
+- **W-e**：流程监控实例列表「发起时间」统一 `yyyy-MM-dd HH:mm`，无 `T` 与微秒。
+- **W-b2**：隔离环境 1128px 表单与 UAT `YJ-20261108-009` 长表单（1218px）补测：面板 447/445px、页签三项可切换、无横向溢出；无需改代码。
+- **验证**：Server 全量 `mvn test` **2,482 / 0 / 0 / 45 skipped**（较 0.4.0 增 1 条真实 PG 测试）；Web typecheck/lint/单测 **2054 passed / 3 skipped**/构建通过；隔离环境（Server 0.4.1 分支 + 克隆库 + Web 0.3.8 构建）完成 W-c/W-a2/W-b2/W-e 实测。
+- **发布事实**：Server tag `0.4.1`=`09549a49`（annotated tag `addce449`，Release `440170555`，`bootstrap-0.4.1.jar` 236,251,001 B sha256 `fe6ad3ed…`）；Web tag `0.3.8`=`6e9b7313`（tag `4f1d380f`，Release `440173998`，`sw-web-dist-0.3.8.zip` 6,198,159 B sha256 `c61e0617…`）。两仓 Latest 分别为 0.4.1 / 0.3.8，既有 tag/Release 未动。
+- **演示环境**：Server `build.version=0.4.1`、health UP、Flyway 33 行/max 0.4.0（无新增迁移）；Web 入口 `assets/index-Cr8LY45m.js`，根/登录/健康 200。复测 W-c（会签 3 行意见摘要+部门）、W-a2（fit 0.617、节点/连线 12.34px、左右接点 7/7、占宽 0.909）、W-b2（1218px 表单/面板 447px）、W-e（`2026-11-08 16:35`）；README 三图更新。
+- **回执**：`product/approval-record-patch/receipts/execution-041-01.md`（阶段 2—3）、`execution-041-02.md`（合并、发布与部署同步）。
+
 ## 0.3.7（2026-11-10 Web 发布并部署 UAT；界面缺陷修复与 MIT 许可证；Server 维持 0.4.0）
 
 - **背景**：P66 发布后截图审查发现四个界面缺陷（`todo/web-ui-defects-20261109.md`）。Owner 2026-11-10 确认 Web 版本号 0.3.7，走完七阶段。

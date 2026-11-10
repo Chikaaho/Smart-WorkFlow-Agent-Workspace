@@ -1,45 +1,32 @@
 # 当前状态摘要
 
-2026-11-10｜Planner｜0.4.1/0.3.8 阶段 3 通过，进入合并发版（3/0/4），见 `receipts/planning-review-041-01.md`；Z4 置顶。
+2026-11-10｜Executor｜Server 0.4.1 + Web 0.3.8 已发布并部署 UAT，待 Planner 阶段 7 复核（6/0/1）。
 
 ## 当前任务
 
-**Server 0.4.1 + Web 0.3.8（L，READY）**：Owner 2026-11-10 定、版本已确认；W-c 会签意见/部门、W-a2 连线与缩放、W-b2 原场景补测、W-e 列表时间、三张 README 图；先验收后合并。方向 `product/approval-record-patch/ready/direction-server-041-web-038.md`。
+**Server 0.4.1 + Web 0.3.8（L，PUBLISHED）**：完成 W-c 会签意见摘要/部门、W-a2 画布连线与可读性、W-b2 长表单复测、W-e 列表发起时间、三张 README 图。方向 `product/approval-record-patch/ready/direction-server-041-web-038.md`；回执 `execution-041-01.md`（阶段 2—3）、`execution-041-02.md`（阶段 4—6）。
 
-Web 0.3.7 已发布（tag `0.3.7`=`a6781c8`，Release `439939910`，入口 `index-jYV2b5yF.js`；tag 移动与 CI 源覆盖经 Owner 确认），验收部分通过并归档：`product/web-037-patch/receipts/planning-review-037-01.md`；两仓 MIT 已加。
-
-P66 多数据库兼容（XL）**COMPLETED**（`product/multi-database-compat/receipts/planning-final-review-p66-completed.md`，方向归 `passed/`），以 **Server 0.4.0** 发布并部署 UAT。审查链 final-02—11：Z1 七图重拍、README 按 Owner 方案 A 下掉 agent-graph/approval-detail（剩 6 张）；Z2 回滚必须恢复 pre040 dump；Z3 develop=main=`a4f6c278`；W-a—W-d 留下个 Web 补丁（`todo/web-ui-defects-20261109.md`），测试流程不隐藏。已合入分支按规则删除，两仓只剩 main/develop/未完成分支，tag 未动。Z6—Z9 已完成（`execution-final-05.md` §6/§7/§9）；Z4 见需求池置顶。
-
-- **发布**：tag `0.4.0`=`a4f6c278`，Release `438918154`，`bootstrap-0.4.0.jar`
-  236,245,457 B sha256 `188be963…`。
-- **UAT**：build.version=0.4.0、health UP、根 200、Flyway v0.4.0（33 行）；新增
-  `V0.4.0__knowledge_vector_persistence.sql` 与 `R__0.4.0_rename_bpm_opinion_comment.sql`；
-  旧 31 条校验和不变；管理员工具启用过滤 internal=3/external=1/disabled=0。
-- **X1**：智能体工具 `enabled` 恢复 Boolean 绑定；PG 真实测试覆盖 12 处查询；六库冒烟全部通过。
-- **验证**：全量 `mvn test` **2,481 / 0 / 0 / 45 skipped**；CI feature #123、develop #126、
-  main #127 success。
-
-三示例流程（0.3.1—0.3.6）保持 **`COMPLETED`**；Web 0.3.6（tag `c3f1d6e`，Release `438126185`）不变。
+- **发布**：Server tag `0.4.1`=`09549a49`（tag 对象 `addce449`，Release `440170555`，`bootstrap-0.4.1.jar` 236,251,001 B sha256 `fe6ad3ed…`）；Web tag `0.3.8`=`6e9b7313`（tag 对象 `4f1d380f`，Release `440173998`，`sw-web-dist-0.3.8.zip` 6,198,159 B sha256 `c61e0617…`）。Latest 0.4.1/0.3.8；既有 tag/Release 未动。
+- **合并/CI**：两仓 fix→develop→main 普通合入；Server develop `42789327773`、main `42789343743`，Web develop `42788699711`、main `42788760585` 均 success。Server 首次失败为工作流硬编码 `0.4.0-SNAPSHOT` 断言漏改，`99e7dad6` 修复 pom/脚本/工作流四处。已合入分支本地与远端已删。
+- **UAT**：Server `build.version=0.4.1`、health UP（160s）、Flyway 33 行/max 0.4.0（无新增迁移），部署前备份 DB/jar/env；Web 入口 `assets/index-Cr8LY45m.js`，根/登录/健康 200，备份 web 目录。
+- **复测**：W-c 会签 3 行摘要+部门；W-a2 左右接点 7/7、fit 0.617、节点/连线 12.34px、占宽 0.909；W-b2 表单 1218px/面板 447px；W-e 时间 `yyyy-MM-dd HH:mm`；R3b 从「我发起的」进入、侧栏一致，图占宽 0.854、上下不裁。
+- **README/Z4**：三仓三图回读 200，版本 0.4.1/0.3.8，禁用词 0、链接 200；P66 24h 观察完成，`COMPLETED`（`execution-final-05.md` §3）。
 
 ## 基线
 
-功能 **52**；M59/18/13=90；ADV1/7/56=64；实际 P63；问题 57；正式基线变更 []。已核销
-P2/P4/P9/P15/P19/P29/P34/P47/P65/P66，P35 部分；P20 未核销。
+功能 **52**；M59/18/13=90；ADV1/7/56=64；实际 P63；问题 57；正式基线变更 []。已核销 P2/P4/P9/P15/P19/P29/P34/P47/P65/P66，P35 部分；P20 未核销。补丁不增加功能数、不核销 P。
 
-正式/部署版本：Server **0.4.0**（tag `a4f6c278`，Release `438918154`），Web **0.3.6**
-（tag `c3f1d6e`，Release `438126185`）；Flyway V0.4.0。UAT 磁盘 67%（余 6.0G）。
+正式/部署版本：Server **0.4.1**（tag `09549a49`，Release `440170555`），Web **0.3.8**（tag `6e9b7313`，Release `440173998`）；Flyway V0.4.0（33 行）。UAT 磁盘 66%（余 6.3G）。
 
-Owner 定：本机隔离环境（`smart_workflow_030`、`.runtime-030` 等清单见 handoff）保留不删，
-含凭据密文，只要求不泄露，已 gitignore。Key/授权码不入 Git。
+Owner 定：本机 `smart_workflow_030` 等隔离环境保留不删（含密文，已 gitignore）。本轮 `smart_workflow_041` 与 18092/5274 已按精确 PID 停止，DB 暂留至阶段 7 后清理。Key 不入 Git。
 
-## 后续候选（需求池观察区）
+## 后续候选
 
-DM8/KingbaseES Owner 实库验证；日志管理页面（按类动态调等级）；
-`JavaSubprocessExecutor` 子进程输出竞态（`todo/iot-subprocess-output-race.md`）；CI 偶发失败族；
-知识库写权限粒度；短信电话渠道（未采购）；Agent 逐节点进度事件；P20。
+P67 Graph 执行器、P68 外部 Java 工具沙箱（需求池）；DM8/KingbaseES 实库验证；日志管理页；`JavaSubprocessExecutor` 输出竞态；CI 偶发族；知识库写权限；短信电话；P20。
 
 ## 教训
 
+0.4.1：发版工作流的 develop 版本断言须与 pom `<revision>` 同批收敛；弹窗类 README 图需另备入口图证明侧栏。
 0.3.3：缺陷判定要看迁移链跑完后的最终列类型，不能只看基线；Boolean 列不能绑 1/0。
 0.3.x：审查要逐字核对表单数据内部一致性；用户可见英文编码判不通过；「我的实例」只含发起实例。
-0.2.4：给执行的替代路线先核前提是否存在。P66：六库冒烟必须含智能体工具启用过滤，不能只跑建表/种子。
+0.2.4：给执行的替代路线先核前提是否存在。P66：六库冒烟必须含智能体工具启用过滤。

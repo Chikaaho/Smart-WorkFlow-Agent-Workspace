@@ -4,7 +4,8 @@
 
 无阻塞项。观察项：
 
-- **UAT 磁盘**：0.4.0 部署后 67%（余 6.0G）；默认日志已改 INFO、logrotate rotate/maxage 14、PG `Restart=on-failure` 已配置；不加告警（Owner）；部署前仍须余 ≥3G。
+- **UAT 磁盘**：0.4.1 部署后 66%（余 6.3G）；默认日志 INFO、logrotate daily/maxsize 100M/rotate·maxage 14、PG `Restart=on-failure` 已配置；不加告警（Owner）；部署前仍须余 ≥3G。
+- **0.4.1 CI**：Server 首跑失败为工作流 develop 版本断言仍为 `0.4.0-SNAPSHOT`，已随 pom/脚本/工作流收敛到 0.4.1（`99e7dad6`）；后续发版需四处同批更新。
 - **UAT 供应商（Owner 侧）**：Embedding 需 OpenAI 格式 `https://openrouter.ai/api/v1` + `openai/text-embedding-3-small`，模型页挂 Chat 与 Embedding。
 - **CI 抖动（重跑通过）**：`P62CompatRollbackPgTest`、I6G1a/b/c、`AgentToolConfigServiceImplTest`、`CommandOverlapRealEngineTest`（Flowable 乐观锁）；新增 `JavaSubprocessSandboxTest`（子进程输出竞态，见 `todo/iot-subprocess-output-race.md`）。
 - **应用包缺口**：导出 `opinionForms` 为空，触发器/Agent 图/IoT 规则不随包；导入新环境需补建（见 `todo/application-bundle-import-export.md`）。

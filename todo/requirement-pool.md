@@ -4,11 +4,11 @@
 
 | 项 | 时间条件 | 内容 | 验收 |
 |---|---|---|---|
-| P66 Z4 | 2026-11-10 17:16 以后 | 只读：UAT `server.log` 大小与轮转产物、`df -h /`、logrotate 是否实际轮转；同轮把 `version.json` `development.statusNote` 与 `knowledge/features/multi-database-compat.md` 的“待 Planner 终态复核”改为 COMPLETED。写进 `product/multi-database-compat/receipts/execution-final-05.md` §3 | Planner 回读；有异常单独开运维任务，不重开 P66 |
+| P66 Z4 **已完成（2026-11-10 17:17）** | 2026-11-10 17:16 以后 | 只读：UAT `server.log` 128K（daily 轮转 00:00:17，`server.log-20261110` 346M）、`df -h /` 66%（余 6.3G）、logrotate 配置实际生效；`version.json` 状态与 `knowledge/features/multi-database-compat.md` 已记 COMPLETED。见 `execution-final-05.md` §3 | Planner 回读；无异常，不另开运维任务 |
 
-## 进行中：Server 0.4.1 + Web 0.3.8（L，2026-11-10 READY）
+## 已结束：Server 0.4.1 + Web 0.3.8（L，PUBLISHED 2026-11-10，七阶段 6/0/1）
 
-Owner 2026-11-10 裁决 W-c 发 Server 0.4.1 + Web 0.3.8，版本已确认。范围：W-c 任务详情审批历史带意见字段与部门；W-a2 画布连线左右接点与自动适配；W-b2 原路由长表单只读补测；W-e 实例列表发起时间格式；README 重拍 `agent-graph.png`、补 `approval-detail.png`、重拍 `sample-b.png`；第一步收尾 0.3.7（Server CI 回读、memory 压缩、CI 源还原检查、Z4）。先验收后合并。方向 `product/approval-record-patch/ready/direction-server-041-web-038.md`。**阶段 3 验收通过（`product/approval-record-patch/receipts/planning-review-041-01.md`）**：W-c/W-a2/W-b2/W-e 与门禁全过，合并前附带小修 A1（连线标签字号 ≥12px，已预授权）；下一步合并发版。七阶段 3/0/4。
+Owner 2026-11-10 裁决 W-c 发 Server 0.4.1 + Web 0.3.8，版本已确认。范围：W-c 任务详情审批历史带意见字段与部门；W-a2 画布连线左右接点与自动适配；W-b2 原路由长表单只读补测；W-e 实例列表发起时间格式；README 重拍 `agent-graph.png`、补 `approval-detail.png`、重拍 `sample-b.png`；第一步收尾 0.3.7（Server CI 回读、memory 压缩、CI 源还原检查、Z4）。先验收后合并。方向 `product/approval-record-patch/ready/direction-server-041-web-038.md`。**已完成（2026-11-10，`execution-041-02.md`）**：阶段 3 验收通过后完成 A1（连线标签 12.34px）；两仓 fix→develop→main，四项 CI success，已合入分支删除；Server tag `0.4.1`=`09549a49`（Release `440170555`，`bootstrap-0.4.1.jar` 236,251,001 B sha256 `fe6ad3ed…`）、Web tag `0.3.8`=`6e9b7313`（Release `440173998`，`sw-web-dist-0.3.8.zip` 6,198,159 B sha256 `c61e0617…`），均 Latest。UAT 部署 Server 0.4.1（health UP、Flyway 33 行/max 0.4.0）与 Web 0.3.8（`index-Cr8LY45m.js`）；复测 W-c/W-a2/W-b2/W-e 与 R1a/R1b/R3b 通过；三仓 README 三图与版本已同步回读。待 Planner 阶段 7 复核。
 
 ## 已结束：Web 0.3.7 补丁（L，2026-11-10 部分通过，七阶段 7/0/0）
 

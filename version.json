@@ -1,31 +1,31 @@
 {
   "$schema": "CH-aPaaS 版本权威（单一机器可读源；变更须走新回执）",
   "product": "CH-aPaaS",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "featureCount": 52,
   "iteration": "0.1.0",
   "registeredAt": "2026-11-10",
-  "registeredBy": "P66 多数据库兼容 0.4.0（Server）与 Web 0.3.7 界面缺陷补丁；执行回执 product/web-037-patch/receipts/execution-037-02.md",
+  "registeredBy": "Server 0.4.1 + Web 0.3.8 补丁；执行回执 product/approval-record-patch/receipts/execution-041-02.md",
   "development": {
-    "targetVersion": "0.4.0",
+    "targetVersion": "0.4.1",
     "status": "PUBLISHED",
-    "statusNote": "Server 0.4.0 已发布并部署 UAT；P66 多数据库兼容登记为第 52 个正式功能。Z4 运维观察完成（2026-11-10 17:17）：server.log 按 daily 轮转、磁盘 66%、health 200，P66 COMPLETED",
-    "direction": "product/multi-database-compat/ready/direction-multi-database-compat.md",
-    "finalReview": "待 Planner 终态复核（execution-final-03.md）",
+    "statusNote": "Server 0.4.1 与 Web 0.3.8 已发布并部署 UAT：W-c 任务详情会签意见摘要/部门、W-a2 画布连线与 ≥12px 标签、W-e 列表时间、W-b2 长表单复测；P66 0.4.0 已 COMPLETED（Z4 观察完成）。待 Planner 阶段 7 复核",
+    "direction": "product/approval-record-patch/ready/direction-server-041-web-038.md",
+    "finalReview": "待 Planner 阶段 7 复核（execution-041-02.md）",
     "branches": {
-      "server": "feature/0.4.0-multi-database 19ae82f3 → develop 2c3bf850 → main a4f6c278（tag 0.4.0=a4f6c278）",
-      "web": "Web 0.3.7：develop faf4b00 → main d0cdcf5（tag 0.3.7=a6781c8，Release 439939910）",
+      "server": "fix/0.4.1-approval-history f65bdeeb → develop 99e7dad6 → main 09549a49（tag 0.4.1=09549a49）；README 同步 main e2beb027",
+      "web": "fix/0.3.8-approval-record 1eeb716 → develop 46fdac1 → main 6e9b731（tag 0.3.8=6e9b731）；README 同步 main 65594c0",
       "workspace": "develop-sw（本同步批次提交后回读）"
     },
     "developmentVersion": {
-      "server": "0.4.0-SNAPSHOT",
-      "web": "0.3.7"
+      "server": "0.4.1-SNAPSHOT",
+      "web": "0.3.8"
     }
   },
   "projections": {
     "serverRepo": {
       "path": "Smart-WorkFlow-aPaaS-server",
-      "mavenVersion": "0.4.0（正式构建 -Drevision=0.4.0；开发默认 0.4.0-SNAPSHOT）",
+      "mavenVersion": "0.4.1（正式构建 -Drevision=0.4.1；开发默认 0.4.1-SNAPSHOT）",
       "flywayEndpoint": {
         "h2": "V0.4.0",
         "postgresql": "V0.4.0"
@@ -34,23 +34,23 @@
     },
     "webRepo": {
       "path": "Smart-WorkFlow-aPaaS-Web",
-      "packageVersion": "0.3.7"
+      "packageVersion": "0.3.8"
     },
     "workspace": {
       "path": "Smart-WorkFlow-Agent-Workspace",
       "changelog": "CHANGELOG.md",
-      "releaseNotes": "GitHub Release：Server 0.4.0（a4f6c278·bootstrap-0.4.0.jar 236,245,457 B sha256 188be963…、Release 438918154）、Web 0.3.7（a6781c8·sw-web-dist-0.3.7.zip 6,198,405 B sha256 1bb0d03c…、Release 439939910，Latest）",
-      "upgrade": "docs/ops/production-ops.md §8/§9；0.3.2→0.4.0 新增 2 条迁移，先备份后启动；Server 只换 jar，Web 不变",
-      "rollback": "docs/ops/production-ops.md §8.1/§9.1；回退到 0.3.2 必须按「停服 → 恢复 DB dump smart_workflow_20261109_pre040.dump → 换回 bootstrap.jar.bak-pre040」执行，不能只换 jar；0.4.0 已应用 V0.4.0 与 R__0.4.0（comment→opinion_comment），0.3.2 jar 在 0.4.0 库上无法通过 Flyway 校验",
-      "configChanges": "application-prod.yml 默认日志级别 com.sw.ck/org.springframework.jdbc 由 debug 调为 info；UAT logrotate rotate/maxage 14；postgresql@14-main drop-in Restart=on-failure/RestartSec=5s",
-      "dbMigrations": "V0.4.0 + R__0.4.0；UAT flyway_schema_history 33 行，max(version)=0.4.0",
-      "manifest": "GitHub Release 0.4.0 资产 bootstrap-0.4.0.jar 236,245,457 B sha256 188be963796af0583f2e59653cfc19cd482856e6fc4d0ecd22f102223b5e620b；build-<sha> Release 保留",
-      "deployment": "UAT 已部署 Server 0.4.0（build.version=0.4.0、health UP、Flyway v0.4.0）与 Web 0.3.7（assets/index-jYV2b5yF.js、根 200，2026-11-10）"
+      "releaseNotes": "GitHub Release：Server 0.4.1（09549a49·bootstrap-0.4.1.jar 236,251,001 B sha256 fe6ad3ed…、Release 440170555）、Web 0.3.8（6e9b731·sw-web-dist-0.3.8.zip 6,198,159 B sha256 c61e0617…、Release 440173998，均 Latest）",
+      "upgrade": "docs/ops/production-ops.md §8/§9；本次无新增迁移，替换 jar / Web 目录即可",
+      "rollback": "docs/ops/production-ops.md §8.1/§9.1；0.4.1 无迁移，回退可换回 bootstrap.jar.bak-pre041（0.4.0，sha256 188be963…）与 web.bak-20261110_1751_038pre；数据库无需回滚",
+      "configChanges": "无新增配置项；沿用 0.4.0 的 INFO 日志、logrotate 14 份与 PG 自动拉起",
+      "dbMigrations": "无新增迁移；UAT flyway_schema_history 仍 33 行，max(version)=0.4.0",
+      "manifest": "GitHub Release 0.4.1 资产 bootstrap-0.4.1.jar 236,251,001 B sha256 fe6ad3ede4a6511ac716b31eff515606ff826f196752bcf7a220b842f29ca3e4；Web 0.3.8 资产 sw-web-dist-0.3.8.zip 6,198,159 B sha256 c61e06179898a3558c0af365e1994453ce90d05f589f17601d10f16afd9ff1b4；build-<sha> Release 保留",
+      "deployment": "UAT 已部署 Server 0.4.1（build.version=0.4.1、health UP、Flyway 33 行/max 0.4.0）与 Web 0.3.8（assets/index-Cr8LY45m.js、根/登录/健康 200，2026-11-10）"
     }
   },
   "rules": {
     "candidateFreeze": "候选固定后只允许通过新回执审查的变更进入；代码/迁移/依赖/配置漂移使受影响证据失效并重固定候选",
-    "tagAndRelease": "Server 0.4.0（a4f6c278，annotated tag，Release 438918154，bootstrap-0.4.0.jar sha256 188be963…）；Web 0.3.7（a6781c8，tag 0.3.7，Release 439939910，sw-web-dist-0.3.7.zip 6,198,405 B sha256 1bb0d03c…，同版本重发经 Owner 批准）。已发布 tag 0.3.0—0.3.6、0.4.0 未改动。",
-    "deployment": "UAT：Server 0.4.0（build.version=0.4.0、Flyway v0.4.0、health UP）；Web 0.3.7（assets/index-jYV2b5yF.js）。"
+    "tagAndRelease": "Server 0.4.1（09549a49，annotated tag addce449，Release 440170555，bootstrap-0.4.1.jar sha256 fe6ad3ed…）；Web 0.3.8（6e9b7313，tag 4f1d380f，Release 440173998，sw-web-dist-0.3.8.zip 6,198,159 B sha256 c61e0617…）。0.4.0/0.3.7 等既有 tag/Release 未动，Latest 分别为 0.4.1/0.3.8。",
+    "deployment": "UAT：Server 0.4.1（build.version=0.4.1、Flyway 33 行/max 0.4.0、health UP）；Web 0.3.8（assets/index-Cr8LY45m.js）。"
   }
 }
