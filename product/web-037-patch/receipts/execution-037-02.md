@@ -114,5 +114,5 @@
 - 部署回读：入口 `index-jYV2b5yF.js`、根/资产/challenge 均 200。
 - 许可证：两仓 `license.spdx_id=MIT`。
 - 图片：GitHub raw 三处 200 且字节数一致；README 链接检查 200。
-- CI：Web `42755335137`/`42755323841` success；Server `42749703133`/`42749714010` success；README 合并提交的运行结论以合并回读为准（若失败按 §8.4 处理）。
+- CI：Web `42755335137`（develop 8ed560e）、`42755323841`（main a6781c8）、`42759844784`（develop faf4b00）、`42759860970`（main d0cdcf5）均 success；Server 功能/文档合入 `42749703133`（develop bca196c2）、`42749714010`（main eacab652）success，README 合并提交 `42760022678`（develop f584bd0）首次因既有 flaky（`AgentModelManageServiceImplTest`，H2 SMALLINT/BOOLEAN）失败、重跑中，`42760040390`（main 9a76314）进行中；文档合并不影响发布事实，结果以回读为准。
 - 自验不等同 Planner 验收；本回执提交后等待 Planner 对 0.3.7、W-c 去向与 README 图的裁决。
