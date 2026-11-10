@@ -1,10 +1,10 @@
 # 当前状态摘要
 
-2026-11-10｜Planner（final-11）｜Z8、Z9 通过（三份 README 读者视角通读、全链接 200）；两仓 main=develop=Server `0a4d28b5`、Web `8c512f8`；授权 Owner 已确认；只剩 Z4。
+2026-11-10｜Planner（终态复核）｜P66 **COMPLETED**，第 52 个正式功能，七阶段 7/0/0；Z4 按 Owner 定置顶到点插入，不阻塞。
 
 ## 当前任务
 
-P66 多数据库兼容（XL）以 **Server 0.4.0** 发布并部署 UAT，第 **52** 个正式功能已预登记，以终态复核为准。审查链 `product/multi-database-compat/receipts/planning-review-final-02`—`10.md`：Z1 七图重拍、README 按 Owner 方案 A 下掉 agent-graph/approval-detail（剩 6 张）；Z2 回滚必须恢复 pre040 dump；Z3 develop=main=`a4f6c278`；W-a—W-d 留下个 Web 补丁（`todo/web-ui-defects-20261109.md`），测试流程不隐藏。分支清理通过：13 条已合入分支远程+本地已删，Server 远程剩 main/develop/`feature/p62-perf-bounded-20261011`，Web 剩 main/develop/`feature/ui-figma-align-20261027`，tag 未动。待办：Z4 待 2026-11-10 17:16 后；Z6—Z9 已完成（`execution-final-05.md` §6/§7/§9）。
+无活动任务，等 Owner 选下一项。P66 多数据库兼容（XL）**COMPLETED**（`product/multi-database-compat/receipts/planning-final-review-p66-completed.md`，方向归 `passed/`），以 **Server 0.4.0** 发布并部署 UAT。审查链 final-02—11：Z1 七图重拍、README 按 Owner 方案 A 下掉 agent-graph/approval-detail（剩 6 张）；Z2 回滚必须恢复 pre040 dump；Z3 develop=main=`a4f6c278`；W-a—W-d 留下个 Web 补丁（`todo/web-ui-defects-20261109.md`），测试流程不隐藏。已合入分支按规则删除，两仓只剩 main/develop/未完成分支，tag 未动。Z6—Z9 已完成（`execution-final-05.md` §6/§7/§9）；Z4 见需求池置顶。
 
 - **发布**：tag `0.4.0`=`a4f6c278`，Release `438918154`，`bootstrap-0.4.0.jar`
   236,245,457 B sha256 `188be963…`；`build-<sha>` Release `438913661` 同字节。
@@ -22,7 +22,7 @@ P66 多数据库兼容（XL）以 **Server 0.4.0** 发布并部署 UAT，第 **5
 ## 基线
 
 功能 **52**；M59/18/13=90；ADV1/7/56=64；实际 P63；问题 57；正式基线变更 []。已核销
-P2/P4/P9/P15/P19/P29/P34/P47/P65，P35 部分；P20 未核销。
+P2/P4/P9/P15/P19/P29/P34/P47/P65/P66，P35 部分；P20 未核销。
 
 正式/部署版本：Server **0.4.0**（tag `a4f6c278`，Release `438918154`），Web **0.3.6**
 （tag `c3f1d6e`，Release `438126185`）；Flyway V0.4.0。UAT 磁盘 67%（余 6.0G）。

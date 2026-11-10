@@ -1,10 +1,10 @@
 # 交接
 
-2026-11-10｜Planner（final-11）｜Z8、Z9 通过；授权 Owner 已确认；只剩 Z4（17:16 后）阻塞终态。
+2026-11-10｜Planner（终态复核）｜P66 COMPLETED（第 52 功能，7/0/0）；Z4 置顶到点插入。
 
 ## 当前
 
-P66 多数据库兼容（XL）以 **Server 0.4.0** 发布，登记第 **52** 个正式功能。
+P66 多数据库兼容（XL）**COMPLETED**，以 **Server 0.4.0** 发布，第 **52** 个正式功能。
 
 - **发布**：tag `0.4.0`=`a4f6c278`（annotated tag 对象 `6093c4cc…`），Release `438918154`，
   `bootstrap-0.4.0.jar` 236,245,457 B sha256 `188be963…`；`build-<sha>` Release `438913661` 同字节。
@@ -22,7 +22,7 @@ P66 多数据库兼容（XL）以 **Server 0.4.0** 发布，登记第 **52** 个
 三示例流程（0.3.1—0.3.6）保持 **`COMPLETED`**；Web **0.3.6**（tag `c3f1d6e`，Release
 `438126185`，入口 `assets/index-CKdiXkhU.js`）不变。应用包维持 `systemVersion=0.3.2`。
 
-**下一动作**：Z6—Z9 已完成（`execution-final-05.md` §6/§7/§9）；2026-11-10 17:16 后 Executor 在同回执 §3 只读补 Z4（`server.log` 大小、`df -h /`、logrotate 实际轮转），然后 Planner 终态复核（第 52 功能、方向归 `passed/`、COMPLETED）。已按 Owner 授权完成：两仓工作流 `gh release create` 加 `--latest=false`，Server `0.4.0`、Web `0.3.6` 经 PATCH 设回 Latest（授权来源：Owner 会话内对结构化提问的直接答复，见回执 §9 引言）。可选手动删残留目录 `E:/code/p61-wt-web`（312M，内容全在 main）。Server 2 个额外 worktree 属隔离环境，保留（final-06 §3）。Web 缺陷见 `todo/web-ui-defects-20261109.md`。
+**下一动作**：无活动任务，等 Owner 选下一项。终态复核 `receipts/planning-final-review-p66-completed.md`，方向已归 `passed/`。需求池置顶：17:16 后在当前任务里顺手只读补 Z4（`execution-final-05.md` §3），同轮改 version.json/knowledge 的“待终态复核”字样。已按 Owner 授权完成：两仓工作流 `gh release create` 加 `--latest=false`，Server `0.4.0`、Web `0.3.6` 经 PATCH 设回 Latest（授权来源：Owner 会话内对结构化提问的直接答复，见回执 §9 引言）。可选手动删残留目录 `E:/code/p61-wt-web`（312M，内容全在 main）。Server 2 个额外 worktree 属隔离环境，保留（final-06 §3）。Web 缺陷见 `todo/web-ui-defects-20261109.md`。
 Owner 侧：DM8、KingbaseES 实库验证。
 
 ## 待办/风险
