@@ -8,7 +8,7 @@
 
 ## 进行中：Server 0.4.1 + Web 0.3.8（L，2026-11-10 READY）
 
-Owner 2026-11-10 裁决 W-c 发 Server 0.4.1 + Web 0.3.8，版本已确认。范围：W-c 任务详情审批历史带意见字段与部门；W-a2 画布连线左右接点与自动适配；W-b2 原路由长表单只读补测；W-e 实例列表发起时间格式；README 重拍 `agent-graph.png`、补 `approval-detail.png`、重拍 `sample-b.png`；第一步收尾 0.3.7（Server CI 回读、memory 压缩、CI 源还原检查、Z4）。先验收后合并。方向 `product/approval-record-patch/ready/direction-server-041-web-038.md`。七阶段 1/0/6。
+Owner 2026-11-10 裁决 W-c 发 Server 0.4.1 + Web 0.3.8，版本已确认。范围：W-c 任务详情审批历史带意见字段与部门；W-a2 画布连线左右接点与自动适配；W-b2 原路由长表单只读补测；W-e 实例列表发起时间格式；README 重拍 `agent-graph.png`、补 `approval-detail.png`、重拍 `sample-b.png`；第一步收尾 0.3.7（Server CI 回读、memory 压缩、CI 源还原检查、Z4）。先验收后合并。方向 `product/approval-record-patch/ready/direction-server-041-web-038.md`。**阶段 3 验收通过（`product/approval-record-patch/receipts/planning-review-041-01.md`）**：W-c/W-a2/W-b2/W-e 与门禁全过，合并前附带小修 A1（连线标签字号 ≥12px，已预授权）；下一步合并发版。七阶段 3/0/4。
 
 ## 已结束：Web 0.3.7 补丁（L，2026-11-10 部分通过，七阶段 7/0/0）
 

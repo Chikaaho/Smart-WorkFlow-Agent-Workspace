@@ -25,3 +25,7 @@ Owner 2026-11-09 裁决：P66 先结束；这几项留到下一个 Web 补丁再
 ## 进度（2026-11-10 规划验收）
 
 0.3.7 已修 W-d 与 W-a 节点样式；W-c、W-a2（连线/缩放）、W-b2（原场景补测）、W-e（列表发起时间）与三张 README 图转 Server 0.4.1 + Web 0.3.8：`product/approval-record-patch/ready/direction-server-041-web-038.md`。
+
+## 观察（2026-11-10，未排期）
+
+- 流程监控列表：IoT 触发的实例「发起人」显示为 `0`（`product/approval-record-patch/receipts/planning-review-041-01.md` §5）。

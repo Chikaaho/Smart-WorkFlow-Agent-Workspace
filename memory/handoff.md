@@ -1,6 +1,6 @@
 # 交接
 
-2026-11-10｜Planner（验收 0.3.7）｜活动任务 Server 0.4.1 + Web 0.3.8 READY；P66 COMPLETED。
+2026-11-10｜Planner（验收 0.4.1/0.3.8 阶段 3）｜Server 0.4.1 + Web 0.3.8 阶段 3 通过，进入合并发版（3/0/4）；验收 `product/approval-record-patch/receipts/planning-review-041-01.md`；P66 **COMPLETED**；Z4 置顶。
 
 ## 当前
 
