@@ -6,9 +6,9 @@
 |---|---|---|---|
 | P66 Z4 | 2026-11-10 17:16 以后 | 只读：UAT `server.log` 大小与轮转产物、`df -h /`、logrotate 是否实际轮转；同轮把 `version.json` `development.statusNote` 与 `knowledge/features/multi-database-compat.md` 的“待 Planner 终态复核”改为 COMPLETED。写进 `product/multi-database-compat/receipts/execution-final-05.md` §3 | Planner 回读；有异常单独开运维任务，不重开 P66 |
 
-## 进行中：Web 0.3.7 补丁（L，2026-11-10 READY）
+## 待验收：Web 0.3.7 补丁（L，2026-11-10 已发布并部署，待 Planner 验收）
 
-Owner 2026-11-10 选定并确认版本 Web **0.3.7**，走完七阶段。范围：W-a—W-d 四个界面缺陷（`todo/web-ui-defects-20261109.md`）；重拍 `agent-graph.png`、`approval-detail.png`、`sample-b.png` 并补回三份 README，Server README“临届”改“临界”；Owner 补充：Server、Web 两仓加 MIT 许可证（`LICENSE` + README 许可证一节）。W-c 若必须改后端，停在该项报 Owner 确认是否发 Server 0.4.1。Server 只做文档合入，不发版。不计功能数。方向 `product/web-037-patch/ready/direction-web-037-patch.md`；回执 `receipts/execution-037-01.md`（实施与证据）、`execution-037-02.md`（合并发布同步）。七阶段 1/0/6（评估完成，实施未开始）。
+Owner 2026-11-10 选定并确认版本 Web **0.3.7**，走完七阶段。范围：W-a—W-d 四个界面缺陷（`todo/web-ui-defects-20261109.md`）；重拍 `agent-graph.png`、`approval-detail.png`、`sample-b.png` 并补回三份 README，Server README“临届”改“临界”；Owner 补充：Server、Web 两仓加 MIT 许可证（`LICENSE` + README 许可证一节）。W-c 若必须改后端，停在该项报 Owner 确认是否发 Server 0.4.1。Server 只做文档合入，不发版。不计功能数。方向 `product/web-037-patch/ready/direction-web-037-patch.md`；回执 `receipts/execution-037-01.md`（实施与证据）、`execution-037-02.md`（合并发布同步）。七阶段 5/1/1（评估、实施、合并、发版、发布后同步完成；验收与同步待 Planner；结束未开始）。**执行结果（2026-11-10）**：W-a/W-b/W-d 修复并在 UAT 实测，W-c 停在需 Server 改动，MIT 许可证与 README 补图完成；Web tag `0.3.7`=`a6781c8`、Release `439939910`、资产 `sw-web-dist-0.3.7.zip` 6,198,405 B sha256 `1bb0d03c…`（同版本重发经 Owner 批准）；UAT 入口 `index-jYV2b5yF.js`。待办：Planner 验收；W-c/0.4.1 由 Planner 报 Owner；`approval-detail.png` 待 W-c；镜像恢复后还原 CI 源覆盖。
 
 ## 已结束：UAT 恢复（M，2026-11-09 规划通过）
 

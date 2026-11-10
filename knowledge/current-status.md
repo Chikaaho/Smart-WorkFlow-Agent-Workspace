@@ -1,5 +1,23 @@
 # 当前状态（current-status）
 
+**当前状态（2026-11-10，Web 0.3.7 界面缺陷补丁已发布并部署 UAT，待 Planner 验收）**
+
+Web 以 **0.3.7** 发布并部署 UAT，修复 P66 截图审查发现的界面缺陷；Server 维持 **0.4.0**（本次仅文档改动）。补丁不登记新功能、不核销 P 编号。
+
+- **发布事实**：Web tag `0.3.7`=`a6781c8`，Release `439939910`，`sw-web-dist-0.3.7.zip` 6,198,405 B sha256 `1bb0d03c…`，Latest=0.3.7（同版本重发经 Owner 2026-11-10 批准：首版 `97bfa14` 含属性面板回归，已修复后重发）。已发布 tag 0.3.0—0.3.6、Server 0.4.0 均未改动。
+- **UAT**：Web 入口 `assets/index-jYV2b5yF.js`、根 200（部署前备份 `web.bak-20261110_037`、`web.bak-20261110_037pre`）；Server 未变（0.4.0、health UP）。
+- **W-a**：编排画布引入 vue-flow 默认主题并保留业务类型映射，演示环境 7 节点实测有外框/底色、类型可区分、属性面板按类型渲染（`readme-agent-graph.png`）。
+- **W-b**：任务详情流程信息卡不再被 flex 压缩；UAT 只读任务 1440 面板 131px/内容 83px、1920 面板 137px/内容 89px，三页签可切换、无横向溢出。
+- **W-d**：实例详情抽屉“发起时间”与审批记录“开始/完成时间”统一 `yyyy-MM-dd HH:mm`，UAT 实测无 `T`、无微秒。
+- **W-c（未完成，待 Owner 裁决）**：任务详情接口的历史缺 `opinionFields` 且 DTO 无 `assigneeDept`，必须改 Server；按方向停止条件停在 W-c，是否发 Server 0.4.1 由 Planner 报 Owner 确认。
+- **MIT 许可证**：Server、Web 新增 `LICENSE`（MIT，Copyright (c) 2026 Chikaho），README/`pom.xml`/`package.json` 同步；`license.spdx_id` 待合并后回读（main 已含 LICENSE）。
+- **README**：`agent-graph.png`、`sample-b.png` 已重拍并放回三份 README；`approval-detail.png` 依赖 W-c 修复后的意见摘要与部门，暂缓。
+- **CI**：Web develop run `42755335137`、main run `42755323841` success；Server develop run `42749703133`、main run `42749714010` success。Web 安装步骤因 `registry.npmmirror.com` 持续 5xx/超时，经 Owner 批准临时改用官方源（`--frozen-lockfile` 不变），镜像恢复后还原。
+- **门禁**：Web typecheck / eslint / vitest 2054 passed / 3 skipped / build 通过；Server 仅文档改动未跑全量测试。
+- **固定值**：功能 **52**；M59/18/13=90；ADV1/7/56=64；实际 P63；问题 57；正式验证基线新增 []。
+- **回执**：`product/web-037-patch/receipts/execution-037-01.md`（实施与证据）、`execution-037-02.md`（合并、发布与发布后同步）。
+- **待办**：Planner 验收 0.3.7 与 W-c/0.4.1 裁决；`approval-detail.png` 补图；镜像恢复后还原 CI 源覆盖；P66 Z4（2026-11-10 17:16 后）。
+
 **当前状态（2026-11-09，P66 多数据库兼容 0.4.0 已发布并部署 UAT，待 Planner 终态复核）**
 
 P66 多数据库兼容以 **Server 0.4.0** 发布并部署 UAT，登记为第 **52** 个正式功能；Web 维持 **0.3.6**。

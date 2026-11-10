@@ -1,6 +1,6 @@
 # 交接
 
-2026-11-10｜Planner（下发 Web 0.3.7）｜活动任务 Web 0.3.7 补丁 READY；P66 COMPLETED。
+2026-11-10｜Executor（Web 0.3.7 发布并部署）｜活动任务 Web 0.3.7 补丁待 Planner 验收；P66 COMPLETED。
 
 ## 当前
 

@@ -1,5 +1,18 @@
 # CH-aPaaS 发布说明 / Release Notes
 
+## 0.3.7（2026-11-10 Web 发布并部署 UAT；界面缺陷修复与 MIT 许可证；Server 维持 0.4.0）
+
+- **背景**：P66 发布后截图审查发现四个界面缺陷（`todo/web-ui-defects-20261109.md`）。Owner 2026-11-10 确认 Web 版本号 0.3.7，走完七阶段。
+- **W-a 智能体编排画布**：引入 vue-flow 默认主题（`theme-default.css`）；业务节点类型统一用 `default` 节点承载并把原类型回写给事件与导出，属性面板按类型正常渲染；START/END/LLM/TOOL/CONDITION/LOOP/FORK/JOIN/KNOWLEDGE 按类型着色（`node-theme.css`）。演示环境 `MES 温度偏离智能研判` 7 个节点实测有外框/底色、类型可区分、点节点出属性面板。
+- **W-b 任务详情**：`.instance-flow-panel` 与操作卡改为 `flex: 0 0 auto`，不再被页面 flex 压缩；1440×900 面板 131px、1920×1080 137px，三页签可见可切换，无横向溢出（本地 mock 与 UAT 只读任务均复测）。
+- **W-d 时间显示**：流程实例详情的“发起时间”与审批记录“开始/完成时间”统一为 `yyyy-MM-dd HH:mm`（与 0.3.4 意见摘要时间同格式），UAT 抽屉实测无 `T`、无微秒。
+- **W-c 会签记录**：需 Server 补齐历史 `opinionFields` 与 `assigneeDept`（`BpmTodoController` 未调用 `resolveOpinionFields`，DTO 无部门字段），按方向停止条件停在 W-c，待 Owner 决定是否发 Server 0.4.1；本版不包含。
+- **MIT 许可证**：Server、Web 两仓新增 `LICENSE`（MIT，Copyright (c) 2026 Chikaho），README 徽章/段落与 `pom.xml` `<licenses>`、`package.json` `license` 同步；工作区根 README 许可证说明同步。Server 仅文档改动，不打 tag、不发语义 Release。
+- **README 截图**：重拍 `agent-graph.png`（智能体编排，LLM 属性面板打开）与 `sample-b.png`（校园出入口流程图，顶部节点完整），放回三份 README；`approval-detail.png` 依赖 W-c，暂缓。
+- **验证**：本地 typecheck / eslint / vitest **2054 passed / 3 skipped** / 生产构建通过；Web develop run `42755335137`、main run `42755323841` success（安装步骤因 npmmirror 故障临时改用官方源，`--frozen-lockfile` 不变，镜像恢复后还原）；Server develop run `42749703133`、main run `42749714010` success。
+- **发布事实**：Web tag `0.3.7`=`a6781c8`（同版本重发：首版 `97bfa14` 含属性面板回归，Owner 2026-11-10 批准同版本覆盖），Release `439939910`，`sw-web-dist-0.3.7.zip` **6,198,405 B** sha256 `1bb0d03c…`，Latest=0.3.7；UAT 部署入口 `assets/index-jYV2b5yF.js`，根 200。Server main=`9a76314f`（仅文档）。
+- **回执**：`product/web-037-patch/receipts/execution-037-01.md`（实施与证据）、`execution-037-02.md`（合并发布与发布后同步）。
+
 ## 0.4.0（2026-11-09 Server 发布并部署 UAT；多数据库兼容，P66 第 52 个正式功能）
 
 - **背景**：P66 多数据库兼容（XL）。迁移脚本与全部 SQL 种子适配 H2、PostgreSQL、MySQL 5.7/8.0、MariaDB 10.6、Oracle 21c XE、SQL Server 2019+、openGauss 5.0；DM8、KingbaseES V8 由 Owner 实库验证。

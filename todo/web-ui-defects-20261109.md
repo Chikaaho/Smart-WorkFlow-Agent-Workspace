@@ -3,6 +3,7 @@
 来源：P66 发布后截图审查 `product/multi-database-compat/receipts/planning-review-final-03.md` §4。
 Owner 2026-11-09 裁决：P66 先结束；这几项留到下一个 Web 补丁再修。
 **2026-11-10 已排期**：Web 0.3.7 补丁，方向 `product/web-037-patch/ready/direction-web-037-patch.md`。
+**2026-11-10 结果**：W-a、W-b、W-d 已在 0.3.7 修复并在 UAT 实测（回执 `execution-037-01.md`/`execution-037-02.md`）。**W-c 未完成**：任务详情接口历史缺 `opinionFields`（`BpmTodoController` 未接 `resolveOpinionFields`），DTO 无 `assigneeDept`，必须改 Server；是否发 Server 0.4.1 待 Owner 裁决。README 补图：`agent-graph.png`、`sample-b.png` 完成，`approval-detail.png` 依赖 W-c 修复后重拍。
 
 | 编号 | 缺陷 | 位置/线索 | 影响 |
 |---|---|---|---|
