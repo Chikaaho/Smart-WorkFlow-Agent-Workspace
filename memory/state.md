@@ -1,10 +1,12 @@
 # 当前状态摘要
 
-2026-11-10｜Executor（Web 0.3.7 发布并部署）｜活动任务 Web 0.3.7 补丁待 Planner 验收；P66 **COMPLETED**（第 52 功能）；Z4 置顶到点插入。
+2026-11-10｜Planner（验收 0.3.7）｜Web 0.3.7 部分通过并归档；活动任务 Server 0.4.1 + Web 0.3.8 READY；P66 **COMPLETED**（第 52 功能）；Z4 置顶。
 
 ## 当前任务
 
-**Web 0.3.7 补丁（L，已发布并部署，待 Planner 验收）**：Owner 2026-11-10 确认版本；W-a/W-b/W-d 已修复并在 UAT 实测，W-c 停在需 Server 改动（待 Owner 裁决 0.4.1）；两仓 MIT 许可证完成；README 补 `agent-graph.png` 与新版 `sample-b.png`。Web tag `0.3.7`=`a6781c8`（Release `439939910`，`sw-web-dist-0.3.7.zip` 6,198,405 B sha256 `1bb0d03c…`，同版本重发经 Owner 批准），UAT 入口 `assets/index-jYV2b5yF.js`；Server main=`9a76314f` 仅文档。方向 `product/web-037-patch/ready/direction-web-037-patch.md`，回执 `receipts/execution-037-01.md`、`execution-037-02.md`，七阶段 5/1/1（验收与同步待 Planner；结束未开始）。
+**Server 0.4.1 + Web 0.3.8（L，READY）**：Owner 2026-11-10 定、版本已确认；W-c 会签意见/部门、W-a2 连线与缩放、W-b2 原场景补测、W-e 列表时间、三张 README 图；先验收后合并。方向 `product/approval-record-patch/ready/direction-server-041-web-038.md`。
+
+Web 0.3.7 已发布（tag `0.3.7`=`a6781c8`，Release `439939910`，入口 `index-jYV2b5yF.js`；tag 移动与 CI 源覆盖经 Owner 确认），验收部分通过并归档：`product/web-037-patch/receipts/planning-review-037-01.md`；两仓 MIT 已加。
 
 P66 多数据库兼容（XL）**COMPLETED**（`product/multi-database-compat/receipts/planning-final-review-p66-completed.md`，方向归 `passed/`），以 **Server 0.4.0** 发布并部署 UAT。审查链 final-02—11：Z1 七图重拍、README 按 Owner 方案 A 下掉 agent-graph/approval-detail（剩 6 张）；Z2 回滚必须恢复 pre040 dump；Z3 develop=main=`a4f6c278`；W-a—W-d 留下个 Web 补丁（`todo/web-ui-defects-20261109.md`），测试流程不隐藏。已合入分支按规则删除，两仓只剩 main/develop/未完成分支，tag 未动。Z6—Z9 已完成（`execution-final-05.md` §6/§7/§9）；Z4 见需求池置顶。
 
