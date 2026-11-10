@@ -3,7 +3,7 @@
 **企业智能流程与低代码 AI Agent 平台**
 
 ![Version](https://img.shields.io/badge/version-0.4.0-2563EB)
-![License](https://img.shields.io/badge/license-internal%20demo-6B7280)
+![License](https://img.shields.io/badge/license-MIT-2563EB)
 ![Backend](https://img.shields.io/badge/backend-Java%2021%20%7C%20Spring%20Boot%203.4-6DB33F)
 ![Frontend](https://img.shields.io/badge/frontend-Vue%203%20%7C%20Vite-42B883)
 ![Databases](https://img.shields.io/badge/databases-9-0EA5E9)
@@ -164,6 +164,6 @@ git clone git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-Web.git Smart-WorkFlow-aP
 
 ## 许可证与致谢
 
-本项目当前未附带开源许可证；对外使用、分发或再发布前请先联系作者。
+前后端两个代码仓库均以 MIT License 开源（[server](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server/blob/main/LICENSE)、[Web](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web/blob/main/LICENSE)），可自由使用、修改和分发。
 
 基于 Java 21 / Spring Boot、Vue 3 / Vite、Flowable、MyBatis-Plus、LangChain4j、Element Plus 等开源组件构建；数据库驱动与镜像遵循各自许可证。感谢所有上游项目与贡献者。
