@@ -4,6 +4,10 @@
 
 ## 当前任务
 
+**1.0.0 阶段 3 证据两批已交**：`product/v1.0.0-release/receipts/execution-100-01.md` + `-01-batch2.md`；隔离环境（18093/5275/克隆库 34 行）保持运行供复核；缺口见 batch2 G 节。等 Planner 验收 → 阶段 4 合并 → 5 发版 → 6 部署同步。
+
+## 历史任务（阶段 2，已完成）
+
 **1.0.0 发布列车（阶段 2 完成）**：方向 `product/v1.0.0-release/ready/direction-v1.0.0.md`；回执第一批 `product/v1.0.0-release/receipts/execution-100-01.md`。
 
 - **代码**：Server feature/1.0.0 `2baf48ad`（版本+V1.0.0 9 方言+F3/F1-4/F1/F4+惰性修复）、`14057da5`（README）、`f1bf5d8b`（功能清单）；Web feature/1.0.0 `e553753`；工作区 `1075df70`（version.json 1.0.0 IN_DEVELOPMENT/功能数 55、根 README、production-ops、指针）。
