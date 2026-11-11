@@ -1,10 +1,10 @@
 # 当前状态摘要
 
-2026-11-12｜规划｜1.1.0 立项（XL 暂定），阶段 1 评估中。1.0.0 已 COMPLETED（7/0/0，功能 55），隔离环境已清理。
+2026-11-12｜规划｜1.1.0 评估通过（`planning-review-110-01.md`），阶段 2 实施，七阶段 1/1/5。1.0.0 已 COMPLETED（功能 55）。
 
 ## 当前任务
 
-1.1.0：G1 Graph 设计器重做（参考流程画布与 Dify）、G2 P67 Graph 执行器、G3 人工/子图节点、G4 小尾巴（Web 观察三项 + `JavaSubprocessSandboxTest` 偶发）。执行方做评估 `search_task/v110-graph-designer-train-assessment.md` → 回执 `search_fallback/` 同名；范围与版本号待 Owner 确认。未排期：P68。
+1.1.0（XL）方向 `product/v1.1.0-graph-designer/ready/direction-v1.1.0.md`：G1 设计器重做（Vue Flow + 扩展适配层，含试运行逐节点可视化与单节点运行）、G3 人工/子图节点（`V1.1.0` 迁移 9 库）、G4 小尾巴。Owner 裁决：G2（P67）拆出，语义已定，写在 `todo/p67-graph-as-executor.md`；人工待办只在 Graph 运行页。执行方下一份回执 `execution-110-01.md`，建议首批 G1-1/2/3/6 界面。隔离实例不得连本机现有库，Vite 须 `--strictPort`。未排期：P67、P68。
 
 ## 1.0.0 摘要（已结束）
 

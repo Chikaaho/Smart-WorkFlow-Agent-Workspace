@@ -1,11 +1,11 @@
 # 交接
 
-2026-11-12｜规划｜1.1.0 立项，阶段 1 评估。1.0.0 COMPLETED（`planning-review-100-05.md`），本机隔离环境已清理（18093/5275 停、`smart_workflow_100` 已删、六库容器已移除；`postgres`/`redis`/`mosquitto-024` 保留）。
+2026-11-12｜规划｜1.1.0 评估通过（`planning-review-110-01.md`），进入阶段 2。1.0.0 COMPLETED，本机隔离环境已清理（`postgres`/`redis`/`mosquitto-024` 保留）。
 
 ## 当前
 
-- **执行方**：做只读评估 `search_task/v110-graph-designer-train-assessment.md`（Q1 设计器现状与 Dify 对照、Q2 P67、Q3 人工/子图节点、Q4 小尾巴、Q5 版本与等级），回执 `search_fallback/v110-graph-designer-train-assessment.md`（<5KB，细节放 `-appendix.md`），截图本地不入 Git。
-- **规划**：读回执后写正式方向 `product/v1.1.0-graph-designer/ready/`；范围 G1—G4 与版本号 1.1.0 待 Owner 确认。
+- **执行方**：按 `product/v1.1.0-graph-designer/ready/direction-v1.1.0.md` 实施 G1/G3/G4，两仓 `feature/1.1.0`。先验收后合并，回执 `execution-110-01.md`（可分批，首批 G1-1/2/3/6 界面），截图放 `receipts/evidence/`，并把 `.runtime-v110/` 三张评估截图复制过去作改造前对照。
+- **规划**：验收各批回执；G2（P67）已拆出，语义写在 `todo/p67-graph-as-executor.md`。
 
 ## 线上基线
 
