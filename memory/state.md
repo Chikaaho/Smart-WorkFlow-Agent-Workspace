@@ -1,10 +1,10 @@
 # 当前状态摘要
 
-2026-11-11｜执行｜1.0.0 阶段 3 打印返修 S1—S5 完成，待 Planner 复核。
+2026-11-11｜规划｜1.0.0 第三轮验收未通过，下发 U1—U3。
 
 ## 当前任务
 
-**1.0.0 阶段 3（XL）**：按 `planning-review-100-02.md` §3 完成 S1—S5，回执 `execution-100-03.md`。合并门禁条件已满足：包含 `CommandQueueIntegrationTest` 的 Server 全量一次全绿。
+**1.0.0 阶段 3（XL）**：`planning-review-100-03.md`——S1—S5 通过（S1 版本定位对）；新返修 U1 浏览器打印时间早 8 小时、U2 日期格式四处按字段类型统一、U3 页面明细表只读多选显示实际选中。交 `execution-100-04.md`；阶段 4 用 GitHub CI run 号作最终门禁证据。
 
 - S1 浏览器打印历史版本：新增 `GET /workflow/print/context`，与 PDF 共用 `FormPrintFacade.recordDetail(..., instance.createTime)` 版本定位；`PrintSheet` 按服务端定义渲染字段/明细表/`printTemplate`，并把 `processInstanceId` 纳入 watch（修复异步补齐后不重载的根因）。
 - S2 数值：PDF `numberText` 支持字段 `decimals`/`precision`，未配置去尾随 0；Excel 写数值单元格并设 `0.############` 或配置小数位；Web 契约/防腐层透传小数位。页面/打印/PDF/Excel 同一行 `1`、`1000` 一致。
