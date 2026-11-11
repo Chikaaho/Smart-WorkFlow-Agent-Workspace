@@ -6,7 +6,9 @@
 |---|---|---|---|
 | P66 Z4 **已完成（2026-11-10 17:17）** | 2026-11-10 17:16 以后 | 只读：UAT `server.log` 128K（daily 轮转 00:00:17，`server.log-20261110` 346M）、`df -h /` 66%（余 6.3G）、logrotate 配置实际生效；`version.json` 状态与 `knowledge/features/multi-database-compat.md` 已记 COMPLETED。见 `execution-final-05.md` §3 | **Planner 已回读通过**（`planning-review-041-02.md` §2）。观察：日志约 346M/天，`maxsize` 因每天只轮转一次不起作用，压缩后约 18M/天，暂不处理，见 P69 |
 
-## 进行中：1.0.0 版本（XL，READY，七阶段 1/0/6）
+## 进行中：1.0.0 版本（XL，阶段 3 返修，七阶段 1/2/4）
+
+**2026-11-11 第一轮验收部分通过**（`product/v1.0.0-release/receipts/planning-review-100-01.md`）：F1 通过；F2-6 明细表导出 Excel 未实现；日志时间 ISO、操作日志记查询/动作 POST/模块代码/对象路径需返修；F2、F3 清理、F4、多库证据待补。返修与补证合交 `execution-100-02.md`。
 
 Owner 2026-11-10 定：P27 人员批量导入导出、P33 打印模板、P40 日志查询，加小尾巴（IoT 实例发起人显示 `0`、P69 日志量、示例 b 图注改「流程结构总览」、本机证据清理）一起做，做完两仓升 **1.0.0**（版本已确认）。阶段 1 评估：探索任务 `search_task/v100-release-train-assessment.md`，回执 `search_fallback/v100-release-train-assessment.md`；评估完成；Owner 定：打印浏览器+服务端 PDF 两条都做（2026-11-11 补：明细表组件导出 Excel，F2-6），导入统一初始密码+首次登录强制改密，导入整批不入库、只新增，日志登录+管理操作+异常保留 90 天。方向 `product/v1.0.0-release/ready/direction-v1.0.0.md`（先验收后合并，功能 53—55）。P69 关闭：0.4.0 已改 INFO。
 

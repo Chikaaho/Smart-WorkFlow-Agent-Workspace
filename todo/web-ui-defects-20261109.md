@@ -30,4 +30,5 @@ Owner 2026-11-09 裁决：P66 先结束；这几项留到下一个 Web 补丁再
 
 ## 观察（2026-11-10，未排期）
 
+- 「实例监控干预」页：发起时间 ISO 带微秒、状态英文（APPROVED/WITHDRAWN）、流程定义显示内部 key（`product/v1.0.0-release/receipts/planning-review-100-01.md` §5，1.0.0 可顺带）。
 - 流程监控列表：IoT 触发的实例「发起人」显示为 `0`（`product/approval-record-patch/receipts/planning-review-041-01.md` §5）。
