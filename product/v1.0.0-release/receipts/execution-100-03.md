@@ -63,4 +63,4 @@
 
 - Server `feature/1.0.0`：`3108a858`（打印上下文版本定位 + 数值小数位 + 日志对象 UUID；已推送，origin 同 hash）。
 - Web `feature/1.0.0`：`8f17c9a`（PrintSheet 纯文本/版本重载 + 打印上下文 API + 数值小数位透传 + 取证脚本；已推送，origin 同 hash）。
-- 工作区：`WORKSPACE_COMMIT_PLACEHOLDER`（回执与子仓指针）
+- 工作区 `develop-sw`：本回执 + memory/state、memory/handoff 同步 + 两仓子指针（已推送；具体提交以 Git 回读为准）。
