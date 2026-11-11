@@ -5,12 +5,7 @@
 ## 当前任务
 
 **1.0.0 阶段 3（XL）**：`planning-review-100-03.md`——S1—S5 通过（S1 版本定位对）；新返修 U1 浏览器打印时间早 8 小时、U2 日期格式四处按字段类型统一、U3 页面明细表只读多选显示实际选中。交 `execution-100-04.md`；阶段 4 用 GitHub CI run 号作最终门禁证据。
-
-- S1 浏览器打印历史版本：新增 `GET /workflow/print/context`，与 PDF 共用 `FormPrintFacade.recordDetail(..., instance.createTime)` 版本定位；`PrintSheet` 按服务端定义渲染字段/明细表/`printTemplate`，并把 `processInstanceId` 纳入 watch（修复异步补齐后不重载的根因）。
-- S2 数值：PDF `numberText` 支持字段 `decimals`/`precision`，未配置去尾随 0；Excel 写数值单元格并设 `0.############` 或配置小数位；Web 契约/防腐层透传小数位。页面/打印/PDF/Excel 同一行 `1`、`1000` 一致。
-- S3 浏览器打印纯文本：人员/部门名称、选项标签、多选顿号、日期按字段格式；版面内 input/select/checkbox 数量 0。
-- S4 任务详情 PDF 用当前 jar 重生成（2 页，15:15:05），逐页 PNG 重拍；所有 PDF/截图晚于最后服务端改动。
-- S5 审计对象：`PATH_ID` 支持 UUID/数字 id，表单定义修改对象为「表单定义 {uuid}」；新增测试覆盖 UUID 与数字 id 回退。
+S1—S5 实现细节见 `execution-100-03.md` §A。
 
 ## 本轮代码
 
