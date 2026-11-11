@@ -32,4 +32,5 @@ Owner 2026-11-09 裁决：P66 先结束；这几项留到下一个 Web 补丁再
 
 - 「实例监控干预」页：发起时间 ISO 带微秒、状态英文（APPROVED/WITHDRAWN）、流程定义显示内部 key（`product/v1.0.0-release/receipts/planning-review-100-01.md` §5，1.0.0 可顺带）。
 - 任务详情页：底部操作栏（「更多」按钮）浮在页面中间，遮住明细表内容（`product/v1.0.0-release/receipts/evidence/u3_task_detail_table.png`，`planning-review-100-04.md` §4）。
-- 流程监控列表：IoT 触发的实例「发起人」显示为 `0`（`product/approval-record-patch/receipts/planning-review-041-01.md` §5）。
+- 流程监控列表：发起人筛选是数字输入框，最小值 1，无法筛出 IoT 实例（发起人 id 0），也不能按姓名选（`execution-100-05.md` §9-4）。
+- ~~流程监控列表：IoT 触发的实例「发起人」显示为 `0`~~ 已在 1.0.0 F4 修复（显示「系统（IoT）」）（`product/approval-record-patch/receipts/planning-review-041-01.md` §5）。

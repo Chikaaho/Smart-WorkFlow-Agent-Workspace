@@ -6,7 +6,9 @@
 |---|---|---|---|
 | P66 Z4 **已完成（2026-11-10 17:17）** | 2026-11-10 17:16 以后 | 只读：UAT `server.log` 128K（daily 轮转 00:00:17，`server.log-20261110` 346M）、`df -h /` 66%（余 6.3G）、logrotate 配置实际生效；`version.json` 状态与 `knowledge/features/multi-database-compat.md` 已记 COMPLETED。见 `execution-final-05.md` §3 | **Planner 已回读通过**（`planning-review-041-02.md` §2）。观察：日志约 346M/天，`maxsize` 因每天只轮转一次不起作用，压缩后约 18M/天，暂不处理，见 P69 |
 
-## 进行中：1.0.0 版本（XL，阶段 4 合并，七阶段 3/1/3）
+## 已结束：1.0.0 版本（XL，COMPLETED 2026-11-12，第 53—55 个正式功能，七阶段 7/0/0）
+
+**2026-11-12 阶段 7 终审通过**（`planning-review-100-05.md`）：两仓 tag `1.0.0` + Release（Latest），演示环境 Server/Web 1.0.0、Flyway 34 行，F1—F4 复测通过，P27/P33/P40 核销，方向归档 `passed/`。遗留：`JavaSubprocessSandboxTest` CI 偶发（main 首跑失败、重跑通过）；隔离环境（18093/5275、`smart_workflow_100`、六库容器）由执行方清理并回报。
 
 **2026-11-11 第四轮验收通过，阶段 3 结束**（`planning-review-100-04.md`）：U1—U3 通过。执行方进入阶段 4—6：合并后 CI run 号（p0 用例若失败先停报）、两仓 tag `1.0.0` + Release（发布说明写入 DM8/Kingbase 静态、MySQL 5.7 会话参数、子字段日期格式不可配三项限制）、演示环境部署复测，回执 `execution-100-05.md`。
 

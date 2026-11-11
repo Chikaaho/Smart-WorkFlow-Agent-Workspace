@@ -1,10 +1,10 @@
 # 当前状态摘要
 
-2026-11-11｜执行｜1.0.0 阶段 4—6 完成（回执 `execution-100-05.md`），待 Planner 阶段 7 复核。
+2026-11-12｜规划｜1.0.0 **COMPLETED**（`planning-review-100-05.md`，七阶段 7/0/0，功能 55），方向归档 `passed/`。
 
 ## 当前任务
 
-**1.0.0 阶段 7（待复核）**：演示环境证据与同步回读。隔离环境（18093/5275）待停（见 handoff 待办）。
+无进行中列车。执行方收尾：停 18093/5275，删本机 `smart_workflow_100` 与 `swmdb-*` 六容器，memory 记一行确认。遗留：`JavaSubprocessSandboxTest` CI 偶发；Web 观察见 `todo/web-ui-defects-20261109.md`。未排期：P67、P68。
 
 ## 阶段 4 合并与 CI
 
