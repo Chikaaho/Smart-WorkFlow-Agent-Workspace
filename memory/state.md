@@ -1,31 +1,34 @@
 # 当前状态摘要
 
-2026-11-11｜规划｜1.0.0 阶段 3 验收通过（`planning-review-100-04.md`），进入阶段 4 合并。
+2026-11-11｜执行｜1.0.0 阶段 4—6 完成（回执 `execution-100-05.md`），待 Planner 阶段 7 复核。
 
 ## 当前任务
 
-**1.0.0 阶段 4—6（执行方）**：两仓 feature → develop → main，CI run 号（p0 用例在 CI 失败先停报 Planner）；tag `1.0.0` + Release（发布说明含三项已接受限制）；演示环境备份→部署→Flyway +1→F1—F4 复测→同步 version/CHANGELOG/knowledge（55）/需求池，回执 `execution-100-05.md`。之后停 18093/5275，克隆库与多库容器留到阶段 7。
+**1.0.0 阶段 7（待复核）**：演示环境证据与同步回读。隔离环境（18093/5275）待停（见 handoff 待办）。
 
-## 本轮代码
+## 阶段 4 合并与 CI
 
-- Server `feature/1.0.0` `9fe3f11c`：`FormPrintPdfService` FieldDef.format、`FormDetailTableExportService` datetimeFormat；两处测试更新/新增。
-- Web `feature/1.0.0` `3c5b5ec`：`PrintSheet` 时区口径 + `PrintSheet.spec.ts`（01:30Z→09:30）、`TableControl` 单元格归一 + spec、`scripts/sw100-u1-u3.mjs` 取证脚本。
-- 工作区：`execution-100-04.md` + memory 同步 + 子仓指针。
+- Server：feature `9fe3f11c` → develop `708d3a36` → main `aa7c86e5`；CI develop `43035313977` ✓、main `43035353166` ✓（attempt 2；attempt 1 固有 flake `JavaSubprocessSandboxTest` NPE，fail-fast 下 p0 未及执行；attempt 2 与 develop run 全量 **2,492/0/0/45**、`CommandQueueIntegrationTest`（含 p0）7/7）。
+- Web：feature `838b84d`（TZ 修复）→ develop `b4b2d25` → main `a85aa8e`；CI feature `43036986258` ✓、develop `43037004490` ✓、main `43037042393` ✓（2060 passed/3 skipped）。首合并 `43035549222`/`43035516843` 因 PrintSheet.spec TZ stub 只设一次被 afterEach 撤销、UTC runner 上跨日断言失败——修复后重走链。
+- 两仓 feature/1.0.0 merge-base 验证后本地+远端删除。
 
-## 门禁
+## 阶段 5 发版
 
-- Server 受影响模块：sw-biz-form-biz **280/0/0/0**、sw-bpm-process **528/0/0/0 BUILD SUCCESS**（含 U2 新用例）。
-- Web：typecheck 0、lint 0 错（55 条既有取证脚本警告）、test **2060 passed/3 skipped**、build 通过。
-- 未重跑多库、未重跑 Server 全量（评审明确不需要）。
+- Server tag `1.0.0`=`aa7c86e5`（tag 对象 `3de61eb7`）、Release `441827517`、`bootstrap-1.0.0.jar` 242,697,784 B sha256 `a8dc16b6…`。
+- Web tag `1.0.0`=`a85aa8e2`（tag `1eb974f1`）、Release `441848348`、`sw-web-dist-1.0.0.zip` 6,221,796 B sha256 `cc94fa30…`。
+- 两仓 Latest=1.0.0；发布说明含三项已接受限制；既有 tag/Release 未动。
 
-## 环境与边界
+## 阶段 6 部署与复测
 
-- 克隆库 `smart_workflow_100` 不变；jar 19:35 重建，Server 18093 于 19:37:23 重启（同参数 + 本机 `SW_CIPHER_KEY`）；Web 5275 正常。证据 19:41—19:42。
-- 本机丢失上轮 admin 口令环境变量，已把克隆库 admin 口令重置为种子迁移 R__0.1.10 口径（幂等；明文不入回执/Git）。
-- 未触碰用户 8080/5173、`smart_workflow_f1v4b`、`smart_workflow_030`；未删除/重建演示环境，未清数据；未强推/改历史/移动 tag。
+- 备份：`smart_workflow_20261111_2318_pre100.dump.gz`(771,644 B)、`bootstrap.jar.bak-pre100`、`server.env.bak-pre100`、`web.bak-20261111_2318_100pre`；余 6.4G。
+- Server 1.0.0：health UP、`build.version=1.0.0`、Flyway 33→**34 行**（rank 39 audit log and must change password）、日志 0 ERROR、PID 3417483；jar sha256 与 Release 一致。
+- Web 1.0.0：入口 `assets/index-BCCrQSgQ.js`、根/入口/健康/登录 200。
+- 复测：F1 导入 3/3（uat100_a/b/c@租户9001）+ 错误批 0 落库 + 首登拦截/403/改密/复登/无权限 403；F2 `uat100_f2_demo` 打印预览+PDF(1 页 14 行)+Excel(A1:D15)；F3 三类日志（LOGIN 32 含 FAIL 11 带 IP）无密码明文；F4 IoT 行「系统（IoT）」+详情 + README 回读 1.0.0。
+- 测试数据停用：账号 status=1（登录 `system.account_disabled`）、角色/岗位停用；表单/实例留置。
+- 同步：version.json PUBLISHED、CHANGELOG 1.0.0 条目、knowledge current-status + 索引三行核销（24→27）、需求池 P27/P33/P40 核销。
 
-## 教训
+## 边界与教训
 
-- 记录 API 的 `timestamp` 序列化为 UTC ISO 是四渲染路径分歧的根源；前端任何「字符串直显」的路径都要先过 `normalizeFormDateValue`。
-- 明细表单元格与主表字段必须走同一 `normalizeFormFieldValue`，控件数组契约不要在两处各自解释。
-- 上轮设置的一次性环境变量（口令类）应记入本机可持久位置或当场写回受保护文件，否则跨会话即丢失。
+- 未强推/未改历史/未动其他 tag 与 Release；演示环境未删未清。
+- curl `--data-binary @file` 文件缺失时会发**空请求体**（GitHub 422 size>=1）；后台任务 cwd 与会话 cwd 不一致，长命令一律用绝对路径。
+- UAT 健康路径带 `/api` 前缀（`/api/actuator/health`）；超管导入必须显式 `tenantId`；el-input-number `:min=1` 使监控页发起人筛选拒绝 0（API 端 initiatorId=0 可用）。

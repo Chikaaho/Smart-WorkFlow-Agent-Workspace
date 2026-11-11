@@ -1,5 +1,17 @@
 # 当前状态（current-status）
 
+**当前状态（2026-11-11，1.0.0 已发布并部署演示环境，P27/P33/P40 核销（第 53—55 个功能），待 Planner 阶段 7 复核）**
+
+1.0.0（Server + Web 同版）发布并部署演示环境：P27 人员批量导入导出、P33 打印模板/浏览器打印/服务端 PDF/明细表导出、P40 日志查询，加 F1-4 强制改密、F4 IoT 发起人显示；阶段 3 验收四轮通过（U1—U3 打印返修完成）。
+
+- **发布事实**：Server tag `1.0.0`=`aa7c86e5`（annotated tag `3de61eb7`，Release `441827517`，`bootstrap-1.0.0.jar` 242,697,784 B sha256 `a8dc16b6…`）；Web tag `1.0.0`=`a85aa8e2`（tag `1eb974f1`，Release `441848348`，`sw-web-dist-1.0.0.zip` 6,221,796 B sha256 `cc94fa30…`）。两仓 Latest 均为 1.0.0；发布说明含三项已接受限制（DM8/KingbaseES 仅静态核对、MySQL 5.7 需 `explicit_defaults_for_timestamp=ON`、明细表子字段日期格式设计器暂不可配置）。
+- **合并与 CI**：两仓 `feature/1.0.0` → develop → main 普通合入，CI 全 success 后删除分支。Server develop `43035313977`、main `43035353166`（attempt 2；attempt 1 因固有 flake `JavaSubprocessSandboxTest` 失败且 fail-fast 使 `p0PrioritizedWhileNormalBacklogged` 未及执行，同树 develop run 与 attempt 2 该类 7/7 通过，全量 **2,492/0/0/45**）；Web feature `43036986258`、develop `43037004490`、main `43037042393`（首合并两跑因 PrintSheet.spec TZ stub 缺陷失败，`838b84d` 修复后重走合并链，**2060 passed/3 skipped**）。feature 分支 merge-base 验证后本地与远端均已删除。
+- **演示环境（UAT 8.166.112.85）**：部署前备份 `smart_workflow_20261111_2318_pre100.dump.gz`（771,644 B）、`bootstrap.jar.bak-pre100`（0.4.1）、`server.env.bak-pre100`、`web.bak-20261111_2318_100pre`；磁盘余 6.4G（≥3G）。先 Server 后 Web：`build.version=1.0.0`、health UP、Flyway **33→34 行**（新增 rank 39 `audit log and must change password` success）、启动日志 0 ERROR、在跑 jar sha256 与 Release 资产一致；Web 入口 `assets/index-BCCrQSgQ.js`，根/入口/健康/登录 200，`nginx -t` 通过。
+- **F1—F4 复测（各一组；测试数据复测后停用不删）**：F1 导入 3/3（账号 uat100_a/b/c，租户 9001，部门 demo-a-*+岗位 uat100_post+角色 uat100_role）、含错误行批 successCount=0 整批 0 行落库、首登 `must_change_password=true` 拦截、业务接口 403 `system.must_change_password`、改密后复登 false、无权限 403 `common.forbidden`；登录失败审计含 IP（`uat100-f3-audit-fail.json`）。F2 测试表单 `uat100_f2_demo`（14 行明细+4 行验收）：浏览器打印预览/下载 PDF（1 页含全部行、页脚版本标注）/明细表导出 Excel（A1:D15 表头+14 行，日期列 `2026-11-12` 与页面一致）。F3 日志查询页三类（LOGIN 32 含失败 11 条带 IP/原因、OPERATION 13、EXCEPTION 0——UAT 无未处理异常属环境事实），页面无密码明文。F4 监控列表 IoT 行发起人显示「系统（IoT）」（`0de2462d…` 已完成）、详情同；README 三仓回读 1.0.0 + 图注「流程结构总览」。
+- **测试数据停用**：uat100_a/b/c `status=1`（登录实测 `system.account_disabled` 拒绝）、uat100_role/uat100_post 停用；测试表单/流程/实例（uat100_f2_demo 与两条 RUNNING 实例）留置不删。
+- **知识同步**：`version.json` → PUBLISHED；`CHANGELOG.md` 1.0.0 条目；功能索引 M01-F02-05（P27）/M03-F06-01（P33）/M10-F02-01（P40）→ ✅ 已核销（第 53—55 个），P 池 24→27。
+- **回执**：`product/v1.0.0-release/receipts/execution-100-04.md`（阶段 3 返修 U1—U3）、`execution-100-05.md`（阶段 4—6）。
+
 **当前状态（2026-11-10，Server 0.4.1 + Web 0.3.8 已发布并部署 UAT，待 Planner 阶段 7 复核）**
 
 Server **0.4.1** 与 Web **0.3.8** 发布并部署 UAT，完成 W-c 会签意见摘要/部门、W-a2 画布连线与可读性、W-b2 长表单复测、W-e 列表发起时间；补丁不登记新功能。

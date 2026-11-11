@@ -1,5 +1,20 @@
 # CH-aPaaS 发布说明 / Release Notes
 
+## 1.0.0（2026-11-11 Server 与 Web 同步发布并部署演示环境；P27/P33/P40 三个正式功能，第 53—55 个）
+
+- **背景**：Owner 2026-11-10 定版 1.0.0（P27 人员批量导入导出、P33 打印模板、P40 日志查询，加 F1-4 强制改密、F2-6 明细表导出、F4 IoT 发起人、P69 关闭尾巴）。方向 `product/v1.0.0-release/ready/direction-v1.0.0.md`；先验收后合并，阶段 3 验收四轮通过（U1—U3 返修完成）。
+- **F1（Server+Web）**：`UserImportExportService` 模板签名校验、500 行/5MB、整批回滚 0 行落库、只新增；导入统一初始密码 + `must_change_password=1`，首登被 `MustChangePasswordFilter` 拦到改密（403 + `system.must_change_password`），改密 ≥8 位、成功复位。
+- **F2（Server+Web）**：定义版本化 `printTemplate`（设计器配置弹窗）；三处入口浏览器打印（A4、表头重复、行不截断）+ 服务端 PDF（PDFBox、嵌入字体子集、明细表分页、审批意见+部门、页脚版本标注）；明细表只读导出 Excel；日期按字段配置四处统一（datetime→`yyyy-MM-dd HH:mm`、缺省→`yyyy-MM-dd`）；打印与页面同一时区还原口径。
+- **F3（Server+Web）**：`sys_audit_log` 三类（登录含失败 IP/UA、管理操作、未处理异常），`AuditLogCleanupJob` 每日 03:30 保留 90 天；日志查询页（菜单 9115，超管可按租户筛选）。
+- **F4**：IoT 实例发起人显示「系统（IoT）」；README 图注「流程结构总览」+ 版本 1.0.0。
+- **迁移**：`V1.0.0__audit_log_and_must_change_password.sql` 9 方言同名（sys_audit_log、must_change_password、菜单 9115/430/431）；Flyway 全链 30→31；SQL Server 首个真实增量。
+- **返修（阶段 3 验收 U1—U3）**：浏览器打印时区与页面/PDF 一致；日期格式四处统一；明细表只读多选按实际选中回显。
+- **门禁**：Server 全量 **2,492 / 0 / 0 / 45 skipped**（CI 与本地一致；较 0.4.0 基线 +10）；Web **typecheck 0 / lint 0 / 2060 passed + 3 skipped / build 通过**。CI run 号见「发布事实」。
+- **发布事实**：Server tag `1.0.0`=`aa7c86e5`（Release `441827517`，`bootstrap-1.0.0.jar` 242,697,784 B sha256 `a8dc16b6…`）；Web tag `1.0.0`=`a85aa8e2`（Release `441848348`，`sw-web-dist-1.0.0.zip` 6,221,796 B sha256 `cc94fa30…`）。两仓 Latest 均为 1.0.0，既有 tag/Release 未动。发布说明含三项已接受限制：DM8/KingbaseES 仅静态核对；MySQL 5.7 需 `explicit_defaults_for_timestamp=ON`；明细表子字段日期格式设计器暂不可配置。
+- **CI**：Server develop `43035313977`、main `43035353166`（attempt 2；attempt 1 因固有 flake `JavaSubprocessSandboxTest` 失败，`p0PrioritizedWhileNormalBacklogged` 未及执行，重跑通过）；Web feature `43036986258`、develop `43037004490`、main `43037042393` success（首合并 `43035549222`/`43035516843` 因 PrintSheet.spec TZ stub 缺陷失败，`838b84d` 修复后重走合并链）。`CommandQueueIntegrationTest`（含 p0）7/7 通过。
+- **演示环境**：备份 `/data/backup/smart_workflow_20261111_2318_pre100.dump.gz(771,644 B)、bootstrap.jar.bak-pre100(0.4.1, fe6ad3ed…)、server.env.bak-pre100、web.bak-20261111_2318_100pre`；Server `build.version=1.0.0`、health UP（约 60s）、Flyway 34 行/max 1.0.0（+1）；Web 入口 `assets/index-BCCrQSgQ.js`，根/登录/健康 200。复测 F1—F4 各一组（测试账号 uat100_a/b/c 与测试表单 `uat100_f2_demo`，复测后停用不删）。
+- **回执**：`product/v1.0.0-release/receipts/execution-100-04.md`（阶段 3 返修）、`execution-100-05.md`（阶段 4—6）。
+
 ## 0.4.1 + 0.3.8（2026-11-10 Server 与 Web 发布；会签记录意见与部门、画布连线与列表时间）
 
 - **背景**：0.3.7 验收把 W-c（会签弹窗缺意见摘要/部门）、W-a2（画布连线与可读性）、W-b2（原场景补测）、W-e（列表发起时间）转入本方向；Owner 确认版本 Server **0.4.1**、Web **0.3.8**。
