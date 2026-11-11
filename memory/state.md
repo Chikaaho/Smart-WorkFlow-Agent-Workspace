@@ -1,10 +1,10 @@
 # 当前状态摘要
 
-2026-11-11｜执行｜1.0.0 第三轮返修 U1—U3 完成，交 `execution-100-04.md`。
+2026-11-11｜规划｜1.0.0 阶段 3 验收通过（`planning-review-100-04.md`），进入阶段 4 合并。
 
 ## 当前任务
 
-**1.0.0 阶段 3（XL）**：`planning-review-100-03.md`——S2/S4/S5 通过；返修 U1 浏览器打印时间早 8 小时（根因：`/form/data` 把 `timestamp` 序列化为 UTC ISO，PrintSheet 字面截取；修 `PrintSheet.formatDate` 走 `normalizeFormDateValue`，与页面同口径）、U2 PDF/Excel 日期按字段 `format`（datetime→`yyyy-MM-dd HH:mm`，缺省→`yyyy-MM-dd`）、U3 明细表只读多选按实际选中回显（`TableControl.cellValue` 过 `normalizeFormFieldValue`，1.0.0 前遗留）。交 `execution-100-04.md`。
+**1.0.0 阶段 4—6（执行方）**：两仓 feature → develop → main，CI run 号（p0 用例在 CI 失败先停报 Planner）；tag `1.0.0` + Release（发布说明含三项已接受限制）；演示环境备份→部署→Flyway +1→F1—F4 复测→同步 version/CHANGELOG/knowledge（55）/需求池，回执 `execution-100-05.md`。之后停 18093/5275，克隆库与多库容器留到阶段 7。
 
 ## 本轮代码
 
