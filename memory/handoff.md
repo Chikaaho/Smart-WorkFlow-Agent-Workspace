@@ -11,7 +11,7 @@
 
 ## 待办（下一回合确认）
 
-- 停本机隔离环境 18093（Java）与 5275（Node/Vite），精确 PID 停止、端口确认；阶段 7 已通过，`smart_workflow_100` 克隆库与 `swmdb-*` 多库容器一并清理。
+- **清理确认（2026-11-12）**：本机隔离环境已清理——18093/5275 端口无监听（进程上回合已按精确 PID 停止）；克隆库 `smart_workflow_100` 已在主 `postgres` 容器内 DROP（`smart_workflow`/`f1v4b`/`030` 等其余库回读完好）；6 个测试库容器 `swmdb-mysql57/mysql80/mariadb/oracle21/sqlserver/opengauss` 已 `docker rm`（含退出的 mariadb），仅存 `postgres`/`redis`/`mosquitto-024`（用户与演示资产，未触碰）。
 
 ## 保留与保护
 
