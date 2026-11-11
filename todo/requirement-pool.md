@@ -6,6 +6,19 @@
 |---|---|---|---|
 | P66 Z4 **已完成（2026-11-10 17:17）** | 2026-11-10 17:16 以后 | 只读：UAT `server.log` 128K（daily 轮转 00:00:17，`server.log-20261110` 346M）、`df -h /` 66%（余 6.3G）、logrotate 配置实际生效；`version.json` 状态与 `knowledge/features/multi-database-compat.md` 已记 COMPLETED。见 `execution-final-05.md` §3 | **Planner 已回读通过**（`planning-review-041-02.md` §2）。观察：日志约 346M/天，`maxsize` 因每天只轮转一次不起作用，压缩后约 18M/天，暂不处理，见 P69 |
 
+## 进行中：1.1.0 版本（XL，暂定，Owner 2026-11-12 立项，阶段 1 评估中）
+
+Owner 原话："下一步先优化一下graph的设计器，太丑了，参考一下现有流程画布和dify的设计理念，其他的你再加几个功能凑到xl一起做"。规划暂定范围（待 Owner 确认）：
+
+| ID | 内容 | 预估 | 来源 |
+|---|---|---|---|
+| G1 | Graph 设计器重做（节点卡片、节点面板、配置面板、变量引用、单节点调试与运行日志；与流程画布统一） | L | Owner 2026-11-12 |
+| G2 | P67 Graph 作为执行器（流程/表单入参→出参） | L | P67 |
+| G3 | Graph 人工节点、子图节点 | M | 0.2.2 延后候选 |
+| G4 | 小尾巴：任务详情操作栏遮挡、监控发起人筛选、实例监控干预页显示、`JavaSubprocessSandboxTest` 偶发 | S | `web-ui-defects-20261109.md`；`planning-review-100-05.md` §3 |
+
+评估任务：`search_task/v110-graph-designer-train-assessment.md`，回执 `search_fallback/v110-graph-designer-train-assessment.md`。七阶段 0/1/6。
+
 ## 已结束：1.0.0 版本（XL，COMPLETED 2026-11-12，第 53—55 个正式功能，七阶段 7/0/0）
 
 **2026-11-12 阶段 7 终审通过**（`planning-review-100-05.md`）：两仓 tag `1.0.0` + Release（Latest），演示环境 Server/Web 1.0.0、Flyway 34 行，F1—F4 复测通过，P27/P33/P40 核销，方向归档 `passed/`。遗留：`JavaSubprocessSandboxTest` CI 偶发（main 首跑失败、重跑通过）；隔离环境（18093/5275、`smart_workflow_100`、六库容器）由执行方清理并回报。
@@ -325,7 +338,7 @@ P60 I2 已于 2026-09-10 COMPLETED，已通过方向包含子表/关联、公式
 | P64 | MES高级流程编排与业务闭环 | Owner2026-10-08；XL；[需求索引](p64-mes-advanced-orchestration.md) | **COMPLETED（规划已确认，2026-10-13）**，批准范围已核销；正式功能48；三阶段完成3/进行中0/未开始0，业务与终态验收剩余0；终态最终复核02。 |
 | P65 | 表单自定义 JavaScript 事件与开放 API：加载完成、提交前后事件；主表/明细表数据与控件属性、流程/组织数据及辅助函数；与现有流程 JS 面板共用一套 UI | Owner 2026-10-18；[需求定义](p65-form-javascript-events-api.md) | ✅ **已核销**（2026-11-05；0.2.0 事件/API/监听器范围已交付） |
 | P69 | 演示环境 Server 日志量控制：约 346M/天，logrotate 改每小时执行或查清高频日志来源 | Planner 2026-11-10 Z4 观察；预估 S | **关闭**（2026-11-10：346M 为 0.4.0 前 DEBUG，`DataSourceUtils` 约 96%，0.4.0 已改 INFO；不改 logrotate） |
-| P67 | Graph 作为执行器：在流程/表单中配置调用，入参→出参供业务使用 | Owner 2026-11-10；预估 L；[需求定义](p67-graph-as-executor.md)；关联 P57/P65 | 未排期 |
+| P67 | Graph 作为执行器：在流程/表单中配置调用，入参→出参供业务使用 | Owner 2026-11-10；预估 L；[需求定义](p67-graph-as-executor.md)；关联 P57/P65 | 已排入 1.1.0（G2，2026-11-12 评估中） |
 | P68 | 外部开发的 Java 工具：模板下载、上传审核保存、类 MCP 入口供 Agent 调用、动态编译、沙箱或主 JVM 运行、结束销毁、快照与日志留 7 天 | Owner 2026-11-10；预估 XL（运行外部代码）；[需求定义](p68-external-java-tool-sandbox.md)；关联 P21 子进程执行器 | 未排期 |
 
 管理员P0治理插单（2026-09-15）：[连续执行与可见浏览器验收门禁](admin-machine-gate-continuous-visible-browser.md)已`COMPLETED（规划确认）`，本地提交`8e87899`，治理测试sh 70/70、PowerShell 49/49。该任务不并入P60业务计数；远程发布仍需Owner另行授权。

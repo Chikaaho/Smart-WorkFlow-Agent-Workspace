@@ -1,10 +1,12 @@
 # 当前状态摘要
 
-2026-11-12｜规划｜1.0.0 **COMPLETED**（`planning-review-100-05.md`，七阶段 7/0/0，功能 55），方向归档 `passed/`。
+2026-11-12｜规划｜1.1.0 立项（XL 暂定），阶段 1 评估中。1.0.0 已 COMPLETED（7/0/0，功能 55），隔离环境已清理。
 
 ## 当前任务
 
-无进行中列车。执行方收尾：停 18093/5275，删本机 `smart_workflow_100` 与 `swmdb-*` 六容器，memory 记一行确认。遗留：`JavaSubprocessSandboxTest` CI 偶发；Web 观察见 `todo/web-ui-defects-20261109.md`。未排期：P67、P68。
+1.1.0：G1 Graph 设计器重做（参考流程画布与 Dify）、G2 P67 Graph 执行器、G3 人工/子图节点、G4 小尾巴（Web 观察三项 + `JavaSubprocessSandboxTest` 偶发）。执行方做评估 `search_task/v110-graph-designer-train-assessment.md` → 回执 `search_fallback/` 同名；范围与版本号待 Owner 确认。未排期：P68。
+
+## 1.0.0 摘要（已结束）
 
 ## 阶段 4 合并与 CI
 
