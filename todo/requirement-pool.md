@@ -10,6 +10,8 @@
 
 **2026-11-11 第一轮验收部分通过**（`product/v1.0.0-release/receipts/planning-review-100-01.md`）：F1 通过；F2-6 明细表导出 Excel 未实现；日志时间 ISO、操作日志记查询/动作 POST/模块代码/对象路径需返修；F2、F3 清理、F4、多库证据待补。返修与补证合交 `execution-100-02.md`。
 
+**2026-11-11 第二轮验收大部分通过**（`planning-review-100-02.md`）：R1—R6、B1/B2/B5/B7/B8/B9 通过，DM8/Kingbase 静态核对接受。剩 F2 打印 5 项：S1 浏览器打印旧实例按提交时版本、S2 数值四处一致、S3 打印版面纯文本、S4 重拍任务详情 PDF、S5 日志对象补 key/id。合交 `execution-100-03.md`；合并前需含 `p0PrioritizedWhileNormalBacklogged` 的全绿 CI。
+
 Owner 2026-11-10 定：P27 人员批量导入导出、P33 打印模板、P40 日志查询，加小尾巴（IoT 实例发起人显示 `0`、P69 日志量、示例 b 图注改「流程结构总览」、本机证据清理）一起做，做完两仓升 **1.0.0**（版本已确认）。阶段 1 评估：探索任务 `search_task/v100-release-train-assessment.md`，回执 `search_fallback/v100-release-train-assessment.md`；评估完成；Owner 定：打印浏览器+服务端 PDF 两条都做（2026-11-11 补：明细表组件导出 Excel，F2-6），导入统一初始密码+首次登录强制改密，导入整批不入库、只新增，日志登录+管理操作+异常保留 90 天。方向 `product/v1.0.0-release/ready/direction-v1.0.0.md`（先验收后合并，功能 53—55）。P69 关闭：0.4.0 已改 INFO。
 
 ## 已结束：Server 0.4.1 + Web 0.3.8（L，COMPLETED 2026-11-10，七阶段 7/0/0）
