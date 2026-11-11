@@ -1,21 +1,27 @@
 # 交接
 
-2026-11-11｜规划｜1.0.0 第二轮验收大部分通过（`planning-review-100-02.md`），执行方修 S1—S5 后交 `execution-100-03.md`。
+2026-11-11｜执行｜1.0.0 阶段 3 打印返修 S1—S5 完成（`execution-100-03.md`），待 Planner 复核与阶段 4 合并裁决。
 
 ## 当前
 
-**1.0.0 阶段 3（XL）**：两仓 `feature/1.0.0`——Server `7bde20b2`、Web `4e93037`；工作区 `develop-sw` 回执 `execution-100-02.md`（R1—R6 + B1—B9）。
+**1.0.0 阶段 3（XL）**：两仓 `feature/1.0.0`——Server `3108a858`、Web `8f17c9a`；工作区 `develop-sw` 回执 `execution-100-03.md`（S1—S5）。两仓已推送，origin 同 hash。
 
-- **隔离环境在跑（供 Planner 复核）**：Server 18093（local profile + 固定验证码，最新 jar）、Web 5275、PG 库 `smart_workflow_100`（34 行 V1.0.0）。测试账号口令在本机环境变量/克隆库，不入 Git。
-- **返修**：F2-6 明细表导出（三入口、显示值、字段隐藏、公式注入、文件名）、日志时间格式、操作日志只记改动类+中文动作/模块/对象+可读失败原因、登录日志中文化、两条失败记录根因（PG 参数推断 500 / 二进制导出误判）修复、超管导入租户前置拦截。
-- **补证**：B1 六库实跑（MySQL 5.7/8.0、MariaDB、Oracle、SQL Server、openGauss；DM8/Kingbase 静态）；B2 设计器打印模板；B3 三处打印预览；B4 PDF 每页 PNG + 跨页表头；B5 字段隐藏页面/打印/PDF/Excel 四面对照；B6 旧版本 v2 与未定位版本页脚；B7 三入口 6 份导出一致；B8 三页签+租户隔离+清理有界+异常字段；B9 IoT 发起人系统（IoT）。
-- **测试中修复的产品缺陷**：SQL Server 首装菜单/授权种子顺序、带明细表表单无法发布新版本、浏览器打印不消费 printTemplate、PDF 原始 id/JSON、PDF 普通意见丢失、审计二进制误判、PG 关键字 500、清理零删除死循环。
-- **门禁**：Server 2497 run / 1 known flake（CommandQueue p0，既有偶发）/ 45 skipped；Bootstrap 343/0/0/45；Web typecheck/lint/test 2056/3/build 全绿。
-- **多库容器**：`swmdb-mysql57/80`、`swmdb-mariadb`、`swmdb-oracle21`、`swmdb-sqlserver`、`swmdb-opengauss` 在跑；仅本机验收用。
+- **合并门禁已满足**：Server 根 `mvn -fae test` 全模块 **2498 run / 0 failure / 0 error / 45 skipped，BUILD SUCCESS（25:44）**，包含 `CommandQueueIntegrationTest` 7/7（p0 用例通过）。Web 四项：typecheck 0、lint 0 错（55 条既有取证脚本 prettier 警告）、test 2056/3 skipped、build 通过；提交后复跑仍全绿。
+- **S1**：`GET /workflow/print/context` 由服务端返回提交时版本定义；浏览器打印与 PDF 同一版本定位，R1（v2）三入口均无 v5 抬头、页脚「表单版本 v2（提交时版本）」；R2 页脚「未定位到提交时版本，按当前版本 v5 打印」。根因是 PrintSheet watch 未含 `processInstanceId`，已修。
+- **S2/S3**：PDF/Excel/Web 数值按 `decimals`/`precision`，未配置去尾 0；Excel 为数值单元格；打印版面纯文本（无输入框/下拉/复选框），人员/部门/选项/多选/日期均为显示值。
+- **S4**：当前 jar 重生成任务详情 PDF 2 页（15:15:05），逐页 PNG 重拍；所有 PDF/截图晚于最后服务端改动（源码 15:09:49 / jar 15:10:56 / 启动 15:14:11）。
+- **S5**：审计对象 UUID 回退，表单定义修改显示「表单定义 {uuid}」；数字 id 回退用例继续通过。
+- **未重跑多库**（评审明确不需要）；DM8/Kingbase 静态接受结论不变。
+
+## 隔离环境（供 Planner 复核）
+
+- 克隆库 `smart_workflow_100`（34 行 Flyway / 1.0.0）；Web 5275（`VITE_PROXY_TARGET=http://localhost:18093`）；Server 18093 当前因全量测试已停止，复核前按 jar 15:10:56 + 本机 `SW_CIPHER_KEY` 启动即可。
+- 测试数据：表单 `v100_print_demo`、R1/R2/R3 记录与实例、租户 9001 日志菜单授权、`yangfan` 为 R3 办理人；账号口令在本机环境变量/克隆库，不入 Git。
+- 证据：`product/v1.0.0-release/receipts/evidence/`（gitignore），S1—S5 关键文件见回执 A 节时间戳；全量日志 `s3_server-full-test.log`。
 
 ## 保留与保护
 
-不变：不改写历史、不强推；不碰 Web `vite.config.ts` 未提交改动、`feature/ui-figma-align-20261027`、Server `feature/p62-perf-bounded-20261011`；不碰用户 8080/5173、`smart_workflow_f1v4b`、`smart_workflow_030`；保留 `.runtime-*`、凭据密文与 Server 隔离 worktree。新增隔离项（`smart_workflow_100`、18093/5275、sw100 账号、六库容器）在验收后清理；UAT 仅 pg_dump 只读。
+不变：不改写历史、不强推；不碰 Web `vite.config.ts` 未提交改动、`feature/ui-figma-align-20261027`、Server `feature/p62-perf-bounded-20261011`；不碰用户 8080/5173、`smart_workflow_f1v4b`、`smart_workflow_030`；保留 `.runtime-*`、凭据密文与 Server 隔离 worktree。隔离项（`smart_workflow_100`、18093/5275、sw100 账号、六库容器）验收后清理；UAT 仅 pg_dump 只读。
 
 ## 更早历史
 
