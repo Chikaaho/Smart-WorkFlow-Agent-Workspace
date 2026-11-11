@@ -1,33 +1,31 @@
 # 当前状态摘要
 
-2026-11-11｜规划｜1.0.0 第三轮验收未通过，下发 U1—U3。
+2026-11-11｜执行｜1.0.0 第三轮返修 U1—U3 完成，交 `execution-100-04.md`。
 
 ## 当前任务
 
-**1.0.0 阶段 3（XL）**：`planning-review-100-03.md`——S1—S5 通过（S1 版本定位对）；新返修 U1 浏览器打印时间早 8 小时、U2 日期格式四处按字段类型统一、U3 页面明细表只读多选显示实际选中。交 `execution-100-04.md`；阶段 4 用 GitHub CI run 号作最终门禁证据。
-S1—S5 实现细节见 `execution-100-03.md` §A。
+**1.0.0 阶段 3（XL）**：`planning-review-100-03.md`——S2/S4/S5 通过；返修 U1 浏览器打印时间早 8 小时（根因：`/form/data` 把 `timestamp` 序列化为 UTC ISO，PrintSheet 字面截取；修 `PrintSheet.formatDate` 走 `normalizeFormDateValue`，与页面同口径）、U2 PDF/Excel 日期按字段 `format`（datetime→`yyyy-MM-dd HH:mm`，缺省→`yyyy-MM-dd`）、U3 明细表只读多选按实际选中回显（`TableControl.cellValue` 过 `normalizeFormFieldValue`，1.0.0 前遗留）。交 `execution-100-04.md`。
 
 ## 本轮代码
 
-- Server `feature/1.0.0` `3108a858`：`FormPrintController` 打印上下文、`FormPrintPdfService` 数值小数位、`FormDetailTableExportService` 数值格式、`AuditOperationFilter` UUID 对象、`CommandQueueIntegrationTest` 稳定性重写。
-- Web `feature/1.0.0` `8f17c9a`：`PrintSheet` 重写为纯文本并按版本定位重载、`getPrintContext`、`resolvePartyNames`、`BusinessDetailDialog` 实例上下文、schema/adapter 小数位与日期 format 透传、S1—S5 取证脚本。
-- 工作区：`execution-100-03.md` + 子仓指针 + 本 memory 同步（已推送 develop-sw）。
+- Server `feature/1.0.0` `9fe3f11c`：`FormPrintPdfService` FieldDef.format、`FormDetailTableExportService` datetimeFormat；两处测试更新/新增。
+- Web `feature/1.0.0` `3c5b5ec`：`PrintSheet` 时区口径 + `PrintSheet.spec.ts`（01:30Z→09:30）、`TableControl` 单元格归一 + spec、`scripts/sw100-u1-u3.mjs` 取证脚本。
+- 工作区：`execution-100-04.md` + memory 同步 + 子仓指针。
 
 ## 门禁
 
-- Server：根 `mvn -fae test` **2498 run / 0 failure / 0 error / 45 skipped，BUILD SUCCESS（25:44）**；Bootstrap 343/0/0/45；`CommandQueueIntegrationTest` 7/7（含 p0）。
-- Web：`pnpm typecheck` 0、`pnpm lint` 0 错（55 条既有取证脚本 prettier 警告）、`pnpm test` 2056 passed/3 skipped、`pnpm build` 通过。提交后复跑全部通过。
-- 未重跑多库（评审明确不需要）。
+- Server 受影响模块：sw-biz-form-biz **280/0/0/0**、sw-bpm-process **528/0/0/0 BUILD SUCCESS**（含 U2 新用例）。
+- Web：typecheck 0、lint 0 错（55 条既有取证脚本警告）、test **2060 passed/3 skipped**、build 通过。
+- 未重跑多库、未重跑 Server 全量（评审明确不需要）。
 
 ## 环境与边界
 
-- 克隆库 `smart_workflow_100`（34 行 Flyway/1.0.0）；Server 18093（jar 15:10:56，带本机 `SW_CIPHER_KEY` 启动）、Web 5275；测试数据/账号仅隔离环境，口令不入 Git。
-- 未触碰用户 8080/5173、`smart_workflow_f1v4b`、`smart_workflow_030`；未删除/重建演示服务/库/容器，未清数据；未强推/改历史/移动 tag。
-- 证据目录 gitignore；`execution-100-03.md` 记录 S1—S5 截图/PDF 的时间戳与对照。
+- 克隆库 `smart_workflow_100` 不变；jar 19:35 重建，Server 18093 于 19:37:23 重启（同参数 + 本机 `SW_CIPHER_KEY`）；Web 5275 正常。证据 19:41—19:42。
+- 本机丢失上轮 admin 口令环境变量，已把克隆库 admin 口令重置为种子迁移 R__0.1.10 口径（幂等；明文不入回执/Git）。
+- 未触碰用户 8080/5173、`smart_workflow_f1v4b`、`smart_workflow_030`；未删除/重建演示环境，未清数据；未强推/改历史/移动 tag。
 
 ## 教训
 
-- 打印版本定位必须由服务端统一返回；前端 props 异步补齐时 watch 要覆盖该 prop。
-- 数值显示要同时处理 `decimals`/`precision`，Excel 数值单元格 + number_format，PDF/Web 去尾随 0。
-- 领取/调度测试不要假设固定 key 顺序，用实际 occupied 集合与状态计数断言。
-- 全量测试前确认没有残留 Maven/surefire 进程；TaskStop 只杀包装 shell，需按命令行清理 java 测试进程。
+- 记录 API 的 `timestamp` 序列化为 UTC ISO 是四渲染路径分歧的根源；前端任何「字符串直显」的路径都要先过 `normalizeFormDateValue`。
+- 明细表单元格与主表字段必须走同一 `normalizeFormFieldValue`，控件数组契约不要在两处各自解释。
+- 上轮设置的一次性环境变量（口令类）应记入本机可持久位置或当场写回受保护文件，否则跨会话即丢失。
