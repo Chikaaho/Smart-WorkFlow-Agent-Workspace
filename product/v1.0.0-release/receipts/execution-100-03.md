@@ -12,11 +12,11 @@
 - 定位结果核对（隔离环境实测）：
   - 不带实例：`formVersion=5`、`versionPinned=false`、含 `printTemplate`（抬头「华云科技 · 1.0.0 打印验收」）；
   - R1 实例 `cb6a8763-…`：`formVersion=2`、`versionPinned=true`、无 `printTemplate`（v2 未配置抬头）。
-- 证据（均为 2026-11-11 15:14 生成，晚于最后一次产品代码改动）：
-  - `s1_r1_form_detail_print.png`（15:14:35）：表单详情入口，标题「1.0.0 打印验收表单」、无「华云科技」抬头、字段为 v2 全集（含「内部备注」），页脚「表单版本 v2（提交时版本）」。
-  - `s1_r1_task_detail_print.png`（15:14:40）、`s1_r1_my_instance_print.png`（15:14:46）：任务详情 / 我发起的两个入口缩略对照，同样为 v2 版面、无抬头、页脚同文案；合并缩略图 `s1_r1_three_entries_thumbnail.png`。
-  - `s1_r1_form_detail.pdf`（15:14:36，3 页）与 `s1_r1_old_v2.pdf`（15:14:46，3 页）：同一 v2 定义，逐页内容一致；`s1_r1_form_detail_page_1..3.png`（15:15 渲染）逐页对照，合并对照图 `s1_r1_print_vs_pdf.png`。
-  - R2 未定位版本：`s1_r2_unpinned_print.png`（15:14:53）与 `s1_r2_unpinned.pdf`（15:14:54）/`s1_r2_unpinned_page_1.png`，页脚「未定位到提交时版本，按当前版本 v5 打印」，抬头/页脚为当前模板。
+- 证据（均为 2026-11-11 16:00 生成，晚于最后一次产品代码改动）：
+  - `s1_r1_form_detail_print.png`（16:00:08）：表单详情入口，标题「1.0.0 打印验收表单」、无「华云科技」抬头、字段为 v2 全集（含「内部备注」），页脚「表单版本 v2（提交时版本）」。
+  - `s1_r1_task_detail_print.png`（16:00:13）、`s1_r1_my_instance_print.png`（16:00:19）：任务详情 / 我发起的两个入口缩略对照，同样为 v2 版面、无抬头、页脚同文案；合并缩略图 `s1_r1_three_entries_thumbnail.png`。
+  - `s1_r1_form_detail.pdf`（16:00:09，3 页）与 `s1_r1_old_v2.pdf`（16:00:20，3 页）：同一 v2 定义，逐页内容一致；`s1_r1_form_detail_page_1..3.png`（16:01 渲染）逐页对照，合并对照图 `s1_r1_print_vs_pdf.png`。
+  - R2 未定位版本：`s1_r2_unpinned_print.png`（16:00:26）与 `s1_r2_unpinned.pdf`（16:00:27）/`s1_r2_unpinned_page_1.png`，页脚「未定位到提交时版本，按当前版本 v5 打印」，抬头/页脚为当前模板。
 
 ### S2 数值显示一致（打印、PDF、Excel）
 
@@ -24,26 +24,26 @@
 - Web 打印：`FormSchemaField`/`TableSubField` 与 `form-designer` 防腐层透传 `decimals`/`precision`，`PrintSheet` 按字段配置格式化数值；未配置时去尾随 0。
 - Excel：`FormDetailTableExportService` 读子字段 `decimals`/`precision`，数值仍写数值单元格（可求和），并设置 `number_format`：有配置按配置小数位，无配置用 `0.############`（显示为 `1`、`1000`，不出现 `1.0`）。
 - 证据（同一条 R3 记录、同一行「新版本部件-01」）：
-  - 页面 `s2_r3_page.png`（15:15:00）：数量 `1`、金额 `1000`；
-  - 浏览器打印 `s2_r3_print.png`（15:15:00）：`1`、`1000`；
-  - PDF 第 1 页 `s2_r3_page_1.png`（PDF 15:15:01，页面 15:15 渲染）：`1`、`1000`，文本中无 `1.000000`/`1000.000000`；
-  - Excel 内容 `s2_r3_excel_content.png`（15:15:28，源文件 `s2_r3_itemsA.xlsx` 15:15:02）：B2/C2 为数值单元格、`number_format=0.############`，显示 `1`、`1000`。
+  - 页面 `s2_r3_page.png`（16:00:33）：数量 `1`、金额 `1000`；
+  - 浏览器打印 `s2_r3_print.png`（16:00:33）：`1`、`1000`；
+  - PDF 第 1 页 `s2_r3_page_1.png`（PDF 16:00:34，页面 16:01 渲染）：`1`、`1000`，文本中无 `1.000000`/`1000.000000`；
+  - Excel 内容 `s2_r3_excel_content.png`（16:01:22，源文件 `s2_r3_itemsA.xlsx` 16:00:35）：B2/C2 为数值单元格、`number_format=0.############`，显示 `1`、`1000`。
 
 ### S3 浏览器打印纯文本版面
 
 - `PrintSheet` 重写为纯文本版面：人员/部门写名称，字典/选项写标签，多选以顿号分隔，日期按字段 `format`（`datetime` 带时分，缺省仅日期），数值去尾随 0；明细表逐格输出显示值，不再渲染表单控件。抬头、页脚、审批历史按 `printTemplate` 生效。
-- 证据：`s2_r3_print.png`（15:15:00）中无输入框、部门图标、下拉箭头、复选框；采购负责人「系统管理员」、标签「蓝色、绿色」、到货时间按字段配置显示日期。脚本同时断言打印版面内 `input/.el-select/.el-checkbox` 数量为 0。
+- 证据：`s2_r3_print.png`（16:00:33）中无输入框、部门图标、下拉箭头、复选框；采购负责人「系统管理员」、标签「蓝色、绿色」、到货时间按字段配置显示日期。脚本同时断言打印版面内 `input/.el-select/.el-checkbox` 数量为 0。
 
 ### S4 B4 任务详情 PDF 重拍
 
-- 用当前运行 jar 重新生成任务详情 PDF：`s4_task_detail.pdf`（15:15:05，2 页），逐页渲染 `s4_task_detail_page_1.png`、`s4_task_detail_page_2.png`（15:15:26）。
+- 用当前运行 jar 重新生成任务详情 PDF：`s4_task_detail.pdf`（16:00:38，2 页），逐页渲染 `s4_task_detail_page_1.png`、`s4_task_detail_page_2.png`（16:01:19）。
 - 页面内容已是修复后显示值：采购负责人「系统管理员」、标签「蓝色、绿色」、数量 `1`、金额 `1000`；页脚「内部资料 · 请勿外传 / 表单版本 v3（提交时版本）/ 第 N/2 页」。
-- 时间核对：最后一次服务端源码改动 15:09:49（`FormPrintPdfService` 数值小数位），jar 构建 15:10:56，Server 进程启动 15:13:52（15:14:11 完成启动）；本批所有 PDF 生成时间 15:14:36—15:15:05，页面截图 15:15:26，均晚于最后一次服务端改动。
+- 时间核对：最后一次服务端源码改动 15:09:49（`FormPrintPdfService` 数值小数位），jar 构建 15:10:56，Server 进程启动 15:13:52（15:14:11 完成启动）；本批所有 PDF 生成时间 16:00:09—16:00:38，页面截图 16:01，均晚于最后一次服务端改动与两仓提交（Server `3108a858` / Web `8f17c9a`）。
 
 ### S5 操作日志对象
 
 - `AuditOperationFilter.PATH_ID` 从「仅数字 id」扩为「UUID 或数字 id」，对象名取不到请求体名称时写「对象类型 + id」，不再只剩类型；请求体名称优先逻辑不变。
-- 实测：14:43:54、14:52:09、15:15:07 三次表单定义修改（`POST /form/def/{uuid}/config`）的对象均为「表单定义 27b5ab65-6bcc-442d-b433-fa7adff61bc0」；`s5_log_form_def_target.png`（15:15:12）可见 15:15:07 行。
+- 实测：14:43:54、14:52:09、15:15:07、16:00:39 四次表单定义修改（`POST /form/def/{uuid}/config`）的对象均为「表单定义 27b5ab65-6bcc-442d-b433-fa7adff61bc0」；`s5_log_form_def_target.png`（16:00:44）可见 16:00:39 行。
 - `AuditOperationFilterTest` 新增 UUID 回退用例（7/7），既有数字 id 用例「用户 12」继续通过，覆盖其他模块同一回退逻辑。克隆库 14:43 之后无其他模块新增的对象只剩类型的记录；11:25/12:06 的历史行是修复前数据，保留不改写。
 
 ## B 门禁
