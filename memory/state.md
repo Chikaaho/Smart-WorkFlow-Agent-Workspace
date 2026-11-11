@@ -16,7 +16,7 @@
 
 - Server `feature/1.0.0` `3108a858`：`FormPrintController` 打印上下文、`FormPrintPdfService` 数值小数位、`FormDetailTableExportService` 数值格式、`AuditOperationFilter` UUID 对象、`CommandQueueIntegrationTest` 稳定性重写。
 - Web `feature/1.0.0` `8f17c9a`：`PrintSheet` 重写为纯文本并按版本定位重载、`getPrintContext`、`resolvePartyNames`、`BusinessDetailDialog` 实例上下文、schema/adapter 小数位与日期 format 透传、S1—S5 取证脚本。
-- 工作区：`execution-100-03.md` + 子仓指针（本条提交后回填）。
+- 工作区：`execution-100-03.md` + 子仓指针 + 本 memory 同步（已推送 develop-sw）。
 
 ## 门禁
 

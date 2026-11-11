@@ -15,7 +15,7 @@
 
 ## 隔离环境（供 Planner 复核）
 
-- 克隆库 `smart_workflow_100`（34 行 Flyway / 1.0.0）；Web 5275（`VITE_PROXY_TARGET=http://localhost:18093`）；Server 18093 当前因全量测试已停止，复核前按 jar 15:10:56 + 本机 `SW_CIPHER_KEY` 启动即可。
+- 克隆库 `smart_workflow_100`（34 行 Flyway / 1.0.0）；Web 5275（`VITE_PROXY_TARGET=http://localhost:18093`）；Server 18093 已用当前 jar（15:10:56）+ 本机 `SW_CIPHER_KEY` 重启，15:57:37 启动完成，供复核。
 - 测试数据：表单 `v100_print_demo`、R1/R2/R3 记录与实例、租户 9001 日志菜单授权、`yangfan` 为 R3 办理人；账号口令在本机环境变量/克隆库，不入 Git。
 - 证据：`product/v1.0.0-release/receipts/evidence/`（gitignore），S1—S5 关键文件见回执 A 节时间戳；全量日志 `s3_server-full-test.log`。
 
