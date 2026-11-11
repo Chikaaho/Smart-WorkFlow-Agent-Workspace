@@ -55,7 +55,7 @@
 
 ## C 环境与数据
 
-- 克隆库 `smart_workflow_100`（34 行 Flyway / 1.0.0），测试数据仅存在于此；Server 18093（jar 15:10:56，15:13:52 启动、15:14:11 完成启动）、Web 5275（`VITE_PROXY_TARGET=http://localhost:18093`）。
+- 克隆库 `smart_workflow_100`（34 行 Flyway / 1.0.0），测试数据仅存在于此；Server 18093（jar 15:10:56；PDF 取证进程 15:14:11 启动，全量测试后 15:57:37 重启供复核）、Web 5275（`VITE_PROXY_TARGET=http://localhost:18093`）。
 - 未触碰用户 8080/5173 服务、`smart_workflow_f1v4b`、`smart_workflow_030`；未删除/重建演示服务器、数据库和容器，未清数据；未强推、未改历史、未移动 tag。
 - 证据目录 `product/v1.0.0-release/receipts/evidence/` 不入 Git；口令与初始密码不写进回执和 Git。
 
