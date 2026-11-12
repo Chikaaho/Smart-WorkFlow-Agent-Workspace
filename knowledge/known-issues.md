@@ -99,7 +99,7 @@
 | I45 | 2026-08-12 | M07/M04/M05/M06/M09/M10 功能清单"虚低"15 条汇总（部分后端骨架未达清单完整度） | 低 | ◐ 部分关闭（2026-08-22：M07-F01-01～05 前端缺口已闭环（D107）；M07-F02-04 运行日志子集已闭环（D148）；M07-F02-02 Prompt 配置 COMPLETED（D154+D157）；M07-F04-02 Token 统计 D170功能级PASSED阶段三已同步（M07-F04-02升✅、P8已核销）；**M07-F02-04 单步调试已关闭（D180 规划层最终验收 15/15 PASSED，P7 核销、M07-F02-04 升✅，2026-08-23）**；剩余缺口待排期，计数以 I45 详细条目为准） |
 | I46 | 2026-08-15 | 手写 SQL 通道无数据权限：动态宽表 JdbcTemplate 裸 SQL 与 bpm 外部数据源 SqlExecutor 绕过数据权限拦截器链，本轮明确不纳管（与 I10 同源） | 高 | 已知限制（明确不纳管，沿用 I10 红线：代码审查 + 测试兜底） |
 | I47 | 2026-08-16 | bpm/h2 迁移链 V8 含 PG 独有 partial index 语法（`WHERE active=true`），H2 不支持——全链 H2 Flyway 迁移从未可跑，模块测试均绕过 Flyway 直建 DDL（V30 冒烟 6 目录链仍排除 bpm） | 中 | ✅ 已修复（2026-08-17 bpm-h2-v8-compat：h2/V8 partial index → 生成列 active_key + 唯一索引等价实现，仅 h2/V8 改动；永久真全链测试 30 条迁移通过；项目级 543/0/0） |
-| I48 | 2026-08-16 | `flow-graph` adapter 契约无边点击事件、无命令式数据更新通道：M07 图设计器绕行方案可用但受限（若未来节点自定义渲染/直接点边编辑需求增多，需回规划层评估扩展 adapter 导出面） | 低 | 绕行方案已生效，扩展待评估 |
+| I48 | 2026-08-16 | `flow-graph` adapter 契约无边点击事件、无命令式数据更新通道：M07 图设计器绕行方案可用但受限（若未来节点自定义渲染/直接点边编辑需求增多，需回规划层评估扩展 adapter 导出面） | 低 | ✅ 1.1.0 已扩展（G1-1：自定义节点/边组件、边/画布/拖停事件、命令式节点/边更新与插入目标、视口控制；流程设计器未改，新导出面见 `src/adapters/flow-graph/index.ts`） |
 | I49 | 2026-08-16 | V29 菜单 seed 未 seed sys_role_menu（超管旁路）：正式环境 job/storage 菜单仅超管可达，I43/I44「生产菜单可达」口径仅对超管成立 | 中 | ✅ 已关闭（P24/admin-role-governance，D96 PASSED；方向归档 `product/admin-role-governance/passed/`） |
 | I50 | 2026-08-16 | AuthController.login 状态校验位于密码匹配之后（L88→L92）：停用账号仍消耗一次 BCrypt+用户查询，时序/资源问题，无安全漏洞 | 低 | 待修复（D83 登记） |
 | I51 | 2026-08-16 | 前端 status 语义与后端相反（UserList/DeptList 正常=1/停用=0 vs 后端 0=正常 1=停用 2=锁定）：UI 新建用户无法登录、UI 停用不阻断登录，I33 修复在 UI 路径被抵消 | 高 | ✅ 已修复（2026-08-17 status-semantics-alignment：UserList/DeptList 按后端口径修正默认值/选择项/筛选/展示，新增 7 测试，前端 66f/576t 四连全绿，后端零修改） |
@@ -640,7 +640,7 @@
 - **可信度**：CONFIRMED（M07 Step9 现场发现，D65 偏差 2/3）
 - **描述**：`flow-graph` adapter 契约无边点击事件、无命令式数据更新通道。M07 图设计器绕行方案（GraphDesigner.vue 经 graphAdapter.ts 对接）可用但受限——若未来节点自定义渲染/直接点边编辑需求增多，需回规划层评估扩展 adapter 导出面。
 - **影响**：bpm-plugin-architecture 轮明确不扩展 flow-graph adapter（D80 非目标，I48 绕行方案维持现状）；GraphDesigner 属性面板注册表化（Step2）已在不触碰 adapter 契约的前提下完成
-- **临时方案**：绕行方案已生效，扩展待评估
+- **✅ 状态更新（2026-11-12，1.1.0 G1-1，已扩展）**：`adapters/flow-graph` 新增导出面——`FlowGraphNode.presentation`（icon/accent/summary/status，保留键 `__swFlowPresentation` 不落后端）、自定义 `NodeCard`/`EdgeWithInsert` 组件、`FlowGraphEvents` 增加 `onEdgeClick`/`onPaneClick`/`onNodeDragStop`/`onInsertAfter`/`onViewportChange`、实例命令 `updateNode/updateEdge/addNode/addEdge/removeNode/removeEdge/setData/exportGraph/screenToGraphPoint` 与缩放/适配；`toVfNode/toFlowGraphNode` 双向剥离展示元数据。流程设计器未改，图设计器不再销毁重挂画布。证据：Web 提交 `ebd639c`，适配层 spec 11 例；方向 `product/v1.1.0-graph-designer/ready/direction-v1.1.0.md`。
 
 ### I49：V29 菜单 seed 未 seed sys_role_menu（job/storage 菜单仅超管可达）
 
