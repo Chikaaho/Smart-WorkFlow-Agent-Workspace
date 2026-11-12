@@ -4,7 +4,7 @@
 
 ## 当前
 
-- **执行方**：`execution-110-01.md` 已交（两仓 `feature/1.1.0`，门禁绿）。按 `planning-review-110-02.md` §2—§4 返修 V1—V8、补证据，提交 `execution-110-02.md`，建议先交 V1/V2 视觉截图。
+- **执行方**：`execution-110-02.md` 已交（Server 2515/0/0/45，Web 2099 passed）。按 `planning-review-110-03.md` §2 处理 W1—W6，提交 `execution-110-03.md`；旧截图挪 `evidence/round1/`。回执措辞必须与裁决和截图一致。
 - **规划**：验收各批回执；G2（P67）已拆出，语义写在 `todo/p67-graph-as-executor.md`。
 
 ## 线上基线
