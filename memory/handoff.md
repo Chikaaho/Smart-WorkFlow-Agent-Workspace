@@ -4,7 +4,7 @@
 
 ## 当前
 
-- **执行方**：按 `product/v1.1.0-graph-designer/ready/direction-v1.1.0.md` 实施 G1/G3/G4，两仓 `feature/1.1.0`。先验收后合并，回执 `execution-110-01.md`（可分批，首批 G1-1/2/3/6 界面），截图放 `receipts/evidence/`，并把 `.runtime-v110/` 三张评估截图复制过去作改造前对照。
+- **执行方**：`execution-110-01.md` 已交（两仓 `feature/1.1.0`，门禁绿）。按 `planning-review-110-02.md` §2—§4 返修 V1—V8、补证据，提交 `execution-110-02.md`，建议先交 V1/V2 视觉截图。
 - **规划**：验收各批回执；G2（P67）已拆出，语义写在 `todo/p67-graph-as-executor.md`。
 
 ## 线上基线
