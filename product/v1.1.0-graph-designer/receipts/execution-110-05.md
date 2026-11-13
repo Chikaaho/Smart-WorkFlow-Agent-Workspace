@@ -58,7 +58,7 @@
 - `CHANGELOG.md` → 1.1.0 条目（G1/G3/G4、统一执行编号、Web 1.1.1 补丁、制品与已知限制）。
 - `knowledge/current-status.md` → 1.1.0 状态段；`knowledge/feature-reconciliation-index.md` → 正式功能数 58（G1/G3/G4 第 56—58 个）；`knowledge/features/v1.1.0-graph-designer.md` 登记。
 - 需求池 `todo/requirement-pool.md`：1.1.0 段改为「已发布…待阶段 7 复核」；P70（显示小修）保持未排期。
-- README 三仓：版本徽标/文内版本更新（Workspace 1.1.0、Server 1.1.0、Web 1.1.1）、`agent-graph.png` 用新设计器在 UAT 重拍并裁去含测试图名的顶栏（脱敏），三仓 `docs/assets/readme/agent-graph.png` 同步。
+- README 三仓：版本徽标/文内版本更新（Workspace 1.1.0、Server 1.1.0、Web 1.1.1）、`agent-graph.png` 用新设计器在 UAT 重拍并裁去含测试图名的顶栏（脱敏），三仓 `docs/assets/readme/agent-graph.png` 同步。文档提交：Server `0c5834cf`→`fc20813c`（develop）→`91b20861`（main），CI `43417045898`/`43419522101`/`43419547108`；Web `438e3cf9`（develop）→`136a9581`（main），CI `43417111211`/`43417148615`。其中 `fc20813c` 首次 CI 因既有 I6 通知用例时序抖动失败（`I6G1aNotifyFailureBootTest` 断言 "FAILED" but was "RESENDING" 等 2F/1E，与本轮改动无关），同提交 rerun 后 success。
 
 ## 7. 已知限制（随发布说明公开）
 
