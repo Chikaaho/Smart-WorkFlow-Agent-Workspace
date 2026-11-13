@@ -6,9 +6,9 @@
 |---|---|---|---|
 | P66 Z4 **已完成（2026-11-10 17:17）** | 2026-11-10 17:16 以后 | 只读：UAT `server.log` 128K（daily 轮转 00:00:17，`server.log-20261110` 346M）、`df -h /` 66%（余 6.3G）、logrotate 配置实际生效；`version.json` 状态与 `knowledge/features/multi-database-compat.md` 已记 COMPLETED。见 `execution-final-05.md` §3 | **Planner 已回读通过**（`planning-review-041-02.md` §2）。观察：日志约 346M/天，`maxsize` 因每天只轮转一次不起作用，压缩后约 18M/天，暂不处理，见 P69 |
 
-## 已发布：1.1.0 版本（XL，Owner 2026-11-12 立项；2026-11-13 已发布并部署演示环境；阶段 7 收尾 Z1—Z3，`planning-review-110-06.md`）
+## 已结束：1.1.0 版本（XL，COMPLETED 2026-11-13，第 56—58 个正式功能，七阶段 7/0/0）
 
-Owner 原话："下一步先优化一下graph的设计器，太丑了，参考一下现有流程画布和dify的设计理念，其他的你再加几个功能凑到xl一起做"。方向 [direction-v1.1.0.md](../product/v1.1.0-graph-designer/ready/direction-v1.1.0.md)；评估复核 `planning-review-110-01.md`。Owner 2026-11-12 裁决：G2 拆出；继续 Vue Flow 扩展适配层；运行可视化放进本版；P67 与人工节点语义按推荐。
+Owner 原话："下一步先优化一下graph的设计器，太丑了，参考一下现有流程画布和dify的设计理念，其他的你再加几个功能凑到xl一起做"。方向 [direction-v1.1.0.md](../product/v1.1.0-graph-designer/passed/direction-v1.1.0.md)；评估复核 `planning-review-110-01.md`。Owner 2026-11-12 裁决：G2 拆出；继续 Vue Flow 扩展适配层；运行可视化放进本版；P67 与人工节点语义按推荐。
 
 | ID | 内容 | 预估 | 来源 |
 |---|---|---|---|
@@ -17,7 +17,9 @@ Owner 原话："下一步先优化一下graph的设计器，太丑了，参考�
 | G3 | Graph 人工节点、子图节点 | M | 0.2.2 延后候选 |
 | G4 | 小尾巴：任务详情操作栏遮挡、监控发起人筛选、实例监控干预页显示、`JavaSubprocessSandboxTest` 竞态 | S | `web-ui-defects-20261109.md`；`planning-review-100-05.md` §3 |
 
-七阶段 6/1/0。2026-11-13 阶段 4—6 复核（`planning-review-110-06.md`）：合并 CI、tag/Release（Server 1.1.0、Web 1.1.0+1.1.1 Latest）、演示部署（Flyway 35 行）与 G1/G3/G4 复测通过。收尾：Z1 README `agent-graph.png` 重拍（38% 不可读）、Z2 四文件换行符 LF 还原、Z3 取消遗留 WAITING_HUMAN 测试执行，然后清理隔离环境，回执 `execution-110-06.md`。Web 1.1.1 补丁超出指令，待 Owner 追认。
+**2026-11-13 阶段 7 终审通过**（`planning-review-110-07.md`）：Z1—Z3 与隔离环境清理完成；Owner 追认 Web 1.1.1；方向归档 `passed/`。遗留 P70、P71（建议合成 1.1.2 补丁）。
+
+七阶段 7/0/0。2026-11-13 阶段 4—6 复核（`planning-review-110-06.md`）：合并 CI、tag/Release（Server 1.1.0、Web 1.1.0+1.1.1 Latest）、演示部署（Flyway 35 行）与 G1/G3/G4 复测通过。收尾：Z1 README `agent-graph.png` 重拍（38% 不可读）、Z2 四文件换行符 LF 还原、Z3 取消遗留 WAITING_HUMAN 测试执行，然后清理隔离环境，回执 `execution-110-06.md`。Web 1.1.1 补丁超出指令，待 Owner 追认。
 
 ## 已结束：1.0.0 版本（XL，COMPLETED 2026-11-12，第 53—55 个正式功能，七阶段 7/0/0）
 
