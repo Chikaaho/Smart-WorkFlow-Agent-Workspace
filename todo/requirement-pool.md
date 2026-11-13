@@ -340,7 +340,8 @@ P60 I2 已于 2026-09-10 COMPLETED，已通过方向包含子表/关联、公式
 | P69 | 演示环境 Server 日志量控制：约 346M/天，logrotate 改每小时执行或查清高频日志来源 | Planner 2026-11-10 Z4 观察；预估 S | **关闭**（2026-11-10：346M 为 0.4.0 前 DEBUG，`DataSourceUtils` 约 96%，0.4.0 已改 INFO；不改 logrotate） |
 | P67 | Graph 作为执行器：在流程/表单中配置调用，入参→出参供业务使用 | Owner 2026-11-10；预估 L；[需求定义](p67-graph-as-executor.md)；关联 P57/P65 | 未排期（2026-11-12 从 1.1.0 拆出，语义已定，见需求定义「已定语义」） |
 | P68 | 外部开发的 Java 工具：模板下载、上传审核保存、类 MCP 入口供 Agent 调用、动态编译、沙箱或主 JVM 运行、结束销毁、快照与日志留 7 天 | Owner 2026-11-10；预估 XL（运行外部代码）；[需求定义](p68-external-java-tool-sandbox.md)；关联 P21 子进程执行器 | 未排期 |
-| P70 | 显示小修：Graph 执行列表「失败分类」列过窄，`HUMAN_TIMEOUT` 被截断；实例监控干预页「当前节点」显示节点编码（`n_approve`）而非名称；实例状态 `DISCARDED` 无中文；设计器新一次运行开始时未清空上次结果 | Planner 2026-11-13 `planning-review-110-05.md` §3、`-06.md` §4；预估 S | 未排期 |
+| P70 | 显示小修：Graph 执行列表「失败分类」列过窄，`HUMAN_TIMEOUT` 被截断；实例监控干预页「当前节点」显示节点编码（`n_approve`）而非名称；实例状态 `DISCARDED` 无中文；执行详情状态标签 `CANCELLED` 无中文；设计器运行中结果区误显示「执行失败 耗时 0ms」（RUNNING 时 `executeResult.success=false` 直接按失败渲染，实为未完成的中间态） | Planner 2026-11-13 `planning-review-110-05.md` §3、`-06.md` §4；`execution-110-06.md` 补充（CANCELLED 映射、运行中误显示失败）；预估 S | 未排期 |
+| P71 | 生命周期取消按**执行编号**调用时静默无效：`cancel(executionId)` 用原始入参做 `cancelWaiting/cancelQueued` 与任务关闭（W5 双编号互认只用于查找受理行），结果执行 id 传入时 UPDATE 命中 0 行，接口仍返回 200+当前状态（WAITING_HUMAN）。需用 `requireOwned` 解析后的受理行 id 执行变更，或对未命中显式 400 | Executor 2026-11-13 `execution-110-06.md` Z3 复测发现（按受理号取消正常；按执行编号取消无效） | 未排期 |
 
 管理员P0治理插单（2026-09-15）：[连续执行与可见浏览器验收门禁](admin-machine-gate-continuous-visible-browser.md)已`COMPLETED（规划确认）`，本地提交`8e87899`，治理测试sh 70/70、PowerShell 49/49。该任务不并入P60业务计数；远程发布仍需Owner另行授权。
 
