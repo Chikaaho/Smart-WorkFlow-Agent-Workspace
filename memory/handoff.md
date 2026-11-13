@@ -4,7 +4,7 @@
 
 ## 当前
 
-- **执行方**：`execution-110-02.md` 已交（Server 2515/0/0/45，Web 2099 passed）。按 `planning-review-110-03.md` §2 处理 W1—W6，提交 `execution-110-03.md`；旧截图挪 `evidence/round1/`。回执措辞必须与裁决和截图一致。
+- **执行方**：`execution-110-03.md` 已交（Server 2515/0/0/45，Web 2099 passed）。按 `planning-review-110-04.md` §2 处理 X1—X4，提交 `execution-110-04.md`；G4-1 交浏览器视口截图（不用整页拼接）。回执对截图的描述必须逐张对照。
 - **规划**：验收各批回执；G2（P67）已拆出，语义写在 `todo/p67-graph-as-executor.md`。
 
 ## 线上基线
