@@ -1,5 +1,17 @@
 # 当前状态（current-status）
 
+**当前状态（2026-11-13，1.1.0 已发布并部署演示环境，待 Planner 阶段 7 复核）**
+
+1.1.0（Server 1.1.0 + Web 1.1.1）发布并部署演示环境：G1 图设计器重做、G3 人工节点与子图、G4 任务详情与监控小尾巴（第 56—58 个正式功能）。阶段 3 验收四轮（V1—V8、W1—W6、X1—X4）。
+
+- **发布事实**：Server tag `1.1.0`=`6d6bd666`（Release `443946002`，`bootstrap-1.1.0.jar` 242,762,534 B sha256 `a1fd5ca6…`，`build.version=1.1.0`）；Web tag `1.1.0`=`bf84989d`（Release `443883862`，`sw-web-dist-1.1.0.zip` 6,254,854 B sha256 `b1e8fe4f…`）→ 发布后补丁 Web tag `1.1.1`=`3cc05844`（Release `444137262`，`sw-web-dist-1.1.1.zip` 6,255,031 B sha256 `fb42a52b…`，修复设计器事件序号字符串比较）；两仓 Latest 分别为 1.1.0 / 1.1.1；发布说明含四项已知限制（子图超时不按父剩余时间、人工超时扫描单实例、DM8/KingbaseES 仅静态核对、处理人角色保存编码）。
+- **合并与 CI**：两仓 feature→develop→main 普通合并。Server feature `43372303893` success `95b3af66`、develop `43374153229` success `131bc4da`、main `43377261626` success `6d6bd666`；**修 CI 红因两处**：本地 `.git/info/exclude` 的 `config/` 宽匹配曾吞掉 `AgentHumanTaskSchedulingConfig` 等 4 个源码文件（第 1 次红因，补提交 `35ef2571`），生命周期测试闩锁竞态（第 2 次红因，`95b3af66` 闩锁挂到 finish）。Web feature `6c8f936` / develop `3ab13f31` / main `bf84989d` 全 success；1.1.1 链 feature `43413013083` / develop `43413772266` / main `43414744604` 全 success。feature 分支 merge-base 验证后本地与远端均已删除。
+- **演示环境（UAT 8.166.112.85）**：部署前备份 `smart_workflow_20261113_1538_pre110.dump`（1,321,696 B）、`bootstrap.jar.bak-pre110`（242,697,784 B）、`server.env.bak-pre110`、`web.bak-20261113_1538_pre110`（11M）；磁盘余 5.9G（≥3G）。先 Server 后 Web：`build.version=1.1.0`、health UP、Flyway **34→35 行**（max 1.1.0）、启动段 ERROR 0、在跑 jar sha256 与 Release 资产一致；Web 入口 `assets/index-tFylQPt8.js`（1.1.1）、根/入口/健康 200、`nginx -t` 通过。
+- **G1/G3/G4 复测（各一组；测试数据保留不删）**：G1 新建含 LLM（deepseek-v4.1-flash 研判模型）+ 条件分支 + 知识检索（MES 工艺温度样本知识库）的图，试运行成功、逐节点状态 全部「成功」；G3 人工节点在待办提交「通过」后续跑 SUCCESS（887ms，执行 `2121183224724520961`），子图子执行 `2121183306790273026` SUCCESS（DB 核验）；G4 带明细表（10 行）任务详情滚到底操作区不遮内容、发起人筛选「系统（IoT）」2 条实例、监控页时间 `yyyy-MM-dd HH:mm:ss`/状态/流程名齐备。**UAT 复测发现并修复真 bug**：设计器事件序号字符串比较（Web 1.1.1）。
+- **测试数据**：复用 admin，无新建账号；新建图/表单/流程/实例（UAT110-*）保留不删；历史遗留 1 条 WAITING_HUMAN 测试执行（`2121178715751251970`）按「不删除测试数据」留置。
+- **知识同步**：`version.json` → PUBLISHED 1.1.0；`CHANGELOG.md` 1.1.0 条目；README 三仓版本与 `agent-graph.png`（新设计器重拍、裁去含测试图名的顶栏）更新；需求池 P70（显示小修）保持未排期。
+- **回执**：`product/v1.1.0-graph-designer/receipts/execution-110-05.md`。
+
 **当前状态（2026-11-11，1.0.0 已发布并部署演示环境，P27/P33/P40 核销（第 53—55 个功能），待 Planner 阶段 7 复核）**
 
 1.0.0（Server + Web 同版）发布并部署演示环境：P27 人员批量导入导出、P33 打印模板/浏览器打印/服务端 PDF/明细表导出、P40 日志查询，加 F1-4 强制改密、F4 IoT 发起人显示；阶段 3 验收四轮通过（U1—U3 打印返修完成）。

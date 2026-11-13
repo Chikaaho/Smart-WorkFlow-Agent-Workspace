@@ -6,7 +6,7 @@
 |---|---|---|---|
 | P66 Z4 **已完成（2026-11-10 17:17）** | 2026-11-10 17:16 以后 | 只读：UAT `server.log` 128K（daily 轮转 00:00:17，`server.log-20261110` 346M）、`df -h /` 66%（余 6.3G）、logrotate 配置实际生效；`version.json` 状态与 `knowledge/features/multi-database-compat.md` 已记 COMPLETED。见 `execution-final-05.md` §3 | **Planner 已回读通过**（`planning-review-041-02.md` §2）。观察：日志约 346M/天，`maxsize` 因每天只轮转一次不起作用，压缩后约 18M/天，暂不处理，见 P69 |
 
-## 进行中：1.1.0 版本（XL，Owner 2026-11-12 立项，阶段 3 通过，进入阶段 4—6；`planning-review-110-05.md`）
+## 已发布：1.1.0 版本（XL，Owner 2026-11-12 立项；2026-11-13 已发布并部署演示环境，待 Planner 阶段 7 复核；`execution-110-05.md`）
 
 Owner 原话："下一步先优化一下graph的设计器，太丑了，参考一下现有流程画布和dify的设计理念，其他的你再加几个功能凑到xl一起做"。方向 [direction-v1.1.0.md](../product/v1.1.0-graph-designer/ready/direction-v1.1.0.md)；评估复核 `planning-review-110-01.md`。Owner 2026-11-12 裁决：G2 拆出；继续 Vue Flow 扩展适配层；运行可视化放进本版；P67 与人工节点语义按推荐。
 

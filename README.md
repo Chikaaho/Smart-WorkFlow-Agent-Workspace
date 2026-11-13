@@ -2,7 +2,7 @@
 
 **企业智能流程与低代码 AI Agent 平台**
 
-![Version](https://img.shields.io/badge/version-1.0.0-2563EB)
+![Version](https://img.shields.io/badge/version-1.1.0-2563EB)
 ![License](https://img.shields.io/badge/license-MIT-2563EB)
 ![Backend](https://img.shields.io/badge/backend-Java%2021%20%7C%20Spring%20Boot%203.4-6DB33F)
 ![Frontend](https://img.shields.io/badge/frontend-Vue%203%20%7C%20Vite-42B883)
@@ -12,7 +12,7 @@
 
 CH-aPaaS 是一个可以自己搭建业务应用的低代码平台：把业务做成表单和流程，就能在工作台上发起、审批和跟进；在这个基础上，还带 AI 智能体、设备接入和消息通知。项目由三部分组成：本仓库放规划文档和开发治理资料，[后端](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server)和[前端](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web)分别独立开发、发布。
 
-- 当前版本：**Server 1.0.0** · **Web 1.0.0**
+- 当前版本：**Server 1.1.0** · **Web 1.1.1**
 - 数据库：PostgreSQL / MySQL / MariaDB / Oracle / SQL Server / openGauss / 达梦 / 人大金仓 / H2
 
 ## 核心能力
@@ -45,6 +45,8 @@ CH-aPaaS 是一个可以自己搭建业务应用的低代码平台：把业务�
 | 应急演练 | 跨部门灾备演练计划审批 | 多轮会签 → 各部门并行审批 → 到点自动下发设备指令 |
 | 流程结构总览 | 校园出入口异常事件分级处置的流程结构 | AI 研判原因 → 按严重程度建单 → 督办/上报/现场处理 |
 | 设备温度监控 | 设备温度偏离的智能研判与处置 | AI 按阈值研判 → 自动建单 → 校准/维修 → 复产审批 |
+
+**1.1.0 新能力**：图设计器重做（九类节点卡片、分组色板、插入与整理布局、撤销重做）、结构化入参与出参、人工节点（处理人/字段/超时边）、子图节点（固定版本、入出参映射）、节点级运行状态与执行轨迹。
 
 **1.0.0 新能力**：人员批量导入导出（模板签名、整批回滚、首登强制改密）、打印模板与浏览器/服务端 PDF 打印（中文字体随产物打包）、日志查询（登录/操作/异常三类，保留 90 天）、IoT 实例发起人显示「系统（IoT）」。
 
@@ -144,7 +146,7 @@ git clone git@github.com:Chikaaho/Smart-WorkFlow-aPaaS-Web.git Smart-WorkFlow-aP
 
 ## 版本
 
-当前版本 **Server 1.0.0** · **Web 1.0.0**（两者搭配使用）。
+当前版本 **Server 1.1.0** · **Web 1.1.1**（两者搭配使用）。
 
 历史版本与下载见 [后端 Releases](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-server/releases)、[前端 Releases](https://github.com/Chikaaho/Smart-WorkFlow-aPaaS-Web/releases) 与 [`CHANGELOG.md`](CHANGELOG.md)。
 

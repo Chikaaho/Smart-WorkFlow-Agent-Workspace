@@ -1,40 +1,40 @@
 {
   "$schema": "CH-aPaaS 版本权威（单一机器可读源；变更须走新回执）",
   "product": "CH-aPaaS",
-  "version": "1.0.0",
-  "featureCount": 55,
+  "version": "1.1.0",
+  "featureCount": 58,
   "iteration": "0.1.0",
-  "registeredAt": "2026-11-11",
-  "registeredBy": "1.0.0 发布列车（P27/P33/P40 三个正式功能，第 53—55 个）；阶段 4—6 完成：两仓合并 CI 全绿、tag 1.0.0 + Release(Latest)、演示环境部署与 F1—F4 复测，回执 product/v1.0.0-release/receipts/execution-100-05.md",
+  "registeredAt": "2026-11-13",
+  "registeredBy": "1.1.0 发布列车（G1 图设计器、G3 人工节点与子图、G4 任务详情与监控小尾巴，第 56—58 个）；阶段 4—6 完成：两仓普通合并 CI 全绿、tag 1.1.0 + Release(Latest)、Web 1.1.1 补丁（设计器事件序号修复）、演示环境部署与 G1/G3/G4 复测，回执 product/v1.1.0-graph-designer/receipts/execution-110-05.md",
   "development": {
-    "targetVersion": "1.0.0",
+    "targetVersion": "1.1.0",
     "status": "PUBLISHED",
-    "statusNote": "阶段 6 完成（2026-11-11）：Server CI 2,492/0/0/45（develop 43035313977、main 43035353166 attempt2 全 success，含 CommandQueueIntegrationTest 7/7）；Web CI 2060 passed/3 skipped（feature 43036986258、develop 43037004490、main 43037042393）；演示环境 Server 1.0.0（health UP、Flyway 34 行/max 1.0.0）+ Web 1.0.0（index-BCCrQSgQ.js）部署完成，F1—F4 各复测一组",
-    "direction": "product/v1.0.0-release/ready/direction-v1.0.0.md",
-    "finalReview": "待 Planner 阶段 7 复核（execution-100-05.md）",
+    "statusNote": "阶段 6 完成（2026-11-13）：Server CI 全绿（feature 43372303893 success=95b3af66、develop 43374153229 success=131bc4da、main 43377261626 success=6d6bd666；顺带修复 CI 红因：本地 .git/info/exclude 的 config/ 规则曾漏提交 AgentHumanTaskSchedulingConfig 等 4 源码文件 + 生命周期测试闩锁竞态）；Web CI 全绿（feature 6c8f936 green、develop 3ab13f31 green、main bf84989 green；1.1.1 修复链 feature 43413013083 / develop 43413772266 / main 43414744604 全 success）；演示环境 Server 1.1.0（build.version=1.1.0、health UP、Flyway 34→35 行/max 1.1.0、启动段 ERROR 0、jar sha256 与 Release 资产一致）+ Web 1.1.1（入口 index-tFylQPt8.js、根 200、nginx -t 通过），G1（LLM+条件+知识检索全节点成功）/G3（人工处理续跑 + 子图子执行 SUCCESS）/G4（明细表任务详情、发起人 IoT 筛选、监控时间/状态/流程名）各复测一组；UAT 复测发现并修复设计器事件序号字符串比较 bug（Web 1.1.1）",
+    "direction": "product/v1.1.0-graph-designer/ready/direction-v1.1.0.md",
+    "finalReview": "待 Planner 阶段 7 复核（execution-110-05.md）",
     "branches": {
-      "server": "develop=708d3a36、main=aa7c86e5（feature/1.0.0 已合并删除）",
-      "web": "develop=b4b2d25、main=a85aa8e（feature/1.0.0 已合并删除；含 838b84d 打印 spec TZ 修复）",
+      "server": "develop=131bc4da、main=6d6bd666（feature/1.1.0 已合并删除）",
+      "web": "develop=f322440、main=3cc0584（feature/1.1.0 与 feature/1.1.1-event-seq-fix 均已合并删除）",
       "workspace": "develop-sw（本同步批次提交后回读）"
     },
     "developmentVersion": {
-      "server": "1.0.0（正式构建 -Drevision=1.0.0）",
-      "web": "1.0.0"
+      "server": "1.1.0（正式构建 -Drevision=1.1.0）",
+      "web": "1.1.1（web 侧 1.1.0 发布后补丁）"
     }
   },
   "projections": {
     "serverRepo": {
       "path": "Smart-WorkFlow-aPaaS-server",
-      "mavenVersion": "1.0.0",
+      "mavenVersion": "1.1.0",
       "flywayEndpoint": {
-        "h2": "V1.0.0",
-        "postgresql": "V1.0.0"
+        "h2": "V1.1.0",
+        "postgresql": "V1.1.0"
       },
-      "flywaySeed": "V0.2.0 基线 + V0.2.2～V0.4.0/V1.0.0 + 20 支 R__（31 条）；UAT 实测 34 行（含 R__ 重复执行记录），max(version)=1.0.0"
+      "flywaySeed": "V0.2.0 基线 + V0.2.2～V0.4.0/V1.0.0/V1.1.0 + R__；UAT 实测 35 行（含 R__ 重复执行记录），max(version)=1.1.0"
     },
     "webRepo": {
       "path": "Smart-WorkFlow-aPaaS-Web",
-      "packageVersion": "1.0.0"
+      "packageVersion": "1.1.1"
     },
     "workspace": {
       "path": "Smart-WorkFlow-Agent-Workspace",
