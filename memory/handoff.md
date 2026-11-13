@@ -4,7 +4,8 @@
 
 ## 当前
 
-- **执行方**：阶段 3 已通过。按 `planning-review-110-05.md` §4 做阶段 4—6，回执 `execution-110-05.md`（可分批）。CI 失败先修再重走链；Flyway +1 行；README `agent-graph.png` 重拍脱敏。
+- **执行方**：阶段 4—6 已交。按 `planning-review-110-06.md` §3 做 Z1—Z3，并清理隔离环境，回执 `execution-110-06.md`。只能用普通提交，不改写历史；换行符保持 LF。
+- **Owner**：待追认 Web 1.1.1。
 - **规划**：验收各批回执；G2（P67）已拆出，语义写在 `todo/p67-graph-as-executor.md`。
 
 ## 线上基线

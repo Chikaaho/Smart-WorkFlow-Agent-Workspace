@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-2026-11-13｜规划｜1.1.0 **阶段 3 通过**（`planning-review-110-05.md`，四轮：V1—V8、W1—W6、X1—X4 全闭环），七阶段 3/0/4。执行方做阶段 4—6（合并 CI、tag/Release Latest、演示部署复测、README 重拍、同步），回执 `execution-110-05.md`。发布说明已知限制：子图剩余时间不换算、超时扫描单实例、DM8/Kingbase 仅静态、角色存编码。显示小修入池 P70。阶段 7 后清理 `v110-*` 六容器与 `iso-pg5433`。1.0.0 已 COMPLETED（功能 55）。
+2026-11-13｜规划｜1.1.0 阶段 4—6 复核（`planning-review-110-06.md`），七阶段 6/1/0。Server tag `1.1.0`=`6d6bd666`（Release `443946002` Latest）；Web `1.1.0`=`bf84989d`、`1.1.1`=`3cc05844`（Release `444137262` Latest，复测发现事件序号字符串比较缺陷的当日补丁，**超出指令，待 Owner 追认**）。演示 Server 1.1.0、Flyway 35 行、Web 入口 `index-tFylQPt8.js`；备份 `*_pre110`。收尾 Z1 README `agent-graph.png` 重拍、Z2 四文件 CRLF→LF 还原、Z3 取消遗留 WAITING 执行，然后清隔离环境 → `execution-110-06.md`。教训：分支 CI 曾一直红（exclude 吞源文件），回执须附分支 CI run 号。显示小修 P70。阶段 7 后清理 `v110-*` 六容器与 `iso-pg5433`。1.0.0 已 COMPLETED（功能 55）。
 
 ## 当前任务
 
