@@ -1,10 +1,11 @@
 # 功能摘要
 
-2026-11-10｜Executor｜Server 0.4.1 + Web 0.3.8 补丁发布并部署 UAT（不新增功能数，待阶段 7）。
+2026-11-14｜规划｜最新：1.1.2 补丁立项（B1—B6，P70/P71，不计功能数），阶段 1 完成。
+
+- 1.1.0：**Graph 设计器列车（`COMPLETED`，功能 56—58）**：Server tag `1.1.0`=`6d6bd666`；Web `1.1.1`=`3cc05844`（Owner 追认）。终审 `product/v1.1.0-graph-designer/receipts/planning-review-110-07.md`。
+- 1.0.0：`COMPLETED`，见 `product/v1.0.0-release/`。
 
 - 0.4.1/0.3.8：**W-c 会签意见摘要与部门、W-a2 画布连线/缩放、W-b2 长表单复测、W-e 列表时间**：Server 任务详情补 `opinionFields`/`assigneeDept`（共享 enricher），Web 会签弹窗同源渲染；画布左右接点、fit 0.617 下节点/连线 12.34px；UAT `YJ-20261108-009` 表单 1218px/面板 447px；列表 `yyyy-MM-dd HH:mm`。Server tag `0.4.1`=`09549a49`、Web tag `0.3.8`=`6e9b7313`。回执 `execution-041-02.md`。
-
-- 0.4.0：**P66 多数据库兼容（`COMPLETED`，第 52 个正式功能）**：PG、H2、MySQL 5.7/8.0、MariaDB、Oracle、SQL Server、openGauss 实测；DM8、KingbaseES 由 Owner 实库验证。Server tag `0.4.0`=`a4f6c278`；复核 `product/multi-database-compat/receipts/planning-final-review-p66-completed.md`。
 
 - 0.4.0：**P66 多数据库兼容（`COMPLETED`，第 52 个正式功能）**：PG、H2、MySQL 5.7/8.0、MariaDB、Oracle、SQL Server、openGauss 实测；DM8、KingbaseES 由 Owner 实库验证。Server tag `0.4.0`=`a4f6c278`；复核 `product/multi-database-compat/receipts/planning-final-review-p66-completed.md`。
 
