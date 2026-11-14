@@ -4,11 +4,11 @@
 
 ## 当前
 
-- **执行方**：1.1.2 回执 02 已交（Server `04049d08`、Web `45a9340`，CI success），只剩 G1 一行。按 `product/v1.1.2-patch/receipts/planning-execution-prompt-112-02.md` 处理，回执 `execution-112-03.md`。
+- **执行方**：1.1.2 阶段 3 已通过（`planning-review-112-03.md`）。按审查 03 §3 做阶段 4 合并 → 5 发版（两仓 tag `1.1.2`，Latest）→ 6 部署演示环境、复测、B6 重拍、同步，回执 `execution-112-04.md`。
 - **候选**：P72 超时恢复遗留等待人工行（建议下一个补丁），P67、P68。
 - 隔离环境 iso112（18093/5275/5433/56379）保留到阶段 7。
 - **Owner**：2026-11-14 授权 Planner 选题；版本 1.1.2 由 Planner 按此定。
-- **规划**：验收 `execution-112-03.md`，通过后进入阶段 4。
+- **规划**：阶段 7 复核 `execution-112-04.md`，通过后写 1.1.2 `COMPLETED`，把方向移到 `passed/`。
 
 ## 线上基线
 
