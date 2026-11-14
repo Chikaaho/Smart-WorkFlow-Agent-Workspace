@@ -6,6 +6,12 @@
 |---|---|---|---|
 | P66 Z4 **已完成（2026-11-10 17:17）** | 2026-11-10 17:16 以后 | 只读：UAT `server.log` 128K（daily 轮转 00:00:17，`server.log-20261110` 346M）、`df -h /` 66%（余 6.3G）、logrotate 配置实际生效；`version.json` 状态与 `knowledge/features/multi-database-compat.md` 已记 COMPLETED。见 `execution-final-05.md` §3 | **Planner 已回读通过**（`planning-review-041-02.md` §2）。观察：日志约 346M/天，`maxsize` 因每天只轮转一次不起作用，压缩后约 18M/天，暂不处理，见 P69 |
 
+## 进行中：1.1.2 补丁（L，Planner 2026-11-14 选定，不计功能数）
+
+Owner 2026-11-14："你定吧，现在我没有特别需要先做的"。Planner 选 P70+P71 合成补丁，两仓都发 `1.1.2`（Server 1.1.0→1.1.2、Web 1.1.1→1.1.2）。方向 [direction-v1.1.2.md](../product/v1.1.2-patch/ready/direction-v1.1.2.md)：B1 取消按执行编号静默无效（P71，优先）、B2 运行中误显示失败、B3 状态中文、B4 失败分类列宽、B5 当前节点显示名称、B6 README 展示图重拍。无数据库迁移。回执 `execution-112-01.md`。
+
+七阶段 1/0/6。
+
 ## 已结束：1.1.0 版本（XL，COMPLETED 2026-11-13，第 56—58 个正式功能，七阶段 7/0/0）
 
 Owner 原话："下一步先优化一下graph的设计器，太丑了，参考一下现有流程画布和dify的设计理念，其他的你再加几个功能凑到xl一起做"。方向 [direction-v1.1.0.md](../product/v1.1.0-graph-designer/passed/direction-v1.1.0.md)；评估复核 `planning-review-110-01.md`。Owner 2026-11-12 裁决：G2 拆出；继续 Vue Flow 扩展适配层；运行可视化放进本版；P67 与人工节点语义按推荐。
@@ -342,8 +348,8 @@ P60 I2 已于 2026-09-10 COMPLETED，已通过方向包含子表/关联、公式
 | P69 | 演示环境 Server 日志量控制：约 346M/天，logrotate 改每小时执行或查清高频日志来源 | Planner 2026-11-10 Z4 观察；预估 S | **关闭**（2026-11-10：346M 为 0.4.0 前 DEBUG，`DataSourceUtils` 约 96%，0.4.0 已改 INFO；不改 logrotate） |
 | P67 | Graph 作为执行器：在流程/表单中配置调用，入参→出参供业务使用 | Owner 2026-11-10；预估 L；[需求定义](p67-graph-as-executor.md)；关联 P57/P65 | 未排期（2026-11-12 从 1.1.0 拆出，语义已定，见需求定义「已定语义」） |
 | P68 | 外部开发的 Java 工具：模板下载、上传审核保存、类 MCP 入口供 Agent 调用、动态编译、沙箱或主 JVM 运行、结束销毁、快照与日志留 7 天 | Owner 2026-11-10；预估 XL（运行外部代码）；[需求定义](p68-external-java-tool-sandbox.md)；关联 P21 子进程执行器 | 未排期 |
-| P70 | 显示小修：Graph 执行列表「失败分类」列过窄，`HUMAN_TIMEOUT` 被截断；实例监控干预页「当前节点」显示节点编码（`n_approve`）而非名称；实例状态 `DISCARDED` 无中文；执行详情状态标签 `CANCELLED` 无中文；设计器运行中结果区误显示「执行失败 耗时 0ms」（RUNNING 时 `executeResult.success=false` 直接按失败渲染，实为未完成的中间态） | Planner 2026-11-13 `planning-review-110-05.md` §3、`-06.md` §4；`execution-110-06.md` 补充（CANCELLED 映射、运行中误显示失败）；预估 S | 未排期 |
-| P71 | 生命周期取消按**执行编号**调用时静默无效：`cancel(executionId)` 用原始入参做 `cancelWaiting/cancelQueued` 与任务关闭（W5 双编号互认只用于查找受理行），结果执行 id 传入时 UPDATE 命中 0 行，接口仍返回 200+当前状态（WAITING_HUMAN）。需用 `requireOwned` 解析后的受理行 id 执行变更，或对未命中显式 400 | Executor 2026-11-13 `execution-110-06.md` Z3 复测发现（按受理号取消正常；按执行编号取消无效） | 未排期 |
+| P70 | 显示小修：Graph 执行列表「失败分类」列过窄，`HUMAN_TIMEOUT` 被截断；实例监控干预页「当前节点」显示节点编码（`n_approve`）而非名称；实例状态 `DISCARDED` 无中文；执行详情状态标签 `CANCELLED` 无中文；设计器运行中结果区误显示「执行失败 耗时 0ms」（RUNNING 时 `executeResult.success=false` 直接按失败渲染，实为未完成的中间态） | Planner 2026-11-13 `planning-review-110-05.md` §3、`-06.md` §4；`execution-110-06.md` 补充（CANCELLED 映射、运行中误显示失败）；预估 S | **进行中**（1.1.2 补丁 B2—B5） |
+| P71 | 生命周期取消按**执行编号**调用时静默无效：`cancel(executionId)` 用原始入参做 `cancelWaiting/cancelQueued` 与任务关闭（W5 双编号互认只用于查找受理行），结果执行 id 传入时 UPDATE 命中 0 行，接口仍返回 200+当前状态（WAITING_HUMAN）。需用 `requireOwned` 解析后的受理行 id 执行变更，或对未命中显式 400 | Executor 2026-11-13 `execution-110-06.md` Z3 复测发现（按受理号取消正常；按执行编号取消无效） | **进行中**（1.1.2 补丁 B1） |
 
 管理员P0治理插单（2026-09-15）：[连续执行与可见浏览器验收门禁](admin-machine-gate-continuous-visible-browser.md)已`COMPLETED（规划确认）`，本地提交`8e87899`，治理测试sh 70/70、PowerShell 49/49。该任务不并入P60业务计数；远程发布仍需Owner另行授权。
 

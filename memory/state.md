@@ -1,10 +1,10 @@
 # 当前状态摘要
 
-2026-11-13｜规划｜**1.1.0 COMPLETED**（`planning-review-110-07.md`，七阶段 7/0/0，功能 56—58：G1 设计器重做、G3 人工/子图节点、G4 小尾巴）。方向归档 `product/v1.1.0-graph-designer/passed/`。当前无进行中版本，等 Owner 排下一项。
+2026-11-14｜规划｜**1.1.2 补丁立项**（L，不计功能数），七阶段 1/0/6。Owner「你定吧」，Planner 选 P70+P71，两仓都发 `1.1.2`。1.1.0 已 COMPLETED（功能 56—58，`planning-review-110-07.md`）。
 
 ## 当前任务
 
-无进行中。候选：P70 显示小修 + P71 按执行编号取消静默无效（建议合成 1.1.2 补丁，S，P71 优先）；P67 Graph 作为执行器（L，语义已定，`todo/p67-graph-as-executor.md`）；P68 外部 Java 工具（XL）。
+方向 `product/v1.1.2-patch/ready/direction-v1.1.2.md`：B1 取消按执行编号静默无效（P71，优先，含各入口传哪个编号）、B2 运行中误显示失败、B3 状态中文、B4 失败分类列宽、B5 当前节点名称、B6 README 图重拍。无迁移，Flyway 保持 35 行。回执 `execution-112-01.md`，须附功能分支 CI run 号。之后候选：P67（L，语义已定）、P68（XL）。
 
 ## 1.1.0 摘要（已结束）
 
