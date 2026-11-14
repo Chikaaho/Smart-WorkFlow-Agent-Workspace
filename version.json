@@ -1,15 +1,15 @@
 {
   "$schema": "CH-aPaaS 版本权威（单一机器可读源；变更须走新回执）",
   "product": "CH-aPaaS",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "featureCount": 58,
   "iteration": "0.1.0",
-  "registeredAt": "2026-11-13",
-  "registeredBy": "1.1.0 发布列车（G1 图设计器、G3 人工节点与子图、G4 任务详情与监控小尾巴，第 56—58 个）；阶段 4—6 完成：两仓普通合并 CI 全绿、tag 1.1.0 + Release(Latest)、Web 1.1.1 补丁（设计器事件序号修复）、演示环境部署与 G1/G3/G4 复测，回执 product/v1.1.0-graph-designer/receipts/execution-110-05.md",
+  "registeredAt": "2026-11-15",
+  "registeredBy": "1.1.2 补丁（P71 取消按执行编号静默无效、P70 显示小修，两仓对齐 1.1.2，不计功能数）；阶段 4—6 完成：两仓六步普通合并 CI 全绿、tag 1.1.2 + Release(Latest)（Server 445377854 / Web 445380514）、演示环境部署（Flyway 35 行不变、health UP）与 B1/B2/B3 复测、B6 展示图三仓重拍，回执 product/v1.1.2-patch/receipts/execution-112-05.md",
   "development": {
-    "targetVersion": "1.1.0",
+    "targetVersion": "1.1.2",
     "status": "PUBLISHED",
-    "statusNote": "阶段 6 完成（2026-11-13）：Server CI 全绿（feature 43372303893 success=95b3af66、develop 43374153229 success=131bc4da、main 43377261626 success=6d6bd666；顺带修复 CI 红因：本地 .git/info/exclude 的 config/ 规则曾漏提交 AgentHumanTaskSchedulingConfig 等 4 源码文件 + 生命周期测试闩锁竞态）；Web CI 全绿（feature 6c8f936 green、develop 3ab13f31 green、main bf84989 green；1.1.1 修复链 feature 43413013083 / develop 43413772266 / main 43414744604 全 success）；演示环境 Server 1.1.0（build.version=1.1.0、health UP、Flyway 34→35 行/max 1.1.0、启动段 ERROR 0、jar sha256 与 Release 资产一致）+ Web 1.1.1（入口 index-tFylQPt8.js、根 200、nginx -t 通过），G1（LLM+条件+知识检索全节点成功）/G3（人工处理续跑 + 子图子执行 SUCCESS）/G4（明细表任务详情、发起人 IoT 筛选、监控时间/状态/流程名）各复测一组；UAT 复测发现并修复设计器事件序号字符串比较 bug（Web 1.1.1）",
+    "statusNote": "阶段 6 完成（2026-11-15）：Server 1.1.2 部署（sha256 与 Release 资产一致、health 200、Flyway 35 行、启动 ERROR 0）；Web 1.1.2 部署（入口 index-DsUInUfT.js、nginx -t/reload、根/入口/健康 200）；复测 B1（双编号各取消一次，列表详情已取消）/B2（运行中显示运行中）/B3（DISCARDED 已废弃）通过；B6 展示图三仓重拍",
     "direction": "product/v1.1.0-graph-designer/ready/direction-v1.1.0.md",
     "finalReview": "待 Planner 阶段 7 复核（execution-110-05.md）",
     "branches": {
