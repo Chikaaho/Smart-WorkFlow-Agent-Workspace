@@ -11,22 +11,22 @@
 
 ## 2. 阶段 6 阻塞不成立
 
-回执说「工作区无部署通道记录」，这不对。1.0.0 的部署脚本 `product/v1.0.0-release/receipts/evidence/stage6-deploy-100.sh`（这个目录被 gitignore，所以没进 Git）第 12—13 行写明了通道：
+回执说「工作区无部署通道记录」，这不对。正式运维手册 `docs/ops/production-ops.md` §2 写了连接方式：
 
-```text
-ssh -i $HOME/ssh/config/personal.pem -o ConnectTimeout=15 root@8.166.112.85
-scp -i $HOME/ssh/config/personal.pem -o ConnectTimeout=15 ...
+```bash
+~/ssh/ssh/ssh_personal.sh                      # 登录
+~/ssh/ssh/scp_personal.sh <本地路径> <远端路径>   # 上传
 ```
 
-密钥在 `~/ssh/config/personal.pem`，注意是 `ssh`，不是 `.ssh`。规划已确认本机有这个文件，内容没有读。回执里试过的 `~/.ssh/id_rsa`、`github_ed25519` 都不是这把密钥，所以这次不需要 Owner 提供凭据。
+主机和密钥都由这两个脚本封装，手册本身不写 IP 和密钥路径，所以按「凭据」「8.166」这类关键词搜不到。规划已确认本机两个脚本都在，没有读内容。1.0.0 部署脚本（`product/v1.0.0-release/receipts/evidence/stage6-deploy-100.sh`，gitignore）当时直接用了 `~/ssh/config/personal.pem`，可以佐证这个通道一直能用。回执里试过的 `~/.ssh/id_rsa`、`github_ed25519` 都不是这把密钥，所以这次不需要 Owner 提供凭据。
 
-教训：检索部署通道时要把 `receipts/evidence/` 下被 gitignore 的历史脚本也查一遍。1.0.0 和 1.1.0 都是用这个通道部署的。
+**原因**：手册不在必读链路里。`system.md`、各角色定义、本方向和审查 03 §3 都没有提到它，执行方检索时也没查 `docs/`。方向和审查 03 是规划写的，阶段 6 的交接本应注明「按运维手册部署」，这是规划这边的遗漏。治理入口的修正（把手册列为部署前必读）属于管理员职责，规划已登记，待 Owner 决定。
 
 ## 3. 执行方继续阶段 6
 
-按 `planning-review-112-03.md` §3 阶段 6 和那里的「唯一值」表执行，范围和顺序都不变：
+先完整读 `docs/ops/production-ops.md`，重点是 §2 连接、§6.4 启停（`start.sh` 要先加载 `server.env`）、§8 发布与升级。然后按 `planning-review-112-03.md` §3 阶段 6 和那里的「唯一值」表执行，范围和顺序都不变：
 
-1. 用上面的密钥连接。部署前确认剩余空间 ≥3G，备份数据库 dump、`bootstrap.jar`、`server.env`、Web 目录，后缀统一用 `pre112`。
+1. 用手册 §2 的脚本连接。部署前确认剩余空间 ≥3G，备份数据库 dump、`bootstrap.jar`、`server.env`、Web 目录，后缀统一用 `pre112`。
 2. 先部署 Server 1.1.2。上传后核对 sha256 和 Release 资产一致，再 stop/start。核对 health、`build.version=1.1.2`、Flyway 仍为 35 行、启动 ERROR 为 0。
 3. 再部署 Web 1.1.2：先 `nginx -t`，再 reload，然后核对入口 JS 和根路径返回 200。
 4. 在演示环境复测：B1 用受理号和执行编号各取消一次，列表和详情都要显示「已取消」；再复测 B2、B3。截图要用浏览器视口截图。

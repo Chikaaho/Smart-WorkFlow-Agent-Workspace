@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-2026-11-15｜规划｜**1.1.2 阶段 4—5 PASSED**（L，不计功能数），七阶段 5/1/1，`planning-review-112-04.md`。两仓 tag `1.1.2`（Server `c3724e52` Release `445377854`、Web `abfe1339` Release `445380514`），Latest 均为 1.1.2。阶段 6 的 BLOCKED 被驳回：部署通道是 `~/ssh/config/personal.pem`（1.0.0 部署脚本里有记录）。执行方继续阶段 6，回执 `execution-112-05.md`；唯一值见审查 03 §3（功能数 58 不变，P70/P71 核销）。阶段 3 快照 Server `04049d08`、Web `45a9340`。P72：超时恢复后旧执行行停留等待人工（范围外，未排期）。Owner「你定吧」，Planner 选 P70+P71，两仓都发 `1.1.2`。1.1.0 已 COMPLETED（功能 56—58，`planning-review-110-07.md`）。
+2026-11-15｜规划｜**1.1.2 阶段 4—5 PASSED**（L，不计功能数），七阶段 5/1/1，`planning-review-112-04.md`。两仓 tag `1.1.2`（Server `c3724e52` Release `445377854`、Web `abfe1339` Release `445380514`），Latest 均为 1.1.2。阶段 6 的 BLOCKED 被驳回：通道见运维手册 `docs/ops/production-ops.md` §2 的脚本。执行方继续阶段 6，回执 `execution-112-05.md`；唯一值见审查 03 §3（功能数 58 不变，P70/P71 核销）。阶段 3 快照 Server `04049d08`、Web `45a9340`。P72：超时恢复后旧执行行停留等待人工（范围外，未排期）。Owner「你定吧」，Planner 选 P70+P71，两仓都发 `1.1.2`。1.1.0 已 COMPLETED（功能 56—58，`planning-review-110-07.md`）。
 
 ## 当前任务
 
@@ -22,4 +22,4 @@
 - 本机脚本写文件会把 LF 改成 CRLF，提交前核 `git ls-files --eol`。
 - curl `--data-binary @file` 文件缺失会发空请求体；后台任务一律用绝对路径。
 - UAT 健康路径 `/api/actuator/health`；超管导入须显式 `tenantId`。
-- UAT SSH 用 `-i ~/ssh/config/personal.pem root@8.166.112.85`（注意是 `ssh`，不是 `.ssh`）；查部署通道时要把 gitignore 掉的 `receipts/evidence/` 历史脚本也查一遍。
+- 部署按运维手册 `docs/ops/production-ops.md` 执行，连接用 §2 的 `~/ssh/ssh/ssh_personal.sh` 和 `scp_personal.sh`。手册不在必读链路里，所以规划写阶段 6 交接时必须点名它。治理入口的修正待 Owner 决定，属管理员职责。
