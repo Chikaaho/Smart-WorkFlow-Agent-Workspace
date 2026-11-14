@@ -4,7 +4,8 @@
 
 ## 当前
 
-- **执行方**：按 `product/v1.1.2-patch/ready/direction-v1.1.2.md` 做 1.1.2 补丁，两仓建 `feature/1.1.2`；先回答各取消入口传哪个编号；回执 `execution-112-01.md`（附功能分支 CI run 号）。
+- **执行方**：1.1.2 回执 01 已交（两仓 `feature/1.1.2`，CI success），第 1 轮未过。按 `product/v1.1.2-patch/receipts/planning-execution-prompt-112-01.md` 修 G1—G3，回执 `execution-112-02.md`。
+- 隔离环境 iso112（18093/5275/5433/56379）保留到阶段 7。
 - **Owner**：2026-11-14 授权 Planner 选题；版本 1.1.2 由 Planner 按此定。
 - **规划**：验收 1.1.2 回执；之后候选 P67、P68。
 
