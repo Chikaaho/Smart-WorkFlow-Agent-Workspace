@@ -350,6 +350,7 @@ P60 I2 已于 2026-09-10 COMPLETED，已通过方向包含子表/关联、公式
 | P68 | 外部开发的 Java 工具：模板下载、上传审核保存、类 MCP 入口供 Agent 调用、动态编译、沙箱或主 JVM 运行、结束销毁、快照与日志留 7 天 | Owner 2026-11-10；预估 XL（运行外部代码）；[需求定义](p68-external-java-tool-sandbox.md)；关联 P21 子进程执行器 | 未排期 |
 | P70 | 显示小修：Graph 执行列表「失败分类」列过窄，`HUMAN_TIMEOUT` 被截断；实例监控干预页「当前节点」显示节点编码（`n_approve`）而非名称；实例状态 `DISCARDED` 无中文；执行详情状态标签 `CANCELLED` 无中文；设计器运行中结果区误显示「执行失败 耗时 0ms」（RUNNING 时 `executeResult.success=false` 直接按失败渲染，实为未完成的中间态） | Planner 2026-11-13 `planning-review-110-05.md` §3、`-06.md` §4；`execution-110-06.md` 补充（CANCELLED 映射、运行中误显示失败）；预估 S | **进行中**（1.1.2 补丁 B2—B5） |
 | P71 | 生命周期取消按**执行编号**调用时静默无效：`cancel(executionId)` 用原始入参做 `cancelWaiting/cancelQueued` 与任务关闭（W5 双编号互认只用于查找受理行），结果执行 id 传入时 UPDATE 命中 0 行，接口仍返回 200+当前状态（WAITING_HUMAN）。需用 `requireOwned` 解析后的受理行 id 执行变更，或对未命中显式 400 | Executor 2026-11-13 `execution-110-06.md` Z3 复测发现（按受理号取消正常；按执行编号取消无效） | **进行中**（1.1.2 补丁 B1） |
+| P72 | Graph 执行超时恢复后旧执行行停留「等待人工」：人工任务超时自动恢复后会产生新的执行行（显示成功），原来那行一直显示等待人工，待办里已经没有任务；这类子执行行的详情按执行编号查会返回 404 | Planner 2026-11-14 `planning-review-112-02.md` 范围外发现（`g1-list-after-cancel.png` 取消验证子图 16:04:57/16:05:27/16:06:27 三行）；`execution-112-02.md` §4.1；1.1.0 起就存在；预估 M—L | 未排期（建议下一个补丁） |
 
 管理员P0治理插单（2026-09-15）：[连续执行与可见浏览器验收门禁](admin-machine-gate-continuous-visible-browser.md)已`COMPLETED（规划确认）`，本地提交`8e87899`，治理测试sh 70/70、PowerShell 49/49。该任务不并入P60业务计数；远程发布仍需Owner另行授权。
 
