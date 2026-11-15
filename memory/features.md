@@ -1,7 +1,8 @@
 # 功能摘要
 
-2026-11-14｜规划｜最新：1.1.2 补丁立项（B1—B6，P70/P71，不计功能数），阶段 1 完成。
+2026-11-15｜规划｜最新：1.1.2 补丁 COMPLETED（不计功能数，正式功能数 58）。
 
+- 1.1.2：**取消与显示补丁（`COMPLETED`，P70/P71 核销）**：Server、Web tag `1.1.2`=`c3724e52`/`abfe1339`，UAT 已部署。终审 `product/v1.1.2-patch/receipts/planning-review-112-06.md`。
 - 1.1.0：**Graph 设计器列车（`COMPLETED`，功能 56—58）**：Server tag `1.1.0`=`6d6bd666`；Web `1.1.1`=`3cc05844`（Owner 追认）。终审 `product/v1.1.0-graph-designer/receipts/planning-review-110-07.md`。
 - 1.0.0：`COMPLETED`，见 `product/v1.0.0-release/`。
 

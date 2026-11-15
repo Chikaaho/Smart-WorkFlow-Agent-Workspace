@@ -1,25 +1,24 @@
 # 当前状态摘要
 
-2026-11-15｜规划｜**1.1.2 阶段 6 返修**（L，不计功能数），七阶段 5/1/1，`planning-review-112-05.md`，账本 rev 4 CONTINUE。UAT 已部署 Server 1.1.2 + Web 1.1.2（入口 `index-DsUInUfT.js`，备份 pre112），Flyway 35 行；B1、B2 运行中、B3 复测通过并锁定。**B6 不通过**：图里「结束」卡被切，「开始」「LLM」不在画面内。B2 那次终态显示执行失败，缺原因说明。执行方按 `planning-execution-prompt-112-05.md` 处理，回执 `execution-112-06.md`。两仓 tag `1.1.2`（Server `c3724e52`、Web `abfe1339`），Latest 均为 1.1.2。同步已落盘（P70/P71 核销），阶段 7 一并复核。P72、P73（取消后节点轨迹仍显示等待人工）在范围外，未排期。Owner「你定吧」，Planner 选 P70+P71，两仓都发 `1.1.2`。1.1.0 已 COMPLETED（功能 56—58，`planning-review-110-07.md`）。
+2026-11-15｜规划｜**1.1.2 COMPLETED**（L，不计功能数，正式功能数仍为 58），七阶段 7/0/0。终审 `product/v1.1.2-patch/receipts/planning-review-112-06.md`，账本 rev 5 FINISH；方向文件已移到 `passed/`。**没有活动功能**，下一步等 Owner 选题。候选：P72 和 P73 合成一个补丁（建议），P67（L）、P68（XL）。
 
-## 当前任务
+## 线上
 
-方向 `product/v1.1.2-patch/ready/direction-v1.1.2.md`：B1 取消按执行编号静默无效（P71，优先，含各入口传哪个编号）、B2 运行中误显示失败、B3 状态中文、B4 失败分类列宽、B5 当前节点名称、B6 README 图重拍。无迁移，Flyway 保持 35 行。回执 `execution-112-01.md`，须附功能分支 CI run 号。之后候选：P67（L，语义已定）、P68（XL）。
+Server tag `1.1.2`=`c3724e52`（Release `445377854`，Latest）；Web tag `1.1.2`=`abfe1339`（Release `445380514`，Latest）。UAT 跑 Server 1.1.2 + Web 1.1.2（入口 `index-DsUInUfT.js`），Flyway 35 行，备份 `*_pre112`。README 展示图 `161fd589…` 已三仓同步，五张卡完整。
 
-## 1.1.0 摘要（已结束）
+## 1.1.2 摘要（已结束）
 
-- 阶段 3 四轮验收：V1—V8、W1—W6、X1—X4；回执失实四次，后续要求逐张对照截图。
-- 合并：两仓 feature→develop→main，CI 全 success；合并前修复 exclude 吞 4 个源文件与闩锁竞态（分支 CI 此前一直红）。
-- 发版：Server tag `1.1.0`=`6d6bd666`（Release `443946002` Latest，jar 242,762,534 B）；Web `1.1.0`=`bf84989d`（`443883862`）、`1.1.1`=`3cc05844`（`444137262` Latest）。1.1.1 修设计器事件序号字符串比较，**Owner 2026-11-13 追认**。
-- 部署：备份 `*_pre110`（dump 1,321,696 B）；Server 1.1.0、Flyway 35 行；Web 入口 `index-tFylQPt8.js`。G1/G3/G4 复测通过。
-- 收尾：README `agent-graph.png` 83% 重拍（两端卡片略切，下次改 README 再拍）；CRLF→LF 还原（`fc604840`）；遗留等待执行已取消；隔离环境全清。
-- 已知限制：子图超时不按父剩余时间、超时扫描单实例、DM8/Kingbase 仅静态、角色存编码。
+- 范围：B1 按执行编号取消静默无效（P71）；B2—B5 显示小修（P70）；B6 展示图。返修：G1 取消时同步结果执行行，G2 待办残留，G3 已取消不显示耗时。P70、P71 已核销。
+- 验收：阶段 3 共 3 轮（G1 两轮）。阶段 6 的 BLOCKED 被驳回，原因是运维手册不在必读链路里，管理员已在 `79bcc7cf` 补上。B6 第一次只拍到局部，返修后通过。
+- 遗留：P72 超时恢复后旧执行行停在「等待人工」；P73 取消后节点轨迹仍显示「等待人工」。
+- 隔离环境 iso112（18093/5275/5433/56379）由执行方清理，清理后在 memory 写一行确认。
 
 ## 边界与教训
 
 - 未强推/未改历史/未动其他 tag 与 Release；演示环境未删未清。
 - 回执须附分支 CI run 号，不能只报本机门禁；发版指令外的版本号先报告。
-- 本机脚本写文件会把 LF 改成 CRLF，提交前核 `git ls-files --eol`。
+- 截图描述必须照画面写；展示图按画面边缘判断，不按卡片数量判断。
+- 本机脚本写文件会把 LF 改成 CRLF，提交前核 `git ls-files --eol`（需求池本身是 CRLF）。
 - curl `--data-binary @file` 文件缺失会发空请求体；后台任务一律用绝对路径。
 - UAT 健康路径 `/api/actuator/health`；超管导入须显式 `tenantId`。
-- 部署按运维手册 `docs/ops/production-ops.md` 执行，连接用 §2 的 `~/ssh/ssh/ssh_personal.sh` 和 `scp_personal.sh`。手册不在必读链路里，所以规划写阶段 6 交接时必须点名它。治理入口的修正待 Owner 决定，属管理员职责。
+- 部署按运维手册 `docs/ops/production-ops.md`，连接用 §2 的 `ssh_personal.sh`/`scp_personal.sh`；规划写阶段 6 交接时点名手册。
