@@ -4,15 +4,15 @@
 
 ## 当前
 
-- **执行方**：1.1.2 阶段 4—5 已通过（`planning-review-112-04.md`）。继续阶段 6：先读运维手册 `docs/ops/production-ops.md`，用 §2 的脚本连接 UAT，备份（后缀 `pre112`），先部署 Server 再部署 Web，复测 B1 双编号/B2/B3，B6 重拍，同步。回执 `execution-112-05.md`。
-- **候选**：P72 超时恢复遗留等待人工行（建议下一个补丁），P67、P68。
+- **执行方**：1.1.2 阶段 6 返修，按 `planning-execution-prompt-112-05.md`：B6 适应画布后重拍、替换三处、走合并链；B2 终态查详情原值说明原因，只查不修。回执 `execution-112-06.md`。
+- **候选**：P72 超时恢复遗留等待人工行、P73 取消后节点轨迹仍等待人工（建议同一个补丁），P67、P68。
 - 隔离环境 iso112（18093/5275/5433/56379）保留到阶段 7。
 - **Owner**：2026-11-14 授权 Planner 选题；版本 1.1.2 由 Planner 按此定。
-- **规划**：阶段 7 复核 `execution-112-05.md`，通过后写 1.1.2 `COMPLETED`，把方向移到 `passed/`。
+- **规划**：复核 `execution-112-06.md`，通过后做阶段 7：写 1.1.2 `COMPLETED`，把方向移到 `passed/`，检查 memory 压缩。
 
 ## 线上基线
 
-Server main/Latest=1.1.2（`c3724e52`）；Web main/Latest=1.1.2（`abfe1339`）。UAT 在部署前仍跑 Server 1.1.0 + Web 1.1.1，Flyway 35 行。
+Server main/Latest=1.1.2（tag `c3724e52`）；Web main/Latest=1.1.2（tag `abfe1339`）。UAT 跑 Server 1.1.2 + Web 1.1.2，Flyway 35 行。
 
 ## 保留与保护
 

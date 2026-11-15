@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-2026-11-15｜规划｜**1.1.2 阶段 4—5 PASSED**（L，不计功能数），七阶段 5/1/1，`planning-review-112-04.md`。两仓 tag `1.1.2`（Server `c3724e52` Release `445377854`、Web `abfe1339` Release `445380514`），Latest 均为 1.1.2。阶段 6 的 BLOCKED 被驳回：通道见运维手册 `docs/ops/production-ops.md` §2 的脚本。执行方继续阶段 6，回执 `execution-112-05.md`；唯一值见审查 03 §3（功能数 58 不变，P70/P71 核销）。阶段 3 快照 Server `04049d08`、Web `45a9340`。P72：超时恢复后旧执行行停留等待人工（范围外，未排期）。Owner「你定吧」，Planner 选 P70+P71，两仓都发 `1.1.2`。1.1.0 已 COMPLETED（功能 56—58，`planning-review-110-07.md`）。
+2026-11-15｜规划｜**1.1.2 阶段 6 返修**（L，不计功能数），七阶段 5/1/1，`planning-review-112-05.md`，账本 rev 4 CONTINUE。UAT 已部署 Server 1.1.2 + Web 1.1.2（入口 `index-DsUInUfT.js`，备份 pre112），Flyway 35 行；B1、B2 运行中、B3 复测通过并锁定。**B6 不通过**：图里「结束」卡被切，「开始」「LLM」不在画面内。B2 那次终态显示执行失败，缺原因说明。执行方按 `planning-execution-prompt-112-05.md` 处理，回执 `execution-112-06.md`。两仓 tag `1.1.2`（Server `c3724e52`、Web `abfe1339`），Latest 均为 1.1.2。同步已落盘（P70/P71 核销），阶段 7 一并复核。P72、P73（取消后节点轨迹仍显示等待人工）在范围外，未排期。Owner「你定吧」，Planner 选 P70+P71，两仓都发 `1.1.2`。1.1.0 已 COMPLETED（功能 56—58，`planning-review-110-07.md`）。
 
 ## 当前任务
 
