@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-2026-11-19｜规划｜**1.1.3 补丁立项**（L，不计功能数）：Owner 选定 P72+P73 合成补丁，两仓都发 `1.1.3`。方向 `product/v1.1.3-patch/ready/direction-v1.1.3.md`：B1 超时恢复后旧执行行停在「等待人工」且详情 404（P72）、B2 取消后节点轨迹仍显示「等待人工」（P73）、B3 执行列表「发生时间」ISO 原值。第 1 轮审查 `planning-review-113-01.md` 未通过：B1 与 G1/G2 回归锁定；B2（P73）、B3 截图没截到轨迹和时间列，需要补证；Owner 同日把「执行历史」入口 graphDefId 精度丢失并入为 B4。CI 改为合并 main 后取 run 号（Owner 裁定）。演示环境旧子执行行按 INTERRUPTED 口径预授权。当前入口 `planning-execution-prompt-113-01.md`，七阶段 2/1/4。iso112 已由执行方确认清理。
+2026-11-19｜规划｜**1.1.3 补丁立项**（L，不计功能数）：Owner 选定 P72+P73 合成补丁，两仓都发 `1.1.3`。方向 `product/v1.1.3-patch/ready/direction-v1.1.3.md`：B1 超时恢复后旧执行行停在「等待人工」且详情 404（P72）、B2 取消后节点轨迹仍显示「等待人工」（P73）、B3 执行列表「发生时间」ISO 原值。第 2 轮审查 `planning-review-113-02.md`：B1、B2（P73）、B4、G1/G2 锁定；剩 E2（子执行详情两张图是同一文件、画面是父行，可能是父跳子未重新加载）、E3（只滚了表头，看不到时间值），第 3 轮已限定取证方法。新候选 P74（列表总数约为实际 10 倍）。B4 为 Owner 同日并入的 graphDefId 精度丢失。CI 改为合并 main 后取 run 号（Owner 裁定）。演示环境旧子执行行按 INTERRUPTED 口径预授权。当前入口 `planning-execution-prompt-113-02.md`，七阶段 2/1/4。iso112 已由执行方确认清理。
 
 2026-11-19｜执行｜**两仓代码规范与千行文件治理批次完成**（非功能轨道，正式功能数 58 不变，线上 1.1.2 与 tag/Release 不动）。develop 快进：Server 8 笔（终 `442973e8`）、Web 5 笔（终 `e75726d`）、父仓 gitlink 5 笔（终 `513c26d8`）。千行文件清零（最大 ProcessDesigner.vue 1045 行）；sw-biz-system 233 / sw-basic-iot 97 存量测试从红转绿；p3c 官方规则集真信号清零（rollbackFor 115、Pattern 2、equals 11），误报与仓约定分歧口径登记于 `knowledge/known-issues.md` 2026-11-19 条。遗留挂起：i18n views 覆盖（产品级）、NodeFunctionService 线程池有界化（负载论证后）。
 
