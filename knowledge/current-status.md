@@ -1,5 +1,9 @@
 # 当前状态（current-status）
 
+**执行侧治理批次（2026-11-19，非功能轨道，不占功能数；正式功能 58 不变，线上 1.1.2 不动）**
+
+两仓代码规范与千行文件拆分批次：指针收口 4 笔（`fa35ebe9`/`49e9444c`/`266b5947`/`513c26d8`）；Server `d5949cae`（静默 catch 补注释）、`1c669bf2`（SsoAuthService 1410→355 门面+8 协作类）、`ef382f8d`（form 三 Service→门面 102/170/217+22 协作类）、`97f9d739`（AgentGraphInterpreter 1847→966、ApprovalLifecycle 1230→143）、`85270ecb`（sw-biz-system 58 存量测试修复，233 全绿）、`ed466e3c`（p3c 真信号：rollbackFor 115、Pattern 提常量 2、equals 常量前置 11）、`b1b42627`（sw-basic-iot 49 存量注入失败，97 全绿）；Web `b8250fe`/`5781b56`/`710f374`/`b7a5051`/`e75726d`（mock 两件套 7206→58/4484→20 聚合、TaskDetail 2442→799、ProcessDesigner 7717→1045、PublishedSnapshotViewer 3962→553、WorkspaceBoard 2466→615、GraphDesigner 1988→481、design-fixtures 1803→四文件）。全部行为零变化；Web 全量 vitest 243 文件/2115 用例与拆分前基线一致；受影响后端模块 0 失败 0 错误。回执 `product/governance/receipts/terminal-sync-large-file-splits-01.md`。
+
 **当前状态（2026-11-15，1.1.2 补丁已发布并部署演示环境，P70/P71 已核销，待 Planner 阶段 7 复核）**
 
 1.1.2 补丁（Server 1.1.2 + Web 1.1.2，两仓对齐）发布并部署演示环境：P71 取消按执行编号静默无效（取消变更落受理行并同步结果执行行）、P70 显示小修（B2 运行中误显示失败、B3 状态中文、B4 失败分类中文名、B5 监控当前节点名称）与 G3 耗时口径（已取消/中断不显示耗时）。不计功能数（正式功能 58 不变），无迁移（Flyway 仍 35 行）。阶段 3 验收三轮（G1 列表状态、G2 待办对账、G3 耗时口径）返修闭环。
