@@ -69,7 +69,34 @@ PKCS#8 PEM 文件），不允许默认私钥上线
 
 Web 替换（zip 已传服务器 `/tmp/sw-web-113.zip`，备份已就绪）→ 演示环境复测 B1—B4、E2（视口截图，头部与证明区同框）→ 旧数据行按裁决口径列行、改 INTERRUPTED、回读 → 文档同步（version.json/CHANGELOG/knowledge 含 P74 条目/需求池 P72、P73 核销与 B4 记录/两仓 README）→ 阶段 7 清理隔离环境、memory 记一行。
 
-## 4. 其他登记
+## 4. 阶段 6 续：Owner 授权方案 B 后的部署与复测（2026-11-20 追记）
+
+### 4.1 RSA 私钥迁移（方案 B，Owner 2026-11-20 授权「你自己上去搞吧，不行就生成一套新的」）
+
+- server.env 实有 17 个变量（先前 §3.3 的「会话层注入」判断有误：最初 grep 漏了 export 前缀形式），私钥即内联于 server.env 的 `SW_LOGIN_RSA_PRIVATE_KEY`。
+- 迁移：从运行中 1.1.2 进程 `/proc/<pid>/environ` 提取该值（裸 base64 DER + 字面换行转义、无 PEM 包头）→ 组装标准 PKCS#8 PEM → `/etc/smart-workflow/login-rsa.pem`（600，目录 700）→ openssl 解析校验 **Private-Key: (2048 bit, 2 primes)**。值全程服务器侧处理、未在任何输出回显。
+- server.env：该行替换为 `export SW_LOGIN_RSA_PRIVATE_KEY_FILE=/etc/smart-workflow/login-rsa.pem`（内联值移除；备份 server.env.bak-pre113，600）。**未生成新密钥**（Owner 的兜底授权未动用，既有私钥继续有效）。
+
+### 4.2 部署成功（先 Server 后 Web）
+
+- Server：stop → `bootstrap.jar.113-rolledback` 换回 → `. server.env` → start → **health 200 {"status":"UP"}、build.version=1.1.3、Flyway 35 行、启动段 ERROR 0**（日志轮转后独立计数）。
+- Web：zip 解压替换 `/opt/smart-workflow/web`（备份已在 §3.1）→ nginx -t/reload → 根 200、入口 `assets/index-ANXgpRi9.js`。
+
+### 4.3 演示环境复测（B1—B4 + E2，API + 无头浏览器视口截图）
+
+- **旧数据行**：按裁决口径查询「parent_execution_id 非空 + WAITING_HUMAN + 所属受理行已终态」→ **0 行**，无需改数。另有 1 行 parent 为空的 2026-11-13 顶层 WAITING_HUMAN 历史行（#2121178715751251970），不在口径内未动，登记待规划决定。
+- **B1**：新造 8s 超时执行——等待期 API 状态 WAITING_HUMAN，恢复后同受理两行 SUCCESS；DB 对账该受理**恰 2 行**（父 2123469418061688833 + 子 2123469418174935042），无假等待行。截图 `prod-b1-child-detail.png`（子行详情头部编号+受理号+轨迹，视口 1600）。
+- **B2**：受理号、执行编号各取消一次——两行 CANCELLED、轨迹人工节点 **CANCELLED**（API 断言）。截图 `prod-b2-child-trajectory.png`。
+- **B3**：2400 宽视口列表截图 `prod-b3-time-column.png`。
+- **B4**：图定义列表「更多→执行历史」→ URL 过滤父图 → total 3 全为该图。截图 `prod-b4-entry.png`。
+- **E2**：父行详情点「View child execution #2123469418174935042」（演示环境 locale 为英文）→ URL 切换为子行详情 `…/detail/2123469418174935042`。截图 `prod-e2-click-switch.png`。父行详情头部同时可见受理号 #2123469417633869825（Accepted 标记）。
+- 截图经无头 Chromium（服务器本地访问 nginx）拍摄并存 `.iso113/evidence/prod-*.png`；登录走真验证码（逐轮识别后填入）。
+
+### 4.4 事故披露：apt 连带卸载 PostgreSQL（已恢复，数据无损）
+
+装 Chromium 依赖时 `apt-get --fix-broken install` 把 **postgresql-14、postgresql-contrib、postgresql-14-pgvector 连带移除**（apt history 实录），01:36 PG 关闭、health 短暂 DOWN（druid 连接失败，日志 ERROR 约 6.7k 行）。发现后同版本装回 postgresql-14（14.24）与 postgresql-14-pgvector（0.8.7-1.pgdg22.04+2）、pg_ctlcluster start：**health 恢复 UP、vector 扩展 0.8.7 在、Flyway 35 行、数据完好**（sw_agent_graph_execution 40 行：26 SUCCESS/10 CANCELLED/3 FAILED/1 WAITING_HUMAN〔即 §4.3 口径外历史行〕）。数据目录全程未受影响，无数据丢失。
+
+## 5. 其他登记
 
 - 1.1.3 Server README（9f38d22b 随 CI 修复带入）本地配置段已改为「application-local.yml 不入库 + README 内联模板」口径。
 - `I5SsoCipherRuntimeDiagTest` 仍处注释态（fc809905 因 d53c7fb6 启动回归注释；583f1a38 已修该回归，恢复用例属治理收尾，不在本补丁范围，登记待办）。

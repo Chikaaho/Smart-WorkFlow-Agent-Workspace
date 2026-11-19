@@ -1,25 +1,25 @@
 {
   "$schema": "CH-aPaaS 版本权威（单一机器可读源；变更须走新回执）",
   "product": "CH-aPaaS",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "featureCount": 58,
   "iteration": "0.1.0",
-  "registeredAt": "2026-11-15",
-  "registeredBy": "1.1.2 补丁（P71 取消按执行编号静默无效、P70 显示小修，两仓对齐 1.1.2，不计功能数）；阶段 4—6 完成：两仓六步普通合并 CI 全绿、tag 1.1.2 + Release(Latest)（Server 445377854 / Web 445380514）、演示环境部署（Flyway 35 行不变、health UP）与 B1/B2/B3 复测、B6 展示图三仓重拍，回执 product/v1.1.2-patch/receipts/execution-112-05.md",
+  "registeredAt": "2026-11-20",
+  "registeredBy": "1.1.3 补丁（P72 超时恢复复用子执行行+子行回链、P73 取消轨迹终态、B3 发生时间格式、B4 执行历史入口 ID 精度、E2 查看子执行不刷新，不计功能数）；阶段 3 验收 3 轮 PASSED；阶段 4—6 完成：两仓普通合并（Server CI 经 4 轮修复链 c9d01a53/ca5ae88e/bb648d84/9f38d22b 后 44562168036 success、Web 44549244089 success）、tag 1.1.3 + Release(Latest)（Server 451609872 / Web 451512760）、演示环境部署（内联 RSA 私钥按 Owner 授权落盘迁移 /etc/smart-workflow/login-rsa.pem 后 health UP、Flyway 35 行不变）与 B1—B4/E2 复测，回执 product/v1.1.3-patch/receipts/execution-113-04.md",
   "development": {
-    "targetVersion": "1.1.2",
+    "targetVersion": "1.1.3",
     "status": "PUBLISHED",
-    "statusNote": "阶段 6 完成（2026-11-15）：Server 1.1.2 部署（sha256 与 Release 资产一致、health 200、Flyway 35 行、启动 ERROR 0）；Web 1.1.2 部署（入口 index-DsUInUfT.js、nginx -t/reload、根/入口/健康 200）；复测 B1（双编号各取消一次，列表详情已取消）/B2（运行中显示运行中）/B3（DISCARDED 已废弃）通过；B6 展示图三仓重拍",
-    "direction": "product/v1.1.0-graph-designer/ready/direction-v1.1.0.md",
-    "finalReview": "待 Planner 阶段 7 复核（execution-110-05.md）",
+    "statusNote": "阶段 6 完成（2026-11-20）：Server 1.1.3 部署（build.version=1.1.3、health UP、Flyway 35 行、启动段 ERROR 0；部署前置=生产登录 RSA 私钥由内联 env 迁移为 600 权限 PEM 文件并经 openssl 解析校验，Owner 授权方案 B）；Web 1.1.3 部署（入口 assets/index-ANXgpRi9.js、nginx reload、根 200）；复测 B1（超时自动恢复同两行 SUCCESS，DB 对账恰 2 行）/B2（双编号取消轨迹已取消）/B3（宽视口时间列）/B4（入口过滤有数据）/E2（点击后 URL 切换子行）通过；符合口径的存量假等待子执行行 0 行无需改数",
+    "direction": "product/v1.1.3-patch/ready/direction-v1.1.3.md",
+    "finalReview": "待 Planner 阶段 7 复核（execution-113-04.md）",
     "branches": {
-      "server": "develop=131bc4da、main=6d6bd666（feature/1.1.0 已合并删除）",
-      "web": "develop=f322440、main=3cc0584（feature/1.1.0 与 feature/1.1.1-event-seq-fix 均已合并删除）",
+      "server": "develop=c6b6ea1d、main=54b2657b（feature/1.1.3 已合并删除）",
+      "web": "develop=9f684ef、main=05b9739（feature/1.1.3 已合并删除）",
       "workspace": "develop-sw（本同步批次提交后回读）"
     },
     "developmentVersion": {
-      "server": "1.1.0（正式构建 -Drevision=1.1.0）",
-      "web": "1.1.1（web 侧 1.1.0 发布后补丁）"
+      "server": "1.1.3-SNAPSHOT（正式构建 -Drevision=1.1.3）",
+      "web": "1.1.3"
     }
   },
   "projections": {

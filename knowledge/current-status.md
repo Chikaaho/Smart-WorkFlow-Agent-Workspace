@@ -4,6 +4,17 @@
 
 两仓代码规范与千行文件拆分批次：指针收口 4 笔（`fa35ebe9`/`49e9444c`/`266b5947`/`513c26d8`）；Server `d5949cae`（静默 catch 补注释）、`1c669bf2`（SsoAuthService 1410→355 门面+8 协作类）、`ef382f8d`（form 三 Service→门面 102/170/217+22 协作类）、`97f9d739`（AgentGraphInterpreter 1847→966、ApprovalLifecycle 1230→143）、`85270ecb`（sw-biz-system 58 存量测试修复，233 全绿）、`ed466e3c`（p3c 真信号：rollbackFor 115、Pattern 提常量 2、equals 常量前置 11）、`442973e8`（sw-basic-iot 49 存量注入失败，97 全绿）；Web `b8250fe`/`5781b56`/`710f374`/`b7a5051`/`e75726d`（mock 两件套 7206→58/4484→20 聚合、TaskDetail 2442→799、ProcessDesigner 7717→1045、PublishedSnapshotViewer 3962→553、WorkspaceBoard 2466→615、GraphDesigner 1988→481、design-fixtures 1803→四文件）。全部行为零变化；Web 全量 vitest 243 文件/2115 用例与拆分前基线一致；受影响后端模块 0 失败 0 错误。回执 `product/governance/receipts/terminal-sync-large-file-splits-01.md`。
 
+**当前状态（2026-11-20，1.1.3 补丁已发布并部署演示环境，P72/P73 已核销，阶段 4—6 完成，待 Planner 阶段 7 复核）**
+
+1.1.3 补丁（Server 1.1.3 + Web 1.1.3，两仓对齐）发布并部署演示环境：B1/P72 超时恢复复用子执行行 + 子行回链受理行（详情不再 404）、B2/P73 取消同步节点轨迹终态、B3 发生时间格式化、B4 graphDefId 字符串透传、E2 详情同路由参数重载。不计功能数（58 不变），无迁移（Flyway 仍 35 行）。阶段 3 验收三轮返修闭环（E2 第 3 轮确认真缺陷）。
+
+- **发布事实**：Server tag `1.1.3`=`54b2657b`（Release `451609872`，`bootstrap-1.1.3.jar` 244,202,620 B sha256 `11474a42…`，`build.version=1.1.3`）；Web tag `1.1.3`=`05b9739`（Release `451512760`，`sw-web-dist-1.1.3.zip` 6,345,438 B sha256 `5044bad2…`，入口 `index-ANXgpRi9.js`）。两仓 Latest 均为 1.1.3。
+- **CI 修复链**：d53c7fb6/fc809905 存量雷在 main CI 首次照出，4 笔修复（c9d01a53/ca5ae88e/bb648d84 可选 SPI 集合空集合语义、9f38d22b local.yml 回退不入库）经 develop 后最终 Server run `44562168036` success、Web `44549244089` success；两仓 feature/1.1.3 已合并删除。
+- **演示环境（UAT 8.166.112.85）**：备份 `smart_workflow_20261120_0058_pre113.dump`（1.4M）、`bootstrap.jar.bak-pre113`、`web.bak-pre113`、`server.env.bak-pre113`；磁盘余 5.6G（≥3G）。**部署前置（fc809905 行为变更）**：生产登录 RSA 私钥由内联 env 迁移为 `/etc/smart-workflow/login-rsa.pem`（600 权限、openssl 校验 2048 bit，Owner 授权方案 B），server.env 切 `SW_LOGIN_RSA_PRIVATE_KEY_FILE`。首次换包启动因该变量未迁移失败并立即回滚，迁移后部署成功：`build.version=1.1.3`、health UP、Flyway 35 行、启动段 ERROR 0；Web 入口 `assets/index-ANXgpRi9.js`、根 200。
+- **复测**：B1（超时自动恢复同两行 SUCCESS，DB 对账恰 2 行/受理）、B2（双编号取消轨迹「已取消」）、B3（2400 宽视口时间列格式正确）、B4（入口过滤 9 行全为该图）、E2（点击后 URL 切换子行）全部通过（视口截图存 `.iso113/evidence/prod-*.png`）；符合裁决口径的存量假等待子执行行 **0 行**（演示环境另有 1 行 parent 为空的 2026-11-13 顶层 WAITING_HUMAN 历史行，不在口径内未动，另行登记）。
+- **需求池**：P72、P73 → **已核销（1.1.3）**；B4 记随 1.1.3 修复；新增 P74（列表 total ≈10× 行数，1.1.2 基线同款，字符串拼接根因，未排期）。正式功能数 58 不变。
+- **知识同步**：`version.json` → 1.1.3 PUBLISHED；`CHANGELOG.md` 1.1.3 条目（含 CI 修复链与部署前置变更披露）；两仓 README 版本字样 1.1.3。memory 由规划维护。
+
 **当前状态（2026-11-15，1.1.2 补丁已发布并部署演示环境，P70/P71 已核销，待 Planner 阶段 7 复核）**
 
 1.1.2 补丁（Server 1.1.2 + Web 1.1.2，两仓对齐）发布并部署演示环境：P71 取消按执行编号静默无效（取消变更落受理行并同步结果执行行）、P70 显示小修（B2 运行中误显示失败、B3 状态中文、B4 失败分类中文名、B5 监控当前节点名称）与 G3 耗时口径（已取消/中断不显示耗时）。不计功能数（正式功能 58 不变），无迁移（Flyway 仍 35 行）。阶段 3 验收三轮（G1 列表状态、G2 待办对账、G3 耗时口径）返修闭环。

@@ -1,5 +1,18 @@
 # CH-aPaaS 发布说明 / Release Notes
 
+## 1.1.3（2026-11-20 Server 与 Web 发布并部署演示环境；P72/P73 补丁 + 随批修复 B3/B4/E2，两仓对齐 1.1.3，不计功能数）
+
+- **背景**：Owner 2026-11-19 规划会选定 P72+P73 合成补丁，方向 `product/v1.1.3-patch/ready/direction-v1.1.3.md`（L 级）。阶段 3 验收三轮（E1 轨迹证据、E2/B4 缺陷修复、E3 时间列）返修闭环，`planning-review-113-03.md` PASSED。
+- **B1/P72 超时恢复后假等待行 + 子行详情 404（Server）**：人工任务超时自动恢复轮复用暂停前子执行行（`PauseState.executionRowId` 携带行 id，不再无条件新建）；详情沿 `parent_execution_id` 回链受理行（≤3 跳），子执行行返回「受理号 + 子行」视图；kill -9 重启后等待中执行由超时扫描原地恢复，不再遗留假等待行。跨重启持久等待为设计行为（pauseStateJson 落库）。
+- **B2/P73 取消后节点轨迹残留等待（Server+Web）**：WAITING_HUMAN 取消与级联取消同步把等待中节点轨迹置 CANCELLED；Web 轨迹映射补 CANCELLED（已取消）/INTERRUPTED（已中断）。受理号、执行编号两种取消结果一致。
+- **B3 执行列表「发生时间」格式（Web）**：格式化为 `yyyy-MM-dd HH:mm:ss`（空值 `-`，不可解析值前 19 位兜底）。
+- **B4「执行历史」入口 graphDefId 精度丢失（Web）**：雪花 ID 超 2^53 被 `Number()` 丢精度致入口恒 0 行；改为路由到请求全程字符串透传（单测含 >2^53 断言；后端 String→Long 精确绑定无需改）。
+- **E2 从父执行点「查看子执行」不刷新（Web）**：同路由仅换参数时组件复用不重载（地址栏变内容不变，第 3 轮验收确认为真缺陷）；详情页监听执行编号变化后重新加载。
+- **CI 修复链披露（d53c7fb6/fc809905 存量雷在 main CI 首次照出）**：`c9d01a53`/`ca5ae88e`/`bb648d84` 通知渠道、参与人适配器、SSO/命令处理器等可选 SPI 集合恢复空集合语义（字段注入改造后零 Bean 环境启动失败）；`9f38d22b` application-local.yml 回退不入库（fc809905 误入主资源根混入生产 jar，模板改由 README 内联承载）。
+- **部署前置变更（fc809905 行为变更）**：登录 RSA 私钥不再接受内联配置，必须 `SW_LOGIN_RSA_PRIVATE_KEY_FILE` 指向 PKCS#8 PEM 文件（≥2048 位）。生产已按 Owner 授权将既有私钥落盘 `/etc/smart-workflow/login-rsa.pem`（600 权限，openssl 解析校验 2048 bit）并更新 server.env。
+- **制品**：Server `bootstrap-1.1.3.jar`（244,202,620 B，sha256 `11474a42…`，`build.version=1.1.3`，CI run `44562168036`）；Web `sw-web-dist-1.1.3.zip`（6,345,438 B，sha256 `5044bad2…`，入口 `assets/index-ANXgpRi9.js`，CI run `44549244089`）。两仓 tag/Release 均 Latest。
+- **已知限制**：功能数保持 58；无迁移（Flyway 仍 35 行）；新增需求池 P74（列表「共 N 条」≈10× 行数，1.1.2 基线同款，根因 Long→String total 与数字 0 字符串拼接，未排期）；执行详情同路由参数变化不重载的缺陷已随本版修复（E2）。
+
 ## 1.1.2（2026-11-15 Server 与 Web 发布并部署演示环境；P71 取消缺陷 + P70 显示小修，两仓对齐 1.1.2，不计功能数）
 
 - **背景**：1.1.0 阶段 7 终审遗留 P70/P71；Owner 2026-11-14「你定吧」后 Planner 定补丁方向 `product/v1.1.2-patch/ready/direction-v1.1.2.md`（L 级）。阶段 3 验收三轮（G1 列表状态、G2 待办对账、G3 耗时口径）返修闭环。
