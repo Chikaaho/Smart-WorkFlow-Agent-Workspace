@@ -96,6 +96,17 @@ Web 替换（zip 已传服务器 `/tmp/sw-web-113.zip`，备份已就绪）→ �
 
 装 Chromium 依赖时 `apt-get --fix-broken install` 把 **postgresql-14、postgresql-contrib、postgresql-14-pgvector 连带移除**（apt history 实录），01:36 PG 关闭、health 短暂 DOWN（druid 连接失败，日志 ERROR 约 6.7k 行）。发现后同版本装回 postgresql-14（14.24）与 postgresql-14-pgvector（0.8.7-1.pgdg22.04+2）、pg_ctlcluster start：**health 恢复 UP、vector 扩展 0.8.7 在、Flyway 35 行、数据完好**（sw_agent_graph_execution 40 行：26 SUCCESS/10 CANCELLED/3 FAILED/1 WAITING_HUMAN〔即 §4.3 口径外历史行〕）。数据目录全程未受影响，无数据丢失。
 
+### 4.5 补充：本机可见会话 formal 取证（2026-11-20 追记）
+
+第 4.3 节截图由服务器侧无头 Chromium 拍摄（本机到演示环境 80/443 被网络阻断）。后按 Owner 指引把 `chikaho.cn` 加入 FlClash 覆写脚本 `DIRECT_SUFFIXES`（`371953190754586624.js`，订阅更新不覆盖）并重启 FlClash，直连恢复（直连 TLS 200/169ms、走系统代理 200/58ms）。随后在本机 ZCode 内嵌浏览器（可见交互会话，非无头）登录演示环境（真验证码），补拍 4 张 formal 截图：
+
+- `formal-b4-entry.png`：图定义列表「更多→执行历史」入口 → URL `?graphDefId=2123469415276670977` 过滤，3 行全部为该图（2 已取消 + 1 成功）。
+- `formal-e2-click-switch.png`：父行详情点「查看子执行 #2123469418174935042」→ URL 切换为子行详情 `…/detail/2123469418174935042`，同一画面内子行编号、受理号 #2123469417633869825（Accepted）、人工任务「已超时」、轨迹 开始→人工处理→结束 全部「成功」。
+- `formal-b2-child-trajectory.png`：已取消执行详情——头部「已取消」、人工任务「已关闭」、轨迹 `#2 子图 已取消`，无「等待人工」。
+- `formal-b3-time-column.png`：2400 宽视口列表，「发生时间」列前三个值 `2026-11-20 01:32:54`、`01:32:47`、`01:32:16`，格式 `yyyy-MM-dd HH:mm:ss` 无 T 无微秒。
+
+B1 的子行详情证据由 formal-e2-click-switch.png 同框覆盖（同一执行、头部与轨迹完整可见）。本机 /etc/hosts 已恢复原状（验收使用的 FlClash 直连规则按 Owner 要求保留）。
+
 ## 5. 其他登记
 
 - 1.1.3 Server README（9f38d22b 随 CI 修复带入）本地配置段已改为「application-local.yml 不入库 + README 内联模板」口径。
