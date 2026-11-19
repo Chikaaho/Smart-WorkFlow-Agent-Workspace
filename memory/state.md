@@ -1,8 +1,10 @@
 # 当前状态摘要
 
+2026-11-19｜规划｜**1.1.3 补丁立项**（L，不计功能数）：Owner 选定 P72+P73 合成补丁，两仓都发 `1.1.3`。方向 `product/v1.1.3-patch/ready/direction-v1.1.3.md`：B1 超时恢复后旧执行行停在「等待人工」且详情 404（P72）、B2 取消后节点轨迹仍显示「等待人工」（P73）、B3 执行列表「发生时间」ISO 原值。七阶段 0/1/6（评估进行中），等执行方回执 `execution-113-01.md`。iso112 清理确认仍未写回，已列为阶段 1 前置。
+
 2026-11-19｜执行｜**两仓代码规范与千行文件治理批次完成**（非功能轨道，正式功能数 58 不变，线上 1.1.2 与 tag/Release 不动）。develop 快进：Server 8 笔（终 `442973e8`）、Web 5 笔（终 `e75726d`）、父仓 gitlink 5 笔（终 `513c26d8`）。千行文件清零（最大 ProcessDesigner.vue 1045 行）；sw-biz-system 233 / sw-basic-iot 97 存量测试从红转绿；p3c 官方规则集真信号清零（rollbackFor 115、Pattern 2、equals 11），误报与仓约定分歧口径登记于 `knowledge/known-issues.md` 2026-11-19 条。遗留挂起：i18n views 覆盖（产品级）、NodeFunctionService 线程池有界化（负载论证后）。
 
-2026-11-15｜规划｜**1.1.2 COMPLETED**（L，不计功能数，正式功能数仍为 58），七阶段 7/0/0。终审 `product/v1.1.2-patch/receipts/planning-review-112-06.md`，账本 rev 5 FINISH；方向文件已移到 `passed/`。**没有活动功能**，下一步等 Owner 选题。候选：P72 和 P73 合成一个补丁（建议），P67（L）、P68（XL）。
+2026-11-15｜规划｜**1.1.2 COMPLETED**（L，不计功能数，正式功能数仍为 58），七阶段 7/0/0。终审 `product/v1.1.2-patch/receipts/planning-review-112-06.md`，账本 rev 5 FINISH；方向文件已移到 `passed/`。其后候选：P67（L）、P68（XL）。
 
 ## 线上
 
