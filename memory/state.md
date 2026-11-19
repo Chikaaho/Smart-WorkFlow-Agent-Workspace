@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-2026-11-19｜规划｜**1.1.3 补丁立项**（L，不计功能数）：Owner 选定 P72+P73 合成补丁，两仓都发 `1.1.3`。方向 `product/v1.1.3-patch/ready/direction-v1.1.3.md`：B1 超时恢复后旧执行行停在「等待人工」且详情 404（P72）、B2 取消后节点轨迹仍显示「等待人工」（P73）、B3 执行列表「发生时间」ISO 原值。**阶段 3 PASSED**（`planning-review-113-03.md`，3 轮）：B1—B4、G1/G2 全部锁定；E2 查出并修复父跳子详情不刷新（Web `bb32650`）。Web 提交 `169df9d`/`97a33b6`/`bb32650`，Server `5f19d2d4`/`6770ff7b`/`583f1a38`。新候选 P74（列表总数字符串拼接，1.1.2 起就有）。CI 改为合并 main 后取 run 号（Owner 裁定）。演示环境旧子执行行按 INTERRUPTED 口径预授权。当前入口 `planning-execution-prompt-113-03.md`（阶段 4—6），七阶段 3/1/3。iso112 已由执行方确认清理。
+2026-11-20｜规划｜**1.1.3 功能级 PASSED**（`planning-review-113-04.md`）：两仓已合入 main（CI Server `44562168036`/Web `44549244089` success），tag `1.1.3`：Server `54b2657b`（Release `451609872`）、Web `05b9739`（Release `451512760`），都是 Latest。演示环境已部署并复测 B1—B4/E2（formal-* 截图），旧子执行行 0 行。登录 RSA 私钥已按 Owner 授权迁移为 `/etc/smart-workflow/login-rsa.pem`（原密钥，未新生成）。事故：执行方装 Chromium 时 apt 连带卸载了 PG，十几分钟后同版本装回，数据无损；以后不在演示服务器装非运行时依赖。当前入口 `planning-execution-prompt-113-04.md`（终态同步：knowledge features/known-issues、README、apt-mark 防护、历史行 `#2121178715751251970` 说明、iso113 清理），回执 `terminal-sync-113-01.md`，七阶段 5/1/1。
 
 2026-11-19｜执行｜**两仓代码规范与千行文件治理批次完成**（非功能轨道，正式功能数 58 不变，线上 1.1.2 与 tag/Release 不动）。develop 快进：Server 8 笔（终 `442973e8`）、Web 5 笔（终 `e75726d`）、父仓 gitlink 5 笔（终 `513c26d8`）。千行文件清零（最大 ProcessDesigner.vue 1045 行）；sw-biz-system 233 / sw-basic-iot 97 存量测试从红转绿；p3c 官方规则集真信号清零（rollbackFor 115、Pattern 2、equals 11），误报与仓约定分歧口径登记于 `knowledge/known-issues.md` 2026-11-19 条。遗留挂起：i18n views 覆盖（产品级）、NodeFunctionService 线程池有界化（负载论证后）。
 
@@ -8,7 +8,7 @@
 
 ## 线上
 
-Server tag `1.1.2`=`c3724e52`（Release `445377854`，Latest）；Web tag `1.1.2`=`abfe1339`（Release `445380514`，Latest）。UAT 跑 Server 1.1.2 + Web 1.1.2（入口 `index-DsUInUfT.js`），Flyway 35 行，备份 `*_pre112`。README 展示图 `161fd589…` 已三仓同步，五张卡完整。
+Server tag `1.1.3`=`54b2657b`（Release `451609872`，Latest）；Web tag `1.1.3`=`05b9739`（Release `451512760`，Latest）。UAT 跑 Server 1.1.3 + Web 1.1.3（入口 `index-ANXgpRi9.js`），Flyway 35 行，备份 `*_pre113`。README 展示图 `161fd589…` 已三仓同步，五张卡完整。
 
 ## 1.1.2 摘要（已结束）
 

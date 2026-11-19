@@ -1,8 +1,8 @@
 # 功能摘要
 
-2026-11-19｜规划｜最新：1.1.3 补丁立项（不计功能数，正式功能数 58）。
+2026-11-20｜规划｜最新：1.1.3 功能级 PASSED（不计功能数，正式功能数 58）。
 
-- 1.1.3：**超时恢复与取消显示补丁（阶段 3 PASSED，七阶段 3/1/3，合并中）**：B1=P72、B2=P73、B3 发生时间、B4 执行历史入口 ID 精度，另修 E2 父跳子详情不刷新；两仓发 `1.1.3`。方向 `product/v1.1.3-patch/ready/direction-v1.1.3.md`。
+- 1.1.3：**超时恢复与取消显示补丁（功能级 PASSED，七阶段 5/1/1，终态同步中）**：B1=P72、B2=P73、B3 发生时间、B4 执行历史入口 ID 精度，另修 E2 父跳子详情不刷新；tag `1.1.3`：Server `54b2657b`、Web `05b9739`，UAT 已部署。方向 `product/v1.1.3-patch/ready/direction-v1.1.3.md`。
 - 1.1.2：**取消与显示补丁（`COMPLETED`，P70/P71 核销）**：Server、Web tag `1.1.2`=`c3724e52`/`abfe1339`，UAT 已部署。终审 `product/v1.1.2-patch/receipts/planning-review-112-06.md`。
 - 1.1.0：**Graph 设计器列车（`COMPLETED`，功能 56—58）**：Server tag `1.1.0`=`6d6bd666`；Web `1.1.1`=`3cc05844`（Owner 追认）。终审 `product/v1.1.0-graph-designer/receipts/planning-review-110-07.md`。
 - 1.0.0：`COMPLETED`，见 `product/v1.0.0-release/`。

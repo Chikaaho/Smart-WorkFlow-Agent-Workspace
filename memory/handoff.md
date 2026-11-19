@@ -1,13 +1,13 @@
 # 交接
 
-2026-11-19｜规划｜1.1.3 补丁立项（P72+P73，两仓 1.1.3），方向 `product/v1.1.3-patch/ready/direction-v1.1.3.md`。
+2026-11-20｜规划｜1.1.3 功能级 PASSED（`planning-review-113-04.md`），剩终态同步。
 
-## 当前（1.1.3 立项后）
+## 当前（1.1.3 终态同步）
 
-- **执行方**：按 `product/v1.1.3-patch/receipts/planning-execution-prompt-113-03.md` 做阶段 4—6：两仓合并到 main（main CI success 才打 tag）、tag `1.1.3` + Release、按运维手册部署演示环境、复测 B1—B4/E2、旧子执行行改 INTERRUPTED（已预授权）、文档同步。回执 `execution-113-04.md`。
-- **规划**：阶段 3 已 PASSED（`planning-review-113-03.md`）。收到回执后看演示环境截图、核对发布事实，再做阶段 7 结束复核并下发 iso113 清理。CI run 号在合并 main 后取（Owner 裁定）。演示环境旧子执行行 → INTERRUPTED 已预授权（`planning-review-113-01.md`）。阶段 6 交接点名运维手册；发布说明注明 `583f1a38` 修了启动回归。
-- **进度**：七阶段（评估、实施、验收、合并、发版、部署与同步、结束），已完成 3，进行中 1（合并），未开始 3。
-- **常规决定（一行）**：B3「发生时间」由规划并入；Server 全量测试中的环境类失败记为限制，以 main CI 为准。
+- **执行方**：按 `product/v1.1.3-patch/receipts/planning-execution-prompt-113-04.md` 做 T1—T8：knowledge features/known-issues/current-status、两仓 README、演示服务器 `apt-mark manual` PG 两包并回读服务状态、历史行 `#2121178715751251970` 一句话说明（不改）、更正 `execution-113-04.md` §5 第三条、清理 iso113（保留 evidence）。回执 `terminal-sync-113-01.md`。
+- **规划**：复核回执后把方向文件移到 `passed/`，需求池 1.1.3 段改为已结束，memory 记 iso113 清理确认，七阶段 7/0/0。
+- **进度**：七阶段，已完成 5，进行中 1（部署与同步），未开始 1（结束）。
+- **常规决定（一行）**：prod-* 无头截图由 formal-* 取代；执行方提前写的 P72/P73 核销经验收认可；Chromium 先不卸，留观察。
 
 ## 2026-11-19 执行批次（代码规范治理，已终态）
 
@@ -16,7 +16,7 @@
 
 ## 线上基线
 
-Server main/Latest=1.1.2（tag `c3724e52`）；Web main/Latest=1.1.2（tag `abfe1339`）。UAT 跑 Server 1.1.2 + Web 1.1.2，Flyway 35 行。
+Server main/Latest=1.1.3（tag `54b2657b`）；Web main/Latest=1.1.3（tag `05b9739`）。UAT 跑 Server 1.1.3 + Web 1.1.3，Flyway 35 行。登录私钥走文件 `SW_LOGIN_RSA_PRIVATE_KEY_FILE`。
 
 ## 保留与保护
 
