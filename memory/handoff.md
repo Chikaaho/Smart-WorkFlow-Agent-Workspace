@@ -1,13 +1,12 @@
 # 交接
 
-2026-11-20｜规划｜1.1.3 功能级 PASSED（`planning-review-113-04.md`），剩终态同步。
+2026-11-20｜规划｜1.1.3 COMPLETED（`planning-review-113-05.md`），无活动功能。
 
-## 当前（1.1.3 终态同步）
+## 当前
 
-- **执行方**：按 `product/v1.1.3-patch/receipts/planning-execution-prompt-113-04.md` 做 T1—T8：knowledge features/known-issues/current-status、两仓 README、演示服务器 `apt-mark manual` PG 两包并回读服务状态、历史行 `#2121178715751251970` 一句话说明（不改）、更正 `execution-113-04.md` §5 第三条、清理 iso113（保留 evidence）。回执 `terminal-sync-113-01.md`。
-- **规划**：复核回执后把方向文件移到 `passed/`，需求池 1.1.3 段改为已结束，memory 记 iso113 清理确认，七阶段 7/0/0。
-- **进度**：七阶段，已完成 5，进行中 1（部署与同步），未开始 1（结束）。
-- **常规决定（一行）**：prod-* 无头截图由 formal-* 取代；执行方提前写的 P72/P73 核销经验收认可；Chromium 先不卸，留观察。
+- **下一动作**：等 Owner 选题。候选：P74 列表总数字符串拼接（S）、P67（L）、P68（XL）；治理收尾：恢复 `I5SsoCipherRuntimeDiagTest`。
+- **观察项**：演示服务器 Chromium 等维护窗口再卸；历史行 `#2121178715751251970` 需 Owner 单独授权才改（只改这一行 → CANCELLED）。
+- **常规决定（一行）**：prod-* 无头截图由 formal-* 取代；执行方提前写的 P72/P73 核销经验收认可。
 
 ## 2026-11-19 执行批次（代码规范治理，已终态）
 
@@ -24,4 +23,4 @@ Server main/Latest=1.1.3（tag `54b2657b`）；Web main/Latest=1.1.3（tag `05b9
 
 ## 更早历史
 
-2026-11-15 1.1.2 COMPLETED（`planning-review-112-06.md`）；1.1.0、1.0.0 COMPLETED；0.4.1/0.3.8 PUBLISHED；0.4.0/P66 COMPLETED。
+2026-11-20 1.1.3 COMPLETED（`planning-review-113-05.md`）；2026-11-15 1.1.2 COMPLETED（`planning-review-112-06.md`）；1.1.0、1.0.0 COMPLETED；0.4.1/0.3.8 PUBLISHED；0.4.0/P66 COMPLETED。

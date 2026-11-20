@@ -1,6 +1,6 @@
 # 当前状态摘要
 
-2026-11-20｜规划｜**1.1.3 功能级 PASSED**（`planning-review-113-04.md`）：两仓已合入 main（CI Server `44562168036`/Web `44549244089` success），tag `1.1.3`：Server `54b2657b`（Release `451609872`）、Web `05b9739`（Release `451512760`），都是 Latest。演示环境已部署并复测 B1—B4/E2（formal-* 截图），旧子执行行 0 行。登录 RSA 私钥已按 Owner 授权迁移为 `/etc/smart-workflow/login-rsa.pem`（原密钥，未新生成）。事故：执行方装 Chromium 时 apt 连带卸载了 PG，十几分钟后同版本装回，数据无损；以后不在演示服务器装非运行时依赖。当前入口 `planning-execution-prompt-113-04.md`（终态同步：knowledge features/known-issues、README、apt-mark 防护、历史行 `#2121178715751251970` 说明、iso113 清理），回执 `terminal-sync-113-01.md`，七阶段 5/1/1。
+2026-11-20｜规划｜**1.1.3 COMPLETED**（L，不计功能数，正式功能数 58），七阶段 7/0/0。终审 `product/v1.1.3-patch/receipts/planning-review-113-05.md`，账本 rev 5 FINISH；方向已移到 `passed/`。P72/P73 核销，P74 未排期。登录 RSA 私钥已迁为文件（原密钥）。apt 连带卸 PG 事故已恢复，PG 两包已 apt-mark manual；以后不在演示服务器装非运行时依赖。iso113 已由执行方清理（`terminal-sync-113-01.md` T8，仅留 evidence）。演示环境顶层历史行 `#2121178715751251970` 停在 WAITING_HUMAN（P71 前残留），不改。下一动作：等 Owner 选题（P74/P67/P68）。
 
 2026-11-19｜执行｜**两仓代码规范与千行文件治理批次完成**（非功能轨道，正式功能数 58 不变，线上 1.1.2 与 tag/Release 不动）。develop 快进：Server 8 笔（终 `442973e8`）、Web 5 笔（终 `e75726d`）、父仓 gitlink 5 笔（终 `513c26d8`）。千行文件清零（最大 ProcessDesigner.vue 1045 行）；sw-biz-system 233 / sw-basic-iot 97 存量测试从红转绿；p3c 官方规则集真信号清零（rollbackFor 115、Pattern 2、equals 11），误报与仓约定分歧口径登记于 `knowledge/known-issues.md` 2026-11-19 条。遗留挂起：i18n views 覆盖（产品级）、NodeFunctionService 线程池有界化（负载论证后）。
 

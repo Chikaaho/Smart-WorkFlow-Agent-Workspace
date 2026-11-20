@@ -6,11 +6,11 @@
 |---|---|---|---|
 | P66 Z4 **已完成（2026-11-10 17:17）** | 2026-11-10 17:16 以后 | 只读：UAT `server.log` 128K（daily 轮转 00:00:17，`server.log-20261110` 346M）、`df -h /` 66%（余 6.3G）、logrotate 配置实际生效；`version.json` 状态与 `knowledge/features/multi-database-compat.md` 已记 COMPLETED。见 `execution-final-05.md` §3 | **Planner 已回读通过**（`planning-review-041-02.md` §2）。观察：日志约 346M/天，`maxsize` 因每天只轮转一次不起作用，压缩后约 18M/天，暂不处理，见 P69 |
 
-## 进行中：1.1.3 补丁（L，Owner 2026-11-19 选定，不计功能数）
+## 已结束：1.1.3 补丁（L，COMPLETED 2026-11-20，不计功能数，七阶段 7/0/0）
 
-Owner 2026-11-19 在规划会话中选定 P72+P73 合成补丁，两仓都发 `1.1.3`（Server、Web 均 1.1.2→1.1.3）。方向 [direction-v1.1.3.md](../product/v1.1.3-patch/ready/direction-v1.1.3.md)：B1 超时恢复后旧执行行停在「等待人工」且详情 404（P72，优先）、B2 取消后节点轨迹仍显示「等待人工」（P73）、B3 执行列表「发生时间」ISO 原值（1.1.2 第一轮登记的候选，同页顺带）；B4 「执行历史」入口 graphDefId 精度丢失（Owner 2026-11-19 第 1 轮审查时并入）。原则上无数据库迁移。**阶段 3 PASSED**（`planning-review-113-03.md`，共 3 轮；E2 第 3 轮查出并修复父跳子不刷新的缺陷，Web `bb32650`）。阶段 4—6 完成（`execution-113-04.md`，2026-11-20）：两仓 tag 1.1.3 + Release Latest、演示环境部署（health UP、Flyway 35 行）与 B1—B4/E2 复测通过，P72/P73 随 1.1.3 核销。
+Owner 2026-11-19 在规划会话中选定 P72+P73 合成补丁，两仓都发 `1.1.3`（Server、Web 均 1.1.2→1.1.3）。方向 [direction-v1.1.3.md](../product/v1.1.3-patch/passed/direction-v1.1.3.md)：B1 超时恢复后旧执行行停在「等待人工」且详情 404（P72，优先）、B2 取消后节点轨迹仍显示「等待人工」（P73）、B3 执行列表「发生时间」ISO 原值（1.1.2 第一轮登记的候选，同页顺带）；B4 「执行历史」入口 graphDefId 精度丢失（Owner 2026-11-19 第 1 轮审查时并入）。原则上无数据库迁移。**阶段 3 PASSED**（`planning-review-113-03.md`，共 3 轮；E2 第 3 轮查出并修复父跳子不刷新的缺陷，Web `bb32650`）。阶段 4—6 完成（`execution-113-04.md`，2026-11-20）：两仓 tag 1.1.3 + Release Latest、演示环境部署（health UP、Flyway 35 行）与 B1—B4/E2 复测通过，P72/P73 随 1.1.3 核销。
 
-七阶段：已完成 3（评估、实施、验收），进行中 1（合并），未开始 3。
+终审 `product/v1.1.3-patch/receipts/planning-review-113-05.md`，P72、P73 已核销，方向已归档 `passed/`。遗留 P74（未排期）；演示环境顶层历史行 `#2121178715751251970` 停在 WAITING_HUMAN（P71 修复前的残留，人工任务与受理行均已取消），不改，Owner 授权后可单独修正。
 
 ## 已结束：1.1.2 补丁（L，COMPLETED 2026-11-15，不计功能数，七阶段 7/0/0）
 
