@@ -111,4 +111,4 @@ B1 的子行详情证据由 formal-e2-click-switch.png 同框覆盖（同一执�
 
 - 1.1.3 Server README（9f38d22b 随 CI 修复带入）本地配置段已改为「application-local.yml 不入库 + README 内联模板」口径。
 - `I5SsoCipherRuntimeDiagTest` 仍处注释态（fc809905 因 d53c7fb6 启动回归注释；583f1a38 已修该回归，恢复用例属治理收尾，不在本补丁范围，登记待办）。
-- 服务器 `server.env` 当前仅含 5 个 `SW_NOTIFY_CHANNELS_EMAIL_*` 变量；凭据类变量（PG/JWT/CIPHER/RSA 等）由服务器会话层注入，机制文件未定位（避免触碰凭据内容），Owner 裁决 A/B 时可顺带指明设置位置。
+- ~~服务器 `server.env` 当前仅含 5 个 `SW_NOTIFY_CHANNELS_EMAIL_*` 变量；凭据类变量（PG/JWT/CIPHER/RSA 等）由服务器会话层注入，机制文件未定位~~（**本条作废，见 §4.1 更正**：server.env 实有 17 个变量，凭据（PG/JWT/CIPHER/内联 RSA 私钥）就在其中；最初 grep 漏了 `export` 前缀形式导致误判。迁移后 `SW_LOGIN_RSA_PRIVATE_KEY` 已替换为 `SW_LOGIN_RSA_PRIVATE_KEY_FILE` 指向 `/etc/smart-workflow/login-rsa.pem`。）

@@ -1,5 +1,9 @@
 # 当前状态（current-status）
 
+**终态（2026-11-20，1.1.3 补丁 COMPLETED，无活动功能，下一动作等 Owner 选题）**
+
+1.1.3 补丁全部完成：功能状态 `COMPLETED`（不计功能数，正式功能 **58 不变**）；P72、P73 已核销（1.1.3），P74 未排期，B4（执行历史入口 ID 精度）随 1.1.3 修复（无 P 编号）。线上版本 Server `1.1.3`（tag→`54b2657b`，Release `451609872`，Latest）、Web `1.1.3`（tag→`05b9739`，Release `451512760`，Latest）；演示环境 Server 1.1.3 + Web 1.1.3（入口 `index-ANXgpRi9.js`），Flyway 35 行，备份 `*_pre113`。验证基线集合：Server main CI `44562168036`、Web main CI `44549244089`。**无活动功能；当前唯一下一动作：等 Owner 选题（候选：P74、P67、P68）**。主方向目录 `product/v1.1.3-patch/passed/direction-v1.1.3.md`（由规划在阶段 7 移动）。memory 由规划维护。
+
 **执行侧治理批次（2026-11-19，非功能轨道，不占功能数；正式功能 58 不变，线上 1.1.2 不动）**
 
 两仓代码规范与千行文件拆分批次：指针收口 4 笔（`fa35ebe9`/`49e9444c`/`266b5947`/`513c26d8`）；Server `d5949cae`（静默 catch 补注释）、`1c669bf2`（SsoAuthService 1410→355 门面+8 协作类）、`ef382f8d`（form 三 Service→门面 102/170/217+22 协作类）、`97f9d739`（AgentGraphInterpreter 1847→966、ApprovalLifecycle 1230→143）、`85270ecb`（sw-biz-system 58 存量测试修复，233 全绿）、`ed466e3c`（p3c 真信号：rollbackFor 115、Pattern 提常量 2、equals 常量前置 11）、`442973e8`（sw-basic-iot 49 存量注入失败，97 全绿）；Web `b8250fe`/`5781b56`/`710f374`/`b7a5051`/`e75726d`（mock 两件套 7206→58/4484→20 聚合、TaskDetail 2442→799、ProcessDesigner 7717→1045、PublishedSnapshotViewer 3962→553、WorkspaceBoard 2466→615、GraphDesigner 1988→481、design-fixtures 1803→四文件）。全部行为零变化；Web 全量 vitest 243 文件/2115 用例与拆分前基线一致；受影响后端模块 0 失败 0 错误。回执 `product/governance/receipts/terminal-sync-large-file-splits-01.md`。
