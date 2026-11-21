@@ -1,0 +1,21 @@
+# iso120 隔离环境覆盖（dev profile；不入 Git；本机开发值，非生产凭据）。
+# Spring Boot 外置 config 目录优先级高于 jar 内 classpath，确保 dev 数据源落到 PG 专库。
+spring:
+  datasource:
+    dynamic:
+      datasource:
+        master:
+          driver-class-name: org.postgresql.Driver
+          url: jdbc:postgresql://localhost:5432/sw_iso120
+          username: chikan
+          password: ""
+  data:
+    redis:
+      host: localhost
+      port: 56379
+
+sw:
+  security:
+    login:
+      rsa-private-key-file: /usr/local/projects/Smart-WorkFlow/.iso120/run/config/login-rsa-private-key.pem
+      digest-secret: iso120-digest-secret-local-only-0123456789abcdef
