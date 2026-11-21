@@ -1,5 +1,7 @@
 # 当前状态摘要
 
+2026-11-21｜规划｜**1.2.0 立项**（XL）：Owner 选定 P67 Graph 执行器（主体）+ P74 + P41 日志等级管理 + 恢复 I5 用例，两仓发 `1.2.0`；演示环境历史行 `#2121178715751251970` 部署后改 CANCELLED（只改这一行）。方向 `product/v1.2.0/ready/direction-v1.2.0.md`，迁移 `V1.2.0`（Flyway 35→36），隔离环境 iso120。执行方开工先答 §3 四问（含人工节点 Graph 的同步等待、系统身份、线程占用、P74 同类）；含人工节点的 Graph 在裁定前一律拒绝。功能计数默认 P67=59、P41=60，待回执建议后裁决。回执 `execution-120-01.md`，七阶段 1/1/5。
+
 2026-11-20｜规划｜**1.1.3 COMPLETED**（L，不计功能数，正式功能数 58），七阶段 7/0/0。终审 `product/v1.1.3-patch/receipts/planning-review-113-05.md`，账本 rev 5 FINISH；方向已移到 `passed/`。P72/P73 核销，P74 未排期。登录 RSA 私钥已迁为文件（原密钥）。apt 连带卸 PG 事故已恢复，PG 两包已 apt-mark manual；以后不在演示服务器装非运行时依赖。iso113 已由执行方清理（`terminal-sync-113-01.md` T8，仅留 evidence）。演示环境顶层历史行 `#2121178715751251970` 停在 WAITING_HUMAN（P71 前残留），不改。下一动作：等 Owner 选题（P74/P67/P68）。
 
 2026-11-19｜执行｜**两仓代码规范与千行文件治理批次完成**（非功能轨道，正式功能数 58 不变，线上 1.1.2 与 tag/Release 不动）。develop 快进：Server 8 笔（终 `442973e8`）、Web 5 笔（终 `e75726d`）、父仓 gitlink 5 笔（终 `513c26d8`）。千行文件清零（最大 ProcessDesigner.vue 1045 行）；sw-biz-system 233 / sw-basic-iot 97 存量测试从红转绿；p3c 官方规则集真信号清零（rollbackFor 115、Pattern 2、equals 11），误报与仓约定分歧口径登记于 `knowledge/known-issues.md` 2026-11-19 条。遗留挂起：i18n views 覆盖（产品级）、NodeFunctionService 线程池有界化（负载论证后）。

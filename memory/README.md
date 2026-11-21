@@ -4,6 +4,6 @@
 
 2026-11-19｜规划｜init READY 1.3.7。Owner 选定 **1.1.3 补丁**（P72+P73，两仓都发 1.1.3），方向 `product/v1.1.3-patch/passed/direction-v1.1.3.md`，2026-11-20 COMPLETED，七阶段 7/0/0。
 
-当前：无活动功能，等 Owner 选题（P74/P67/P68）。正式功能数 58。线上 Server 1.1.3、Web 1.1.3，Flyway 35 行。
+当前：活动功能 1.2.0（XL），方向 `product/v1.2.0/ready/direction-v1.2.0.md`，七阶段 1/1/5，等回执 `execution-120-01.md`。正式功能数 58。线上 Server 1.1.3、Web 1.1.3，Flyway 35 行。
 
 阅读顺序：state.md → handoff.md → features.md → issues.md（按需 constraints/decisions/architecture）。权威状态以 `knowledge/current-status.md` 为准，规划侧经 `search_task/` 核实。
