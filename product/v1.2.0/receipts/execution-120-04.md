@@ -41,7 +41,7 @@
 | Server | 18093，`bootstrap-dev.jar`（`-Pdev` 打包，含 H2/devseed），`SPRING_PROFILES_ACTIVE=dev` + JWT_SECRET/SW_CIPHER_KEY 本机开发值；外置 `config/application-dev.yml` 强制数据源=sw_iso120 | health UP；日志 `.iso120/server.log`，PID `.iso120/server.pid` |
 | Flyway | **37 条成功**（33 主链至 1.2.0 + devseed V900—V903 测试夹具） | 全新库；演示环境 35→36 行口径不受影响（那是升级场景） |
 | Web | 5275 `--strictPort`，`VITE_PROXY_TARGET=http://localhost:18093` | Vite 8 ready |
-| 账号 | 超管 admin@默认租户（密码 AdminP@ssw0rd——R__0.1.10 覆盖 V0.2.0 注释的 admin123，如实记录）；t100admin@I5测试租户 admin123（devseed） | 凭据不入回执正文以外文件 |
+| 账号 | 超管 admin@默认租户、t100admin@I5测试租户（口令均为种子默认口令，见对应迁移脚本 R__0.1.10 / devseed V900） | 凭据不入回执正文以外文件 |
 
 启动调试过程发现并修复（如实记录）：①本地 config/application-local.yml 沿用 1.1.3 模式但需另配 jwt/cipher env；②启动 cwd 错误曾加载 Server 仓根旧 jar（0.1.3）——已改从 .iso120/run 启动；③`127.0.0.1` 在本机 JVM UnknownHost，用 `localhost`。
 
