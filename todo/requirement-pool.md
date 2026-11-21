@@ -10,7 +10,7 @@
 
 Owner 2026-11-21「你选几个整理成 xl 任务下去执行」，选定规划推荐的范围：P67 Graph 执行器（主体）+ P74 列表总数 + P41 日志等级管理 + 恢复 `I5SsoCipherRuntimeDiagTest`，两仓都发 `1.2.0`；演示环境历史行 `#2121178715751251970` 顺带改为 CANCELLED（只改这一行）。P68 不在本版。方向 [direction-v1.2.0.md](../product/v1.2.0/ready/direction-v1.2.0.md)，迁移 `V1.2.0`（9 库），回执 `execution-120-01.md`。
 
-阶段 2 实施三批（`execution-120-01`~`03`）已接受，裁定见 `planning-review-120-01.md`（E1-5 用方案 A，挂起回调另登记为 P75；异常分支=CONTINUE+条件分流；来源新增 IOT；计数 P67=59、P41=60）。当前入口 `planning-execution-prompt-120-01.md`（iso120 验收证据）。七阶段：已完成 2（评估、实施），进行中 1（验收），未开始 4。
+阶段 2 实施三批（`execution-120-01`~`03`）已接受，裁定见 `planning-review-120-01.md`（E1-5 用方案 A，挂起回调另登记为 P75；异常分支=CONTINUE+条件分流；来源新增 IOT；计数 P67=59、P41=60）。阶段 3 第 1 轮（`execution-120-04`~`11`）部分通过（`planning-review-120-02.md`）：E2 锁定 4 项；E1-1/E1-2 未过；阻塞=部署绕过 XSD 校验（`33159e28`，不接受，须回退）、流程实例未落库（FLOW_START EXPIRED）、Graph 结束节点输出参数存不上（1.1.0 G1-4 缺陷，并入本版）。当前入口 `planning-execution-prompt-120-02.md`。七阶段：已完成 2（评估、实施），进行中 1（验收），未开始 4。
 
 ## 已结束：1.1.3 补丁（L，COMPLETED 2026-11-20，不计功能数，七阶段 7/0/0）
 

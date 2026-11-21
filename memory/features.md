@@ -2,7 +2,7 @@
 
 2026-11-21｜规划｜最新：1.2.0 立项（XL）（不计功能数，正式功能数 58）。
 
-- 1.2.0：**Graph 执行器 + 日志等级管理（阶段 2 已接受，验收中，七阶段 2/1/4）**：P67（第 59 个功能，已裁定）、P41（第 60 个）、P74、恢复 I5 用例；迁移 `V1.2.0`。方向 `product/v1.2.0/ready/direction-v1.2.0.md`。
+- 1.2.0：**Graph 执行器 + 日志等级管理（阶段 3 第 1 轮部分通过，E2 基本锁定，E1 有阻塞，七阶段 2/1/4）**：P67（第 59 个功能，已裁定）、P41（第 60 个）、P74、恢复 I5 用例；迁移 `V1.2.0`。方向 `product/v1.2.0/ready/direction-v1.2.0.md`。
 - 1.1.3：**超时恢复与取消显示补丁（`COMPLETED`，P72/P73 核销）**：B1=P72、B2=P73、B3 发生时间、B4 执行历史入口 ID 精度，另修 E2 父跳子详情不刷新；tag `1.1.3`：Server `54b2657b`、Web `05b9739`，UAT 已部署。终审 `product/v1.1.3-patch/receipts/planning-review-113-05.md`。
 - 1.1.2：**取消与显示补丁（`COMPLETED`，P70/P71 核销）**：Server、Web tag `1.1.2`=`c3724e52`/`abfe1339`，UAT 已部署。终审 `product/v1.1.2-patch/receipts/planning-review-112-06.md`。
 - 1.1.0：**Graph 设计器列车（`COMPLETED`，功能 56—58）**：Server tag `1.1.0`=`6d6bd666`；Web `1.1.1`=`3cc05844`（Owner 追认）。终审 `product/v1.1.0-graph-designer/receipts/planning-review-110-07.md`。
