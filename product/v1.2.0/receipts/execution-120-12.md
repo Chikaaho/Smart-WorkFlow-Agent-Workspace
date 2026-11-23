@@ -14,7 +14,7 @@
 | Web | `353283c` | **X3-endpanel**：EndPanel 行值深度 watch 即提交 |
 | Web | `3bfa623` | **E1-1**：面板重复字段剔除（name/inputMappings/outputMappings）+ 版本时间格式化 |
 | 工作区 | `08e410fd` | **X4-cred**：120-04/06/10 回执口令改「种子默认口令」表述 |
-| 工作区 | `06f1c410` + `7de697f9` | X1 回退 + iso120 环境文件（含本地私钥）安全更正出 Git |
+| 工作区 | `06f1c410` + `7de697f9` | X1 回退 + iso120 环境文件（含本地私钥）与 `.zcode/plans` 计划文件**误入库**（`06f1c410` 实际把它们加进 Git；`7de697f9` 只在 `.iso120/run/.gitignore` 加了两行，文件仍在索引里）。真正取消跟踪由 S1（`execution-120-14`）用 `git rm --cached` 完成 |
 
 测试：agent 93/0（X2 回归）、LogLevelServiceTest 5/5、bpm-engine+process 全量绿、Web typecheck/vitest 绿。
 
@@ -51,7 +51,7 @@ EndPanel 行值变更只靠 `@change` 提交——fill/Tab/blur 部分交互序�
 
 ## 6. X4/X5/X6 完成说明
 
-- **X4**：`grep -rn "AdminP@ssw0rd\|admin123" product/v1.2.0/receipts/*.md` 零命中。
+- **X4**：对 `product/v1.2.0/receipts/*.md` 检索两个种子默认口令（此处不写口令原文），零命中。
 - **X5**：`5b124e6d` 删除 GraphExecNodeDelegate 中的 `[iso120-diag]` log.info。
 - **X6**：见 §5；iso120 专库因改名重建（DROP+CREATE，业务测试数据重造——图/表单/流程/实例，见 §3 验证）。
 
