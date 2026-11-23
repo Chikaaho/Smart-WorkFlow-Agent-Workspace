@@ -7,10 +7,9 @@
 | ID | 内容 | 完成条件 |
 |---|---|---|
 | S1-untrack | 用 `git rm --cached` 取消跟踪 `.iso120/run/config/login-rsa-private-key.pem`、`.iso120/run/config/application-dev.yml`、`.iso120/evidence/` 下全部文件、`.zcode/plans/*.md`；把 `.iso120/`、`.zcode/plans/` 写进根 `.gitignore`。本机文件保留。**不改写历史、不强推** | 回执贴出 `git ls-files .iso120 .zcode/plans` 的输出，必须为空 |
-| S1-rotate | 把 iso120 的登录 RSA 密钥对，以及 `application-dev.yml` 里的全部密钥（JWT、加密 key 等，只列名称，不列值）都当作已泄露，重新生成。核对演示环境和生产环境用的是不是同一组值：只比较指纹或哈希，不要把值打印出来 | 回执列出轮换了哪几项，以及「演示/生产未复用」的核对方法和结论。如果发现复用了，**立即停下来报告规划**，不要自己去改演示环境 |
 | S1-receipt | 新提交两处更正：① 120-12 §1 中「安全更正出 Git」的表述改成实际情况，并注明由本次 S1 完成；② 120-12 第 54 行 grep 命令里的口令原文改成「两个种子默认口令」 | `grep` 回执目录查不到口令；不改写历史 |
 
-规划**没有**读过这两个配置文件，回执里也不要贴文件内容。历史清理需要 Owner 另行授权，本轮不做。
+Owner 2026-11-23 裁定：这些是本机隔离环境的文件，没有价值，别人拿到也用不了，**不轮换、不改写历史**。取消跟踪是为了守住「凭据和截图不进 Git」这条规则。回执里不要贴文件内容。
 
 ## 2. 返修和补证
 
@@ -61,7 +60,7 @@
   "decision": "CONTINUE",
   "source_receipt": "product/v1.2.0/receipts/execution-120-13.md",
   "items": [
-    {"origin_id": "S1", "status": "OPEN", "failed_rounds": 0, "evidence": ["06f1c410", "7de697f9"], "scope": {"targets": [".iso120/run/config/*", ".iso120/evidence/*", ".zcode/plans/*", "execution-120-12.md"], "allowed_actions": ["git rm --cached", "补 ignore", "轮换 iso120 密钥", "指纹比对"], "forbidden_actions": ["改写历史", "强推", "回执贴密钥内容", "改演示环境"], "constraints": {"顺序": "最先"}}, "acceptance": ["ls-files 为空", "轮换清单", "未复用结论", "回执更正"]},
+    {"origin_id": "S1", "status": "OPEN", "failed_rounds": 0, "evidence": ["06f1c410", "7de697f9"], "scope": {"targets": [".iso120/run/config/*", ".iso120/evidence/*", ".zcode/plans/*", "execution-120-12.md"], "allowed_actions": ["git rm --cached", "补 ignore"], "forbidden_actions": ["改写历史", "强推", "回执贴密钥内容"], "constraints": {"顺序": "最先", "Owner": "本机文件无价值，不轮换"}}, "acceptance": ["ls-files 为空", "回执更正"]},
     {"origin_id": "X3-endpanel", "status": "OPEN", "failed_rounds": 1, "evidence": [], "scope": {"targets": ["Graph 设计器 EndPanel"], "allowed_actions": ["截图"], "forbidden_actions": ["改库"], "constraints": {}}, "acceptance": ["重开后仍在的截图"]},
     {"origin_id": "X4-cred", "status": "OPEN", "failed_rounds": 1, "evidence": ["execution-120-12.md#6"], "scope": {"targets": ["execution-120-12.md"], "allowed_actions": ["新提交更正"], "forbidden_actions": ["改写历史"], "constraints": {"合并到": "S1-receipt"}}, "acceptance": ["回执目录查不到口令"]},
     {"origin_id": "E1-1", "status": "OPEN", "failed_rounds": 2, "evidence": ["E1-1-panel-fixed.png"], "scope": {"targets": ["面板全貌", "R2-ui"], "allowed_actions": ["截图"], "forbidden_actions": [], "constraints": {"已锁": "映射已选、版本时间"}}, "acceptance": ["无重复字段", "分流说明", "状态变量"]},

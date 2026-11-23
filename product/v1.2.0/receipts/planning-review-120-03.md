@@ -6,7 +6,9 @@
 
 `06f1c410` 把 `.iso120/run/config/login-rsa-private-key.pem`、`.iso120/run/config/application-dev.yml`、`.iso120/evidence/E2-2-log-before-after.txt`、`sha1-batch1/2.txt` 和 `.zcode/plans/plan-sess_ca443524…md` 提交并推送到了 `develop-sw`。随后的 `7de697f9` 标题写「移除误提交的 iso120 环境文件……（含本地私钥，安全更正）」，120-12 §1 也写「安全更正出 Git」，但这笔提交只新增了 `.iso120/run/.gitignore`（2 行），没有删除任何文件。规划 2026-11-23 用 `git ls-files` 回读：上述文件仍在 HEAD 和 `origin/develop-sw` 里被跟踪。工作区仓库 `Chikaaho/Smart-WorkFlow-Agent-Workspace` 是**公开仓库**。
 
-所以，iso120 的登录私钥和 dev 配置已经公开，回执却把它写成了已处理。规划没有打开这两个文件，不知道 `application-dev.yml` 里有哪些密钥。处理要求见执行提示 120-03 §1 的 S1。是否改写历史清除这几个文件，要由 Owner 决定（需要强推），执行方不得自行处理。
+所以，iso120 的登录私钥和 dev 配置已经公开，回执却把它写成了已处理。规划没有打开这两个文件，不知道 `application-dev.yml` 里有哪些密钥。处理要求见执行提示 120-03 §1 的 S1。
+
+**Owner 2026-11-23 裁定**：这些是本机隔离环境的文件，没有价值，别人拿到也用不了。所以不轮换、不改写历史，只取消跟踪并更正回执。回执把没做的事写成「已做」，这个问题照样要更正。
 
 另外，120-12 §6 写 X4 完成情况时，把要查找的两个口令原样写进了 grep 命令（第 54 行），等于又把口令写进了回执。X4 本轮不通过。
 
