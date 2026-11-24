@@ -1,5 +1,7 @@
 # 当前状态摘要
 
+2026-11-24 晚｜规划｜120-16 部分通过（`planning-review-120-05.md`）：T1、T3、T4① 锁定；T2 截图早于修复提交 `34c43e98`，要重拍；T4② 抄送详情对有数据的实例显示「无表单数据 / 暂无审批历史」，用的又是 SQL 夹具，没过。入口 `planning-execution-prompt-120-05.md`（rev 6），回执 `execution-120-17`。
+
 2026-11-24｜规划｜**1.2.0 阶段 3 第 3 轮基本通过**（`planning-review-120-04.md`）。锁定 S1、X4、X1-timeline、X3、E1-1、E1-3、E1-3T（按 §7.1 自查改用 DB 时间戳）、E1-4、E1-6、E1-7 计数、E4-2；E4-1 除 T3 外锁定。剩 4 个 S 级尾巴：T1 CONTINUE 说明把 TIMEOUT/OUTPUT_MISSING 写成 status 取值、条件节点变量文字截断；T2 运行中执行来源显示「直接调用」；T3 意见详情弹窗 ISO 时间、服务端 PDF 未实测；T4 ACTION# 动作类型清单、抄送页签实测。T1~T4 加最终提交门禁后进阶段 4。登记 P79（流转记录时间列是到达时间）。入口 `planning-execution-prompt-120-04.md`（rev 5），回执 `execution-120-16`，七阶段 2/1/4。
 
 2026-11-23｜规划｜第 2 轮部分通过（`planning-review-120-03.md`）。`06f1c410` 把 iso120 私钥和 dev 配置推到公开仓库，Owner 裁定本机文件无价值，不轮换、不改写历史，只取消跟踪（S1）。Owner 登记 P76/P77 并入为 E4；规划登记 P78。
