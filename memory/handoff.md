@@ -1,14 +1,14 @@
 # 交接
 
-2026-11-25｜规划｜1.2.0 阶段 3 验收通过（`planning-review-120-06.md`），进入阶段 4~7。
+2026-11-26｜规划｜1.2.0 已发布并部署演示环境；阶段 6 部分通过（`planning-review-120-07.md`），P83 待 Owner 裁定。
 
 ## 当前（1.2.0）
 
-- **执行方**：按 `product/v1.2.0/receipts/planning-execution-prompt-120-06.md` 做阶段 4~7（持续授权）：合并、main CI success（含 I5 用例）、tag/Release、演示环境部署复测（含 X1 发布回归、E3-3 一行）、同步、清理 iso120。回执 `execution-120-18` 起，§5 列了停止条件。
-- **规划**：阶段 6 要核销需求池 P67、P74、P41、P76、P77（执行方列依据，规划改池）；终审后执行方再删 `.iso120/evidence/`。
-- **进度**：七阶段，已完成 3，进行中 0，未开始 4。
+- **执行方**：按 `product/v1.2.0/receipts/planning-execution-prompt-120-07.md` 补 S6-x1、S6-id、S6-crlf，并只查 P83 根因、写方案（不改代码不发版）。回执 `execution-120-20`。iso120 暂不清理。
+- **规划**：等 Owner 裁定 P83 修复版本（规划推荐 1.2.1 补丁）；修好后在演示环境从设计器配置表单动作重拍，再核销 P67、进阶段 7。教训：SQL 夹具绕过的设计器路径，上线前必须走一次界面。
+- **进度**：七阶段，已完成 5，进行中 1，未开始 1。
 - **沿用规则**：CI 只在合并 main 后跑；截图对着图写、头部与证明区同框，在修复提交之后拍；不在演示服务器装非运行时依赖；E3-3 历史行在阶段 6 改；阶段 7 清理 `sw_iso120`、`sw_iso120_x1` 和 18094 的 worktree。
-- **观察项**：P75、P68、P78~P82、`PageResult.total` 类型标注；X1 schema null 根因未明，阶段 6 在演示环境做发布回归。
+- **观察项**：P75、P68、P78~P85、`PageResult.total` 类型标注；X1 schema null 根因未明，阶段 6 在演示环境做发布回归。
 
 ## 2026-11-19 执行批次（代码规范治理，已终态）
 
@@ -17,7 +17,7 @@
 
 ## 线上基线
 
-Server main/Latest=1.1.3（tag `54b2657b`）；Web main/Latest=1.1.3（tag `05b9739`）。UAT 跑 Server 1.1.3 + Web 1.1.3，Flyway 35 行。登录私钥走文件 `SW_LOGIN_RSA_PRIVATE_KEY_FILE`。
+Server Latest=1.2.0（tag `0fb94fad`）；Web Latest=1.2.0（tag `c978312`）。UAT 跑 Server 1.2.0 + Web 1.2.0（入口 `index-Cu2bpF9U.js`），Flyway 36 行，备份 `*_pre120`。登录私钥走文件 `SW_LOGIN_RSA_PRIVATE_KEY_FILE`。
 
 ## 保留与保护
 
