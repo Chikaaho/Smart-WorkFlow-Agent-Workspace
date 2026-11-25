@@ -1,5 +1,9 @@
 # 会话交接（session-handoff）— 当前压缩版
 
+## 当前续接：1.2.0 阶段 4—6 完成（合并/发版/部署复测），待 Planner 阶段 7 复核（2026-11-25）
+
+1.2.0 已发布并部署演示环境。发布与复测事实见 `knowledge/current-status.md` 顶部块；回执 `product/v1.2.0/receipts/execution-120-18.md`（阶段 4+5：合并、CI、tag、Release）与 `execution-120-19.md`（阶段 6：部署、复测、同步）。发布提交：Server `0fb94fad`（tag 1.2.0，Release 457783510）、Web `c978312`（tag 1.2.0，Release 457827301）；发布后 main 另有资产复制工作流与 README 同步提交（Server `77d31603`、Web `77e4816`）。**S7 清理（删 sw_iso120/sw_iso120_x1、停 18093/5275/56379、停 18094 worktree 并删除）等待规划终审后执行**。新登记 E1-6 表单动作配置雪花 id 精度丢失（演示复测发现，P80/P81/P82 维持）。
+
 ## 当前续接：三示例流程返修 0.3.1—0.3.6 终态同步完成（规划审查 07 `PASSED`，待 Planner 终态复核；2026-11-08）
 
 规划审查 07（`receipts/planning-review-07-passed.md`）判定 0.3.6 通过，H1—H9 全部锁定。终态同步按 `ready/direction-terminal-sync-036.md` 的唯一终态值清单执行（未自行改值），回执 `receipts/terminal-sync-036-01.md`；本同步方向待规划复核后归档 `passed/`。

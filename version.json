@@ -1,56 +1,56 @@
 {
   "$schema": "CH-aPaaS 版本权威（单一机器可读源；变更须走新回执）",
   "product": "CH-aPaaS",
-  "version": "1.1.3",
-  "featureCount": 58,
+  "version": "1.2.0",
+  "featureCount": 60,
   "iteration": "0.1.0",
-  "registeredAt": "2026-11-20",
-  "registeredBy": "1.1.3 补丁（P72 超时恢复复用子执行行+子行回链、P73 取消轨迹终态、B3 发生时间格式、B4 执行历史入口 ID 精度、E2 查看子执行不刷新，不计功能数）；阶段 3 验收 3 轮 PASSED；阶段 4—6 完成：两仓普通合并（Server CI 经 4 轮修复链 c9d01a53/ca5ae88e/bb648d84/9f38d22b 后 44562168036 success、Web 44549244089 success）、tag 1.1.3 + Release(Latest)（Server 451609872 / Web 451512760）、演示环境部署（内联 RSA 私钥按 Owner 授权落盘迁移 /etc/smart-workflow/login-rsa.pem 后 health UP、Flyway 35 行不变）与 B1—B4/E2 复测，回执 product/v1.1.3-patch/receipts/execution-113-04.md",
+  "registeredAt": "2026-11-25",
+  "registeredBy": "1.2.0（Graph 作为执行器 P67 计第 59 个正式功能、日志等级管理 P41 计第 60 个；并入线上缺陷 P76/P77（E4）、E3-1/P74、E3-2 恢复 I5 用例；P67/P41 计数按方向默认口径，最终以规划裁决为准）；阶段 1–3 完成（第 1–5 轮验收锁定），阶段 4–6 完成：两仓普通合并（Server CI 修复两笔：LastLimitCorpusTest 139→140、ErrorCodeCatalogTest 206→207/201→202 后 45565374283 success；Web 45565538125 success）、版本收敛 1.2.0、tag 1.2.0 + Release(Latest)（Server 457783510 / Web 457827301）、演示环境部署（Flyway 36 行/max 1.2.0、build.version=1.2.0）与 E1~E4/X1 复测，回执 product/v1.2.0/receipts/execution-120-18.md 与 execution-120-19.md",
   "development": {
-    "targetVersion": "1.1.3",
+    "targetVersion": "1.2.0",
     "status": "PUBLISHED",
-    "statusNote": "阶段 6 完成（2026-11-20）：Server 1.1.3 部署（build.version=1.1.3、health UP、Flyway 35 行、启动段 ERROR 0；部署前置=生产登录 RSA 私钥由内联 env 迁移为 600 权限 PEM 文件并经 openssl 解析校验，Owner 授权方案 B）；Web 1.1.3 部署（入口 assets/index-ANXgpRi9.js、nginx reload、根 200）；复测 B1（超时自动恢复同两行 SUCCESS，DB 对账恰 2 行）/B2（双编号取消轨迹已取消）/B3（宽视口时间列）/B4（入口过滤有数据）/E2（点击后 URL 切换子行）通过；符合口径的存量假等待子执行行 0 行无需改数",
-    "direction": "product/v1.1.3-patch/ready/direction-v1.1.3.md",
-    "finalReview": "待 Planner 阶段 7 复核（execution-113-04.md）",
+    "statusNote": "阶段 6 完成（2026-11-25）：Server 1.2.0 部署（build.version=1.2.0、health UP、Flyway 36 行/max 1.2.0、启动段 ERROR 0、启动 175.078s；部署前置=磁盘 2.9G<3G 经 §9.2 轮转日志压缩后 3.8G，备份 smart_workflow_20261125_1647_pre120.dump 1.4M / bootstrap.jar.bak-pre120 233M / web.bak-pre120.tar.gz 6.0M）；Web 1.2.0 部署（入口 assets/index-Cu2bpF9U.js、nginx reload、HTTPS 根 200）；复测 E1（Graph 执行器透传图驱动条件分支命中高侧人工确认、变量 field_score=high、图执行记录 #2125544147878699009 SUCCESS 197ms；表单按钮动作回填成功）、E2（com.sw.ck.bpm INFO→DEBUG→INFO 审计两条，调整后实例查询出现 DEBUG 行、恢复后无）、E3-1（共 40 条=DB 40）、E3-3（#2121178715751251970 WAITING_HUMAN→CANCELLED，前置人工任务/受理行均为 CANCELLED，改后三项回读）、E4-1（会签非文本意见 风险评级/影响系统清单/停机时长 可读）、E4-2（已办只读详情、抄送页签与详情）、X1（普通流程与 Graph 执行器流程发布均成功，无 schema null）通过",
+    "direction": "product/v1.2.0/ready/direction-v1.2.0.md",
+    "finalReview": "待 Planner 阶段 7 复核（execution-120-19.md）；S7 iso120 清理等待复核后执行",
     "branches": {
-      "server": "develop=c6b6ea1d、main=54b2657b（feature/1.1.3 已合并删除）",
-      "web": "develop=9f684ef、main=05b9739（feature/1.1.3 已合并删除）",
+      "server": "develop=8f447c88、main=77d31603（发布 tag 指向 0fb94fad；feature/1.2.0 已合并，未删除）",
+      "web": "develop=0866918、main=77e4816（发布 tag 指向 c978312；feature/1.2.0 已合并，未删除）",
       "workspace": "develop-sw（本同步批次提交后回读）"
     },
     "developmentVersion": {
-      "server": "1.1.3-SNAPSHOT（正式构建 -Drevision=1.1.3）",
-      "web": "1.1.3"
+      "server": "1.2.0-SNAPSHOT（正式构建 -Drevision=1.2.0）",
+      "web": "1.2.0"
     }
   },
   "projections": {
     "serverRepo": {
       "path": "Smart-WorkFlow-aPaaS-server",
-      "mavenVersion": "1.1.0",
+      "mavenVersion": "1.2.0",
       "flywayEndpoint": {
-        "h2": "V1.1.0",
-        "postgresql": "V1.1.0"
+        "h2": "V1.2.0",
+        "postgresql": "V1.2.0"
       },
-      "flywaySeed": "V0.2.0 基线 + V0.2.2～V0.4.0/V1.0.0/V1.1.0 + R__；UAT 实测 35 行（含 R__ 重复执行记录），max(version)=1.1.0"
+      "flywaySeed": "V0.2.0 基线 + V0.2.2～V0.4.0/V1.0.0/V1.1.0/V1.2.0 + R__；UAT 实测 36 行（含 R__ 重复执行记录），max(version)=1.2.0，1.2.0 新增迁移 graph exec business link and loglevel menu 应用 1 条"
     },
     "webRepo": {
       "path": "Smart-WorkFlow-aPaaS-Web",
-      "packageVersion": "1.1.1"
+      "packageVersion": "1.2.0"
     },
     "workspace": {
       "path": "Smart-WorkFlow-Agent-Workspace",
       "changelog": "CHANGELOG.md",
-      "releaseNotes": "GitHub Release：Server 1.0.0（aa7c86e5·bootstrap-1.0.0.jar 242,697,784 B sha256 a8dc16b6…、Release 441827517）、Web 1.0.0（a85aa8e2·sw-web-dist-1.0.0.zip 6,221,796 B sha256 cc94fa30…、Release 441848348，均 Latest）；发布说明含三项已接受限制（DM8/KingbaseES 仅静态核对；MySQL 5.7 需 explicit_defaults_for_timestamp=ON；明细表子字段日期格式设计器暂不可配置）",
-      "upgrade": "docs/ops/production-ops.md §8/§9；替换 jar / Web 目录；V1.0.0 迁移由 Flyway 自动执行（sys_audit_log、must_change_password、菜单 9115/430/431）",
-      "rollback": "docs/ops/production-ops.md §8.1/§9.1；回退换 bootstrap.jar.bak-pre100（0.4.1，sha256 fe6ad3ed…）与 web.bak-20261111_2318_100pre；数据库如需回滚恢复 smart_workflow_20261111_2318_pre100.dump.gz",
-      "configChanges": "无新增必改配置；新增可选 sw.audit-log.retention-days（默认 90）",
-      "dbMigrations": "新增 V1.0.0__audit_log_and_must_change_password.sql（9 方言同名）；UAT flyway_schema_history 33→34 行，max(version)=1.0.0",
-      "manifest": "GitHub Release 1.0.0 资产 bootstrap-1.0.0.jar 242,697,784 B sha256 a8dc16b61a9ce96078cdcef38f1ebdda2e8e47c059ccae7337cbd5d0d8fdfddf；Web 1.0.0 资产 sw-web-dist-1.0.0.zip 6,221,796 B sha256 cc94fa3013dcbf15691d9cfd613415ebcb6193e9675da399cdcf90688b91f2d3；build-<sha> Release 保留",
-      "deployment": "UAT 已部署 Server 1.0.0（build.version=1.0.0、health UP、Flyway 34 行/max 1.0.0、PID 3417483）与 Web 1.0.0（assets/index-BCCrQSgQ.js、根/入口/健康/登录 200，2026-11-11）"
+      "releaseNotes": "GitHub Release：Server 1.2.0（tag 1.2.0→0fb94fad，Release 457783510 Latest，bootstrap-1.2.0.jar 244,277,265 B sha256 e565b010e5e26837e6d5595189e9909c630516486b556bbacc9058653b3b0d5b，build.version=1.2.0）；Web 1.2.0（tag 1.2.0→c978312，Release 457827301 Latest，sw-web-dist-1.2.0.zip 6,366,174 B sha256 f941fa5eff8c6fd339f49a66ef31ad1b4ddf5f0f49a319c1b52f75c80c58d3e1，入口 assets/index-Cu2bpF9U.js）；build-<sha> Release 保留",
+      "upgrade": "docs/ops/production-ops.md §8/§9；替换 jar / Web 目录；V1.2.0 迁移由 Flyway 自动执行（执行请求业务关联列、日志等级菜单/权限种子）；start.sh 前必须 `. ./server.env`",
+      "rollback": "docs/ops/production-ops.md §8.1/§9.1；回退换 bootstrap.jar.bak-pre120（1.1.3，sha256 待现场核）与 web.bak-pre120.tar.gz；数据库如需回滚恢复 /data/backup/smart_workflow_20261125_1647_pre120.dump（1.4M）",
+      "configChanges": "无新增必改配置（沿用 server.env；部署过程未改配置）",
+      "dbMigrations": "新增 V1.2.0__graph_exec_business_link_and_loglevel_menu.sql（9 方言同名）；UAT flyway_schema_history 35→36 行，max(version)=1.2.0",
+      "manifest": "GitHub Release 1.2.0 资产 bootstrap-1.2.0.jar 244,277,265 B sha256 e565b010e5e26837e6d5595189e9909c630516486b556bbacc9058653b3b0d5b；Web 1.2.0 资产 sw-web-dist-1.2.0.zip 6,366,174 B sha256 f941fa5eff8c6fd339f49a66ef31ad1b4ddf5f0f49a319c1b52f75c80c58d3e1；build-<sha> Release 保留",
+      "deployment": "UAT 已部署 Server 1.2.0（build.version=1.2.0、health UP、Flyway 36 行/max 1.2.0、启动 175.078s、启动段 ERROR 0、远端 jar sha256 与 Release 资产一致）与 Web 1.2.0（assets/index-Cu2bpF9U.js、HTTPS 根 200、/sw-server/api/actuator/health 200、/sw/… 301 到根，2026-11-25）"
     }
   },
   "rules": {
     "candidateFreeze": "候选固定后只允许通过新回执审查的变更进入；代码/迁移/依赖/配置漂移使受影响证据失效并重固定候选",
-    "tagAndRelease": "Server 1.0.0（aa7c86e5，annotated tag 3de61eb7，Release 441827517，bootstrap-1.0.0.jar sha256 a8dc16b6…）；Web 1.0.0（a85aa8e2，tag 1eb974f1，Release 441848348，sw-web-dist-1.0.0.zip 6,221,796 B sha256 cc94fa30…）。0.4.1/0.3.8 等既有 tag/Release 未动，Latest 分别为 1.0.0/1.0.0。",
-    "deployment": "UAT：Server 1.0.0（build.version=1.0.0、Flyway 34 行/max 1.0.0、health UP）；Web 1.0.0（assets/index-BCCrQSgQ.js）。部署前备份 /data/backup/smart_workflow_20261111_2318_pre100.dump.gz、bootstrap.jar.bak-pre100、server.env.bak-pre100、web.bak-20261111_2318_100pre。"
+    "tagAndRelease": "Server 1.2.0（0fb94fad，轻量 tag 1.2.0，Release 457783510 Latest，bootstrap-1.2.0.jar sha256 e565b010…）；Web 1.2.0（c978312，轻量 tag 1.2.0，Release 457827301 Latest，sw-web-dist-1.2.0.zip sha256 f941fa5e…）。既有 tag/Release 未动，Latest 分别为 1.2.0/1.2.0。",
+    "deployment": "UAT：Server 1.2.0（build.version=1.2.0、Flyway 36 行/max 1.2.0、health UP）；Web 1.2.0（assets/index-Cu2bpF9U.js）。部署前备份 /data/backup/smart_workflow_20261125_1647_pre120.dump、bootstrap.jar.bak-pre120、web.bak-pre120.tar.gz。"
   }
 }

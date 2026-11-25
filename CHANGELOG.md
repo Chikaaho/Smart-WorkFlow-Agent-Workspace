@@ -1,5 +1,18 @@
 # CH-aPaaS 发布说明 / Release Notes
 
+## 1.2.0（2026-11-25 Server 与 Web 发布并部署演示环境；Graph 作为执行器 + 日志等级管理 + 小尾巴，计入第 59—60 个正式功能）
+
+- **背景**：Owner 2026-11-21 选定范围（P67 主体 + P41 日志等级 + P74 + I5 用例恢复），2026-11-23 并入 P76/P77；方向 `product/v1.2.0/ready/direction-v1.2.0.md`（XL）。阶段 3 验收五轮锁定（E1–E4 全部标准 + 迁移多库证据），阶段 4–6 完成。
+- **E1 Graph 执行器（Server+Web，P67）**：流程服务节点可选「Graph 执行器」并绑定已发布 Graph 固定版本，表单字段/流程变量与 Graph 入参/出参双向映射；发布校验（Graph/版本存在且已发布、必填入参有映射、出参目标合法、含人工节点的 Graph 拒绝）；运行时以系统身份按租户同步调用，出参写回流程变量驱动条件分支；超时/报错/出参缺字段三类失败按 BLOCK/CONTINUE 与异常分支处理（graphExec.node_ge.status/errorCategory/errorMessage/executionId）；执行请求记录增加业务关联（来源/实例/节点/表单记录），实例详情可看 Graph 执行编号并跳转，执行列表按来源筛选；跨租户引用发布与运行时双拒绝。
+- **E1 表单服务端动作（Server+Web）**：表单设计器可配「调用 Graph」动作（提交前/按钮两种时机），入参来自表单字段、出参回填；提交前失败阻止提交并提示原因，按钮失败只提示不清空已填内容；服务端执行（不在前端脚本解释器内）。
+- **E2 日志等级管理（Server+Web，P41）**：系统管理新增「日志等级」页（logger 搜索、配置等级/实际生效等级、调整与恢复、ROOT 调 DEBUG/TRACE 二次确认、重启恢复配置文件等级的页面说明）；独立权限点 + 操作日志（谁/哪个 logger/从什么改到什么）。
+- **E3 小尾巴**：E3-1/P74 列表「共 N 条」根因修复（total 字符串拼接）；E3-2 恢复 `I5SsoCipherRuntimeDiagTest` 并在 main CI 实跑通过（1 用例 0 失败）；E3-3 演示环境历史行 `#2121178715751251970` WAITING_HUMAN→CANCELLED（改前确认人工任务/受理行仍 CANCELLED，仅改该行并回读）。
+- **E4 线上缺陷（Server+Web）**：P76 审批详情「动作/意见」非文本字段（单选/多选/数字带单位/人员等）显示可读值，根因在意见显示值转换一处（DynamicData 解包），任务详情/会签记录/打印 PDF 同源修复；P77 工作台「已办」页签按钮改「查看」并打开只读详情，`ACTION#` 实例级审计行不再混入已办，抄送行标题显示流程名。
+- **迁移**：新增 `V1.2.0__graph_exec_business_link_and_loglevel_menu.sql`（9 种数据库同批；SQL Server 走真实增量），UAT flyway_schema_history 35→36 行、max(version)=1.2.0。
+- **CI 修复链**：main 首跑照出两处盘点守卫漂移——`LastLimitCorpusTest` 139→140（E1-4 flow-start 回查新增 LIMIT 1）、`ErrorCodeCatalogTest` 206→207/201→202（E1-6 新增 `form.graph_action_failed` 1405 登记）；修复后 Server run `45565374283` success（含 I5 用例）、Web run `45565538125` success；两仓 feature/1.2.0→develop→main 普通合并，版本收敛 1.2.0。
+- **制品**：Server `bootstrap-1.2.0.jar`（244,277,265 B，sha256 `e565b010e5e26837e6d5595189e9909c630516486b556bbacc9058653b3b0d5b`，`build.version=1.2.0`，tag `1.2.0`→`0fb94fad`，Release `457783510` Latest）；Web `sw-web-dist-1.2.0.zip`（6,366,174 B，sha256 `f941fa5eff8c6fd339f49a66ef31ad1b4ddf5f0f49a319c1b52f75c80c58d3e1`，入口 `assets/index-Cu2bpF9U.js`，tag `1.2.0`→`c978312`，Release `457827301` Latest）。
+- **演示环境（UAT 8.166.112.85）**：部署前磁盘 2.9G（<3G）经 §9.2 压缩轮转日志后 3.8G；备份 `smart_workflow_20261125_1647_pre120.dump`（1.4M）、`bootstrap.jar.bak-pre120`（233M）、`web.bak-pre120.tar.gz`（6.0M）；先 Server 后 Web：`build.version=1.2.0`、health UP、Flyway **36 行**、启动段 ERROR 0、启动 175.078s、远端 jar sha256 与 Release 资产一致；Web 入口 `assets/index-Cu2bpF9U.js`、HTTPS 根 200、`/sw-server/api/actuator/health` 200、`/sw/…` 301。复测 E1（Graph 驱动条件分支 + 表单按钮动作）、E2、E3-1、E3-3、E4-1、E4-2（已办/抄送）、X1（普通流程与 Graph 流程发布均成功）全部通过；测试数据（`1.2.0演示透传图`、`1.2.0演示普通流程`、`1.2.0演示Graph流程`、`1.2.0演示表单动作`）保留。
+- **已知限制/登记**：P80 抄送节点「抄送人」设计器面板不可编辑（参与人面板仅审批/会签）；P81 通知模板管理表单不能选事件/渠道（无 COPY_CREATED 模板时抄送投递记 FAILED）；P82 抄送详情「操作人」显示「审批人」待核实；新发现 **E1-6 表单动作配置经设计器/API 往返时雪花 graphDefId（>2^53）精度丢失**（前端按 number 建模，发布时写回被四舍五入；现网配置需以 `publish-version` 携带精确定义或服务端字符串 id 修复，建议登记）；演示环境部分历史抄送行流程名回退「未命名流程」（定义已删除/改名，属兜底文案）。
 ## 1.1.3（2026-11-20 Server 与 Web 发布并部署演示环境；P72/P73 补丁 + 随批修复 B3/B4/E2，两仓对齐 1.1.3，不计功能数）
 
 - **背景**：Owner 2026-11-19 规划会选定 P72+P73 合成补丁，方向 `product/v1.1.3-patch/ready/direction-v1.1.3.md`（L 级）。阶段 3 验收三轮（E1 轨迹证据、E2/B4 缺陷修复、E3 时间列）返修闭环，`planning-review-113-03.md` PASSED。

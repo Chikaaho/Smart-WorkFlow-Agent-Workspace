@@ -1,5 +1,16 @@
 # 当前状态（current-status）
 
+**当前状态（2026-11-25，1.2.0 已发布并部署演示环境，阶段 4—6 完成，待 Planner 阶段 7 复核）**
+
+1.2.0（Server 1.2.0 + Web 1.2.0，两仓对齐）发布并部署演示环境：E1 Graph 作为执行器（流程服务节点固定版本绑定/发布校验/系统身份同步调用/超时与三类失败/表单服务端动作/运行记录关联与来源筛选/跨租户拒绝）、E2 日志等级管理（页面/调整/权限/审计/重启语义）、E3-1/P74 列表总数、E3-2 恢复 I5 用例（main CI 实跑 1 用例 0 失败）、E3-3 历史行改 CANCELLED、E4-1/P76 意见非文本字段显示、E4-2/P77 已办按钮改「查看」+只读详情。计入第 59—60 个正式功能（P67/P41，按方向默认口径，待规划裁决）；新增 V1.2.0 迁移（9 库同批），UAT Flyway 35→36 行/max 1.2.0。
+
+- **发布事实**：Server tag `1.2.0`=`0fb94fad`（Release `457783510`，`bootstrap-1.2.0.jar` 244,277,265 B sha256 `e565b010…`，`build.version=1.2.0`，main CI `45565374283` success）；Web tag `1.2.0`=`c978312`（Release `457827301`，`sw-web-dist-1.2.0.zip` 6,366,174 B sha256 `f941fa5e…`，入口 `assets/index-Cu2bpF9U.js`，main CI `45565538125` success）。两仓 Latest 均为 1.2.0。
+- **CI 修复链**：两笔盘点守卫同步（`LastLimitCorpusTest` 139→140、`ErrorCodeCatalogTest` 206→207/201→202，错误码 `form.graph_action_failed` 1405 登记）；版本收敛 1.2.0（Server pom/workflow 断言、Web package.json）。发布后补两笔 main 提交：资产复制工作流（`d1f19cd4`→main `70b2aada`，workflow_dispatch 工具）与两仓 README 版本同步（Server `8f447c88`→main `77d31603`；Web `0866918`→main `77e4816`）。
+- **演示环境（UAT 8.166.112.85）**：发布前磁盘 2.9G<3G，按 §9.2 压缩轮转日志至 3.8G；备份 `smart_workflow_20261125_1647_pre120.dump`（1.4M）、`bootstrap.jar.bak-pre120`（233M）、`web.bak-pre120.tar.gz`（6.0M）。Server 先部署（`build.version=1.2.0`、health UP、Flyway 36 行、启动段 ERROR 0、启动 175.078s、远端 sha256 与 Release 一致）；Web 后部署（入口 `index-Cu2bpF9U.js`、HTTPS 根 200、`/sw-server/api/actuator/health` 200、`/sw/…` 301）。
+- **复测（全部通过，测试数据保留）**：E1 Graph 驱动条件分支（实例 `de858aaf…` 命中「高侧人工确认」，变量 `field_score=high`，图执行 `#2125544147878699009` SUCCESS 197ms）；E1-6 表单按钮动作回填（标题→部门）；E2 `com.sw.ck.bpm` INFO→DEBUG→INFO（调整后实例查询出现 DEBUG 行、恢复后无，审计两条）；E3-1「共 40 条」=DB 40；E3-3 `#2121178715751251970` 改前人工任务/受理行均 CANCELLED、UPDATE 1 行、改后三项回读 CANCELLED；E4-1 会签非文本意见（风险评级/影响系统清单/停机时长）可读；E4-2 已办只读详情 + 抄送页签/详情（行标题为流程名）；X1 普通流程与 Graph 执行器流程发布均成功（无 schema null）。
+- **新登记（演示复测发现）**：E1-6 表单动作配置经设计器/API 往返时雪花 `graphDefId`（>2^53）精度丢失（前端 number 建模，发布写回被四舍五入；现场以 `publish-version` 携带精确定义绕开）；P80/P81/P82 维持登记。测试数据：`1.2.0演示透传图`（2125536831309635585）、`1.2.0演示普通流程`（bpm_c13d99a4e0b74ef3）、`1.2.0演示Graph流程`（bpm_3e963b8c15244674）、`1.2.0演示表单动作`（ce3ac02c-9cdc-4b32-bd8b-c54a5097a241）；UAT110 表单已恢复无动作定义（v5）。
+- **知识同步**：`version.json` → 1.2.0 PUBLISHED（featureCount 60）；`CHANGELOG.md` 1.2.0 条目；两仓 README 版本字样 1.2.0；需求池待规划核销 P67、P41、P74、P76、P77（执行方回执列依据）。回执 `product/v1.2.0/receipts/execution-120-18.md`（阶段 4+5）与 `execution-120-19.md`（阶段 6）；S7 iso120 清理待规划复核后执行。
+
 **终态（2026-11-20，1.1.3 补丁 COMPLETED，无活动功能，下一动作等 Owner 选题）**
 
 1.1.3 补丁全部完成：功能状态 `COMPLETED`（不计功能数，正式功能 **58 不变**）；P72、P73 已核销（1.1.3），P74 未排期，B4（执行历史入口 ID 精度）随 1.1.3 修复（无 P 编号）。线上版本 Server `1.1.3`（tag→`54b2657b`，Release `451609872`，Latest）、Web `1.1.3`（tag→`05b9739`，Release `451512760`，Latest）；演示环境 Server 1.1.3 + Web 1.1.3（入口 `index-ANXgpRi9.js`），Flyway 35 行，备份 `*_pre113`。验证基线集合：Server main CI `44562168036`、Web main CI `44549244089`。**无活动功能；当前唯一下一动作：等 Owner 选题（候选：P74、P67、P68）**。主方向目录 `product/v1.1.3-patch/passed/direction-v1.1.3.md`（由规划在阶段 7 移动）。memory 由规划维护。
