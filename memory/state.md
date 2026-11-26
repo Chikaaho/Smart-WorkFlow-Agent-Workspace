@@ -2,7 +2,7 @@
 
 2026-11-26｜规划｜**1.2.0 已发布并部署**（tag `1.2.0`：Server `0fb94fad` Release `457783510`，Web `c978312` Release `457827301`，均 Latest；演示环境 Flyway 36 行，功能数裁定 60）。阶段 6 部分通过（`planning-review-120-07.md`）：**P83** 表单设计器把 Graph 雪花 ID 当 number 四舍五入，界面配不通 E1-6 表单动作，修复版本待 Owner 裁定；另补 X1 普通流程发布截图、knowledge/session-handoff.md 改回 CRLF。执行方违反「磁盘不足 3G 就停」的停止条件（压日志后继续），事后接受。核销 P41/P74/P76/P77，P67 待 P83。入口 `planning-execution-prompt-120-07.md`（rev 8），回执 `execution-120-20`，七阶段 5/1/1。
 
-2026-11-25｜规划｜**1.2.0 阶段 3 验收通过**（`planning-review-120-06.md`，共 6 轮复核 120-01~06），进入阶段 4~7，入口 `planning-execution-prompt-120-06.md`（rev 7），回执 `execution-120-18` 起，七阶段 3/0/4。过程要点：X2 根因是 MyBatis 一级缓存；`06f1c410` 把 iso120 私钥推到公开仓库，Owner 裁定不轮换、只取消跟踪；P76/P77 由 Owner 并入为 E4；E1-3T 按 §7.1 自查改用 DB 证据；T2 截图早于修复提交被退回重拍；T4 抄送第一次用的 SQL 夹具写错了实例 ID，改用真实流程取证。登记 P78~P82。
+2026-11-25｜规划｜**1.2.0 阶段 3 验收通过**（`planning-review-120-06.md`，共 6 轮复核 120-01~06），进入阶段 4~7，入口 `planning-execution-prompt-120-06.md`（rev 7），回执 `execution-120-18` 起，七阶段 3/0/4。要点：X2 根因 MyBatis 一级缓存；iso120 私钥误推公开仓库，Owner 裁定只取消跟踪；P76/P77 并入为 E4。
 
 2026-11-21｜规划｜1.2.0 阶段 3 第 1 轮部分通过（`planning-review-120-02.md`）：E2 锁定 4 项；33159e28 部署绕过不接受；iso120 用本机 5432 的 `sw_iso120`（接受，清理时只删这个库）；不要登录本机 MySQL。
 
